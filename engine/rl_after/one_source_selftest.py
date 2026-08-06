@@ -487,7 +487,12 @@ if _pvc2_on:
     # store, the per-entrant derivation, and the byte-frozen contract. Live-store divergence means
     # "re-derivation due" in the claims note/checklist; it is not curve corruption and must not re-alarm weekly.
     _curve_contract_path=(os.path.join(_repo,'ui','release_pick_curve.json') if _repo else None)
-    _contract_md5='5b7c108c230b9afc18089a8db0aeb650'   # RE-PINNED by the #274 adoption mop-up act (owner word
+    _contract_md5='eae593f220460d880be20da38e3de39d'   # RE-PINNED by #326 (per-division pool entry anchors):
+    # the curve artifact gains the N43 signed pool_levels block beside pool_value, so the artifact FILE md5
+    # moves b7389fe4 -> 988135ef and the contract's pick_curve_file_md5 + its pool_levels mirror move with it.
+    # The curve PAYLOAD identity df766dff is UNCHANGED — the ladder itself was not touched — which is why
+    # pick_curve_curve_md5 below does not move. Both pins move in this one change, as prior acts did.
+    # PREVIOUS PIN: 5b7c108c230b9afc18089a8db0aeb650 — RE-PINNED by the #274 adoption mop-up act (owner word
     # 2026-07-30): ui/release_pick_curve.json carried the STALE pool_value 528 after the 30/7 rederivation moved
     # the pool price to 299. The release-active artifact (engine/rl_after/pvc_curve_v2.json) already carried 299
     # and self-documents the move at stamp.prev_pool_value = 528, so the contract was a stale mirror, not a
@@ -609,6 +614,253 @@ if _pvc2_on:
     print("       (G-Y0 owner-viewing per-pick residual curve: session_2026-07-17/legd_derivation/out/gy0_residual_curve_v2.json — REPORT-ONLY)")
 else:
     print("  NOTE  RL_PVC2=0 (L1b base path): v2-specific asserts skipped; ENTRY CLOSURE above holds either way.")
+
+print("=== (10) #326 PER-DIVISION POOL ENTRY ANCHORS — the N43 signed levels ===")
+# THE OWNER'S SIGNED TABLE, ANCHORED HERE. The artifact cannot be its own authority: if this section read the
+# levels only from the artifact, an edited level would agree with itself and pass. So the signed numbers are
+# written out once, copied verbatim from the owner's N43 signature (#306 comment 5179992080), and everything
+# else is checked against them. A wrong level in the artifact and a wrong lookup in the code each go red here.
+_N43_FLAT={'MSD':286.8,'SSP':252.8,'PDA':194.3,'PDS':145.0,'IRE':133.4,'PDN':123.0,'UNR':103.7}
+_N43_RD={'KPD':300.3,'MID':294.8,'RUCK':282.5,'SD':246.9,'SF':231.5,'KPF':216.0}
+_N43_ND65_K15=266.1; _N43_RD_LEVEL=261.6; _N43_RD_TARGET=262.2; _N43_POOL_AGG=235.8; _N43_K=15
+_v2doc=json.load(open(hp('pvc_curve_v2.json')))
+_pl=_v2doc.get('pool_levels')
+check(bool(_pl), "#326: the curve artifact carries a pool_levels block beside pool_value")
+if _pl:
+    check({_k:float(_v) for _k,_v in _pl['signed_flat'].items()}==_N43_FLAT,
+          "#326 signed flat levels verbatim (MSD/SSP/PDA/PDS/IRE/PDN/UNR): %s"%_pl['signed_flat'])
+    check({_k:float(_v) for _k,_v in _pl['signed_rd_positional'].items()}==_N43_RD,
+          "#326 signed RD positional set verbatim (KPD/MID/RUCK/SD/SF/KPF): %s"%_pl['signed_rd_positional'])
+    check(float(_pl['signed_nd65_plus']['measured_k15'])==_N43_ND65_K15
+          and int(_pl['signed_nd65_plus']['cap_against_curve_pick'])==MA.ND_CURVE_LAST,
+          "#326 ND65+ is stored as the LAW: measured %.1f capped against curve pick %d (never a literal price)"
+          %(float(_pl['signed_nd65_plus']['measured_k15']),int(_pl['signed_nd65_plus']['cap_against_curve_pick'])))
+    check(_pl['rd_position_field']=='future_position',
+          "#326 the RD positional key names future_position (got %r)"%_pl['rd_position_field'])
+    check(float(_pl['rd_division_level'])==_N43_RD_LEVEL and float(_pl['rd_positional_shrink_target'])==_N43_RD_TARGET
+          and float(_pl['measured_pool_aggregate'])==_N43_POOL_AGG and int(_pl['k'])==_N43_K,
+          "#326 the reference quantities are each carried where N43 uses them: RD level %.1f · positional target "
+          "%.1f · pool aggregate %.1f · K=%d"%(float(_pl['rd_division_level']),float(_pl['rd_positional_shrink_target']),
+                                               float(_pl['measured_pool_aggregate']),int(_pl['k'])))
+    _cav=str(_pl.get('msd_completion_optimism_caveat',''))
+    check('4.7' in _cav and '8.4' in _cav,
+          "#326 MSD's completion-optimism caveat travels with its level: %r"%_cav)
+    print("       MSD %.1f  [completion optimism %s]"%(_N43_FLAT['MSD'],_cav))
+    # the ui provenance contract mirrors the block, exactly as it mirrors pool_value
+    _ccp=globals().get('_curve_contract_path')
+    if _ccp and os.path.exists(_ccp):
+        check(json.load(open(_ccp)).get('pool_levels')==_pl,
+              "#326 ui/release_pick_curve.json mirrors the artifact's pool_levels verbatim")
+    # ---- the engine's OWN resolved table, and the cap re-evaluated as the law rather than read back --------
+    _want={_k:int(_v) for _k,_v in _N43_FLAT.items()}
+    _want.update({'RD:'+_k:int(_v) for _k,_v in _N43_RD.items()})
+    _want['ND65+']=int(min(_N43_ND65_K15,float(MA._PVC2M[MA.ND_CURVE_LAST])))
+    check(len(_want)==14, "#326 fourteen priced levels: eight flat divisions + six RD positional (got %d)"%len(_want))
+    check(MA._POOL_LEVELS==_want,
+          "#326 the engine's resolved pool levels == the signed table (ND65+ = min(%.1f, curve[%d]=%d) = %d)"
+          %(_N43_ND65_K15,MA.ND_CURVE_LAST,MA._PVC2M[MA.ND_CURVE_LAST],_want['ND65+']))
+    # ---- THE CURRENCY LAW (addendum 6 item 5), proven on ONE entrant through EACH SITE CLASS ---------------
+    # The signed levels are LADDER/board currency. They enter the ENGINE-VALUE sites (the year-zero floor and
+    # the thin-record blend) multiplied by the board factor F, and the LADDER-currency site (the ruck prior
+    # cap's basis) unconverted. Both directions are checked on real rows, so a conversion applied in the wrong
+    # place — or applied twice — fails here instead of drifting the board 5%.
+    _anchor=g['entry_anchor']; _capb=g['_cap_basis']; _plf=g['_PL_F']; _prefloor=g['ev_prefloor']
+    _ffrac=g['floor_frac']; _nspro=g['nseas_pro']; _v0s_fn=g['v0_start']
+    check(abs(_plf-_F)<1e-12, "#326 currency: the engine's board factor is the certified %.4f (got %.6f)"%(_F,_plf))
+    _poolp=[p for p in MA.players if p.get('_pool')]
+    _cur_lad=[p for p in _poolp if abs(_capb(p)-float(MA.pool_level(p)))>1e-9]
+    check(not _cur_lad,
+          "#326 currency (ladder site — the ruck cap's basis): all %d pool entrants enter UNCONVERTED, at the "
+          "signed level itself; %d would not"%(len(_poolp),len(_cur_lad)))
+    _cur_eng=[p for p in _poolp if abs(_anchor(p)-float(MA.pool_level(p))*_F)>1e-6]
+    check(not _cur_eng,
+          "#326 currency (engine-value sites — floor and blend): all %d pool entrants enter at level x%.4f; "
+          "%d would not"%(len(_poolp),_F,len(_cur_eng)))
+    _rk=[p for p in _poolp if MA.gfut(p)=='RUCK']
+    if _rk:
+        _r0=_rk[0]
+        print("       currency proof rows: ladder site %s (%s) basis %.1f == level %d · engine site same row "
+              "anchor %.1f == %d x %.4f"%(_r0['player'][:20],MA.pool_division(_r0),_capb(_r0),MA.pool_level(_r0),
+                                          _anchor(_r0),MA.pool_level(_r0),_F))
+    # A board-currency round trip: an entrant held at the floor displays at the signed level x the schedule,
+    # because the board divides by the same F the anchor multiplied by. If the conversion were dropped at the
+    # engine site, this figure would be ~5% out.
+    print("       board-currency round trip: level x %.4f (engine) / %.4f (display) == the signed level itself"%(_F,_F))
+    # ---- NO SILENT REFIT (the frozen-surface trap, addendum 6) ---------------------------------------------
+    # The levels resolve in the entry-anchor lookup and are never written into the ladder or its scaffold copy,
+    # so the year-zero surface signature cannot move and the frozen surface must LOAD. If it ever refitted,
+    # every national draftee's V0 would move and "non-pool veterans do not move" would silently stop being true.
+    _meta=g['_V0CURVE_META']
+    check(_meta.get('_v0surf_frozen') is True,
+          "#326 frozen year-zero surface LOADED, not refitted (sig %s; RL_V0SURF_REFIT=%r)"
+          %(str(_meta.get('_v0surf_sig'))[:8],os.environ.get('RL_V0SURF_REFIT')))
+    check(int(g['_PVC0'][MA.POOL_PICK])==int(_v2doc['pool_value']),
+          "#326 the levels were never written into the ladder's scaffold copy — _PVC0[%d] is still pool_value "
+          "%s (the surface signature reads this dict, so writing a level here would refit the surface)"
+          %(MA.POOL_PICK,_v2doc['pool_value']))
+    # ---- POOL_VALUE ISOLATION: no player price reads the ladder's pool slot --------------------------------
+    # Two different claims, both proven. (a) STRUCTURAL: every pool entrant's anchor and cap basis IS his own
+    # division's level, so the lookup cannot reach the pool slot. (b) MEASURED: move the ladder's pool slot and
+    # watch the board — nothing follows it. (b) needs the V0 caches cleared, or a stale cache would answer for
+    # the engine and the check would pass without measuring anything.
+    _slot=int(g['_PVC0'][MA.POOL_PICK])
+    check(_slot==int(_v2doc['pool_value']),
+          "#326 the ladder still carries pool_value %d at index %d (kept for the pick side, the entrant layer "
+          "and the display bands)"%(_slot,MA.POOL_PICK))
+    _reads_slot=[p['player'] for p in _poolp
+                 if abs(_capb(p)-_slot)<1e-9 or abs(_anchor(p)-_slot*_F)<1e-6]
+    check(not _reads_slot,
+          "#326 pool_value isolation (structural): no pool entrant's basis equals the pool slot %d (%d would)"
+          %(_slot,len(_reads_slot)))
+    def _clear_v0():
+        g['_V0C'].clear(); g['_V0U'].clear(); g['_RUCCEIL'].pop('grid',None); MA._pe_clear()
+    _sl_before={}
+    _clear_v0()
+    with contextlib.redirect_stdout(io.StringIO()):
+        for p in MA.players: _sl_before[p['key']]=ev(p,2026)
+    _p0=g['_PVC0']; _p0_keep=_p0[MA.POOL_PICK]; _p0[MA.POOL_PICK]=int(_p0_keep)+163
+    _clear_v0()
+    with contextlib.redirect_stdout(io.StringIO()):
+        _sl_movers=[p['player'] for p in MA.players if ev(p,2026)!=_sl_before[p['key']]]
+    _p0[MA.POOL_PICK]=_p0_keep; _clear_v0()
+    check(not _sl_movers,
+          "#326 pool_value isolation (measured): no board price follows the ladder's pool slot — %d row(s) do: %s"
+          %(len(_sl_movers),', '.join(sorted(_sl_movers)[:8]) or 'none'))
+    # ---- THE WRONG-FIELD DISCRIMINATOR, over the STORE population -----------------------------------------
+    # Addendum 3 item 2: the store is where the differing rows live, so the field proof runs there. On the
+    # board only the drafted-vs-future case exists.
+    _rd=[p for p in MA.data if p.get('type')=='RD']
+    _dp=sum(1 for p in _rd if p.get('present_position')!=p.get('future_position'))
+    _dd=sum(1 for p in _rd if p.get('drafted_position')!=p.get('future_position'))
+    check(_dp>0 and _dd>0,
+          "#326 wrong-field discriminator exists over the store: %d of %d RD rows differ present-vs-future, "
+          "%d differ drafted-vs-future"%(_dp,len(_rd),_dd))
+    _mis_p=[p['player'] for p in _rd
+            if MA._POOL_LEVELS['RD:'+(MA.GRP.get(p.get('present_position')) or MA.gfut(p))]
+            != MA._POOL_LEVELS['RD:'+MA.gfut(p)]]
+    _mis_d=[p['player'] for p in _rd
+            if MA._POOL_LEVELS['RD:'+(MA.GRP.get(p.get('drafted_position')) or MA.gfut(p))]
+            != MA._POOL_LEVELS['RD:'+MA.gfut(p)]]
+    check(len(_mis_p)==_dp and len(_mis_d)==_dd,
+          "#326 a present- or drafted-keyed build misprices %d / %d store rows — the wrong field fails "
+          "deterministically, not three builds in four"%(len(_mis_p),len(_mis_d)))
+    check(all(MA._pool_rd_position(p)==MA.gfut(p) for p in _rd),
+          "#326 the engine's RD positional key IS the settled future position on all %d rookie rows"%len(_rd))
+    _board_diff=[p for p in _poolp if p.get('type')=='RD'
+                 and p.get('drafted_position')!=p.get('future_position')]
+    check(len(_board_diff)>0,
+          "#326 on-board drafted-vs-future proof population: %d active rookie entrant(s) — %s"
+          %(len(_board_diff),', '.join(sorted(x['player'] for x in _board_diff))))
+    check(all(MA._POOL_LEVELS['RD:'+(MA.GRP.get(p.get('drafted_position')) or MA.gfut(p))]
+              !=MA._POOL_LEVELS['RD:'+MA.gfut(p)] for p in _board_diff),
+          "#326 each of those active entrants is priced at a DIFFERENT level under the wrong field")
+    print("       present-vs-future has no on-board discriminator today (0 active differing rows) — which is why "
+          "the field proof runs over the store population; the drafted-vs-future case does exist on the board.")
+    # ---- REACH-THE-ENTRY-PRICE, ALL FOURTEEN LEVELS -------------------------------------------------------
+    # Addendum 5 as amended by addendum 6 item 6: a level is proven when a REAL record-thin entrant's board
+    # price carries it — through EITHER the year-zero floor OR the thin-record blend; either route satisfies
+    # the gate. A level with no live exerciser proves on a real row evaluated off-board (addendum 6 item 7:
+    # PDS is 21 retired rows, so it proves by the engine's own retired-row technique — lift the flags,
+    # evaluate, restore — never a synthetic key). The exerciser and the route are found from the population
+    # at build time, never hardcoded, so a first signing at a dormant pathway flips that level onto the live
+    # tier loudly instead of leaving a check that quietly measures nothing.
+    _bd={r['key']:r for r in (json.load(open(board_path))['active'] if os.path.exists(board_path) else [])}
+    def _board_price(p):
+        with contextlib.redirect_stdout(io.StringIO()):
+            v=ev(p,2026); ev(p,2024); ev(p,2025); ev(p,2027); ev(p,2028)   # the export's as-of sequence, as (2) above
+            return v
+    def _price(p):
+        with contextlib.redirect_stdout(io.StringIO()): return ev(p,2026)
+    def _route(p):
+        with contextlib.redirect_stdout(io.StringIO()):
+            _pre=_prefloor(p,2026); _post=ev(p,2026); _ns=_nspro(p,2026)
+        if _post!=_pre: return 'floor'
+        if _ns==0: return 'blend'
+        return 'ruck cap'
+    def _arith_note(p,level):
+        """For a floored entrant, the board price IS the schedule fraction times the signed level — printed
+        so the number can be checked by hand rather than taken on trust."""
+        _yis=2026-int(p.get('year') or 0)
+        if _route(p)!='floor': return ''
+        return '  = floor_frac(%d yrs)=%.2f x level %d' % (_yis,_ffrac(_yis),level)
+    def _lift(p):
+        """The engine's retired-row evaluation: lift the two flags that keep a concluded career off the live
+        board, price the row, put them back. The row is real; only its listing status is suspended."""
+        return (p.get('_retired'),p.get('_last_listed'))
+    _byl={}
+    for p in _poolp: _byl.setdefault(MA.pool_division(p),[]).append(p)
+    _store_byl={}
+    for p in MA.data:
+        if p.get('_pool'): _store_byl.setdefault(MA.pool_division(p),[]).append(p)
+    _tier={}
+    for _k in sorted(_want):
+        _on=_byl.get(_k) or []
+        _kept=MA._POOL_LEVELS[_k]
+        _probe=int(round(_kept*1.5))
+        if _on:
+            _base={id(p):_price(p) for p in _on}
+            MA._POOL_LEVELS[_k]=_probe; MA._pe_clear()
+            _moved=[p for p in _on if _price(p)!=_base[id(p)]]
+            MA._POOL_LEVELS[_k]=_kept; MA._pe_clear()
+            _named=sorted(_moved,key=lambda p:_base[id(p)])[:1]
+            # the named entrant is tied back to the SHIPPED board through the export's own as-of sequence, so
+            # "reaches the price" means the board row, not a number this file computed for itself.
+            _ok=bool(_named) and all(_bd.get(p['key'],{}).get('v')==_num(_board_price(p)) for p in _named)
+            _tier[_k]=('live',len(_on),len(_moved),
+                       (_named[0]['player'] if _named else None),
+                       (_route(_named[0]) if _named else '-'),
+                       (_bd.get(_named[0]['key'],{}).get('v') if _named else None),
+                       (_arith_note(_named[0],_kept) if _named else ''))
+            # END-TO-END CURRENCY, through a real board price. On the floor route the whole chain is
+            # visible in one number: the anchor multiplies the signed level by the board factor, the export
+            # divides by it again, so the shipped price is EXACTLY the year's floor fraction times the signed
+            # level. A conversion dropped, doubled, or applied at the wrong site moves this by ~5% and the
+            # check goes red — it bites on the SITES, not just on the anchor function.
+            if _named and _route(_named[0])=='floor':
+                _pn=_named[0]; _yis=2026-int(_pn.get('year') or 0)
+                _expect=round(_ffrac(_yis)*_kept)
+                check(abs(int(_bd.get(_pn['key'],{}).get('v') or 0)-_expect)<=1,
+                      "#326 currency end-to-end (%s): %s ships at %s == floor_frac(%d)=%.2f x signed level %d "
+                      "= %d — the level is quoted in the currency the board displays"
+                      %(_k,_pn['player'],_bd.get(_pn['key'],{}).get('v'),_yis,_ffrac(_yis),_kept,_expect))
+            check(_ok, "#326 level %s reaches a real entrant's BOARD price — %s via the %s (board v=%s; %d of "
+                       "%d live entrants re-price when the level moves)"
+                  %(_k,(_named[0]['player'] if _named else 'NO LIVE ENTRANT RE-PRICES'),
+                    (_route(_named[0]) if _named else '-'),
+                    (_bd.get(_named[0]['key'],{}).get('v') if _named else '-'),len(_moved),len(_on)))
+        else:
+            _rows=_store_byl.get(_k) or []
+            _saved=[(p,_lift(p)) for p in _rows]
+            for p,_ in _saved: p['_retired']=False; p['_last_listed']=None
+            MA._pe_clear()
+            _base={id(p):_price(p) for p in _rows}
+            MA._POOL_LEVELS[_k]=_probe; MA._pe_clear()
+            _moved=[p for p in _rows if _price(p)!=_base[id(p)]]
+            MA._POOL_LEVELS[_k]=_kept; MA._pe_clear()
+            _nm=sorted(_moved,key=lambda p:_base[id(p)])[:1]
+            _rt=(_route(_nm[0]) if _nm else '-'); _pv=(_base[id(_nm[0])] if _nm else None)
+            for p,(_r,_ll) in _saved: p['_retired']=_r; p['_last_listed']=_ll
+            MA._pe_clear()
+            _tier[_k]=('probe (retired rows lifted)',0,len(_moved),
+                       (_nm[0]['player'] if _nm else None),_rt,(_num(_pv) if _pv is not None else None),
+                       (_arith_note(_nm[0],_kept) if _nm else ''))
+            check(bool(_moved),
+                  "#326 level %s has 0 live entrants — proved on its REAL rows off-board (retired flags lifted, "
+                  "evaluated, restored): %s via the %s (%d of %d rows re-price when the level moves)"
+                  %(_k,(_nm[0]['player'] if _nm else 'NO ROW RE-PRICES'),_rt,len(_moved),len(_rows)))
+    print("       reach-the-entry-price, all fourteen levels (route and exerciser found at build time).")
+    print("       On the FLOOR route the arithmetic is visible: the board price is the year's floor fraction")
+    print("       times the signed level, because the anchor multiplies by the board factor and the board")
+    print("       divides by it again — so the level is quoted in the same currency the board displays.")
+    print("       %-9s %6s  %-27s %4s %5s  %-9s %s"
+          %('level','value','tier','n','moved','route','entrant (board price)'))
+    for _k in sorted(_tier):
+        _t,_n,_m,_nm,_rt,_bv,_arith=_tier[_k]
+        print("       %-9s %6d  %-27s %4d %5d  %-9s %s (%s)%s"
+              %(_k,MA._POOL_LEVELS[_k],_t,_n,_m,_rt,_nm,_bv,_arith))
+    print("       pool population by division (engine classification, re-derived at build time): %s"
+          %(' · '.join('%s %d'%(_k,len(_store_byl.get(_k) or [])) for _k in sorted(_want))))
+    print("       MSD's level carries its completion-optimism caveat wherever it is shown: %s"%_cav)
 
 print("\n"+("SELF-TEST FAILED: %d check(s)\n  - "%len(FAIL)+"\n  - ".join(FAIL) if FAIL else
       "SELF-TEST PASSED: single source; guards 1-3; board==engine (F1); book==board (F2); Kako+Bontempelli ground-truth; DPP blend stripped; Leg B L-RECENCY + ρ forbidden-list (R105.5/R105.4); collision sentry (King pair) clean."))

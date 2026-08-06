@@ -1175,13 +1175,30 @@ def _ruc_head_core(pk,a):                                     # W4: SMOOTH young
 def _ruc_head_mult(p,Y=2026): return _ruc_head_core(MA.effpk(p),cp._age_asof(p,Y))   # PRODUCTION leg: as-of age (a 24yo producer keeps headroom; a 30yo does not)
 def _ruc_head_v0(p):                                          # V0/SCAFFOLD leg: DRAFT-TIME age (V0 is a draft-time anchor -> D14a same pos x draft-age x pick law preserved by construction)
     return _ruc_head_core(MA.effpk(p), cp._age_asof(p, p.get('year') or (cp.debutyr(p)-1)))
+# ===== #326 ENTRY ANCHOR, PART 1 — THE LADDER-CURRENCY SITE (the RUCK prior cap's pick-capital basis).
+# The owner ruled (addendum 5 item 3) that a pool entrant's signed division level REPLACES the single pool
+# value in every pricing role it had, and the ruck prior cap is one of them: before this, every pool ruck's
+# cap was built on the ladder's one pool slot, so a rookie-draft ruck, an Irish recruit and a mid-season
+# signing all leant on the same number. Now each leans on his own division's level.
+#   CURRENCY (addendum 6 item 5): the signed levels are LADDER/board currency, and `draftval` is a ladder
+#   reading, so the level enters here UNCONVERTED. The engine-value sites (the blend and the floor, part 2
+#   below) multiply by the board factor instead. One law, applied per site, so a wrong conversion is a
+#   red selftest rather than a quiet 5% drift.
+#   SCOPE: pool entrants only. A non-pool player reads `draftval` exactly as before, byte-for-byte.
+import json as _plj
+_PL_F=float(_plj.load(open('pick_redenomination.json'))['factor'])   # 1.0524 — the certified board factor
+def _cap_basis(p):
+    """The pick-capital the RUCK prior cap multiplies: a pool entrant's own signed level, or the ladder
+    reading for everyone else. Ladder currency on both branches."""
+    if p.get('_pool'): return float(MA.pool_level(p))
+    return draftval(p)
 def _ruc_ceiling(p,Y=2026):                                   # production-derived $ ceiling for a real ruck (bestlvl->$)
     s=bestlvl(p,Y)
-    if s<=0: return RUC_PRIOR_CAP*draftval(p)*_ruc_head_v0(p)  # NO qualified production -> prior cap stands (x smooth young headroom, draft-age keyed like the scaffold it mirrors)
+    if s<=0: return RUC_PRIOR_CAP*_cap_basis(p)*_ruc_head_v0(p)  # NO qualified production -> prior cap stands (x smooth young headroom, draft-age keyed like the scaffold it mirrors) [#326: pool entrants on their own division level]
     if 'grid' not in _RUCCEIL: _build_ruc_ceiling()
     xg,yg=_RUCCEIL['grid']; return RUC_CEIL_HEAD*float(np.interp(s,xg,yg))*_ruc_head_mult(p,Y)
 def _ruc_prior_cap(p,v):                                      # V0 PRIOR SCAFFOLD cap — PR #44 kept this byte-identical; W4 DELIBERATELY extends it with the smooth young-pick headroom (the #43 under-priced pocket lives in the V0-anchored sit-out young rucks: Goad/Green class), draft-age keyed
-    return min(v, RUC_PRIOR_CAP*draftval(p)*_ruc_head_v0(p)) if (_isreal(p) and MA.gfut(p)=='RUCK') else v
+    return min(v, RUC_PRIOR_CAP*_cap_basis(p)*_ruc_head_v0(p)) if (_isreal(p) and MA.gfut(p)=='RUCK') else v   # #326: pool rucks cap on their own division level (ladder currency, unconverted)
 _V0C={}; _V0U={}
 _V0_CM, _V0_Q97 = cm, q97m    # V0 is a STRUCTURAL prior: pin the import-time models (the pole/ISO convention —
                               # gate1's own rule: "pole(_POLE) + ISO stay in-sample structural priors"). In the
@@ -1622,6 +1639,30 @@ def v0_start(p):                                             # BOARD -> D14 V0 c
     if _BOARD_PATH:
         c=_V0CURVE.get(_v0key(p)); return c if c is not None else v
     g=_V0GUARD.get(_v0key(p)); return v if g is None else min(v,g)
+# ===== #326 ENTRY ANCHOR, PART 2 — THE ENGINE-VALUE SITES (the year-zero floor and the thin-record blend).
+# THE OWNER'S RULING, in his words (addendum 5): "The signed levels should bite the same way that the pick
+# curve bites for year 0 players. It would be then starting foundation for value for players we don't have
+# information on, and then phase out as we do get information or a lack thereof."
+#   So: where a national draftee's price starts from his pick's year-zero value, a pool entrant's price
+#   starts from his intake division's signed level. Same floor schedule, same blend shape — nothing about
+#   the machinery changes except WHICH number the entrant leans on before he has a record. As games arrive
+#   the blend fades the anchor out (lam rises with games at pace) and the floor fades on the year clock,
+#   exactly as they already do for national draftees. Careers dominate; this only holds up thin records.
+#   THE OLD MACHINERY STOPS FIRING HERE (owner, addendum 6): for a pool entrant the pool-slot-derived
+#   v0_start no longer sets his entry price, even where the signed level cuts.
+#   CURRENCY (addendum 6 item 5): the levels are ladder/board currency and these two sites are ENGINE-value
+#   sites (they blend against, and floor, engine ev()), so the level enters multiplied by the board factor
+#   1.0524. The ruck-cap site above takes it unconverted. The selftest proves one entrant through each site
+#   class so a wrong conversion goes red instead of drifting 5%.
+#   NOT IN SCOPE, DELIBERATELY (addendum 6 item 4): the staleness cap, the mediocre cap and the delisted
+#   remnant keep reading v0_start byte-for-byte. They face players with real careers and back-boards, and
+#   the owner's standing default forbids moving those. That is recorded as the one place the old machinery
+#   still fires on purpose; reversing it is one owner sentence.
+def entry_anchor(p):
+    """The entry price a thin record leans on: the signed division level for a pool entrant (converted into
+    engine-value currency), the live V0 start value for everyone else."""
+    if p.get('_pool'): return float(MA.pool_level(p))*_PL_F
+    return v0_start(p)
 def _v0_curve_assert():                                      # BY-CONSTRUCTION GATES (D14 1c): wired, return dict of results
     star=_V0CURVE_META['_star']; ages=_V0CURVE_META['mature_nonRUC']['ages']
     # (i) same (pos,ageR,pick) -> identical V0* across draft years (function of pos,ageR,pick only) — check dispersion
@@ -1652,7 +1693,7 @@ def sitout_ev(p,Y,e_full):
     R=_R_surf(_sitout_cls(MA.gfut(p)), MA.effpk(p), tau)     # D13 ASK3: pick-conditioned, isotonic-in-depth surface (was depth-only R_SIT)
     gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
     lam=float(np.interp(min(gy/fe,6.0),[0,1,2,3,4,5,6],LAM_SIT))                 # games AT PACE vs the prorated bar
-    return (1.0-lam)*R*v0_start(p)+lam*e_full
+    return (1.0-lam)*R*entry_anchor(p)+lam*e_full            # #326: a pool entrant blends off his division's signed entry level; every other player off v0_start, byte-for-byte
 def _first_evidence(p,Y):                                     # the games-ramp family: ALL evidence is season Y
     return not any(x['games']>0 and x['year']<Y for x in p['scoring'])
 def _prod_path(p,Y):
@@ -1700,7 +1741,7 @@ def ev(p,Y=2026):
     if delisted(p): return round(0.02*v0_start(p))
     e=_prod_path(p,Y)                                        # (3) isotonic guard inside; family games-axis smoothing
     if _isreal(p) and MA.gfut(p)=='RUCK':                  # W4/PR#44: cap PRIOR-DOMINATED ruck production leg at the production-derived ceiling (RL_W4_RUC=0 -> v2.5 1.4xPVC cap)
-        _cpv=(_ruc_ceiling(p,Y) if _W4RUC else RUC_PRIOR_CAP*draftval(p)); _v0u=_v0_uncapped(p)  # bind iff ceil < e <= V0_uncapped (hot prior, no demonstrated growth);
+        _cpv=(_ruc_ceiling(p,Y) if _W4RUC else RUC_PRIOR_CAP*_cap_basis(p)); _v0u=_v0_uncapped(p)  # bind iff ceil < e <= V0_uncapped (hot prior, no demonstrated growth); [#326: same per-division basis on the v2.5 fallback path]
         if _cpv<e<=_v0u: e=_cpv                               #   e>V0u (demonstrated) or e<=ceil (already low) -> byte-exact
     # W4 KPF (RL_KPFFIX): compress the ESTABLISHED-KPF loose residual only — SETTLED #9 / PR #42 T1-shape.
     # KPFs bunch near the lowest REPL bar (66.8) and the curve levers tiny production gaps into huge value gaps
@@ -1780,13 +1821,22 @@ FLOOR_YRS={1:0.45,2:0.35,3:0.28,4:0.21,5:0.13,6:0.09}         # yrs 1-6 (signed 
 FLOOR_TAIL=0.05                                               # yrs 7+ FLAT (VARIANT A, as signed)
 def floor_frac(yis): return FLOOR_YRS.get(yis,FLOOR_TAIL)
 ev_prefloor=_ev_m3                                            # harnesses read this for the saves table / lower-bound re-verify
+# #326 SCOPE EXTENSION (owner ruling, addendum 5 item 1): the year-zero floor now also covers ENGINE-POOL
+# entrants, on the signed division level as its basis. Until this act the floor was national-draftees-only,
+# so a pool entrant had no entry anchor at all — the very gap the owner's words describe. The schedule
+# (FLOOR_YRS / FLOOR_TAIL) is INHERITED UNCHANGED from the national path; only the population and the basis
+# widen. The `_pickless` exclusion is NOT applied to pool entrants (addendum 6 item 1): 100% of the IRE, PDA,
+# PDN, PDS, SSP and UNR rows are pickless by construction — that is what those pathways ARE — so gating on it
+# would have excluded six of the nine divisions from the ruling. It still excludes a pickless NON-pool row,
+# which is the case it was written for. Retired/delisted/gate-synthetic rows stay out, exactly as before.
 def ev(p,Y=2026):
     v=ev_prefloor(p,Y)
-    if not _isreal(p) or p.get('type')!='ND' or p.get('_retired') or p.get('_pickless') or delisted(p):
-        return v                                              # out of scope: byte-exact passthrough
+    _pool=bool(p.get('_pool'))
+    if not _isreal(p) or p.get('_retired') or delisted(p): return v          # out of scope: byte-exact passthrough
+    if not _pool and (p.get('type')!='ND' or p.get('_pickless')): return v   # non-pool: the national-draft scope, unchanged
     yis=Y-int(p.get('year') or 0)
     if yis<1: return v
-    fl=floor_frac(yis)*v0_start(p)     # D12: RE-ANCHORED draftval -> live V0 (schedule unchanged; Luke R8)
+    fl=floor_frac(yis)*entry_anchor(p)  # D12: RE-ANCHORED draftval -> live V0 (schedule unchanged; Luke R8). #326: a pool entrant's anchor is his division's signed level
     return v if v>=fl else round(fl)
 # ==== W4 PVC FIT (RL_PVCFIT, DOWNSTREAM) — per the re-stamped PVC Derivation Spec v1 (PR #41) ================
 # PVC(k) = end-of-calendar-year-1 as-of value of the TYPICAL player at pick k, FITTED FROM THE CANDIDATE
@@ -1848,6 +1898,33 @@ if os.environ.get('RL_PVC2','1')!='0':
     _V0C.clear(); _V0U.clear(); _V0GUARD.clear(); _RUCCEIL.pop('grid',None)
     _build_v0_guard(); _V0CURVE.clear(); _build_v0_curve()
     MA._pe_clear()
+# ===== #326 BUILD-TIME PROOFS — the two things this act must not have done ==================================
+# (1) THE FROZEN SURFACE MUST LOAD, NOT REFIT. The year-zero surface is frozen by signature (data/v0surf.pkl).
+#     #326 adds an entry anchor for pool entrants and must not disturb that surface: the levels resolve in the
+#     anchor lookup and are NEVER written into the ladder or its scaffold copy _PVC0, so the signature — which
+#     covers _PVC0, the national-draft roster and the gate set — cannot move. If it ever did, every national
+#     draftee's V0 would be re-fitted and "non-pool veterans do not move" would quietly stop being true. The
+#     engine already HALTS on an unknown signature; this asserts the other half — that the load actually
+#     happened and no declared refit is riding along. Proven able to fail with RL_V0SURF_REFIT=1.
+assert _V0CURVE_META.get('_v0surf_frozen') is True, (
+    '#326 HALT: the year-zero surface was NOT loaded from the freeze (signature %s, refit declared=%r). The '
+    'per-division pool levels must never reach the ladder or the surface fit — a moved surface re-prices every '
+    'national draftee, and this act is only allowed to move pool entrants.'
+    %(_V0CURVE_META.get('_v0surf_sig'),os.environ.get('RL_V0SURF_REFIT')))
+# (2) pool_value RETIRES FROM PRICING (owner ruling, addendum 5 item 3). Every pool entrant's entry anchor and
+#     ruck-cap basis is his own signed division level, in the currency that site speaks — never the ladder's
+#     one pool slot. Stated as an equality over the whole pool population so a re-pointed branch is a build
+#     halt, not a board that quietly prices nine pathways at one number again. pool_value itself stays in the
+#     artifact for the pick side, the entrant layer and the display bands; those are not player prices.
+_POOL_ROWS_326=[p for p in MA.data if p.get('_pool')]
+_iso_bad=[p.get('player') for p in _POOL_ROWS_326
+          if abs(_cap_basis(p)-float(MA.pool_level(p)))>1e-9
+          or abs(entry_anchor(p)-float(MA.pool_level(p))*_PL_F)>1e-6]
+assert not _iso_bad, ('#326 HALT: %d pool entrant(s) (%s) do not price off their own division level — the '
+                      'single pool value is back in a player price.'%(len(_iso_bad),_iso_bad[:6]))
+print('#326 ENTRY ANCHOR WIRED: %d pool entrants anchor on their signed division level — ruck cap in ladder '
+      'currency, floor and thin-record blend at x%.4f (board factor). Frozen year-zero surface LOADED (sig '
+      '%s), not refitted.'%(len(_POOL_ROWS_326),_PL_F,str(_V0CURVE_META.get('_v0surf_sig'))[:8]))
 import json as _w4json
 _PVCFIT_META={}
 if _W4PVC and os.path.exists('pvc_fit_candidate.json'):
