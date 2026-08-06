@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v72 · supervisor pen · 2026-08-06, register v581
+# CURRENT STATE — the incoming-seat read · v73 · supervisor pen · 2026-08-06, register v582
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,29 +128,26 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v72 · supervisor pen · 2026-08-06, register v581 · replaced wholesale at the TRACK B VERIFY PEN —
-the delivered recipe checked against the adopted engine + landed store, six corrections applied
-and re-delivered; road unchanged. The primer is at v4 — read it first, in full.)
+(v73 · supervisor pen · 2026-08-06, register v582 · replaced wholesale at the R21 PEN — round 21
+applied and verified; three rulings recorded; #344 executed and sequenced behind this landing. The
+primer is at v4 — read it first, in full.)
 
 ## THE ERA: ADOPTED. Track A refines; TRACK B IS CUT.
 - **ADOPTED 2026-08-06, owner words "Adopt. Then cut the handover and start a new seam."** The
   release-transition register carries the boundary (data/release_lineage.json, entry 4, at round 20).
   One boundary adopted the whole era: #306 landing · #323/#328 corrections + re-closure · #326 pool
   anchors · #334 stage-A store completion. Adopted with eyes open: #336 and #338 continue in Track A.
-- **THE ADOPTED IDENTITIES (verify with your own commands; file paths inline):**
-  store `f1e7f20c4adea9b17d19457a5217c735` = `engine/rl_after/rl_model_data.json` · board
-  `827fb1fd…` = `data/rl_build/rl_app_data.json` · rl_model `33f94073` · engine_head `9f258a3b` ·
-  fv `d920557e…` · curve payload `df766dff…` (N32 recipe over the `curve` object of
-  `engine/rl_after/pvc_curve_v2.json`; file md5 `988135ef`) · surface `d594dc03…` = `data/v0surf.pkl`
-  · contract sha `7033d200…` (`data/release_contract.json`, its own recipe in `release_contract.py`)
-  · balanced_board_md5 `4939d740` (present-lens anchor, deliberately unmoved) · selftest 145/0.
-  The v579 seat re-verified all of these 2026-08-06 and N35-classified its box VALUE-PATH (board
-  byte-reproduced, selftest 145/0) — a NEW seat on a NEW box still classifies its own.
+- **THE CURRENT IDENTITIES (round 21 applied 2026-08-06; verify with your own commands):**
+  store `37ced3ce45914e6feb00d27e26922e9a` = `engine/rl_after/rl_model_data.json` · board
+  `113b36f898a32363c49c2a62fb809f4b` = `data/rl_build/rl_app_data.json` · rl_model `33f94073` ·
+  engine_head `9f258a3b` (moves to `8f0e3eb1` when #344 merges with its re-pin) · curve payload
+  `df766dff…` (file `988135ef`) · surface `d594dc03…` = `data/v0surf.pkl` · balanced_board_md5
+  `4939d740` (present-lens anchor, unmoved) · season round 21 · adoption-era pair for attribution:
+  `827fb1fd` (adopted, round-20 basis, out-of-round column `redesign-adoption-6-8`) → `113b36f8`
+  (round 21). The v582 seat byte-reproduced the ADOPTED board pre-R21 on this box (N35 value-path).
 - **EXPECTED, NOT DRIFT:** `ui/release_pick_curve.json` still stamps `curve_source_store_md5 =
-  f1e8c9fe` (the pre-completion store) because **#334 STAGE B — the curve+surface re-derivation on
-  the completed store — is DEFERRED BY OWNER WORD** behind the #336 ruling, and its refit lane is
-  blocked by the guard (road step 2). The movers suite carries 3 pre-existing reds (history bundle
-  predates the live release) — resolved by road step 1.
+  f1e8c9fe` (pre-completion) — #334 STAGE B deferred by owner word behind the #336 ruling. The
+  movers reds are CLEARED (R21 landed; #271 A17 closed; suites 66/66 · 39/39 · 5/5).
 - **DEPLOY:** the repo's UI bundles carry the adopted board; `ui/index.html` from a checkout/zip IS
   the app. If the owner's deploy step is manual, deploying is his act.
 
@@ -180,22 +177,18 @@ full pen detail is the v580 register entry; the v581 entry records the owner-ask
 (engine diff = redesign landings only; six store-count corrections; the #326 per-stream anchor
 restated at L3 step 33) and the corrected re-delivery. Any extension is a NEW owner word.
 
-## THE SEAM'S ROAD (in order; unchanged by the cut)
-1. **Round-21 ingest + movers snapshot.** Instrument: `docs/GO_LIVE_round_score_ingestion.md` + the
-   `engine/rl_after/ingestion/.weekly_txn/txn_catchup_r15…r19/` pattern. THE ROUND SCORES COME FROM
-   THE OWNER (couriered, as the r15–r19 catchup was) — ask him for the round-21+ data. Also clears
-   the 3 movers reds.
-2. **The #326 guard fix:** `_merged_recover.py:1909` fires on DECLARED refits too, so nothing that
-   refits the surface can run until it distinguishes declared-vs-silent (undeclared stays red,
-   proven able to fail). This is the unblocker for #334 stage B and the #336 variant. Small, audited.
-3. **#338 implemented** → the walk-forward book re-emits honestly (per_entrant_334 was session-only;
-   re-emit per `docs/evidence/act_334_2026-08-06/` recipes, then COMMIT the book of record).
-4. **#336 bust-inclusive variant** on the honest book → **ONE side-by-side to the owner** (current
-   vs bust-inclusive: board deltas, hump ratio, top-end ratio). His single queued decision.
-5. **#332 addendum** (re-center on the owner's cohort-development words: **#306 comment
-   5186108632**) · the **#333 memo** absorbs the #336 result as lead candidate · #334 stage B rides
-   the post-ruling re-derivation.
-
+## THE SEAM'S ROAD (updated at v582)
+1. ~~Round-21 ingest + movers snapshot~~ **DONE 2026-08-06** (txn 4a7d259; pattern for R22+: the
+   catchup verb per the v582 register entry; the owner may run it himself — one-pager pending).
+2. **#344 merge + engine_head re-pin (8f0e3eb1)**: directive EXECUTED (branch
+   claude/issue-344-afl-rl-engine-yrfxw3, five proofs on the issue); Addendum 1 sequences it — rebase
+   on post-R21 main, re-pin rides the merge, seam verification build first, owner merge word last.
+3. **#338 implemented** → the walk-forward book re-emits honestly (per docs/evidence/act_334
+   recipes), then COMMIT the book of record.
+4. **#336 bust-inclusive variant** on the honest book → ONE side-by-side to the owner. His single
+   queued decision.
+5. **#332 addendum** (#306 comment 5186108632) · the #333 memo absorbs the #336 result · #334
+   stage B rides the post-ruling re-derivation.
 ## RUNNING THIS SEAT WELL — including the FABLE BUDGET (owner word 2026-08-06)
 **The seam runs on Fable; spend Fable ONLY on judgment** — rulings, verifying the two-or-three
 deciding figures, and talking to the owner. Everything mechanical (searches, extraction, builds,
@@ -220,7 +213,7 @@ PRE-#334 rehearsal figure — the adopted pin is `827fb1fd`; the pair is named b
 `docs/evidence/act_334_2026-08-06/`.
 N32 payload recipe: `{str(pick): int(round(v))}` over the ladder's `curve` object, `json.dumps(...,
 sort_keys=True)`, md5. PEN MECHANICS: register line 1 is the header; edit the version stamp near
-char 88 SAME LENGTH (`v581 2026-08-06` → next); insert the entry before the ` · SEAM v540
+char 88 SAME LENGTH (`v582 2026-08-06` → next); insert the entry before the ` · SEAM v540
 (2026-07-29)` marker; asserts: line count 8,438 unchanged · growth == entry length · one new stamp ·
 docs-only diff; commit `supervisor-seat <supervisor@seam.local>`; branch → PR → rebase-merge →
 re-verify main BY CONTENT (the branch may need `git rebase origin/main` first — merged twins drop
