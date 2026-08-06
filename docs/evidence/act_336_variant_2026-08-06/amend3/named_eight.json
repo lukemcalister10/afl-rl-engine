@@ -1,0 +1,213 @@
+{
+ "sullivan-robey": {
+  "key": "sullivan-robey",
+  "pos": "MID",
+  "pick": 9,
+  "est": true,
+  "bestg": 14,
+  "r": 1.0,
+  "draftday": 2080,
+  "base": 3070,
+  "first": 945,
+  "a1": 2807,
+  "a2": 2651,
+  "a3": 2651,
+  "seasons": [
+   [
+    2026,
+    14,
+    61.7
+   ]
+  ],
+  "age": 19
+ },
+ "cooper-trembath": {
+  "key": "cooper-trembath",
+  "pos": "KPF",
+  "pick": 9,
+  "est": true,
+  "bestg": 20,
+  "r": 1.0,
+  "draftday": 529,
+  "base": 2053,
+  "first": 1144,
+  "a1": 1211,
+  "a2": 1868,
+  "a3": 1868,
+  "seasons": [
+   [
+    2025,
+    3,
+    71.7
+   ],
+   [
+    2026,
+    20,
+    65.5
+   ]
+  ],
+  "age": 21
+ },
+ "ned-moyle": {
+  "key": "ned-moyle",
+  "pos": "RUCK",
+  "pick": 5,
+  "est": true,
+  "bestg": 13,
+  "r": 1.0,
+  "draftday": 396,
+  "base": 2053,
+  "first": 1404,
+  "a1": 1252,
+  "a2": 1871,
+  "a3": 1871,
+  "seasons": [
+   [
+    2023,
+    2,
+    49.5
+   ],
+   [
+    2024,
+    8,
+    85.8
+   ],
+   [
+    2025,
+    3,
+    56.0
+   ],
+   [
+    2026,
+    13,
+    81.4
+   ]
+  ],
+  "age": 24
+ },
+ "nick-madden": {
+  "key": "nick-madden",
+  "pos": "RUCK",
+  "pick": null,
+  "est": true,
+  "bestg": 6,
+  "r": 1.0,
+  "draftday": 272,
+  "base": 2142,
+  "first": 1486,
+  "a1": 1481,
+  "a2": 1829,
+  "a3": 1829,
+  "seasons": [
+   [
+    2025,
+    3,
+    86.0
+   ],
+   [
+    2026,
+    6,
+    83.8
+   ]
+  ],
+  "age": 22
+ },
+ "josh-lai": {
+  "key": "josh-lai",
+  "pos": "SD",
+  "pick": null,
+  "est": true,
+  "bestg": 15,
+  "r": 1.0,
+  "draftday": 319,
+  "base": 513,
+  "first": 149,
+  "a1": 131,
+  "a2": 352,
+  "a3": 352,
+  "seasons": [
+   [
+    2026,
+    15,
+    62.2
+   ]
+  ],
+  "age": 21
+ },
+ "zac-taylor": {
+  "key": "zac-taylor",
+  "pos": "SF",
+  "pick": 44,
+  "est": true,
+  "bestg": 18,
+  "r": 1.0,
+  "draftday": 359,
+  "base": 254,
+  "first": 78,
+  "a1": 70,
+  "a2": 208,
+  "a3": 208,
+  "seasons": [
+   [
+    2024,
+    9,
+    43.7
+   ],
+   [
+    2025,
+    17,
+    47.5
+   ],
+   [
+    2026,
+    18,
+    58.6
+   ]
+  ],
+  "age": 23
+ },
+ "harry-dean": {
+  "key": "harry-dean",
+  "pos": "KPD",
+  "pick": 3,
+  "est": true,
+  "bestg": 16,
+  "r": 1.0,
+  "draftday": 2331,
+  "base": 2660,
+  "first": 1002,
+  "a1": 2329,
+  "a2": 2293,
+  "a3": 2293,
+  "seasons": [
+   [
+    2026,
+    16,
+    59.6
+   ]
+  ],
+  "age": 19
+ },
+ "patrick-retschko": {
+  "key": "patrick-retschko",
+  "pos": "MID",
+  "pick": 8,
+  "est": true,
+  "bestg": 15,
+  "r": 1.0,
+  "draftday": 337,
+  "base": 1353,
+  "first": 509,
+  "a1": 542,
+  "a2": 1097,
+  "a3": 1097,
+  "seasons": [
+   [
+    2026,
+    15,
+    70.7
+   ]
+  ],
+  "age": 20
+ }
+}

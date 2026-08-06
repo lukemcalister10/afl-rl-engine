@@ -1,0 +1,175 @@
+#336 VARIANT — MONOTONICITY PROOFS
+store 37ced3ce | rl_model b35c5521 (VARIANT) | population hist n=1974 (ND/RD 2003-2021, GRP position)
+THE LAW (owner, #336): a strictly worse career can never produce a better-looking baseline.
+
+== PROOF 1 — THE UNCLAMPED PICK-BASELINE MONOTONICITY MEASUREMENT (per position) ==
+   BASEPK_REG is the positional pick baseline. The law says it must be non-increasing in pick.
+
+(a) SHIPPED: survivors-only sample WITH the v3.4 clamp — what the board runs on today
+   pos           1-3      4-7     8-12    13-20    21-27    28-35    36-48    49-99
+   KPD          76.0     68.4     68.4     68.4     65.5     65.5     65.5     65.5
+   KPF          74.6     74.6     74.6     67.4     67.4     67.4     61.0     61.0
+   MID         101.5     94.7     94.7     82.5     82.2     80.0     76.9     75.5
+   RUCK         97.6     87.8     86.3     80.1     77.0     77.0     77.0     77.0
+   SD          104.2     79.8     79.3     79.3     72.9     72.9     72.9     72.9
+   SF           88.4     79.3     79.3     74.4     66.1     66.1     63.1     63.1
+   monotonicity: 0 violations of 42 (6 positions x 7 band steps) — a LATER pick out-baselining an EARLIER one
+   the clamp MANUFACTURES this pass; it is a patch on the output, not a property of the sample.
+
+(b) SHIPPED SAMPLE, CLAMP LIFTED — the defect with nothing hiding it
+   pos           1-3      4-7     8-12    13-20    21-27    28-35    36-48    49-99
+   KPD          76.0     68.4     71.7     73.2     65.5     73.4     69.9     69.2
+   KPF          74.6     74.8     76.6     67.4     74.3     74.5     61.0     68.4
+   MID         101.5     94.7     96.1     82.5     82.2     80.0     76.9     75.5
+   RUCK         97.6     87.8     86.3     80.1     77.0     94.8     86.9     81.0
+   SD          104.2     79.8     79.3     81.7     72.9     78.3     74.4     75.0
+   SF           88.4     79.3     80.3     74.4     66.1     69.0     63.1     68.1
+   monotonicity: 16 violations of 42 (6 positions x 7 band steps) — a LATER pick out-baselining an EARLIER one
+      KPD   8-12 (71.65, cell n=8) > 4-7 (68.36, cell n=8)   [+3.29]
+      KPD   13-20 (73.17, cell n=18) > 8-12 (71.65, cell n=8)   [+1.52]
+      KPD   28-35 (73.35, cell n=21) > 21-27 (65.47, cell n=12)   [+7.89]
+      KPF   4-7 (74.78, cell n=10) > 1-3 (74.60, cell n=11)   [+0.18]
+      KPF   8-12 (76.56, cell n=19) > 4-7 (74.78, cell n=10)   [+1.79]
+      KPF   21-27 (74.27, cell n=13) > 13-20 (67.35, cell n=19)   [+6.92]
+      KPF   28-35 (74.55, cell n=20) > 21-27 (74.27, cell n=13)   [+0.27]
+      KPF   49-99 (68.40, cell n=109) > 36-48 (61.01, cell n=19)   [+7.39]
+      MID   8-12 (96.08, cell n=30) > 4-7 (94.73, cell n=34)   [+1.35]
+      RUCK  28-35 (94.83, cell n=10) > 21-27 (77.03, cell n=3)   [+17.80]
+      SD    13-20 (81.75, cell n=30) > 8-12 (79.31, cell n=19)   [+2.44]
+      SD    28-35 (78.28, cell n=31) > 21-27 (72.91, cell n=23)   [+5.37]
+      SD    49-99 (74.98, cell n=260) > 36-48 (74.37, cell n=57)   [+0.61]
+      SF    8-12 (80.32, cell n=15) > 4-7 (79.32, cell n=9)   [+1.00]
+      SF    28-35 (69.00, cell n=27) > 21-27 (66.09, cell n=32)   [+2.91]
+      SF    49-99 (68.14, cell n=229) > 36-48 (63.08, cell n=63)   [+5.05]
+
+(c) VARIANT: bust-inclusive, UNCLAMPED — the live table this experiment's board was built from
+   pos           1-3      4-7     8-12    13-20    21-27    28-35    36-48    49-99
+   KPD          75.8     67.9     68.7     71.1     48.6     46.6     48.3     35.6
+   KPF          74.6     70.5     67.7     55.8     51.1     46.2     36.1     26.3
+   MID          99.7     94.4     87.1     72.8     66.8     63.5     46.3     33.7
+   RUCK         95.1     85.1     77.0     72.6     60.8     73.5     62.7     37.9
+   SD          104.2     79.3     74.4     79.5     62.5     56.5     54.4     37.0
+   SF           88.4     78.8     74.0     73.2     56.2     52.6     48.8     32.5
+   monotonicity: 5 violations of 42 (6 positions x 7 band steps) — a LATER pick out-baselining an EARLIER one
+      KPD   8-12 (68.72, cell n=8) > 4-7 (67.86, cell n=8)   [+0.86]
+      KPD   13-20 (71.14, cell n=18) > 8-12 (68.72, cell n=8)   [+2.42]
+      KPD   36-48 (48.28, cell n=27) > 28-35 (46.63, cell n=21)   [+1.65]
+      RUCK  28-35 (73.49, cell n=10) > 21-27 (60.85, cell n=3)   [+12.64]
+      SD    13-20 (79.51, cell n=30) > 8-12 (74.43, cell n=19)   [+5.08]
+
+   RESULT: violations  survivors+clamp 0  |  survivors unclamped 16  |  bust-inclusive unclamped 5
+   *** RED — the bust-inclusive pick baseline is NOT fully monotone on its own. Reported, NOT patched
+       and NOT re-clamped, per the directive. Residual violations and their cell n's are listed above.
+       Total residual excess = +22.65 baseline points across 5 steps (gross), vs +65.78 across 16 for
+       the survivors-only sample unclamped — a 66% reduction in the breach, not its elimination.
+
+== PROOF 1b — THE ALL-POSITION POOL BASELINE (the same law, on the pooled table) ==
+   band           1-3      4-7     8-12    13-20    21-27    28-35    36-48    49-99
+   n               57       76       95      152      133      152      247     1062
+   survivors     94.8     85.3     83.9     77.9     74.8     77.5     71.2     72.8
+   bust-inc      94.0     84.2     76.1     71.8     60.2     56.0     49.3     34.0
+   survivors-only : NON-MONOTONE — rises at 21-27->28-35 (74.8 -> 77.5), 36-48->49-99 (71.2 -> 72.8)
+   bust-inclusive : MONOTONE non-increasing, PASS (0 violations of 7 band steps)
+   (denominators are the band n row above; POOL takes the whole band population, no pooling applied.)
+
+== PROOF 2 — THE ABLETT CELL, re-measured on the current store ==
+   Nathan Ablett — pos KPF, effpk 46, band 36-48, pkbest 57.3 (realized level 57.3)
+   the cell: 19 drafted | 10 survivors (pkbest defined) | 10 established (>=6g) | 9 never established | 5 never played a game
+   survivors-only mean          = 61.0   (denominator: the 10 survivors)
+   bust-inclusive expectation   = 32.1   (denominator: all 19 drafted; never-established at 0.0)
+   ratio bust-inclusive/survivor= 0.526   — the true baseline is roughly HALF the survivor baseline
+   Ablett sits BELOW the survivor mean (57.3 < 61.0) so under the shipped sample his mediocre career
+   DRAGS THE BASELINE DOWN, while his 5 zero-game peers are ABSENT and drag it nowhere. He sits
+   ABOVE the bust-inclusive expectation (57.3 > 32.1), which is the ordering the law requires.
+
+== PROOF 3 — WORSE-CAREER-NEVER-BETTER: three spot pairs from the repaired tables ==
+   Method: LEAVE-ONE-OUT. For a player p in cell (position, band), measure
+       effect(p) = baseline(cell WITH p) - baseline(cell WITHOUT p)
+   under each construction. The law: if career A is STRICTLY WORSE than career B, then
+   effect(A) <= effect(B). A bust who is ABSENT from the sample has effect 0 and therefore
+   'looks better' than any establisher whose real number sits below the survivors' mean.
+
+   PAIR 1 — cell (SD, pick band 49-99): 260 drafted, 116 survivors in the shipped sample
+     BETTER career  Jackson Archer             games 26, seasons 5, best qualifying season avg 46.0
+     WORSE  career  Garrett McDonagh           games 0, seasons 0, best qualifying season avg NONE (never established)
+     SHIPPED (survivors-only) baseline 74.98:
+        effect(better, Archer) = -0.252   |   effect(WORSE, McDonagh) = +0.000  (absent from the sample)
+        law (worse <= better): *** VIOLATED — the WORSE career leaves the baseline +0.252 HIGHER than the better one does
+     VARIANT (bust-inclusive) expectation 37.04:
+        effect(better) = +0.035   |   effect(WORSE) = -0.143
+        law (worse <= better): HOLDS
+
+   PAIR 2 — cell (MID, pick band 49-99): 256 drafted, 97 survivors in the shipped sample
+     BETTER career  Tyler Brown                games 28, seasons 4, best qualifying season avg 57.9
+     WORSE  career  Cooper Murley              games 0, seasons 0, best qualifying season avg NONE (never established)
+     SHIPPED (survivors-only) baseline 75.54:
+        effect(better, Brown) = -0.471   |   effect(WORSE, Murley) = +0.000  (absent from the sample)
+        law (worse <= better): *** VIOLATED — the WORSE career leaves the baseline +0.471 HIGHER than the better one does
+     VARIANT (bust-inclusive) expectation 33.61:
+        effect(better) = -0.013   |   effect(WORSE) = -0.132
+        law (worse <= better): HOLDS
+
+   PAIR 3 — cell (SF, pick band 49-99): 229 drafted, 100 survivors in the shipped sample
+     BETTER career  Taj Woewodin               games 21, seasons 3, best qualifying season avg 28.3
+     WORSE  career  Lachie Rankin              games 0, seasons 0, best qualifying season avg NONE (never established)
+     SHIPPED (survivors-only) baseline 68.14:
+        effect(better, Woewodin) = -0.402   |   effect(WORSE, Rankin) = +0.000  (absent from the sample)
+        law (worse <= better): *** VIOLATED — the WORSE career leaves the baseline +0.402 HIGHER than the better one does
+     VARIANT (bust-inclusive) expectation 32.48:
+        effect(better) = -0.018   |   effect(WORSE) = -0.142
+        law (worse <= better): HOLDS
+
+== DISCLOSURE — the P(establishes) strata actually consumed by BPK (position x band) ==
+   pos                 1-3            4-7           8-12          13-20          21-27          28-35          36-48          49-99
+   KPD         n/a   1/1    0.993   8/8    0.959   8/8    0.979  18/18   0.841  10/12   0.661  13/21   0.707  19/27   0.527  61/115
+   KPF       1.000  11/11   0.943   9/10   0.906  17/19   0.842  15/19   0.761   9/13   0.683  13/20   0.592  10/19   0.411  44/109
+   MID       1.000  30/30   0.997  34/34   0.907  27/30   0.925  47/51   0.858  43/50   0.821  36/43   0.619  38/63   0.473 121/256
+   RUCK        n/a   3/3      n/a   2/2      n/a   3/4    0.906   6/7      n/a   2/3    0.775   8/10   0.756  14/18   0.494  46/93 
+   SD        1.000   4/4    0.994  13/13   0.940  18/19   0.985  30/30   0.894  21/23   0.744  23/31   0.779  45/57   0.514 134/260
+   SF        1.000   8/8    0.993   9/9    0.971  15/15   0.984  27/27   0.869  28/32   0.770  21/27   0.797  51/63   0.497 114/229
+   'n/a' = the cell has fewer than 4 established contributors, so the UNCHANGED thin-cell guard skips it
+   and BASEPK_REG fills it by scaling the nearest same-position band by the POOL gradient (shipped rule).
+   (cells read: pooled P | n established / n in cell. P is shrunk toward the all-position band
+    marginal by n/(n+10); 11 of the 48 strata carry n<10 and one carries n=1.)
+== PROOF 1c — AMENDMENT 2: THE ESTABLISHED-CONDITIONAL BASELINE, and the seam against the unconditional ==
+   BASEPK_EST is what an ESTABLISHED player is anchored to; BASEPK_REG (above) is what an UNRESOLVED
+   player is anchored to. The monotonicity GUARD the amendment names is: est >= unconditional, always.
+(d) VARIANT: established-conditional, UNCLAMPED (E[level | ever establishes])
+   pos           1-3      4-7     8-12    13-20    21-27    28-35    36-48    49-99
+   KPD          75.4     68.4     71.7     72.7     57.8     70.5     68.3     67.5
+   KPF          74.6     74.8     74.7     66.3     67.1     67.6     61.0     64.1
+   MID          99.7     94.7     96.1     78.8     77.8     77.3     74.8     71.1
+   RUCK         98.7     89.5     86.3     80.1     74.3     94.8     82.9     76.8
+   SD          104.2     79.8     79.2     80.7     69.9     75.9     69.9     71.9
+   SF           88.4     79.3     76.3     74.4     64.7     68.3     61.2     65.2
+   monotonicity: 14 violations of 42 (6 positions x 7 band steps) — a LATER pick out-baselining an EARLIER one
+      KPD   8-12 (71.65, cell n=8) > 4-7 (68.36, cell n=8)   [+3.29]
+      KPD   13-20 (72.68, cell n=18) > 8-12 (71.65, cell n=8)   [+1.02]
+      KPD   28-35 (70.52, cell n=21) > 21-27 (57.82, cell n=12)   [+12.70]
+      KPF   4-7 (74.78, cell n=10) > 1-3 (74.60, cell n=11)   [+0.18]
+      KPF   21-27 (67.14, cell n=13) > 13-20 (66.34, cell n=19)   [+0.80]
+      KPF   28-35 (67.63, cell n=20) > 21-27 (67.14, cell n=13)   [+0.48]
+      KPF   49-99 (64.11, cell n=109) > 36-48 (61.01, cell n=19)   [+3.10]
+      MID   8-12 (96.08, cell n=30) > 4-7 (94.73, cell n=34)   [+1.35]
+      RUCK  28-35 (94.83, cell n=10) > 21-27 (74.34, cell n=3)   [+20.49]
+      SD    13-20 (80.70, cell n=30) > 8-12 (79.17, cell n=19)   [+1.53]
+      SD    28-35 (75.90, cell n=31) > 21-27 (69.89, cell n=23)   [+6.02]
+      SD    49-99 (71.87, cell n=260) > 36-48 (69.87, cell n=57)   [+2.00]
+      SF    28-35 (68.26, cell n=27) > 21-27 (64.70, cell n=32)   [+3.55]
+      SF    49-99 (65.25, cell n=229) > 36-48 (61.24, cell n=63)   [+4.01]
+
+   GUARD (established anchor >= unconditional expectation, same cell): 1 violations of 48 cells
+   engine's own guard list at import (rl_model._A2_GUARD): 1
+      *** KPD   1-3  est 75.35 < uncond 75.80
+
+   THE SEAM AT THE PICK BASELINE, cell by cell (est / uncond, i.e. the 1/P jump a player takes
+   at the instant he plays his sixth game in a season):
+   pos           1-3      4-7     8-12    13-20    21-27    28-35    36-48    49-99
+   KPD        0.994x   1.007x   1.043x   1.022x   1.189x   1.512x   1.414x   1.897x
+   KPF        1.000x   1.060x   1.104x   1.188x   1.315x   1.463x   1.689x   2.434x
+   MID        1.000x   1.003x   1.103x   1.081x   1.165x   1.218x   1.616x   2.113x
+   RUCK       1.038x   1.052x   1.121x   1.103x   1.222x   1.290x   1.323x   2.024x
+   SD         1.000x   1.006x   1.064x   1.015x   1.119x   1.344x   1.284x   1.944x
+   SF         1.000x   1.007x   1.030x   1.016x   1.151x   1.298x   1.255x   2.010x
+   seam size: min 0.994x  median 1.151x  mean 1.278x  max 2.434x  over 48 cells
+

@@ -1,0 +1,34 @@
+#336 — THE HUMP ROW, FOUR BASES. denominator n=1197 entrants (ND picks 1-64, classes 2004-2022)
+  the BASELINE column is re-measured this run from the control matrix 5fb617d0 and reproduces the
+  figure quoted in the directive to three decimals — the second control of this act.
+
+  yr |   n_incl  n_zero |  BASELINE   AMEND-1   AMEND-2   AMEND-3 |  mean_yrN(A3)  mean_yr0(A3)
+   0 |     1197       0 |    1.000     1.000     1.000     1.000 |        839.2         839.2
+   1 |     1197       0 |    1.123     1.016     1.005     1.021 |        856.9         839.2
+   2 |     1197       0 |    1.373     1.171     1.264     1.279 |       1073.6         839.2
+   3 |     1197     141 |    1.506     1.294     1.437     1.448 |       1215.0         839.2
+   4 |     1197     258 |    1.572     1.410     1.533     1.535 |       1288.3         839.2
+   5 |     1139     334 |    1.566     1.462     1.533     1.534 |       1281.2         835.1
+   6 |     1075     391 |    1.519     1.452     1.496     1.495 |       1247.5         834.2
+   7 |     1014     430 |    1.318     1.266     1.299     1.299 |       1084.7         835.2
+   8 |      950     452 |    1.084     1.047     1.069     1.069 |        888.6         831.3
+   9 |      886     457 |    0.840     0.813     0.828     0.828 |        687.7         830.4
+
+  HEADLINES (denominator n=1197 for years 0-4; n falls to 1139/1075/1014/950/886 for years 5-9)
+    quantity                          BASELINE   AMEND-1   AMEND-2   AMEND-3
+    year-4 ratio                          1.572     1.410     1.533     1.535
+    peak ratio (year-0-to-peak)           1.572     1.462     1.533     1.535
+    peak occurs at year                       4         5         4         4
+    year-1 ratio                          1.123     1.016     1.005     1.021
+    year-1-to-peak (peak/yr1)             1.400     1.439     1.525     1.503
+    year-1-to-peak (yr5/yr1, owner's)     1.394     1.439     1.525     1.502
+
+  THE TWO STEERING NUMBERS, stated plainly:
+    (b1) THE FULLY HONEST HUMP.  year-0-to-peak 1.535 against the shipped 1.572 — the 1.57 does NOT
+         fall under honest pricing. It closes by 6.5% of the way to 1.0, and no further.
+    (b2) IS THE RELOCATION GONE?  year-1-to-peak 1.503 against the shipped 1.400. NO — it is still
+         WIDER than baseline, though narrower than amendment 2's 1.525. The gap moved back a little,
+         it did not close.
+
+  picks 1-20: yr1 1.150 -> 1.052 | peak 1.594 -> 1.562 | yr1-to-peak 1.386 -> 1.485
+  picks 21-64: yr1 1.083 -> 0.975 | peak 1.555 -> 1.530 | yr1-to-peak 1.436 -> 1.569
