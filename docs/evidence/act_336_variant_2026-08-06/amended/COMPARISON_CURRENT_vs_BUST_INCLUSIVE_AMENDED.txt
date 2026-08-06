@@ -1,0 +1,223 @@
+================================================================================================================
+  #336 — THE BUST-INCLUSIVE REFERENCE LAYER, AMENDED.   CURRENT  vs  AMENDED VARIANT
+  draft owner sheet · build seat · 2026-08-06 · issue #336 ADDENDUM 1 ('Amend and re-run.')
+================================================================================================================
+
+  reference layer bust-inclusive; year-zero surface held at the shipped survivors-basis fit;
+  the joint re-derivation is #334 stage B, after the ruling.
+
+  THIS SHEET IS A MEASUREMENT. NO PRICE SHIPS FROM IT. Nothing merged, no pin moved on main,
+  no artifact written. The variant code lives on branch variant/336-bust-inclusive @ a7bff5a.
+
+----------------------------------------------------------------------------------------------------------------
+  THE AMENDMENT, STATED FIRST (what changed since the last sheet, and why)
+----------------------------------------------------------------------------------------------------------------
+
+  YOUR CATCH WAS RIGHT, and this run is the answer to it. The first cut applied the probability
+  ESTABLISHED-BY-TENURE at the level anchor. At year one that number is small for everybody
+  by construction — most first-year listees have not yet played six games — so it charged a
+  player for not having done yet what he has ~90% odds of doing eventually, on top of a forward
+  band that already prices the chance he never does. Robey was charged twice for the same risk.
+
+  AMENDED: the probability at every level anchor is now CAREER-LEVEL P(EVER establishes | position
+  x pick band). Tenure enters only as WINDOW MEMBERSHIP — who is counted in the denominator — never
+  as a discount on the anchor. The level a player is compared to at a given tenure is still built
+  from establishers' seasons AT THAT TENURE, so development shape is untouched.
+
+  Everything else stands: the control build byte-reproduces the live board; the frozen year-zero
+  surface is HELD; the store is unmoved; nothing merges.
+
+----------------------------------------------------------------------------------------------------------------
+  1. THE HEADLINE RATIOS  (both appreciation measures, side by side, as the addendum requires)
+----------------------------------------------------------------------------------------------------------------
+
+     quantity                                    CURRENT   first cut    AMENDED     verdict
+     --------------------------------------------------------------------------------------------------
+     year-0-to-peak appreciation                  1.572       1.463      1.462     CLOSED  -0.110
+     year-1-to-peak appreciation                  1.400       1.988      1.439     *** still widened +0.039
+       (your quoted figures: 1.394 baseline, 1.988 first cut — same numbers, yr5/yr1 convention:
+        1.394 / 1.988 / 1.439)
+     year-4 ratio                                 1.572       1.403      1.410
+     year-1 ratio                                 1.123       0.736      1.016
+     top-end ratio (top active / 3000)            4.041x      3.920x     3.921x
+     board total, against the fixed numeraire     1.0000      0.8751     0.9153
+     denominator, every ratio row: n=1197 (ND picks 1-64, classes 2004-2022)
+
+     READ IT STRAIGHT. The relocation you named is 90% undone: year-1-to-peak went 1.394 -> 1.988
+     under the first cut and is now 1.439. It is NOT back to 1.394. The gap measured from draft day
+     is genuinely smaller (1.572 -> 1.462); the gap measured from the end of year one is slightly
+     larger. This is a PARTIAL result and the sheet says so.
+
+     WHERE THE RESIDUAL LIVES — it is entirely late picks, and it is not a double charge:
+       picks 1-20 : year-1-to-peak 1.386 -> 1.352  IMPROVED   (n=377)
+       picks 21-64: year-1-to-peak 1.436 -> 1.705  WIDENED    (n=820)
+     For picks 21-64 the CAREER-level establishment rate really is 0.86/0.73/0.71/0.48 by band —
+     about half of pick 49+ never plays six games in a season. That is a measured fact about the
+     population, charged once. Whether the engine should price a late-pick first-year player that
+     low is your ruling to make; it is no longer an artifact of the arithmetic.
+
+----------------------------------------------------------------------------------------------------------------
+  2. YOUR NAMED CASE, AND THE FOUR OTHER TOP CUTS  (the below-draft-day test)
+----------------------------------------------------------------------------------------------------------------
+
+     draft-day value = the engine's year-zero start value off the FROZEN surface — identical in all
+     three builds, so it is a fixed yardstick, not a moving one.
+
+     player            pos pick  T  1st season | draft-day |  CURRENT  1st cut  AMENDED | x draft-day
+     --------------------------------------------------------------------------------------------------------
+     sullivan-robey    MID 9    T1 14g @ 61.7 |      2080 |     3070      945     2807 |  1.35x  (1.47x scale-adj)
+     dyson-sharp       MID 13   T1 12g @ 65.9 |      1828 |     2794      941     2796 |  1.53x  (1.67x scale-adj)
+     josh-lindsay      SD  19   T1 12g @ 74.3 |       864 |     2452      745     2192 |  2.54x  (2.77x scale-adj)
+     jacob-farrow      SD  10   T1 17g @ 71.7 |      1062 |     2651      980     2511 |  2.36x  (2.58x scale-adj)
+     harry-dean        KPD 3    T1 16g @ 59.6 |      2331 |     2660     1002     2329 |  1.00x  (1.09x scale-adj)
+
+     ROBEY: 3070 -> 945 (0.45x his draft-day value) under the first cut. AMENDED: 2807, which is
+     1.35x his draft-day value — 1.47x once the uniform board rescale is removed. THE RED IS CLEARED.
+     Named cause of the first cut's red, measured not asserted: his par anchor was multiplied by
+     P(establishes at tenure 1 | MID, picks 8-12) = 0.588 where the honest career rate is 0.886 — a
+     0.66x EXTRA discount, on a player whose own class establishes 89% of the time.
+
+     ONE RESIDUAL RED, REPORTED LOUDLY: HARRY DEAN (KPD, pick 3, 16 games @ 59.6 in year one) prices
+     at 2329 against a draft-day value of 2331 — below, by 2 points, 0.999x. NAMED CAUSE: it is the
+     MIXED BASIS, not his anchor. His anchor moved only -4 log points. The variant board carries a
+     uniform 8.47% rescale (bust-inclusive references reprice everything against a pick-1 numeraire
+     pinned at 3000) while his draft-day value sits on the HELD survivors-basis surface and receives
+     no such rescale. His current margin over draft-day is only +14%, so an 8.5% rescale erases it.
+     Remove the uniform rescale and he prices at 1.09x. This is exactly the conflation the held-surface
+     decision creates by design, and it is why the caption is on every sheet.
+
+----------------------------------------------------------------------------------------------------------------
+  3. THE DOUBLE-CHARGE PROOF  (n=10 young thin-record players; the required check)
+----------------------------------------------------------------------------------------------------------------
+
+     The honest charge at a level anchor is the career rate P(ever establishes). Anything applied
+     beyond it is a second charge on risk the forward band already spans in its low quantiles.
+
+       excess = (anchor discount applied) / (career establishment rate).  1.00 = charged once.
+         FIRST CUT  mean excess 0.548   -> a further ~45% discount on top of the honest rate
+         AMENDED    mean excess 1.023   -> charged once (1.000 is not attainable exactly: the par
+                                           surface is a smoothed regression, not a per-player factor)
+
+     Value movement decomposed, mean over the ten (log points x100, exactly additive):
+       leg                first cut   AMENDED
+       anchor level         -67.7       -3.2
+       forward-band shape   +43.2       +1.9
+       price map            -74.3       -7.6
+       TOTAL                -98.8       -8.9
+     The first cut's cut was the ANCHOR leg. The amendment removes it and leaves the band and the
+     price map to do their own work.
+
+     Below-draft-day count, denominator 10:  first cut 10/10  ->  AMENDED 3/10 raw, 1/10 once the
+     uniform rescale is removed (the one is xavier-lindsay, year TWO, 5 games in 2026 — not the
+     addendum's year-1 case).
+
+----------------------------------------------------------------------------------------------------------------
+  4. THE BOARD  (804 active rows — the denominator for every count in this block)
+----------------------------------------------------------------------------------------------------------------
+
+     movers                         576 of 804   (+0 added, -0 removed)
+     signed sum of deltas           -64,330 SCAR      (first cut -94,888)
+     gross sum of deltas             65,326 SCAR over the 576 movers
+     age split (signed)             <=22  -37,958 (193 moved of 294) | 23-26 -19,763 (189 of 245)
+                                    >=27   -6,609 (194 of 265)
+     board total ratio              0.9153  (a uniform -8.47% rescale; first cut 0.8751 / -12.49%)
+     pick-1 numeraire               3000 -> 3000 (the standing law pins it)
+
+     SCALE vs RE-RANKING, SEPARATED (BPK sits on the numeraire chain, so this matters):
+       rows re-weighted at all      804 of 804      -> this IS re-ranking, not only rescaling
+       rows moved >5% of own share   698 of 804
+       mean |relative move|         12.73% of a player's own share (first cut 16.44%)
+       mean relative move by age    <=22 -8.78% (n=294) | 23-26 -5.06% (n=245) | >=27 +6.06% (n=265)
+
+     TOP 5 CUTS (absolute)                         TOP 5 LIFTS (absolute)
+       Cooper Trembath   2053 -> 1211   -842         Finn O'Sullivan  3642 -> 3823   +181
+       Patrick Retschko  1353 ->  542   -811         Sid Draper       1144 -> 1247   +103
+       Ned Moyle         2053 -> 1252   -801         Sam Lalor        4638 -> 4713    +75
+       Archie Roberts    4941 -> 4213   -728         Cooper Duff-Tytler 1514 -> 1574  +60
+       Nick Madden       2142 -> 1481   -661         Daniel Annable   1364 -> 1400    +36
+     NOTE: the first cut's top five cuts were all 19-year-old first-year players (Robey, Sharp,
+     Lindsay, Farrow, Dean). Under the amendment NONE of them appears in the top five. That is the
+     amendment working.
+
+     TOP 5 RELATIVE CUTS (share lost after removing the rescale)
+       Josh Lai 513->131 -72.1% (21) | Zac Taylor 254->70 -69.9% (23) | Tylar Young 221->63 -68.9% (28)
+       Noah Long 163->48 -67.8% (22) | Liam McMahon 149->44 -67.7% (24)
+     TOP 5 RELATIVE LIFTS
+       Brandon Zerk-Thatcher 48->58 +32.0% (28) | Joel Amartey 32->35 +19.5% (27)
+       Sid Draper 1144->1247 +19.1% (20) | Archie Ludowyke 215->226 +14.8% (19)
+       Finn O'Sullivan 3642->3823 +14.7% (20)
+
+----------------------------------------------------------------------------------------------------------------
+  5. MONOTONICITY — your Ablett law
+----------------------------------------------------------------------------------------------------------------
+
+     'A strictly worse career can never produce a better-looking baseline.'
+
+     THE ABLETT CELL, re-measured under the amended form (KPF, pick 46, band 36-48):
+       19 drafted | 10 survivors | 10 established | 9 never established | 5 never played a game
+       survivors-only mean         61.0   (denominator: the 10 survivors)
+       bust-inclusive expectation  32.1   (denominator: all 19; never-established at 0.0)
+       Ablett's own realized level 57.3 — BELOW the survivor mean, ABOVE the bust-inclusive
+       expectation. That is the ordering your law requires. UNCHANGED by the amendment, because
+       this table (BPK/POOL) was already career-level; the amendment moved only the par surface.
+
+     THREE LEAVE-ONE-OUT WORSE-CAREER PAIRS: all three VIOLATE the law under the shipped
+     survivors-only sample (the zero-game player is absent and so 'looks better' than a mediocre
+     one) and all three HOLD under the bust-inclusive tables. Pairs: Archer/McDonagh (SD 49-99),
+     Brown/Murley (MID 49-99), Woewodin/Rankin (SF 49-99). Full arithmetic in monotonicity.txt.
+
+     UNCLAMPED PICK MONOTONICITY (the v3.4 clamp removed, as the directive requires):
+       survivors + clamp        0 violations of 42   <- the clamp manufactures this pass
+       survivors, unclamped    16 violations of 42   <- the defect with nothing hiding it
+       bust-inclusive, unclamped 5 violations of 42  <- *** RED, reported and NOT patched
+     A 69% reduction in the breach, not its elimination. The five residuals are thin cells
+     (n=3 to n=30) and are listed with their n's in monotonicity.txt. Unchanged from the first cut.
+
+     POOL BAND MONOTONICITY (all-position, the pooled table):
+       survivors  94.8 85.3 83.9 77.9 74.8 77.5 71.2 72.8  NON-MONOTONE (rises twice)
+       bust-inc   94.0 84.2 76.1 71.8 60.2 56.0 49.3 34.0  MONOTONE, PASS (0 of 7 band steps)
+       band n's      57   76   95  152  133  152  247 1062
+
+----------------------------------------------------------------------------------------------------------------
+  6. P(EVER ESTABLISHES) — every rate names its denominator
+----------------------------------------------------------------------------------------------------------------
+
+     definition : a season of >=6 games inside the player's #338 listed tenure window
+     denominator: the tenure-windowed (position x band) cell; never-established counted at zero
+     pooling    : DECLARED — each cell shrunk toward the all-position band marginal by n/(n+10).
+                  Nothing is dropped for thinness and no thin rate is trusted raw.
+
+     PAR-SURFACE LEVER (the one the amendment moved), par cohort n=1758:
+       48 of 48 strata filled | n from 1 to 246, median 19 | n<20: 26, n<10: 13, n<5: 6
+       all-position row  1.000 0.984 0.912 0.938 0.857 0.727 0.712 0.484
+       (est/n)           48/48 63/64 73/80 120/128 96/112 93/128 148/208 479/990
+
+     BPK/POOL LEVER (already career-level; unchanged), hist n=1974:
+       all-position row  1.000 0.987 0.926 0.941 0.850 0.750 0.717 0.490
+       (est/n)           57/57 75/76 88/95 143/152 113/133 114/152 177/247 520/1062
+       48 strata | n from 1 to 260 | n<20: 24, n<10: 11
+
+     THE SUPERSEDED FACTOR, for the record — what the first cut applied at year one, by band:
+       0.771 0.703 0.600 0.375 0.420 0.203 0.221 0.155
+     against the career rates above. That ratio (1.30x to 3.58x) IS the amendment.
+
+     Cross-check against the #338 per_entrant lineage: 14 of 48 strata differ, max |dP| 0.0435.
+     Population, not method — the lineage applies the Q-B force-majeure slide to the pick and the
+     engine does not. The LIVE derivation is the one the variant consumes.
+
+----------------------------------------------------------------------------------------------------------------
+  7. WHAT IS RED, IN ONE PLACE
+----------------------------------------------------------------------------------------------------------------
+
+     1. year-1-to-peak is 1.439 against a baseline of 1.394. The relocation is 90% undone, not
+        100%. It lives entirely in picks 21-64 and traces to a real career-level establishment
+        rate, not to a double charge. Reported, not patched.
+     2. 5 of 42 unclamped pick-monotonicity violations survive in the bust-inclusive baseline.
+        Reported, not patched, not re-clamped — per the directive.
+     3. Harry Dean prices 2 points below his draft-day value (0.999x). Cause named above: the
+        mixed basis created by the mandated held surface, not his anchor. 1.09x once removed.
+     4. The rl_passmark.json / params.json provenance hole remains OUT OF SCOPE and unswept.
+
+================================================================================================================
+  Nothing here ships. The ruling is yours, on measured numbers.
+================================================================================================================

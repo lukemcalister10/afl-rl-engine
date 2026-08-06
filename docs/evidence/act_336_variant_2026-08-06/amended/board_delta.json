@@ -1,0 +1,9441 @@
+{
+"movers": [
+{
+"key": "ollie-dempsey",
+"name": "Ollie Dempsey",
+"a": 2432.0,
+"b": 1985.0,
+"d": -447.0,
+"age": 23
+},
+{
+"key": "james-borlase",
+"name": "James Borlase",
+"a": 438.0,
+"b": 268.0,
+"d": -170.0,
+"age": 24
+},
+{
+"key": "harrison-petty",
+"name": "Harrison Petty",
+"a": 181.0,
+"b": 176.0,
+"d": -5.0,
+"age": 27
+},
+{
+"key": "harvey-harrison",
+"name": "Harvey Harrison",
+"a": 48.0,
+"b": 34.0,
+"d": -14.0,
+"age": 23
+},
+{
+"key": "lachlan-sholl",
+"name": "Lachlan Sholl",
+"a": 153.0,
+"b": 136.0,
+"d": -17.0,
+"age": 26
+},
+{
+"key": "marcus-herbert",
+"name": "Marcus Herbert",
+"a": 1223.0,
+"b": 908.0,
+"d": -315.0,
+"age": 24
+},
+{
+"key": "zeke-uwland",
+"name": "Zeke Uwland",
+"a": 2687.0,
+"b": 2571.0,
+"d": -116.0,
+"age": 19
+},
+{
+"key": "oliver-francou",
+"name": "Oliver Francou",
+"a": 425.0,
+"b": 246.0,
+"d": -179.0,
+"age": 20
+},
+{
+"key": "kane-farrell",
+"name": "Kane Farrell",
+"a": 1324.0,
+"b": 1286.0,
+"d": -38.0,
+"age": 27
+},
+{
+"key": "luke-cleary",
+"name": "Luke Cleary",
+"a": 39.0,
+"b": 24.0,
+"d": -15.0,
+"age": 24
+},
+{
+"key": "max-hall",
+"name": "Max Hall",
+"a": 2738.0,
+"b": 2232.0,
+"d": -506.0,
+"age": 24
+},
+{
+"key": "james-sicily",
+"name": "James Sicily",
+"a": 1568.0,
+"b": 1522.0,
+"d": -46.0,
+"age": 31
+},
+{
+"key": "harry-rowston",
+"name": "Harry Rowston",
+"a": 727.0,
+"b": 558.0,
+"d": -169.0,
+"age": 22
+},
+{
+"key": "jagga-smith",
+"name": "Jagga Smith",
+"a": 5086.0,
+"b": 4952.0,
+"d": -134.0,
+"age": 20
+},
+{
+"key": "taylor-goad",
+"name": "Taylor Goad",
+"a": 1044.0,
+"b": 819.0,
+"d": -225.0,
+"age": 21
+},
+{
+"key": "hayden-mclean",
+"name": "Hayden McLean",
+"a": 245.0,
+"b": 236.0,
+"d": -9.0,
+"age": 27
+},
+{
+"key": "harvey-johnston",
+"name": "Harvey Johnston",
+"a": 296.0,
+"b": 148.0,
+"d": -148.0,
+"age": 21
+},
+{
+"key": "tyler-sonsie",
+"name": "Tyler Sonsie",
+"a": 1262.0,
+"b": 1181.0,
+"d": -81.0,
+"age": 23
+},
+{
+"key": "caleb-lewis",
+"name": "Caleb Lewis",
+"a": 146.0,
+"b": 128.0,
+"d": -18.0,
+"age": 23
+},
+{
+"key": "judd-mcvee",
+"name": "Judd McVee",
+"a": 309.0,
+"b": 248.0,
+"d": -61.0,
+"age": 23
+},
+{
+"key": "brayden-fiorini",
+"name": "Brayden Fiorini",
+"a": 177.0,
+"b": 171.0,
+"d": -6.0,
+"age": 29
+},
+{
+"key": "harry-dean",
+"name": "Harry Dean",
+"a": 2660.0,
+"b": 2329.0,
+"d": -331.0,
+"age": 19
+},
+{
+"key": "tom-sparrow",
+"name": "Tom Sparrow",
+"a": 1652.0,
+"b": 1603.0,
+"d": -49.0,
+"age": 26
+},
+{
+"key": "stephen-coniglio",
+"name": "Stephen Coniglio",
+"a": 220.0,
+"b": 214.0,
+"d": -6.0,
+"age": 33
+},
+{
+"key": "zach-reid",
+"name": "Zach Reid",
+"a": 1212.0,
+"b": 1103.0,
+"d": -109.0,
+"age": 24
+},
+{
+"key": "jarrod-berry",
+"name": "Jarrod Berry",
+"a": 196.0,
+"b": 191.0,
+"d": -5.0,
+"age": 28
+},
+{
+"key": "malcolm-rosas",
+"name": "Malcolm Rosas",
+"a": 26.0,
+"b": 11.0,
+"d": -15.0,
+"age": 25
+},
+{
+"key": "sam-clohesy",
+"name": "Sam Clohesy",
+"a": 207.0,
+"b": 83.0,
+"d": -124.0,
+"age": 24
+},
+{
+"key": "joel-amartey",
+"name": "Joel Amartey",
+"a": 32.0,
+"b": 35.0,
+"d": 3.0,
+"age": 27
+},
+{
+"key": "jayden-nguyen",
+"name": "Jayden Nguyen",
+"a": 438.0,
+"b": 306.0,
+"d": -132.0,
+"age": 20
+},
+{
+"key": "zachary-merrett",
+"name": "Zachary Merrett",
+"a": 2713.0,
+"b": 2630.0,
+"d": -83.0,
+"age": 31
+},
+{
+"key": "oscar-steene",
+"name": "Oscar Steene",
+"a": 492.0,
+"b": 362.0,
+"d": -130.0,
+"age": 23
+},
+{
+"key": "tim-taranto",
+"name": "Tim Taranto",
+"a": 2596.0,
+"b": 2516.0,
+"d": -80.0,
+"age": 28
+},
+{
+"key": "willem-duursma",
+"name": "Willem Duursma",
+"a": 4338.0,
+"b": 4342.0,
+"d": 4.0,
+"age": 19
+},
+{
+"key": "george-hewett",
+"name": "George Hewett",
+"a": 2002.0,
+"b": 1941.0,
+"d": -61.0,
+"age": 31
+},
+{
+"key": "sam-powell-pepper",
+"name": "Sam Powell-Pepper",
+"a": 174.0,
+"b": 169.0,
+"d": -5.0,
+"age": 28
+},
+{
+"key": "billy-dowling",
+"name": "Billy Dowling",
+"a": 219.0,
+"b": 134.0,
+"d": -85.0,
+"age": 22
+},
+{
+"key": "jake-riccardi",
+"name": "Jake Riccardi",
+"a": 278.0,
+"b": 271.0,
+"d": -7.0,
+"age": 27
+},
+{
+"key": "darcy-byrne-jones",
+"name": "Darcy Byrne-Jones",
+"a": 703.0,
+"b": 682.0,
+"d": -21.0,
+"age": 31
+},
+{
+"key": "tom-papley",
+"name": "Tom Papley",
+"a": 313.0,
+"b": 304.0,
+"d": -9.0,
+"age": 30
+},
+{
+"key": "elijah-tsatas",
+"name": "Elijah Tsatas",
+"a": 1272.0,
+"b": 1274.0,
+"d": 2.0,
+"age": 22
+},
+{
+"key": "jordan-de-goey",
+"name": "Jordan De Goey",
+"a": 1447.0,
+"b": 1406.0,
+"d": -41.0,
+"age": 30
+},
+{
+"key": "caleb-windsor",
+"name": "Caleb Windsor",
+"a": 1647.0,
+"b": 1468.0,
+"d": -179.0,
+"age": 21
+},
+{
+"key": "oscar-adams",
+"name": "Oscar Adams",
+"a": 67.0,
+"b": 44.0,
+"d": -23.0,
+"age": 23
+},
+{
+"key": "jordan-clark",
+"name": "Jordan Clark",
+"a": 3591.0,
+"b": 3484.0,
+"d": -107.0,
+"age": 26
+},
+{
+"key": "elliot-himmelberg",
+"name": "Elliott Himmelberg",
+"a": 44.0,
+"b": 28.0,
+"d": -16.0,
+"age": 28
+},
+{
+"key": "keidean-coleman",
+"name": "Keidean Coleman",
+"a": 764.0,
+"b": 725.0,
+"d": -39.0,
+"age": 26
+},
+{
+"key": "ryan-byrnes",
+"name": "Ryan Byrnes",
+"a": 64.0,
+"b": 51.0,
+"d": -13.0,
+"age": 25
+},
+{
+"key": "oscar-allen",
+"name": "Oscar Allen",
+"a": 115.0,
+"b": 110.0,
+"d": -5.0,
+"age": 27
+},
+{
+"key": "leek-aleer",
+"name": "Leek Aleer",
+"a": 208.0,
+"b": 171.0,
+"d": -37.0,
+"age": 25
+},
+{
+"key": "charlie-edwards",
+"name": "Charlie Edwards",
+"a": 725.0,
+"b": 579.0,
+"d": -146.0,
+"age": 21
+},
+{
+"key": "mitchito-owens",
+"name": "Mitchito Owens",
+"a": 2071.0,
+"b": 1913.0,
+"d": -158.0,
+"age": 23
+},
+{
+"key": "tyson-stengle",
+"name": "Tyson Stengle",
+"a": 158.0,
+"b": 139.0,
+"d": -19.0,
+"age": 28
+},
+{
+"key": "hayden-young",
+"name": "Hayden Young",
+"a": 1815.0,
+"b": 1756.0,
+"d": -59.0,
+"age": 25
+},
+{
+"key": "will-mclachlan",
+"name": "Will McLachlan",
+"a": 125.0,
+"b": 100.0,
+"d": -25.0,
+"age": 21
+},
+{
+"key": "ben-keays",
+"name": "Ben Keays",
+"a": 263.0,
+"b": 256.0,
+"d": -7.0,
+"age": 29
+},
+{
+"key": "lachlan-bramble",
+"name": "Lachlan Bramble",
+"a": 73.0,
+"b": 70.0,
+"d": -3.0,
+"age": 28
+},
+{
+"key": "mitchell-hinge",
+"name": "Mitchell Hinge",
+"a": 349.0,
+"b": 273.0,
+"d": -76.0,
+"age": 28
+},
+{
+"key": "shai-bolton",
+"name": "Shai Bolton",
+"a": 2211.0,
+"b": 2149.0,
+"d": -62.0,
+"age": 28
+},
+{
+"key": "will-day",
+"name": "Will Day",
+"a": 2777.0,
+"b": 2686.0,
+"d": -91.0,
+"age": 25
+},
+{
+"key": "xavier-duursma",
+"name": "Xavier Duursma",
+"a": 145.0,
+"b": 142.0,
+"d": -3.0,
+"age": 26
+},
+{
+"key": "jack-silvagni",
+"name": "Jack Silvagni",
+"a": 792.0,
+"b": 771.0,
+"d": -21.0,
+"age": 29
+},
+{
+"key": "jesse-motlop",
+"name": "Jesse Motlop",
+"a": 82.0,
+"b": 69.0,
+"d": -13.0,
+"age": 23
+},
+{
+"key": "sam-cumming",
+"name": "Sam Cumming",
+"a": 2315.0,
+"b": 2302.0,
+"d": -13.0,
+"age": 19
+},
+{
+"key": "joel-fitzgerald",
+"name": "Joel Fitzgerald",
+"a": 67.0,
+"b": 40.0,
+"d": -27.0,
+"age": 23
+},
+{
+"key": "thomas-stewart",
+"name": "Thomas Stewart",
+"a": 1085.0,
+"b": 1053.0,
+"d": -32.0,
+"age": 33
+},
+{
+"key": "isaac-kako",
+"name": "Isaac Kako",
+"a": 1337.0,
+"b": 1097.0,
+"d": -240.0,
+"age": 20
+},
+{
+"key": "campbell-lake",
+"name": "Campbell Lake",
+"a": 153.0,
+"b": 51.0,
+"d": -102.0,
+"age": 22
+},
+{
+"key": "rory-laird",
+"name": "Rory Laird",
+"a": 764.0,
+"b": 742.0,
+"d": -22.0,
+"age": 33
+},
+{
+"key": "jay-polkinghorne",
+"name": "Jay Polkinghorne",
+"a": 431.0,
+"b": 199.0,
+"d": -232.0,
+"age": 20
+},
+{
+"key": "james-trezise",
+"name": "James Trezise",
+"a": 119.0,
+"b": 80.0,
+"d": -39.0,
+"age": 24
+},
+{
+"key": "angus-clarke",
+"name": "Angus Clarke",
+"a": 746.0,
+"b": 366.0,
+"d": -380.0,
+"age": 20
+},
+{
+"key": "harvey-langford",
+"name": "Harvey Langford",
+"a": 2409.0,
+"b": 2404.0,
+"d": -5.0,
+"age": 20
+},
+{
+"key": "angus-hastie",
+"name": "Angus Hastie",
+"a": 191.0,
+"b": 133.0,
+"d": -58.0,
+"age": 21
+},
+{
+"key": "riley-bice",
+"name": "Riley Bice",
+"a": 237.0,
+"b": 147.0,
+"d": -90.0,
+"age": 26
+},
+{
+"key": "mason-wood",
+"name": "Mason Wood",
+"a": 387.0,
+"b": 376.0,
+"d": -11.0,
+"age": 33
+},
+{
+"key": "ty-gallop",
+"name": "Ty Gallop",
+"a": 1396.0,
+"b": 821.0,
+"d": -575.0,
+"age": 20
+},
+{
+"key": "nic-newman",
+"name": "Nic Newman",
+"a": 638.0,
+"b": 620.0,
+"d": -18.0,
+"age": 33
+},
+{
+"key": "elijah-hewett",
+"name": "Elijah Hewett",
+"a": 753.0,
+"b": 672.0,
+"d": -81.0,
+"age": 22
+},
+{
+"key": "oliver-hannaford",
+"name": "Oliver Hannaford",
+"a": 378.0,
+"b": 324.0,
+"d": -54.0,
+"age": 20
+},
+{
+"key": "hudson-o-keeffe",
+"name": "Hudson O'Keeffe",
+"a": 229.0,
+"b": 147.0,
+"d": -82.0,
+"age": 22
+},
+{
+"key": "jedd-busslinger",
+"name": "Jedd Busslinger",
+"a": 888.0,
+"b": 840.0,
+"d": -48.0,
+"age": 22
+},
+{
+"key": "will-lorenz",
+"name": "Will Lorenz",
+"a": 438.0,
+"b": 162.0,
+"d": -276.0,
+"age": 21
+},
+{
+"key": "jaspa-fletcher",
+"name": "Jaspa Fletcher",
+"a": 2652.0,
+"b": 2575.0,
+"d": -77.0,
+"age": 22
+},
+{
+"key": "luker-kentfield",
+"name": "Luker Kentfield",
+"a": 330.0,
+"b": 231.0,
+"d": -99.0,
+"age": 21
+},
+{
+"key": "henry-hustwaite",
+"name": "Henry Hustwaite",
+"a": 246.0,
+"b": 204.0,
+"d": -42.0,
+"age": 22
+},
+{
+"key": "mattaes-phillipou",
+"name": "Mattaes Phillipou",
+"a": 2298.0,
+"b": 1956.0,
+"d": -342.0,
+"age": 22
+},
+{
+"key": "talor-byrne",
+"name": "Talor Byrne",
+"a": 923.0,
+"b": 383.0,
+"d": -540.0,
+"age": 19
+},
+{
+"key": "nick-bryan",
+"name": "Nick Bryan",
+"a": 756.0,
+"b": 714.0,
+"d": -42.0,
+"age": 25
+},
+{
+"key": "lachlan-fogarty",
+"name": "Lachlan Fogarty",
+"a": 36.0,
+"b": 35.0,
+"d": -1.0,
+"age": 27
+},
+{
+"key": "luke-davies-uniacke",
+"name": "Luke Davies-Uniacke",
+"a": 3580.0,
+"b": 3470.0,
+"d": -110.0,
+"age": 27
+},
+{
+"key": "liam-reidy",
+"name": "Liam Reidy",
+"a": 328.0,
+"b": 290.0,
+"d": -38.0,
+"age": 26
+},
+{
+"key": "zane-peucker",
+"name": "Zane Peucker",
+"a": 493.0,
+"b": 325.0,
+"d": -168.0,
+"age": 19
+},
+{
+"key": "jeremy-howe",
+"name": "Jeremy Howe",
+"a": 229.0,
+"b": 223.0,
+"d": -6.0,
+"age": 36
+},
+{
+"key": "jye-caldwell",
+"name": "Jye Caldwell",
+"a": 993.0,
+"b": 964.0,
+"d": -29.0,
+"age": 26
+},
+{
+"key": "errol-gulden",
+"name": "Errol Gulden",
+"a": 6891.0,
+"b": 6686.0,
+"d": -205.0,
+"age": 24
+},
+{
+"key": "jeremy-sharp",
+"name": "Jeremy Sharp",
+"a": 56.0,
+"b": 47.0,
+"d": -9.0,
+"age": 25
+},
+{
+"key": "harrison-jones",
+"name": "Harrison Jones",
+"a": 174.0,
+"b": 92.0,
+"d": -82.0,
+"age": 25
+},
+{
+"key": "maurice-rioli-1",
+"name": "Maurice Rioli",
+"a": 28.0,
+"b": 23.0,
+"d": -5.0,
+"age": 24
+},
+{
+"key": "liam-baker",
+"name": "Liam Baker",
+"a": 427.0,
+"b": 413.0,
+"d": -14.0,
+"age": 28
+},
+{
+"key": "rowan-marshall",
+"name": "Rowan Marshall",
+"a": 2070.0,
+"b": 2006.0,
+"d": -64.0,
+"age": 31
+},
+{
+"key": "harris-andrews",
+"name": "Harris Andrews",
+"a": 1643.0,
+"b": 1600.0,
+"d": -43.0,
+"age": 30
+},
+{
+"key": "jake-rogers",
+"name": "Jake Rogers",
+"a": 539.0,
+"b": 503.0,
+"d": -36.0,
+"age": 21
+},
+{
+"key": "nick-madden",
+"name": "Nick Madden",
+"a": 2142.0,
+"b": 1481.0,
+"d": -661.0,
+"age": 22
+},
+{
+"key": "max-king-stk",
+"name": "Max King",
+"a": 242.0,
+"b": 234.0,
+"d": -8.0,
+"age": 26
+},
+{
+"key": "aliir-aliir",
+"name": "Aliir Aliir",
+"a": 874.0,
+"b": 850.0,
+"d": -24.0,
+"age": 32
+},
+{
+"key": "samuel-grlj",
+"name": "Samuel Grlj",
+"a": 1869.0,
+"b": 1708.0,
+"d": -161.0,
+"age": 19
+},
+{
+"key": "lawson-humphries",
+"name": "Lawson Humphries",
+"a": 1849.0,
+"b": 1363.0,
+"d": -486.0,
+"age": 23
+},
+{
+"key": "bayley-fritsch",
+"name": "Bayley Fritsch",
+"a": 156.0,
+"b": 151.0,
+"d": -5.0,
+"age": 30
+},
+{
+"key": "logan-mcdonald",
+"name": "Logan McDonald",
+"a": 683.0,
+"b": 646.0,
+"d": -37.0,
+"age": 24
+},
+{
+"key": "tanner-bruhn",
+"name": "Tanner Bruhn",
+"a": 2357.0,
+"b": 2270.0,
+"d": -87.0,
+"age": 24
+},
+{
+"key": "tim-kelly",
+"name": "Tim Kelly",
+"a": 1228.0,
+"b": 1189.0,
+"d": -39.0,
+"age": 32
+},
+{
+"key": "neil-erasmus",
+"name": "Neil Erasmus",
+"a": 1082.0,
+"b": 1032.0,
+"d": -50.0,
+"age": 23
+},
+{
+"key": "adam-saad",
+"name": "Adam Saad",
+"a": 446.0,
+"b": 430.0,
+"d": -16.0,
+"age": 32
+},
+{
+"key": "dougal-howard",
+"name": "Dougal Howard",
+"a": 47.0,
+"b": 45.0,
+"d": -2.0,
+"age": 30
+},
+{
+"key": "jack-sinclair",
+"name": "Jack Sinclair",
+"a": 3368.0,
+"b": 3269.0,
+"d": -99.0,
+"age": 31
+},
+{
+"key": "sam-flanders",
+"name": "Sam Flanders",
+"a": 2091.0,
+"b": 2020.0,
+"d": -71.0,
+"age": 25
+},
+{
+"key": "oliver-hollands",
+"name": "Oliver Hollands",
+"a": 1728.0,
+"b": 1548.0,
+"d": -180.0,
+"age": 22
+},
+{
+"key": "archie-ludowyke",
+"name": "Archie Ludowyke",
+"a": 215.0,
+"b": 226.0,
+"d": 11.0,
+"age": 19
+},
+{
+"key": "tom-cochrane",
+"name": "Tom Cochrane",
+"a": 221.0,
+"b": 178.0,
+"d": -43.0,
+"age": 20
+},
+{
+"key": "tom-powell",
+"name": "Tom Powell",
+"a": 2160.0,
+"b": 2070.0,
+"d": -90.0,
+"age": 24
+},
+{
+"key": "patrick-lipinski",
+"name": "Patrick Lipinski",
+"a": 743.0,
+"b": 722.0,
+"d": -21.0,
+"age": 28
+},
+{
+"key": "hugo-ralphsmith",
+"name": "Hugo Ralphsmith",
+"a": 51.0,
+"b": 32.0,
+"d": -19.0,
+"age": 25
+},
+{
+"key": "joel-freijah",
+"name": "Joel Freijah",
+"a": 2917.0,
+"b": 2319.0,
+"d": -598.0,
+"age": 21
+},
+{
+"key": "thomas-anastasopoulos",
+"name": "Tom Anastasopoulos",
+"a": 269.0,
+"b": 110.0,
+"d": -159.0,
+"age": 21
+},
+{
+"key": "zane-zakostelsky",
+"name": "Zane Zakostelsky",
+"a": 391.0,
+"b": 201.0,
+"d": -190.0,
+"age": 21
+},
+{
+"key": "will-setterfield",
+"name": "Will Setterfield",
+"a": 633.0,
+"b": 615.0,
+"d": -18.0,
+"age": 28
+},
+{
+"key": "wil-powell",
+"name": "Wil Powell",
+"a": 694.0,
+"b": 673.0,
+"d": -21.0,
+"age": 27
+},
+{
+"key": "rhys-unwin",
+"name": "Rhys Unwin",
+"a": 112.0,
+"b": 101.0,
+"d": -11.0,
+"age": 20
+},
+{
+"key": "noah-mraz",
+"name": "Noah Mraz",
+"a": 3847.0,
+"b": 3369.0,
+"d": -478.0,
+"age": 20
+},
+{
+"key": "lachlan-jones",
+"name": "Lachlan Jones",
+"a": 123.0,
+"b": 118.0,
+"d": -5.0,
+"age": 24
+},
+{
+"key": "tom-gross",
+"name": "Tom Gross",
+"a": 569.0,
+"b": 307.0,
+"d": -262.0,
+"age": 20
+},
+{
+"key": "jack-crisp",
+"name": "Jack Crisp",
+"a": 453.0,
+"b": 440.0,
+"d": -13.0,
+"age": 33
+},
+{
+"key": "lachie-whitfield",
+"name": "Lachie Whitfield",
+"a": 2235.0,
+"b": 2169.0,
+"d": -66.0,
+"age": 32
+},
+{
+"key": "nasiah-wanganeen-milera",
+"name": "Nasiah Wanganeen-Milera",
+"a": 9816.0,
+"b": 9494.0,
+"d": -322.0,
+"age": 23
+},
+{
+"key": "toby-mcmullin",
+"name": "Toby McMullin",
+"a": 124.0,
+"b": 89.0,
+"d": -35.0,
+"age": 22
+},
+{
+"key": "kysaiah-pickett",
+"name": "Kysaiah Pickett",
+"a": 4064.0,
+"b": 3950.0,
+"d": -114.0,
+"age": 25
+},
+{
+"key": "jai-newcombe",
+"name": "Jai Newcombe",
+"a": 4922.0,
+"b": 4763.0,
+"d": -159.0,
+"age": 25
+},
+{
+"key": "matthew-jefferson",
+"name": "Matthew Jefferson",
+"a": 426.0,
+"b": 381.0,
+"d": -45.0,
+"age": 22
+},
+{
+"key": "clayton-oliver",
+"name": "Clayton Oliver",
+"a": 2398.0,
+"b": 2325.0,
+"d": -73.0,
+"age": 29
+},
+{
+"key": "josh-treacy",
+"name": "Josh Treacy",
+"a": 7018.0,
+"b": 6786.0,
+"d": -232.0,
+"age": 24
+},
+{
+"key": "scott-pendlebury",
+"name": "Scott Pendlebury",
+"a": 359.0,
+"b": 347.0,
+"d": -12.0,
+"age": 39
+},
+{
+"key": "matt-johnson-1",
+"name": "Matt Johnson",
+"a": 969.0,
+"b": 816.0,
+"d": -153.0,
+"age": 23
+},
+{
+"key": "sam-darcy",
+"name": "Sam Darcy",
+"a": 5356.0,
+"b": 5222.0,
+"d": -134.0,
+"age": 23
+},
+{
+"key": "xavier-taylor",
+"name": "Xavier Taylor",
+"a": 950.0,
+"b": 809.0,
+"d": -141.0,
+"age": 19
+},
+{
+"key": "harry-perryman",
+"name": "Harry Perryman",
+"a": 69.0,
+"b": 68.0,
+"d": -1.0,
+"age": 28
+},
+{
+"key": "jaxon-prior",
+"name": "Jaxon Prior",
+"a": 293.0,
+"b": 275.0,
+"d": -18.0,
+"age": 25
+},
+{
+"key": "anthony-caminiti",
+"name": "Anthony Caminiti",
+"a": 974.0,
+"b": 673.0,
+"d": -301.0,
+"age": 23
+},
+{
+"key": "jacob-farrow",
+"name": "Jacob Farrow",
+"a": 2651.0,
+"b": 2511.0,
+"d": -140.0,
+"age": 19
+},
+{
+"key": "oliver-hayes-brown",
+"name": "Oliver Hayes-Brown",
+"a": 218.0,
+"b": 143.0,
+"d": -75.0,
+"age": 26
+},
+{
+"key": "chris-scerri",
+"name": "Chris Scerri",
+"a": 302.0,
+"b": 249.0,
+"d": -53.0,
+"age": 20
+},
+{
+"key": "tom-brown",
+"name": "Tom Brown",
+"a": 492.0,
+"b": 440.0,
+"d": -52.0,
+"age": 23
+},
+{
+"key": "bo-allan",
+"name": "Bo Allan",
+"a": 1121.0,
+"b": 888.0,
+"d": -233.0,
+"age": 20
+},
+{
+"key": "james-peatling",
+"name": "James Peatling",
+"a": 1318.0,
+"b": 1273.0,
+"d": -45.0,
+"age": 26
+},
+{
+"key": "zane-duursma",
+"name": "Zane Duursma",
+"a": 765.0,
+"b": 758.0,
+"d": -7.0,
+"age": 21
+},
+{
+"key": "jack-whitlock",
+"name": "Jack Whitlock",
+"a": 1233.0,
+"b": 729.0,
+"d": -504.0,
+"age": 20
+},
+{
+"key": "mitch-podhajski",
+"name": "Mitch Podhajski",
+"a": 103.0,
+"b": 106.0,
+"d": 3.0,
+"age": 27
+},
+{
+"key": "bailey-smith",
+"name": "Bailey Smith",
+"a": 6689.0,
+"b": 6484.0,
+"d": -205.0,
+"age": 26
+},
+{
+"key": "xavier-o-halloran",
+"name": "Xavier O'Halloran",
+"a": 39.0,
+"b": 38.0,
+"d": -1.0,
+"age": 26
+},
+{
+"key": "connor-idun",
+"name": "Connor Idun",
+"a": 2283.0,
+"b": 2216.0,
+"d": -67.0,
+"age": 26
+},
+{
+"key": "darcy-parish",
+"name": "Darcy Parish",
+"a": 569.0,
+"b": 551.0,
+"d": -18.0,
+"age": 29
+},
+{
+"key": "jake-bowey",
+"name": "Jake Bowey",
+"a": 4386.0,
+"b": 4259.0,
+"d": -127.0,
+"age": 24
+},
+{
+"key": "braeden-campbell",
+"name": "Braeden Campbell",
+"a": 345.0,
+"b": 332.0,
+"d": -13.0,
+"age": 24
+},
+{
+"key": "reuben-ginbey",
+"name": "Reuben Ginbey",
+"a": 2359.0,
+"b": 2300.0,
+"d": -59.0,
+"age": 22
+},
+{
+"key": "zac-bailey",
+"name": "Zac Bailey",
+"a": 2930.0,
+"b": 2848.0,
+"d": -82.0,
+"age": 27
+},
+{
+"key": "angus-sheldrick",
+"name": "Angus Sheldrick",
+"a": 756.0,
+"b": 662.0,
+"d": -94.0,
+"age": 23
+},
+{
+"key": "joel-jeffrey",
+"name": "Joel Jeffrey",
+"a": 1587.0,
+"b": 1544.0,
+"d": -43.0,
+"age": 24
+},
+{
+"key": "buku-khamis",
+"name": "Buku Khamis",
+"a": 149.0,
+"b": 58.0,
+"d": -91.0,
+"age": 26
+},
+{
+"key": "john-noble",
+"name": "John Noble",
+"a": 2313.0,
+"b": 2244.0,
+"d": -69.0,
+"age": 29
+},
+{
+"key": "liam-duggan",
+"name": "Liam Duggan",
+"a": 277.0,
+"b": 268.0,
+"d": -9.0,
+"age": 30
+},
+{
+"key": "jaxon-artemis",
+"name": "Jaxon Artemis",
+"a": 305.0,
+"b": 196.0,
+"d": -109.0,
+"age": 20
+},
+{
+"key": "cooper-duff-tytler",
+"name": "Cooper Duff-Tytler",
+"a": 1514.0,
+"b": 1574.0,
+"d": 60.0,
+"age": 19
+},
+{
+"key": "jed-walter",
+"name": "Jed Walter",
+"a": 1315.0,
+"b": 1074.0,
+"d": -241.0,
+"age": 21
+},
+{
+"key": "jamarra-ugle-hagan",
+"name": "Jamarra Ugle-Hagan",
+"a": 285.0,
+"b": 271.0,
+"d": -14.0,
+"age": 24
+},
+{
+"key": "daniel-curtin",
+"name": "Daniel Curtin",
+"a": 2487.0,
+"b": 2319.0,
+"d": -168.0,
+"age": 21
+},
+{
+"key": "will-graham",
+"name": "Will Graham",
+"a": 1694.0,
+"b": 1417.0,
+"d": -277.0,
+"age": 21
+},
+{
+"key": "lachlan-mcandrew",
+"name": "Lachlan McAndrew",
+"a": 1254.0,
+"b": 1068.0,
+"d": -186.0,
+"age": 26
+},
+{
+"key": "joseph-fonti",
+"name": "Joseph Fonti",
+"a": 636.0,
+"b": 374.0,
+"d": -262.0,
+"age": 22
+},
+{
+"key": "blake-hardwick",
+"name": "Blake Hardwick",
+"a": 491.0,
+"b": 477.0,
+"d": -14.0,
+"age": 29
+},
+{
+"key": "samson-ryan",
+"name": "Samson Ryan",
+"a": 349.0,
+"b": 206.0,
+"d": -143.0,
+"age": 26
+},
+{
+"key": "ethan-read",
+"name": "Ethan Read",
+"a": 957.0,
+"b": 738.0,
+"d": -219.0,
+"age": 21
+},
+{
+"key": "matthew-roberts",
+"name": "Matthew Roberts",
+"a": 1904.0,
+"b": 1710.0,
+"d": -194.0,
+"age": 23
+},
+{
+"key": "sam-banks",
+"name": "Sam Banks",
+"a": 983.0,
+"b": 919.0,
+"d": -64.0,
+"age": 23
+},
+{
+"key": "tyler-brockman",
+"name": "Tyler Brockman",
+"a": 52.0,
+"b": 27.0,
+"d": -25.0,
+"age": 24
+},
+{
+"key": "isaac-quaynor",
+"name": "Isaac Quaynor",
+"a": 634.0,
+"b": 615.0,
+"d": -19.0,
+"age": 26
+},
+{
+"key": "oliver-henry",
+"name": "Oliver Henry",
+"a": 147.0,
+"b": 135.0,
+"d": -12.0,
+"age": 24
+},
+{
+"key": "adam-treloar",
+"name": "Adam Treloar",
+"a": 935.0,
+"b": 906.0,
+"d": -29.0,
+"age": 33
+},
+{
+"key": "oscar-ryan",
+"name": "Oscar Ryan",
+"a": 304.0,
+"b": 245.0,
+"d": -59.0,
+"age": 21
+},
+{
+"key": "hugo-garcia",
+"name": "Hugo Garcia",
+"a": 3113.0,
+"b": 2633.0,
+"d": -480.0,
+"age": 21
+},
+{
+"key": "rhett-bazzo",
+"name": "Rhett Bazzo",
+"a": 415.0,
+"b": 220.0,
+"d": -195.0,
+"age": 23
+},
+{
+"key": "mason-redman",
+"name": "Mason Redman",
+"a": 1352.0,
+"b": 1311.0,
+"d": -41.0,
+"age": 29
+},
+{
+"key": "jacob-konstanty",
+"name": "Jacob Konstanty",
+"a": 159.0,
+"b": 158.0,
+"d": -1.0,
+"age": 22
+},
+{
+"key": "andrew-brayshaw",
+"name": "Andrew Brayshaw",
+"a": 3113.0,
+"b": 3017.0,
+"d": -96.0,
+"age": 27
+},
+{
+"key": "jack-steele",
+"name": "Jack Steele",
+"a": 1275.0,
+"b": 1236.0,
+"d": -39.0,
+"age": 31
+},
+{
+"key": "jack-ross",
+"name": "Jack Ross",
+"a": 2727.0,
+"b": 2643.0,
+"d": -84.0,
+"age": 26
+},
+{
+"key": "mark-keane",
+"name": "Mark Keane",
+"a": 1569.0,
+"b": 1169.0,
+"d": -400.0,
+"age": 26
+},
+{
+"key": "finn-o-sullivan",
+"name": "Finn O'Sullivan",
+"a": 3642.0,
+"b": 3823.0,
+"d": 181.0,
+"age": 20
+},
+{
+"key": "corey-wagner",
+"name": "Corey Wagner",
+"a": 20.0,
+"b": 19.0,
+"d": -1.0,
+"age": 29
+},
+{
+"key": "will-brodie",
+"name": "Will Brodie",
+"a": 836.0,
+"b": 819.0,
+"d": -17.0,
+"age": 28
+},
+{
+"key": "josh-dolan",
+"name": "Josh Dolan",
+"a": 505.0,
+"b": 193.0,
+"d": -312.0,
+"age": 20
+},
+{
+"key": "touk-miller",
+"name": "Touk Miller",
+"a": 2089.0,
+"b": 2031.0,
+"d": -58.0,
+"age": 30
+},
+{
+"key": "jack-ginnivan",
+"name": "Jack Ginnivan",
+"a": 2330.0,
+"b": 2262.0,
+"d": -68.0,
+"age": 24
+},
+{
+"key": "james-worpel",
+"name": "James Worpel",
+"a": 429.0,
+"b": 415.0,
+"d": -14.0,
+"age": 27
+},
+{
+"key": "harley-reid",
+"name": "Harley Reid",
+"a": 3811.0,
+"b": 3750.0,
+"d": -61.0,
+"age": 21
+},
+{
+"key": "toby-greene",
+"name": "Toby Greene",
+"a": 839.0,
+"b": 815.0,
+"d": -24.0,
+"age": 33
+},
+{
+"key": "daniel-mcstay",
+"name": "Daniel McStay",
+"a": 216.0,
+"b": 209.0,
+"d": -7.0,
+"age": 31
+},
+{
+"key": "billy-wilson",
+"name": "Billy Wilson",
+"a": 923.0,
+"b": 531.0,
+"d": -392.0,
+"age": 21
+},
+{
+"key": "dylan-stephens",
+"name": "Dylan Stephens",
+"a": 423.0,
+"b": 405.0,
+"d": -18.0,
+"age": 25
+},
+{
+"key": "nick-daicos",
+"name": "Nick Daicos",
+"a": 10971.0,
+"b": 10639.0,
+"d": -332.0,
+"age": 23
+},
+{
+"key": "jack-ison",
+"name": "Jack Ison",
+"a": 544.0,
+"b": 271.0,
+"d": -273.0,
+"age": 19
+},
+{
+"key": "toby-nankervis",
+"name": "Toby Nankervis",
+"a": 2123.0,
+"b": 2059.0,
+"d": -64.0,
+"age": 32
+},
+{
+"key": "michael-sellwood",
+"name": "Michael Sellwood",
+"a": 148.0,
+"b": 128.0,
+"d": -20.0,
+"age": 23
+},
+{
+"key": "harrison-himmelberg",
+"name": "Harrison Himmelberg",
+"a": 149.0,
+"b": 145.0,
+"d": -4.0,
+"age": 30
+},
+{
+"key": "thomas-sims",
+"name": "Thomas Sims",
+"a": 1040.0,
+"b": 784.0,
+"d": -256.0,
+"age": 20
+},
+{
+"key": "george-wardlaw",
+"name": "George Wardlaw",
+"a": 3308.0,
+"b": 3200.0,
+"d": -108.0,
+"age": 22
+},
+{
+"key": "cooper-harvey",
+"name": "Cooper Harvey",
+"a": 544.0,
+"b": 178.0,
+"d": -366.0,
+"age": 22
+},
+{
+"key": "charlie-curnow",
+"name": "Charlie Curnow",
+"a": 1389.0,
+"b": 1346.0,
+"d": -43.0,
+"age": 29
+},
+{
+"key": "brady-hough",
+"name": "Brady Hough",
+"a": 290.0,
+"b": 243.0,
+"d": -47.0,
+"age": 23
+},
+{
+"key": "harrison-ramm",
+"name": "Harrison Ramm",
+"a": 338.0,
+"b": 245.0,
+"d": -93.0,
+"age": 20
+},
+{
+"key": "tom-mccarthy",
+"name": "Tom McCarthy",
+"a": 1437.0,
+"b": 1202.0,
+"d": -235.0,
+"age": 26
+},
+{
+"key": "zac-taylor",
+"name": "Zac Taylor",
+"a": 254.0,
+"b": 70.0,
+"d": -184.0,
+"age": 23
+},
+{
+"key": "cameron-rayner",
+"name": "Cameron Rayner",
+"a": 687.0,
+"b": 668.0,
+"d": -19.0,
+"age": 27
+},
+{
+"key": "logan-evans",
+"name": "Logan Evans",
+"a": 1390.0,
+"b": 990.0,
+"d": -400.0,
+"age": 21
+},
+{
+"key": "heath-chapman",
+"name": "Heath Chapman",
+"a": 402.0,
+"b": 388.0,
+"d": -14.0,
+"age": 24
+},
+{
+"key": "josh-lindsay",
+"name": "Josh Lindsay",
+"a": 2452.0,
+"b": 2192.0,
+"d": -260.0,
+"age": 19
+},
+{
+"key": "patrick-retschko",
+"name": "Patrick Retschko",
+"a": 1353.0,
+"b": 542.0,
+"d": -811.0,
+"age": 20
+},
+{
+"key": "william-mccabe",
+"name": "William McCabe",
+"a": 647.0,
+"b": 521.0,
+"d": -126.0,
+"age": 21
+},
+{
+"key": "darcy-jones",
+"name": "Darcy Jones",
+"a": 1321.0,
+"b": 1259.0,
+"d": -62.0,
+"age": 22
+},
+{
+"key": "ed-langdon",
+"name": "Ed Langdon",
+"a": 903.0,
+"b": 876.0,
+"d": -27.0,
+"age": 30
+},
+{
+"key": "jack-dalton",
+"name": "Jack Dalton",
+"a": 502.0,
+"b": 292.0,
+"d": -210.0,
+"age": 19
+},
+{
+"key": "josh-draper",
+"name": "Josh Draper",
+"a": 460.0,
+"b": 182.0,
+"d": -278.0,
+"age": 22
+},
+{
+"key": "charlie-cameron",
+"name": "Charlie Cameron",
+"a": 164.0,
+"b": 160.0,
+"d": -4.0,
+"age": 32
+},
+{
+"key": "max-ramsden",
+"name": "Max Ramsden",
+"a": 178.0,
+"b": 110.0,
+"d": -68.0,
+"age": 23
+},
+{
+"key": "matthew-kennedy-1",
+"name": "Matthew Kennedy",
+"a": 469.0,
+"b": 455.0,
+"d": -14.0,
+"age": 29
+},
+{
+"key": "shaun-mannagh",
+"name": "Shaun Mannagh",
+"a": 543.0,
+"b": 500.0,
+"d": -43.0,
+"age": 29
+},
+{
+"key": "max-gawn",
+"name": "Max Gawn",
+"a": 3482.0,
+"b": 3375.0,
+"d": -107.0,
+"age": 35
+},
+{
+"key": "noah-long",
+"name": "Noah Long",
+"a": 163.0,
+"b": 48.0,
+"d": -115.0,
+"age": 22
+},
+{
+"key": "michael-frederick",
+"name": "Michael Frederick",
+"a": 70.0,
+"b": 68.0,
+"d": -2.0,
+"age": 26
+},
+{
+"key": "daniel-rioli",
+"name": "Daniel Rioli",
+"a": 620.0,
+"b": 601.0,
+"d": -19.0,
+"age": 29
+},
+{
+"key": "sean-darcy",
+"name": "Sean Darcy",
+"a": 757.0,
+"b": 735.0,
+"d": -22.0,
+"age": 28
+},
+{
+"key": "seth-campbell",
+"name": "Seth Campbell",
+"a": 918.0,
+"b": 597.0,
+"d": -321.0,
+"age": 22
+},
+{
+"key": "joe-berry",
+"name": "Joe Berry",
+"a": 1102.0,
+"b": 934.0,
+"d": -168.0,
+"age": 20
+},
+{
+"key": "james-rowbottom",
+"name": "James Rowbottom",
+"a": 1223.0,
+"b": 1186.0,
+"d": -37.0,
+"age": 26
+},
+{
+"key": "deven-robertson",
+"name": "Deven Robertson",
+"a": 170.0,
+"b": 151.0,
+"d": -19.0,
+"age": 25
+},
+{
+"key": "mitch-mcgovern",
+"name": "Mitch McGovern",
+"a": 42.0,
+"b": 40.0,
+"d": -2.0,
+"age": 32
+},
+{
+"key": "sam-draper",
+"name": "Sam Draper",
+"a": 1139.0,
+"b": 1096.0,
+"d": -43.0,
+"age": 28
+},
+{
+"key": "tylar-young",
+"name": "Tylar Young",
+"a": 221.0,
+"b": 63.0,
+"d": -158.0,
+"age": 28
+},
+{
+"key": "aidan-schubert",
+"name": "Aidan Schubert",
+"a": 521.0,
+"b": 529.0,
+"d": 8.0,
+"age": 19
+},
+{
+"key": "caleb-daniel",
+"name": "Caleb Daniel",
+"a": 1346.0,
+"b": 1306.0,
+"d": -40.0,
+"age": 30
+},
+{
+"key": "luke-trainor",
+"name": "Luke Trainor",
+"a": 1525.0,
+"b": 1006.0,
+"d": -519.0,
+"age": 20
+},
+{
+"key": "jack-gunston",
+"name": "Jack Gunston",
+"a": 896.0,
+"b": 868.0,
+"d": -28.0,
+"age": 35
+},
+{
+"key": "ollie-lord",
+"name": "Ollie Lord",
+"a": 117.0,
+"b": 38.0,
+"d": -79.0,
+"age": 24
+},
+{
+"key": "conor-nash",
+"name": "Conor Nash",
+"a": 239.0,
+"b": 232.0,
+"d": -7.0,
+"age": 28
+},
+{
+"key": "sandy-brock",
+"name": "Sandy Brock",
+"a": 176.0,
+"b": 62.0,
+"d": -114.0,
+"age": 24
+},
+{
+"key": "josh-rachele",
+"name": "Josh Rachele",
+"a": 1990.0,
+"b": 1924.0,
+"d": -66.0,
+"age": 23
+},
+{
+"key": "matt-carroll",
+"name": "Matt Carroll",
+"a": 941.0,
+"b": 370.0,
+"d": -571.0,
+"age": 21
+},
+{
+"key": "josh-daicos",
+"name": "Josh Daicos",
+"a": 2134.0,
+"b": 2071.0,
+"d": -63.0,
+"age": 28
+},
+{
+"key": "hugo-hall-kahan",
+"name": "Hugo Hall-Kahan",
+"a": 171.0,
+"b": 109.0,
+"d": -62.0,
+"age": 23
+},
+{
+"key": "bodie-ryan",
+"name": "Bodie Ryan",
+"a": 252.0,
+"b": 139.0,
+"d": -113.0,
+"age": 21
+},
+{
+"key": "finn-callaghan",
+"name": "Finn Callaghan",
+"a": 6140.0,
+"b": 5881.0,
+"d": -259.0,
+"age": 23
+},
+{
+"key": "hamish-davis",
+"name": "Hamish Davis",
+"a": 898.0,
+"b": 365.0,
+"d": -533.0,
+"age": 20
+},
+{
+"key": "patrick-voss",
+"name": "Patrick Voss",
+"a": 1493.0,
+"b": 1132.0,
+"d": -361.0,
+"age": 23
+},
+{
+"key": "phoenix-gothard",
+"name": "Phoenix Gothard",
+"a": 1821.0,
+"b": 1736.0,
+"d": -85.0,
+"age": 21
+},
+{
+"key": "charlie-west",
+"name": "Charlie West",
+"a": 446.0,
+"b": 444.0,
+"d": -2.0,
+"age": 20
+},
+{
+"key": "sam-walsh",
+"name": "Sam Walsh",
+"a": 3201.0,
+"b": 3103.0,
+"d": -98.0,
+"age": 26
+},
+{
+"key": "bailey-williams-wb",
+"name": "Bailey Williams",
+"a": 598.0,
+"b": 580.0,
+"d": -18.0,
+"age": 29
+},
+{
+"key": "jason-horne-francis",
+"name": "Jason Horne-Francis",
+"a": 6200.0,
+"b": 5998.0,
+"d": -202.0,
+"age": 23
+},
+{
+"key": "andrew-mcgrath",
+"name": "Andrew McGrath",
+"a": 945.0,
+"b": 917.0,
+"d": -28.0,
+"age": 28
+},
+{
+"key": "will-hayes-b",
+"name": "Will Hayes",
+"a": 432.0,
+"b": 303.0,
+"d": -129.0,
+"age": 20
+},
+{
+"key": "aaron-cadman",
+"name": "Aaron Cadman",
+"a": 1802.0,
+"b": 1691.0,
+"d": -111.0,
+"age": 22
+},
+{
+"key": "jake-soligo",
+"name": "Jake Soligo",
+"a": 2075.0,
+"b": 1890.0,
+"d": -185.0,
+"age": 23
+},
+{
+"key": "sam-berry",
+"name": "Sam Berry",
+"a": 3843.0,
+"b": 3727.0,
+"d": -116.0,
+"age": 24
+},
+{
+"key": "jayden-laverde",
+"name": "Jayden Laverde",
+"a": 196.0,
+"b": 190.0,
+"d": -6.0,
+"age": 30
+},
+{
+"key": "zak-butters",
+"name": "Zak Butters",
+"a": 7185.0,
+"b": 6965.0,
+"d": -220.0,
+"age": 26
+},
+{
+"key": "archie-perkins",
+"name": "Archie Perkins",
+"a": 234.0,
+"b": 219.0,
+"d": -15.0,
+"age": 24
+},
+{
+"key": "james-jordon",
+"name": "James Jordon",
+"a": 145.0,
+"b": 141.0,
+"d": -4.0,
+"age": 26
+},
+{
+"key": "bailey-macdonald",
+"name": "Bailey Macdonald",
+"a": 142.0,
+"b": 58.0,
+"d": -84.0,
+"age": 22
+},
+{
+"key": "cody-weightman",
+"name": "Cody Weightman",
+"a": 151.0,
+"b": 143.0,
+"d": -8.0,
+"age": 25
+},
+{
+"key": "callum-wilkie",
+"name": "Callum Wilkie",
+"a": 3826.0,
+"b": 3726.0,
+"d": -100.0,
+"age": 30
+},
+{
+"key": "brodie-grundy",
+"name": "Brodie Grundy",
+"a": 4559.0,
+"b": 4421.0,
+"d": -138.0,
+"age": 32
+},
+{
+"key": "connor-macdonald",
+"name": "Connor MacDonald",
+"a": 2849.0,
+"b": 2731.0,
+"d": -118.0,
+"age": 23
+},
+{
+"key": "mitch-georgiades",
+"name": "Mitch Georgiades",
+"a": 1464.0,
+"b": 1410.0,
+"d": -54.0,
+"age": 25
+},
+{
+"key": "bradley-hill",
+"name": "Bradley Hill",
+"a": 1169.0,
+"b": 1135.0,
+"d": -34.0,
+"age": 33
+},
+{
+"key": "blake-howes",
+"name": "Blake Howes",
+"a": 276.0,
+"b": 224.0,
+"d": -52.0,
+"age": 23
+},
+{
+"key": "darcy-wilmot",
+"name": "Darcy Wilmot",
+"a": 3379.0,
+"b": 3270.0,
+"d": -109.0,
+"age": 23
+},
+{
+"key": "darcy-fort",
+"name": "Darcy Fort",
+"a": 21.0,
+"b": 18.0,
+"d": -3.0,
+"age": 33
+},
+{
+"key": "justin-mcinerney",
+"name": "Justin McInerney",
+"a": 2170.0,
+"b": 2104.0,
+"d": -66.0,
+"age": 26
+},
+{
+"key": "ashton-moir",
+"name": "Ashton Moir",
+"a": 258.0,
+"b": 201.0,
+"d": -57.0,
+"age": 21
+},
+{
+"key": "nick-larkey",
+"name": "Nick Larkey",
+"a": 537.0,
+"b": 522.0,
+"d": -15.0,
+"age": 28
+},
+{
+"key": "dylan-moore",
+"name": "Dylan Moore",
+"a": 1174.0,
+"b": 1141.0,
+"d": -33.0,
+"age": 27
+},
+{
+"key": "harry-morrison",
+"name": "Harry Morrison",
+"a": 21.0,
+"b": 20.0,
+"d": -1.0,
+"age": 28
+},
+{
+"key": "harry-mckay",
+"name": "Harry McKay",
+"a": 1859.0,
+"b": 1802.0,
+"d": -57.0,
+"age": 29
+},
+{
+"key": "jobe-shanahan",
+"name": "Jobe Shanahan",
+"a": 1769.0,
+"b": 1174.0,
+"d": -595.0,
+"age": 20
+},
+{
+"key": "tom-de-koning",
+"name": "Tom De Koning",
+"a": 2090.0,
+"b": 2026.0,
+"d": -64.0,
+"age": 27
+},
+{
+"key": "caleb-serong",
+"name": "Caleb Serong",
+"a": 5132.0,
+"b": 4975.0,
+"d": -157.0,
+"age": 25
+},
+{
+"key": "dyson-sharp",
+"name": "Dyson Sharp",
+"a": 2794.0,
+"b": 2796.0,
+"d": 2.0,
+"age": 19
+},
+{
+"key": "hugh-boxshall",
+"name": "Hugh Boxshall",
+"a": 929.0,
+"b": 429.0,
+"d": -500.0,
+"age": 20
+},
+{
+"key": "jacob-newton",
+"name": "Jacob Newton",
+"a": 208.0,
+"b": 173.0,
+"d": -35.0,
+"age": 20
+},
+{
+"key": "matthew-flynn",
+"name": "Matthew Flynn",
+"a": 538.0,
+"b": 476.0,
+"d": -62.0,
+"age": 29
+},
+{
+"key": "jasper-alger",
+"name": "Jasper Alger",
+"a": 444.0,
+"b": 225.0,
+"d": -219.0,
+"age": 20
+},
+{
+"key": "francis-evans",
+"name": "Francis Evans",
+"a": 254.0,
+"b": 225.0,
+"d": -29.0,
+"age": 25
+},
+{
+"key": "samuel-swadling",
+"name": "Samuel Swadling",
+"a": 732.0,
+"b": 415.0,
+"d": -317.0,
+"age": 19
+},
+{
+"key": "tim-membrey",
+"name": "Tim Membrey",
+"a": 78.0,
+"b": 76.0,
+"d": -2.0,
+"age": 32
+},
+{
+"key": "karl-amon",
+"name": "Karl Amon",
+"a": 416.0,
+"b": 404.0,
+"d": -12.0,
+"age": 31
+},
+{
+"key": "harry-o-farrell",
+"name": "Harry O'Farrell",
+"a": 957.0,
+"b": 399.0,
+"d": -558.0,
+"age": 20
+},
+{
+"key": "jai-serong",
+"name": "Jai Serong",
+"a": 981.0,
+"b": 567.0,
+"d": -414.0,
+"age": 23
+},
+{
+"key": "matt-whitlock",
+"name": "Matt Whitlock",
+"a": 448.0,
+"b": 446.0,
+"d": -2.0,
+"age": 20
+},
+{
+"key": "jack-carroll",
+"name": "Jack Carroll",
+"a": 84.0,
+"b": 35.0,
+"d": -49.0,
+"age": 24
+},
+{
+"key": "daniel-turner",
+"name": "Daniel Turner",
+"a": 1607.0,
+"b": 1516.0,
+"d": -91.0,
+"age": 24
+},
+{
+"key": "luke-parker",
+"name": "Luke Parker",
+"a": 1384.0,
+"b": 1344.0,
+"d": -40.0,
+"age": 34
+},
+{
+"key": "dante-visentini",
+"name": "Dante Visentini",
+"a": 1262.0,
+"b": 901.0,
+"d": -361.0,
+"age": 23
+},
+{
+"key": "thomas-liberatore",
+"name": "Thomas Liberatore",
+"a": 1324.0,
+"b": 1283.0,
+"d": -41.0,
+"age": 34
+},
+{
+"key": "ben-king",
+"name": "Ben King",
+"a": 238.0,
+"b": 230.0,
+"d": -8.0,
+"age": 26
+},
+{
+"key": "jack-graham",
+"name": "Jack Graham",
+"a": 662.0,
+"b": 643.0,
+"d": -19.0,
+"age": 28
+},
+{
+"key": "alex-davies",
+"name": "Alex Davies",
+"a": 412.0,
+"b": 366.0,
+"d": -46.0,
+"age": 24
+},
+{
+"key": "aaron-naughton",
+"name": "Aaron Naughton",
+"a": 1309.0,
+"b": 1270.0,
+"d": -39.0,
+"age": 27
+},
+{
+"key": "jordan-croft",
+"name": "Jordan Croft",
+"a": 975.0,
+"b": 665.0,
+"d": -310.0,
+"age": 21
+},
+{
+"key": "tom-mcdonald",
+"name": "Tom McDonald",
+"a": 124.0,
+"b": 121.0,
+"d": -3.0,
+"age": 34
+},
+{
+"key": "blake-acres",
+"name": "Blake Acres",
+"a": 81.0,
+"b": 79.0,
+"d": -2.0,
+"age": 31
+},
+{
+"key": "campbell-chesser",
+"name": "Campbell Chesser",
+"a": 277.0,
+"b": 269.0,
+"d": -8.0,
+"age": 23
+},
+{
+"key": "willem-drew",
+"name": "Willem Drew",
+"a": 620.0,
+"b": 601.0,
+"d": -19.0,
+"age": 28
+},
+{
+"key": "charlie-comben",
+"name": "Charlie Comben",
+"a": 804.0,
+"b": 638.0,
+"d": -166.0,
+"age": 25
+},
+{
+"key": "noah-balta",
+"name": "Noah Balta",
+"a": 425.0,
+"b": 412.0,
+"d": -13.0,
+"age": 27
+},
+{
+"key": "brayden-maynard",
+"name": "Brayden Maynard",
+"a": 498.0,
+"b": 483.0,
+"d": -15.0,
+"age": 30
+},
+{
+"key": "lachy-dovaston",
+"name": "Lachy Dovaston",
+"a": 601.0,
+"b": 400.0,
+"d": -201.0,
+"age": 19
+},
+{
+"key": "brodie-kemp",
+"name": "Brodie Kemp",
+"a": 768.0,
+"b": 656.0,
+"d": -112.0,
+"age": 25
+},
+{
+"key": "mabior-chol",
+"name": "Mabior Chol",
+"a": 367.0,
+"b": 345.0,
+"d": -22.0,
+"age": 29
+},
+{
+"key": "tom-atkins",
+"name": "Tom Atkins",
+"a": 311.0,
+"b": 301.0,
+"d": -10.0,
+"age": 31
+},
+{
+"key": "jai-murray",
+"name": "Jai Murray",
+"a": 1189.0,
+"b": 1008.0,
+"d": -181.0,
+"age": 19
+},
+{
+"key": "riley-thilthorpe",
+"name": "Riley Thilthorpe",
+"a": 4840.0,
+"b": 4694.0,
+"d": -146.0,
+"age": 24
+},
+{
+"key": "jase-burgoyne",
+"name": "Jase Burgoyne",
+"a": 2403.0,
+"b": 2140.0,
+"d": -263.0,
+"age": 23
+},
+{
+"key": "nikolas-cox",
+"name": "Nikolas Cox",
+"a": 137.0,
+"b": 102.0,
+"d": -35.0,
+"age": 24
+},
+{
+"key": "taj-hotton",
+"name": "Taj Hotton",
+"a": 2263.0,
+"b": 1868.0,
+"d": -395.0,
+"age": 20
+},
+{
+"key": "thomas-burton",
+"name": "Thomas Burton",
+"a": 344.0,
+"b": 269.0,
+"d": -75.0,
+"age": 19
+},
+{
+"key": "callum-mills",
+"name": "Callum Mills",
+"a": 2032.0,
+"b": 1971.0,
+"d": -61.0,
+"age": 29
+},
+{
+"key": "caiden-cleary",
+"name": "Caiden Cleary",
+"a": 450.0,
+"b": 208.0,
+"d": -242.0,
+"age": 21
+},
+{
+"key": "kane-mcauliffe",
+"name": "Kane McAuliffe",
+"a": 1328.0,
+"b": 860.0,
+"d": -468.0,
+"age": 21
+},
+{
+"key": "jack-williams",
+"name": "Jack Williams",
+"a": 398.0,
+"b": 149.0,
+"d": -249.0,
+"age": 23
+},
+{
+"key": "dion-prestia",
+"name": "Dion Prestia",
+"a": 296.0,
+"b": 288.0,
+"d": -8.0,
+"age": 34
+},
+{
+"key": "paul-curtis",
+"name": "Paul Curtis",
+"a": 1382.0,
+"b": 1326.0,
+"d": -56.0,
+"age": 23
+},
+{
+"key": "noah-roberts-thomson",
+"name": "Noah Roberts-Thomson",
+"a": 345.0,
+"b": 235.0,
+"d": -110.0,
+"age": 19
+},
+{
+"key": "jordan-ridley",
+"name": "Jordan Ridley",
+"a": 709.0,
+"b": 689.0,
+"d": -20.0,
+"age": 28
+},
+{
+"key": "sam-durham",
+"name": "Sam Durham",
+"a": 2667.0,
+"b": 2578.0,
+"d": -89.0,
+"age": 25
+},
+{
+"key": "connor-rozee",
+"name": "Connor Rozee",
+"a": 2830.0,
+"b": 2742.0,
+"d": -88.0,
+"age": 26
+},
+{
+"key": "xavier-lindsay",
+"name": "Xavier Lindsay",
+"a": 2059.0,
+"b": 1640.0,
+"d": -419.0,
+"age": 20
+},
+{
+"key": "dylan-patterson",
+"name": "Dylan Patterson",
+"a": 1719.0,
+"b": 1655.0,
+"d": -64.0,
+"age": 19
+},
+{
+"key": "nick-blakey",
+"name": "Nick Blakey",
+"a": 4358.0,
+"b": 4229.0,
+"d": -129.0,
+"age": 26
+},
+{
+"key": "harvey-thomas",
+"name": "Harvey Thomas",
+"a": 2171.0,
+"b": 1671.0,
+"d": -500.0,
+"age": 21
+},
+{
+"key": "jack-lukosius",
+"name": "Jack Lukosius",
+"a": 472.0,
+"b": 458.0,
+"d": -14.0,
+"age": 26
+},
+{
+"key": "darcy-wilson",
+"name": "Darcy Wilson",
+"a": 3293.0,
+"b": 3050.0,
+"d": -243.0,
+"age": 21
+},
+{
+"key": "cameron-nairn",
+"name": "Cameron Nairn",
+"a": 634.0,
+"b": 468.0,
+"d": -166.0,
+"age": 19
+},
+{
+"key": "toby-bedford",
+"name": "Toby Bedford",
+"a": 276.0,
+"b": 267.0,
+"d": -9.0,
+"age": 26
+},
+{
+"key": "patrick-cripps",
+"name": "Patrick Cripps",
+"a": 1550.0,
+"b": 1502.0,
+"d": -48.0,
+"age": 31
+},
+{
+"key": "cody-curtin",
+"name": "Cody Curtin",
+"a": 548.0,
+"b": 451.0,
+"d": -97.0,
+"age": 19
+},
+{
+"key": "jack-ough",
+"name": "Jack Ough",
+"a": 678.0,
+"b": 367.0,
+"d": -311.0,
+"age": 20
+},
+{
+"key": "toby-murray",
+"name": "Toby Murray",
+"a": 219.0,
+"b": 143.0,
+"d": -76.0,
+"age": 23
+},
+{
+"key": "jarrod-witts",
+"name": "Jarrod Witts",
+"a": 142.0,
+"b": 137.0,
+"d": -5.0,
+"age": 34
+},
+{
+"key": "jake-lloyd",
+"name": "Jake Lloyd",
+"a": 124.0,
+"b": 120.0,
+"d": -4.0,
+"age": 33
+},
+{
+"key": "alex-neal-bullen",
+"name": "Alex Neal-Bullen",
+"a": 313.0,
+"b": 304.0,
+"d": -9.0,
+"age": 30
+},
+{
+"key": "jacob-van-rooyen",
+"name": "Jacob Van Rooyen",
+"a": 1977.0,
+"b": 1927.0,
+"d": -50.0,
+"age": 23
+},
+{
+"key": "jack-buckley",
+"name": "Jack Buckley",
+"a": 563.0,
+"b": 541.0,
+"d": -22.0,
+"age": 29
+},
+{
+"key": "balyn-o-brien",
+"name": "Balyn O'Brien",
+"a": 282.0,
+"b": 194.0,
+"d": -88.0,
+"age": 19
+},
+{
+"key": "finnbar-maley",
+"name": "Finnbar Maley",
+"a": 254.0,
+"b": 153.0,
+"d": -101.0,
+"age": 23
+},
+{
+"key": "max-heath",
+"name": "Max Heath",
+"a": 632.0,
+"b": 519.0,
+"d": -113.0,
+"age": 24
+},
+{
+"key": "jai-culley",
+"name": "Jai Culley",
+"a": 189.0,
+"b": 60.0,
+"d": -129.0,
+"age": 23
+},
+{
+"key": "bailey-humphrey",
+"name": "Bailey Humphrey",
+"a": 2422.0,
+"b": 2263.0,
+"d": -159.0,
+"age": 22
+},
+{
+"key": "nicholas-martin",
+"name": "Nicholas Martin",
+"a": 3598.0,
+"b": 3365.0,
+"d": -233.0,
+"age": 25
+},
+{
+"key": "jake-waterman",
+"name": "Jake Waterman",
+"a": 1191.0,
+"b": 1153.0,
+"d": -38.0,
+"age": 28
+},
+{
+"key": "tobie-travaglia",
+"name": "Tobie Travaglia",
+"a": 736.0,
+"b": 550.0,
+"d": -186.0,
+"age": 20
+},
+{
+"key": "cameron-mackenzie",
+"name": "Cameron Mackenzie",
+"a": 2094.0,
+"b": 1861.0,
+"d": -233.0,
+"age": 22
+},
+{
+"key": "riley-hamilton",
+"name": "Riley Hamilton",
+"a": 255.0,
+"b": 224.0,
+"d": -31.0,
+"age": 20
+},
+{
+"key": "ned-reeves",
+"name": "Ned Reeves",
+"a": 249.0,
+"b": 240.0,
+"d": -9.0,
+"age": 28
+},
+{
+"key": "ned-moyle",
+"name": "Ned Moyle",
+"a": 2053.0,
+"b": 1252.0,
+"d": -801.0,
+"age": 24
+},
+{
+"key": "jy-farrar",
+"name": "Jy Farrar",
+"a": 11.0,
+"b": 9.0,
+"d": -2.0,
+"age": 30
+},
+{
+"key": "jack-viney",
+"name": "Jack Viney",
+"a": 242.0,
+"b": 236.0,
+"d": -6.0,
+"age": 32
+},
+{
+"key": "jake-stringer",
+"name": "Jake Stringer",
+"a": 107.0,
+"b": 104.0,
+"d": -3.0,
+"age": 32
+},
+{
+"key": "tristan-xerri",
+"name": "Tristan Xerri",
+"a": 8109.0,
+"b": 7697.0,
+"d": -412.0,
+"age": 27
+},
+{
+"key": "sam-marshall",
+"name": "Sam Marshall",
+"a": 821.0,
+"b": 543.0,
+"d": -278.0,
+"age": 20
+},
+{
+"key": "trent-rivers",
+"name": "Trent Rivers",
+"a": 1841.0,
+"b": 1786.0,
+"d": -55.0,
+"age": 25
+},
+{
+"key": "kye-annand",
+"name": "Kye Annand",
+"a": 161.0,
+"b": 83.0,
+"d": -78.0,
+"age": 23
+},
+{
+"key": "zachary-williams",
+"name": "Zachary Williams",
+"a": 374.0,
+"b": 365.0,
+"d": -9.0,
+"age": 32
+},
+{
+"key": "daniel-annable",
+"name": "Daniel Annable",
+"a": 1364.0,
+"b": 1400.0,
+"d": 36.0,
+"age": 19
+},
+{
+"key": "steely-green",
+"name": "Steely Green",
+"a": 150.0,
+"b": 50.0,
+"d": -100.0,
+"age": 22
+},
+{
+"key": "miles-bergman",
+"name": "Miles Bergman",
+"a": 931.0,
+"b": 902.0,
+"d": -29.0,
+"age": 25
+},
+{
+"key": "shadeau-brain",
+"name": "Shadeau Brain",
+"a": 86.0,
+"b": 41.0,
+"d": -45.0,
+"age": 22
+},
+{
+"key": "rory-lobb",
+"name": "Rory Lobb",
+"a": 302.0,
+"b": 295.0,
+"d": -7.0,
+"age": 33
+},
+{
+"key": "andy-moniz-wakefield",
+"name": "Andy Moniz-Wakefield",
+"a": 28.0,
+"b": 16.0,
+"d": -12.0,
+"age": 23
+},
+{
+"key": "zak-johnson",
+"name": "Zak Johnson",
+"a": 556.0,
+"b": 253.0,
+"d": -303.0,
+"age": 20
+},
+{
+"key": "wayne-milera",
+"name": "Wayne Milera",
+"a": 1825.0,
+"b": 1771.0,
+"d": -54.0,
+"age": 29
+},
+{
+"key": "kai-lohmann",
+"name": "Kai Lohmann",
+"a": 661.0,
+"b": 630.0,
+"d": -31.0,
+"age": 23
+},
+{
+"key": "louis-emmett",
+"name": "Louis Emmett",
+"a": 773.0,
+"b": 663.0,
+"d": -110.0,
+"age": 19
+},
+{
+"key": "tom-green",
+"name": "Tom Green",
+"a": 4883.0,
+"b": 4735.0,
+"d": -148.0,
+"age": 25
+},
+{
+"key": "milan-murdock",
+"name": "Milan Murdock",
+"a": 346.0,
+"b": 323.0,
+"d": -23.0,
+"age": 26
+},
+{
+"key": "josh-lai",
+"name": "Josh Lai",
+"a": 513.0,
+"b": 131.0,
+"d": -382.0,
+"age": 21
+},
+{
+"key": "joshua-weddle",
+"name": "Joshua Weddle",
+"a": 1578.0,
+"b": 1494.0,
+"d": -84.0,
+"age": 22
+},
+{
+"key": "archie-may",
+"name": "Archie May",
+"a": 429.0,
+"b": 196.0,
+"d": -233.0,
+"age": 22
+},
+{
+"key": "ollie-greeves",
+"name": "Ollie Greeves",
+"a": 568.0,
+"b": 353.0,
+"d": -215.0,
+"age": 19
+},
+{
+"key": "ed-richards",
+"name": "Ed Richards",
+"a": 3949.0,
+"b": 3828.0,
+"d": -121.0,
+"age": 27
+},
+{
+"key": "liam-puncher",
+"name": "Liam Puncher",
+"a": 116.0,
+"b": 76.0,
+"d": -40.0,
+"age": 23
+},
+{
+"key": "malakai-champion",
+"name": "Malakai Champion",
+"a": 393.0,
+"b": 242.0,
+"d": -151.0,
+"age": 20
+},
+{
+"key": "kieren-briggs",
+"name": "Kieren Briggs",
+"a": 2140.0,
+"b": 2069.0,
+"d": -71.0,
+"age": 27
+},
+{
+"key": "marc-pittonet",
+"name": "Marc Pittonet",
+"a": 425.0,
+"b": 395.0,
+"d": -30.0,
+"age": 30
+},
+{
+"key": "lachie-jaques",
+"name": "Lachie Jaques",
+"a": 809.0,
+"b": 384.0,
+"d": -425.0,
+"age": 20
+},
+{
+"key": "chad-warner",
+"name": "Chad Warner",
+"a": 4038.0,
+"b": 3915.0,
+"d": -123.0,
+"age": 25
+},
+{
+"key": "sam-taylor",
+"name": "Sam Taylor",
+"a": 1272.0,
+"b": 1238.0,
+"d": -34.0,
+"age": 27
+},
+{
+"key": "christian-moraes",
+"name": "Christian Moraes",
+"a": 921.0,
+"b": 514.0,
+"d": -407.0,
+"age": 20
+},
+{
+"key": "flynn-riley",
+"name": "Flynn Riley",
+"a": 276.0,
+"b": 271.0,
+"d": -5.0,
+"age": 22
+},
+{
+"key": "taylor-walker",
+"name": "Taylor Walker",
+"a": 128.0,
+"b": 124.0,
+"d": -4.0,
+"age": 37
+},
+{
+"key": "matt-rowell",
+"name": "Matt Rowell",
+"a": 4259.0,
+"b": 4122.0,
+"d": -137.0,
+"age": 25
+},
+{
+"key": "beau-addinsall",
+"name": "Beau Addinsall",
+"a": 1517.0,
+"b": 1340.0,
+"d": -177.0,
+"age": 19
+},
+{
+"key": "will-ashcroft",
+"name": "Will Ashcroft",
+"a": 7310.0,
+"b": 7092.0,
+"d": -218.0,
+"age": 22
+},
+{
+"key": "christian-salem",
+"name": "Christian Salem",
+"a": 232.0,
+"b": 224.0,
+"d": -8.0,
+"age": 31
+},
+{
+"key": "lloyd-meek",
+"name": "Lloyd Meek",
+"a": 1329.0,
+"b": 1251.0,
+"d": -78.0,
+"age": 28
+},
+{
+"key": "bodhi-uwland",
+"name": "Bodhi Uwland",
+"a": 4137.0,
+"b": 3823.0,
+"d": -314.0,
+"age": 23
+},
+{
+"key": "brandon-zerk-thatcher",
+"name": "Brandon Zerk-Thatcher",
+"a": 48.0,
+"b": 58.0,
+"d": 10.0,
+"age": 28
+},
+{
+"key": "esava-ratugolea",
+"name": "Esava Ratugolea",
+"a": 66.0,
+"b": 62.0,
+"d": -4.0,
+"age": 28
+},
+{
+"key": "dayne-zorko",
+"name": "Dayne Zorko",
+"a": 1040.0,
+"b": 1009.0,
+"d": -31.0,
+"age": 37
+},
+{
+"key": "josh-battle",
+"name": "Josh Battle",
+"a": 2122.0,
+"b": 2066.0,
+"d": -56.0,
+"age": 28
+},
+{
+"key": "harry-kyle",
+"name": "Harry Kyle",
+"a": 1149.0,
+"b": 887.0,
+"d": -262.0,
+"age": 19
+},
+{
+"key": "charlie-ballard",
+"name": "Charlie Ballard",
+"a": 42.0,
+"b": 41.0,
+"d": -1.0,
+"age": 27
+},
+{
+"key": "charlie-banfield",
+"name": "Charlie Banfield",
+"a": 639.0,
+"b": 424.0,
+"d": -215.0,
+"age": 19
+},
+{
+"key": "murphy-reid",
+"name": "Murphy Reid",
+"a": 4441.0,
+"b": 4247.0,
+"d": -194.0,
+"age": 20
+},
+{
+"key": "bailey-williams-wc",
+"name": "Bailey J. Williams",
+"a": 2437.0,
+"b": 2364.0,
+"d": -73.0,
+"age": 26
+},
+{
+"key": "dan-houston",
+"name": "Dan Houston",
+"a": 1127.0,
+"b": 1095.0,
+"d": -32.0,
+"age": 29
+},
+{
+"key": "connor-budarick",
+"name": "Connor Budarick",
+"a": 284.0,
+"b": 254.0,
+"d": -30.0,
+"age": 25
+},
+{
+"key": "tom-cole",
+"name": "Tom Cole",
+"a": 48.0,
+"b": 47.0,
+"d": -1.0,
+"age": 29
+},
+{
+"key": "edward-allan",
+"name": "Edward Allan",
+"a": 815.0,
+"b": 671.0,
+"d": -144.0,
+"age": 22
+},
+{
+"key": "hussien-el-achkar",
+"name": "Hussien El Achkar",
+"a": 444.0,
+"b": 345.0,
+"d": -99.0,
+"age": 19
+},
+{
+"key": "gryan-miers",
+"name": "Gryan Miers",
+"a": 1689.0,
+"b": 1642.0,
+"d": -47.0,
+"age": 27
+},
+{
+"key": "darcy-fogarty",
+"name": "Darcy Fogarty",
+"a": 868.0,
+"b": 844.0,
+"d": -24.0,
+"age": 27
+},
+{
+"key": "shannon-neale",
+"name": "Shannon Neale",
+"a": 2413.0,
+"b": 2309.0,
+"d": -104.0,
+"age": 24
+},
+{
+"key": "jonty-faull",
+"name": "Jonty Faull",
+"a": 948.0,
+"b": 674.0,
+"d": -274.0,
+"age": 20
+},
+{
+"key": "lachlan-schultz",
+"name": "Lachlan Schultz",
+"a": 649.0,
+"b": 630.0,
+"d": -19.0,
+"age": 29
+},
+{
+"key": "elliot-yeo",
+"name": "Elliot Yeo",
+"a": 294.0,
+"b": 285.0,
+"d": -9.0,
+"age": 33
+},
+{
+"key": "calsher-dear",
+"name": "Calsher Dear",
+"a": 956.0,
+"b": 482.0,
+"d": -474.0,
+"age": 21
+},
+{
+"key": "josh-ward",
+"name": "Josh Ward",
+"a": 2873.0,
+"b": 2739.0,
+"d": -134.0,
+"age": 23
+},
+{
+"key": "cooper-lord",
+"name": "Cooper Lord",
+"a": 1150.0,
+"b": 551.0,
+"d": -599.0,
+"age": 21
+},
+{
+"key": "tom-doedee",
+"name": "Tom Doedee",
+"a": 236.0,
+"b": 229.0,
+"d": -7.0,
+"age": 29
+},
+{
+"key": "karl-worner",
+"name": "Karl Worner",
+"a": 1246.0,
+"b": 1068.0,
+"d": -178.0,
+"age": 24
+},
+{
+"key": "ryan-angwin",
+"name": "Ryan Angwin",
+"a": 471.0,
+"b": 411.0,
+"d": -60.0,
+"age": 24
+},
+{
+"key": "joe-richards",
+"name": "Joe Richards",
+"a": 922.0,
+"b": 839.0,
+"d": -83.0,
+"age": 27
+},
+{
+"key": "archer-day-wicks",
+"name": "Archer Day-Wicks",
+"a": 636.0,
+"b": 207.0,
+"d": -429.0,
+"age": 20
+},
+{
+"key": "hugh-bond",
+"name": "Hugh Bond",
+"a": 154.0,
+"b": 59.0,
+"d": -95.0,
+"age": 22
+},
+{
+"key": "oliver-florent",
+"name": "Oliver Florent",
+"a": 633.0,
+"b": 614.0,
+"d": -19.0,
+"age": 28
+},
+{
+"key": "isaac-heeney",
+"name": "Isaac Heeney",
+"a": 3652.0,
+"b": 3540.0,
+"d": -112.0,
+"age": 30
+},
+{
+"key": "max-gruzewski",
+"name": "Max Gruzewski",
+"a": 571.0,
+"b": 240.0,
+"d": -331.0,
+"age": 22
+},
+{
+"key": "james-o-donnell",
+"name": "James O'Donnell",
+"a": 572.0,
+"b": 446.0,
+"d": -126.0,
+"age": 24
+},
+{
+"key": "isaiah-dudley",
+"name": "Isaiah Dudley",
+"a": 142.0,
+"b": 88.0,
+"d": -54.0,
+"age": 23
+},
+{
+"key": "marcus-bontempelli",
+"name": "Marcus Bontempelli",
+"a": 3974.0,
+"b": 3851.0,
+"d": -123.0,
+"age": 31
+},
+{
+"key": "nate-caddy",
+"name": "Nate Caddy",
+"a": 1800.0,
+"b": 1500.0,
+"d": -300.0,
+"age": 21
+},
+{
+"key": "zach-guthrie",
+"name": "Zach Guthrie",
+"a": 239.0,
+"b": 232.0,
+"d": -7.0,
+"age": 28
+},
+{
+"key": "tyrell-dewar",
+"name": "Tyrell Dewar",
+"a": 113.0,
+"b": 42.0,
+"d": -71.0,
+"age": 22
+},
+{
+"key": "zac-fisher",
+"name": "Zac Fisher",
+"a": 107.0,
+"b": 104.0,
+"d": -3.0,
+"age": 28
+},
+{
+"key": "colby-mckercher",
+"name": "Colby McKercher",
+"a": 4434.0,
+"b": 4313.0,
+"d": -121.0,
+"age": 21
+},
+{
+"key": "joshua-kelly",
+"name": "Joshua Kelly",
+"a": 389.0,
+"b": 376.0,
+"d": -13.0,
+"age": 31
+},
+{
+"key": "elijah-hollands",
+"name": "Elijah Hollands",
+"a": 716.0,
+"b": 704.0,
+"d": -12.0,
+"age": 24
+},
+{
+"key": "jacob-weitering",
+"name": "Jacob Weitering",
+"a": 1031.0,
+"b": 1003.0,
+"d": -28.0,
+"age": 29
+},
+{
+"key": "jesse-hogan",
+"name": "Jesse Hogan",
+"a": 218.0,
+"b": 210.0,
+"d": -8.0,
+"age": 32
+},
+{
+"key": "oscar-mcdonald",
+"name": "Oscar McDonald",
+"a": 158.0,
+"b": 155.0,
+"d": -3.0,
+"age": 30
+},
+{
+"key": "matt-hill",
+"name": "Matt Hill",
+"a": 55.0,
+"b": 43.0,
+"d": -12.0,
+"age": 22
+},
+{
+"key": "wade-derksen",
+"name": "Wade Derksen",
+"a": 84.0,
+"b": 60.0,
+"d": -24.0,
+"age": 25
+},
+{
+"key": "jack-higgins",
+"name": "Jack Higgins",
+"a": 55.0,
+"b": 53.0,
+"d": -2.0,
+"age": 27
+},
+{
+"key": "sam-lalor",
+"name": "Sam Lalor",
+"a": 4638.0,
+"b": 4713.0,
+"d": 75.0,
+"age": 20
+},
+{
+"key": "massimo-d-ambrosio",
+"name": "Massimo D'Ambrosio",
+"a": 1550.0,
+"b": 1232.0,
+"d": -318.0,
+"age": 23
+},
+{
+"key": "matt-cottrell",
+"name": "Matt Cottrell",
+"a": 70.0,
+"b": 67.0,
+"d": -3.0,
+"age": 26
+},
+{
+"key": "arthur-jones",
+"name": "Arthur Jones",
+"a": 92.0,
+"b": 51.0,
+"d": -41.0,
+"age": 23
+},
+{
+"key": "koltyn-tholstrup",
+"name": "Koltyn Tholstrup",
+"a": 1603.0,
+"b": 1568.0,
+"d": -35.0,
+"age": 21
+},
+{
+"key": "harry-sharp",
+"name": "Harry Sharp",
+"a": 54.0,
+"b": 29.0,
+"d": -25.0,
+"age": 24
+},
+{
+"key": "lachlan-gulbin",
+"name": "Lachlan Gulbin",
+"a": 382.0,
+"b": 253.0,
+"d": -129.0,
+"age": 20
+},
+{
+"key": "mitchell-lewis",
+"name": "Mitchell Lewis",
+"a": 540.0,
+"b": 480.0,
+"d": -60.0,
+"age": 28
+},
+{
+"key": "archie-roberts",
+"name": "Archie Roberts",
+"a": 4941.0,
+"b": 4213.0,
+"d": -728.0,
+"age": 21
+},
+{
+"key": "lachlan-ash",
+"name": "Lachlan Ash",
+"a": 6130.0,
+"b": 5948.0,
+"d": -182.0,
+"age": 25
+},
+{
+"key": "oliver-wines",
+"name": "Oliver Wines",
+"a": 321.0,
+"b": 311.0,
+"d": -10.0,
+"age": 32
+},
+{
+"key": "james-leake",
+"name": "James Leake",
+"a": 482.0,
+"b": 408.0,
+"d": -74.0,
+"age": 21
+},
+{
+"key": "peter-ladhams",
+"name": "Peter Ladhams",
+"a": 538.0,
+"b": 451.0,
+"d": -87.0,
+"age": 28
+},
+{
+"key": "max-michalanney",
+"name": "Max Michalanney",
+"a": 499.0,
+"b": 468.0,
+"d": -31.0,
+"age": 22
+},
+{
+"key": "jhye-clark",
+"name": "Jhye Clark",
+"a": 834.0,
+"b": 744.0,
+"d": -90.0,
+"age": 22
+},
+{
+"key": "levi-ashcroft",
+"name": "Levi Ashcroft",
+"a": 3350.0,
+"b": 3298.0,
+"d": -52.0,
+"age": 20
+},
+{
+"key": "tom-hanily",
+"name": "Tom Hanily",
+"a": 162.0,
+"b": 100.0,
+"d": -62.0,
+"age": 21
+},
+{
+"key": "luke-kennedy",
+"name": "Luke Kennedy",
+"a": 392.0,
+"b": 261.0,
+"d": -131.0,
+"age": 20
+},
+{
+"key": "angus-anderson",
+"name": "Angus Anderson",
+"a": 161.0,
+"b": 152.0,
+"d": -9.0,
+"age": 23
+},
+{
+"key": "mac-andrew",
+"name": "Mac Andrew",
+"a": 4223.0,
+"b": 4084.0,
+"d": -139.0,
+"age": 23
+},
+{
+"key": "isaac-keeler",
+"name": "Isaac Keeler",
+"a": 192.0,
+"b": 171.0,
+"d": -21.0,
+"age": 22
+},
+{
+"key": "lachie-neale",
+"name": "Lachie Neale",
+"a": 2171.0,
+"b": 2105.0,
+"d": -66.0,
+"age": 33
+},
+{
+"key": "rhyan-mansell",
+"name": "Rhyan Mansell",
+"a": 51.0,
+"b": 47.0,
+"d": -4.0,
+"age": 26
+},
+{
+"key": "rhylee-west",
+"name": "Rhylee West",
+"a": 101.0,
+"b": 98.0,
+"d": -3.0,
+"age": 26
+},
+{
+"key": "jack-scrimshaw",
+"name": "Jack Scrimshaw",
+"a": 93.0,
+"b": 90.0,
+"d": -3.0,
+"age": 28
+},
+{
+"key": "cameron-zurhaar",
+"name": "Cameron Zurhaar",
+"a": 94.0,
+"b": 90.0,
+"d": -4.0,
+"age": 28
+},
+{
+"key": "ryley-sanders",
+"name": "Ryley Sanders",
+"a": 3934.0,
+"b": 3823.0,
+"d": -111.0,
+"age": 21
+},
+{
+"key": "brandon-walker",
+"name": "Brandon Walker",
+"a": 62.0,
+"b": 37.0,
+"d": -25.0,
+"age": 24
+},
+{
+"key": "billy-frampton",
+"name": "Billy Frampton",
+"a": 34.0,
+"b": 33.0,
+"d": -1.0,
+"age": 30
+},
+{
+"key": "clay-hall",
+"name": "Clay Hall",
+"a": 286.0,
+"b": 224.0,
+"d": -62.0,
+"age": 21
+},
+{
+"key": "hugh-mccluggage",
+"name": "Hugh McCluggage",
+"a": 1563.0,
+"b": 1515.0,
+"d": -48.0,
+"age": 28
+},
+{
+"key": "ben-ainsworth",
+"name": "Ben Ainsworth",
+"a": 197.0,
+"b": 191.0,
+"d": -6.0,
+"age": 28
+},
+{
+"key": "kyle-langford",
+"name": "Kyle Langford",
+"a": 554.0,
+"b": 538.0,
+"d": -16.0,
+"age": 30
+},
+{
+"key": "campbell-gray",
+"name": "Campbell Gray",
+"a": 180.0,
+"b": 115.0,
+"d": -65.0,
+"age": 23
+},
+{
+"key": "max-kondogiannis",
+"name": "Max Kondogiannis",
+"a": 464.0,
+"b": 301.0,
+"d": -163.0,
+"age": 19
+},
+{
+"key": "kaleb-smith",
+"name": "Kaleb Smith",
+"a": 67.0,
+"b": 61.0,
+"d": -6.0,
+"age": 22
+},
+{
+"key": "nick-murray",
+"name": "Nick Murray",
+"a": 329.0,
+"b": 317.0,
+"d": -12.0,
+"age": 26
+},
+{
+"key": "bailey-dale",
+"name": "Bailey Dale",
+"a": 2287.0,
+"b": 2220.0,
+"d": -67.0,
+"age": 30
+},
+{
+"key": "darcy-cameron",
+"name": "Darcy Cameron",
+"a": 1586.0,
+"b": 1537.0,
+"d": -49.0,
+"age": 31
+},
+{
+"key": "kade-chandler",
+"name": "Kade Chandler",
+"a": 950.0,
+"b": 922.0,
+"d": -28.0,
+"age": 26
+},
+{
+"key": "jayden-short",
+"name": "Jayden Short",
+"a": 962.0,
+"b": 932.0,
+"d": -30.0,
+"age": 30
+},
+{
+"key": "lachlan-cowan",
+"name": "Lachlan Cowan",
+"a": 722.0,
+"b": 503.0,
+"d": -219.0,
+"age": 22
+},
+{
+"key": "marcus-windhager",
+"name": "Marcus Windhager",
+"a": 1844.0,
+"b": 1660.0,
+"d": -184.0,
+"age": 23
+},
+{
+"key": "tom-mccartin",
+"name": "Tom McCartin",
+"a": 1771.0,
+"b": 1725.0,
+"d": -46.0,
+"age": 27
+},
+{
+"key": "harrison-oliver",
+"name": "Harrison Oliver",
+"a": 588.0,
+"b": 486.0,
+"d": -102.0,
+"age": 20
+},
+{
+"key": "brent-daniels",
+"name": "Brent Daniels",
+"a": 1212.0,
+"b": 1179.0,
+"d": -33.0,
+"age": 27
+},
+{
+"key": "max-holmes",
+"name": "Max Holmes",
+"a": 8517.0,
+"b": 8257.0,
+"d": -260.0,
+"age": 24
+},
+{
+"key": "jack-henry",
+"name": "Jack Henry",
+"a": 193.0,
+"b": 187.0,
+"d": -6.0,
+"age": 28
+},
+{
+"key": "will-hayward",
+"name": "Will Hayward",
+"a": 206.0,
+"b": 200.0,
+"d": -6.0,
+"age": 28
+},
+{
+"key": "cooper-trembath",
+"name": "Cooper Trembath",
+"a": 2053.0,
+"b": 1211.0,
+"d": -842.0,
+"age": 21
+},
+{
+"key": "cooper-sharman",
+"name": "Cooper Sharman",
+"a": 542.0,
+"b": 523.0,
+"d": -19.0,
+"age": 26
+},
+{
+"key": "griffin-logue",
+"name": "Griffin Logue",
+"a": 76.0,
+"b": 73.0,
+"d": -3.0,
+"age": 28
+},
+{
+"key": "harry-edwards",
+"name": "Harry Edwards",
+"a": 103.0,
+"b": 48.0,
+"d": -55.0,
+"age": 26
+},
+{
+"key": "jack-darling",
+"name": "Jack Darling",
+"a": 138.0,
+"b": 133.0,
+"d": -5.0,
+"age": 34
+},
+{
+"key": "lewis-young",
+"name": "Lewis Young",
+"a": 130.0,
+"b": 124.0,
+"d": -6.0,
+"age": 28
+},
+{
+"key": "luke-jackson",
+"name": "Luke Jackson",
+"a": 9860.0,
+"b": 9560.0,
+"d": -300.0,
+"age": 25
+},
+{
+"key": "connor-o-sullivan",
+"name": "Connor O'Sullivan",
+"a": 2947.0,
+"b": 2828.0,
+"d": -119.0,
+"age": 21
+},
+{
+"key": "nick-watson",
+"name": "Nick Watson",
+"a": 4212.0,
+"b": 4097.0,
+"d": -115.0,
+"age": 21
+},
+{
+"key": "callum-brown-ire",
+"name": "Callum M. Brown",
+"a": 35.0,
+"b": 32.0,
+"d": -3.0,
+"age": 26
+},
+{
+"key": "christian-petracca",
+"name": "Christian Petracca",
+"a": 2324.0,
+"b": 2254.0,
+"d": -70.0,
+"age": 30
+},
+{
+"key": "will-edwards",
+"name": "Will Edwards",
+"a": 208.0,
+"b": 68.0,
+"d": -140.0,
+"age": 23
+},
+{
+"key": "harry-armstrong",
+"name": "Harry Armstrong",
+"a": 804.0,
+"b": 735.0,
+"d": -69.0,
+"age": 20
+},
+{
+"key": "jack-payne",
+"name": "Jack Payne",
+"a": 100.0,
+"b": 94.0,
+"d": -6.0,
+"age": 27
+},
+{
+"key": "ned-long",
+"name": "Ned Long",
+"a": 1349.0,
+"b": 1125.0,
+"d": -224.0,
+"age": 23
+},
+{
+"key": "josh-dunkley",
+"name": "Josh Dunkley",
+"a": 1173.0,
+"b": 1137.0,
+"d": -36.0,
+"age": 29
+},
+{
+"key": "corey-durdin",
+"name": "Corey Durdin",
+"a": 48.0,
+"b": 35.0,
+"d": -13.0,
+"age": 24
+},
+{
+"key": "todd-marshall",
+"name": "Todd Marshall",
+"a": 66.0,
+"b": 64.0,
+"d": -2.0,
+"age": 28
+},
+{
+"key": "sullivan-robey",
+"name": "Sullivan Robey",
+"a": 3070.0,
+"b": 2807.0,
+"d": -263.0,
+"age": 19
+},
+{
+"key": "archer-reid",
+"name": "Archer Reid",
+"a": 697.0,
+"b": 392.0,
+"d": -305.0,
+"age": 21
+},
+{
+"key": "ryan-maric",
+"name": "Ryan Maric",
+"a": 1397.0,
+"b": 903.0,
+"d": -494.0,
+"age": 22
+},
+{
+"key": "jordon-sweet",
+"name": "Jordon Sweet",
+"a": 2435.0,
+"b": 2190.0,
+"d": -245.0,
+"age": 28
+},
+{
+"key": "jeremy-cameron",
+"name": "Jeremy Cameron",
+"a": 827.0,
+"b": 802.0,
+"d": -25.0,
+"age": 33
+},
+{
+"key": "robert-hansen",
+"name": "Robert Hansen",
+"a": 91.0,
+"b": 80.0,
+"d": -11.0,
+"age": 22
+},
+{
+"key": "mitchell-edwards",
+"name": "Mitchell Edwards",
+"a": 2164.0,
+"b": 1650.0,
+"d": -514.0,
+"age": 21
+},
+{
+"key": "liam-mcmahon",
+"name": "Liam McMahon",
+"a": 149.0,
+"b": 44.0,
+"d": -105.0,
+"age": 24
+},
+{
+"key": "peter-wright",
+"name": "Peter Wright",
+"a": 1788.0,
+"b": 1733.0,
+"d": -55.0,
+"age": 30
+},
+{
+"key": "darcy-moore",
+"name": "Darcy Moore",
+"a": 146.0,
+"b": 143.0,
+"d": -3.0,
+"age": 30
+},
+{
+"key": "nathan-o-driscoll",
+"name": "Nathan O'Driscoll",
+"a": 622.0,
+"b": 536.0,
+"d": -86.0,
+"age": 24
+},
+{
+"key": "adam-cerra",
+"name": "Adam Cerra",
+"a": 980.0,
+"b": 950.0,
+"d": -30.0,
+"age": 27
+},
+{
+"key": "liam-fawcett",
+"name": "Liam Fawcett",
+"a": 461.0,
+"b": 391.0,
+"d": -70.0,
+"age": 21
+},
+{
+"key": "josaia-delana",
+"name": "Josaia Delana",
+"a": 296.0,
+"b": 256.0,
+"d": -40.0,
+"age": 20
+},
+{
+"key": "noah-anderson",
+"name": "Noah Anderson",
+"a": 5776.0,
+"b": 5596.0,
+"d": -180.0,
+"age": 25
+},
+{
+"key": "jye-amiss",
+"name": "Jye Amiss",
+"a": 1456.0,
+"b": 1328.0,
+"d": -128.0,
+"age": 23
+},
+{
+"key": "josh-worrell",
+"name": "Josh Worrell",
+"a": 3663.0,
+"b": 3566.0,
+"d": -97.0,
+"age": 25
+},
+{
+"key": "timothy-english",
+"name": "Timothy English",
+"a": 4220.0,
+"b": 4092.0,
+"d": -128.0,
+"age": 29
+},
+{
+"key": "harry-sheezel",
+"name": "Harry Sheezel",
+"a": 12124.0,
+"b": 11764.0,
+"d": -360.0,
+"age": 22
+},
+{
+"key": "jy-simpkin",
+"name": "Jy Simpkin",
+"a": 1220.0,
+"b": 1183.0,
+"d": -37.0,
+"age": 28
+},
+{
+"key": "cooper-hynes",
+"name": "Cooper Hynes",
+"a": 1382.0,
+"b": 1093.0,
+"d": -289.0,
+"age": 20
+},
+{
+"key": "jake-lever",
+"name": "Jake Lever",
+"a": 192.0,
+"b": 187.0,
+"d": -5.0,
+"age": 30
+},
+{
+"key": "riley-garcia",
+"name": "Riley Garcia",
+"a": 67.0,
+"b": 22.0,
+"d": -45.0,
+"age": 25
+},
+{
+"key": "logan-morris",
+"name": "Logan Morris",
+"a": 3085.0,
+"b": 2758.0,
+"d": -327.0,
+"age": 21
+},
+{
+"key": "leo-lombard",
+"name": "Leo Lombard",
+"a": 1677.0,
+"b": 1528.0,
+"d": -149.0,
+"age": 20
+},
+{
+"key": "brayden-cook",
+"name": "Brayden Cook",
+"a": 766.0,
+"b": 697.0,
+"d": -69.0,
+"age": 24
+},
+{
+"key": "jordan-dawson",
+"name": "Jordan Dawson",
+"a": 3492.0,
+"b": 3384.0,
+"d": -108.0,
+"age": 29
+},
+{
+"key": "wil-dawson",
+"name": "Wil Dawson",
+"a": 559.0,
+"b": 389.0,
+"d": -170.0,
+"age": 21
+},
+{
+"key": "beau-mccreery",
+"name": "Beau McCreery",
+"a": 130.0,
+"b": 115.0,
+"d": -15.0,
+"age": 25
+},
+{
+"key": "lance-collard",
+"name": "Lance Collard",
+"a": 171.0,
+"b": 153.0,
+"d": -18.0,
+"age": 21
+},
+{
+"key": "luke-nankervis",
+"name": "Luke Nankervis",
+"a": 372.0,
+"b": 204.0,
+"d": -168.0,
+"age": 23
+},
+{
+"key": "luke-ryan",
+"name": "Luke Ryan",
+"a": 1412.0,
+"b": 1370.0,
+"d": -42.0,
+"age": 30
+},
+{
+"key": "caleb-graham",
+"name": "Caleb Graham",
+"a": 40.0,
+"b": 23.0,
+"d": -17.0,
+"age": 26
+},
+{
+"key": "jarman-impey",
+"name": "Jarman Impey",
+"a": 987.0,
+"b": 958.0,
+"d": -29.0,
+"age": 31
+},
+{
+"key": "izak-rankine",
+"name": "Izak Rankine",
+"a": 3558.0,
+"b": 3458.0,
+"d": -100.0,
+"age": 26
+},
+{
+"key": "xavier-bamert",
+"name": "Xavier Bamert",
+"a": 375.0,
+"b": 319.0,
+"d": -56.0,
+"age": 19
+},
+{
+"key": "lukas-cooke",
+"name": "Lukas Cooke",
+"a": 152.0,
+"b": 136.0,
+"d": -16.0,
+"age": 23
+},
+{
+"key": "george-stevens",
+"name": "George Stevens",
+"a": 326.0,
+"b": 133.0,
+"d": -193.0,
+"age": 21
+},
+{
+"key": "sid-draper",
+"name": "Sid Draper",
+"a": 1144.0,
+"b": 1247.0,
+"d": 103.0,
+"age": 20
+},
+{
+"key": "brennan-cox",
+"name": "Brennan Cox",
+"a": 264.0,
+"b": 257.0,
+"d": -7.0,
+"age": 28
+},
+{
+"key": "lachlan-smith",
+"name": "Lachlan Smith",
+"a": 627.0,
+"b": 439.0,
+"d": -188.0,
+"age": 21
+},
+{
+"key": "samuel-collins",
+"name": "Samuel Collins",
+"a": 629.0,
+"b": 612.0,
+"d": -17.0,
+"age": 32
+},
+{
+"key": "riley-hardeman",
+"name": "Riley Hardeman",
+"a": 274.0,
+"b": 224.0,
+"d": -50.0,
+"age": 21
+},
+{
+"key": "sam-de-koning",
+"name": "Sam De Koning",
+"a": 867.0,
+"b": 836.0,
+"d": -31.0,
+"age": 25
+},
+{
+"key": "reilly-o-brien",
+"name": "Reilly O'Brien",
+"a": 870.0,
+"b": 843.0,
+"d": -27.0,
+"age": 31
+},
+{
+"key": "alix-tauru",
+"name": "Alix Tauru",
+"a": 1628.0,
+"b": 1215.0,
+"d": -413.0,
+"age": 20
+},
+{
+"key": "ben-miller",
+"name": "Ben Miller",
+"a": 958.0,
+"b": 835.0,
+"d": -123.0,
+"age": 27
+}
+],
+"scale": 0.9153242896743808,
+"totA": 759722.0,
+"totB": 695392.0,
+"rel": [
+{
+"key": "ollie-dempsey",
+"name": "Ollie Dempsey",
+"r": -0.10829345719090055,
+"age": 23
+},
+{
+"key": "ollie-murphy",
+"name": "Ollie Murphy",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "james-borlase",
+"name": "James Borlase",
+"r": -0.3315241898186817,
+"age": 24
+},
+{
+"key": "harrison-petty",
+"name": "Harrison Petty",
+"r": 0.062329167462221946,
+"age": 27
+},
+{
+"key": "jake-melksham",
+"name": "Jake Melksham",
+"r": 0.09250897335603514,
+"age": 35
+},
+{
+"key": "riak-andrew",
+"name": "Riak Andrew",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "harvey-harrison",
+"name": "Harvey Harrison",
+"r": -0.2261394772061417,
+"age": 23
+},
+{
+"key": "lachlan-sholl",
+"name": "Lachlan Sholl",
+"r": -0.02888091257241321,
+"age": 26
+},
+{
+"key": "mykelti-lefau",
+"name": "Mykelti Lefau",
+"r": 0.09250897335603514,
+"age": 28
+},
+{
+"key": "marcus-herbert",
+"name": "Marcus Herbert",
+"r": -0.18888131822789866,
+"age": 24
+},
+{
+"key": "zeke-uwland",
+"name": "Zeke Uwland",
+"r": 0.04534446241100354,
+"age": 19
+},
+{
+"key": "oliver-francou",
+"name": "Oliver Francou",
+"r": -0.3676301001280361,
+"age": 20
+},
+{
+"key": "kane-farrell",
+"name": "Kane Farrell",
+"r": 0.061152975631315165,
+"age": 27
+},
+{
+"key": "josh-sinn",
+"name": "Josh Sinn",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "luke-cleary",
+"name": "Luke Cleary",
+"r": -0.3276867856270552,
+"age": 24
+},
+{
+"key": "hugh-davies",
+"name": "Hugh Davies",
+"r": 0.09250897335603514,
+"age": 22
+},
+{
+"key": "matt-duffy",
+"name": "Matt Duffy",
+"r": 0.09250897335603514,
+"age": 22
+},
+{
+"key": "max-hall",
+"name": "Max Hall",
+"r": -0.1093937076221072,
+"age": 24
+},
+{
+"key": "james-sicily",
+"name": "James Sicily",
+"r": 0.0604583274540087,
+"age": 31
+},
+{
+"key": "harry-rowston",
+"name": "Harry Rowston",
+"r": -0.16145803695644056,
+"age": 22
+},
+{
+"key": "matthew-leray",
+"name": "Matthew LeRay",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "keighton-matofai-forbes",
+"name": "Keighton Matofai-Forbes",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "jagga-smith",
+"name": "Jagga Smith",
+"r": 0.0637248203026124,
+"age": 20
+},
+{
+"key": "taylor-goad",
+"name": "Taylor Goad",
+"r": -0.1429455467638,
+"age": 21
+},
+{
+"key": "josh-smillie",
+"name": "Josh Smillie",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "hayden-mclean",
+"name": "Hayden McLean",
+"r": 0.0523759906613237,
+"age": 27
+},
+{
+"key": "harvey-johnston",
+"name": "Harvey Johnston",
+"r": -0.45374551332198243,
+"age": 21
+},
+{
+"key": "tyler-sonsie",
+"name": "Tyler Sonsie",
+"r": 0.022387557475021858,
+"age": 23
+},
+{
+"key": "jack-henderson",
+"name": "Jack Henderson",
+"r": 0.09250897335603514,
+"age": 27
+},
+{
+"key": "caleb-lewis",
+"name": "Caleb Lewis",
+"r": -0.04218391377005137,
+"age": 23
+},
+{
+"key": "judd-mcvee",
+"name": "Judd McVee",
+"r": -0.12316431911878079,
+"age": 23
+},
+{
+"key": "brayden-fiorini",
+"name": "Brayden Fiorini",
+"r": 0.0554747708693899,
+"age": 29
+},
+{
+"key": "harry-dean",
+"name": "Harry Dean",
+"r": -0.04343857182473454,
+"age": 19
+},
+{
+"key": "riley-onley",
+"name": "Riley Onley",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "avery-thomas",
+"name": "Avery Thomas",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "jesse-dattoli",
+"name": "Jesse Dattoli",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "lewis-hayes",
+"name": "Lewis Hayes",
+"r": 0.09250897335603514,
+"age": 22
+},
+{
+"key": "tom-sparrow",
+"name": "Tom Sparrow",
+"r": 0.06010404618022047,
+"age": 26
+},
+{
+"key": "stephen-coniglio",
+"name": "Stephen Coniglio",
+"r": 0.06271327408268879,
+"age": 33
+},
+{
+"key": "zach-reid",
+"name": "Zach Reid",
+"r": -0.005744721442486056,
+"age": 24
+},
+{
+"key": "alex-dodson",
+"name": "Alex Dodson",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "jarrod-berry",
+"name": "Jarrod Berry",
+"r": 0.06463884648470786,
+"age": 28
+},
+{
+"key": "malcolm-rosas",
+"name": "Malcolm Rosas",
+"r": -0.5377846651186005,
+"age": 25
+},
+{
+"key": "zak-evans",
+"name": "Zak Evans",
+"r": 0.09250897335603514,
+"age": 26
+},
+{
+"key": "sam-clohesy",
+"name": "Sam Clohesy",
+"r": -0.5619408464321212,
+"age": 24
+},
+{
+"key": "joel-amartey",
+"name": "Joel Amartey",
+"r": 0.19493168960816343,
+"age": 27
+},
+{
+"key": "jackson-macrae",
+"name": "Jackson Macrae",
+"r": 0.09250897335603514,
+"age": 32
+},
+{
+"key": "jayden-nguyen",
+"name": "Jayden Nguyen",
+"r": -0.23674030628550957,
+"age": 20
+},
+{
+"key": "ewan-mackinlay",
+"name": "Ewan Mackinlay",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "daniel-butler",
+"name": "Daniel Butler",
+"r": 0.09250897335603514,
+"age": 30
+},
+{
+"key": "zachary-merrett",
+"name": "Zachary Merrett",
+"r": 0.05908536672553355,
+"age": 31
+},
+{
+"key": "oscar-steene",
+"name": "Oscar Steene",
+"r": -0.19616209683966523,
+"age": 23
+},
+{
+"key": "ned-bowman",
+"name": "Ned Bowman",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "tim-taranto",
+"name": "Tim Taranto",
+"r": 0.05884151654999403,
+"age": 28
+},
+{
+"key": "willem-duursma",
+"name": "Willem Duursma",
+"r": 0.09351635830149951,
+"age": 19
+},
+{
+"key": "george-hewett",
+"name": "George Hewett",
+"r": 0.059220737904128073,
+"age": 31
+},
+{
+"key": "sam-powell-pepper",
+"name": "Sam Powell-Pepper",
+"r": 0.06111503734005708,
+"age": 28
+},
+{
+"key": "billy-dowling",
+"name": "Billy Dowling",
+"r": -0.3315241898186817,
+"age": 22
+},
+{
+"key": "jacob-hopper",
+"name": "Jacob Hopper",
+"r": 0.09250897335603514,
+"age": 29
+},
+{
+"key": "caleb-may",
+"name": "Caleb May",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "jai-saxena",
+"name": "Jai Saxena",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "jake-riccardi",
+"name": "Jake Riccardi",
+"r": 0.0649997546024661,
+"age": 27
+},
+{
+"key": "darcy-byrne-jones",
+"name": "Darcy Byrne-Jones",
+"r": 0.05987357016901296,
+"age": 31
+},
+{
+"key": "tom-papley",
+"name": "Tom Papley",
+"r": 0.06109497731704372,
+"age": 30
+},
+{
+"key": "elijah-tsatas",
+"name": "Elijah Tsatas",
+"r": 0.09422675476068298,
+"age": 22
+},
+{
+"key": "jordan-de-goey",
+"name": "Jordan De Goey",
+"r": 0.061553294083334764,
+"age": 30
+},
+{
+"key": "caleb-windsor",
+"name": "Caleb Windsor",
+"r": -0.026227581732446992,
+"age": 21
+},
+{
+"key": "oscar-adams",
+"name": "Oscar Adams",
+"r": -0.2825314204826037,
+"age": 23
+},
+{
+"key": "jordan-clark",
+"name": "Jordan Clark",
+"r": 0.05995579592660172,
+"age": 26
+},
+{
+"key": "elliot-himmelberg",
+"name": "Elliott Himmelberg",
+"r": -0.3047670169552503,
+"age": 28
+},
+{
+"key": "keidean-coleman",
+"name": "Keidean Coleman",
+"r": 0.03673953623445758,
+"age": 26
+},
+{
+"key": "ryan-byrnes",
+"name": "Ryan Byrnes",
+"r": -0.12940691185690945,
+"age": 25
+},
+{
+"key": "oscar-allen",
+"name": "Oscar Allen",
+"r": 0.04500858321012058,
+"age": 27
+},
+{
+"key": "leek-aleer",
+"name": "Leek Aleer",
+"r": -0.10183156517364411,
+"age": 25
+},
+{
+"key": "kayle-gerreyn",
+"name": "Kayle Gerreyn",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "jordon-butts",
+"name": "Jordon Butts",
+"r": 0.09250897335603514,
+"age": 27
+},
+{
+"key": "charlie-edwards",
+"name": "Charlie Edwards",
+"r": -0.1274997302439388,
+"age": 21
+},
+{
+"key": "mitchito-owens",
+"name": "Mitchito Owens",
+"r": 0.009159664910717291,
+"age": 23
+},
+{
+"key": "laitham-vandermeer",
+"name": "Laitham Vandermeer",
+"r": 0.09250897335603514,
+"age": 27
+},
+{
+"key": "tyson-stengle",
+"name": "Tyson Stengle",
+"r": -0.03886868799690568,
+"age": 28
+},
+{
+"key": "lucca-grego",
+"name": "Lucca Grego",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "hayden-young",
+"name": "Hayden Young",
+"r": 0.05699490755548098,
+"age": 25
+},
+{
+"key": "will-mclachlan",
+"name": "Will McLachlan",
+"r": -0.12599282131517175,
+"age": 21
+},
+{
+"key": "ben-keays",
+"name": "Ben Keays",
+"r": 0.06343078775340305,
+"age": 29
+},
+{
+"key": "lachlan-bramble",
+"name": "Lachlan Bramble",
+"r": 0.047611344314006265,
+"age": 28
+},
+{
+"key": "patrick-said",
+"name": "Patrick Said",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "mitchell-hinge",
+"name": "Mitchell Hinge",
+"r": -0.1454012901828149,
+"age": 28
+},
+{
+"key": "shai-bolton",
+"name": "Shai Bolton",
+"r": 0.06187326266038884,
+"age": 28
+},
+{
+"key": "will-day",
+"name": "Will Day",
+"r": 0.05670835521581208,
+"age": 25
+},
+{
+"key": "xavier-duursma",
+"name": "Xavier Duursma",
+"r": 0.06990533942453103,
+"age": 26
+},
+{
+"key": "conor-stone",
+"name": "Conor Stone",
+"r": 0.09250897335603514,
+"age": 24
+},
+{
+"key": "sam-allen",
+"name": "Sam Allen",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "luke-urquhart",
+"name": "Luke Urquhart",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "jack-silvagni",
+"name": "Jack Silvagni",
+"r": 0.06354093239583736,
+"age": 29
+},
+{
+"key": "jesse-motlop",
+"name": "Jesse Motlop",
+"r": -0.08069366876138506,
+"age": 23
+},
+{
+"key": "sam-cumming",
+"name": "Sam Cumming",
+"r": 0.08637393376483504,
+"age": 19
+},
+{
+"key": "joel-fitzgerald",
+"name": "Joel Fitzgerald",
+"r": -0.3477558368023671,
+"age": 23
+},
+{
+"key": "thomas-stewart",
+"name": "Thomas Stewart",
+"r": 0.06028751054737791,
+"age": 33
+},
+{
+"key": "isaac-kako",
+"name": "Isaac Kako",
+"r": -0.1036033330055568,
+"age": 20
+},
+{
+"key": "jed-adams",
+"name": "Jed Adams",
+"r": 0.09250897335603514,
+"age": 22
+},
+{
+"key": "leon-kickett",
+"name": "Leon Kickett",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "kobe-mcdonald",
+"name": "Kobe McDonald",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "campbell-lake",
+"name": "Campbell Lake",
+"r": -0.635830342214655,
+"age": 22
+},
+{
+"key": "rory-laird",
+"name": "Rory Laird",
+"r": 0.06104929087719646,
+"age": 33
+},
+{
+"key": "jay-polkinghorne",
+"name": "Jay Polkinghorne",
+"r": -0.49557010278920877,
+"age": 20
+},
+{
+"key": "james-trezise",
+"name": "James Trezise",
+"r": -0.265540185979136,
+"age": 24
+},
+{
+"key": "jake-kolodjashnij",
+"name": "Jake Kolodjashnij",
+"r": 0.09250897335603514,
+"age": 31
+},
+{
+"key": "angus-clarke",
+"name": "Angus Clarke",
+"r": -0.4639969380049479,
+"age": 20
+},
+{
+"key": "harvey-langford",
+"name": "Harvey Langford",
+"r": 0.09024141633371041,
+"age": 20
+},
+{
+"key": "angus-hastie",
+"name": "Angus Hastie",
+"r": -0.23924767823899118,
+"age": 21
+},
+{
+"key": "riley-bice",
+"name": "Riley Bice",
+"r": -0.3223678519690415,
+"age": 26
+},
+{
+"key": "saad-el-hawli",
+"name": "Saad El-Hawli",
+"r": 0.09250897335603514,
+"age": 25
+},
+{
+"key": "mason-wood",
+"name": "Mason Wood",
+"r": 0.06145574672317644,
+"age": 33
+},
+{
+"key": "koby-coulson",
+"name": "Koby Coulson",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "ty-gallop",
+"name": "Ty Gallop",
+"r": -0.3574857685348819,
+"age": 20
+},
+{
+"key": "nic-newman",
+"name": "Nic Newman",
+"r": 0.061685836176711195,
+"age": 33
+},
+{
+"key": "elijah-hewett",
+"name": "Elijah Hewett",
+"r": -0.025011912224096045,
+"age": 22
+},
+{
+"key": "oliver-hannaford",
+"name": "Oliver Hannaford",
+"r": -0.06356373712339847,
+"age": 20
+},
+{
+"key": "hudson-o-keeffe",
+"name": "Hudson O'Keeffe",
+"r": -0.2986951131732001,
+"age": 22
+},
+{
+"key": "jedd-busslinger",
+"name": "Jedd Busslinger",
+"r": 0.03345443425570904,
+"age": 22
+},
+{
+"key": "will-lorenz",
+"name": "Will Lorenz",
+"r": -0.5959213386217403,
+"age": 21
+},
+{
+"key": "jaspa-fletcher",
+"name": "Jaspa Fletcher",
+"r": 0.06078831311907651,
+"age": 22
+},
+{
+"key": "luker-kentfield",
+"name": "Luker Kentfield",
+"r": -0.23524371865077542,
+"age": 21
+},
+{
+"key": "tom-barrass",
+"name": "Tom Barrass",
+"r": 0.09250897335603514,
+"age": 31
+},
+{
+"key": "henry-hustwaite",
+"name": "Henry Hustwaite",
+"r": -0.09401694892426349,
+"age": 22
+},
+{
+"key": "mattaes-phillipou",
+"name": "Mattaes Phillipou",
+"r": -0.07008374591627287,
+"age": 22
+},
+{
+"key": "talor-byrne",
+"name": "Talor Byrne",
+"r": -0.5466620403083842,
+"age": 19
+},
+{
+"key": "nick-bryan",
+"name": "Nick Bryan",
+"r": 0.03181403039181108,
+"age": 25
+},
+{
+"key": "lachlan-fogarty",
+"name": "Lachlan Fogarty",
+"r": 0.06216150187392322,
+"age": 27
+},
+{
+"key": "luke-davies-uniacke",
+"name": "Luke Davies-Uniacke",
+"r": 0.05894026188420165,
+"age": 27
+},
+{
+"key": "liam-reidy",
+"name": "Liam Reidy",
+"r": -0.03406218819131035,
+"age": 26
+},
+{
+"key": "jaren-carr",
+"name": "Jaren Carr",
+"r": 0.09250897335603514,
+"age": 22
+},
+{
+"key": "zane-peucker",
+"name": "Zane Peucker",
+"r": -0.2797861737510924,
+"age": 19
+},
+{
+"key": "jeremy-howe",
+"name": "Jeremy Howe",
+"r": 0.06388428409779845,
+"age": 36
+},
+{
+"key": "lewis-melican",
+"name": "Lewis Melican",
+"r": 0.09250897335603514,
+"age": 30
+},
+{
+"key": "jye-caldwell",
+"name": "Jye Caldwell",
+"r": 0.06060287040807433,
+"age": 26
+},
+{
+"key": "errol-gulden",
+"name": "Errol Gulden",
+"r": 0.0600079808240388,
+"age": 24
+},
+{
+"key": "jeremy-sharp",
+"name": "Jeremy Sharp",
+"r": -0.08307282593332754,
+"age": 25
+},
+{
+"key": "harrison-jones",
+"name": "Harrison Jones",
+"r": -0.42235157730600437,
+"age": 25
+},
+{
+"key": "maurice-rioli-1",
+"name": "Maurice Rioli",
+"r": -0.10258191474325684,
+"age": 24
+},
+{
+"key": "will-green",
+"name": "Will Green",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "mani-liddy",
+"name": "Mani Liddy",
+"r": 0.09250897335603514,
+"age": 24
+},
+{
+"key": "liam-baker",
+"name": "Liam Baker",
+"r": 0.05668900701649293,
+"age": 28
+},
+{
+"key": "rowan-marshall",
+"name": "Rowan Marshall",
+"r": 0.0587309181411626,
+"age": 31
+},
+{
+"key": "harris-andrews",
+"name": "Harris Andrews",
+"r": 0.06391622481415471,
+"age": 30
+},
+{
+"key": "jake-rogers",
+"name": "Jake Rogers",
+"r": 0.01953991391110521,
+"age": 21
+},
+{
+"key": "nick-madden",
+"name": "Nick Madden",
+"r": -0.244628482941042,
+"age": 22
+},
+{
+"key": "max-king-stk",
+"name": "Max King",
+"r": 0.05639297423682743,
+"age": 26
+},
+{
+"key": "aliir-aliir",
+"name": "Aliir Aliir",
+"r": 0.06250872694808907,
+"age": 32
+},
+{
+"key": "samuel-grlj",
+"name": "Samuel Grlj",
+"r": -0.0016022865210764126,
+"age": 19
+},
+{
+"key": "lawson-humphries",
+"name": "Lawson Humphries",
+"r": -0.19465130844549694,
+"age": 23
+},
+{
+"key": "bayley-fritsch",
+"name": "Bayley Fritsch",
+"r": 0.05749266010744436,
+"age": 30
+},
+{
+"key": "logan-mcdonald",
+"name": "Logan McDonald",
+"r": 0.03332473907466871,
+"age": 24
+},
+{
+"key": "tanner-bruhn",
+"name": "Tanner Bruhn",
+"r": 0.05218301634204492,
+"age": 24
+},
+{
+"key": "tim-kelly",
+"name": "Tim Kelly",
+"r": 0.057812027133815835,
+"age": 32
+},
+{
+"key": "tylah-williams",
+"name": "Tylah Williams",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "neil-erasmus",
+"name": "Neil Erasmus",
+"r": 0.04202334612146785,
+"age": 23
+},
+{
+"key": "adam-saad",
+"name": "Adam Saad",
+"r": 0.05331582632980969,
+"age": 32
+},
+{
+"key": "dougal-howard",
+"name": "Dougal Howard",
+"r": 0.046019229808969886,
+"age": 30
+},
+{
+"key": "aiden-riddle",
+"name": "Aiden Riddle",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "nick-haynes",
+"name": "Nick Haynes",
+"r": 0.09250897335603514,
+"age": 34
+},
+{
+"key": "jack-sinclair",
+"name": "Jack Sinclair",
+"r": 0.06039543761902588,
+"age": 31
+},
+{
+"key": "sam-flanders",
+"name": "Sam Flanders",
+"r": 0.055412781529981414,
+"age": 25
+},
+{
+"key": "oliver-hollands",
+"name": "Oliver Hollands",
+"r": -0.021294044701885118,
+"age": 22
+},
+{
+"key": "archie-ludowyke",
+"name": "Archie Ludowyke",
+"r": 0.1484047812951812,
+"age": 19
+},
+{
+"key": "tom-cochrane",
+"name": "Tom Cochrane",
+"r": -0.12006064589423404,
+"age": 20
+},
+{
+"key": "jacob-moss",
+"name": "Jacob Moss",
+"r": 0.09250897335603514,
+"age": 22
+},
+{
+"key": "luke-lloyd",
+"name": "Luke Lloyd",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "tom-powell",
+"name": "Tom Powell",
+"r": 0.04698776613286704,
+"age": 24
+},
+{
+"key": "luke-pedlar",
+"name": "Luke Pedlar",
+"r": 0.09250897335603514,
+"age": 24
+},
+{
+"key": "patrick-lipinski",
+"name": "Patrick Lipinski",
+"r": 0.0616305232342631,
+"age": 28
+},
+{
+"key": "hugo-ralphsmith",
+"name": "Hugo Ralphsmith",
+"r": -0.31450417358052696,
+"age": 25
+},
+{
+"key": "joel-freijah",
+"name": "Joel Freijah",
+"r": -0.13146098415747487,
+"age": 21
+},
+{
+"key": "thomas-anastasopoulos",
+"name": "Tom Anastasopoulos",
+"r": -0.553249118701993,
+"age": 21
+},
+{
+"key": "zac-banch",
+"name": "Zac Banch",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "zane-zakostelsky",
+"name": "Zane Zakostelsky",
+"r": -0.4383777400394806,
+"age": 21
+},
+{
+"key": "will-setterfield",
+"name": "Will Setterfield",
+"r": 0.061442367478612425,
+"age": 28
+},
+{
+"key": "wil-powell",
+"name": "Wil Powell",
+"r": 0.05945034447926756,
+"age": 27
+},
+{
+"key": "rhys-unwin",
+"name": "Rhys Unwin",
+"r": -0.014791015098575389,
+"age": 20
+},
+{
+"key": "jamie-elliott",
+"name": "Jamie Elliott",
+"r": 0.09250897335603514,
+"age": 34
+},
+{
+"key": "patrick-dangerfield",
+"name": "Patrick Dangerfield",
+"r": 0.09250897335603514,
+"age": 37
+},
+{
+"key": "noah-mraz",
+"name": "Noah Mraz",
+"r": -0.04323817747946901,
+"age": 20
+},
+{
+"key": "lachlan-jones",
+"name": "Lachlan Jones",
+"r": 0.04809803947977365,
+"age": 24
+},
+{
+"key": "oliver-griffin",
+"name": "Oliver Griffin",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "tom-gross",
+"name": "Tom Gross",
+"r": -0.4105443676268844,
+"age": 20
+},
+{
+"key": "jack-crisp",
+"name": "Jack Crisp",
+"r": 0.061156618712263855,
+"age": 33
+},
+{
+"key": "lachie-whitfield",
+"name": "Lachie Whitfield",
+"r": 0.06024696340458191,
+"age": 32
+},
+{
+"key": "jackson-mead",
+"name": "Jackson Mead",
+"r": 0.09250897335603514,
+"age": 25
+},
+{
+"key": "nasiah-wanganeen-milera",
+"name": "Nasiah Wanganeen-Milera",
+"r": 0.05667076131236737,
+"age": 23
+},
+{
+"key": "toby-mcmullin",
+"name": "Toby McMullin",
+"r": -0.21586049492994241,
+"age": 22
+},
+{
+"key": "kysaiah-pickett",
+"name": "Kysaiah Pickett",
+"r": 0.06186280628846941,
+"age": 25
+},
+{
+"key": "jai-newcombe",
+"name": "Jai Newcombe",
+"r": 0.057216627406500686,
+"age": 25
+},
+{
+"key": "matthew-jefferson",
+"name": "Matthew Jefferson",
+"r": -0.022896904111151528,
+"age": 22
+},
+{
+"key": "clayton-oliver",
+"name": "Clayton Oliver",
+"r": 0.05925077691942526,
+"age": 29
+},
+{
+"key": "josh-treacy",
+"name": "Josh Treacy",
+"r": 0.05639297423682743,
+"age": 24
+},
+{
+"key": "scott-pendlebury",
+"name": "Scott Pendlebury",
+"r": 0.055990567561404525,
+"age": 39
+},
+{
+"key": "matt-johnson-1",
+"name": "Matt Johnson",
+"r": -0.07999244348965462,
+"age": 23
+},
+{
+"key": "mitchell-marsh",
+"name": "Mitchell Marsh",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "sam-darcy",
+"name": "Sam Darcy",
+"r": 0.06517585116975644,
+"age": 23
+},
+{
+"key": "xavier-taylor",
+"name": "Xavier Taylor",
+"r": -0.06964235847891309,
+"age": 19
+},
+{
+"key": "harry-perryman",
+"name": "Harry Perryman",
+"r": 0.0766755099740637,
+"age": 28
+},
+{
+"key": "jaxon-prior",
+"name": "Jaxon Prior",
+"r": 0.02539238113621045,
+"age": 25
+},
+{
+"key": "anthony-caminiti",
+"name": "Anthony Caminiti",
+"r": -0.245114436274526,
+"age": 23
+},
+{
+"key": "jacob-farrow",
+"name": "Jacob Farrow",
+"r": 0.03481329011580714,
+"age": 19
+},
+{
+"key": "oliver-hayes-brown",
+"name": "Oliver Hayes-Brown",
+"r": -0.28335420555085766,
+"age": 26
+},
+{
+"key": "chris-scerri",
+"name": "Chris Scerri",
+"r": -0.09922273388856695,
+"age": 20
+},
+{
+"key": "tom-brown",
+"name": "Tom Brown",
+"r": -0.02295945472224492,
+"age": 23
+},
+{
+"key": "bo-allan",
+"name": "Bo Allan",
+"r": -0.13456916294365806,
+"age": 20
+},
+{
+"key": "james-peatling",
+"name": "James Peatling",
+"r": 0.05520783238409166,
+"age": 26
+},
+{
+"key": "cody-angove",
+"name": "Cody Angove",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "alex-van-wyk",
+"name": "Alex Van Wyk",
+"r": 0.09250897335603514,
+"age": 22
+},
+{
+"key": "will-lewis",
+"name": "Will Lewis",
+"r": 0.09250897335603514,
+"age": 27
+},
+{
+"key": "jed-bews",
+"name": "Jed Bews",
+"r": 0.09250897335603514,
+"age": 33
+},
+{
+"key": "logan-smith",
+"name": "Logan Smith",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "mason-cox",
+"name": "Mason Cox",
+"r": 0.09250897335603514,
+"age": 35
+},
+{
+"key": "max-king-syd",
+"name": "Maxwell King",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "zane-duursma",
+"name": "Zane Duursma",
+"r": 0.08251215922075117,
+"age": 21
+},
+{
+"key": "jack-whitlock",
+"name": "Jack Whitlock",
+"r": -0.3540640376508112,
+"age": 20
+},
+{
+"key": "nick-vlastuin",
+"name": "Nick Vlastuin",
+"r": 0.09250897335603514,
+"age": 32
+},
+{
+"key": "liam-o-connell",
+"name": "Liam O'Connell",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "mitch-podhajski",
+"name": "Mitch Podhajski",
+"r": 0.12432962306543427,
+"age": 27
+},
+{
+"key": "bailey-smith",
+"name": "Bailey Smith",
+"r": 0.05902648874877148,
+"age": 26
+},
+{
+"key": "xavier-o-halloran",
+"name": "Xavier O'Halloran",
+"r": 0.06449592275716243,
+"age": 26
+},
+{
+"key": "connor-idun",
+"name": "Connor Idun",
+"r": 0.06044673016074209,
+"age": 26
+},
+{
+"key": "darcy-parish",
+"name": "Darcy Parish",
+"r": 0.05794805679995685,
+"age": 29
+},
+{
+"key": "jake-bowey",
+"name": "Jake Bowey",
+"r": 0.06087453659903197,
+"age": 24
+},
+{
+"key": "braeden-campbell",
+"name": "Braeden Campbell",
+"r": 0.05134196856290929,
+"age": 24
+},
+{
+"key": "reuben-ginbey",
+"name": "Reuben Ginbey",
+"r": 0.06518467092788516,
+"age": 22
+},
+{
+"key": "oliver-wiltshire",
+"name": "Oliver Wiltshire",
+"r": 0.09250897335603514,
+"age": 24
+},
+{
+"key": "zac-bailey",
+"name": "Zac Bailey",
+"r": 0.06193363690033715,
+"age": 27
+},
+{
+"key": "joel-cochran",
+"name": "Joel Cochran",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "angus-sheldrick",
+"name": "Angus Sheldrick",
+"r": -0.043332089468656965,
+"age": 23
+},
+{
+"key": "joel-jeffrey",
+"name": "Joel Jeffrey",
+"r": 0.0629072809462623,
+"age": 24
+},
+{
+"key": "buku-khamis",
+"name": "Buku Khamis",
+"r": -0.5747280506399326,
+"age": 26
+},
+{
+"key": "harry-demattia",
+"name": "Harry DeMattia",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "judson-clarke",
+"name": "Judson Clarke",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "callum-ah-chee",
+"name": "Callum Ah Chee",
+"r": 0.09250897335603514,
+"age": 29
+},
+{
+"key": "john-noble",
+"name": "John Noble",
+"r": 0.059917914488086144,
+"age": 29
+},
+{
+"key": "liam-duggan",
+"name": "Liam Duggan",
+"r": 0.05701229191125434,
+"age": 30
+},
+{
+"key": "jaxon-artemis",
+"name": "Jaxon Artemis",
+"r": -0.29792865974497407,
+"age": 20
+},
+{
+"key": "harley-barker",
+"name": "Harley Barker",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "cooper-duff-tytler",
+"name": "Cooper Duff-Tytler",
+"r": 0.1358052338589164,
+"age": 19
+},
+{
+"key": "bruce-reville",
+"name": "Bruce Reville",
+"r": 0.09250897335603514,
+"age": 25
+},
+{
+"key": "iliro-smit",
+"name": "Iliro Smit",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "jed-walter",
+"name": "Jed Walter",
+"r": -0.10771510465066014,
+"age": 21
+},
+{
+"key": "jamarra-ugle-hagan",
+"name": "Jamarra Ugle-Hagan",
+"r": 0.038841865892931704,
+"age": 24
+},
+{
+"key": "daniel-curtin",
+"name": "Daniel Curtin",
+"r": 0.018708608448993136,
+"age": 21
+},
+{
+"key": "will-graham",
+"name": "Will Graham",
+"r": -0.08613623657290326,
+"age": 21
+},
+{
+"key": "lachlan-mcandrew",
+"name": "Lachlan McAndrew",
+"r": -0.06953781216567334,
+"age": 26
+},
+{
+"key": "joseph-fonti",
+"name": "Joseph Fonti",
+"r": -0.3575497546617026,
+"age": 22
+},
+{
+"key": "blake-hardwick",
+"name": "Blake Hardwick",
+"r": 0.06135800466563901,
+"age": 29
+},
+{
+"key": "samson-ryan",
+"name": "Samson Ryan",
+"r": -0.3551379698815379,
+"age": 26
+},
+{
+"key": "ethan-read",
+"name": "Ethan Read",
+"r": -0.15750091709848069,
+"age": 21
+},
+{
+"key": "matthew-roberts",
+"name": "Matthew Roberts",
+"r": -0.018807592206501966,
+"age": 23
+},
+{
+"key": "xavier-walsh",
+"name": "Xavier Walsh",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "sam-banks",
+"name": "Sam Banks",
+"r": 0.021379192791654456,
+"age": 23
+},
+{
+"key": "jakob-ryan",
+"name": "Jakob Ryan",
+"r": 0.09250897335603514,
+"age": 22
+},
+{
+"key": "tyler-brockman",
+"name": "Tyler Brockman",
+"r": -0.4327357253728278,
+"age": 24
+},
+{
+"key": "isaac-quaynor",
+"name": "Isaac Quaynor",
+"r": 0.059768168160822865,
+"age": 26
+},
+{
+"key": "oliver-henry",
+"name": "Oliver Henry",
+"r": 0.003324567367787523,
+"age": 24
+},
+{
+"key": "adam-treloar",
+"name": "Adam Treloar",
+"r": 0.05862366830007271,
+"age": 33
+},
+{
+"key": "oscar-ryan",
+"name": "Oscar Ryan",
+"r": -0.11952401818345837,
+"age": 21
+},
+{
+"key": "hugo-garcia",
+"name": "Hugo Garcia",
+"r": -0.07594727695263714,
+"age": 21
+},
+{
+"key": "rhett-bazzo",
+"name": "Rhett Bazzo",
+"r": -0.42083861653415,
+"age": 23
+},
+{
+"key": "mason-redman",
+"name": "Mason Redman",
+"r": 0.05937815389775314,
+"age": 29
+},
+{
+"key": "jacob-konstanty",
+"name": "Jacob Konstanty",
+"r": 0.08563784773744376,
+"age": 22
+},
+{
+"key": "andrew-brayshaw",
+"name": "Andrew Brayshaw",
+"r": 0.058817723294300794,
+"age": 27
+},
+{
+"key": "jack-steele",
+"name": "Jack Steele",
+"r": 0.05909105181808583,
+"age": 31
+},
+{
+"key": "jack-ross",
+"name": "Jack Ross",
+"r": 0.05885633171250504,
+"age": 26
+},
+{
+"key": "lucas-camporeale",
+"name": "Lucas Camporeale",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "mark-keane",
+"name": "Mark Keane",
+"r": -0.1860146654855288,
+"age": 26
+},
+{
+"key": "finn-o-sullivan",
+"name": "Finn O'Sullivan",
+"r": 0.14680444951678284,
+"age": 20
+},
+{
+"key": "corey-wagner",
+"name": "Corey Wagner",
+"r": 0.037883524688233416,
+"age": 29
+},
+{
+"key": "will-brodie",
+"name": "Will Brodie",
+"r": 0.0702928817925752,
+"age": 28
+},
+{
+"key": "josh-dolan",
+"name": "Josh Dolan",
+"r": -0.5824668676084855,
+"age": 20
+},
+{
+"key": "luke-beecken",
+"name": "Luke Beecken",
+"r": 0.09250897335603514,
+"age": 25
+},
+{
+"key": "touk-miller",
+"name": "Touk Miller",
+"r": 0.062176029146054246,
+"age": 30
+},
+{
+"key": "jack-ginnivan",
+"name": "Jack Ginnivan",
+"r": 0.06062459130100928,
+"age": 24
+},
+{
+"key": "james-worpel",
+"name": "James Worpel",
+"r": 0.05685599986656076,
+"age": 27
+},
+{
+"key": "charlie-spargo",
+"name": "Charlie Spargo",
+"r": 0.09250897335603514,
+"age": 27
+},
+{
+"key": "nicholas-holman",
+"name": "Nicholas Holman",
+"r": 0.09250897335603514,
+"age": 31
+},
+{
+"key": "harley-reid",
+"name": "Harley Reid",
+"r": 0.07502194964186093,
+"age": 21
+},
+{
+"key": "liam-henry",
+"name": "Liam Henry",
+"r": 0.09250897335603514,
+"age": 25
+},
+{
+"key": "toby-greene",
+"name": "Toby Greene",
+"r": 0.061257226799962705,
+"age": 33
+},
+{
+"key": "bailey-laurie",
+"name": "Bailey Laurie",
+"r": 0.09250897335603514,
+"age": 24
+},
+{
+"key": "daniel-mcstay",
+"name": "Daniel McStay",
+"r": 0.05710358996023768,
+"age": 31
+},
+{
+"key": "billy-wilson",
+"name": "Billy Wilson",
+"r": -0.371481836563321,
+"age": 21
+},
+{
+"key": "dylan-stephens",
+"name": "Dylan Stephens",
+"r": 0.046019229808969886,
+"age": 25
+},
+{
+"key": "charlie-nicholls",
+"name": "Charlie Nicholls",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "josh-goater",
+"name": "Josh Goater",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "nick-daicos",
+"name": "Nick Daicos",
+"r": 0.05944790516223297,
+"age": 23
+},
+{
+"key": "patrick-snell",
+"name": "Patrick Snell",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "jack-ison",
+"name": "Jack Ison",
+"r": -0.4557538018759457,
+"age": 19
+},
+{
+"key": "mitchell-knevitt",
+"name": "Mitchell Knevitt",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "toby-nankervis",
+"name": "Toby Nankervis",
+"r": 0.05957417623178363,
+"age": 32
+},
+{
+"key": "michael-sellwood",
+"name": "Michael Sellwood",
+"r": -0.055127374394780326,
+"age": 23
+},
+{
+"key": "harrison-himmelberg",
+"name": "Harrison Himmelberg",
+"r": 0.06317987340016851,
+"age": 30
+},
+{
+"key": "jack-watkins",
+"name": "Jack Watkins",
+"r": 0.09250897335603514,
+"age": 26
+},
+{
+"key": "thomas-sims",
+"name": "Thomas Sims",
+"r": -0.1764163123931427,
+"age": 20
+},
+{
+"key": "george-wardlaw",
+"name": "George Wardlaw",
+"r": 0.05684060300462912,
+"age": 22
+},
+{
+"key": "cooper-harvey",
+"name": "Cooper Harvey",
+"r": -0.6425246373945326,
+"age": 22
+},
+{
+"key": "charlie-curnow",
+"name": "Charlie Curnow",
+"r": 0.058687601250700716,
+"age": 29
+},
+{
+"key": "brady-hough",
+"name": "Brady Hough",
+"r": -0.08455282577408085,
+"age": 23
+},
+{
+"key": "harrison-ramm",
+"name": "Harrison Ramm",
+"r": -0.20809260807032948,
+"age": 20
+},
+{
+"key": "tom-mccarthy",
+"name": "Tom McCarthy",
+"r": -0.08615463745723428,
+"age": 26
+},
+{
+"key": "zac-taylor",
+"name": "Zac Taylor",
+"r": -0.69891484986251,
+"age": 23
+},
+{
+"key": "cameron-rayner",
+"name": "Cameron Rayner",
+"r": 0.06229402358345193,
+"age": 27
+},
+{
+"key": "matt-owies",
+"name": "Matt Owies",
+"r": 0.09250897335603514,
+"age": 29
+},
+{
+"key": "logan-evans",
+"name": "Logan Evans",
+"r": -0.22188209811332738,
+"age": 21
+},
+{
+"key": "heath-chapman",
+"name": "Heath Chapman",
+"r": 0.05446139716950671,
+"age": 24
+},
+{
+"key": "josh-lindsay",
+"name": "Josh Lindsay",
+"r": -0.02333618695088535,
+"age": 19
+},
+{
+"key": "patrick-retschko",
+"name": "Patrick Retschko",
+"r": -0.5623504334375675,
+"age": 20
+},
+{
+"key": "william-mccabe",
+"name": "William McCabe",
+"r": -0.12025166133153886,
+"age": 21
+},
+{
+"key": "darcy-jones",
+"name": "Darcy Jones",
+"r": 0.04123300337263314,
+"age": 22
+},
+{
+"key": "ed-langdon",
+"name": "Ed Langdon",
+"r": 0.059842592092897995,
+"age": 30
+},
+{
+"key": "jack-dalton",
+"name": "Jack Dalton",
+"r": -0.36451669278891974,
+"age": 19
+},
+{
+"key": "asher-eastham",
+"name": "Asher Eastham",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "josh-draper",
+"name": "Josh Draper",
+"r": -0.5677464496721774,
+"age": 22
+},
+{
+"key": "lachlan-weller",
+"name": "Lachlan Weller",
+"r": 0.09250897335603514,
+"age": 30
+},
+{
+"key": "dane-rampe",
+"name": "Dane Rampe",
+"r": 0.09250897335603514,
+"age": 36
+},
+{
+"key": "charlie-cameron",
+"name": "Charlie Cameron",
+"r": 0.06586241303027829,
+"age": 32
+},
+{
+"key": "harry-barnett",
+"name": "Harry Barnett",
+"r": 0.09250897335603514,
+"age": 22
+},
+{
+"key": "max-ramsden",
+"name": "Max Ramsden",
+"r": -0.32485400522941654,
+"age": 23
+},
+{
+"key": "matthew-kennedy-1",
+"name": "Matthew Kennedy",
+"r": 0.0598967651961535,
+"age": 29
+},
+{
+"key": "shaun-mannagh",
+"name": "Shaun Mannagh",
+"r": 0.005993529793770991,
+"age": 29
+},
+{
+"key": "corey-warner",
+"name": "Corey Warner",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "max-gawn",
+"name": "Max Gawn",
+"r": 0.058936756196616535,
+"age": 35
+},
+{
+"key": "noah-long",
+"name": "Noah Long",
+"r": -0.6782795661282841,
+"age": 22
+},
+{
+"key": "michael-frederick",
+"name": "Michael Frederick",
+"r": 0.06129443126014844,
+"age": 26
+},
+{
+"key": "toby-pink",
+"name": "Toby Pink",
+"r": 0.09250897335603514,
+"age": 28
+},
+{
+"key": "daniel-rioli",
+"name": "Daniel Rioli",
+"r": 0.0590288596564148,
+"age": 29
+},
+{
+"key": "sean-darcy",
+"name": "Sean Darcy",
+"r": 0.060758382320589055,
+"age": 28
+},
+{
+"key": "seth-campbell",
+"name": "Seth Campbell",
+"r": -0.2895121382423169,
+"age": 22
+},
+{
+"key": "ben-mckay",
+"name": "Ben McKay",
+"r": 0.09250897335603514,
+"age": 29
+},
+{
+"key": "joe-berry",
+"name": "Joe Berry",
+"r": -0.07404411877083772,
+"age": 20
+},
+{
+"key": "jack-martin",
+"name": "Jack Martin",
+"r": 0.09250897335603514,
+"age": 32
+},
+{
+"key": "james-rowbottom",
+"name": "James Rowbottom",
+"r": 0.05945678037633506,
+"age": 26
+},
+{
+"key": "deven-robertson",
+"name": "Deven Robertson",
+"r": -0.029594970724933445,
+"age": 25
+},
+{
+"key": "bailey-scott",
+"name": "Bailey Scott",
+"r": 0.09250897335603514,
+"age": 26
+},
+{
+"key": "mitch-mcgovern",
+"name": "Mitch McGovern",
+"r": 0.04048473652955731,
+"age": 32
+},
+{
+"key": "sam-draper",
+"name": "Sam Draper",
+"r": 0.051264121859714296,
+"age": 28
+},
+{
+"key": "tylar-young",
+"name": "Tylar Young",
+"r": -0.6885607904007682,
+"age": 28
+},
+{
+"key": "aidan-schubert",
+"name": "Aidan Schubert",
+"r": 0.10928454300449642,
+"age": 19
+},
+{
+"key": "caleb-daniel",
+"name": "Caleb Daniel",
+"r": 0.06004213908096734,
+"age": 30
+},
+{
+"key": "luke-trainor",
+"name": "Luke Trainor",
+"r": -0.27930227724841217,
+"age": 20
+},
+{
+"key": "jack-gunston",
+"name": "Jack Gunston",
+"r": 0.05836806793865912,
+"age": 35
+},
+{
+"key": "ollie-lord",
+"name": "Ollie Lord",
+"r": -0.6451680257476125,
+"age": 24
+},
+{
+"key": "oisin-mullin",
+"name": "Oisin Mullin",
+"r": 0.09250897335603514,
+"age": 26
+},
+{
+"key": "conor-nash",
+"name": "Conor Nash",
+"r": 0.06051080258828523,
+"age": 28
+},
+{
+"key": "sandy-brock",
+"name": "Sandy Brock",
+"r": -0.6151388843859421,
+"age": 24
+},
+{
+"key": "josh-rachele",
+"name": "Josh Rachele",
+"r": 0.056275007405533595,
+"age": 23
+},
+{
+"key": "matt-carroll",
+"name": "Matt Carroll",
+"r": -0.5704268648865749,
+"age": 21
+},
+{
+"key": "josh-daicos",
+"name": "Josh Daicos",
+"r": 0.06025589682303134,
+"age": 28
+},
+{
+"key": "josh-gibcus",
+"name": "Josh Gibcus",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "will-darcy",
+"name": "Will Darcy",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "hugo-hall-kahan",
+"name": "Hugo Hall-Kahan",
+"r": -0.3036053912525857,
+"age": 23
+},
+{
+"key": "bodie-ryan",
+"name": "Bodie Ryan",
+"r": -0.39738592342663137,
+"age": 21
+},
+{
+"key": "finn-callaghan",
+"name": "Finn Callaghan",
+"r": 0.04642431145062598,
+"age": 23
+},
+{
+"key": "ryan-lester",
+"name": "Ryan Lester",
+"r": 0.09250897335603514,
+"age": 34
+},
+{
+"key": "hamish-davis",
+"name": "Hamish Davis",
+"r": -0.5559401166203197,
+"age": 20
+},
+{
+"key": "patrick-voss",
+"name": "Patrick Voss",
+"r": -0.17165428142060835,
+"age": 23
+},
+{
+"key": "phoenix-gothard",
+"name": "Phoenix Gothard",
+"r": 0.04151322226583032,
+"age": 21
+},
+{
+"key": "nick-driscoll",
+"name": "Nick Driscoll",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "charlie-west",
+"name": "Charlie West",
+"r": 0.08760982997775701,
+"age": 20
+},
+{
+"key": "lincoln-mccarthy",
+"name": "Lincoln McCarthy",
+"r": 0.09250897335603514,
+"age": 33
+},
+{
+"key": "sam-walsh",
+"name": "Sam Walsh",
+"r": 0.05906133843292016,
+"age": 26
+},
+{
+"key": "tobyn-murray",
+"name": "Tobyn Murray",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "bailey-williams-wb",
+"name": "Bailey Williams",
+"r": 0.059624087870401965,
+"age": 29
+},
+{
+"key": "jason-horne-francis",
+"name": "Jason Horne-Francis",
+"r": 0.05691432615959657,
+"age": 23
+},
+{
+"key": "ricky-mentha",
+"name": "Ricky Mentha",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "andrew-mcgrath",
+"name": "Andrew McGrath",
+"r": 0.06013833710844896,
+"age": 28
+},
+{
+"key": "will-hayes-b",
+"name": "Will Hayes",
+"r": -0.23372634507666978,
+"age": 20
+},
+{
+"key": "aaron-cadman",
+"name": "Aaron Cadman",
+"r": 0.025212360679830903,
+"age": 22
+},
+{
+"key": "jake-soligo",
+"name": "Jake Soligo",
+"r": -0.004895441135948642,
+"age": 23
+},
+{
+"key": "sam-berry",
+"name": "Sam Berry",
+"r": 0.05953186148788525,
+"age": 24
+},
+{
+"key": "cillian-bourke",
+"name": "Cillian Bourke",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "jayden-laverde",
+"name": "Jayden Laverde",
+"r": 0.05906482111044231,
+"age": 30
+},
+{
+"key": "zak-butters",
+"name": "Zak Butters",
+"r": 0.059057063246316766,
+"age": 26
+},
+{
+"key": "aidan-corr",
+"name": "Aidan Corr",
+"r": 0.09250897335603514,
+"age": 32
+},
+{
+"key": "archie-perkins",
+"name": "Archie Perkins",
+"r": 0.02247634685885358,
+"age": 24
+},
+{
+"key": "james-jordon",
+"name": "James Jordon",
+"r": 0.06237079478069618,
+"age": 26
+},
+{
+"key": "bailey-macdonald",
+"name": "Bailey Macdonald",
+"r": -0.5537639404602109,
+"age": 22
+},
+{
+"key": "cody-weightman",
+"name": "Cody Weightman",
+"r": 0.034627703244457075,
+"age": 25
+},
+{
+"key": "sam-butler-1",
+"name": "Sam Butler",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "callum-wilkie",
+"name": "Callum Wilkie",
+"r": 0.06395411257830297,
+"age": 30
+},
+{
+"key": "brodie-grundy",
+"name": "Brodie Grundy",
+"r": 0.05943894959575169,
+"age": 32
+},
+{
+"key": "connor-macdonald",
+"name": "Connor MacDonald",
+"r": 0.04725939144799307,
+"age": 23
+},
+{
+"key": "mitch-georgiades",
+"name": "Mitch Georgiades",
+"r": 0.05221151122405043,
+"age": 25
+},
+{
+"key": "bradley-hill",
+"name": "Bradley Hill",
+"r": 0.06073369098297676,
+"age": 33
+},
+{
+"key": "blake-howes",
+"name": "Blake Howes",
+"r": -0.11332605060959455,
+"age": 23
+},
+{
+"key": "liam-stocker",
+"name": "Liam Stocker",
+"r": 0.09250897335603514,
+"age": 26
+},
+{
+"key": "darcy-wilmot",
+"name": "Darcy Wilmot",
+"r": 0.057266748409066315,
+"age": 23
+},
+{
+"key": "jack-buller",
+"name": "Jack Buller",
+"r": 0.09250897335603514,
+"age": 25
+},
+{
+"key": "liam-ryan",
+"name": "Liam Ryan",
+"r": 0.09250897335603514,
+"age": 30
+},
+{
+"key": "zac-mccarthy",
+"name": "Zac McCarthy",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "roan-steele",
+"name": "Roan Steele",
+"r": 0.09250897335603514,
+"age": 25
+},
+{
+"key": "benny-barrett",
+"name": "Benny Barrett",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "darcy-fort",
+"name": "Darcy Fort",
+"r": -0.06356373712339847,
+"age": 33
+},
+{
+"key": "tom-blamires",
+"name": "Tom Blamires",
+"r": 0.09250897335603514,
+"age": 24
+},
+{
+"key": "justin-mcinerney",
+"name": "Justin McInerney",
+"r": 0.05928058983460738,
+"age": 26
+},
+{
+"key": "ashton-moir",
+"name": "Ashton Moir",
+"r": -0.1488592881993679,
+"age": 21
+},
+{
+"key": "adam-sweid",
+"name": "Adam Sweid",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "nick-larkey",
+"name": "Nick Larkey",
+"r": 0.061991962927095745,
+"age": 28
+},
+{
+"key": "isaac-cumming",
+"name": "Isaac Cumming",
+"r": 0.09250897335603514,
+"age": 28
+},
+{
+"key": "steele-sidebottom",
+"name": "Steele Sidebottom",
+"r": 0.09250897335603514,
+"age": 36
+},
+{
+"key": "koby-evans",
+"name": "Koby Evans",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "dylan-moore",
+"name": "Dylan Moore",
+"r": 0.06179960698401721,
+"age": 27
+},
+{
+"key": "harry-morrison",
+"name": "Harry Morrison",
+"r": 0.04048473652955731,
+"age": 28
+},
+{
+"key": "harry-mckay",
+"name": "Harry McKay",
+"r": 0.05901084991262806,
+"age": 29
+},
+{
+"key": "changkuoth-jiath",
+"name": "Changkuoth Jiath",
+"r": 0.09250897335603514,
+"age": 27
+},
+{
+"key": "jobe-shanahan",
+"name": "Jobe Shanahan",
+"r": -0.2749544744375436,
+"age": 20
+},
+{
+"key": "tom-de-koning",
+"name": "Tom De Koning",
+"r": 0.059054153119295405,
+"age": 27
+},
+{
+"key": "caleb-serong",
+"name": "Caleb Serong",
+"r": 0.059086543734659935,
+"age": 25
+},
+{
+"key": "dyson-sharp",
+"name": "Dyson Sharp",
+"r": 0.09329101270704165,
+"age": 19
+},
+{
+"key": "hugh-boxshall",
+"name": "Hugh Boxshall",
+"r": -0.49549370336949505,
+"age": 20
+},
+{
+"key": "jacob-newton",
+"name": "Jacob Newton",
+"r": -0.09132667119906679,
+"age": 20
+},
+{
+"key": "matthew-flynn",
+"name": "Matthew Flynn",
+"r": -0.03339354773703951,
+"age": 29
+},
+{
+"key": "jasper-alger",
+"name": "Jasper Alger",
+"r": -0.4463636959344416,
+"age": 20
+},
+{
+"key": "ryda-luke",
+"name": "Ryda Luke",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "ben-murphy",
+"name": "Ben Murphy",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "francis-evans",
+"name": "Francis Evans",
+"r": -0.03222630312949637,
+"age": 25
+},
+{
+"key": "samuel-swadling",
+"name": "Samuel Swadling",
+"r": -0.3806130820454172,
+"age": 19
+},
+{
+"key": "james-barrat",
+"name": "James Barrat",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "joel-hamling",
+"name": "Joel Hamling",
+"r": 0.09250897335603514,
+"age": 33
+},
+{
+"key": "tim-membrey",
+"name": "Tim Membrey",
+"r": 0.06449592275716243,
+"age": 32
+},
+{
+"key": "karl-amon",
+"name": "Karl Amon",
+"r": 0.060994291432303394,
+"age": 31
+},
+{
+"key": "harry-o-farrell",
+"name": "Harry O'Farrell",
+"r": -0.5445025283499916,
+"age": 20
+},
+{
+"key": "darcy-gardiner",
+"name": "Darcy Gardiner",
+"r": 0.09250897335603514,
+"age": 31
+},
+{
+"key": "cillian-burke",
+"name": "Cillian Burke",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "jai-serong",
+"name": "Jai Serong",
+"r": -0.36854985943642005,
+"age": 23
+},
+{
+"key": "finn-maginness",
+"name": "Finn Maginness",
+"r": 0.09250897335603514,
+"age": 25
+},
+{
+"key": "matt-whitlock",
+"name": "Matt Whitlock",
+"r": 0.08763170115355301,
+"age": 20
+},
+{
+"key": "patrick-carr",
+"name": "Patrick Carr",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "jack-carroll",
+"name": "Jack Carroll",
+"r": -0.5447879277683186,
+"age": 24
+},
+{
+"key": "daniel-turner",
+"name": "Daniel Turner",
+"r": 0.030643188306004543,
+"age": 24
+},
+{
+"key": "mitch-zadow",
+"name": "Mitch Zadow",
+"r": 0.09250897335603514,
+"age": 22
+},
+{
+"key": "luke-parker",
+"name": "Luke Parker",
+"r": 0.0609335695018145,
+"age": 34
+},
+{
+"key": "dante-visentini",
+"name": "Dante Visentini",
+"r": -0.2200074603852712,
+"age": 23
+},
+{
+"key": "tom-lynch-1",
+"name": "Tom Lynch",
+"r": 0.09250897335603514,
+"age": 34
+},
+{
+"key": "thomas-liberatore",
+"name": "Thomas Liberatore",
+"r": 0.05867750212673206,
+"age": 34
+},
+{
+"key": "vigo-visentini",
+"name": "Vigo Visentini",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "lachie-sullivan",
+"name": "Lachie Sullivan",
+"r": 0.09250897335603514,
+"age": 29
+},
+{
+"key": "ben-king",
+"name": "Ben King",
+"r": 0.05578598265499202,
+"age": 26
+},
+{
+"key": "jack-graham",
+"name": "Jack Graham",
+"r": 0.061152975631315165,
+"age": 28
+},
+{
+"key": "alex-davies",
+"name": "Alex Davies",
+"r": -0.029470183863327892,
+"age": 24
+},
+{
+"key": "aaron-naughton",
+"name": "Aaron Naughton",
+"r": 0.059959049780110574,
+"age": 27
+},
+{
+"key": "jaeger-o-meara",
+"name": "Jaeger O'Meara",
+"r": 0.09250897335603514,
+"age": 33
+},
+{
+"key": "jack-bowes",
+"name": "Jack Bowes",
+"r": 0.09250897335603514,
+"age": 28
+},
+{
+"key": "jordan-croft",
+"name": "Jordan Croft",
+"r": -0.25485285406998626,
+"age": 21
+},
+{
+"key": "chayce-jones",
+"name": "Chayce Jones",
+"r": 0.09250897335603514,
+"age": 26
+},
+{
+"key": "toby-conway",
+"name": "Toby Conway",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "tom-mcdonald",
+"name": "Tom McDonald",
+"r": 0.06607730464580852,
+"age": 34
+},
+{
+"key": "blake-acres",
+"name": "Blake Acres",
+"r": 0.06553344314971343,
+"age": 31
+},
+{
+"key": "jacob-molier",
+"name": "Jacob Molier",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "campbell-chesser",
+"name": "Campbell Chesser",
+"r": 0.060956367627341024,
+"age": 23
+},
+{
+"key": "tyler-welsh",
+"name": "Tyler Welsh",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "willem-drew",
+"name": "Willem Drew",
+"r": 0.0590288596564148,
+"age": 28
+},
+{
+"key": "max-mapley",
+"name": "Max Mapley",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "charlie-comben",
+"name": "Charlie Comben",
+"r": -0.13305879974981283,
+"age": 25
+},
+{
+"key": "noah-balta",
+"name": "Noah Balta",
+"r": 0.05909105181808583,
+"age": 27
+},
+{
+"key": "brayden-maynard",
+"name": "Brayden Maynard",
+"r": 0.05960207656820282,
+"age": 30
+},
+{
+"key": "lennox-hoffman",
+"name": "Lennox Hoffman",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "harry-cunningham",
+"name": "Harry Cunningham",
+"r": 0.09250897335603514,
+"age": 33
+},
+{
+"key": "lachy-dovaston",
+"name": "Lachy Dovaston",
+"r": -0.27287256349015965,
+"age": 19
+},
+{
+"key": "brodie-kemp",
+"name": "Brodie Kemp",
+"r": -0.06681525192505333,
+"age": 25
+},
+{
+"key": "mabior-chol",
+"name": "Mabior Chol",
+"r": 0.02701797222842539,
+"age": 29
+},
+{
+"key": "jack-hutchinson",
+"name": "Jack Hutchinson",
+"r": 0.09250897335603514,
+"age": 25
+},
+{
+"key": "tom-atkins",
+"name": "Tom Atkins",
+"r": 0.057380067460342854,
+"age": 31
+},
+{
+"key": "jai-murray",
+"name": "Jai Murray",
+"r": -0.07380231695299966,
+"age": 19
+},
+{
+"key": "riley-thilthorpe",
+"name": "Riley Thilthorpe",
+"r": 0.05955312415975822,
+"age": 24
+},
+{
+"key": "jase-burgoyne",
+"name": "Jase Burgoyne",
+"r": -0.027062337502324008,
+"age": 23
+},
+{
+"key": "nikolas-cox",
+"name": "Nikolas Cox",
+"r": -0.18659915852324382,
+"age": 24
+},
+{
+"key": "taj-hotton",
+"name": "Taj Hotton",
+"r": -0.09818525752139917,
+"age": 20
+},
+{
+"key": "oskar-taylor",
+"name": "Oskar Taylor",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "thomas-burton",
+"name": "Thomas Burton",
+"r": -0.1456833900210074,
+"age": 19
+},
+{
+"key": "jevan-phillipou",
+"name": "Jevan Phillipou",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "callum-mills",
+"name": "Callum Mills",
+"r": 0.059712198073201606,
+"age": 29
+},
+{
+"key": "caiden-cleary",
+"name": "Caiden Cleary",
+"r": -0.4950180745376549,
+"age": 21
+},
+{
+"key": "kane-mcauliffe",
+"name": "Kane McAuliffe",
+"r": -0.2925017190616037,
+"age": 21
+},
+{
+"key": "jack-williams",
+"name": "Jack Williams",
+"r": -0.5909953843466099,
+"age": 23
+},
+{
+"key": "max-knobel",
+"name": "Max Knobel",
+"r": 0.09250897335603514,
+"age": 22
+},
+{
+"key": "dion-prestia",
+"name": "Dion Prestia",
+"r": 0.0629817038058722,
+"age": 34
+},
+{
+"key": "harry-schoenberg",
+"name": "Harry Schoenberg",
+"r": 0.09250897335603514,
+"age": 25
+},
+{
+"key": "paul-curtis",
+"name": "Paul Curtis",
+"r": 0.04823943463827973,
+"age": 23
+},
+{
+"key": "noah-roberts-thomson",
+"name": "Noah Roberts-Thomson",
+"r": -0.25582722104733835,
+"age": 19
+},
+{
+"key": "jordan-ridley",
+"name": "Jordan Ridley",
+"r": 0.06169066663231071,
+"age": 28
+},
+{
+"key": "sam-durham",
+"name": "Sam Durham",
+"r": 0.0560510436114956,
+"age": 25
+},
+{
+"key": "connor-rozee",
+"name": "Connor Rozee",
+"r": 0.058536962877119514,
+"age": 26
+},
+{
+"key": "xavier-lindsay",
+"name": "Xavier Lindsay",
+"r": -0.1298131538106373,
+"age": 20
+},
+{
+"key": "dylan-patterson",
+"name": "Dylan Patterson",
+"r": 0.0518338283328903,
+"age": 19
+},
+{
+"key": "nick-blakey",
+"name": "Nick Blakey",
+"r": 0.06016990553526225,
+"age": 26
+},
+{
+"key": "harvey-thomas",
+"name": "Harvey Thomas",
+"r": -0.1591052535799471,
+"age": 21
+},
+{
+"key": "jack-lukosius",
+"name": "Jack Lukosius",
+"r": 0.06010404618022047,
+"age": 26
+},
+{
+"key": "darcy-wilson",
+"name": "Darcy Wilson",
+"r": 0.01188957447188188,
+"age": 21
+},
+{
+"key": "paddy-cross",
+"name": "Paddy Cross",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "cameron-nairn",
+"name": "Cameron Nairn",
+"r": -0.19354227203371532,
+"age": 19
+},
+{
+"key": "toby-bedford",
+"name": "Toby Bedford",
+"r": 0.05688368074659933,
+"age": 26
+},
+{
+"key": "ben-long",
+"name": "Ben Long",
+"r": 0.09250897335603514,
+"age": 29
+},
+{
+"key": "patrick-cripps",
+"name": "Patrick Cripps",
+"r": 0.05867643740694506,
+"age": 31
+},
+{
+"key": "cody-curtin",
+"name": "Cody Curtin",
+"r": -0.10087308944603668,
+"age": 19
+},
+{
+"key": "jack-ough",
+"name": "Jack Ough",
+"r": -0.4086271486406122,
+"age": 20
+},
+{
+"key": "toby-murray",
+"name": "Toby Murray",
+"r": -0.28662656077665283,
+"age": 23
+},
+{
+"key": "oskar-baker",
+"name": "Oskar Baker",
+"r": 0.09250897335603514,
+"age": 28
+},
+{
+"key": "jarrod-witts",
+"name": "Jarrod Witts",
+"r": 0.05404034753363973,
+"age": 34
+},
+{
+"key": "jake-lloyd",
+"name": "Jake Lloyd",
+"r": 0.057266748409066315,
+"age": 33
+},
+{
+"key": "lachlan-carmichael",
+"name": "Lachlan Carmichael",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "alex-neal-bullen",
+"name": "Alex Neal-Bullen",
+"r": 0.06109497731704372,
+"age": 30
+},
+{
+"key": "harvey-gallagher",
+"name": "Harvey Gallagher",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "jacob-van-rooyen",
+"name": "Jacob Van Rooyen",
+"r": 0.064878498562003,
+"age": 23
+},
+{
+"key": "jack-buckley",
+"name": "Jack Buckley",
+"r": 0.04981768132436071,
+"age": 29
+},
+{
+"key": "balyn-o-brien",
+"name": "Balyn O'Brien",
+"r": -0.24841581265577717,
+"age": 19
+},
+{
+"key": "finnbar-maley",
+"name": "Finnbar Maley",
+"r": -0.3419138861280575,
+"age": 23
+},
+{
+"key": "max-heath",
+"name": "Max Heath",
+"r": -0.10282886523452162,
+"age": 24
+},
+{
+"key": "jai-culley",
+"name": "Jai Culley",
+"r": -0.6531717544901476,
+"age": 23
+},
+{
+"key": "bailey-humphrey",
+"name": "Bailey Humphrey",
+"r": 0.020787698887162476,
+"age": 22
+},
+{
+"key": "bradley-close",
+"name": "Bradley Close",
+"r": 0.09250897335603514,
+"age": 28
+},
+{
+"key": "nicholas-martin",
+"name": "Nicholas Martin",
+"r": 0.02176005985076679,
+"age": 25
+},
+{
+"key": "jake-waterman",
+"name": "Jake Waterman",
+"r": 0.05765142424811809,
+"age": 28
+},
+{
+"key": "kalani-white",
+"name": "Kalani White",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "tobie-travaglia",
+"name": "Tobie Travaglia",
+"r": -0.18358704436709317,
+"age": 20
+},
+{
+"key": "cameron-mackenzie",
+"name": "Cameron Mackenzie",
+"r": -0.029054823583771983,
+"age": 22
+},
+{
+"key": "riley-hamilton",
+"name": "Riley Hamilton",
+"r": -0.04030584301273765,
+"age": 20
+},
+{
+"key": "reece-torrent",
+"name": "Reece Torrent",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "ned-reeves",
+"name": "Ned Reeves",
+"r": 0.0530206972106364,
+"age": 28
+},
+{
+"key": "ned-moyle",
+"name": "Ned Moyle",
+"r": -0.3337451365602746,
+"age": 24
+},
+{
+"key": "jy-farrar",
+"name": "Jy Farrar",
+"r": -0.10612902179960748,
+"age": 30
+},
+{
+"key": "eric-hipwood",
+"name": "Eric Hipwood",
+"r": 0.09250897335603514,
+"age": 29
+},
+{
+"key": "jack-viney",
+"name": "Jack Viney",
+"r": 0.0654219740166293,
+"age": 32
+},
+{
+"key": "nathan-broad",
+"name": "Nathan Broad",
+"r": 0.09250897335603514,
+"age": 33
+},
+{
+"key": "jake-stringer",
+"name": "Jake Stringer",
+"r": 0.061877880645118344,
+"age": 32
+},
+{
+"key": "tristan-xerri",
+"name": "Tristan Xerri",
+"r": 0.03700105659408104,
+"age": 27
+},
+{
+"key": "sam-marshall",
+"name": "Sam Marshall",
+"r": -0.27742707365124586,
+"age": 20
+},
+{
+"key": "liam-hetherton",
+"name": "Liam Hetherton",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "trent-rivers",
+"name": "Trent Rivers",
+"r": 0.05987019359797863,
+"age": 25
+},
+{
+"key": "thomas-matthews",
+"name": "Thomas Matthews",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "kye-annand",
+"name": "Kye Annand",
+"r": -0.43678108826987005,
+"age": 23
+},
+{
+"key": "zachary-williams",
+"name": "Zachary Williams",
+"r": 0.06621865046778841,
+"age": 32
+},
+{
+"key": "daniel-annable",
+"name": "Daniel Annable",
+"r": 0.12134352103991874,
+"age": 19
+},
+{
+"key": "steely-green",
+"name": "Steely Green",
+"r": -0.635830342214655,
+"age": 22
+},
+{
+"key": "miles-bergman",
+"name": "Miles Bergman",
+"r": 0.058478081597361786,
+"age": 25
+},
+{
+"key": "shadeau-brain",
+"name": "Shadeau Brain",
+"r": -0.4791526987488669,
+"age": 22
+},
+{
+"key": "rory-lobb",
+"name": "Rory Lobb",
+"r": 0.06718591768221982,
+"age": 33
+},
+{
+"key": "andy-moniz-wakefield",
+"name": "Andy Moniz-Wakefield",
+"r": -0.37570915808226557,
+"age": 23
+},
+{
+"key": "zak-johnson",
+"name": "Zak Johnson",
+"r": -0.5028691182390703,
+"age": 20
+},
+{
+"key": "wayne-milera",
+"name": "Wayne Milera",
+"r": 0.06018268044577435,
+"age": 29
+},
+{
+"key": "kai-lohmann",
+"name": "Kai Lohmann",
+"r": 0.04127179003676584,
+"age": 23
+},
+{
+"key": "lachlan-blakiston",
+"name": "Lachlan Blakiston",
+"r": 0.09250897335603514,
+"age": 28
+},
+{
+"key": "louis-emmett",
+"name": "Louis Emmett",
+"r": -0.06295802155879515,
+"age": 19
+},
+{
+"key": "tom-green",
+"name": "Tom Green",
+"r": 0.05939586091354232,
+"age": 25
+},
+{
+"key": "milan-murdock",
+"name": "Milan Murdock",
+"r": 0.01988554449132751,
+"age": 26
+},
+{
+"key": "josh-lai",
+"name": "Josh Lai",
+"r": -0.721016227076724,
+"age": 21
+},
+{
+"key": "joshua-weddle",
+"name": "Joshua Weddle",
+"r": 0.03435260215077096,
+"age": 22
+},
+{
+"key": "archie-may",
+"name": "Archie May",
+"r": -0.5008583711473592,
+"age": 22
+},
+{
+"key": "ollie-greeves",
+"name": "Ollie Greeves",
+"r": -0.32102875423471755,
+"age": 19
+},
+{
+"key": "ed-richards",
+"name": "Ed Richards",
+"r": 0.0590337680442905,
+"age": 27
+},
+{
+"key": "liam-puncher",
+"name": "Liam Puncher",
+"r": -0.28421825883570107,
+"age": 23
+},
+{
+"key": "malakai-champion",
+"name": "Malakai Champion",
+"r": -0.3272591054652405,
+"age": 20
+},
+{
+"key": "jaime-uhr-henry",
+"name": "Jaime Uhr-Henry",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "brody-mihocek",
+"name": "Brody Mihocek",
+"r": 0.09250897335603514,
+"age": 33
+},
+{
+"key": "fred-rodriguez",
+"name": "Fred Rodriguez",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "kieren-briggs",
+"name": "Kieren Briggs",
+"r": 0.05626218031478358,
+"age": 27
+},
+{
+"key": "marc-pittonet",
+"name": "Marc Pittonet",
+"r": 0.015390692883844537,
+"age": 30
+},
+{
+"key": "lachie-jaques",
+"name": "Lachie Jaques",
+"r": -0.4814296096802009,
+"age": 20
+},
+{
+"key": "matt-guelfi",
+"name": "Matt Guelfi",
+"r": 0.09250897335603514,
+"age": 29
+},
+{
+"key": "chad-warner",
+"name": "Chad Warner",
+"r": 0.059230468224090504,
+"age": 25
+},
+{
+"key": "aidan-johnson",
+"name": "Aidan Johnson",
+"r": 0.09250897335603514,
+"age": 26
+},
+{
+"key": "sam-taylor",
+"name": "Sam Taylor",
+"r": 0.06330668947702156,
+"age": 27
+},
+{
+"key": "christian-moraes",
+"name": "Christian Moraes",
+"r": -0.39028272279587173,
+"age": 20
+},
+{
+"key": "flynn-riley",
+"name": "Flynn Riley",
+"r": 0.07271714412857078,
+"age": 22
+},
+{
+"key": "taylor-walker",
+"name": "Taylor Walker",
+"r": 0.05836806793865912,
+"age": 37
+},
+{
+"key": "matt-rowell",
+"name": "Matt Rowell",
+"r": 0.05736604559135405,
+"age": 25
+},
+{
+"key": "bobby-hill",
+"name": "Bobby Hill",
+"r": 0.09250897335603514,
+"age": 26
+},
+{
+"key": "beau-addinsall",
+"name": "Beau Addinsall",
+"r": -0.03496240982393728,
+"age": 19
+},
+{
+"key": "will-ashcroft",
+"name": "Will Ashcroft",
+"r": 0.05992799439685381,
+"age": 22
+},
+{
+"key": "christian-salem",
+"name": "Christian Salem",
+"r": 0.05483625013686155,
+"age": 31
+},
+{
+"key": "lloyd-meek",
+"name": "Lloyd Meek",
+"r": 0.028388807876899902,
+"age": 28
+},
+{
+"key": "noah-howes",
+"name": "Noah Howes",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "bodhi-uwland",
+"name": "Bodhi Uwland",
+"r": 0.009587093338197406,
+"age": 23
+},
+{
+"key": "brandon-zerk-thatcher",
+"name": "Brandon Zerk-Thatcher",
+"r": 0.3201150094718759,
+"age": 28
+},
+{
+"key": "esava-ratugolea",
+"name": "Esava Ratugolea",
+"r": 0.026296308304154303,
+"age": 28
+},
+{
+"key": "dayne-zorko",
+"name": "Dayne Zorko",
+"r": 0.05994380203484573,
+"age": 37
+},
+{
+"key": "josh-battle",
+"name": "Josh Battle",
+"r": 0.06367744531270914,
+"age": 28
+},
+{
+"key": "brayden-george",
+"name": "Brayden George",
+"r": 0.09250897335603514,
+"age": 22
+},
+{
+"key": "harry-kyle",
+"name": "Harry Kyle",
+"r": -0.15660969593837837,
+"age": 19
+},
+{
+"key": "charlie-ballard",
+"name": "Charlie Ballard",
+"r": 0.06649685494279622,
+"age": 27
+},
+{
+"key": "oscar-berry",
+"name": "Oscar Berry",
+"r": 0.09250897335603514,
+"age": 24
+},
+{
+"key": "charlie-banfield",
+"name": "Charlie Banfield",
+"r": -0.27508011783574504,
+"age": 19
+},
+{
+"key": "murphy-reid",
+"name": "Murphy Reid",
+"r": 0.04478396979128152,
+"age": 20
+},
+{
+"key": "bailey-williams-wc",
+"name": "Bailey J. Williams",
+"r": 0.05978301723991275,
+"age": 26
+},
+{
+"key": "dan-houston",
+"name": "Dan Houston",
+"r": 0.061488310403601254,
+"age": 29
+},
+{
+"key": "connor-budarick",
+"name": "Connor Budarick",
+"r": -0.022896904111151528,
+"age": 25
+},
+{
+"key": "hugo-mikunda",
+"name": "Hugo Mikunda",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "eamonn-armstrong",
+"name": "Eamonn Armstrong",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "tom-cole",
+"name": "Tom Cole",
+"r": 0.0697483697444512,
+"age": 29
+},
+{
+"key": "edward-allan",
+"name": "Edward Allan",
+"r": -0.10052328696699431,
+"age": 22
+},
+{
+"key": "hussien-el-achkar",
+"name": "Hussien El Achkar",
+"r": -0.15109100043281054,
+"age": 19
+},
+{
+"key": "sam-davidson",
+"name": "Sam Davidson",
+"r": 0.09250897335603514,
+"age": 25
+},
+{
+"key": "sam-switkowski",
+"name": "Sam Switkowski",
+"r": 0.09250897335603514,
+"age": 30
+},
+{
+"key": "gryan-miers",
+"name": "Gryan Miers",
+"r": 0.062107598727418445,
+"age": 27
+},
+{
+"key": "callum-coleman-jones",
+"name": "Callum Coleman-Jones",
+"r": 0.09250897335603514,
+"age": 27
+},
+{
+"key": "darcy-fogarty",
+"name": "Darcy Fogarty",
+"r": 0.06230135197291897,
+"age": 27
+},
+{
+"key": "shannon-neale",
+"name": "Shannon Neale",
+"r": 0.0454219724322773,
+"age": 24
+},
+{
+"key": "jonty-faull",
+"name": "Jonty Faull",
+"r": -0.22325838814138432,
+"age": 20
+},
+{
+"key": "lachlan-schultz",
+"name": "Lachlan Schultz",
+"r": 0.0605248893902961,
+"age": 29
+},
+{
+"key": "elliot-yeo",
+"name": "Elliot Yeo",
+"r": 0.05906482111044231,
+"age": 33
+},
+{
+"key": "calsher-dear",
+"name": "Calsher Dear",
+"r": -0.44917434606944673,
+"age": 21
+},
+{
+"key": "josh-ward",
+"name": "Josh Ward",
+"r": 0.04155310756080066,
+"age": 23
+},
+{
+"key": "cooper-simpson",
+"name": "Cooper Simpson",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "noah-chamberlain",
+"name": "Noah Chamberlain",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "sam-sturt",
+"name": "Sam Sturt",
+"r": 0.09250897335603514,
+"age": 26
+},
+{
+"key": "nicholas-coffield",
+"name": "Nicholas Coffield",
+"r": 0.09250897335603514,
+"age": 27
+},
+{
+"key": "sam-wicks",
+"name": "Sam Wicks",
+"r": 0.09250897335603514,
+"age": 27
+},
+{
+"key": "jade-gresham",
+"name": "Jade Gresham",
+"r": 0.09250897335603514,
+"age": 29
+},
+{
+"key": "latrelle-pickett",
+"name": "Latrelle Pickett",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "zac-walker",
+"name": "Zac Walker",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "cooper-lord",
+"name": "Cooper Lord",
+"r": -0.4765457005920214,
+"age": 21
+},
+{
+"key": "tom-doedee",
+"name": "Tom Doedee",
+"r": 0.06010404618022047,
+"age": 29
+},
+{
+"key": "karl-worner",
+"name": "Karl Worner",
+"r": -0.06356373712339847,
+"age": 24
+},
+{
+"key": "ryan-angwin",
+"name": "Ryan Angwin",
+"r": -0.04666414426893739,
+"age": 24
+},
+{
+"key": "ben-camporeale",
+"name": "Ben Camporeale",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "joe-richards",
+"name": "Joe Richards",
+"r": -0.005840532922219532,
+"age": 27
+},
+{
+"key": "archer-day-wicks",
+"name": "Archer Day-Wicks",
+"r": -0.6444192492378942,
+"age": 20
+},
+{
+"key": "mark-o-connor",
+"name": "Mark O'Connor",
+"r": 0.09250897335603514,
+"age": 29
+},
+{
+"key": "flynn-young",
+"name": "Flynn Young",
+"r": 0.09250897335603514,
+"age": 24
+},
+{
+"key": "hugh-bond",
+"name": "Hugh Bond",
+"r": -0.5814413673506098,
+"age": 22
+},
+{
+"key": "billy-cootee",
+"name": "Billy Cootee",
+"r": 0.09250897335603514,
+"age": 24
+},
+{
+"key": "finlay-macrae",
+"name": "Finlay Macrae",
+"r": 0.09250897335603514,
+"age": 24
+},
+{
+"key": "oliver-florent",
+"name": "Oliver Florent",
+"r": 0.05971644492986661,
+"age": 28
+},
+{
+"key": "isaac-heeney",
+"name": "Isaac Heeney",
+"r": 0.05900376935387874,
+"age": 30
+},
+{
+"key": "max-gruzewski",
+"name": "Max Gruzewski",
+"r": -0.5408018325648889,
+"age": 22
+},
+{
+"key": "james-o-donnell",
+"name": "James O'Donnell",
+"r": -0.14814859769791666,
+"age": 24
+},
+{
+"key": "isaiah-dudley",
+"name": "Isaiah Dudley",
+"r": -0.3229521855258374,
+"age": 23
+},
+{
+"key": "hunter-clark",
+"name": "Hunter Clark",
+"r": 0.09250897335603514,
+"age": 27
+},
+{
+"key": "reef-mcinnes",
+"name": "Reef McInnes",
+"r": 0.09250897335603514,
+"age": 24
+},
+{
+"key": "marcus-bontempelli",
+"name": "Marcus Bontempelli",
+"r": 0.05869452853399393,
+"age": 31
+},
+{
+"key": "nate-caddy",
+"name": "Nate Caddy",
+"r": -0.08957585553663727,
+"age": 21
+},
+{
+"key": "zach-guthrie",
+"name": "Zach Guthrie",
+"r": 0.06051080258828523,
+"age": 28
+},
+{
+"key": "tyrell-dewar",
+"name": "Tyrell Dewar",
+"r": -0.5939347178676684,
+"age": 22
+},
+{
+"key": "zac-fisher",
+"name": "Zac Fisher",
+"r": 0.061877880645118344,
+"age": 28
+},
+{
+"key": "noah-answerth",
+"name": "Noah Answerth",
+"r": 0.09250897335603514,
+"age": 27
+},
+{
+"key": "colby-mckercher",
+"name": "Colby McKercher",
+"r": 0.06269535455222819,
+"age": 21
+},
+{
+"key": "joshua-kelly",
+"name": "Joshua Kelly",
+"r": 0.055998390698892564,
+"age": 31
+},
+{
+"key": "elijah-hollands",
+"name": "Elijah Hollands",
+"r": 0.07419876709867146,
+"age": 24
+},
+{
+"key": "jacob-weitering",
+"name": "Jacob Weitering",
+"r": 0.06283850657236023,
+"age": 29
+},
+{
+"key": "jesse-hogan",
+"name": "Jesse Hogan",
+"r": 0.05241690093930007,
+"age": 32
+},
+{
+"key": "oscar-mcdonald",
+"name": "Oscar McDonald",
+"r": 0.07176513208978141,
+"age": 30
+},
+{
+"key": "matt-hill",
+"name": "Matt Hill",
+"r": -0.14585662083073603,
+"age": 22
+},
+{
+"key": "wade-derksen",
+"name": "Wade Derksen",
+"r": -0.21963644760283196,
+"age": 25
+},
+{
+"key": "jack-higgins",
+"name": "Jack Higgins",
+"r": 0.052781374324906594,
+"age": 27
+},
+{
+"key": "sam-lalor",
+"name": "Sam Lalor",
+"r": 0.11017567732362954,
+"age": 20
+},
+{
+"key": "flynn-perez",
+"name": "Flynn Perez",
+"r": 0.09250897335603514,
+"age": 25
+},
+{
+"key": "massimo-d-ambrosio",
+"name": "Massimo D'Ambrosio",
+"r": -0.13163157730668684,
+"age": 23
+},
+{
+"key": "conor-mckenna",
+"name": "Conor McKenna",
+"r": 0.09250897335603514,
+"age": 30
+},
+{
+"key": "matt-cottrell",
+"name": "Matt Cottrell",
+"r": 0.04568716021220509,
+"age": 26
+},
+{
+"key": "arthur-jones",
+"name": "Arthur Jones",
+"r": -0.3943700256395891,
+"age": 23
+},
+{
+"key": "koltyn-tholstrup",
+"name": "Koltyn Tholstrup",
+"r": 0.06865506564083779,
+"age": 21
+},
+{
+"key": "harry-sharp",
+"name": "Harry Sharp",
+"r": -0.41328221801249954,
+"age": 24
+},
+{
+"key": "lachlan-gulbin",
+"name": "Lachlan Gulbin",
+"r": -0.2764273029867097,
+"age": 20
+},
+{
+"key": "mitchell-lewis",
+"name": "Mitchell Lewis",
+"r": -0.02888091257241321,
+"age": 28
+},
+{
+"key": "archie-roberts",
+"name": "Archie Roberts",
+"r": -0.06845976426857392,
+"age": 21
+},
+{
+"key": "lachlan-ash",
+"name": "Lachlan Ash",
+"r": 0.06007232847009747,
+"age": 25
+},
+{
+"key": "oliver-wines",
+"name": "Oliver Wines",
+"r": 0.05847442589946095,
+"age": 32
+},
+{
+"key": "james-leake",
+"name": "James Leake",
+"r": -0.07522062006377106,
+"age": 21
+},
+{
+"key": "peter-ladhams",
+"name": "Peter Ladhams",
+"r": -0.08416069333908571,
+"age": 28
+},
+{
+"key": "max-michalanney",
+"name": "Max Michalanney",
+"r": 0.024637674410069144,
+"age": 22
+},
+{
+"key": "jhye-clark",
+"name": "Jhye Clark",
+"r": -0.025387678444975803,
+"age": 22
+},
+{
+"key": "luke-mcdonald",
+"name": "Luke McDonald",
+"r": 0.09250897335603514,
+"age": 31
+},
+{
+"key": "levi-ashcroft",
+"name": "Levi Ashcroft",
+"r": 0.07555062511289679,
+"age": 20
+},
+{
+"key": "tom-hanily",
+"name": "Tom Hanily",
+"r": -0.32561174484195365,
+"age": 21
+},
+{
+"key": "paddy-dow",
+"name": "Paddy Dow",
+"r": 0.09250897335603514,
+"age": 27
+},
+{
+"key": "luke-kennedy",
+"name": "Luke Kennedy",
+"r": -0.2725896886583541,
+"age": 20
+},
+{
+"key": "angus-anderson",
+"name": "Angus Anderson",
+"r": 0.03143704316843077,
+"age": 23
+},
+{
+"key": "mac-andrew",
+"name": "Mac Andrew",
+"r": 0.0565490521397225,
+"age": 23
+},
+{
+"key": "isaac-keeler",
+"name": "Isaac Keeler",
+"r": -0.026984195604781158,
+"age": 22
+},
+{
+"key": "henry-smith",
+"name": "Henry Smith",
+"r": 0.09250897335603514,
+"age": 24
+},
+{
+"key": "lachie-neale",
+"name": "Lachie Neale",
+"r": 0.05929589540048563,
+"age": 33
+},
+{
+"key": "rhyan-mansell",
+"name": "Rhyan Mansell",
+"r": 0.006821995053601038,
+"age": 26
+},
+{
+"key": "rhylee-west",
+"name": "Rhylee West",
+"r": 0.06005821177120252,
+"age": 26
+},
+{
+"key": "jack-scrimshaw",
+"name": "Jack Scrimshaw",
+"r": 0.057266748409066315,
+"age": 28
+},
+{
+"key": "cameron-zurhaar",
+"name": "Cameron Zurhaar",
+"r": 0.046019229808969886,
+"age": 28
+},
+{
+"key": "tai-hayes",
+"name": "Tai Hayes",
+"r": 0.09250897335603514,
+"age": 22
+},
+{
+"key": "ryley-sanders",
+"name": "Ryley Sanders",
+"r": 0.061683224489100796,
+"age": 21
+},
+{
+"key": "brandon-walker",
+"name": "Brandon Walker",
+"r": -0.34801883848107573,
+"age": 24
+},
+{
+"key": "billy-frampton",
+"name": "Billy Frampton",
+"r": 0.06037635649262252,
+"age": 30
+},
+{
+"key": "blake-thredgold",
+"name": "Blake Thredgold",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "clay-hall",
+"name": "Clay Hall",
+"r": -0.14432863625261572,
+"age": 21
+},
+{
+"key": "rhys-stanley",
+"name": "Rhys Stanley",
+"r": 0.09250897335603514,
+"age": 36
+},
+{
+"key": "hugh-mccluggage",
+"name": "Hugh McCluggage",
+"r": 0.05895783405911281,
+"age": 28
+},
+{
+"key": "ben-ainsworth",
+"name": "Ben Ainsworth",
+"r": 0.059234588380724595,
+"age": 28
+},
+{
+"key": "kyle-langford",
+"name": "Kyle Langford",
+"r": 0.060956367627341024,
+"age": 30
+},
+{
+"key": "brandon-starcevich",
+"name": "Brandon Starcevich",
+"r": 0.09250897335603514,
+"age": 27
+},
+{
+"key": "campbell-gray",
+"name": "Campbell Gray",
+"r": -0.30200815591142205,
+"age": 23
+},
+{
+"key": "max-kondogiannis",
+"name": "Max Kondogiannis",
+"r": -0.2912818944392962,
+"age": 19
+},
+{
+"key": "kaleb-smith",
+"name": "Kaleb Smith",
+"r": -0.005327651123609778,
+"age": 22
+},
+{
+"key": "indy-cotton",
+"name": "Indy Cotton",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "nick-murray",
+"name": "Nick Murray",
+"r": 0.05266062174426489,
+"age": 26
+},
+{
+"key": "wil-parker",
+"name": "Wil Parker",
+"r": 0.09250897335603514,
+"age": 24
+},
+{
+"key": "bailey-dale",
+"name": "Bailey Dale",
+"r": 0.060502807542806236,
+"age": 30
+},
+{
+"key": "darcy-cameron",
+"name": "Darcy Cameron",
+"r": 0.05875554353608203,
+"age": 31
+},
+{
+"key": "harry-charleson",
+"name": "Harry Charleson",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "kade-chandler",
+"name": "Kade Chandler",
+"r": 0.06030870887817308,
+"age": 26
+},
+{
+"key": "jayden-short",
+"name": "Jayden Short",
+"r": 0.05843904695200086,
+"age": 30
+},
+{
+"key": "lachlan-cowan",
+"name": "Lachlan Cowan",
+"r": -0.2388753274264741,
+"age": 22
+},
+{
+"key": "marcus-windhager",
+"name": "Marcus Windhager",
+"r": -0.016504937217452054,
+"age": 23
+},
+{
+"key": "river-stevens",
+"name": "River Stevens",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "tom-mccartin",
+"name": "Tom McCartin",
+"r": 0.06413211690522913,
+"age": 27
+},
+{
+"key": "harrison-oliver",
+"name": "Harrison Oliver",
+"r": -0.0970078893689913,
+"age": 20
+},
+{
+"key": "lachlan-mcneil",
+"name": "Lachlan McNeil",
+"r": 0.09250897335603514,
+"age": 25
+},
+{
+"key": "brent-daniels",
+"name": "Brent Daniels",
+"r": 0.06276244190327196,
+"age": 27
+},
+{
+"key": "harrison-coe",
+"name": "Harrison Coe",
+"r": 0.09250897335603514,
+"age": 27
+},
+{
+"key": "max-holmes",
+"name": "Max Holmes",
+"r": 0.05915775425628533,
+"age": 24
+},
+{
+"key": "alex-pearce",
+"name": "Alex Pearce",
+"r": 0.09250897335603514,
+"age": 31
+},
+{
+"key": "james-blanck",
+"name": "James Blanck",
+"r": 0.09250897335603514,
+"age": 26
+},
+{
+"key": "jack-henry",
+"name": "Jack Henry",
+"r": 0.05854496382165064,
+"age": 28
+},
+{
+"key": "will-hayward",
+"name": "Will Hayward",
+"r": 0.06068832364663623,
+"age": 28
+},
+{
+"key": "cooper-trembath",
+"name": "Cooper Trembath",
+"r": -0.3555633868805852,
+"age": 21
+},
+{
+"key": "cody-anderson",
+"name": "Cody Anderson",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "cooper-sharman",
+"name": "Cooper Sharman",
+"r": 0.05421068831218889,
+"age": 26
+},
+{
+"key": "finnegan-davis",
+"name": "Finnegan Davis",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "griffin-logue",
+"name": "Griffin Logue",
+"r": 0.04938361914461287,
+"age": 28
+},
+{
+"key": "harry-edwards",
+"name": "Harry Edwards",
+"r": -0.4908696046496146,
+"age": 26
+},
+{
+"key": "jack-darling",
+"name": "Jack Darling",
+"r": 0.05292531490110641,
+"age": 34
+},
+{
+"key": "lewis-young",
+"name": "Lewis Young",
+"r": 0.04208548227806452,
+"age": 28
+},
+{
+"key": "luke-jackson",
+"name": "Luke Jackson",
+"r": 0.059268335221470236,
+"age": 25
+},
+{
+"key": "connor-o-sullivan",
+"name": "Connor O'Sullivan",
+"r": 0.04839340911125478,
+"age": 21
+},
+{
+"key": "jesse-mellor",
+"name": "Jesse Mellor",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "toby-whan",
+"name": "Toby Whan",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "nick-watson",
+"name": "Nick Watson",
+"r": 0.0626802620701985,
+"age": 21
+},
+{
+"key": "callum-brown-ire",
+"name": "Callum M. Brown",
+"r": -0.0011346529316249576,
+"age": 26
+},
+{
+"key": "tew-jiath",
+"name": "Tew Jiath",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "rob-monahan",
+"name": "Rob Monahan",
+"r": 0.09250897335603514,
+"age": 22
+},
+{
+"key": "christian-petracca",
+"name": "Christian Petracca",
+"r": 0.05960207656820282,
+"age": 30
+},
+{
+"key": "will-edwards",
+"name": "Will Edwards",
+"r": -0.642833604864373,
+"age": 23
+},
+{
+"key": "harry-armstrong",
+"name": "Harry Armstrong",
+"r": -0.001251125103624462,
+"age": 20
+},
+{
+"key": "jack-payne",
+"name": "Jack Payne",
+"r": 0.026958434954672983,
+"age": 27
+},
+{
+"key": "ned-long",
+"name": "Ned Long",
+"r": -0.08890096736431452,
+"age": 23
+},
+{
+"key": "josh-dunkley",
+"name": "Josh Dunkley",
+"r": 0.05897928619421311,
+"age": 29
+},
+{
+"key": "corey-durdin",
+"name": "Corey Durdin",
+"r": -0.20337887359455764,
+"age": 24
+},
+{
+"key": "jordan-boyd",
+"name": "Jordan Boyd",
+"r": 0.09250897335603514,
+"age": 28
+},
+{
+"key": "jackson-archer",
+"name": "Jackson Archer",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "todd-marshall",
+"name": "Todd Marshall",
+"r": 0.05940264083009472,
+"age": 28
+},
+{
+"key": "sullivan-robey",
+"name": "Sullivan Robey",
+"r": -0.0010838149151821685,
+"age": 19
+},
+{
+"key": "archer-reid",
+"name": "Archer Reid",
+"r": -0.3855616677825455,
+"age": 21
+},
+{
+"key": "ben-jepson",
+"name": "Ben Jepson",
+"r": 0.09250897335603514,
+"age": 25
+},
+{
+"key": "ryan-maric",
+"name": "Ryan Maric",
+"r": -0.2938184660411598,
+"age": 22
+},
+{
+"key": "jordon-sweet",
+"name": "Jordon Sweet",
+"r": -0.01741492745391493,
+"age": 28
+},
+{
+"key": "jeremy-cameron",
+"name": "Jeremy Cameron",
+"r": 0.05948270451214066,
+"age": 33
+},
+{
+"key": "robert-hansen",
+"name": "Robert Hansen",
+"r": -0.03955255089579324,
+"age": 22
+},
+{
+"key": "mitchell-edwards",
+"name": "Mitchell Edwards",
+"r": -0.16698715062964042,
+"age": 21
+},
+{
+"key": "liam-mcmahon",
+"name": "Liam McMahon",
+"r": -0.6773799004854661,
+"age": 24
+},
+{
+"key": "kye-fincher",
+"name": "Kye Fincher",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "hunter-holmes",
+"name": "Hunter Holmes",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "peter-wright",
+"name": "Peter Wright",
+"r": 0.05890271298993799,
+"age": 30
+},
+{
+"key": "darcy-moore",
+"name": "Darcy Moore",
+"r": 0.07006015883502092,
+"age": 30
+},
+{
+"key": "james-tunstill",
+"name": "James Tunstill",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "mark-blicavs",
+"name": "Mark Blicavs",
+"r": 0.09250897335603514,
+"age": 35
+},
+{
+"key": "nathan-o-driscoll",
+"name": "Nathan O'Driscoll",
+"r": -0.05854532199544227,
+"age": 24
+},
+{
+"key": "adam-cerra",
+"name": "Adam Cerra",
+"r": 0.05906482111044231,
+"age": 27
+},
+{
+"key": "liam-fawcett",
+"name": "Liam Fawcett",
+"r": -0.07338176012535835,
+"age": 21
+},
+{
+"key": "josaia-delana",
+"name": "Josaia Delana",
+"r": -0.055127374394780326,
+"age": 20
+},
+{
+"key": "noah-anderson",
+"name": "Noah Anderson",
+"r": 0.05846264108385957,
+"age": 25
+},
+{
+"key": "jye-amiss",
+"name": "Jye Amiss",
+"r": -0.0035357715543854473,
+"age": 23
+},
+{
+"key": "josh-worrell",
+"name": "Josh Worrell",
+"r": 0.06357821430183508,
+"age": 25
+},
+{
+"key": "timothy-english",
+"name": "Timothy English",
+"r": 0.05937126042011753,
+"age": 29
+},
+{
+"key": "joe-pike",
+"name": "Joe Pike",
+"r": 0.09250897335603514,
+"age": 21
+},
+{
+"key": "darragh-joyce",
+"name": "Darragh Joyce",
+"r": 0.09250897335603514,
+"age": 29
+},
+{
+"key": "harry-sheezel",
+"name": "Harry Sheezel",
+"r": 0.06006891806007908,
+"age": 22
+},
+{
+"key": "jy-simpkin",
+"name": "Jy Simpkin",
+"r": 0.05937550449195883,
+"age": 28
+},
+{
+"key": "cooper-hynes",
+"name": "Cooper Hynes",
+"r": -0.1359534675266667,
+"age": 20
+},
+{
+"key": "max-beattie",
+"name": "Max Beattie",
+"r": 0.09250897335603514,
+"age": 23
+},
+{
+"key": "cooper-bell",
+"name": "Cooper Bell",
+"r": 0.09250897335603514,
+"age": 20
+},
+{
+"key": "jake-lever",
+"name": "Jake Lever",
+"r": 0.06405821884155527,
+"age": 30
+},
+{
+"key": "riley-garcia",
+"name": "Riley Garcia",
+"r": -0.6412657102413019,
+"age": 25
+},
+{
+"key": "logan-morris",
+"name": "Logan Morris",
+"r": -0.023293436461606087,
+"age": 21
+},
+{
+"key": "leo-lombard",
+"name": "Leo Lombard",
+"r": -0.0045595043005236535,
+"age": 20
+},
+{
+"key": "brayden-cook",
+"name": "Brayden Cook",
+"r": -0.005902409361414396,
+"age": 24
+},
+{
+"key": "jordan-dawson",
+"name": "Jordan Dawson",
+"r": 0.05872003603574538,
+"age": 29
+},
+{
+"key": "wil-dawson",
+"name": "Wil Dawson",
+"r": -0.23973883607245494,
+"age": 21
+},
+{
+"key": "beau-mccreery",
+"name": "Beau McCreery",
+"r": -0.03354975433889196,
+"age": 25
+},
+{
+"key": "ryan-gardner",
+"name": "Ryan Gardner",
+"r": 0.09250897335603514,
+"age": 29
+},
+{
+"key": "lance-collard",
+"name": "Lance Collard",
+"r": -0.02249197120775792,
+"age": 21
+},
+{
+"key": "nathan-wardius",
+"name": "Nathan Wardius",
+"r": 0.09250897335603514,
+"age": 22
+},
+{
+"key": "luke-nankervis",
+"name": "Luke Nankervis",
+"r": -0.4008821759015291,
+"age": 23
+},
+{
+"key": "luke-ryan",
+"name": "Luke Ryan",
+"r": 0.06001224751966583,
+"age": 30
+},
+{
+"key": "caleb-graham",
+"name": "Caleb Graham",
+"r": -0.37180734032027984,
+"age": 26
+},
+{
+"key": "jarman-impey",
+"name": "Jarman Impey",
+"r": 0.060408912335442544,
+"age": 31
+},
+{
+"key": "izak-rankine",
+"name": "Izak Rankine",
+"r": 0.061803268652380616,
+"age": 26
+},
+{
+"key": "xavier-bamert",
+"name": "Xavier Bamert",
+"r": -0.07063903333179933,
+"age": 19
+},
+{
+"key": "bailey-banfield",
+"name": "Bailey Banfield",
+"r": 0.09250897335603514,
+"age": 28
+},
+{
+"key": "tyan-prindable",
+"name": "Tyan Prindable",
+"r": 0.09250897335603514,
+"age": 19
+},
+{
+"key": "lukas-cooke",
+"name": "Lukas Cooke",
+"r": -0.02249197120775792,
+"age": 23
+},
+{
+"key": "george-stevens",
+"name": "George Stevens",
+"r": -0.5542831489068936,
+"age": 21
+},
+{
+"key": "jamie-cripps",
+"name": "Jamie Cripps",
+"r": 0.09250897335603514,
+"age": 34
+},
+{
+"key": "sid-draper",
+"name": "Sid Draper",
+"r": 0.19087298057253133,
+"age": 20
+},
+{
+"key": "brennan-cox",
+"name": "Brennan Cox",
+"r": 0.06354093239583736,
+"age": 28
+},
+{
+"key": "lachlan-smith",
+"name": "Lachlan Smith",
+"r": -0.23506947479537565,
+"age": 21
+},
+{
+"key": "jacob-wehr",
+"name": "Jacob Wehr",
+"r": 0.09250897335603514,
+"age": 28
+},
+{
+"key": "samuel-collins",
+"name": "Samuel Collins",
+"r": 0.0629817038058722,
+"age": 32
+},
+{
+"key": "riley-hardeman",
+"name": "Riley Hardeman",
+"r": -0.10685397798630702,
+"age": 21
+},
+{
+"key": "sam-de-koning",
+"name": "Sam De Koning",
+"r": 0.053445792071102005,
+"age": 25
+},
+{
+"key": "tom-edwards",
+"name": "Tom Edwards",
+"r": 0.09250897335603514,
+"age": 26
+},
+{
+"key": "reilly-o-brien",
+"name": "Reilly O'Brien",
+"r": 0.05860352245877909,
+"age": 31
+},
+{
+"key": "alix-tauru",
+"name": "Alix Tauru",
+"r": -0.18464471583072306,
+"age": 20
+},
+{
+"key": "ben-miller",
+"name": "Ben Miller",
+"r": -0.04776096789948914,
+"age": 27
+}
+]
+}

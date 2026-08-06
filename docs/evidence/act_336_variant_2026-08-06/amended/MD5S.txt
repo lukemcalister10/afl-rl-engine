@@ -1,0 +1,33 @@
+#336 ADDENDUM 1 — MD5S / IDENTITIES.  Every figure quoted in this directory traces to a line here.
+
+CAPTION, mandated on every sheet of this act:
+  reference layer bust-inclusive; year-zero surface held at the shipped survivors-basis fit;
+  the joint re-derivation is #334 stage B, after the ruling.
+
+== BOARDS ==
+113b36f898a32363c49c2a62fb809f4b  /tmp/claude-0/-home-user-afl-rl-engine/70ae5cc6-ad09-5e1e-a239-e478adab9097/scratchpad/act336b/board_baseline.json
+e52ee95dd56d8f5b670887d34aabe094  /tmp/claude-0/-home-user-afl-rl-engine/70ae5cc6-ad09-5e1e-a239-e478adab9097/scratchpad/act336b/board_variant.json
+bc9f735a301626be75651b5fd5c0d200  /tmp/claude-0/-home-user-afl-rl-engine/70ae5cc6-ad09-5e1e-a239-e478adab9097/scratchpad/act336/board_variant.json
+  board_baseline.json      = the CONTROL. MUST equal 113b36f898a32363c49c2a62fb809f4b (the live board).
+  board_variant.json       = the AMENDED variant board.
+  act336/board_variant.json= the FIRST CUT's board (superseded; kept for the three-way comparison).
+
+== ENGINE IDENTITIES (from the build logs / decomp meta) ==
+  store            37ced3ce   (all three builds, UNMOVED)
+  engine_head      8f0e3eb1   (_merged_recover.py — UNTOUCHED, not one of the levers)
+  v0surf signature af556bdca53dee20d4f73e0ae25a8127  frozen=True   (all three — THE SURFACE IS HELD)
+  baseline   rl_model 33f94073 / fv d920557e
+  first cut  rl_model 1b0cc66d / fv c9d9b541   (superseded)
+  AMENDED    rl_model 915a4c0c / fv 61f4d32c
+
+== NO-ARB MATRICES ==
+5fb617d09cd8341d9f36b90a1827e2e5  /tmp/claude-0/-home-user-afl-rl-engine/70ae5cc6-ad09-5e1e-a239-e478adab9097/scratchpad/act336b/noarb_baseline/per_entrant_338_confirmation.json
+6155c2c911581c342ab6eb0c2949e2bc  /tmp/claude-0/-home-user-afl-rl-engine/70ae5cc6-ad09-5e1e-a239-e478adab9097/scratchpad/act336b/noarb_variant/per_entrant_338_confirmation.json
+f4b3986a97d5cb89ed228a826ac2b798  /tmp/claude-0/-home-user-afl-rl-engine/70ae5cc6-ad09-5e1e-a239-e478adab9097/scratchpad/act336/noarb_variant/per_entrant_338_confirmation.json
+  matrix identity pins on BOTH sides: store=37ced3ce  v0surf=af556bdca53d  n_records=2645
+
+== THE TWO ENGINE FILES ON THE BRANCH ==
+77af92b2893497553f53653b826e4f46  /tmp/claude-0/-home-user-afl-rl-engine/70ae5cc6-ad09-5e1e-a239-e478adab9097/scratchpad/act336b/repo_variant/engine/forward_valuation/par_build.py
+915a4c0c81804b0ddcdbe65ce2ad94b0  /tmp/claude-0/-home-user-afl-rl-engine/70ae5cc6-ad09-5e1e-a239-e478adab9097/scratchpad/act336b/repo_variant/engine/rl_after/rl_model.py
+aeff31de58b6745e5a334f7712805150  /tmp/claude-0/-home-user-afl-rl-engine/70ae5cc6-ad09-5e1e-a239-e478adab9097/scratchpad/act336b/repo_main/engine/forward_valuation/par_build.py
+33f940735281a07e3b6ca19f31bf2ea6  /tmp/claude-0/-home-user-afl-rl-engine/70ae5cc6-ad09-5e1e-a239-e478adab9097/scratchpad/act336b/repo_main/engine/rl_after/rl_model.py
