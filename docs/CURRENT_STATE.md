@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v89 · supervisor pen · 2026-08-07, register v599
+# CURRENT STATE — the incoming-seat read · v90 · supervisor pen · 2026-08-07, register v600
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,9 +128,9 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v89 · supervisor pen · 2026-08-07, register v599 · replaced wholesale at the ERA-REMOVAL-LANDED
-PEN — the strip is on the branch and seam-verified; stage 2 re-derives era-free. The STOP is the
-owner's side-by-side word. The primer is at v7 — read it first, in full.)
+(v90 · supervisor pen · 2026-08-07, register v600 · replaced wholesale at the STAGE-2-ERA-FREE
+PEN — era was near-neutral on the hump (1.5345, the clean floor); stage 3 runs with the
+base-curve re-teach folded in. The STOP is the owner's side-by-side word. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
@@ -206,15 +206,20 @@ owner's side-by-side word. The primer is at v7 — read it first, in full.)
    board f94e0778; 28 movers, all KPF, all cuts, ratio 0.998986; engine_head a0a20d6e; the strip
    complete incl. a duplicate _gate1 table and twelve diagnostic scripts). OPEN ONE-LINER: the
    selftest PASS count moved 144→146 with a byte-identical test file (0 FAIL; data-dependent
-   count; +2 source unpinned — owed in stage-3 evidence). SEQUENCE NOW: stage 2 re-derivation on
-   the era-free matrix (RUNNING at v599 — its first deliverable is the era-free hump row; the old
-   1.021/1.279/1.448/1.535 row is repudiated-basis) → stage 3 (surface refit, declared lane,
-   fit-class box; note from the halted run: the re-anchor touches a sealed entrant layer —
-   examine that seal, re-point never patch; also pin the selftest +2) → stage 4 (reactivity +
-   tracking). Fixed order, per-stage attribution, evidence `docs/evidence/act_334B_2026-08-07/`
-   on the branch. Product commits: build-seat; the seam verifies deciding figures. A read-only
-   landing worktree for seam checks sits at /home/claude/seamcheck_landing (tip f7ae027). Track B
-   note (owner words, v597): simplicity is PROCESS-light, not model-simple.
+   count; +2 source unpinned — owed in stage-3 evidence). STAGE 2 ERA-FREE LANDED @ 93c2a9a
+   (v600): the era table was NEAR-NEUTRAL on the hump — era-free row 1.0211/1.2792/1.4476/1.5345
+   peak yr4 (max |delta| 0.0009 vs the era-adjusted row; yr0 means identical to the cent) — the
+   1.53 stands as the clean floor; ladder payload 77408ecd (p1 3364, numeraire openly broken
+   pending stage 3); f(p): p1 1.1214 → p64 0.8888. OWNER-CONFIRMED residue map: live code
+   categorically era-free; stage 3 ALSO re-teaches the BASE curve from the era-free matrix
+   (e4b38436) before the re-anchor applies; deep frozen fits (peak model, band tables, q97m) stay
+   as-fitted, NAMED, revisit only on side-by-side evidence. STAGE 3 (RUNNING at v600): base
+   re-teach → numeraire → declared surface refit (fit-class box) → pins → board → selftest (pin
+   the 146 source) → sealed-entrant-layer examination (re-point never patch) → convergence
+   [1.35,1.45], max one refinement → goal metrics (top-end, per-entry-year). Then stage 4
+   (reactivity + tracking). Evidence `docs/evidence/act_334B_2026-08-07/` on the branch. Product
+   commits: build-seat; the seam verifies deciding figures. Seam worktree:
+   /home/claude/seamcheck_landing. Track B note (v597): PROCESS-light, not model-simple.
 2. **#334 STAGE B** — executes the ruled target in ONE act through the declared-refit lane:
    curve re-taught + year-zero surface re-fit on the corrected history + the adopted #336 reference
    layer landed. Now ALSO carries (memo): a credits-off attribution column (the declared-refit
