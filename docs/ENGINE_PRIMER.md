@@ -1,4 +1,4 @@
-# ENGINE PRIMER — the meaning layer · v6 · authored 2026-08-04 (hi1an4); v6 at register v593 (2026-08-07): the credit-in-surface entanglement added to §4 item 9 (the #333 memo's measured finding); v5 at register v591 (2026-08-06): the #336 resolution (the band prices establishment risk in full; the adopted reference-layer form), the implemented tenure rule, and the two-lever hump framing added at the rotation
+# ENGINE PRIMER — the meaning layer · v7 · authored 2026-08-04 (hi1an4); v7 at register v598 (2026-08-07): the no-era-normalization law and the composition-artifact trap (§4 item 10); v6 at register v593 (2026-08-07): the credit-in-surface entanglement added to §4 item 9 (the #333 memo's measured finding); v5 at register v591 (2026-08-06): the #336 resolution (the band prices establishment risk in full; the adopted reference-layer form), the implemented tenure rule, and the two-lever hump framing added at the rotation
 
 **WHAT THIS IS.** Every incoming seat reads this IN FULL, immediately after the charter and before
 CURRENT_STATE. It carries what the process documents don't: what the engine is FOR, what each artifact
@@ -139,6 +139,14 @@ fitted at build time — everything is loaded from pins.
    signature (`_V0SURF_GATES`) — the credit is INSIDE the V0 fit, so no dial in that set can be
    ablated against the frozen surface; the engine halts by design, and any such experiment is a
    declared-refit act. Lever-one dial cuts therefore move BOTH ends of the hump ratio.
+10. **Scores are era-comparable BY CONSTRUCTION — no era normalization, anywhere (owner ruling
+   2026-08-07, #334 Addendum 3).** SuperCoach assigns 3,300 points per match, so a 2009 score and a
+   2025 score are directly comparable. The engine shipped with an `era[Y]` rescaling table
+   (2009–2025, built from the STORE population's yearly mean) — removed by ruling. The trap it
+   embodied, worth keeping: the store holds 2003+ intake classes only, so its early-year population
+   is young-skewed and its yearly means ramp with POPULATION MATURITY, not the scoring environment.
+   Any cross-era "level gap" computed on store means is a composition artifact first — check the
+   age/tenure mix before believing it (the same trap returns in any per-year mean over the store).
 5.5. *(numbered 5.5 of record, deliberately out of sequence — it amends §1; cite by source numbering; renderers may renumber.)* **The measured-outcomes correction (2026-08-05, register v570).** The career-value measure that
    teaches the ruled curve and the lens is NOT raw scoring over replacement: the walk-forward path is
    built by calling the ENGINE'S OWN `ev()` as-of each season, and `ev()` leans on the year-zero
