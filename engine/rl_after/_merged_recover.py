@@ -1993,6 +1993,92 @@ def _staleness_grade(p,Y,pos):
     qv=(live[0]['avg'])/max(MA.REPL.get(pos,1e-9),1e-9)   # RAW avg (era normalization removed per owner ruling)
     gap=Y-max(prior_qual)
     return float(np.interp(qv,_D8Q,_D8G1 if gap==1 else _D8G2))
+# ==== #334 STAGE B / STAGE 6 — THE CONDITIONED DEVELOPMENT CORRECTION (established leg) ===========
+# THE MEASUREMENT (cross-section, #334 comment 5215260604, re-measured in-build on the same frozen
+# matrix b564b12e). The YEAR-1 ESTABLISHED leg — a player who has banked a real season — is priced
+# BELOW its own realised discounted future: value-weighted F' = 1.0963 whole leg, and the residual is
+# CONDITIONED exactly as the owner predicted. It is concentrated at picks ~21-40, at KPF/RUCK/MID and
+# at players the engine has NOT yet re-rated; it is ZERO where the engine has already re-rated
+# (picks 1-20 x above-median re-rate reads 0.92 — already priced); it is NEGATIVE for young
+# established KPDs (0.748); it is absent at picks 41-64 (0.968) and at draft age 19+ (0.84 at 21+).
+# It SELF-EXTINGUISHES: the pooled year-1/2/3 evaluation rows read +0.128 / -0.045 / -0.169 — the
+# owner's phase-out is what the data does, not a shape imposed on it.
+#
+# THE FORM.  A SIGNED multiplier on the production leg, in the ns>=1 arm only:
+#     e' = e * (1 + delta)
+#     delta = W * d1 * B(cls, log-pick) * Stau(tau) * Sz(z) * Sg(gcum) * Tpk(pick) * Tage(draft age)
+# B is the ONLY fitted object and it carries exactly TWO axes (Addendum 1: log-pick x the engine's
+# three position classes), Gaussian kernel, bandwidth grown to eff-n >= 35 on the value weight,
+# classes that cannot reach it POOLED and DECLARED. Everything else is a measured or declared SHAPE
+# GATE: Stau the measured fade (isotonic non-increasing, clamped to [0,1] — a markdown never rides a
+# bonus dial); Sz the demonstrated-level axis z = log(e/entry_anchor), i.e. HOW FAR THE ENGINE HAS
+# ALREADY RE-RATED HIM (the owner's "already priced in", measured, chosen over bestlvl/par by the
+# printed axis probe); Sg cumulative career games; Tpk and Tage the declared smooth boundary tapers.
+#
+# THE RECALCULATION LAW (Addendum 1 para 3-4, owner verbatim: "in year 2, it would use year 1 + 2
+# data and outcomes, not just year 1?"). delta is a STATE FUNCTION, never a stamp: every input is
+# recomputed at every call from the record TO DATE — the continuous round clock tau, the CUMULATIVE
+# games banked across seasons, and the production price e itself. Nothing is stored, nothing carried.
+# z reads the PRE-correction production leg e, never the corrected price, so there is no build-to-
+# build feedback channel and no fixed point.
+#
+# THE FENCE (Addendum 1 F1-F3, the pre-fire audit's heaviest catch). A correction anywhere on the
+# PRODUCTION path would leak into the sit-out leg, because e_full is computed by _prod_path BEFORE
+# the leg dispatch and feeds sitout_ev's blend and surprise terms. So the correction is applied in
+# the ns>=1 ARM OF ev() ONLY, after the sit-out return — the sit-out leg is untouched BY
+# CONSTRUCTION and the build PROVES all 165 sit-out prices integer-identical at every rung.
+# `RL_G6_W` is NOT a _V0SURF_GATES key (ev() is not on the year-zero fit path; _build_v0_curve fits
+# _v0_raw and never calls ev()) — re-proven by a declared refit at G6_W 0 / 0.5 / 1.0.
+#
+# THE DIALS. RL_G6_W defaults to 0 (Addendum 1 F9/F10: the shipped default IS the stage-5 landed
+# board, byte-exact, and the owner's ruling is not anchored by a seat recommendation on the rung).
+# RL_G6_KPD is the KPD sub-dial, also default 0, ruled SEPARATELY (F11): the owner's words described
+# a bonus, and a -25% class markdown never rides silently on the bonus dial. Both zero => the branch
+# is not taken, g6_table.json is never opened, and board 13f8c2e0 rebuilds byte-exact.
+G6_W=float(os.environ.get('RL_G6_W','0'))                    # THE DIAL: intensity of the taught development correction. 0 => structural short-circuit.
+G6_KPD=float(os.environ.get('RL_G6_KPD','0'))                # THE KPD SUB-DIAL: the measured KPD markdown, ruled separately. 0 => KPD rows take zero.
+_G6=None
+def _g6_load():
+    """Load the taught surface ONCE. Only ever reached when a dial is non-zero (short-circuit above)."""
+    global _G6
+    if _G6 is None:
+        import json as _g6json
+        if not os.path.exists('g6_table.json'):
+            raise SystemExit('#334 stage 6 HALT: RL_G6_W/RL_G6_KPD is ON but g6_table.json is absent — '
+                             're-seed the workspace from the checkout (bootstrap.sh copies engine/rl_after verbatim).')
+        _G6=_g6json.load(open('g6_table.json'))
+    return _G6
+def _g6_taper(x,lo,hi):
+    """The declared smooth (C1) boundary taper — 1 below lo, 0 at and above hi, raised cosine between."""
+    if x<=lo: return 1.0
+    if x>=hi: return 0.0
+    return float(0.5*(1.0+np.cos(np.pi*(x-lo)/(hi-lo))))
+def _g6_delta(p,Y,pos,e):
+    """The signed correction at THIS player's state, recomputed from his record to date.
+    Synthetics (no record to resolve) take 0 by _isreal, exactly as stage 5's G does."""
+    if not _isreal(p): return 0.0
+    T=_g6_load(); pk=MA.effpk(p)
+    tp=_g6_taper(pk,T['pk_taper'][0],T['pk_taper'][1])
+    if tp<=0.0: return 0.0                                   # deep picks, and the pool index 65, take ZERO by construction
+    by=p.get('_by'); C=p.get('year')
+    if by is None or C is None: return 0.0                   # UNKNOWN draft age => delta identically 0 (Addendum 1 F13)
+    ta=_g6_taper(float(C)-float(by),T['age_taper'][0],T['age_taper'][1])
+    if ta<=0.0: return 0.0                                   # no runway, no development premium (measured, not decreed)
+    fe=_fEy(Y,p); dby=cp.debutyr(p)
+    tau=max(0.0,Y-dby)+((fe**1.5) if Y>=dby else 0.0)        # the SAME continuous round clock the sit-out leg reads
+    tk=[float(k) for k in T['tau_knots']]
+    st=float(np.interp(tau,[0.0]+tk,[T['s_tau'][0]]+list(T['s_tau']))) if tau<=tk[-1] else 0.0
+    if st<=0.0: return 0.0
+    z=float(np.clip(np.log(max(e,1.0)/max(entry_anchor(p),1.0)),T['z_knots'][0],T['z_knots'][-1]))
+    sz=float(np.interp(z,[float(k) for k in T['z_knots']],[float(v) for v in T['s_z']]))
+    gcum=sum(x['games'] for x in p['scoring'] if x['year']<=Y)   # THE RECALCULATION LAW: cumulative evidence TO DATE
+    sg=float(np.interp(np.log1p(max(gcum,0.0)),[float(np.log1p(k)) for k in T['g_knots']],
+                       [float(v) for v in T['s_g']]))
+    m=st*sz*sg*tp*ta
+    if pos=='KPD': return G6_KPD*float(T['d_kpd'])*m          # the KPD sub-dial, ruled separately
+    b=float(np.interp(np.log(min(max(pk,1),90)),[float(np.log(k)) for k in T['pk_knots']],
+                      [float(v) for v in T['base'][_sitout_cls(pos)]]))
+    return G6_W*float(T['d1'])*b*m
 def ev(p,Y=2026):
     # (1) delist -> near-zero (no future keeper value) — D10: scrap re-anchored to the LIVE start value
     if delisted(p): return round(0.02*v0_start(p))
@@ -2031,6 +2117,12 @@ def ev(p,Y=2026):
     pos=MA.gfut(p); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at_p(p,pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6),_fa_year(Y)); pr=bestlvl(p,Y)/max(1,par)
     if ns==0:                                                 # SIT-OUT: derived games-ramp treatment (V0-anchored, prorated, scoring-aware, continuous at graduation)
         return round(sitout_ev(p,Y,e))
+    # #334 STAGE 6 SITE — THE FENCE (Addendum 1 F1-F3). The correction enters HERE and NOWHERE ELSE:
+    # strictly AFTER the sit-out return, so every sit-out price is untouched BY CONSTRUCTION (the
+    # 165 sit-out players are proved integer-identical at every rung on board and matrix both), and
+    # BEFORE the staleness / mediocre-for-years caps (F14 fixes the composition order) so a corrected
+    # price is still subject to every release the engine already applies.
+    if G6_W or G6_KPD: e=e*(1.0+_g6_delta(p,Y,pos,e))         # RL_G6_W=RL_G6_KPD=0 => branch not taken => byte-exact 13f8c2e0
     keyruc = pos in ('KPF','KPD','RUCK'); onset = (4 if keyruc else 3)
     if el>=onset and ns<=1:                                   # stalled: D8 graded release at evaluated year
         frac=0.25*max(0.4,1-0.10*(el-onset))*(1.6 if keyruc else 1.0)

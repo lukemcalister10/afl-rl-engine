@@ -1,0 +1,109 @@
+================================================================================================================
+#334 stage B / STAGE 6 — THE PICK/PLAYER SEAM (implied ladder re-emitted from the post-change book)
+================================================================================================================
+  installed ladder : engine/rl_after/pvc_curve_v2.json  curve_md5 18203822  pick1=3000  pick64=182
+  lane             : structural_values -> kernel_raw (Gaussian over log-pick, bw grown to eff-n>=35)
+                     -> pin_and_check (PAVA non-increasing, HARD SET pick1=3000, strict descent)
+                     -> x the committed era-free per-pick re-anchor f(p)/f(1)  [NOT moved by this stage]
+  never-established: teaches EXACTLY 0.0 and STAYS in the denominator (harness structural_values) —
+                     the caveat the directive requires printed beside the number. It BOUNDS the seam
+                     move; it does not zero it. The lane reads the vpath, so a price change DOES reach
+                     the implied ladder — see the correction below the increment.
+
+  STAGE 5 (landed book)      matrix md5 bfc104f4  ND rows 1197  teaching rows 1197  provenance {'completed': 301, 'concluded_realised': 825, 'prior_fallback_thin': 71} (fallback 5.931%)
+     ladder head [3000, 2682, 2593, 2172, 1671] ... tail [179, 173, 167, 162]
+     per-pick deviation vs installed : mean -10.3156%  max |dev| 12.3016% (pick 55)  n over 2% = 63
+  STAGE 6 rung 0.75           matrix md5 22402f35  ND rows 1197  teaching rows 1197  provenance {'completed': 301, 'concluded_realised': 825, 'prior_fallback_thin': 71} (fallback 5.931%)
+     ladder head [3000, 2686, 2599, 2181, 1680] ... tail [179, 173, 167, 162]
+     per-pick deviation vs installed : mean -9.9024%  max |dev| 12.3016% (pick 55)  n over 2% = 63
+
+  THE STAGE-5 INCREMENT (the only thing gate 7 is entitled to charge to this stage):
+     re-emitted ladder BASELINE book vs LANDED book : DIFFERS at 42 picks
+     max |per-pick move| attributable to stage 6    : 1.739130%  (tolerance +-2.00%, seam tolerance, labeled)
+     VERDICT: the seam gate                                  : PASS — inside the +-2.00%% seam tolerance
+
+  WHY IT MOVES — the assumption this seat wrote down FIRST was WRONG, and the measurement caught it.
+  The header of this file originally claimed the ladder "learns OUTCOMES, never prices" and could
+  therefore not move. It DOES move: 42 of 64 picks differ. `structural_values` scores a career via
+  `realised_full` -> `realised_at`, an evidence-weighted mean of the entrant's OWN vpath — the
+  ENGINE'S WALK-FORWARD PRICE PATH — and the fallback rows take `v0` outright. A price-side change
+  propagates into the implied ladder BY CONSTRUCTION. The claim is struck; the number stands alone.
+
+  WHAT HOLDS IT UNDER TOLERANCE is the never-established rule — the caveat the directive required
+  printed beside this number: `never_established` (no season reaching QUAL_GAMES=6) forces the
+  teaching value to EXACTLY 0.0 and keeps the row in the denominator. The stage-5 lift lands almost
+  entirely on thin records, a large share of which never establish, and for those the taught value
+  is 0.0 before and after AT ANY PRICE. That is why the established-leg reprice moves the
+  implied ladder by at most 1.7391%, inside but NOT far inside the +-2.00% seam tolerance.
+
+  THE FENCE AND THE SEAM: Mraz is on the SIT-OUT arm and is BYTE-IDENTICAL at every rung, so
+  stage 6 contributes NOTHING to his price. Pick 35's implied ladder value nevertheless moves
+  +0.6316% at this rung, through the established-leg vpaths the lane reads. The coupling is real,
+  not vacuous, and it is the established leg's, not the sit-out leg's.
+
+  pick    installed  base book     landed  dev landed% stage6 move%
+  ------------------------------------------------------------------
+  1            3000       3000       3000     +0.0000%     +0.0000%
+  2            2976       2682       2686     -9.7446%     +0.1491%
+  3            2874       2593       2599     -9.5685%     +0.2314%
+  4            2410       2172       2181     -9.5021%     +0.4144%
+  5            1849       1671       1680     -9.1401%     +0.5386%
+  6            1511       1364       1373     -9.1330%     +0.6598%
+  7            1507       1361       1370     -9.0909%     +0.6613%
+  8            1503       1357       1366     -9.1151%     +0.6632%
+  9            1449       1314       1321     -8.8337%     +0.5327%
+  10           1412       1283       1289     -8.7110%     +0.4677%
+  11           1408       1279       1286     -8.6648%     +0.5473%
+  12           1405       1273       1278     -9.0391%     +0.3928%
+  13           1281       1158       1161     -9.3677%     +0.2591%
+  14           1103        997        999     -9.4288%     +0.2006%
+  15            974        881        883     -9.3429%     +0.2270%
+  16            960        870        874     -8.9583%     +0.4598%
+  17            959        869        873     -8.9677%     +0.4603%
+  18            958        868        872     -8.9770%     +0.4608%
+  19            957        868        872     -8.8819%     +0.4608%
+  20            952        862        871     -8.5084%     +1.0441%
+  21            906        819        830     -8.3885%     +1.3431%
+  22            852        771        783     -8.0986%     +1.5564%
+  23            804        727        739     -8.0846%     +1.6506%
+  24            763        690        702     -7.9948%     +1.7391%
+  25            731        661        672     -8.0711%     +1.6641%
+  26            707        639        648     -8.3451%     +1.4085%
+  27            687        620        629     -8.4425%     +1.4516%
+  28            670        604        612     -8.6567%     +1.3245%
+  29            653        589        595     -8.8821%     +1.0187%
+  30            633        570        576     -9.0047%     +1.0526%
+  31            612        551        556     -9.1503%     +0.9074%
+  32            589        530        535     -9.1681%     +0.9434%
+  33            566        510        514     -9.1873%     +0.7843%
+  34            547        492        494     -9.6892%     +0.4065%
+  35            530        475        478     -9.8113%     +0.6316%
+  36            516        463        465     -9.8837%     +0.4320%
+  37            505        452        454    -10.0990%     +0.4425%
+  38            496        442        444    -10.4839%     +0.4525%
+  39            486        434        435    -10.4938%     +0.2304%
+  40            476        424        425    -10.7143%     +0.2358%
+  41            462        411        412    -10.8225%     +0.2433%
+  42            447        397        398    -10.9620%     +0.2519%
+  43            428        381        381    -10.9813%     +0.0000%
+  44            408        363        363    -11.0294%     +0.0000%
+  45            388        344        344    -11.3402%     +0.0000%
+  46            367        325        326    -11.1717%     +0.3077%
+  47            348        307        307    -11.7816%     +0.0000%
+  48            330        292        292    -11.5152%     +0.0000%
+  49            315        278        278    -11.7460%     +0.0000%
+  50            301        265        265    -11.9601%     +0.0000%
+  51            289        255        255    -11.7647%     +0.0000%
+  52            279        246        246    -11.8280%     +0.0000%
+  53            270        237        237    -12.2222%     +0.0000%
+  54            261        229        229    -12.2605%     +0.0000%
+  55            252        221        221    -12.3016%     +0.0000%
+  56            244        214        214    -12.2951%     +0.0000%
+  57            234        207        207    -11.5385%     +0.0000%
+  58            226        199        199    -11.9469%     +0.0000%
+  59            218        192        192    -11.9266%     +0.0000%
+  60            210        185        185    -11.9048%     +0.0000%
+  61            202        179        179    -11.3861%     +0.0000%
+  62            195        173        173    -11.2821%     +0.0000%
+  63            188        167        167    -11.1702%     +0.0000%
+  64            182        162        162    -10.9890%     +0.0000%

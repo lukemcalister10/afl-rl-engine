@@ -1,0 +1,352 @@
+{
+ "age_taper": [
+  18.0,
+  19.0
+ ],
+ "base": {
+  "KPP": [
+   0.67865996,
+   1.78418431,
+   0.64575758,
+   3.57576414,
+   2.85848474,
+   1.56015238
+  ],
+  "RUCK": [
+   0.67865996,
+   1.78418431,
+   0.64575758,
+   3.57576414,
+   2.85848474,
+   1.56015238
+  ],
+  "nonKPP": [
+   0.18280635,
+   1.24288956,
+   0.09040468,
+   3.60941023,
+   2.78023343,
+   1.53571136
+  ]
+ },
+ "d1": 0.12844436,
+ "d_kpd": -0.25159315,
+ "g_knots": [
+  6.0,
+  10.0,
+  14.0,
+  18.0,
+  24.0
+ ],
+ "meta": {
+  "act": "#334 stage B / stage 6 \u2014 the conditioned development correction (established leg)",
+  "cells": {
+   "KPD": {
+    "measured": -0.251593,
+    "n": 35,
+    "taught_all": -0.108593,
+    "taught_bonus": 0.0
+   },
+   "KPF": {
+    "measured": 0.411494,
+    "n": 34,
+    "taught_all": 0.141271,
+    "taught_bonus": 0.141271
+   },
+   "MID": {
+    "measured": 0.189149,
+    "n": 147,
+    "taught_all": 0.102202,
+    "taught_bonus": 0.102202
+   },
+   "RUCK": {
+    "measured": 0.527864,
+    "n": 11,
+    "taught_all": 0.179837,
+    "taught_bonus": 0.179837
+   },
+   "SD": {
+    "measured": -0.113045,
+    "n": 85,
+    "taught_all": 0.091459,
+    "taught_bonus": 0.091459
+   },
+   "SF": {
+    "measured": -0.021162,
+    "n": 102,
+    "taught_all": 0.112268,
+    "taught_bonus": 0.112268
+   },
+   "ZERO-CELL picks 1-10 x top-tercile z": {
+    "measured": -0.061978,
+    "n": 29,
+    "taught_all": 0.016032,
+    "taught_bonus": 0.022165
+   },
+   "ZERO-CELL picks 1-20 x above-median z": {
+    "measured": -0.084553,
+    "n": 84,
+    "taught_all": 0.018055,
+    "taught_bonus": 0.030661
+   },
+   "cumulative games 6-9": {
+    "measured": 0.136933,
+    "n": 130,
+    "taught_all": 0.175956,
+    "taught_bonus": 0.193734
+   },
+   "draft age <= 18": {
+    "measured": 0.081341,
+    "n": 328,
+    "taught_all": 0.102457,
+    "taught_bonus": 0.113019
+   },
+   "picks 1-10": {
+    "measured": 0.065513,
+    "n": 132,
+    "taught_all": 0.062226,
+    "taught_bonus": 0.070678
+   },
+   "picks 1-20": {
+    "measured": 0.065199,
+    "n": 216,
+    "taught_all": 0.063087,
+    "taught_bonus": 0.073084
+   },
+   "picks 21-40": {
+    "measured": 0.28345,
+    "n": 109,
+    "taught_all": 0.235527,
+    "taught_bonus": 0.245303
+   },
+   "picks 41-64": {
+    "measured": -0.031863,
+    "n": 89,
+    "taught_all": 0.003602,
+    "taught_bonus": 0.005157
+   },
+   "whole year-1 leg": {
+    "measured": 0.096269,
+    "n": 414,
+    "taught_all": 0.089189,
+    "taught_bonus": 0.098383
+   }
+  },
+  "directive": "issue 334 comment 5217307894 + Addendum 1 comment 5217452004",
+  "estimand": "value-weighted aggregate F' = sum(F)/sum(price); median F' pre-registered beside it",
+  "kernel": "two axes only: log-pick x {nonKPP,KPP,RUCK}; Gaussian, eff-n>=35 on the value weight",
+  "kpd": "KPD rows excluded from the base kernel and carried on their own sub-dial RL_G6_KPD (default 0); shapes shared, class-level scalar, DECLARED",
+  "measured_agg_y1_bonus_population": 1.128444,
+  "measured_agg_y1_kpd": 0.748407,
+  "measured_agg_y1_whole": 1.096269,
+  "measured_median_y1": 0.963172,
+  "n_rows": {
+   "y1": 414,
+   "y2": 684,
+   "y3": 818
+  },
+  "notes": {
+   "B_KPD": {
+    "delta": -0.251593,
+    "flat": true,
+    "n": 35,
+    "note": "class-level scalar; no pick axis (eff-n cannot support one)"
+   },
+   "B_KPP": [
+    {
+     "effn": 39.8,
+     "h": 0.3148,
+     "knot": 3.0,
+     "pooled": true
+    },
+    {
+     "effn": 39.2,
+     "h": 0.18,
+     "knot": 8.0,
+     "pooled": true
+    },
+    {
+     "effn": 51.0,
+     "h": 0.18,
+     "knot": 15.0,
+     "pooled": true
+    },
+    {
+     "effn": 61.1,
+     "h": 0.18,
+     "knot": 25.0,
+     "pooled": true
+    },
+    {
+     "effn": 51.8,
+     "h": 0.18,
+     "knot": 35.0,
+     "pooled": true
+    },
+    {
+     "effn": 54.5,
+     "h": 0.18,
+     "knot": 45.0,
+     "pooled": true
+    }
+   ],
+   "B_RUCK": [
+    {
+     "effn": 39.8,
+     "h": 0.3148,
+     "knot": 3.0,
+     "pooled": true
+    },
+    {
+     "effn": 39.2,
+     "h": 0.18,
+     "knot": 8.0,
+     "pooled": true
+    },
+    {
+     "effn": 51.0,
+     "h": 0.18,
+     "knot": 15.0,
+     "pooled": true
+    },
+    {
+     "effn": 61.1,
+     "h": 0.18,
+     "knot": 25.0,
+     "pooled": true
+    },
+    {
+     "effn": 51.8,
+     "h": 0.18,
+     "knot": 35.0,
+     "pooled": true
+    },
+    {
+     "effn": 54.5,
+     "h": 0.18,
+     "knot": 45.0,
+     "pooled": true
+    }
+   ],
+   "B_nonKPP": [
+    {
+     "effn": 37.9,
+     "h": 0.362,
+     "knot": 3.0
+    },
+    {
+     "effn": 39.0,
+     "h": 0.207,
+     "knot": 8.0
+    },
+    {
+     "effn": 45.2,
+     "h": 0.18,
+     "knot": 15.0
+    },
+    {
+     "effn": 55.5,
+     "h": 0.18,
+     "knot": 25.0
+    },
+    {
+     "effn": 48.3,
+     "h": 0.18,
+     "knot": 35.0
+    },
+    {
+     "effn": 50.1,
+     "h": 0.18,
+     "knot": 45.0
+    }
+   ],
+   "Stau_raw_delta": [
+    0.128444,
+    -0.044663,
+    -0.169041,
+    0.0
+   ],
+   "Stau_unclamped": [
+    1.0,
+    -0.347723,
+    -1.316061,
+    0.0
+   ],
+   "Sz_Lsmooth_kappa": 0.693842,
+   "Sz_before_Lsmooth": [
+    3.033281,
+    2.339239,
+    1.360019,
+    0.48781,
+    0.017171
+   ],
+   "Sz_effn_bw": "printed in teach_log.txt",
+   "conservation_Z": 0.715015,
+   "measured_supported": 0.127287,
+   "monotonicity_margin_rung1": 0.053337,
+   "monotonicity_worst_cell": [
+    "nonKPP",
+    25,
+    6.0,
+    1.0,
+    0.3
+   ]
+  },
+  "pooled_classes": [
+   "KPP",
+   "RUCK"
+  ],
+  "population": "ND 1-64, classes 2004-2022, evaluation years 1-3, ns>=1 (established) leg",
+  "shapes": "Stau (measured, isotonic, clamped [0,1]) x Sz (z=log(e/entry_anchor)) x Sg (cumulative games) x declared pick taper x declared draft-age taper",
+  "taught_agg_delta_rung1_bonus": 0.098383,
+  "taught_agg_delta_rung1_kpd": -0.009194,
+  "teaching_board": "b56bbdde (the frozen baseline the matrix was emitted at)",
+  "teaching_matrix": "per_entrant_338_stage4a1.json",
+  "teaching_matrix_md5": "b564b12e533119f49c2c6bb0c92a5d91"
+ },
+ "pk_knots": [
+  3.0,
+  8.0,
+  15.0,
+  25.0,
+  35.0,
+  45.0
+ ],
+ "pk_taper": [
+  34.0,
+  48.0
+ ],
+ "s_g": [
+  1.46314186,
+  1.24032137,
+  1.02436628,
+  0.85375507,
+  0.67442648
+ ],
+ "s_tau": [
+  1.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "s_z": [
+  2.38781694,
+  1.9062616,
+  1.22683705,
+  0.62166161,
+  0.29511201
+ ],
+ "tau_knots": [
+  1.0,
+  2.0,
+  3.0,
+  4.0
+ ],
+ "z_knots": [
+  -0.6,
+  -0.3,
+  0.0,
+  0.3,
+  0.6
+ ]
+}

@@ -1,0 +1,61 @@
+{
+ "within_class": {
+  "nonKPP": {
+   "continuous season clock tau": {
+    "realised": 0.40501307168493605,
+    "own": 0.40501307168491035
+   },
+   "cumulative games (log1p)": {
+    "realised": 0.2356760882431758,
+    "own": 0.23567608824313604
+   },
+   "log-pick (incl. the taper)": {
+    "realised": 2.428966958801126,
+    "own": null
+   }
+  },
+  "KPP": {
+   "continuous season clock tau": {
+    "realised": 0.44872470481295124,
+    "own": 0.44872470481293114
+   },
+   "cumulative games (log1p)": {
+    "realised": 0.26111177767283933,
+    "own": 0.2611117776727986
+   },
+   "log-pick (incl. the taper)": {
+    "realised": 2.5004107877373634,
+    "own": null
+   }
+  },
+  "RUCK": {
+   "continuous season clock tau": {
+    "realised": 0.44872470481295124,
+    "own": 0.44872470481293114
+   },
+   "cumulative games (log1p)": {
+    "realised": 0.26111177767283933,
+    "own": 0.2611117776727986
+   },
+   "log-pick (incl. the taper)": {
+    "realised": 2.5004107877373634,
+    "own": null
+   }
+  }
+ },
+ "max_abs_delta": 1.6197155380979866,
+ "max_at": [
+  "nonKPP",
+  25,
+  6.0,
+  -0.6
+ ],
+ "convergence": {
+  "pre_stage5": 0.05231743327778615,
+  "stage5": 0.02788360719159355,
+  "0.25": 0.023258052046145505,
+  "0.5": 0.01867504435101419,
+  "0.75": 0.014077879914973668,
+  "1.0": 0.009491478226802519
+ }
+}

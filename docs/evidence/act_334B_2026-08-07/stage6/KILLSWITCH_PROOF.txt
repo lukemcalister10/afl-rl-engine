@@ -1,0 +1,21 @@
+#334 STAGE 6 — DIAL-0 STRUCTURAL SHORT-CIRCUIT PROOF (full gate)
+  shipped manifest: RL_G6_W = '0'   RL_G6_KPD = '0'
+  --- gated build at the shipped dials (exit 0) ---
+    config manifest (gate mode) LOADED  hash 697da6f8b5ab  (64 model vars pinned; ambient cleared)
+    CONFIG ACCEPTED 697da6f8b5ab  (trusted /home/claude/seamcheck_landing/config_manifest.py)
+    LOADED-PROVENANCE OK  fv_modules=7 rl_model=/home/claude/s6_ws/rl_after/rl_model.py
+    NUMÉRAIRE GUARD: PASS — shipped pick-1 = 3000 (UNCONDITIONAL standing law, register v30 item 17)
+    L7 NUMÉRAIRE RE-BASE ÷1.0524: order preserved (no strict inversion; 11 rounding ties), 10/10 anchor ratios <0.2%
+    FUT-LABEL ASSERTION: PASS — 87 dual rows carry the true primary/alternate on the board
+    ZERO-EMPTY-CLUB ACCEPTANCE: PASS — 0 blank club across 1002 exported rows (active 804 + back 198)
+    PARITY GATE PASS: all 804 active board values == engine gated ev() (matched by key, eps=0)
+    exported active=804 cohort=1974 | mechanisms=7 categories analysed | board stamped src=37ced3ce (read-only)
+  board md5 = 13f8c2e0240600733a5fb42414510445   stage-5 landing = 13f8c2e0240600733a5fb42414510445
+  (1) SHIPPED STATE == STAGE-5 LANDED BOARD: PASS — byte-exact
+
+  (2) the STRUCTURAL claim: at dial 0 the taught table is never even opened.
+      with g6_table.json MOVED ASIDE the gated build exits 0 and produces 13f8c2e0240600733a5fb42414510445
+      (if the branch were taken, _g6_load raises SystemExit and the build cannot complete)
+  (2) STRUCTURAL SHORT-CIRCUIT: PASS
+
+  VERDICT: PASS — the shipped stage-6 state rebuilds the stage-5 landed board byte-exact through the full gate, and the correction is structurally inert at dial 0

@@ -4,6 +4,13 @@
 other so the difference can be ruled on. Seven stages landed, six of which moved the board; nothing merged;
 nothing registered. Adoption is the owner's word and this document does not presume it.
 
+> **STAGE 6 IS NOW IN — AS A LADDER, NOT A BOARD.** The conditioned development correction ships at
+> **dial 0**, so the board below is still the stage-5 landing `13f8c2e0` byte for byte. Stage 6's four
+> candidate intensities are the **`stage 6 rungs`** sheet of the workbook and §8 of this file. **No rung
+> is recommended — the intensity ruling is yours.** Two of the four are STRUCK by registered gates, and
+> the exact figure that struck each is printed. Read `../stage6/README.md` and `../stage6/FRONTIER.txt`
+> before ruling: **the only rungs that reach your [1.04, 1.13] range are the rungs the gates strike.**
+>
 > **STAGE 5 IS NOW IN, AND IT CHANGES THE LEAD NUMBER.** The quiet-starter reprice (board `13f8c2e0`) is
 > the sixth stage column. Two things must be read before anything else in this file:
 >
@@ -27,7 +34,8 @@ the board itself prints, denominated so that national-draft **pick 1 = 3,000**. 
 | stage 3 | `6c9f8d3a` | `c0ea507` | curve re-teach + re-anchor + surface refit + numéraire re-base |
 | stage 4 | `b490ae8b` | `44950de` | pedigree-conditioned reactivity |
 | stage 4 amendment 1 | `b56bbddea15fd48e35b5794b1b5e9e23` | `c05f214` | surprise-scaled evidence trust |
-| **FINAL** | `13f8c2e0240600733a5fb42414510445` | *this commit* | **+ stage 5, the QUIET-STARTER REPRICE (`RL_G5_W` = 1.0)** |
+| stage 5 | `13f8c2e0240600733a5fb42414510445` | `47f852d` | the QUIET-STARTER REPRICE (`RL_G5_W` = 1.0) |
+| **FINAL** | `13f8c2e0240600733a5fb42414510445` | *this commit* | **+ stage 6 at the SHIPPED dial 0 — the board is UNMOVED; the ladder is §8** |
 
 All seven boards carry **804 players — the same 804 keys, no adds and no drops.** The companion workbook is
 `board_before_after.xlsx` beside this file; its per-row stage deltas sum **exactly** to the total, asserted
@@ -447,3 +455,77 @@ criterion as literally written (§6).
 *Assembled 2026-08-07 · branch `landing/334-stage-b` · workbook `board_before_after.xlsx` (regenerated with
 the amendment as a fifth stage column; per-row stage sums re-asserted on all 804 rows) · evidence under
 `docs/evidence/act_334B_2026-08-07/` and `docs/evidence/noarb_338_2026-08-06/`.*
+
+
+---
+
+# 8 · STAGE 6 — THE CONDITIONED DEVELOPMENT CORRECTION, AS A FOUR-RUNG LADDER
+
+**Shipped state: `RL_G6_W = 0`, `RL_G6_KPD = 0`.** The board above is unmoved and byte-exact. What
+follows is the ladder the owner rules on. **This seat makes no recommendation.**
+
+## 8.1 · The landing at every rung, on BOTH bases — full cohort leading
+
+| population (year 1) | n | s5 LANDED | rung 0.25 | rung 0.5 | rung 0.75 | rung 1.0 |
+|---|---|---|---|---|---|---|
+| **FULL COHORT ND+pool 2004-2025** | 2517 | 0.946050 | **0.958020** | **0.970017** | **0.982021** | **0.994018** |
+| ND 1-64, 2004-2025 | 1383 | 0.988526 | 1.003718 | 1.018943 | 1.034177 | 1.049403 |
+| pool routes, 2004-2025 | 1134 | 0.788214 | 0.788214 | 0.788214 | 0.788214 | 0.788214 |
+| ND 1-64, 2004-2022 (teaching window) | 1197 | 0.990805 | 1.005681 | 1.020597 | 1.035515 | 1.050429 |
+| ND picks 1-20 | 377 | 1.001589 | 1.014677 | 1.027820 | 1.040960 | 1.054100 |
+| ND picks 21-64 | 820 | 0.973706 | 0.991419 | 1.009145 | 1.026882 | 1.044608 |
+
+**The pool leg takes zero at every rung, by construction** — it is stage 7's, on its own measurement.
+Your [1.04, 1.13] range binds on the ND teaching window; on the full-cohort basis the sequence never
+reaches 1.04, and **that basis question is yours**, not this seat's.
+
+## 8.2 · The two rungs that are STRUCK, and by what
+
+| rung | ND yr1 (teaching window) | verdict |
+|---|---|---|
+| 0.25 | 1.005681 | **feasible** — every registered bound met on both readings of the level axis |
+| 0.5 | 1.020597 | **feasible** — all bounds met on the surface's own axis; +0.08pp over on the alternative reading, disclosed |
+| 0.75 | 1.035515 | **STRUCK** — at-par cell picks 1-10 × top-tercile moves +1.662% against its 1.500% bound |
+| 1.0 | 1.050429 | **STRUCK TWICE** — at-par cells +2.217% / +3.066% against 1.500% / 2.500%, and the pick/player seam moves 2.338% against the ±2.00% tolerance |
+
+**The plain sentence: the only rungs that reach your ruled range are the rungs the registered gates
+strike.** Three roads out exist and all three are yours — `../stage6/FRONTIER.txt` §4.
+
+## 8.3 · The tail-vs-typical tension, at every rung
+
+The value-weighted aggregate says the year-1 established leg is under-priced by **9.6%**. The
+**median** says the *typical* such player is already priced **4% above** his own realised discounted
+future, and only **47.6%** of them out-earn even the uncorrected price.
+
+| rung | corrected aggregate F′ | corrected **median** F′ | typical player over-priced by | fraction who out-earn the corrected price |
+|---|---|---|---|---|
+| 0 (shipped) | 1.0963 | 0.9632 | 4% | 47.6% |
+| 0.25 | 1.0700 | 0.9219 | 8% | 45.4% |
+| 0.5 | 1.0449 | 0.8969 | 11% | 44.4% |
+| 0.75 | 1.0209 | 0.8743 | 14% | 42.0% |
+| 1.0 | 0.9981 | 0.8331 | **20%** | 40.3% |
+
+**The median-neutral rung is below zero.** Every positive rung improves the aggregate and worsens the
+typical player. That is the pub test, as a number.
+
+## 8.4 · The fence, and your named cases
+
+| | |
+|---|---|
+| sit-out players, engine-enumerated | **165** |
+| **integer-identical at every rung** | **165 / 165 — PASS** |
+| **Mraz** | **1645 at every rung** = **3.1038× his pick** (your 3.0-3.5 tier: pass, disclosed) — **unmoved by stage 6** |
+| **Nairn** | **605 at every rung** — unmoved |
+| movers | 41 / 43 / 44 / 44 — **every one UP, zero cuts**, at every rung |
+| board total | +0.144% / +0.288% / +0.431% / +0.575% |
+| largest single move (rung 1.0) | `max-kondogiannis` 355 → 594 (+67.3%); at rung 0.25, +16.6% |
+| ride tables | printed at every rung; worst entry-year excess **+3.11 / +2.56 / +2.02 / +1.49 pp/yr** against your +5.00 line — **no machine STOP** |
+| band [1.35, 1.45] | whole **1.432651** and picks 1-20 **1.429314** at every rung, INSIDE; picks 21-64 **1.471250** outside but byte-identical to the stage-5 baseline |
+| numéraire | pick 1 = 3,000, unconditional, at every rung |
+
+## 8.5 · The KPD question, which is a separate ruling
+
+Young established KPDs measure **over-priced** (F′ = 0.748). Your words described a bonus, so the
+markdown does **not** ride the bonus dial: it has its own sub-dial `RL_G6_KPD`, shipped at 0, and at
+that setting **a KPD takes exactly zero**. The identical-career KPD/KPF pair is printed at every rung
+on both settings in `../stage6/PROBES.txt` §(h). **That cut is yours to rule on separately.**

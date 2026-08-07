@@ -1,0 +1,145 @@
+====================================================================================================================
+#334 stage B / STAGE 6 — PROBES.   taught surface g6_table.json md5 5656dd8bbb19b193e1acde5063664cc5
+====================================================================================================================
+
+(a) THE NAMED CHAINS — Mraz and Nairn, at every rung
+    Mraz is on the SIT-OUT path (ns==0): stage 6 is FENCED out of that arm, so he must be
+    BYTE-IDENTICAL at every rung. That is the gate, not an expectation.
+
+  Noah Mraz (KPD, ND pick 35, drafted 2024) — ns=0 at 2026, SIT-OUT ARM (fenced)
+    record: 2026:4g@84.2
+    rung 0      board  1645   taught delta -0.000000   BYTE-IDENTICAL to dial 0
+    rung 0.25   board  1645   taught delta -0.000000   BYTE-IDENTICAL to dial 0
+    rung 0.5    board  1645   taught delta -0.000000   BYTE-IDENTICAL to dial 0
+    rung 0.75   board  1645   taught delta -0.000000   BYTE-IDENTICAL to dial 0
+    rung 1.0    board  1645   taught delta -0.000000   BYTE-IDENTICAL to dial 0
+    MRAZ TIER at rung 0     : 1645 = 3.1038x his pick (530)  ->  3.0-3.5x PASS, DISCLOSED
+    MRAZ TIER at rung 0.25  : 1645 = 3.1038x his pick (530)  ->  3.0-3.5x PASS, DISCLOSED
+    MRAZ TIER at rung 0.5   : 1645 = 3.1038x his pick (530)  ->  3.0-3.5x PASS, DISCLOSED
+    MRAZ TIER at rung 0.75  : 1645 = 3.1038x his pick (530)  ->  3.0-3.5x PASS, DISCLOSED
+    MRAZ TIER at rung 1.0   : 1645 = 3.1038x his pick (530)  ->  3.0-3.5x PASS, DISCLOSED
+
+  Cameron Nairn (SF, ND pick 20, drafted 2025) — ns=0 at 2026, SIT-OUT ARM (fenced)
+    record: 2026:3g@42.8
+    rung 0      board   605   taught delta +0.000000   BYTE-IDENTICAL to dial 0
+    rung 0.25   board   605   taught delta +0.232475   BYTE-IDENTICAL to dial 0
+    rung 0.5    board   605   taught delta +0.464949   BYTE-IDENTICAL to dial 0
+    rung 0.75   board   605   taught delta +0.697424   BYTE-IDENTICAL to dial 0
+    rung 1.0    board   605   taught delta +0.929898   BYTE-IDENTICAL to dial 0
+
+(b) THE FENCE — the sit-out population, proved integer-identical at every rung
+    engine-enumerated sit-out population at 2026 (ns==0, not delisted): n = 165
+    rung 0.25   board e5fee49b  sit-out 165/165 INTEGER-IDENTICAL  PASS   |  movers 41 (up 41 / down 0), unattributed 0
+    rung 0.5    board 56b6c21c  sit-out 165/165 INTEGER-IDENTICAL  PASS   |  movers 43 (up 43 / down 0), unattributed 0
+    rung 0.75   board b963e36a  sit-out 165/165 INTEGER-IDENTICAL  PASS   |  movers 44 (up 44 / down 0), unattributed 0
+    rung 1.0    board 17c96ca4  sit-out 165/165 INTEGER-IDENTICAL  PASS   |  movers 44 (up 44 / down 0), unattributed 0
+
+(c) THE RECALCULATION-LAW PROBE (Addendum 1 para 3-4; owner: "in year 2, it would use year 1 + 2
+    data and outcomes, not just year 1?").  A synthetic year-2 player: YEAR-1 season FROZEN at
+    10 games @ 62.0, only his YEAR-2 games varied.  If the correction were a stamp taken in year 1
+    the delta column would be constant.
+
+    yr-2 games    cum games taught delta   engine price
+    ----------------------------------------------------
+    0                    10    +0.018415            877
+    2                    12    +0.019590            844
+    5                    15    +0.013401           1059
+    8                    18    +0.011701           1125
+    11                   21    +0.010388           1179
+    14                   24    +0.009243           1358
+    18                   28    +0.009243           1407
+    22                   32    +0.009243           1402
+    delta spread over the YEAR-2 games axis with year 1 frozen: 0.010347  ->  PASS (a state function, not a stamp)
+
+(d) THE SEASON-ROLLOVER / ROUND-BY-ROUND PROBE (Addendum 1 F7).  The clock tau is continuous in
+    the round; the correction must hand over to arriving evidence round by round with NO step
+    beyond the surface's own max slope, and NO cliff at the integer-year knot.
+
+    tau          step   taught delta
+    ----------------------------------
+    0.5000   0.000000      +0.128444
+    0.8125   0.000000      +0.128444
+    1.1250   0.006690      +0.112389
+    1.4375   0.006690      +0.072250
+    1.7500   0.006690      +0.032111
+    2.0625   0.000000      +0.000000
+    2.3750   0.000000      +0.000000
+    2.6875   0.000000      +0.000000
+    3.0000   0.000000      +0.000000
+    max observed step over the sweep 0.00668981  vs the surface's own max slope over the same step 0.00668981
+    ROLLOVER: PASS   (no integer-year cliff; the fade is linear in the continuous clock)
+
+(e) THE FADE-SHAPE PROBE — the correction at the year-2 and year-3 evaluation states
+    measured (not decreed): the raw pooled residual at tau = 1 / 2 / 3 was [0.128444, -0.044663, -0.169041, 0.0];
+    normalised to tau=1 that is [1.0, -0.347723, -1.316061, 0.0]; INSTALLED after the isotonic non-increasing clamp to [0,1]: [1.0, 0.0, 0.0, 0.0].
+    correction at a year-2 evaluation state (tau=2) = 0.00000000 x the year-1 correction  ->  PASS (~0 by measurement)
+    The measured year-2 residual is NEGATIVE (-0.0447): the data extinguishes the premium FASTER
+    than the owner's "phase out over seasons 2/3" shape. The clamp installs 0, never the negative —
+    a markdown does not ride the bonus dial (the same principle as the KPD sub-dial, F11).
+
+(f) THE ZERO-CELL GATE, in ABSOLUTE UNITS (Addendum 1 re-registered it there, never in
+    teaching-noise units). Measured on the TAUGHT rows at each rung, value-weighted.
+
+    cell                                       n    bound  rung .25  rung .50  rung .75  rung 1.0
+    --------------------------------------------------------------------------------------------
+    picks 1-10 x TOP-TERCILE re-rate          29    0.015  +0.00554  +0.01108  +0.01662  +0.02217   FAIL
+    picks 1-20 x ABOVE-MEDIAN re-rate         84    0.025  +0.00767  +0.01533  +0.02300  +0.03066   FAIL
+    picks 41-64 (declared taper)              89    0.005  +0.00129  +0.00258  +0.00387  +0.00516   FAIL
+    draft age 19+ (declared taper)            57    0.005  +0.00000  +0.00000  +0.00000  +0.00000   PASS
+    draft age UNKNOWN (identically 0)         29    0.000  +0.00000  +0.00000  +0.00000  +0.00000   PASS
+
+    The gate is re-read on the axis the CROSS-SECTION used — demonstrated level pr = bestlvl/par —
+    so the "already priced in" cell is tested on BOTH definitions and the binding one binds.
+    picks 1-10 x TOP-TERCILE pr               34    0.015  +0.00792  +0.01584  +0.02376  +0.03168   FAIL   (measured +0.0556)
+    picks 1-20 x ABOVE-MEDIAN pr             101    0.025  +0.01181  +0.02361  +0.03542  +0.04723   FAIL   (measured +0.0096)
+
+    PER-RUNG VERDICT on the registered zero-cell bounds (Addendum 1, ABSOLUTE units):
+      rung 0.25  : ALL BOUNDS MET
+      rung 0.5   : BREACHES picks 1-10 x TOP-TERCILE pr
+      rung 0.75  : BREACHES picks 1-10 x TOP-TERCILE re-rate; picks 1-10 x TOP-TERCILE pr; picks 1-20 x ABOVE-MEDIAN pr
+      rung 1.0   : BREACHES picks 1-10 x TOP-TERCILE re-rate; picks 1-20 x ABOVE-MEDIAN re-rate; picks 41-64 (declared taper); picks 1-10 x TOP-TERCILE pr; picks 1-20 x ABOVE-MEDIAN pr
+    Addendum 1 F9/F10 orders INFEASIBLE RUNGS STRUCK BEFORE PRESENTATION. The struck rungs are
+    named in README.md and FRONTIER.txt with the exact figure that struck them. NOTHING is retuned.
+
+(i) THE PRE-REGISTERED STATISTICS (Addendum 1: the estimand is the VALUE-WEIGHTED aggregate, the
+    MEDIAN F' is pre-registered beside it, and each rung prints the corrected median and the
+    fraction of players who historically OUT-EARN the corrected price). The tension the directive
+    names as the central pub-test item: the residual is TAIL-CARRIED.
+
+    rung            agg F'     corrected    median F'   corr. median  frac out-earn
+    ------------------------------------------------------------------------------
+    0 (shipped)       1.0963       1.0963       0.9632         0.9632          0.476
+    0.25             1.0963       1.0700       0.9632         0.9219          0.454
+    0.5              1.0963       1.0449       0.9632         0.8969          0.444
+    0.75             1.0963       1.0209       0.9632         0.8743          0.420
+    1.0              1.0963       0.9981       0.9632         0.8331          0.403
+
+    READ IT PLAINLY: the value-weighted aggregate says the year-1 established leg is UNDER-priced
+    by 9.6%. The MEDIAN says the TYPICAL year-1 established player is already priced ABOVE his own
+    realised discounted future (median F' = 0.9632, i.e. 4% over-priced), and only 48% of them
+    out-earn even the UNCORRECTED price. The correction is carried by a right tail. At rung 1.0 the
+    typical player would sit 20% over-priced against his own median. THE MEDIAN-NEUTRAL RUNG IS
+    BELOW ZERO — no positive rung improves the median; every rung worsens it. That is the whole of
+    the tail-vs-typical tension, stated as a number, at every rung.
+
+(g) THE MONOTONICITY LAW — a strictly better career never prices lower.  The demonstrated-level
+    axis DECREASES in z = log(e/anchor), so the shipped surface must keep e*(1+delta) strictly
+    increasing in e.  Swept over the realised domain at the TOP rung (the worst case).
+    min d/dln(e)[e*(1+delta)] at rung 1.0 = +0.053337  at ('nonKPP', 25, 6.0, 1.0, 0.3)  ->  PASS (strictly increasing)
+    the L-SMOOTH shrink the teach applied to reach it: kappa = 0.693842 (declared in the teach log)
+
+(h) THE IDENTICAL-CAREER KPD / KPF PAIR (Addendum 1 F11) — the same record, the same pick, the
+    same clock, differing ONLY in position class. Printed at every rung, on BOTH dials.
+
+    rung   KPD dial  KPF delta  KPD delta    KPF price    KPD price
+    ----------------------------------------------------------------
+    0.25   0         +0.003402  -0.000000         2855         2855
+    0.25   1.0       +0.003402  -0.009325         2828         2828
+    0.5    0         +0.006804  -0.000000         2855         2855
+    0.5    1.0       +0.006804  -0.009325         2828         2828
+    0.75   0         +0.010206  -0.000000         2855         2855
+    0.75   1.0       +0.010206  -0.009325         2828         2828
+    1.0    0         +0.013608  -0.000000         2855         2855
+    1.0    1.0       +0.013608  -0.009325         2828         2828
+    At the shipped KPD sub-dial (0) a KPD takes ZERO correction — the measured -25%% class markdown
+    is NOT installed and is the owner's separate ruling.
