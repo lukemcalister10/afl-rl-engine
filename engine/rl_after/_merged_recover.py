@@ -48,11 +48,13 @@ def _det_mean(a):
 with contextlib.redirect_stdout(io.StringIO()):
     import rl_model as MA, wire_redesign as W; cm=W.build()
 TR=W.TR; rd=TR.rd; cp=TR.cp; dp=TR.dp; PR=W.PR
-era={}
-for Y in range(2009,2026):
-    a=[s['avg'] for p in MA.data for s in p.get('scoring') or [] if s['year']==Y and s['games']>=6]
-    if a: era[Y]=float(np.mean(a))
-REF=float(np.mean(list(era.values())))
+# ==== ERA NORMALIZATION REMOVED (#334 stage B, OWNER RULING) ==================================
+# An era[Y] table used to be built here (mean season avg over >=6-game seasons per year, 2009-2025,
+# with REF = the mean of those years) and every career-score read was multiplied by REF/era.get(y,REF).
+# OWNER RULING (binding): SuperCoach scores are era-comparable BY CONSTRUCTION — every match assigns
+# 3,300 points, so a season average already sits on one common scale and a per-year rescale is a
+# distortion, not a correction. NO era normalization may be applied to scoring anywhere. The table,
+# REF, and every a*REF/era.get(y,REF) site are gone; season averages are read RAW. Do not reintroduce.
 pool=[p for p in MA.data if MA.GRP.get(p['pos'])]
 X,yy=[],[]
 _L4_MSD=os.environ.get('RL_MSD_POOL_EXCL','1')!='0'   # v2.9 L4: MSD training-pool exclusion (default ON; =0 ⇒ base byte-exact). Kill-switch; G-ATTR-separable.
@@ -777,7 +779,7 @@ cp._lvl_eff=_lvl_eff_abs
 # While _M3PIN is on (ONLY inside _ev_m3's pinned evaluation of the in-progress season), the age/tenure
 # CLOCK surfaces read as Y-1: cp._age_asof -1yr · MA.age -1yr · PR.tenure -1yr (floor 1) · _eo's
 # years-since-draft N-1 (data window untouched) · _feat's explicit ten term re-based to Y-1. Evidence
-# windows, era adjust, nseas/nqual and the M2-prorated exposure clock ALL stay at Y — the pin moves the
+# windows, nseas/nqual and the M2-prorated exposure clock ALL stay at Y — the pin moves the
 # CLOCKS only (using plain ev(p,Y-1) would re-prorate the decay channel M2 already prorates). With the
 # pin OFF every wrapper is an identity passthrough — byte-exact by construction (verified in the D7 cut).
 _M3PIN={'on':False}
@@ -896,12 +898,12 @@ def _kpf_LD(p,Y):
         _st=_AVAIL_STATE.get(p.get('key'))
         if _st and _st.get('out'): _nuke={2026}                # the injured current season (register-flagged)
     _ext=min(2,len(_nuke)); _lo=Y-3-_ext                        # extend back year-for-year, capped +2
-    ls=sorted((a*REF/era.get(y,REF) for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
+    ls=sorted((a for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
                if _lo<=y<=Y and y not in _nuke and gg>=12.0*(_fEy(Y,p) if y==Y else 1.0)),reverse=True)
     if len(ls)>=2: return float(np.mean(ls[:2]))
     if _nuke:                                                  # fork-v fallback: exclusion left <2 healthy seasons
         _KPF_LD_FALLBACK.add(p.get('key'))
-        ls0=sorted((a*REF/era.get(y,REF) for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
+        ls0=sorted((a for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
                     if Y-3<=y<=Y and gg>=12.0*(_fEy(Y,p) if y==Y else 1.0)),reverse=True)
         return float(np.mean(ls0[:2])) if len(ls0)>=2 else None
     return None
@@ -1119,7 +1121,7 @@ def _kpf_prod_efv(p,Y,L=None):
 def delisted(p): return bool(p.get('_retired')) or (p.get('_last_listed') is not None and p['_last_listed']<2026)
 def draftval(p): return float(MA.PVC[min(MA.effpk(p),cp.KMAX)])
 def bestlvl(p,Y=2026):
-    s=[a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6.0*(_fEy(Y,p) if x['year']==Y else 1.0) and x['year']<=Y]]   # D10: 6-bar prorated in-progress
+    s=[a for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6.0*(_fEy(Y,p) if x['year']==Y else 1.0) and x['year']<=Y]]   # D10: 6-bar prorated in-progress; RAW avg (era normalization removed per owner ruling)
     return max(s) if s else 0.0
 def nseas(p,Y=2026): return sum(1 for x in p['scoring'] if x['games']>=6 and x['year']<=Y)   # unprorated career counter (harness/diagnostic callers)
 def nseas_pro(p,Y=2026):                                      # D10: qualification judged against PLAYABLE games (6-bar -> 6*fE for the in-progress season)
@@ -1200,7 +1202,8 @@ RUC_PRIOR_CAP=float(os.environ.get('RL_RUC_PRIOR_CAP','1.4'))   # BAKED default 
 # capital), blending heterogeneous units. The swap: the production leg (ev() hook, prior-dominated regime) is
 # capped at a ceiling DERIVED off ruck production instead of pick capital:
 #   ceiling(p) = RUC_CEIL_HEAD * synthprice_RUC(bestlvl(p)) at the ruck-median slot RUC_CEIL_REFPK=72 — the
-#   engine's own pricing of a STANDARDIZED developing ruck at the player's era-normalized peak production.
+#   engine's own pricing of a STANDARDIZED developing ruck at the player's peak production (RAW season
+#   avg — #334 stage B removed the era normalization that used to sit on bestlvl's input).
 #   Pick-neutral, production-only, monotone non-decreasing. Thin-slice choice (declared): the ruck slice is
 #   POOLED onto one pick-neutral production->$ curve (empirical kernel over live raw_ev was REJECTED —
 #   age/tenure-contaminated, non-monotone, crushed thin prospects). NO-PRODUCTION FALLBACK: bestlvl==0 rucks
@@ -1217,7 +1220,7 @@ RUC_CEIL_HEAD=float(os.environ.get('RL_RUC_CEIL_HEAD','0.80'))  # headroom on th
 RUC_CEIL_REFPK=float(os.environ.get('RL_RUC_CEIL_REFPK','72'))  # ruck-median effpk = the pick-neutral "representative ruck slot"
 RUC_YRH=float(os.environ.get('RL_RUC_YRH','0.35'))              # young-ruck smooth headroom amplitude (W4; owner dial)
 _RUCCEIL={}; _RUCCEIL_META={}
-def _build_ruc_ceiling():                                     # pick-neutral production->$ curve: era-adj peak avg -> ruck price
+def _build_ruc_ceiling():                                     # pick-neutral production->$ curve: raw peak avg -> ruck price
     avs=list(np.linspace(15.0,150.0,46))
     def _sp(a):
         sp=synth(int(RUC_CEIL_REFPK),float(a),'RUCK')
@@ -1792,7 +1795,7 @@ def _staleness_grade(p,Y,pos):
     prior_qual=[x['year'] for x in p['scoring'] if x['year']<Y and x['games']>=6]
     if not prior_qual:
         return 0.0
-    qv=(live[0]['avg']*REF/era.get(Y,REF))/max(MA.REPL.get(pos,1e-9),1e-9)
+    qv=(live[0]['avg'])/max(MA.REPL.get(pos,1e-9),1e-9)   # RAW avg (era normalization removed per owner ruling)
     gap=Y-max(prior_qual)
     return float(np.interp(qv,_D8Q,_D8G1 if gap==1 else _D8G2))
 def ev(p,Y=2026):
@@ -2158,7 +2161,7 @@ for nm in ['Harrison Jones','Dylan Stephens','Keidean Coleman']:
 print("  -> if band q50/q70 high vs recent, cond_prior is pricing career not decline; if q97 tail high, upside inflates")
 # refine: DECLINE/MEDIOCRE via RECENT production (last-2-season avg vs par), not just best
 def recent_ratio(p,Y=2026):
-    s=[a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6 and x['year']<=Y]][-2:]
+    s=[a for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6 and x['year']<=Y]][-2:]   # RAW avg (era normalization removed per owner ruling)
     return (np.mean(s)/max(1,PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),min(max(PR.tenure(p,Y),1),6)))) if s else 0.0
 print("\n  RECENT ratio (last-2 avg / par):")
 for nm in ['Harrison Jones','Dylan Stephens','Keidean Coleman','Oscar Ryan']:

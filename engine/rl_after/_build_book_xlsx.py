@@ -3,10 +3,10 @@ g={}
 with contextlib.redirect_stdout(io.StringIO()):
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
 g['_BOARD_PATH']=False   # D14: walk-forward book xlsx — board-only laws (V0 curve, KPP floor) OFF (Luke's exemption).
-MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; PR=g['PR']; b6=g['b6']; WQ6=g['WQ6']; era=g['era']; REF=g['REF']
+MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; PR=g['PR']; b6=g['b6']; WQ6=g['WQ6']
 _lvlcurr=g['_lvlcurr']; _nqual=g['_nqual']; PROVEN_N=g['PROVEN_N']; DOWN_TOL=g['DOWN_TOL']
 _agemult=g['_agemult']; _par_prior=g['_par_prior']; _upS=g['_upS']; _eo=g['_eo']; delisted=g['delisted']
-def adj(a,y): return a*REF/era.get(y,REF)
+def adj(a,y): return a   # RAW season avg — era normalization removed (#334 stage B owner ruling)
 TOL_M1=5.0; G_ADQ=12; WIN=2; S_M1=0.46; GCAP=17.0
 def _radq(p,Y,Lo): return any(x['games']>=G_ADQ and x['avg']>Lo for x in p['scoring'] if Y-WIN<x['year']<=Y and (cp.debutyr(p)-1)<x['year'])
 def _core(p,Y):

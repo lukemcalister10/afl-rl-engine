@@ -4,7 +4,7 @@ import io,contextlib,copy,os,numpy as np,time
 os.environ['RL_PRIOR_TREES']='150'
 ns={}
 with contextlib.redirect_stdout(io.StringIO()): exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], ns)
-MA=ns['MA']; cp=ns['cp']; PR=ns['PR']; REF=ns['REF']; era=ns['era']
+MA=ns['MA']; cp=ns['cp']; PR=ns['PR']
 def build_q97(pool):
     from sklearn.ensemble import GradientBoostingRegressor
     X,yy=[],[]
@@ -16,7 +16,7 @@ def build_q97(pool):
 def trunc(p,T):
     d0=cp.debutyr(p)-1; q=copy.deepcopy(p); q['scoring']=[x for x in p['scoring'] if x['year']<=d0+T]; q['_pos_now']=None; q['_fut']=[]; return q,d0+T
 def real_mat(p):
-    s=sorted([a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6]],reverse=True)[:3]; return float(np.mean(s)) if s else 0.0
+    s=sorted([a for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6]],reverse=True)[:3]; return float(np.mean(s)) if s else 0.0
 full=[p for p in MA.data if MA.GRP.get(p['pos'])]
 TEN=[0,1,2,3,4,5]; agg={}
 for D in range(2014,2019):

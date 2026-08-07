@@ -1,0 +1,514 @@
+STAGE ER — THE STRIP, DIFF SUMMARY
+==================================
+
+21 source files touched. 57 insertions / 57 deletions — every edit is a substitution,
+not a restructure: the era multiplier comes off the expression and the surrounding
+logic (windows, game bars, sorts, fallbacks, guards) is preserved byte-for-byte.
+
+  --- per-file (added/removed) ---
+  engine/prototypes/staleness_graded_cap.py      +6   -3
+  engine/rl_after/_build_book_xlsx.py            +2   -2
+  engine/rl_after/_comb_book.py                  +2   -2
+  engine/rl_after/_comb_recheck.py               +2   -4
+  engine/rl_after/_flags_support.py              +2   -2
+  engine/rl_after/_gate1.py                      +1   -5
+  engine/rl_after/_gate1_picksplit.py            +2   -2
+  engine/rl_after/_gate1_wf.py                   +2   -2
+  engine/rl_after/_keyfwd_decomp.py              +1   -1
+  engine/rl_after/_m1_ground.py                  +3   -3
+  engine/rl_after/_merged_recover.py             +16  -13
+  engine/rl_after/_p2b_derive.py                 +2   -2
+  engine/rl_after/_p2b_divergence.py             +2   -2
+  engine/rl_after/_p2b_headtohead.py             +2   -2
+  engine/rl_after/s4_matrix_7147.py              +2   -2
+  engine/rl_after/s4_matrix_M1v7.py              +2   -2
+  engine/rl_after/s4_matrix_M1v7_blend.py        +2   -2
+  engine/rl_after/s4_matrix_M1v7_retainonly.py   +2   -2
+  engine/rl_after/s4_render_7147.py              +2   -2
+  engine/rl_after/s4_render_M1v7.py              +1   -1
+  engine/rl_after/s4_render_no2003.py            +1   -1
+
+  pvc_curve_v2.json is NOT in this list: it was RESTORED to its ad50dad content
+  (git checkout ad50dad -- engine/rl_after/pvc_curve_v2.json), so relative to the
+  stage-1 baseline it is unchanged. Relative to HEAD 4d435ea it reverts stage 2.
+
+==================================================================
+FULL DIFF OF THE ENGINE SOURCES (excluding pvc_curve_v2.json)
+==================================================================
+
+diff --git a/engine/prototypes/staleness_graded_cap.py b/engine/prototypes/staleness_graded_cap.py
+index 51cd650..66cdeab 100644
+--- a/engine/prototypes/staleness_graded_cap.py
++++ b/engine/prototypes/staleness_graded_cap.py
+@@ -10,12 +10,15 @@
+ #   e = min(e, cap + grade * (e - cap))          [cap = dv*frac, the existing ghost floor — UNCHANGED]
+ #   grade = 1                     if gap == 0    (sole qualifying season IS season Y — cannot have vanished)
+ #         = 0                     if g_Y == 0    (no live output this season — ghost anchor)
+-#         = G_gapclass(q)         otherwise      (q = era-adjusted season-Y avg / REPL[pos]; classes gap=1, gap>=2 POOLED)
++#         = G_gapclass(q)         otherwise      (q = RAW season-Y avg / REPL[pos]; classes gap=1, gap>=2 POOLED)
+ #
+ # DERIVATION (D8, session_2026-07-03/d8_ask2_graded_cap.md; scripts d8_ask2_harvest/analyze/fit.py):
+ #  - 532 historical fire-population cells (Y=2008..2022, ns==1 & el>=onset & listed-at-Y per the standing
+ #    LISTED-WINDOW rule), outcome = re-realization of the stale season's level over the next 3 seasons
+-#    (v = min(fwd_peak/qual_lvl, 1), era-adjusted; robustness: survival + raw ratio give the same shape).
++#    (v = min(fwd_peak/qual_lvl, 1); the ORIGINAL D8 fit was era-adjusted — #334 stage B removed era
++#    normalization engine-wide per the owner ruling, so this prototype's G_gapclass tables would need
++#    RE-DERIVING on the era-free basis before it could be endorsed. It is WIRED NOWHERE and its OLD1/OLD2
++#    source anchors are already dead against the current engine, so nothing on the value path depends on it.)
+ #  - AXIS SELECTED BY DATA: quality q beats the directive's example product g*q (tau +0.234 vs +0.124;
+ #    q > g*q in 100% of 2000 player-cluster bootstrap resamples); games volume carries NO independent
+ #    signal within 1-5 games (tau +0.038) — volume enters only structurally (0 games -> no live output;
+@@ -53,7 +56,7 @@ NEW2 = ("    if el>=onset and ns<=1:                                   # stalled
+         "            cap=dv*frac; gr=0.0\n"
+         "            yrow=[x for x in p['scoring'] if x['year']==Y and x['games']>0]\n"
+         "            if yrow:                                          # live output -> graded trust; none -> ghost floor (grade 0)\n"
+-        "                qv=(yrow[0]['avg']*REF/era.get(Y,REF))/max(MA.REPL.get(pos,1e-9),1e-9)\n"
++        "                qv=(yrow[0]['avg'])/max(MA.REPL.get(pos,1e-9),1e-9)\n"
+         "                gp=Y-max(x['year'] for x in p['scoring'] if x['games']>=6 and x['year']<=Y)\n"
+         "                gr=float(np.interp(qv,_D8Q,_D8G1 if gp==1 else _D8G2))\n"
+         "            e=min(e, cap+gr*max(0.0,e-cap))")
+diff --git a/engine/rl_after/_build_book_xlsx.py b/engine/rl_after/_build_book_xlsx.py
+index 23ce897..636416d 100644
+--- a/engine/rl_after/_build_book_xlsx.py
++++ b/engine/rl_after/_build_book_xlsx.py
+@@ -3,10 +3,10 @@ g={}
+ with contextlib.redirect_stdout(io.StringIO()):
+     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
+ g['_BOARD_PATH']=False   # D14: walk-forward book xlsx — board-only laws (V0 curve, KPP floor) OFF (Luke's exemption).
+-MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; PR=g['PR']; b6=g['b6']; WQ6=g['WQ6']; era=g['era']; REF=g['REF']
++MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; PR=g['PR']; b6=g['b6']; WQ6=g['WQ6']
+ _lvlcurr=g['_lvlcurr']; _nqual=g['_nqual']; PROVEN_N=g['PROVEN_N']; DOWN_TOL=g['DOWN_TOL']
+ _agemult=g['_agemult']; _par_prior=g['_par_prior']; _upS=g['_upS']; _eo=g['_eo']; delisted=g['delisted']
+-def adj(a,y): return a*REF/era.get(y,REF)
++def adj(a,y): return a   # RAW season avg — era normalization removed (#334 stage B owner ruling)
+ TOL_M1=5.0; G_ADQ=12; WIN=2; S_M1=0.46; GCAP=17.0
+ def _radq(p,Y,Lo): return any(x['games']>=G_ADQ and x['avg']>Lo for x in p['scoring'] if Y-WIN<x['year']<=Y and (cp.debutyr(p)-1)<x['year'])
+ def _core(p,Y):
+diff --git a/engine/rl_after/_comb_book.py b/engine/rl_after/_comb_book.py
+index fc4fb15..9dc8e28 100644
+--- a/engine/rl_after/_comb_book.py
++++ b/engine/rl_after/_comb_book.py
+@@ -3,11 +3,11 @@ g={}
+ with contextlib.redirect_stdout(io.StringIO()):
+     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
+ g['_BOARD_PATH']=False   # D14: walk-forward book render — board-only laws (V0 curve, KPP floor) OFF (Luke's exemption).
+-MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; PR=g['PR']; b6=g['b6']; WQ6=g['WQ6']; era=g['era']; REF=g['REF']
++MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; PR=g['PR']; b6=g['b6']; WQ6=g['WQ6']
+ _lvlcurr=g['_lvlcurr']; _nqual=g['_nqual']; _ldg=g['_ldg']; FLAT=g['FLAT_TOL_G']; PROVEN_N=g['PROVEN_N']
+ DOWN_TOL=g['DOWN_TOL']; _agemult=g['_agemult']; _par_prior=g['_par_prior']; _upS=g['_upS']; _eo=g['_eo']
+ nseas=g['nseas']; delisted=g['delisted']; ORIG_LVL=cp._lvl_eff
+-def adj(a,y): return a*REF/era.get(y,REF)
++def adj(a,y): return a   # RAW season avg — era normalization removed (#334 stage B owner ruling)
+ TOL_M1=5.0; G_ADQ=12; WIN=2; S_M1=0.46
+ def _recent_adq_above(p,Y,Lo):
+     return any(x['games']>=G_ADQ and x['avg']>Lo for x in p['scoring'] if Y-WIN< x['year']<=Y and (cp.debutyr(p)-1)<x['year'])
+diff --git a/engine/rl_after/_comb_recheck.py b/engine/rl_after/_comb_recheck.py
+index a191d3e..2876e78 100644
+--- a/engine/rl_after/_comb_recheck.py
++++ b/engine/rl_after/_comb_recheck.py
+@@ -2,13 +2,11 @@ import io, contextlib, numpy as np
+ g={}
+ with contextlib.redirect_stdout(io.StringIO()):
+     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
+-MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; PR=g['PR']; b6=g['b6']; WQ6=g['WQ6']; era=g['era']; REF=g['REF']
++MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; PR=g['PR']; b6=g['b6']; WQ6=g['WQ6']
+ _lvlcurr=g['_lvlcurr']; _nqual=g['_nqual']; _ldg=g['_ldg']; FLAT=g['FLAT_TOL_G']; PROVEN_N=g['PROVEN_N']
+ DOWN_TOL=g['DOWN_TOL']; _agemult=g['_agemult']; _par_prior=g['_par_prior']; _upS=g['_upS']; _eo=g['_eo']
+ ORIG_LVL=cp._lvl_eff                               # baked _lvl_eff_infer (hold-band)
+-def adj(a,y): return a*REF/era.get(y,REF)
+-
+-# ---- M1 params (derived in _m1_gate.py) ----
++def adj(a,y): return a   # RAW season avg — era normalization removed (#334 stage B owner ruling)
+ TOL_M1=5.0; G_ADQ=12; WIN=2; S_M1=0.46
+ def _recent_adq_above(p,Y,Lo):
+     return any(x['games']>=G_ADQ and x['avg']>Lo for x in p['scoring'] if Y-WIN< x['year']<=Y and (cp.debutyr(p)-1)<x['year'])
+diff --git a/engine/rl_after/_flags_support.py b/engine/rl_after/_flags_support.py
+index 5a7dc87..a6804e8 100644
+--- a/engine/rl_after/_flags_support.py
++++ b/engine/rl_after/_flags_support.py
+@@ -2,10 +2,10 @@ import io, contextlib, numpy as np
+ g={}
+ with contextlib.redirect_stdout(io.StringIO()):
+     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
+-MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; PR=g['PR']; b6=g['b6']; WQ6=g['WQ6']; era=g['era']; REF=g['REF']
++MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; PR=g['PR']; b6=g['b6']; WQ6=g['WQ6']
+ _lvlcurr=g['_lvlcurr']; _nqual=g['_nqual']; PROVEN_N=g['PROVEN_N']; DOWN_TOL=g['DOWN_TOL']
+ _agemult=g['_agemult']; _par_prior=g['_par_prior']; _upS=g['_upS']; _eo=g['_eo']; delisted=g['delisted']
+-def adj(a,y): return a*REF/era.get(y,REF)
++def adj(a,y): return a   # RAW season avg — era normalization removed (#334 stage B owner ruling)
+ TOL_M1=5.0; G_ADQ=12; WIN=2; S_M1=0.46; GCAP=17.0
+ def _radq(p,Y,Lo): return any(x['games']>=G_ADQ and x['avg']>Lo for x in p['scoring'] if Y-WIN<x['year']<=Y and (cp.debutyr(p)-1)<x['year'])
+ def _core(p,Y):
+diff --git a/engine/rl_after/_gate1.py b/engine/rl_after/_gate1.py
+index a1be0ef..a791bec 100644
+--- a/engine/rl_after/_gate1.py
++++ b/engine/rl_after/_gate1.py
+@@ -4,11 +4,7 @@ import io,contextlib,numpy as np
+ with contextlib.redirect_stdout(io.StringIO()):
+     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0])
+ _BOARD_PATH=False   # D14: in-sample/walk-forward gate — board-only laws (V0 curve, KPP floor) OFF (Luke's exemption).
+-era={}
+-for Y in range(2009,2026):
+-    a=[s['avg'] for p in MA.data for s in p.get('scoring') or [] if s['year']==Y and s['games']>=6]
+-    if a: era[Y]=float(np.mean(a))
+-REF=float(np.mean(list(era.values()))); eadj=lambda y,a:a*REF/era.get(y,REF)
++eadj=lambda y,a:a   # RAW season avg — this script's own era[Y]/REF table removed (#334 stage B owner ruling)
+ def realized_prod(p):
+     s=sorted([eadj(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6],reverse=True)[:3]
+     return float(np.mean(s)) if s else 0.0
+diff --git a/engine/rl_after/_gate1_picksplit.py b/engine/rl_after/_gate1_picksplit.py
+index a4962c2..5bac1ac 100644
+--- a/engine/rl_after/_gate1_picksplit.py
++++ b/engine/rl_after/_gate1_picksplit.py
+@@ -4,7 +4,7 @@ import io,contextlib,copy,os,numpy as np,time
+ os.environ['RL_PRIOR_TREES']='150'
+ ns={}
+ with contextlib.redirect_stdout(io.StringIO()): exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], ns)
+-MA=ns['MA']; cp=ns['cp']; PR=ns['PR']; REF=ns['REF']; era=ns['era']
++MA=ns['MA']; cp=ns['cp']; PR=ns['PR']
+ def build_q97(pool):
+     from sklearn.ensemble import GradientBoostingRegressor
+     X,yy=[],[]
+@@ -16,7 +16,7 @@ def build_q97(pool):
+ def trunc(p,T):
+     d0=cp.debutyr(p)-1; q=copy.deepcopy(p); q['scoring']=[x for x in p['scoring'] if x['year']<=d0+T]; q['_pos_now']=None; q['_fut']=[]; return q,d0+T
+ def real_mat(p):
+-    s=sorted([a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6]],reverse=True)[:3]; return float(np.mean(s)) if s else 0.0
++    s=sorted([a for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6]],reverse=True)[:3]; return float(np.mean(s)) if s else 0.0
+ full=[p for p in MA.data if MA.GRP.get(p['pos'])]
+ TEN=[0,1,2,3,4,5]; agg={}
+ for D in range(2014,2019):
+diff --git a/engine/rl_after/_gate1_wf.py b/engine/rl_after/_gate1_wf.py
+index 39e9446..35d76b2 100644
+--- a/engine/rl_after/_gate1_wf.py
++++ b/engine/rl_after/_gate1_wf.py
+@@ -7,7 +7,7 @@ ns={}
+ with contextlib.redirect_stdout(io.StringIO()):
+     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], ns)
+ ns['_BOARD_PATH']=False   # D14: BACKTEST/WALK-FORWARD (leakage) path — board-only laws (V0 curve, KPP floor) OFF (Luke's exemption).
+-MA=ns['MA']; cp=ns['cp']; PR=ns['PR']; REF=ns['REF']; era=ns['era']
++MA=ns['MA']; cp=ns['cp']; PR=ns['PR']
+ def setmodels(cm,q97):
+     ns['cm']=cm; ns['q97m']=q97   # swap the trained/leaky part; pole(_POLE) + ISO stay in-sample structural priors
+ def build_q97(pool):
+@@ -22,7 +22,7 @@ def trunc(p,T):
+     d0=cp.debutyr(p)-1; q=copy.deepcopy(p); q['scoring']=[x for x in p['scoring'] if x['year']<=d0+T]; q['_pos_now']=None; q['_fut']=[]
+     return q,d0+T
+ def real_mat(p):
+-    s=sorted([a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6]],reverse=True)[:3]
++    s=sorted([a for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6]],reverse=True)[:3]
+     return float(np.mean(s)) if s else 0.0
+ full=[p for p in MA.data if MA.GRP.get(p['pos'])]
+ allpool=[p for p in full if cp.debutyr(p)<=2021 and (p.get('pick') or p.get('_ft'))]
+diff --git a/engine/rl_after/_keyfwd_decomp.py b/engine/rl_after/_keyfwd_decomp.py
+index 86d023b..998205b 100644
+--- a/engine/rl_after/_keyfwd_decomp.py
++++ b/engine/rl_after/_keyfwd_decomp.py
+@@ -2,7 +2,7 @@ import io, contextlib, numpy as np
+ g={}
+ with contextlib.redirect_stdout(io.StringIO()):
+     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
+-MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; b6=g['b6']; WQ6=g['WQ6']; era=g['era']; REF=g['REF']
++MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; b6=g['b6']; WQ6=g['WQ6']
+ _nqual=g['_nqual']; delisted=g['delisted']
+ GCAP=17.0
+ def eff_s(p,Y): return sum(min(x['games']/GCAP,1.0) for x in p['scoring'] if x['games']>=6 and (cp.debutyr(p)-1)<x['year']<=Y)
+diff --git a/engine/rl_after/_m1_ground.py b/engine/rl_after/_m1_ground.py
+index 968f378..0774270 100644
+--- a/engine/rl_after/_m1_ground.py
++++ b/engine/rl_after/_m1_ground.py
+@@ -2,9 +2,9 @@ import io, contextlib, numpy as np
+ g={}
+ with contextlib.redirect_stdout(io.StringIO()):
+     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
+-MA=g['MA']; cp=g['cp']; PR=g['PR']; era=g['era']; REF=g['REF']
++MA=g['MA']; cp=g['cp']; PR=g['PR']
+ _lvlcurr=g['_lvlcurr']; _nqual=g['_nqual']; _ldg=g['_ldg']; FLAT=g['FLAT_TOL_G']; PROVEN_N=g['PROVEN_N']
+-def adj(a,y): return a*REF/era.get(y,REF)
++def adj(a,y): return a   # RAW season avg — era normalization removed (#334 stage B owner ruling)
+ def R(nm):
+     h=[p for p in MA.data if p['player']==nm]; return h[0] if h else None
+ names=['Jack Ginnivan','Tanner Bruhn','Luke Davies-Uniacke','Will Day','Tom Powell']
+@@ -17,7 +17,7 @@ for nm in names:
+     Lo=cp._lvl_eff_orig(p,Y); Lc=_lvlcurr(p,Y); Leff=cp._lvl_eff(p,Y)
+     gap=Lc-Lo; held = (n>=PROVEN_N and Lc>=Lo and gap<=ft)
+     print(f"{nm:22s}{pos:>8s}{n:>3d}{ft:>5.1f}{Lo:>7.1f}{Lc:>7.1f}{gap:>+6.1f}{Leff:>7.1f}{('HELD' if held else '-'):>7s}")
+-print("\n=== season history (era-adj avg; * = games>=14) ===")
++print("\n=== season history (raw avg; * = games>=14) ===")
+ for nm in names:
+     p=R(nm)
+     if not p: continue
+diff --git a/engine/rl_after/_merged_recover.py b/engine/rl_after/_merged_recover.py
+index 8768767..d15ada0 100644
+--- a/engine/rl_after/_merged_recover.py
++++ b/engine/rl_after/_merged_recover.py
+@@ -48,11 +48,13 @@ def _det_mean(a):
+ with contextlib.redirect_stdout(io.StringIO()):
+     import rl_model as MA, wire_redesign as W; cm=W.build()
+ TR=W.TR; rd=TR.rd; cp=TR.cp; dp=TR.dp; PR=W.PR
+-era={}
+-for Y in range(2009,2026):
+-    a=[s['avg'] for p in MA.data for s in p.get('scoring') or [] if s['year']==Y and s['games']>=6]
+-    if a: era[Y]=float(np.mean(a))
+-REF=float(np.mean(list(era.values())))
++# ==== ERA NORMALIZATION REMOVED (#334 stage B, OWNER RULING) ==================================
++# An era[Y] table used to be built here (mean season avg over >=6-game seasons per year, 2009-2025,
++# with REF = the mean of those years) and every career-score read was multiplied by REF/era.get(y,REF).
++# OWNER RULING (binding): SuperCoach scores are era-comparable BY CONSTRUCTION — every match assigns
++# 3,300 points, so a season average already sits on one common scale and a per-year rescale is a
++# distortion, not a correction. NO era normalization may be applied to scoring anywhere. The table,
++# REF, and every a*REF/era.get(y,REF) site are gone; season averages are read RAW. Do not reintroduce.
+ pool=[p for p in MA.data if MA.GRP.get(p['pos'])]
+ X,yy=[],[]
+ _L4_MSD=os.environ.get('RL_MSD_POOL_EXCL','1')!='0'   # v2.9 L4: MSD training-pool exclusion (default ON; =0 ⇒ base byte-exact). Kill-switch; G-ATTR-separable.
+@@ -777,7 +779,7 @@ cp._lvl_eff=_lvl_eff_abs
+ # While _M3PIN is on (ONLY inside _ev_m3's pinned evaluation of the in-progress season), the age/tenure
+ # CLOCK surfaces read as Y-1: cp._age_asof -1yr · MA.age -1yr · PR.tenure -1yr (floor 1) · _eo's
+ # years-since-draft N-1 (data window untouched) · _feat's explicit ten term re-based to Y-1. Evidence
+-# windows, era adjust, nseas/nqual and the M2-prorated exposure clock ALL stay at Y — the pin moves the
++# windows, nseas/nqual and the M2-prorated exposure clock ALL stay at Y — the pin moves the
+ # CLOCKS only (using plain ev(p,Y-1) would re-prorate the decay channel M2 already prorates). With the
+ # pin OFF every wrapper is an identity passthrough — byte-exact by construction (verified in the D7 cut).
+ _M3PIN={'on':False}
+@@ -896,12 +898,12 @@ def _kpf_LD(p,Y):
+         _st=_AVAIL_STATE.get(p.get('key'))
+         if _st and _st.get('out'): _nuke={2026}                # the injured current season (register-flagged)
+     _ext=min(2,len(_nuke)); _lo=Y-3-_ext                        # extend back year-for-year, capped +2
+-    ls=sorted((a*REF/era.get(y,REF) for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
++    ls=sorted((a for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
+                if _lo<=y<=Y and y not in _nuke and gg>=12.0*(_fEy(Y,p) if y==Y else 1.0)),reverse=True)
+     if len(ls)>=2: return float(np.mean(ls[:2]))
+     if _nuke:                                                  # fork-v fallback: exclusion left <2 healthy seasons
+         _KPF_LD_FALLBACK.add(p.get('key'))
+-        ls0=sorted((a*REF/era.get(y,REF) for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
++        ls0=sorted((a for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
+                     if Y-3<=y<=Y and gg>=12.0*(_fEy(Y,p) if y==Y else 1.0)),reverse=True)
+         return float(np.mean(ls0[:2])) if len(ls0)>=2 else None
+     return None
+@@ -1119,7 +1121,7 @@ def _kpf_prod_efv(p,Y,L=None):
+ def delisted(p): return bool(p.get('_retired')) or (p.get('_last_listed') is not None and p['_last_listed']<2026)
+ def draftval(p): return float(MA.PVC[min(MA.effpk(p),cp.KMAX)])
+ def bestlvl(p,Y=2026):
+-    s=[a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6.0*(_fEy(Y,p) if x['year']==Y else 1.0) and x['year']<=Y]]   # D10: 6-bar prorated in-progress
++    s=[a for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6.0*(_fEy(Y,p) if x['year']==Y else 1.0) and x['year']<=Y]]   # D10: 6-bar prorated in-progress; RAW avg (era normalization removed per owner ruling)
+     return max(s) if s else 0.0
+ def nseas(p,Y=2026): return sum(1 for x in p['scoring'] if x['games']>=6 and x['year']<=Y)   # unprorated career counter (harness/diagnostic callers)
+ def nseas_pro(p,Y=2026):                                      # D10: qualification judged against PLAYABLE games (6-bar -> 6*fE for the in-progress season)
+@@ -1200,7 +1202,8 @@ RUC_PRIOR_CAP=float(os.environ.get('RL_RUC_PRIOR_CAP','1.4'))   # BAKED default
+ # capital), blending heterogeneous units. The swap: the production leg (ev() hook, prior-dominated regime) is
+ # capped at a ceiling DERIVED off ruck production instead of pick capital:
+ #   ceiling(p) = RUC_CEIL_HEAD * synthprice_RUC(bestlvl(p)) at the ruck-median slot RUC_CEIL_REFPK=72 — the
+-#   engine's own pricing of a STANDARDIZED developing ruck at the player's era-normalized peak production.
++#   engine's own pricing of a STANDARDIZED developing ruck at the player's peak production (RAW season
++#   avg — #334 stage B removed the era normalization that used to sit on bestlvl's input).
+ #   Pick-neutral, production-only, monotone non-decreasing. Thin-slice choice (declared): the ruck slice is
+ #   POOLED onto one pick-neutral production->$ curve (empirical kernel over live raw_ev was REJECTED —
+ #   age/tenure-contaminated, non-monotone, crushed thin prospects). NO-PRODUCTION FALLBACK: bestlvl==0 rucks
+@@ -1217,7 +1220,7 @@ RUC_CEIL_HEAD=float(os.environ.get('RL_RUC_CEIL_HEAD','0.80'))  # headroom on th
+ RUC_CEIL_REFPK=float(os.environ.get('RL_RUC_CEIL_REFPK','72'))  # ruck-median effpk = the pick-neutral "representative ruck slot"
+ RUC_YRH=float(os.environ.get('RL_RUC_YRH','0.35'))              # young-ruck smooth headroom amplitude (W4; owner dial)
+ _RUCCEIL={}; _RUCCEIL_META={}
+-def _build_ruc_ceiling():                                     # pick-neutral production->$ curve: era-adj peak avg -> ruck price
++def _build_ruc_ceiling():                                     # pick-neutral production->$ curve: raw peak avg -> ruck price
+     avs=list(np.linspace(15.0,150.0,46))
+     def _sp(a):
+         sp=synth(int(RUC_CEIL_REFPK),float(a),'RUCK')
+@@ -1792,7 +1795,7 @@ def _staleness_grade(p,Y,pos):
+     prior_qual=[x['year'] for x in p['scoring'] if x['year']<Y and x['games']>=6]
+     if not prior_qual:
+         return 0.0
+-    qv=(live[0]['avg']*REF/era.get(Y,REF))/max(MA.REPL.get(pos,1e-9),1e-9)
++    qv=(live[0]['avg'])/max(MA.REPL.get(pos,1e-9),1e-9)   # RAW avg (era normalization removed per owner ruling)
+     gap=Y-max(prior_qual)
+     return float(np.interp(qv,_D8Q,_D8G1 if gap==1 else _D8G2))
+ def ev(p,Y=2026):
+@@ -2158,7 +2161,7 @@ for nm in ['Harrison Jones','Dylan Stephens','Keidean Coleman']:
+ print("  -> if band q50/q70 high vs recent, cond_prior is pricing career not decline; if q97 tail high, upside inflates")
+ # refine: DECLINE/MEDIOCRE via RECENT production (last-2-season avg vs par), not just best
+ def recent_ratio(p,Y=2026):
+-    s=[a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6 and x['year']<=Y]][-2:]
++    s=[a for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6 and x['year']<=Y]][-2:]   # RAW avg (era normalization removed per owner ruling)
+     return (np.mean(s)/max(1,PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),min(max(PR.tenure(p,Y),1),6)))) if s else 0.0
+ print("\n  RECENT ratio (last-2 avg / par):")
+ for nm in ['Harrison Jones','Dylan Stephens','Keidean Coleman','Oscar Ryan']:
+diff --git a/engine/rl_after/_p2b_derive.py b/engine/rl_after/_p2b_derive.py
+index b3ab212..be1a26d 100644
+--- a/engine/rl_after/_p2b_derive.py
++++ b/engine/rl_after/_p2b_derive.py
+@@ -2,8 +2,8 @@ import io, contextlib, numpy as np
+ g={}
+ with contextlib.redirect_stdout(io.StringIO()):
+     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
+-MA=g['MA']; cp=g['cp']; b6=g['b6']; era=g['era']; REF=g['REF']
+-def adj(a,y): return a*REF/era.get(y,REF)   # era-adjusted season avg (engine's de-era)
++MA=g['MA']; cp=g['cp']; b6=g['b6']
++def adj(a,y): return a   # RAW season avg — era normalization removed (#334 stage B owner ruling)
+ 
+ # ---- walk-forward records: for each ND-pick player, each as-of year Y with a forward season ----
+ def seas(p): return sorted([(x['year'],x['games'],x['avg']) for x in p['scoring'] if x['games']>=6], key=lambda r:r[0])
+diff --git a/engine/rl_after/_p2b_divergence.py b/engine/rl_after/_p2b_divergence.py
+index f2f6f4c..7e87a46 100644
+--- a/engine/rl_after/_p2b_divergence.py
++++ b/engine/rl_after/_p2b_divergence.py
+@@ -2,8 +2,8 @@ import io, contextlib, numpy as np
+ g={}
+ with contextlib.redirect_stdout(io.StringIO()):
+     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
+-MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; b6=g['b6']; WQ6=g['WQ6']; era=g['era']; REF=g['REF']; ev=g['ev']
+-def adj(a,y): return a*REF/era.get(y,REF)
++MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; b6=g['b6']; WQ6=g['WQ6']; ev=g['ev']
++def adj(a,y): return a   # RAW season avg — era normalization removed (#334 stage B owner ruling)
+ def qseas(p,Y): return sorted([(x['year'],x['games'],adj(x['avg'],x['year'])) for x in p['scoring'] if x['games']>=6 and x['year']<=Y])
+ def evidence(p,Y):
+     S=qseas(p,Y); n=len(S)
+diff --git a/engine/rl_after/_p2b_headtohead.py b/engine/rl_after/_p2b_headtohead.py
+index 0493d1d..e3318cf 100644
+--- a/engine/rl_after/_p2b_headtohead.py
++++ b/engine/rl_after/_p2b_headtohead.py
+@@ -2,8 +2,8 @@ import io, contextlib, numpy as np
+ g={}
+ with contextlib.redirect_stdout(io.StringIO()):
+     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
+-MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; b6=g['b6']; WQ6=g['WQ6']; era=g['era']; REF=g['REF']; ev=g['ev']
+-def adj(a,y): return a*REF/era.get(y,REF)
++MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; b6=g['b6']; WQ6=g['WQ6']; ev=g['ev']
++def adj(a,y): return a   # RAW season avg — era normalization removed (#334 stage B owner ruling)
+ def R(sub,exp=None,Y=2026):
+     hs=[p for p in MA.data if sub.lower() in p['player'].lower() and MA.GRP.get(p.get('pos'))]
+     if exp is not None: hs=[p for p in hs if ev(p,Y)==exp]
+diff --git a/engine/rl_after/s4_matrix_7147.py b/engine/rl_after/s4_matrix_7147.py
+index 84127b6..6b9bcb6 100644
+--- a/engine/rl_after/s4_matrix_7147.py
++++ b/engine/rl_after/s4_matrix_7147.py
+@@ -2,7 +2,7 @@ import os
+ import io,contextlib,json,collections,numpy as np
+ g={}
+ with contextlib.redirect_stdout(io.StringIO()): exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
+-MA=g['MA'];ev=g['ev'];REF=g.get('REF',100);era=g['era'];delisted=g['delisted']
++MA=g['MA'];ev=g['ev'];delisted=g['delisted']
+ INCURVE={'ND','RD'}; POOLED={'MSD','SSP','UNR','IRE','PDA','PDN','PDS'}
+ def eligible(p): return MA.GRP.get(p.get('pos')) and not p.get('_pvc_exclude')
+ players=[p for p in MA.data if eligible(p)]
+@@ -40,7 +40,7 @@ for Y in range(2003,2027):
+         if id(p) in saved: p['scoring'],p['_retired'],p['_last_listed']=saved[id(p)]
+     MA._pe_clear()
+ MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()
+-def adjavg(y,a): return round(a*REF/era.get(y,REF),1)
++def adjavg(y,a): return round(a,1)   # RAW season avg — era normalization removed (#334 stage B owner ruling)
+ def retired_now(p):
+     if delisted(p): return True
+     lg=max((r['year'] for r in p['scoring'] if r.get('games',0)>=1), default=None); dy=p.get('year')
+diff --git a/engine/rl_after/s4_matrix_M1v7.py b/engine/rl_after/s4_matrix_M1v7.py
+index 9b2cb83..a0a4679 100644
+--- a/engine/rl_after/s4_matrix_M1v7.py
++++ b/engine/rl_after/s4_matrix_M1v7.py
+@@ -12,7 +12,7 @@ _SS.assert_startup(consume=['rl_app_data.json'] if os.environ.get('RL_APP_DATA',
+ g={}
+ with contextlib.redirect_stdout(io.StringIO()): exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
+ g['_BOARD_PATH']=False   # D14: BACKTEST/WALK-FORWARD path — Luke's exemption. Board-only laws (V0 curve, KPP floor) OFF here so the historical book reproduces (maxΔ=0 vs v2.3).
+-MA=g['MA'];ev=g['ev'];REF=g.get('REF',100);era=g['era'];delisted=g['delisted']
++MA=g['MA'];ev=g['ev'];delisted=g['delisted']
+ INCURVE={'ND','RD'}; POOLED={'MSD','SSP','UNR','IRE','PDA','PDN','PDS'}
+ def eligible(p): return MA.GRP.get(p.get('pos')) and not p.get('_pvc_exclude')
+ players=[p for p in MA.data if eligible(p)]
+@@ -91,7 +91,7 @@ for Y in range(2003,2027):
+         if id(p) in saved: p['scoring'],p['_retired'],p['_last_listed']=saved[id(p)]
+     MA._pe_clear()
+ MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()
+-def adjavg(y,a): return round(a*REF/era.get(y,REF),1)
++def adjavg(y,a): return round(a,1)   # RAW season avg — era normalization removed (#334 stage B owner ruling)
+ def retired_now(p):
+     if delisted(p): return True
+     lg=max((r['year'] for r in p['scoring'] if r.get('games',0)>=1), default=None); dy=p.get('year')
+diff --git a/engine/rl_after/s4_matrix_M1v7_blend.py b/engine/rl_after/s4_matrix_M1v7_blend.py
+index a6d4e31..ddc5317 100644
+--- a/engine/rl_after/s4_matrix_M1v7_blend.py
++++ b/engine/rl_after/s4_matrix_M1v7_blend.py
+@@ -2,7 +2,7 @@ import os
+ import io,contextlib,json,collections,numpy as np
+ g={}
+ with contextlib.redirect_stdout(io.StringIO()): exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
+-MA=g['MA'];ev=g['ev'];REF=g.get('REF',100);era=g['era'];delisted=g['delisted']
++MA=g['MA'];ev=g['ev'];delisted=g['delisted']
+ INCURVE={'ND','RD'}; POOLED={'MSD','SSP','UNR','IRE','PDA','PDN','PDS'}
+ def eligible(p): return MA.GRP.get(p.get('pos')) and not p.get('_pvc_exclude')
+ players=[p for p in MA.data if eligible(p)]
+@@ -101,7 +101,7 @@ for Y in range(2003,2027):
+         if id(p) in saved: p['scoring'],p['_retired'],p['_last_listed']=saved[id(p)]
+     MA._pe_clear()
+ MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()
+-def adjavg(y,a): return round(a*REF/era.get(y,REF),1)
++def adjavg(y,a): return round(a,1)   # RAW season avg — era normalization removed (#334 stage B owner ruling)
+ def retired_now(p):
+     if delisted(p): return True
+     lg=max((r['year'] for r in p['scoring'] if r.get('games',0)>=1), default=None); dy=p.get('year')
+diff --git a/engine/rl_after/s4_matrix_M1v7_retainonly.py b/engine/rl_after/s4_matrix_M1v7_retainonly.py
+index 0ffd670..4957026 100644
+--- a/engine/rl_after/s4_matrix_M1v7_retainonly.py
++++ b/engine/rl_after/s4_matrix_M1v7_retainonly.py
+@@ -2,7 +2,7 @@ import os
+ import io,contextlib,json,collections,numpy as np
+ g={}
+ with contextlib.redirect_stdout(io.StringIO()): exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
+-MA=g['MA'];ev=g['ev'];REF=g.get('REF',100);era=g['era'];delisted=g['delisted']
++MA=g['MA'];ev=g['ev'];delisted=g['delisted']
+ INCURVE={'ND','RD'}; POOLED={'MSD','SSP','UNR','IRE','PDA','PDN','PDS'}
+ def eligible(p): return MA.GRP.get(p.get('pos')) and not p.get('_pvc_exclude')
+ players=[p for p in MA.data if eligible(p)]
+@@ -79,7 +79,7 @@ for Y in range(2003,2027):
+         if id(p) in saved: p['scoring'],p['_retired'],p['_last_listed']=saved[id(p)]
+     MA._pe_clear()
+ MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()
+-def adjavg(y,a): return round(a*REF/era.get(y,REF),1)
++def adjavg(y,a): return round(a,1)   # RAW season avg — era normalization removed (#334 stage B owner ruling)
+ def retired_now(p):
+     if delisted(p): return True
+     lg=max((r['year'] for r in p['scoring'] if r.get('games',0)>=1), default=None); dy=p.get('year')
+diff --git a/engine/rl_after/s4_render_7147.py b/engine/rl_after/s4_render_7147.py
+index 4cefffb..d5d1441 100644
+--- a/engine/rl_after/s4_render_7147.py
++++ b/engine/rl_after/s4_render_7147.py
+@@ -29,7 +29,7 @@ GMAX=max((len(x['Vpath']) for x in R if x['type'] in INCURVE and x['year'] in co
+ # ================= SUMMARY (endpoints) =================
+ sm=wb.create_sheet('Summary')
+ sm['A1']=f'AFL RL — WALK-FORWARD cohort value BOOK (engine md5 {TAG}, dials + shed + GENTLER upside + NO-GAMES sit-out anchor, 34 positions reconciled to stage0) — FOR EYEBALL before the pick-curve build';sm['A1'].font=TITLE
+-sm['A2']='V = walk-forward engine value per season (as-of end of that season, only up-to-then data). P = era-adj production. Anchor = end of Year 1 (gold). Current = 0 for retired (worthless keeper), not the delisted floor.'
++sm['A2']='V = walk-forward engine value per season (as-of end of that season, only up-to-then data). P = production (raw season avg). Anchor = end of Year 1 (gold). Current = 0 for retired (worthless keeper), not the delisted floor.'
+ sm['A3']='CURVE = ND+RD only, 2004-2024 (continuous pick order). 2003 & 2025 = reference-only (excluded). MSD/SSP/PostDraft = STANDALONE pooled (Pooled sheet). See "Cohort Trajectories" for each cohort\'s value season-by-season.'
+ sm['A4']='POSITIONS reconciled to stage0 (34 pre_stage0 discrepancies fixed). Pos = DRAFTED pedigree group; switchers show drafted\u2192current. GAMES-RAMP SIT-OUT TREATMENT (D10, supersedes the flat retain\u00d7draftval anchor at v2.1+ heads): never-qualified still-listed players hold their LIVE start value (pick+position band price) through pre-season, decay along the measured still-listed retention curve, and earn a measured games-credit blend toward the live production path; all games bars prorate to season progress. Derivation: session_2026-07-03/d10_ask2_derivation.md. Nothing baked.'
+ sm.append([]);sm.append(['Cohort','#ND+RD','#pooled','Yr1 anchor SUM','current SUM (real)','in curve?'])
+@@ -106,7 +106,7 @@ for C in cohorts:
+     if not ic: continue
+     ws=wb.create_sheet(str(C)); ny=max((len(x['Vpath']) for x in ic),default=1)
+     tag=' — REFERENCE-ONLY (excluded from curve)' if C in REFONLY else ''
+-    ws['A1']=f'Cohort {C} — WALK-FORWARD engine VALUE (V) + era-adj PRODUCTION (P), draft→now. Anchor = Yr1 (gold). Current = 0 for retired.{tag}';ws['A1'].font=TITLE
++    ws['A1']=f'Cohort {C} — WALK-FORWARD engine VALUE (V) + PRODUCTION (P), draft→now. Anchor = Yr1 (gold). Current = 0 for retired.{tag}';ws['A1'].font=TITLE
+     ws['A2']='Rows sorted by current value. COHORT TOTAL = sum-ratio % of DraftVal. Read SHAPE: V flat while P climbs = option premium realising.'
+     hdr=['T','Player','Pos','Type','Pick','DraftVal']+[f'Yr{i}' for i in range(1,ny+1)]+['Current']
+     ws.append([]);ws.append(hdr); hr=ws.max_row
+diff --git a/engine/rl_after/s4_render_M1v7.py b/engine/rl_after/s4_render_M1v7.py
+index d4f0f25..f094dee 100644
+--- a/engine/rl_after/s4_render_M1v7.py
++++ b/engine/rl_after/s4_render_M1v7.py
+@@ -74,7 +74,7 @@ for C in cohorts:
+     if not ic: continue
+     ws=wb.create_sheet(str(C)); ny=max((len(x['Vpath']) for x in ic),default=1)
+     tag=' — REFERENCE-ONLY (excluded from curve)' if C in REFONLY else ''
+-    ws['A1']=f'Cohort {C} — WALK-FORWARD VALUE (V) + era-adj PRODUCTION (P) side-by-side, draft->now (M1+v7 prototype). Yr1 V = anchor (gold). Current = 0 for retired.{tag}'; ws['A1'].font=TITLE
++    ws['A1']=f'Cohort {C} — WALK-FORWARD VALUE (V) + PRODUCTION (P) side-by-side, draft->now (M1+v7 prototype). Yr1 V = anchor (gold). Current = 0 for retired.{tag}'; ws['A1'].font=TITLE
+     ws['A2']='Rows = every ND+RD player (busts included, no cherry-pick), sorted by current value. Yr_k V and P are ADJACENT. Read a row ACROSS: V flat while P climbs = option premium realising. Totals up top = Sum(V)/Sum(P) per year.'
+     hdr=['Player','Pos','Type','Pick','DraftVal']
+     for i in range(1,ny+1): hdr+= [f'Yr{i} V', f'Yr{i} P']
+diff --git a/engine/rl_after/s4_render_no2003.py b/engine/rl_after/s4_render_no2003.py
+index f96f8a3..8d944a3 100644
+--- a/engine/rl_after/s4_render_no2003.py
++++ b/engine/rl_after/s4_render_no2003.py
+@@ -84,7 +84,7 @@ for C in cohorts:
+     if not ic: continue
+     ws=wb.create_sheet(str(C)); ny=max((len(x['Vpath']) for x in ic),default=1)
+     tag=' — REFERENCE-ONLY (excluded from curve)' if C in REFONLY else ''
+-    ws['A1']=f'Cohort {C} — WALK-FORWARD VALUE (V) + era-adj PRODUCTION (P) side-by-side, draft->now (M1+v7 prototype). Yr1 V = anchor (gold). Current = 0 for retired.{tag}'; ws['A1'].font=TITLE
++    ws['A1']=f'Cohort {C} — WALK-FORWARD VALUE (V) + PRODUCTION (P) side-by-side, draft->now (M1+v7 prototype). Yr1 V = anchor (gold). Current = 0 for retired.{tag}'; ws['A1'].font=TITLE
+     ws['A2']='Rows = every ND+RD player (busts included, no cherry-pick), sorted by current value. Yr_k V and P are ADJACENT. Read a row ACROSS: V flat while P climbs = option premium realising. Totals up top = Sum(V)/Sum(P) per year.'
+     hdr=['Player','Pos','Type','Pick','DraftVal']
+     for i in range(1,ny+1): hdr+= [f'Yr{i} V', f'Yr{i} P']

@@ -12,7 +12,7 @@ _SS.assert_startup(consume=['rl_app_data.json'] if os.environ.get('RL_APP_DATA',
 g={}
 with contextlib.redirect_stdout(io.StringIO()): exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
 g['_BOARD_PATH']=False   # D14: BACKTEST/WALK-FORWARD path — Luke's exemption. Board-only laws (V0 curve, KPP floor) OFF here so the historical book reproduces (maxΔ=0 vs v2.3).
-MA=g['MA'];ev=g['ev'];REF=g.get('REF',100);era=g['era'];delisted=g['delisted']
+MA=g['MA'];ev=g['ev'];delisted=g['delisted']
 INCURVE={'ND','RD'}; POOLED={'MSD','SSP','UNR','IRE','PDA','PDN','PDS'}
 def eligible(p): return MA.GRP.get(p.get('pos')) and not p.get('_pvc_exclude')
 players=[p for p in MA.data if eligible(p)]
@@ -91,7 +91,7 @@ for Y in range(2003,2027):
         if id(p) in saved: p['scoring'],p['_retired'],p['_last_listed']=saved[id(p)]
     MA._pe_clear()
 MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()
-def adjavg(y,a): return round(a*REF/era.get(y,REF),1)
+def adjavg(y,a): return round(a,1)   # RAW season avg — era normalization removed (#334 stage B owner ruling)
 def retired_now(p):
     if delisted(p): return True
     lg=max((r['year'] for r in p['scoring'] if r.get('games',0)>=1), default=None); dy=p.get('year')

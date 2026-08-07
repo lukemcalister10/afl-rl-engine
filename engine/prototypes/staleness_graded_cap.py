@@ -10,12 +10,15 @@
 #   e = min(e, cap + grade * (e - cap))          [cap = dv*frac, the existing ghost floor — UNCHANGED]
 #   grade = 1                     if gap == 0    (sole qualifying season IS season Y — cannot have vanished)
 #         = 0                     if g_Y == 0    (no live output this season — ghost anchor)
-#         = G_gapclass(q)         otherwise      (q = era-adjusted season-Y avg / REPL[pos]; classes gap=1, gap>=2 POOLED)
+#         = G_gapclass(q)         otherwise      (q = RAW season-Y avg / REPL[pos]; classes gap=1, gap>=2 POOLED)
 #
 # DERIVATION (D8, session_2026-07-03/d8_ask2_graded_cap.md; scripts d8_ask2_harvest/analyze/fit.py):
 #  - 532 historical fire-population cells (Y=2008..2022, ns==1 & el>=onset & listed-at-Y per the standing
 #    LISTED-WINDOW rule), outcome = re-realization of the stale season's level over the next 3 seasons
-#    (v = min(fwd_peak/qual_lvl, 1), era-adjusted; robustness: survival + raw ratio give the same shape).
+#    (v = min(fwd_peak/qual_lvl, 1); the ORIGINAL D8 fit was era-adjusted — #334 stage B removed era
+#    normalization engine-wide per the owner ruling, so this prototype's G_gapclass tables would need
+#    RE-DERIVING on the era-free basis before it could be endorsed. It is WIRED NOWHERE and its OLD1/OLD2
+#    source anchors are already dead against the current engine, so nothing on the value path depends on it.)
 #  - AXIS SELECTED BY DATA: quality q beats the directive's example product g*q (tau +0.234 vs +0.124;
 #    q > g*q in 100% of 2000 player-cluster bootstrap resamples); games volume carries NO independent
 #    signal within 1-5 games (tau +0.038) — volume enters only structurally (0 games -> no live output;
@@ -53,7 +56,7 @@ NEW2 = ("    if el>=onset and ns<=1:                                   # stalled
         "            cap=dv*frac; gr=0.0\n"
         "            yrow=[x for x in p['scoring'] if x['year']==Y and x['games']>0]\n"
         "            if yrow:                                          # live output -> graded trust; none -> ghost floor (grade 0)\n"
-        "                qv=(yrow[0]['avg']*REF/era.get(Y,REF))/max(MA.REPL.get(pos,1e-9),1e-9)\n"
+        "                qv=(yrow[0]['avg'])/max(MA.REPL.get(pos,1e-9),1e-9)\n"
         "                gp=Y-max(x['year'] for x in p['scoring'] if x['games']>=6 and x['year']<=Y)\n"
         "                gr=float(np.interp(qv,_D8Q,_D8G1 if gp==1 else _D8G2))\n"
         "            e=min(e, cap+gr*max(0.0,e-cap))")

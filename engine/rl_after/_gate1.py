@@ -4,11 +4,7 @@ import io,contextlib,numpy as np
 with contextlib.redirect_stdout(io.StringIO()):
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0])
 _BOARD_PATH=False   # D14: in-sample/walk-forward gate — board-only laws (V0 curve, KPP floor) OFF (Luke's exemption).
-era={}
-for Y in range(2009,2026):
-    a=[s['avg'] for p in MA.data for s in p.get('scoring') or [] if s['year']==Y and s['games']>=6]
-    if a: era[Y]=float(np.mean(a))
-REF=float(np.mean(list(era.values()))); eadj=lambda y,a:a*REF/era.get(y,REF)
+eadj=lambda y,a:a   # RAW season avg — this script's own era[Y]/REF table removed (#334 stage B owner ruling)
 def realized_prod(p):
     s=sorted([eadj(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6],reverse=True)[:3]
     return float(np.mean(s)) if s else 0.0

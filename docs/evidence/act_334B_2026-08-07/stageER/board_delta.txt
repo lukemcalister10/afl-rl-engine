@@ -1,0 +1,111 @@
+STAGE ER — BOARD DELTA: PURE ERA-REMOVAL EFFECT
+==============================================================================
+old board = stage-1 board, git show ad50dad:data/rl_build/rl_app_data.json  md5 de5110bb57a04d9b24e9c761241e54c7
+new board = this stage's build                                             md5 f94e0778f8ab49e81bba8658f1c14a4d
+field compared: active[].v (the shipped player value), matched on active[].key
+
+THIS DELTA IS THE PURE ERA-REMOVAL EFFECT. Step 1 of this stage reverted
+engine/rl_after/pvc_curve_v2.json to its ad50dad (stage-1 / shipped) content, so the
+pick ladder is IDENTICAL on both sides of this comparison. No store, config, v0surf,
+q97m, rl_model or forward_valuation input moved. The ONLY difference between the two
+boards is the removal of the era[Y] normalization table and its multiplier sites.
+
+=== TOTALS (shared active rows, field v) ===
+rows            : old=804  new=804  shared=804  (0 added, 0 dropped)
+movers          : 28  (3.48% of the board)   cuts=28  lifts=0
+unchanged       : 776
+total old       : 733440
+total new       : 732696
+ratio new/old   : 0.998986      (delta -744)
+mean |relative move| over ALL 804 shared rows : 0.0792%
+mean |relative move| over the 28 MOVERS only : 2.2743%
+median |abs move| (movers) : 13.0    max |abs move| : 142
+
+HEADLINE: EVERY mover is a CUT. There is not one lift on the board. The era table
+was, on net, INFLATING value; removing it takes value out and takes it out only.
+
+=== ALL 28 MOVERS (complete list — the whole effect fits on one page) ===
+  name                       pos(fut)     age      old     new    delta       rel
+  Riley Thilthorpe           KPF          24      4775    4633     -142    -2.97%
+  Josh Treacy                KPF          24      6903    6803     -100    -1.45%
+  Harry McKay                KPF          29      1832    1760      -72    -3.93%
+  Sam Darcy                  KPF          23      5241    5169      -72    -1.37%
+  Charlie Curnow             KPF          29      1369    1325      -44    -3.21%
+  Aaron Naughton             KPF          27      1291    1249      -42    -3.25%
+  Peter Wright               KPF          30      1763    1723      -40    -2.27%
+  Jeremy Cameron             KPF          33       815     779      -36    -4.42%
+  Jack Gunston               KPF          35       883     859      -24    -2.72%
+  Jake Waterman              KPF          28      1174    1153      -21    -1.79%
+  Mitch Georgiades           KPF          25      1439    1420      -19    -1.32%
+  Kyle Langford              KPF          30       545     527      -18    -3.30%
+  Jake Riccardi              KPF          27       275     259      -16    -5.82%
+  Cooper Sharman             KPF          26       531     517      -14    -2.64%
+  Darcy Fogarty              KPF          27       856     844      -12    -1.40%
+  Ben King                   KPF          26       234     223      -11    -4.70%
+  Logan Morris               KPF          21      3044    3034      -10    -0.33%
+  Jesse Hogan                KPF          32       214     206       -8    -3.74%
+  Mabior Chol                KPF          29       361     353       -8    -2.22%
+  Jacob Van Rooyen           KPF          23      1944    1937       -7    -0.36%
+  Shannon Neale              KPF          24      2383    2376       -7    -0.29%
+  Mitchito Owens             KPF          23      2038    2032       -6    -0.29%
+  Taylor Walker              KPF          37       126     122       -4    -3.17%
+  Logan McDonald             KPF          24       666     663       -3    -0.45%
+  Todd Marshall              KPF+KPD      28        65      62       -3    -4.62%
+  Mitchell Lewis             KPF          28       529     527       -2    -0.38%
+  Nick Larkey                KPF          28       529     527       -2    -0.38%
+  Oscar Allen                KPF          27       113     112       -1    -0.88%
+
+EVERY ONE OF THE 28 MOVERS IS A KEY-POSITION FORWARD (KPF).
+Mechanism, named: the era multiplier's one high-leverage site on the shipped value
+path was _kpf_LD(p,Y) (_merged_recover.py:899/904 pre-strip) — the KPF 'level
+demonstrated', the mean of the best two era-adjusted season averages in the recent
+window. That LD feeds the W4 KPF credit regime (dm = max(m, LD-REPL), kpfup(dm)),
+which is where the engine's KPF-specific reward multiplier is decided, so a small
+shift in LD is levered into a visible price move. The other live sites — bestlvl()
+(a MAX over seasons, so a ~1.0 rescale rarely changes which season wins) and
+_staleness_grade() (a narrow, mostly-saturated interpolation) — produced 0 movers
+of their own.
+
+=== BY AGE BUCKET (all 804 shared active rows) ===
+  bucket        n   movers    total old    total new      ratio      delta   mean|rel|%
+  <=22        294        1       251074       251064   0.999960        -10       0.0011
+  23-26       245       10       293110       292729   0.998700       -381       0.0647
+  >=27        265       17       189256       188903   0.998135       -353       0.1792
+
+The effect is monotone in age: the OLDER the bucket, the harder it is cut. That is
+the era table's own shape read back to us — a long career reaches back into the
+2013-2020 years the table was DEFLATING (factor <1) and the 2009-2012 / 2021-2025
+years it was INFLATING (factor >1); the removal lands hardest where the recent
+window sits in the inflating tail. The <=22 bucket is essentially untouched
+(1 mover, 0.0011%% mean move) — young players have little or no qualifying history
+for the multiplier to have acted on.
+
+=== APPENDIX: THE REMOVED MULTIPLIER, RECONSTRUCTED FROM THE PINNED STORE ===
+era[Y] = mean season avg over all >=6-game seasons in year Y; REF = mean of era[].
+Every career-score read was multiplied by REF/era.get(year,REF). Reconstructed from
+store 37ced3ce (the same store this build used) purely to quantify what was removed:
+
+  REF = 70.8515
+    year     era[Y]     REF/era[Y]
+    2009    67.1611        1.05495
+    2010    69.5258        1.01907
+    2011    70.6256        1.00320
+    2012    70.8725        0.99970
+    2013    71.7080        0.98806
+    2014    72.0839        0.98290
+    2015    71.8787        0.98571
+    2016    72.4264        0.97825
+    2017    72.7363        0.97409
+    2018    72.5326        0.97682
+    2019    72.9335        0.97145
+    2020    73.8919        0.95885
+    2021    69.5407        1.01885
+    2022    69.3342        1.02188
+    2023    69.3839        1.02115
+    2024    69.1766        1.02421
+    2025    68.6632        1.03187
+
+  factor range 0.95885 .. 1.05495  (a 9.61% spread across the era)
+  Per the OWNER RULING this multiplier was never legitimate: SuperCoach assigns 3,300
+  points at EVERY match, so a season average is already on one common scale and this
+  9.6%% per-year rescale was a distortion, not a correction.
