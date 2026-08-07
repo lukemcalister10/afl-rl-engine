@@ -1,0 +1,193 @@
+====================================================================================================
+334 STAGE B / STAGE 2 -- PER-PICK RE-ANCHOR DERIVATION
+====================================================================================================
+  matrix          : per_entrant_338_stage1basis.json
+  matrix md5      : b82e12c139a568868c13a7ddd5d5529e
+  matrix identity : store=37ced3ce  v0surf=af556bdca53d  n_records=2645
+  engine head     : e3527be4   (stage-1 engine)
+  population      : harness load_matrix ND filter -- teaches_curve & pick 1..64 & class 2004..2022
+  cohort size     : 1197 entrants   (pins asserted by the harness loader, not re-checked here)
+  target residual : 1.40   <-- TEACHING STAGE ONLY, never read by a runtime engine path
+
+----------------------------------------------------------------------------------------------------
+STEP 1 CONTROL -- whole-cohort year ratios (recomputed in-script; must match the no-arb table)
+----------------------------------------------------------------------------------------------------
+  yrN   n_incl     mean_yrN     mean_yr0      ratio
+  0      1197        839.2        839.2      1.000
+  1      1197        856.9        839.2      1.021
+  2      1197       1073.6        839.2      1.279
+  3      1197       1215.0        839.2      1.448
+  4      1197       1288.3        839.2      1.535
+  5      1139       1281.2        835.1      1.534
+  6      1075       1247.5        834.2      1.495
+  7      1014       1084.7        835.2      1.299
+
+  PEAK YEAR (argmax of the ratio over FULL-inclusion years, n_incl==1197) : YEAR 4  (ratio 1.535)
+  full-inclusion years: [0, 1, 2, 3, 4]
+
+----------------------------------------------------------------------------------------------------
+STEP 2 -- per-pick appreciation R_raw(p) = mean(year 4) / mean(year 0), busts at 0
+----------------------------------------------------------------------------------------------------
+  n total over picks : 1197   (must equal the cohort: 1197)
+  R_raw   min 0.3509   max 2.8870   n-weighted mean 1.4781
+
+----------------------------------------------------------------------------------------------------
+STEP 3 -- locality smoothing along the PICK axis (Gaussian kernel, n(p)-weighted)
+----------------------------------------------------------------------------------------------------
+  LOO CV surface over h in [2.0, 30.0] step 0.5:
+      h=  2.0  cv=0.280558
+      h=  4.0  cv=0.251889
+      h=  6.0  cv=0.245053
+      h=  8.0  cv=0.239834
+      h= 10.0  cv=0.236361
+      h= 12.0  cv=0.234243
+      h= 15.0  cv=0.232581
+      h= 20.0  cv=0.231769
+      h= 25.0  cv=0.231912
+      h= 30.0  cv=0.232326
+  LOO argmin          : h = 21.0 picks   (cv 0.231753)
+  CHOSEN h            : 8.0 picks
+
+  DISCLOSED DEVIATION -- the bandwidth is NOT taken from LOO. Reasons, measured:
+    1. The CV surface is nearly FLAT. Between h=8.0 and the LOO argmin h=21.0 the CV
+       moves from 0.239834 to 0.231753 -- a 3.5% difference. LOO barely discriminates here,
+       because with n(p) ~ 14-19 per pick the per-pick sampling noise swamps the signal
+       (R_raw sd across picks 0.4834, and the h->inf constant fit scores 0.228012 in-sample).
+    2. h=21.0 is a THIRD of the whole 64-pick axis. It drives R_s toward a single global
+       constant -- and a constant R_s makes f a UNIFORM SCALAR, which this act BARS.
+       Letting a flat CV surface pick the bandwidth would surrender the per-pick locality
+       the construction exists to provide. Measured: at h=21.0 the f spread is 0.1101;
+       at h=8.0 it is 0.2332.
+    3. The stage directive names '~6-10 picks' as the sensible alternative width. h=8.0
+       is the midpoint of that range and sits inside it. The choice is disclosed, not hidden.
+
+  NO binning, NO bands, NO bucket steps: the kernel is continuous in the pick index and
+  every pick gets its own estimate from a distance-weighted average of ALL picks.
+  NO-STEPS CHECK on R_s: max |first difference| = 0.013856, max |second difference| = 0.000768
+      (a bucket/band construction would show a first difference of 0 inside a band and a
+       spike at every boundary; here the first difference is nonzero at every one of the
+       63 adjacent pairs -- min |d1| = 0.000211 -- and the second difference never spikes.)
+
+----------------------------------------------------------------------------------------------------
+STEP 4 -- the re-anchor factor f(p) = R_s(p) / 1.40
+----------------------------------------------------------------------------------------------------
+  f  min 0.888858 (pick 64)   max 1.122087 (pick 1)   mean 1.057646
+  f  spread max-min = 0.233229   ratio max/min = 1.2624
+  IS f CONSTANT (a barred uniform scalar)? NO
+  f at picks 1/10/20/40/64 : p1=1.122087  p10=1.104966  p20=1.100168  p40=1.066042  p64=0.888858
+
+----------------------------------------------------------------------------------------------------
+STEP 5 CHECKS
+----------------------------------------------------------------------------------------------------
+  (a) MONOTONE non-increasing in pick, on the exact product:
+      PASS -- no violation at any of the 63 adjacent pairs.
+  (a2) STRICT descent on the ROUNDED INTEGERS (the harness's assert and this file's own
+       r104_9_strict_descent rule -- 63 strict steps, no plateaus):
+      1 ROUNDING COLLISION(S) at pick(s) [19]. The EXACT product is strictly
+      decreasing at these pairs -- the plateau is created by int(round()) alone:
+        pick 18 -> 19 : exact 1100.1450 -> 1100.0101 (falls 0.1349) but both round to 1100/1100
+      MINIMAL INTEGER REPAIR applied (walk down, force new[p] <= new[p-1]-1):
+        pick 19 : 1100 -> 1099  (-1 board point(s))
+      re-check: PASS -- strictly descending at all 63 pairs
+      total integer repair: 1 pick(s), max move 1 board point(s).
+  (b) SMOOTHNESS -- adjacent-pick drops, new ladder vs old:
+      old drops: min 1.00 max 543.00 mean 44.68
+      new drops: min 0.13 max 610.45 mean 50.82
+      drops > 3x the median of their 5-pick neighbourhood (and > 5 board pts): pick 9 drop 84.3 vs nb-median 4.5; pick 10 drop 19.8 vs nb-median 4.4
+      NOTE: the OLD ladder's own drop profile is inherited -- f is smooth by construction,
+      so any residual roughness in the new ladder comes from the old ladder, not from f.
+      same test on the OLD ladder: picks [9, 10]
+  (c) IMPLIED whole-cohort first-order residual = n-weighted mean of R_s(p)/f(p):
+      1.400000   (target 1.40, deviation +0.00e+00)
+      HONESTY NOTE: this quantity is a TAUTOLOGY. f(p) is DEFINED as R_s(p)/1.40, so
+      R_s(p)/f(p) == 1.40 identically at every pick, for any data whatsoever. It confirms
+      the arithmetic of step 4 and nothing else. The measured check is (c2).
+      per-pick spread: min 1.400000 max 1.400000
+  (c2) MEASURED first-order residual = n-weighted mean of R_raw(p)/f(p):
+      1.392630   (target 1.40, deviation -0.0074)
+      This is the real test: it asks what residual appreciation the UNSMOOTHED cohort
+      data retains once each pick is divided by its own re-anchor. It is not forced to
+      1.40 by construction -- the gap is the smoother's bias, and it is small.
+      per-pick spread: min 0.386198 max 2.626976
+
+  (d) NUMERAIRE PIN (disclosed, not silently repaired):
+      the file carries numeraire_pin1_3000 and the committed harness asserts ladder[0]==3000.
+      new(1) = old(1) * f(1) = 3000 * 1.122087 = 3366
+      pin held? NO -- pick 1 moves to 3366. NOT renormalised here: the spec for this stage is new = old * f, and re-pinning is a board-level decision that belongs with stage 3's surface refit.
+
+  N32 payload md5, OLD ladder : df766dff94657940e2a892e91da5a6e2
+  N32 payload md5, NEW ladder : 9ddbc5a76373d8066ab852dee136eb3d
+  file's own curve_md5 field  : df766dff
+
+PER-PICK RE-ANCHOR -- 64 rows, no buckets, no bands
+peak year = 4   target residual = 1.40   kernel = Gaussian   bandwidth h = 8.00 picks (LOO)
+
+  pick    n   mean_yr0  mean_yr4   n_zero    R_raw      R_s        f       old      new
+  ------------------------------------------------------------------------------------------------
+     1   19     3034.9     4600.9       0    1.5160   1.5709 1.122087     3000     3366
+     2   19     2937.2     4924.3       0    1.6766   1.5692 1.120872     2999     3361
+     3   19     2972.3     4436.4       0    1.4926   1.5672 1.119432     2874     3217
+     4   18     2288.5     3293.2       0    1.4390   1.5649 1.117775     2424     2709
+     5   19     1881.2     3663.1       0    1.9472   1.5623 1.115915     1881     2099
+     6   19     1355.1     1516.3       0    1.1190   1.5594 1.113880     1550     1727
+     7   19     1572.6     2630.2       0    1.6725   1.5564 1.111709     1549     1722
+     8   19     1570.3     2861.9       0    1.8225   1.5532 1.109455     1548     1717
+     9   19     1382.4     2506.4       0    1.8130   1.5501 1.107182     1475     1633
+    10   19     1537.7     2267.1       0    1.4744   1.5470 1.104966     1460     1613
+    11   19     1471.7     2447.9       0    1.6633   1.5440 1.102886     1459     1609
+    12   18     1508.0     2440.8       0    1.6186   1.5414 1.101028     1458     1605
+    13   19     1421.3     2026.3       0    1.4256   1.5393 1.099470     1347     1481
+    14   18     1138.8     1920.6       0    1.6865   1.5376 1.098283     1165     1280
+    15   19      937.7     1011.0       0    1.0782   1.5365 1.097521     1030     1130
+    16   19     1032.1      978.4       0    0.9480   1.5361 1.097213     1004     1102
+    17   19     1014.9     1581.6       0    1.5583   1.5363 1.097365     1003     1101
+    18   19     1001.9     1568.7       0    1.5657   1.5371 1.097949     1002     1100
+    19   19      934.0     1564.4       0    1.6749   1.5385 1.098911     1001     1099
+    20   19     1049.7     1804.8       0    1.7194   1.5402 1.100168      990     1089
+    21   19      975.0     1503.0       3    1.5416   1.5423 1.101616      942     1038
+    22   19      927.1     1620.9       3    1.7483   1.5444 1.103136      887      978
+    23   19      849.7      928.7       3    1.0929   1.5464 1.104602      836      923
+    24   19      793.0      855.9       5    1.0794   1.5482 1.105890      795      879
+    25   19      806.2     2327.4       3    2.8870   1.5496 1.106889      763      845
+    26   19      658.5      518.1       1    0.7867   1.5505 1.107501      739      818
+    27   19      692.3      862.8       5    1.2464   1.5507 1.107651      719      796
+    28   19      683.8     1364.2       3    1.9949   1.5502 1.107289      702      777
+    29   19      633.6     1798.1       5    2.8378   1.5489 1.106385      684      757
+    30   19      640.6      799.3       4    1.2477   1.5469 1.104933      663      733
+    31   19      636.9      654.0       4    1.0268   1.5441 1.102943      641      707
+    32   19      700.0      660.6       6    0.9437   1.5406 1.100437      618      680
+    33   19      595.7     1072.8       3    1.8010   1.5364 1.097447      596      654
+    34   19      592.8     1214.7       4    2.0491   1.5316 1.094007      577      631
+    35   19      580.2      678.3       5    1.1691   1.5262 1.090156      561      612
+    36   19      558.0      649.9       7    1.1646   1.5203 1.085929      549      596
+    37   19      572.3      783.9       3    1.3699   1.5139 1.081366      539      583
+    38   19      564.1     1099.7       5    1.9493   1.5071 1.076503      531      572
+    39   19      467.5      830.9       4    1.7774   1.4999 1.071381      523      560
+    40   19      467.0      598.6       6    1.2819   1.4925 1.066042      514      548
+    41   19      541.1      679.7       7    1.2561   1.4847 1.060531      502      532
+    42   19      517.5     1140.1       6    2.2028   1.4768 1.054891      487      514
+    43   19      436.6      589.0       4    1.3492   1.4688 1.049167      470      493
+    44   19      420.9      823.1       5    1.9556   1.4608 1.043393      450      470
+    45   19      418.2      402.2       7    0.9617   1.4526 1.037597      429      445
+    46   19      379.0      598.3       6    1.5788   1.4445 1.031787      409      422
+    47   19      382.0      399.5       9    1.0458   1.4363 1.025958      390      400
+    48   19      373.5      423.6       7    1.1342   1.4281 1.020085      373      380
+    49   19      375.4      549.5       8    1.4639   1.4198 1.014123      358      363
+    50   19      355.6      307.5       6    0.8649   1.4112 1.008016      346      349
+    51   19      326.6      370.0       6    1.1330   1.4024 1.001698      338      339
+    52   19      301.5      394.1      11    1.3069   1.3931 0.995100      327      325
+    53   19      305.1      792.0       6    2.5959   1.3834 0.988159      317      313
+    54   19      327.1      480.0       6    1.4676   1.3732 0.980825      308      302
+    55   19      277.0      461.2       9    1.6651   1.3623 0.973064      298      290
+    56   19      286.1      417.9       8    1.4604   1.3508 0.964864      288      278
+    57   19      258.6      501.3       7    1.9384   1.3387 0.956234      277      265
+    58   19      278.3      265.8       9    0.9550   1.3261 0.947210      265      251
+    59   18      235.9      301.4       8    1.2781   1.3130 0.937846      252      236
+    60   18      227.6      236.4      10    1.0388   1.2995 0.928214      238      221
+    61   17      221.5      182.0       7    0.8216   1.2858 0.918402      224      206
+    62   16      231.0       81.1      10    0.3509   1.2719 0.908505      210      191
+    63   15      204.4       90.2       9    0.4412   1.2581 0.898623      197      177
+    64   14      187.5      394.6       5    2.1047   1.2444 0.888858      185      164
+
+  WROTE /home/claude/stage2_landing/engine/rl_after/pvc_curve_v2.json
+  file md5 : 41692b9db8e01d46df1b7e3cca09fcfe
