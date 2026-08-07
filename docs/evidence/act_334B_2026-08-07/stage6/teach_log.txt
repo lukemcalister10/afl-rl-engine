@@ -1,68 +1,72 @@
 teaching rows: N=1 414  N=2 684  N=3 818   total 1916
 
-estimand: year-1 value-weighted residual, bonus population (KPD excluded) = +0.128444
-          year-1 value-weighted residual, KPD rows (own sub-dial)         = -0.251593
+estimand: year-1 value-weighted residual, bonus population (KPD excluded) = +0.179649
+          year-1 value-weighted residual, KPD rows (own sub-dial)         = -0.332033
 
 -- the two-axis kernel (the only fitted object) --
-   nonKPP  n=334  [0.1307, 0.8887, 0.0646, 2.5808, 1.9879, 1.0981]   eff-n [37.9, 39.0, 45.2, 55.5, 48.3, 50.1]
-   KPP     n= 34  own eff-n < 35 at the max bandwidth -> POOLED, DECLARED  (own reading [3.3562, 3.3086, 3.2697, 3.2333, 3.2069, 3.1859])
-   KPP     n= 34  [0.4853, 1.2757, 0.4617, 2.5567, 2.0439, 1.1155]   eff-n [39.8, 39.2, 51.0, 61.1, 51.8, 54.5]
-   RUCK    n= 11  own eff-n < 35 at the max bandwidth -> POOLED, DECLARED  (own reading [4.4607, 4.1522, 3.9516, 3.788, 3.6803, 3.6])
-   RUCK    n= 11  [0.4853, 1.2757, 0.4617, 2.5567, 2.0439, 1.1155]   eff-n [39.8, 39.2, 51.0, 61.1, 51.8, 54.5]
+   nonKPP  n=334  [-0.0623, 1.0418, 0.2816, 2.641, 2.1388, 1.0868]   eff-n [37.9, 39.0, 45.2, 55.5, 48.3, 50.1]
+   KPP     n= 34  own eff-n < 35 at the max bandwidth -> POOLED, DECLARED  (own reading [2.9814, 2.9269, 2.8822, 2.8401, 2.8097, 2.7856])
+   KPP     n= 34  [0.3264, 1.4384, 0.649, 2.5571, 1.9486, 0.9685]   eff-n [39.8, 39.2, 51.0, 61.1, 51.8, 54.5]
+   RUCK    n= 11  own eff-n < 35 at the max bandwidth -> POOLED, DECLARED  (own reading [4.2764, 3.9669, 3.7614, 3.5917, 3.479, 3.3946])
+   RUCK    n= 11  [0.3264, 1.4384, 0.649, 2.5571, 1.9486, 0.9685]   eff-n [39.8, 39.2, 51.0, 61.1, 51.8, 54.5]
 
 -- the fade, measured (Addendum 1 F7: endogenous, not decreed) --
-   raw residual at tau [1.0, 2.0, 3.0, 4.0] = [0.12844, -0.04466, -0.16904, 0.0]
-   normalised to tau=1   = [1.0, -0.3477, -1.3161, 0.0]
-   INSTALLED (isotonic non-increasing, clamped [0,1]) = [1.0, 0.0, 0.0, 0.0]
+   raw residual at tau [1.0, 2.0, 3.0, 4.0] = [0.17965, 0.03055, -0.0134, 0.0]
+   normalised to tau=1   = [1.0, 0.17, -0.0746, 0.0]
+   INSTALLED (isotonic non-increasing, clamped [0,1]) = [1.0, 0.17, 0.0, 0.0]
 
 -- the declared shape gates, measured on the year-1 rows --
-   Sz  [3.0333, 2.3392, 1.36, 0.4878, 0.0172]   eff-n [131.7, 166.3, 185.0, 171.5, 120.0]   bw 0.330
-   Sg  [1.4631, 1.2403, 1.0244, 0.8538, 0.6744]   eff-n [195.3, 237.2, 207.7, 175.6, 142.3]   bw 0.497
+   Sz  [2.4298, 1.9797, 1.2769, 0.6504, 0.2986]   eff-n [131.7, 166.3, 185.0, 171.5, 120.0]   bw 0.330
+   Sg  [1.2943, 1.1863, 1.0426, 0.9172, 0.7789]   eff-n [195.3, 237.2, 207.7, 175.6, 142.3]   bw 0.497
 
 -- pick-taper endpoint sweep (the 41-64 absolute bound, rung 1.0) --
-   taper   40 ->   52 :  picks 41-64 aggregate movement +0.01202  breaches
-   taper   38 ->   50 :  picks 41-64 aggregate movement +0.00812  breaches
-   taper   36 ->   48 :  picks 41-64 aggregate movement +0.00440  MEETS <=0.005
-   taper   34 ->   48 :  picks 41-64 aggregate movement +0.00338  MEETS <=0.005
-   taper   32 ->   44 :  picks 41-64 aggregate movement +0.00036  MEETS <=0.005
+   taper   40 ->   52 :  picks 41-64 aggregate movement +0.02375  breaches
+   taper   38 ->   50 :  picks 41-64 aggregate movement +0.01565  breaches
+   taper   36 ->   48 :  picks 41-64 aggregate movement +0.00829  breaches
+   taper   34 ->   48 :  picks 41-64 aggregate movement +0.00637  breaches
+   taper   32 ->   44 :  picks 41-64 aggregate movement +0.00074  MEETS <=0.005
    INSTALLED endpoints: 34 -> 48
 
 -- the conservation normaliser and the monotonicity law, solved jointly --
-   measured residual on the TAPER-SUPPORTED bonus population  +0.127287  (n=273)
-   marginal-product taught residual before normalisation      +0.091012
-   Z = 0.715015   (|Z-1| = 0.2850 is the measured bleed / double-count of the marginal decomposition)
-   L-SMOOTH shrink of the Sz deviation: kappa = 0.693842  (DECLARED)
-   min d/dln(e)[e*(1+delta)] over the realised domain at rung 1.0 = +0.053337 at ('nonKPP', 25, 6.0, 1.0, 0.3)
-   Sz as SHIPPED: [2.38782, 1.90626, 1.22684, 0.62166, 0.29511]
+   measured residual on the TAPER-SUPPORTED bonus population  +0.172408  (n=273)
+   marginal-product taught residual before normalisation      +0.133258
+   Z = 0.772923   (|Z-1| = 0.2271 is the measured bleed / double-count of the marginal decomposition)
+   L-SMOOTH shrink of the Sz deviation: kappa = 0.912673  (DECLARED)
+   min d/dln(e)[e*(1+delta)] over the realised domain at rung 1.0 = +0.023791 at ('nonKPP', 25, 6.0, 1.0, 0.3)
+   Sz as SHIPPED: [2.30103, 1.89025, 1.24879, 0.67706, 0.35593]
 
 CONSERVATION (year-1 ND 1-64, value-weighted):
-  measured aggregate residual, WHOLE leg        +0.096269   (F' = 1.096269)
-  taught delta at rung 1.0, BONUS dial RL_G6_W   +0.098383
-  taught delta at rung 1.0, KPD sub-dial         -0.009194  (RL_G6_KPD, default 0)
-  measured residual on the taper-supported bonus population  +0.127287
-  boundary pick taper (pick > 34)           rows 113  measured residual there +0.000529  (weight 0.130 of leg)
-  boundary draft-age taper (>18)            rows  57  measured residual there -0.023748  (weight 0.068 of leg)
-  boundary draft age UNKNOWN (delta == 0)   rows  29  measured residual there +0.438264  (weight 0.062 of leg)
-  boundary KPD (own sub-dial)               rows  35  measured residual there -0.251593  (weight 0.085 of leg)
+  measured aggregate residual, WHOLE leg        +0.136328   (F' = 1.136328)
+  taught delta at rung 1.0, BONUS dial RL_G6_W   +0.133257
+  taught delta at rung 1.0, KPD sub-dial         -0.012891  (RL_G6_KPD, default 0)
+  measured residual on the taper-supported bonus population  +0.172408
+  boundary pick taper (pick > 34)           rows 113  measured residual there +0.012756  (weight 0.130 of leg)
+  boundary draft-age taper (>18)            rows  57  measured residual there -0.029219  (weight 0.068 of leg)
+  boundary draft age UNKNOWN (delta == 0)   rows  29  measured residual there +0.630833  (weight 0.062 of leg)
+  boundary KPD (own sub-dial)               rows  35  measured residual there -0.332033  (weight 0.085 of leg)
   UNKNOWN draft age, correction identically 0 (Addendum 1 F13): 29 rows / 29 players
   andrew-mcqualter, andrew-swallow, angus-monfries, brett-deledio, chris-egan, clint-bartram, dale-thomas, danny-meyer, grant-birchall, jarryd-roughead, jesse-smith, jordan-lewis, joshua-kennedy, justin-sherman, lance-franklin, marc-murphy, matthew-egan, mitch-clark, nathan-jones, nathan-van-berlo, paddy-ryder, paul-thomas, rhan-hooper, richard-tambling, ryan-griffen, sean-rusling, shannon-hurn, simon-taylor, travis-cloke
 
 TAUGHT vs MEASURED at the named cells (year-1, value-weighted, rung 1.0):
   cell                                       n    measured      taught
-  whole year-1 leg                         414    +0.0963    +0.0984
-  picks 1-10                               132    +0.0655    +0.0707
-  picks 1-20                               216    +0.0652    +0.0731
-  picks 21-40                              109    +0.2834    +0.2453
-  picks 41-64                               89    -0.0319    +0.0052
-  ZERO-CELL picks 1-10 x top-tercile z      29    -0.0620    +0.0222
-  ZERO-CELL picks 1-20 x above-median z     84    -0.0846    +0.0307
-  MID                                      147    +0.1891    +0.1022
-  KPF                                       34    +0.4115    +0.1413
-  KPD                                       35    -0.2516    +0.0000
-  RUCK                                      11    +0.5279    +0.1798
-  SF                                       102    -0.0212    +0.1123
-  SD                                        85    -0.1130    +0.0915
-  cumulative games 6-9                     130    +0.1369    +0.1937
-  draft age <= 18                          328    +0.0813    +0.1130
+  whole year-1 leg                         414    +0.1363    +0.1333
+  picks 1-10                               132    +0.0904    +0.0819
+  picks 1-20                               216    +0.0930    +0.0981
+  picks 21-40                              109    +0.3921    +0.3359
+  picks 41-64                               89    -0.0322    +0.0071
+  ZERO-CELL picks 1-10 x top-tercile sa     57    +0.0039    +0.0345
+  ZERO-CELL picks 1-20 x above-median sa   122    +0.0350    +0.0596
+    [disclosed] picks 1-10 x top-tercile z    29    -0.0295    +0.0329
+    [disclosed] picks 1-20 x above-median z    84    -0.0605    +0.0472
+    [superseded] picks 1-10 x top-tercile pr    34    +0.1254    +0.0420
+    [superseded] picks 1-20 x above-median pr   101    +0.0473    +0.0663
+  MID                                      147    +0.2665    +0.1358
+  KPF                                       34    +0.5038    +0.1785
+  KPD                                       35    -0.3320    +0.0000
+  RUCK                                      11    +0.6959    +0.2000
+  SF                                       102    -0.0632    +0.1624
+  SD                                        85    -0.0899    +0.1353
+  cumulative games 6-9                     130    +0.1359    +0.2465
+  draft age <= 18                          328    +0.1141    +0.1531
 
-wrote /home/claude/seamcheck_landing/docs/evidence/act_334B_2026-08-07/stage6/g6_table.json  md5 5656dd8bbb19b193e1acde5063664cc5
+wrote /home/claude/seamcheck_landing/docs/evidence/act_334B_2026-08-07/stage6/g6_table.json  md5 61450f0b63f725b8666a49349857b02d

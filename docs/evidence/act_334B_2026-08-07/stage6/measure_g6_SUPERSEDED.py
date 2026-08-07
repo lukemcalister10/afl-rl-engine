@@ -1,29 +1,5 @@
 """STAGE 6 TEACHING MEASUREMENT — the conditioned development residual on the ESTABLISHED leg.
 
-=================================================================================================
-CONFORMANCE REPAIR, 2026-08-07 (issue #334 comment 5219329372).  The original of this file is kept
-verbatim as `measure_g6_SUPERSEDED.py`.  TWO registered conventions were mis-implemented here and
-are corrected below; nothing else about the act changes.  Strike-not-delete: the superseded text is
-struck in place, never removed.
-
- (1) THE ESTIMAND.  ~~F = mean_k[ v(Y+k) / 1.0939**k ], k = 1..4~~  STRUCK — a rolling 4-year mean,
-     which has no no-arb reading and conserves only 72.2% of the registered residual.  The
-     REGISTERED estimand (directive 5217307894 + Addendum 1 5217452004, as the cross-section of
-     record 5215260604 measured it) is the engine's own no-arb identity: F = v(CAREER YEAR 4)
-     discounted back at the 1.0939 hurdle to the evaluation year — 1.0939**4 = 1.432, exactly the
-     year-4 band.  Value-weighted aggregate on the year-1 established leg = 1.1363 (n=414), and the
-     evaluation-year-4 row is identically 1.0000, which is the identity proving the convention.
-     The superseded rolling statistic is retained as `F_roll`, printed beside, never taught from.
-
- (2) THE PERFORMANCE AXIS.  ~~pr = bestlvl(p,Y)/max(1,par) — "the DEMONSTRATED-LEVEL statistic the
-     cross-section reported on"~~  STRUCK — that claim was false.  The cross-section's performance
-     terciles are on the SEASON SCORING AVERAGE in the evaluation year, `sa`, read off the frozen
-     matrix record's own `seasons` rows.  On `sa` every named cross-section cell reproduces to the
-     third decimal (picks 1-10 x top-tercile = 1.0039, dead par, exactly as filed).  `pr` is kept
-     and printed as the superseded reading so the error is legible, but the REGISTERED cells — the
-     zero-cell gate populations and every feasibility read — are on `sa`.
-=================================================================================================
-
 READ-ONLY.  Teaching source: the FROZEN baseline walk-forward matrix
 docs/evidence/act_334B_2026-08-07/stage4_amend1/noarb/per_entrant_338_stage4a1.json (md5 b564b12e),
 the same matrix the stage-6 cross-section (issue #334 comment 5215260604) measured.  Never re-emitted
@@ -33,11 +9,10 @@ POPULATION.  Every (player, evaluation year Y) the engine routes through the ns>
 i.e. nseas_pro(p,Y) >= 1, the ESTABLISHED leg.  Addendum 1 (5217452004) pools the year-1, year-2 and
 year-3 evaluation rows so the fade is ENDOGENOUS to the surface rather than decreed.
 
-STATISTIC (REGISTERED).  F = v(C+4) / 1.0939**(4-N), N = Y-C the evaluation year, busts /
-out-of-window = 0, read off the FROZEN matrix vpath; price = the same matrix's own walk-forward
-price at Y.  F' = F / price.  F' > 1 = under-priced.  The estimand named by Addendum 1 is the
-VALUE-WEIGHTED aggregate sum(F)/sum(price); the MEDIAN F' is pre-registered alongside it and
-printed at every rung.  SUPERSEDED and retained as F_roll: the rolling mean_k[v(Y+k)/1.0939**k].
+STATISTIC.  F = mean_k [ v(Y+k) / 1.0939**k ], k = 1..4, busts / out-of-window = 0, read off the
+FROZEN matrix vpath; price = the same matrix's own walk-forward price at Y.  F' = F / price.
+F' > 1 = under-priced.  The estimand named by Addendum 1 is the VALUE-WEIGHTED aggregate
+sum(F)/sum(price); the MEDIAN F' is pre-registered alongside it and printed at every rung.
 
 MECHANISM STATE captured per row, all of it engine-native and all of it recomputable at build time
 from the record to date (the recalculation law — nothing here is stored on a player):
@@ -46,12 +21,8 @@ from the record to date (the recalculation law — nothing here is stored on a p
   pos     gfut, for the KPD/KPF split that the KPP class collapses (sub-dial, Addendum 1 F11)
   pk      MA.effpk
   gcum    CUMULATIVE career games through Y   (the recalculation law axis)
-  sa      THE REGISTERED PERFORMANCE AXIS — the SEASON SCORING AVERAGE in the evaluation year, read
-          off the frozen matrix record's `seasons` rows.  This is the axis the cross-section of
-          record terciled; continuous, no thresholds (terciles are REPORTING knots only).
-  pr      ~~bestlvl(p,Y)/max(1,par) — "the DEMONSTRATED-LEVEL statistic the cross-section reported
-          on"~~ STRUCK (conformance repair 5219329372): pr is NOT the cross-section's axis.  It is
-          retained and printed as the superseded reading only.
+  pr      bestlvl(p,Y)/max(1,par) — the DEMONSTRATED-LEVEL statistic ev() already computes at the
+          site, continuous, no thresholds (terciles are REPORTING knots only)
   age     draft age (None => the correction is identically zero, Addendum 1 F13; rows enumerated)
 """
 import os, sys, io, contextlib, json, hashlib
@@ -152,38 +123,29 @@ for r in ROWS:
     vmap = {y: (float(v) if v is not None else 0.0) for y, v in zip(rec['yrs'], rec['vpath'])}
     price = vmap.get(r['Y'])
     if not price or price <= 0: continue
-    # ---- THE REGISTERED ESTIMAND: the FIXED career-year-4 point, discounted at the hurdle ---------
-    # The engine's own no-arb identity.  1.0939**4 = 1.432 = the year-4 band; the evaluation-year-4
-    # row is therefore identically F' = 1.0000, which is the check that proves the convention.
-    Y4 = r['C'] + 4
-    if Y4 > 2026: continue       # a class must have reached career year 4 to teach from
-    F = vmap.get(Y4, 0.0) / (DISC ** (4 - r['N']))     # busts / out-of-window = 0
-    # ---- SUPERSEDED, retained for the record: the rolling 4-year mean the original build taught ---
     ks = [k for k in range(1, KMAX + 1) if r['Y'] + k <= 2026]
-    F_roll = float(np.mean([vmap.get(r['Y'] + k, 0.0) / (DISC ** k) for k in ks])) if ks else 0.0
-    # ---- THE REGISTERED PERFORMANCE AXIS: the season scoring average in the evaluation year -------
-    smap = {s['year']: float(s.get('avg') or 0.0) for s in (rec.get('seasons') or [])}
-    kept.append(dict(r, price=float(price), F=float(F), F_roll=F_roll, nk=len(ks),
-                     sa=float(smap.get(r['Y'], 0.0)),
+    if not ks: continue          # the cross-section's own convention: partial windows kept, busts = 0
+    F = float(np.mean([vmap.get(r['Y'] + k, 0.0) / (DISC ** k) for k in ks]))
+    kept.append(dict(r, price=float(price), F=F, nk=len(ks),
                      age=(rec.get('age_draft') if rec.get('age_draft') is not None else None),
                      nd=bool(rec.get('type', r['typ']) == 'ND' and not rec.get('pickless')),
                      is_pool=bool(rec.get('is_pool'))))
 
-print("established-leg rows scanned = %d ; with a realized career-year-4 point = %d"
-      % (len(ROWS), len(kept)))
+print("established-leg rows scanned = %d ; with complete %d-year realized window = %d"
+      % (len(ROWS), KMAX, len(kept)))
 json.dump(kept, open(os.environ.get('RL_OUT', '.') + '/s6_rows.json', 'w'))
 print("teaching matrix md5 = %s" % MMD5)
 
-def agg(rows, fk='F'):
+def agg(rows):
     if not rows: return None
-    sp = sum(x['price'] for x in rows); sf = sum(x[fk] for x in rows)
-    med = float(np.median([x[fk] / x['price'] for x in rows]))
+    sp = sum(x['price'] for x in rows); sf = sum(x['F'] for x in rows)
+    med = float(np.median([x['F'] / x['price'] for x in rows]))
     return dict(n=len(rows), agg=(sf / sp if sp > 0 else float('nan')), med=med,
-                mean=float(np.mean([x[fk] / x['price'] for x in rows])))
+                mean=float(np.mean([x['F'] / x['price'] for x in rows])))
 def show(name, rows):
-    a = agg(rows); b = agg(rows, 'F_roll')
-    if a: print("%-40s %6d  agg %8.4f   median %8.4f   mean %8.4f   [superseded rolling agg %7.4f]"
-                % (name, a['n'], a['agg'], a['med'], a['mean'], b['agg']))
+    a = agg(rows)
+    if a: print("%-34s %6d  agg %8.4f   median %8.4f   mean %8.4f"
+                % (name, a['n'], a['agg'], a['med'], a['mean']))
 
 # THE TEACHING POPULATION.  The cross-section of record (5215260604) measured the ND 1-64 leg; the
 # pool routes are stage 7's own directive (5217529020) and their own measurement (5217499636) reads the
@@ -207,25 +169,16 @@ for c in ('nonKPP', 'KPP', 'RUCK'):
     show("  yr1 cls " + c, [x for x in y1 if x['cls'] == c])
 for pz in ('MID', 'SF', 'SD', 'KPF', 'KPD', 'RUCK'):
     show("  yr1 pos " + pz, [x for x in y1 if x['pos'] == pz])
-# ---- THE REGISTERED PERFORMANCE AXIS: sa, the evaluation-year season scoring average ------------
-sas = sorted(x['sa'] for x in y1)
-s1, s2 = sas[len(sas) // 3], sas[2 * len(sas) // 3]
-med_sa = float(np.median(sas))
-print("  REGISTERED performance axis (season scoring average) tercile knots: %.3f / %.3f  median %.3f"
-      % (s1, s2, med_sa))
-show("  yr1 sa low tercile", [x for x in y1 if x['sa'] < s1])
-show("  yr1 sa mid tercile   [record 1.35]", [x for x in y1 if s1 <= x['sa'] < s2])
-show("  yr1 sa top tercile", [x for x in y1 if x['sa'] >= s2])
-show("  yr1 pick1-20 x above-median sa [rec 1.04]", [x for x in y1 if x['pk'] <= 20 and x['sa'] >= med_sa])
-show("  yr1 pick1-20 x below-median sa [rec 1.28]", [x for x in y1 if x['pk'] <= 20 and x['sa'] < med_sa])
-show("  yr1 pick1-10 x top tercile sa [rec 1.004]", [x for x in y1 if x['pk'] <= 10 and x['sa'] >= s2])
-# ---- SUPERSEDED reading, retained so the original error stays legible ----------------------------
 prs = sorted(x['pr'] for x in y1)
 t1, t2 = prs[len(prs) // 3], prs[2 * len(prs) // 3]
+print("  demonstrated-level (pr) tercile knots: %.4f / %.4f" % (t1, t2))
+show("  yr1 pr low tercile", [x for x in y1 if x['pr'] < t1])
+show("  yr1 pr mid tercile", [x for x in y1 if t1 <= x['pr'] < t2])
+show("  yr1 pr top tercile", [x for x in y1 if x['pr'] >= t2])
 med_pr = float(np.median(prs))
-print("  ~~SUPERSEDED axis (pr = bestlvl/par) tercile knots: %.4f / %.4f~~" % (t1, t2))
-show("  ~~yr1 pick1-20 x above-median pr~~", [x for x in y1 if x['pk'] <= 20 and x['pr'] >= med_pr])
-show("  ~~yr1 pick1-10 x top tercile pr~~", [x for x in y1 if x['pk'] <= 10 and x['pr'] >= t2])
+show("  yr1 pick1-20 x above-median pr", [x for x in y1 if x['pk'] <= 20 and x['pr'] >= med_pr])
+show("  yr1 pick1-20 x below-median pr", [x for x in y1 if x['pk'] <= 20 and x['pr'] < med_pr])
+show("  yr1 pick1-10 x top tercile pr", [x for x in y1 if x['pk'] <= 10 and x['pr'] >= t2])
 for lo, hi, nm in [(0, 5, "gcum 0-5"), (6, 9, "gcum 6-9"), (10, 15, "gcum 10-15"),
                    (16, 22, "gcum 16-22"), (23, 99, "gcum 23+")]:
     show("  yr1 " + nm, [x for x in y1 if lo <= x['gcum'] <= hi])

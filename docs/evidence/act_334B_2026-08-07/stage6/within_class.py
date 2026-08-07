@@ -106,7 +106,8 @@ for W in RUNGS:
     say('  %-22s %10.6f %10.6f %10.6f' % ('rung ' + W, a['rungs'][W], b['rungs'][W], g))
 say('')
 say('  The gap keeps closing at every rung — the correction is concentrated at picks 21-40, which is')
-say('  where the measured residual is (agg F\' 1.283 there against 1.065 at picks 1-20). REPORTED,')
+say('  where the measured residual is (REGISTERED estimand: agg F\' 1.392 at picks 21-40 against')
+say('  1.093 at picks 1-20; ~~1.283 / 1.065~~ were the superseded rolling-mean reads). REPORTED,')
 say('  never decreed: no cross-band ordering is imposed anywhere in the surface.')
 
 open(S6 + '/WITHIN_CLASS.txt', 'w').write('\n'.join(L) + '\n')

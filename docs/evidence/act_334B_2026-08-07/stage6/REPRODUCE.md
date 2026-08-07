@@ -1,5 +1,12 @@
 # How to reproduce stage 6 — the product IS committed
 
+> **AMENDED by the CONFORMANCE REPAIR of 2026-08-07** (issue #334 comment `5219329372`). The recipe
+> below is unchanged in shape; only the identities it produces move, because `measure_g6.py` now
+> computes the REGISTERED estimand (fixed career-year-4 horizon at the 1.0939 hurdle) and carries
+> the REGISTERED performance axis `sa`. The superseded scripts are kept beside the current ones
+> (`measure_g6_SUPERSEDED.py`, `teach_g6_SUPERSEDED.py`, `probes_g6_SUPERSEDED.py`) and reproduce the
+> original build's figures exactly if you want to see both.
+
 The engine change, the taught table `engine/rl_after/g6_table.json`, the manifest entries
 `RL_G6_W=0` / `RL_G6_KPD=0` and the re-stamped `config` / `engine_head` pins are all on this branch.
 The **shipped board does not move**: it is still the stage-5 landing `13f8c2e0`.
@@ -39,7 +46,7 @@ Dev shell (`unset RL_CONFIG_MODE`, `RL_WORKDIR=<ws>/rl_after`, `RL_VENDOR=/home/
 ```bash
 python3 $S6/measure_g6.py     # -> s6_rows.json ; asserts the teaching matrix md5 b564b12e and HALTS otherwise
 python3 $S6/axis_probe.py     # the demonstrated-level axis choice, printed
-python3 $S6/teach_g6.py       # -> g6_table.json  md5 5656dd8bbb19b193e1acde5063664cc5  (+ teach_log.txt)
+python3 $S6/teach_g6.py       # -> g6_table.json  md5 61450f0b63f725b8666a49349857b02d  (+ teach_log.txt)
 ```
 
 `measure_g6.py` asserts `b564b12e533119f49c2c6bb0c92a5d91`. That assert is deliberate: the surface
@@ -54,8 +61,8 @@ the real gated build, copies the board out, and restores every file it touched (
 
 ```bash
 for W in 0.25 0.5 0.75 1.0; do python3 $S6/rung_build.py $W; done
-#   0.25 -> e5fee49bb9dc553ddbaf55143bd03742      0.75 -> b963e36a8423470ecfdc1f3e5e691806
-#   0.5  -> 56b6c21cec6fccdeb3711ccd9981fac1      1.0  -> 17c96ca4add0fd49609ed8fd5009a641
+#   0.25 -> 9883420bf729d4434001e15acb83d2ef      0.75 -> f43cdf45ddf3adf63aee684cf13c3525
+#   0.5  -> b0a3369f70398610bf8a94a1892de710      1.0  -> a270286fc09ac3cd7379950850a8357a
 ```
 
 ## 4 · the walk-forward matrices, one per rung (dev shell, RL_G6_W ambient; the emitter is read-only)
@@ -66,8 +73,8 @@ for W in 0.25 0.5 0.75 1.0; do
   RL_G6_W=$W RL_G6_KPD=0 RL_OUT=$S6/noarb python3 emit_matrix_338.py
   mv per_entrant_338_confirmation.json per_entrant_338_rung$W.json
 done
-#   0.25 -> 2eff80a4bbf9031ae8e25e54ef9b63be      0.75 -> 22402f35c41e306bb4fbeb3d2c2302e3
-#   0.5  -> 8553acf07bffd5570bc6d8b4e76c9f5a      1.0  -> ca6cd25d725a22b74afe775d7b044c04
+#   0.25 -> 92b94767bd4a975c1714e9a63f63330d      0.75 -> 42ea62b2fc4ba06bf1fe830d5b237e59
+#   0.5  -> 3161872265c12738e0ceae6e066196ad      1.0  -> be5fba616372afbfca3d83add2f636de
 
 for W in 0.25 0.5 0.75 1.0; do
   RL_RUNG=$W python3 noarb_table_338.py per_entrant_338_rung$W.json > noarb_table_rung$W.txt

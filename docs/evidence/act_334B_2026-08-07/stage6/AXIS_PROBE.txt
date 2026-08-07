@@ -1,0 +1,13 @@
+year-1 established ND 1-64: n=414  value-weighted agg F' = 1.1363  median F' = 0.8672
+
+sa        R2(vw, 5 quantiles) =  0.0273   cell aggs (F' , knot) = [(1.0766, 22.8), (1.4056, 45.3), (1.3658, 52.46), (1.192, 59.2), (0.977, 67.7)]
+pr        R2(vw, 5 quantiles) =  0.0174   cell aggs (F' , knot) = [(1.0614, 0.4636), (1.4239, 0.8459), (1.0092, 0.9606), (1.1872, 1.0678), (1.0849, 1.2184)]
+rerate    R2(vw, 5 quantiles) =  0.0422   cell aggs (F' , knot) = [(1.3779, -4.9517), (1.4659, -0.345), (1.106, -0.0061), (1.1094, 0.2735), (0.8949, 0.6567)]
+ppg       R2(vw, 5 quantiles) =  0.0052   cell aggs (F' , knot) = [(1.1977, 0.1475), (1.2849, 0.3409), (1.1621, 0.4682), (1.0688, 0.6824), (1.0893, 0.9189)]
+gcum      R2(vw, 5 quantiles) =  0.0079   cell aggs (F' , knot) = [(1.1873, 6.0), (1.1404, 8.0), (1.2083, 11.0), (1.2192, 14.0), (1.0101, 18.0)]
+lpk       R2(vw, 5 quantiles) =  0.0213   cell aggs (F' , knot) = [(1.058, 0.0), (1.2126, 1.7918), (1.1252, 2.5649), (1.4208, 3.2189), (0.8498, 3.7612)]
+
+== the already-priced cells under each candidate (sa is the REGISTERED axis) ==
+  sa [REGISTERED]    picks 1-20 x above-median: n=122 agg 1.0350  |  picks 1-10 x top-tercile: n= 57 agg 1.0039
+  pr [superseded]    picks 1-20 x above-median: n=101 agg 1.0473  |  picks 1-10 x top-tercile: n= 34 agg 1.1254
+  log(price/anchor)  picks 1-20 x above-median: n= 84 agg 0.9395  |  picks 1-10 x top-tercile: n= 29 agg 0.9705

@@ -209,14 +209,8 @@ def delta_of(x, W):
                         [float(np.log(k)) for k in TAB['pk_knots']],
                         TAB['base'][{'RUCK': 'RUCK', 'KPF': 'KPP', 'KPD': 'KPP'}.get(x['pos'], 'nonKPP')]))
     return float(W) * float(TAB['d1']) * b * st * sz * sg * tp * ta
-# CONFORMANCE REPAIR 5219329372. The registered zero-cell populations are terciled on the axis the
-# CROSS-SECTION OF RECORD used: sa, the SEASON SCORING AVERAGE in the evaluation year. The original
-# build read them on the surface's own z and on pr, having mis-identified pr as the record's axis.
-# On sa the record's cell reproduces exactly (picks 1-10 x top-tercile = 1.0039, dead par). Only the
-# sa rows below are the REGISTERED gate; z and pr are retained and printed as disclosed secondaries.
-sas = sorted(x['sa'] for x in ROWS); samed = sas[len(sas) // 2]; sat2 = sas[2 * len(sas) // 3]
-CELLS = [('picks 1-10 x TOP-TERCILE sa [REGISTERED]', lambda x: x['pk'] <= 10 and x['sa'] >= sat2, 0.015),
-         ('picks 1-20 x ABOVE-MEDIAN sa [REGISTERED]', lambda x: x['pk'] <= 20 and x['sa'] >= samed, 0.025),
+CELLS = [('picks 1-10 x TOP-TERCILE re-rate', lambda x: x['pk'] <= 10 and z_of(x) >= zt2, 0.015),
+         ('picks 1-20 x ABOVE-MEDIAN re-rate', lambda x: x['pk'] <= 20 and z_of(x) >= zmed, 0.025),
          ('picks 41-64 (declared taper)', lambda x: 41 <= x['pk'] <= 64, 0.005),
          ('draft age 19+ (declared taper)', lambda x: x['age'] is not None and x['age'] >= 19, 0.005),
          ('draft age UNKNOWN (identically 0)', lambda x: x['age'] is None, 0.0)]
@@ -238,37 +232,20 @@ RES['zero_cells'] = ZC
 
 # ---------------- (f2) the zero-cell gate on the CROSS-SECTION's own level axis -------------------
 say('')
-say('    DISCLOSED SECONDARY READINGS, not the registered gate (conformance repair 5219329372). The')
-say('    registered cells above are on sa, the cross-section\'s own axis. These two alternative level')
-say('    definitions are printed so the record stays legible: z, the surface\'s own re-rate axis, and')
-say('    ~~pr = bestlvl/par~~, which the original build wrongly named as the cross-section\'s axis.')
+say('    The gate is re-read on the axis the CROSS-SECTION used — demonstrated level pr = bestlvl/par —')
+say('    so the "already priced in" cell is tested on BOTH definitions and the binding one binds.')
 prs = sorted(x['pr'] for x in ROWS); pmed = prs[len(prs) // 2]; pt2 = prs[2 * len(prs) // 3]
-ZCD = {}
-for nm, f, bound in [('[disclosed] picks 1-10 x TOP-TERCILE z', lambda x: x['pk'] <= 10 and z_of(x) >= zt2, 0.015),
-                     ('[disclosed] picks 1-20 x ABOVE-MEDIAN z', lambda x: x['pk'] <= 20 and z_of(x) >= zmed, 0.025),
-                     ('[superseded] picks 1-10 x TOP-TERCILE pr', lambda x: x['pk'] <= 10 and x['pr'] >= pt2, 0.015),
-                     ('[superseded] picks 1-20 x ABOVE-MEDIAN pr', lambda x: x['pk'] <= 20 and x['pr'] >= pmed, 0.025)]:
+for nm, f, bound in [('picks 1-10 x TOP-TERCILE pr', lambda x: x['pk'] <= 10 and x['pr'] >= pt2, 0.015),
+                     ('picks 1-20 x ABOVE-MEDIAN pr', lambda x: x['pk'] <= 20 and x['pr'] >= pmed, 0.025)]:
     sub = [x for x in ROWS if f(x)]
     sp = sum(x['price'] for x in sub)
     vals = [sum(x['price'] * delta_of(x, W) for x in sub) / sp for W in RUNGS]
     ok = all(abs(v) <= bound + 1e-12 for v in vals)
     meas = sum(x['F'] for x in sub) / sp - 1.0
-    ZCD[nm] = dict(n=len(sub), bound=bound, measured=meas,
-                   values={W: vals[i] for i, W in enumerate(RUNGS)}, verdict='PASS' if ok else 'FAIL')
-    say('    %-40s %3d %8.3f %+9.5f %+9.5f %+9.5f %+9.5f   %s   (measured %+0.4f)'
+    ZC[nm] = dict(n=len(sub), bound=bound, measured=meas,
+                  values={W: vals[i] for i, W in enumerate(RUNGS)}, verdict='PASS' if ok else 'FAIL')
+    say('    %-38s %5d %8.3f %+9.5f %+9.5f %+9.5f %+9.5f   %s   (measured %+0.4f)'
         % (nm, len(sub), bound, vals[0], vals[1], vals[2], vals[3], 'PASS' if ok else 'FAIL', meas))
-RES['zero_cells_disclosed'] = ZCD
-# THE MAXIMUM FEASIBLE RUNG on the registered gate, solved as a continuum (the ladder is presented at
-# 0.25/0.5/0.75/1.0; the continuum ceiling is what the frontier costs, and it is estimand-invariant).
-_bind = min(((d['bound'] / abs(d['values']['1.0'])), nm)
-            for nm, d in ZC.items() if abs(d['values']['1.0']) > 1e-12)
-_wmax, _bnm = _bind
-say('')
-say('    MAX FEASIBLE RUNG on the REGISTERED gate (a continuum, NOT a presented rung): %.4f' % _wmax)
-say('    bound by: %s' % _bnm)
-say('    The presented ladder stays 0.25 / 0.5 / 0.75 / 1.0 of the registered residual and infeasible')
-say('    rungs are STRUCK (Addendum 1 F9/F10). No rung value is invented to land on the continuum max.')
-RES['max_feasible_rung'] = dict(rung=_wmax, bound_by=_bnm)
 say('')
 say('    PER-RUNG VERDICT on the registered zero-cell bounds (Addendum 1, ABSOLUTE units):')
 RUNGOK = {}

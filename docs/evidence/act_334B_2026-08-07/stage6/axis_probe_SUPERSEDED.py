@@ -5,21 +5,9 @@ The directive's conditioning list names a "demonstrated level" axis whose job is
 frozen rows; the one that separates the residual best (value-weighted deviance under a single
 one-dimensional shape) is the one the teach uses, and the choice is declared in the memo.
 
-  sa    season scoring average      — THE REGISTERED AXIS: what the cross-section of record terciled
   pr    bestlvl(p,Y)/par            — level against the CLASS par, what ev() already computes
   rerate log(price/entry_anchor)    — how far the engine has ALREADY re-rated him off his entry price
   ppg   gcum-normalised level       — level x exposure
-
-CONFORMANCE REPAIR 2026-08-07 (issue #334 comment 5219329372).  The original of this file is kept as
-`axis_probe_SUPERSEDED.py`.  Two corrections: the rows now carry the REGISTERED estimand, and `sa`
-is added as a candidate because IT, not `pr`, is the cross-section's own axis — the original build's
-memo named `pr` "the cross-section's axis" and that claim is STRUCK (MEMO.md section 2).
-
-WHAT THIS PROBE DOES AND DOES NOT DECIDE.  It informed one design choice — which continuous
-statistic carries the surface's demonstrated-level SHAPE GATE — and that choice (`rerate`, i.e. `z`)
-STANDS unchanged: it is not one of the two registered deviations, and re-opening it after seeing
-which rungs the gates strike would be tuning.  The probe does NOT decide the ZERO-CELL GATE's
-population, which is registered on `sa` and is read there in probes_g6.py and FRONTIER.txt section 2.
 
 No fitting here, no tuning: this is a printed table.
 """
@@ -59,13 +47,13 @@ for x in Y1:
 print("year-1 established ND 1-64: n=%d  value-weighted agg F' = %.4f  median F' = %.4f"
       % (len(Y1), vw(Y1), float(np.median([x['F'] / x['price'] for x in Y1]))))
 print()
-for key in ('sa', 'pr', 'rerate', 'ppg', 'gcum', 'lpk'):
+for key in ('pr', 'rerate', 'ppg', 'gcum', 'lpk'):
     for x in Y1: x['_k'] = x[key]
     r2, cells = dev(Y1, key)
     print("%-8s  R2(vw, 5 quantiles) = %7.4f   cell aggs (F' , knot) = %s" % (key, r2, cells))
 print()
-print("== the already-priced cells under each candidate (sa is the REGISTERED axis) ==")
-for key, lab in (('sa', 'sa [REGISTERED]'), ('pr', 'pr [superseded]'), ('rerate', 'log(price/anchor)')):
+print("== the already-priced cells under each candidate ==")
+for key, lab in (('pr', 'pr'), ('rerate', 'log(price/anchor)')):
     xs = sorted(Y1, key=lambda x: x[key]); med = xs[len(xs) // 2][key]; t2 = xs[2 * len(xs) // 3][key]
     a = [x for x in Y1 if x['pk'] <= 20 and x[key] >= med]
     b = [x for x in Y1 if x['pk'] <= 10 and x[key] >= t2]

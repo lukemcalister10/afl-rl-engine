@@ -1,27 +1,5 @@
 """STAGE 6 TEACH — the conditioned development correction surface, taught ONCE and FROZEN.
 
-=================================================================================================
-CONFORMANCE REPAIR, 2026-08-07 (issue #334 comment 5219329372).  Original kept verbatim as
-`teach_g6_SUPERSEDED.py`; its output as `g6_table_SUPERSEDED.json` / `teach_log_SUPERSEDED.txt`.
-
-WHAT CHANGED, AND ONLY THIS.  (1) The rows this file reads now carry the REGISTERED estimand
-(`measure_g6.py`, fixed career-year-4 horizon at the 1.0939 hurdle) instead of the rolling 4-year
-mean the original build substituted.  The surface therefore conserves the REGISTERED residual —
-year-1 value-weighted aggregate F' = 1.1363, n=414 — where the original conserved 1.0963, i.e.
-72.2% of it.  Not one line of the FORM changes: same two-axis kernel, same declared shape gates,
-same declared tapers, same joint conservation/monotonicity solve, same dial semantics.
-(2) The ZERO-CELL GATE POPULATIONS are read on the REGISTERED performance axis `sa` (the season
-scoring average in the evaluation year), which is what the cross-section of record terciled.  The
-original read them on `pr` and on the surface's own `z`; both are retained and printed as
-disclosed secondary readings, but only `sa` is the registered cell.
-
-WHAT DELIBERATELY DID NOT CHANGE.  The surface's demonstrated-level SHAPE GATE stays on
-z = log(e/entry_anchor).  That was a design choice made by measurement and it is not one of the
-two registered deviations; re-opening it after seeing which rungs the gates strike would be
-tuning.  What was false was the CLAIM that its rejected comparator `pr` was the cross-section's
-axis — struck in MEMO.md section 2 by amendment note, not by re-deciding.
-=================================================================================================
-
 Reads RL_OUT/s6_rows.json (measure_g6.py, from the frozen matrix b564b12e) and writes g6_table.json.
 
 THE FORM.  A SIGNED multiplier on the ns>=1 arm's production leg:
@@ -337,22 +315,13 @@ print("  " + ", ".join(unk))
 print("\nTAUGHT vs MEASURED at the named cells (year-1, value-weighted, rung 1.0):")
 print("  %-38s %5s %11s %11s" % ("cell", "n", "measured", "taught"))
 zs = sorted(x['z'] for x in Y1); zmed = zs[len(zs) // 2]; zt2 = zs[2 * len(zs) // 3]
-prs = sorted(x['pr'] for x in Y1); prmed = prs[len(prs) // 2]; prt2 = prs[2 * len(prs) // 3]
-# THE REGISTERED PERFORMANCE AXIS (conformance repair 5219329372): the evaluation-year season
-# scoring average, the axis the cross-section of record terciled.  These are the cells the
-# zero-cell gate is registered on; the z and pr readings below them are disclosed secondaries.
-sas = sorted(x['sa'] for x in Y1); samed = sas[len(sas) // 2]; sat2 = sas[2 * len(sas) // 3]
 CELLS = [("whole year-1 leg", lambda x: True),
          ("picks 1-10", lambda x: x['pk'] <= 10),
          ("picks 1-20", lambda x: x['pk'] <= 20),
          ("picks 21-40", lambda x: 21 <= x['pk'] <= 40),
          ("picks 41-64", lambda x: 41 <= x['pk'] <= 64),
-         ("ZERO-CELL picks 1-10 x top-tercile sa", lambda x: x['pk'] <= 10 and x['sa'] >= sat2),
-         ("ZERO-CELL picks 1-20 x above-median sa", lambda x: x['pk'] <= 20 and x['sa'] >= samed),
-         ("  [disclosed] picks 1-10 x top-tercile z", lambda x: x['pk'] <= 10 and x['z'] >= zt2),
-         ("  [disclosed] picks 1-20 x above-median z", lambda x: x['pk'] <= 20 and x['z'] >= zmed),
-         ("  [superseded] picks 1-10 x top-tercile pr", lambda x: x['pk'] <= 10 and x['pr'] >= prt2),
-         ("  [superseded] picks 1-20 x above-median pr", lambda x: x['pk'] <= 20 and x['pr'] >= prmed),
+         ("ZERO-CELL picks 1-10 x top-tercile z", lambda x: x['pk'] <= 10 and x['z'] >= zt2),
+         ("ZERO-CELL picks 1-20 x above-median z", lambda x: x['pk'] <= 20 and x['z'] >= zmed),
          ("MID", lambda x: x['pos'] == 'MID'),
          ("KPF", lambda x: x['pos'] == 'KPF'),
          ("KPD", lambda x: x['pos'] == 'KPD'),
@@ -382,13 +351,7 @@ TAB = dict(
         population='ND 1-64, classes 2004-2022, evaluation years 1-3, ns>=1 (established) leg',
         n_rows=dict(y1=len(Y1), y2=len([x for x in POP if x['N'] == 2]),
                     y3=len([x for x in POP if x['N'] == 3])),
-        estimand="REGISTERED: value-weighted aggregate F' = sum(F)/sum(price) with"
-                 " F = v(C+4)/1.0939**(4-N), the engine's no-arb identity (1.0939**4 = 1.432 = the"
-                 " year-4 band); median F' pre-registered beside it. Conformance repair 5219329372"
-                 " — the superseded build taught a rolling 4-year mean (1.0963, 72.2% of this).",
-        performance_axis="REGISTERED: sa, the season scoring average in the evaluation year (the"
-                 " cross-section's own tercile axis). The surface's demonstrated-level SHAPE GATE"
-                 " remains z = log(e/entry_anchor), unchanged and not re-decided.",
+        estimand="value-weighted aggregate F' = sum(F)/sum(price); median F' pre-registered beside it",
         measured_agg_y1_whole=round(1 + meas, 6),
         measured_agg_y1_bonus_population=round(1 + D1, 6),
         measured_agg_y1_kpd=round(1 + DKPD, 6),

@@ -47,11 +47,11 @@
      "n_included": 1197,
      "n_zero": 0,
      "n_not_yet_reached": 0,
-     "mean_yearN": 831.29,
-     "median_yearN": 521.0,
+     "mean_yearN": 844.27,
+     "median_yearN": 526.0,
      "mean_year0_same_set": 802.78,
      "median_year0_same_set": 572.0,
-     "ratio_meanN_over_mean0": 1.0355,
+     "ratio_meanN_over_mean0": 1.0517,
      "zero_kinds": {
       "path": 1197
      }
@@ -61,11 +61,11 @@
      "n_included": 1197,
      "n_zero": 0,
      "n_not_yet_reached": 0,
-     "mean_yearN": 951.71,
-     "median_yearN": 512.0,
+     "mean_yearN": 962.98,
+     "median_yearN": 529.0,
      "mean_year0_same_set": 802.78,
      "median_year0_same_set": 572.0,
-     "ratio_meanN_over_mean0": 1.1855,
+     "ratio_meanN_over_mean0": 1.1996,
      "zero_kinds": {
       "path": 1197
      }
@@ -81,8 +81,8 @@
      "median_year0_same_set": 572.0,
      "ratio_meanN_over_mean0": 1.3471,
      "zero_kinds": {
-      "ended": 141,
-      "path": 1056
+      "path": 1056,
+      "ended": 141
      }
     },
     {
@@ -96,8 +96,8 @@
      "median_year0_same_set": 572.0,
      "ratio_meanN_over_mean0": 1.4327,
      "zero_kinds": {
-      "ended": 258,
-      "path": 939
+      "path": 939,
+      "ended": 258
      }
     },
     {
@@ -111,8 +111,8 @@
      "median_year0_same_set": 571.7,
      "ratio_meanN_over_mean0": 1.4306,
      "zero_kinds": {
-      "ended": 334,
-      "path": 805
+      "path": 805,
+      "ended": 334
      }
     },
     {
@@ -126,8 +126,8 @@
      "median_year0_same_set": 572.0,
      "ratio_meanN_over_mean0": 1.3939,
      "zero_kinds": {
-      "ended": 391,
-      "path": 684
+      "path": 684,
+      "ended": 391
      }
     },
     {
@@ -141,8 +141,8 @@
      "median_year0_same_set": 570.85,
      "ratio_meanN_over_mean0": 1.2108,
      "zero_kinds": {
-      "ended": 430,
-      "path": 584
+      "path": 584,
+      "ended": 430
      }
     }
    ]
@@ -169,11 +169,11 @@
      "n_included": 377,
      "n_zero": 0,
      "n_not_yet_reached": 0,
-     "mean_yearN": 1627.09,
-     "median_yearN": 1218.0,
+     "mean_yearN": 1648.98,
+     "median_yearN": 1259.0,
      "mean_year0_same_set": 1563.07,
      "median_year0_same_set": 1257.1,
-     "ratio_meanN_over_mean0": 1.041,
+     "ratio_meanN_over_mean0": 1.055,
      "zero_kinds": {
       "path": 377
      }
@@ -183,11 +183,11 @@
      "n_included": 377,
      "n_zero": 0,
      "n_not_yet_reached": 0,
-     "mean_yearN": 1855.63,
-     "median_yearN": 1400.0,
+     "mean_yearN": 1872.0,
+     "median_yearN": 1427.0,
      "mean_year0_same_set": 1563.07,
      "median_year0_same_set": 1257.1,
-     "ratio_meanN_over_mean0": 1.1872,
+     "ratio_meanN_over_mean0": 1.1976,
      "zero_kinds": {
       "path": 377
      }
@@ -231,8 +231,8 @@
      "median_year0_same_set": 1257.1,
      "ratio_meanN_over_mean0": 1.4167,
      "zero_kinds": {
-      "ended": 25,
-      "path": 332
+      "path": 332,
+      "ended": 25
      }
     },
     {
@@ -246,8 +246,8 @@
      "median_year0_same_set": 1249.2,
      "ratio_meanN_over_mean0": 1.3442,
      "zero_kinds": {
-      "ended": 42,
-      "path": 295
+      "path": 295,
+      "ended": 42
      }
     },
     {
@@ -261,8 +261,8 @@
      "median_year0_same_set": 1249.2,
      "ratio_meanN_over_mean0": 1.1792,
      "zero_kinds": {
-      "ended": 57,
-      "path": 260
+      "path": 260,
+      "ended": 57
      }
     }
    ]
@@ -289,11 +289,11 @@
      "n_included": 820,
      "n_zero": 0,
      "n_not_yet_reached": 0,
-     "mean_yearN": 465.42,
+     "mean_yearN": 474.3,
      "median_yearN": 342.0,
      "mean_year0_same_set": 453.23,
      "median_year0_same_set": 405.7,
-     "ratio_meanN_over_mean0": 1.0269,
+     "ratio_meanN_over_mean0": 1.0465,
      "zero_kinds": {
       "path": 820
      }
@@ -303,11 +303,11 @@
      "n_included": 820,
      "n_zero": 0,
      "n_not_yet_reached": 0,
-     "mean_yearN": 536.12,
-     "median_yearN": 320.0,
+     "mean_yearN": 545.05,
+     "median_yearN": 325.5,
      "mean_year0_same_set": 453.23,
      "median_year0_same_set": 405.7,
-     "ratio_meanN_over_mean0": 1.1829,
+     "ratio_meanN_over_mean0": 1.2026,
      "zero_kinds": {
       "path": 820
      }
@@ -323,8 +323,8 @@
      "median_year0_same_set": 405.7,
      "ratio_meanN_over_mean0": 1.4077,
      "zero_kinds": {
-      "ended": 141,
-      "path": 679
+      "path": 679,
+      "ended": 141
      }
     },
     {
@@ -338,8 +338,8 @@
      "median_year0_same_set": 405.7,
      "ratio_meanN_over_mean0": 1.4379,
      "zero_kinds": {
-      "ended": 258,
-      "path": 562
+      "path": 562,
+      "ended": 258
      }
     },
     {
@@ -353,8 +353,8 @@
      "median_year0_same_set": 399.35,
      "ratio_meanN_over_mean0": 1.4524,
      "zero_kinds": {
-      "ended": 309,
-      "path": 473
+      "path": 473,
+      "ended": 309
      }
     },
     {
@@ -368,8 +368,8 @@
      "median_year0_same_set": 398.9,
      "ratio_meanN_over_mean0": 1.4712,
      "zero_kinds": {
-      "ended": 349,
-      "path": 389
+      "path": 389,
+      "ended": 349
      }
     },
     {
@@ -383,8 +383,8 @@
      "median_year0_same_set": 398.9,
      "ratio_meanN_over_mean0": 1.2602,
      "zero_kinds": {
-      "ended": 373,
-      "path": 324
+      "path": 324,
+      "ended": 373
      }
     }
    ]

@@ -47,11 +47,11 @@
      "n_included": 1197,
      "n_zero": 0,
      "n_not_yet_reached": 0,
-     "mean_yearN": 819.32,
-     "median_yearN": 519.0,
+     "mean_yearN": 827.97,
+     "median_yearN": 521.0,
      "mean_year0_same_set": 802.78,
      "median_year0_same_set": 572.0,
-     "ratio_meanN_over_mean0": 1.0206,
+     "ratio_meanN_over_mean0": 1.0314,
      "zero_kinds": {
       "path": 1197
      }
@@ -61,11 +61,11 @@
      "n_included": 1197,
      "n_zero": 0,
      "n_not_yet_reached": 0,
-     "mean_yearN": 951.71,
-     "median_yearN": 512.0,
+     "mean_yearN": 959.21,
+     "median_yearN": 523.0,
      "mean_year0_same_set": 802.78,
      "median_year0_same_set": 572.0,
-     "ratio_meanN_over_mean0": 1.1855,
+     "ratio_meanN_over_mean0": 1.1949,
      "zero_kinds": {
       "path": 1197
      }
@@ -169,11 +169,11 @@
      "n_included": 377,
      "n_zero": 0,
      "n_not_yet_reached": 0,
-     "mean_yearN": 1606.55,
-     "median_yearN": 1202.0,
+     "mean_yearN": 1621.16,
+     "median_yearN": 1211.0,
      "mean_year0_same_set": 1563.07,
      "median_year0_same_set": 1257.1,
-     "ratio_meanN_over_mean0": 1.0278,
+     "ratio_meanN_over_mean0": 1.0372,
      "zero_kinds": {
       "path": 377
      }
@@ -183,11 +183,11 @@
      "n_included": 377,
      "n_zero": 0,
      "n_not_yet_reached": 0,
-     "mean_yearN": 1855.63,
-     "median_yearN": 1400.0,
+     "mean_yearN": 1866.53,
+     "median_yearN": 1412.0,
      "mean_year0_same_set": 1563.07,
      "median_year0_same_set": 1257.1,
-     "ratio_meanN_over_mean0": 1.1872,
+     "ratio_meanN_over_mean0": 1.1941,
      "zero_kinds": {
       "path": 377
      }
@@ -289,11 +289,11 @@
      "n_included": 820,
      "n_zero": 0,
      "n_not_yet_reached": 0,
-     "mean_yearN": 457.38,
+     "mean_yearN": 463.3,
      "median_yearN": 342.0,
      "mean_year0_same_set": 453.23,
      "median_year0_same_set": 405.7,
-     "ratio_meanN_over_mean0": 1.0091,
+     "ratio_meanN_over_mean0": 1.0222,
      "zero_kinds": {
       "path": 820
      }
@@ -303,11 +303,11 @@
      "n_included": 820,
      "n_zero": 0,
      "n_not_yet_reached": 0,
-     "mean_yearN": 536.12,
-     "median_yearN": 320.0,
+     "mean_yearN": 542.07,
+     "median_yearN": 323.0,
      "mean_year0_same_set": 453.23,
      "median_year0_same_set": 405.7,
-     "ratio_meanN_over_mean0": 1.1829,
+     "ratio_meanN_over_mean0": 1.196,
      "zero_kinds": {
       "path": 820
      }

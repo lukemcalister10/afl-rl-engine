@@ -5,15 +5,15 @@
   Measured at rung 1.0 (the worst case; every slope scales linearly with the dial).
   class      axis                             realised max  surface's own
   ------------------------------------------------------------------------
-  nonKPP     continuous season clock tau          0.405013       0.405013
-  nonKPP     cumulative games (log1p)             0.235676       0.235676
-  nonKPP     log-pick (incl. the taper)           2.428967        (taper)
-  KPP        continuous season clock tau          0.448725       0.448725
-  KPP        cumulative games (log1p)             0.261112       0.261112
-  KPP        log-pick (incl. the taper)           2.500411        (taper)
-  RUCK       continuous season clock tau          0.448725       0.448725
-  RUCK       cumulative games (log1p)             0.261112       0.261112
-  RUCK       log-pick (incl. the taper)           2.500411        (taper)
+  nonKPP     continuous season clock tau          0.460180       0.460180
+  nonKPP     cumulative games (log1p)             0.247794       0.247794
+  nonKPP     log-pick (incl. the taper)           3.322450        (taper)
+  KPP        continuous season clock tau          0.492544       0.492544
+  KPP        cumulative games (log1p)             0.265221       0.265221
+  KPP        log-pick (incl. the taper)           3.035108        (taper)
+  RUCK       continuous season clock tau          0.492544       0.492544
+  RUCK       cumulative games (log1p)             0.265221       0.265221
+  RUCK       log-pick (incl. the taper)           3.035108        (taper)
 
   NO CLIFF ANYWHERE: every axis is interpolated linearly between knots, so the realised slope is
   bounded by the surface's own knot slope by construction, and the printed equality is the check
@@ -21,8 +21,8 @@
   log-pick, whose taper (34 -> 48) is a raised cosine — C1, no step.
 
   THE LARGEST PRICE SLOPE THE SURFACE CAN PRODUCE, at rung 1.0, in price terms:
-    max |delta| = 1.619716  at ('nonKPP', 25, 6.0, -0.6)   (i.e. the biggest single price move the correction can make is
-    161.97% of a player's production price, at rung 1.0)
+    max |delta| = 1.828122  at ('nonKPP', 25, 6.0, -0.6)   (i.e. the biggest single price move the correction can make is
+    182.81% of a player's production price, at rung 1.0)
 
 ============================================================================================================
 CONVERGENCE — the year-1 gap between ND picks 1-20 and picks 21-64 (teaching window)
@@ -31,11 +31,12 @@ CONVERGENCE — the year-1 gap between ND picks 1-20 and picks 21-64 (teaching w
   --------------------------------------------------------
   pre-stage-5              0.970665   0.918348   0.052317
   stage-5 LANDED           1.001589   0.973706   0.027884
-  rung 0.25                1.014677   0.991419   0.023258
-  rung 0.5                 1.027820   1.009145   0.018675
-  rung 0.75                1.040960   1.026882   0.014078
-  rung 1.0                 1.054100   1.044608   0.009491
+  rung 0.25                1.019343   0.997954   0.021389
+  rung 0.5                 1.037165   1.022200   0.014965
+  rung 0.75                1.054967   1.046470   0.008497
+  rung 1.0                 1.072792   1.070721   0.002071
 
   The gap keeps closing at every rung — the correction is concentrated at picks 21-40, which is
-  where the measured residual is (agg F' 1.283 there against 1.065 at picks 1-20). REPORTED,
+  where the measured residual is (REGISTERED estimand: agg F' 1.392 at picks 21-40 against
+  1.093 at picks 1-20; ~~1.283 / 1.065~~ were the superseded rolling-mean reads). REPORTED,
   never decreed: no cross-band ordering is imposed anywhere in the surface.

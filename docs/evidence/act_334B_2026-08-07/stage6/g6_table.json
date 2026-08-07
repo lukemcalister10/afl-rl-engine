@@ -5,32 +5,32 @@
  ],
  "base": {
   "KPP": [
-   0.67865996,
-   1.78418431,
-   0.64575758,
-   3.57576414,
-   2.85848474,
-   1.56015238
+   0.42226257,
+   1.86100095,
+   0.83964886,
+   3.30836973,
+   2.52111343,
+   1.25297641
   ],
   "RUCK": [
-   0.67865996,
-   1.78418431,
-   0.64575758,
-   3.57576414,
-   2.85848474,
-   1.56015238
+   0.42226257,
+   1.86100095,
+   0.83964886,
+   3.30836973,
+   2.52111343,
+   1.25297641
   ],
   "nonKPP": [
-   0.18280635,
-   1.24288956,
-   0.09040468,
-   3.60941023,
-   2.78023343,
-   1.53571136
+   -0.08061998,
+   1.34791819,
+   0.36438519,
+   3.41683397,
+   2.76719313,
+   1.4060586
   ]
  },
- "d1": 0.12844436,
- "d_kpd": -0.25159315,
+ "d1": 0.17964931,
+ "d_kpd": -0.33203287,
  "g_knots": [
   6.0,
   10.0,
@@ -41,105 +41,129 @@
  "meta": {
   "act": "#334 stage B / stage 6 \u2014 the conditioned development correction (established leg)",
   "cells": {
+   "  [disclosed] picks 1-10 x top-tercile z": {
+    "measured": -0.029459,
+    "n": 29,
+    "taught_all": 0.023349,
+    "taught_bonus": 0.032931
+   },
+   "  [disclosed] picks 1-20 x above-median z": {
+    "measured": -0.060491,
+    "n": 84,
+    "taught_all": 0.028684,
+    "taught_bonus": 0.047247
+   },
+   "  [superseded] picks 1-10 x top-tercile pr": {
+    "measured": 0.125402,
+    "n": 34,
+    "taught_all": 0.033311,
+    "taught_bonus": 0.04196
+   },
+   "  [superseded] picks 1-20 x above-median pr": {
+    "measured": 0.047301,
+    "n": 101,
+    "taught_all": 0.056353,
+    "taught_bonus": 0.066286
+   },
    "KPD": {
-    "measured": -0.251593,
+    "measured": -0.332033,
     "n": 35,
-    "taught_all": -0.108593,
+    "taught_all": -0.152257,
     "taught_bonus": 0.0
    },
    "KPF": {
-    "measured": 0.411494,
+    "measured": 0.503772,
     "n": 34,
-    "taught_all": 0.141271,
-    "taught_bonus": 0.141271
+    "taught_all": 0.178468,
+    "taught_bonus": 0.178468
    },
    "MID": {
-    "measured": 0.189149,
+    "measured": 0.266465,
     "n": 147,
-    "taught_all": 0.102202,
-    "taught_bonus": 0.102202
+    "taught_all": 0.135779,
+    "taught_bonus": 0.135779
    },
    "RUCK": {
-    "measured": 0.527864,
+    "measured": 0.695926,
     "n": 11,
-    "taught_all": 0.179837,
-    "taught_bonus": 0.179837
+    "taught_all": 0.199998,
+    "taught_bonus": 0.199998
    },
    "SD": {
-    "measured": -0.113045,
+    "measured": -0.089908,
     "n": 85,
-    "taught_all": 0.091459,
-    "taught_bonus": 0.091459
+    "taught_all": 0.135314,
+    "taught_bonus": 0.135314
    },
    "SF": {
-    "measured": -0.021162,
+    "measured": -0.063183,
     "n": 102,
-    "taught_all": 0.112268,
-    "taught_bonus": 0.112268
+    "taught_all": 0.162438,
+    "taught_bonus": 0.162438
    },
-   "ZERO-CELL picks 1-10 x top-tercile z": {
-    "measured": -0.061978,
-    "n": 29,
-    "taught_all": 0.016032,
-    "taught_bonus": 0.022165
+   "ZERO-CELL picks 1-10 x top-tercile sa": {
+    "measured": 0.003902,
+    "n": 57,
+    "taught_all": 0.026005,
+    "taught_bonus": 0.034474
    },
-   "ZERO-CELL picks 1-20 x above-median z": {
-    "measured": -0.084553,
-    "n": 84,
-    "taught_all": 0.018055,
-    "taught_bonus": 0.030661
+   "ZERO-CELL picks 1-20 x above-median sa": {
+    "measured": 0.034995,
+    "n": 122,
+    "taught_all": 0.05152,
+    "taught_bonus": 0.059623
    },
    "cumulative games 6-9": {
-    "measured": 0.136933,
+    "measured": 0.135857,
     "n": 130,
-    "taught_all": 0.175956,
-    "taught_bonus": 0.193734
+    "taught_all": 0.222867,
+    "taught_bonus": 0.24651
    },
    "draft age <= 18": {
-    "measured": 0.081341,
+    "measured": 0.114121,
     "n": 328,
-    "taught_all": 0.102457,
-    "taught_bonus": 0.113019
+    "taught_all": 0.138273,
+    "taught_bonus": 0.153082
    },
    "picks 1-10": {
-    "measured": 0.065513,
+    "measured": 0.090424,
     "n": 132,
-    "taught_all": 0.062226,
-    "taught_bonus": 0.070678
+    "taught_all": 0.069849,
+    "taught_bonus": 0.081851
    },
    "picks 1-20": {
-    "measured": 0.065199,
+    "measured": 0.093047,
     "n": 216,
-    "taught_all": 0.063087,
-    "taught_bonus": 0.073084
+    "taught_all": 0.083974,
+    "taught_bonus": 0.09806
    },
    "picks 21-40": {
-    "measured": 0.28345,
+    "measured": 0.392144,
     "n": 109,
-    "taught_all": 0.235527,
-    "taught_bonus": 0.245303
+    "taught_all": 0.322582,
+    "taught_bonus": 0.335918
    },
    "picks 41-64": {
-    "measured": -0.031863,
+    "measured": -0.032194,
     "n": 89,
-    "taught_all": 0.003602,
-    "taught_bonus": 0.005157
+    "taught_all": 0.004717,
+    "taught_bonus": 0.007078
    },
    "whole year-1 leg": {
-    "measured": 0.096269,
+    "measured": 0.136328,
     "n": 414,
-    "taught_all": 0.089189,
-    "taught_bonus": 0.098383
+    "taught_all": 0.120367,
+    "taught_bonus": 0.133257
    }
   },
   "directive": "issue 334 comment 5217307894 + Addendum 1 comment 5217452004",
-  "estimand": "value-weighted aggregate F' = sum(F)/sum(price); median F' pre-registered beside it",
+  "estimand": "REGISTERED: value-weighted aggregate F' = sum(F)/sum(price) with F = v(C+4)/1.0939**(4-N), the engine's no-arb identity (1.0939**4 = 1.432 = the year-4 band); median F' pre-registered beside it. Conformance repair 5219329372 \u2014 the superseded build taught a rolling 4-year mean (1.0963, 72.2% of this).",
   "kernel": "two axes only: log-pick x {nonKPP,KPP,RUCK}; Gaussian, eff-n>=35 on the value weight",
   "kpd": "KPD rows excluded from the base kernel and carried on their own sub-dial RL_G6_KPD (default 0); shapes shared, class-level scalar, DECLARED",
-  "measured_agg_y1_bonus_population": 1.128444,
-  "measured_agg_y1_kpd": 0.748407,
-  "measured_agg_y1_whole": 1.096269,
-  "measured_median_y1": 0.963172,
+  "measured_agg_y1_bonus_population": 1.179649,
+  "measured_agg_y1_kpd": 0.667967,
+  "measured_agg_y1_whole": 1.136328,
+  "measured_median_y1": 0.867183,
   "n_rows": {
    "y1": 414,
    "y2": 684,
@@ -147,7 +171,7 @@
   },
   "notes": {
    "B_KPD": {
-    "delta": -0.251593,
+    "delta": -0.332033,
     "flat": true,
     "n": 35,
     "note": "class-level scalar; no pick axis (eff-n cannot support one)"
@@ -261,29 +285,29 @@
     }
    ],
    "Stau_raw_delta": [
-    0.128444,
-    -0.044663,
-    -0.169041,
+    0.179649,
+    0.030549,
+    -0.013401,
     0.0
    ],
    "Stau_unclamped": [
     1.0,
-    -0.347723,
-    -1.316061,
+    0.170047,
+    -0.074595,
     0.0
    ],
-   "Sz_Lsmooth_kappa": 0.693842,
+   "Sz_Lsmooth_kappa": 0.912673,
    "Sz_before_Lsmooth": [
-    3.033281,
-    2.339239,
-    1.360019,
-    0.48781,
-    0.017171
+    2.429782,
+    1.979691,
+    1.276861,
+    0.650416,
+    0.298563
    ],
    "Sz_effn_bw": "printed in teach_log.txt",
-   "conservation_Z": 0.715015,
-   "measured_supported": 0.127287,
-   "monotonicity_margin_rung1": 0.053337,
+   "conservation_Z": 0.772923,
+   "measured_supported": 0.172408,
+   "monotonicity_margin_rung1": 0.023791,
    "monotonicity_worst_cell": [
     "nonKPP",
     25,
@@ -292,14 +316,15 @@
     0.3
    ]
   },
+  "performance_axis": "REGISTERED: sa, the season scoring average in the evaluation year (the cross-section's own tercile axis). The surface's demonstrated-level SHAPE GATE remains z = log(e/entry_anchor), unchanged and not re-decided.",
   "pooled_classes": [
    "KPP",
    "RUCK"
   ],
   "population": "ND 1-64, classes 2004-2022, evaluation years 1-3, ns>=1 (established) leg",
   "shapes": "Stau (measured, isotonic, clamped [0,1]) x Sz (z=log(e/entry_anchor)) x Sg (cumulative games) x declared pick taper x declared draft-age taper",
-  "taught_agg_delta_rung1_bonus": 0.098383,
-  "taught_agg_delta_rung1_kpd": -0.009194,
+  "taught_agg_delta_rung1_bonus": 0.133257,
+  "taught_agg_delta_rung1_kpd": -0.012891,
   "teaching_board": "b56bbdde (the frozen baseline the matrix was emitted at)",
   "teaching_matrix": "per_entrant_338_stage4a1.json",
   "teaching_matrix_md5": "b564b12e533119f49c2c6bb0c92a5d91"
@@ -317,24 +342,24 @@
   48.0
  ],
  "s_g": [
-  1.46314186,
-  1.24032137,
-  1.02436628,
-  0.85375507,
-  0.67442648
+  1.29429312,
+  1.18625276,
+  1.04255049,
+  0.91723039,
+  0.77886267
  ],
  "s_tau": [
   1.0,
-  0.0,
+  0.17004682,
   0.0,
   0.0
  ],
  "s_z": [
-  2.38781694,
-  1.9062616,
-  1.22683705,
-  0.62166161,
-  0.29511201
+  2.30103447,
+  1.89024929,
+  1.2487949,
+  0.67705544,
+  0.35592839
  ],
  "tau_knots": [
   1.0,

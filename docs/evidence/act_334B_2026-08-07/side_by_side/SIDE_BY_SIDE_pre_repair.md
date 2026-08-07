@@ -461,85 +461,52 @@ the amendment as a fifth stage column; per-row stage sums re-asserted on all 804
 
 # 8 · STAGE 6 — THE CONDITIONED DEVELOPMENT CORRECTION, AS A FOUR-RUNG LADDER
 
-> **AMENDED 2026-08-07 by the CONFORMANCE REPAIR** (issue #334 comment `5219329372`). The section as
-> first written is preserved verbatim at `SIDE_BY_SIDE_pre_repair.md`. The stage-6 surface was
-> re-taught to the estimand the directive registered and the zero-cell gate is now read on the
-> cross-section's own performance axis. **The shipped board did not move.** What changed for you:
-> **three of the four rungs are now struck instead of two**, the frontier is lower, and **the road
-> that asked you to rule on the zero-cell bound is WITHDRAWN** — that bound was right all along.
-
 **Shipped state: `RL_G6_W = 0`, `RL_G6_KPD = 0`.** The board above is unmoved and byte-exact. What
 follows is the ladder the owner rules on. **This seat makes no recommendation.**
-
-## 8.0 · What the repair corrected, in plain words
-
-The estimand the directive registered was the one your own cross-section measured: take what a
-player's cohort was actually worth at **career year 4**, discount it back to the year you are pricing
-at the engine's own **9.39% hurdle** (the rate for which four years compounds to 1.432 — exactly the
-year-4 band), and divide by what he was priced at. On the year-1 established leg that reads **1.136**
-— under-priced by 13.6%. The first build instead used a **rolling four-year average**, which has no
-no-arbitrage reading, read 1.096, and taught the surface to conserve that: **72% of the real gap.**
-Second, the "already priced in" cell was tested on the wrong statistic — the cross-section terciled
-on the **season scoring average**, and on that axis the cell reads **+0.4%, dead par**, exactly as it
-was filed. Both are fixed. The registered statistic now reproduces your cross-section at all three
-evaluation years and in all ten of its named cells.
 
 ## 8.1 · The landing at every rung, on BOTH bases — full cohort leading
 
 | population (year 1) | n | s5 LANDED | rung 0.25 | rung 0.5 | rung 0.75 | rung 1.0 |
 |---|---|---|---|---|---|---|
-| **FULL COHORT ND+pool 2004-2025** | 2517 | 0.946050 | **0.962364** | **0.978708** | **0.995053** | **1.011399** |
-| ND 1-64, 2004-2025 | 1383 | 0.988526 | 1.009230 | 1.029973 | 1.050717 | 1.071461 |
+| **FULL COHORT ND+pool 2004-2025** | 2517 | 0.946050 | **0.958020** | **0.970017** | **0.982021** | **0.994018** |
+| ND 1-64, 2004-2025 | 1383 | 0.988526 | 1.003718 | 1.018943 | 1.034177 | 1.049403 |
 | pool routes, 2004-2025 | 1134 | 0.788214 | 0.788214 | 0.788214 | 0.788214 | 0.788214 |
-| ND 1-64, 2004-2022 (teaching window) | 1197 | 0.990805 | 1.011071 | 1.031377 | 1.051681 | 1.071991 |
-| ND picks 1-20 | 377 | 1.001589 | 1.019343 | 1.037165 | 1.054967 | 1.072792 |
-| ND picks 21-64 | 820 | 0.973706 | 0.997954 | 1.022200 | 1.046470 | 1.070721 |
+| ND 1-64, 2004-2022 (teaching window) | 1197 | 0.990805 | 1.005681 | 1.020597 | 1.035515 | 1.050429 |
+| ND picks 1-20 | 377 | 1.001589 | 1.014677 | 1.027820 | 1.040960 | 1.054100 |
+| ND picks 21-64 | 820 | 0.973706 | 0.991419 | 1.009145 | 1.026882 | 1.044608 |
 
 **The pool leg takes zero at every rung, by construction** — it is stage 7's, on its own measurement.
 Your [1.04, 1.13] range binds on the ND teaching window; on the full-cohort basis the sequence never
 reaches 1.04, and **that basis question is yours**, not this seat's.
 
-## 8.2 · The THREE rungs that are STRUCK, and by what
+## 8.2 · The two rungs that are STRUCK, and by what
 
 | rung | ND yr1 (teaching window) | verdict |
 |---|---|---|
-| 0.25 | 1.011071 | **FEASIBLE** — every registered bound met, on all three readings of the level axis |
-| 0.5 | 1.031377 | **STRUCK** — the at-par cells move **+1.724%** and **+2.981%** against their 1.500% / 2.500% bounds |
-| 0.75 | 1.051681 | **STRUCK** — as above and worse (+2.586% / +4.472%), plus the declared picks 41-64 taper at +0.531% against 0.500%, plus the pick/player seam at 2.754% against ±2.00% |
-| 1.0 | 1.071991 | **STRUCK** — all of the above, worst +5.962% against 2.500%; seam 3.768% |
+| 0.25 | 1.005681 | **feasible** — every registered bound met on both readings of the level axis |
+| 0.5 | 1.020597 | **feasible** — all bounds met on the surface's own axis; +0.08pp over on the alternative reading, disclosed |
+| 0.75 | 1.035515 | **STRUCK** — at-par cell picks 1-10 × top-tercile moves +1.662% against its 1.500% bound |
+| 1.0 | 1.050429 | **STRUCK TWICE** — at-par cells +2.217% / +3.066% against 1.500% / 2.500%, and the pick/player seam moves 2.338% against the ±2.00% tolerance |
 
-**THE HONEST CEILING.** Solved as a continuum rather than at a presented rung, the most this act can
-deliver under the registered gates is **rung 0.4193**, landing year 1 at **1.0248** — short of your
-1.04 floor by **0.015**. Reaching 1.04 would need rung 0.72, nearly double the feasible maximum.
-The ladder is deliberately not re-cut to sit on 0.4193: inventing a rung to land on the frontier is
-the tuning the strike law exists to prevent.
+**The plain sentence: the only rungs that reach your ruled range are the rungs the registered gates
+strike.** Three roads out exist and all three are yours — `../stage6/FRONTIER.txt` §4.
 
-**Two roads out remain, and both are yours** — `../stage6/FRONTIER.txt` §4:
-* ~~(a) rule on the zero-cell bound~~ **WITHDRAWN.** The bound was not registered off a broken
-  measurement. On its true axis the at-par cell is at par under either horizon. **You no longer have
-  this ruling to make** — the bound is vindicated and, if anything, conservative.
-* **(b) rule stage 5's open decision** — the no-cell-above-its-own-entry-anchor cap, worth +0.009 on
-  the teaching window on its own. With (a) dead, this road now carries more of the story.
-* **(c) let stage 7's pool treatment carry the remaining distance**, on the full-cohort basis where
-  the pool leg is 45% of the cohort and stage 6 gives it exactly zero by construction.
+## 8.3 · The tail-vs-typical tension, at every rung
 
-## 8.3 · The tail-vs-typical tension, at every rung — SHARPER after the repair
-
-The value-weighted aggregate says the year-1 established leg is under-priced by **13.6%**. The
-**median** says the *typical* such player is already priced **15% above** his own realised discounted
-future, and only **45.2%** of them out-earn even the uncorrected price.
+The value-weighted aggregate says the year-1 established leg is under-priced by **9.6%**. The
+**median** says the *typical* such player is already priced **4% above** his own realised discounted
+future, and only **47.6%** of them out-earn even the uncorrected price.
 
 | rung | corrected aggregate F′ | corrected **median** F′ | typical player over-priced by | fraction who out-earn the corrected price |
 |---|---|---|---|---|
-| 0 (shipped) | 1.1363 | 0.8672 | 15% | 45.2% |
-| 0.25 | 1.0997 | 0.8153 | 23% | 43.5% |
-| 0.5 | 1.0653 | 0.7725 | 29% | 42.0% |
-| 0.75 | 1.0331 | 0.7472 | 34% | 41.3% |
-| 1.0 | 1.0027 | 0.7173 | **39%** | 40.3% |
+| 0 (shipped) | 1.0963 | 0.9632 | 4% | 47.6% |
+| 0.25 | 1.0700 | 0.9219 | 8% | 45.4% |
+| 0.5 | 1.0449 | 0.8969 | 11% | 44.4% |
+| 0.75 | 1.0209 | 0.8743 | 14% | 42.0% |
+| 1.0 | 0.9981 | 0.8331 | **20%** | 40.3% |
 
 **The median-neutral rung is below zero.** Every positive rung improves the aggregate and worsens the
-typical player, and the registered estimand makes that trade **worse**, not better, than the first
-build reported. That is the pub test, as a number.
+typical player. That is the pub test, as a number.
 
 ## 8.4 · The fence, and your named cases
 
@@ -549,26 +516,16 @@ build reported. That is the pub test, as a number.
 | **integer-identical at every rung** | **165 / 165 — PASS** |
 | **Mraz** | **1645 at every rung** = **3.1038× his pick** (your 3.0-3.5 tier: pass, disclosed) — **unmoved by stage 6** |
 | **Nairn** | **605 at every rung** — unmoved |
-| movers | 65 / 70 / 72 / 73 |
-| board total | +0.238% / +0.477% / +0.714% / +0.953% |
-| largest single move (rung 1.0) | `max-kondogiannis` 355 → 660 (+85.9%); at rung 0.25, +21.4% |
-| ride tables | printed at every rung; worst entry-year excess **+2.91 / +2.17 / +1.45 / +0.75 pp/yr** against your +5.00 line — **no machine STOP** |
-| band [1.35, 1.45] | whole **1.4327** and picks 1-20 **1.4293** at every rung, INSIDE; picks 21-64 **1.4712** outside but byte-identical to the stage-5 baseline |
+| movers | 41 / 43 / 44 / 44 — **every one UP, zero cuts**, at every rung |
+| board total | +0.144% / +0.288% / +0.431% / +0.575% |
+| largest single move (rung 1.0) | `max-kondogiannis` 355 → 594 (+67.3%); at rung 0.25, +16.6% |
+| ride tables | printed at every rung; worst entry-year excess **+3.11 / +2.56 / +2.02 / +1.49 pp/yr** against your +5.00 line — **no machine STOP** |
+| band [1.35, 1.45] | whole **1.432651** and picks 1-20 **1.429314** at every rung, INSIDE; picks 21-64 **1.471250** outside but byte-identical to the stage-5 baseline |
 | numéraire | pick 1 = 3,000, unconditional, at every rung |
-
-**ONE THING THAT CHANGED THAT YOU SHOULD SEE.** The first build reported *zero cuts* — every mover up.
-That is no longer true. On the registered estimand your top-of-draft picks measure **+9.0%**
-under-priced against **+39.2%** at picks 21-40, so the taught surface goes slightly **negative at the
-very top of the pick axis**. At rung 1.0 **seven rows fall, all picks 1-3, none by more than 1.95%**:
-Zeke Uwland −1.95%, Willem Duursma −1.25%, Finn O'Sullivan −0.44%, Sam Lalor −0.29%, Jagga Smith
-−0.24%, Harley Reid −0.03%, Colby McKercher −0.03%. At rung 0.25 five fall, worst −0.50%. This is the
-directive's own "negative where measured over-priced" clause working on the pick axis; it passes the
-monotonicity law; and **it is not the KPD markdown**, which stays on its own sub-dial at zero.
 
 ## 8.5 · The KPD question, which is a separate ruling
 
-Young established KPDs measure **over-priced** (F′ = **0.668** on the registered estimand — the
-cross-section filed 0.67, now reproduced exactly). Your words described a bonus, so the markdown does
-**not** ride the bonus dial: it has its own sub-dial `RL_G6_KPD`, shipped at 0, and at that setting
-**a KPD takes exactly zero**. The identical-career KPD/KPF pair is printed at every rung on both
-settings in `../stage6/PROBES.txt` §(h). **That cut is yours to rule on separately.**
+Young established KPDs measure **over-priced** (F′ = 0.748). Your words described a bonus, so the
+markdown does **not** ride the bonus dial: it has its own sub-dial `RL_G6_KPD`, shipped at 0, and at
+that setting **a KPD takes exactly zero**. The identical-career KPD/KPF pair is printed at every rung
+on both settings in `../stage6/PROBES.txt` §(h). **That cut is yours to rule on separately.**

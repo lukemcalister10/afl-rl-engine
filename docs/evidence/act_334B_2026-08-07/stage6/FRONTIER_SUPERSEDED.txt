@@ -1,0 +1,155 @@
+================================================================================================
+#334 stage B / STAGE 6 — THE FRONTIER.  What bound this act, by how much, and what it costs.
+================================================================================================
+
+This file exists because two registered gates BIND on the upper half of the ladder. The seat did not
+tune past them, did not re-pick a declared boundary after seeing which rung it struck, and does not
+recommend a rung. What follows is the frontier as measured.
+
+------------------------------------------------------------------------------------------------
+1 · THE BINDING CONSTRAINT — the monotonicity law against the zero-cell bounds
+------------------------------------------------------------------------------------------------
+The correction's power to be ZERO WHERE ALREADY PRICED comes entirely from its demonstrated-level
+axis, Sz over z = log(e / entry_anchor): a player the engine has already re-rated upward reads a
+high z and takes little or nothing. Measured, that axis is steep — the local residual runs +37.6%
+at the bottom of the z range and −11.6% at the top.
+
+But a steep DECREASING function of z is exactly what can invert prices: the shipped surface must
+keep e*(1+delta) strictly increasing in e, or a strictly better career prices lower — the owner's
+monotonicity law. Solving the two together (teach_log.txt, the joint block) the minimal declared
+L-SMOOTH shrink of the Sz deviation is
+
+    kappa = 0.693842      min d/dln(e)[e*(1+delta)] at rung 1.0 = +0.053337
+
+and that shrink is what pushes the at-par cells back above their registered bounds at the top of
+the ladder. The two laws are in genuine tension; this is the frontier, not a defect.
+
+------------------------------------------------------------------------------------------------
+2 · THE ZERO-CELL GATE, in ABSOLUTE units (Addendum 1), at every rung
+------------------------------------------------------------------------------------------------
+The gate is read on BOTH definitions of "demonstrated level": the surface's own axis z, and the
+axis the cross-section reported on, pr = bestlvl/par. The binding one binds.
+
+  cell                                    bound   rung .25  rung .50  rung .75  rung 1.0
+  picks 1-10 x TOP-TERCILE z              0.015   +0.00554  +0.01108  +0.01662  +0.02217
+  picks 1-20 x ABOVE-MEDIAN z             0.025   +0.00767  +0.01533  +0.02300  +0.03066
+  picks 1-10 x TOP-TERCILE pr             0.015   +0.00792  +0.01584  +0.02376  +0.03168
+  picks 1-20 x ABOVE-MEDIAN pr            0.025   +0.01181  +0.02361  +0.03542  +0.04723
+  picks 41-64 (declared taper)            0.005   +0.00129  +0.00258  +0.00387  +0.00516
+  draft age 19+ (declared taper)          0.005   +0.00000  +0.00000  +0.00000  +0.00000
+  draft age UNKNOWN (identically 0)       0.000   +0.00000  +0.00000  +0.00000  +0.00000
+
+  rung 0.25 : ALL BOUNDS MET on both readings.                                 FEASIBLE
+  rung 0.5  : all z-bounds met; the pr reading of picks 1-10 x top-tercile
+              exceeds 1.5% by 0.08pp (1.584% vs 1.500%).                       FEASIBLE, DISCLOSED
+  rung 0.75 : the SURFACE'S OWN axis breaches (1.662% vs 1.500%).              STRUCK
+  rung 1.0  : three z/deep-pick bounds breach, worst 3.066% vs 2.500%.         STRUCK
+
+  A NOTE THE OWNER IS OWED ON THE `pr` READING: on this instrument the cell "picks 1-10 x
+  top-tercile pr" is NOT at par — it measures +5.56%, not the cross-section's +0.39%. Bounding a
+  correction at 1.5% in a cell whose own residual is +5.6% is bounding a real signal, not a bleed.
+  On the z reading the same cell measures −6.20% — genuinely already priced — and the bound is
+  doing the job it was registered to do. Both readings are printed; NEITHER is chosen by the seat.
+
+------------------------------------------------------------------------------------------------
+3 · THE SECOND, INDEPENDENT STRIKE ON RUNG 1.0 — the pick/player seam
+------------------------------------------------------------------------------------------------
+  max |per-pick move| in the implied ladder, attributable to stage 6, vs the +-2.00% seam tolerance:
+    rung 0.25  0.605144%   PASS
+    rung 0.5   1.159420%   PASS
+    rung 0.75  1.739130%   PASS
+    rung 1.0   2.338377%   BREACH -> branch-hold to the owner
+
+------------------------------------------------------------------------------------------------
+4 · WHAT THE STRIKES COST, against the owner's ruled range
+------------------------------------------------------------------------------------------------
+The [1.04, 1.13] range binds on ND 1-64, teaching window (Addendum 1 F4).
+
+    rung 0.25   1.005681   below 1.04 by -0.034319   OUTSIDE
+    rung 0.5    1.020597   below 1.04 by -0.019403   OUTSIDE
+    rung 0.75   1.035515   below 1.04 by -0.004485   OUTSIDE   (STRUCK on the zero-cell gate)
+    rung 1.0    1.050429   above 1.04 by +0.010429   INSIDE    (STRUCK twice)
+
+THE PLAIN SENTENCE: the only rungs that reach the owner's ruled range are the rungs the registered
+gates strike. On the feasible half of the ladder the sequence lands at 1.006-1.021 on the teaching
+window — SHORT of the range by 0.019 to 0.034. That is the frontier and it is not this seat's to
+close by relaxing a gate.
+
+Three roads exist and all three are the OWNER'S, not the seat's:
+  (a) rule the zero-cell bound (it was registered by the audit at figures taken from a cross-section
+      whose at-par cell this build re-measures at +5.6% on one axis and -6.2% on the other);
+  (b) rule stage 5's open decision — the no-cell-above-its-own-entry-anchor law, worth +0.009 on the
+      teaching window on its own (stage5/CONSISTENCY_PASS.md section 3);
+  (c) let stage 7's pool treatment carry the remaining distance, on the full-cohort basis where the
+      pool leg is 45% of the cohort and stage 6 contributes nothing by construction.
+
+------------------------------------------------------------------------------------------------
+5 · THE CORNER AMPLIFICATION — the cost of the mandated decomposition, filed as a finding
+------------------------------------------------------------------------------------------------
+Addendum 1 fixed the kernel at TWO axes and made every other axis a declared shape gate. That makes
+the shipped surface a MARGINAL (independence) product of factors that are in fact CORRELATED —
+deep-ish picks tend also to carry low z and few games. The aggregate is protected by the single
+declared conservation normaliser (Z = 0.715015, so |Z-1| = 0.285 IS the measured double-count), but
+the CORNER is not:
+
+    max |delta| the surface can produce at rung 1.0 = 1.6197  (nonKPP, pick 25, 6 games, z = -0.6)
+    i.e. a +162% price move, against an aggregate the surface is calibrated to at +9.8%.
+
+Realised on the current board at rung 1.0 the two largest movers are
+    max-kondogiannis   355 -> 594   +67.3%   (pick 36, age 18, 8 career games)
+    louis-emmett       619 -> 1024  +65.4%   (pick 27, age 18, 6 career games)
+and at rung 0.25, +16.6% and +16.3%. Every mover at every rung moves UP; zero rows fall.
+
+No registered gate caps an individual lift, so nothing here strikes a rung — but the number is
+filed rather than left for a reader to find. A cap would be machinery the directive does not
+authorise; an orthogonalised (rather than marginal) shape estimation would be the method fix and it
+is a re-teach, not a tune, for whoever holds the next iteration budget.
+
+------------------------------------------------------------------------------------------------
+6 · TWO ORDERING DEFECTS THIS BUILD FOUND IN ITSELF, ONE FIXED AND ONE DISCLOSED
+------------------------------------------------------------------------------------------------
+(a) FIXED. The first cut ran the monotonicity law BEFORE the conservation normaliser, so the
+    normaliser (which scales the base UP by 1/Z) re-broke the margin the law had just secured. The
+    two are coupled and are now solved jointly. Caught by the probe suite, not by inspection.
+(b) DISCLOSED, NOT FIXED. The pick-taper endpoint sweep that fixed the declared endpoints 34 -> 48
+    was read BEFORE the same normaliser. Post-normalisation the picks 41-64 band moves +0.516pp at
+    rung 1.0 against its 0.5pp bound — 0.016pp over. At every other rung it is met (0.129 / 0.258 /
+    0.387pp). The endpoints were NOT re-picked afterwards: re-picking a declared boundary once you
+    can see which rung it strikes is tuning, and rung 1.0 is struck on other grounds regardless.
+
+------------------------------------------------------------------------------------------------
+7 · THE MEASUREMENT DISCREPANCY AGAINST THE CROSS-SECTION OF RECORD
+------------------------------------------------------------------------------------------------
+Re-measured in-build on the SAME frozen matrix b564b12e with the cross-section's own method, the
+year-1 established leg reads:
+
+                                  this build      cross-section 5215260604
+    year-1 aggregate F'             1.0963              1.136
+    year-2 aggregate F'             0.9344              1.004
+    year-3 aggregate F'             0.8205              0.973
+    row counts (yr1/2/3)         414 / 684 / 818     414 / 684 / 819
+
+The POPULATIONS reproduce exactly; the LEVELS do not, and the fade is materially faster here. The
+seat could not reconcile the cross-section's figures from its published method and did not adopt
+them: the surface is taught from THIS build's own rows, which are committed (s6_rows.json), and the
+conservation check is run against THIS build's own aggregate. The directive's estimand of 1.136 is
+therefore NOT the number the shipped surface conserves — it conserves 1.0963. Stated, not buried.
+
+------------------------------------------------------------------------------------------------
+8 · WHAT THE MANDATED TWO-AXIS KERNEL COULD NOT RESOLVE
+------------------------------------------------------------------------------------------------
+At eff-n >= 35 the KPP class (n=34 after the KPD exclusion) and the RUCK class (n=11) cannot resolve
+their own pick axis and are POOLED over all classes, declared. The consequence, printed at rung 1.0:
+
+  cell            measured    taught
+  MID              +0.1891   +0.1022
+  KPF              +0.4115   +0.1413
+  RUCK             +0.5279   +0.1798
+  SF               -0.0212   +0.1123
+  SD               -0.1130   +0.0915
+  KPD              -0.2516   +0.0000   (own sub-dial, default 0)
+
+The position signal the cross-section found is mostly NOT resolvable at eff-n 35 on a two-axis
+kernel. SF and SD, whose own cells measure at or below par, receive a lift inside the pooled nonKPP
+class. That is a direct consequence of the kernel the directive fixed, and it is reported rather
+than worked around.

@@ -1,9 +1,29 @@
-e5fee49bb9dc553ddbaf55143bd03742  boards/board_rung0.25_kpd0.json
-56b6c21cec6fccdeb3711ccd9981fac1  boards/board_rung0.5_kpd0.json
-b963e36a8423470ecfdc1f3e5e691806  boards/board_rung0.75_kpd0.json
-17c96ca4add0fd49609ed8fd5009a641  boards/board_rung1.0_kpd0.json
-2eff80a4bbf9031ae8e25e54ef9b63be  noarb/per_entrant_338_rung0.25.json
-8553acf07bffd5570bc6d8b4e76c9f5a  noarb/per_entrant_338_rung0.5.json
-22402f35c41e306bb4fbeb3d2c2302e3  noarb/per_entrant_338_rung0.75.json
-ca6cd25d725a22b74afe775d7b044c04  noarb/per_entrant_338_rung1.0.json
-13f8c2e0240600733a5fb42414510445  ../../../../data/rl_build/rl_app_data.json
+#334 stage B / stage 6 — RUNG ARTIFACT IDENTITIES
+CONFORMANCE REPAIR of 2026-08-07 (issue #334 comment 5219329372): every rung artifact below was
+RE-EMITTED from the re-taught surface g6_table.json md5 61450f0b63f725b8666a49349857b02d.
+The SHIPPED board does not move — both dials ship at 0 and the stage-5 landing rebuilds byte-exact.
+
+== CURRENT (repaired; taught to the REGISTERED estimand 1.1363, gate read on the season-average axis)
+9883420bf729d4434001e15acb83d2ef  boards/board_rung0.25_kpd0.json
+b0a3369f70398610bf8a94a1892de710  boards/board_rung0.5_kpd0.json
+f43cdf45ddf3adf63aee684cf13c3525  boards/board_rung0.75_kpd0.json
+a270286fc09ac3cd7379950850a8357a  boards/board_rung1.0_kpd0.json
+92b94767bd4a975c1714e9a63f63330d  noarb/per_entrant_338_rung0.25.json
+3161872265c12738e0ceae6e066196ad  noarb/per_entrant_338_rung0.5.json
+42ea62b2fc4ba06bf1fe830d5b237e59  noarb/per_entrant_338_rung0.75.json
+be5fba616372afbfca3d83add2f636de  noarb/per_entrant_338_rung1.0.json
+13f8c2e0240600733a5fb42414510445  ../../../../data/rl_build/rl_app_data.json   (SHIPPED, unmoved)
+
+== HISTORY — SUPERSEDED by the conformance repair (the original stage-6 build, tip d405afb)
+These were emitted from g6_table.json md5 5656dd8bbb19b193e1acde5063664cc5, which conserved the
+rolling-4-year-mean statistic (1.0963) instead of the registered estimand.  The files themselves are
+NOT retained (22 MB of duplicate boards and matrices); their identities are the decision record and
+they are preserved here, in PINS.md, and in the landing comment 5219180436.
+e5fee49bb9dc553ddbaf55143bd03742  boards/board_rung0.25_kpd0.json      SUPERSEDED
+56b6c21cec6fccdeb3711ccd9981fac1  boards/board_rung0.5_kpd0.json       SUPERSEDED
+b963e36a8423470ecfdc1f3e5e691806  boards/board_rung0.75_kpd0.json      SUPERSEDED
+17c96ca4add0fd49609ed8fd5009a641  boards/board_rung1.0_kpd0.json       SUPERSEDED
+2eff80a4bbf9031ae8e25e54ef9b63be  noarb/per_entrant_338_rung0.25.json  SUPERSEDED
+8553acf07bffd5570bc6d8b4e76c9f5a  noarb/per_entrant_338_rung0.5.json   SUPERSEDED
+22402f35c41e306bb4fbeb3d2c2302e3  noarb/per_entrant_338_rung0.75.json  SUPERSEDED
+ca6cd25d725a22b74afe775d7b044c04  noarb/per_entrant_338_rung1.0.json   SUPERSEDED

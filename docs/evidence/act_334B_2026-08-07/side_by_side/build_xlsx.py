@@ -248,7 +248,12 @@ LINES = [
     ('5.', 'STAGE 6 is a LADDER, not a board. Its shipped dials are both 0, so the players sheet shows zero movement and the shipped board is'),
     ('', 'still 13f8c2e0. The `stage 6 rungs` sheet carries the four candidate intensities side by side, per row, with the per-row identity'),
     ('', 'landed + Δ == rung asserted on every cell. NO RUNG IS RECOMMENDED. Read stage6/README.md and stage6/FRONTIER.txt before ruling:'),
-    ('', 'two of the four rungs are STRUCK by registered gates, and the reason is printed with the exact figure that struck them.'),
+    ('', 'THREE of the four rungs are STRUCK by registered gates, and the reason is printed with the exact figure that struck them.'), ('', ''),
+    ('6.', 'CONFORMANCE REPAIR, issue #334 comment 5219329372. The stage-6 surface was RE-TAUGHT to the estimand the directive actually'),
+    ('', 'registered (F = v(career year 4) discounted back at the 1.0939 hurdle — the engine no-arb identity; value-weighted year-1'),
+    ('', 'aggregate 1.1363) in place of the rolling 4-year mean the first build substituted (1.0963, 72.2% of it); and the zero-cell gate'),
+    ('', 'is read on the cross-section\'s own performance axis, the evaluation-year SEASON SCORING AVERAGE, not the production ratio the'),
+    ('', 'first build assumed. All four rung boards and matrices re-emitted; the SHIPPED dial-0 board is UNCHANGED at 13f8c2e0, byte-exact.'),
 ]
 for i, (a, b_) in enumerate(LINES, 1):
     rm.cell(i, 1, a).font = Font(name='Arial', sz=10, b=True)
