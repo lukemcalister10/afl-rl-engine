@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v93 · supervisor pen · 2026-08-07, register v603
+# CURRENT STATE — the incoming-seat read · v94 · supervisor pen · 2026-08-07, register v604
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,9 +128,11 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v93 · supervisor pen · 2026-08-07, register v603 · AMENDMENT 1 LANDED + the side-by-side BUILT —
-the act's build work is COMPLETE on the landing branch; the STOP is the owner's side-by-side word.
-Two rulings owed: the yr1-to-peak trigger and the surprise-trust dial. Primer v7 first.)
+(v94 · supervisor pen · 2026-08-07, register v604 · TRIGGER (b) UPHELD — act shape REJECTED;
+STAGE 5 FIRED (quiet-starter reprice, directive v3 = #334 comment 5215130236), conformance audit
++ stage-6 cross-section measurement running at the pen. Read the v604 register entry IN FULL
+before touching stage 5 — the design loop's two NOT-FIT audits and three measurement rounds are
+the ground. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
@@ -250,10 +252,27 @@ Two rulings owed: the yr1-to-peak trigger and the surprise-trust dial. Primer v7
    column PER STAGE summing exactly to the total (the owner-ordered per-stage sheet); 3,344
    formulas verified in Python (LibreOffice broken in sandbox — disclosed, verifier shipped).
    Identities: engine_head bc45d773 · config 38a73675 · board b56bbdde · matrix b564b12e.
-   NOW OPEN: the owner side-by-side review — TWO RULINGS OWED: (1) trigger (b) yr1-to-peak
-   1.5068 vs shipped 1.400; (2) the surprise dial incl. the one-row integer tension (hold
-   5.0 / drop to 2.0 / retune). NOTHING merges, no out-of-round column registers before his
-   word. Evidence
+   THE REVIEW RULED (2026-08-07, all owner words verbatim on #334): baseline word "I'm happy
+   with the current board" = b56bbdde IS the ruled baseline + surprise dial HELD at 5.0
+   (5213766677) · **TRIGGER (b) UPHELD — the shape REJECTED** ("a loophole to tick success...
+   Year 1 players being worth less than their picks does not make sense", 5213743952).
+   STAGE 5 FIRED (5215125681): the QUIET-STARTER REPRICE, directive v3 (5215130236) — G
+   taught once from the frozen baseline book over (continuous τ × games-at-pace × log-pick),
+   sitout_ev anchor leg both sites, zero-games cells held at measured-honest (their clock is
+   TRUE: median career peak 0.74× entry), quiet starters (287 of the 783-player deficit leg)
+   repriced to measured futures (+40–60% anchor; landing yr1 ≈ 1.01–1.03, gate [1.00,1.04]);
+   Mraz tolerance 3.0×→3.5–3.8× (owner slack); FRONT-LOADED assert = printed guide (owner:
+   "a relic"); SEASON-ROUND clock + smooth-over-years + phase-out seasons 2/3 (owner laws);
+   design loop on the record: v1 NOT FIT (5213853619) → pre-meas 1 (5214041025, pole channel
+   dropped as wrong tool) → v2+pub-test amendment NOT FIT (5214209797) → pre-meas 2
+   (5214400439, the three-class discovery). STAGE 6 QUEUED, its own directive after the
+   cross-section measurement (running): the conditioned established-leg residual (yr1
+   established 414 priced 1.229 vs discounted future ~1.40; owner reframe: teach it per
+   pick/position/level, some cells already priced; combined trajectory ~1.07–1.11 satisfies
+   his [1.04,1.13] ACROSS THE SEQUENCE). Conformance audit on v3 running at the pen; build
+   fires on its clean return; seam verifies on pushed bytes; then the side-by-side. NOTHING
+   merges, no out-of-round column registers before his word. Seat-conduct note (v604): twice
+   said-before-done, corrected on the record; guard adopted. Evidence
    `docs/evidence/act_334B_2026-08-07/` on the branch. Product commits: build-seat; the seam
    verifies deciding figures. Seam worktree: /home/claude/seamcheck_landing. Track B note
    (v597): PROCESS-light, not model-simple.
