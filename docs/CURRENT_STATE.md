@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v86 · supervisor pen · 2026-08-07, register v596
+# CURRENT STATE — the incoming-seat read · v87 · supervisor pen · 2026-08-07, register v597
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,9 +128,9 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v86 · supervisor pen · 2026-08-07, register v596 · replaced wholesale at the FIRE PEN — stage B
-is FIRED and executing, branch-held; the STOP is the owner's side-by-side word. The primer is at
-v6 and carries the era's meaning discoveries — read it first, in full.)
+(v87 · supervisor pen · 2026-08-07, register v597 · replaced wholesale at the STAGE-1 PEN — stage
+B executing, branch-held; gate + stage 1 both clean. The STOP is the owner's side-by-side word.
+The primer is at v6 and carries the era's meaning discoveries — read it first, in full.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
@@ -196,10 +196,15 @@ v6 and carries the era's meaning discoveries — read it first, in full.)
    (Addendum 2): before/after no-arb tables WITH per-entry-year view (N=0..5) · full before/after
    board xlsx (old/new/abs/rel + per-stage attribution + 64 pick rows) · REACTIVITY LANDS
    (required, was exploratory) with every moved player enumerated + the pedigree-pair probe.
-   EXECUTION STATE: gating step (N35 fit-class box proof, verify-only) launched at the v596 pen —
-   result at the next pen. Then: reference layer → curve re-teach → surface re-fit → reactivity,
-   fixed order, per-stage attribution, evidence tree `docs/evidence/act_334B_2026-08-07/`.
-   Product commits: build-seat; the seam verifies deciding figures only.
+   EXECUTION STATE (v597): fit-class gate PASSED (frozen surface byte-reproduced, verify-only) ·
+   STAGE 1 LANDED on `landing/334-stage-b` @ ad50dad (build-seat; board de5110bb byte-matched the
+   amend3 control; pins re-stamped incl. the board pin; selftest 144/0; delta 565 movers, ratio
+   0.965406; main unmoved) · NEXT: stage 2 (per-pick re-anchor derivation on the stage-1
+   re-emitted matrix) → stage 3 (surface re-fit, declared lane, this box is fit-class) → stage 4
+   (reactivity + tracking). Fixed order, per-stage attribution, evidence tree
+   `docs/evidence/act_334B_2026-08-07/` on the branch. Product commits: build-seat; the seam
+   verifies deciding figures only. Track B note (owner words, v597): its simplicity is
+   PROCESS-light (fast change-to-result loop), not model-simple.
 2. **#334 STAGE B** — executes the ruled target in ONE act through the declared-refit lane:
    curve re-taught + year-zero surface re-fit on the corrected history + the adopted #336 reference
    layer landed. Now ALSO carries (memo): a credits-off attribution column (the declared-refit
