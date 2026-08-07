@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v94 · supervisor pen · 2026-08-07, register v604
+# CURRENT STATE — the incoming-seat read · v95 · supervisor pen · 2026-08-07, register v605
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,9 +128,10 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v94 · supervisor pen · 2026-08-07, register v604 · TRIGGER (b) UPHELD — act shape REJECTED;
-STAGE 5 FIRED (quiet-starter reprice, directive v3 = #334 comment 5215130236), conformance audit
-+ stage-6 cross-section measurement running at the pen. Read the v604 register entry IN FULL
+(v95 · supervisor pen · 2026-08-07, register v605 · STAGE 5 FIRED with ADDENDUM 1 (the
+RECALCULATION LAW + stage-6 partial intensity, owner words 5215167494); conformance audit +
+stage-6 cross-section measurement running at the pen; this version is the thorough
+handover-quality pass the owner ordered while waiting. Read the v604 register entry IN FULL
 before touching stage 5 — the design loop's two NOT-FIT audits and three measurement rounds are
 the ground. Primer v7 first.)
 
@@ -269,24 +270,36 @@ the ground. Primer v7 first.)
    cross-section measurement (running): the conditioned established-leg residual (yr1
    established 414 priced 1.229 vs discounted future ~1.40; owner reframe: teach it per
    pick/position/level, some cells already priced; combined trajectory ~1.07–1.11 satisfies
-   his [1.04,1.13] ACROSS THE SEQUENCE). Conformance audit on v3 running at the pen; build
-   fires on its clean return; seam verifies on pushed bytes; then the side-by-side. NOTHING
-   merges, no out-of-round column registers before his word. Seat-conduct note (v604): twice
-   said-before-done, corrected on the record; guard adopted. Evidence
-   `docs/evidence/act_334B_2026-08-07/` on the branch. Product commits: build-seat; the seam
-   verifies deciding figures. Seam worktree: /home/claude/seamcheck_landing. Track B note
-   (v597): PROCESS-light, not model-simple.
-2. **#334 STAGE B** — executes the ruled target in ONE act through the declared-refit lane:
-   curve re-taught + year-zero surface re-fit on the corrected history + the adopted #336 reference
-   layer landed. Now ALSO carries (memo): a credits-off attribution column (the declared-refit
-   ablation) · the pedigree-conditioned reactivity axis (Mraz calibration case) · yr1-to-peak
-   printed beside yr0-to-peak on every side-by-side sheet, whole-cohort and per pick band. Ends in
-   a side-by-side to the owner before anything ships. Parked items that resolve inside it: the
-   thin-cell band steps (5/42 + 14/42, smoothed properly per no-hard-bands, never clamped) · the
-   Dean-class held-surface boundary artefact · pool-entry knock-ons · the
-   `ui/release_pick_curve.json` stamp. Board attribution: stage B moves the board OUTSIDE a round —
-   it needs its own out-of-round column BEFORE the next weekly apply, with an id that sorts AFTER
-   `redesign-adoption-6-8` under the registry's (after_round, id) tiebreak.
+   his [1.04,1.13] ACROSS THE SEQUENCE). **ADDENDUM 1 to v3 (owner words, 5215167494), binding
+   both stages:** THE RECALCULATION LAW — G and any stage-6 premium are STATE FUNCTIONS,
+   re-derived every build from the record-to-date (year-2 treatment reads year-1+2 cumulative
+   evidence against that intersection's measured futures, at phase-out weight), NEVER a stored
+   per-player boost; probe gate: a synthetic year-2 player's G-contribution must respond to
+   his year-2 games. Teaching reads CUMULATIVE career games where eff-n supports, coarser
+   axes disclosed where thin. Stage-6 INTENSITY IS PARTIAL by default expectation (dial =
+   fraction of measured residual adopted; owner rules the level at its side-by-side, per band
+   if evidence splits — his caution matches the evidence softness: engine-lensed,
+   completion-optimistic). RUNNING AT THIS PEN: the v3 conformance audit (light,
+   non-authoring) and the stage-6 cross-section measurement (X1 residual surface by
+   pick×pos×perf-tercile×age · X2 yr-2/3 extension+fade curve · X3 age axis · X4 honesty
+   checks). Build fires on the audit's clean return; seam verifies on pushed bytes; then the
+   side-by-side. NOTHING merges, no out-of-round column registers before his word.
+   Seat-conduct note (v604): twice said-before-done, corrected on the record; guard adopted
+   (no completion/launch claim except in the message carrying the tool call). Evidence
+   `docs/evidence/act_334B_2026-08-07/` on the branch; pre-measurement instruments' md5s and
+   exact commands filed in the #334 comments (5214041025, 5214400439). Product commits:
+   build-seat; the seam verifies deciding figures. Track B note (v597): PROCESS-light, not
+   model-simple.
+2. **THE SEQUENCE TO ADOPTION** — stages 1–4+a1 are BUILT (branch tip c05f214, ruled baseline
+   b56bbdde); stage 5 is EXECUTING; stage 6 authors after its cross-section returns. Then: the
+   refreshed side-by-side (workbook per-stage columns, no-arb before/after incl. per-entry-year,
+   pub-test items printed — the ride table, the within-class path, the FRONT-LOADED guide
+   reading) → the owner's adoption word → ONLY THEN: merge to main, the out-of-round
+   attribution column (id sorting AFTER `redesign-adoption-6-8` under the registry's
+   (after_round, id) tiebreak, registered BEFORE the next weekly apply), and the
+   `ui/release_pick_curve.json` + release_contract re-points (they name the ADOPTED board).
+   Parked items riding the act: thin-cell band steps · Dean-class held-surface boundary
+   artefact · pool-entry knock-ons.
 3. **Round 22** (weekly, not yet run as of 2026-08-07): the owner may run it himself — his
    one-pager is in his channel (queued for docs/) — or courier the file; the catchup pattern is
    the v582 register entry.
@@ -328,15 +341,30 @@ book (`s4_matrix.json`) is id()-keyed — never byte-reproducible; the committed
 artifact (claude.ai, updated to the #338 basis this day): pass its URL to the Artifact tool to
 update in place; conventions printed on the page itself. Evidence trees this era:
 `act_326_2026-08-06/` · `act_334_2026-08-06/` · `noarb_338_2026-08-06/` ·
-`act_336_variant_2026-08-06/{,amended/,amend2/,amend3/}` — all RETENTION-PROTECTED.
+`act_336_variant_2026-08-06/{,amended/,amend2/,amend3/}` ·
+`act_334B_2026-08-07/{stage1,stage2,stage2_erafree,stageER,stage3,stage4,stage4_amend1,side_by_side}`
+— all RETENTION-PROTECTED. Worktrees/workspaces on THIS box (ephemeral — container-bound,
+recipes filed on #334): seam `/home/claude/seamcheck_landing` · amend1
+`/home/claude/amend1_{landing,ws}` · pre-measurement `/home/claude/premeas_landing` +
+`/home/claude/premeas_ws{,_v1,_v1f,_v2,_v3a,_v3b}`; a fresh box rebuilds any of them from the
+branch + the filed commands.
 
 ## THE INCOMING SEAT'S FIRST TASKS
 0. Onboard per the charter order (charter — later amendment blocks SUPERSEDE earlier text in
-   place — then primer v5 IN FULL, then this file, then the register by pointer). Plain
-   vocabulary. Opus-only subagents.
+   place — then primer v7 IN FULL, then this file, then the register by pointer; the v604
+   register entry IN FULL is mandatory before touching stage 5). Plain vocabulary. Opus-only
+   subagents.
 1. Verify THE CURRENT IDENTITIES above with your own commands; N35-classify your box
-   (byte-reproduce board `113b36f8` via the canonical build) before trusting any fitted figure.
-2. READ-BACK to the owner and HOLD. His likely first words: the #333 target decision, or round-22
-   scores.
-3. Drive the road. Never present on a superseded basis; never deliver under pressure; the owner's
-   casual questions are load-bearing QC.
+   (byte-reproduce board `113b36f8` via the canonical build — MAIN basis; the landing branch's
+   b56bbdde is the act's ruled baseline) before trusting any fitted figure.
+2. CHECK THE IN-FLIGHT WORK before anything else: stage-5 build state on
+   `landing/334-stage-b` (was it pushed? seam-verify its deciding figures — yr1 landing vs
+   [1.00,1.04], Mraz vs the 3.5–3.8× tolerance, the recalculation-law probe, kill-switch
+   byte-identity) and the stage-6 cross-section (filed on #334 or still owed). The #334
+   comment thread of 2026-08-07 is the governing record; every owner ruling of that day is
+   quoted verbatim there.
+3. READ-BACK to the owner and HOLD. His likely first words: the stage-5 side-by-side, the
+   stage-6 intensity ruling, or round-22 scores.
+4. Drive the road. Never present on a superseded basis; never deliver under pressure; never
+   claim done before the tool call is in the same message; the owner's casual questions are
+   load-bearing QC.
