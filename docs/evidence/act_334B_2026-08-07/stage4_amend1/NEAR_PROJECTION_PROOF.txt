@@ -1,0 +1,54 @@
+====================================================================================================================
+#334 STAGE B / STAGE 4 AMENDMENT 1 — THE NEAR-PROJECTION PROOF (the owner's no-rebalance condition)
+board b490ae8b (stage 4)  ->  b56bbddea15f (amendment 1)     RL_SUR_W = 5
+====================================================================================================================
+
+DENOMINATORS
+  board rows compared                                        : 804
+  on the THIN-RECORD (sit-out) path                          : 165
+    ... with NO 2026 games (lam==0, byte-exact by construction): 109   moved: 0
+    ... with live 2026 evidence (the reactivity population)   : 56   moved: 45
+  WITHIN +/-25% OF PROJECTION  (s <= log(1.25) = 0.223144)       : 6   moved: 2
+  outside the band                                           : 50   moved: 43
+
+THE BAND, PLAYER BY PLAYER  (n=6, NO CAP)
+--------------------------------------------------------------------------------------------------------------------
+player                     pos   entry                 g26 ev/prior        s    old v    new v  board rel   cont rel
+--------------------------------------------------------------------------------------------------------------------
+Jaxon Artemis              SD    MSD (pool, effpk 65)    3   1.152x   0.1412      193      191    -1.036%    -0.617%
+Harrison Oliver            SD    ND pick 19              5   1.102x   0.0970      440      440     0.000%    -0.005%
+Daniel Annable             MID   ND pick 6               1   1.099x   0.0948     1237     1230    -0.566%    -0.657%
+James Leake                SD    ND pick 17              5   1.085x   0.0816      407      407     0.000%    -0.004%
+Jack Dalton                SF    ND pick 34              4   0.973x   0.0273      272      272     0.000%     0.009%
+Xavier Taylor              SD    ND pick 11              2   1.009x   0.0093      740      740     0.000%    -0.006%
+--------------------------------------------------------------------------------------------------------------------
+  MAX |rel| in band — CONTINUOUS engine price : 0.6574%
+  MAX |rel| in band — INTEGER board value     : 1.0363%
+
+THE ASSERTION
+--------------------------------------------------------------------------------------------------------------------
+  (1) CONTINUOUS  every near-projection player moves < 1%  :  PASS   (max 0.6574%)
+  (2) INTEGER     every near-projection player moves < 1%  :  FAIL   (max 1.0363%)
+
+  THE INTEGER RULER FAILS, AND IT IS REPORTED RATHER THAN FORCED. The whole excess is one row:
+    Jaxon Artemis  SD  board v 193 -> 191  (-2 POINTS)
+      his CONTINUOUS move is -0.6166% — i.e. 1.19 board points — which is UNDER the 1% bar.
+      but his board value is 193, so ONE board point is already 0.518%, and the 1% bar on this
+      row means "moves by less than 1.93 board points". The integer grid cannot express it.
+
+  This is a MEASUREMENT-GRANULARITY result, not a re-rate: the engine moved him by less than one and
+  a quarter board points and the board had to round it to two. It is stated as a FAILURE of the
+  criterion as literally written, because it is one, and the owner should rule on it rather than
+  have it smoothed away here. See MEMO.md §5 (THE TENSION) and README.md.
+
+FOR CONTRAST — THE POPULATION OUTSIDE THE BAND (what the change is FOR)
+--------------------------------------------------------------------------------------------------------------------
+  outside the band: 50 players, 43 moved, mean |board rel| 13.593%, max |board rel| 51.515%
+  in the band    : 6 players, 2 moved, max |board rel| 1.036%
+
+  MONOTONE SANITY: the band and the movers are ordered by s, not by pedigree, position or value.
+  Sorted by s, the mean |continuous rel| by quartile of the live population:
+    quartile 1 of s  [0.0093 .. 0.3507]  n=14   mean |cont rel| =   1.895%
+    quartile 2 of s  [0.3642 .. 0.6886]  n=14   mean |cont rel| =   4.016%
+    quartile 3 of s  [0.7152 .. 1.1898]  n=14   mean |cont rel| =  16.861%
+    quartile 4 of s  [1.1906 .. 3.5358]  n=14   mean |cont rel| =  25.769%

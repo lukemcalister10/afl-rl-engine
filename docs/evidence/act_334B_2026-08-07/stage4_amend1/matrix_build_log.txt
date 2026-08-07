@@ -1,0 +1,17 @@
+config manifest (gate mode) LOADED  hash 38a73675b28f  (61 model vars pinned; ambient cleared)
+eligible players: 2647
+[F2 FIX] double-fade harness removed; book built from live gated engine ev()
+matrix saved (CALENDAR-indexed): 2647 players | book stamped src=37ced3ce (read-only)
+BOOK PARITY GATE PASS: all 802 shared board players' present value == round(book cur / 1.0524) [numéraire]; 2 board players outside the cohort book (_pvc_exclude): ['adam-treloar', 'jeremy-cameron']
+
+MAPPING-ONLY PROOF — Seth Campbell: yrs=[2023, 2024, 2025, 2026] Vpath=[133, 372, 797, 795]
+  new anchor (calendar Yr1 2023, no games)=133; the 465 first-played value now sits at its correct slot 2 (Yr2)
+
+CURVE-ANCHOR BIAS (2004-2024 ND+RD, n=2089):
+  sat out draft Yr1: 592 players (28% of curve pool)
+  over-valuation when anchored at first-played vs real Yr1: total=129812 SCAR, mean=+219, median=+12
+  whole-pool anchor sum: buggy=1177929 -> fixed=1137577  (3.4% lower overall)
+  picks 1-20: 71 sat-out, mean over-val +511 (75% of real Yr1)
+  picks 21-40: 137 sat-out, mean over-val +178 (69% of real Yr1)
+  picks 41-64: 178 sat-out, mean over-val +167 (103% of real Yr1)
+  pool: 206 sat-out, mean over-val +191 (123% of real Yr1)

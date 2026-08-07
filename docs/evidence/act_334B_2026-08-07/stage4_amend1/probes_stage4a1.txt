@@ -1,0 +1,87 @@
+====================================================================================================
+#334 stage B / STAGE 4 AMENDMENT 1 PROBES   build tag: stage4a1   PED_BAR=0.5   SUR_W=5.0
+====================================================================================================
+
+(b) THE MRAZ PROBE
+----------------------------------------------------------------------------------------------------
+  Noah Mraz  KPD  ND pick 35 (2024)  route debut year 2025  year-1 sit-out (2025, 0 games)
+  record            : 2026 only, 4 games @ 84.25   (season 88% elapsed, so 4 games = 4.55 at the prorated 6-game bar)
+  engine ev()       : 1668
+  draft-day anchor  : 461.25   retention at depth tau=1.826 : 0.45877   anchor leg R*V0 = 211.61
+  production path   : 5068.48   (raw_ev x iso x L1c on a 4-game 84.25 season)
+  lam (pedigree-blind): 0.693727
+  ped(35)=0.209889  x  sit(year-1 sit-out)=0.656601  =  q=0.137813  ->  exponent 1.431093
+  lam (conditioned) : 0.592552
+  --- AMENDMENT 1: THE SURPRISE CHAIN ---
+  anchor_full       : R x entry_anchor = 0.45877 x 461.25 = 211.61   (the PRIOR-IMPLIED FULL PRICE)
+  the claim         : e_full / anchor_full = 5068.48 / 211.61 = 23.952x
+  surprise s        : |log(23.952)| = 3.176066 nats
+  resolution        : 4.5455 games at pace -> rho(gp)/rho(6) = 0.884761 resolved  ->  u = 0.115239 UNRESOLVED
+  surprise demand   : SUR_W 5 x s 3.176066 x u 0.115239 = 1.830042 extra passes of the lam ramp
+  exponent          : stage 4 1.431093  +  amendment 1 1.830042  =  3.261135
+  lam               : 0.693727 raw  ->  0.592552 (stage 4)  ->  0.303456 (amended)
+  blend             : (1-lam)*R*anchor + lam*e_full = 1685.45
+
+(c) THE PEDIGREE PAIR — one record (one season, 4 games @ 84.25, KPD, age/position matched to Mraz),
+    priced under four entry histories. Full 2x2: pick {3,35} x {straight year-1 debut, year-1 sit-out}.
+----------------------------------------------------------------------------------------------------
+
+  HOLD = DRAFT-AGE HELD
+    the 2025-drafted arms carry a DOB shifted one year later, so every arm is drafted at the SAME
+    draft age as Mraz and the year-zero anchor star(pos, draft-age, pick) differs ONLY by pick.
+    Consequence, disclosed: the sit-out arms are one year older AS OF 2026 (20 vs 19) — real and
+    unavoidable, a player who sat a year IS a year older now.
+    arm                                               price     anchor
+    (i)   pick 3,  straight year-1 debut               3962     2375.5
+    (ii)  pick 35, year-1 sit-out  [= Mraz-shaped]     1668      461.2
+    (iii) pick 3,  year-1 sit-out                      3212     2375.5
+    (iv)  pick 35, straight year-1 debut               2033      461.2
+    GAP (i) - (ii)  = +2294   ratio (i)/(ii) = 2.3753      <-- THE OWNER'S JUDGMENT NUMBER
+    pure pedigree, straight debut  (i)/(iv)   = 1.9488
+    pure pedigree, after a sit-out (iii)/(ii) = 1.9257
+    pure sit-out at pick 3  (iii)/(i)  = 0.8107      pure sit-out at pick 35 (ii)/(iv) = 0.8205
+
+  HOLD = AS-OF-AGE HELD
+    birth year held at Mraz's, so every arm is the SAME age as of 2026 (20). Consequence, disclosed:
+    the 2025-drafted arms were then drafted a year OLDER, which moves the year-zero anchor.
+    arm                                               price     anchor
+    (i)   pick 3,  straight year-1 debut               3564     2378.2
+    (ii)  pick 35, year-1 sit-out  [= Mraz-shaped]     1668      461.2
+    (iii) pick 3,  year-1 sit-out                      3212     2375.5
+    (iv)  pick 35, straight year-1 debut               1885      478.3
+    GAP (i) - (ii)  = +1896   ratio (i)/(ii) = 2.1367      <-- THE OWNER'S JUDGMENT NUMBER
+    pure pedigree, straight debut  (i)/(iv)   = 1.8907
+    pure pedigree, after a sit-out (iii)/(ii) = 1.9257
+    pure sit-out at pick 3  (iii)/(i)  = 0.9012      pure sit-out at pick 35 (ii)/(iv) = 0.8849
+
+(d) THE BOUNDARY CHECK — the 5g -> 6g step at the establishment bar, seam_boundary DiD style.
+    A player crosses the bar when games AT PACE reach 6, i.e. games >= 6*fE = 5.28. The probe steps him
+    from 5 to 6 RAW games either side of that. If the change introduced a cliff at the bar, the SEAM
+    RATIO (the step on this build divided by the step on the base build) would move away from 1.
+----------------------------------------------------------------------------------------------------
+    probe player           pos    pick     ev@5g     ev@6g      step   step/5g
+    Noah Mraz              KPD      35      4761      5524      +763  +16.026%
+    Josh Smillie           MID       7      2356      2523      +167   +7.088%
+    Charlie West           KPF      50      3940      4510      +570  +14.467%
+    Samuel Swadling        MID      37      2125      2491      +366  +17.224%
+
+    fine sweep of the same players across the bar (raw games 3..8), to show the crossing is smooth:
+    Noah Mraz              3:367  4:1668  5:4761  6:5524  7:5747  8:5767
+    Josh Smillie           3:1286  4:1746  5:2356  6:2523  7:2594  8:2633
+    Charlie West           3:185  4:1206  5:3940  6:4510  7:4622  8:4694
+    Samuel Swadling        3:636  4:1175  5:2125  6:2491  7:2595  8:2670
+
+    NO-NEW-CLIFF SWEEP, raw games 1..10 on three probes. The amendment can only add a cliff by making
+    the exponent discontinuous in g; it is a ratio of polynomials in g composed with min(g/fE,6), so it
+    cannot. This measures it anyway. Reported: the price at each g, the successive step, and the LARGEST
+    single-game step as a share of the price it steps from. A cliff would show as one step dominating.
+    ------------------------------------------------------------------------------------------------
+    Noah Mraz               1:212      2:228      3:367      4:1668     5:4761     6:5524     7:5747     8:5767     9:5752    10:5715  
+                           steps:    +16    +139   +1301   +3093    +763    +223     +20     -15     -37
+                           LARGEST single-game step 354.50% of the price it steps from, at g=3->4  (monotone rising: False)
+    Josh Smillie            1:1003     2:1127     3:1286     4:1746     5:2356     6:2523     7:2594     8:2633     9:2698    10:2837  
+                           steps:   +124    +159    +460    +610    +167     +71     +39     +65    +139
+                           LARGEST single-game step 35.77% of the price it steps from, at g=3->4  (monotone rising: True)
+    Charlie West            1:101      2:107      3:185      4:1206     5:3940     6:4510     7:4622     8:4694     9:4800    10:4981  
+                           steps:     +6     +78   +1021   +2734    +570    +112     +72    +106    +181
+                           LARGEST single-game step 551.89% of the price it steps from, at g=3->4  (monotone rising: True)

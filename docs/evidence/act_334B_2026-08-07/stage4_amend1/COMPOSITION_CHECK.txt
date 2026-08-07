@@ -1,0 +1,59 @@
+================================================================================================================
+#334 STAGE B / STAGE 4 AMENDMENT 1 — THE COMPOSITION CHECK (double-charging, and additive vs multiplicative)
+================================================================================================================
+
+(1) THE SHARED CHANNEL, MEASURED. Stage 4 and the amendment overlap in EXACTLY ONE place: the sit-out
+    depth. It enters stage 4 through `sit` (a ratio of the retention surface) and it enters the
+    amendment through R, which discounts the anchor that s is measured against. Pedigree (the pick
+    axis) is NOT shared: it enters stage 4 only, and s does not read the pick at all except through R.
+
+    Mraz, the calibration case:
+      anchor UNDISCOUNTED (entry_anchor)          :     461.25
+      retention R at his sit-out depth            :    0.45877
+      anchor DISCOUNTED (R x entry_anchor)        :     211.61
+      e_full                                      :    5068.48
+      s against the DISCOUNTED anchor  (SHIPPED)  :   3.176066 nats
+      s against the UNDISCOUNTED anchor           :   2.396857 nats
+      => the sit-out discount contributes            0.779209 nats = 24.5% of s
+      stage 4 separately charges the same sit-out through sit = 0.656601 (q = ped 0.209889 x sit = 0.137813)
+
+    VERDICT ON DOUBLE-CHARGING: the overlap is REAL but it is NOT a double charge, for two reasons,
+    and the second is the decisive one.
+      (a) The two terms answer different questions about the same fact. `sit` asks "how much prior
+          expectation survives the year he did not play"; R inside s asks "what is his prior price
+          TODAY, which is what the evidence is actually contradicting". A sit-out lowers both the
+          expectation AND the baseline the claim is measured from, and both are true.
+      (b) THE ANCHOR CHOICE IS FORCED, not preferred. The blend is (1-lam)*anchor + lam*e_full.
+          If s were measured against the UNDISCOUNTED V0, then s would be NON-ZERO at the exact point
+          where lam cannot move the price at all (e_full == R*V0), and ZERO at a point where it can.
+          The statistic would not be measuring the re-rate the mechanism performs. Measured against
+          the discounted anchor, "s == 0" and "this change is inert" are THE SAME STATEMENT.
+    So stage 4 is COMPOSED WITH, not replaced, and the sit-out prior effect is retained in both.
+
+(2) ADDITIVE vs MULTIPLICATIVE, measured on the same landing.
+    additive       : exponent = 1 + PED_BAR*(1-q) + W*s*u        [SHIPPED]
+    multiplicative : exponent = (1 + PED_BAR*(1-q)) * (1 + W*s*u)  [the directive's offered form]
+
+    On Mraz (lam raw 0.693727, stage-4 exponent 1.431093, s 3.176066, u 0.115239):
+           W |   additive exp      price |   multipl. exp      price
+         0.0 |       1.431093     3089.6 |       1.431093     3089.6
+         1.0 |       1.797102     2729.0 |       1.954885     2587.9
+         2.0 |       2.163110     2413.7 |       2.478677     2173.7
+         3.0 |       2.529118     2137.8 |       3.002469     1831.7
+         4.0 |       2.895126     1896.5 |       3.526261     1549.3
+         5.0 |       3.261135     1685.5 |       4.050053     1316.1
+         6.0 |       3.627143     1500.8 |       4.573845     1123.6
+         8.0 |       4.359160     1198.1 |       5.621429      833.3
+
+    The multiplicative form reaches the same Mraz landing at a smaller W (it scales the surprise demand
+    BY the pedigree demand, 1.4311 on Mraz). The reason the ADDITIVE form ships is the shared channel in
+    (1): multiplication charges the sit-out once through `sit`, once through R inside s, AND a third
+    time through their PRODUCT. Addition charges it once per term and no more. The exponent is
+    denominated in "passes of the lam ramp this record must clear", and two independent demands on the
+    same evidence SUM -- a pick-1 player with a huge claim and a pick-60 player with no claim should
+    each be charged their own demand, not each other's.
+
+    THE CONSEQUENCE, and it is the honest cost of the choice: under the additive form a top-pick player
+    with a big claim is charged the SAME surprise demand as a deep-pick player with the same claim, and
+    only stage 4's own term separates them. The pedigree pair still separates (PROBES.md §(c)); it
+    separates by stage 4's margin, not by a compounded one.

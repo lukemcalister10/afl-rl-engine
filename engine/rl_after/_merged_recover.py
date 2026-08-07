@@ -1809,13 +1809,70 @@ def _ped_prior(p,Y,fe,tau,cls,pk):
     r0=_R_surf(cls,pk,tau0)
     sit=(_R_surf(cls,pk,tau)/r0) if r0>0 else 1.0             # <=1 by the signed isotonic-in-depth law; ==1 exactly for a straight debutant
     return ped*sit
+# ---- #334 STAGE 4 AMENDMENT 1: THE SURPRISE-SCALED EVIDENCE TRUST -------------------------------------------
+# THE OWNER'S VERDICT on stage 4, verbatim: "4 games of sample, especially when it's so far from the
+# projection, shouldn't be trusted as much, surely." Stage 4 conditioned the evidence weight on WHOSE record it
+# is (pedigree x sit-out depth). It did not condition on WHAT THE RECORD CLAIMS. Mraz's four games claim a
+# 23.95x re-rate against his own decayed draft-day anchor, and stage 4 charged that claim the same evidence bar
+# it charges a claim of 1.05x. This amendment adds the missing axis: the SIZE OF THE IMPLIED RE-RATE.
+#   WHY IT IS THE RIGHT AXIS, and it is not a taste argument. A fringe player's played games are SELECTION-
+#   BIASED UPWARD: clubs pick him when he is hot, so the four games on his record are his best four, not four
+#   drawn at random. The larger the surprise a thin record claims, the more of it is that selection — a purple
+#   patch rather than a revelation. Hence: shrink toward the prior in proportion to the surprise, and let the
+#   shrink dissolve as real games accumulate and the selection washes out.
+# THE STATISTIC.  s = |log(e_full / anchor_full)|,  anchor_full = R*entry_anchor(p) — THE SAME anchor leg that
+#   appears in the blend one line below, NOT the undiscounted V0. THE CHOICE IS FORCED, and it is disclosed:
+#   the blend is (1-lam)*anchor + lam*e_full, so s == 0 <=> e_full == anchor <=> THE BLEND IS DEGENERATE AND
+#   lam CANNOT MOVE THE PRICE AT ALL. Measuring the surprise against the discounted anchor is therefore the
+#   only pairing for which "zero surprise" and "this change does nothing" are THE SAME STATEMENT, identically
+#   rather than approximately — the directive's zero-surprise constraint holds as an identity. Against the
+#   undiscounted V0, s would be non-zero exactly where the change is inert and zero where it bites.
+# THE RESOLUTION FADE.  u = 1 - rho(gp)/rho(6), rho(g) = g^2/(g^2+g+K) — the engine's OWN R100.11 evidence-
+#   resolution curve at :722 with its OWN pinned K = _ABS_FADE_K = 5.8, normalised at the ruled 6-game
+#   establishment bar. u is exactly the complement of the #336 amendment-3 resolution weight r(g)
+#   (rl_model._resolve_w_336), i.e. THE UNRESOLVED SHARE. NO NEW CONSTANT AND NO NEW WIDTH IS SET.
+#   u(0)=1 (a record of nothing is entirely unresolved) -> u(6)=0 EXACTLY (at the establishment bar the
+#   surprise demand vanishes and stage 4 is reproduced). gp is the SAME min(games-at-pace, 6) clamp the lam
+#   ramp itself interpolates on — hoisted, not re-derived — so u >= 0 by construction, with no new clip. (On
+#   this path gp < 6 STRICTLY anyway: ns==0 means no season reached the prorated bar. Measured max 5.6818.)
+# THE COMPOSITION IS ADDITIVE, and that is a judgement call, disclosed. The exponent is denominated in
+#   "passes of the existing lam ramp this record must clear". Stage 4 demands 1 + PED_BAR*(1-q) passes for
+#   thin pedigree; this amendment demands SUR_W*s*u passes more for a large claim on a thin sample. Two
+#   INDEPENDENT demands on the same evidence sum; they do not multiply. The multiplicative form the directive
+#   offered (lam_eff ** (1+SUR_W*s*u)) was built and measured too — it scales the surprise demand BY the
+#   pedigree demand, which compounds the one channel the two terms genuinely share (the sit-out depth enters
+#   stage 4 through `sit` and enters s through R). Additive keeps that shared channel charged once per term
+#   instead of once per term PLUS their product. See MEMO.md §4 for the measurement of the overlap.
+# STAGE 4 IS COMPOSED WITH, NOT DELETED. PED_BAR and _ped_prior are untouched; RL_SUR_W=0 reproduces the
+#   stage-4 board byte-exact (x + 0.0 == x), and RL_PED_BAR=0 still reproduces stage 3 on that leg.
+# CONTINUOUS, SYMMETRIC, MONOTONE.  s is an ABSOLUTE log-ratio: a four-game COLLAPSE from a high prior is
+#   shrunk by exactly the same amount as a four-game breakout of the same log size, so the owner's standing
+#   L-SYMMETRY law (register item 108) holds by construction and no one-sided max() — which would be a BRANCH
+#   under L-SMOOTH — appears. More games => u falls => less shrink. Larger surprise => s rises => more shrink.
+#   s == 0 => the exponent is stage 4's exactly. No threshold, no counter, no branch, no band, no era.
+# FIT COUPLING: NONE — the change stays strictly inside sitout_ev, whose only caller is the ns==0 arm of ev();
+#   _build_v0_curve never calls ev(). Re-verified by the same three-signature declared-refit check as stage 4.
+SUR_W=float(os.environ.get('RL_SUR_W','5.0'))                # THE DIAL: passes of the lam ramp demanded per nat of surprise on a wholly-unresolved record. 0 => byte-exact stage 4. Calibrated: the SMALLEST ladder rung landing Mraz inside the owner's 2-3x-his-pick range (MEMO.md §5).
+_RHO_SIT_BAR=(6.0*6.0)/(6.0*6.0+6.0+_ABS_FADE_K)             # rho at the RULED 6-game establishment bar; the normaliser, so u(6)==0 exactly
+def _rho_res(g):
+    """the engine's R100.11 evidence-resolution curve, rho(g)=g^2/(g^2+g+K), K=_ABS_FADE_K (PINNED, :722)."""
+    g=float(max(0.0,g)); return (g*g)/(g*g+g+_ABS_FADE_K)
+def _surprise(e_full,anchor,gp):
+    """The SURPRISE demand, in the same "passes of the lam ramp" unit PED_BAR is denominated in.
+    s = |log(e_full/anchor)| is the size of the re-rate this thin record claims against its own prior;
+    u = 1-rho(gp)/rho(6) is the share of that record still UNRESOLVED. Their product is the claim the
+    evidence has not yet earned. Zero at zero surprise; zero at the establishment bar; symmetric in sign."""
+    s=(abs(float(np.log(e_full/anchor))) if (e_full>0.0 and anchor>0.0) else 0.0)   # domain guard only (same idiom as _ped_prior's r0>0); measured 0/165 taken on the board
+    return SUR_W*s*(1.0-_rho_res(gp)/_RHO_SIT_BAR)
 def sitout_ev(p,Y,e_full):
     fe=_fEy(Y,p); tau=max(0.0,Y-cp.debutyr(p))+((fe**1.5) if Y>=cp.debutyr(p) else 0.0)   # D12: CONCAVE penalty proration tau'=(R/24)^1.5 (Luke OPTION A); completed seasons full (integer knots), in-progress season accrues concavely. PENALTY path only — the lam reward blend below is UNTOUCHED.
     cls=_sitout_cls(MA.gfut(p)); pk=MA.effpk(p)               # #334 s4: hoisted — the pedigree term reads the SAME class and pick the retention surface does
     R=_R_surf(cls,pk,tau)                                    # D13 ASK3: pick-conditioned, isotonic-in-depth surface (was depth-only R_SIT)
     gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
-    lam=float(np.interp(min(gy/fe,6.0),[0,1,2,3,4,5,6],LAM_SIT))                 # games AT PACE vs the prorated bar
-    lam=lam**(1.0+PED_BAR*(1.0-_ped_prior(p,Y,fe,tau,cls,pk)))                   # #334 stage 4: PEDIGREE-CONDITIONED EVIDENCE BAR (endpoints fixed: 0**e=0, 1**e=1)
+    gp=min(gy/fe,6.0)                                        # #334 s4a1: hoisted — the ONE games-at-pace clamp the lam ramp AND the resolution fade both read (identical expression; no new clip)
+    lam=float(np.interp(gp,[0,1,2,3,4,5,6],LAM_SIT))                             # games AT PACE vs the prorated bar
+    lam=lam**(1.0+PED_BAR*(1.0-_ped_prior(p,Y,fe,tau,cls,pk))                    # #334 stage 4: PEDIGREE-CONDITIONED EVIDENCE BAR (endpoints fixed: 0**e=0, 1**e=1)
+              +_surprise(e_full,R*entry_anchor(p),gp))                           # #334 stage 4 AMENDMENT 1: + the SURPRISE demand (additive; RL_SUR_W=0 => +0.0 => byte-exact stage 4)
     return (1.0-lam)*R*entry_anchor(p)+lam*e_full            # #326: a pool entrant blends off his division's signed entry level; every other player off v0_start, byte-for-byte
 def _first_evidence(p,Y):                                     # the games-ramp family: ALL evidence is season Y
     return not any(x['games']>0 and x['year']<Y for x in p['scoring'])

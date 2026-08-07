@@ -3,7 +3,7 @@
  "version": "1.0",
  "date": "2026-07-09",
  "baked_state": "FINAL-INTEGRATION v2.11-final-rc (PROVISIONAL) \u2014 RL_PVC2/RL_LEGE/RL_LEGF=1 posture; board 039ff8d4 (Board B + visible future-draft ladder); store 968de0c7 unchanged",
- "config_sha256": "0b5d27030136500373f558ea345ea4a7d0288b1795a23d38ae641da208a2ebdd",
+ "config_sha256": "38a73675b28f555cb866411fb295efba433730a45e8e1f195bbe1786a7c38e1f",
  "excluded_infrastructure_vars": {
   "_note": "NOT model semantics \u2014 path/IO/display/mode plumbing, allowed ambient in bake/gate mode, never part of the value hash.",
   "RL_REPO": "checkout locator",
@@ -49,6 +49,7 @@
   "RL_YCRED_W": "0.9",
   "RL_YCRED_KPF": "0.92",
   "RL_PED_BAR": "0.5",
+  "RL_SUR_W": "5.0",
   "RL_RUC_PRIOR_CAP": "1.4",
   "RL_W4_RUC": "1",
   "RL_RUC_CEIL_HEAD": "0.80",
@@ -95,5 +96,6 @@
   "_season_state_2026_07_21": "SUPERVISOR 2nd REVIEW: RL_M3_FE (calendar) + RL_EXPO_F (exposure) REMOVED as frozen manifest vars \u2014 the engine now DERIVES calendar_progress + exposure_pace from data/season_state.json (the single authoritative dynamic source; advances weekly). The immutable derivation POLICY is stamped as season_state_policy_id=39938f68732d (class-A model-policy identity). RL_EXPO_INPROG_Y/RL_M3_INPROG_Y (season-in-progress year) remain. config_sha256 3a1e714f2fa0->45b207c03a8c."
  },
  "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
- "_stage4_note": "#334 stage B / stage 4 (2026-08-07): RL_PED_BAR added \u2014 the PEDIGREE-CONDITIONED EVIDENCE BAR on the thin-record anchor/demonstrated blend (_merged_recover.sitout_ev). It is a VALUED owner dial (0.5), not a declared kill-switch, so it is enumerated here and config_sha256 moves cef06fd6 -> 0b5d2703 in the same commit that re-stamps expected_boot.json 'config' and 'engine_head'. RL_PED_BAR=0 reproduces the stage-3 board byte-exact (proven, 2650/2650 real rows). It is NOT a _V0SURF_GATES key: sitout_ev is called only from ev() and the year-zero surface fits _v0_raw, never ev() \u2014 proven by a declared refit at PED_BAR 0.0 / 0.5 / 2.0, all three reproducing the committed v0surf pin 9713ec6c byte-for-byte at the identical signature 3e8e50de5103."
+ "_stage4_note": "#334 stage B / stage 4 (2026-08-07): RL_PED_BAR added \u2014 the PEDIGREE-CONDITIONED EVIDENCE BAR on the thin-record anchor/demonstrated blend (_merged_recover.sitout_ev). It is a VALUED owner dial (0.5), not a declared kill-switch, so it is enumerated here and config_sha256 moves cef06fd6 -> 0b5d2703 in the same commit that re-stamps expected_boot.json 'config' and 'engine_head'. RL_PED_BAR=0 reproduces the stage-3 board byte-exact (proven, 2650/2650 real rows). It is NOT a _V0SURF_GATES key: sitout_ev is called only from ev() and the year-zero surface fits _v0_raw, never ev() \u2014 proven by a declared refit at PED_BAR 0.0 / 0.5 / 2.0, all three reproducing the committed v0surf pin 9713ec6c byte-for-byte at the identical signature 3e8e50de5103.",
+ "_stage4_amend1_note": "#334 STAGE B / STAGE 4 AMENDMENT 1 (2026-08-07): RL_SUR_W added \u2014 the SURPRISE-SCALED EVIDENCE TRUST on the thin-record anchor/demonstrated blend (_merged_recover.sitout_ev). The evidence weight lam is now conditioned on the SIZE OF THE IMPLIED RE-RATE the record claims against its own prior: the exponent gains + SUR_W * s * u, where s = |log(e_full/(R*entry_anchor))| is the surprise and u = 1 - rho(gp)/rho(6) is the UNRESOLVED share on the engine's own R100.11 resolution curve (K = _ABS_FADE_K = 5.8, bar = the ruled 6 games, gp = the lam ramp's own min(games-at-pace,6) clamp). No new constant is introduced. Composition with stage 4 is ADDITIVE and that is a disclosed judgement call (MEMO.md \u00a74): the two demands are independent and the one channel they share, the sit-out depth, is charged once per term rather than once per term plus their product. It is a VALUED owner dial (5.0), not a declared kill-switch, so it is enumerated here and config_sha256 moves 0b5d2703 -> 38a73675 in the same commit that re-stamps expected_boot.json 'config' and 'engine_head'. RL_SUR_W=0 reproduces the stage-4 board byte-exact (proven through the full gate: board b490ae8b3bbd28b908ccb923ed8412c1). It is NOT a _V0SURF_GATES key: the change stays strictly inside sitout_ev, whose only caller is ev(), and the year-zero surface fits _v0_raw and never calls ev() \u2014 re-verified by a declared refit at SUR_W 0.0 / 5.0 / 20.0, all three reproducing the committed v0surf pin 9713ec6c byte-for-byte at the identical signature 3e8e50de5103."
 }
