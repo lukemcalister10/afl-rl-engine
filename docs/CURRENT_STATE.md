@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v88 · supervisor pen · 2026-08-07, register v598
+# CURRENT STATE — the incoming-seat read · v89 · supervisor pen · 2026-08-07, register v599
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,9 +128,9 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v88 · supervisor pen · 2026-08-07, register v598 · replaced wholesale at the NO-ERA-NORMALIZATION
-PEN — a new product law mid-act; the act re-sequenced. The STOP is the owner's side-by-side word.
-The primer is at v7 and carries the era's meaning discoveries — read it first, in full.)
+(v89 · supervisor pen · 2026-08-07, register v599 · replaced wholesale at the ERA-REMOVAL-LANDED
+PEN — the strip is on the branch and seam-verified; stage 2 re-derives era-free. The STOP is the
+owner's side-by-side word. The primer is at v7 — read it first, in full.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
@@ -201,15 +201,20 @@ The primer is at v7 and carries the era's meaning discoveries — read it first,
    #334 Addendum 3, comment 5211125357): NO ERA NORMALIZATION — SuperCoach is scaled by
    construction (3,300 pts/match); store-mean era gaps are population-composition artifacts;
    the shipped `era[Y]` rescaling (2009–2025, in the seed engine) is REMOVED everywhere.**
-   Stage 3's first run was HALTED mid-flight on the ruling (nothing committed); the stage-2
-   ladder (N32 9ddbc5a7, taught era-adjusted) is SUPERSEDED and reverts. SEQUENCE NOW:
-   era-removal stage (running at v598: every read site stripped, its board delta = its own
-   attribution column) → stage 2 re-derivation era-free → stage 3 (surface refit, declared lane,
+   Stage 3's first run was HALTED mid-flight on the ruling (nothing committed); the era-adjusted
+   stage-2 ladder was SUPERSEDED and reverted. ERA REMOVAL LANDED @ f7ae027 (v599, seam-verified:
+   board f94e0778; 28 movers, all KPF, all cuts, ratio 0.998986; engine_head a0a20d6e; the strip
+   complete incl. a duplicate _gate1 table and twelve diagnostic scripts). OPEN ONE-LINER: the
+   selftest PASS count moved 144→146 with a byte-identical test file (0 FAIL; data-dependent
+   count; +2 source unpinned — owed in stage-3 evidence). SEQUENCE NOW: stage 2 re-derivation on
+   the era-free matrix (RUNNING at v599 — its first deliverable is the era-free hump row; the old
+   1.021/1.279/1.448/1.535 row is repudiated-basis) → stage 3 (surface refit, declared lane,
    fit-class box; note from the halted run: the re-anchor touches a sealed entrant layer —
-   examine that seal, re-point never patch) → stage 4 (reactivity + tracking). Fixed order,
-   per-stage attribution, evidence `docs/evidence/act_334B_2026-08-07/` on the branch. Product
-   commits: build-seat; the seam verifies deciding figures. Track B note (owner words, v597):
-   simplicity is PROCESS-light (fast change-to-result loop), not model-simple.
+   examine that seal, re-point never patch; also pin the selftest +2) → stage 4 (reactivity +
+   tracking). Fixed order, per-stage attribution, evidence `docs/evidence/act_334B_2026-08-07/`
+   on the branch. Product commits: build-seat; the seam verifies deciding figures. A read-only
+   landing worktree for seam checks sits at /home/claude/seamcheck_landing (tip f7ae027). Track B
+   note (owner words, v597): simplicity is PROCESS-light, not model-simple.
 2. **#334 STAGE B** — executes the ruled target in ONE act through the declared-refit lane:
    curve re-taught + year-zero surface re-fit on the corrected history + the adopted #336 reference
    layer landed. Now ALSO carries (memo): a credits-off attribution column (the declared-refit
