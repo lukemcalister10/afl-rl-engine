@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v97 · supervisor pen · 2026-08-07, register v607
+# CURRENT STATE — the incoming-seat read · v98 · supervisor pen · 2026-08-07, register v608
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,11 +128,13 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v97 · supervisor pen · 2026-08-07, register v607 · STAGE 5 LANDED on the consistency pass:
-board 13f8c2e0, tip 0dde8e8, yr1 0.9908 teaching / 0.9460 full-cohort, 66 movers ALL UP zero
-cuts; the entry-anchor cap question PARKED for the owner (lifted = 1.0000 exactly — built,
-never installed); STAGE 6 BUILD RUNNING (fired per 5217293177); stage-7 directive owed.
-Read the v604–v607 register entries IN FULL before touching any stage. Primer v7 first.)
+(v98 · supervisor pen · 2026-08-07, register v608 · STAGES 5+6 BUILT (tip d405afb): stage-6
+feasible rungs land yr1 1.006–1.021 teaching, SHORT of the [1.04,1.13] band — the band-reaching
+rungs 0.75/1.0 were STRUCK by their own zero-cell gates; three roads out, all the owner's.
+Stage 7 FIT AFTER AMENDMENTS (audit NOT FIT, both blockers verified, 15 amendments adopted).
+TWO read-only measurements RUNNING: the 1.0963-vs-1.136 reconciliation + the stage-7
+re-derived pool measurement/cut list. Then ONE combined side-by-side to the owner.
+Read the v604–v608 register entries IN FULL before touching any stage. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
@@ -289,13 +291,14 @@ Read the v604–v607 register entries IN FULL before touching any stage. Primer 
    exact commands filed in the #334 comments (5214041025, 5214400439). Product commits:
    build-seat; the seam verifies deciding figures. Track B note (v597): PROCESS-light, not
    model-simple.
-2. **THE SEQUENCE TO ADOPTION** — stages 1–5 BUILT (ruled baseline b56bbdde; branch tip
-   0dde8e8 = STAGE 5 LANDED, board 13f8c2e0, yr1 0.9908/0.9460, the entry-anchor cap
-   question parked for the owner — v607 entry) · STAGE 6 audit-cleared FIT AFTER
+2. **THE SEQUENCE TO ADOPTION** — stages 1–6 BUILT (ruled baseline b56bbdde; tip d405afb;
+   stage 5 board 13f8c2e0 shipped, yr1 0.9908/0.9460; stage 6 four rungs dial-0 shipped,
+   0.75/1.0 STRUCK, cap question + zero-cell bound + rung ALL owner calls — v607/v608
+   entries) · STAGE 6 was audit-cleared FIT AFTER
    AMENDMENTS, all adopted (5217452004: site FENCED to the ns≥1 arm of ev() with positive
    165-player byte-identity proof — the e_full leak; fade taught from pooled yr1/2/3 rows;
    RL_G6_W default 0, four symmetric rungs, NO seat recommendation, median F′ + median-neutral
-   rung pre-registered; KPD cut on its own sub-dial default 0), BUILD NOW RUNNING (v607) ·
+   rung pre-registered; KPD cut on its own sub-dial default 0), BUILT at v608 ·
    STAGE 7 (pool redistribution, owner "we should implement" 5217529020) directive owed: lift
    rookie quiet-starters (measured 1.70), CUT the over-priced sitter cells (mature-age 0.31 /
    IRE 0.17 / MSD 0.21 / age-unknown RD) — THE ACT'S FIRST CUTS, every cut player enumerated
@@ -363,10 +366,11 @@ branch + the filed commands.
 1. Verify THE CURRENT IDENTITIES above with your own commands; N35-classify your box
    (byte-reproduce board `113b36f8` via the canonical build — MAIN basis; the landing branch's
    b56bbdde is the act's ruled baseline) before trusting any fitted figure.
-2. CHECK THE IN-FLIGHT WORK before anything else: the STAGE-6 build state on
-   `landing/334-stage-b` (pushed past 0dde8e8? seam-verify its deciding figures — the
-   four-rung landing on BOTH bases, the 165-player sit-out byte-identity proof, dial-0
-   byte-identity, Mraz tier per rung) and the stage-7 directive (issued or owed). The #334
+2. CHECK THE IN-FLIGHT WORK before anything else: TWO read-only measurements were running
+   at v608 — the stage-6 estimand reconciliation (1.0963 measured vs 1.136 of record; the
+   zero-cell bounds that struck rungs 0.75/1.0 depend on it) and the stage-7 re-derived
+   pool measurement + cut-list enumeration (basis: the stage-5 landed matrix). If returned,
+   seam-verify and file on #334; if lost, re-fire from the v608 register entry. The #334
    comment thread of 2026-08-07 is the governing record; every owner ruling of that day is
    quoted verbatim there.
 3. READ-BACK to the owner and HOLD. His likely first words: the stage-5 side-by-side, the
