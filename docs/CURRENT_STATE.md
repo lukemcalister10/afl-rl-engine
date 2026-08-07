@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v91 · supervisor pen · 2026-08-07, register v601
+# CURRENT STATE — the incoming-seat read · v92 · supervisor pen · 2026-08-07, register v602
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,9 +128,9 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v91 · supervisor pen · 2026-08-07, register v601 · replaced wholesale at the STAGE-3 PEN —
-convergence HIT (1.4324, in band, one pass); yr1-to-peak return-trigger LIVE (1.4833 > 1.400);
-stage 4 running. The STOP is the owner's side-by-side word. Primer v7 first.)
+(v92 · supervisor pen · 2026-08-07, register v602 · replaced wholesale at the AMENDMENT-1 PEN —
+stage 4 landed; the owner's Mraz catch fired amendment 1 (surprise-scaled trust), running now
+with the side-by-side assembly. The STOP is the owner's side-by-side word. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
@@ -219,14 +219,21 @@ stage 4 running. The STOP is the owner's side-by-side word. Primer v7 first.)
    disclosed: ui club_curve_provenance (UI bundle still carries the release board — expected,
    branch-held). release_contract.json + club_valuation.js deliberately NOT re-pointed (they name
    the ADOPTED board; the owner's click moves them). Era-free basis notes (v600): era was
-   near-neutral on the hump (1.5345 clean floor pre-re-anchor); base curve re-taught era-free in
-   stage 3 (era column ~0; the #336 layer −1985 dominates); deep frozen fits (peak model, band
-   tables, q97m) stay as-fitted, NAMED. STAGE 4 (RUNNING at v601): pedigree-conditioned
-   reactivity (investigate pedDecay/L1c/evidence-fade machinery first; continuous, no
-   thresholds; if the mechanism feeds the V0 fit config, the dial joins _V0SURF_GATES and the
-   declared refit re-runs) + the Mraz probe + the pedigree pair + FULL enumeration of every
-   moved player + final matrix re-emit (band re-checked, not retuned). Then the side-by-side
-   assembly (xlsx, no-arb before/after, per-entry-year, attribution per stage). Evidence
+   near-neutral on the hump (1.5345 clean floor pre-re-anchor); deep frozen fits stay as-fitted,
+   NAMED. STAGE 4 LANDED @ 44950de (v602): lam in `sitout_ev` pedigree-conditioned
+   (RL_PED_BAR=0.5, model_config, fit-decoupling proven); Mraz 3358→2898; pair ratio 1.36→1.53;
+   51 movers enumerated; board b490ae8b; band held 1.4322; yr1-to-peak 1.4910 (trigger still
+   live). THE OWNER'S MRAZ CATCH (verbatim at #334 comment 5212567158): 2898 still excessive —
+   seam-verified rank 56, 5.5× his pick, #3 KPD; structural (max dial leaves ~2500). His ruled
+   form: SURPRISE-SCALED TRUST — small samples far from projection shrink toward the prior;
+   near-projection players untouched (no-rebalance condition, proven ±25%/<1% on the
+   enumeration); symmetric, continuous, fades with games; selection-rate proposal REJECTED
+   (hits all young players). AMENDMENT 1 RUNNING at v602 (calibration: Mraz ~1,100–1,600 =
+   2–3× pick 35's 530; STOP if unreachable with near-projection clean) CONCURRENT with the
+   side-by-side assembly (workbook: per-player row, one delta column PER STAGE — reference
+   layer / era removal / curve+surface+numeraire / reactivity / surprise-trust — sums exact;
+   this is the owner-ordered per-stage sheet). Then: the owner review — his rulings owed: the
+   yr1-to-peak trigger (1.4910 vs 1.400) and the amendment dial. Evidence
    `docs/evidence/act_334B_2026-08-07/` on the branch. Product commits: build-seat; the seam
    verifies deciding figures. Seam worktree: /home/claude/seamcheck_landing. Track B note
    (v597): PROCESS-light, not model-simple.
