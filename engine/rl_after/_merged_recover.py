@@ -1750,11 +1750,72 @@ def _v0_curve_assert():                                      # BY-CONSTRUCTION G
         dv=[ _R_surf('KPP',pk,t) for t in range(1,7) ]
         if any(dv[k+1]>dv[k]+1e-9 for k in range(5)): dmono=False
     return dict(cross_draft_maxdisp=maxdisp, within_cell_inversions=inv, kpp_depth_monotone=dmono)
+# ==== #334 STAGE B / STAGE 4 — PEDIGREE-CONDITIONED REACTIVITY (the evidence bar scales with the prior) ====
+# THE OWNER (2026-08-07, verbatim): "I think it's good that the engine is reactive to players breaking out.
+# This just seems extreme from a small sample, especially when there's no real 'pedigree' to make it feel more
+# reliable. You'd be more inclined to buy into it based on a year 1 performance of a top 5 draft pick. But a
+# 30s draft pick who didn't debut until year 2? I feel like that's more likely to be an outlier/purple patch/
+# small sample?"
+#   REACTIVITY IS KEPT — nothing here caps a breakout or narrows the band. What changes is the BAR. `lam` is
+#   the ONE place in the engine where a thin record overrides its draft-day anchor, and it was pedigree-BLIND:
+#   four games at pace bought the same 0.694 override at pick 1 and at pick 35, after a straight debut and
+#   after a year-1 sit-out. It is now CONDITIONED ON PRIOR EXPECTATION, with both endpoints nailed down:
+#       lam_eff = lam ** (1 + PED_BAR*(1 - q))
+#   NO new width, NO new band, NO new clock, NO new constant. `q` in [0,1] is the PRIOR EXPECTATION, built
+#   from two objects that are already in this function:
+#     ped(pick) = 1 - log(clip(pick,1,90))/log(90) — the engine's OWN log-pick pedigree axis and its OWN [1,90]
+#       clamp, taken verbatim off the `_R_surf` line above (the same axis R_SURF, the L1c kernel and the V0
+#       `star()` lookup all read pedigree on). 1 at pick 1, 0 at the deepest slot the axis admits. Every pool
+#       route sits at POOL_PICK by the engine's own rule — which is what "no draft-day pedigree" means here.
+#     sit(p)  = R(cls,pick,tau) / R(cls,pick,tau0), where tau0 is THE SAME CLOCK WITH THE SIT-OUT DEPTH
+#       REMOVED. This is the engine's own MEASURED cost of having sat (the D13 ASK3 retention surface, already
+#       computed one line up), so a year-1 sit-out lowers the prior by exactly what the engine already measured
+#       sitting to be worth. `sit <= 1` is a THEOREM of the signed isotonic-non-increasing-in-depth law ("a
+#       sitter never gains value"), NOT a clamp — so a sit-out LOWERS the prior and can never preserve it. A
+#       straight debutant has tau == tau0, hence sit == 1 EXACTLY: he is judged on pedigree alone.
+#   L-SMOOTH (acceptance_v1_13.json). The exponent form fixes BOTH endpoints — 0**e == 0 and 1**e == 1 — so
+#   lam(0)=0 and the graduation continuity lam(prorated bar)=1 (Luke 2b: "no cliff, no game-6 jackpot")
+#   survive AT EVERY PEDIGREE, by construction rather than by measurement. Continuous and monotone in games,
+#   in pick and in depth; no threshold, no counter, no branch. MONOTONE IN PEDIGREE by construction: q rises
+#   with pedigree, the exponent falls, lam_eff rises — the same record re-rates FASTER at pick 3 than at
+#   pick 35. A pick-1 straight debutant has q == 1 => exponent == 1 => BYTE-EXACT to the base engine.
+#   ESTABLISHED PLAYERS ARE UNTOUCHED BY CONSTRUCTION: this function is reached from exactly one site, the
+#   `ns==0` arm of ev(), i.e. a player with NO season at or above the prorated 6-game bar. A resolved player
+#   (r=1, a >=6-game season) never enters it. A thin-record player with zero games this season has lam == 0
+#   and 0**e == 0 — also byte-exact. The moved population is precisely "thin record AND some evidence", which
+#   is the reactivity population and nothing else.
+#   SYMMETRIC, DELIBERATELY. A thin record BELOW its anchor is the same small sample as one above it, so a
+#   low-pedigree player whose few games went badly is likewise held nearer his anchor and moves UP. That is
+#   the owner's own standing L-SYMMETRY law (register item 108, verbatim: "you should have to have the same
+#   drop for the engine to think you're declining as a rise for it to think you're rising"), and a one-sided
+#   max() would be a BRANCH — refused under L-SMOOTH. The up-movers are enumerated in the stage-4 evidence,
+#   not hidden.
+#   THE DIAL, and there is exactly one: PED_BAR. The family's natural unit is 1.0 — "with no prior expectation
+#   at all, the same record must clear the existing ramp TWICE". The owner's standing calibration word for
+#   adjacent machinery is SLIGHT, so the dial lands at HALF that unit: half a pass more evidence at zero prior
+#   expectation, none at pick 1. RL_PED_BAR=0 => exponent 1 everywhere => byte-exact base board.
+#   FIT COUPLING: NONE, and it is not a judgement call. `sitout_ev` has ONE caller, ev(); the year-zero surface
+#   fits `_v0_raw` (raw_ev x iso at draft age) over the ND roster and never calls ev(). PED_BAR is therefore
+#   NOT a _V0SURF_GATES key. Proven by measurement, not by reading: a declared refit (RL_V0SURF_REFIT=1) at
+#   PED_BAR 0.0 vs 0.5 produces the identical config signature AND byte-identical fitted surfaces
+#   (docs/evidence/act_334B_2026-08-07/stage4/FIT_COUPLING.md).
+PED_BAR=float(os.environ.get('RL_PED_BAR','0.5'))            # THE DIAL: the added evidence bar at ZERO prior expectation, in units of the existing lam ramp. 0 => byte-exact base.
+def _ped_prior(p,Y,fe,tau,cls,pk):
+    """q in [0,1] — PRIOR EXPECTATION: draft-day pedigree, discounted by the engine's own measured cost of the
+    sit-out depth already elapsed. q==1 is a pick-1 straight debutant; q->0 is the deepest slot the log-pick
+    axis admits, after a long sit. Both factors are existing engine objects; no new constant is introduced."""
+    ped=1.0-float(np.log(min(max(pk,1),90))/np.log(90.0))     # the _R_surf log-pick axis and its own [1,90] clamp
+    tau0=(fe**1.5) if Y>=cp.debutyr(p) else 0.0               # THE SAME CLOCK with the sit-out depth max(0,Y-debut) removed
+    r0=_R_surf(cls,pk,tau0)
+    sit=(_R_surf(cls,pk,tau)/r0) if r0>0 else 1.0             # <=1 by the signed isotonic-in-depth law; ==1 exactly for a straight debutant
+    return ped*sit
 def sitout_ev(p,Y,e_full):
     fe=_fEy(Y,p); tau=max(0.0,Y-cp.debutyr(p))+((fe**1.5) if Y>=cp.debutyr(p) else 0.0)   # D12: CONCAVE penalty proration tau'=(R/24)^1.5 (Luke OPTION A); completed seasons full (integer knots), in-progress season accrues concavely. PENALTY path only — the lam reward blend below is UNTOUCHED.
-    R=_R_surf(_sitout_cls(MA.gfut(p)), MA.effpk(p), tau)     # D13 ASK3: pick-conditioned, isotonic-in-depth surface (was depth-only R_SIT)
+    cls=_sitout_cls(MA.gfut(p)); pk=MA.effpk(p)               # #334 s4: hoisted — the pedigree term reads the SAME class and pick the retention surface does
+    R=_R_surf(cls,pk,tau)                                    # D13 ASK3: pick-conditioned, isotonic-in-depth surface (was depth-only R_SIT)
     gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
     lam=float(np.interp(min(gy/fe,6.0),[0,1,2,3,4,5,6],LAM_SIT))                 # games AT PACE vs the prorated bar
+    lam=lam**(1.0+PED_BAR*(1.0-_ped_prior(p,Y,fe,tau,cls,pk)))                   # #334 stage 4: PEDIGREE-CONDITIONED EVIDENCE BAR (endpoints fixed: 0**e=0, 1**e=1)
     return (1.0-lam)*R*entry_anchor(p)+lam*e_full            # #326: a pool entrant blends off his division's signed entry level; every other player off v0_start, byte-for-byte
 def _first_evidence(p,Y):                                     # the games-ramp family: ALL evidence is season Y
     return not any(x['games']>0 and x['year']<Y for x in p['scoring'])

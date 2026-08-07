@@ -3,7 +3,7 @@
  "version": "1.0",
  "date": "2026-07-09",
  "baked_state": "FINAL-INTEGRATION v2.11-final-rc (PROVISIONAL) \u2014 RL_PVC2/RL_LEGE/RL_LEGF=1 posture; board 039ff8d4 (Board B + visible future-draft ladder); store 968de0c7 unchanged",
- "config_sha256": "cef06fd6250be86804f7d4432fdef8969070f9d9fc938f3e3473547c5b4b4739",
+ "config_sha256": "0b5d27030136500373f558ea345ea4a7d0288b1795a23d38ae641da208a2ebdd",
  "excluded_infrastructure_vars": {
   "_note": "NOT model semantics \u2014 path/IO/display/mode plumbing, allowed ambient in bake/gate mode, never part of the value hash.",
   "RL_REPO": "checkout locator",
@@ -48,6 +48,7 @@
   "RL_W4_KPFMS": "16.0",
   "RL_YCRED_W": "0.9",
   "RL_YCRED_KPF": "0.92",
+  "RL_PED_BAR": "0.5",
   "RL_RUC_PRIOR_CAP": "1.4",
   "RL_W4_RUC": "1",
   "RL_RUC_CEIL_HEAD": "0.80",
@@ -93,5 +94,6 @@
   "_addendum_2026_07_21": "AUDIT ADDENDUM (complete release-state identity): the 14 board-affecting kill-switches RL_PVC2/RL_LEGE/RL_LEGF/RL_FLEX/RL_CAPT/RL_DAMP/RL_EVW/RL_ISOFADE/RL_SAGE29/RL_LSYM/RL_EO2/RL_ABSENCE/RL_UNCOMP + RL_UNCONSERVE were live board semantics resolved from CODE DEFAULTS and NOT stamped into config_sha256 (the ad9ab59 defect). Now pinned at their canonical values (== code defaults == the posture that built the accepted Board B). RL_PVC2/RL_LEGE/RL_LEGF=1 are the owner-approved forward posture. Values == defaults, so clearing ambient + loading the manifest reproduces Board B's model. Override hooks RL_UNCOMP_S/RL_LSYM_TAB/RL_V0SURF_REFIT are declared must_be_unset in data/release_contract.json (reject-if-set). config_sha256 c2d233aec104 -> 3a1e714f2fa0 in this commit.",
   "_season_state_2026_07_21": "SUPERVISOR 2nd REVIEW: RL_M3_FE (calendar) + RL_EXPO_F (exposure) REMOVED as frozen manifest vars \u2014 the engine now DERIVES calendar_progress + exposure_pace from data/season_state.json (the single authoritative dynamic source; advances weekly). The immutable derivation POLICY is stamped as season_state_policy_id=39938f68732d (class-A model-policy identity). RL_EXPO_INPROG_Y/RL_M3_INPROG_Y (season-in-progress year) remain. config_sha256 3a1e714f2fa0->45b207c03a8c."
  },
- "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899"
+ "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
+ "_stage4_note": "#334 stage B / stage 4 (2026-08-07): RL_PED_BAR added \u2014 the PEDIGREE-CONDITIONED EVIDENCE BAR on the thin-record anchor/demonstrated blend (_merged_recover.sitout_ev). It is a VALUED owner dial (0.5), not a declared kill-switch, so it is enumerated here and config_sha256 moves cef06fd6 -> 0b5d2703 in the same commit that re-stamps expected_boot.json 'config' and 'engine_head'. RL_PED_BAR=0 reproduces the stage-3 board byte-exact (proven, 2650/2650 real rows). It is NOT a _V0SURF_GATES key: sitout_ev is called only from ev() and the year-zero surface fits _v0_raw, never ev() \u2014 proven by a declared refit at PED_BAR 0.0 / 0.5 / 2.0, all three reproducing the committed v0surf pin 9713ec6c byte-for-byte at the identical signature 3e8e50de5103."
 }

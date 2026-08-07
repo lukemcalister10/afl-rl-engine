@@ -1,0 +1,9 @@
+YR1-TO-PEAK, all three cuts   (peak-year mean / year-1 mean, same included set at the peak year)
+cut                peak yr      stage3     stage4      delta
+ALL picks 1-64     4          1.483282   1.491039  +0.007757
+picks 1-20         4          1.465956   1.467663  +0.001707
+picks 21-64        6          1.549984   1.569242  +0.019259
+
+BAND CHECK [1.35, 1.45] on the whole-cohort peak (REPORT ONLY, no retune):
+  stage3  peak year 4  ratio 1.432400   IN BAND: YES   distance to the 1.40 target +0.032400
+  stage4  peak year 4  ratio 1.432200   IN BAND: YES   distance to the 1.40 target +0.032200

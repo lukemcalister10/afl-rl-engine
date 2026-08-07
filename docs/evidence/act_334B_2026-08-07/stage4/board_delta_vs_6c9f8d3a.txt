@@ -1,0 +1,33 @@
+keys old=804 new=804 shared=804  only_old=[] only_new=[]
+MOVERS 51 of 804 (6.34%)  cuts 41  lifts 10
+TOTAL 655759 -> 654570  ratio 0.998187  delta -1189
+mean |relative move| board-wide 0.4302%
+mean |relative move| movers   6.7812%
+
+TOP 10 CUTS
+  noah-mraz                      3358 ->   2898    -460   -13.70%
+  taylor-goad                     900 ->    830     -70    -7.78%
+  lachlan-smith                   520 ->    459     -61   -11.73%
+  matt-whitlock                   524 ->    468     -56   -10.69%
+  zane-zakostelsky                330 ->    275     -55   -16.67%
+  george-stevens                  265 ->    219     -46   -17.36%
+  luke-kennedy                    329 ->    293     -36   -10.94%
+  archie-ludowyke                 219 ->    185     -34   -15.53%
+  luker-kentfield                 234 ->    200     -34   -14.53%
+  harrison-ramm                   252 ->    221     -31   -12.30%
+TOP 10 LIFTS
+  mitch-podhajski                 107 ->    132     +25   +23.36%
+  cameron-nairn                   424 ->    444     +20    +4.72%
+  lukas-cooke                     136 ->    153     +17   +12.50%
+  zane-peucker                    277 ->    287     +10    +3.61%
+  aidan-johnson                    71 ->     77      +6    +8.45%
+  liam-puncher                     53 ->     57      +4    +7.55%
+  oliver-hannaford                307 ->    309      +2    +0.65%
+  henry-hustwaite                 218 ->    220      +2    +0.92%
+  matt-hill                        41 ->     42      +1    +2.44%
+  jack-dalton                     271 ->    272      +1    +0.37%
+
+AGE BUCKETS
+  <=22     n= 294 movers=  45  total  225541 ->  224332  ratio 0.994640
+  23-26    n= 245 movers=   5  total  261511 ->  261506  ratio 0.999981
+  >=27     n= 265 movers=   1  total  168707 ->  168732  ratio 1.000148

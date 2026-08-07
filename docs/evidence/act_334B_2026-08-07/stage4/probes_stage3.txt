@@ -1,0 +1,62 @@
+====================================================================================================
+#334 stage B / STAGE 4 PROBES   build tag: stage3   PED_BAR=n/a (base engine)   engine head in workspace
+====================================================================================================
+
+(b) THE MRAZ PROBE
+----------------------------------------------------------------------------------------------------
+  Noah Mraz  KPD  ND pick 35 (2024)  route debut year 2025  year-1 sit-out (2025, 0 games)
+  record            : 2026 only, 4 games @ 84.25   (season 88% elapsed, so 4 games = 4.55 at the prorated 6-game bar)
+  engine ev()       : 3534
+  draft-day anchor  : 461.25   retention at depth tau=1.826 : 0.45877   anchor leg R*V0 = 211.61
+  production path   : 5068.48   (raw_ev x iso x L1c on a 4-game 84.25 season)
+  lam (pedigree-blind): 0.693727
+  blend             : (1-lam)*R*anchor + lam*e_full = 3580.95
+
+(c) THE PEDIGREE PAIR — one record (one season, 4 games @ 84.25, KPD, age/position matched to Mraz),
+    priced under four entry histories. Full 2x2: pick {3,35} x {straight year-1 debut, year-1 sit-out}.
+----------------------------------------------------------------------------------------------------
+
+  HOLD = DRAFT-AGE HELD
+    the 2025-drafted arms carry a DOB shifted one year later, so every arm is drafted at the SAME
+    draft age as Mraz and the year-zero anchor star(pos, draft-age, pick) differs ONLY by pick.
+    Consequence, disclosed: the sit-out arms are one year older AS OF 2026 (20 vs 19) — real and
+    unavoidable, a player who sat a year IS a year older now.
+    arm                                               price     anchor
+    (i)   pick 3,  straight year-1 debut               4801     2375.5
+    (ii)  pick 35, year-1 sit-out  [= Mraz-shaped]     3534      461.2
+    (iii) pick 3,  year-1 sit-out                      4184     2375.5
+    (iv)  pick 35, straight year-1 debut               3920      461.2
+    GAP (i) - (ii)  = +1267   ratio (i)/(ii) = 1.3585      <-- THE OWNER'S JUDGMENT NUMBER
+    pure pedigree, straight debut  (i)/(iv)   = 1.2247
+    pure pedigree, after a sit-out (iii)/(ii) = 1.1839
+    pure sit-out at pick 3  (iii)/(i)  = 0.8715      pure sit-out at pick 35 (ii)/(iv) = 0.9015
+
+  HOLD = AS-OF-AGE HELD
+    birth year held at Mraz's, so every arm is the SAME age as of 2026 (20). Consequence, disclosed:
+    the 2025-drafted arms were then drafted a year OLDER, which moves the year-zero anchor.
+    arm                                               price     anchor
+    (i)   pick 3,  straight year-1 debut               4165     2378.2
+    (ii)  pick 35, year-1 sit-out  [= Mraz-shaped]     3534      461.2
+    (iii) pick 3,  year-1 sit-out                      4184     2375.5
+    (iv)  pick 35, straight year-1 debut               3486      478.3
+    GAP (i) - (ii)  = +631   ratio (i)/(ii) = 1.1786      <-- THE OWNER'S JUDGMENT NUMBER
+    pure pedigree, straight debut  (i)/(iv)   = 1.1948
+    pure pedigree, after a sit-out (iii)/(ii) = 1.1839
+    pure sit-out at pick 3  (iii)/(i)  = 1.0046      pure sit-out at pick 35 (ii)/(iv) = 1.0138
+
+(d) THE BOUNDARY CHECK — the 5g -> 6g step at the establishment bar, seam_boundary DiD style.
+    A player crosses the bar when games AT PACE reach 6, i.e. games >= 6*fE = 5.28. The probe steps him
+    from 5 to 6 RAW games either side of that. If the change introduced a cliff at the bar, the SEAM
+    RATIO (the step on this build divided by the step on the base build) would move away from 1.
+----------------------------------------------------------------------------------------------------
+    probe player           pos    pick     ev@5g     ev@6g      step   step/5g
+    Noah Mraz              KPD      35      4974      5524      +550  +11.057%
+    Josh Smillie           MID       7      2388      2523      +135   +5.653%
+    Charlie West           KPF      50      4142      4510      +368   +8.885%
+    Samuel Swadling        MID      37      2183      2491      +308  +14.109%
+
+    fine sweep of the same players across the bar (raw games 3..8), to show the crossing is smooth:
+    Noah Mraz              3:2070  4:3534  5:4974  6:5524  7:5747  8:5767
+    Josh Smillie           3:1620  4:2005  5:2388  6:2523  7:2594  8:2633
+    Charlie West           3:1679  4:2970  5:4142  6:4510  7:4622  8:4694
+    Samuel Swadling        3:1081  4:1610  5:2183  6:2491  7:2595  8:2670

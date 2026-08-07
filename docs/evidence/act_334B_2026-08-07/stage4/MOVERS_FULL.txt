@@ -1,0 +1,436 @@
+#334 stage B / STAGE 4 — FULL ENUMERATION OF EVERY MOVED PLAYER
+board 6c9f8d3a92ca82c29dfaa8273a4f3ada  ->  b490ae8b3bbd28b908ccb923ed8412c1
+mechanism: lam_eff = lam ** (1 + PED_BAR*(1-q)),  PED_BAR = 0.5,  q = ped(pick) x sit(depth)
+
+SCOPE OF THE MOVE
+  board rows compared            : 804
+  MOVED                          : 51  (6.34% of the board)
+    cuts (price down)            : 41
+    lifts (price up)             : 10
+  board total                    : 655759 -> 654570  (-1189, -0.1813%)
+  every mover is on the sit-out (thin-record) path: True
+  mean |rel| across movers       : 6.7812%
+  largest cut                    : -17.36%   largest lift: +23.36%
+
+WHY A PLAYER MOVES UP. The bar is SYMMETRIC (owner law L-SYMMETRY, register item 108). A thin
+record BELOW its anchor is the same small sample as one above it, so a low-pedigree player whose
+few games went badly is likewise held nearer his anchor and his price RISES. A one-sided max()
+would be a branch and is refused under L-SMOOTH. All 10 up-movers are listed below like the rest.
+
+========================================================================================================================================================
+EVERY MOVED PLAYER, SORTED BY |relative move|  (n=51, NO CAP)
+========================================================================================================================================================
+player                     pos   entry                      old     new     abs      rel |   lam0   lam1      q anchor | triggering record
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Mitch Podhajski            KPF   MSD (pool, effpk 65)       107     132     +25  +23.36% |  0.508  0.371  0.072    301 | 2026:2g@48.5
+George Stevens             MID   ND pick 58                 265     219     -46  -17.36% |  0.508  0.369  0.055    297 | 2025:2g@62.0; 2026:2g@62.0
+Zane Zakostelsky           KPD   ND pick 51                 330     275     -55  -16.67% |  0.547  0.413  0.065    303 | 2026:3g@49.0
+Archie Ludowyke            KPF   ND pick 50                 219     185     -34  -15.53% |  0.205  0.103  0.131    226 | 2026:1g@57.0
+Luker Kentfield            KPF   MSD (pool, effpk 65)       234     200     -34  -14.53% |  0.547  0.409  0.037    301 | 2026:3g@32.3
+Noah Mraz                  KPD   ND pick 35                3358    2898    -460  -13.70% |  0.694  0.593  0.138    461 | 2026:4g@84.2
+Rhys Unwin                 SF    ND pick 61                  92      80     -12  -13.04% |  0.205  0.097  0.057    175 | 2025:3g@22.0; 2026:1g@37.0
+Tom Anastasopoulos         SF    ND pick 48                 184     160     -24  -13.04% |  0.508  0.372  0.079    271 | 2026:2g@40.5
+Lukas Cooke                KPD   MSD (pool, effpk 65)       136     153     +17  +12.50% |  0.508  0.371  0.072    301 | 2026:2g@43.5
+Harrison Ramm              KPD   MSD (pool, effpk 65)       252     221     -31  -12.30% |  0.547  0.410  0.046    301 | 2025:1g@28.0; 2026:3g@23.7
+Lachlan Smith              RUCK  ND pick 47                 520     459     -61  -11.73% |  0.508  0.375  0.105    514 | 2026:2g@53.0
+Hudson O'Keeffe            KPF   SSP (pool, effpk 65)       155     137     -18  -11.61% |  0.547  0.409  0.035    265 | 2025:5g@48.8; 2026:3g@29.7
+Luke Kennedy               MID   ND pick 62                 329     293     -36  -10.94% |  0.694  0.584  0.055    253 | 2026:4g@37.2
+Matt Whitlock              KPF   ND pick 27                 524     468     -56  -10.69% |  0.547  0.427  0.179    589 | 2025:2g@21.5; 2026:3g@27.7
+Jay Polkinghorne           SF    ND pick 44                 232     209     -23   -9.91% |  0.547  0.418  0.106    326 | 2026:3g@52.7
+Aidan Johnson              KPF   ND (pool, effpk 65)         71      77      +6   +8.45% |  0.205  0.097  0.046    192 | 2025:5g@37.6; 2026:1g@34.0
+Tom Cochrane               SF    RD:SF (pool, effpk 65)     139     128     -11   -7.91% |  0.547  0.410  0.048    243 | 2025:3g@34.0; 2026:3g@30.7
+Taylor Goad                RUCK  ND pick 20                 900     830     -70   -7.78% |  0.508  0.391  0.232   1037 | 2026:2g@43.5
+Noah Roberts-Thomson       SF    ND pick 54                 197     182     -15   -7.61% |  0.547  0.419  0.114    223 | 2026:3g@38.7
+Liam Reidy                 RUCK  RD:RUCK (pool, effpk 6     329     304     -25   -7.60% |  0.694  0.583  0.052    297 | 2024:2g@41.0; 2025:1g@34.0; 2026:4g@64.3
+Liam Puncher               KPD   MSD (pool, effpk 65)        53      57      +4   +7.55% |  0.941  0.915  0.072    301 | 2026:5g@37.8
+Bodie Ryan                 SD    ND pick 46                 211     196     -15   -7.11% |  0.694  0.587  0.085    312 | 2026:4g@37.9
+Cody Curtin                KPF   ND pick 43                 420     391     -29   -6.90% |  0.694  0.595  0.164    321 | 2026:4g@29.8
+Oliver Francou             MID   MSD (pool, effpk 65)       274     258     -16   -5.84% |  0.694  0.585  0.072    301 | 2026:4g@71.5
+Max Ramsden                KPF   MSD (pool, effpk 65)       120     113      -7   -5.83% |  0.508  0.366  0.034    301 | 2023:2g@25.5; 2024:3g@34.0; 2025:4g@63.2; 2026:2g@40.5
+Ollie Greeves              MID   RD:MID (pool, effpk 65     285     269     -16   -5.61% |  0.694  0.585  0.072    309 | 2026:4g@44.0
+William McCabe             KPF   ND pick 19                 575     544     -31   -5.39% |  0.694  0.601  0.215    778 | 2026:4g@31.8
+Flynn Riley                RUCK  MSD (pool, effpk 65)       261     247     -14   -5.36% |  0.205  0.099  0.072    301 | 2026:1g@80.0
+Oscar Ryan                 SD    ND pick 27                 271     257     -14   -5.17% |  0.205  0.106  0.161    587 | 2026:1g@96.0
+Cameron Nairn              SF    ND pick 20                 424     444     +20   +4.72% |  0.547  0.447  0.334    760 | 2026:3g@42.8
+Balyn O'Brien              SD    SSP (pool, effpk 65)       200     191      -9   -4.50% |  0.547  0.413  0.072    265 | 2026:3g@27.7
+Jacob Newton               SF    MSD (pool, effpk 65)       134     128      -6   -4.48% |  0.547  0.411  0.051    301 | 2025:2g@25.5; 2026:3g@27.7
+Aidan Schubert             KPF   ND pick 23                 519     499     -20   -3.85% |  0.205  0.118  0.303    681 | 2026:1g@24.0
+Zane Peucker               SF    ND pick 31                 277     287     +10   +3.61% |  0.508  0.392  0.237    476 | 2026:2g@40.5
+Charlie Edwards            MID   ND pick 21                 601     580     -21   -3.49% |  0.508  0.387  0.199   1187 | 2026:2g@47.5
+Charlie Banfield           MID   ND pick 41                 443     429     -14   -3.16% |  0.547  0.426  0.175    606 | 2026:3g@54.3
+Matt Hill                  SF    UNR (pool, effpk 65)        41      42      +1   +2.44% |  0.508  0.368  0.048    108 | 2026:2g@24.0
+Jayden Nguyen              SD    PDN (pool, effpk 65)       267     261      -6   -2.25% |  0.941  0.915  0.048    129 | 2025:5g@39.2; 2026:5g@42.6
+Charlie West               KPF   ND pick 50                 548     536     -12   -2.19% |  0.941  0.916  0.083    226 | 2025:1g@27.0; 2026:5g@34.2
+Jaxon Artemis              SD    MSD (pool, effpk 65)       197     193      -4   -2.03% |  0.547  0.413  0.072    301 | 2026:3g@53.0
+Riley Hamilton             SF    PDA (pool, effpk 65)       225     221      -4   -1.78% |  0.941  0.915  0.072    204 | 2026:5g@36.0
+Jack Ough                  MID   ND pick 36                 504     498      -6   -1.19% |  0.941  0.917  0.135    687 | 2026:5g@46.0
+Thomas Burton              SF    SSP (pool, effpk 65)       271     268      -3   -1.11% |  0.941  0.915  0.072    265 | 2026:5g@39.4
+Henry Hustwaite            MID   ND pick 37                 218     220      +2   +0.92% |  0.205  0.101  0.102    669 | 2023:2g@66.0; 2024:4g@25.0; 2025:4g@46.2; 2026:1g@59.0
+Oliver Hannaford           SF    ND pick 18                 307     309      +2   +0.65% |  0.941  0.920  0.243    792 | 2026:5g@28.2
+Samuel Swadling            MID   ND pick 37                 642     638      -4   -0.62% |  0.941  0.919  0.198    669 | 2026:5g@59.0
+Dylan Patterson            SD    ND pick 5                 1429    1422      -7   -0.49% |  0.941  0.931  0.642   1190 | 2026:5g@35.6
+Daniel Annable             MID   ND pick 6                 1243    1237      -6   -0.48% |  0.205  0.150  0.602   1981 | 2026:1g@40.0
+Jack Dalton                SF    ND pick 34                 271     272      +1   +0.37% |  0.694  0.601  0.216    424 | 2026:4g@53.5
+James Leake                SD    ND pick 17                 408     407      -1   -0.25% |  0.941  0.920  0.232    837 | 2025:3g@39.0; 2026:5g@53.6
+Harrison Oliver            SD    ND pick 19                 441     440      -1   -0.23% |  0.941  0.920  0.234    827 | 2026:5g@39.0
+
+========================================================================================================================================================
+THE TRIGGERING RECORD IN FULL, same order
+========================================================================================================================================================
+  1. Mitch Podhajski  (KPF, MSD (pool, effpk 65), drafted 2026)
+     price            : 107 -> 132   (+25, +23.36%)   [engine ev() on this build 139]
+     career by season : 2026:2g@48.5   (career 2g, best season 2g @ 48.5)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 300.99   retention R at depth: 0.70447   2026 games: 2 (2.27 at pace)
+     mechanism        : ped 0.0723 x sit 1.0000 = q 0.0723  ->  exponent 1.4638  ->  lam 0.5077 -> 0.3708
+
+  2. George Stevens  (MID, ND pick 58, drafted 2023)
+     price            : 265 -> 219   (-46, -17.36%)   [engine ev() on this build 231]
+     career by season : 2025:2g@62.0; 2026:2g@62.0   (career 4g, best season 2g @ 62.0)
+     route debut year : 2024   first played: 2025   LEAD SIT-OUT YEARS: 1   all listed non-playing years: 2024 (n=1)
+     draft-day anchor : 297.26   retention R at depth: 0.35250   2026 games: 2 (2.27 at pace)
+     mechanism        : ped 0.0976 x sit 0.5616 = q 0.0548  ->  exponent 1.4726  ->  lam 0.5077 -> 0.3686
+
+  3. Zane Zakostelsky  (KPD, ND pick 51, drafted 2023)
+     price            : 330 -> 275   (-55, -16.67%)   [engine ev() on this build 289]
+     career by season : 2026:3g@49.0   (career 3g, best season 3g @ 49.0)
+     route debut year : 2024   first played: 2026   LEAD SIT-OUT YEARS: 2   all listed non-playing years: 2024,2025 (n=2)
+     draft-day anchor : 302.98   retention R at depth: 0.36077   2026 games: 3 (3.41 at pace)
+     mechanism        : ped 0.1262 x sit 0.5121 = q 0.0646  ->  exponent 1.4677  ->  lam 0.5470 -> 0.4125
+
+  4. Archie Ludowyke  (KPF, ND pick 50, drafted 2025)
+     price            : 219 -> 185   (-34, -15.53%)   [engine ev() on this build 195]
+     career by season : 2026:1g@57.0   (career 1g, best season 1g @ 57.0)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 225.67   retention R at depth: 0.70447   2026 games: 1 (1.14 at pace)
+     mechanism        : ped 0.1306 x sit 1.0000 = q 0.1306  ->  exponent 1.4347  ->  lam 0.2054 -> 0.1032
+
+  5. Luker Kentfield  (KPF, MSD (pool, effpk 65), drafted 2024)
+     price            : 234 -> 200   (-34, -14.53%)   [engine ev() on this build 211]
+     career by season : 2026:3g@32.3   (career 3g, best season 3g @ 32.3)
+     route debut year : 2024   first played: 2026   LEAD SIT-OUT YEARS: 2   all listed non-playing years: 2024,2025 (n=2)
+     draft-day anchor : 300.99   retention R at depth: 0.36077   2026 games: 3 (3.41 at pace)
+     mechanism        : ped 0.0723 x sit 0.5121 = q 0.0370  ->  exponent 1.4815  ->  lam 0.5470 -> 0.4091
+
+  6. Noah Mraz  (KPD, ND pick 35, drafted 2024)
+     price            : 3358 -> 2898   (-460, -13.70%)   [engine ev() on this build 3050]
+     career by season : 2026:4g@84.2   (career 4g, best season 4g @ 84.2)
+     route debut year : 2025   first played: 2026   LEAD SIT-OUT YEARS: 1   all listed non-playing years: 2025 (n=1)
+     draft-day anchor : 461.25   retention R at depth: 0.45877   2026 games: 4 (4.55 at pace)
+     mechanism        : ped 0.2099 x sit 0.6566 = q 0.1378  ->  exponent 1.4311  ->  lam 0.6937 -> 0.5926
+
+  7. Rhys Unwin  (SF, ND pick 61, drafted 2024)
+     price            : 92 -> 80   (-12, -13.04%)   [engine ev() on this build 84]
+     career by season : 2025:3g@22.0; 2026:1g@37.0   (career 4g, best season 3g @ 37.0)
+     route debut year : 2025   first played: 2025   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 175.10   retention R at depth: 0.41609   2026 games: 1 (1.14 at pace)
+     mechanism        : ped 0.0864 x sit 0.6629 = q 0.0573  ->  exponent 1.4714  ->  lam 0.2054 -> 0.0974
+
+  8. Tom Anastasopoulos  (SF, ND pick 48, drafted 2023)
+     price            : 184 -> 160   (-24, -13.04%)   [engine ev() on this build 168]
+     career by season : 2026:2g@40.5   (career 2g, best season 2g @ 40.5)
+     route debut year : 2024   first played: 2026   LEAD SIT-OUT YEARS: 2   all listed non-playing years: 2024,2025 (n=2)
+     draft-day anchor : 271.26   retention R at depth: 0.35825   2026 games: 2 (2.27 at pace)
+     mechanism        : ped 0.1397 x sit 0.5648 = q 0.0789  ->  exponent 1.4605  ->  lam 0.5077 -> 0.3716
+
+  9. Lukas Cooke  (KPD, MSD (pool, effpk 65), drafted 2026)
+     price            : 136 -> 153   (+17, +12.50%)   [engine ev() on this build 161]
+     career by season : 2026:2g@43.5   (career 2g, best season 2g @ 43.5)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 300.99   retention R at depth: 0.70447   2026 games: 2 (2.27 at pace)
+     mechanism        : ped 0.0723 x sit 1.0000 = q 0.0723  ->  exponent 1.4638  ->  lam 0.5077 -> 0.3708
+
+ 10. Harrison Ramm  (KPD, MSD (pool, effpk 65), drafted 2025)
+     price            : 252 -> 221   (-31, -12.30%)   [engine ev() on this build 233]
+     career by season : 2025:1g@28.0; 2026:3g@23.7   (career 4g, best season 3g @ 28.0)
+     route debut year : 2025   first played: 2025   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 300.99   retention R at depth: 0.44800   2026 games: 3 (3.41 at pace)
+     mechanism        : ped 0.0723 x sit 0.6359 = q 0.0460  ->  exponent 1.4770  ->  lam 0.5470 -> 0.4102
+
+ 11. Lachlan Smith  (RUCK, ND pick 47, drafted 2023)
+     price            : 520 -> 459   (-61, -11.73%)   [engine ev() on this build 483]
+     career by season : 2026:2g@53.0   (career 2g, best season 2g @ 53.0)
+     route debut year : 2024   first played: 2026   LEAD SIT-OUT YEARS: 2   all listed non-playing years: 2024,2025 (n=2)
+     draft-day anchor : 513.58   retention R at depth: 0.59666   2026 games: 2 (2.27 at pace)
+     mechanism        : ped 0.1444 x sit 0.7240 = q 0.1045  ->  exponent 1.4477  ->  lam 0.5077 -> 0.3748
+
+ 12. Hudson O'Keeffe  (KPF, SSP (pool, effpk 65), drafted 2022)
+     price            : 155 -> 137   (-18, -11.61%)   [engine ev() on this build 144]
+     career by season : 2025:5g@48.8; 2026:3g@29.7   (career 8g, best season 5g @ 48.8)
+     route debut year : 2023   first played: 2025   LEAD SIT-OUT YEARS: 2   all listed non-playing years: 2023,2024 (n=2)
+     draft-day anchor : 265.20   retention R at depth: 0.33697   2026 games: 3 (3.41 at pace)
+     mechanism        : ped 0.0723 x sit 0.4783 = q 0.0346  ->  exponent 1.4827  ->  lam 0.5470 -> 0.4088
+
+ 13. Luke Kennedy  (MID, ND pick 62, drafted 2024)
+     price            : 329 -> 293   (-36, -10.94%)   [engine ev() on this build 308]
+     career by season : 2026:4g@37.2   (career 4g, best season 4g @ 37.2)
+     route debut year : 2025   first played: 2026   LEAD SIT-OUT YEARS: 1   all listed non-playing years: 2025 (n=1)
+     draft-day anchor : 252.57   retention R at depth: 0.41609   2026 games: 4 (4.55 at pace)
+     mechanism        : ped 0.0828 x sit 0.6629 = q 0.0549  ->  exponent 1.4726  ->  lam 0.6937 -> 0.5836
+
+ 14. Matt Whitlock  (KPF, ND pick 27, drafted 2024)
+     price            : 524 -> 468   (-56, -10.69%)   [engine ev() on this build 492]
+     career by season : 2025:2g@21.5; 2026:3g@27.7   (career 5g, best season 3g @ 27.7)
+     route debut year : 2025   first played: 2025   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 588.52   retention R at depth: 0.48010   2026 games: 3 (3.41 at pace)
+     mechanism        : ped 0.2676 x sit 0.6691 = q 0.1790  ->  exponent 1.4105  ->  lam 0.5470 -> 0.4270
+
+ 15. Jay Polkinghorne  (SF, ND pick 44, drafted 2024)
+     price            : 232 -> 209   (-23, -9.91%)   [engine ev() on this build 220]
+     career by season : 2026:3g@52.7   (career 3g, best season 3g @ 52.7)
+     route debut year : 2025   first played: 2026   LEAD SIT-OUT YEARS: 1   all listed non-playing years: 2025 (n=1)
+     draft-day anchor : 326.29   retention R at depth: 0.43037   2026 games: 3 (3.41 at pace)
+     mechanism        : ped 0.1590 x sit 0.6638 = q 0.1056  ->  exponent 1.4472  ->  lam 0.5470 -> 0.4176
+
+ 16. Aidan Johnson  (KPF, ND (pool, effpk 65), drafted 2024)
+     price            : 71 -> 77   (+6, +8.45%)   [engine ev() on this build 81]
+     career by season : 2025:5g@37.6; 2026:1g@34.0   (career 6g, best season 5g @ 37.6)
+     route debut year : 2025   first played: 2025   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 191.54   retention R at depth: 0.44800   2026 games: 1 (1.14 at pace)
+     mechanism        : ped 0.0723 x sit 0.6359 = q 0.0460  ->  exponent 1.4770  ->  lam 0.2054 -> 0.0965
+
+ 17. Tom Cochrane  (SF, RD:SF (pool, effpk 65), drafted 2024)
+     price            : 139 -> 128   (-11, -7.91%)   [engine ev() on this build 135]
+     career by season : 2025:3g@34.0; 2026:3g@30.7   (career 6g, best season 3g @ 34.0)
+     route debut year : 2025   first played: 2025   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 243.10   retention R at depth: 0.41609   2026 games: 3 (3.41 at pace)
+     mechanism        : ped 0.0723 x sit 0.6629 = q 0.0479  ->  exponent 1.4760  ->  lam 0.5470 -> 0.4105
+
+ 18. Taylor Goad  (RUCK, ND pick 20, drafted 2023)
+     price            : 900 -> 830   (-70, -7.78%)   [engine ev() on this build 874]
+     career by season : 2026:2g@43.5   (career 2g, best season 2g @ 43.5)
+     route debut year : 2024   first played: 2026   LEAD SIT-OUT YEARS: 2   all listed non-playing years: 2024,2025 (n=2)
+     draft-day anchor : 1037.37   retention R at depth: 0.60489   2026 games: 2 (2.27 at pace)
+     mechanism        : ped 0.3343 x sit 0.6954 = q 0.2324  ->  exponent 1.3838  ->  lam 0.5077 -> 0.3914
+
+ 19. Noah Roberts-Thomson  (SF, ND pick 54, drafted 2025)
+     price            : 197 -> 182   (-15, -7.61%)   [engine ev() on this build 192]
+     career by season : 2026:3g@38.7   (career 3g, best season 3g @ 38.7)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 222.51   retention R at depth: 0.62769   2026 games: 3 (3.41 at pace)
+     mechanism        : ped 0.1135 x sit 1.0000 = q 0.1135  ->  exponent 1.4432  ->  lam 0.5470 -> 0.4187
+
+ 20. Liam Reidy  (RUCK, RD:RUCK (pool, effpk 65), drafted 2022)
+     price            : 329 -> 304   (-25, -7.60%)   [engine ev() on this build 320]
+     career by season : 2024:2g@41.0; 2025:1g@34.0; 2026:4g@64.3   (career 7g, best season 4g @ 64.3)
+     route debut year : 2023   first played: 2024   LEAD SIT-OUT YEARS: 1   all listed non-playing years: 2023 (n=1)
+     draft-day anchor : 296.78   retention R at depth: 0.59400   2026 games: 4 (4.55 at pace)
+     mechanism        : ped 0.0723 x sit 0.7251 = q 0.0524  ->  exponent 1.4738  ->  lam 0.6937 -> 0.5834
+
+ 21. Liam Puncher  (KPD, MSD (pool, effpk 65), drafted 2026)
+     price            : 53 -> 57   (+4, +7.55%)   [engine ev() on this build 60]
+     career by season : 2026:5g@37.8   (career 5g, best season 5g @ 37.8)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 300.99   retention R at depth: 0.70447   2026 games: 5 (5.68 at pace)
+     mechanism        : ped 0.0723 x sit 1.0000 = q 0.0723  ->  exponent 1.4638  ->  lam 0.9415 -> 0.9155
+
+ 22. Bodie Ryan  (SD, ND pick 46, drafted 2023)
+     price            : 211 -> 196   (-15, -7.11%)   [engine ev() on this build 206]
+     career by season : 2026:4g@37.9   (career 4g, best season 4g @ 37.9)
+     route debut year : 2024   first played: 2026   LEAD SIT-OUT YEARS: 2   all listed non-playing years: 2024,2025 (n=2)
+     draft-day anchor : 312.21   retention R at depth: 0.36425   2026 games: 4 (4.55 at pace)
+     mechanism        : ped 0.1492 x sit 0.5681 = q 0.0847  ->  exponent 1.4576  ->  lam 0.6937 -> 0.5868
+
+ 23. Cody Curtin  (KPF, ND pick 43, drafted 2025)
+     price            : 420 -> 391   (-29, -6.90%)   [engine ev() on this build 412]
+     career by season : 2026:4g@29.8   (career 4g, best season 4g @ 29.8)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 320.55   retention R at depth: 0.70203   2026 games: 4 (4.55 at pace)
+     mechanism        : ped 0.1641 x sit 1.0000 = q 0.1641  ->  exponent 1.4179  ->  lam 0.6937 -> 0.5954
+
+ 24. Oliver Francou  (MID, MSD (pool, effpk 65), drafted 2026)
+     price            : 274 -> 258   (-16, -5.84%)   [engine ev() on this build 272]
+     career by season : 2026:4g@71.5   (career 4g, best season 4g @ 71.5)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 300.99   retention R at depth: 0.62769   2026 games: 4 (4.55 at pace)
+     mechanism        : ped 0.0723 x sit 1.0000 = q 0.0723  ->  exponent 1.4638  ->  lam 0.6937 -> 0.5855
+
+ 25. Max Ramsden  (KPF, MSD (pool, effpk 65), drafted 2022)
+     price            : 120 -> 113   (-7, -5.83%)   [engine ev() on this build 119]
+     career by season : 2023:2g@25.5; 2024:3g@34.0; 2025:4g@63.2; 2026:2g@40.5   (career 11g, best season 4g @ 63.2)
+     route debut year : 2022   first played: 2023   LEAD SIT-OUT YEARS: 1   all listed non-playing years: 2022 (n=1)
+     draft-day anchor : 300.99   retention R at depth: 0.33400   2026 games: 2 (2.27 at pace)
+     mechanism        : ped 0.0723 x sit 0.4741 = q 0.0343  ->  exponent 1.4829  ->  lam 0.5077 -> 0.3660
+
+ 26. Ollie Greeves  (MID, RD:MID (pool, effpk 65), drafted 2025)
+     price            : 285 -> 269   (-16, -5.61%)   [engine ev() on this build 283]
+     career by season : 2026:4g@44.0   (career 4g, best season 4g @ 44.0)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 309.41   retention R at depth: 0.62769   2026 games: 4 (4.55 at pace)
+     mechanism        : ped 0.0723 x sit 1.0000 = q 0.0723  ->  exponent 1.4638  ->  lam 0.6937 -> 0.5855
+
+ 27. William McCabe  (KPF, ND pick 19, drafted 2023)
+     price            : 575 -> 544   (-31, -5.39%)   [engine ev() on this build 572]
+     career by season : 2026:4g@31.8   (career 4g, best season 4g @ 31.8)
+     route debut year : 2024   first played: 2026   LEAD SIT-OUT YEARS: 2   all listed non-playing years: 2024,2025 (n=2)
+     draft-day anchor : 778.44   retention R at depth: 0.46039   2026 games: 4 (4.55 at pace)
+     mechanism        : ped 0.3457 x sit 0.6206 = q 0.2145  ->  exponent 1.3927  ->  lam 0.6937 -> 0.6009
+
+ 28. Flynn Riley  (RUCK, MSD (pool, effpk 65), drafted 2026)
+     price            : 261 -> 247   (-14, -5.36%)   [engine ev() on this build 260]
+     career by season : 2026:1g@80.0   (career 1g, best season 1g @ 80.0)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 300.99   retention R at depth: 0.81921   2026 games: 1 (1.14 at pace)
+     mechanism        : ped 0.0723 x sit 1.0000 = q 0.0723  ->  exponent 1.4638  ->  lam 0.2054 -> 0.0986
+
+ 29. Oscar Ryan  (SD, ND pick 27, drafted 2023)
+     price            : 271 -> 257   (-14, -5.17%)   [engine ev() on this build 270]
+     career by season : 2026:1g@96.0   (career 1g, best season 1g @ 96.0)
+     route debut year : 2024   first played: 2026   LEAD SIT-OUT YEARS: 2   all listed non-playing years: 2024,2025 (n=2)
+     draft-day anchor : 587.05   retention R at depth: 0.43274   2026 games: 1 (1.14 at pace)
+     mechanism        : ped 0.2676 x sit 0.6031 = q 0.1614  ->  exponent 1.4193  ->  lam 0.2054 -> 0.1058
+
+ 30. Cameron Nairn  (SF, ND pick 20, drafted 2025)
+     price            : 424 -> 444   (+20, +4.72%)   [engine ev() on this build 467]
+     career by season : 2026:3g@42.8   (career 3g, best season 3g @ 42.8)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 760.16   retention R at depth: 0.73825   2026 games: 3 (3.41 at pace)
+     mechanism        : ped 0.3343 x sit 1.0000 = q 0.3343  ->  exponent 1.3329  ->  lam 0.5470 -> 0.4475
+
+ 31. Balyn O'Brien  (SD, SSP (pool, effpk 65), drafted 2025)
+     price            : 200 -> 191   (-9, -4.50%)   [engine ev() on this build 201]
+     career by season : 2026:3g@27.7   (career 3g, best season 3g @ 27.7)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 265.20   retention R at depth: 0.62769   2026 games: 3 (3.41 at pace)
+     mechanism        : ped 0.0723 x sit 1.0000 = q 0.0723  ->  exponent 1.4638  ->  lam 0.5470 -> 0.4135
+
+ 32. Jacob Newton  (SF, MSD (pool, effpk 65), drafted 2025)
+     price            : 134 -> 128   (-6, -4.48%)   [engine ev() on this build 135]
+     career by season : 2025:2g@25.5; 2026:3g@27.7   (career 5g, best season 3g @ 27.7)
+     route debut year : 2025   first played: 2025   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 300.99   retention R at depth: 0.38800   2026 games: 3 (3.00 at pace)
+     mechanism        : ped 0.0723 x sit 0.7067 = q 0.0511  ->  exponent 1.4744  ->  lam 0.5470 -> 0.4108
+
+ 33. Aidan Schubert  (KPF, ND pick 23, drafted 2025)
+     price            : 519 -> 499   (-20, -3.85%)   [engine ev() on this build 525]
+     career by season : 2026:1g@24.0   (career 1g, best season 1g @ 24.0)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 680.78   retention R at depth: 0.72860   2026 games: 1 (1.14 at pace)
+     mechanism        : ped 0.3032 x sit 1.0000 = q 0.3032  ->  exponent 1.3484  ->  lam 0.2054 -> 0.1183
+
+ 34. Zane Peucker  (SF, ND pick 31, drafted 2025)
+     price            : 277 -> 287   (+10, +3.61%)   [engine ev() on this build 302]
+     career by season : 2026:2g@40.5   (career 2g, best season 2g @ 40.5)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 475.58   retention R at depth: 0.70495   2026 games: 2 (2.27 at pace)
+     mechanism        : ped 0.2369 x sit 1.0000 = q 0.2369  ->  exponent 1.3816  ->  lam 0.5077 -> 0.3920
+
+ 35. Charlie Edwards  (MID, ND pick 21, drafted 2023)
+     price            : 601 -> 580   (-21, -3.49%)   [engine ev() on this build 610]
+     career by season : 2026:2g@47.5   (career 2g, best season 2g @ 47.5)
+     route debut year : 2024   first played: 2026   LEAD SIT-OUT YEARS: 2   all listed non-playing years: 2024,2025 (n=2)
+     draft-day anchor : 1186.98   retention R at depth: 0.45252   2026 games: 2 (2.27 at pace)
+     mechanism        : ped 0.3234 x sit 0.6158 = q 0.1991  ->  exponent 1.4004  ->  lam 0.5077 -> 0.3870
+
+ 36. Charlie Banfield  (MID, ND pick 41, drafted 2025)
+     price            : 443 -> 429   (-14, -3.16%)   [engine ev() on this build 451]
+     career by season : 2026:3g@54.3   (career 3g, best season 3g @ 54.3)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 605.90   retention R at depth: 0.65976   2026 games: 3 (3.41 at pace)
+     mechanism        : ped 0.1747 x sit 1.0000 = q 0.1747  ->  exponent 1.4126  ->  lam 0.5470 -> 0.4265
+
+ 37. Matt Hill  (SF, UNR (pool, effpk 65), drafted 2024)
+     price            : 41 -> 42   (+1, +2.44%)   [engine ev() on this build 44]
+     career by season : 2026:2g@24.0   (career 2g, best season 2g @ 24.0)
+     route debut year : 2025   first played: 2026   LEAD SIT-OUT YEARS: 1   all listed non-playing years: 2025 (n=1)
+     draft-day anchor : 108.40   retention R at depth: 0.41609   2026 games: 2 (2.27 at pace)
+     mechanism        : ped 0.0723 x sit 0.6629 = q 0.0479  ->  exponent 1.4760  ->  lam 0.5077 -> 0.3677
+
+ 38. Jayden Nguyen  (SD, PDN (pool, effpk 65), drafted 2024)
+     price            : 267 -> 261   (-6, -2.25%)   [engine ev() on this build 275]
+     career by season : 2025:5g@39.2; 2026:5g@42.6   (career 10g, best season 5g @ 42.6)
+     route debut year : 2025   first played: 2025   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 129.45   retention R at depth: 0.41609   2026 games: 5 (5.68 at pace)
+     mechanism        : ped 0.0723 x sit 0.6629 = q 0.0479  ->  exponent 1.4760  ->  lam 0.9415 -> 0.9148
+
+ 39. Charlie West  (KPF, ND pick 50, drafted 2024)
+     price            : 548 -> 536   (-12, -2.19%)   [engine ev() on this build 564]
+     career by season : 2025:1g@27.0; 2026:5g@34.2   (career 6g, best season 5g @ 34.2)
+     route debut year : 2025   first played: 2025   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 225.67   retention R at depth: 0.44800   2026 games: 5 (5.68 at pace)
+     mechanism        : ped 0.1306 x sit 0.6359 = q 0.0831  ->  exponent 1.4585  ->  lam 0.9415 -> 0.9158
+
+ 40. Jaxon Artemis  (SD, MSD (pool, effpk 65), drafted 2026)
+     price            : 197 -> 193   (-4, -2.03%)   [engine ev() on this build 203]
+     career by season : 2026:3g@53.0   (career 3g, best season 3g @ 53.0)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 300.99   retention R at depth: 0.62769   2026 games: 3 (3.41 at pace)
+     mechanism        : ped 0.0723 x sit 1.0000 = q 0.0723  ->  exponent 1.4638  ->  lam 0.5470 -> 0.4135
+
+ 41. Riley Hamilton  (SF, PDA (pool, effpk 65), drafted 2025)
+     price            : 225 -> 221   (-4, -1.78%)   [engine ev() on this build 233]
+     career by season : 2026:5g@36.0   (career 5g, best season 5g @ 36.0)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 204.17   retention R at depth: 0.62769   2026 games: 5 (5.68 at pace)
+     mechanism        : ped 0.0723 x sit 1.0000 = q 0.0723  ->  exponent 1.4638  ->  lam 0.9415 -> 0.9155
+
+ 42. Jack Ough  (MID, ND pick 36, drafted 2024)
+     price            : 504 -> 498   (-6, -1.19%)   [engine ev() on this build 524]
+     career by season : 2026:5g@46.0   (career 5g, best season 5g @ 46.0)
+     route debut year : 2025   first played: 2026   LEAD SIT-OUT YEARS: 1   all listed non-playing years: 2025 (n=1)
+     draft-day anchor : 686.79   retention R at depth: 0.45280   2026 games: 5 (5.68 at pace)
+     mechanism        : ped 0.2036 x sit 0.6651 = q 0.1354  ->  exponent 1.4323  ->  lam 0.9415 -> 0.9172
+
+ 43. Thomas Burton  (SF, SSP (pool, effpk 65), drafted 2025)
+     price            : 271 -> 268   (-3, -1.11%)   [engine ev() on this build 282]
+     career by season : 2026:5g@39.4   (career 5g, best season 5g @ 39.4)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 265.20   retention R at depth: 0.62769   2026 games: 5 (5.68 at pace)
+     mechanism        : ped 0.0723 x sit 1.0000 = q 0.0723  ->  exponent 1.4638  ->  lam 0.9415 -> 0.9155
+
+ 44. Henry Hustwaite  (MID, ND pick 37, drafted 2022)
+     price            : 218 -> 220   (+2, +0.92%)   [engine ev() on this build 232]
+     career by season : 2023:2g@66.0; 2024:4g@25.0; 2025:4g@46.2; 2026:1g@59.0   (career 11g, best season 4g @ 66.0)
+     route debut year : 2023   first played: 2023   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 669.29   retention R at depth: 0.35057   2026 games: 1 (1.14 at pace)
+     mechanism        : ped 0.1975 x sit 0.5183 = q 0.1024  ->  exponent 1.4488  ->  lam 0.2054 -> 0.1010
+
+ 45. Oliver Hannaford  (SF, ND pick 18, drafted 2024)
+     price            : 307 -> 309   (+2, +0.65%)   [engine ev() on this build 325]
+     career by season : 2026:5g@28.2   (career 5g, best season 5g @ 28.2)
+     route debut year : 2025   first played: 2026   LEAD SIT-OUT YEARS: 1   all listed non-playing years: 2025 (n=1)
+     draft-day anchor : 791.82   retention R at depth: 0.50678   2026 games: 5 (5.68 at pace)
+     mechanism        : ped 0.3577 x sit 0.6798 = q 0.2431  ->  exponent 1.3784  ->  lam 0.9415 -> 0.9202
+
+ 46. Samuel Swadling  (MID, ND pick 37, drafted 2025)
+     price            : 642 -> 638   (-4, -0.62%)   [engine ev() on this build 671]
+     career by season : 2026:5g@59.0   (career 5g, best season 5g @ 59.0)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 669.29   retention R at depth: 0.67635   2026 games: 5 (5.68 at pace)
+     mechanism        : ped 0.1975 x sit 1.0000 = q 0.1975  ->  exponent 1.4012  ->  lam 0.9415 -> 0.9189
+
+ 47. Dylan Patterson  (SD, ND pick 5, drafted 2025)
+     price            : 1429 -> 1422   (-7, -0.49%)   [engine ev() on this build 1496]
+     career by season : 2026:5g@35.6   (career 5g, best season 5g @ 35.6)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 1189.99   retention R at depth: 0.62604   2026 games: 5 (5.68 at pace)
+     mechanism        : ped 0.6423 x sit 1.0000 = q 0.6423  ->  exponent 1.1788  ->  lam 0.9415 -> 0.9314
+
+ 48. Daniel Annable  (MID, ND pick 6, drafted 2025)
+     price            : 1243 -> 1237   (-6, -0.48%)   [engine ev() on this build 1302]
+     career by season : 2026:1g@40.0   (career 1g, best season 1g @ 40.0)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 1981.31   retention R at depth: 0.64796   2026 games: 1 (1.14 at pace)
+     mechanism        : ped 0.6018 x sit 1.0000 = q 0.6018  ->  exponent 1.1991  ->  lam 0.2054 -> 0.1499
+
+ 49. Jack Dalton  (SF, ND pick 34, drafted 2025)
+     price            : 271 -> 272   (+1, +0.37%)   [engine ev() on this build 286]
+     career by season : 2026:4g@53.5   (career 4g, best season 4g @ 53.5)
+     route debut year : 2026   first played: 2026   LEAD SIT-OUT YEARS: 0   all listed non-playing years: - (n=0)
+     draft-day anchor : 423.77   retention R at depth: 0.69002   2026 games: 4 (4.55 at pace)
+     mechanism        : ped 0.2163 x sit 1.0000 = q 0.2163  ->  exponent 1.3918  ->  lam 0.6937 -> 0.6011
+
+ 50. James Leake  (SD, ND pick 17, drafted 2023)
+     price            : 408 -> 407   (-1, -0.25%)   [engine ev() on this build 428]
+     career by season : 2025:3g@39.0; 2026:5g@53.6   (career 8g, best season 5g @ 53.6)
+     route debut year : 2024   first played: 2025   LEAD SIT-OUT YEARS: 1   all listed non-playing years: 2024 (n=1)
+     draft-day anchor : 837.16   retention R at depth: 0.46915   2026 games: 5 (5.68 at pace)
+     mechanism        : ped 0.3704 x sit 0.6260 = q 0.2318  ->  exponent 1.3841  ->  lam 0.9415 -> 0.9199
+
+ 51. Harrison Oliver  (SD, ND pick 19, drafted 2024)
+     price            : 441 -> 440   (-1, -0.23%)   [engine ev() on this build 463]
+     career by season : 2026:5g@39.0   (career 5g, best season 5g @ 39.0)
+     route debut year : 2025   first played: 2026   LEAD SIT-OUT YEARS: 1   all listed non-playing years: 2025 (n=1)
+     draft-day anchor : 827.04   retention R at depth: 0.50323   2026 games: 5 (5.68 at pace)
+     mechanism        : ped 0.3457 x sit 0.6784 = q 0.2345  ->  exponent 1.3828  ->  lam 0.9415 -> 0.9200
+

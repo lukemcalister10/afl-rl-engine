@@ -1,0 +1,47 @@
+{
+ "tag": "stage4",
+ "ped_bar": 0.5,
+ "mraz": {
+  "ev": 3050,
+  "v0": 461.2494392890172,
+  "lam": 0.6937272727272729,
+  "efull": 5068.478287951744,
+  "R": 0.45876852820439634
+ },
+ "cells": {
+  "DRAFT-AGE HELD|(i)": 4666,
+  "DRAFT-AGE HELD|(ii)": 3050,
+  "DRAFT-AGE HELD|(iii)": 3947,
+  "DRAFT-AGE HELD|(iv)": 3436,
+  "AS-OF-AGE HELD|(i)": 4058,
+  "AS-OF-AGE HELD|(ii)": 3050,
+  "AS-OF-AGE HELD|(iii)": 3947,
+  "AS-OF-AGE HELD|(iv)": 3062
+ },
+ "seam": {
+  "noah-mraz": {
+   "g5": 4852,
+   "g6": 5524,
+   "step": 672,
+   "rel": 0.13849958779884583
+  },
+  "josh-smillie": {
+   "g5": 2363,
+   "g6": 2523,
+   "step": 160,
+   "rel": 0.06771053745239103
+  },
+  "charlie-west": {
+   "g5": 4032,
+   "g6": 4510,
+   "step": 478,
+   "rel": 0.1185515873015873
+  },
+  "samuel-swadling": {
+   "g5": 2141,
+   "g6": 2491,
+   "step": 350,
+   "rel": 0.16347501167678655
+  }
+ }
+}

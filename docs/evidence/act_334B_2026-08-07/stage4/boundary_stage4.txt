@@ -1,0 +1,23 @@
+========================================================================================================
+#334 stage B / STAGE 4 — BOUNDARY DiD (the establishment bar).  build tag: stage4   PED_BAR=0.5
+========================================================================================================
+
+  Noah Mraz            KPD   pick 35    fE=0.88   establishment bar = 5.2800 raw games (= 6.00 at pace)
+    AT THE BAR   : 5.2799g -> 5291   |   5.2801g -> 5292   |   JUMP +1  (+0.0189%)
+    PLACEBO (3 at pace, mechanism live): 1088 -> 1088   JUMP +0  (+0.0000%)
+    integer 5g -> 6g (STRADDLES the bar): 4852 -> 5524   step +672
+
+  Josh Smillie         MID   pick 7     fE=0.88   establishment bar = 5.2800 raw games (= 6.00 at pace)
+    AT THE BAR   : 5.2799g -> 2460   |   5.2801g -> 2460   |   JUMP +0  (+0.0000%)
+    PLACEBO (3 at pace, mechanism live): 1394 -> 1394   JUMP +0  (+0.0000%)
+    integer 5g -> 6g (STRADDLES the bar): 2363 -> 2523   step +160
+
+  Charlie West         KPF   pick 50    fE=0.88   establishment bar = 5.2800 raw games (= 6.00 at pace)
+    AT THE BAR   : 5.2799g -> 4387   |   5.2801g -> 4387   |   JUMP +0  (+0.0000%)
+    PLACEBO (3 at pace, mechanism live): 814 -> 814   JUMP +0  (+0.0000%)
+    integer 5g -> 6g (STRADDLES the bar): 4032 -> 4510   step +478
+
+  Samuel Swadling      MID   pick 37    fE=0.88   establishment bar = 5.2800 raw games (= 6.00 at pace)
+    AT THE BAR   : 5.2799g -> 2326   |   5.2801g -> 2326   |   JUMP +0  (+0.0000%)
+    PLACEBO (3 at pace, mechanism live): 748 -> 748   JUMP +0  (+0.0000%)
+    integer 5g -> 6g (STRADDLES the bar): 2141 -> 2491   step +350

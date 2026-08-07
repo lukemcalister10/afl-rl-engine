@@ -1,0 +1,17 @@
+#334 stage B / STAGE 4 — KILL-SWITCH PROOF: RL_PED_BAR=0 == the stage-3 engine, byte-exact.
+
+Every REAL store row priced under three engines, in the dev shell (no RL_CONFIG_MODE), everything else
+held: the stage-3 engine file (a0a20d6e), the stage-4 engine file (9a0c7fdc) with RL_PED_BAR=0, and the
+stage-4 engine file at its shipped default 0.5.
+
+  base   (a0a20d6e, stage-3 engine)          n=2650  sum=707976  mraz=3534
+  off    (9a0c7fdc, RL_PED_BAR=0)            n=2650  sum=707976  mraz=3534
+  on     (9a0c7fdc, RL_PED_BAR=0.5 SHIPPED)  n=2650  sum=706726  mraz=3050
+
+  KILL-SWITCH: base vs RL_PED_BAR=0  ->  0 differing rows of 2650.   BYTE-EXACT.
+  LIVE       : base vs RL_PED_BAR=0.5 -> 51 movers, 10 up, 41 down.
+
+This is the G-ATTR separability property the engine requires of every lever: the change is fully
+attributable to one env value, and setting it to 0 restores the prior board exactly. 51 of the 2650 real
+rows are the 51 BOARD movers (804 active rows); the remaining real rows are back-board / retired /
+non-active rows, none of which move.
