@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v84 · supervisor pen · 2026-08-07, register v594
+# CURRENT STATE — the incoming-seat read · v85 · supervisor pen · 2026-08-07, register v595
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,11 +128,11 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v84 · supervisor pen · 2026-08-07, register v594 · replaced wholesale at the #333-RULING PEN —
-the memo is filed AND RULED: target 1.40. The primer is at v6 and carries the era's meaning
-discoveries — read it first, in full.)
+(v85 · supervisor pen · 2026-08-07, register v595 · replaced wholesale at the STAGE-B-DIRECTIVE
+PEN — directive filed, audited, amended; awaiting the owner's fire word. The primer is at v6 and
+carries the era's meaning discoveries — read it first, in full.)
 
-## THE ERA: ADOPTED. The #333 TARGET IS RULED: 1.40 (owner words 2026-08-07, comment 5210304078).
+## THE ERA: ADOPTED. Target RULED 1.40. STAGE B DIRECTIVE FILED + AUDITED — awaiting fire word.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
   since, all owner-worded, all on main: **round 21** applied (409 scores, txn catchup pattern) ·
   **#344** the declared-refit lane (RL_V0SURF_REFIT=1 passes, silent stays red) · **the Kako 2026
@@ -148,7 +148,9 @@ discoveries — read it first, in full.)
   = `engine/rl_after/_merged_recover.py` · rl_model `33f94073…` = `engine/rl_after/rl_model.py` ·
   curve payload `df766dff…` (N32 recipe over the `curve` object of
   `engine/rl_after/pvc_curve_v2.json`; file md5 `988135ef`) · surface `d594dc03…` = `data/v0surf.pkl`
-  · balanced_board_md5 `4939d740` (present-lens anchor, deliberately unmoved) · season round 21
+  · balanced_board_md5 `123deccb` current pin (expected_boot.json; moves with round advances; the
+  immutable present-lens anchor is `06d8af60` — the older "4939d740 present-lens anchor" note was
+  a stale role-conflation, corrected v595) · season round 21
   (progress 0.88) · **SELFTEST EXPECTATION: 144 PASS / 0 FAIL** (the Kako 2026 anchor retired by
   owner word — every older "145/0" note is superseded). Movers attribution chain: `827fb1fd`
   (the adopted board, registered as out-of-round column `redesign-adoption-6-8` after round 20) →
@@ -180,16 +182,22 @@ discoveries — read it first, in full.)
   his words the same hour.
 
 ## THE ROAD (in order)
-1. **AUTHOR THE STAGE B DIRECTIVE ON THE RULED TARGET.** The #333 memo (comment 5210171925) is
-   RULED (comment 5210304078, owner words verbatim): **target residual hump ≈1.40 at years 4–5**,
-   whole-cohort average, honest basis — with two owner clauses bound in: NO even-step construction
-   (the year path keeps its measured, front-loaded shape) and PER-CLASS FLEXIBILITY (the target
-   binds only the historical teaching average; no forward escalator — a weak class like 2020
-   simply fails to appreciate). First-order: entry lift ~×1.10, top-end ~3.7× pick 1. Lever one is
-   ruled out as the design (memo §3: survivorship weak 1.572→1.535; the credit dials sit in
-   `_V0SURF_GATES` — baked into the year-zero surface fit, ablation = declared refit). The #332
-   addendum is ABSORBED into the memo (#332 chapters 1–3 FILED-NOT-FIRED, after stage B). The
-   directive gets a pre-fire audit by a NON-AUTHORING session, then fires on the owner's word.
+1. **THE OWNER'S FIRE WORD ON STAGE B.** The chain is complete and filed on #334: the DIRECTIVE
+   (comment 5210366916) · the cold NON-AUTHORING PRE-FIRE AUDIT, verdict fit-to-fire-after-
+   amendments, 17 findings, 4 blocking (comment 5210507691) · ADDENDUM 1 closing all findings
+   (comment 5210513069). Ruled target 1.40 (#333 comment 5210304078, owner words verbatim), two
+   owner clauses bound: no even steps (non-vacuous front-loaded-increments assert) · per-class
+   flexibility / no forward escalator (target-perturbation byte-identity test). Key addendum
+   terms: BRANCH-HELD landing, nothing merges and no attribution column registers before the
+   owner's side-by-side word · the per-pick re-anchor is TAUGHT FROM DATA, uniform decree BARRED ·
+   all three reversal conditions are return-triggers (yr1/2 ordering; yr1-to-peak vs shipped
+   1.400 — expected LIVE, the #336 layer alone measures 1.503; top-end ≥~3×) · convergence: max
+   two declared-refit iterations, band [1.35,1.45] read at the named peak year on a re-emitted
+   matrix, distance-to-1.40 always printed · per-row attribution residual ≤1 board point ·
+   credits-off ablation never baked. Lever one ruled out as the design (memo §3). The #332
+   addendum is ABSORBED into the memo (#332 chapters 1–3 FILED-NOT-FIRED, after stage B). On the
+   fire word: an EXECUTION SEAT runs the act (build-seat commits); the seam verifies deciding
+   figures only and never authors product bytes.
 2. **#334 STAGE B** — executes the ruled target in ONE act through the declared-refit lane:
    curve re-taught + year-zero surface re-fit on the corrected history + the adopted #336 reference
    layer landed. Now ALSO carries (memo): a credits-off attribution column (the declared-refit
