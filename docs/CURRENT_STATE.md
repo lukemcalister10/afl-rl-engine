@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v95 · supervisor pen · 2026-08-07, register v605
+# CURRENT STATE — the incoming-seat read · v96 · supervisor pen · 2026-08-07, register v606
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,12 +128,11 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v95 · supervisor pen · 2026-08-07, register v605 · STAGE 5 FIRED with ADDENDUM 1 (the
-RECALCULATION LAW + stage-6 partial intensity, owner words 5215167494); conformance audit +
-stage-6 cross-section measurement running at the pen; this version is the thorough
-handover-quality pass the owner ordered while waiting. Read the v604 register entry IN FULL
-before touching stage 5 — the design loop's two NOT-FIT audits and three measurement rounds are
-the ground. Primer v7 first.)
+(v96 · supervisor pen · 2026-08-07, register v606 · STAGE 5 STOPPED at yr1 0.9945 then the
+CONSISTENCY PASS authorized and RUNNING; stage 6 audit-cleared (site now FENCED to the ns≥1
+arm — the e_full leak catch); the POOL measured (two stories netting honest) and STAGE 7
+fired in principle incl. the act's FIRST CUTS; conservation basis ruled (full-cohort lead).
+Read the v604–v606 register entries IN FULL before touching any stage. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
@@ -290,16 +289,23 @@ the ground. Primer v7 first.)
    exact commands filed in the #334 comments (5214041025, 5214400439). Product commits:
    build-seat; the seam verifies deciding figures. Track B note (v597): PROCESS-light, not
    model-simple.
-2. **THE SEQUENCE TO ADOPTION** — stages 1–4+a1 are BUILT (branch tip c05f214, ruled baseline
-   b56bbdde); stage 5 is EXECUTING; stage 6 authors after its cross-section returns. Then: the
-   refreshed side-by-side (workbook per-stage columns, no-arb before/after incl. per-entry-year,
-   pub-test items printed — the ride table, the within-class path, the FRONT-LOADED guide
-   reading) → the owner's adoption word → ONLY THEN: merge to main, the out-of-round
-   attribution column (id sorting AFTER `redesign-adoption-6-8` under the registry's
-   (after_round, id) tiebreak, registered BEFORE the next weekly apply), and the
-   `ui/release_pick_curve.json` + release_contract re-points (they name the ADOPTED board).
-   Parked items riding the act: thin-cell band steps · Dean-class held-surface boundary
-   artefact · pool-entry knock-ons.
+2. **THE SEQUENCE TO ADOPTION** — stages 1–4+a1 BUILT (ruled baseline b56bbdde; branch tip
+   0ff0f7e = the stage-5 STOP evidence); STAGE 5 consistency build RUNNING (lands on its
+   result, final either way — owner word 5217293177) · STAGE 6 audit-cleared FIT AFTER
+   AMENDMENTS, all adopted (5217452004: site FENCED to the ns≥1 arm of ev() with positive
+   165-player byte-identity proof — the e_full leak; fade taught from pooled yr1/2/3 rows;
+   RL_G6_W default 0, four symmetric rungs, NO seat recommendation, median F′ + median-neutral
+   rung pre-registered; KPD cut on its own sub-dial default 0), BUILD after stage 5 lands ·
+   STAGE 7 (pool redistribution, owner "we should implement" 5217529020) directive owed: lift
+   rookie quiet-starters (measured 1.70), CUT the over-priced sitter cells (mature-age 0.31 /
+   IRE 0.17 / MSD 0.21 / age-unknown RD) — THE ACT'S FIRST CUTS, every cut player enumerated
+   for the owner pre-build; pool pick-side (signed #326 levels, ~4–6%/yr) re-measured AFTER
+   stage 7, its own owner question. Then ONE combined side-by-side (owner rules: stage-6 rung ·
+   the basis question — the [1.04,1.13] range binds on the ND instrument; full-cohort lead
+   lands ~0.97–0.99 with the pool explanation · the stage-7 cuts) → adoption word → ONLY THEN
+   merge, the out-of-round attribution column (id sorts AFTER `redesign-adoption-6-8`,
+   registered BEFORE the next weekly apply), ui/contract re-points. Parked items riding: thin-
+   cell band steps · Dean-class boundary artefact · the age-unknown data gap (29 ND + 88 pool).
 3. **Round 22** (weekly, not yet run as of 2026-08-07): the owner may run it himself — his
    one-pager is in his channel (queued for docs/) — or courier the file; the catchup pattern is
    the v582 register entry.
