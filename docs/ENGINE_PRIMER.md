@@ -1,4 +1,4 @@
-# ENGINE PRIMER — the meaning layer · v5 · authored 2026-08-04 (hi1an4); v5 at register v591 (2026-08-06): the #336 resolution (the band prices establishment risk in full; the adopted reference-layer form), the implemented tenure rule, and the two-lever hump framing added at the rotation
+# ENGINE PRIMER — the meaning layer · v6 · authored 2026-08-04 (hi1an4); v6 at register v593 (2026-08-07): the credit-in-surface entanglement added to §4 item 9 (the #333 memo's measured finding); v5 at register v591 (2026-08-06): the #336 resolution (the band prices establishment risk in full; the adopted reference-layer form), the implemented tenure rule, and the two-lever hump framing added at the rotation
 
 **WHAT THIS IS.** Every incoming seat reads this IN FULL, immediately after the charter and before
 CURRENT_STATE. It carries what the process documents don't: what the engine is FOR, what each artifact
@@ -134,7 +134,11 @@ fitted at build time — everything is loaded from pins.
    credits — up to +17%, ×2 for KPF — the demonstrated floors, the discount structure; the
    survivorship door is measured weak) or by making PICKS AND YEAR-0/1 WORTH MORE (re-teaching the
    curve on the corrected history). Both go OPEN to the #333 memo; stage B executes its choice.
-   Never present either lever as pre-decided.
+   Never present either lever as pre-decided. One entanglement, measured 2026-08-07 (the memo's
+   probe): the proven-player credit dials are part of the frozen year-zero surface's config
+   signature (`_V0SURF_GATES`) — the credit is INSIDE the V0 fit, so no dial in that set can be
+   ablated against the frozen surface; the engine halts by design, and any such experiment is a
+   declared-refit act. Lever-one dial cuts therefore move BOTH ends of the hump ratio.
 5.5. *(numbered 5.5 of record, deliberately out of sequence — it amends §1; cite by source numbering; renderers may renumber.)* **The measured-outcomes correction (2026-08-05, register v570).** The career-value measure that
    teaches the ruled curve and the lens is NOT raw scoring over replacement: the walk-forward path is
    built by calling the ENGINE'S OWN `ev()` as-of each season, and `ev()` leans on the year-zero

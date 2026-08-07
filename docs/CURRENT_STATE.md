@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v82 · supervisor pen · 2026-08-06, register v591
+# CURRENT STATE — the incoming-seat read · v83 · supervisor pen · 2026-08-07, register v593
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,11 +128,11 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v82 · supervisor pen · 2026-08-06, register v591 · replaced wholesale at the ROTATION PEN — the
-outgoing seam's complete handover after the post-adoption working day. The primer is at v5 and
-carries the day's meaning discoveries — read it first, in full.)
+(v83 · supervisor pen · 2026-08-07, register v593 · replaced wholesale at the #333-MEMO PEN — the
+memo is filed, the owner's target decision is open. The primer is at v5 and carries the era's
+meaning discoveries — read it first, in full.)
 
-## THE ERA: ADOPTED, and the post-adoption day is DONE. The road points at the #333 memo.
+## THE ERA: ADOPTED. The #333 memo is FILED (comment 5210171925); the owner's decision is OPEN.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
   since, all owner-worded, all on main: **round 21** applied (409 scores, txn catchup pattern) ·
   **#344** the declared-refit lane (RL_V0SURF_REFIT=1 passes, silent stays red) · **the Kako 2026
@@ -180,21 +180,29 @@ carries the day's meaning discoveries — read it first, in full.)
   his words the same hour.
 
 ## THE ROAD (in order)
-1. **The #333 RE-ANCHORING MEMO** — the design deliberation. Weigh the two levers openly with the
-   four #336 variant sheets as evidence (`docs/evidence/act_336_variant_2026-08-06/` — cut 1 at the
-   root, cut 2 in `amended/`, cuts 3–4 in `amend2/` and `amend3/`); absorb the #332 addendum (re-center on the owner's cohort-development words, **#306
-   comment 5186108632**). Output: a recommended target shape to the owner — a recommendation, not
-   a landing.
-2. **#334 STAGE B** — executes the memo's chosen design in ONE act through the declared-refit lane:
+1. **THE OWNER'S #333 DECISION — OPEN.** The memo is FILED (#333 comment 5210171925, register
+   v593): lever two recommended — stage B re-teaches entry anchors to a target residual hump
+   **≈1.30 at years 4–5** (options 1.40 / 1.20 / hold at the honest floor 1.535; implied hurdle
+   ~6.8%/yr; top-end 4.041× → ~3.4×), reversal conditions filed. Lever one weighed and not the
+   design: survivorship measured weak (1.572→1.535); the proven-player credit ablation HALTED on
+   the v0surf frozen-signature check (the credit dials sit in `_V0SURF_GATES`,
+   `_merged_recover.py:1308` — the credit is baked into the year-zero surface fit; clean ablation
+   is a declared-refit experiment). The #332 addendum is ABSORBED into the memo (#332 chapters 1–3
+   stay FILED-NOT-FIRED, sequenced after stage B). Nothing fires until the owner names his target.
+2. **#334 STAGE B** — executes the ruled target in ONE act through the declared-refit lane:
    curve re-taught + year-zero surface re-fit on the corrected history + the adopted #336 reference
-   layer landed. Ends in a side-by-side to the owner before anything ships. Parked items that
-   resolve inside it: the thin-cell band steps (5/42 + 14/42, smoothed properly per no-hard-bands,
-   never clamped) · the Dean-class held-surface boundary artefact · pool-entry knock-ons · the
+   layer landed. Now ALSO carries (memo): a credits-off attribution column (the declared-refit
+   ablation) · the pedigree-conditioned reactivity axis (Mraz calibration case) · yr1-to-peak
+   printed beside yr0-to-peak on every side-by-side sheet, whole-cohort and per pick band. Ends in
+   a side-by-side to the owner before anything ships. Parked items that resolve inside it: the
+   thin-cell band steps (5/42 + 14/42, smoothed properly per no-hard-bands, never clamped) · the
+   Dean-class held-surface boundary artefact · pool-entry knock-ons · the
    `ui/release_pick_curve.json` stamp. Board attribution: stage B moves the board OUTSIDE a round —
    it needs its own out-of-round column BEFORE the next weekly apply, with an id that sorts AFTER
    `redesign-adoption-6-8` under the registry's (after_round, id) tiebreak.
-3. **Round 22** (weekly): the owner may run it himself — his one-pager is in his channel (queued
-   for docs/) — or courier the file; the catchup pattern is the v582 register entry.
+3. **Round 22** (weekly, not yet run as of 2026-08-07): the owner may run it himself — his
+   one-pager is in his channel (queued for docs/) — or courier the file; the catchup pattern is
+   the v582 register entry.
 
 ## RUNNING THIS SEAT WELL — the FABLE BUDGET (owner word 2026-08-06)
 Spend Fable ONLY on judgment — rulings, verifying the two-or-three deciding figures, talking to
@@ -241,7 +249,7 @@ update in place; conventions printed on the page itself. Evidence trees this era
    vocabulary. Opus-only subagents.
 1. Verify THE CURRENT IDENTITIES above with your own commands; N35-classify your box
    (byte-reproduce board `113b36f8` via the canonical build) before trusting any fitted figure.
-2. READ-BACK to the owner and HOLD. His likely first words: start the #333 memo, or round-22
+2. READ-BACK to the owner and HOLD. His likely first words: the #333 target decision, or round-22
    scores.
 3. Drive the road. Never present on a superseded basis; never deliver under pressure; the owner's
    casual questions are load-bearing QC.
