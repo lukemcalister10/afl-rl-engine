@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v92 · supervisor pen · 2026-08-07, register v602
+# CURRENT STATE — the incoming-seat read · v93 · supervisor pen · 2026-08-07, register v603
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,9 +128,9 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v92 · supervisor pen · 2026-08-07, register v602 · replaced wholesale at the AMENDMENT-1 PEN —
-stage 4 landed; the owner's Mraz catch fired amendment 1 (surprise-scaled trust), running now
-with the side-by-side assembly. The STOP is the owner's side-by-side word. Primer v7 first.)
+(v93 · supervisor pen · 2026-08-07, register v603 · AMENDMENT 1 LANDED + the side-by-side BUILT —
+the act's build work is COMPLETE on the landing branch; the STOP is the owner's side-by-side word.
+Two rulings owed: the yr1-to-peak trigger and the surprise-trust dial. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
@@ -228,12 +228,32 @@ with the side-by-side assembly. The STOP is the owner's side-by-side word. Prime
    form: SURPRISE-SCALED TRUST — small samples far from projection shrink toward the prior;
    near-projection players untouched (no-rebalance condition, proven ±25%/<1% on the
    enumeration); symmetric, continuous, fades with games; selection-rate proposal REJECTED
-   (hits all young players). AMENDMENT 1 RUNNING at v602 (calibration: Mraz ~1,100–1,600 =
-   2–3× pick 35's 530; STOP if unreachable with near-projection clean) CONCURRENT with the
-   side-by-side assembly (workbook: per-player row, one delta column PER STAGE — reference
-   layer / era removal / curve+surface+numeraire / reactivity / surprise-trust — sums exact;
-   this is the owner-ordered per-stage sheet). Then: the owner review — his rulings owed: the
-   yr1-to-peak trigger (1.4910 vs 1.400) and the amendment dial. Evidence
+   (hits all young players). AMENDMENT 1 LANDED @ 0056ed5 + SIDE-BY-SIDE @ c05f214 (v603,
+   seam-verified on the PUSHED bytes: board md5 b56bbdde exact, Mraz row 1585, board total
+   652,183, matrix md5 b564b12e, hump independently recomputed, workbook stage sums re-summed
+   804/804 exact): surprise-scaled trust at the same sitout_ev site — s=|log(e_full/
+   anchor_full)| on the SAME discounted anchor leg the blend uses (s=0 ⟺ inert, a forced
+   choice, disclosed) · unresolved share u=1−rho(gp)/rho(6) from the engine's own K=5.8
+   evidence fade, u(6)=0 exactly (smooth handover at the bar) · composition ADDITIVE
+   lam^(1+0.5(1−q)+SUR_W·s·u) · RL_SUR_W=5.0 in model_config (61 vars; dial=0 rebuilds
+   stage-4 board b490ae8b BYTE-EXACT; fit-decoupling re-proven at dials 0/5/20, v0surf
+   9713ec6c unmoved). MRAZ 2898→1585 = 2.99× pick 35's 530 (INSIDE the ruled 2–3×; whole
+   chain 3847→1585, −58.8%); pair ratio 1.53→2.38; 45 movers (38 cuts, 7 lifts, all named,
+   all thin-record path; 109 zero-game players byte-identical); board total −0.365%.
+   NEAR-PROJECTION PROOF: 6 players in the ±25% band; continuous max |move| 0.657% PASS;
+   INTEGER board FAILS BY ONE ROW (Artemis 193→191: −2 points where one point = 0.52% —
+   granularity, filed as a failure anyway; RL_SUR_W=2.0 named as the integer-clean
+   alternative, Mraz 2267). Band HELD 1.4321 peak yr4; **yr1-to-peak 1.4910→1.5068 — trigger
+   (b) STILL LIVE and moved AWAY, reported straight, compensated nowhere.** Top-end 3.556×
+   unmoved. Selftest 143/0 zero re-points. WORKBOOK (the concurrent assembly agent died
+   uncommitted; the amendment hand built it FRESH): 5 sheets, players 804 rows × one delta
+   column PER STAGE summing exactly to the total (the owner-ordered per-stage sheet); 3,344
+   formulas verified in Python (LibreOffice broken in sandbox — disclosed, verifier shipped).
+   Identities: engine_head bc45d773 · config 38a73675 · board b56bbdde · matrix b564b12e.
+   NOW OPEN: the owner side-by-side review — TWO RULINGS OWED: (1) trigger (b) yr1-to-peak
+   1.5068 vs shipped 1.400; (2) the surprise dial incl. the one-row integer tension (hold
+   5.0 / drop to 2.0 / retune). NOTHING merges, no out-of-round column registers before his
+   word. Evidence
    `docs/evidence/act_334B_2026-08-07/` on the branch. Product commits: build-seat; the seam
    verifies deciding figures. Seam worktree: /home/claude/seamcheck_landing. Track B note
    (v597): PROCESS-light, not model-simple.
