@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v83 · supervisor pen · 2026-08-07, register v593
+# CURRENT STATE — the incoming-seat read · v84 · supervisor pen · 2026-08-07, register v594
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,11 +128,11 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v83 · supervisor pen · 2026-08-07, register v593 · replaced wholesale at the #333-MEMO PEN — the
-memo is filed, the owner's target decision is open. The primer is at v5 and carries the era's
-meaning discoveries — read it first, in full.)
+(v84 · supervisor pen · 2026-08-07, register v594 · replaced wholesale at the #333-RULING PEN —
+the memo is filed AND RULED: target 1.40. The primer is at v6 and carries the era's meaning
+discoveries — read it first, in full.)
 
-## THE ERA: ADOPTED. The #333 memo is FILED (comment 5210171925); the owner's decision is OPEN.
+## THE ERA: ADOPTED. The #333 TARGET IS RULED: 1.40 (owner words 2026-08-07, comment 5210304078).
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
   since, all owner-worded, all on main: **round 21** applied (409 scores, txn catchup pattern) ·
   **#344** the declared-refit lane (RL_V0SURF_REFIT=1 passes, silent stays red) · **the Kako 2026
@@ -180,15 +180,16 @@ meaning discoveries — read it first, in full.)
   his words the same hour.
 
 ## THE ROAD (in order)
-1. **THE OWNER'S #333 DECISION — OPEN.** The memo is FILED (#333 comment 5210171925, register
-   v593): lever two recommended — stage B re-teaches entry anchors to a target residual hump
-   **≈1.30 at years 4–5** (options 1.40 / 1.20 / hold at the honest floor 1.535; implied hurdle
-   ~6.8%/yr; top-end 4.041× → ~3.4×), reversal conditions filed. Lever one weighed and not the
-   design: survivorship measured weak (1.572→1.535); the proven-player credit ablation HALTED on
-   the v0surf frozen-signature check (the credit dials sit in `_V0SURF_GATES`,
-   `_merged_recover.py:1308` — the credit is baked into the year-zero surface fit; clean ablation
-   is a declared-refit experiment). The #332 addendum is ABSORBED into the memo (#332 chapters 1–3
-   stay FILED-NOT-FIRED, sequenced after stage B). Nothing fires until the owner names his target.
+1. **AUTHOR THE STAGE B DIRECTIVE ON THE RULED TARGET.** The #333 memo (comment 5210171925) is
+   RULED (comment 5210304078, owner words verbatim): **target residual hump ≈1.40 at years 4–5**,
+   whole-cohort average, honest basis — with two owner clauses bound in: NO even-step construction
+   (the year path keeps its measured, front-loaded shape) and PER-CLASS FLEXIBILITY (the target
+   binds only the historical teaching average; no forward escalator — a weak class like 2020
+   simply fails to appreciate). First-order: entry lift ~×1.10, top-end ~3.7× pick 1. Lever one is
+   ruled out as the design (memo §3: survivorship weak 1.572→1.535; the credit dials sit in
+   `_V0SURF_GATES` — baked into the year-zero surface fit, ablation = declared refit). The #332
+   addendum is ABSORBED into the memo (#332 chapters 1–3 FILED-NOT-FIRED, after stage B). The
+   directive gets a pre-fire audit by a NON-AUTHORING session, then fires on the owner's word.
 2. **#334 STAGE B** — executes the ruled target in ONE act through the declared-refit lane:
    curve re-taught + year-zero surface re-fit on the corrected history + the adopted #336 reference
    layer landed. Now ALSO carries (memo): a credits-off attribution column (the declared-refit
