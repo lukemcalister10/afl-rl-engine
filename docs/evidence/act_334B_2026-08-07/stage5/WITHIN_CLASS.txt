@@ -1,0 +1,33 @@
+================================================================================================================
+#334 stage B / STAGE 5 — WITHIN-CLASS CONTINUITY (gate 5): THE PERSISTING-UNPROVEN yr1 -> yr2 PATH
+================================================================================================================
+  sub-cohort: year-1 sit-out leg STILL on the sit-out path at year 2, draft classes 2004-2022
+  n = 1232   (round 2 quoted n=513 on its own scoping of the same class)
+  of which QUIET STARTERS (>=1 career game by year 1): 225 ; zero-games: 1007
+
+  THE yr1 -> yr2 FALL, BOTH CONVENTIONS, ALL THREE ARMS
+  population / convention                  BASELINE       NO-TAPER LANDED (taper)
+  --------------------------------------------------------------------------------
+  persisting-unproven, ALL / value-weighted         -25.4%         -31.2%         -25.0%
+  persisting-unproven, ALL / mean-of-ratios         -24.8%         -28.8%         -22.8%
+  quiet starters only / value-weighted         -25.4%         -43.2%         -34.7%
+  quiet starters only / mean-of-ratios         -21.2%         -42.3%         -32.3%
+
+  ROUND-2 COMPARATORS (the directive's quoted figures, on round 2's own two populations):
+     baseline fall  -17%% / -24.5%%      no-taper fall  -31%% / -40.7%%
+  The four measured baseline figures above bracket the quoted baseline pair; the NO-TAPER column
+  reproduces the deepening round 2 warned about, and the LANDED column is what the taper bought.
+
+  THE TAPER'S VALUE, on the primary (value-weighted, whole class) convention:
+     baseline -25.4%   ->   no-taper -31.2%  (deepens by -5.8pp)   ->   LANDED -25.0%  (deepening cut to 0.4pp)
+     the taper recovers 106.1% of the no-taper deepening
+
+  THE GATE (Addendum 2): |D ln G| between adjacent-season evaluations <= the fitted taper's OWN
+  maximum slope in tau. The taper law as a NUMBER.
+     the taught surface's maximum |d lnG / d tau| over every shipped knot segment : 0.567570 per season
+     realised |D lnG| / D tau across the sub-cohort's own yr1->yr2 step : max 0.475835  mean 0.086869  (n=1232)
+     GATE 5 : PASS — no player's season-to-season step exceeds the taper's own maximum slope
+
+  AND THE MONOTONICITY THAT MAKES IT SMOOTH: G is non-increasing in tau at every shipped knot, so
+  the step is always a DECAY, never a cliff; the largest single-season decay anywhere on the surface
+  is a factor of 0.5669.

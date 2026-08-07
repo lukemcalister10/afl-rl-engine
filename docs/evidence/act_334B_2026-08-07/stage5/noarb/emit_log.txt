@@ -1,0 +1,32 @@
+  ASOF 2003 done
+  ASOF 2004 done
+  ASOF 2005 done
+  ASOF 2006 done
+  ASOF 2007 done
+  ASOF 2008 done
+  ASOF 2009 done
+  ASOF 2010 done
+  ASOF 2011 done
+  ASOF 2012 done
+  ASOF 2013 done
+  ASOF 2014 done
+  ASOF 2015 done
+  ASOF 2016 done
+  ASOF 2017 done
+  ASOF 2018 done
+  ASOF 2019 done
+  ASOF 2020 done
+  ASOF 2021 done
+  ASOF 2022 done
+  ASOF 2023 done
+  ASOF 2024 done
+  ASOF 2025 done
+  ASOF 2026 done
+exec OK. store=37ced3ce engine=98ed7070 v0surf=3e8e50de51030297c99cf367161c161f frozen=True
+records=2645   ND 1-64 (teaches curve)=1444   ruled pool=1201
+#338 windows extended: 698 of 2645 records
+#338 band reading differs under the slid pick on 4 records: ['jack-lonie', 'jack-steele', 'jake-kolodjashnij', 'jarman-impey']
+force-majeure excluded: ['paddy-mccartin', 'thomas-boyd']
+boundary crossers (pool -> ND fit via the slide): ['Daniel Butler']
+pool by type: [('RD', 691), ('ND', 121), ('MSD', 106), ('UNR', 59), ('IRE', 57), ('SSP', 52), ('PDA', 51), ('PDN', 43), ('PDS', 21)]
+wrote /home/claude/s5_landing/docs/evidence/act_334B_2026-08-07/stage5/noarb/per_entrant_338_confirmation.json

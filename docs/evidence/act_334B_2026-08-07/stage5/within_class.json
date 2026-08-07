@@ -1,0 +1,29 @@
+{
+ "n": 1232,
+ "n_quiet": 225,
+ "table": {
+  "persisting-unproven, ALL|value-weighted": [
+   -0.25389008206864183,
+   -0.31210802907264557,
+   -0.25033594881778787
+  ],
+  "persisting-unproven, ALL|mean-of-ratios": [
+   -0.24789668382142638,
+   -0.28784122223527076,
+   -0.22754029194667724
+  ],
+  "quiet starters only|value-weighted": [
+   -0.25423682183338836,
+   -0.43206436338494414,
+   -0.34696184644371175
+  ],
+  "quiet starters only|mean-of-ratios": [
+   -0.21239359473919217,
+   -0.42329551329810833,
+   -0.32341479628812264
+  ]
+ },
+ "max_surface_slope": 0.5675703520498678,
+ "max_realised_slope": 0.47583527851504664,
+ "gate_pass": true
+}

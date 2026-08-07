@@ -1,0 +1,14 @@
+ND cohort n = 1197
+
+sub-population            n     sum v0   share v0   yr1 BASE   yr1 LAND  contrib B  contrib L
+zero games by yr1       496     262582     0.2733     0.6462     0.6525     0.1766     0.1783
+quiet starter 1-5       287     219346     0.2283     0.7068     0.8925     0.1613     0.2037
+played 6+ by yr1        414     479001     0.4985     1.2288     1.2288     0.6125     0.6125
+WHOLE COHORT           1197     960929     1.0000     0.9504     0.9945     0.9504     0.9945
+
+to reach yr1 == 1.0000 the cohort needs another 5255.7 value points (0.0055 of sum v0)
+  if taken ENTIRELY from the quiet starters (share 0.2283) they would have to land at 0.9165 of entry
+  if taken ENTIRELY from the zero-games class (share 0.2733) they would have to land at 0.6725 of entry
+
+BASELINE below-own-entry-level at yr1 :  939 of 1197   mean shortfall 0.3434  total shortfall 225957
+LANDED   below-own-entry-level at yr1 :  875 of 1197   mean shortfall 0.3012  total shortfall 186906

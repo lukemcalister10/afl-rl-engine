@@ -1,0 +1,65 @@
+================================================================================================================
+#334 stage B / STAGE 5 — ENTRY-YEAR RIDE, ALL THREE TABLES AT THEIR OWN PEAK YEAR (gate: PRINTED ALWAYS)
+================================================================================================================
+
+  whole cohort   n=1197
+     BASELINE own peak year 4, ratio 1.432092    |    LANDED own peak year 4, ratio 1.432718
+     entry N          n BASE ratio LAND ratio BASE ride/yr LAND ride/yr
+     ------------------------------------------------------------------
+     0            1197   1.000000   1.000000    +9.39%/yr    +9.41%/yr
+     1            1197   0.950431   0.994531   +14.64%/yr   +12.94%/yr
+     2            1197   1.174247   1.186559   +10.43%/yr    +9.88%/yr
+     3            1197   1.345187   1.347289    +6.46%/yr    +6.34%/yr
+     4            1197   1.432092   1.432718    (at/after peak)    (at/after peak)
+     5            1139   1.430503   1.430625    (at/after peak)    (at/after peak)
+     6            1075   1.393884   1.393884    (at/after peak)    (at/after peak)
+     7            1014   1.210807   1.210807    (at/after peak)    (at/after peak)
+     draft-day (N=0) annualised ride to the peak: +9.4058%/yr
+     largest entry-year excess over draft day : entry year 1, +3.5342pp/yr   -> machine STOP at >= +5.00pp/yr : no STOP
+     YEAR-OVER-YEAR SEGMENTS (landed, ratio units): yr0->1 -0.0055  yr1->2 +0.1920  yr2->3 +0.1607  yr3->4 +0.0854  yr4->5 -0.0021  yr5->6 -0.0367  yr6->7 -0.1831
+
+  picks 1-20     n=377
+     BASELINE own peak year 4, ratio 1.429312    |    LANDED own peak year 4, ratio 1.429314
+     entry N          n BASE ratio LAND ratio BASE ride/yr LAND ride/yr
+     ------------------------------------------------------------------
+     0             377   1.000000   1.000000    +9.34%/yr    +9.34%/yr
+     1             377   0.970665   1.004427   +13.77%/yr   +12.48%/yr
+     2             377   1.182732   1.187529    +9.93%/yr    +9.71%/yr
+     3             377   1.308766   1.308819    +9.21%/yr    +9.21%/yr
+     4             377   1.429312   1.429314    (at/after peak)    (at/after peak)
+     5             357   1.416657   1.416659    (at/after peak)    (at/after peak)
+     6             337   1.344217   1.344217    (at/after peak)    (at/after peak)
+     7             317   1.179195   1.179195    (at/after peak)    (at/after peak)
+     draft-day (N=0) annualised ride to the peak: +9.3407%/yr
+     largest entry-year excess over draft day : entry year 1, +3.1379pp/yr   -> machine STOP at >= +5.00pp/yr : no STOP
+     YEAR-OVER-YEAR SEGMENTS (landed, ratio units): yr0->1 +0.0044  yr1->2 +0.1831  yr2->3 +0.1213  yr3->4 +0.1205  yr4->5 -0.0127  yr5->6 -0.0724  yr6->7 -0.1650
+
+  picks 21-64    n=820
+     BASELINE own peak year 6, ratio 1.471250    |    LANDED own peak year 6, ratio 1.471250
+     entry N          n BASE ratio LAND ratio BASE ride/yr LAND ride/yr
+     ------------------------------------------------------------------
+     0             820   1.000000   1.000000    +6.65%/yr    +6.65%/yr
+     1             820   0.918348   0.978840    +9.88%/yr    +8.49%/yr
+     2             820   1.160795   1.185022    +6.10%/yr    +5.56%/yr
+     3             820   1.402935   1.408287    +1.60%/yr    +1.47%/yr
+     4             820   1.436499   1.438116    +1.20%/yr    +1.15%/yr
+     5             782   1.452141   1.452451    +1.32%/yr    +1.29%/yr
+     6             738   1.471250   1.471250    (at/after peak)    (at/after peak)
+     7             697   1.260175   1.260175    (at/after peak)    (at/after peak)
+     draft-day (N=0) annualised ride to the peak: +6.6468%/yr
+     largest entry-year excess over draft day : entry year 1, +1.8445pp/yr   -> machine STOP at >= +5.00pp/yr : no STOP
+     YEAR-OVER-YEAR SEGMENTS (landed, ratio units): yr0->1 -0.0212  yr1->2 +0.2062  yr2->3 +0.2233  yr3->4 +0.0298  yr4->5 +0.0143  yr5->6 +0.0188  yr6->7 -0.2111
+
+================================================================================================================
+THE BAND GATE [1.35, 1.45] — each table AT ITS OWN PEAK YEAR, and the yr2-4 deltas
+================================================================================================================
+  whole cohort  peak yr 4  ratio 1.432718  -> INSIDE [1.35,1.45]   (baseline peak yr 4, 1.432092; move +0.000626)
+     yr2-4 deltas (landed - baseline, ratio units): yr2 +0.012312  yr3 +0.002102  yr4 +0.000626
+  picks 1-20    peak yr 4  ratio 1.429314  -> INSIDE [1.35,1.45]   (baseline peak yr 4, 1.429312; move +0.000002)
+     yr2-4 deltas (landed - baseline, ratio units): yr2 +0.004797  yr3 +0.000053  yr4 +0.000002
+  picks 21-64   peak yr 6  ratio 1.471250  -> OUTSIDE   (baseline peak yr 6, 1.471250; move +0.000000)
+     yr2-4 deltas (landed - baseline, ratio units): yr2 +0.024227  yr3 +0.005352  yr4 +0.001617
+
+  THE TAPER REACH, MEASURED (Addendum 2 relabelled round 2's "byte-identical propagation" as an
+  UNMEASURED seam expectation, because it was taken under the retired integer gate). The yr2-4
+  deltas above ARE the measurement: the taper does reach depth 1-2, it is small, and it is printed.

@@ -1,0 +1,628 @@
+#334 stage B / STAGE 5 — FULL ENUMERATION OF EVERY MOVED PLAYER (the QUIET-STARTER REPRICE)
+board b56bbddea15fd48e35b5794b1b5e9e23 (stage 4 amendment 1, the RULED BASELINE)  ->  bad1961efad4c938aaf34eb6ee10036a
+mechanism: the sit-out anchor leg becomes  G * R * entry_anchor  at BOTH anchor sites
+           (the blend term and _surprise's anchor argument). RL_G5_W = 1.
+           G = G(retention class, log-pick, CUMULATIVE career games, tau) — the taught surface,
+           frozen in engine/rl_after/g5_table.json, re-evaluated from his record at every build.
+
+SCOPE OF THE MOVE
+  board rows compared            : 804
+  MOVED                          : 66  (8.21% of the board)
+    lifts (price up)             : 66
+    cuts (price down)            : 0
+  board total                    : 652183 -> 654812  (+2629, +0.4031%)
+  every mover on the sit-out path: True
+  mean |rel| across movers       : 16.8747%
+  largest lift +65.85%   largest cut +0.39%
+  G at the movers' own cells     : min 1.0044  median 1.2473  max 1.6348
+
+WHY A PLAYER CAN MOVE DOWN. G never falls below 1, so the anchor leg never shrinks. But the anchor
+is ALSO the reference the surprise statistic measures a re-rate against: lifting it changes
+s = |log(e_full/anchor)| and therefore lam. For a player whose e_full sits BELOW his anchor, a
+higher anchor means a LARGER surprise, a higher evidence bar, a smaller lam — more weight on the
+anchor leg, which for him is the lower number. That is the stage-4-amendment-1 machinery doing
+exactly what it was built to do, composed with, not deleted. Every such row is listed below.
+
+========================================================================================================================================================================
+EVERY MOVED PLAYER, SORTED BY |relative move|  (n=66, NO CAP)
+========================================================================================================================================================================
+player                     pos   entry                     old     new     abs      rel |    tau  gcum  g26  G cell lam bef lam aft    e_full | career by season
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Matt Hill                  SF    UNR (pool, effpk 65)       41      68     +27  +65.85% |  1.826     2    2  1.6348  0.1125  0.0504      21.8 | 2026:2g@24.0
+Vigo Visentini             RUCK  RD:RUCK (pool, effpk      167     264     +97  +58.08% |  2.826     2    0  1.5758  0.0000  0.0000     567.9 | 2025:2g@56.0; 2026:0g@0.0
+Lachlan Smith              RUCK  ND pick 47                328     500    +172  +52.44% |  2.826     2    2  1.5571  0.0774  0.1595     805.2 | 2026:2g@53.0
+Lucas Camporeale           MID   ND pick 54                137     199     +62  +45.26% |  1.826     3    0  1.4532  0.0000  0.0000     481.6 | 2025:3g@41.0; 2026:0g@0.0
+Rhys Unwin                 SF    ND pick 61                 69      97     +28  +40.58% |  1.826     4    1  1.3970  0.0003  0.0025     183.1 | 2025:3g@22.0; 2026:1g@37.0
+Zane Peucker               SF    ND pick 31                299     417    +118  +39.46% |  0.826     2    2  1.4010  0.2478  0.1429     253.2 | 2026:2g@40.5
+Noah Roberts-Thomson       SF    ND pick 54                162     225     +63  +38.89% |  0.826     3    3  1.5875  0.2508  0.3600     269.0 | 2026:3g@38.7
+Alex Dodson                RUCK  ND pick 53                235     326     +91  +38.72% |  1.826     1    0  1.3876  0.0000  0.0000     654.2 | 2025:1g@13.0; 2026:0g@0.0
+Jaxon Artemis              SD    MSD (pool, effpk 65)      191     260     +69  +36.13% |  0.826     3    3  1.5870  0.3703  0.3218     217.6 | 2026:3g@53.0
+Balyn O'Brien              SD    SSP (pool, effpk 65)      181     245     +64  +35.36% |  0.826     3    3  1.5870  0.2988  0.3988     252.2 | 2026:3g@27.7
+Jack Henderson             SF    SSP (pool, effpk 65)      105     141     +36  +34.29% |  1.826     5    0  1.3407  0.0000  0.0000       0.1 | 2025:5g@43.0; 2026:0g@0.0
+Lucca Grego                SD    ND pick 48                113     150     +37  +32.74% |  1.826     1    0  1.3307  0.0000  0.0000     334.6 | 2025:1g@59.0; 2026:0g@0.0
+Flynn Riley                RUCK  MSD (pool, effpk 65)      236     312     +76  +32.20% |  0.826     1    1  1.3223  0.0101  0.0580     354.9 | 2026:1g@80.0
+Cameron Nairn              SF    ND pick 20                471     620    +149  +31.63% |  0.826     3    3  1.3387  0.3119  0.2483     353.7 | 2026:3g@42.8
+Charlie Banfield           MID   ND pick 41                419     544    +125  +29.83% |  0.826     3    3  1.5161  0.3442  0.3816     525.7 | 2026:3g@54.3
+Mitch Podhajski            KPF   MSD (pool, effpk 65)      200     258     +58  +29.00% |  0.826     2    2  1.2852  0.0040  0.0027      13.3 | 2026:2g@48.5
+Lukas Cooke                KPD   MSD (pool, effpk 65)      198     255     +57  +28.79% |  0.826     2    2  1.2852  0.0399  0.0265      54.1 | 2026:2g@43.5
+Caleb Lewis                KPF   MSD (pool, effpk 65)      128     164     +36  +28.12% |  1.826     2    2  1.3455  0.2072  0.1276      95.0 | 2026:2g@12.5
+Jay Polkinghorne           SF    ND pick 44                172     218     +46  +26.74% |  1.826     3    3  1.3571  0.2106  0.2674     337.0 | 2026:3g@52.7
+Aidan Schubert             KPF   ND pick 23                473     597    +124  +26.22% |  0.826     1    1  1.2561  0.0088  0.0368     750.6 | 2026:1g@24.0
+Tom Cochrane               SF    RD:SF (pool, effpk 65     116     142     +26  +22.41% |  1.826     6    3  1.3174  0.2697  0.3345     173.1 | 2025:3g@34.0; 2026:3g@30.7
+George Stevens             MID   ND pick 58                111     135     +24  +21.62% |  2.826     4    2  1.2137  0.0362  0.0496     434.1 | 2025:2g@62.0; 2026:2g@62.0
+Jack Dalton                SF    ND pick 34                272     329     +57  +20.96% |  0.826     4    4  1.4532  0.5977  0.5524     284.5 | 2026:4g@53.5
+Ollie Greeves              MID   RD:MID (pool, effpk 6     259     311     +52  +20.08% |  0.826     4    4  1.5531  0.5175  0.5678     349.0 | 2026:4g@44.0
+Archie Ludowyke            KPF   ND pick 50                151     181     +30  +19.87% |  0.826     1    1  1.1989  0.0001  0.0002     522.4 | 2026:1g@57.0
+Oliver Francou             MID   MSD (pool, effpk 65)      251     299     +48  +19.12% |  0.826     4    4  1.5531  0.5212  0.5718     328.2 | 2026:4g@71.5
+Ben Jepson                 MID   SSP (pool, effpk 65)       88     104     +16  +18.18% |  1.826     5    4  1.3407  0.2767  0.2601       3.2 | 2025:1g@36.0; 2026:4g@43.2
+Xavier Taylor              SD    ND pick 11                740     868    +128  +17.30% |  0.826     2    2  1.2454  0.4175  0.3007     785.1 | 2026:2g@42.0
+Luker Kentfield            KPF   MSD (pool, effpk 65)      142     164     +22  +15.49% |  2.826     3    3  1.2021  0.1613  0.1862     357.2 | 2026:3g@32.3
+Luke Beecken               MID   MSD (pool, effpk 65)      101     116     +15  +14.85% |  2.826     1    0  1.1474  0.0000  0.0000       2.2 | 2025:1g@7.0; 2026:0g@0.0
+Daniel Annable             MID   ND pick 6                1230    1402    +172  +13.98% |  0.826     1    1  1.1553  0.0828  0.1098    1411.5 | 2026:1g@40.0
+Jacob Newton               SF    MSD (pool, effpk 65)      128     145     +17  +13.28% |  2.000     5    3  1.2782  0.3156  0.4025     152.4 | 2025:2g@25.5; 2026:3g@27.7
+Luke Kennedy               MID   ND pick 62                241     273     +32  +13.28% |  1.826     4    4  1.4024  0.4274  0.4590     461.0 | 2026:4g@37.2
+Zane Zakostelsky           KPD   ND pick 51                152     170     +18  +11.84% |  2.826     3    3  1.1417  0.1219  0.1352     519.6 | 2026:3g@49.0
+Jesse Dattoli              SF    ND pick 22                314     349     +35  +11.15% |  1.826     3    0  1.1132  0.0000  0.0000     361.9 | 2025:3g@36.0; 2026:0g@0.0
+Cody Angove                MID   ND pick 24                474     523     +49  +10.34% |  1.826     4    0  1.1015  0.0000  0.0000     811.8 | 2025:4g@37.0; 2026:0g@0.0
+Liam Reidy                 RUCK  RD:RUCK (pool, effpk      280     308     +28  +10.00% |  3.826     7    4  1.2625  0.4883  0.5129     409.9 | 2024:2g@41.0; 2025:1g@34.0; 2026:4g@64.3
+Matt Whitlock              KPF   ND pick 27                359     392     +33   +9.19% |  1.826     5    3  1.1189  0.1910  0.2085     790.7 | 2025:2g@21.5; 2026:3g@27.7
+Tom Anastasopoulos         SF    ND pick 48                104     112      +8   +7.69% |  2.826     2    2  1.0840  0.0649  0.0741     282.8 | 2026:2g@40.5
+Harrison Ramm              KPD   MSD (pool, effpk 65)      169     181     +12   +7.10% |  1.826     4    3  1.0909  0.1832  0.1961     378.0 | 2025:1g@28.0; 2026:3g@23.7
+Henry Hustwaite            MID   ND pick 37                222     237     +15   +6.76% |  3.826    11    1  1.0648  0.0124  0.0084     168.0 | 2023:2g@66.0; 2024:4g@25.0; 2025:4g@46.2; 2026:1g@59.0
+Jed Adams                  KPD   ND pick 38                145     154      +9   +6.21% |  3.826     1    0  1.0595  0.0000  0.0000     244.4 | 2025:1g@36.0; 2026:0g@0.0
+Cooper Simpson             SD    ND pick 35                170     179      +9   +5.29% |  2.826     5    0  1.0497  0.0000  0.0000     269.8 | 2024:2g@37.0; 2025:3g@41.3; 2026:0g@0.0
+Taylor Goad                RUCK  ND pick 20                671     701     +30   +4.47% |  2.826     2    2  1.0475  0.1217  0.1313    1283.0 | 2026:2g@43.5
+Bodie Ryan                 SD    ND pick 46                181     189      +8   +4.42% |  2.826     4    4  1.1222  0.4913  0.5034     264.3 | 2026:4g@37.9
+Cody Curtin                KPF   ND pick 43                362     378     +16   +4.42% |  0.826     4    4  1.1309  0.4944  0.5074     543.6 | 2026:4g@29.8
+Noah Mraz                  KPD   ND pick 35               1585    1651     +66   +4.16% |  1.826     4    4  1.1579  0.3035  0.3130    5068.5 | 2026:4g@84.2
+Hugh Davies                KPD   ND pick 33                178     184      +6   +3.37% |  3.826     2    0  1.0380  0.0000  0.0000     222.4 | 2024:2g@27.0; 2026:0g@0.0
+Blake Thredgold            KPD   ND pick 26                358     369     +11   +3.07% |  1.000     0    0  1.0303  0.0000  0.0000     654.9 | 2026:0g@0.0
+Thomas Burton              SF    SSP (pool, effpk 65)      267     275      +8   +3.00% |  0.826     5    5  1.5255  0.9122  0.9146     296.9 | 2026:5g@39.4
+Riley Hamilton             SF    PDA (pool, effpk 65)      221     227      +6   +2.71% |  0.826     5    5  1.5255  0.9119  0.9143     241.6 | 2026:5g@36.0
+Samuel Swadling            MID   ND pick 37                637     654     +17   +2.67% |  0.826     5    5  1.4765  0.9165  0.9187     695.6 | 2026:5g@59.0
+Tew Jiath                  SD    ND pick 37                159     163      +4   +2.52% |  2.826     1    0  1.0310  0.0000  0.0000     226.4 | 2024:1g@24.0; 2026:0g@0.0
+Mitchell Marsh             KPF   ND pick 22                497     509     +12   +2.41% |  0.826     0    0  1.0245  0.0000  0.0000     840.3 | 2026:0g@0.0
+William McCabe             KPF   ND pick 19                516     525      +9   +1.74% |  2.826     4    4  1.0409  0.5198  0.5242     713.5 | 2026:4g@31.8
+Oscar Ryan                 SD    ND pick 27                242     245      +3   +1.24% |  2.826     1    1  1.0117  0.0079  0.0085     384.1 | 2026:1g@96.0
+Dylan Patterson            SD    ND pick 5                1419    1435     +16   +1.13% |  0.826     5    5  1.3061  0.9271  0.9286    1558.1 | 2026:5g@35.6
+Charlie Edwards            MID   ND pick 21                553     559      +6   +1.08% |  2.826     2    2  1.0128  0.2449  0.2501     710.8 | 2026:2g@47.5
+Oliver Hannaford           SF    ND pick 18                309     312      +3   +0.97% |  1.826     5    5  1.0782  0.9188  0.9183     312.0 | 2026:5g@28.2
+Jack Ough                  MID   ND pick 36                497     501      +4   +0.80% |  1.826     5    5  1.1479  0.9139  0.9147     557.5 | 2026:5g@46.0
+Harrison Oliver            SD    ND pick 19                440     443      +3   +0.68% |  1.826     5    5  1.0795  0.9194  0.9198     458.6 | 2026:5g@39.0
+Toby Conway                RUCK  ND pick 24                483     486      +3   +0.62% |  5.000     6    0  1.0054  0.0000  0.0000    1152.1 | 2023:1g@46.0; 2024:5g@79.6; 2026:0g@0.0
+Josh Smillie               MID   ND pick 7                 948     953      +5   +0.53% |  1.826     0    0  1.0044  0.0000  0.0000    1316.1 | 2026:0g@0.0
+Charlie Nicholls           KPF   ND pick 34                193     194      +1   +0.52% |  1.826     0    0  1.0044  0.0000  0.0000     679.0 | 2026:0g@0.0
+James Barrat               KPD   ND pick 32                220     221      +1   +0.45% |  1.826     0    0  1.0049  0.0000  0.0000     695.7 | 2026:0g@0.0
+Jayden Nguyen              SD    PDN (pool, effpk 65)      259     260      +1   +0.39% |  1.826    10    5  1.2491  0.9052  0.9065     293.5 | 2025:5g@39.2; 2026:5g@42.6
+
+========================================================================================================================================================================
+THE TRIGGERING RECORD IN FULL, same order
+========================================================================================================================================================================
+  1. Matt Hill  (SF, UNR (pool, effpk 65), drafted 2024, retention class nonKPP)
+     price            : 41 -> 68   (+27, +65.85%)   [engine ev() on this build 72]
+     career by season : 2026:2g@24.0   (CUMULATIVE career games 2; season-2026 games 2, 2.27 at pace)
+     his cell         : tau 1.8255   class nonKPP   effpk 65   cumulative games 2   ->   TAUGHT G = 1.634824
+     the anchor leg   : entry anchor 108.40 x R 0.416092 = 45.10   ->  x G = 73.74
+     the evidence leg : e_full 21.84   lam 0.112516 -> 0.050415   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 42.486 -> 71.120  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+  2. Vigo Visentini  (RUCK, RD:RUCK (pool, effpk 65), drafted 2023, retention class RUCK)
+     price            : 167 -> 264   (+97, +58.08%)   [engine ev() on this build 278]
+     career by season : 2025:2g@56.0; 2026:0g@0.0   (CUMULATIVE career games 2; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 2.8255   class RUCK   effpk 65   cumulative games 2   ->   TAUGHT G = 1.575766
+     the anchor leg   : entry anchor 296.78 x R 0.594000 = 176.29   ->  x G = 277.78
+     the evidence leg : e_full 567.94   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 176.285 -> 277.785  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+  3. Lachlan Smith  (RUCK, ND pick 47, drafted 2023, retention class RUCK)
+     price            : 328 -> 500   (+172, +52.44%)   [engine ev() on this build 526]
+     career by season : 2026:2g@53.0   (CUMULATIVE career games 2; season-2026 games 2, 2.27 at pace)
+     his cell         : tau 2.8255   class RUCK   effpk 47   cumulative games 2   ->   TAUGHT G = 1.557075
+     the anchor leg   : entry anchor 513.58 x R 0.596665 = 306.44   ->  x G = 477.15
+     the evidence leg : e_full 805.22   lam 0.077369 -> 0.159462   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 345.028 -> 529.461  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+  4. Lucas Camporeale  (MID, ND pick 54, drafted 2024, retention class nonKPP)
+     price            : 137 -> 199   (+62, +45.26%)   [engine ev() on this build 209]
+     career by season : 2025:3g@41.0; 2026:0g@0.0   (CUMULATIVE career games 3; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 1.8255   class nonKPP   effpk 54   cumulative games 3   ->   TAUGHT G = 1.453162
+     the anchor leg   : entry anchor 345.14 x R 0.416092 = 143.61   ->  x G = 208.69
+     the evidence leg : e_full 481.62   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 143.610 -> 208.689  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+  5. Rhys Unwin  (SF, ND pick 61, drafted 2024, retention class nonKPP)
+     price            : 69 -> 97   (+28, +40.58%)   [engine ev() on this build 102]
+     career by season : 2025:3g@22.0; 2026:1g@37.0   (CUMULATIVE career games 4; season-2026 games 1, 1.14 at pace)
+     his cell         : tau 1.8255   class nonKPP   effpk 61   cumulative games 4   ->   TAUGHT G = 1.397015
+     the anchor leg   : entry anchor 175.10 x R 0.416092 = 72.86   ->  x G = 101.78
+     the evidence leg : e_full 183.13   lam 0.000303 -> 0.002458   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 72.890 -> 101.982  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+  6. Zane Peucker  (SF, ND pick 31, drafted 2025, retention class nonKPP)
+     price            : 299 -> 417   (+118, +39.46%)   [engine ev() on this build 439]
+     career by season : 2026:2g@40.5   (CUMULATIVE career games 2; season-2026 games 2, 2.27 at pace)
+     his cell         : tau 0.8255   class nonKPP   effpk 31   cumulative games 2   ->   TAUGHT G = 1.401032
+     the anchor leg   : entry anchor 475.58 x R 0.704946 = 335.26   ->  x G = 469.71
+     the evidence leg : e_full 253.18   lam 0.247813 -> 0.142869   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 314.918 -> 438.773  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+  7. Noah Roberts-Thomson  (SF, ND pick 54, drafted 2025, retention class nonKPP)
+     price            : 162 -> 225   (+63, +38.89%)   [engine ev() on this build 237]
+     career by season : 2026:3g@38.7   (CUMULATIVE career games 3; season-2026 games 3, 3.41 at pace)
+     his cell         : tau 0.8255   class nonKPP   effpk 54   cumulative games 3   ->   TAUGHT G = 1.587480
+     the anchor leg   : entry anchor 222.51 x R 0.627694 = 139.67   ->  x G = 221.72
+     the evidence leg : e_full 268.97   lam 0.250795 -> 0.359964   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 172.097 -> 238.729  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+  8. Alex Dodson  (RUCK, ND pick 53, drafted 2024, retention class RUCK)
+     price            : 235 -> 326   (+91, +38.72%)   [engine ev() on this build 343]
+     career by season : 2025:1g@13.0; 2026:0g@0.0   (CUMULATIVE career games 1; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 1.8255   class RUCK   effpk 53   cumulative games 1   ->   TAUGHT G = 1.387649
+     the anchor leg   : entry anchor 394.23 x R 0.626629 = 247.04   ->  x G = 342.80
+     the evidence leg : e_full 654.18   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 247.035 -> 342.798  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+  9. Jaxon Artemis  (SD, MSD (pool, effpk 65), drafted 2026, retention class nonKPP)
+     price            : 191 -> 260   (+69, +36.13%)   [engine ev() on this build 274]
+     career by season : 2026:3g@53.0   (CUMULATIVE career games 3; season-2026 games 3, 3.41 at pace)
+     his cell         : tau 0.8255   class nonKPP   effpk 65   cumulative games 3   ->   TAUGHT G = 1.587002
+     the anchor leg   : entry anchor 300.99 x R 0.627694 = 188.93   ->  x G = 299.83
+     the evidence leg : e_full 217.57   lam 0.370265 -> 0.321781   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 199.534 -> 273.360  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 10. Balyn O'Brien  (SD, SSP (pool, effpk 65), drafted 2025, retention class nonKPP)
+     price            : 181 -> 245   (+64, +35.36%)   [engine ev() on this build 258]
+     career by season : 2026:3g@27.7   (CUMULATIVE career games 3; season-2026 games 3, 3.41 at pace)
+     his cell         : tau 0.8255   class nonKPP   effpk 65   cumulative games 3   ->   TAUGHT G = 1.587002
+     the anchor leg   : entry anchor 265.20 x R 0.627694 = 166.47   ->  x G = 264.18
+     the evidence leg : e_full 252.22   lam 0.298784 -> 0.398765   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 192.089 -> 259.413  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 11. Jack Henderson  (SF, SSP (pool, effpk 65), drafted 2024, retention class nonKPP)
+     price            : 105 -> 141   (+36, +34.29%)   [engine ev() on this build 148]
+     career by season : 2025:5g@43.0; 2026:0g@0.0   (CUMULATIVE career games 5; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 1.8255   class nonKPP   effpk 65   cumulative games 5   ->   TAUGHT G = 1.340723
+     the anchor leg   : entry anchor 265.20 x R 0.416092 = 110.35   ->  x G = 147.95
+     the evidence leg : e_full 0.15   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 110.350 -> 147.948  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 12. Lucca Grego  (SD, ND pick 48, drafted 2024, retention class nonKPP)
+     price            : 113 -> 150   (+37, +32.74%)   [engine ev() on this build 158]
+     career by season : 2025:1g@59.0; 2026:0g@0.0   (CUMULATIVE career games 1; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 1.8255   class nonKPP   effpk 48   cumulative games 1   ->   TAUGHT G = 1.330688
+     the anchor leg   : entry anchor 282.51 x R 0.420653 = 118.84   ->  x G = 158.14
+     the evidence leg : e_full 334.63   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 118.838 -> 158.137  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 13. Flynn Riley  (RUCK, MSD (pool, effpk 65), drafted 2026, retention class RUCK)
+     price            : 236 -> 312   (+76, +32.20%)   [engine ev() on this build 328]
+     career by season : 2026:1g@80.0   (CUMULATIVE career games 1; season-2026 games 1, 1.14 at pace)
+     his cell         : tau 0.8255   class RUCK   effpk 65   cumulative games 1   ->   TAUGHT G = 1.322345
+     the anchor leg   : entry anchor 300.99 x R 0.819213 = 246.57   ->  x G = 326.05
+     the evidence leg : e_full 354.91   lam 0.010066 -> 0.057950   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 247.662 -> 327.725  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 14. Cameron Nairn  (SF, ND pick 20, drafted 2025, retention class nonKPP)
+     price            : 471 -> 620   (+149, +31.63%)   [engine ev() on this build 653]
+     career by season : 2026:3g@42.8   (CUMULATIVE career games 3; season-2026 games 3, 3.41 at pace)
+     his cell         : tau 0.8255   class nonKPP   effpk 20   cumulative games 3   ->   TAUGHT G = 1.338665
+     the anchor leg   : entry anchor 760.16 x R 0.738253 = 561.19   ->  x G = 751.24
+     the evidence leg : e_full 353.74   lam 0.311925 -> 0.248315   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 496.480 -> 652.537  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 15. Charlie Banfield  (MID, ND pick 41, drafted 2025, retention class nonKPP)
+     price            : 419 -> 544   (+125, +29.83%)   [engine ev() on this build 573]
+     career by season : 2026:3g@54.3   (CUMULATIVE career games 3; season-2026 games 3, 3.41 at pace)
+     his cell         : tau 0.8255   class nonKPP   effpk 41   cumulative games 3   ->   TAUGHT G = 1.516135
+     the anchor leg   : entry anchor 605.90 x R 0.659764 = 399.75   ->  x G = 606.08
+     the evidence leg : e_full 525.73   lam 0.344224 -> 0.381573   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 443.117 -> 575.419  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 16. Mitch Podhajski  (KPF, MSD (pool, effpk 65), drafted 2026, retention class KPP)
+     price            : 200 -> 258   (+58, +29.00%)   [engine ev() on this build 272]
+     career by season : 2026:2g@48.5   (CUMULATIVE career games 2; season-2026 games 2, 2.27 at pace)
+     his cell         : tau 0.8255   class KPP   effpk 65   cumulative games 2   ->   TAUGHT G = 1.285177
+     the anchor leg   : entry anchor 300.99 x R 0.704466 = 212.03   ->  x G = 272.50
+     the evidence leg : e_full 13.27   lam 0.004012 -> 0.002663   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 211.237 -> 271.812  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 17. Lukas Cooke  (KPD, MSD (pool, effpk 65), drafted 2026, retention class KPP)
+     price            : 198 -> 255   (+57, +28.79%)   [engine ev() on this build 268]
+     career by season : 2026:2g@43.5   (CUMULATIVE career games 2; season-2026 games 2, 2.27 at pace)
+     his cell         : tau 0.8255   class KPP   effpk 65   cumulative games 2   ->   TAUGHT G = 1.285177
+     the anchor leg   : entry anchor 300.99 x R 0.704466 = 212.03   ->  x G = 272.50
+     the evidence leg : e_full 54.12   lam 0.039860 -> 0.026459   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 205.740 -> 266.724  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 18. Caleb Lewis  (KPF, MSD (pool, effpk 65), drafted 2025, retention class KPP)
+     price            : 128 -> 164   (+36, +28.12%)   [engine ev() on this build 173]
+     career by season : 2026:2g@12.5   (CUMULATIVE career games 2; season-2026 games 2, 2.27 at pace)
+     his cell         : tau 1.8255   class KPP   effpk 65   cumulative games 2   ->   TAUGHT G = 1.345454
+     the anchor leg   : entry anchor 300.99 x R 0.448004 = 134.84   ->  x G = 181.43
+     the evidence leg : e_full 94.96   lam 0.207248 -> 0.127648   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 126.578 -> 170.388  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 19. Jay Polkinghorne  (SF, ND pick 44, drafted 2024, retention class nonKPP)
+     price            : 172 -> 218   (+46, +26.74%)   [engine ev() on this build 229]
+     career by season : 2026:3g@52.7   (CUMULATIVE career games 3; season-2026 games 3, 3.41 at pace)
+     his cell         : tau 1.8255   class nonKPP   effpk 44   cumulative games 3   ->   TAUGHT G = 1.357072
+     the anchor leg   : entry anchor 326.29 x R 0.430375 = 140.43   ->  x G = 190.57
+     the evidence leg : e_full 337.03   lam 0.210625 -> 0.267421   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 181.836 -> 229.736  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 20. Aidan Schubert  (KPF, ND pick 23, drafted 2025, retention class KPP)
+     price            : 473 -> 597   (+124, +26.22%)   [engine ev() on this build 628]
+     career by season : 2026:1g@24.0   (CUMULATIVE career games 1; season-2026 games 1, 1.14 at pace)
+     his cell         : tau 0.8255   class KPP   effpk 23   cumulative games 1   ->   TAUGHT G = 1.256137
+     the anchor leg   : entry anchor 680.78 x R 0.728599 = 496.02   ->  x G = 623.06
+     the evidence leg : e_full 750.62   lam 0.008831 -> 0.036848   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 498.264 -> 627.764  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 21. Tom Cochrane  (SF, RD:SF (pool, effpk 65), drafted 2024, retention class nonKPP)
+     price            : 116 -> 142   (+26, +22.41%)   [engine ev() on this build 149]
+     career by season : 2025:3g@34.0; 2026:3g@30.7   (CUMULATIVE career games 6; season-2026 games 3, 3.41 at pace)
+     his cell         : tau 1.8255   class nonKPP   effpk 65   cumulative games 6   ->   TAUGHT G = 1.317423
+     the anchor leg   : entry anchor 243.10 x R 0.416092 = 101.15   ->  x G = 133.26
+     the evidence leg : e_full 173.10   lam 0.269663 -> 0.334532   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 120.556 -> 146.590  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 22. George Stevens  (MID, ND pick 58, drafted 2023, retention class nonKPP)
+     price            : 111 -> 135   (+24, +21.62%)   [engine ev() on this build 142]
+     career by season : 2025:2g@62.0; 2026:2g@62.0   (CUMULATIVE career games 4; season-2026 games 2, 2.27 at pace)
+     his cell         : tau 2.8255   class nonKPP   effpk 58   cumulative games 4   ->   TAUGHT G = 1.213718
+     the anchor leg   : entry anchor 297.26 x R 0.352503 = 104.79   ->  x G = 127.18
+     the evidence leg : e_full 434.10   lam 0.036169 -> 0.049627   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 116.697 -> 142.413  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 23. Jack Dalton  (SF, ND pick 34, drafted 2025, retention class nonKPP)
+     price            : 272 -> 329   (+57, +20.96%)   [engine ev() on this build 346]
+     career by season : 2026:4g@53.5   (CUMULATIVE career games 4; season-2026 games 4, 4.55 at pace)
+     his cell         : tau 0.8255   class nonKPP   effpk 34   cumulative games 4   ->   TAUGHT G = 1.453192
+     the anchor leg   : entry anchor 423.77 x R 0.690018 = 292.41   ->  x G = 424.93
+     the evidence leg : e_full 284.53   lam 0.597672 -> 0.552410   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 287.703 -> 347.373  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 24. Ollie Greeves  (MID, RD:MID (pool, effpk 65), drafted 2025, retention class nonKPP)
+     price            : 259 -> 311   (+52, +20.08%)   [engine ev() on this build 327]
+     career by season : 2026:4g@44.0   (CUMULATIVE career games 4; season-2026 games 4, 4.55 at pace)
+     his cell         : tau 0.8255   class nonKPP   effpk 65   cumulative games 4   ->   TAUGHT G = 1.553129
+     the anchor leg   : entry anchor 309.41 x R 0.627694 = 194.21   ->  x G = 301.64
+     the evidence leg : e_full 349.00   lam 0.517478 -> 0.567780   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 274.310 -> 328.527  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 25. Archie Ludowyke  (KPF, ND pick 50, drafted 2025, retention class KPP)
+     price            : 151 -> 181   (+30, +19.87%)   [engine ev() on this build 191]
+     career by season : 2026:1g@57.0   (CUMULATIVE career games 1; season-2026 games 1, 1.14 at pace)
+     his cell         : tau 0.8255   class KPP   effpk 50   cumulative games 1   ->   TAUGHT G = 1.198916
+     the anchor leg   : entry anchor 225.67 x R 0.704466 = 158.97   ->  x G = 190.60
+     the evidence leg : e_full 522.44   lam 0.000060 -> 0.000186   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 158.997 -> 190.659  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 26. Oliver Francou  (MID, MSD (pool, effpk 65), drafted 2026, retention class nonKPP)
+     price            : 251 -> 299   (+48, +19.12%)   [engine ev() on this build 315]
+     career by season : 2026:4g@71.5   (CUMULATIVE career games 4; season-2026 games 4, 4.55 at pace)
+     his cell         : tau 0.8255   class nonKPP   effpk 65   cumulative games 4   ->   TAUGHT G = 1.553129
+     the anchor leg   : entry anchor 300.99 x R 0.627694 = 188.93   ->  x G = 293.43
+     the evidence leg : e_full 328.25   lam 0.521167 -> 0.571827   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 261.537 -> 313.339  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 27. Ben Jepson  (MID, SSP (pool, effpk 65), drafted 2024, retention class nonKPP)
+     price            : 88 -> 104   (+16, +18.18%)   [engine ev() on this build 109]
+     career by season : 2025:1g@36.0; 2026:4g@43.2   (CUMULATIVE career games 5; season-2026 games 4, 4.55 at pace)
+     his cell         : tau 1.8255   class nonKPP   effpk 65   cumulative games 5   ->   TAUGHT G = 1.340723
+     the anchor leg   : entry anchor 265.20 x R 0.416092 = 110.35   ->  x G = 147.95
+     the evidence leg : e_full 3.21   lam 0.276718 -> 0.260140   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 80.704 -> 110.297  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 28. Xavier Taylor  (SD, ND pick 11, drafted 2025, retention class nonKPP)
+     price            : 740 -> 868   (+128, +17.30%)   [engine ev() on this build 913]
+     career by season : 2026:2g@42.0   (CUMULATIVE career games 2; season-2026 games 2, 2.27 at pace)
+     his cell         : tau 0.8255   class nonKPP   effpk 11   cumulative games 2   ->   TAUGHT G = 1.245439
+     the anchor leg   : entry anchor 1079.07 x R 0.720836 = 777.83   ->  x G = 968.74
+     the evidence leg : e_full 785.08   lam 0.417465 -> 0.300669   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 780.857 -> 913.520  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 29. Luker Kentfield  (KPF, MSD (pool, effpk 65), drafted 2024, retention class KPP)
+     price            : 142 -> 164   (+22, +15.49%)   [engine ev() on this build 173]
+     career by season : 2026:3g@32.3   (CUMULATIVE career games 3; season-2026 games 3, 3.41 at pace)
+     his cell         : tau 2.8255   class KPP   effpk 65   cumulative games 3   ->   TAUGHT G = 1.202078
+     the anchor leg   : entry anchor 300.99 x R 0.360771 = 108.59   ->  x G = 130.53
+     the evidence leg : e_full 357.16   lam 0.161253 -> 0.186213   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 148.671 -> 172.732  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 30. Luke Beecken  (MID, MSD (pool, effpk 65), drafted 2024, retention class nonKPP)
+     price            : 101 -> 116   (+15, +14.85%)   [engine ev() on this build 122]
+     career by season : 2025:1g@7.0; 2026:0g@0.0   (CUMULATIVE career games 1; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 2.8255   class nonKPP   effpk 65   cumulative games 1   ->   TAUGHT G = 1.147398
+     the anchor leg   : entry anchor 300.99 x R 0.352503 = 106.10   ->  x G = 121.74
+     the evidence leg : e_full 2.23   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 106.099 -> 121.737  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 31. Daniel Annable  (MID, ND pick 6, drafted 2025, retention class nonKPP)
+     price            : 1230 -> 1402   (+172, +13.98%)   [engine ev() on this build 1475]
+     career by season : 2026:1g@40.0   (CUMULATIVE career games 1; season-2026 games 1, 1.14 at pace)
+     his cell         : tau 0.8255   class nonKPP   effpk 6   cumulative games 1   ->   TAUGHT G = 1.155337
+     the anchor leg   : entry anchor 1981.31 x R 0.647962 = 1283.81   ->  x G = 1483.24
+     the evidence leg : e_full 1411.45   lam 0.082774 -> 0.109849   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 1294.378 -> 1475.351  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 32. Jacob Newton  (SF, MSD (pool, effpk 65), drafted 2025, retention class nonKPP)
+     price            : 128 -> 145   (+17, +13.28%)   [engine ev() on this build 153]
+     career by season : 2025:2g@25.5; 2026:3g@27.7   (CUMULATIVE career games 5; season-2026 games 3, 3.00 at pace)
+     his cell         : tau 2.0000   class nonKPP   effpk 65   cumulative games 5   ->   TAUGHT G = 1.278202
+     the anchor leg   : entry anchor 300.99 x R 0.388000 = 116.78   ->  x G = 149.27
+     the evidence leg : e_full 152.39   lam 0.315561 -> 0.402499   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 128.020 -> 150.528  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 33. Luke Kennedy  (MID, ND pick 62, drafted 2024, retention class nonKPP)
+     price            : 241 -> 273   (+32, +13.28%)   [engine ev() on this build 287]
+     career by season : 2026:4g@37.2   (CUMULATIVE career games 4; season-2026 games 4, 4.55 at pace)
+     his cell         : tau 1.8255   class nonKPP   effpk 62   cumulative games 4   ->   TAUGHT G = 1.402408
+     the anchor leg   : entry anchor 252.57 x R 0.416092 = 105.09   ->  x G = 147.38
+     the evidence leg : e_full 460.97   lam 0.427416 -> 0.458984   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 257.201 -> 291.315  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 34. Zane Zakostelsky  (KPD, ND pick 51, drafted 2023, retention class KPP)
+     price            : 152 -> 170   (+18, +11.84%)   [engine ev() on this build 179]
+     career by season : 2026:3g@49.0   (CUMULATIVE career games 3; season-2026 games 3, 3.41 at pace)
+     his cell         : tau 2.8255   class KPP   effpk 51   cumulative games 3   ->   TAUGHT G = 1.141731
+     the anchor leg   : entry anchor 302.98 x R 0.360771 = 109.31   ->  x G = 124.80
+     the evidence leg : e_full 519.62   lam 0.121914 -> 0.135227   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 159.329 -> 178.189  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 35. Jesse Dattoli  (SF, ND pick 22, drafted 2024, retention class nonKPP)
+     price            : 314 -> 349   (+35, +11.15%)   [engine ev() on this build 367]
+     career by season : 2025:3g@36.0; 2026:0g@0.0   (CUMULATIVE career games 3; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 1.8255   class nonKPP   effpk 22   cumulative games 3   ->   TAUGHT G = 1.113203
+     the anchor leg   : entry anchor 668.06 x R 0.493578 = 329.74   ->  x G = 367.07
+     the evidence leg : e_full 361.87   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 329.739 -> 367.066  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 36. Cody Angove  (MID, ND pick 24, drafted 2024, retention class nonKPP)
+     price            : 474 -> 523   (+49, +10.34%)   [engine ev() on this build 550]
+     career by season : 2025:4g@37.0; 2026:0g@0.0   (CUMULATIVE career games 4; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 1.8255   class nonKPP   effpk 24   cumulative games 4   ->   TAUGHT G = 1.101526
+     the anchor leg   : entry anchor 1023.30 x R 0.487851 = 499.22   ->  x G = 549.90
+     the evidence leg : e_full 811.80   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 499.217 -> 549.900  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 37. Liam Reidy  (RUCK, RD:RUCK (pool, effpk 65), drafted 2022, retention class RUCK)
+     price            : 280 -> 308   (+28, +10.00%)   [engine ev() on this build 324]
+     career by season : 2024:2g@41.0; 2025:1g@34.0; 2026:4g@64.3   (CUMULATIVE career games 7; season-2026 games 4, 4.55 at pace)
+     his cell         : tau 3.8255   class RUCK   effpk 65   cumulative games 7   ->   TAUGHT G = 1.262466
+     the anchor leg   : entry anchor 296.78 x R 0.594000 = 176.29   ->  x G = 222.55
+     the evidence leg : e_full 409.93   lam 0.488345 -> 0.512925   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 290.383 -> 318.662  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 38. Matt Whitlock  (KPF, ND pick 27, drafted 2024, retention class KPP)
+     price            : 359 -> 392   (+33, +9.19%)   [engine ev() on this build 413]
+     career by season : 2025:2g@21.5; 2026:3g@27.7   (CUMULATIVE career games 5; season-2026 games 3, 3.41 at pace)
+     his cell         : tau 1.8255   class KPP   effpk 27   cumulative games 5   ->   TAUGHT G = 1.118945
+     the anchor leg   : entry anchor 588.52 x R 0.480100 = 282.55   ->  x G = 316.16
+     the evidence leg : e_full 790.71   lam 0.190973 -> 0.208515   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 379.595 -> 415.110  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 39. Tom Anastasopoulos  (SF, ND pick 48, drafted 2023, retention class nonKPP)
+     price            : 104 -> 112   (+8, +7.69%)   [engine ev() on this build 118]
+     career by season : 2026:2g@40.5   (CUMULATIVE career games 2; season-2026 games 2, 2.27 at pace)
+     his cell         : tau 2.8255   class nonKPP   effpk 48   cumulative games 2   ->   TAUGHT G = 1.084039
+     the anchor leg   : entry anchor 271.26 x R 0.358252 = 97.18   ->  x G = 105.35
+     the evidence leg : e_full 282.81   lam 0.064918 -> 0.074063   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 109.229 -> 118.489  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 40. Harrison Ramm  (KPD, MSD (pool, effpk 65), drafted 2025, retention class KPP)
+     price            : 169 -> 181   (+12, +7.10%)   [engine ev() on this build 191]
+     career by season : 2025:1g@28.0; 2026:3g@23.7   (CUMULATIVE career games 4; season-2026 games 3, 3.41 at pace)
+     his cell         : tau 1.8255   class KPP   effpk 65   cumulative games 4   ->   TAUGHT G = 1.090866
+     the anchor leg   : entry anchor 300.99 x R 0.448004 = 134.84   ->  x G = 147.10
+     the evidence leg : e_full 377.96   lam 0.183232 -> 0.196126   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 179.390 -> 192.375  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 41. Henry Hustwaite  (MID, ND pick 37, drafted 2022, retention class nonKPP)
+     price            : 222 -> 237   (+15, +6.76%)   [engine ev() on this build 249]
+     career by season : 2023:2g@66.0; 2024:4g@25.0; 2025:4g@46.2; 2026:1g@59.0   (CUMULATIVE career games 11; season-2026 games 1, 1.14 at pace)
+     his cell         : tau 3.8255   class nonKPP   effpk 37   cumulative games 11   ->   TAUGHT G = 1.064847
+     the anchor leg   : entry anchor 669.29 x R 0.350570 = 234.63   ->  x G = 249.85
+     the evidence leg : e_full 167.99   lam 0.012450 -> 0.008399   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 233.802 -> 249.159  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 42. Jed Adams  (KPD, ND pick 38, drafted 2022, retention class KPP)
+     price            : 145 -> 154   (+9, +6.21%)   [engine ev() on this build 162]
+     career by season : 2025:1g@36.0; 2026:0g@0.0   (CUMULATIVE career games 1; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 3.8255   class KPP   effpk 38   cumulative games 1   ->   TAUGHT G = 1.059462
+     the anchor leg   : entry anchor 445.94 x R 0.342326 = 152.66   ->  x G = 161.74
+     the evidence leg : e_full 244.39   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 152.658 -> 161.735  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 43. Cooper Simpson  (SD, ND pick 35, drafted 2023, retention class nonKPP)
+     price            : 170 -> 179   (+9, +5.29%)   [engine ev() on this build 188]
+     career by season : 2024:2g@37.0; 2025:3g@41.3; 2026:0g@0.0   (CUMULATIVE career games 5; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 2.8255   class nonKPP   effpk 35   cumulative games 5   ->   TAUGHT G = 1.049731
+     the anchor leg   : entry anchor 445.19 x R 0.402734 = 179.29   ->  x G = 188.21
+     the evidence leg : e_full 269.76   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 179.293 -> 188.210  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 44. Taylor Goad  (RUCK, ND pick 20, drafted 2023, retention class RUCK)
+     price            : 671 -> 701   (+30, +4.47%)   [engine ev() on this build 738]
+     career by season : 2026:2g@43.5   (CUMULATIVE career games 2; season-2026 games 2, 2.27 at pace)
+     his cell         : tau 2.8255   class RUCK   effpk 20   cumulative games 2   ->   TAUGHT G = 1.047527
+     the anchor leg   : entry anchor 1037.37 x R 0.604886 = 627.49   ->  x G = 657.31
+     the evidence leg : e_full 1283.00   lam 0.121713 -> 0.131302   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 707.272 -> 739.464  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 45. Bodie Ryan  (SD, ND pick 46, drafted 2023, retention class nonKPP)
+     price            : 181 -> 189   (+8, +4.42%)   [engine ev() on this build 199]
+     career by season : 2026:4g@37.9   (CUMULATIVE career games 4; season-2026 games 4, 4.55 at pace)
+     his cell         : tau 2.8255   class nonKPP   effpk 46   cumulative games 4   ->   TAUGHT G = 1.122230
+     the anchor leg   : entry anchor 312.21 x R 0.364246 = 113.72   ->  x G = 127.62
+     the evidence leg : e_full 264.34   lam 0.491275 -> 0.503358   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 187.717 -> 196.441  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 46. Cody Curtin  (KPF, ND pick 43, drafted 2025, retention class KPP)
+     price            : 362 -> 378   (+16, +4.42%)   [engine ev() on this build 398]
+     career by season : 2026:4g@29.8   (CUMULATIVE career games 4; season-2026 games 4, 4.55 at pace)
+     his cell         : tau 0.8255   class KPP   effpk 43   cumulative games 4   ->   TAUGHT G = 1.130922
+     the anchor leg   : entry anchor 320.55 x R 0.702029 = 225.04   ->  x G = 254.50
+     the evidence leg : e_full 543.57   lam 0.494445 -> 0.507431   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 382.533 -> 401.182  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 47. Noah Mraz  (KPD, ND pick 35, drafted 2024, retention class KPP)
+     price            : 1585 -> 1651   (+66, +4.16%)   [engine ev() on this build 1738]
+     career by season : 2026:4g@84.2   (CUMULATIVE career games 4; season-2026 games 4, 4.55 at pace)
+     his cell         : tau 1.8255   class KPP   effpk 35   cumulative games 4   ->   TAUGHT G = 1.157941
+     the anchor leg   : entry anchor 461.25 x R 0.458769 = 211.61   ->  x G = 245.03
+     the evidence leg : e_full 5068.48   lam 0.303456 -> 0.312978   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 1685.452 -> 1754.663  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 48. Hugh Davies  (KPD, ND pick 33, drafted 2022, retention class KPP)
+     price            : 178 -> 184   (+6, +3.37%)   [engine ev() on this build 194]
+     career by season : 2024:2g@27.0; 2026:0g@0.0   (CUMULATIVE career games 2; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 3.8255   class KPP   effpk 33   cumulative games 2   ->   TAUGHT G = 1.037999
+     the anchor leg   : entry anchor 483.29 x R 0.385935 = 186.52   ->  x G = 193.61
+     the evidence leg : e_full 222.39   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 186.520 -> 193.608  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 49. Blake Thredgold  (KPD, ND pick 26, drafted 2025, retention class KPP)
+     price            : 358 -> 369   (+11, +3.07%)   [engine ev() on this build 388]
+     career by season : 2026:0g@0.0   (CUMULATIVE career games 0; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 1.0000   class KPP   effpk 26   cumulative games 0   ->   TAUGHT G = 1.030295
+     the anchor leg   : entry anchor 570.05 x R 0.660974 = 376.79   ->  x G = 388.20
+     the evidence leg : e_full 654.87   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 376.785 -> 388.200  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 50. Thomas Burton  (SF, SSP (pool, effpk 65), drafted 2025, retention class nonKPP)
+     price            : 267 -> 275   (+8, +3.00%)   [engine ev() on this build 289]
+     career by season : 2026:5g@39.4   (CUMULATIVE career games 5; season-2026 games 5, 5.68 at pace)
+     his cell         : tau 0.8255   class nonKPP   effpk 65   cumulative games 5   ->   TAUGHT G = 1.525452
+     the anchor leg   : entry anchor 265.20 x R 0.627694 = 166.47   ->  x G = 253.94
+     the evidence leg : e_full 296.89   lam 0.912195 -> 0.914588   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 285.442 -> 293.225  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 51. Riley Hamilton  (SF, PDA (pool, effpk 65), drafted 2025, retention class nonKPP)
+     price            : 221 -> 227   (+6, +2.71%)   [engine ev() on this build 239]
+     career by season : 2026:5g@36.0   (CUMULATIVE career games 5; season-2026 games 5, 5.68 at pace)
+     his cell         : tau 0.8255   class nonKPP   effpk 65   cumulative games 5   ->   TAUGHT G = 1.525452
+     the anchor leg   : entry anchor 204.17 x R 0.627694 = 128.15   ->  x G = 195.49
+     the evidence leg : e_full 241.57   lam 0.911881 -> 0.914274   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 231.576 -> 237.620  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 52. Samuel Swadling  (MID, ND pick 37, drafted 2025, retention class nonKPP)
+     price            : 637 -> 654   (+17, +2.67%)   [engine ev() on this build 688]
+     career by season : 2026:5g@59.0   (CUMULATIVE career games 5; season-2026 games 5, 5.68 at pace)
+     his cell         : tau 0.8255   class nonKPP   effpk 37   cumulative games 5   ->   TAUGHT G = 1.476497
+     the anchor leg   : entry anchor 669.29 x R 0.676353 = 452.67   ->  x G = 668.37
+     the evidence leg : e_full 695.56   lam 0.916494 -> 0.918712   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 675.275 -> 693.348  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 53. Tew Jiath  (SD, ND pick 37, drafted 2023, retention class nonKPP)
+     price            : 159 -> 163   (+4, +2.52%)   [engine ev() on this build 172]
+     career by season : 2024:1g@24.0; 2026:0g@0.0   (CUMULATIVE career games 1; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 2.8255   class nonKPP   effpk 37   cumulative games 1   ->   TAUGHT G = 1.030984
+     the anchor leg   : entry anchor 423.00 x R 0.394908 = 167.05   ->  x G = 172.22
+     the evidence leg : e_full 226.41   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 167.045 -> 172.221  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 54. Mitchell Marsh  (KPF, ND pick 22, drafted 2025, retention class KPP)
+     price            : 497 -> 509   (+12, +2.41%)   [engine ev() on this build 536]
+     career by season : 2026:0g@0.0   (CUMULATIVE career games 0; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 0.8255   class KPP   effpk 22   cumulative games 0   ->   TAUGHT G = 1.024506
+     the anchor leg   : entry anchor 715.17 x R 0.731669 = 523.27   ->  x G = 536.09
+     the evidence leg : e_full 840.30   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 523.268 -> 536.091  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 55. William McCabe  (KPF, ND pick 19, drafted 2023, retention class KPP)
+     price            : 516 -> 525   (+9, +1.74%)   [engine ev() on this build 552]
+     career by season : 2026:4g@31.8   (CUMULATIVE career games 4; season-2026 games 4, 4.55 at pace)
+     his cell         : tau 2.8255   class KPP   effpk 19   cumulative games 4   ->   TAUGHT G = 1.040906
+     the anchor leg   : entry anchor 778.44 x R 0.460394 = 358.39   ->  x G = 373.05
+     the evidence leg : e_full 713.50   lam 0.519768 -> 0.524177   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 542.965 -> 551.506  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 56. Oscar Ryan  (SD, ND pick 27, drafted 2023, retention class nonKPP)
+     price            : 242 -> 245   (+3, +1.24%)   [engine ev() on this build 258]
+     career by season : 2026:1g@96.0   (CUMULATIVE career games 1; season-2026 games 1, 1.14 at pace)
+     his cell         : tau 2.8255   class nonKPP   effpk 27   cumulative games 1   ->   TAUGHT G = 1.011707
+     the anchor leg   : entry anchor 587.05 x R 0.432736 = 254.04   ->  x G = 257.01
+     the evidence leg : e_full 384.06   lam 0.007941 -> 0.008542   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 255.071 -> 258.097  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 57. Dylan Patterson  (SD, ND pick 5, drafted 2025, retention class nonKPP)
+     price            : 1419 -> 1435   (+16, +1.13%)   [engine ev() on this build 1510]
+     career by season : 2026:5g@35.6   (CUMULATIVE career games 5; season-2026 games 5, 5.68 at pace)
+     his cell         : tau 0.8255   class nonKPP   effpk 5   cumulative games 5   ->   TAUGHT G = 1.306113
+     the anchor leg   : entry anchor 1189.99 x R 0.626043 = 744.99   ->  x G = 973.04
+     the evidence leg : e_full 1558.10   lam 0.927098 -> 0.928635   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 1498.826 -> 1516.350  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 58. Charlie Edwards  (MID, ND pick 21, drafted 2023, retention class nonKPP)
+     price            : 553 -> 559   (+6, +1.08%)   [engine ev() on this build 588]
+     career by season : 2026:2g@47.5   (CUMULATIVE career games 2; season-2026 games 2, 2.27 at pace)
+     his cell         : tau 2.8255   class nonKPP   effpk 21   cumulative games 2   ->   TAUGHT G = 1.012811
+     the anchor leg   : entry anchor 1186.98 x R 0.452516 = 537.13   ->  x G = 544.01
+     the evidence leg : e_full 710.82   lam 0.244915 -> 0.250060   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 579.668 -> 585.723  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 59. Oliver Hannaford  (SF, ND pick 18, drafted 2024, retention class nonKPP)
+     price            : 309 -> 312   (+3, +0.97%)   [engine ev() on this build 328]
+     career by season : 2026:5g@28.2   (CUMULATIVE career games 5; season-2026 games 5, 5.68 at pace)
+     his cell         : tau 1.8255   class nonKPP   effpk 18   cumulative games 5   ->   TAUGHT G = 1.078173
+     the anchor leg   : entry anchor 791.82 x R 0.506784 = 401.28   ->  x G = 432.65
+     the evidence leg : e_full 312.00   lam 0.918768 -> 0.918339   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 319.252 -> 321.852  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 60. Jack Ough  (MID, ND pick 36, drafted 2024, retention class nonKPP)
+     price            : 497 -> 501   (+4, +0.80%)   [engine ev() on this build 527]
+     career by season : 2026:5g@46.0   (CUMULATIVE career games 5; season-2026 games 5, 5.68 at pace)
+     his cell         : tau 1.8255   class nonKPP   effpk 36   cumulative games 5   ->   TAUGHT G = 1.147931
+     the anchor leg   : entry anchor 686.79 x R 0.452795 = 310.97   ->  x G = 356.98
+     the evidence leg : e_full 557.54   lam 0.913903 -> 0.914686   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 536.314 -> 540.431  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 61. Harrison Oliver  (SD, ND pick 19, drafted 2024, retention class nonKPP)
+     price            : 440 -> 443   (+3, +0.68%)   [engine ev() on this build 466]
+     career by season : 2026:5g@39.0   (CUMULATIVE career games 5; season-2026 games 5, 5.68 at pace)
+     his cell         : tau 1.8255   class nonKPP   effpk 19   cumulative games 5   ->   TAUGHT G = 1.079472
+     the anchor leg   : entry anchor 827.04 x R 0.503226 = 416.19   ->  x G = 449.26
+     the evidence leg : e_full 458.57   lam 0.919411 -> 0.919847   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 455.155 -> 457.825  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 62. Toby Conway  (RUCK, ND pick 24, drafted 2021, retention class RUCK)
+     price            : 483 -> 486   (+3, +0.62%)   [engine ev() on this build 511]
+     career by season : 2023:1g@46.0; 2024:5g@79.6; 2026:0g@0.0   (CUMULATIVE career games 6; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 5.0000   class RUCK   effpk 24   cumulative games 6   ->   TAUGHT G = 1.005352
+     the anchor leg   : entry anchor 952.79 x R 0.533561 = 508.37   ->  x G = 511.09
+     the evidence leg : e_full 1152.07   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 508.371 -> 511.092  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 63. Josh Smillie  (MID, ND pick 7, drafted 2024, retention class nonKPP)
+     price            : 948 -> 953   (+5, +0.53%)   [engine ev() on this build 1003]
+     career by season : 2026:0g@0.0   (CUMULATIVE career games 0; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 1.8255   class nonKPP   effpk 7   cumulative games 0   ->   TAUGHT G = 1.004426
+     the anchor leg   : entry anchor 2077.25 x R 0.480517 = 998.15   ->  x G = 1002.57
+     the evidence leg : e_full 1316.12   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 998.154 -> 1002.572  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 64. Charlie Nicholls  (KPF, ND pick 34, drafted 2024, retention class KPP)
+     price            : 193 -> 194   (+1, +0.52%)   [engine ev() on this build 204]
+     career by season : 2026:0g@0.0   (CUMULATIVE career games 0; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 1.8255   class KPP   effpk 34   cumulative games 0   ->   TAUGHT G = 1.004434
+     the anchor leg   : entry anchor 439.98 x R 0.460918 = 202.79   ->  x G = 203.69
+     the evidence leg : e_full 679.00   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 202.793 -> 203.692  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 65. James Barrat  (KPD, ND pick 32, drafted 2024, retention class KPP)
+     price            : 220 -> 221   (+1, +0.45%)   [engine ev() on this build 233]
+     career by season : 2026:0g@0.0   (CUMULATIVE career games 0; season-2026 games 0, 0.00 at pace)
+     his cell         : tau 1.8255   class KPP   effpk 32   cumulative games 0   ->   TAUGHT G = 1.004891
+     the anchor leg   : entry anchor 498.51 x R 0.465955 = 232.28   ->  x G = 233.42
+     the evidence leg : e_full 695.72   lam 0.000000 -> 0.000000   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 232.283 -> 233.419  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+
+ 66. Jayden Nguyen  (SD, PDN (pool, effpk 65), drafted 2024, retention class nonKPP)
+     price            : 259 -> 260   (+1, +0.39%)   [engine ev() on this build 274]
+     career by season : 2025:5g@39.2; 2026:5g@42.6   (CUMULATIVE career games 10; season-2026 games 5, 5.68 at pace)
+     his cell         : tau 1.8255   class nonKPP   effpk 65   cumulative games 10   ->   TAUGHT G = 1.249104
+     the anchor leg   : entry anchor 129.45 x R 0.416092 = 53.86   ->  x G = 67.28
+     the evidence leg : e_full 293.49   lam 0.905230 -> 0.906480   (the surprise statistic re-reads the lifted anchor)
+     engine price     : 270.783 -> 272.337  (pre-numeraire, pre-M3; the board figures above are the shipped ones)
+

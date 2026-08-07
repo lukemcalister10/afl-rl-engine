@@ -1,0 +1,13 @@
+{
+ "n_band": 6,
+ "n_band_moved": 5,
+ "max_rel_continuous": 0.3699914250413441,
+ "max_rel_integer": 0.3612565445026178,
+ "pass_continuous": false,
+ "pass_integer": false,
+ "n_path": 165,
+ "n_live": 56,
+ "n_zero_games": 109,
+ "band_edge": 0.22314355131420976,
+ "G5_W": 1.0
+}

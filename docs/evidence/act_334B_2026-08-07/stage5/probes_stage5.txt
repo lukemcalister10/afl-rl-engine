@@ -1,0 +1,108 @@
+====================================================================================================================
+#334 stage B / STAGE 5 — PROBES.  build tag: stage5   RL_G5_W shipped = 1.0
+====================================================================================================================
+
+  Noah Mraz  (KPD, ND pick 35, drafted 2024, retention class KPP)
+    record            : 2026:4g@84.2
+    his cell          : tau=1.8255  effpk=35  CUMULATIVE career games=4  fE=0.8800
+    the anchor leg    : entry anchor 461.25  x  R=0.458769  =  211.61   ->  x TAUGHT G=1.157941  =  245.03
+    composed G*R      : 0.531227   (the aging law: G*R <= 1 at every knot, so he is never repriced above his own entry anchor)
+    BOARD             : 1585  ->  1651   (+66, +4.16%)   [engine v 1668 -> 1738]
+
+  Cameron Nairn  (SF, ND pick 20, drafted 2025, retention class nonKPP)
+    record            : 2026:3g@42.8
+    his cell          : tau=0.8255  effpk=20  CUMULATIVE career games=3  fE=0.8800
+    the anchor leg    : entry anchor 760.16  x  R=0.738253  =  561.19   ->  x TAUGHT G=1.338665  =  751.24
+    composed G*R      : 0.988273   (the aging law: G*R <= 1 at every knot, so he is never repriced above his own entry anchor)
+    BOARD             : 471  ->  620   (+149, +31.63%)   [engine v 496 -> 653]
+
+  MRAZ TIERING (gate 2, Addendum 2): his pick 35 is worth 530 on the ruled baseline board.
+    baseline 1585 = 2.9906 x pick   ->   landed 1651 = 3.1151 x pick
+    TIER: 3.0-3.5x PASS, DISCLOSED
+
+====================================================================================================================
+(c) THE RECALCULATION-LAW PROBE (Addendum 1) — a YEAR-2 player, year-1 record HELD, year-2 games VARIED
+====================================================================================================================
+  Owner: "in year 2, it would use year 1 + 2 data and outcomes, not just year 1?"  G is a STATE
+  FUNCTION, never a stamp. Below, the synthetic player's YEAR-1 season is frozen at 3 games @ 45.0
+  and only his YEAR-2 games move. If G were stamped from year 1 the G column would be constant.
+
+  yr2 games  gcum      record                          tau         R         G  anchorleg   engine v     board
+  ------------------------------------------------------------------------------------------------------------
+  0          3         2025:3g; 2026:0g             1.8255  0.458769  1.276574     270.13        270       257
+  1          4         2025:3g; 2026:1g             1.8255  0.458769  1.157941     245.03        245       233
+  2          5         2025:3g; 2026:2g             1.8255  0.458769  1.061010     224.52        252       239
+  3          6         2025:3g; 2026:3g             1.8255  0.458769  1.046962     221.54        306       291
+  4          7         2025:3g; 2026:4g             1.8255  0.458769  1.034794     218.97        463       440
+  5          8         2025:3g; 2026:5g             1.8255  0.458769  1.024060     216.70        745       708
+
+  G RESPONDS TO YEAR-2 GAMES: YES   (min 1.024060  max 1.276574  spread 0.252514 over the same frozen year-1 record)
+  No per-player boost is stored anywhere: G is recomputed inside sitout_ev from p['scoring'] at every
+  call, so the year-2 build reads the year-1+2 record. The engine's build-from-state architecture
+  guarantees it; this probe is the demonstration the addendum asks for.
+
+====================================================================================================================
+(d) THE 6-GAME BAR SEAM — G is INERT at the establishment bar, by construction and by measurement
+====================================================================================================================
+  At games-at-pace == 6 exactly: lam(6) == 1, so the blend weight on the anchor leg is 1-lam == 0,
+  AND u(6) = 1 - rho(6)/rho(6) == 0, so the surprise term cannot read the anchor either. G therefore
+  cannot move the price at the bar for ANY value of G. Above the bar the player is resolved (ns>=1)
+  and sitout_ev is never called at all.
+
+  probe                    pick bar(raw g)   dial 0 below   dial 0 above   AT-BAR = seam ratio
+  ------------------------------------------------------------------------------------------------
+  Noah Mraz                  35     5.2800           5291           5292  IDENTICAL     1.0000
+  Josh Smillie                7     5.2800           2460           2460  IDENTICAL     1.0000
+  Charlie West               50     5.2800           4387           4387  IDENTICAL     1.0000
+  Samuel Swadling            37     5.2800           2326           2326  IDENTICAL     1.0000
+  Cameron Nairn              20     5.2800           3961           3961  IDENTICAL     1.0000
+
+  ALL PROBES BYTE-IDENTICAL AT THE BAR ACROSS THE DIAL: YES
+
+====================================================================================================================
+(e) THE SEASON-ROLLOVER SMOOTHNESS PROBE — the price path continuous in tau across fE -> 1 -> depth+1
+====================================================================================================================
+  Owner ruling (season clock): "as of round 24, they're just 'end of year 1 players' and then at
+  round 1 next year, they're into their second season". tau = depth + fE**1.5 accrues continuously
+  and hits the integer knot exactly as fE -> 1. This probe walks a HELD record across the rollover
+  and prints G and the anchor leg on both sides of it: no step, no cliff.
+
+  fE (season)           tau          R          G   anchor leg          G*R
+  --------------------------------------------------------------------------
+  0.8800           0.825513   0.738253   1.338665     751.2440     0.988273
+  0.9200           0.882433   0.720205   1.362016     745.6628     0.980931
+  0.9600           0.940604   0.701761   1.385880     739.2969     0.972556
+  0.9900           0.985038   0.687672   1.404109     733.9836     0.965567
+  0.9990           0.998500   0.683403   1.409632     732.2966     0.963347
+  1.0000           1.000000   0.682928   1.410247     732.1065     0.963097
+  0.0010           1.000032   0.682921   1.410236     732.0929     0.963079   <- next season, depth+1
+  0.0400           1.008000   0.681154   1.407279     728.6676     0.958573   <- next season, depth+1
+  0.0800           1.022627   0.677910   1.401852     722.4005     0.950329   <- next season, depth+1
+
+  tau is continuous across the rollover (1.000000 -> 1.000032, a 3.16e-05 gap at the knot) and G is continuous
+  through it: the step in G ACROSS THE KNOT is 1.173e-05 ; the largest step between any two adjacent
+  probe points (which are 4pp of a season apart) is 0.023865. NO CLIFF, NO STEP AT THE ROLLOVER.
+
+====================================================================================================================
+(f) NO-NEW-CLIFF SWEEP — raw games 1..10, baseline arm (dial 0) vs landed arm, three probes
+====================================================================================================================
+
+  Noah Mraz                   g1      g2      g3      g4      g5      g6      g7      g8      g9     g10
+    dial 0 (baseline)        212     228     367    1668    4761    5524    5747    5767    5752    5715
+    landed                   269     330     455    1738    4764    5524    5747    5767    5752    5715
+    non-monotone steps: baseline at g[8, 9]  landed at g[8, 9]   ->  NEW dips introduced by stage 5: NONE
+
+  Cameron Nairn               g1      g2      g3      g4      g5      g6      g7      g8      g9     g10
+    dial 0 (baseline)        564     636     845    1898    3649    4052    4151    4254    4350    4440
+    landed                   675     834    1078    2103    3674    4052    4151    4254    4350    4440
+    non-monotone steps: baseline at gnone  landed at gnone   ->  NEW dips introduced by stage 5: NONE
+
+  Charlie West                g1      g2      g3      g4      g5      g6      g7      g8      g9     g10
+    dial 0 (baseline)        101     107     185    1206    3940    4510    4622    4694    4800    4981
+    landed                   125     149     221    1234    3940    4510    4622    4694    4800    4981
+    non-monotone steps: baseline at gnone  landed at gnone   ->  NEW dips introduced by stage 5: NONE
+
+  NO NEW CLIFF: stage 5 introduces ZERO new non-monotone steps on any probe: YES
+  (The baseline dips on the Mraz probe at g8->g10 are ABOVE the 6-game bar, where the player is
+   RESOLVED and sitout_ev is never called: both arms are byte-identical there. They are a pre-existing
+   property of the resolved production path, untouched by this stage and reported rather than hidden.)

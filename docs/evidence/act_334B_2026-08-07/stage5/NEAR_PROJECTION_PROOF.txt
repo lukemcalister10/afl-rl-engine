@@ -1,0 +1,89 @@
+====================================================================================================================
+#334 STAGE B / STAGE 5 — THE NEAR-PROJECTION RE-PROOF (the owner's no-rebalance condition)
+board b56bbddea15f (ruled baseline)  ->  bad1961efad4c938aaf34eb6ee10036a (stage 5)     RL_G5_W = 1
+====================================================================================================================
+
+DENOMINATORS
+  board rows compared                                        : 804
+  on the THIN-RECORD (sit-out) path                          : 165
+    ... with NO 2026 games (lam==0, byte-exact by construction): 109   moved: 18
+    ... with live 2026 evidence (the reactivity population)   : 56   moved: 48
+  WITHIN +/-25% OF PROJECTION  (s <= log(1.25) = 0.223144)       : 6   moved: 5
+  outside the band                                           : 50   moved: 43
+
+THE BAND, PLAYER BY PLAYER  (n=6, NO CAP)
+--------------------------------------------------------------------------------------------------------------------
+player                     pos   entry                 g26 ev/prior        s    old v    new v  board rel   cont rel
+--------------------------------------------------------------------------------------------------------------------
+Jaxon Artemis              SD    MSD (pool, effpk 65)    3   1.152x   0.1412      191      260    36.126%    36.999%
+Harrison Oliver            SD    ND pick 19              5   1.102x   0.0970      440      443     0.682%     0.587%
+Daniel Annable             MID   ND pick 6               1   1.099x   0.0948     1230     1402    13.984%    13.981%
+James Leake                SD    ND pick 17              5   1.085x   0.0816      407      407     0.000%     0.000%
+Jack Dalton                SF    ND pick 34              4   0.973x   0.0273      272      329    20.956%    20.740%
+Xavier Taylor              SD    ND pick 11              2   1.009x   0.0093      740      868    17.297%    16.989%
+--------------------------------------------------------------------------------------------------------------------
+  MAX |rel| in band — CONTINUOUS engine price : 36.9991%
+  MAX |rel| in band — INTEGER board value     : 36.1257%
+
+THE ASSERTION
+--------------------------------------------------------------------------------------------------------------------
+  (1) CONTINUOUS  every near-projection player moves < 1%  :  FAIL   (max 36.9991%)
+  (2) INTEGER     every near-projection player moves < 1%  :  FAIL   (max 36.1257%)
+
+  THE INTEGER RULER FAILS, AND IT IS REPORTED RATHER THAN FORCED. The whole excess is one row:
+    Jaxon Artemis  SD  board v 191 -> 260  (+69 POINTS)
+      his CONTINUOUS move is 36.9991% — i.e. 70.67 board points — which is UNDER the 1% bar.
+      but his board value is 191, so ONE board point is already 0.524%, and the 1% bar on this
+      row means "moves by less than 1.91 board points". The integer grid cannot express it.
+    Daniel Annable  MID  board v 1230 -> 1402  (+172 POINTS)
+      his CONTINUOUS move is 13.9814% — i.e. 171.97 board points — which is UNDER the 1% bar.
+      but his board value is 1230, so ONE board point is already 0.081%, and the 1% bar on this
+      row means "moves by less than 12.30 board points". The integer grid cannot express it.
+    Jack Dalton  SF  board v 272 -> 329  (+57 POINTS)
+      his CONTINUOUS move is 20.7402% — i.e. 56.41 board points — which is UNDER the 1% bar.
+      but his board value is 272, so ONE board point is already 0.368%, and the 1% bar on this
+      row means "moves by less than 2.72 board points". The integer grid cannot express it.
+    Xavier Taylor  SD  board v 740 -> 868  (+128 POINTS)
+      his CONTINUOUS move is 16.9894% — i.e. 125.72 board points — which is UNDER the 1% bar.
+      but his board value is 740, so ONE board point is already 0.135%, and the 1% bar on this
+      row means "moves by less than 7.40 board points". The integer grid cannot express it.
+
+  This is a MEASUREMENT-GRANULARITY result, not a re-rate: the engine moved him by less than one and
+  a quarter board points and the board had to round it to two. It is stated as a FAILURE of the
+  criterion as literally written, because it is one, and the owner should rule on it rather than
+  have it smoothed away here. See MEMO.md and README.md.
+
+FOR CONTRAST — THE POPULATION OUTSIDE THE BAND (what the change is FOR)
+--------------------------------------------------------------------------------------------------------------------
+  outside the band: 50 players, 43 moved, mean |board rel| 17.541%, max |board rel| 65.854%
+  in the band    : 6 players, 5 moved, max |board rel| 36.126%
+
+  MONOTONE SANITY: the band and the movers are ordered by s, not by pedigree, position or value.
+  Sorted by s, the mean |continuous rel| by quartile of the live population:
+    quartile 1 of s  [0.0093 .. 0.3507]  n=14   mean |cont rel| =  15.650%
+    quartile 2 of s  [0.3642 .. 0.6886]  n=14   mean |cont rel| =  16.873%
+    quartile 3 of s  [0.7152 .. 1.1898]  n=14   mean |cont rel| =  18.362%
+    quartile 4 of s  [1.1906 .. 3.5358]  n=14   mean |cont rel| =  13.126%
+
+====================================================================================================================
+THE STAGE-5 READING OF THIS CRITERION — stated, not smoothed
+====================================================================================================================
+  THE CRITERION IS INHERITED FROM AMENDMENT 1 AND IT FAILS HERE, BY A LARGE MARGIN, AND THAT IS
+  REPORTED AS A FAILURE. It is not a granularity result this time: 5 of the 6 band players move,
+  the largest by 37.0% CONTINUOUS — far above one board point on any row.
+
+  WHY IT FAILS, and why no honest quiet-starter reprice could pass it as written:
+   * amendment 1 was a SHRINK mechanism. Its no-rebalance condition protected players performing
+     near projection from being CUT for a thin sample. That is a coherent fence around a cut.
+   * stage 5 is a LIFT on the ANCHOR of the quiet-starter class. A player with 1-5 games running
+     AT roughly his projection IS a quiet starter — he is the exact population the owner ruled
+     under-priced. Requiring him to move <1% is requiring G == 1 precisely where the measured
+     deficit is largest. The criterion and the act are in direct contradiction as written.
+   * DIRECTION IS THE TELL. Every band mover moves UP:
+       band movers up 5 / down 0      whole-board movers up/down: see MOVERS_FULL.txt
+   * THE OWNER CONDITION THAT IS ACTUALLY BINDING — "no broad hit to young players" — is met
+     absolutely: this stage cuts NOBODY. Zero board rows fall. The lift is bounded by the aging
+     law (G*R <= 1: nobody is repriced above his own entry anchor) and by the taught taper.
+
+  FILED AS A DISCLOSED CRITERION FAILURE for the owner to rule on, exactly as amendment 1 filed
+  its own. Nothing was retuned to make it pass.
