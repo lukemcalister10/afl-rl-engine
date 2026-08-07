@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v85 · supervisor pen · 2026-08-07, register v595
+# CURRENT STATE — the incoming-seat read · v86 · supervisor pen · 2026-08-07, register v596
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,11 +128,11 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v85 · supervisor pen · 2026-08-07, register v595 · replaced wholesale at the STAGE-B-DIRECTIVE
-PEN — directive filed, audited, amended; awaiting the owner's fire word. The primer is at v6 and
-carries the era's meaning discoveries — read it first, in full.)
+(v86 · supervisor pen · 2026-08-07, register v596 · replaced wholesale at the FIRE PEN — stage B
+is FIRED and executing, branch-held; the STOP is the owner's side-by-side word. The primer is at
+v6 and carries the era's meaning discoveries — read it first, in full.)
 
-## THE ERA: ADOPTED. Target RULED 1.40. STAGE B DIRECTIVE FILED + AUDITED — awaiting fire word.
+## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
   since, all owner-worded, all on main: **round 21** applied (409 scores, txn catchup pattern) ·
   **#344** the declared-refit lane (RL_V0SURF_REFIT=1 passes, silent stays red) · **the Kako 2026
@@ -182,22 +182,24 @@ carries the era's meaning discoveries — read it first, in full.)
   his words the same hour.
 
 ## THE ROAD (in order)
-1. **THE OWNER'S FIRE WORD ON STAGE B.** The chain is complete and filed on #334: the DIRECTIVE
-   (comment 5210366916) · the cold NON-AUTHORING PRE-FIRE AUDIT, verdict fit-to-fire-after-
-   amendments, 17 findings, 4 blocking (comment 5210507691) · ADDENDUM 1 closing all findings
-   (comment 5210513069). Ruled target 1.40 (#333 comment 5210304078, owner words verbatim), two
-   owner clauses bound: no even steps (non-vacuous front-loaded-increments assert) · per-class
-   flexibility / no forward escalator (target-perturbation byte-identity test). Key addendum
-   terms: BRANCH-HELD landing, nothing merges and no attribution column registers before the
-   owner's side-by-side word · the per-pick re-anchor is TAUGHT FROM DATA, uniform decree BARRED ·
-   all three reversal conditions are return-triggers (yr1/2 ordering; yr1-to-peak vs shipped
-   1.400 — expected LIVE, the #336 layer alone measures 1.503; top-end ≥~3×) · convergence: max
-   two declared-refit iterations, band [1.35,1.45] read at the named peak year on a re-emitted
-   matrix, distance-to-1.40 always printed · per-row attribution residual ≤1 board point ·
-   credits-off ablation never baked. Lever one ruled out as the design (memo §3). The #332
-   addendum is ABSORBED into the memo (#332 chapters 1–3 FILED-NOT-FIRED, after stage B). On the
-   fire word: an EXECUTION SEAT runs the act (build-seat commits); the seam verifies deciding
-   figures only and never authors product bytes.
+1. **EXECUTE STAGE B (FIRED 2026-08-07).** The governing chain on #334: DIRECTIVE (comment
+   5210366916) · pre-fire audit, fit-to-fire-after-amendments (5210507691) · ADDENDUM 1 closing
+   all 17 findings (5210513069) · ADDENDUM 2 + THE FIRE WORD, owner words verbatim (5210606449).
+   Ruled target 1.40 (#333 comment 5210304078). Binding terms: BRANCH-HELD landing — nothing
+   merges, no attribution column registers before the owner's side-by-side word · per-pick
+   re-anchor TAUGHT FROM DATA, uniform decree BARRED · no even steps (front-loaded-increments
+   assert) · no forward escalator (target-perturbation byte-identity test) · three return-
+   triggers (yr1/2 ordering; yr1-to-peak vs shipped 1.400 — expected LIVE, the #336 layer alone
+   measures 1.503; top-end ≥~3×) · max two declared-refit iterations, band [1.35,1.45] at the
+   named peak year on a re-emitted matrix, distance-to-1.40 always printed · per-row attribution
+   residual ≤1 board point · credits-off ablation never baked. OWNER DELIVERABLE MINIMUM
+   (Addendum 2): before/after no-arb tables WITH per-entry-year view (N=0..5) · full before/after
+   board xlsx (old/new/abs/rel + per-stage attribution + 64 pick rows) · REACTIVITY LANDS
+   (required, was exploratory) with every moved player enumerated + the pedigree-pair probe.
+   EXECUTION STATE: gating step (N35 fit-class box proof, verify-only) launched at the v596 pen —
+   result at the next pen. Then: reference layer → curve re-teach → surface re-fit → reactivity,
+   fixed order, per-stage attribution, evidence tree `docs/evidence/act_334B_2026-08-07/`.
+   Product commits: build-seat; the seam verifies deciding figures only.
 2. **#334 STAGE B** — executes the ruled target in ONE act through the declared-refit lane:
    curve re-taught + year-zero surface re-fit on the corrected history + the adopted #336 reference
    layer landed. Now ALSO carries (memo): a credits-off attribution column (the declared-refit
