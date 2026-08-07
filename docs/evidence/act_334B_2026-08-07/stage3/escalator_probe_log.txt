@@ -1,0 +1,25 @@
+
+============ CONFIG MANIFEST (gate mode) REJECTED — BUILD HALTED ============
+  - UNKNOWN model override RL_TARGET='1.75' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_TARGET_RESIDUAL='1.75' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_REANCHOR_TARGET='1.75' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_RESIDUAL='1.75' is not in the manifest (data/model_config.json)
+  Bake/gate mode pins the model configuration to data/model_config.json. Unset the override(s) above (dev-shell experimentation runs OUTSIDE bake/gate mode), or amend the manifest at a bake in the same commit that re-stamps config_sha256 + expected_boot.json.
+==========================================================================
+config manifest (gate mode) LOADED  hash cef06fd6250b  (59 model vars pinned; ambient cleared)
+CONFIG ACCEPTED cef06fd6250b  (trusted /home/claude/seamcheck_landing/config_manifest.py)
+PROVENANCE {"RL_FV_env": "/home/claude/seamcheck_landing/engine/forward_valuation", "config_manifest_identity": "cef06fd6250be86804f7d4432fdef8969070f9d9fc938f3e3473547c5b4b4739", "config_manifest_path": "/home/claude/seamcheck_landing/data/model_config.json", "distribution_pricing_md5": "8341ca11ac50921eabbe4c79a1a3d0b5", "fv_identity": "0976195c84541204c0325831bb60a660d1eb5ffc2f8e8a4e8ba18f85f5f18a87", "fv_identity_expected": "0976195c84541204c0325831bb60a660d1eb5ffc2f8e8a4e8ba18f85f5f18a87", "resolved_fv_dir": "/home/claude/seamcheck_landing/engine/forward_valuation", "rl_model_md5": "b35c5521b78dcdfb2423d54f5574330b", "rl_model_path": "/home/claude/rl_workspace/rl_after/rl_model.py"}
+LOADED-PROVENANCE OK  fv_modules=7 rl_model=/home/claude/rl_workspace/rl_after/rl_model.py
+L7 ADOPTED-CURVE REPOINT: shipped PVC = pvc_curve_v2.json (pick1=3000, national curve 1-64 strictly decreasing, pool index 65 = 237, ÷F=1.0524 on players)
+#326 PER-DIVISION ENTRY LEVELS (N43 signed, read verbatim from pvc_curve_v2.json; pool_value 237.2 is NOT a player price): IRE 133 · MSD 286 [MSD completion optimism +4.7-8.4% (travels with the MSD level, printed beside it wherever it is shown)] · ND65+ 182 · PDA 194 · PDN 123 · PDS 145 · RD:KPD 300 · RD:KPF 216 · RD:MID 294 · RD:RUCK 282 · RD:SD 246 · RD:SF 231 · SSP 252 · UNR 103
+NUMÉRAIRE GUARD: PASS — shipped pick-1 = 3000 (UNCONDITIONAL standing law, register v30 item 17)
+L7 NUMÉRAIRE RE-BASE ÷1.0524: order preserved (no strict inversion; 11 rounding ties), 10/10 anchor ratios <0.2%
+EXPORT ATTRIBUTION: loaded vPrev/levers for 804 keys (base sum=723075, from certified stage boards)
+FUT-LABEL ASSERTION: PASS — 87 dual rows carry the true primary/alternate on the board
+ZERO-EMPTY-CLUB ACCEPTANCE: PASS — 0 blank club across 1002 exported rows (active 804 + back 198)
+PARITY GATE PASS: all 804 active board values == engine gated ev() (matched by key, eps=0)
+OWNER OVERRIDE applied (display-only): will-brodie ×0.50 -> displayed 371 (of the REBASED value; engine v untouched; vRaw model figure stamped)
+LEG F5 ENTRANT LAYER (RL_LEGF=1): 18 clubs · §2.viii sealed intake 60651 PVC (draft 53474 + mech 7178, 103.4 slots/yr, seal 5c38e8ba) · +1 Δ=+60651 · +2 Δ=+60651 · k=0 phantom=NONE
+exported active=804 cohort=1974 | mechanisms=7 categories analysed | board stamped src=37ced3ce (read-only)
+CAT_BY_RANGE Academy: {'1-10': 1121, '11-20': 99, '21-30': 1798, '31-45': -133, '46-64': -43, 'Pool': -178}
+CAT_BY_RANGE Open   : {'1-10': 59, '11-20': 21, '21-30': 76, '31-45': -28, '46-64': -63, 'Pool': 24}

@@ -22,10 +22,10 @@ board = json.load(open(BOARD)); A = board['active']
 struct = json.load(open(SEAL))
 chk = {k: v for k, v in struct.items() if k != 'seal_sha256_8'}
 seal = hashlib.sha256(json.dumps(chk, sort_keys=True, separators=(',', ':')).encode()).hexdigest()[:8]
-assert seal == struct['seal_sha256_8'] == 'c9e7491b', 'SEAL DRIFT %s/%s' % (seal, struct['seal_sha256_8'])
+assert seal == struct['seal_sha256_8'] == '5c38e8ba', 'SEAL DRIFT %s/%s' % (seal, struct['seal_sha256_8'])
 ENT = struct['entrant_pvc']['total']
 board_ent = board.get('phantomTotals', {}).get('_meta', {}).get('entrant_layer_pvc')
-print('ENTRANT LAYER (sealed c9e7491b): %d PVC (draft %d + mech %d)  | board emitted: %s  | MATCH %s'
+print('ENTRANT LAYER (sealed 5c38e8ba): %d PVC (draft %d + mech %d)  | board emitted: %s  | MATCH %s'
       % (ENT, struct['entrant_pvc']['draft'], struct['entrant_pvc']['mech'], board_ent, board_ent == ENT))
 # #306 L7 — the reconciliation is a GATE, not a printout. The board's emitted layer and the sealed total
 # must agree, or the board is citing a seal it does not actually carry.

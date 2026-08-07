@@ -488,7 +488,13 @@ if _pvc2_on:
     # store, the per-entrant derivation, and the byte-frozen contract. Live-store divergence means
     # "re-derivation due" in the claims note/checklist; it is not curve corruption and must not re-alarm weekly.
     _curve_contract_path=(os.path.join(_repo,'ui','release_pick_curve.json') if _repo else None)
-    _contract_md5='eae593f220460d880be20da38e3de39d'   # RE-PINNED by #326 (per-division pool entry anchors):
+    _contract_md5='160f9fe77fd3f99707c48916f3d59e50'   # RE-PINNED by #334 stage B stage 3 (the base curve
+    # re-taught era-free + the per-pick re-anchor applied + the numeraire re-based by g=f(1)): the ladder
+    # payload moves df766dff -> 18203822, the artifact FILE md5 moves 988135ef -> 73d6f679, and the contract
+    # is re-derived to match, which moves its own bytes. curve_source_store_md5 moves f1e8c9fe -> 37ced3ce
+    # (this ladder is taught on the current gate store) and per_entrant moves 999d24c8 -> b7ed144e (the
+    # stage-3 matrix). All four pins move in this ONE commit, as prior acts did.
+    # PREVIOUS PIN: eae593f220460d880be20da38e3de39d — RE-PINNED by #326 (per-division pool entry anchors):
     # the curve artifact gains the N43 signed pool_levels block beside pool_value, so the artifact FILE md5
     # moves b7389fe4 -> 988135ef and the contract's pick_curve_file_md5 + its pool_levels mirror move with it.
     # The curve PAYLOAD identity df766dff is UNCHANGED — the ladder itself was not touched — which is why
@@ -502,8 +508,8 @@ if _pvc2_on:
     # curve's DOMAIN went 1-99 -> 1-64 + pool. Values over 1-64 are byte-identical; that pin moved because the
     # contract file records the new domain, the pool index and the supersession. Curve SOURCE store and
     # per_entrant are UNCHANGED below - nothing was re-derived, so those two pins MOVE in this commit.
-    _curve_source_store='f1e8c9fed35462536d00add604f69a3f'
-    _per_entrant_md5='999d24c8'
+    _curve_source_store='37ced3ce45914e6feb00d27e26922e9a'   # #334B stage 3: was f1e8c9fe...
+    _per_entrant_md5='b7ed144e'                              # #334B stage 3: was 999d24c8
     if not _curve_contract_path or not os.path.exists(_curve_contract_path):
         check(False, "FROZEN-RULER provenance contract present at ui/release_pick_curve.json")
     else:

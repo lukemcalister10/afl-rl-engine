@@ -1,0 +1,33 @@
+keys old=804 new=804 shared=804  only_old=[] only_new=[]
+MOVERS 708 of 804 (88.06%)  cuts 707  lifts 1
+TOTAL 732696 -> 655759  ratio 0.894995  delta -76937
+mean |relative move| board-wide 8.6900%
+mean |relative move| movers   9.8683%
+
+TOP 10 CUTS
+  harry-sheezel                 11963 ->  10668   -1295   -10.83%
+  nick-daicos                   10820 ->   9649   -1171   -10.82%
+  luke-jackson                   9722 ->   8670   -1052   -10.82%
+  nasiah-wanganeen-milera        9681 ->   8633   -1048   -10.83%
+  max-holmes                     8399 ->   7490    -909   -10.82%
+  tristan-xerri                  7976 ->   7113    -863   -10.82%
+  will-ashcroft                  7204 ->   6423    -781   -10.84%
+  zak-butters                    7085 ->   6317    -768   -10.84%
+  errol-gulden                   6802 ->   6065    -737   -10.84%
+  josh-treacy                    6803 ->   6067    -736   -10.82%
+TOP 10 LIFTS
+  jack-martin                     107 ->    109      +2    +1.87%
+  sam-wicks                        12 ->     11      -1    -8.33%
+  sam-sturt                        40 ->     39      -1    -2.50%
+  river-stevens                    77 ->     76      -1    -1.30%
+  paddy-dow                       158 ->    157      -1    -0.63%
+  mitch-podhajski                 108 ->    107      -1    -0.93%
+  mark-o-connor                    10 ->      9      -1   -10.00%
+  liam-ryan                        24 ->     23      -1    -4.17%
+  liam-henry                       63 ->     62      -1    -1.59%
+  lennox-hoffman                   77 ->     76      -1    -1.30%
+
+AGE BUCKETS
+  <=22     n= 294 movers= 254  total  251064 ->  225541  ratio 0.898341
+  23-26    n= 245 movers= 214  total  292729 ->  261511  ratio 0.893355
+  >=27     n= 265 movers= 240  total  188903 ->  168707  ratio 0.893088

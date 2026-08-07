@@ -1,0 +1,33 @@
+TOP-END RATIO
+  max active display value = 10668  (Harry Sheezel, North Melbourne)
+  ratio to the numeraire (pick 1 = 3000) = 10668 / 3000 = 3.556000
+  runner-up: Nick Daicos 9649, Luke Jackson 8670, Nasiah Wanganeen-Milera 8633
+
+PER-ENTRY-YEAR TABLE — mean value at the PEAK year (4) / mean value at year N
+whole cohort, busts at 0 in every denominator, entrants whose window covers BOTH years
+   N   n(both)      mean_yr4      mean_yrN       ratio
+   0      1197     1149.8747      802.7809    1.432364
+   1      1197     1149.8747      775.2189    1.483290
+   2      1197     1149.8747      961.0877    1.196431
+   3      1197     1149.8747     1086.0201    1.058797
+   4      1197     1149.8747     1149.8747    1.000000
+   5      1139     1165.0246     1142.8077    1.019441
+
+YEAR-OVER-YEAR INCREMENTS of the final whole-cohort path (ratio to year 0, same-set means)
+   yr 0  n=1197  mean  802.7809  ratio 1.000000
+   yr 1  n=1197  mean  775.2189  ratio 0.965667
+   yr 2  n=1197  mean  961.0877  ratio 1.197198
+   yr 3  n=1197  mean 1086.0201  ratio 1.352823
+   yr 4  n=1197  mean 1149.8747  ratio 1.432364
+   yr 5  n=1139  mean 1142.8077  ratio 1.430640
+   yr 6  n=1075  mean 1112.2670  ratio 1.393985
+   yr 7  n=1014  mean  967.2249  ratio 1.210792
+  increments (ratio units):
+    yr0 -> yr1 : -0.034333
+    yr1 -> yr2 : +0.231531
+    yr2 -> yr3 : +0.155624
+    yr3 -> yr4 : +0.079542
+    yr4 -> yr5 : -0.001725
+    yr5 -> yr6 : -0.036655
+    yr6 -> yr7 : -0.183193
+  FRONT-LOADED ASSERT  (yr1->2 increment STRICTLY exceeds yr3->4): +0.231531 > +0.079542  -> PASS

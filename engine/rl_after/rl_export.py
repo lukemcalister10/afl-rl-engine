@@ -652,7 +652,12 @@ _OV.assert_presence(active)
 # §2.viii (owner item 359): the phantom layer carries the FULL expected annual intake (~103 slots) — the real
 # draft pick structure at v2-curve PVC per EFFECTIVE pick, plus mechanisms at their measured pick-equivalents
 # (MSD 90, all others 92 — item 341). The slot structure is measured from recorded store intake history and
-# SEALED before this render (session_2026-07-18/legf5/sealed_entrant_structure.json, seal c9e7491b (#306 L7: re-measured on the live store f1e8c9fe at the adopted curve df766dff) — NOT
+# SEALED before this render (session_2026-07-18/legf5/sealed_entrant_structure.json, seal 5c38e8ba (#334 stage B
+# stage 3: RE-SEALED by scripts/seal_structure.py on the live store 37ced3ce at the re-anchored curve 18203822 (artifact file 73d6f679).
+# The measured intake COUNTS — draft_occupancy, mech_occupancy, expected_counts, expected_slots_per_year,
+# window, n_years — are byte-identical to the superseded c9e7491b seal, so the sealed HISTORY is unmoved; only
+# the PVC repricings of those same counts and the live provenance stamp moved, which is what a curve move is
+# entitled to move. Prior: #306 L7, re-measured on store f1e8c9fe at the adopted curve df766dff) — NOT
 # tuned against the §2.x gate (the LAW: sealed from history first). phantom=true; never at k=0; never gates/bakes.
 #
 # OBITUARY — F1's §2.i/§2.ii sizing is SUPERSEDED (delete, don't disable; CORE rule 7). The F1 phantom intake
@@ -670,9 +675,9 @@ if os.environ.get('RL_LEGF', '1') != '0':
     _lf_struct = json.load(open(_lf_seal_path))
     _lf_chk = {_kk: _vv for _kk, _vv in _lf_struct.items() if _kk != 'seal_sha256_8'}
     _lf_seal = _hl.sha256(json.dumps(_lf_chk, sort_keys=True, separators=(',', ':')).encode()).hexdigest()[:8]
-    if not (_lf_seal == _lf_struct.get('seal_sha256_8') == 'c9e7491b'):
+    if not (_lf_seal == _lf_struct.get('seal_sha256_8') == '5c38e8ba'):
         raise SystemExit('LEG F5 HALT (§2.viii): sealed entrant structure seal drift — recomputed %s vs stored '
-                         '%s vs pinned c9e7491b. Re-seal from intake history before rendering.'
+                         '%s vs pinned 5c38e8ba. Re-seal from intake history before rendering.'
                          % (_lf_seal, _lf_struct.get('seal_sha256_8')))
     _PVCMAX = max(PVC)
     def _lf_pvc(_e): return PVC.get(min(int(_e), _PVCMAX), PVC[_PVCMAX])   # v2-curve PVC of an effective pick
