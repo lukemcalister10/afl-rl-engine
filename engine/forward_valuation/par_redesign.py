@@ -66,9 +66,46 @@ def _lvl_safe(pos,pick):
         return _FB[pos]
     return lv
 def par_at(pos,pick,T):
+    """#336 AMENDMENT 2: par_at KEEPS ITS MEANING FOR EVERY NON-PLAYER CONSUMER — it is the
+    UNCONDITIONAL, bust-inclusive expectation P(ever establishes) x E[level | establishes]. A PICK,
+    or a synthetic priced at par, has no resolved state: the chance the entrant never establishes is
+    exactly the risk it should carry. Real players go through par_at_p() below, which selects on the
+    player's own resolved state. Under Addendum 1 these two were the same number; they are not now."""
+    k=(pos,int(round(pick)),int(max(1,min(T,6))))
+    if k not in _PC: _PC[k]=_lvl_safe(pos,pick)+F['ramp_shr'][pos][k[2]]
+    b=MA.bandof(k[1]); pe=F['pest'].get((pos,b))
+    return _PC[k]*(1.0 if pe is None else float(pe))
+
+def par_at_est(pos,pick,T):
+    """#336 AMENDMENT 2: the ESTABLISHED player's anchor — E[level | ever establishes], no discount."""
     k=(pos,int(round(pick)),int(max(1,min(T,6))))
     if k not in _PC: _PC[k]=_lvl_safe(pos,pick)+F['ramp_shr'][pos][k[2]]
     return _PC[k]
+
+resolved_336=pb.resolved_336
+
+def par_at_p(p,pos,pick,T,Y):
+    """#336 AMENDMENT 2 — THE RESOLVED-STATE ANCHOR SELECTOR. This is the one place the two legs of
+    the identity are chosen between, and every real-player consumer in the fence routes through it.
+      established as of Y -> E[level | establishes]                       (risk already resolved)
+      not yet             -> P(ever establishes) x E[level | establishes] (full bust-inclusive)
+    P is keyed on the player himself (settled position x band of his RAW effective pick), exactly as
+    build_pest derived it — NOT on the pos/pick arguments, which the callers have already clamped to
+    the level surface's support. Monotone by construction: P <= 1 so established >= unresolved.
+
+    #336 AMENDMENT 3 — THE SWITCH BECOMES A RAMP, AND THE UNRESOLVED LEG IS RECONCILED.
+        anchor = E[level | establishes] x [ D(p) + r(p) x (1 - D(p)) ]
+    r(p) = pb.resolve_w  : the engine's own R100.11 evidence-resolution curve, 0 at zero evidence, 1 at
+                           the ruled >=6-game bar (par_build header, amendment 3 block (1)).
+    D(p) = pb.dpar_of    : the SINGLE-CHARGED anchor discount — the class risk P net of what the forward
+                           band already charges the unresolved (amendment 3 block (2)).
+    ENDPOINTS ARE EXACT, so amendment 2 is the r in {0,1} restriction of this with D = P:
+      r=1 -> par_at_est (established, no discount)        r=0 -> D x par_at_est (fully unresolved)
+    MONOTONE, unchanged: D <= 1 and r in [0,1], so the anchor is non-decreasing in evidence and never
+    exceeds the established-conditional level."""
+    base=par_at_est(pos,pick,T)
+    r=pb.resolve_w(p,Y); D=pb.dpar_of(F,p)
+    return base*(D + r*(1.0-D))
 def draftyr(p): return cp.debutyr(p)-1
 def tenure(p,Y): return max(1,Y-draftyr(p))
 
@@ -108,8 +145,11 @@ def shortfall(p,Y):
 
 # ---------- THE redefined feature: PURE par-centred (no tilt; train+inference identical) ----------
 def lvl_par(p,Y):
+    # #336 AMENDMENT 2 — SITE 1 of the enumerated real-player anchors. `par` here is the class
+    # reference a real player's own level regresses toward at weight (1-w); it must therefore condition
+    # on HIS resolved state. Was par_at(...) (Addendum 1: everybody discounted by P).
     pos=MA.gfut(p); pk=min(MA.effpk(p),cp.KMAX); T=tenure(p,Y)
-    par=par_at(pos,pk,T); w=min(1.0, cp._exposure(p,Y)/RAMP)
+    par=par_at_p(p,pos,pk,T,Y); w=min(1.0, cp._exposure(p,Y)/RAMP)
     return float(par+(cp._lvl_wt(p,Y)-par)*w)
 
 # ---------- Fork B: band-space non-play tilt (p50 down bounded, p10 widen, p70/p90 preserved) ----------

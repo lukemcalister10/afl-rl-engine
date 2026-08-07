@@ -1,0 +1,40 @@
+STAGE 1 BOARD DELTA — shipped board vs the #336-reference-layer rebuild
+==============================================================================
+old (shipped) : /home/user/afl-rl-engine/data/rl_build/rl_app_data.json
+new (stage 1) : /home/claude/rl_workspace/rl_after/rl_app_data.json
+
+field compared: active[].v, matched by key
+rows old=804  new=804  common=804
+
+MOVERS          : 565
+UNCHANGED ROWS  : 239
+TOTAL v OLD     : 759722
+TOTAL v NEW     : 733440
+SUM DELTA       : -26282
+RATIO new/old   : 0.965406
+
+TOP 10 ABSOLUTE CUTS
+name                                    old      new     delta
+Sullivan Robey                         3070     2651      -419
+Xavier Lindsay                         2059     1679      -380
+Harry Dean                             2660     2293      -367
+Taj Hotton                             2263     1899      -364
+Luke Trainor                           1525     1175      -350
+Samuel Grlj                            1869     1536      -333
+Isaac Kako                             1337     1011      -326
+Alix Tauru                             1628     1303      -325
+Nick Madden                            2142     1829      -313
+Beau Addinsall                         1517     1212      -305
+
+TOP 10 ABSOLUTE LIFTS
+name                                    old      new     delta
+Cooper Duff-Tytler                     1514     1709      +195
+Charlie West                            446      616      +170
+Matt Whitlock                           448      578      +130
+Jack Williams                           398      457       +59
+Archer Reid                             697      752       +55
+Archie Ludowyke                         215      250       +35
+Liam Reidy                              328      363       +35
+Harvey Johnston                         296      328       +32
+Aidan Schubert                          521      552       +31
+Oscar Adams                              67       92       +25
