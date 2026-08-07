@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v96 · supervisor pen · 2026-08-07, register v606
+# CURRENT STATE — the incoming-seat read · v97 · supervisor pen · 2026-08-07, register v607
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,11 +128,11 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v96 · supervisor pen · 2026-08-07, register v606 · STAGE 5 STOPPED at yr1 0.9945 then the
-CONSISTENCY PASS authorized and RUNNING; stage 6 audit-cleared (site now FENCED to the ns≥1
-arm — the e_full leak catch); the POOL measured (two stories netting honest) and STAGE 7
-fired in principle incl. the act's FIRST CUTS; conservation basis ruled (full-cohort lead).
-Read the v604–v606 register entries IN FULL before touching any stage. Primer v7 first.)
+(v97 · supervisor pen · 2026-08-07, register v607 · STAGE 5 LANDED on the consistency pass:
+board 13f8c2e0, tip 0dde8e8, yr1 0.9908 teaching / 0.9460 full-cohort, 66 movers ALL UP zero
+cuts; the entry-anchor cap question PARKED for the owner (lifted = 1.0000 exactly — built,
+never installed); STAGE 6 BUILD RUNNING (fired per 5217293177); stage-7 directive owed.
+Read the v604–v607 register entries IN FULL before touching any stage. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
@@ -289,13 +289,13 @@ Read the v604–v606 register entries IN FULL before touching any stage. Primer 
    exact commands filed in the #334 comments (5214041025, 5214400439). Product commits:
    build-seat; the seam verifies deciding figures. Track B note (v597): PROCESS-light, not
    model-simple.
-2. **THE SEQUENCE TO ADOPTION** — stages 1–4+a1 BUILT (ruled baseline b56bbdde; branch tip
-   0ff0f7e = the stage-5 STOP evidence); STAGE 5 consistency build RUNNING (lands on its
-   result, final either way — owner word 5217293177) · STAGE 6 audit-cleared FIT AFTER
+2. **THE SEQUENCE TO ADOPTION** — stages 1–5 BUILT (ruled baseline b56bbdde; branch tip
+   0dde8e8 = STAGE 5 LANDED, board 13f8c2e0, yr1 0.9908/0.9460, the entry-anchor cap
+   question parked for the owner — v607 entry) · STAGE 6 audit-cleared FIT AFTER
    AMENDMENTS, all adopted (5217452004: site FENCED to the ns≥1 arm of ev() with positive
    165-player byte-identity proof — the e_full leak; fade taught from pooled yr1/2/3 rows;
    RL_G6_W default 0, four symmetric rungs, NO seat recommendation, median F′ + median-neutral
-   rung pre-registered; KPD cut on its own sub-dial default 0), BUILD after stage 5 lands ·
+   rung pre-registered; KPD cut on its own sub-dial default 0), BUILD NOW RUNNING (v607) ·
    STAGE 7 (pool redistribution, owner "we should implement" 5217529020) directive owed: lift
    rookie quiet-starters (measured 1.70), CUT the over-priced sitter cells (mature-age 0.31 /
    IRE 0.17 / MSD 0.21 / age-unknown RD) — THE ACT'S FIRST CUTS, every cut player enumerated
@@ -363,10 +363,10 @@ branch + the filed commands.
 1. Verify THE CURRENT IDENTITIES above with your own commands; N35-classify your box
    (byte-reproduce board `113b36f8` via the canonical build — MAIN basis; the landing branch's
    b56bbdde is the act's ruled baseline) before trusting any fitted figure.
-2. CHECK THE IN-FLIGHT WORK before anything else: stage-5 build state on
-   `landing/334-stage-b` (was it pushed? seam-verify its deciding figures — yr1 landing vs
-   [1.00,1.04], Mraz vs the 3.5–3.8× tolerance, the recalculation-law probe, kill-switch
-   byte-identity) and the stage-6 cross-section (filed on #334 or still owed). The #334
+2. CHECK THE IN-FLIGHT WORK before anything else: the STAGE-6 build state on
+   `landing/334-stage-b` (pushed past 0dde8e8? seam-verify its deciding figures — the
+   four-rung landing on BOTH bases, the 165-player sit-out byte-identity proof, dial-0
+   byte-identity, Mraz tier per rung) and the stage-7 directive (issued or owed). The #334
    comment thread of 2026-08-07 is the governing record; every owner ruling of that day is
    quoted verbatim there.
 3. READ-BACK to the owner and HOLD. His likely first words: the stage-5 side-by-side, the
