@@ -9,9 +9,9 @@ MAPPING-ONLY PROOF — Seth Campbell: yrs=[2023, 2024, 2025, 2026] Vpath=[133, 3
 
 CURVE-ANCHOR BIAS (2004-2024 ND+RD, n=2089):
   sat out draft Yr1: 592 players (28% of curve pool)
-  over-valuation when anchored at first-played vs real Yr1: total=139750 SCAR, mean=+236, median=+45
-  whole-pool anchor sum: buggy=1235376 -> fixed=1185393  (4.0% lower overall)
-  picks 1-20: 71 sat-out, mean over-val +511 (74% of real Yr1)
-  picks 21-40: 137 sat-out, mean over-val +196 (74% of real Yr1)
-  picks 41-64: 178 sat-out, mean over-val +187 (113% of real Yr1)
-  pool: 206 sat-out, mean over-val +210 (136% of real Yr1)
+  over-valuation when anchored at first-played vs real Yr1: total=138755 SCAR, mean=+234, median=+40
+  whole-pool anchor sum: buggy=1230599 -> fixed=1181611  (4.0% lower overall)
+  picks 1-20: 71 sat-out, mean over-val +510 (74% of real Yr1)
+  picks 21-40: 137 sat-out, mean over-val +195 (73% of real Yr1)
+  picks 41-64: 178 sat-out, mean over-val +186 (112% of real Yr1)
+  pool: 206 sat-out, mean over-val +208 (134% of real Yr1)

@@ -1,0 +1,36 @@
+========================================================================================================
+#334 stage B / STAGE 5 — YEAR-1 LANDING ON THE OWNER PRESENTATION BASIS (ruling 5217177098)
+========================================================================================================
+  the FULL COHORT leads; the ND and pool splits sit beside it; the teaching window is printed LAST
+  and labelled, so a reader never mistakes the fitting population for the presentation one.
+
+  population                                     n     baseline       LANDED       move
+  --------------------------------------------------------------------------------------
+  FULL COHORT ND+pool 2004-2025               2517     0.908179     0.946050  +0.037870
+    ND 1-64, 2004-2025                        1383     0.949994     0.988526  +0.038531
+    pool routes, 2004-2025                    1134     0.752800     0.788214  +0.035414
+  class 2023 ND                                 64     1.043485     1.077494  +0.034010
+  class 2024 ND                                 64     0.875930     0.901970  +0.026040
+  class 2025 ND                                 58     0.926992     0.947385  +0.020393
+  ND 1-64, 2004-2022 (TEACHING WINDOW)        1197     0.950431     0.990805  +0.040374
+
+  THE HEADLINE THE OWNER READS: the full-cohort conservation view lands at 0.9460 (from 0.9082).
+  The ND figure on the owner window (0.9885) and on the teaching window (0.9908) differ by -0.0023 —
+  the landing story is the same on either window, which is what the ruling anticipated.
+
+  THE POOL LEG, on the record: stage 5 DID reach the pool quiet starters — the sit-out path serves pool
+  entrants off their signed division levels and their cells taught from their own outcomes. Pool yr1
+  moves 0.7528 -> 0.7882. The remaining full-cohort drag is the pool leg's deep sub-par level, whose own
+  honesty has NOT been measured on the current basis. That measurement is fired separately (#334
+  comment 5217293177 disposition 3) and is NOT this act's to claim.
+
+  THE FULL-COHORT PATH, years 0-6 (the conservation view the owner asked to lead with):
+  yr            n     baseline       LANDED       move
+  ----------------------------------------------------
+  0          2517     1.000000     1.000000  +0.000000
+  1          2517     0.908179     0.946050  +0.037870
+  2          2414     1.097539     1.111225  +0.013686
+  3          2296     1.242814     1.246016  +0.003202
+  4          2198     1.344534     1.345462  +0.000928
+  5          2089     1.346731     1.346923  +0.000191
+  6          1981     1.295768     1.295768  +0.000000

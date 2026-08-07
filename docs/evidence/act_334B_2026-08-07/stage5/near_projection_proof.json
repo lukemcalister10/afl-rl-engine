@@ -1,8 +1,8 @@
 {
  "n_band": 6,
  "n_band_moved": 5,
- "max_rel_continuous": 0.3699914250413441,
- "max_rel_integer": 0.3612565445026178,
+ "max_rel_continuous": 0.3347095142569807,
+ "max_rel_integer": 0.3298429319371728,
  "pass_continuous": false,
  "pass_integer": false,
  "n_path": 165,

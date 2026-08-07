@@ -6,28 +6,28 @@ TOP-END RATIO
 PER-ENTRY-YEAR TABLE — mean value at the PEAK year (4) / mean value at year N
 whole cohort, busts at 0 in every denominator, entrants whose window covers BOTH years
    N   n(both)      mean_yr4      mean_yrN       ratio
-   0      1197     1150.1587      802.7809    1.432718
-   1      1197     1150.1587      798.3901    1.440597
-   2      1197     1150.1587      952.5472    1.207456
-   3      1197     1150.1587     1081.5781    1.063408
-   4      1197     1150.1587     1150.1587    1.000000
-   5      1139     1165.2915     1142.7963    1.019684
+   0      1197     1150.1044      802.7809    1.432651
+   1      1197     1150.1044      795.3993    1.445946
+   2      1197     1150.1044      951.7068    1.208465
+   3      1197     1150.1044     1081.4018    1.063531
+   4      1197     1150.1044     1150.1044    1.000000
+   5      1139     1165.2379     1142.7858    1.019647
 
 YEAR-OVER-YEAR INCREMENTS of the final whole-cohort path (ratio to year 0, same-set means)
    yr 0  n=1197  mean  802.7809  ratio 1.000000
-   yr 1  n=1197  mean  798.3901  ratio 0.994531
-   yr 2  n=1197  mean  952.5472  ratio 1.186559
-   yr 3  n=1197  mean 1081.5781  ratio 1.347289
-   yr 4  n=1197  mean 1150.1587  ratio 1.432718
-   yr 5  n=1139  mean 1142.7963  ratio 1.430625
+   yr 1  n=1197  mean  795.3993  ratio 0.990805
+   yr 2  n=1197  mean  951.7068  ratio 1.185513
+   yr 3  n=1197  mean 1081.4018  ratio 1.347070
+   yr 4  n=1197  mean 1150.1044  ratio 1.432651
+   yr 5  n=1139  mean 1142.7858  ratio 1.430612
    yr 6  n=1075  mean 1112.1870  ratio 1.393884
    yr 7  n=1014  mean  967.2367  ratio 1.210807
   increments (ratio units):
-    yr0 -> yr1 : -0.005469
-    yr1 -> yr2 : +0.192029
-    yr2 -> yr3 : +0.160730
-    yr3 -> yr4 : +0.085429
-    yr4 -> yr5 : -0.002093
-    yr5 -> yr6 : -0.036741
+    yr0 -> yr1 : -0.009195
+    yr1 -> yr2 : +0.194707
+    yr2 -> yr3 : +0.161557
+    yr3 -> yr4 : +0.085581
+    yr4 -> yr5 : -0.002038
+    yr5 -> yr6 : -0.036728
     yr6 -> yr7 : -0.183078
-  FRONT-LOADED ASSERT  (yr1->2 increment STRICTLY exceeds yr3->4): +0.192029 > +0.085429  -> PASS
+  FRONT-LOADED ASSERT  (yr1->2 increment STRICTLY exceeds yr3->4): +0.194707 > +0.085581  -> PASS

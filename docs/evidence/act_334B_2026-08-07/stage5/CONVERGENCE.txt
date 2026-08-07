@@ -4,13 +4,13 @@
 
   band          n     yr1 BASE   yr1 LANDED       move
   ----------------------------------------------------
-  1-20        377     0.970665     1.004427  +0.033762
-  21-40       380     0.910633     0.974009  +0.063375
-  41-64       440     0.932766     0.987869  +0.055103
-  21-64       820     0.918348     0.978840  +0.060492
+  1-20        377     0.970665     1.001589  +0.030924
+  21-40       380     0.910633     0.968536  +0.057903
+  41-64       440     0.932766     0.983368  +0.050602
+  21-64       820     0.918348     0.973706  +0.055358
 
   THE CONVERGENCE GATE (Addendum 2): |yr1(1-20) - yr1(21-64)| must FALL
-     baseline gap 0.052317   ->   landed gap 0.025587   (-0.026730, 51.1% of the gap closed)
+     baseline gap 0.052317   ->   landed gap 0.027884   (-0.024434, 46.7% of the gap closed)
      the directive quotes this baseline gap as "0.053"; measured here at 0.0523 on the committed matrices.
      GATE 6 (convergence) : PASS — the gap falls
 
@@ -18,7 +18,7 @@
   would be tuning the surface to a shape rather than teaching it from the measured futures. Round 2
   located the deficit in 21-64; the taught surface either reproduces that or it does not, and this
   is the reading:
-     1-20    yr1 0.970665 -> 1.004427   (+0.033762)
-     21-40   yr1 0.910633 -> 0.974009   (+0.063375)
-     41-64   yr1 0.932766 -> 0.987869   (+0.055103)
+     1-20    yr1 0.970665 -> 1.001589   (+0.030924)
+     21-40   yr1 0.910633 -> 0.968536   (+0.057903)
+     41-64   yr1 0.932766 -> 0.983368   (+0.050602)
      the lift is ordered 1-20 < 41-64 < 21-40 — CONSISTENT with round 2's location of the deficit in the deeper picks.

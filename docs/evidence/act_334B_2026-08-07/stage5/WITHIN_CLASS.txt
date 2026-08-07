@@ -8,26 +8,26 @@
   THE yr1 -> yr2 FALL, BOTH CONVENTIONS, ALL THREE ARMS
   population / convention                  BASELINE       NO-TAPER LANDED (taper)
   --------------------------------------------------------------------------------
-  persisting-unproven, ALL / value-weighted         -25.4%         -31.2%         -25.0%
-  persisting-unproven, ALL / mean-of-ratios         -24.8%         -28.8%         -22.8%
-  quiet starters only / value-weighted         -25.4%         -43.2%         -34.7%
-  quiet starters only / mean-of-ratios         -21.2%         -42.3%         -32.3%
+  persisting-unproven, ALL / value-weighted       -25.4%         -30.8%         -25.1%
+  persisting-unproven, ALL / mean-of-ratios       -24.8%         -28.5%         -23.0%
+  quiet starters only / value-weighted         -25.4%         -42.0%         -34.1%
+  quiet starters only / mean-of-ratios         -21.2%         -41.0%         -31.8%
 
   ROUND-2 COMPARATORS (the directive's quoted figures, on round 2's own two populations):
-     baseline fall  -17%% / -24.5%%      no-taper fall  -31%% / -40.7%%
+     baseline fall  -17% / -24.5%   ;   no-taper fall  -31% / -40.7%
   The four measured baseline figures above bracket the quoted baseline pair; the NO-TAPER column
   reproduces the deepening round 2 warned about, and the LANDED column is what the taper bought.
 
   THE TAPER'S VALUE, on the primary (value-weighted, whole class) convention:
-     baseline -25.4%   ->   no-taper -31.2%  (deepens by -5.8pp)   ->   LANDED -25.0%  (deepening cut to 0.4pp)
-     the taper recovers 106.1% of the no-taper deepening
+     baseline -25.4%   ->   no-taper -30.8%  (deepens by -5.4pp)   ->   LANDED -25.1%  (deepening cut to 0.3pp)
+     the taper recovers 105.4% of the no-taper deepening
 
   THE GATE (Addendum 2): |D ln G| between adjacent-season evaluations <= the fitted taper's OWN
   maximum slope in tau. The taper law as a NUMBER.
-     the taught surface's maximum |d lnG / d tau| over every shipped knot segment : 0.567570 per season
-     realised |D lnG| / D tau across the sub-cohort's own yr1->yr2 step : max 0.475835  mean 0.086869  (n=1232)
+     the taught surface's maximum |d lnG / d tau| over every shipped knot segment : 0.535608 per season
+     realised |D lnG| / D tau across the sub-cohort's own yr1->yr2 step : max 0.446382  mean 0.080860  (n=1232)
      GATE 5 : PASS — no player's season-to-season step exceeds the taper's own maximum slope
 
   AND THE MONOTONICITY THAT MAKES IT SMOOTH: G is non-increasing in tau at every shipped knot, so
   the step is always a DECAY, never a cliff; the largest single-season decay anywhere on the surface
-  is a factor of 0.5669.
+  is a factor of 0.5853.

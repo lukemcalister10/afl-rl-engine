@@ -5,12 +5,12 @@
 (a) THE MATRIX POPULATION — 1197 ND 2004-2022 entrants at their YEAR-1 evaluation vs their own v0
     arm         n below         of mean shortfall  total shortfall
     BASELINE        939       1197       34.3413%           225957
-    LANDED          875       1197       30.1193%           186906
-    MOVE: -64 players (FALLS — gate limb met)
+    LANDED          888       1197       30.1056%           189768
+    MOVE: -51 players (FALLS — gate limb met)
 
 (b) THE CURRENT BOARD — live ND pick-1-64 rows vs the value of THEIR OWN PICK on the installed
     ladder pvc_curve_v2.json (payload 18203822, pick 1 = 3000)
     arm         n below         of mean shortfall  total shortfall
     BASELINE        374        560       61.2094%           216044
-    LANDED          371        560       60.9932%           214591
+    LANDED          371        560       61.0512%           214714
     MOVE: -3 players (FALLS — gate limb met)

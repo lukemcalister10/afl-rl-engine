@@ -1,19 +1,77 @@
-# 334 stage B / STAGE 5 — THE QUIET-STARTER REPRICE · **STOP: the landing floor is not reached**
+# 334 stage B / STAGE 5 — THE QUIET-STARTER REPRICE · **LANDED** on the consistency pass
 
-Branch `landing/334-stage-b`, baseline `c05f214`, ruled baseline board `b56bbdde`. Nothing merges to main;
-no PR; no tag. **This stage lands NO product change.** The engine edit, the taught table, the config
-amendment and the rebuilt board were all built and gated, and are filed here as EVIDENCE artifacts only.
+Branch `landing/334-stage-b`, baseline `c05f214`, ruled baseline board `b56bbdde`. **Landed board
+`13f8c2e0240600733a5fb42414510445`.** Nothing merges to main; no PR; no tag. Adoption is the owner's word.
 
-## THE VERDICT, first
+> **READ `CONSISTENCY_PASS.md` FIRST.** It is the owner-authorized solver correction (#334 comment
+> 5217293177), what it revealed, and the one decision this act leaves open. Everything below the horizontal
+> rule marked **HISTORY** is the earlier STOP report, preserved verbatim on the supervising seat's
+> instruction — its numbers are the frozen-lam pass, not the landed one.
+
+## THE VERDICT
 
 | | |
 |---|---|
-| **gate 1 (landing floor, yr1 > 1.00)** | **FAIL — yr1 whole-cohort lands at `0.9945`** (from `0.9504`). Short of the floor by **0.0055 of cohort entry value**. |
-| **the STOP** | The supervising seat's standing instruction: a re-taught surface that still misses the 1.00 floor **is** the STOP condition. The one permitted re-teach has been used. **Nothing product-side is pushed; the measured frontier is the report.** |
-| **gate 3 (band [1.35,1.45])** | **PASS** on whole cohort (`1.432718`, peak yr 4) and on picks 1-20 (`1.429314`, peak yr 4). Picks 21-64 at its own peak (yr 6) reads `1.471250` — **outside, and BYTE-IDENTICAL to the baseline** (`move +0.000000`): a pre-existing property, not something this stage did. |
-| **gate 2 (Mraz, tiered)** | **PASS, tier "3.0-3.5x — pass, disclosed"**. Board `1585 -> 1651` = **`3.1151x` his pick's 530**, from `2.9906x`. |
-| **the other gates** | every one PASSES — see the table below. |
-| **so why STOP?** | Because gate 1 is a floor and it is missed. Gates 1-3 are **not jointly** unreachable (2 of 3 hold), but the floor is the act's binding target and this seat will not iterate a fourth teach to chase it. |
+| **the landing, owner basis** | FULL COHORT ND+pool 2004-2025 year 1 = **0.946050** (from 0.908179) |
+| **the landing, teaching window** | ND 1-64 2004-2022 year 1 = **0.990805** (from 0.950431) |
+| **gate 1 (floor yr1 > 1.00)** | **NOT MET — 0.990805.** The owner ruled the consistency-pass result FINAL either way; it is installed, not re-taught. |
+| **the one open decision** | The whole remaining distance to the floor is a single law **this seat introduced** — *no cell taught a price above its own entry anchor*. Lifting it lands **1.000020**. Diagnostic built, measured, **never installed**. `CONSISTENCY_PASS.md §3`. |
+| **gate 2 (Mraz, tiered)** | **PASS** — `1585 → 1645` = **3.1038×** his pick, tier "3.0-3.5×, pass disclosed" |
+| **gate 3 (band)** | **PASS** — whole **1.432651** (yr4), 1-20 **1.429314** (yr4); 21-64 **1.471250** (yr6) outside but byte-identical to baseline |
+| **movers** | **66 of 804, every one UP, zero cuts.** The only stage in this act that cuts nobody |
+| **machinery** | parity 804/804 · numéraire 3000 · book↔board PASS · Guard 5 PASS · manifest 62 vars · self-test **143/0, 0 re-points** · dial-0 rebuilds `b56bbdde` **byte-exact through the full gate** |
+
+## THE FRONTIER, on the landed board
+
+Measured against each sub-population's own realised discounted future (`FRONTIER.txt`):
+
+| sub-population | share v0 | yr1 base | **yr1 LANDED** | measured F | of honest |
+|---|---|---|---|---|---|
+| zero games by yr1 (496) | 0.2733 | 0.6462 | **0.6525** | 0.6635 | 98.3% |
+| **quiet starters 1-5 (287)** | 0.2283 | 0.7068 | **0.8762** | 0.9541 | **91.8%** |
+| played 6+ by yr1 (414, **fenced — stage 6**) | 0.4985 | 1.2288 | 1.2288 | 1.3470 | 91.2% |
+| **whole cohort** | | 0.9504 | **0.9908** | 1.0706 | 92.5% |
+
+The quiet-starter shortfall is **not** a solver error — the consistency pass proved that and disproved this
+seat's earlier diagnosis. It is the aging-on-the-price law, binding on the deep-pick cells where the
+measured future genuinely exceeds the entry anchor (`F/A` up to 1.17). See `CONSISTENCY_PASS.md §3`.
+
+## EVERY GATE, on the landed board `13f8c2e0`
+
+| gate | result |
+|---|---|
+| 1 · landing floor | **NOT MET — 0.990805** (whole). Per band: 1-20 **1.001589**, 21-64 **0.973706** |
+| 1b · below-own-pick falls | **PASS** — matrix **939 → 888**, board **374 → 371**; mean shortfall falls on both |
+| 2 · Mraz tiered | **PASS** — 3.1038×, taught `G` at his cell **1.141258** |
+| 2b · near-projection | **FAIL, disclosed** — a lift whose target population is the band population; zero cuts board-wide |
+| 3 · band at each own peak | **PASS** (whole, 1-20); 21-64 outside but unmoved from baseline |
+| 4 · entry-year rides | **PASS, no machine STOP** — largest excess +3.68 / +3.24 / +1.96 pp/yr against +5.00 |
+| 4b · FRONT-LOADED guide | **PASS** — yr1→2 exceeds yr3→4 |
+| 5 · within-class continuity | **PASS** — realised max 0.446382 vs taper max slope 0.535608; taper recovers 105.4% of the no-taper deepening |
+| 6 · non-uniformity + convergence | **PASS** — gap **0.052317 → 0.027884**; ordering 1-20 < 41-64 < 21-40 |
+| 7 · pick/player seam | **PASS — 1.8868% of ±2.00%**, and the claim this seat first wrote is struck in place |
+| 8 · boundary probes | **PASS** — bar byte-identical ×5; rollover step 9.9e-06; zero new cliffs |
+| 9 · recalculation law | **PASS** — `G` spans 1.0202..1.2511 over a frozen year-1 record |
+| 10 · dial-0 | **PASS — `b56bbdde` byte-exact through the full gate** |
+| 11 · fit coupling | **NONE** — v0surf `9713ec6c` at `RL_G5_W` 0 / 1.0 / 2.0 |
+| 12 · machinery | all green; self-test **143 PASS / 0 FAIL**, zero re-points |
+
+## Files
+
+`CONSISTENCY_PASS.md` (read first) · `OWNER_BASIS.txt` (both presentation bases) · `MEMO.md` (design and
+roads not taken) · `PINS.md` · `FRONTIER.txt` · `LANDING_DECOMP.txt` · `MOVERS_FULL.txt` + `movers_full.csv`
+· `probes_stage5.txt` · `RIDES.txt` · `WITHIN_CLASS.txt` · `CONVERGENCE.txt` · `LADDER_SEAM.txt` ·
+`BELOW_OWN_PICK.txt` · `NEAR_PROJECTION_PROOF.txt` · `KILLSWITCH_PROOF.txt` · `CONSISTENCY_VERIFY.txt` ·
+`noarb/` · `REPRODUCE.md` · the workbook is `../side_by_side/board_before_after.xlsx` (sixth column).
+
+---
+---
+
+# HISTORY — THE STOP REPORT (frozen-lam pass, superseded)
+
+**The numbers below are the FIRST pass and are NOT the landed board.** They are preserved because the
+frontier history is part of the record: this is what was measured, what was reported, and what the owner
+was shown before authorizing the consistency pass. The board it describes (`bad1961e`) was never landed.
 
 ## THE FRONTIER — where the missing 0.0055 actually is
 

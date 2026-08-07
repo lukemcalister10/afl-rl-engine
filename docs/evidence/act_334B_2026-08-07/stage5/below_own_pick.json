@@ -6,10 +6,10 @@
   "total": 225957.0
  },
  "matrix_LANDED": {
-  "n_below": 875,
+  "n_below": 888,
   "n": 1197,
-  "mean_shortfall": 0.30119322622866146,
-  "total": 186905.6
+  "mean_shortfall": 0.3010555048590223,
+  "total": 189768.5
  },
  "board_BASELINE": {
   "n_below": 374,
@@ -20,7 +20,7 @@
  "board_LANDED": {
   "n_below": 371,
   "n": 560,
-  "mean_shortfall": 0.6099318847396604,
-  "total": 214591.0
+  "mean_shortfall": 0.6105117396793388,
+  "total": 214714.0
  }
 }

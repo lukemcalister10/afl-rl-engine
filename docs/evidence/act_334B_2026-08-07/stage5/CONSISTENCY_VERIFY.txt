@@ -1,0 +1,85 @@
+================================================================================================================
+#334 stage B / STAGE 5 — SOLVER VERIFICATION: does the fixed point price each cell at its own F?
+================================================================================================================
+  frozen-lam table : g5_table.json            (the first pass, filed with the STOP report)
+  solved table     : g5_table_LANDED.json     (this pass)
+
+  node (cls, pick, games, tau)    eff-n     target F   frozen-lam/F       SOLVED/F
+  ----------------------------------------------------------------------------------
+  nonKPP pk5   g2   tau1           36.7      30356.6         1.0135         1.0000
+  nonKPP pk5   g2   tau2           36.6      12927.9         1.0009         1.0000
+  nonKPP pk5   g5   tau1           38.3      29553.0         1.0168         1.0000
+  nonKPP pk5   g5   tau2           38.1      12975.5         1.0275         1.0275
+  nonKPP pk15  g2   tau1           55.8      35110.0         1.0195         1.0000
+  nonKPP pk15  g2   tau2           38.0      10546.5         1.0019         1.0000
+  nonKPP pk15  g5   tau1           54.9      28575.4         1.0235         1.0000
+  nonKPP pk15  g5   tau2           35.3      10174.2         1.0690         1.0690
+  nonKPP pk30  g2   tau1          108.0      43095.3         1.0250         1.0000
+  nonKPP pk30  g2   tau2           81.9      17806.0         1.0083         1.0000
+  nonKPP pk30  g5   tau1          100.5      31479.9         1.0236         1.0000
+  nonKPP pk30  g5   tau2           85.9      16312.9         1.0775         1.0775
+  nonKPP pk50  g2   tau1          197.3      48423.4         0.8759         0.8517
+  nonKPP pk50  g2   tau2          188.2      25169.1         1.0233         1.0000
+  nonKPP pk50  g5   tau1          170.2      33600.4         0.9394         0.9147
+  nonKPP pk50  g5   tau2          176.4      23059.1         1.0131         1.0000
+  nonKPP pk65  g2   tau1          182.6      40833.9         0.8529         0.8306
+  nonKPP pk65  g2   tau2          189.1      22879.5         1.0253         1.0000
+  nonKPP pk65  g5   tau1          152.9      28093.5         0.9455         0.9210
+  nonKPP pk65  g5   tau2          175.3      20777.0         1.0196         1.0000
+  KPP pk5   g2   tau1              35.8      29095.9         1.0135         1.0000
+  KPP pk5   g2   tau2              46.8      20796.2         1.0113         1.0000
+  KPP pk5   g5   tau1              36.0      29010.5         1.0173         1.0000
+  KPP pk5   g5   tau2              46.3      21665.5         1.0118         1.0000
+  KPP pk15  g2   tau1              35.3      21396.7         0.9716         0.9607
+  KPP pk15  g2   tau2              37.4      11797.4         1.0145         1.0000
+  KPP pk15  g5   tau1              36.9      17948.6         0.9584         0.9469
+  KPP pk15  g5   tau2              41.4      12426.3         1.0154         1.0000
+  KPP pk30  g2   tau1              38.3      17547.2         0.7406         0.7265
+  KPP pk30  g2   tau2              38.2       7676.3         0.9697         0.9493
+  KPP pk30  g5   tau1              35.3       9497.5         0.7843         0.7701
+  KPP pk30  g5   tau2              36.6       5669.1         1.0061         1.0000
+  KPP pk50  g2   tau1              51.4      15815.4         0.6724         0.6539
+  KPP pk50  g2   tau2              67.3       9042.1         0.8291         0.8045
+  KPP pk50  g5   tau1              42.9       8549.2         0.8676         0.8676
+  KPP pk50  g5   tau2              54.3       4834.4         1.2062         1.2062
+  KPP pk65  g2   tau1              45.5      12451.0         0.7450         0.7241
+  KPP pk65  g2   tau2              59.9       7672.1         0.8717         0.8452
+  KPP pk65  g5   tau1              39.0       7688.5         0.9907         0.9907
+  KPP pk65  g5   tau2              48.2       4168.1         1.4031         1.4031
+  RUCK pk5   g2   tau1             35.8      29095.9         1.0135         1.0000
+  RUCK pk5   g2   tau2             46.8      20796.2         1.0113         1.0000
+  RUCK pk5   g5   tau1             36.0      29010.5         1.0173         1.0000
+  RUCK pk5   g5   tau2             46.3      21665.5         1.0118         1.0000
+  RUCK pk15  g2   tau1             80.4      49538.8         1.0211         1.0000
+  RUCK pk15  g2   tau2             53.3      14597.0         1.0079         1.0000
+  RUCK pk15  g5   tau1             74.9      37162.5         1.0203         1.0000
+  RUCK pk15  g5   tau2             42.1      12934.0         1.0206         1.0206
+  RUCK pk30  g2   tau1            142.5      63700.2         1.0212         0.9910
+  RUCK pk30  g2   tau2            121.9      35859.4         1.0177         1.0000
+  RUCK pk30  g5   tau1            132.3      41259.7         1.0285         1.0000
+  RUCK pk30  g5   tau2            118.2      30750.3         1.0195         1.0000
+  RUCK pk50  g2   tau1            262.5      71393.4         0.7975         0.7748
+  RUCK pk50  g2   tau2            265.8      44304.4         1.0037         0.9740
+  RUCK pk50  g5   tau1            225.3      46519.1         0.8741         0.8524
+  RUCK pk50  g5   tau2            239.8      36453.4         1.0212         1.0000
+  RUCK pk65  g2   tau1            235.5      61194.2         0.7871         0.7638
+  RUCK pk65  g2   tau2             35.8      12314.8         0.8641         0.8444
+  RUCK pk65  g5   tau1            200.6      40143.9         0.8880         0.8665
+  RUCK pk65  g5   tau2             36.0      13340.7         0.7281         0.7050
+
+  ACROSS ALL 300 RESOLVED NODES — installed aggregate as a ratio to the cell's own target F:
+     frozen-lam pass : mean 1.2712   median 1.0206   max |dev from 1| 2.0649
+     SOLVED pass     : mean 1.2655   median 1.0000   max |dev from 1| 2.0649
+     nodes within 0.1% of target: frozen-lam 3/300   SOLVED 51/300
+
+  DIRECTION OF THE CORRECTION. The frozen-lam factor OVERSHOOTS its own cell target (ratio > 1) wherever
+  the lam feedback is amplifying — a quiet starter whose e_full sits BELOW his anchor sees s = |log(e/a)|
+  GROW when the anchor is lifted, so the evidence bar rises, lam falls, and MORE weight lands on the
+  now-higher anchor. The solve therefore returns a SMALLER G for the same price. 102 of 300 nodes move DOWN.
+  Nodes where the frozen-lam factor UNDERSHOT (e_full above the anchor, damping feedback): 0.
+
+  WHAT THIS DOES NOT FIX, stated plainly: hitting every CELL target is not the same as hitting a
+  POPULATION target. The teaching cells are dominated by the pool routes (2,834 of 5,675 scanned rows);
+  the ND 1-64 year-1 slice the no-arb landing is read on is a minority inside those same cells. A cell
+  can price its own aggregate at F while the ND subset within it lands elsewhere. That is a BASIS
+  question, not a solver question, and this pass does not touch it.

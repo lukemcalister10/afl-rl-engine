@@ -121,7 +121,7 @@ say('  WHAT HOLDS IT UNDER TOLERANCE is the never-established rule — the cavea
 say('  printed beside this number: `never_established` (no season reaching QUAL_GAMES=%d) forces the' % H.QUAL_GAMES)
 say('  teaching value to EXACTLY 0.0 and keeps the row in the denominator. The stage-5 lift lands almost')
 say('  entirely on thin records, a large share of which never establish, and for those the taught value')
-say('  is 0.0 before and after AT ANY PRICE. That is why a reprice worth +0.40%% of the board moves the')
+say('  is 0.0 before and after AT ANY PRICE. That is why a reprice worth +0.37%% of the board moves the')
 say('  implied ladder by at most %.4f%%, inside but NOT far inside the +-2.00%% seam tolerance.' % max(abs(x) for x in ddp))
 say('')
 say('  GATE-2/GATE-7 COUPLING, stated rather than assumed away: Mraz\'s own board price moved, and pick')

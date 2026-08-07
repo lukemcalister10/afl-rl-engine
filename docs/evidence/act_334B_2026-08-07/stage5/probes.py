@@ -78,7 +78,7 @@ for key in ('noah-mraz', 'cameron-nairn'):
     say('    his cell          : tau=%.4f  effpk=%d  CUMULATIVE career games=%d  fE=%.4f' % (ci['tau'], ci['pk'], ci['gcum'], ci['fe']))
     say('    the anchor leg    : entry anchor %.2f  x  R=%.6f  =  %.2f   ->  x TAUGHT G=%.6f  =  %.2f'
         % (ci['A'], ci['R'], ci['R'] * ci['A'], ci['g5'], ci['g5'] * ci['R'] * ci['A']))
-    say('    composed G*R      : %.6f   (the aging law: G*R <= 1 at every knot, so he is never repriced above his own entry anchor)'
+    say('    composed G*R      : %.6f   (non-increasing in tau over the engine-asserted domain 1..6; the AGING LAW itself is on the PRICE — no cell taught above its own entry anchor)'
         % (ci['g5'] * ci['R']))
     say('    BOARD             : %d  ->  %d   (%+d, %+.2f%%)   [engine v %.0f -> %.0f]'
         % (d0, d1, d1 - d0, 100.0 * (d1 - d0) / d0, v0, v1))

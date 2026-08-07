@@ -3,7 +3,7 @@ import os, sys, json, importlib.util
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-BOARD = json.load(open(os.path.join(HERE, 'board_STAGE5_bad1961e.json')))
+BOARD = json.load(open(os.path.join(HERE, 'board_STAGE5_13f8c2e0.json')))
 MATRIX = os.path.join(HERE, 'per_entrant_338_stage5.json')
 spec = importlib.util.spec_from_file_location('harness_pvc', os.path.join(HERE, 'harness_pvc_REPINNED_pass3.py'))
 H = importlib.util.module_from_spec(spec); sys.modules['harness_pvc'] = H; spec.loader.exec_module(H)

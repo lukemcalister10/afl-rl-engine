@@ -1864,16 +1864,93 @@ def _surprise(e_full,anchor,gp):
     evidence has not yet earned. Zero at zero surprise; zero at the establishment bar; symmetric in sign."""
     s=(abs(float(np.log(e_full/anchor))) if (e_full>0.0 and anchor>0.0) else 0.0)   # domain guard only (same idiom as _ped_prior's r0>0); measured 0/165 taken on the board
     return SUR_W*s*(1.0-_rho_res(gp)/_RHO_SIT_BAR)
+# ==== #334 STAGE B / STAGE 5 — THE QUIET-STARTER REPRICE: the taught anchor factor G ==================
+# THE MEASUREMENT (pre-measurement round 2, seam seat 2026-08-07): the year-1 sit-out leg splits in two.
+#   The ZERO-GAMES first-years are priced HONESTLY — their R(tau=1) matches their realized outcomes in
+#   every pick band (largest gap +0.02); median eventual peak 0.74x entry; 27% never play a game.
+#   The QUIET STARTERS — 1-5 games, the ramp barely engaged — are NOT: the clock over-decays them
+#   materially. Realized yr2 1.02 / yr4 1.29 of entry against a price of 0.707; at picks 41-64 the gap
+#   is dramatic (realized yr4 2.15 vs clock 0.58). Their honest discounted future is ~0.95-1.0 of entry.
+#
+# THE FORM.  A taught factor G on the ANCHOR LEG — a CONTINUOUS surface over
+#     (tau — the engine's own round-driven continuous clock)  x  CUMULATIVE career games  x  log-pick,
+# resolved per retention class (RUCK/KPP/nonKPP) and POOLED, declared, where the class's own eff-n < 35.
+# It multiplies the anchor at the TWO anchor sites in sitout_ev — the blend term and `_surprise`'s anchor
+# argument — and NOWHERE else. `_ped_prior`'s R(tau)/r0 ratio is a DECAY STATISTIC, not an anchor: G does
+# not enter it (Addendum 2, site precision). raw_ev / ISO / poles / the production path: untouched.
+#
+# THE RECALCULATION LAW (Addendum 1, owner verbatim: "in year 2, it would use year 1 + 2 data and
+# outcomes, not just year 1?").  G is a STATE FUNCTION, never a stamp. It is evaluated fresh at every
+# call from the player's record TO DATE — his current clock depth, his CUMULATIVE games banked across
+# seasons, his band — and reads the measured forward outcomes of players with that cumulative record.
+# Nothing is stored, nothing is carried: a year-2 quiet starter with 3+4 games is priced at the
+# (7-game, depth-2) cell, not at whatever his year-1 read was. The probe in the stage-5 evidence
+# demonstrates it (his G-contribution responds to his YEAR-2 games).
+#
+# THE TAPER (owner law, 2026-08-07: "phase it out ... while being weighted less each year").  G is
+# monotone NON-INCREASING in tau and reaches 1 at the deep knot; the fade is TAUGHT, not assumed — the
+# tau=2 and tau=3 knots were measured off the persisting-unproven classes before the fit, with the
+# owner's phase-out shape as the PRIOR only. G(tau=0) == 1 is PINNED (the pre-debut cell; the no-arb
+# year-0 column reads v0_start, not this leg), prepended exactly as `_R_surf` prepends its own 1.0.
+#
+# THE COMPOSED LAW, read strictly.  G*R is non-increasing in tau over the FULL domain INCLUDING the
+# tau=0 pin, i.e. G <= 1/R at every knot: no player who has sat out is ever repriced ABOVE his own entry
+# anchor. That is the owner's aging law ("even young players should lose value in line with age. It's
+# career resources they're chewing up"). It binds on RUCK — whose retention is already 0.78-1.00 — and
+# on the deepest nonKPP picks; it is the reason RUCK lands at a capped, flat 1.20-1.28 rather than at
+# the 2.4-2.7 its own thin cells measured. DECLARED in MEMO.md with the road not taken.
+#
+# THE ARTIFACT.  The surface is TAUGHT ONCE, from the FROZEN baseline walk-forward matrix
+# per_entrant_338_stage4a1.json (md5 b564b12e...) at the ruled baseline board b56bbdde, and then FROZEN
+# as a committed table the engine LOADS — the lti_return_table.json / ycred_table.json precedent. There
+# is no fixed point and no build-time fit; `RL_G5_W` is NOT a _V0SURF_GATES key (sitout_ev has exactly
+# one caller, the ns==0 arm of ev(); _build_v0_curve fits _v0_raw and never calls ev() — re-proven by a
+# declared refit at G5_W 0.0 / 1.0 / 2.0, all reproducing the committed v0surf pin 9713ec6c).
+#
+# THE DIAL, and there is exactly one: RL_G5_W, the intensity weight on the taught lift,
+#   G_eff = 1 + G5_W*(G - 1).  RL_G5_W=0 is a STRUCTURAL SHORT-CIRCUIT — the branch below is not taken,
+#   the cumulative-games sum is never formed and g5_table.json is never even opened — so the stage-4
+#   amendment-1 board b56bbdde rebuilds BYTE-EXACT through the full gate.
+G5_W=float(os.environ.get('RL_G5_W','1.0'))                  # THE DIAL: intensity of the taught quiet-starter lift. 0 => structural short-circuit => byte-exact b56bbdde.
+_G5=None
+def _g5_load():
+    """Load the taught surface ONCE. Only ever reached when G5_W != 0 (structural short-circuit above)."""
+    global _G5
+    if _G5 is None:
+        import json as _g5json
+        if not os.path.exists('g5_table.json'):
+            raise SystemExit('#334 stage 5 HALT: RL_G5_W is ON but g5_table.json is absent — re-seed the '
+                             'workspace from the checkout (bootstrap.sh copies engine/rl_after verbatim).')
+        _t=_g5json.load(open('g5_table.json'))
+        _G5=(_t['table'],[float(k) for k in _t['pk_knots']],
+             [float(k) for k in _t['g_knots']],[float(k) for k in _t['tau_knots']])
+    return _G5
+def _g5(p,Y,tau,cls,pk):
+    """The taught anchor factor at THIS player's state, recomputed from his record to date.
+    Interpolation order mirrors `_R_surf`: over log-pick at the knots, then over log1p(cumulative
+    games), then over tau with the structural G(0)=1 prepended and a flat tail past the last knot.
+    Synthetics (a PICK has no record to resolve) and the pick-level callers take G == 1 by _isreal."""
+    if not _isreal(p): return 1.0
+    tab,pkk,gkk,tkk=_g5_load()
+    T=tab[cls]
+    lp=np.log(min(max(pk,1),90)); lpk=[np.log(k) for k in pkk]
+    gcum=sum(x['games'] for x in p['scoring'] if x['year']<=Y)   # THE RECALCULATION LAW: cumulative evidence TO DATE
+    lg=np.log1p(max(gcum,0.0)); lgk=[np.log1p(k) for k in gkk]
+    pv=[[float(np.interp(lp,lpk,[T[str(int(k))][str(int(g))][i] for k in pkk])) for i in range(len(tkk))] for g in gkk]
+    tv=[float(np.interp(lg,lgk,[pv[j][i] for j in range(len(gkk))])) for i in range(len(tkk))]
+    return 1.0+G5_W*(float(np.interp(tau,[0.0]+tkk,[1.0]+tv))-1.0)
 def sitout_ev(p,Y,e_full):
     fe=_fEy(Y,p); tau=max(0.0,Y-cp.debutyr(p))+((fe**1.5) if Y>=cp.debutyr(p) else 0.0)   # D12: CONCAVE penalty proration tau'=(R/24)^1.5 (Luke OPTION A); completed seasons full (integer knots), in-progress season accrues concavely. PENALTY path only — the lam reward blend below is UNTOUCHED.
     cls=_sitout_cls(MA.gfut(p)); pk=MA.effpk(p)               # #334 s4: hoisted — the pedigree term reads the SAME class and pick the retention surface does
     R=_R_surf(cls,pk,tau)                                    # D13 ASK3: pick-conditioned, isotonic-in-depth surface (was depth-only R_SIT)
     gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
     gp=min(gy/fe,6.0)                                        # #334 s4a1: hoisted — the ONE games-at-pace clamp the lam ramp AND the resolution fade both read (identical expression; no new clip)
+    anch=R*entry_anchor(p)                                   # THE ANCHOR LEG — hoisted; the SAME object the blend and the surprise statistic both read (stage-4 a1 identity)
+    if G5_W: anch=anch*_g5(p,Y,tau,cls,pk)                   # #334 stage 5: the taught quiet-starter factor. RL_G5_W=0 => branch not taken => byte-exact b56bbdde.
     lam=float(np.interp(gp,[0,1,2,3,4,5,6],LAM_SIT))                             # games AT PACE vs the prorated bar
     lam=lam**(1.0+PED_BAR*(1.0-_ped_prior(p,Y,fe,tau,cls,pk))                    # #334 stage 4: PEDIGREE-CONDITIONED EVIDENCE BAR (endpoints fixed: 0**e=0, 1**e=1)
-              +_surprise(e_full,R*entry_anchor(p),gp))                           # #334 stage 4 AMENDMENT 1: + the SURPRISE demand (additive; RL_SUR_W=0 => +0.0 => byte-exact stage 4)
-    return (1.0-lam)*R*entry_anchor(p)+lam*e_full            # #326: a pool entrant blends off his division's signed entry level; every other player off v0_start, byte-for-byte
+              +_surprise(e_full,anch,gp))                                        # #334 stage 4 AMENDMENT 1: + the SURPRISE demand (additive; RL_SUR_W=0 => +0.0 => byte-exact stage 4). ANCHOR SITE 2/2.
+    return (1.0-lam)*anch+lam*e_full                         # ANCHOR SITE 1/2. #326: a pool entrant blends off his division's signed entry level; every other player off v0_start, byte-for-byte
 def _first_evidence(p,Y):                                     # the games-ramp family: ALL evidence is season Y
     return not any(x['games']>0 and x['year']<Y for x in p['scoring'])
 def _prod_path(p,Y):
