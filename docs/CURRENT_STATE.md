@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v98 · supervisor pen · 2026-08-07, register v608
+# CURRENT STATE — the incoming-seat read · v99 · supervisor pen · 2026-08-07, register v609
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,13 +128,13 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v98 · supervisor pen · 2026-08-07, register v608 · STAGES 5+6 BUILT (tip d405afb): stage-6
-feasible rungs land yr1 1.006–1.021 teaching, SHORT of the [1.04,1.13] band — the band-reaching
-rungs 0.75/1.0 were STRUCK by their own zero-cell gates; three roads out, all the owner's.
-Stage 7 FIT AFTER AMENDMENTS (audit NOT FIT, both blockers verified, 15 amendments adopted).
-TWO read-only measurements RUNNING: the 1.0963-vs-1.136 reconciliation + the stage-7
-re-derived pool measurement/cut list. Then ONE combined side-by-side to the owner.
-Read the v604–v608 register entries IN FULL before touching any stage. Primer v7 first.)
+(v99 · supervisor pen · 2026-08-07, register v609 · THE LANDSCAPE COLLAPSED TO ONE LEVER:
+the reconciliation killed road (a) — the 1.136 was right, the stage-6 build under-taught
+(72.2%) and mis-read the axis; CONFORMANCE REPAIR RUNNING. The stage-7 measurement closed
+road (c) — the capped lift is exhausted (+0.7%), the #326 floor clamps every cut row, net
+≈0 unless the ENTRY-ANCHOR CAP is ruled open (+0.019 combined). The cut list is enumerated
+(18 names, 10 move). Everything funnels to the cap ruling at ONE side-by-side.
+Read the v604–v609 register entries IN FULL before touching any stage. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
@@ -366,11 +366,12 @@ branch + the filed commands.
 1. Verify THE CURRENT IDENTITIES above with your own commands; N35-classify your box
    (byte-reproduce board `113b36f8` via the canonical build — MAIN basis; the landing branch's
    b56bbdde is the act's ruled baseline) before trusting any fitted figure.
-2. CHECK THE IN-FLIGHT WORK before anything else: TWO read-only measurements were running
-   at v608 — the stage-6 estimand reconciliation (1.0963 measured vs 1.136 of record; the
-   zero-cell bounds that struck rungs 0.75/1.0 depend on it) and the stage-7 re-derived
-   pool measurement + cut-list enumeration (basis: the stage-5 landed matrix). If returned,
-   seam-verify and file on #334; if lost, re-fire from the v608 register entry. The #334
+2. CHECK THE IN-FLIGHT WORK before anything else: the STAGE-6 CONFORMANCE REPAIR build
+   was running at v609 (re-teach to the registered estimand 1.136 on the season-average
+   axis; expect yr1 ceiling ≈1.018 confirmed, feasible rung ≈0.3; landing/334-stage-b
+   pushed past d405afb?). Both v608 measurements RETURNED and are filed: reconciliation
+   5219329372, stage-7 measurement + cut list 5219417557. If the repair is lost, re-fire
+   from the v609 register entry + comment 5219329372. The #334
    comment thread of 2026-08-07 is the governing record; every owner ruling of that day is
    quoted verbatim there.
 3. READ-BACK to the owner and HOLD. His likely first words: the stage-5 side-by-side, the
