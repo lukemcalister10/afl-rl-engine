@@ -1,0 +1,17 @@
+PASS  python3 config_manifest.py check
+PASS  python3 release_contract.py check
+PASS  python3 ruling_config_check.py
+PASS  python3 session_2026-07-21/final_integration/tests/release_state_failclosed_test.py
+PASS  python3 session_2026-07-21/final_integration/tools/invariant_proof.py
+PASS  python3 ui/tests/extract_seam.test.py
+PASS  node    ui/tests/release_seam.test.js
+PASS  node    ui/tests/counting_rule.test.js
+PASS  python3 ui/tests/club_curve_provenance.test.py
+PASS  python3 ui/tests/test_club_valuation_current.py
+PASS  node    ui/tests/club_totals_parity.test.js
+PASS  node    ui/tests/ownership_single_source.test.js
+PASS  python3 ui/tests/ownership_store_apply.test.py
+PASS  node    ui/tests/ownership_sidecar.test.js
+PASS  node    ui/tests/movers.test.js
+PASS  node    ui/tests/adoption_gate.test.js
+UIGATES_DONE

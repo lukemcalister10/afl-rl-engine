@@ -1,0 +1,25 @@
+CENSUS — store engine/rl_after/rl_model_data.json, after the DOB courier write 2026-08-10
+
+Store records: 2650
+
+ACCEPTANCE 1 — ND records in draft classes 2003-2005 with a blank birth year
+  ND records in classes 2003-2005 : 186
+  of those, blank _by             : 0   (required: 0)
+
+  all record types, classes 2003-2005 : 325
+  of those, blank _by                 : 0
+
+ACCEPTANCE 2 — the 302 couriered rows
+  rows found in the store   : 302   (required: 302)
+  with a birth year (_by)   : 302
+  with a birth date (_bd)   : 302
+  STILL BLANK of the 302    : 0   (required: 0)
+
+STORE-WIDE AGE-SOURCE CENSUS (build_peak_model_v4.age_source classification)
+  REAL_DATE  : 1150
+  REAL_YEAR  : 1500
+  FALLBACK   : 0
+  total      : 2650
+
+  store-wide records with a blank birth year : 0
+  (this is the whole store, every draft class; the 302 this act wrote are all clear)

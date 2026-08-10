@@ -1,0 +1,13 @@
+=== GUARD 4: correction-sticks canary (full rebuild; sentinel=josh-ward +40) ===
+  FAIL baseline rebuild: rl_export.py failed: EJECTED — BUILD HALTED ============
+  - UNKNOWN model override RL_V0SURF_PKL='/home/claude/dobwrite/data/v0surf.pkl' is not in the manifest (data/model_config.json)
+  Bake/gate mode pins the model configuration to data/model_config.json. Unset the override(s) above (dev-shell experimentation runs OUTSIDE bake/gate mode), or amend the manifest at a bake in the same commit that re-stamps config_sha256 + expected_boot.json.
+==========================================================================
+
+
+GUARD 4 FAILED: 1 check(s)
+  - baseline rebuild: rl_export.py failed: EJECTED — BUILD HALTED ============
+  - UNKNOWN model override RL_V0SURF_PKL='/home/claude/dobwrite/data/v0surf.pkl' is not in the manifest (data/model_config.json)
+  Bake/gate mode pins the model configuration to data/model_config.json. Unset the override(s) above (dev-shell experimentation runs OUTSIDE bake/gate mode), or amend the manifest at a bake in the same commit that re-stamps config_sha256 + expected_boot.json.
+==========================================================================
+

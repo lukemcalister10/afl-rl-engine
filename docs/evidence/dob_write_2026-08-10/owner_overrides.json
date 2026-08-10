@@ -1,0 +1,30 @@
+[
+  {
+    "key": "ruory-kirkby",
+    "player": "Ruory Kirkby",
+    "draft_year": 2004,
+    "type": "RD",
+    "old__by": null,
+    "old__bd": null,
+    "new__by": 1986,
+    "new__bd": "1986-02-04",
+    "source": "OWNER OVERRIDE 2026-08-10",
+    "staged__by": 1986,
+    "staged__bd": null,
+    "provenance": "owner word 2026-08-10 (issue #334 comment 5235574982): \"Ruory Kirkby - 4/2/86\" \u2014 read day/month/year. Supersedes the 2026-07-31 year-only staging row."
+  },
+  {
+    "key": "tim-looby",
+    "player": "Tim Looby",
+    "draft_year": 2005,
+    "type": "RD",
+    "old__by": null,
+    "old__bd": null,
+    "new__by": 1987,
+    "new__bd": "1987-09-02",
+    "source": "OWNER OVERRIDE 2026-08-10",
+    "staged__by": 1987,
+    "staged__bd": null,
+    "provenance": "owner word 2026-08-10 (issue #334 comment 5235574982): \"Tim Looby - 2/9/87\" \u2014 read day/month/year. Supersedes the 2026-07-31 year-only staging row."
+  }
+]

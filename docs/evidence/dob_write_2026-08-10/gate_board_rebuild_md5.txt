@@ -1,0 +1,13 @@
+a672ed3a6a1426a262d932f844e8f87b  rl_app_data.json
+
+The board rebuilt from the LANDED store d9a24282357cf3083b1640466e3ecd83 and the RE-CUT surface
+v0surf 5a03c9ea3e9a32e6cc6e1ffec5293685, in a clean private workspace under the canonical gated
+recipe (RL_CONFIG_MODE=gate, PYTHONHASHSEED=0, single-thread BLAS, pinned numpy 2.4.4 + bundled
+OpenBLAS 05c9f9eb). This IS the board of record now installed at data/rl_build/rl_app_data.json.
+
+Outgoing board: 6e724cca2bb2fb118ff7ad6ed1f8a4b6.
+6 movers of 804, every one +/-1 SCAR. Board total 761583 -> 761587. Backward board 0 movers.
+PICK 1 numeraire 3000, unmoved. Export<->engine parity PASS on all 804, eps 0.
+
+The FIRST run of this same recipe, before the owner authorised the refit, produced no board at all:
+it halted on the v0surf frozen-signature guard. That halt log is preserved at landing_attempt/.

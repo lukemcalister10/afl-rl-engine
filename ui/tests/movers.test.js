@@ -208,8 +208,19 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // across weekly rounds — and lineage() compares like with like. The state is honestly `ok`: same
   // present-lens lineage end to end. Era boundaries still surface via the owner-approved
   // model_changes entries below, so nothing provenance-bearing is hidden. #271 A17 closed.
-  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "ok"],
-     "bundle displays under the current app, ok — same present-lens lineage (anchors compare like with like since the R21 stamp release block)");
+  // RESTATED 2026-08-10 (#334 DOB courier landing, board 6e724cca -> a672ed3a): the expected state is
+  // `bridged` again, and that is the honest reading, not a weakening. `ok` is the DIRECT-lineage branch,
+  // which requires the latest ROUND REPORT's terminal board to equal the loaded board. This act moved the
+  // board OUTSIDE a round, so R22's report keeps its own frozen terminal board (6e724cca — a later act
+  // never rewrites an earlier report's identity, #271 A15/A16) while the app serves a672ed3a. That is
+  // exactly the situation this file's own note above describes: "this bundle's history was made under an
+  // earlier release and is shown under the current one, which is exactly true." The out-of-round column
+  // `dob-courier-10-8` carries the live board, so THE ONE ASSERT (newest stored point == loaded board)
+  // still passes — which is why the state is `bridged` and not `mismatch`. Nothing is loosened: the two
+  // non-vacuity assertions immediately below still prove `bridged` discriminates (a foreign board fails
+  // closed, and the same bundle loaded at its own terminal identity still reads `ok`).
+  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "bridged"],
+     "bundle displays under the current app, bridged — history made under an earlier release, shown under the current one (the board moved outside a round)");
   // NON-VACUITY for the restated assertion, both directions. `bridged` is a state this check can
   // FAIL to reach: a bundle on a foreign lineage does not get bridged, it fails closed as a mismatch.
   var appForeign = clone(curApp); appForeign.board = "ffffffffffffffffffffffffffffffff";
@@ -253,7 +264,12 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // out-of-round boundary is anchored to an owner-approved record. That is the property era succession
   // exists to deliver, and it grows correctly with the register instead of pinning a number.
   var mc = prod.model_changes || [];
-  ok(mc.length === 3, "three out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption)  (got " + mc.length + ")");
+  // BUMPED 2026-08-10 (#334 DOB courier landing): a fourth out-of-round boundary, `dob-courier-10-8` —
+  // the 302 birthdates plus the owner-authorised v0surf re-cut, board 6e724cca -> a672ed3a. Exactly the
+  // growth the note above predicted ("it grows correctly with the register instead of pinning a number").
+  // The durable property — EVERY boundary anchored to an owner-approved record — is asserted below and
+  // covers the new entry too; this line only counts.
+  ok(mc.length === 4, "four out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier)  (got " + mc.length + ")");
   ok(mc[0].between[0] === "19" && mc[0].between[1] === "post-r19-redesign-1" &&
      mc[0].owner_approved_record === true,
      "model change declared between R19 and the restructure point, anchored to the owner-approved record");

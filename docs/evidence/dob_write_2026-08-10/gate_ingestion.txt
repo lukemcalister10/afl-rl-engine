@@ -1,0 +1,14 @@
+FAIL(1)  python3 engine/rl_after/ingestion/test_weekly_updater.py
+            SF.materialize_r14(dst, REPO)                 # ITEM 408 item 6: reconstruct the accepted R14 baseline
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+          File "/home/claude/dobwrite/engine/rl_after/ingestion/scratch_fixture.py", line 373, in materialize_r14
+            _verify_r14(scratch_root)
+          File "/home/claude/dobwrite/engine/rl_after/ingestion/scratch_fixture.py", line 323, in _verify_r14
+            raise FixtureError("R14 fixture verification FAILED (%d issue(s)):\n  - %s"
+        scratch_fixture.FixtureError: R14 fixture verification FAILED (1 issue(s)):
+          - expected_boot config pin != scratch model_config vars hash (config drift)
+PASS  python3 engine/rl_after/ingestion/test_catchup_preflight.py
+PASS  python3 engine/rl_after/ingestion/test_movers_transition.py
+PASS  python3 engine/rl_after/ingestion/sibling_repin.py check --repo /home/claude/dobwrite
+PASS  python3 ui/tools/generate_movers_transition.py --check
+INGEST_DONE
