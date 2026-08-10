@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v103 · supervisor pen · 2026-08-07, register v613
+# CURRENT STATE — the incoming-seat read · v104 · supervisor pen · 2026-08-07, register v614
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -134,8 +134,11 @@ A/B/C offered (audit year-0 provenance / rulings / both) — OWNER HAS NOT CHOSE
 that word before ANY new work. Cohort-membership ruling (v611) still requires table
 re-emission. The four rulings stand (5220064508). Two year-0 defects named: KPD level +
 band steps; R12-violation finding FILED (5235067201) — the live year-0 surface breaks
-the owner's own 2026-07-03 law (Grlj/Cumming inversion; band position adjustment suspect;
-breaking commit unpinned). Read v604–v613 IN FULL. Primer v7 first.)
+the owner's own 2026-07-03 law. OWNER WORD: AUDIT FIRST — two Opus read-only audits
+RUNNING (year-0 honesty measurement + R12 provenance; briefs on #334 at 5235093657;
+progress files AUDIT1/2_PROGRESS.md in scratchpad; relay checkpoints; owner can stop
+any time). All rulings and offers WAIT behind the audit. Visibility layer + Opus-for-
+everything rules are standing. Read v604–v614 IN FULL. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
