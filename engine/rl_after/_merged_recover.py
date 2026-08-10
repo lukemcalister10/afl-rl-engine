@@ -1758,10 +1758,61 @@ def v0_start(p):                                             # BOARD -> D14 V0 c
 #   remnant keep reading v0_start byte-for-byte. They face players with real careers and back-boards, and
 #   the owner's standing default forbids moving those. That is recorded as the one place the old machinery
 #   still fires on purpose; reversing it is one owner sentence.
+# ===== #334 ITEM B — THE POOL YEAR-0 AGE REPAIR (C5, LEVEL-PRESERVING). Ruled 5238688172/5238860310.
+# THE DEFECT (D2, audit 1): the signed division levels carry NO age. Two pool entrants of the same
+# division priced identically whatever their draft age, while the measured returns differ by ~4x across
+# the age range. The repair is a RESHAPE, never a lift: the pool's total year-zero value is held EXACTLY
+# and only its distribution across age moves.
+#   THE GRADIENT is re-taught at BUILD TIME on the DOB store, on the ruler act's own corrected
+#   instrument (docs/evidence/composition_2026-08-10/item_b_derive.py; r24 instrument D, DISC=1.0939,
+#   frozen per-entrant matrices, F8 at PLAYER unit): <=18 0.6859 · 19-20 1.4112 · 21+ 2.8173
+#   (filed priors 0.666 / 1.200 / 2.474; the bridge is printed in the act record).
+#   THE SHAPE. The ruling says "smooth taper 21->26, no integer cliff". A mean-holding linear ramp to 26
+#   is REFUSED on evidence: every per-age cell inside 21+ is far below the F8 bar (21:22.6 ... 26:2.7)
+#   and the estimates FALL after 22, so a rising ramp would hand the largest factor to the oldest,
+#   thinnest, measured-at-zero rows and break conservation by 3.5%. The directive's own tilt reading
+#   already says mature-21+ is unnameable and takes the base factor, pooling disclosed. So the cliff is
+#   removed where the ruling points at it — the BAND BOUNDARY — by keying on CONTINUOUS draft age.
+#   `_ageR`'s rounding is exactly what would create an integer cliff, so this site does not use it.
+#   AGE-UNKNOWN rows keep factor 1.0: their OWN cell, never absorbed into a neighbour (ruled).
+#   RECALCULATION LAW: nothing is stored per player. The knots are the taught gradient; the level is
+#   pinned by a renormaliser re-derived from the LIVE pool population on every build, so the identity
+#   holds on whatever roster the board actually carries.
+#   SCOPE, DECLARED: this is the ENGINE-VALUE entry-anchor site. `_cap_basis` (the ruck prior cap's
+#   ladder-currency basis, :1190) is deliberately NOT age-shaped here — that object is ITEM E2's, and
+#   moving both in one act would double-count the repair on pool rucks.
+_B_KNOTS=[(18.0,0.6858757327896249),(19.0,1.4111875531208420),
+          (20.0,1.4111875531208420),(21.0,2.8172535022231320)]
+def _b_shape(a):
+    if a is None: return 1.0                                 # age-unknown: its own cell, never absorbed
+    a=float(a)
+    if a<=_B_KNOTS[0][0]: return _B_KNOTS[0][1]
+    if a>=_B_KNOTS[-1][0]: return _B_KNOTS[-1][1]
+    for (a0,f0),(a1,f1) in zip(_B_KNOTS,_B_KNOTS[1:]):
+        if a0<=a<=a1: return f0 if a1==a0 else f0+(f1-f0)*(a-a0)/(a1-a0)
+    return _B_KNOTS[-1][1]
+def _b_age(p):
+    """Draft age as a CONTINUOUS quantity — `draft year - _by`, the same definition the teaching
+    matrices use (emit_matrix_338.py:262). None where the store carries no birth year."""
+    by=p.get('_by')
+    if by is None: return None
+    return float((p.get('year') or (cp.debutyr(p)-1))-by)
+_B_NORM={}
+def _b_renorm():
+    """THE C5 RENORMALISER — a state function re-derived from the live pool population every build."""
+    if 'k' not in _B_NORM:
+        num=den=0.0
+        for q in MA.data:
+            if not _isreal(q) or not q.get('_pool'): continue
+            lv=float(MA.pool_level(q)); den+=lv; num+=lv*_b_shape(_b_age(q))
+        _B_NORM['k']=(den/num) if num>0 else 1.0
+    return _B_NORM['k']
+def _b_factor(p): return _b_renorm()*_b_shape(_b_age(p))
 def entry_anchor(p):
     """The entry price a thin record leans on: the signed division level for a pool entrant (converted into
-    engine-value currency), the live V0 start value for everyone else."""
-    if p.get('_pool'): return float(MA.pool_level(p))*_PL_F
+    engine-value currency, and age-shaped by ITEM B at constant pool total), the live V0 start value for
+    everyone else."""
+    if p.get('_pool'): return float(MA.pool_level(p))*_PL_F*_b_factor(p)
     return v0_start(p)
 def _v0_curve_assert():                                      # BY-CONSTRUCTION GATES (D14 1c): wired, return dict of results
     star=_V0CURVE_META['_star']; ages=_V0CURVE_META['mature_nonRUC']['ages']
