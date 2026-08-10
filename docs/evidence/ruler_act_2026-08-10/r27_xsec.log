@@ -1,0 +1,77 @@
+engine basis: origin/main @ ef7eff8 ; store md5 0dd6b4a0
+loading engine (_merged_recover, main basis) ...
+engine loaded in 52s. BASE_REF=2026 AGE_REF=2026
+found: ['marcus-bontempelli', 'willem-duursma', 'zak-butters']
+  pricing willem-duursma ...
+    ev=4366, 36 calls captured; target args g=MID lp=103.8639 a=19 cur=77.0
+      call  0 g=MID  lp=  79.8855 a=19    cur=77.0     lens=bal  ctx=live res=   299.233 ok=True
+      call  1 g=MID  lp= 100.3357 a=19    cur=77.0     lens=bal  ctx=live res=  1801.193 ok=True
+      call  2 g=MID  lp= 108.0377 a=19    cur=77.0     lens=bal  ctx=live res=  2833.368 ok=True
+      call  3 g=MID  lp= 113.3078 a=19    cur=77.0     lens=bal  ctx=live res=  3769.703 ok=True
+      call  4 g=MID  lp= 116.2777 a=19    cur=77.0     lens=bal  ctx=live res=  4437.071 ok=True
+      call  5 g=MID  lp= 119.5905 a=19    cur=77.0     lens=bal  ctx=live res=  5172.998 ok=True
+      call  6 g=MID  lp=  79.8855 a=19    cur=77.0     lens=bal  ctx=live res=   299.233 ok=True
+      call  7 g=MID  lp= 100.3357 a=19    cur=77.0     lens=bal  ctx=live res=  1801.193 ok=True
+      call  8 g=MID  lp= 108.0377 a=19    cur=77.0     lens=bal  ctx=live res=  2824.033 ok=True
+      call  9 g=MID  lp= 113.3078 a=19    cur=77.0     lens=bal  ctx=live res=  3651.039 ok=True
+      call 10 g=MID  lp= 116.2777 a=19    cur=77.0     lens=bal  ctx=live res=  4180.587 ok=True
+      call 11 g=MID  lp= 119.5905 a=19    cur=77.0     lens=bal  ctx=live res=  4713.839 ok=True
+      call 12 g=MID  lp=  80.0532 a=19    cur=77.0     lens=bal  ctx=live res=   304.038 ok=True
+      call 13 g=MID  lp= 100.8995 a=19    cur=77.0     lens=bal  ctx=live res=  1867.862 ok=True
+      call 14 g=MID  lp= 109.3563 a=19    cur=77.0     lens=bal  ctx=live res=  3045.267 ok=True
+      call 15 g=MID  lp= 115.3155 a=19    cur=77.0     lens=bal  ctx=live res=  4211.230 ok=True
+      call 16 g=MID  lp= 117.7338 a=19    cur=77.0     lens=bal  ctx=live res=  4763.620 ok=True
+      call 17 g=MID  lp= 119.5905 a=19    cur=77.0     lens=bal  ctx=live res=  5172.998 ok=True
+      call 18 g=MID  lp=  80.0532 a=19    cur=77.0     lens=bal  ctx=live res=   304.038 ok=True
+      call 19 g=MID  lp= 100.8995 a=19    cur=77.0     lens=bal  ctx=live res=  1867.862 ok=True
+      call 20 g=MID  lp= 109.3563 a=19    cur=77.0     lens=bal  ctx=live res=  3023.136 ok=True
+      call 21 g=MID  lp= 115.3155 a=19    cur=77.0     lens=bal  ctx=live res=  4005.497 ok=True
+      call 22 g=MID  lp= 117.7338 a=19    cur=77.0     lens=bal  ctx=live res=  4423.055 ok=True
+      call 23 g=MID  lp= 119.5905 a=19    cur=77.0     lens=bal  ctx=live res=  4713.839 ok=True
+      call 24 g=MID  lp=  78.6527 a=19    cur=77.0     lens=bal  ctx=live res=   270.853 ok=True
+      call 25 g=MID  lp=  99.3846 a=19    cur=77.0     lens=bal  ctx=live res=  1690.918 ok=True
+      call 26 g=MID  lp= 107.4986 a=19    cur=77.0     lens=bal  ctx=live res=  2750.387 ok=True
+      call 27 g=MID  lp= 112.3107 a=19    cur=77.0     lens=bal  ctx=live res=  3573.070 ok=True
+      call 28 g=MID  lp= 116.2998 a=19    cur=77.0     lens=bal  ctx=live res=  4442.354 ok=True
+      call 29 g=MID  lp= 119.7245 a=19    cur=77.0     lens=bal  ctx=live res=  5203.233 ok=True
+      call 30 g=MID  lp=  78.6527 a=19    cur=77.0     lens=bal  ctx=live res=   270.853 ok=True
+      call 31 g=MID  lp=  99.3846 a=19    cur=77.0     lens=bal  ctx=live res=  1690.918 ok=True
+      call 32 g=MID  lp= 107.4986 a=19    cur=77.0     lens=bal  ctx=live res=  2744.221 ok=True
+      call 33 g=MID  lp= 112.3107 a=19    cur=77.0     lens=bal  ctx=live res=  3488.028 ok=True
+      call 34 g=MID  lp= 116.2998 a=19    cur=77.0     lens=bal  ctx=live res=  4184.645 ok=True
+      call 35 g=MID  lp= 119.7245 a=19    cur=77.0     lens=bal  ctx=live res=  4734.966 ok=True
+    no all-arg match; 36 ctx-live g/a matches
+    OK  branch=W4  ctx=live  engine 4734.966005 == transcribed(in-call) 4734.966005
+  pricing zak-butters ...
+    ev=7567, 12 calls captured; target args g=MID lp=118.4541 a=26 cur=119.8870218708447
+      call  0 g=MID  lp= 109.3525 a=26    cur=119.8870218708447 lens=bal  ctx=live res=  3644.695 ok=True
+      call  1 g=MID  lp= 117.2731 a=26    cur=119.8870218708447 lens=bal  ctx=live res=  4604.360 ok=True
+      call  2 g=MID  lp= 121.0522 a=26    cur=119.8870218708447 lens=bal  ctx=live res=  5180.029 ok=True
+      call  3 g=MID  lp= 122.3909 a=26    cur=119.8870218708447 lens=bal  ctx=live res=  5459.446 ok=True
+      call  4 g=MID  lp= 123.9517 a=26    cur=119.8870218708447 lens=bal  ctx=live res=  5794.186 ok=True
+      call  5 g=MID  lp= 125.6834 a=26    cur=119.8870218708447 lens=bal  ctx=live res=  6172.672 ok=True
+      call  6 g=MID  lp= 109.3525 a=26    cur=119.8870218708447 lens=bal  ctx=live res=  3386.564 ok=True
+      call  7 g=MID  lp= 117.2731 a=26    cur=119.8870218708447 lens=bal  ctx=live res=  4148.742 ok=True
+      call  8 g=MID  lp= 121.0522 a=26    cur=119.8870218708447 lens=bal  ctx=live res=  4520.459 ok=True
+      call  9 g=MID  lp= 122.3909 a=26    cur=119.8870218708447 lens=bal  ctx=live res=  4684.585 ok=True
+      call 10 g=MID  lp= 123.9517 a=26    cur=119.8870218708447 lens=bal  ctx=live res=  4877.814 ok=True
+      call 11 g=MID  lp= 125.6834 a=26    cur=119.8870218708447 lens=bal  ctx=live res=  5092.866 ok=True
+    no all-arg match; 12 ctx-live g/a matches
+    OK  branch=W4  ctx=live  engine 5092.866246 == transcribed(in-call) 5092.866246
+  pricing marcus-bontempelli ...
+    ev=4136, 12 calls captured; target args g=MID lp=114.0995 a=31 cur=117.54238167251083
+      call  0 g=MID  lp=  97.1410 a=31    cur=117.54238167251083 lens=bal  ctx=live res=  1417.577 ok=True
+      call  1 g=MID  lp= 105.5370 a=31    cur=117.54238167251083 lens=bal  ctx=live res=  1703.159 ok=True
+      call  2 g=MID  lp= 113.3934 a=31    cur=117.54238167251083 lens=bal  ctx=live res=  2048.984 ok=True
+      call  3 g=MID  lp= 123.8532 a=31    cur=117.54238167251083 lens=bal  ctx=live res=  2581.406 ok=True
+      call  4 g=MID  lp= 128.0861 a=31    cur=117.54238167251083 lens=bal  ctx=live res=  2821.467 ok=True
+      call  5 g=MID  lp= 125.6008 a=31    cur=117.54238167251083 lens=bal  ctx=live res=  2677.003 ok=True
+      call  6 g=MID  lp=  97.1410 a=31    cur=117.54238167251083 lens=bal  ctx=live res=  1223.217 ok=True
+      call  7 g=MID  lp= 105.5370 a=31    cur=117.54238167251083 lens=bal  ctx=live res=  1508.800 ok=True
+      call  8 g=MID  lp= 113.3934 a=31    cur=117.54238167251083 lens=bal  ctx=live res=  1854.624 ok=True
+      call  9 g=MID  lp= 123.8532 a=31    cur=117.54238167251083 lens=bal  ctx=live res=  2387.047 ok=True
+      call 10 g=MID  lp= 128.0861 a=31    cur=117.54238167251083 lens=bal  ctx=live res=  2618.304 ok=True
+      call 11 g=MID  lp= 125.6008 a=31    cur=117.54238167251083 lens=bal  ctx=live res=  2481.647 ok=True
+    no all-arg match; 12 ctx-live g/a matches
+    OK  branch=W4  ctx=live  engine 2481.646897 == transcribed(in-call) 2481.646897
+wrote /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/r27_xsec.json

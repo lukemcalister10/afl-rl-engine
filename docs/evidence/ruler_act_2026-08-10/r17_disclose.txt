@@ -1,0 +1,46 @@
+==============================================================================================================
+A. INTERIOR ZERO-SEASONS FROM CAREER YEAR 4 ONWARD  (store convention: no row = 0 games)
+==============================================================================================================
+rows with >=1 interior season carrying NO row at or after career year 4 : 166 of 1418
+  total such seasons: 227
+  by calendar year of the gap: [(2008, 3), (2009, 5), (2010, 11), (2011, 8), (2012, 10), (2013, 12), (2014, 16), (2015, 24), (2016, 32), (2017, 22), (2018, 20), (2019, 23), (2020, 15), (2021, 12), (2022, 6), (2023, 5), (2025, 3)]
+  those rows carry 19.1% of the population's year-4 price weight
+  the 2016 spike (32 rows) is the single-season league event of that year; those seasons are
+  priced at 0 in REALIZED under the store's own no-row convention -- named, not adjusted.
+  worst 6 by weight:
+     Lance Franklin           ND 2004  missing [2020]  proxy   10278  tilt 0.628
+     Nicholas Naitanui        ND 2008  missing [2017]  proxy    9546  tilt 0.406
+     Thomas Liberatore        ND 2010  missing [2015]  proxy    7422  tilt 0.531
+     Dyson Heppell            ND 2010  missing [2016]  proxy    6933  tilt 0.432
+     Matt Crouch              ND 2013  missing [2021]  proxy    6755  tilt 0.451
+     Mitch Clark              ND 2005  missing [2014]  proxy    6224  tilt 0.160
+
+==============================================================================================================
+B. TERMINAL-STUB FLAGS -- every cell in the map whose stub share exceeds 15%
+==============================================================================================================
+  SD x 2012-2015                     stub  18.1%  eff-n   30.2  below bar (not named)
+  RUCK x 2012-2015                   stub  16.9%  eff-n    3.5  below bar (not named)
+  ND 41-64 x 2012-2015               stub  16.8%  eff-n   23.7  below bar (not named)
+  2013-2015                          stub  15.4%  eff-n   71.0  NAMED  <== FLAG
+
+  named cells with stub between 10%% and 15%%:
+     2012-2015                          stub  13.4%  eff-n   96.0
+     runners x 2012-2015                stub  13.1%  eff-n   69.9
+     DIP-B x 2012-2015                  stub  14.4%  eff-n   42.8
+
+==============================================================================================================
+C. LIVE-CAREER (11+) SUB-POPULATION -- what the stub actually is
+==============================================================================================================
+  n=112 live 11+ rows; sum proxy 306261 (27.6% of population weight)
+  sum observed realized 258796 ; sum stub 33072 ; stub share of the LIVE rows' realized = 11.3%
+  live-rows-only tilt = 0.9530  vs completed-rows-only tilt = 0.4679
+  seasons of data: [(11, 31), (12, 26), (13, 18), (14, 12), (15, 10), (16, 9), (17, 2), (18, 2), (19, 1), (21, 1)]
+
+==============================================================================================================
+D. SELF-REFERENCE ARITHMETIC -- how much of REALIZED is engine judgement vs engine arithmetic
+==============================================================================================================
+  REALIZED total                        668189
+    from OBSERVED seasons priced         635117  (95.1%)
+    from the ENGINE'S CURRENT PRICE       33072  (4.9%)
+  i.e. 95.1%% of REALIZED is the engine's season kernel applied to games and averages that
+  actually happened; 4.9%% is a second engine forward price (the live tail).

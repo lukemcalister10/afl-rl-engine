@@ -1,0 +1,92 @@
+================================================================================================================================
+AGE AXIS RE-CUT — DOB store d9a24282 (main@064abcae) for AGE ONLY; all values from the
+act-branch artifact (store 37ced3ce).  n=1418, age-UNKNOWN = 0.
+  overall A: tilt 0.6017  1/tilt 1.6621
+  overall B: tilt 0.6296  1/tilt 1.5883
+  overall C: tilt 0.6239  1/tilt 1.6028
+  overall D: tilt 0.6465  1/tilt 1.5468
+================================================================================================================================
+  cell                                  n   eff-n |   1/t A   1/t B   1/t C   1/t D | 95% CI on D (tilt)
+  ------------------------------------------------------------------------------------------------------
+   age-axis base (ALL, age known)    1418   329.3 |  1.6621  1.5883  1.6028  1.5468 | [0.597,0.697]
+  -- the headline split --
+   young <=20                        1251   302.0 |  1.6578  1.5883  1.5971  1.5455 | [0.595,0.699]
+  *mature 21+                         167    32.8 |  1.7325  1.5883  1.6985  1.5663 | [0.439,0.801]
+  -- finer bins --
+   <=18                              1096   266.2 |  1.7070  1.6386  1.6497  1.5993 | [0.572,0.679]
+   19-20                              155    42.6 |  1.2692  1.1977  1.1933  1.1389 | [0.702,1.080]
+  *21-22                               97    25.6 |  1.7072  1.5801  1.6691  1.5550 | [0.386,0.853]
+  *23+                                 70    11.2 |  1.9009  1.6396  1.8986  1.6379 | [0.359,0.875]
+  -- route x age --
+   ND1-64 young <=20                  711   242.9 |  1.6895  1.6209  1.6379  1.5871 | [0.577,0.684]
+  *ND1-64 mature 21+                   30     9.6 |  1.3317  1.3382  1.4497  1.4430 | [0.349,0.897]
+   pool young <=20                    540    71.9 |  1.4886  1.4162  1.3882  1.3341 | [0.595,0.903]
+  *pool mature 21+                    137    23.2 |  1.9757  1.7199  1.8267  1.6230 | [0.423,0.806]
+   pool RD young <=20                 401    58.0 |  1.5355  1.4431  1.4180  1.3569 | [0.565,0.919]
+  *pool RD mature 21+                  98    19.6 |  1.9957  1.7303  1.8295  1.6228 | [0.389,0.821]
+  *pool non-RD mature 21+              39     7.9 |  1.8003  1.6249  1.8005  1.6250 | [0.204,1.146]
+  *pool mature 21-22                   72    16.5 |  1.9994  1.7308  1.8142  1.6112 | [0.373,0.848]
+  *pool mature 23+                     65    10.5 |  1.8830  1.6761  1.8807  1.6742 | [0.337,0.873]
+  -- group x age --
+   young <=20 x talls                 376    90.9 |  1.7150  1.5889  1.5667  1.4861 | [0.571,0.780]
+   young <=20 x runners               875   213.0 |  1.6383  1.5881  1.6083  1.5679 | [0.580,0.697]
+  *mature 21+ x talls                  56    11.5 |  1.7178  1.5529  1.5602  1.4284 | [0.267,0.918]
+  *mature 21+ x runners               111    21.7 |  1.7423  1.6129  1.8049  1.6739 | [0.401,0.835]
+  -- the relabelled cell --
+   classes 2004-05 (was 'UNKNOWN')    219    54.4 |  1.8832  1.7360  1.6995  1.6017 | [0.500,0.745]
+   classes 2004-05 x young<=20        201    49.5 |  1.8228  1.6844  1.6391  1.5493 | [0.514,0.771]
+   classes 2006-2015                 1199   274.9 |  1.6255  1.5629  1.5856  1.5367 | [0.598,0.705]
+   classes 2006-2015 x young<=20     1050   252.5 |  1.6298  1.5713  1.5894  1.5448 | [0.591,0.704]
+  * = below the F8 bar (Kish eff-n < 35).
+
+================================================================================================================================
+THE QUESTION THE POOL FINDINGS NEED: does mature-21+ clear the bar, and does it differ from young?
+================================================================================================================================
+  young <=20               eff-n  302.0  NAMED
+      A  tilt 0.6032  1/tilt 1.6578  bend 0.997  CI [0.550,0.657]
+      B  tilt 0.6296  1/tilt 1.5883  bend 1.000  CI [0.578,0.682]
+      C  tilt 0.6261  1/tilt 1.5971  bend 0.996  CI [0.573,0.679]
+      D  tilt 0.6470  1/tilt 1.5455  bend 0.999  CI [0.595,0.699]
+  mature 21+               eff-n   32.8  below bar
+      A  tilt 0.5772  1/tilt 1.7325  bend 1.042  CI [0.392,0.743]
+      B  tilt 0.6296  1/tilt 1.5883  bend 1.000  CI [0.434,0.802]
+      C  tilt 0.5888  1/tilt 1.6985  bend 1.060  CI [0.397,0.744]
+      D  tilt 0.6384  1/tilt 1.5663  bend 1.013  CI [0.439,0.801]
+  pool young <=20          eff-n   71.9  NAMED
+      A  tilt 0.6718  1/tilt 1.4886  bend 0.896  CI [0.520,0.823]
+      B  tilt 0.7061  1/tilt 1.4162  bend 0.892  CI [0.556,0.856]
+      C  tilt 0.7204  1/tilt 1.3882  bend 0.866  CI [0.564,0.874]
+      D  tilt 0.7495  1/tilt 1.3341  bend 0.863  CI [0.595,0.903]
+  pool mature 21+          eff-n   23.2  below bar
+      A  tilt 0.5061  1/tilt 1.9757  bend 1.189  CI [0.367,0.651]
+      B  tilt 0.5814  1/tilt 1.7199  bend 1.083  CI [0.415,0.750]
+      C  tilt 0.5474  1/tilt 1.8267  bend 1.140  CI [0.383,0.718]
+      D  tilt 0.6161  1/tilt 1.6230  bend 1.049  CI [0.423,0.806]
+  pool RD mature 21+       eff-n   19.6  below bar
+      A  tilt 0.5011  1/tilt 1.9957  bend 1.201  CI [0.339,0.658]
+      B  tilt 0.5779  1/tilt 1.7303  bend 1.089  CI [0.381,0.758]
+      C  tilt 0.5466  1/tilt 1.8295  bend 1.141  CI [0.352,0.733]
+      D  tilt 0.6162  1/tilt 1.6228  bend 1.049  CI [0.389,0.821]
+  pool non-RD mature 21+   eff-n    7.9  below bar
+      A  tilt 0.5555  1/tilt 1.8003  bend 1.083  CI [0.222,0.954]
+      B  tilt 0.6154  1/tilt 1.6249  bend 1.023  CI [0.203,1.146]
+      C  tilt 0.5554  1/tilt 1.8005  bend 1.123  CI [0.222,0.954]
+      D  tilt 0.6154  1/tilt 1.6250  bend 1.051  CI [0.204,1.146]
+  ND1-64 mature 21+        eff-n    9.6  below bar
+      A  tilt 0.7509  1/tilt 1.3317  bend 0.801  CI [0.308,1.093]
+      B  tilt 0.7473  1/tilt 1.3382  bend 0.843  CI [0.341,1.080]
+      C  tilt 0.6898  1/tilt 1.4497  bend 0.904  CI [0.312,0.902]
+      D  tilt 0.6930  1/tilt 1.4430  bend 0.933  CI [0.349,0.897]
+
+  young vs mature, per instrument (do the CIs on TILT overlap?):
+      A  young 0.6032 [0.550,0.657]  mature 0.5772 [0.392,0.743]  -> OVERLAP (no separation)
+      B  young 0.6296 [0.578,0.682]  mature 0.6296 [0.434,0.802]  -> OVERLAP (no separation)
+      C  young 0.6261 [0.573,0.679]  mature 0.5888 [0.397,0.744]  -> OVERLAP (no separation)
+      D  young 0.6470 [0.595,0.699]  mature 0.6384 [0.439,0.801]  -> OVERLAP (no separation)
+  pool young vs pool mature:
+      A  young 0.6718 [0.520,0.823]  mature 0.5061 [0.367,0.651]  -> OVERLAP (no separation)
+      B  young 0.7061 [0.556,0.856]  mature 0.5814 [0.415,0.750]  -> OVERLAP (no separation)
+      C  young 0.7204 [0.564,0.874]  mature 0.5474 [0.383,0.718]  -> OVERLAP (no separation)
+      D  young 0.7495 [0.595,0.903]  mature 0.6161 [0.423,0.806]  -> OVERLAP (no separation)
+
+wrote /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/r37_ageaxis.json

@@ -1,0 +1,69 @@
+
+================================================================================================================
+willem-duursma — 36 distribution nodes captured (lp ranges 78.65 .. 119.72); peak_est point = 103.8639
+================================================================================================================
+  age        min%      max%     mean%    spread   verdict
+  19        1.39%    15.74%     4.21%    14.34 pp   WIDE
+  20        2.21%    13.81%     5.46%    11.59 pp   WIDE
+  21        3.67%    12.11%     7.32%     8.44 pp   WIDE
+  22        7.83%    10.62%     9.22%     2.80 pp   moderate
+  23        8.30%    11.59%    10.68%     3.29 pp   moderate
+  24        8.17%    13.60%    11.60%     5.42 pp   WIDE
+  25       10.44%    13.77%    12.10%     3.33 pp   moderate
+  26        7.71%    11.54%    10.00%     3.83 pp   moderate
+  27        5.62%     9.65%     8.26%     4.03 pp   moderate
+  28        3.31%     7.64%     6.42%     4.33 pp   moderate
+  29        1.87%     5.97%     5.00%     4.10 pp   moderate
+  30        0.81%     4.37%     3.67%     3.56 pp   moderate
+  31        0.34%     3.29%     2.69%     2.95 pp   moderate
+  32        0.11%     2.37%     1.80%     2.26 pp   moderate
+  33        0.03%     1.55%     1.03%     1.52 pp   stable
+  34        0.00%     0.81%     0.43%     0.80 pp   stable
+  35        0.00%     0.22%     0.09%     0.22 pp   stable
+  36        0.00%     0.01%     0.00%     0.01 pp   stable
+  worst per-age spread across nodes: 14.34 percentage points
+  -> the age-share table is NOT well-defined without the node weights -- do not publish the age table
+
+================================================================================================================
+zak-butters — 12 distribution nodes captured (lp ranges 109.35 .. 125.68); peak_est point = 118.4541
+================================================================================================================
+  age        min%      max%     mean%    spread   verdict
+  26       22.83%    35.75%    26.03%    12.91 pp   WIDE
+  27       17.96%    21.02%    19.94%     3.06 pp   moderate
+  28       14.46%    16.72%    16.17%     2.26 pp   moderate
+  29       11.12%    12.81%    12.41%     1.68 pp   stable
+  30        8.08%     9.62%     9.04%     1.54 pp   stable
+  31        5.73%     7.17%     6.53%     1.45 pp   stable
+  32        3.88%     5.35%     4.71%     1.47 pp   stable
+  33        2.17%     3.66%     3.06%     1.49 pp   stable
+  34        0.76%     2.12%     1.60%     1.36 pp   stable
+  35        0.09%     0.79%     0.48%     0.70 pp   stable
+  36        0.00%     0.07%     0.04%     0.07 pp   stable
+  37        0.00%     0.00%     0.00%     0.00 pp   stable
+  38        0.00%     0.00%     0.00%     0.00 pp   stable
+  worst per-age spread across nodes: 12.91 percentage points
+  -> the age-share table is NOT well-defined without the node weights -- do not publish the age table
+
+================================================================================================================
+marcus-bontempelli — 12 distribution nodes captured (lp ranges 97.14 .. 128.09); peak_est point = 114.0995
+================================================================================================================
+  age        min%      max%     mean%    spread   verdict
+  31       37.95%    83.81%    55.36%    45.86 pp   WIDE
+  32       10.38%    26.61%    21.27%    16.23 pp   WIDE
+  33        4.43%    18.72%    13.58%    14.29 pp   WIDE
+  34        1.20%    11.00%     6.91%     9.80 pp   WIDE
+  35        0.17%     4.75%     2.46%     4.59 pp   moderate
+  36        0.01%     0.89%     0.39%     0.88 pp   stable
+  37        0.00%     0.06%     0.03%     0.06 pp   stable
+  38        0.00%     0.00%     0.00%     0.00 pp   stable
+  worst per-age spread across nodes: 45.86 percentage points
+  -> the age-share table is NOT well-defined without the node weights -- do not publish the age table
+
+================================================================================================================
+SUMMARY
+================================================================================================================
+  willem-duursma         price   4366  age now 19.0  career yr  1  nodes 36  worst spread 14.34pp  tail>cy7  39.4%  tail>cy11   9.7%
+  zak-butters            price   7567  age now 26.0  career yr  8  nodes 12  worst spread 12.91pp  tail>cy7 100.0%  tail>cy11  25.4%
+  marcus-bontempelli     price   4136  age now 31.0  career yr 13  nodes 12  worst spread 45.86pp  tail>cy7 100.0%  tail>cy11 100.0%
+
+wrote /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/r31_nodes.json
