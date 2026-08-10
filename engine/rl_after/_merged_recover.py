@@ -933,8 +933,9 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
         if _BOARD_PATH and k==ctx.get('ret_k',-1) and ctx.get('ret_hc',0.0)>0: lev*=(1-ctx['ret_hc'])   # Part-2 return-season haircut (BOARD-ONLY: the walk-forward book stays availability-free; single k -> decays next season)
         base=lev+MA.capt_prem(lev)
         Wk=_w4_W(k,ctx)
-        if k==0: prod+=Wk*MA.posval(base-MA.REPL[g0])*21/((1+d)**k)
-        else: prod+=Wk*sum(w*MA.posval(base-MA.REPL[gg]) for gg,w in fut)*21/((1+d)**k)
+        _df=MA.disc_factor(ah,d,k,lens)
+        if k==0: prod+=Wk*MA.posval(base-MA.REPL[g0])*21/_df
+        else: prod+=Wk*sum(w*MA.posval(base-MA.REPL[gg]) for gg,w in fut)*21/_df
     if g in('KPF','KPD'): prod*=1.05
     runway=MA.clamp((25-ah)/6.0,0,1); elite=MA.clamp((lp/MA.PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*MA.PMAX)
     return prod
@@ -972,7 +973,7 @@ def _prod_floor_w4(p,lens='bal'):
             pv=sp*MA.posval(base-MA.REPL[g])+(1.0-sp)*MA.posval(base-MA.REPL[lowbar])
         else:
             pv=MA.posval(base-MA.REPL[g])
-        prod+=_w4_W(k,ctx)*wt*pv*21/((1+d)**k); k+=1
+        prod+=_w4_W(k,ctx)*wt*pv*21/MA.disc_factor(a,d,k,lens); k+=1
     return MA.val(prod)
 MA.prod_floor=_prod_floor_w4
 # ==== L1c — EVIDENCE-CONDITIONED EXPECTED-RERATING CREDIT (2026-07-08 rectification build) ================

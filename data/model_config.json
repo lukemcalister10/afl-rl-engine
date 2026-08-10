@@ -3,7 +3,7 @@
  "version": "1.0",
  "date": "2026-07-09",
  "baked_state": "FINAL-INTEGRATION v2.11-final-rc (PROVISIONAL) \u2014 RL_PVC2/RL_LEGE/RL_LEGF=1 posture; board 039ff8d4 (Board B + visible future-draft ladder); store 968de0c7 unchanged",
- "config_sha256": "e0ff839000181a86e7942ae010e398cbbefae7e684a9dd29a6f61acb6b90be28",
+ "config_sha256": "255332348891701428d38b4b5109a7d7a9ae950335d4733928e0121bc89e0607",
  "excluded_infrastructure_vars": {
   "_note": "NOT model semantics \u2014 path/IO/display/mode plumbing, allowed ambient in bake/gate mode, never part of the value hash.",
   "RL_REPO": "checkout locator",
@@ -83,7 +83,8 @@
   "RL_ITEM_H": "1",
   "RL_AGE_DISC": "0",
   "RL_AGE_DISC_LO": "0.13",
-  "RL_AGE_DISC_HI": "0.15"
+  "RL_AGE_DISC_HI": "0.15",
+  "RL_AGE_DISC_MODE": "1"
  },
  "var_notes": {
   "RL_RUCK_TAX": "pinned for official-env parity; currently orphaned on the live board path (only verify_anchors.py, itself an orphan per docs/CHANGELOG, references rd.RUCK_TAX) \u2014 inert either way, pinned so bake/gate mode does not flag the official env's ambient 0.25 as unknown",
@@ -107,7 +108,8 @@
   "RL_ITEM_H": "#334 ITEM H \u2014 the ruled cut list (union sitters x0.280 / all-pool-sitters x0.804 / mature nonRD x0.615, cell-qualified and composing). 1 = live; 0 = no cuts, byte-exact.",
   "RL_AGE_DISC": "#334 THE AGE-DYNAMIC FUTURE DISCOUNT (owner ruling 5246868843), the ordered counterbalance to the relativity-guard breach. 0 = OFF and byte-identical to the composed board; 1 = the per-annum future discount becomes a function of the player's CURRENT age at pricing. Balanced lens only.",
   "RL_AGE_DISC_LO": "#334 age-dynamic discount, the YOUNG end: per-annum rate for a player priced at age <= 21. Linear in CONTINUOUS age from here to RL_AGE_DISC_HI at age 26 - no integer cliffs.",
-  "RL_AGE_DISC_HI": "#334 age-dynamic discount, the MATURE end: per-annum rate for a player priced at age >= 26."
+  "RL_AGE_DISC_HI": "#334 age-dynamic discount, the MATURE end: per-annum rate for a player priced at age >= 26.",
+  "RL_AGE_DISC_MODE": "#334 age-dynamic discount MODE. 1 = V1, two-point CURRENT-AGE curve (RL_AGE_DISC_LO/HI). 2 = V2, four-band CURRENT-AGE curve (12% <=19 / 13% 20-21 / 15% 25-27 / 16% >=28, smooth joins). 3 = V3, AGE-AT-SEASON keyed - a DIFFERENT machine: the rate for future season k is the rate for the age the player will BE then, so PV is the PATH PRODUCT prod_j (1+r(a+j)), not (1+r)**k. Inert unless RL_AGE_DISC=1."
  },
  "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899"
 }

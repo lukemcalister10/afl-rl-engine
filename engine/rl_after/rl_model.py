@@ -765,13 +765,52 @@ def clamp(x,a,b): return max(a,min(b,x))
 AGE_DISC=os.environ.get('RL_AGE_DISC','0')!='0'
 AGE_DISC_LO=float(os.environ.get('RL_AGE_DISC_LO','0.13'))   # the young end (age <= 21)
 AGE_DISC_HI=float(os.environ.get('RL_AGE_DISC_HI','0.15'))   # the mature end (age >= 26)
+AGE_DISC_MODE=os.environ.get('RL_AGE_DISC_MODE','1')   # 1 = V1 two-point current-age · 2 = V2 four-band current-age · 3 = V3 AGE-AT-SEASON path product
+def _pw_interp(a,knots):
+    """Piecewise-linear on CONTINUOUS age through (age, rate) knots; flat outside. No integer cliffs."""
+    a=float(a)
+    if a<=knots[0][0]: return knots[0][1]
+    if a>=knots[-1][0]: return knots[-1][1]
+    for (a0,r0),(a1,r1) in zip(knots,knots[1:]):
+        if a0<=a<=a1:
+            return r0 if a1==a0 else r0+(r1-r0)*(a-a0)/(a1-a0)
+    return knots[-1][1]
+
+# V1 (mode 1): two-point current-age curve, the owner's first proposal.
+# V2 (mode 2): four-band current-age curve — 12% at <=19 · 13% at 20-21 · 15% at 25-27 · 16% at >=28,
+#   smooth joins across 21->25 and 27->28. Same machinery as V1, just more knots.
+_V2_KNOTS=[(19.0,0.12),(20.0,0.13),(21.0,0.13),(25.0,0.15),(27.0,0.15),(28.0,0.16)]
+# V3 (mode 3): AGE-AT-SEASON keyed — A DIFFERENT MACHINE, deliberately. The rate applied to future
+#   season k is the rate for the age the player will BE in that season, so the present value is the
+#   PATH PRODUCT  PV(k) = prod_{j=1..k} 1/(1+r(a+j))  and NOT (1+r(a+k))**k. Under this keying a young
+#   player's far seasons are discounted at the LOW late-path rates he will reach, so the far tail of a
+#   young career gains most; a veteran's short path gains little. Net expectation: pro-young.
+_V3_KNOTS=[(20.0,0.14),(21.0,0.13),(22.0,0.13),(23.0,0.12),(25.0,0.12),(26.0,0.11),(28.0,0.11),(29.0,0.10)]
+def age_disc_mode():
+    try: return int(float(AGE_DISC_MODE))
+    except Exception: return 0
 def age_disc(a,d,lens='bal'):
-    """The per-annum future discount for a player priced at CURRENT age a. Identity when the dial is off."""
+    """The per-annum future discount for a player priced at CURRENT age a. Identity when off.
+    Modes 1 and 2 return a scalar rate; mode 3 is NOT a scalar and is handled by disc_factor()."""
     if not AGE_DISC or lens not in ('bal','balanced') or a is None: return d
+    m=age_disc_mode()
+    if m==2: return _pw_interp(a,_V2_KNOTS)
+    if m==3: return d                      # mode 3 never uses a single rate; see disc_factor()
     a=float(a)
     if a<=21.0: return AGE_DISC_LO
     if a>=26.0: return AGE_DISC_HI
     return AGE_DISC_LO+(AGE_DISC_HI-AGE_DISC_LO)*(a-21.0)/5.0
+def disc_factor(a,d,k,lens='bal'):
+    """THE DISCOUNT FACTOR for future season k, for a player priced at current age a.
+    Modes 0/1/2: the existing power form (1+r)**k with r fixed at pricing time.
+    Mode 3: the PATH PRODUCT prod_{j=1..k} (1+r(a+j)) — the rate for each season is the rate for the
+    age he will be in it. k=0 is 1.0 in every mode, so the present season is never discounted."""
+    if k<=0: return 1.0
+    if AGE_DISC and lens in ('bal','balanced') and a is not None and age_disc_mode()==3:
+        f=1.0; a=float(a)
+        for j in range(1,int(k)+1): f*=(1.0+_pw_interp(a+j,_V3_KNOTS))
+        return f
+    return (1.0+age_disc(a,d,lens))**k
 LENS={'now':0.34,'bal':(0.14 if os.environ.get('RL_DIAL14','1')!='0' else 0.15),'fut':0.05}   # v2.9 L2: dial 14 (owner-ruled D5, "14 for now"); gate RL_DIAL14 (default ON; =0 ⇒ 0.15 ⇒ base). bont 3676 gawn 2501.
 # LEG E POSTURES (memo §3): NEW VALUES over the SAME dial family — a posture is the per-annum production discount
 # d, not a new code path. balanced == 'bal' (owner-ruled, byte-exact, the ONLY board that gates/bakes/seals).
@@ -832,8 +871,9 @@ def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
         if k==0: lev=max(lev,cl)
         if k==0 and pre_hc>0 and BASE_REF==2026 and AGE_REF==2026: lev*=(1-pre_hc)  # B2 present-unavailability haircut (Now board only)
         base=lev+capt_prem(lev)
-        if k==0: prod+=posval(base-REPL[g0])*21/((1+d)**k)
-        else: prod+=sum(w*posval(base-REPL[gg]) for gg,w in fut)*21/((1+d)**k)
+        _df=disc_factor(a,d,k,lens)
+        if k==0: prod+=posval(base-REPL[g0])*21/_df
+        else: prod+=sum(w*posval(base-REPL[gg]) for gg,w in fut)*21/_df
     if g in('KPF','KPD'): prod*=1.05
     runway=clamp((25-a)/6.0,0,1); elite=clamp((lp/PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*PMAX)
     return prod
@@ -863,7 +903,7 @@ def prod_floor(p,lens='bal'):
             pv=sp*posval(base-REPL[g])+(1.0-sp)*posval(base-REPL[lowbar])
         else:
             pv=posval(base-REPL[g])
-        prod+=wt*pv*21/((1+d)**k); k+=1
+        prod+=wt*pv*21/disc_factor(a,d,k,lens); k+=1
     return val(prod)
 # ===== cont.20: v4 LEARNED FORWARD-PROJECTION (peak_est spine) =====
 # Replaces old blended cohort+demoPeak. Model = forward-realised best-3 (>=Y, completeness-weighted), bust-inclusive.
