@@ -1903,6 +1903,47 @@ def sitout_ev(p,Y,e_full):
     gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
     lam=float(np.interp(min(gy/fe,6.0),[0,1,2,3,4,5,6],LAM_SIT))                 # games AT PACE vs the prorated bar
     return (1.0-lam)*R*entry_anchor(p)+lam*e_full            # #326: a pool entrant blends off his division's signed entry level; every other player off v0_start, byte-for-byte
+# ===== #334 ITEM A — THE YEAR-1+ ANCHOR LEG (A1 full carry). Ruled 5238860310; ramp identified by
+# ablation (docs/evidence/composition_2026-08-10/ABLATION_READING.md), owner reading word 5240605334.
+#
+# THE DEFECT (D1): at ns>=1 the fitted year-0 prior is DISCARDED. The ablation proves it rather than
+# asserting it — zero the production leg entirely and the price does not fall to the anchor, it falls to
+# 0.229 x anchor, the floor_frac schedule. So on the year-1+ path the prior survives ONLY as a one-sided
+# lower bound. There is no blend, and therefore no fading chain: the hand-over is a CLIFF at the
+# qualification boundary, not a ramp.
+#
+# THE RAMP, identified functionally and not by name. Of the four candidates, iso_eff is inert (0.3%),
+# _expgate is a partner in the PEDIGREE-POLE leg which the sitting ruled stays pick/pedigree, and LAM_SIT
+# is the engine's ONLY anchor<->production blend: sitout_ev's (1-lam)*R*entry_anchor + lam*e_full. ITEM A
+# is that same blend CARRIED FORWARD past ns==0 instead of switched off.
+#
+# THE FADE ACROSS YEARS. lam alone resets every season, so carrying it forward unchanged would not make v2
+# borrow less than v1. The anchor share is therefore damped by the engine's OWN cumulative evidence fade —
+# exp(-E_q/tau), tau=_EVW_TAU=1.1, the pedigree-fade family that iso_eff already rides. E_q is effective
+# qualifying seasons, recomputed from the record every call, so this is a state function and never a stored
+# per-player boost (the recalculation law). A synthetic year-2 probe responds to year-2 games by construction.
+#
+#       anchor_share(p,Y) = (1 - lam_season) x exp(-E_q / tau)
+#       price             = (1 - anchor_share) x e_full  +  anchor_share x R x entry_anchor
+#
+# CONTINUITY AT GRADUATION, BY CONSTRUCTION: at ns==0 the record carries E_q=0, so exp(-0/tau)=1 and the
+# expression collapses to EXACTLY sitout_ev's blend. The two branches agree at the boundary; E_q is a soft
+# 10-game measure, so nothing jumps as a player qualifies. NO NEW MACHINERY: the blend form, R, lam and the
+# fade family are all existing objects.
+# SITE: this runs at ev(), NEVER inside raw_ev — _v0_uncapped calls raw_ev at Y=debutyr-1 to BUILD the very
+# year-0 prior being borrowed, so blending inside raw_ev would be self-referential.
+_A_ON=os.environ.get('RL_ITEM_A','1')!='0'   # declared kill-switch: RL_ITEM_A=0 => the pre-A build, byte-exact
+_A_TAU=_EVW_TAU                              # the engine's own pedigree-fade rate, effective-qualifying-season units
+def _a_share(p,Y):
+    """How much of the year-1+ price still leans on the fitted year-0 prior."""
+    fe=_fEy(Y,p); gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
+    lam=float(np.interp(min(gy/fe,6.0),[0,1,2,3,4,5,6],LAM_SIT))   # LAM_SIT's own ramp, unchanged
+    return (1.0-lam)*_math.exp(-_ev_qual(p,Y)/_A_TAU)
+def _a_blend(p,Y,e_full):
+    tau=max(0.0,Y-cp.debutyr(p))+((_fEy(Y,p)**1.5) if Y>=cp.debutyr(p) else 0.0)   # sitout_ev's own depth clock
+    R=_R_surf(_sitout_cls(MA.gfut(p)),MA.effpk(p),tau)
+    s=_a_share(p,Y)
+    return (1.0-s)*e_full+s*R*entry_anchor(p)
 def _first_evidence(p,Y):                                     # the games-ramp family: ALL evidence is season Y
     return not any(x['games']>0 and x['year']<Y for x in p['scoring'])
 def _prod_path(p,Y):
@@ -1978,6 +2019,8 @@ def ev(p,Y=2026):
     pos=MA.gfut(p); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)); pr=bestlvl(p,Y)/max(1,par)
     if ns==0:                                                 # SIT-OUT: derived games-ramp treatment (V0-anchored, prorated, scoring-aware, continuous at graduation)
         return round(sitout_ev(p,Y,e))
+    if _A_ON and _isreal(p):                                  # #334 ITEM A: the anchor leg no longer stops at qualification — it fades (see _a_blend above)
+        e=_a_blend(p,Y,e)
     keyruc = pos in ('KPF','KPD','RUCK'); onset = (4 if keyruc else 3)
     if el>=onset and ns<=1:                                   # stalled: D8 graded release at evaluated year
         frac=0.25*max(0.4,1-0.10*(el-onset))*(1.6 if keyruc else 1.0)
