@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v100 · supervisor pen · 2026-08-07, register v610
+# CURRENT STATE — the incoming-seat read · v101 · supervisor pen · 2026-08-07, register v611
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,12 +128,12 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v100 · supervisor pen · 2026-08-07, register v610 · THE ACT IS AT ITS RULING POINT and
-THE SEAT HOLDS. The repair landed (tip e8c772c, only rung 0.25 feasible, yr1 1.0111/0.9624,
-5 top-pick fallers worst −0.50%); THE COMBINED SIDE-BY-SIDE IS FILED (5220064508): four
-rulings pending — THE ENTRY-ANCHOR CAP (the lever) · the rung · the basis · the cut list.
-NOTHING installs without the owner's word; any hold ships dial-0 baseline byte-exact.
-Read the v604–v610 register entries IN FULL before touching any stage. Primer v7 first.)
+(v101 · supervisor pen · 2026-08-07, register v611 · RULING POINT, seat holds; NEW OWNER
+BASIS RULING (5235016488): cohort membership by YEAR-1 SEASON not draft label (MSD N+1 ∈
+cohort N) — RE-EMIT the side-by-side conservation tables under it BEFORE any ruling. The
+four rulings stand: the CAP · the rung · the basis · the cut list (5220064508). Open offers
+unruled: the three-axis stage-6 probe + the sitter-leg cross-section (v611 entry).
+Read the v604–v611 register entries IN FULL before touching any stage. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
