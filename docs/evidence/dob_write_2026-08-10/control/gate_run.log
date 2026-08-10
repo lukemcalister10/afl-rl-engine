@@ -1,0 +1,14 @@
+== store in workspace ==
+0dd6b4a01e16dabf8d3a388d8f8ac1f2  rl_model_data.json
+== rl_export.py (F1 export<->engine parity gate) ==
+rl_export exit=0
+6e724cca2bb2fb118ff7ad6ed1f8a4b6  rl_app_data.json
+== s4_matrix_M1v7.py (book; F2 book<->board parity gate) ==
+s4_matrix exit=0
+== one_source_selftest.py ==
+selftest exit=0
+selftest PASS count: 142
+selftest FAIL/STALE count: 0
+== guard_correction_canary.py (Guard 4) ==
+canary exit=0
+GATES_DONE

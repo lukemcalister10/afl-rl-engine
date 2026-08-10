@@ -1,0 +1,19 @@
+== store in workspace ==
+d9a24282357cf3083b1640466e3ecd83  rl_model_data.json
+== v0surf on the load path ==
+5a03c9ea3e9a32e6cc6e1ffec5293685  /home/claude/v0surf.pkl
+== rl_export.py (F1 export<->engine parity gate) ==
+rl_export exit=0
+a672ed3a6a1426a262d932f844e8f87b  rl_app_data.json
+== s4_matrix_M1v7.py (book; F2 book<->board parity gate) ==
+s4_matrix exit=0
+52d9558711916fe171386fbdd4cdd0e9  s4_matrix.json
+== one_source_selftest.py ==
+selftest exit=0
+selftest PASS : 142
+selftest FAIL : 0
+== guard_correction_canary.py (Guard 4) ==
+canary exit=0
+NUMÉRAIRE GUARD: PASS — shipped pick-1 = 3000 (UNCONDITIONAL standing law, register v30 item 17)
+PARITY GATE PASS: all 804 active board values == engine gated ev() (matched by key, eps=0)
+GATES_DONE
