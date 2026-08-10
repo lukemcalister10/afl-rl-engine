@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v111 · supervisor pen · 2026-08-10, register v621
+# CURRENT STATE — the incoming-seat read · v112 · supervisor pen · 2026-08-10, register v622
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,30 +128,32 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v102 · supervisor pen · 2026-08-07, register v612 · SEAT LAW: ALL replies to the owner in
-ASD-STE100 Simplified Technical English. Owner trust statement filed (5235043061); options
-A/B/C offered (audit year-0 provenance / rulings / both) — OWNER HAS NOT CHOSEN; wait for
-that word before ANY new work. Cohort-membership ruling (v611) still requires table
-re-emission. The four rulings stand (5220064508). Two year-0 defects named: KPD level +
-band steps; R12-violation finding FILED (5235067201) — the live year-0 surface breaks
-the owner's own 2026-07-03 law. OWNER WORD: AUDIT FIRST — two Opus read-only audits
-RUNNING (year-0 honesty measurement + R12 provenance; briefs on #334 at 5235093657;
-progress files AUDIT1/2_PROGRESS.md in scratchpad; relay checkpoints; owner can stop
-any time). TABLES LANDED (3820303, cohort rule, verified; two-instruments rule filed).
-R22 ingestion RUNNING (branch ingest/r22-2026; Bailey word: 97=WC/89=WB; PR-not-merge,
-seam verifies R21→R22 first). AUDIT 2 COMPLETE (v617): R12 broken BY OMISSION at #306
-(dab9657, 08-05, on MAIN; never-rises never restated in the revision order; D14b hand-run
-only, last 07-17; the band-seam story was WRONG — same-band inversion). AUDIT 1 ALSO
-COMPLETE (v618): ND year-0 HONEST everywhere; pool over-priced ~66k pts (AGE error,
-#326-adjacent); KPD = a year-0→1 mark-up defect; unknown-DOB priced as 18 (~17.7k);
-inversions 8,341 pts total, mostly tiny. THE AUDIT PHASE IS DONE — the decision menu is
-in v618 and RULED at v621: the ELEVEN RULINGS are in (restore YES · gates YES · ledger
-HELD · all four measurements YES · CAP RELEASED spirit-bounded · band STANDS, shortfall
-rejected · cut list approved). SIX AGENTS LIVE: DOB write + Group-1 repair (both
-PR-not-merge) + four read-only measurements (briefs 5235660463; progress files in
-scratchpad; relay checkpoints; owner stop-word). Then: composition directive → the
-owner's single sitting → composition build → adoption.
-Read v604–v621 IN FULL. Primer v7 first.)
+(v112 · supervisor pen · 2026-08-10, register v622 · SEAT LAW: ALL replies to the owner in
+ASD-STE100 Simplified Technical English; LONG ANSWERS BEFORE ANY TOOL WORK in the final
+message. THE ELEVEN RULINGS are in (v621). FIVE OF SIX AGENTS LANDED, each verified on real
+bytes and filed: sitter 5235734225 (position-only; era break ~15×, owner mechanism = deferred
+peak, watch item; year-2 recalc works F2=1.000; Mraz/Smillie post-composition checks; owner
+QC dispositions filed 5235830131) · 3-axis probe 5235775326 (NO: +0.0009, cells 14-30 real
+rows; carries sa-as-GATE 0.5062→1.0319 + the 41-64 endpoint re-pick →~1.036, both OWNER
+CALLS; 1.04 unreached → cap release 3.8 the only road) · pool design 5235784509 (mechanism
+(b): signed levels carry ZERO age slope; engine collapses v0 5.7× at 21→22 then year-1
+ignores age — Laird 386.2 / Keough 11.9 both year-1 142 exact; lawful cuts −0.002..−0.012;
+lifts all fail the clustered CI; C5 reshape lead-neutral; stage-7 conclusion survives) ·
+mark-up trace 5235847132 (the four suspects DEAD; THE defect = the year-1 price drops the
+fitted year-0 surface — markup = (1/correction)×production; CF-B closes 99.1% of the
+young-KPD excess; RUCK = the production ceiling, its own defect; Dean NOT exposed; live:
+Mraz 37% / O'Sullivan 27% of price on the defect) · DOB write HALTED at the v0surf guard
+5235776895 → OWNER: "Authorise the refit." 5235816134 — agent RESUMED to land (full re-bake
++ carrier re-pin, PR-not-merge, expected board a672ed3a, 6 movers all ±1, halt on surprise).
+OWNER DESIGN PRINCIPLE filed 5235816134: v1 borrows from the v0 prior, diminishing until
+production leads — Agents 9+10 CONVERGED on its absence from two directions; ONE fix shape
+(year-1+ anchor borrows from the fitted year-0 prior, fading with production); the year-0
+age repair becomes LOAD-BEARING (sequence: year-0 first or together). Completed-career
+cross-check OFFERED, awaits word. STILL LIVE: G1 repair (1.1+1.2). NEXT: G1 lands → the
+composition directive (cap-release evidence weight + probe carries + pool design + the
+prior-borrowing fix shape + sitter dial) → the owner's single sitting → composition build →
+adoption.
+Read v604–v622 IN FULL. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
