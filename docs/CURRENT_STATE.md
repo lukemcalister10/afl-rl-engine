@@ -128,12 +128,21 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v119 · supervisor pen · 2026-08-10, register v629 · SEAT LAWS: ASD-STE100 base for ALL owner
-replies; the COMPLETE answer in the FINAL message, never between tool calls (a delivery
-failure owned at v629); owner-requested views FIRST; machine time IS project time; no point
-estimates for multi-step agent work — step lists; compact only with everything pushed; YEAR-4
+(v120 · supervisor pen · 2026-08-10, register v633 · SEAT LAWS: PLAIN LANGUAGE UPFRONT for
+every owner-facing explanation — problem/why/trade-off/options, never simplification on
+request (third reminder = the ruling, 5240468212); ASD-STE100 base; the COMPLETE answer in
+the FINAL message, never between tool calls; owner-requested views FIRST; machine time IS
+project time; no point estimates — step lists; compact only with everything pushed; YEAR-4
 IS NOT A TARGET; no expectation site reads pick without position (build assertion); no worked
 example is a target; REFEREE AFTER PHASE 5 (owner word 5238084682).
+THE LEVEL LAW (5240550781, ends the 8-week "young players are overpriced" recurrence): the
+LEVEL of any delivery-based ruler is NOT evidence and is never presented as a finding — a
+belief/option market reads ~1.5x hot against average delivery at EVERY age, year-0 and
+year-4 alike, by construction of the instrument; only CONTRASTS within the same ruler are
+evidence; ASYMMETRIC level changes (one rung, not all) are BARRED — they manufacture the
+pick-hoarding arbitrage the no-arb band prevents; a root-act level adjustment, if ever,
+moves every rung by the same factor (ratios, trades, the youth premium unchanged). No agent
+presents the level as a result again — filtered at the instrument.
 THE SITTING IS COMPLETE (2026-08-10, in-chat; words filed 5238548520 / 5238688172 /
 5238860310): the composition package is FULLY RULED — A=A1 · B · C adopted · C-Q1 taught
 level · C-Q2 PLAYED-ONLY H sizing · C-Q3 demonstrate-or-drop (sa = designated fallback gate)
