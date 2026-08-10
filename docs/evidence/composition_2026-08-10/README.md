@@ -319,6 +319,85 @@ in doubt.
 
 ---
 
+## 4a. THE GATES — GREEN, AND THE BOARD REPRODUCES BYTE-EXACT
+
+`gate_run.sh` in this directory, mirroring `docs/evidence/g1_never_rises_2026-08-10/gate_run.sh`
+and pointed at the checkout (this branch changes no engine file, so the checkout **is** the engine
+under test). Full transcripts alongside it.
+
+| gate | result |
+|---|---|
+| `rl_export.py` (F1 export↔engine parity) | **exit 0** |
+| **board rebuild md5** | **`4b448a821f54180182637983f7a26a9d`** — **byte-identical to the committed board** |
+| `s4_matrix_M1v7.py` (F2 book↔board parity) | **exit 0** |
+| `one_source_selftest.py` — the standing gated build | **exit 0 · 147 PASS / 0 FAIL / 0 STALE** (the expected baseline) |
+| — D14a cross-draft dispersion | **PASS** 0.000000 over the 1,448 rows the surface prices |
+| — D14b V0 pick inversions | **PASS** 0 |
+| — D14c KPP retention floor O1 depth-monotone | **PASS** |
+| — D14d never-rises on the surface | **PASS** 0 rising steps, picks 1-64 **and** the full 1-90 grid (8,010 pairs) |
+| `guard_correction_canary.py` (Guard 4) | **exit 0** |
+| `ship_gates_check.py` (the hand-run superset) | **exit 1 — pre-existing, not this branch (below)** |
+
+**The board rebuild is the control that matters.** Rebuilt from this branch's bytes on this box, the
+board comes back `4b448a82` — the committed board, unchanged. That is the direct proof of the claim
+made in §0: this branch moves nothing.
+
+**The one red row, and why it is not this branch's.** `ship_gates_check.py` halts before it runs a
+single gate:
+
+```
+============ CONFIG MANIFEST (gate mode) REJECTED — BUILD HALTED ============
+  - DIVERGENT model override RL_GAMMA='0.85' != manifest '1.0'
+```
+
+The cause is `ship_gates_check.py:64`, which hard-sets `RL_GAMMA='0.85'` — the START_HERE §2 value —
+while the gate manifest pins `1.0`. **This is exactly the ENV-PIN CONFLICT the directive parked in
+§4** ("two 'canonical' environments coexist in the tree — a documentation repair, its own small item,
+not this act"). It is provably pre-existing rather than introduced here: this branch's entire diff
+against main is `docs/evidence/composition_2026-08-10/`, and no engine, config or manifest file is
+touched, so the halt reproduces identically on `110afb3`.
+
+Worth stating for the record, because it is a live gap rather than a cosmetic one: **the hand-run
+superset is currently unrunnable under the gate manifest.** The laws it carries are not lost — D14a-d
+run inside `one_source_selftest.py` §(11) and are green above, which is precisely the wiring ruling
+1.2 put in after the 2026-08-05 break went nineteen days unseen. But the checklist's own extra
+coverage (three-column board, snapshots, the FLOOR-SAVES table) cannot be hand-run in gate mode by
+anybody today. Flagged, not fixed — fixing it is the parked documentation item, not this act.
+
+---
+
+## 4b. THE MRAZ LINE — the BEFORE side, which is a flag on its own
+
+The package did not land, so **there is no combined move to print**. What can be printed, and is —
+`mraz_line_probe.py` — is where Mraz already stands against his standing surprise-scaled-trust
+tolerance *before* anything moves. It is the baseline any future combined-move line is measured from,
+and it does not wait on the rest of the act.
+
+| quantity | value |
+|---|---|
+| identity (per the board) | Noah Mraz — Hawthorn KPD, pick 35, class 2024 |
+| record | 2026: 4 games @ 84.25 |
+| pick-35 curve value (frozen `_PVC0` ruler, ladder ccy) | **561.0** |
+| entry anchor | 487.5 |
+| **board price** | **3,555** |
+| **board price ÷ pick-35 curve value** | **6.34× (raw) · 6.67× (ladder ccy)** |
+| the charter's line | **3.5×** → 1,963.5 ladder / 1,865.7 board |
+
+**Read straight: Mraz already sits at roughly 6.3-6.7× his pick's value on the shipped board —
+close to double the 3.5× line — before any item of this package touches him.** His ruled band ran
+2-3× at stage 4 and was slackened to 3.5-3.8× at stage 5; he is well beyond even the slackened top.
+
+Two things follow, and neither is a resize:
+
+1. **The breach is not something this act would create.** Any combined move ITEM A/C/D would add
+   lands on an already-breached baseline. That materially changes what the Mraz check is *for*: as
+   specified it asks "does the package push him through his tolerance?", and the answer is that he
+   is through it already, on four games.
+2. **It is a flag for the owner, per the charter** ("breach = FLAG, do not resize"). Recorded here,
+   in the PR, and in the final report. Nothing was resized, and no component was tuned to move him.
+
+---
+
 ## 5. WHAT WAS NOT STARTED, AND WHY — NOTHING IS SILENTLY DROPPED
 
 | item | why not started |
@@ -377,6 +456,9 @@ surface — E1 is safe to wire without a re-bake.
 | `item_b_probe.py` · `_out.txt` | ITEM B: the re-derived pool age gradient, conservation proof, F8 at player unit (§4) |
 | `ruler_probe.py` · `_out.txt` | ITEM I: the four-instrument reconstruction, first pass (§3.2) |
 | `ruler_probe2.py` · `_out.txt` | ITEM I: the cohort/estimator variant sweep and the completed-career collapse that exposes the historical-context finding (§3.3) |
+| `mraz_line_probe.py` | the Mraz standing-tolerance baseline (§4b) |
+| `gate_run.sh` | the gate script, as run (§4a) |
+| `gate_export.txt` · `gate_board_rebuild_md5.txt` · `gate_book.txt` · `gate_selftest.txt` · `gate_canary.txt` · `gate_ship.txt` | gate transcripts |
 
 Every probe is read-only: it loads the engine, reads the store and the board, and writes nothing.
 
