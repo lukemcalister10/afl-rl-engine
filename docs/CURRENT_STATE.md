@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v101 · supervisor pen · 2026-08-07, register v611
+# CURRENT STATE — the incoming-seat read · v102 · supervisor pen · 2026-08-07, register v612
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,12 +128,12 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v101 · supervisor pen · 2026-08-07, register v611 · RULING POINT, seat holds; NEW OWNER
-BASIS RULING (5235016488): cohort membership by YEAR-1 SEASON not draft label (MSD N+1 ∈
-cohort N) — RE-EMIT the side-by-side conservation tables under it BEFORE any ruling. The
-four rulings stand: the CAP · the rung · the basis · the cut list (5220064508). Open offers
-unruled: the three-axis stage-6 probe + the sitter-leg cross-section (v611 entry).
-Read the v604–v611 register entries IN FULL before touching any stage. Primer v7 first.)
+(v102 · supervisor pen · 2026-08-07, register v612 · SEAT LAW: ALL replies to the owner in
+ASD-STE100 Simplified Technical English. Owner trust statement filed (5235043061); options
+A/B/C offered (audit year-0 provenance / rulings / both) — OWNER HAS NOT CHOSEN; wait for
+that word before ANY new work. Cohort-membership ruling (v611) still requires table
+re-emission. The four rulings stand (5220064508). Two year-0 defects named: KPD level +
+band steps; banding provenance NOT traced. Read v604–v612 IN FULL. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
