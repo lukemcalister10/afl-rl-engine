@@ -1897,12 +1897,37 @@ def _v0_surface_assert():
                 rising_steps_1_64=n64, rising_steps_full_grid=nall,
                 worst=bad,
                 shape=('POS|AGE' if any('|' in _k for _k in cells) else 'legacy'))
+# ===== #334 SALVAGE 3 — SURPRISE-SCALED EVIDENCE TRUST (stage-4 amendment 1, ported from
+# origin/landing/334-stage-b 3820303 :1855-1866 under owner ballot word 1, 5242713366).
+# THE OWNER'S DESIGN RULING, verbatim: "4 games of sample, especially when it's so far from the
+# projection, shouldn't be trusted as much, surely." Small samples NEAR projection keep today's
+# reactivity (confirmation); small samples FAR from projection are shrunk toward the prior, because a
+# fringe player's played games are selection-biased upward — his 4 games are his best 4. Continuous
+# everywhere, no thresholds, symmetric in sign (a shock collapse from a high prior is shrunk the same
+# way), and it grows back with games.
+# PORTED WITHOUT THE PED_BAR TERM: stage 4's pedigree-conditioned evidence bar is NOT part of this act,
+# so the exponent carries the surprise demand alone.
+SUR_W=float(os.environ.get('RL_SUR_W','4.0'))                  # THE DIAL, in passes of the lam ramp demanded per nat of surprise on a wholly-unresolved record. 0 => byte-exact pre-surprise build (the identity proof). The branch shipped 5.0, calibrated on the OLD currency/board; the live value is re-calibrated on THIS board against the owner's ruled tolerance — see the dial ladder in the act evidence.
+_RHO_SIT_BAR=(6.0*6.0)/(6.0*6.0+6.0+_ABS_FADE_K)             # rho at the RULED 6-game establishment bar; the normaliser, so u(6)==0 exactly
+def _rho_res(g):
+    """the engine's R100.11 evidence-resolution curve, rho(g)=g^2/(g^2+g+K), K=_ABS_FADE_K (PINNED)."""
+    g=float(max(0.0,g)); return (g*g)/(g*g+g+_ABS_FADE_K)
+def _surprise(e_full,anchor,gp):
+    """The SURPRISE demand, in the same "passes of the lam ramp" unit the exponent is denominated in.
+    s = |log(e_full/anchor)| is the size of the re-rate this thin record claims against its own prior;
+    u = 1-rho(gp)/rho(6) is the share of that record still UNRESOLVED. Their product is the claim the
+    evidence has not yet earned. Zero at zero surprise; zero at the establishment bar; symmetric in sign."""
+    s=(abs(float(np.log(e_full/anchor))) if (e_full>0.0 and anchor>0.0) else 0.0)   # domain guard only
+    return SUR_W*s*(1.0-_rho_res(gp)/_RHO_SIT_BAR)
 def sitout_ev(p,Y,e_full):
     fe=_fEy(Y,p); tau=max(0.0,Y-cp.debutyr(p))+((fe**1.5) if Y>=cp.debutyr(p) else 0.0)   # D12: CONCAVE penalty proration tau'=(R/24)^1.5 (Luke OPTION A); completed seasons full (integer knots), in-progress season accrues concavely. PENALTY path only — the lam reward blend below is UNTOUCHED.
     R=_R_surf(_sitout_cls(MA.gfut(p)), MA.effpk(p), tau)     # D13 ASK3: pick-conditioned, isotonic-in-depth surface (was depth-only R_SIT)
     gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
-    lam=float(np.interp(min(gy/fe,6.0),[0,1,2,3,4,5,6],LAM_SIT))                 # games AT PACE vs the prorated bar
-    return (1.0-lam)*R*entry_anchor(p)+lam*e_full            # #326: a pool entrant blends off his division's signed entry level; every other player off v0_start, byte-for-byte
+    gp=min(gy/fe,6.0)                                        # hoisted: the ONE games-at-pace clamp the lam ramp AND the resolution fade both read (identical expression; no new clip)
+    anch=R*entry_anchor(p)                                   # THE ANCHOR LEG — hoisted; the SAME object the blend and the surprise statistic both read
+    lam=float(np.interp(gp,[0,1,2,3,4,5,6],LAM_SIT))                             # games AT PACE vs the prorated bar
+    lam=lam**(1.0+_surprise(e_full,anch,gp))                 # #334 salvage 3: the SURPRISE demand (endpoints fixed: 0**e=0, 1**e=1; RL_SUR_W=0 => exponent 1 => byte-exact)
+    return (1.0-lam)*anch+lam*e_full                         # #326: a pool entrant blends off his division's signed entry level; every other player off v0_start, byte-for-byte
 # ===== #334 ITEM A — THE YEAR-1+ ANCHOR LEG (A1 full carry). Ruled 5238860310; ramp identified by
 # ablation (docs/evidence/composition_2026-08-10/ABLATION_READING.md), owner reading word 5240605334.
 #

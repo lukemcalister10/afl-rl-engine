@@ -1,0 +1,28 @@
+config manifest (gate mode) LOADED  hash cef06fd6250b  (59 model vars pinned; ambient cleared)
+sit-out rows on the board (the term's whole reach): 160   qualifying rows: 644
+sit-out rows NEAR projection (production within +/-25% of their own anchor leg): 27
+
+=== 1. THE DIAL LADDER — Mraz against his ruled ~2-3x tolerance ===
+ RL_SUR_W         ev      board  x pick-35   verdict
+ 0.0          3516.0     3340.9      5.955   above 3x
+ 1.0          2934.0     2787.9      4.970   above 3x
+ 2.0          2454.0     2331.8      4.157   above 3x
+ 3.5          1889.0     1794.9      3.200   above 3x
+ 5.0          1467.0     1394.0      2.485   INSIDE 2-3x
+
+  SMALLEST rung landing him inside 2-3x: 5.0
+
+=== 2. THE NEAR-PROJECTION NO-REBALANCE PROOF ===
+  the ruled condition: rows performing near their projection must NOT move materially.
+ RL_SUR_W   n near   max |d%|  mean |d%|     n > 2%
+ 0.0            27       0.00       0.00          0
+ 1.0            27       1.25       0.10          0
+ 2.0            27       2.09       0.17          1
+ 3.5            27       2.71       0.27          1
+ 5.0            27       3.34       0.34          2
+
+=== 3. INTERACTION GUARDS WITH ITEM A (they share the sit-out/anchor site) ===
+  (a) QUALIFYING rows (ns>=1, ITEM A's population) moved by the surprise dial: 0 of 644
+      expected 0 — a qualifying row returns before sitout_ev, so the surprise term
+      cannot reach it. ITEM A and the surprise law therefore never both act on one row.
+  (b) sub-bar NEAR-PROJECTION rows moving >2% at the maximum dial: 2 of 27 names: Flynn Riley, Alex Van Wyk
