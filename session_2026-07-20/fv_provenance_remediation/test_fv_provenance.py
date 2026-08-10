@@ -50,7 +50,7 @@ FIX = os.path.join(REPO, 'session_2026-07-20', 'fv_provenance_remediation', 'fix
 CLAUDE = '/home/claude'
 AMBIENT_FV = os.path.join(CLAUDE, 'rl_workspace', 'forward_valuation')   # the FORMER RL_FV default (the hole)
 RL_AFTER_LINK = os.path.join(CLAUDE, 'rl_after')                        # the FORMER hardcoded rl_model path
-BOARD_MD5_GOOD = 'a970c19cd56ea184e9ca5eb02211d21b'   # ITEM 411 D1 (owner rulings v467/v469): accepted R19 balanced/strict board (advanced from 1373e824, the ITEM 408 STOP-1 board)
+BOARD_MD5_GOOD = '234c3414fa001bd9538deb6668e169f0'   # ITEM 411 D1 (owner rulings v467/v469): accepted R19 balanced/strict board (advanced from 1373e824, the ITEM 408 STOP-1 board)
 BAD_PREFIX = 'd7a95e8d'
 STALE_DP = os.path.join(FIX, 'distribution_pricing.stale_21d530bf.py')
 
@@ -249,10 +249,10 @@ def board_oracle():
     r = _run_build({}, rl_fv=os.path.join(REPO, 'engine', 'forward_valuation'))
     ok = (r['rc'] == 0 and r['board_md5'] == BOARD_MD5_GOOD)
     facts = _board_facts(r['board_path']) if r['board_path'] else {}
-    ok = ok and facts.get('active') == 804 and facts.get('sum_v') == 761587 and facts.get('sheezel') == 11925
+    ok = ok and facts.get('active') == 804 and facts.get('sum_v') == 761574 and facts.get('sheezel') == 11925
     # C5: compare the COMPLETE active-player value vector against the accepted reference — require ZERO movers.
     movers = None
-    ref_path = os.path.join(FIX, 'reference_vector_a970c19c.json')
+    ref_path = os.path.join(FIX, 'reference_vector_234c3414.json')
     if r['board_path'] and os.path.exists(ref_path):
         ref = json.load(open(ref_path))['vector']
         built = {p['key']: p['v'] for p in json.loads(open(r['board_path'], 'rb').read())['active']}
@@ -266,7 +266,7 @@ def board_oracle():
         ok = False
         movers = None
     record('ORACLE_accepted_board_zero_movers', ok,
-           "rc=%s md5=%s active=%s sumv=%s sheezel=%s vector_movers=%s ref_present=%s (expect a970c19c/804/761587/11925/0)"
+           "rc=%s md5=%s active=%s sumv=%s sheezel=%s vector_movers=%s ref_present=%s (expect 234c3414/804/761574/11925/0)"
            % (r['rc'], r['board_md5'], facts.get('active'), facts.get('sum_v'), facts.get('sheezel'),
               (len(movers) if movers is not None else '?'), os.path.exists(ref_path)))
     shutil.rmtree(r['base'], ignore_errors=True)

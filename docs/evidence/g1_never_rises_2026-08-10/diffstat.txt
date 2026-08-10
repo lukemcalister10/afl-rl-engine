@@ -1,10 +1,21 @@
- data/expected_boot.json                        |   6 +-
- data/release_contract.json                     |   6 +-
- data/rl_build/rl_app_data.json                 |   2 +-
- data/rl_build/rl_app_data.json.srcmd5          |   2 +-
- data/v0surf.pkl                                | Bin 148626 -> 148626 bytes
- engine/rl_after/_merged_recover.py             | 190 ++++++++++++++++++++++---
- engine/rl_after/one_source_selftest.py         |  54 +++++++
- session_2026-07-18/legf6/v0surf_refit_log.json |  10 ++
- ship_gates_check.py                            |  31 +++-
- 9 files changed, 273 insertions(+), 28 deletions(-)
+ data/expected_boot.json                            |   2 +-
+ data/release_contract.json                         |  10 +-
+ data/release_lineage.json                          |  58 ++
+ docs/evidence/g1_never_rises_2026-08-10/README.md  |  43 +-
+ .../g1_never_rises_2026-08-10/diffstat.txt         |  10 -
+ .../g1_never_rises_2026-08-10/gate_run.log         |   2 +-
+ engine/rl_after/ingestion/pos_rank_history.json    | 811 +++++++++++++++++++++
+ engine/rl_after/ingestion/rank_history.json        | 811 +++++++++++++++++++++
+ engine/rl_after/ingestion/sibling_repin_state.json |  20 +-
+ engine/rl_after/ingestion/value_history.json       | 811 +++++++++++++++++++++
+ .../test_fv_provenance.py                          |   8 +-
+ .../evidence/config_inventory.json                 |  72 +-
+ .../evidence/invariant_proof.json                  |  18 +-
+ ui/data/board_view_public.js                       |   2 +-
+ ui/data/board_view_working.js                      |   2 +-
+ ui/data/club_valuation.js                          |   2 +-
+ ui/data/movers.js                                  |   2 +-
+ ui/data/movers_transition.js                       |   2 +-
+ ui/data/ownership.js                               |   2 +-
+ ui/tests/movers.test.js                            |   7 +-
+ 20 files changed, 2613 insertions(+), 82 deletions(-)

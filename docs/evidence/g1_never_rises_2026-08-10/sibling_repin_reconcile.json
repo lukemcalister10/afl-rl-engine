@@ -1,0 +1,28 @@
+{
+  "active": 804,
+  "balanced_board_md5": "234c3414fa001bd9538deb6668e169f0",
+  "changed": true,
+  "committed_targets": [
+    "board_view_public",
+    "board_view_working",
+    "forward_oracle",
+    "forward_vector",
+    "fv_test",
+    "manifest",
+    "reference_vector",
+    "release_contract",
+    "sidecar"
+  ],
+  "no_op": false,
+  "ok": true,
+  "old_balanced_board_md5": "a970c19cd56ea184e9ca5eb02211d21b",
+  "recovered": [],
+  "sheezel": 11925,
+  "sum_v": 761574,
+  "txn_dir": "/home/claude/g1b_ws/engine/rl_after/ingestion/.sibling_txn/txn_22_234c3414",
+  "validation": {
+    "release_contract_check": [
+      "RELEASE-CONTRACT CHECK: PASS  (contract ef25c2599e4b; identities + config + posture consistent)"
+    ]
+  }
+}

@@ -6,10 +6,10 @@
     "B": 20,
     "C": 5
   },
-  "n_reads": 166,
+  "n_reads": 170,
   "n_vars": 84,
   "ok": true,
-  "root": "/home/user/afl-rl-engine",
+  "root": "/home/claude/g1b_ws",
   "surface_file_count": 92,
   "unclassified": [],
   "vars": [
@@ -204,7 +204,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_export.py",
-          "line": 311
+          "line": 321
         },
         {
           "default": "1",
@@ -279,7 +279,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_model.py",
-          "line": 1229
+          "line": 1301
         }
       ],
       "var": "RL_L5_PICKLESS"
@@ -293,12 +293,12 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_export.py",
-          "line": 187
+          "line": 197
         },
         {
           "default": "1",
           "file": "engine/rl_after/rl_export.py",
-          "line": 201
+          "line": 211
         },
         {
           "default": "1",
@@ -322,12 +322,12 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_export.py",
-          "line": 201
+          "line": 211
         },
         {
           "default": "1",
           "file": "engine/rl_after/rl_export.py",
-          "line": 654
+          "line": 664
         }
       ],
       "var": "RL_LEGF"
@@ -507,12 +507,12 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1838
+          "line": 2044
         },
         {
           "default": "1",
           "file": "engine/rl_after/one_source_selftest.py",
-          "line": 418
+          "line": 419
         },
         {
           "default": "1",
@@ -522,7 +522,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/rl_export.py",
-          "line": 589
+          "line": 599
         },
         {
           "default": "1",
@@ -541,7 +541,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1811
+          "line": 2017
         }
       ],
       "var": "RL_PVCADOPT"
@@ -555,7 +555,7 @@
         {
           "default": "0",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1804
+          "line": 2010
         },
         {
           "default": "<expr:<default>>",
@@ -719,17 +719,37 @@
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1272
+          "line": 1289
         },
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1361
+          "line": 1379
         },
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1601
+          "line": 1718
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 2075
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/_merged_recover.py",
+          "line": 2079
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/one_source_selftest.py",
+          "line": 700
+        },
+        {
+          "default": null,
+          "file": "engine/rl_after/one_source_selftest.py",
+          "line": 707
         }
       ],
       "var": "RL_V0SURF_REFIT"
@@ -977,7 +997,7 @@
         {
           "default": "rl_app_data.json",
           "file": "engine/rl_after/s4_matrix_M1v7.py",
-          "line": 124
+          "line": 163
         }
       ],
       "var": "RL_APP_DATA"
@@ -1093,7 +1113,7 @@
         {
           "default": null,
           "file": "ui/tools/ingest_inputs.py",
-          "line": 788
+          "line": 792
         }
       ],
       "var": "RL_OSA_SKIP"
@@ -1136,17 +1156,17 @@
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1274
+          "line": 1291
         },
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1424
+          "line": 1442
         },
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1550
+          "line": 1661
         },
         {
           "default": null,
@@ -1171,7 +1191,7 @@
         {
           "default": ".",
           "file": "engine/rl_after/rl_export.py",
-          "line": 658
+          "line": 668
         },
         {
           "default": null,
@@ -1495,7 +1515,7 @@
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1273
+          "line": 1290
         },
         {
           "default": null,
@@ -1552,7 +1572,7 @@
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1549
+          "line": 1660
         }
       ],
       "var": "RL_LANE_EXPECT"
@@ -1566,7 +1586,7 @@
         {
           "default": null,
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1423
+          "line": 1441
         }
       ],
       "var": "RL_LENS_BASIS"
@@ -1580,7 +1600,7 @@
         {
           "default": "1",
           "file": "engine/rl_after/_merged_recover.py",
-          "line": 1393
+          "line": 1411
         }
       ],
       "var": "RL_V0_LENS"

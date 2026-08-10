@@ -9,7 +9,7 @@ rl_export exit=0
 4b448a821f54180182637983f7a26a9d  rl_app_data.json
 == s4_matrix_M1v7.py (book; F2 book<->board parity gate) ==
 s4_matrix exit=0
-2a642bdac98bff151624b2bf48318884  s4_matrix.json
+8fa0f35da019d298e08e53adef1f2ee1  s4_matrix.json
 == one_source_selftest.py (THE STANDING GATED BUILD — D14a/b/c/d run here) ==
 selftest exit=0
 selftest PASS : 147
