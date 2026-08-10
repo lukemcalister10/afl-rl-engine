@@ -1,11 +1,85 @@
 config manifest (gate mode) LOADED  hash cef06fd6250b  (59 model vars pinned; ambient cleared)
-Traceback (most recent call last):
-  File "/home/user/afl-rl-engine/docs/evidence/composition_2026-08-10/mraz_trace.py", line 11, in <module>
-    g = load()
-        ^^^^^^
-  File "/home/user/afl-rl-engine/docs/evidence/composition_2026-08-10/engine_load.py", line 30, in load
-    exec(compile(src, '_merged_recover.py', 'exec'), g)
-  File "_merged_recover.py", line 2140, in <module>
-    assert not _iso_bad, ('#326 HALT: %d pool entrant(s) (%s) do not price off their own division level — the '
-           ^^^^^^^^^^^^
-AssertionError: #326 HALT: 1202 pool entrant(s) (['Fred Rodriguez', 'Riley Onley', 'Jack Watkins', 'Leon Kickett', 'Ollie Greeves', 'Nick Driscoll']) do not price off their own division level — the single pool value is back in a player price.
+====================================================================================================
+1. THE LEVEL CHECK — Mraz against his ruled tolerance (~3.5x pick-35's ladder value)
+====================================================================================================
+  record (unchanged since before R21): [{'year': 2026, 'avg': 84.25, 'games': 4, 'pos': 'KPD'}]
+  pick-35 ladder value           561.0
+  entry anchor                   487.5
+  engine ev(2026)               3741.0
+  BOARD price                     3555      vPrev 425   levers {'L1': 0, 'L2': 22, 'L3': 0, 'L4': -12, 'L5': 0}
+  board / pick-35                6.337 x   (ladder ccy 6.669 x)
+  THE LINE (3.5x)               1865.7 board / 1963.5 ladder
+  stage-5 board 13f8c2e0 priced him 1,645 on these SAME four games -> 2.932 x (inside tolerance)
+
+  vPrev semantics (rl_export.py:273): 'the value on the LAST-ACCEPTED-BAKE board = the
+  all-levers-OFF pre-refit base' — NOT the previous round's price.
+  Levers sum 10, but v - vPrev = 3130, so his row is NOT covered by the attribution sidecar:
+  his record post-dates the bake the sidecar was built from. vPrev=425 is his ZERO-GAMES
+  bake-era price — i.e. what the engine paid him before those four games existed.
+
+====================================================================================================
+2. THE TRACE — the two named suspects, tested
+====================================================================================================
+
+(b) THE REACH OF THE SURPRISE-SCALED-TRUST LAW
+    nseas_pro(Mraz, 2026) = 0   (qualifying bar = 6 x fE = 6 x 0.920 = 5.52 games; he has 4)
+    ev()'s dispatch: `if ns==0: return round(sitout_ev(p,Y,e))` — so he routes through
+    the SIT-OUT path.
+
+    TWO FINDINGS, and they compound:
+    (i)  THE LAW IS NOT ON MAIN AT ALL. occurrences of 'surprise' in the engine head:
+         main = 0   ·   stage-b 3820303 = 17
+         and `git merge-base --is-ancestor 3820303 origin/main` = NOT an ancestor => stage B was NEVER
+         merged. The whole stage-B act is still branch-held.
+    (ii) EVEN WHERE IT IS INSTALLED, ITS JURISDICTION IS sitout_ev ONLY. On stage-b the law
+         sits at _merged_recover.py:1948-1952, inside sitout_ev, described in its own comment
+         as multiplying 'the anchor at the TWO anchor sites in sitout_ev'. sitout_ev is
+         reached only when ns==0.
+         => Mraz is still inside its jurisdiction (ns==0).
+
+(a) THE D1 DROPPED-CORRECTION REFUND (what ITEM A repairs)
+    iso_corr(KPD, pick 35)        = 1.0008   (the pick tax at zero evidence)
+    iso_eff(Mraz, 2026)           = 1.0008   (the FADED tax he actually pays)
+    raw_ev                        =     5827.9
+    _prod_path = raw_ev x iso_eff =     5762.0
+    ev()                          =     3741.0
+    the refund the fade hands back =      -65.9 = -1.8% of his price
+    ITEM A does NOT claw this back: the fade is the pick tax dissolving, which is correct
+    behaviour. What ITEM A restores is the ANCHOR LEG — see the ablation: at ns>=1 the fitted
+    year-0 prior survives only as a one-sided FLOOR (0.45 x anchor at year 1), never as a
+    blend. ITEM A's claw-back on Mraz is quantified in the side-by-side, not asserted here.
+
+====================================================================================================
+3. THE VERDICT ON TOLERANCE
+====================================================================================================
+  pre-act board  3555  =  6.34 x pick-35   (line 3.5x)   BREACHED
+  The package's post-act ratio is printed in the side-by-side. No component is tuned to
+  move him: the year-4 law generalises — nothing is aimed at a named player's number.
+
+====================================================================================================
+4. THE PATTERN ENUMERATION — is Mraz one hole, or the visible end of one?
+====================================================================================================
+  every RETURNED player (a scoring gap before his latest scored season) with <= 6 CAREER
+  games whose CURRENT price sits >= 3x his entry anchor.
+
+  player                    pick pos    games       sa      par    anchor    price    ratio  ns
+  Noah Mraz                   35 KPD        4    84.25    57.55     487.5     3555     7.29   0
+
+  n = 1 such rows. Of these, 0 carry ns>=1 — i.e. they are OUT of the sit-out path and
+  therefore out of the surprise-scaled-trust law's jurisdiction even where it is installed.
+  Mraz's rank among them by ratio: 1
+
+  --- WIDENED: ALL thin-record board rows (<=6 career games), ratio >= 2.0, returned or not ---
+  player                    pick pos    games       sa    anchor    price    ratio  ns returned
+  Noah Mraz                   35 KPD        4    84.25     487.5     3555     7.29   0      yes
+  Ollie Greeves                5 MID        4    44.00     154.3      539     3.49   0       no
+  Thomas Burton             None SF         5    39.40     132.2      337     2.55   0       no
+  Balyn O'Brien             None SD         4    26.75     132.2      294     2.22   0       no
+  Harry O'Farrell             40 KPD        6    55.80     473.2      949     2.01   1       no
+
+  n = 5 thin-record rows at ratio >= 2.0, of which 4 carry ns==0 — i.e. they sit INSIDE
+  the sit-out path, which is exactly where the branch-held surprise law would bite.
+  Mraz at 7.29x is far clear of the next row (3.49x): an extreme singleton in MAGNITUDE,
+  with a small neighbourhood behind him in the same machinery rather than a broad hole.
+
+wrote mraz_pattern.json

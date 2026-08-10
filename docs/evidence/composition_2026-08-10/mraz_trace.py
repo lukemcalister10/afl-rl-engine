@@ -36,10 +36,11 @@ print("  stage-5 board 13f8c2e0 priced him 1,645 on these SAME four games -> %.3
       % (1645 / curve35))
 lv = MB.get('levers') or {}
 print("\n  vPrev semantics (rl_export.py:273): 'the value on the LAST-ACCEPTED-BAKE board = the")
-print("  all-levers-OFF pre-refit base' — NOT the previous round's price. Levers sum %d, but")
-print("  v - vPrev = %d, so his row is NOT covered by the attribution sidecar: his record"
+print("  all-levers-OFF pre-refit base' — NOT the previous round's price.")
+print("  Levers sum %d, but v - vPrev = %d, so his row is NOT covered by the attribution sidecar:"
       % (sum(lv.values()) if lv else 0, bv - (MB.get('vPrev') or 0)))
-print("  post-dates the bake the sidecar was built from. vPrev=425 is his ZERO-GAMES bake-era price.")
+print("  his record post-dates the bake the sidecar was built from. vPrev=425 is his ZERO-GAMES")
+print("  bake-era price — i.e. what the engine paid him before those four games existed.")
 
 print()
 print("=" * 100)
@@ -160,6 +161,37 @@ print("\n  n = %d such rows. Of these, %d carry ns>=1 — i.e. they are OUT of t
 print("  therefore out of the surprise-scaled-trust law's jurisdiction even where it is installed.")
 print("  Mraz's rank among them by ratio: %s"
       % (next((i + 1 for i, r in enumerate(rows) if r[1] == 'Noah Mraz'), 'not in list')))
+
+# ---- THE WIDENED PANEL: the strict definition answers the letter of the question; this answers
+# ---- the question itself ("one hole, or the visible end of one?") by dropping the 'returned'
+# ---- condition and lowering the ratio bar, so the neighbourhood around him is visible.
+print("\n  --- WIDENED: ALL thin-record board rows (<=6 career games), ratio >= 2.0, returned or not ---")
+wide = []
+for p in real:
+    if p['key'] not in BROW: continue
+    if p.get('_retired') or g['delisted'](p): continue
+    gt, sa = career(p)
+    if gt <= 0 or gt > 6: continue
+    a = float(entry_anchor(p))
+    if a <= 0: continue
+    price = float(BROW[p['key']]['v'])
+    if price / a < 2.0: continue
+    T = int(min(max(g['_ageR'](p) - 18, 1), 6))
+    par = float(PR.par_at(MA.gfut(p), min(MA.effpk(p), cp.KMAX), T))
+    wide.append((price / a, p.get('player'), p.get('pick'), MA.gfut(p), gt, sa, par, a, price,
+                 g['nseas_pro'](p, Y), 'yes' if returned(p) else 'no'))
+wide.sort(reverse=True)
+print("  %-24s %5s %-5s %6s %8s %9s %8s %8s %3s %8s"
+      % ("player", "pick", "pos", "games", "sa", "anchor", "price", "ratio", "ns", "returned"))
+for r in wide[:20]:
+    print("  %-24s %5s %-5s %6.0f %8.2f %9.1f %8.0f %8.2f %3d %8s"
+          % (r[1], r[2], r[3], r[4], r[5], r[7], r[8], r[0], r[9], r[10]))
+print("\n  n = %d thin-record rows at ratio >= 2.0, of which %d carry ns==0 — i.e. they sit INSIDE"
+      % (len(wide), sum(1 for r in wide if r[9] == 0)))
+print("  the sit-out path, which is exactly where the branch-held surprise law would bite.")
+print("  Mraz at %.2fx is far clear of the next row (%.2fx): an extreme singleton in MAGNITUDE,"
+      % (wide[0][0], wide[1][0] if len(wide) > 1 else float('nan')))
+print("  with a small neighbourhood behind him in the same machinery rather than a broad hole.")
 json.dump([dict(player=r[1], pick=r[2], pos=r[3], games=r[4], sa=r[5], par=r[6], anchor=r[7],
                 price=r[8], ratio=r[0], ns=r[9]) for r in rows],
           open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mraz_pattern.json"), "w"), indent=1)

@@ -2133,12 +2133,35 @@ assert (_V0CURVE_META.get('_v0surf_frozen') is True
 #     one pool slot. Stated as an equality over the whole pool population so a re-pointed branch is a build
 #     halt, not a board that quietly prices nine pathways at one number again. pool_value itself stays in the
 #     artifact for the pick side, the entrant layer and the display bands; those are not player prices.
+#     #334 ITEM B AMENDMENT. The entry-anchor equality is now stated WITH the ruled age factor on it:
+#     entry_anchor == his own signed level x _PL_F x _b_factor(p). The guard's protection is UNCHANGED and
+#     is what it always was — the BASIS must be the player's OWN division level, never the ladder's single
+#     pool slot. A re-pointed branch still halts here, because pool_value x _PL_F x _b_factor(p) does not
+#     equal pool_level(p) x _PL_F x _b_factor(p) for any division whose level differs from the pool slot.
+#     The factor is a SHAPE on top of that basis, not a substitute for it, so admitting it does not widen
+#     what the assert lets through. _cap_basis is deliberately unshaped (ITEM B's declared scope), so that
+#     half of the equality is untouched and still binds the ladder-currency site exactly as before.
 _POOL_ROWS_326=[p for p in MA.data if p.get('_pool')]
 _iso_bad=[p.get('player') for p in _POOL_ROWS_326
           if abs(_cap_basis(p)-float(MA.pool_level(p)))>1e-9
-          or abs(entry_anchor(p)-float(MA.pool_level(p))*_PL_F)>1e-6]
+          or abs(entry_anchor(p)-float(MA.pool_level(p))*_PL_F*_b_factor(p))>1e-6]
 assert not _iso_bad, ('#326 HALT: %d pool entrant(s) (%s) do not price off their own division level — the '
                       'single pool value is back in a player price.'%(len(_iso_bad),_iso_bad[:6]))
+# (2b) #334 ITEM B — THE C5 LEVEL-PRESERVING LAW, ASSERTED AT BUILD TIME, not merely reported in an
+#      evidence file. The pool year-0 age repair is a RESHAPE: it moves value between ages and must never
+#      move the pool's total. Stated over the whole live pool population so a mis-derived gradient, a lost
+#      renormaliser or a population change that silently breaks conservation is a BUILD HALT rather than a
+#      quiet lift. This is ITEM B's own law and it is the one thing about B that must never drift.
+_B_SUM_BEFORE=_math.fsum(float(MA.pool_level(p))*_PL_F for p in _POOL_ROWS_326)
+_B_SUM_AFTER=_math.fsum(entry_anchor(p) for p in _POOL_ROWS_326)
+assert _B_SUM_BEFORE<=0 or abs(_B_SUM_AFTER-_B_SUM_BEFORE)/_B_SUM_BEFORE<1e-9, (
+    '#334 ITEM B HALT: the pool year-0 age repair is NOT level-preserving — pool Sigma entry_anchor moved '
+    '%.6f -> %.6f (delta %.6f, %.3e relative). C5 requires the pool total held EXACTLY; only its '
+    'distribution across draft age may move.'
+    %(_B_SUM_BEFORE,_B_SUM_AFTER,_B_SUM_AFTER-_B_SUM_BEFORE,
+      abs(_B_SUM_AFTER-_B_SUM_BEFORE)/max(_B_SUM_BEFORE,1e-9)))
+print('#334 ITEM B WIRED: pool year-0 age gradient live on %d entrants (K=%.10f); pool Sigma v0 held at '
+      '%.4f (C5 level-preserving, asserted).'%(len(_POOL_ROWS_326),_b_renorm(),_B_SUM_AFTER))
 # A build's own report must not misstate its basis (#344): the frozen-load sentence is printed only when the
 # surface was in fact loaded from the freeze. On the declared lane the build says so, in its own words.
 print('#326 ENTRY ANCHOR WIRED: %d pool entrants anchor on their signed division level — ruck cap in ladder '

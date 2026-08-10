@@ -1,1 +1,11 @@
 config manifest (gate mode) LOADED  hash cef06fd6250b  (59 model vars pinned; ambient cleared)
+Traceback (most recent call last):
+  File "/home/user/afl-rl-engine/docs/evidence/composition_2026-08-10/item_b_verify.py", line 14, in <module>
+    g = load()
+        ^^^^^^
+  File "/home/user/afl-rl-engine/docs/evidence/composition_2026-08-10/engine_load.py", line 30, in load
+    exec(compile(src, '_merged_recover.py', 'exec'), g)
+  File "_merged_recover.py", line 2140, in <module>
+    #     equal pool_level(p) x _PL_F x _b_factor(p) for any division whose level differs from the pool slot.
+           ^^^^^^^^^^^^
+AssertionError: #326 HALT: 1202 pool entrant(s) (['Fred Rodriguez', 'Riley Onley', 'Jack Watkins', 'Leon Kickett', 'Ollie Greeves', 'Nick Driscoll']) do not price off their own division level — the single pool value is back in a player price.
