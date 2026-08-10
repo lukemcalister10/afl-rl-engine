@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v113 · supervisor pen · 2026-08-10, register v623
+# CURRENT STATE — the incoming-seat read · v114 · supervisor pen · 2026-08-10, register v624
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,28 +128,29 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v113 · supervisor pen · 2026-08-10, register v623 · SEAT LAW: ALL replies to the owner in
-ASD-STE100 Simplified Technical English; LONG ANSWERS BEFORE ANY TOOL WORK in the final
-message. ALL SIX RULED MEASUREMENTS ARE IN, plus two owner-ordered extras, every one verified
-on real bytes and filed: sitter 5235734225 · probe 5235775326 · pool 5235784509 · mark-up
-5235847132 · RUCK 5236274192 (the ceiling is HISTORICAL — live bite 0.18%, years 1-3 ZERO;
-the live lever is the wage=0 pole denial; prior-borrowing closes only ~5.6% of the ruck gap —
-the seat's earlier bigger claim WITHDRAWN in the landing; lawful cell n=54 delivery 1.530;
-residual 32% unexplained → park-and-remeasure) · RULER TILT MAP 5236277043 (level 1.662 = a
-common re-basing; the bend 1.298→2.174 is the finding; SF worst 2.174, KPD 1.886; the year-4
-price sees through FORM dips (Hurley 0.763, straightest cell) but NOT AVAILABILITY dips
-(1.948); mature-21+ cells ALL fail the bar — the pool mature tilt is UNMEASURED; the 2004-05
-no-birthdate cell 2.139 is an ERA reading never an age one). OWNER WORDS: ledger PARKED ·
-composition directive ORDERED (draft with items A-H + the tilt column lives in the session
-scratchpad) · the ruler check reframed-as-tilt-map + live-11+-seasons rule + run word — all
-filed (5235988984, 5236054423). CONTAINER RESTART killed the DOB and G1 agents pre-push:
-DOB RESUMED (same expectations: store d9a24282, board a672ed3a, 6 movers all ±1, PR-not-merge);
-G1 HELD until the DOB PR merges (same frozen surface, one collision already; its pre-death
-progress incl. D14a/b-red-on-main population fix is in the register, unverified until it
-lands and re-cuts on the DOB store). NEXT: DOB PR lands → G1 re-cut + lands → the ITEM C
-evidence-weight design text → the directive to the owner as ONE SITTING → composition build →
-side-by-side → adoption.
-Read v604–v623 IN FULL. Primer v7 first.)
+(v114 · supervisor pen · 2026-08-10, register v624 · SEAT LAW: ALL replies to the owner in
+ASD-STE100 Simplified Technical English (owner re-reminded TWICE this window — hold the base);
+LONG ANSWERS BEFORE ANY TOOL WORK in the final message. THE RULER ACT IS COMPLETE except three
+player cross-sections (script ready, blocked on box contention while the DOB rebuild runs; two
+commands finish it). The 2x2: availability x horizon = 1.662/1.588/1.603/1.547 — under the
+owner's economics + his year-11 horizon the year-4 price stands 1.55x realized, ACCEPTED as
+longevity-perception re-basing. NINE bends hold on all four instruments (SF 2.03 the worst;
+form-dip 1.20 priced-through = PROTECT); KPD FADES OUT (supersession — availability+horizon,
+not judgment; its yr0→1 mark-up MECHANISM untouched); the ERA axis COLLAPSES (accumulated
+unpriced tail, gone); TAIL: 15.1% of year-4 price sits beyond year 11 vs 9.9% delivered
+(1.53x over), talls + young draftees carry it; the far-year FADE exists but is aimed at
+PROVEN 25-30s — THE YOUNG TAIL IS UN-FADED; convexity hypothesis confirmed in corrected form
+(softplus cliff, not season count; young lp ~60% cohort prior). NO-CHERRY-PICKING ruled:
+ITEM I (restate EVERY F-verdict incl. audit-1 year-0 on the corrected ruler — the sitting
+sees no bent number; SF yr-1 fair→OVER; ITEM G park→ACT) + THE ROOT ACT staged AFTER
+composition (re-derive per-position forward projection from tail+horizon evidence → then the
+queued RL_PVCFIT curve re-fit; frozen-ruler ruling holds till that release). Tall/runner
+broad dial KILLED (pure attendance). All owner words filed: 5236376068 · 5236414767 ·
+5236462270 · 5236508995 · 5236554831; landings 5236425904 · 5236597585. IN FLIGHT: DOB
+landing PR (owns the box), G1 held behind it, cross-section table on box-free. The directive
+holds items A-I + the root act; needs the two PRs + ITEM C design text + the cross-sections;
+then the owner's single sitting.
+Read v604–v624 IN FULL. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
