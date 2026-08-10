@@ -130,16 +130,20 @@ def returned(p):
     return (max(played) - d) >= 1 and any(y not in played for y in range(d, max(played)))
 
 
+# SCOPE: the BOARD's own rows. The deliverable asks for players whose CURRENT PRICE sits >= 3x
+# their entry anchor, and the current price IS the board price — an off-board store row has no
+# current price to test. Iterating the whole store also forced entry_anchor down the _v0_raw ->
+# raw_ev path for every off-board ND row, which is what made the first attempt uncomputable.
 rows = []
 for p in real:
+    if p['key'] not in BROW: continue
     if p.get('_retired') or g['delisted'](p): continue
     gt, sa = career(p)
     if gt <= 0 or gt > 6: continue
     if not returned(p): continue
     a = float(entry_anchor(p))
     if a <= 0: continue
-    br = BROW.get(p['key'])
-    price = float(br['v']) if br else float(ev(p, Y))
+    price = float(BROW[p['key']]['v'])
     if price / a < 3.0: continue
     T = int(min(max(g['_ageR'](p) - 18, 1), 6))
     par = float(PR.par_at(MA.gfut(p), min(MA.effpk(p), cp.KMAX), T))
