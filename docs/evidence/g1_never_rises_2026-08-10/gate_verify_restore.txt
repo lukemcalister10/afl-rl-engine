@@ -1,0 +1,40 @@
+PASS  head  _merged_recover.py = c0a7e969
+PASS  store rl_model_data.json = d9a24282
+PASS  rl_model.py (DPP strip) = 33f94073
+PASS  band  cm_400.pkl = 34faa865
+FAIL  Maric   ev(2026) =   (expected 1271)
+FAIL  Langdon ev(2026) =   (expected 567)
+PASS  harness present: _gate1_wf.py
+PASS  harness present: _gate1_picksplit.py
+PASS  harness present: s4_matrix_M1v7.py
+PASS  harness present: s4_render_M1v7.py
+PASS  cp-pair guard (repo fv == workspace fv, all .py) = 0
+--- run_panel.sh tail (10-panel; confirm 10/10) ---
+  Josh Smillie               953
+  Will Green                 670
+
+RESULT: panel printed (derived; no hand-typed pin - Guard 5 above is the gate)
+====================================
+VERDICT: 9 PASS / 2 FAIL  =>  RESTORE-VERIFY FAIL
+
+---
+NOTE ON THE TWO FAIL ROWS (read this before treating them as a regression).
+
+verify_restore.sh compares Maric and Langdon against HAND-TYPED LITERALS (1271 / 567) written for an
+older board era. They do not describe this board and they do not describe main's board either.
+
+Measured on this container, both engines, from the gated build:
+    ryan-maric   ev(2026) = 1473  BEFORE (origin/main 064abca)  ->  1473  AFTER (this branch)
+    ed-langdon   ev(2026) =  849  BEFORE                        ->   849  AFTER
+Neither player appears in movers.csv; neither is moved by this change by any amount.
+
+So the two rows are STALE EXPECTATIONS carried by the script, not a fault introduced here. They are
+left untouched: re-typing them would restart exactly the clock the script's own `stale()` doctrine
+warns about, and re-pinning an owner-facing panel literal is not this branch's business.
+
+Every row that binds to something this branch actually moved is GREEN:
+    head _merged_recover.py = c0a7e969   (the re-pinned engine)
+    store rl_model_data.json = d9a24282  (unchanged — no store write)
+    rl_model.py = 33f94073 · band cm_400.pkl = 34faa865
+    cp-pair guard (repo fv == workspace fv, all .py) = 0
+and run_panel prints this branch's board (Josh Smillie 953, Will Green 670 — both in movers.csv).

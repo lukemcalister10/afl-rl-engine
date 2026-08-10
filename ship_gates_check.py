@@ -719,21 +719,46 @@ except Exception as ex:
 # depth monotonicity (max of two isotonic-non-increasing curves). Only present on a D14+ engine (board path).
 try:
     _a = G['_v0_curve_assert']()
+    # POPULATION (corrected 2026-08-10, with the ruling-1.1 restore): D14a/b run over the rows THIS
+    # SURFACE PRICES — national-draft rows that are not pool. A national selection at pick 65+ is pool
+    # under the owner's split, is priced off its signed division level and never reads this surface, so
+    # including it made both gates unsatisfiable (a ~310-point "dispersion" that was two pool KPDs on
+    # different levels; ladder-vs-pool "inversions"). The whole-ND figures are still printed.
     gate('D14a', False, 'PASS' if _a['cross_draft_maxdisp'] < 1e-6 else 'FAIL',
-         f"same pos×draft-age×recorded-pick ⇒ identical V0* across draft years: max cross-draft dispersion={_a['cross_draft_maxdisp']:.4f} SCAR (Luke's amended law; board path)")
+         f"same pos×draft-age×recorded-pick ⇒ identical V0* across draft years: max cross-draft "
+         f"dispersion={_a['cross_draft_maxdisp']:.4f} SCAR over the {_a.get('population','?')} rows the "
+         f"surface prices (Luke's amended law; board path) [report-only, all ND incl. "
+         f"{_a.get('pool_rows_excluded','?')} pool rows at 65+: {_a.get('report_only_all_nd_maxdisp',0):.1f}]")
     gate('D14b', False, 'PASS' if _a['within_cell_inversions'] == 0 else 'FAIL',
-         f"within (pos×draft-age×draft-year) V0 inversions under V0* = {_a['within_cell_inversions']} roster-wide (D13 guard-transform → assertion; obituary E5)")
+         f"within (pos×draft-age×draft-year) V0 inversions under V0* = {_a['within_cell_inversions']} "
+         f"(D13 guard-transform → assertion; obituary E5) [report-only, all ND incl. pool: "
+         f"{_a.get('report_only_all_nd_inversions','?')} — ladder-vs-pool pairs, different price objects]")
     gate('D14c', False, 'PASS' if _a['kpp_depth_monotone'] else 'FAIL',
          f"KPP retention floor O1 depth-monotone = {_a['kpp_depth_monotone']} (max of isotonic-non-increasing KPP/nonKPP; comparator nonKPP-only)")
 except Exception as ex:
     gate('D14a', False, 'PENDING', f'D14 laws absent (pre-D14 engine): {type(ex).__name__}')
+# (D14d) NEW, owner ruling 1.2 of 2026-08-10 (#334): the SURFACE-LEVEL never-rises scan. D14b compares
+# ROSTERED PLAYER PAIRS, and the 2026-08-10 audit measured what that covers — real players sit on about
+# 8% of the surface's rising steps (29 inverted pairs against 439 rising steps). The law (owner R12) is a
+# property of the SURFACE, so it is checked on the surface: every position x draft-age profile, every
+# adjacent pick pair, zero tolerance, halt on any rise. Also wired into one_source_selftest.py so the
+# standing gated build runs it whether or not anyone runs this checklist.
+try:
+    _sa = G['_v0_surface_assert']()
+    gate('D14d', False, 'PASS' if _sa['rising_steps_1_64'] == 0 and _sa['rising_steps_full_grid'] == 0 else 'FAIL',
+         f"SURFACE never-rises (R12): {_sa['rising_steps_1_64']} rising step(s) picks 1-64 · "
+         f"{_sa['rising_steps_full_grid']} over the full 1-{_sa['grid']} grid · scanned {_sa['cells']} "
+         f"pos×draft-age profiles ({_sa['cells']*(_sa['grid']-1)} adjacent pairs; players expose ~8%)"
+         + (('  || first: ' + ' | '.join(_sa['worst'][:3])) if _sa['worst'] else ''))
+except Exception as ex:
+    gate('D14d', False, 'PENDING', f'D14d surface scan absent (pre-D14d engine): {type(ex).__name__}')
 
 gate('C1', False, 'PENDING', 'naive-baseline book not yet built — definition proposal in report (needs its own directive)')
 gate('C2', False, 'PENDING', 'V1-pick-model book not yet built — definition proposal in report (needs its own directive)')
 
 # ---------- BOARD + REPORT ----------
 order = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11', 'A12', 'A13', 'A14', 'A15',
-         'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'D14a', 'D14b', 'D14c', 'C1', 'C2']
+         'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'D14a', 'D14b', 'D14c', 'D14d', 'C1', 'C2']
 RES.sort(key=lambda r: order.index(r[0]))
 cnt = {}
 lines = [f'=== STATE: {STATE_LABEL} ===',

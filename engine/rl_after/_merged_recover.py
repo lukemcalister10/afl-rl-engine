@@ -1328,7 +1328,8 @@ def _v0surf_sig(real):
               'roster':sorted([str(MA.gfut(p)),_ageR(p),int(p.get('pick'))] for p in real),
               'gates':{g:os.environ.get(g,d) for g,d in sorted(_V0SURF_GATES.items())}}
     return _hl.md5(_js.dumps(_payload,sort_keys=True,separators=(',',':')).encode()).hexdigest()
-def _iso_dec(y): return list(map(float,IsotonicRegression(increasing=False,out_of_bounds='clip').fit(_V0_LGRID,y).predict(_V0_LGRID)))
+def _iso_dec_on(lg,y): return list(map(float,IsotonicRegression(increasing=False,out_of_bounds='clip').fit(lg,y).predict(lg)))
+def _iso_dec(y): return _iso_dec_on(_V0_LGRID,y)          # the whole 1..90 grid (the pre-#306 fit's own use)
 def _fit_pick_curve(pts,effn_min=35.0,h0=0.18,hmax=2.2):     # adaptive-bandwidth NW over log-pick -> isotonic non-increasing
     lx=np.array([a for a,_ in pts]); vy=np.array([b for _,b in pts]); grid=[]; meta_e=[]; meta_hmax=0
     for lg in _V0_LGRID:
@@ -1529,14 +1530,107 @@ def _build_v0_curve():
                 if _worst<=1e-12: break
             for _k in _pre: _m[_k]=min(_LA_B,max(1.0/_LA_B,_pre[_k]*_lam[_k[2]]))
             _gA=[_anchor(_pk) for _pk in _PK]
+            # ---- THE NEVER-RISES LAW, RESTORED ON THE LENS PATH (owner ruling 1.1, 2026-08-10; #334).
+            # THE LAW (owner, ledger R12, 2026-07-03): a year-zero value curve NEVER RISES as the pick
+            # number rises. It held for 33 days and was LOST BY OMISSION at the #306 lens landing
+            # (dab9657, 2026-08-05): the pre-#306 free fit ended every curve with _iso_dec; the composed
+            # lens field v0* = anchor(pick) x m(pos,age,pick) never called it. The anchor ladder is
+            # strictly falling but has near-flat plateaus (picks 6-8 fall ~4 points each), and the lens —
+            # a smooth BOUNDED field, free to cross the ladder — climbs across them. Measured on the
+            # shipped surface: hundreds of rising steps inside picks 1-64, in every one of the 90
+            # (position x draft-age) profiles, and 29 adjacent inverted pairs on real players (the one
+            # the owner saw: Grlj at pick 8 priced above Cumming at pick 7).
+            #
+            # THE METHOD IS THE OWNER'S RULING, and it is the OLD STEP'S EXACT BEHAVIOUR: within each
+            # (position x draft-age) profile, project the COMPOSED curve over the log-pick grid to
+            # non-increasing by isotonic regression — `_iso_dec`, the same call the deleted step made,
+            # on the same _V0_LGRID. Isotonic regression IS the merge the owner described: a violating
+            # stretch settles to the weighted level between its neighbours (some rows come down a
+            # little, some up a little), and it is the least-squares-closest non-increasing curve, i.e.
+            # the least total distortion of the lens's shape. Nothing else is re-fitted.
+            #
+            # WHAT THIS DOES **NOT** TOUCH — the lens's own ruled properties, each preserved:
+            #   LAW-INTERSECTIONS  a position's value may still cross the pick ladder, and two positions
+            #                      may still cross each other. The projection is applied INSIDE one
+            #                      (pos,age) profile only; it never compares one profile to another and
+            #                      never compares a profile to the anchor. Crossing stays legal; rising
+            #                      WITHIN a profile does not.
+            #   GRADED LOCALITY    the kernels, bandwidths and shrinkage above are untouched; the field
+            #                      that enters here is the same field #306 fits.
+            #   BOUNDED / NEUTRAL  m in [1/B,B] and the lam(pick) fixed point are solved first, and the
+            #                      projection runs AFTER them, on the composed curve, exactly where the
+            #                      old step sat (last, on the finished curve, before the freeze). The
+            #                      neutrality residual it leaves is MEASURED and recorded below
+            #                      (`_iso_neutrality_worst`) rather than assumed to be zero — a merge
+            #                      that moves values must be allowed to move this figure, and the
+            #                      honest number is filed instead of the pre-projection one.
+            #   MATURE AGE ORDER   the pre-#306 mature fit also forced non-increasing in draft AGE at
+            #                      each pick. The #306 lens does NOT (age is a smooth kernel axis, and
+            #                      R12 is a PICK law). Not reintroduced here: restoring one law is not
+            #                      licence to add another the owner did not rule.
+            #
+            # WHERE THE PROJECTION IS SOLVED, and why it is not the whole 1..90 grid. The grid runs to
+            # pick 90, but THE NATIONAL LADDER ENDS AT 64: _PVC0 is 3000 at pick 1 down to 185 at pick
+            # 64, and index 65 is the POOL SLOT (237) — a different object, deliberately ABOVE the
+            # ladder's last rung. `_anchor` extrapolates past its own last key off the 64->65 ratio, so
+            # that step-up becomes a compounding upward slope and the raw composed curve rockets away
+            # (MID age-18: 238 at pick 64 -> ~39,500 at pick 90). Nothing reads it — every priced row on
+            # this surface is a non-pool national selection, measured max pick 64, and picks 65+ are
+            # POOL by the owner's ruling and are priced off the signed division levels instead.
+            # Solving one isotonic projection across the whole grid would let that unread artifact drag
+            # the LADDER up: pool-adjacent-violators would merge the exploding tail with the real curve
+            # and flatten every profile to a single number (measured, not guessed — the first build of
+            # this repair did exactly that and was thrown away). So:
+            #   picks 1-64  the isotonic merge, on the ladder the law is written about;
+            #   picks 65-90 carried by running minimum from the pick-64 level — the same law (a value
+            #               may never rise with pick) applied where there is no ladder to merge against.
+            #               The tail can only fall; the artifact can never lift the priced region.
+            #
+            # DETERMINISM (the F6 freeze discipline): this runs only on the DECLARED refit lane
+            # (RL_V0SURF_REFIT=1) — the shipped build LOADS the projected surface from data/v0surf.pkl
+            # and fits nothing, exactly as before. The grid is order-fixed (_V0_LGRID, picks 1..90 in
+            # order); the projection is applied to each cell independently in a fixed POS x AGE order;
+            # the OUTPUT is what gets frozen and md5-pinned. Same treatment the old _iso_dec received.
+            _NDL=min(64,len(_PK))                        # the national ladder's last pick
+            _iso_pre={}
             c18={}; surfN={}; surfR={}
             for _p in POS:
                 for _ag in _AGEG:
                     _g=[_gA[_i]*_m[(_p,_ag,_PK[_i])] for _i in range(len(_PK))]
                     _key='%s|%d'%(_p,_ag)
+                    _iso_pre[_key]=list(_g)
+                    _g=_iso_dec_on(_V0_LGRID[:_NDL],_g[:_NDL])+list(_g[_NDL:])   # <- THE RESTORED LAW
+                    for _i in range(1,len(_g)):           # never rises, all the way out
+                        if _g[_i]>_g[_i-1]: _g[_i]=_g[_i-1]
                     if _ag<=18: c18[_key]=_g
                     elif _p=='RUCK': surfR[_key]=_g
                     else: surfN[_key]=_g
+            # The projection changes the composed curve, so the multiplier the board actually reads is
+            # no longer _m but m' = curve'/anchor. Recorded, so the neutrality figure filed below is the
+            # SHIPPED field's, not the pre-projection field's.
+            _mpost={}
+            for _p in POS:
+                for _ag in _AGEG:
+                    _key='%s|%d'%(_p,_ag)
+                    _cv=(c18.get(_key) or surfR.get(_key) or surfN.get(_key))
+                    for _i in range(len(_PK)):
+                        _mpost[(_p,_ag,_PK[_i])]=(_cv[_i]/_gA[_i]) if _gA[_i]>0 else 1.0
+            def _isocur(_k): return (c18.get(_k) or surfR.get(_k) or surfN.get(_k))
+            _V0CURVE_META['_iso_restore']={'law':'R12 never-rises with pick, per (position x draft-age) profile',
+                'method':'IsotonicRegression(increasing=False) over log-pick 1..64 (the _iso_dec pattern, '
+                         'applied AFTER the lens multiply, before the freeze); picks 65-90 carried by '
+                         'running minimum (no ladder there to merge against)',
+                'ruling':'owner 1.1, 2026-08-10 (#334)','cells':len(_iso_pre),'grid':len(_PK),'ladder_last':_NDL,
+                'grid_points_moved':sum(1 for _k in sorted(_iso_pre) for _i in range(len(_PK))
+                                        if abs(_iso_pre[_k][_i]-_isocur(_k)[_i])>1e-9),
+                'rising_steps_before_1_64':sum(1 for _k in sorted(_iso_pre) for _i in range(_NDL-1)
+                                               if _iso_pre[_k][_i+1]>_iso_pre[_k][_i]+1e-9),
+                'rising_steps_after_1_64':sum(1 for _k in sorted(_iso_pre) for _i in range(_NDL-1)
+                                              if _isocur(_k)[_i+1]>_isocur(_k)[_i]+1e-9),
+                'rising_steps_after_full':sum(1 for _k in sorted(_iso_pre) for _i in range(len(_PK)-1)
+                                              if _isocur(_k)[_i+1]>_isocur(_k)[_i]+1e-9),
+                'preserves':'LAW-INTERSECTIONS (cross-profile and profile-vs-ladder crossings untouched); '
+                            'graded locality; bounded m; the lam fixed point (solved first)'}
             # ---- L-C: THE CROSS-HOST BYTE-ASSERT, WIRED INTO THE LANE ITSELF.
             # N16's third spec word. The assert compares FITTED OUTPUT BYTES -- never a library
             # version, never a pin hash. "The pin was never the guard": item 380's OpenBLAS byte-pin
@@ -1593,6 +1687,12 @@ def _build_v0_curve():
                 'h_age':_LA_HAGE,'k_conf':_LA_KCONF,
                 'neutrality_population':'APPLIED (composition weights only)',
                 'neutrality_worst':max(abs(sum(_kern(_l-float(np.log(_pk)),_LA_HPICK)*_a*_m[(_o,_g,_q)]
+                    for (_o,_g,_q,_l,_a) in _apply)/max(sum(_kern(_l-float(np.log(_pk)),_LA_HPICK)*_a
+                    for (_o,_g,_q,_l,_a) in _apply),1e-12)-1.0) for _pk in range(1,65)),
+                # The SHIPPED field's residual: the never-rises projection runs after the fixed point, so
+                # the neutrality it leaves is measured on m' = curve'/anchor, not on the pre-projection m.
+                # Filed honestly rather than quoted from the step before the one that ships.
+                '_iso_neutrality_worst':max(abs(sum(_kern(_l-float(np.log(_pk)),_LA_HPICK)*_a*_mpost[(_o,_g,_q)]
                     for (_o,_g,_q,_l,_a) in _apply)/max(sum(_kern(_l-float(np.log(_pk)),_LA_HPICK)*_a
                     for (_o,_g,_q,_l,_a) in _apply),1e-12)-1.0) for _pk in range(1,65)),
                 'binds':sum(1 for _k in _m if abs(_m[_k]-_LA_B)<1e-9 or abs(_m[_k]-1.0/_LA_B)<1e-9)}
@@ -1665,29 +1765,85 @@ def entry_anchor(p):
     return v0_start(p)
 def _v0_curve_assert():                                      # BY-CONSTRUCTION GATES (D14 1c): wired, return dict of results
     star=_V0CURVE_META['_star']; ages=_V0CURVE_META['mature_nonRUC']['ages']
-    # (i) same (pos,ageR,pick) -> identical V0* across draft years (function of pos,ageR,pick only) — check dispersion
+    # POPULATION CORRECTION (2026-08-10, filed with the ruling-1.1 restore). D14a/D14b are assertions
+    # ABOUT THE V0 PICK SURFACE, so they must run over THE ROWS THE SURFACE PRICES — and since the
+    # owner's pricing split, that is national-draft rows that are NOT pool. A national selection at
+    # pick 65+ is POOL under the ruling: it is priced off its signed division level (#326 entry
+    # anchors), it teaches no fit site, and it never reads this surface at all. The population here
+    # was `type=='ND' and pick is not None`, which SWEPT THOSE ROWS IN and then reported their
+    # division-level prices as surface faults:
+    #     D14a read a ~310-point "cross-draft dispersion" that was two pool KPDs at pick 70 sitting
+    #          on different division levels — the surface's own dispersion is 0.000000, exactly as
+    #          the law says;
+    #     D14b counted ladder-vs-pool pairs as pick inversions, which compares two different price
+    #          objects and can never be satisfied by any surface.
+    # Both gates were therefore UNSATISFIABLE and permanently red — part of the reason they could sit
+    # in a hand-run checklist for nineteen days without anyone reading them as a live alarm.
+    # Restricted to the surface's own population (the SAME `not MA.is_pool` filter `_build_v0_curve`
+    # fits on), they are real assertions again. The excluded rows are NOT hidden — they are counted
+    # and returned, and the whole-ND figures are returned alongside as REPORT-ONLY so the number
+    # stays visible and nobody has to re-derive it.
     from collections import defaultdict
-    grp=defaultdict(list)
-    for p in MA.data:
-        if _isreal(p) and p.get('type')=='ND' and p.get('pick') is not None:
-            grp[(MA.gfut(p),_ageR(p),p.get('pick'))].append(v0_start(p))
-    maxdisp=max((max(v)-min(v) for v in grp.values()),default=0.0)
+    _nd=[p for p in MA.data if _isreal(p) and p.get('type')=='ND' and p.get('pick') is not None]
+    _rows=[p for p in _nd if not MA.is_pool(p)]              # the rows this surface prices
+    def _disp(rows):
+        grp=defaultdict(list)
+        for p in rows: grp[(MA.gfut(p),_ageR(p),p.get('pick'))].append(v0_start(p))
+        return max((max(v)-min(v) for v in grp.values()),default=0.0)
+    def _inv(rows):
+        byc=defaultdict(list); n=0
+        for p in rows: byc[(MA.gfut(p),_ageR(p),p.get('year'))].append(p)
+        for _c,ps in byc.items():
+            ps=sorted(ps,key=lambda z:z.get('pick'))
+            for i in range(len(ps)):
+                for j in range(i+1,len(ps)):
+                    if ps[j].get('pick')>ps[i].get('pick') and v0_start(ps[j])>v0_start(ps[i])+1e-6: n+=1
+        return n
+    # (i) same (pos,ageR,pick) -> identical V0* across draft years (function of pos,ageR,pick only)
+    maxdisp=_disp(_rows)
     # (ii) within (pos,ageR,year) cell inversions under V0*
-    byc=defaultdict(list); inv=0
-    for p in MA.data:
-        if _isreal(p) and p.get('type')=='ND' and p.get('pick') is not None:
-            byc[(MA.gfut(p),_ageR(p),p.get('year'))].append(p)
-    for _c,ps in byc.items():
-        ps=sorted(ps,key=lambda z:z.get('pick'))
-        for i in range(len(ps)):
-            for j in range(i+1,len(ps)):
-                if ps[j].get('pick')>ps[i].get('pick') and v0_start(ps[j])>v0_start(ps[i])+1e-6: inv+=1
+    inv=_inv(_rows)
     # (iii) depth-monotonicity of the KPP-floored retention surface (max of non-increasing curves)
     dmono=True
     for pk in [3,8,15,30,50,80]:
         dv=[ _R_surf('KPP',pk,t) for t in range(1,7) ]
         if any(dv[k+1]>dv[k]+1e-9 for k in range(5)): dmono=False
-    return dict(cross_draft_maxdisp=maxdisp, within_cell_inversions=inv, kpp_depth_monotone=dmono)
+    return dict(cross_draft_maxdisp=maxdisp, within_cell_inversions=inv, kpp_depth_monotone=dmono,
+                population=len(_rows), pool_rows_excluded=len(_nd)-len(_rows),
+                report_only_all_nd_maxdisp=_disp(_nd), report_only_all_nd_inversions=_inv(_nd))
+def _v0_surface_assert():
+    """D14d — THE SURFACE-LEVEL NEVER-RISES SCAN (owner ruling 1.2, 2026-08-10; #334).
+
+    D14b checks INVERTED PLAYER PAIRS. The 2026-08-10 audit measured what that actually covers: real
+    players expose about 8% of the surface's rising steps (29 adjacent inverted pairs against 439
+    rising steps on the shipped grid). A law that only fails when a drafted player happens to sit on
+    the wrong side of a step is a law that can be broken in silence for a month — which is exactly
+    what happened between 2026-08-05 and 2026-08-10. This gate reads THE SURFACE ITSELF: every
+    (position x draft-age) profile, every adjacent pick pair on the grid, no roster involved. Zero
+    tolerance.
+
+    It scans the ARTIFACT THE BOARD READS (_V0CURVE_META's c18/surfN/surfR, i.e. the frozen surface as
+    loaded), so a bad freeze, a bad refit and a bad code path all fail here identically. Reported over
+    picks 1-64 (the national ladder, where R12 is written) AND over the whole 1..90 grid the surface
+    carries, because the pick-90 tail is read by star()'s clamp and a rise out there is still a rise."""
+    c18=_V0CURVE_META.get('_c18') or {}; sN=_V0CURVE_META.get('_surfN') or {}; sR=_V0CURVE_META.get('_surfR') or {}
+    cells={}
+    for _d in (c18,sN,sR):
+        for _k,_v in _d.items(): cells[str(_k)]=[float(x) for x in _v]
+    n64=0; nall=0; bad=[]
+    for _k in sorted(cells):
+        _v=cells[_k]
+        for _i in range(len(_v)-1):
+            if _v[_i+1]>_v[_i]+1e-9:
+                nall+=1
+                if _V0_GRIDPK[_i+1]<=64:
+                    n64+=1
+                    if len(bad)<25:
+                        bad.append('%s pick %d->%d %.2f->%.2f'%(_k,_V0_GRIDPK[_i],_V0_GRIDPK[_i+1],_v[_i],_v[_i+1]))
+    return dict(cells=len(cells), grid=len(_V0_GRIDPK),
+                rising_steps_1_64=n64, rising_steps_full_grid=nall,
+                worst=bad,
+                shape=('POS|AGE' if any('|' in _k for _k in cells) else 'legacy'))
 def sitout_ev(p,Y,e_full):
     fe=_fEy(Y,p); tau=max(0.0,Y-cp.debutyr(p))+((fe**1.5) if Y>=cp.debutyr(p) else 0.0)   # D12: CONCAVE penalty proration tau'=(R/24)^1.5 (Luke OPTION A); completed seasons full (integer knots), in-progress season accrues concavely. PENALTY path only — the lam reward blend below is UNTOUCHED.
     R=_R_surf(_sitout_cls(MA.gfut(p)), MA.effpk(p), tau)     # D13 ASK3: pick-conditioned, isotonic-in-depth surface (was depth-only R_SIT)

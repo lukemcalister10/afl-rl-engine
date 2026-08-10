@@ -1,0 +1,33 @@
+=== BEFORE — origin/main 064abca (unpatched engine, committed surface 5a03c9ea) ===
+/home/claude/g1b_mr_main.py
+  v0surf sig 6ef67f07db98  frozen True
+  as-shipped (all ND rows)     n=1570  D14a maxdisp=310.146365   D14b inversions=475
+        Sam Cumming p7 2141.9  >  Daniel Annable p6 2042.0
+        Samuel Grlj p8 2185.6  >  Daniel Annable p6 2042.0
+        Sullivan Robey p9 2079.7  >  Daniel Annable p6 2042.0
+        Samuel Grlj p8 2185.6  >  Sam Cumming p7 2141.9
+        Xavier Taylor p11 1115.2  >  Jacob Farrow p10 1062.5
+  non-pool ND (surface pop.)   n=1448  D14a maxdisp=  0.000000   D14b inversions=53
+        Sam Cumming p7 2141.9  >  Daniel Annable p6 2042.0
+        Samuel Grlj p8 2185.6  >  Daniel Annable p6 2042.0
+        Sullivan Robey p9 2079.7  >  Daniel Annable p6 2042.0
+        Samuel Grlj p8 2185.6  >  Sam Cumming p7 2141.9
+        Xavier Taylor p11 1115.2  >  Jacob Farrow p10 1062.5
+  Samuel Grlj      MID age 18 pick 8 -> v0 2185.6
+  Sam Cumming      MID age 18 pick 7 -> v0 2141.9
+  Daniel Annable   MID age 18 pick 6 -> v0 2042.0
+
+=== AFTER — this branch (patched engine, re-frozen surface fbc5b393) ===
+/home/claude/g1b_ws/engine/rl_after/_merged_recover.py
+  v0surf sig 6ef67f07db98  frozen True
+  as-shipped (all ND rows)     n=1570  D14a maxdisp=310.146365   D14b inversions=422
+        Hamish Davis p65 625.5  >  Ben Camporeale p43 619.9
+        Hamish Davis p65 625.5  >  Hugh Boxshall p45 566.6
+        Hamish Davis p65 625.5  >  Tom Gross p46 540.8
+        Hamish Davis p65 625.5  >  Lucas Camporeale p54 410.1
+        Hamish Davis p65 625.5  >  Luke Urquhart p57 367.5
+  non-pool ND (surface pop.)   n=1448  D14a maxdisp=  0.000000   D14b inversions=0
+  D14d surface scan: rising 1-64 = 0 ; full grid = 0 ; cells 90
+  Samuel Grlj      MID age 18 pick 8 -> v0 2123.2
+  Sam Cumming      MID age 18 pick 7 -> v0 2123.2
+  Daniel Annable   MID age 18 pick 6 -> v0 2123.2
