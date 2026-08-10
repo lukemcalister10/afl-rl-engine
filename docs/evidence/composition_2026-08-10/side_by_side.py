@@ -64,15 +64,20 @@ for k, r in FULL.items():
     att = {it: r['v'] - d.get(k, r)['v'] for it, d in OFF.items()}
     att['B'] = B_ONLY.get(k, MAIN[k])['v'] - MAIN[k]['v']
     att['era'] = B_ERA.get(k, B_ONLY.get(k, MAIN[k]))['v'] - B_ONLY.get(k, MAIN[k])['v']
+    # #336 has NO kill-switch (it is a ported reference layer, not a dial), so its contribution is
+    # taken as the step from the era board to BASE — the board with every dial off. Without this
+    # column #336's effect lands in the residual and makes the interaction look far larger than it is.
+    att['336'] = BASE.get(k, B_ERA.get(k, MAIN[k]))['v'] - B_ERA.get(k, B_ONLY.get(k, MAIN[k]))['v']
     resid = tot - sum(att.values())
     mv.append((abs(tot), tot, k, r.get('name'), r.get('gf'), MAIN[k]['v'], r['v'], att, resid))
 mv.sort(reverse=True)
-hdr = " %-22s %-5s %8s %8s %7s | %6s %6s %6s %6s %6s %6s %6s | %6s"
-print(hdr % ("player", "pos", "before", "after", "total", "B", "era", "A", "C/E2", "E1", "H", "SUR", "resid"))
+hdr = " %-21s %-4s %7s %7s %7s | %6s %5s %6s %6s %5s %5s %6s %6s | %6s"
+print(hdr % ("player", "pos", "before", "after", "total", "B", "era", "336", "A", "C/E2", "E1", "H", "SUR", "resid"))
 for _a, tot, k, nm, pos, b, a, att, resid in mv[:20]:
-    print(hdr % (nm[:22], pos, b, a, "%+d" % tot,
-                 "%+d" % att['B'], "%+d" % att['era'], "%+d" % att['A'], "%+d" % att['C/E2'],
-                 "%+d" % att['E1'], "%+d" % att['H'], "%+d" % att['SUR'], "%+d" % resid))
+    print(hdr % (nm[:21], pos, b, a, "%+d" % tot,
+                 "%+d" % att['B'], "%+d" % att['era'], "%+d" % att['336'], "%+d" % att['A'],
+                 "%+d" % att['C/E2'], "%+d" % att['E1'], "%+d" % att['H'], "%+d" % att['SUR'],
+                 "%+d" % resid))
 print("\n total movers vs main: %d   (up %d / down %d)"
       % (len(mv), sum(1 for m in mv if m[1] > 0), sum(1 for m in mv if m[1] < 0)))
 tr = sum(abs(m[8]) for m in mv)

@@ -1,0 +1,16 @@
+config manifest (gate mode) LOADED  hash c41e7f4078f9  (64 model vars pinned; ambient cleared)
+membership frozen on main (pre-act): YOUNG players 105  ·  PEAK players 179
+pick side: 30 picks, total 39949 (identical on every board — the ladder is not moved by this act)
+
+ board                             YOUNG         PEAK   RELATIVITY   d(ratio)     d(pp)
+ main (pre-act)                   101209       233430     0.433573                     
+ +B                               102799       233723     0.439833  +0.006259    +0.626
+ +era                             102799       233394     0.440453  +0.000620    +0.688
+ +336 (BASE)                       96535       228072     0.423265  -0.017187    -1.031
+ FULL ACT                          93332       226347     0.412340  -0.010925    -2.123
+
+ PRE-REGISTERED EXPECTATION: RELATIVITY should RISE or hold — the package should NARROW
+ the peak-vs-young gap, never widen it.
+ MEASURED end-to-end: 0.433573 -> 0.412340  (-4.897%)
+ VERDICT: RELATIVITY FELL — HALT CONDITION. This is a TOP-OF-REPORT FLAG for the owner
+ before adoption. It is NOT rebalanced to pass and no component is retuned to move it.
