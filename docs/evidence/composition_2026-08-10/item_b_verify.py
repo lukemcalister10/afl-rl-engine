@@ -50,9 +50,16 @@ print("   largest step on the grid = %.4f (a cliff would show as a jump at an in
 
 # 4. non-pool untouched
 print("\n4. NON-POOL ROWS UNTOUCHED")
-bad = [p['key'] for p in nd[:400] if float(entry_anchor(p)) != float(g['v0_start'](p))]
-print("   checked 400 non-pool rows; entry_anchor != v0_start on %d of them  %s"
-      % (len(bad), "PASS" if not bad else "FAIL " + str(bad[:5])))
+# SCOPED TO BOARD ROWS. v0_start on an OFF-BOARD row misses _V0CURVE and falls through to
+# _v0_raw -> _v0_uncapped -> raw_ev, a full forward valuation per row — the same trap that made
+# the first Mraz trace uncomputable. The board rows are also the only ones whose anchor ships.
+_board = json.load(open(os.path.join(os.environ.get("RL_REPO", "/home/user/afl-rl-engine"),
+                                     "data", "rl_build", "rl_app_data.json")))
+_BK = set(r['key'] for r in _board['active'])
+nd_board = [p for p in nd if p['key'] in _BK]
+bad = [p['key'] for p in nd_board if float(entry_anchor(p)) != float(g['v0_start'](p))]
+print("   checked %d non-pool BOARD rows; entry_anchor != v0_start on %d  %s"
+      % (len(nd_board), len(bad), "PASS" if not bad else "FAIL " + str(bad[:5])))
 
 # 5. movers by band
 print("\n5. THE REDISTRIBUTION, BY BAND")
