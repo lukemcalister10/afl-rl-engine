@@ -14,7 +14,10 @@ set -uo pipefail
 OUT="$1"; shift
 REPO=/home/user/afl-rl-engine
 SP=/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad
-WT=$SP/wt_sw
+# ONE WORKTREE PER VARIANT. A shared path races with the previous variant's teardown: the new
+# `git worktree add` can overlap the old `remove`, and a build then starts on a partially populated
+# tree (seen as "E6 numeraire HALT: pvc_curve_v2.json not found" on a file that is plainly there).
+WT=$SP/wt_sw_$(basename "$OUT" .json)
 export PATH=/root/rl_venv312/bin:$PATH
 export RL_CONFIG_MODE=gate PYTHONHASHSEED=0
 export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
