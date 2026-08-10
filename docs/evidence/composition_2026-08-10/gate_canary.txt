@@ -1,9 +1,7 @@
 === GUARD 4: correction-sticks canary (full rebuild; sentinel=josh-ward +40) ===
-  PASS sentinel josh-ward present on the board (baseline v=2850)
-  PASS sentinel josh-ward present in the book (baseline cur=2999)
+  PASS sentinel josh-ward present on the board (baseline v=2712)
+  PASS sentinel josh-ward present in the book (baseline cur=2854)
   edited store: josh-ward 2026 avg 85.1 -> 125.1
-  PASS edit SURVIVES to the BOARD: josh-ward v 2850 -> 9425 (must rise)
-  PASS edit SURVIVES to the BOOK: josh-ward cur 2999 -> 9919 (must rise)
-  PASS edited sentinel board == round(book/1.0524) — numéraire (9425 vs round(9919/1.0524)=9425)
-
-GUARD 4 PASSED: a source correction sticks all the way to board + book (Kako class is dead).
+  PASS edit SURVIVES to the BOARD: josh-ward v 2712 -> 9303 (must rise)
+  PASS edit SURVIVES to the BOOK: josh-ward cur 2854 -> 9791 (must rise)
+  PASS edited sentinel board == round(book/1.0524) — numéraire (9303 vs round(9791/1.0524)=9303)
