@@ -1,0 +1,7 @@
+config manifest (gate mode) LOADED  hash cef06fd6250b  (59 model vars pinned; ambient cleared)
+real rows 2650
+year-4 cohort n = 1084
+avail=in   horizon=full  n=1084  Sigma price / Sigma realized = 1.5929
+avail=in   horizon=11    n=1084  Sigma price / Sigma realized = 1.7048
+avail=rate horizon=full  n=1084  Sigma price / Sigma realized = 1.5056
+avail=rate horizon=11    n=1084  Sigma price / Sigma realized = 1.6137

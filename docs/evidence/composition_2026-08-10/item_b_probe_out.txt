@@ -1,0 +1,20 @@
+config manifest (gate mode) LOADED  hash cef06fd6250b  (59 model vars pinned; ambient cleared)
+POOL POPULATION (engine classification): n = 1202
+  with a scored record (teaching rows): 687
+
+=== THE RE-DERIVED POOL YEAR-0 AGE GRADIENT (F8 at PLAYER unit) ===
+ anchor-weighted mean raw ratio (the normaliser) = 0.302357
+
+ band          n      Sig anchor raw ratio FACTOR      prior       shift    
+ <=18          649    157579.0  0.2182    0.7216      0.666       +8.3%    
+ 19-20         252    61684.3   0.4605    1.5230      1.200       +26.9%   
+ 21+           301    73902.7   0.3499    1.1572      2.474       -53.2%   
+
+ CONSERVATION: Sigma anchor before = 293166.0   after (x factor) = 293166.0   delta = 0.000000
+
+=== F8 PLAYER-UNIT EVIDENCE BAR PER CELL ===
+ effective n = (Sig w)^2 / Sig w^2 over PLAYERS (w = anchor), never player-seasons.
+ band          players  eff-n      player-seasons F8 (>=35?)
+ <=18          649      613.8      1598         PASS      
+ 19-20         252      236.1      785          PASS      
+ 21+           301      280.1      853          PASS      

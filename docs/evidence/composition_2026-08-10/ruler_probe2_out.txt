@@ -1,0 +1,6 @@
+config manifest (gate mode) LOADED  hash cef06fd6250b  (59 model vars pinned; ambient cleared)
+all      n=1084  in/full SS=1.5929 med=2.3363 (tgt 1.6621) | in/11 SS=1.7048 med=2.4237 (tgt 1.5883) | rate/full SS=1.5056 med=1.8852 (tgt 1.6028) | rate/11 SS=1.6137 med=1.9229 (tgt 1.5468)
+nd       n=788   in/full SS=1.7029 med=2.6112 (tgt 1.6621) | in/11 SS=1.8289 med=2.7148 (tgt 1.5883) | rate/full SS=1.6152 med=2.1018 (tgt 1.6028) | rate/11 SS=1.7370 med=2.1872 (tgt 1.5468)
+done     n=670   in/full SS=0.0406 med=0.2178 (tgt 1.6621) | in/11 SS=0.0435 med=0.2178 (tgt 1.5883) | rate/full SS=0.0374 med=0.1345 (tgt 1.6028) | rate/11 SS=0.0401 med=0.1366 (tgt 1.5468)
+nd_done  n=470   in/full SS=0.0431 med=0.2235 (tgt 1.6621) | in/11 SS=0.0465 med=0.2236 (tgt 1.5883) | rate/full SS=0.0399 med=0.1421 (tgt 1.6028) | rate/11 SS=0.0432 med=0.1431 (tgt 1.5468)
+k11      n=395   in/full SS=0.9409 med=0.1018 (tgt 1.6621) | in/11 SS=1.0318 med=0.1051 (tgt 1.5883) | rate/full SS=0.8969 med=0.0777 (tgt 1.6028) | rate/11 SS=0.9863 med=0.0852 (tgt 1.5468)
