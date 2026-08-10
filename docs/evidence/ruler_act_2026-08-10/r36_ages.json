@@ -1,0 +1,9928 @@
+[
+{
+"key": "jed-anderson",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tim-mohr",
+"typ": "ND",
+"year": 2011,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "dom-barry",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tendai-mzungu",
+"typ": "ND",
+"year": 2010,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "jacob-weitering",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-schache",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "callum-mills",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "clayton-oliver",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "darcy-parish",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "aaron-francis",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jacob-hopper",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "callum-ah-chee",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-weideman",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-kennedy-1",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "eric-hipwood",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-rioli",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "harrison-himmelberg",
+"typ": "ND",
+"year": 2015,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "jade-gresham",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ryan-burton",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brayden-fiorini",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kieran-lovell",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "david-cuningham",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-keays",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-dunkley",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kieran-collins",
+"typ": "ND",
+"year": 2015,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "darcy-tucker",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-partington",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "alex-morgan",
+"typ": "ND",
+"year": 2015,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "ryan-clarke",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brayden-sier",
+"typ": "ND",
+"year": 2015,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "mitchell-hibberd",
+"typ": "ND",
+"year": 2015,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "joshua-schoenfeld",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "marcus-adams",
+"typ": "ND",
+"year": 2015,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "riley-bonner",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "harley-balic",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "rhys-mathieson",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brandon-white",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mitch-king",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "blake-hardwick",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "aidyn-johnson",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "liam-hulett",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-skinner",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "bailey-williams-wb",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "bailey-rice",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "oleg-markov",
+"typ": "ND",
+"year": 2015,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "tyrone-leonardis",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mackenzie-willis",
+"typ": "ND",
+"year": 2015,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "kurt-mutimer",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-phillips",
+"typ": "ND",
+"year": 2015,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "declan-mountford",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "shane-yarran",
+"typ": "ND",
+"year": 2015,
+"age_new": 26,
+"age_old": 26
+},
+{
+"key": "matthew-allen",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "rupert-wills",
+"typ": "ND",
+"year": 2015,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "yestin-eades",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-crocker",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nathan-broad",
+"typ": "ND",
+"year": 2015,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "wylie-buzza",
+"typ": "ND",
+"year": 2015,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "matthew-hayball",
+"typ": "ND",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jesse-glass-mccasker",
+"typ": "RD",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-keough",
+"typ": "RD",
+"year": 2015,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "gach-nyuon",
+"typ": "RD",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nick-o-kearney",
+"typ": "RD",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "joshua-wagner",
+"typ": "RD",
+"year": 2015,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "jock-cornell",
+"typ": "RD",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "will-snelling",
+"typ": "RD",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "bradley-lynch",
+"typ": "RD",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "callum-moore",
+"typ": "RD",
+"year": 2015,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "paul-hunter",
+"typ": "RD",
+"year": 2015,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "tom-papley",
+"typ": "RD",
+"year": 2015,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "matthew-uebergang",
+"typ": "RD",
+"year": 2015,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "jordan-snadden",
+"typ": "RD",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-surman",
+"typ": "RD",
+"year": 2015,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "andrew-gallucci",
+"typ": "RD",
+"year": 2015,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "reuben-william",
+"typ": "RD",
+"year": 2015,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "darcy-macpherson",
+"typ": "RD",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "anthony-mcdonald-tipungwuti",
+"typ": "RD",
+"year": 2015,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "nicholas-coughlan",
+"typ": "RD",
+"year": 2015,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "josh-smith-1",
+"typ": "RD",
+"year": 2015,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "daniel-lloyd",
+"typ": "RD",
+"year": 2015,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "james-parsons",
+"typ": "RD",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "cameron-hewett",
+"typ": "RD",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-goetz",
+"typ": "RD",
+"year": 2015,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "jono-beech",
+"typ": "RD",
+"year": 2015,
+"age_new": 25,
+"age_old": 25
+},
+{
+"key": "ryan-nyhuis",
+"typ": "RD",
+"year": 2015,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "kade-stewart",
+"typ": "RD",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-ruggles",
+"typ": "RD",
+"year": 2015,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "adam-marcon",
+"typ": "RD",
+"year": 2015,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "cameron-loersch",
+"typ": "RD",
+"year": 2015,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "tom-wallis",
+"typ": "RD",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "colin-o-riordan",
+"typ": "IRE",
+"year": 2015,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "conor-glass",
+"typ": "IRE",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "darrean-wyatt",
+"typ": "UNR",
+"year": 2015,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "alex-keath",
+"typ": "UNR",
+"year": 2015,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "matt-korcheck",
+"typ": "UNR",
+"year": 2015,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "joel-smith-1",
+"typ": "UNR",
+"year": 2015,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "hugh-greenwood",
+"typ": "UNR",
+"year": 2015,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "kyle-galloway",
+"typ": "PDA",
+"year": 2015,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "samuel-murray",
+"typ": "PDA",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jesse-joyce",
+"typ": "PDA",
+"year": 2015,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "christian-petracca",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "angus-brayshaw",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "isaac-heeney",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jarrod-pickett",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jordan-de-goey",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "caleb-marchbank",
+"typ": "ND",
+"year": 2014,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "darcy-moore",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "paul-ahern",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "peter-wright",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nakia-cockatoo",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "liam-duggan",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "corey-ellis",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "lachlan-weller",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jake-lever",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jarrod-garlett",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-durdin",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kyle-langford",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "blaine-boekhorst",
+"typ": "ND",
+"year": 2014,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "jayden-laverde",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-steele",
+"typ": "ND",
+"year": 2014,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "hugh-goddard",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-mckenzie",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "patrick-mckenna",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-nielson",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "toby-mclean",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "lukas-webb",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dillon-viojo-rainbow",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "touk-miller",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brayden-maynard",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-howe",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-lamb",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "connor-menadue",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "connor-blakely",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "harrison-wigg",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ed-vickers-willis",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-rose",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-hiscox",
+"typ": "ND",
+"year": 2014,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "declan-hamilton",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "alex-neal-bullen",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-lonie",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "billy-stretch",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mitch-mcgovern",
+"typ": "ND",
+"year": 2014,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "liam-dawson",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "bailey-dale",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "caleb-daniel",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "cory-gregson",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-goodyear",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "teia-miles",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jackson-nelson",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nathan-drummond",
+"typ": "ND",
+"year": 2014,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "oscar-mcdonald",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ed-langdon",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dean-gore",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dougal-howard",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "harry-dear",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jordan-cunico",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "clem-smith",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "harris-andrews",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "zaine-cordy",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jayden-foster",
+"typ": "ND",
+"year": 2014,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "josh-watts",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "damien-cavka",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-deluca-cardillo",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "logan-austin",
+"typ": "ND",
+"year": 2014,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "abaina-davis",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jaden-mcgrath",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "alec-waterman",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "reece-mckenzie",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jesse-palmer",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-mcguiness",
+"typ": "ND",
+"year": 2014,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "jeremy-finlayson",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-clayton",
+"typ": "ND",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-sinclair",
+"typ": "RD",
+"year": 2014,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "aaron-vandenberg",
+"typ": "RD",
+"year": 2014,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "billy-evans",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "roarke-smith",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "billy-gowers",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-glenn",
+"typ": "RD",
+"year": 2014,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "michael-manteit",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jayden-short",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ethan-hughes",
+"typ": "RD",
+"year": 2014,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "tom-read",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "braydon-preuss",
+"typ": "RD",
+"year": 2014,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "nathan-kreuger",
+"typ": "RD",
+"year": 2014,
+"age_new": 26,
+"age_old": 26
+},
+{
+"key": "sean-mclaren",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jared-hardisty",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ahmed-saad",
+"typ": "ND",
+"year": 2011,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "mitchell-white-1",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "hugh-beasley",
+"typ": "RD",
+"year": 2014,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "bradley-walsh",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "adam-saad",
+"typ": "RD",
+"year": 2014,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "brenden-abbott",
+"typ": "RD",
+"year": 2014,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "keenan-ramsey",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jason-castagna",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "will-fordham",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jermaine-miller-lewis",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brenton-payne",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-fields",
+"typ": "RD",
+"year": 2014,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "keegan-brooksby",
+"typ": "RD",
+"year": 2014,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "anthony-wilson",
+"typ": "RD",
+"year": 2014,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "kane-lambert",
+"typ": "RD",
+"year": 2014,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "jake-long",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "lachlan-langford",
+"typ": "RD",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tyrone-downie",
+"typ": "RD",
+"year": 2014,
+"age_new": 26,
+"age_old": 26
+},
+{
+"key": "matthew-hammelmann",
+"typ": "PDA",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jordan-foote",
+"typ": "PDA",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "paddy-brophy",
+"typ": "IRE",
+"year": 2014,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "cian-hanley",
+"typ": "IRE",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sean-hurley",
+"typ": "IRE",
+"year": 2014,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "padraig-lucey",
+"typ": "IRE",
+"year": 2014,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "johann-wagner",
+"typ": "UNR",
+"year": 2014,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "corey-adamson",
+"typ": "UNR",
+"year": 2014,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "fraser-russell",
+"typ": "UNR",
+"year": 2014,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "ivan-soldo",
+"typ": "UNR",
+"year": 2014,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mason-cox",
+"typ": "UNR",
+"year": 2014,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "joshua-kelly",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-billings",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "marcus-bontempelli",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kade-kolodjashnij",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-scharenberg",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-aish",
+"typ": "ND",
+"year": 2013,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "luke-mcdonald",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "christian-salem",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nathan-freeman",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dominic-sheed",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-lennon",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "patrick-cripps",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "cameron-mccarthy",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "zak-jones",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "darcy-lang",
+"typ": "ND",
+"year": 2013,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "michael-apeness",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-dunstan",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "blake-acres",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-leslie",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jarman-impey",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "darcy-gardiner",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matt-crouch",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "billy-hartung",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-mcstay",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "zachary-merrett",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sean-lemmens",
+"typ": "ND",
+"year": 2013,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "lewis-taylor",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "rory-lobb",
+"typ": "ND",
+"year": 2013,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "trent-dumont",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "malcolm-karpany",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "george-hewett",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-cutler",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nicholas-robertson",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "toby-nankervis",
+"typ": "ND",
+"year": 2013,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "jarrad-jansen",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dayle-garlett",
+"typ": "ND",
+"year": 2013,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "cameron-giles",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jay-kennedy-harris",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jake-kolodjashnij",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-fuller",
+"typ": "ND",
+"year": 2013,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "tom-barrass",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "aliir-aliir",
+"typ": "ND",
+"year": 2013,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "mitchell-harvey",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "riley-knight",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-brown",
+"typ": "ND",
+"year": 2013,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "dylan-main",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nicholas-holman",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "darcy-byrne-jones",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "orazio-fantasia",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-sicily",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jayden-hunt",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brady-grey",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mitch-honeychurch",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jonathan-freeman",
+"typ": "ND",
+"year": 2013,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "tom-langdon",
+"typ": "ND",
+"year": 2013,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "sam-lloyd",
+"typ": "ND",
+"year": 2013,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "karl-amon",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jonathon-marsh",
+"typ": "ND",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jake-barrett",
+"typ": "ND",
+"year": 2013,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "james-harmes",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "eli-templeton",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "louis-herbert",
+"typ": "RD",
+"year": 2013,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "will-maginness",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "isaac-conway",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "charlie-cameron",
+"typ": "RD",
+"year": 2013,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "fraser-thurlow",
+"typ": "RD",
+"year": 2013,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "luke-reynolds",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-russell",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-toohey",
+"typ": "RD",
+"year": 2013,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "michael-wood",
+"typ": "RD",
+"year": 2013,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "dallas-willsmore",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "max-king-1",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "rowen-powell",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "zac-o-brien",
+"typ": "RD",
+"year": 2013,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "james-battersby",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kayne-turner",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-gray",
+"typ": "RD",
+"year": 2013,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "nick-bourke",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "thomas-vandeleur",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "alexis-georgiou",
+"typ": "RD",
+"year": 2013,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "jake-kelly",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "blaine-johnson",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "zac-bates",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jacob-ballard",
+"typ": "RD",
+"year": 2013,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "zac-webster",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "alex-spina",
+"typ": "RD",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-ross",
+"typ": "RD",
+"year": 2013,
+"age_new": 25,
+"age_old": 25
+},
+{
+"key": "lloyd-perris",
+"typ": "PDA",
+"year": 2013,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "jared-ellis",
+"typ": "PDA",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "archie-smith",
+"typ": "PDA",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "shem-tatupu",
+"typ": "UNR",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "johnny-rayner",
+"typ": "UNR",
+"year": 2013,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "patrick-mitchell",
+"typ": "UNR",
+"year": 2013,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "michael-luxford",
+"typ": "UNR",
+"year": 2013,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jason-holmes",
+"typ": "UNR",
+"year": 2013,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "kurt-heatherley",
+"typ": "UNR",
+"year": 2013,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "ciaran-sheehan",
+"typ": "IRE",
+"year": 2013,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "daniel-flynn",
+"typ": "IRE",
+"year": 2013,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "ciaran-byrne",
+"typ": "IRE",
+"year": 2013,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "lachie-whitfield",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jonathan-o-rourke",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-martin",
+"typ": "ND",
+"year": 2012,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "lachlan-plowman",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jesse-hogan",
+"typ": "ND",
+"year": 2012,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "jimmy-toumpas",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jake-stringer",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jackson-macrae",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "joe-daniher",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "oliver-wines",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-mayes",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nick-vlastuin",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-viney",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "troy-menzel",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kristian-jaksch",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jesse-lonergan",
+"typ": "ND",
+"year": 2012,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "aidan-corr",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "taylor-garner",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jackson-thurlow",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-simpson",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brodie-grundy",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-kennedy",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "timothy-broomhead",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nathan-hrovat",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dean-towers",
+"typ": "ND",
+"year": 2012,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "marco-paparone",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nathan-wright",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "spencer-white",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-stewart",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tim-o-brien",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-clurey",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mason-shaw",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kamdyn-mcintosh",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "michael-close",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "liam-mcbean",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jason-ashby",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-temay",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tanner-smith",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jackson-ramsey",
+"typ": "ND",
+"year": 2012,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "max-duffy",
+"typ": "ND",
+"year": 2012,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "brodie-murdoch",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mason-wood",
+"typ": "ND",
+"year": 2012,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "matthew-mcdonough",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-saunders",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "harrison-marsh",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brant-colledge",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tim-membrey",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mitchell-wilkins",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dean-kent",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "lachlan-hunter",
+"typ": "ND",
+"year": 2012,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "joshua-prudden",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dylan-van-unen",
+"typ": "ND",
+"year": 2012,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "matt-jones",
+"typ": "ND",
+"year": 2012,
+"age_new": 25,
+"age_old": 25
+},
+{
+"key": "martin-gleeson",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nicholas-graham",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tim-sumner",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "clay-cameron",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "adam-carter",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-siggins",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-dick",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kaiden-brand",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nicholas-kommer",
+"typ": "ND",
+"year": 2012,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "lewis-pierce",
+"typ": "ND",
+"year": 2012,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "bradley-hartman",
+"typ": "ND",
+"year": 2012,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "rory-atkins",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sean-gregory",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "bret-thornton",
+"typ": "RD",
+"year": 2012,
+"age_new": 29,
+"age_old": 29
+},
+{
+"key": "sam-colquhoun",
+"typ": "RD",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "will-hams",
+"typ": "RD",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-hannath",
+"typ": "RD",
+"year": 2012,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "leigh-osborne",
+"typ": "RD",
+"year": 2012,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "nathan-stark",
+"typ": "RD",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "bret-goodes",
+"typ": "RD",
+"year": 2012,
+"age_new": 28,
+"age_old": 28
+},
+{
+"key": "kane-mitchell",
+"typ": "RD",
+"year": 2012,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "nick-hayes",
+"typ": "RD",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tim-mcgenniss",
+"typ": "RD",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-taberner",
+"typ": "RD",
+"year": 2012,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "callum-sinclair",
+"typ": "RD",
+"year": 2012,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "kyle-martin",
+"typ": "RD",
+"year": 2012,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "kyle-hartigan",
+"typ": "RD",
+"year": 2012,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "jonathon-ceglar",
+"typ": "RD",
+"year": 2012,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "jake-lloyd",
+"typ": "RD",
+"year": 2012,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "mitchell-clisby",
+"typ": "RD",
+"year": 2012,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "justin-hoskin",
+"typ": "RD",
+"year": 2012,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "alex-howson",
+"typ": "RD",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-dwyer",
+"typ": "RD",
+"year": 2012,
+"age_new": 26,
+"age_old": 26
+},
+{
+"key": "xavier-richards",
+"typ": "RD",
+"year": 2012,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "adam-oxley",
+"typ": "RD",
+"year": 2012,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "dane-rampe",
+"typ": "RD",
+"year": 2012,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "cadeyn-williams",
+"typ": "RD",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-frost",
+"typ": "RD",
+"year": 2012,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "craig-moller",
+"typ": "RD",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-robinson",
+"typ": "RD",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brandon-jack",
+"typ": "RD",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-naismith",
+"typ": "RD",
+"year": 2012,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "zachary-williams",
+"typ": "PDA",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "andrew-boston",
+"typ": "PDA",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jordan-bourke",
+"typ": "PDA",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "joe-redfern",
+"typ": "PDA",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ciaran-kilkenny",
+"typ": "IRE",
+"year": 2012,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "gideon-simon",
+"typ": "UNR",
+"year": 2012,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "eric-wallace",
+"typ": "UNR",
+"year": 2012,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "ben-richmond",
+"typ": "UNR",
+"year": 2012,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "tim-klaosen",
+"typ": "UNR",
+"year": 2012,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "jack-osborn",
+"typ": "UNR",
+"year": 2012,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "jaeger-o-meara",
+"typ": "ND",
+"year": 2011,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "jonathon-patton",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "stephen-coniglio",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dom-tyson",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "will-hoskin-elliott",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-buntine",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "chad-wingard",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brad-crouch",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nick-haynes",
+"typ": "ND",
+"year": 2011,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "billy-longer",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-mitchell",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "adam-tomlinson",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "liam-sumner",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "toby-greene",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-docherty",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "taylor-adams",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "devon-smith",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brandon-ellis",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "thomas-sheridan",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "clay-smith",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "bradley-mckenzie",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "elliott-kavanagh",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "hayden-crozier",
+"typ": "ND",
+"year": 2011,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "josh-bootsma",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "murray-newman",
+"typ": "ND",
+"year": 2011,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "henry-schade",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sebastian-ross",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "todd-elton",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-kerridge",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "fraser-mcinnes",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "alex-forster",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "elliot-yeo",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jackson-merrett",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "bradley-hill",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "shane-kersten",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-markworth",
+"typ": "ND",
+"year": 2011,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "rory-taggert",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-newnes",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jordan-kelly",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "michael-talia",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-curran",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mitchell-grigg",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jimmy-webster",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jordan-lockyer",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brendon-ah-chee",
+"typ": "ND",
+"year": 2011,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "nick-joyce",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "patrick-wearden",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jordan-murdoch",
+"typ": "ND",
+"year": 2011,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "daniel-pearce",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jackson-paine",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nathan-blee",
+"typ": "ND",
+"year": 2011,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "josh-tynan",
+"typ": "ND",
+"year": 2011,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "alex-woodward",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-arnot",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-downie",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tory-dickson",
+"typ": "ND",
+"year": 2011,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "lachie-neale",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nicholas-o-brien",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jay-lever",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "alex-brown",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dylan-buckley",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "cameron-ellis-yolmen",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "corey-gault",
+"typ": "ND",
+"year": 2011,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "lincoln-mccarthy",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jarrod-witts",
+"typ": "ND",
+"year": 2011,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "cameron-sutcliffe",
+"typ": "ND",
+"year": 2011,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "orren-stephenson",
+"typ": "ND",
+"year": 2011,
+"age_new": 29,
+"age_old": 29
+},
+{
+"key": "jed-bews",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-mcdonald",
+"typ": "ND",
+"year": 2011,
+"age_new": 35,
+"age_old": 35
+},
+{
+"key": "alex-sexton",
+"typ": "ND",
+"year": 2011,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "jackson-allen",
+"typ": "ND",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "aaron-hall",
+"typ": "RD",
+"year": 2011,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "john-mccarthy",
+"typ": "RD",
+"year": 2011,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "brett-o-hanlon",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "fletcher-roberts",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-frost",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kyal-horsely",
+"typ": "RD",
+"year": 2011,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "justin-clarke",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "rory-laird",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jai-sheehan",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "lee-spurr",
+"typ": "RD",
+"year": 2011,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "lin-jong",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "max-warren",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "lauchlan-dalgleish",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-dunnell",
+"typ": "RD",
+"year": 2011,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "shane-biggs",
+"typ": "RD",
+"year": 2011,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "tom-bell",
+"typ": "RD",
+"year": 2011,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "michael-mascoulis",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "lachlan-smith-2011",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "cam-eardley",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "danny-butcher",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "stephen-wrigley",
+"typ": "RD",
+"year": 2011,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "dylan-orval",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-couch",
+"typ": "RD",
+"year": 2011,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "ben-darrou",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "haiden-schloithe",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-campbell",
+"typ": "RD",
+"year": 2011,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "brad-mangan",
+"typ": "RD",
+"year": 2011,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "corey-dell-olio",
+"typ": "RD",
+"year": 2011,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "cameron-shenton",
+"typ": "RD",
+"year": 2011,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "callum-papertalk",
+"typ": "RD",
+"year": 2011,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "amos-frank",
+"typ": "RD",
+"year": 2011,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "marley-williams",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jackson-sheringham",
+"typ": "RD",
+"year": 2011,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "jack-crisp",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tim-mcintyre",
+"typ": "RD",
+"year": 2011,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "james-magmer",
+"typ": "RD",
+"year": 2011,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "stephen-verrier",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "alex-greenwood",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mark-baguley",
+"typ": "RD",
+"year": 2011,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "jordan-staley",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "frazer-dale",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "shaun-edwards",
+"typ": "RD",
+"year": 2011,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "andrew-boseley",
+"typ": "RD",
+"year": 2011,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "leigh-williams",
+"typ": "RD",
+"year": 2011,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "gibson-turner",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jordan-king",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-redpath",
+"typ": "RD",
+"year": 2011,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "hal-hunter",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "darren-minchington",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "piva-wright",
+"typ": "RD",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brendan-lee",
+"typ": "RD",
+"year": 2011,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "caolan-mooney",
+"typ": "IRE",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "john-heslin",
+"typ": "IRE",
+"year": 2011,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "harry-cunningham",
+"typ": "PDA",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-hall",
+"typ": "PDA",
+"year": 2011,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "sam-michael",
+"typ": "PDA",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "anthony-miles",
+"typ": "PDA",
+"year": 2011,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "richard-newell",
+"typ": "PDS",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-lodge",
+"typ": "PDS",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "michael-hartley",
+"typ": "PDS",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-lynch",
+"typ": "PDS",
+"year": 2011,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-dowdell",
+"typ": "UNR",
+"year": 2011,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "israel-folau",
+"typ": "UNR",
+"year": 2011,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "mark-blicavs",
+"typ": "UNR",
+"year": 2011,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "david-swallow",
+"typ": "ND",
+"year": 2010,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "harley-bennell",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-day",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "andrew-gaff",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jared-polec",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "reece-conca",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-caddy",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dyson-heppell",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dion-prestia",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-gorringe",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-lynch-1",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "lucas-cook",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sebastian-tape",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brodie-smith",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "billie-smedts",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-jacobs",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mitchell-wallis",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "shaun-atley",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-watson-1",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "isaac-smith",
+"typ": "ND",
+"year": 2010,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "charlie-dixon",
+"typ": "ND",
+"year": 2010,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "jayden-pitt",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jed-lamb",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "thomas-liberatore",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "cameron-guthrie",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jamie-cripps",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "patrick-karnezis",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-darling",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kieran-harper",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ryan-lester",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "scott-lycett",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jake-batchelor",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ariel-steinberg",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "joshua-green",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jeremy-howe",
+"typ": "ND",
+"year": 2010,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "patrick-mccarthy",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-newton",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "aaron-young",
+"typ": "ND",
+"year": 2010,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "george-horlin-smith",
+"typ": "ND",
+"year": 2010,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "mitchell-hallahan",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jeremy-taylor",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-parker",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-mitchell",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-crocker",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "viv-michie",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "alex-fasolo",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-farmer",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "bradley-helbig",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "steven-may",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "alex-browne",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "troy-davis",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dean-macdonald",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "cameron-o-shea",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-mcdonald",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jordan-schroder",
+"typ": "ND",
+"year": 2010,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "angus-dewar",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-mellington",
+"typ": "ND",
+"year": 2010,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "alex-johnson",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-ledger",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kirk-ugle",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jarryd-lyons",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jacob-brennan",
+"typ": "ND",
+"year": 2010,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "tom-derickx",
+"typ": "ND",
+"year": 2010,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "luke-davis",
+"typ": "ND",
+"year": 2010,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "paul-puopolo",
+"typ": "ND",
+"year": 2010,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "andrew-mcinnes",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "cameron-delaney",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nicholas-duigan",
+"typ": "ND",
+"year": 2010,
+"age_new": 26,
+"age_old": 26
+},
+{
+"key": "ben-mabon",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jayden-schofield",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "arryn-siposs",
+"typ": "ND",
+"year": 2010,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "paul-seedsman",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "trent-stubbs",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "michael-ross",
+"typ": "ND",
+"year": 2010,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "zephaniah-skinner",
+"typ": "ND",
+"year": 2010,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "tom-hill",
+"typ": "ND",
+"year": 2010,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "thomas-young",
+"typ": "ND",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "blayne-wilson",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "michael-hibberd",
+"typ": "RD",
+"year": 2010,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "stephen-clifton",
+"typ": "RD",
+"year": 2010,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "rhys-cooyou",
+"typ": "RD",
+"year": 2010,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "andrew-phillips-1",
+"typ": "RD",
+"year": 2010,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "jimmi-savage",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "isiah-stevens",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "rory-thompson",
+"typ": "RD",
+"year": 2010,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "tom-hickey",
+"typ": "RD",
+"year": 2010,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "ben-jakobi",
+"typ": "RD",
+"year": 2010,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "josh-jenkins",
+"typ": "RD",
+"year": 2010,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "brad-harvey",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-nicholson",
+"typ": "RD",
+"year": 2010,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "tim-milera",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "thomas-jonas",
+"typ": "RD",
+"year": 2010,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "cameron-pedersen",
+"typ": "RD",
+"year": 2010,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "sam-menegola",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "gavin-roberts",
+"typ": "RD",
+"year": 2010,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "max-otten",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-dahlhaus",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "joshua-walker",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "thomas-curren",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "thomas-gordon",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "anton-hamp",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brad-miller",
+"typ": "RD",
+"year": 2010,
+"age_new": 27,
+"age_old": 27
+},
+{
+"key": "michael-evans",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jake-von-bertouch",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "callum-hay",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "aaron-mullett",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "thomas-schneider",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-haren",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jason-johannisen",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "george-burbury",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "warrick-andreoli",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-stanley",
+"typ": "RD",
+"year": 2010,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "declan-reilly",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jeremy-mcgovern",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kelvin-lawrence",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "lachlan-roach",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jarrad-irons",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "wayde-twomey",
+"typ": "RD",
+"year": 2010,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "derick-wanganeen",
+"typ": "RD",
+"year": 2010,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "jack-perham",
+"typ": "RD",
+"year": 2010,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "cameron-johnston",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ian-callinan",
+"typ": "RD",
+"year": 2010,
+"age_new": 28,
+"age_old": 28
+},
+{
+"key": "mitch-curnow",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mitchell-carter",
+"typ": "RD",
+"year": 2010,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "ryan-bathie",
+"typ": "RD",
+"year": 2010,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "jye-bolton",
+"typ": "RD",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "robert-campbell",
+"typ": "RD",
+"year": 2010,
+"age_new": 28,
+"age_old": 28
+},
+{
+"key": "paul-cribbin",
+"typ": "IRE",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-webster",
+"typ": "PDS",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jackson-ferguson",
+"typ": "PDS",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "blake-bray",
+"typ": "PDS",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-martyn",
+"typ": "PDS",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "william-langford",
+"typ": "PDS",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-mahony-haw",
+"typ": "PDS",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jake-crawford",
+"typ": "PDA",
+"year": 2010,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "eugene-kreuger",
+"typ": "PDA",
+"year": 2010,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "karmichael-hunt",
+"typ": "UNR",
+"year": 2010,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "tom-scully",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-trengove",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dustin-martin",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "anthony-morabito",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-cunnington",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "gary-rohan",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "bradley-sheppard",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "john-butcher",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "andrew-moore",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jake-melksham",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jordan-gysberts",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kane-lucas",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-talia",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "lewis-jetta",
+"typ": "ND",
+"year": 2009,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "christian-howard",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jasper-mcmillan-pittard",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-menzel",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-tapscott",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "benjamin-griffiths",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nathan-fyfe",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ryan-bastinac",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "gerrick-weedon",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "koby-stevens",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jake-carlisle",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "aaron-black",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "travis-colyer",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "callum-bartlett",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mitchell-duncan",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-gunston",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jason-tutt",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nicholas-winmar",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "anthony-long",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "max-gawn",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "david-astbury",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "joel-houghton",
+"typ": "ND",
+"year": 2009,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "jamie-macmillan",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-reid-syd",
+"typ": "ND",
+"year": 2009,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "sam-grimley",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "allen-christensen",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ayden-kennedy",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nathan-vardy",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "marcus-davies",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-dea",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-shaw",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "benjamin-stratton",
+"typ": "ND",
+"year": 2009,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "ryan-harwood",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jesse-crichton",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dylan-roberton",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-fitzpatrick",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "troy-taylor",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "justin-bollenhagen",
+"typ": "ND",
+"year": 2009,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "brayden-norris",
+"typ": "ND",
+"year": 2009,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "byron-sumner",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "trent-dennis-lane",
+"typ": "ND",
+"year": 2009,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "josh-cowan",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jordan-williams",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "rohan-kerr",
+"typ": "ND",
+"year": 2009,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "james-craig",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-sinclair",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jeromey-webberley",
+"typ": "ND",
+"year": 2009,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "taylor-duryea",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-nason",
+"typ": "ND",
+"year": 2009,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "jesse-o-brien",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-thomas",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "shane-thorne",
+"typ": "ND",
+"year": 2009,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "will-johnson",
+"typ": "ND",
+"year": 2009,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "bryce-retzlaff",
+"typ": "ND",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dylan-grimes",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ryan-neates",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kyle-hardingham",
+"typ": "RD",
+"year": 2009,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "robert-hicks",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "michael-barlow",
+"typ": "RD",
+"year": 2009,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "majak-daw",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "lewis-broome",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "cameron-hitchcock",
+"typ": "RD",
+"year": 2009,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "wayde-skipper",
+"typ": "RD",
+"year": 2009,
+"age_new": 26,
+"age_old": 26
+},
+{
+"key": "taite-silverlock",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jaryd-cachia",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mitchell-golby",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-thompson",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "thomas-hunter",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mark-hutchings",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-weston",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "pat-contin",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "alex-silvagni",
+"typ": "RD",
+"year": 2009,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "matthew-scott",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "andrew-strijk",
+"typ": "RD",
+"year": 2009,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "daniel-webb",
+"typ": "RD",
+"year": 2009,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "jarrod-kayler-thomson",
+"typ": "RD",
+"year": 2009,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "ben-howlett",
+"typ": "RD",
+"year": 2009,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "joe-dare",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-dyson",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-wright",
+"typ": "RD",
+"year": 2009,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "jack-carter",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "andrew-hooper",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-archer",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-johnson",
+"typ": "RD",
+"year": 2009,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "relton-roberts",
+"typ": "RD",
+"year": 2009,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "ashton-hams",
+"typ": "RD",
+"year": 2009,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "cameron-cloke",
+"typ": "RD",
+"year": 2009,
+"age_new": 25,
+"age_old": 25
+},
+{
+"key": "stewart-crameri",
+"typ": "RD",
+"year": 2009,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "levi-casboult",
+"typ": "RD",
+"year": 2009,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "matthew-jaensch",
+"typ": "RD",
+"year": 2009,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "matthew-panos",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-podsiadly",
+"typ": "RD",
+"year": 2009,
+"age_new": 28,
+"age_old": 28
+},
+{
+"key": "nick-westhoff",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "marcus-marigliani",
+"typ": "RD",
+"year": 2009,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "simon-white",
+"typ": "RD",
+"year": 2009,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "eddie-prato",
+"typ": "RD",
+"year": 2009,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "jesse-stringer",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-donaldson",
+"typ": "RD",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "patrick-ambrose",
+"typ": "RD",
+"year": 2009,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "tommy-walsh",
+"typ": "IRE",
+"year": 2009,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "jamie-o-reilly",
+"typ": "IRE",
+"year": 2009,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "chris-mckaigue",
+"typ": "IRE",
+"year": 2009,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "nial-mckeever",
+"typ": "IRE",
+"year": 2009,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "zach-tuohy",
+"typ": "IRE",
+"year": 2009,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "seamus-mcnamara",
+"typ": "UNR",
+"year": 2009,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "daniel-bass",
+"typ": "UNR",
+"year": 2009,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "sean-yoshiura",
+"typ": "PDA",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dylan-mcneil",
+"typ": "PDA",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "claye-beams",
+"typ": "PDA",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "broc-mccauley",
+"typ": "PDA",
+"year": 2009,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "nathan-gordon",
+"typ": "PDS",
+"year": 2009,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "jordan-johns",
+"typ": "PDS",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "aidan-riley",
+"typ": "PDS",
+"year": 2009,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-watts",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "nicholas-naitanui",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "stephen-hill",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "hamish-hartlett",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "michael-hurley",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "christopher-yarran",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "daniel-rich",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tyrone-vickery",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-ziebell",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "phil-davis",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "steele-sidebottom",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "lewis-johnston",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "tom-lynch",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ayce-cordy",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mitchell-brown-1",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ryan-schoenmakers",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "sam-blease",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "luke-shuey",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-strauss",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-swift",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "hayden-ballantyne",
+"typ": "ND",
+"year": 2008,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "jackson-trengove",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "david-zaharakis",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nicholas-suban",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-redden",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "jayden-post",
+"typ": "ND",
+"year": 2008,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "samuel-wright",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "shaun-mckernan",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dayne-beams",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-hannebery",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "jordan-roughead",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "liam-jones",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "thomas-gillies",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "liam-shiels",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "jamie-bennell",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ashley-smith",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "zachary-clarke",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-broadbent",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "steven-motlop",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "mitch-robinson",
+"typ": "ND",
+"year": 2008,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "todd-banfield",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mitchell-banner",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "liam-anthony",
+"typ": "ND",
+"year": 2008,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "rory-sloane",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jarrad-blight",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "luke-rounds",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "rhys-stanley",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nicholas-heyne",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "taylor-hunt",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jordan-lisle",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "neville-jetta",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jordan-jones",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "michael-walters",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "jarrad-redden",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "michael-still",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "benjamin-bucovaz",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "aaron-cornelius",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nathan-o-keefe",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "thomas-lee",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "campbell-heath",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "alistair-smith",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-lowden",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "rohan-bail",
+"typ": "ND",
+"year": 2008,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "rhys-o-keeffe",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "glenn-dawson",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tyson-slattery",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "tim-ruffles",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "bart-mcculloch",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "warren-benjamin",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "william-young",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "paul-cahill",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "shane-savage",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "chris-hall",
+"typ": "ND",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "caleb-tiller",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "keiran-king",
+"typ": "ND",
+"year": 2008,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "liam-jurrah",
+"typ": "RD",
+"year": 2008,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "tom-rockliff",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jordie-mckenzie",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "liam-bedford",
+"typ": "RD",
+"year": 2008,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "casey-sibosado",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "wade-thompson",
+"typ": "RD",
+"year": 2008,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "bryce-carroll",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jeff-garlett",
+"typ": "RD",
+"year": 2008,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "daniel-murray",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "robin-nahas",
+"typ": "RD",
+"year": 2008,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "marcus-white",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ricky-henderson",
+"typ": "RD",
+"year": 2008,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "tristan-francis",
+"typ": "RD",
+"year": 2008,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "jamason-daniels",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "adam-varcoe",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "riley-milne",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "rhys-healey",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "adam-cockie",
+"typ": "RD",
+"year": 2008,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "matthew-deboer",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "thomas-german",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-stanton",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-delaney",
+"typ": "RD",
+"year": 2008,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "jarryd-blair",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "taylor-gilchrist",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-simpkin",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "liam-picken",
+"typ": "RD",
+"year": 2008,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "bryn-weadon",
+"typ": "RD",
+"year": 2008,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "haydn-kiel",
+"typ": "RD",
+"year": 2008,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "daniel-hughes",
+"typ": "RD",
+"year": 2008,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "hamish-shepheard",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-stewart",
+"typ": "RD",
+"year": 2008,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "christian-bock",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "andrew-browne-1",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "benjamin-speight",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "johnny-bennell",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-allwright",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-breust",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "clancee-pearce",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-martin",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kade-klemke",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "alroy-gilligan",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "steve-gaertner",
+"typ": "RD",
+"year": 2008,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "jay-van-berlo",
+"typ": "RD",
+"year": 2008,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "jesse-laurie",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "adam-spackman",
+"typ": "RD",
+"year": 2008,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "ross-tungatulum",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "greg-broughton",
+"typ": "RD",
+"year": 2008,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "samuel-mcgarry",
+"typ": "RD",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "chris-ogle",
+"typ": "PDS",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ranga-ediriwickrama",
+"typ": "PDS",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "scott-reed",
+"typ": "PDS",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "blake-mcgrath",
+"typ": "PDS",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "william-sierakowski",
+"typ": "PDS",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "michael-quinn",
+"typ": "IRE",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kyle-coney",
+"typ": "IRE",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "conor-meredith",
+"typ": "IRE",
+"year": 2008,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "brian-donnelly",
+"typ": "IRE",
+"year": 2008,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "mike-pyke",
+"typ": "UNR",
+"year": 2008,
+"age_new": 24,
+"age_old": 24
+},
+{
+"key": "lachlan-keeffe",
+"typ": "UNR",
+"year": 2008,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-kreuzer",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "trent-cotchin",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "chris-masten",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "cale-morton",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jarrad-grant",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "david-myers",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "rhys-palmer",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "lachlan-henderson",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-mcevoy",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "patrick-dangerfield",
+"typ": "ND",
+"year": 2007,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "patrick-veszpremi",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "cyril-rioli",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "bradley-ebert",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-grimes",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "robert-tarrant",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-lobbe",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "harry-taylor",
+"typ": "ND",
+"year": 2007,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "alex-rance",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "callan-ward",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tony-notte",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "addam-maric",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "scott-selwood",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tayte-pears",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "clayton-hinkley",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-collier",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brett-meredith",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "andy-otten",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "marlon-motlop",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brendan-whitecross",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jarrhan-jacky",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "john-mccarthy-1",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "levi-greenwood",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-westhoff",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dawson-simpson",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "samuel-reid",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "steven-browne",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "scott-thompson-1",
+"typ": "ND",
+"year": 2007,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "myke-cook",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "darcy-daniher",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "christopher-mayne",
+"typ": "ND",
+"year": 2007,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "james-polkinghorne",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-steven",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "easton-wood",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "scott-simpson",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dennis-armfield",
+"typ": "ND",
+"year": 2007,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "tobias-thoolen",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jarrad-boumann-1",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mitchell-farmer",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dan-mckenna",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dean-putt",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "bradd-dalziell",
+"typ": "ND",
+"year": 2007,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "kyle-cheney",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "cale-hooker",
+"typ": "ND",
+"year": 2007,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "matt-austin",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tony-armstrong",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "craig-bird",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "adam-donohue",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jaxson-barham",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-smith",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "guy-o-keefe",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-mcnamara",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "eljay-connors",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "aaron-kite",
+"typ": "ND",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "taylor-walker",
+"typ": "ND",
+"year": 2007,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "david-gourdis",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "stefan-martin",
+"typ": "RD",
+"year": 2007,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "john-williams",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "joshua-head",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "patrick-mcginnity",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-bellchambers",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "aaron-joseph",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "trent-zomer",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-mulligan",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "rhys-magin",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brent-connelly",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "phil-smith",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "glenn-chivers",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-moss",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "hugh-sandilands",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "lewis-stevenson",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-casey-leigh",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nathan-grima",
+"typ": "RD",
+"year": 2007,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "nick-salter",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brodie-moles",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jarrod-silvester",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "lachie-hill",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "austin-wonaeamirri",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "henry-white",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jarrod-atkinson",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-pratt",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-miles",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jared-petrenko",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "timothy-walsh",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ashley-arrowsmith",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "cruize-garlett",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-boyle",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jeremy-laidler",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tristan-cartledge",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "david-ellard",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jake-spencer",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "john-shaw",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "edward-curnow",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "alex-grima",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "will-sullivan",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "chris-kangars",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "shane-valenti",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brodie-martin",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-beckmans",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "cameron-stokes",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "callum-wilson",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "michael-wundke",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "shane-mumford",
+"typ": "RD",
+"year": 2007,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "aaron-bruce",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dean-terlich",
+"typ": "RD",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "khan-haretuku",
+"typ": "PDS",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-wilsen",
+"typ": "PDS",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ryan-davis",
+"typ": "PDS",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brendan-murphy",
+"typ": "IRE",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "michael-shields",
+"typ": "IRE",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "pearce-hanley",
+"typ": "IRE",
+"year": 2007,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "kevin-dyas",
+"typ": "IRE",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jake-orreal",
+"typ": "UNR",
+"year": 2007,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "bryce-gibbs",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "scott-gumbleton",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "lachlan-hansen",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-leuenberger",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "travis-boak",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mitchell-thorp",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "joel-selwood",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-reid",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "david-armitage",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nathan-brown",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "andrejs-everitt",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-frawley",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jack-riewoldt",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-sellar",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-o-keefe",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mitchell-brown",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "shaun-hampson",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "leroy-jetta",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "shaun-grigg",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-hislop",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "gavin-urquhart",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "albert-proud",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "paul-stewart",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brent-renouf",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nathan-djerrkura",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "shane-edwards",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brad-howard",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "chris-dawes",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "eric-mackenzie",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ricky-petterd",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "clayton-collard",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kurt-tippett",
+"typ": "ND",
+"year": 2006,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "jarryd-morton",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "chris-schmidt",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "mark-austin",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "alwyn-davey",
+"typ": "ND",
+"year": 2006,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "todd-goldstein",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-hawksley",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nathan-krakouer",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-p-kennedy",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tom-hawkins",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "bachar-houli",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tim-houlihan",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brad-dick",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brennan-stack",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "colin-garland",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "kyle-reimers",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "david-mackay",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-currie",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "will-schofield",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "clinton-benjamin",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brock-o-brien",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "lindsay-thomas",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matt-tyler",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "robert-gray",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "garry-moss",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "simon-hogan",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-connors",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jarryd-allen",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "carl-peterson",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "josh-hill",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "isaac-weetra",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tyson-goldsack",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nick-gill",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "peter-faulks-1",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "malcolm-lynch",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "joe-anderson",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-warren",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-sheldon",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "justin-westhoff",
+"typ": "ND",
+"year": 2006,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "andrew-collins-1",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "paul-o-shea",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "calib-mourish",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "bryce-campbell",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jesse-white",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-thomson",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ryan-williams",
+"typ": "ND",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-jacobs",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dean-dick",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "leigh-adams",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "alex-lee",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brett-collins",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "joel-reynolds",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "tasman-clingan",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "clinton-jones",
+"typ": "RD",
+"year": 2006,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "sharrod-wellingham",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "gavin-hughes",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-hayes",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "chris-smith",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "andrew-mcintyre",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nick-smith-1",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jamie-mcnamara",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "michael-jamison",
+"typ": "RD",
+"year": 2006,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "danny-chartres",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ben-hughes",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "scott-clouston",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "gavin-grose",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-suckling",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "liam-bedford-2",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jake-king",
+"typ": "RD",
+"year": 2006,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "luke-van-rheenen",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "brent-macaffer",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jarrod-harbrow",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "andrew-foster",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "james-turner",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matthew-o-dwyer",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "ross-young",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "matt-campbell",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "daniel-dzufer",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "nathan-batsanis",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "sam-gibson",
+"typ": "RD",
+"year": 2006,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "jason-davenport",
+"typ": "RD",
+"year": 2006,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "robert-eddy",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "darren-rumble",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "rhys-archard",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-brennan",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "haydn-kiel-2",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "peter-hardy",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "greg-gallman",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "joel-tippett",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "jarryn-geary",
+"typ": "RD",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "martin-clarke",
+"typ": "IRE",
+"year": 2006,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "dayne-zorko",
+"typ": "ND",
+"year": 2011,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "jamie-elliott",
+"typ": "ND",
+"year": 2011,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "jake-neade",
+"typ": "ND",
+"year": 2012,
+"age_new": 18,
+"age_old": 18
+},
+{
+"key": "luke-brown",
+"typ": "ND",
+"year": 2011,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "steven-morris",
+"typ": "ND",
+"year": 2011,
+"age_new": 23,
+"age_old": 23
+},
+{
+"key": "josh-drummond",
+"typ": "RD",
+"year": 2004,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "brett-deledio",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "jarryd-roughead",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "ryan-griffen",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "richard-tambling",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "lance-franklin",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "tom-williams",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "jordan-lewis",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "john-meesen",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "jordan-russell",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "chris-egan",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "adam-thomson",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "danny-meyer",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "matthew-bate",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "angus-monfries",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "lynden-dunn",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "adam-pattison",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "andrew-mcqualter",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "cameron-wood",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "ryan-willits",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "dean-polo",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "tom-murphy",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "jesse-wells",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "sean-rusling",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "nathan-van-berlo",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "adam-hartlett",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "matthew-little",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "pat-garner",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "chad-gibson",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "matt-rosa",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "andrew-lee",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "jarred-moore",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "brent-prismall",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "james-ezard",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "fabian-deluca",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "luke-mcguane",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "mark-lecras",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "damien-mccormack",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "travis-cloke",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "ivan-maric",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "luke-blackwell",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "jesse-smith",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "michael-newton",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "mitch-morton",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "justin-sherman",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "henry-slattery",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "nathan-ablett",
+"typ": "ND",
+"year": 2004,
+"age_new": 19,
+"age_old": null
+},
+{
+"key": "jayden-attard",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "ben-eckermann",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "dean-limbach",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "simon-taylor",
+"typ": "ND",
+"year": 2004,
+"age_new": 22,
+"age_old": null
+},
+{
+"key": "stephen-tiller",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "adam-iacobucci",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "chris-knights",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "brad-moran",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "benet-copping",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "paul-thomas",
+"typ": "ND",
+"year": 2004,
+"age_new": 22,
+"age_old": null
+},
+{
+"key": "matthew-egan",
+"typ": "ND",
+"year": 2004,
+"age_new": 21,
+"age_old": null
+},
+{
+"key": "james-gwilt",
+"typ": "ND",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "luke-forsyth",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "toby-stribling",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "ben-schwarze",
+"typ": "ND",
+"year": 2004,
+"age_new": 21,
+"age_old": null
+},
+{
+"key": "chris-bryan",
+"typ": "ND",
+"year": 2004,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "anthony-raso",
+"typ": "ND",
+"year": 2004,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "will-thursfield",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "ruory-kirkby",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "rowan-nayna",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "ben-davies",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "ryan-nye",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "daniel-batson",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "josh-gibson",
+"typ": "RD",
+"year": 2004,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "joe-krieger",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "ben-sharp",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "brendan-van-schaik",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "ryan-bain",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "guy-campbell",
+"typ": "RD",
+"year": 2004,
+"age_new": 22,
+"age_old": null
+},
+{
+"key": "jarrod-garth",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "travis-baird",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "danyle-pearce",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "clinton-young",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "dale-morris",
+"typ": "RD",
+"year": 2004,
+"age_new": 22,
+"age_old": 22
+},
+{
+"key": "heritier-lumumba",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "jonathon-griffin",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "jack-juniper",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "beau-maister",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "matthew-warnock",
+"typ": "RD",
+"year": 2004,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "ben-jolley",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "luke-vogels",
+"typ": "RD",
+"year": 2004,
+"age_new": 21,
+"age_old": null
+},
+{
+"key": "nick-batchelor",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "ed-mcdonnell",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "thomas-willday",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "john-hinge",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "nick-becker",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "scott-mcmahon",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "ashley-thornton",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "heath-grundy",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "tim-sheringham",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "kristan-height",
+"typ": "RD",
+"year": 2004,
+"age_new": 21,
+"age_old": null
+},
+{
+"key": "aisake-o-hailpin",
+"typ": "IRE",
+"year": 2004,
+"age_new": 19,
+"age_old": null
+},
+{
+"key": "justin-perkins",
+"typ": "RD",
+"year": 2004,
+"age_new": 21,
+"age_old": null
+},
+{
+"key": "stefan-garrubba",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "earl-shaw",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "ed-clarke",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "marcus-allan",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "andrew-hayes",
+"typ": "RD",
+"year": 2004,
+"age_new": 19,
+"age_old": null
+},
+{
+"key": "will-hamill-2004",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "martin-pask",
+"typ": "RD",
+"year": 2004,
+"age_new": 19,
+"age_old": null
+},
+{
+"key": "scott-harding",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "eddie-betts",
+"typ": "RD",
+"year": 2004,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "elijah-ware",
+"typ": "RD",
+"year": 2004,
+"age_new": 21,
+"age_old": null
+},
+{
+"key": "marc-murphy",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "dale-thomas",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "xavier-ellis",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "joshua-kennedy",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "scott-pendlebury",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": 17
+},
+{
+"key": "beau-dowler",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "paddy-ryder",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "jarrad-oakley-nicholls",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "mitch-clark",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "marcus-drum",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "shaun-higgins",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "nathan-jones",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "shannon-hurn",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "grant-birchall",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "travis-varcoe",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "richard-douglas",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "darren-pfeiffer",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "max-bailey",
+"typ": "ND",
+"year": 2005,
+"age_new": 19,
+"age_old": null
+},
+{
+"key": "courtenay-dempsey",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "paul-bower",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "danny-stanley",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "beau-muston",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "ryan-cook",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "cleve-hughes",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "wayde-mills",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "garrick-ibbotson",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "dylan-addison",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "matt-riggio",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "ben-mckinley",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "nick-lower",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "trent-west",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "bernie-vince",
+"typ": "ND",
+"year": 2005,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "sam-gilbert",
+"typ": "ND",
+"year": 2005,
+"age_new": 19,
+"age_old": 19
+},
+{
+"key": "matthew-spangher",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "stephen-owen",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "jake-edwards",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "john-anthony",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "travis-tuck",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "jay-neagle",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "travis-casserly",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "rhan-hooper",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "robert-warnock",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "andrew-swallow",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "alipate-carlile",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "ryan-gamble",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "alan-obst",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "sam-lonergan",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "matthew-laidlaw",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "simon-buckley",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "kristin-thornton",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "joel-patfull",
+"typ": "ND",
+"year": 2005,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "michael-west",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "hugh-minson",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "ryan-brabazon",
+"typ": "ND",
+"year": 2005,
+"age_new": 19,
+"age_old": null
+},
+{
+"key": "clint-bartram",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "mathew-stokes",
+"typ": "ND",
+"year": 2005,
+"age_new": 21,
+"age_old": 21
+},
+{
+"key": "phillip-raymond",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "austin-lucy",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "heath-neville",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "tim-hutchison",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "jonathan-giles",
+"typ": "ND",
+"year": 2005,
+"age_new": 17,
+"age_old": null
+},
+{
+"key": "justin-sweeney",
+"typ": "ND",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "ryan-jackson",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "alan-toovey",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "luke-mcentee",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "lachlan-mckinnon",
+"typ": "RD",
+"year": 2005,
+"age_new": 19,
+"age_old": null
+},
+{
+"key": "angus-graham",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "jason-roe",
+"typ": "RD",
+"year": 2005,
+"age_new": 21,
+"age_old": null
+},
+{
+"key": "jace-bode",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "ed-lower",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "tom-rischbieth",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "todd-grima",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "brad-sugars",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "cathal-corr",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "jonathan-simpkin",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "craig-flint",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "daniel-nicholls",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "lukas-markovic",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "heath-hocking",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "leonard-clark",
+"typ": "RD",
+"year": 2005,
+"age_new": 22,
+"age_old": null
+},
+{
+"key": "danny-hughes",
+"typ": "RD",
+"year": 2005,
+"age_new": 19,
+"age_old": null
+},
+{
+"key": "djaran-whyman",
+"typ": "RD",
+"year": 2005,
+"age_new": 22,
+"age_old": null
+},
+{
+"key": "greg-bentley",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "tom-redden",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "matt-priddis",
+"typ": "RD",
+"year": 2005,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "james-wall",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "shannon-cox",
+"typ": "RD",
+"year": 2005,
+"age_new": 19,
+"age_old": null
+},
+{
+"key": "matthew-firman",
+"typ": "RD",
+"year": 2005,
+"age_new": 20,
+"age_old": null
+},
+{
+"key": "cameron-howat",
+"typ": "RD",
+"year": 2005,
+"age_new": 20,
+"age_old": null
+},
+{
+"key": "shane-neaves",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "tim-looby",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "adrian-bonaddio",
+"typ": "RD",
+"year": 2005,
+"age_new": 19,
+"age_old": null
+},
+{
+"key": "paul-currie",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "tim-o-keefe",
+"typ": "RD",
+"year": 2005,
+"age_new": 19,
+"age_old": null
+},
+{
+"key": "cheynee-stiller",
+"typ": "RD",
+"year": 2005,
+"age_new": 19,
+"age_old": null
+},
+{
+"key": "andre-gianfagna",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "sam-elliott",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "simon-phillips",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "ben-mcglynn",
+"typ": "RD",
+"year": 2005,
+"age_new": 20,
+"age_old": 20
+},
+{
+"key": "colm-begley",
+"typ": "IRE",
+"year": 2005,
+"age_new": 19,
+"age_old": null
+},
+{
+"key": "kieren-jack",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "brendan-quigley",
+"typ": "RD",
+"year": 2005,
+"age_new": 19,
+"age_old": null
+},
+{
+"key": "ed-barlow",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "adam-prior",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "sam-rowe",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "sam-iles",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "matt-white",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "matt-thomas",
+"typ": "RD",
+"year": 2005,
+"age_new": 18,
+"age_old": null
+},
+{
+"key": "jason-porplyzia",
+"typ": "RD",
+"year": 2005,
+"age_new": 21,
+"age_old": null
+}
+]

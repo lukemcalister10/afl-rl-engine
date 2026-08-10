@@ -1,0 +1,61 @@
+TAIL SHARE OF THE YEAR-4 PRICE BEYOND CAREER YEAR 11
+  CARRY     = EXACT: sum vpath[10]/1.0939^7 / sum vpath[3]
+  struct pk = APPROX: k>=7 share of the engine's own production integral, lp = PEAK[pos]
+  -15/+15   = the same with lp scaled -- how load-bearing the lp approximation is
+  struct bl = the same with lp = the player's own demonstrated best level at year 4
+  every cell value-weighted by the year-4 price (the tilt map's own weights)
+
+======================================================================================================================
+BY POSITION
+----------------------------------------------------------------------------------------------------------------------
+  cell                               n   sumPROXY |    CARRY | struct pk     -15%     +15% | struct bl
+  MID                              398     478084 |    13.9% |     12.8%     7.1%    17.7% |     13.8%
+  SD                               317     151874 |    17.7% |     12.5%    12.7%    18.0% |     15.2%
+  SF                               271     179804 |     8.1% |      7.9%     8.4%    12.0% |     13.4%
+  KPF                              158     120952 |    17.6% |     30.7%    28.3%    32.8% |     31.2%
+  KPD                              150      94794 |    15.2% |     25.9%    25.0%    29.2% |     27.3%
+  RUCK                             124      85064 |    27.8% |     28.8%    23.7%    29.8% |     26.7%
+  talls                            432     300810 |    19.7% |     28.4%    25.8%    30.6% |     28.5%
+  runners                          986     809762 |    13.3% |     11.7%     8.4%    16.5% |     14.0%
+  ALL                             1418    1110572 |    15.1% |     16.0%    12.9%    20.1% |     17.7%
+
+======================================================================================================================
+BY DRAFT-AGE BAND (classes carrying a draft age today)
+----------------------------------------------------------------------------------------------------------------------
+  cell                               n   sumPROXY |    CARRY | struct pk     -15%     +15% | struct bl
+  <=18                             918     812220 |    15.0% |     17.8%    14.4%    22.1% |     19.5%
+  19-20                            139      85497 |    23.9% |      8.4%     6.6%    13.0% |     10.1%
+  21-22                             84      51408 |     8.5% |      2.5%     1.6%     5.2% |      5.3%
+  23+                               70       9433 |     0.1% |      0.4%     0.3%     1.2% |      0.7%
+  young <=20                      1057     897717 |    15.9% |     16.9%    13.7%    21.2% |     18.6%
+  mature 21+                       154      60841 |     7.2% |      2.1%     1.4%     4.6% |      4.6%
+
+======================================================================================================================
+POSITION x AGE BAND
+----------------------------------------------------------------------------------------------------------------------
+  cell                               n   sumPROXY |    CARRY | struct pk     -15%     +15% | struct bl
+  MID x young                      301     417754 |    14.1% |     13.1%     7.3%    18.1% |     14.1%
+  MID x mature                      36      11092 |    11.8% |      0.7%     0.2%     3.4% |      1.6%
+  SD x young                       246     119828 |    21.4% |     13.8%    14.0%    19.9% |     16.5%
+  SD x mature                       29      13808 |     3.1% |      0.6%     0.9%     1.8% |      4.6%
+  SF x young                       197     140152 |     8.7% |      8.5%     9.0%    12.8% |     14.3%
+  SF x mature                       36      10494 |     0.2% |      0.4%     0.6%     0.8% |      1.3%
+  KPF x young                      118      83105 |    16.5% |     31.6%    29.2%    33.7% |     32.2%
+  KPF x mature                      13       2825 |     4.8% |      2.9%     2.2%     5.8% |      2.5%
+  KPD x young                      120      76486 |    16.4% |     29.7%    28.7%    33.0% |     30.7%
+  KPD x mature                      13      12471 |     4.3% |      2.7%     2.8%     5.8% |      6.6%
+  RUCK x young                      75      60392 |    31.8% |     32.6%    27.2%    32.8% |     29.7%
+  RUCK x mature                     27      10151 |    19.2% |      6.6%     2.5%    11.9% |      9.2%
+
+======================================================================================================================
+WHAT THE TAIL ACTUALLY DELIVERED — the engine's year-11 mark vs what followed it
+======================================================================================================================
+  careers still priced at year 11 :  364 rows,  73.5% of PROXY weight
+  careers over by year 11         : 1054 rows,  26.5% of PROXY weight (tail marks 0)
+  OBSERVED realized value delivered after career year 10 (availability basis, disc to yr 4):
+         109510 =   9.9% of the year-4 price   (plus 33072 of live-tail stub in instrument A)
+  the engine's own YEAR-11 MARK (instrument C/D tail):
+         167277 =  15.1% of the year-4 price
+  -> the year-11 mark stands 1.53x above the observed post-year-10 delivery; the horizon cap
+     REPLACES a long thin realized tail with a fatter engine mark, which is why the capped
+     instrument's LEVEL is only modestly below the full-horizon one.

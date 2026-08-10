@@ -1,0 +1,65 @@
+====================================================================================================
+1. THE OLD 'age UNKNOWN' CELL, RE-MEASURED EXACTLY (the same 207 rows the landed map named)
+====================================================================================================
+  n=207  eff-n 47.5
+     A  tilt 0.4674  1/tilt 2.1393   [landed A was 2.1393]
+     B  tilt 0.5099  1/tilt 1.9612   [landed A was 2.1393]
+     C  tilt 0.5249  1/tilt 1.9052   [landed A was 2.1393]
+     D  tilt 0.5581  1/tilt 1.7918   [landed A was 2.1393]
+  its TRUE age composition: [(17, 44), (18, 134), (19, 14), (20, 2), (21, 8), (22, 5)]
+  weight by band: <=18 93.8% | 19-20 2.8% | 21-22 3.4% | 23+ 0.0%
+  classes: [(2004, 105), (2005, 102)]
+
+  CONTROLLED COMPARISON — age<=18 only, inside vs outside classes 2004-05:
+     2004-05  n=179 eff-n  43.3  1/tilt A 1.8743  D 1.5999
+     2006-15  n=917 eff-n 223.0  1/tilt A 1.6792  D 1.5991
+     -> holding AGE fixed at <=18, the 2004-05 cell is still 12% (A) / 0% (D) worse,
+        so the old cell's factor is an ERA/CLASS reading, not an age one.
+
+====================================================================================================
+2. BEND SURVIVAL ACROSS ALL FOUR — named age cells only (bar 35)
+====================================================================================================
+  cell                       eff-n |   bendA   bendB   bendC   bendD | verdict
+  young <=20                 302.0 |   0.997   1.000   0.996   0.999 | no material bend on any
+  mature 21+                  32.8 | BELOW BAR - not named
+  <=18                       266.2 |   1.027   1.032   1.029   1.034 | no material bend on any
+  19-20                       42.6 |   0.764   0.754   0.744   0.736 | HOLDS ON ALL FOUR
+  21-22                       25.6 | BELOW BAR - not named
+  23+                         11.2 | BELOW BAR - not named
+  ND1-64 young <=20          242.9 |   1.017   1.020   1.022   1.026 | no material bend on any
+  pool young <=20             71.9 |   0.896   0.892   0.866   0.863 | HOLDS ON ALL FOUR
+  pool RD young <=20          58.0 |   0.924   0.909   0.885   0.877 | partial (..XX)
+  young <=20 x talls          90.9 |   1.032   1.000   0.977   0.961 | no material bend on any
+  young <=20 x runners       213.0 |   0.986   1.000   1.003   1.014 | no material bend on any
+  classes 2004-05             54.4 |   1.133   1.093   1.060   1.035 | partial (X...)
+
+====================================================================================================
+3. IS THE 19-20 BAND A REAL AGE EFFECT, OR A ROUTE EFFECT IN DISGUISE?
+====================================================================================================
+  n=155  route: [('RD', 79), ('ND', 54), ('IRE', 13), ('UNR', 4), ('PDA', 4), ('PDS', 1)]
+  pool share by weight: 49.1%  (population pool share 17.6%)
+  position: [('SD', 48), ('MID', 29), ('SF', 27), ('KPD', 19), ('KPF', 17), ('RUCK', 15)]
+  class span: [(2004, 6), (2005, 16), (2006, 4), (2007, 4), (2008, 19), (2009, 14), (2010, 18), (2011, 17), (2012, 9), (2013, 17), (2014, 15), (2015, 16)]
+  *19-20 x ND1-64     n=  44 eff-n   19.8  1/tilt A 1.4009  D 1.2754
+  *19-20 x pool       n= 111 eff-n   23.3  1/tilt A 1.1564  D 1.0251
+   <=18 x ND1-64      n= 667 eff-n  226.0  1/tilt A 1.7084  D 1.6082
+   <=18 x pool        n= 429 eff-n   48.8  1/tilt A 1.6950  D 1.5295
+  (* below bar) -- if 19-20 is straighter WITHIN each route, it is an age effect.
+
+====================================================================================================
+4. WHY MATURE-21+ STILL FAILS THE BAR (n=167 but eff-n 32.8)
+====================================================================================================
+  n=167  sum proxy 66019  eff-n 32.8
+  rows with proxy == 0 (bust before yr 4, zero weight): 84
+  top 8 by weight (share of the cell):
+     Shane Mumford              RD   2007 age 21  proxy    5468   8.3%
+     Dayne Zorko                ND   2011 age 22  proxy    3717   5.6%
+     Jason Porplyzia            RD   2005 age 21  proxy    3293   5.0%
+     Michael Barlow             RD   2009 age 22  proxy    3014   4.6%
+     Scott Thompson             ND   2007 age 21  proxy    2749   4.2%
+     Josh Drummond              RD   2004 age 21  proxy    2512   3.8%
+     Harry Taylor               ND   2007 age 21  proxy    2328   3.5%
+     Michael Hibberd            RD   2010 age 21  proxy    2278   3.5%
+  top-5 weight share: 27.6%  -> the cell is dominated by a handful of priced matures,
+     which is what holds eff-n down; the birthdates added 0 mature rows (2004-05 were 96.6%% young).
+  mature rows gained from the DOB write: 13

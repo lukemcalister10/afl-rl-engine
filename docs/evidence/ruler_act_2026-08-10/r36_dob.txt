@@ -1,0 +1,22 @@
+new store md5 d9a24282
+old store md5 37ced3ce (act branch, the basis the vpaths were built on)
+records: new 2650, old 2650
+with a birth year: new 2650, old 2348  (delta +302)
+
+tilt-map population rows (classes 2004-2015): 1418
+age-UNKNOWN under the OLD store: 207 rows
+age-UNKNOWN under the NEW store: 0 rows
+
+rows with an age on BOTH stores: 1211 ; disagreements: 0
+
+=== THE OLD 'age UNKNOWN' CELL, RELABELLED (its true age composition) ===
+  n=207, all classes [2004, 2005]
+  now carrying a real draft age: 207 of 207
+  age distribution: [(17, 44), (18, 134), (19, 14), (20, 2), (21, 8), (22, 5)]
+     <=18   n=178 (86.0% of rows)   93.8% of the cell's year-4 price weight
+     19-20  n= 16 ( 7.7% of rows)    2.8% of the cell's year-4 price weight
+     21-22  n= 13 ( 6.3% of rows)    3.4% of the cell's year-4 price weight
+     23+    n=  0 ( 0.0% of rows)    0.0% of the cell's year-4 price weight
+  young<=20 share of the cell by weight: 96.6%  -> the cell is overwhelmingly YOUNG (so its 2.139 was an ERA reading, not an age one)
+
+wrote /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/r36_ages.json
