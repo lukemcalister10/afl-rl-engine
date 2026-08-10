@@ -100,6 +100,7 @@ for r in MA.data:
     if g and g not in GRPPOS: GRPPOS[g]=r['pos']
 # ===== STEP1 #1-FAMILY FIX (inference-only; band pickle + q97m above trained on ORIGINAL features -> Delta=0 for proven-flat) =====
 PROVEN_N=4; POLE_RAMP=22.0    # PROVEN_N surface NOT wired (no committed exec spec) -> scalar 4 + c=n/4 retained; see CHANGELOG 2026-06-30
+RUC_WAGE=float(os.environ.get('RL_RUC_WAGE','1.0'))   # #334 ITEM E1 sizing: 1.0 = the full standard ramp; 0.0 reproduces the old wage=0 pole denial byte-exact.
 # ==== GAMES-RAMP PRORATION (D10 03/07/2026 — Luke's design statement, verbatim in the directive):
 # every games bar (6/10/14/22) prorates to season progress for the IN-PROGRESS season — a player is
 # judged only against games that were playable (R14/24 -> fE=0.58 at this cut; RL_M3_FE = the M2/M3
@@ -460,7 +461,13 @@ def raw_ev(p,Y=2026):
         T=min(max(PR.tenure(p,_fa_year(Y)),1),6)
         et=min(max(eff_ten(p,_fa_year(Y), PR.tenure(p,_fa_year(Y))),1),6)             # STEP1: developmental tenure off original PR.tenure base
         po,par=par_pole(pos,pk,T); a=MA.age(p)
-        wage=0.0 if pos=='RUCK' else float(np.clip(1-((a or 21)-20)/6,0,1))
+        # #334 ITEM E1: the RUCK pole denial ENDS. Rucks were the only position given wage=0, i.e. no
+        # pedigree pole at all; the measurement made it the LIVE ruck lever (pole denial 573 pts vs the
+        # ceiling's 130). They now take the SAME standard age wage ramp as every other position, scaled
+        # by RUC_WAGE so the ruck book lands inside the ruled cautious band [+2.9%, +9.0%].
+        # V0-INERT BY CONSTRUCTION: at Y=debutyr-1 the exposure is 0 so _expgate is 0 and w=wage*tfade*
+        # expgate is 0 whatever wage is — so this cannot reach the frozen year-zero surface. Asserted.
+        wage=float(np.clip(1-((a or 21)-20)/6,0,1))*(RUC_WAGE if pos=='RUCK' else 1.0)
         tfade=float(np.interp(et,[1,2,3,4,5,6],[1.00,0.76,0.40,0.16,0.05,0.05]))      # pole-fade by DEVELOPMENTAL tenure
         expgate=_expgate(p,Y)                                                         # EXPOSURE REGIME (regime 4): smoothed (was 1.0 if nqual>=4 else exposure/POLE_RAMP ramp); RL_EVW=0 => base gate
         w=wage*tfade*expgate
@@ -1966,11 +1973,52 @@ def _a_share(p,Y):
     fe=_fEy(Y,p); gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
     lam=float(np.interp(min(gy/fe,6.0),[0,1,2,3,4,5,6],LAM_SIT))   # LAM_SIT's own ramp, unchanged
     return (1.0-lam)*_math.exp(-_ev_qual(p,Y)/_A_TAU)
+# ===== #334 ITEM C — THE CAP RELEASE UNDER THE EVIDENCE WEIGHT (ruling 3.8; C-Q1/2/3 ruled 5238860310).
+# C-Q1 (ruled): the ceiling binds THE TAUGHT YEAR-1 LEVEL, not the live ev. Before ITEM A there was no such
+# object on the year-1+ path — the cap census (docs/evidence/composition_2026-08-10/C_WIRING_PREP.md) found
+# NO upper cap binding on a year-1 ND row, and a literal cap on ev() would have CUT Mraz 86%. With ITEM A
+# wired the object exists: the anchor leg R x entry_anchor, which is exactly the retention-capped taught
+# level. C releases THAT cap upward on evidence:
+#       anchor_leg = R x entry_anchor x (1 + w x (H - 1))
+# w=0 reproduces the old cap EXACTLY, which is the design's own stated identity and is why the 24 sit-out
+# rows of the 58-row year-1 cohort are untouched by construction.
+# THE WEIGHT w = G x Q x gate, with the conventions RECOVERED FROM THE DIRECTIVE'S OWN SIX WORKED ROWS and
+# verified to reproduce every one of them (docs/evidence/composition_2026-08-10/README.md §2.2):
+#   G    = g/(g+8),  g = CAREER games total
+#   Q    = clip(sa/par, 0, 2),  sa = CAREER games-weighted average,
+#          par = par_at(pos, effpk, T) with T = clip(draft_age-18, 1, 6) — the eff_ten DRAFT-AGE bridge
+#   gate = min(e/anchor, 1) — the z gate. C-Q3 DEMONSTRATED on the composed build: 24 of 67 top-10-pick
+#          rows carry gate<1 and are materially protected, so the drafted gate SHIPS and the sa fallback
+#          does NOT install. `e` is the PRODUCTION price at this point in ev() — deliberately not a
+#          recursive ev() call, and it is the same object the anchor leg is being blended against.
+# DOUBLE-COUNTING: w reads sa exactly ONCE, through Q. The gate reads e and entry_anchor, never sa.
+# CONSUMERS: the year-1+ anchor leg (here) and the RUCK prior cap (ITEM E2). NOT the sit charge — sitout_ev
+# is the ns==0 arm and never reaches this line.
+C_H=float(os.environ.get('RL_C_H','1.13'))   # THE ONE NEW DIAL. Sized on the ruled PLAYED-ONLY basis (C-Q2) so the played-only year-1 landing enters [1.04,1.13]; admissible window [1.1024,1.3327] on the #336 basis, ladder in the act evidence. RL_C_H=1.0 => (1+w*0) => byte-exact no-release.
+_C_G0=8.0; _C_QMAX=2.0
+def _c_career(p):
+    gt=num=0.0
+    for s in p['scoring']:
+        if s['games']<=0: continue
+        gt+=s['games']; num+=s['games']*s['avg']
+    return gt,(num/gt if gt>0 else 0.0)
+def _c_w(p,Y,e_full,anchor):
+    """The evidence weight. Zero for a row with no games, by construction (G=0)."""
+    gt,sa=_c_career(p)
+    if gt<=0 or anchor<=0: return 0.0
+    T=int(min(max(_ageR(p)-18,1),6))                                  # the eff_ten draft-age bridge
+    par=float(PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),T))
+    G=gt/(gt+_C_G0)
+    Q=float(np.clip(sa/par,0.0,_C_QMAX)) if par>0 else 0.0
+    gate=min(e_full/anchor,1.0) if e_full>0 else 0.0
+    return G*Q*gate
 def _a_blend(p,Y,e_full):
     tau=max(0.0,Y-cp.debutyr(p))+((_fEy(Y,p)**1.5) if Y>=cp.debutyr(p) else 0.0)   # sitout_ev's own depth clock
     R=_R_surf(_sitout_cls(MA.gfut(p)),MA.effpk(p),tau)
+    anch=R*entry_anchor(p)
+    anch=anch*(1.0+_c_w(p,Y,e_full,entry_anchor(p))*(C_H-1.0))       # #334 ITEM C: the cap release on the taught level
     s=_a_share(p,Y)
-    return (1.0-s)*e_full+s*R*entry_anchor(p)
+    return (1.0-s)*e_full+s*anch
 def _first_evidence(p,Y):                                     # the games-ramp family: ALL evidence is season Y
     return not any(x['games']>0 and x['year']<Y for x in p['scoring'])
 def _prod_path(p,Y):
@@ -2018,7 +2066,12 @@ def ev(p,Y=2026):
     if delisted(p): return round(0.02*v0_start(p))
     e=_prod_path(p,Y)                                        # (3) isotonic guard inside; family games-axis smoothing
     if _isreal(p) and MA.gfut(p)=='RUCK':                  # W4/PR#44: cap PRIOR-DOMINATED ruck production leg at the production-derived ceiling (RL_W4_RUC=0 -> v2.5 1.4xPVC cap)
-        _cpv=(_ruc_ceiling(p,Y) if _W4RUC else RUC_PRIOR_CAP*_cap_basis(p)); _v0u=_v0_uncapped(p)  # bind iff ceil < e <= V0_uncapped (hot prior, no demonstrated growth); [#326: same per-division basis on the v2.5 fallback path]
+        # #334 ITEM E2: the ruck ceiling becomes EVIDENCE-YIELDING via ITEM C's weight — the same w, the
+        # same H, one reader. Applied HERE (the year-1+ pricing consumer) and deliberately NOT at
+        # _ruc_prior_cap, which is the YEAR-ZERO scaffold: releasing it there would move V0 itself and
+        # disturb the frozen surface, which is not what C releases. w=0 => x1.0 => byte-exact.
+        _cpv=(_ruc_ceiling(p,Y) if _W4RUC else RUC_PRIOR_CAP*_cap_basis(p)); _v0u=_v0_uncapped(p)
+        _cpv=_cpv*(1.0+_c_w(p,Y,e,float(entry_anchor(p)))*(C_H-1.0))  # bind iff ceil < e <= V0_uncapped (hot prior, no demonstrated growth); [#326: same per-division basis on the v2.5 fallback path]
         if _cpv<e<=_v0u: e=_cpv                               #   e>V0u (demonstrated) or e<=ceil (already low) -> byte-exact
     # W4 KPF (RL_KPFFIX): compress the ESTABLISHED-KPF loose residual only — SETTLED #9 / PR #42 T1-shape.
     # KPFs bunch near the lowest REPL bar (66.8) and the curve levers tiny production gaps into huge value gaps
