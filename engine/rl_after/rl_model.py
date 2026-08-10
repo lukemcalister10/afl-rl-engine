@@ -780,35 +780,43 @@ def _pw_interp(a,knots):
 # V2 (mode 2): four-band current-age curve — 12% at <=19 · 13% at 20-21 · 15% at 25-27 · 16% at >=28,
 #   smooth joins across 21->25 and 27->28. Same machinery as V1, just more knots.
 _V2_KNOTS=[(19.0,0.12),(20.0,0.13),(21.0,0.13),(25.0,0.15),(27.0,0.15),(28.0,0.16)]
-# V3 (mode 3): AGE-AT-SEASON keyed — A DIFFERENT MACHINE, deliberately. The rate applied to future
-#   season k is the rate for the age the player will BE in that season, so the present value is the
-#   PATH PRODUCT  PV(k) = prod_{j=1..k} 1/(1+r(a+j))  and NOT (1+r(a+k))**k. Under this keying a young
-#   player's far seasons are discounted at the LOW late-path rates he will reach, so the far tail of a
-#   young career gains most; a veteran's short path gains little. Net expectation: pro-young.
-_V3_KNOTS=[(20.0,0.14),(21.0,0.13),(22.0,0.13),(23.0,0.12),(25.0,0.12),(26.0,0.11),(28.0,0.11),(29.0,0.10)]
+# V3 (mode 3): the owner's CORRECTED third proposal — CURRENT-AGE keyed like V1 and V2. His first
+#   filing inverted the numbers and this supersedes it. 10% at <=20 · 11% at 21-22 · 12% at 23-25 ·
+#   13% at 26-28 · 14% at >=29, smooth joins, continuous age. The most aggressive youth-lifter of the
+#   three: a big young-side lift (10% against the current flat 14%) with veterans nearly unchanged
+#   (14% is the status quo). Expect the largest relativity recovery and the largest board-total rise,
+#   and watch the no-arb frame hardest here — a 10% discount on young futures narrows the gap between
+#   expected appreciation and the discount charged.
+_V3_KNOTS=[(20.0,0.10),(21.0,0.11),(22.0,0.11),(23.0,0.12),(25.0,0.12),(26.0,0.13),(28.0,0.13),(29.0,0.14)]
+# MODE 9 — SEAT-PROPOSED, NOT THE OWNER'S. AGE-AT-SEASON keyed: a different machine, where the rate
+#   for future season k is the rate for the age the player will BE then, so PV is the PATH PRODUCT
+#   prod_{j=1..k} 1/(1+r(a+j)) rather than (1+r)**k. Built before the correction arrived; kept as a
+#   low-priority menu extra, to be run LAST after the owner's three variants and the two menu items.
+_V9_KNOTS=[(20.0,0.14),(21.0,0.13),(22.0,0.13),(23.0,0.12),(25.0,0.12),(26.0,0.11),(28.0,0.11),(29.0,0.10)]
 def age_disc_mode():
     try: return int(float(AGE_DISC_MODE))
     except Exception: return 0
 def age_disc(a,d,lens='bal'):
     """The per-annum future discount for a player priced at CURRENT age a. Identity when off.
-    Modes 1 and 2 return a scalar rate; mode 3 is NOT a scalar and is handled by disc_factor()."""
+    Modes 1/2/3 return a scalar rate; mode 9 is NOT a scalar and is handled by disc_factor()."""
     if not AGE_DISC or lens not in ('bal','balanced') or a is None: return d
     m=age_disc_mode()
     if m==2: return _pw_interp(a,_V2_KNOTS)
-    if m==3: return d                      # mode 3 never uses a single rate; see disc_factor()
+    if m==3: return _pw_interp(a,_V3_KNOTS)
+    if m==9: return d                      # mode 9 never uses a single rate; see disc_factor()
     a=float(a)
     if a<=21.0: return AGE_DISC_LO
     if a>=26.0: return AGE_DISC_HI
     return AGE_DISC_LO+(AGE_DISC_HI-AGE_DISC_LO)*(a-21.0)/5.0
 def disc_factor(a,d,k,lens='bal'):
     """THE DISCOUNT FACTOR for future season k, for a player priced at current age a.
-    Modes 0/1/2: the existing power form (1+r)**k with r fixed at pricing time.
-    Mode 3: the PATH PRODUCT prod_{j=1..k} (1+r(a+j)) — the rate for each season is the rate for the
+    Modes 0/1/2/3: the existing power form (1+r)**k with r fixed at pricing time.
+    Mode 9 (seat-proposed): the PATH PRODUCT prod_{j=1..k} (1+r(a+j)) — the rate for each season is the rate for the
     age he will be in it. k=0 is 1.0 in every mode, so the present season is never discounted."""
     if k<=0: return 1.0
-    if AGE_DISC and lens in ('bal','balanced') and a is not None and age_disc_mode()==3:
+    if AGE_DISC and lens in ('bal','balanced') and a is not None and age_disc_mode()==9:
         f=1.0; a=float(a)
-        for j in range(1,int(k)+1): f*=(1.0+_pw_interp(a+j,_V3_KNOTS))
+        for j in range(1,int(k)+1): f*=(1.0+_pw_interp(a+j,_V9_KNOTS))
         return f
     return (1.0+age_disc(a,d,lens))**k
 LENS={'now':0.34,'bal':(0.14 if os.environ.get('RL_DIAL14','1')!='0' else 0.15),'fut':0.05}   # v2.9 L2: dial 14 (owner-ruled D5, "14 for now"); gate RL_DIAL14 (default ON; =0 ⇒ 0.15 ⇒ base). bont 3676 gawn 2501.

@@ -109,7 +109,7 @@
   "RL_AGE_DISC": "#334 THE AGE-DYNAMIC FUTURE DISCOUNT (owner ruling 5246868843), the ordered counterbalance to the relativity-guard breach. 0 = OFF and byte-identical to the composed board; 1 = the per-annum future discount becomes a function of the player's CURRENT age at pricing. Balanced lens only.",
   "RL_AGE_DISC_LO": "#334 age-dynamic discount, the YOUNG end: per-annum rate for a player priced at age <= 21. Linear in CONTINUOUS age from here to RL_AGE_DISC_HI at age 26 - no integer cliffs.",
   "RL_AGE_DISC_HI": "#334 age-dynamic discount, the MATURE end: per-annum rate for a player priced at age >= 26.",
-  "RL_AGE_DISC_MODE": "#334 age-dynamic discount MODE. 1 = V1, two-point CURRENT-AGE curve (RL_AGE_DISC_LO/HI). 2 = V2, four-band CURRENT-AGE curve (12% <=19 / 13% 20-21 / 15% 25-27 / 16% >=28, smooth joins). 3 = V3, AGE-AT-SEASON keyed - a DIFFERENT machine: the rate for future season k is the rate for the age the player will BE then, so PV is the PATH PRODUCT prod_j (1+r(a+j)), not (1+r)**k. Inert unless RL_AGE_DISC=1."
+  "RL_AGE_DISC_MODE": "#334 age-dynamic discount MODE. All of the owner's three variants are CURRENT-AGE keyed. 1 = V1 two-point (RL_AGE_DISC_LO/HI). 2 = V2 four-band (12% <=19 / 13% 20-21 / 15% 25-27 / 16% >=28). 3 = V3 CORRECTED (10% <=20 / 11% 21-22 / 12% 23-25 / 13% 26-28 / 14% >=29) - the owner's first filing of V3 inverted these numbers and was superseded. 9 = SEAT-PROPOSED age-at-season keying, a different machine (PV is the path product prod_j (1+r(a+j)), not (1+r)**k); low priority, run last. Inert unless RL_AGE_DISC=1."
  },
  "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899"
 }
