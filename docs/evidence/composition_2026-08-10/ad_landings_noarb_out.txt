@@ -1,0 +1,30 @@
+config manifest (gate mode) LOADED  hash e0ff83900018  (67 model vars pinned; ambient cleared)
+year-1 cohort (ND in-curve, class 2025): n=58  played=34  sitters=24
+
+=== THE TWO LANDINGS  (ruled band [1.04, 1.13]) ===
+ variant                   played-only       all-rows
+ main (pre-act)                 1.2107         0.9686   <-- played-only OUTSIDE [1.04,1.13]
+ FULL (no AD)                   0.9968         0.8432   <-- played-only OUTSIDE [1.04,1.13]
+ AD 12.5 / 15.5                 1.0943         0.9004
+ AD 13 / 15  (ordered)          1.0601         0.8803
+ AD 13.5 / 14.5                 1.0279         0.8614   <-- played-only OUTSIDE [1.04,1.13]
+ AD 12 / 16                     1.1299         0.9212
+  NOTE: if the played-only landing leaves the band, H may need re-reading from its ladder.
+  REPORTED, NOT RETUNED — the sizing word is the owner's.
+
+=== NO-ARB: THE YEAR-1-TO-PEAK TRAJECTORY ===
+  median board price by career rung, and the implied rung-to-rung appreciation.
+  An arbitrage opens if appreciation predictably EXCEEDS the discount rate charged
+  (holding a player would then be a free lunch). Discount band here: 12.0%-16.0%/yr.
+ main (pre-act)         v1->2  +37.5%  v2->3  +24.6%  v3->4   +6.6%  v4->5  +51.7%  v5->6  -46.5%  v6->7  +61.2%  v7->8  -64.0%  
+                        worst rung-to-rung appreciation +61.2%  ** EXCEEDS the low end of the discount band — inspect
+ FULL (no AD)           v1->2   +6.5%  v2->3  +50.5%  v3->4  +22.6%  v4->5  +52.5%  v5->6  -57.4%  v6->7  +97.7%  v7->8  -63.0%  
+                        worst rung-to-rung appreciation +97.7%  ** EXCEEDS the low end of the discount band — inspect
+ AD 12.5 / 15.5         v1->2   +4.4%  v2->3  +57.2%  v3->4  +22.2%  v4->5  +49.1%  v5->6  -59.2%  v6->7 +100.5%  v7->8  -63.1%  
+                        worst rung-to-rung appreciation +100.5%  ** EXCEEDS the low end of the discount band — inspect
+ AD 13 / 15  (ordered)  v1->2   +4.8%  v2->3  +56.1%  v3->4  +21.1%  v4->5  +50.7%  v5->6  -58.5%  v6->7  +99.2%  v7->8  -63.0%  
+                        worst rung-to-rung appreciation +99.2%  ** EXCEEDS the low end of the discount band — inspect
+ AD 13.5 / 14.5         v1->2   +6.8%  v2->3  +53.6%  v3->4  +20.5%  v4->5  +52.2%  v5->6  -58.1%  v6->7  +98.8%  v7->8  -62.9%  
+                        worst rung-to-rung appreciation +98.8%  ** EXCEEDS the low end of the discount band — inspect
+ AD 12 / 16             v1->2   +5.7%  v2->3  +57.3%  v3->4  +23.5%  v4->5  +47.2%  v5->6  -59.6%  v6->7 +101.2%  v7->8  -63.4%  
+                        worst rung-to-rung appreciation +101.2%  ** EXCEEDS the low end of the discount band — inspect

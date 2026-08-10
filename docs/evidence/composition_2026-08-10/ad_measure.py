@@ -47,6 +47,15 @@ VARIANTS = [
     ("AD 12 / 16",            SP + "/bd_AD_12_16.json"),
 ]
 
+print("""
+================================================================================================================
+READ THE ENVELOPE COLUMNS AS AN ENVELOPE, NOT AS A TARGET.
+The owner's acceptance envelope is peak ~= 140% of year-0 and ~= 130% of year-1. It is a frame for JUDGING a
+composed result, and NO COMPONENT MAY BE TUNED TO IT. That is the dissolved-1.40-act lesson: the moment a
+ratio becomes an objective, every dial starts serving the ratio instead of the evidence, and the number stops
+meaning anything. Nothing in this act is sized against these columns; they are reported so the owner can see
+where the package sits relative to his frame.
+================================================================================================================""")
 print("=" * 112)
 print("THE AGE-DYNAMIC DISCOUNT — GUARD TABLE PER PAIR")
 print("  RELATIVITY = (picks + young players) / peak players, membership frozen on the pre-act board")
@@ -106,8 +115,38 @@ if len(pts) >= 2 and full_r is not None:
     need = (base_r - ic) / sl if sl else float('nan')
     print("  RELATIVITY is close to linear in the LO-HI spread over the range tested:")
     for x, y in pts: print("     spread %.3f -> %.6f" % (x, y))
-    print("  fitted slope %.6f per unit spread; full recovery to the pre-act %.6f would need a spread"
-          % (sl, base_r))
-    print("  of about %.3f, i.e. roughly %.1f%% / %.1f%% around the 14%% centre." % (need, 14 - need * 50, 14 + need * 50))
-    print("  STATED AS INFORMATION ONLY. Whether a spread that wide is defensible is the owner's call,")
-    print("  and the fit is a straight line through four points, not a law.")
+    print("  fitted slope %.6f RELATIVITY per percentage-point of spread." % sl)
+    print("  Extrapolated, full recovery of the breach would need a spread of about %.1f points" % need)
+    print("  around the 14%% centre - i.e. rates of roughly %.0f%% and %.0f%%." % (14 - need / 2, 14 + need / 2))
+    print("""
+  THE HONEST READING OF THAT NUMBER: it is outside any defensible range, and the linear fit has no
+  business being extrapolated three times past its data. The finding is not "use a spread of 11" -
+  it is that THE AGE-DYNAMIC DISCOUNT, AT ANY SIZE THE OWNER WOULD PLAUSIBLY SIGN, DOES NOT CLOSE
+  THE RELATIVITY BREACH. The widest pair measured (12/16) recovers about a third of it. If the
+  breach is to be closed, it needs a different instrument or a decision about #336 itself, which
+  is the item that opened it.""")
+
+# ---- the acceptance-envelope ratios ----------------------------------------------------------
+# DEFINITIONS, stated once and held identical across every variant (consistency matters more than
+# the particular choice):
+#   YEAR-0 per player = mean entry_anchor over the board's ND in-curve rows, converted to BOARD
+#                       currency (entry_anchor is engine currency; board = engine / _PL_F)
+#   YEAR-1 per player = mean board price over rung-1 players
+#   PEAK   per player = mean board price over rung 4-6 players
+ea = g['entry_anchor']
+NDIC = [k for k in MAIN if byk.get(k) is not None and byk[k].get('type') == 'ND'
+        and not MA.is_pool(byk[k])]
+Y0 = float(np.mean([float(ea(byk[k])) / PL_F for k in NDIC])) if NDIC else float('nan')
+R1 = set(k for k in MAIN if byk.get(k) is not None
+         and (lambda r: r == 1)(Y - MA.debut(byk[k]) + 1 if byk.get(k) else 0))
+print("\n=== THE ACCEPTANCE ENVELOPE (peak ~140% of year-0, ~130% of year-1) — A FRAME, NOT A TARGET ===")
+print("  year-0 per player = mean entry_anchor over %d ND in-curve rows, in board ccy = %.1f" % (len(NDIC), Y0))
+print(" %-22s %11s %11s %13s %13s" % ("variant", "yr-1/player", "peak/player", "peak/year-0", "peak/year-1"))
+for lab, d, r, yv, pv, tot in rows:
+    r1v = [d[k]['v'] for k in R1 if k in d]
+    pkv = [d[k]['v'] for k in PEAK if k in d]
+    if not r1v or not pkv: continue
+    m1 = float(np.mean(r1v)); mp = float(np.mean(pkv))
+    print(" %-22s %11.0f %11.0f %12.1f%% %12.1f%%" % (lab, m1, mp, 100 * mp / Y0, 100 * mp / m1))
+print("  envelope: 140% and 130%. Distance from it is information for the owner's sitting; no dial")
+print("  in this act was sized against these two numbers.")
