@@ -1,4 +1,17 @@
-# THE COMPOSITION ACT — BUILD SEAT RECORD · 2026-08-10 · **HALTED AT THE ORDERED FIRST GATE**
+# THE COMPOSITION ACT — BUILD SEAT RECORD · 2026-08-10 · **PHASE 1: HALTED AT THE ORDERED FIRST GATE**
+
+> **SUPERSEDED IN PART — READ `PHASE2.md` FIRST.** Both halts recorded here (ITEM I, ITEM B) were
+> retired once the original ruler instruments landed at `docs/evidence/ruler_act_2026-08-10/`.
+>
+> **LEVEL-LAW NOTICE** (register v633 / CURRENT_STATE v120, owner words 5240550781): the LEVEL of a
+> delivery-based ruler is not evidence and is never a finding — the same ruler reads year-4/5
+> prices ~1.5× hot exactly as it reads year-0, because a belief/option market always reads hot
+> against average delivery, at every rung, by construction. Only CONTRASTS within one ruler are
+> evidence, and asymmetric level changes (one rung, not all) are barred. This file predates that
+> law: where it speaks of a cell being "over-priced" or "under-priced", or quotes a prior filing
+> that does (§4), that is **historical record of a superseded reading, not a live verdict**. The
+> compliant presentation is `PHASE2.md` §1 and `item_i_restate_out.txt`. Nothing in the law changes
+> any measured number here.
 
 Branch `landing/334-composition` from `origin/main` **`110afb3`**. Authority: the build brief
 (#334 comment 5238883444) · `docs/directives/COMPOSITION_DIRECTIVE_2026-08-10.md` · the ruled

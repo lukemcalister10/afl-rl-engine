@@ -37,56 +37,69 @@ year-11-capped — the owner's own economics and his own horizon) is the headlin
 **F8 applied at PLAYER UNIT on top**, as the sitting ruled and as these pre-ruling scripts did not:
 Kish eff-n over players, weights = the ratio's own denominator, bar 35.
 
-### The year-0 table (extract; full table in the transcript)
+### The common ruler level — stated once, as a numeraire property
 
-| cell | n | eff-n | F8 | F bent | F corr | verdict bent | verdict corr |
+**Presented under the LEVEL LAW** (register v633 / CURRENT_STATE v120, owner words 5240550781).
+The level of a delivery-based ruler is **not evidence** and is never presented as a finding; only
+**contrasts within one ruler** are evidence; an asymmetric level change — moving one rung and not
+the others — is **barred**, because it manufactures a pick-hoarding arbitrage.
+
+On the corrected ruler the whole population reads **year-0 F = 0.6431**, **year-1 F = 0.7600**,
+and the same ruler read at the **year-4** rung gives **1/1.5468 = 0.6465**. Those are the same
+number. A belief/option market is priced against the full distribution of outcomes it might buy
+and is measured here against the *average* career delivered, so it reads hot at **every** rung by
+construction. (The bent ruler's common level was year-0 0.9948 / year-1 1.1725 — the restatement
+moves the level ~1.55× at every rung alike, which is precisely why the level carries no
+information about any group.)
+
+Everything below is reported **relative to the common level of its own rung**.
+
+### The year-0 rung, as contrasts (extract; full table in the transcript)
+
+`rel` = the cell's F ÷ its own rung's common level. CI is bootstrapped **on the contrast** (one
+resample of the population per replicate, cell read off the same draw). "Material" is the ruler
+act's own \|bend−1\| ≥ 0.10 rule, applied to the interval.
+
+| cell | n | eff-n | F8 | rel bent | rel corr | 95% CI (rel, corr) | contrast |
 |---|---|---|---|---|---|---|---|
-| ALL rows | 1414 | 665.4 | PASS | 0.9948 | 0.6431 | HONEST | OVER-priced |
-| ND in-curve (1-64) | 741 | 416.4 | PASS | 1.0782 | 0.6808 | HONEST | OVER-priced |
-| ND × MID | 218 | 143.1 | PASS | 1.0416 | 0.6923 | HONEST | OVER-priced |
-| ND × SD | 161 | 107.5 | PASS | 0.9591 | 0.6209 | HONEST | OVER-priced |
-| ND × SF | 138 | 84.5 | PASS | 1.2227 | 0.6209 | HONEST | OVER-priced |
-| ND × KPF | 93 | 59.5 | PASS | 1.2203 | 0.6981 | HONEST | OVER-priced |
-| ND × KPD | 85 | 60.6 | PASS | 1.0393 | 0.6396 | HONEST | OVER-priced |
-| ND × RUCK | 46 | 27.3 | **fail** | 1.1095 | 0.8606 | HONEST | HONEST |
-| pool ALL | 673 | 505.2 | PASS | 0.7298 | 0.5236 | OVER | OVER |
-| pool age ≤18 | 363 | 310.5 | PASS | 0.5451 | 0.3477 | OVER | OVER |
-| pool age 19-20 | 98 | 81.2 | PASS | 0.7648 | 0.7963 | HONEST | HONEST |
-| pool age 21+ | 124 | 52.8 | PASS | 2.5471 | 1.6845 | UNDER | HONEST |
+| ND in-curve (1-64) | 741 | 416.4 | PASS | 1.0838 | 1.0585 | [0.993, 1.120] | at population |
+| ND × MID | 218 | 143.1 | PASS | 1.0471 | 1.0764 | [0.914, 1.240] | at population |
+| ND × SD | 161 | 107.5 | PASS | 0.9642 | 0.9654 | [0.668, 1.281] | at population |
+| ND × SF | 138 | 84.5 | PASS | 1.2291 | 0.9654 | [0.663, 1.332] | at population |
+| ND × KPF | 93 | 59.5 | PASS | 1.2267 | 1.0855 | [0.710, 1.501] | at population |
+| ND × KPD | 85 | 60.6 | PASS | 1.0447 | 0.9945 | [0.667, 1.370] | at population |
+| ND × RUCK | 46 | 27.3 | **fail** | 1.1153 | 1.3381 | [0.727, 2.085] | at population |
+| pool ALL | 673 | 505.2 | PASS | 0.7336 | 0.8141 | [0.621, 1.018] | at population |
+| **pool age ≤18** | 363 | 310.5 | PASS | 0.5479 | 0.5407 | [0.313, 0.798] | **BELOW population** |
+| pool age 19-20 | 98 | 81.2 | PASS | 0.7688 | 1.2382 | [0.694, 1.885] | at population |
+| **pool age 21+** | 124 | 52.8 | PASS | 2.5604 | 2.6192 | [1.461, 4.052] | **ABOVE population** |
+| **pool × KPF** | 65 | 57.1 | PASS | 0.2484 | 0.3193 | [0.079, 0.711] | **BELOW population** |
+| **pool × KPD** | 65 | 55.2 | PASS | 0.4589 | 0.4385 | [0.129, 0.858] | **BELOW population** |
 
-Year-1 headline: ALL rows `1.1725 → 0.7600`; ND in-curve `1.1783 → 0.7685`; ND × MID
-`1.3323 → 0.9066`. (ND × SD/SF/KPF/KPD/RUCK all **fail** the player-unit bar at year 1 — n is
-22-63 there. That is itself a result of moving F8 to player unit.)
+**The surviving contrasts corroborate ITEM B directly**: pool ≤18 sits below the population and
+pool 21+ sits above it, on intervals clear of 1 — which is the same gradient B re-derives at
+0.6859 / 1.4112 / 2.8173.
 
-### The precondition — and the reading it turns on
+### The precondition
 
-**Reading 1, absolute:** 9 ND year-0 cells flip HONEST → OVER-priced. **DIRTY.**
+**CLEAN.** No ND year-0 cell above the F8 player-unit bar changes its contrast between the two
+rulers. **ITEM A's precondition is MET on the shape reading; no year-0 cell is re-taught.** The
+owner's confirming word is still awaited before the wiring fires.
 
-**Reading 2, relative:** **no ND year-0 cell changes its position relative to the population.
-CLEAN.**
+The absolute reading is **closed by law**: the "flips" it produced were the numeraire moving, it
+moves every rung together, and acting on one rung alone is the barred asymmetric change.
 
-The two readings differ because every flip in reading 1 is *the same flip*: the level factors are
-1.505 / 1.545 / 1.625 / 1.748 / 1.969 / 1.584 …, clustered on the overall **1.547**. That is not
-nine findings. It is the ruler act's already-ruled headline — the year-4 price stands ~1.55×
-above realized delivery — arriving at every cell at once.
+### The only two contrast moves in the whole restatement
 
-The ruler act's own method draws exactly this line: `r25_2x2.py` defines *bend* as "the cell's
-1/tilt divided by the OVERALL 1/tilt on the SAME instrument (level divides out)", and the sitting
-acted **only on bends**. Applying the same rule to the restatement gives reading 2.
+- **pool ALL**: BELOW population → at population (rel 0.7336 → 0.8141)
+- **pool × SD**: BELOW population → at population (rel 0.6073 → 0.7456)
 
-**Seat's reading: READING 2. ITEM A's precondition is MET; no year-0 cell is re-taught.** The
-uniform level shift is the ROOT ACT's object — the directive stages it *after* composition
-precisely because correcting the forward projection "re-derives year 0/1/2+ consistently" — and
-re-teaching every ND year-0 cell down by 1.55× inside this act would BE the root act, unruled and
-unfunded. **Flagged as an owner decision, not taken silently:** under reading 1 nothing ships.
-
-### Two real cell-level findings (relative flips — both on the pool side, both ITEM B's object)
-
-- **pool age 19-20**: below population → **ABOVE** (rel 0.769 → 1.238)
-- **pool × RUCK**: below population → at population (rel 0.599 → 1.045)
-
-On the ND side, SF (1.969×) and KPF (1.748×) shed the most level — SF is the named tilt cell that
-item G already owns, and G is parked.
+*Supersession, stated plainly:* an earlier cut of this table reported the moves as `pool 19-20`
+and `pool × RUCK`, judged on point-estimate bands. Bootstrapping the **contrast** itself is
+stricter and is what this table now uses; on intervals those two cells are "at population" on both
+rulers, and the moves are `pool ALL` and `pool × SD`. The CI-based reading supersedes the earlier
+one. Year-1: ND × SD/SF/KPF/KPD/RUCK all **fail** the player-unit bar (n = 22-63) — itself a
+consequence of moving F8 to player unit.
 
 ---
 
