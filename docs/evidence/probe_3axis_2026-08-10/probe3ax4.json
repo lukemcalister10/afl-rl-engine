@@ -1,0 +1,114 @@
+{
+ "CONTROL 2-axis (shipped)": {
+  "g": {
+   "picks 1-10 x TOP-TERCILE sa": 0.034474070872966875,
+   "picks 1-20 x ABOVE-MEDIAN sa": 0.05962273993319264,
+   "picks 41-64 (declared taper)": 0.007078255354801947,
+   "draft age 19+ (declared taper)": 0.0
+  },
+  "wmax": 0.41930310529191606,
+  "bandlift": 0.386068802809086,
+  "seamW2": 0.5224296141688439,
+  "med": 0.7789864057609481,
+  "frac": 0.4251207729468599,
+  "seam_at": 1.6315885973281894
+ },
+ "3-axis A  pick x cls x sa(gauss 3k), no z": {
+  "g": {
+   "picks 1-10 x TOP-TERCILE sa": 0.025975751935942024,
+   "picks 1-20 x ABOVE-MEDIAN sa": 0.06700863968386063,
+   "picks 41-64 (declared taper)": 0.019553227012083507,
+   "draft age 19+ (declared taper)": 0.0
+  },
+  "wmax": 0.25571226667138364,
+  "bandlift": 0.36666053230068446,
+  "seamW2": 0.5543975260369751,
+  "med": 0.8251150670319589,
+  "frac": 0.43719806763285024,
+  "seam_at": 0.9832669238740257
+ },
+ "3-axis B  pick x cls x sa(gauss 3k), z kept": {
+  "g": {
+   "picks 1-10 x TOP-TERCILE sa": 0.012891094792213946,
+   "picks 1-20 x ABOVE-MEDIAN sa": 0.04432816325222099,
+   "picks 41-64 (declared taper)": 0.01303619285349154,
+   "draft age 19+ (declared taper)": 0.0
+  },
+  "wmax": 0.38354756301881715,
+  "bandlift": 0.30546337408826624,
+  "seamW2": 0.6817960077634146,
+  "med": 0.8001071619255908,
+  "frac": 0.4251207729468599,
+  "seam_at": 1.1878213180737804
+ },
+ "3-axis G  pick x cls x sa(HARD terciles), no z": {
+  "g": {
+   "picks 1-10 x TOP-TERCILE sa": 0.013373813040467936,
+   "picks 1-20 x ABOVE-MEDIAN sa": 0.08152015178966837,
+   "picks 41-64 (declared taper)": 0.011507177683302242,
+   "draft age 19+ (declared taper)": 0.0
+  },
+  "wmax": 0.30667263800615774,
+  "bandlift": 0.29139112726673805,
+  "seamW2": 0.7186584650016095,
+  "med": 0.8123428838376506,
+  "frac": 0.42995169082125606,
+  "seam_at": 0.92161306155115
+ },
+ "3-axis G+ pick x cls x sa(HARD terciles), z kept": {
+  "g": {
+   "picks 1-10 x TOP-TERCILE sa": 0.006728805568207663,
+   "picks 1-20 x ABOVE-MEDIAN sa": 0.06928632285388597,
+   "picks 41-64 (declared taper)": 0.005618260513238781,
+   "draft age 19+ (declared taper)": 0.0
+  },
+  "wmax": 0.36082157300685586,
+  "bandlift": 0.24368899373452318,
+  "seamW2": 0.8522466520722258,
+  "med": 0.8025253538440376,
+  "frac": 0.4323671497584541,
+  "seam_at": 0.8953206490417374
+ },
+ "3-axis H  strict sumK>=35 rule, no z": {
+  "g": {
+   "picks 1-10 x TOP-TERCILE sa": 0.031875934984027625,
+   "picks 1-20 x ABOVE-MEDIAN sa": 0.07764500983514919,
+   "picks 41-64 (declared taper)": 0.017677595760392316,
+   "draft age 19+ (declared taper)": 0.0
+  },
+  "wmax": 0.28284389278788646,
+  "bandlift": 0.3452090833625741,
+  "seamW2": 0.5939129420727549,
+  "med": 0.8219253456902602,
+  "frac": 0.4396135265700483,
+  "seam_at": 1.0141671387734001
+ },
+ "3-axis H+ strict sumK>=35 rule, z kept": {
+  "g": {
+   "picks 1-10 x TOP-TERCILE sa": 0.018162973113343483,
+   "picks 1-20 x ABOVE-MEDIAN sa": 0.05329168373014235,
+   "picks 41-64 (declared taper)": 0.011624887220154749,
+   "draft age 19+ (declared taper)": 0.0
+  },
+  "wmax": 0.43011169960696105,
+  "bandlift": 0.2970165968127313,
+  "seamW2": 0.703503391649706,
+  "med": 0.7866657644220876,
+  "frac": 0.4251207729468599,
+  "seam_at": 1.2855487909732488
+ },
+ "CONTROL F 2-axis kernel + z AND sa gates": {
+  "g": {
+   "picks 1-10 x TOP-TERCILE sa": 0.024545653194739725,
+   "picks 1-20 x ABOVE-MEDIAN sa": 0.049384264385060925,
+   "picks 41-64 (declared taper)": 0.008051969896551036,
+   "draft age 19+ (declared taper)": 0.0
+  },
+  "wmax": 0.5062341276376827,
+  "bandlift": 0.3885645964970133,
+  "seamW2": 0.5185504599002664,
+  "med": 0.7632989092503197,
+  "frac": 0.42028985507246375,
+  "seam_at": 1.9589495129627899
+ }
+}
