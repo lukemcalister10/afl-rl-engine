@@ -1926,9 +1926,11 @@ def sitout_ev(p,Y,e_full):
 #       anchor_share(p,Y) = (1 - lam_season) x exp(-E_q / tau)
 #       price             = (1 - anchor_share) x e_full  +  anchor_share x R x entry_anchor
 #
-# CONTINUITY AT GRADUATION, BY CONSTRUCTION: at ns==0 the record carries E_q=0, so exp(-0/tau)=1 and the
-# expression collapses to EXACTLY sitout_ev's blend. The two branches agree at the boundary; E_q is a soft
-# 10-game measure, so nothing jumps as a player qualifies. NO NEW MACHINERY: the blend form, R, lam and the
+# CONTINUITY AT GRADUATION: E_q is a SOFT 10-game measure, so a row with a few games carries a small
+# positive E_q and exp(-E_q/tau) sits just under 1. The two branches therefore agree IN THE LIMIT, not
+# exactly — measured worst boundary step 4.0e-04 over the live sitters (item_a_verify_out.txt). What IS
+# exact is what the board depends on: the ns==0 path RETURNS BEFORE this line, so every sit-out price is
+# byte-untouched. Nothing jumps as a player qualifies. NO NEW MACHINERY: the blend form, R, lam and the
 # fade family are all existing objects.
 # SITE: this runs at ev(), NEVER inside raw_ev — _v0_uncapped calls raw_ev at Y=debutyr-1 to BUILD the very
 # year-0 prior being borrowed, so blending inside raw_ev would be self-referential.

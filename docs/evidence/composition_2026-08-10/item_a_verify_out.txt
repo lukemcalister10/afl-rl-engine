@@ -1,0 +1,57 @@
+config manifest (gate mode) LOADED  hash cef06fd6250b  (59 model vars pinned; ambient cleared)
+ITEM A live? _A_ON = True   tau = 1.1
+
+=== THE FADING CHAIN — anchor share by career rung (live board rows) ===
+ rung          n mean share  max share
+ v1           39     0.0000     0.0000
+ v2           57     0.0914     0.9905
+ v3           58     0.0583     0.8033
+ v4           49     0.0801     0.9442
+ v5           63     0.0535     0.5021
+ v6           54     0.0584     0.9769
+ v7           40     0.0173     0.4254
+ v8+         284     0.0077     0.4443
+  READ THIS TABLE CAREFULLY — it is NOT the test of the fade, and it should not be used as one.
+  The population at each rung differs in HOW MUCH THEY PLAYED THIS SEASON, and lam is driven by
+  exactly that. v1 reads 0.0000 because a rung-1 row with ns>=1 is by definition one who played a
+  full season (lam=1 -> share 0); the rung-1 rows who did not play are ns==0 and are not in this
+  population at all. So this table is confounded by within-season games and is reported for
+  disclosure only. The fade is tested below, holding games FIXED.
+
+=== THE FADE, TESTED PROPERLY — same games, more career behind him ===
+  synthetic: identical player, identical 4 games this season, k prior full seasons
+  career yr        E_q anchor share
+  v1           0.0017       0.3589
+  v2           1.0017       0.1446
+  v3           2.0016       0.0583
+  v4           3.0016       0.0235
+  v5           4.0015       0.0095
+  v6           5.0015       0.0038
+  STRICTLY FADING with career year at fixed games: True
+  => v2 borrows less than v1 and more than v3, which is the ruled property.
+
+=== RECALCULATION LAW — a synthetic year-2 probe responds to year-2 games ===
+  Sam Lalor (rung 2): games -> anchor share
+      0 games -> 0.6347
+      4 games -> 0.2278
+     11 games -> 0.0000
+     22 games -> 0.0000
+  responds to year-2 games (strictly falling as games rise): True
+
+=== CONTINUITY AT GRADUATION ===
+  CORRECTION to the claim I wrote into the engine comment. I said the branches are EXACTLY equal
+  at ns==0 because "E_q=0 there". Not true in general: E_q is a SOFT 10-game measure, so a sitter
+  who played a few games carries a small positive E_q and exp(-E_q/tau) sits just under 1. The
+  branches agree in the LIMIT, to ~1e-4 on live rows, not exactly.
+  What IS exact, and is what the board depends on: the ns==0 path RETURNS BEFORE the ITEM A line,
+  so every sit-out price is byte-untouched. The step below is what a player would see AT the
+  qualification boundary - the continuity that actually matters, and it is tiny.
+   Dylan Patterson          E_q=0.0043  1-lam=0.104000  _a_share=0.103598  step=4.02e-04
+   Daniel Annable           E_q=0.0003  1-lam=0.497609  _a_share=0.497482  step=1.26e-04
+   Xavier Taylor            E_q=0.0003  1-lam=0.497609  _a_share=0.497482  step=1.26e-04
+   Oskar Taylor             E_q=0.0000  1-lam=1.000000  _a_share=1.000000  step=0.00e+00
+   Cameron Nairn            E_q=0.0007  1-lam=0.453000  _a_share=0.452714  step=2.86e-04
+   Lachlan Carmichael       E_q=0.0000  1-lam=1.000000  _a_share=1.000000  step=0.00e+00
+   Mitchell Marsh           E_q=0.0000  1-lam=1.000000  _a_share=1.000000  step=0.00e+00
+   Aidan Schubert           E_q=0.0001  1-lam=0.811043  _a_share=0.810960  step=8.31e-05
+  worst boundary step over these rows: 4.02e-04  (continuous - no cliff at graduation)
