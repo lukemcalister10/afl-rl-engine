@@ -128,26 +128,33 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v117 · supervisor pen · 2026-08-10, register v627 · SEAT LAWS: ASD-STE100 base for ALL owner
+(v118 · supervisor pen · 2026-08-10, register v628 · SEAT LAWS: ASD-STE100 base for ALL owner
 replies; LONG ANSWERS BEFORE TOOL WORK; owner-requested views FIRST; machine time IS project
 time (separate workspaces for parallel builds; deterministic lane only guards main); no point
 estimates for multi-step agent work — step lists; compact only with everything pushed; YEAR-4
 IS NOT A TARGET (path-shaped objectives, per-position peak age); no expectation site reads
-pick without position (build assertion); no worked example is a target. EVERYTHING IS ON MAIN
-AND NOTHING IS IN FLIGHT (tip 5babe71): the eleven-rulings build phase is DONE — birthdates
-#390 (store d9a24282, board a672ed3a) and G1 never-rises + gates #393 (board 4b448a82,
-surface fbc5b393, 439→0 steps, Grlj/Cumming dead, D14 wired halt-on-failure, both remaining
-CI reds pre-existing on main = open items with the R14 config-pin drift). The MEASUREMENT SET
-is DONE (landings: 5235734225 probe-sitter set · 5235775326 · 5235784509 · 5235847132 ·
-5236274192 ruck · ruler arc 5236277043/5236425904/5236597585/5236780502 · tables 5236802118 ·
-age re-cut 5236898284). THE ONE REMAINING SEAT TASK: assemble + deliver THE COMPOSITION
-DIRECTIVE from COMPOSITION_DIRECTIVE_DRAFT.md in the session scratchpad (items A-I incl. the
-full ITEM C evidence-weight design; the root act incl. the age-dynamic discount; the tilt
-column; worked rows computed on the POST-G1 matrix; conservation sums; the year-4 law) → the
-owner rules at ONE SITTING → composition build → side-by-side → adoption → root act → the
-queued pick-curve re-fit. Owner words files this stretch: 5237026870 · 5237158452 ·
-5237192294 · 5237381767 · 5237653537 (G1 merge).
-Read v604–v627 IN FULL. Primer v7 first.)
+pick without position (build assertion); no worked example is a target; REFEREE AFTER PHASE 5
+(owner word 5238084682 — the referee receives a finished baseline, never a moving one).
+THE COMPOSITION DIRECTIVE IS DELIVERED (main tip ac054a9, PR #396):
+docs/directives/COMPOSITION_DIRECTIVE_2026-08-10.md is the authority; sitting summary #334
+comment 5238272960; agent brief pre-posted 5237909313; computed on board 4b448a82 / store
+d9a24282 gate-mode; the seat re-derived EVERY deciding figure independently (exact). THE ONE
+OPEN TASK IS THE OWNER'S: rule §0 item by item (A-I + C-Q1 cap object / C-Q2 sizing
+denominator / C-Q3 gate form + the F8 unit) → then composition build as ONE act →
+side-by-side → adoption word → checks → ROOT ACT (own directive/sitting, NOT under the
+referee protocol) → pick-curve re-fit → the referee project (ITEM 410) → ITEM 412.
+ASSEMBLY FLAGS an incoming seat must know: no literal year-1-cap object exists (the cap must
+bind the TAUGHT year-1 level, not live ev — C-Q1); H≤1.13 cannot reach the 1.04 floor on the
+all-rows basis, played-only reaches 1.0504 (package with H cuts: 1.037-1.047 all-rows /
+1.058-1.069 played-only — C-Q2); the z gate min(e/anchor,1) passes Zeke Uwland at full
+strength — the five-faller protection is UNREPRODUCED, re-show or drop (C-Q3); the landing
+re-measures 1.0194 vs filed 1.0248 (definition dominates the drift); env-pin conflict
+(START_HERE 0.85 vs gate manifest 1.0 — only 1.0 reproduces the shipped board) parked as its
+own item. CURRENT IDENTITIES: main ac054a9 · store d9a24282 · board 4b448a82 (Σ=761,574,
+n=804) · v0surf config sig 6ef67f07 · register v628 (8,438 lines). NOTE: the "CURRENT
+IDENTITIES" list inside THE ERA section below is the era-adoption snapshot (pre-DOB,
+store 37ced3ce) — THIS block governs; that list is history.
+Read v604–v628 IN FULL. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
