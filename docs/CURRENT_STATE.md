@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v114 · supervisor pen · 2026-08-10, register v624
+# CURRENT STATE — the incoming-seat read · v115 · supervisor pen · 2026-08-10, register v625
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,29 +128,22 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v114 · supervisor pen · 2026-08-10, register v624 · SEAT LAW: ALL replies to the owner in
-ASD-STE100 Simplified Technical English (owner re-reminded TWICE this window — hold the base);
-LONG ANSWERS BEFORE ANY TOOL WORK in the final message. THE RULER ACT IS COMPLETE except three
-player cross-sections (script ready, blocked on box contention while the DOB rebuild runs; two
-commands finish it). The 2x2: availability x horizon = 1.662/1.588/1.603/1.547 — under the
-owner's economics + his year-11 horizon the year-4 price stands 1.55x realized, ACCEPTED as
-longevity-perception re-basing. NINE bends hold on all four instruments (SF 2.03 the worst;
-form-dip 1.20 priced-through = PROTECT); KPD FADES OUT (supersession — availability+horizon,
-not judgment; its yr0→1 mark-up MECHANISM untouched); the ERA axis COLLAPSES (accumulated
-unpriced tail, gone); TAIL: 15.1% of year-4 price sits beyond year 11 vs 9.9% delivered
-(1.53x over), talls + young draftees carry it; the far-year FADE exists but is aimed at
-PROVEN 25-30s — THE YOUNG TAIL IS UN-FADED; convexity hypothesis confirmed in corrected form
-(softplus cliff, not season count; young lp ~60% cohort prior). NO-CHERRY-PICKING ruled:
-ITEM I (restate EVERY F-verdict incl. audit-1 year-0 on the corrected ruler — the sitting
-sees no bent number; SF yr-1 fair→OVER; ITEM G park→ACT) + THE ROOT ACT staged AFTER
-composition (re-derive per-position forward projection from tail+horizon evidence → then the
-queued RL_PVCFIT curve re-fit; frozen-ruler ruling holds till that release). Tall/runner
-broad dial KILLED (pure attendance). All owner words filed: 5236376068 · 5236414767 ·
-5236462270 · 5236508995 · 5236554831; landings 5236425904 · 5236597585. IN FLIGHT: DOB
-landing PR (owns the box), G1 held behind it, cross-section table on box-free. The directive
-holds items A-I + the root act; needs the two PRs + ITEM C design text + the cross-sections;
-then the owner's single sitting.
-Read v604–v624 IN FULL. Primer v7 first.)
+(v115 · supervisor pen · 2026-08-10, register v625 · SEAT LAW: ALL replies to the owner in
+ASD-STE100 Simplified Technical English; LONG ANSWERS BEFORE ANY TOOL WORK; an owner-requested
+specific view runs FIRST, ahead of build queueing (his frustration noted on record). THE
+BIRTHDATES ARE ON MAIN: PR #390 verified on pushed bytes and merged (tip 064abcae; store
+d9a24282, board a672ed3a, 6 movers all ±1, v0surf sig 5a03c9ea; test_weekly_updater
+pre-existing failure = open item). THE OWNER'S TABLE delivered with TRUE node weights
+(equal-weight rendering VOIDED, never shown; rows tie CHECK=0.00000): Duursma spread thin
+(max 12% at age 25, tail>cy11 11.1%), Butters front-loaded (27% now), Bontempelli 45% at 31
+with 54% OF HIS WEIGHT ON THE THREE-YEAR DEMONSTRATED FLOOR — "never price players to
+retire" is BOUNDED: false for veterans, true for the young (the un-faded young tail). THE
+RULER ACT IS CLOSED (map + rate + horizon 2x2 + tail + table; landings 5236425904,
+5236597585, 5236780502). G1 RESUMED on the new base (old edb2cc2d STALE; N35 control must
+hit 5a03c9ea; PR-not-merge). NEXT: G1 lands → the age-axis re-cut on the DOB store → the
+ITEM C evidence-weight design text → the directive (items A-I + the root act) to the owner
+as ONE SITTING.
+Read v604–v625 IN FULL. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
