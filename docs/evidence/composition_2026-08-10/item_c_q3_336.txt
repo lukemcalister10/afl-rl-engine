@@ -1,0 +1,69 @@
+config manifest (gate mode) LOADED  hash cef06fd6250b  (59 model vars pinned; ambient cleared)
+YEAR-1 COHORT (ND in-curve, class 2025): n = 58   [directive says 58]
+  played-only n=34 (mean w 0.3907)   sitters w=0 n=24   all-rows mean w 0.2290  [directive: 34 / 0.3873 / 24 / 0.2271]
+
+=== C-Q2  THE H LADDER (ceiling/anchor landing; target band [1.04, 1.13]) ===
+ H      played-only    all-rows      
+ 1.0400 1.0156         1.0092        
+ 1.0600 1.0234         1.0137        
+ 1.0945 1.0369         1.0216        
+ 1.1000 1.0391         1.0229        
+ 1.1300 1.0508         1.0298           <-- enters [1.04,1.13]
+ 1.1600 1.0625         1.0366           <-- enters [1.04,1.13]
+ 1.2000 1.0781         1.0458           <-- enters [1.04,1.13]
+ 1.2500 1.0977         1.0573           <-- enters [1.04,1.13]
+ 1.3000 1.1172         1.0687           <-- enters [1.04,1.13]
+ 1.3500 1.1367         1.0802        
+ 1.4000 1.1563         1.0916        
+
+=== C-Q3  THE FALLER DEMONSTRATION ===
+A faller = a top-10 pick whose record sits BELOW entry expectation (ev/entry_anchor < 1).
+The drafted gate min(ev/anchor,1) protects a row only where that ratio < 1.
+
+ top-10-pick rows in the cohort book (ND in-curve, classes 2019-26): 67
+ player                   pk   pos   anchor    ev        ev/anc  gate    w      
+ Liam Henry               9    SF    1320.1    66.0      0.050   0.050   0.0404 
+ Nikolas Cox              8    KPF   1089.7    119.0     0.109   0.109   0.1032 
+ Jamarra Ugle-Hagan       1    KPF   2225.0    286.0     0.129   0.129   0.1312 
+ Josh Gibcus              9    KPD   1103.1    143.0     0.130   0.130   0.0939 
+ Archie Perkins           9    SF    1320.1    243.0     0.184   0.184   0.1761 
+ Dylan Stephens           5    MID   2330.5    648.0     0.278   0.278   0.2564 
+ Braeden Campbell         5    SD    1198.1    419.0     0.350   0.350   0.2690 
+ Sid Draper               4    MID   2866.5    1090.0    0.380   0.380   0.0791 
+ Zane Duursma             4    SF    1860.5    777.0     0.418   0.418   0.2011 
+ Logan McDonald           4    KPF   1574.0    720.0     0.457   0.457   0.5216 
+ Josh Smillie             7    MID   2123.2    1003.0    0.472   0.472   0.0000 
+ Neil Erasmus             10   MID   2036.6    994.0     0.488   0.488   0.4305 
+
+ TOP-10 PICKS WITH gate < 1.0 (i.e. actually protected): 24 of 67
+   Liam Henry               pk9   ev/anchor=0.050  gate=0.050  w=0.0404
+   Nikolas Cox              pk8   ev/anchor=0.109  gate=0.109  w=0.1032
+   Jamarra Ugle-Hagan       pk1   ev/anchor=0.129  gate=0.129  w=0.1312
+   Josh Gibcus              pk9   ev/anchor=0.130  gate=0.130  w=0.0939
+   Archie Perkins           pk9   ev/anchor=0.184  gate=0.184  w=0.1761
+   Dylan Stephens           pk5   ev/anchor=0.278  gate=0.278  w=0.2564
+   Braeden Campbell         pk5   ev/anchor=0.350  gate=0.350  w=0.2690
+   Sid Draper               pk4   ev/anchor=0.380  gate=0.380  w=0.0791
+   Zane Duursma             pk4   ev/anchor=0.418  gate=0.418  w=0.2011
+   Logan McDonald           pk4   ev/anchor=0.457  gate=0.457  w=0.5216
+
+ THE NAMED ROW — Zeke Uwland (pick 2): ev/anchor = 1.099 -> gate = 1.000  (ABOVE entry: the gate does nothing)
+
+=== THE DESIGNATED FALLBACK GATE (sa check, one reader, inside C) ===
+gate_sa = clip(sa/par, 0, 1) — the same sa/par reading Q already makes, clipped at 1 instead of 2,
+so C keeps ONE sa reader on the leg (the double-counting assertion holds by construction).
+ player                   pk   sa/par  gate_z   gate_sa  w_sa    
+ Liam Henry               9    0.902   0.050    0.902    0.7286  
+ Nikolas Cox              8    1.069   0.109    1.000    0.9451  
+ Jamarra Ugle-Hagan       1    1.137   0.129    1.000    1.0207  
+ Josh Gibcus              9    0.988   0.130    0.988    0.7155  
+ Archie Perkins           9    1.023   0.184    1.000    0.9568  
+ Dylan Stephens           5    0.994   0.278    0.994    0.9171  
+ Braeden Campbell         5    0.832   0.350    0.832    0.6402  
+ Sid Draper               4    0.375   0.380    0.375    0.0779  
+ Zane Duursma             4    0.583   0.418    0.583    0.2805  
+ Logan McDonald           4    1.243   0.457    1.000    1.1403  
+ Josh Smillie             7    0.000   0.472    0.000    0.0000  
+ Neil Erasmus             10   1.000   0.488    1.000    0.8816  
+
+ TOP-10 PICKS PROTECTED BY THE sa GATE (sa/par < 1): 22 of 67
