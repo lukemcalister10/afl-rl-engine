@@ -751,6 +751,27 @@ def capt_bonus(level):
     return CAPT_GAIN*ss*h
 def pedmix(pk): return 0.50+0.32*math.exp(-(pk-1)/9.0)
 def clamp(x,a,b): return max(a,min(b,x))
+# ===== #334 THE AGE-DYNAMIC FUTURE DISCOUNT (owner ruling 5246868843) — MEASURED VARIANT, DIAL-GATED.
+# THE OWNER'S ORDER: the flat per-annum future discount becomes a function of the player's CURRENT age at
+# pricing — early career discounted LESS, late career MORE — pulled forward from the root-act aiming set as
+# the counterbalance to the relativity-guard breach the composed act measured (young players cut 4x harder
+# than peak players). This is his ruled rebalance, not a seat's self-tuning; the SIZING word remains his.
+#   rate(a) = 0.13            for a <= 21
+#           = 0.15            for a >= 26
+#           = linear in CONTINUOUS age between (no integer cliffs — the ITEM B discipline)
+# SCOPE: the BALANCED lens only. 'now' (0.34) and 'fut' (0.05) are display postures, not the valuation
+# integral the ruling names, and moving them would silently re-posture the UI toggles as well.
+# RL_AGE_DISC=0 (DEFAULT) => rate(a) is never consulted => byte-identical to the pre-variant board.
+AGE_DISC=os.environ.get('RL_AGE_DISC','0')!='0'
+AGE_DISC_LO=float(os.environ.get('RL_AGE_DISC_LO','0.13'))   # the young end (age <= 21)
+AGE_DISC_HI=float(os.environ.get('RL_AGE_DISC_HI','0.15'))   # the mature end (age >= 26)
+def age_disc(a,d,lens='bal'):
+    """The per-annum future discount for a player priced at CURRENT age a. Identity when the dial is off."""
+    if not AGE_DISC or lens not in ('bal','balanced') or a is None: return d
+    a=float(a)
+    if a<=21.0: return AGE_DISC_LO
+    if a>=26.0: return AGE_DISC_HI
+    return AGE_DISC_LO+(AGE_DISC_HI-AGE_DISC_LO)*(a-21.0)/5.0
 LENS={'now':0.34,'bal':(0.14 if os.environ.get('RL_DIAL14','1')!='0' else 0.15),'fut':0.05}   # v2.9 L2: dial 14 (owner-ruled D5, "14 for now"); gate RL_DIAL14 (default ON; =0 ⇒ 0.15 ⇒ base). bont 3676 gawn 2501.
 # LEG E POSTURES (memo §3): NEW VALUES over the SAME dial family — a posture is the per-annum production discount
 # d, not a new code path. balanced == 'bal' (owner-ruled, byte-exact, the ONLY board that gates/bakes/seals).
@@ -800,7 +821,7 @@ def survival(b,delta,games):
 def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
     # g = SETTLED (future) position: drives PEAK_AGE, level trajectory, key-premium, runway.
     # g0 = year-0 (present) position for REPL; fut = years-1+ REPL blend [(pos,wt)]. Defaults reproduce single-position behaviour.
-    pa=PEAK_AGE[g]; d=LENS[lens]; cl=cur if cur else lp*frac(a,pa); prod=0.0
+    pa=PEAK_AGE[g]; d=age_disc(a,LENS[lens],lens); cl=cur if cur else lp*frac(a,pa); prod=0.0
     if g0 is None: g0=g
     if fut is None: fut=[(g,1.0)]
     for k in range(18):
@@ -831,7 +852,7 @@ def prod_floor(p,lens='bal'):
     # loop for PROVEN players on the shipped board (run_panel.sh -> ev()). It carries the SAME §1b k==0 split —
     # edit BOTH or neither. Queued hygiene (NOT this build): collapse the copy via option-3 delegation.
     lowbar=y0dpp_bar(p) if (AGE_REF==BASE_REF) else None
-    d=LENS[lens]; H=clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0
+    d=age_disc(a,LENS[lens],lens); H=clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0
     while k<H:
         ag=a+k; wt=min(1.0,H-k)
         lev=cur*min(1.0, frac(ag,pa_)/max(frac(a,pa_),1e-6))

@@ -920,7 +920,7 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
     if ctx is None: return _proj_w4_0(g,lp,a,cur,lens,g0=g0,fut=fut,pre_hc=pre_hc)   # synths / lever-off: byte-exact original
     _off=(MA.AGE_REF-MA.BASE_REF) if _LEGF_ON else 0     # LEG F3 §2.vi (ruling 353, still-implicated proj_from_peak): fwd-lens offset; 0 at k=0/balanced/backward OR RL_LEGF=0 => byte-exact ORIGINAL by construction
     ah=a-_off if _off>0 else a           # form-anchored age SHAPE: the pedigree-driven projection curve-position + young-runway credit hold at BASE_REF, so growth flows through the ADVANCING level (lp from the band at AGE_REF; cur=level_now via _dev_advance) — the premium decays with PROJECTED EVIDENCE, not the age clock (Reid: same map at the projected evidence state; no new multiplier/growth term). k=0: _off=0 => ah==a => byte-exact.
-    pa=MA.PEAK_AGE[g]; d=MA.LENS[lens]; cl=cur if cur else lp*MA.frac(ah,pa); prod=0.0
+    pa=MA.PEAK_AGE[g]; d=MA.age_disc(ah,MA.LENS[lens],lens); cl=cur if cur else lp*MA.frac(ah,pa); prod=0.0   # #334 age-dynamic future discount (dial-gated; identity when off)
     if g0 is None: g0=g
     if fut is None: fut=[(g,1.0)]
     for k in range(18):
@@ -961,7 +961,7 @@ def _prod_floor_w4(p,lens='bal'):
     # byte-exact. QUEUED HYGIENE (registered, NOT this build): option-3 delegation — this fn -> MA.prod_floor for
     # bar resolution, removing the duplicate loop — carries a determinism-proof requirement.
     lowbar=MA.y0dpp_bar(p) if (MA.AGE_REF==MA.BASE_REF) else None
-    d=MA.LENS[lens]; H=MA.clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0
+    d=MA.age_disc(a,MA.LENS[lens],lens); H=MA.clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0   # #334 age-dynamic future discount (dial-gated; identity when off)
     while k<H:
         ag=a+k; wt=min(1.0,H-k)
         lev=cur*min(1.0, MA.frac(ag,pa_)/max(MA.frac(a,pa_),1e-6))

@@ -686,7 +686,10 @@ if _pl:
           "x their ITEM B age factor; %d would not"%(len(_poolp),_F,len(_cur_eng)))
     # and ITEM B's OWN law, checked here as well as at build time: the age shape is a RESHAPE, so the
     # pool's total entry value must be held exactly.
-    _sb=sum(float(MA.pool_level(p))*_F for p in _poolp); _sa=sum(float(_anchor(p)) for p in _poolp)
+    # over the SAME population the renormaliser K is derived on (the engine's whole pool, MA.data),
+    # not the selftest's priced subset — conservation is a property of the set K was solved over.
+    _poolall=[q for q in MA.data if q.get('_pool')]
+    _sb=sum(float(MA.pool_level(q))*_F for q in _poolall); _sa=sum(float(_anchor(q)) for q in _poolall)
     check(_sb<=0 or abs(_sa-_sb)/_sb<1e-9,
           "#334 ITEM B level-preserving: pool Sigma entry_anchor held (%.4f -> %.4f, %.3e relative)"
           %(_sb,_sa,abs(_sa-_sb)/max(_sb,1e-9)))
