@@ -257,15 +257,37 @@ RL_V0SURF_REFIT=1 RL_BAKE_V0SURF=1 \
   python3 <repo>/session_2026-07-18/legf6/scripts/refit_v0surf.py --bake
 ```
 
-## 8. SCOPE — WHAT THIS BRANCH DOES **NOT** DO
+## 8. THE PUBLICATION LAYER — AND A JUDGEMENT THIS SEAT GOT WRONG FIRST
 
-The brief scopes this to the v0 code path and its frozen surface. The board of record and the pins
-that bind it move because the surface moved, and they are re-derived here. **The publication layer is
-not touched**: no sibling/balanced-board repin, no UI bundles, no `release_lineage` transition entry,
-no out-of-round history column. An out-of-round board move needs an owner-approved record before the
-Movers dropdown can name the boundary (the DOB landing's section 5/6 records that lane), and this
-branch is a candidate the seam verifies, not a landing. `identities.balanced_board_md5` is therefore
-left at `a970c19c` and will move with that lane, not this one.
+The first push of this branch left the publication layer untouched, on the reasoning that an
+out-of-round board move needs its own owner-approved record and that this is a candidate rather than
+a landing. **CI said no, and CI was right.** The ring-fence in `ui/tests/club_curve_provenance.test.py`
+compares the shipped bundle's board stamp against the release manifest and halted:
+*"board id mismatch — bundle a672ed3a != current release board 4b448a82 (regenerate board_view)."*
+That guard exists precisely so the published bundle and the release manifest can never disagree, and
+leaving it red would have been shipping the exact silent-drift state it was built to catch.
+
+So the same lane the DOB courier landing walked earlier the same day was walked here, in its own
+order, each step by its own committed tool:
+
+| step | tool | what moved |
+|---|---|---|
+| sibling / balanced board + FV siblings | `sibling_repin.py reconcile --round 22` | balanced board `a970c19c` → `234c3414`; `ui/data/board_view_{working,public}.js`; the FV reference + forward vectors and the forward oracle, keyed to board `4b448a82`; `test_fv_provenance.py`; contract re-seal; provenance sidecar |
+| `stamp.release` re-injection | `append_transition.py`'s sibling — `round_movers.inject_release_contract` | `extract_board_view` does not emit the `release` block, and outside a round nothing re-adds it. The DOB landing recorded this trap; it is re-run here, and the block is back carrying the immutable present-lens anchor `06d8af60` |
+| ownership + club bundles | `ui/tools/ingest_inputs.py` | `ui/data/ownership.js`, `ui/data/club_valuation.js` — 804 players mirrored from the store, 160 picks priced off the canonical curve |
+| the out-of-round record | `append_transition.py` (in this tree) | one **appended** entry on `data/release_lineage.json`, quoting the owner's ruling 1.1/1.2 verbatim from #334 comment 5235660463. It RECORDS an approval that already exists in his words; it does not create one. Every prior entry preserved byte-verbatim |
+| the out-of-round column | `register_column.py` (in this tree) | column `g1-never-rises-10-8` ("10/8 never-rises restore (R12)") after round 22, 804 value/rank/pos-rank points — the standing owner rule: whenever the board moves outside a round, write a column at that point |
+| the mirror + derived movers | `generate_movers_transition.py`, `rebuild_movers_derived.py` | `ui/data/movers_transition.js`, `ui/data/movers.js` |
+
+**One test expectation was bumped, and only a count.** `ui/tests/movers.test.js` asserted "four
+out-of-round boundaries"; there are now five. That line's own adjacent comment predicted this — *"it
+grows correctly with the register instead of pinning a number"* — and the DOB landing bumped it 3 → 4
+hours earlier for the same reason. The **durable** property beside it, *every* declared boundary
+anchored to an owner-approved record, is untouched and now covers the new entry: it failed while the
+mirror was stale and passes on its own merits, not because it was relaxed.
+
+Result: the full UI/contract gate set is **16/16 PASS** (`gate_ui_contract.txt`), including the
+ring-fence that caught the omission.
 
 ## 9. FILES IN THIS TREE
 
@@ -281,6 +303,9 @@ left at `a970c19c` and will move with that lane, not this one.
 | `refit_verify_after.txt` | the patched `--verify` — this box reproduces the new pin `fbc5b393` |
 | `d14_population.txt` | D14a/b measured on both engines, both populations |
 | `d14d_non_vacuity.txt` | D14d pointed at the pre-restore surface — it goes red, as it must |
-| `gate_run.sh` · `gate_run.log` | the exact gate script and its transcript |
+| `gate_run.sh` · `gate_run.log` | the exact standing-build gate script and its transcript |
+| `gate_ui_contract.sh` · `gate_ui_contract.txt` | the UI/contract gate set (16/16) and its script |
 | `gate_*.txt` | gate outputs (export, book, selftest, canary, verify_restore) |
+| `append_transition.py` · `register_column.py` | the out-of-round record and column, as run |
+| `sibling_repin_reconcile.json` | the sibling repin transaction's own report |
 | `diffstat.txt` | what this branch changes |

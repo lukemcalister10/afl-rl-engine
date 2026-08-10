@@ -27,6 +27,13 @@
       "id": "dob-courier-10-8",
       "kind": "out_of_round",
       "label": "10/8 DOB courier + v0surf re-cut"
+    },
+    {
+      "after_round": 22,
+      "board": "4b448a821f54180182637983f7a26a9d",
+      "id": "g1-never-rises-10-8",
+      "kind": "out_of_round",
+      "label": "10/8 never-rises restore (R12)"
     }
   ],
   "kind": "weekly_pos_rank_history",
@@ -43,6 +50,7 @@
         "21": 12,
         "22": 13,
         "dob-courier-10-8": 13,
+        "g1-never-rises-10-8": 13,
         "post-r19-redesign-1": 5,
         "rederivation-30-7": 11,
         "redesign-adoption-6-8": 10
@@ -62,6 +70,7 @@
         "21": 24,
         "22": 26,
         "dob-courier-10-8": 26,
+        "g1-never-rises-10-8": 26,
         "post-r19-redesign-1": 19,
         "rederivation-30-7": 23,
         "redesign-adoption-6-8": 23
@@ -81,6 +90,7 @@
         "21": 56,
         "22": 54,
         "dob-courier-10-8": 54,
+        "g1-never-rises-10-8": 54,
         "post-r19-redesign-1": 88,
         "rederivation-30-7": 55,
         "redesign-adoption-6-8": 56
@@ -100,6 +110,7 @@
         "21": 88,
         "22": 91,
         "dob-courier-10-8": 91,
+        "g1-never-rises-10-8": 91,
         "post-r19-redesign-1": 64,
         "rederivation-30-7": 82,
         "redesign-adoption-6-8": 88
@@ -119,6 +130,7 @@
         "21": 88,
         "22": 88,
         "dob-courier-10-8": 88,
+        "g1-never-rises-10-8": 88,
         "post-r19-redesign-1": 44,
         "rederivation-30-7": 79,
         "redesign-adoption-6-8": 86
@@ -138,6 +150,7 @@
         "21": 56,
         "22": 58,
         "dob-courier-10-8": 58,
+        "g1-never-rises-10-8": 58,
         "post-r19-redesign-1": 123,
         "rederivation-30-7": 55,
         "redesign-adoption-6-8": 58
@@ -157,6 +170,7 @@
         "21": 70,
         "22": 70,
         "dob-courier-10-8": 70,
+        "g1-never-rises-10-8": 70,
         "post-r19-redesign-1": 83,
         "rederivation-30-7": 70,
         "redesign-adoption-6-8": 70
@@ -176,6 +190,7 @@
         "21": 111,
         "22": 111,
         "dob-courier-10-8": 111,
+        "g1-never-rises-10-8": 111,
         "post-r19-redesign-1": 91,
         "rederivation-30-7": 109,
         "redesign-adoption-6-8": 111
@@ -195,6 +210,7 @@
         "21": 50,
         "22": 49,
         "dob-courier-10-8": 49,
+        "g1-never-rises-10-8": 49,
         "post-r19-redesign-1": 47,
         "rederivation-30-7": 48,
         "redesign-adoption-6-8": 51
@@ -214,6 +230,7 @@
         "21": 38,
         "22": 39,
         "dob-courier-10-8": 39,
+        "g1-never-rises-10-8": 39,
         "post-r19-redesign-1": 42,
         "rederivation-30-7": 38,
         "redesign-adoption-6-8": 38
@@ -233,6 +250,7 @@
         "21": 87,
         "22": 86,
         "dob-courier-10-8": 86,
+        "g1-never-rises-10-8": 86,
         "post-r19-redesign-1": 136,
         "rederivation-30-7": 89,
         "redesign-adoption-6-8": 84
@@ -252,6 +270,7 @@
         "21": 66,
         "22": 68,
         "dob-courier-10-8": 68,
+        "g1-never-rises-10-8": 68,
         "post-r19-redesign-1": 40,
         "rederivation-30-7": 60,
         "redesign-adoption-6-8": 65
@@ -271,6 +290,7 @@
         "21": 99,
         "22": 98,
         "dob-courier-10-8": 98,
+        "g1-never-rises-10-8": 98,
         "post-r19-redesign-1": 51,
         "rederivation-30-7": 100,
         "redesign-adoption-6-8": 103
@@ -290,6 +310,7 @@
         "21": 76,
         "22": 74,
         "dob-courier-10-8": 74,
+        "g1-never-rises-10-8": 74,
         "post-r19-redesign-1": 87,
         "rederivation-30-7": 74,
         "redesign-adoption-6-8": 75
@@ -309,6 +330,7 @@
         "21": 32,
         "22": 32,
         "dob-courier-10-8": 32,
+        "g1-never-rises-10-8": 32,
         "post-r19-redesign-1": 32,
         "rederivation-30-7": 32,
         "redesign-adoption-6-8": 32
@@ -328,6 +350,7 @@
         "21": 18,
         "22": 20,
         "dob-courier-10-8": 20,
+        "g1-never-rises-10-8": 20,
         "post-r19-redesign-1": 21,
         "rederivation-30-7": 19,
         "redesign-adoption-6-8": 20
@@ -347,6 +370,7 @@
         "21": 16,
         "22": 16,
         "dob-courier-10-8": 16,
+        "g1-never-rises-10-8": 16,
         "post-r19-redesign-1": 13,
         "rederivation-30-7": 21,
         "redesign-adoption-6-8": 16
@@ -366,6 +390,7 @@
         "21": 24,
         "22": 23,
         "dob-courier-10-8": 23,
+        "g1-never-rises-10-8": 23,
         "post-r19-redesign-1": 34,
         "rederivation-30-7": 24,
         "redesign-adoption-6-8": 24
@@ -385,6 +410,7 @@
         "21": 59,
         "22": 54,
         "dob-courier-10-8": 54,
+        "g1-never-rises-10-8": 54,
         "post-r19-redesign-1": 37,
         "rederivation-30-7": 54,
         "redesign-adoption-6-8": 56
@@ -404,6 +430,7 @@
         "21": 164,
         "22": 165,
         "dob-courier-10-8": 165,
+        "g1-never-rises-10-8": 165,
         "post-r19-redesign-1": 158,
         "rederivation-30-7": 158,
         "redesign-adoption-6-8": 163
@@ -423,6 +450,7 @@
         "21": 136,
         "22": 126,
         "dob-courier-10-8": 126,
+        "g1-never-rises-10-8": 126,
         "post-r19-redesign-1": 174,
         "rederivation-30-7": 137,
         "redesign-adoption-6-8": 138
@@ -442,6 +470,7 @@
         "21": 66,
         "22": 66,
         "dob-courier-10-8": 66,
+        "g1-never-rises-10-8": 66,
         "post-r19-redesign-1": 54,
         "rederivation-30-7": 72,
         "redesign-adoption-6-8": 66
@@ -461,6 +490,7 @@
         "21": 115,
         "22": 113,
         "dob-courier-10-8": 113,
+        "g1-never-rises-10-8": 113,
         "post-r19-redesign-1": 92,
         "rederivation-30-7": 111,
         "redesign-adoption-6-8": 99
@@ -480,6 +510,7 @@
         "21": 64,
         "22": 66,
         "dob-courier-10-8": 66,
+        "g1-never-rises-10-8": 66,
         "post-r19-redesign-1": 110,
         "rederivation-30-7": 64,
         "redesign-adoption-6-8": 64
@@ -499,6 +530,7 @@
         "21": 31,
         "22": 33,
         "dob-courier-10-8": 33,
+        "g1-never-rises-10-8": 33,
         "post-r19-redesign-1": 26,
         "rederivation-30-7": 31,
         "redesign-adoption-6-8": 29
@@ -518,6 +550,7 @@
         "21": 74,
         "22": 76,
         "dob-courier-10-8": 76,
+        "g1-never-rises-10-8": 76,
         "post-r19-redesign-1": 61,
         "rederivation-30-7": 86,
         "redesign-adoption-6-8": 75
@@ -537,6 +570,7 @@
         "21": 40,
         "22": 40,
         "dob-courier-10-8": 40,
+        "g1-never-rises-10-8": 40,
         "post-r19-redesign-1": 35,
         "rederivation-30-7": 39,
         "redesign-adoption-6-8": 39
@@ -556,6 +590,7 @@
         "21": 77,
         "22": 64,
         "dob-courier-10-8": 64,
+        "g1-never-rises-10-8": 64,
         "post-r19-redesign-1": 63,
         "rederivation-30-7": 65,
         "redesign-adoption-6-8": 81
@@ -575,6 +610,7 @@
         "21": 58,
         "22": 59,
         "dob-courier-10-8": 59,
+        "g1-never-rises-10-8": 59,
         "post-r19-redesign-1": 50,
         "rederivation-30-7": 63,
         "redesign-adoption-6-8": 58
@@ -594,6 +630,7 @@
         "21": 116,
         "22": 112,
         "dob-courier-10-8": 112,
+        "g1-never-rises-10-8": 112,
         "post-r19-redesign-1": 76,
         "rederivation-30-7": 119,
         "redesign-adoption-6-8": 114
@@ -613,6 +650,7 @@
         "21": 3,
         "22": 3,
         "dob-courier-10-8": 3,
+        "g1-never-rises-10-8": 3,
         "post-r19-redesign-1": 2,
         "rederivation-30-7": 3,
         "redesign-adoption-6-8": 3
@@ -632,6 +670,7 @@
         "21": 165,
         "22": 166,
         "dob-courier-10-8": 166,
+        "g1-never-rises-10-8": 166,
         "post-r19-redesign-1": 123,
         "rederivation-30-7": 167,
         "redesign-adoption-6-8": 164
@@ -651,6 +690,7 @@
         "21": 163,
         "22": 165,
         "dob-courier-10-8": 165,
+        "g1-never-rises-10-8": 165,
         "post-r19-redesign-1": 103,
         "rederivation-30-7": 142,
         "redesign-adoption-6-8": 162
@@ -670,6 +710,7 @@
         "21": 110,
         "22": 110,
         "dob-courier-10-8": 110,
+        "g1-never-rises-10-8": 110,
         "post-r19-redesign-1": 78,
         "rederivation-30-7": 120,
         "redesign-adoption-6-8": 106
@@ -689,6 +730,7 @@
         "21": 92,
         "22": 93,
         "dob-courier-10-8": 93,
+        "g1-never-rises-10-8": 93,
         "post-r19-redesign-1": 76,
         "rederivation-30-7": 93,
         "redesign-adoption-6-8": 92
@@ -708,6 +750,7 @@
         "21": 172,
         "22": 172,
         "dob-courier-10-8": 172,
+        "g1-never-rises-10-8": 172,
         "post-r19-redesign-1": 161,
         "rederivation-30-7": 171,
         "redesign-adoption-6-8": 173
@@ -727,6 +770,7 @@
         "21": 22,
         "22": 20,
         "dob-courier-10-8": 20,
+        "g1-never-rises-10-8": 20,
         "post-r19-redesign-1": 13,
         "rederivation-30-7": 20,
         "redesign-adoption-6-8": 20
@@ -746,6 +790,7 @@
         "21": 21,
         "22": 20,
         "dob-courier-10-8": 20,
+        "g1-never-rises-10-8": 20,
         "post-r19-redesign-1": 13,
         "rederivation-30-7": 25,
         "redesign-adoption-6-8": 24
@@ -765,6 +810,7 @@
         "21": 189,
         "22": 189,
         "dob-courier-10-8": 189,
+        "g1-never-rises-10-8": 189,
         "post-r19-redesign-1": 148,
         "rederivation-30-7": 190,
         "redesign-adoption-6-8": 189
@@ -784,6 +830,7 @@
         "21": 125,
         "22": 123,
         "dob-courier-10-8": 123,
+        "g1-never-rises-10-8": 122,
         "post-r19-redesign-1": 121,
         "rederivation-30-7": 131,
         "redesign-adoption-6-8": 124
@@ -803,6 +850,7 @@
         "21": 147,
         "22": 147,
         "dob-courier-10-8": 147,
+        "g1-never-rises-10-8": 147,
         "post-r19-redesign-1": 205,
         "rederivation-30-7": 143,
         "redesign-adoption-6-8": 148
@@ -822,6 +870,7 @@
         "21": 6,
         "22": 6,
         "dob-courier-10-8": 6,
+        "g1-never-rises-10-8": 6,
         "post-r19-redesign-1": 7,
         "rederivation-30-7": 5,
         "redesign-adoption-6-8": 5
@@ -841,6 +890,7 @@
         "21": 78,
         "22": 77,
         "dob-courier-10-8": 77,
+        "g1-never-rises-10-8": 77,
         "post-r19-redesign-1": 56,
         "rederivation-30-7": 73,
         "redesign-adoption-6-8": 76
@@ -860,6 +910,7 @@
         "21": 5,
         "22": 6,
         "dob-courier-10-8": 6,
+        "g1-never-rises-10-8": 6,
         "post-r19-redesign-1": 10,
         "rederivation-30-7": 5,
         "redesign-adoption-6-8": 5
@@ -879,6 +930,7 @@
         "21": 101,
         "22": 100,
         "dob-courier-10-8": 100,
+        "g1-never-rises-10-8": 100,
         "post-r19-redesign-1": 100,
         "rederivation-30-7": 106,
         "redesign-adoption-6-8": 100
@@ -898,6 +950,7 @@
         "21": 139,
         "22": 122,
         "dob-courier-10-8": 122,
+        "g1-never-rises-10-8": 122,
         "post-r19-redesign-1": 101,
         "rederivation-30-7": 135,
         "redesign-adoption-6-8": 137
@@ -917,6 +970,7 @@
         "21": 42,
         "22": 41,
         "dob-courier-10-8": 41,
+        "g1-never-rises-10-8": 41,
         "post-r19-redesign-1": 87,
         "rederivation-30-7": 51,
         "redesign-adoption-6-8": 43
@@ -936,6 +990,7 @@
         "21": 147,
         "22": 148,
         "dob-courier-10-8": 148,
+        "g1-never-rises-10-8": 148,
         "post-r19-redesign-1": 99,
         "rederivation-30-7": 155,
         "redesign-adoption-6-8": 149
@@ -955,6 +1010,7 @@
         "21": 124,
         "22": 121,
         "dob-courier-10-8": 121,
+        "g1-never-rises-10-8": 121,
         "post-r19-redesign-1": 77,
         "rederivation-30-7": 117,
         "redesign-adoption-6-8": 116
@@ -974,6 +1030,7 @@
         "21": 106,
         "22": 106,
         "dob-courier-10-8": 106,
+        "g1-never-rises-10-8": 106,
         "post-r19-redesign-1": 159,
         "rederivation-30-7": 110,
         "redesign-adoption-6-8": 106
@@ -993,6 +1050,7 @@
         "21": 133,
         "22": 133,
         "dob-courier-10-8": 133,
+        "g1-never-rises-10-8": 133,
         "post-r19-redesign-1": 209,
         "rederivation-30-7": 147,
         "redesign-adoption-6-8": 134
@@ -1012,6 +1070,7 @@
         "21": 108,
         "22": 123,
         "dob-courier-10-8": 123,
+        "g1-never-rises-10-8": 123,
         "post-r19-redesign-1": 50,
         "rederivation-30-7": 96,
         "redesign-adoption-6-8": 100
@@ -1031,6 +1090,7 @@
         "21": 71,
         "22": 72,
         "dob-courier-10-8": 72,
+        "g1-never-rises-10-8": 72,
         "post-r19-redesign-1": 60,
         "rederivation-30-7": 76,
         "redesign-adoption-6-8": 71
@@ -1050,6 +1110,7 @@
         "21": 209,
         "22": 209,
         "dob-courier-10-8": 209,
+        "g1-never-rises-10-8": 209,
         "post-r19-redesign-1": 167,
         "rederivation-30-7": 210,
         "redesign-adoption-6-8": 209
@@ -1069,6 +1130,7 @@
         "21": 71,
         "22": 71,
         "dob-courier-10-8": 71,
+        "g1-never-rises-10-8": 71,
         "post-r19-redesign-1": 84,
         "rederivation-30-7": 71,
         "redesign-adoption-6-8": 71
@@ -1088,6 +1150,7 @@
         "21": 15,
         "22": 14,
         "dob-courier-10-8": 14,
+        "g1-never-rises-10-8": 14,
         "post-r19-redesign-1": 18,
         "rederivation-30-7": 14,
         "redesign-adoption-6-8": 14
@@ -1107,6 +1170,7 @@
         "21": 138,
         "22": 140,
         "dob-courier-10-8": 140,
+        "g1-never-rises-10-8": 140,
         "post-r19-redesign-1": 108,
         "rederivation-30-7": 118,
         "redesign-adoption-6-8": 137
@@ -1126,6 +1190,7 @@
         "21": 193,
         "22": 192,
         "dob-courier-10-8": 192,
+        "g1-never-rises-10-8": 192,
         "post-r19-redesign-1": 124,
         "rederivation-30-7": 159,
         "redesign-adoption-6-8": 193
@@ -1145,6 +1210,7 @@
         "21": 104,
         "22": 103,
         "dob-courier-10-8": 103,
+        "g1-never-rises-10-8": 103,
         "post-r19-redesign-1": 194,
         "rederivation-30-7": 132,
         "redesign-adoption-6-8": 105
@@ -1164,6 +1230,7 @@
         "21": 120,
         "22": 125,
         "dob-courier-10-8": 125,
+        "g1-never-rises-10-8": 125,
         "post-r19-redesign-1": 100,
         "rederivation-30-7": 150,
         "redesign-adoption-6-8": 144
@@ -1183,6 +1250,7 @@
         "21": 72,
         "22": 72,
         "dob-courier-10-8": 72,
+        "g1-never-rises-10-8": 72,
         "post-r19-redesign-1": 74,
         "rederivation-30-7": 68,
         "redesign-adoption-6-8": 72
@@ -1202,6 +1270,7 @@
         "21": 62,
         "22": 56,
         "dob-courier-10-8": 56,
+        "g1-never-rises-10-8": 56,
         "post-r19-redesign-1": 50,
         "rederivation-30-7": 60,
         "redesign-adoption-6-8": 62
@@ -1221,6 +1290,7 @@
         "21": 135,
         "22": 134,
         "dob-courier-10-8": 134,
+        "g1-never-rises-10-8": 134,
         "post-r19-redesign-1": 169,
         "rederivation-30-7": 116,
         "redesign-adoption-6-8": 119
@@ -1240,6 +1310,7 @@
         "21": 86,
         "22": 83,
         "dob-courier-10-8": 83,
+        "g1-never-rises-10-8": 83,
         "post-r19-redesign-1": 63,
         "rederivation-30-7": 78,
         "redesign-adoption-6-8": 82
@@ -1259,6 +1330,7 @@
         "21": 103,
         "22": 103,
         "dob-courier-10-8": 103,
+        "g1-never-rises-10-8": 103,
         "post-r19-redesign-1": 93,
         "rederivation-30-7": 109,
         "redesign-adoption-6-8": 105
@@ -1278,6 +1350,7 @@
         "21": 31,
         "22": 32,
         "dob-courier-10-8": 32,
+        "g1-never-rises-10-8": 32,
         "post-r19-redesign-1": 30,
         "rederivation-30-7": 28,
         "redesign-adoption-6-8": 31
@@ -1297,6 +1370,7 @@
         "21": 52,
         "22": 51,
         "dob-courier-10-8": 51,
+        "g1-never-rises-10-8": 51,
         "post-r19-redesign-1": 35,
         "rederivation-30-7": 53,
         "redesign-adoption-6-8": 51
@@ -1316,6 +1390,7 @@
         "21": 208,
         "22": 207,
         "dob-courier-10-8": 207,
+        "g1-never-rises-10-8": 207,
         "post-r19-redesign-1": 151,
         "rederivation-30-7": 202,
         "redesign-adoption-6-8": 208
@@ -1335,6 +1410,7 @@
         "21": 7,
         "22": 7,
         "dob-courier-10-8": 7,
+        "g1-never-rises-10-8": 7,
         "post-r19-redesign-1": 5,
         "rederivation-30-7": 7,
         "redesign-adoption-6-8": 7
@@ -1354,6 +1430,7 @@
         "21": 106,
         "22": 107,
         "dob-courier-10-8": 107,
+        "g1-never-rises-10-8": 107,
         "post-r19-redesign-1": 96,
         "rederivation-30-7": 108,
         "redesign-adoption-6-8": 104
@@ -1373,6 +1450,7 @@
         "21": 219,
         "22": 219,
         "dob-courier-10-8": 219,
+        "g1-never-rises-10-8": 219,
         "post-r19-redesign-1": 170,
         "rederivation-30-7": 205,
         "redesign-adoption-6-8": 219
@@ -1392,6 +1470,7 @@
         "21": 52,
         "22": 46,
         "dob-courier-10-8": 46,
+        "g1-never-rises-10-8": 46,
         "post-r19-redesign-1": 113,
         "rederivation-30-7": 51,
         "redesign-adoption-6-8": 51
@@ -1411,6 +1490,7 @@
         "21": 100,
         "22": 98,
         "dob-courier-10-8": 98,
+        "g1-never-rises-10-8": 98,
         "post-r19-redesign-1": 95,
         "rederivation-30-7": 101,
         "redesign-adoption-6-8": 98
@@ -1430,6 +1510,7 @@
         "21": 97,
         "22": 92,
         "dob-courier-10-8": 92,
+        "g1-never-rises-10-8": 92,
         "post-r19-redesign-1": 87,
         "rederivation-30-7": 110,
         "redesign-adoption-6-8": 101
@@ -1449,6 +1530,7 @@
         "21": 158,
         "22": 158,
         "dob-courier-10-8": 158,
+        "g1-never-rises-10-8": 158,
         "post-r19-redesign-1": 144,
         "rederivation-30-7": 159,
         "redesign-adoption-6-8": 158
@@ -1468,6 +1550,7 @@
         "21": 147,
         "22": 149,
         "dob-courier-10-8": 149,
+        "g1-never-rises-10-8": 149,
         "post-r19-redesign-1": 133,
         "rederivation-30-7": 150,
         "redesign-adoption-6-8": 146
@@ -1487,6 +1570,7 @@
         "21": 65,
         "22": 65,
         "dob-courier-10-8": 65,
+        "g1-never-rises-10-8": 65,
         "post-r19-redesign-1": 73,
         "rederivation-30-7": 62,
         "redesign-adoption-6-8": 65
@@ -1506,6 +1590,7 @@
         "21": 64,
         "22": 65,
         "dob-courier-10-8": 65,
+        "g1-never-rises-10-8": 65,
         "post-r19-redesign-1": 104,
         "rederivation-30-7": 57,
         "redesign-adoption-6-8": 55
@@ -1525,6 +1610,7 @@
         "21": 115,
         "22": 115,
         "dob-courier-10-8": 115,
+        "g1-never-rises-10-8": 115,
         "post-r19-redesign-1": 160,
         "rederivation-30-7": 111,
         "redesign-adoption-6-8": 115
@@ -1544,6 +1630,7 @@
         "21": 117,
         "22": 113,
         "dob-courier-10-8": 113,
+        "g1-never-rises-10-8": 113,
         "post-r19-redesign-1": 73,
         "rederivation-30-7": 116,
         "redesign-adoption-6-8": 113
@@ -1563,6 +1650,7 @@
         "21": 84,
         "22": 86,
         "dob-courier-10-8": 86,
+        "g1-never-rises-10-8": 86,
         "post-r19-redesign-1": 55,
         "rederivation-30-7": 80,
         "redesign-adoption-6-8": 83
@@ -1582,6 +1670,7 @@
         "21": 35,
         "22": 35,
         "dob-courier-10-8": 35,
+        "g1-never-rises-10-8": 35,
         "post-r19-redesign-1": 39,
         "rederivation-30-7": 35,
         "redesign-adoption-6-8": 35
@@ -1601,6 +1690,7 @@
         "21": 50,
         "22": 49,
         "dob-courier-10-8": 49,
+        "g1-never-rises-10-8": 49,
         "post-r19-redesign-1": 21,
         "rederivation-30-7": 46,
         "redesign-adoption-6-8": 46
@@ -1620,6 +1710,7 @@
         "21": 3,
         "22": 3,
         "dob-courier-10-8": 3,
+        "g1-never-rises-10-8": 3,
         "post-r19-redesign-1": 3,
         "rederivation-30-7": 3,
         "redesign-adoption-6-8": 3
@@ -1639,6 +1730,7 @@
         "21": 39,
         "22": 41,
         "dob-courier-10-8": 41,
+        "g1-never-rises-10-8": 41,
         "post-r19-redesign-1": 39,
         "rederivation-30-7": 40,
         "redesign-adoption-6-8": 42
@@ -1658,6 +1750,7 @@
         "21": 120,
         "22": 119,
         "dob-courier-10-8": 119,
+        "g1-never-rises-10-8": 119,
         "post-r19-redesign-1": 100,
         "rederivation-30-7": 120,
         "redesign-adoption-6-8": 120
@@ -1677,6 +1770,7 @@
         "21": 141,
         "22": 141,
         "dob-courier-10-8": 141,
+        "g1-never-rises-10-8": 141,
         "post-r19-redesign-1": 195,
         "rederivation-30-7": 136,
         "redesign-adoption-6-8": 140
@@ -1696,6 +1790,7 @@
         "21": 89,
         "22": 91,
         "dob-courier-10-8": 91,
+        "g1-never-rises-10-8": 91,
         "post-r19-redesign-1": 76,
         "rederivation-30-7": 98,
         "redesign-adoption-6-8": 91
@@ -1715,6 +1810,7 @@
         "21": 87,
         "22": 89,
         "dob-courier-10-8": 89,
+        "g1-never-rises-10-8": 89,
         "post-r19-redesign-1": 46,
         "rederivation-30-7": 87,
         "redesign-adoption-6-8": 87
@@ -1734,6 +1830,7 @@
         "21": 47,
         "22": 45,
         "dob-courier-10-8": 45,
+        "g1-never-rises-10-8": 45,
         "post-r19-redesign-1": 29,
         "rederivation-30-7": 43,
         "redesign-adoption-6-8": 47
@@ -1753,6 +1850,7 @@
         "21": 69,
         "22": 69,
         "dob-courier-10-8": 69,
+        "g1-never-rises-10-8": 69,
         "post-r19-redesign-1": 80,
         "rederivation-30-7": 67,
         "redesign-adoption-6-8": 69
@@ -1772,6 +1870,7 @@
         "21": 92,
         "22": 94,
         "dob-courier-10-8": 94,
+        "g1-never-rises-10-8": 94,
         "post-r19-redesign-1": 81,
         "rederivation-30-7": 96,
         "redesign-adoption-6-8": 84
@@ -1791,6 +1890,7 @@
         "21": 33,
         "22": 34,
         "dob-courier-10-8": 34,
+        "g1-never-rises-10-8": 34,
         "post-r19-redesign-1": 33,
         "rederivation-30-7": 33,
         "redesign-adoption-6-8": 33
@@ -1810,6 +1910,7 @@
         "21": 9,
         "22": 9,
         "dob-courier-10-8": 9,
+        "g1-never-rises-10-8": 9,
         "post-r19-redesign-1": 13,
         "rederivation-30-7": 9,
         "redesign-adoption-6-8": 9
@@ -1829,6 +1930,7 @@
         "21": 36,
         "22": 35,
         "dob-courier-10-8": 35,
+        "g1-never-rises-10-8": 35,
         "post-r19-redesign-1": 72,
         "rederivation-30-7": 36,
         "redesign-adoption-6-8": 40
@@ -1848,6 +1950,7 @@
         "21": 183,
         "22": 181,
         "dob-courier-10-8": 181,
+        "g1-never-rises-10-8": 182,
         "post-r19-redesign-1": 141,
         "rederivation-30-7": 182,
         "redesign-adoption-6-8": 183
@@ -1867,6 +1970,7 @@
         "21": 207,
         "22": 208,
         "dob-courier-10-8": 208,
+        "g1-never-rises-10-8": 208,
         "post-r19-redesign-1": 153,
         "rederivation-30-7": 195,
         "redesign-adoption-6-8": 206
@@ -1886,6 +1990,7 @@
         "21": 46,
         "22": 46,
         "dob-courier-10-8": 46,
+        "g1-never-rises-10-8": 46,
         "post-r19-redesign-1": 96,
         "rederivation-30-7": 47,
         "redesign-adoption-6-8": 46
@@ -1905,6 +2010,7 @@
         "21": 27,
         "22": 27,
         "dob-courier-10-8": 27,
+        "g1-never-rises-10-8": 27,
         "post-r19-redesign-1": 14,
         "rederivation-30-7": 22,
         "redesign-adoption-6-8": 24
@@ -1924,6 +2030,7 @@
         "21": 3,
         "22": 2,
         "dob-courier-10-8": 2,
+        "g1-never-rises-10-8": 2,
         "post-r19-redesign-1": 3,
         "rederivation-30-7": 3,
         "redesign-adoption-6-8": 3
@@ -1943,6 +2050,7 @@
         "21": 33,
         "22": 34,
         "dob-courier-10-8": 34,
+        "g1-never-rises-10-8": 34,
         "post-r19-redesign-1": 33,
         "rederivation-30-7": 38,
         "redesign-adoption-6-8": 34
@@ -1962,6 +2070,7 @@
         "21": 36,
         "22": 36,
         "dob-courier-10-8": 36,
+        "g1-never-rises-10-8": 36,
         "post-r19-redesign-1": 70,
         "rederivation-30-7": 37,
         "redesign-adoption-6-8": 36
@@ -1981,6 +2090,7 @@
         "21": 76,
         "22": 75,
         "dob-courier-10-8": 75,
+        "g1-never-rises-10-8": 75,
         "post-r19-redesign-1": 35,
         "rederivation-30-7": 72,
         "redesign-adoption-6-8": 74
@@ -2000,6 +2110,7 @@
         "21": 69,
         "22": 87,
         "dob-courier-10-8": 87,
+        "g1-never-rises-10-8": 87,
         "post-r19-redesign-1": 34,
         "rederivation-30-7": 67,
         "redesign-adoption-6-8": 68
@@ -2019,6 +2130,7 @@
         "21": 164,
         "22": 153,
         "dob-courier-10-8": 153,
+        "g1-never-rises-10-8": 153,
         "post-r19-redesign-1": 117,
         "rederivation-30-7": 164,
         "redesign-adoption-6-8": 163
@@ -2038,6 +2150,7 @@
         "21": 103,
         "22": 102,
         "dob-courier-10-8": 102,
+        "g1-never-rises-10-8": 102,
         "post-r19-redesign-1": 155,
         "rederivation-30-7": 106,
         "redesign-adoption-6-8": 101
@@ -2057,6 +2170,7 @@
         "21": 41,
         "22": 41,
         "dob-courier-10-8": 41,
+        "g1-never-rises-10-8": 41,
         "post-r19-redesign-1": 52,
         "rederivation-30-7": 44,
         "redesign-adoption-6-8": 41
@@ -2076,6 +2190,7 @@
         "21": 140,
         "22": 155,
         "dob-courier-10-8": 155,
+        "g1-never-rises-10-8": 155,
         "post-r19-redesign-1": 107,
         "rederivation-30-7": 145,
         "redesign-adoption-6-8": 143
@@ -2095,6 +2210,7 @@
         "21": 8,
         "22": 5,
         "dob-courier-10-8": 5,
+        "g1-never-rises-10-8": 5,
         "post-r19-redesign-1": 31,
         "rederivation-30-7": 9,
         "redesign-adoption-6-8": 9
@@ -2114,6 +2230,7 @@
         "21": 173,
         "22": 169,
         "dob-courier-10-8": 169,
+        "g1-never-rises-10-8": 169,
         "post-r19-redesign-1": 150,
         "rederivation-30-7": 165,
         "redesign-adoption-6-8": 168
@@ -2133,6 +2250,7 @@
         "21": 68,
         "22": 66,
         "dob-courier-10-8": 66,
+        "g1-never-rises-10-8": 66,
         "post-r19-redesign-1": 63,
         "rederivation-30-7": 64,
         "redesign-adoption-6-8": 68
@@ -2152,6 +2270,7 @@
         "21": 73,
         "22": 74,
         "dob-courier-10-8": 74,
+        "g1-never-rises-10-8": 74,
         "post-r19-redesign-1": 121,
         "rederivation-30-7": 76,
         "redesign-adoption-6-8": 73
@@ -2171,6 +2290,7 @@
         "21": 133,
         "22": 143,
         "dob-courier-10-8": 143,
+        "g1-never-rises-10-8": 143,
         "post-r19-redesign-1": 79,
         "rederivation-30-7": 122,
         "redesign-adoption-6-8": 124
@@ -2190,6 +2310,7 @@
         "21": 20,
         "22": 19,
         "dob-courier-10-8": 19,
+        "g1-never-rises-10-8": 19,
         "post-r19-redesign-1": 19,
         "rederivation-30-7": 18,
         "redesign-adoption-6-8": 19
@@ -2209,6 +2330,7 @@
         "21": 22,
         "22": 21,
         "dob-courier-10-8": 21,
+        "g1-never-rises-10-8": 21,
         "post-r19-redesign-1": 15,
         "rederivation-30-7": 19,
         "redesign-adoption-6-8": 20
@@ -2228,6 +2350,7 @@
         "21": 68,
         "22": 70,
         "dob-courier-10-8": 70,
+        "g1-never-rises-10-8": 70,
         "post-r19-redesign-1": 115,
         "rederivation-30-7": 76,
         "redesign-adoption-6-8": 67
@@ -2247,6 +2370,7 @@
         "21": 78,
         "22": 81,
         "dob-courier-10-8": 81,
+        "g1-never-rises-10-8": 81,
         "post-r19-redesign-1": 65,
         "rederivation-30-7": 73,
         "redesign-adoption-6-8": 76
@@ -2266,6 +2390,7 @@
         "21": 212,
         "22": 212,
         "dob-courier-10-8": 212,
+        "g1-never-rises-10-8": 212,
         "post-r19-redesign-1": 165,
         "rederivation-30-7": 207,
         "redesign-adoption-6-8": 212
@@ -2285,6 +2410,7 @@
         "21": 56,
         "22": 42,
         "dob-courier-10-8": 42,
+        "g1-never-rises-10-8": 42,
         "post-r19-redesign-1": 52,
         "rederivation-30-7": 52,
         "redesign-adoption-6-8": 61
@@ -2304,6 +2430,7 @@
         "21": 153,
         "22": 153,
         "dob-courier-10-8": 153,
+        "g1-never-rises-10-8": 152,
         "post-r19-redesign-1": 129,
         "rederivation-30-7": 157,
         "redesign-adoption-6-8": 154
@@ -2323,6 +2450,7 @@
         "21": 101,
         "22": 103,
         "dob-courier-10-8": 103,
+        "g1-never-rises-10-8": 103,
         "post-r19-redesign-1": 68,
         "rederivation-30-7": 106,
         "redesign-adoption-6-8": 102
@@ -2342,6 +2470,7 @@
         "21": 59,
         "22": 60,
         "dob-courier-10-8": 60,
+        "g1-never-rises-10-8": 60,
         "post-r19-redesign-1": 99,
         "rederivation-30-7": 63,
         "redesign-adoption-6-8": 60
@@ -2361,6 +2490,7 @@
         "21": 23,
         "22": 32,
         "dob-courier-10-8": 32,
+        "g1-never-rises-10-8": 32,
         "post-r19-redesign-1": 50,
         "rederivation-30-7": 18,
         "redesign-adoption-6-8": 19
@@ -2380,6 +2510,7 @@
         "21": 112,
         "22": 133,
         "dob-courier-10-8": 133,
+        "g1-never-rises-10-8": 133,
         "post-r19-redesign-1": 70,
         "rederivation-30-7": 88,
         "redesign-adoption-6-8": 91
@@ -2399,6 +2530,7 @@
         "21": 139,
         "22": 141,
         "dob-courier-10-8": 141,
+        "g1-never-rises-10-8": 141,
         "post-r19-redesign-1": 97,
         "rederivation-30-7": 115,
         "redesign-adoption-6-8": 138
@@ -2418,6 +2550,7 @@
         "21": 148,
         "22": 150,
         "dob-courier-10-8": 150,
+        "g1-never-rises-10-8": 150,
         "post-r19-redesign-1": 128,
         "rederivation-30-7": 151,
         "redesign-adoption-6-8": 150
@@ -2437,6 +2570,7 @@
         "21": 101,
         "22": 107,
         "dob-courier-10-8": 107,
+        "g1-never-rises-10-8": 107,
         "post-r19-redesign-1": 149,
         "rederivation-30-7": 107,
         "redesign-adoption-6-8": 98
@@ -2456,6 +2590,7 @@
         "21": 33,
         "22": 34,
         "dob-courier-10-8": 34,
+        "g1-never-rises-10-8": 34,
         "post-r19-redesign-1": 42,
         "rederivation-30-7": 30,
         "redesign-adoption-6-8": 30
@@ -2475,6 +2610,7 @@
         "21": 186,
         "22": 186,
         "dob-courier-10-8": 186,
+        "g1-never-rises-10-8": 186,
         "post-r19-redesign-1": 108,
         "rederivation-30-7": 153,
         "redesign-adoption-6-8": 184
@@ -2494,6 +2630,7 @@
         "21": 84,
         "22": 85,
         "dob-courier-10-8": 85,
+        "g1-never-rises-10-8": 85,
         "post-r19-redesign-1": 131,
         "rederivation-30-7": 83,
         "redesign-adoption-6-8": 83
@@ -2513,6 +2650,7 @@
         "21": 45,
         "22": 48,
         "dob-courier-10-8": 48,
+        "g1-never-rises-10-8": 48,
         "post-r19-redesign-1": 42,
         "rederivation-30-7": 46,
         "redesign-adoption-6-8": 43
@@ -2532,6 +2670,7 @@
         "21": 141,
         "22": 142,
         "dob-courier-10-8": 142,
+        "g1-never-rises-10-8": 142,
         "post-r19-redesign-1": 89,
         "rederivation-30-7": 146,
         "redesign-adoption-6-8": 139
@@ -2551,6 +2690,7 @@
         "21": 4,
         "22": 5,
         "dob-courier-10-8": 5,
+        "g1-never-rises-10-8": 5,
         "post-r19-redesign-1": 19,
         "rederivation-30-7": 5,
         "redesign-adoption-6-8": 4
@@ -2570,6 +2710,7 @@
         "21": 105,
         "22": 105,
         "dob-courier-10-8": 105,
+        "g1-never-rises-10-8": 105,
         "post-r19-redesign-1": 117,
         "rederivation-30-7": 105,
         "redesign-adoption-6-8": 104
@@ -2589,6 +2730,7 @@
         "21": 23,
         "22": 21,
         "dob-courier-10-8": 21,
+        "g1-never-rises-10-8": 21,
         "post-r19-redesign-1": 15,
         "rederivation-30-7": 17,
         "redesign-adoption-6-8": 18
@@ -2608,6 +2750,7 @@
         "21": 16,
         "22": 19,
         "dob-courier-10-8": 19,
+        "g1-never-rises-10-8": 19,
         "post-r19-redesign-1": 8,
         "rederivation-30-7": 16,
         "redesign-adoption-6-8": 16
@@ -2627,6 +2770,7 @@
         "21": 4,
         "22": 4,
         "dob-courier-10-8": 4,
+        "g1-never-rises-10-8": 4,
         "post-r19-redesign-1": 4,
         "rederivation-30-7": 4,
         "redesign-adoption-6-8": 4
@@ -2646,6 +2790,7 @@
         "21": 13,
         "22": 13,
         "dob-courier-10-8": 13,
+        "g1-never-rises-10-8": 13,
         "post-r19-redesign-1": 37,
         "rederivation-30-7": 13,
         "redesign-adoption-6-8": 13
@@ -2665,6 +2810,7 @@
         "21": 226,
         "22": 226,
         "dob-courier-10-8": 226,
+        "g1-never-rises-10-8": 226,
         "post-r19-redesign-1": 160,
         "rederivation-30-7": 223,
         "redesign-adoption-6-8": 226
@@ -2684,6 +2830,7 @@
         "21": 109,
         "22": 108,
         "dob-courier-10-8": 108,
+        "g1-never-rises-10-8": 108,
         "post-r19-redesign-1": 156,
         "rederivation-30-7": 108,
         "redesign-adoption-6-8": 109
@@ -2703,6 +2850,7 @@
         "21": 143,
         "22": 143,
         "dob-courier-10-8": 143,
+        "g1-never-rises-10-8": 143,
         "post-r19-redesign-1": 139,
         "rederivation-30-7": 152,
         "redesign-adoption-6-8": 143
@@ -2722,6 +2870,7 @@
         "21": 86,
         "22": 90,
         "dob-courier-10-8": 90,
+        "g1-never-rises-10-8": 90,
         "post-r19-redesign-1": 43,
         "rederivation-30-7": 79,
         "redesign-adoption-6-8": 83
@@ -2741,6 +2890,7 @@
         "21": 17,
         "22": 18,
         "dob-courier-10-8": 18,
+        "g1-never-rises-10-8": 18,
         "post-r19-redesign-1": 16,
         "rederivation-30-7": 18,
         "redesign-adoption-6-8": 19
@@ -2760,6 +2910,7 @@
         "21": 80,
         "22": 81,
         "dob-courier-10-8": 81,
+        "g1-never-rises-10-8": 81,
         "post-r19-redesign-1": 39,
         "rederivation-30-7": 78,
         "redesign-adoption-6-8": 80
@@ -2779,6 +2930,7 @@
         "21": 41,
         "22": 42,
         "dob-courier-10-8": 42,
+        "g1-never-rises-10-8": 42,
         "post-r19-redesign-1": 86,
         "rederivation-30-7": 52,
         "redesign-adoption-6-8": 43
@@ -2798,6 +2950,7 @@
         "21": 53,
         "22": 46,
         "dob-courier-10-8": 46,
+        "g1-never-rises-10-8": 46,
         "post-r19-redesign-1": 117,
         "rederivation-30-7": 53,
         "redesign-adoption-6-8": 52
@@ -2817,6 +2970,7 @@
         "21": 46,
         "22": 57,
         "dob-courier-10-8": 57,
+        "g1-never-rises-10-8": 57,
         "post-r19-redesign-1": 44,
         "rederivation-30-7": 49,
         "redesign-adoption-6-8": 47
@@ -2836,6 +2990,7 @@
         "21": 116,
         "22": 114,
         "dob-courier-10-8": 114,
+        "g1-never-rises-10-8": 114,
         "post-r19-redesign-1": 107,
         "rederivation-30-7": 124,
         "redesign-adoption-6-8": 118
@@ -2855,6 +3010,7 @@
         "21": 9,
         "22": 9,
         "dob-courier-10-8": 9,
+        "g1-never-rises-10-8": 9,
         "post-r19-redesign-1": 7,
         "rederivation-30-7": 8,
         "redesign-adoption-6-8": 8
@@ -2874,6 +3030,7 @@
         "21": 199,
         "22": 197,
         "dob-courier-10-8": 197,
+        "g1-never-rises-10-8": 197,
         "post-r19-redesign-1": 152,
         "rederivation-30-7": 194,
         "redesign-adoption-6-8": 200
@@ -2893,6 +3050,7 @@
         "21": 166,
         "22": 166,
         "dob-courier-10-8": 166,
+        "g1-never-rises-10-8": 166,
         "post-r19-redesign-1": 145,
         "rederivation-30-7": 160,
         "redesign-adoption-6-8": 166
@@ -2912,6 +3070,7 @@
         "21": 197,
         "22": 198,
         "dob-courier-10-8": 198,
+        "g1-never-rises-10-8": 198,
         "post-r19-redesign-1": 144,
         "rederivation-30-7": 187,
         "redesign-adoption-6-8": 196
@@ -2931,6 +3090,7 @@
         "21": 51,
         "22": 53,
         "dob-courier-10-8": 53,
+        "g1-never-rises-10-8": 53,
         "post-r19-redesign-1": 33,
         "rederivation-30-7": 48,
         "redesign-adoption-6-8": 50
@@ -2950,6 +3110,7 @@
         "21": 169,
         "22": 170,
         "dob-courier-10-8": 170,
+        "g1-never-rises-10-8": 170,
         "post-r19-redesign-1": 81,
         "rederivation-30-7": 176,
         "redesign-adoption-6-8": 170
@@ -2969,6 +3130,7 @@
         "21": 43,
         "22": 43,
         "dob-courier-10-8": 43,
+        "g1-never-rises-10-8": 43,
         "post-r19-redesign-1": 66,
         "rederivation-30-7": 39,
         "redesign-adoption-6-8": 44
@@ -2988,6 +3150,7 @@
         "21": 223,
         "22": 223,
         "dob-courier-10-8": 223,
+        "g1-never-rises-10-8": 223,
         "post-r19-redesign-1": 177,
         "rederivation-30-7": 220,
         "redesign-adoption-6-8": 222
@@ -3007,6 +3170,7 @@
         "21": 30,
         "22": 31,
         "dob-courier-10-8": 31,
+        "g1-never-rises-10-8": 31,
         "post-r19-redesign-1": 48,
         "rederivation-30-7": 31,
         "redesign-adoption-6-8": 32
@@ -3026,6 +3190,7 @@
         "21": 76,
         "22": 62,
         "dob-courier-10-8": 62,
+        "g1-never-rises-10-8": 62,
         "post-r19-redesign-1": 88,
         "rederivation-30-7": 92,
         "redesign-adoption-6-8": 89
@@ -3045,6 +3210,7 @@
         "21": 77,
         "22": 74,
         "dob-courier-10-8": 74,
+        "g1-never-rises-10-8": 74,
         "post-r19-redesign-1": 57,
         "rederivation-30-7": 71,
         "redesign-adoption-6-8": 74
@@ -3064,6 +3230,7 @@
         "21": 9,
         "22": 9,
         "dob-courier-10-8": 9,
+        "g1-never-rises-10-8": 9,
         "post-r19-redesign-1": 12,
         "rederivation-30-7": 10,
         "redesign-adoption-6-8": 10
@@ -3083,6 +3250,7 @@
         "21": 25,
         "22": 24,
         "dob-courier-10-8": 24,
+        "g1-never-rises-10-8": 24,
         "post-r19-redesign-1": 20,
         "rederivation-30-7": 28,
         "redesign-adoption-6-8": 24
@@ -3102,6 +3270,7 @@
         "21": 68,
         "22": 70,
         "dob-courier-10-8": 70,
+        "g1-never-rises-10-8": 70,
         "post-r19-redesign-1": 78,
         "rederivation-30-7": 70,
         "redesign-adoption-6-8": 71
@@ -3121,6 +3290,7 @@
         "21": 13,
         "22": 13,
         "dob-courier-10-8": 13,
+        "g1-never-rises-10-8": 13,
         "post-r19-redesign-1": 17,
         "rederivation-30-7": 13,
         "redesign-adoption-6-8": 13
@@ -3140,6 +3310,7 @@
         "21": 36,
         "22": 35,
         "dob-courier-10-8": 35,
+        "g1-never-rises-10-8": 35,
         "post-r19-redesign-1": 27,
         "rederivation-30-7": 33,
         "redesign-adoption-6-8": 36
@@ -3159,6 +3330,7 @@
         "21": 48,
         "22": 48,
         "dob-courier-10-8": 48,
+        "g1-never-rises-10-8": 48,
         "post-r19-redesign-1": 54,
         "rederivation-30-7": 46,
         "redesign-adoption-6-8": 48
@@ -3178,6 +3350,7 @@
         "21": 73,
         "22": 73,
         "dob-courier-10-8": 73,
+        "g1-never-rises-10-8": 73,
         "post-r19-redesign-1": 85,
         "rederivation-30-7": 72,
         "redesign-adoption-6-8": 73
@@ -3197,6 +3370,7 @@
         "21": 45,
         "22": 45,
         "dob-courier-10-8": 45,
+        "g1-never-rises-10-8": 45,
         "post-r19-redesign-1": 19,
         "rederivation-30-7": 43,
         "redesign-adoption-6-8": 44
@@ -3216,6 +3390,7 @@
         "21": 48,
         "22": 47,
         "dob-courier-10-8": 47,
+        "g1-never-rises-10-8": 47,
         "post-r19-redesign-1": 55,
         "rederivation-30-7": 48,
         "redesign-adoption-6-8": 47
@@ -3235,6 +3410,7 @@
         "21": 73,
         "22": 73,
         "dob-courier-10-8": 73,
+        "g1-never-rises-10-8": 73,
         "post-r19-redesign-1": 118,
         "rederivation-30-7": 71,
         "redesign-adoption-6-8": 75
@@ -3254,6 +3430,7 @@
         "21": 11,
         "22": 11,
         "dob-courier-10-8": 11,
+        "g1-never-rises-10-8": 11,
         "post-r19-redesign-1": 7,
         "rederivation-30-7": 10,
         "redesign-adoption-6-8": 10
@@ -3273,6 +3450,7 @@
         "21": 12,
         "22": 12,
         "dob-courier-10-8": 12,
+        "g1-never-rises-10-8": 12,
         "post-r19-redesign-1": 5,
         "rederivation-30-7": 11,
         "redesign-adoption-6-8": 11
@@ -3292,6 +3470,7 @@
         "21": 82,
         "22": 82,
         "dob-courier-10-8": 82,
+        "g1-never-rises-10-8": 82,
         "post-r19-redesign-1": 95,
         "rederivation-30-7": 82,
         "redesign-adoption-6-8": 82
@@ -3311,6 +3490,7 @@
         "21": 54,
         "22": 55,
         "dob-courier-10-8": 55,
+        "g1-never-rises-10-8": 55,
         "post-r19-redesign-1": 93,
         "rederivation-30-7": 51,
         "redesign-adoption-6-8": 55
@@ -3330,6 +3510,7 @@
         "21": 132,
         "22": 135,
         "dob-courier-10-8": 135,
+        "g1-never-rises-10-8": 135,
         "post-r19-redesign-1": 170,
         "rederivation-30-7": 136,
         "redesign-adoption-6-8": 128
@@ -3349,6 +3530,7 @@
         "21": 102,
         "22": 108,
         "dob-courier-10-8": 108,
+        "g1-never-rises-10-8": 108,
         "post-r19-redesign-1": 177,
         "rederivation-30-7": 91,
         "redesign-adoption-6-8": 97
@@ -3368,6 +3550,7 @@
         "21": 66,
         "22": 67,
         "dob-courier-10-8": 67,
+        "g1-never-rises-10-8": 67,
         "post-r19-redesign-1": 75,
         "rederivation-30-7": 63,
         "redesign-adoption-6-8": 66
@@ -3387,6 +3570,7 @@
         "21": 51,
         "22": 51,
         "dob-courier-10-8": 51,
+        "g1-never-rises-10-8": 51,
         "post-r19-redesign-1": 20,
         "rederivation-30-7": 48,
         "redesign-adoption-6-8": 48
@@ -3406,6 +3590,7 @@
         "21": 35,
         "22": 36,
         "dob-courier-10-8": 36,
+        "g1-never-rises-10-8": 36,
         "post-r19-redesign-1": 38,
         "rederivation-30-7": 55,
         "redesign-adoption-6-8": 36
@@ -3425,6 +3610,7 @@
         "21": 86,
         "22": 70,
         "dob-courier-10-8": 70,
+        "g1-never-rises-10-8": 70,
         "post-r19-redesign-1": 138,
         "rederivation-30-7": 85,
         "redesign-adoption-6-8": 87
@@ -3444,6 +3630,7 @@
         "21": 17,
         "22": 13,
         "dob-courier-10-8": 13,
+        "g1-never-rises-10-8": 13,
         "post-r19-redesign-1": 61,
         "rederivation-30-7": 19,
         "redesign-adoption-6-8": 18
@@ -3463,6 +3650,7 @@
         "21": 149,
         "22": 151,
         "dob-courier-10-8": 151,
+        "g1-never-rises-10-8": 151,
         "post-r19-redesign-1": 123,
         "rederivation-30-7": 132,
         "redesign-adoption-6-8": 151
@@ -3482,6 +3670,7 @@
         "21": 61,
         "22": 64,
         "dob-courier-10-8": 64,
+        "g1-never-rises-10-8": 64,
         "post-r19-redesign-1": 140,
         "rederivation-30-7": 60,
         "redesign-adoption-6-8": 61
@@ -3501,6 +3690,7 @@
         "21": 15,
         "22": 16,
         "dob-courier-10-8": 16,
+        "g1-never-rises-10-8": 16,
         "post-r19-redesign-1": 25,
         "rederivation-30-7": 15,
         "redesign-adoption-6-8": 15
@@ -3520,6 +3710,7 @@
         "21": 63,
         "22": 60,
         "dob-courier-10-8": 60,
+        "g1-never-rises-10-8": 60,
         "post-r19-redesign-1": 108,
         "rederivation-30-7": 63,
         "redesign-adoption-6-8": 62
@@ -3539,6 +3730,7 @@
         "21": 65,
         "22": 67,
         "dob-courier-10-8": 67,
+        "g1-never-rises-10-8": 67,
         "post-r19-redesign-1": 111,
         "rederivation-30-7": 67,
         "redesign-adoption-6-8": 63
@@ -3558,6 +3750,7 @@
         "21": 67,
         "22": 69,
         "dob-courier-10-8": 69,
+        "g1-never-rises-10-8": 69,
         "post-r19-redesign-1": 30,
         "rederivation-30-7": 68,
         "redesign-adoption-6-8": 67
@@ -3577,6 +3770,7 @@
         "21": 49,
         "22": 47,
         "dob-courier-10-8": 47,
+        "g1-never-rises-10-8": 47,
         "post-r19-redesign-1": 83,
         "rederivation-30-7": 48,
         "redesign-adoption-6-8": 48
@@ -3596,6 +3790,7 @@
         "21": 116,
         "22": 116,
         "dob-courier-10-8": 116,
+        "g1-never-rises-10-8": 116,
         "post-r19-redesign-1": 89,
         "rederivation-30-7": 110,
         "redesign-adoption-6-8": 116
@@ -3615,6 +3810,7 @@
         "21": 104,
         "22": 102,
         "dob-courier-10-8": 102,
+        "g1-never-rises-10-8": 102,
         "post-r19-redesign-1": 181,
         "rederivation-30-7": 118,
         "redesign-adoption-6-8": 118
@@ -3634,6 +3830,7 @@
         "21": 117,
         "22": 117,
         "dob-courier-10-8": 117,
+        "g1-never-rises-10-8": 117,
         "post-r19-redesign-1": 93,
         "rederivation-30-7": 115,
         "redesign-adoption-6-8": 117
@@ -3653,6 +3850,7 @@
         "21": 5,
         "22": 4,
         "dob-courier-10-8": 4,
+        "g1-never-rises-10-8": 4,
         "post-r19-redesign-1": 9,
         "rederivation-30-7": 7,
         "redesign-adoption-6-8": 7
@@ -3672,6 +3870,7 @@
         "21": 61,
         "22": 61,
         "dob-courier-10-8": 61,
+        "g1-never-rises-10-8": 61,
         "post-r19-redesign-1": 69,
         "rederivation-30-7": 57,
         "redesign-adoption-6-8": 58
@@ -3691,6 +3890,7 @@
         "21": 32,
         "22": 31,
         "dob-courier-10-8": 31,
+        "g1-never-rises-10-8": 31,
         "post-r19-redesign-1": 29,
         "rederivation-30-7": 36,
         "redesign-adoption-6-8": 32
@@ -3710,6 +3910,7 @@
         "21": 148,
         "22": 150,
         "dob-courier-10-8": 150,
+        "g1-never-rises-10-8": 150,
         "post-r19-redesign-1": 160,
         "rederivation-30-7": 203,
         "redesign-adoption-6-8": 150
@@ -3729,6 +3930,7 @@
         "21": 157,
         "22": 160,
         "dob-courier-10-8": 160,
+        "g1-never-rises-10-8": 160,
         "post-r19-redesign-1": 183,
         "rederivation-30-7": 173,
         "redesign-adoption-6-8": 158
@@ -3748,6 +3950,7 @@
         "21": 7,
         "22": 7,
         "dob-courier-10-8": 7,
+        "g1-never-rises-10-8": 7,
         "post-r19-redesign-1": 8,
         "rederivation-30-7": 6,
         "redesign-adoption-6-8": 6
@@ -3767,6 +3970,7 @@
         "21": 213,
         "22": 213,
         "dob-courier-10-8": 213,
+        "g1-never-rises-10-8": 213,
         "post-r19-redesign-1": 204,
         "rederivation-30-7": 208,
         "redesign-adoption-6-8": 213
@@ -3786,6 +3990,7 @@
         "21": 9,
         "22": 9,
         "dob-courier-10-8": 9,
+        "g1-never-rises-10-8": 9,
         "post-r19-redesign-1": 30,
         "rederivation-30-7": 11,
         "redesign-adoption-6-8": 11
@@ -3805,6 +4010,7 @@
         "21": 68,
         "22": 70,
         "dob-courier-10-8": 70,
+        "g1-never-rises-10-8": 70,
         "post-r19-redesign-1": 82,
         "rederivation-30-7": 82,
         "redesign-adoption-6-8": 69
@@ -3824,6 +4030,7 @@
         "21": 117,
         "22": 116,
         "dob-courier-10-8": 116,
+        "g1-never-rises-10-8": 116,
         "post-r19-redesign-1": 83,
         "rederivation-30-7": 99,
         "redesign-adoption-6-8": 117
@@ -3843,6 +4050,7 @@
         "21": 129,
         "22": 128,
         "dob-courier-10-8": 128,
+        "g1-never-rises-10-8": 128,
         "post-r19-redesign-1": 155,
         "rederivation-30-7": 172,
         "redesign-adoption-6-8": 129
@@ -3862,6 +4070,7 @@
         "21": 30,
         "22": 31,
         "dob-courier-10-8": 31,
+        "g1-never-rises-10-8": 31,
         "post-r19-redesign-1": 30,
         "rederivation-30-7": 30,
         "redesign-adoption-6-8": 30
@@ -3881,6 +4090,7 @@
         "21": 149,
         "22": 151,
         "dob-courier-10-8": 151,
+        "g1-never-rises-10-8": 151,
         "post-r19-redesign-1": 178,
         "rederivation-30-7": 222,
         "redesign-adoption-6-8": 151
@@ -3900,6 +4110,7 @@
         "21": 113,
         "22": 83,
         "dob-courier-10-8": 83,
+        "g1-never-rises-10-8": 83,
         "post-r19-redesign-1": 81,
         "rederivation-30-7": 94,
         "redesign-adoption-6-8": 96
@@ -3919,6 +4130,7 @@
         "21": 125,
         "22": 128,
         "dob-courier-10-8": 128,
+        "g1-never-rises-10-8": 128,
         "post-r19-redesign-1": 152,
         "rederivation-30-7": 98,
         "redesign-adoption-6-8": 121
@@ -3938,6 +4150,7 @@
         "21": 37,
         "22": 37,
         "dob-courier-10-8": 37,
+        "g1-never-rises-10-8": 37,
         "post-r19-redesign-1": 65,
         "rederivation-30-7": 38,
         "redesign-adoption-6-8": 38
@@ -3957,6 +4170,7 @@
         "21": 98,
         "22": 97,
         "dob-courier-10-8": 97,
+        "g1-never-rises-10-8": 97,
         "post-r19-redesign-1": 146,
         "rederivation-30-7": 102,
         "redesign-adoption-6-8": 99
@@ -3976,6 +4190,7 @@
         "21": 22,
         "22": 22,
         "dob-courier-10-8": 22,
+        "g1-never-rises-10-8": 22,
         "post-r19-redesign-1": 32,
         "rederivation-30-7": 23,
         "redesign-adoption-6-8": 22
@@ -3995,6 +4210,7 @@
         "21": 58,
         "22": 56,
         "dob-courier-10-8": 56,
+        "g1-never-rises-10-8": 56,
         "post-r19-redesign-1": 68,
         "rederivation-30-7": 56,
         "redesign-adoption-6-8": 57
@@ -4014,6 +4230,7 @@
         "21": 36,
         "22": 38,
         "dob-courier-10-8": 38,
+        "g1-never-rises-10-8": 38,
         "post-r19-redesign-1": 14,
         "rederivation-30-7": 34,
         "redesign-adoption-6-8": 35
@@ -4033,6 +4250,7 @@
         "21": 60,
         "22": 61,
         "dob-courier-10-8": 61,
+        "g1-never-rises-10-8": 61,
         "post-r19-redesign-1": 98,
         "rederivation-30-7": 60,
         "redesign-adoption-6-8": 59
@@ -4052,6 +4270,7 @@
         "21": 69,
         "22": 68,
         "dob-courier-10-8": 68,
+        "g1-never-rises-10-8": 68,
         "post-r19-redesign-1": 114,
         "rederivation-30-7": 69,
         "redesign-adoption-6-8": 66
@@ -4071,6 +4290,7 @@
         "21": 17,
         "22": 18,
         "dob-courier-10-8": 18,
+        "g1-never-rises-10-8": 18,
         "post-r19-redesign-1": 24,
         "rederivation-30-7": 17,
         "redesign-adoption-6-8": 18
@@ -4090,6 +4310,7 @@
         "21": 8,
         "22": 8,
         "dob-courier-10-8": 8,
+        "g1-never-rises-10-8": 8,
         "post-r19-redesign-1": 10,
         "rederivation-30-7": 7,
         "redesign-adoption-6-8": 8
@@ -4109,6 +4330,7 @@
         "21": 34,
         "22": 35,
         "dob-courier-10-8": 35,
+        "g1-never-rises-10-8": 35,
         "post-r19-redesign-1": 52,
         "rederivation-30-7": 45,
         "redesign-adoption-6-8": 34
@@ -4128,6 +4350,7 @@
         "21": 122,
         "22": 124,
         "dob-courier-10-8": 124,
+        "g1-never-rises-10-8": 123,
         "post-r19-redesign-1": 71,
         "rederivation-30-7": 107,
         "redesign-adoption-6-8": 113
@@ -4147,6 +4370,7 @@
         "21": 84,
         "22": 86,
         "dob-courier-10-8": 86,
+        "g1-never-rises-10-8": 86,
         "post-r19-redesign-1": 75,
         "rederivation-30-7": 100,
         "redesign-adoption-6-8": 87
@@ -4166,6 +4390,7 @@
         "21": 79,
         "22": 80,
         "dob-courier-10-8": 80,
+        "g1-never-rises-10-8": 80,
         "post-r19-redesign-1": 62,
         "rederivation-30-7": 79,
         "redesign-adoption-6-8": 77
@@ -4185,6 +4410,7 @@
         "21": 82,
         "22": 78,
         "dob-courier-10-8": 78,
+        "g1-never-rises-10-8": 78,
         "post-r19-redesign-1": 66,
         "rederivation-30-7": 95,
         "redesign-adoption-6-8": 92
@@ -4204,6 +4430,7 @@
         "21": 32,
         "22": 30,
         "dob-courier-10-8": 30,
+        "g1-never-rises-10-8": 30,
         "post-r19-redesign-1": 41,
         "rederivation-30-7": 34,
         "redesign-adoption-6-8": 33
@@ -4223,6 +4450,7 @@
         "21": 38,
         "22": 37,
         "dob-courier-10-8": 37,
+        "g1-never-rises-10-8": 37,
         "post-r19-redesign-1": 31,
         "rederivation-30-7": 35,
         "redesign-adoption-6-8": 38
@@ -4242,6 +4470,7 @@
         "21": 23,
         "22": 23,
         "dob-courier-10-8": 23,
+        "g1-never-rises-10-8": 23,
         "post-r19-redesign-1": 29,
         "rederivation-30-7": 24,
         "redesign-adoption-6-8": 23
@@ -4261,6 +4490,7 @@
         "21": 132,
         "22": 131,
         "dob-courier-10-8": 131,
+        "g1-never-rises-10-8": 131,
         "post-r19-redesign-1": 106,
         "rederivation-30-7": 120,
         "redesign-adoption-6-8": 132
@@ -4280,6 +4510,7 @@
         "21": 174,
         "22": 173,
         "dob-courier-10-8": 173,
+        "g1-never-rises-10-8": 173,
         "post-r19-redesign-1": 161,
         "rederivation-30-7": 177,
         "redesign-adoption-6-8": 174
@@ -4299,6 +4530,7 @@
         "21": 5,
         "22": 5,
         "dob-courier-10-8": 5,
+        "g1-never-rises-10-8": 5,
         "post-r19-redesign-1": 6,
         "rederivation-30-7": 5,
         "redesign-adoption-6-8": 5
@@ -4318,6 +4550,7 @@
         "21": 83,
         "22": 81,
         "dob-courier-10-8": 81,
+        "g1-never-rises-10-8": 81,
         "post-r19-redesign-1": 137,
         "rederivation-30-7": 91,
         "redesign-adoption-6-8": 82
@@ -4337,6 +4570,7 @@
         "21": 55,
         "22": 54,
         "dob-courier-10-8": 54,
+        "g1-never-rises-10-8": 54,
         "post-r19-redesign-1": 65,
         "rederivation-30-7": 53,
         "redesign-adoption-6-8": 54
@@ -4356,6 +4590,7 @@
         "21": 50,
         "22": 50,
         "dob-courier-10-8": 50,
+        "g1-never-rises-10-8": 50,
         "post-r19-redesign-1": 40,
         "rederivation-30-7": 57,
         "redesign-adoption-6-8": 49
@@ -4375,6 +4610,7 @@
         "21": 11,
         "22": 11,
         "dob-courier-10-8": 11,
+        "g1-never-rises-10-8": 11,
         "post-r19-redesign-1": 12,
         "rederivation-30-7": 12,
         "redesign-adoption-6-8": 15
@@ -4394,6 +4630,7 @@
         "21": 148,
         "22": 148,
         "dob-courier-10-8": 148,
+        "g1-never-rises-10-8": 148,
         "post-r19-redesign-1": 199,
         "rederivation-30-7": 138,
         "redesign-adoption-6-8": 146
@@ -4413,6 +4650,7 @@
         "21": 16,
         "22": 16,
         "dob-courier-10-8": 16,
+        "g1-never-rises-10-8": 16,
         "post-r19-redesign-1": 23,
         "rederivation-30-7": 20,
         "redesign-adoption-6-8": 15
@@ -4432,6 +4670,7 @@
         "21": 144,
         "22": 145,
         "dob-courier-10-8": 145,
+        "g1-never-rises-10-8": 145,
         "post-r19-redesign-1": 126,
         "rederivation-30-7": 139,
         "redesign-adoption-6-8": 144
@@ -4451,6 +4690,7 @@
         "21": 67,
         "22": 64,
         "dob-courier-10-8": 64,
+        "g1-never-rises-10-8": 64,
         "post-r19-redesign-1": 127,
         "rederivation-30-7": 75,
         "redesign-adoption-6-8": 70
@@ -4470,6 +4710,7 @@
         "21": 196,
         "22": 193,
         "dob-courier-10-8": 193,
+        "g1-never-rises-10-8": 193,
         "post-r19-redesign-1": 198,
         "rederivation-30-7": 200,
         "redesign-adoption-6-8": 197
@@ -4489,6 +4730,7 @@
         "21": 191,
         "22": 141,
         "dob-courier-10-8": 141,
+        "g1-never-rises-10-8": 141,
         "post-r19-redesign-1": 196,
         "rederivation-30-7": 191,
         "redesign-adoption-6-8": 198
@@ -4508,6 +4750,7 @@
         "21": 1,
         "22": 1,
         "dob-courier-10-8": 1,
+        "g1-never-rises-10-8": 1,
         "post-r19-redesign-1": 1,
         "rederivation-30-7": 1,
         "redesign-adoption-6-8": 1
@@ -4527,6 +4770,7 @@
         "21": 136,
         "22": 136,
         "dob-courier-10-8": 136,
+        "g1-never-rises-10-8": 136,
         "post-r19-redesign-1": 122,
         "rederivation-30-7": 138,
         "redesign-adoption-6-8": 139
@@ -4546,6 +4790,7 @@
         "21": 200,
         "22": 194,
         "dob-courier-10-8": 194,
+        "g1-never-rises-10-8": 194,
         "post-r19-redesign-1": 150,
         "rederivation-30-7": 196,
         "redesign-adoption-6-8": 202
@@ -4565,6 +4810,7 @@
         "21": 98,
         "22": 99,
         "dob-courier-10-8": 99,
+        "g1-never-rises-10-8": 99,
         "post-r19-redesign-1": 102,
         "rederivation-30-7": 123,
         "redesign-adoption-6-8": 116
@@ -4584,6 +4830,7 @@
         "21": 32,
         "22": 28,
         "dob-courier-10-8": 28,
+        "g1-never-rises-10-8": 28,
         "post-r19-redesign-1": 46,
         "rederivation-30-7": 32,
         "redesign-adoption-6-8": 31
@@ -4603,6 +4850,7 @@
         "21": 27,
         "22": 23,
         "dob-courier-10-8": 23,
+        "g1-never-rises-10-8": 23,
         "post-r19-redesign-1": 11,
         "rederivation-30-7": 30,
         "redesign-adoption-6-8": 30
@@ -4622,6 +4870,7 @@
         "21": 69,
         "22": 76,
         "dob-courier-10-8": 76,
+        "g1-never-rises-10-8": 76,
         "post-r19-redesign-1": 54,
         "rederivation-30-7": 72,
         "redesign-adoption-6-8": 68
@@ -4641,6 +4890,7 @@
         "21": 38,
         "22": 38,
         "dob-courier-10-8": 38,
+        "g1-never-rises-10-8": 38,
         "post-r19-redesign-1": 58,
         "rederivation-30-7": 36,
         "redesign-adoption-6-8": 37
@@ -4660,6 +4910,7 @@
         "21": 93,
         "22": 88,
         "dob-courier-10-8": 88,
+        "g1-never-rises-10-8": 88,
         "post-r19-redesign-1": 72,
         "rederivation-30-7": 94,
         "redesign-adoption-6-8": 94
@@ -4679,6 +4930,7 @@
         "21": 107,
         "22": 109,
         "dob-courier-10-8": 109,
+        "g1-never-rises-10-8": 109,
         "post-r19-redesign-1": 161,
         "rederivation-30-7": 112,
         "redesign-adoption-6-8": 108
@@ -4698,6 +4950,7 @@
         "21": 108,
         "22": 108,
         "dob-courier-10-8": 108,
+        "g1-never-rises-10-8": 108,
         "post-r19-redesign-1": 86,
         "rederivation-30-7": 103,
         "redesign-adoption-6-8": 108
@@ -4717,6 +4970,7 @@
         "21": 73,
         "22": 74,
         "dob-courier-10-8": 74,
+        "g1-never-rises-10-8": 74,
         "post-r19-redesign-1": 68,
         "rederivation-30-7": 84,
         "redesign-adoption-6-8": 73
@@ -4736,6 +4990,7 @@
         "21": 121,
         "22": 120,
         "dob-courier-10-8": 120,
+        "g1-never-rises-10-8": 120,
         "post-r19-redesign-1": 113,
         "rederivation-30-7": 129,
         "redesign-adoption-6-8": 121
@@ -4755,6 +5010,7 @@
         "21": 59,
         "22": 58,
         "dob-courier-10-8": 58,
+        "g1-never-rises-10-8": 58,
         "post-r19-redesign-1": 101,
         "rederivation-30-7": 59,
         "redesign-adoption-6-8": 57
@@ -4774,6 +5030,7 @@
         "21": 40,
         "22": 40,
         "dob-courier-10-8": 40,
+        "g1-never-rises-10-8": 40,
         "post-r19-redesign-1": 45,
         "rederivation-30-7": 37,
         "redesign-adoption-6-8": 40
@@ -4793,6 +5050,7 @@
         "21": 39,
         "22": 40,
         "dob-courier-10-8": 40,
+        "g1-never-rises-10-8": 40,
         "post-r19-redesign-1": 71,
         "rederivation-30-7": 41,
         "redesign-adoption-6-8": 40
@@ -4812,6 +5070,7 @@
         "21": 25,
         "22": 24,
         "dob-courier-10-8": 24,
+        "g1-never-rises-10-8": 24,
         "post-r19-redesign-1": 35,
         "rederivation-30-7": 26,
         "redesign-adoption-6-8": 25
@@ -4831,6 +5090,7 @@
         "21": 118,
         "22": 119,
         "dob-courier-10-8": 119,
+        "g1-never-rises-10-8": 119,
         "post-r19-redesign-1": 84,
         "rederivation-30-7": 127,
         "redesign-adoption-6-8": 122
@@ -4850,6 +5110,7 @@
         "21": 126,
         "22": 129,
         "dob-courier-10-8": 129,
+        "g1-never-rises-10-8": 129,
         "post-r19-redesign-1": 64,
         "rederivation-30-7": 112,
         "redesign-adoption-6-8": 123
@@ -4869,6 +5130,7 @@
         "21": 142,
         "22": 140,
         "dob-courier-10-8": 140,
+        "g1-never-rises-10-8": 140,
         "post-r19-redesign-1": 197,
         "rederivation-30-7": 139,
         "redesign-adoption-6-8": 145
@@ -4888,6 +5150,7 @@
         "21": 143,
         "22": 143,
         "dob-courier-10-8": 143,
+        "g1-never-rises-10-8": 143,
         "post-r19-redesign-1": 141,
         "rederivation-30-7": 137,
         "redesign-adoption-6-8": 141
@@ -4907,6 +5170,7 @@
         "21": 77,
         "22": 78,
         "dob-courier-10-8": 78,
+        "g1-never-rises-10-8": 78,
         "post-r19-redesign-1": 128,
         "rederivation-30-7": 81,
         "redesign-adoption-6-8": 76
@@ -4926,6 +5190,7 @@
         "21": 88,
         "22": 94,
         "dob-courier-10-8": 94,
+        "g1-never-rises-10-8": 94,
         "post-r19-redesign-1": 58,
         "rederivation-30-7": 93,
         "redesign-adoption-6-8": 98
@@ -4945,6 +5210,7 @@
         "21": 40,
         "22": 41,
         "dob-courier-10-8": 41,
+        "g1-never-rises-10-8": 41,
         "post-r19-redesign-1": 50,
         "rederivation-30-7": 42,
         "redesign-adoption-6-8": 40
@@ -4964,6 +5230,7 @@
         "21": 184,
         "22": 187,
         "dob-courier-10-8": 187,
+        "g1-never-rises-10-8": 187,
         "post-r19-redesign-1": 109,
         "rederivation-30-7": 123,
         "redesign-adoption-6-8": 181
@@ -4983,6 +5250,7 @@
         "21": 145,
         "22": 145,
         "dob-courier-10-8": 145,
+        "g1-never-rises-10-8": 145,
         "post-r19-redesign-1": 139,
         "rederivation-30-7": 140,
         "redesign-adoption-6-8": 144
@@ -5002,6 +5270,7 @@
         "21": 18,
         "22": 19,
         "dob-courier-10-8": 19,
+        "g1-never-rises-10-8": 19,
         "post-r19-redesign-1": 21,
         "rederivation-30-7": 18,
         "redesign-adoption-6-8": 17
@@ -5021,6 +5290,7 @@
         "21": 44,
         "22": 44,
         "dob-courier-10-8": 44,
+        "g1-never-rises-10-8": 44,
         "post-r19-redesign-1": 22,
         "rederivation-30-7": 44,
         "redesign-adoption-6-8": 45
@@ -5040,6 +5310,7 @@
         "21": 81,
         "22": 84,
         "dob-courier-10-8": 84,
+        "g1-never-rises-10-8": 84,
         "post-r19-redesign-1": 61,
         "rederivation-30-7": 81,
         "redesign-adoption-6-8": 77
@@ -5059,6 +5330,7 @@
         "21": 75,
         "22": 78,
         "dob-courier-10-8": 78,
+        "g1-never-rises-10-8": 78,
         "post-r19-redesign-1": 75,
         "rederivation-30-7": 83,
         "redesign-adoption-6-8": 89
@@ -5078,6 +5350,7 @@
         "21": 145,
         "22": 137,
         "dob-courier-10-8": 137,
+        "g1-never-rises-10-8": 137,
         "post-r19-redesign-1": 140,
         "rederivation-30-7": 169,
         "redesign-adoption-6-8": 141
@@ -5097,6 +5370,7 @@
         "21": 11,
         "22": 4,
         "dob-courier-10-8": 4,
+        "g1-never-rises-10-8": 4,
         "post-r19-redesign-1": 6,
         "rederivation-30-7": 14,
         "redesign-adoption-6-8": 14
@@ -5116,6 +5390,7 @@
         "21": 131,
         "22": 131,
         "dob-courier-10-8": 131,
+        "g1-never-rises-10-8": 131,
         "post-r19-redesign-1": 184,
         "rederivation-30-7": 129,
         "redesign-adoption-6-8": 132
@@ -5135,6 +5410,7 @@
         "21": 25,
         "22": 25,
         "dob-courier-10-8": 25,
+        "g1-never-rises-10-8": 25,
         "post-r19-redesign-1": 25,
         "rederivation-30-7": 24,
         "redesign-adoption-6-8": 25
@@ -5154,6 +5430,7 @@
         "21": 109,
         "22": 109,
         "dob-courier-10-8": 109,
+        "g1-never-rises-10-8": 109,
         "post-r19-redesign-1": 92,
         "rederivation-30-7": 108,
         "redesign-adoption-6-8": 109
@@ -5173,6 +5450,7 @@
         "21": 140,
         "22": 138,
         "dob-courier-10-8": 138,
+        "g1-never-rises-10-8": 138,
         "post-r19-redesign-1": 187,
         "rederivation-30-7": 146,
         "redesign-adoption-6-8": 141
@@ -5192,6 +5470,7 @@
         "21": 81,
         "22": 85,
         "dob-courier-10-8": 85,
+        "g1-never-rises-10-8": 85,
         "post-r19-redesign-1": 58,
         "rederivation-30-7": 80,
         "redesign-adoption-6-8": 81
@@ -5211,6 +5490,7 @@
         "21": 78,
         "22": 80,
         "dob-courier-10-8": 80,
+        "g1-never-rises-10-8": 80,
         "post-r19-redesign-1": 37,
         "rederivation-30-7": 76,
         "redesign-adoption-6-8": 78
@@ -5230,6 +5510,7 @@
         "21": 93,
         "22": 88,
         "dob-courier-10-8": 88,
+        "g1-never-rises-10-8": 88,
         "post-r19-redesign-1": 77,
         "rederivation-30-7": 102,
         "redesign-adoption-6-8": 96
@@ -5249,6 +5530,7 @@
         "21": 22,
         "22": 26,
         "dob-courier-10-8": 26,
+        "g1-never-rises-10-8": 26,
         "post-r19-redesign-1": 10,
         "rederivation-30-7": 22,
         "redesign-adoption-6-8": 22
@@ -5268,6 +5550,7 @@
         "21": 70,
         "22": 72,
         "dob-courier-10-8": 72,
+        "g1-never-rises-10-8": 72,
         "post-r19-redesign-1": 150,
         "rederivation-30-7": 74,
         "redesign-adoption-6-8": 78
@@ -5287,6 +5570,7 @@
         "21": 35,
         "22": 38,
         "dob-courier-10-8": 38,
+        "g1-never-rises-10-8": 38,
         "post-r19-redesign-1": 32,
         "rederivation-30-7": 29,
         "redesign-adoption-6-8": 31
@@ -5306,6 +5590,7 @@
         "21": 161,
         "22": 163,
         "dob-courier-10-8": 163,
+        "g1-never-rises-10-8": 163,
         "post-r19-redesign-1": 179,
         "rederivation-30-7": 225,
         "redesign-adoption-6-8": 159
@@ -5325,6 +5610,7 @@
         "21": 79,
         "22": 69,
         "dob-courier-10-8": 69,
+        "g1-never-rises-10-8": 69,
         "post-r19-redesign-1": 58,
         "rederivation-30-7": 83,
         "redesign-adoption-6-8": 78
@@ -5344,6 +5630,7 @@
         "21": 190,
         "22": 190,
         "dob-courier-10-8": 190,
+        "g1-never-rises-10-8": 190,
         "post-r19-redesign-1": 129,
         "rederivation-30-7": 166,
         "redesign-adoption-6-8": 176
@@ -5363,6 +5650,7 @@
         "21": 130,
         "22": 129,
         "dob-courier-10-8": 129,
+        "g1-never-rises-10-8": 129,
         "post-r19-redesign-1": 200,
         "rederivation-30-7": 142,
         "redesign-adoption-6-8": 131
@@ -5382,6 +5670,7 @@
         "21": 76,
         "22": 75,
         "dob-courier-10-8": 75,
+        "g1-never-rises-10-8": 75,
         "post-r19-redesign-1": 40,
         "rederivation-30-7": 77,
         "redesign-adoption-6-8": 77
@@ -5401,6 +5690,7 @@
         "21": 53,
         "22": 53,
         "dob-courier-10-8": 53,
+        "g1-never-rises-10-8": 53,
         "post-r19-redesign-1": 34,
         "rederivation-30-7": 51,
         "redesign-adoption-6-8": 54
@@ -5420,6 +5710,7 @@
         "21": 158,
         "22": 161,
         "dob-courier-10-8": 161,
+        "g1-never-rises-10-8": 161,
         "post-r19-redesign-1": 135,
         "rederivation-30-7": 176,
         "redesign-adoption-6-8": 160
@@ -5439,6 +5730,7 @@
         "21": 68,
         "22": 69,
         "dob-courier-10-8": 69,
+        "g1-never-rises-10-8": 69,
         "post-r19-redesign-1": 126,
         "rederivation-30-7": 72,
         "redesign-adoption-6-8": 67
@@ -5458,6 +5750,7 @@
         "21": 56,
         "22": 55,
         "dob-courier-10-8": 55,
+        "g1-never-rises-10-8": 55,
         "post-r19-redesign-1": 61,
         "rederivation-30-7": 52,
         "redesign-adoption-6-8": 55
@@ -5477,6 +5770,7 @@
         "21": 19,
         "22": 18,
         "dob-courier-10-8": 18,
+        "g1-never-rises-10-8": 18,
         "post-r19-redesign-1": 49,
         "rederivation-30-7": 20,
         "redesign-adoption-6-8": 20
@@ -5496,6 +5790,7 @@
         "21": 134,
         "22": 135,
         "dob-courier-10-8": 135,
+        "g1-never-rises-10-8": 135,
         "post-r19-redesign-1": 122,
         "rederivation-30-7": 135,
         "redesign-adoption-6-8": 134
@@ -5515,6 +5810,7 @@
         "21": 21,
         "22": 23,
         "dob-courier-10-8": 24,
+        "g1-never-rises-10-8": 23,
         "post-r19-redesign-1": 36,
         "rederivation-30-7": 21,
         "redesign-adoption-6-8": 21
@@ -5534,6 +5830,7 @@
         "21": 12,
         "22": 10,
         "dob-courier-10-8": 10,
+        "g1-never-rises-10-8": 10,
         "post-r19-redesign-1": 8,
         "rederivation-30-7": 12,
         "redesign-adoption-6-8": 12
@@ -5553,6 +5850,7 @@
         "21": 48,
         "22": 48,
         "dob-courier-10-8": 48,
+        "g1-never-rises-10-8": 48,
         "post-r19-redesign-1": 69,
         "rederivation-30-7": 42,
         "redesign-adoption-6-8": 42
@@ -5572,6 +5870,7 @@
         "21": 108,
         "22": 110,
         "dob-courier-10-8": 110,
+        "g1-never-rises-10-8": 110,
         "post-r19-redesign-1": 153,
         "rederivation-30-7": 105,
         "redesign-adoption-6-8": 107
@@ -5591,6 +5890,7 @@
         "21": 146,
         "22": 149,
         "dob-courier-10-8": 149,
+        "g1-never-rises-10-8": 149,
         "post-r19-redesign-1": 211,
         "rederivation-30-7": 224,
         "redesign-adoption-6-8": 147
@@ -5610,6 +5910,7 @@
         "21": 26,
         "22": 25,
         "dob-courier-10-8": 25,
+        "g1-never-rises-10-8": 25,
         "post-r19-redesign-1": 22,
         "rederivation-30-7": 25,
         "redesign-adoption-6-8": 26
@@ -5629,6 +5930,7 @@
         "21": 61,
         "22": 52,
         "dob-courier-10-8": 52,
+        "g1-never-rises-10-8": 52,
         "post-r19-redesign-1": 49,
         "rederivation-30-7": 58,
         "redesign-adoption-6-8": 56
@@ -5648,6 +5950,7 @@
         "21": 165,
         "22": 164,
         "dob-courier-10-8": 164,
+        "g1-never-rises-10-8": 164,
         "post-r19-redesign-1": 136,
         "rederivation-30-7": 154,
         "redesign-adoption-6-8": 165
@@ -5667,6 +5970,7 @@
         "21": 127,
         "22": 127,
         "dob-courier-10-8": 127,
+        "g1-never-rises-10-8": 127,
         "post-r19-redesign-1": 180,
         "rederivation-30-7": 127,
         "redesign-adoption-6-8": 128
@@ -5686,6 +5990,7 @@
         "21": 146,
         "22": 146,
         "dob-courier-10-8": 146,
+        "g1-never-rises-10-8": 146,
         "post-r19-redesign-1": 202,
         "rederivation-30-7": 141,
         "redesign-adoption-6-8": 147
@@ -5705,6 +6010,7 @@
         "21": 16,
         "22": 14,
         "dob-courier-10-8": 14,
+        "g1-never-rises-10-8": 14,
         "post-r19-redesign-1": 10,
         "rederivation-30-7": 16,
         "redesign-adoption-6-8": 14
@@ -5724,6 +6030,7 @@
         "21": 128,
         "22": 128,
         "dob-courier-10-8": 128,
+        "g1-never-rises-10-8": 128,
         "post-r19-redesign-1": 182,
         "rederivation-30-7": 128,
         "redesign-adoption-6-8": 129
@@ -5743,6 +6050,7 @@
         "21": 137,
         "22": 136,
         "dob-courier-10-8": 136,
+        "g1-never-rises-10-8": 136,
         "post-r19-redesign-1": 102,
         "rederivation-30-7": 148,
         "redesign-adoption-6-8": 136
@@ -5762,6 +6070,7 @@
         "21": 29,
         "22": 29,
         "dob-courier-10-8": 29,
+        "g1-never-rises-10-8": 29,
         "post-r19-redesign-1": 39,
         "rederivation-30-7": 28,
         "redesign-adoption-6-8": 29
@@ -5781,6 +6090,7 @@
         "21": 67,
         "22": 68,
         "dob-courier-10-8": 68,
+        "g1-never-rises-10-8": 68,
         "post-r19-redesign-1": 73,
         "rederivation-30-7": 40,
         "redesign-adoption-6-8": 67
@@ -5800,6 +6110,7 @@
         "21": 121,
         "22": 119,
         "dob-courier-10-8": 119,
+        "g1-never-rises-10-8": 119,
         "post-r19-redesign-1": 115,
         "rederivation-30-7": 140,
         "redesign-adoption-6-8": 119
@@ -5819,6 +6130,7 @@
         "21": 10,
         "22": 10,
         "dob-courier-10-8": 10,
+        "g1-never-rises-10-8": 10,
         "post-r19-redesign-1": 9,
         "rederivation-30-7": 10,
         "redesign-adoption-6-8": 11
@@ -5838,6 +6150,7 @@
         "21": 168,
         "22": 168,
         "dob-courier-10-8": 168,
+        "g1-never-rises-10-8": 168,
         "post-r19-redesign-1": 153,
         "rederivation-30-7": 168,
         "redesign-adoption-6-8": 169
@@ -5857,6 +6170,7 @@
         "21": 13,
         "22": 15,
         "dob-courier-10-8": 15,
+        "g1-never-rises-10-8": 15,
         "post-r19-redesign-1": 17,
         "rederivation-30-7": 13,
         "redesign-adoption-6-8": 13
@@ -5876,6 +6190,7 @@
         "21": 204,
         "22": 205,
         "dob-courier-10-8": 205,
+        "g1-never-rises-10-8": 205,
         "post-r19-redesign-1": 156,
         "rederivation-30-7": 199,
         "redesign-adoption-6-8": 204
@@ -5895,6 +6210,7 @@
         "21": 116,
         "22": 116,
         "dob-courier-10-8": 116,
+        "g1-never-rises-10-8": 116,
         "post-r19-redesign-1": 172,
         "rederivation-30-7": 122,
         "redesign-adoption-6-8": 117
@@ -5914,6 +6230,7 @@
         "21": 3,
         "22": 3,
         "dob-courier-10-8": 3,
+        "g1-never-rises-10-8": 3,
         "post-r19-redesign-1": 17,
         "rederivation-30-7": 3,
         "redesign-adoption-6-8": 3
@@ -5933,6 +6250,7 @@
         "21": 113,
         "22": 113,
         "dob-courier-10-8": 113,
+        "g1-never-rises-10-8": 113,
         "post-r19-redesign-1": 163,
         "rederivation-30-7": 118,
         "redesign-adoption-6-8": 113
@@ -5952,6 +6270,7 @@
         "21": 51,
         "22": 49,
         "dob-courier-10-8": 49,
+        "g1-never-rises-10-8": 49,
         "post-r19-redesign-1": 85,
         "rederivation-30-7": 50,
         "redesign-adoption-6-8": 49
@@ -5971,6 +6290,7 @@
         "21": 10,
         "22": 10,
         "dob-courier-10-8": 10,
+        "g1-never-rises-10-8": 10,
         "post-r19-redesign-1": 16,
         "rederivation-30-7": 12,
         "redesign-adoption-6-8": 12
@@ -5990,6 +6310,7 @@
         "21": 171,
         "22": 175,
         "dob-courier-10-8": 175,
+        "g1-never-rises-10-8": 175,
         "post-r19-redesign-1": 95,
         "rederivation-30-7": 127,
         "redesign-adoption-6-8": 167
@@ -6009,6 +6330,7 @@
         "21": 14,
         "22": 11,
         "dob-courier-10-8": 11,
+        "g1-never-rises-10-8": 11,
         "post-r19-redesign-1": 44,
         "rederivation-30-7": 15,
         "redesign-adoption-6-8": 16
@@ -6028,6 +6350,7 @@
         "21": 45,
         "22": 45,
         "dob-courier-10-8": 45,
+        "g1-never-rises-10-8": 45,
         "post-r19-redesign-1": 43,
         "rederivation-30-7": 39,
         "redesign-adoption-6-8": 45
@@ -6047,6 +6370,7 @@
         "21": 5,
         "22": 4,
         "dob-courier-10-8": 4,
+        "g1-never-rises-10-8": 4,
         "post-r19-redesign-1": 4,
         "rederivation-30-7": 6,
         "redesign-adoption-6-8": 6
@@ -6066,6 +6390,7 @@
         "21": 77,
         "22": 75,
         "dob-courier-10-8": 75,
+        "g1-never-rises-10-8": 75,
         "post-r19-redesign-1": 88,
         "rederivation-30-7": 75,
         "redesign-adoption-6-8": 76
@@ -6085,6 +6410,7 @@
         "21": 114,
         "22": 121,
         "dob-courier-10-8": 121,
+        "g1-never-rises-10-8": 121,
         "post-r19-redesign-1": 26,
         "rederivation-30-7": 112,
         "redesign-adoption-6-8": 112
@@ -6104,6 +6430,7 @@
         "21": 152,
         "22": 131,
         "dob-courier-10-8": 131,
+        "g1-never-rises-10-8": 131,
         "post-r19-redesign-1": 137,
         "rederivation-30-7": 156,
         "redesign-adoption-6-8": 153
@@ -6123,6 +6450,7 @@
         "21": 115,
         "22": 115,
         "dob-courier-10-8": 115,
+        "g1-never-rises-10-8": 114,
         "post-r19-redesign-1": 157,
         "rederivation-30-7": 113,
         "redesign-adoption-6-8": 115
@@ -6142,6 +6470,7 @@
         "21": 67,
         "22": 67,
         "dob-courier-10-8": 67,
+        "g1-never-rises-10-8": 67,
         "post-r19-redesign-1": 55,
         "rederivation-30-7": 69,
         "redesign-adoption-6-8": 66
@@ -6161,6 +6490,7 @@
         "21": 82,
         "22": 79,
         "dob-courier-10-8": 79,
+        "g1-never-rises-10-8": 79,
         "post-r19-redesign-1": 41,
         "rederivation-30-7": 79,
         "redesign-adoption-6-8": 82
@@ -6180,6 +6510,7 @@
         "21": 32,
         "22": 31,
         "dob-courier-10-8": 31,
+        "g1-never-rises-10-8": 31,
         "post-r19-redesign-1": 56,
         "rederivation-30-7": 32,
         "redesign-adoption-6-8": 33
@@ -6199,6 +6530,7 @@
         "21": 159,
         "22": 162,
         "dob-courier-10-8": 162,
+        "g1-never-rises-10-8": 162,
         "post-r19-redesign-1": 120,
         "rederivation-30-7": 165,
         "redesign-adoption-6-8": 168
@@ -6218,6 +6550,7 @@
         "21": 27,
         "22": 27,
         "dob-courier-10-8": 27,
+        "g1-never-rises-10-8": 27,
         "post-r19-redesign-1": 14,
         "rederivation-30-7": 24,
         "redesign-adoption-6-8": 25
@@ -6237,6 +6570,7 @@
         "21": 108,
         "22": 108,
         "dob-courier-10-8": 108,
+        "g1-never-rises-10-8": 108,
         "post-r19-redesign-1": 101,
         "rederivation-30-7": 122,
         "redesign-adoption-6-8": 111
@@ -6256,6 +6590,7 @@
         "21": 65,
         "22": 66,
         "dob-courier-10-8": 66,
+        "g1-never-rises-10-8": 66,
         "post-r19-redesign-1": 56,
         "rederivation-30-7": 75,
         "redesign-adoption-6-8": 64
@@ -6275,6 +6610,7 @@
         "21": 72,
         "22": 73,
         "dob-courier-10-8": 73,
+        "g1-never-rises-10-8": 73,
         "post-r19-redesign-1": 38,
         "rederivation-30-7": 71,
         "redesign-adoption-6-8": 72
@@ -6294,6 +6630,7 @@
         "21": 62,
         "22": 62,
         "dob-courier-10-8": 62,
+        "g1-never-rises-10-8": 62,
         "post-r19-redesign-1": 91,
         "rederivation-30-7": 76,
         "redesign-adoption-6-8": 61
@@ -6313,6 +6650,7 @@
         "21": 28,
         "22": 28,
         "dob-courier-10-8": 28,
+        "g1-never-rises-10-8": 28,
         "post-r19-redesign-1": 32,
         "rederivation-30-7": 29,
         "redesign-adoption-6-8": 29
@@ -6332,6 +6670,7 @@
         "21": 143,
         "22": 127,
         "dob-courier-10-8": 127,
+        "g1-never-rises-10-8": 127,
         "post-r19-redesign-1": 176,
         "rederivation-30-7": 139,
         "redesign-adoption-6-8": 133
@@ -6351,6 +6690,7 @@
         "21": 86,
         "22": 86,
         "dob-courier-10-8": 86,
+        "g1-never-rises-10-8": 86,
         "post-r19-redesign-1": 73,
         "rederivation-30-7": 85,
         "redesign-adoption-6-8": 86
@@ -6370,6 +6710,7 @@
         "21": 24,
         "22": 21,
         "dob-courier-10-8": 21,
+        "g1-never-rises-10-8": 21,
         "post-r19-redesign-1": 27,
         "rederivation-30-7": 25,
         "redesign-adoption-6-8": 26
@@ -6389,6 +6730,7 @@
         "21": 47,
         "22": 52,
         "dob-courier-10-8": 52,
+        "g1-never-rises-10-8": 52,
         "post-r19-redesign-1": 77,
         "rederivation-30-7": 45,
         "redesign-adoption-6-8": 47
@@ -6408,6 +6750,7 @@
         "21": 48,
         "22": 48,
         "dob-courier-10-8": 48,
+        "g1-never-rises-10-8": 48,
         "post-r19-redesign-1": 109,
         "rederivation-30-7": 45,
         "redesign-adoption-6-8": 47
@@ -6427,6 +6770,7 @@
         "21": 39,
         "22": 41,
         "dob-courier-10-8": 41,
+        "g1-never-rises-10-8": 41,
         "post-r19-redesign-1": 24,
         "rederivation-30-7": 34,
         "redesign-adoption-6-8": 34
@@ -6446,6 +6790,7 @@
         "21": 128,
         "22": 127,
         "dob-courier-10-8": 127,
+        "g1-never-rises-10-8": 127,
         "post-r19-redesign-1": 120,
         "rederivation-30-7": 134,
         "redesign-adoption-6-8": 128
@@ -6465,6 +6810,7 @@
         "21": 134,
         "22": 135,
         "dob-courier-10-8": 135,
+        "g1-never-rises-10-8": 135,
         "post-r19-redesign-1": 189,
         "rederivation-30-7": 130,
         "redesign-adoption-6-8": 135
@@ -6484,6 +6830,7 @@
         "21": 84,
         "22": 84,
         "dob-courier-10-8": 84,
+        "g1-never-rises-10-8": 84,
         "post-r19-redesign-1": 132,
         "rederivation-30-7": 87,
         "redesign-adoption-6-8": 92
@@ -6503,6 +6850,7 @@
         "21": 210,
         "22": 210,
         "dob-courier-10-8": 210,
+        "g1-never-rises-10-8": 210,
         "post-r19-redesign-1": 164,
         "rederivation-30-7": 206,
         "redesign-adoption-6-8": 210
@@ -6522,6 +6870,7 @@
         "21": 218,
         "22": 218,
         "dob-courier-10-8": 218,
+        "g1-never-rises-10-8": 218,
         "post-r19-redesign-1": 168,
         "rederivation-30-7": 211,
         "redesign-adoption-6-8": 218
@@ -6541,6 +6890,7 @@
         "21": 180,
         "22": 182,
         "dob-courier-10-8": 182,
+        "g1-never-rises-10-8": 181,
         "post-r19-redesign-1": 91,
         "rederivation-30-7": 147,
         "redesign-adoption-6-8": 180
@@ -6560,6 +6910,7 @@
         "21": 55,
         "22": 62,
         "dob-courier-10-8": 62,
+        "g1-never-rises-10-8": 62,
         "post-r19-redesign-1": 48,
         "rederivation-30-7": 56,
         "redesign-adoption-6-8": 58
@@ -6579,6 +6930,7 @@
         "21": 112,
         "22": 112,
         "dob-courier-10-8": 112,
+        "g1-never-rises-10-8": 112,
         "post-r19-redesign-1": 158,
         "rederivation-30-7": 109,
         "redesign-adoption-6-8": 111
@@ -6598,6 +6950,7 @@
         "21": 42,
         "22": 42,
         "dob-courier-10-8": 42,
+        "g1-never-rises-10-8": 42,
         "post-r19-redesign-1": 53,
         "rederivation-30-7": 44,
         "redesign-adoption-6-8": 42
@@ -6617,6 +6970,7 @@
         "21": 18,
         "22": 17,
         "dob-courier-10-8": 17,
+        "g1-never-rises-10-8": 17,
         "post-r19-redesign-1": 16,
         "rederivation-30-7": 21,
         "redesign-adoption-6-8": 21
@@ -6636,6 +6990,7 @@
         "21": 2,
         "22": 2,
         "dob-courier-10-8": 2,
+        "g1-never-rises-10-8": 2,
         "post-r19-redesign-1": 10,
         "rederivation-30-7": 2,
         "redesign-adoption-6-8": 2
@@ -6655,6 +7010,7 @@
         "21": 15,
         "22": 16,
         "dob-courier-10-8": 16,
+        "g1-never-rises-10-8": 16,
         "post-r19-redesign-1": 17,
         "rederivation-30-7": 15,
         "redesign-adoption-6-8": 16
@@ -6674,6 +7030,7 @@
         "21": 89,
         "22": 88,
         "dob-courier-10-8": 88,
+        "g1-never-rises-10-8": 88,
         "post-r19-redesign-1": 72,
         "rederivation-30-7": 108,
         "redesign-adoption-6-8": 88
@@ -6693,6 +7050,7 @@
         "21": 96,
         "22": 95,
         "dob-courier-10-8": 95,
+        "g1-never-rises-10-8": 95,
         "post-r19-redesign-1": 94,
         "rederivation-30-7": 105,
         "redesign-adoption-6-8": 102
@@ -6712,6 +7070,7 @@
         "21": 99,
         "22": 97,
         "dob-courier-10-8": 97,
+        "g1-never-rises-10-8": 97,
         "post-r19-redesign-1": 86,
         "rederivation-30-7": 97,
         "redesign-adoption-6-8": 97
@@ -6731,6 +7090,7 @@
         "21": 57,
         "22": 61,
         "dob-courier-10-8": 61,
+        "g1-never-rises-10-8": 61,
         "post-r19-redesign-1": 82,
         "rederivation-30-7": 74,
         "redesign-adoption-6-8": 60
@@ -6750,6 +7110,7 @@
         "21": 39,
         "22": 39,
         "dob-courier-10-8": 39,
+        "g1-never-rises-10-8": 39,
         "post-r19-redesign-1": 46,
         "rederivation-30-7": 39,
         "redesign-adoption-6-8": 39
@@ -6769,6 +7130,7 @@
         "21": 89,
         "22": 90,
         "dob-courier-10-8": 90,
+        "g1-never-rises-10-8": 90,
         "post-r19-redesign-1": 74,
         "rederivation-30-7": 92,
         "redesign-adoption-6-8": 87
@@ -6788,6 +7150,7 @@
         "21": 57,
         "22": 61,
         "dob-courier-10-8": 61,
+        "g1-never-rises-10-8": 61,
         "post-r19-redesign-1": 34,
         "rederivation-30-7": 49,
         "redesign-adoption-6-8": 52
@@ -6807,6 +7170,7 @@
         "21": 46,
         "22": 44,
         "dob-courier-10-8": 44,
+        "g1-never-rises-10-8": 44,
         "post-r19-redesign-1": 51,
         "rederivation-30-7": 45,
         "redesign-adoption-6-8": 46
@@ -6826,6 +7190,7 @@
         "21": 175,
         "22": 174,
         "dob-courier-10-8": 174,
+        "g1-never-rises-10-8": 174,
         "post-r19-redesign-1": 151,
         "rederivation-30-7": 163,
         "redesign-adoption-6-8": 175
@@ -6845,6 +7210,7 @@
         "21": 23,
         "22": 23,
         "dob-courier-10-8": 23,
+        "g1-never-rises-10-8": 23,
         "post-r19-redesign-1": 24,
         "rederivation-30-7": 30,
         "redesign-adoption-6-8": 27
@@ -6864,6 +7230,7 @@
         "21": 17,
         "22": 18,
         "dob-courier-10-8": 18,
+        "g1-never-rises-10-8": 18,
         "post-r19-redesign-1": 22,
         "rederivation-30-7": 16,
         "redesign-adoption-6-8": 17
@@ -6883,6 +7250,7 @@
         "21": 37,
         "22": 36,
         "dob-courier-10-8": 36,
+        "g1-never-rises-10-8": 36,
         "post-r19-redesign-1": 30,
         "rederivation-30-7": 37,
         "redesign-adoption-6-8": 37
@@ -6902,6 +7270,7 @@
         "21": 113,
         "22": 110,
         "dob-courier-10-8": 110,
+        "g1-never-rises-10-8": 110,
         "post-r19-redesign-1": 89,
         "rederivation-30-7": 102,
         "redesign-adoption-6-8": 107
@@ -6921,6 +7290,7 @@
         "21": 140,
         "22": 142,
         "dob-courier-10-8": 142,
+        "g1-never-rises-10-8": 142,
         "post-r19-redesign-1": 191,
         "rederivation-30-7": 135,
         "redesign-adoption-6-8": 139
@@ -6940,6 +7310,7 @@
         "21": 98,
         "22": 90,
         "dob-courier-10-8": 90,
+        "g1-never-rises-10-8": 90,
         "post-r19-redesign-1": 56,
         "rederivation-30-7": 95,
         "redesign-adoption-6-8": 99
@@ -6959,6 +7330,7 @@
         "21": 75,
         "22": 77,
         "dob-courier-10-8": 77,
+        "g1-never-rises-10-8": 77,
         "post-r19-redesign-1": 62,
         "rederivation-30-7": 80,
         "redesign-adoption-6-8": 74
@@ -6978,6 +7350,7 @@
         "21": 172,
         "22": 176,
         "dob-courier-10-8": 176,
+        "g1-never-rises-10-8": 176,
         "post-r19-redesign-1": 167,
         "rederivation-30-7": 121,
         "redesign-adoption-6-8": 169
@@ -6997,6 +7370,7 @@
         "21": 167,
         "22": 172,
         "dob-courier-10-8": 172,
+        "g1-never-rises-10-8": 172,
         "post-r19-redesign-1": 126,
         "rederivation-30-7": 174,
         "redesign-adoption-6-8": 165
@@ -7016,6 +7390,7 @@
         "21": 102,
         "22": 101,
         "dob-courier-10-8": 101,
+        "g1-never-rises-10-8": 101,
         "post-r19-redesign-1": 48,
         "rederivation-30-7": 88,
         "redesign-adoption-6-8": 102
@@ -7035,6 +7410,7 @@
         "21": 63,
         "22": 55,
         "dob-courier-10-8": 55,
+        "g1-never-rises-10-8": 55,
         "post-r19-redesign-1": 120,
         "rederivation-30-7": 65,
         "redesign-adoption-6-8": 64
@@ -7054,6 +7430,7 @@
         "21": 15,
         "22": 14,
         "dob-courier-10-8": 14,
+        "g1-never-rises-10-8": 14,
         "post-r19-redesign-1": 10,
         "rederivation-30-7": 13,
         "redesign-adoption-6-8": 13
@@ -7073,6 +7450,7 @@
         "21": 54,
         "22": 50,
         "dob-courier-10-8": 50,
+        "g1-never-rises-10-8": 50,
         "post-r19-redesign-1": 26,
         "rederivation-30-7": 47,
         "redesign-adoption-6-8": 53
@@ -7092,6 +7470,7 @@
         "21": 39,
         "22": 40,
         "dob-courier-10-8": 40,
+        "g1-never-rises-10-8": 40,
         "post-r19-redesign-1": 44,
         "rederivation-30-7": 40,
         "redesign-adoption-6-8": 39
@@ -7111,6 +7490,7 @@
         "21": 58,
         "22": 59,
         "dob-courier-10-8": 59,
+        "g1-never-rises-10-8": 59,
         "post-r19-redesign-1": 23,
         "rederivation-30-7": 59,
         "redesign-adoption-6-8": 59
@@ -7130,6 +7510,7 @@
         "21": 118,
         "22": 118,
         "dob-courier-10-8": 118,
+        "g1-never-rises-10-8": 118,
         "post-r19-redesign-1": 94,
         "rederivation-30-7": 112,
         "redesign-adoption-6-8": 118
@@ -7149,6 +7530,7 @@
         "21": 120,
         "22": 117,
         "dob-courier-10-8": 117,
+        "g1-never-rises-10-8": 117,
         "post-r19-redesign-1": 42,
         "rederivation-30-7": 113,
         "redesign-adoption-6-8": 119
@@ -7168,6 +7550,7 @@
         "21": 139,
         "22": 139,
         "dob-courier-10-8": 139,
+        "g1-never-rises-10-8": 139,
         "post-r19-redesign-1": 188,
         "rederivation-30-7": 134,
         "redesign-adoption-6-8": 142
@@ -7187,6 +7570,7 @@
         "21": 15,
         "22": 16,
         "dob-courier-10-8": 16,
+        "g1-never-rises-10-8": 16,
         "post-r19-redesign-1": 45,
         "rederivation-30-7": 15,
         "redesign-adoption-6-8": 15
@@ -7206,6 +7590,7 @@
         "21": 78,
         "22": 78,
         "dob-courier-10-8": 78,
+        "g1-never-rises-10-8": 78,
         "post-r19-redesign-1": 89,
         "rederivation-30-7": 77,
         "redesign-adoption-6-8": 78
@@ -7225,6 +7610,7 @@
         "21": 37,
         "22": 37,
         "dob-courier-10-8": 37,
+        "g1-never-rises-10-8": 37,
         "post-r19-redesign-1": 20,
         "rederivation-30-7": 31,
         "redesign-adoption-6-8": 30
@@ -7244,6 +7630,7 @@
         "21": 21,
         "22": 24,
         "dob-courier-10-8": 24,
+        "g1-never-rises-10-8": 24,
         "post-r19-redesign-1": 11,
         "rederivation-30-7": 26,
         "redesign-adoption-6-8": 28
@@ -7263,6 +7650,7 @@
         "21": 34,
         "22": 32,
         "dob-courier-10-8": 32,
+        "g1-never-rises-10-8": 32,
         "post-r19-redesign-1": 23,
         "rederivation-30-7": 27,
         "redesign-adoption-6-8": 35
@@ -7282,6 +7670,7 @@
         "21": 161,
         "22": 161,
         "dob-courier-10-8": 161,
+        "g1-never-rises-10-8": 161,
         "post-r19-redesign-1": 159,
         "rederivation-30-7": 175,
         "redesign-adoption-6-8": 161
@@ -7301,6 +7690,7 @@
         "21": 10,
         "22": 12,
         "dob-courier-10-8": 12,
+        "g1-never-rises-10-8": 12,
         "post-r19-redesign-1": 6,
         "rederivation-30-7": 9,
         "redesign-adoption-6-8": 9
@@ -7320,6 +7710,7 @@
         "21": 30,
         "22": 30,
         "dob-courier-10-8": 30,
+        "g1-never-rises-10-8": 30,
         "post-r19-redesign-1": 28,
         "rederivation-30-7": 34,
         "redesign-adoption-6-8": 33
@@ -7339,6 +7730,7 @@
         "21": 20,
         "22": 21,
         "dob-courier-10-8": 21,
+        "g1-never-rises-10-8": 21,
         "post-r19-redesign-1": 23,
         "rederivation-30-7": 20,
         "redesign-adoption-6-8": 21
@@ -7358,6 +7750,7 @@
         "21": 40,
         "22": 41,
         "dob-courier-10-8": 41,
+        "g1-never-rises-10-8": 41,
         "post-r19-redesign-1": 89,
         "rederivation-30-7": 38,
         "redesign-adoption-6-8": 40
@@ -7377,6 +7770,7 @@
         "21": 70,
         "22": 72,
         "dob-courier-10-8": 72,
+        "g1-never-rises-10-8": 72,
         "post-r19-redesign-1": 47,
         "rederivation-30-7": 64,
         "redesign-adoption-6-8": 68
@@ -7396,6 +7790,7 @@
         "21": 79,
         "22": 79,
         "dob-courier-10-8": 79,
+        "g1-never-rises-10-8": 79,
         "post-r19-redesign-1": 94,
         "rederivation-30-7": 80,
         "redesign-adoption-6-8": 79
@@ -7415,6 +7810,7 @@
         "21": 6,
         "22": 6,
         "dob-courier-10-8": 6,
+        "g1-never-rises-10-8": 6,
         "post-r19-redesign-1": 6,
         "rederivation-30-7": 6,
         "redesign-adoption-6-8": 7
@@ -7434,6 +7830,7 @@
         "21": 103,
         "22": 96,
         "dob-courier-10-8": 96,
+        "g1-never-rises-10-8": 96,
         "post-r19-redesign-1": 70,
         "rederivation-30-7": 101,
         "redesign-adoption-6-8": 105
@@ -7453,6 +7850,7 @@
         "21": 74,
         "22": 79,
         "dob-courier-10-8": 79,
+        "g1-never-rises-10-8": 79,
         "post-r19-redesign-1": 52,
         "rederivation-30-7": 68,
         "redesign-adoption-6-8": 69
@@ -7472,6 +7870,7 @@
         "21": 6,
         "22": 6,
         "dob-courier-10-8": 6,
+        "g1-never-rises-10-8": 6,
         "post-r19-redesign-1": 7,
         "rederivation-30-7": 6,
         "redesign-adoption-6-8": 6
@@ -7491,6 +7890,7 @@
         "21": 25,
         "22": 25,
         "dob-courier-10-8": 25,
+        "g1-never-rises-10-8": 25,
         "post-r19-redesign-1": 52,
         "rederivation-30-7": 23,
         "redesign-adoption-6-8": 23
@@ -7510,6 +7910,7 @@
         "21": 83,
         "22": 82,
         "dob-courier-10-8": 82,
+        "g1-never-rises-10-8": 82,
         "post-r19-redesign-1": 63,
         "rederivation-30-7": 92,
         "redesign-adoption-6-8": 85
@@ -7529,6 +7930,7 @@
         "21": 27,
         "22": 29,
         "dob-courier-10-8": 29,
+        "g1-never-rises-10-8": 29,
         "post-r19-redesign-1": 34,
         "rederivation-30-7": 30,
         "redesign-adoption-6-8": 28
@@ -7548,6 +7950,7 @@
         "21": 52,
         "22": 50,
         "dob-courier-10-8": 50,
+        "g1-never-rises-10-8": 50,
         "post-r19-redesign-1": 79,
         "rederivation-30-7": 46,
         "redesign-adoption-6-8": 50
@@ -7567,6 +7970,7 @@
         "21": 50,
         "22": 49,
         "dob-courier-10-8": 49,
+        "g1-never-rises-10-8": 49,
         "post-r19-redesign-1": 59,
         "rederivation-30-7": 49,
         "redesign-adoption-6-8": 49
@@ -7586,6 +7990,7 @@
         "21": 135,
         "22": 134,
         "dob-courier-10-8": 134,
+        "g1-never-rises-10-8": 134,
         "post-r19-redesign-1": 134,
         "rederivation-30-7": 147,
         "redesign-adoption-6-8": 135
@@ -7605,6 +8010,7 @@
         "21": 82,
         "22": 89,
         "dob-courier-10-8": 89,
+        "g1-never-rises-10-8": 89,
         "post-r19-redesign-1": 80,
         "rederivation-30-7": 91,
         "redesign-adoption-6-8": 86
@@ -7624,6 +8030,7 @@
         "21": 17,
         "22": 18,
         "dob-courier-10-8": 18,
+        "g1-never-rises-10-8": 18,
         "post-r19-redesign-1": 12,
         "rederivation-30-7": 18,
         "redesign-adoption-6-8": 17
@@ -7643,6 +8050,7 @@
         "21": 33,
         "22": 33,
         "dob-courier-10-8": 33,
+        "g1-never-rises-10-8": 33,
         "post-r19-redesign-1": 12,
         "rederivation-30-7": 33,
         "redesign-adoption-6-8": 32
@@ -7662,6 +8070,7 @@
         "21": 124,
         "22": 122,
         "dob-courier-10-8": 122,
+        "g1-never-rises-10-8": 124,
         "post-r19-redesign-1": 115,
         "rederivation-30-7": 130,
         "redesign-adoption-6-8": 123
@@ -7681,6 +8090,7 @@
         "21": 57,
         "22": 59,
         "dob-courier-10-8": 59,
+        "g1-never-rises-10-8": 59,
         "post-r19-redesign-1": 92,
         "rederivation-30-7": 52,
         "redesign-adoption-6-8": 53
@@ -7700,6 +8110,7 @@
         "21": 1,
         "22": 1,
         "dob-courier-10-8": 1,
+        "g1-never-rises-10-8": 1,
         "post-r19-redesign-1": 1,
         "rederivation-30-7": 1,
         "redesign-adoption-6-8": 1
@@ -7719,6 +8130,7 @@
         "21": 26,
         "22": 26,
         "dob-courier-10-8": 26,
+        "g1-never-rises-10-8": 26,
         "post-r19-redesign-1": 41,
         "rederivation-30-7": 29,
         "redesign-adoption-6-8": 28
@@ -7738,6 +8150,7 @@
         "21": 8,
         "22": 8,
         "dob-courier-10-8": 8,
+        "g1-never-rises-10-8": 8,
         "post-r19-redesign-1": 2,
         "rederivation-30-7": 8,
         "redesign-adoption-6-8": 8
@@ -7757,6 +8170,7 @@
         "21": 90,
         "22": 91,
         "dob-courier-10-8": 91,
+        "g1-never-rises-10-8": 91,
         "post-r19-redesign-1": 134,
         "rederivation-30-7": 83,
         "redesign-adoption-6-8": 88
@@ -7776,6 +8190,7 @@
         "21": 38,
         "22": 39,
         "dob-courier-10-8": 39,
+        "g1-never-rises-10-8": 39,
         "post-r19-redesign-1": 25,
         "rederivation-30-7": 38,
         "redesign-adoption-6-8": 38
@@ -7795,6 +8210,7 @@
         "21": 95,
         "22": 102,
         "dob-courier-10-8": 102,
+        "g1-never-rises-10-8": 102,
         "post-r19-redesign-1": 85,
         "rederivation-30-7": 98,
         "redesign-adoption-6-8": 96
@@ -7814,6 +8230,7 @@
         "21": 185,
         "22": 183,
         "dob-courier-10-8": 183,
+        "g1-never-rises-10-8": 183,
         "post-r19-redesign-1": 137,
         "rederivation-30-7": 179,
         "redesign-adoption-6-8": 185
@@ -7833,6 +8250,7 @@
         "21": 28,
         "22": 28,
         "dob-courier-10-8": 28,
+        "g1-never-rises-10-8": 28,
         "post-r19-redesign-1": 64,
         "rederivation-30-7": 27,
         "redesign-adoption-6-8": 29
@@ -7852,6 +8270,7 @@
         "21": 119,
         "22": 120,
         "dob-courier-10-8": 120,
+        "g1-never-rises-10-8": 120,
         "post-r19-redesign-1": 158,
         "rederivation-30-7": 118,
         "redesign-adoption-6-8": 119
@@ -7871,6 +8290,7 @@
         "21": 49,
         "22": 52,
         "dob-courier-10-8": 52,
+        "g1-never-rises-10-8": 52,
         "post-r19-redesign-1": 106,
         "rederivation-30-7": 49,
         "redesign-adoption-6-8": 49
@@ -7890,6 +8310,7 @@
         "21": 20,
         "22": 19,
         "dob-courier-10-8": 19,
+        "g1-never-rises-10-8": 19,
         "post-r19-redesign-1": 21,
         "rederivation-30-7": 17,
         "redesign-adoption-6-8": 17
@@ -7909,6 +8330,7 @@
         "21": 55,
         "22": 57,
         "dob-courier-10-8": 57,
+        "g1-never-rises-10-8": 57,
         "post-r19-redesign-1": 91,
         "rederivation-30-7": 54,
         "redesign-adoption-6-8": 54
@@ -7928,6 +8350,7 @@
         "21": 55,
         "22": 63,
         "dob-courier-10-8": 63,
+        "g1-never-rises-10-8": 63,
         "post-r19-redesign-1": 24,
         "rederivation-30-7": 56,
         "redesign-adoption-6-8": 57
@@ -7947,6 +8370,7 @@
         "21": 71,
         "22": 61,
         "dob-courier-10-8": 61,
+        "g1-never-rises-10-8": 61,
         "post-r19-redesign-1": 33,
         "rederivation-30-7": 71,
         "redesign-adoption-6-8": 70
@@ -7966,6 +8390,7 @@
         "21": 106,
         "22": 107,
         "dob-courier-10-8": 107,
+        "g1-never-rises-10-8": 107,
         "post-r19-redesign-1": 71,
         "rederivation-30-7": 64,
         "redesign-adoption-6-8": 105
@@ -7985,6 +8410,7 @@
         "21": 145,
         "22": 146,
         "dob-courier-10-8": 146,
+        "g1-never-rises-10-8": 146,
         "post-r19-redesign-1": 127,
         "rederivation-30-7": 141,
         "redesign-adoption-6-8": 145
@@ -8004,6 +8430,7 @@
         "21": 48,
         "22": 47,
         "dob-courier-10-8": 47,
+        "g1-never-rises-10-8": 47,
         "post-r19-redesign-1": 31,
         "rederivation-30-7": 46,
         "redesign-adoption-6-8": 48
@@ -8023,6 +8450,7 @@
         "21": 45,
         "22": 45,
         "dob-courier-10-8": 45,
+        "g1-never-rises-10-8": 45,
         "post-r19-redesign-1": 82,
         "rederivation-30-7": 47,
         "redesign-adoption-6-8": 46
@@ -8042,6 +8470,7 @@
         "21": 91,
         "22": 94,
         "dob-courier-10-8": 94,
+        "g1-never-rises-10-8": 94,
         "post-r19-redesign-1": 143,
         "rederivation-30-7": 90,
         "redesign-adoption-6-8": 93
@@ -8061,6 +8490,7 @@
         "21": 49,
         "22": 48,
         "dob-courier-10-8": 48,
+        "g1-never-rises-10-8": 48,
         "post-r19-redesign-1": 39,
         "rederivation-30-7": 58,
         "redesign-adoption-6-8": 60
@@ -8080,6 +8510,7 @@
         "21": 37,
         "22": 38,
         "dob-courier-10-8": 38,
+        "g1-never-rises-10-8": 38,
         "post-r19-redesign-1": 67,
         "rederivation-30-7": 31,
         "redesign-adoption-6-8": 37
@@ -8099,6 +8530,7 @@
         "21": 64,
         "22": 65,
         "dob-courier-10-8": 65,
+        "g1-never-rises-10-8": 65,
         "post-r19-redesign-1": 45,
         "rederivation-30-7": 63,
         "redesign-adoption-6-8": 65
@@ -8118,6 +8550,7 @@
         "21": 173,
         "22": 173,
         "dob-courier-10-8": 173,
+        "g1-never-rises-10-8": 173,
         "post-r19-redesign-1": 105,
         "rederivation-30-7": 124,
         "redesign-adoption-6-8": 173
@@ -8137,6 +8570,7 @@
         "21": 9,
         "22": 10,
         "dob-courier-10-8": 10,
+        "g1-never-rises-10-8": 10,
         "post-r19-redesign-1": 8,
         "rederivation-30-7": 7,
         "redesign-adoption-6-8": 6
@@ -8156,6 +8590,7 @@
         "21": 141,
         "22": 142,
         "dob-courier-10-8": 142,
+        "g1-never-rises-10-8": 142,
         "post-r19-redesign-1": 110,
         "rederivation-30-7": 119,
         "redesign-adoption-6-8": 140
@@ -8175,6 +8610,7 @@
         "21": 97,
         "22": 98,
         "dob-courier-10-8": 98,
+        "g1-never-rises-10-8": 98,
         "post-r19-redesign-1": 141,
         "rederivation-30-7": 99,
         "redesign-adoption-6-8": 97
@@ -8194,6 +8630,7 @@
         "21": 105,
         "22": 105,
         "dob-courier-10-8": 105,
+        "g1-never-rises-10-8": 105,
         "post-r19-redesign-1": 53,
         "rederivation-30-7": 96,
         "redesign-adoption-6-8": 103
@@ -8213,6 +8650,7 @@
         "21": 39,
         "22": 35,
         "dob-courier-10-8": 35,
+        "g1-never-rises-10-8": 35,
         "post-r19-redesign-1": 30,
         "rederivation-30-7": 39,
         "redesign-adoption-6-8": 39
@@ -8232,6 +8670,7 @@
         "21": 44,
         "22": 45,
         "dob-courier-10-8": 45,
+        "g1-never-rises-10-8": 45,
         "post-r19-redesign-1": 60,
         "rederivation-30-7": 51,
         "redesign-adoption-6-8": 45
@@ -8251,6 +8690,7 @@
         "21": 105,
         "22": 106,
         "dob-courier-10-8": 106,
+        "g1-never-rises-10-8": 106,
         "post-r19-redesign-1": 147,
         "rederivation-30-7": 96,
         "redesign-adoption-6-8": 103
@@ -8270,6 +8710,7 @@
         "21": 44,
         "22": 45,
         "dob-courier-10-8": 45,
+        "g1-never-rises-10-8": 45,
         "post-r19-redesign-1": 80,
         "rederivation-30-7": 41,
         "redesign-adoption-6-8": 44
@@ -8289,6 +8730,7 @@
         "21": 7,
         "22": 6,
         "dob-courier-10-8": 6,
+        "g1-never-rises-10-8": 6,
         "post-r19-redesign-1": 2,
         "rederivation-30-7": 6,
         "redesign-adoption-6-8": 6
@@ -8308,6 +8750,7 @@
         "21": 63,
         "22": 63,
         "dob-courier-10-8": 63,
+        "g1-never-rises-10-8": 63,
         "post-r19-redesign-1": 49,
         "rederivation-30-7": 66,
         "redesign-adoption-6-8": 61
@@ -8327,6 +8770,7 @@
         "21": 35,
         "22": 33,
         "dob-courier-10-8": 33,
+        "g1-never-rises-10-8": 33,
         "post-r19-redesign-1": 47,
         "rederivation-30-7": 34,
         "redesign-adoption-6-8": 34
@@ -8346,6 +8790,7 @@
         "21": 177,
         "22": 179,
         "dob-courier-10-8": 179,
+        "g1-never-rises-10-8": 179,
         "post-r19-redesign-1": 180,
         "rederivation-30-7": 226,
         "redesign-adoption-6-8": 179
@@ -8365,6 +8810,7 @@
         "21": 24,
         "22": 22,
         "dob-courier-10-8": 22,
+        "g1-never-rises-10-8": 22,
         "post-r19-redesign-1": 53,
         "rederivation-30-7": 24,
         "redesign-adoption-6-8": 27
@@ -8384,6 +8830,7 @@
         "21": 2,
         "22": 2,
         "dob-courier-10-8": 2,
+        "g1-never-rises-10-8": 2,
         "post-r19-redesign-1": 1,
         "rederivation-30-7": 2,
         "redesign-adoption-6-8": 2
@@ -8403,6 +8850,7 @@
         "21": 51,
         "22": 50,
         "dob-courier-10-8": 50,
+        "g1-never-rises-10-8": 50,
         "post-r19-redesign-1": 92,
         "rederivation-30-7": 79,
         "redesign-adoption-6-8": 50
@@ -8422,6 +8870,7 @@
         "21": 176,
         "22": 167,
         "dob-courier-10-8": 167,
+        "g1-never-rises-10-8": 167,
         "post-r19-redesign-1": 149,
         "rederivation-30-7": 180,
         "redesign-adoption-6-8": 195
@@ -8441,6 +8890,7 @@
         "21": 80,
         "22": 82,
         "dob-courier-10-8": 82,
+        "g1-never-rises-10-8": 82,
         "post-r19-redesign-1": 65,
         "rederivation-30-7": 85,
         "redesign-adoption-6-8": 79
@@ -8460,6 +8910,7 @@
         "21": 69,
         "22": 69,
         "dob-courier-10-8": 69,
+        "g1-never-rises-10-8": 69,
         "post-r19-redesign-1": 61,
         "rederivation-30-7": 69,
         "redesign-adoption-6-8": 70
@@ -8479,6 +8930,7 @@
         "21": 206,
         "22": 206,
         "dob-courier-10-8": 206,
+        "g1-never-rises-10-8": 206,
         "post-r19-redesign-1": 145,
         "rederivation-30-7": 192,
         "redesign-adoption-6-8": 207
@@ -8498,6 +8950,7 @@
         "21": 93,
         "22": 93,
         "dob-courier-10-8": 93,
+        "g1-never-rises-10-8": 93,
         "post-r19-redesign-1": 75,
         "rederivation-30-7": 104,
         "redesign-adoption-6-8": 92
@@ -8517,6 +8970,7 @@
         "21": 127,
         "22": 125,
         "dob-courier-10-8": 125,
+        "g1-never-rises-10-8": 125,
         "post-r19-redesign-1": 125,
         "rederivation-30-7": 136,
         "redesign-adoption-6-8": 131
@@ -8536,6 +8990,7 @@
         "21": 15,
         "22": 15,
         "dob-courier-10-8": 15,
+        "g1-never-rises-10-8": 15,
         "post-r19-redesign-1": 15,
         "rederivation-30-7": 15,
         "redesign-adoption-6-8": 15
@@ -8555,6 +9010,7 @@
         "21": 216,
         "22": 216,
         "dob-courier-10-8": 216,
+        "g1-never-rises-10-8": 216,
         "post-r19-redesign-1": 176,
         "rederivation-30-7": 217,
         "redesign-adoption-6-8": 215
@@ -8574,6 +9030,7 @@
         "21": 72,
         "22": 67,
         "dob-courier-10-8": 67,
+        "g1-never-rises-10-8": 67,
         "post-r19-redesign-1": 31,
         "rederivation-30-7": 69,
         "redesign-adoption-6-8": 69
@@ -8593,6 +9050,7 @@
         "21": 119,
         "22": 120,
         "dob-courier-10-8": 120,
+        "g1-never-rises-10-8": 120,
         "post-r19-redesign-1": 168,
         "rederivation-30-7": 119,
         "redesign-adoption-6-8": 118
@@ -8612,6 +9070,7 @@
         "21": 21,
         "22": 22,
         "dob-courier-10-8": 22,
+        "g1-never-rises-10-8": 22,
         "post-r19-redesign-1": 26,
         "rederivation-30-7": 21,
         "redesign-adoption-6-8": 21
@@ -8631,6 +9090,7 @@
         "21": 138,
         "22": 137,
         "dob-courier-10-8": 137,
+        "g1-never-rises-10-8": 137,
         "post-r19-redesign-1": 192,
         "rederivation-30-7": 133,
         "redesign-adoption-6-8": 138
@@ -8650,6 +9110,7 @@
         "21": 77,
         "22": 78,
         "dob-courier-10-8": 78,
+        "g1-never-rises-10-8": 78,
         "post-r19-redesign-1": 29,
         "rederivation-30-7": 61,
         "redesign-adoption-6-8": 76
@@ -8669,6 +9130,7 @@
         "21": 217,
         "22": 217,
         "dob-courier-10-8": 217,
+        "g1-never-rises-10-8": 217,
         "post-r19-redesign-1": 169,
         "rederivation-30-7": 212,
         "redesign-adoption-6-8": 216
@@ -8688,6 +9150,7 @@
         "21": 131,
         "22": 138,
         "dob-courier-10-8": 138,
+        "g1-never-rises-10-8": 138,
         "post-r19-redesign-1": 90,
         "rederivation-30-7": 138,
         "redesign-adoption-6-8": 125
@@ -8707,6 +9170,7 @@
         "21": 79,
         "22": 80,
         "dob-courier-10-8": 80,
+        "g1-never-rises-10-8": 80,
         "post-r19-redesign-1": 42,
         "rederivation-30-7": 82,
         "redesign-adoption-6-8": 81
@@ -8726,6 +9190,7 @@
         "21": 30,
         "22": 30,
         "dob-courier-10-8": 30,
+        "g1-never-rises-10-8": 30,
         "post-r19-redesign-1": 22,
         "rederivation-30-7": 33,
         "redesign-adoption-6-8": 31
@@ -8745,6 +9210,7 @@
         "21": 37,
         "22": 38,
         "dob-courier-10-8": 38,
+        "g1-never-rises-10-8": 38,
         "post-r19-redesign-1": 49,
         "rederivation-30-7": 42,
         "redesign-adoption-6-8": 37
@@ -8764,6 +9230,7 @@
         "21": 142,
         "22": 144,
         "dob-courier-10-8": 144,
+        "g1-never-rises-10-8": 144,
         "post-r19-redesign-1": 104,
         "rederivation-30-7": 121,
         "redesign-adoption-6-8": 142
@@ -8783,6 +9250,7 @@
         "21": 37,
         "22": 36,
         "dob-courier-10-8": 36,
+        "g1-never-rises-10-8": 36,
         "post-r19-redesign-1": 16,
         "rederivation-30-7": 40,
         "redesign-adoption-6-8": 37
@@ -8802,6 +9270,7 @@
         "21": 144,
         "22": 147,
         "dob-courier-10-8": 147,
+        "g1-never-rises-10-8": 147,
         "post-r19-redesign-1": 71,
         "rederivation-30-7": 107,
         "redesign-adoption-6-8": 140
@@ -8821,6 +9290,7 @@
         "21": 21,
         "22": 20,
         "dob-courier-10-8": 20,
+        "g1-never-rises-10-8": 20,
         "post-r19-redesign-1": 29,
         "rederivation-30-7": 21,
         "redesign-adoption-6-8": 20
@@ -8840,6 +9310,7 @@
         "21": 107,
         "22": 105,
         "dob-courier-10-8": 105,
+        "g1-never-rises-10-8": 105,
         "post-r19-redesign-1": 40,
         "rederivation-30-7": 100,
         "redesign-adoption-6-8": 108
@@ -8859,6 +9330,7 @@
         "21": 75,
         "22": 76,
         "dob-courier-10-8": 76,
+        "g1-never-rises-10-8": 76,
         "post-r19-redesign-1": 82,
         "rederivation-30-7": 69,
         "redesign-adoption-6-8": 74
@@ -8878,6 +9350,7 @@
         "21": 94,
         "22": 98,
         "dob-courier-10-8": 98,
+        "g1-never-rises-10-8": 98,
         "post-r19-redesign-1": 64,
         "rederivation-30-7": 93,
         "redesign-adoption-6-8": 90
@@ -8897,6 +9370,7 @@
         "21": 90,
         "22": 92,
         "dob-courier-10-8": 92,
+        "g1-never-rises-10-8": 92,
         "post-r19-redesign-1": 69,
         "rederivation-30-7": 87,
         "redesign-adoption-6-8": 90
@@ -8916,6 +9390,7 @@
         "21": 102,
         "22": 112,
         "dob-courier-10-8": 112,
+        "g1-never-rises-10-8": 112,
         "post-r19-redesign-1": 82,
         "rederivation-30-7": 103,
         "redesign-adoption-6-8": 109
@@ -8935,6 +9410,7 @@
         "21": 54,
         "22": 56,
         "dob-courier-10-8": 56,
+        "g1-never-rises-10-8": 56,
         "post-r19-redesign-1": 51,
         "rederivation-30-7": 59,
         "redesign-adoption-6-8": 55
@@ -8954,6 +9430,7 @@
         "21": 187,
         "22": 184,
         "dob-courier-10-8": 184,
+        "g1-never-rises-10-8": 184,
         "post-r19-redesign-1": 142,
         "rederivation-30-7": 183,
         "redesign-adoption-6-8": 186
@@ -8973,6 +9450,7 @@
         "21": 97,
         "22": 97,
         "dob-courier-10-8": 97,
+        "g1-never-rises-10-8": 97,
         "post-r19-redesign-1": 76,
         "rederivation-30-7": 70,
         "redesign-adoption-6-8": 97
@@ -8992,6 +9470,7 @@
         "21": 90,
         "22": 95,
         "dob-courier-10-8": 95,
+        "g1-never-rises-10-8": 95,
         "post-r19-redesign-1": 80,
         "rederivation-30-7": 101,
         "redesign-adoption-6-8": 88
@@ -9011,6 +9490,7 @@
         "21": 162,
         "22": 157,
         "dob-courier-10-8": 157,
+        "g1-never-rises-10-8": 157,
         "post-r19-redesign-1": 138,
         "rederivation-30-7": 161,
         "redesign-adoption-6-8": 162
@@ -9030,6 +9510,7 @@
         "21": 54,
         "22": 53,
         "dob-courier-10-8": 53,
+        "g1-never-rises-10-8": 53,
         "post-r19-redesign-1": 67,
         "rederivation-30-7": 59,
         "redesign-adoption-6-8": 51
@@ -9049,6 +9530,7 @@
         "21": 64,
         "22": 65,
         "dob-courier-10-8": 65,
+        "g1-never-rises-10-8": 65,
         "post-r19-redesign-1": 51,
         "rederivation-30-7": 57,
         "redesign-adoption-6-8": 62
@@ -9068,6 +9550,7 @@
         "21": 215,
         "22": 215,
         "dob-courier-10-8": 215,
+        "g1-never-rises-10-8": 215,
         "post-r19-redesign-1": 171,
         "rederivation-30-7": 215,
         "redesign-adoption-6-8": 214
@@ -9087,6 +9570,7 @@
         "21": 159,
         "22": 159,
         "dob-courier-10-8": 159,
+        "g1-never-rises-10-8": 159,
         "post-r19-redesign-1": 146,
         "rederivation-30-7": 162,
         "redesign-adoption-6-8": 159
@@ -9106,6 +9590,7 @@
         "21": 224,
         "22": 224,
         "dob-courier-10-8": 224,
+        "g1-never-rises-10-8": 224,
         "post-r19-redesign-1": 175,
         "rederivation-30-7": 218,
         "redesign-adoption-6-8": 223
@@ -9125,6 +9610,7 @@
         "21": 14,
         "22": 14,
         "dob-courier-10-8": 14,
+        "g1-never-rises-10-8": 14,
         "post-r19-redesign-1": 16,
         "rederivation-30-7": 14,
         "redesign-adoption-6-8": 14
@@ -9144,6 +9630,7 @@
         "21": 44,
         "22": 43,
         "dob-courier-10-8": 43,
+        "g1-never-rises-10-8": 43,
         "post-r19-redesign-1": 32,
         "rederivation-30-7": 44,
         "redesign-adoption-6-8": 46
@@ -9163,6 +9650,7 @@
         "21": 41,
         "22": 39,
         "dob-courier-10-8": 39,
+        "g1-never-rises-10-8": 39,
         "post-r19-redesign-1": 38,
         "rederivation-30-7": 42,
         "redesign-adoption-6-8": 41
@@ -9182,6 +9670,7 @@
         "21": 4,
         "22": 4,
         "dob-courier-10-8": 4,
+        "g1-never-rises-10-8": 4,
         "post-r19-redesign-1": 4,
         "rederivation-30-7": 4,
         "redesign-adoption-6-8": 4
@@ -9201,6 +9690,7 @@
         "21": 43,
         "22": 43,
         "dob-courier-10-8": 43,
+        "g1-never-rises-10-8": 43,
         "post-r19-redesign-1": 41,
         "rederivation-30-7": 41,
         "redesign-adoption-6-8": 43
@@ -9220,6 +9710,7 @@
         "21": 18,
         "22": 18,
         "dob-courier-10-8": 18,
+        "g1-never-rises-10-8": 18,
         "post-r19-redesign-1": 23,
         "rederivation-30-7": 18,
         "redesign-adoption-6-8": 18
@@ -9239,6 +9730,7 @@
         "21": 117,
         "22": 117,
         "dob-courier-10-8": 117,
+        "g1-never-rises-10-8": 117,
         "post-r19-redesign-1": 164,
         "rederivation-30-7": 115,
         "redesign-adoption-6-8": 116
@@ -9258,6 +9750,7 @@
         "21": 126,
         "22": 126,
         "dob-courier-10-8": 126,
+        "g1-never-rises-10-8": 126,
         "post-r19-redesign-1": 103,
         "rederivation-30-7": 125,
         "redesign-adoption-6-8": 126
@@ -9277,6 +9770,7 @@
         "21": 47,
         "22": 46,
         "dob-courier-10-8": 46,
+        "g1-never-rises-10-8": 46,
         "post-r19-redesign-1": 62,
         "rederivation-30-7": 55,
         "redesign-adoption-6-8": 44
@@ -9296,6 +9790,7 @@
         "21": 129,
         "22": 130,
         "dob-courier-10-8": 130,
+        "g1-never-rises-10-8": 130,
         "post-r19-redesign-1": 207,
         "rederivation-30-7": 146,
         "redesign-adoption-6-8": 130
@@ -9315,6 +9810,7 @@
         "21": 160,
         "22": 162,
         "dob-courier-10-8": 162,
+        "g1-never-rises-10-8": 162,
         "post-r19-redesign-1": 135,
         "rederivation-30-7": 153,
         "redesign-adoption-6-8": 160
@@ -9334,6 +9830,7 @@
         "21": 19,
         "22": 14,
         "dob-courier-10-8": 14,
+        "g1-never-rises-10-8": 14,
         "post-r19-redesign-1": 22,
         "rederivation-30-7": 19,
         "redesign-adoption-6-8": 19
@@ -9353,6 +9850,7 @@
         "21": 1,
         "22": 1,
         "dob-courier-10-8": 1,
+        "g1-never-rises-10-8": 1,
         "post-r19-redesign-1": 1,
         "rederivation-30-7": 1,
         "redesign-adoption-6-8": 1
@@ -9372,6 +9870,7 @@
         "21": 89,
         "22": 92,
         "dob-courier-10-8": 92,
+        "g1-never-rises-10-8": 92,
         "post-r19-redesign-1": 135,
         "rederivation-30-7": 84,
         "redesign-adoption-6-8": 85
@@ -9391,6 +9890,7 @@
         "21": 85,
         "22": 87,
         "dob-courier-10-8": 87,
+        "g1-never-rises-10-8": 87,
         "post-r19-redesign-1": 66,
         "rederivation-30-7": 87,
         "redesign-adoption-6-8": 82
@@ -9410,6 +9910,7 @@
         "21": 154,
         "22": 154,
         "dob-courier-10-8": 154,
+        "g1-never-rises-10-8": 153,
         "post-r19-redesign-1": 142,
         "rederivation-30-7": 155,
         "redesign-adoption-6-8": 155
@@ -9429,6 +9930,7 @@
         "21": 93,
         "22": 93,
         "dob-courier-10-8": 93,
+        "g1-never-rises-10-8": 93,
         "post-r19-redesign-1": 79,
         "rederivation-30-7": 95,
         "redesign-adoption-6-8": 91
@@ -9448,6 +9950,7 @@
         "21": 45,
         "22": 44,
         "dob-courier-10-8": 44,
+        "g1-never-rises-10-8": 44,
         "post-r19-redesign-1": 74,
         "rederivation-30-7": 39,
         "redesign-adoption-6-8": 41
@@ -9467,6 +9970,7 @@
         "21": 155,
         "22": 159,
         "dob-courier-10-8": 159,
+        "g1-never-rises-10-8": 159,
         "post-r19-redesign-1": 119,
         "rederivation-30-7": 163,
         "redesign-adoption-6-8": 156
@@ -9486,6 +9990,7 @@
         "21": 42,
         "22": 46,
         "dob-courier-10-8": 46,
+        "g1-never-rises-10-8": 46,
         "post-r19-redesign-1": 28,
         "rederivation-30-7": 42,
         "redesign-adoption-6-8": 45
@@ -9505,6 +10010,7 @@
         "21": 40,
         "22": 38,
         "dob-courier-10-8": 38,
+        "g1-never-rises-10-8": 38,
         "post-r19-redesign-1": 16,
         "rederivation-30-7": 47,
         "redesign-adoption-6-8": 39
@@ -9524,6 +10030,7 @@
         "21": 120,
         "22": 121,
         "dob-courier-10-8": 121,
+        "g1-never-rises-10-8": 121,
         "post-r19-redesign-1": 165,
         "rederivation-30-7": 117,
         "redesign-adoption-6-8": 121
@@ -9543,6 +10050,7 @@
         "21": 63,
         "22": 63,
         "dob-courier-10-8": 63,
+        "g1-never-rises-10-8": 63,
         "post-r19-redesign-1": 57,
         "rederivation-30-7": 67,
         "redesign-adoption-6-8": 63
@@ -9562,6 +10070,7 @@
         "21": 62,
         "22": 79,
         "dob-courier-10-8": 79,
+        "g1-never-rises-10-8": 79,
         "post-r19-redesign-1": 53,
         "rederivation-30-7": 68,
         "redesign-adoption-6-8": 67
@@ -9581,6 +10090,7 @@
         "21": 1,
         "22": 1,
         "dob-courier-10-8": 1,
+        "g1-never-rises-10-8": 1,
         "post-r19-redesign-1": 1,
         "rederivation-30-7": 1,
         "redesign-adoption-6-8": 2
@@ -9600,6 +10110,7 @@
         "21": 91,
         "22": 97,
         "dob-courier-10-8": 97,
+        "g1-never-rises-10-8": 97,
         "post-r19-redesign-1": 67,
         "rederivation-30-7": 102,
         "redesign-adoption-6-8": 90
@@ -9619,6 +10130,7 @@
         "21": 214,
         "22": 214,
         "dob-courier-10-8": 214,
+        "g1-never-rises-10-8": 214,
         "post-r19-redesign-1": 166,
         "rederivation-30-7": 214,
         "redesign-adoption-6-8": 217
@@ -9638,6 +10150,7 @@
         "21": 123,
         "22": 123,
         "dob-courier-10-8": 123,
+        "g1-never-rises-10-8": 123,
         "post-r19-redesign-1": 203,
         "rederivation-30-7": 144,
         "redesign-adoption-6-8": 125
@@ -9657,6 +10170,7 @@
         "21": 26,
         "22": 26,
         "dob-courier-10-8": 26,
+        "g1-never-rises-10-8": 26,
         "post-r19-redesign-1": 36,
         "rederivation-30-7": 26,
         "redesign-adoption-6-8": 26
@@ -9676,6 +10190,7 @@
         "21": 14,
         "22": 17,
         "dob-courier-10-8": 17,
+        "g1-never-rises-10-8": 17,
         "post-r19-redesign-1": 14,
         "rederivation-30-7": 13,
         "redesign-adoption-6-8": 13
@@ -9695,6 +10210,7 @@
         "21": 50,
         "22": 53,
         "dob-courier-10-8": 53,
+        "g1-never-rises-10-8": 53,
         "post-r19-redesign-1": 116,
         "rederivation-30-7": 65,
         "redesign-adoption-6-8": 68
@@ -9714,6 +10230,7 @@
         "21": 31,
         "22": 28,
         "dob-courier-10-8": 28,
+        "g1-never-rises-10-8": 28,
         "post-r19-redesign-1": 54,
         "rederivation-30-7": 27,
         "redesign-adoption-6-8": 25
@@ -9733,6 +10250,7 @@
         "21": 49,
         "22": 49,
         "dob-courier-10-8": 49,
+        "g1-never-rises-10-8": 49,
         "post-r19-redesign-1": 70,
         "rederivation-30-7": 49,
         "redesign-adoption-6-8": 49
@@ -9752,6 +10270,7 @@
         "21": 10,
         "22": 10,
         "dob-courier-10-8": 10,
+        "g1-never-rises-10-8": 10,
         "post-r19-redesign-1": 11,
         "rederivation-30-7": 9,
         "redesign-adoption-6-8": 9
@@ -9771,6 +10290,7 @@
         "21": 176,
         "22": 177,
         "dob-courier-10-8": 177,
+        "g1-never-rises-10-8": 177,
         "post-r19-redesign-1": 154,
         "rederivation-30-7": 169,
         "redesign-adoption-6-8": 177
@@ -9790,6 +10310,7 @@
         "21": 121,
         "22": 121,
         "dob-courier-10-8": 121,
+        "g1-never-rises-10-8": 121,
         "post-r19-redesign-1": 101,
         "rederivation-30-7": 121,
         "redesign-adoption-6-8": 121
@@ -9809,6 +10330,7 @@
         "21": 46,
         "22": 49,
         "dob-courier-10-8": 49,
+        "g1-never-rises-10-8": 49,
         "post-r19-redesign-1": 26,
         "rederivation-30-7": 40,
         "redesign-adoption-6-8": 42
@@ -9828,6 +10350,7 @@
         "21": 92,
         "22": 95,
         "dob-courier-10-8": 95,
+        "g1-never-rises-10-8": 95,
         "post-r19-redesign-1": 49,
         "rederivation-30-7": 90,
         "redesign-adoption-6-8": 93
@@ -9847,6 +10370,7 @@
         "21": 40,
         "22": 39,
         "dob-courier-10-8": 39,
+        "g1-never-rises-10-8": 39,
         "post-r19-redesign-1": 75,
         "rederivation-30-7": 43,
         "redesign-adoption-6-8": 41
@@ -9866,6 +10390,7 @@
         "21": 60,
         "22": 57,
         "dob-courier-10-8": 57,
+        "g1-never-rises-10-8": 57,
         "post-r19-redesign-1": 97,
         "rederivation-30-7": 59,
         "redesign-adoption-6-8": 59
@@ -9885,6 +10410,7 @@
         "21": 178,
         "22": 178,
         "dob-courier-10-8": 178,
+        "g1-never-rises-10-8": 178,
         "post-r19-redesign-1": 193,
         "rederivation-30-7": 170,
         "redesign-adoption-6-8": 178
@@ -9904,6 +10430,7 @@
         "21": 63,
         "22": 63,
         "dob-courier-10-8": 63,
+        "g1-never-rises-10-8": 63,
         "post-r19-redesign-1": 118,
         "rederivation-30-7": 54,
         "redesign-adoption-6-8": 63
@@ -9923,6 +10450,7 @@
         "21": 225,
         "22": 225,
         "dob-courier-10-8": 225,
+        "g1-never-rises-10-8": 225,
         "post-r19-redesign-1": 173,
         "rederivation-30-7": 221,
         "redesign-adoption-6-8": 224
@@ -9942,6 +10470,7 @@
         "21": 150,
         "22": 152,
         "dob-courier-10-8": 152,
+        "g1-never-rises-10-8": 154,
         "post-r19-redesign-1": 131,
         "rederivation-30-7": 140,
         "redesign-adoption-6-8": 149
@@ -9961,6 +10490,7 @@
         "21": 58,
         "22": 51,
         "dob-courier-10-8": 51,
+        "g1-never-rises-10-8": 51,
         "post-r19-redesign-1": 105,
         "rederivation-30-7": 56,
         "redesign-adoption-6-8": 55
@@ -9980,6 +10510,7 @@
         "21": 227,
         "22": 227,
         "dob-courier-10-8": 227,
+        "g1-never-rises-10-8": 227,
         "post-r19-redesign-1": 181,
         "rederivation-30-7": 227,
         "redesign-adoption-6-8": 227
@@ -9999,6 +10530,7 @@
         "21": 13,
         "22": 11,
         "dob-courier-10-8": 11,
+        "g1-never-rises-10-8": 11,
         "post-r19-redesign-1": 20,
         "rederivation-30-7": 14,
         "redesign-adoption-6-8": 14
@@ -10018,6 +10550,7 @@
         "21": 55,
         "22": 58,
         "dob-courier-10-8": 58,
+        "g1-never-rises-10-8": 58,
         "post-r19-redesign-1": 41,
         "rederivation-30-7": 53,
         "redesign-adoption-6-8": 57
@@ -10037,6 +10570,7 @@
         "21": 24,
         "22": 25,
         "dob-courier-10-8": 25,
+        "g1-never-rises-10-8": 25,
         "post-r19-redesign-1": 55,
         "rederivation-30-7": 23,
         "redesign-adoption-6-8": 23
@@ -10056,6 +10590,7 @@
         "21": 24,
         "22": 24,
         "dob-courier-10-8": 24,
+        "g1-never-rises-10-8": 24,
         "post-r19-redesign-1": 27,
         "rederivation-30-7": 22,
         "redesign-adoption-6-8": 24
@@ -10075,6 +10610,7 @@
         "21": 59,
         "22": 54,
         "dob-courier-10-8": 54,
+        "g1-never-rises-10-8": 54,
         "post-r19-redesign-1": 40,
         "rederivation-30-7": 61,
         "redesign-adoption-6-8": 52
@@ -10094,6 +10630,7 @@
         "21": 80,
         "22": 83,
         "dob-courier-10-8": 83,
+        "g1-never-rises-10-8": 83,
         "post-r19-redesign-1": 107,
         "rederivation-30-7": 68,
         "redesign-adoption-6-8": 72
@@ -10113,6 +10650,7 @@
         "21": 110,
         "22": 111,
         "dob-courier-10-8": 111,
+        "g1-never-rises-10-8": 111,
         "post-r19-redesign-1": 151,
         "rederivation-30-7": 104,
         "redesign-adoption-6-8": 110
@@ -10132,6 +10670,7 @@
         "21": 28,
         "22": 31,
         "dob-courier-10-8": 31,
+        "g1-never-rises-10-8": 31,
         "post-r19-redesign-1": 21,
         "rederivation-30-7": 30,
         "redesign-adoption-6-8": 29
@@ -10151,6 +10690,7 @@
         "21": 211,
         "22": 211,
         "dob-courier-10-8": 211,
+        "g1-never-rises-10-8": 211,
         "post-r19-redesign-1": 162,
         "rederivation-30-7": 204,
         "redesign-adoption-6-8": 211
@@ -10170,6 +10710,7 @@
         "21": 128,
         "22": 132,
         "dob-courier-10-8": 132,
+        "g1-never-rises-10-8": 132,
         "post-r19-redesign-1": 159,
         "rederivation-30-7": 198,
         "redesign-adoption-6-8": 126
@@ -10189,6 +10730,7 @@
         "21": 5,
         "22": 5,
         "dob-courier-10-8": 5,
+        "g1-never-rises-10-8": 5,
         "post-r19-redesign-1": 5,
         "rederivation-30-7": 5,
         "redesign-adoption-6-8": 5
@@ -10208,6 +10750,7 @@
         "21": 43,
         "22": 44,
         "dob-courier-10-8": 44,
+        "g1-never-rises-10-8": 44,
         "post-r19-redesign-1": 58,
         "rederivation-30-7": 55,
         "redesign-adoption-6-8": 50
@@ -10227,6 +10770,7 @@
         "21": 18,
         "22": 17,
         "dob-courier-10-8": 17,
+        "g1-never-rises-10-8": 17,
         "post-r19-redesign-1": 7,
         "rederivation-30-7": 21,
         "redesign-adoption-6-8": 21
@@ -10246,6 +10790,7 @@
         "21": 42,
         "22": 43,
         "dob-courier-10-8": 43,
+        "g1-never-rises-10-8": 43,
         "post-r19-redesign-1": 25,
         "rederivation-30-7": 43,
         "redesign-adoption-6-8": 40
@@ -10265,6 +10810,7 @@
         "21": 2,
         "22": 2,
         "dob-courier-10-8": 2,
+        "g1-never-rises-10-8": 2,
         "post-r19-redesign-1": 4,
         "rederivation-30-7": 2,
         "redesign-adoption-6-8": 2
@@ -10284,6 +10830,7 @@
         "21": 70,
         "22": 71,
         "dob-courier-10-8": 71,
+        "g1-never-rises-10-8": 71,
         "post-r19-redesign-1": 59,
         "rederivation-30-7": 78,
         "redesign-adoption-6-8": 70
@@ -10303,6 +10850,7 @@
         "21": 87,
         "22": 89,
         "dob-courier-10-8": 89,
+        "g1-never-rises-10-8": 89,
         "post-r19-redesign-1": 85,
         "rederivation-30-7": 85,
         "redesign-adoption-6-8": 86
@@ -10322,6 +10870,7 @@
         "21": 27,
         "22": 27,
         "dob-courier-10-8": 27,
+        "g1-never-rises-10-8": 27,
         "post-r19-redesign-1": 38,
         "rederivation-30-7": 27,
         "redesign-adoption-6-8": 27
@@ -10341,6 +10890,7 @@
         "21": 87,
         "22": 87,
         "dob-courier-10-8": 87,
+        "g1-never-rises-10-8": 87,
         "post-r19-redesign-1": 68,
         "rederivation-30-7": 89,
         "redesign-adoption-6-8": 81
@@ -10360,6 +10910,7 @@
         "21": 35,
         "22": 36,
         "dob-courier-10-8": 36,
+        "g1-never-rises-10-8": 36,
         "post-r19-redesign-1": 34,
         "rederivation-30-7": 34,
         "redesign-adoption-6-8": 35
@@ -10379,6 +10930,7 @@
         "21": 83,
         "22": 85,
         "dob-courier-10-8": 85,
+        "g1-never-rises-10-8": 85,
         "post-r19-redesign-1": 66,
         "rederivation-30-7": 86,
         "redesign-adoption-6-8": 84
@@ -10398,6 +10950,7 @@
         "21": 83,
         "22": 85,
         "dob-courier-10-8": 85,
+        "g1-never-rises-10-8": 85,
         "post-r19-redesign-1": 78,
         "rederivation-30-7": 91,
         "redesign-adoption-6-8": 80
@@ -10417,6 +10970,7 @@
         "21": 179,
         "22": 195,
         "dob-courier-10-8": 195,
+        "g1-never-rises-10-8": 195,
         "post-r19-redesign-1": 130,
         "rederivation-30-7": 172,
         "redesign-adoption-6-8": 187
@@ -10436,6 +10990,7 @@
         "21": 123,
         "22": 118,
         "dob-courier-10-8": 118,
+        "g1-never-rises-10-8": 118,
         "post-r19-redesign-1": 124,
         "rederivation-30-7": 128,
         "redesign-adoption-6-8": 125
@@ -10455,6 +11010,7 @@
         "21": 96,
         "22": 118,
         "dob-courier-10-8": 118,
+        "g1-never-rises-10-8": 118,
         "post-r19-redesign-1": 47,
         "rederivation-30-7": 113,
         "redesign-adoption-6-8": 112
@@ -10474,6 +11030,7 @@
         "21": 61,
         "22": 60,
         "dob-courier-10-8": 60,
+        "g1-never-rises-10-8": 59,
         "post-r19-redesign-1": 51,
         "rederivation-30-7": 67,
         "redesign-adoption-6-8": 71
@@ -10493,6 +11050,7 @@
         "21": 19,
         "22": 20,
         "dob-courier-10-8": 20,
+        "g1-never-rises-10-8": 20,
         "post-r19-redesign-1": 18,
         "rederivation-30-7": 22,
         "redesign-adoption-6-8": 22
@@ -10512,6 +11070,7 @@
         "21": 202,
         "22": 203,
         "dob-courier-10-8": 203,
+        "g1-never-rises-10-8": 203,
         "post-r19-redesign-1": 70,
         "rederivation-30-7": 186,
         "redesign-adoption-6-8": 201
@@ -10531,6 +11090,7 @@
         "21": 104,
         "22": 104,
         "dob-courier-10-8": 104,
+        "g1-never-rises-10-8": 104,
         "post-r19-redesign-1": 98,
         "rederivation-30-7": 116,
         "redesign-adoption-6-8": 103
@@ -10550,6 +11110,7 @@
         "21": 153,
         "22": 157,
         "dob-courier-10-8": 157,
+        "g1-never-rises-10-8": 157,
         "post-r19-redesign-1": 136,
         "rederivation-30-7": 181,
         "redesign-adoption-6-8": 154
@@ -10569,6 +11130,7 @@
         "21": 7,
         "22": 8,
         "dob-courier-10-8": 8,
+        "g1-never-rises-10-8": 8,
         "post-r19-redesign-1": 12,
         "rederivation-30-7": 11,
         "redesign-adoption-6-8": 9
@@ -10588,6 +11150,7 @@
         "21": 94,
         "22": 96,
         "dob-courier-10-8": 96,
+        "g1-never-rises-10-8": 96,
         "post-r19-redesign-1": 77,
         "rederivation-30-7": 95,
         "redesign-adoption-6-8": 95
@@ -10607,6 +11170,7 @@
         "21": 125,
         "22": 125,
         "dob-courier-10-8": 125,
+        "g1-never-rises-10-8": 125,
         "post-r19-redesign-1": 175,
         "rederivation-30-7": 123,
         "redesign-adoption-6-8": 127
@@ -10626,6 +11190,7 @@
         "21": 47,
         "22": 46,
         "dob-courier-10-8": 46,
+        "g1-never-rises-10-8": 46,
         "post-r19-redesign-1": 43,
         "rederivation-30-7": 47,
         "redesign-adoption-6-8": 46
@@ -10645,6 +11210,7 @@
         "21": 51,
         "22": 50,
         "dob-courier-10-8": 50,
+        "g1-never-rises-10-8": 50,
         "post-r19-redesign-1": 46,
         "rederivation-30-7": 45,
         "redesign-adoption-6-8": 48
@@ -10664,6 +11230,7 @@
         "21": 7,
         "22": 7,
         "dob-courier-10-8": 7,
+        "g1-never-rises-10-8": 7,
         "post-r19-redesign-1": 8,
         "rederivation-30-7": 9,
         "redesign-adoption-6-8": 9
@@ -10683,6 +11250,7 @@
         "21": 5,
         "22": 7,
         "dob-courier-10-8": 7,
+        "g1-never-rises-10-8": 7,
         "post-r19-redesign-1": 1,
         "rederivation-30-7": 4,
         "redesign-adoption-6-8": 4
@@ -10702,6 +11270,7 @@
         "21": 112,
         "22": 112,
         "dob-courier-10-8": 112,
+        "g1-never-rises-10-8": 112,
         "post-r19-redesign-1": 97,
         "rederivation-30-7": 117,
         "redesign-adoption-6-8": 112
@@ -10721,6 +11290,7 @@
         "21": 1,
         "22": 1,
         "dob-courier-10-8": 1,
+        "g1-never-rises-10-8": 1,
         "post-r19-redesign-1": 3,
         "rederivation-30-7": 1,
         "redesign-adoption-6-8": 1
@@ -10740,6 +11310,7 @@
         "21": 13,
         "22": 12,
         "dob-courier-10-8": 12,
+        "g1-never-rises-10-8": 12,
         "post-r19-redesign-1": 13,
         "rederivation-30-7": 15,
         "redesign-adoption-6-8": 12
@@ -10759,6 +11330,7 @@
         "21": 177,
         "22": 175,
         "dob-courier-10-8": 175,
+        "g1-never-rises-10-8": 175,
         "post-r19-redesign-1": 156,
         "rederivation-30-7": 173,
         "redesign-adoption-6-8": 176
@@ -10778,6 +11350,7 @@
         "21": 71,
         "22": 72,
         "dob-courier-10-8": 72,
+        "g1-never-rises-10-8": 72,
         "post-r19-redesign-1": 122,
         "rederivation-30-7": 73,
         "redesign-adoption-6-8": 71
@@ -10797,6 +11370,7 @@
         "21": 181,
         "22": 180,
         "dob-courier-10-8": 180,
+        "g1-never-rises-10-8": 180,
         "post-r19-redesign-1": 118,
         "rederivation-30-7": 160,
         "redesign-adoption-6-8": 182
@@ -10816,6 +11390,7 @@
         "21": 109,
         "22": 107,
         "dob-courier-10-8": 107,
+        "g1-never-rises-10-8": 107,
         "post-r19-redesign-1": 62,
         "rederivation-30-7": 109,
         "redesign-adoption-6-8": 108
@@ -10835,6 +11410,7 @@
         "21": 43,
         "22": 43,
         "dob-courier-10-8": 43,
+        "g1-never-rises-10-8": 43,
         "post-r19-redesign-1": 80,
         "rederivation-30-7": 41,
         "redesign-adoption-6-8": 42
@@ -10854,6 +11430,7 @@
         "21": 12,
         "22": 7,
         "dob-courier-10-8": 7,
+        "g1-never-rises-10-8": 7,
         "post-r19-redesign-1": 7,
         "rederivation-30-7": 9,
         "redesign-adoption-6-8": 8
@@ -10873,6 +11450,7 @@
         "21": 31,
         "22": 33,
         "dob-courier-10-8": 33,
+        "g1-never-rises-10-8": 33,
         "post-r19-redesign-1": 46,
         "rederivation-30-7": 36,
         "redesign-adoption-6-8": 31
@@ -10892,6 +11470,7 @@
         "21": 54,
         "22": 56,
         "dob-courier-10-8": 56,
+        "g1-never-rises-10-8": 56,
         "post-r19-redesign-1": 95,
         "rederivation-30-7": 57,
         "redesign-adoption-6-8": 58
@@ -10911,6 +11490,7 @@
         "21": 73,
         "22": 75,
         "dob-courier-10-8": 75,
+        "g1-never-rises-10-8": 75,
         "post-r19-redesign-1": 53,
         "rederivation-30-7": 70,
         "redesign-adoption-6-8": 75
@@ -10930,6 +11510,7 @@
         "21": 155,
         "22": 155,
         "dob-courier-10-8": 155,
+        "g1-never-rises-10-8": 155,
         "post-r19-redesign-1": 143,
         "rederivation-30-7": 156,
         "redesign-adoption-6-8": 156
@@ -10949,6 +11530,7 @@
         "21": 221,
         "22": 220,
         "dob-courier-10-8": 220,
+        "g1-never-rises-10-8": 220,
         "post-r19-redesign-1": 174,
         "rederivation-30-7": 216,
         "redesign-adoption-6-8": 220
@@ -10968,6 +11550,7 @@
         "21": 10,
         "22": 11,
         "dob-courier-10-8": 11,
+        "g1-never-rises-10-8": 11,
         "post-r19-redesign-1": 27,
         "rederivation-30-7": 10,
         "redesign-adoption-6-8": 10
@@ -10987,6 +11570,7 @@
         "21": 6,
         "22": 6,
         "dob-courier-10-8": 6,
+        "g1-never-rises-10-8": 6,
         "post-r19-redesign-1": 3,
         "rederivation-30-7": 4,
         "redesign-adoption-6-8": 5
@@ -11006,6 +11590,7 @@
         "21": 20,
         "22": 19,
         "dob-courier-10-8": 19,
+        "g1-never-rises-10-8": 19,
         "post-r19-redesign-1": 24,
         "rederivation-30-7": 20,
         "redesign-adoption-6-8": 19
@@ -11025,6 +11610,7 @@
         "21": 1,
         "22": 1,
         "dob-courier-10-8": 1,
+        "g1-never-rises-10-8": 1,
         "post-r19-redesign-1": 2,
         "rederivation-30-7": 1,
         "redesign-adoption-6-8": 1
@@ -11044,6 +11630,7 @@
         "21": 127,
         "22": 130,
         "dob-courier-10-8": 130,
+        "g1-never-rises-10-8": 130,
         "post-r19-redesign-1": 142,
         "rederivation-30-7": 99,
         "redesign-adoption-6-8": 122
@@ -11063,6 +11650,7 @@
         "21": 152,
         "22": 148,
         "dob-courier-10-8": 148,
+        "g1-never-rises-10-8": 148,
         "post-r19-redesign-1": 131,
         "rederivation-30-7": 145,
         "redesign-adoption-6-8": 153
@@ -11082,6 +11670,7 @@
         "21": 49,
         "22": 55,
         "dob-courier-10-8": 55,
+        "g1-never-rises-10-8": 55,
         "post-r19-redesign-1": 45,
         "rederivation-30-7": 50,
         "redesign-adoption-6-8": 49
@@ -11101,6 +11690,7 @@
         "21": 8,
         "22": 11,
         "dob-courier-10-8": 11,
+        "g1-never-rises-10-8": 11,
         "post-r19-redesign-1": 14,
         "rederivation-30-7": 12,
         "redesign-adoption-6-8": 12
@@ -11120,6 +11710,7 @@
         "21": 33,
         "22": 33,
         "dob-courier-10-8": 33,
+        "g1-never-rises-10-8": 33,
         "post-r19-redesign-1": 37,
         "rederivation-30-7": 32,
         "redesign-adoption-6-8": 32
@@ -11139,6 +11730,7 @@
         "21": 151,
         "22": 139,
         "dob-courier-10-8": 139,
+        "g1-never-rises-10-8": 139,
         "post-r19-redesign-1": 140,
         "rederivation-30-7": 142,
         "redesign-adoption-6-8": 148
@@ -11158,6 +11750,7 @@
         "21": 6,
         "22": 10,
         "dob-courier-10-8": 10,
+        "g1-never-rises-10-8": 10,
         "post-r19-redesign-1": 3,
         "rederivation-30-7": 7,
         "redesign-adoption-6-8": 7
@@ -11177,6 +11770,7 @@
         "21": 122,
         "22": 122,
         "dob-courier-10-8": 122,
+        "g1-never-rises-10-8": 122,
         "post-r19-redesign-1": 166,
         "rederivation-30-7": 124,
         "redesign-adoption-6-8": 123
@@ -11196,6 +11790,7 @@
         "21": 8,
         "22": 8,
         "dob-courier-10-8": 8,
+        "g1-never-rises-10-8": 8,
         "post-r19-redesign-1": 11,
         "rederivation-30-7": 8,
         "redesign-adoption-6-8": 8
@@ -11215,6 +11810,7 @@
         "21": 170,
         "22": 171,
         "dob-courier-10-8": 171,
+        "g1-never-rises-10-8": 171,
         "post-r19-redesign-1": 148,
         "rederivation-30-7": 164,
         "redesign-adoption-6-8": 171
@@ -11234,6 +11830,7 @@
         "21": 60,
         "22": 60,
         "dob-courier-10-8": 60,
+        "g1-never-rises-10-8": 60,
         "post-r19-redesign-1": 33,
         "rederivation-30-7": 54,
         "redesign-adoption-6-8": 59
@@ -11253,6 +11850,7 @@
         "21": 103,
         "22": 103,
         "dob-courier-10-8": 103,
+        "g1-never-rises-10-8": 103,
         "post-r19-redesign-1": 112,
         "rederivation-30-7": 94,
         "redesign-adoption-6-8": 102
@@ -11272,6 +11870,7 @@
         "21": 95,
         "22": 82,
         "dob-courier-10-8": 82,
+        "g1-never-rises-10-8": 82,
         "post-r19-redesign-1": 72,
         "rederivation-30-7": 77,
         "redesign-adoption-6-8": 94
@@ -11291,6 +11890,7 @@
         "21": 134,
         "22": 144,
         "dob-courier-10-8": 144,
+        "g1-never-rises-10-8": 144,
         "post-r19-redesign-1": 93,
         "rederivation-30-7": 149,
         "redesign-adoption-6-8": 129
@@ -11310,6 +11910,7 @@
         "21": 2,
         "22": 3,
         "dob-courier-10-8": 3,
+        "g1-never-rises-10-8": 3,
         "post-r19-redesign-1": 8,
         "rederivation-30-7": 2,
         "redesign-adoption-6-8": 1
@@ -11329,6 +11930,7 @@
         "21": 95,
         "22": 95,
         "dob-courier-10-8": 95,
+        "g1-never-rises-10-8": 95,
         "post-r19-redesign-1": 54,
         "rederivation-30-7": 93,
         "redesign-adoption-6-8": 96
@@ -11348,6 +11950,7 @@
         "21": 167,
         "22": 167,
         "dob-courier-10-8": 167,
+        "g1-never-rises-10-8": 167,
         "post-r19-redesign-1": 157,
         "rederivation-30-7": 174,
         "redesign-adoption-6-8": 167
@@ -11367,6 +11970,7 @@
         "21": 76,
         "22": 68,
         "dob-courier-10-8": 68,
+        "g1-never-rises-10-8": 68,
         "post-r19-redesign-1": 130,
         "rederivation-30-7": 74,
         "redesign-adoption-6-8": 78
@@ -11386,6 +11990,7 @@
         "21": 85,
         "22": 87,
         "dob-courier-10-8": 87,
+        "g1-never-rises-10-8": 87,
         "post-r19-redesign-1": 129,
         "rederivation-30-7": 82,
         "redesign-adoption-6-8": 80
@@ -11405,6 +12010,7 @@
         "21": 129,
         "22": 133,
         "dob-courier-10-8": 133,
+        "g1-never-rises-10-8": 133,
         "post-r19-redesign-1": 96,
         "rederivation-30-7": 128,
         "redesign-adoption-6-8": 127
@@ -11424,6 +12030,7 @@
         "21": 91,
         "22": 89,
         "dob-courier-10-8": 89,
+        "g1-never-rises-10-8": 89,
         "post-r19-redesign-1": 57,
         "rederivation-30-7": 94,
         "redesign-adoption-6-8": 90
@@ -11443,6 +12050,7 @@
         "21": 36,
         "22": 37,
         "dob-courier-10-8": 37,
+        "g1-never-rises-10-8": 37,
         "post-r19-redesign-1": 48,
         "rederivation-30-7": 37,
         "redesign-adoption-6-8": 36
@@ -11462,6 +12070,7 @@
         "21": 91,
         "22": 80,
         "dob-courier-10-8": 80,
+        "g1-never-rises-10-8": 80,
         "post-r19-redesign-1": 138,
         "rederivation-30-7": 106,
         "redesign-adoption-6-8": 110
@@ -11481,6 +12090,7 @@
         "21": 34,
         "22": 34,
         "dob-courier-10-8": 34,
+        "g1-never-rises-10-8": 34,
         "post-r19-redesign-1": 76,
         "rederivation-30-7": 35,
         "redesign-adoption-6-8": 35
@@ -11500,6 +12110,7 @@
         "21": 198,
         "22": 199,
         "dob-courier-10-8": 199,
+        "g1-never-rises-10-8": 199,
         "post-r19-redesign-1": 134,
         "rederivation-30-7": 178,
         "redesign-adoption-6-8": 199
@@ -11519,6 +12130,7 @@
         "21": 99,
         "22": 104,
         "dob-courier-10-8": 104,
+        "g1-never-rises-10-8": 104,
         "post-r19-redesign-1": 148,
         "rederivation-30-7": 103,
         "redesign-adoption-6-8": 104
@@ -11538,6 +12150,7 @@
         "21": 31,
         "22": 29,
         "dob-courier-10-8": 29,
+        "g1-never-rises-10-8": 29,
         "post-r19-redesign-1": 51,
         "rederivation-30-7": 35,
         "redesign-adoption-6-8": 35
@@ -11557,6 +12170,7 @@
         "21": 74,
         "22": 77,
         "dob-courier-10-8": 77,
+        "g1-never-rises-10-8": 77,
         "post-r19-redesign-1": 133,
         "rederivation-30-7": 74,
         "redesign-adoption-6-8": 79
@@ -11576,6 +12190,7 @@
         "21": 98,
         "22": 101,
         "dob-courier-10-8": 101,
+        "g1-never-rises-10-8": 101,
         "post-r19-redesign-1": 84,
         "rederivation-30-7": 105,
         "redesign-adoption-6-8": 98
@@ -11595,6 +12210,7 @@
         "21": 43,
         "22": 43,
         "dob-courier-10-8": 43,
+        "g1-never-rises-10-8": 43,
         "post-r19-redesign-1": 48,
         "rederivation-30-7": 41,
         "redesign-adoption-6-8": 43
@@ -11614,6 +12230,7 @@
         "21": 60,
         "22": 60,
         "dob-courier-10-8": 60,
+        "g1-never-rises-10-8": 60,
         "post-r19-redesign-1": 79,
         "rederivation-30-7": 60,
         "redesign-adoption-6-8": 59
@@ -11633,6 +12250,7 @@
         "21": 100,
         "22": 105,
         "dob-courier-10-8": 105,
+        "g1-never-rises-10-8": 105,
         "post-r19-redesign-1": 83,
         "rederivation-30-7": 104,
         "redesign-adoption-6-8": 104
@@ -11652,6 +12270,7 @@
         "21": 59,
         "22": 58,
         "dob-courier-10-8": 58,
+        "g1-never-rises-10-8": 58,
         "post-r19-redesign-1": 71,
         "rederivation-30-7": 61,
         "redesign-adoption-6-8": 56
@@ -11671,6 +12290,7 @@
         "21": 45,
         "22": 59,
         "dob-courier-10-8": 59,
+        "g1-never-rises-10-8": 59,
         "post-r19-redesign-1": 86,
         "rederivation-30-7": 73,
         "redesign-adoption-6-8": 77
@@ -11690,6 +12310,7 @@
         "21": 97,
         "22": 73,
         "dob-courier-10-8": 73,
+        "g1-never-rises-10-8": 73,
         "post-r19-redesign-1": 99,
         "rederivation-30-7": 117,
         "redesign-adoption-6-8": 106
@@ -11709,6 +12330,7 @@
         "21": 52,
         "22": 51,
         "dob-courier-10-8": 51,
+        "g1-never-rises-10-8": 51,
         "post-r19-redesign-1": 31,
         "rederivation-30-7": 56,
         "redesign-adoption-6-8": 53
@@ -11728,6 +12350,7 @@
         "21": 222,
         "22": 221,
         "dob-courier-10-8": 221,
+        "g1-never-rises-10-8": 221,
         "post-r19-redesign-1": 206,
         "rederivation-30-7": 213,
         "redesign-adoption-6-8": 221
@@ -11747,6 +12370,7 @@
         "21": 72,
         "22": 76,
         "dob-courier-10-8": 76,
+        "g1-never-rises-10-8": 76,
         "post-r19-redesign-1": 59,
         "rederivation-30-7": 75,
         "redesign-adoption-6-8": 73
@@ -11766,6 +12390,7 @@
         "21": 154,
         "22": 158,
         "dob-courier-10-8": 158,
+        "g1-never-rises-10-8": 158,
         "post-r19-redesign-1": 163,
         "rederivation-30-7": 209,
         "redesign-adoption-6-8": 155
@@ -11785,6 +12410,7 @@
         "21": 118,
         "22": 118,
         "dob-courier-10-8": 118,
+        "g1-never-rises-10-8": 118,
         "post-r19-redesign-1": 178,
         "rederivation-30-7": 125,
         "redesign-adoption-6-8": 120
@@ -11804,6 +12430,7 @@
         "21": 44,
         "22": 44,
         "dob-courier-10-8": 44,
+        "g1-never-rises-10-8": 44,
         "post-r19-redesign-1": 35,
         "rederivation-30-7": 35,
         "redesign-adoption-6-8": 44
@@ -11823,6 +12450,7 @@
         "21": 41,
         "22": 42,
         "dob-courier-10-8": 42,
+        "g1-never-rises-10-8": 42,
         "post-r19-redesign-1": 67,
         "rederivation-30-7": 40,
         "redesign-adoption-6-8": 39
@@ -11842,6 +12470,7 @@
         "21": 188,
         "22": 185,
         "dob-courier-10-8": 185,
+        "g1-never-rises-10-8": 185,
         "post-r19-redesign-1": 190,
         "rederivation-30-7": 184,
         "redesign-adoption-6-8": 188
@@ -11861,6 +12490,7 @@
         "21": 66,
         "22": 68,
         "dob-courier-10-8": 68,
+        "g1-never-rises-10-8": 68,
         "post-r19-redesign-1": 28,
         "rederivation-30-7": 64,
         "redesign-adoption-6-8": 66
@@ -11880,6 +12510,7 @@
         "21": 44,
         "22": 44,
         "dob-courier-10-8": 44,
+        "g1-never-rises-10-8": 44,
         "post-r19-redesign-1": 84,
         "rederivation-30-7": 49,
         "redesign-adoption-6-8": 51
@@ -11899,6 +12530,7 @@
         "21": 168,
         "22": 170,
         "dob-courier-10-8": 170,
+        "g1-never-rises-10-8": 170,
         "post-r19-redesign-1": 104,
         "rederivation-30-7": 151,
         "redesign-adoption-6-8": 166
@@ -11918,6 +12550,7 @@
         "21": 99,
         "22": 99,
         "dob-courier-10-8": 99,
+        "g1-never-rises-10-8": 99,
         "post-r19-redesign-1": 53,
         "rederivation-30-7": 90,
         "redesign-adoption-6-8": 99
@@ -11937,6 +12570,7 @@
         "21": 18,
         "22": 17,
         "dob-courier-10-8": 17,
+        "g1-never-rises-10-8": 17,
         "post-r19-redesign-1": 17,
         "rederivation-30-7": 14,
         "redesign-adoption-6-8": 14
@@ -11956,6 +12590,7 @@
         "21": 42,
         "22": 40,
         "dob-courier-10-8": 40,
+        "g1-never-rises-10-8": 40,
         "post-r19-redesign-1": 18,
         "rederivation-30-7": 42,
         "redesign-adoption-6-8": 41
@@ -11975,6 +12610,7 @@
         "21": 48,
         "22": 47,
         "dob-courier-10-8": 47,
+        "g1-never-rises-10-8": 47,
         "post-r19-redesign-1": 47,
         "rederivation-30-7": 44,
         "redesign-adoption-6-8": 45
@@ -11994,6 +12630,7 @@
         "21": 14,
         "22": 15,
         "dob-courier-10-8": 15,
+        "g1-never-rises-10-8": 15,
         "post-r19-redesign-1": 11,
         "rederivation-30-7": 16,
         "redesign-adoption-6-8": 18
@@ -12013,6 +12650,7 @@
         "21": 34,
         "22": 34,
         "dob-courier-10-8": 34,
+        "g1-never-rises-10-8": 34,
         "post-r19-redesign-1": 15,
         "rederivation-30-7": 35,
         "redesign-adoption-6-8": 34
@@ -12032,6 +12670,7 @@
         "21": 136,
         "22": 136,
         "dob-courier-10-8": 136,
+        "g1-never-rises-10-8": 136,
         "post-r19-redesign-1": 173,
         "rederivation-30-7": 121,
         "redesign-adoption-6-8": 136
@@ -12051,6 +12690,7 @@
         "21": 64,
         "22": 64,
         "dob-courier-10-8": 64,
+        "g1-never-rises-10-8": 64,
         "post-r19-redesign-1": 78,
         "rederivation-30-7": 66,
         "redesign-adoption-6-8": 64
@@ -12070,6 +12710,7 @@
         "21": 17,
         "22": 17,
         "dob-courier-10-8": 17,
+        "g1-never-rises-10-8": 17,
         "post-r19-redesign-1": 18,
         "rederivation-30-7": 16,
         "redesign-adoption-6-8": 17
@@ -12089,6 +12730,7 @@
         "21": 19,
         "22": 19,
         "dob-courier-10-8": 19,
+        "g1-never-rises-10-8": 19,
         "post-r19-redesign-1": 5,
         "rederivation-30-7": 19,
         "redesign-adoption-6-8": 19
@@ -12108,6 +12750,7 @@
         "21": 29,
         "22": 27,
         "dob-courier-10-8": 27,
+        "g1-never-rises-10-8": 27,
         "post-r19-redesign-1": 28,
         "rederivation-30-7": 27,
         "redesign-adoption-6-8": 27
@@ -12127,6 +12770,7 @@
         "21": 194,
         "22": 200,
         "dob-courier-10-8": 200,
+        "g1-never-rises-10-8": 200,
         "post-r19-redesign-1": 146,
         "rederivation-30-7": 185,
         "redesign-adoption-6-8": 191
@@ -12146,6 +12790,7 @@
         "21": 162,
         "22": 164,
         "dob-courier-10-8": 164,
+        "g1-never-rises-10-8": 164,
         "post-r19-redesign-1": 114,
         "rederivation-30-7": 144,
         "redesign-adoption-6-8": 145
@@ -12165,6 +12810,7 @@
         "21": 47,
         "22": 47,
         "dob-courier-10-8": 47,
+        "g1-never-rises-10-8": 47,
         "post-r19-redesign-1": 55,
         "rederivation-30-7": 48,
         "redesign-adoption-6-8": 47
@@ -12184,6 +12830,7 @@
         "21": 156,
         "22": 139,
         "dob-courier-10-8": 139,
+        "g1-never-rises-10-8": 139,
         "post-r19-redesign-1": 105,
         "rederivation-30-7": 152,
         "redesign-adoption-6-8": 174
@@ -12203,6 +12850,7 @@
         "21": 49,
         "22": 48,
         "dob-courier-10-8": 48,
+        "g1-never-rises-10-8": 48,
         "post-r19-redesign-1": 47,
         "rederivation-30-7": 38,
         "redesign-adoption-6-8": 48
@@ -12222,6 +12870,7 @@
         "21": 195,
         "22": 196,
         "dob-courier-10-8": 196,
+        "g1-never-rises-10-8": 196,
         "post-r19-redesign-1": 125,
         "rederivation-30-7": 161,
         "redesign-adoption-6-8": 194
@@ -12241,6 +12890,7 @@
         "21": 110,
         "22": 101,
         "dob-courier-10-8": 101,
+        "g1-never-rises-10-8": 101,
         "post-r19-redesign-1": 88,
         "rederivation-30-7": 110,
         "redesign-adoption-6-8": 115
@@ -12260,6 +12910,7 @@
         "21": 182,
         "22": 188,
         "dob-courier-10-8": 188,
+        "g1-never-rises-10-8": 188,
         "post-r19-redesign-1": 128,
         "rederivation-30-7": 171,
         "redesign-adoption-6-8": 177
@@ -12279,6 +12930,7 @@
         "21": 112,
         "22": 111,
         "dob-courier-10-8": 111,
+        "g1-never-rises-10-8": 111,
         "post-r19-redesign-1": 83,
         "rederivation-30-7": 115,
         "redesign-adoption-6-8": 111
@@ -12298,6 +12950,7 @@
         "21": 104,
         "22": 104,
         "dob-courier-10-8": 104,
+        "g1-never-rises-10-8": 104,
         "post-r19-redesign-1": 98,
         "rederivation-30-7": 116,
         "redesign-adoption-6-8": 101
@@ -12317,6 +12970,7 @@
         "21": 114,
         "22": 114,
         "dob-courier-10-8": 114,
+        "g1-never-rises-10-8": 114,
         "post-r19-redesign-1": 157,
         "rederivation-30-7": 100,
         "redesign-adoption-6-8": 114
@@ -12336,6 +12990,7 @@
         "21": 3,
         "22": 3,
         "dob-courier-10-8": 3,
+        "g1-never-rises-10-8": 3,
         "post-r19-redesign-1": 3,
         "rederivation-30-7": 3,
         "redesign-adoption-6-8": 3
@@ -12355,6 +13010,7 @@
         "21": 174,
         "22": 174,
         "dob-courier-10-8": 174,
+        "g1-never-rises-10-8": 174,
         "post-r19-redesign-1": 109,
         "rederivation-30-7": 143,
         "redesign-adoption-6-8": 175
@@ -12374,6 +13030,7 @@
         "21": 124,
         "22": 124,
         "dob-courier-10-8": 124,
+        "g1-never-rises-10-8": 124,
         "post-r19-redesign-1": 208,
         "rederivation-30-7": 145,
         "redesign-adoption-6-8": 126
@@ -12393,6 +13050,7 @@
         "21": 157,
         "22": 156,
         "dob-courier-10-8": 156,
+        "g1-never-rises-10-8": 156,
         "post-r19-redesign-1": 119,
         "rederivation-30-7": 133,
         "redesign-adoption-6-8": 157
@@ -12412,6 +13070,7 @@
         "21": 166,
         "22": 168,
         "dob-courier-10-8": 168,
+        "g1-never-rises-10-8": 168,
         "post-r19-redesign-1": 127,
         "rederivation-30-7": 168,
         "redesign-adoption-6-8": 161
@@ -12431,6 +13090,7 @@
         "21": 65,
         "22": 71,
         "dob-courier-10-8": 71,
+        "g1-never-rises-10-8": 71,
         "post-r19-redesign-1": 43,
         "rederivation-30-7": 62,
         "redesign-adoption-6-8": 64
@@ -12450,6 +13110,7 @@
         "21": 34,
         "22": 34,
         "dob-courier-10-8": 34,
+        "g1-never-rises-10-8": 34,
         "post-r19-redesign-1": 48,
         "rederivation-30-7": 33,
         "redesign-adoption-6-8": 34
@@ -12469,6 +13130,7 @@
         "21": 8,
         "22": 8,
         "dob-courier-10-8": 8,
+        "g1-never-rises-10-8": 8,
         "post-r19-redesign-1": 13,
         "rederivation-30-7": 7,
         "redesign-adoption-6-8": 7
@@ -12488,6 +13150,7 @@
         "21": 79,
         "22": 79,
         "dob-courier-10-8": 79,
+        "g1-never-rises-10-8": 79,
         "post-r19-redesign-1": 145,
         "rederivation-30-7": 86,
         "redesign-adoption-6-8": 83
@@ -12507,6 +13170,7 @@
         "21": 146,
         "22": 147,
         "dob-courier-10-8": 147,
+        "g1-never-rises-10-8": 147,
         "post-r19-redesign-1": 185,
         "rederivation-30-7": 148,
         "redesign-adoption-6-8": 147
@@ -12526,6 +13190,7 @@
         "21": 81,
         "22": 81,
         "dob-courier-10-8": 81,
+        "g1-never-rises-10-8": 81,
         "post-r19-redesign-1": 90,
         "rederivation-30-7": 78,
         "redesign-adoption-6-8": 81
@@ -12545,6 +13210,7 @@
         "21": 156,
         "22": 160,
         "dob-courier-10-8": 160,
+        "g1-never-rises-10-8": 160,
         "post-r19-redesign-1": 31,
         "rederivation-30-7": 144,
         "redesign-adoption-6-8": 152
@@ -12564,6 +13230,7 @@
         "21": 43,
         "22": 42,
         "dob-courier-10-8": 42,
+        "g1-never-rises-10-8": 42,
         "post-r19-redesign-1": 81,
         "rederivation-30-7": 45,
         "redesign-adoption-6-8": 44
@@ -12583,6 +13250,7 @@
         "21": 175,
         "22": 177,
         "dob-courier-10-8": 177,
+        "g1-never-rises-10-8": 177,
         "post-r19-redesign-1": 97,
         "rederivation-30-7": 129,
         "redesign-adoption-6-8": 170
@@ -12602,6 +13270,7 @@
         "21": 9,
         "22": 9,
         "dob-courier-10-8": 9,
+        "g1-never-rises-10-8": 9,
         "post-r19-redesign-1": 28,
         "rederivation-30-7": 8,
         "redesign-adoption-6-8": 8
@@ -12621,6 +13290,7 @@
         "21": 133,
         "22": 132,
         "dob-courier-10-8": 132,
+        "g1-never-rises-10-8": 132,
         "post-r19-redesign-1": 152,
         "rederivation-30-7": 170,
         "redesign-adoption-6-8": 133
@@ -12640,6 +13310,7 @@
         "21": 75,
         "22": 77,
         "dob-courier-10-8": 77,
+        "g1-never-rises-10-8": 77,
         "post-r19-redesign-1": 119,
         "rederivation-30-7": 77,
         "redesign-adoption-6-8": 72
@@ -12659,6 +13330,7 @@
         "21": 56,
         "22": 58,
         "dob-courier-10-8": 58,
+        "g1-never-rises-10-8": 58,
         "post-r19-redesign-1": 41,
         "rederivation-30-7": 52,
         "redesign-adoption-6-8": 53
@@ -12678,6 +13350,7 @@
         "21": 16,
         "22": 15,
         "dob-courier-10-8": 15,
+        "g1-never-rises-10-8": 15,
         "post-r19-redesign-1": 26,
         "rederivation-30-7": 16,
         "redesign-adoption-6-8": 16
@@ -12697,6 +13370,7 @@
         "21": 169,
         "22": 169,
         "dob-courier-10-8": 169,
+        "g1-never-rises-10-8": 169,
         "post-r19-redesign-1": 133,
         "rederivation-30-7": 175,
         "redesign-adoption-6-8": 171
@@ -12716,6 +13390,7 @@
         "21": 111,
         "22": 100,
         "dob-courier-10-8": 100,
+        "g1-never-rises-10-8": 100,
         "post-r19-redesign-1": 162,
         "rederivation-30-7": 114,
         "redesign-adoption-6-8": 112
@@ -12735,6 +13410,7 @@
         "21": 34,
         "22": 35,
         "dob-courier-10-8": 35,
+        "g1-never-rises-10-8": 35,
         "post-r19-redesign-1": 38,
         "rederivation-30-7": 25,
         "redesign-adoption-6-8": 26
@@ -12754,6 +13430,7 @@
         "21": 2,
         "22": 2,
         "dob-courier-10-8": 2,
+        "g1-never-rises-10-8": 2,
         "post-r19-redesign-1": 2,
         "rederivation-30-7": 2,
         "redesign-adoption-6-8": 2
@@ -12773,6 +13450,7 @@
         "21": 170,
         "22": 171,
         "dob-courier-10-8": 171,
+        "g1-never-rises-10-8": 171,
         "post-r19-redesign-1": 147,
         "rederivation-30-7": 188,
         "redesign-adoption-6-8": 172
@@ -12792,6 +13470,7 @@
         "21": 19,
         "22": 17,
         "dob-courier-10-8": 17,
+        "g1-never-rises-10-8": 17,
         "post-r19-redesign-1": 20,
         "rederivation-30-7": 17,
         "redesign-adoption-6-8": 18
@@ -12811,6 +13490,7 @@
         "21": 28,
         "22": 28,
         "dob-courier-10-8": 28,
+        "g1-never-rises-10-8": 28,
         "post-r19-redesign-1": 21,
         "rederivation-30-7": 26,
         "redesign-adoption-6-8": 28
@@ -12830,6 +13510,7 @@
         "21": 20,
         "22": 21,
         "dob-courier-10-8": 21,
+        "g1-never-rises-10-8": 21,
         "post-r19-redesign-1": 43,
         "rederivation-30-7": 17,
         "redesign-adoption-6-8": 17
@@ -12849,6 +13530,7 @@
         "21": 30,
         "22": 30,
         "dob-courier-10-8": 30,
+        "g1-never-rises-10-8": 30,
         "post-r19-redesign-1": 57,
         "rederivation-30-7": 31,
         "redesign-adoption-6-8": 31
@@ -12868,6 +13550,7 @@
         "21": 4,
         "22": 8,
         "dob-courier-10-8": 8,
+        "g1-never-rises-10-8": 8,
         "post-r19-redesign-1": 18,
         "rederivation-30-7": 5,
         "redesign-adoption-6-8": 5
@@ -12887,6 +13570,7 @@
         "21": 62,
         "22": 63,
         "dob-courier-10-8": 63,
+        "g1-never-rises-10-8": 63,
         "post-r19-redesign-1": 102,
         "rederivation-30-7": 62,
         "redesign-adoption-6-8": 61
@@ -12906,6 +13590,7 @@
         "21": 130,
         "22": 134,
         "dob-courier-10-8": 134,
+        "g1-never-rises-10-8": 134,
         "post-r19-redesign-1": 84,
         "rederivation-30-7": 125,
         "redesign-adoption-6-8": 130
@@ -12925,6 +13610,7 @@
         "21": 203,
         "22": 204,
         "dob-courier-10-8": 204,
+        "g1-never-rises-10-8": 204,
         "post-r19-redesign-1": 154,
         "rederivation-30-7": 197,
         "redesign-adoption-6-8": 203
@@ -12944,6 +13630,7 @@
         "21": 220,
         "22": 222,
         "dob-courier-10-8": 222,
+        "g1-never-rises-10-8": 222,
         "post-r19-redesign-1": 172,
         "rederivation-30-7": 219,
         "redesign-adoption-6-8": 225
@@ -12963,6 +13650,7 @@
         "21": 11,
         "22": 12,
         "dob-courier-10-8": 12,
+        "g1-never-rises-10-8": 12,
         "post-r19-redesign-1": 15,
         "rederivation-30-7": 11,
         "redesign-adoption-6-8": 11
@@ -12982,6 +13670,7 @@
         "21": 23,
         "22": 25,
         "dob-courier-10-8": 25,
+        "g1-never-rises-10-8": 25,
         "post-r19-redesign-1": 33,
         "rederivation-30-7": 22,
         "redesign-adoption-6-8": 23
@@ -13001,6 +13690,7 @@
         "21": 171,
         "22": 176,
         "dob-courier-10-8": 176,
+        "g1-never-rises-10-8": 176,
         "post-r19-redesign-1": 132,
         "rederivation-30-7": 166,
         "redesign-adoption-6-8": 172
@@ -13020,6 +13710,7 @@
         "21": 28,
         "22": 28,
         "dob-courier-10-8": 28,
+        "g1-never-rises-10-8": 28,
         "post-r19-redesign-1": 45,
         "rederivation-30-7": 29,
         "redesign-adoption-6-8": 28
@@ -13039,6 +13730,7 @@
         "21": 23,
         "22": 22,
         "dob-courier-10-8": 22,
+        "g1-never-rises-10-8": 22,
         "post-r19-redesign-1": 24,
         "rederivation-30-7": 22,
         "redesign-adoption-6-8": 23
@@ -13058,6 +13750,7 @@
         "21": 29,
         "22": 33,
         "dob-courier-10-8": 33,
+        "g1-never-rises-10-8": 33,
         "post-r19-redesign-1": 63,
         "rederivation-30-7": 29,
         "redesign-adoption-6-8": 33
@@ -13077,6 +13770,7 @@
         "21": 66,
         "22": 65,
         "dob-courier-10-8": 65,
+        "g1-never-rises-10-8": 65,
         "post-r19-redesign-1": 103,
         "rederivation-30-7": 61,
         "redesign-adoption-6-8": 65
@@ -13096,6 +13790,7 @@
         "21": 42,
         "22": 42,
         "dob-courier-10-8": 42,
+        "g1-never-rises-10-8": 42,
         "post-r19-redesign-1": 54,
         "rederivation-30-7": 46,
         "redesign-adoption-6-8": 42
@@ -13115,6 +13810,7 @@
         "21": 94,
         "22": 94,
         "dob-courier-10-8": 94,
+        "g1-never-rises-10-8": 94,
         "post-r19-redesign-1": 139,
         "rederivation-30-7": 90,
         "redesign-adoption-6-8": 95
@@ -13134,6 +13830,7 @@
         "21": 19,
         "22": 20,
         "dob-courier-10-8": 20,
+        "g1-never-rises-10-8": 20,
         "post-r19-redesign-1": 22,
         "rederivation-30-7": 19,
         "redesign-adoption-6-8": 20
@@ -13153,6 +13850,7 @@
         "21": 60,
         "22": 56,
         "dob-courier-10-8": 56,
+        "g1-never-rises-10-8": 56,
         "post-r19-redesign-1": 25,
         "rederivation-30-7": 58,
         "redesign-adoption-6-8": 56
@@ -13172,6 +13870,7 @@
         "21": 137,
         "22": 137,
         "dob-courier-10-8": 137,
+        "g1-never-rises-10-8": 137,
         "post-r19-redesign-1": 132,
         "rederivation-30-7": 143,
         "redesign-adoption-6-8": 136
@@ -13191,6 +13890,7 @@
         "21": 26,
         "22": 27,
         "dob-courier-10-8": 27,
+        "g1-never-rises-10-8": 27,
         "post-r19-redesign-1": 9,
         "rederivation-30-7": 24,
         "redesign-adoption-6-8": 25
@@ -13210,6 +13910,7 @@
         "21": 6,
         "22": 5,
         "dob-courier-10-8": 5,
+        "g1-never-rises-10-8": 5,
         "post-r19-redesign-1": 6,
         "rederivation-30-7": 6,
         "redesign-adoption-6-8": 6
@@ -13229,6 +13930,7 @@
         "21": 81,
         "22": 71,
         "dob-courier-10-8": 71,
+        "g1-never-rises-10-8": 71,
         "post-r19-redesign-1": 38,
         "rederivation-30-7": 75,
         "redesign-adoption-6-8": 79
@@ -13248,6 +13950,7 @@
         "21": 53,
         "22": 53,
         "dob-courier-10-8": 53,
+        "g1-never-rises-10-8": 53,
         "post-r19-redesign-1": 90,
         "rederivation-30-7": 53,
         "redesign-adoption-6-8": 52
@@ -13267,6 +13970,7 @@
         "21": 132,
         "22": 132,
         "dob-courier-10-8": 132,
+        "g1-never-rises-10-8": 132,
         "post-r19-redesign-1": 186,
         "rederivation-30-7": 131,
         "redesign-adoption-6-8": 133
@@ -13286,6 +13990,7 @@
         "21": 142,
         "22": 146,
         "dob-courier-10-8": 146,
+        "g1-never-rises-10-8": 146,
         "post-r19-redesign-1": 111,
         "rederivation-30-7": 162,
         "redesign-adoption-6-8": 142
@@ -13305,6 +14010,7 @@
         "21": 119,
         "22": 117,
         "dob-courier-10-8": 117,
+        "g1-never-rises-10-8": 117,
         "post-r19-redesign-1": 179,
         "rederivation-30-7": 133,
         "redesign-adoption-6-8": 135
@@ -13324,6 +14030,7 @@
         "21": 13,
         "22": 14,
         "dob-courier-10-8": 14,
+        "g1-never-rises-10-8": 14,
         "post-r19-redesign-1": 36,
         "rederivation-30-7": 13,
         "redesign-adoption-6-8": 13
@@ -13343,6 +14050,7 @@
         "21": 123,
         "22": 124,
         "dob-courier-10-8": 124,
+        "g1-never-rises-10-8": 124,
         "post-r19-redesign-1": 87,
         "rederivation-30-7": 126,
         "redesign-adoption-6-8": 117
@@ -13362,6 +14070,7 @@
         "21": 25,
         "22": 24,
         "dob-courier-10-8": 24,
+        "g1-never-rises-10-8": 24,
         "post-r19-redesign-1": 60,
         "rederivation-30-7": 29,
         "redesign-adoption-6-8": 26
@@ -13381,6 +14090,7 @@
         "21": 57,
         "22": 57,
         "dob-courier-10-8": 57,
+        "g1-never-rises-10-8": 57,
         "post-r19-redesign-1": 36,
         "rederivation-30-7": 66,
         "redesign-adoption-6-8": 63
@@ -13400,6 +14110,7 @@
         "21": 20,
         "22": 23,
         "dob-courier-10-8": 23,
+        "g1-never-rises-10-8": 23,
         "post-r19-redesign-1": 62,
         "rederivation-30-7": 25,
         "redesign-adoption-6-8": 22
@@ -13419,6 +14130,7 @@
         "21": 16,
         "22": 16,
         "dob-courier-10-8": 16,
+        "g1-never-rises-10-8": 16,
         "post-r19-redesign-1": 19,
         "rederivation-30-7": 17,
         "redesign-adoption-6-8": 16
@@ -13438,6 +14150,7 @@
         "21": 96,
         "22": 93,
         "dob-courier-10-8": 93,
+        "g1-never-rises-10-8": 93,
         "post-r19-redesign-1": 85,
         "rederivation-30-7": 97,
         "redesign-adoption-6-8": 93
@@ -13457,6 +14170,7 @@
         "21": 119,
         "22": 115,
         "dob-courier-10-8": 115,
+        "g1-never-rises-10-8": 115,
         "post-r19-redesign-1": 111,
         "rederivation-30-7": 126,
         "redesign-adoption-6-8": 120
@@ -13476,6 +14190,7 @@
         "21": 107,
         "22": 104,
         "dob-courier-10-8": 104,
+        "g1-never-rises-10-8": 104,
         "post-r19-redesign-1": 69,
         "rederivation-30-7": 114,
         "redesign-adoption-6-8": 107
@@ -13495,6 +14210,7 @@
         "21": 96,
         "22": 96,
         "dob-courier-10-8": 96,
+        "g1-never-rises-10-8": 96,
         "post-r19-redesign-1": 65,
         "rederivation-30-7": 97,
         "redesign-adoption-6-8": 93
@@ -13514,6 +14230,7 @@
         "21": 46,
         "22": 55,
         "dob-courier-10-8": 55,
+        "g1-never-rises-10-8": 55,
         "post-r19-redesign-1": 68,
         "rederivation-30-7": 44,
         "redesign-adoption-6-8": 45
@@ -13533,6 +14250,7 @@
         "21": 95,
         "22": 101,
         "dob-courier-10-8": 101,
+        "g1-never-rises-10-8": 101,
         "post-r19-redesign-1": 45,
         "rederivation-30-7": 84,
         "redesign-adoption-6-8": 95
@@ -13552,6 +14270,7 @@
         "21": 29,
         "22": 29,
         "dob-courier-10-8": 29,
+        "g1-never-rises-10-8": 29,
         "post-r19-redesign-1": 25,
         "rederivation-30-7": 32,
         "redesign-adoption-6-8": 30
@@ -13571,6 +14290,7 @@
         "21": 53,
         "22": 52,
         "dob-courier-10-8": 52,
+        "g1-never-rises-10-8": 52,
         "post-r19-redesign-1": 36,
         "rederivation-30-7": 50,
         "redesign-adoption-6-8": 54
@@ -13590,6 +14310,7 @@
         "21": 47,
         "22": 47,
         "dob-courier-10-8": 47,
+        "g1-never-rises-10-8": 47,
         "post-r19-redesign-1": 112,
         "rederivation-30-7": 50,
         "redesign-adoption-6-8": 50
@@ -13609,6 +14330,7 @@
         "21": 110,
         "22": 96,
         "dob-courier-10-8": 96,
+        "g1-never-rises-10-8": 96,
         "post-r19-redesign-1": 74,
         "rederivation-30-7": 99,
         "redesign-adoption-6-8": 95
@@ -13628,6 +14350,7 @@
         "21": 29,
         "22": 30,
         "dob-courier-10-8": 30,
+        "g1-never-rises-10-8": 30,
         "post-r19-redesign-1": 44,
         "rederivation-30-7": 33,
         "redesign-adoption-6-8": 33
@@ -13647,6 +14370,7 @@
         "21": 4,
         "22": 4,
         "dob-courier-10-8": 4,
+        "g1-never-rises-10-8": 4,
         "post-r19-redesign-1": 4,
         "rederivation-30-7": 4,
         "redesign-adoption-6-8": 4
@@ -13666,6 +14390,7 @@
         "21": 67,
         "22": 67,
         "dob-courier-10-8": 67,
+        "g1-never-rises-10-8": 67,
         "post-r19-redesign-1": 60,
         "rederivation-30-7": 77,
         "redesign-adoption-6-8": 72
@@ -13685,6 +14410,7 @@
         "21": 106,
         "22": 106,
         "dob-courier-10-8": 106,
+        "g1-never-rises-10-8": 106,
         "post-r19-redesign-1": 86,
         "rederivation-30-7": 130,
         "redesign-adoption-6-8": 131
@@ -13704,6 +14430,7 @@
         "21": 25,
         "22": 25,
         "dob-courier-10-8": 25,
+        "g1-never-rises-10-8": 25,
         "post-r19-redesign-1": 37,
         "rederivation-30-7": 25,
         "redesign-adoption-6-8": 25
@@ -13723,6 +14450,7 @@
         "21": 62,
         "22": 62,
         "dob-courier-10-8": 62,
+        "g1-never-rises-10-8": 62,
         "post-r19-redesign-1": 27,
         "rederivation-30-7": 62,
         "redesign-adoption-6-8": 62
@@ -13742,6 +14470,7 @@
         "21": 126,
         "22": 126,
         "dob-courier-10-8": 126,
+        "g1-never-rises-10-8": 126,
         "post-r19-redesign-1": 116,
         "rederivation-30-7": 126,
         "redesign-adoption-6-8": 124
@@ -13761,6 +14490,7 @@
         "21": 74,
         "22": 75,
         "dob-courier-10-8": 75,
+        "g1-never-rises-10-8": 75,
         "post-r19-redesign-1": 69,
         "rederivation-30-7": 86,
         "redesign-adoption-6-8": 75
@@ -13780,6 +14510,7 @@
         "21": 10,
         "22": 9,
         "dob-courier-10-8": 9,
+        "g1-never-rises-10-8": 9,
         "post-r19-redesign-1": 9,
         "rederivation-30-7": 8,
         "redesign-adoption-6-8": 10
@@ -13799,6 +14530,7 @@
         "21": 80,
         "22": 80,
         "dob-courier-10-8": 80,
+        "g1-never-rises-10-8": 80,
         "post-r19-redesign-1": 93,
         "rederivation-30-7": 81,
         "redesign-adoption-6-8": 80
@@ -13818,6 +14550,7 @@
         "21": 137,
         "22": 138,
         "dob-courier-10-8": 138,
+        "g1-never-rises-10-8": 138,
         "post-r19-redesign-1": 98,
         "rederivation-30-7": 113,
         "redesign-adoption-6-8": 137
@@ -13837,6 +14570,7 @@
         "21": 115,
         "22": 114,
         "dob-courier-10-8": 114,
+        "g1-never-rises-10-8": 114,
         "post-r19-redesign-1": 59,
         "rederivation-30-7": 103,
         "redesign-adoption-6-8": 110
@@ -13856,6 +14590,7 @@
         "21": 113,
         "22": 113,
         "dob-courier-10-8": 113,
+        "g1-never-rises-10-8": 113,
         "post-r19-redesign-1": 87,
         "rederivation-30-7": 107,
         "redesign-adoption-6-8": 113
@@ -13875,6 +14610,7 @@
         "21": 100,
         "22": 99,
         "dob-courier-10-8": 99,
+        "g1-never-rises-10-8": 99,
         "post-r19-redesign-1": 154,
         "rederivation-30-7": 101,
         "redesign-adoption-6-8": 100
@@ -13894,6 +14630,7 @@
         "21": 74,
         "22": 77,
         "dob-courier-10-8": 77,
+        "g1-never-rises-10-8": 77,
         "post-r19-redesign-1": 72,
         "rederivation-30-7": 58,
         "redesign-adoption-6-8": 60
@@ -13913,6 +14650,7 @@
         "21": 130,
         "22": 129,
         "dob-courier-10-8": 129,
+        "g1-never-rises-10-8": 129,
         "post-r19-redesign-1": 130,
         "rederivation-30-7": 149,
         "redesign-adoption-6-8": 130
@@ -13932,6 +14670,7 @@
         "21": 85,
         "22": 84,
         "dob-courier-10-8": 84,
+        "g1-never-rises-10-8": 84,
         "post-r19-redesign-1": 81,
         "rederivation-30-7": 84,
         "redesign-adoption-6-8": 85
@@ -13951,6 +14690,7 @@
         "21": 118,
         "22": 116,
         "dob-courier-10-8": 116,
+        "g1-never-rises-10-8": 116,
         "post-r19-redesign-1": 94,
         "rederivation-30-7": 131,
         "redesign-adoption-6-8": 115
@@ -13970,6 +14710,7 @@
         "21": 201,
         "22": 201,
         "dob-courier-10-8": 201,
+        "g1-never-rises-10-8": 201,
         "post-r19-redesign-1": 149,
         "rederivation-30-7": 177,
         "redesign-adoption-6-8": 192
@@ -13989,6 +14730,7 @@
         "21": 11,
         "22": 12,
         "dob-courier-10-8": 12,
+        "g1-never-rises-10-8": 12,
         "post-r19-redesign-1": 11,
         "rederivation-30-7": 10,
         "redesign-adoption-6-8": 11
@@ -14008,6 +14750,7 @@
         "21": 111,
         "22": 109,
         "dob-courier-10-8": 109,
+        "g1-never-rises-10-8": 109,
         "post-r19-redesign-1": 90,
         "rederivation-30-7": 104,
         "redesign-adoption-6-8": 110
@@ -14027,6 +14770,7 @@
         "21": 105,
         "22": 106,
         "dob-courier-10-8": 106,
+        "g1-never-rises-10-8": 106,
         "post-r19-redesign-1": 90,
         "rederivation-30-7": 111,
         "redesign-adoption-6-8": 106
@@ -14046,6 +14790,7 @@
         "21": 11,
         "22": 12,
         "dob-courier-10-8": 12,
+        "g1-never-rises-10-8": 12,
         "post-r19-redesign-1": 12,
         "rederivation-30-7": 10,
         "redesign-adoption-6-8": 10
@@ -14065,6 +14810,7 @@
         "21": 78,
         "22": 73,
         "dob-courier-10-8": 73,
+        "g1-never-rises-10-8": 73,
         "post-r19-redesign-1": 124,
         "rederivation-30-7": 80,
         "redesign-adoption-6-8": 77
@@ -14084,6 +14830,7 @@
         "21": 135,
         "22": 140,
         "dob-courier-10-8": 140,
+        "g1-never-rises-10-8": 140,
         "post-r19-redesign-1": 113,
         "rederivation-30-7": 154,
         "redesign-adoption-6-8": 132
@@ -14103,6 +14850,7 @@
         "21": 114,
         "22": 114,
         "dob-courier-10-8": 114,
+        "g1-never-rises-10-8": 115,
         "post-r19-redesign-1": 95,
         "rederivation-30-7": 114,
         "redesign-adoption-6-8": 114
@@ -14122,6 +14870,7 @@
         "21": 41,
         "22": 40,
         "dob-courier-10-8": 40,
+        "g1-never-rises-10-8": 40,
         "post-r19-redesign-1": 27,
         "rederivation-30-7": 41,
         "redesign-adoption-6-8": 43
@@ -14141,6 +14890,7 @@
         "21": 7,
         "22": 7,
         "dob-courier-10-8": 7,
+        "g1-never-rises-10-8": 7,
         "post-r19-redesign-1": 9,
         "rederivation-30-7": 8,
         "redesign-adoption-6-8": 7
@@ -14160,6 +14910,7 @@
         "21": 53,
         "22": 57,
         "dob-courier-10-8": 57,
+        "g1-never-rises-10-8": 57,
         "post-r19-redesign-1": 50,
         "rederivation-30-7": 50,
         "redesign-adoption-6-8": 53
@@ -14179,6 +14930,7 @@
         "21": 100,
         "22": 100,
         "dob-courier-10-8": 100,
+        "g1-never-rises-10-8": 100,
         "post-r19-redesign-1": 52,
         "rederivation-30-7": 88,
         "redesign-adoption-6-8": 91
@@ -14198,6 +14950,7 @@
         "21": 29,
         "22": 29,
         "dob-courier-10-8": 29,
+        "g1-never-rises-10-8": 29,
         "post-r19-redesign-1": 59,
         "rederivation-30-7": 28,
         "redesign-adoption-6-8": 28
@@ -14217,6 +14970,7 @@
         "21": 38,
         "22": 39,
         "dob-courier-10-8": 39,
+        "g1-never-rises-10-8": 39,
         "post-r19-redesign-1": 78,
         "rederivation-30-7": 36,
         "redesign-adoption-6-8": 38
@@ -14236,6 +14990,7 @@
         "21": 31,
         "22": 22,
         "dob-courier-10-8": 22,
+        "g1-never-rises-10-8": 22,
         "post-r19-redesign-1": 73,
         "rederivation-30-7": 26,
         "redesign-adoption-6-8": 27
@@ -14255,6 +15010,7 @@
         "21": 32,
         "22": 29,
         "dob-courier-10-8": 29,
+        "g1-never-rises-10-8": 29,
         "post-r19-redesign-1": 23,
         "rederivation-30-7": 37,
         "redesign-adoption-6-8": 37
@@ -14274,6 +15030,7 @@
         "21": 2,
         "22": 2,
         "dob-courier-10-8": 2,
+        "g1-never-rises-10-8": 2,
         "post-r19-redesign-1": 2,
         "rederivation-30-7": 2,
         "redesign-adoption-6-8": 2
@@ -14293,6 +15050,7 @@
         "21": 21,
         "22": 22,
         "dob-courier-10-8": 22,
+        "g1-never-rises-10-8": 22,
         "post-r19-redesign-1": 20,
         "rederivation-30-7": 20,
         "redesign-adoption-6-8": 21
@@ -14312,6 +15070,7 @@
         "21": 75,
         "22": 76,
         "dob-courier-10-8": 76,
+        "g1-never-rises-10-8": 76,
         "post-r19-redesign-1": 125,
         "rederivation-30-7": 78,
         "redesign-adoption-6-8": 73
@@ -14331,6 +15090,7 @@
         "21": 111,
         "22": 109,
         "dob-courier-10-8": 109,
+        "g1-never-rises-10-8": 109,
         "post-r19-redesign-1": 55,
         "rederivation-30-7": 97,
         "redesign-adoption-6-8": 109
@@ -14350,6 +15110,7 @@
         "21": 36,
         "22": 36,
         "dob-courier-10-8": 36,
+        "g1-never-rises-10-8": 36,
         "post-r19-redesign-1": 44,
         "rederivation-30-7": 36,
         "redesign-adoption-6-8": 36
@@ -14369,6 +15130,7 @@
         "21": 192,
         "22": 191,
         "dob-courier-10-8": 191,
+        "g1-never-rises-10-8": 191,
         "post-r19-redesign-1": 143,
         "rederivation-30-7": 189,
         "redesign-adoption-6-8": 190
@@ -14388,6 +15150,7 @@
         "21": 46,
         "22": 54,
         "dob-courier-10-8": 54,
+        "g1-never-rises-10-8": 54,
         "post-r19-redesign-1": 94,
         "rederivation-30-7": 54,
         "redesign-adoption-6-8": 54
@@ -14407,6 +15170,7 @@
         "21": 107,
         "22": 110,
         "dob-courier-10-8": 110,
+        "g1-never-rises-10-8": 110,
         "post-r19-redesign-1": 79,
         "rederivation-30-7": 88,
         "redesign-adoption-6-8": 107
@@ -14426,6 +15190,7 @@
         "21": 131,
         "22": 130,
         "dob-courier-10-8": 130,
+        "g1-never-rises-10-8": 130,
         "post-r19-redesign-1": 110,
         "rederivation-30-7": 137,
         "redesign-adoption-6-8": 127
@@ -14445,6 +15210,7 @@
         "21": 138,
         "22": 145,
         "dob-courier-10-8": 145,
+        "g1-never-rises-10-8": 145,
         "post-r19-redesign-1": 88,
         "rederivation-30-7": 134,
         "redesign-adoption-6-8": 134
@@ -14464,6 +15230,7 @@
         "21": 41,
         "22": 30,
         "dob-courier-10-8": 30,
+        "g1-never-rises-10-8": 30,
         "post-r19-redesign-1": 49,
         "rederivation-30-7": 43,
         "redesign-adoption-6-8": 41
@@ -14483,6 +15250,7 @@
         "21": 57,
         "22": 52,
         "dob-courier-10-8": 52,
+        "g1-never-rises-10-8": 52,
         "post-r19-redesign-1": 77,
         "rederivation-30-7": 65,
         "redesign-adoption-6-8": 62
@@ -14502,6 +15270,7 @@
         "21": 33,
         "22": 32,
         "dob-courier-10-8": 32,
+        "g1-never-rises-10-8": 32,
         "post-r19-redesign-1": 19,
         "rederivation-30-7": 32,
         "redesign-adoption-6-8": 32
@@ -14521,6 +15290,7 @@
         "21": 26,
         "22": 26,
         "dob-courier-10-8": 26,
+        "g1-never-rises-10-8": 26,
         "post-r19-redesign-1": 29,
         "rederivation-30-7": 26,
         "redesign-adoption-6-8": 24
@@ -14540,6 +15310,7 @@
         "21": 163,
         "22": 163,
         "dob-courier-10-8": 163,
+        "g1-never-rises-10-8": 163,
         "post-r19-redesign-1": 147,
         "rederivation-30-7": 167,
         "redesign-adoption-6-8": 164
@@ -14559,6 +15330,7 @@
         "21": 71,
         "22": 64,
         "dob-courier-10-8": 64,
+        "g1-never-rises-10-8": 64,
         "post-r19-redesign-1": 42,
         "rederivation-30-7": 61,
         "redesign-adoption-6-8": 63
@@ -14578,6 +15350,7 @@
         "21": 3,
         "22": 3,
         "dob-courier-10-8": 3,
+        "g1-never-rises-10-8": 3,
         "post-r19-redesign-1": 6,
         "rederivation-30-7": 4,
         "redesign-adoption-6-8": 4
@@ -14597,6 +15370,7 @@
         "21": 61,
         "22": 62,
         "dob-courier-10-8": 62,
+        "g1-never-rises-10-8": 62,
         "post-r19-redesign-1": 96,
         "rederivation-30-7": 58,
         "redesign-adoption-6-8": 60
@@ -14616,6 +15390,7 @@
         "21": 80,
         "22": 83,
         "dob-courier-10-8": 83,
+        "g1-never-rises-10-8": 83,
         "post-r19-redesign-1": 35,
         "rederivation-30-7": 62,
         "redesign-adoption-6-8": 79
@@ -14635,6 +15410,7 @@
         "21": 27,
         "22": 32,
         "dob-courier-10-8": 32,
+        "g1-never-rises-10-8": 32,
         "post-r19-redesign-1": 39,
         "rederivation-30-7": 27,
         "redesign-adoption-6-8": 27
@@ -14654,6 +15430,7 @@
         "21": 38,
         "22": 37,
         "dob-courier-10-8": 37,
+        "g1-never-rises-10-8": 37,
         "post-r19-redesign-1": 56,
         "rederivation-30-7": 43,
         "redesign-adoption-6-8": 38
@@ -14673,6 +15450,7 @@
         "21": 35,
         "22": 37,
         "dob-courier-10-8": 37,
+        "g1-never-rises-10-8": 37,
         "post-r19-redesign-1": 17,
         "rederivation-30-7": 37,
         "redesign-adoption-6-8": 36
@@ -14692,6 +15470,7 @@
         "21": 22,
         "22": 21,
         "dob-courier-10-8": 21,
+        "g1-never-rises-10-8": 21,
         "post-r19-redesign-1": 28,
         "rederivation-30-7": 23,
         "redesign-adoption-6-8": 22
@@ -14711,6 +15490,7 @@
         "21": 90,
         "22": 91,
         "dob-courier-10-8": 91,
+        "g1-never-rises-10-8": 91,
         "post-r19-redesign-1": 74,
         "rederivation-30-7": 111,
         "redesign-adoption-6-8": 89
@@ -14730,6 +15510,7 @@
         "21": 122,
         "22": 115,
         "dob-courier-10-8": 115,
+        "g1-never-rises-10-8": 115,
         "post-r19-redesign-1": 92,
         "rederivation-30-7": 141,
         "redesign-adoption-6-8": 146
@@ -14749,6 +15530,7 @@
         "21": 101,
         "22": 100,
         "dob-courier-10-8": 100,
+        "g1-never-rises-10-8": 100,
         "post-r19-redesign-1": 99,
         "rederivation-30-7": 119,
         "redesign-adoption-6-8": 100
@@ -14768,6 +15550,7 @@
         "21": 82,
         "22": 82,
         "dob-courier-10-8": 82,
+        "g1-never-rises-10-8": 82,
         "post-r19-redesign-1": 144,
         "rederivation-30-7": 98,
         "redesign-adoption-6-8": 89
@@ -14787,6 +15570,7 @@
         "21": 151,
         "22": 154,
         "dob-courier-10-8": 154,
+        "g1-never-rises-10-8": 154,
         "post-r19-redesign-1": 121,
         "rederivation-30-7": 158,
         "redesign-adoption-6-8": 148
@@ -14806,6 +15590,7 @@
         "21": 70,
         "22": 74,
         "dob-courier-10-8": 74,
+        "g1-never-rises-10-8": 74,
         "post-r19-redesign-1": 100,
         "rederivation-30-7": 66,
         "redesign-adoption-6-8": 69
@@ -14825,6 +15610,7 @@
         "21": 72,
         "22": 71,
         "dob-courier-10-8": 71,
+        "g1-never-rises-10-8": 71,
         "post-r19-redesign-1": 116,
         "rederivation-30-7": 70,
         "redesign-adoption-6-8": 74
@@ -14844,6 +15630,7 @@
         "21": 12,
         "22": 13,
         "dob-courier-10-8": 13,
+        "g1-never-rises-10-8": 13,
         "post-r19-redesign-1": 15,
         "rederivation-30-7": 11,
         "redesign-adoption-6-8": 11
@@ -14863,6 +15650,7 @@
         "21": 22,
         "22": 24,
         "dob-courier-10-8": 23,
+        "g1-never-rises-10-8": 24,
         "post-r19-redesign-1": 37,
         "rederivation-30-7": 23,
         "redesign-adoption-6-8": 22
@@ -14882,6 +15670,7 @@
         "21": 92,
         "22": 90,
         "dob-courier-10-8": 90,
+        "g1-never-rises-10-8": 90,
         "post-r19-redesign-1": 60,
         "rederivation-30-7": 92,
         "redesign-adoption-6-8": 94
@@ -14901,6 +15690,7 @@
         "21": 121,
         "22": 119,
         "dob-courier-10-8": 119,
+        "g1-never-rises-10-8": 119,
         "post-r19-redesign-1": 171,
         "rederivation-30-7": 120,
         "redesign-adoption-6-8": 122
@@ -14920,6 +15710,7 @@
         "21": 26,
         "22": 26,
         "dob-courier-10-8": 26,
+        "g1-never-rises-10-8": 26,
         "post-r19-redesign-1": 18,
         "rederivation-30-7": 28,
         "redesign-adoption-6-8": 26
@@ -14939,6 +15730,7 @@
         "21": 205,
         "22": 202,
         "dob-courier-10-8": 202,
+        "g1-never-rises-10-8": 202,
         "post-r19-redesign-1": 201,
         "rederivation-30-7": 193,
         "redesign-adoption-6-8": 205
@@ -14958,6 +15750,7 @@
         "21": 58,
         "22": 59,
         "dob-courier-10-8": 59,
+        "g1-never-rises-10-8": 60,
         "post-r19-redesign-1": 46,
         "rederivation-30-7": 65,
         "redesign-adoption-6-8": 57
@@ -14977,6 +15770,7 @@
         "21": 102,
         "22": 102,
         "dob-courier-10-8": 102,
+        "g1-never-rises-10-8": 102,
         "post-r19-redesign-1": 57,
         "rederivation-30-7": 89,
         "redesign-adoption-6-8": 101
@@ -14996,6 +15790,7 @@
         "21": 14,
         "22": 15,
         "dob-courier-10-8": 15,
+        "g1-never-rises-10-8": 15,
         "post-r19-redesign-1": 4,
         "rederivation-30-7": 12,
         "redesign-adoption-6-8": 12
@@ -15015,6 +15810,7 @@
         "21": 150,
         "22": 152,
         "dob-courier-10-8": 152,
+        "g1-never-rises-10-8": 152,
         "post-r19-redesign-1": 155,
         "rederivation-30-7": 201,
         "redesign-adoption-6-8": 152
@@ -15034,6 +15830,7 @@
         "21": 160,
         "22": 156,
         "dob-courier-10-8": 156,
+        "g1-never-rises-10-8": 156,
         "post-r19-redesign-1": 106,
         "rederivation-30-7": 157,
         "redesign-adoption-6-8": 157
@@ -15053,6 +15850,7 @@
         "21": 88,
         "22": 92,
         "dob-courier-10-8": 92,
+        "g1-never-rises-10-8": 92,
         "post-r19-redesign-1": 64,
         "rederivation-30-7": 66,
         "redesign-adoption-6-8": 85
@@ -15072,6 +15870,7 @@
         "21": 114,
         "22": 120,
         "dob-courier-10-8": 120,
+        "g1-never-rises-10-8": 120,
         "post-r19-redesign-1": 66,
         "rederivation-30-7": 132,
         "redesign-adoption-6-8": 120
@@ -15091,6 +15890,7 @@
         "21": 52,
         "22": 51,
         "dob-courier-10-8": 51,
+        "g1-never-rises-10-8": 51,
         "post-r19-redesign-1": 112,
         "rederivation-30-7": 47,
         "redesign-adoption-6-8": 52
@@ -15110,6 +15910,7 @@
         "21": 109,
         "22": 111,
         "dob-courier-10-8": 111,
+        "g1-never-rises-10-8": 111,
         "post-r19-redesign-1": 91,
         "rederivation-30-7": 114,
         "redesign-adoption-6-8": 114
@@ -15129,6 +15930,7 @@
         "21": 12,
         "22": 13,
         "dob-courier-10-8": 13,
+        "g1-never-rises-10-8": 13,
         "post-r19-redesign-1": 14,
         "rederivation-30-7": 12,
         "redesign-adoption-6-8": 12
@@ -15148,6 +15950,7 @@
         "21": 28,
         "22": 27,
         "dob-courier-10-8": 27,
+        "g1-never-rises-10-8": 27,
         "post-r19-redesign-1": 40,
         "rederivation-30-7": 28,
         "redesign-adoption-6-8": 29
@@ -15167,6 +15970,7 @@
         "21": 94,
         "22": 99,
         "dob-courier-10-8": 99,
+        "g1-never-rises-10-8": 99,
         "post-r19-redesign-1": 114,
         "rederivation-30-7": 89,
         "redesign-adoption-6-8": 94
@@ -15186,6 +15990,7 @@
         "21": 4,
         "22": 5,
         "dob-courier-10-8": 5,
+        "g1-never-rises-10-8": 5,
         "post-r19-redesign-1": 5,
         "rederivation-30-7": 3,
         "redesign-adoption-6-8": 3
@@ -15205,6 +16010,7 @@
         "21": 144,
         "22": 144,
         "dob-courier-10-8": 144,
+        "g1-never-rises-10-8": 144,
         "post-r19-redesign-1": 210,
         "rederivation-30-7": 148,
         "redesign-adoption-6-8": 143
@@ -15224,6 +16030,7 @@
         "21": 81,
         "22": 81,
         "dob-courier-10-8": 81,
+        "g1-never-rises-10-8": 81,
         "post-r19-redesign-1": 67,
         "rederivation-30-7": 81,
         "redesign-adoption-6-8": 80
@@ -15243,6 +16050,7 @@
         "21": 65,
         "22": 66,
         "dob-courier-10-8": 66,
+        "g1-never-rises-10-8": 66,
         "post-r19-redesign-1": 32,
         "rederivation-30-7": 73,
         "redesign-adoption-6-8": 65
@@ -15262,6 +16070,7 @@
         "21": 85,
         "22": 84,
         "dob-courier-10-8": 84,
+        "g1-never-rises-10-8": 84,
         "post-r19-redesign-1": 43,
         "rederivation-30-7": 81,
         "redesign-adoption-6-8": 84
@@ -15281,6 +16090,7 @@
         "21": 30,
         "22": 31,
         "dob-courier-10-8": 31,
+        "g1-never-rises-10-8": 31,
         "post-r19-redesign-1": 36,
         "rederivation-30-7": 31,
         "redesign-adoption-6-8": 30
@@ -15300,6 +16110,7 @@
         "21": 14,
         "22": 15,
         "dob-courier-10-8": 15,
+        "g1-never-rises-10-8": 15,
         "post-r19-redesign-1": 9,
         "rederivation-30-7": 14,
         "redesign-adoption-6-8": 15
