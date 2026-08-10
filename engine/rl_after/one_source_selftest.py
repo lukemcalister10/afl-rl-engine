@@ -873,6 +873,60 @@ if _pl:
           %(' · '.join('%s %d'%(_k,len(_store_byl.get(_k) or [])) for _k in sorted(_want))))
     print("       MSD's level carries its completion-optimism caveat wherever it is shown: %s"%_cav)
 
+print("=== (11) D14 V0 BOARD LAWS — WIRED INTO THE BUILD (owner ruling 1.2, 2026-08-10; #334) ===")
+# WHY THIS SECTION EXISTS. The D14 laws already existed, and they would have gone red on 2026-08-05 the
+# day the never-rises law was lost. They did not fire, because they lived ONLY in ship_gates_check.py —
+# a HAND-RUN checklist. It last ran 2026-07-17, nineteen days before the break; the #306 landing re-ran
+# six other gates and D14 was not among them. That is the process hole the audit named, and a gate that
+# is only run when somebody remembers is not a gate. D14a/b/c now run on the STANDING GATED BUILD PATH:
+# every board build reaches this file, and this file exits non-zero — the build HALTS.
+#   ship_gates_check.py keeps its own D14 block and stays the hand-run SUPERSET (three-column board,
+#   snapshots, the whole checklist). This is deliberate duplication of a cheap check, not a move.
+#
+# D14d is NEW and closes the audit's COVERAGE hole. D14b compares real players; the audit measured that
+# real players expose about 8% of the surface's rising steps. D14d scans the surface itself — every
+# position x draft-age profile, every adjacent pick pair, zero tolerance.
+print("       (D14a/b/c were hand-run-only until this wiring — the 2026-08-05 break went 19 days unseen.)")
+try:
+    _d14=g['_v0_curve_assert']()
+    check(_d14['cross_draft_maxdisp']<1e-6,
+          "D14a same pos x draft-age x recorded-pick => IDENTICAL V0* across draft years "
+          "(max cross-draft dispersion %.6f over the %d rows the surface prices)"
+          %(_d14['cross_draft_maxdisp'],_d14.get('population',0)))
+    check(_d14['within_cell_inversions']==0,
+          "D14b within (pos x draft-age x draft-year) V0 inversions under V0* = %d (must be 0)"
+          %_d14['within_cell_inversions'])
+    check(_d14['kpp_depth_monotone'],
+          "D14c KPP retention floor O1 preserves depth monotonicity = %s"%_d14['kpp_depth_monotone'])
+    # REPORT-ONLY, never a pass/fail: the same two figures over ALL national-draft rows including the
+    # pool rows at pick 65+. Those rows are priced off their signed division levels and never read this
+    # surface, so a "dispersion" or an "inversion" against them is a comparison of two different price
+    # objects — which is why D14a/b were unsatisfiable until the population was corrected. Printed so
+    # the number is visible rather than quietly dropped.
+    print("       report-only, ALL ND rows incl. %d pool rows at pick 65+ (priced off signed division "
+          "levels, not this surface): dispersion %.1f · %d pick pairs — ladder-vs-pool comparisons, "
+          "not surface faults"%(_d14.get('pool_rows_excluded',0),_d14.get('report_only_all_nd_maxdisp',0.0),
+                                _d14.get('report_only_all_nd_inversions',0)))
+except Exception as _ex:
+    check(False,"D14a/b/c could not run on this engine: %s: %s"%(type(_ex).__name__,_ex))
+try:
+    _d14d=g['_v0_surface_assert']()
+    check(_d14d['rising_steps_1_64']==0,
+          "D14d THE NEVER-RISES LAW ON THE SURFACE (owner R12): %d rising step(s) across %d "
+          "position x draft-age profiles x adjacent pick pairs, picks 1-64 — must be 0%s"
+          %(_d14d['rising_steps_1_64'],_d14d['cells'],
+            ('  || first: '+' | '.join(_d14d['worst'][:3])) if _d14d['worst'] else ''))
+    check(_d14d['rising_steps_full_grid']==0,
+          "D14d (full grid) %d rising step(s) over the whole 1-%d pick grid the surface carries — must be 0"
+          %(_d14d['rising_steps_full_grid'],_d14d['grid']))
+    print("       D14d scanned %d cells x %d grid picks = %d adjacent pairs (players expose ~8%% of these)"
+          %(_d14d['cells'],_d14d['grid'],_d14d['cells']*(_d14d['grid']-1)))
+    _isr=(g['_V0CURVE_META'].get('_iso_restore') or {})
+    if _isr: print("       restore provenance: %s | grid points moved %s"
+                   %(_isr.get('law'),_isr.get('grid_points_moved')))
+except Exception as _ex:
+    check(False,"D14d surface scan could not run on this engine: %s: %s"%(type(_ex).__name__,_ex))
+
 print("\n"+("SELF-TEST FAILED: %d check(s)\n  - "%len(FAIL)+"\n  - ".join(FAIL) if FAIL else
       "SELF-TEST PASSED: single source; guards 1-3; board==engine (F1); book==board (F2); Kako+Bontempelli ground-truth; DPP blend stripped; Leg B L-RECENCY + ρ forbidden-list (R105.5/R105.4); collision sentry (King pair) clean."))
 print("  (GUARD 4 — correction-sticks canary — runs separately: python3 guard_correction_canary.py)")

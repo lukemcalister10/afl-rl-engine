@@ -34,8 +34,8 @@
   "identities": {
     "balanced_board_md5": "a970c19cd56ea184e9ca5eb02211d21b",
     "band": "34faa8659cc8f19794f5cb9584fa19b2",
-    "board": "a672ed3a6a1426a262d932f844e8f87b",
-    "engine_head": "8f0e3eb1b29fee6b2defa0a5cfd7ebec",
+    "board": "4b448a821f54180182637983f7a26a9d",
+    "engine_head": "c0a7e969fdd9327fc0b043af14a4bfc6",
     "fv": "d920557ef21d0eec6434853b07869dd4c0b98f64e99e79ecbb8ee54c704ecf4a",
     "register": "652d83e87780e415a01a2de6d8b3cc57",
     "rl_model": "33f940735281a07e3b6ca19f31bf2ea6",
@@ -89,5 +89,5 @@
     "RL_LEGF": "1",
     "RL_PVC2": "1"
   },
-  "contract_sha256": "ea4f31988be690cdf5d60686f72d6bc4790a1e1f04a3c81738cb10afb1265e4b"
+  "contract_sha256": "4fea0fa71285eda30f66cbf2f7adbc01e2b0a77154ca2f09c57ebcb46c884566"
 }

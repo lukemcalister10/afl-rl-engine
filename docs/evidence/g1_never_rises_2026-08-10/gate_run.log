@@ -1,0 +1,33 @@
+== store in workspace ==
+d9a24282357cf3083b1640466e3ecd83  rl_model_data.json
+== engine head in workspace ==
+c0a7e969fdd9327fc0b043af14a4bfc6  _merged_recover.py
+== v0surf on the load path ==
+fbc5b39387b2b135284a2e157f46c810  /home/claude/v0surf.pkl
+== rl_export.py (F1 export<->engine parity gate) ==
+rl_export exit=0
+4b448a821f54180182637983f7a26a9d  rl_app_data.json
+== s4_matrix_M1v7.py (book; F2 book<->board parity gate) ==
+s4_matrix exit=0
+2a642bdac98bff151624b2bf48318884  s4_matrix.json
+== one_source_selftest.py (THE STANDING GATED BUILD — D14a/b/c/d run here) ==
+selftest exit=0
+selftest PASS : 147
+selftest FAIL : 0
+== guard_correction_canary.py (Guard 4) ==
+canary exit=0
+NUMÉRAIRE GUARD: PASS — shipped pick-1 = 3000 (UNCONDITIONAL standing law, register v30 item 17)
+PARITY GATE PASS: all 804 active board values == engine gated ev() (matched by key, eps=0)
+=== (11) D14 V0 BOARD LAWS — WIRED INTO THE BUILD (owner ruling 1.2, 2026-08-10; #334) ===
+       (D14a/b/c were hand-run-only until this wiring — the 2026-08-05 break went 19 days unseen.)
+  PASS D14a same pos x draft-age x recorded-pick => IDENTICAL V0* across draft years (max cross-draft dispersion 0.000000 over the 1448 rows the surface prices)
+  PASS D14b within (pos x draft-age x draft-year) V0 inversions under V0* = 0 (must be 0)
+  PASS D14c KPP retention floor O1 preserves depth monotonicity = True
+       report-only, ALL ND rows incl. 122 pool rows at pick 65+ (priced off signed division levels, not this surface): dispersion 310.1 · 422 pick pairs — ladder-vs-pool comparisons, not surface faults
+  PASS D14d THE NEVER-RISES LAW ON THE SURFACE (owner R12): 0 rising step(s) across 90 position x draft-age profiles x adjacent pick pairs, picks 1-64 — must be 0
+  PASS D14d (full grid) 0 rising step(s) over the whole 1-90 pick grid the surface carries — must be 0
+       D14d scanned 90 cells x 90 grid picks = 8010 adjacent pairs (players expose ~8% of these)
+
+SELF-TEST PASSED: single source; guards 1-3; board==engine (F1); book==board (F2); Kako+Bontempelli ground-truth; DPP blend stripped; Leg B L-RECENCY + ρ forbidden-list (R105.5/R105.4); collision sentry (King pair) clean.
+  (GUARD 4 — correction-sticks canary — runs separately: python3 guard_correction_canary.py)
+GATES_DONE

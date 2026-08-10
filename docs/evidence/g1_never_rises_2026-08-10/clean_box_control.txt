@@ -1,0 +1,44 @@
+N35 CLEAN-BOX CONTROL — run BEFORE any bake, on this container, 2026-08-10.
+BASE: origin/main 064abca (the DOB courier landing), store d9a24282, committed v0surf pin 5a03c9ea.
+
+WHY. The frozen v0 surface is a fitted artifact and numpy's OpenBLAS is DYNAMIC_ARCH, so a
+different CPU/BLAS dispatch tier produces a slightly different surface from the same commit
+(item 380/391). If this box were a "weather" box, the before/after delta reported for this
+repair would be part law-restore and part machine, and no figure in the evidence could be
+trusted. So the control is run first: refit with the UNPATCHED engine and compare to the
+committed pin. If it reproduces byte-exact, the whole delta is the patch.
+
+ENGINE UNDER CONTROL: engine/rl_after/_merged_recover.py at origin/main (064abca)
+    md5 8f0e3eb1b29fee6b2defa0a5cfd7ebec  == data/expected_boot.json 'engine_head' at main
+
+COMMAND
+    cd /home/claude/rl_workspace/rl_after
+    RL_V0SURF_REFIT=1 python3 <repo>/session_2026-07-18/legf6/scripts/refit_v0surf.py --verify
+
+OUTPUT
+    refit_v0surf: shipped-config signature 6ef67f07db98 | 18 age18 pos, surfN 60 ages, surfR 12 ages
+      | new md5 5a03c9ea3e9a32e6cc6e1ffec5293685 | committed pin 5a03c9ea3e9a32e6cc6e1ffec5293685
+      surfaces frozen: 2 (every surface this build fits, so a normal build performs NO fit at all)
+        41af73267f1bcd86bdc208e5f32376d1
+        6ef67f07db98258786189a6316ce24f9   <- shipped
+    VERIFY: refit REPRODUCES the committed pin (5a03c9ea3e9a32e6cc6e1ffec5293685).
+
+SECOND CONTROL — the BOARD, not just the surface. The unpatched engine on this box, built through
+the canonical recipe, reproduced main's committed board byte-exact:
+
+    exported active=804 cohort=1974 | board stamped src=d9a24282 (read-only)
+    PARITY GATE PASS: all 804 active board values == engine gated ev() (matched by key, eps=0)
+    md5 a672ed3a6a1426a262d932f844e8f87b   ==  data/expected_boot.json 'board' at main
+
+VERDICT: CLEAN, on both the surface and the board. Every difference reported in this evidence tree
+is caused by the restored never-rises step and by nothing else.
+
+FOR CONTRAST, the same refit command with the PATCHED engine (md5 6c46970ab7e8dc5219f701367515675a):
+
+    | new md5 fbc5b39387b2b135284a2e157f46c810 | committed pin 5a03c9ea3e9a32e6cc6e1ffec5293685
+    VERIFY: refit DIVERGES from the committed pin  -> the pin was then moved by the --bake lane.
+
+Note that the CONFIG SIGNATURE is identical on both sides (6ef67f07db98). That is by design: the
+signature is a function of the pick curve, the roster geometry and the value-gate environment, and
+never of the surface's values. So the shipped build looks up the same key and loads the new,
+law-abiding surface — no signature churn, no HALT, no silent refit.

@@ -1,0 +1,10 @@
+ data/expected_boot.json                        |   6 +-
+ data/release_contract.json                     |   6 +-
+ data/rl_build/rl_app_data.json                 |   2 +-
+ data/rl_build/rl_app_data.json.srcmd5          |   2 +-
+ data/v0surf.pkl                                | Bin 148626 -> 148626 bytes
+ engine/rl_after/_merged_recover.py             | 190 ++++++++++++++++++++++---
+ engine/rl_after/one_source_selftest.py         |  54 +++++++
+ session_2026-07-18/legf6/v0surf_refit_log.json |  10 ++
+ ship_gates_check.py                            |  31 +++-
+ 9 files changed, 273 insertions(+), 28 deletions(-)

@@ -1,0 +1,11 @@
+PATCHED ENGINE + main's pre-restore surface (5a03c9ea), loaded by explicit path:
+  D14d rising steps picks 1-64 = 439   -> gate FAILS (must be 0)
+  D14d rising steps full grid  = 2779   -> gate FAILS (must be 0)
+  D14b inversions, surface population = 53  -> gate FAILS (must be 0)
+  D14a dispersion, surface population = 0.000000
+  first offending steps D14d names:
+    KPD|16 pick 10->11 1081.51->1089.37
+    KPD|16 pick 11->12 1089.37->1106.84
+    KPD|17 pick 10->11 1082.83->1089.54
+    KPD|17 pick 11->12 1089.54->1106.35
+    KPD|18 pick 10->11 1083.38->1089.34

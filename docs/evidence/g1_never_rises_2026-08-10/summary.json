@@ -1,0 +1,38 @@
+{
+ "base": {
+  "main_commit": "064abca",
+  "store": "d9a24282357cf3083b1640466e3ecd83"
+ },
+ "surface": {
+  "cells": 90,
+  "grid_picks": 90,
+  "config_signature_before": "6ef67f07db98258786189a6316ce24f9",
+  "config_signature_after": "6ef67f07db98258786189a6316ce24f9",
+  "rising_steps_1_64_before": 439,
+  "rising_steps_1_64_after": 0,
+  "rising_steps_full_grid_before": 2779,
+  "rising_steps_full_grid_after": 0,
+  "cells_with_a_rise_before": 90,
+  "cells_with_a_rise_after": 0,
+  "adjacent_pairs_scanned": 8010
+ },
+ "movers": {
+  "any_change": 82,
+  "v0_gt_1pt": 79,
+  "v0_gt_100pt": 6,
+  "largest_abs_v0_delta": 119.79,
+  "v0_down": 47,
+  "v0_up": 35,
+  "price_movers": 16,
+  "price_down": 9,
+  "price_up": 7,
+  "largest_price_cut": -18,
+  "largest_price_rise": 24
+ },
+ "board": {
+  "total_before": 761587,
+  "total_after": 761574,
+  "delta": -13,
+  "pct": -0.0017
+ }
+}
