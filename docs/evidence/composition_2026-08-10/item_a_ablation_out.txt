@@ -1,0 +1,1 @@
+config manifest (gate mode) LOADED  hash cef06fd6250b  (59 model vars pinned; ambient cleared)

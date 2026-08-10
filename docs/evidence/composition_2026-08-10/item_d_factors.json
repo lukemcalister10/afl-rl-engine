@@ -1,0 +1,24 @@
+{
+ "contrast_bent": 1.3379599007718905,
+ "contrast_corr": 1.1040644407307134,
+ "ci": [
+  0.5477383003489504,
+  2.156866163350534
+ ],
+ "cautious": 1.05,
+ "cautious_source": "RULED 1.05, taken AS FILED",
+ "corrected_ci_covers_1": true,
+ "t_KPP": 1.0352920883164674,
+ "t_SMALL": 0.9859924650633022,
+ "t_RUCK": 1.0,
+ "n": {
+  "KPP": 83,
+  "SMALL": 186,
+  "RUCK": 30
+ },
+ "effn": {
+  "KPP": 60.432399643281194,
+  "SMALL": 98.86601954240192,
+  "RUCK": 22.512164148537664
+ }
+}
