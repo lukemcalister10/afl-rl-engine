@@ -47,8 +47,10 @@ PY
 
 export RL_REPO="$WT" RL_FV="$WT/engine/forward_valuation"
 export PYTHONPATH="$WT/engine/rl_after:$WT:$WT/vendor"
-# the non-manifest declared kill-switches ride the environment
-for a in "$@"; do case "$a" in RL_ITEM_A=*|RL_ITEM_H=*|RL_C_H=*|RL_RUC_WAGE=*) export "$a";; esac; done
+# NOTHING rides the environment: gate mode rejects any override not in the manifest, and rightly so.
+# Every dial this act introduces (RL_ITEM_A, RL_C_H, RL_RUC_WAGE, RL_ITEM_H, RL_SUR_W) is a MANIFEST
+# var, so a variant is made by editing the worktree's manifest and restamping it above — the guards
+# stay armed and the variant's own config hash describes exactly what it built.
 cd "$WT/engine/rl_after"; rm -f rl_app_data.json rl_app_data.json.srcmd5
 python3 rl_export.py > "$OUT.log" 2>&1
 rc=$?
