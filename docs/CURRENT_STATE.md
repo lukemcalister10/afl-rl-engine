@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v108 · supervisor pen · 2026-08-10, register v618
+# CURRENT STATE — the incoming-seat read · v109 · supervisor pen · 2026-08-10, register v619
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -145,8 +145,9 @@ only, last 07-17; the band-seam story was WRONG — same-band inversion). AUDIT 
 COMPLETE (v618): ND year-0 HONEST everywhere; pool over-priced ~66k pts (AGE error,
 #326-adjacent); KPD = a year-0→1 mark-up defect; unknown-DOB priced as 18 (~17.7k);
 inversions 8,341 pts total, mostly tiny. THE AUDIT PHASE IS DONE — the decision menu is
-in v618; the owner rules the fix order. R22 ingestion running. Visibility + Opus rules
-standing. Read v604–v618 IN FULL. Primer v7 first.)
+in v618; the owner rules the fix order. ROUND 22 APPLIED AND MERGED (v619: store 0dd6b4a0,
+board 6e724cca; the R21→R22 comparison delivered). NOTHING is in flight. Visibility +
+Opus rules standing. Read v604–v619 IN FULL. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
