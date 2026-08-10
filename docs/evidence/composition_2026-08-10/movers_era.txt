@@ -1,0 +1,26 @@
+================================================================================================
+MOVERS — SALVAGE 1 — ERA REMOVAL (on top of ITEM B)
+  before board_B.json  (n=804, sum 765202)
+  after  board_B_era.json  (n=804, sum 764492)
+================================================================================================
+  movers: 26   up: 0 (+0)   down: 26 (-710)
+  board sum 765202 -> 764492   delta -710   ratio 0.999072
+  by position: KPF 26
+
+  player                     pos       before     after    delta
+  Riley Thilthorpe           KPF         4664      4527     -137
+  Josh Treacy                KPF         7123      7039      -84
+  Sam Darcy                  KPF         5350      5277      -73
+  Harry McKay                KPF         1831      1759      -72
+  Charlie Curnow             KPF         1431      1384      -47
+  Aaron Naughton             KPF         1223      1182      -41
+  Peter Wright               KPF         1679      1641      -38
+  Jeremy Cameron             KPF          826       790      -36
+  Jack Gunston               KPF          784       763      -21
+  Jake Waterman              KPF         1198      1177      -21
+  Mitch Georgiades           KPF         1465      1446      -19
+  Kyle Langford              KPF          544       525      -19
+  Jake Riccardi              KPF          276       260      -16
+  Cooper Sharman             KPF          450       437      -13
+  Ben King                   KPF          232       220      -12
+  ... top rises:
