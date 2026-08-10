@@ -1,0 +1,30 @@
+==============================================================================================================================
+MEASURED value of each gate cell (what "already priced" means numerically):
+   picks 1-10 x TOP-TERCILE sa        measured residual +0.00390   (bound on movement 0.015)
+   picks 1-20 x ABOVE-MEDIAN sa       measured residual +0.03499   (bound on movement 0.025)
+   picks 41-64 (declared taper)       measured residual -0.03219   (bound on movement 0.005)
+   draft age 19+ (declared taper)     measured residual -0.02922   (bound on movement 0.005)
+   uncorrected year-1 median F' = 0.8672 ; fraction out-earning the uncorrected price = 0.452
+==============================================================================================================================
+surface                                             bandlift   seamW2%    W_max   yr1 land  medF'@Wm   frac@Wm   seam@Wm
+------------------------------------------------------------------------------------------------------------------------------
+CONTROL 2-axis (shipped)                             0.38607    0.5224   0.4193   1.024847    0.7790     0.425    1.6316
+3-axis A  pick x cls x sa(gauss 3k), no z            0.36666    0.5544   0.2557   1.011565    0.8251     0.437    0.9833
+3-axis B  pick x cls x sa(gauss 3k), z kept          0.30546    0.6818   0.3835   1.021944    0.8001     0.425    1.1878
+3-axis G  pick x cls x sa(HARD terciles), no z       0.29139    0.7187   0.3067   1.015703    0.8123     0.430    0.9216
+3-axis G+ pick x cls x sa(HARD terciles), z kept     0.24369    0.8522   0.3608   1.020099    0.8025     0.432    0.8953
+3-axis H  strict sumK>=35 rule, no z                 0.34521    0.5939   0.2828   1.013768    0.8219     0.440    1.0142
+3-axis H+ strict sumK>=35 rule, z kept               0.29702    0.7035   0.4301   1.025724    0.7867     0.425    1.2855
+CONTROL F 2-axis kernel + z AND sa gates             0.38856    0.5186   0.5062   1.031904    0.7633     0.420    1.9589
+
+TAUGHT vs MEASURED at the two REGISTERED zero cells, at W=1 (how well each surface holds them):
+surface                                               picks1-10 x topT sa picks1-20 x aboveMed sa
+                                                        measured +0.00390      measured +0.03499
+CONTROL 2-axis (shipped)                                         +0.03447               +0.05962
+3-axis A  pick x cls x sa(gauss 3k), no z                        +0.02598               +0.06701
+3-axis B  pick x cls x sa(gauss 3k), z kept                      +0.01289               +0.04433
+3-axis G  pick x cls x sa(HARD terciles), no z                   +0.01337               +0.08152
+3-axis G+ pick x cls x sa(HARD terciles), z kept                 +0.00673               +0.06929
+3-axis H  strict sumK>=35 rule, no z                             +0.03188               +0.07765
+3-axis H+ strict sumK>=35 rule, z kept                           +0.01816               +0.05329
+CONTROL F 2-axis kernel + z AND sa gates                         +0.02455               +0.04938
