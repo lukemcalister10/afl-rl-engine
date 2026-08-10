@@ -1,0 +1,7 @@
+catch-up preflight fast tests:
+  test_footywire_encodings_and_header PASS
+  test_preflight_clean_with_overrides PASS
+  test_bailey_williams_routed_by_stable_key PASS
+  test_callum_brown_override_and_croft_zero PASS
+  test_unmapped_override_is_unresolved PASS
+ALL CATCH-UP PREFLIGHT TESTS PASS

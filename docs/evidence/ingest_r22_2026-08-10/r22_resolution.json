@@ -1,0 +1,4106 @@
+{
+ "absent_dnp": 395,
+ "active_universe": 804,
+ "distinct_stable_keys": 409,
+ "kind": "r22_identity_resolution",
+ "listed": 409,
+ "listed_zero": 0,
+ "preflight_clean": true,
+ "resolved": 409,
+ "round": 22,
+ "season": 2026,
+ "source_file": "scores/R22.csv (owner-couriered, byte-unmodified)",
+ "source_sha256": "c8f3748462d07d001e271ba8ad741f8d8c3ef9ebb45f5a6244c7c4fb1275ba42",
+ "table": [
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Izak Rankine",
+   "file_score": 223.0,
+   "stable_player_id": "afl-player-v1-bd42202cb19165646cf4",
+   "store_key": "izak-rankine",
+   "store_name": "Izak Rankine",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Matt Rowell",
+   "file_score": 174.0,
+   "stable_player_id": "afl-player-v1-1d1e35bfd48a45849e03",
+   "store_key": "matt-rowell",
+   "store_name": "Matt Rowell",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Bailey Smith",
+   "file_score": 161.0,
+   "stable_player_id": "afl-player-v1-729b0a603a18a0d56369",
+   "store_key": "bailey-smith",
+   "store_name": "Bailey Smith",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Touk Miller",
+   "file_score": 157.0,
+   "stable_player_id": "afl-player-v1-c61603f67b0ce6706e05",
+   "store_key": "touk-miller",
+   "store_name": "Touk Miller",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Luke Davies-Uniacke",
+   "file_score": 156.0,
+   "stable_player_id": "afl-player-v1-8386ecd55aded8f8e1ab",
+   "store_key": "luke-davies-uniacke",
+   "store_name": "Luke Davies-Uniacke",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Lachie Neale",
+   "file_score": 155.0,
+   "stable_player_id": "afl-player-v1-d16ccdb3fe877363eb06",
+   "store_key": "lachie-neale",
+   "store_name": "Lachie Neale",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Luke Jackson",
+   "file_score": 149.0,
+   "stable_player_id": "afl-player-v1-a0647984be62bcc3cab3",
+   "store_key": "luke-jackson",
+   "store_name": "Luke Jackson",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Jase Burgoyne",
+   "file_score": 139.0,
+   "stable_player_id": "afl-player-v1-72c1c11700fc61dae98d",
+   "store_key": "jase-burgoyne",
+   "store_name": "Jase Burgoyne",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Francis Evans",
+   "file_score": 134.0,
+   "stable_player_id": "afl-player-v1-c4c5af0d7fdb69445549",
+   "store_key": "francis-evans",
+   "store_name": "Francis Evans",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Errol Gulden",
+   "file_score": 134.0,
+   "stable_player_id": "afl-player-v1-308ccebe1548de60b409",
+   "store_key": "errol-gulden",
+   "store_name": "Errol Gulden",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Oliver Florent",
+   "file_score": 132.0,
+   "stable_player_id": "afl-player-v1-677d6d582c6d7170a62f",
+   "store_key": "oliver-florent",
+   "store_name": "Oliver Florent",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Will Ashcroft",
+   "file_score": 132.0,
+   "stable_player_id": "afl-player-v1-12cdb476c70ab6740733",
+   "store_key": "will-ashcroft",
+   "store_name": "Will Ashcroft",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Nick Daicos",
+   "file_score": 132.0,
+   "stable_player_id": "afl-player-v1-25c90ee89147d316c6b8",
+   "store_key": "nick-daicos",
+   "store_name": "Nick Daicos",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Darcy Cameron",
+   "file_score": 129.0,
+   "stable_player_id": "afl-player-v1-e4ebf44ca266366dbc1c",
+   "store_key": "darcy-cameron",
+   "store_name": "Darcy Cameron",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Kai Lohmann",
+   "file_score": 129.0,
+   "stable_player_id": "afl-player-v1-6b568799ebc4bf88eb36",
+   "store_key": "kai-lohmann",
+   "store_name": "Kai Lohmann",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Logan Morris",
+   "file_score": 128.0,
+   "stable_player_id": "afl-player-v1-65668cce074d71131911",
+   "store_key": "logan-morris",
+   "store_name": "Logan Morris",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Max Hall",
+   "file_score": 125.0,
+   "stable_player_id": "afl-player-v1-a79de63b596184ec6aa8",
+   "store_key": "max-hall",
+   "store_name": "Max Hall",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Jai Serong",
+   "file_score": 124.0,
+   "stable_player_id": "afl-player-v1-4dc82d0e8a055ba08cbe",
+   "store_key": "jai-serong",
+   "store_name": "Jai Serong",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Dylan Stephens",
+   "file_score": 123.0,
+   "stable_player_id": "afl-player-v1-fd0092d26b0a422f8f77",
+   "store_key": "dylan-stephens",
+   "store_name": "Dylan Stephens",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Chad Warner",
+   "file_score": 123.0,
+   "stable_player_id": "afl-player-v1-95e6edb27f0d4ea676f1",
+   "store_key": "chad-warner",
+   "store_name": "Chad Warner",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Daniel McStay",
+   "file_score": 120.0,
+   "stable_player_id": "afl-player-v1-96295534a1df94d2044b",
+   "store_key": "daniel-mcstay",
+   "store_name": "Daniel McStay",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "George Hewett",
+   "file_score": 119.0,
+   "stable_player_id": "afl-player-v1-b8d47d2584af7bc76166",
+   "store_key": "george-hewett",
+   "store_name": "George Hewett",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Matt Johnson",
+   "file_score": 118.0,
+   "stable_player_id": "afl-player-v1-dbcfd02a2c1fe7172bcd",
+   "store_key": "matt-johnson-1",
+   "store_name": "Matt Johnson",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Ned Moyle",
+   "file_score": 118.0,
+   "stable_player_id": "afl-player-v1-b0f136f33ad07b15d6d8",
+   "store_key": "ned-moyle",
+   "store_name": "Ned Moyle",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Kysaiah Pickett",
+   "file_score": 118.0,
+   "stable_player_id": "afl-player-v1-1e375a8a1f94f8a23dfd",
+   "store_key": "kysaiah-pickett",
+   "store_name": "Kysaiah Pickett",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Josh Daicos",
+   "file_score": 117.0,
+   "stable_player_id": "afl-player-v1-d246c05d619c36492dce",
+   "store_key": "josh-daicos",
+   "store_name": "Josh Daicos",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Tom McCarthy",
+   "file_score": 115.0,
+   "stable_player_id": "afl-player-v1-f6b273b240ecc1e56ea8",
+   "store_key": "tom-mccarthy",
+   "store_name": "Tom McCarthy",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Bradley Hill",
+   "file_score": 115.0,
+   "stable_player_id": "afl-player-v1-1d780d19cc3efbbf3552",
+   "store_key": "bradley-hill",
+   "store_name": "Bradley Hill",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Nick Vlastuin",
+   "file_score": 115.0,
+   "stable_player_id": "afl-player-v1-3748d2d5901b55897f63",
+   "store_key": "nick-vlastuin",
+   "store_name": "Nick Vlastuin",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Wil Powell",
+   "file_score": 115.0,
+   "stable_player_id": "afl-player-v1-f6c1419e3347c583c2bb",
+   "store_key": "wil-powell",
+   "store_name": "Wil Powell",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Ollie Dempsey",
+   "file_score": 114.0,
+   "stable_player_id": "afl-player-v1-7424aadbc9d795413bb8",
+   "store_key": "ollie-dempsey",
+   "store_name": "Ollie Dempsey",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Ed Richards",
+   "file_score": 114.0,
+   "stable_player_id": "afl-player-v1-b9ea3f3086273085ef4e",
+   "store_key": "ed-richards",
+   "store_name": "Ed Richards",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Zachary Merrett",
+   "file_score": 114.0,
+   "stable_player_id": "afl-player-v1-4a82f8ccfdbd058d9358",
+   "store_key": "zachary-merrett",
+   "store_name": "Zachary Merrett",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Josh Ward",
+   "file_score": 114.0,
+   "stable_player_id": "afl-player-v1-a8c15dd580fe0f3312b6",
+   "store_key": "josh-ward",
+   "store_name": "Josh Ward",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Josaia Delana",
+   "file_score": 113.0,
+   "stable_player_id": "afl-player-v1-ce576813a5ba90f27db6",
+   "store_key": "josaia-delana",
+   "store_name": "Josaia Delana",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Harvey Langford",
+   "file_score": 112.0,
+   "stable_player_id": "afl-player-v1-d6ed32b0c0d14bdc9e91",
+   "store_key": "harvey-langford",
+   "store_name": "Harvey Langford",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Oliver Henry",
+   "file_score": 110.0,
+   "stable_player_id": "afl-player-v1-7bf02b691759aa5668c1",
+   "store_key": "oliver-henry",
+   "store_name": "Oliver Henry",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Marc Pittonet",
+   "file_score": 110.0,
+   "stable_player_id": "afl-player-v1-8614727698f7e9af562e",
+   "store_key": "marc-pittonet",
+   "store_name": "Marc Pittonet",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Lachie Whitfield",
+   "file_score": 110.0,
+   "stable_player_id": "afl-player-v1-98d4447a6c6e8af946e8",
+   "store_key": "lachie-whitfield",
+   "store_name": "Lachie Whitfield",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Bodhi Uwland",
+   "file_score": 110.0,
+   "stable_player_id": "afl-player-v1-53cf9ea07c8d23470b27",
+   "store_key": "bodhi-uwland",
+   "store_name": "Bodhi Uwland",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Adam Cerra",
+   "file_score": 109.0,
+   "stable_player_id": "afl-player-v1-87957120b42751e30451",
+   "store_key": "adam-cerra",
+   "store_name": "Adam Cerra",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Jake Lloyd",
+   "file_score": 109.0,
+   "stable_player_id": "afl-player-v1-797837193a7c4b847d81",
+   "store_key": "jake-lloyd",
+   "store_name": "Jake Lloyd",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Bailey Humphrey",
+   "file_score": 109.0,
+   "stable_player_id": "afl-player-v1-9f45e63fb7a10ebbb1d4",
+   "store_key": "bailey-humphrey",
+   "store_name": "Bailey Humphrey",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Jordan Dawson",
+   "file_score": 108.0,
+   "stable_player_id": "afl-player-v1-cf9fc9a7e2cfd3156d25",
+   "store_key": "jordan-dawson",
+   "store_name": "Jordan Dawson",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Riley Bice",
+   "file_score": 108.0,
+   "stable_player_id": "afl-player-v1-937133d2dc41d511ffe3",
+   "store_key": "riley-bice",
+   "store_name": "Riley Bice",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Jack Ross",
+   "file_score": 108.0,
+   "stable_player_id": "afl-player-v1-4a55aae7811189362c4a",
+   "store_key": "jack-ross",
+   "store_name": "Jack Ross",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Callum Mills",
+   "file_score": 107.0,
+   "stable_player_id": "afl-player-v1-be6280152eab06a384a7",
+   "store_key": "callum-mills",
+   "store_name": "Callum Mills",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Jhye Clark",
+   "file_score": 106.0,
+   "stable_player_id": "afl-player-v1-066fee6e9d9da612b305",
+   "store_key": "jhye-clark",
+   "store_name": "Jhye Clark",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Reilly O'Brien",
+   "file_score": 106.0,
+   "stable_player_id": "afl-player-v1-246485594049e2517cdf",
+   "store_key": "reilly-o-brien",
+   "store_name": "Reilly O'Brien",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "George Wardlaw",
+   "file_score": 105.0,
+   "stable_player_id": "afl-player-v1-02380b2ddf7c0a01c83c",
+   "store_key": "george-wardlaw",
+   "store_name": "George Wardlaw",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Ben Miller",
+   "file_score": 105.0,
+   "stable_player_id": "afl-player-v1-b75b9dd65a15a8ffab49",
+   "store_key": "ben-miller",
+   "store_name": "Ben Miller",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Caleb Serong",
+   "file_score": 105.0,
+   "stable_player_id": "afl-player-v1-970c598ee4fc55acaa39",
+   "store_key": "caleb-serong",
+   "store_name": "Caleb Serong",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Max Gawn",
+   "file_score": 105.0,
+   "stable_player_id": "afl-player-v1-ed822a4e2051b799eded",
+   "store_key": "max-gawn",
+   "store_name": "Max Gawn",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Sam Berry",
+   "file_score": 105.0,
+   "stable_player_id": "afl-player-v1-212726adeb014d2063cf",
+   "store_key": "sam-berry",
+   "store_name": "Sam Berry",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Blake Hardwick",
+   "file_score": 105.0,
+   "stable_player_id": "afl-player-v1-2d0be16a32b077bf822a",
+   "store_key": "blake-hardwick",
+   "store_name": "Blake Hardwick",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Josh Treacy",
+   "file_score": 104.0,
+   "stable_player_id": "afl-player-v1-401083e67cc655ae73fb",
+   "store_key": "josh-treacy",
+   "store_name": "Josh Treacy",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Shaun Mannagh",
+   "file_score": 104.0,
+   "stable_player_id": "afl-player-v1-97a49cb582ddb5aeaaa1",
+   "store_key": "shaun-mannagh",
+   "store_name": "Shaun Mannagh",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Willem Drew",
+   "file_score": 103.0,
+   "stable_player_id": "afl-player-v1-c0e33467ecaecc45a77a",
+   "store_key": "willem-drew",
+   "store_name": "Willem Drew",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Thomas Stewart",
+   "file_score": 103.0,
+   "stable_player_id": "afl-player-v1-c746361adb86ff960c48",
+   "store_key": "thomas-stewart",
+   "store_name": "Thomas Stewart",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Tim Membrey",
+   "file_score": 103.0,
+   "stable_player_id": "afl-player-v1-2f8f4a2bfa1014ab44a3",
+   "store_key": "tim-membrey",
+   "store_name": "Tim Membrey",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Jesse Dattoli",
+   "file_score": 102.0,
+   "stable_player_id": "afl-player-v1-16877fb6b00199654e9e",
+   "store_key": "jesse-dattoli",
+   "store_name": "Jesse Dattoli",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Harry Sharp",
+   "file_score": 102.0,
+   "stable_player_id": "afl-player-v1-263e17ec5c383810e670",
+   "store_key": "harry-sharp",
+   "store_name": "Harry Sharp",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Caleb Daniel",
+   "file_score": 102.0,
+   "stable_player_id": "afl-player-v1-f3b426662b256de4c7a8",
+   "store_key": "caleb-daniel",
+   "store_name": "Caleb Daniel",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Nick Blakey",
+   "file_score": 101.0,
+   "stable_player_id": "afl-player-v1-b256e4d9e5432a4e53a4",
+   "store_key": "nick-blakey",
+   "store_name": "Nick Blakey",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Harvey Thomas",
+   "file_score": 101.0,
+   "stable_player_id": "afl-player-v1-ab3fe74846e344f27891",
+   "store_key": "harvey-thomas",
+   "store_name": "Harvey Thomas",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Paul Curtis",
+   "file_score": 101.0,
+   "stable_player_id": "afl-player-v1-2f5bb7529c45ed8b1c79",
+   "store_key": "paul-curtis",
+   "store_name": "Paul Curtis",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Mark Blicavs",
+   "file_score": 100.0,
+   "stable_player_id": "afl-player-v1-96e4afac65663a792290",
+   "store_key": "mark-blicavs",
+   "store_name": "Mark Blicavs",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Jake Bowey",
+   "file_score": 100.0,
+   "stable_player_id": "afl-player-v1-e0445624468b8061dc74",
+   "store_key": "jake-bowey",
+   "store_name": "Jake Bowey",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Cameron Zurhaar",
+   "file_score": 100.0,
+   "stable_player_id": "afl-player-v1-397ef921c11641ab2a61",
+   "store_key": "cameron-zurhaar",
+   "store_name": "Cameron Zurhaar",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Nick Haynes",
+   "file_score": 100.0,
+   "stable_player_id": "afl-player-v1-2df5772a1446de4f16bf",
+   "store_key": "nick-haynes",
+   "store_name": "Nick Haynes",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Alex Neal-Bullen",
+   "file_score": 99.0,
+   "stable_player_id": "afl-player-v1-e85a86a8692f0a831933",
+   "store_key": "alex-neal-bullen",
+   "store_name": "Alex Neal-Bullen",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Jason Horne-Francis",
+   "file_score": 99.0,
+   "stable_player_id": "afl-player-v1-1c150e0d509e17a4deac",
+   "store_key": "jason-horne-francis",
+   "store_name": "Jason Horne-Francis",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Marcus Bontempelli",
+   "file_score": 99.0,
+   "stable_player_id": "afl-player-v1-52b76fe3c9cc2b8183b7",
+   "store_key": "marcus-bontempelli",
+   "store_name": "Marcus Bontempelli",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Edward Allan",
+   "file_score": 99.0,
+   "stable_player_id": "afl-player-v1-5d5b047e5ea5f9951808",
+   "store_key": "edward-allan",
+   "store_name": "Edward Allan",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Tristan Xerri",
+   "file_score": 99.0,
+   "stable_player_id": "afl-player-v1-925ceac71aac412ace23",
+   "store_key": "tristan-xerri",
+   "store_name": "Tristan Xerri",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Bayley Fritsch",
+   "file_score": 98.0,
+   "stable_player_id": "afl-player-v1-232efdaede6c4306886a",
+   "store_key": "bayley-fritsch",
+   "store_name": "Bayley Fritsch",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": false,
+   "file_name": "Bailey Williams",
+   "file_score": 97.0,
+   "stable_player_id": "afl-player-v1-d8c86c5bdaf14f79a1b2",
+   "store_key": "bailey-williams-wc",
+   "store_name": "Bailey J. Williams",
+   "via": "owner-override:by_round_score"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Koltyn Tholstrup",
+   "file_score": 97.0,
+   "stable_player_id": "afl-player-v1-b2c51a63fc373bb833ac",
+   "store_key": "koltyn-tholstrup",
+   "store_name": "Koltyn Tholstrup",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Dyson Sharp",
+   "file_score": 96.0,
+   "stable_player_id": "afl-player-v1-62148c46129794e49893",
+   "store_key": "dyson-sharp",
+   "store_name": "Dyson Sharp",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Shannon Neale",
+   "file_score": 96.0,
+   "stable_player_id": "afl-player-v1-945c3ad0f520c0dd489a",
+   "store_key": "shannon-neale",
+   "store_name": "Shannon Neale",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Harry Sheezel",
+   "file_score": 96.0,
+   "stable_player_id": "afl-player-v1-d12a2f85b92e8396e034",
+   "store_key": "harry-sheezel",
+   "store_name": "Harry Sheezel",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Josh Worrell",
+   "file_score": 96.0,
+   "stable_player_id": "afl-player-v1-248c051e7df555f47a45",
+   "store_key": "josh-worrell",
+   "store_name": "Josh Worrell",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Isaac Heeney",
+   "file_score": 93.0,
+   "stable_player_id": "afl-player-v1-3e63685925a5759a6950",
+   "store_key": "isaac-heeney",
+   "store_name": "Isaac Heeney",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Elliot Yeo",
+   "file_score": 93.0,
+   "stable_player_id": "afl-player-v1-5ffdbf36d1697aac7ef8",
+   "store_key": "elliot-yeo",
+   "store_name": "Elliot Yeo",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Massimo D'Ambrosio",
+   "file_score": 93.0,
+   "stable_player_id": "afl-player-v1-ae71cd9397d333f81257",
+   "store_key": "massimo-d-ambrosio",
+   "store_name": "Massimo D'Ambrosio",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Tom Sparrow",
+   "file_score": 93.0,
+   "stable_player_id": "afl-player-v1-255d45ce53af9a6a07e4",
+   "store_key": "tom-sparrow",
+   "store_name": "Tom Sparrow",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Dayne Zorko",
+   "file_score": 92.0,
+   "stable_player_id": "afl-player-v1-492319f4c76dbc13ba1a",
+   "store_key": "dayne-zorko",
+   "store_name": "Dayne Zorko",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Luke Parker",
+   "file_score": 92.0,
+   "stable_player_id": "afl-player-v1-58bbb663005700d953dd",
+   "store_key": "luke-parker",
+   "store_name": "Luke Parker",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Tim Kelly",
+   "file_score": 92.0,
+   "stable_player_id": "afl-player-v1-f7adb7c2cf1d0b3af926",
+   "store_key": "tim-kelly",
+   "store_name": "Tim Kelly",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Ned Long",
+   "file_score": 92.0,
+   "stable_player_id": "afl-player-v1-f19f835c12df6ed8917b",
+   "store_key": "ned-long",
+   "store_name": "Ned Long",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Toby Nankervis",
+   "file_score": 92.0,
+   "stable_player_id": "afl-player-v1-be68446913746449d2a2",
+   "store_key": "toby-nankervis",
+   "store_name": "Toby Nankervis",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Lachlan Schultz",
+   "file_score": 91.0,
+   "stable_player_id": "afl-player-v1-a632c601617e8e666e07",
+   "store_key": "lachlan-schultz",
+   "store_name": "Lachlan Schultz",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Jarrod Berry",
+   "file_score": 91.0,
+   "stable_player_id": "afl-player-v1-4c39c245f4e41e17565b",
+   "store_key": "jarrod-berry",
+   "store_name": "Jarrod Berry",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Liam Stocker",
+   "file_score": 90.0,
+   "stable_player_id": "afl-player-v1-da036863cc3d8fb50812",
+   "store_key": "liam-stocker",
+   "store_name": "Liam Stocker",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Lachlan Bramble",
+   "file_score": 90.0,
+   "stable_player_id": "afl-player-v1-b98529f9eca3cbf471fd",
+   "store_key": "lachlan-bramble",
+   "store_name": "Lachlan Bramble",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Jack Henry",
+   "file_score": 90.0,
+   "stable_player_id": "afl-player-v1-50b72fbfc63ab0190926",
+   "store_key": "jack-henry",
+   "store_name": "Jack Henry",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Harris Andrews",
+   "file_score": 90.0,
+   "stable_player_id": "afl-player-v1-70221165b1045d284cf1",
+   "store_key": "harris-andrews",
+   "store_name": "Harris Andrews",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Harrison Petty",
+   "file_score": 90.0,
+   "stable_player_id": "afl-player-v1-798ef99c1a224797383e",
+   "store_key": "harrison-petty",
+   "store_name": "Harrison Petty",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Toby Greene",
+   "file_score": 90.0,
+   "stable_player_id": "afl-player-v1-d26e334058cc256353fa",
+   "store_key": "toby-greene",
+   "store_name": "Toby Greene",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Andrew McGrath",
+   "file_score": 89.0,
+   "stable_player_id": "afl-player-v1-569acef3f5da1997d202",
+   "store_key": "andrew-mcgrath",
+   "store_name": "Andrew McGrath",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Bailey Williams",
+   "file_score": 89.0,
+   "stable_player_id": "afl-player-v1-2bb1c4575ccd8c7ba202",
+   "store_key": "bailey-williams-wb",
+   "store_name": "Bailey Williams",
+   "via": "owner-override:by_round_score"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Rowan Marshall",
+   "file_score": 88.0,
+   "stable_player_id": "afl-player-v1-0dbc2d44e3412f13c2b1",
+   "store_key": "rowan-marshall",
+   "store_name": "Rowan Marshall",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Marcus Windhager",
+   "file_score": 88.0,
+   "stable_player_id": "afl-player-v1-f64a092d53ea034a531f",
+   "store_key": "marcus-windhager",
+   "store_name": "Marcus Windhager",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Lloyd Meek",
+   "file_score": 88.0,
+   "stable_player_id": "afl-player-v1-c6bb2d8cdbc03d55b932",
+   "store_key": "lloyd-meek",
+   "store_name": "Lloyd Meek",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Tom Papley",
+   "file_score": 88.0,
+   "stable_player_id": "afl-player-v1-895ed18bb574e12877aa",
+   "store_key": "tom-papley",
+   "store_name": "Tom Papley",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Patrick Cripps",
+   "file_score": 88.0,
+   "stable_player_id": "afl-player-v1-3c4dfebabc0d54a341af",
+   "store_key": "patrick-cripps",
+   "store_name": "Patrick Cripps",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Tom Gross",
+   "file_score": 88.0,
+   "stable_player_id": "afl-player-v1-49320c2b53b16d7c4195",
+   "store_key": "tom-gross",
+   "store_name": "Tom Gross",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Cameron Mackenzie",
+   "file_score": 87.0,
+   "stable_player_id": "afl-player-v1-58209e6544f9705de29e",
+   "store_key": "cameron-mackenzie",
+   "store_name": "Cameron Mackenzie",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Seth Campbell",
+   "file_score": 87.0,
+   "stable_player_id": "afl-player-v1-dba401cbb0209af741a0",
+   "store_key": "seth-campbell",
+   "store_name": "Seth Campbell",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Lawson Humphries",
+   "file_score": 87.0,
+   "stable_player_id": "afl-player-v1-5550d94242e784ca1c3d",
+   "store_key": "lawson-humphries",
+   "store_name": "Lawson Humphries",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Levi Ashcroft",
+   "file_score": 87.0,
+   "stable_player_id": "afl-player-v1-f3c64c36039d81bd8c9b",
+   "store_key": "levi-ashcroft",
+   "store_name": "Levi Ashcroft",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Colby McKercher",
+   "file_score": 87.0,
+   "stable_player_id": "afl-player-v1-ec36ae407a5d9b9384e1",
+   "store_key": "colby-mckercher",
+   "store_name": "Colby McKercher",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Daniel Rioli",
+   "file_score": 86.0,
+   "stable_player_id": "afl-player-v1-2ba9319113f47277fa21",
+   "store_key": "daniel-rioli",
+   "store_name": "Daniel Rioli",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Trent Rivers",
+   "file_score": 86.0,
+   "stable_player_id": "afl-player-v1-92c19d79435c34d4b286",
+   "store_key": "trent-rivers",
+   "store_name": "Trent Rivers",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Blake Acres",
+   "file_score": 86.0,
+   "stable_player_id": "afl-player-v1-af797315ad896038d6ad",
+   "store_key": "blake-acres",
+   "store_name": "Blake Acres",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Josh Dunkley",
+   "file_score": 86.0,
+   "stable_player_id": "afl-player-v1-93e4a53a9859611bd616",
+   "store_key": "josh-dunkley",
+   "store_name": "Josh Dunkley",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Braeden Campbell",
+   "file_score": 85.0,
+   "stable_player_id": "afl-player-v1-f0d7b341f83d6023fd8b",
+   "store_key": "braeden-campbell",
+   "store_name": "Braeden Campbell",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Shai Bolton",
+   "file_score": 85.0,
+   "stable_player_id": "afl-player-v1-6dc14b7a0d0df05565c8",
+   "store_key": "shai-bolton",
+   "store_name": "Shai Bolton",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Charlie Curnow",
+   "file_score": 85.0,
+   "stable_player_id": "afl-player-v1-a9f80c63a274e4e1bbb3",
+   "store_key": "charlie-curnow",
+   "store_name": "Charlie Curnow",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Hugo Ralphsmith",
+   "file_score": 84.0,
+   "stable_player_id": "afl-player-v1-52c235aa590e898085a2",
+   "store_key": "hugo-ralphsmith",
+   "store_name": "Hugo Ralphsmith",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Sam Davidson",
+   "file_score": 84.0,
+   "stable_player_id": "afl-player-v1-8623aaa7eb9f7e2a20e4",
+   "store_key": "sam-davidson",
+   "store_name": "Sam Davidson",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Mac Andrew",
+   "file_score": 84.0,
+   "stable_player_id": "afl-player-v1-62d2d5acac0d15a15a79",
+   "store_key": "mac-andrew",
+   "store_name": "Mac Andrew",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Nathan Broad",
+   "file_score": 84.0,
+   "stable_player_id": "afl-player-v1-5ee1939ad38f451c9839",
+   "store_key": "nathan-broad",
+   "store_name": "Nathan Broad",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Sam De Koning",
+   "file_score": 84.0,
+   "stable_player_id": "afl-player-v1-b1dc7c77c2ab6e66207d",
+   "store_key": "sam-de-koning",
+   "store_name": "Sam De Koning",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Vigo Visentini",
+   "file_score": 84.0,
+   "stable_player_id": "afl-player-v1-a09b83c45ebe68a91de0",
+   "store_key": "vigo-visentini",
+   "store_name": "Vigo Visentini",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Harley Reid",
+   "file_score": 84.0,
+   "stable_player_id": "afl-player-v1-a0c3571f3dfb3a833c8f",
+   "store_key": "harley-reid",
+   "store_name": "Harley Reid",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Miles Bergman",
+   "file_score": 84.0,
+   "stable_player_id": "afl-player-v1-f822e70b2df2c17d0328",
+   "store_key": "miles-bergman",
+   "store_name": "Miles Bergman",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Sam Walsh",
+   "file_score": 83.0,
+   "stable_player_id": "afl-player-v1-77a1b0f46d9b5f8726c7",
+   "store_key": "sam-walsh",
+   "store_name": "Sam Walsh",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Dan Houston",
+   "file_score": 83.0,
+   "stable_player_id": "afl-player-v1-e415df5077f164469cba",
+   "store_key": "dan-houston",
+   "store_name": "Dan Houston",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Jai Newcombe",
+   "file_score": 83.0,
+   "stable_player_id": "afl-player-v1-77265b1aa054f910d1c1",
+   "store_key": "jai-newcombe",
+   "store_name": "Jai Newcombe",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Changkuoth Jiath",
+   "file_score": 83.0,
+   "stable_player_id": "afl-player-v1-0d58e3e7af08a0573883",
+   "store_key": "changkuoth-jiath",
+   "store_name": "Changkuoth Jiath",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "John Noble",
+   "file_score": 83.0,
+   "stable_player_id": "afl-player-v1-a9a8e85ed38f1ce4e94f",
+   "store_key": "john-noble",
+   "store_name": "John Noble",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Will Hayward",
+   "file_score": 83.0,
+   "stable_player_id": "afl-player-v1-f5c68ed3e427786f2d4b",
+   "store_key": "will-hayward",
+   "store_name": "Will Hayward",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Logan McDonald",
+   "file_score": 83.0,
+   "stable_player_id": "afl-player-v1-38abe5a7440120376727",
+   "store_key": "logan-mcdonald",
+   "store_name": "Logan McDonald",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Jack Darling",
+   "file_score": 83.0,
+   "stable_player_id": "afl-player-v1-1cae4209fbd31b79c45d",
+   "store_key": "jack-darling",
+   "store_name": "Jack Darling",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Clayton Oliver",
+   "file_score": 83.0,
+   "stable_player_id": "afl-player-v1-614cf30f246427aac1aa",
+   "store_key": "clayton-oliver",
+   "store_name": "Clayton Oliver",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Darcy Wilson",
+   "file_score": 82.0,
+   "stable_player_id": "afl-player-v1-d06df65863958adcd922",
+   "store_key": "darcy-wilson",
+   "store_name": "Darcy Wilson",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Jaxon Prior",
+   "file_score": 82.0,
+   "stable_player_id": "afl-player-v1-82c7e8f494607c184f2b",
+   "store_key": "jaxon-prior",
+   "store_name": "Jaxon Prior",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Joel Freijah",
+   "file_score": 82.0,
+   "stable_player_id": "afl-player-v1-e74d91c43dc37b3dcab3",
+   "store_key": "joel-freijah",
+   "store_name": "Joel Freijah",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Jordan Clark",
+   "file_score": 81.0,
+   "stable_player_id": "afl-player-v1-c23c541c8c5162167ffa",
+   "store_key": "jordan-clark",
+   "store_name": "Jordan Clark",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Jack Graham",
+   "file_score": 81.0,
+   "stable_player_id": "afl-player-v1-7f1a97e8d1d17bed7d0a",
+   "store_key": "jack-graham",
+   "store_name": "Jack Graham",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Sam Clohesy",
+   "file_score": 81.0,
+   "stable_player_id": "afl-player-v1-363a1efca11403c36771",
+   "store_key": "sam-clohesy",
+   "store_name": "Sam Clohesy",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "James Jordon",
+   "file_score": 81.0,
+   "stable_player_id": "afl-player-v1-173e2cb4e5ec4e8583c7",
+   "store_key": "james-jordon",
+   "store_name": "James Jordon",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Isaac Cumming",
+   "file_score": 80.0,
+   "stable_player_id": "afl-player-v1-a755ba66278640abe3f4",
+   "store_key": "isaac-cumming",
+   "store_name": "Isaac Cumming",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Brady Hough",
+   "file_score": 80.0,
+   "stable_player_id": "afl-player-v1-819de384d7f62bc800da",
+   "store_key": "brady-hough",
+   "store_name": "Brady Hough",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Oscar Ryan",
+   "file_score": 80.0,
+   "stable_player_id": "afl-player-v1-5c3ac2d1c84ea9110fe4",
+   "store_key": "oscar-ryan",
+   "store_name": "Oscar Ryan",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Patrick Retschko",
+   "file_score": 79.0,
+   "stable_player_id": "afl-player-v1-c809cc39851ac68c9a8e",
+   "store_key": "patrick-retschko",
+   "store_name": "Patrick Retschko",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Zac Bailey",
+   "file_score": 79.0,
+   "stable_player_id": "afl-player-v1-7378cac294e3a212a182",
+   "store_key": "zac-bailey",
+   "store_name": "Zac Bailey",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Mark Keane",
+   "file_score": 79.0,
+   "stable_player_id": "afl-player-v1-0161f6e4e64f66732e03",
+   "store_key": "mark-keane",
+   "store_name": "Mark Keane",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Tom Atkins",
+   "file_score": 79.0,
+   "stable_player_id": "afl-player-v1-9900e16ea0f47957de5c",
+   "store_key": "tom-atkins",
+   "store_name": "Tom Atkins",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Karl Worner",
+   "file_score": 79.0,
+   "stable_player_id": "afl-player-v1-5935f9e7d1d2e5bc6004",
+   "store_key": "karl-worner",
+   "store_name": "Karl Worner",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Jye Amiss",
+   "file_score": 78.0,
+   "stable_player_id": "afl-player-v1-aab7f573ab4711511c48",
+   "store_key": "jye-amiss",
+   "store_name": "Jye Amiss",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Andrew Brayshaw",
+   "file_score": 78.0,
+   "stable_player_id": "afl-player-v1-ae2d3d03fdab9cf63599",
+   "store_key": "andrew-brayshaw",
+   "store_name": "Andrew Brayshaw",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Hayden Young",
+   "file_score": 78.0,
+   "stable_player_id": "afl-player-v1-172361cf97bb47a65030",
+   "store_key": "hayden-young",
+   "store_name": "Hayden Young",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Noah Anderson",
+   "file_score": 78.0,
+   "stable_player_id": "afl-player-v1-98009763e49092307d27",
+   "store_key": "noah-anderson",
+   "store_name": "Noah Anderson",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Joel Hamling",
+   "file_score": 78.0,
+   "stable_player_id": "afl-player-v1-a1eb647f11192890abda",
+   "store_key": "joel-hamling",
+   "store_name": "Joel Hamling",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Jack Steele",
+   "file_score": 78.0,
+   "stable_player_id": "afl-player-v1-57dca48502d181a8ae5e",
+   "store_key": "jack-steele",
+   "store_name": "Jack Steele",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Lachlan Cowan",
+   "file_score": 78.0,
+   "stable_player_id": "afl-player-v1-33ada8ecaa565e9336c2",
+   "store_key": "lachlan-cowan",
+   "store_name": "Lachlan Cowan",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Cooper Lord",
+   "file_score": 78.0,
+   "stable_player_id": "afl-player-v1-33880cd39dfb13366e39",
+   "store_key": "cooper-lord",
+   "store_name": "Cooper Lord",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": false,
+   "file_name": "Callum Brown",
+   "file_score": 77.0,
+   "stable_player_id": "afl-player-v1-2aa15c17a8f9bb98c666",
+   "store_key": "callum-brown-ire",
+   "store_name": "Callum M. Brown",
+   "via": "owner-override:map_all"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "James O'Donnell",
+   "file_score": 77.0,
+   "stable_player_id": "afl-player-v1-cedb99d3423baacfe787",
+   "store_key": "james-o-donnell",
+   "store_name": "James O'Donnell",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Tanner Bruhn",
+   "file_score": 77.0,
+   "stable_player_id": "afl-player-v1-94cc915f2822092427ea",
+   "store_key": "tanner-bruhn",
+   "store_name": "Tanner Bruhn",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Dylan Moore",
+   "file_score": 77.0,
+   "stable_player_id": "afl-player-v1-d6e8ec84d8c2b89ba890",
+   "store_key": "dylan-moore",
+   "store_name": "Dylan Moore",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Tim Taranto",
+   "file_score": 77.0,
+   "stable_player_id": "afl-player-v1-54454854204fc68ab355",
+   "store_key": "tim-taranto",
+   "store_name": "Tim Taranto",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Xavier O'Halloran",
+   "file_score": 77.0,
+   "stable_player_id": "afl-player-v1-5e8ea652229ac10e25c6",
+   "store_key": "xavier-o-halloran",
+   "store_name": "Xavier O'Halloran",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Leo Lombard",
+   "file_score": 76.0,
+   "stable_player_id": "afl-player-v1-a96ccbd720e3cb6dd786",
+   "store_key": "leo-lombard",
+   "store_name": "Leo Lombard",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Marcus Herbert",
+   "file_score": 76.0,
+   "stable_player_id": "afl-player-v1-a91d721458a8af9477df",
+   "store_key": "marcus-herbert",
+   "store_name": "Marcus Herbert",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Will Green",
+   "file_score": 76.0,
+   "stable_player_id": "afl-player-v1-844e63ee5e564d6a075a",
+   "store_key": "will-green",
+   "store_name": "Will Green",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Harry McKay",
+   "file_score": 76.0,
+   "stable_player_id": "afl-player-v1-5efcadd8aa7f4d9cd988",
+   "store_key": "harry-mckay",
+   "store_name": "Harry McKay",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Rhett Bazzo",
+   "file_score": 76.0,
+   "stable_player_id": "afl-player-v1-6a7269c5c5368cf36265",
+   "store_key": "rhett-bazzo",
+   "store_name": "Rhett Bazzo",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Darcy Wilmot",
+   "file_score": 75.0,
+   "stable_player_id": "afl-player-v1-bc6b9ef5332c2f4e8715",
+   "store_key": "darcy-wilmot",
+   "store_name": "Darcy Wilmot",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Archie Perkins",
+   "file_score": 75.0,
+   "stable_player_id": "afl-player-v1-8891d0951120f190af2c",
+   "store_key": "archie-perkins",
+   "store_name": "Archie Perkins",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Jayden Short",
+   "file_score": 75.0,
+   "stable_player_id": "afl-player-v1-98002cba10c19c2ef4bf",
+   "store_key": "jayden-short",
+   "store_name": "Jayden Short",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Jye Caldwell",
+   "file_score": 75.0,
+   "stable_player_id": "afl-player-v1-12db94dd106d8c37bd22",
+   "store_key": "jye-caldwell",
+   "store_name": "Jye Caldwell",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Patrick Voss",
+   "file_score": 75.0,
+   "stable_player_id": "afl-player-v1-c70559b9eceef976b9ab",
+   "store_key": "patrick-voss",
+   "store_name": "Patrick Voss",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Mykelti Lefau",
+   "file_score": 75.0,
+   "stable_player_id": "afl-player-v1-7ba5a1ae80798c88d4a4",
+   "store_key": "mykelti-lefau",
+   "store_name": "Mykelti Lefau",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Ryley Sanders",
+   "file_score": 74.0,
+   "stable_player_id": "afl-player-v1-5691b6e2d0faf55f8715",
+   "store_key": "ryley-sanders",
+   "store_name": "Ryley Sanders",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Joe Berry",
+   "file_score": 74.0,
+   "stable_player_id": "afl-player-v1-9844fdd0a1778ebb896b",
+   "store_key": "joe-berry",
+   "store_name": "Joe Berry",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Rory Laird",
+   "file_score": 74.0,
+   "stable_player_id": "afl-player-v1-e3e6c7a99658440d99ac",
+   "store_key": "rory-laird",
+   "store_name": "Rory Laird",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Jake Waterman",
+   "file_score": 74.0,
+   "stable_player_id": "afl-player-v1-5dabae98d4a977b6dfc7",
+   "store_key": "jake-waterman",
+   "store_name": "Jake Waterman",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "James Worpel",
+   "file_score": 74.0,
+   "stable_player_id": "afl-player-v1-c01448b8c1a9d2ca5862",
+   "store_key": "james-worpel",
+   "store_name": "James Worpel",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Lachlan Ash",
+   "file_score": 74.0,
+   "stable_player_id": "afl-player-v1-ce22c3da857dc9f69e14",
+   "store_key": "lachlan-ash",
+   "store_name": "Lachlan Ash",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Bailey Laurie",
+   "file_score": 73.0,
+   "stable_player_id": "afl-player-v1-a5ad8398bbd215b116e2",
+   "store_key": "bailey-laurie",
+   "store_name": "Bailey Laurie",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Ryan Angwin",
+   "file_score": 73.0,
+   "stable_player_id": "afl-player-v1-608669769f22160e551f",
+   "store_key": "ryan-angwin",
+   "store_name": "Ryan Angwin",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Joel Jeffrey",
+   "file_score": 73.0,
+   "stable_player_id": "afl-player-v1-9434d7c5b43141a33554",
+   "store_key": "joel-jeffrey",
+   "store_name": "Joel Jeffrey",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Rhylee West",
+   "file_score": 73.0,
+   "stable_player_id": "afl-player-v1-82123073102a52f26b3f",
+   "store_key": "rhylee-west",
+   "store_name": "Rhylee West",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Mitchito Owens",
+   "file_score": 73.0,
+   "stable_player_id": "afl-player-v1-8ac286831260b0b7d6fc",
+   "store_key": "mitchito-owens",
+   "store_name": "Mitchito Owens",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Brayden Cook",
+   "file_score": 73.0,
+   "stable_player_id": "afl-player-v1-e92e7da190d06a68ff04",
+   "store_key": "brayden-cook",
+   "store_name": "Brayden Cook",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Wade Derksen",
+   "file_score": 73.0,
+   "stable_player_id": "afl-player-v1-72c73d5280805d2ddd58",
+   "store_key": "wade-derksen",
+   "store_name": "Wade Derksen",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Jack Martin",
+   "file_score": 73.0,
+   "stable_player_id": "afl-player-v1-33736b48a197f2f1ba65",
+   "store_key": "jack-martin",
+   "store_name": "Jack Martin",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Griffin Logue",
+   "file_score": 72.0,
+   "stable_player_id": "afl-player-v1-c3e6e956e025b6662560",
+   "store_key": "griffin-logue",
+   "store_name": "Griffin Logue",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Cameron Rayner",
+   "file_score": 72.0,
+   "stable_player_id": "afl-player-v1-ef6e380522f2f654bf4f",
+   "store_key": "cameron-rayner",
+   "store_name": "Cameron Rayner",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Darcy Byrne-Jones",
+   "file_score": 72.0,
+   "stable_player_id": "afl-player-v1-f2d3605fc71d7aa8d371",
+   "store_key": "darcy-byrne-jones",
+   "store_name": "Darcy Byrne-Jones",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Taylor Walker",
+   "file_score": 71.0,
+   "stable_player_id": "afl-player-v1-9d55ae026e35b795f6a5",
+   "store_key": "taylor-walker",
+   "store_name": "Taylor Walker",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Jacob Farrow",
+   "file_score": 71.0,
+   "stable_player_id": "afl-player-v1-75c7189cf23a00883ccc",
+   "store_key": "jacob-farrow",
+   "store_name": "Jacob Farrow",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Tom Brown",
+   "file_score": 71.0,
+   "stable_player_id": "afl-player-v1-ee139bbbe6a42b1463b1",
+   "store_key": "tom-brown",
+   "store_name": "Tom Brown",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Harry Morrison",
+   "file_score": 71.0,
+   "stable_player_id": "afl-player-v1-f148d9edfdf14e89802c",
+   "store_key": "harry-morrison",
+   "store_name": "Harry Morrison",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Heath Chapman",
+   "file_score": 71.0,
+   "stable_player_id": "afl-player-v1-c64255f0f57e31279cb2",
+   "store_key": "heath-chapman",
+   "store_name": "Heath Chapman",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Stephen Coniglio",
+   "file_score": 71.0,
+   "stable_player_id": "afl-player-v1-7fa57669a2ceda593183",
+   "store_key": "stephen-coniglio",
+   "store_name": "Stephen Coniglio",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Billy Wilson",
+   "file_score": 71.0,
+   "stable_player_id": "afl-player-v1-ba2b5f134d7209c2cd1f",
+   "store_key": "billy-wilson",
+   "store_name": "Billy Wilson",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Matthew Roberts",
+   "file_score": 71.0,
+   "stable_player_id": "afl-player-v1-2f116f7f4f97a6bf192a",
+   "store_key": "matthew-roberts",
+   "store_name": "Matthew Roberts",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Archie Roberts",
+   "file_score": 71.0,
+   "stable_player_id": "afl-player-v1-0f0c9d6196abee42b21e",
+   "store_key": "archie-roberts",
+   "store_name": "Archie Roberts",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Connor Idun",
+   "file_score": 70.0,
+   "stable_player_id": "afl-player-v1-46b344bd8a10773aecd3",
+   "store_key": "connor-idun",
+   "store_name": "Connor Idun",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Tylar Young",
+   "file_score": 70.0,
+   "stable_player_id": "afl-player-v1-7d7158ee81a3adbb37f2",
+   "store_key": "tylar-young",
+   "store_name": "Tylar Young",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Matt Cottrell",
+   "file_score": 70.0,
+   "stable_player_id": "afl-player-v1-9753c5a65f8ab7ff3101",
+   "store_key": "matt-cottrell",
+   "store_name": "Matt Cottrell",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Luke Ryan",
+   "file_score": 70.0,
+   "stable_player_id": "afl-player-v1-e3408506362c67321cf8",
+   "store_key": "luke-ryan",
+   "store_name": "Luke Ryan",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Matthew Kennedy",
+   "file_score": 70.0,
+   "stable_player_id": "afl-player-v1-fdbc309b0faa58c33480",
+   "store_key": "matthew-kennedy-1",
+   "store_name": "Matthew Kennedy",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Jack Crisp",
+   "file_score": 70.0,
+   "stable_player_id": "afl-player-v1-2bfc39e2c55e976cdb57",
+   "store_key": "jack-crisp",
+   "store_name": "Jack Crisp",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Jaspa Fletcher",
+   "file_score": 70.0,
+   "stable_player_id": "afl-player-v1-868ea8f767a946d70917",
+   "store_key": "jaspa-fletcher",
+   "store_name": "Jaspa Fletcher",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Ben King",
+   "file_score": 69.0,
+   "stable_player_id": "afl-player-v1-8aa63d4c934e87e4fb62",
+   "store_key": "ben-king",
+   "store_name": "Ben King",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Alex Van Wyk",
+   "file_score": 69.0,
+   "stable_player_id": "afl-player-v1-2dfeb757c9c20d8e6638",
+   "store_key": "alex-van-wyk",
+   "store_name": "Alex Van Wyk",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Charlie Spargo",
+   "file_score": 69.0,
+   "stable_player_id": "afl-player-v1-a1f4b1e733f155a14dcc",
+   "store_key": "charlie-spargo",
+   "store_name": "Charlie Spargo",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Harry Rowston",
+   "file_score": 69.0,
+   "stable_player_id": "afl-player-v1-12cd1c01b93b2d5a4f47",
+   "store_key": "harry-rowston",
+   "store_name": "Harry Rowston",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Cooper Duff-Tytler",
+   "file_score": 68.0,
+   "stable_player_id": "afl-player-v1-966ce678436f2d41e439",
+   "store_key": "cooper-duff-tytler",
+   "store_name": "Cooper Duff-Tytler",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Kye Annand",
+   "file_score": 68.0,
+   "stable_player_id": "afl-player-v1-a224d4377faae8f072fe",
+   "store_key": "kye-annand",
+   "store_name": "Kye Annand",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Jordon Sweet",
+   "file_score": 68.0,
+   "stable_player_id": "afl-player-v1-ea006b568d7e6484b32a",
+   "store_key": "jordon-sweet",
+   "store_name": "Jordon Sweet",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Harrison Himmelberg",
+   "file_score": 68.0,
+   "stable_player_id": "afl-player-v1-0297bfd91767586dc86b",
+   "store_key": "harrison-himmelberg",
+   "store_name": "Harrison Himmelberg",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Joshua Weddle",
+   "file_score": 68.0,
+   "stable_player_id": "afl-player-v1-d4e9bfd1ee9ae1c72370",
+   "store_key": "joshua-weddle",
+   "store_name": "Joshua Weddle",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Sam Durham",
+   "file_score": 67.0,
+   "stable_player_id": "afl-player-v1-dbd3e05880424b29dd77",
+   "store_key": "sam-durham",
+   "store_name": "Sam Durham",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Josh Lindsay",
+   "file_score": 67.0,
+   "stable_player_id": "afl-player-v1-527601186c70f68adedc",
+   "store_key": "josh-lindsay",
+   "store_name": "Josh Lindsay",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Taj Hotton",
+   "file_score": 67.0,
+   "stable_player_id": "afl-player-v1-e902ab3fc23a7170ff83",
+   "store_key": "taj-hotton",
+   "store_name": "Taj Hotton",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Hugo Garcia",
+   "file_score": 67.0,
+   "stable_player_id": "afl-player-v1-28ebd34236fec439fb2f",
+   "store_key": "hugo-garcia",
+   "store_name": "Hugo Garcia",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Mattaes Phillipou",
+   "file_score": 67.0,
+   "stable_player_id": "afl-player-v1-3e40163dcc0b002a3106",
+   "store_key": "mattaes-phillipou",
+   "store_name": "Mattaes Phillipou",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Jack Ginnivan",
+   "file_score": 67.0,
+   "stable_player_id": "afl-player-v1-4f35404527e341d9abbc",
+   "store_key": "jack-ginnivan",
+   "store_name": "Jack Ginnivan",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Tom Cole",
+   "file_score": 67.0,
+   "stable_player_id": "afl-player-v1-c3ab45a033553100f573",
+   "store_key": "tom-cole",
+   "store_name": "Tom Cole",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Will Setterfield",
+   "file_score": 67.0,
+   "stable_player_id": "afl-player-v1-8a3c5b55484488853e0b",
+   "store_key": "will-setterfield",
+   "store_name": "Will Setterfield",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Jake Stringer",
+   "file_score": 67.0,
+   "stable_player_id": "afl-player-v1-321029a9a16b5cd19eb6",
+   "store_key": "jake-stringer",
+   "store_name": "Jake Stringer",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Ryan Byrnes",
+   "file_score": 67.0,
+   "stable_player_id": "afl-player-v1-cf1d0b8f5a720a46c06a",
+   "store_key": "ryan-byrnes",
+   "store_name": "Ryan Byrnes",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Hugo Hall-Kahan",
+   "file_score": 66.0,
+   "stable_player_id": "afl-player-v1-ae0417d08a6405bbceeb",
+   "store_key": "hugo-hall-kahan",
+   "store_name": "Hugo Hall-Kahan",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Will Lorenz",
+   "file_score": 65.0,
+   "stable_player_id": "afl-player-v1-864a3f3dc5570a8b459a",
+   "store_key": "will-lorenz",
+   "store_name": "Will Lorenz",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Zac Banch",
+   "file_score": 65.0,
+   "stable_player_id": "afl-player-v1-60766faf78e6bdf2be35",
+   "store_key": "zac-banch",
+   "store_name": "Zac Banch",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Beau McCreery",
+   "file_score": 65.0,
+   "stable_player_id": "afl-player-v1-a5a788fcc3dc14ff1091",
+   "store_key": "beau-mccreery",
+   "store_name": "Beau McCreery",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Billy Frampton",
+   "file_score": 65.0,
+   "stable_player_id": "afl-player-v1-88cc3d546296baa70767",
+   "store_key": "billy-frampton",
+   "store_name": "Billy Frampton",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Talor Byrne",
+   "file_score": 65.0,
+   "stable_player_id": "afl-player-v1-f23f5d01a5ebc72d7028",
+   "store_key": "talor-byrne",
+   "store_name": "Talor Byrne",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Hugh Boxshall",
+   "file_score": 65.0,
+   "stable_player_id": "afl-player-v1-cc6cc6ea7d2d64ef0a59",
+   "store_key": "hugh-boxshall",
+   "store_name": "Hugh Boxshall",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "James Sicily",
+   "file_score": 65.0,
+   "stable_player_id": "afl-player-v1-4bfcacf82a0d776c2ea4",
+   "store_key": "james-sicily",
+   "store_name": "James Sicily",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Timothy English",
+   "file_score": 65.0,
+   "stable_player_id": "afl-player-v1-6d1a84a432c2cd83dd4a",
+   "store_key": "timothy-english",
+   "store_name": "Timothy English",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Noah Answerth",
+   "file_score": 64.0,
+   "stable_player_id": "afl-player-v1-49df55e41314f434839b",
+   "store_key": "noah-answerth",
+   "store_name": "Noah Answerth",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Connor MacDonald",
+   "file_score": 64.0,
+   "stable_player_id": "afl-player-v1-6b6ba869803850018d0a",
+   "store_key": "connor-macdonald",
+   "store_name": "Connor MacDonald",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Kieren Briggs",
+   "file_score": 64.0,
+   "stable_player_id": "afl-player-v1-deef4fc4d61618986f7c",
+   "store_key": "kieren-briggs",
+   "store_name": "Kieren Briggs",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Charlie Cameron",
+   "file_score": 64.0,
+   "stable_player_id": "afl-player-v1-7f331c01fa1334654985",
+   "store_key": "charlie-cameron",
+   "store_name": "Charlie Cameron",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Charlie Ballard",
+   "file_score": 63.0,
+   "stable_player_id": "afl-player-v1-b8bb99a0c8d9a611efd0",
+   "store_key": "charlie-ballard",
+   "store_name": "Charlie Ballard",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Judson Clarke",
+   "file_score": 63.0,
+   "stable_player_id": "afl-player-v1-97d5d23540957cbe93f3",
+   "store_key": "judson-clarke",
+   "store_name": "Judson Clarke",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Gryan Miers",
+   "file_score": 63.0,
+   "stable_player_id": "afl-player-v1-8aeac02b34655edd2291",
+   "store_key": "gryan-miers",
+   "store_name": "Gryan Miers",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Karl Amon",
+   "file_score": 63.0,
+   "stable_player_id": "afl-player-v1-3187acc6533265eee936",
+   "store_key": "karl-amon",
+   "store_name": "Karl Amon",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Peter Wright",
+   "file_score": 63.0,
+   "stable_player_id": "afl-player-v1-bae70ee809d6cfc18464",
+   "store_key": "peter-wright",
+   "store_name": "Peter Wright",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Isaiah Dudley",
+   "file_score": 63.0,
+   "stable_player_id": "afl-player-v1-6cf314248b4dd9b0f32c",
+   "store_key": "isaiah-dudley",
+   "store_name": "Isaiah Dudley",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Mitch McGovern",
+   "file_score": 63.0,
+   "stable_player_id": "afl-player-v1-46e08b85a52fdc2973b1",
+   "store_key": "mitch-mcgovern",
+   "store_name": "Mitch McGovern",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Josh Battle",
+   "file_score": 62.0,
+   "stable_player_id": "afl-player-v1-fcb11713300f463bd31a",
+   "store_key": "josh-battle",
+   "store_name": "Josh Battle",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Isaac Quaynor",
+   "file_score": 62.0,
+   "stable_player_id": "afl-player-v1-21e9cb1ab2cba05f6b3b",
+   "store_key": "isaac-quaynor",
+   "store_name": "Isaac Quaynor",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Michael Sellwood",
+   "file_score": 62.0,
+   "stable_player_id": "afl-player-v1-219cd64a18526bc82a23",
+   "store_key": "michael-sellwood",
+   "store_name": "Michael Sellwood",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Corey Durdin",
+   "file_score": 62.0,
+   "stable_player_id": "afl-player-v1-e148f8679875b3d6250a",
+   "store_key": "corey-durdin",
+   "store_name": "Corey Durdin",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Mitchell Lewis",
+   "file_score": 62.0,
+   "stable_player_id": "afl-player-v1-f24a5a22059c4d196165",
+   "store_key": "mitchell-lewis",
+   "store_name": "Mitchell Lewis",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Kyle Langford",
+   "file_score": 62.0,
+   "stable_player_id": "afl-player-v1-32a991d4c02188914ecf",
+   "store_key": "kyle-langford",
+   "store_name": "Kyle Langford",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Conor McKenna",
+   "file_score": 62.0,
+   "stable_player_id": "afl-player-v1-e54d1b525f74546c124a",
+   "store_key": "conor-mckenna",
+   "store_name": "Conor McKenna",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Daniel Turner",
+   "file_score": 62.0,
+   "stable_player_id": "afl-player-v1-6bfc71843f2ecd457c94",
+   "store_key": "daniel-turner",
+   "store_name": "Daniel Turner",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Aaron Cadman",
+   "file_score": 62.0,
+   "stable_player_id": "afl-player-v1-4e4aba980a507c437f78",
+   "store_key": "aaron-cadman",
+   "store_name": "Aaron Cadman",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Angus Anderson",
+   "file_score": 62.0,
+   "stable_player_id": "afl-player-v1-8a57f5aab690623a7315",
+   "store_key": "angus-anderson",
+   "store_name": "Angus Anderson",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Liam Duggan",
+   "file_score": 62.0,
+   "stable_player_id": "afl-player-v1-7c293250cf8dbc3b45e4",
+   "store_key": "liam-duggan",
+   "store_name": "Liam Duggan",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Harry Dean",
+   "file_score": 61.0,
+   "stable_player_id": "afl-player-v1-da27734b8bd79dd7b863",
+   "store_key": "harry-dean",
+   "store_name": "Harry Dean",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Joel Fitzgerald",
+   "file_score": 61.0,
+   "stable_player_id": "afl-player-v1-c090106f7ba6dd9b3e4f",
+   "store_key": "joel-fitzgerald",
+   "store_name": "Joel Fitzgerald",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Billy Dowling",
+   "file_score": 61.0,
+   "stable_player_id": "afl-player-v1-d72d04026b85e58dfc06",
+   "store_key": "billy-dowling",
+   "store_name": "Billy Dowling",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Lachie Sullivan",
+   "file_score": 61.0,
+   "stable_player_id": "afl-player-v1-0b95f7bd2062dce45d7e",
+   "store_key": "lachie-sullivan",
+   "store_name": "Lachie Sullivan",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Darcy Fort",
+   "file_score": 60.0,
+   "stable_player_id": "afl-player-v1-f71449e1a2898d8edeb8",
+   "store_key": "darcy-fort",
+   "store_name": "Darcy Fort",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Harvey Harrison",
+   "file_score": 60.0,
+   "stable_player_id": "afl-player-v1-409c1d00c3a09f0d9eeb",
+   "store_key": "harvey-harrison",
+   "store_name": "Harvey Harrison",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Eric Hipwood",
+   "file_score": 60.0,
+   "stable_player_id": "afl-player-v1-b6a02cc47fed6efaa8c1",
+   "store_key": "eric-hipwood",
+   "store_name": "Eric Hipwood",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Oliver Wiltshire",
+   "file_score": 60.0,
+   "stable_player_id": "afl-player-v1-e3caf3a891bad7b64be2",
+   "store_key": "oliver-wiltshire",
+   "store_name": "Oliver Wiltshire",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Cooper Hynes",
+   "file_score": 60.0,
+   "stable_player_id": "afl-player-v1-f7ee4c5cee3db83cf90b",
+   "store_key": "cooper-hynes",
+   "store_name": "Cooper Hynes",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Charlie Comben",
+   "file_score": 60.0,
+   "stable_player_id": "afl-player-v1-b2c20ab6820a656f1945",
+   "store_key": "charlie-comben",
+   "store_name": "Charlie Comben",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Brennan Cox",
+   "file_score": 59.0,
+   "stable_player_id": "afl-player-v1-445f7f59f6834b843fec",
+   "store_key": "brennan-cox",
+   "store_name": "Brennan Cox",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Ben Ainsworth",
+   "file_score": 59.0,
+   "stable_player_id": "afl-player-v1-f5edc99c62076d254cd1",
+   "store_key": "ben-ainsworth",
+   "store_name": "Ben Ainsworth",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Oliver Wines",
+   "file_score": 59.0,
+   "stable_player_id": "afl-player-v1-d4700d975a94bf33dfbb",
+   "store_key": "oliver-wines",
+   "store_name": "Oliver Wines",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Jack Higgins",
+   "file_score": 59.0,
+   "stable_player_id": "afl-player-v1-f0954271c7d67c115002",
+   "store_key": "jack-higgins",
+   "store_name": "Jack Higgins",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Callum Ah Chee",
+   "file_score": 58.0,
+   "stable_player_id": "afl-player-v1-0b851ac82d1ffef7f781",
+   "store_key": "callum-ah-chee",
+   "store_name": "Callum Ah Chee",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Jordan Croft",
+   "file_score": 58.0,
+   "stable_player_id": "afl-player-v1-b2ca097d0f41f5514c69",
+   "store_key": "jordan-croft",
+   "store_name": "Jordan Croft",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Ryan Lester",
+   "file_score": 58.0,
+   "stable_player_id": "afl-player-v1-ac26f9acafae5ca8384a",
+   "store_key": "ryan-lester",
+   "store_name": "Ryan Lester",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Jaxon Artemis",
+   "file_score": 58.0,
+   "stable_player_id": "afl-player-v1-690c8a0df50927412d20",
+   "store_key": "jaxon-artemis",
+   "store_name": "Jaxon Artemis",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Cody Weightman",
+   "file_score": 58.0,
+   "stable_player_id": "afl-player-v1-261fb8d2a929be14129f",
+   "store_key": "cody-weightman",
+   "store_name": "Cody Weightman",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Billy Cootee",
+   "file_score": 58.0,
+   "stable_player_id": "afl-player-v1-db88060ca4ea6c950bdf",
+   "store_key": "billy-cootee",
+   "store_name": "Billy Cootee",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Aaron Naughton",
+   "file_score": 58.0,
+   "stable_player_id": "afl-player-v1-8f3aa1080752eb0e534b",
+   "store_key": "aaron-naughton",
+   "store_name": "Aaron Naughton",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Zach Guthrie",
+   "file_score": 58.0,
+   "stable_player_id": "afl-player-v1-5427cd4da7218df98938",
+   "store_key": "zach-guthrie",
+   "store_name": "Zach Guthrie",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Jack Williams",
+   "file_score": 57.0,
+   "stable_player_id": "afl-player-v1-93af76d76893cb9f86c7",
+   "store_key": "jack-williams",
+   "store_name": "Jack Williams",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Bradley Close",
+   "file_score": 57.0,
+   "stable_player_id": "afl-player-v1-003e4d5d62024af040e6",
+   "store_key": "bradley-close",
+   "store_name": "Bradley Close",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Brodie Kemp",
+   "file_score": 57.0,
+   "stable_player_id": "afl-player-v1-8206dd775d932c66ff19",
+   "store_key": "brodie-kemp",
+   "store_name": "Brodie Kemp",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Murphy Reid",
+   "file_score": 57.0,
+   "stable_player_id": "afl-player-v1-a7b458195fd4ad591d40",
+   "store_key": "murphy-reid",
+   "store_name": "Murphy Reid",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Tom McCartin",
+   "file_score": 56.0,
+   "stable_player_id": "afl-player-v1-109270d490b83c704afb",
+   "store_key": "tom-mccartin",
+   "store_name": "Tom McCartin",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Jagga Smith",
+   "file_score": 56.0,
+   "stable_player_id": "afl-player-v1-853be14ce453ff08eabb",
+   "store_key": "jagga-smith",
+   "store_name": "Jagga Smith",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Max Gruzewski",
+   "file_score": 56.0,
+   "stable_player_id": "afl-player-v1-e2da1b01bb1f552e8dcf",
+   "store_key": "max-gruzewski",
+   "store_name": "Max Gruzewski",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Rory Lobb",
+   "file_score": 56.0,
+   "stable_player_id": "afl-player-v1-e354e8f4a32723da0375",
+   "store_key": "rory-lobb",
+   "store_name": "Rory Lobb",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Dion Prestia",
+   "file_score": 56.0,
+   "stable_player_id": "afl-player-v1-7fe8fd54753702fa0287",
+   "store_key": "dion-prestia",
+   "store_name": "Dion Prestia",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Jacob Wehr",
+   "file_score": 56.0,
+   "stable_player_id": "afl-player-v1-544ddb3b212cf0e7013e",
+   "store_key": "jacob-wehr",
+   "store_name": "Jacob Wehr",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Liam Baker",
+   "file_score": 56.0,
+   "stable_player_id": "afl-player-v1-5b86577d1ec0d6159e9c",
+   "store_key": "liam-baker",
+   "store_name": "Liam Baker",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Nate Caddy",
+   "file_score": 55.0,
+   "stable_player_id": "afl-player-v1-4d27655cd6fbc59ff72e",
+   "store_key": "nate-caddy",
+   "store_name": "Nate Caddy",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Wil Dawson",
+   "file_score": 55.0,
+   "stable_player_id": "afl-player-v1-788b838249581ccea794",
+   "store_key": "wil-dawson",
+   "store_name": "Wil Dawson",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Connor O'Sullivan",
+   "file_score": 55.0,
+   "stable_player_id": "afl-player-v1-6cade3f7f33048badf28",
+   "store_key": "connor-o-sullivan",
+   "store_name": "Connor O'Sullivan",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Tom Anastasopoulos",
+   "file_score": 55.0,
+   "stable_player_id": "afl-player-v1-3fc4eb156cc43a803d65",
+   "store_key": "thomas-anastasopoulos",
+   "store_name": "Tom Anastasopoulos",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Nicholas Coffield",
+   "file_score": 55.0,
+   "stable_player_id": "afl-player-v1-72cf2a6d4a4c62d627af",
+   "store_key": "nicholas-coffield",
+   "store_name": "Nicholas Coffield",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Thomas Liberatore",
+   "file_score": 55.0,
+   "stable_player_id": "afl-player-v1-f470c8be8364b306c0bc",
+   "store_key": "thomas-liberatore",
+   "store_name": "Thomas Liberatore",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Jarman Impey",
+   "file_score": 55.0,
+   "stable_player_id": "afl-player-v1-5283bc8e85b412262bbf",
+   "store_key": "jarman-impey",
+   "store_name": "Jarman Impey",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Roan Steele",
+   "file_score": 54.0,
+   "stable_player_id": "afl-player-v1-451494af145a38fdb298",
+   "store_key": "roan-steele",
+   "store_name": "Roan Steele",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Neil Erasmus",
+   "file_score": 54.0,
+   "stable_player_id": "afl-player-v1-9ae326b5449328a2e0de",
+   "store_key": "neil-erasmus",
+   "store_name": "Neil Erasmus",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Zac Taylor",
+   "file_score": 54.0,
+   "stable_player_id": "afl-player-v1-b61bed0bbace15b1aa56",
+   "store_key": "zac-taylor",
+   "store_name": "Zac Taylor",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Jack Whitlock",
+   "file_score": 53.0,
+   "stable_player_id": "afl-player-v1-bb01c9f6889afb0144ab",
+   "store_key": "jack-whitlock",
+   "store_name": "Jack Whitlock",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Sam Draper",
+   "file_score": 53.0,
+   "stable_player_id": "afl-player-v1-a0b3ea7bd6d63a63235c",
+   "store_key": "sam-draper",
+   "store_name": "Sam Draper",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Jackson Mead",
+   "file_score": 53.0,
+   "stable_player_id": "afl-player-v1-ae842904e89695581f8b",
+   "store_key": "jackson-mead",
+   "store_name": "Jackson Mead",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Nathan O'Driscoll",
+   "file_score": 52.0,
+   "stable_player_id": "afl-player-v1-70e2d14ebd8405ca773d",
+   "store_key": "nathan-o-driscoll",
+   "store_name": "Nathan O'Driscoll",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Jack Gunston",
+   "file_score": 52.0,
+   "stable_player_id": "afl-player-v1-eca8e041dc707b948831",
+   "store_key": "jack-gunston",
+   "store_name": "Jack Gunston",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Lachie Jaques",
+   "file_score": 52.0,
+   "stable_player_id": "afl-player-v1-73f8a199b2442c4ea5e5",
+   "store_key": "lachie-jaques",
+   "store_name": "Lachie Jaques",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Jy Simpkin",
+   "file_score": 52.0,
+   "stable_player_id": "afl-player-v1-572eab5dc72e3289b808",
+   "store_key": "jy-simpkin",
+   "store_name": "Jy Simpkin",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Jed Walter",
+   "file_score": 52.0,
+   "stable_player_id": "afl-player-v1-b45c2bd338bff627435e",
+   "store_key": "jed-walter",
+   "store_name": "Jed Walter",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Riley Thilthorpe",
+   "file_score": 51.0,
+   "stable_player_id": "afl-player-v1-a2337d2b6345bdb9ed5e",
+   "store_key": "riley-thilthorpe",
+   "store_name": "Riley Thilthorpe",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Hunter Clark",
+   "file_score": 51.0,
+   "stable_player_id": "afl-player-v1-7a99659c90e0a5eab680",
+   "store_key": "hunter-clark",
+   "store_name": "Hunter Clark",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Samuel Grlj",
+   "file_score": 51.0,
+   "stable_player_id": "afl-player-v1-896343cd9a0c539cb6e0",
+   "store_key": "samuel-grlj",
+   "store_name": "Samuel Grlj",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Joseph Fonti",
+   "file_score": 51.0,
+   "stable_player_id": "afl-player-v1-59002dc8321ccdf21bfa",
+   "store_key": "joseph-fonti",
+   "store_name": "Joseph Fonti",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Max Michalanney",
+   "file_score": 51.0,
+   "stable_player_id": "afl-player-v1-0a868f1cf4977fe59a3d",
+   "store_key": "max-michalanney",
+   "store_name": "Max Michalanney",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Will Day",
+   "file_score": 50.0,
+   "stable_player_id": "afl-player-v1-db32b01dc9266718b9db",
+   "store_key": "will-day",
+   "store_name": "Will Day",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Jobe Shanahan",
+   "file_score": 50.0,
+   "stable_player_id": "afl-player-v1-c6a461bc214b4d48ca46",
+   "store_key": "jobe-shanahan",
+   "store_name": "Jobe Shanahan",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Tom Blamires",
+   "file_score": 50.0,
+   "stable_player_id": "afl-player-v1-4af5ff1d6c0a57d3f39a",
+   "store_key": "tom-blamires",
+   "store_name": "Tom Blamires",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Mason Redman",
+   "file_score": 49.0,
+   "stable_player_id": "afl-player-v1-76808420035e6a8b6706",
+   "store_key": "mason-redman",
+   "store_name": "Mason Redman",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Liam O'Connell",
+   "file_score": 48.0,
+   "stable_player_id": "afl-player-v1-8699d0ef02651920ee05",
+   "store_key": "liam-o-connell",
+   "store_name": "Liam O'Connell",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Tom McDonald",
+   "file_score": 48.0,
+   "stable_player_id": "afl-player-v1-3c835dd107884340772b",
+   "store_key": "tom-mcdonald",
+   "store_name": "Tom McDonald",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Samuel Swadling",
+   "file_score": 48.0,
+   "stable_player_id": "afl-player-v1-72d1e9ef09766768bcd4",
+   "store_key": "samuel-swadling",
+   "store_name": "Samuel Swadling",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Caleb Windsor",
+   "file_score": 48.0,
+   "stable_player_id": "afl-player-v1-71421bf17a2b7d51e376",
+   "store_key": "caleb-windsor",
+   "store_name": "Caleb Windsor",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Milan Murdock",
+   "file_score": 47.0,
+   "stable_player_id": "afl-player-v1-716f1eabdf51d799d667",
+   "store_key": "milan-murdock",
+   "store_name": "Milan Murdock",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Oisin Mullin",
+   "file_score": 47.0,
+   "stable_player_id": "afl-player-v1-26ff1ee55b317fca0c0f",
+   "store_key": "oisin-mullin",
+   "store_name": "Oisin Mullin",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Nick Madden",
+   "file_score": 46.0,
+   "stable_player_id": "afl-player-v1-1abf46c80f3799c0d483",
+   "store_key": "nick-madden",
+   "store_name": "Nick Madden",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Christian Petracca",
+   "file_score": 46.0,
+   "stable_player_id": "afl-player-v1-fb186725cde9cc707a20",
+   "store_key": "christian-petracca",
+   "store_name": "Christian Petracca",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Cooper Sharman",
+   "file_score": 46.0,
+   "stable_player_id": "afl-player-v1-49e7841acad14b2e2383",
+   "store_key": "cooper-sharman",
+   "store_name": "Cooper Sharman",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Kade Chandler",
+   "file_score": 46.0,
+   "stable_player_id": "afl-player-v1-87c66ca32aae205ac1ce",
+   "store_key": "kade-chandler",
+   "store_name": "Kade Chandler",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Max Kondogiannis",
+   "file_score": 45.0,
+   "stable_player_id": "afl-player-v1-770aaa73c350c53af8f8",
+   "store_key": "max-kondogiannis",
+   "store_name": "Max Kondogiannis",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Dante Visentini",
+   "file_score": 45.0,
+   "stable_player_id": "afl-player-v1-8406445026a762edd922",
+   "store_key": "dante-visentini",
+   "store_name": "Dante Visentini",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Josh Rachele",
+   "file_score": 45.0,
+   "stable_player_id": "afl-player-v1-d7dc302f0061f9c3a6a3",
+   "store_key": "josh-rachele",
+   "store_name": "Josh Rachele",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Ned Reeves",
+   "file_score": 45.0,
+   "stable_player_id": "afl-player-v1-7e55cca73bb1024b34e5",
+   "store_key": "ned-reeves",
+   "store_name": "Ned Reeves",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Sam Butler",
+   "file_score": 45.0,
+   "stable_player_id": "afl-player-v1-171fdad958760b98dbb8",
+   "store_key": "sam-butler-1",
+   "store_name": "Sam Butler",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Lachlan Gulbin",
+   "file_score": 45.0,
+   "stable_player_id": "afl-player-v1-720fb343b3fe75fb92c5",
+   "store_key": "lachlan-gulbin",
+   "store_name": "Lachlan Gulbin",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Nick Larkey",
+   "file_score": 45.0,
+   "stable_player_id": "afl-player-v1-daa646e163644de88154",
+   "store_key": "nick-larkey",
+   "store_name": "Nick Larkey",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Riley Hardeman",
+   "file_score": 45.0,
+   "stable_player_id": "afl-player-v1-f292ff8cfcb27ae2b30a",
+   "store_key": "riley-hardeman",
+   "store_name": "Riley Hardeman",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Harrison Ramm",
+   "file_score": 44.0,
+   "stable_player_id": "afl-player-v1-72ecc1bfe9f72efec4eb",
+   "store_key": "harrison-ramm",
+   "store_name": "Harrison Ramm",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Sam Switkowski",
+   "file_score": 44.0,
+   "stable_player_id": "afl-player-v1-b5939f9f51392e0dedbb",
+   "store_key": "sam-switkowski",
+   "store_name": "Sam Switkowski",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Harry Kyle",
+   "file_score": 44.0,
+   "stable_player_id": "afl-player-v1-582c17fa8f38599ba36e",
+   "store_key": "harry-kyle",
+   "store_name": "Harry Kyle",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "James Peatling",
+   "file_score": 44.0,
+   "stable_player_id": "afl-player-v1-33f13e3f7a2a5dfdd21c",
+   "store_key": "james-peatling",
+   "store_name": "James Peatling",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Carlton",
+   "exact_name_match": true,
+   "file_name": "Lewis Young",
+   "file_score": 44.0,
+   "stable_player_id": "afl-player-v1-472b105de05f27cd1365",
+   "store_key": "lewis-young",
+   "store_name": "Lewis Young",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Isaac Kako",
+   "file_score": 44.0,
+   "stable_player_id": "afl-player-v1-7710e2249b25933935af",
+   "store_key": "isaac-kako",
+   "store_name": "Isaac Kako",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Bo Allan",
+   "file_score": 43.0,
+   "stable_player_id": "afl-player-v1-2dd3ccd0e1b4dff6e11a",
+   "store_key": "bo-allan",
+   "store_name": "Bo Allan",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Buku Khamis",
+   "file_score": 43.0,
+   "stable_player_id": "afl-player-v1-5c33c0ae50436bf7207b",
+   "store_key": "buku-khamis",
+   "store_name": "Buku Khamis",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Zak Johnson",
+   "file_score": 43.0,
+   "stable_player_id": "afl-player-v1-d279ab89fc8d4fe8bde1",
+   "store_key": "zak-johnson",
+   "store_name": "Zak Johnson",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Tom Lynch",
+   "file_score": 43.0,
+   "stable_player_id": "afl-player-v1-2f78d22f48bc1dcda5da",
+   "store_key": "tom-lynch-1",
+   "store_name": "Tom Lynch",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Daniel Curtin",
+   "file_score": 43.0,
+   "stable_player_id": "afl-player-v1-ed3e4aafc7efc030fed6",
+   "store_key": "daniel-curtin",
+   "store_name": "Daniel Curtin",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Nick Watson",
+   "file_score": 42.0,
+   "stable_player_id": "afl-player-v1-d4326256dc1cb8e54f15",
+   "store_key": "nick-watson",
+   "store_name": "Nick Watson",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Mark O'Connor",
+   "file_score": 42.0,
+   "stable_player_id": "afl-player-v1-b9731120bd8796d03337",
+   "store_key": "mark-o-connor",
+   "store_name": "Mark O'Connor",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Zach Reid",
+   "file_score": 42.0,
+   "stable_player_id": "afl-player-v1-232fe142fd503fe9ba47",
+   "store_key": "zach-reid",
+   "store_name": "Zach Reid",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Willem Duursma",
+   "file_score": 42.0,
+   "stable_player_id": "afl-player-v1-0eb1e4c909a009f45d6e",
+   "store_key": "willem-duursma",
+   "store_name": "Willem Duursma",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Sam Banks",
+   "file_score": 42.0,
+   "stable_player_id": "afl-player-v1-7448a1c18180c1de59e0",
+   "store_key": "sam-banks",
+   "store_name": "Sam Banks",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Ben Keays",
+   "file_score": 42.0,
+   "stable_player_id": "afl-player-v1-ab1876e3a4f81af563e6",
+   "store_key": "ben-keays",
+   "store_name": "Ben Keays",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Ed Langdon",
+   "file_score": 41.0,
+   "stable_player_id": "afl-player-v1-aa4d5b1969d471186a49",
+   "store_key": "ed-langdon",
+   "store_name": "Ed Langdon",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Will Hayes",
+   "file_score": 41.0,
+   "stable_player_id": "afl-player-v1-b9e8379037385c8cee5b",
+   "store_key": "will-hayes-b",
+   "store_name": "Will Hayes",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Hayden McLean",
+   "file_score": 41.0,
+   "stable_player_id": "afl-player-v1-2245a2e1f23e42eee60f",
+   "store_key": "hayden-mclean",
+   "store_name": "Hayden McLean",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Sam Taylor",
+   "file_score": 41.0,
+   "stable_player_id": "afl-player-v1-857aa1779d3df97c9dfc",
+   "store_key": "sam-taylor",
+   "store_name": "Sam Taylor",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Steele Sidebottom",
+   "file_score": 40.0,
+   "stable_player_id": "afl-player-v1-3a1a32f650dfcc82c760",
+   "store_key": "steele-sidebottom",
+   "store_name": "Steele Sidebottom",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Anthony Caminiti",
+   "file_score": 40.0,
+   "stable_player_id": "afl-player-v1-0c5db9d8bac56d9b7fa4",
+   "store_key": "anthony-caminiti",
+   "store_name": "Anthony Caminiti",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Steely Green",
+   "file_score": 40.0,
+   "stable_player_id": "afl-player-v1-3793f7fb33c2d9e92cc8",
+   "store_key": "steely-green",
+   "store_name": "Steely Green",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Aliir Aliir",
+   "file_score": 40.0,
+   "stable_player_id": "afl-player-v1-331b344b0d63646c51eb",
+   "store_key": "aliir-aliir",
+   "store_name": "Aliir Aliir",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Callum Wilkie",
+   "file_score": 39.0,
+   "stable_player_id": "afl-player-v1-126dfd2722f326d411fd",
+   "store_key": "callum-wilkie",
+   "store_name": "Callum Wilkie",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Mason Cox",
+   "file_score": 39.0,
+   "stable_player_id": "afl-player-v1-5ded124c3073357f49b3",
+   "store_key": "mason-cox",
+   "store_name": "Mason Cox",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Jake Lever",
+   "file_score": 37.0,
+   "stable_player_id": "afl-player-v1-8ee6489f823d1c7fc978",
+   "store_key": "jake-lever",
+   "store_name": "Jake Lever",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Hussien El Achkar",
+   "file_score": 37.0,
+   "stable_player_id": "afl-player-v1-ebea746acf61f60bb277",
+   "store_key": "hussien-el-achkar",
+   "store_name": "Hussien El Achkar",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Josh Dolan",
+   "file_score": 37.0,
+   "stable_player_id": "afl-player-v1-44e38609bc728a39c7cb",
+   "store_key": "josh-dolan",
+   "store_name": "Josh Dolan",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Judd McVee",
+   "file_score": 37.0,
+   "stable_player_id": "afl-player-v1-1ae7e43e112521438bbe",
+   "store_key": "judd-mcvee",
+   "store_name": "Judd McVee",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Christian Moraes",
+   "file_score": 36.0,
+   "stable_player_id": "afl-player-v1-64ab25bfb0ad8838d8f5",
+   "store_key": "christian-moraes",
+   "store_name": "Christian Moraes",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Todd Marshall",
+   "file_score": 36.0,
+   "stable_player_id": "afl-player-v1-362f152fd27e70a71f51",
+   "store_key": "todd-marshall",
+   "store_name": "Todd Marshall",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Campbell Lake",
+   "file_score": 36.0,
+   "stable_player_id": "afl-player-v1-4a2df595cb1ba12b7a45",
+   "store_key": "campbell-lake",
+   "store_name": "Campbell Lake",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Daniel Annable",
+   "file_score": 36.0,
+   "stable_player_id": "afl-player-v1-a5b652e10f1562485b41",
+   "store_key": "daniel-annable",
+   "store_name": "Daniel Annable",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Oscar McDonald",
+   "file_score": 36.0,
+   "stable_player_id": "afl-player-v1-449b339597a1555d5372",
+   "store_key": "oscar-mcdonald",
+   "store_name": "Oscar McDonald",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Jack Silvagni",
+   "file_score": 36.0,
+   "stable_player_id": "afl-player-v1-bf0163a49d8fcea78d79",
+   "store_key": "jack-silvagni",
+   "store_name": "Jack Silvagni",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Ben Long",
+   "file_score": 35.0,
+   "stable_player_id": "afl-player-v1-f11e474abd2b99b6d2f8",
+   "store_key": "ben-long",
+   "store_name": "Ben Long",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Liam Ryan",
+   "file_score": 35.0,
+   "stable_player_id": "afl-player-v1-1ec0eff1df6b8670aa5a",
+   "store_key": "liam-ryan",
+   "store_name": "Liam Ryan",
+   "via": "exact"
+  },
+  {
+   "afl_club": "GWS",
+   "exact_name_match": true,
+   "file_name": "Riley Hamilton",
+   "file_score": 34.0,
+   "stable_player_id": "afl-player-v1-c13e1f14b2b069c3f78f",
+   "store_key": "riley-hamilton",
+   "store_name": "Riley Hamilton",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Finn O'Sullivan",
+   "file_score": 34.0,
+   "stable_player_id": "afl-player-v1-fe72527f019221062fb2",
+   "store_key": "finn-o-sullivan",
+   "store_name": "Finn O'Sullivan",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Liam Puncher",
+   "file_score": 34.0,
+   "stable_player_id": "afl-player-v1-6f5aa4b28abbf250bdc8",
+   "store_key": "liam-puncher",
+   "store_name": "Liam Puncher",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Jake Rogers",
+   "file_score": 34.0,
+   "stable_player_id": "afl-player-v1-25fb163a4abff862be76",
+   "store_key": "jake-rogers",
+   "store_name": "Jake Rogers",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Samson Ryan",
+   "file_score": 34.0,
+   "stable_player_id": "afl-player-v1-537ae4bc02e76416ccca",
+   "store_key": "samson-ryan",
+   "store_name": "Samson Ryan",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "exact_name_match": true,
+   "file_name": "Arthur Jones",
+   "file_score": 34.0,
+   "stable_player_id": "afl-player-v1-6ed18956cf1378582d16",
+   "store_key": "arthur-jones",
+   "store_name": "Arthur Jones",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Lewis Melican",
+   "file_score": 33.0,
+   "stable_player_id": "afl-player-v1-b504db15773d5f3d2b26",
+   "store_key": "lewis-melican",
+   "store_name": "Lewis Melican",
+   "via": "exact"
+  },
+  {
+   "afl_club": "West Coast",
+   "exact_name_match": true,
+   "file_name": "Oscar Allen",
+   "file_score": 33.0,
+   "stable_player_id": "afl-player-v1-00338d87a98ae8165ce5",
+   "store_key": "oscar-allen",
+   "store_name": "Oscar Allen",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Noah Howes",
+   "file_score": 32.0,
+   "stable_player_id": "afl-player-v1-eabf1f78acbf56714425",
+   "store_key": "noah-howes",
+   "store_name": "Noah Howes",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Christian Salem",
+   "file_score": 32.0,
+   "stable_player_id": "afl-player-v1-0f7806fb9aa246ac2b53",
+   "store_key": "christian-salem",
+   "store_name": "Christian Salem",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Brandon Starcevich",
+   "file_score": 32.0,
+   "stable_player_id": "afl-player-v1-569d8308f325f3ed09a1",
+   "store_key": "brandon-starcevich",
+   "store_name": "Brandon Starcevich",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Jacob Van Rooyen",
+   "file_score": 32.0,
+   "stable_player_id": "afl-player-v1-71d7f1dcea6726aa730c",
+   "store_key": "jacob-van-rooyen",
+   "store_name": "Jacob Van Rooyen",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Ethan Read",
+   "file_score": 31.0,
+   "stable_player_id": "afl-player-v1-a41bad0097cfdf996c85",
+   "store_key": "ethan-read",
+   "store_name": "Ethan Read",
+   "via": "exact"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "exact_name_match": true,
+   "file_name": "Cooper Trembath",
+   "file_score": 31.0,
+   "stable_player_id": "afl-player-v1-4c67f2beca06a7bc6443",
+   "store_key": "cooper-trembath",
+   "store_name": "Cooper Trembath",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Archer Day-Wicks",
+   "file_score": 31.0,
+   "stable_player_id": "afl-player-v1-bccb2c78d58984d7d91d",
+   "store_key": "archer-day-wicks",
+   "store_name": "Archer Day-Wicks",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Sydney",
+   "exact_name_match": true,
+   "file_name": "Sam Wicks",
+   "file_score": 30.0,
+   "stable_player_id": "afl-player-v1-fb132efc63e911fae6c0",
+   "store_key": "sam-wicks",
+   "store_name": "Sam Wicks",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Mitch Zadow",
+   "file_score": 29.0,
+   "stable_player_id": "afl-player-v1-f07600e2849bc4a2ed87",
+   "store_key": "mitch-zadow",
+   "store_name": "Mitch Zadow",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Zeke Uwland",
+   "file_score": 29.0,
+   "stable_player_id": "afl-player-v1-6864d3b68960de314967",
+   "store_key": "zeke-uwland",
+   "store_name": "Zeke Uwland",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Fremantle",
+   "exact_name_match": true,
+   "file_name": "Michael Frederick",
+   "file_score": 28.0,
+   "stable_player_id": "afl-player-v1-c05999000f6adcc37825",
+   "store_key": "michael-frederick",
+   "store_name": "Michael Frederick",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Tyler Sonsie",
+   "file_score": 27.0,
+   "stable_player_id": "afl-player-v1-19af711156146e5fdfa9",
+   "store_key": "tyler-sonsie",
+   "store_name": "Tyler Sonsie",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Richmond",
+   "exact_name_match": true,
+   "file_name": "Sam Lalor",
+   "file_score": 26.0,
+   "stable_player_id": "afl-player-v1-b797a7fefb7394990338",
+   "store_key": "sam-lalor",
+   "store_name": "Sam Lalor",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Josh Lai",
+   "file_score": 26.0,
+   "stable_player_id": "afl-player-v1-48fb2da2b909a8256894",
+   "store_key": "josh-lai",
+   "store_name": "Josh Lai",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Tom Barrass",
+   "file_score": 25.0,
+   "stable_player_id": "afl-player-v1-03bbba3884d3b4e86743",
+   "store_key": "tom-barrass",
+   "store_name": "Tom Barrass",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "exact_name_match": true,
+   "file_name": "Balyn O'Brien",
+   "file_score": 24.0,
+   "stable_player_id": "afl-player-v1-1717ec616a9d2f0c642e",
+   "store_key": "balyn-o-brien",
+   "store_name": "Balyn O'Brien",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Brisbane",
+   "exact_name_match": true,
+   "file_name": "Darcy Gardiner",
+   "file_score": 24.0,
+   "stable_player_id": "afl-player-v1-58e657a00852c21c0ddf",
+   "store_key": "darcy-gardiner",
+   "store_name": "Darcy Gardiner",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Adelaide",
+   "exact_name_match": true,
+   "file_name": "Archie Ludowyke",
+   "file_score": 23.0,
+   "stable_player_id": "afl-player-v1-d5ca041c63ab84bc8fd8",
+   "store_key": "archie-ludowyke",
+   "store_name": "Archie Ludowyke",
+   "via": "exact"
+  },
+  {
+   "afl_club": "St Kilda",
+   "exact_name_match": true,
+   "file_name": "Tom De Koning",
+   "file_score": 23.0,
+   "stable_player_id": "afl-player-v1-f264b9550d46c3b1d3f6",
+   "store_key": "tom-de-koning",
+   "store_name": "Tom De Koning",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Collingwood",
+   "exact_name_match": true,
+   "file_name": "Charlie West",
+   "file_score": 23.0,
+   "stable_player_id": "afl-player-v1-d188bb0f21cc85bbd788",
+   "store_key": "charlie-west",
+   "store_name": "Charlie West",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Geelong",
+   "exact_name_match": true,
+   "file_name": "Jay Polkinghorne",
+   "file_score": 20.0,
+   "stable_player_id": "afl-player-v1-6fa3c4b4bef1c733ff3e",
+   "store_key": "jay-polkinghorne",
+   "store_name": "Jay Polkinghorne",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "exact_name_match": true,
+   "file_name": "Mabior Chol",
+   "file_score": 17.0,
+   "stable_player_id": "afl-player-v1-514bd6a202ed9e0c5ec5",
+   "store_key": "mabior-chol",
+   "store_name": "Mabior Chol",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Essendon",
+   "exact_name_match": true,
+   "file_name": "Rhys Unwin",
+   "file_score": 17.0,
+   "stable_player_id": "afl-player-v1-c1c939d32cb20e307db2",
+   "store_key": "rhys-unwin",
+   "store_name": "Rhys Unwin",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Melbourne",
+   "exact_name_match": true,
+   "file_name": "Matthew Jefferson",
+   "file_score": 15.0,
+   "stable_player_id": "afl-player-v1-d3c8074362c09f68d3b3",
+   "store_key": "matthew-jefferson",
+   "store_name": "Matthew Jefferson",
+   "via": "exact"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "exact_name_match": true,
+   "file_name": "Jy Farrar",
+   "file_score": 9.0,
+   "stable_player_id": "afl-player-v1-817e9e2a5551e5eeebe2",
+   "store_key": "jy-farrar",
+   "store_name": "Jy Farrar",
+   "via": "exact"
+  }
+ ]
+}
