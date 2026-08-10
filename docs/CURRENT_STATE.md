@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v115 · supervisor pen · 2026-08-10, register v625
+# CURRENT STATE — the incoming-seat read · v116 · supervisor pen · 2026-08-10, register v626
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,22 +128,26 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v115 · supervisor pen · 2026-08-10, register v625 · SEAT LAW: ALL replies to the owner in
-ASD-STE100 Simplified Technical English; LONG ANSWERS BEFORE ANY TOOL WORK; an owner-requested
-specific view runs FIRST, ahead of build queueing (his frustration noted on record). THE
-BIRTHDATES ARE ON MAIN: PR #390 verified on pushed bytes and merged (tip 064abcae; store
-d9a24282, board a672ed3a, 6 movers all ±1, v0surf sig 5a03c9ea; test_weekly_updater
-pre-existing failure = open item). THE OWNER'S TABLE delivered with TRUE node weights
-(equal-weight rendering VOIDED, never shown; rows tie CHECK=0.00000): Duursma spread thin
-(max 12% at age 25, tail>cy11 11.1%), Butters front-loaded (27% now), Bontempelli 45% at 31
-with 54% OF HIS WEIGHT ON THE THREE-YEAR DEMONSTRATED FLOOR — "never price players to
-retire" is BOUNDED: false for veterans, true for the young (the un-faded young tail). THE
-RULER ACT IS CLOSED (map + rate + horizon 2x2 + tail + table; landings 5236425904,
-5236597585, 5236780502). G1 RESUMED on the new base (old edb2cc2d STALE; N35 control must
-hit 5a03c9ea; PR-not-merge). NEXT: G1 lands → the age-axis re-cut on the DOB store → the
-ITEM C evidence-weight design text → the directive (items A-I + the root act) to the owner
-as ONE SITTING.
-Read v604–v625 IN FULL. Primer v7 first.)
+(v116 · supervisor pen · 2026-08-10, register v626 · SEAT LAW: ALL replies to the owner in
+ASD-STE100 Simplified Technical English; LONG ANSWERS BEFORE ANY TOOL WORK; owner-requested
+views run FIRST. THE MEASUREMENT SET IS COMPLETE — every ordered measurement delivered and
+filed (probe 5235775326 · pool 5235784509 · mark-up 5235847132 · sitter 5235734225 · ruck
+5236274192 · tilt map arc 5236277043/5236425904/5236597585/5236780502 · undiscounted table
+5236802118 · age re-cut 5236898284). Age re-cut verdicts: mature-21+ PERMANENTLY unnameable
+(structural thinness, not missing data — mature-pool magnitudes take the base factor with
+pooling disclosed); the 2004-05 "2.139" RETIRED (era/horizon artifact, 0.05% age-controlled
+on instrument D); NEW named cell draft-age 19-20 (1.27A/1.14D, route-confound flagged).
+LENS facts: now 0.34 / bal 0.14 (dial-14) / fut 0.05 — rebuilder instinct already built;
+OWNER PROPOSAL age-dynamic discount (young ~12-13%→late ~15-16%, lens shifts the band) =
+ROOT-ACT design option (no double-count with prior-humility + Wk fade). Undiscounted table:
+Duursma 10,788 > Butters 10,504 — the price gap is pure time discount; "4-5x at peak"
+corrected to 1.7x. OPEN ITEMS: sibling_repin drops stamp.release out-of-round (next
+out-of-round landing hits it) · test_weekly_updater config-pin drift (pre-existing). IN
+FLIGHT: G1 build on the new base (PR-not-merge; N35 control must hit pickle 5a03c9ea).
+NEXT: G1 lands → seat writes ITEM C design text → THE DIRECTIVE (A-I + root act + tilt
+column + magnitudes on the corrected ruler) → the owner\'s single sitting → composition
+build → side-by-side → adoption → THE ROOT ACT → the queued pick-curve re-fit.
+Read v604–v626 IN FULL. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
