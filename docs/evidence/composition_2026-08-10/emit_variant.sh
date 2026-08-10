@@ -11,9 +11,10 @@
 # calls per variant, each of which runs the full forward valuation. It is far more expensive than a
 # board build. Each emit is timed and the cost is printed.
 #
-# Usage: emit_variant.sh <label> [VAR=VAL ...]
+# Usage: emit_variant.sh <label> <git-ref> [VAR=VAL ...]
+#   pre-act engine = origin/main; every act variant = HEAD with its dials
 set -uo pipefail
-LABEL="$1"; shift
+LABEL="$1"; REF="$2"; shift 2
 REPO=/home/user/afl-rl-engine
 SP=/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad
 WT=$SP/wt_emit_$LABEL
@@ -23,7 +24,7 @@ export RL_CONFIG_MODE=gate PYTHONHASHSEED=0
 export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
 
 rm -rf "$WT" "$OUT"; git -C "$REPO" worktree remove --force "$WT" 2>/dev/null
-git -C "$REPO" worktree add --detach "$WT" HEAD >/dev/null 2>&1 || { echo "WORKTREE FAILED"; exit 1; }
+git -C "$REPO" worktree add --detach "$WT" "$REF" >/dev/null 2>&1 || { echo "WORKTREE FAILED ($REF)"; exit 1; }
 mkdir -p "$OUT"
 
 python3 - "$WT" "$@" <<'PY'
