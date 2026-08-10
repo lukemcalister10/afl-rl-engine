@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v117 · supervisor pen · 2026-08-10, register v627
+# CURRENT STATE — the incoming-seat read · v121 · supervisor pen · 2026-08-10, register v637
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
