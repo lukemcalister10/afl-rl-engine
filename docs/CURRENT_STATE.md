@@ -128,33 +128,35 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v118 · supervisor pen · 2026-08-10, register v628 · SEAT LAWS: ASD-STE100 base for ALL owner
-replies; LONG ANSWERS BEFORE TOOL WORK; owner-requested views FIRST; machine time IS project
-time (separate workspaces for parallel builds; deterministic lane only guards main); no point
+(v119 · supervisor pen · 2026-08-10, register v629 · SEAT LAWS: ASD-STE100 base for ALL owner
+replies; the COMPLETE answer in the FINAL message, never between tool calls (a delivery
+failure owned at v629); owner-requested views FIRST; machine time IS project time; no point
 estimates for multi-step agent work — step lists; compact only with everything pushed; YEAR-4
-IS NOT A TARGET (path-shaped objectives, per-position peak age); no expectation site reads
-pick without position (build assertion); no worked example is a target; REFEREE AFTER PHASE 5
-(owner word 5238084682 — the referee receives a finished baseline, never a moving one).
-THE COMPOSITION DIRECTIVE IS DELIVERED (main tip ac054a9, PR #396):
-docs/directives/COMPOSITION_DIRECTIVE_2026-08-10.md is the authority; sitting summary #334
-comment 5238272960; agent brief pre-posted 5237909313; computed on board 4b448a82 / store
-d9a24282 gate-mode; the seat re-derived EVERY deciding figure independently (exact). THE ONE
-OPEN TASK IS THE OWNER'S: rule §0 item by item (A-I + C-Q1 cap object / C-Q2 sizing
-denominator / C-Q3 gate form + the F8 unit) → then composition build as ONE act →
-side-by-side → adoption word → checks → ROOT ACT (own directive/sitting, NOT under the
-referee protocol) → pick-curve re-fit → the referee project (ITEM 410) → ITEM 412.
-ASSEMBLY FLAGS an incoming seat must know: no literal year-1-cap object exists (the cap must
-bind the TAUGHT year-1 level, not live ev — C-Q1); H≤1.13 cannot reach the 1.04 floor on the
-all-rows basis, played-only reaches 1.0504 (package with H cuts: 1.037-1.047 all-rows /
-1.058-1.069 played-only — C-Q2); the z gate min(e/anchor,1) passes Zeke Uwland at full
-strength — the five-faller protection is UNREPRODUCED, re-show or drop (C-Q3); the landing
-re-measures 1.0194 vs filed 1.0248 (definition dominates the drift); env-pin conflict
-(START_HERE 0.85 vs gate manifest 1.0 — only 1.0 reproduces the shipped board) parked as its
-own item. CURRENT IDENTITIES: main ac054a9 · store d9a24282 · board 4b448a82 (Σ=761,574,
-n=804) · v0surf config sig 6ef67f07 · register v628 (8,438 lines). NOTE: the "CURRENT
+IS NOT A TARGET; no expectation site reads pick without position (build assertion); no worked
+example is a target; REFEREE AFTER PHASE 5 (owner word 5238084682).
+THE SITTING IS COMPLETE (2026-08-10, in-chat; words filed 5238548520 / 5238688172 /
+5238860310): the composition package is FULLY RULED — A=A1 · B · C adopted · C-Q1 taught
+level · C-Q2 PLAYED-ONLY H sizing · C-Q3 demonstrate-or-drop (sa = designated fallback gate)
+· D three classes (RUCKS UNTOUCHED) + THE MRAZ COMBINED-MOVE CHECK (one printed line vs his
+~3-3.5x tolerance, breach returns to owner) · E1 wage ramp cautious-band · E2 ceiling
+evidence-yielding · E3 park · F1 PARKED (post-A re-measure; sa fallback) · F2 breakpoint
+STAYS 32 (+ derive-from-data on the post-A list) · G park · H cuts · I FIRST (A ships only on
+clean restated v0) · F8 PLAYER UNIT (governs all cells from this act).
+THE COMPOSITION BUILD IS THE LIVE ACT (brief on #334 after this pen; Opus build agent,
+write-ordered, BRANCH-HELD — NOTHING merges, no attribution column registers before the
+owner's side-by-side adoption word): sequence I → B → A + conservation re-teach →
+C/D/E1/E2/H composed → ONE side-by-side (movers named · conservation shown · gates green ·
+F8 player-unit re-measure of every named cell · the C-Q3 faller demonstration or sa installs
+· the Mraz line · H taught from the played-only ladder into [1.04,1.13]). Seam verifies on
+pushed bytes; owner rules adoption. THEN: checks → ROOT ACT (own directive/sitting) →
+pick-curve re-fit → referee (ITEM 410) → ITEM 412.
+CURRENT IDENTITIES (pre-build): main eb48944+v629pen · store d9a24282 · board 4b448a82
+(Σ=761,574, n=804) · v0surf config sig 6ef67f07 · register v629 (8,438 lines) · directive
+docs/directives/COMPOSITION_DIRECTIVE_2026-08-10.md. Assembly flags live in the directive §6;
+env-pin conflict (START_HERE 0.85 vs gate manifest 1.0) parked. NOTE: the "CURRENT
 IDENTITIES" list inside THE ERA section below is the era-adoption snapshot (pre-DOB,
 store 37ced3ce) — THIS block governs; that list is history.
-Read v604–v628 IN FULL. Primer v7 first.)
+Read v604–v629 IN FULL. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
