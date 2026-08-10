@@ -31,10 +31,14 @@ print("year-1 cohort (ND in-curve, class 2025): n=%d  played=%d  sitters=%d"
 VARIANTS = [
     ("main (pre-act)",        REPO + "/data/rl_build/rl_app_data.json"),
     ("FULL (no AD)",          SP + "/bd_FULL.json"),
-    ("AD 12.5 / 15.5",        SP + "/bd_AD_125_155.json"),
-    ("AD 13 / 15  (ordered)", SP + "/bd_FULL_AD.json"),
-    ("AD 13.5 / 14.5",        SP + "/bd_AD_135_145.json"),
-    ("AD 12 / 16",            SP + "/bd_AD_12_16.json"),
+    ("V1 AD 13/15 (ordered)", SP + "/bd_FULL_AD.json"),
+    ("V1 AD 12/16",           SP + "/bd_AD_12_16.json"),
+    ("V2 four-band",          SP + "/bd_V2.json"),
+    ("V3 corrected",          SP + "/bd_V3.json"),
+    ("menu a: blend 30",      SP + "/bd_blend30.json"),
+    ("menu a: blend 20",      SP + "/bd_blend20.json"),
+    ("menu b: tail trim .35", SP + "/bd_tail35.json"),
+    ("menu b: tail trim .65", SP + "/bd_tail65.json"),
 ]
 
 print("\n=== THE TWO LANDINGS  (ruled band [1.04, 1.13]) ===")
