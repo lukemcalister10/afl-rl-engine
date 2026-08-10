@@ -1968,6 +1968,38 @@ def sitout_ev(p,Y,e_full):
 # year-0 prior being borrowed, so blending inside raw_ev would be self-referential.
 _A_ON=os.environ.get('RL_ITEM_A','1')!='0'   # declared kill-switch: RL_ITEM_A=0 => the pre-A build, byte-exact
 _A_TAU=_EVW_TAU                              # the engine's own pedigree-fade rate, effective-qualifying-season units
+# ===== #334 ITEM H — THE RULED CUT LIST (ruling 3.11, cell-qualified by the pool grid).
+# The three approved cuts, taken AS FILED and marked as filed: my own re-derivation could not reproduce
+# them on the cell definitions I had (docs/evidence/composition_2026-08-10/item_h_derive_out.txt), so
+# rather than size a cut on a cell I cannot verify, the ruled factors ship unchanged and the
+# corrected-ruler bridge is printed beside them in the act record. On that bridge two of the three cells
+# deliver LESS than their ruled factor, so these cuts are if anything GENEROUS rather than harsh.
+#   named union sitters (draft age 23+ | IRE | MSD) x 0.280
+#   all-pool-sitters                                x 0.804
+#   mature nonRD (pool, non-RD, draft age 21+)      x 0.615
+# QUALIFICATION: a sitter is a row with NO games this season (the sit-out population, ns==0). The cuts
+# COMPOSE multiplicatively where a row is in more than one cell — the union cell is the named subset of
+# the all-pool-sitters cell, so a 23+/IRE/MSD pool sitter takes both, which is what "cell-qualified"
+# means and is why the union factor is so much deeper.
+# THE #326 FLOOR (0.45) IS NOT TOUCHED, and NO BLANKET LIFTS EXIST ANYWHERE: every factor here is <= 1.
+H_ON=os.environ.get('RL_ITEM_H','1')!='0'   # declared kill-switch: RL_ITEM_H=0 => no cuts, byte-exact
+H_UNION=float(os.environ.get('RL_H_UNION','0.280'))
+H_POOLSIT=float(os.environ.get('RL_H_POOLSIT','0.804'))
+H_MATNONRD=float(os.environ.get('RL_H_MATNONRD','0.615'))
+def _h_cut(p,Y):
+    """The composed ITEM H factor for a row. 1.0 for anyone outside every ruled cell."""
+    if not H_ON or not _isreal(p): return 1.0
+    f=1.0
+    pool=bool(p.get('_pool')); typ=p.get('type')
+    age=_b_age(p)                                             # continuous draft age; None where unknown
+    sitter=(sum(x['games'] for x in p['scoring'] if x['year']==Y)<=0)
+    if pool and sitter:
+        f*=H_POOLSIT                                          # all-pool-sitters
+        if (age is not None and age>=23.0) or typ in ('IRE','MSD'):
+            f*=H_UNION                                        # the NAMED union subset, on top
+    if pool and typ!='RD' and age is not None and age>=21.0:
+        f*=H_MATNONRD                                         # mature nonRD
+    return f
 def _a_share(p,Y):
     """How much of the year-1+ price still leans on the fitted year-0 prior."""
     fe=_fEy(Y,p); gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
@@ -2098,7 +2130,8 @@ def ev(p,Y=2026):
     with _form_anchor_clock(): el=PR.tenure(p,_fa_year(Y))          # LEG F3 §2.vi: the staleness/tenure clock keys on the FORM ANCHOR (BASE_REF year-arg + AGE_REF pin) — a developing pick is NOT relabeled "stalled prospect" purely by the forward lens advancing the clock (item-352 155-mislabeled-exits defect). k=0 identity by construction.
     pos=MA.gfut(p); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)); pr=bestlvl(p,Y)/max(1,par)
     if ns==0:                                                 # SIT-OUT: derived games-ramp treatment (V0-anchored, prorated, scoring-aware, continuous at graduation)
-        return round(sitout_ev(p,Y,e))
+        return round(sitout_ev(p,Y,e)*_h_cut(p,Y))            # #334 ITEM H: the ruled cuts, cell-qualified
+    e=e*_h_cut(p,Y)                                           # #334 ITEM H on the year-1+ arm (mature nonRD reaches it; sitter cells cannot, by definition)
     if _A_ON and _isreal(p):                                  # #334 ITEM A: the anchor leg no longer stops at qualification — it fades (see _a_blend above)
         e=_a_blend(p,Y,e)
     keyruc = pos in ('KPF','KPD','RUCK'); onset = (4 if keyruc else 3)
