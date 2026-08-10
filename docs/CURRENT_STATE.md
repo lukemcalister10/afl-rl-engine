@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v102 · supervisor pen · 2026-08-07, register v612
+# CURRENT STATE — the incoming-seat read · v103 · supervisor pen · 2026-08-07, register v613
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -133,7 +133,9 @@ ASD-STE100 Simplified Technical English. Owner trust statement filed (5235043061
 A/B/C offered (audit year-0 provenance / rulings / both) — OWNER HAS NOT CHOSEN; wait for
 that word before ANY new work. Cohort-membership ruling (v611) still requires table
 re-emission. The four rulings stand (5220064508). Two year-0 defects named: KPD level +
-band steps; banding provenance NOT traced. Read v604–v612 IN FULL. Primer v7 first.)
+band steps; R12-violation finding FILED (5235067201) — the live year-0 surface breaks
+the owner's own 2026-07-03 law (Grlj/Cumming inversion; band position adjustment suspect;
+breaking commit unpinned). Read v604–v613 IN FULL. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
