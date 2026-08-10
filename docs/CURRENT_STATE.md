@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v121 · supervisor pen · 2026-08-10, register v637
+# CURRENT STATE — the incoming-seat read · v122 · supervisor pen · 2026-08-11, register v642
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,7 +128,7 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v121 · supervisor pen · 2026-08-10, register v637 · SEAT LAWS: PLAIN LANGUAGE UPFRONT for
+(v122 · supervisor pen · 2026-08-11, register v642 · SEAT LAWS: PLAIN LANGUAGE UPFRONT for
 every owner-facing explanation — problem/why/trade-off/options, never simplification on
 request (third reminder = the ruling, 5240468212); ASD-STE100 base; the COMPLETE answer in
 the FINAL message, never between tool calls; owner-requested views FIRST; machine time IS
@@ -147,6 +147,12 @@ THE LIVE LAW (5242669830, v637 — ends the adopt/ship/bake/ratify chaos): ONE s
 LIVE — meaning the bytes are on main in the engine that builds the shipped board; every
 other word is a ruling waiting to become live; no agent reports a ruling as done unless it
 is LIVE with the implementing main-line site citable.
+THE COHORT-BOOK LAW (5247306554, v642): cohort progression and no-arbitrage claims are
+presented ONLY on the historical cohort-book instrument — every entrant class tracked
+through its own career years, year-N = the average over ALL cohorts at year N (the
+owner-basis year-1-season cohort rule, v611/v616) — never on live-board cross-sections,
+which serve mover attribution only; any figure offered for a sizing or adoption decision
+NAMES ITS INSTRUMENT.
 THE RULED-BUT-NOT-LIVE LEDGER (standing; read at every pen and every sitting; an entry
 leaves only on a citable main-line implementation):
  1. The era-removal product law (v598 "binding engine" — IN BREACH: 5 live era.get sites
