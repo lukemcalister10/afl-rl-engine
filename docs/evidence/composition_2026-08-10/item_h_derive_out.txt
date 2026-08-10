@@ -1,0 +1,28 @@
+pool rows: n=1001  (with a corrected-ruler value: 673)
+
+=== THE RULED CUTS vs THE INSTRUMENT ===
+ cell                                     n    eff-n    F bent     RULED    F corr F8
+ named union sitters (23+|IRE|MSD)       95     60.3    0.1670     0.280    0.2301 PASS
+ all-pool-sitters                       698    551.0    0.3484     0.804    0.2974 PASS
+ mature nonRD                            99     46.2    0.7676     0.615    0.5162 PASS
+
+=== DOES THE BENT RULER REPRODUCE THE RULED FACTORS? ===
+  named union sitters (23+|IRE|MSD)    ruled 0.280  vs  F bent 0.1670   DOES NOT REPRODUCE
+  all-pool-sitters                     ruled 0.804  vs  F bent 0.3484   DOES NOT REPRODUCE
+  mature nonRD                         ruled 0.615  vs  F bent 0.7676   DOES NOT REPRODUCE
+
+  HALT-NO-SURPRISE. At least one ruled cut factor does not reproduce as its cell's delivery
+  ratio on the ruler it was measured on. That means the cell definition used here is NOT the
+  one the cut was sized from — the pool-grid qualification (ruling 2.5, comment 5235784509)
+  carries conditions this script does not have. The cut factors are therefore NOT re-derived;
+  they are taken AS FILED (0.280 / 0.804 / 0.615) and marked as filed in the attribution, and
+  the corrected-ruler column above is reported beside them as the bridge the order asked for.
+  Re-deriving them properly needs the pool-design instrument, which is a separate act's script.
+
+=== WHAT SHIPS ===
+  named union sitters (23+|IRE|MSD)    x 0.280   [AS FILED]   corrected-ruler reading 0.2301  CI [0.010, 0.639]
+  all-pool-sitters                     x 0.804   [AS FILED]   corrected-ruler reading 0.2974  CI [0.185, 0.422]
+  mature nonRD                         x 0.615   [AS FILED]   corrected-ruler reading 0.5162  CI [0.115, 1.226]
+  the #326 floor (0.45) is UNTOUCHED; no blanket lifts anywhere.
+
+wrote item_h_factors.json
