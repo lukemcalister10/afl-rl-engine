@@ -1,0 +1,63 @@
+POOL teaching population on the corrected ruler: n=673  classes 2004-2015
+age-UNKNOWN rows: 0   (its own cell by the ruling; never absorbed)
+
+pool-wide F (the normaliser, = the level-preserving anchor) = 0.523593
+
+=== PER-SINGLE-AGE (does 21+ carry a gradient, or is it one flat cell?) ===
+ age          n    eff-n        F     factor F8
+ <=17        13     11.6   0.1345     0.2569 fail
+ <=18       416    355.7   0.3659     0.6988 PASS
+ 19          69     56.7   0.5032     0.9611 PASS
+ 20          42     36.4   1.2531     2.3934 PASS
+ 21          36     27.8   1.4488     2.7670 fail
+ 22          36     15.7   1.7714     3.3832 fail
+ 23          30     11.6   1.8822     3.5949 fail
+ 24          19      7.5   0.3919     0.7484 fail
+ 25           3      1.0   0.0000     0.0000 fail
+ 26           5      2.7   0.0035     0.0066 fail
+ 27           1      1.0   0.0000     0.0000 fail
+ 28           1      1.0  19.0822    36.4448 fail
+ 29           2      1.7   0.0000     0.0000 fail
+
+=== THE RULED BANDS — re-derived vs filed (the bridge, as ordered) ===
+ band         n     eff-n     Sig v0         F  RE-DERIVED   as filed    shift 95% CI on F
+ <=18       429     367.2   132265.2    0.3591      0.6859      0.666     +3.0% [0.223, 0.529] 
+ 19-20      111      90.9    40645.1    0.7389      1.4112      1.200    +17.6% [0.413, 1.128] 
+ 21+        133      60.5    13666.2    1.4751      2.8173      2.474    +13.9% [0.821, 2.238] 
+
+=== THE TAPER — THE RULED SHAPE TESTED AGAINST THE EVIDENCE (HALT-NO-SURPRISE) ===
+  THE RULING: 'smooth taper 21->26, no integer cliff'.
+  WHAT A MEAN-HOLDING LINEAR 21->26 RAMP WOULD REQUIRE: plateau P = 6.1001 at age 26.
+  THAT IS REFUSED, and here is the measurement that refuses it:
+    - per-age eff-n INSIDE 21+ : 21:27.8 · 22:15.7 · 23:11.6 · 24:7.5 · 25:1.0 · 26:2.7 · 27:1.0 · 28:1.0 · 29:1.7
+      every one is far below the F8 bar of 35 — the band has NO nameable internal shape.
+    - and the point estimates FALL rather than rise after 22: 21:2.77 · 22:3.38 · 23:3.59 · 24:0.75 · 25:0.00 · 26:0.01
+    - a rising ramp to 26 therefore assigns the LARGEST factor (6.10) to the OLDEST, THINNEST
+      rows (ages 25-26: n=8, eff-n 3.7, measured factor ~0) on no evidence at all,
+      and it breaks pool conservation by +3.5%. The directive's own tilt reading already says
+      'mature-21+ unnameable -> base factor, pooling disclosed'. The evidence agrees.
+
+  WHAT SHIPS: the cliff is removed where the ruling actually points at it — the BAND BOUNDARY —
+  by keying the factor on CONTINUOUS draft age (cp._age_asof is a float; the engine's own
+  _ageR rounding is what would create an integer cliff). Piecewise-linear, continuous:
+     a <= 18        -> 0.6859
+     18 < a < 19    -> linear 0.6859 .. 1.4112
+     19 <= a <= 20  -> 1.4112
+     20 < a < 21    -> linear 1.4112 .. 2.8173
+     a >= 21        -> 2.8173   (FLAT — pooled, pooling disclosed)
+  No integer cliff anywhere; each band's v0-weighted mean is held EXACTLY (every row sits at
+  a knot, so the bridges carry no mass); no unmeasured within-band gradient is invented.
+
+  the shipped curve on the half-year grid (continuity visible):
+  17.5:0.686 · 18.0:0.686 · 18.5:1.049 · 19.0:1.411 · 19.5:1.411 · 20.0:1.411 · 20.5:2.114 · 21.0:2.817 · 21.5:2.817 · 22.0:2.817
+
+=== CONSERVATION (C5: pool Sigma v0 held EXACTLY) ===
+  C5 renormaliser K = 1.0000000000   (the age GRADIENT is preserved exactly; only the level is pinned)
+  Sigma v0 before = 186576.5000
+  Sigma v0 after  = 186576.5000
+  delta           = 0.000000   (0.000e+00 relative)
+  The engine additionally applies a build-time renormalisation over the LIVE pool population
+  (a state function re-derived every build, never a stored constant), so the shipped identity
+  is exact on whatever population the board actually carries.
+
+wrote item_b_factors.json
