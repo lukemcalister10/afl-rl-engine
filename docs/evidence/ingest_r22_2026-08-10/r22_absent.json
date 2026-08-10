@@ -1,0 +1,1985 @@
+{
+ "absent_dnp": 395,
+ "active_pool": 804,
+ "convention": "Owner ruling 2026-07-20: file membership defines participation. A player ABSENT from the round file DID NOT PLAY \u2014 nothing is appended, no game is added, and absence is not an unresolved-input condition.",
+ "kind": "r22_absent_dnp",
+ "listed": 409,
+ "players": [
+  {
+   "afl_club": "Carlton",
+   "key": "adam-saad",
+   "name": "Adam Saad"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "adam-sweid",
+   "name": "Adam Sweid"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "adam-treloar",
+   "name": "Adam Treloar"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "aidan-corr",
+   "name": "Aidan Corr"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "aidan-johnson",
+   "name": "Aidan Johnson"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "aidan-schubert",
+   "name": "Aidan Schubert"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "aiden-riddle",
+   "name": "Aiden Riddle"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "alex-davies",
+   "name": "Alex Davies"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "alex-dodson",
+   "name": "Alex Dodson"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "alex-pearce",
+   "name": "Alex Pearce"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "alix-tauru",
+   "name": "Alix Tauru"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "andy-moniz-wakefield",
+   "name": "Andy Moniz-Wakefield"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "angus-clarke",
+   "name": "Angus Clarke"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "angus-hastie",
+   "name": "Angus Hastie"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "angus-sheldrick",
+   "name": "Angus Sheldrick"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "archer-reid",
+   "name": "Archer Reid"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "archie-may",
+   "name": "Archie May"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "asher-eastham",
+   "name": "Asher Eastham"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "ashton-moir",
+   "name": "Ashton Moir"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "avery-thomas",
+   "name": "Avery Thomas"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "bailey-banfield",
+   "name": "Bailey Banfield"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "bailey-dale",
+   "name": "Bailey Dale"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "bailey-macdonald",
+   "name": "Bailey Macdonald"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "bailey-scott",
+   "name": "Bailey Scott"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "beau-addinsall",
+   "name": "Beau Addinsall"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "ben-camporeale",
+   "name": "Ben Camporeale"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "ben-jepson",
+   "name": "Ben Jepson"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "ben-mckay",
+   "name": "Ben McKay"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "ben-murphy",
+   "name": "Ben Murphy"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "benny-barrett",
+   "name": "Benny Barrett"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "blake-howes",
+   "name": "Blake Howes"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "blake-thredgold",
+   "name": "Blake Thredgold"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "bobby-hill",
+   "name": "Bobby Hill"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "bodie-ryan",
+   "name": "Bodie Ryan"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "brandon-walker",
+   "name": "Brandon Walker"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "brandon-zerk-thatcher",
+   "name": "Brandon Zerk-Thatcher"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "brayden-fiorini",
+   "name": "Brayden Fiorini"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "brayden-george",
+   "name": "Brayden George"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "brayden-maynard",
+   "name": "Brayden Maynard"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "brent-daniels",
+   "name": "Brent Daniels"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "brodie-grundy",
+   "name": "Brodie Grundy"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "brody-mihocek",
+   "name": "Brody Mihocek"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "bruce-reville",
+   "name": "Bruce Reville"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "caiden-cleary",
+   "name": "Caiden Cleary"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "caleb-graham",
+   "name": "Caleb Graham"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "caleb-lewis",
+   "name": "Caleb Lewis"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "caleb-may",
+   "name": "Caleb May"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "callum-coleman-jones",
+   "name": "Callum Coleman-Jones"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "calsher-dear",
+   "name": "Calsher Dear"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "cameron-nairn",
+   "name": "Cameron Nairn"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "campbell-chesser",
+   "name": "Campbell Chesser"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "campbell-gray",
+   "name": "Campbell Gray"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "charlie-banfield",
+   "name": "Charlie Banfield"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "charlie-edwards",
+   "name": "Charlie Edwards"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "charlie-nicholls",
+   "name": "Charlie Nicholls"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "chayce-jones",
+   "name": "Chayce Jones"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "chris-scerri",
+   "name": "Chris Scerri"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "cillian-bourke",
+   "name": "Cillian Bourke"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "cillian-burke",
+   "name": "Cillian Burke"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "clay-hall",
+   "name": "Clay Hall"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "cody-anderson",
+   "name": "Cody Anderson"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "cody-angove",
+   "name": "Cody Angove"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "cody-curtin",
+   "name": "Cody Curtin"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "connor-budarick",
+   "name": "Connor Budarick"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "connor-rozee",
+   "name": "Connor Rozee"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "conor-nash",
+   "name": "Conor Nash"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "conor-stone",
+   "name": "Conor Stone"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "cooper-bell",
+   "name": "Cooper Bell"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "cooper-harvey",
+   "name": "Cooper Harvey"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "cooper-simpson",
+   "name": "Cooper Simpson"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "corey-wagner",
+   "name": "Corey Wagner"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "corey-warner",
+   "name": "Corey Warner"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "dane-rampe",
+   "name": "Dane Rampe"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "daniel-butler",
+   "name": "Daniel Butler"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "darcy-fogarty",
+   "name": "Darcy Fogarty"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "darcy-jones",
+   "name": "Darcy Jones"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "darcy-moore",
+   "name": "Darcy Moore"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "darcy-parish",
+   "name": "Darcy Parish"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "darragh-joyce",
+   "name": "Darragh Joyce"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "deven-robertson",
+   "name": "Deven Robertson"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "dougal-howard",
+   "name": "Dougal Howard"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "dylan-patterson",
+   "name": "Dylan Patterson"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "eamonn-armstrong",
+   "name": "Eamonn Armstrong"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "elijah-hewett",
+   "name": "Elijah Hewett"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "elijah-hollands",
+   "name": "Elijah Hollands"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "elijah-tsatas",
+   "name": "Elijah Tsatas"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "elliot-himmelberg",
+   "name": "Elliott Himmelberg"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "esava-ratugolea",
+   "name": "Esava Ratugolea"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "ewan-mackinlay",
+   "name": "Ewan Mackinlay"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "finlay-macrae",
+   "name": "Finlay Macrae"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "finn-callaghan",
+   "name": "Finn Callaghan"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "finn-maginness",
+   "name": "Finn Maginness"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "finnbar-maley",
+   "name": "Finnbar Maley"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "finnegan-davis",
+   "name": "Finnegan Davis"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "flynn-perez",
+   "name": "Flynn Perez"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "flynn-riley",
+   "name": "Flynn Riley"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "flynn-young",
+   "name": "Flynn Young"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "fred-rodriguez",
+   "name": "Fred Rodriguez"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "george-stevens",
+   "name": "George Stevens"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "hamish-davis",
+   "name": "Hamish Davis"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "harley-barker",
+   "name": "Harley Barker"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "harrison-coe",
+   "name": "Harrison Coe"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "harrison-jones",
+   "name": "Harrison Jones"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "harrison-oliver",
+   "name": "Harrison Oliver"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "harry-armstrong",
+   "name": "Harry Armstrong"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "harry-barnett",
+   "name": "Harry Barnett"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "harry-charleson",
+   "name": "Harry Charleson"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "harry-cunningham",
+   "name": "Harry Cunningham"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "harry-demattia",
+   "name": "Harry DeMattia"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "harry-edwards",
+   "name": "Harry Edwards"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "harry-o-farrell",
+   "name": "Harry O'Farrell"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "harry-perryman",
+   "name": "Harry Perryman"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "harry-schoenberg",
+   "name": "Harry Schoenberg"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "harvey-gallagher",
+   "name": "Harvey Gallagher"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "harvey-johnston",
+   "name": "Harvey Johnston"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "henry-hustwaite",
+   "name": "Henry Hustwaite"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "henry-smith",
+   "name": "Henry Smith"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "hudson-o-keeffe",
+   "name": "Hudson O'Keeffe"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "hugh-bond",
+   "name": "Hugh Bond"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "hugh-davies",
+   "name": "Hugh Davies"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "hugh-mccluggage",
+   "name": "Hugh McCluggage"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "hugo-mikunda",
+   "name": "Hugo Mikunda"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "hunter-holmes",
+   "name": "Hunter Holmes"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "iliro-smit",
+   "name": "Iliro Smit"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "indy-cotton",
+   "name": "Indy Cotton"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "isaac-keeler",
+   "name": "Isaac Keeler"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "jack-bowes",
+   "name": "Jack Bowes"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "jack-buckley",
+   "name": "Jack Buckley"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "jack-buller",
+   "name": "Jack Buller"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "jack-carroll",
+   "name": "Jack Carroll"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "jack-dalton",
+   "name": "Jack Dalton"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "jack-henderson",
+   "name": "Jack Henderson"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "jack-hutchinson",
+   "name": "Jack Hutchinson"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "jack-ison",
+   "name": "Jack Ison"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "jack-lukosius",
+   "name": "Jack Lukosius"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "jack-ough",
+   "name": "Jack Ough"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "jack-payne",
+   "name": "Jack Payne"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "jack-scrimshaw",
+   "name": "Jack Scrimshaw"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "jack-sinclair",
+   "name": "Jack Sinclair"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "jack-viney",
+   "name": "Jack Viney"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "jack-watkins",
+   "name": "Jack Watkins"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "jackson-archer",
+   "name": "Jackson Archer"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "jackson-macrae",
+   "name": "Jackson Macrae"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "jacob-hopper",
+   "name": "Jacob Hopper"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "jacob-konstanty",
+   "name": "Jacob Konstanty"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "jacob-molier",
+   "name": "Jacob Molier"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "jacob-moss",
+   "name": "Jacob Moss"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "jacob-newton",
+   "name": "Jacob Newton"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "jacob-weitering",
+   "name": "Jacob Weitering"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "jade-gresham",
+   "name": "Jade Gresham"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "jaeger-o-meara",
+   "name": "Jaeger O'Meara"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "jai-culley",
+   "name": "Jai Culley"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "jai-murray",
+   "name": "Jai Murray"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "jai-saxena",
+   "name": "Jai Saxena"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "jaime-uhr-henry",
+   "name": "Jaime Uhr-Henry"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "jake-kolodjashnij",
+   "name": "Jake Kolodjashnij"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "jake-melksham",
+   "name": "Jake Melksham"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "jake-riccardi",
+   "name": "Jake Riccardi"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "jake-soligo",
+   "name": "Jake Soligo"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "jakob-ryan",
+   "name": "Jakob Ryan"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "jamarra-ugle-hagan",
+   "name": "Jamarra Ugle-Hagan"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "james-barrat",
+   "name": "James Barrat"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "james-blanck",
+   "name": "James Blanck"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "james-borlase",
+   "name": "James Borlase"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "james-leake",
+   "name": "James Leake"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "james-rowbottom",
+   "name": "James Rowbottom"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "james-trezise",
+   "name": "James Trezise"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "james-tunstill",
+   "name": "James Tunstill"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "jamie-cripps",
+   "name": "Jamie Cripps"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "jamie-elliott",
+   "name": "Jamie Elliott"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "jaren-carr",
+   "name": "Jaren Carr"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "jarrod-witts",
+   "name": "Jarrod Witts"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "jasper-alger",
+   "name": "Jasper Alger"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "jayden-laverde",
+   "name": "Jayden Laverde"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "jayden-nguyen",
+   "name": "Jayden Nguyen"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "jed-adams",
+   "name": "Jed Adams"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "jed-bews",
+   "name": "Jed Bews"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "jedd-busslinger",
+   "name": "Jedd Busslinger"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "jeremy-cameron",
+   "name": "Jeremy Cameron"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "jeremy-howe",
+   "name": "Jeremy Howe"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "jeremy-sharp",
+   "name": "Jeremy Sharp"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "jesse-hogan",
+   "name": "Jesse Hogan"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "jesse-mellor",
+   "name": "Jesse Mellor"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "jesse-motlop",
+   "name": "Jesse Motlop"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "jevan-phillipou",
+   "name": "Jevan Phillipou"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "joe-pike",
+   "name": "Joe Pike"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "joe-richards",
+   "name": "Joe Richards"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "joel-amartey",
+   "name": "Joel Amartey"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "joel-cochran",
+   "name": "Joel Cochran"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "jonty-faull",
+   "name": "Jonty Faull"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "jordan-boyd",
+   "name": "Jordan Boyd"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "jordan-de-goey",
+   "name": "Jordan De Goey"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "jordan-ridley",
+   "name": "Jordan Ridley"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "jordon-butts",
+   "name": "Jordon Butts"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "josh-draper",
+   "name": "Josh Draper"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "josh-gibcus",
+   "name": "Josh Gibcus"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "josh-goater",
+   "name": "Josh Goater"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "josh-sinn",
+   "name": "Josh Sinn"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "josh-smillie",
+   "name": "Josh Smillie"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "joshua-kelly",
+   "name": "Joshua Kelly"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "justin-mcinerney",
+   "name": "Justin McInerney"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "kalani-white",
+   "name": "Kalani White"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "kaleb-smith",
+   "name": "Kaleb Smith"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "kane-farrell",
+   "name": "Kane Farrell"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "kane-mcauliffe",
+   "name": "Kane McAuliffe"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "kayle-gerreyn",
+   "name": "Kayle Gerreyn"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "keidean-coleman",
+   "name": "Keidean Coleman"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "keighton-matofai-forbes",
+   "name": "Keighton Matofai-Forbes"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "kobe-mcdonald",
+   "name": "Kobe McDonald"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "koby-coulson",
+   "name": "Koby Coulson"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "koby-evans",
+   "name": "Koby Evans"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "kye-fincher",
+   "name": "Kye Fincher"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "lachlan-blakiston",
+   "name": "Lachlan Blakiston"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "lachlan-carmichael",
+   "name": "Lachlan Carmichael"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "lachlan-fogarty",
+   "name": "Lachlan Fogarty"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "lachlan-jones",
+   "name": "Lachlan Jones"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "lachlan-mcandrew",
+   "name": "Lachlan McAndrew"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "lachlan-mcneil",
+   "name": "Lachlan McNeil"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "lachlan-sholl",
+   "name": "Lachlan Sholl"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "lachlan-smith",
+   "name": "Lachlan Smith"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "lachlan-weller",
+   "name": "Lachlan Weller"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "lachy-dovaston",
+   "name": "Lachy Dovaston"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "laitham-vandermeer",
+   "name": "Laitham Vandermeer"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "lance-collard",
+   "name": "Lance Collard"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "latrelle-pickett",
+   "name": "Latrelle Pickett"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "leek-aleer",
+   "name": "Leek Aleer"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "lennox-hoffman",
+   "name": "Lennox Hoffman"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "leon-kickett",
+   "name": "Leon Kickett"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "lewis-hayes",
+   "name": "Lewis Hayes"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "liam-fawcett",
+   "name": "Liam Fawcett"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "liam-henry",
+   "name": "Liam Henry"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "liam-hetherton",
+   "name": "Liam Hetherton"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "liam-mcmahon",
+   "name": "Liam McMahon"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "liam-reidy",
+   "name": "Liam Reidy"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "lincoln-mccarthy",
+   "name": "Lincoln McCarthy"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "logan-evans",
+   "name": "Logan Evans"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "logan-smith",
+   "name": "Logan Smith"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "louis-emmett",
+   "name": "Louis Emmett"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "lucas-camporeale",
+   "name": "Lucas Camporeale"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "lucca-grego",
+   "name": "Lucca Grego"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "lukas-cooke",
+   "name": "Lukas Cooke"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "luke-beecken",
+   "name": "Luke Beecken"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "luke-cleary",
+   "name": "Luke Cleary"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "luke-kennedy",
+   "name": "Luke Kennedy"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "luke-lloyd",
+   "name": "Luke Lloyd"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "luke-mcdonald",
+   "name": "Luke McDonald"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "luke-nankervis",
+   "name": "Luke Nankervis"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "luke-pedlar",
+   "name": "Luke Pedlar"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "luke-trainor",
+   "name": "Luke Trainor"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "luke-urquhart",
+   "name": "Luke Urquhart"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "luker-kentfield",
+   "name": "Luker Kentfield"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "malakai-champion",
+   "name": "Malakai Champion"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "malcolm-rosas",
+   "name": "Malcolm Rosas"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "mani-liddy",
+   "name": "Mani Liddy"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "mason-wood",
+   "name": "Mason Wood"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "matt-carroll",
+   "name": "Matt Carroll"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "matt-duffy",
+   "name": "Matt Duffy"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "matt-guelfi",
+   "name": "Matt Guelfi"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "matt-hill",
+   "name": "Matt Hill"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "matt-owies",
+   "name": "Matt Owies"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "matt-whitlock",
+   "name": "Matt Whitlock"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "matthew-flynn",
+   "name": "Matthew Flynn"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "matthew-leray",
+   "name": "Matthew LeRay"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "maurice-rioli-1",
+   "name": "Maurice Rioli"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "max-beattie",
+   "name": "Max Beattie"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "max-heath",
+   "name": "Max Heath"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "max-holmes",
+   "name": "Max Holmes"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "max-king-stk",
+   "name": "Max King"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "max-king-syd",
+   "name": "Maxwell King"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "max-knobel",
+   "name": "Max Knobel"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "max-mapley",
+   "name": "Max Mapley"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "max-ramsden",
+   "name": "Max Ramsden"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "mitch-georgiades",
+   "name": "Mitch Georgiades"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "mitch-podhajski",
+   "name": "Mitch Podhajski"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "mitchell-edwards",
+   "name": "Mitchell Edwards"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "mitchell-hinge",
+   "name": "Mitchell Hinge"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "mitchell-knevitt",
+   "name": "Mitchell Knevitt"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "mitchell-marsh",
+   "name": "Mitchell Marsh"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "nasiah-wanganeen-milera",
+   "name": "Nasiah Wanganeen-Milera"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "nathan-wardius",
+   "name": "Nathan Wardius"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "ned-bowman",
+   "name": "Ned Bowman"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "nic-newman",
+   "name": "Nic Newman"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "nicholas-holman",
+   "name": "Nicholas Holman"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "nicholas-martin",
+   "name": "Nicholas Martin"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "nick-bryan",
+   "name": "Nick Bryan"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "nick-driscoll",
+   "name": "Nick Driscoll"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "nick-murray",
+   "name": "Nick Murray"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "nikolas-cox",
+   "name": "Nikolas Cox"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "noah-balta",
+   "name": "Noah Balta"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "noah-chamberlain",
+   "name": "Noah Chamberlain"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "noah-long",
+   "name": "Noah Long"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "noah-mraz",
+   "name": "Noah Mraz"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "noah-roberts-thomson",
+   "name": "Noah Roberts-Thomson"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "oliver-francou",
+   "name": "Oliver Francou"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "oliver-griffin",
+   "name": "Oliver Griffin"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "oliver-hannaford",
+   "name": "Oliver Hannaford"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "oliver-hayes-brown",
+   "name": "Oliver Hayes-Brown"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "oliver-hollands",
+   "name": "Oliver Hollands"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "ollie-greeves",
+   "name": "Ollie Greeves"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "ollie-lord",
+   "name": "Ollie Lord"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "ollie-murphy",
+   "name": "Ollie Murphy"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "oscar-adams",
+   "name": "Oscar Adams"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "oscar-berry",
+   "name": "Oscar Berry"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "oscar-steene",
+   "name": "Oscar Steene"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "oskar-baker",
+   "name": "Oskar Baker"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "oskar-taylor",
+   "name": "Oskar Taylor"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "paddy-cross",
+   "name": "Paddy Cross"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "paddy-dow",
+   "name": "Paddy Dow"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "patrick-carr",
+   "name": "Patrick Carr"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "patrick-dangerfield",
+   "name": "Patrick Dangerfield"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "patrick-lipinski",
+   "name": "Patrick Lipinski"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "patrick-said",
+   "name": "Patrick Said"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "patrick-snell",
+   "name": "Patrick Snell"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "peter-ladhams",
+   "name": "Peter Ladhams"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "phoenix-gothard",
+   "name": "Phoenix Gothard"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "reece-torrent",
+   "name": "Reece Torrent"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "reef-mcinnes",
+   "name": "Reef McInnes"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "reuben-ginbey",
+   "name": "Reuben Ginbey"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "rhyan-mansell",
+   "name": "Rhyan Mansell"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "rhys-stanley",
+   "name": "Rhys Stanley"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "riak-andrew",
+   "name": "Riak Andrew"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "ricky-mentha",
+   "name": "Ricky Mentha"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "riley-garcia",
+   "name": "Riley Garcia"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "riley-onley",
+   "name": "Riley Onley"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "river-stevens",
+   "name": "River Stevens"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "rob-monahan",
+   "name": "Rob Monahan"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "robert-hansen",
+   "name": "Robert Hansen"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "ryan-gardner",
+   "name": "Ryan Gardner"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "ryan-maric",
+   "name": "Ryan Maric"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "ryda-luke",
+   "name": "Ryda Luke"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "saad-el-hawli",
+   "name": "Saad El-Hawli"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "sam-allen",
+   "name": "Sam Allen"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "sam-cumming",
+   "name": "Sam Cumming"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "sam-darcy",
+   "name": "Sam Darcy"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "sam-flanders",
+   "name": "Sam Flanders"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "sam-marshall",
+   "name": "Sam Marshall"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "sam-powell-pepper",
+   "name": "Sam Powell-Pepper"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "sam-sturt",
+   "name": "Sam Sturt"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "samuel-collins",
+   "name": "Samuel Collins"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "sandy-brock",
+   "name": "Sandy Brock"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "scott-pendlebury",
+   "name": "Scott Pendlebury"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "sean-darcy",
+   "name": "Sean Darcy"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "shadeau-brain",
+   "name": "Shadeau Brain"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "sid-draper",
+   "name": "Sid Draper"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "sullivan-robey",
+   "name": "Sullivan Robey"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "tai-hayes",
+   "name": "Tai Hayes"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "taylor-goad",
+   "name": "Taylor Goad"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "tew-jiath",
+   "name": "Tew Jiath"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "thomas-burton",
+   "name": "Thomas Burton"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "thomas-matthews",
+   "name": "Thomas Matthews"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "thomas-sims",
+   "name": "Thomas Sims"
+  },
+  {
+   "afl_club": "St Kilda",
+   "key": "tobie-travaglia",
+   "name": "Tobie Travaglia"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "toby-bedford",
+   "name": "Toby Bedford"
+  },
+  {
+   "afl_club": "Geelong",
+   "key": "toby-conway",
+   "name": "Toby Conway"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "toby-mcmullin",
+   "name": "Toby McMullin"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "toby-murray",
+   "name": "Toby Murray"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "toby-pink",
+   "name": "Toby Pink"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "toby-whan",
+   "name": "Toby Whan"
+  },
+  {
+   "afl_club": "Fremantle",
+   "key": "tobyn-murray",
+   "name": "Tobyn Murray"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "tom-cochrane",
+   "name": "Tom Cochrane"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "tom-doedee",
+   "name": "Tom Doedee"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "tom-edwards",
+   "name": "Tom Edwards"
+  },
+  {
+   "afl_club": "GWS",
+   "key": "tom-green",
+   "name": "Tom Green"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "tom-hanily",
+   "name": "Tom Hanily"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "tom-powell",
+   "name": "Tom Powell"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "ty-gallop",
+   "name": "Ty Gallop"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "tyan-prindable",
+   "name": "Tyan Prindable"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "tylah-williams",
+   "name": "Tylah Williams"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "tyler-brockman",
+   "name": "Tyler Brockman"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "tyler-welsh",
+   "name": "Tyler Welsh"
+  },
+  {
+   "afl_club": "West Coast",
+   "key": "tyrell-dewar",
+   "name": "Tyrell Dewar"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "tyson-stengle",
+   "name": "Tyson Stengle"
+  },
+  {
+   "afl_club": "Adelaide",
+   "key": "wayne-milera",
+   "name": "Wayne Milera"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "wil-parker",
+   "name": "Wil Parker"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "will-brodie",
+   "name": "Will Brodie"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "will-darcy",
+   "name": "Will Darcy"
+  },
+  {
+   "afl_club": "Sydney",
+   "key": "will-edwards",
+   "name": "Will Edwards"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "will-graham",
+   "name": "Will Graham"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "will-lewis",
+   "name": "Will Lewis"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "will-mclachlan",
+   "name": "Will McLachlan"
+  },
+  {
+   "afl_club": "Hawthorn",
+   "key": "william-mccabe",
+   "name": "William McCabe"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "xavier-bamert",
+   "name": "Xavier Bamert"
+  },
+  {
+   "afl_club": "Essendon",
+   "key": "xavier-duursma",
+   "name": "Xavier Duursma"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "xavier-lindsay",
+   "name": "Xavier Lindsay"
+  },
+  {
+   "afl_club": "Melbourne",
+   "key": "xavier-taylor",
+   "name": "Xavier Taylor"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "xavier-walsh",
+   "name": "Xavier Walsh"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "zac-fisher",
+   "name": "Zac Fisher"
+  },
+  {
+   "afl_club": "Collingwood",
+   "key": "zac-mccarthy",
+   "name": "Zac McCarthy"
+  },
+  {
+   "afl_club": "Western Bulldogs",
+   "key": "zac-walker",
+   "name": "Zac Walker"
+  },
+  {
+   "afl_club": "Carlton",
+   "key": "zachary-williams",
+   "name": "Zachary Williams"
+  },
+  {
+   "afl_club": "Port Adelaide",
+   "key": "zak-butters",
+   "name": "Zak Butters"
+  },
+  {
+   "afl_club": "Gold Coast",
+   "key": "zak-evans",
+   "name": "Zak Evans"
+  },
+  {
+   "afl_club": "North Melbourne",
+   "key": "zane-duursma",
+   "name": "Zane Duursma"
+  },
+  {
+   "afl_club": "Richmond",
+   "key": "zane-peucker",
+   "name": "Zane Peucker"
+  },
+  {
+   "afl_club": "Brisbane",
+   "key": "zane-zakostelsky",
+   "name": "Zane Zakostelsky"
+  }
+ ],
+ "round": 22
+}

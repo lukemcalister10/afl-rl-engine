@@ -19,7 +19,7 @@
     "issue": "#271",
     "owner_word": "2026-07-30 \u2014 \"30/7 rederivation for the label. Adopt.\""
   },
-  "as_of_round": 21,
+  "as_of_round": 22,
   "config_sha256": "cef06fd6250be86804f7d4432fdef8969070f9d9fc938f3e3473547c5b4b4739",
   "f5_entrant_reconciliation": {
     "canonical_build": "rl_export.py RL_LEGF=1 (Option A: engine emits the ladder)",
@@ -32,14 +32,14 @@
   },
   "held_checks": [],
   "identities": {
-    "balanced_board_md5": "123deccb0838c7370ce614d7f4310b01",
+    "balanced_board_md5": "b4cc0b2b7e4fb0552e9457f2d249cf52",
     "band": "34faa8659cc8f19794f5cb9584fa19b2",
-    "board": "113b36f898a32363c49c2a62fb809f4b",
+    "board": "6e724cca2bb2fb118ff7ad6ed1f8a4b6",
     "engine_head": "8f0e3eb1b29fee6b2defa0a5cfd7ebec",
     "fv": "d920557ef21d0eec6434853b07869dd4c0b98f64e99e79ecbb8ee54c704ecf4a",
     "register": "652d83e87780e415a01a2de6d8b3cc57",
     "rl_model": "33f940735281a07e3b6ca19f31bf2ea6",
-    "store": "37ced3ce45914e6feb00d27e26922e9a"
+    "store": "0dd6b4a01e16dabf8d3a388d8f8ac1f2"
   },
   "must_be_unset": [
     "RL_UNCOMP_S",
@@ -48,9 +48,9 @@
   ],
   "present_lens_baseline": {
     "active": 804,
-    "balanced_board_md5": "123deccb0838c7370ce614d7f4310b01",
-    "note": "ITEM 411 D1 (LANDED 2026-07-27 on the owner landing word \u2014 the second word): balanced/strict reference 123deccb; present_value_total 764021 is the LANDED present-v sum (build-and-compare = data/rl_build/rl_app_data.json md5 fa172ac1, 804 active). D1 applied the owner's ITEM 411 change manifest to the store (f37d9716 -> c120cfd5) and deterministically regenerated the board, so board of record 6f07f7cb is REPLACED by fa172ac1 \u2014 it is no longer frozen. Forward-lens repair remains deferred. SUPERSEDES, truth preserved as history: the ITEM 408 STOP-1 statement of this baseline (owner-approved 2026-07-22) recorded balanced/strict advanced 06d8af60->1373e824, present_value_total 760253 as the R19 candidate present-v sum (build-and-compare = board of record 6f07f7cb, 0 movers) and board of record 6f07f7cb NOT replaced; it also corrected a prior 757608 (that value added the +5181 D8 present-board delta to the FV present-lens baseline 752427 instead of the correction's present baseline 755072; the present_board_correction/summary.json present_total_after is 760253).",
-    "present_value_total": 759722
+    "balanced_board_md5": "b4cc0b2b7e4fb0552e9457f2d249cf52",
+    "note": "ITEM 411 D1 (LANDED 2026-07-27 on the owner landing word \u2014 the second word): balanced/strict reference b4cc0b2b; present_value_total 764021 is the LANDED present-v sum (build-and-compare = data/rl_build/rl_app_data.json md5 fa172ac1, 804 active). D1 applied the owner's ITEM 411 change manifest to the store (f37d9716 -> c120cfd5) and deterministically regenerated the board, so board of record 6f07f7cb is REPLACED by fa172ac1 \u2014 it is no longer frozen. Forward-lens repair remains deferred. SUPERSEDES, truth preserved as history: the ITEM 408 STOP-1 statement of this baseline (owner-approved 2026-07-22) recorded balanced/strict advanced 06d8af60->1373e824, present_value_total 760253 as the R19 candidate present-v sum (build-and-compare = board of record 6f07f7cb, 0 movers) and board of record 6f07f7cb NOT replaced; it also corrected a prior 757608 (that value added the +5181 D8 present-board delta to the FV present-lens baseline 752427 instead of the correction's present baseline 755072; the present_board_correction/summary.json present_total_after is 760253).",
+    "present_value_total": 761583
   },
   "pvc_provenance": {
     "_note": "#328 re-closure (owner word 2026-08-05, OPTION A): the corrected-store derived ladder installed as the adopted ruled curve from surface e4215093 on store f1e8c9fe. Adoption remains the owner's separate click.",
@@ -61,19 +61,19 @@
   },
   "release_version": "v2.11-final-rc1-PROVISIONAL",
   "season_metadata": {
-    "as_of_round": 21,
+    "as_of_round": 22,
     "as_of_round_source": "DYNAMIC weekly stamp (expected_boot + this contract + board-view stamp); advanced by the Track B updater; feeds NO valuation math",
-    "calendar_progress": 0.88,
+    "calendar_progress": 0.92,
     "calendar_progress_derivation": "round_half_up(100*as_of_round/season_total_rounds)/100 in season_state.py (policy immutable, hashed by derivation_policy_id). Consumed everywhere the engine formerly read the frozen SEASON_PROG literal + RL_M3_FE (both removed). DERIVED + advances weekly; FEEDS the valuation.",
     "class": "A (live valuation semantics): calendar_progress + exposure_pace are DERIVED dynamic release state that FEED the valuation, stamped via rl_model+board md5 + the season_state derivation; as_of_round is the dynamic round stamp; RL_SEASON_ROUNDS is class-B ingestion infra (never a valuation input).",
     "coherence": "season_prog 0.58 agrees with as_of_round/season_total = 14/24 = 0.583 by convention at the release",
     "coupling_finding": "as_of_round (dynamic weekly) and the valuation season fraction are now COUPLED: the weekly updater DERIVES + ADVANCES calendar_progress and exposure_pace from the staged store each accepted round and commits them atomically with the store/board/expected_boot/contract. Round progression drives valuation progression; there is no frozen SEASON_PROG and nothing is deferred.",
     "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
-    "exposure_pace": 0.773,
+    "exposure_pace": 0.818,
     "exposure_pace_derivation": "round(median(current games of the durable population, prior>=18)/22, 3), cap 1.0; per-player scope s=clip(1-g/11,0,1). Freshly DERIVED from the staged store each round; replaces RL_EXPO_F.",
     "note": "calendar_progress + exposure_pace are DERIVED (season_state.json); RL_M3_FE/RL_EXPO_F removed from config; derivation policy immutable (derivation_policy_id).",
     "rl_season_rounds_role": "RL_SEASON_ROUNDS / DEFAULT_SEASON_ROUNDS=24 = ingestion round-bound SANITY guard ONLY (round_apply.py:52,290-295); NOT a valuation input; class B (infra); lives in the gated-OFF store-write path",
-    "season_prog": 0.88,
+    "season_prog": 0.92,
     "season_prog_config_twins": {
       "RL_EXPO_F": "0.545",
       "RL_EXPO_INPROG_Y": "2026",
@@ -89,5 +89,5 @@
     "RL_LEGF": "1",
     "RL_PVC2": "1"
   },
-  "contract_sha256": "b9fd449081e58ae79c90144538c79c6b53449b8e116e33eb6a69f3dc3a9ceb3c"
+  "contract_sha256": "bf435d58aee2cd5a994a948bc3f3d4859fce1397ac21a80fb7ad0a3860188eaf"
 }

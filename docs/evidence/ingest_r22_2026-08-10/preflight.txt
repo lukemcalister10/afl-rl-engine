@@ -1,0 +1,54 @@
+ROUND 22 PREFLIGHT — both runs, in order. Read-only: nothing was written by either.
+Command (both runs):
+  round_entry catchup --file 22=scores/R22.csv
+Store at the time of both runs: 37ced3ce45914e6feb00d27e26922e9a (unmoved by either run).
+
+=====================================================================================
+RUN 1 — BEFORE the owner's Bailey Williams ruling. THE GUARD FIRED. Nothing was applied.
+=====================================================================================
+================ CATCH-UP PREFLIGHT ================
+  season 2026 · 1 round(s) · identity overrides: Bailey Williams, Callum Brown
+  R22  enc=utf-8     listed/played=409  resolved=409  listed-zero=0   absent/DNP=396   sha256 c8f3748462d0
+        identity override: Callum M. Brown        -> callum-brown-ire       (score 77, owner-override:map_all)
+        DUPLICATE stable key: bailey-williams-wb scores=[89.0, 97.0]
+  PREFLIGHT HALTED:
+    - round 22: duplicate stable-key assignment(s): [{'key': 'bailey-williams-wb', 'scores': [89.0, 97.0]}]
+===================================================
+round_entry: FAIL — catch-up preflight HALTED — resolve the identity issues above; NOTHING was applied.
+
+WHY: the round-22 export writes BOTH Bailey Williams players under the one bare display name
+"Bailey Williams" (97 and 89). Rounds 20 and 21 wrote them apart ("Bailey Williams" for the Western
+Bulldogs man, "Bailey J. Williams" for the West Coast man), matching the store exactly, which is why
+the disambiguation rule had been retired at R20. With the rule retired both rows resolved to
+bailey-williams-wb and the duplicate guard halted the whole catch-up before any write.
+
+Note that this is the ONLY halt reason. Every other name in the file — all 407 remaining rows —
+resolved to exactly one active player unaided.
+
+Nothing in the file and nothing in the store distinguishes the two scores. The seat did not guess.
+The question went to the owner.
+
+OWNER'S WORD, VERBATIM: "97 = West Coast, 89 = Bulldogs".
+
+Recorded as a round-22-scoped (round, score) mapping in
+engine/rl_after/ingestion/catchup_identity_overrides.json:
+    "22|97": "bailey-williams-wc"    (Bailey J. Williams, AFL club West Coast)
+    "22|89": "bailey-williams-wb"    (Bailey Williams,    AFL club Western Bulldogs)
+The owner's score file was NOT edited. scores/R22.csv is byte-identical to the file he couriered
+(md5 82b456d5675c18b137180416b82432fc).
+
+=====================================================================================
+RUN 2 — AFTER the owner's ruling. CLEAN. This is the state the apply ran from.
+=====================================================================================
+================ CATCH-UP PREFLIGHT ================
+  season 2026 · 1 round(s) · identity overrides: Bailey Williams, Callum Brown
+  R22  enc=utf-8     listed/played=409  resolved=409  listed-zero=0   absent/DNP=395   sha256 c8f3748462d0
+        identity override: Bailey J. Williams     -> bailey-williams-wc     (score 97, owner-override:by_round_score)
+        identity override: Bailey Williams        -> bailey-williams-wb     (score 89, owner-override:by_round_score)
+        identity override: Callum M. Brown        -> callum-brown-ire       (score 77, owner-override:map_all)
+  PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.
+===================================================
+
+The absent/DNP count moves 396 -> 395 between the two runs for exactly the right reason: before the
+ruling the two rows collapsed onto one player, so the other was counted absent; after it, both are
+listed. 804 active - 409 listed = 395.

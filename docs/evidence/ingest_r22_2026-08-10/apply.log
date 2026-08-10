@@ -1,0 +1,84 @@
+================ CATCH-UP PREFLIGHT ================
+  season 2026 · 1 round(s) · identity overrides: Bailey Williams, Callum Brown
+  R22  enc=utf-8     listed/played=409  resolved=409  listed-zero=0   absent/DNP=395   sha256 c8f3748462d0
+        identity override: Bailey J. Williams     -> bailey-williams-wc     (score 97, owner-override:by_round_score)
+        identity override: Bailey Williams        -> bailey-williams-wb     (score 89, owner-override:by_round_score)
+        identity override: Callum M. Brown        -> callum-brown-ire       (score 77, owner-override:map_all)
+  PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.
+===================================================
+
+About to apply rounds [22] — each as its own sequential transaction, committed in order.
+
+================ CATCH-UP APPLIED ================
+  R22  store 37ced3ce->0dd6b4a0  board 113b36f8->6e724cca  players=409  guard5=True  hist=[14, 15, 16, 17, 18, 19, 20, 21, 22]  final=FINALIZED  movers->UI=804
+  Final store 0dd6b4a0 · board 6e724cca
+  Per-round backups, transaction records, dedup ledger, value/overall-rank/positional-rank
+  histories and movers reports are all retained.
+=================================================
+
+  #283 OWNERSHIP STORE APPLY — out-of-round transaction (seam Ruling 1, 2026-07-30)
+  ------------------------------------------------------------------------------
+  [P1] interpreter cp312 — pinned
+  [P3] six-way incoming coherence — all read 0dd6b4a0
+  [P8] serializer identity — dumps(loads(store)) == store bytes (1971834 bytes)
+  [--] store rows 2650 · distinct keys 2650 · rows carrying affl_team 804
+  [--] board players 804 · ambiguous board name-keys 0 · board md5 6e724cca
+  [P4] CSV utf-8 · 805 lines = 1 header + 804 players (CRLF preserved, never 'fixed')
+  [P5] join by key — 0 unmatched, 0 board keys missing from the store, 804 resolved
+  [P6] club spellings — all 804 authored values are known spellings
+  [P7] plan — 0 of 804 authored rows move (of 2650 store rows; 804 carry affl_team)
+  [--] store md5 0dd6b4a0 -> 0dd6b4a0  (NO-OP)
+
+  NO-OP — the store already carries the authored ownership; no pin moves, no register entry appended.
+/home/claude/r22/ui/tools/ingest_inputs.py:123: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  return datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+
+  VALIDATION VERDICTS
+  ------------------------------------------------------------------------
+  [PASS] release manifest has current board/store/round/version  (missing: none)
+  [PASS] board id ring-fence == current release manifest  (bundle board 6e724cca vs manifest 6e724cca)
+  [PASS] board asOfRound == current release manifest  (bundle 22 vs manifest 22)
+  [PASS] board source store == current release manifest  (bundle 0dd6b4a0 vs manifest 0dd6b4a0)
+  [PASS] release pick-curve contract has all required fields  (missing: none)
+  [PASS] contract adopted_pathway is a known pathway  (RL_PVC2 (known: ['RL_PVC2', 'RL_PVCADOPT']))
+  [PASS] release manifest has current board/store/round/version  (missing: none)
+  [PASS] curve contract release_version == current release version  (contract v2.11-final-rc1-PROVISIONAL vs manifest v2.11-final-rc1-PROVISIONAL)
+  [PASS] curve contract carries a full immutable source-store identity  (curve source store f1e8c9fe)
+  [PASS] contract numeraire pin1 == 3000  (pin1 = 3000)
+  [PASS] contract pick_curve_path matches the adopted pathway  (RL_PVC2 expects pvc_curve_v2.json, contract points at pvc_curve_v2.json)
+  [PASS] release-active curve file md5 == contract  (file 988135ef vs contract 988135ef)
+  [PASS] release-active curve curve_md5 == contract  (curve df766dff vs contract df766dff)
+  [PASS] engine curve self-declares gate == adopted pathway  (curve gate 'RL_PVC2' vs pathway 'RL_PVC2')
+  [PASS] engine curve store binding == release store  (curve f1e8c9fe vs release f1e8c9fe)
+  [PASS] board PVC == release-active engine/rl_after/pvc_curve_v2.json (RL_PVC2, over 64 shared picks)
+  [PASS] PVC numeraire anchor pick1 == 3000  (pick1 = 3000)
+  [PASS] PVC monotone non-increasing (picks 1-64)
+  [PASS] board name-join keys unambiguous (normalised)  (dups: [])
+  [PASS] AFFL club count  (16 clubs (+ Free Agents pool))
+  [PASS] player names unambiguous in Player_Locations.csv (normalised)  (dups: none)
+  [PASS] player names unambiguous in Future_Positioning.csv (normalised)  (dups: none)
+  [PASS] every Player_Locations name -> a unique stable_player_id (positioning join)  (unmatched: none)
+  [PASS] every Player_Locations name -> a unique board player (name join)  (unmatched: none)
+  [PASS] the two Max Kings are distinct by name (assert)  (Max King=afl-player-v1-f2d8efef518ca2749612 · Maxwell King=afl-player-v1-5f43c9c902f7780ce789)
+  [PASS] case-only name variants reconciled by normalised key  (5 reconciled: Bailey MacDonald, Harry Demattia, Hayden Mclean, Jacob van Rooyen, Jordan de Goey)
+  [PASS] authored CSV ownership agrees with the stamped board affl_team  (0 mismatch(es))
+  [PASS] every AFFL Team in Player_Locations.csv is a known club spelling  (unknown: none)
+  [PASS] ownership sidecar rows built from the authored sheet  (804 player(s) authored)
+  [PASS] ladder 2027 multiplier reconciles to R104.5 balanced (1-0.10=0.90)  (sheet cell = 0.9 · governing = 0.9)
+  [PASS] pick ledger row count == 160  (160 rows)
+  [PASS] all bands within 1-80 and low <= high  (offenders: none)
+  [PASS] both drafts <= one year ahead (2026/2027)  (years=[2026, 2027])
+  [PASS] every pick Owner + Origin joins to exactly one AFFL club (+Free Agents)  (16 distinct owners+origins)
+  [PASS] pick-count conservation (Sum per-club == ledger == 160)  (sum=160 ledger=160)
+  [PASS] all 160 picks priced off the canonical curve  (priced=160)
+  [PASS] authored CSV ownership == the store-derived board (single source proven)  (0 divergence(s))
+  [PASS] ownership mirror written from the store  (804 mirrored of 804 board players · 0 overriding (structurally 0 since #283))
+
+  CLEAN INGEST — 160 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: ui/data/club_valuation.js
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: ui/data/ownership.js
+
+  TOP-3 CLUBS BY OVERALL VALUE:
+    West Coast Eagles  overall 67,749  (players 67,062 + picks 687)
+    Melbourne Demons   overall 62,432  (players 51,435 + picks 10,997)
+    Carlton Blues      overall 62,275  (players 60,148 + picks 2,127)
+APPLY_EXIT=0

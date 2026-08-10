@@ -163,9 +163,9 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
     release: rel,
   };
 
-  // POSITIVE — the populated production bundle carries exactly R15-R21
-  eq(prod.rounds, [15, 16, 17, 18, 19, 20, 21], "production ui/data/movers.js carries R15-R21");
-  ok(prod.reports && Object.keys(prod.reports).length === 7, "production bundle carries seven reports (one per round)");
+  // POSITIVE — the populated production bundle carries exactly R15-R22
+  eq(prod.rounds, [15, 16, 17, 18, 19, 20, 21, 22], "production ui/data/movers.js carries R15-R22");
+  ok(prod.reports && Object.keys(prod.reports).length === 8, "production bundle carries eight reports (one per round)");
   // the complete historical board/store chain (baseline R14 -> R15 -> ... -> R19) is exact + continuous
   var chainOk = true, prevB = prod.baseline.board, prevS = prod.baseline.store;
   [15, 16, 17, 18, 19].forEach(function (r) {
