@@ -1,1 +1,43 @@
 config manifest (gate mode) LOADED  hash cef06fd6250b  (59 model vars pinned; ambient cleared)
+year-1+ ND cohort with a record: n=60 (deterministic every-5.0th sample of 303; an ablation
+  reads DIRECTION and MAGNITUDE, not a precise level, and each cohort re-pricing costs ~1s
+  per player. Set ABL_SAMPLE=0 to run the full cohort.)
+baseline           mean ev/anchor =  1.2444   mean ev/production =  2.7283
+pure production    mean prod/anchor =  1.3386
+
+=== ABLATION: which object moves the year-1+ price anchor -> production? ===
+  LAM_SIT (sit-out blend)          ZEROED /anchor  1.1829 /prod  2.6826  |  SATURATED /anchor  1.3437 /prod  2.8103 
+  _expgate (POLE_RAMP exposure)    ZEROED /anchor  1.1816 /prod  2.6548  |  SATURATED /anchor  1.3025 /prod  2.7784 (also carries tfade's leg: w = wage*tfade*expgate)
+  iso_eff  exp(-E_q/tau) fade      ZEROED /anchor  1.2446 /prod  2.7280  |  SATURATED /anchor  1.2478 /prod  2.7320 
+  _prod_path (production leg)      ZEROED /anchor  0.2293 /prod  2.1587  |  SATURATED /anchor 1154.0057 /prod 823.1650 <- CONTROL
+
+=== VERDICT (computed from the columns above, not asserted) ===
+  pass = ZEROED lands on the anchor (|/anchor - 1| < 0.15) AND SATURATED lands on
+  production (|/prod - 1| < 0.15).
+  LAM_SIT (sit-out blend)          zeroed==anchor no    saturated==production no    
+  _expgate (POLE_RAMP exposure)    zeroed==anchor no    saturated==production no    
+  iso_eff  exp(-E_q/tau) fade      zeroed==anchor no    saturated==production no    
+  _prod_path (production leg)      zeroed==anchor no    saturated==production no    
+
+  NO CANDIDATE PASSES BOTH ENDS. That is the finding, and it is not a null result.
+  The CONTROL row is the proof: zeroing the production leg ENTIRELY leaves the price at
+  /anchor = 0.2293, not 1.0 — because what catches a year-1+ row when production goes to
+  zero is the FLOOR (floor_frac(yis) x entry_anchor: 0.45 at year 1, 0.35 at year 2 ...),
+  a ONE-SIDED lower bound, not a blend. And saturating production leaves /prod = 823.1650
+  because the ruck cap, the staleness caps and the KPF compression bind above it.
+
+  => THE YEAR-1+ PRICE IS NEVER ANCHOR-DOMINATED, so no object can move it off the
+     anchor. That is defect D1 restated as a measurement: at ns>=1 the fitted year-0
+     prior survives only as a floor and as the staleness-cap basis. There is no blend to
+     find. LAM_SIT — the engine's ONLY anchor<->production blend — is switched off the
+     moment ns>=1, which its own ablation shows: forcing it to 0 and to 1 moves this
+     cohort by 1.1829 and 1.3437 on /anchor, i.e. not at all, because none of these rows
+     reach that site.
+
+  CONSEQUENCE FOR ITEM A: 'the EXISTING games ramp' cannot mean an existing year-1+
+  blend weight, because none exists. The only reading consistent with 'no new machinery'
+  is LAM_SIT's games ramp — the engine's own anchor<->production hand-over — CARRIED
+  FORWARD past ns==0 instead of being switched off, on CUMULATIVE games so that v2
+  borrows less than v1 and more than v3.
+
+wrote item_a_ablation.json

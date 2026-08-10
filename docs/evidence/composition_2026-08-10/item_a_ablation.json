@@ -1,0 +1,26 @@
+{
+ "LAM_SIT (sit-out blend)": {
+  "zero_anchor": 1.1829372751630685,
+  "zero_prod": 2.6826379184134352,
+  "sat_anchor": 1.3437130000589865,
+  "sat_prod": 2.8103084629194175
+ },
+ "_expgate (POLE_RAMP exposure)": {
+  "zero_anchor": 1.1816392597193872,
+  "zero_prod": 2.6547521716722713,
+  "sat_anchor": 1.3025298727197032,
+  "sat_prod": 2.778443709997163
+ },
+ "iso_eff  exp(-E_q/tau) fade": {
+  "zero_anchor": 1.2446446112678806,
+  "zero_prod": 2.728030926861961,
+  "sat_anchor": 1.2478011849151234,
+  "sat_prod": 2.7319788699770076
+ },
+ "_prod_path (production leg)": {
+  "zero_anchor": 0.22934229052227534,
+  "zero_prod": 2.158654772617801,
+  "sat_anchor": 1154.005726625871,
+  "sat_prod": 823.1649524054734
+ }
+}

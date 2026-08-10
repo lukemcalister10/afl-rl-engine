@@ -113,11 +113,14 @@ else:
     print("  => THE YEAR-1+ PRICE IS NEVER ANCHOR-DOMINATED, so no object can move it off the")
     print("     anchor. That is defect D1 restated as a measurement: at ns>=1 the fitted year-0")
     print("     prior survives only as a floor and as the staleness-cap basis. There is no blend to")
-    print("     find. LAM_SIT — the engine's ONLY anchor<->production blend — is switched off the")
-    print("     moment ns>=1, which its own ablation shows: forcing it to 0 and to 1 moves this")
-    print("     cohort by %.4f and %.4f on /anchor, i.e. not at all, because none of these rows"
+    print("     find. LAM_SIT is the engine's ONLY anchor<->production blend, and it is switched")
+    print("     off the moment a row QUALIFIES (ns>=1). Forcing it to 0 and to 1 moves this cohort")
+    print("     %.4f <-> %.4f on /anchor, which is NOT inertness: the cohort is ND rows with ANY"
           % (RES['LAM_SIT (sit-out blend)']['zero_anchor'], RES['LAM_SIT (sit-out blend)']['sat_anchor']))
-    print("     reach that site.")
+    print("     games, and a row below the prorated bar (6 x fE) still has nseas_pro==0 and still")
+    print("     routes through sitout_ev. So LAM_SIT is LIVE exactly where the anchor blend still")
+    print("     exists and DEAD the instant a row qualifies — which is the cliff ITEM A removes.")
+    print("     See ABLATION_READING.md for the full reading.")
     print()
     print("  CONSEQUENCE FOR ITEM A: 'the EXISTING games ramp' cannot mean an existing year-1+")
     print("  blend weight, because none exists. The only reading consistent with 'no new machinery'")
