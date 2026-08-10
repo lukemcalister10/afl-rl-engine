@@ -1,0 +1,41 @@
+============================================================================================================
+THE OWNER-BASIS COHORT TABLES — INSTRUMENT: per-entrant matrices (emit_matrix_338.py)
+  cohort rule: COHORT N = every entrant whose YEAR 1 is season N+1, all routes; MSD folded
+  back one year. year-N = the AVERAGE OVER COHORTS at year N. Anchor-relative (no-arb) form.
+  NOT a live-board cross-section.
+============================================================================================================
+
+=== (1) COHORT PROGRESSION, anchor-relative (year-0 = 1.000 by construction) ===
+ variant                     yr0      yr1      yr2      yr3      yr4      yr5   cohorts@yr4
+ main (pre-act)            1.000    5.019    3.111    2.813    2.869    2.962   19
+ FULL (the package)        1.000    7.094    4.652    4.443    3.962    3.879   19
+ V2 four-band              1.000    7.094    4.652    4.443    3.962    3.879   19
+ V3 corrected              1.000    7.094    4.652    4.443    3.962    3.879   19
+
+=== (2) YOUNG vs PEAK on the COHORT-AVERAGED books (years 0-1 vs years 4-5) ===
+ variant                     young       peak   young/peak    vs main
+ main (pre-act)              3.010      2.916       1.0323      +0.00%
+ FULL (the package)          4.047      3.920       1.0323      +0.01%
+ V2 four-band                4.047      3.920       1.0323      +0.01%
+ V3 corrected                4.047      3.920       1.0323      +0.01%
+
+=== (3) THE FREE-MONEY CHECK (within-instrument; replaces the confounded cross-section) ===
+  per-rung cohort-book appreciation vs the discount charged at that rung's typical age.
+  POSITIVE margin = appreciation exceeds the charge = free money.
+ main (pre-act)         y0->1 +401.9% vs 14.0% = +387.9%  y1->2 -38.0% vs 14.0% = -52.0%  y2->3 -9.6% vs 14.0% = -23.6%  y3->4 +2.0% vs 14.0% = -12.0%  y4->5 +3.3% vs 14.0% = -10.7%
+                        worst margin +387.9%  ** FREE MONEY at this rung — inspect
+ FULL (the package)     y0->1 +609.4% vs 14.0% = +595.4%  y1->2 -34.4% vs 14.0% = -48.4%  y2->3 -4.5% vs 14.0% = -18.5%  y3->4 -10.8% vs 14.0% = -24.8%  y4->5 -2.1% vs 14.0% = -16.1%
+                        worst margin +595.4%  ** FREE MONEY at this rung — inspect
+ V2 four-band           y0->1 +609.4% vs 12.0% = +597.4%  y1->2 -34.4% vs 12.5% = -46.9%  y2->3 -4.5% vs 13.0% = -17.5%  y3->4 -10.8% vs 13.2% = -24.1%  y4->5 -2.1% vs 13.8% = -15.9%
+                        worst margin +597.4%  ** FREE MONEY at this rung — inspect
+ V3 corrected           y0->1 +609.4% vs 10.0% = +599.4%  y1->2 -34.4% vs 10.0% = -44.4%  y2->3 -4.5% vs 10.5% = -15.0%  y3->4 -10.8% vs 11.0% = -21.8%  y4->5 -2.1% vs 11.5% = -13.6%
+                        worst margin +599.4%  ** FREE MONEY at this rung — inspect
+
+=== (4) THE 140/130 ENVELOPE on the cohort book (A FRAME, NOT A TARGET) ===
+  peak = cohort-averaged years 4-5; year-0 and year-1 are the cohort-averaged books.
+ variant                   peak/year-0    peak/year-1
+ main (pre-act)                 291.6%          58.1%
+ FULL (the package)             392.0%          55.3%
+ V2 four-band                   392.0%          55.3%
+ V3 corrected                   392.0%          55.3%
+  envelope 140% / 130%. NO component in this act was sized against these numbers.

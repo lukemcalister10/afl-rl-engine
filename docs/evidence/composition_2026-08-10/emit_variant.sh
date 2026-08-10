@@ -47,6 +47,12 @@ print("  variant:", " ".join("%s=%s"%(k,v) for k,v in kv) or "(HEAD defaults)")
 PY
 
 cp "$REPO/docs/evidence/noarb_338_2026-08-06/emit_matrix_338.py" "$OUT/emit.py"
+# THE DIALS MUST BE EXPORTED. Unlike rl_export.py, emit_matrix_338.py does NOT call
+# config_manifest.enforce() — it execs _merged_recover.py directly. The engine's dials read the
+# ENVIRONMENT, so editing the worktree manifest alone leaves every variant identical to the base.
+# That is exactly what happened on the first V2/V3 emits: both reproduced FULL to the digit.
+for a in "$@"; do export "$a"; done
+echo "  dials exported: ${*:-none}"
 export RL_REPO="$WT" RL_FV="$WT/engine/forward_valuation"
 export RL_WORKDIR="$WT/engine/rl_after" RL_VENDOR="$WT/vendor" RL_OUT="$OUT"
 export PYTHONPATH="$WT/engine/rl_after:$WT:$WT/vendor"
