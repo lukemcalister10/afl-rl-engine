@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v112 · supervisor pen · 2026-08-10, register v622
+# CURRENT STATE — the incoming-seat read · v113 · supervisor pen · 2026-08-10, register v623
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -128,32 +128,28 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v112 · supervisor pen · 2026-08-10, register v622 · SEAT LAW: ALL replies to the owner in
+(v113 · supervisor pen · 2026-08-10, register v623 · SEAT LAW: ALL replies to the owner in
 ASD-STE100 Simplified Technical English; LONG ANSWERS BEFORE ANY TOOL WORK in the final
-message. THE ELEVEN RULINGS are in (v621). FIVE OF SIX AGENTS LANDED, each verified on real
-bytes and filed: sitter 5235734225 (position-only; era break ~15×, owner mechanism = deferred
-peak, watch item; year-2 recalc works F2=1.000; Mraz/Smillie post-composition checks; owner
-QC dispositions filed 5235830131) · 3-axis probe 5235775326 (NO: +0.0009, cells 14-30 real
-rows; carries sa-as-GATE 0.5062→1.0319 + the 41-64 endpoint re-pick →~1.036, both OWNER
-CALLS; 1.04 unreached → cap release 3.8 the only road) · pool design 5235784509 (mechanism
-(b): signed levels carry ZERO age slope; engine collapses v0 5.7× at 21→22 then year-1
-ignores age — Laird 386.2 / Keough 11.9 both year-1 142 exact; lawful cuts −0.002..−0.012;
-lifts all fail the clustered CI; C5 reshape lead-neutral; stage-7 conclusion survives) ·
-mark-up trace 5235847132 (the four suspects DEAD; THE defect = the year-1 price drops the
-fitted year-0 surface — markup = (1/correction)×production; CF-B closes 99.1% of the
-young-KPD excess; RUCK = the production ceiling, its own defect; Dean NOT exposed; live:
-Mraz 37% / O'Sullivan 27% of price on the defect) · DOB write HALTED at the v0surf guard
-5235776895 → OWNER: "Authorise the refit." 5235816134 — agent RESUMED to land (full re-bake
-+ carrier re-pin, PR-not-merge, expected board a672ed3a, 6 movers all ±1, halt on surprise).
-OWNER DESIGN PRINCIPLE filed 5235816134: v1 borrows from the v0 prior, diminishing until
-production leads — Agents 9+10 CONVERGED on its absence from two directions; ONE fix shape
-(year-1+ anchor borrows from the fitted year-0 prior, fading with production); the year-0
-age repair becomes LOAD-BEARING (sequence: year-0 first or together). Completed-career
-cross-check OFFERED, awaits word. STILL LIVE: G1 repair (1.1+1.2). NEXT: G1 lands → the
-composition directive (cap-release evidence weight + probe carries + pool design + the
-prior-borrowing fix shape + sitter dial) → the owner's single sitting → composition build →
-adoption.
-Read v604–v622 IN FULL. Primer v7 first.)
+message. ALL SIX RULED MEASUREMENTS ARE IN, plus two owner-ordered extras, every one verified
+on real bytes and filed: sitter 5235734225 · probe 5235775326 · pool 5235784509 · mark-up
+5235847132 · RUCK 5236274192 (the ceiling is HISTORICAL — live bite 0.18%, years 1-3 ZERO;
+the live lever is the wage=0 pole denial; prior-borrowing closes only ~5.6% of the ruck gap —
+the seat's earlier bigger claim WITHDRAWN in the landing; lawful cell n=54 delivery 1.530;
+residual 32% unexplained → park-and-remeasure) · RULER TILT MAP 5236277043 (level 1.662 = a
+common re-basing; the bend 1.298→2.174 is the finding; SF worst 2.174, KPD 1.886; the year-4
+price sees through FORM dips (Hurley 0.763, straightest cell) but NOT AVAILABILITY dips
+(1.948); mature-21+ cells ALL fail the bar — the pool mature tilt is UNMEASURED; the 2004-05
+no-birthdate cell 2.139 is an ERA reading never an age one). OWNER WORDS: ledger PARKED ·
+composition directive ORDERED (draft with items A-H + the tilt column lives in the session
+scratchpad) · the ruler check reframed-as-tilt-map + live-11+-seasons rule + run word — all
+filed (5235988984, 5236054423). CONTAINER RESTART killed the DOB and G1 agents pre-push:
+DOB RESUMED (same expectations: store d9a24282, board a672ed3a, 6 movers all ±1, PR-not-merge);
+G1 HELD until the DOB PR merges (same frozen surface, one collision already; its pre-death
+progress incl. D14a/b-red-on-main population fix is in the register, unverified until it
+lands and re-cuts on the DOB store). NEXT: DOB PR lands → G1 re-cut + lands → the ITEM C
+evidence-weight design text → the directive to the owner as ONE SITTING → composition build →
+side-by-side → adoption.
+Read v604–v623 IN FULL. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
