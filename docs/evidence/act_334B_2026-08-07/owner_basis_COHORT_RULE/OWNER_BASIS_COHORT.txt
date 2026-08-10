@@ -1,0 +1,235 @@
+====================================================================================================================================
+#334 stage B  /  OWNER-BASIS CONSERVATION TABLES, RE-DERIVED UNDER THE COHORT-MEMBERSHIP RULE
+====================================================================================================================================
+
+  THE RULE, in the owner's words (#334 comment 5235016488):
+
+      "The 2025 cohort is NOT the 2025 MSD. The 2025 MSD played in 2025, so that is their year 1.
+       The 2025 cohort is 2025 ND, 2025 RD, 2025 pathways, SSP, 2026 MSD."
+
+      "When we are talking about yearly value across career, we can't exclude certain players because
+       of their entrance mechanism. We're not balancing the ND book, we're balancing the cohort book."
+
+  So: COHORT N = every entrant whose YEAR 1 is season N+1, whatever route they came in by. In practice
+  that is the ND, RD, IRE, SSP, PDA, PDN, PDS and UNR entrants labelled year N, PLUS the MSD entrants
+  labelled year N+1, because the mid-season draft happens INSIDE their year-1 season. No route is left
+  out. Cohorts 2004 to 2025. Every number below is read straight off the committed matrices.
+
+  MATRICES READ (md5, first 8):
+      baseline    b564b12e  stage4_amend1/noarb/per_entrant_338_stage4a1.json
+      s5 LANDED   bfc104f4  stage5/noarb/per_entrant_338_stage5.json
+      rung 0.25   92b94767  stage6/noarb/per_entrant_338_rung0.25.json
+      rung 0.5    31618722  stage6/noarb/per_entrant_338_rung0.5.json
+      rung 0.75   42ea62b2  stage6/noarb/per_entrant_338_rung0.75.json
+      rung 1.0    be5fba61  stage6/noarb/per_entrant_338_rung1.0.json
+      population = key-intersection of all six = 2645 entrants (the six matrices carry identical key
+      sets, so nothing is dropped by the intersection).
+
+------------------------------------------------------------------------------------------------------------------------------------
+  THE MSD CONVENTION USED HERE, AND WHY  (checked on the records before any number was aggregated)
+------------------------------------------------------------------------------------------------------------------------------------
+
+  1. EVERY route uses the SAME grid. For an entrant labelled year Y, vpath slot N-1 is the value at
+     season Y+N. Verified on all 106 MSD records: yrs[0] == Y+1 holds 106/106 times. No index shift is
+     needed, and none was applied.
+
+  2. The engine already folds the mid-season-draft season INTO the MSD year-1 measure. For every one
+     of the 106 MSD records, games_yr1 == (games in season Y) + (games in season Y+1) -- 106/106. For ND
+     it is season Y+1 alone. So an MSD's vpath[0] IS their year-1 value, and it already covers the
+     season the owner points at. That is what "clock depth 1" means here.
+
+  3. 57 of the 106 MSD records have their first playing season IN the label year itself. That is the
+     owner's point restated by the data: the 2026 MSD played in 2026, so 2026 is their year 1, so they
+     belong to the 2025 cohort.
+
+  WORKED EXAMPLES (straight from the baseline matrix):
+
+     player               label        v0   vpath0 grid years                 seasons played (games)
+     Flynn Riley          2026      388.4     null [2027]                     2026:1
+     Ryan Maric           2023      234.8      575 [2024, 2025, 2026]         2023:10 2024:19 2025:22 2026:12
+     Jack Hutchinson      2024       13.0      135 [2025, 2026]               2024:7 2025:16 2026:5
+     Tom McCarthy         2025        2.5     1255 [2026]                     2025:10 2026:19
+
+  THE CONVENTION ADOPTED: depth alignment. Year N of a cohort takes each member's OWN year-N value --
+  v0 for year 0, vpath[N-1] for year N -- for every route including MSD. Nothing is re-indexed and
+  nothing is fabricated. The MSD entrants are simply filed into the cohort whose year 1 is theirs.
+
+  THE ONE HONEST COST, stated plainly: the "has it reached year N" gate is still each entrant's own
+  (label year + N <= 2026). An MSD sits one calendar year later than the rest of its cohort, so at the
+  window edge the MSD leg drops out one year sooner. Concretely: the 2026 MSD -- the MSD leg of the
+  2025 cohort -- has NO year-1 number inside the 2026 window (their grid year is 2027), so they are
+  counted in the 2025 cohort but contribute nothing to its year-1 row yet. The MSD leg is therefore
+  ALSO printed on its own below, so the owner can see exactly what it does and does not carry.
+
+====================================================================================================================================
+  TABLE 1 & 2 -- THE FULL-COHORT LEAD, WITH THE ND 1-64 AND POOL SPLITS BESIDE IT   (year 1)
+====================================================================================================================================
+
+  population (year 1)                              n    baseline   s5 LANDED    rung .25    rung .50    rung .75    rung 1.0
+  ------------------------------------------------------------------------------------------------------------------------
+  FULL COHORT, all routes, cohorts 2004-2025    2517    0.908179    0.946050    0.962364    0.978708    0.995053    1.011399
+    ND 1-64 split                               1383    0.949994    0.988526    1.009230    1.029973    1.050717    1.071461
+    pool split (every non-ND-1-64 route)        1134    0.752800    0.788214    0.788214    0.788214    0.788214    0.788214
+       of which MSD leg only                      88    1.138123    1.164182    1.164182    1.164182    1.164182    1.164182
+
+  printed LAST and labelled, so the fitting population is never mistaken for the presentation one:
+  ND 1-64, 2004-2022 (TEACHING WINDOW)          1197    0.950431    0.990805    1.011071    1.031377    1.051681    1.071991
+  (the teaching window is ND-only, so the cohort rule cannot move it -- it is unchanged by construction.)
+
+  WHAT THE OWNER READS OFF THIS: on the cohort book, year-1 conservation sits at 0.9082 at the ruled
+  baseline and 0.9460 once stage 5 lands, across 2517 entrants. The four stage-6 rungs move it to 0.9624,
+  0.9787, 0.9951 and 1.0114. The ND leg and the pool leg are printed beside it, not instead of it.
+
+====================================================================================================================================
+  TABLE 3 -- THE RECENT COHORTS, ROW BY ROW, AT THEIR REACHED YEARS   (cohorts 2023, 2024, 2025)
+====================================================================================================================================
+
+  Cohort N here means: everything labelled N except MSD, plus the MSD labelled N+1. A cohort reaches
+  year k only while N+k <= 2026, so the newer the cohort the fewer rows it has.
+
+  COHORT 2023  --  104 entrants in the cohort book (64 ND 1-64, 40 pool, of which 17 MSD labelled 2024)
+  leg / year                        yr       n    baseline   s5 LANDED    rung .25    rung .50    rung .75    rung 1.0
+  ----------------------------------------------------------------------------------------------------------------------
+  full cohort                        1     104    1.025315    1.060528    1.076853    1.093195    1.109555    1.125845
+  full cohort                        2     104    1.118921    1.130433    1.134519    1.138535    1.142603    1.146585
+  full cohort                        3      87    1.254559    1.261441    1.262066    1.262818    1.263442    1.264121
+
+    ND 1-64                          1      64    1.043485    1.077494    1.096550    1.115626    1.134723    1.153738
+    ND 1-64                          2      64    1.134339    1.141735    1.146504    1.151192    1.155941    1.160589
+    ND 1-64                          3      64    1.341468    1.347146    1.347833    1.348662    1.349349    1.350096
+
+    pool routes                      1      40    0.916691    0.959094    0.959094    0.959094    0.959094    0.959094
+    pool routes                      2      40    1.026747    1.062868    1.062868    1.062868    1.062868    1.062868
+    pool routes                      3      23    0.393989    0.412798    0.412798    0.412798    0.412798    0.412798
+
+  MSD leg of cohort 2023 (the 17 MSD labelled 2024), year 1 on its own: n=17  baseline 1.351829  s5 1.378049
+
+  COHORT 2024  --  117 entrants in the cohort book (64 ND 1-64, 53 pool, of which 16 MSD labelled 2025)
+  leg / year                        yr       n    baseline   s5 LANDED    rung .25    rung .50    rung .75    rung 1.0
+  ----------------------------------------------------------------------------------------------------------------------
+  full cohort                        1     117    0.895974    0.928827    0.951847    0.974897    0.998011    1.021078
+  full cohort                        2     101    1.028137    1.038488    1.046050    1.053561    1.061106    1.068634
+
+    ND 1-64                          1      64    0.875930    0.901970    0.929596    0.957260    0.984999    1.012682
+    ND 1-64                          2      64    1.041403    1.050335    1.058983    1.067575    1.076205    1.084815
+
+    pool routes                      1      53    0.996131    1.063031    1.063031    1.063031    1.063031    1.063031
+    pool routes                      2      37    0.935871    0.956096    0.956096    0.956096    0.956096    0.956096
+
+  MSD leg of cohort 2024 (the 16 MSD labelled 2025), year 1 on its own: n=16  baseline 1.702584  s5 1.734759
+
+  COHORT 2025  --  105 entrants in the cohort book (58 ND 1-64, 47 pool, of which 18 MSD labelled 2026)
+  leg / year                        yr       n    baseline   s5 LANDED    rung .25    rung .50    rung .75    rung 1.0
+  ----------------------------------------------------------------------------------------------------------------------
+  full cohort                        1      87    0.914308    0.935045    0.956319    0.977594    0.998868    1.020142
+
+    ND 1-64                          1      58    0.926992    0.947385    0.970890    0.994396    1.017901    1.041407
+
+    pool routes                      1      29    0.793378    0.817390    0.817390    0.817390    0.817390    0.817390
+
+  MSD leg of cohort 2025 (the 18 MSD labelled 2026): NO year-1 number inside the 2026 window -- their
+  grid year is 2027. They are members of the cohort but carry nothing into its year-1 row yet.
+
+====================================================================================================================================
+  TABLE 4 -- THE YEAR-BY-YEAR FULL-COHORT PATH, YEARS 0-7
+====================================================================================================================================
+
+  The whole cohort book, cohorts 2004-2025, at each career year. Year 0 is the entry value itself, so it
+  is 1.000000 by construction and is printed as the anchor. n falls away with depth because a cohort
+  only appears at year k while it has reached it.
+
+  yr           n      baseline     s5 LANDED     rung 0.25       move s5     move r.25
+  ------------------------------------------------------------------------------------
+  0         2535      1.000000      1.000000      1.000000      0.000000      0.000000
+  1         2517      0.908179      0.946050      0.962364      0.037870      0.054185
+  2         2414      1.097539      1.111225      1.115049      0.013686      0.017510
+  3         2296      1.242814      1.246016      1.246042      0.003202      0.003228
+  4         2198      1.344534      1.345462      1.345462      0.000928      0.000928
+  5         2089      1.346731      1.346923      1.346923      0.000191      0.000191
+  6         1981      1.295768      1.295768      1.295768      0.000000      0.000000
+  7         1893      1.144886      1.144886      1.144886      0.000000      0.000000
+
+====================================================================================================================================
+  TABLE 5 -- WHAT THE RULE CHANGE ACTUALLY MOVED: cohort rule vs the OLD draft-label grouping
+====================================================================================================================================
+
+  OLD = group every entrant, MSD included, by its draft-calendar LABEL (what every owner-facing table
+  in this act did until the ruling). NEW = the owner's cohort rule. Year 1, same value convention,
+  same matrices, same population pool. "n" is the count that actually scored, not the membership.
+
+  population (year 1)                        OLDn    OLD base      OLD s5        NEWn    NEW base      NEW s5       move base
+  --------------------------------------------------------------------------------------------------------------------------------
+  FULL BOOK, all routes, 2004-2025           2517    0.908179    0.946050        2517    0.908179    0.946050        0.000000
+    ND 1-64                                  1383    0.949994    0.988526        1383    0.949994    0.988526        0.000000
+    pool routes                              1134    0.752800    0.788214        1134    0.752800    0.788214        0.000000
+       of which MSD leg                        88    1.138123    1.164182          88    1.138123    1.164182        0.000000
+  class/cohort 2023, all routes                98    1.009682    1.045410         104    1.025315    1.060528        0.015633
+  class/cohort 2024, all routes               118    0.881699    0.914243         117    0.895974    0.928827        0.014275
+  class/cohort 2025, all routes               103    0.955610    0.976947          87    0.914308    0.935045       -0.041302
+  class/cohort 2023, MSD leg only              11    1.125828    1.160795          17    1.351829    1.378049        0.226001
+  class/cohort 2024, MSD leg only              17    1.351829    1.378049          16    1.702584    1.734759        0.350755
+  class/cohort 2025, MSD leg only              16    1.702584    1.734759           0         n/a         n/a             n/a
+
+  READING IT, plainly:
+
+  * ON THE AGGREGATE THE RULE CHANGES NOTHING AT YEAR 1 -- the move is exactly +0.000000, on the same 2517
+    scoring entrants. That is not a coincidence and it is not a fudge. The only membership difference
+    across the whole 2004-2025 book is the 18 MSD labelled 2026, who move IN (they are the 2025 cohort's
+    MSD leg), and they have no year-1 number inside the window yet. Everyone else just changes which
+    cohort they are filed under, and the aggregate does not care how the book is sorted. Membership
+    does grow: the year-0 anchor row goes from 2517 entrants to 2535.
+
+  * PER COHORT IT IS REAL, AND LARGE. Cohort 2023 moves +0.015633, cohort 2024 +0.014275, cohort 2025 -0.041302
+    at the baseline. The MSD-leg rows show why: each cohort now takes the NEXT calendar MSD class, and
+    those classes read very differently (1.352, 1.703, and nothing-yet at year 1). Under the old label
+    grouping the 2025 cohort was carrying the 2025 MSD at 1.703 -- the inflated pool figure the ruling
+    struck. Under the rule it carries the 2026 MSD instead, who have not scored yet, and the 2025
+    cohort reads 0.9143 rather than 0.9556.
+
+------------------------------------------------------------------------------------------------------------------------------------
+  CROSS-CHECK AGAINST THE NUMBERS THE RULING ITSELF PRINTED (comment 5235016488), stated honestly
+------------------------------------------------------------------------------------------------------------------------------------
+
+  The ruling published a corrected 2025-cohort reading: "105 rostered ... whole book 0.940 baseline ->
+  0.985 candidate (ND 0.927 -> 0.971 . pool routes 1.021 -> 1.073)". Re-derived here off the committed
+  matrices, under the rule and the committed value convention:
+
+                                        the ruling printed     re-derived here
+     cohort 2025 membership             105                    105
+     ND 1-64 leg, year 1                0.927 -> 0.971         0.926992 -> 0.970890
+     pool leg, year 1                   1.021 -> 1.073         0.793378 -> 0.817390
+     whole cohort, year 1               0.940 -> 0.985         0.914308 -> 0.956319
+
+  MEMBERSHIP AND THE ND LEG REPRODUCE EXACTLY -- 105 entrants, 0.927 -> 0.971, which also confirms the
+  ruling's "candidate" is the rung-0.25 matrix and its baseline is the stage-4-amend-1 matrix.
+
+  THE POOL LEG AND THE WHOLE-COHORT LINE DO NOT REPRODUCE. This seat could not recover 1.021 from the
+  committed matrices under any pool definition it tried: not-ND-1-64, the is_pool flag, the
+  is_pool_engine flag and not-type-ND all return the SAME 29 scoring entrants at 0.793378. The gap is not
+  the struck MSD figure either -- putting the 2025 MSD back in gives 1.128, not 1.021. This seat does
+  not know where 1.021 came from and does not claim the ruling's figure is wrong; it reports that the
+  committed evidence gives 0.7934 for the pool leg and 0.9143 for the whole 2025 cohort, and leaves the
+  reconciliation to the owner and the seam. FLAGGED, NOT RESOLVED.
+
+====================================================================================================================================
+  APPENDIX -- THE MSD LEG ON ITS OWN, every MSD class, so nothing is forced into a grid it does not fit
+====================================================================================================================================
+
+  label    cohort   members   n yr1    baseline   s5 LANDED   rung 0.25
+  ------------------------------------------------------------------------
+  2019     2018           9       9    0.727880    0.733545    0.733545
+  2021     2020          20      20    0.974010    0.997501    0.997501
+  2022     2021          15      15    0.879154    0.909984    0.909984
+  2023     2022          11      11    1.125828    1.160795    1.160795
+  2024     2023          17      17    1.351829    1.378049    1.378049
+  2025     2024          16      16    1.702584    1.734759    1.734759
+  2026     2025          18       0         n/a         n/a         n/a
+
+  The 2026 MSD row scores n=0 at year 1: their year-1 grid slot is season 2027, outside WINDOW_END.
+  They are counted as members of the 2025 cohort and will score once the window advances.
+
+====================================================================================================================================
+  LIMITS OF THIS FILE: evidence only. Nothing here changes an engine, a config, or a board byte. Every
+  number is a re-read of matrices already committed on this branch, under the owner's membership rule
+  and the act's existing value convention. No rung is recommended; that ruling is the owner's.
+====================================================================================================================================
