@@ -23,7 +23,16 @@ real = [p for p in MA.data if g['_isreal'](p)]
 COH = [p for p in real if p.get('type') == 'ND' and not MA.is_pool(p)
        and (p.get('year') or 0) >= 2019 and not p.get('_retired') and not g['delisted'](p)
        and sum(s['games'] for s in p['scoring']) > 0]
-print("year-1+ ND cohort with a record: n=%d" % len(COH))
+COH.sort(key=lambda p: p['key'])                 # deterministic order before sampling
+FULL_N = len(COH)
+SAMPLE = int(os.environ.get('ABL_SAMPLE', '60'))
+if SAMPLE and FULL_N > SAMPLE:
+    step = FULL_N / float(SAMPLE)
+    COH = [COH[int(i * step)] for i in range(SAMPLE)]
+print("year-1+ ND cohort with a record: n=%d (deterministic every-%.1fth sample of %d; an ablation"
+      % (len(COH), FULL_N / float(len(COH)), FULL_N))
+print("  reads DIRECTION and MAGNITUDE, not a precise level, and each cohort re-pricing costs ~1s")
+print("  per player. Set ABL_SAMPLE=0 to run the full cohort.)")
 
 ANCH = {p['key']: float(entry_anchor(p)) for p in COH}
 def prices(): return {p['key']: float(ev(p, Y)) for p in COH}
