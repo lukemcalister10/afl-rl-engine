@@ -1,4 +1,4 @@
-# CURRENT STATE — the incoming-seat read · v107 · supervisor pen · 2026-08-10, register v617
+# CURRENT STATE — the incoming-seat read · v108 · supervisor pen · 2026-08-10, register v618
 
 **WHAT THIS IS.** The condensed read for an incoming seat, so orientation costs ~20KB instead of the
 register header's ~400KB. It carries *what is true now*, *what the owner actually wants*, and *where
@@ -141,10 +141,12 @@ any time). TABLES LANDED (3820303, cohort rule, verified; two-instruments rule f
 R22 ingestion RUNNING (branch ingest/r22-2026; Bailey word: 97=WC/89=WB; PR-not-merge,
 seam verifies R21→R22 first). AUDIT 2 COMPLETE (v617): R12 broken BY OMISSION at #306
 (dab9657, 08-05, on MAIN; never-rises never restated in the revision order; D14b hand-run
-only, last 07-17; the band-seam story was WRONG — same-band inversion). Audit 1 finds so
-far: ND year-0 honest, POOL year-0 broken (age axis), KPD loss forms in year 1 not year 0.
-All rulings WAIT behind audit 1. Visibility + Opus-for-everything rules standing.
-Read v604–v617 IN FULL. Primer v7 first.)
+only, last 07-17; the band-seam story was WRONG — same-band inversion). AUDIT 1 ALSO
+COMPLETE (v618): ND year-0 HONEST everywhere; pool over-priced ~66k pts (AGE error,
+#326-adjacent); KPD = a year-0→1 mark-up defect; unknown-DOB priced as 18 (~17.7k);
+inversions 8,341 pts total, mostly tiny. THE AUDIT PHASE IS DONE — the decision menu is
+in v618; the owner rules the fix order. R22 ingestion running. Visibility + Opus rules
+standing. Read v604–v618 IN FULL. Primer v7 first.)
 
 ## THE ERA: ADOPTED. Target RULED 1.40. STAGE B FIRED 2026-08-07 (comment 5210606449) — EXECUTING.
 - **ADOPTED 2026-08-06** (owner word; release-transition register entry 4 at round 20). Landed
