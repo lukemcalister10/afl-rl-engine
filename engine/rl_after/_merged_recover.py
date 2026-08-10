@@ -48,11 +48,13 @@ def _det_mean(a):
 with contextlib.redirect_stdout(io.StringIO()):
     import rl_model as MA, wire_redesign as W; cm=W.build()
 TR=W.TR; rd=TR.rd; cp=TR.cp; dp=TR.dp; PR=W.PR
-era={}
-for Y in range(2009,2026):
-    a=[s['avg'] for p in MA.data for s in p.get('scoring') or [] if s['year']==Y and s['games']>=6]
-    if a: era[Y]=float(np.mean(a))
-REF=float(np.mean(list(era.values())))
+# ==== ERA NORMALIZATION REMOVED (#334 stage B salvage, OWNER RULING — ballot word 1, 5242713366) ====
+# An era[Y] table used to be built here (mean season avg over >=6-game seasons per year, 2009-2025,
+# with REF = the mean of those years) and every career-score read was multiplied by REF/era.get(y,REF).
+# OWNER RULING (binding): SuperCoach scores are era-comparable BY CONSTRUCTION — every match assigns
+# 3,300 points, so a season average already sits on one common scale and a per-year rescale is a
+# distortion, not a correction. NO era normalization may be applied to scoring anywhere. The table,
+# REF, and every a*REF/era.get(y,REF) site are gone; season averages are read RAW. Do not reintroduce.
 pool=[p for p in MA.data if MA.GRP.get(p['pos'])]
 X,yy=[],[]
 _L4_MSD=os.environ.get('RL_MSD_POOL_EXCL','1')!='0'   # v2.9 L4: MSD training-pool exclusion (default ON; =0 ⇒ base byte-exact). Kill-switch; G-ATTR-separable.
@@ -837,12 +839,12 @@ def _kpf_LD(p,Y):
         _st=_AVAIL_STATE.get(p.get('key'))
         if _st and _st.get('out'): _nuke={2026}                # the injured current season (register-flagged)
     _ext=min(2,len(_nuke)); _lo=Y-3-_ext                        # extend back year-for-year, capped +2
-    ls=sorted((a*REF/era.get(y,REF) for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
+    ls=sorted((a for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
                if _lo<=y<=Y and y not in _nuke and gg>=12.0*(_fEy(Y,p) if y==Y else 1.0)),reverse=True)
     if len(ls)>=2: return float(np.mean(ls[:2]))
     if _nuke:                                                  # fork-v fallback: exclusion left <2 healthy seasons
         _KPF_LD_FALLBACK.add(p.get('key'))
-        ls0=sorted((a*REF/era.get(y,REF) for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
+        ls0=sorted((a for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
                     if Y-3<=y<=Y and gg>=12.0*(_fEy(Y,p) if y==Y else 1.0)),reverse=True)
         return float(np.mean(ls0[:2])) if len(ls0)>=2 else None
     return None
@@ -1060,7 +1062,7 @@ def _kpf_prod_efv(p,Y,L=None):
 def delisted(p): return bool(p.get('_retired')) or (p.get('_last_listed') is not None and p['_last_listed']<2026)
 def draftval(p): return float(MA.PVC[min(MA.effpk(p),cp.KMAX)])
 def bestlvl(p,Y=2026):
-    s=[a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6.0*(_fEy(Y,p) if x['year']==Y else 1.0) and x['year']<=Y]]   # D10: 6-bar prorated in-progress
+    s=[a for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6.0*(_fEy(Y,p) if x['year']==Y else 1.0) and x['year']<=Y]]   # D10: 6-bar prorated in-progress
     return max(s) if s else 0.0
 def nseas(p,Y=2026): return sum(1 for x in p['scoring'] if x['games']>=6 and x['year']<=Y)   # unprorated career counter (harness/diagnostic callers)
 def nseas_pro(p,Y=2026):                                      # D10: qualification judged against PLAYABLE games (6-bar -> 6*fE for the in-progress season)
@@ -1940,7 +1942,7 @@ def _staleness_grade(p,Y,pos):
     prior_qual=[x['year'] for x in p['scoring'] if x['year']<Y and x['games']>=6]
     if not prior_qual:
         return 0.0
-    qv=(live[0]['avg']*REF/era.get(Y,REF))/max(MA.REPL.get(pos,1e-9),1e-9)
+    qv=(live[0]['avg'])/max(MA.REPL.get(pos,1e-9),1e-9)   # RAW season avg (era normalization removed — #334 stage B owner ruling)
     gap=Y-max(prior_qual)
     return float(np.interp(qv,_D8Q,_D8G1 if gap==1 else _D8G2))
 def ev(p,Y=2026):
@@ -2324,7 +2326,7 @@ for nm in ['Harrison Jones','Dylan Stephens','Keidean Coleman']:
 print("  -> if band q50/q70 high vs recent, cond_prior is pricing career not decline; if q97 tail high, upside inflates")
 # refine: DECLINE/MEDIOCRE via RECENT production (last-2-season avg vs par), not just best
 def recent_ratio(p,Y=2026):
-    s=[a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6 and x['year']<=Y]][-2:]
+    s=[a for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6 and x['year']<=Y]][-2:]
     return (np.mean(s)/max(1,PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),min(max(PR.tenure(p,Y),1),6)))) if s else 0.0
 print("\n  RECENT ratio (last-2 avg / par):")
 for nm in ['Harrison Jones','Dylan Stephens','Keidean Coleman','Oscar Ryan']:

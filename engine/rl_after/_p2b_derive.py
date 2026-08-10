@@ -2,8 +2,8 @@ import io, contextlib, numpy as np
 g={}
 with contextlib.redirect_stdout(io.StringIO()):
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
-MA=g['MA']; cp=g['cp']; b6=g['b6']; era=g['era']; REF=g['REF']
-def adj(a,y): return a*REF/era.get(y,REF)   # era-adjusted season avg (engine's de-era)
+MA=g['MA']; cp=g['cp']; b6=g['b6'];
+def adj(a,y): return a   # RAW season avg (era normalization removed — #334 stage B owner ruling)   # era-adjusted season avg (engine's de-era)
 
 # ---- walk-forward records: for each ND-pick player, each as-of year Y with a forward season ----
 def seas(p): return sorted([(x['year'],x['games'],x['avg']) for x in p['scoring'] if x['games']>=6], key=lambda r:r[0])

@@ -29,7 +29,7 @@ GMAX=max((len(x['Vpath']) for x in R if x['type'] in INCURVE and x['year'] in co
 # ================= SUMMARY (endpoints) =================
 sm=wb.create_sheet('Summary')
 sm['A1']=f'AFL RL — WALK-FORWARD cohort value BOOK (engine md5 {TAG}, dials + shed + GENTLER upside + NO-GAMES sit-out anchor, 34 positions reconciled to stage0) — FOR EYEBALL before the pick-curve build';sm['A1'].font=TITLE
-sm['A2']='V = walk-forward engine value per season (as-of end of that season, only up-to-then data). P = era-adj production. Anchor = end of Year 1 (gold). Current = 0 for retired (worthless keeper), not the delisted floor.'
+sm['A2']='V = walk-forward engine value per season (as-of end of that season, only up-to-then data). P = raw production. Anchor = end of Year 1 (gold). Current = 0 for retired (worthless keeper), not the delisted floor.'
 sm['A3']='CURVE = ND+RD only, 2004-2024 (continuous pick order). 2003 & 2025 = reference-only (excluded). MSD/SSP/PostDraft = STANDALONE pooled (Pooled sheet). See "Cohort Trajectories" for each cohort\'s value season-by-season.'
 sm['A4']='POSITIONS reconciled to stage0 (34 pre_stage0 discrepancies fixed). Pos = DRAFTED pedigree group; switchers show drafted\u2192current. GAMES-RAMP SIT-OUT TREATMENT (D10, supersedes the flat retain\u00d7draftval anchor at v2.1+ heads): never-qualified still-listed players hold their LIVE start value (pick+position band price) through pre-season, decay along the measured still-listed retention curve, and earn a measured games-credit blend toward the live production path; all games bars prorate to season progress. Derivation: session_2026-07-03/d10_ask2_derivation.md. Nothing baked.'
 sm.append([]);sm.append(['Cohort','#ND+RD','#pooled','Yr1 anchor SUM','current SUM (real)','in curve?'])
@@ -106,7 +106,7 @@ for C in cohorts:
     if not ic: continue
     ws=wb.create_sheet(str(C)); ny=max((len(x['Vpath']) for x in ic),default=1)
     tag=' — REFERENCE-ONLY (excluded from curve)' if C in REFONLY else ''
-    ws['A1']=f'Cohort {C} — WALK-FORWARD engine VALUE (V) + era-adj PRODUCTION (P), draft→now. Anchor = Yr1 (gold). Current = 0 for retired.{tag}';ws['A1'].font=TITLE
+    ws['A1']=f'Cohort {C} — WALK-FORWARD engine VALUE (V) + RAW PRODUCTION (P), draft→now. Anchor = Yr1 (gold). Current = 0 for retired.{tag}';ws['A1'].font=TITLE
     ws['A2']='Rows sorted by current value. COHORT TOTAL = sum-ratio % of DraftVal. Read SHAPE: V flat while P climbs = option premium realising.'
     hdr=['T','Player','Pos','Type','Pick','DraftVal']+[f'Yr{i}' for i in range(1,ny+1)]+['Current']
     ws.append([]);ws.append(hdr); hr=ws.max_row

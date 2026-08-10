@@ -84,7 +84,7 @@ for C in cohorts:
     if not ic: continue
     ws=wb.create_sheet(str(C)); ny=max((len(x['Vpath']) for x in ic),default=1)
     tag=' — REFERENCE-ONLY (excluded from curve)' if C in REFONLY else ''
-    ws['A1']=f'Cohort {C} — WALK-FORWARD VALUE (V) + era-adj PRODUCTION (P) side-by-side, draft->now (M1+v7 prototype). Yr1 V = anchor (gold). Current = 0 for retired.{tag}'; ws['A1'].font=TITLE
+    ws['A1']=f'Cohort {C} — WALK-FORWARD VALUE (V) + RAW PRODUCTION (P) side-by-side, draft->now (M1+v7 prototype). Yr1 V = anchor (gold). Current = 0 for retired.{tag}'; ws['A1'].font=TITLE
     ws['A2']='Rows = every ND+RD player (busts included, no cherry-pick), sorted by current value. Yr_k V and P are ADJACENT. Read a row ACROSS: V flat while P climbs = option premium realising. Totals up top = Sum(V)/Sum(P) per year.'
     hdr=['Player','Pos','Type','Pick','DraftVal']
     for i in range(1,ny+1): hdr+= [f'Yr{i} V', f'Yr{i} P']

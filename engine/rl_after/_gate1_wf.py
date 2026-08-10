@@ -7,7 +7,7 @@ ns={}
 with contextlib.redirect_stdout(io.StringIO()):
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], ns)
 ns['_BOARD_PATH']=False   # D14: BACKTEST/WALK-FORWARD (leakage) path — board-only laws (V0 curve, KPP floor) OFF (Luke's exemption).
-MA=ns['MA']; cp=ns['cp']; PR=ns['PR']; REF=ns['REF']; era=ns['era']
+MA=ns['MA']; cp=ns['cp']; PR=ns['PR'];
 def setmodels(cm,q97):
     ns['cm']=cm; ns['q97m']=q97   # swap the trained/leaky part; pole(_POLE) + ISO stay in-sample structural priors
 def build_q97(pool):
@@ -22,7 +22,7 @@ def trunc(p,T):
     d0=cp.debutyr(p)-1; q=copy.deepcopy(p); q['scoring']=[x for x in p['scoring'] if x['year']<=d0+T]; q['_pos_now']=None; q['_fut']=[]
     return q,d0+T
 def real_mat(p):
-    s=sorted([a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6]],reverse=True)[:3]
+    s=sorted([a for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6]],reverse=True)[:3]
     return float(np.mean(s)) if s else 0.0
 full=[p for p in MA.data if MA.GRP.get(p['pos'])]
 allpool=[p for p in full if cp.debutyr(p)<=2021 and (p.get('pick') or p.get('_ft'))]
