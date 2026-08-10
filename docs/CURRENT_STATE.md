@@ -128,7 +128,7 @@ any pen error reaching main restores the per-entry word.
 
 ---
 # PART B — CURRENT STATE
-(v120 · supervisor pen · 2026-08-10, register v633 · SEAT LAWS: PLAIN LANGUAGE UPFRONT for
+(v121 · supervisor pen · 2026-08-10, register v637 · SEAT LAWS: PLAIN LANGUAGE UPFRONT for
 every owner-facing explanation — problem/why/trade-off/options, never simplification on
 request (third reminder = the ruling, 5240468212); ASD-STE100 base; the COMPLETE answer in
 the FINAL message, never between tool calls; owner-requested views FIRST; machine time IS
@@ -143,6 +143,21 @@ evidence; ASYMMETRIC level changes (one rung, not all) are BARRED — they manuf
 pick-hoarding arbitrage the no-arb band prevents; a root-act level adjustment, if ever,
 moves every rung by the same factor (ratios, trades, the youth premium unchanged). No agent
 presents the level as a result again — filtered at the instrument.
+THE LIVE LAW (5242669830, v637 — ends the adopt/ship/bake/ratify chaos): ONE status word —
+LIVE — meaning the bytes are on main in the engine that builds the shipped board; every
+other word is a ruling waiting to become live; no agent reports a ruling as done unless it
+is LIVE with the implementing main-line site citable.
+THE RULED-BUT-NOT-LIVE LEDGER (standing; read at every pen and every sitting; an entry
+leaves only on a citable main-line implementation):
+ 1. The era-removal product law (v598 "binding engine" — IN BREACH: 5 live era.get sites
+    on main _merged_recover.py :840/:845/:1063/:1892/:2253) — pending salvage ballot.
+ 2. The #336 reference layer (ruled adopted; code exists only on landing/334-stage-b) —
+    pending salvage ballot.
+ 3. The surprise-scaled-trust rule + the Mraz tolerance (v603/v631; branch-only;
+    breach live on the shipped board 6.34x vs ~3.5x) — pending salvage ballot.
+ 4. Stage-6 rung (dial-0 even on its branch; UNRULED — nothing to implement until ruled).
+ 5. The 1.40 re-anchor act (proposed to DISSOLVE into the root act under the YEAR-4 and
+    LEVEL laws — leaves the ledger on that word).
 THE SITTING IS COMPLETE (2026-08-10, in-chat; words filed 5238548520 / 5238688172 /
 5238860310): the composition package is FULLY RULED — A=A1 · B · C adopted · C-Q1 taught
 level · C-Q2 PLAYED-ONLY H sizing · C-Q3 demonstrate-or-drop (sa = designated fallback gate)
