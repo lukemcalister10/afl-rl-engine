@@ -929,7 +929,11 @@ EXP_RETAIN={  # position-specific pining decay normalized to T1 (smoothed monoto
  'RUCK':[1.00,0.95,0.91,0.85],'KPD':[1.00,0.95,0.95,0.93],'MID':[1.00,0.92,0.83,0.65],
  'SD':[1.00,0.96,0.92,0.88],'SF':[1.00,0.90,0.88,0.83],'KPF':[1.00,0.95,0.85,0.80]}
 EXP_PICK_SLOPE=-10.72; EXP_LOGREF=4.0073   # expected peak vs (log effpk - logref); negative = deeper pick projects lower
-EXP_BLEND_GAMES=45.0    # career games at which v4 (form) fully replaces the explicit floor (dial-able knob)
+EXP_BLEND_GAMES=float(os.environ.get('RL_EXP_BLEND_GAMES','45'))    # career games at which v4 (form) fully
+# replaces the explicit floor. #334 MENU ITEM (a) — THE COHORT-FORWARD YOUNG ANCHOR. Lowering this makes a
+# young player's projection lean on his own FORM sooner and on the year-4/5 cohort prior for less of his
+# early career; the owner's menu asks what that does to the relativity guard and the envelope at 45 -> 30
+# -> 20. 45 is the shipped value and is therefore the identity. A MENU ITEM FOR HIS SITTING, NOT A DECISION.
 def _explicit_peak(p,Y):
     pos=gfut(p) # ITEM 271 item 4 GROUP A: drafted -> played axis (gfut); the board prices on gfut and this site read the drafted position.
     if pos not in EXP_PEAK_BASE: return None

@@ -99,7 +99,8 @@ for r in MA.data:
     g=MA.GRP.get(r.get('pos'))
     if g and g not in GRPPOS: GRPPOS[g]=r['pos']
 # ===== STEP1 #1-FAMILY FIX (inference-only; band pickle + q97m above trained on ORIGINAL features -> Delta=0 for proven-flat) =====
-PROVEN_N=4; POLE_RAMP=22.0    # PROVEN_N surface NOT wired (no committed exec spec) -> scalar 4 + c=n/4 retained; see CHANGELOG 2026-06-30
+PROVEN_N=4; TAIL_TRIM=float(os.environ.get('RL_TAIL_TRIM','0'))   # #334 menu (b): proven beyond-year-11 carry trim; 0 = shipped, byte-exact
+POLE_RAMP=22.0    # PROVEN_N surface NOT wired (no committed exec spec) -> scalar 4 + c=n/4 retained; see CHANGELOG 2026-06-30
 RUC_WAGE=float(os.environ.get('RL_RUC_WAGE','1.0'))   # #334 ITEM E1 sizing: 1.0 = the full standard ramp; 0.0 reproduces the old wage=0 pole denial byte-exact.
 # ==== GAMES-RAMP PRORATION (D10 03/07/2026 — Luke's design statement, verbatim in the directive):
 # every games bar (6/10/14/22) prorates to season progress for the IN-PROGRESS season — a player is
@@ -909,6 +910,14 @@ def _w4_W(k,ctx):
             W+=ctx['cw']*up*ctx['gm']*ctx['dur']*ctx['sh']*float(np.interp(k,[0.,2.,5.],[1.,1.,0.]))
             if ctx.get('n',0)>=PROVEN_N:
                 W-=W4_FADE*(1.0-ctx['gm'])*ctx.get('fadew',1.0)*float(np.interp(k,[4.,10.],[0.,1.]))
+    # ===== #334 MENU ITEM (b) — THE PROVEN-TAIL TRIM. The ruler act measured the engine carrying 15.1%
+    # of the year-4 price beyond career year 11 against 9.9% delivered (1.53x hot), concentrated in talls.
+    # This fades the beyond-year-11 carry toward the delivered share, and ONLY for the population the
+    # existing far-year fade already names as proven (ctx['n'] >= PROVEN_N) — it adds no new gate and
+    # touches no young tail, which is the un-faded one the ruler act flagged. Strength 0.0 = shipped
+    # behaviour, byte-exact. A MENU ITEM FOR THE OWNER'S SITTING, NOT A DECISION.
+    if TAIL_TRIM>0.0 and ctx.get('n',0)>=PROVEN_N and k>11:
+        W*=(1.0-TAIL_TRIM*float(np.clip((k-11.0)/4.0,0.0,1.0)))
     # (L1c: the old `elif _W4YNG` runway leg was here — DELETED 2026-07-08, replaced by the evidence-
     #  conditioned expected-rerating credit on raw_ev below; RL_YOUNG gates THAT, never both.)
     if _W4OVP and ctx.get('ovpx',0.0)>0.0:
