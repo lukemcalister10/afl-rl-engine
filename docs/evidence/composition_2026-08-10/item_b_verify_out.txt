@@ -1,11 +1,27 @@
 config manifest (gate mode) LOADED  hash cef06fd6250b  (59 model vars pinned; ambient cleared)
-Traceback (most recent call last):
-  File "/home/user/afl-rl-engine/docs/evidence/composition_2026-08-10/item_b_verify.py", line 14, in <module>
-    g = load()
-        ^^^^^^
-  File "/home/user/afl-rl-engine/docs/evidence/composition_2026-08-10/engine_load.py", line 30, in load
-    exec(compile(src, '_merged_recover.py', 'exec'), g)
-  File "_merged_recover.py", line 2140, in <module>
-    #     equal pool_level(p) x _PL_F x _b_factor(p) for any division whose level differs from the pool slot.
-           ^^^^^^^^^^^^
-AssertionError: #326 HALT: 1202 pool entrant(s) (['Fred Rodriguez', 'Riley Onley', 'Jack Watkins', 'Leon Kickett', 'Ollie Greeves', 'Nick Driscoll']) do not price off their own division level — the single pool value is back in a player price.
+live pool population: n=1202   non-pool: n=1448
+C5 renormaliser K = 0.7268632421  (re-derived from THIS roster, not stored)
+
+1. CONSERVATION (pool Sigma entry_anchor)
+   before (age-blind) = 293166.015600
+   after  (age-shaped)= 293166.015600
+   delta              = 0.000000001   (2.978e-15 relative)
+   PASS — held exactly.
+
+2. AGE-UNKNOWN CELL: n=0
+   empty on this store (the 302-birthdate write closed it) — the rule is still coded.
+
+3. CONTINUITY IN DRAFT AGE (no integer cliff)
+   17.00:0.6859 · 17.50:0.6859 · 18.00:0.6859 · 18.25:0.8672 · 18.50:1.0485 · 18.75:1.2299 · 19.00:1.4112 · 19.50:1.4112 · 20.00:1.4112 · 20.25:1.7627 · 20.50:2.1142 · 20.75:2.4657 · 21.00:2.8173 · 21.50:2.8173 · 22.00:2.8173 · 26.00:2.8173
+   largest step on the grid = 0.3515 (a cliff would show as a jump at an integer)
+
+4. NON-POOL ROWS UNTOUCHED
+   checked 561 non-pool BOARD rows; entry_anchor != v0_start on 0  PASS
+
+5. THE REDISTRIBUTION, BY BAND
+   band               n         before          after        delta         x
+   <=18             649       157579.0        78559.1     -79019.9    0.4985
+   19-20            252        61684.3        63272.1      +1587.8    1.0257
+   21+              301        73902.7       151334.8     +77432.1    2.0478
+   TOTAL                                                 +0.000000
+   share of pool year-0 value redistributed = 27.0%
