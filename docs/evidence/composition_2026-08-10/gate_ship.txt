@@ -2,6 +2,6 @@
 ==================== STALE-BOOT GUARD (Guard 5) FAILED — BUILD HALTED ====================
   - ship_gates_check about to read ENGINE _merged_recover.py
         at /home/claude/rl_workspace/rl_after/_merged_recover.py
-        md5 49690263  !=  expected fe8469ff (pinned; repo checkout )
+        md5 49690263  !=  expected 7b3b714f (pinned; repo checkout )
         STALE BOOT: this is not the checked-out store. Re-run bootstrap.sh to re-seed the workspace from the checked-out source; never boot on an unverified store.
 =========================================================================================
