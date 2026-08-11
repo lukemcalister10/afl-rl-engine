@@ -819,7 +819,7 @@ is limited, layer 2 is what must be right.** The architecture is set out in **§
 | D4 | thin streams: own history or pulled toward the average? | **CLOSED 2026-08-11: every pathway gets an all-in value; thin cells borrow shape under partial pooling; PDS shrunk toward the pool; K=15 at layer 1, K=10 at layer 2** |
 | D5 | does it re-rate today's players? | measured: no, 1.51% of the board can move at all |
 | D6 | the no-arbitrage effect | measured: all-arm year one **0.8850 → 1.0266 (option B) / 1.0355 (option C)** on the ruled basis; **RULED acceptable**, both legal against the 14% charge |
-| D7 | draft age, per stream, on quality only | quality only, per stream; whether at all is open |
+| D7 | draft age, per stream, on quality only | approved: quality only, per stream; **whether an adjustment exists at all is a BUILD-TIME finding, not a pending ruling** — no age signal in a stream means no age adjustment for it |
 | D8 | the sitter cells on the entry-price side | **RULED 2026-08-11: the pool-only multiplier GOES; the retention is RE-DERIVED on pool history and REPLACES the read** |
 | D9 | is the existing evidence fade enough? | yes; **RULED 2026-08-11: fade speed DEFERRED to its own act — the pool fades exactly as ND does** |
 
