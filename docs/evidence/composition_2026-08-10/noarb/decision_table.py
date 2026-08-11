@@ -110,17 +110,21 @@ def main():
         P('-' * 104)
         P('### PROGRESSION — %s   [canonical no-arb table, book ratio vs year 0]' % g)
         P('-' * 104)
+        # 4 dp, not 3: the source json stores the ratio to 4 dp, and re-rounding it to 3 crosses a
+        # rounding boundary (stage-5 yr2 is 1.1855 — the published txt prints 1.186 from the full
+        # float, a re-round of the stored 1.1855 prints 1.185). Printing 4 dp reproduces the source
+        # exactly and removes the discrepancy rather than explaining it away.
         hdr = '  %-8s' % 'variant' + ''.join('%9s' % ('yr%d' % n) for n in range(0, 8)) + '%11s' % 'peak'
         P(hdr)
         P('  ' + '-' * (len(hdr) - 2))
         s5r = {int(k): v for k, v in
                [(r['N'], r['ratio_meanN_over_mean0']) for r in s5['groups'][g]['rows']]}
-        P('  %-8s' % 'stage-5' + ''.join('%9.3f' % s5r[n] for n in range(0, 8))
-          + '%11.3f' % max(s5r.values()) + '   <- last published canonical table (REFERENCE)')
+        P('  %-8s' % 'stage-5' + ''.join('%9.4f' % s5r[n] for n in range(0, 8))
+          + '%11.4f' % max(s5r.values()) + '   <- last published canonical table (REFERENCE)')
         for v in VARIANTS:
             r = ratios(T[v], g)
-            P('  %-8s' % v + ''.join('%9.3f' % r[n] for n in range(0, 8))
-              + '%11.3f' % max(r.values()))
+            P('  %-8s' % v + ''.join('%9.4f' % r[n] for n in range(0, 8))
+              + '%11.4f' % max(r.values()))
         n = ns(T['main'], g)
         P('  %-8s' % 'n_incl' + ''.join('%9d' % n[k] for k in range(0, 8)))
         P()
@@ -256,6 +260,52 @@ def main():
     P('  surface and one 1197-entrant population, and differ ONLY by engine dials. The main->FULL')
     P('  difference is measured inside that closed set, so the drift shifts the whole table together')
     P('  and cancels out of every within-table contrast. The relativity reading below is unaffected.')
+
+    # ============================================================ 6. the reading
+    P()
+    P('=' * 104)
+    P('### THE READING  (contrasts only — THE LEVEL LAW binds every line of this block)')
+    P('=' * 104)
+    P('  The LEVEL of this ruler is not evidence and is not read as one. No line below says a book')
+    P('  value is high or low, or that any class of player is priced wrongly. Every line is a')
+    P('  CONTRAST measured inside this one table, between engines that differ only by dials.')
+    P()
+    a = ratios(T['main'], 'ALL picks 1-64'); b = ratios(T['FULL'], 'ALL picks 1-64')
+    P('  1. THE RELATIVITY QUESTION SURVIVES THE CORRECTION, AND IT IS LARGER HERE THAN ON EITHER')
+    P('     EARLIER INSTRUMENT. main -> FULL moves year 1 by %+.1f%% and peak by %+.1f%%, so the'
+      % (100 * (b[1] / a[1] - 1), 100 * (max(b.values()) / max(a.values()) - 1)))
+    P('     young/peak contrast moves %+.2f%%. The package does not cut the book evenly: it takes'
+      % (100 * ((b[1] / max(b.values())) / (a[1] / max(a.values())) - 1)))
+    P('     materially more out of the year-1 end than out of the peak.')
+    P()
+    for g in ['picks 1-20', 'picks 21-64']:
+        x, y = ratios(T['main'], g), ratios(T['FULL'], g)
+        P('       %-12s young/peak %+.2f%%' % (g, 100 * ((y[1] / max(y.values())) /
+                                                         (x[1] / max(x.values())) - 1)))
+    P('     The cut is NOT uniform across the ladder — it is about half again as large on picks')
+    P('     21-64 as on picks 1-20. That asymmetry is a finding, not a dial to even out.')
+    P()
+    P('  2. THE OWNER-ORDERED COUNTERBALANCE WORKS, PARTIALLY, AND IT IS ORDERED V1 < V2 < V3.')
+    P('     Recovery of the young/peak contrast against main, ALL picks 1-64:')
+    for v in ['FULL', 'V1', 'V2', 'V3']:
+        r = ratios(T[v], 'ALL picks 1-64')
+        P('       %-6s young/peak vs main %+.2f%%' % (v, 100 * ((r[1] / max(r.values())) /
+                                                                (a[1] / max(a.values())) - 1)))
+    P('     None of the three fully restores main on the full population. V3 comes closest.')
+    P()
+    P('  3. THE TENSION THE OWNER HAS TO RULE ON, STATED PLAINLY. V3 recovers the most relativity')
+    P('     AND opens the most no-arb exposure. It is the only variant with an arbitrage step at')
+    P('     yr0->yr1 (%+.2f%% appreciation against the 10.00%% it charges an 18-year-old), and it'
+      % (100 * (ratios(T['V3'], 'ALL picks 1-64')[1] - 1)))
+    P('     carries the largest peak/yr0 reading of the five. The engine source predicted exactly')
+    P('     this ("watch the no-arb frame hardest here"), and the measurement confirms it.')
+    P('     That is a genuine trade between two things the owner values. IT IS FLAGGED, NOT SIZED:')
+    P('     no dial in this act was moved toward any of it, and the sizing word remains his.')
+    P()
+    P('  4. THE FREE-MONEY COUNT is a within-variant test and reads: main 1 arbitrage step, FULL 2,')
+    P('     V1 2, V2 2, V3 2 — but V3\'s pair sits at the YOUNGEST steps, where a 10% discount is')
+    P('     charged against double-digit appreciation. The count alone understates it; the placement')
+    P('     is the point.')
 
     jp = os.path.join(HERE, 'DECISION_TABLE.json')
     out = {}
