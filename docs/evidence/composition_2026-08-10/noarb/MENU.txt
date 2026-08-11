@@ -154,3 +154,44 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
   and it does so by repricing the whole book rather than by restoring what was taken.
   A year-1 counterbalance that acts where the value was lost would have to act on #336 or
   the surprise law. THAT IS THE OWNER'S CALL. Nothing is re-sited here.
+
+====================================================================================================================
+### HALT-GRADE — ITEM A'S RULED PURPOSE IS PARTLY UNDELIVERED  (full audit: A_YEAR1_AUDIT.md)
+====================================================================================================================
+  D1, the defect A was ruled to fix, fires at the MOMENT OF QUALIFICATION — a player's first
+  qualifying game, which for a first-season qualifier IS cohort year 1. At exactly that moment
+  A's share is EXACTLY 0, so the taught year-0 correction is still discarded there, as before
+  ITEM A. Built-A repairs only the years-2+, partial-season version of the defect.
+
+  Measured over all 720 ND cells A actually moves, by games in that as-of season:
+      >=6 games (full season, lam=1 pins the share to 0)     0 cells
+      1-5 games (partial)                                  531
+      0 games / absent, with a prior qualifying season      189
+  A NEVER MOVES A >=6-GAME ROW AT ANY CAREER YEAR.
+
+  THE FADE LADDER (v1 0.3589 -> v6 0.0038) DOES NOT CONTRADICT THIS. It was measured on a
+  synthetic holding "4 games this season" — below the six-game pin — to isolate the pedigree
+  fade while the games factor sat fixed. Its "v1" means career year 1 WITH 4 GAMES, not cohort
+  year 1. item_a_verify.py itself reported the real-population v1 as 0.0000 and explained why;
+  that disclosure was not carried into the act's account of what A delivers.
+
+  Do NOT weigh A's contribution to the year-1 question as delivered. The decomposition already
+  shows the consequence: ITEM A owns 0.0% of the year-1 drop.
+
+====================================================================================================================
+### SPECIFIED BUT NOT BUILT — THE RAMP DE-COUPLE  (RAMP_DECOUPLE_SPEC.md)
+====================================================================================================================
+  One six-game threshold currently does two jobs: ADMISSION (ns>=1 needs a qualifying season)
+  and SATURATION (lam hits LAM_SIT[6]=1.0, zeroing A). At year 1 they are mutually exclusive.
+  The row: KEEP the admission bar, de-couple only the saturation so the production weight
+  saturates on CAREER games (~15-20) instead of the within-season six — so a qualified year-1
+  row carries real anchor weight and A lives at year 1 as ruled.
+
+  PRE-REGISTERED: measurable ONLY with A-FLOOR or A-DRAGFADE. With the SYMMETRIC blend it would
+  let the anchor drag hot year-1 rows DOWN and DEEPEN the dip — expected direction filed in
+  advance. One trap named: sitout_ev shares the LAM_SIT ramp for a different purpose, so only
+  A's copy may de-couple or the whole sit-out population moves as a side effect.
+
+  SCOPE CAVEAT: it makes A deliver its ruled purpose. It is NOT a counterbalance to the
+  measured drop, which lives 80.5% in #336 and 10.8% in the surprise law. Cost if ruled in:
+  2 emits plus one identity proof. NOT BUILT — no engine file touched, no dial declared.
