@@ -1,0 +1,128 @@
+================================================================================================================
+WORKED EXAMPLE 1 — MICHAEL HURLEY (the shape the owner named)
+================================================================================================================
+  ND 2008 pick 5, KPD, draft age 18. Career year k = calendar 2008+k; year 4 = 2012.
+  engine as-of price path (vpath), career years 1..14:
+     yr1   2009   price   5284   season 10 games @  78.6  bar KPD 
+     yr2   2010   price   4240   season 19 games @  69.4  bar KPF 
+     yr3   2011   price   3845   season 18 games @  82.2  bar KPF 
+     yr4   2012   price   3041   season 16 games @  73.1  bar KPF   <== PROXY (career year 4)
+     yr5   2013   price   2341   season 16 games @  69.6  bar KPF 
+     yr6   2014   price   3311   season 21 games @  85.9  bar KPF 
+     yr7   2015   price   4385   season 19 games @  94.8  bar KPD 
+     yr8   2016   price   3557   season NO ROW (0 games)
+     yr9   2017   price   4876   season 21 games @ 103.4  bar KPD 
+     yr10  2018   price   3272   season 20 games @  90.6  bar KPD 
+     yr11  2019   price   1788   season 19 games @  79.7  bar KPD 
+     yr12  2020   price   1328   season 14 games @  80.3  bar KPD 
+     yr13  2021   price    981   season NO ROW (0 games)
+     yr14  2022   price    508   season  1 games @  35.0  bar KPD 
+  season prices (engine kernel): yr3 356.5  yr4 136.6  yr5 78.0
+  dip classification: DIP-A(strict)=False  DIP-B(broad)=True  DIP-G(games)=False
+  PROXY (year-4 price)      =   3041.0
+  REALIZED (yr4 on, @1.0939)=   2319.8   (no stub: career completed)
+  TILT = 0.7628  -> the year-4 price was 1.31x the value his own remaining career delivered
+  READ: the price DID fall through the dip (yr1 5284 -> yr4 3041 -> yr5 2341) and DID recover
+        (4876 by yr9) -- so the year-4 number is a MARKED-DOWN one, and the question is whether
+        it was marked down enough. Compare against his own no-dip peers below.
+  NOTE: his 2016 row is ABSENT from the store (the season Essendon's list did not play).
+        Under the store's no-row convention that season is priced at 0 in REALIZED.
+
+================================================================================================================
+WORKED EXAMPLES 2-4 — the heaviest-weighted DIP-A rows (largest year-4 price in the dip cell)
+================================================================================================================
+  Clayton Oliver           ND   2015 pick 4   MID  age 18    yr4=2019
+     games/avg  yr3 25@113.4   yr4 22@109.4   yr5 17@122.2
+     season price yr3  1196.6  yr4   858.6  yr5  1193.5
+     PROXY   8772.0   REALIZED   7720.6   TILT 0.880   (stub 1184)
+  Patrick Cripps           ND   2013 pick 12  MID  age 18    yr4=2017
+     games/avg  yr3 21@107.6   yr4 15@ 97.7   yr5 22@119.4
+     season price yr3   753.0  yr4   339.3  yr5  1386.5
+     PROXY   5801.0   REALIZED   5441.9   TILT 0.938   (stub 639)
+  Tom Rockliff             RD   2008 pick 65  MID  age 18    yr4=2012
+     games/avg  yr3 20@113.5   yr4 22@ 97.1   yr5 21@109.6
+     season price yr3   962.2  yr4   480.8  yr5  1075.9
+     PROXY   5351.0   REALIZED   4373.2   TILT 0.817   (stub 0)
+  Toby Greene              ND   2011 pick 17  SF   age 18    yr4=2015
+     games/avg  yr3 15@102.9   yr4 22@ 82.8   yr5 23@ 92.8
+     season price yr3   439.4  yr4   105.2  yr5   647.2
+     PROXY   3657.0   REALIZED   2923.9   TILT 0.800   (stub 289)
+  Brad Crouch              ND   2011 pick 9   MID  age 18    yr4=2015
+     games/avg  yr3 11@ 94.5   yr4  0@  0.0   yr5 16@ 84.6
+     season price yr3   203.9  yr4     0.0  yr5   104.9
+     PROXY   3502.0   REALIZED   1613.8   TILT 0.461   (stub 0)
+  Dale Thomas              ND   2005 pick 2   MID  age None  yr4=2009
+     games/avg  yr3 20@ 78.6   yr4 19@ 74.2   yr5 22@ 94.2
+     season price yr3   203.6  yr4   101.6  yr5   658.6
+     PROXY   3011.0   REALIZED   1915.1   TILT 0.636   (stub 0)
+
+================================================================================================================
+DIP CELL COMPOSITION
+================================================================================================================
+  DIP-A  n=148  pos=[('MID', 44), ('SD', 32), ('SF', 29), ('KPD', 17), ('KPF', 17), ('RUCK', 9)]
+  DIP-B  n=371  pos=[('MID', 109), ('SD', 85), ('SF', 75), ('KPD', 48), ('KPF', 33), ('RUCK', 21)]
+  DIP-G  n= 65  pos=[('SF', 13), ('MID', 12), ('KPF', 11), ('SD', 11), ('KPD', 10), ('RUCK', 8)]
+  eligible base n=625 (of 1418 rows in the window); ineligible = career did not reach yr5 with both yr3 and yr5 played
+  overlap: DIP-A subset of DIP-B ? True
+  DIP-G n=65 of which also DIP-A: 51
+
+================================================================================================================
+AGE-UNKNOWN COMPOSITION (207 rows, tilt 0.4674, eff-n 47.5) — why the mature cells are starved
+================================================================================================================
+  n=207  by route: [('ND', 119), ('RD', 86), ('IRE', 2)]
+  by class : [(2004, 105), (2005, 102)]
+  by pos   : [('MID', 61), ('SD', 42), ('SF', 38), ('KPF', 27), ('RUCK', 22), ('KPD', 17)]
+  share of each class's rows with NO draft age:
+     2004  105/110 =   95%
+     2005  102/109 =   94%
+     2006    0/122 =    0%
+     2007    0/122 =    0%
+     2008    0/134 =    0%
+     2009    0/126 =    0%
+     2010    0/138 =    0%
+     2011    0/141 =    0%
+     2012    0/108 =    0%
+     2013    0/ 99 =    0%
+     2014    0/114 =    0%
+     2015    0/ 95 =    0%
+
+================================================================================================================
+POOLING LADDER — every below-bar cell and the named cell it pools into
+================================================================================================================
+  KPF                                    eff-n   33.8  tilt  0.5059   (axis: AXIS 1a)
+  DIP-A x runners                        eff-n   33.4  tilt  0.6434   (axis: AXIS 5)
+  mature 21+ (all routes)                eff-n   30.8  tilt  0.6152   (axis: AXIS 4)
+  MID x 2012-2015                        eff-n   30.7  tilt  0.6620   (axis: AXIS 1c)
+  SD x 2012-2015                         eff-n   30.2  tilt  0.9771   (axis: AXIS 1c)
+  DIP-G games   g4<0.6*min(g3,g5)        eff-n   29.1  tilt  0.3951   (axis: AXIS 5)
+  talls x 2012-2015                      eff-n   28.5  tilt  0.5969   (axis: AXIS 1d)
+  ND 21-40 x talls                       eff-n   25.6  tilt  0.7260   (axis: AXIS 2c)
+  ND 41-64 x talls                       eff-n   24.8  tilt  0.5704   (axis: AXIS 2c)
+  ND 1-10 x 2012-2015                    eff-n   24.7  tilt  0.7098   (axis: AXIS 2b)
+  RUCK                                   eff-n   24.7  tilt  0.7513   (axis: AXIS 1a)
+  DIP-A x talls                          eff-n   24.5  tilt  0.5427   (axis: AXIS 5)
+  KPF x pre-2012                         eff-n   24.1  tilt  0.5316   (axis: AXIS 1c)
+  ND 41-64 x 2012-2015                   eff-n   23.7  tilt  0.6723   (axis: AXIS 2b)
+  SF x 2012-2015                         eff-n   22.5  tilt  0.4033   (axis: AXIS 1c)
+  pool mature 21+                        eff-n   21.9  tilt  0.5406   (axis: AXIS 4)
+  RUCK x pre-2012                        eff-n   21.4  tilt  0.6868   (axis: AXIS 1c)
+  mature 21+ x runners                   eff-n   20.6  tilt  0.6235   (axis: AXIS 4)
+  poolRD x talls                         eff-n   20.5  tilt  0.6204   (axis: AXIS 3b)
+  ND 1-10 x talls                        eff-n   20.3  tilt  0.4993   (axis: AXIS 2c)
+  ND 21-40 x 2012-2015                   eff-n   19.4  tilt  0.6220   (axis: AXIS 2b)
+  ND 11-20 x 2012-2015                   eff-n   19.2  tilt  0.5324   (axis: AXIS 2b)
+  ND 11-20 x talls                       eff-n   18.2  tilt  0.4444   (axis: AXIS 2c)
+  pool RD mature 21+                     eff-n   18.2  tilt  0.5389   (axis: AXIS 4)
+  pool non-RD (all others)               eff-n   17.9  tilt  0.7167   (axis: AXIS 3)
+  KPD x 2012-2015                        eff-n   16.9  tilt  0.5293   (axis: AXIS 1c)
+  KPF x 2012-2015                        eff-n   11.3  tilt  0.4125   (axis: AXIS 1c)
+  pool-nonRD x runners                   eff-n   11.1  tilt  0.6752   (axis: AXIS 3b)
+  mature 21+ x talls                     eff-n   10.9  tilt  0.6036   (axis: AXIS 4)
+  pool-nonRD x talls                     eff-n   10.4  tilt  0.8332   (axis: AXIS 3b)
+  pool ND (real pick>64)                 eff-n    9.3  tilt  0.8723   (axis: AXIS 3)
+  ND1-64 mature 21+                      eff-n    8.9  tilt  0.7895   (axis: AXIS 4)
+  pool non-RD mature 21+                 eff-n    7.9  tilt  0.5555   (axis: AXIS 4)
+  pool PDA/PDN/PDS                       eff-n    3.7  tilt  0.2944   (axis: AXIS 3)
+  RUCK x 2012-2015                       eff-n    3.5  tilt  1.0699   (axis: AXIS 1c)
+  pool IRE                               eff-n    3.0  tilt  0.7104   (axis: AXIS 3)
+  pool UNR                               eff-n    2.8  tilt  0.8031   (axis: AXIS 3)
