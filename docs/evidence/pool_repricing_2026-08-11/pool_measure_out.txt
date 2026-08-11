@@ -111,3 +111,33 @@
   PDS          21     46.54      10.1         14       46.03     49.60       nan
   UNR          59     50.90      23.5         35       45.05     50.50     52.22
   ND>64       120     55.54      43.4         35       54.52     54.94     59.88
+
+========================================================================================================
+### POSITIONAL LENSES — DO THE SAMPLES PERMIT? (owner amendment, 2026-08-11)
+========================================================================================================
+  Owner: 'it would be good to have positional lenses where possible for pool players, but samples
+  may make it hard.' This is the count, so the directive states what is possible rather than guesses.
+  stream        n     MID     SD     SF    KPD    KPF   RUCK  cells n>=20
+  ND 1-64    1444     432    306    304    153    173     76            6
+  RD          688     176    158    147     72     64     71            6
+  SSP          52       5      8     16      5     12      6            0
+  MSD         106      23     13     23     14     19     14            2
+  IRE          57       5     35      4      6      5      2            1
+  PDA          51      14     10     14      2      6      5            0
+  PDN          43       4     14     16      5      2      2            0
+  PDS          21       7      5      3      4      1      1            0
+  UNR          59       8      4      5      9      3     30            1
+  ND>64       120      28     25     30     12     16      9            3
+
+  yr4 delivery BY POSITION where the cell has n>=20 (blank = too thin, disclosed not forced):
+  stream          MID       SD       SF      KPD      KPF     RUCK
+  ND 1-64      1.5439   1.5032   1.4809   1.4740   1.7471   1.6388
+  RD           0.9193   0.5961   1.0529   0.3598   0.5462   1.3339
+  SSP               -        -        -        -        -        -
+  MSD          2.0130        -   0.2839        -        -        -
+  IRE               -   0.3089        -        -        -        -
+  PDA               -        -        -        -        -        -
+  PDN               -        -        -        -        -        -
+  PDS               -        -        -        -        -        -
+  UNR               -        -        -        -        -   0.1374
+  ND>64        0.8802   0.6316   0.5186        -        -        -

@@ -1,10 +1,14 @@
-# DRAFT — POOL REPRICING DIRECTIVE
+# POOL REPRICING DIRECTIVE
 
-**Status: DRAFT. Not issued.** The owner reads and reviews this document himself before it becomes a
-directive (his ruling, 2026-08-11: *"I would like to review the directive before it is sent. The layer
-between you and subagents bypassing me has meant some errors have not been noticed before the damage
-is done."*). Nothing here is wired, built or scheduled. The document ends at the decision list and the
-measurement ledger.
+**Status: ISSUED.** The owner read this document himself and approved it with amendments on 2026-08-11
+(issue #334, comment 5250723606): *"All is okay on the directive… Other than that, it is good to go."*
+His amendments are folded in below and each is marked **[OWNER AMENDMENT, 2026-08-11]**. His review was
+required by his own process ruling of the same day (*"I would like to review the directive before it is
+sent."*).
+
+**Nothing here is wired, built or scheduled.** The document ends at the decision list and the
+measurement ledger. Three decisions remain **OPEN** and need the owner's words before any work begins
+on those specific items — they are named in the §0 summary.
 
 **What the owner asked for, verbatim (comment 5250574134):**
 
@@ -46,6 +50,13 @@ per-stream table, base SHIP]**:
 
 A national-draft pick returns about **1.55 times** its entry price by year four. The pool as a whole
 returns about **0.71**. **[POOL]**
+
+**[OWNER AMENDMENT, 2026-08-11] — answering his question on this table.** He asked: *"the ND numbers
+are a little lower in year 4 than I thought. Did we manage to bring them down a touch?"* **Yes.** The
+national-draft year-four figure was **1.5565** on the pre-act engine and is **1.5493** on the landed
+board — down **0.5%**. The all-arm view agrees, reading **1.5237 → 1.5166** for the same arm
+**[POOL, per-stream tables on both bases; SPLIT, all-arm by-arm table]**. The change came from the
+landed composition, and it moved in the direction the earlier rulings intended.
 
 **Seat lean: YES, the entry price is where the defect sits — but only for some streams (see D2).** The
 reason is D3's table: several streams never reach 1.00 at any year through year six, which is what an
@@ -92,6 +103,42 @@ it"* to be reflective, which option B cannot deliver.
 
 **The caution that goes with C:** it trusts every stream's own history, including streams with very few
 players. See D4.
+
+### [OWNER AMENDMENT, 2026-08-11] — positional lenses where the samples permit
+
+Owner: *"it would be good to have positional lenses where possible for pool players, but samples may
+make it hard."* **His caveat is correct, and here is exactly how correct [POOL].** Cells with at least
+twenty players, by stream:
+
+| stream | n | MID | SD | SF | KPD | KPF | RUCK | usable cells |
+|---|---|---|---|---|---|---|---|---|
+| RD | 688 | 176 | 158 | 147 | 72 | 64 | 71 | **6 of 6** |
+| ND>64 | 120 | 28 | 25 | 30 | 12 | 16 | 9 | 3 |
+| MSD | 106 | 23 | 13 | 23 | 14 | 19 | 14 | 2 |
+| UNR | 59 | 8 | 4 | 5 | 9 | 3 | 30 | 1 |
+| IRE | 57 | 5 | 35 | 4 | 6 | 5 | 2 | 1 |
+| SSP · PDA · PDN · PDS | 52 · 51 · 43 · 21 | — | — | — | — | — | — | **0** |
+
+**Where a positional lens IS possible it matters a great deal.** Year-four delivery by position, only
+where the cell holds twenty or more players **[POOL]**:
+
+| stream | MID | SD | SF | KPD | KPF | RUCK |
+|---|---|---|---|---|---|---|
+| ND 1-64 | 1.5439 | 1.5032 | 1.4809 | 1.4740 | 1.7471 | 1.6388 |
+| **RD** | **0.9193** | **0.5961** | **1.0529** | **0.3598** | **0.5462** | **1.3339** |
+| ND>64 | 0.8802 | 0.6316 | 0.5186 | — | — | — |
+| MSD | 2.0130 | — | 0.2839 | — | — | — |
+| IRE | — | 0.3089 | — | — | — | — |
+| UNR | — | — | — | — | — | 0.1374 |
+
+**This changes D2's shape and the seat says so plainly.** Inside the rookie draft — the largest pool
+stream by far, 688 players — delivery runs from **0.3598** for key-position defenders to **1.3339** for
+rucks. **That spread is wider than the gap between several whole streams.** A single rookie-draft
+number would be badly wrong at both ends.
+
+**Seat lean, amended: per stream, and within the rookie draft also per position.** For every other pool
+stream the samples do not support a positional split and the directive says so rather than forcing one.
+Thin cells are shown as blanks above, disclosed, never filled in.
 
 ---
 
@@ -228,6 +275,12 @@ Playing quality by stream, measured on quality alone **[POOL]**:
 across the pool.** Whether there should be an age adjustment at all is a question the measurements do
 not answer, and the seat does not assume one.
 
+**[OWNER AMENDMENT, 2026-08-11] — the positional caveat applies here too.** Any age work carries the
+same sample limit set out in D2: a positional lens is available inside the rookie draft and nowhere
+else in the pool. An age-by-position split would divide the samples again and the counts in D2 say that
+is not supportable outside the rookie draft. Where a cell is too thin it is shown empty, with its count,
+and is not filled in.
+
 ---
 
 ## D8 — The two sitter cells, translated to the entry-price side
@@ -247,11 +300,38 @@ is the same identity the #336 work uses: *expected value = chance he establishes
 establishes*. A player who then plays moves off that prior on his own record, and nothing multiplies
 his finished price at all.
 
-**OPEN QUESTION.** The seat does not have the owner's ruling on whether the sit-out charge should
-survive in any form once the entry price itself is reflective of outcomes. There is a real argument
-that it should not: if the entry price already contains the chance of never playing, charging a sitter
-again is charging the same risk twice — which is exactly the fault the #336 work found and corrected in
-a different place.
+### [OWNER AMENDMENT, 2026-08-11] — THE MEAN-PRESERVING SITTER SPLIT: the FORM is now settled
+
+**Owner, verbatim:**
+
+> *"I note that if we are looking at sitters and then applying a penalty to reflect our data that
+> sitting is bad for long term prospects, if we apply that penalty from an already well calibrated base
+> (not that this is calibrated well now), there would need to be a bonus added to other players too, do
+> you agree? Just like if we took our existing ND 1-64 v0 values and applied a sitter penalty, they are
+> already calibrated to reflect the return of those picks, so applying a penalty just throws it out."*
+
+**He asked whether the seat agrees. The seat agrees, and the reason is arithmetic.** Once a group's
+entry price is set so the group as a whole returns 1.00, that price already contains every outcome in
+the group — the players who sit out included. Taking value off the sitters after that point removes
+value the group's own history already accounted for, so the group stops averaging 1.00 and the
+calibration that was just done is undone. His national-draft example is the clean case: those prices
+are calibrated to what those picks return, so a bare sitter penalty on top would push the whole book
+below its own measured return.
+
+**THE STANDING PRINCIPLE, as it now binds this work:** *any sitter differential applied inside a group
+whose entry price is calibrated to that group's realized returns must be a **redistribution** — value
+taken from sitters and given back to the rest of the group — and never a net charge.*
+
+**Note his own parenthesis, which the seat reads as load-bearing:** *"(not that this is calibrated well
+now)"*. The principle binds **after** the repricing in ITEM 1 has calibrated each stream. It is not a
+statement that today's pool prices are calibrated — the measurements in D1 and D2 say plainly that they
+are not.
+
+**WHAT REMAINS OPEN.** The form is settled; **whether a sitter differential should exist at all is
+not**. The seat's reading, offered and not assumed: if a stream's entry price already contains the
+chance that an entrant never plays, then a further sitter charge risks charging the same risk twice —
+the fault the #336 work found and corrected in a different place. The owner has not ruled on this and
+the seat does not decide it.
 
 ---
 
@@ -285,8 +365,14 @@ and marks that part **OPEN QUESTION**.
 | D5 | does it re-rate today's players? | measured: no, 1.51% of the board can move at all |
 | D6 | the no-arbitrage effect | measured: all-arm year one 0.8850 → 0.9628 under one option |
 | D7 | draft age, per stream, on quality only | quality only, per stream; whether at all is open |
-| D8 | the sitter cells on the entry-price side | **OPEN QUESTION** — including whether they survive |
+| D8 | the sitter cells on the entry-price side | **FORM SETTLED** by owner amendment (mean-preserving); **whether it exists at all is OPEN** |
 | D9 | is the existing evidence fade enough? | yes; how fast it should work is **OPEN QUESTION** |
+
+**STATUS AFTER THE OWNER'S REVIEW OF 2026-08-11 (comment 5250723606).**
+The leans on **D1, D2, D5, D6 and D7 stand as approved** — *"All is okay on the directive… it is good
+to go."* **D8's form is settled** by his mean-preserving amendment; its existence question stays open.
+**D3 (which outcome year), D4 (thin streams) and D9 (how fast a body of work overcomes the prior)
+REMAIN OPEN and need the owner's words before any work begins on those specific items.**
 
 ---
 
@@ -325,6 +411,7 @@ already exist and were used for this document **[SPLIT]**.
 | board total and all-arm year-one effect | [POOL] |
 | how many live rows a level change can reach | [POOL] |
 | playing quality and games played, per stream and by draft age | [POOL] |
+| positional cell counts per stream, and year-four delivery by position where n>=20 (added at the owner's amendment of 2026-08-11) | [POOL] |
 | the two-stories finding, and the 2012-onwards window | [SPLIT] |
 | the ITEM B provenance and why its steps were retired | [SPLIT] |
 | the sitter cells' derivation, their intervals and their combined effect | [SPLIT] |
@@ -355,7 +442,40 @@ already exist and were used for this document **[SPLIT]**.
    they play.
 4. **The carry from entry price to price is close to a step, not a slope**: 0.996 at zero games, 0.119 at
    one to nine, **0.000 at ten or more** **[POOL]**.
+5. **Added after the owner's amendment, and it is the largest single thing found for this document:**
+   inside the rookie draft, year-four delivery runs from **0.3598** for key-position defenders to
+   **1.3339** for rucks **[POOL]**. **That spread inside one stream is wider than the gap between
+   several whole streams.** The owner asked for positional lenses "where possible" expecting the
+   samples to be the obstacle; the samples do block it for every small stream, but they permit it
+   exactly where the players are — and where it is permitted, it matters more than the stream label.
+
 
 ---
 
-**Nothing in this document is wired, and nothing is scheduled. It is a draft for the owner's review.**
+# §4 — FLAGGED FOR DISCUSSION, NOT A DECISION IN THIS DIRECTIVE
+
+## THE YEAR-ONE TO YEAR-TWO STEP  **[OWNER AMENDMENT, 2026-08-11]**
+
+**Owner, verbatim:** *"I also note the jump from year 1 to 2, which is quite steep. Flagging that for
+further discussion."*
+
+**The measured step.** On the landed cohort book, national draft picks 1-64 move **1.0884 at year one
+to 1.3586 at year two — a rise of 24.8% in one year** **[SPLIT, the landed picks 1-64 table]**. The
+engine charges **14%** a year for holding a future value.
+
+**Why this is worth his flag.** The "free money" check in this project has only ever been computed at
+one rung: from entry to year one. A rise of 24.8% against a 14% charge is the same shape of gap that
+check exists to catch — but at the year-one-to-year-two rung, where nobody has been looking. On the
+numbers above the step clears the charge by roughly ten percentage points.
+
+**What the seat notes, and does not act on.** The margin discipline appears to belong on **every rung**,
+not only the first. That is a change to how candidates are judged, not a change to pool pricing, so it
+does not belong in this directive and nothing here acts on it.
+
+**Nothing in this directive depends on the year-two step, and no work is proposed for it.** It is
+recorded so the discussion the owner asked for has its numbers ready.
+
+---
+
+**Nothing in this directive is wired, and nothing is scheduled.** Work begins only on the owner's word,
+and only on the items whose decisions are settled — D3, D4 and D9 remain open.

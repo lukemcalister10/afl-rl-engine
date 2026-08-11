@@ -189,3 +189,30 @@ for s in ['ND 1-64','RD','SSP','MSD','IRE','PDA','PDN','PDS','UNR','ND>64']:
         qb.append(statistics.mean(qq) if qq else float('nan'))
     print(f"  {s:9} {len(sub):5} {statistics.mean(Q) if Q else 0:9.2f} {statistics.mean(G):9.1f} "
           f"{sum(1 for x in G if x==0):10} {qb[0]:11.2f} {qb[1]:9.2f} {qb[2]:9.2f}")
+
+print()
+print("="*104)
+print("### POSITIONAL LENSES — DO THE SAMPLES PERMIT? (owner amendment, 2026-08-11)")
+print("="*104)
+print("  Owner: 'it would be good to have positional lenses where possible for pool players, but samples")
+print("  may make it hard.' This is the count, so the directive states what is possible rather than guesses.")
+POSN=['MID','SD','SF','KPD','KPF','RUCK']
+print(f"  {'stream':9} {'n':>5} " + "".join(f"{p:>7}" for p in POSN) + f" {'cells n>=20':>12}")
+for s in ['ND 1-64','RD','SSP','MSD','IRE','PDA','PDN','PDS','UNR','ND>64']:
+    sub=[r for r in elig if stream(r)==s]
+    if not sub: continue
+    cnt={p:sum(1 for r in sub if r.get('pos')==p) for p in POSN}
+    ok=sum(1 for p in POSN if cnt[p]>=20)
+    print(f"  {s:9} {len(sub):5} " + "".join(f"{cnt[p]:7}" for p in POSN) + f" {ok:12}")
+print()
+print("  yr4 delivery BY POSITION where the cell has n>=20 (blank = too thin, disclosed not forced):")
+print(f"  {'stream':9} " + "".join(f"{p:>9}" for p in POSN))
+for s in ['ND 1-64','RD','SSP','MSD','IRE','PDA','PDN','PDS','UNR','ND>64']:
+    sub=[r for r in elig if stream(r)==s]
+    if not sub: continue
+    cells=[]
+    for p in POSN:
+        g=[r for r in sub if r.get('pos')==p]
+        if len(g)<20: cells.append(f"{'  -':>9}"); continue
+        cells.append(f"{ratio(g,4):9.4f}")
+    print(f"  {s:9} " + "".join(cells))
