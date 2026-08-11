@@ -1,0 +1,37 @@
+================================================================================================================
+### DERIVE vs SCALE — the rookie draft, the one pool stream whose samples support both
+================================================================================================================
+  ND 1-64 profile = 1.0252 — the calibration target (a cell at 1.000 returns what an ND pick returns)
+  RD stream profile = 0.5233  ->  ONE stream multiplier lambda = 0.510
+
+  position      n   profile   vs ND |  SCALE: lands at  residual |  DERIVE: lands at  own lambda |     Sig v0    @derive
+  --------------------------------------------------------------------------------------------------------------
+  MID         176    0.5892   0.575 |            1.126     0.126 |             1.000       0.575 |     85,670     49,235
+  SD          158    0.4818   0.470 |            0.921     0.079 |             1.000       0.470 |     90,527     42,544
+  SF          147    0.6581   0.642 |            1.258     0.258 |             1.000       0.642 |     48,990     31,448
+  KPD          72    0.2825   0.276 |            0.540     0.460 |             1.000       0.276 |     70,425     19,407
+  KPF          64    0.4180   0.408 |            0.799     0.201 |             1.000       0.408 |     28,974     11,813
+  RUCK         71    0.9584   0.935 |            1.832     0.832 |             1.000       0.935 |     26,458     24,735
+  RD TOTAL    688    0.5233   0.510 | 1.000 (by design)           |    1.000 per cell             |    351,045    179,181
+
+  UNDER SCALE the residual spread SURVIVES: RD positions land between 0.540 and 1.832
+  against ND — a factor of 3.4. Scaling moves the whole stream and changes no position's
+  standing relative to any other. UNDER DERIVATION every sampled cell lands at 1.000 by
+  construction, because each is built from its own outcome history.
+  Money: RD entry total 351,045 -> 179,181 under scale -> 179,181 under derive.
+
+================================================================================================================
+### PER-STREAM FEASIBILITY OF DERIVATION — counts decide, and they are printed
+================================================================================================================
+  a cell needs n >= 20 to be derived on its own history. Thin cells are shown, never forced.
+  stream        n    MID    SD    SF   KPD   KPF  RUCK  cells                            verdict
+  ND 1-64    1444    432   306   304   153   173    76      6      per-position derivation: FULL
+  RD          688    176   158   147    72    64    71      6      per-position derivation: FULL
+  SSP          52      5     8    16     5    12     6      0       stream-level derivation only
+  MSD         106     23    13    23    14    19    14      2     per-position: PARTIAL (2 of 6)
+  IRE          57      5    35     4     6     5     2      1     per-position: PARTIAL (1 of 6)
+  PDA          51     14    10    14     2     6     5      0       stream-level derivation only
+  PDN          43      4    14    16     5     2     2      0       stream-level derivation only
+  PDS          21      7     5     3     4     1     1      0        stream-level only, AND THIN
+  UNR          59      8     4     5     9     3    30      1     per-position: PARTIAL (1 of 6)
+  ND>64       120     28    25    30    12    16     9      3     per-position: PARTIAL (3 of 6)
