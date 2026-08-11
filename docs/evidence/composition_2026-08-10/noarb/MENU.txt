@@ -593,6 +593,99 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
   it. It is now labelled as the legacy view; this is the deciding one.
 
 ====================================================================================================================
+### THE SPLIT COHORT TABLES — ND vs POOL-ROOKIE vs POOL-NON-ROOKIE  (owner spec, ORDER 8)
+====================================================================================================================
+  OWNER: "we have two stories here - ND players... appreciate over time to year 4/5, where they
+  are worth ~50%% more as a ND cohort. And pool players, who do not."  HIS HYPOTHESIS IS
+  CONFIRMED ON HIS OWN INSTRUMENT, and every pre-registered prediction (H8.1-H8.6) HELD.
+
+  ratio = SIGMA price at year N / SIGMA year-0 anchor of the same included set.
+  ND>64 sits in Pool-non-rookie (120 rows): past the curve it collapses to the single pool index
+  and is priced off its signed division level, so it is a pool row by the engine's own typing.
+
+  --- base main | ALL-TIME cohorts ---
+      split                   n       yr0      yr1      yr2      yr3      yr4      yr5      yr6
+      ND 1-64              1444    1.0000   1.0998   1.3508   1.5026   1.5565   1.5380   1.4818
+      Pool-Rookie           688    1.0000   0.5430   0.6565   0.6616   0.7428   0.7250   0.6940
+      Pool-non-rookie       509    1.0000   0.4338   0.6052   0.6120   0.6748   0.6911   0.5855
+      COMBINED             2641    1.0000   0.9246   1.1280   1.2319   1.2890   1.2712   1.2124
+
+  --- base main | COHORTS 2012+ ---
+      split                   n       yr0      yr1      yr2      yr3      yr4      yr5      yr6
+      ND 1-64               938    1.0000   1.1399   1.3610   1.5009   1.5045   1.5054   1.4932
+      Pool-Rookie           317    1.0000   0.4847   0.5376   0.5230   0.6326   0.6555   0.6570
+      Pool-non-rookie       421    1.0000   0.4345   0.6377   0.6780   0.7698   0.8230   0.6920
+      COMBINED             1676    1.0000   0.9573   1.1310   1.2286   1.2559   1.2624   1.2309
+
+  --- base FULL | ALL-TIME cohorts ---
+      split                   n       yr0      yr1      yr2      yr3      yr4      yr5      yr6
+      ND 1-64              1444    1.0000   0.9801   1.2169   1.4222   1.5146   1.5047   1.4559
+      Pool-Rookie           689    1.0000   0.5356   0.6870   0.7943   0.9474   0.9314   0.9009
+      Pool-non-rookie       509    1.0000   0.4262   0.6418   0.6884   0.7859   0.8048   0.7144
+      COMBINED             2642    1.0000   0.8647   1.0766   1.2498   1.3512   1.3414   1.2906
+
+  --- base FULL | COHORTS 2012+ ---
+      split                   n       yr0      yr1      yr2      yr3      yr4      yr5      yr6
+      ND 1-64               938    1.0000   1.0127   1.2238   1.4183   1.4650   1.4721   1.4703
+      Pool-Rookie           317    1.0000   0.4886   0.5385   0.6248   0.8023   0.8332   0.8435
+      Pool-non-rookie       421    1.0000   0.4498   0.6954   0.7600   0.9076   0.9617   0.8411
+      COMBINED             1676    1.0000   0.8946   1.0746   1.2372   1.3094   1.3217   1.3047
+
+  TOTALS ARE IN SPLIT_TABLES.txt BESIDE EVERY RATIO, and they must be read together. Under FULL
+  the pool arms' year-ZERO anchors fall 22-25%% (ND's move -0.02%%), so a pool ratio that looks
+  better under FULL is largely its denominator falling, not its delivery rising. That is H8.5,
+  measured: Pool-Rookie SIGMA v0 352,757 -> 264,205; Pool-non-rookie 192,830 -> 149,640.
+
+  WHAT IT SETTLES: the arms deliver very differently against their own entry prices - ND 1.5565
+  per unit at year 4, Pool-Rookie 0.7428, Pool-non-rookie 0.6748, about 2.1-2.3 to 1. Neither
+  pool arm is above its entry price even at year 6.
+  WHAT IT CANNOT SETTLE: WHICH price is wrong. "Pool v0 too high" and "ND v0 too low" are
+  observationally identical in a ratio. Both readings stand; the ruling is the owner's.
+
+  THE CELL THAT JUDGES ITEM B (year-4 delivery per unit of entry price, base main, by DRAFT AGE
+  WITHIN each pool arm) - see B_PROVENANCE_AND_SPLITS.md:
+      draft age        Pool-non-rookie      Pool-Rookie
+      <=18                      0.4869           0.5820
+      19-20                     0.9851           0.6142
+      21+                       0.7708           3.0092
+  ITEM B multiplies EVERY pool entry anchor at draft age 21+ by 2.0478. That gradient is
+  SUPPORTED on the rookie arm (3.01x) and CONTRADICTED on the non-rookie arm (0.77x, BELOW its
+  own 19-20 slice). B's derivation pools both arms by construction (is_pool only), so the
+  evidence carrying the lift comes substantially from the arm it is not being questioned on.
+  ON THE NON-ROOKIE ARM THE OWNER'S "might make sense to be LESS" IS SUPPORTED BY THE DATA.
+
+  PLAY-QUALITY PRINCIPLE (owner ruling 5249619354): "we value them on how they play". ITEM B
+  was fitted to D_rt_win = "REALIZED DELIVERY off the seasons and bars" (item_d_derive.py:22-23)
+  - a delivered-VALUE composite that rises with games as well as with level, NOT a play-quality
+  measure. Measured separation on the NON-ROOKIE arm: quality (games-wtd avg) 51.47 / 52.98 /
+  53.33 across draft ages <=18 / 19-20 / 21+ - FLAT, a 3.6%% spread - while participation
+  (career games) is 24.7 / 31.7 / 21.6, the 21+ slice playing the LEAST. B lifts their anchor
+  +105%% anyway. ON THE RULED PRINCIPLE B's SHAPE FAILS THE STANDARD ON BOTH ARMS (the rookie
+  arm's 21+ edge is +61%% games against +11.7%% quality - participation-dominated).
+
+  THE OWNER'S PAIR, the incoherence in two rows (full waterfalls in B_PROVENANCE_AND_SPLITS.md):
+    Podhajski  2 career games  main 101 -> B +102 -> surprise +116 -> H -152 -> FULL 245  (+142.6%%)
+    Herbert   30 career games  main 1060 -> B +0 ................ -> H -393 -> FULL 627  (-40.8%%)
+    Same demographic. B reaches Podhajski because his price IS his anchor; it reaches Herbert by
+    EXACTLY ZERO because his anchor is already faded out. The ruled machinery doubles the man who
+    has not played and halves the man who has. No menu candidate repairs it.
+
+  THE UNION CELL joins MATNONRD in the H re-derivation scope, and it fails DIFFERENTLY:
+    MATNONRD 0.615  does not reproduce (F bent 0.7676), CI [0.115, 1.226] CONTAINS 1.0 - unsupported
+    UNION    0.280  does not reproduce (F bent 0.1670), CI [0.010, 0.639] EXCLUDES 1.0 - supported in
+                    DIRECTION but ruled MILDER than its own evidence, so re-deriving would DEEPEN it
+    NEITHER cell's board effect is in any ruled evidence, and NEITHER IS THE COMPOSITION: the three
+    MSD rucks take POOLSIT x UNION x MATNONRD = 0.804 x 0.280 x 0.615 = 0.1384, measured 0.1398
+    (noH 472 -> FULL 66). AN 86%% CUT FROM THREE CELLS COMPOSING, and the composed factor appears
+    NOWHERE in the directive, PHASE2 or the derivation output.
+
+  AND THE B-vs-H INCOHERENCE, same instrument (DISC 1.0939, BARN 35, NB 4000) and the same
+  673-row corrected-ruler pool sample: B raises a mature non-rookie pool entrant's YEAR-0
+  ANCHOR by 105%% because his band out-delivers the POOL MEAN, and H cuts his FINISHED PRICE by
+  38.5%% because the same demographic under-delivers FAIR. Both ruled. Neither ruling was shown
+  the other's effect. NOTHING IS CHANGED HERE - measurement and provenance only.
+
+====================================================================================================================
 ### HALT-GRADE — AN UNRULED 38.5% CUT ON THE POOL ARM  (full attribution: POOL_ARM_ATTRIBUTION.md)
 ====================================================================================================================
   OWNER CHALLENGE: "a lot of /SSP/MSD players have been slashed - Noble, Hall, McCarthy, Peatling,

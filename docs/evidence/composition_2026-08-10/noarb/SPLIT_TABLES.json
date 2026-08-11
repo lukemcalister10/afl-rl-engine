@@ -1,0 +1,1102 @@
+{
+ "main": {
+  "ALL-TIME cohorts": {
+   "ND 1-64": {
+    "n": 1444,
+    "rows": [
+     {
+      "N": 0,
+      "n": 1444,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 1217117.5,
+      "total_year0": 1217117.5,
+      "ratio_sum_over_sum": 1.0
+     },
+     {
+      "N": 1,
+      "n": 1444,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 1338529.0,
+      "total_year0": 1217117.5,
+      "ratio_sum_over_sum": 1.0998
+     },
+     {
+      "N": 2,
+      "n": 1386,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 1575467.0,
+      "total_year0": 1166322.3,
+      "ratio_sum_over_sum": 1.3508
+     },
+     {
+      "N": 3,
+      "n": 1322,
+      "n_zero": 151,
+      "n_pre": 0,
+      "total_yearN": 1669166.0,
+      "total_year0": 1110819.8,
+      "ratio_sum_over_sum": 1.5026
+     },
+     {
+      "N": 4,
+      "n": 1258,
+      "n_zero": 275,
+      "n_pre": 0,
+      "total_yearN": 1648519.0,
+      "total_year0": 1059115.7,
+      "ratio_sum_over_sum": 1.5565
+     },
+     {
+      "N": 5,
+      "n": 1200,
+      "n_zero": 357,
+      "n_pre": 0,
+      "total_yearN": 1547004.0,
+      "total_year0": 1005877.9,
+      "ratio_sum_over_sum": 1.538
+     },
+     {
+      "N": 6,
+      "n": 1136,
+      "n_zero": 420,
+      "n_pre": 0,
+      "total_yearN": 1410106.0,
+      "total_year0": 951602.8,
+      "ratio_sum_over_sum": 1.4818
+     }
+    ]
+   },
+   "Pool-Rookie": {
+    "n": 688,
+    "rows": [
+     {
+      "N": 0,
+      "n": 688,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 352757.2,
+      "total_year0": 352757.2,
+      "ratio_sum_over_sum": 1.0
+     },
+     {
+      "N": 1,
+      "n": 688,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 191533.0,
+      "total_year0": 352757.2,
+      "ratio_sum_over_sum": 0.543
+     },
+     {
+      "N": 2,
+      "n": 682,
+      "n_zero": 3,
+      "n_pre": 0,
+      "total_yearN": 229444.0,
+      "total_year0": 349512.8,
+      "ratio_sum_over_sum": 0.6565
+     },
+     {
+      "N": 3,
+      "n": 673,
+      "n_zero": 369,
+      "n_pre": 0,
+      "total_yearN": 228106.0,
+      "total_year0": 344767.8,
+      "ratio_sum_over_sum": 0.6616
+     },
+     {
+      "N": 4,
+      "n": 664,
+      "n_zero": 403,
+      "n_pre": 0,
+      "total_yearN": 252407.0,
+      "total_year0": 339791.1,
+      "ratio_sum_over_sum": 0.7428
+     },
+     {
+      "N": 5,
+      "n": 652,
+      "n_zero": 431,
+      "n_pre": 0,
+      "total_yearN": 242987.0,
+      "total_year0": 335168.6,
+      "ratio_sum_over_sum": 0.725
+     },
+     {
+      "N": 6,
+      "n": 642,
+      "n_zero": 449,
+      "n_pre": 0,
+      "total_yearN": 228211.0,
+      "total_year0": 328855.9,
+      "ratio_sum_over_sum": 0.694
+     }
+    ]
+   },
+   "Pool-non-rookie": {
+    "n": 509,
+    "rows": [
+     {
+      "N": 0,
+      "n": 509,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 192829.9,
+      "total_year0": 192829.9,
+      "ratio_sum_over_sum": 1.0
+     },
+     {
+      "N": 1,
+      "n": 403,
+      "n_zero": 0,
+      "n_pre": 106,
+      "total_yearN": 69476.0,
+      "total_year0": 160165.6,
+      "ratio_sum_over_sum": 0.4338
+     },
+     {
+      "N": 2,
+      "n": 468,
+      "n_zero": 1,
+      "n_pre": 0,
+      "total_yearN": 109974.0,
+      "total_year0": 181711.6,
+      "ratio_sum_over_sum": 0.6052
+     },
+     {
+      "N": 3,
+      "n": 424,
+      "n_zero": 216,
+      "n_pre": 0,
+      "total_yearN": 102851.0,
+      "total_year0": 168050.0,
+      "ratio_sum_over_sum": 0.612
+     },
+     {
+      "N": 4,
+      "n": 393,
+      "n_zero": 231,
+      "n_pre": 0,
+      "total_yearN": 107465.0,
+      "total_year0": 159250.0,
+      "ratio_sum_over_sum": 0.6748
+     },
+     {
+      "N": 5,
+      "n": 358,
+      "n_zero": 239,
+      "n_pre": 0,
+      "total_yearN": 101526.0,
+      "total_year0": 146899.3,
+      "ratio_sum_over_sum": 0.6911
+     },
+     {
+      "N": 6,
+      "n": 329,
+      "n_zero": 234,
+      "n_pre": 0,
+      "total_yearN": 80274.0,
+      "total_year0": 137106.6,
+      "ratio_sum_over_sum": 0.5855
+     }
+    ]
+   },
+   "COMBINED": {
+    "n": 2641,
+    "rows": [
+     {
+      "N": 0,
+      "n": 2641,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 1762704.6,
+      "total_year0": 1762704.6,
+      "ratio_sum_over_sum": 1.0
+     },
+     {
+      "N": 1,
+      "n": 2535,
+      "n_zero": 0,
+      "n_pre": 106,
+      "total_yearN": 1599538.0,
+      "total_year0": 1730040.3,
+      "ratio_sum_over_sum": 0.9246
+     },
+     {
+      "N": 2,
+      "n": 2536,
+      "n_zero": 4,
+      "n_pre": 0,
+      "total_yearN": 1914885.0,
+      "total_year0": 1697546.7,
+      "ratio_sum_over_sum": 1.128
+     },
+     {
+      "N": 3,
+      "n": 2419,
+      "n_zero": 736,
+      "n_pre": 0,
+      "total_yearN": 2000123.0,
+      "total_year0": 1623637.6,
+      "ratio_sum_over_sum": 1.2319
+     },
+     {
+      "N": 4,
+      "n": 2315,
+      "n_zero": 909,
+      "n_pre": 0,
+      "total_yearN": 2008391.0,
+      "total_year0": 1558156.8,
+      "ratio_sum_over_sum": 1.289
+     },
+     {
+      "N": 5,
+      "n": 2210,
+      "n_zero": 1027,
+      "n_pre": 0,
+      "total_yearN": 1891517.0,
+      "total_year0": 1487945.8,
+      "ratio_sum_over_sum": 1.2712
+     },
+     {
+      "N": 6,
+      "n": 2107,
+      "n_zero": 1103,
+      "n_pre": 0,
+      "total_yearN": 1718591.0,
+      "total_year0": 1417565.3,
+      "ratio_sum_over_sum": 1.2124
+     }
+    ]
+   }
+  },
+  "COHORTS 2012+": {
+   "ND 1-64": {
+    "n": 938,
+    "rows": [
+     {
+      "N": 0,
+      "n": 938,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 784782.8,
+      "total_year0": 784782.8,
+      "ratio_sum_over_sum": 1.0
+     },
+     {
+      "N": 1,
+      "n": 938,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 894548.0,
+      "total_year0": 784782.8,
+      "ratio_sum_over_sum": 1.1399
+     },
+     {
+      "N": 2,
+      "n": 880,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 998936.0,
+      "total_year0": 733987.6,
+      "ratio_sum_over_sum": 1.361
+     },
+     {
+      "N": 3,
+      "n": 816,
+      "n_zero": 94,
+      "n_pre": 0,
+      "total_yearN": 1018312.0,
+      "total_year0": 678485.1,
+      "ratio_sum_over_sum": 1.5009
+     },
+     {
+      "N": 4,
+      "n": 752,
+      "n_zero": 161,
+      "n_pre": 0,
+      "total_yearN": 942981.0,
+      "total_year0": 626781.0,
+      "ratio_sum_over_sum": 1.5045
+     },
+     {
+      "N": 5,
+      "n": 694,
+      "n_zero": 200,
+      "n_pre": 0,
+      "total_yearN": 863428.0,
+      "total_year0": 573543.2,
+      "ratio_sum_over_sum": 1.5054
+     },
+     {
+      "N": 6,
+      "n": 630,
+      "n_zero": 228,
+      "n_pre": 0,
+      "total_yearN": 775378.0,
+      "total_year0": 519268.1,
+      "ratio_sum_over_sum": 1.4932
+     }
+    ]
+   },
+   "Pool-Rookie": {
+    "n": 317,
+    "rows": [
+     {
+      "N": 0,
+      "n": 317,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 169200.2,
+      "total_year0": 169200.2,
+      "ratio_sum_over_sum": 1.0
+     },
+     {
+      "N": 1,
+      "n": 317,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 82005.0,
+      "total_year0": 169200.2,
+      "ratio_sum_over_sum": 0.4847
+     },
+     {
+      "N": 2,
+      "n": 311,
+      "n_zero": 3,
+      "n_pre": 0,
+      "total_yearN": 89226.0,
+      "total_year0": 165955.8,
+      "ratio_sum_over_sum": 0.5376
+     },
+     {
+      "N": 3,
+      "n": 302,
+      "n_zero": 158,
+      "n_pre": 0,
+      "total_yearN": 84318.0,
+      "total_year0": 161210.8,
+      "ratio_sum_over_sum": 0.523
+     },
+     {
+      "N": 4,
+      "n": 293,
+      "n_zero": 172,
+      "n_pre": 0,
+      "total_yearN": 98826.0,
+      "total_year0": 156234.1,
+      "ratio_sum_over_sum": 0.6326
+     },
+     {
+      "N": 5,
+      "n": 281,
+      "n_zero": 178,
+      "n_pre": 0,
+      "total_yearN": 99375.0,
+      "total_year0": 151611.6,
+      "ratio_sum_over_sum": 0.6555
+     },
+     {
+      "N": 6,
+      "n": 271,
+      "n_zero": 184,
+      "n_pre": 0,
+      "total_yearN": 95459.0,
+      "total_year0": 145298.9,
+      "ratio_sum_over_sum": 0.657
+     }
+    ]
+   },
+   "Pool-non-rookie": {
+    "n": 421,
+    "rows": [
+     {
+      "N": 0,
+      "n": 421,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 153716.1,
+      "total_year0": 153716.1,
+      "ratio_sum_over_sum": 1.0
+     },
+     {
+      "N": 1,
+      "n": 315,
+      "n_zero": 0,
+      "n_pre": 106,
+      "total_yearN": 52600.0,
+      "total_year0": 121051.8,
+      "ratio_sum_over_sum": 0.4345
+     },
+     {
+      "N": 2,
+      "n": 380,
+      "n_zero": 1,
+      "n_pre": 0,
+      "total_yearN": 90935.0,
+      "total_year0": 142597.8,
+      "ratio_sum_over_sum": 0.6377
+     },
+     {
+      "N": 3,
+      "n": 336,
+      "n_zero": 162,
+      "n_pre": 0,
+      "total_yearN": 87419.0,
+      "total_year0": 128936.2,
+      "ratio_sum_over_sum": 0.678
+     },
+     {
+      "N": 4,
+      "n": 305,
+      "n_zero": 173,
+      "n_pre": 0,
+      "total_yearN": 92480.0,
+      "total_year0": 120136.2,
+      "ratio_sum_over_sum": 0.7698
+     },
+     {
+      "N": 5,
+      "n": 270,
+      "n_zero": 173,
+      "n_pre": 0,
+      "total_yearN": 88711.0,
+      "total_year0": 107785.5,
+      "ratio_sum_over_sum": 0.823
+     },
+     {
+      "N": 6,
+      "n": 241,
+      "n_zero": 167,
+      "n_pre": 0,
+      "total_yearN": 67812.0,
+      "total_year0": 97992.8,
+      "ratio_sum_over_sum": 0.692
+     }
+    ]
+   },
+   "COMBINED": {
+    "n": 1676,
+    "rows": [
+     {
+      "N": 0,
+      "n": 1676,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 1107699.1,
+      "total_year0": 1107699.1,
+      "ratio_sum_over_sum": 1.0
+     },
+     {
+      "N": 1,
+      "n": 1570,
+      "n_zero": 0,
+      "n_pre": 106,
+      "total_yearN": 1029153.0,
+      "total_year0": 1075034.8,
+      "ratio_sum_over_sum": 0.9573
+     },
+     {
+      "N": 2,
+      "n": 1571,
+      "n_zero": 4,
+      "n_pre": 0,
+      "total_yearN": 1179097.0,
+      "total_year0": 1042541.2,
+      "ratio_sum_over_sum": 1.131
+     },
+     {
+      "N": 3,
+      "n": 1454,
+      "n_zero": 414,
+      "n_pre": 0,
+      "total_yearN": 1190049.0,
+      "total_year0": 968632.1,
+      "ratio_sum_over_sum": 1.2286
+     },
+     {
+      "N": 4,
+      "n": 1350,
+      "n_zero": 506,
+      "n_pre": 0,
+      "total_yearN": 1134287.0,
+      "total_year0": 903151.3,
+      "ratio_sum_over_sum": 1.2559
+     },
+     {
+      "N": 5,
+      "n": 1245,
+      "n_zero": 551,
+      "n_pre": 0,
+      "total_yearN": 1051514.0,
+      "total_year0": 832940.3,
+      "ratio_sum_over_sum": 1.2624
+     },
+     {
+      "N": 6,
+      "n": 1142,
+      "n_zero": 579,
+      "n_pre": 0,
+      "total_yearN": 938649.0,
+      "total_year0": 762559.8,
+      "ratio_sum_over_sum": 1.2309
+     }
+    ]
+   }
+  }
+ },
+ "FULL": {
+  "ALL-TIME cohorts": {
+   "ND 1-64": {
+    "n": 1444,
+    "rows": [
+     {
+      "N": 0,
+      "n": 1444,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 1216928.4,
+      "total_year0": 1216928.4,
+      "ratio_sum_over_sum": 1.0
+     },
+     {
+      "N": 1,
+      "n": 1444,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 1192693.0,
+      "total_year0": 1216928.4,
+      "ratio_sum_over_sum": 0.9801
+     },
+     {
+      "N": 2,
+      "n": 1386,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 1419114.0,
+      "total_year0": 1166133.2,
+      "ratio_sum_over_sum": 1.2169
+     },
+     {
+      "N": 3,
+      "n": 1322,
+      "n_zero": 151,
+      "n_pre": 0,
+      "total_yearN": 1579486.0,
+      "total_year0": 1110630.7,
+      "ratio_sum_over_sum": 1.4222
+     },
+     {
+      "N": 4,
+      "n": 1258,
+      "n_zero": 275,
+      "n_pre": 0,
+      "total_yearN": 1603839.0,
+      "total_year0": 1058926.6,
+      "ratio_sum_over_sum": 1.5146
+     },
+     {
+      "N": 5,
+      "n": 1200,
+      "n_zero": 357,
+      "n_pre": 0,
+      "total_yearN": 1513210.0,
+      "total_year0": 1005688.8,
+      "ratio_sum_over_sum": 1.5047
+     },
+     {
+      "N": 6,
+      "n": 1136,
+      "n_zero": 420,
+      "n_pre": 0,
+      "total_yearN": 1385195.0,
+      "total_year0": 951413.7,
+      "ratio_sum_over_sum": 1.4559
+     }
+    ]
+   },
+   "Pool-Rookie": {
+    "n": 689,
+    "rows": [
+     {
+      "N": 0,
+      "n": 689,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 264204.9,
+      "total_year0": 264204.9,
+      "ratio_sum_over_sum": 1.0
+     },
+     {
+      "N": 1,
+      "n": 689,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 141503.0,
+      "total_year0": 264204.9,
+      "ratio_sum_over_sum": 0.5356
+     },
+     {
+      "N": 2,
+      "n": 683,
+      "n_zero": 3,
+      "n_pre": 0,
+      "total_yearN": 180144.0,
+      "total_year0": 262200.1,
+      "ratio_sum_over_sum": 0.687
+     },
+     {
+      "N": 3,
+      "n": 674,
+      "n_zero": 370,
+      "n_pre": 0,
+      "total_yearN": 205686.0,
+      "total_year0": 258950.2,
+      "ratio_sum_over_sum": 0.7943
+     },
+     {
+      "N": 4,
+      "n": 665,
+      "n_zero": 404,
+      "n_pre": 0,
+      "total_yearN": 241400.0,
+      "total_year0": 254805.9,
+      "ratio_sum_over_sum": 0.9474
+     },
+     {
+      "N": 5,
+      "n": 653,
+      "n_zero": 432,
+      "n_pre": 0,
+      "total_yearN": 234487.0,
+      "total_year0": 251744.1,
+      "ratio_sum_over_sum": 0.9314
+     },
+     {
+      "N": 6,
+      "n": 643,
+      "n_zero": 450,
+      "n_pre": 0,
+      "total_yearN": 222398.0,
+      "total_year0": 246857.6,
+      "ratio_sum_over_sum": 0.9009
+     }
+    ]
+   },
+   "Pool-non-rookie": {
+    "n": 509,
+    "rows": [
+     {
+      "N": 0,
+      "n": 509,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 149640.2,
+      "total_year0": 149640.2,
+      "ratio_sum_over_sum": 1.0
+     },
+     {
+      "N": 1,
+      "n": 403,
+      "n_zero": 0,
+      "n_pre": 106,
+      "total_yearN": 51955.0,
+      "total_year0": 121897.0,
+      "ratio_sum_over_sum": 0.4262
+     },
+     {
+      "N": 2,
+      "n": 468,
+      "n_zero": 1,
+      "n_pre": 0,
+      "total_yearN": 90823.0,
+      "total_year0": 141509.6,
+      "ratio_sum_over_sum": 0.6418
+     },
+     {
+      "N": 3,
+      "n": 424,
+      "n_zero": 216,
+      "n_pre": 0,
+      "total_yearN": 90074.0,
+      "total_year0": 130840.7,
+      "ratio_sum_over_sum": 0.6884
+     },
+     {
+      "N": 4,
+      "n": 393,
+      "n_zero": 231,
+      "n_pre": 0,
+      "total_yearN": 97454.0,
+      "total_year0": 123995.9,
+      "ratio_sum_over_sum": 0.7859
+     },
+     {
+      "N": 5,
+      "n": 358,
+      "n_zero": 239,
+      "n_pre": 0,
+      "total_yearN": 91480.0,
+      "total_year0": 113666.0,
+      "ratio_sum_over_sum": 0.8048
+     },
+     {
+      "N": 6,
+      "n": 329,
+      "n_zero": 234,
+      "n_pre": 0,
+      "total_yearN": 75779.0,
+      "total_year0": 106072.7,
+      "ratio_sum_over_sum": 0.7144
+     }
+    ]
+   },
+   "COMBINED": {
+    "n": 2642,
+    "rows": [
+     {
+      "N": 0,
+      "n": 2642,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 1630773.5,
+      "total_year0": 1630773.5,
+      "ratio_sum_over_sum": 1.0
+     },
+     {
+      "N": 1,
+      "n": 2536,
+      "n_zero": 0,
+      "n_pre": 106,
+      "total_yearN": 1386151.0,
+      "total_year0": 1603030.3,
+      "ratio_sum_over_sum": 0.8647
+     },
+     {
+      "N": 2,
+      "n": 2537,
+      "n_zero": 4,
+      "n_pre": 0,
+      "total_yearN": 1690081.0,
+      "total_year0": 1569842.9,
+      "ratio_sum_over_sum": 1.0766
+     },
+     {
+      "N": 3,
+      "n": 2420,
+      "n_zero": 737,
+      "n_pre": 0,
+      "total_yearN": 1875246.0,
+      "total_year0": 1500421.6,
+      "ratio_sum_over_sum": 1.2498
+     },
+     {
+      "N": 4,
+      "n": 2316,
+      "n_zero": 910,
+      "n_pre": 0,
+      "total_yearN": 1942693.0,
+      "total_year0": 1437728.4,
+      "ratio_sum_over_sum": 1.3512
+     },
+     {
+      "N": 5,
+      "n": 2211,
+      "n_zero": 1028,
+      "n_pre": 0,
+      "total_yearN": 1839177.0,
+      "total_year0": 1371098.9,
+      "ratio_sum_over_sum": 1.3414
+     },
+     {
+      "N": 6,
+      "n": 2108,
+      "n_zero": 1104,
+      "n_pre": 0,
+      "total_yearN": 1683372.0,
+      "total_year0": 1304344.0,
+      "ratio_sum_over_sum": 1.2906
+     }
+    ]
+   }
+  },
+  "COHORTS 2012+": {
+   "ND 1-64": {
+    "n": 938,
+    "rows": [
+     {
+      "N": 0,
+      "n": 938,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 784593.7,
+      "total_year0": 784593.7,
+      "ratio_sum_over_sum": 1.0
+     },
+     {
+      "N": 1,
+      "n": 938,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 794536.0,
+      "total_year0": 784593.7,
+      "ratio_sum_over_sum": 1.0127
+     },
+     {
+      "N": 2,
+      "n": 880,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 898002.0,
+      "total_year0": 733798.5,
+      "ratio_sum_over_sum": 1.2238
+     },
+     {
+      "N": 3,
+      "n": 816,
+      "n_zero": 94,
+      "n_pre": 0,
+      "total_yearN": 962032.0,
+      "total_year0": 678296.0,
+      "ratio_sum_over_sum": 1.4183
+     },
+     {
+      "N": 4,
+      "n": 752,
+      "n_zero": 161,
+      "n_pre": 0,
+      "total_yearN": 917972.0,
+      "total_year0": 626591.9,
+      "ratio_sum_over_sum": 1.465
+     },
+     {
+      "N": 5,
+      "n": 694,
+      "n_zero": 200,
+      "n_pre": 0,
+      "total_yearN": 844042.0,
+      "total_year0": 573354.1,
+      "ratio_sum_over_sum": 1.4721
+     },
+     {
+      "N": 6,
+      "n": 630,
+      "n_zero": 228,
+      "n_pre": 0,
+      "total_yearN": 763216.0,
+      "total_year0": 519079.0,
+      "ratio_sum_over_sum": 1.4703
+     }
+    ]
+   },
+   "Pool-Rookie": {
+    "n": 317,
+    "rows": [
+     {
+      "N": 0,
+      "n": 317,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 127088.8,
+      "total_year0": 127088.8,
+      "ratio_sum_over_sum": 1.0
+     },
+     {
+      "N": 1,
+      "n": 317,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 62090.0,
+      "total_year0": 127088.8,
+      "ratio_sum_over_sum": 0.4886
+     },
+     {
+      "N": 2,
+      "n": 311,
+      "n_zero": 3,
+      "n_pre": 0,
+      "total_yearN": 67361.0,
+      "total_year0": 125084.0,
+      "ratio_sum_over_sum": 0.5385
+     },
+     {
+      "N": 3,
+      "n": 302,
+      "n_zero": 159,
+      "n_pre": 0,
+      "total_yearN": 76120.0,
+      "total_year0": 121834.1,
+      "ratio_sum_over_sum": 0.6248
+     },
+     {
+      "N": 4,
+      "n": 293,
+      "n_zero": 172,
+      "n_pre": 0,
+      "total_yearN": 94425.0,
+      "total_year0": 117689.8,
+      "ratio_sum_over_sum": 0.8023
+     },
+     {
+      "N": 5,
+      "n": 281,
+      "n_zero": 178,
+      "n_pre": 0,
+      "total_yearN": 95508.0,
+      "total_year0": 114628.0,
+      "ratio_sum_over_sum": 0.8332
+     },
+     {
+      "N": 6,
+      "n": 271,
+      "n_zero": 184,
+      "n_pre": 0,
+      "total_yearN": 92569.0,
+      "total_year0": 109741.5,
+      "ratio_sum_over_sum": 0.8435
+     }
+    ]
+   },
+   "Pool-non-rookie": {
+    "n": 421,
+    "rows": [
+     {
+      "N": 0,
+      "n": 421,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 119891.5,
+      "total_year0": 119891.5,
+      "ratio_sum_over_sum": 1.0
+     },
+     {
+      "N": 1,
+      "n": 315,
+      "n_zero": 0,
+      "n_pre": 106,
+      "total_yearN": 41451.0,
+      "total_year0": 92148.3,
+      "ratio_sum_over_sum": 0.4498
+     },
+     {
+      "N": 2,
+      "n": 380,
+      "n_zero": 1,
+      "n_pre": 0,
+      "total_yearN": 77718.0,
+      "total_year0": 111760.9,
+      "ratio_sum_over_sum": 0.6954
+     },
+     {
+      "N": 3,
+      "n": 336,
+      "n_zero": 162,
+      "n_pre": 0,
+      "total_yearN": 76833.0,
+      "total_year0": 101092.0,
+      "ratio_sum_over_sum": 0.76
+     },
+     {
+      "N": 4,
+      "n": 305,
+      "n_zero": 173,
+      "n_pre": 0,
+      "total_yearN": 85541.0,
+      "total_year0": 94247.2,
+      "ratio_sum_over_sum": 0.9076
+     },
+     {
+      "N": 5,
+      "n": 270,
+      "n_zero": 173,
+      "n_pre": 0,
+      "total_yearN": 80707.0,
+      "total_year0": 83917.3,
+      "ratio_sum_over_sum": 0.9617
+     },
+     {
+      "N": 6,
+      "n": 241,
+      "n_zero": 167,
+      "n_pre": 0,
+      "total_yearN": 64196.0,
+      "total_year0": 76324.0,
+      "ratio_sum_over_sum": 0.8411
+     }
+    ]
+   },
+   "COMBINED": {
+    "n": 1676,
+    "rows": [
+     {
+      "N": 0,
+      "n": 1676,
+      "n_zero": 0,
+      "n_pre": 0,
+      "total_yearN": 1031574.0,
+      "total_year0": 1031574.0,
+      "ratio_sum_over_sum": 1.0
+     },
+     {
+      "N": 1,
+      "n": 1570,
+      "n_zero": 0,
+      "n_pre": 106,
+      "total_yearN": 898077.0,
+      "total_year0": 1003830.8,
+      "ratio_sum_over_sum": 0.8946
+     },
+     {
+      "N": 2,
+      "n": 1571,
+      "n_zero": 4,
+      "n_pre": 0,
+      "total_yearN": 1043081.0,
+      "total_year0": 970643.4,
+      "ratio_sum_over_sum": 1.0746
+     },
+     {
+      "N": 3,
+      "n": 1454,
+      "n_zero": 415,
+      "n_pre": 0,
+      "total_yearN": 1114985.0,
+      "total_year0": 901222.1,
+      "ratio_sum_over_sum": 1.2372
+     },
+     {
+      "N": 4,
+      "n": 1350,
+      "n_zero": 506,
+      "n_pre": 0,
+      "total_yearN": 1097938.0,
+      "total_year0": 838528.9,
+      "ratio_sum_over_sum": 1.3094
+     },
+     {
+      "N": 5,
+      "n": 1245,
+      "n_zero": 551,
+      "n_pre": 0,
+      "total_yearN": 1020257.0,
+      "total_year0": 771899.4,
+      "ratio_sum_over_sum": 1.3217
+     },
+     {
+      "N": 6,
+      "n": 1142,
+      "n_zero": 579,
+      "n_pre": 0,
+      "total_yearN": 919981.0,
+      "total_year0": 705144.5,
+      "ratio_sum_over_sum": 1.3047
+     }
+    ]
+   }
+  }
+ }
+}
