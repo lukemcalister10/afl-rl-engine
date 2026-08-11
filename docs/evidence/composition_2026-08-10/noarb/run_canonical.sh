@@ -15,7 +15,10 @@ SP=/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/s
 export OPENBLAS_NUM_THREADS=1
 PY=/root/rl_venv312/bin/python
 
-for L in main FULL V1 V2 V3; do
+# Labels default to the five decision variants; pass labels as args for any other set (the H ladder
+# uses the SAME code path and the SAME untouched script — there is no second reader).
+LABELS="${*:-main FULL V1 V2 V3}"
+for L in $LABELS; do
   M="$SP/per_entrant_$L.json"
   if [ ! -f "$M" ]; then echo "MISSING $M"; continue; fi
   $PY "$HERE/noarb_table_338.py" "$M" > "$HERE/table_$L.txt" 2>&1
