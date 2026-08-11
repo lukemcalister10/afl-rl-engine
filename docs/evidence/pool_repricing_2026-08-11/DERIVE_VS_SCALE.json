@@ -1,0 +1,94 @@
+{
+ "ND_profile": 1.025217710898647,
+ "rd_lambda": 0.5104236003306934,
+ "rd_cells": {
+  "MID": {
+   "n": 176,
+   "profile": 0.5892028620417262,
+   "vs_ND": 0.574709991622428,
+   "lands_under_scale": 1.1259471373386432
+  },
+  "SD": {
+   "n": 158,
+   "profile": 0.4818106424295052,
+   "vs_ND": 0.4699593435692577,
+   "lands_under_scale": 0.920724165702331
+  },
+  "SF": {
+   "n": 147,
+   "profile": 0.6581086743065776,
+   "vs_ND": 0.6419208986642625,
+   "lands_under_scale": 1.257623860355153
+  },
+  "KPD": {
+   "n": 72,
+   "profile": 0.28251265363242745,
+   "vs_ND": 0.2755635711606982,
+   "lands_under_scale": 0.539872315821929
+  },
+  "KPF": {
+   "n": 64,
+   "profile": 0.4179937054828264,
+   "vs_ND": 0.4077121386407157,
+   "lands_under_scale": 0.7987721147230791
+  },
+  "RUCK": {
+   "n": 71,
+   "profile": 0.9584257869161852,
+   "vs_ND": 0.9348509850420785,
+   "lands_under_scale": 1.831519907066223
+  }
+ },
+ "feasibility": {
+  "ND 1-64": [
+   1444,
+   6,
+   "per-position derivation: FULL"
+  ],
+  "RD": [
+   688,
+   6,
+   "per-position derivation: FULL"
+  ],
+  "SSP": [
+   52,
+   0,
+   "stream-level derivation only"
+  ],
+  "MSD": [
+   106,
+   2,
+   "per-position: PARTIAL (2 of 6)"
+  ],
+  "IRE": [
+   57,
+   1,
+   "per-position: PARTIAL (1 of 6)"
+  ],
+  "PDA": [
+   51,
+   0,
+   "stream-level derivation only"
+  ],
+  "PDN": [
+   43,
+   0,
+   "stream-level derivation only"
+  ],
+  "PDS": [
+   21,
+   0,
+   "stream-level only, AND THIN"
+  ],
+  "UNR": [
+   59,
+   1,
+   "per-position: PARTIAL (1 of 6)"
+  ],
+  "ND>64": [
+   120,
+   3,
+   "per-position: PARTIAL (3 of 6)"
+  ]
+ }
+}

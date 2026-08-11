@@ -23,6 +23,8 @@ its source. Two sources recur:
   `B_PROVENANCE_AND_SPLITS.md` (produced earlier, already reviewed).
 - **[PROFILE]** = `docs/evidence/pool_repricing_2026-08-11/profile_measure_out.txt` (the ruled-basis
   measure, added when D3 was ruled; re-runnable with `python3 profile_measure.py SHIP`).
+- **[DERIVE]** = `docs/evidence/pool_repricing_2026-08-11/derive_vs_scale_out.txt` (added when the
+  same-derivation principle was ruled; re-runnable with `python3 derive_vs_scale.py`).
 
 **Words used here.** *Stream* = one way a player enters the league (national draft, rookie draft,
 mid-season draft, and so on). *Entry price* = what the engine says a player is worth on the day he
@@ -115,6 +117,71 @@ it"* to be reflective, which option B cannot deliver.
 
 **The caution that goes with C:** it trusts every stream's own history, including streams with very few
 players. See D4.
+
+
+### [OWNER RULING, 2026-08-11 — comment 5251055803] THE SAME-DERIVATION PRINCIPLE: **DERIVE, DO NOT SCALE**
+
+**Owner, verbatim:**
+
+> *"Year four would have been flattering the pool because it is the peak of value for most players. So
+> if we only measured ND outcomes from year 4, it'd be flattered too. But we don't, the ND pick value
+> and v0 values are derived from historical career outcomes. We should be deriving pool valuations and
+> v0s the same way we do for ND picks, right? Or else it makes no sense?"*
+
+**RULED: pool entry values, and the v0 of players entering through each pool mechanism, are DERIVED
+from historical career outcomes by the same method the ND pick curve is derived by — not scaled toward
+it.** The per-stream multiplier table in **D3A** does not disappear; **it changes job.** It is now the
+**evidence and the sizing** — what the derivation should come out near, and how far today's prices are
+from it — and **no longer the mechanism.**
+
+#### What the ND analogue is, and what it is not — said precisely
+
+**The ND curve is a function of an ordered slot.** Picks 1 to 64 form one ranked sequence, every draft
+uses the same sequence, and the curve is a smooth function along it. **Most pool streams have no
+comparable ordering.** The rookie draft has pick numbers. SSP and MSD have selection order but not a
+stable, comparable slot scale across years. IRE, UNR and the academy/post-draft routes have no ordering
+at all.
+
+**So the analogue is exact in method and adapted in structure:**
+
+| | ND pick curve | pool derivation under this ruling |
+|---|---|---|
+| **built from** | historical career outcomes | **the same** — identical measure, the same function (D3) |
+| **the outcome measure** | `realised_full` over the whole career | **the same**, exactly |
+| **structure carried** | the ordered slot (picks 1-64) | **position always**; **pick order only where a stream has one** (RD) |
+| **what is fitted** | a smooth function along the slot | a level per cell the stream's samples support |
+| **where it is EXACT** | — | the method, the measure, and the principle that price comes from outcomes |
+| **where it is an ADAPTATION, and must be labelled one** | — | there is no universal pool slot to be smooth along, so the derivation is **per stream, per cell**, not a curve |
+
+**This is stated plainly so nobody later claims the pool has "a curve like ND's".** It does not and
+cannot, because the thing an ND curve is a function *of* does not exist for most pool streams.
+
+#### Why the mechanism matters — a multiplier fixes the level and keeps the wrong shape
+
+**[DERIVE]** — the rookie draft, the one pool stream whose samples support both approaches. A cell at
+**1.000** returns what an ND pick returns for the same money.
+
+| position | n | profile | vs ND | **SCALE lands at** | residual error | **DERIVE lands at** | Σ entry now | Σ entry derived |
+|---|---|---|---|---|---|---|---|---|
+| MID | 176 | 0.5892 | 0.575 | 1.126 | 0.126 | **1.000** | 85,670 | 49,235 |
+| SD | 158 | 0.4818 | 0.470 | 0.921 | 0.079 | **1.000** | 90,527 | 42,544 |
+| SF | 147 | 0.6581 | 0.642 | 1.258 | 0.258 | **1.000** | 48,990 | 31,448 |
+| **KPD** | 72 | 0.2825 | 0.276 | **0.540** | **0.460** | **1.000** | 70,425 | 19,407 |
+| KPF | 64 | 0.4180 | 0.408 | 0.799 | 0.201 | **1.000** | 28,974 | 11,813 |
+| **RUCK** | 71 | 0.9584 | 0.935 | **1.832** | **0.832** | **1.000** | 26,458 | 24,735 |
+| **RD total** | 688 | 0.5233 | 0.510 | 1.000 *by design* | — | 1.000 *per cell* | **351,045** | **179,181** |
+
+**Under a single multiplier the whole error survives inside the stream.** Rookie-draft positions still
+land between **0.540** and **1.832** against ND — **a factor of 3.4**, exactly the spread that was there
+before. A multiplier moves every position by the same factor, so it cannot change any position's
+standing relative to any other. Rookie-draft key-position defenders would remain priced at about half
+what their outcomes support, and rookie-draft rucks at nearly double.
+
+**AND THE COST IS THE SAME. THIS IS AN IDENTITY, NOT A COINCIDENCE:** the rookie draft's entry total
+goes **351,045 → 179,181 under scale**, and **351,045 → 179,181 under derivation** — *the same number*.
+It must, algebraically: scaling by the stream's own ratio and deriving each cell from its own outcomes
+both land on total realised value divided by the ND profile. **So derivation is not the more expensive
+option. It moves exactly the same money and simply puts it in the right places.**
 
 ### [OWNER AMENDMENT, 2026-08-11] — positional lenses where the samples permit
 
@@ -300,7 +367,39 @@ on a very small sample. The engine already uses a standard method for this elsew
 group's own number partway toward the wider average, by an amount that depends on how small it is
 (described in the #336 work as `n/(n+K)` shrinkage).
 
-Options: **(i)** use each stream's own number as measured · **(ii)** pull thin streams toward the pool
+
+### [ORDER 13] CAN EACH STREAM ACTUALLY BE DERIVED? — the counts decide, and they are printed
+
+A cell needs **at least twenty players** to be derived on its own outcome history. **[DERIVE]**
+
+| stream | n | MID | SD | SF | KPD | KPF | RUCK | derivable cells | verdict |
+|---|---|---|---|---|---|---|---|---|---|
+| ND 1-64 | 1444 | 432 | 306 | 304 | 153 | 173 | 76 | 6 | *(the reference)* |
+| **RD** | 688 | 176 | 158 | 147 | 72 | 64 | 71 | **6** | **per-position derivation: FULL** |
+| ND>64 | 120 | 28 | 25 | 30 | 12 | 16 | 9 | 3 | per-position: PARTIAL |
+| MSD | 106 | 23 | 13 | 23 | 14 | 19 | 14 | 2 | per-position: PARTIAL |
+| UNR | 59 | 8 | 4 | 5 | 9 | 3 | 30 | 1 | per-position: PARTIAL |
+| IRE | 57 | 5 | 35 | 4 | 6 | 5 | 2 | 1 | per-position: PARTIAL |
+| SSP | 52 | 5 | 8 | 16 | 5 | 12 | 6 | **0** | stream-level derivation only |
+| PDA | 51 | 14 | 10 | 14 | 2 | 6 | 5 | **0** | stream-level derivation only |
+| PDN | 43 | 4 | 14 | 16 | 5 | 2 | 2 | **0** | stream-level derivation only |
+| **PDS** | 21 | 7 | 5 | 3 | 4 | 1 | 1 | **0** | **stream-level only, AND THIN** |
+
+**So the ruling is fully achievable for one pool stream and partly achievable for four.** The rookie
+draft — the largest by a distance, 688 players — supports derivation in every position. Four streams
+support it in some positions. Four support only a stream-level number, and **PDS at twenty-one players
+supports that only weakly.**
+
+**THE FALLBACK IS AN OPEN QUESTION AND THE SEAT DOES NOT CHOOSE IT.** For a cell too thin to derive,
+the candidates are: **(i)** use the stream-level number for that cell · **(ii)** pull the cell's own
+number partway toward the stream number by how thin it is (the `n/(n+K)` method the engine already uses
+elsewhere) · **(iii)** borrow the shape from a stream that *is* derivable — the rookie draft — and carry
+only the level from the thin stream · **(iv)** leave the thin stream unchanged until it has the sample.
+
+**This is D4, and it is now the question that gates how much of the ruling can be delivered.** It needs
+the owner's words.
+
+Options for D4 itself: **(i)** use each stream's own number as measured · **(ii)** pull thin streams toward the pool
 average · **(iii)** set a minimum player count and merge streams below it.
 
 **The seat has no owner ruling on which, and marks it open.** The seat notes only that PDS ran from
@@ -384,9 +483,25 @@ is acceptable is the owner's to say; the seat does not assume it.
 For reference, the same instrument reads **0.9326 on the pre-act engine** and **1.2936 at year four**
 **[SPLIT, all-arm table]**.
 
-**Seat note, not a recommendation:** this moves the all-arm year-one figure toward 1.00, i.e. toward a
-cohort that neither gains nor loses value in its first year. Whether that is the right target is the
-owner's to say and is not assumed here.
+### **RULED, 2026-08-11 (comment 5251055803): year-one cohort appreciation is acceptable**
+
+**Owner, verbatim:** *"Cohorts gaining value in its first year makes sense."*
+
+**The arithmetic that makes it consistent, printed so the ruling can be checked rather than trusted:**
+
+| | all-arm year-one | appreciation | charge | **margin** | verdict |
+|---|---|---|---|---|---|
+| today | 0.8850 | −11.50% | 14.00% | +25.50% | legal |
+| option B | **1.0266** | **+2.66%** | 14.00% | **+11.34%** | **legal** |
+| option C | **1.0355** | **+3.55%** | 14.00% | **+10.45%** | **legal** |
+
+**Free money requires appreciation to EXCEED the charge.** A cohort gaining 2.7% to 3.6% in a year
+while the engine charges 14% to hold it is not free money — it is a book that still grows more slowly
+than the discount, by about ten to eleven points. The ruling and the no-arbitrage law agree.
+
+**§4's year-two step is NOT covered by this ruling and stays flagged.** That step is **+24.8% against
+the same 14% charge**, which is the opposite sign of margin, and it sits at a rung the free-money check
+has never been computed at. It remains a separate discussion item.
 
 ---
 
@@ -507,7 +622,7 @@ and marks that part **OPEN QUESTION**.
 
 | | decision | seat lean |
 |---|---|---|
-| D1 | is the entry price the defect? | yes, for the under-delivering streams |
+| D1 | is the entry price the defect? | yes — and **RULED 2026-08-11: pool values are DERIVED from outcomes the ND way, not scaled**; the λ table is now evidence and sizing, not the mechanism |
 | D2 | one repair or per stream? | **per stream** |
 | D3 | which year defines "reflective"? | **OPEN QUESTION** |
 | D4 | thin streams: own history or pulled toward the average? | **OPEN QUESTION** |
@@ -523,8 +638,12 @@ to go."* **D8's form is settled** by his mean-preserving amendment; its existenc
 **D3 IS NOW RULED (2026-08-11, comment 5250813929): the full outcome profile, year four one data point
 in context.** All option sizing is re-landed on that basis in **D3A**, the year-four numbers are marked
 superseded in place rather than deleted, and the positional lens is restated in **D3B**.
+**D1's MECHANISM and D6 are now also RULED (2026-08-11, comment 5251055803): derive rather than scale,
+and year-one cohort appreciation is acceptable.**
 **D4 (thin streams) and D9 (how fast a body of work overcomes the prior) REMAIN OPEN and need the
-owner's words before any work begins on those specific items.**
+owner's words before any work begins on those specific items.** D4 has become the gating question: the
+counts show derivation is fully achievable for one pool stream, partly for four, and stream-level only
+for four more — so D4 decides how much of the same-derivation ruling can actually be delivered.
 
 ---
 
@@ -568,6 +687,8 @@ already exist and were used for this document **[SPLIT]**.
 | **the option table re-landed against ND's own profile as the calibration target** | **[PROFILE]** |
 | **RD by position on the ruled basis** | **[PROFILE]** |
 | **consequences restated on the ruled basis, and the carry finding verified basis-invariant** | **[PROFILE]** |
+| **derive-vs-scale on the rookie draft, per position, with the residual error under scaling** | **[DERIVE]** |
+| **per-stream feasibility of derivation, cell counts printed** | **[DERIVE]** |
 | the two-stories finding, and the 2012-onwards window | [SPLIT] |
 | the ITEM B provenance and why its steps were retired | [SPLIT] |
 | the sitter cells' derivation, their intervals and their combined effect | [SPLIT] |
@@ -580,7 +701,10 @@ already exist and were used for this document **[SPLIT]**.
 2. The same option read on both cohort instruments, with margins.
 3. ~~Whichever year D3 settles on~~ — **DONE**: D3 was ruled and every affected number is re-landed in
    D3A, D3B, D5 and D6.
-4. Any shrinkage chosen in D4, applied and re-read.
+4. Any shrinkage chosen in D4, applied and re-read — **now the gating item**, because it decides which
+   cells can be derived and which need a fallback.
+6. The derived per-cell entry values themselves, once D4 fixes the fallback rule. This document sizes
+   the derivation and proves the mechanism; it does not produce the numbers that would ship.
 5. The sit-out charge in entry-price form, if D8 says it survives.
 
 ---
@@ -610,7 +734,16 @@ already exist and were used for this document **[SPLIT]**.
 7. **On the ruled basis the all-arm year-one figure goes ABOVE 1.00** (0.8850 → 1.0266 / 1.0355)
    **[PROFILE]** — a cohort that gains value in its first year, which is the condition the free-money
    check watches, and the very rung before §4's flagged year-two step.
-8. **Added after the owner's amendment, and still the largest positional finding:**
+8. **DERIVING COSTS THE SAME AS SCALING — it is an identity, and the seat did not expect it to be
+   exact.** The rookie draft's entry total lands on **179,181** under a single multiplier and on
+   **179,181** under per-position derivation **[DERIVE]**. Both equal total realised value divided by
+   the ND profile, so they cannot differ. **Derivation is not the more expensive option; it moves the
+   same money and puts it in the right places** — which removes what would otherwise be the main
+   argument for scaling.
+9. **Scaling leaves the whole shape error untouched, and the size of what it leaves is large:** under a
+   single rookie-draft multiplier the positions still land between **0.540** and **1.832** against ND
+   **[DERIVE]** — the same 3.4× spread as before, just recentred.
+10. **Added after the owner's amendment, and still the largest positional finding:**
    inside the rookie draft, year-four delivery runs from **0.3598** for key-position defenders to
    **1.3339** for rucks **[POOL]**. **That spread inside one stream is wider than the gap between
    several whole streams.** The owner asked for positional lenses "where possible" expecting the
