@@ -1,0 +1,36 @@
+================================================================================================
+MOVERS — ITEM B (pool year-0 age repair)
+  before rl_app_data.json  (n=804, sum 761574)
+  after  board_B.json  (n=804, sum 765202)
+================================================================================================
+  movers: 110   up: 75 (+4919)   down: 35 (-1291)
+  board sum 761574 -> 765202   delta +3628   ratio 1.004764
+  by position: SF 30 · SD 27 · KPF 16 · MID 15 · RUCK 14 · KPD 8
+
+  player                     pos       before     after    delta
+  Fred Rodriguez             MID          177        88      -89
+  Riley Onley                MID          177        88      -89
+  Nick Driscoll              MID          177        88      -89
+  Vigo Visentini             RUCK         272       203      -69
+  Liam Hetherton             KPF          124        62      -62
+  Logan Smith                RUCK         114        57      -57
+  Xavier Walsh               KPD          107        53      -54
+  Noah Chamberlain           SF           106        53      -53
+  Harry Charleson            SD           100        50      -50
+  Asher Eastham              SF            94        47      -47
+  Kalani White               KPF           85        42      -43
+  Ben Murphy                 SD            80        40      -40
+  Kobe McDonald              SD            80        40      -40
+  Keighton Matofai-Forbes    SD            75        37      -38
+  River Stevens              SF            75        37      -38
+  ... top rises:
+  Harrison Coe               RUCK         231       472     +241
+  Max Mapley                 RUCK         231       472     +241
+  Caleb May                  RUCK         231       472     +241
+  Alex Van Wyk               RUCK         265       461     +196
+  Flynn Riley                RUCK         266       462     +196
+  Max Beattie                SF           172       353     +181
+  Jack Watkins               MID          132       271     +139
+  Roan Steele                MID          128       263     +135
+  Ewan Mackinlay             SF           128       263     +135
+  Flynn Young                SF           128       263     +135

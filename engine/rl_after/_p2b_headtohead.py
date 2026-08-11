@@ -2,8 +2,8 @@ import io, contextlib, numpy as np
 g={}
 with contextlib.redirect_stdout(io.StringIO()):
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], g)
-MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; b6=g['b6']; WQ6=g['WQ6']; era=g['era']; REF=g['REF']; ev=g['ev']
-def adj(a,y): return a*REF/era.get(y,REF)
+MA=g['MA']; cp=g['cp']; dp=g['dp']; rd=g['rd']; b6=g['b6']; WQ6=g['WQ6']; ev=g['ev']
+def adj(a,y): return a   # RAW season avg (era normalization removed — #334 stage B owner ruling)
 def R(sub,exp=None,Y=2026):
     hs=[p for p in MA.data if sub.lower() in p['player'].lower() and MA.GRP.get(p.get('pos'))]
     if exp is not None: hs=[p for p in hs if ev(p,Y)==exp]

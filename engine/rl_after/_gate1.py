@@ -8,7 +8,7 @@ era={}
 for Y in range(2009,2026):
     a=[s['avg'] for p in MA.data for s in p.get('scoring') or [] if s['year']==Y and s['games']>=6]
     if a: era[Y]=float(np.mean(a))
-REF=float(np.mean(list(era.values()))); eadj=lambda y,a:a*REF/era.get(y,REF)
+REF=float(np.mean(list(era.values()))); eadj=lambda y,a:a
 def realized_prod(p):
     s=sorted([eadj(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6],reverse=True)[:3]
     return float(np.mean(s)) if s else 0.0

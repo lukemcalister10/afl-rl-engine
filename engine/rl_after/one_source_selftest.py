@@ -673,10 +673,26 @@ if _pl:
     check(not _cur_lad,
           "#326 currency (ladder site — the ruck cap's basis): all %d pool entrants enter UNCONVERTED, at the "
           "signed level itself; %d would not"%(len(_poolp),len(_cur_lad)))
-    _cur_eng=[p for p in _poolp if abs(_anchor(p)-float(MA.pool_level(p))*_F)>1e-6]
+    # #334 ITEM B AMENDMENT: the entry anchor is now the signed level x the board factor x the RULED
+    # AGE SHAPE (_b_factor). The assertion's protection is UNCHANGED and is what it always was — the
+    # BASIS must be the player's OWN division level, never the ladder's single pool slot. A re-pointed
+    # branch still goes red here, because pool_value x _F x _b_factor(p) does not equal
+    # pool_level(p) x _F x _b_factor(p) for any division whose level differs from the slot. The factor
+    # is a declared SHAPE on that basis, not a substitute for it.
+    _bfac=g['_b_factor']
+    _cur_eng=[p for p in _poolp if abs(_anchor(p)-float(MA.pool_level(p))*_F*_bfac(p))>1e-6]
     check(not _cur_eng,
-          "#326 currency (engine-value sites — floor and blend): all %d pool entrants enter at level x%.4f; "
-          "%d would not"%(len(_poolp),_F,len(_cur_eng)))
+          "#326 currency (engine-value sites — floor and blend): all %d pool entrants enter at level x%.4f "
+          "x their ITEM B age factor; %d would not"%(len(_poolp),_F,len(_cur_eng)))
+    # and ITEM B's OWN law, checked here as well as at build time: the age shape is a RESHAPE, so the
+    # pool's total entry value must be held exactly.
+    # over the SAME population the renormaliser K is derived on (the engine's whole pool, MA.data),
+    # not the selftest's priced subset — conservation is a property of the set K was solved over.
+    _poolall=[q for q in MA.data if q.get('_pool')]
+    _sb=sum(float(MA.pool_level(q))*_F for q in _poolall); _sa=sum(float(_anchor(q)) for q in _poolall)
+    check(_sb<=0 or abs(_sa-_sb)/_sb<1e-9,
+          "#334 ITEM B level-preserving: pool Sigma entry_anchor held (%.4f -> %.4f, %.3e relative)"
+          %(_sb,_sa,abs(_sa-_sb)/max(_sb,1e-9)))
     _rk=[p for p in _poolp if MA.gfut(p)=='RUCK']
     if _rk:
         _r0=_rk[0]
@@ -829,10 +845,14 @@ if _pl:
             # check goes red — it bites on the SITES, not just on the anchor function.
             if _named and _route(_named[0])=='floor':
                 _pn=_named[0]; _yis=2026-int(_pn.get('year') or 0)
-                _expect=round(_ffrac(_yis)*_kept)
+                # #334 ITEM B: the floor route now carries the ruled age shape too, so the end-to-end
+                # expectation is floor_frac x signed level x _b_factor. The check still bites on the
+                # SITES — a conversion dropped, doubled or applied at the wrong site still moves this
+                # by ~5% and goes red; only the declared shape is admitted.
+                _expect=round(_ffrac(_yis)*_kept*g['_b_factor'](_pn))
                 check(abs(int(_bd.get(_pn['key'],{}).get('v') or 0)-_expect)<=1,
                       "#326 currency end-to-end (%s): %s ships at %s == floor_frac(%d)=%.2f x signed level %d "
-                      "= %d — the level is quoted in the currency the board displays"
+                      "x ITEM B age factor = %d — the level is quoted in the currency the board displays"
                       %(_k,_pn['player'],_bd.get(_pn['key'],{}).get('v'),_yis,_ffrac(_yis),_kept,_expect))
             check(_ok, "#326 level %s reaches a real entrant's BOARD price — %s via the %s (board v=%s; %d of "
                        "%d live entrants re-price when the level moves)"

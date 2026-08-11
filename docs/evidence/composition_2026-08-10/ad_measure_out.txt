@@ -1,0 +1,92 @@
+config manifest (gate mode) LOADED  hash ddb54d0922e8  (70 model vars pinned; ambient cleared)
+
+================================================================================================================
+READ THE ENVELOPE COLUMNS AS AN ENVELOPE, NOT AS A TARGET.
+The owner's acceptance envelope is peak ~= 140% of year-0 and ~= 130% of year-1. It is a frame for JUDGING a
+composed result, and NO COMPONENT MAY BE TUNED TO IT. That is the dissolved-1.40-act lesson: the moment a
+ratio becomes an objective, every dial starts serving the ratio instead of the evidence, and the number stops
+meaning anything. Nothing in this act is sized against these columns; they are reported so the owner can see
+where the package sits relative to his frame.
+================================================================================================================
+================================================================================================================
+THE AGE-DYNAMIC DISCOUNT — GUARD TABLE PER PAIR
+  RELATIVITY = (picks + young players) / peak players, membership frozen on the pre-act board
+================================================================================================================
+ variant                     YOUNG       PEAK  RELATIVITY   vs main recovered board total
+ main (pre-act)             101209     233430    0.433573  +0.000pp                761574
+ FULL (no AD)                93332     226347    0.412340  -2.123pp                723861
+ V1 AD 13.5/14.5             94664     228691    0.413938  -1.963pp                731680
+ V1 AD 13/15 (ordered)       96061     231054    0.415751  -1.782pp                739720
+ V1 AD 12.5/15.5             97530     233498    0.417691  -1.588pp                748179
+ V1 AD 12/16                 99049     235921    0.419840  -1.373pp                756683
+ V2 four-band                98427     230986    0.426117  -0.746pp                742561
+ V3 corrected               101277     233874    0.433041  -0.053pp                749627
+ menu a: blend 30            93332     226347    0.412340  -2.123pp                723861
+ menu a: blend 20            93332     226347    0.412340  -2.123pp                723861
+ menu b: tail trim .35       93332     226273    0.412475  -2.110pp                723780
+ menu b: tail trim .65       93332     226207    0.412596  -2.098pp                723708
+
+=== YOUNG / PEAK PLAYER BOOKS, EX-PICKS (the pick block is constant at 39949) ===
+ variant                       young    vs main         peak    vs main
+ main (pre-act)                61260       0.0%       233430       0.0%
+ FULL (no AD)                  53383     -12.9%       226347      -3.0%
+ V1 AD 13.5/14.5               54715     -10.7%       228691      -2.0%
+ V1 AD 13/15 (ordered)         56112      -8.4%       231054      -1.0%
+ V1 AD 12.5/15.5               57581      -6.0%       233498       0.0%
+ V1 AD 12/16                   59100      -3.5%       235921       1.1%
+ V2 four-band                  58478      -4.5%       230986      -1.0%
+ V3 corrected                  61328       0.1%       233874       0.2%
+ menu a: blend 30              53383     -12.9%       226347      -3.0%
+ menu a: blend 20              53383     -12.9%       226347      -3.0%
+ menu b: tail trim .35         53383     -12.9%       226273      -3.1%
+ menu b: tail trim .65         53383     -12.9%       226207      -3.1%
+
+=== THE MRAZ LINE, IN LADDER CURRENCY (pick-35 = 561.0; ruled band 2-3x) ===
+ variant                   board    x pick-35   verdict
+ main (pre-act)             3555        6.669   above 3x
+ FULL (no AD)               1649        3.093   above 3x
+ V1 AD 13.5/14.5            1675        3.142   above 3x
+ V1 AD 13/15 (ordered)      1702        3.193   above 3x
+ V1 AD 12.5/15.5            1730        3.245   above 3x
+ V1 AD 12/16                1759        3.300   above 3x
+ V2 four-band               1709        3.206   above 3x
+ V3 corrected               1765        3.311   above 3x
+ menu a: blend 30           1649        3.093   above 3x
+ menu a: blend 20           1649        3.093   above 3x
+ menu b: tail trim .35      1649        3.093   above 3x
+ menu b: tail trim .65      1649        3.093   above 3x
+
+=== THE GRADIENT (INFORMATION, NOT A RECOMMENDATION — the sizing word is the owner's) ===
+  RELATIVITY is close to linear in the LO-HI spread over the range tested:
+     spread 11.000 -> 0.419840
+     spread 11.500 -> 0.417691
+     spread 12.000 -> 0.415751
+     spread 12.500 -> 0.413938
+  fitted slope -0.003929 RELATIVITY per percentage-point of spread.
+  Extrapolated, full recovery of the breach would need a spread of about 7.5 points
+  around the 14% centre - i.e. rates of roughly 10% and 18%.
+
+  THE HONEST READING OF THAT NUMBER: it is outside any defensible range, and the linear fit has no
+  business being extrapolated three times past its data. The finding is not "use a spread of 11" -
+  it is that THE AGE-DYNAMIC DISCOUNT, AT ANY SIZE THE OWNER WOULD PLAUSIBLY SIGN, DOES NOT CLOSE
+  THE RELATIVITY BREACH. The widest pair measured (12/16) recovers about a third of it. If the
+  breach is to be closed, it needs a different instrument or a decision about #336 itself, which
+  is the item that opened it.
+
+=== THE ACCEPTANCE ENVELOPE (peak ~140% of year-0, ~130% of year-1) — A FRAME, NOT A TARGET ===
+  year-0 per player = mean entry_anchor over 561 ND in-curve rows, in board ccy = 938.3
+ variant                yr-1/player peak/player   peak/year-0   peak/year-1
+ main (pre-act)                 583        1304        139.0%        223.5%
+ FULL (no AD)                   508        1265        134.8%        248.7%
+ V1 AD 13.5/14.5                521        1278        136.2%        245.2%
+ V1 AD 13/15 (ordered)          534        1291        137.6%        241.5%
+ V1 AD 12.5/15.5                548        1304        139.0%        237.9%
+ V1 AD 12/16                    563        1318        140.5%        234.2%
+ V2 four-band                   557        1290        137.5%        231.7%
+ V3 corrected                   584        1307        139.2%        223.7%
+ menu a: blend 30               508        1265        134.8%        248.7%
+ menu a: blend 20               508        1265        134.8%        248.7%
+ menu b: tail trim .35          508        1264        134.7%        248.6%
+ menu b: tail trim .65          508        1264        134.7%        248.6%
+  envelope: 140% and 130%. Distance from it is information for the owner's sitting; no dial
+  in this act was sized against these two numbers.

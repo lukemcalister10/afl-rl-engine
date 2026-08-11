@@ -1,0 +1,17 @@
+=== STATIC: every occurrence of the dial in _merged_recover.py ===
+  : 2013  in <module scope>  # ===== #334 ITEM A — THE RAMP DE-COUPLE. DIAL-GATED MEASUREMENT VARIANT, DEFAULT OFF (RL_
+  : 2040  in <module scope>  #   RL_A_GSAT=0 (DEFAULT) => the within-season ramp exactly as built => byte-exact to the 
+  : 2041  in <module scope>  #   RL_A_GSAT=<g>         => saturation on career games with G_SAT=<g>. Admission bar unch
+  : 2042  in <module scope>  _A_GSAT=float(os.environ.get('RL_A_GSAT','0') or 0)
+  : 2046  in _a_share      if _A_GSAT>0:
+  : 2048  in _a_share      lam=float(np.interp(min(cg/_A_GSAT,1.0)*6.0,[0,1,2,3,4,5,6],LAM_SIT))   # DE-COUPLED: same
+  READS OUTSIDE _a_share (must be empty): []
+  sitout_ev body :1939-1947 contains the dial: False
+  sitout_ev body lam line: lam=float(np.interp(gp,[0,1,2,3,4,5,6],LAM_SIT))                             # games AT PACE vs the prorated b
+config manifest (gate mode) LOADED  hash 297702b16c76  (77 model vars pinned; ambient cleared)
+
+=== DYNAMIC: RL_A_GSAT = 18  _A_GSAT = 18.0 ===
+  players 2647  x years 3  x e_full 2
+  sitout_ev  evaluations 15882   MD5 2a11b8b17a854e33d9d51ab050581021
+  _a_share   evaluations 7941   MD5 88b9c45c02988355845a09169bcdddb0
+  VERDICT INPUT: sitout_ev md5 must MATCH across the two dial settings; _a_share md5 must DIFFER (non-vacuity).

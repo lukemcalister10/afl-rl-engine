@@ -1,0 +1,188 @@
+========================================================================================================
+THE H LADDER — RL_C_H = 1.13 / 1.20 / 1.25 / 1.30, canonical no-arb instrument
+========================================================================================================
+  instrument   : noarb_table_338.py UNMODIFIED (md5 0f8220351c64c56ccfa90c60edcdfa5f)
+  population   : 1197 ND teaching entrants, IDENTICAL on every rung
+  baseline     : FULL = the composition package at its shipped RL_C_H = 1.13
+  admissible   : the dial's derived window on the #336 basis is [1.1024, 1.3327] —
+                 ALL FOUR RUNGS SIT INSIDE IT. The ladder does not leave the window.
+  discount     : every rung charges the SAME flat 14.00%/yr (H does not touch the discount),
+                 so the no-arb margins below move only because the book moved.
+
+========================================================================================================
+### THE PRE-REGISTERED CHECK  (H_LADDER_PREREG.md, written before the emits)
+========================================================================================================
+  EXPECTED: yr1 rises monotonically with H; yr4 HOLDS within |delta| <= 0.010 of the
+            FULL@1.13 baseline. A large yr4 move is a wiring surprise and halts the ladder.
+  MECHANISM: H scales the ITEM C release inside _a_blend, and A's share fades hard with
+            career evidence (measured v1 0.3589 -> v6 0.0038), so H has little purchase by
+            year 4. CAVEAT REGISTERED IN ADVANCE: _c_w also enters the ITEM E2 ruck cap,
+            which is NOT inside the A blend and does not fade — so a TINY yr4 move is
+            mechanistically expected and is not itself a surprise.
+
+  rung        H        yr1        yr4    yr4 delta    verdict
+  ------------------------------------------------------------
+  FULL     1.13     0.9974     1.5310      +0.0000       HOLD
+  H120     1.20     0.9975     1.5313      +0.0003       HOLD
+  H125     1.25     0.9976     1.5315      +0.0005       HOLD
+  H130     1.30     0.9976     1.5317      +0.0007       HOLD
+
+  yr1 non-decreasing in H : YES   (total yr1 move across the whole ladder: +0.0002)
+  yr4 held within 0.010    : YES
+
+  *** THE THRESHOLD CHECK PASSES, AND IT PASSES FOR THE WRONG REASON. ***
+
+  yr4 "holds" — but so does everything else. Across a 15% increase in the release ceiling
+  (H 1.13 -> 1.30) the year-1 book moves by +0.0002, which is not a counterbalance; it is
+  nothing. The pre-registration predicted yr4 would hold BECAUSE the effect was concentrated
+  at year 1. The measurement says yr4 holds because there is almost no effect anywhere in
+  the aggregate. A passing threshold that passes for the wrong reason is NOT a confirmation,
+  and it is not reported as one.
+
+  The binding-site diagnostic below shows what is actually happening, and it inverts the
+  premise of the ladder order rather than merely failing to meet it.
+
+========================================================================================================
+### WHERE H ACTUALLY BINDS — the diagnostic that explains the flat ladder
+========================================================================================================
+  Counted directly on the emitted matrices, FULL@1.13 vs H130: a price CELL is "moved" if
+  the two engines disagree on it by more than 1e-9. This is not an aggregate — it is a count
+  of the individual prices the dial actually reaches.
+
+  H IS LIVE, AND IT IS NOT RUCK-ONLY: 524 of 2645 entrants (19.8%) move somewhere in their
+  career, spread across all six positions. The ITEM C release at _merged_recover.py:2061
+  is wired and firing. The question is WHERE.
+
+  yrN     ALL routes (moved/cells)           ND teaching 1-64
+  ------------------------------------------------------------
+  0              0 /  2645    0.0%          0 /  1197    0.0%
+  1              3 /  2627    0.1%          2 /  1197    0.2%
+  2            102 /  2487    4.1%         64 /  1197    5.3%
+  3            145 /  1671    8.7%        103 /  1056    9.8%
+  4            142 /  1396   10.2%        103 /   940   11.0%
+  5            122 /  1177   10.4%         91 /   806   11.3%
+  6             85 /   995    8.5%         70 /   684   10.2%
+  7             62 /   859    7.2%         45 /   584    7.7%
+  8             40 /   737    5.4%         28 /   498    5.6%
+  9             26 /   619    4.2%         20 /   429    4.7%
+
+  THE PREMISE OF THE LADDER ORDER IS INVERTED BY ITS OWN MEASUREMENT. The order framed H
+  as "year-1-specific, no year-4 side effect expected". On the ND teaching population H
+  reaches 0.2% of year-1 cells and 11.0% of year-4 cells — it touches year 4 about 66x
+  MORE OFTEN than year 1, not less. H is not a year-1 dial. It is a years-3-to-5 dial.
+
+  WHY, mechanistically — and this is the part that matters for the sitting. ITEM C's
+  release is EVIDENCE-WEIGHTED (w = G*Q*gate, and the cap binds only where
+  ceil < e <= V0_uncapped — a hot prior with no demonstrated growth). Year 1 is precisely
+  the year in which a drafted player has almost no evidence, so e has not yet risen
+  through the ceiling and there is nothing for H to release. By years 3-5 enough evidence
+  has accumulated for the cap to bind, which is exactly where the binding shows up.
+
+  AN EVIDENCE-WEIGHTED RELEASE CANNOT ACT IN THE YEAR BEFORE THE EVIDENCE EXISTS. That is
+  a structural property of ITEM C, not a sizing problem, and NO VALUE OF H FIXES IT —
+  raising H further multiplies a weight that is ~0 at year 1. The two year-1 movers in
+  the whole 1197-entrant teaching population are both RUCKs (Kreuzer pick 1 +9.20%,
+  Naitanui pick 2 +5.81%), reached through the ITEM E2 ruck cap at :2116 — the channel
+  registered in the pre-registration as the CAVEAT, which turns out to be the only thing
+  H reaches at year 1 at all.
+
+  CONSEQUENCE FOR THE MENU, stated as a finding and not as a recommendation: H is not a
+  candidate year-1 counterbalance. It is REPORTED, not re-sited — moving where ITEM C
+  acts would be a wiring change well outside this act's ruled scope, and choosing to
+  make it is the owner's call, not mine.
+
+--------------------------------------------------------------------------------------------------------
+### PROGRESSION — ALL picks 1-64   [canonical no-arb table, book ratio vs year 0]
+--------------------------------------------------------------------------------------------------------
+  rung        H      yr0      yr1      yr2      yr3      yr4      yr5      peak      at
+  -------------------------------------------------------------------------------------
+  main        -   1.0000   1.1239   1.3773   1.5098   1.5732   1.5670    1.5732     yr4   <- pre-act reference
+  FULL     1.13   1.0000   0.9974   1.2401   1.4276   1.5310   1.5328    1.5328     yr5
+  H120     1.20   1.0000   0.9975   1.2405   1.4279   1.5313   1.5329    1.5329     yr5
+  H125     1.25   1.0000   0.9976   1.2408   1.4282   1.5315   1.5331    1.5331     yr5
+  H130     1.30   1.0000   0.9976   1.2411   1.4284   1.5317   1.5332    1.5332     yr5
+
+--------------------------------------------------------------------------------------------------------
+### PROGRESSION — picks 1-20   [canonical no-arb table, book ratio vs year 0]
+--------------------------------------------------------------------------------------------------------
+  rung        H      yr0      yr1      yr2      yr3      yr4      yr5      peak      at
+  -------------------------------------------------------------------------------------
+  main        -   1.0000   1.1524   1.3680   1.4845   1.5975   1.5797    1.5975     yr4   <- pre-act reference
+  FULL     1.13   1.0000   1.0386   1.2810   1.4278   1.5633   1.5532    1.5633     yr4
+  H120     1.20   1.0000   1.0387   1.2815   1.4280   1.5636   1.5533    1.5636     yr4
+  H125     1.25   1.0000   1.0389   1.2819   1.4282   1.5638   1.5534    1.5638     yr4
+  H130     1.30   1.0000   1.0390   1.2823   1.4284   1.5639   1.5536    1.5639     yr4
+
+--------------------------------------------------------------------------------------------------------
+### PROGRESSION — picks 21-64   [canonical no-arb table, book ratio vs year 0]
+--------------------------------------------------------------------------------------------------------
+  rung        H      yr0      yr1      yr2      yr3      yr4      yr5      peak      at
+  -------------------------------------------------------------------------------------
+  main        -   1.0000   1.0811   1.3913   1.5478   1.5367   1.5481    1.5560     yr6   <- pre-act reference
+  FULL     1.13   1.0000   0.9354   1.1785   1.4274   1.4824   1.5025    1.5254     yr6
+  H120     1.20   1.0000   0.9354   1.1787   1.4278   1.4827   1.5027    1.5256     yr6
+  H125     1.25   1.0000   0.9354   1.1789   1.4281   1.4829   1.5028    1.5257     yr6
+  H130     1.30   1.0000   0.9354   1.1791   1.4284   1.4830   1.5029    1.5259     yr6
+
+========================================================================================================
+### YOUNG/PEAK CONTRAST vs main — DOES H'S RESTORATION LAND WHERE THE CUT FELL?
+========================================================================================================
+  The young cut concentrated in picks 21-64 (-11.74%) rather than 1-20 (-7.90%), and ITEM C's
+  releases are evidence-weighted. This is the table that shows whether H restores the band
+  that actually lost, or the band that lost less.
+
+  rung        H    ALL picks 1-64        picks 1-20       picks 21-64
+  --------------------------------------------------------------------
+  FULL     1.13            -8.92%            -7.90%           -11.74%
+  H120     1.20            -8.91%            -7.91%           -11.75%
+  H125     1.25            -8.92%            -7.91%           -11.76%
+  H130     1.30            -8.92%            -7.90%           -11.77%
+
+  (0.00% would mean the rung restores main's young/peak contrast exactly in that band.)
+
+========================================================================================================
+### THE NO-ARB CHECK — and the bound on lawful H
+========================================================================================================
+  Every rung charges the SAME flat 14.00%/yr, so as H raises yr1 the yr0->yr1 appreciation
+  rises and its margin against that charge SHRINKS. Where it crosses zero bounds lawful H.
+  The yr1->peak leg is annualised over its own span so the two legs are comparable.
+
+  rung        H    yr0->yr1      margin   yr1->peak      margin   verdict
+  --------------------------------------------------------------------------
+  FULL     1.13      -0.26%      14.26%      11.34%       2.66%        ok
+  H120     1.20      -0.25%      14.25%      11.34%       2.66%        ok
+  H125     1.25      -0.24%      14.24%      11.34%       2.66%        ok
+  H130     1.30      -0.24%      14.24%      11.34%       2.66%        ok
+
+  THE BOUND. yr1 against H is close to linear over the measured rungs:
+      yr1(H) ~= 0.9960 + 0.0013 * H     (fit on the four measured rungs)
+  The yr0->yr1 leg becomes free money when yr1 exceeds 1.1400 (a 14.00% appreciation against
+  the 14.00% charged to an 18-year-old). Solving the fit:
+
+  NO CROSSING POINT IS REPORTED, AND NONE SHOULD BE. yr1 moved +0.0002 in total across the
+  whole measured ladder (fitted slope 0.0013) — yr1 is
+  effectively FLAT in H, so solving the fit for a crossing divides by ~0 and produces an
+  arbitrarily large number (here H ~= 113.8). That is a numerical artefact of dividing by
+  a null slope, NOT a bound, and printing it as one would be inventing a result. The
+  honest statement is: on this instrument H never reaches the 14% charge at year 1 at any
+  ceiling, because H does not move year 1 at all — see the binding diagnostic.
+
+  THE ORDER ASKED WHERE THE MARGIN CROSSES, "AND THAT BOUNDS LAWFUL H". The measurement
+  says the question does not arise: the yr0->yr1 margin is not the constraint on H,
+  because H has no year-1 channel to shrink it through. The dial's admissible window
+  [1.1024, 1.3327] remains the only binding constraint on H.
+
+========================================================================================================
+### THE 140 / 130 ENVELOPE ACROSS THE LADDER
+========================================================================================================
+  A FRAME FOR JUDGING, NOT A TARGET (the dissolved-1.40-act lesson). The peak/yr0 gap is
+  PRE-EXISTING — already open on main before any item of this act applies.
+
+  rung        H    peak/yr0  gap vs 1.40    peak/yr1  gap vs 1.30
+  --------------------------------------------------------------
+  main        -      1.5732        12.4%      1.3998         7.7%
+  FULL     1.13      1.5328         9.5%      1.5368        18.2%
+  H120     1.20      1.5329         9.5%      1.5367        18.2%
+  H125     1.25      1.5331         9.5%      1.5368        18.2%
+  H130     1.30      1.5332         9.5%      1.5369        18.2%
+

@@ -1,0 +1,17 @@
+config manifest (gate mode) LOADED  hash cd38fb0056ac  (83 model vars pinned; ambient cleared)
+CONFIG ACCEPTED cd38fb0056ac  (trusted /home/user/afl-rl-engine/config_manifest.py)
+PROVENANCE {"RL_FV_env": "/home/user/afl-rl-engine/engine/forward_valuation", "config_manifest_identity": "cd38fb0056ac94fd6a7b5d8af06a3f7294983dd8b4403bf4d6b979327a90d30d", "config_manifest_path": "/home/user/afl-rl-engine/data/model_config.json", "distribution_pricing_md5": "8341ca11ac50921eabbe4c79a1a3d0b5", "fv_identity": "6d36c24bb899792d15c41466377f2916fe0cb5ebee656ae38cea67038b912f7a", "fv_identity_expected": "6d36c24bb899792d15c41466377f2916fe0cb5ebee656ae38cea67038b912f7a", "resolved_fv_dir": "/home/user/afl-rl-engine/engine/forward_valuation", "rl_model_md5": "de7ce41659adeda756f4fd1a2caaf172", "rl_model_path": "/home/user/afl-rl-engine/engine/rl_after/rl_model.py"}
+LOADED-PROVENANCE OK  fv_modules=7 rl_model=/home/user/afl-rl-engine/engine/rl_after/rl_model.py
+L7 ADOPTED-CURVE REPOINT: shipped PVC = pvc_curve_v2.json (pick1=3000, national curve 1-64 strictly decreasing, pool index 65 = 237, ÷F=1.0524 on players)
+#326 PER-DIVISION ENTRY LEVELS (N43 signed, read verbatim from pvc_curve_v2.json; pool_value 237.2 is NOT a player price): IRE 133 · MSD 286 [MSD completion optimism +4.7-8.4% (travels with the MSD level, printed beside it wherever it is shown)] · ND65+ 185 · PDA 194 · PDN 123 · PDS 145 · RD:KPD 300 · RD:KPF 216 · RD:MID 294 · RD:RUCK 282 · RD:SD 246 · RD:SF 231 · SSP 252 · UNR 103
+NUMÉRAIRE GUARD: PASS — shipped pick-1 = 3000 (UNCONDITIONAL standing law, register v30 item 17)
+L7 NUMÉRAIRE RE-BASE ÷1.0524: order preserved (no strict inversion; 8 rounding ties), 10/10 anchor ratios <0.2%
+EXPORT ATTRIBUTION: loaded vPrev/levers for 804 keys (base sum=723075, from certified stage boards)
+FUT-LABEL ASSERTION: PASS — 87 dual rows carry the true primary/alternate on the board
+ZERO-EMPTY-CLUB ACCEPTANCE: PASS — 0 blank club across 1002 exported rows (active 804 + back 198)
+PARITY GATE PASS: all 804 active board values == engine gated ev() (matched by key, eps=0)
+OWNER OVERRIDE applied (display-only): will-brodie ×0.50 -> displayed 386 (of the REBASED value; engine v untouched; vRaw model figure stamped)
+LEG F5 ENTRANT LAYER (RL_LEGF=1): 18 clubs · §2.viii sealed intake 62931 PVC (draft 55753 + mech 7178, 103.4 slots/yr, seal c9e7491b) · +1 Δ=+62931 · +2 Δ=+62931 · k=0 phantom=NONE
+exported active=804 cohort=1974 | mechanisms=7 categories analysed | board stamped src=d9a24282 (read-only)
+CAT_BY_RANGE Academy: {'1-10': 1237, '11-20': 110, '21-30': 2014, '31-45': -148, '46-64': -49, 'Pool': -199}
+CAT_BY_RANGE Open   : {'1-10': 66, '11-20': 25, '21-30': 85, '31-45': -32, '46-64': -70, 'Pool': 27}

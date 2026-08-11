@@ -1,0 +1,11 @@
+config manifest (gate mode) LOADED  hash cef06fd6250b  (59 model vars pinned; ambient cleared)
+FINE SEARCH — the true smallest dial landing Mraz inside 2-3x (the ordered ladder tested
+only {0,1,2,3.5,5}; 'smallest rung' should mean smallest, so the boundary is located).
+ RL_SUR_W      board  x pick-35
+ 3.50         1794.9      3.200
+ 3.75         1719.9      3.066
+ 4.00         1648.6      2.939   <- first inside 2-3x
+ 4.25         1580.2      2.817
+ 4.50         1514.6      2.700
+ 4.75         1452.9      2.590
+ 5.00         1394.0      2.485

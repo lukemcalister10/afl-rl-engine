@@ -48,11 +48,13 @@ def _det_mean(a):
 with contextlib.redirect_stdout(io.StringIO()):
     import rl_model as MA, wire_redesign as W; cm=W.build()
 TR=W.TR; rd=TR.rd; cp=TR.cp; dp=TR.dp; PR=W.PR
-era={}
-for Y in range(2009,2026):
-    a=[s['avg'] for p in MA.data for s in p.get('scoring') or [] if s['year']==Y and s['games']>=6]
-    if a: era[Y]=float(np.mean(a))
-REF=float(np.mean(list(era.values())))
+# ==== ERA NORMALIZATION REMOVED (#334 stage B salvage, OWNER RULING — ballot word 1, 5242713366) ====
+# An era[Y] table used to be built here (mean season avg over >=6-game seasons per year, 2009-2025,
+# with REF = the mean of those years) and every career-score read was multiplied by REF/era.get(y,REF).
+# OWNER RULING (binding): SuperCoach scores are era-comparable BY CONSTRUCTION — every match assigns
+# 3,300 points, so a season average already sits on one common scale and a per-year rescale is a
+# distortion, not a correction. NO era normalization may be applied to scoring anywhere. The table,
+# REF, and every a*REF/era.get(y,REF) site are gone; season averages are read RAW. Do not reintroduce.
 pool=[p for p in MA.data if MA.GRP.get(p['pos'])]
 X,yy=[],[]
 _L4_MSD=os.environ.get('RL_MSD_POOL_EXCL','1')!='0'   # v2.9 L4: MSD training-pool exclusion (default ON; =0 ⇒ base byte-exact). Kill-switch; G-ATTR-separable.
@@ -97,7 +99,9 @@ for r in MA.data:
     g=MA.GRP.get(r.get('pos'))
     if g and g not in GRPPOS: GRPPOS[g]=r['pos']
 # ===== STEP1 #1-FAMILY FIX (inference-only; band pickle + q97m above trained on ORIGINAL features -> Delta=0 for proven-flat) =====
-PROVEN_N=4; POLE_RAMP=22.0    # PROVEN_N surface NOT wired (no committed exec spec) -> scalar 4 + c=n/4 retained; see CHANGELOG 2026-06-30
+PROVEN_N=4; TAIL_TRIM=float(os.environ.get('RL_TAIL_TRIM','0'))   # #334 menu (b): proven beyond-year-11 carry trim; 0 = shipped, byte-exact
+POLE_RAMP=22.0    # PROVEN_N surface NOT wired (no committed exec spec) -> scalar 4 + c=n/4 retained; see CHANGELOG 2026-06-30
+RUC_WAGE=float(os.environ.get('RL_RUC_WAGE','1.0'))   # #334 ITEM E1 sizing: 1.0 = the full standard ramp; 0.0 reproduces the old wage=0 pole denial byte-exact.
 # ==== GAMES-RAMP PRORATION (D10 03/07/2026 — Luke's design statement, verbatim in the directive):
 # every games bar (6/10/14/22) prorates to season progress for the IN-PROGRESS season — a player is
 # judged only against games that were playable (R14/24 -> fE=0.58 at this cut; RL_M3_FE = the M2/M3
@@ -458,7 +462,13 @@ def raw_ev(p,Y=2026):
         T=min(max(PR.tenure(p,_fa_year(Y)),1),6)
         et=min(max(eff_ten(p,_fa_year(Y), PR.tenure(p,_fa_year(Y))),1),6)             # STEP1: developmental tenure off original PR.tenure base
         po,par=par_pole(pos,pk,T); a=MA.age(p)
-        wage=0.0 if pos=='RUCK' else float(np.clip(1-((a or 21)-20)/6,0,1))
+        # #334 ITEM E1: the RUCK pole denial ENDS. Rucks were the only position given wage=0, i.e. no
+        # pedigree pole at all; the measurement made it the LIVE ruck lever (pole denial 573 pts vs the
+        # ceiling's 130). They now take the SAME standard age wage ramp as every other position, scaled
+        # by RUC_WAGE so the ruck book lands inside the ruled cautious band [+2.9%, +9.0%].
+        # V0-INERT BY CONSTRUCTION: at Y=debutyr-1 the exposure is 0 so _expgate is 0 and w=wage*tfade*
+        # expgate is 0 whatever wage is — so this cannot reach the frozen year-zero surface. Asserted.
+        wage=float(np.clip(1-((a or 21)-20)/6,0,1))*(RUC_WAGE if pos=='RUCK' else 1.0)
         tfade=float(np.interp(et,[1,2,3,4,5,6],[1.00,0.76,0.40,0.16,0.05,0.05]))      # pole-fade by DEVELOPMENTAL tenure
         expgate=_expgate(p,Y)                                                         # EXPOSURE REGIME (regime 4): smoothed (was 1.0 if nqual>=4 else exposure/POLE_RAMP ramp); RL_EVW=0 => base gate
         w=wage*tfade*expgate
@@ -837,12 +847,12 @@ def _kpf_LD(p,Y):
         _st=_AVAIL_STATE.get(p.get('key'))
         if _st and _st.get('out'): _nuke={2026}                # the injured current season (register-flagged)
     _ext=min(2,len(_nuke)); _lo=Y-3-_ext                        # extend back year-for-year, capped +2
-    ls=sorted((a*REF/era.get(y,REF) for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
+    ls=sorted((a for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
                if _lo<=y<=Y and y not in _nuke and gg>=12.0*(_fEy(Y,p) if y==Y else 1.0)),reverse=True)
     if len(ls)>=2: return float(np.mean(ls[:2]))
     if _nuke:                                                  # fork-v fallback: exclusion left <2 healthy seasons
         _KPF_LD_FALLBACK.add(p.get('key'))
-        ls0=sorted((a*REF/era.get(y,REF) for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
+        ls0=sorted((a for y,a,gg in ((x['year'],x['avg'],x.get('games',0)) for x in p['scoring'])
                     if Y-3<=y<=Y and gg>=12.0*(_fEy(Y,p) if y==Y else 1.0)),reverse=True)
         return float(np.mean(ls0[:2])) if len(ls0)>=2 else None
     return None
@@ -900,6 +910,14 @@ def _w4_W(k,ctx):
             W+=ctx['cw']*up*ctx['gm']*ctx['dur']*ctx['sh']*float(np.interp(k,[0.,2.,5.],[1.,1.,0.]))
             if ctx.get('n',0)>=PROVEN_N:
                 W-=W4_FADE*(1.0-ctx['gm'])*ctx.get('fadew',1.0)*float(np.interp(k,[4.,10.],[0.,1.]))
+    # ===== #334 MENU ITEM (b) — THE PROVEN-TAIL TRIM. The ruler act measured the engine carrying 15.1%
+    # of the year-4 price beyond career year 11 against 9.9% delivered (1.53x hot), concentrated in talls.
+    # This fades the beyond-year-11 carry toward the delivered share, and ONLY for the population the
+    # existing far-year fade already names as proven (ctx['n'] >= PROVEN_N) — it adds no new gate and
+    # touches no young tail, which is the un-faded one the ruler act flagged. Strength 0.0 = shipped
+    # behaviour, byte-exact. A MENU ITEM FOR THE OWNER'S SITTING, NOT A DECISION.
+    if TAIL_TRIM>0.0 and ctx.get('n',0)>=PROVEN_N and k>11:
+        W*=(1.0-TAIL_TRIM*float(np.clip((k-11.0)/4.0,0.0,1.0)))
     # (L1c: the old `elif _W4YNG` runway leg was here — DELETED 2026-07-08, replaced by the evidence-
     #  conditioned expected-rerating credit on raw_ev below; RL_YOUNG gates THAT, never both.)
     if _W4OVP and ctx.get('ovpx',0.0)>0.0:
@@ -911,7 +929,7 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
     if ctx is None: return _proj_w4_0(g,lp,a,cur,lens,g0=g0,fut=fut,pre_hc=pre_hc)   # synths / lever-off: byte-exact original
     _off=(MA.AGE_REF-MA.BASE_REF) if _LEGF_ON else 0     # LEG F3 §2.vi (ruling 353, still-implicated proj_from_peak): fwd-lens offset; 0 at k=0/balanced/backward OR RL_LEGF=0 => byte-exact ORIGINAL by construction
     ah=a-_off if _off>0 else a           # form-anchored age SHAPE: the pedigree-driven projection curve-position + young-runway credit hold at BASE_REF, so growth flows through the ADVANCING level (lp from the band at AGE_REF; cur=level_now via _dev_advance) — the premium decays with PROJECTED EVIDENCE, not the age clock (Reid: same map at the projected evidence state; no new multiplier/growth term). k=0: _off=0 => ah==a => byte-exact.
-    pa=MA.PEAK_AGE[g]; d=MA.LENS[lens]; cl=cur if cur else lp*MA.frac(ah,pa); prod=0.0
+    pa=MA.PEAK_AGE[g]; d=MA.age_disc(ah,MA.LENS[lens],lens); cl=cur if cur else lp*MA.frac(ah,pa); prod=0.0   # #334 age-dynamic future discount (dial-gated; identity when off)
     if g0 is None: g0=g
     if fut is None: fut=[(g,1.0)]
     for k in range(18):
@@ -924,8 +942,9 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
         if _BOARD_PATH and k==ctx.get('ret_k',-1) and ctx.get('ret_hc',0.0)>0: lev*=(1-ctx['ret_hc'])   # Part-2 return-season haircut (BOARD-ONLY: the walk-forward book stays availability-free; single k -> decays next season)
         base=lev+MA.capt_prem(lev)
         Wk=_w4_W(k,ctx)
-        if k==0: prod+=Wk*MA.posval(base-MA.REPL[g0])*21/((1+d)**k)
-        else: prod+=Wk*sum(w*MA.posval(base-MA.REPL[gg]) for gg,w in fut)*21/((1+d)**k)
+        _df=MA.disc_factor(ah,d,k,lens)
+        if k==0: prod+=Wk*MA.posval(base-MA.REPL[g0])*21/_df
+        else: prod+=Wk*sum(w*MA.posval(base-MA.REPL[gg]) for gg,w in fut)*21/_df
     if g in('KPF','KPD'): prod*=1.05
     runway=MA.clamp((25-ah)/6.0,0,1); elite=MA.clamp((lp/MA.PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*MA.PMAX)
     return prod
@@ -952,7 +971,7 @@ def _prod_floor_w4(p,lens='bal'):
     # byte-exact. QUEUED HYGIENE (registered, NOT this build): option-3 delegation — this fn -> MA.prod_floor for
     # bar resolution, removing the duplicate loop — carries a determinism-proof requirement.
     lowbar=MA.y0dpp_bar(p) if (MA.AGE_REF==MA.BASE_REF) else None
-    d=MA.LENS[lens]; H=MA.clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0
+    d=MA.age_disc(a,MA.LENS[lens],lens); H=MA.clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0   # #334 age-dynamic future discount (dial-gated; identity when off)
     while k<H:
         ag=a+k; wt=min(1.0,H-k)
         lev=cur*min(1.0, MA.frac(ag,pa_)/max(MA.frac(a,pa_),1e-6))
@@ -963,7 +982,7 @@ def _prod_floor_w4(p,lens='bal'):
             pv=sp*MA.posval(base-MA.REPL[g])+(1.0-sp)*MA.posval(base-MA.REPL[lowbar])
         else:
             pv=MA.posval(base-MA.REPL[g])
-        prod+=_w4_W(k,ctx)*wt*pv*21/((1+d)**k); k+=1
+        prod+=_w4_W(k,ctx)*wt*pv*21/MA.disc_factor(a,d,k,lens); k+=1
     return MA.val(prod)
 MA.prod_floor=_prod_floor_w4
 # ==== L1c — EVIDENCE-CONDITIONED EXPECTED-RERATING CREDIT (2026-07-08 rectification build) ================
@@ -1060,7 +1079,7 @@ def _kpf_prod_efv(p,Y,L=None):
 def delisted(p): return bool(p.get('_retired')) or (p.get('_last_listed') is not None and p['_last_listed']<2026)
 def draftval(p): return float(MA.PVC[min(MA.effpk(p),cp.KMAX)])
 def bestlvl(p,Y=2026):
-    s=[a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6.0*(_fEy(Y,p) if x['year']==Y else 1.0) and x['year']<=Y]]   # D10: 6-bar prorated in-progress
+    s=[a for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6.0*(_fEy(Y,p) if x['year']==Y else 1.0) and x['year']<=Y]]   # D10: 6-bar prorated in-progress
     return max(s) if s else 0.0
 def nseas(p,Y=2026): return sum(1 for x in p['scoring'] if x['games']>=6 and x['year']<=Y)   # unprorated career counter (harness/diagnostic callers)
 def nseas_pro(p,Y=2026):                                      # D10: qualification judged against PLAYABLE games (6-bar -> 6*fE for the in-progress season)
@@ -1758,10 +1777,83 @@ def v0_start(p):                                             # BOARD -> D14 V0 c
 #   remnant keep reading v0_start byte-for-byte. They face players with real careers and back-boards, and
 #   the owner's standing default forbids moving those. That is recorded as the one place the old machinery
 #   still fires on purpose; reversing it is one owner sentence.
+# ===== #334 ITEM B — THE POOL YEAR-0 AGE REPAIR (C5, LEVEL-PRESERVING). Ruled 5238688172/5238860310.
+# THE DEFECT (D2, audit 1): the signed division levels carry NO age. Two pool entrants of the same
+# division priced identically whatever their draft age, while the measured returns differ by ~4x across
+# the age range. The repair is a RESHAPE, never a lift: the pool's total year-zero value is held EXACTLY
+# and only its distribution across age moves.
+#   THE GRADIENT is re-taught at BUILD TIME on the DOB store, on the ruler act's own corrected
+#   instrument (docs/evidence/composition_2026-08-10/item_b_derive.py; r24 instrument D, DISC=1.0939,
+#   frozen per-entrant matrices, F8 at PLAYER unit): <=18 0.6859 · 19-20 1.4112 · 21+ 2.8173
+#   (filed priors 0.666 / 1.200 / 2.474; the bridge is printed in the act record).
+#   THE SHAPE. The ruling says "smooth taper 21->26, no integer cliff". A mean-holding linear ramp to 26
+#   is REFUSED on evidence: every per-age cell inside 21+ is far below the F8 bar (21:22.6 ... 26:2.7)
+#   and the estimates FALL after 22, so a rising ramp would hand the largest factor to the oldest,
+#   thinnest, measured-at-zero rows and break conservation by 3.5%. The directive's own tilt reading
+#   already says mature-21+ is unnameable and takes the base factor, pooling disclosed. So the cliff is
+#   removed where the ruling points at it — the BAND BOUNDARY — by keying on CONTINUOUS draft age.
+#   `_ageR`'s rounding is exactly what would create an integer cliff, so this site does not use it.
+#   AGE-UNKNOWN rows keep factor 1.0: their OWN cell, never absorbed into a neighbour (ruled).
+#   RECALCULATION LAW: nothing is stored per player. The knots are the taught gradient; the level is
+#   pinned by a renormaliser re-derived from the LIVE pool population on every build, so the identity
+#   holds on whatever roster the board actually carries.
+#   SCOPE, DECLARED: this is the ENGINE-VALUE entry-anchor site. `_cap_basis` (the ruck prior cap's
+#   ladder-currency basis, :1190) is deliberately NOT age-shaped here — that object is ITEM E2's, and
+#   moving both in one act would double-count the repair on pool rucks.
+_B_KNOTS=[(18.0,0.6858757327896249),(19.0,1.4111875531208420),
+          (20.0,1.4111875531208420),(21.0,2.8172535022231320)]
+# ===== #334 ORDER 9 ADOPTION — ITEM B's DRAFT-AGE SHAPE RETIRED TO FLAT BY OWNER RULING (5249802288).
+# OWNER, verbatim: "H to 1, B to flat, and note these as items of investigation for the rederivation."
+# THE GROUNDS, measured and filed at B_PROVENANCE_AND_SPLITS.md before the ruling:
+#   - the shipped factor at draft age 21+ was k x 2.8173 = 2.0478, a +104.8% lift on the ENTRY ANCHOR,
+#     which passes through almost in full to any entrant whose price IS his anchor (Banch, Podhajski).
+#   - IT WAS NOT FITTED TO PLAY QUALITY. The outcome measure is D_rt_win, "REALIZED DELIVERY off the
+#     seasons and bars" (item_d_derive.py:22-23) - a delivered-VALUE composite a player raises by
+#     playing MORE as well as by playing BETTER. Under the owner's ruled principle ("we value them on
+#     how they play") it does not meet the standard.
+#   - measured separation on the NON-ROOKIE pool arm: quality (career games-weighted average) is FLAT
+#     across draft age - 51.47 / 52.98 / 53.33 at <=18 / 19-20 / 21+ - while participation (career
+#     games) is 24.7 / 31.7 / 21.6, the 21+ slice playing the LEAST of the three.
+#   - and the gradient is SUPPORTED on the rookie arm (21+ delivers 3.0092 at year 4) but CONTRADICTED
+#     on the non-rookie arm (0.7708, BELOW its own 19-20 slice at 0.9851). B pools both arms by
+#     construction (item_b_derive.py:51 filters on is_pool only), so the evidence carrying the lift
+#     came substantially from the arm the question was not about.
+# THE KNOTS AND THE MACHINERY ARE KEPT, behind RL_B_SHAPE, so the re-derivation has them to hand.
+# DEFAULT IS FLAT: _b_shape == 1.0 at every age => _b_renorm() == 1.0 => _b_factor == 1.0 exactly, so
+# entry_anchor collapses to pool_level x _PL_F, the pre-B object, and the C5 level-preserving law holds
+# TRIVIALLY rather than by renormalisation (every row's factor is 1, so no value moves between ages).
+_B_SHAPE_ON=os.environ.get('RL_B_SHAPE','0')!='0'
+def _b_shape(a):
+    if not _B_SHAPE_ON: return 1.0                           # ORDER 9: FLAT by owner ruling
+    if a is None: return 1.0                                 # age-unknown: its own cell, never absorbed
+    a=float(a)
+    if a<=_B_KNOTS[0][0]: return _B_KNOTS[0][1]
+    if a>=_B_KNOTS[-1][0]: return _B_KNOTS[-1][1]
+    for (a0,f0),(a1,f1) in zip(_B_KNOTS,_B_KNOTS[1:]):
+        if a0<=a<=a1: return f0 if a1==a0 else f0+(f1-f0)*(a-a0)/(a1-a0)
+    return _B_KNOTS[-1][1]
+def _b_age(p):
+    """Draft age as a CONTINUOUS quantity — `draft year - _by`, the same definition the teaching
+    matrices use (emit_matrix_338.py:262). None where the store carries no birth year."""
+    by=p.get('_by')
+    if by is None: return None
+    return float((p.get('year') or (cp.debutyr(p)-1))-by)
+_B_NORM={}
+def _b_renorm():
+    """THE C5 RENORMALISER — a state function re-derived from the live pool population every build."""
+    if 'k' not in _B_NORM:
+        num=den=0.0
+        for q in MA.data:
+            if not _isreal(q) or not q.get('_pool'): continue
+            lv=float(MA.pool_level(q)); den+=lv; num+=lv*_b_shape(_b_age(q))
+        _B_NORM['k']=(den/num) if num>0 else 1.0
+    return _B_NORM['k']
+def _b_factor(p): return _b_renorm()*_b_shape(_b_age(p))
 def entry_anchor(p):
     """The entry price a thin record leans on: the signed division level for a pool entrant (converted into
-    engine-value currency), the live V0 start value for everyone else."""
-    if p.get('_pool'): return float(MA.pool_level(p))*_PL_F
+    engine-value currency, and age-shaped by ITEM B at constant pool total), the live V0 start value for
+    everyone else."""
+    if p.get('_pool'): return float(MA.pool_level(p))*_PL_F*_b_factor(p)
     return v0_start(p)
 def _v0_curve_assert():                                      # BY-CONSTRUCTION GATES (D14 1c): wired, return dict of results
     star=_V0CURVE_META['_star']; ages=_V0CURVE_META['mature_nonRUC']['ages']
@@ -1844,12 +1936,253 @@ def _v0_surface_assert():
                 rising_steps_1_64=n64, rising_steps_full_grid=nall,
                 worst=bad,
                 shape=('POS|AGE' if any('|' in _k for _k in cells) else 'legacy'))
+# ===== #334 SALVAGE 3 — SURPRISE-SCALED EVIDENCE TRUST (stage-4 amendment 1, ported from
+# origin/landing/334-stage-b 3820303 :1855-1866 under owner ballot word 1, 5242713366).
+# THE OWNER'S DESIGN RULING, verbatim: "4 games of sample, especially when it's so far from the
+# projection, shouldn't be trusted as much, surely." Small samples NEAR projection keep today's
+# reactivity (confirmation); small samples FAR from projection are shrunk toward the prior, because a
+# fringe player's played games are selection-biased upward — his 4 games are his best 4. Continuous
+# everywhere, no thresholds, symmetric in sign (a shock collapse from a high prior is shrunk the same
+# way), and it grows back with games.
+# PORTED WITHOUT THE PED_BAR TERM: stage 4's pedigree-conditioned evidence bar is NOT part of this act,
+# so the exponent carries the surprise demand alone.
+SUR_W=float(os.environ.get('RL_SUR_W','4.0'))                  # THE DIAL, in passes of the lam ramp demanded per nat of surprise on a wholly-unresolved record. 0 => byte-exact pre-surprise build (the identity proof). The branch shipped 5.0, calibrated on the OLD currency/board; the live value is re-calibrated on THIS board against the owner's ruled tolerance — see the dial ladder in the act evidence.
+_RHO_SIT_BAR=(6.0*6.0)/(6.0*6.0+6.0+_ABS_FADE_K)             # rho at the RULED 6-game establishment bar; the normaliser, so u(6)==0 exactly
+def _rho_res(g):
+    """the engine's R100.11 evidence-resolution curve, rho(g)=g^2/(g^2+g+K), K=_ABS_FADE_K (PINNED)."""
+    g=float(max(0.0,g)); return (g*g)/(g*g+g+_ABS_FADE_K)
+def _surprise(e_full,anchor,gp):
+    """The SURPRISE demand, in the same "passes of the lam ramp" unit the exponent is denominated in.
+    s = |log(e_full/anchor)| is the size of the re-rate this thin record claims against its own prior;
+    u = 1-rho(gp)/rho(6) is the share of that record still UNRESOLVED. Their product is the claim the
+    evidence has not yet earned. Zero at zero surprise; zero at the establishment bar; symmetric in sign."""
+    s=(abs(float(np.log(e_full/anchor))) if (e_full>0.0 and anchor>0.0) else 0.0)   # domain guard only
+    return SUR_W*s*(1.0-_rho_res(gp)/_RHO_SIT_BAR)
 def sitout_ev(p,Y,e_full):
     fe=_fEy(Y,p); tau=max(0.0,Y-cp.debutyr(p))+((fe**1.5) if Y>=cp.debutyr(p) else 0.0)   # D12: CONCAVE penalty proration tau'=(R/24)^1.5 (Luke OPTION A); completed seasons full (integer knots), in-progress season accrues concavely. PENALTY path only — the lam reward blend below is UNTOUCHED.
     R=_R_surf(_sitout_cls(MA.gfut(p)), MA.effpk(p), tau)     # D13 ASK3: pick-conditioned, isotonic-in-depth surface (was depth-only R_SIT)
     gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
-    lam=float(np.interp(min(gy/fe,6.0),[0,1,2,3,4,5,6],LAM_SIT))                 # games AT PACE vs the prorated bar
-    return (1.0-lam)*R*entry_anchor(p)+lam*e_full            # #326: a pool entrant blends off his division's signed entry level; every other player off v0_start, byte-for-byte
+    gp=min(gy/fe,6.0)                                        # hoisted: the ONE games-at-pace clamp the lam ramp AND the resolution fade both read (identical expression; no new clip)
+    anch=R*entry_anchor(p)                                   # THE ANCHOR LEG — hoisted; the SAME object the blend and the surprise statistic both read
+    lam=float(np.interp(gp,[0,1,2,3,4,5,6],LAM_SIT))                             # games AT PACE vs the prorated bar
+    lam=lam**(1.0+_surprise(e_full,anch,gp))                 # #334 salvage 3: the SURPRISE demand (endpoints fixed: 0**e=0, 1**e=1; RL_SUR_W=0 => exponent 1 => byte-exact)
+    return (1.0-lam)*anch+lam*e_full                         # #326: a pool entrant blends off his division's signed entry level; every other player off v0_start, byte-for-byte
+# ===== #334 ITEM A — THE YEAR-1+ ANCHOR LEG (A1 full carry). Ruled 5238860310; ramp identified by
+# ablation (docs/evidence/composition_2026-08-10/ABLATION_READING.md), owner reading word 5240605334.
+#
+# THE DEFECT (D1): at ns>=1 the fitted year-0 prior is DISCARDED. The ablation proves it rather than
+# asserting it — zero the production leg entirely and the price does not fall to the anchor, it falls to
+# 0.229 x anchor, the floor_frac schedule. So on the year-1+ path the prior survives ONLY as a one-sided
+# lower bound. There is no blend, and therefore no fading chain: the hand-over is a CLIFF at the
+# qualification boundary, not a ramp.
+#
+# THE RAMP, identified functionally and not by name. Of the four candidates, iso_eff is inert (0.3%),
+# _expgate is a partner in the PEDIGREE-POLE leg which the sitting ruled stays pick/pedigree, and LAM_SIT
+# is the engine's ONLY anchor<->production blend: sitout_ev's (1-lam)*R*entry_anchor + lam*e_full. ITEM A
+# is that same blend CARRIED FORWARD past ns==0 instead of switched off.
+#
+# THE FADE ACROSS YEARS. lam alone resets every season, so carrying it forward unchanged would not make v2
+# borrow less than v1. The anchor share is therefore damped by the engine's OWN cumulative evidence fade —
+# exp(-E_q/tau), tau=_EVW_TAU=1.1, the pedigree-fade family that iso_eff already rides. E_q is effective
+# qualifying seasons, recomputed from the record every call, so this is a state function and never a stored
+# per-player boost (the recalculation law). A synthetic year-2 probe responds to year-2 games by construction.
+#
+#       anchor_share(p,Y) = (1 - lam_season) x exp(-E_q / tau)
+#       price             = (1 - anchor_share) x e_full  +  anchor_share x R x entry_anchor
+#
+# CONTINUITY AT GRADUATION: E_q is a SOFT 10-game measure, so a row with a few games carries a small
+# positive E_q and exp(-E_q/tau) sits just under 1. The two branches therefore agree IN THE LIMIT, not
+# exactly — measured worst boundary step 4.0e-04 over the live sitters (item_a_verify_out.txt). What IS
+# exact is what the board depends on: the ns==0 path RETURNS BEFORE this line, so every sit-out price is
+# byte-untouched. Nothing jumps as a player qualifies. NO NEW MACHINERY: the blend form, R, lam and the
+# fade family are all existing objects.
+# SITE: this runs at ev(), NEVER inside raw_ev — _v0_uncapped calls raw_ev at Y=debutyr-1 to BUILD the very
+# year-0 prior being borrowed, so blending inside raw_ev would be self-referential.
+_A_ON=os.environ.get('RL_ITEM_A','1')!='0'   # declared kill-switch: RL_ITEM_A=0 => the pre-A build, byte-exact
+_A_TAU=_EVW_TAU                              # the engine's own pedigree-fade rate, effective-qualifying-season units
+# ===== #334 ITEM H — THE RULED CUT LIST (ruling 3.11, cell-qualified by the pool grid).
+# The three approved cuts, taken AS FILED and marked as filed: my own re-derivation could not reproduce
+# them on the cell definitions I had (docs/evidence/composition_2026-08-10/item_h_derive_out.txt), so
+# rather than size a cut on a cell I cannot verify, the ruled factors ship unchanged and the
+# corrected-ruler bridge is printed beside them in the act record. On that bridge two of the three cells
+# deliver LESS than their ruled factor, so these cuts are if anything GENEROUS rather than harsh.
+#   named union sitters (draft age 23+ | IRE | MSD) x 0.280
+#   all-pool-sitters                                x 0.804
+#   mature nonRD (pool, non-RD, draft age 21+)      x 0.615
+# QUALIFICATION: a sitter is a row with NO games this season (the sit-out population, ns==0). The cuts
+# COMPOSE multiplicatively where a row is in more than one cell — the union cell is the named subset of
+# the all-pool-sitters cell, so a 23+/IRE/MSD pool sitter takes both, which is what "cell-qualified"
+# means and is why the union factor is so much deeper.
+# THE #326 FLOOR (0.45) IS NOT TOUCHED, and NO BLANKET LIFTS EXIST ANYWHERE: every factor here is <= 1.
+H_ON=os.environ.get('RL_ITEM_H','1')!='0'   # declared kill-switch: RL_ITEM_H=0 => no cuts, byte-exact
+H_UNION=float(os.environ.get('RL_H_UNION','0.280'))
+H_POOLSIT=float(os.environ.get('RL_H_POOLSIT','0.804'))
+# ===== #334 ORDER 9 ADOPTION — H_MATNONRD RETIRED TO 1.0 BY OWNER RULING (filed 5249802288).
+# OWNER, verbatim: "H to 1, B to flat, and note these as items of investigation for the rederivation."
+# THE GROUNDS, measured and filed at POOL_ARM_ATTRIBUTION.md before the ruling:
+#   - the cut was a FLAT END-MULTIPLIER on the finished production-led price (:2228), reading only
+#     _pool / type / draft age and NEVER games, level or establishment. John Noble at 158 career games
+#     took the same 0.615 as a zero-game row; his ITEM A anchor share is exactly 0.000000, so the cut
+#     was not his draft arm re-asserting itself - it was a cell multiplier on top of the finished price.
+#   - the cell's own derivation HALTED: item_h_derive_out.txt "HALT-NO-SURPRISE ... taken AS FILED",
+#     ruled 0.615 against F bent 0.7676 (DOES NOT REPRODUCE), corrected-ruler 0.5162, and a 95% CI of
+#     [0.115, 1.226] at eff-n 46.2 - AN INTERVAL THAT CONTAINS 1.0, so the evidence in front of the
+#     owner could not exclude no cut at all.
+#   - the arm carries ZERO rows in the canonical deciding population (n=1197, 100% type ND), so the
+#     board effect was never inside any figure any ruling was made on.
+# OWNER'S DESIGN DIRECTION, recorded so the re-derivation inherits it: a mature-pool discount, if the
+# historical data supports one, belongs on the v0/PRIOR side where a body of work overcomes it - never
+# on the finished price. THE OTHER TWO CELLS STAY AS FILED until the re-derivation (his explicit scope).
+H_MATNONRD=float(os.environ.get('RL_H_MATNONRD','1.0'))
+def _h_cut(p,Y):
+    """The composed ITEM H factor for a row. 1.0 for anyone outside every ruled cell."""
+    if not H_ON or not _isreal(p): return 1.0
+    f=1.0
+    pool=bool(p.get('_pool')); typ=p.get('type')
+    age=_b_age(p)                                             # continuous draft age; None where unknown
+    sitter=(sum(x['games'] for x in p['scoring'] if x['year']==Y)<=0)
+    if pool and sitter:
+        f*=H_POOLSIT                                          # all-pool-sitters
+        if (age is not None and age>=23.0) or typ in ('IRE','MSD'):
+            f*=H_UNION                                        # the NAMED union subset, on top
+    if pool and typ!='RD' and age is not None and age>=21.0:
+        f*=H_MATNONRD                                         # mature nonRD
+    return f
+# ===== #334 ITEM A — THE RAMP DE-COUPLE. DIAL-GATED MEASUREMENT VARIANT, DEFAULT OFF (RL_A_GSAT=0).
+# Specified at docs/evidence/composition_2026-08-10/noarb/RAMP_DECOUPLE_SPEC.md; measured, not shipped.
+#
+# THE DEFECT IT ADDRESSES (A_YEAR1_AUDIT.md): ONE six-game threshold is doing TWO different jobs.
+#   ADMISSION  — may this row use the year-1+ arm at all?   ns = nseas_pro(p,Y) >= 1, i.e. gy/fE >= 6
+#   SATURATION — how much anchor weight does it carry?      lam = interp(min(gy/fE,6),...), LAM_SIT[6]=1.0
+# Both key on the SAME within-season games count, so at cohort year 1 they are mutually exclusive by
+# construction: qualifying to use A is the same act as saturating A's share to EXACTLY 0. Measured
+# consequence: A moves 0 of 1197 ND year-1 cells and owns 0.0% of the year-1 drop.
+#
+# THE CHANGE, and ONLY this one: the ADMISSION BAR IS UNTOUCHED (still 6*fE prorated, still ns>=1 at
+# ev()'s `if ns==0:`). Only the SATURATION de-couples — the production weight saturates on CAREER games
+# against G_SAT instead of on the within-season six:
+#       lam = interp(min(career_games/G_SAT, 1.0) * 6.0, [0..6], LAM_SIT)
+# so a qualified year-1 row with, say, 12 career games sits part-way up the ramp and carries real anchor
+# weight instead of being pinned at the top.
+#
+# G_SAT: the spec leaves the value OPEN ("~15-20 career games"). 18 IS THE SEAT'S CHOICE inside that
+# range and is recorded as such — it is not an owner number and it is not measured-optimal. It is the
+# midpoint of the spec's stated range rounded to the engine's own 18-game full-exposure convention.
+#
+# THE NAMED TRAP, and the discipline against it: sitout_ev (:1939-1947) reads the SAME LAM_SIT ramp for
+# a DIFFERENT purpose — games-at-pace within the season on the ns==0 sit-out arm. Re-pointing both from
+# one edit would move the whole sit-out population as a side effect. THIS DIAL IS READ AT EXACTLY ONE
+# SITE, _a_share below; sitout_ev's own `lam=float(np.interp(gp,...,LAM_SIT))` is not touched and does
+# not read A_GSAT. Proven by direct assertion, not asserted — see decouple_proof.py in the evidence dir.
+#
+#   RL_A_GSAT=0 (DEFAULT) => the within-season ramp exactly as built => byte-exact to the composed build.
+#   RL_A_GSAT=<g>         => saturation on career games with G_SAT=<g>. Admission bar unchanged.
+_A_GSAT=float(os.environ.get('RL_A_GSAT','0') or 0)
+def _a_share(p,Y):
+    """How much of the year-1+ price still leans on the fitted year-0 prior."""
+    fe=_fEy(Y,p); gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
+    if _A_GSAT>0:
+        cg=float(sum(x['games'] for x in p['scoring'] if x['year']<=Y))   # CAREER games as of the valuation (as-of, never future)
+        lam=float(np.interp(min(cg/_A_GSAT,1.0)*6.0,[0,1,2,3,4,5,6],LAM_SIT))   # DE-COUPLED: same ramp, career axis
+    else:
+        lam=float(np.interp(min(gy/fe,6.0),[0,1,2,3,4,5,6],LAM_SIT))   # LAM_SIT's own ramp, unchanged
+    return (1.0-lam)*_math.exp(-_ev_qual(p,Y)/_A_TAU)
+# ===== #334 ITEM C — THE CAP RELEASE UNDER THE EVIDENCE WEIGHT (ruling 3.8; C-Q1/2/3 ruled 5238860310).
+# C-Q1 (ruled): the ceiling binds THE TAUGHT YEAR-1 LEVEL, not the live ev. Before ITEM A there was no such
+# object on the year-1+ path — the cap census (docs/evidence/composition_2026-08-10/C_WIRING_PREP.md) found
+# NO upper cap binding on a year-1 ND row, and a literal cap on ev() would have CUT Mraz 86%. With ITEM A
+# wired the object exists: the anchor leg R x entry_anchor, which is exactly the retention-capped taught
+# level. C releases THAT cap upward on evidence:
+#       anchor_leg = R x entry_anchor x (1 + w x (H - 1))
+# w=0 reproduces the old cap EXACTLY, which is the design's own stated identity and is why the 24 sit-out
+# rows of the 58-row year-1 cohort are untouched by construction.
+# THE WEIGHT w = G x Q x gate, with the conventions RECOVERED FROM THE DIRECTIVE'S OWN SIX WORKED ROWS and
+# verified to reproduce every one of them (docs/evidence/composition_2026-08-10/README.md §2.2):
+#   G    = g/(g+8),  g = CAREER games total
+#   Q    = clip(sa/par, 0, 2),  sa = CAREER games-weighted average,
+#          par = par_at(pos, effpk, T) with T = clip(draft_age-18, 1, 6) — the eff_ten DRAFT-AGE bridge
+#   gate = min(e/anchor, 1) — the z gate. C-Q3 DEMONSTRATED on the composed build: 24 of 67 top-10-pick
+#          rows carry gate<1 and are materially protected, so the drafted gate SHIPS and the sa fallback
+#          does NOT install. `e` is the PRODUCTION price at this point in ev() — deliberately not a
+#          recursive ev() call, and it is the same object the anchor leg is being blended against.
+# DOUBLE-COUNTING: w reads sa exactly ONCE, through Q. The gate reads e and entry_anchor, never sa.
+# CONSUMERS: the year-1+ anchor leg (here) and the RUCK prior cap (ITEM E2). NOT the sit charge — sitout_ev
+# is the ns==0 arm and never reaches this line.
+C_H=float(os.environ.get('RL_C_H','1.13'))   # THE ONE NEW DIAL. Sized on the ruled PLAYED-ONLY basis (C-Q2) so the played-only year-1 landing enters [1.04,1.13]; admissible window [1.1024,1.3327] on the #336 basis, ladder in the act evidence. RL_C_H=1.0 => (1+w*0) => byte-exact no-release.
+_C_G0=8.0; _C_QMAX=2.0
+def _c_career(p):
+    gt=num=0.0
+    for s in p['scoring']:
+        if s['games']<=0: continue
+        gt+=s['games']; num+=s['games']*s['avg']
+    return gt,(num/gt if gt>0 else 0.0)
+def _c_w(p,Y,e_full,anchor):
+    """The evidence weight. Zero for a row with no games, by construction (G=0)."""
+    gt,sa=_c_career(p)
+    if gt<=0 or anchor<=0: return 0.0
+    T=int(min(max(_ageR(p)-18,1),6))                                  # the eff_ten draft-age bridge
+    par=float(PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),T))
+    G=gt/(gt+_C_G0)
+    Q=float(np.clip(sa/par,0.0,_C_QMAX)) if par>0 else 0.0
+    gate=min(e_full/anchor,1.0) if e_full>0 else 0.0
+    return G*Q*gate
+# ===== #334 ITEM A — THE FLOOR BASIS. DIAL-GATED MEASUREMENT VARIANT, DEFAULT OFF.
+# THE DESIGN QUESTION, not a defect claim: the directive's replacement line said "anchor leg, FLOOR
+# basis". What was implemented is LAM_SIT's SYMMETRIC blend, which borrows in BOTH directions — so a
+# hot year-1 row is dragged DOWN toward its anchor as well as a cold one being lifted UP. The floor
+# basis makes the borrowing ONE-WAY: the prior supports from below, production leads from above.
+#   RL_A_FLOOR=0 (DEFAULT) => the symmetric blend, byte-exact to the composed build.
+#   RL_A_FLOOR=1           => price = max(production-led value, blended value) at the A site.
+# Because blend = e_full + s*(anch - e_full), the blend exceeds e_full IFF anch > e_full. So the
+# floor is EXACTLY "apply the blend only where it raises the row", with no separate branch needed
+# and no discontinuity: at anch == e_full the two forms agree exactly.
+#
+# INTERACTION WITH THE SURPRISE LAW, stated because both act in the same neighbourhood and the order
+# required it be flagged rather than assumed away. THE COMPOSITION ORDER IMPLEMENTED: SUR acts inside
+# sitout_ev, on the sit-out path, and is NOT touched here; the floor acts at the A site in ev(); and
+# neither is applied to the other's output. The floor CANNOT undo SUR on a hot row: SUR's job on a
+# hot thin record is to shrink it toward the anchor, and the floor is INERT whenever anch < e_full
+# (it only ever raises). Hot rows stay shrinkable — that is the property the order asked me to
+# protect, and it holds by construction rather than by tuning.
+# WHERE THEY DO COMPOSE, and it is flagged as an interaction to watch rather than a defect: SUR's
+# surprise statistic s=|log(e_full/anchor)| is SYMMETRIC IN SIGN, so it also fires on a COLD thin
+# record and pushes it toward the anchor — i.e. UP. On cold thin rows SUR and the floor therefore
+# push the SAME way and their effects compose. That is the one place a double-lift can appear, and
+# the measurement prints its size rather than asserting it is small.
+_A_FLOOR=os.environ.get('RL_A_FLOOR','0')!='0'
+# ===== #334 ITEM A — THE EVIDENCE-FADED DRAG. The middle design between the symmetric blend and the
+# hard floor. The anchor's PULL-DOWN weakens in proportion to how much the player has PROVEN, while
+# the PULL-UP (support for a cold or evidence-less row) keeps the existing games-fade untouched.
+#   RL_A_DRAGFADE=0 (DEFAULT) => byte-exact to the composed build.
+#   RL_A_DRAGFADE=1           => in the DRAG case only, the anchor's weight s is scaled by (1-w).
+#
+# ONE-SA-READER DISCIPLINE, which the order required me to assert rather than assume. w is the ITEM C
+# evidence weight G*Q*gate, and it is now computed EXACTLY ONCE per call and used for both roles: the
+# C ceiling release on the anchor LEVEL, and the drag fade on the anchor WEIGHT. sa is therefore read
+# once per row, by one reader, exactly as before — this variant adds no second consumption of the
+# career average and no second par lookup.
+# HOW THE TWO ROLES INTERACT, stated rather than left to be discovered: they act in OPPOSITE
+# directions on a drag-case row and therefore cannot compound into a runaway. A high-evidence player
+# gets a LARGER C release (anch raised by 1+w*(C_H-1)) but a SMALLER drag weight (s scaled by 1-w);
+# the more proof he has, the more his own production leads and the less the raised ceiling can pull
+# him back. The compounding risk the order asked about is real in principle and absent here by sign.
+# CLAMP, disclosed because it is a real edge and not a formality: w = G*Q*gate is NOT bounded by 1 —
+# Q is clipped at _C_QMAX=2.0, so w can reach ~2 for a very-high-quality established row. An
+# unclamped (1-w) would go NEGATIVE and flip the anchor from a drag into a PUSH, which is not the
+# design. The scale is therefore clipped to [0,1]: at w>=1 the drag is fully faded out and the row is
+# priced on production alone, which is the intended limit, not a special case.
+_A_DRAGFADE=os.environ.get('RL_A_DRAGFADE','0')!='0'
+def _a_blend(p,Y,e_full):
+    tau=max(0.0,Y-cp.debutyr(p))+((_fEy(Y,p)**1.5) if Y>=cp.debutyr(p) else 0.0)   # sitout_ev's own depth clock
+    R=_R_surf(_sitout_cls(MA.gfut(p)),MA.effpk(p),tau)
+    anch0=R*entry_anchor(p)
+    w=_c_w(p,Y,e_full,entry_anchor(p))                               # THE ONE READ of the evidence weight; both roles below use this value
+    anch=anch0*(1.0+w*(C_H-1.0))                                     # #334 ITEM C: the cap release on the taught level
+    s=_a_share(p,Y)
+    if _A_DRAGFADE and anch<e_full:                                  # DRAG case only (anchor below production); support case keeps the games-fade
+        s=s*min(max(1.0-w,0.0),1.0)                                  # clipped: w can exceed 1 (Q<=2), and a negative weight would invert the leg
+    b=(1.0-s)*e_full+s*anch
+    return max(e_full,b) if _A_FLOOR else b                          # #334 A-FLOOR: one-way borrowing; RL_A_FLOOR=0 => byte-exact symmetric blend
 def _first_evidence(p,Y):                                     # the games-ramp family: ALL evidence is season Y
     return not any(x['games']>0 and x['year']<Y for x in p['scoring'])
 def _prod_path(p,Y):
@@ -1889,7 +2222,7 @@ def _staleness_grade(p,Y,pos):
     prior_qual=[x['year'] for x in p['scoring'] if x['year']<Y and x['games']>=6]
     if not prior_qual:
         return 0.0
-    qv=(live[0]['avg']*REF/era.get(Y,REF))/max(MA.REPL.get(pos,1e-9),1e-9)
+    qv=(live[0]['avg'])/max(MA.REPL.get(pos,1e-9),1e-9)   # RAW season avg (era normalization removed — #334 stage B owner ruling)
     gap=Y-max(prior_qual)
     return float(np.interp(qv,_D8Q,_D8G1 if gap==1 else _D8G2))
 def ev(p,Y=2026):
@@ -1897,7 +2230,12 @@ def ev(p,Y=2026):
     if delisted(p): return round(0.02*v0_start(p))
     e=_prod_path(p,Y)                                        # (3) isotonic guard inside; family games-axis smoothing
     if _isreal(p) and MA.gfut(p)=='RUCK':                  # W4/PR#44: cap PRIOR-DOMINATED ruck production leg at the production-derived ceiling (RL_W4_RUC=0 -> v2.5 1.4xPVC cap)
-        _cpv=(_ruc_ceiling(p,Y) if _W4RUC else RUC_PRIOR_CAP*_cap_basis(p)); _v0u=_v0_uncapped(p)  # bind iff ceil < e <= V0_uncapped (hot prior, no demonstrated growth); [#326: same per-division basis on the v2.5 fallback path]
+        # #334 ITEM E2: the ruck ceiling becomes EVIDENCE-YIELDING via ITEM C's weight — the same w, the
+        # same H, one reader. Applied HERE (the year-1+ pricing consumer) and deliberately NOT at
+        # _ruc_prior_cap, which is the YEAR-ZERO scaffold: releasing it there would move V0 itself and
+        # disturb the frozen surface, which is not what C releases. w=0 => x1.0 => byte-exact.
+        _cpv=(_ruc_ceiling(p,Y) if _W4RUC else RUC_PRIOR_CAP*_cap_basis(p)); _v0u=_v0_uncapped(p)
+        _cpv=_cpv*(1.0+_c_w(p,Y,e,float(entry_anchor(p)))*(C_H-1.0))  # bind iff ceil < e <= V0_uncapped (hot prior, no demonstrated growth); [#326: same per-division basis on the v2.5 fallback path]
         if _cpv<e<=_v0u: e=_cpv                               #   e>V0u (demonstrated) or e<=ceil (already low) -> byte-exact
     # W4 KPF (RL_KPFFIX): compress the ESTABLISHED-KPF loose residual only — SETTLED #9 / PR #42 T1-shape.
     # KPFs bunch near the lowest REPL bar (66.8) and the curve levers tiny production gaps into huge value gaps
@@ -1924,7 +2262,10 @@ def ev(p,Y=2026):
     with _form_anchor_clock(): el=PR.tenure(p,_fa_year(Y))          # LEG F3 §2.vi: the staleness/tenure clock keys on the FORM ANCHOR (BASE_REF year-arg + AGE_REF pin) — a developing pick is NOT relabeled "stalled prospect" purely by the forward lens advancing the clock (item-352 155-mislabeled-exits defect). k=0 identity by construction.
     pos=MA.gfut(p); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)); pr=bestlvl(p,Y)/max(1,par)
     if ns==0:                                                 # SIT-OUT: derived games-ramp treatment (V0-anchored, prorated, scoring-aware, continuous at graduation)
-        return round(sitout_ev(p,Y,e))
+        return round(sitout_ev(p,Y,e)*_h_cut(p,Y))            # #334 ITEM H: the ruled cuts, cell-qualified
+    e=e*_h_cut(p,Y)                                           # #334 ITEM H on the year-1+ arm (mature nonRD reaches it; sitter cells cannot, by definition)
+    if _A_ON and _isreal(p):                                  # #334 ITEM A: the anchor leg no longer stops at qualification — it fades (see _a_blend above)
+        e=_a_blend(p,Y,e)
     keyruc = pos in ('KPF','KPD','RUCK'); onset = (4 if keyruc else 3)
     if el>=onset and ns<=1:                                   # stalled: D8 graded release at evaluated year
         frac=0.25*max(0.4,1-0.10*(el-onset))*(1.6 if keyruc else 1.0)
@@ -2082,12 +2423,35 @@ assert (_V0CURVE_META.get('_v0surf_frozen') is True
 #     one pool slot. Stated as an equality over the whole pool population so a re-pointed branch is a build
 #     halt, not a board that quietly prices nine pathways at one number again. pool_value itself stays in the
 #     artifact for the pick side, the entrant layer and the display bands; those are not player prices.
+#     #334 ITEM B AMENDMENT. The entry-anchor equality is now stated WITH the ruled age factor on it:
+#     entry_anchor == his own signed level x _PL_F x _b_factor(p). The guard's protection is UNCHANGED and
+#     is what it always was — the BASIS must be the player's OWN division level, never the ladder's single
+#     pool slot. A re-pointed branch still halts here, because pool_value x _PL_F x _b_factor(p) does not
+#     equal pool_level(p) x _PL_F x _b_factor(p) for any division whose level differs from the pool slot.
+#     The factor is a SHAPE on top of that basis, not a substitute for it, so admitting it does not widen
+#     what the assert lets through. _cap_basis is deliberately unshaped (ITEM B's declared scope), so that
+#     half of the equality is untouched and still binds the ladder-currency site exactly as before.
 _POOL_ROWS_326=[p for p in MA.data if p.get('_pool')]
 _iso_bad=[p.get('player') for p in _POOL_ROWS_326
           if abs(_cap_basis(p)-float(MA.pool_level(p)))>1e-9
-          or abs(entry_anchor(p)-float(MA.pool_level(p))*_PL_F)>1e-6]
+          or abs(entry_anchor(p)-float(MA.pool_level(p))*_PL_F*_b_factor(p))>1e-6]
 assert not _iso_bad, ('#326 HALT: %d pool entrant(s) (%s) do not price off their own division level — the '
                       'single pool value is back in a player price.'%(len(_iso_bad),_iso_bad[:6]))
+# (2b) #334 ITEM B — THE C5 LEVEL-PRESERVING LAW, ASSERTED AT BUILD TIME, not merely reported in an
+#      evidence file. The pool year-0 age repair is a RESHAPE: it moves value between ages and must never
+#      move the pool's total. Stated over the whole live pool population so a mis-derived gradient, a lost
+#      renormaliser or a population change that silently breaks conservation is a BUILD HALT rather than a
+#      quiet lift. This is ITEM B's own law and it is the one thing about B that must never drift.
+_B_SUM_BEFORE=_math.fsum(float(MA.pool_level(p))*_PL_F for p in _POOL_ROWS_326)
+_B_SUM_AFTER=_math.fsum(entry_anchor(p) for p in _POOL_ROWS_326)
+assert _B_SUM_BEFORE<=0 or abs(_B_SUM_AFTER-_B_SUM_BEFORE)/_B_SUM_BEFORE<1e-9, (
+    '#334 ITEM B HALT: the pool year-0 age repair is NOT level-preserving — pool Sigma entry_anchor moved '
+    '%.6f -> %.6f (delta %.6f, %.3e relative). C5 requires the pool total held EXACTLY; only its '
+    'distribution across draft age may move.'
+    %(_B_SUM_BEFORE,_B_SUM_AFTER,_B_SUM_AFTER-_B_SUM_BEFORE,
+      abs(_B_SUM_AFTER-_B_SUM_BEFORE)/max(_B_SUM_BEFORE,1e-9)))
+print('#334 ITEM B WIRED: pool year-0 age gradient live on %d entrants (K=%.10f); pool Sigma v0 held at '
+      '%.4f (C5 level-preserving, asserted).'%(len(_POOL_ROWS_326),_b_renorm(),_B_SUM_AFTER))
 # A build's own report must not misstate its basis (#344): the frozen-load sentence is printed only when the
 # surface was in fact loaded from the freeze. On the declared lane the build says so, in its own words.
 print('#326 ENTRY ANCHOR WIRED: %d pool entrants anchor on their signed division level — ruck cap in ladder '
@@ -2250,7 +2614,7 @@ for nm in ['Harrison Jones','Dylan Stephens','Keidean Coleman']:
 print("  -> if band q50/q70 high vs recent, cond_prior is pricing career not decline; if q97 tail high, upside inflates")
 # refine: DECLINE/MEDIOCRE via RECENT production (last-2-season avg vs par), not just best
 def recent_ratio(p,Y=2026):
-    s=[a*REF/era.get(y,REF) for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6 and x['year']<=Y]][-2:]
+    s=[a for y,a in [(x['year'],x['avg']) for x in p['scoring'] if x['games']>=6 and x['year']<=Y]][-2:]
     return (np.mean(s)/max(1,PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),min(max(PR.tenure(p,Y),1),6)))) if s else 0.0
 print("\n  RECENT ratio (last-2 avg / par):")
 for nm in ['Harrison Jones','Dylan Stephens','Keidean Coleman','Oscar Ryan']:

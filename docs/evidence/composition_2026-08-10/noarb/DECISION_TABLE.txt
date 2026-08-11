@@ -1,0 +1,256 @@
+========================================================================================================
+THE DECISION TABLE — five engine variants on the CANONICAL no-arb instrument
+========================================================================================================
+  instrument      : noarb_table_338.py UNMODIFIED (md5 0f8220351c64c56ccfa90c60edcdfa5f)
+  population      : harness load_matrix ND filter — teaches_curve & pick 1..64 & year 2004..2022
+  cohort size     : 1197 entrants, IDENTICAL across all five variants and the stage-5 reference
+  aggregation     : pooled book ratio, mean(value at year N) / mean(v0) over the same included set
+  identity        : store d9a24282 · v0surf 6ef67f07db98 · 2645 records (all five variants)
+  step-1 gate     : PASS — the same script reproduces noarb_table_stage5.txt byte-for-byte
+                    (see REPRODUCTION.md); the instrument reproduces its own past output.
+
+--------------------------------------------------------------------------------------------------------
+### PROGRESSION — ALL picks 1-64   [canonical no-arb table, book ratio vs year 0]
+--------------------------------------------------------------------------------------------------------
+  variant       yr0      yr1      yr2      yr3      yr4      yr5      yr6      yr7       peak
+  -------------------------------------------------------------------------------------------
+  stage-5    1.0000   0.9908   1.1855   1.3471   1.4327   1.4306   1.3939   1.2108     1.4327   <- last published canonical table (REFERENCE)
+  main       1.0000   1.1239   1.3773   1.5098   1.5732   1.5670   1.5193   1.3194     1.5732
+  FULL       1.0000   0.9974   1.2401   1.4276   1.5310   1.5328   1.4927   1.2982     1.5328
+  V1         1.0000   1.0487   1.3103   1.5034   1.5844   1.5634   1.5074   1.3016     1.5844
+  V2         1.0000   1.0933   1.3163   1.5104   1.5870   1.5623   1.5044   1.2982     1.5870
+  V3         1.0000   1.1456   1.4217   1.5557   1.6390   1.5714   1.5154   1.3077     1.6390
+  n_incl       1197     1197     1197     1197     1197     1139     1075     1014
+
+--------------------------------------------------------------------------------------------------------
+### PROGRESSION — picks 1-20   [canonical no-arb table, book ratio vs year 0]
+--------------------------------------------------------------------------------------------------------
+  variant       yr0      yr1      yr2      yr3      yr4      yr5      yr6      yr7       peak
+  -------------------------------------------------------------------------------------------
+  stage-5    1.0000   1.0016   1.1872   1.3088   1.4293   1.4167   1.3442   1.1792     1.4293   <- last published canonical table (REFERENCE)
+  main       1.0000   1.1524   1.3680   1.4845   1.5975   1.5797   1.4944   1.3107     1.5975
+  FULL       1.0000   1.0386   1.2810   1.4278   1.5633   1.5532   1.4705   1.2916     1.5633
+  V1         1.0000   1.1013   1.3582   1.5070   1.6189   1.5851   1.4857   1.2953     1.6189
+  V2         1.0000   1.1574   1.3649   1.5144   1.6218   1.5842   1.4829   1.2919     1.6218
+  V3         1.0000   1.2213   1.4822   1.5607   1.6757   1.5930   1.4941   1.3024     1.6757
+  n_incl        377      377      377      377      377      357      337      317
+
+--------------------------------------------------------------------------------------------------------
+### PROGRESSION — picks 21-64   [canonical no-arb table, book ratio vs year 0]
+--------------------------------------------------------------------------------------------------------
+  variant       yr0      yr1      yr2      yr3      yr4      yr5      yr6      yr7       peak
+  -------------------------------------------------------------------------------------------
+  stage-5    1.0000   0.9737   1.1829   1.4077   1.4379   1.4524   1.4712   1.2602     1.4712   <- last published canonical table (REFERENCE)
+  main       1.0000   1.0811   1.3913   1.5478   1.5367   1.5481   1.5560   1.3322     1.5560
+  FULL       1.0000   0.9354   1.1785   1.4274   1.4824   1.5025   1.5254   1.3081     1.5254
+  V1         1.0000   0.9694   1.2381   1.4980   1.5325   1.5311   1.5395   1.3110     1.5395
+  V2         1.0000   0.9968   1.2430   1.5044   1.5347   1.5298   1.5363   1.3075     1.5363
+  V3         1.0000   1.0317   1.3305   1.5482   1.5837   1.5392   1.5470   1.3156     1.5837
+  n_incl        820      820      820      820      820      782      738      697
+
+========================================================================================================
+### YOUNG / PEAK BANDS — where the relativity question actually sits
+========================================================================================================
+  young = year 1 (the entrant's first priced season). peak = the variant's own maximum over
+  years 0-7. The RATIO young/peak is the number the relativity guard is about: it says how much
+  of a career's peak book value the young end is allowed to carry.
+
+  ALL picks 1-64
+    variant         yr1       peak young/peak      vs main
+    ------------------------------------------------------
+    main         1.1239     1.5732     0.7144        0.00%
+    FULL         0.9974     1.5328     0.6507       -8.92%
+    V1           1.0487     1.5844     0.6619       -7.35%
+    V2           1.0933     1.5870     0.6889       -3.57%
+    V3           1.1456     1.6390     0.6990       -2.16%
+
+  picks 1-20
+    variant         yr1       peak young/peak      vs main
+    ------------------------------------------------------
+    main         1.1524     1.5975     0.7214        0.00%
+    FULL         1.0386     1.5633     0.6644       -7.90%
+    V1           1.1013     1.6189     0.6803       -5.70%
+    V2           1.1574     1.6218     0.7137       -1.07%
+    V3           1.2213     1.6757     0.7288        1.03%
+
+  picks 21-64
+    variant         yr1       peak young/peak      vs main
+    ------------------------------------------------------
+    main         1.0811     1.5560     0.6948        0.00%
+    FULL         0.9354     1.5254     0.6132      -11.74%
+    V1           0.9694     1.5395     0.6297       -9.37%
+    V2           0.9968     1.5363     0.6488       -6.62%
+    V3           1.0317     1.5837     0.6514       -6.24%
+
+========================================================================================================
+### THE FREE-MONEY CHECK — book appreciation per step vs the discount that variant charges
+========================================================================================================
+  For each step year N-1 -> N the book appreciates by  ratio[N]/ratio[N-1] - 1.  The variant
+  charges a future discount at the rate its own schedule gives for the holder's CURRENT age at
+  the start of the step. Typical draft age is 18.00 (MEASURED: median age_draft in every band),
+  so at the start of step N-1 -> N the holder is 18 + (N-1).
+
+  FREE MONEY = appreciation exceeds the discount charged: the book is expected to grow faster
+  than the rate at which the engine discounts the future, so holding dominates and the price is
+  an arbitrage against the engine's own discount. Flagged "ARB". This is a within-variant
+  consistency test — each variant is judged against ITS OWN discount, never another's.
+
+  ALL picks 1-64
+    main    step        age   apprec.    discount    verdict    
+            yr0->yr1    18.0    +12.39%     14.00%    ok
+            yr1->yr2    19.0    +22.55%     14.00%    ARB  <-- free money
+            yr2->yr3    20.0     +9.62%     14.00%    ok
+            yr3->yr4    21.0     +4.20%     14.00%    ok
+            yr4->yr5    22.0     -0.39%     14.00%    ok
+            yr5->yr6    23.0     -3.04%     14.00%    ok
+            yr6->yr7    24.0    -13.16%     14.00%    ok
+
+    FULL    step        age   apprec.    discount    verdict    
+            yr0->yr1    18.0     -0.26%     14.00%    ok
+            yr1->yr2    19.0    +24.33%     14.00%    ARB  <-- free money
+            yr2->yr3    20.0    +15.12%     14.00%    ARB  <-- free money
+            yr3->yr4    21.0     +7.24%     14.00%    ok
+            yr4->yr5    22.0     +0.12%     14.00%    ok
+            yr5->yr6    23.0     -2.62%     14.00%    ok
+            yr6->yr7    24.0    -13.03%     14.00%    ok
+
+    V1      step        age   apprec.    discount    verdict    
+            yr0->yr1    18.0     +4.87%     13.00%    ok
+            yr1->yr2    19.0    +24.95%     13.00%    ARB  <-- free money
+            yr2->yr3    20.0    +14.74%     13.00%    ARB  <-- free money
+            yr3->yr4    21.0     +5.39%     13.00%    ok
+            yr4->yr5    22.0     -1.33%     13.40%    ok
+            yr5->yr6    23.0     -3.58%     13.80%    ok
+            yr6->yr7    24.0    -13.65%     14.20%    ok
+
+    V2      step        age   apprec.    discount    verdict    
+            yr0->yr1    18.0     +9.33%     12.00%    ok
+            yr1->yr2    19.0    +20.40%     12.00%    ARB  <-- free money
+            yr2->yr3    20.0    +14.75%     13.00%    ARB  <-- free money
+            yr3->yr4    21.0     +5.07%     13.00%    ok
+            yr4->yr5    22.0     -1.56%     13.50%    ok
+            yr5->yr6    23.0     -3.71%     14.00%    ok
+            yr6->yr7    24.0    -13.71%     14.50%    ok
+
+    V3      step        age   apprec.    discount    verdict    
+            yr0->yr1    18.0    +14.56%     10.00%    ARB  <-- free money
+            yr1->yr2    19.0    +24.10%     10.00%    ARB  <-- free money
+            yr2->yr3    20.0     +9.43%     10.00%    ok
+            yr3->yr4    21.0     +5.35%     11.00%    ok
+            yr4->yr5    22.0     -4.12%     11.00%    ok
+            yr5->yr6    23.0     -3.56%     12.00%    ok
+            yr6->yr7    24.0    -13.71%     12.00%    ok
+
+========================================================================================================
+### THE 140 / 130 ACCEPTANCE ENVELOPE
+========================================================================================================
+  The envelope is peak ~= 140% of year 0 and peak ~= 130% of year 1. IT IS A FRAME FOR JUDGING
+  RESULTS, NOT A TARGET ANY COMPONENT MAY BE TUNED TO (the dissolved-1.40-act lesson). No dial
+  in this act was moved toward it.
+
+  variant      peak/yr0  gap vs 1.40     peak/yr1  gap vs 1.30
+  --------------------------------------------------------------
+  stage-5         1.433         2.3%        1.446        11.2%
+  main            1.573        12.4%        1.400         7.7%
+  FULL            1.533         9.5%        1.537        18.2%
+  V1              1.584        13.2%        1.511        16.2%
+  V2              1.587        13.4%        1.452        11.7%
+  V3              1.639        17.1%        1.431        10.1%
+
+  THE PRE-EXISTING-GAP NOTE. Read the stage-5 and main rows before reading any variant row:
+  the peak/yr0 gap is ALREADY open on the last published canonical table and on origin/main,
+  before a single item of this act is applied. Whatever the envelope is telling us, it is not
+  telling us about the composition package — this is ROOT-ACT TERRITORY. The act's own
+  contribution is the DIFFERENCE between the main row and the FULL row, and nothing else.
+
+========================================================================================================
+### FLAG — THE STAGE-5 -> MAIN DRIFT (not this act, but it is on this instrument)
+========================================================================================================
+  The order pre-registered two outcomes for the decisive read of origin/main. Neither fits
+  cleanly, so the reading is reported as measured rather than forced into a branch:
+
+    (a) main in the ~1.4-1.5 family  -> no interim catastrophe, proceed
+    (b) main at ~1.7+                -> STOP, hunt the divergence commit-by-commit
+
+  MEASURED: main peaks at 1.573. That is NOT outcome (b) — the 1.74 the seat's naive check
+  produced was construction noise, exactly as pre-registered (it pooled all 2645 rows including
+  691 RD entrants whose small anchors inflate a sum/sum ratio; the canonical population is the
+  1197 ND teaching rows). But main is not squarely inside the 1.4-1.5 family either:
+
+    yrN       stage-5       main      drift
+    --------------------------------------
+    yr0         1.000      1.000      +0.0%
+    yr1         0.991      1.124     +13.4%
+    yr2         1.185      1.377     +16.2%
+    yr3         1.347      1.510     +12.1%
+    yr4         1.433      1.573      +9.8%
+    yr5         1.431      1.567      +9.5%
+    yr6         1.394      1.519      +9.0%
+    yr7         1.211      1.319      +9.0%
+
+  Peak moves 1.433 -> 1.573 (+9.8%) and year 1 moves 0.991 -> 1.124 (+13.4%) between the last
+  published canonical table and origin/main. That is real and it is NOT this act — every item
+  of the composition package is off in the main emit.
+
+  THE COMPARISON IS CONFOUNDED, AND I AM NOT GOING TO PRETEND OTHERWISE. Two things moved
+  between the stage-5 reference and origin/main, not one:
+      engine    98ed7070 (stage-5 BRANCH engine)  ->  c0a7e969 (origin/main)
+      store     37ced3ce                          ->  d9a24282
+      v0surf    3e8e50de5103                      ->  6ef67f07db98  (curve-keyed, so it moves
+                                                     when either the store or the curve moves)
+  The stage-5 table was emitted by a BRANCH engine that was never main. So this drift cannot be
+  attributed to any one commit from these numbers alone, and no attribution is offered here.
+
+  HUNT PLAN, REPORTED NOT EXECUTED (it is outside this act's scope and costs machine time the
+  owner has not authorised for it):
+    1. Separate store from engine: re-emit origin/main's engine against store 37ced3ce, and
+       the stage-5 engine against store d9a24282. Two emits, ~2.5 min each. That splits the
+       drift into a store component and an engine component before any commit is blamed.
+    2. Only if the engine component is the large one, bisect it across the candidate movers
+       named in the order (R22 apply, DOB, G1, era-in-breach) — each is one emit + one table.
+    3. Confirm which engine actually produced the stage-5 reference and whether it was ever
+       ancestral to main; if it was not, "drift" is the wrong word and the two tables were
+       never on the same line of development.
+
+  WHAT THIS DOES NOT AFFECT: the act's own decision. All five variants share one store, one
+  surface and one 1197-entrant population, and differ ONLY by engine dials. The main->FULL
+  difference is measured inside that closed set, so the drift shifts the whole table together
+  and cancels out of every within-table contrast. The relativity reading below is unaffected.
+
+========================================================================================================
+### THE READING  (contrasts only — THE LEVEL LAW binds every line of this block)
+========================================================================================================
+  The LEVEL of this ruler is not evidence and is not read as one. No line below says a book
+  value is high or low, or that any class of player is priced wrongly. Every line is a
+  CONTRAST measured inside this one table, between engines that differ only by dials.
+
+  1. THE RELATIVITY QUESTION SURVIVES THE CORRECTION, AND IT IS LARGER HERE THAN ON EITHER
+     EARLIER INSTRUMENT. main -> FULL moves year 1 by -11.3% and peak by -2.6%, so the
+     young/peak contrast moves -8.92%. The package does not cut the book evenly: it takes
+     materially more out of the year-1 end than out of the peak.
+
+       picks 1-20   young/peak -7.90%
+       picks 21-64  young/peak -11.74%
+     The cut is NOT uniform across the ladder — it is about half again as large on picks
+     21-64 as on picks 1-20. That asymmetry is a finding, not a dial to even out.
+
+  2. THE OWNER-ORDERED COUNTERBALANCE WORKS, PARTIALLY, AND IT IS ORDERED V1 < V2 < V3.
+     Recovery of the young/peak contrast against main, ALL picks 1-64:
+       FULL   young/peak vs main -8.92%
+       V1     young/peak vs main -7.35%
+       V2     young/peak vs main -3.57%
+       V3     young/peak vs main -2.16%
+     None of the three fully restores main on the full population. V3 comes closest.
+
+  3. THE TENSION THE OWNER HAS TO RULE ON, STATED PLAINLY. V3 recovers the most relativity
+     AND opens the most no-arb exposure. It is the only variant with an arbitrage step at
+     yr0->yr1 (+14.56% appreciation against the 10.00% it charges an 18-year-old), and it
+     carries the largest peak/yr0 reading of the five. The engine source predicted exactly
+     this ("watch the no-arb frame hardest here"), and the measurement confirms it.
+     That is a genuine trade between two things the owner values. IT IS FLAGGED, NOT SIZED:
+     no dial in this act was moved toward any of it, and the sizing word remains his.
+
+  4. THE FREE-MONEY COUNT is a within-variant test and reads: main 1 arbitrage step, FULL 2,
+     V1 2, V2 2, V3 2 — but V3's pair sits at the YOUNGEST steps, where a 10% discount is
+     charged against double-digit appreciation. The count alone understates it; the placement
+     is the point.

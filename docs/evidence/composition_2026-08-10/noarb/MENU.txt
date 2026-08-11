@@ -1,0 +1,803 @@
+====================================================================================================================
+THE SITTING'S MENU — all counterbalance candidates, one canonical table
+====================================================================================================================
+  instrument : noarb_table_338.py UNMODIFIED (md5 0f8220351c64c56ccfa90c60edcdfa5f)
+  population : 1197 ND teaching entrants (picks 1-64, draft 2004-2022), IDENTICAL on every row
+  aggregation: pooled book ratio, mean(value at year N)/mean(v0) over the same included set
+
+--------------------------------------------------------------------------------------------------------------------
+### PROGRESSION AND ENVELOPE — ALL picks 1-64
+--------------------------------------------------------------------------------------------------------------------
+  candidate family         yr0     yr1     yr2     yr3     yr4     yr5     peak      at  peak/yr0  peak/yr1
+  ---------------------------------------------------------------------------------------------------------
+  main     reference   1.0000  1.1239  1.3773  1.5098  1.5732  1.5670   1.5732     yr4     1.573     1.400
+  FULL     reference   1.0000  0.9974  1.2401  1.4276  1.5310  1.5328   1.5328     yr5     1.533     1.537
+  H120     H rungs     1.0000  0.9975  1.2405  1.4279  1.5313  1.5329   1.5329     yr5     1.533     1.537
+  H125     H rungs     1.0000  0.9976  1.2408  1.4282  1.5315  1.5331   1.5331     yr5     1.533     1.537
+  H130     H rungs     1.0000  0.9976  1.2411  1.4284  1.5317  1.5332   1.5332     yr5     1.533     1.537
+  AFLOOR   ITEM A      1.0000  0.9974  1.2507  1.4385  1.5362  1.5359   1.5362     yr4     1.536     1.540
+  ADRAG    ITEM A      1.0000  0.9974  1.2458  1.4352  1.5353  1.5355   1.5355     yr5     1.536     1.540
+  V4       discount    1.0000  1.1382  1.3643  1.5085  1.5637  1.5618   1.5637     yr4     1.564     1.374
+  V1       discount    1.0000  1.0487  1.3103  1.5034  1.5844  1.5634   1.5844     yr4     1.584     1.511
+  V2       discount    1.0000  1.0933  1.3163  1.5104  1.5870  1.5623   1.5870     yr4     1.587     1.452
+  V3       discount    1.0000  1.1456  1.4217  1.5557  1.6390  1.5714   1.6390     yr4     1.639     1.431
+  V5       discount    1.0000  1.0734  1.3152  1.4858  1.5665  1.5661   1.5665     yr4     1.567     1.459
+  AGSATF   de-couple   1.0000  1.0001  1.2508  1.4385  1.5343  1.5321   1.5343     yr4     1.534     1.534
+  AGSATD   de-couple   1.0000  0.9822  1.2333  1.4309  1.5329  1.5319   1.5329     yr4     1.533     1.561
+  C336P    #336 split  1.0000  0.9972  1.2398  1.4273  1.5306  1.5324   1.5324     yr5     1.532     1.537
+  C336E    #336 split  1.0000  1.0073  1.2555  1.4465  1.5518  1.5538   1.5538     yr5     1.554     1.543
+  C336C    #336 split  1.0000  1.0882  1.3219  1.4740  1.5515  1.5464   1.5515     yr4     1.552     1.426
+  no336    #336 split  1.0000  1.0992  1.3384  1.4935  1.5725  1.5676   1.5725     yr4     1.573     1.431
+  XW       DESIGN      1.0000  1.0884  1.3585  1.4941  1.5660  1.5500   1.5660     yr4     1.566     1.439
+  STACK    STACKED     1.0000  1.1708  1.4395  1.5550  1.6027  1.5838   1.6027     yr4     1.603     1.369
+  SHIP     SHIPPED     1.0000  1.0884  1.3586  1.4941  1.5660  1.5500   1.5660     yr4     1.566     1.439
+
+  Envelope reference: peak/yr0 ~ 1.40 and peak/yr1 ~ 1.30. A FRAME FOR JUDGING, NOT A TARGET.
+  The peak/yr0 gap is PRE-EXISTING — already open on main before any item of this act applies.
+
+====================================================================================================================
+### YOUNG/PEAK CONTRAST vs main — and whether the restoration lands where the cut fell
+====================================================================================================================
+  The package's cut concentrated in picks 21-64. A candidate that restores only 1-20 has not
+  restored the band that actually lost. 0.00% means main's contrast is exactly restored.
+
+  candidate family        ALL picks 1-64        picks 1-20       picks 21-64
+  --------------------------------------------------------------------------
+  main     reference             +0.00%            +0.00%            +0.00%
+  FULL     reference             -8.92%            -7.90%           -11.74%
+  H120     H rungs               -8.91%            -7.91%           -11.75%
+  H125     H rungs               -8.92%            -7.91%           -11.76%
+  H130     H rungs               -8.92%            -7.90%           -11.77%
+  AFLOOR   ITEM A                -9.12%            -8.13%           -12.09%
+  ADRAG    ITEM A                -9.08%            -8.11%           -12.05%
+  V4       discount              +1.89%            +5.30%            -3.93%
+  V1       discount              -7.35%            -5.70%            -9.37%
+  V2       discount              -3.57%            -1.07%            -6.62%
+  V3       discount              -2.16%            +1.03%            -6.24%
+  V5       discount              -4.08%            -1.89%            -8.00%
+  AGSATF   de-couple             -8.76%            -7.61%           -12.00%
+  AGSATD   de-couple            -10.31%            -8.90%           -14.08%
+  C336P    #336 split            -8.91%            -7.90%           -11.74%
+  C336E    #336 split            -9.26%            -8.10%           -12.31%
+  C336C    #336 split            -1.82%            -0.61%            -3.65%
+  no336    #336 split            -2.15%            -0.81%            -4.23%
+  XW       DESIGN                -2.71%            -1.25%            -3.90%
+  STACK    STACKED               +2.26%            +5.06%            -1.41%
+  SHIP     SHIPPED               -2.71%            -1.25%            -3.89%
+
+====================================================================================================================
+### THE FREE-MONEY MARGIN AT yr0->yr1, PER CANDIDATE, AGAINST ITS OWN DISCOUNT
+====================================================================================================================
+  Typical draft age is 18.00 (MEASURED: median age_draft in every band), so the holder is 18
+  at the start of the first step. Each candidate is judged against the rate ITS OWN schedule
+  charges an 18-year-old — never another candidate's. A NEGATIVE margin is free money: the
+  book grows faster than the engine discounts the future, and holding dominates.
+
+  candidate family              yr1      apprec.    own disc.     margin
+  ----------------------------------------------------------------------
+  main     reference        1.1239       12.39%       14.00%      1.61%
+  FULL     reference        0.9974       -0.26%       14.00%     14.26%
+  H120     H rungs          0.9975       -0.25%       14.00%     14.25%
+  H125     H rungs          0.9976       -0.24%       14.00%     14.24%
+  H130     H rungs          0.9976       -0.24%       14.00%     14.24%
+  AFLOOR   ITEM A           0.9974       -0.26%       14.00%     14.26%
+  ADRAG    ITEM A           0.9974       -0.26%       14.00%     14.26%
+  V4       discount         1.1382       13.82%       11.00%     -2.82%   <-- ARB
+  V1       discount         1.0487        4.87%       13.00%      8.13%
+  V2       discount         1.0933        9.33%       12.00%      2.67%
+  V3       discount         1.1456       14.56%       10.00%     -4.56%   <-- ARB
+  V5       discount         1.0734        7.34%       12.00%      4.66%
+  AGSATF   de-couple        1.0001        0.01%       14.00%     13.99%
+  AGSATD   de-couple        0.9822       -1.78%       14.00%     15.78%
+  C336P    #336 split       0.9972       -0.28%       14.00%     14.28%
+  C336E    #336 split       1.0073        0.73%       14.00%     13.27%
+  C336C    #336 split       1.0882        8.82%       14.00%      5.18%
+  no336    #336 split       1.0992        9.92%       14.00%      4.08%
+  XW       DESIGN           1.0884        8.84%       14.00%      5.16%
+  STACK    STACKED          1.1708       17.08%       12.00%     -5.08%   <-- ARB
+  SHIP     SHIPPED          1.0884        8.84%       13.00%      4.16%
+
+  NOTE ON THE DISCOUNT CANDIDATES: a lower discount is not a free win. It lifts the book AND
+  narrows this margin at the same time, because the same schedule that raises young value is
+  the schedule the appreciation is measured against. That is why the margin is printed beside
+  the lift rather than under it.
+
+====================================================================================================================
+### WHAT THIS TABLE DOES NOT CONTAIN
+====================================================================================================================
+  MIXES ARE NOT MEASURED. The menu names mixes (e.g. A-floor + V4) as candidates, and none is
+  on this table because none has been emitted. Their effects are NOT additive and must not be
+  read off by adding two rows: A-floor and the discount variants both act on the young end,
+  and the per-item decomposition already shows this package's items interact. Any mix the
+  sitting wants costs one emit (~2.5 min) and gets its own row, measured, not inferred.
+
+  H IS ON THE TABLE BUT IS NOT A YEAR-1 CANDIDATE. The H rungs are shown because they were
+  ordered and run, but the binding diagnostic (H_LADDER.txt) shows H reaches 0.2% of year-1
+  cells and 11.0% of year-4 cells — it is a years-3-to-5 dial, and no value of H changes that.
+  Its rows are here for completeness, not as live counterbalance options.
+
+====================================================================================================================
+### CANDIDATE VERDICTS — three rows are CLOSED, one is open with a diagnosis
+====================================================================================================================
+
+  CLOSED — H RUNGS (H120/H125/H130). H is NOT a year-1 dial and no ceiling makes it one.
+    Binding diagnostic: H reaches 0.2% of ND year-1 cells against 11.0% of year-4 cells, ~66x
+    more often at year 4. ITEM C's release is evidence-weighted and year 1 is the year with no
+    evidence. Across H 1.13->1.30 the year-1 book moved +0.0002. Not a sizing problem.
+
+  CLOSED — A-AS-FLOOR. Zero ND year-1 movers, exactly as predicted BEFORE the emit.
+    ITEM A cannot act at cohort year 1 by a mutual exclusion between its own two gates:
+    reaching _a_blend requires ns>=1, which at year 1 forces gy/fE>=6, which pins
+    LAM_SIT[6]=1.0, which makes A's share EXACTLY 0. The floor is max(e_full, b) and at s=0,
+    b IS e_full. Correctly implemented at a site that is structurally silent at year 1.
+    It does act from year 2 (60/96/76/52 cells at yr2-yr5).
+
+  CLOSED — A-EVIDENCE-FADED DRAG. Same exclusion, same result: zero ND year-1 movers,
+    matching the filed prediction. Moves yr2-yr5 (60/96/70/48), slightly gentler than the
+    floor as designed. Both A variants are sound designs wired to a year-1-silent site.
+
+  OPEN, WITH ITS PRE-REGISTRATION BREACHED AND THE CAUSE NAMED — V4.
+    The pre-registration said the age-22 rate equals the 14% baseline, so year 4 would be
+    unchanged. MEASURED: yr4 1.5310 -> 1.5637, +2.1%. The breach is real and is reported as
+    one. THE DIAGNOSIS, with the candidate causes tested rather than assumed:
+
+      (c) KEYING — RULED OUT BY DIRECT TEST. Calling the engine's own age_disc() in-process
+          under mode 4 returns EXACTLY 0.14000 at ages 22.0, 22.5 and 23.0 — identical to
+          LENS[bal]=0.14. The rate function is correct and IS current-age keyed.
+      (b) DENOMINATOR — RULED OUT WITH A NUMBER. sum(v0) over the population moves +0.0044%,
+          and only 1 of 1197 v0 rows moves at all. The frozen year-zero surface is intact and
+          the ratio denominator is not the story.
+      (a) MATURE TAIL — WRONG SIGN. Entrants aged 23+ at draft are 26-31 at yr4 and see
+          15-16% under V4, which CUTS. It cannot produce a lift.
+
+      THE ACTUAL CHANNEL — THE PEAK ESTIMATE. Restricting to rows whose CONTINUOUS age at
+      year 4 lies in [22,23], where V4 charges exactly the baseline rate, 721 of 815 still
+      moved. For those 815 rows:
+          yr4 value uplift   median +2.459%   mean +2.390%
+          peak field uplift  median +2.793%   mean +5.717%
+      The peak uplift TRACKS the value uplift. The direct discounting of these players is
+      unchanged; what moved is the PEAK ESTIMATE they are priced against, which is itself a
+      forward-discounted object computed where V4 charges 11-13% rather than 14%. So the
+      age-dynamic discount does not stay inside the year it is keyed to — it propagates
+      through the peak estimate into later years.
+
+      CONSEQUENCE: V4's year-4 number is NOT a clean "unchanged" baseline, and the peak/yr0
+      and peak/yr1 columns for every discount variant should be read knowing the peak itself
+      moved. This is REPORTED, NOT REPAIRED — changing where the peak estimate takes its
+      discount is a wiring decision outside this act, and it is the owner's call.
+
+====================================================================================================================
+### THE DECOMPOSITION COLUMN — where the year-1 drop actually lives
+====================================================================================================================
+  Single-item removal on the same instrument (full table in DECOMP.txt). Of the -0.1265
+  (-11.3%) main->FULL year-1 drop:
+
+      #336 reference layer   80.5%      (657 ND year-1 cells moved)
+      the surprise law       10.8%      (269)
+      ITEM A                  0.0%      (0)
+      ITEM H                  0.0%      (1)
+      interaction residual    8.8%      (not normalised away)
+
+  READ THIS BESIDE THE VERDICTS. Every counterbalance ordered so far — H rungs, A-floor,
+  A-drag — acts on ITEM A's site or ITEM C's. Those sites jointly own 0.0% of the year-1
+  drop. The only candidate that moves year 1 at all is the discount (V4: 0.9974 -> 1.1382),
+  and it does so by repricing the whole book rather than by restoring what was taken.
+  A year-1 counterbalance that acts where the value was lost would have to act on #336 or
+  the surprise law. THAT IS THE OWNER'S CALL. Nothing is re-sited here.
+
+====================================================================================================================
+### HALT-GRADE — ITEM A'S RULED PURPOSE IS PARTLY UNDELIVERED  (full audit: A_YEAR1_AUDIT.md)
+====================================================================================================================
+  D1, the defect A was ruled to fix, fires at the MOMENT OF QUALIFICATION — a player's first
+  qualifying game, which for a first-season qualifier IS cohort year 1. At exactly that moment
+  A's share is EXACTLY 0, so the taught year-0 correction is still discarded there, as before
+  ITEM A. Built-A repairs only the years-2+, partial-season version of the defect.
+
+  Measured over all 720 ND cells A actually moves, by games in that as-of season:
+      >=6 games (full season, lam=1 pins the share to 0)     0 cells
+      1-5 games (partial)                                  531
+      0 games / absent, with a prior qualifying season      189
+  A NEVER MOVES A >=6-GAME ROW AT ANY CAREER YEAR.
+
+  THE FADE LADDER (v1 0.3589 -> v6 0.0038) DOES NOT CONTRADICT THIS. It was measured on a
+  synthetic holding "4 games this season" — below the six-game pin — to isolate the pedigree
+  fade while the games factor sat fixed. Its "v1" means career year 1 WITH 4 GAMES, not cohort
+  year 1. item_a_verify.py itself reported the real-population v1 as 0.0000 and explained why;
+  that disclosure was not carried into the act's account of what A delivers.
+
+  Do NOT weigh A's contribution to the year-1 question as delivered. The decomposition already
+  shows the consequence: ITEM A owns 0.0% of the year-1 drop.
+
+====================================================================================================================
+### THE FINAL TABLE — the owner's shortlist on one instrument, INCLUDING THE STACK
+====================================================================================================================
+  instrument: noarb_table_338.py UNMODIFIED (md5 0f8220351c64c56ccfa90c60edcdfa5f) · population
+  1197 ND teaching entrants (picks 1-64, classes 2004-2022), IDENTICAL on every row · aggregation
+  pooled book ratio mean(value at year N)/mean(v0) over the same included set · busts score 0 and
+  stay in the denominator. EVERY candidate is DIAL-GATED and DEFAULT OFF; none is adopted.
+
+  EACH ROW IS JUDGED AGAINST THE RATE ITS OWN SCHEDULE CHARGES AN 18-YEAR-OLD, never another
+  row's. A NEGATIVE margin is FREE MONEY: the book grows faster than the engine discounts, and
+  holding dominates. That is the disqualifying condition, not a preference.
+
+  row      family        yr1     yr2     yr3     yr4     yr5   apprec    disc   margin  verdict
+  ---------------------------------------------------------------------------------------------
+  main     reference  1.1239  1.3773  1.5098  1.5732  1.5670   12.39%  14.00%    1.61%    legal
+  FULL     reference  0.9974  1.2401  1.4276  1.5310  1.5328   -0.26%  14.00%   14.26%    legal
+  V2       discount   1.0933  1.3163  1.5104  1.5870  1.5623    9.33%  12.00%    2.67%    legal
+  V5       discount   1.0734  1.3152  1.4858  1.5665  1.5661    7.34%  12.00%    4.66%    legal
+  XW       DESIGN     1.0884  1.3585  1.4941  1.5660  1.5500    8.84%  14.00%    5.16%    legal
+  AGSATF   de-couple  1.0001  1.2508  1.4385  1.5343  1.5321    0.01%  14.00%   13.99%    legal
+  AGSATD   de-couple  0.9822  1.2333  1.4309  1.5329  1.5319   -1.78%  14.00%   15.78%    legal
+  STACK    STACKED    1.1708  1.4395  1.5550  1.6027  1.5838   17.08%  12.00%   -5.08%      ARB
+
+  READING THE ROWS, in one line each:
+    main    the engine before this act. The frame everything else is measured against.
+    FULL    the composition package as it stands. Year 1 lost 11.3% and this is where it sits.
+    V2      an earlier owner ladder, kept for comparison; it has NO 14% shelf at age 22.
+    V5      the owner's fifth ladder, 22/23 shelf explicit. Lifts year 1 and stays legal.
+    XW      the #336 design: the par sample weighted by exposure. Largest single legal lift.
+    AGSATF  the ramp de-couple as a FLOOR. Makes ITEM A act at year 1 at last; tiny in size.
+    AGSATD  the ramp de-couple with faded drag. It LOWERS year 1 — see the de-couple section.
+    STACK   XW and V5 together, on V5's own discount frame.
+
+====================================================================================================================
+### ROUND 3 — V5, THE OWNER'S FIFTH LADDER  (the question it was built to answer, and the answer)
+====================================================================================================================
+  The owner asked why year 4 is better under V4 than V2 "when both have 14 from 22", and proposed
+  V5. THE PREMISE DOES NOT HOLD, and V5 is built on the correction. V2 has NO 14% shelf at 22: its
+  knots join 21 smoothly to 25, so V2 charges 13.5% at age 22. V4 pins 22 at exactly 14%. Both
+  reach 15% at 25, so the 25-vs-26 boundary the owner named is not the difference either.
+  V5 states the 22/23 shelf as its OWN pair of knots, which is what distinguishes it from V2.
+
+  age            18     19     20     21     22     23     24     25     26     27    28+
+  ---------------------------------------------------------------------------------------
+  V2 (%)       12.0   12.0   13.0   13.0   13.5   14.0   14.5   15.0   15.0   15.0   16.0
+  V4 (%)       11.0   11.0   12.0   13.0   14.0   14.0   14.5   15.0   15.0   15.0   16.0
+  V5 (%)       12.0   12.5   13.0   13.5   14.0   14.0   14.5   15.0   15.0   15.5   16.0
+  (verified by direct call of the engine's own _pw_interp BEFORE the emit)
+
+  V5 IS THE FIRST DISCOUNT VARIANT THAT LIFTS YEAR 1 AND STAYS LEGAL.
+    yr1 1.0734   yr4 1.5665   margin +4.66% — POSITIVE, i.e. NO ARBITRAGE.
+    V4 (+13.82% appreciation vs 11.00% charged) and V3 (+14.56% vs 10.00%) are both ARB. V5
+    lifts year 1 by 7.6% over FULL and still charges more than the book grows.
+
+  PRE-REGISTERED (PREREG_ROUND3.md), TWO BREACHED, REPORTED AS BREACHES:
+    P1.1  yr4 in 1.555-1.570 and above FULL   MEASURED 1.5665                       HELD
+    P1.2  yr1 in 1.100-1.135 (between V2/V4)  MEASURED 1.0734 — BELOW V2's 1.0933   BREACHED
+    P1.3  margin better than V4's -2.82%,     MEASURED +4.66% — better than V4 but
+          registered range -1.5% to +2.5%     outside the registered band           BREACHED
+
+  THE SEAT'S ERROR, OWNED. P1.2 assumed V5 would sit BETWEEN V2 and V4 on year 1. It cannot:
+  V5 is dearer than V2 at ages 19, 21, 22 and 27 and equal everywhere else, so V5 DOMINATES V2 as
+  a discount schedule and must lift year 1 LESS than V2, not more. The arithmetic was available
+  before the emit from the same knot table printed above and the seat did not do it. The margin
+  band in P1.3 inherited the same error. The measured numbers stand; the prediction does not.
+
+  WHY THE yr4 SHELF WORKED. P1.1 held: V5 and V4 are IDENTICAL at ages 22-26, so a player drafted
+  at 18 sees the same rate through his year-4 season, and yr4 lands 1.5665 against V4's 1.5637 —
+  a 0.2% gap, from the young-side rate reaching year 4 through the PEAK ESTIMATE. That channel is
+  the one the V4 diagnosis already named: the peak a player is priced against is itself a
+  forward-discounted object, so an age-keyed discount does not stay inside the year it is keyed
+  to. Read every discount variant's peak/yr0 and peak/yr1 column knowing the peak itself moved.
+
+====================================================================================================================
+### ROUND 3 — THE RAMP DE-COUPLE, MEASURED  (was SPECIFIED BUT NOT BUILT; it is now built and emitted)
+====================================================================================================================
+  One six-game threshold was doing two jobs: ADMISSION (ns>=1 needs a qualifying season) and
+  SATURATION (lam hits LAM_SIT[6]=1.0, zeroing A). At year 1 they are mutually exclusive, so A
+  moved 0 of 1197 year-1 cells. The change keeps the admission bar EXACTLY as built and de-couples
+  only the saturation: the production weight now saturates on CAREER games against G_SAT.
+  Dial RL_A_GSAT, default 0 (off, byte-exact). G_SAT=18 is the SEAT'S choice inside the spec's
+  open ~15-20 range — not an owner number, not measured-optimal.
+
+  form                          yr1      yr4    margin   yr1 movers  (>=6g)   up/down   median move
+  ----------------------------------------------------------------------------------------------------
+  FULL     (reference)           0.9974   1.5310    14.26%          0        0      0/0        --
+  AGSATF   de-couple + A-FLOOR   1.0001   1.5343    13.99%         41       41     41/0     +4.19%
+  AGSATD   de-couple + A-DRAGFADE   0.9822   1.5329    15.78%        294      294     41/253   -3.58%
+
+  THE MOVERS ARE EXACTLY THE ROWS ITEM A COULD NEVER REACH. Every single year-1 mover in both
+  forms is a FULL-SEASON row (>=6 games) — 41 of 41 and 294 of 294. Under built-A that count was
+  ZERO at every career year, by the mutual exclusion. The de-couple does what it was specified to.
+
+  PRE-REGISTERED AND HELD (PREREG_ROUND3.md, filed before the emits):
+    P2.1  A-FLOOR yr1 RISES, small          predicted 1.000-1.020   MEASURED 1.0001   HELD
+    P2.2  A-DRAGFADE yr1 FALLS below FULL   predicted 0.960-0.997   MEASURED 0.9822   HELD
+    P2.3  yr1 full-season movers nonzero    predicted > 0           MEASURED 41 / 294 HELD
+    P2.4  yr4 within +/-0.5% of FULL        predicted +/-0.5%       MEASURED +0.22% / +0.12%  HELD
+    P2.6  sitout_ev byte-unchanged          md5 must match          MEASURED match     HELD
+
+  THE SPEC'S OWN EXPECTATION IS BREACHED FOR A-DRAGFADE, AND THE BREACH WAS FILED IN ADVANCE.
+  RAMP_DECOUPLE_SPEC.md predicted "Year 1 rises, by construction" for BOTH admissible forms and
+  put A-DRAGFADE "between FULL and de-couple+floor". It falls BELOW FULL instead. The reason was
+  measured before the emit and written into the pre-registration: of the 416 rows that reach the
+  A site at year 1, 83.2% are DRAG rows (anchor BELOW production) and the pooled anchor sits at
+  0.515x production. The spec reasoned from the anchor being a support; on the real year-1
+  population it is mostly a drag. A-FLOOR is inert on drag rows, which is why it still rises.
+
+  THE sitout_ev TRAP, PROVEN CLOSED (decouple_proof_OFF.txt / decouple_proof_ON.txt):
+    static  : every read of the dial is inside _a_share; sitout_ev's body contains no reference.
+    dynamic : sitout_ev over 15,882 (player x year x e_full) evaluations hashes to
+              2a11b8b17a854e33d9d51ab050581021 under RL_A_GSAT=0 AND under RL_A_GSAT=18 — IDENTICAL.
+    non-vacuity: _a_share over the same pass hashes 53640643... vs 88b9c45c... — DIFFERENT. So the
+              proof can tell "the dial did nothing anywhere" apart from "it did something, elsewhere".
+
+  MRAZ, per form (board build, his pick-35 frozen ruler PVC0[35]=561):
+    FULL 1649 = 2.939x   A-FLOOR 1649 = 2.939x   A-DRAGFADE 1649 = 2.939x   (V5: 1712 = 3.052x)
+    He is UNMOVED by both de-couple forms: he sat out his first season, so he is on the ns==0
+    sit-out arm, which this dial does not touch. Inside the owner's <=3.0x target in every arm
+    except V5, which sits at 3.052x — inside the 3.5-3.8x slack the owner granted.
+
+  SCOPE CAVEAT, UNCHANGED AND STILL BINDING: this makes ITEM A deliver its ruled purpose. It is
+  NOT a counterbalance to the measured year-1 drop. A-FLOOR recovers +0.0027 of the -0.1265.
+
+====================================================================================================================
+### ROUND 3 — THE #336 CHANNEL SPLIT  (the owner asked what a #336 design would look like)
+====================================================================================================================
+  #336 owns 80.5% of the main->FULL year-1 drop: FULL 0.9974 -> no336 1.0992, a give-back of
+  +0.1018 (about -9.1pp of the -11.3% total). Until now it was ONE LUMP with no kill-switch.
+  Round 3 gives it three declared channel levers and splits the lump by counterfactual emit.
+
+  channel                                        lever                    yr1     give-back   share
+  ----------------------------------------------------------------------------------------------------------
+  (a) the P-LEG  (bust charge on picks/unresolved) RL_336_NOP=1               0.9972    -0.0002    -0.2%
+  (b) the DE-SURVIVORED E-LEVELS                 RL_336_SURVLVL=1 RL_336_CLAMP=1   1.0073    +0.0099     9.7%
+  (c) the PAR_BUILD LEG (the fitted par sample)  RL_336_PARSURV=1           1.0882    +0.0908    89.2%
+  SUM OF THE THREE                                                                    +0.1005    98.7%
+  INTERACTION RESIDUAL (printed, not normalised)                                      +0.0013     1.3%
+  WHOLE LAYER (whole-commit revert of 9a8bbd9)   no dial exists             1.0992    +0.1018   100.0%
+
+  THE ANSWER, AND IT REFUTES THE SEAT'S OWN PRE-REGISTRATION. P3.1 predicted the P-leg would be
+  the LARGEST channel at over 50% of the give-back. It is the SMALLEST, at -0.2% — and the sign
+  is negative, so reverting the bust charge makes year 1 very slightly WORSE. BREACHED, reported
+  as a breach, and nothing was retuned to rescue it. P3.3 predicted the par leg under 20%; it is
+  89.2%. BREACHED. Only P3.2 (E-levels under 20%) held, at 9.7%.
+
+  WHY THE P-LEG IS INERT, from the code: amendment 3 already reconciled the anchor-side charge to
+  D = 0.999644 ("the forward band already charges establishment failure in full"), so a REAL
+  player never sees P at his anchor. What P still scales is BASEPK_REG, the PICK table — and the
+  year-zero price the cohort ratio divides by comes from the FROZEN v0 surface, not from that
+  table. Measured: 1 v0 mover out of 1197 in every arm, sum(v0) within 0.02%.
+
+  THE CEILING FOR A RE-TIMING DESIGN, which is what the owner's question was really asking:
+  bust charge that can be honestly RE-TIMED across career years is the P-leg, and the P-leg owns
+  -0.2% of the -9.1pp, i.e. about -0.02pp. THE RE-TIMEABLE CHANNEL IS EMPTY. A design that
+  re-times the bust charge cannot recover the year-1 drop, because the year-1 drop is not there.
+
+  WHERE IT ACTUALLY IS: 89.2% in the par_build leg — the change to WHICH SEASONS the par surface
+  is fitted to (from ">=6 games at that tenure" to "every ever-establisher's played season").
+  That change is FRONT-LOADED by construction and the effect is reproduced independently in
+  design336_probe_out.txt: the tenure-1 cell level falls to 0.897 of the old sample and the cut
+  fades to 0.978 by tenure 6. Its price effect therefore lands on year 1 and washes out by year 6.
+
+  NOT DESIGN TERRITORY, and this is the owner's standing ruling, not a seat opinion: channels (b)
+  and (c) ARE the honesty repair. Softening the de-survivored levels re-admits survivor bias.
+  Their counterfactual arms exist to BOUND the design and are not candidates. NO DESIGN SHIPS
+  FROM THIS TABLE; see DESIGN_336_MEMO.md for the two mechanisms probed and their ceilings.
+
+  ONE HONEST QUALIFICATION ON ROW (b). The amendment-2 monotonicity guard (basepk_est >= basepk)
+  is ALREADY BREACHED AT THE COMPOSED BUILD in 1 cell — (KPD, band 0), by -0.4465 points
+  (-0.59%). _A2_GUARD is only a computed list; nothing raises on it. Row (b)'s arm carries 2
+  breaches instead of 1, in RUCK bands 0 and 1 (-0.2515 and -0.6190). Isolated by probe: the
+  v3.4 clamp alone does not cause it, the survivor sample does. Row (b) is therefore the least
+  trustworthy of the three, and it is the smallest, so the reading is not sensitive to it.
+
+====================================================================================================================
+### ORDER 4 — THE #336 DESIGN: EXPOSURE-WEIGHTED PAR  (owner word "let's look at your 336 design")
+====================================================================================================================
+  WHAT IT IS. The par surface is a PER-GAME benchmark, and it is the denominator of ITEM C's
+  Q = sa/par where sa is the career GAMES-WEIGHTED average. Today every observation enters the fit
+  with EQUAL weight, so a one-game debut counts as much as a twenty-game season and the fit answers
+  "the average of season-averages". The dial weights each observation by its own exposure,
+  min(games, 18). NOTHING IS DROPPED: every row of the #336 bust-inclusive sample stays in.
+
+  IT CLEARED A KILL TEST BEFORE IT WAS WIRED. The suspicion was that exposure weighting is survivor
+  bias by another door, because busts have little exposure. Three pre-registered criteria, all
+  fixed in PREREG_ORDER4.md before the grid ran (full grid: XW_HONESTY.txt):
+    A  it must not reproduce the survivors-only sample. 44 informative (tenure x band) cells:
+       7 coincide, 37 DIVERGE. Pooled, tenure 1 coincides and tenures 2-6 all diverge.
+    B  the sub-6-game rows must keep real weight. They keep 4.8% of pooled fit weight against
+       19.7% of the row count (11.5% vs 36.7% at tenure 1) — down-weighted ~4x, NOT dropped.
+    C  the added rows must still move the estimate. They pull it 3.05% below the survivors-basis
+       at tenure 1, fading to 0.54% at tenure 6.
+  AND THE FINDING THAT SETTLES IT: at tenure 1 in the LATE pick bands the exposure-weighted par
+  lands BELOW the old survivors-only par (21-27: 54.37 vs 54.75 · 28-35: 55.13 vs 56.75 · 36-48:
+  54.82 vs 56.20 · 49-99: 59.78 vs 59.91). In exactly the cells where late-pick bust risk
+  concentrates it is HARSHER than the sample the owner ruled out. Survivor bias cannot do that.
+
+  THE MEASURED ROW, canonical instrument:
+
+    row                       yr1      yr2      yr3      yr4      yr5   apprec.   disc   margin
+    ----------------------------------------------------------------------------------------
+    main                   1.1239   1.3773   1.5098   1.5732   1.5670    12.39%  14.00%    1.61%
+    FULL                   0.9974   1.2401   1.4276   1.5310   1.5328    -0.26%  14.00%   14.26%
+    XW                     1.0884   1.3585   1.4941   1.5660   1.5500     8.84%  14.00%    5.16%
+    C336C                  1.0882   1.3219   1.4740   1.5515   1.5464     8.82%  14.00%    5.18%
+    no336                  1.0992   1.3384   1.4935   1.5725   1.5676     9.92%  14.00%    4.08%
+
+    yr1 movers 651 (545 up, 106 down) · v0 movers 1 of 1197 (the same pre-existing row every arm
+    carries), sum(v0) +0.017% · Mraz board 1707 = 3.043x his pick-35 ruler (FULL 1649 = 2.939x),
+    inside the owner's 3.5-3.8x slack · amendment-2 guard 1 failing cell, the SAME cell as the
+    reference config, NO added failures.
+
+  PRE-REGISTERED, ONE BREACHED:
+    P4.1  yr1 in 1.05-1.11              MEASURED 1.0884                       HELD
+    P4.2  yr4 within +/-1.0% of FULL    MEASURED 1.5660 = +2.29%              BREACHED
+    P4.3  no new year-zero movers       MEASURED 1 mover, sum(v0) +0.017%     HELD
+    P4.4  guard gains no failures       MEASURED 1 cell, same cell            HELD
+    P4.5  margin stays positive/legal   MEASURED +5.16%                       HELD
+
+  THE BREACH, AND IT WAS VISIBLE IN THE STEP-1 GRID BEFORE THE EMIT. P4.2 assumed the design was a
+  year-1 fix. It is not: exposure weighting raises the par level at EVERY tenure, and at tenure 4
+  it goes past the survivors-only level (fitted MID pick-7 par: built 77.36, XW 79.58, survivors
+  78.10). So yr4 was always going to move more than the survivors-only revert's +1.3%. The
+  pre-registration should have read the grid it already had. The number stands; the prediction
+  does not, and it is a real cost: this design lifts the whole book, not just its young end.
+
+  THE HONEST READ AT YEAR 1, stated because a reader will otherwise draw the wrong conclusion:
+  at year 1 the design lands 1.0884 against the survivors-only revert's 1.0882 — INDISTINGUISHABLE,
+  to 0.02%. That is Criterion A's "tenure 1 coincides" showing up at price level, and it means
+  THE YEAR-1 NUMBER ALONE CANNOT TELL THE TWO APART. What separates them is (a) everything else on
+  the row — yr2 1.3585 vs 1.3219, yr4 1.5660 vs 1.5515, yr5 1.5500 vs 1.5464 — and (b) the fact,
+  proven in step 1, that one keeps every faded season in the sample and the other deletes them.
+  The design is defensible on its construction, not on its year-1 number.
+
+  WHAT IT DOES NOT SETTLE. It recovers 0.0910 of the 0.1265 main->FULL year-1 drop and leaves the
+  book 3.2% below main at year 1. It moves year 4 by +2.29%, which no order asked for. NO OWNER
+  RULING HAS BEEN MADE ON IT; the dial is DEFAULT OFF and nothing ships. See DESIGN_336_MEMO.md.
+
+====================================================================================================================
+### ORDER 5 — THE STACKED ROW: TWO CANDIDATES THAT ARE LEGAL ALONE ARE ILLEGAL TOGETHER
+====================================================================================================================
+  The owner asked for a stacked version. FULL + XW + V5 was emitted on the canonical instrument.
+
+    row              yr1      yr4    apprec.   own disc.   margin   verdict
+    --------------------------------------------------------------------------
+    FULL           0.9974   1.5310     -0.26%      14.00%    14.26%     legal
+    XW             1.0884   1.5660      8.84%      14.00%     5.16%     legal
+    V5             1.0734   1.5665      7.34%      12.00%     4.66%     legal
+    STACK          1.1708   1.6027     17.08%      12.00%    -5.08%       ARB
+
+  THE FINDING, and it is the reason a stacked row had to be emitted rather than inferred:
+  XW is legal alone (+5.16%). V5 is legal alone (+4.66%). STACKED THEY ARE THE WORST ARBITRAGE ON
+  THIS WHOLE MENU at -5.08% — deeper than V3 (-4.56%) and V4 (-2.82%). Two safe candidates make an
+  unsafe book. Adding rows of this table together is not a valid operation and this row proves it.
+
+  WHY IT IS WORSE THAN EITHER: the margin is a DIFFERENCE between what the book gains and what the
+  schedule charges, and stacking moves BOTH terms the wrong way at once. The two lifts compound to
+  +17.08% appreciation, while the stack carries V5's CHEAPER 12.00% young rate instead of the 14%
+  XW is judged against. A bigger gain measured against a smaller charge.
+
+  MARGIN CONVENTION, stated in the row because it decides the verdict: the stack is judged against
+  V5'S OWN young rate, 12.00% at draft age 18 — the TIGHTER frame, and the honest one, because the
+  stack carries V5's discount schedule unchanged (XW re-weights the PAR SAMPLE and never touches
+  the discount). Judged against 14% it would read -3.08%: still ARB, so the convention does not
+  rescue it either way.
+
+  PRE-REGISTERED (PREREG_ORDER5.md), TWO BREACHED:
+    P5.1  stack above the larger component      MEASURED 1.1708 > 1.0884            HELD
+    P5.2  SUB-additive, yr1 in 1.12-1.16        MEASURED 1.1708 — SUPER-ADDITIVE    BREACHED
+    P5.4  margin -4%..+1%, expected NEGATIVE    MEASURED -5.08% — ARB, past the band BREACHED
+    P5.5  yr4 in 1.585-1.615                    MEASURED 1.6027                     HELD
+    P5.6  <=2 v0 movers, sum(v0) within 0.05%   MEASURED 1 mover, +0.023%           HELD
+    P5.7  disagreement set non-empty            MEASURED 78 of 804 board players     HELD
+
+  THE BREACH IS THE INTERESTING ONE. P5.2 predicted the stack would be SUB-additive — the second
+  lift having less left to lift. It is SUPER-additive: the stack captures 103.8% of the naive sum
+  of the two separate lifts (0.1734 against 0.1670). THE MECHANISM WAS PRE-REGISTERED IN P5.3 WITH
+  ITS SIGN LEFT OPEN, and it is confirmed: XW raises the par levels, and par feeds the peak
+  estimate and ITEM C's Q = sa/par, which is part of what V5's age-keyed discount is then applied
+  to — so the second lever acts on a book the first has already raised. Measured per player on the
+  live board: 193 of 804 rows move MORE than the sum of their two separate moves, 190 of them in
+  the same direction. This is why a stack must be EMITTED and can never be read off two rows.
+
+  SHARED-CODE ASSERTION, checked rather than assumed. The dials are read at disjoint sites
+  (RL_336_XW only in par_build.py, RL_AGE_DISC_MODE only in rl_model.py). But par_build.py DID
+  change between the V5 emit and this tip, so V5 was RE-EMITTED as V5B: its recs md5 is
+  5c65a28f72acd0b3a83ec8dc841b0837, BYTE-IDENTICAL to the original V5 matrix. XW needed no re-emit
+  (no engine or data file changed since its own emit commit). The stacked comparison is valid.
+
+  Mraz across the four: FULL 1649 · XW 1707 · V5 1712 · STACK 1775 (3.043x/3.052x/3.164x his
+  pick-35 ruler of 561) — every one inside the owner's 3.5-3.8x slack.
+
+  PER-PLAYER BOARD FILES: board_compare_o5.csv (all 804 active rows) and board_compare_o5.txt
+  (owner-readable). THEY ATTRIBUTE MOVERS AND DECIDE NOTHING — the live board is a cross-section
+  and this table, on the cohort book, is the deciding instrument.
+
+====================================================================================================================
+### THE ALL-ARM COHORT TABLE — THE OWNER'S DECIDING INSTRUMENT (standing ruling)
+====================================================================================================================
+  OWNER, verbatim: "a cohort is all players drafted through mechanisms that are eligible to
+  debut in the same year (for example, the most recent cohort is ND, RD, SSP in 2025 + MSD in
+  2026). So when I look at cohort progression, it's through that lens."
+
+  instrument : noarb_table_allarm.py — a SIBLING reader. noarb_table_338.py is NOT modified and
+               its md5 (0f8220351c64c56ccfa90c60edcdfa5f) is ASSERTED at every all-arm run.
+  NO NEW EMITS: the matrices already carried all 2645 rows; only the canonical READER filtered
+               to ND 1-64. Both instruments are read off IDENTICAL engine runs, so every
+               difference below is the POPULATION and never the engine.
+  cohort key : draft year + 1, except MSD = draft year (the engine's own debutyr convention)
+  year 0     : each entrant's OWN v0 under that variant. Measured to be arm-appropriate: v0
+               moves for 1080 of 1201 pool rows main->FULL (median 0.6632).
+
+  --- PRIMARY window, cohorts 2005-2023   n = 2210 ---
+      arms: ND 1310  RD 621  MSD 55  UNR 49  IRE 47  PDA 43  PDN 33  SSP 31  PDS 21
+      row          yr1      yr2      yr3      yr4      yr5    apprec    disc   margin  verdict
+      main      0.9326   1.1354   1.2288   1.2936   1.2843    -6.74%  14.00%   20.74%    legal
+      FULL      0.8695   1.0835   1.2480   1.3568   1.3558   -13.05%  14.00%   27.05%    legal
+      V2        0.9091   1.1009   1.2651   1.3487   1.3252    -9.09%  12.00%   21.09%    legal
+      V5        0.8951   1.1009   1.2472   1.3344   1.3301   -10.49%  12.00%   22.49%    legal
+      XW        0.8735   1.0983   1.2091   1.2841   1.2658   -12.65%  14.00%   26.65%    legal
+      STACK     0.8915   1.1056   1.1981   1.2523   1.2311   -10.85%  12.00%   22.85%    legal
+
+  --- MODERN window, cohorts 2019-2023   n = 540 ---
+      arms: ND 325  RD 66  MSD 55  SSP 31  PDN 25  UNR 13  PDA 13  IRE 12
+      row          yr1      yr2      yr3      yr4      yr5    apprec    disc   margin  verdict
+      main      0.9250   1.0632   1.1062   1.1019   1.1863    -7.50%  14.00%   21.50%    legal
+      FULL      0.8620   1.0144   1.1082   1.1415   1.2286   -13.80%  14.00%   27.80%    legal
+      V2        0.9117   1.0377   1.1330   1.1446   1.2097    -8.83%  12.00%   20.83%    legal
+      V5        0.8976   1.0387   1.1171   1.1324   1.2147   -10.24%  12.00%   22.24%    legal
+      XW        0.8819   1.0393   1.0936   1.0973   1.1646   -11.81%  14.00%   25.81%    legal
+      STACK     0.9109   1.0555   1.0946   1.0811   1.1431    -8.91%  12.00%   20.91%    legal
+
+  BY ARM at cohort year 1 and 4 (PRIMARY window) — so no arm can hide inside the pooled number:
+      arm         n       yr1       yr4
+      ND       1310    0.9675    1.5009
+      RD        621    0.5485    0.9242
+      MSD        55       nan    1.0691
+      UNR        49    0.4969    0.8030
+      IRE        47    0.3064    0.3232
+      PDA        43    0.3810    0.9858
+      PDN        33    0.1519    0.3619
+      SSP        31    1.4100    1.3860
+      PDS        21    0.1769    0.2139
+      MSD yr1 is blank by disclosure: an MSD entrant debuts in his DRAFT year but the emitter
+      builds yrs from draft year + 1, so his cohort year 1 is not carried. Those 55 rows are
+      EXCLUDED from year 1, never scored zero — zero would be false about a player who played.
+
+====================================================================================================================
+### SIDE BY SIDE — the legacy picks-1-64 view against the owner's all-arm view
+====================================================================================================================
+      row     | PICKS 1-64 ND  (n=1197)      | ALL-ARM cohorts 05-23 (n=2210)
+              |      yr1      yr4   margin |      yr1      yr4   margin
+      --------------------------------------------------------------------------
+      main    |   1.1239   1.5732    1.61% |   0.9326   1.2936   20.74%
+      FULL    |   0.9974   1.5310   14.26% |   0.8695   1.3568   27.05%
+      V2      |   1.0933   1.5870    2.67% |   0.9091   1.3487   21.09%
+      V5      |   1.0734   1.5665    4.66% |   0.8951   1.3344   22.49%
+      XW      |   1.0884   1.5660    5.16% |   0.8735   1.2841   26.65%
+      STACK   |   1.1708   1.6027   -5.08% |   0.8915   1.2523   22.85%
+
+  WHAT CHANGES WHEN THE OWNER'S POPULATION IS USED — three things, and two of them reverse a
+  verdict this act has been carrying:
+
+  1. THE WHOLE COHORT BOOK DEPRECIATES AT YEAR 1, ON EVERY ROW INCLUDING main. main reads
+     0.9326 all-arm against 1.1239 on picks 1-64. The +12% year-1 appreciation that this act
+     has been treating as the thing FULL destroyed IS A PICKS-1-64 ARTEFACT. Across the whole
+     cohort a draft class has always been worth LESS one year on, by about 7%.
+
+  2. THE ARBITRAGE VERDICTS INVERT. Every margin on the all-arm basis is strongly POSITIVE
+     (+20.7%% to +27.1%%) — including the STACK, which reads -5.08%% ARB on picks 1-64 and
+     +22.85%% LEGAL here. THE FREE-MONEY QUESTION DOES NOT ARISE ON THE OWNER'S INSTRUMENT;
+     the opposite question does — why the cohort loses a fifth of its value against the charge.
+     No candidate is rescued by this: it means the no-arb frame was answering a question about
+     a sub-population, and the sub-population was not the cohort.
+
+  3. THE COUNTERBALANCES SHRINK, XW MOST OF ALL. Share of the main->FULL year-1 gap restored:
+       picks 1-64:  XW 71.9%%   V5 60.1%%
+       all-arm:     XW  6.3%%   V5 40.6%%
+     XW is a par-sample repair and the par surface is national-draft-weighted machinery; it
+     barely touches the pool arm, where ORDER 6 showed the cut actually lives (ITEM H, 0.615,
+     reading no production at all). V5 travels better because a discount schedule applies to
+     every arm. NEITHER touches ITEM H.
+
+  THE LEGACY TABLE IS RETAINED ABOVE, unchanged, because every ruling in this act was made on
+  it. It is now labelled as the legacy view; this is the deciding one.
+
+====================================================================================================================
+### THE SHIPPED CONFIGURATION — WHAT ACTUALLY BAKES  (owner ruling 5249802288, ORDER 9)
+====================================================================================================================
+  OWNER: "H to 1, B to flat, and note these as items of investigation for the rederivation.
+  I think we should look to build/bake/push live what we've agreed on with the above in mind,
+  just to put a line in the sand and solidify the progress."   XW INCLUDED by his word;
+  "H to 1" is the MATNONRD cell ONLY - UNION and POOLSIT stand as filed.
+
+  board 94f1fec59f99c59d5890d5975c79fa9b   total 745,888   (old main 4b448a82 / 761,574)
+  621 of 804 rows move against old main: 114 up, 507 down.
+
+  SHIPPED ON                                    EXPERIMENTAL, DEFAULT OFF (menu/ablation only)
+    era removal (salvage 1)                       RL_AGE_DISC   V1-V5 / V9 / the STACK path
+    #336 reference layer (salvage 2)              RL_A_FLOOR    A-as-floor
+    surprise law  RL_SUR_W=4.0                    RL_A_DRAGFADE A evidence-faded drag
+    ITEM A year-1+ anchor blend                   RL_A_GSAT     the ramp de-couple
+    ITEM C  RL_C_H=1.13                           RL_336_NOP    #336 P-leg kill-switch
+    ITEM E1 RL_RUC_WAGE=1.0, E2 wired             RL_336_SURVLVL/CLAMP  E-levels kill-switch
+    ITEM H  union 0.280 · poolsit 0.804           RL_336_PARSURV        par-leg kill-switch
+    ** ITEM H mature-nonRD  0.615 -> 1.0 **
+    ** ITEM B draft-age shape -> FLAT **
+    ** #336 XW exposure-weighted par -> ON **
+
+      row     | LEGACY picks 1-64 ND      | ALL-ARM cohorts 05-23 (owner's instrument)
+              |    yr1     yr4    margin |     yr1     yr4    margin
+      ------------------------------------------------------------------
+      main    |  1.1239  1.5732     1.61% |  0.9326  1.2936    20.74%
+      FULL    |  0.9974  1.5310    14.26% |  0.8695  1.3568    27.05%
+      SHIP    |  1.0884  1.5660     5.16% |  0.8850  1.2859    25.50%
+
+  THE NAMED LINES vs old main: Noble -1.4%% · Hall -1.2%% · McCarthy -0.9%% · Peatling -1.4%% ·
+  Herbert -0.7%% · Keane -1.0%% · McAndrew -3.5%% · Sharman -4.4%%  (H->1.0 restoring them);
+  Banch/Perez/Cross return to EXACTLY old main (B-flat un-doubling them precisely);
+  Podhajski +93.1%% - only PART of his lift was B, the rest is the surprise law, which ships;
+  Mraz 1707 = 3.043x his pick-35 ruler, inside the owner's 3.5-3.8x slack, his cut being the
+  ruled surprise-law correction (ITEM H never touched him: _h_cut 1.0000).
+
+  ONE THING THAT GOES DOWN AND IT IS THE BAKE WORKING, NOT A DEFECT: the MSD rucks
+  (Coe/May/Mapley) move 231 -> 66 -> 52. XW's own effect on them is ZERO; the fall is B-flat
+  removing their x2.0478 anchor lift (x0.488) partly offset by H->1.0 (x1.626), net x0.794,
+  which reproduces 66 -> 52 exactly. They are mature-drafted pool SITTERS WITH NO PRODUCTION -
+  the class the ruling says must not be doubled. Their residual -77.5%% against old main is the
+  SURVIVING UNION-CELL COMPOSITION 0.804 x 0.280 = 0.2251, which stands as filed and is a
+  RECORDED INVESTIGATION ITEM for the pool repricing act.
+
+  Full adoption record, per-item citations and the investigation list: SIDE_BY_SIDE.md
+
+====================================================================================================================
+### THE SPLIT COHORT TABLES — ND vs POOL-ROOKIE vs POOL-NON-ROOKIE  (owner spec, ORDER 8)
+====================================================================================================================
+  OWNER: "we have two stories here - ND players... appreciate over time to year 4/5, where they
+  are worth ~50%% more as a ND cohort. And pool players, who do not."  HIS HYPOTHESIS IS
+  CONFIRMED ON HIS OWN INSTRUMENT, and every pre-registered prediction (H8.1-H8.6) HELD.
+
+  ratio = SIGMA price at year N / SIGMA year-0 anchor of the same included set.
+  ND>64 sits in Pool-non-rookie (120 rows): past the curve it collapses to the single pool index
+  and is priced off its signed division level, so it is a pool row by the engine's own typing.
+
+  --- base main | ALL-TIME cohorts ---
+      split                   n       yr0      yr1      yr2      yr3      yr4      yr5      yr6
+      ND 1-64              1444    1.0000   1.0998   1.3508   1.5026   1.5565   1.5380   1.4818
+      Pool-Rookie           688    1.0000   0.5430   0.6565   0.6616   0.7428   0.7250   0.6940
+      Pool-non-rookie       509    1.0000   0.4338   0.6052   0.6120   0.6748   0.6911   0.5855
+      COMBINED             2641    1.0000   0.9246   1.1280   1.2319   1.2890   1.2712   1.2124
+
+  --- base main | COHORTS 2012+ ---
+      split                   n       yr0      yr1      yr2      yr3      yr4      yr5      yr6
+      ND 1-64               938    1.0000   1.1399   1.3610   1.5009   1.5045   1.5054   1.4932
+      Pool-Rookie           317    1.0000   0.4847   0.5376   0.5230   0.6326   0.6555   0.6570
+      Pool-non-rookie       421    1.0000   0.4345   0.6377   0.6780   0.7698   0.8230   0.6920
+      COMBINED             1676    1.0000   0.9573   1.1310   1.2286   1.2559   1.2624   1.2309
+
+  --- base FULL | ALL-TIME cohorts ---
+      split                   n       yr0      yr1      yr2      yr3      yr4      yr5      yr6
+      ND 1-64              1444    1.0000   0.9801   1.2169   1.4222   1.5146   1.5047   1.4559
+      Pool-Rookie           689    1.0000   0.5356   0.6870   0.7943   0.9474   0.9314   0.9009
+      Pool-non-rookie       509    1.0000   0.4262   0.6418   0.6884   0.7859   0.8048   0.7144
+      COMBINED             2642    1.0000   0.8647   1.0766   1.2498   1.3512   1.3414   1.2906
+
+  --- base FULL | COHORTS 2012+ ---
+      split                   n       yr0      yr1      yr2      yr3      yr4      yr5      yr6
+      ND 1-64               938    1.0000   1.0127   1.2238   1.4183   1.4650   1.4721   1.4703
+      Pool-Rookie           317    1.0000   0.4886   0.5385   0.6248   0.8023   0.8332   0.8435
+      Pool-non-rookie       421    1.0000   0.4498   0.6954   0.7600   0.9076   0.9617   0.8411
+      COMBINED             1676    1.0000   0.8946   1.0746   1.2372   1.3094   1.3217   1.3047
+
+  TOTALS ARE IN SPLIT_TABLES.txt BESIDE EVERY RATIO, and they must be read together. Under FULL
+  the pool arms' year-ZERO anchors fall 22-25%% (ND's move -0.02%%), so a pool ratio that looks
+  better under FULL is largely its denominator falling, not its delivery rising. That is H8.5,
+  measured: Pool-Rookie SIGMA v0 352,757 -> 264,205; Pool-non-rookie 192,830 -> 149,640.
+
+  WHAT IT SETTLES: the arms deliver very differently against their own entry prices - ND 1.5565
+  per unit at year 4, Pool-Rookie 0.7428, Pool-non-rookie 0.6748, about 2.1-2.3 to 1. Neither
+  pool arm is above its entry price even at year 6.
+  WHAT IT CANNOT SETTLE: WHICH price is wrong. "Pool v0 too high" and "ND v0 too low" are
+  observationally identical in a ratio. Both readings stand; the ruling is the owner's.
+
+  THE CELL THAT JUDGES ITEM B (year-4 delivery per unit of entry price, base main, by DRAFT AGE
+  WITHIN each pool arm) - see B_PROVENANCE_AND_SPLITS.md:
+      draft age        Pool-non-rookie      Pool-Rookie
+      <=18                      0.4869           0.5820
+      19-20                     0.9851           0.6142
+      21+                       0.7708           3.0092
+  ITEM B multiplies EVERY pool entry anchor at draft age 21+ by 2.0478. That gradient is
+  SUPPORTED on the rookie arm (3.01x) and CONTRADICTED on the non-rookie arm (0.77x, BELOW its
+  own 19-20 slice). B's derivation pools both arms by construction (is_pool only), so the
+  evidence carrying the lift comes substantially from the arm it is not being questioned on.
+  ON THE NON-ROOKIE ARM THE OWNER'S "might make sense to be LESS" IS SUPPORTED BY THE DATA.
+
+  PLAY-QUALITY PRINCIPLE (owner ruling 5249619354): "we value them on how they play". ITEM B
+  was fitted to D_rt_win = "REALIZED DELIVERY off the seasons and bars" (item_d_derive.py:22-23)
+  - a delivered-VALUE composite that rises with games as well as with level, NOT a play-quality
+  measure. Measured separation on the NON-ROOKIE arm: quality (games-wtd avg) 51.47 / 52.98 /
+  53.33 across draft ages <=18 / 19-20 / 21+ - FLAT, a 3.6%% spread - while participation
+  (career games) is 24.7 / 31.7 / 21.6, the 21+ slice playing the LEAST. B lifts their anchor
+  +105%% anyway. ON THE RULED PRINCIPLE B's SHAPE FAILS THE STANDARD ON BOTH ARMS (the rookie
+  arm's 21+ edge is +61%% games against +11.7%% quality - participation-dominated).
+
+  THE OWNER'S PAIR, the incoherence in two rows (full waterfalls in B_PROVENANCE_AND_SPLITS.md):
+    Podhajski  2 career games  main 101 -> B +102 -> surprise +116 -> H -152 -> FULL 245  (+142.6%%)
+    Herbert   30 career games  main 1060 -> B +0 ................ -> H -393 -> FULL 627  (-40.8%%)
+    Same demographic. B reaches Podhajski because his price IS his anchor; it reaches Herbert by
+    EXACTLY ZERO because his anchor is already faded out. The ruled machinery doubles the man who
+    has not played and halves the man who has. No menu candidate repairs it.
+
+  THE UNION CELL joins MATNONRD in the H re-derivation scope, and it fails DIFFERENTLY:
+    MATNONRD 0.615  does not reproduce (F bent 0.7676), CI [0.115, 1.226] CONTAINS 1.0 - unsupported
+    UNION    0.280  does not reproduce (F bent 0.1670), CI [0.010, 0.639] EXCLUDES 1.0 - supported in
+                    DIRECTION but ruled MILDER than its own evidence, so re-deriving would DEEPEN it
+    NEITHER cell's board effect is in any ruled evidence, and NEITHER IS THE COMPOSITION: the three
+    MSD rucks take POOLSIT x UNION x MATNONRD = 0.804 x 0.280 x 0.615 = 0.1384, measured 0.1398
+    (noH 472 -> FULL 66). AN 86%% CUT FROM THREE CELLS COMPOSING, and the composed factor appears
+    NOWHERE in the directive, PHASE2 or the derivation output.
+
+  AND THE B-vs-H INCOHERENCE, same instrument (DISC 1.0939, BARN 35, NB 4000) and the same
+  673-row corrected-ruler pool sample: B raises a mature non-rookie pool entrant's YEAR-0
+  ANCHOR by 105%% because his band out-delivers the POOL MEAN, and H cuts his FINISHED PRICE by
+  38.5%% because the same demographic under-delivers FAIR. Both ruled. Neither ruling was shown
+  the other's effect. NOTHING IS CHANGED HERE - measurement and provenance only.
+
+====================================================================================================================
+### HALT-GRADE — AN UNRULED 38.5% CUT ON THE POOL ARM  (full attribution: POOL_ARM_ATTRIBUTION.md)
+====================================================================================================================
+  OWNER CHALLENGE: "a lot of /SSP/MSD players have been slashed - Noble, Hall, McCarthy, Peatling,
+  Herbert, Keane... have players like Noble and Peatling not established themselves on their own
+  production more than their draft arm?"  ANSWERED, AND HE IS RIGHT ON THE MECHANICS.
+
+  IT IS ITEM H, AND IT IS ONE CONSTANT. H_MATNONRD = 0.615 is applied at _merged_recover.py:2228
+  to the FINAL production-led price, keyed on three things only: is he pool, is his type not RD,
+  was his DRAFT AGE >= 21. It reads no games, no level, no establishment. Recovered to four
+  decimals on eight independent players: FULL/H-restored = 0.6149 0.6153 0.6143 0.6155 0.6147
+  0.6147 0.6151 0.6163. Not several items composing - literally the one constant.
+
+  PRODUCTION BUYS NO PROTECTION. Noble has 158 career games and takes the same 0.615 as a
+  zero-game row. His ITEM A anchor share is EXACTLY 0.000000 - the engine's own evidence fade has
+  already retired his entry anchor - so the 38.5% is NOT his draft arm re-asserting itself through
+  the valuation. It is a flat cell multiplier on top of the finished price.
+
+  MRAZ IS THE CONTROL AND HE SEPARATES THE TWO CAUSES CLEANLY: his -53.6% is the SURPRISE LAW
+  (+1692 of his 1906 gap), and removing ITEM H moves him by exactly 0.
+
+  THE INVERSION IS A SECOND, INDEPENDENT ITEM. ITEM B multiplies the ENTRY ANCHOR by k*_b_shape:
+  x0.4985 at draft age 18, x1.0257 at 19-20, x2.0478 at 21+ (+104.8%). Where a pool entrant has no
+  production his price IS his anchor, so he takes the whole +105% (Perez/Cross +105.3%, Banch
+  +105.5%). Where he HAS production the anchor is already faded to zero weight, so B barely reaches
+  him and H then removes 38.5%. SAME ARM, OPPOSITE DIRECTIONS, TWO SEPARATELY-RULED ITEMS.
+  B's conservation assert is real (2.978e-15) but it is over SIGMA ENTRY ANCHOR across the live
+  pool (n=1202), a YEAR-ZERO object - not prices. On the board B is net +3,628.
+
+  WHY THIS IS HALT-GRADE, not merely a finding:
+    1. THE ARM IS OUTSIDE EVERY DECIDING FIGURE. The canonical population is n=1197 and it is
+       100%% type ND - ZERO pool rows. The matrix carries 1080 pool-arm rows (691 RD, 106 MSD, 57
+       IRE, 59 UNR, 52 SSP, 51 PDA, 43 PDN, 21 PDS) and not one enters any ruled number.
+    2. THE CUT'S OWN DERIVATION HALTED. item_h_derive_out.txt: "HALT-NO-SURPRISE... taken AS
+       FILED". The mature-nonRD corrected-ruler CI is [0.115, 1.226] at eff-n 46.2 - IT CONTAINS
+       1.0, so the evidence in front of the owner could not exclude NO CUT AT ALL.
+    3. NO BOARD-EFFECT FIGURE FOR THE POOL ARM APPEARS IN ANY RULED EVIDENCE. Searched the
+       directive, README, PHASE2 and SIDE_BY_SIDE: the factor is named, its board effect on
+       established players never is.
+
+  THE SIDE-BY-SIDE CANNOT PROCEED WITH AN UNRULED ARM-WIDE 38.5%% CUT INSIDE IT. Nothing is
+  repaired here and no factor is changed - this is attribution and disclosure, and the ruling is
+  the owner's.
+
+====================================================================================================================
+### THE IDENTITY GATE EVERY ROUND-3 NUMBER RIDES ON
+====================================================================================================================
+  All five round-3 dials are DEFAULT OFF. With every one of them off, at the branch tip:
+    MATRIX   the emitted per-entrant matrix (IDENT5) has recs byte-identical to per_entrant_FULL
+             — recs md5 3eb4a686e36e4e299f1134e153c566bd on BOTH, 2645 records, 0 year-1 movers
+             out of the 1197 teaching rows. The two FILES differ only in `meta` (engine_head md5,
+             which moved because the dial and its comment block were added, and the emitter's
+             own worktree path). That is a PRICE-LEVEL identity, not a file copy.
+    BOARD    rl_export at 95dfbde and at the round-3 tip both build board md5
+             846560dc1b206996005c7c9e9290207c — byte-identical, same env.
+    DENOM    the year-zero surface is intact in every arm: 1 v0 mover out of 1197, sum(v0)
+             within 0.02%. The ratio denominator is not carrying any of these moves.
+  ORDER 4 re-proved both at its own tip: IDENT6 recs md5 3eb4a686e36e4e299f1134e153c566bd again,
+  0 year-1 movers, 0 v0 movers; and with RL_336_XW=0 the fitted par surface, the KPD par surface
+  and BASEPK_REG are identical to the pre-ORDER-4 reference to 1e-12 (the off path passes ws=None
+  and never multiplies at all).
+  ORDER 5 re-proved both again at its own tip: IDENT7 recs md5 3eb4a686e36e4e299f1134e153c566bd,
+  0 year-1 movers, 0 v0 movers; and the FULL board rebuilt at the ORDER 5 tip is 846560dc1b2069
+  96005c7c9e9290207c — the same board 95dfbde builds, before any of this act's seven dials existed.
+  If either identity had failed, nothing on this table could be read. Both hold.
+

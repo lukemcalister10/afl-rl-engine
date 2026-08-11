@@ -1,0 +1,363 @@
+{
+ "matrix": "per_entrant_FULL.json",
+ "label": "FULL",
+ "store": "d9a24282",
+ "v0surf": "6ef67f07db98258786189a6316ce24f9",
+ "window_end": 2026,
+ "canonical_instrument_md5": "0f8220351c64c56ccfa90c60edcdfa5f",
+ "groups": {
+  "PRIMARY  cohorts 2005-2023": {
+   "n": 2210,
+   "arms": {
+    "SSP": 31,
+    "ND": 1310,
+    "RD": 621,
+    "UNR": 49,
+    "PDA": 43,
+    "PDN": 33,
+    "MSD": 55,
+    "IRE": 47,
+    "PDS": 21
+   },
+   "rows": [
+    {
+     "N": 0,
+     "n_included": 2210,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "n_pre_excluded": 0,
+     "mean_yearN": 619.67,
+     "mean_year0_same_set": 619.67,
+     "ratio_meanN_over_mean0": 1.0,
+     "kinds": {
+      "v0": 2210
+     }
+    },
+    {
+     "N": 1,
+     "n_included": 2155,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "n_pre_excluded": 55,
+     "mean_yearN": 546.16,
+     "mean_year0_same_set": 628.15,
+     "ratio_meanN_over_mean0": 0.8695,
+     "kinds": {
+      "path": 2155,
+      "pre": 55
+     }
+    },
+    {
+     "N": 2,
+     "n_included": 2210,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "n_pre_excluded": 0,
+     "mean_yearN": 671.43,
+     "mean_year0_same_set": 619.67,
+     "ratio_meanN_over_mean0": 1.0835,
+     "kinds": {
+      "path": 2210
+     }
+    },
+    {
+     "N": 3,
+     "n_included": 2210,
+     "n_zero": 681,
+     "n_not_yet_reached": 0,
+     "n_pre_excluded": 0,
+     "mean_yearN": 773.34,
+     "mean_year0_same_set": 619.67,
+     "ratio_meanN_over_mean0": 1.248,
+     "kinds": {
+      "ended": 681,
+      "path": 1529
+     }
+    },
+    {
+     "N": 4,
+     "n_included": 2210,
+     "n_zero": 861,
+     "n_not_yet_reached": 0,
+     "n_pre_excluded": 0,
+     "mean_yearN": 840.75,
+     "mean_year0_same_set": 619.67,
+     "ratio_meanN_over_mean0": 1.3568,
+     "kinds": {
+      "ended": 861,
+      "path": 1349
+     }
+    },
+    {
+     "N": 5,
+     "n_included": 2105,
+     "n_zero": 972,
+     "n_not_yet_reached": 105,
+     "n_pre_excluded": 0,
+     "mean_yearN": 839.11,
+     "mean_year0_same_set": 618.93,
+     "ratio_meanN_over_mean0": 1.3558,
+     "kinds": {
+      "ended": 972,
+      "path": 1133
+     }
+    },
+    {
+     "N": 6,
+     "n_included": 2002,
+     "n_zero": 1040,
+     "n_not_yet_reached": 208,
+     "n_pre_excluded": 0,
+     "mean_yearN": 809.12,
+     "mean_year0_same_set": 617.42,
+     "ratio_meanN_over_mean0": 1.3105,
+     "kinds": {
+      "ended": 1040,
+      "path": 962
+     }
+    },
+    {
+     "N": 7,
+     "n_included": 1894,
+     "n_zero": 1074,
+     "n_not_yet_reached": 316,
+     "n_pre_excluded": 0,
+     "mean_yearN": 711.68,
+     "mean_year0_same_set": 617.29,
+     "ratio_meanN_over_mean0": 1.1529,
+     "kinds": {
+      "ended": 1074,
+      "path": 820
+     }
+    }
+   ],
+   "by_arm": {
+    "ND": {
+     "n": 1310,
+     "yr1": 0.9675,
+     "yr4": 1.5009
+    },
+    "RD": {
+     "n": 621,
+     "yr1": 0.5485,
+     "yr4": 0.9242
+    },
+    "MSD": {
+     "n": 55,
+     "yr1": NaN,
+     "yr4": 1.0691
+    },
+    "UNR": {
+     "n": 49,
+     "yr1": 0.4969,
+     "yr4": 0.803
+    },
+    "IRE": {
+     "n": 47,
+     "yr1": 0.3064,
+     "yr4": 0.3232
+    },
+    "PDA": {
+     "n": 43,
+     "yr1": 0.381,
+     "yr4": 0.9858
+    },
+    "PDN": {
+     "n": 33,
+     "yr1": 0.1519,
+     "yr4": 0.3619
+    },
+    "SSP": {
+     "n": 31,
+     "yr1": 1.41,
+     "yr4": 1.386
+    },
+    "PDS": {
+     "n": 21,
+     "yr1": 0.1769,
+     "yr4": 0.2139
+    }
+   }
+  },
+  "MODERN   cohorts 2019-2023": {
+   "n": 540,
+   "arms": {
+    "SSP": 31,
+    "ND": 325,
+    "RD": 66,
+    "UNR": 13,
+    "PDA": 13,
+    "PDN": 25,
+    "MSD": 55,
+    "IRE": 12
+   },
+   "rows": [
+    {
+     "N": 0,
+     "n_included": 540,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "n_pre_excluded": 0,
+     "mean_yearN": 638.21,
+     "mean_year0_same_set": 638.21,
+     "ratio_meanN_over_mean0": 1.0,
+     "kinds": {
+      "v0": 540
+     }
+    },
+    {
+     "N": 1,
+     "n_included": 485,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "n_pre_excluded": 55,
+     "mean_yearN": 584.42,
+     "mean_year0_same_set": 678.01,
+     "ratio_meanN_over_mean0": 0.862,
+     "kinds": {
+      "path": 485,
+      "pre": 55
+     }
+    },
+    {
+     "N": 2,
+     "n_included": 540,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "n_pre_excluded": 0,
+     "mean_yearN": 647.42,
+     "mean_year0_same_set": 638.21,
+     "ratio_meanN_over_mean0": 1.0144,
+     "kinds": {
+      "path": 540
+     }
+    },
+    {
+     "N": 3,
+     "n_included": 540,
+     "n_zero": 167,
+     "n_not_yet_reached": 0,
+     "n_pre_excluded": 0,
+     "mean_yearN": 707.26,
+     "mean_year0_same_set": 638.21,
+     "ratio_meanN_over_mean0": 1.1082,
+     "kinds": {
+      "ended": 167,
+      "path": 373
+     }
+    },
+    {
+     "N": 4,
+     "n_included": 540,
+     "n_zero": 211,
+     "n_not_yet_reached": 0,
+     "n_pre_excluded": 0,
+     "mean_yearN": 728.5,
+     "mean_year0_same_set": 638.21,
+     "ratio_meanN_over_mean0": 1.1415,
+     "kinds": {
+      "ended": 211,
+      "path": 329
+     }
+    },
+    {
+     "N": 5,
+     "n_included": 435,
+     "n_zero": 198,
+     "n_not_yet_reached": 105,
+     "n_pre_excluded": 0,
+     "mean_yearN": 785.19,
+     "mean_year0_same_set": 639.1,
+     "ratio_meanN_over_mean0": 1.2286,
+     "kinds": {
+      "ended": 198,
+      "path": 237
+     }
+    },
+    {
+     "N": 6,
+     "n_included": 332,
+     "n_zero": 176,
+     "n_not_yet_reached": 208,
+     "n_pre_excluded": 0,
+     "mean_yearN": 702.1,
+     "mean_year0_same_set": 636.3,
+     "ratio_meanN_over_mean0": 1.1034,
+     "kinds": {
+      "ended": 176,
+      "path": 156
+     }
+    },
+    {
+     "N": 7,
+     "n_included": 224,
+     "n_zero": 135,
+     "n_not_yet_reached": 316,
+     "n_pre_excluded": 0,
+     "mean_yearN": 629.05,
+     "mean_year0_same_set": 644.23,
+     "ratio_meanN_over_mean0": 0.9764,
+     "kinds": {
+      "ended": 135,
+      "path": 89
+     }
+    }
+   ],
+   "by_arm": {
+    "ND": {
+     "n": 325,
+     "yr1": 0.9388,
+     "yr4": 1.2359
+    },
+    "RD": {
+     "n": 66,
+     "yr1": 0.4081,
+     "yr4": 0.7411
+    },
+    "MSD": {
+     "n": 55,
+     "yr1": NaN,
+     "yr4": 1.0691
+    },
+    "SSP": {
+     "n": 31,
+     "yr1": 1.41,
+     "yr4": 1.386
+    },
+    "PDN": {
+     "n": 25,
+     "yr1": 0.1134,
+     "yr4": 0.1595
+    },
+    "UNR": {
+     "n": 13,
+     "yr1": 0.5176,
+     "yr4": 0.3924
+    },
+    "PDA": {
+     "n": 13,
+     "yr1": 0.1895,
+     "yr4": 0.8294
+    },
+    "IRE": {
+     "n": 12,
+     "yr1": 0.1959,
+     "yr4": 0.0462
+    }
+   }
+  },
+  "self_check_canonical": {
+   "n": 1197,
+   "ratios": {
+    "0": 1.0,
+    "1": 0.9974,
+    "2": 1.2401,
+    "3": 1.4276,
+    "4": 1.531,
+    "5": 1.5328,
+    "6": 1.4927,
+    "7": 1.2982
+   }
+  }
+ }
+}

@@ -1,0 +1,42 @@
+SITTER ANCHOR (bent ruler, the act's own definition): n=496 [496] OK   aggregate F=0.9838 [0.984] OK
+  anchor reproduces -> the instrument is the right one; proceeding to the corrected ruler.
+
+on the corrected ruler's window: n=299 sitters
+
+=== THE THREE RULED CLASSES (F8 at PLAYER unit, weights = v0) ===
+ class        n    eff-n     F bent     F corr 95% CI (corr)          F8
+ KPP         83     60.4     1.3422     0.7290 [0.394, 1.130]      PASS
+ SMALL      186     98.9     1.0032     0.6603 [0.383, 0.970]      PASS
+ RUCK        30     22.5     1.2207     1.2945 [0.391, 2.452]      FAIL
+
+=== THE CONTRAST ===
+  bent ruler      KPP/SMALL = 1.3380   [the filed 1.378]
+  CORRECTED ruler KPP/SMALL = 1.1041
+  95% CI on the corrected contrast = [0.548, 2.157]   [the filed interval 1.05, 1.80]
+
+  A sitter KPP retains MORE of his year-0 value than a sitter SMALL by this factor, so the
+  sit-out CHARGE on KPP is too heavy and the charge on SMALL too light — the ruled direction.
+
+=== THE CAUTIOUS-END SIZING, CONSERVED WITHIN THE SITTER POOL ===
+  FLAG 1 — the corrected CI [0.548, 2.157] INCLUDES 1.0. On the corrected ruler the KPP/SMALL
+  contrast is NOT clear of 1: the tilt is not independently significant any more. The filed
+  interval [1.05, 1.80] WAS clear of 1, and that was measured on the bent ruler (which this
+  script reproduces at 1.3380 against the filed 1.378).
+  FLAG 2 — 'cautious end' therefore CANNOT mean the CI's lower edge here: that edge is 0.5477,
+  BELOW 1, and sizing on it would INVERT the ruled direction (it would deepen the KPP charge
+  and lighten SMALL — the opposite of the ruling). A tilt whose interval covers 1 has a
+  cautious end of 1.0, i.e. NO TILT.
+
+  WHAT SHIPS: the RULED cautious end, 1.05 — taken AS FILED, and marked as filed in the
+  attribution. It is defensible on this measurement rather than in spite of it: the corrected
+  point estimate 1.1041 sits ABOVE 1.05, so 1.05 stays the cautious choice, and 1.05 lies
+  inside the corrected CI. The alternative honest reading — ship ZERO tilt because the
+  corrected contrast no longer clears the bar — is the owner's call, and is flagged.
+  RUCK takes NO tilt (ruled: neutral base, no lawful ruck sitter cell).
+  solve  t_KPP/t_SMALL = 1.0500  and  Sig v0 x t held over the sitter pool:
+     t_KPP   = 1.035292   (retention UP  -> charge LIGHTENED)
+     t_SMALL = 0.985992   (retention DOWN-> charge DEEPENED)
+     t_RUCK  = 1.000000  (untouched)
+  CONSERVATION over the sitter pool: Sig v0 before 90029.0  after 90029.0  delta 0.000000000
+
+wrote item_d_factors.json

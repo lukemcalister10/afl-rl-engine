@@ -1,0 +1,807 @@
+# ORDER 5 per-player live-board comparison. THESE NUMBERS ATTRIBUTE MOVERS. THEY DECIDE NOTHING. The deciding instrument is the COHORT BOOK  on noarb_table_338.py (MENU.txt). The live board is a CROSS-SECTION and no candidate is selected,  ranked or recommended on a board number here.
+# main = the currently shipped board (data/rl_build/rl_app_data.json). deltas are vs FULL, the composition package as it stands. All dials DEFAULT OFF in FULL.
+player,key,position,age,club,pick,draft_year,main,FULL,XW,V5,STACK,delta_XW,delta_V5,delta_STACK
+Harry Sheezel,harry-sheezel,SF,22,North Melbourne,3,2022,11925,11760,11761,12031,12032,1,271,272
+Nick Daicos,nick-daicos,MID,23,Collingwood,4,2021,11096,10942,10944,11193,11195,2,251,253
+Luke Jackson,luke-jackson,RUCK,25,Fremantle,3,2019,10347,10203,10202,10155,10155,-1,-48,-48
+Nasiah Wanganeen-Milera,nasiah-wanganeen-milera,SD,23,St Kilda,11,2021,9822,9685,9687,9908,9910,2,223,225
+Max Holmes,max-holmes,MID,24,Geelong,21,2020,8523,8405,8406,8503,8504,1,98,99
+Tristan Xerri,tristan-xerri,RUCK,27,North Melbourne,71,2017,7934,7825,7825,7765,7764,0,-60,-61
+Will Ashcroft,will-ashcroft,MID,22,Brisbane,2,2022,7448,7282,7328,7450,7496,46,168,214
+Errol Gulden,errol-gulden,MID,24,Sydney,34,2020,7338,7237,7238,7324,7325,1,87,88
+Zak Butters,zak-butters,MID,26,Port Adelaide,12,2018,7190,7090,7091,7129,7131,1,39,41
+Josh Treacy,josh-treacy,KPF,24,Fremantle,4,2020,7123,6939,6942,7002,7006,3,63,67
+Bailey Smith,bailey-smith,MID,26,Geelong,7,2018,6776,6681,6683,6719,6720,2,38,39
+Finn Callaghan,finn-callaghan,MID,23,GWS,3,2021,6145,6059,6060,6199,6200,1,140,141
+Jason Horne-Francis,jason-horne-francis,SF,23,Port Adelaide,1,2021,6113,6027,6028,6165,6167,1,138,140
+Lachlan Ash,lachlan-ash,SD,25,GWS,4,2019,5813,5735,5733,5735,5733,-2,0,-2
+Noah Anderson,noah-anderson,MID,25,Gold Coast,2,2019,5329,5247,5256,5269,5278,9,22,31
+Sam Darcy,sam-darcy,KPF,23,Western Bulldogs,2,2021,5350,5131,5211,5246,5327,80,115,196
+Caleb Serong,caleb-serong,MID,25,Fremantle,8,2019,5097,5026,5027,5046,5047,1,20,21
+Jai Newcombe,jai-newcombe,MID,25,Hawthorn,2,2021,4954,4885,4887,4905,4906,2,20,21
+Jagga Smith,jagga-smith,SF,20,Carlton,3,2024,4877,4871,4836,5185,5147,-35,314,276
+Matt Rowell,matt-rowell,MID,25,Gold Coast,1,2019,4837,4769,4770,4790,4791,1,21,22
+Tom Green,tom-green,MID,25,GWS,10,2019,4827,4717,4718,4712,4714,1,-5,-3
+Archie Roberts,archie-roberts,SD,21,Essendon,54,2023,4809,4699,4742,4890,4934,43,191,235
+Izak Rankine,izak-rankine,SF,26,Adelaide,3,2018,4748,4685,4684,4708,4705,-1,23,20
+Brodie Grundy,brodie-grundy,RUCK,32,Sydney,22,2012,4552,4490,4490,4507,4506,0,17,16
+Riley Thilthorpe,riley-thilthorpe,KPF,24,Adelaide,2,2020,4664,4462,4464,4499,4502,2,37,40
+Chad Warner,chad-warner,SF,25,Sydney,38,2019,4472,4409,4410,4430,4431,1,21,22
+Jake Bowey,jake-bowey,SD,24,Melbourne,22,2020,4381,4323,4321,4365,4362,-2,42,39
+Nick Blakey,nick-blakey,SD,26,Sydney,10,2018,4337,4279,4277,4291,4289,-2,12,10
+Kysaiah Pickett,kysaiah-pickett,SF,25,Melbourne,12,2019,4307,4250,4248,4265,4263,-2,15,13
+Colby McKercher,colby-mckercher,SD,21,North Melbourne,2,2023,4339,4229,4284,4414,4472,55,185,243
+Mac Andrew,mac-andrew,KPD,23,Gold Coast,5,2021,4220,4167,4158,4248,4239,-9,81,72
+Bodhi Uwland,bodhi-uwland,SD,23,Gold Coast,,2021,4199,4131,4141,4222,4232,10,91,101
+Murphy Reid,murphy-reid,SF,20,Fremantle,17,2024,4188,4089,4129,4333,4376,40,244,287
+Sam Lalor,sam-lalor,SF,20,Richmond,1,2024,4155,4087,4052,4380,4342,-35,293,255
+Luke Davies-Uniacke,luke-davies-uniacke,MID,27,North Melbourne,4,2017,4127,4069,4070,4077,4078,1,8,9
+Sam Berry,sam-berry,MID,24,Adelaide,29,2020,4048,3991,3992,4039,4040,1,48,49
+Willem Duursma,willem-duursma,MID,19,West Coast,1,2025,4149,3940,4067,4380,4522,127,440,582
+Ed Richards,ed-richards,MID,27,Western Bulldogs,16,2017,3979,3923,3924,3929,3929,1,6,6
+Marcus Bontempelli,marcus-bontempelli,MID,31,Western Bulldogs,4,2013,3930,3875,3876,3908,3909,1,33,34
+Nick Watson,nick-watson,SF,21,Hawthorn,5,2023,3889,3829,3835,3984,3990,6,155,161
+Ryley Sanders,ryley-sanders,SF,21,Western Bulldogs,6,2023,3932,3810,3884,3964,4040,74,154,230
+Harley Reid,harley-reid,MID,21,West Coast,1,2023,3814,3781,3819,3939,3979,38,158,198
+Josh Worrell,josh-worrell,SD,25,Adelaide,28,2019,3772,3722,3720,3724,3721,-2,2,-1
+Callum Wilkie,callum-wilkie,KPD,30,St Kilda,1,2018,3679,3636,3627,3609,3598,-9,-27,-38
+Isaac Heeney,isaac-heeney,MID,30,Sydney,4,2014,3586,3536,3537,3557,3558,1,21,22
+Timothy English,timothy-english,RUCK,29,Western Bulldogs,19,2016,3584,3535,3535,3507,3507,0,-28,-28
+Finn O'Sullivan,finn-o-sullivan,SD,20,North Melbourne,2,2024,3567,3493,3768,3748,3959,275,255,466
+Jordan Dawson,jordan-dawson,MID,29,Adelaide,55,2015,3490,3442,3443,3453,3453,1,11,11
+Levi Ashcroft,levi-ashcroft,MID,20,Brisbane,5,2024,3493,3406,3521,3656,3779,115,250,373
+Max Gawn,max-gawn,RUCK,35,Melbourne,33,2009,3384,3336,3336,3393,3392,0,57,56
+Jack Sinclair,jack-sinclair,SD,31,St Kilda,1,2014,3371,3326,3325,3346,3344,-1,20,18
+Darcy Wilmot,darcy-wilmot,SD,23,Brisbane,16,2021,3359,3300,3312,3373,3386,12,73,86
+Jordan Clark,jordan-clark,SD,26,Fremantle,15,2018,3312,3269,3267,3281,3279,-2,12,10
+George Wardlaw,george-wardlaw,MID,22,North Melbourne,4,2022,3266,3227,3229,3312,3313,2,85,86
+Darcy Wilson,darcy-wilson,SF,21,St Kilda,18,2023,3260,3210,3220,3336,3347,10,126,137
+Logan Morris,logan-morris,KPF,21,Brisbane,31,2023,3308,3165,3237,3311,3387,72,146,222
+Andrew Brayshaw,andrew-brayshaw,MID,27,Fremantle,2,2017,3182,3138,3138,3146,3146,0,8,8
+Hugo Garcia,hugo-garcia,MID,21,St Kilda,50,2023,3104,3045,3082,3172,3210,37,127,165
+Sam Walsh,sam-walsh,MID,26,Carlton,1,2018,3082,3040,3041,3062,3063,1,22,23
+Zac Bailey,zac-bailey,SF,27,Brisbane,15,2017,2954,2915,2913,2925,2923,-2,10,8
+Connor O'Sullivan,connor-o-sullivan,KPD,21,Geelong,11,2023,2934,2909,2890,3042,3021,-19,133,112
+Joel Freijah,joel-freijah,SF,21,Western Bulldogs,45,2023,2927,2883,2891,3007,3015,8,124,132
+Nicholas Martin,nicholas-martin,SF,25,Essendon,,2021,3655,2814,2828,2810,2824,14,-4,10
+Dyson Sharp,dyson-sharp,SF,19,Essendon,13,2025,3182,2796,3216,3103,3568,420,307,772
+Jack Ross,jack-ross,SF,26,Richmond,43,2018,2799,2760,2761,2790,2790,1,30,30
+Connor MacDonald,connor-macdonald,SF,23,Hawthorn,26,2021,2777,2748,2739,2811,2802,-9,63,54
+Connor Rozee,connor-rozee,SD,26,Port Adelaide,5,2018,2765,2724,2725,2724,2726,1,0,2
+Josh Ward,josh-ward,MID,23,Hawthorn,7,2021,2850,2712,2816,2777,2884,104,65,172
+Zachary Merrett,zachary-merrett,MID,31,Essendon,26,2013,2742,2703,2704,2733,2734,1,30,31
+Shannon Neale,shannon-neale,KPF,24,Geelong,35,2020,2748,2703,2702,2724,2723,-1,21,20
+Sullivan Robey,sullivan-robey,SF,19,Essendon,9,2025,3067,2618,3003,2909,3335,385,291,717
+Jaspa Fletcher,jaspa-fletcher,SD,22,Brisbane,12,2022,2649,2605,2613,2667,2675,8,62,70
+Jase Burgoyne,jase-burgoyne,SD,23,Port Adelaide,60,2021,2581,2547,2617,2603,2674,70,56,127
+Sam Durham,sam-durham,SF,25,Essendon,9,2021,2569,2529,2533,2549,2554,4,20,25
+Jacob Farrow,jacob-farrow,SD,19,Essendon,10,2025,2688,2526,2734,2848,3082,208,322,556
+Bailey Humphrey,bailey-humphrey,SF,22,Gold Coast,6,2022,2572,2523,2564,2589,2632,41,66,109
+Zeke Uwland,zeke-uwland,SD,19,Gold Coast,2,2025,2660,2480,2626,2628,2786,146,148,306
+Bailey J. Williams,bailey-williams-wc,KPF,26,West Coast,35,2018,2504,2469,2469,2483,2483,0,14,14
+Ollie Dempsey,ollie-dempsey,MID,23,Geelong,7,2021,2470,2435,2439,2492,2498,4,57,63
+Tim Taranto,tim-taranto,MID,28,Richmond,2,2016,2457,2422,2423,2433,2434,1,11,12
+Harvey Langford,harvey-langford,MID,20,Melbourne,6,2024,2514,2410,2641,2588,2836,231,178,426
+Will Day,will-day,MID,25,Hawthorn,13,2019,2418,2381,2386,2396,2402,5,15,21
+Touk Miller,touk-miller,SF,30,Gold Coast,29,2014,2411,2379,2377,2397,2395,-2,18,16
+Lachie Neale,lachie-neale,MID,33,Brisbane,66,2011,2380,2347,2348,2382,2383,1,35,36
+Clayton Oliver,clayton-oliver,MID,29,GWS,4,2015,2366,2333,2334,2347,2347,1,14,14
+Harry Dean,harry-dean,KPD,19,Carlton,3,2025,2703,2328,2815,2654,3209,487,326,881
+Reuben Ginbey,reuben-ginbey,SD,22,West Coast,9,2022,2348,2320,2341,2367,2388,21,47,68
+Daniel Curtin,daniel-curtin,MID,21,Adelaide,8,2023,2451,2313,2487,2416,2598,174,103,285
+Sam Cumming,sam-cumming,MID,19,Richmond,7,2025,2312,2301,2280,2565,2540,-21,264,239
+Mitchell Edwards,mitchell-edwards,RUCK,21,Geelong,32,2023,2163,2300,2411,2419,2536,111,119,236
+Jordon Sweet,jordon-sweet,RUCK,28,Port Adelaide,14,2018,2330,2295,2295,2275,2275,0,-20,-20
+Bailey Dale,bailey-dale,SD,30,Western Bulldogs,45,2014,2289,2259,2257,2270,2269,-2,11,10
+Jack Ginnivan,jack-ginnivan,SF,24,Collingwood,8,2020,2277,2246,2245,2275,2274,-1,29,28
+Connor Idun,connor-idun,SD,26,GWS,61,2018,2257,2227,2225,2238,2237,-2,11,10
+Lachie Whitfield,lachie-whitfield,SD,32,GWS,1,2012,2257,2227,2226,2249,2248,-1,22,21
+Cameron Mackenzie,cameron-mackenzie,MID,22,Hawthorn,7,2022,2247,2206,2242,2265,2302,36,59,96
+Tanner Bruhn,tanner-bruhn,SD,24,Geelong,12,2020,2244,2204,2214,2235,2244,10,31,40
+Harvey Thomas,harvey-thomas,SF,21,GWS,59,2023,2346,2203,2318,2295,2415,115,92,212
+Josh Lindsay,josh-lindsay,SD,19,West Coast,19,2025,2428,2200,2412,2473,2714,212,273,514
+Shai Bolton,shai-bolton,SF,28,Fremantle,29,2016,2180,2151,2150,2159,2157,-1,8,6
+Justin McInerney,justin-mcinerney,SF,26,Sydney,44,2018,2172,2142,2143,2166,2166,1,24,24
+Mattaes Phillipou,mattaes-phillipou,SF,22,St Kilda,10,2022,2293,2136,2279,2193,2339,143,57,203
+Josh Daicos,josh-daicos,SD,28,Collingwood,57,2016,2136,2108,2106,2100,2099,-2,-8,-9
+Tom Powell,tom-powell,SF,24,North Melbourne,13,2020,2131,2092,2103,2122,2133,11,30,41
+Mitchito Owens,mitchito-owens,KPF,23,St Kilda,33,2021,2099,2077,2064,2127,2115,-13,50,38
+Sam Flanders,sam-flanders,SF,25,St Kilda,11,2019,2094,2061,2066,2064,2069,5,3,8
+George Hewett,george-hewett,MID,31,Carlton,32,2013,2085,2056,2056,2078,2079,0,22,23
+Ned Moyle,ned-moyle,RUCK,24,Gold Coast,5,2021,2236,2054,2054,2071,2071,0,17,17
+Christian Petracca,christian-petracca,SF,30,Gold Coast,2,2014,2066,2037,2038,2057,2058,1,20,21
+Jake Soligo,jake-soligo,SF,23,Adelaide,36,2021,2074,2031,2050,2079,2100,19,48,69
+Josh Battle,josh-battle,KPD,28,St Kilda,39,2016,2053,2030,2024,2012,2005,-6,-18,-25
+Toby Nankervis,toby-nankervis,RUCK,32,Richmond,35,2013,2058,2030,2030,2047,2047,0,17,17
+Rowan Marshall,rowan-marshall,KPF,31,St Kilda,8,2016,2055,2027,2027,2038,2038,0,11,11
+Josh Rachele,josh-rachele,SF,23,Adelaide,6,2021,2032,1997,2007,2045,2056,10,48,59
+Callum Mills,callum-mills,SD,29,Sydney,3,2015,2024,1996,1995,2003,2002,-1,7,6
+Kieren Briggs,kieren-briggs,RUCK,27,GWS,34,2018,2018,1954,1991,1947,1984,37,-7,30
+Taj Hotton,taj-hotton,SF,20,Richmond,12,2024,2296,1869,2367,1995,2510,498,126,641
+Jacob Van Rooyen,jacob-van-rooyen,KPF,23,Melbourne,19,2021,1903,1863,1878,1910,1924,15,47,61
+Trent Rivers,trent-rivers,SD,25,Melbourne,32,2019,1879,1854,1853,1859,1858,-1,5,4
+Cooper Trembath,cooper-trembath,KPF,21,North Melbourne,9,2025,2028,1848,2051,1936,2148,203,88,300
+Tom De Koning,tom-de-koning,RUCK,27,St Kilda,30,2017,1856,1830,1830,1820,1820,0,-10,-10
+Marcus Windhager,marcus-windhager,SD,23,St Kilda,47,2021,1890,1813,1869,1857,1914,56,44,101
+Matthew Roberts,matthew-roberts,SD,23,Sydney,34,2021,1842,1813,1940,1855,1986,127,42,173
+Lawson Humphries,lawson-humphries,SD,23,Geelong,63,2023,1845,1810,1814,1851,1856,4,41,46
+Wayne Milera,wayne-milera,SD,29,Adelaide,11,2015,1826,1802,1801,1811,1810,-1,9,8
+Nick Madden,nick-madden,RUCK,22,GWS,,2022,1917,1760,1761,1803,1803,1,43,43
+Hayden Young,hayden-young,MID,25,Fremantle,7,2019,1784,1756,1762,1768,1773,6,12,17
+Phoenix Gothard,phoenix-gothard,SF,21,GWS,12,2023,1833,1752,1875,1828,1956,123,76,204
+Harry McKay,harry-mckay,KPF,29,Carlton,10,2015,1831,1734,1735,1733,1734,1,-1,0
+Max Hall,max-hall,SF,24,St Kilda,4,2024,2855,1721,1734,1744,1757,13,23,36
+Aaron Cadman,aaron-cadman,KPF,22,GWS,1,2022,1756,1704,1767,1751,1817,63,47,113
+Tom McCartin,tom-mccartin,KPD,27,Sydney,33,2017,1710,1690,1686,1684,1679,-4,-6,-11
+Leo Lombard,leo-lombard,SF,20,Gold Coast,9,2024,1708,1684,1938,1809,2083,254,125,399
+Darcy Cameron,darcy-cameron,RUCK,31,Collingwood,48,2016,1692,1669,1669,1674,1674,0,5,5
+Xavier Lindsay,xavier-lindsay,SD,20,Melbourne,11,2024,2092,1659,2128,1752,2245,469,93,586
+Oliver Hollands,oliver-hollands,SD,22,Carlton,11,2022,1735,1656,1738,1702,1786,82,46,130
+Koltyn Tholstrup,koltyn-tholstrup,SF,21,Melbourne,13,2023,1717,1650,1693,1728,1773,43,78,123
+Gryan Miers,gryan-miers,SF,27,Geelong,57,2017,1672,1650,1649,1657,1656,-1,7,6
+Will Graham,will-graham,SF,21,Gold Coast,26,2023,1692,1650,1708,1723,1784,58,73,134
+Noah Mraz,noah-mraz,KPD,20,Hawthorn,35,2024,3555,1649,1707,1712,1775,58,63,126
+Nate Caddy,nate-caddy,KPF,21,Essendon,10,2023,1806,1638,1852,1724,1949,214,86,311
+Tom Sparrow,tom-sparrow,SF,26,Melbourne,27,2018,1654,1632,1632,1651,1651,0,19,19
+Harris Andrews,harris-andrews,KPD,30,Brisbane,60,2014,1644,1624,1620,1626,1621,-4,2,-3
+Peter Wright,peter-wright,KPF,30,Essendon,10,2014,1679,1618,1619,1626,1626,1,8,8
+Paul Curtis,paul-curtis,SF,23,North Melbourne,35,2021,1627,1597,1621,1634,1660,24,37,63
+Patrick Voss,patrick-voss,KPF,23,Fremantle,5,2021,1607,1577,1592,1616,1631,15,39,54
+Joel Jeffrey,joel-jeffrey,SD,24,Gold Coast,30,2020,1596,1574,1576,1590,1594,2,16,20
+Jobe Shanahan,jobe-shanahan,KPF,20,West Coast,30,2024,1755,1573,1741,1716,1899,168,143,326
+Hugh McCluggage,hugh-mccluggage,MID,28,Brisbane,3,2016,1565,1542,1543,1551,1551,1,9,9
+Dylan Patterson,dylan-patterson,SD,19,Gold Coast,5,2025,1672,1537,1648,1701,1824,111,164,287
+Caleb Windsor,caleb-windsor,SD,21,Melbourne,7,2023,1683,1536,1783,1605,1861,247,69,325
+Daniel Turner,daniel-turner,KPD,24,Melbourne,20,2021,1547,1522,1532,1532,1541,10,10,19
+Massimo D'Ambrosio,massimo-d-ambrosio,MID,23,Hawthorn,3,2022,1583,1521,1566,1557,1604,45,36,83
+Joshua Weddle,joshua-weddle,SD,22,Hawthorn,18,2022,1529,1502,1508,1537,1544,6,35,42
+Patrick Cripps,patrick-cripps,MID,31,Carlton,13,2013,1509,1488,1488,1505,1505,0,17,17
+Jye Amiss,jye-amiss,KPF,23,Fremantle,8,2021,1508,1462,1492,1498,1529,30,36,67
+Jordan De Goey,jordan-de-goey,SF,30,Collingwood,6,2014,1453,1434,1433,1449,1448,-1,15,14
+Samuel Grlj,samuel-grlj,SD,19,Richmond,8,2025,1765,1431,1736,1594,1932,305,163,501
+James Sicily,james-sicily,SD,31,Hawthorn,52,2013,1442,1422,1422,1436,1435,0,14,13
+Mitch Georgiades,mitch-georgiades,KPF,25,Port Adelaide,18,2019,1465,1421,1427,1424,1430,6,3,9
+Cooper Duff-Tytler,cooper-duff-tytler,KPF,19,West Coast,4,2025,1596,1420,1574,1622,1797,154,202,377
+Charlie Curnow,charlie-curnow,KPF,29,Carlton,12,2015,1431,1364,1364,1366,1367,0,2,3
+Ryan Maric,ryan-maric,SD,22,West Coast,1,2023,1400,1363,1401,1399,1438,38,36,75
+Logan Evans,logan-evans,SD,21,Port Adelaide,12,2024,1389,1355,1369,1420,1435,14,65,80
+Ned Long,ned-long,SF,23,Collingwood,3,2021,1401,1353,1386,1385,1421,33,32,68
+Patrick Retschko,patrick-retschko,MID,20,Geelong,8,2024,1449,1343,1483,1441,1594,140,98,251
+Luke Parker,luke-parker,SD,34,North Melbourne,42,2010,1359,1341,1340,1362,1362,-1,21,21
+Caleb Daniel,caleb-daniel,SD,30,North Melbourne,46,2014,1358,1340,1339,1350,1349,-1,10,9
+John Noble,john-noble,SD,29,Gold Coast,8,2019,2192,1330,1329,1330,1330,-1,0,0
+Luke Ryan,luke-ryan,SD,30,Fremantle,65,2016,1334,1317,1316,1324,1323,-1,7,6
+Daniel Annable,daniel-annable,MID,19,Brisbane,6,2025,1476,1316,1398,1366,1433,82,50,117
+Kane Farrell,kane-farrell,SD,27,Port Adelaide,51,2017,1325,1307,1307,1311,1310,0,4,3
+Lloyd Meek,lloyd-meek,RUCK,28,Hawthorn,68,2017,1320,1302,1302,1297,1297,0,-5,-5
+Alix Tauru,alix-tauru,KPF,20,St Kilda,10,2024,1650,1280,1665,1368,1775,385,88,495
+Dante Visentini,dante-visentini,KPF,23,Port Adelaide,56,2021,1290,1254,1268,1286,1299,14,32,45
+Jed Walter,jed-walter,KPF,21,Gold Coast,3,2023,1330,1250,1435,1316,1510,185,66,260
+Cooper Hynes,cooper-hynes,SF,20,Western Bulldogs,20,2024,1402,1250,1537,1314,1616,287,64,366
+Kane McAuliffe,kane-mcauliffe,MID,21,Richmond,40,2023,1333,1235,1376,1290,1438,141,55,203
+Bradley Hill,bradley-hill,SF,33,St Kilda,42,2011,1241,1225,1225,1244,1243,0,19,18
+Tim Kelly,tim-kelly,SF,32,West Coast,24,2017,1236,1218,1219,1234,1235,1,16,17
+Sam Taylor,sam-taylor,KPD,27,GWS,28,2017,1227,1213,1210,1211,1207,-3,-2,-6
+Jai Serong,jai-serong,KPD,23,Sydney,53,2021,1290,1212,1346,1241,1379,134,29,167
+Sid Draper,sid-draper,SF,20,Adelaide,4,2024,1159,1209,1246,1225,1265,37,16,56
+Elijah Tsatas,elijah-tsatas,MID,22,Essendon,5,2022,1222,1207,1228,1242,1263,21,35,56
+James Rowbottom,james-rowbottom,SF,26,Sydney,25,2018,1222,1205,1205,1220,1220,0,15,15
+Brent Daniels,brent-daniels,SF,27,GWS,27,2017,1215,1199,1198,1209,1208,-1,10,9
+Karl Worner,karl-worner,SD,24,Fremantle,4,2021,1266,1196,1250,1210,1265,54,14,69
+Jack Steele,jack-steele,MID,31,Melbourne,21,2014,1208,1191,1191,1205,1205,0,14,14
+Dylan Moore,dylan-moore,SF,27,Hawthorn,66,2017,1199,1183,1183,1193,1193,0,10,10
+Beau Addinsall,beau-addinsall,MID,19,Gold Coast,18,2025,1517,1182,1495,1320,1669,313,138,487
+Mason Redman,mason-redman,SD,29,Essendon,30,2015,1194,1178,1177,1183,1182,-1,5,4
+Luke Trainor,luke-trainor,SD,20,Richmond,21,2024,1546,1174,1599,1250,1695,425,76,521
+Aaron Naughton,aaron-naughton,KPF,27,Western Bulldogs,9,2017,1223,1166,1166,1166,1166,0,0,0
+Jy Simpkin,jy-simpkin,SF,28,North Melbourne,12,2016,1180,1164,1164,1170,1171,0,6,7
+Ty Gallop,ty-gallop,KPF,20,Brisbane,42,2024,1395,1164,1355,1270,1479,191,106,315
+Jake Waterman,jake-waterman,KPF,28,West Coast,76,2016,1198,1161,1161,1156,1157,0,-5,-4
+Cooper Lord,cooper-lord,MID,21,Carlton,9,2024,1285,1155,1325,1208,1384,170,53,229
+Josh Dunkley,josh-dunkley,MID,29,Brisbane,25,2015,1150,1134,1134,1143,1144,0,9,10
+Sam Draper,sam-draper,KPF,28,Brisbane,1,2016,1129,1107,1106,1111,1110,-1,4,3
+Thomas Stewart,thomas-stewart,SD,33,Geelong,40,2016,1117,1103,1102,1118,1117,-1,15,14
+Dan Houston,dan-houston,SD,29,Collingwood,30,2015,1113,1097,1097,1104,1104,0,7,7
+Darcy Jones,darcy-jones,SF,22,GWS,21,2022,1288,1084,1137,1114,1169,53,30,85
+Jack Whitlock,jack-whitlock,KPF,20,Port Adelaide,33,2024,1265,1067,1225,1166,1338,158,99,271
+Zach Reid,zach-reid,KPD,24,Essendon,10,2020,1088,1065,1078,1079,1092,13,14,27
+Tyler Sonsie,tyler-sonsie,SF,23,Richmond,28,2021,1098,1060,1094,1086,1121,34,26,61
+Jhye Clark,jhye-clark,SF,22,Geelong,8,2022,1074,1059,1046,1091,1078,-13,32,19
+Matt Johnson,matt-johnson-1,MID,23,Fremantle,21,2021,1141,1045,1132,1072,1160,87,27,115
+Ben Miller,ben-miller,KPD,27,Richmond,62,2017,1055,1042,1041,1040,1040,-1,-2,-2
+Adam Cerra,adam-cerra,MID,27,Carlton,5,2017,1044,1030,1030,1039,1039,0,9,9
+Andrew McGrath,andrew-mcgrath,SD,28,Essendon,1,2016,1038,1023,1022,1023,1022,-1,0,-1
+Thomas Liberatore,thomas-liberatore,MID,34,Western Bulldogs,24,2010,1032,1017,1018,1035,1035,1,18,18
+Isaac Kako,isaac-kako,SF,20,Essendon,13,2024,1378,1015,1439,1065,1509,424,50,494
+Jacob Weitering,jacob-weitering,KPD,29,Carlton,1,2015,1025,1014,1011,1015,1011,-3,1,-3
+Dayne Zorko,dayne-zorko,SD,37,Brisbane,38,2011,1012,999,998,1021,1021,-1,22,22
+Joe Berry,joe-berry,SF,20,Port Adelaide,15,2024,1209,986,1365,1037,1435,379,51,449
+Jonty Faull,jonty-faull,KPF,20,Richmond,14,2024,982,984,998,1046,1060,14,62,76
+Reilly O'Brien,reilly-o-brien,RUCK,31,Adelaide,8,2014,995,981,981,987,987,0,6,6
+Jye Caldwell,jye-caldwell,MID,26,Essendon,11,2018,992,978,979,989,989,1,11,11
+Billy Wilson,billy-wilson,SD,21,Carlton,34,2023,962,963,954,1009,1001,-9,46,38
+Josh Smillie,josh-smillie,MID,20,Richmond,7,2024,953,953,953,953,953,0,0,0
+Seth Campbell,seth-campbell,SF,22,Richmond,3,2022,996,952,1003,977,1030,51,25,78
+Anthony Caminiti,anthony-caminiti,KPF,23,St Kilda,,2022,970,949,976,976,1003,27,27,54
+Jai Murray,jai-murray,MID,19,Gold Coast,17,2025,1196,948,1167,1059,1278,219,111,330
+Neil Erasmus,neil-erasmus,MID,23,Fremantle,10,2021,1013,945,1015,968,1040,70,23,95
+Sam De Koning,sam-de-koning,KPD,25,Geelong,19,2019,946,931,935,931,937,4,0,6
+Sam Banks,sam-banks,SD,23,Richmond,29,2021,947,926,937,948,960,11,22,34
+Miles Bergman,miles-bergman,SD,25,Port Adelaide,14,2019,931,918,920,922,925,2,4,7
+Jordan Croft,jordan-croft,KPF,21,Western Bulldogs,15,2023,1021,916,1040,964,1095,124,48,179
+Mark Keane,mark-keane,KPD,26,Adelaide,,2022,1529,914,930,915,931,16,1,17
+Joe Richards,joe-richards,SF,27,Port Adelaide,48,2022,925,913,924,923,932,11,10,19
+Adam Treloar,adam-treloar,SF,33,Western Bulldogs,14,2011,925,911,911,926,926,0,15,15
+Tom McCarthy,tom-mccarthy,SD,26,West Coast,1,2025,1481,892,903,903,913,11,11,21
+Edward Allan,edward-allan,MID,22,Collingwood,19,2022,942,892,977,918,1006,85,26,114
+Ethan Read,ethan-read,KPF,21,Gold Coast,9,2023,998,887,1016,933,1070,129,46,183
+Jayden Short,jayden-short,SD,30,Richmond,9,2014,900,887,887,895,895,0,8,8
+Calsher Dear,calsher-dear,KPF,21,Hawthorn,56,2023,965,884,945,930,996,61,46,112
+Bo Allan,bo-allan,SD,20,West Coast,16,2024,1152,883,1131,931,1193,248,48,310
+Kai Lohmann,kai-lohmann,SF,23,Brisbane,20,2021,888,873,878,894,900,5,21,27
+Harry Kyle,harry-kyle,SD,19,Sydney,14,2025,1174,866,1155,952,1269,289,86,403
+Darcy Fogarty,darcy-fogarty,KPF,27,Adelaide,12,2017,876,852,852,856,856,0,4,4
+Toby Greene,toby-greene,SF,33,GWS,17,2011,859,847,847,861,861,0,14,14
+Jarman Impey,jarman-impey,SD,31,Hawthorn,21,2013,858,846,846,856,855,0,10,9
+Jedd Busslinger,jedd-busslinger,KPD,22,Western Bulldogs,13,2022,882,829,886,853,912,57,24,83
+Matt Carroll,matt-carroll,SD,21,Carlton,7,2023,951,826,999,863,1045,173,37,219
+Kade Chandler,kade-chandler,SF,26,Melbourne,10,2018,825,814,813,823,823,-1,9,9
+Ed Langdon,ed-langdon,SF,30,Melbourne,54,2014,807,796,795,805,805,-1,9,9
+Jeremy Cameron,jeremy-cameron,KPF,33,Geelong,12,2011,826,778,778,790,790,0,12,12
+Brayden Cook,brayden-cook,SF,24,Adelaide,26,2020,793,778,782,791,795,4,13,17
+Wil Powell,wil-powell,SD,27,Gold Coast,19,2017,787,777,776,781,780,-1,4,3
+Aliir Aliir,aliir-aliir,KPD,32,Port Adelaide,44,2013,783,774,773,781,779,-1,7,5
+Will Brodie,will-brodie,MID,28,Port Adelaide,9,2016,831,772,771,778,777,-1,6,5
+Hugh Boxshall,hugh-boxshall,MID,20,St Kilda,45,2024,965,767,1049,811,1108,282,44,341
+Angus Sheldrick,angus-sheldrick,MID,23,Sydney,18,2021,757,761,746,780,766,-15,19,5
+Charlie Comben,charlie-comben,KPD,25,North Melbourne,31,2019,815,756,807,756,806,51,0,50
+Keidean Coleman,keidean-coleman,SD,26,Brisbane,36,2019,763,754,754,759,759,0,5,5
+Jack Gunston,jack-gunston,KPF,35,Hawthorn,29,2009,784,753,753,766,766,0,13,13
+Nick Bryan,nick-bryan,RUCK,25,Essendon,37,2019,755,748,749,747,748,1,-1,0
+Xavier Taylor,xavier-taylor,SD,19,Melbourne,11,2025,924,747,821,777,835,74,30,88
+Archer Reid,archer-reid,KPF,21,West Coast,30,2023,702,747,757,788,798,10,41,51
+Lachlan McAndrew,lachlan-mcandrew,RUCK,26,Adelaide,,2024,1252,743,742,748,748,-1,5,5
+Lachlan Schultz,lachlan-schultz,SF,29,Fremantle,57,2018,751,740,740,747,747,0,7,7
+Zane Duursma,zane-duursma,SF,21,North Melbourne,4,2023,776,738,811,772,848,73,34,110
+Samuel Swadling,samuel-swadling,MID,19,Collingwood,37,2025,771,737,763,825,850,26,88,113
+Patrick Lipinski,patrick-lipinski,SF,28,Collingwood,28,2016,746,736,735,741,740,-1,5,4
+Sean Darcy,sean-darcy,RUCK,28,Fremantle,38,2016,744,734,734,735,735,0,1,1
+Oliver Florent,oliver-florent,SD,28,Carlton,11,2016,743,733,733,737,736,0,4,3
+Harry Rowston,harry-rowston,MID,22,GWS,16,2022,798,733,777,754,802,44,21,69
+Taylor Goad,taylor-goad,RUCK,21,North Melbourne,20,2023,1032,727,728,730,731,1,3,4
+Christian Moraes,christian-moraes,SF,20,Port Adelaide,38,2024,915,713,1043,749,1096,330,36,383
+Hamish Davis,hamish-davis,MID,20,West Coast,65,2024,909,712,1038,748,1090,326,36,378
+Lachlan Cowan,lachlan-cowan,SD,22,Carlton,30,2022,736,703,738,722,759,35,19,56
+Rory Laird,rory-laird,SD,33,Adelaide,8,2011,712,702,702,714,713,0,12,11
+Elijah Hewett,elijah-hewett,MID,22,West Coast,14,2022,745,699,729,721,753,30,22,54
+Elijah Hollands,elijah-hollands,SF,24,Carlton,7,2020,708,698,704,710,716,6,12,18
+Jordan Ridley,jordan-ridley,SD,28,Essendon,22,2016,704,694,694,699,698,0,5,4
+Talor Byrne,talor-byrne,SF,19,Carlton,45,2025,955,689,899,769,1002,210,80,313
+Logan McDonald,logan-mcdonald,KPF,24,Sydney,4,2020,703,684,692,692,700,8,8,16
+Lachie Jaques,lachie-jaques,SD,20,Western Bulldogs,29,2024,812,681,843,732,902,162,51,221
+Louis Emmett,louis-emmett,RUCK,19,Western Bulldogs,27,2025,786,677,754,764,854,77,87,177
+Harley Barker,harley-barker,MID,19,Geelong,24,2025,677,677,677,677,677,0,0,0
+James Peatling,james-peatling,MID,26,Adelaide,8,2021,1116,677,677,682,683,0,5,6
+Brodie Kemp,brodie-kemp,KPF,25,Carlton,17,2019,678,665,678,667,680,13,2,15
+Darcy Byrne-Jones,darcy-byrne-jones,SF,31,Port Adelaide,50,2013,674,664,664,673,673,0,9,9
+Jack Graham,jack-graham,SF,28,West Coast,53,2016,660,651,651,657,657,0,6,6
+James O'Donnell,james-o-donnell,KPD,24,Western Bulldogs,,2022,668,651,660,659,669,9,8,18
+Charlie West,charlie-west,KPF,20,Collingwood,50,2024,671,642,658,697,715,16,55,73
+Daniel Rioli,daniel-rioli,SD,29,Gold Coast,15,2015,651,641,641,645,645,0,4,4
+Nic Newman,nic-newman,SD,33,Carlton,24,2014,639,630,629,639,639,-1,9,9
+Max Heath,max-heath,KPF,24,Melbourne,7,2021,633,630,640,638,647,10,8,17
+Oskar Taylor,oskar-taylor,SD,19,GWS,15,2025,629,629,629,629,629,0,0,0
+Marcus Herbert,marcus-herbert,MID,24,West Coast,13,2026,1060,627,648,639,659,21,12,32
+Shaun Mannagh,shaun-mannagh,SF,29,Geelong,36,2023,672,627,662,633,669,35,6,42
+Sam Marshall,sam-marshall,MID,20,Brisbane,25,2024,830,620,702,651,735,82,31,115
+Samuel Collins,samuel-collins,KPD,32,Gold Coast,54,2015,626,619,617,624,622,-2,5,3
+Sam Allen,sam-allen,SF,19,West Coast,29,2025,618,618,618,618,618,0,0,0
+Jack Silvagni,jack-silvagni,KPD,29,St Kilda,53,2015,624,618,616,619,617,-2,1,-1
+Dylan Stephens,dylan-stephens,MID,25,North Melbourne,5,2019,628,616,620,621,626,4,5,10
+Bailey Williams,bailey-williams-wb,SD,29,Western Bulldogs,48,2015,621,613,612,618,617,-1,5,4
+Willem Drew,willem-drew,MID,28,Port Adelaide,33,2016,617,608,608,614,614,0,6,6
+Will Green,will-green,RUCK,21,Sydney,16,2023,670,605,605,604,604,0,-1,-1
+Charlie Edwards,charlie-edwards,SD,21,Adelaide,21,2023,721,599,623,604,627,24,5,28
+Harry Armstrong,harry-armstrong,KPF,20,Richmond,23,2024,811,598,606,637,646,8,39,48
+Isaac Quaynor,isaac-quaynor,SD,26,Collingwood,13,2018,604,596,596,601,601,0,5,5
+Nathan O'Driscoll,nathan-o-driscoll,MID,24,Fremantle,28,2020,606,596,596,606,606,0,10,10
+Joseph Fonti,joseph-fonti,SD,22,GWS,44,2023,601,594,592,611,608,-2,17,14
+Thomas Sims,thomas-sims,KPF,20,Richmond,28,2024,1069,562,568,594,601,6,32,39
+Darcy Parish,darcy-parish,MID,29,Essendon,5,2015,569,562,562,567,567,0,5,5
+Max Gruzewski,max-gruzewski,KPF,22,GWS,22,2022,594,561,617,579,637,56,18,76
+Will Setterfield,will-setterfield,MID,28,Essendon,5,2016,566,558,559,563,563,1,5,5
+William McCabe,william-mccabe,KPD,21,Hawthorn,19,2023,623,556,586,575,604,30,19,48
+Harry Barnett,harry-barnett,RUCK,22,West Coast,23,2022,553,553,553,553,553,0,0,0
+Jack Buckley,jack-buckley,KPD,29,GWS,,2017,559,551,552,555,556,1,4,5
+Tobie Travaglia,tobie-travaglia,SD,20,St Kilda,8,2024,753,550,734,582,777,184,32,227
+Latrelle Pickett,latrelle-pickett,SF,21,Melbourne,12,2025,548,548,548,548,548,0,0,0
+Lachlan Carmichael,lachlan-carmichael,SD,19,Western Bulldogs,21,2025,548,548,548,548,548,0,0,0
+Angus Clarke,angus-clarke,SD,20,Essendon,39,2024,754,545,680,589,726,135,44,181
+Tyan Prindable,tyan-prindable,MID,19,Collingwood,32,2025,543,543,543,543,543,0,0,0
+Jack Ough,jack-ough,MID,20,GWS,36,2024,664,540,741,575,788,201,35,248
+Mitchell Lewis,mitchell-lewis,KPF,28,Hawthorn,75,2016,530,536,521,536,522,-15,0,-14
+Blake Hardwick,blake-hardwick,SD,29,Hawthorn,44,2015,531,525,524,529,528,-1,4,3
+Kyle Langford,kyle-langford,KPF,30,Essendon,18,2014,544,518,518,524,524,0,6,6
+Hunter Holmes,hunter-holmes,MID,19,Geelong,33,2025,517,517,517,517,517,0,0,0
+Cooper Harvey,cooper-harvey,SF,22,North Melbourne,56,2022,540,516,543,530,558,27,14,42
+Jake Rogers,jake-rogers,SF,21,Gold Coast,14,2023,563,515,581,539,605,66,24,90
+Mitchell Marsh,mitchell-marsh,KPF,19,Adelaide,22,2025,506,506,506,506,506,0,0,0
+Toby Conway,toby-conway,RUCK,23,Geelong,24,2021,503,503,503,503,503,0,0,0
+Matthew Flynn,matthew-flynn,RUCK,29,West Coast,41,2015,527,499,501,502,504,2,3,5
+Oscar Steene,oscar-steene,KPF,23,Collingwood,,2022,487,499,501,511,513,2,12,14
+Max Michalanney,max-michalanney,SD,22,Adelaide,17,2022,499,493,493,508,508,0,15,15
+Francis Evans,francis-evans,SF,25,Carlton,40,2019,500,492,493,497,498,1,5,6
+Brayden Maynard,brayden-maynard,SD,30,Collingwood,30,2014,497,490,490,495,495,0,5,5
+Peter Ladhams,peter-ladhams,KPF,28,Sydney,7,2016,527,487,487,491,491,0,4,4
+Aidan Schubert,aidan-schubert,KPF,19,Hawthorn,23,2025,509,483,485,481,483,2,-2,0
+Cody Angove,cody-angove,SF,20,GWS,24,2024,483,483,483,483,483,0,0,0
+Tom Brown,tom-brown,SD,23,Richmond,17,2021,525,483,492,495,504,9,12,21
+Zak Johnson,zak-johnson,SD,20,Essendon,70,2024,575,480,634,511,672,154,31,192
+Harrison Oliver,harrison-oliver,SD,20,GWS,19,2024,582,476,613,509,656,137,33,180
+Ryan Angwin,ryan-angwin,MID,24,GWS,19,2020,488,472,481,481,489,9,9,17
+Cameron Nairn,cameron-nairn,SF,19,Hawthorn,20,2025,630,468,601,482,631,133,14,163
+Marc Pittonet,marc-pittonet,RUCK,30,Carlton,50,2014,472,466,466,468,468,0,2,2
+Charlie Banfield,charlie-banfield,SF,19,St Kilda,41,2025,634,463,542,484,560,79,21,97
+Jack Lukosius,jack-lukosius,KPF,26,Port Adelaide,2,2018,469,462,462,469,469,0,7,7
+Rhett Bazzo,rhett-bazzo,KPD,23,West Coast,37,2021,466,459,464,471,476,5,12,17
+Lachy Dovaston,lachy-dovaston,SF,19,North Melbourne,16,2025,608,457,490,508,541,33,51,84
+Cameron Rayner,cameron-rayner,SF,27,Brisbane,1,2017,463,457,457,462,462,0,5,5
+Nick Larkey,nick-larkey,KPF,28,North Melbourne,72,2016,462,455,455,454,454,0,-1,-1
+Heath Chapman,heath-chapman,SD,24,Fremantle,14,2020,461,452,457,458,464,5,6,12
+James Leake,james-leake,SF,21,GWS,17,2023,477,442,476,462,498,34,20,56
+Wil Dawson,wil-dawson,KPD,21,North Melbourne,22,2023,509,441,515,465,543,74,24,102
+Hussien El Achkar,hussien-el-achkar,SF,19,Essendon,53,2025,401,436,340,487,367,-96,51,-69
+Matthew Jefferson,matthew-jefferson,KPF,22,Melbourne,15,2022,466,434,397,450,412,-37,16,-22
+James Borlase,james-borlase,KPD,24,Adelaide,,2020,438,433,448,438,453,15,5,20
+Harry DeMattia,harry-demattia,MID,21,Collingwood,25,2023,430,430,430,430,430,0,0,0
+Liam Reidy,liam-reidy,KPF,26,Carlton,4,2022,310,430,430,433,433,0,3,3
+Adam Saad,adam-saad,SD,32,Carlton,19,2014,432,426,426,432,431,0,6,5
+Matthew Kennedy,matthew-kennedy-1,MID,29,Western Bulldogs,13,2015,429,422,423,428,428,1,6,6
+Max Kondogiannis,max-kondogiannis,SD,19,Essendon,36,2025,477,419,465,460,506,46,41,87
+Noah Balta,noah-balta,KPF,27,Richmond,25,2017,425,418,418,420,420,0,2,2
+Josh Dolan,josh-dolan,SF,20,Western Bulldogs,31,2024,532,414,516,438,542,102,24,128
+Liam Fawcett,liam-fawcett,KPF,21,Richmond,43,2023,459,414,503,436,530,89,22,116
+James Worpel,james-worpel,MID,27,Geelong,45,2017,419,413,413,417,417,0,4,4
+Matt Whitlock,matt-whitlock,KPF,20,North Melbourne,27,2024,444,412,375,422,386,-37,10,-26
+Max Knobel,max-knobel,RUCK,22,Gold Coast,42,2022,411,411,411,411,411,0,0,0
+Jack Crisp,jack-crisp,MID,33,Collingwood,34,2011,417,410,410,419,419,0,9,9
+Jack Williams,jack-williams,KPF,23,West Coast,57,2021,480,410,478,422,490,68,12,80
+Liam Baker,liam-baker,SD,28,West Coast,11,2017,408,402,402,404,404,0,2,2
+Caiden Cleary,caiden-cleary,SF,21,Sydney,24,2023,441,400,460,419,480,60,19,80
+Braeden Campbell,braeden-campbell,SF,24,Sydney,5,2020,408,399,402,406,410,3,7,11
+Cody Curtin,cody-curtin,KPF,19,Brisbane,43,2025,524,398,449,430,489,51,32,91
+Adam Sweid,adam-sweid,MID,19,Fremantle,25,2025,397,397,397,397,397,0,0,0
+Lachlan Smith,lachlan-smith,RUCK,21,Western Bulldogs,47,2023,623,397,399,398,399,2,1,2
+Tom Gross,tom-gross,SF,20,West Coast,46,2024,642,396,465,415,486,69,19,90
+Xavier Bamert,xavier-bamert,MID,19,Port Adelaide,5,2026,377,396,313,443,344,-83,47,-52
+Avery Thomas,avery-thomas,SD,19,Gold Coast,28,2025,394,394,394,394,394,0,0,0
+Alex Davies,alex-davies,MID,24,Gold Coast,17,2020,405,393,399,401,408,6,8,15
+Mason Wood,mason-wood,SF,33,St Kilda,44,2012,389,383,383,391,391,0,8,8
+Blake Thredgold,blake-thredgold,KPD,19,North Melbourne,26,2025,373,373,373,373,373,0,0,0
+Alex Neal-Bullen,alex-neal-bullen,SF,30,Adelaide,40,2014,375,371,370,375,375,-1,4,4
+Joshua Kelly,joshua-kelly,MID,31,GWS,2,2013,375,370,370,372,372,0,2,2
+Zachary Williams,zachary-williams,SF,32,Carlton,,2012,373,368,368,374,374,0,6,6
+Luke Nankervis,luke-nankervis,MID,23,Adelaide,1,2021,372,364,369,373,379,5,9,15
+Josh Lai,josh-lai,SD,21,Port Adelaide,,2024,447,361,516,378,542,155,17,181
+Scott Pendlebury,scott-pendlebury,MID,39,Collingwood,5,2005,359,353,353,362,363,0,9,10
+Tom Papley,tom-papley,SF,30,Sydney,11,2015,357,353,353,358,358,0,5,5
+Archer Day-Wicks,archer-day-wicks,SF,20,Essendon,1,2024,629,351,675,368,708,324,17,357
+Karl Amon,karl-amon,SD,31,Hawthorn,59,2013,349,345,344,349,349,-1,4,4
+Oliver Hannaford,oliver-hannaford,MID,20,GWS,18,2024,379,340,415,360,441,75,20,101
+Daniel McStay,daniel-mcstay,KPF,31,Collingwood,25,2013,344,338,338,342,342,0,4,4
+Thomas Matthews,thomas-matthews,SF,19,Melbourne,30,2025,337,337,337,337,337,0,0,0
+Jayden Nguyen,jayden-nguyen,SD,20,GWS,,2024,433,332,420,355,449,88,23,117
+Elliot Yeo,elliot-yeo,SF,33,West Coast,36,2011,335,331,331,336,336,0,5,5
+Nick Murray,nick-murray,KPD,26,Adelaide,,2020,329,324,324,325,326,0,1,2
+Malakai Champion,malakai-champion,SF,20,West Coast,,2024,386,323,303,344,321,-20,21,-2
+Finlay Macrae,finlay-macrae,SF,24,West Coast,20,2020,110,319,322,319,322,3,0,3
+Jesse Dattoli,jesse-dattoli,SF,20,Sydney,22,2024,422,318,318,318,318,0,0,0
+Harvey Johnston,harvey-johnston,SD,21,West Coast,49,2023,297,318,224,334,237,-94,16,-81
+Koby Coulson,koby-coulson,MID,19,Gold Coast,46,2025,316,316,316,316,316,0,0,0
+Will Hayes,will-hayes-b,SF,20,Collingwood,56,2024,410,315,461,337,488,146,22,173
+Mitchell Hinge,mitchell-hinge,SD,28,Adelaide,15,2016,333,315,321,316,322,6,1,7
+Harrison Ramm,harrison-ramm,KPD,20,Port Adelaide,3,2025,394,312,323,330,340,11,18,28
+Campbell Chesser,campbell-chesser,MID,23,Carlton,14,2021,265,312,302,320,310,-10,8,-2
+Thomas Burton,thomas-burton,MID,19,Richmond,,2025,337,311,294,346,325,-17,35,14
+Oscar Ryan,oscar-ryan,SD,21,Adelaide,27,2023,701,306,305,306,305,-1,0,-1
+Zane Peucker,zane-peucker,SF,19,Richmond,31,2025,487,305,381,319,387,76,14,82
+Jaxon Prior,jaxon-prior,SD,25,Brisbane,58,2019,310,305,307,307,309,2,2,4
+Oliver Francou,oliver-francou,MID,20,West Coast,3,2026,402,301,349,315,363,48,14,62
+Tom Atkins,tom-atkins,MID,31,Geelong,7,2018,302,298,298,303,303,0,5,5
+Riley Hamilton,riley-hamilton,SF,20,GWS,,2025,241,295,234,317,249,-61,22,-46
+Samson Ryan,samson-ryan,RUCK,26,Richmond,42,2020,300,295,296,296,296,1,1,1
+Jack Dalton,jack-dalton,MID,19,Hawthorn,34,2025,483,292,431,313,463,139,21,171
+Brady Hough,brady-hough,SD,23,West Coast,31,2021,298,289,297,296,305,8,7,16
+Flynn Riley,flynn-riley,RUCK,22,Carlton,4,2026,266,288,292,287,293,4,-1,5
+Alex Van Wyk,alex-van-wyk,RUCK,22,Port Adelaide,14,2026,265,288,288,288,287,0,0,-1
+Jamarra Ugle-Hagan,jamarra-ugle-hagan,KPF,24,Gold Coast,1,2020,277,285,287,289,292,2,4,7
+Jacob Molier,jacob-molier,RUCK,20,Geelong,52,2024,283,283,283,283,283,0,0,0
+Lachlan Gulbin,lachlan-gulbin,SF,20,Gold Coast,,2024,405,282,415,300,440,133,18,158
+Connor Budarick,connor-budarick,SF,25,Western Bulldogs,9,2019,284,279,281,284,286,2,5,7
+Rory Lobb,rory-lobb,KPD,33,Western Bulldogs,29,2013,279,276,275,280,279,-1,4,3
+Will Lorenz,will-lorenz,MID,21,Port Adelaide,57,2023,430,275,296,284,307,21,9,32
+Alex Dodson,alex-dodson,KPF,20,St Kilda,53,2024,274,274,274,274,274,0,0,0
+Jasper Alger,jasper-alger,SF,20,Richmond,58,2024,455,274,500,291,529,226,17,255
+Judd McVee,judd-mcvee,SD,23,Fremantle,9,2021,279,274,278,280,286,4,6,12
+Jevan Phillipou,jevan-phillipou,MID,19,Sydney,35,2025,273,273,273,273,273,0,0,0
+Riley Bice,riley-bice,SD,26,Sydney,41,2024,283,272,295,276,298,23,4,26
+Toby Bedford,toby-bedford,SF,26,GWS,75,2018,276,272,272,276,276,0,4,4
+Jack Watkins,jack-watkins,SF,26,Port Adelaide,3,2025,132,271,271,271,271,0,0,0
+Luke Kennedy,luke-kennedy,MID,20,Western Bulldogs,62,2024,372,269,304,281,318,35,12,49
+Blake Howes,blake-howes,SD,23,Melbourne,39,2021,277,268,273,276,279,5,8,11
+Josh Sinn,josh-sinn,SD,23,Port Adelaide,12,2021,131,267,265,269,268,-2,2,1
+Cooper Sharman,cooper-sharman,KPF,26,St Kilda,18,2021,450,265,265,266,266,0,1,1
+Jack Ison,jack-ison,MID,19,Carlton,47,2025,544,265,544,296,609,279,31,344
+Billy Cootee,billy-cootee,MID,24,Sydney,42,2025,264,264,264,264,264,0,0,0
+Archie May,archie-may,KPF,22,Essendon,6,2025,428,263,263,263,263,0,0,0
+Caleb Lewis,caleb-lewis,KPF,23,Gold Coast,13,2025,138,263,263,263,263,0,0,0
+Michael Sellwood,michael-sellwood,SD,23,Western Bulldogs,5,2025,158,263,263,263,263,0,0,0
+Roan Steele,roan-steele,MID,25,Collingwood,7,2025,128,263,263,263,263,0,0,0
+Lachlan Blakiston,lachlan-blakiston,KPD,28,Essendon,12,2025,128,263,263,263,263,0,0,0
+Ewan Mackinlay,ewan-mackinlay,SF,23,Port Adelaide,10,2025,128,263,263,263,263,0,0,0
+Mani Liddy,mani-liddy,MID,24,Port Adelaide,15,2025,128,263,263,263,263,0,0,0
+Zac Banch,zac-banch,SF,23,North Melbourne,2,2025,128,263,263,263,263,0,0,0
+Flynn Young,flynn-young,SF,24,Carlton,4,2025,128,263,263,263,263,0,0,0
+Brennan Cox,brennan-cox,KPD,28,Fremantle,41,2016,262,259,259,260,260,0,1,1
+Jake Riccardi,jake-riccardi,KPF,27,GWS,50,2019,276,257,257,258,258,0,1,1
+Ned Bowman,ned-bowman,SF,20,Sydney,26,2024,257,257,257,257,257,0,0,0
+Josh Draper,josh-draper,KPD,22,Fremantle,,2022,433,257,268,266,277,11,9,20
+Riley Hardeman,riley-hardeman,SD,21,North Melbourne,23,2023,263,256,262,263,269,6,7,13
+Oliver Wines,oliver-wines,MID,32,Port Adelaide,10,2012,258,255,255,258,258,0,3,3
+Koby Evans,koby-evans,MID,19,Brisbane,38,2025,254,254,254,254,254,0,0,0
+Josaia Delana,josaia-delana,SF,20,GWS,,2024,388,253,395,269,419,142,16,166
+Dion Prestia,dion-prestia,SF,34,Richmond,9,2010,255,251,251,256,256,0,5,5
+Jack Henry,jack-henry,KPF,28,Geelong,12,2016,255,251,251,253,253,0,2,2
+Lewis Hayes,lewis-hayes,SD,22,Essendon,25,2022,250,250,250,250,250,0,0,0
+Jaxon Artemis,jaxon-artemis,SD,20,Essendon,1,2026,334,250,308,261,322,58,11,72
+Tylah Williams,tylah-williams,SF,19,West Coast,39,2025,249,249,249,249,249,0,0,0
+Ben Camporeale,ben-camporeale,MID,20,Carlton,43,2024,249,249,249,249,249,0,0,0
+Kye Fincher,kye-fincher,SD,19,St Kilda,52,2025,249,249,249,249,249,0,0,0
+Jay Polkinghorne,jay-polkinghorne,KPF,20,Geelong,44,2024,363,247,349,258,364,102,11,117
+Josh Gibcus,josh-gibcus,KPD,23,Richmond,9,2021,136,246,251,248,254,5,2,8
+Mitch Podhajski,mitch-podhajski,KPF,27,Collingwood,17,2026,101,245,246,245,246,1,0,1
+Ollie Greeves,ollie-greeves,MID,19,Hawthorn,5,2025,539,240,329,255,351,89,15,111
+Jakob Ryan,jakob-ryan,SD,22,Collingwood,28,2022,239,239,239,239,239,0,0,0
+Mitchell Knevitt,mitchell-knevitt,MID,23,Geelong,25,2021,127,239,258,240,259,19,1,20
+Max King,max-king-stk,KPF,26,St Kilda,4,2018,235,237,238,238,239,1,1,2
+Lukas Cooke,lukas-cooke,KPD,23,Melbourne,11,2026,144,237,237,237,237,0,0,0
+Henry Hustwaite,henry-hustwaite,MID,22,Hawthorn,37,2022,239,235,235,235,236,0,0,1
+Conor Nash,conor-nash,MID,28,Hawthorn,,2016,239,235,235,237,237,0,2,2
+Tobyn Murray,tobyn-murray,SF,21,Fremantle,40,2025,234,234,234,234,234,0,0,0
+Brayden George,brayden-george,SF,22,North Melbourne,26,2022,234,234,234,234,234,0,0,0
+Milan Murdock,milan-murdock,SF,26,West Coast,,2025,214,232,232,232,232,0,0,0
+Tom Blamires,tom-blamires,SD,24,North Melbourne,,2025,113,232,232,232,232,0,0,0
+Flynn Perez,flynn-perez,SD,25,Hawthorn,,2025,113,232,232,232,232,0,0,0
+Paddy Cross,paddy-cross,SF,23,Melbourne,,2025,113,232,232,232,232,0,0,0
+Will Lewis,will-lewis,KPF,27,Western Bulldogs,,2025,113,232,232,232,232,0,0,0
+Mitch Zadow,mitch-zadow,SF,22,Port Adelaide,,2025,113,232,232,232,232,0,0,0
+Archie Perkins,archie-perkins,SF,24,Essendon,9,2020,235,231,238,236,242,7,5,11
+Jack Viney,jack-viney,MID,32,Melbourne,13,2012,233,229,229,231,231,0,2,2
+Will Hayward,will-hayward,SF,28,Carlton,21,2016,232,229,229,231,231,0,2,2
+Finnbar Maley,finnbar-maley,KPF,23,Adelaide,2,2023,246,229,240,236,246,11,7,17
+Ned Reeves,ned-reeves,RUCK,28,Hawthorn,,2018,232,228,228,228,228,0,0,0
+Tom Doedee,tom-doedee,SD,29,Brisbane,17,2015,229,227,227,231,231,0,4,4
+James Barrat,james-barrat,KPF,20,St Kilda,32,2024,225,225,225,225,225,0,0,0
+Jeremy Howe,jeremy-howe,SD,36,Collingwood,35,2010,228,225,225,230,230,0,5,5
+Matthew LeRay,matthew-leray,MID,19,Hawthorn,56,2025,219,219,219,219,219,0,0,0
+Ben King,ben-king,KPF,26,Gold Coast,6,2018,232,218,218,219,219,0,1,1
+Tylar Young,tylar-young,KPD,28,West Coast,9,2022,246,218,244,217,244,26,-1,26
+Stephen Coniglio,stephen-coniglio,SF,33,GWS,3,2011,218,215,215,219,219,0,4,4
+Hayden McLean,hayden-mclean,KPF,27,Sydney,,2018,218,215,215,216,216,0,1,1
+Sam Clohesy,sam-clohesy,MID,24,Gold Coast,3,2023,283,214,284,219,289,70,5,75
+Clay Hall,clay-hall,MID,21,West Coast,38,2023,245,213,216,217,219,3,4,6
+Zach Guthrie,zach-guthrie,SD,28,Geelong,21,2016,214,211,211,212,212,0,1,1
+Liam Duggan,liam-duggan,SD,30,West Coast,12,2014,212,210,210,212,212,0,2,2
+Harrison Petty,harrison-petty,KPF,27,Melbourne,37,2017,210,207,207,209,209,0,2,2
+Archie Ludowyke,archie-ludowyke,KPF,19,Adelaide,50,2025,317,206,205,206,206,-1,0,0
+Luke Beecken,luke-beecken,MID,25,Brisbane,16,2024,100,205,205,205,205,0,0,0
+Campbell Gray,campbell-gray,KPD,23,Richmond,15,2024,177,205,205,205,205,0,0,0
+Jack Hutchinson,jack-hutchinson,MID,25,West Coast,3,2024,100,205,205,205,205,0,0,0
+Saad El-Hawli,saad-el-hawli,SD,25,Essendon,13,2024,100,205,205,205,205,0,0,0
+Mabior Chol,mabior-chol,KPF,29,Hawthorn,25,2015,209,205,205,206,207,0,1,2
+Jesse Hogan,jesse-hogan,KPF,32,GWS,5,2012,215,205,205,208,208,0,3,3
+Toby Murray,toby-murray,KPF,23,Adelaide,7,2024,220,205,205,205,205,0,0,0
+Ben Ainsworth,ben-ainsworth,SF,28,Carlton,4,2016,207,204,204,206,206,0,2,2
+Zane Zakostelsky,zane-zakostelsky,KPD,21,Brisbane,51,2023,386,203,209,205,211,6,2,8
+Bodie Ryan,bodie-ryan,SD,21,Hawthorn,46,2023,240,201,214,207,219,13,6,18
+Harry O'Farrell,harry-o-farrell,KPD,20,Carlton,40,2024,949,200,200,201,201,0,1,1
+Charlie Nicholls,charlie-nicholls,KPF,20,Fremantle,34,2024,199,199,199,199,199,0,0,0
+Bayley Fritsch,bayley-fritsch,SF,30,Melbourne,31,2017,201,199,199,201,201,0,2,2
+Oliver Henry,oliver-henry,KPF,24,Geelong,18,2020,200,197,197,201,201,0,4,4
+Ben Keays,ben-keays,SF,29,Adelaide,24,2015,199,196,196,198,198,0,2,2
+Ashton Moir,ashton-moir,SF,21,Carlton,29,2023,247,195,214,199,219,19,4,24
+Noah Roberts-Thomson,noah-roberts-thomson,MID,19,Richmond,54,2025,344,195,227,202,234,32,7,39
+Tai Hayes,tai-hayes,SF,22,Brisbane,44,2025,194,194,194,194,194,0,0,0
+Jayden Laverde,jayden-laverde,KPD,30,Essendon,20,2014,196,193,193,195,195,0,2,2
+Jarrod Berry,jarrod-berry,MID,28,Brisbane,17,2016,192,189,189,192,192,0,3,3
+Will Darcy,will-darcy,KPF,19,Western Bulldogs,58,2025,187,187,187,187,187,0,0,0
+Hugh Davies,hugh-davies,KPD,22,Fremantle,33,2022,185,185,185,185,185,0,0,0
+Isaiah Dudley,isaiah-dudley,SF,23,Fremantle,,2024,159,181,181,181,181,0,0,0
+Balyn O'Brien,balyn-o-brien,SD,19,Port Adelaide,,2025,294,181,202,193,218,21,12,37
+Chris Scerri,chris-scerri,SF,20,Fremantle,,2025,301,181,285,194,305,104,13,124
+Ben Jepson,ben-jepson,MID,25,Gold Coast,,2024,88,181,181,181,181,0,0,0
+Tom Edwards,tom-edwards,KPF,26,Essendon,,2024,88,181,181,181,181,0,0,0
+Jack Henderson,jack-henderson,SF,27,Melbourne,,2024,103,181,181,181,181,0,0,0
+Angus Hastie,angus-hastie,SD,21,St Kilda,33,2023,185,179,182,183,187,3,4,8
+Cooper Simpson,cooper-simpson,SD,21,Fremantle,35,2023,179,179,179,179,179,0,0,0
+Luker Kentfield,luker-kentfield,KPF,21,Melbourne,11,2024,330,179,182,181,184,3,2,5
+Kayle Gerreyn,kayle-gerreyn,RUCK,20,Essendon,37,2024,177,177,177,177,177,0,0,0
+Hugo Mikunda,hugo-mikunda,SF,19,North Melbourne,48,2025,177,177,177,177,177,0,0,0
+Deven Robertson,deven-robertson,SF,25,West Coast,22,2019,162,176,174,179,176,-2,3,0
+James Jordon,james-jordon,SF,26,Sydney,33,2018,178,176,176,178,178,0,2,2
+Jake Lloyd,jake-lloyd,SF,33,Sydney,16,2012,176,173,173,177,177,0,4,4
+Will Edwards,will-edwards,KPD,23,Sydney,,2022,208,173,209,178,215,36,5,42
+Harrison Jones,harrison-jones,KPF,25,Essendon,30,2019,169,169,171,170,172,2,1,3
+Ollie Murphy,ollie-murphy,KPD,21,Fremantle,41,2023,168,168,168,168,168,0,0,0
+Tew Jiath,tew-jiath,SD,21,Collingwood,37,2023,167,167,167,167,167,0,0,0
+Brayden Fiorini,brayden-fiorini,MID,29,Essendon,20,2015,169,167,167,167,167,0,0,0
+Zac Taylor,zac-taylor,SF,23,Adelaide,44,2021,208,167,207,172,212,40,5,45
+Sam Powell-Pepper,sam-powell-pepper,SF,28,Port Adelaide,18,2016,169,167,167,169,169,0,2,2
+Isaac Keeler,isaac-keeler,KPF,22,St Kilda,44,2022,180,166,170,170,174,4,4,8
+Finnegan Davis,finnegan-davis,SD,19,GWS,51,2025,165,165,165,165,165,0,0,0
+Jaeger O'Meara,jaeger-o-meara,MID,33,Fremantle,1,2011,165,165,165,165,165,0,0,0
+Luke Lloyd,luke-lloyd,KPF,21,Brisbane,42,2023,164,164,164,164,164,0,0,0
+James Trezise,james-trezise,SD,24,Richmond,10,2023,120,164,164,164,164,0,0,0
+Jack Buller,jack-buller,KPF,25,Collingwood,11,2023,80,164,164,164,164,0,0,0
+Reef McInnes,reef-mcinnes,KPD,24,Collingwood,24,2020,54,162,164,162,164,2,0,2
+Joel Cochran,joel-cochran,SD,20,Collingwood,47,2024,161,161,161,161,161,0,0,0
+Angus Anderson,angus-anderson,SF,23,Collingwood,57,2025,182,161,177,164,181,16,3,20
+Leek Aleer,leek-aleer,KPD,25,GWS,15,2021,201,159,213,159,213,54,0,54
+Lucas Camporeale,lucas-camporeale,MID,20,Carlton,54,2024,159,159,159,159,159,0,0,0
+Jacob Konstanty,jacob-konstanty,SF,22,North Melbourne,20,2022,161,158,175,162,182,17,4,24
+Paddy Dow,paddy-dow,MID,27,St Kilda,3,2017,158,158,158,158,158,0,0,0
+Tom Anastasopoulos,thomas-anastasopoulos,SF,21,Port Adelaide,48,2023,287,157,175,160,177,18,3,20
+Maxwell King,max-king-syd,KPF,19,Sydney,49,2025,156,156,156,156,156,0,0,0
+Jack Darling,jack-darling,KPF,34,North Melbourne,28,2010,158,155,155,158,158,0,3,3
+Jai Culley,jai-culley,MID,23,Melbourne,1,2022,185,155,188,160,194,33,5,39
+Jed Adams,jed-adams,KPD,22,Melbourne,38,2022,154,154,154,154,154,0,0,0
+Harry Sharp,harry-sharp,SF,24,Brisbane,45,2020,157,153,149,157,152,-4,4,-1
+Cody Weightman,cody-weightman,SF,25,Western Bulldogs,15,2019,155,153,153,155,155,0,2,2
+Cooper Bell,cooper-bell,KPF,20,Gold Coast,49,2024,152,152,152,152,152,0,0,0
+Sandy Brock,sandy-brock,KPD,24,West Coast,,2021,171,152,165,154,168,13,2,16
+Charlie Cameron,charlie-cameron,SF,32,Brisbane,6,2013,153,151,151,154,154,0,3,3
+Zac McCarthy,zac-mccarthy,KPF,19,Collingwood,55,2025,147,147,147,147,147,0,0,0
+Buku Khamis,buku-khamis,KPF,26,Western Bulldogs,,2018,148,146,147,147,148,1,1,2
+Lance Collard,lance-collard,SF,21,St Kilda,28,2023,159,145,147,145,149,2,0,4
+Mykelti Lefau,mykelti-lefau,KPF,28,Richmond,,2023,70,144,144,144,144,0,0,0
+Lachie Sullivan,lachie-sullivan,SF,29,Collingwood,,2023,70,144,144,144,144,0,0,0
+Aiden Riddle,aiden-riddle,RUCK,21,Fremantle,2,2024,174,143,143,143,143,0,0,0
+Joe Pike,joe-pike,RUCK,21,Geelong,9,2024,174,143,143,143,143,0,0,0
+Luke Urquhart,luke-urquhart,MID,20,North Melbourne,57,2024,143,143,143,143,143,0,0,0
+George Stevens,george-stevens,MID,21,Geelong,58,2023,321,143,142,143,141,-1,0,-2
+Jake Lever,jake-lever,SD,30,Melbourne,15,2014,144,143,143,143,142,0,0,-1
+Xavier Duursma,xavier-duursma,MID,26,Essendon,18,2018,145,143,143,145,145,0,2,2
+Darcy Moore,darcy-moore,KPD,30,Collingwood,8,2014,143,141,141,143,143,0,2,2
+Billy Dowling,billy-dowling,SF,22,Adelaide,43,2022,186,141,151,143,153,10,2,12
+Oliver Hayes-Brown,oliver-hayes-brown,RUCK,26,Richmond,,2023,215,141,136,141,137,-5,0,-4
+Steely Green,steely-green,SF,22,Richmond,55,2022,151,140,166,145,173,26,5,33
+Jacob Newton,jacob-newton,SF,20,West Coast,8,2025,210,140,159,143,162,19,3,22
+Jarrod Witts,jarrod-witts,RUCK,34,Gold Coast,74,2011,142,139,139,142,142,0,3,3
+Harrison Himmelberg,harrison-himmelberg,SD,30,GWS,16,2015,141,139,139,141,141,0,2,2
+Riak Andrew,riak-andrew,KPD,21,Sydney,55,2024,138,138,138,138,138,0,0,0
+Bailey Macdonald,bailey-macdonald,SD,22,Hawthorn,51,2022,143,138,150,143,156,12,5,18
+Lachlan Sholl,lachlan-sholl,MID,26,Adelaide,64,2018,143,137,137,138,139,0,1,2
+Hugh Bond,hugh-bond,SD,22,Adelaide,50,2022,148,136,149,142,155,13,6,19
+Liam McMahon,liam-mcmahon,KPF,24,Essendon,33,2020,138,134,135,134,135,1,0,1
+Aidan Johnson,aidan-johnson,KPF,26,Melbourne,68,2024,70,133,133,133,133,0,0,0
+Beau McCreery,beau-mccreery,SF,25,Collingwood,46,2020,136,133,134,135,137,1,2,4
+Noah Howes,noah-howes,KPF,21,Collingwood,14,2025,192,132,132,132,132,0,0,0
+Zac Walker,zac-walker,KPD,20,Western Bulldogs,11,2025,128,132,132,132,132,0,0,0
+Taylor Walker,taylor-walker,KPF,37,Adelaide,64,2007,139,132,132,135,135,0,3,3
+Tim Membrey,tim-membrey,KPF,32,St Kilda,49,2012,130,129,129,131,131,0,2,2
+Cameron Zurhaar,cameron-zurhaar,SF,28,North Melbourne,9,2016,126,125,125,126,126,0,1,1
+Lucca Grego,lucca-grego,SD,20,West Coast,48,2024,124,124,124,124,124,0,0,0
+Wade Derksen,wade-derksen,KPD,25,Carlton,5,2022,123,123,123,123,123,0,0,0
+James Blanck,james-blanck,KPD,26,Hawthorn,14,2022,60,123,123,123,123,0,0,0
+Tyson Stengle,tyson-stengle,SF,28,Richmond,4,2016,153,121,121,122,122,0,1,1
+Lachlan Jones,lachlan-jones,SD,24,Port Adelaide,16,2020,124,120,124,123,126,4,3,6
+Max Ramsden,max-ramsden,KPF,23,Hawthorn,6,2022,171,117,118,117,118,1,0,1
+Lewis Young,lewis-young,KPF,28,Carlton,49,2016,118,116,116,117,117,0,1,1
+Patrick Snell,patrick-snell,KPF,21,Sydney,53,2023,115,115,115,115,115,0,0,0
+Leon Kickett,leon-kickett,SF,20,Fremantle,4,2025,139,115,115,115,115,0,0,0
+Nikolas Cox,nikolas-cox,MID,24,Essendon,8,2020,135,113,136,116,139,23,3,26
+Noah Long,noah-long,SF,22,West Coast,57,2022,153,113,132,118,136,19,5,23
+Zac Fisher,zac-fisher,SF,28,North Melbourne,27,2016,115,113,113,115,115,0,2,2
+Luke Pedlar,luke-pedlar,SF,24,Adelaide,11,2020,112,112,112,112,112,0,0,0
+Bruce Reville,bruce-reville,MID,25,Brisbane,,2023,54,111,111,111,111,0,0,0
+Toby McMullin,toby-mcmullin,MID,22,GWS,34,2022,122,108,133,112,139,25,4,31
+Jack Martin,jack-martin,SF,32,Geelong,3,2012,107,107,107,107,107,0,0,0
+Iliro Smit,iliro-smit,RUCK,21,Collingwood,10,2024,170,103,103,103,103,0,0,0
+Tom Hanily,tom-hanily,SF,21,Sydney,14,2024,158,103,142,103,153,39,0,50
+Will McLachlan,will-mclachlan,SF,21,Brisbane,6,2024,124,103,103,103,105,0,0,2
+Jake Stringer,jake-stringer,SF,32,GWS,7,2012,104,103,103,105,105,0,2,2
+Jackson Macrae,jackson-macrae,MID,32,St Kilda,8,2012,101,101,101,101,101,0,0,0
+Jacob Hopper,jacob-hopper,MID,29,Richmond,7,2015,101,101,101,101,101,0,0,0
+Oscar Allen,oscar-allen,KPF,27,West Coast,21,2017,101,100,100,100,100,0,0,0
+Rhylee West,rhylee-west,SF,26,Western Bulldogs,26,2018,101,99,99,101,101,0,2,2
+Ollie Lord,ollie-lord,KPF,24,Port Adelaide,51,2020,112,99,106,101,108,7,2,9
+Jack Bowes,jack-bowes,MID,28,Geelong,10,2016,97,97,97,97,97,0,0,0
+Steele Sidebottom,steele-sidebottom,MID,36,Collingwood,11,2008,96,96,96,96,96,0,0,0
+Oscar Berry,oscar-berry,KPD,24,Melbourne,,2025,70,95,95,95,95,0,0,0
+Cillian Burke,cillian-burke,SD,23,Geelong,,2024,54,95,95,95,95,0,0,0
+Jack Payne,jack-payne,KPD,27,Brisbane,54,2017,95,94,94,94,94,0,0,0
+Harry Edwards,harry-edwards,KPD,26,West Coast,12,2018,98,94,89,94,89,-5,0,-5
+Josh Goater,josh-goater,SD,23,North Melbourne,22,2021,93,93,93,93,93,0,0,0
+Christian Salem,christian-salem,SD,31,Melbourne,9,2013,93,92,92,93,93,0,1,1
+Oscar Adams,oscar-adams,KPD,23,Gold Coast,51,2021,68,90,75,94,78,-15,4,-12
+Jack Scrimshaw,jack-scrimshaw,SD,28,Hawthorn,7,2016,90,89,89,89,89,0,0,0
+Rhys Unwin,rhys-unwin,SF,20,Essendon,61,2024,158,88,91,89,91,3,1,3
+Harvey Gallagher,harvey-gallagher,SD,23,Western Bulldogs,39,2022,87,87,87,87,87,0,0,0
+Judson Clarke,judson-clarke,SF,23,Richmond,30,2021,64,87,90,88,90,3,1,3
+Blake Acres,blake-acres,MID,31,Carlton,19,2013,87,86,86,87,87,0,1,1
+Vigo Visentini,vigo-visentini,RUCK,21,Essendon,5,2023,272,84,84,84,84,0,0,0
+Nick Vlastuin,nick-vlastuin,SD,32,Richmond,12,2012,84,83,83,85,85,0,2,2
+James Tunstill,james-tunstill,MID,23,Brisbane,41,2021,82,82,82,82,82,0,0,0
+Robert Hansen,robert-hansen,SF,22,North Melbourne,2,2023,83,82,82,82,82,0,0,0
+Henry Smith,henry-smith,KPF,24,Brisbane,50,2020,82,82,82,82,82,0,0,0
+Sam Butler,sam-butler-1,SF,23,Hawthorn,23,2021,81,81,81,81,81,0,0,0
+Sam Davidson,sam-davidson,SF,25,Western Bulldogs,51,2024,80,80,80,80,80,0,0,0
+Tyler Welsh,tyler-welsh,KPF,20,Adelaide,59,2024,80,80,80,80,80,0,0,0
+Patrick Said,patrick-said,SF,20,St Kilda,60,2024,80,80,80,80,80,0,0,0
+Kye Annand,kye-annand,KPD,23,Richmond,2,2026,153,79,111,82,114,32,3,35
+Arthur Jones,arthur-jones,SF,23,Western Bulldogs,43,2021,92,79,92,81,95,13,2,16
+Tom Cochrane,tom-cochrane,SF,20,Port Adelaide,5,2024,223,79,86,81,88,7,2,9
+Reece Torrent,reece-torrent,MID,21,Brisbane,64,2023,79,79,79,79,79,0,0,0
+Hudson O'Keeffe,hudson-o-keeffe,KPF,22,Carlton,,2022,224,79,84,79,85,5,0,6
+Hugo Hall-Kahan,hugo-hall-kahan,SD,23,Adelaide,10,2026,149,78,91,79,94,13,1,16
+Griffin Logue,griffin-logue,KPD,28,North Melbourne,8,2016,78,78,78,78,78,0,0,0
+Jesse Motlop,jesse-motlop,SF,23,Carlton,27,2021,77,77,91,79,93,14,2,16
+Conor Stone,conor-stone,SD,24,GWS,15,2020,76,76,76,76,76,0,0,0
+Jordan Boyd,jordan-boyd,SD,28,Carlton,17,2021,37,76,76,76,76,0,0,0
+Tom McDonald,tom-mcdonald,KPD,34,Melbourne,54,2010,76,75,75,76,76,0,1,1
+Jaime Uhr-Henry,jaime-uhr-henry,RUCK,23,Hawthorn,,2024,64,74,74,74,74,0,0,0
+Zak Evans,zak-evans,MID,26,Gold Coast,,2024,42,74,74,74,74,0,0,0
+Lachlan Weller,lachlan-weller,MID,30,Gold Coast,14,2014,74,74,74,74,74,0,0,0
+Matt Cottrell,matt-cottrell,SF,26,Carlton,,2018,73,72,72,73,73,0,1,1
+Fred Rodriguez,fred-rodriguez,SF,19,West Coast,1,2025,177,71,71,71,71,0,0,0
+Riley Onley,riley-onley,MID,19,Melbourne,2,2025,177,71,71,71,71,0,0,0
+Nick Driscoll,nick-driscoll,SF,19,Geelong,6,2025,177,71,71,71,71,0,0,0
+Patrick Carr,patrick-carr,RUCK,21,Richmond,,2025,83,68,68,68,68,0,0,0
+Jack Carroll,jack-carroll,SD,24,St Kilda,43,2020,85,68,85,70,86,17,2,18
+Oscar McDonald,oscar-mcdonald,KPD,30,Fremantle,53,2014,69,68,68,69,69,0,1,1
+Harry Perryman,harry-perryman,SD,28,Collingwood,14,2016,69,68,68,69,69,0,1,1
+Kaleb Smith,kaleb-smith,SD,22,Richmond,49,2022,67,67,67,67,67,0,0,0
+Harrison Coe,harrison-coe,RUCK,27,Collingwood,8,2026,231,66,66,66,66,0,0,0
+Caleb May,caleb-may,RUCK,21,Western Bulldogs,9,2026,231,66,66,66,66,0,0,0
+Max Mapley,max-mapley,RUCK,21,Melbourne,18,2026,231,66,66,66,66,0,0,0
+Jaren Carr,jaren-carr,SF,22,Fremantle,63,2024,65,65,65,65,65,0,0,0
+Esava Ratugolea,esava-ratugolea,KPD,28,Port Adelaide,43,2016,65,64,64,64,64,0,0,0
+Ryan Byrnes,ryan-byrnes,SD,25,St Kilda,51,2019,66,64,66,65,67,2,1,3
+Callum Ah Chee,callum-ah-chee,SF,29,Adelaide,8,2015,64,64,64,64,64,0,0,0
+Patrick Dangerfield,patrick-dangerfield,SF,37,Geelong,10,2007,63,63,63,63,63,0,0,0
+Liam Henry,liam-henry,SF,25,St Kilda,9,2019,63,63,63,63,63,0,0,0
+Cillian Bourke,cillian-bourke,SD,20,Essendon,,2025,80,62,62,62,62,0,0,0
+Cody Anderson,cody-anderson,SF,20,Hawthorn,64,2024,62,62,62,62,62,0,0,0
+Todd Marshall,todd-marshall,KPF,28,Port Adelaide,16,2016,65,61,61,61,61,0,0,0
+Jeremy Sharp,jeremy-sharp,MID,25,Fremantle,27,2019,53,61,62,63,63,1,2,2
+Nick Haynes,nick-haynes,SD,34,Carlton,10,2011,61,60,60,61,61,0,1,1
+Wil Parker,wil-parker,SD,24,Collingwood,,2023,29,59,59,59,59,0,0,0
+Elliott Himmelberg,elliot-himmelberg,KPF,28,Adelaide,51,2016,42,58,55,58,55,-3,0,-3
+Brandon Walker,brandon-walker,SD,24,Fremantle,52,2020,60,57,60,59,62,3,2,5
+Nathan Wardius,nathan-wardius,SF,22,GWS,,2023,67,56,56,56,56,0,0,0
+Bailey Laurie,bailey-laurie,SF,24,Melbourne,23,2020,56,56,56,56,56,0,0,0
+Lachlan Bramble,lachlan-bramble,SF,28,Western Bulldogs,,2020,90,55,55,55,55,0,0,0
+Tyrell Dewar,tyrell-dewar,SD,22,West Coast,,2022,105,52,62,55,64,10,3,12
+Jack Higgins,jack-higgins,SF,27,St Kilda,17,2017,53,52,52,53,53,0,1,1
+Hugo Ralphsmith,hugo-ralphsmith,MID,25,Richmond,45,2019,57,51,56,52,58,5,1,7
+Liam Hetherton,liam-hetherton,KPF,19,Sydney,,2025,124,50,50,50,50,0,0,0
+Nicholas Coffield,nicholas-coffield,SD,27,Western Bulldogs,8,2017,50,50,50,50,50,0,0,0
+Shadeau Brain,shadeau-brain,SD,22,Brisbane,,2022,86,50,67,52,69,17,2,19
+Michael Frederick,michael-frederick,SF,26,Fremantle,60,2019,50,50,50,50,50,0,0,0
+Harry Schoenberg,harry-schoenberg,SF,25,Adelaide,24,2019,50,50,50,50,50,0,0,0
+Chayce Jones,chayce-jones,SD,26,Adelaide,9,2018,50,50,50,50,50,0,0,0
+Sam Sturt,sam-sturt,SF,26,Fremantle,17,2018,40,50,50,50,50,0,0,0
+Luke McDonald,luke-mcdonald,SD,31,North Melbourne,8,2013,50,50,50,50,50,0,0,0
+Tom Lynch,tom-lynch-1,KPF,34,Richmond,11,2010,50,50,50,50,50,0,0,0
+Hunter Clark,hunter-clark,MID,27,St Kilda,7,2017,50,50,50,50,50,0,0,0
+Jake Melksham,jake-melksham,KPF,35,Melbourne,10,2009,50,50,50,50,50,0,0,0
+Corey Warner,corey-warner,SF,23,Sydney,40,2021,49,49,49,49,49,0,0,0
+Oliver Wiltshire,oliver-wiltshire,SF,24,Geelong,61,2023,49,49,49,49,49,0,0,0
+Max Beattie,max-beattie,SF,23,Hawthorn,12,2026,172,48,48,48,48,0,0,0
+Matt Duffy,matt-duffy,KPD,22,Carlton,,2024,54,48,48,48,48,0,0,0
+Liam O'Connell,liam-o-connell,SD,23,St Kilda,,2023,45,48,45,50,46,-3,2,-2
+Tyler Brockman,tyler-brockman,SF,24,West Coast,48,2020,51,48,49,50,51,1,2,3
+Rhyan Mansell,rhyan-mansell,SF,26,Richmond,,2020,49,48,48,48,49,0,0,1
+Corey Durdin,corey-durdin,SF,24,Carlton,39,2020,49,47,48,48,49,1,1,2
+Tom Cole,tom-cole,SF,29,West Coast,36,2015,48,47,47,48,48,0,1,1
+Xavier O'Halloran,xavier-o-halloran,SF,26,GWS,22,2018,48,47,47,48,48,0,1,1
+Brandon Zerk-Thatcher,brandon-zerk-thatcher,KPD,28,Essendon,65,2017,47,47,47,47,47,0,0,0
+Logan Smith,logan-smith,RUCK,20,GWS,71,2024,114,46,46,46,46,0,0,0
+Charlie Ballard,charlie-ballard,KPD,27,Gold Coast,42,2017,46,45,45,46,46,0,1,1
+Dougal Howard,dougal-howard,KPD,30,St Kilda,56,2014,46,45,45,46,46,0,1,1
+Riley Garcia,riley-garcia,SF,25,Western Bulldogs,61,2019,57,45,46,47,47,1,2,2
+Noah Chamberlain,noah-chamberlain,KPF,19,Sydney,,2025,106,44,44,44,44,0,0,0
+Xavier Walsh,xavier-walsh,KPF,21,Port Adelaide,6,2023,107,43,43,43,43,0,0,0
+Harry Charleson,harry-charleson,SD,20,Carlton,3,2024,100,43,43,43,43,0,0,0
+Eric Hipwood,eric-hipwood,KPF,29,Brisbane,14,2015,42,42,42,42,42,0,0,0
+Isaac Cumming,isaac-cumming,MID,28,Adelaide,20,2016,41,41,41,41,41,0,0,0
+Liam Stocker,liam-stocker,SD,26,St Kilda,19,2018,41,41,41,41,41,0,0,0
+Brandon Starcevich,brandon-starcevich,SD,27,Brisbane,18,2017,41,41,41,41,41,0,0,0
+Oliver Griffin,oliver-griffin,SF,19,North Melbourne,6,2026,172,40,40,40,40,0,0,0
+Matt Hill,matt-hill,SD,22,Hawthorn,,2024,50,40,49,40,49,9,0,9
+Asher Eastham,asher-eastham,SF,20,Gold Coast,7,2024,94,40,40,40,40,0,0,0
+Liam Puncher,liam-puncher,KPD,23,Collingwood,15,2026,103,40,66,41,68,26,1,28
+Mitch McGovern,mitch-mcgovern,SF,32,Carlton,43,2014,41,40,40,41,41,0,1,1
+Jade Gresham,jade-gresham,SF,29,Essendon,18,2015,39,39,39,39,39,0,0,0
+Rob Monahan,rob-monahan,SD,22,Carlton,,2023,47,38,38,38,38,0,0,0
+Harvey Harrison,harvey-harrison,SF,23,Collingwood,52,2021,50,38,50,39,51,12,1,13
+Ryan Lester,ryan-lester,SD,34,Brisbane,30,2010,39,38,38,39,39,0,1,1
+Aidan Corr,aidan-corr,KPD,32,North Melbourne,18,2012,38,38,38,38,38,0,0,0
+Callum Coleman-Jones,callum-coleman-jones,RUCK,27,North Melbourne,20,2017,38,38,38,38,38,0,0,0
+Jacob Moss,jacob-moss,KPD,22,Port Adelaide,,2024,45,37,37,37,37,0,0,0
+Oisin Mullin,oisin-mullin,SD,26,Geelong,,2021,17,35,35,35,35,0,0,0
+Lachlan Fogarty,lachlan-fogarty,SF,27,Carlton,22,2017,34,35,35,35,35,0,0,0
+Ben McKay,ben-mckay,KPD,29,Essendon,21,2015,35,35,35,35,35,0,0,0
+Luke Cleary,luke-cleary,SD,24,Western Bulldogs,61,2021,36,34,37,35,37,3,1,3
+Billy Frampton,billy-frampton,KPD,30,Collingwood,74,2014,35,34,34,35,35,0,1,1
+Kalani White,kalani-white,KPF,19,Melbourne,,2025,85,33,33,33,33,0,0,0
+Campbell Lake,campbell-lake,SF,22,St Kilda,7,2026,117,33,42,33,43,9,0,10
+Joel Amartey,joel-amartey,KPF,27,Sydney,17,2017,32,33,31,33,31,-2,0,-2
+Darcy Gardiner,darcy-gardiner,KPD,31,Brisbane,22,2013,33,33,33,33,33,0,0,0
+Lennox Hoffman,lennox-hoffman,SD,20,Geelong,66,2024,75,32,32,32,32,0,0,0
+River Stevens,river-stevens,SF,20,North Melbourne,67,2024,75,32,32,32,32,0,0,0
+Keighton Matofai-Forbes,keighton-matofai-forbes,SF,20,Geelong,69,2024,75,32,32,32,32,0,0,0
+Jai Saxena,jai-saxena,SF,19,Collingwood,,2025,74,29,29,29,29,0,0,0
+Ryda Luke,ryda-luke,SF,19,Fremantle,,2025,74,29,29,29,29,0,0,0
+Toby Whan,toby-whan,MID,19,Fremantle,,2025,74,29,29,29,29,0,0,0
+Jesse Mellor,jesse-mellor,SF,19,Geelong,,2025,74,29,29,29,29,0,0,0
+Ben Murphy,ben-murphy,SD,19,Brisbane,,2025,80,29,29,29,29,0,0,0
+Kobe McDonald,kobe-mcdonald,SD,19,St Kilda,,2025,80,29,29,29,29,0,0,0
+Jackson Mead,jackson-mead,MID,25,Port Adelaide,25,2019,29,29,29,29,29,0,0,0
+Bobby Hill,bobby-hill,SF,26,Collingwood,24,2018,29,29,29,29,29,0,0,0
+Callum M. Brown,callum-brown-ire,SF,26,GWS,,2018,29,28,28,28,28,0,0,0
+Jamie Cripps,jamie-cripps,SF,34,West Coast,26,2010,28,28,28,28,28,0,0,0
+Rhys Stanley,rhys-stanley,RUCK,36,Geelong,47,2008,28,28,28,28,28,0,0,0
+Caleb Graham,caleb-graham,KPD,26,Gold Coast,71,2018,40,28,31,28,31,3,0,3
+Ben Long,ben-long,SF,29,Gold Coast,25,2016,28,28,28,28,28,0,0,0
+Joel Fitzgerald,joel-fitzgerald,MID,23,Melbourne,16,2026,61,27,34,28,34,7,1,7
+Jackson Archer,jackson-archer,SD,23,North Melbourne,59,2021,27,27,29,27,29,2,0,2
+Maurice Rioli,maurice-rioli-1,SF,24,Richmond,53,2020,28,26,27,27,29,1,1,3
+Finn Maginness,finn-maginness,SF,25,Hawthorn,29,2019,26,26,26,26,26,0,0,0
+Charlie Spargo,charlie-spargo,SF,27,Melbourne,29,2017,26,26,26,26,26,0,0,0
+Dane Rampe,dane-rampe,SD,36,Sydney,23,2012,12,26,26,26,26,0,0,0
+Indy Cotton,indy-cotton,SF,19,Adelaide,,2025,62,25,25,25,25,0,0,0
+Malcolm Rosas,malcolm-rosas,SF,25,Sydney,14,2019,26,25,26,26,26,1,1,1
+Bradley Close,bradley-close,SF,28,Geelong,8,2019,15,24,24,24,24,0,0,0
+Liam Ryan,liam-ryan,SF,30,St Kilda,26,2017,24,24,24,24,24,0,0,0
+Eamonn Armstrong,eamonn-armstrong,SD,20,St Kilda,,2024,54,23,23,23,23,0,0,0
+Bailey Scott,bailey-scott,MID,26,North Melbourne,49,2018,23,23,23,23,23,0,0,0
+Alex Pearce,alex-pearce,KPD,31,Fremantle,37,2013,23,23,23,23,23,0,0,0
+Ricky Mentha,ricky-mentha,SF,20,Melbourne,,2024,50,22,22,22,22,0,0,0
+Benny Barrett,benny-barrett,SF,20,Port Adelaide,,2024,50,22,22,22,22,0,0,0
+Brody Mihocek,brody-mihocek,KPF,33,Melbourne,14,2017,10,22,22,22,22,0,0,0
+Jake Kolodjashnij,jake-kolodjashnij,KPD,31,Geelong,41,2013,22,22,22,22,22,0,0,0
+Lachlan McNeil,lachlan-mcneil,SF,25,Western Bulldogs,6,2020,21,21,21,21,21,0,0,0
+Tom Barrass,tom-barrass,KPD,31,Hawthorn,43,2013,21,21,21,21,21,0,0,0
+Lewis Melican,lewis-melican,KPD,30,Sydney,32,2014,21,21,21,21,21,0,0,0
+Darragh Joyce,darragh-joyce,KPD,29,Brisbane,,2016,7,21,21,21,21,0,0,0
+Corey Wagner,corey-wagner,SD,29,Fremantle,43,2015,20,20,20,20,20,0,0,0
+Harry Morrison,harry-morrison,MID,28,Hawthorn,73,2016,20,20,20,20,20,0,0,0
+Laitham Vandermeer,laitham-vandermeer,SF,27,Western Bulldogs,37,2018,20,20,20,20,20,0,0,0
+Darcy Fort,darcy-fort,RUCK,33,Geelong,65,2018,16,19,19,19,19,0,0,0
+Jamie Elliott,jamie-elliott,SF,34,Collingwood,39,2011,19,19,19,19,19,0,0,0
+Sam Switkowski,sam-switkowski,SF,30,Fremantle,72,2017,12,19,19,19,19,0,0,0
+Nathan Broad,nathan-broad,SD,33,Richmond,65,2015,10,19,19,19,19,0,0,0
+Ryan Gardner,ryan-gardner,KPD,29,Western Bulldogs,58,2015,13,18,18,18,18,0,0,0
+Joel Hamling,joel-hamling,KPD,33,Sydney,41,2011,18,18,18,18,18,0,0,0
+Andy Moniz-Wakefield,andy-moniz-wakefield,SD,23,Melbourne,,2021,26,16,20,17,20,4,1,4
+Jordon Butts,jordon-butts,KPD,27,Adelaide,17,2018,15,15,15,15,15,0,0,0
+Jacob Wehr,jacob-wehr,SD,28,Port Adelaide,61,2020,14,14,14,14,14,0,0,0
+Oskar Baker,oskar-baker,SF,28,Western Bulldogs,48,2017,14,14,14,14,14,0,0,0
+Nicholas Holman,nicholas-holman,SF,31,Gold Coast,49,2013,14,14,14,14,14,0,0,0
+Changkuoth Jiath,changkuoth-jiath,SD,27,Melbourne,,2017,12,12,12,12,12,0,0,0
+Noah Answerth,noah-answerth,SD,27,Brisbane,55,2018,12,12,12,12,12,0,0,0
+Bailey Banfield,bailey-banfield,SD,28,Fremantle,3,2017,11,11,11,11,11,0,0,0
+Lincoln McCarthy,lincoln-mccarthy,SF,33,Brisbane,73,2011,10,10,10,10,10,0,0,0
+Sam Wicks,sam-wicks,SD,27,Sydney,,2018,10,10,10,10,10,0,0,0
+Jy Farrar,jy-farrar,KPF,30,Gold Coast,59,2019,9,10,10,10,10,0,0,0
+Matt Owies,matt-owies,SF,29,Carlton,,2018,5,10,10,10,10,0,0,0
+Matt Guelfi,matt-guelfi,SF,29,Essendon,75,2017,10,10,10,10,10,0,0,0
+Mason Cox,mason-cox,KPF,35,Fremantle,,2014,5,10,10,10,10,0,0,0
+Toby Pink,toby-pink,KPD,28,North Melbourne,33,2016,15,8,9,8,9,1,0,1
+Mark O'Connor,mark-o-connor,SD,29,Geelong,,2016,8,8,8,8,8,0,0,0
+Mark Blicavs,mark-blicavs,RUCK,35,Geelong,,2011,5,6,6,6,6,0,0,0
+Daniel Butler,daniel-butler,SF,30,St Kilda,65,2014,10,5,5,5,5,0,0,0
+Jed Bews,jed-bews,SD,33,Geelong,77,2011,10,5,5,5,5,0,0,0
+Harry Cunningham,harry-cunningham,SD,33,Sydney,,2011,10,5,5,5,5,0,0,0
+Conor McKenna,conor-mckenna,SF,30,Brisbane,,2014,7,3,3,3,3,0,0,0

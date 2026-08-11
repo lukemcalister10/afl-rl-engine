@@ -1,0 +1,71 @@
+config manifest (gate mode) LOADED  hash d890cac9591b  (77 model vars pinned; ambient cleared)
+====================================================================================================
+(a) THE ANCHOR LEG ACROSS TENURE — is it static in present value?
+====================================================================================================
+  the leg, from the source:  anch(p,tau) = R(class, pick, tau) x entry_anchor(p)
+    entry_anchor(p) = v0_start(p) for a non-pool row (_merged_recover.py:1830-1835)
+    R = _R_surf(...) = np.interp(tau, [0..6], [1.0] + dv), dv ISOTONIC NON-INCREASING (:1133-1144)
+  so the leg is  (a year-0 present value)  x  (a retention factor that only ever falls).
+  THERE IS NO (1+d)**tau TERM ANYWHERE IN IT.  Printed as a table, not asserted:
+
+  class     pick     tau=0    tau=1    tau=2    tau=3    tau=4    tau=5    tau=6
+  nonKPP       3    1.0000   0.5470   0.4460   0.4460   0.4460   0.4460   0.3140
+  nonKPP      35    1.0000   0.6188   0.4215   0.3988   0.3612   0.3386   0.2611
+  KPP          8    1.0000   0.6745   0.4613   0.4601   0.4601   0.4601   0.3110
+  RUCK        20    1.0000   0.8423   0.6049   0.6049   0.5561   0.5283   0.4684
+
+  and what an HONEST as-of price would carry beside it, at the engine's own balanced-lens rate:
+    balanced-lens discount d = 0.14   unwind (1+d)**tau = tau0:1.000  tau1:1.140  tau2:1.300  tau3:1.482  tau4:1.689
+  READING: R falls with tenure while the unwind would rise with it. The two are opposite in
+  sign, and only one of them is in the code. That is the order's mechanism (a), CONFIRMED as a
+  code fact. Whether it is where the #336 year-1 value went is a SEPARATE question, answered
+  by the channel split, not by this table.
+
+  DOES entry_anchor MOVE WITH THE AS-OF CLOCK? (same 60 rows, BASE_REF/AGE_REF advanced)
+    rows probed 60   entry_anchor IDENTICAL across 2020/2021/2022: 60
+    => entry_anchor is a FIXED year-zero object; it does not re-price as the clock advances.
+
+====================================================================================================
+(b) TENURE-CONDITIONAL P  —  P(ever establishes | NOT YET established at tenure t)
+====================================================================================================
+  population = the engine's own hist (1974 rows), establishment bar >= 6 games,
+  shrinkage n/(n+K) with K = 10 toward the all-tenure marginal — the SAME discipline #336 uses.
+
+    t  at risk  ever est    raw P  shrunk P
+    1     1461       774   0.5298    0.5306
+    2     1072       385   0.3591    0.3618  DOWN
+    3      856       169   0.1974    0.2027  DOWN
+    4      740        53   0.0716    0.0794  DOWN
+    5      713        26   0.0365    0.0450  DOWN
+    6      697        10   0.0143    0.0234  DOWN
+
+  all-tenure marginal P(ever establishes) = 0.6520  (1287/1974)
+  READING, stated whichever way it fell: by iterated expectations the year-1 establishers LEAVE
+  the not-yet-established pool, so conditioning on 'still unresolved at t' can only lower P as t
+  rises. The table above is the measurement of that. A design that swapped the flat career P for
+  this conditional one would therefore charge an unresolved year-2 player MORE than a year-1 one,
+  i.e. it DEEPENS the dip rather than lifting it. It is not wired, and it is not proposed as a lift.
+
+====================================================================================================
+(c) WHERE THE VALUE ACTUALLY WENT — the par sample change, and the ONE sizing number
+====================================================================================================
+  raw played (pos,tenure) observations in the par cohort: 5619
+
+  THE SAMPLE CHANGE #336 MADE, re-measured here from the same rows (cell mean of _lvl_wt):
+    T  n(>=6g)  n(>=1g est)  mean >=6g  mean >=1g   ratio  exp-wtd >=1g  exp/equal
+    1      450          711      57.93      51.99   0.897         58.20      1.119
+    2      701          921      60.06      56.97   0.949         61.37      1.077
+    3      788          979      63.76      61.17   0.959         64.81      1.060
+    4      828          966      66.98      64.87   0.968         68.11      1.050
+    5      768          891      69.77      67.77   0.971         70.73      1.044
+    6      709          818      72.42      70.80   0.978         73.40      1.037
+
+  COLUMN 'ratio' is the #336 par sample change, reproduced independently: it is FRONT-LOADED,
+  which is why its price effect lands on year 1 and fades out by year 6.
+  COLUMN 'exp/equal' is the SIZING OF ONE CANDIDATE REPAIR AND NOTHING MORE: the same
+  de-survivored sample, with each season weighted by its own exposure (games, capped at 18)
+  instead of counting a one-game debut and a twenty-game season equally. It re-admits NO
+  survivor bias — every faded establisher's season is still in the sample — and it refunds no
+  bust charge, because P is untouched. IT IS NOT WIRED AND NOT PROPOSED HERE; it is a number
+  for the owner to rule on, and its price effect is UNMEASURED (a cell mean is not a fit, and
+  the fit's isotonic priors and kernel ESS would carry some of it away).

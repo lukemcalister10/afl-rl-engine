@@ -1,0 +1,79 @@
+====================================================================================================
+WHOLE-COHORT ENGINE VALUE BY YEAR AFTER DRAFT  --  year 0..7
+====================================================================================================
+  Values are the ENGINE'S OWN as-of valuations ev(p,Y) (walk-forward), NOT raw scores or raw output.
+  Early-career years lean heavily on the year-zero estimate -- the engine has little evidence yet.
+  Denomination: VOR board points (pick-1 pinned at 3000).
+  BASIS: the #338 CORRECTED minimum listing tenure (owner word 2026-08-06; rule commit 30996f8).
+    A retired player's window runs to his LISTED-THROUGH year, not his last PLAYED year: tenure
+    years after the last game are LISTED sitting-out years and are priced by the existing sit-out
+    machinery. 4/3/2 listed seasons by band (ND 1-20 / ND 21-40 / ND 41+ and every pool route);
+    own data extends the minimum; an explicit _last_listed is a known fact and stands.
+  CAVEAT (standing): these outcomes are under the CORRECTED #338 rule. The shipped curve they are
+    compared against was derived on the PRE-CORRECTION basis and re-derives at #334 stage B after
+    the #336 ruling. Do not read a gap here as a curve error until that re-derivation lands.
+  Busts stay in the denominator at 0. Players whose careers have not yet reached year N are
+    EXCLUDED from year N and reported separately as 'not yet reached'.
+----------------------------------------------------------------------------------------------------
+  matrix          : per_entrant_V4.json
+  matrix identity : store=d9a24282  v0surf=6ef67f07db98  n_records=2645
+  population      : harness load_matrix ND filter -- teaches_curve & pick 1..64 & year 2004..2022
+  cohort size     : 1197 entrants
+  draft classes   : 2004..2022 (19 distinct classes)
+  observed window : as-of years end at 2026 (last year ANY record carries a real as-of value)
+                    (max yrs label in the matrix is 2027, but it is a placeholder row with vpath=[None])
+  inclusion at N  : draft_year + N <= 2026
+  value field     : year 0 = rec['v0'] (v0_start); year N>=1 = rec['vpath'][N-1] = ev(p, draft_year+N)
+----------------------------------------------------------------------------------------------------
+
+### ALL picks 1-64   (cohort n=1197)
+  yrN   n_incl  n_zero notreach   mean_yrN    med_yrN  mean_yr0*   med_yr0*    ratio
+  ----------------------------------------------------------------------------------
+  0       1197       0        0      839.1      599.5      839.1      599.5    1.000
+  1       1197       0        0      955.1      535.0      839.1      599.5    1.138
+  2       1197       0        0     1144.8      583.0      839.1      599.5    1.364
+  3       1197     141        0     1265.8      710.0      839.1      599.5    1.509
+  4       1197     257        0     1312.1      498.0      839.1      599.5    1.564
+  5       1139     333       58     1304.3      338.0      835.1      596.8    1.562
+  6       1075     391      122     1254.8      165.0      834.3      608.1    1.504
+  7       1014     430      183     1084.0       73.0      835.3      596.8    1.298
+  * mean_yr0 / med_yr0 are computed over the SAME included set as that row (apples-to-apples).
+
+### picks 1-20   (cohort n=377)
+  yrN   n_incl  n_zero notreach   mean_yrN    med_yrN  mean_yr0*   med_yr0*    ratio
+  ----------------------------------------------------------------------------------
+  0        377       0        0     1601.4     1315.4     1601.4     1315.4    1.000
+  1        377       0        0     1942.9     1334.0     1601.4     1315.4    1.213
+  2        377       0        0     2273.3     1711.0     1601.4     1315.4    1.420
+  3        377       0        0     2422.1     1848.0     1601.4     1315.4    1.512
+  4        377       0        0     2557.6     1791.0     1601.4     1315.4    1.597
+  5        357      25       20     2521.4     1528.0     1592.0     1315.4    1.584
+  6        337      42       40     2354.7     1280.0     1588.4     1308.1    1.482
+  7        317      57       60     2061.4     1192.0     1596.2     1308.1    1.291
+  * mean_yr0 / med_yr0 are computed over the SAME included set as that row (apples-to-apples).
+
+### picks 21-64   (cohort n=820)
+  yrN   n_incl  n_zero notreach   mean_yrN    med_yrN  mean_yr0*   med_yr0*    ratio
+  ----------------------------------------------------------------------------------
+  0        820       0        0      488.7      436.6      488.7      436.6    1.000
+  1        820       0        0      500.9      341.0      488.7      436.6    1.025
+  2        820       0        0      626.0      337.5      488.7      436.6    1.281
+  3        820     141        0      734.2      346.5      488.7      436.6    1.503
+  4        820     257        0      739.5      211.0      488.7      436.6    1.513
+  5        782     308       38      748.6      103.5      489.6      435.8    1.529
+  6        738     349       82      752.5       44.5      490.0      435.8    1.536
+  7        697     373      123      639.4        0.0      489.3      436.2    1.307
+  * mean_yr0 / med_yr0 are computed over the SAME included set as that row (apples-to-apples).
+
+### zero-source breakdown, ALL picks 1-64  (how each included row got its number)
+  yrN     from_v0  from_path    ended     null
+  0          1197          0        0        0
+  1             0       1197        0        0
+  2             0       1197        0        0
+  3             0       1056      141        0
+  4             0        940      257        0
+  5             0        806      333        0
+  6             0        684      391        0
+  7             0        584      430        0
+
+json -> /home/user/afl-rl-engine/docs/evidence/composition_2026-08-10/noarb/noarb_table_338.json

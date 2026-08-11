@@ -1,0 +1,44 @@
+================================================================================================
+RECONCILIATION GATE — my aggregation vs the canonical owner-basis output (3820303)
+================================================================================================
+  matrix under test : per_entrant_338_stage5.json (the stage-5 landed matrix)
+  canonical source  : OWNER_BASIS_COHORT.json @ 3820303, state "s5 LANDED"
+  aggregation       : POOLED BOOK RATIO  sum(price)/sum(anchor)
+  cohort rule       : MSD folds back one year (cohort_of), cohorts 2004-2025
+  window            : label year + N <= 2026
+  members in scope  : 2539
+------------------------------------------------------------------------------------------------
+  yrN    n_mine  n_canon   mine                   canonical                     delta
+  0        2535     2535   1.0000000000000000     1.0000000000000000         0.00e+00
+  1        2517     2517   0.9460496098408091     0.9460496098408091         0.00e+00
+  2        2414     2414   1.1112251275413227     1.1112251275413227         0.00e+00
+  3        2296     2296   1.2460161076427445     1.2460161076427445         0.00e+00
+  4        2198     2198   1.3454616923441254     1.3454616923441254         0.00e+00
+  5        2089     2089   1.3469226008389965     1.3469226008389965         0.00e+00
+  6        1981     1981   1.2957679202997474     1.2957679202997474         0.00e+00
+  7        1893     1893   1.1448858108433444     1.1448858108433444         0.00e+00
+------------------------------------------------------------------------------------------------
+  VERDICT: PASS — the rebuilt aggregation reproduces the canonical output exactly
+
+================================================================================================
+BOTH AGGREGATIONS SIDE BY SIDE — for the record of why the correction mattered
+================================================================================================
+  Same matrix, same population, same value convention. The ONLY difference is how the
+  per-player numbers are combined.
+------------------------------------------------------------------------------------------------
+  yrN         n   BOOK RATIO         mean-of-ratios      inflation
+                  sum(v)/sum(v0)     mean(v/v0)                  x
+  --------------------------------------------------------------
+  0        2535   1.000000           1.000000                1.000
+  1        2517   0.946050           6.285648                6.644
+  2        2414   1.111225           4.690588                4.221
+  3        2296   1.246016           2.681244                2.152
+  4        2198   1.345462           2.515262                1.869
+  5        2089   1.346923           2.286126                1.697
+  6        1981   1.295768           1.732574                1.337
+  7        1893   1.144886           1.450952                1.267
+------------------------------------------------------------------------------------------------
+  The mean-of-ratios column is star-skewed: a player whose v0 is small and whose career
+  value is large contributes an enormous per-player ratio that the average cannot damp,
+  while the book ratio weights every dollar of anchor equally. That is the whole of the
+  292%/392% artifact — it was never a property of the engine.

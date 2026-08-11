@@ -1,0 +1,111 @@
+corrected-ruler window: 1418 rows, classes 2004-2015 (career year 11 observable)
+
+======================================================================================================
+THE COMMON RULER LEVEL — stated once, as a NUMERAIRE PROPERTY, and never again as a finding
+======================================================================================================
+  On the corrected ruler the WHOLE population reads:
+        year-0 rung   F = 0.6431        year-1 rung   F = 0.7600
+  and the SAME ruler read at the year-4 rung gives F = 1/1.5468 = 0.6465.
+
+  Those three numbers are the same number. A belief/option market is priced against the FULL
+  distribution of outcomes it might buy, and it is measured here against the AVERAGE career that
+  was actually delivered; it therefore reads hot at EVERY rung, by construction. That is a
+  property of the numeraire, not a fact about year 0, about young players, or about picks.
+
+  THE LEVEL LAW (owner words 5240550781): the level is not evidence and is never presented as a
+  finding; only CONTRASTS within one ruler are evidence; and an asymmetric level change — moving
+  one rung and not the others — is BARRED, because it manufactures a pick-hoarding arbitrage.
+
+  Everything below is therefore reported RELATIVE to the common level of its own rung.
+  (For the record, the bent ruler's common level was year-0 0.9948 / year-1 1.1725 — the restatement
+  moves the LEVEL by ~1.55x at every rung alike, which is exactly why the level carries no
+  information about any group.)
+
+======================================================================================================================
+ITEM I — THE YEAR-0 RUNG, RESTATED AS CONTRASTS.  n=1414  (denominator = v0)
+  rel = the cell's F divided by its OWN rung's common level. rel > 1 = the cell delivered
+  MORE per point of price than the population; rel < 1 = less. The level divides out.
+======================================================================================================================
+ cell                           n   eff-n     F8 | rel BENT rel CORR    d(rel) | 95% CI (rel, corr)   contrast
+ --------------------------------------------------------------------------------------------------------------------
+ ND in-curve (1-64)           741   416.4   PASS |   1.0838   1.0585   -0.0253 | [0.993, 1.120]      at population   
+   ND in-curve x MID          218   143.1   PASS |   1.0471   1.0764   +0.0293 | [0.914, 1.240]      at population   
+   ND in-curve x SD           161   107.5   PASS |   0.9642   0.9654   +0.0012 | [0.668, 1.281]      at population   
+   ND in-curve x SF           138    84.5   PASS |   1.2291   0.9654   -0.2638 | [0.663, 1.332]      at population   
+   ND in-curve x KPF           93    59.5   PASS |   1.2267   1.0855   -0.1412 | [0.710, 1.501]      at population   
+   ND in-curve x KPD           85    60.6   PASS |   1.0447   0.9945   -0.0502 | [0.667, 1.370]      at population   
+   ND in-curve x RUCK          46    27.3   fail |   1.1153   1.3381   +0.2228 | [0.727, 2.085]      at population     *below F8 bar
+ pool ALL                     673   505.2   PASS |   0.7336   0.8141   +0.0805 | [0.621, 1.018]      at population      <<< CONTRAST MOVES
+   pool RD                    496   373.6   PASS |   0.7602   0.8276   +0.0674 | [0.612, 1.064]      at population   
+   pool non-RD                177   134.0   PASS |   0.6460   0.7697   +0.1237 | [0.336, 1.322]      at population   
+   pool age <=18              363   310.5   PASS |   0.5479   0.5407   -0.0072 | [0.313, 0.798]      BELOW population
+   pool age 19-20              98    81.2   PASS |   0.7688   1.2382   +0.4694 | [0.694, 1.885]      at population   
+   pool age 21+               124    52.8   PASS |   2.5604   2.6192   +0.0588 | [1.461, 4.052]      ABOVE population
+   pool x MID                 179   152.7   PASS |   1.1079   1.2556   +0.1477 | [0.669, 1.979]      at population   
+   pool x SD                  155   129.1   PASS |   0.6073   0.7456   +0.1383 | [0.361, 1.219]      at population      <<< CONTRAST MOVES
+   pool x SF                  131   106.4   PASS |   1.6262   1.1058   -0.5204 | [0.576, 1.781]      at population   
+   pool x KPF                  65    57.1   PASS |   0.2484   0.3193   +0.0709 | [0.079, 0.711]      BELOW population
+   pool x KPD                  65    55.2   PASS |   0.4589   0.4385   -0.0204 | [0.129, 0.858]      BELOW population
+   pool x RUCK                 78    67.7   PASS |   0.5986   1.0454   +0.4469 | [0.430, 1.773]      at population   
+ ND 1-10                      118   100.1   PASS |   1.0228   1.0274   +0.0046 | [0.852, 1.203]      at population   
+ ND 11-20                     115   105.6   PASS |   1.0516   1.0138   -0.0378 | [0.778, 1.265]      at population   
+ ND 21-40                     236   211.7   PASS |   1.1369   1.0585   -0.0784 | [0.811, 1.317]      at population   
+ ND 41-64                     272   240.5   PASS |   1.2147   1.2203   +0.0056 | [0.854, 1.610]      at population   
+
+  the four instruments, as CONTRASTS (rel to each instrument's own level):
+  cell                           relA     relB     relC     relD
+  ND in-curve (1-64)           1.0722   1.0667   1.0635   1.0585
+    ND in-curve x MID          1.1063   1.0825   1.0973   1.0764
+    ND in-curve x SD           1.0609   1.0460   0.9700   0.9654
+    ND in-curve x SF           0.9654   0.9874   0.9405   0.9654
+    ND in-curve x KPF          0.9925   1.0043   1.0803   1.0855
+    ND in-curve x KPD          0.9328   0.9380   0.9939   0.9945
+    ND in-curve x RUCK         1.3646   1.4087   1.3172   1.3381
+
+======================================================================================================================
+ITEM I — THE YEAR-1 RUNG, RESTATED AS CONTRASTS.  n=361  (denominator = v1 = ev(p,C+1))
+  rel = the cell's F divided by its OWN rung's common level. rel > 1 = the cell delivered
+  MORE per point of price than the population; rel < 1 = less. The level divides out.
+======================================================================================================================
+ cell                           n   eff-n     F8 | rel BENT rel CORR    d(rel) | 95% CI (rel, corr)   contrast
+ --------------------------------------------------------------------------------------------------------------------
+ ND in-curve (1-64)           261   157.8   PASS |   1.0050   1.0112   +0.0063 | [0.946, 1.070]      at population   
+   ND in-curve x MID           89    63.1   PASS |   1.1363   1.1930   +0.0566 | [1.032, 1.379]      at population   
+   ND in-curve x SD            55    33.0   fail |   0.7259   0.7922   +0.0663 | [0.522, 1.117]      at population     *below F8 bar
+   ND in-curve x SF            63    28.7   fail |   0.8406   0.5930   -0.2476 | [0.392, 0.806]      BELOW population  *below F8 bar
+   ND in-curve x KPF           24    19.2   fail |   1.4498   1.4579   +0.0081 | [0.884, 2.112]      at population     *below F8 bar
+   ND in-curve x KPD           22    14.1   fail |   0.5513   0.6345   +0.0832 | [0.377, 0.944]      at population     *below F8 bar
+   ND in-curve x RUCK           8     6.0   fail |   1.7284   1.8037   +0.0753 | [0.650, 2.660]      at population     *below F8 bar
+ pool ALL (played yr1)        100    38.8   PASS |   0.9669   0.9250   -0.0418 | [0.576, 1.379]      at population   
+ ND 1-10                       83    63.9   PASS |   0.9717   1.0043   +0.0327 | [0.852, 1.159]      at population   
+ ND 11-20                      51    33.6   fail |   0.9185   0.9146   -0.0039 | [0.666, 1.195]      at population     *below F8 bar
+ ND 21-40                      69    45.0   PASS |   1.2423   1.2292   -0.0131 | [0.919, 1.559]      at population   
+ ND 41-64                      58    33.5   fail |   0.9001   0.8310   -0.0690 | [0.407, 1.328]      at population     *below F8 bar
+
+  the four instruments, as CONTRASTS (rel to each instrument's own level):
+  cell                           relA     relB     relC     relD
+  ND in-curve (1-64)           1.0111   1.0113   1.0123   1.0112
+    ND in-curve x MID          1.1980   1.1821   1.2111   1.1930
+    ND in-curve x SD           0.8760   0.8646   0.7982   0.7922
+    ND in-curve x SF           0.5688   0.5990   0.5587   0.5930
+    ND in-curve x KPF          1.2631   1.2939   1.4383   1.4579
+    ND in-curve x KPD          0.6097   0.6147   0.6334   0.6345
+    ND in-curve x RUCK         2.0170   2.0759   1.7666   1.8037
+
+======================================================================================================================
+THE ITEM A PRECONDITION — are the restated ND YEAR-0 CONTRASTS CLEAN?
+======================================================================================================================
+  Under the LEVEL LAW the question can only be asked of CONTRASTS. A cell is dirty when its
+  position RELATIVE to its own rung changes between the two rulers. The absolute reading — every
+  ND year-0 cell 'flipping' because the common level moved ~1.55x at every rung alike — is closed
+  by law: it is the numeraire moving, it moves every rung together, and acting on one rung alone
+  is the barred asymmetric change.
+
+  CLEAN. No ND year-0 cell above the F8 player-unit bar changes its contrast between the
+  bent ruler and the corrected ruler. ITEM A's precondition is MET on the shape reading;
+  no year-0 cell is re-taught. (The owner's confirming word is still awaited before the
+  ITEM A wiring fires.)
+
+ALL CONTRAST MOVES (both rungs, above the bar) — THIS is the evidence the act reads:
+  rung-0  pool ALL                     eff-n  505.2  rel 0.7336 BELOW population -> 0.8141 at population
+  rung-0    pool x SD                  eff-n  129.1  rel 0.6073 BELOW population -> 0.7456 at population

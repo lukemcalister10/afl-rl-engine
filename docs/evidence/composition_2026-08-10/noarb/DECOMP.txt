@@ -1,0 +1,46 @@
+====================================================================================================
+PER-ITEM DECOMPOSITION OF THE YEAR-1 DROP — canonical no-arb instrument
+====================================================================================================
+  instrument : noarb_table_338.py UNMODIFIED · 1197 ND teaching entrants · pooled book ratio
+  method     : single-item removal through a declared kill-switch; each arm is FULL with
+               exactly one item OFF, so (arm - FULL) is what that item was contributing.
+
+  main  yr1 1.1239   yr4 1.5732
+  FULL  yr1 0.9974   yr4 1.5310
+  THE DROP TO EXPLAIN: yr1 -0.1265 (-11.3%)   yr4 -0.0422 (-2.7%)
+
+  item removed                             yr1 gives back   share yr1       yr4   share yr4
+  ----------------------------------------------------------------------------------------
+  ITEM A — the year-1+ anchor blend     0.9974   +0.0000        0.0%    1.5337        6.4%
+  the surprise law                      1.0110   +0.0136       10.8%    1.5313        0.7%
+  ITEM H — the sitter cuts              0.9974   +0.0000        0.0%    1.5310        0.0%
+  the #336 reference layer              1.0992   +0.1018       80.5%    1.5725       98.3%
+  ----------------------------------------------------------------------------------------
+  SUM OF SHARES                                                91.2%                105.5%
+  INTERACTION RESIDUAL                                          8.8%                 -5.5%
+
+  The residual is the part of the drop that no single item owns alone — the amount that exists
+  only because the items are composed together. It is reported, not normalised away.
+
+====================================================================================================
+### THE ANSWER TO THE OWNER'S QUESTION, RANKED
+====================================================================================================
+  "Where did year-1 players lose their value?" — largest contributor first:
+
+  1. the #336 reference layer              80.5% of the year-1 drop   [revert of 9a8bbd9 (no declared kill-switch)]
+  2. the surprise law                      10.8% of the year-1 drop   [RL_SUR_W=0]
+  3. ITEM A — the year-1+ anchor blend      0.0% of the year-1 drop   [RL_ITEM_A=0]
+  4. ITEM H — the sitter cuts               0.0% of the year-1 drop   [RL_ITEM_H=0]
+
+  The seat's arithmetic predicted ITEM A dominates via the symmetric blend at fade weight
+  ~0.36. On the measurement the largest single contributor is the #336 reference layer at 80.5% of the
+  year-1 drop — REFUTED: the prediction named ITEM A, the measurement does not.
+
+  A NOTE ON #336, because its arm is not like the others. #336 has NO declared kill-switch,
+  and it landed as a mid-stack commit (9a8bbd9) with later work built on top, so it cannot be
+  removed by git ref either. Its arm is a REVERT of that commit in a throwaway worktree —
+  never pushed, never merged. The revert applied cleanly (678 lines out, the exact inverse of
+  the 678 in) and touches only par_build.py and rl_model.py, and the engine head references
+  none of the removed symbols. That the project has an item this large with no kill-switch is
+  itself worth recording: every other item in this act can be ablated by dial, and this one
+  cannot.
