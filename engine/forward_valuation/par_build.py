@@ -329,14 +329,21 @@ def gather():
     for pos, pk, T, Y, g, p in raw:
         _keep = (g >= MIN_GAMES) if _PARSURV else (g >= 1 and _ever_established_338(p))
         if _keep:
-            obs.append((pos, np.log(pk), T, CP._lvl_wt(p, Y)))
+            # RL_336_XW: the 5th element is the observation weight. It is 1.0 for every row when the
+            # dial is off, and the fit then passes ws=None, so the off path never multiplies at all.
+            obs.append((pos, np.log(pk), T, CP._lvl_wt(p, Y), (min(g, XW_CAP) if XW else 1.0)))
     return obs, base, raw, PEST, PNUM, PDEN
 
 # ---- 2. local-linear kernel regression over log-pick --------------------------------------
 def tricube(u):
     u = np.abs(u); w = (1 - u**3)**3; w[u >= 1] = 0.0; return w
-def loclin(x0, xs, ys, h):
+def loclin(x0, xs, ys, h, ws=None):
     """local-linear fit at x0; returns (yhat, ESS=(sum w)^2/sum w^2).
+
+    ws (#336 ORDER 4, RL_336_XW): OPTIONAL per-observation weight multiplied into the kernel weight.
+    ws=None is the DEFAULT and takes the identical code path as before — no multiplication happens at
+    all, so the fit is byte-exact. When supplied, the effective weight is tricube(u) * ws, which is the
+    standard weighted local-linear estimator; the closed-form fsum solve below is unchanged.
     DETERMINISM FIX (2026-07-14, session_2026-07-14/determinism_fix): PART 1 measured the PAR table
     as the FIRST cross-environment divergent stage (upstream of everything) — NOT the NW-smoother the
     register (item 106) hypothesised, and NOT price6. The cause is here: BLAS `@` (Xd.T@W@Xd, Xd.T@W@ys)
@@ -345,6 +352,7 @@ def loclin(x0, xs, ys, h):
     normal equations have a CLOSED FORM; solving it with math.fsum (order-fixed, correctly-rounded) is
     the SAME maths, identical on every kernel and every CPU. b0 (the fit AT x0) is all we return."""
     w = tricube((xs - x0)/h)
+    if ws is not None: w = w * np.asarray(ws, dtype=float)   # RL_336_XW: exposure weight on top of the kernel
     # Only tricube-nonzero points contribute; dropping the exact zeros is EXACT for math.fsum (a 0.0 term
     # changes no correctly-rounded sum) and shrinks each fsum from the full column to the in-bandwidth handful
     # — the board is byte-identical, the per-build cost falls back near the pre-fix baseline.
@@ -377,10 +385,52 @@ def loclin(x0, xs, ys, h):
     ess = (Sw*Sw)/_math.fsum((wa*wa).tolist())
     return float(yhat), float(ess)
 
+# ============================================================================================================
+# #336 ORDER 4 — EXPOSURE WEIGHTING OF THE PAR SAMPLE.  DIAL-GATED, DEFAULT OFF, BYTE-EXACT WHEN OFF.
+#
+# THE DEFECT IT ADDRESSES. The par surface is a PER-GAME benchmark, and it is consumed as a denominator
+# against player statistics that are THEMSELVES games-weighted — ITEM C's evidence weight is Q = sa/par
+# with sa the career GAMES-WEIGHTED average (_merged_recover.py:2075-2080). Today every observation
+# enters the fit with equal weight, so a one-game debut counts as much as a twenty-game season, and the
+# fitted par answers "the average of season-averages" rather than "the level in a typical game played".
+# That is a unit mismatch between numerator and denominator, and it exists independently of #336.
+#
+# WHY IT MATTERS HERE. #336 changed the sample from ">=6 games at that tenure" to "every
+# ever-establisher's played season". That repair is correct and STAYS — an establisher who faded to
+# three games must not vanish. But it also admitted many 1-5 game seasons at EQUAL weight, and the
+# resulting cut is front-loaded (tenure-1 cell level x0.897, fading to x0.978 by tenure 6). The channel
+# split measured that par leg at 89.2% of the #336 year-1 drop.
+#
+# THE HONESTY TEST THIS SURVIVED, BEFORE IT WAS WIRED (PREREG_ORDER4.md / XW_HONESTY.txt). The
+# suspicion was that exposure weighting is survivor bias by another door, because busts have little
+# exposure. Measured on the same cohort: the sub-6-game rows keep 4.8% of pooled fit weight (11.5% at
+# tenure 1) against 19.7% of the row count — DOWN-WEIGHTED BY ABOUT FOUR, NOT DROPPED; the estimator
+# diverges from the survivors-only one in 37 of 44 informative (tenure x band) cells; and at tenure 1 in
+# the LATE pick bands it lands BELOW the survivors-only level, which is the opposite of survivor bias.
+#
+# NOTHING IS DROPPED BY THIS DIAL. Every row in the #336 sample stays in the sample. The dial changes
+# weights only. RL_336_XW=0 (DEFAULT) => ws is None everywhere => the identical pre-dial code path.
+# XW_CAP=18 (a full season's exposure) is the CONSERVATIVE choice of the three measured: uncapped games
+# and the target's own recency-weighted exposure both move the level FURTHER, so the cap works against
+# the design rather than for it. That is disclosed rather than left to be discovered.
+# ============================================================================================================
+XW = os.environ.get('RL_336_XW', '0') != '0'
+XW_CAP = float(os.environ.get('RL_336_XW_CAP', '18'))
+
+def _wmedian(v, w):
+    """weighted median: the value at which cumulative weight crosses half the total. Used ONLY under
+    RL_336_XW; the unweighted path keeps np.median exactly (np.median averages the two middle values at
+    even n, which a weighted median does not, so the two are not interchangeable and are not swapped)."""
+    v = np.asarray(v, dtype=float); w = np.asarray(w, dtype=float)
+    o = np.argsort(v, kind='stable'); v = v[o]; w = w[o]
+    c = np.cumsum(w); tot = c[-1]
+    if tot <= 0: return float(np.median(v))
+    return float(v[int(np.searchsorted(c, 0.5*tot))])
+
 # ---- 3. additive backfitting: level_pos(logpick) + ramp_pos(T) ----------------------------
 def fit():
     obs, base, raw, PEST, PNUM, PDEN = gather()   # #336 VARIANT: gather() now also returns the P(establishes) strata
-    POS = {g: np.array([(x,T,lv) for (pos,x,T,lv) in obs if pos==g], dtype=float) for g in GROUPS}
+    POS = {g: np.array([(x,T,lv,w) for (pos,x,T,lv,w) in obs if pos==g], dtype=float) for g in GROUPS}
     # E3 LOUD HALT (#279 step 4 item 6). An empty group used to travel silently from here to the ramp step
     # below, where POS[g] is shape (0,) and POS[g][:,1] raised a BARE IndexError naming nothing — a cohort
     # or keying change that starved a position looked like an indexing bug. Halt here instead, NAMING the
@@ -405,19 +455,24 @@ def fit():
             if len(A) < 4: levelfn[g] = None; continue
             xs, Ts, lv = A[:,0], A[:,1].astype(int), A[:,2]
             detr = lv - np.array([ramp[g][t] for t in Ts])
-            levelfn[g] = (xs.copy(), detr.copy())
+            levelfn[g] = (xs.copy(), detr.copy(), A[:,3].copy())   # 3rd slot: the RL_336_XW weights (all 1.0 when off)
         # (b) ramp = median pick-detrended resid by tenure, anchored ramp(1)=0
         for g in GROUPS:
             A = POS[g]
             if levelfn[g] is None: continue
             xs, Ts, lv = A[:,0], A[:,1].astype(int), A[:,2]
-            lx, ldetr = levelfn[g]
-            lvlhat = np.array([loclin(x, lx, ldetr, H_LOGPICK)[0] for x in xs])
+            lx, ldetr, lw = levelfn[g]
+            lvlhat = np.array([loclin(x, lx, ldetr, H_LOGPICK, lw if XW else None)[0] for x in xs])
             resid = lv - lvlhat
             r = np.zeros(TEN_MAX+1)
             for T in range(1, TEN_MAX+1):
                 m = (Ts==T)
-                r[T] = float(np.median(resid[m])) if m.sum()>0 else (r[T-1] if T>1 else 0.0)
+                if m.sum()>0:
+                    # the RAMP is where the tenure profile lives, so the weighting must reach it too --
+                    # an exposure-weighted level fit with an equal-weighted ramp would be a half-measure.
+                    r[T] = _wmedian(resid[m], A[:,3][m]) if XW else float(np.median(resid[m]))
+                else:
+                    r[T] = (r[T-1] if T>1 else 0.0)
             r = r - r[1]                                  # anchor yr1 = 0
             ramp[g] = r
     # global ramp (pooled across positions, sample-weighted by cell counts)
@@ -427,13 +482,16 @@ def fit():
         A = POS[g]; n_by_pos[g] = len(A)
         if levelfn[g] is None: continue
         xs, Ts, lv = A[:,0], A[:,1].astype(int), A[:,2]
-        lx, ldetr = levelfn[g]
-        lvlhat = np.array([loclin(x, lx, ldetr, H_LOGPICK)[0] for x in xs])
+        lx, ldetr, lw = levelfn[g]
+        lvlhat = np.array([loclin(x, lx, ldetr, H_LOGPICK, lw if XW else None)[0] for x in xs])
         resid = lv - lvlhat
-        for T,rv in zip(Ts, resid): allresid_byT[T].append(rv)
+        for T,rv,wv in zip(Ts, resid, A[:,3]): allresid_byT[T].append((rv, wv))
     gramp = np.zeros(TEN_MAX+1)
     for T in range(1, TEN_MAX+1):
-        gramp[T] = float(np.median(allresid_byT[T])) if allresid_byT[T] else 0.0
+        _rv = allresid_byT[T]
+        if not _rv: gramp[T] = 0.0
+        elif XW:    gramp[T] = _wmedian([x[0] for x in _rv], [x[1] for x in _rv])
+        else:       gramp[T] = float(np.median([x[0] for x in _rv]))
     gramp = gramp - gramp[1]
     # shrink each position's ramp toward global
     ramp_shr = {}; sw = {}
@@ -446,7 +504,7 @@ def fit():
     for g in GROUPS:
         lf = levelfn[g]
         if lf is None: level_grid[g] = None; continue
-        raw = [loclin(np.log(pk), lf[0], lf[1], H_LOGPICK) for pk in PKGRID]
+        raw = [loclin(np.log(pk), lf[0], lf[1], H_LOGPICK, lf[2] if XW else None) for pk in PKGRID]
         ys = np.array([r[0] for r in raw]); es = np.array([max(r[1],0.5) for r in raw])
         ok = np.isfinite(ys)                               # nan-fill empty cells (e.g. RUCK pk3) before isotonic
         if ok.any() and not ok.all():
@@ -455,7 +513,8 @@ def fit():
         level_grid[g] = (np.array(PKGRID, float), ys_mono, es)
     # (b) ramp NON-DECREASING in tenure (development monotone); weights = per-tenure obs count
     for g in GROUPS:
-        cnt = np.array([1.0]+[float((POS[g][:,1].astype(int)==T).sum()) for T in range(1,TEN_MAX+1)])
+        _Ts = POS[g][:,1].astype(int); _W = POS[g][:,3]
+        cnt = np.array([1.0]+[float(_W[_Ts==T].sum() if XW else (_Ts==T).sum()) for T in range(1,TEN_MAX+1)])
         r = ramp_shr[g].copy()
         r[1:] = _pava(r[1:TEN_MAX+1], cnt[1:TEN_MAX+1], increasing=True)
         ramp_shr[g] = r - r[1]                              # re-anchor yr1 = 0
@@ -482,7 +541,9 @@ def level_at(F, g, pick):
         return float(np.interp(pk, xs, ys)), float(np.interp(pk, xs, es))
     lf = F['levelfn'][g]
     if lf is None: return float('nan'), 0.0
-    return loclin(np.log(pick), lf[0], lf[1], H_LOGPICK)
+    # RL_336_XW: the ungridded fallback carries the same weights as the gridded path, so the two cannot
+    # disagree about the estimator. lf[2] is all-1.0 when the dial is off and ws=None is passed anyway.
+    return loclin(np.log(pick), lf[0], lf[1], H_LOGPICK, lf[2] if XW else None)
 
 def par_at(F, g, pick, T):
     """#336 AMENDMENT 2: this is now the ESTABLISHED-CONDITIONAL anchor, E[level | ever establishes].
