@@ -1,0 +1,34 @@
+================================================================================================================================
+ORDER 20 — POPULATION PROBE: which fit populations mix the two arms?   (membership = MA.is_pool, the engine's own)
+================================================================================================================================
+  hist  (#336 / BASEPK)        rl_model.py:283                                national  1204  pool   770  (pool 39.01%)  consumed by BPK/_pest_336/POOL/BASEPK_REG :456-502
+  _curve_sample (build_pvc)    rl_model.py:1169,1225,1585                     national  1201  pool     0  (pool  0.00%)  GATED by _teaches_curve — clean
+  _cohP (establishment-P)      rl_model.py:1639                               national  1015  pool   734  (pool 41.97%)  consumed by _brateP/_pavaP/_ovP/_grpoffP/pick_prior/P_estab
+  par_build gather() pool      par_build.py:261-263                           national  1015  pool   743  (pool 42.26%)  levelfn/level_grid/gramp/base + build_pest band marginal
+  par_redesign BASE_RATE       par_redesign.py:75-77                          national  1015  pool   743  (pool 42.26%)  BASE_RATE[(pos,T)] -> shortfall(p,Y)
+  distribution_pricing build() distribution_pricing.py:297                    national  1448  pool  1202  (pool 45.36%)  build_training GBR + build_prior +-4 pick window
+  conditional_prior build      conditional_prior.py:146                       national  1448  pool  1202  (pool 45.36%)  cond_prior_band GBR quantiles, feature log(pick)
+  _uncomp_scope (LEG B refs)   _merged_recover.py:2489-2519                   national   561  pool   243  (pool 30.22%)  V_ref_b / RHO_DEN / C[pos]
+  rl_model players (backward)  rl_model.py:1757-1759                          national   523  pool   232  (pool 30.73%)  vM1/vM2 conservation factor _f
+
+  THE +-4 WINDOW AT THE BOUNDARY (the concentration hazard rl_model.py:296-310 names).
+  distribution_pricing.build_prior windows on min(effpk,70) with |k-pick|<=4; every pool row sits at 65.
+    pick 55 window: national  205  pool    0  -> pool is   0.0% of the window
+    pick 58 window: national  196  pool    0  -> pool is   0.0% of the window
+    pick 60 window: national  183  pool    0  -> pool is   0.0% of the window
+    pick 61 window: national  160  pool  919  -> pool is  85.2% of the window
+    pick 62 window: national  137  pool  919  -> pool is  87.0% of the window
+    pick 63 window: national  114  pool  919  -> pool is  89.0% of the window
+    pick 64 window: national   93  pool  919  -> pool is  90.8% of the window
+
+  #336 BAND TABLE COMPOSITION (rl_model.py:456-502, bands on MA.effpk):
+    band 0 1-3       national    57  pool     0
+    band 1 4-7       national    76  pool     0
+    band 2 8-12      national    95  pool     0
+    band 3 13-20     national   152  pool     0
+    band 4 21-27     national   133  pool     0
+    band 5 28-35     national   152  pool     0
+    band 6 36-48     national   247  pool     0
+    band 7 49-99     national   292  pool   770
+
+  json -> /home/user/afl-rl-engine/.claude/worktrees/agent-ac8fe167511a6a00f/docs/evidence/nd_pool_separation_2026-08-11/sweep/POPULATION_PROBE.json

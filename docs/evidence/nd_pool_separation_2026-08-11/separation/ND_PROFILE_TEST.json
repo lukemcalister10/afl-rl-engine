@@ -1,0 +1,81 @@
+{
+ "base": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o20/per_entrant_BASE.json",
+ "variants": {
+  "per_entrant_P_x3.0.json": {
+   "contaminated_delta": -0.0032420145486546925,
+   "contaminated_pct": -0.31619241822975974,
+   "contaminated_published_delta": -0.0032410684968209313,
+   "contaminated_rows_moved": 428,
+   "armsplit_delta": 0.0,
+   "armsplit_published_delta": 0.0,
+   "armsplit_rows_moved": 0,
+   "law_holds": true
+  },
+  "per_entrant_P_flat100.json": {
+   "contaminated_delta": 0.001199646907814822,
+   "contaminated_pct": 0.11700109642050333,
+   "contaminated_published_delta": 0.0011932770022962114,
+   "contaminated_rows_moved": 428,
+   "armsplit_delta": 0.0,
+   "armsplit_published_delta": 0.0,
+   "armsplit_rows_moved": 0,
+   "law_holds": true
+  }
+ },
+ "base_contaminated": {
+  "nd_profile_engine_arm": 1.0253296289662763,
+  "nd_profile_published_teaches_curve": 1.025217710898647,
+  "n_engine": 1443,
+  "n_published": 1444,
+  "prov": {
+   "counts": {
+    "completed": 734,
+    "prior_fallback_no_written": 18,
+    "concluded_realised": 1846,
+    "prior_fallback_thin": 43
+   },
+   "fallback_rows": 61,
+   "of_population": 2641,
+   "fallback_share_pct": 2.31,
+   "split": false
+  },
+  "store_md5": "d9a24282",
+  "engine_head": "a8071af4"
+ },
+ "base_armsplit": {
+  "nd_profile_engine_arm": 0.9944115615821694,
+  "nd_profile_published_teaches_curve": 0.9944131658839775,
+  "n_engine": 1443,
+  "n_published": 1444,
+  "prov": {
+   "counts": {
+    "completed": 660,
+    "prior_fallback_no_written": 18,
+    "concluded_realised": 1846,
+    "prior_fallback_thin": 117
+   },
+   "fallback_rows": 135,
+   "of_population": 2641,
+   "fallback_share_pct": 5.112,
+   "split": true
+  },
+  "store_md5": "d9a24282",
+  "engine_head": "a8071af4"
+ },
+ "decontamination_delta": {
+  "nd_profile_engine_arm": {
+   "contaminated": 1.0253296289662763,
+   "armsplit": 0.9944115615821694,
+   "delta": -0.030918067384106962,
+   "pct": -3.015427089069702
+  },
+  "nd_profile_published_teaches_curve": {
+   "contaminated": 1.025217710898647,
+   "armsplit": 0.9944131658839775,
+   "delta": -0.03080454501466956,
+   "pct": -3.0046832674855044
+  }
+ },
+ "decontamination_row_movers": 428,
+ "verdict": "LAW HOLDS UNDER ARM-SPLIT"
+}

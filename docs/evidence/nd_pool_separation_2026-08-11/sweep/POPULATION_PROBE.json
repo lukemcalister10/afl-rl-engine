@@ -1,0 +1,173 @@
+{
+ "hist  (#336 / BASEPK)": {
+  "where": "rl_model.py:283",
+  "national": 1204,
+  "pool": 770,
+  "total": 1974,
+  "pool_share_pct": 39.01,
+  "note": "consumed by BPK/_pest_336/POOL/BASEPK_REG :456-502"
+ },
+ "_curve_sample (build_pvc)": {
+  "where": "rl_model.py:1169,1225,1585",
+  "national": 1201,
+  "pool": 0,
+  "total": 1201,
+  "pool_share_pct": 0.0,
+  "note": "GATED by _teaches_curve \u2014 clean"
+ },
+ "_cohP (establishment-P)": {
+  "where": "rl_model.py:1639",
+  "national": 1015,
+  "pool": 734,
+  "total": 1749,
+  "pool_share_pct": 41.97,
+  "note": "consumed by _brateP/_pavaP/_ovP/_grpoffP/pick_prior/P_estab"
+ },
+ "par_build gather() pool": {
+  "where": "par_build.py:261-263",
+  "national": 1015,
+  "pool": 743,
+  "total": 1758,
+  "pool_share_pct": 42.26,
+  "note": "levelfn/level_grid/gramp/base + build_pest band marginal"
+ },
+ "par_redesign BASE_RATE": {
+  "where": "par_redesign.py:75-77",
+  "national": 1015,
+  "pool": 743,
+  "total": 1758,
+  "pool_share_pct": 42.26,
+  "note": "BASE_RATE[(pos,T)] -> shortfall(p,Y)"
+ },
+ "distribution_pricing build()": {
+  "where": "distribution_pricing.py:297",
+  "national": 1448,
+  "pool": 1202,
+  "total": 2650,
+  "pool_share_pct": 45.36,
+  "note": "build_training GBR + build_prior +-4 pick window"
+ },
+ "conditional_prior build": {
+  "where": "conditional_prior.py:146",
+  "national": 1448,
+  "pool": 1202,
+  "total": 2650,
+  "pool_share_pct": 45.36,
+  "note": "cond_prior_band GBR quantiles, feature log(pick)"
+ },
+ "_uncomp_scope (LEG B refs)": {
+  "where": "_merged_recover.py:2489-2519",
+  "national": 561,
+  "pool": 243,
+  "total": 804,
+  "pool_share_pct": 30.22,
+  "note": "V_ref_b / RHO_DEN / C[pos]"
+ },
+ "rl_model players (backward)": {
+  "where": "rl_model.py:1757-1759",
+  "national": 523,
+  "pool": 232,
+  "total": 755,
+  "pool_share_pct": 30.73,
+  "note": "vM1/vM2 conservation factor _f"
+ },
+ "window_pick_55": {
+  "national": 205,
+  "pool": 0,
+  "pool_share_pct": 0.0
+ },
+ "window_pick_58": {
+  "national": 196,
+  "pool": 0,
+  "pool_share_pct": 0.0
+ },
+ "window_pick_60": {
+  "national": 183,
+  "pool": 0,
+  "pool_share_pct": 0.0
+ },
+ "window_pick_61": {
+  "national": 160,
+  "pool": 919,
+  "pool_share_pct": 85.17
+ },
+ "window_pick_62": {
+  "national": 137,
+  "pool": 919,
+  "pool_share_pct": 87.03
+ },
+ "window_pick_63": {
+  "national": 114,
+  "pool": 919,
+  "pool_share_pct": 88.96
+ },
+ "window_pick_64": {
+  "national": 93,
+  "pool": 919,
+  "pool_share_pct": 90.81
+ },
+ "hist_band_0": {
+  "range": [
+   1,
+   3
+  ],
+  "national": 57,
+  "pool": 0
+ },
+ "hist_band_1": {
+  "range": [
+   4,
+   7
+  ],
+  "national": 76,
+  "pool": 0
+ },
+ "hist_band_2": {
+  "range": [
+   8,
+   12
+  ],
+  "national": 95,
+  "pool": 0
+ },
+ "hist_band_3": {
+  "range": [
+   13,
+   20
+  ],
+  "national": 152,
+  "pool": 0
+ },
+ "hist_band_4": {
+  "range": [
+   21,
+   27
+  ],
+  "national": 133,
+  "pool": 0
+ },
+ "hist_band_5": {
+  "range": [
+   28,
+   35
+  ],
+  "national": 152,
+  "pool": 0
+ },
+ "hist_band_6": {
+  "range": [
+   36,
+   48
+  ],
+  "national": 247,
+  "pool": 0
+ },
+ "hist_band_7": {
+  "range": [
+   49,
+   99
+  ],
+  "national": 292,
+  "pool": 770
+ }
+}

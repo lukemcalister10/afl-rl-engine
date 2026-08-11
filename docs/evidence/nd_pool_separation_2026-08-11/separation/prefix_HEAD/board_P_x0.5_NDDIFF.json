@@ -1,0 +1,15 @@
+{
+ "label": "pool perturbation: x0.5",
+ "base": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o20/board_BASE.json",
+ "variant": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o20/board_P_x0.5.json",
+ "national_n": 668,
+ "pool_n": 334,
+ "pool_movers": 226,
+ "national_movers": [],
+ "national_mover_detail": [],
+ "curve_movers": [],
+ "aggregate_movers": [
+  "draftAssetTotals"
+ ],
+ "verdict": "SEPARATION HOLDS"
+}

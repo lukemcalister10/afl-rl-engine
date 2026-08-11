@@ -1,0 +1,760 @@
+{
+ "label": "par_build+par_redesign arm split",
+ "NATIONAL": {
+  "n": 668,
+  "movers": 279,
+  "total_before": 624418,
+  "total_after": 622650,
+  "delta": -1768,
+  "pct": -0.28314366337933883,
+  "buckets": {
+   "<=1%": 175,
+   "5-15%": 30,
+   "1-5%": 69,
+   ">15%": 5
+  },
+  "top": [
+   {
+    "name": "Harry Dean",
+    "ty": "ND",
+    "pk": 3,
+    "ep": 3,
+    "before": 2815,
+    "after": 2577,
+    "delta": -238
+   },
+   {
+    "name": "Ty Gallop",
+    "ty": "ND",
+    "pk": 42,
+    "ep": 42,
+    "before": 1355,
+    "after": 1199,
+    "delta": -156
+   },
+   {
+    "name": "Christian Moraes",
+    "ty": "ND",
+    "pk": 38,
+    "ep": 38,
+    "before": 1043,
+    "after": 906,
+    "delta": -137
+   },
+   {
+    "name": "Jacob Farrow",
+    "ty": "ND",
+    "pk": 10,
+    "ep": 10,
+    "before": 2734,
+    "after": 2601,
+    "delta": -133
+   },
+   {
+    "name": "Dyson Sharp",
+    "ty": "ND",
+    "pk": 13,
+    "ep": 13,
+    "before": 3216,
+    "after": 3091,
+    "delta": -125
+   },
+   {
+    "name": "Angus Clarke",
+    "ty": "ND",
+    "pk": 39,
+    "ep": 39,
+    "before": 680,
+    "after": 555,
+    "delta": -125
+   },
+   {
+    "name": "Matthew Roberts",
+    "ty": "ND",
+    "pk": 34,
+    "ep": 34,
+    "before": 1940,
+    "after": 1818,
+    "delta": -122
+   },
+   {
+    "name": "Lachie Jaques",
+    "ty": "ND",
+    "pk": 29,
+    "ep": 29,
+    "before": 843,
+    "after": 725,
+    "delta": -118
+   },
+   {
+    "name": "Jai Serong",
+    "ty": "ND",
+    "pk": 53,
+    "ep": 53,
+    "before": 1346,
+    "after": 1233,
+    "delta": -113
+   },
+   {
+    "name": "Joe Berry",
+    "ty": "ND",
+    "pk": 15,
+    "ep": 15,
+    "before": 1365,
+    "after": 1259,
+    "delta": -106
+   },
+   {
+    "name": "Harvey Johnston",
+    "ty": "ND",
+    "pk": 49,
+    "ep": 49,
+    "before": 224,
+    "after": 329,
+    "delta": 105
+   },
+   {
+    "name": "Willem Duursma",
+    "ty": "ND",
+    "pk": 1,
+    "ep": 1,
+    "before": 4067,
+    "after": 3977,
+    "delta": -90
+   },
+   {
+    "name": "James Leake",
+    "ty": "ND",
+    "pk": 17,
+    "ep": 17,
+    "before": 476,
+    "after": 563,
+    "delta": 87
+   },
+   {
+    "name": "Harrison Oliver",
+    "ty": "ND",
+    "pk": 19,
+    "ep": 19,
+    "before": 613,
+    "after": 528,
+    "delta": -85
+   },
+   {
+    "name": "Hugh Boxshall",
+    "ty": "ND",
+    "pk": 45,
+    "ep": 45,
+    "before": 1049,
+    "after": 965,
+    "delta": -84
+   },
+   {
+    "name": "Will Hayes",
+    "ty": "ND",
+    "pk": 56,
+    "ep": 56,
+    "before": 461,
+    "after": 378,
+    "delta": -83
+   },
+   {
+    "name": "Josh Lindsay",
+    "ty": "ND",
+    "pk": 19,
+    "ep": 19,
+    "before": 2412,
+    "after": 2335,
+    "delta": -77
+   },
+   {
+    "name": "Harvey Thomas",
+    "ty": "ND",
+    "pk": 59,
+    "ep": 59,
+    "before": 2318,
+    "after": 2247,
+    "delta": -71
+   },
+   {
+    "name": "Jase Burgoyne",
+    "ty": "ND",
+    "pk": 60,
+    "ep": 60,
+    "before": 2617,
+    "after": 2549,
+    "delta": -68
+   },
+   {
+    "name": "Jasper Alger",
+    "ty": "ND",
+    "pk": 58,
+    "ep": 58,
+    "before": 500,
+    "after": 434,
+    "delta": -66
+   },
+   {
+    "name": "Kane McAuliffe",
+    "ty": "ND",
+    "pk": 40,
+    "ep": 40,
+    "before": 1376,
+    "after": 1312,
+    "delta": -64
+   },
+   {
+    "name": "Jack Williams",
+    "ty": "ND",
+    "pk": 57,
+    "ep": 57,
+    "before": 478,
+    "after": 415,
+    "delta": -63
+   },
+   {
+    "name": "Noah Mraz",
+    "ty": "ND",
+    "pk": 35,
+    "ep": 35,
+    "before": 1707,
+    "after": 1769,
+    "delta": 62
+   },
+   {
+    "name": "Jack Ough",
+    "ty": "ND",
+    "pk": 36,
+    "ep": 36,
+    "before": 741,
+    "after": 687,
+    "delta": -54
+   },
+   {
+    "name": "Calsher Dear",
+    "ty": "ND",
+    "pk": 56,
+    "ep": 56,
+    "before": 945,
+    "after": 892,
+    "delta": -53
+   },
+   {
+    "name": "Jay Polkinghorne",
+    "ty": "ND",
+    "pk": 44,
+    "ep": 44,
+    "before": 349,
+    "after": 297,
+    "delta": -52
+   },
+   {
+    "name": "Tobie Travaglia",
+    "ty": "ND",
+    "pk": 8,
+    "ep": 8,
+    "before": 734,
+    "after": 685,
+    "delta": -49
+   },
+   {
+    "name": "Liam Fawcett",
+    "ty": "ND",
+    "pk": 43,
+    "ep": 43,
+    "before": 503,
+    "after": 454,
+    "delta": -49
+   },
+   {
+    "name": "Luke Trainor",
+    "ty": "ND",
+    "pk": 21,
+    "ep": 21,
+    "before": 1599,
+    "after": 1551,
+    "delta": -48
+   },
+   {
+    "name": "Jack Whitlock",
+    "ty": "ND",
+    "pk": 33,
+    "ep": 33,
+    "before": 1225,
+    "after": 1271,
+    "delta": 46
+   },
+   {
+    "name": "Talor Byrne",
+    "ty": "ND",
+    "pk": 45,
+    "ep": 45,
+    "before": 899,
+    "after": 857,
+    "delta": -42
+   },
+   {
+    "name": "Sam Darcy",
+    "ty": "ND",
+    "pk": 2,
+    "ep": 2,
+    "before": 5211,
+    "after": 5250,
+    "delta": 39
+   },
+   {
+    "name": "Sam Lalor",
+    "ty": "ND",
+    "pk": 1,
+    "ep": 1,
+    "before": 4052,
+    "after": 4087,
+    "delta": 35
+   },
+   {
+    "name": "Charlie West",
+    "ty": "ND",
+    "pk": 50,
+    "ep": 50,
+    "before": 658,
+    "after": 692,
+    "delta": 34
+   },
+   {
+    "name": "Jack Ison",
+    "ty": "ND",
+    "pk": 47,
+    "ep": 47,
+    "before": 544,
+    "after": 512,
+    "delta": -32
+   },
+   {
+    "name": "Connor O'Sullivan",
+    "ty": "ND",
+    "pk": 11,
+    "ep": 11,
+    "before": 2890,
+    "after": 2920,
+    "delta": 30
+   },
+   {
+    "name": "Jedd Busslinger",
+    "ty": "ND",
+    "pk": 13,
+    "ep": 13,
+    "before": 886,
+    "after": 916,
+    "delta": 30
+   },
+   {
+    "name": "Max Kondogiannis",
+    "ty": "ND",
+    "pk": 36,
+    "ep": 36,
+    "before": 465,
+    "after": 435,
+    "delta": -30
+   },
+   {
+    "name": "Jai Murray",
+    "ty": "ND",
+    "pk": 17,
+    "ep": 17,
+    "before": 1167,
+    "after": 1138,
+    "delta": -29
+   },
+   {
+    "name": "Billy Wilson",
+    "ty": "ND",
+    "pk": 34,
+    "ep": 34,
+    "before": 954,
+    "after": 983,
+    "delta": 29
+   }
+  ]
+ },
+ "POOL": {
+  "n": 334,
+  "movers": 195,
+  "total_before": 123939,
+  "total_after": 126244,
+  "delta": 2305,
+  "pct": 1.8597858624000516,
+  "buckets": {
+   "<=1%": 43,
+   "1-5%": 27,
+   "5-15%": 40,
+   ">15%": 85
+  },
+  "top": [
+   {
+    "name": "Ned Moyle",
+    "ty": "MSD",
+    "pk": 5,
+    "ep": 65,
+    "before": 2054,
+    "after": 2285,
+    "delta": 231
+   },
+   {
+    "name": "Xavier Bamert",
+    "ty": "MSD",
+    "pk": 5,
+    "ep": 65,
+    "before": 313,
+    "after": 509,
+    "delta": 196
+   },
+   {
+    "name": "Chris Scerri",
+    "ty": "SSP",
+    "pk": null,
+    "ep": 65,
+    "before": 285,
+    "after": 459,
+    "delta": 174
+   },
+   {
+    "name": "Cooper Trembath",
+    "ty": "MSD",
+    "pk": 9,
+    "ep": 65,
+    "before": 2051,
+    "after": 2201,
+    "delta": 150
+   },
+   {
+    "name": "Marcus Herbert",
+    "ty": "MSD",
+    "pk": 13,
+    "ep": 65,
+    "before": 1053,
+    "after": 906,
+    "delta": -147
+   },
+   {
+    "name": "Anthony Caminiti",
+    "ty": "SSP",
+    "pk": null,
+    "ep": 65,
+    "before": 976,
+    "after": 1110,
+    "delta": 134
+   },
+   {
+    "name": "Patrick Retschko",
+    "ty": "RD",
+    "pk": 8,
+    "ep": 65,
+    "before": 1483,
+    "after": 1608,
+    "delta": 125
+   },
+   {
+    "name": "Thomas Burton",
+    "ty": "SSP",
+    "pk": null,
+    "ep": 65,
+    "before": 305,
+    "after": 415,
+    "delta": 110
+   },
+   {
+    "name": "Zak Johnson",
+    "ty": "ND",
+    "pk": 70,
+    "ep": 65,
+    "before": 634,
+    "after": 730,
+    "delta": 96
+   },
+   {
+    "name": "Campbell Lake",
+    "ty": "MSD",
+    "pk": 7,
+    "ep": 65,
+    "before": 67,
+    "after": 161,
+    "delta": 94
+   },
+   {
+    "name": "Archer Day-Wicks",
+    "ty": "RD",
+    "pk": 1,
+    "ep": 65,
+    "before": 675,
+    "after": 766,
+    "delta": 91
+   },
+   {
+    "name": "Josh Lai",
+    "ty": "SSP",
+    "pk": null,
+    "ep": 65,
+    "before": 516,
+    "after": 597,
+    "delta": 81
+   },
+   {
+    "name": "Isaiah Dudley",
+    "ty": "SSP",
+    "pk": null,
+    "ep": 65,
+    "before": 160,
+    "after": 234,
+    "delta": 74
+   },
+   {
+    "name": "Lachlan McAndrew",
+    "ty": "SSP",
+    "pk": null,
+    "ep": 65,
+    "before": 1208,
+    "after": 1279,
+    "delta": 71
+   },
+   {
+    "name": "Riley Hamilton",
+    "ty": "PDA",
+    "pk": null,
+    "ep": 65,
+    "before": 234,
+    "after": 305,
+    "delta": 71
+   },
+   {
+    "name": "Hugo Hall-Kahan",
+    "ty": "MSD",
+    "pk": 10,
+    "ep": 65,
+    "before": 148,
+    "after": 215,
+    "delta": 67
+   },
+   {
+    "name": "James O'Donnell",
+    "ty": "UNR",
+    "pk": null,
+    "ep": 65,
+    "before": 660,
+    "after": 727,
+    "delta": 67
+   },
+   {
+    "name": "Archie May",
+    "ty": "MSD",
+    "pk": 6,
+    "ep": 65,
+    "before": 415,
+    "after": 476,
+    "delta": 61
+   },
+   {
+    "name": "Kye Annand",
+    "ty": "MSD",
+    "pk": 2,
+    "ep": 65,
+    "before": 181,
+    "after": 239,
+    "delta": 58
+   },
+   {
+    "name": "Bodhi Uwland",
+    "ty": "PDA",
+    "pk": null,
+    "ep": 65,
+    "before": 4141,
+    "after": 4087,
+    "delta": -54
+   },
+   {
+    "name": "Patrick Voss",
+    "ty": "RD",
+    "pk": 5,
+    "ep": 65,
+    "before": 1592,
+    "after": 1538,
+    "delta": -54
+   },
+   {
+    "name": "Ollie Greeves",
+    "ty": "RD",
+    "pk": 5,
+    "ep": 65,
+    "before": 421,
+    "after": 475,
+    "delta": 54
+   },
+   {
+    "name": "Finnbar Maley",
+    "ty": "RD",
+    "pk": 2,
+    "ep": 65,
+    "before": 240,
+    "after": 192,
+    "delta": -48
+   },
+   {
+    "name": "Karl Worner",
+    "ty": "RD",
+    "pk": 4,
+    "ep": 65,
+    "before": 1250,
+    "after": 1206,
+    "delta": -44
+   },
+   {
+    "name": "Mark Keane",
+    "ty": "SSP",
+    "pk": null,
+    "ep": 65,
+    "before": 1514,
+    "after": 1557,
+    "delta": 43
+   },
+   {
+    "name": "Max Heath",
+    "ty": "MSD",
+    "pk": 7,
+    "ep": 65,
+    "before": 640,
+    "after": 682,
+    "delta": 42
+   },
+   {
+    "name": "Josh Draper",
+    "ty": "PDN",
+    "pk": null,
+    "ep": 65,
+    "before": 274,
+    "after": 315,
+    "delta": 41
+   },
+   {
+    "name": "Malakai Champion",
+    "ty": "PDN",
+    "pk": null,
+    "ep": 65,
+    "before": 303,
+    "after": 341,
+    "delta": 38
+   },
+   {
+    "name": "Judd McVee",
+    "ty": "RD",
+    "pk": 9,
+    "ep": 65,
+    "before": 278,
+    "after": 316,
+    "delta": 38
+   },
+   {
+    "name": "Balyn O'Brien",
+    "ty": "SSP",
+    "pk": null,
+    "ep": 65,
+    "before": 263,
+    "after": 300,
+    "delta": 37
+   },
+   {
+    "name": "Liam Reidy",
+    "ty": "RD",
+    "pk": 4,
+    "ep": 65,
+    "before": 328,
+    "after": 291,
+    "delta": -37
+   },
+   {
+    "name": "Jaxon Artemis",
+    "ty": "MSD",
+    "pk": 1,
+    "ep": 65,
+    "before": 305,
+    "after": 340,
+    "delta": 35
+   },
+   {
+    "name": "Tylar Young",
+    "ty": "RD",
+    "pk": 9,
+    "ep": 65,
+    "before": 244,
+    "after": 279,
+    "delta": 35
+   },
+   {
+    "name": "Oscar Steene",
+    "ty": "SSP",
+    "pk": null,
+    "ep": 65,
+    "before": 501,
+    "after": 468,
+    "delta": -33
+   },
+   {
+    "name": "Harrison Ramm",
+    "ty": "MSD",
+    "pk": 3,
+    "ep": 65,
+    "before": 320,
+    "after": 351,
+    "delta": 31
+   },
+   {
+    "name": "Oliver Hayes-Brown",
+    "ty": "UNR",
+    "pk": null,
+    "ep": 65,
+    "before": 221,
+    "after": 190,
+    "delta": -31
+   },
+   {
+    "name": "Max Hall",
+    "ty": "MSD",
+    "pk": 4,
+    "ep": 65,
+    "before": 2820,
+    "after": 2790,
+    "delta": -30
+   },
+   {
+    "name": "Ned Long",
+    "ty": "RD",
+    "pk": 3,
+    "ep": 65,
+    "before": 1386,
+    "after": 1416,
+    "delta": 30
+   },
+   {
+    "name": "Oliver Francou",
+    "ty": "MSD",
+    "pk": 3,
+    "ep": 65,
+    "before": 345,
+    "after": 375,
+    "delta": 30
+   },
+   {
+    "name": "Levi Casboult",
+    "ty": "RD",
+    "pk": 35,
+    "ep": 65,
+    "before": 16,
+    "after": 43,
+    "delta": 27
+   }
+  ]
+ },
+ "curve": {
+  "pvc_moved": 0,
+  "picks_moved": 0,
+  "picks": []
+ }
+}
