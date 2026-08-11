@@ -29,6 +29,7 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
   C336C    #336 split  1.0000  1.0882  1.3219  1.4740  1.5515  1.5464   1.5515     yr4     1.552     1.426
   no336    #336 split  1.0000  1.0992  1.3384  1.4935  1.5725  1.5676   1.5725     yr4     1.573     1.431
   XW       DESIGN      1.0000  1.0884  1.3585  1.4941  1.5660  1.5500   1.5660     yr4     1.566     1.439
+  STACK    STACKED     1.0000  1.1708  1.4395  1.5550  1.6027  1.5838   1.6027     yr4     1.603     1.369
 
   Envelope reference: peak/yr0 ~ 1.40 and peak/yr1 ~ 1.30. A FRAME FOR JUDGING, NOT A TARGET.
   The peak/yr0 gap is PRE-EXISTING — already open on main before any item of this act applies.
@@ -60,6 +61,7 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
   C336C    #336 split            -1.82%            -0.61%            -3.65%
   no336    #336 split            -2.15%            -0.81%            -4.23%
   XW       DESIGN                -2.71%            -1.25%            -3.90%
+  STACK    STACKED               +2.26%            +5.06%            -1.41%
 
 ====================================================================================================================
 ### THE FREE-MONEY MARGIN AT yr0->yr1, PER CANDIDATE, AGAINST ITS OWN DISCOUNT
@@ -90,6 +92,7 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
   C336C    #336 split       1.0882        8.82%       14.00%      5.18%
   no336    #336 split       1.0992        9.92%       14.00%      4.08%
   XW       DESIGN           1.0884        8.84%       14.00%      5.16%
+  STACK    STACKED          1.1708       17.08%       12.00%     -5.08%   <-- ARB
 
   NOTE ON THE DISCOUNT CANDIDATES: a lower discount is not a free win. It lifts the book AND
   narrows this margin at the same time, because the same schedule that raises young value is
@@ -201,6 +204,39 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
 
   Do NOT weigh A's contribution to the year-1 question as delivered. The decomposition already
   shows the consequence: ITEM A owns 0.0% of the year-1 drop.
+
+====================================================================================================================
+### THE FINAL TABLE — the owner's shortlist on one instrument, INCLUDING THE STACK
+====================================================================================================================
+  instrument: noarb_table_338.py UNMODIFIED (md5 0f8220351c64c56ccfa90c60edcdfa5f) · population
+  1197 ND teaching entrants (picks 1-64, classes 2004-2022), IDENTICAL on every row · aggregation
+  pooled book ratio mean(value at year N)/mean(v0) over the same included set · busts score 0 and
+  stay in the denominator. EVERY candidate is DIAL-GATED and DEFAULT OFF; none is adopted.
+
+  EACH ROW IS JUDGED AGAINST THE RATE ITS OWN SCHEDULE CHARGES AN 18-YEAR-OLD, never another
+  row's. A NEGATIVE margin is FREE MONEY: the book grows faster than the engine discounts, and
+  holding dominates. That is the disqualifying condition, not a preference.
+
+  row      family        yr1     yr2     yr3     yr4     yr5   apprec    disc   margin  verdict
+  ---------------------------------------------------------------------------------------------
+  main     reference  1.1239  1.3773  1.5098  1.5732  1.5670   12.39%  14.00%    1.61%    legal
+  FULL     reference  0.9974  1.2401  1.4276  1.5310  1.5328   -0.26%  14.00%   14.26%    legal
+  V2       discount   1.0933  1.3163  1.5104  1.5870  1.5623    9.33%  12.00%    2.67%    legal
+  V5       discount   1.0734  1.3152  1.4858  1.5665  1.5661    7.34%  12.00%    4.66%    legal
+  XW       DESIGN     1.0884  1.3585  1.4941  1.5660  1.5500    8.84%  14.00%    5.16%    legal
+  AGSATF   de-couple  1.0001  1.2508  1.4385  1.5343  1.5321    0.01%  14.00%   13.99%    legal
+  AGSATD   de-couple  0.9822  1.2333  1.4309  1.5329  1.5319   -1.78%  14.00%   15.78%    legal
+  STACK    STACKED    1.1708  1.4395  1.5550  1.6027  1.5838   17.08%  12.00%   -5.08%      ARB
+
+  READING THE ROWS, in one line each:
+    main    the engine before this act. The frame everything else is measured against.
+    FULL    the composition package as it stands. Year 1 lost 11.3% and this is where it sits.
+    V2      an earlier owner ladder, kept for comparison; it has NO 14% shelf at age 22.
+    V5      the owner's fifth ladder, 22/23 shelf explicit. Lifts year 1 and stays legal.
+    XW      the #336 design: the par sample weighted by exposure. Largest single legal lift.
+    AGSATF  the ramp de-couple as a FLOOR. Makes ITEM A act at year 1 at last; tiny in size.
+    AGSATD  the ramp de-couple with faded drag. It LOWERS year 1 — see the de-couple section.
+    STACK   XW and V5 together, on V5's own discount frame.
 
 ====================================================================================================================
 ### ROUND 3 — V5, THE OWNER'S FIFTH LADDER  (the question it was built to answer, and the answer)
@@ -409,6 +445,64 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
   RULING HAS BEEN MADE ON IT; the dial is DEFAULT OFF and nothing ships. See DESIGN_336_MEMO.md.
 
 ====================================================================================================================
+### ORDER 5 — THE STACKED ROW: TWO CANDIDATES THAT ARE LEGAL ALONE ARE ILLEGAL TOGETHER
+====================================================================================================================
+  The owner asked for a stacked version. FULL + XW + V5 was emitted on the canonical instrument.
+
+    row              yr1      yr4    apprec.   own disc.   margin   verdict
+    --------------------------------------------------------------------------
+    FULL           0.9974   1.5310     -0.26%      14.00%    14.26%     legal
+    XW             1.0884   1.5660      8.84%      14.00%     5.16%     legal
+    V5             1.0734   1.5665      7.34%      12.00%     4.66%     legal
+    STACK          1.1708   1.6027     17.08%      12.00%    -5.08%       ARB
+
+  THE FINDING, and it is the reason a stacked row had to be emitted rather than inferred:
+  XW is legal alone (+5.16%). V5 is legal alone (+4.66%). STACKED THEY ARE THE WORST ARBITRAGE ON
+  THIS WHOLE MENU at -5.08% — deeper than V3 (-4.56%) and V4 (-2.82%). Two safe candidates make an
+  unsafe book. Adding rows of this table together is not a valid operation and this row proves it.
+
+  WHY IT IS WORSE THAN EITHER: the margin is a DIFFERENCE between what the book gains and what the
+  schedule charges, and stacking moves BOTH terms the wrong way at once. The two lifts compound to
+  +17.08% appreciation, while the stack carries V5's CHEAPER 12.00% young rate instead of the 14%
+  XW is judged against. A bigger gain measured against a smaller charge.
+
+  MARGIN CONVENTION, stated in the row because it decides the verdict: the stack is judged against
+  V5'S OWN young rate, 12.00% at draft age 18 — the TIGHTER frame, and the honest one, because the
+  stack carries V5's discount schedule unchanged (XW re-weights the PAR SAMPLE and never touches
+  the discount). Judged against 14% it would read -3.08%: still ARB, so the convention does not
+  rescue it either way.
+
+  PRE-REGISTERED (PREREG_ORDER5.md), TWO BREACHED:
+    P5.1  stack above the larger component      MEASURED 1.1708 > 1.0884            HELD
+    P5.2  SUB-additive, yr1 in 1.12-1.16        MEASURED 1.1708 — SUPER-ADDITIVE    BREACHED
+    P5.4  margin -4%..+1%, expected NEGATIVE    MEASURED -5.08% — ARB, past the band BREACHED
+    P5.5  yr4 in 1.585-1.615                    MEASURED 1.6027                     HELD
+    P5.6  <=2 v0 movers, sum(v0) within 0.05%   MEASURED 1 mover, +0.023%           HELD
+    P5.7  disagreement set non-empty            MEASURED 78 of 804 board players     HELD
+
+  THE BREACH IS THE INTERESTING ONE. P5.2 predicted the stack would be SUB-additive — the second
+  lift having less left to lift. It is SUPER-additive: the stack captures 103.8% of the naive sum
+  of the two separate lifts (0.1734 against 0.1670). THE MECHANISM WAS PRE-REGISTERED IN P5.3 WITH
+  ITS SIGN LEFT OPEN, and it is confirmed: XW raises the par levels, and par feeds the peak
+  estimate and ITEM C's Q = sa/par, which is part of what V5's age-keyed discount is then applied
+  to — so the second lever acts on a book the first has already raised. Measured per player on the
+  live board: 193 of 804 rows move MORE than the sum of their two separate moves, 190 of them in
+  the same direction. This is why a stack must be EMITTED and can never be read off two rows.
+
+  SHARED-CODE ASSERTION, checked rather than assumed. The dials are read at disjoint sites
+  (RL_336_XW only in par_build.py, RL_AGE_DISC_MODE only in rl_model.py). But par_build.py DID
+  change between the V5 emit and this tip, so V5 was RE-EMITTED as V5B: its recs md5 is
+  5c65a28f72acd0b3a83ec8dc841b0837, BYTE-IDENTICAL to the original V5 matrix. XW needed no re-emit
+  (no engine or data file changed since its own emit commit). The stacked comparison is valid.
+
+  Mraz across the four: FULL 1649 · XW 1707 · V5 1712 · STACK 1775 (3.043x/3.052x/3.164x his
+  pick-35 ruler of 561) — every one inside the owner's 3.5-3.8x slack.
+
+  PER-PLAYER BOARD FILES: board_compare_o5.csv (all 804 active rows) and board_compare_o5.txt
+  (owner-readable). THEY ATTRIBUTE MOVERS AND DECIDE NOTHING — the live board is a cross-section
+  and this table, on the cohort book, is the deciding instrument.
+
+====================================================================================================================
 ### THE IDENTITY GATE EVERY ROUND-3 NUMBER RIDES ON
 ====================================================================================================================
   All five round-3 dials are DEFAULT OFF. With every one of them off, at the branch tip:
@@ -425,5 +519,8 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
   0 year-1 movers, 0 v0 movers; and with RL_336_XW=0 the fitted par surface, the KPD par surface
   and BASEPK_REG are identical to the pre-ORDER-4 reference to 1e-12 (the off path passes ws=None
   and never multiplies at all).
+  ORDER 5 re-proved both again at its own tip: IDENT7 recs md5 3eb4a686e36e4e299f1134e153c566bd,
+  0 year-1 movers, 0 v0 movers; and the FULL board rebuilt at the ORDER 5 tip is 846560dc1b2069
+  96005c7c9e9290207c — the same board 95dfbde builds, before any of this act's seven dials existed.
   If either identity had failed, nothing on this table could be read. Both hold.
 

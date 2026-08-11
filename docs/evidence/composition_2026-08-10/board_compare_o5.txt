@@ -1,0 +1,122 @@
+====================================================================================================
+ORDER 5 — WHAT HAPPENS TO INDIVIDUAL PLAYERS UNDER XW, V5 AND THE STACK
+====================================================================================================
+  THESE NUMBERS ATTRIBUTE MOVERS. THEY DECIDE NOTHING. The deciding instrument is the COHORT BOOK
+  on noarb_table_338.py (MENU.txt). The live board is a CROSS-SECTION and no candidate is selected,
+  ranked or recommended on a board number here.
+
+  FULL   = the composition package as it stands today (every new dial OFF)
+  XW     = FULL + the exposure-weighted par sample        (RL_336_XW=1)
+  V5     = FULL + the owner's fifth discount ladder       (RL_AGE_DISC_MODE=5)
+  STACK  = FULL + both together
+  main   = the board shipped today, for reference only — it is NOT the comparison baseline
+
+----------------------------------------------------------------------------------------------------
+### SANITY — board totals and mover counts
+----------------------------------------------------------------------------------------------------
+  config      board total      vs FULL   movers vs FULL      up    down
+  main            761,574 (not a baseline)                -       -       -
+  FULL            723,861     baseline                -       -       -
+  XW              743,146       +2.66%              419     331      88
+  V5              740,276       +2.27%              527     504      23
+  STACK           760,551       +5.07%              554     512      42
+
+----------------------------------------------------------------------------------------------------
+### THE TOP 25 MOVERS BY |delta_STACK|
+----------------------------------------------------------------------------------------------------
+  player                   pos   age    FULL      XW      V5   STACK     dXW     dV5   dSTACK       %
+  Harry Dean               KPD    19    2328    2815    2654    3209    +487    +326     +881  +37.8%
+  Dyson Sharp              SF     19    2796    3216    3103    3568    +420    +307     +772  +27.6%
+  Sullivan Robey           SF     19    2618    3003    2909    3335    +385    +291     +717  +27.4%
+  Taj Hotton               SF     20    1869    2367    1995    2510    +498    +126     +641  +34.3%
+  Xavier Lindsay           SD     20    1659    2128    1752    2245    +469     +93     +586  +35.3%
+  Willem Duursma           MID    19    3940    4067    4380    4522    +127    +440     +582  +14.8%
+  Jacob Farrow             SD     19    2526    2734    2848    3082    +208    +322     +556  +22.0%
+  Luke Trainor             SD     20    1174    1599    1250    1695    +425     +76     +521  +44.4%
+  Josh Lindsay             SD     19    2200    2412    2473    2714    +212    +273     +514  +23.4%
+  Samuel Grlj              SD     19    1431    1736    1594    1932    +305    +163     +501  +35.0%
+  Alix Tauru               KPF    20    1280    1665    1368    1775    +385     +88     +495  +38.7%
+  Isaac Kako               SF     20    1015    1439    1065    1509    +424     +50     +494  +48.7%
+  Beau Addinsall           MID    19    1182    1495    1320    1669    +313    +138     +487  +41.2%
+  Finn O'Sullivan          SD     20    3493    3768    3748    3959    +275    +255     +466  +13.3%
+  Joe Berry                SF     20     986    1365    1037    1435    +379     +51     +449  +45.5%
+  Harvey Langford          MID    20    2410    2641    2588    2836    +231    +178     +426  +17.7%
+  Harry Kyle               SD     19     866    1155     952    1269    +289     +86     +403  +46.5%
+  Leo Lombard              SF     20    1684    1938    1809    2083    +254    +125     +399  +23.7%
+  Christian Moraes         SF     20     713    1043     749    1096    +330     +36     +383  +53.7%
+  Hamish Davis             MID    20     712    1038     748    1090    +326     +36     +378  +53.1%
+  Cooper Duff-Tytler       KPF    19    1420    1574    1622    1797    +154    +202     +377  +26.5%
+  Levi Ashcroft            MID    20    3406    3521    3656    3779    +115    +250     +373  +11.0%
+  Cooper Hynes             SF     20    1250    1537    1314    1616    +287     +64     +366  +29.3%
+  Archer Day-Wicks         SF     20     351     675     368     708    +324     +17     +357 +101.7%
+  Jack Ison                MID    19     265     544     296     609    +279     +31     +344 +129.8%
+
+----------------------------------------------------------------------------------------------------
+### THE NAMED LINES
+----------------------------------------------------------------------------------------------------
+  player                   pos   age    main    FULL      XW      V5   STACK   dSTACK       %
+  Marcus Bontempelli       MID    31    3930    3875    3876    3908    3909      +34   +0.9%
+  Max Gawn                 RUCK   35    3384    3336    3336    3393    3392      +56   +1.7%
+  Noah Mraz                KPD    20    3555    1649    1707    1712    1775     +126   +7.6%
+  Lachy Dovaston           SF     19     608     457     490     508     541      +84  +18.4%
+  Jay Polkinghorne         KPF    20     363     247     349     258     364     +117  +47.4%
+  Max King                 KPF    26     235     237     238     238     239       +2   +0.8%
+  Ben King                 KPF    26     232     218     218     219     219       +1   +0.5%
+  Maxwell King             KPF    19     156     156     156     156     156       +0   +0.0%
+
+----------------------------------------------------------------------------------------------------
+### MOVEMENT BY AGE BAND — where each lever actually lands
+----------------------------------------------------------------------------------------------------
+  band       n   FULL total |    XW tot %   XW med % |    V5 tot %   V5 med % | STACK tot % STACK med %
+  <=19      71       46,764 |      +9.85%     +0.00% |      +8.47%     +0.00% |     +19.16%     +0.00%
+  20-21    162      136,974 |      +8.45%     +1.81% |      +4.88%     +4.18% |     +13.72%     +6.14%
+  22-24    200      221,896 |      +1.27%     +0.83% |      +1.95%     +2.15% |      +3.25%     +2.69%
+  25-27    152      175,438 |      +0.16%     +0.00% |      +0.30%     +0.28% |      +0.45%     +0.39%
+  28+      219      142,789 |      +0.01%     +0.00% |      +0.65%     +0.59% |      +0.65%     +0.60%
+
+  'tot %' is the band's aggregate move as a share of the band's own FULL total; 'med %' is the
+  median individual move in the band. They differ where a few big players carry the aggregate.
+
+----------------------------------------------------------------------------------------------------
+### THE DISAGREEMENT SET — players XW and V5 move in OPPOSITE directions
+----------------------------------------------------------------------------------------------------
+  COUNT: 78 of 804 active players (9.7%)
+  These are the rows where the two levers genuinely disagree about a player — the clearest proof
+  that XW and V5 are different mechanisms and not one lever wearing two names.
+
+  player                   pos   age    FULL      dXW      dV5   dSTACK  which wins
+  Jagga Smith              SF     20    4871      -35     +314     +276  V5
+  Sam Lalor                SF     20    4087      -35     +293     +255  V5
+  Sam Cumming              MID    19    2301      -21     +264     +239  V5
+  Connor O'Sullivan        KPD    21    2909      -19     +133     +112  V5
+  Hussien El Achkar        SF     19     436      -96      +51      -69  XW
+  Harvey Johnston          SD     21     318      -94      +16      -81  XW
+  Xavier Bamert            MID    19     396      -83      +47      -52  XW
+  Mac Andrew               KPD    23    4167       -9      +81      +72  V5
+  Connor MacDonald         SF     23    2748       -9      +63      +54  V5
+  Riley Hamilton           SF     20     295      -61      +22      -46  XW
+
+----------------------------------------------------------------------------------------------------
+### SUPER-ADDITIVITY CHECK (pre-registered P5.3 — the sign was NOT assumed)
+----------------------------------------------------------------------------------------------------
+  rows where |dSTACK| exceeds |dXW| + |dV5|: 193 of 804  (190 in the same direction)
+  The mechanical route to this is real: XW raises the par levels, and par feeds the peak estimate
+  and ITEM C's Q = sa/par, which is part of what V5's age-keyed discount is then applied to.
+
+  player                   age    FULL      dXW      dV5      sum   dSTACK   excess
+  Harry Dean                19    2328     +487     +326     +813     +881      +68
+  Dyson Sharp               19    2796     +420     +307     +727     +772      +45
+  Sullivan Robey            19    2618     +385     +291     +676     +717      +41
+  Beau Addinsall            19    1182     +313     +138     +451     +487      +36
+  Jack Ison                 19     265     +279      +31     +310     +344      +34
+  Samuel Grlj               19    1431     +305     +163     +468     +501      +33
+  Josh Lindsay              19    2200     +212     +273     +485     +514      +29
+  Harry Kyle                19     866     +289      +86     +375     +403      +28
+  Jacob Farrow              19    2526     +208     +322     +530     +556      +26
+  Xavier Lindsay            20    1659     +469      +93     +562     +586      +24
+
+====================================================================================================
+  THESE NUMBERS ATTRIBUTE MOVERS. THEY DECIDE NOTHING. The deciding instrument is the COHORT BOOK
+  on noarb_table_338.py (MENU.txt). The live board is a CROSS-SECTION and no candidate is selected,
+  ranked or recommended on a board number here.
+====================================================================================================

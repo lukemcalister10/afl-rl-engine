@@ -69,7 +69,10 @@ FLAT_VARIANTS = ('main', 'FULL', 'H120', 'H125', 'H130', 'AFLOOR', 'ADRAG',
                  # the discount schedule, so it charges the flat balanced-lens 14% like every other
                  # non-discount arm. (Caught in review: without this entry `rate()` fell through to the
                  # V1 default branch and printed XW's own discount as 13.00%, understating its margin.)
-                 'IDENT6', 'XW')
+                 'IDENT6', 'XW',
+                 # ORDER 5: IDENT7 is a plain HEAD identity emit; V5B is the V5 RE-EMIT and is NOT flat
+                 # (it carries V5's schedule) so it is handled in rate() below, not here.
+                 'IDENT7')
 
 
 def _pw_interp(a, knots):
@@ -92,7 +95,10 @@ def rate(variant, a):
         return _pw_interp(a, _V3_KNOTS)
     if variant == 'V4':
         return _pw_interp(a, _V4_KNOTS)
-    if variant == 'V5':
+    if variant in ('V5', 'V5B', 'STACK'):
+        # ORDER 5: the STACK carries V5's discount schedule unchanged (XW re-weights the PAR SAMPLE and
+        # never touches the discount), so the stack is judged against V5's OWN young rate - 12.00% at
+        # draft age 18 - which is the TIGHTER frame and the honest one. V5B is the V5 re-emit.
         return _pw_interp(a, _V5_KNOTS)
     if a <= 21.0: return 0.13
     if a >= 26.0: return 0.15
