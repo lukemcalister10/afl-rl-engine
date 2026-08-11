@@ -1,0 +1,37 @@
+========================================================================================================
+### THE SHARED-SIGNAL PRE-CHECK — is the positional pattern the same in RD and ND?
+========================================================================================================
+  SHAPE = cell profile / that stream's own all-in value. Level removed; pattern left.
+  ND all-in 1.0252   RD all-in 0.5233
+
+  position    ND n  ND shape   RD n  RD shape  ratio RD/ND  rank ND  rank RD
+  MID          432    0.9848    176    1.1259       1.1433        5        3
+  SD           306    1.0076    158    0.9207       0.9138        4        4
+  SF           304    0.9763    147    1.2576       1.2881        6        2
+  KPD          153    1.0514     72    0.5399       0.5135        1        6
+  KPF          173    1.0344     64    0.7988       0.7722        3        5
+  RUCK          76    1.0366     71    1.8315       1.7669        2        1
+
+  correlation of the two shape vectors : -0.2350
+  concordant pairs (ordering agreement) : 4 of 15
+  spread ND 0.976-1.051 (factor 1.08)   RD 0.540-1.832 (factor 3.39)
+
+========================================================================================================
+### K SENSITIVITY — how much of its OWN data a thin cell keeps, w = n/(n+K)
+========================================================================================================
+  the engine's existing convention is K = 10 (rl_model.py _pest_336; par_build K_338).
+  cell                      n       K=5     K=10     K=20
+  SSP MID                   5     0.500    0.333    0.200
+  SSP SD                    8     0.615    0.444    0.286
+  SSP SF                   16     0.762    0.615    0.444
+  SSP KPD                   5     0.500    0.333    0.200
+  SSP KPF                  12     0.706    0.545    0.375
+  SSP RUCK                  6     0.545    0.375    0.231
+  MSD SD                   13     0.722    0.565    0.394
+  MSD KPD                  14     0.737    0.583    0.412
+  MSD KPF                  19     0.792    0.655    0.487
+  MSD RUCK                 14     0.737    0.583    0.412
+  (a sampled cell, ref)    72     0.935    0.878    0.783
+
+  At K=10 a 14-player cell keeps 58% of its own signal and borrows 42%; at K=5 it keeps 74%;
+  at K=20 it keeps 41%. K is how fast the engine stops believing a small cell.
