@@ -10,3 +10,6 @@ session_2026-07-14/q97m_followup/A1_PROOF/legB_tag_board.json
 # `pass: 8/8` from the 06d8af60 era, and fv-provenance.yml uploads whatever is on disk, so a run that
 # failed to write published a green result for a suite that had not passed (issue #239 follow-up).
 session_2026-07-20/fv_provenance_remediation/RESULTS.json
+
+# Harness-created agent worktrees (nested git checkouts — never repository content)
+.claude/worktrees/
