@@ -503,6 +503,96 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
   and this table, on the cohort book, is the deciding instrument.
 
 ====================================================================================================================
+### THE ALL-ARM COHORT TABLE — THE OWNER'S DECIDING INSTRUMENT (standing ruling)
+====================================================================================================================
+  OWNER, verbatim: "a cohort is all players drafted through mechanisms that are eligible to
+  debut in the same year (for example, the most recent cohort is ND, RD, SSP in 2025 + MSD in
+  2026). So when I look at cohort progression, it's through that lens."
+
+  instrument : noarb_table_allarm.py — a SIBLING reader. noarb_table_338.py is NOT modified and
+               its md5 (0f8220351c64c56ccfa90c60edcdfa5f) is ASSERTED at every all-arm run.
+  NO NEW EMITS: the matrices already carried all 2645 rows; only the canonical READER filtered
+               to ND 1-64. Both instruments are read off IDENTICAL engine runs, so every
+               difference below is the POPULATION and never the engine.
+  cohort key : draft year + 1, except MSD = draft year (the engine's own debutyr convention)
+  year 0     : each entrant's OWN v0 under that variant. Measured to be arm-appropriate: v0
+               moves for 1080 of 1201 pool rows main->FULL (median 0.6632).
+
+  --- PRIMARY window, cohorts 2005-2023   n = 2210 ---
+      arms: ND 1310  RD 621  MSD 55  UNR 49  IRE 47  PDA 43  PDN 33  SSP 31  PDS 21
+      row          yr1      yr2      yr3      yr4      yr5    apprec    disc   margin  verdict
+      main      0.9326   1.1354   1.2288   1.2936   1.2843    -6.74%  14.00%   20.74%    legal
+      FULL      0.8695   1.0835   1.2480   1.3568   1.3558   -13.05%  14.00%   27.05%    legal
+      V2        0.9091   1.1009   1.2651   1.3487   1.3252    -9.09%  12.00%   21.09%    legal
+      V5        0.8951   1.1009   1.2472   1.3344   1.3301   -10.49%  12.00%   22.49%    legal
+      XW        0.8735   1.0983   1.2091   1.2841   1.2658   -12.65%  14.00%   26.65%    legal
+      STACK     0.8915   1.1056   1.1981   1.2523   1.2311   -10.85%  12.00%   22.85%    legal
+
+  --- MODERN window, cohorts 2019-2023   n = 540 ---
+      arms: ND 325  RD 66  MSD 55  SSP 31  PDN 25  UNR 13  PDA 13  IRE 12
+      row          yr1      yr2      yr3      yr4      yr5    apprec    disc   margin  verdict
+      main      0.9250   1.0632   1.1062   1.1019   1.1863    -7.50%  14.00%   21.50%    legal
+      FULL      0.8620   1.0144   1.1082   1.1415   1.2286   -13.80%  14.00%   27.80%    legal
+      V2        0.9117   1.0377   1.1330   1.1446   1.2097    -8.83%  12.00%   20.83%    legal
+      V5        0.8976   1.0387   1.1171   1.1324   1.2147   -10.24%  12.00%   22.24%    legal
+      XW        0.8819   1.0393   1.0936   1.0973   1.1646   -11.81%  14.00%   25.81%    legal
+      STACK     0.9109   1.0555   1.0946   1.0811   1.1431    -8.91%  12.00%   20.91%    legal
+
+  BY ARM at cohort year 1 and 4 (PRIMARY window) — so no arm can hide inside the pooled number:
+      arm         n       yr1       yr4
+      ND       1310    0.9675    1.5009
+      RD        621    0.5485    0.9242
+      MSD        55       nan    1.0691
+      UNR        49    0.4969    0.8030
+      IRE        47    0.3064    0.3232
+      PDA        43    0.3810    0.9858
+      PDN        33    0.1519    0.3619
+      SSP        31    1.4100    1.3860
+      PDS        21    0.1769    0.2139
+      MSD yr1 is blank by disclosure: an MSD entrant debuts in his DRAFT year but the emitter
+      builds yrs from draft year + 1, so his cohort year 1 is not carried. Those 55 rows are
+      EXCLUDED from year 1, never scored zero — zero would be false about a player who played.
+
+====================================================================================================================
+### SIDE BY SIDE — the legacy picks-1-64 view against the owner's all-arm view
+====================================================================================================================
+      row     | PICKS 1-64 ND  (n=1197)      | ALL-ARM cohorts 05-23 (n=2210)
+              |      yr1      yr4   margin |      yr1      yr4   margin
+      --------------------------------------------------------------------------
+      main    |   1.1239   1.5732    1.61% |   0.9326   1.2936   20.74%
+      FULL    |   0.9974   1.5310   14.26% |   0.8695   1.3568   27.05%
+      V2      |   1.0933   1.5870    2.67% |   0.9091   1.3487   21.09%
+      V5      |   1.0734   1.5665    4.66% |   0.8951   1.3344   22.49%
+      XW      |   1.0884   1.5660    5.16% |   0.8735   1.2841   26.65%
+      STACK   |   1.1708   1.6027   -5.08% |   0.8915   1.2523   22.85%
+
+  WHAT CHANGES WHEN THE OWNER'S POPULATION IS USED — three things, and two of them reverse a
+  verdict this act has been carrying:
+
+  1. THE WHOLE COHORT BOOK DEPRECIATES AT YEAR 1, ON EVERY ROW INCLUDING main. main reads
+     0.9326 all-arm against 1.1239 on picks 1-64. The +12% year-1 appreciation that this act
+     has been treating as the thing FULL destroyed IS A PICKS-1-64 ARTEFACT. Across the whole
+     cohort a draft class has always been worth LESS one year on, by about 7%.
+
+  2. THE ARBITRAGE VERDICTS INVERT. Every margin on the all-arm basis is strongly POSITIVE
+     (+20.7%% to +27.1%%) — including the STACK, which reads -5.08%% ARB on picks 1-64 and
+     +22.85%% LEGAL here. THE FREE-MONEY QUESTION DOES NOT ARISE ON THE OWNER'S INSTRUMENT;
+     the opposite question does — why the cohort loses a fifth of its value against the charge.
+     No candidate is rescued by this: it means the no-arb frame was answering a question about
+     a sub-population, and the sub-population was not the cohort.
+
+  3. THE COUNTERBALANCES SHRINK, XW MOST OF ALL. Share of the main->FULL year-1 gap restored:
+       picks 1-64:  XW 71.9%%   V5 60.1%%
+       all-arm:     XW  6.3%%   V5 40.6%%
+     XW is a par-sample repair and the par surface is national-draft-weighted machinery; it
+     barely touches the pool arm, where ORDER 6 showed the cut actually lives (ITEM H, 0.615,
+     reading no production at all). V5 travels better because a discount schedule applies to
+     every arm. NEITHER touches ITEM H.
+
+  THE LEGACY TABLE IS RETAINED ABOVE, unchanged, because every ruling in this act was made on
+  it. It is now labelled as the legacy view; this is the deciding one.
+
+====================================================================================================================
 ### HALT-GRADE — AN UNRULED 38.5% CUT ON THE POOL ARM  (full attribution: POOL_ARM_ATTRIBUTION.md)
 ====================================================================================================================
   OWNER CHALLENGE: "a lot of /SSP/MSD players have been slashed - Noble, Hall, McCarthy, Peatling,

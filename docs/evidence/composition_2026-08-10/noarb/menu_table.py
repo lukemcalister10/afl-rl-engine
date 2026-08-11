@@ -9,7 +9,7 @@ load_matrix ND filter (teaches_curve & pick 1..64 & draft year 2004..2022) = 119
 on every candidate · aggregation = pooled book ratio mean(value at year N)/mean(v0) over the same
 included set · busts score 0 and stay in the denominator · window end 2026.
 """
-import os, sys, json
+import os, sys, json, glob
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -566,6 +566,88 @@ def main():
     P('  (owner-readable). THEY ATTRIBUTE MOVERS AND DECIDE NOTHING — the live board is a cross-section')
     P('  and this table, on the cohort book, is the deciding instrument.')
     P()
+    # ---------------------------------------------------------------- the OWNER'S DECIDING INSTRUMENT
+    AA = {}
+    for lab in ('main', 'FULL', 'V2', 'V5', 'XW', 'STACK'):
+        fp = os.path.join(HERE, 'allarm_%s.json' % lab)
+        if os.path.exists(fp): AA[lab] = json.load(open(fp))
+    if AA:
+        W = 'PRIMARY  cohorts 2005-2023'; MW = 'MODERN   cohorts 2019-2023'
+        def ar(lab, w): return {r['N']: r['ratio_meanN_over_mean0'] for r in AA[lab]['groups'][w]['rows']}
+        P('=' * 116)
+        P("### THE ALL-ARM COHORT TABLE — THE OWNER'S DECIDING INSTRUMENT (standing ruling)")
+        P('=' * 116)
+        P('  OWNER, verbatim: "a cohort is all players drafted through mechanisms that are eligible to')
+        P('  debut in the same year (for example, the most recent cohort is ND, RD, SSP in 2025 + MSD in')
+        P('  2026). So when I look at cohort progression, it\'s through that lens."')
+        P()
+        P('  instrument : noarb_table_allarm.py — a SIBLING reader. noarb_table_338.py is NOT modified and')
+        P('               its md5 (0f8220351c64c56ccfa90c60edcdfa5f) is ASSERTED at every all-arm run.')
+        P('  NO NEW EMITS: the matrices already carried all 2645 rows; only the canonical READER filtered')
+        P('               to ND 1-64. Both instruments are read off IDENTICAL engine runs, so every')
+        P('               difference below is the POPULATION and never the engine.')
+        P('  cohort key : draft year + 1, except MSD = draft year (the engine\'s own debutyr convention)')
+        P('  year 0     : each entrant\'s OWN v0 under that variant. Measured to be arm-appropriate: v0')
+        P('               moves for 1080 of 1201 pool rows main->FULL (median 0.6632).')
+        P()
+        for w, wl in ((W, 'PRIMARY window, cohorts 2005-2023'), (MW, 'MODERN window, cohorts 2019-2023')):
+            n = AA['FULL']['groups'][w]['n']; arms = AA['FULL']['groups'][w]['arms']
+            P('  --- %s   n = %d ---' % (wl, n))
+            P('      arms: ' + '  '.join('%s %d' % (t, c) for t, c in sorted(arms.items(), key=lambda x: -x[1])))
+            P('      %-7s %8s %8s %8s %8s %8s %9s %7s %8s %8s'
+              % ('row', 'yr1', 'yr2', 'yr3', 'yr4', 'yr5', 'apprec', 'disc', 'margin', 'verdict'))
+            for lab in ('main', 'FULL', 'V2', 'V5', 'XW', 'STACK'):
+                if lab not in AA: continue
+                r = ar(lab, w); d = rate(lab, TYPICAL_DRAFT_AGE); ap = r[1] - 1.0; m = d - ap
+                P('      %-7s %8.4f %8.4f %8.4f %8.4f %8.4f %8.2f%% %6.2f%% %7.2f%% %8s'
+                  % (lab, r[1], r[2], r[3], r[4], r[5], 100*ap, 100*d, 100*m, 'ARB' if m < 0 else 'legal'))
+            P()
+        P('  BY ARM at cohort year 1 and 4 (PRIMARY window) — so no arm can hide inside the pooled number:')
+        P('      %-6s %6s %9s %9s' % ('arm', 'n', 'yr1', 'yr4'))
+        for t, v in sorted(AA['FULL']['groups'][W]['by_arm'].items(), key=lambda x: -x[1]['n']):
+            P('      %-6s %6d %9.4f %9.4f' % (t, v['n'], v['yr1'], v['yr4']))
+        P('      MSD yr1 is blank by disclosure: an MSD entrant debuts in his DRAFT year but the emitter')
+        P('      builds yrs from draft year + 1, so his cohort year 1 is not carried. Those 55 rows are')
+        P('      EXCLUDED from year 1, never scored zero — zero would be false about a player who played.')
+        P()
+        P('=' * 116)
+        P('### SIDE BY SIDE — the legacy picks-1-64 view against the owner\'s all-arm view')
+        P('=' * 116)
+        P('      %-7s | %-28s | %-28s' % ('row', 'PICKS 1-64 ND  (n=1197)', 'ALL-ARM cohorts 05-23 (n=2210)'))
+        P('      %-7s | %8s %8s %8s | %8s %8s %8s' % ('', 'yr1', 'yr4', 'margin', 'yr1', 'yr4', 'margin'))
+        P('      ' + '-' * 74)
+        for lab in ('main', 'FULL', 'V2', 'V5', 'XW', 'STACK'):
+            if lab not in T or lab not in AA: continue
+            c = rr(T[lab], GROUPS[0]); a = ar(lab, W); d = rate(lab, TYPICAL_DRAFT_AGE)
+            P('      %-7s | %8.4f %8.4f %7.2f%% | %8.4f %8.4f %7.2f%%'
+              % (lab, c[1], c[4], 100*(d-(c[1]-1)), a[1], a[4], 100*(d-(a[1]-1))))
+        P()
+        P('  WHAT CHANGES WHEN THE OWNER\'S POPULATION IS USED — three things, and two of them reverse a')
+        P('  verdict this act has been carrying:')
+        P()
+        P('  1. THE WHOLE COHORT BOOK DEPRECIATES AT YEAR 1, ON EVERY ROW INCLUDING main. main reads')
+        P('     0.9326 all-arm against 1.1239 on picks 1-64. The +12% year-1 appreciation that this act')
+        P('     has been treating as the thing FULL destroyed IS A PICKS-1-64 ARTEFACT. Across the whole')
+        P('     cohort a draft class has always been worth LESS one year on, by about 7%.')
+        P()
+        P('  2. THE ARBITRAGE VERDICTS INVERT. Every margin on the all-arm basis is strongly POSITIVE')
+        P('     (+20.7%% to +27.1%%) — including the STACK, which reads -5.08%% ARB on picks 1-64 and')
+        P('     +22.85%% LEGAL here. THE FREE-MONEY QUESTION DOES NOT ARISE ON THE OWNER\'S INSTRUMENT;')
+        P('     the opposite question does — why the cohort loses a fifth of its value against the charge.')
+        P('     No candidate is rescued by this: it means the no-arb frame was answering a question about')
+        P('     a sub-population, and the sub-population was not the cohort.')
+        P()
+        P('  3. THE COUNTERBALANCES SHRINK, XW MOST OF ALL. Share of the main->FULL year-1 gap restored:')
+        P('       picks 1-64:  XW 71.9%%   V5 60.1%%')
+        P('       all-arm:     XW  6.3%%   V5 40.6%%')
+        P('     XW is a par-sample repair and the par surface is national-draft-weighted machinery; it')
+        P('     barely touches the pool arm, where ORDER 6 showed the cut actually lives (ITEM H, 0.615,')
+        P('     reading no production at all). V5 travels better because a discount schedule applies to')
+        P('     every arm. NEITHER touches ITEM H.')
+        P()
+        P('  THE LEGACY TABLE IS RETAINED ABOVE, unchanged, because every ruling in this act was made on')
+        P('  it. It is now labelled as the legacy view; this is the deciding one.')
+        P()
     P('=' * 116)
     P('### HALT-GRADE — AN UNRULED 38.5% CUT ON THE POOL ARM  (full attribution: POOL_ARM_ATTRIBUTION.md)')
     P('=' * 116)
