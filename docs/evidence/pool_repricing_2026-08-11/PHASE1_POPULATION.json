@@ -1,0 +1,59 @@
+{
+ "determinable": true,
+ "verdict": "SPLIT: RD/ND>64/MSD were IN (double charge); SSP/IRE/PDA/PDN/PDS/UNR were OUT (bolt-on)",
+ "producer": "session_2026-07-03/d13/scripts/d13_norm_harvest.py",
+ "consumer": "session_2026-07-03/d13/scripts/d13_derive.py",
+ "normcells_present": false,
+ "clamp_1_90_rows_affected": 0,
+ "rd_max_store_pick": 51,
+ "per_pathway": {
+  "ND 1-64": {
+   "n": 1443,
+   "in_pop": 1385
+  },
+  "ND>64": {
+   "n": 122,
+   "in_pop": 122
+  },
+  "RD": {
+   "n": 691,
+   "in_pop": 685
+  },
+  "MSD": {
+   "n": 106,
+   "in_pop": 88
+  },
+  "SSP": {
+   "n": 52,
+   "in_pop": 0
+  },
+  "IRE": {
+   "n": 57,
+   "in_pop": 0
+  },
+  "PDA": {
+   "n": 51,
+   "in_pop": 0
+  },
+  "PDN": {
+   "n": 43,
+   "in_pop": 0
+  },
+  "PDS": {
+   "n": 21,
+   "in_pop": 0
+  },
+  "UNR": {
+   "n": 59,
+   "in_pop": 0
+  }
+ },
+ "pool_in": 895,
+ "pool_out": 283,
+ "not_determinable": [
+  "normcells artefact absent (gate replay, not read-back)",
+  "row-level membership at engine af1fc6aa",
+  "_double_count flag not reconstructible",
+  "depth-cell counts (listed_through unavailable)"
+ ]
+}
