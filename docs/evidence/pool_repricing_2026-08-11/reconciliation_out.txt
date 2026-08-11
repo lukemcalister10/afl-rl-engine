@@ -1,0 +1,49 @@
+================================================================================================================
+### THE RECONCILIATION TEST — layer 2 must aggregate to layer 1, per pathway
+================================================================================================================
+  ND 1-64 profile (the calibration target) = 1.025218
+  a cell is SAMPLED at n >= 20; unsampled players carry the pathway value itself
+
+  pathway      n  L1 pathway |  RULE1 naive        rel       | RULE2 residual        rel       |   lam_rem  n_rem
+  ------------------------------------------------------------------------------------------------------------
+  RD         688    0.510424      0.510424    0.00e+00   PASS |      0.510424    0.00e+00   PASS |       nan      0
+  SSP         52    1.003419      1.003419    0.00e+00   PASS |      1.003419    0.00e+00   PASS |    1.0034     52
+  MSD        106    0.918652      1.058525    1.52e-01   FAIL |      0.918652    0.00e+00   PASS |    0.6977     60
+  IRE         57    0.195624      0.222324    1.36e-01   FAIL |      0.195624    2.84e-16   PASS |    0.1310     22
+  PDA         51    0.417417      0.417417    0.00e+00   PASS |      0.417417    0.00e+00   PASS |    0.4174     51
+  PDN         43    0.138750      0.138750    0.00e+00   PASS |      0.138750    0.00e+00   PASS |    0.1387     43
+  PDS         21    0.122758      0.122758    0.00e+00   PASS |      0.122758    0.00e+00   PASS |    0.1228     21
+  UNR         59    0.340756      0.314247    7.78e-02   FAIL |      0.340756    1.63e-16   PASS |    0.3809     29
+  ND>64      120    0.534236      0.513249    3.93e-02   FAIL |      0.534236    0.00e+00   PASS |    0.5926     37
+
+  RULE 1 = 'unsampled players carry the pathway value'. RULE 2 = 'the unsampled REMAINDER is
+  priced as its own residual group'. RULE 1 FAILS ON EVERY PARTIAL PATHWAY - see MSD, IRE, UNR,
+  ND>64 - because the remainder's own profile is not the pathway average, so the sampled cells'
+  deviation is left unoffset. RULE 2 reconciles everywhere at float noise. THE ACT MUST USE RULE 2.
+
+  PASS at 1e-9 is the correct bar: this is an IDENTITY, not an approximation. A pathway's
+  profile IS the entry-weighted mean of its cell profiles, so layer 2 sums back to layer 1 by
+  construction. Anything above float noise means the build broke the construction.
+
+  CONDITION (a) - THE WEIGHTING CONVENTION MUST MATCH, and here is the cost of getting it wrong:
+    RD       entry-weighted 0.5104  vs  headcount-weighted 0.5553   -> +8.8% error if the act mixed conventions
+    MSD      entry-weighted 0.9187  vs  headcount-weighted 1.2358   -> +34.5% error if the act mixed conventions
+    IRE      entry-weighted 0.1956  vs  headcount-weighted 0.2411   -> +23.3% error if the act mixed conventions
+    UNR      entry-weighted 0.3408  vs  headcount-weighted 0.2627   -> -22.9% error if the act mixed conventions
+    ND>64    entry-weighted 0.5342  vs  headcount-weighted 0.5062   -> -5.2% error if the act mixed conventions
+  THE ACT ADOPTS ENTRY-WEIGHTING IN BOTH LAYERS. A headcount mean weights a 21-player cell the
+  same as a 176-player one and does not reconcile.
+
+================================================================================================================
+### LAYER-2 STATUS PER PATHWAY (D4's decision surface — the seat does not choose)
+================================================================================================================
+  pathway      n    MID    SD    SF   KPD   KPF  RUCK  sampled                       status
+  RD         688    176   158   147    72    64    71      688        DERIVABLE (all cells)
+  SSP         52      5     8    16     5    12     6        0         COLLAPSES TO LAYER 1
+  MSD        106     23    13    23    14    19    14       46             PARTIAL (2 of 6)
+  IRE         57      5    35     4     6     5     2       35             PARTIAL (1 of 6)
+  PDA         51     14    10    14     2     6     5        0         COLLAPSES TO LAYER 1
+  PDN         43      4    14    16     5     2     2        0         COLLAPSES TO LAYER 1
+  PDS         21      7     5     3     4     1     1        0         COLLAPSES TO LAYER 1
+  UNR         59      8     4     5     9     3    30       30             PARTIAL (1 of 6)
+  ND>64      120     28    25    30    12    16     9       83             PARTIAL (3 of 6)

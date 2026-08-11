@@ -25,6 +25,8 @@ its source. Two sources recur:
   measure, added when D3 was ruled; re-runnable with `python3 profile_measure.py SHIP`).
 - **[DERIVE]** = `docs/evidence/pool_repricing_2026-08-11/derive_vs_scale_out.txt` (added when the
   same-derivation principle was ruled; re-runnable with `python3 derive_vs_scale.py`).
+- **[RECON]** = `docs/evidence/pool_repricing_2026-08-11/reconciliation_out.txt` (the two-layer
+  reconciliation test; re-runnable with `python3 reconciliation.py`).
 
 **Words used here.** *Stream* = one way a player enters the league (national draft, rookie draft,
 mid-season draft, and so on). *Entry price* = what the engine says a player is worth on the day he
@@ -620,6 +622,10 @@ and marks that part **OPEN QUESTION**.
 
 ## §0 SUMMARY — what the review needs to settle
 
+**PRIORITY, from the owner's ruling of 2026-08-11: LAYER 2 (the player v0) is the load-bearing
+deliverable; LAYER 1 (the pathway value) is a nice-to-have, as the pick curve is. If the sitting's time
+is limited, layer 2 is what must be right.** The architecture is set out in **§0A**.
+
 | | decision | seat lean |
 |---|---|---|
 | D1 | is the entry price the defect? | yes — and **RULED 2026-08-11: pool values are DERIVED from outcomes the ND way, not scaled**; the λ table is now evidence and sizing, not the mechanism |
@@ -644,6 +650,140 @@ and year-one cohort appreciation is acceptable.**
 owner's words before any work begins on those specific items.** D4 has become the gating question: the
 counts show derivation is fully achievable for one pool stream, partly for four, and stream-level only
 for four more — so D4 decides how much of the same-derivation ruling can actually be delivered.
+
+
+---
+
+# §0A — THE TWO-LAYER ARCHITECTURE  **[OWNER RULING, 2026-08-11 — comment 5251155728]**
+
+**Owner, verbatim:**
+
+> *"There are two different values here. 'What is a rookie draft pick worth' - which is broad, but we
+> have a number for what a national draft pick 1 is worth. Before the player is taken… We should be
+> able to have an 'all inclusive' value, before positions for each of the pathways within the pool, RD,
+> PSD, SSP, etc. like we do on the pick curve. Then we should have v0 ratings for players who are
+> drafted/selected out of the pool. That's where the positional layer comes on, and the ruck/key
+> defender lens can be applied. And like the ND, v0 may differ from the 'all-in value' of the
+> selection, but across all possibilities, it doesn't. The average v0 of all pool (or pathways within
+> it) players should be near identical to the all-in value. The second one is far more important for
+> setting player priors etc. and ensuring these players comply with the no-arb book check and measure.
+> But the first is a 'nice to have' for me, like the pick value curve is a nice to have."*
+
+**The act produces TWO objects. The priority order is his and it is stated first, because it decides
+what must be right if the sitting's time runs short.**
+
+## LAYER 2 — THE PLAYER v0. **THE LOAD-BEARING DELIVERABLE.**
+The entry value of a **specific player** selected through a pathway. **This is where the positional
+layer lives** — the ruck and key-defender lens. It sets player priors and it is the thing that must
+satisfy the no-arbitrage book check. **If only one layer can be got right, it is this one.**
+
+## LAYER 1 — THE PATHWAY VALUE ("all-inclusive"). **A NICE-TO-HAVE, as the pick curve is.**
+One **positionless** value per pathway — RD, SSP, MSD, the academy/post-draft legs, IRE, UNR, ND>64 —
+answering *what is a selection through this pathway worth before the player is known*. It is the pool
+analogue of the pick curve's value at a slot.
+
+**A real methodological difference from the ND curve, and it is the owner's point:** the ND curve
+**smooths across slots** because each slot holds only about twenty players. **The pool needs no such
+smoothing** — a pathway is measured whole, and the rookie draft alone pools **688** players
+**[DERIVE]**. **So layer 1 is a direct measurement, not a fitted curve, and nothing is borrowed between
+pathways.**
+
+## THE RECONCILIATION LAW, AS A CHECKABLE TEST
+
+**The law (owner-stated, standing):** an individual v0 may differ from its pathway's all-inclusive
+value, but **across all selections the entry-weighted average v0 of a pathway must equal that pathway's
+all-inclusive value** — exactly as ND v0s reconcile to the pick curve.
+
+**The test the build runs, per pathway:**
+
+> **layer 1** `P_s = Σ_stream realised_full ÷ Σ_stream v0 ÷ ND`
+> **layer 2** `λ_c = Σ_cell realised_full ÷ Σ_cell v0 ÷ ND`
+> **PASS if** `Σ_c ( v0_c · λ_c ) = ( Σ_c v0_c ) · P_s` **within 1e-9 relative**
+
+**The tolerance is 1e-9 and that is deliberate: this is an IDENTITY, not an approximation.** A
+pathway's profile *is* the entry-weighted mean of its cell profiles, so layer 2 sums back to layer 1 by
+construction. Anything above floating-point noise means the build has broken the construction, not that
+the data disagreed. **The derive-equals-scale identity already established — the rookie draft landing
+on 179,181 either way [DERIVE] — is this same law written as money.**
+
+### THE THREE CONDITIONS. Two were known; the third the seat found by running the test.
+
+**(a) THE WEIGHTING CONVENTION MUST MATCH ACROSS LAYERS. THE ACT ADOPTS ENTRY-WEIGHTING IN BOTH.**
+A headcount average weights a 21-player cell like a 176-player one and does **not** reconcile. Measured
+cost of mixing the two **[RECON]**: RD **+8.8%**, MSD **+34.5%**, IRE **+23.3%**, UNR **−22.9%**,
+ND>64 **−5.2%**.
+
+**(b) IT HOLDS ACROSS SAMPLED CELLS.** Where a positional cell is too thin to derive, those players get
+no positional differentiation. See the status table below.
+
+**(c) — FOUND BY RUNNING THE TEST, AND IT CORRECTS AN ASSUMPTION THE SEAT HAD WRITTEN DOWN.**
+It was assumed that thin cells could simply *"collapse to layer 1"*, carrying the pathway value, and
+would then reconcile trivially. **That is true only when NO cell is sampled. On a PARTIALLY sampled
+pathway it BREAKS THE LAW** — measured **[RECON]**:
+
+| pathway | sampled cells | **rule 1**: remainder carries the pathway value | **rule 2**: remainder priced as its own residual group |
+|---|---|---|---|
+| RD | 6 of 6 | PASS (0.00e+00) | PASS (0.00e+00) |
+| **MSD** | 2 of 6 | **FAIL — 1.52e-01** | **PASS (0.00e+00)** |
+| **IRE** | 1 of 6 | **FAIL — 1.36e-01** | **PASS (2.84e-16)** |
+| **UNR** | 1 of 6 | **FAIL — 7.78e-02** | **PASS (1.63e-16)** |
+| **ND>64** | 3 of 6 | **FAIL — 3.93e-02** | **PASS (0.00e+00)** |
+| SSP · PDA · PDN · PDS | 0 of 6 | PASS (trivially) | PASS (trivially) |
+
+**Why rule 1 fails:** the unsampled remainder's own outcome profile is **not** the pathway average. MSD's
+remainder measures **0.6977** against a pathway value of **0.9187**; ND>64's measures **0.5926** against
+**0.5342** **[RECON]**. Giving the remainder the pathway average leaves the sampled cells' deviation
+unoffset, and the pathway no longer averages to its own value.
+
+> **THE ACT MUST USE RULE 2: on a partially sampled pathway the unsampled remainder is priced as its
+> own residual group, not at the pathway average.** With rule 2 every pathway reconciles at float noise.
+> This is a construction requirement, not a decision — it is what makes the owner's law true in the
+> built system.
+
+## LAYER-2 STATUS PER PATHWAY — D4's decision surface, and the seat does not choose
+
+**[RECON]** · a cell is sampled at n ≥ 20 · "covered" counts players in sampled cells
+
+| pathway | n | MID | SD | SF | KPD | KPF | RUCK | covered | **layer-2 status** |
+|---|---|---|---|---|---|---|---|---|---|
+| **RD** | 688 | 176 | 158 | 147 | 72 | 64 | 71 | **688** | **DERIVABLE — all cells** |
+| ND>64 | 120 | 28 | 25 | 30 | 12 | 16 | 9 | 83 | PARTIAL — 3 of 6 |
+| MSD | 106 | 23 | 13 | 23 | 14 | 19 | 14 | 46 | PARTIAL — 2 of 6 |
+| IRE | 57 | 5 | 35 | 4 | 6 | 5 | 2 | 35 | PARTIAL — 1 of 6 |
+| UNR | 59 | 8 | 4 | 5 | 9 | 3 | 30 | 30 | PARTIAL — 1 of 6 |
+| SSP | 52 | 5 | 8 | 16 | 5 | 12 | 6 | 0 | **COLLAPSES TO LAYER 1** |
+| PDA | 51 | 14 | 10 | 14 | 2 | 6 | 5 | 0 | **COLLAPSES TO LAYER 1** |
+| PDN | 43 | 4 | 14 | 16 | 5 | 2 | 2 | 0 | **COLLAPSES TO LAYER 1** |
+| PDS | 21 | 7 | 5 | 3 | 4 | 1 | 1 | 0 | **COLLAPSES TO LAYER 1 — and thin** |
+
+**The load-bearing layer is fully deliverable for the rookie draft — 688 of the 1,197 pool players, the
+majority.** Four pathways get partial positional differentiation; four get none and receive their
+pathway value. **Whether the four that get none should instead borrow a shape, be shrunk, or be left
+alone is D4, and it is still open.**
+
+## WHERE EVERY EXISTING MEASUREMENT NOW SITS
+
+| measurement | layer | source |
+|---|---|---|
+| per-stream outcome profiles (RD 0.5233, SSP 1.0287, …) | **layer 1** — the pathway values themselves | [PROFILE] |
+| the per-stream λ table in D3A | **layer 1** — evidence and sizing | [PROFILE] |
+| the year 1-6 context columns | **layer 1** — context for the pathway value | [PROFILE] |
+| per-position cells within RD (KPD 0.276 … RUCK 0.935) | **layer 2** — the player v0 differentiation | [DERIVE] |
+| the derive-vs-scale comparison | **layer 2** — why the mechanism must derive | [DERIVE] |
+| the positional census and feasibility counts | **layer 2** — where it can be delivered | [DERIVE] |
+| the reconciliation test and its three conditions | **the join between the layers** | [RECON] |
+| the carry curve (0.996 / 0.119 / 0.000) | **layer 2** — how much of a v0 change reaches a price | [POOL] |
+| board totals, all-arm effects, named lines | consequences of layer 2 | [POOL] / [PROFILE] |
+
+**Nothing measured for this directive is orphaned.**
+
+## A SEAT FLAG FOR THE OWNER'S CONSIDERATION — not a recommendation
+
+**Layer 1 stops being a nice-to-have and becomes load-bearing IF future pool selections are tradeable
+assets in the league.** The engine already prices future **ND** picks off the pick curve; if a future
+rookie-draft or mid-season-draft selection can be traded, its price would come from the pathway value
+the same way, and layer 1 would then sit directly under real transactions rather than beside them.
+**The owner knows his league's rules; the seat states the conditional and does not assume the answer.**
 
 ---
 
