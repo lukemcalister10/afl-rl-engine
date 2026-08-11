@@ -1,0 +1,393 @@
+{
+ "matrix": "per_entrant_V1.json",
+ "store": "d9a24282",
+ "engine_head": "4fc44090",
+ "basis": "#338 minimum listing tenure (owner word 2026-08-06)",
+ "v0surf": "6ef67f07db98258786189a6316ce24f9",
+ "window_end": 2026,
+ "draft_years": [
+  2004,
+  2022
+ ],
+ "captions": [
+  "Values are the ENGINE'S OWN as-of valuations ev(p,Y) (walk-forward), NOT raw scores or raw output.",
+  "Early-career years lean heavily on the year-zero estimate -- the engine has little evidence yet.",
+  "Denomination: VOR board points (pick-1 pinned at 3000).",
+  "BASIS: the #338 CORRECTED minimum listing tenure (owner word 2026-08-06; rule commit 30996f8).",
+  "  A retired player's window runs to his LISTED-THROUGH year, not his last PLAYED year: tenure",
+  "  years after the last game are LISTED sitting-out years and are priced by the existing sit-out",
+  "  machinery. 4/3/2 listed seasons by band (ND 1-20 / ND 21-40 / ND 41+ and every pool route);",
+  "  own data extends the minimum; an explicit _last_listed is a known fact and stands.",
+  "CAVEAT (standing): these outcomes are under the CORRECTED #338 rule. The shipped curve they are",
+  "  compared against was derived on the PRE-CORRECTION basis and re-derives at #334 stage B after",
+  "  the #336 ruling. Do not read a gap here as a curve error until that re-derivation lands.",
+  "Busts stay in the denominator at 0. Players whose careers have not yet reached year N are",
+  "  EXCLUDED from year N and reported separately as 'not yet reached'."
+ ],
+ "groups": {
+  "ALL picks 1-64": {
+   "cohort_n": 1197,
+   "rows": [
+    {
+     "N": 0,
+     "n_included": 1197,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "mean_yearN": 839.1,
+     "median_yearN": 599.5,
+     "mean_year0_same_set": 839.1,
+     "median_year0_same_set": 599.5,
+     "ratio_meanN_over_mean0": 1.0,
+     "zero_kinds": {
+      "v0": 1197
+     }
+    },
+    {
+     "N": 1,
+     "n_included": 1197,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "mean_yearN": 879.94,
+     "median_yearN": 514.0,
+     "mean_year0_same_set": 839.1,
+     "median_year0_same_set": 599.5,
+     "ratio_meanN_over_mean0": 1.0487,
+     "zero_kinds": {
+      "path": 1197
+     }
+    },
+    {
+     "N": 2,
+     "n_included": 1197,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "mean_yearN": 1099.45,
+     "median_yearN": 568.0,
+     "mean_year0_same_set": 839.1,
+     "median_year0_same_set": 599.5,
+     "ratio_meanN_over_mean0": 1.3103,
+     "zero_kinds": {
+      "path": 1197
+     }
+    },
+    {
+     "N": 3,
+     "n_included": 1197,
+     "n_zero": 141,
+     "n_not_yet_reached": 0,
+     "mean_yearN": 1261.52,
+     "median_yearN": 708.0,
+     "mean_year0_same_set": 839.1,
+     "median_year0_same_set": 599.5,
+     "ratio_meanN_over_mean0": 1.5034,
+     "zero_kinds": {
+      "ended": 141,
+      "path": 1056
+     }
+    },
+    {
+     "N": 4,
+     "n_included": 1197,
+     "n_zero": 257,
+     "n_not_yet_reached": 0,
+     "mean_yearN": 1329.49,
+     "median_yearN": 499.0,
+     "mean_year0_same_set": 839.1,
+     "median_year0_same_set": 599.5,
+     "ratio_meanN_over_mean0": 1.5844,
+     "zero_kinds": {
+      "ended": 257,
+      "path": 940
+     }
+    },
+    {
+     "N": 5,
+     "n_included": 1139,
+     "n_zero": 333,
+     "n_not_yet_reached": 58,
+     "mean_yearN": 1305.57,
+     "median_yearN": 338.0,
+     "mean_year0_same_set": 835.09,
+     "median_year0_same_set": 596.8,
+     "ratio_meanN_over_mean0": 1.5634,
+     "zero_kinds": {
+      "ended": 333,
+      "path": 806
+     }
+    },
+    {
+     "N": 6,
+     "n_included": 1075,
+     "n_zero": 391,
+     "n_not_yet_reached": 122,
+     "mean_yearN": 1257.64,
+     "median_yearN": 164.0,
+     "mean_year0_same_set": 834.32,
+     "median_year0_same_set": 608.1,
+     "ratio_meanN_over_mean0": 1.5074,
+     "zero_kinds": {
+      "ended": 391,
+      "path": 684
+     }
+    },
+    {
+     "N": 7,
+     "n_included": 1014,
+     "n_zero": 430,
+     "n_not_yet_reached": 183,
+     "mean_yearN": 1087.25,
+     "median_yearN": 73.0,
+     "mean_year0_same_set": 835.3,
+     "median_year0_same_set": 596.8,
+     "ratio_meanN_over_mean0": 1.3016,
+     "zero_kinds": {
+      "ended": 430,
+      "path": 584
+     }
+    }
+   ]
+  },
+  "picks 1-20": {
+   "cohort_n": 377,
+   "rows": [
+    {
+     "N": 0,
+     "n_included": 377,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "mean_yearN": 1601.37,
+     "median_yearN": 1315.4,
+     "mean_year0_same_set": 1601.37,
+     "median_year0_same_set": 1315.4,
+     "ratio_meanN_over_mean0": 1.0,
+     "zero_kinds": {
+      "v0": 377
+     }
+    },
+    {
+     "N": 1,
+     "n_included": 377,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "mean_yearN": 1763.56,
+     "median_yearN": 1236.0,
+     "mean_year0_same_set": 1601.37,
+     "median_year0_same_set": 1315.4,
+     "ratio_meanN_over_mean0": 1.1013,
+     "zero_kinds": {
+      "path": 377
+     }
+    },
+    {
+     "N": 2,
+     "n_included": 377,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "mean_yearN": 2174.97,
+     "median_yearN": 1661.0,
+     "mean_year0_same_set": 1601.37,
+     "median_year0_same_set": 1315.4,
+     "ratio_meanN_over_mean0": 1.3582,
+     "zero_kinds": {
+      "path": 377
+     }
+    },
+    {
+     "N": 3,
+     "n_included": 377,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "mean_yearN": 2413.24,
+     "median_yearN": 1839.0,
+     "mean_year0_same_set": 1601.37,
+     "median_year0_same_set": 1315.4,
+     "ratio_meanN_over_mean0": 1.507,
+     "zero_kinds": {
+      "path": 377
+     }
+    },
+    {
+     "N": 4,
+     "n_included": 377,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "mean_yearN": 2592.44,
+     "median_yearN": 1811.0,
+     "mean_year0_same_set": 1601.37,
+     "median_year0_same_set": 1315.4,
+     "ratio_meanN_over_mean0": 1.6189,
+     "zero_kinds": {
+      "path": 377
+     }
+    },
+    {
+     "N": 5,
+     "n_included": 357,
+     "n_zero": 25,
+     "n_not_yet_reached": 20,
+     "mean_yearN": 2523.57,
+     "median_yearN": 1532.0,
+     "mean_year0_same_set": 1592.04,
+     "median_year0_same_set": 1315.4,
+     "ratio_meanN_over_mean0": 1.5851,
+     "zero_kinds": {
+      "ended": 25,
+      "path": 332
+     }
+    },
+    {
+     "N": 6,
+     "n_included": 337,
+     "n_zero": 42,
+     "n_not_yet_reached": 40,
+     "mean_yearN": 2359.84,
+     "median_yearN": 1280.0,
+     "mean_year0_same_set": 1588.37,
+     "median_year0_same_set": 1308.1,
+     "ratio_meanN_over_mean0": 1.4857,
+     "zero_kinds": {
+      "ended": 42,
+      "path": 295
+     }
+    },
+    {
+     "N": 7,
+     "n_included": 317,
+     "n_zero": 57,
+     "n_not_yet_reached": 60,
+     "mean_yearN": 2067.61,
+     "median_yearN": 1194.0,
+     "mean_year0_same_set": 1596.23,
+     "median_year0_same_set": 1308.1,
+     "ratio_meanN_over_mean0": 1.2953,
+     "zero_kinds": {
+      "ended": 57,
+      "path": 260
+     }
+    }
+   ]
+  },
+  "picks 21-64": {
+   "cohort_n": 820,
+   "rows": [
+    {
+     "N": 0,
+     "n_included": 820,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "mean_yearN": 488.65,
+     "median_yearN": 436.6,
+     "mean_year0_same_set": 488.65,
+     "median_year0_same_set": 436.6,
+     "ratio_meanN_over_mean0": 1.0,
+     "zero_kinds": {
+      "v0": 820
+     }
+    },
+    {
+     "N": 1,
+     "n_included": 820,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "mean_yearN": 473.69,
+     "median_yearN": 334.0,
+     "mean_year0_same_set": 488.65,
+     "median_year0_same_set": 436.6,
+     "ratio_meanN_over_mean0": 0.9694,
+     "zero_kinds": {
+      "path": 820
+     }
+    },
+    {
+     "N": 2,
+     "n_included": 820,
+     "n_zero": 0,
+     "n_not_yet_reached": 0,
+     "mean_yearN": 604.97,
+     "median_yearN": 332.5,
+     "mean_year0_same_set": 488.65,
+     "median_year0_same_set": 436.6,
+     "ratio_meanN_over_mean0": 1.2381,
+     "zero_kinds": {
+      "path": 820
+     }
+    },
+    {
+     "N": 3,
+     "n_included": 820,
+     "n_zero": 141,
+     "n_not_yet_reached": 0,
+     "mean_yearN": 732.01,
+     "median_yearN": 345.5,
+     "mean_year0_same_set": 488.65,
+     "median_year0_same_set": 436.6,
+     "ratio_meanN_over_mean0": 1.498,
+     "zero_kinds": {
+      "ended": 141,
+      "path": 679
+     }
+    },
+    {
+     "N": 4,
+     "n_included": 820,
+     "n_zero": 257,
+     "n_not_yet_reached": 0,
+     "mean_yearN": 748.84,
+     "median_yearN": 211.0,
+     "mean_year0_same_set": 488.65,
+     "median_year0_same_set": 436.6,
+     "ratio_meanN_over_mean0": 1.5325,
+     "zero_kinds": {
+      "ended": 257,
+      "path": 563
+     }
+    },
+    {
+     "N": 5,
+     "n_included": 782,
+     "n_zero": 308,
+     "n_not_yet_reached": 38,
+     "mean_yearN": 749.53,
+     "median_yearN": 103.0,
+     "mean_year0_same_set": 489.53,
+     "median_year0_same_set": 435.75,
+     "ratio_meanN_over_mean0": 1.5311,
+     "zero_kinds": {
+      "ended": 308,
+      "path": 474
+     }
+    },
+    {
+     "N": 6,
+     "n_included": 738,
+     "n_zero": 349,
+     "n_not_yet_reached": 82,
+     "mean_yearN": 754.33,
+     "median_yearN": 44.5,
+     "mean_year0_same_set": 489.99,
+     "median_year0_same_set": 435.75,
+     "ratio_meanN_over_mean0": 1.5395,
+     "zero_kinds": {
+      "ended": 349,
+      "path": 389
+     }
+    },
+    {
+     "N": 7,
+     "n_included": 697,
+     "n_zero": 373,
+     "n_not_yet_reached": 123,
+     "mean_yearN": 641.37,
+     "median_yearN": 0.0,
+     "mean_year0_same_set": 489.23,
+     "median_year0_same_set": 436.2,
+     "ratio_meanN_over_mean0": 1.311,
+     "zero_kinds": {
+      "ended": 373,
+      "path": 324
+     }
+    }
+   ]
+  }
+ }
+}
