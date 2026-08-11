@@ -215,3 +215,114 @@ one-game season counts against a twenty-game one, in a table whose unit is per-g
 - The value is in the par sample, and the front-loaded shape of that cut looks like an **equal-weight
   sampling choice**, not the honesty repair. Exposure weighting is the one candidate that sits in the
   right channel without re-admitting survivor bias — **sized, not built, and yours to rule on.**
+
+---
+
+# PART 2 — the design, tested and measured
+
+**Added after your word "let's look at your 336 design". The candidate from section 6 has now been
+put through a kill test and then measured. It is still not shipped and no dial is on by default.**
+
+## 10. What a par is an expectation OVER — the question underneath all of this
+
+This is the conceptual answer, and it is worth reading before any number, because the same three
+choices keep coming back under different names.
+
+A par is a **level** — points per game. To build one you average a lot of players' seasons. But
+*which* average?
+
+| the choice | the question it answers | what it does with a one-game debut |
+|---|---|---|
+| **equal weight per season** — what the engine does today | *"in a typical SEASON by a player of this pedigree, what was the level?"* | counts it as much as a twenty-game year |
+| **weight by games played** — the design | *"in a typical GAME played by a player of this pedigree, what was the level?"* | counts it as one game against twenty |
+| **survivors only** — the old, ruled-out way | *"in a typical season THAT WENT WELL ENOUGH to reach six games, what was the level?"* | deletes it |
+
+The third is the one you ruled out, for the right reason. The first two are both defensible. They are
+different questions, and the engine should answer the one its own consumers are asking.
+
+**And there is a mismatch today that has nothing to do with busts.** The par is used as the bottom of
+a fraction: the engine measures a player by `his own average ÷ the par for his slot`. His own average
+is **games-weighted** — a season where he played twenty games counts twenty times a season where he
+played one. So the top of the fraction is a per-game number and the bottom is a per-season number.
+They are not the same unit. That is true whichever way the rest of this memo falls.
+
+**But a right unit does not make a biased sample honest.** So the test came first.
+
+## 11. The kill test — is exposure weighting just survivor bias again?
+
+The suspicion is the correct one to have: busts play few games, so weighting by games might quietly
+delete them, which is the thing you already ruled out. **The rule for killing the design was written
+down before the numbers were computed**, and it included a fourth comparison specifically to stop the
+test being fudged.
+
+Three ways it could have died. None of them fired.
+
+**(A) Does it just reproduce the old survivors-only answer?** Measured on 44 (tenure × pick-band)
+cells where there was anything to see: **7 look the same, 37 are clearly different.** Pooled: it
+matches survivors-only at year 1, and separates from it at every year after.
+
+**(B) Do the small seasons still count for anything?** They are 19.7% of the rows and they keep
+**4.8% of the say** — 11.5% at year 1. Down-weighted about fourfold. **Not deleted.**
+
+**(C) Do they still move the answer?** Yes — including them drags the year-1 level **3.05% below**
+what it would be without them, fading to 0.54% by year 6.
+
+**The result that settles it.** At year 1, in the **late pick bands**, the exposure-weighted par comes
+out **BELOW** the old survivors-only par:
+
+| band | 21-27 | 28-35 | 36-48 | 49-99 |
+|---|---|---|---|---|
+| exposure-weighted | 54.37 | 55.13 | 54.82 | 59.78 |
+| old survivors-only | 54.75 | 56.75 | 56.20 | 59.91 |
+
+In exactly the cells where late-pick bust risk lives, this benchmark is **harder** than the one you
+ruled out. Survivor bias cannot produce that; deleting bad seasons can only ever flatter.
+
+**Where the busts still carry their weight, precisely:** at year 1 (11.5% of the say, pulling the
+level 3.05% down), fading to year 6 (3.1%, 0.54%); and by band, the year-1 similarity to survivors-only
+is confined to the **late** bands — every early band (picks 1-3, 4-7, 8-12, 13-20) is clearly different
+at year 1.
+
+## 12. The measured result
+
+Nothing is dropped from the sample. Only the weights change. Cap: a season's exposure counts up to a
+full load of 18 games — the most conservative of the three weightings measured.
+
+| | year 1 | year 2 | year 3 | year 4 | year 5 | growth yr0→yr1 | charged | margin |
+|---|---|---|---|---|---|---|---|---|
+| main (before the package) | 1.1239 | 1.3773 | 1.5098 | 1.5732 | 1.5670 | +12.39% | 14.00% | +1.61% |
+| FULL (the package today) | 0.9974 | 1.2401 | 1.4276 | 1.5310 | 1.5328 | −0.26% | 14.00% | +14.26% |
+| **the design** | **1.0884** | 1.3585 | 1.4941 | 1.5660 | 1.5500 | **+8.84%** | 14.00% | **+5.16%** |
+
+- It recovers **0.0910 of the 0.1265** the package took off year 1, and leaves year 1 **3.2% below**
+  where it was before the package.
+- **The margin stays positive at +5.16%** — the book grows more slowly than the engine charges, so
+  this does **not** open the free-money hole that V3 and V4 open.
+- Mraz: **1707**, which is 3.043× his pick's value (today 1649 = 2.939×) — inside the slack you granted.
+- The draft-day prices do not move: 1 of 1197, and the total moves by 0.017%.
+- The monotonicity guard picks up **no new failing cells** (still the one pre-existing cell).
+
+## 13. What I got wrong, and one thing you should not be fooled by
+
+**A prediction I filed was breached.** I registered that year 4 would move by less than 1%. **It moved
++2.29%.** This is not a year-1 fix: weighting by exposure lifts the benchmark at *every* career year,
+and at year 4 it goes past even the old survivors-only level. The evidence for that was sitting in my
+own step-1 grid before I ran the price measurement and I did not read it. The number stands; my
+prediction does not, and the cost is real — **this design lifts the whole book, not just its young end.**
+
+**The thing not to be fooled by.** At year 1 the design lands **1.0884**, and simply going back to the
+old survivors-only sample lands **1.0882**. Those are the same number. **The year-1 figure alone cannot
+tell the two apart.** What separates them is everything else — years 2, 4 and 5 all differ — and, more
+importantly, the fact proven in section 11: one of them keeps every faded season in the sample, and the
+other deletes them. **Judge this design on how it is built, not on its year-1 number.** If it is ever
+sold to you on the year-1 number alone, that is the same mistake in a new coat.
+
+## 14. Where this leaves the question you asked
+
+- The design you asked about — **re-timing the bust charge** — is still empty. Nothing changed there.
+- The design that exists is a different one: **the par sample's weighting**, which is where the
+  measurement says 89.2% of the year-1 hole actually is.
+- It survives the honesty test on three independent criteria, and in the late pick bands it is harsher
+  than the sample you ruled out.
+- **It is dial-gated and OFF. Nothing ships. It moves year 4 by an amount no order asked for, and that
+  is on the table beside the year-1 gain, not under it.**

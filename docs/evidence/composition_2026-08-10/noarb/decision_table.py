@@ -64,7 +64,12 @@ FLAT_VARIANTS = ('main', 'FULL', 'H120', 'H125', 'H130', 'AFLOOR', 'ADRAG',
                  'IDENT', 'noA', 'noSUR', 'noH', 'no336',
                  # round 3: the de-couple forms and the #336 channel arms are engine-side changes,
                  # not discount changes, so they all charge the flat balanced-lens 14%.
-                 'IDENT5', 'AGSATF', 'AGSATD', 'C336P', 'C336E', 'C336C')
+                 'IDENT5', 'AGSATF', 'AGSATD', 'C336P', 'C336E', 'C336C',
+                 # ORDER 4: XW re-weights the PAR SAMPLE. It is an engine-side change and does NOT touch
+                 # the discount schedule, so it charges the flat balanced-lens 14% like every other
+                 # non-discount arm. (Caught in review: without this entry `rate()` fell through to the
+                 # V1 default branch and printed XW's own discount as 13.00%, understating its margin.)
+                 'IDENT6', 'XW')
 
 
 def _pw_interp(a, knots):
