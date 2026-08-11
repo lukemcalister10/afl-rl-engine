@@ -1,0 +1,31 @@
+  pins asserted at entry: board 94f1fec5 / store d9a24282 / instrument 0f822035 — all UNMOVED
+  CONTROL 1 PASS: split=False reproduces harness_pvc_REPINNED_pass3.structural_values on all 2641 eligible rows, value for value (0 differences). The instrument measures the SPLIT and nothing else.
+
+====================================================================================================================
+nd_profile ON THE BASE MATRIX   per_entrant_BASE.json
+====================================================================================================================
+  construction          nd_profile (engine arm, n=1443)   nd_profile (published teaches_curve, n=1444)
+  CONTAMINATED S[(pos,t)]    1.0253296290                     1.0252177109
+  ARM-SPLIT   S[(arm,pos,t)] 0.9944115616                     0.9944131659
+
+  ONE-TIME DE-CONTAMINATION DELTA on nd_profile (this is a CONSEQUENCE of the fix, not a law breach):
+    nd_profile_engine_arm                  1.0253296290 -> 0.9944115616   delta -0.0309180674  (-3.0154%)
+    nd_profile_published_teaches_curve     1.0252177109 -> 0.9944131659   delta -0.0308045450  (-3.0047%)
+    national rows whose structural value moves under the split: 428 of 1443
+    completion provenance  contaminated {'completed': 734, 'prior_fallback_no_written': 18, 'concluded_realised': 1846, 'prior_fallback_thin': 43}
+                           arm-split    {'completed': 660, 'prior_fallback_no_written': 18, 'concluded_realised': 1846, 'prior_fallback_thin': 117}
+    fallback share         contaminated 2.310%   arm-split 5.112%
+
+====================================================================================================================
+THE SEPARATION LAW ON nd_profile — pool perturbations
+====================================================================================================================
+  per_entrant_P_x3.0.json      CONTAMINATED delta -0.0032420145 (-0.3162%)  national rows moved 428
+                                 published-teaches_curve delta -0.0032410685 (-0.3161%)
+                               ARM-SPLIT    delta +0.0000000000                national rows moved 0   -> EXACTLY ZERO — LAW HOLDS
+
+  per_entrant_P_flat100.json   CONTAMINATED delta +0.0011996469 (+0.1170%)  national rows moved 428
+                                 published-teaches_curve delta +0.0011932770 (+0.1164%)
+                               ARM-SPLIT    delta +0.0000000000                national rows moved 0   -> EXACTLY ZERO — LAW HOLDS
+
+  pins asserted at exit: board 94f1fec5 / store d9a24282 / instrument 0f822035 — all UNMOVED
+  VERDICT: LAW HOLDS UNDER ARM-SPLIT

@@ -1,0 +1,105 @@
+############ LEG 1 — THE BOARD ############
+  variant manifest: (HEAD defaults)
+  engine_head: a8071af4  rl_model: de7ce416
+  OK 1dbd1480a34c7823f330273211cbb76a  -> board_BASE.json
+BASE md5 1dbd1480a34c7823f330273211cbb76a
+--- x1.5 ---
+  engine_head: a8071af4  rl_model: de7ce416
+  OK 9ad322d32959e209c25b5762bbd70219  -> board_P_x1.5.json
+====================================================================================================
+ND/POOL SEPARATION DIFF   pool perturbation: x1.5
+  base    /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o20/board_BASE.json
+  variant /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o20/board_P_x1.5.json
+  population: national rows n=668   pool rows n=334   (national <=> ty=='ND' and ep<=64)
+====================================================================================================
+  POOL rows with a moved price   : 208  (expected non-zero — the perturbation is on the pool)
+  NATIONAL rows with a moved price: 0  *** THE LAW SAYS THIS MUST BE 0 ***
+  national PICK-CURVE points moved: 0  *** MUST BE 0 ***
+  shared aggregate objects moved  : 1  ['draftAssetTotals']
+
+
+  VERDICT: SEPARATION HOLDS
+--- x0.5 ---
+  engine_head: a8071af4  rl_model: de7ce416
+  OK 08513bd2bcf268ff3569057f8fc75842  -> board_P_x0.5.json
+====================================================================================================
+ND/POOL SEPARATION DIFF   pool perturbation: x0.5
+  base    /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o20/board_BASE.json
+  variant /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o20/board_P_x0.5.json
+  population: national rows n=668   pool rows n=334   (national <=> ty=='ND' and ep<=64)
+====================================================================================================
+  POOL rows with a moved price   : 225  (expected non-zero — the perturbation is on the pool)
+  NATIONAL rows with a moved price: 0  *** THE LAW SAYS THIS MUST BE 0 ***
+  national PICK-CURVE points moved: 0  *** MUST BE 0 ***
+  shared aggregate objects moved  : 1  ['draftAssetTotals']
+
+
+  VERDICT: SEPARATION HOLDS
+--- x3.0 ---
+  engine_head: a8071af4  rl_model: de7ce416
+  OK 1afc928db88e6ecc7dace5b582655343  -> board_P_x3.0.json
+====================================================================================================
+ND/POOL SEPARATION DIFF   pool perturbation: x3.0
+  base    /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o20/board_BASE.json
+  variant /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o20/board_P_x3.0.json
+  population: national rows n=668   pool rows n=334   (national <=> ty=='ND' and ep<=64)
+====================================================================================================
+  POOL rows with a moved price   : 213  (expected non-zero — the perturbation is on the pool)
+  NATIONAL rows with a moved price: 0  *** THE LAW SAYS THIS MUST BE 0 ***
+  national PICK-CURVE points moved: 0  *** MUST BE 0 ***
+  shared aggregate objects moved  : 1  ['draftAssetTotals']
+
+
+  VERDICT: SEPARATION HOLDS
+--- tilt ---
+  engine_head: a8071af4  rl_model: de7ce416
+  OK 8e9ca852c2d29533169d61d84c071fe7  -> board_P_tilt.json
+====================================================================================================
+ND/POOL SEPARATION DIFF   pool perturbation: tilt
+  base    /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o20/board_BASE.json
+  variant /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o20/board_P_tilt.json
+  population: national rows n=668   pool rows n=334   (national <=> ty=='ND' and ep<=64)
+====================================================================================================
+  POOL rows with a moved price   : 224  (expected non-zero — the perturbation is on the pool)
+  NATIONAL rows with a moved price: 0  *** THE LAW SAYS THIS MUST BE 0 ***
+  national PICK-CURVE points moved: 0  *** MUST BE 0 ***
+  shared aggregate objects moved  : 1  ['draftAssetTotals']
+
+
+  VERDICT: SEPARATION HOLDS
+--- rd_only ---
+  engine_head: a8071af4  rl_model: de7ce416
+  OK f591381f5508e7d4001586062679f4b1  -> board_P_rd_only.json
+====================================================================================================
+ND/POOL SEPARATION DIFF   pool perturbation: rd_only
+  base    /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o20/board_BASE.json
+  variant /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o20/board_P_rd_only.json
+  population: national rows n=668   pool rows n=334   (national <=> ty=='ND' and ep<=64)
+====================================================================================================
+  POOL rows with a moved price   : 58  (expected non-zero — the perturbation is on the pool)
+  NATIONAL rows with a moved price: 0  *** THE LAW SAYS THIS MUST BE 0 ***
+  national PICK-CURVE points moved: 0  *** MUST BE 0 ***
+  shared aggregate objects moved  : 1  ['draftAssetTotals']
+
+
+  VERDICT: SEPARATION HOLDS
+--- flat100 ---
+  engine_head: a8071af4  rl_model: de7ce416
+  OK c673b19377fcf10e9d3fec1aa099c3ca  -> board_P_flat100.json
+====================================================================================================
+ND/POOL SEPARATION DIFF   pool perturbation: flat100
+  base    /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o20/board_BASE.json
+  variant /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o20/board_P_flat100.json
+  population: national rows n=668   pool rows n=334   (national <=> ty=='ND' and ep<=64)
+====================================================================================================
+  POOL rows with a moved price   : 221  (expected non-zero — the perturbation is on the pool)
+  NATIONAL rows with a moved price: 0  *** THE LAW SAYS THIS MUST BE 0 ***
+  national PICK-CURVE points moved: 0  *** MUST BE 0 ***
+  shared aggregate objects moved  : 1  ['draftAssetTotals']
+
+
+  VERDICT: SEPARATION HOLDS
+
+OVERALL: ALL PERTURBATIONS — SEPARATION HOLDS ON THE BOARD
+
+SEPARATION GUARD: PASS — every checked national quantity moved by EXACTLY ZERO.
