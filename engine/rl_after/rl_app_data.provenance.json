@@ -1,22 +1,22 @@
 {
   "RL_FV_env": "/home/user/afl-rl-engine/engine/forward_valuation",
-  "config_manifest_identity": "c41e7f4078f9d1946e663bf9ed09a3efd6918a9c91bb6ae66c37b7164a4ec0f4",
+  "config_manifest_identity": "cd38fb0056ac94fd6a7b5d8af06a3f7294983dd8b4403bf4d6b979327a90d30d",
   "config_manifest_path": "/home/user/afl-rl-engine/data/model_config.json",
   "distribution_pricing_md5": "8341ca11ac50921eabbe4c79a1a3d0b5",
   "distribution_pricing_path": "/home/user/afl-rl-engine/engine/forward_valuation/distribution_pricing.py",
-  "fv_identity": "e0512f7b7e02ddf0a795c3facf5eb83f9f271844e16361363cf3b6bb54be8f39",
-  "fv_identity_expected": "e0512f7b7e02ddf0a795c3facf5eb83f9f271844e16361363cf3b6bb54be8f39",
+  "fv_identity": "6d36c24bb899792d15c41466377f2916fe0cb5ebee656ae38cea67038b912f7a",
+  "fv_identity_expected": "6d36c24bb899792d15c41466377f2916fe0cb5ebee656ae38cea67038b912f7a",
   "fv_source_hashes": {
     "build_cohort_book.py": "26aca9869d77ae7d61f71ade5053bb5ec166002f6e68b0785bf4fcb2faba51f1",
     "build_peak_model_v4.py": "91690d757b25302f862ea82b3e1f1b7dfc240528041b8d26c4a9bf0668dae36f",
     "conditional_prior.py": "445e070c75e54c7f9cb998f9397fd2ce7410fae56f353db40b17ca214908e571",
     "dist_redesign.py": "d27b2ffed5cc006cabdd45ff5cc61a067f8ee4c1b612dfd5a6ee7809e59091cd",
     "distribution_pricing.py": "9d53614d9c8be4e1f0e82d0e99b742f9ca33e7e5ae3773d50aeafdebe19205f0",
-    "par_build.py": "fd6209d631e27929b0747be160a6ae8e7aabda1dacce4aecfecbd0472167fc8e",
+    "par_build.py": "7b39144e95f60fa1c55fa41e7280806805aab54bd00d70a7bb9779eaf968b7b5",
     "par_redesign.py": "34f32d6240a9436057c09379861b532d7e45dca02ae6e9ac3789408ca0a87121",
     "tail_restore.py": "a437556d8033e327b21067a9fde755a43037705d388a4826d346ab0cfd5b941f"
   },
   "resolved_fv_dir": "/home/user/afl-rl-engine/engine/forward_valuation",
-  "rl_model_md5": "b35c5521b78dcdfb2423d54f5574330b",
+  "rl_model_md5": "de7ce41659adeda756f4fd1a2caaf172",
   "rl_model_path": "/home/user/afl-rl-engine/engine/rl_after/rl_model.py"
 }

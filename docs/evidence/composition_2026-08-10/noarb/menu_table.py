@@ -42,6 +42,8 @@ MENU = [
     ('XW',     'DESIGN',    'FULL + exposure-weighted par sample (RL_336_XW=1, cap 18 games) — THE #336 DESIGN, dial-gated, default OFF'),
     # ---- ORDER 5 (owner: "a stacked version"). Pre-registration: PREREG_ORDER5.md.
     ('STACK',  'STACKED',   'FULL + XW + V5 together — judged against V5\'s own 12.00% young rate, the tighter frame'),
+    # ---- ORDER 9: THE SHIPPING CONFIGURATION (owner ruling 5249802288).
+    ('SHIP',   'SHIPPED',   'THE ADOPTION BAKE — H_MATNONRD 1.0 + ITEM B flat + XW ON; everything else as ruled'),
 ]
 
 L = []
@@ -647,6 +649,64 @@ def main():
         P()
         P('  THE LEGACY TABLE IS RETAINED ABOVE, unchanged, because every ruling in this act was made on')
         P('  it. It is now labelled as the legacy view; this is the deciding one.')
+        P()
+    if 'SHIP' in T:
+        P('=' * 116)
+        P('### THE SHIPPED CONFIGURATION — WHAT ACTUALLY BAKES  (owner ruling 5249802288, ORDER 9)')
+        P('=' * 116)
+        P('  OWNER: "H to 1, B to flat, and note these as items of investigation for the rederivation.')
+        P('  I think we should look to build/bake/push live what we\'ve agreed on with the above in mind,')
+        P('  just to put a line in the sand and solidify the progress."   XW INCLUDED by his word;')
+        P('  "H to 1" is the MATNONRD cell ONLY - UNION and POOLSIT stand as filed.')
+        P()
+        P('  board 94f1fec59f99c59d5890d5975c79fa9b   total 745,888   (old main 4b448a82 / 761,574)')
+        P('  621 of 804 rows move against old main: 114 up, 507 down.')
+        P()
+        P('  SHIPPED ON                                    EXPERIMENTAL, DEFAULT OFF (menu/ablation only)')
+        P('    era removal (salvage 1)                       RL_AGE_DISC   V1-V5 / V9 / the STACK path')
+        P('    #336 reference layer (salvage 2)              RL_A_FLOOR    A-as-floor')
+        P('    surprise law  RL_SUR_W=4.0                    RL_A_DRAGFADE A evidence-faded drag')
+        P('    ITEM A year-1+ anchor blend                   RL_A_GSAT     the ramp de-couple')
+        P('    ITEM C  RL_C_H=1.13                           RL_336_NOP    #336 P-leg kill-switch')
+        P('    ITEM E1 RL_RUC_WAGE=1.0, E2 wired             RL_336_SURVLVL/CLAMP  E-levels kill-switch')
+        P('    ITEM H  union 0.280 · poolsit 0.804           RL_336_PARSURV        par-leg kill-switch')
+        P('    ** ITEM H mature-nonRD  0.615 -> 1.0 **')
+        P('    ** ITEM B draft-age shape -> FLAT **')
+        P('    ** #336 XW exposure-weighted par -> ON **')
+        P()
+        P('      row     | LEGACY picks 1-64 ND      | ALL-ARM cohorts 05-23 (owner\'s instrument)')
+        P('              |    yr1     yr4    margin |     yr1     yr4    margin')
+        P('      ' + '-' * 66)
+        AAs = {}
+        for lab in ('main', 'FULL', 'SHIP'):
+            fp = os.path.join(HERE, 'allarm_%s.json' % lab)
+            if os.path.exists(fp): AAs[lab] = json.load(open(fp))
+        for lab in ('main', 'FULL', 'SHIP'):
+            if lab not in T: continue
+            c = rr(T[lab], GROUPS[0]); d = rate(lab if lab != 'SHIP' else 'FULL', TYPICAL_DRAFT_AGE)
+            line = '      %-7s | %7.4f %7.4f %8.2f%% ' % (lab, c[1], c[4], 100*(d-(c[1]-1)))
+            if lab in AAs:
+                a = {x['N']: x['ratio_meanN_over_mean0']
+                     for x in AAs[lab]['groups']['PRIMARY  cohorts 2005-2023']['rows']}
+                line += '| %7.4f %7.4f %8.2f%%' % (a[1], a[4], 100*(d-(a[1]-1)))
+            P(line)
+        P()
+        P('  THE NAMED LINES vs old main: Noble -1.4%% · Hall -1.2%% · McCarthy -0.9%% · Peatling -1.4%% ·')
+        P('  Herbert -0.7%% · Keane -1.0%% · McAndrew -3.5%% · Sharman -4.4%%  (H->1.0 restoring them);')
+        P('  Banch/Perez/Cross return to EXACTLY old main (B-flat un-doubling them precisely);')
+        P('  Podhajski +93.1%% - only PART of his lift was B, the rest is the surprise law, which ships;')
+        P('  Mraz 1707 = 3.043x his pick-35 ruler, inside the owner\'s 3.5-3.8x slack, his cut being the')
+        P('  ruled surprise-law correction (ITEM H never touched him: _h_cut 1.0000).')
+        P()
+        P('  ONE THING THAT GOES DOWN AND IT IS THE BAKE WORKING, NOT A DEFECT: the MSD rucks')
+        P('  (Coe/May/Mapley) move 231 -> 66 -> 52. XW\'s own effect on them is ZERO; the fall is B-flat')
+        P('  removing their x2.0478 anchor lift (x0.488) partly offset by H->1.0 (x1.626), net x0.794,')
+        P('  which reproduces 66 -> 52 exactly. They are mature-drafted pool SITTERS WITH NO PRODUCTION -')
+        P('  the class the ruling says must not be doubled. Their residual -77.5%% against old main is the')
+        P('  SURVIVING UNION-CELL COMPOSITION 0.804 x 0.280 = 0.2251, which stands as filed and is a')
+        P('  RECORDED INVESTIGATION ITEM for the pool repricing act.')
+        P()
+        P('  Full adoption record, per-item citations and the investigation list: SIDE_BY_SIDE.md')
         P()
     SPL = os.path.join(HERE, 'SPLIT_TABLES.json')
     if os.path.exists(SPL):

@@ -1,158 +1,159 @@
-# THE COMPOSITION ACT — THE SIDE-BY-SIDE
+# THE ADOPTION SIDE-BY-SIDE — old main vs the shipping configuration
 
-Branch `landing/334-composition`, **HELD — nothing merges, no attribution column registers, before
-the owner's adoption word.** Base `origin/main`. Store `d9a24282` unchanged throughout — this act
-writes no store.
+**Owner ruling (filed 5249802288), verbatim:** *"H to 1, B to flat, and note these as items of
+investigation for the rederivation. I think we should look to build/bake/push live what we've agreed
+on with the above in mind, just to put a line in the sand and solidify the progress."*
+Scope confirmed with him directly: **XW is included**; **"H to 1" is the MATNONRD cell only** — UNION
+and POOLSIT stand as filed until the re-derivation.
 
----
-
-## 0. READ THIS FIRST — TWO PRE-REGISTERED GATES FAILED, AND ONE IS STRUCTURAL
-
-### ⛔ THE RELATIVITY GUARD FAILED
-
-Defined and its expectation **committed before any of these boards existed** (`RELATIVITY_GUARD.md`,
-`93e9cd0`). Registered expectation: RELATIVITY should **rise or hold** — the package should narrow
-the peak-vs-young gap, never widen it.
-
-| board | YOUNG | PEAK | RELATIVITY | Δ(pp) |
-|---|---|---|---|---|
-| main (pre-act) | 101,209 | 233,430 | 0.433573 | |
-| + ITEM B | 102,799 | 233,723 | 0.439833 | +0.626 |
-| + era removal | 102,799 | 233,394 | 0.440453 | +0.688 |
-| + #336 (BASE) | 96,535 | 228,072 | 0.423265 | −1.031 |
-| **FULL ACT** | **93,332** | **226,347** | **0.412340** | **−2.123** |
-
-**0.433573 → 0.412340, a fall of 4.897%.** Not rebalanced to pass; no component retuned to move it.
-
-**The mechanism.** The pick block is constant at 39,949 on every board (this act does not touch the
-ladder), so the entire move is in players. Setting the picks aside:
-
-- **young players (rung ≤ 1): 61,260 → 53,383, −12.9%**
-- **peak players (rung 4-6): 233,430 → 226,347, −3.0%**
-
-**Young players are cut four times harder than peak players.** The larger contributor is **#336**
-(−1.03pp of the −2.12pp): putting never-established players into the par denominator lowers the
-reference, and a young player's price leans on that reference far more than an established
-player's does. The dials (A + C + E1 + H + SUR) add the remaining −1.09pp.
-
-**This is the owner's own stated worry arriving as a measurement** — the Robey question, *"picks
-are fixed in value, year 1 players have dropped so much that the 1.57 year 0 to 5 issue may now
-just be a bigger ratio at year 1 to 5 instead? Robbing peter to pay paul?"* Sullivan Robey is
-himself a **−449** mover here, every point of it #336.
-
-### ⚠ THE MRAZ RATIO, AND A CURRENCY ERROR OF MINE
-
-Post-act **3,555 → 1,649**:
-
-- **2.939×** comparing board price directly to the pick-35 curve value 561.0
-- **3.093×** converting to ladder currency (board × 1.0524) — **the correct comparison**, because
-  561.0 is a ladder number and the board is not
-
-I calibrated `RL_SUR_W = 4.0` against the raw 2.939 figure. On the currency-correct reading he lands
-**3.093×, marginally above the ruled 3× top**. My own earlier Mraz probe printed both currencies
-side by side and I then used the wrong one.
-
-**The two constraints pull against each other, which is why this needs the owner and not a seat.**
-Raising the dial to bring Mraz inside 3× cuts thin-record young rows harder — and the relativity
-guard has already failed *because* young rows are being cut too hard. Tightening Mraz makes the
-relativity breach worse. **They cannot both be satisfied by moving this dial, so I did not move it.**
-
-### ⚠ ITEM E1 MISSES ITS RULED BAND
-
-The ruck book moves **+0.50%** at `RUC_WAGE = 1.0`, i.e. at the **full standard** age wage ramp.
-The ruled cautious band is **[+2.9%, +9.0%]**. Reaching +2.9% would require `RUC_WAGE > 1` — *more*
-than the standard ramp, contradicting the ruling's own words. Mechanism: the ramp is
-`clip(1−(age−20)/6, 0, 1)`, ~1 at age 20 and 0 by 26, and most listed rucks are older, so ending the
-pole denial hands most of them almost nothing. **E1 ships as ruled and under its band, flagged.**
+**Branch-held. Nothing is merged and nothing is pushed live from here** — the seat runs seam
+verification on these bytes and the merge and live push go through the ruled pen/adoption mechanics.
 
 ---
 
-## 1. THE BOARD
+## 1. IDENTITIES
 
-| board | total | Δ vs main | ratio |
-|---|---|---|---|
-| main (pre-act) | 761,574 | — | 1.000000 |
-| + ITEM B | 765,202 | +3,628 | 1.004764 |
-| + era removal | 764,492 | +2,918 | 1.003832 |
-| **+ #336 / A / C / E1 / E2 / H / SUR** | **723,861** | **−37,713** | **0.950480** |
+| | md5 | board total |
+|---|---|---|
+| old main (shipped today) | `4b448a821f54180182637983f7a26a9d` | 761,574 |
+| pre-ruling composed package | `846560dc1b206996005c7c9e9290207c` | 723,861 |
+| **THE SHIPPING BOARD** | **`94f1fec59f99c59d5890d5975c79fa9b`** | **745,888** |
 
-**668 movers — 84 up, 584 down.** The act cuts the board ~5%, dominated by #336.
+**−2.06% against old main**, and **+3.04%** against the pre-ruling package. **621 of 804 rows move**
+against old main (114 up, 507 down). `expected_boot` re-stamped: `board`, `config`, `engine_head`,
+`fv`. Left alone deliberately: `balanced_board_md5` (a present-lens baseline that moves at a round
+transition, not at a config bake) and `release_version` (the pen/adoption mechanics own promotion).
 
-## 2. PER-ITEM BOOK DELTA
+## 2. WHAT SHIPS — the composed package as ruled
 
-| item | book delta | ratio | movers | conservation |
-|---|---|---|---|---|
-| **B** | +3,628 | 1.004764 | 110 | Σ entry_anchor held **exactly** (2.978e-15); the board is not conserved because the anchor reaches price through a **one-sided floor** — see §3 |
-| **era** | −710 | 0.999072 | 26 | not a conservation item; 26 of 26 movers KPF, all cuts |
-| **#336** | −26,875 | 0.964846 | 567 | a reference re-derivation, not a conserved transfer |
-| **A** | −1,400 | 0.998070 | 62 | funded by the re-teach (§3) |
-| **C/E2** | +104 | 1.000144 | 31 | funded by the H cuts |
-| **E1** | +329 | 1.000455 | 9 | within the ruck book; **under band** |
-| **H** | −8,622 | 0.988229 | 70 | **it is the funding** |
-| **SUR** | −4,211 | 0.994216 | 50 | a trust correction, not a transfer |
-
-## 3. CONSERVATION — SHOWN, NOT ASSERTED
-
-- **ITEM B**: pool Σ entry_anchor **293,166.0156 → 293,166.0156**, delta 2.978e-15 relative, and
-  the law is now a **build-time assertion** — a broken gradient halts the build rather than drifting.
-  **But the board is not conserved (+3,628)**, and that is mechanical rather than a wiring error:
-  the anchor reaches price through `max(v, floor_frac × anchor)`, a one-sided floor. Raising an
-  anchor can lift a price; lowering one only cuts while the floor still binds. **An asymmetric
-  transform of a conserved input does not conserve its output.** This is funding the package must
-  account for, and it is recorded as an input to the re-teach rather than absorbed quietly.
-- **ITEM D**: **PARKED** by owner ruling — no sit-charge tilt ships, the sitter pool keeps its
-  current charges.
-- **ITEM H**: is the funding, by design. −8,622.
-- **The #326 floor (0.45) is untouched. No blanket lifts anywhere** — every H factor is ≤ 1.
-
-## 4. TOP MOVERS WITH PER-ITEM ATTRIBUTION
-
-Columns are kill-switch differences; the **residual is printed, never distributed**.
-
-| player | pos | before | after | total | B | era | 336 | A | C/E2 | E1 | H | SUR | resid |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Noah Mraz | KPD | 3555 | 1649 | −1906 | 0 | 0 | −214 | 0 | 0 | 0 | 0 | **−1692** | 0 |
-| Max Hall | SF | 2855 | 1721 | −1134 | 0 | 0 | −58 | 0 | 0 | 0 | **−1076** | 0 | 0 |
-| John Noble | SD | 2192 | 1330 | −862 | 0 | 0 | −29 | 0 | 0 | 0 | −833 | 0 | 0 |
-| Nicholas Martin | MID | 3655 | 2814 | −841 | 0 | 0 | −62 | −76 | +1 | 0 | −685 | 0 | −19 |
-| Harry O'Farrell | KPD | 949 | 200 | −749 | 0 | 0 | −150 | **−599** | +10 | 0 | 0 | 0 | −10 |
-| Mark Keane | KPD | 1529 | 914 | −615 | 0 | 0 | −42 | 0 | 0 | 0 | −573 | 0 | 0 |
-| Tom McCarthy | SD | 1481 | 892 | −589 | 0 | 0 | −29 | 0 | 0 | 0 | −560 | 0 | 0 |
-| Lachlan McAndrew | RUCK | 1252 | 743 | −509 | 0 | 0 | −44 | 0 | 0 | 0 | −465 | 0 | 0 |
-| Thomas Sims | KPF | 1069 | 562 | −507 | 0 | 0 | −22 | −485 | +11 | 0 | 0 | 0 | −11 |
-| Sullivan Robey | MID | 3067 | 2618 | −449 | 0 | 0 | **−449** | 0 | 0 | 0 | 0 | 0 | 0 |
-| James Peatling | MID | 1116 | 677 | −439 | 0 | 0 | −16 | 0 | 0 | 0 | −423 | 0 | 0 |
-| Xavier Lindsay | MID | 2092 | 1659 | −433 | 0 | 0 | −404 | −29 | +3 | 0 | 0 | 0 | −3 |
-| Marcus Herbert | SD | 1060 | 627 | −433 | 0 | 0 | −40 | 0 | 0 | 0 | −393 | 0 | 0 |
-| Taj Hotton | MID | 2296 | 1869 | −427 | 0 | 0 | −427 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Oscar Ryan | SD | 701 | 306 | −395 | 0 | 0 | −32 | 0 | 0 | 0 | 0 | −363 | 0 |
-| Dyson Sharp | MID | 3182 | 2796 | −386 | 0 | 0 | −386 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Harry Dean | KPD | 2703 | 2328 | −375 | 0 | 0 | −375 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Luke Trainor | KPD | 1546 | 1174 | −372 | 0 | 0 | −372 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Alix Tauru | KPD | 1650 | 1280 | −370 | 0 | 0 | −370 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Isaac Kako | SF | 1378 | 1015 | −363 | 0 | 0 | −363 | 0 | 0 | 0 | 0 | 0 | 0 |
-
-**Total |residual| = 344 over 668 movers — mean 0.5 per mover.** The columns sum to each player's
-total move to within half a point.
-
-## 5. THE ITEMS, AS BUILT
-
-| item | what shipped |
+| item | shipped state |
 |---|---|
-| **I** | Restated on the ORIGINAL ruler (alignment gate PASS, exact match to the seam's re-run). ND year-0 contrasts **CLEAN** — precondition met. Presented under the LEVEL LAW: the common level stated once as a numeraire property, contrasts only. |
-| **B** | Pool year-0 age gradient **0.6859 / 1.4112 / 2.8173** (filed 0.666 / 1.200 / 2.474), continuous in draft age, C5-conserving, build-time asserted. Age-unknown cell empty on this store, rule still coded. |
-| **A** | LAM_SIT's ramp carried past `ns==0`, faded on cumulative evidence. Fade **v1 0.359 → v2 0.145 → v3 0.058 → v4 0.024 → v5 0.010 → v6 0.004** — the ruled property exactly. Blends at `ev()`, never `raw_ev`. |
-| **C** | Cap release on A's anchor leg, `w = G·Q·gate`, **H = 1.13**. w=0 → old cap exactly. One `sa` reader. |
-| **C-Q3** | **Demonstration succeeds** — 24 of 67 top-10-pick rows protected. **z gate ships; the `sa` fallback does not install** (it would let Ugle-Hagan and Logan McDonald through at gate 1.0). |
-| **D** | **PARKED** by owner ruling. Derivation filed: corrected contrast 1.1041, CI [0.548, 2.157] covering 1. |
-| **E1/E2** | Ruck pole denial ended (**under band, flagged**); ruck ceiling evidence-yielding via C's w. |
-| **H** | Ruled cuts as filed, cell-qualified and composing. #326 floor untouched. |
-| **salvage 1** | Era removal — pre-registration met on all three axes (26 movers, all KPF, all cuts, ratio 0.999072 vs branch 0.998986). |
-| **salvage 2** | #336 reference layer, ported as 13 hunks. |
-| **salvage 3** | Surprise law, dial re-calibrated to **4.0** (the ordered ladder said 5.0; 4.0 is the true boundary). Interaction guard with A: **0 of 644 qualifying rows move**. |
+| era removal (salvage 1) | **ON** — as ruled |
+| #336 reference layer (salvage 2) | **ON** — as ruled |
+| surprise law (salvage 3) | **ON**, `RL_SUR_W=4.0` — as ruled |
+| ITEM A, year-1+ anchor blend | **ON** |
+| ITEM C cap release | **ON**, `RL_C_H=1.13` |
+| ITEM E1 ruck wage ramp | **ON**, `RL_RUC_WAGE=1.0`; E2 wired |
+| ITEM H — union sitters | **0.280, AS FILED** *(investigation item)* |
+| ITEM H — all-pool sitters | **0.804, AS FILED** *(investigation item)* |
+| **ITEM H — mature nonRD** | **1.0 — RETIRED BY THIS RULING** |
+| **ITEM B — draft-age shape** | **FLAT — RETIRED BY THIS RULING** (`RL_B_SHAPE=0`) |
+| **#336 XW — exposure-weighted par** | **ON — ADOPTED BY THIS RULING** |
 
-## 6. PARKED — RE-MEASURE AFTER THIS LANDS
+**Everything experimental stays OFF and is menu/ablation machinery, not shipping config:** `RL_AGE_DISC`
+(V1-V5, V9 and the STACK path), `RL_A_FLOOR`, `RL_A_DRAGFADE`, `RL_A_GSAT`, and the four #336 channel
+kill-switches (`RL_336_NOP`, `RL_336_SURVLVL`, `RL_336_CLAMP`, `RL_336_PARSURV`).
 
-F1 · the SF band (item G) · **ITEM D** · **the quiet-starter cells** (stage-5/6 G tables, withdrawn
-in favour of A+C; measurements stay filed) · E3 ruck residual · the F2 breakpoint · the #326 floor
-level · the `ship_gates_check.py` gate-mode `RL_GAMMA` conflict (its own repair item).
+## 3. THE TWO AMENDMENTS, WITH THEIR CITATIONS
+
+**H_MATNONRD 0.615 → 1.0** (`_merged_recover.py`, citation recorded at the constant). It was a flat
+**end-multiplier on the finished production-led price** (`:2228`) reading only `_pool` / `type` /
+draft age and never games, level or establishment — John Noble at 158 career games took the same
+0.615 as a zero-game row, and his ITEM A anchor share is exactly `0.000000`, so it was never his draft
+arm re-asserting itself. Its derivation **HALTED** and was taken as filed (ruled 0.615 vs F bent
+0.7676, corrected 0.5162, **CI [0.115, 1.226] containing 1.0** at eff-n 46.2), and the arm carries
+**zero rows** in the canonical deciding population. Owner's standing design direction: a mature-pool
+discount, if supported, belongs on the **v0/prior side where a body of work overcomes it**.
+
+**ITEM B draft-age shape → FLAT** (`RL_B_SHAPE`, knots kept in code for the re-derivation). The
+shipped factor at 21+ was `k × 2.8173 = 2.0478` (**+104.8%** on the entry anchor). It was **not fitted
+to play quality**: the outcome measure `D_rt_win` is *"REALIZED DELIVERY off the seasons and bars"*
+(`item_d_derive.py:22-23`), a composite raised by playing **more** as well as **better**. On the
+non-rookie arm quality is flat across draft age (51.47 / 52.98 / 53.33) while the 21+ slice plays the
+**least** (21.6 career games). Under a flat shape `_b_factor == 1.0` on all 1202 pool rows, so
+conservation holds **trivially — delta 0.000e+00** (no value moves between ages at all).
+
+## 4. THE COHORT TABLES, BOTH INSTRUMENTS
+
+**Legacy picks 1-64 ND (n=1197):**
+
+| row | yr1 | yr2 | yr3 | yr4 | yr5 | apprec | disc | margin | verdict |
+|---|---|---|---|---|---|---|---|---|---|
+| old main | 1.1239 | 1.3773 | 1.5098 | 1.5732 | 1.5670 | +12.39% | 14.00% | +1.61% | legal |
+| pre-ruling package | 0.9974 | 1.2401 | 1.4276 | 1.5310 | 1.5328 | −0.26% | 14.00% | +14.26% | legal |
+| **SHIPPING** | **1.0884** | 1.3586 | 1.4941 | **1.5660** | 1.5500 | **+8.84%** | 14.00% | **+5.16%** | **legal** |
+
+**All-arm — the owner's deciding instrument (cohorts 2005-2023):**
+
+| row | n | yr1 | yr2 | yr3 | yr4 | yr5 | apprec | margin |
+|---|---|---|---|---|---|---|---|---|
+| old main | 2209 | 0.9326 | 1.1354 | 1.2288 | 1.2936 | 1.2843 | −6.74% | +20.74% |
+| pre-ruling package | 2210 | 0.8695 | 1.0835 | 1.2480 | 1.3568 | 1.3558 | −13.05% | +27.05% |
+| **SHIPPING** | 2209 | **0.8850** | 1.1051 | 1.2113 | **1.2859** | 1.2685 | **−11.50%** | **+25.50%** |
+
+**Cohorts 2019-2023 (n=540):** shipping yr1 0.8862, yr4 1.0985, margin +25.38%.
+
+**By arm, year 4 — the repairs pull every pool arm back to within a point or two of old main:**
+
+| arm | n | SHIP yr1 | **SHIP yr4** | **main yr4** |
+|---|---|---|---|---|
+| ND | 1310 | 1.0447 | **1.5166** | 1.5237 |
+| RD | 620 | 0.4806 | **0.7214** | 0.7266 |
+| MSD | 55 | — | **0.9485** | 0.9620 |
+| UNR | 49 | 0.3276 | 0.7672 | 0.8127 |
+| IRE | 47 | 0.2537 | 0.2628 | 0.3320 |
+| PDA | 43 | 0.3681 | 0.7709 | 0.7778 |
+| PDN | 33 | 0.1475 | 0.2575 | 0.2775 |
+| SSP | 31 | 1.2499 | 1.3507 | 1.3768 |
+| PDS | 21 | 0.2165 | 0.1694 | 0.1828 |
+
+## 5. THE NAMED LINES
+
+| player | old main | pre-ruling | **SHIPPING** | vs main |
+|---|---|---|---|---|
+| **Noble** | 2192 | 1330 | **2162** | **−1.4%** |
+| **Hall** | 2855 | 1721 | **2820** | **−1.2%** |
+| **McCarthy** | 1481 | 892 | **1468** | **−0.9%** |
+| **Peatling** | 1116 | 677 | **1100** | **−1.4%** |
+| **Herbert** | 1060 | 627 | **1053** | **−0.7%** |
+| **Keane** | 1529 | 914 | **1514** | **−1.0%** |
+| McAndrew | 1252 | 743 | 1208 | −3.5% |
+| Sharman | 450 | 265 | 430 | −4.4% |
+| **Banch** | 128 | 263 | **128** | **0.0%** |
+| **Perez** | 113 | 232 | **113** | **0.0%** |
+| **Cross** | 113 | 232 | **113** | **0.0%** |
+| Podhajski | 101 | 245 | 195 | +93.1% |
+| Coe / May / Mapley (MSD rucks) | 231 | 66 | **52** | **−77.5%** |
+| Dovaston | 608 | 457 | 490 | −19.4% |
+| Bontempelli | 3930 | 3875 | 3876 | −1.4% |
+| Gawn | 3384 | 3336 | 3336 | −1.4% |
+| Harry Dean | 2703 | 2328 | 2815 | +4.1% |
+| **Mraz** | 3555 | 1649 | **1707** | **−52.0%** |
+
+**Mraz sits at 1707 / 561 = 3.043× his pick-35 ruler — inside the owner's 3.5-3.8× slack.** His
+remaining cut is the ruled **surprise-law** correction, which stands; ITEM H never touched him
+(`_h_cut` = 1.0000, he is a national draftee at draft age 18).
+
+**Three things that need saying plainly:**
+
+1. **The eight named pool players are restored to within 0.7-4.4% of old main.** That is H → 1.0 doing
+   exactly what the ruling intended.
+2. **Banch, Perez and Cross return to EXACTLY their old main values.** B-flat un-doubled them precisely.
+   **Podhajski does not** — he sits at +93.1%, because only part of his lift was ITEM B; the rest is the
+   **surprise law**, which is a separately-ruled item that still ships.
+3. **THE MSD RUCKS GO DOWN, NOT UP — and this is the bake working, not a defect.** Coe/May/Mapley move
+   231 → 66 (pre-ruling) → **52**. Measured decomposition: XW's own effect on them is **zero**; the
+   fall is B-flat removing their ×2.0478 anchor lift (×0.488), partly offset by H → 1.0 (×1.626), net
+   ×0.794 — which reproduces 66 → 52 exactly. They are mature-drafted pool **sitters with no
+   production**, precisely the class the ruling says should not be doubled. Their residual **−77.5%
+   against old main is the surviving union-cell composition** `H_POOLSIT × H_UNION = 0.804 × 0.280 =
+   0.2251`, which stands as filed and **is a recorded investigation item**.
+
+## 6. INVESTIGATION ITEMS CARRIED TO THE POOL REPRICING ACT
+
+1. **`H_UNION` = 0.280** — does not reproduce (F bent 0.1670, same halt, taken as filed). Unlike
+   MATNONRD its **CI [0.010, 0.639] excludes 1.0**, so a cut is supported in *direction* — but 0.280 is
+   **milder** than both its readings, so re-deriving on this evidence would **deepen** it.
+2. **`H_POOLSIT` = 0.804** — same halt, same as-filed status.
+3. **THE COMPOSITION, which no ruled evidence has ever shown.** The cells **multiply**. Before this
+   bake a union-cell pool sitter took `0.804 × 0.280 × 0.615 = 0.1384` (measured 0.1398) — an **86%
+   cut**. The surviving composed factor is **0.2251**.
+4. **ITEM B's draft-age question**, re-opened on a play-quality basis: the shape must be fitted to *how
+   they play*, not to a delivery composite that participation moves. And the arm split must be
+   respected — the 21+ gradient is supported on the **rookie** arm (year-4 delivery 3.0092) and
+   contradicted on the **non-rookie** arm (0.7708, below its own 19-20 slice at 0.9851).
+5. **The owner's design direction for any mature-pool discount:** the **v0/prior side**, where a body of
+   work overcomes it — never a flat multiplier on the finished price.
+6. **The two-stories finding** that motivates the whole act: ND 1-64 returns **1.5565** per unit of
+   entry price at year 4; Pool-Rookie **0.7428**; Pool-non-rookie **0.6748**. Neither pool arm is above
+   its entry price even at year 6.

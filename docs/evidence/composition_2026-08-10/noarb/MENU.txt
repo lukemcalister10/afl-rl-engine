@@ -30,6 +30,7 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
   no336    #336 split  1.0000  1.0992  1.3384  1.4935  1.5725  1.5676   1.5725     yr4     1.573     1.431
   XW       DESIGN      1.0000  1.0884  1.3585  1.4941  1.5660  1.5500   1.5660     yr4     1.566     1.439
   STACK    STACKED     1.0000  1.1708  1.4395  1.5550  1.6027  1.5838   1.6027     yr4     1.603     1.369
+  SHIP     SHIPPED     1.0000  1.0884  1.3586  1.4941  1.5660  1.5500   1.5660     yr4     1.566     1.439
 
   Envelope reference: peak/yr0 ~ 1.40 and peak/yr1 ~ 1.30. A FRAME FOR JUDGING, NOT A TARGET.
   The peak/yr0 gap is PRE-EXISTING — already open on main before any item of this act applies.
@@ -62,6 +63,7 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
   no336    #336 split            -2.15%            -0.81%            -4.23%
   XW       DESIGN                -2.71%            -1.25%            -3.90%
   STACK    STACKED               +2.26%            +5.06%            -1.41%
+  SHIP     SHIPPED               -2.71%            -1.25%            -3.89%
 
 ====================================================================================================================
 ### THE FREE-MONEY MARGIN AT yr0->yr1, PER CANDIDATE, AGAINST ITS OWN DISCOUNT
@@ -93,6 +95,7 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
   no336    #336 split       1.0992        9.92%       14.00%      4.08%
   XW       DESIGN           1.0884        8.84%       14.00%      5.16%
   STACK    STACKED          1.1708       17.08%       12.00%     -5.08%   <-- ARB
+  SHIP     SHIPPED          1.0884        8.84%       13.00%      4.16%
 
   NOTE ON THE DISCOUNT CANDIDATES: a lower discount is not a free win. It lifts the book AND
   narrows this margin at the same time, because the same schedule that raises young value is
@@ -591,6 +594,53 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
 
   THE LEGACY TABLE IS RETAINED ABOVE, unchanged, because every ruling in this act was made on
   it. It is now labelled as the legacy view; this is the deciding one.
+
+====================================================================================================================
+### THE SHIPPED CONFIGURATION — WHAT ACTUALLY BAKES  (owner ruling 5249802288, ORDER 9)
+====================================================================================================================
+  OWNER: "H to 1, B to flat, and note these as items of investigation for the rederivation.
+  I think we should look to build/bake/push live what we've agreed on with the above in mind,
+  just to put a line in the sand and solidify the progress."   XW INCLUDED by his word;
+  "H to 1" is the MATNONRD cell ONLY - UNION and POOLSIT stand as filed.
+
+  board 94f1fec59f99c59d5890d5975c79fa9b   total 745,888   (old main 4b448a82 / 761,574)
+  621 of 804 rows move against old main: 114 up, 507 down.
+
+  SHIPPED ON                                    EXPERIMENTAL, DEFAULT OFF (menu/ablation only)
+    era removal (salvage 1)                       RL_AGE_DISC   V1-V5 / V9 / the STACK path
+    #336 reference layer (salvage 2)              RL_A_FLOOR    A-as-floor
+    surprise law  RL_SUR_W=4.0                    RL_A_DRAGFADE A evidence-faded drag
+    ITEM A year-1+ anchor blend                   RL_A_GSAT     the ramp de-couple
+    ITEM C  RL_C_H=1.13                           RL_336_NOP    #336 P-leg kill-switch
+    ITEM E1 RL_RUC_WAGE=1.0, E2 wired             RL_336_SURVLVL/CLAMP  E-levels kill-switch
+    ITEM H  union 0.280 · poolsit 0.804           RL_336_PARSURV        par-leg kill-switch
+    ** ITEM H mature-nonRD  0.615 -> 1.0 **
+    ** ITEM B draft-age shape -> FLAT **
+    ** #336 XW exposure-weighted par -> ON **
+
+      row     | LEGACY picks 1-64 ND      | ALL-ARM cohorts 05-23 (owner's instrument)
+              |    yr1     yr4    margin |     yr1     yr4    margin
+      ------------------------------------------------------------------
+      main    |  1.1239  1.5732     1.61% |  0.9326  1.2936    20.74%
+      FULL    |  0.9974  1.5310    14.26% |  0.8695  1.3568    27.05%
+      SHIP    |  1.0884  1.5660     5.16% |  0.8850  1.2859    25.50%
+
+  THE NAMED LINES vs old main: Noble -1.4%% · Hall -1.2%% · McCarthy -0.9%% · Peatling -1.4%% ·
+  Herbert -0.7%% · Keane -1.0%% · McAndrew -3.5%% · Sharman -4.4%%  (H->1.0 restoring them);
+  Banch/Perez/Cross return to EXACTLY old main (B-flat un-doubling them precisely);
+  Podhajski +93.1%% - only PART of his lift was B, the rest is the surprise law, which ships;
+  Mraz 1707 = 3.043x his pick-35 ruler, inside the owner's 3.5-3.8x slack, his cut being the
+  ruled surprise-law correction (ITEM H never touched him: _h_cut 1.0000).
+
+  ONE THING THAT GOES DOWN AND IT IS THE BAKE WORKING, NOT A DEFECT: the MSD rucks
+  (Coe/May/Mapley) move 231 -> 66 -> 52. XW's own effect on them is ZERO; the fall is B-flat
+  removing their x2.0478 anchor lift (x0.488) partly offset by H->1.0 (x1.626), net x0.794,
+  which reproduces 66 -> 52 exactly. They are mature-drafted pool SITTERS WITH NO PRODUCTION -
+  the class the ruling says must not be doubled. Their residual -77.5%% against old main is the
+  SURVIVING UNION-CELL COMPOSITION 0.804 x 0.280 = 0.2251, which stands as filed and is a
+  RECORDED INVESTIGATION ITEM for the pool repricing act.
+
+  Full adoption record, per-item citations and the investigation list: SIDE_BY_SIDE.md
 
 ====================================================================================================================
 ### THE SPLIT COHORT TABLES — ND vs POOL-ROOKIE vs POOL-NON-ROOKIE  (owner spec, ORDER 8)
