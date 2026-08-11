@@ -1802,7 +1802,29 @@ def v0_start(p):                                             # BOARD -> D14 V0 c
 #   moving both in one act would double-count the repair on pool rucks.
 _B_KNOTS=[(18.0,0.6858757327896249),(19.0,1.4111875531208420),
           (20.0,1.4111875531208420),(21.0,2.8172535022231320)]
+# ===== #334 ORDER 9 ADOPTION — ITEM B's DRAFT-AGE SHAPE RETIRED TO FLAT BY OWNER RULING (5249802288).
+# OWNER, verbatim: "H to 1, B to flat, and note these as items of investigation for the rederivation."
+# THE GROUNDS, measured and filed at B_PROVENANCE_AND_SPLITS.md before the ruling:
+#   - the shipped factor at draft age 21+ was k x 2.8173 = 2.0478, a +104.8% lift on the ENTRY ANCHOR,
+#     which passes through almost in full to any entrant whose price IS his anchor (Banch, Podhajski).
+#   - IT WAS NOT FITTED TO PLAY QUALITY. The outcome measure is D_rt_win, "REALIZED DELIVERY off the
+#     seasons and bars" (item_d_derive.py:22-23) - a delivered-VALUE composite a player raises by
+#     playing MORE as well as by playing BETTER. Under the owner's ruled principle ("we value them on
+#     how they play") it does not meet the standard.
+#   - measured separation on the NON-ROOKIE pool arm: quality (career games-weighted average) is FLAT
+#     across draft age - 51.47 / 52.98 / 53.33 at <=18 / 19-20 / 21+ - while participation (career
+#     games) is 24.7 / 31.7 / 21.6, the 21+ slice playing the LEAST of the three.
+#   - and the gradient is SUPPORTED on the rookie arm (21+ delivers 3.0092 at year 4) but CONTRADICTED
+#     on the non-rookie arm (0.7708, BELOW its own 19-20 slice at 0.9851). B pools both arms by
+#     construction (item_b_derive.py:51 filters on is_pool only), so the evidence carrying the lift
+#     came substantially from the arm the question was not about.
+# THE KNOTS AND THE MACHINERY ARE KEPT, behind RL_B_SHAPE, so the re-derivation has them to hand.
+# DEFAULT IS FLAT: _b_shape == 1.0 at every age => _b_renorm() == 1.0 => _b_factor == 1.0 exactly, so
+# entry_anchor collapses to pool_level x _PL_F, the pre-B object, and the C5 level-preserving law holds
+# TRIVIALLY rather than by renormalisation (every row's factor is 1, so no value moves between ages).
+_B_SHAPE_ON=os.environ.get('RL_B_SHAPE','0')!='0'
 def _b_shape(a):
+    if not _B_SHAPE_ON: return 1.0                           # ORDER 9: FLAT by owner ruling
     if a is None: return 1.0                                 # age-unknown: its own cell, never absorbed
     a=float(a)
     if a<=_B_KNOTS[0][0]: return _B_KNOTS[0][1]
@@ -1995,7 +2017,23 @@ _A_TAU=_EVW_TAU                              # the engine's own pedigree-fade ra
 H_ON=os.environ.get('RL_ITEM_H','1')!='0'   # declared kill-switch: RL_ITEM_H=0 => no cuts, byte-exact
 H_UNION=float(os.environ.get('RL_H_UNION','0.280'))
 H_POOLSIT=float(os.environ.get('RL_H_POOLSIT','0.804'))
-H_MATNONRD=float(os.environ.get('RL_H_MATNONRD','0.615'))
+# ===== #334 ORDER 9 ADOPTION — H_MATNONRD RETIRED TO 1.0 BY OWNER RULING (filed 5249802288).
+# OWNER, verbatim: "H to 1, B to flat, and note these as items of investigation for the rederivation."
+# THE GROUNDS, measured and filed at POOL_ARM_ATTRIBUTION.md before the ruling:
+#   - the cut was a FLAT END-MULTIPLIER on the finished production-led price (:2228), reading only
+#     _pool / type / draft age and NEVER games, level or establishment. John Noble at 158 career games
+#     took the same 0.615 as a zero-game row; his ITEM A anchor share is exactly 0.000000, so the cut
+#     was not his draft arm re-asserting itself - it was a cell multiplier on top of the finished price.
+#   - the cell's own derivation HALTED: item_h_derive_out.txt "HALT-NO-SURPRISE ... taken AS FILED",
+#     ruled 0.615 against F bent 0.7676 (DOES NOT REPRODUCE), corrected-ruler 0.5162, and a 95% CI of
+#     [0.115, 1.226] at eff-n 46.2 - AN INTERVAL THAT CONTAINS 1.0, so the evidence in front of the
+#     owner could not exclude no cut at all.
+#   - the arm carries ZERO rows in the canonical deciding population (n=1197, 100% type ND), so the
+#     board effect was never inside any figure any ruling was made on.
+# OWNER'S DESIGN DIRECTION, recorded so the re-derivation inherits it: a mature-pool discount, if the
+# historical data supports one, belongs on the v0/PRIOR side where a body of work overcomes it - never
+# on the finished price. THE OTHER TWO CELLS STAY AS FILED until the re-derivation (his explicit scope).
+H_MATNONRD=float(os.environ.get('RL_H_MATNONRD','1.0'))
 def _h_cut(p,Y):
     """The composed ITEM H factor for a row. 1.0 for anyone outside every ruled cell."""
     if not H_ON or not _isreal(p): return 1.0

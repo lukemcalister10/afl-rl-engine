@@ -414,7 +414,12 @@ def loclin(x0, xs, ys, h, ws=None):
 # and the target's own recency-weighted exposure both move the level FURTHER, so the cap works against
 # the design rather than for it. That is disclosed rather than left to be discovered.
 # ============================================================================================================
-XW = os.environ.get('RL_336_XW', '0') != '0'
+# ORDER 9 ADOPTION: DEFAULT FLIPS OFF -> ON by owner word (filed 5249802288) — XW is the counterbalance
+# he included in the bake. It cleared its kill test before wiring (XW_HONESTY.txt): the sub-6-game rows
+# keep 4.8% of pooled fit weight against 19.7% of the row count, the estimator diverges from the
+# survivors-only one in 37 of 44 informative cells, and at tenure 1 in the LATE pick bands it lands
+# BELOW survivors-only. RL_336_XW=0 is now the ABLATION rather than the default.
+XW = os.environ.get('RL_336_XW', '1') != '0'
 XW_CAP = float(os.environ.get('RL_336_XW_CAP', '18'))
 
 def _wmedian(v, w):
