@@ -21,6 +21,13 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
   V1       discount    1.0000  1.0487  1.3103  1.5034  1.5844  1.5634   1.5844     yr4     1.584     1.511
   V2       discount    1.0000  1.0933  1.3163  1.5104  1.5870  1.5623   1.5870     yr4     1.587     1.452
   V3       discount    1.0000  1.1456  1.4217  1.5557  1.6390  1.5714   1.6390     yr4     1.639     1.431
+  V5       discount    1.0000  1.0734  1.3152  1.4858  1.5665  1.5661   1.5665     yr4     1.567     1.459
+  AGSATF   de-couple   1.0000  1.0001  1.2508  1.4385  1.5343  1.5321   1.5343     yr4     1.534     1.534
+  AGSATD   de-couple   1.0000  0.9822  1.2333  1.4309  1.5329  1.5319   1.5329     yr4     1.533     1.561
+  C336P    #336 split  1.0000  0.9972  1.2398  1.4273  1.5306  1.5324   1.5324     yr5     1.532     1.537
+  C336E    #336 split  1.0000  1.0073  1.2555  1.4465  1.5518  1.5538   1.5538     yr5     1.554     1.543
+  C336C    #336 split  1.0000  1.0882  1.3219  1.4740  1.5515  1.5464   1.5515     yr4     1.552     1.426
+  no336    #336 split  1.0000  1.0992  1.3384  1.4935  1.5725  1.5676   1.5725     yr4     1.573     1.431
 
   Envelope reference: peak/yr0 ~ 1.40 and peak/yr1 ~ 1.30. A FRAME FOR JUDGING, NOT A TARGET.
   The peak/yr0 gap is PRE-EXISTING — already open on main before any item of this act applies.
@@ -44,6 +51,13 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
   V1       discount              -7.35%            -5.70%            -9.37%
   V2       discount              -3.57%            -1.07%            -6.62%
   V3       discount              -2.16%            +1.03%            -6.24%
+  V5       discount              -4.08%            -1.89%            -8.00%
+  AGSATF   de-couple             -8.76%            -7.61%           -12.00%
+  AGSATD   de-couple            -10.31%            -8.90%           -14.08%
+  C336P    #336 split            -8.91%            -7.90%           -11.74%
+  C336E    #336 split            -9.26%            -8.10%           -12.31%
+  C336C    #336 split            -1.82%            -0.61%            -3.65%
+  no336    #336 split            -2.15%            -0.81%            -4.23%
 
 ====================================================================================================================
 ### THE FREE-MONEY MARGIN AT yr0->yr1, PER CANDIDATE, AGAINST ITS OWN DISCOUNT
@@ -66,6 +80,13 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
   V1       discount         1.0487        4.87%       13.00%      8.13%
   V2       discount         1.0933        9.33%       12.00%      2.67%
   V3       discount         1.1456       14.56%       10.00%     -4.56%   <-- ARB
+  V5       discount         1.0734        7.34%       12.00%      4.66%
+  AGSATF   de-couple        1.0001        0.01%       14.00%     13.99%
+  AGSATD   de-couple        0.9822       -1.78%       14.00%     15.78%
+  C336P    #336 split       0.9972       -0.28%       14.00%     14.28%
+  C336E    #336 split       1.0073        0.73%       14.00%     13.27%
+  C336C    #336 split       1.0882        8.82%       14.00%      5.18%
+  no336    #336 split       1.0992        9.92%       14.00%      4.08%
 
   NOTE ON THE DISCOUNT CANDIDATES: a lower discount is not a free win. It lifts the book AND
   narrows this margin at the same time, because the same schedule that raises young value is
@@ -179,19 +200,159 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
   shows the consequence: ITEM A owns 0.0% of the year-1 drop.
 
 ====================================================================================================================
-### SPECIFIED BUT NOT BUILT — THE RAMP DE-COUPLE  (RAMP_DECOUPLE_SPEC.md)
+### ROUND 3 — V5, THE OWNER'S FIFTH LADDER  (the question it was built to answer, and the answer)
 ====================================================================================================================
-  One six-game threshold currently does two jobs: ADMISSION (ns>=1 needs a qualifying season)
-  and SATURATION (lam hits LAM_SIT[6]=1.0, zeroing A). At year 1 they are mutually exclusive.
-  The row: KEEP the admission bar, de-couple only the saturation so the production weight
-  saturates on CAREER games (~15-20) instead of the within-season six — so a qualified year-1
-  row carries real anchor weight and A lives at year 1 as ruled.
+  The owner asked why year 4 is better under V4 than V2 "when both have 14 from 22", and proposed
+  V5. THE PREMISE DOES NOT HOLD, and V5 is built on the correction. V2 has NO 14% shelf at 22: its
+  knots join 21 smoothly to 25, so V2 charges 13.5% at age 22. V4 pins 22 at exactly 14%. Both
+  reach 15% at 25, so the 25-vs-26 boundary the owner named is not the difference either.
+  V5 states the 22/23 shelf as its OWN pair of knots, which is what distinguishes it from V2.
 
-  PRE-REGISTERED: measurable ONLY with A-FLOOR or A-DRAGFADE. With the SYMMETRIC blend it would
-  let the anchor drag hot year-1 rows DOWN and DEEPEN the dip — expected direction filed in
-  advance. One trap named: sitout_ev shares the LAM_SIT ramp for a different purpose, so only
-  A's copy may de-couple or the whole sit-out population moves as a side effect.
+  age            18     19     20     21     22     23     24     25     26     27    28+
+  ---------------------------------------------------------------------------------------
+  V2 (%)       12.0   12.0   13.0   13.0   13.5   14.0   14.5   15.0   15.0   15.0   16.0
+  V4 (%)       11.0   11.0   12.0   13.0   14.0   14.0   14.5   15.0   15.0   15.0   16.0
+  V5 (%)       12.0   12.5   13.0   13.5   14.0   14.0   14.5   15.0   15.0   15.5   16.0
+  (verified by direct call of the engine's own _pw_interp BEFORE the emit)
 
-  SCOPE CAVEAT: it makes A deliver its ruled purpose. It is NOT a counterbalance to the
-  measured drop, which lives 80.5% in #336 and 10.8% in the surprise law. Cost if ruled in:
-  2 emits plus one identity proof. NOT BUILT — no engine file touched, no dial declared.
+  V5 IS THE FIRST DISCOUNT VARIANT THAT LIFTS YEAR 1 AND STAYS LEGAL.
+    yr1 1.0734   yr4 1.5665   margin +4.66% — POSITIVE, i.e. NO ARBITRAGE.
+    V4 (+13.82% appreciation vs 11.00% charged) and V3 (+14.56% vs 10.00%) are both ARB. V5
+    lifts year 1 by 7.6% over FULL and still charges more than the book grows.
+
+  PRE-REGISTERED (PREREG_ROUND3.md), TWO BREACHED, REPORTED AS BREACHES:
+    P1.1  yr4 in 1.555-1.570 and above FULL   MEASURED 1.5665                       HELD
+    P1.2  yr1 in 1.100-1.135 (between V2/V4)  MEASURED 1.0734 — BELOW V2's 1.0933   BREACHED
+    P1.3  margin better than V4's -2.82%,     MEASURED +4.66% — better than V4 but
+          registered range -1.5% to +2.5%     outside the registered band           BREACHED
+
+  THE SEAT'S ERROR, OWNED. P1.2 assumed V5 would sit BETWEEN V2 and V4 on year 1. It cannot:
+  V5 is dearer than V2 at ages 19, 21, 22 and 27 and equal everywhere else, so V5 DOMINATES V2 as
+  a discount schedule and must lift year 1 LESS than V2, not more. The arithmetic was available
+  before the emit from the same knot table printed above and the seat did not do it. The margin
+  band in P1.3 inherited the same error. The measured numbers stand; the prediction does not.
+
+  WHY THE yr4 SHELF WORKED. P1.1 held: V5 and V4 are IDENTICAL at ages 22-26, so a player drafted
+  at 18 sees the same rate through his year-4 season, and yr4 lands 1.5665 against V4's 1.5637 —
+  a 0.2% gap, from the young-side rate reaching year 4 through the PEAK ESTIMATE. That channel is
+  the one the V4 diagnosis already named: the peak a player is priced against is itself a
+  forward-discounted object, so an age-keyed discount does not stay inside the year it is keyed
+  to. Read every discount variant's peak/yr0 and peak/yr1 column knowing the peak itself moved.
+
+====================================================================================================================
+### ROUND 3 — THE RAMP DE-COUPLE, MEASURED  (was SPECIFIED BUT NOT BUILT; it is now built and emitted)
+====================================================================================================================
+  One six-game threshold was doing two jobs: ADMISSION (ns>=1 needs a qualifying season) and
+  SATURATION (lam hits LAM_SIT[6]=1.0, zeroing A). At year 1 they are mutually exclusive, so A
+  moved 0 of 1197 year-1 cells. The change keeps the admission bar EXACTLY as built and de-couples
+  only the saturation: the production weight now saturates on CAREER games against G_SAT.
+  Dial RL_A_GSAT, default 0 (off, byte-exact). G_SAT=18 is the SEAT'S choice inside the spec's
+  open ~15-20 range — not an owner number, not measured-optimal.
+
+  form                          yr1      yr4    margin   yr1 movers  (>=6g)   up/down   median move
+  ----------------------------------------------------------------------------------------------------
+  FULL     (reference)           0.9974   1.5310    14.26%          0        0      0/0        --
+  AGSATF   de-couple + A-FLOOR   1.0001   1.5343    13.99%         41       41     41/0     +4.19%
+  AGSATD   de-couple + A-DRAGFADE   0.9822   1.5329    15.78%        294      294     41/253   -3.58%
+
+  THE MOVERS ARE EXACTLY THE ROWS ITEM A COULD NEVER REACH. Every single year-1 mover in both
+  forms is a FULL-SEASON row (>=6 games) — 41 of 41 and 294 of 294. Under built-A that count was
+  ZERO at every career year, by the mutual exclusion. The de-couple does what it was specified to.
+
+  PRE-REGISTERED AND HELD (PREREG_ROUND3.md, filed before the emits):
+    P2.1  A-FLOOR yr1 RISES, small          predicted 1.000-1.020   MEASURED 1.0001   HELD
+    P2.2  A-DRAGFADE yr1 FALLS below FULL   predicted 0.960-0.997   MEASURED 0.9822   HELD
+    P2.3  yr1 full-season movers nonzero    predicted > 0           MEASURED 41 / 294 HELD
+    P2.4  yr4 within +/-0.5% of FULL        predicted +/-0.5%       MEASURED +0.22% / +0.12%  HELD
+    P2.6  sitout_ev byte-unchanged          md5 must match          MEASURED match     HELD
+
+  THE SPEC'S OWN EXPECTATION IS BREACHED FOR A-DRAGFADE, AND THE BREACH WAS FILED IN ADVANCE.
+  RAMP_DECOUPLE_SPEC.md predicted "Year 1 rises, by construction" for BOTH admissible forms and
+  put A-DRAGFADE "between FULL and de-couple+floor". It falls BELOW FULL instead. The reason was
+  measured before the emit and written into the pre-registration: of the 416 rows that reach the
+  A site at year 1, 83.2% are DRAG rows (anchor BELOW production) and the pooled anchor sits at
+  0.515x production. The spec reasoned from the anchor being a support; on the real year-1
+  population it is mostly a drag. A-FLOOR is inert on drag rows, which is why it still rises.
+
+  THE sitout_ev TRAP, PROVEN CLOSED (decouple_proof_OFF.txt / decouple_proof_ON.txt):
+    static  : every read of the dial is inside _a_share; sitout_ev's body contains no reference.
+    dynamic : sitout_ev over 15,882 (player x year x e_full) evaluations hashes to
+              2a11b8b17a854e33d9d51ab050581021 under RL_A_GSAT=0 AND under RL_A_GSAT=18 — IDENTICAL.
+    non-vacuity: _a_share over the same pass hashes 53640643... vs 88b9c45c... — DIFFERENT. So the
+              proof can tell "the dial did nothing anywhere" apart from "it did something, elsewhere".
+
+  MRAZ, per form (board build, his pick-35 frozen ruler PVC0[35]=561):
+    FULL 1649 = 2.939x   A-FLOOR 1649 = 2.939x   A-DRAGFADE 1649 = 2.939x   (V5: 1712 = 3.052x)
+    He is UNMOVED by both de-couple forms: he sat out his first season, so he is on the ns==0
+    sit-out arm, which this dial does not touch. Inside the owner's <=3.0x target in every arm
+    except V5, which sits at 3.052x — inside the 3.5-3.8x slack the owner granted.
+
+  SCOPE CAVEAT, UNCHANGED AND STILL BINDING: this makes ITEM A deliver its ruled purpose. It is
+  NOT a counterbalance to the measured year-1 drop. A-FLOOR recovers +0.0027 of the -0.1265.
+
+====================================================================================================================
+### ROUND 3 — THE #336 CHANNEL SPLIT  (the owner asked what a #336 design would look like)
+====================================================================================================================
+  #336 owns 80.5% of the main->FULL year-1 drop: FULL 0.9974 -> no336 1.0992, a give-back of
+  +0.1018 (about -9.1pp of the -11.3% total). Until now it was ONE LUMP with no kill-switch.
+  Round 3 gives it three declared channel levers and splits the lump by counterfactual emit.
+
+  channel                                        lever                    yr1     give-back   share
+  ----------------------------------------------------------------------------------------------------------
+  (a) the P-LEG  (bust charge on picks/unresolved) RL_336_NOP=1               0.9972    -0.0002    -0.2%
+  (b) the DE-SURVIVORED E-LEVELS                 RL_336_SURVLVL=1 RL_336_CLAMP=1   1.0073    +0.0099     9.7%
+  (c) the PAR_BUILD LEG (the fitted par sample)  RL_336_PARSURV=1           1.0882    +0.0908    89.2%
+  SUM OF THE THREE                                                                    +0.1005    98.7%
+  INTERACTION RESIDUAL (printed, not normalised)                                      +0.0013     1.3%
+  WHOLE LAYER (whole-commit revert of 9a8bbd9)   no dial exists             1.0992    +0.1018   100.0%
+
+  THE ANSWER, AND IT REFUTES THE SEAT'S OWN PRE-REGISTRATION. P3.1 predicted the P-leg would be
+  the LARGEST channel at over 50% of the give-back. It is the SMALLEST, at -0.2% — and the sign
+  is negative, so reverting the bust charge makes year 1 very slightly WORSE. BREACHED, reported
+  as a breach, and nothing was retuned to rescue it. P3.3 predicted the par leg under 20%; it is
+  89.2%. BREACHED. Only P3.2 (E-levels under 20%) held, at 9.7%.
+
+  WHY THE P-LEG IS INERT, from the code: amendment 3 already reconciled the anchor-side charge to
+  D = 0.999644 ("the forward band already charges establishment failure in full"), so a REAL
+  player never sees P at his anchor. What P still scales is BASEPK_REG, the PICK table — and the
+  year-zero price the cohort ratio divides by comes from the FROZEN v0 surface, not from that
+  table. Measured: 1 v0 mover out of 1197 in every arm, sum(v0) within 0.02%.
+
+  THE CEILING FOR A RE-TIMING DESIGN, which is what the owner's question was really asking:
+  bust charge that can be honestly RE-TIMED across career years is the P-leg, and the P-leg owns
+  -0.2% of the -9.1pp, i.e. about -0.02pp. THE RE-TIMEABLE CHANNEL IS EMPTY. A design that
+  re-times the bust charge cannot recover the year-1 drop, because the year-1 drop is not there.
+
+  WHERE IT ACTUALLY IS: 89.2% in the par_build leg — the change to WHICH SEASONS the par surface
+  is fitted to (from ">=6 games at that tenure" to "every ever-establisher's played season").
+  That change is FRONT-LOADED by construction and the effect is reproduced independently in
+  design336_probe_out.txt: the tenure-1 cell level falls to 0.897 of the old sample and the cut
+  fades to 0.978 by tenure 6. Its price effect therefore lands on year 1 and washes out by year 6.
+
+  NOT DESIGN TERRITORY, and this is the owner's standing ruling, not a seat opinion: channels (b)
+  and (c) ARE the honesty repair. Softening the de-survivored levels re-admits survivor bias.
+  Their counterfactual arms exist to BOUND the design and are not candidates. NO DESIGN SHIPS
+  FROM THIS TABLE; see DESIGN_336_MEMO.md for the two mechanisms probed and their ceilings.
+
+  ONE HONEST QUALIFICATION ON ROW (b). The amendment-2 monotonicity guard (basepk_est >= basepk)
+  is ALREADY BREACHED AT THE COMPOSED BUILD in 1 cell — (KPD, band 0), by -0.4465 points
+  (-0.59%). _A2_GUARD is only a computed list; nothing raises on it. Row (b)'s arm carries 2
+  breaches instead of 1, in RUCK bands 0 and 1 (-0.2515 and -0.6190). Isolated by probe: the
+  v3.4 clamp alone does not cause it, the survivor sample does. Row (b) is therefore the least
+  trustworthy of the three, and it is the smallest, so the reading is not sensitive to it.
+
+====================================================================================================================
+### THE IDENTITY GATE EVERY ROUND-3 NUMBER RIDES ON
+====================================================================================================================
+  All five round-3 dials are DEFAULT OFF. With every one of them off, at the branch tip:
+    MATRIX   the emitted per-entrant matrix (IDENT5) has recs byte-identical to per_entrant_FULL
+             — recs md5 3eb4a686e36e4e299f1134e153c566bd on BOTH, 2645 records, 0 year-1 movers
+             out of the 1197 teaching rows. The two FILES differ only in `meta` (engine_head md5,
+             which moved because the dial and its comment block were added, and the emitter's
+             own worktree path). That is a PRICE-LEVEL identity, not a file copy.
+    BOARD    rl_export at 95dfbde and at the round-3 tip both build board md5
+             846560dc1b206996005c7c9e9290207c — byte-identical, same env.
+    DENOM    the year-zero surface is intact in every arm: 1 v0 mover out of 1197, sum(v0)
+             within 0.02%. The ratio denominator is not carrying any of these moves.
+  If either identity had failed, nothing on this table could be read. Both hold.
+

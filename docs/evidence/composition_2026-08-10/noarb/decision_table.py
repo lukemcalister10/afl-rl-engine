@@ -53,11 +53,18 @@ _V3_KNOTS = [(20.0, 0.10), (21.0, 0.11), (22.0, 0.11), (23.0, 0.12), (25.0, 0.12
              (28.0, 0.13), (29.0, 0.14)]
 _V4_KNOTS = [(19.0, 0.11), (20.0, 0.12), (21.0, 0.13), (22.0, 0.14), (23.0, 0.14), (25.0, 0.15),
              (27.0, 0.15), (28.0, 0.16)]
+# V5 (mode 5), the owner's fifth ladder, comment 5248006413. His 22/23 = 14% shelf is EXPLICIT here;
+# V2's smooth 21->25 join puts V2 at 13.5% at 22, which is why V2 is not the same curve at that age.
+_V5_KNOTS = [(18.0, 0.12), (19.0, 0.125), (20.0, 0.13), (21.0, 0.135), (22.0, 0.14), (23.0, 0.14),
+             (24.0, 0.145), (25.0, 0.15), (26.0, 0.15), (27.0, 0.155), (28.0, 0.16)]
 FLAT = 0.14
 # Candidates that do NOT touch the discount all charge the flat balanced-lens 14%: main, FULL, the
 # H rungs, A-as-floor and A-evidence-faded are engine-side changes, not discount changes.
 FLAT_VARIANTS = ('main', 'FULL', 'H120', 'H125', 'H130', 'AFLOOR', 'ADRAG',
-                 'IDENT', 'noA', 'noSUR', 'noH', 'no336')
+                 'IDENT', 'noA', 'noSUR', 'noH', 'no336',
+                 # round 3: the de-couple forms and the #336 channel arms are engine-side changes,
+                 # not discount changes, so they all charge the flat balanced-lens 14%.
+                 'IDENT5', 'AGSATF', 'AGSATD', 'C336P', 'C336E', 'C336C')
 
 
 def _pw_interp(a, knots):
@@ -80,6 +87,8 @@ def rate(variant, a):
         return _pw_interp(a, _V3_KNOTS)
     if variant == 'V4':
         return _pw_interp(a, _V4_KNOTS)
+    if variant == 'V5':
+        return _pw_interp(a, _V5_KNOTS)
     if a <= 21.0: return 0.13
     if a >= 26.0: return 0.15
     return 0.13 + 0.02 * (a - 21.0) / 5.0
