@@ -25,6 +25,10 @@ export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_TH
 
 rm -rf "$WT" "$OUT"; git -C "$REPO" worktree remove --force "$WT" 2>/dev/null
 git -C "$REPO" worktree add --detach "$WT" "$REF" >/dev/null 2>&1 || { echo "WORKTREE FAILED ($REF)"; exit 1; }
+# PRINT THE RESOLVED REF. A variant that differs by CODE rather than by dial shows "dials exported:
+# none", which is indistinguishable in the log from a plain HEAD emit — so the ref is resolved and
+# printed here, and the emitted matrix's own rl_model/engine_head identity is the independent check.
+echo "  ref: $REF -> $(git -C "$WT" rev-parse --short HEAD)"
 mkdir -p "$OUT"
 
 python3 - "$WT" "$@" <<'PY'

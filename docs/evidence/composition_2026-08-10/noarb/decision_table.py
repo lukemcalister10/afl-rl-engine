@@ -51,7 +51,13 @@ def P(s=''):
 _V2_KNOTS = [(19.0, 0.12), (20.0, 0.13), (21.0, 0.13), (25.0, 0.15), (27.0, 0.15), (28.0, 0.16)]
 _V3_KNOTS = [(20.0, 0.10), (21.0, 0.11), (22.0, 0.11), (23.0, 0.12), (25.0, 0.12), (26.0, 0.13),
              (28.0, 0.13), (29.0, 0.14)]
+_V4_KNOTS = [(19.0, 0.11), (20.0, 0.12), (21.0, 0.13), (22.0, 0.14), (23.0, 0.14), (25.0, 0.15),
+             (27.0, 0.15), (28.0, 0.16)]
 FLAT = 0.14
+# Candidates that do NOT touch the discount all charge the flat balanced-lens 14%: main, FULL, the
+# H rungs, A-as-floor and A-evidence-faded are engine-side changes, not discount changes.
+FLAT_VARIANTS = ('main', 'FULL', 'H120', 'H125', 'H130', 'AFLOOR', 'ADRAG',
+                 'IDENT', 'noA', 'noSUR', 'noH', 'no336')
 
 
 def _pw_interp(a, knots):
@@ -66,12 +72,14 @@ def _pw_interp(a, knots):
 
 def rate(variant, a):
     """The per-annum future discount THIS variant charges a player of current age a."""
-    if variant in ('main', 'FULL'):
+    if variant in FLAT_VARIANTS:
         return FLAT
     if variant == 'V2':
         return _pw_interp(a, _V2_KNOTS)
     if variant == 'V3':
         return _pw_interp(a, _V3_KNOTS)
+    if variant == 'V4':
+        return _pw_interp(a, _V4_KNOTS)
     if a <= 21.0: return 0.13
     if a >= 26.0: return 0.15
     return 0.13 + 0.02 * (a - 21.0) / 5.0
