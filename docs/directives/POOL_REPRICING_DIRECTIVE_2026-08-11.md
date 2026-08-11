@@ -7,9 +7,14 @@ required by his own process ruling of the same day (*"I would like to review the
 sent."*).
 
 **Nothing here is wired, built or scheduled.** The document ends at the decision list and the
-measurement ledger. **Exactly one decision now remains OPEN — D9, how fast a player's own record
-should overcome the price he entered at.** It is stated at the top of the §0 summary so the sitting
-has one question in front of it and no others.
+measurement ledger.
+
+**[OWNER RULINGS, 2026-08-11 — comment 5253173347] EVERY DECISION IS NOW RULED OR RESOLVED. NOTHING
+IS OPEN.** The final sitting closed the last three: **D9** (fade speed deferred), **D8** (the
+pool-only sitter multiplier goes and the retention is re-derived on the pool), and **D4's** two
+remaining choices (PDS shrunk toward the pool; borrowing strength K=15 at layer 1 and K=10 at layer
+2). Each is marked in place below. **The document is complete and the act waits only on the build
+order.**
 
 **What the owner asked for, verbatim (comment 5250574134):**
 
@@ -42,9 +47,14 @@ time to play their first season in the same year.
 # §0 — THE DECISION LIST
 
 Nine decisions. Each has options, a marked seat lean with its reason, and the measured consequence
-where one exists. **One — D9 — is still marked OPEN QUESTION**; the seat does not have the owner's
-preference on record and has not guessed. The other eight are ruled, resolved, or approved as they
-stand, each marked in place with the date and the comment it was ruled in.
+where one exists. **[2026-08-11] ALL NINE ARE NOW RULED, RESOLVED OR APPROVED**, each marked in place
+with the date and the comment it was ruled in. **No decision awaits the owner.**
+
+**One precision, so this claim is exact rather than sweeping.** D7 records that *whether an age
+adjustment should exist at all* is not answered by the measurements taken so far. **That is a
+build-time finding, not a pending ruling**: the act fits draft age to playing quality per stream, and
+if a stream shows no age signal it gets no age adjustment. Nothing there is waiting on the owner's
+word.
 
 ---
 
@@ -466,17 +476,41 @@ The same machinery works one level up: a very thin **stream** can borrow its lay
 whole-pool value by the same `n/(n+K)` shrinkage. **PDS at n=21 is the only pathway where this clearly
 bites** — every other pathway has 43 or more.
 
-**OPEN SUB-QUESTION, and the seat does not decide it.** PDS ran 2007-2011 and takes no new entrants, so
-shrinking it toward the pool changes only historical prices and nothing forward-looking. Whether that is
-worth doing at all, or whether PDS should simply keep its own measured number with its thinness
-disclosed, needs the owner's word.
+PDS ran 2007-2011 and takes no new entrants, so shrinking it toward the pool changes only historical
+prices and nothing forward-looking.
 
-### The two choices that remain his
+**[OWNER RULING, 2026-08-11 — comment 5253173347]: SHRINK PDS TOWARD THE POOL.** Owner verbatim:
+*"Shrink PDS towards the pool."* It is the only pathway thin enough for stream-level shrinkage to
+bite; every other pathway holds 43 players or more.
 
-| | choice | seat position |
+### The two choices that remained his — **BOTH NOW CLOSED**
+
+| | choice | resolution |
 |---|---|---|
 | **(a)** | donor for the positional prior | **decided by the pre-check: whole-pool only.** Including ND is not defensible on the measurement above. |
-| **(b)** | borrowing strength K | seat recommends **K = 10**, the engine's existing convention in both `_pest_336` and `par_build`, rather than tuning a new number. Sensitivity shown above so the cost of a different K is visible. |
+| **(b)** | borrowing strength K | **RULED 2026-08-11 — TWO CONSTANTS, one per operation. See below.** Owner verbatim: *"K - happy with your call."* |
+
+#### **[OWNER RULING, 2026-08-11 — comment 5253173347] BORROWING STRENGTH: K = 15 AT LAYER 1, K = 10 AT LAYER 2**
+
+Each borrow uses the constant the engine already applies to **that same operation**, so the act
+invents no new number:
+
+| operation | precedent in code | **ruled** |
+|---|---|---|
+| **layer 1** — a thin pathway's level toward the pool aggregate | **the signed pool level table was itself built this way at K=15** — `pvc_curve_v2.json` pool_levels `_doc`: *"VOR, K=15 toward the measured pool aggregate 235.8"* | **K = 15** |
+| **layer 2** — a positional cell toward its pathway's all-position marginal | `K_336` (`rl_model.py:396`) and `K_338` (`par_build.py:164`), both **10**, doing exactly this operation | **K = 10** |
+
+**A SEAT CORRECTION ON THE RECORD.** An earlier draft of this section recommended K=10 as *"the
+engine's existing convention"*. **That is the convention at two rate-shrinkage sites, but the object
+this act rebuilds was itself built at K=15.** K is **not 10 everywhere in the engine** — it also
+carries `_LA_KCONF = 25` (`_merged_recover.py:1287`) and `K_SHRINK` / `SHRINK_K = 30`
+(`distribution_pricing.py:42`, `par_build.py:38`). The seat had asserted a single convention that
+does not exist; the correction was found by reading the code at the owner's direct question.
+
+**One caveat the build carries forward:** the original K=15 shrank **VOR** levels, whereas this act
+will have measured outcome profiles with real per-cell sample counts — stronger evidence, which
+argues if anything for trusting cells slightly more rather than less. The K sensitivity table above
+stays printed so the cost of a different choice remains visible.
 
 ## D5 — Does the repair change what today's players are worth?
 
@@ -661,11 +695,75 @@ now)"*. The principle binds **after** the repricing in ITEM 1 has calibrated eac
 statement that today's pool prices are calibrated — the measurements in D1 and D2 say plainly that they
 are not.
 
-**WHAT REMAINS OPEN.** The form is settled; **whether a sitter differential should exist at all is
-not**. The seat's reading, offered and not assumed: if a stream's entry price already contains the
-chance that an entrant never plays, then a further sitter charge risks charging the same risk twice —
-the fault the #336 work found and corrected in a different place. The owner has not ruled on this and
-the seat does not decide it.
+### [OWNER RULING, 2026-08-11 — comment 5253173347] **THE POOL-ONLY SITTER MULTIPLIER GOES. THE RETENTION IS RE-DERIVED ON THE POOL.**
+
+**Owner, verbatim:**
+
+> *"Okay, so the pool sitter on top penalty should go, and the pool index should be rederived in the
+> same way the ND one is where possible not for pick 65, but for the pool."*
+
+and, on the reasoning:
+
+> *"Yes, but no pool players are top 10 picks. I imagine the ND sitter was derived from historical
+> data, just like the pool sitter could be."*
+
+**RULED.**
+1. **`H_POOLSIT = 0.804` and `H_UNION = 0.280` are RETIRED.** They are the two surviving cells of
+   ITEM H; `H_MATNONRD` was already retired to 1.0 at the composition landing.
+2. **A sit-out retention is DERIVED ON POOL HISTORY by the same method the national-draft retention
+   was derived by, and it STANDS IN PLACE of the current read — it does not multiply on top of it.**
+   One measured object per pathway replaces an out-of-range national surface with an unreproducible
+   multiplier bolted onto it.
+
+#### The verification that produced this ruling — read from code at the sitting
+
+**(i) The stacking is literal.** `ev()` returns `sitout_ev(p,Y,e) * _h_cut(p,Y)`
+(`_merged_recover.py:2265`). The retention surface `R` is applied *inside* `sitout_ev` as
+`anch = R * entry_anchor(p)`; `_h_cut` then multiplies the finished result. **Every `_h_cut` cell is
+gated on `p['_pool']`, so no national-draft row ever sees it** — the pool cells are an addition to
+shared machinery, not a pool-specific version of it.
+
+**(ii) The surface is read outside the range it was evaluated on.** `sitout_ev` calls
+`_R_surf(_sitout_cls(...), MA.effpk(p), tau)`, and **`effpk` returns the constant `POOL_PICK = 65`
+for every pool entrant** (`rl_model.py`) while the surface's evaluation knots stop at pick 50. Every
+pool sitter therefore clamps to the deepest column:
+
+| non-KPP retention, by years sat | 1 | 2 | 3 | 4 | 5 | 6+ |
+|---|---|---|---|---|---|---|
+| ND at pick 5 | 0.547 | 0.446 | 0.446 | 0.446 | 0.446 | 0.314 |
+| **read at the pool index (65)** | **0.549** | **0.388** | **0.345** | **0.239** | **0.164** | **0.164** |
+
+**Composed today**, a pool non-KPP sitter at depth 1 takes `0.549 × 0.804 = 0.441`, and inside the
+union cell `× 0.280 = 0.124`.
+
+**(iii) THE POPULATION QUESTION IS UNRESOLVED AND IS BUILD WORK, NOT A GUESS.** `R` was derived as
+sit-out realisation `O ÷ V0` for still-listed non-playing draftees, normed against an all-draftee
+benchmark. **Whether pool rows were IN that derivation population cannot be determined from the
+derivation script** — `session_2026-07-03/d13/scripts/d13_derive.py` reads `pick` clamped to [1,90],
+and rookie picks carried numbers on the old 1-99 ladder. Two possibilities, both bad, and they are
+not distinguishable without measurement:
+
+- **pool rows were in `R`** → `H` charged the same effect twice;
+- **they were not** → `H` was a bolt-on to a surface read outside its evaluated range.
+
+> **THE BUILD MUST ESTABLISH WHICH BEFORE IT DERIVES THE REPLACEMENT.** The answer decides whether
+> the pool retention is a genuinely new object or a correction to a mis-scoped one.
+
+**(iv) Neither retired cell reproduces on re-derivation.** `H_UNION` re-derives to **0.167** against
+the shipped 0.280; `H_MATNONRD` re-derived to **0.5162 with a confidence interval containing 1.0**,
+which is why the owner retired it. Both shipped **AS FILED**, never verified.
+
+#### What continues to bind the replacement
+
+**The mean-preserving principle above applies to the derived pool retention exactly as it applies to
+anything else:** once a pathway's entry price is calibrated to that pathway's own realized returns —
+sitters included — any within-pathway sitter differential must be a **redistribution**, never a net
+charge. The replacement is a measured object, so for the first time this is a checkable claim rather
+than an assertion.
+
+**Out of scope, and stated so it is not confused with what goes:** the shared retention surface `R`
+itself applies to every player including national draftees, and is **not** touched by this act. What
+retires is the pool-only multiplier composed on top of it.
 
 ---
 
@@ -683,9 +781,27 @@ on the evidence that the carry is already measured at zero by ten games.
 
 **The caution the seat attaches to its own lean:** ten games is a low bar for "proven". If a reflective
 entry price is materially lower than today's, a player could climb off it very quickly, which may or
-may not be wanted. The seat has no owner ruling on how fast a body of work should overcome the prior,
-and marks that part **OPEN QUESTION — and, as of the D4 resolution, it is the ONLY one left in this
-directive.**
+may not be wanted.
+
+### [OWNER RULING, 2026-08-11 — comment 5253173347] **FADE SPEED IS DEFERRED**
+
+**Owner, verbatim:** *"Yes, fade speed deferred."* — settling his own earlier proposal: *"maybe this
+is one we should park, and then fix later, and for now just implement the pool players the same way
+ND players are done even if it's a bit broken? And then fix them all the same time."*
+
+**RULED: the pool prior fades exactly as the national-draft prior does. The fade-speed question is
+deferred to its own act.**
+
+**Why deferring is the stronger option and not merely the cheaper one:** the fade is **shared
+machinery** — the two arms run the identical bars — so building the pool the national-draft way
+inherits any flaw **consistently**, and one later repair fixes both arms. Repairing it inside the
+pool act alone would create two behaviours and make the shared repair harder afterwards.
+
+**What travels with this deferral into its own act** (recorded so the parking does not lose them):
+the **pedigree dead zone** — between roughly six and nine games a player carries no pedigree from
+either channel — and the **proration asymmetry** that causes it, one bar counting games at pace and
+the other counting raw games, with no ruling pairing the two. Both are pre-adoption defect
+candidates, neither is measured for sign or size, and neither is in this act's scope.
 
 ---
 
@@ -700,24 +816,26 @@ is limited, layer 2 is what must be right.** The architecture is set out in **§
 | D1 | is the entry price the defect? | yes — and **RULED 2026-08-11: pool values are DERIVED from outcomes the ND way, not scaled**; the λ table is now evidence and sizing, not the mechanism |
 | D2 | one repair or per stream? | **per stream** |
 | D3 | which year defines "reflective"? | **RULED 2026-08-11: the full outcome profile; year four is one data point in context** |
-| D4 | thin streams: own history or pulled toward the average? | **RESOLVED 2026-08-11: every pathway gets an all-in value; thin cells borrow shape under partial pooling, with two conditions** |
+| D4 | thin streams: own history or pulled toward the average? | **CLOSED 2026-08-11: every pathway gets an all-in value; thin cells borrow shape under partial pooling; PDS shrunk toward the pool; K=15 at layer 1, K=10 at layer 2** |
 | D5 | does it re-rate today's players? | measured: no, 1.51% of the board can move at all |
-| D6 | the no-arbitrage effect | measured: all-arm year one 0.8850 → 0.9628 under one option |
+| D6 | the no-arbitrage effect | measured: all-arm year one **0.8850 → 1.0266 (option B) / 1.0355 (option C)** on the ruled basis; **RULED acceptable**, both legal against the 14% charge |
 | D7 | draft age, per stream, on quality only | quality only, per stream; whether at all is open |
-| D8 | the sitter cells on the entry-price side | **FORM SETTLED** by owner amendment (mean-preserving); **whether it exists at all is OPEN** |
-| D9 | is the existing evidence fade enough? | yes; **how fast it should work is the ONE REMAINING OPEN QUESTION** |
+| D8 | the sitter cells on the entry-price side | **RULED 2026-08-11: the pool-only multiplier GOES; the retention is RE-DERIVED on pool history and REPLACES the read** |
+| D9 | is the existing evidence fade enough? | yes; **RULED 2026-08-11: fade speed DEFERRED to its own act — the pool fades exactly as ND does** |
 
-### ONE QUESTION REMAINS: **D9 — how fast should a body of work overcome the entry prior?**
+### NO QUESTIONS REMAIN
 
-Everything else in this directive is either ruled or measured. D9 is the last thing the seat cannot
-decide for the owner. It is asked in full at **D9** below; in one line it is:
+**[OWNER RULINGS, 2026-08-11 — comment 5253173347]** The final sitting closed D8, D9 and D4's two
+remaining choices. **Every decision in this directive is ruled, resolved or measured. Nothing is
+waiting on the owner.** The act waits only on the build order.
 
-> *A player enters at a pathway price. He then plays. How many games of his own should it take before
-> his own record, rather than the price he entered at, is what mostly sets his value?*
-
-The seat has measured that the machinery to do this **already exists** and already works — the question
-is only its speed, and the speed is a judgement about how much a season of AFL football tells you,
-which is the owner's to make and not the seat's. Nothing else is waiting on him.
+**The metric basis, restated after the same sitting.** Owner verbatim: *"I think that and also year 4
+vs year 0 value are important metrics."* **The full career profile and year-4-value-over-year-0-entry
+are BOTH headline metrics** — not one headline and one context column. This requires no new
+measurement: the `yr4` column in every table in this document already *is* that ratio. The two answer
+different questions — *did the whole career justify the price*, and *did it justify the price at the
+peak* — and the gap between them is the "year four flatters the pool" finding itself. Neither is a
+target (the standing **YEAR-4-IS-NOT-A-TARGET** law is unchanged); both are read.
 
 **STATUS AFTER THE OWNER'S REVIEW OF 2026-08-11 (comment 5250723606).**
 The leans on **D1, D2, D5, D6 and D7 stand as approved** — *"All is okay on the directive… it is good
@@ -734,8 +852,12 @@ pre-check** (borrow only where the donor's signal is actually shared). The pre-c
 it **FAILED for the national draft**, so the donor is **whole-pool only**; that finding and its honest
 limit are written into **D4**.
 
-**D9 (how fast a body of work overcomes the entry prior) IS THE ONLY DECISION STILL OPEN.** It is put
-at the top of this summary, above, so the sitting has exactly one question to answer.
+**[2026-08-11 — comment 5253173347] D9, D8 AND D4's REMAINING CHOICES ARE ALL NOW RULED, AND WITH
+THEM THE DIRECTIVE IS COMPLETE.** D9: fade speed **deferred** to its own act, the pool fading exactly
+as the national draft does. D8: the pool-only sitter multiplier **retired**, replaced by a retention
+**derived on pool history** that stands in place of the current read. D4: **PDS shrunk** toward the
+pool, and borrowing strength set at **K=15 at layer 1, K=10 at layer 2**, each matching the constant
+the engine already applies to that operation.
 
 
 ---
@@ -762,6 +884,62 @@ what must be right if the sitting's time runs short.**
 The entry value of a **specific player** selected through a pathway. **This is where the positional
 layer lives** — the ruck and key-defender lens. It sets player priors and it is the thing that must
 satisfy the no-arbitrage book check. **If only one layer can be got right, it is this one.**
+
+### THE ISOLATION LAW — **[OWNER RULING, 2026-08-11 — comment 5253173347]**, written explicitly so no build can misread it
+
+**Owner, verbatim:**
+
+> *"Layer 2 has me worried that this is going to borrow from the ND v0. This is entirely separate
+> from the ND v0. It borrows the method, but applies it to the pool/pathway players in isolation.
+> You said 'v0 is already positional (keyed on pick × pathway × position group × effective pick ×
+> age)' But for this there is no pick or effective pick consideration to key it on."*
+
+**HE IS RIGHT ON BOTH POINTS, AND A SEAT WORDING IS CORRECTED HERE.**
+
+**(1) THE KEYS.** The seat described v0 as keyed on *pick × pathway × position group × effective pick
+× age*. **That is the cache key `_v0key`, and for a pool entrant two of those five fields carry no
+information at all**: a pool row has no curve pick, and `effpk` returns the single constant
+`POOL_PICK = 65` for **every** pool entrant (`rl_model.py`). **The live keys for a pool player are
+exactly what the owner said — PATHWAY × POSITION × AGE.** The derivation must key on those and on
+nothing else; there is no pick axis in the pool and none is to be invented.
+
+**(2) THE ISOLATION ALREADY EXISTS IN THE CODE, AND THIS ACT INTRODUCES NO LEAKAGE.** The split is
+structural at the entry anchor (`_merged_recover.py`):
+
+```
+entry_anchor(p):
+    if pool:  return pool_level(p) * _PL_F * _b_factor(p)   # the signed per-division table
+    else:     return v0_start(p)                            # the ND v0 curve
+```
+
+and `_v0_curve_assert` states it outright of a pool row: *"it is priced off its signed division level
+(#326 entry anchors), it teaches no fit site, and **it never reads this surface at all**."* **Pool
+entrants neither teach the national curve nor read it.** The method is shared; the data, the fit and
+the resulting object are not.
+
+**(3) THE TABLE BEING REBUILT ALREADY HAS THE RULED TWO-LAYER SHAPE.** `pvc_curve_v2.json`
+`pool_levels` — the object this act replaces the values inside:
+
+| layer 1 — positionless per pathway (`signed_flat`) | layer 2 — RD by position (`signed_rd_positional`) |
+|---|---|
+| MSD 286.8 · ND65+ 266.1 · SSP 252.8 · PDA 194.3 · PDS 145.0 · IRE 133.4 · PDN 123.0 · UNR 103.7 | KPD 300.3 · MID 294.8 · RUCK 282.5 · SD 246.9 · SF 231.5 · KPF 216.0 |
+
+**So the act is not adding structure — it is re-deriving the VALUES in a table whose SHAPE is already
+right, in isolation from the national draft, exactly as the owner describes.**
+
+**(4) AND THE TABLE SHOWS THE DEFECT IN ONE LINE.** Today's rookie-draft positional order against
+what those players actually delivered:
+
+| | priced highest → lowest | delivered best → worst |
+|---|---|---|
+| RD positions | **KPD** · MID · RUCK · SD · SF · **KPF** | RUCK · SF · MID · SD · KPF · **KPD** |
+
+**Rookie-draft key defenders are the most expensive cell and the worst-delivering one; rucks sit near
+the bottom on price and top on delivery. The ordering is close to inverted.**
+
+*Indicative sizing only, applying each cell's own measured ratio to today's level — NOT the act's
+output, and before shrinkage and renormalisation:* KPD 300 → ~83 · KPF 216 → ~88 · SD 247 → ~116 ·
+SF 232 → ~149 · MID 295 → ~170 · RUCK 283 → ~264.
 
 ## LAYER 1 — THE PATHWAY VALUE ("all-inclusive"). **A NICE-TO-HAVE, as the pick curve is.**
 One **positionless** value per pathway — RD, SSP, MSD, the academy/post-draft legs, IRE, UNR, ND>64 —
@@ -844,8 +1022,10 @@ unoffset, and the pathway no longer averages to its own value.
 
 **The load-bearing layer is fully deliverable for the rookie draft — 688 of the 1,197 pool players, the
 majority.** Four pathways get partial positional differentiation; four get none and receive their
-pathway value. **Whether the four that get none should instead borrow a shape, be shrunk, or be left
-alone is D4, and it is still open.**
+pathway value. **[RULED 2026-08-11 — D4 is closed.] The four that get no positional cell BORROW a
+shape from the whole pool** under partial pooling at **K=10**, renormalised per stream so the
+pathway still averages its own all-in value; **PDS additionally has its pathway level shrunk toward
+the pool aggregate at K=15**, being the only pathway thin enough for that to bite.
 
 ## WHERE EVERY EXISTING MEASUREMENT NOW SITS
 
@@ -884,6 +1064,11 @@ stay in the code behind a switch as the worked cautionary example **[the landed 
 
 ## ITEM 3 — the sitter cells
 The subject of D8. Their present values and their combined effect are on the record **[SPLIT]**.
+**RULED 2026-08-11: `H_POOLSIT` and `H_UNION` are retired and a pool-derived sit-out retention
+replaces the current read rather than multiplying on top of it.** The build's first task on this item
+is the unresolved population question in D8(iii) — whether pool rows were inside the national
+retention surface's derivation — because the answer decides whether the replacement is a new object
+or a correction to a mis-scoped one.
 
 ## ITEM 4 — how a body of work overcomes the prior
 The subject of D9. The measured carry table is in D5 **[POOL]**.
@@ -935,16 +1120,21 @@ already exist and were used for this document **[SPLIT]**.
    resulting per-cell numbers read back, which belongs with item 6 below.
 6. The derived per-cell entry values themselves, once D4 fixes the fallback rule. This document sizes
    the derivation and proves the mechanism; it does not produce the numbers that would ship.
-5. The sit-out charge in entry-price form, if D8 says it survives.
+5. ~~The sit-out charge in entry-price form, if D8 says it survives.~~ — **SUPERSEDED by the D8 ruling
+   of 2026-08-11.** The pool-only multiplier does not survive. What is to be measured instead is
+   **(a)** whether pool rows were inside the national retention surface's derivation population, and
+   **(b)** the pool-derived sit-out retention itself, per pathway, which replaces the current read.
 
 ---
 
 # §3 — WHAT SURPRISED THE SEAT, RECORDED SO THE REVIEW SEES IT
 
 1. **The repair's reach is very small.** Only **82 of 242** pool players on the board can be moved by an
-   entry-price change at all, worth **1.51% of the board**, and the board total moves **−0.16%**
-   **[POOL]**. The seat expected a larger footprint. The repair fixes the *ratio*, mostly by changing
-   what the ratio is divided by.
+   entry-price change at all, worth **1.51% of the board**, and the board total moves **−0.29% under
+   option B and −0.25% under option C** on the ruled basis **[PROFILE]** *(this finding previously
+   carried the superseded year-four figure of −0.16% and was corrected on 2026-08-11)*. The seat
+   expected a larger footprint. The repair fixes the *ratio*, mostly by changing what the ratio is
+   divided by.
 2. **Two pool streams do not under-deliver at all.** SSP reads **1.3507** and MSD **0.9485** at year four
    **[POOL]**. "The pool is over-priced" is not true of the pool as a whole — it is true of IRE, PDN,
    PDS, RD, ND>64, and mildly of PDA and UNR.
@@ -995,6 +1185,23 @@ already exist and were used for this document **[SPLIT]**.
    group reconciles every pathway at float noise. The law needed a rule the seat had not expected to
    need, and it was found by running the test rather than by reasoning about it.
 
+14. **ADDED 2026-08-11 — EVERY POOL SITTER READS THE NATIONAL RETENTION SURFACE OUTSIDE THE RANGE IT
+   WAS EVALUATED ON, AND THEN TAKES A MULTIPLIER ON TOP OF THAT.** `effpk` returns the single constant
+   **65** for every pool entrant while the surface's knots stop at pick 50, so all of them clamp to
+   the deepest column (non-KPP: 0.549 / 0.388 / 0.345 / 0.239 / 0.164 / 0.164 by depth). `_h_cut` then
+   multiplies the finished price — `0.549 × 0.804 = 0.441`, and `× 0.280 = 0.124` in the union cell.
+   **Whether pool rows were inside that surface's own derivation population cannot be determined from
+   the derivation script**, so the seat cannot say whether the composition double-charged or patched a
+   mis-scoped read — and says so rather than picking the flattering reading. Neither multiplier
+   reproduces: `H_UNION` re-derives to 0.167 against a shipped 0.280.
+
+15. **ADDED 2026-08-11 — K IS NOT ONE NUMBER IN THIS ENGINE, AND THE SEAT HAD ASSERTED THAT IT WAS.**
+   The engine carries **K=10** (`K_336`, `K_338`), **K=15** (the signed pool level table's own
+   construction), **K=25** (`_LA_KCONF`) and **K=30** (`K_SHRINK`, `SHRINK_K`). The directive
+   originally recommended K=10 as *"the engine's existing convention"*; the convention for the very
+   object this act rebuilds is **15**. Found by reading the code at the owner's direct question, and
+   it changed the recommendation.
+
 
 ---
 
@@ -1023,5 +1230,26 @@ recorded so the discussion the owner asked for has its numbers ready.
 
 ---
 
-**Nothing in this directive is wired, and nothing is scheduled.** Work begins only on the owner's word,
-and only on the items whose decisions are settled — D3, D4 and D9 remain open.
+**Nothing in this directive is wired, and nothing is scheduled.** Work begins only on the owner's word.
+
+**[2026-08-11] EVERY DECISION IS NOW SETTLED — D3, D4, D8 and D9 included.** The earlier version of
+this line listed D3, D4 and D9 as open; all three were ruled during the reviews of 2026-08-11 and D8
+was ruled with them. **The directive is complete. What remains is the build order and nothing else.**
+
+## THE BUILD'S OWN FIRST TASKS, recorded so the order does not have to carry them in prose
+
+1. **Establish the retention surface's derivation population** (D8 iii) before deriving the pool
+   replacement.
+2. **Key layer 2 on pathway × position × age only** (§0A isolation law) — no pick axis exists in the
+   pool and none is to be invented.
+3. **Deliver the derived numbers as CALIBRATION TARGETS, not values to paste.** v0 is a machinery
+   output, not a stored curve, so the act changes the machinery's inputs — the per-pathway,
+   per-position entry levels — and iterates until the outputs land within tolerance. The
+   reconciliation test then reads *"does the machine land on the pathway value"*.
+4. **Re-derive an already-positional object.** v0 carries positional differentiation today from the
+   general machinery; what it does **not** carry is pathway-specific positional outcome history.
+   Layer 2 corrects the level of an existing positional object — it does not introduce the lens.
+5. **Check `_ruc_prior_cap`.** It applies to rucks generally, so whether it binds on derived pool ruck
+   v0s is a build-time check. It is the only surviving v0-chain law that touches this act: the D14
+   v0-curve laws and the D13 pick-order guard were re-scoped on 2026-08-10 to national-draft
+   non-pool rows and **do not** constrain pool v0s.
