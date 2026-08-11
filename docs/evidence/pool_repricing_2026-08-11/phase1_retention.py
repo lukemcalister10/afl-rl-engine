@@ -33,12 +33,24 @@ non-sitters must carry is computed and printed per pathway.
 
 Loads the engine READ-ONLY from a staged copy so the repo is untouched. No emits. Deterministic.
 """
-import os, sys, io, json, contextlib, math, collections
+import os, sys, io, json, contextlib, math, collections, shutil
 
 ROOT = '/home/user/afl-rl-engine'
 SP = '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad'
 STAGE = SP + '/eng_stage/rl_after'
 HERE = os.path.dirname(os.path.abspath(__file__))
+
+# ---- SELF-STAGING, so this script is re-runnable from a clean checkout ----------------------------
+# The engine needs its own directory as cwd (it opens rl_model_data.json, params.json, pvc_curve_v2.json
+# and friends by RELATIVE path) AND it needs LTI_REGISTER.md, which lives at the repo ROOT rather than
+# beside it. Rather than write that file into engine/rl_after -- which would modify the repo, and which
+# single_source.py polices as a lookalike-copy hazard -- the engine is COPIED to scratch and run there.
+# THE REPO IS NEVER TOUCHED BY THIS SCRIPT.
+if not os.path.exists(os.path.join(STAGE, '_merged_recover.py')):
+    os.makedirs(os.path.dirname(STAGE), exist_ok=True)
+    shutil.copytree(ROOT + '/engine/rl_after', STAGE, dirs_exist_ok=True)
+if not os.path.exists(os.path.join(STAGE, 'LTI_REGISTER.md')):
+    shutil.copy(ROOT + '/LTI_REGISTER.md', STAGE)
 
 os.environ.update(PYTHONHASHSEED='0')
 sys.path[:0] = [ROOT, ROOT + '/vendor', ROOT + '/engine/forward_valuation', STAGE]
