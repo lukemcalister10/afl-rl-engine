@@ -21,6 +21,8 @@ its source. Two sources recur:
   document; re-runnable with `python3 pool_measure.py`).
 - **[SPLIT]** = `docs/evidence/composition_2026-08-10/noarb/SPLIT_TABLES.txt` and
   `B_PROVENANCE_AND_SPLITS.md` (produced earlier, already reviewed).
+- **[PROFILE]** = `docs/evidence/pool_repricing_2026-08-11/profile_measure_out.txt` (the ruled-basis
+  measure, added when D3 was ruled; re-runnable with `python3 profile_measure.py SHIP`).
 
 **Words used here.** *Stream* = one way a player enters the league (national draft, rookie draft,
 mid-season draft, and so on). *Entry price* = what the engine says a player is worth on the day he
@@ -72,8 +74,14 @@ scoring, while the entry price is a prior with no such check.
 
 ## D2 — One repair for the whole pool, or one per stream?
 
-**The measured spread. This is the decision's whole content.** Year-four delivery by stream, landed
-board **[POOL]**:
+**The measured spread. This is the decision's whole content.**
+
+> **~~SUPERSEDED by the D3 ruling of 2026-08-11.~~** The table immediately below is the **year-four**
+> reading. It is kept, not deleted, because the decision was framed on it — but the ruled basis is the
+> full outcome profile in **D3**, and **the re-landed option table is in D3A below.** Year four is now
+> one consulted data point.
+
+*Year-four delivery by stream, landed board* **[POOL]**:
 
 | stream | n | **yr4 delivery** | reading |
 |---|---|---|---|
@@ -94,8 +102,12 @@ board **[POOL]**:
 | | option | what happens |
 |---|---|---|
 | **A** | change nothing | the table above stands as it is |
-| **B** | one number for the whole pool (0.711) | RD lands 1.0382, ND>64 0.9740 — but **SSP is pushed to 1.8967** and **PDS stays at 0.2382**. It fixes the average and fixes almost no individual stream. |
-| **C** | one number per stream | every stream lands on 1.00 (RD 0.9998, SSP 1.0020, MSD 1.0000, IRE 0.9978, PDN 0.9972, PDS 0.9953, UNR 0.9994, PDA 0.9998, ND>64 0.9996) |
+| **B** | one number for the whole pool (~~0.711~~ **superseded**) | RD lands 1.0382, ND>64 0.9740 — but **SSP is pushed to 1.8967** and **PDS stays at 0.2382**. It fixes the average and fixes almost no individual stream. |
+| **C** | one number per stream (~~lands every stream on 1.00~~ **superseded — the target is ND's profile, not 1.00**) | on the year-four basis every stream landed on 1.00 (RD 0.9998, SSP 1.0020, MSD 1.0000, IRE 0.9978, PDN 0.9972, PDS 0.9953, UNR 0.9994, PDA 0.9998, ND>64 0.9996) |
+
+**The reading that survives the basis change is the ranking, not the numbers:** the streams differ by a
+large factor, one number cannot serve them all, and SSP and MSD do not under-deliver. All three hold on
+the ruled basis (D3A).
 
 **Seat lean: C, per stream.** Option B leaves two streams further from a fair price than they are today
 and moves a third the wrong way entirely. The owner's own words ask for *"pool, and the streams within
@@ -142,20 +154,141 @@ Thin cells are shown as blanks above, disclosed, never filled in.
 
 ---
 
-## D3 — Which year defines a "reflective" price? **OPEN QUESTION**
+## D3 — Which outcome basis defines a "reflective" price? **RULED, 2026-08-11**
 
-A stream's delivery is different at every year. RD reads 0.4672 at year one, 0.7379 at year four and
-0.6838 at year six **[POOL]**. Picking year four rather than year six changes every number in D2.
+**Owner, verbatim (issue #334, comment 5250813929):**
 
-Candidates: **the peak year** (where the stream is worth most), **year four** (where the national-draft
-book peaks), **year five or six** (a fuller career), or **an average across years**.
+> *"We should not be measuring only year 4 outcomes for this, though. We are looking to determine what
+> the pool pick price equivalent should be, and then the v0 of players selected through the pool
+> mechanism. We don't look at only year 4 for ND players. It should be one data point we consult, and
+> place in context with other data points."*
 
-**The seat has no ruling from the owner on this and has not chosen one.** Year four is used throughout
-this document **only so the options are comparable**, and every table says so. It is not a
-recommendation. This is the first thing the review should settle, because every other number depends on
-it.
+**RULED: the basis is the FULL OUTCOME PROFILE across career years — the same basis the national-draft
+pick curve prices from. Year four is one consulted data point in context and has no special status.**
+This sits with the standing **YEAR-4-IS-NOT-A-TARGET** law, which already forbids treating a single
+year as the thing being aimed at.
 
----
+**The objective, restated in the owner's own frame.** Two steps, in his order:
+1. **the pool pick price equivalent, per stream** — what a selection through that mechanism is worth,
+   set so it returns what a national-draft pick returns for the same money; then
+2. **the v0 of the players selected through that mechanism** — flowing from the stream's price exactly
+   as an ND player's entry price flows from the pick curve.
+
+### What "the same basis the ND pick curve prices from" is, read from the code
+
+The pick curve is taught by `structural_values()` in `harness_pvc_REPINNED_pass3.py:339`. Its
+per-player value is `realised_full(r)` at `:313`:
+
+> `realised_full(r) = Σ_k e_k · vpath[k] ÷ Σ_k e_k` over **every** career year k,
+> with `e_k = max(0, 1 − (pw_k − 0.11)/(1 − 0.11))`, and **0.0 for a player who never played a
+> six-game season**.
+
+**A correction the seat must make to its own order.** ORDER 12 described this as a *discounted* measure
+using the engine's discount rate. **It is not.** There is no discount rate at that site at all. The
+weighting `e_k` is the engine's **own evidence weight** — a career year counts in proportion to how much
+real evidence it carries, so empty early years count for little and played years count fully. The
+measure below therefore **calls the harness functions themselves** rather than re-implementing a
+discount integral, so the directive and the pick curve cannot drift apart. **[PROFILE]**
+
+### The measure, per stream
+
+**[PROFILE]** — headline column is the pick curve's own method, which completes unfinished careers the
+way the curve does; the years beside it are context, and **year four is one of them, nothing more**.
+
+| stream | n | **PROFILE** | fallback rows | yr1 | yr2 | yr3 | *yr4* | yr5 | yr6 |
+|---|---|---|---|---|---|---|---|---|---|
+| **ND 1-64** | 1444 | **1.0252** | 35 | 1.0665 | 1.3314 | 1.4870 | *1.5493* | 1.5218 | 1.4602 |
+| SSP | 52 | **1.0287** | 0 | 1.2295 | 1.3208 | 1.6006 | *1.3507* | 0.9226 | 0.4262 |
+| MSD | 106 | **0.9418** | 18 | — | 0.8897 | 0.9307 | *0.9485* | 1.0886 | 1.4533 |
+| ND>64 | 120 | **0.5477** | 3 | 0.3257 | 0.5161 | 0.5719 | *0.6924* | 0.6637 | 0.6380 |
+| RD | 688 | **0.5233** | 2 | 0.4672 | 0.6057 | 0.6419 | *0.7379* | 0.7147 | 0.6838 |
+| PDA | 51 | **0.4279** | 2 | 0.3669 | 0.4815 | 0.5987 | *0.7709* | 0.8885 | 0.4175 |
+| UNR | 59 | **0.3493** | 1 | 0.3182 | 0.3920 | 0.4541 | *0.7672* | 1.0073 | 0.6208 |
+| IRE | 57 | **0.2006** | 0 | 0.2385 | 0.3450 | 0.2932 | *0.2810* | 0.3301 | 0.3206 |
+| PDN | 43 | **0.1422** | 0 | 0.1741 | 0.2575 | 0.2183 | *0.2575* | 0.2322 | 0.4056 |
+| PDS | 21 | **0.1259** | 0 | 0.2165 | 0.1896 | 0.0653 | *0.1694* | 0.2518 | 0.2006 |
+| **ALL POOL** | 1197 | **0.5218** | 26 | 0.4351 | 0.5867 | 0.6227 | *0.7106* | 0.6995 | 0.6524 |
+
+**THE CALIBRATION TARGET IS ND'S OWN PROFILE — 1.0252 — NOT 1.00.** That figure is the measure
+validating itself: the pick curve is *taught* to reproduce realised value, so the stream it is taught on
+must land near one. Nothing else is required to.
+
+**On this basis ND delivers 1.96 times what the pool delivers per unit of entry price** (1.0252 against
+0.5218). **[PROFILE]**
+
+**A caveat that changes which column to trust for young streams.** A second measure — concluded careers
+only, no completion of any kind — reads MSD at **0.1215** and SSP at **0.4129** against the headline's
+0.9418 and 1.0287 **[PROFILE]**. The gap is not a contradiction: MSD began in 2019 and SSP in 2018, so
+only 43 of 106 MSD careers have finished, and a career that has *already* finished in a stream that
+young is one that ended early — that is, one that went badly. Measuring those two streams on finished
+careers alone selects their failures. The headline column completes unfinished careers by the pick
+curve's own method, and its fallback count is printed above so the modelling is visible.
+
+## D3A — THE OPTION TABLE, RE-LANDED ON THE RULED BASIS
+
+**This replaces the option sizing in D2.** Every figure **[PROFILE]**. `λ` is the multiplier on that
+stream's **entry prices**. The right-hand columns say where the stream's delivery lands **relative to
+ND** — 1.0000 means it returns exactly what a national-draft pick returns for the same money.
+
+| stream | n | profile | vs ND | **λ_B** (one number) | lands at | **λ_C** (per stream) | lands at | Σ entry now | Σ entry @C |
+|---|---|---|---|---|---|---|---|---|---|
+| RD | 688 | 0.5233 | 0.510 | 0.509 | 1.0030 | **0.510** | 1.0000 | 351,045 | 179,181 |
+| SSP | 52 | 1.0287 | 1.003 | 0.509 | **1.9717** | **1.003** | 1.0000 | 12,286 | 12,328 |
+| MSD | 106 | 0.9418 | 0.919 | 0.509 | **1.8051** | **0.919** | 1.0000 | 32,294 | 29,667 |
+| IRE | 57 | 0.2006 | 0.196 | 0.509 | 0.3844 | **0.196** | 1.0000 | 22,943 | 4,488 |
+| PDA | 51 | 0.4279 | 0.417 | 0.509 | 0.8202 | **0.417** | 1.0000 | 20,485 | 8,551 |
+| PDN | 43 | 0.1422 | 0.139 | 0.509 | 0.2726 | **0.139** | 1.0000 | 17,425 | 2,418 |
+| PDS | 21 | 0.1259 | 0.123 | 0.509 | 0.2412 | **0.123** | 1.0000 | 9,916 | 1,217 |
+| UNR | 59 | 0.3493 | 0.341 | 0.509 | 0.6696 | **0.341** | 1.0000 | 12,506 | 4,261 |
+| ND>64 | 120 | 0.5477 | 0.534 | 0.509 | 1.0497 | **0.534** | 1.0000 | 63,638 | 33,997 |
+| **ALL POOL** | 1197 | 0.5218 | 0.509 | 0.509 | 1.0000 | per stream | — | **542,537** | **276,109** |
+
+**Option B still fails for the same reason it failed on the old basis, and worse:** one number pushes
+**SSP to 1.97** and **MSD to 1.81** — nearly doubling two streams that are already priced about right —
+while leaving PDS at 0.24. **The seat's lean on D2 is unchanged: per stream.**
+
+### What the basis change did, and it went one way
+
+**Year four flattered the pool.** Every stream's multiplier falls when the full profile replaces year
+four, because year four sits at or near the top of most streams' profiles **[PROFILE, the year columns
+in D3]**:
+
+| stream | λ on the year-four basis *(superseded)* | **λ on the ruled basis** | change |
+|---|---|---|---|
+| UNR | 0.767 | **0.341** | **−56%** |
+| PDA | 0.771 | **0.417** | **−46%** |
+| PDN | 0.258 | **0.139** | **−46%** |
+| RD | 0.738 | **0.510** | **−31%** |
+| IRE | 0.281 | **0.196** | **−30%** |
+| PDS | 0.169 | **0.123** | **−27%** |
+| SSP | 1.351 | **1.003** | **−26%** |
+| ND>64 | 0.692 | **0.534** | **−23%** |
+| MSD | 0.948 | **0.919** | −3% |
+
+The pooled entry total for the pool falls from **388,329** on the old basis to **276,109** on the ruled
+one — the repricing is materially deeper than year four alone implied.
+
+**Two conclusions are basis-invariant and should be read as the robust part:** the streams differ by a
+large factor, and **SSP (1.003) and MSD (0.919) are already about right and barely move.**
+
+## D3B — RD BY POSITION, ON THE RULED BASIS
+
+The positional lens the owner asked for (D2), restated on the ruled measure **[PROFILE]**. Cells under
+twenty players are left blank with their counts, never forced.
+
+| position | n | **profile** | vs ND | *yr4 (context)* |
+|---|---|---|---|---|
+| RUCK | 71 | **0.9584** | 0.935 | *1.3339* |
+| SF | 147 | 0.6581 | 0.642 | *1.0529* |
+| MID | 176 | 0.5892 | 0.575 | *0.9193* |
+| SD | 158 | 0.4818 | 0.470 | *0.5961* |
+| KPF | 64 | 0.4180 | 0.408 | *0.5462* |
+| KPD | 72 | **0.2825** | 0.276 | *0.3598* |
+
+**Inside the rookie draft the spread is 0.276 to 0.935 against ND — a factor of 3.4.** Rookie-draft
+rucks are already close to fairly priced; rookie-draft key-position defenders return a bit over a
+quarter of what a national-draft pick returns for the same money. A single rookie-draft number would be
+wrong at both ends, and the samples support the split here and nowhere else in the pool.
 
 ## D4 — Thin streams: trust their own history, or pull them toward the pool average? **OPEN QUESTION**
 
@@ -193,10 +326,16 @@ multiplied every pool entry price by a known factor and changed nothing else):
 
 **A player with ten games or more cannot be moved by an entry-price change.** **[POOL]**
 
-Consequence on the live board **[POOL]**:
+**This finding is basis-invariant, and the seat verified that rather than assuming it.** The carry is
+measured from a board experiment about how much of an *entry-price* move reaches a *price*. It never
+touches the outcome measure, so ruling D3 changes the multiplier λ and does not change the carry
+**[PROFILE]**.
+
+Consequence on the live board, **restated on the ruled basis** **[PROFILE]**:
 - 242 pool players are on the board; **only 82 can be reached at all**; their combined value is
   **11,300 points of 745,888 — 1.51% of the board.**
-- Board total under option B: **745,888 → 744,661, −0.16%.**
+- Board total: **745,888 → 743,727 under option B (−0.29%)**, **→ 744,040 under option C (−0.25%)**.
+  *(On the superseded year-four basis this read −0.16%.)*
 
 The named players, under both options **[POOL]**:
 
@@ -211,9 +350,12 @@ The named players, under both options **[POOL]**:
 | Zac Banch | MSD | 10 | 128 | **128** | **128** |
 | Flynn Perez | SSP | 31 | 113 | **113** | **113** |
 | Paddy Cross | SSP | 10 | 113 | **113** | **113** |
-| Marcus Herbert | MSD | 8 | 1053 | 1011 | 1046 |
-| Mitch Podhajski | MSD | 2 | 195 | 187 | 194 |
-| Harrison Coe | MSD | 0 | 52 | **37** | **49** |
+| Marcus Herbert | MSD | 8 | 1053 | 971 | 1042 |
+| Mitch Podhajski | MSD | 2 | 195 | 180 | 193 |
+| Harrison Coe | MSD | 0 | 52 | **26** | **48** |
+
+*(Figures on the ruled basis* **[PROFILE]***. On the superseded year-four basis the three movers read
+1011/1046, 187/194 and 37/49. Every unchanged player above is unchanged on both bases.)*
 
 **The owner's expectation is confirmed exactly: Noble, Hall and Peatling do not move, because they are
 priced on their own playing record.** **[POOL]**
@@ -230,7 +372,14 @@ the mechanism that would do it.
 **Lowering pool entry prices RAISES the all-arm cohort ratios**, because the year-zero figure they are
 divided by falls while produced players' prices do not move.
 
-Measured **[POOL]**: all-arm year-one ratio, cohorts 2005-2023, **0.8850 → 0.9628** under option B.
+Measured on the ruled basis **[PROFILE]**: all-arm year-one ratio, cohorts 2005-2023, **0.8850 →
+1.0266** under option B and **→ 1.0355** under option C. *(On the superseded year-four basis this read
+0.9628.)*
+
+**A consequence the seat flags rather than buries: on the ruled basis this pushes the all-arm year-one
+figure ABOVE 1.00.** A cohort that gains value in its first year is the condition the free-money check
+exists to watch, and §4's flagged year-two step is about the very next rung. Whether landing above 1.00
+is acceptable is the owner's to say; the seat does not assume it.
 
 For reference, the same instrument reads **0.9326 on the pre-act engine** and **1.2936 at year four**
 **[SPLIT, all-arm table]**.
@@ -371,8 +520,11 @@ and marks that part **OPEN QUESTION**.
 **STATUS AFTER THE OWNER'S REVIEW OF 2026-08-11 (comment 5250723606).**
 The leans on **D1, D2, D5, D6 and D7 stand as approved** — *"All is okay on the directive… it is good
 to go."* **D8's form is settled** by his mean-preserving amendment; its existence question stays open.
-**D3 (which outcome year), D4 (thin streams) and D9 (how fast a body of work overcomes the prior)
-REMAIN OPEN and need the owner's words before any work begins on those specific items.**
+**D3 IS NOW RULED (2026-08-11, comment 5250813929): the full outcome profile, year four one data point
+in context.** All option sizing is re-landed on that basis in **D3A**, the year-four numbers are marked
+superseded in place rather than deleted, and the positional lens is restated in **D3B**.
+**D4 (thin streams) and D9 (how fast a body of work overcomes the prior) REMAIN OPEN and need the
+owner's words before any work begins on those specific items.**
 
 ---
 
@@ -412,6 +564,10 @@ already exist and were used for this document **[SPLIT]**.
 | how many live rows a level change can reach | [POOL] |
 | playing quality and games played, per stream and by draft age | [POOL] |
 | positional cell counts per stream, and year-four delivery by position where n>=20 (added at the owner's amendment of 2026-08-11) | [POOL] |
+| **the full outcome profile per stream, on the pick curve's own function, with the year columns beside it as context** (D3 ruling) | **[PROFILE]** |
+| **the option table re-landed against ND's own profile as the calibration target** | **[PROFILE]** |
+| **RD by position on the ruled basis** | **[PROFILE]** |
+| **consequences restated on the ruled basis, and the carry finding verified basis-invariant** | **[PROFILE]** |
 | the two-stories finding, and the 2012-onwards window | [SPLIT] |
 | the ITEM B provenance and why its steps were retired | [SPLIT] |
 | the sitter cells' derivation, their intervals and their combined effect | [SPLIT] |
@@ -422,7 +578,8 @@ already exist and were used for this document **[SPLIT]**.
    build. The figures above use the **measured** carry curve, which is an estimate for any row and
    exact only where the carry is 0.000 or 0.996.
 2. The same option read on both cohort instruments, with margins.
-3. Whichever year D3 settles on, if it is not year four — every number in D2 and D5 changes with it.
+3. ~~Whichever year D3 settles on~~ — **DONE**: D3 was ruled and every affected number is re-landed in
+   D3A, D3B, D5 and D6.
 4. Any shrinkage chosen in D4, applied and re-read.
 5. The sit-out charge in entry-price form, if D8 says it survives.
 
@@ -442,7 +599,18 @@ already exist and were used for this document **[SPLIT]**.
    they play.
 4. **The carry from entry price to price is close to a step, not a slope**: 0.996 at zero games, 0.119 at
    one to nine, **0.000 at ten or more** **[POOL]**.
-5. **Added after the owner's amendment, and it is the largest single thing found for this document:**
+5. **YEAR FOUR WAS FLATTERING THE POOL, and by a lot.** Moving to the ruled basis lowers **every**
+   stream's multiplier — UNR by 56%, PDA and PDN by 46%, the rookie draft by 31% **[PROFILE]**. Year
+   four sits at or near the top of most streams' profiles, so measuring there understated how
+   over-priced they are. The pooled pool entry total falls from 388,329 to **276,109**.
+6. **ND's own profile is 1.0252, not 1.00 — and that is the measure checking itself.** The pick curve is
+   taught to reproduce realised value, so the stream it is taught on must land near one. It also means
+   **the calibration target is ND's profile, not 1.00**, which is what "the pool pick price equivalent"
+   means in the owner's frame.
+7. **On the ruled basis the all-arm year-one figure goes ABOVE 1.00** (0.8850 → 1.0266 / 1.0355)
+   **[PROFILE]** — a cohort that gains value in its first year, which is the condition the free-money
+   check watches, and the very rung before §4's flagged year-two step.
+8. **Added after the owner's amendment, and still the largest positional finding:**
    inside the rookie draft, year-four delivery runs from **0.3598** for key-position defenders to
    **1.3339** for rucks **[POOL]**. **That spread inside one stream is wider than the gap between
    several whole streams.** The owner asked for positional lenses "where possible" expecting the

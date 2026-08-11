@@ -1,0 +1,99 @@
+======================================================================================================================
+### THE FULL OUTCOME PROFILE — the ruled basis (D3).  base SHIP
+======================================================================================================================
+  measure = SUM(realised_full)/SUM(v0), realised_full from harness_pvc_REPINNED_pass3.py:313
+  the SAME function the ND pick curve is taught from (structural_values, :339). No discount
+  rate is involved anywhere in that site: the weighting is the engine's own evidence weight.
+  whole-cohort completion provenance: {'completed': 734, 'prior_fallback_no_written': 18, 'concluded_realised': 1846, 'prior_fallback_thin': 43}  fallback share 2.31%
+
+  stream        n |  PROFILE (A)  n concl |  PROFILE (B)  fallback |     yr1     yr2     yr3     yr4     yr5     yr6
+  --------------------------------------------------------------------------------------------------------------------
+  ND 1-64    1444 |       0.8912      890 |       1.0252        35 |  1.0665  1.3314  1.4870  1.5493  1.5218  1.4602
+  RD          688 |       0.4491      622 |       0.5233         2 |  0.4672  0.6057  0.6419  0.7379  0.7147  0.6838
+  SSP          52 |       0.4129       24 |       1.0287         0 |  1.2295  1.3208  1.6006  1.3507  0.9226  0.4262
+  MSD         106 |       0.1215       43 |       0.9418        18 |     nan  0.8897  0.9307  0.9485  1.0886  1.4533
+  IRE          57 |       0.2023       43 |       0.2006         0 |  0.2385  0.3450  0.2932  0.2810  0.3301  0.3206
+  PDA          51 |       0.3511       36 |       0.4279         2 |  0.3669  0.4815  0.5987  0.7709  0.8885  0.4175
+  PDN          43 |       0.0407       27 |       0.1422         0 |  0.1741  0.2575  0.2183  0.2575  0.2322  0.4056
+  PDS          21 |       0.1259       21 |       0.1259         0 |  0.2165  0.1896  0.0653  0.1694  0.2518  0.2006
+  UNR          59 |       0.2637       46 |       0.3493         1 |  0.3182  0.3920  0.4541  0.7672  1.0073  0.6208
+  ND>64       120 |       0.3111       94 |       0.5477         3 |  0.3257  0.5161  0.5719  0.6924  0.6637  0.6380
+  ALL POOL   1197 |       0.3903      956 |       0.5218        26 |  0.4351  0.5867  0.6227  0.7106  0.6995  0.6524
+
+  Year columns are CONTEXT. Year 4 carries no special status (owner ruling, D3).
+
+======================================================================================================================
+### RD BY POSITION ON THE RULED BASIS (the only pool stream whose samples support a lens)
+======================================================================================================================
+  pos        n  PROFILE (A)  n concl  PROFILE (B)  fallback  yr4 (context)
+  MID      176       0.5663      164       0.5892         0         0.9193
+  SD       158       0.3528      142       0.4818         1         0.5961
+  SF       147       0.6374      132       0.6581         1         1.0529
+  KPD       72       0.2515       64       0.2825         0         0.3598
+  KPF       64       0.2826       58       0.4180         0         0.5462
+  RUCK      71       0.7492       62       0.9584         0         1.3339
+
+======================================================================================================================
+### OPTION SIZING RE-LANDED ON THE RULED BASIS
+======================================================================================================================
+  HEADLINE MEASURE = PROFILE (B), the pick curve's OWN method (structural_values), because that
+  is what 'the same basis the ND pick curve prices from' means in the code. (A) is reported as
+  the no-modelling cross-check and is biased for RECENT streams - see the caveat below.
+
+  ND 1-64 profile = 1.0252.  IT IS NOT 1.00 AND IT IS NOT SUPPOSED TO BE - but it is close,
+  which is the measure validating itself: the pick curve is TAUGHT to reproduce realised value,
+  so the stream it is taught on must land near 1.
+  THE CALIBRATION TARGET IS THEREFORE ND'S OWN PROFILE, NOT 1.00. 'The pool pick price
+  equivalent' (the owner's words) = the price at which a pool entrant returns what an ND pick
+  returns per unit of entry price.
+
+  pool profile 0.5218 vs ND 1.0252  ->  ND delivers 1.96x what the pool does
+  per unit of entry price.
+
+  stream        n   profile   vs ND |   lam_B       @B |   lam_C       @C |      Sig v0          @C
+  --------------------------------------------------------------------------------------------------------
+  RD          688    0.5233   0.510 |   0.509   1.0030 |   0.510   1.0000 |     351,045     179,181
+  SSP          52    1.0287   1.003 |   0.509   1.9717 |   1.003   1.0000 |      12,286      12,328
+  MSD         106    0.9418   0.919 |   0.509   1.8051 |   0.919   1.0000 |      32,294      29,667
+  IRE          57    0.2006   0.196 |   0.509   0.3844 |   0.196   1.0000 |      22,943       4,488
+  PDA          51    0.4279   0.417 |   0.509   0.8202 |   0.417   1.0000 |      20,485       8,551
+  PDN          43    0.1422   0.139 |   0.509   0.2726 |   0.139   1.0000 |      17,425       2,418
+  PDS          21    0.1259   0.123 |   0.509   0.2412 |   0.123   1.0000 |       9,916       1,217
+  UNR          59    0.3493   0.341 |   0.509   0.6696 |   0.341   1.0000 |      12,506       4,261
+  ND>64       120    0.5477   0.534 |   0.509   1.0497 |   0.534   1.0000 |      63,638      33,997
+  ALL POOL   1197    0.5218   0.509 |   0.509   1.0000 | per-arm          |     542,537     276,109
+
+  lam is the multiplier on that stream's ENTRY prices. @B / @C are where the stream's delivery
+  lands RELATIVE TO ND (1.0000 = delivers exactly what an ND pick delivers per unit of entry).
+
+  CAVEAT ON PROFILE (A) FOR RECENT STREAMS, and it is why (B) is the headline. MSD reads (A)
+  0.1215 against (B) 0.9418, and SSP (A) 0.4129 against (B) 1.0287. MSD began in 2019 and SSP in
+  2018, so only 43 of 106 MSD careers have CONCLUDED - and a career that has already concluded
+  from a stream that young is one that ended early, i.e. one that went badly. Measuring those
+  streams on concluded rows alone selects their failures. (B) completes the unfinished careers
+  by the pick curve's own method and its fallback share is printed above.
+
+======================================================================================================================
+### CONSEQUENCES RE-MEASURED ON THE RULED BASIS
+======================================================================================================================
+  board rows a level change can reach : 82 of 242 pool rows  (1.51% of the board)
+  THE STEP-FUNCTION CARRY IS BASIS-INVARIANT BY CONSTRUCTION and is verified so: it is measured
+  from the ITEM B board experiment (how much of an ENTRY-PRICE move reaches a PRICE) and never
+  touches the outcome measure at all. Changing D3 changes lambda, not the carry.
+  board total 745,888 -> 743,727 under option B (one lambda)  (-0.29%)
+  board total 745,888 -> 744,040 under option C (per stream)  (-0.25%)
+  ALL-ARM yr1 ratio 2005-2023: now 0.8850  ->  1.0266 under B  ->  1.0355 under C
+
+  player             stream   games     e    SHIP      @B      @C
+  John Noble         MSD        158  0.00    2162    2162    2162
+  Max Hall           MSD         44  0.00    2820    2820    2820
+  James Peatling     MSD         88  0.00    1100    1100    1100
+  Mark Keane         SSP         63  0.00    1514    1514    1514
+  Tom McCarthy       MSD         30  0.00    1468    1468    1468
+  Lachlan McAndrew   SSP         22  0.00    1208    1208    1208
+  Marcus Herbert     MSD          8  0.12    1053     971    1042
+  Zac Banch          MSD         10  0.00     128     128     128
+  Flynn Perez        SSP         31  0.00     113     113     113
+  Paddy Cross        SSP         10  0.00     113     113     113
+  Mitch Podhajski    MSD          2  0.12     195     180     193
+  Harrison Coe       MSD          0  1.00      52      26      48
