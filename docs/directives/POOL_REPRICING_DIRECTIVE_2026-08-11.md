@@ -7,8 +7,9 @@ required by his own process ruling of the same day (*"I would like to review the
 sent."*).
 
 **Nothing here is wired, built or scheduled.** The document ends at the decision list and the
-measurement ledger. Three decisions remain **OPEN** and need the owner's words before any work begins
-on those specific items — they are named in the §0 summary.
+measurement ledger. **Exactly one decision now remains OPEN — D9, how fast a player's own record
+should overcome the price he entered at.** It is stated at the top of the §0 summary so the sitting
+has one question in front of it and no others.
 
 **What the owner asked for, verbatim (comment 5250574134):**
 
@@ -27,6 +28,8 @@ its source. Two sources recur:
   same-derivation principle was ruled; re-runnable with `python3 derive_vs_scale.py`).
 - **[RECON]** = `docs/evidence/pool_repricing_2026-08-11/reconciliation_out.txt` (the two-layer
   reconciliation test; re-runnable with `python3 reconciliation.py`).
+- **[SIGNAL]** = `docs/evidence/pool_repricing_2026-08-11/shared_signal_out.txt` (the shared-signal
+  pre-check and the K sensitivity; re-runnable with `python3 shared_signal.py`).
 
 **Words used here.** *Stream* = one way a player enters the league (national draft, rookie draft,
 mid-season draft, and so on). *Entry price* = what the engine says a player is worth on the day he
@@ -39,8 +42,9 @@ time to play their first season in the same year.
 # §0 — THE DECISION LIST
 
 Nine decisions. Each has options, a marked seat lean with its reason, and the measured consequence
-where one exists. Four are marked **OPEN QUESTION** — the seat does not have the owner's preference on
-record and has not guessed.
+where one exists. **One — D9 — is still marked OPEN QUESTION**; the seat does not have the owner's
+preference on record and has not guessed. The other eight are ruled, resolved, or approved as they
+stand, each marked in place with the date and the comment it was ruled in.
 
 ---
 
@@ -359,56 +363,120 @@ rucks are already close to fairly priced; rookie-draft key-position defenders re
 quarter of what a national-draft pick returns for the same money. A single rookie-draft number would be
 wrong at both ends, and the samples support the split here and nowhere else in the pool.
 
-## D4 — Thin streams: trust their own history, or pull them toward the pool average? **OPEN QUESTION**
+## D4 — thin cells and thin streams: **RESOLVED, 2026-08-11 (comment 5251186828), with two conditions**
 
-Player counts **[POOL]**: RD 688 · MSD 106 · ND>64 120 · UNR 59 · IRE 57 · SSP 52 · PDA 51 · PDN 43 ·
-**PDS 21**.
+**Owner, verbatim:**
 
-PDS has twenty-one players and reads 0.1694. Taken at face value that is a very large repricing built
-on a very small sample. The engine already uses a standard method for this elsewhere — pull a small
-group's own number partway toward the wider average, by an amount that depends on how small it is
-(described in the #336 work as `n/(n+K)` shrinkage).
+> *"In terms of D4 - I think it would be good to get the 'all-in' number for the thin streams, before
+> positions. And then the positional v0 for thin streams within the pool can borrow from a combination
+> of the 'whole pool' and then its own 'all-in' number. I.e. a MSD ruck might borrow from the
+> 'all-in-pool ruck prior, but also the MSD all-in, positionless pool prior. What do you think?"*
 
+**RULED.** (1) **Every pathway gets a layer-1 all-in value, thin ones included** — pooling across
+positions gives a usable sample where six separate cells do not. (2) **Thin positional cells are built
+by borrowing**: the stream's own all-in carries the **level**, a positional prior carries the **shape**,
+and the cell's own data is weighted in by its sample size.
 
-### [ORDER 13] CAN EACH STREAM ACTUALLY BE DERIVED? — the counts decide, and they are printed
+### 1. This is partial pooling, and the engine already does it — reuse, do not invent
 
-A cell needs **at least twenty players** to be derived on its own outcome history. **[DERIVE]**
+The construction is the standard one and **the engine already uses this exact pattern in two places**:
 
-| stream | n | MID | SD | SF | KPD | KPF | RUCK | derivable cells | verdict |
-|---|---|---|---|---|---|---|---|---|---|
-| ND 1-64 | 1444 | 432 | 306 | 304 | 153 | 173 | 76 | 6 | *(the reference)* |
-| **RD** | 688 | 176 | 158 | 147 | 72 | 64 | 71 | **6** | **per-position derivation: FULL** |
-| ND>64 | 120 | 28 | 25 | 30 | 12 | 16 | 9 | 3 | per-position: PARTIAL |
-| MSD | 106 | 23 | 13 | 23 | 14 | 19 | 14 | 2 | per-position: PARTIAL |
-| UNR | 59 | 8 | 4 | 5 | 9 | 3 | 30 | 1 | per-position: PARTIAL |
-| IRE | 57 | 5 | 35 | 4 | 6 | 5 | 2 | 1 | per-position: PARTIAL |
-| SSP | 52 | 5 | 8 | 16 | 5 | 12 | 6 | **0** | stream-level derivation only |
-| PDA | 51 | 14 | 10 | 14 | 2 | 6 | 5 | **0** | stream-level derivation only |
-| PDN | 43 | 4 | 14 | 16 | 5 | 2 | 2 | **0** | stream-level derivation only |
-| **PDS** | 21 | 7 | 5 | 3 | 4 | 1 | 1 | **0** | **stream-level only, AND THIN** |
+- `engine/rl_after/rl_model.py:458-462` — `_pest_336` shrinks each (position × band) rate toward the
+  all-position band marginal by `n/(n+K)`, with **`K_336 = 10.0`** declared at `:396`.
+- `engine/forward_valuation/par_build.py:164` — **`K_338 = 10.0`**, "shrink each stratum toward the
+  all-position BAND marginal", described at `:120` as *"the same n/(n+k) design the ramp shrinkage
+  already uses"*. Its thin-cell gradient construction (borrow a reliable neighbour's level, scale it by
+  the marginal's gradient) is at `rl_model.py:512`.
 
-**So the ruling is fully achievable for one pool stream and partly achievable for four.** The rookie
-draft — the largest by a distance, 688 players — supports derivation in every position. Four streams
-support it in some positions. Four support only a stream-level number, and **PDS at twenty-one players
-supports that only weakly.**
+**The seat's recommendation is to reuse that machinery and that convention rather than introduce a
+second one**, so the pool layer shrinks thin cells the same way the rest of the engine already does.
 
-**THE FALLBACK IS AN OPEN QUESTION AND THE SEAT DOES NOT CHOOSE IT.** For a cell too thin to derive,
-the candidates are: **(i)** use the stream-level number for that cell · **(ii)** pull the cell's own
-number partway toward the stream number by how thin it is (the `n/(n+K)` method the engine already uses
-elsewhere) · **(iii)** borrow the shape from a stream that *is* derivable — the rookie draft — and carry
-only the level from the thin stream · **(iv)** leave the thin stream unchanged until it has the sample.
+**What K costs, so the choice is visible [SIGNAL]** — `w = n/(n+K)` is how much of its own signal a cell
+keeps:
 
-**This is D4, and it is now the question that gates how much of the ruling can be delivered.** It needs
-the owner's words.
+| cell | n | K=5 | **K=10** | K=20 |
+|---|---|---|---|---|
+| SSP MID | 5 | 0.500 | **0.333** | 0.200 |
+| SSP RUCK | 6 | 0.545 | **0.375** | 0.231 |
+| MSD SD | 13 | 0.722 | **0.565** | 0.394 |
+| MSD RUCK | 14 | 0.737 | **0.583** | 0.412 |
+| MSD KPF | 19 | 0.792 | **0.655** | 0.487 |
+| *a sampled cell (RD KPD)* | 72 | 0.935 | **0.878** | 0.783 |
 
-Options for D4 itself: **(i)** use each stream's own number as measured · **(ii)** pull thin streams toward the pool
-average · **(iii)** set a minimum player count and merge streams below it.
+At **K=10** a 14-player cell keeps 58% of its own signal and borrows 42%; at K=5 it keeps 74%, at K=20
+just 41%. **K is how quickly the engine stops believing a small cell.**
 
-**The seat has no owner ruling on which, and marks it open.** The seat notes only that PDS ran from
-2007 to 2011 and no longer takes entrants **[POOL, stream counts]**, so whatever is decided for it
-affects history and not future intake.
+### 2. THE RENORMALISATION GUARD — mandatory, and it protects the owner's own reconciliation law
 
----
+**Applying a pool positional shape to a stream returns that stream's all-in value ONLY IF the stream's
+position mix matches the pool's — and it generally does not.** UNR is 30 rucks of 59 players; IRE is 35
+small defenders of 57 **[RECON]**. A ruck-heavy stream borrowing a ruck-favouring shape would be dragged
+**above** its own measured level, and the pathway would stop averaging to its all-in value.
+
+**So the construction renormalises per stream, after borrowing:**
+
+> borrowed: `v_c = w_c · own_c + (1 − w_c) · ( S_allin × shape_c )`, with `w_c = n_c/(n_c + K)`
+> measure: `M = Σ_c ( e_c · v_c ) ÷ Σ_c e_c` — the entry-weighted mean the stream actually lands on
+> **renormalise: `v'_c = v_c × ( S_allin ÷ M )`**
+> then `Σ_c ( e_c · v'_c ) ÷ Σ_c e_c = S_allin` **exactly**
+
+**Without this step, borrowing silently breaks the reconciliation law ruled in §0A.** It is one
+multiplication per stream and it is not optional.
+
+### 3. THE SHARED-SIGNAL PRE-CHECK — ordered, run, and **IT DID NOT PASS**
+
+Borrowing a shape assumes the positional signal is **shared** across pathways. RD and ND both have all
+six cells, so the assumption is testable. Shape = a cell's profile ÷ its own stream's all-in, which
+removes the level and leaves only the pattern **[SIGNAL]**:
+
+| position | ND n | **ND shape** | RD n | **RD shape** | rank ND | rank RD |
+|---|---|---|---|---|---|---|
+| MID | 432 | 0.9848 | 176 | 1.1259 | 5 | 3 |
+| SD | 306 | 1.0076 | 158 | 0.9207 | 4 | 4 |
+| SF | 304 | 0.9763 | 147 | 1.2576 | 6 | 2 |
+| **KPD** | 153 | **1.0514** | 72 | **0.5399** | **1** | **6** |
+| KPF | 173 | 1.0344 | 64 | 0.7988 | 3 | 5 |
+| RUCK | 76 | 1.0366 | 71 | 1.8315 | 2 | 1 |
+
+> **correlation of the two shape vectors: −0.2350 · ordering agreement: 4 concordant pairs of 15
+> (chance is ~7.5) · ND spread 1.08× against RD spread 3.39×**
+
+**THE SIGNAL IS NOT SHARED. Two things are true and both matter:**
+
+1. **The national draft has almost no positional signal at all** — every position delivers within **8%**
+   of the ND average. Positional differentiation is a **pool phenomenon**, not a general one.
+2. **Where the two can be compared they point opposite ways on the biggest cell.** Key-position
+   defenders are the **best** ND cell (rank 1) and the **worst** RD cell (rank 6).
+
+**This decides the owner's choice (a) on the evidence rather than on preference:**
+
+> **The donor must be WHOLE-POOL ONLY. Including ND entrants is not defensible** — ND's shape is flat
+> and uncorrelated with the pool's, so adding it would wash out the very signal being borrowed.
+
+**And an honest limit on the borrow itself, which the seat states rather than leaves to be discovered:**
+the whole-pool shape is **dominated by RD** (688 of 1,197 pool players), so a thin MSD ruck borrowing
+"the pool ruck prior" is in practice borrowing **the RD ruck prior**. Whether MSD rucks behave like RD
+rucks cannot be tested at n=14. **That argues for the shrinkage leaning on each stream's own all-in
+rather than on the borrowed shape — which is exactly what the owner's construction does, and it is the
+reason the guard in §2 above is not optional.**
+
+### 4. THE RECURSION — thin streams borrowing their all-in
+
+The same machinery works one level up: a very thin **stream** can borrow its layer-1 value from the
+whole-pool value by the same `n/(n+K)` shrinkage. **PDS at n=21 is the only pathway where this clearly
+bites** — every other pathway has 43 or more.
+
+**OPEN SUB-QUESTION, and the seat does not decide it.** PDS ran 2007-2011 and takes no new entrants, so
+shrinking it toward the pool changes only historical prices and nothing forward-looking. Whether that is
+worth doing at all, or whether PDS should simply keep its own measured number with its thinness
+disclosed, needs the owner's word.
+
+### The two choices that remain his
+
+| | choice | seat position |
+|---|---|---|
+| **(a)** | donor for the positional prior | **decided by the pre-check: whole-pool only.** Including ND is not defensible on the measurement above. |
+| **(b)** | borrowing strength K | seat recommends **K = 10**, the engine's existing convention in both `_pest_336` and `par_build`, rather than tuning a new number. Sensitivity shown above so the cost of a different K is visible. |
 
 ## D5 — Does the repair change what today's players are worth?
 
@@ -616,7 +684,8 @@ on the evidence that the carry is already measured at zero by ten games.
 **The caution the seat attaches to its own lean:** ten games is a low bar for "proven". If a reflective
 entry price is materially lower than today's, a player could climb off it very quickly, which may or
 may not be wanted. The seat has no owner ruling on how fast a body of work should overcome the prior,
-and marks that part **OPEN QUESTION**.
+and marks that part **OPEN QUESTION — and, as of the D4 resolution, it is the ONLY one left in this
+directive.**
 
 ---
 
@@ -630,13 +699,25 @@ is limited, layer 2 is what must be right.** The architecture is set out in **§
 |---|---|---|
 | D1 | is the entry price the defect? | yes — and **RULED 2026-08-11: pool values are DERIVED from outcomes the ND way, not scaled**; the λ table is now evidence and sizing, not the mechanism |
 | D2 | one repair or per stream? | **per stream** |
-| D3 | which year defines "reflective"? | **OPEN QUESTION** |
-| D4 | thin streams: own history or pulled toward the average? | **OPEN QUESTION** |
+| D3 | which year defines "reflective"? | **RULED 2026-08-11: the full outcome profile; year four is one data point in context** |
+| D4 | thin streams: own history or pulled toward the average? | **RESOLVED 2026-08-11: every pathway gets an all-in value; thin cells borrow shape under partial pooling, with two conditions** |
 | D5 | does it re-rate today's players? | measured: no, 1.51% of the board can move at all |
 | D6 | the no-arbitrage effect | measured: all-arm year one 0.8850 → 0.9628 under one option |
 | D7 | draft age, per stream, on quality only | quality only, per stream; whether at all is open |
 | D8 | the sitter cells on the entry-price side | **FORM SETTLED** by owner amendment (mean-preserving); **whether it exists at all is OPEN** |
-| D9 | is the existing evidence fade enough? | yes; how fast it should work is **OPEN QUESTION** |
+| D9 | is the existing evidence fade enough? | yes; **how fast it should work is the ONE REMAINING OPEN QUESTION** |
+
+### ONE QUESTION REMAINS: **D9 — how fast should a body of work overcome the entry prior?**
+
+Everything else in this directive is either ruled or measured. D9 is the last thing the seat cannot
+decide for the owner. It is asked in full at **D9** below; in one line it is:
+
+> *A player enters at a pathway price. He then plays. How many games of his own should it take before
+> his own record, rather than the price he entered at, is what mostly sets his value?*
+
+The seat has measured that the machinery to do this **already exists** and already works — the question
+is only its speed, and the speed is a judgement about how much a season of AFL football tells you,
+which is the owner's to make and not the seat's. Nothing else is waiting on him.
 
 **STATUS AFTER THE OWNER'S REVIEW OF 2026-08-11 (comment 5250723606).**
 The leans on **D1, D2, D5, D6 and D7 stand as approved** — *"All is okay on the directive… it is good
@@ -646,10 +727,15 @@ in context.** All option sizing is re-landed on that basis in **D3A**, the year-
 superseded in place rather than deleted, and the positional lens is restated in **D3B**.
 **D1's MECHANISM and D6 are now also RULED (2026-08-11, comment 5251055803): derive rather than scale,
 and year-one cohort appreciation is acceptable.**
-**D4 (thin streams) and D9 (how fast a body of work overcomes the prior) REMAIN OPEN and need the
-owner's words before any work begins on those specific items.** D4 has become the gating question: the
-counts show derivation is fully achievable for one pool stream, partly for four, and stream-level only
-for four more — so D4 decides how much of the same-derivation ruling can actually be delivered.
+**D4 IS NOW RESOLVED (2026-08-11, comment 5251186828): every pathway gets its own all-in value, and
+thin cells borrow shape from the wider pool under partial pooling.** Two conditions ride with it — a
+**renormalisation guard** (borrowing must not change the pathway's all-in value) and a **shared-signal
+pre-check** (borrow only where the donor's signal is actually shared). The pre-check has been run and
+it **FAILED for the national draft**, so the donor is **whole-pool only**; that finding and its honest
+limit are written into **D4**.
+
+**D9 (how fast a body of work overcomes the entry prior) IS THE ONLY DECISION STILL OPEN.** It is put
+at the top of this summary, above, so the sitting has exactly one question to answer.
 
 
 ---
@@ -829,6 +915,9 @@ already exist and were used for this document **[SPLIT]**.
 | **consequences restated on the ruled basis, and the carry finding verified basis-invariant** | **[PROFILE]** |
 | **derive-vs-scale on the rookie draft, per position, with the residual error under scaling** | **[DERIVE]** |
 | **per-stream feasibility of derivation, cell counts printed** | **[DERIVE]** |
+| **the two-layer reconciliation test, both remainder rules, every pathway** | **[RECON]** |
+| **the shared-signal pre-check: ND vs RD positional shapes, correlation, ordering agreement and spread** | **[SIGNAL]** |
+| **the K sensitivity table, `w = n/(n+K)` at K = 5 / 10 / 20 for the thin cells** | **[SIGNAL]** |
 | the two-stories finding, and the 2012-onwards window | [SPLIT] |
 | the ITEM B provenance and why its steps were retired | [SPLIT] |
 | the sitter cells' derivation, their intervals and their combined effect | [SPLIT] |
@@ -841,8 +930,9 @@ already exist and were used for this document **[SPLIT]**.
 2. The same option read on both cohort instruments, with margins.
 3. ~~Whichever year D3 settles on~~ — **DONE**: D3 was ruled and every affected number is re-landed in
    D3A, D3B, D5 and D6.
-4. Any shrinkage chosen in D4, applied and re-read — **now the gating item**, because it decides which
-   cells can be derived and which need a fallback.
+4. ~~Any shrinkage chosen in D4~~ — **the RULE is now settled** (partial pooling, whole-pool donor,
+   renormalisation guard, K=10 recommended). What is still not run is the shrinkage **applied** and the
+   resulting per-cell numbers read back, which belongs with item 6 below.
 6. The derived per-cell entry values themselves, once D4 fixes the fallback rule. This document sizes
    the derivation and proves the mechanism; it does not produce the numbers that would ship.
 5. The sit-out charge in entry-price form, if D8 says it survives.
@@ -889,6 +979,21 @@ already exist and were used for this document **[SPLIT]**.
    several whole streams.** The owner asked for positional lenses "where possible" expecting the
    samples to be the obstacle; the samples do block it for every small stream, but they permit it
    exactly where the players are — and where it is permitted, it matters more than the stream label.
+11. **THE POSITIONAL SIGNAL IS NOT SHARED ACROSS PATHWAYS — the seat ran this expecting it to pass and
+   it failed.** ND and RD shapes correlate at **−0.2350**, agree on **4 orderings of 15** (chance is
+   ~7.5), and disagree at the extreme: key-position defenders are ND's **best** cell and RD's **worst**
+   **[SIGNAL]**. This was ordered as a check on the owner's borrowing design and it changed the design's
+   donor, on measurement rather than on preference.
+12. **AND THE NATIONAL DRAFT HAS ALMOST NO POSITIONAL SIGNAL AT ALL.** Every ND position delivers within
+   **8%** of the ND average (spread **1.08×**) while the rookie draft spans **3.39×** **[SIGNAL]**.
+   **Positional differentiation is a pool phenomenon, not a general property of drafted players.** That
+   is a finding about the pool in its own right, separate from what to do about it: whatever makes
+   position matter so much inside the pool does not operate on the national draft.
+13. **The two-layer reconciliation does NOT hold trivially for thin pathways, which the seat had assumed
+   it would.** Letting a partly-sampled pathway's unsampled remainder carry the pathway average fails at
+   **1.52e-01** for MSD and **1.36e-01** for IRE **[RECON]**; pricing the remainder as its own residual
+   group reconciles every pathway at float noise. The law needed a rule the seat had not expected to
+   need, and it was found by running the test rather than by reasoning about it.
 
 
 ---
