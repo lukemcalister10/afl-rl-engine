@@ -2054,13 +2054,63 @@ def _c_w(p,Y,e_full,anchor):
     Q=float(np.clip(sa/par,0.0,_C_QMAX)) if par>0 else 0.0
     gate=min(e_full/anchor,1.0) if e_full>0 else 0.0
     return G*Q*gate
+# ===== #334 ITEM A — THE FLOOR BASIS. DIAL-GATED MEASUREMENT VARIANT, DEFAULT OFF.
+# THE DESIGN QUESTION, not a defect claim: the directive's replacement line said "anchor leg, FLOOR
+# basis". What was implemented is LAM_SIT's SYMMETRIC blend, which borrows in BOTH directions — so a
+# hot year-1 row is dragged DOWN toward its anchor as well as a cold one being lifted UP. The floor
+# basis makes the borrowing ONE-WAY: the prior supports from below, production leads from above.
+#   RL_A_FLOOR=0 (DEFAULT) => the symmetric blend, byte-exact to the composed build.
+#   RL_A_FLOOR=1           => price = max(production-led value, blended value) at the A site.
+# Because blend = e_full + s*(anch - e_full), the blend exceeds e_full IFF anch > e_full. So the
+# floor is EXACTLY "apply the blend only where it raises the row", with no separate branch needed
+# and no discontinuity: at anch == e_full the two forms agree exactly.
+#
+# INTERACTION WITH THE SURPRISE LAW, stated because both act in the same neighbourhood and the order
+# required it be flagged rather than assumed away. THE COMPOSITION ORDER IMPLEMENTED: SUR acts inside
+# sitout_ev, on the sit-out path, and is NOT touched here; the floor acts at the A site in ev(); and
+# neither is applied to the other's output. The floor CANNOT undo SUR on a hot row: SUR's job on a
+# hot thin record is to shrink it toward the anchor, and the floor is INERT whenever anch < e_full
+# (it only ever raises). Hot rows stay shrinkable — that is the property the order asked me to
+# protect, and it holds by construction rather than by tuning.
+# WHERE THEY DO COMPOSE, and it is flagged as an interaction to watch rather than a defect: SUR's
+# surprise statistic s=|log(e_full/anchor)| is SYMMETRIC IN SIGN, so it also fires on a COLD thin
+# record and pushes it toward the anchor — i.e. UP. On cold thin rows SUR and the floor therefore
+# push the SAME way and their effects compose. That is the one place a double-lift can appear, and
+# the measurement prints its size rather than asserting it is small.
+_A_FLOOR=os.environ.get('RL_A_FLOOR','0')!='0'
+# ===== #334 ITEM A — THE EVIDENCE-FADED DRAG. The middle design between the symmetric blend and the
+# hard floor. The anchor's PULL-DOWN weakens in proportion to how much the player has PROVEN, while
+# the PULL-UP (support for a cold or evidence-less row) keeps the existing games-fade untouched.
+#   RL_A_DRAGFADE=0 (DEFAULT) => byte-exact to the composed build.
+#   RL_A_DRAGFADE=1           => in the DRAG case only, the anchor's weight s is scaled by (1-w).
+#
+# ONE-SA-READER DISCIPLINE, which the order required me to assert rather than assume. w is the ITEM C
+# evidence weight G*Q*gate, and it is now computed EXACTLY ONCE per call and used for both roles: the
+# C ceiling release on the anchor LEVEL, and the drag fade on the anchor WEIGHT. sa is therefore read
+# once per row, by one reader, exactly as before — this variant adds no second consumption of the
+# career average and no second par lookup.
+# HOW THE TWO ROLES INTERACT, stated rather than left to be discovered: they act in OPPOSITE
+# directions on a drag-case row and therefore cannot compound into a runaway. A high-evidence player
+# gets a LARGER C release (anch raised by 1+w*(C_H-1)) but a SMALLER drag weight (s scaled by 1-w);
+# the more proof he has, the more his own production leads and the less the raised ceiling can pull
+# him back. The compounding risk the order asked about is real in principle and absent here by sign.
+# CLAMP, disclosed because it is a real edge and not a formality: w = G*Q*gate is NOT bounded by 1 —
+# Q is clipped at _C_QMAX=2.0, so w can reach ~2 for a very-high-quality established row. An
+# unclamped (1-w) would go NEGATIVE and flip the anchor from a drag into a PUSH, which is not the
+# design. The scale is therefore clipped to [0,1]: at w>=1 the drag is fully faded out and the row is
+# priced on production alone, which is the intended limit, not a special case.
+_A_DRAGFADE=os.environ.get('RL_A_DRAGFADE','0')!='0'
 def _a_blend(p,Y,e_full):
     tau=max(0.0,Y-cp.debutyr(p))+((_fEy(Y,p)**1.5) if Y>=cp.debutyr(p) else 0.0)   # sitout_ev's own depth clock
     R=_R_surf(_sitout_cls(MA.gfut(p)),MA.effpk(p),tau)
-    anch=R*entry_anchor(p)
-    anch=anch*(1.0+_c_w(p,Y,e_full,entry_anchor(p))*(C_H-1.0))       # #334 ITEM C: the cap release on the taught level
+    anch0=R*entry_anchor(p)
+    w=_c_w(p,Y,e_full,entry_anchor(p))                               # THE ONE READ of the evidence weight; both roles below use this value
+    anch=anch0*(1.0+w*(C_H-1.0))                                     # #334 ITEM C: the cap release on the taught level
     s=_a_share(p,Y)
-    return (1.0-s)*e_full+s*anch
+    if _A_DRAGFADE and anch<e_full:                                  # DRAG case only (anchor below production); support case keeps the games-fade
+        s=s*min(max(1.0-w,0.0),1.0)                                  # clipped: w can exceed 1 (Q<=2), and a negative weight would invert the leg
+    b=(1.0-s)*e_full+s*anch
+    return max(e_full,b) if _A_FLOOR else b                          # #334 A-FLOOR: one-way borrowing; RL_A_FLOOR=0 => byte-exact symmetric blend
 def _first_evidence(p,Y):                                     # the games-ramp family: ALL evidence is season Y
     return not any(x['games']>0 and x['year']<Y for x in p['scoring'])
 def _prod_path(p,Y):

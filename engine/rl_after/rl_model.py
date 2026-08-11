@@ -793,6 +793,12 @@ _V3_KNOTS=[(20.0,0.10),(21.0,0.11),(22.0,0.11),(23.0,0.12),(25.0,0.12),(26.0,0.1
 #   prod_{j=1..k} 1/(1+r(a+j)) rather than (1+r)**k. Built before the correction arrived; kept as a
 #   low-priority menu extra, to be run LAST after the owner's three variants and the two menu items.
 _V9_KNOTS=[(20.0,0.14),(21.0,0.13),(22.0,0.13),(23.0,0.12),(25.0,0.12),(26.0,0.11),(28.0,0.11),(29.0,0.10)]
+# V4 (mode 4): the owner's fourth curve, CURRENT-AGE keyed like V1-V3. 11% at <=19 · 12% at 20 ·
+#   13% at 21 · 14% at 22 · a smooth glide 14->15 across 23-25 · 15% at 26-27 · 16% at >=28.
+#   Its distinguishing property is that the AGE-22 RATE EQUALS THE FLAT BASELINE (14%), so a player
+#   drafted at 18 is discounted identically to the pre-variant engine in his year-4 season. That is
+#   the design intent behind expecting year 4 to sit still while years 1-3 lift and years 5+ trim.
+_V4_KNOTS=[(19.0,0.11),(20.0,0.12),(21.0,0.13),(22.0,0.14),(23.0,0.14),(25.0,0.15),(27.0,0.15),(28.0,0.16)]
 def age_disc_mode():
     try: return int(float(AGE_DISC_MODE))
     except Exception: return 0
@@ -803,6 +809,7 @@ def age_disc(a,d,lens='bal'):
     m=age_disc_mode()
     if m==2: return _pw_interp(a,_V2_KNOTS)
     if m==3: return _pw_interp(a,_V3_KNOTS)
+    if m==4: return _pw_interp(a,_V4_KNOTS)
     if m==9: return d                      # mode 9 never uses a single rate; see disc_factor()
     a=float(a)
     if a<=21.0: return AGE_DISC_LO
