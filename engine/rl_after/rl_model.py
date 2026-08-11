@@ -395,6 +395,46 @@ from collections import Counter
 QUAL_336 = 6      # establishment bar: a season of >=6 games (build_cohort_book.py:181-185)
 K_336    = 10.0   # pooling strength: shrink each (position, band) rate toward the all-position band marginal
 
+# ============================================================================================================
+# #336 CHANNEL ABLATION LEVERS — DECLARED MEASUREMENT DIALS, ALL DEFAULT OFF, ALL BYTE-EXACT WHEN OFF.
+# Added by #334 ORDER 3 (build brief 5248006413). Precedent for the form: RL_336_DFORCE / RL_336_RFORCE
+# already in this file, and RL_ABSENCE at _merged_recover.py:684.
+#
+# WHY THEY EXIST. DECOMP.txt recorded a real gap: the #336 reference layer owns 80.5% of the main->FULL
+# year-1 drop and was THE ONE ITEM IN THE ACT WITH NO DECLARED KILL-SWITCH — its only ablation was a
+# whole-commit revert of 9a8bbd9 in a throwaway worktree. These three levers give the layer per-CHANNEL
+# switches so the -9.1pp it owns can be attributed rather than left as one lump. They are MEASUREMENT
+# levers, not design dials: no owner has ruled any of them on, and nothing here ships.
+#
+#   RL_336_NOP=1      revert the P-LEG. The unconditional probability factor P(ever establishes) comes off
+#                     the pick tables (BPK = E[level|est] instead of P x E[level|est]; POOL becomes the
+#                     establisher-only band mean instead of the bust-inclusive one) and the residual
+#                     anchor-side discount D goes to 1.0. The de-survivored conditional LEVELS stay.
+#                     This is the BUST-CHARGE channel.
+#   RL_336_SURVLVL=1  revert the DE-SURVIVORED E-LEVELS. The conditional mean's sample goes back to the
+#                     survivor definition (`pkbest(p) is not None`, i.e. a >=10-game season) at the level
+#                     pkbest itself, so the 148 established-but-never-10-game players stop teaching; and
+#                     the v3.4 late-pick clamp is RESTORED. P is untouched and stays on the >=6-game bar.
+#                     This is the HONESTY-REPAIR channel (survivor bias in the level sample).
+#   RL_336_PARSURV=1  revert the PAR_BUILD leg — read in engine/forward_valuation/par_build.py, not here.
+#
+# WHAT THE THREE DO *NOT* SEPARATE, disclosed. Reverting all three together is NOT the same object as the
+# whole-commit revert of 9a8bbd9: the amendment-2/3 consumer re-siting (basepk_c -> basepk_c_p at the five
+# enumerated sites) stays wired in every arm, because with NOP on, BASEPK_REG == BASEPK_EST and D == 1.0,
+# so basepk_c_p collapses to basepk_c IDENTICALLY and the re-siting has no residual effect to strip. The
+# gap between the three arms' sum and the whole-commit revert is therefore an interaction residual, and it
+# is PRINTED, never normalised away.
+#   RL_336_CLAMP=1    restore the v3.4 late-pick clamp on BOTH baseline tables. Held on its OWN lever
+#                     rather than folded into RL_336_SURVLVL, because the clamp and the sample are
+#                     separable in code and the measurement needs to say WHICH of the two moves the
+#                     amendment-2 monotonicity guard. Channel (b) is emitted as SURVLVL=1 CLAMP=1 (the
+#                     clamp exists only to patch the spike the survivor sample produces, so reverting the
+#                     sample without it would measure a configuration the engine never had).
+_NOP_336    = os.environ.get('RL_336_NOP','0')!='0'        # channel (a): the P-leg
+_SURVLVL_336= os.environ.get('RL_336_SURVLVL','0')!='0'    # channel (b): the de-survivored E-levels
+_CLAMP_336  = os.environ.get('RL_336_CLAMP','0')!='0'      # channel (b) partner: the v3.4 late-pick clamp
+# ============================================================================================================
+
 def _established_336(p):
     """Did this player EVER establish inside his listed window? (the ruled definition, >=6 games)"""
     return any(x['games']>=QUAL_336 for x in p['scoring'])
@@ -431,21 +471,35 @@ for b in range(NB):
         # never-established stay in the denominator at their realized nothing, via the P factor.
         _cell=[p for p in grp if gfut(p)==g]
         BPK_N[(g,b)]=len(_cell); BPK_NEST[(g,b)]=sum(1 for p in _cell if _established_336(p))
-        pw=[(_level_336(p),_rw(p['year'])) for p in _cell if _established_336(p)]
+        # CHANNEL (b) RL_336_SURVLVL: the CONDITIONAL MEAN's sample reverts to the pre-#336 survivor
+        # definition — membership `pkbest(p) is not None` at the level pkbest itself. P's own numerator
+        # (BPK_NEST above) is NOT touched: it stays on the ruled >=6-game bar, so channel (b) moves only
+        # the E[level|est] leg and channels (a)/(b) stay orthogonal in code.
+        if _SURVLVL_336: pw=[(float(pkbest(p)),_rw(p['year'])) for p in _cell if pkbest(p) is not None]
+        else:            pw=[(_level_336(p),_rw(p['year'])) for p in _cell if _established_336(p)]
         if len(pw)>=4:                                   # UNCHANGED thin-cell guard (not a survivorship gate)
             _cond=float(np.average([x[0] for x in pw],weights=[x[1] for x in pw]))
             _p=_pest_336(g,b); BPK_P[(g,b)]=_p; BPK_COND[(g,b)]=_cond
-            BPK[(g,b)]=_p*_cond
+            BPK[(g,b)]=_cond if _NOP_336 else _p*_cond   # CHANNEL (a) RL_336_NOP: the P factor comes off the pick table
     # #336 VARIANT: POOL is the all-position band expectation, taken DIRECTLY over the full band population
     # (never-established at 0.0) — no pooling needed, the thinnest band carries n=57.
-    aw=[((_level_336(p) if _established_336(p) else 0.0),_rw(p['year'])) for p in grp]
-    POOL[b]=float(np.average([x[0] for x in aw],weights=[x[1] for x in aw])) if aw else 75
-    # #336 AMENDMENT 2: the same band marginal taken over ESTABLISHERS ONLY — E[level | establishes].
+    # #336 AMENDMENT 2: ew is the same band marginal taken over ESTABLISHERS ONLY — E[level | establishes].
     # It is the gradient donor for the established-conditional BASEPK_EST assembled after BASEPK_REG,
     # exactly as POOL is for BASEPK_REG. Never-establishers are NOT dropped from the world here; they
     # are in P's denominator at their realized nothing, which is the other leg of the identity.
-    ew=[(_level_336(p),_rw(p['year'])) for p in grp if _established_336(p)]
-    POOL_COND336[b]=float(np.average([x[0] for x in ew],weights=[x[1] for x in ew])) if ew else POOL[b]
+    # (ew is hoisted above POOL only so channel (a) can point POOL at it; its value is unchanged.)
+    if _SURVLVL_336:
+        aw=[((float(pkbest(p)) if pkbest(p) is not None else 0.0),_rw(p['year'])) for p in grp]
+        ew=[(float(pkbest(p)),_rw(p['year'])) for p in grp if pkbest(p) is not None]
+    else:
+        aw=[((_level_336(p) if _established_336(p) else 0.0),_rw(p['year'])) for p in grp]
+        ew=[(_level_336(p),_rw(p['year'])) for p in grp if _established_336(p)]
+    _pool_uncond=float(np.average([x[0] for x in aw],weights=[x[1] for x in aw])) if aw else 75
+    POOL_COND336[b]=float(np.average([x[0] for x in ew],weights=[x[1] for x in ew])) if ew else _pool_uncond
+    # CHANNEL (a) RL_336_NOP: POOL's bust-inclusion IS the P factor at the band marginal (the whole-band
+    # mean with never-establishers at 0.0 equals P_band x the establisher-only mean). Reverting the P-leg
+    # therefore points POOL at the establisher-only marginal, which is exactly POOL_COND336.
+    POOL[b]=POOL_COND336[b] if _NOP_336 else _pool_uncond
 # position-anchored, monotone baseline peak: a later pick can't out-baseline an earlier one (kills small-sample inversions),
 # and thin bands scale a reliable same-position band by the all-position band gradient instead of borrowing the all-position LEVEL.
 BASEPK_REG={}
@@ -466,6 +520,10 @@ for g in sorted(set(GRP.values())):
     # fixed. Keeping the clamp on a repaired sample would double-correct and would also hide whether the
     # repair actually works. The bust-inclusive baseline must be monotone non-increasing in pick ON ITS OWN.
     # That is now a MEASUREMENT, not an assertion; see the evidence dir for the result and any residual red.
+    # RL_336_CLAMP restores it. The clamp exists ONLY to patch the late-pick spike that the survivor
+    # sample produces, so channel (b) is emitted with this lever ON alongside RL_336_SURVLVL.
+    if _CLAMP_336:
+        for b in range(1,NB): row[b]=min(row[b],row[b-1])   # v3.4 basepk de-bias, restored
     for b in range(NB): BASEPK_REG[(g,b)]=row[b]
 def basepk(g,b): return BASEPK_REG.get((g,b)) or POOL.get(b) or bandpeak(g,b)
 # ============================================================================================================
@@ -498,6 +556,11 @@ for g in sorted(set(GRP.values())):
         elif rel:
             b0=min(rel,key=lambda x:abs(x-b)); row.append(rel[b0]*(POOL_COND336[b]/POOL_COND336[b0]))
         else: row.append(POOL_COND336[b])
+    # RL_336_CLAMP restores it HERE TOO, so the two tables keep the SAME construction and remain
+    # differ-only-by-P — which is what makes the _A2_GUARD monotonicity check below meaningful in the
+    # ablated arm rather than an artefact of two differently-built tables.
+    if _CLAMP_336:
+        for b in range(1,NB): row[b]=min(row[b],row[b-1])
     for b in range(NB): BASEPK_EST[(g,b)]=row[b]
 _A2_GUARD=[(g,b) for g in sorted(set(GRP.values())) for b in range(NB)
            if BASEPK_EST[(g,b)] < BASEPK_REG[(g,b)]-1e-9]
@@ -558,6 +621,7 @@ def _dbpk_336(g,b):
     _pest_336 is NOT applied here any more; it is still applied in full to PICKS, via basepk()/BASEPK_REG,
     which pick_raw / base_prod / pick_value keep reading unmoved."""
     if _DFORCE_336 is not None: return float(_DFORCE_336)
+    if _NOP_336: return 1.0    # CHANNEL (a) RL_336_NOP: the residual anchor-side probability discount comes off too
     return A3_D
 def basepk_c_p(p,g,pk):
     """#336 AMENDMENT 2/3 — THE RESOLVED-STATE ANCHOR for every BPK-anchored REAL-PLAYER consumer.
@@ -765,7 +829,7 @@ def clamp(x,a,b): return max(a,min(b,x))
 AGE_DISC=os.environ.get('RL_AGE_DISC','0')!='0'
 AGE_DISC_LO=float(os.environ.get('RL_AGE_DISC_LO','0.13'))   # the young end (age <= 21)
 AGE_DISC_HI=float(os.environ.get('RL_AGE_DISC_HI','0.15'))   # the mature end (age >= 26)
-AGE_DISC_MODE=os.environ.get('RL_AGE_DISC_MODE','1')   # 1 = V1 two-point current-age · 2 = V2 four-band current-age · 3 = V3 AGE-AT-SEASON path product
+AGE_DISC_MODE=os.environ.get('RL_AGE_DISC_MODE','1')   # 1 = V1 two-point current-age · 2 = V2 four-band current-age · 3 = V3 current-age · 4 = V4 current-age · 5 = V5 current-age (owner's fifth ladder) · 9 = seat-proposed age-at-season path product
 def _pw_interp(a,knots):
     """Piecewise-linear on CONTINUOUS age through (age, rate) knots; flat outside. No integer cliffs."""
     a=float(a)
@@ -799,6 +863,29 @@ _V9_KNOTS=[(20.0,0.14),(21.0,0.13),(22.0,0.13),(23.0,0.12),(25.0,0.12),(26.0,0.1
 #   drafted at 18 is discounted identically to the pre-variant engine in his year-4 season. That is
 #   the design intent behind expecting year 4 to sit still while years 1-3 lift and years 5+ trim.
 _V4_KNOTS=[(19.0,0.11),(20.0,0.12),(21.0,0.13),(22.0,0.14),(23.0,0.14),(25.0,0.15),(27.0,0.15),(28.0,0.16)]
+# V5 (mode 5): the owner's FIFTH ladder, filed verbatim in his own words (#334 comment 5248006413):
+#   "18 - 12 / 19 - 12.5 / 20 - 13 / 21 - 13.5 / 22/23 - 14 / 24 - 14.5 / 25/26 - 15 / 27 - 15.5 / 28+ - 16."
+# Same machinery as V1-V4: CURRENT-AGE keyed, piecewise-linear on CONTINUOUS age through _pw_interp,
+# flat outside the end knots, no integer cliffs.
+#
+# THE 22/23 SHELF IS OWNER-SPECIFIED, AND THAT IS WHAT DISTINGUISHES V5 FROM V2. This is recorded
+# because the owner's question that produced V5 rested on a premise about V2 that does not hold:
+#   V2's knots are [(19,.12),(20,.13),(21,.13),(25,.15),(27,.15),(28,.16)] — a SMOOTH JOIN from 21 to
+#   25, so V2's rate at 22 is 13.5% (interpolated), NOT 14%. V2 has no shelf at 22-23 at all; the
+#   14% level is merely passed through on the way up at age 23.
+#   V4 pins 22 and 23 at exactly 14% — the shelf exists there, but by a two-knot pin followed by a
+#   glide 23->25.
+#   V5 states the shelf EXPLICITLY as its own pair of knots (22,.14),(23,.14) and then steps 24 at
+#   14.5% — a knot V4 does not have (V4 glides 14->15 across 23-25, giving 14.5% at 24 by
+#   interpolation and 15% only at 25). V5 and V4 therefore agree at 22, 23, 24 and 25 by
+#   construction and differ ONLY on the young side (<=21) and at 26-27:
+#       age      18     19     20     21     22     23     24     25     26     27    28+
+#       V4      .110   .110   .120   .130   .140   .140   .145   .150   .150   .150   .160
+#       V5      .120   .125   .130   .135   .140   .140   .145   .150   .150   .155   .160
+#   So V5 is DEARER than V4 everywhere at or below 21 (it discounts the young future harder, i.e.
+#   lifts young value less) and dearer at 27; identical 22-26 and at 28+.
+_V5_KNOTS=[(18.0,0.12),(19.0,0.125),(20.0,0.13),(21.0,0.135),(22.0,0.14),(23.0,0.14),
+           (24.0,0.145),(25.0,0.15),(26.0,0.15),(27.0,0.155),(28.0,0.16)]
 def age_disc_mode():
     try: return int(float(AGE_DISC_MODE))
     except Exception: return 0
@@ -810,6 +897,7 @@ def age_disc(a,d,lens='bal'):
     if m==2: return _pw_interp(a,_V2_KNOTS)
     if m==3: return _pw_interp(a,_V3_KNOTS)
     if m==4: return _pw_interp(a,_V4_KNOTS)
+    if m==5: return _pw_interp(a,_V5_KNOTS)   # V5: the owner's fifth ladder, 22/23 shelf explicit
     if m==9: return d                      # mode 9 never uses a single rate; see disc_factor()
     a=float(a)
     if a<=21.0: return AGE_DISC_LO

@@ -2010,10 +2010,44 @@ def _h_cut(p,Y):
     if pool and typ!='RD' and age is not None and age>=21.0:
         f*=H_MATNONRD                                         # mature nonRD
     return f
+# ===== #334 ITEM A — THE RAMP DE-COUPLE. DIAL-GATED MEASUREMENT VARIANT, DEFAULT OFF (RL_A_GSAT=0).
+# Specified at docs/evidence/composition_2026-08-10/noarb/RAMP_DECOUPLE_SPEC.md; measured, not shipped.
+#
+# THE DEFECT IT ADDRESSES (A_YEAR1_AUDIT.md): ONE six-game threshold is doing TWO different jobs.
+#   ADMISSION  — may this row use the year-1+ arm at all?   ns = nseas_pro(p,Y) >= 1, i.e. gy/fE >= 6
+#   SATURATION — how much anchor weight does it carry?      lam = interp(min(gy/fE,6),...), LAM_SIT[6]=1.0
+# Both key on the SAME within-season games count, so at cohort year 1 they are mutually exclusive by
+# construction: qualifying to use A is the same act as saturating A's share to EXACTLY 0. Measured
+# consequence: A moves 0 of 1197 ND year-1 cells and owns 0.0% of the year-1 drop.
+#
+# THE CHANGE, and ONLY this one: the ADMISSION BAR IS UNTOUCHED (still 6*fE prorated, still ns>=1 at
+# ev()'s `if ns==0:`). Only the SATURATION de-couples — the production weight saturates on CAREER games
+# against G_SAT instead of on the within-season six:
+#       lam = interp(min(career_games/G_SAT, 1.0) * 6.0, [0..6], LAM_SIT)
+# so a qualified year-1 row with, say, 12 career games sits part-way up the ramp and carries real anchor
+# weight instead of being pinned at the top.
+#
+# G_SAT: the spec leaves the value OPEN ("~15-20 career games"). 18 IS THE SEAT'S CHOICE inside that
+# range and is recorded as such — it is not an owner number and it is not measured-optimal. It is the
+# midpoint of the spec's stated range rounded to the engine's own 18-game full-exposure convention.
+#
+# THE NAMED TRAP, and the discipline against it: sitout_ev (:1939-1947) reads the SAME LAM_SIT ramp for
+# a DIFFERENT purpose — games-at-pace within the season on the ns==0 sit-out arm. Re-pointing both from
+# one edit would move the whole sit-out population as a side effect. THIS DIAL IS READ AT EXACTLY ONE
+# SITE, _a_share below; sitout_ev's own `lam=float(np.interp(gp,...,LAM_SIT))` is not touched and does
+# not read A_GSAT. Proven by direct assertion, not asserted — see decouple_proof.py in the evidence dir.
+#
+#   RL_A_GSAT=0 (DEFAULT) => the within-season ramp exactly as built => byte-exact to the composed build.
+#   RL_A_GSAT=<g>         => saturation on career games with G_SAT=<g>. Admission bar unchanged.
+_A_GSAT=float(os.environ.get('RL_A_GSAT','0') or 0)
 def _a_share(p,Y):
     """How much of the year-1+ price still leans on the fitted year-0 prior."""
     fe=_fEy(Y,p); gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
-    lam=float(np.interp(min(gy/fe,6.0),[0,1,2,3,4,5,6],LAM_SIT))   # LAM_SIT's own ramp, unchanged
+    if _A_GSAT>0:
+        cg=float(sum(x['games'] for x in p['scoring'] if x['year']<=Y))   # CAREER games as of the valuation (as-of, never future)
+        lam=float(np.interp(min(cg/_A_GSAT,1.0)*6.0,[0,1,2,3,4,5,6],LAM_SIT))   # DE-COUPLED: same ramp, career axis
+    else:
+        lam=float(np.interp(min(gy/fe,6.0),[0,1,2,3,4,5,6],LAM_SIT))   # LAM_SIT's own ramp, unchanged
     return (1.0-lam)*_math.exp(-_ev_qual(p,Y)/_A_TAU)
 # ===== #334 ITEM C — THE CAP RELEASE UNDER THE EVIDENCE WEIGHT (ruling 3.8; C-Q1/2/3 ruled 5238860310).
 # C-Q1 (ruled): the ceiling binds THE TAUGHT YEAR-1 LEVEL, not the live ev. Before ITEM A there was no such

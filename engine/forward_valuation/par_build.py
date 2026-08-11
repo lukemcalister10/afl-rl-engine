@@ -310,9 +310,25 @@ def gather():
     #   (i)   on-park >=6g   (Addendum 1)      1.000 1.000 1.000 1.000 1.000 1.000
     #   (ii)  played  >=1g   (THIS VARIANT)    0.898 0.949 0.959 0.969 0.971 0.978
     #   (iii) in-window, zero-filled (BARRED)  0.570 0.819 0.905 0.947 0.953 0.968
+    # ========================================================================================================
+    # CHANNEL (c) — RL_336_PARSURV=1: DECLARED MEASUREMENT ABLATION LEVER, DEFAULT OFF, BYTE-EXACT WHEN OFF.
+    # Added by #334 ORDER 3 (build brief 5248006413) so the #336 layer's par_build leg can be attributed
+    # separately from its rl_model leg. It reverts THE ONE LINE below to the shipped pre-#336 sample gate
+    # `g >= MIN_GAMES` — survivors-at-that-tenure — leaving everything else in this file in place.
+    #
+    # WHY THIS ONE LINE IS THE WHOLE CHANNEL, and it is a finding rather than a convenience. Amendment 2/3's
+    # par-side machinery — build_pest / PEST / pest_of / resolved_336 / resolve_w / dpar_of and the A3_D
+    # reconciliation constants — is DEAD ON THE VALUE PATH: par_redesign.py carries its own par_at (:68)
+    # composing pb.level_at with F['ramp_shr'] and never calls pest_of/dpar_of, and a repo-wide search finds
+    # NO consumer of any of those symbols outside this file. So the only way #336 reaches the engine through
+    # forward_valuation is by changing WHICH OBSERVATIONS THE SURFACE IS FITTED TO, which is this gate.
+    # Reverting it is therefore the complete par-side counterfactual, not a partial one.
+    # ========================================================================================================
+    _PARSURV = os.environ.get('RL_336_PARSURV', '0') != '0'
     obs = []  # (pos, logpick, T, lvl)  — E[level | ever establishes], tenure-resolved
     for pos, pk, T, Y, g, p in raw:
-        if g >= 1 and _ever_established_338(p):
+        _keep = (g >= MIN_GAMES) if _PARSURV else (g >= 1 and _ever_established_338(p))
+        if _keep:
             obs.append((pos, np.log(pk), T, CP._lvl_wt(p, Y)))
     return obs, base, raw, PEST, PNUM, PDEN
 
