@@ -503,6 +503,50 @@ THE SITTING'S MENU — all counterbalance candidates, one canonical table
   and this table, on the cohort book, is the deciding instrument.
 
 ====================================================================================================================
+### HALT-GRADE — AN UNRULED 38.5% CUT ON THE POOL ARM  (full attribution: POOL_ARM_ATTRIBUTION.md)
+====================================================================================================================
+  OWNER CHALLENGE: "a lot of /SSP/MSD players have been slashed - Noble, Hall, McCarthy, Peatling,
+  Herbert, Keane... have players like Noble and Peatling not established themselves on their own
+  production more than their draft arm?"  ANSWERED, AND HE IS RIGHT ON THE MECHANICS.
+
+  IT IS ITEM H, AND IT IS ONE CONSTANT. H_MATNONRD = 0.615 is applied at _merged_recover.py:2228
+  to the FINAL production-led price, keyed on three things only: is he pool, is his type not RD,
+  was his DRAFT AGE >= 21. It reads no games, no level, no establishment. Recovered to four
+  decimals on eight independent players: FULL/H-restored = 0.6149 0.6153 0.6143 0.6155 0.6147
+  0.6147 0.6151 0.6163. Not several items composing - literally the one constant.
+
+  PRODUCTION BUYS NO PROTECTION. Noble has 158 career games and takes the same 0.615 as a
+  zero-game row. His ITEM A anchor share is EXACTLY 0.000000 - the engine's own evidence fade has
+  already retired his entry anchor - so the 38.5% is NOT his draft arm re-asserting itself through
+  the valuation. It is a flat cell multiplier on top of the finished price.
+
+  MRAZ IS THE CONTROL AND HE SEPARATES THE TWO CAUSES CLEANLY: his -53.6% is the SURPRISE LAW
+  (+1692 of his 1906 gap), and removing ITEM H moves him by exactly 0.
+
+  THE INVERSION IS A SECOND, INDEPENDENT ITEM. ITEM B multiplies the ENTRY ANCHOR by k*_b_shape:
+  x0.4985 at draft age 18, x1.0257 at 19-20, x2.0478 at 21+ (+104.8%). Where a pool entrant has no
+  production his price IS his anchor, so he takes the whole +105% (Perez/Cross +105.3%, Banch
+  +105.5%). Where he HAS production the anchor is already faded to zero weight, so B barely reaches
+  him and H then removes 38.5%. SAME ARM, OPPOSITE DIRECTIONS, TWO SEPARATELY-RULED ITEMS.
+  B's conservation assert is real (2.978e-15) but it is over SIGMA ENTRY ANCHOR across the live
+  pool (n=1202), a YEAR-ZERO object - not prices. On the board B is net +3,628.
+
+  WHY THIS IS HALT-GRADE, not merely a finding:
+    1. THE ARM IS OUTSIDE EVERY DECIDING FIGURE. The canonical population is n=1197 and it is
+       100%% type ND - ZERO pool rows. The matrix carries 1080 pool-arm rows (691 RD, 106 MSD, 57
+       IRE, 59 UNR, 52 SSP, 51 PDA, 43 PDN, 21 PDS) and not one enters any ruled number.
+    2. THE CUT'S OWN DERIVATION HALTED. item_h_derive_out.txt: "HALT-NO-SURPRISE... taken AS
+       FILED". The mature-nonRD corrected-ruler CI is [0.115, 1.226] at eff-n 46.2 - IT CONTAINS
+       1.0, so the evidence in front of the owner could not exclude NO CUT AT ALL.
+    3. NO BOARD-EFFECT FIGURE FOR THE POOL ARM APPEARS IN ANY RULED EVIDENCE. Searched the
+       directive, README, PHASE2 and SIDE_BY_SIDE: the factor is named, its board effect on
+       established players never is.
+
+  THE SIDE-BY-SIDE CANNOT PROCEED WITH AN UNRULED ARM-WIDE 38.5%% CUT INSIDE IT. Nothing is
+  repaired here and no factor is changed - this is attribution and disclosure, and the ruling is
+  the owner's.
+
+====================================================================================================================
 ### THE IDENTITY GATE EVERY ROUND-3 NUMBER RIDES ON
 ====================================================================================================================
   All five round-3 dials are DEFAULT OFF. With every one of them off, at the branch tip:
