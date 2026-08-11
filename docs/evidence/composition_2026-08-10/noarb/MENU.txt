@@ -1,0 +1,156 @@
+====================================================================================================================
+THE SITTING'S MENU — all counterbalance candidates, one canonical table
+====================================================================================================================
+  instrument : noarb_table_338.py UNMODIFIED (md5 0f8220351c64c56ccfa90c60edcdfa5f)
+  population : 1197 ND teaching entrants (picks 1-64, draft 2004-2022), IDENTICAL on every row
+  aggregation: pooled book ratio, mean(value at year N)/mean(v0) over the same included set
+
+--------------------------------------------------------------------------------------------------------------------
+### PROGRESSION AND ENVELOPE — ALL picks 1-64
+--------------------------------------------------------------------------------------------------------------------
+  candidate family         yr0     yr1     yr2     yr3     yr4     yr5     peak      at  peak/yr0  peak/yr1
+  ---------------------------------------------------------------------------------------------------------
+  main     reference   1.0000  1.1239  1.3773  1.5098  1.5732  1.5670   1.5732     yr4     1.573     1.400
+  FULL     reference   1.0000  0.9974  1.2401  1.4276  1.5310  1.5328   1.5328     yr5     1.533     1.537
+  H120     H rungs     1.0000  0.9975  1.2405  1.4279  1.5313  1.5329   1.5329     yr5     1.533     1.537
+  H125     H rungs     1.0000  0.9976  1.2408  1.4282  1.5315  1.5331   1.5331     yr5     1.533     1.537
+  H130     H rungs     1.0000  0.9976  1.2411  1.4284  1.5317  1.5332   1.5332     yr5     1.533     1.537
+  AFLOOR   ITEM A      1.0000  0.9974  1.2507  1.4385  1.5362  1.5359   1.5362     yr4     1.536     1.540
+  ADRAG    ITEM A      1.0000  0.9974  1.2458  1.4352  1.5353  1.5355   1.5355     yr5     1.536     1.540
+  V4       discount    1.0000  1.1382  1.3643  1.5085  1.5637  1.5618   1.5637     yr4     1.564     1.374
+  V1       discount    1.0000  1.0487  1.3103  1.5034  1.5844  1.5634   1.5844     yr4     1.584     1.511
+  V2       discount    1.0000  1.0933  1.3163  1.5104  1.5870  1.5623   1.5870     yr4     1.587     1.452
+  V3       discount    1.0000  1.1456  1.4217  1.5557  1.6390  1.5714   1.6390     yr4     1.639     1.431
+
+  Envelope reference: peak/yr0 ~ 1.40 and peak/yr1 ~ 1.30. A FRAME FOR JUDGING, NOT A TARGET.
+  The peak/yr0 gap is PRE-EXISTING — already open on main before any item of this act applies.
+
+====================================================================================================================
+### YOUNG/PEAK CONTRAST vs main — and whether the restoration lands where the cut fell
+====================================================================================================================
+  The package's cut concentrated in picks 21-64. A candidate that restores only 1-20 has not
+  restored the band that actually lost. 0.00% means main's contrast is exactly restored.
+
+  candidate family        ALL picks 1-64        picks 1-20       picks 21-64
+  --------------------------------------------------------------------------
+  main     reference             +0.00%            +0.00%            +0.00%
+  FULL     reference             -8.92%            -7.90%           -11.74%
+  H120     H rungs               -8.91%            -7.91%           -11.75%
+  H125     H rungs               -8.92%            -7.91%           -11.76%
+  H130     H rungs               -8.92%            -7.90%           -11.77%
+  AFLOOR   ITEM A                -9.12%            -8.13%           -12.09%
+  ADRAG    ITEM A                -9.08%            -8.11%           -12.05%
+  V4       discount              +1.89%            +5.30%            -3.93%
+  V1       discount              -7.35%            -5.70%            -9.37%
+  V2       discount              -3.57%            -1.07%            -6.62%
+  V3       discount              -2.16%            +1.03%            -6.24%
+
+====================================================================================================================
+### THE FREE-MONEY MARGIN AT yr0->yr1, PER CANDIDATE, AGAINST ITS OWN DISCOUNT
+====================================================================================================================
+  Typical draft age is 18.00 (MEASURED: median age_draft in every band), so the holder is 18
+  at the start of the first step. Each candidate is judged against the rate ITS OWN schedule
+  charges an 18-year-old — never another candidate's. A NEGATIVE margin is free money: the
+  book grows faster than the engine discounts the future, and holding dominates.
+
+  candidate family              yr1      apprec.    own disc.     margin
+  ----------------------------------------------------------------------
+  main     reference        1.1239       12.39%       14.00%      1.61%
+  FULL     reference        0.9974       -0.26%       14.00%     14.26%
+  H120     H rungs          0.9975       -0.25%       14.00%     14.25%
+  H125     H rungs          0.9976       -0.24%       14.00%     14.24%
+  H130     H rungs          0.9976       -0.24%       14.00%     14.24%
+  AFLOOR   ITEM A           0.9974       -0.26%       14.00%     14.26%
+  ADRAG    ITEM A           0.9974       -0.26%       14.00%     14.26%
+  V4       discount         1.1382       13.82%       11.00%     -2.82%   <-- ARB
+  V1       discount         1.0487        4.87%       13.00%      8.13%
+  V2       discount         1.0933        9.33%       12.00%      2.67%
+  V3       discount         1.1456       14.56%       10.00%     -4.56%   <-- ARB
+
+  NOTE ON THE DISCOUNT CANDIDATES: a lower discount is not a free win. It lifts the book AND
+  narrows this margin at the same time, because the same schedule that raises young value is
+  the schedule the appreciation is measured against. That is why the margin is printed beside
+  the lift rather than under it.
+
+====================================================================================================================
+### WHAT THIS TABLE DOES NOT CONTAIN
+====================================================================================================================
+  MIXES ARE NOT MEASURED. The menu names mixes (e.g. A-floor + V4) as candidates, and none is
+  on this table because none has been emitted. Their effects are NOT additive and must not be
+  read off by adding two rows: A-floor and the discount variants both act on the young end,
+  and the per-item decomposition already shows this package's items interact. Any mix the
+  sitting wants costs one emit (~2.5 min) and gets its own row, measured, not inferred.
+
+  H IS ON THE TABLE BUT IS NOT A YEAR-1 CANDIDATE. The H rungs are shown because they were
+  ordered and run, but the binding diagnostic (H_LADDER.txt) shows H reaches 0.2% of year-1
+  cells and 11.0% of year-4 cells — it is a years-3-to-5 dial, and no value of H changes that.
+  Its rows are here for completeness, not as live counterbalance options.
+
+====================================================================================================================
+### CANDIDATE VERDICTS — three rows are CLOSED, one is open with a diagnosis
+====================================================================================================================
+
+  CLOSED — H RUNGS (H120/H125/H130). H is NOT a year-1 dial and no ceiling makes it one.
+    Binding diagnostic: H reaches 0.2% of ND year-1 cells against 11.0% of year-4 cells, ~66x
+    more often at year 4. ITEM C's release is evidence-weighted and year 1 is the year with no
+    evidence. Across H 1.13->1.30 the year-1 book moved +0.0002. Not a sizing problem.
+
+  CLOSED — A-AS-FLOOR. Zero ND year-1 movers, exactly as predicted BEFORE the emit.
+    ITEM A cannot act at cohort year 1 by a mutual exclusion between its own two gates:
+    reaching _a_blend requires ns>=1, which at year 1 forces gy/fE>=6, which pins
+    LAM_SIT[6]=1.0, which makes A's share EXACTLY 0. The floor is max(e_full, b) and at s=0,
+    b IS e_full. Correctly implemented at a site that is structurally silent at year 1.
+    It does act from year 2 (60/96/76/52 cells at yr2-yr5).
+
+  CLOSED — A-EVIDENCE-FADED DRAG. Same exclusion, same result: zero ND year-1 movers,
+    matching the filed prediction. Moves yr2-yr5 (60/96/70/48), slightly gentler than the
+    floor as designed. Both A variants are sound designs wired to a year-1-silent site.
+
+  OPEN, WITH ITS PRE-REGISTRATION BREACHED AND THE CAUSE NAMED — V4.
+    The pre-registration said the age-22 rate equals the 14% baseline, so year 4 would be
+    unchanged. MEASURED: yr4 1.5310 -> 1.5637, +2.1%. The breach is real and is reported as
+    one. THE DIAGNOSIS, with the candidate causes tested rather than assumed:
+
+      (c) KEYING — RULED OUT BY DIRECT TEST. Calling the engine's own age_disc() in-process
+          under mode 4 returns EXACTLY 0.14000 at ages 22.0, 22.5 and 23.0 — identical to
+          LENS[bal]=0.14. The rate function is correct and IS current-age keyed.
+      (b) DENOMINATOR — RULED OUT WITH A NUMBER. sum(v0) over the population moves +0.0044%,
+          and only 1 of 1197 v0 rows moves at all. The frozen year-zero surface is intact and
+          the ratio denominator is not the story.
+      (a) MATURE TAIL — WRONG SIGN. Entrants aged 23+ at draft are 26-31 at yr4 and see
+          15-16% under V4, which CUTS. It cannot produce a lift.
+
+      THE ACTUAL CHANNEL — THE PEAK ESTIMATE. Restricting to rows whose CONTINUOUS age at
+      year 4 lies in [22,23], where V4 charges exactly the baseline rate, 721 of 815 still
+      moved. For those 815 rows:
+          yr4 value uplift   median +2.459%   mean +2.390%
+          peak field uplift  median +2.793%   mean +5.717%
+      The peak uplift TRACKS the value uplift. The direct discounting of these players is
+      unchanged; what moved is the PEAK ESTIMATE they are priced against, which is itself a
+      forward-discounted object computed where V4 charges 11-13% rather than 14%. So the
+      age-dynamic discount does not stay inside the year it is keyed to — it propagates
+      through the peak estimate into later years.
+
+      CONSEQUENCE: V4's year-4 number is NOT a clean "unchanged" baseline, and the peak/yr0
+      and peak/yr1 columns for every discount variant should be read knowing the peak itself
+      moved. This is REPORTED, NOT REPAIRED — changing where the peak estimate takes its
+      discount is a wiring decision outside this act, and it is the owner's call.
+
+====================================================================================================================
+### THE DECOMPOSITION COLUMN — where the year-1 drop actually lives
+====================================================================================================================
+  Single-item removal on the same instrument (full table in DECOMP.txt). Of the -0.1265
+  (-11.3%) main->FULL year-1 drop:
+
+      #336 reference layer   80.5%      (657 ND year-1 cells moved)
+      the surprise law       10.8%      (269)
+      ITEM A                  0.0%      (0)
+      ITEM H                  0.0%      (1)
+      interaction residual    8.8%      (not normalised away)
+
+  READ THIS BESIDE THE VERDICTS. Every counterbalance ordered so far — H rungs, A-floor,
+  A-drag — acts on ITEM A's site or ITEM C's. Those sites jointly own 0.0% of the year-1
+  drop. The only candidate that moves year 1 at all is the discount (V4: 0.9974 -> 1.1382),
+  and it does so by repricing the whole book rather than by restoring what was taken.
+  A year-1 counterbalance that acts where the value was lost would have to act on #336 or
+  the surprise law. THAT IS THE OWNER'S CALL. Nothing is re-sited here.
