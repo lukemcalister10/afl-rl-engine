@@ -115,3 +115,41 @@ and restore both on exit, including on failure. They never leave the tree dirty;
 Without the second row, a proof that `sitout_ev` did not move would also pass if the dial did nothing
 anywhere at all. With it, the proof distinguishes "the dial is inert" from "the dial acts, but not
 here" — and it is the second.
+
+---
+
+## 7. ORDER 4 — THE IDENTITY RE-PROVEN AT THE ORDER-4 TIP
+
+ORDER 4 added two more dials (`RL_336_XW`, `RL_336_XW_CAP`), both default OFF, and both inside
+`par_build.py`. The identity was re-proven rather than inherited.
+
+| | value |
+|---|---|
+| `IDENT6.recs` md5 (emitted at the ORDER 4 wiring commit, no dials) | `3eb4a686e36e4e299f1134e153c566bd` |
+| `per_entrant_FULL.recs` md5 (the 95dfbde reference) | `3eb4a686e36e4e299f1134e153c566bd` |
+| year-1 movers of 1197 | **0** |
+| year-zero (v0) movers of 1197 | **0** |
+| board md5 at `15270e1` (ORDER 4 final tip) | `846560dc1b206996005c7c9e9290207c` |
+| board md5 at `95dfbde` (before any of this work) | `846560dc1b206996005c7c9e9290207c` |
+
+**The OFF path is the OLD path, not merely an equal-valued one.** `loclin` gained an OPTIONAL `ws`
+argument; with the dial off, `ws=None` is passed at every call site and the function never multiplies
+at all. Proven at table level rather than asserted: with `RL_336_XW=0` the fitted par surface, the KPD
+par surface and `BASEPK_REG` are identical to the pre-ORDER-4 reference **to 1e-12**.
+
+**One design detail that had to be gated rather than shared.** Under the dial the per-tenure ramp
+median becomes a *weighted* median. `np.median` averages the two middle values at even n and a
+weighted median does not, so the two are **not** interchangeable — the unweighted path keeps
+`np.median` exactly, and the swap only happens when the dial is on. Sharing one implementation would
+have broken byte-exactness for a cosmetic saving.
+
+### The ORDER 4 commands
+
+```
+python3 xw_honesty_test.py                                  # STEP 1, the kill test (writes XW_HONESTY.txt/.json)
+bash probe_arm.sh XWOFF                                     # off-path table identity
+bash probe_arm.sh XWON  RL_336_XW=1                         # on-path par surface + guard
+bash round3_chain.sh "XW:RL_336_XW=1" "IDENT6:"             # the emits
+bash round3_tables.sh D XW IDENT6                           # the canonical tables
+bash build_board_switch.sh <out> RL_336_XW=1                # the board, for the Mraz line
+```
