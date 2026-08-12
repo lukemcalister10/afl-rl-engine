@@ -1,5 +1,3 @@
-/home/user/afl-rl-engine/.claude/worktrees/agent-a68ec24184e8a520c/docs/evidence/par_adoption_2026-08-12/scripts/par_cells.py:1: SyntaxWarning: invalid escape sequence '\_'
-  """ORDER 20B TASK 4 — THE PAR SURFACE'S PER-CELL DIRECTION, ON THE RECORD.
 ==========================================================================================================================
 ORDER 20B — THE PAR SURFACE PER-CELL, HEAD vs FIX   (instrument: engine_probe.py par_cells, PR.par_at)
 ==========================================================================================================================
@@ -61,4 +59,4 @@ ORDER 20B — THE PAR SURFACE PER-CELL, HEAD vs FIX   (instrument: engine_probe.
       SD pk45  level  59.4054 ->  55.8580
       SD pk49  level  59.4054 ->  55.8580
 
-  json -> docs/evidence/par_adoption_2026-08-12/movers/PAR_CELLS.json
+  json -> /home/user/afl-rl-engine/.claude/worktrees/agent-a68ec24184e8a520c/docs/evidence/par_adoption_2026-08-12/scripts/../movers/PAR_CELLS.json

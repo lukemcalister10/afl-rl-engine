@@ -1,0 +1,103 @@
+==========================================================================================================================
+ORDER 20B TASK 4 — PER-MOVER PAR-CHANNEL DECOMPOSITION
+  population for the control totals: the 1002 rows the board carries (active+back)
+==========================================================================================================================
+
+  ---- CONTROL 3: does each config reproduce its expected board totals? ----
+    ALL_HEAD  national 624418  pool 123939      (ORDER 20 BOARD_DELTA before: 624418 / 123939)
+    ALL_FIX   national 622650  pool 126244      (ORDER 20 BOARD_DELTA after:  622650 / 126244)
+
+  ---- WHOLE-BOARD national delta carried by each channel ----
+    channel   one-at-a-time share of total  leave-one-out share of total
+    ISO               +1651         -93.4%          +1539         -87.0%
+    POLE              -1196         +67.6%          -1315         +74.4%
+    BLEND             -1563         +88.4%          -1573         +89.0%
+    BAR                  +4          -0.2%             +2          -0.1%
+    BASE                 +0          -0.0%             +0          -0.0%
+    LVLPAR             -545         +30.8%           -547         +30.9%
+    SUM               -1649                         -1894
+    ACTUAL            -1768   <- TOTAL national delta (ALL_FIX - ALL_HEAD)
+    one-at-a-time residual -119   leave-one-out residual +126   (interaction; channels are NOT additive)
+
+==========================================================================================================================
+PER-MOVER DECOMPOSITION
+==========================================================================================================================
+
+  Harry Dean   KPD  pick 3 (eff 3)   2815 -> 2577   (-238, -8.45%)
+    channel     one-at-a-time            share    leave-one-out            share
+    ISO                   +21            -8.8%              +23            -9.7%
+    POLE                   +0            -0.0%               +3            -1.3%
+    BLEND                -251          +105.5%             -262          +110.1%
+    BAR                    +0            -0.0%               +0            -0.0%
+    BASE                   +0            -0.0%               +0            -0.0%
+    LVLPAR                 +0            -0.0%               -9            +3.8%
+    SUM                  -230                              -245
+    ACTUAL               -238  <- his actual delta;  residual oaat -8 (3% of delta), loo +7
+
+  Angus Clarke   SD  pick 39 (eff 39)   680 -> 555   (-125, -18.38%)
+    channel     one-at-a-time            share    leave-one-out            share
+    ISO                   +13           -10.4%              +10            -8.0%
+    POLE                  -82           +65.6%             -107           +85.6%
+    BLEND                 -29           +23.2%              -46           +36.8%
+    BAR                    +0            -0.0%               +0            -0.0%
+    BASE                   +0            -0.0%               +0            -0.0%
+    LVLPAR                 -3            +2.4%               +1            -0.8%
+    SUM                  -101                              -142
+    ACTUAL               -125  <- his actual delta;  residual oaat -24 (19% of delta), loo +17
+
+  Harvey Johnston   SD  pick 49 (eff 49)   224 -> 329   (+105, +46.88%)
+    channel     one-at-a-time            share    leave-one-out            share
+    ISO                   +11           +10.5%              +13           +12.4%
+    POLE                   +1            +1.0%               +0            +0.0%
+    BLEND                  +0            +0.0%               +0            +0.0%
+    BAR                    +0            +0.0%               +0            +0.0%
+    BASE                   +0            +0.0%               +0            +0.0%
+    LVLPAR                +92           +87.6%              +94           +89.5%
+    SUM                   104                               107
+    ACTUAL                105  <- his actual delta;  residual oaat +1 (1% of delta), loo -2
+
+  James Leake   SD  pick 17 (eff 17)   476 -> 563   (+87, +18.28%)
+    channel     one-at-a-time            share    leave-one-out            share
+    ISO                   +16           +18.4%              +19           +21.8%
+    POLE                   +3            +3.4%               +3            +3.4%
+    BLEND                  +0            +0.0%               +0            +0.0%
+    BAR                    +0            +0.0%               +0            +0.0%
+    BASE                   +0            +0.0%               +0            +0.0%
+    LVLPAR                +66           +75.9%              +68           +78.2%
+    SUM                    85                                90
+    ACTUAL                 87  <- his actual delta;  residual oaat +2 (2% of delta), loo -3
+
+  Willem Duursma   MID  pick 1 (eff 1)   4067 -> 3977   (-90, -2.21%)
+    channel     one-at-a-time            share    leave-one-out            share
+    ISO                    +9           -10.0%              +10           -11.1%
+    POLE                   +0            -0.0%               +0            -0.0%
+    BLEND                 -70           +77.8%              -99          +110.0%
+    BAR                    +0            -0.0%               +0            -0.0%
+    BASE                   +0            -0.0%               +0            -0.0%
+    LVLPAR                 +0            -0.0%              -29           +32.2%
+    SUM                   -61                              -118
+    ACTUAL                -90  <- his actual delta;  residual oaat -29 (32% of delta), loo +28
+
+  Will Hayes   SF  pick 56 (eff 56)   461 -> 378   (-83, -18.00%)
+    channel     one-at-a-time            share    leave-one-out            share
+    ISO                   +11           -13.3%               +9           -10.8%
+    POLE                  -23           +27.7%              -22           +26.5%
+    BLEND                  +0            -0.0%               +0            -0.0%
+    BAR                    +0            -0.0%               +0            -0.0%
+    BASE                   +0            -0.0%               +0            -0.0%
+    LVLPAR                -71           +85.5%              -71           +85.5%
+    SUM                   -83                               -84
+    ACTUAL                -83  <- his actual delta;  residual oaat +0 (0% of delta), loo +1
+
+  Luke Cleary   SD  pick 61 (eff 61)   37 -> 29   (-8, -21.62%)
+    channel     one-at-a-time            share    leave-one-out            share
+    ISO                    +0            -0.0%               +0            -0.0%
+    POLE                   -5           +62.5%               -4           +50.0%
+    BLEND                  -5           +62.5%               -3           +37.5%
+    BAR                    +0            -0.0%               +0            -0.0%
+    BASE                   +0            -0.0%               +0            -0.0%
+    LVLPAR                 -1           +12.5%               +0            -0.0%
+    SUM                   -11                                -7
+    ACTUAL                 -8  <- his actual delta;  residual oaat +3 (38% of delta), loo -1
+
+  json -> /home/user/afl-rl-engine/.claude/worktrees/agent-a68ec24184e8a520c/docs/evidence/par_adoption_2026-08-12/scripts/../movers/CHANNEL_DECOMP.json
