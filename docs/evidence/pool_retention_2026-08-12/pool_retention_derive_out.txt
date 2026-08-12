@@ -1,0 +1,312 @@
+======================================================================================================================
+ORDER 21 -- THE POOL SIT-OUT RETENTION, DERIVED ON POOL HISTORY
+======================================================================================================================
+  pins asserted at entry: board 1dbd1480..  store d9a24282..  instrument 0f822035..
+  engine loaded read-only from a staged copy; checkout untouched.  MA.data n=2650
+  shipped read being replaced: R=_R_surf(cls, effpk=65, tau) x H_POOLSIT 0.804 x H_UNION 0.280
+
+======================================================================================================================
+1. THE POPULATION -- POOL ROWS ONLY (the SEPARATION LAW, asserted at the harvest gate)
+======================================================================================================================
+  national rows encountered and EXCLUDED at the gate: 1390
+  ASSERTION: non-pool cells in the harvest = 0  -> SEPARATION LAW HOLDS
+  cells harvested        : 4241   (complete-window Y<=2021, priceable entry anchor: 3334)
+  of the complete-window : 1325 sit-out cells (0.3974 by count)
+  pathways present       : {'RD': 2352, 'ND>64': 441, 'IRE': 137, 'UNR': 126, 'PDA': 106, 'PDS': 62, 'MSD': 40, 'PDN': 36, 'SSP': 34}
+
+  THE SITTER DEFINITION, STATED ONCE AND USED EVERYWHERE IN THIS ACT:
+    a cell is a SIT-OUT iff the player has NO season of >= 6 games at or before Y.
+    That is nseas_pro(p,Y)==0 on a completed season -- EXACTLY the gate ev() uses to send a row
+    to sitout_ev. It is NOT _h_cut's test (games THIS season <= 0); ORDER 19 measured those two
+    populations do not coincide, and _h_cut retires here, so the second population ceases to
+    exist in the engine for pool rows.
+    MID-SEASON: the engine's clock tau = (Y-debutyr) + fE**1.5 equals d exactly at fE=1, so the
+    integer derivation knots sit on the engine's own integer knots; the in-progress season
+    interpolates by the existing D12 concave proration (fE=0.58 -> tau=(d-1)+0.4417). tau=0 -> R=1.
+
+======================================================================================================================
+2. THE SAME-DEPTH ALL-POOL NORM  E[winsor(O/entry_anchor, 2.0)]  -- developer-inclusive
+======================================================================================================================
+  The ND method's denominator, re-harvested on the pool. It strips the survivor-selection
+  common-mode: deep survivors are increasingly the developers, so the norm RISES with depth and
+  dividing by it is what makes a deep retention comparable to a shallow one.
+  D2 DEPARTURE: the denominator is entry_anchor(p), not v0_start(p) -- entry_anchor is literally
+  what R multiplies at both pool read sites (anch = R*entry_anchor(p)). v0_start is carried
+  alongside as a sensitivity.
+
+  class    | d1 (n)        d2 (n)        d3 (n)        d4 (n)        d5 (n)        d6 (n)      
+  nonKPP   | 0.314 ( 657)  0.678 ( 329)  0.811 ( 283)  0.956 ( 226)  1.075 ( 183)  1.062 ( 150)
+  KPP      | 0.312 ( 206)  0.622 ( 110)  0.759 (  94)  0.871 (  72)  1.017 (  53)  1.202 (  36)
+  RUCK     | 0.240 ( 113)  0.762 (  44)  1.005 (  42)  1.142 (  34)  1.288 (  29)  1.197 (  22)
+
+  sensitivity, same norm on the v0_start denominator:
+  nonKPP   | 0.275 ( 656)  0.598 ( 329)  0.705 ( 283)  0.840 ( 226)  0.953 ( 183)  0.918 ( 150)
+  KPP      | 0.163 ( 206)  0.349 ( 110)  0.405 (  94)  0.513 (  72)  0.614 (  53)  0.779 (  36)
+  RUCK     | 0.233 ( 113)  0.723 (  44)  0.962 (  42)  1.092 (  34)  1.257 (  29)  1.171 (  22)
+
+======================================================================================================================
+3. THE WHOLE-POOL DERIVED SURFACE  R(class, depth)
+======================================================================================================================
+  r_sit = Gaussian kernel local mean of winsor(O/entry_anchor,2.0) over the SIT-OUT subset,
+  DEPTH AXIS ONLY (D3 departure: no pick axis -- the owner's ruling that the pool is one
+  population, and MA.effpk returns the constant POOL_PICK=65 for every pool row, so a pick axis
+  is not identified). bw grown through [0.75,1.1,1.6,2.5] until eff-n >= 35.
+  R = clip(r_sit / norm, 0.05, 1.0), then ISOTONIC NON-INCREASING IN DEPTH (the owner's law).
+
+  class    | RAW  R = r_sit/norm, clip[.05,1]           | ISOTONIC (wired)                          
+           | d1     d2     d3     d4     d5     d6    | d1     d2     d3     d4     d5     d6   
+  nonKPP   | 0.624  0.380  0.494  0.525  0.529  0.422 | 0.624  0.380  0.380  0.380  0.380  0.380
+  KPP      | 0.817  0.500  0.467  0.359  0.362  0.336 | 0.817  0.500  0.467  0.359  0.359  0.336
+  RUCK     | 1.000  0.522  0.670  0.488  0.354  0.344 | 1.000  0.522  0.522  0.488  0.354  0.344
+
+  exact-depth sit-out cell counts (the derivation's own n, before the depth kernel):
+  nonKPP   | d1=552    d2=157    d3=66     d4=29     d5=13     d6=4    
+  KPP      | d1=187    d2=72     d3=40     d4=17     d5=7      d6=3    
+  RUCK     | d1=107    d2=29     d3=22     d4=7      d5=4      d6=1    
+
+  kernel bandwidth / eff-n actually used per cell:
+    nonKPP   d1 bw=0.75 effn=661  d2 bw=0.75 effn=649  d3 bw=0.75 effn=257  d4 bw=0.75 effn=103  d5 bw=0.75 effn=44  d6 bw=1.10 effn=40
+    KPP      d1 bw=0.75 effn=238  d2 bw=0.75 effn=249  d3 bw=0.75 effn=122  d4 bw=0.75 effn=59  d5 bw=1.10 effn=53  d6 bw=1.60 effn=63
+    RUCK     d1 bw=0.75 effn=128  d2 bw=0.75 effn=133  d3 bw=0.75 effn=57  d4 bw=1.10 effn=54  d5 bw=1.60 effn=62  d6 bw=2.50 effn=105
+    (* = eff-n never reached 35 even at the widest bandwidth -- DECLARED THIN)
+
+  ISOTONIC STEP: raw violations of the owner's non-increasing law per class: {'nonKPP': 3, 'KPP': 1, 'RUCK': 1}
+  ISOTONIC STEP: violations AFTER projection: {'nonKPP': 0, 'KPP': 0, 'RUCK': 0}
+
+  WHAT THE SHIPPED READ DOES TODAY, for comparison (national surface at effpk=65 x H):
+    nonKPP   R_natl@65 0.549  0.388  0.345  0.239  0.164  0.164
+             xH_POOLSIT 0.441  0.312  0.277  0.192  0.132  0.132   xH_UNION too 0.124  0.087  0.078  0.054  0.037  0.037
+             DERIVED    0.624  0.380  0.380  0.380  0.380  0.380
+    KPP      R_natl@65 0.642  0.407  0.351  0.334  0.334  0.329
+             xH_POOLSIT 0.516  0.327  0.282  0.269  0.269  0.265   xH_UNION too 0.145  0.092  0.079  0.075  0.075  0.074
+             DERIVED    0.817  0.500  0.467  0.359  0.359  0.336
+    RUCK     R_natl@65 0.781  0.594  0.594  0.594  0.541  0.470
+             xH_POOLSIT 0.628  0.478  0.478  0.478  0.435  0.378   xH_UNION too 0.176  0.134  0.134  0.134  0.122  0.106
+             DERIVED    1.000  0.522  0.522  0.488  0.354  0.344
+
+  SENSITIVITY -- the same surface on the v0_start denominator (D2 alternative):
+    nonKPP   0.573  0.330  0.330  0.330  0.330  0.330
+    KPP      0.633  0.355  0.355  0.261  0.261  0.247
+    RUCK     0.968  0.514  0.514  0.487  0.346  0.333
+
+======================================================================================================================
+4. THE PATHWAY LAYER -- own data at n>=20, else K=10 partial pooling to the whole-pool cell
+======================================================================================================================
+  v = w*own + (1-w)*R_pool(cls,d),  w = n/(n+10).  K=10 is the layer-2 constant RULED at
+  directive D4 (K_336 rl_model.py:396, K_338 par_build.py:164 -- the engine's own within-group
+  borrowing convention). EVERY pooled cell is disclosed below with its n and its w.
+
+  cells reaching n>=20 and fitting on their OWN data: 13 of 162 (9 pathways x 3 classes x 6 depths)
+  pathway  class   d        n       w      own    wired
+  RD       nonKPP  d1     372  1.0000   0.6540   0.6540
+  RD       nonKPP  d2      95  1.0000   0.3998   0.3998
+  RD       nonKPP  d3      43  1.0000   0.5777   0.5777
+  RD       KPP     d1     117  1.0000   0.7099   0.7099
+  RD       KPP     d2      38  1.0000   0.3888   0.3888
+  RD       KPP     d3      22  1.0000   0.3855   0.3855
+  RD       RUCK    d1      60  1.0000   1.0000   1.0000
+  ND>64    nonKPP  d1      69  1.0000   0.4840   0.4840
+  ND>64    nonKPP  d2      28  1.0000   0.2976   0.2976
+  ND>64    KPP     d1      25  1.0000   0.8888   0.8888
+  IRE      nonKPP  d1      32  1.0000   0.7744   0.7744
+  UNR      RUCK    d1      24  1.0000   0.4076   0.4076
+  PDA      nonKPP  d1      23  1.0000   0.1938   0.1938
+
+  POOLED CELLS -- every one disclosed with its n and its borrowing weight (only cells with n>0
+  shown individually; cells with n==0 take the whole-pool donor outright, w=0):
+  pathway  class   d        n w=n/(n+10)      own    donor    wired
+  RD       nonKPP  d4      18     0.6429   0.7162   0.3799   0.5961
+  RD       nonKPP  d5       8     0.4444   0.6625   0.3799   0.5055
+  RD       nonKPP  d6       2     0.1667   0.5714   0.3799   0.4118
+  RD       KPP     d4       7     0.4118   0.3134   0.3594   0.3405
+  RD       KPP     d5       4     0.2857   0.2803   0.3594   0.3368
+  RD       KPP     d6       2     0.1667   0.2269   0.3363   0.3181
+  RD       RUCK    d2      18     0.6429   0.5521   0.5222   0.5414
+  RD       RUCK    d3      13     0.5652   0.5570   0.5222   0.5419
+  RD       RUCK    d4       4     0.2857   0.4126   0.4879   0.4664
+  RD       RUCK    d5       3     0.2308   0.3639   0.3543   0.3565
+  ND>64    nonKPP  d3      11     0.5238   0.2482   0.3799   0.3109
+  ND>64    nonKPP  d4       7     0.4118   0.1436   0.3799   0.2826
+  ND>64    nonKPP  d5       4     0.2857   0.1254   0.3799   0.3072
+  ND>64    nonKPP  d6       2     0.1667   0.1196   0.3799   0.3365
+  ND>64    KPP     d2      14     0.5833   0.7446   0.4996   0.6425
+  ND>64    KPP     d3       5     0.3333   0.5444   0.4673   0.4930
+  ND>64    KPP     d4       2     0.1667   0.4983   0.3594   0.3826
+  ND>64    KPP     d5       2     0.1667   0.4861   0.3594   0.3805
+  ND>64    KPP     d6       1     0.0909   0.4789   0.3363   0.3493
+  ND>64    RUCK    d1       7     0.4118   1.0000   1.0000   1.0000
+  ND>64    RUCK    d2       5     0.3333   0.7204   0.5222   0.5883
+  ND>64    RUCK    d3       5     0.3333   0.5797   0.5222   0.5414
+  ND>64    RUCK    d4       2     0.1667   0.5043   0.4879   0.4907
+  ND>64    RUCK    d5       1     0.0909   0.5508   0.3543   0.3721
+  ND>64    RUCK    d6       1     0.0909   0.4721   0.3444   0.3560
+  IRE      nonKPP  d2       9     0.4737   0.3233   0.3799   0.3531
+  IRE      nonKPP  d3       3     0.2308   0.2161   0.3799   0.3421
+  IRE      nonKPP  d4       1     0.0909   0.1927   0.3799   0.3628
+  IRE      KPP     d1      11     0.5238   1.0000   0.8173   0.9130
+  IRE      KPP     d2       6     0.3750   0.7035   0.4996   0.5761
+  IRE      KPP     d3       3     0.2308   0.4830   0.4673   0.4709
+  IRE      KPP     d4       2     0.1667   0.0500   0.3594   0.3078
+  IRE      KPP     d5       1     0.0909   0.0500   0.3594   0.3313
+  IRE      RUCK    d1       2     0.1667   0.0500   1.0000   0.8417
+  UNR      nonKPP  d1      10     0.5000   0.7778   0.6242   0.7010
+  UNR      nonKPP  d2       5     0.3333   0.4946   0.3799   0.4181
+  UNR      nonKPP  d3       1     0.0909   0.3444   0.3799   0.3766
+  UNR      KPP     d1       9     0.4737   0.7911   0.8173   0.8049
+  UNR      KPP     d2       5     0.3333   0.5738   0.4996   0.5244
+  UNR      KPP     d3       3     0.2308   0.6158   0.4673   0.5016
+  UNR      KPP     d4       2     0.1667   0.5112   0.3594   0.3847
+  UNR      RUCK    d2       3     0.2308   0.0602   0.5222   0.4156
+  UNR      RUCK    d3       2     0.1667   0.0612   0.5222   0.4454
+  UNR      RUCK    d4       1     0.0909   0.0500   0.4879   0.4481
+  PDA      nonKPP  d2       8     0.4444   0.1070   0.3799   0.2586
+  PDA      nonKPP  d3       3     0.2308   0.0757   0.3799   0.3097
+  PDA      nonKPP  d4       1     0.0909   0.0500   0.3799   0.3499
+  PDA      nonKPP  d5       1     0.0909   0.0500   0.3799   0.3499
+  PDA      KPP     d1       5     0.3333   1.0000   0.8173   0.8782
+  PDA      KPP     d2       2     0.1667   1.0000   0.4996   0.5830
+  PDA      KPP     d3       2     0.1667   1.0000   0.4673   0.5561
+  PDA      KPP     d4       2     0.1667   0.7327   0.3594   0.4216
+  PDA      RUCK    d1       4     0.2857   0.2571   1.0000   0.7877
+  PDA      RUCK    d2       1     0.0909   0.3288   0.5222   0.5047
+  PDA      RUCK    d3       1     0.0909   0.2071   0.5222   0.4936
+  PDS      nonKPP  d1      14     0.5833   1.0000   0.6242   0.8434
+  PDS      nonKPP  d2       3     0.2308   0.5691   0.3799   0.4235
+  PDS      nonKPP  d3       3     0.2308   0.5318   0.3799   0.4149
+  PDS      nonKPP  d4       2     0.1667   0.2925   0.3799   0.3653
+  PDS      KPP     d1       5     0.3333   1.0000   0.8173   0.8782
+  PDS      KPP     d2       3     0.2308   0.9212   0.4996   0.5969
+  PDS      KPP     d3       3     0.2308   0.8821   0.4673   0.5630
+  PDS      KPP     d4       2     0.1667   0.5584   0.3594   0.3926
+  PDS      RUCK    d1       1     0.0909   0.0500   1.0000   0.9136
+  MSD      nonKPP  d1      13     0.5652   0.3560   0.6242   0.4726
+  MSD      nonKPP  d2       4     0.2857   0.5249   0.3799   0.4213
+  MSD      KPP     d1       8     0.4444   0.8125   0.8173   0.8152
+  MSD      KPP     d2       2     0.1667   0.2592   0.4996   0.4595
+  MSD      RUCK    d1       6     0.3750   0.8667   1.0000   0.9500
+  MSD      RUCK    d2       1     0.0909   0.2692   0.5222   0.4992
+  PDN      nonKPP  d1      15     0.6000   1.0000   0.6242   0.8497
+  PDN      nonKPP  d2       4     0.2857   0.7217   0.3799   0.4775
+  PDN      nonKPP  d3       2     0.1667   0.8006   0.3799   0.4500
+  PDN      KPP     d1       3     0.2308   1.0000   0.8173   0.8595
+  PDN      KPP     d2       2     0.1667   0.6823   0.4996   0.5301
+  PDN      KPP     d3       2     0.1667   0.7208   0.4673   0.5095
+  PDN      RUCK    d1       1     0.0909   0.0500   1.0000   0.9136
+  SSP      nonKPP  d1       4     0.2857   0.0500   0.6242   0.4601
+  SSP      nonKPP  d2       1     0.0909   0.0500   0.3799   0.3499
+  SSP      KPP     d1       4     0.2857   1.0000   0.8173   0.8695
+  SSP      RUCK    d1       2     0.1667   1.0000   1.0000   1.0000
+  SSP      RUCK    d2       1     0.0909   1.0000   0.5222   0.5657
+  SSP      RUCK    d3       1     0.0909   0.3056   0.5222   0.5026
+  cells with n==0 taking the donor outright (w=0): 66
+    Counter({'IRE/RUCK': 5, 'PDS/RUCK': 5, 'PDN/RUCK': 5, 'SSP/KPP': 5, 'MSD/nonKPP': 4, 'MSD/KPP': 4, 'MSD/RUCK': 4, 'SSP/nonKPP': 4, 'UNR/nonKPP': 3, 'PDA/RUCK': 3, 'PDN/nonKPP': 3, 'PDN/KPP': 3, 'SSP/RUCK': 3, 'IRE/nonKPP': 2, 'UNR/KPP': 2, 'UNR/RUCK': 2, 'PDA/KPP': 2, 'PDS/nonKPP': 2, 'PDS/KPP': 2, 'RD/RUCK': 1, 'IRE/KPP': 1, 'PDA/nonKPP': 1})
+
+  THE WIRED PATHWAY SURFACE (after isotonic re-projection):
+    --- RD ---
+      nonKPP   0.6540  0.3998  0.3998  0.3998  0.3998  0.3998   (violations 0)
+      KPP      0.7099  0.3888  0.3855  0.3405  0.3368  0.3181   (violations 0)
+      RUCK     1.0000  0.5414  0.5414  0.4664  0.3565  0.3444   (violations 0)
+    --- ND>64 ---
+      nonKPP   0.4840  0.2976  0.2976  0.2826  0.2826  0.2826   (violations 0)
+      KPP      0.8888  0.6425  0.4930  0.3826  0.3805  0.3493   (violations 0)
+      RUCK     1.0000  0.5883  0.5414  0.4907  0.3721  0.3560   (violations 0)
+    --- IRE ---
+      nonKPP   0.7744  0.3531  0.3421  0.3421  0.3421  0.3421   (violations 0)
+      KPP      0.9130  0.5761  0.4709  0.3078  0.3078  0.3078   (violations 0)
+      RUCK     0.8417  0.5222  0.5222  0.4879  0.3543  0.3444   (violations 0)
+    --- UNR ---
+      nonKPP   0.7010  0.4181  0.3766  0.3766  0.3766  0.3766   (violations 0)
+      KPP      0.8049  0.5244  0.5016  0.3847  0.3594  0.3363   (violations 0)
+      RUCK     0.4076  0.4076  0.4076  0.4076  0.3543  0.3444   (violations 0)
+    --- PDA ---
+      nonKPP   0.1938  0.1938  0.1938  0.1938  0.1938  0.1938   (violations 0)
+      KPP      0.8782  0.5830  0.5561  0.4216  0.3594  0.3363   (violations 0)
+      RUCK     0.7877  0.5047  0.4936  0.4879  0.3543  0.3444   (violations 0)
+    --- PDS ---
+      nonKPP   0.8434  0.4235  0.4149  0.3653  0.3653  0.3653   (violations 0)
+      KPP      0.8782  0.5969  0.5630  0.3926  0.3594  0.3363   (violations 0)
+      RUCK     0.9136  0.5222  0.5222  0.4879  0.3543  0.3444   (violations 0)
+    --- MSD ---
+      nonKPP   0.4726  0.4213  0.3799  0.3799  0.3799  0.3799   (violations 0)
+      KPP      0.8152  0.4595  0.4595  0.3594  0.3594  0.3363   (violations 0)
+      RUCK     0.9500  0.4992  0.4992  0.4879  0.3543  0.3444   (violations 0)
+    --- PDN ---
+      nonKPP   0.8497  0.4775  0.4500  0.3799  0.3799  0.3799   (violations 0)
+      KPP      0.8595  0.5301  0.5095  0.3594  0.3594  0.3363   (violations 0)
+      RUCK     0.9136  0.5222  0.5222  0.4879  0.3543  0.3444   (violations 0)
+    --- SSP ---
+      nonKPP   0.4601  0.3499  0.3499  0.3499  0.3499  0.3499   (violations 0)
+      KPP      0.8695  0.4996  0.4673  0.3594  0.3594  0.3363   (violations 0)
+      RUCK     1.0000  0.5657  0.5026  0.4879  0.3543  0.3444   (violations 0)
+
+  ISOTONIC VERIFICATION: violations of the non-increasing law over all 27 wired pathway x class
+  vectors AND the 3 whole-pool vectors: 0. The owner's signed law holds at every fitted cell.
+
+======================================================================================================================
+5. THE MEAN-PRESERVING TABLE, PER PATHWAY -- the owner's D8 law as arithmetic
+======================================================================================================================
+  e = entry_anchor(p) (ORDER 19's statistic, carried verbatim). Over the pathway's complete-window
+  cells:
+      U = ( SUM_all e - SUM_sit e*R ) / SUM_non e
+      mean = ( SUM_sit e*R + SUM_non e*U ) / SUM_all e  ==  1.0000000000  exactly
+  This step ALSO discharges directive D4's renormalisation guard: whatever the borrowed cells
+  deliver, the pathway's entry-weighted mean returns to 1 in one multiplication.
+
+  pathway     cells  sitters    sit shr     mean R          U post-redist mean
+  RD           2352      832     0.3527   0.606216   1.214601     1.0000000000
+  ND>64         441      193     0.4376   0.514156   1.378097     1.0000000000
+  IRE           137       70     0.5109   0.669220   1.345591     1.0000000000
+  UNR           126       65     0.5159   0.520699   1.510731     1.0000000000
+  PDA           106       53     0.5000   0.351682   1.648318     1.0000000000
+  PDS            62       36     0.5806   0.683981   1.437564     1.0000000000
+  MSD            40       34     0.8500   0.631439   3.088510     1.0000000000
+  PDN            36       29     0.8056   0.728500   2.124785     1.0000000000
+  SSP            34       13     0.3824   0.672054   1.203014     1.0000000000
+  ALL POOL     3334     1325     0.3845   0.591018   1.255520     1.0000000000
+
+  ASSERTION: pathways whose post-redistribution entry-weighted mean is not 1.0000000000: 0
+
+  THE CONDITIONAL MARKDOWN IS THE FULL UPDATE, NOT A BLENDED AVERAGE. Read the two columns
+  together: 'mean R' is what an ACTUAL SITTER carries; U is what everyone else carries. The
+  sitter markdown (1 - mean R) is deliberately LARGER than the pathway-blended figure would be,
+  and the uplift pays for it exactly.
+
+  Against what the engine charges TODAY (composed R_natl@65 x H_POOLSIT [x H_UNION]), same cells:
+  pathway    today meanM    derived R        delta
+  RD            0.422175     0.606216    +0.184041
+  ND>64         0.394106     0.514156    +0.120050
+  IRE           0.114023     0.669220    +0.555196
+  UNR           0.490032     0.520699    +0.030667
+  PDA           0.407689     0.351682    -0.056006
+  PDS           0.386277     0.683981    +0.297704
+  MSD           0.131887     0.631439    +0.499552
+  PDN           0.407545     0.728500    +0.320955
+  SSP           0.488708     0.672054    +0.183345
+  ALL POOL      0.400936     0.591018    +0.190081
+
+======================================================================================================================
+6. RECONCILIATION -- ORDER 18's pool-history depth-1 figures on ITS convention vs mine
+======================================================================================================================
+  ORDER 18 published pool-history depth-1 retention nonKPP 0.5725 / KPP 0.7528 / RUCK 0.8783.
+  Mine differs by three declared departures: the denominator (D2 entry_anchor vs v0_start), the
+  norm population (pool-only here) and era (D1). Both are printed so the gap is visible, not
+  argued.
+
+  class        ORDER 18    ORDER 21 d1 ORDER 21 d1 (v0 denom)
+  nonKPP         0.5725         0.6242           0.5731
+  KPP            0.7528         0.8173           0.6333
+  RUCK           0.8783         1.0000           0.9681
+
+======================================================================================================================
+7. OWNER OVERRIDE O1 (the KPP retention floor) -- PRINTED BOTH WAYS, NOT CHOSEN (departure D7)
+======================================================================================================================
+  O1 is Luke's signed override on the NATIONAL surface, board path only: KPP := max(KPP, nonKPP)
+  pointwise. Whether it extends to an object derived on pool data is an owner question. The
+  derived surface as wired here does NOT apply it; the floored reading is printed for the ruling.
+    whole-pool KPP as derived : 0.8173  0.4996  0.4673  0.3594  0.3594  0.3363
+    whole-pool KPP under O1   : 0.8173  0.4996  0.4673  0.3799  0.3799  0.3799
+    cells where O1 would bind : 3 of 6
+
+wrote POOL_RETENTION_SURFACE.json  md5 00ca5c3d1d4eca7e3b9a7d3ed3877d2e
+
+PINS RE-ASSERTED AT EXIT -- all three UNMOVED.
