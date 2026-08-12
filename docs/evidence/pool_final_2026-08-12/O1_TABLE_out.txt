@@ -1,0 +1,9 @@
+  O1: KPP := pointwise max(KPP, nonKPP).  Binding cells printed with their size.
+  layer      d     KPP as-is     nonKPP   O1 wired
+  whole_pool d3       0.4780     0.4978     0.4978  <- BINDS (+0.0199)
+  whole_pool d4       0.4008     0.5111     0.5111  <- BINDS (+0.1103)
+  whole_pool d5       0.3917     0.4782     0.4782  <- BINDS (+0.0865)
+  whole_pool d6       0.3674     0.3896     0.3896  <- BINDS (+0.0223)
+  pathway layer, cells where O1 binds (of 6 each): {'RD': 5, 'ND>64': 0, 'IRE': 3, 'UNR': 3, 'PDA': 3, 'PDS': 3, 'MSD': 4, 'PDN': 4, 'SSP': 4}
+  TOTAL BINDING CELLS: 33 of 60 (whole pool 6 + 9 pathways x 6)
+  wrote /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o22/iter/surface_F1_O1ON.json

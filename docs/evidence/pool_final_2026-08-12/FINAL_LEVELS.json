@@ -1,0 +1,38 @@
+{
+ "signed_flat": {
+  "SSP": 320,
+  "MSD": 379,
+  "IRE": 107,
+  "PDA": 191,
+  "PDN": 97,
+  "PDS": 57,
+  "UNR": 66
+ },
+ "signed_rd_positional": {
+  "MID": 289,
+  "SD": 246,
+  "SF": 217,
+  "KPD": 370,
+  "KPF": 209,
+  "RUCK": 258
+ },
+ "nd65_measured_k15": 274,
+ "_from": "derive_F0.json",
+ "_damp": 1.0,
+ "_betas": {
+  "SSP": null,
+  "MSD": 0.8318484901901891,
+  "IRE": null,
+  "PDA": 0.80714205983999,
+  "PDN": null,
+  "PDS": null,
+  "UNR": null,
+  "ND65+": null,
+  "RD:MID": 0.8853491165444631,
+  "RD:SD": 0.9262092543568433,
+  "RD:SF": 0.9454008546971248,
+  "RD:KPD": null,
+  "RD:KPF": null,
+  "RD:RUCK": null
+ }
+}
