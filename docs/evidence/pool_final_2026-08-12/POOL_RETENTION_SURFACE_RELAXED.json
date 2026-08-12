@@ -1,0 +1,2454 @@
+{
+ "meta": {
+  "order": 21,
+  "pins": {
+   "board": "1dbd1480a34c7823f330273211cbb76a",
+   "store": "d9a24282357cf3083b1640466e3ecd83",
+   "instrument": "0f8220351c64c56ccfa90c60edcdfa5f"
+  },
+  "method": "d13 ND retention derivation, departures D1-D7 (PREREG_ORDER21.md)",
+  "K_layer2": 10.0,
+  "n_own": 20,
+  "winsor": 2.0,
+  "target_effn": 35.0,
+  "denom": "entry_anchor",
+  "cells_wc": 3334,
+  "sitters_wc": 1325,
+  "nonpool_cells": 0
+ },
+ "whole_pool": {
+  "nonKPP": [
+   0.624168,
+   0.379869,
+   0.494364,
+   0.524833,
+   0.528723,
+   0.421996
+  ],
+  "KPP": [
+   0.817336,
+   0.499621,
+   0.467284,
+   0.35942,
+   0.361899,
+   0.336313
+  ],
+  "RUCK": [
+   1.0,
+   0.522249,
+   0.670433,
+   0.487939,
+   0.354253,
+   0.344425
+  ]
+ },
+ "whole_pool_raw": {
+  "nonKPP": [
+   0.624168,
+   0.379869,
+   0.494364,
+   0.524833,
+   0.528723,
+   0.421996
+  ],
+  "KPP": [
+   0.817336,
+   0.499621,
+   0.467284,
+   0.35942,
+   0.361899,
+   0.336313
+  ],
+  "RUCK": [
+   1.0,
+   0.522249,
+   0.670433,
+   0.487939,
+   0.354253,
+   0.344425
+  ]
+ },
+ "whole_pool_v0denom": {
+  "nonKPP": [
+   0.573127,
+   0.330259,
+   0.410664,
+   0.465505,
+   0.51604,
+   0.418901
+  ],
+  "KPP": [
+   0.633281,
+   0.354834,
+   0.354991,
+   0.261163,
+   0.285501,
+   0.247349
+  ],
+  "RUCK": [
+   0.968076,
+   0.514468,
+   0.665451,
+   0.486808,
+   0.345644,
+   0.333047
+  ]
+ },
+ "whole_pool_meta": {
+  "nonKPP": [
+   {
+    "bwd": 0.75,
+    "effn": 661.0,
+    "n_exact": 552,
+    "thin": false,
+    "norm": 0.3139,
+    "rsit": 0.1959
+   },
+   {
+    "bwd": 0.75,
+    "effn": 648.9,
+    "n_exact": 157,
+    "thin": false,
+    "norm": 0.6783,
+    "rsit": 0.2577
+   },
+   {
+    "bwd": 0.75,
+    "effn": 257.0,
+    "n_exact": 66,
+    "thin": false,
+    "norm": 0.8105,
+    "rsit": 0.4007
+   },
+   {
+    "bwd": 0.75,
+    "effn": 103.4,
+    "n_exact": 29,
+    "thin": false,
+    "norm": 0.9559,
+    "rsit": 0.5017
+   },
+   {
+    "bwd": 0.75,
+    "effn": 43.9,
+    "n_exact": 13,
+    "thin": false,
+    "norm": 1.0754,
+    "rsit": 0.5686
+   },
+   {
+    "bwd": 1.1,
+    "effn": 40.5,
+    "n_exact": 4,
+    "thin": false,
+    "norm": 1.0616,
+    "rsit": 0.448
+   }
+  ],
+  "KPP": [
+   {
+    "bwd": 0.75,
+    "effn": 238.0,
+    "n_exact": 187,
+    "thin": false,
+    "norm": 0.3117,
+    "rsit": 0.2548
+   },
+   {
+    "bwd": 0.75,
+    "effn": 249.1,
+    "n_exact": 72,
+    "thin": false,
+    "norm": 0.6217,
+    "rsit": 0.3106
+   },
+   {
+    "bwd": 0.75,
+    "effn": 122.2,
+    "n_exact": 40,
+    "thin": false,
+    "norm": 0.7595,
+    "rsit": 0.3549
+   },
+   {
+    "bwd": 0.75,
+    "effn": 59.4,
+    "n_exact": 17,
+    "thin": false,
+    "norm": 0.8713,
+    "rsit": 0.3132
+   },
+   {
+    "bwd": 1.1,
+    "effn": 52.9,
+    "n_exact": 7,
+    "thin": false,
+    "norm": 1.0167,
+    "rsit": 0.3679
+   },
+   {
+    "bwd": 1.6,
+    "effn": 62.9,
+    "n_exact": 3,
+    "thin": false,
+    "norm": 1.2018,
+    "rsit": 0.4042
+   }
+  ],
+  "RUCK": [
+   {
+    "bwd": 0.75,
+    "effn": 127.7,
+    "n_exact": 107,
+    "thin": false,
+    "norm": 0.2398,
+    "rsit": 0.2466
+   },
+   {
+    "bwd": 0.75,
+    "effn": 133.1,
+    "n_exact": 29,
+    "thin": false,
+    "norm": 0.7623,
+    "rsit": 0.3981
+   },
+   {
+    "bwd": 0.75,
+    "effn": 56.7,
+    "n_exact": 22,
+    "thin": false,
+    "norm": 1.0052,
+    "rsit": 0.6739
+   },
+   {
+    "bwd": 1.1,
+    "effn": 54.3,
+    "n_exact": 7,
+    "thin": false,
+    "norm": 1.1421,
+    "rsit": 0.5573
+   },
+   {
+    "bwd": 1.6,
+    "effn": 62.0,
+    "n_exact": 4,
+    "thin": false,
+    "norm": 1.2877,
+    "rsit": 0.4562
+   },
+   {
+    "bwd": 2.5,
+    "effn": 105.2,
+    "n_exact": 1,
+    "thin": false,
+    "norm": 1.1969,
+    "rsit": 0.4123
+   }
+  ]
+ },
+ "norm": {
+  "nonKPP|1": [
+   0.313921,
+   657
+  ],
+  "nonKPP|2": [
+   0.678315,
+   329
+  ],
+  "nonKPP|3": [
+   0.810526,
+   283
+  ],
+  "nonKPP|4": [
+   0.955938,
+   226
+  ],
+  "nonKPP|5": [
+   1.075436,
+   183
+  ],
+  "nonKPP|6": [
+   1.061627,
+   150
+  ],
+  "KPP|1": [
+   0.311728,
+   206
+  ],
+  "KPP|2": [
+   0.621702,
+   110
+  ],
+  "KPP|3": [
+   0.759454,
+   94
+  ],
+  "KPP|4": [
+   0.871323,
+   72
+  ],
+  "KPP|5": [
+   1.016656,
+   53
+  ],
+  "KPP|6": [
+   1.201805,
+   36
+  ],
+  "RUCK|1": [
+   0.239781,
+   113
+  ],
+  "RUCK|2": [
+   0.762333,
+   44
+  ],
+  "RUCK|3": [
+   1.005198,
+   42
+  ],
+  "RUCK|4": [
+   1.142103,
+   34
+  ],
+  "RUCK|5": [
+   1.287739,
+   29
+  ],
+  "RUCK|6": [
+   1.196941,
+   22
+  ]
+ },
+ "pathway": {
+  "RD": {
+   "nonKPP": [
+    0.654026,
+    0.399825,
+    0.577713,
+    0.647858,
+    0.588171,
+    0.446892
+   ],
+   "KPP": [
+    0.709917,
+    0.388842,
+    0.385506,
+    0.340482,
+    0.338593,
+    0.318076
+   ],
+   "RUCK": [
+    1.0,
+    0.54144,
+    0.606312,
+    0.466413,
+    0.356472,
+    0.344425
+   ]
+  },
+  "ND>64": {
+   "nonKPP": [
+    0.484007,
+    0.297649,
+    0.365403,
+    0.367846,
+    0.413479,
+    0.37159
+   ],
+   "KPP": [
+    0.888848,
+    0.642533,
+    0.493,
+    0.382568,
+    0.382592,
+    0.349273
+   ],
+   "RUCK": [
+    1.0,
+    0.588296,
+    0.640205,
+    0.490662,
+    0.372121,
+    0.35603
+   ]
+  },
+  "IRE": {
+   "nonKPP": [
+    0.774376,
+    0.353091,
+    0.430153,
+    0.494635,
+    0.528723,
+    0.421996
+   ],
+   "KPP": [
+    0.913017,
+    0.576064,
+    0.47092,
+    0.30785,
+    0.333544,
+    0.336313
+   ],
+   "RUCK": [
+    0.841667,
+    0.522249,
+    0.670433,
+    0.487939,
+    0.354253,
+    0.344425
+   ]
+  },
+  "UNR": {
+   "nonKPP": [
+    0.700961,
+    0.418112,
+    0.480732,
+    0.524833,
+    0.528723,
+    0.421996
+   ],
+   "KPP": [
+    0.804905,
+    0.524359,
+    0.501551,
+    0.384719,
+    0.361899,
+    0.336313
+   ],
+   "RUCK": [
+    0.407619,
+    0.415625,
+    0.568887,
+    0.448126,
+    0.354253,
+    0.344425
+   ]
+  },
+  "PDA": {
+   "nonKPP": [
+    0.193817,
+    0.258575,
+    0.397752,
+    0.481667,
+    0.485203,
+    0.421996
+   ],
+   "KPP": [
+    0.878224,
+    0.583018,
+    0.55607,
+    0.421636,
+    0.361899,
+    0.336313
+   ],
+   "RUCK": [
+    0.787736,
+    0.50466,
+    0.628315,
+    0.487939,
+    0.354253,
+    0.344425
+   ]
+  },
+  "PDS": {
+   "nonKPP": [
+    0.843403,
+    0.423537,
+    0.503008,
+    0.486104,
+    0.528723,
+    0.421996
+   ],
+   "KPP": [
+    0.878224,
+    0.596898,
+    0.563009,
+    0.39259,
+    0.361899,
+    0.336313
+   ],
+   "RUCK": [
+    0.913636,
+    0.522249,
+    0.670433,
+    0.487939,
+    0.354253,
+    0.344425
+   ]
+  },
+  "MSD": {
+   "nonKPP": [
+    0.472611,
+    0.421302,
+    0.494364,
+    0.524833,
+    0.528723,
+    0.421996
+   ],
+   "KPP": [
+    0.815184,
+    0.459543,
+    0.467284,
+    0.35942,
+    0.361899,
+    0.336313
+   ],
+   "RUCK": [
+    0.949998,
+    0.499248,
+    0.670433,
+    0.487939,
+    0.354253,
+    0.344425
+   ]
+  },
+  "PDN": {
+   "nonKPP": [
+    0.849667,
+    0.477549,
+    0.545408,
+    0.524833,
+    0.528723,
+    0.421996
+   ],
+   "KPP": [
+    0.859489,
+    0.530072,
+    0.509529,
+    0.35942,
+    0.361899,
+    0.336313
+   ],
+   "RUCK": [
+    0.913636,
+    0.522249,
+    0.670433,
+    0.487939,
+    0.354253,
+    0.344425
+   ]
+  },
+  "SSP": {
+   "nonKPP": [
+    0.46012,
+    0.349881,
+    0.494364,
+    0.524833,
+    0.528723,
+    0.421996
+   ],
+   "KPP": [
+    0.869526,
+    0.499621,
+    0.467284,
+    0.35942,
+    0.361899,
+    0.336313
+   ],
+   "RUCK": [
+    1.0,
+    0.565681,
+    0.637265,
+    0.487939,
+    0.354253,
+    0.344425
+   ]
+  }
+ },
+ "pathway_disclosure": [
+  {
+   "pathway": "RD",
+   "cls": "nonKPP",
+   "d": 1,
+   "n": 372,
+   "w": 1.0,
+   "own": 0.654,
+   "donor": 0.6242,
+   "value": 0.654,
+   "src": "OWN"
+  },
+  {
+   "pathway": "RD",
+   "cls": "nonKPP",
+   "d": 2,
+   "n": 95,
+   "w": 1.0,
+   "own": 0.3998,
+   "donor": 0.3799,
+   "value": 0.3998,
+   "src": "OWN"
+  },
+  {
+   "pathway": "RD",
+   "cls": "nonKPP",
+   "d": 3,
+   "n": 43,
+   "w": 1.0,
+   "own": 0.5777,
+   "donor": 0.4944,
+   "value": 0.5777,
+   "src": "OWN"
+  },
+  {
+   "pathway": "RD",
+   "cls": "nonKPP",
+   "d": 4,
+   "n": 18,
+   "w": 0.6429,
+   "own": 0.7162,
+   "donor": 0.5248,
+   "value": 0.6479,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "RD",
+   "cls": "nonKPP",
+   "d": 5,
+   "n": 8,
+   "w": 0.4444,
+   "own": 0.6625,
+   "donor": 0.5287,
+   "value": 0.5882,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "RD",
+   "cls": "nonKPP",
+   "d": 6,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.5714,
+   "donor": 0.422,
+   "value": 0.4469,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "RD",
+   "cls": "KPP",
+   "d": 1,
+   "n": 117,
+   "w": 1.0,
+   "own": 0.7099,
+   "donor": 0.8173,
+   "value": 0.7099,
+   "src": "OWN"
+  },
+  {
+   "pathway": "RD",
+   "cls": "KPP",
+   "d": 2,
+   "n": 38,
+   "w": 1.0,
+   "own": 0.3888,
+   "donor": 0.4996,
+   "value": 0.3888,
+   "src": "OWN"
+  },
+  {
+   "pathway": "RD",
+   "cls": "KPP",
+   "d": 3,
+   "n": 22,
+   "w": 1.0,
+   "own": 0.3855,
+   "donor": 0.4673,
+   "value": 0.3855,
+   "src": "OWN"
+  },
+  {
+   "pathway": "RD",
+   "cls": "KPP",
+   "d": 4,
+   "n": 7,
+   "w": 0.4118,
+   "own": 0.3134,
+   "donor": 0.3594,
+   "value": 0.3405,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "RD",
+   "cls": "KPP",
+   "d": 5,
+   "n": 4,
+   "w": 0.2857,
+   "own": 0.2803,
+   "donor": 0.3619,
+   "value": 0.3386,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "RD",
+   "cls": "KPP",
+   "d": 6,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.2269,
+   "donor": 0.3363,
+   "value": 0.3181,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "RD",
+   "cls": "RUCK",
+   "d": 1,
+   "n": 60,
+   "w": 1.0,
+   "own": 1.0,
+   "donor": 1.0,
+   "value": 1.0,
+   "src": "OWN"
+  },
+  {
+   "pathway": "RD",
+   "cls": "RUCK",
+   "d": 2,
+   "n": 18,
+   "w": 0.6429,
+   "own": 0.5521,
+   "donor": 0.5222,
+   "value": 0.5414,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "RD",
+   "cls": "RUCK",
+   "d": 3,
+   "n": 13,
+   "w": 0.5652,
+   "own": 0.557,
+   "donor": 0.6704,
+   "value": 0.6063,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "RD",
+   "cls": "RUCK",
+   "d": 4,
+   "n": 4,
+   "w": 0.2857,
+   "own": 0.4126,
+   "donor": 0.4879,
+   "value": 0.4664,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "RD",
+   "cls": "RUCK",
+   "d": 5,
+   "n": 3,
+   "w": 0.2308,
+   "own": 0.3639,
+   "donor": 0.3543,
+   "value": 0.3565,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "RD",
+   "cls": "RUCK",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.3716,
+   "donor": 0.3444,
+   "value": 0.3444,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "nonKPP",
+   "d": 1,
+   "n": 69,
+   "w": 1.0,
+   "own": 0.484,
+   "donor": 0.6242,
+   "value": 0.484,
+   "src": "OWN"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "nonKPP",
+   "d": 2,
+   "n": 28,
+   "w": 1.0,
+   "own": 0.2976,
+   "donor": 0.3799,
+   "value": 0.2976,
+   "src": "OWN"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "nonKPP",
+   "d": 3,
+   "n": 11,
+   "w": 0.5238,
+   "own": 0.2482,
+   "donor": 0.4944,
+   "value": 0.3654,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "nonKPP",
+   "d": 4,
+   "n": 7,
+   "w": 0.4118,
+   "own": 0.1436,
+   "donor": 0.5248,
+   "value": 0.3678,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "nonKPP",
+   "d": 5,
+   "n": 4,
+   "w": 0.2857,
+   "own": 0.1254,
+   "donor": 0.5287,
+   "value": 0.4135,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "nonKPP",
+   "d": 6,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.1196,
+   "donor": 0.422,
+   "value": 0.3716,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "KPP",
+   "d": 1,
+   "n": 25,
+   "w": 1.0,
+   "own": 0.8888,
+   "donor": 0.8173,
+   "value": 0.8888,
+   "src": "OWN"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "KPP",
+   "d": 2,
+   "n": 14,
+   "w": 0.5833,
+   "own": 0.7446,
+   "donor": 0.4996,
+   "value": 0.6425,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "KPP",
+   "d": 3,
+   "n": 5,
+   "w": 0.3333,
+   "own": 0.5444,
+   "donor": 0.4673,
+   "value": 0.493,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "KPP",
+   "d": 4,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.4983,
+   "donor": 0.3594,
+   "value": 0.3826,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "KPP",
+   "d": 5,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.4861,
+   "donor": 0.3619,
+   "value": 0.3826,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "KPP",
+   "d": 6,
+   "n": 1,
+   "w": 0.0909,
+   "own": 0.4789,
+   "donor": 0.3363,
+   "value": 0.3493,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "RUCK",
+   "d": 1,
+   "n": 7,
+   "w": 0.4118,
+   "own": 1.0,
+   "donor": 1.0,
+   "value": 1.0,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "RUCK",
+   "d": 2,
+   "n": 5,
+   "w": 0.3333,
+   "own": 0.7204,
+   "donor": 0.5222,
+   "value": 0.5883,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "RUCK",
+   "d": 3,
+   "n": 5,
+   "w": 0.3333,
+   "own": 0.5797,
+   "donor": 0.6704,
+   "value": 0.6402,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "RUCK",
+   "d": 4,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.5043,
+   "donor": 0.4879,
+   "value": 0.4907,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "RUCK",
+   "d": 5,
+   "n": 1,
+   "w": 0.0909,
+   "own": 0.5508,
+   "donor": 0.3543,
+   "value": 0.3721,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "ND>64",
+   "cls": "RUCK",
+   "d": 6,
+   "n": 1,
+   "w": 0.0909,
+   "own": 0.4721,
+   "donor": 0.3444,
+   "value": 0.356,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "nonKPP",
+   "d": 1,
+   "n": 32,
+   "w": 1.0,
+   "own": 0.7744,
+   "donor": 0.6242,
+   "value": 0.7744,
+   "src": "OWN"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "nonKPP",
+   "d": 2,
+   "n": 9,
+   "w": 0.4737,
+   "own": 0.3233,
+   "donor": 0.3799,
+   "value": 0.3531,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "nonKPP",
+   "d": 3,
+   "n": 3,
+   "w": 0.2308,
+   "own": 0.2161,
+   "donor": 0.4944,
+   "value": 0.4302,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "nonKPP",
+   "d": 4,
+   "n": 1,
+   "w": 0.0909,
+   "own": 0.1927,
+   "donor": 0.5248,
+   "value": 0.4946,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "nonKPP",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.1658,
+   "donor": 0.5287,
+   "value": 0.5287,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "nonKPP",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.1783,
+   "donor": 0.422,
+   "value": 0.422,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "KPP",
+   "d": 1,
+   "n": 11,
+   "w": 0.5238,
+   "own": 1.0,
+   "donor": 0.8173,
+   "value": 0.913,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "KPP",
+   "d": 2,
+   "n": 6,
+   "w": 0.375,
+   "own": 0.7035,
+   "donor": 0.4996,
+   "value": 0.5761,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "KPP",
+   "d": 3,
+   "n": 3,
+   "w": 0.2308,
+   "own": 0.483,
+   "donor": 0.4673,
+   "value": 0.4709,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "KPP",
+   "d": 4,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.05,
+   "donor": 0.3594,
+   "value": 0.3078,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "KPP",
+   "d": 5,
+   "n": 1,
+   "w": 0.0909,
+   "own": 0.05,
+   "donor": 0.3619,
+   "value": 0.3335,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "KPP",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.3363,
+   "value": 0.3363,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "RUCK",
+   "d": 1,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.05,
+   "donor": 1.0,
+   "value": 0.8417,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "RUCK",
+   "d": 2,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.5222,
+   "value": 0.5222,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "RUCK",
+   "d": 3,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.6704,
+   "value": 0.6704,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "RUCK",
+   "d": 4,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.4879,
+   "value": 0.4879,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "RUCK",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.3543,
+   "value": 0.3543,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "IRE",
+   "cls": "RUCK",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.3444,
+   "value": 0.3444,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "nonKPP",
+   "d": 1,
+   "n": 10,
+   "w": 0.5,
+   "own": 0.7778,
+   "donor": 0.6242,
+   "value": 0.701,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "nonKPP",
+   "d": 2,
+   "n": 5,
+   "w": 0.3333,
+   "own": 0.4946,
+   "donor": 0.3799,
+   "value": 0.4181,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "nonKPP",
+   "d": 3,
+   "n": 1,
+   "w": 0.0909,
+   "own": 0.3444,
+   "donor": 0.4944,
+   "value": 0.4807,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "nonKPP",
+   "d": 4,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.2145,
+   "donor": 0.5248,
+   "value": 0.5248,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "nonKPP",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.1463,
+   "donor": 0.5287,
+   "value": 0.5287,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "nonKPP",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.1316,
+   "donor": 0.422,
+   "value": 0.422,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "KPP",
+   "d": 1,
+   "n": 9,
+   "w": 0.4737,
+   "own": 0.7911,
+   "donor": 0.8173,
+   "value": 0.8049,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "KPP",
+   "d": 2,
+   "n": 5,
+   "w": 0.3333,
+   "own": 0.5738,
+   "donor": 0.4996,
+   "value": 0.5244,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "KPP",
+   "d": 3,
+   "n": 3,
+   "w": 0.2308,
+   "own": 0.6158,
+   "donor": 0.4673,
+   "value": 0.5016,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "KPP",
+   "d": 4,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.5112,
+   "donor": 0.3594,
+   "value": 0.3847,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "KPP",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.3909,
+   "donor": 0.3619,
+   "value": 0.3619,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "KPP",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.3325,
+   "donor": 0.3363,
+   "value": 0.3363,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "RUCK",
+   "d": 1,
+   "n": 24,
+   "w": 1.0,
+   "own": 0.4076,
+   "donor": 1.0,
+   "value": 0.4076,
+   "src": "OWN"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "RUCK",
+   "d": 2,
+   "n": 3,
+   "w": 0.2308,
+   "own": 0.0602,
+   "donor": 0.5222,
+   "value": 0.4156,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "RUCK",
+   "d": 3,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.0612,
+   "donor": 0.6704,
+   "value": 0.5689,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "RUCK",
+   "d": 4,
+   "n": 1,
+   "w": 0.0909,
+   "own": 0.05,
+   "donor": 0.4879,
+   "value": 0.4481,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "RUCK",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.3543,
+   "value": 0.3543,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "UNR",
+   "cls": "RUCK",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.3444,
+   "value": 0.3444,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "nonKPP",
+   "d": 1,
+   "n": 23,
+   "w": 1.0,
+   "own": 0.1938,
+   "donor": 0.6242,
+   "value": 0.1938,
+   "src": "OWN"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "nonKPP",
+   "d": 2,
+   "n": 8,
+   "w": 0.4444,
+   "own": 0.107,
+   "donor": 0.3799,
+   "value": 0.2586,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "nonKPP",
+   "d": 3,
+   "n": 3,
+   "w": 0.2308,
+   "own": 0.0757,
+   "donor": 0.4944,
+   "value": 0.3978,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "nonKPP",
+   "d": 4,
+   "n": 1,
+   "w": 0.0909,
+   "own": 0.05,
+   "donor": 0.5248,
+   "value": 0.4817,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "nonKPP",
+   "d": 5,
+   "n": 1,
+   "w": 0.0909,
+   "own": 0.05,
+   "donor": 0.5287,
+   "value": 0.4852,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "nonKPP",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.422,
+   "value": 0.422,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "KPP",
+   "d": 1,
+   "n": 5,
+   "w": 0.3333,
+   "own": 1.0,
+   "donor": 0.8173,
+   "value": 0.8782,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "KPP",
+   "d": 2,
+   "n": 2,
+   "w": 0.1667,
+   "own": 1.0,
+   "donor": 0.4996,
+   "value": 0.583,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "KPP",
+   "d": 3,
+   "n": 2,
+   "w": 0.1667,
+   "own": 1.0,
+   "donor": 0.4673,
+   "value": 0.5561,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "KPP",
+   "d": 4,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.7327,
+   "donor": 0.3594,
+   "value": 0.4216,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "KPP",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.2243,
+   "donor": 0.3619,
+   "value": 0.3619,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "KPP",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.3363,
+   "value": 0.3363,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "RUCK",
+   "d": 1,
+   "n": 4,
+   "w": 0.2857,
+   "own": 0.2571,
+   "donor": 1.0,
+   "value": 0.7877,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "RUCK",
+   "d": 2,
+   "n": 1,
+   "w": 0.0909,
+   "own": 0.3288,
+   "donor": 0.5222,
+   "value": 0.5047,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "RUCK",
+   "d": 3,
+   "n": 1,
+   "w": 0.0909,
+   "own": 0.2071,
+   "donor": 0.6704,
+   "value": 0.6283,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "RUCK",
+   "d": 4,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.5134,
+   "donor": 0.4879,
+   "value": 0.4879,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "RUCK",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.6246,
+   "donor": 0.3543,
+   "value": 0.3543,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDA",
+   "cls": "RUCK",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.7453,
+   "donor": 0.3444,
+   "value": 0.3444,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "nonKPP",
+   "d": 1,
+   "n": 14,
+   "w": 0.5833,
+   "own": 1.0,
+   "donor": 0.6242,
+   "value": 0.8434,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "nonKPP",
+   "d": 2,
+   "n": 3,
+   "w": 0.2308,
+   "own": 0.5691,
+   "donor": 0.3799,
+   "value": 0.4235,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "nonKPP",
+   "d": 3,
+   "n": 3,
+   "w": 0.2308,
+   "own": 0.5318,
+   "donor": 0.4944,
+   "value": 0.503,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "nonKPP",
+   "d": 4,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.2925,
+   "donor": 0.5248,
+   "value": 0.4861,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "nonKPP",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.456,
+   "donor": 0.5287,
+   "value": 0.5287,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "nonKPP",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.7459,
+   "donor": 0.422,
+   "value": 0.422,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "KPP",
+   "d": 1,
+   "n": 5,
+   "w": 0.3333,
+   "own": 1.0,
+   "donor": 0.8173,
+   "value": 0.8782,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "KPP",
+   "d": 2,
+   "n": 3,
+   "w": 0.2308,
+   "own": 0.9212,
+   "donor": 0.4996,
+   "value": 0.5969,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "KPP",
+   "d": 3,
+   "n": 3,
+   "w": 0.2308,
+   "own": 0.8821,
+   "donor": 0.4673,
+   "value": 0.563,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "KPP",
+   "d": 4,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.5584,
+   "donor": 0.3594,
+   "value": 0.3926,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "KPP",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.39,
+   "donor": 0.3619,
+   "value": 0.3619,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "KPP",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.419,
+   "donor": 0.3363,
+   "value": 0.3363,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "RUCK",
+   "d": 1,
+   "n": 1,
+   "w": 0.0909,
+   "own": 0.05,
+   "donor": 1.0,
+   "value": 0.9136,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "RUCK",
+   "d": 2,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.5222,
+   "value": 0.5222,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "RUCK",
+   "d": 3,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.6704,
+   "value": 0.6704,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "RUCK",
+   "d": 4,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.4879,
+   "value": 0.4879,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "RUCK",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.3543,
+   "value": 0.3543,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDS",
+   "cls": "RUCK",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.3444,
+   "value": 0.3444,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "nonKPP",
+   "d": 1,
+   "n": 13,
+   "w": 0.5652,
+   "own": 0.356,
+   "donor": 0.6242,
+   "value": 0.4726,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "nonKPP",
+   "d": 2,
+   "n": 4,
+   "w": 0.2857,
+   "own": 0.5249,
+   "donor": 0.3799,
+   "value": 0.4213,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "nonKPP",
+   "d": 3,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.1393,
+   "donor": 0.4944,
+   "value": 0.4944,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "nonKPP",
+   "d": 4,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.1384,
+   "donor": 0.5248,
+   "value": 0.5248,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "nonKPP",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.1312,
+   "donor": 0.5287,
+   "value": 0.5287,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "nonKPP",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.1237,
+   "donor": 0.422,
+   "value": 0.422,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "KPP",
+   "d": 1,
+   "n": 8,
+   "w": 0.4444,
+   "own": 0.8125,
+   "donor": 0.8173,
+   "value": 0.8152,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "KPP",
+   "d": 2,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.2592,
+   "donor": 0.4996,
+   "value": 0.4595,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "KPP",
+   "d": 3,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.2499,
+   "donor": 0.4673,
+   "value": 0.4673,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "KPP",
+   "d": 4,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.2399,
+   "donor": 0.3594,
+   "value": 0.3594,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "KPP",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.2291,
+   "donor": 0.3619,
+   "value": 0.3619,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "KPP",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.2176,
+   "donor": 0.3363,
+   "value": 0.3363,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "RUCK",
+   "d": 1,
+   "n": 6,
+   "w": 0.375,
+   "own": 0.8667,
+   "donor": 1.0,
+   "value": 0.95,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "RUCK",
+   "d": 2,
+   "n": 1,
+   "w": 0.0909,
+   "own": 0.2692,
+   "donor": 0.5222,
+   "value": 0.4992,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "RUCK",
+   "d": 3,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.2623,
+   "donor": 0.6704,
+   "value": 0.6704,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "RUCK",
+   "d": 4,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.2546,
+   "donor": 0.4879,
+   "value": 0.4879,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "RUCK",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.2461,
+   "donor": 0.3543,
+   "value": 0.3543,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "MSD",
+   "cls": "RUCK",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.2368,
+   "donor": 0.3444,
+   "value": 0.3444,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "nonKPP",
+   "d": 1,
+   "n": 15,
+   "w": 0.6,
+   "own": 1.0,
+   "donor": 0.6242,
+   "value": 0.8497,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "nonKPP",
+   "d": 2,
+   "n": 4,
+   "w": 0.2857,
+   "own": 0.7217,
+   "donor": 0.3799,
+   "value": 0.4775,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "nonKPP",
+   "d": 3,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.8006,
+   "donor": 0.4944,
+   "value": 0.5454,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "nonKPP",
+   "d": 4,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.3552,
+   "donor": 0.5248,
+   "value": 0.5248,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "nonKPP",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.3947,
+   "donor": 0.5287,
+   "value": 0.5287,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "nonKPP",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.4382,
+   "donor": 0.422,
+   "value": 0.422,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "KPP",
+   "d": 1,
+   "n": 3,
+   "w": 0.2308,
+   "own": 1.0,
+   "donor": 0.8173,
+   "value": 0.8595,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "KPP",
+   "d": 2,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.6823,
+   "donor": 0.4996,
+   "value": 0.5301,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "KPP",
+   "d": 3,
+   "n": 2,
+   "w": 0.1667,
+   "own": 0.7208,
+   "donor": 0.4673,
+   "value": 0.5095,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "KPP",
+   "d": 4,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.3858,
+   "donor": 0.3594,
+   "value": 0.3594,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "KPP",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.8111,
+   "donor": 0.3619,
+   "value": 0.3619,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "KPP",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.8469,
+   "donor": 0.3363,
+   "value": 0.3363,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "RUCK",
+   "d": 1,
+   "n": 1,
+   "w": 0.0909,
+   "own": 0.05,
+   "donor": 1.0,
+   "value": 0.9136,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "RUCK",
+   "d": 2,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.5222,
+   "value": 0.5222,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "RUCK",
+   "d": 3,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.6704,
+   "value": 0.6704,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "RUCK",
+   "d": 4,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.4879,
+   "value": 0.4879,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "RUCK",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.3543,
+   "value": 0.3543,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "PDN",
+   "cls": "RUCK",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.3444,
+   "value": 0.3444,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "nonKPP",
+   "d": 1,
+   "n": 4,
+   "w": 0.2857,
+   "own": 0.05,
+   "donor": 0.6242,
+   "value": 0.4601,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "nonKPP",
+   "d": 2,
+   "n": 1,
+   "w": 0.0909,
+   "own": 0.05,
+   "donor": 0.3799,
+   "value": 0.3499,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "nonKPP",
+   "d": 3,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.4944,
+   "value": 0.4944,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "nonKPP",
+   "d": 4,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.5248,
+   "value": 0.5248,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "nonKPP",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.5287,
+   "value": 0.5287,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "nonKPP",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.05,
+   "donor": 0.422,
+   "value": 0.422,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "KPP",
+   "d": 1,
+   "n": 4,
+   "w": 0.2857,
+   "own": 1.0,
+   "donor": 0.8173,
+   "value": 0.8695,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "KPP",
+   "d": 2,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.7188,
+   "donor": 0.4996,
+   "value": 0.4996,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "KPP",
+   "d": 3,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.7361,
+   "donor": 0.4673,
+   "value": 0.4673,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "KPP",
+   "d": 4,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.5,
+   "donor": 0.3594,
+   "value": 0.3594,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "KPP",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.5,
+   "donor": 0.3619,
+   "value": 0.3619,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "KPP",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.5,
+   "donor": 0.3363,
+   "value": 0.3363,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "RUCK",
+   "d": 1,
+   "n": 2,
+   "w": 0.1667,
+   "own": 1.0,
+   "donor": 1.0,
+   "value": 1.0,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "RUCK",
+   "d": 2,
+   "n": 1,
+   "w": 0.0909,
+   "own": 1.0,
+   "donor": 0.5222,
+   "value": 0.5657,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "RUCK",
+   "d": 3,
+   "n": 1,
+   "w": 0.0909,
+   "own": 0.3056,
+   "donor": 0.6704,
+   "value": 0.6373,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "RUCK",
+   "d": 4,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.7217,
+   "donor": 0.4879,
+   "value": 0.4879,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "RUCK",
+   "d": 5,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.8377,
+   "donor": 0.3543,
+   "value": 0.3543,
+   "src": "POOLED"
+  },
+  {
+   "pathway": "SSP",
+   "cls": "RUCK",
+   "d": 6,
+   "n": 0,
+   "w": 0.0,
+   "own": 0.9557,
+   "donor": 0.3444,
+   "value": 0.3444,
+   "src": "POOLED"
+  }
+ ],
+ "mean_preserving": {
+  "RD": {
+   "cells": 2352,
+   "sitters": 832,
+   "sit_share_w": 0.3527390445,
+   "meanR": 0.6237909743,
+   "U": 1.2050233544,
+   "mean": 1.0,
+   "sit_share_n": 0.3537414966
+  },
+  "ND>64": {
+   "cells": 441,
+   "sitters": 193,
+   "sit_share_w": 0.4376417234,
+   "meanR": 0.5277874287,
+   "U": 1.3674880091,
+   "mean": 1.0,
+   "sit_share_n": 0.4376417234
+  },
+  "IRE": {
+   "cells": 137,
+   "sitters": 70,
+   "sit_share_w": 0.5109489051,
+   "meanR": 0.675540655,
+   "U": 1.3389873754,
+   "mean": 1.0,
+   "sit_share_n": 0.5109489051
+  },
+  "UNR": {
+   "cells": 126,
+   "sitters": 65,
+   "sit_share_w": 0.5158730159,
+   "meanR": 0.5282550458,
+   "U": 1.5026790495,
+   "mean": 1.0,
+   "sit_share_n": 0.5158730159
+  },
+  "PDA": {
+   "cells": 106,
+   "sitters": 53,
+   "sit_share_w": 0.5,
+   "meanR": 0.3864715646,
+   "U": 1.6135284354,
+   "mean": 1.0,
+   "sit_share_n": 0.5
+  },
+  "PDS": {
+   "cells": 62,
+   "sitters": 36,
+   "sit_share_w": 0.5806451613,
+   "meanR": 0.6980319704,
+   "U": 1.4181095794,
+   "mean": 1.0,
+   "sit_share_n": 0.5806451613
+  },
+  "MSD": {
+   "cells": 40,
+   "sitters": 34,
+   "sit_share_w": 0.85,
+   "meanR": 0.6314394646,
+   "U": 3.0885097007,
+   "mean": 1.0,
+   "sit_share_n": 0.85
+  },
+  "PDN": {
+   "cells": 36,
+   "sitters": 29,
+   "sit_share_w": 0.8055555556,
+   "meanR": 0.7350803352,
+   "U": 2.0975243256,
+   "mean": 1.0,
+   "sit_share_n": 0.8055555556
+  },
+  "SSP": {
+   "cells": 34,
+   "sitters": 13,
+   "sit_share_w": 0.3823529412,
+   "meanR": 0.6824162132,
+   "U": 1.1965994871,
+   "mean": 1.0,
+   "sit_share_n": 0.3823529412
+  },
+  "ALL POOL": {
+   "cells": 3334,
+   "sitters": 1325,
+   "sit_share_w": 0.3845285524,
+   "meanR": 0.607307884,
+   "U": 1.2453425443,
+   "mean": 1.0,
+   "sit_share_n": 0.3974205159
+  }
+ },
+ "uplift": {
+  "RD": 1.2050233544,
+  "ND>64": 1.3674880091,
+  "IRE": 1.3389873754,
+  "UNR": 1.5026790495,
+  "PDA": 1.6135284354,
+  "PDS": 1.4181095794,
+  "MSD": 3.0885097007,
+  "PDN": 2.0975243256,
+  "SSP": 1.1965994871
+ },
+ "o1_floored_kpp": [
+  0.817336,
+  0.499621,
+  0.494364,
+  0.524833,
+  0.528723,
+  0.421996
+ ]
+}
