@@ -1,0 +1,316 @@
+{
+ "control3": {
+  "ALL_HEAD": [
+   624418,
+   123939
+  ],
+  "ALL_FIX": [
+   622650,
+   126244
+  ]
+ },
+ "board_by_channel": {
+  "ISO": {
+   "one_at_a_time": 1651,
+   "leave_one_out": 1539
+  },
+  "POLE": {
+   "one_at_a_time": -1196,
+   "leave_one_out": -1315
+  },
+  "BLEND": {
+   "one_at_a_time": -1563,
+   "leave_one_out": -1573
+  },
+  "BAR": {
+   "one_at_a_time": 4,
+   "leave_one_out": 2
+  },
+  "BASE": {
+   "one_at_a_time": 0,
+   "leave_one_out": 0
+  },
+  "LVLPAR": {
+   "one_at_a_time": -545,
+   "leave_one_out": -547
+  }
+ },
+ "board_total": -1768,
+ "residual_oaat": -119,
+ "residual_loo": 126,
+ "movers": {
+  "Harry Dean": {
+   "pos": "KPD",
+   "pick": 3,
+   "ep": 3,
+   "before": 2815,
+   "after": 2577,
+   "delta": -238,
+   "pct": -8.454706927175843,
+   "channels": {
+    "ISO": {
+     "one_at_a_time": 21,
+     "leave_one_out": 23
+    },
+    "POLE": {
+     "one_at_a_time": 0,
+     "leave_one_out": 3
+    },
+    "BLEND": {
+     "one_at_a_time": -251,
+     "leave_one_out": -262
+    },
+    "BAR": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "BASE": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "LVLPAR": {
+     "one_at_a_time": 0,
+     "leave_one_out": -9
+    }
+   },
+   "sum_oaat": -230,
+   "sum_loo": -245,
+   "residual_oaat": -8,
+   "residual_loo": 7
+  },
+  "Angus Clarke": {
+   "pos": "SD",
+   "pick": 39,
+   "ep": 39,
+   "before": 680,
+   "after": 555,
+   "delta": -125,
+   "pct": -18.38235294117647,
+   "channels": {
+    "ISO": {
+     "one_at_a_time": 13,
+     "leave_one_out": 10
+    },
+    "POLE": {
+     "one_at_a_time": -82,
+     "leave_one_out": -107
+    },
+    "BLEND": {
+     "one_at_a_time": -29,
+     "leave_one_out": -46
+    },
+    "BAR": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "BASE": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "LVLPAR": {
+     "one_at_a_time": -3,
+     "leave_one_out": 1
+    }
+   },
+   "sum_oaat": -101,
+   "sum_loo": -142,
+   "residual_oaat": -24,
+   "residual_loo": 17
+  },
+  "Harvey Johnston": {
+   "pos": "SD",
+   "pick": 49,
+   "ep": 49,
+   "before": 224,
+   "after": 329,
+   "delta": 105,
+   "pct": 46.875,
+   "channels": {
+    "ISO": {
+     "one_at_a_time": 11,
+     "leave_one_out": 13
+    },
+    "POLE": {
+     "one_at_a_time": 1,
+     "leave_one_out": 0
+    },
+    "BLEND": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "BAR": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "BASE": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "LVLPAR": {
+     "one_at_a_time": 92,
+     "leave_one_out": 94
+    }
+   },
+   "sum_oaat": 104,
+   "sum_loo": 107,
+   "residual_oaat": 1,
+   "residual_loo": -2
+  },
+  "James Leake": {
+   "pos": "SD",
+   "pick": 17,
+   "ep": 17,
+   "before": 476,
+   "after": 563,
+   "delta": 87,
+   "pct": 18.277310924369747,
+   "channels": {
+    "ISO": {
+     "one_at_a_time": 16,
+     "leave_one_out": 19
+    },
+    "POLE": {
+     "one_at_a_time": 3,
+     "leave_one_out": 3
+    },
+    "BLEND": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "BAR": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "BASE": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "LVLPAR": {
+     "one_at_a_time": 66,
+     "leave_one_out": 68
+    }
+   },
+   "sum_oaat": 85,
+   "sum_loo": 90,
+   "residual_oaat": 2,
+   "residual_loo": -3
+  },
+  "Willem Duursma": {
+   "pos": "MID",
+   "pick": 1,
+   "ep": 1,
+   "before": 4067,
+   "after": 3977,
+   "delta": -90,
+   "pct": -2.2129333661175314,
+   "channels": {
+    "ISO": {
+     "one_at_a_time": 9,
+     "leave_one_out": 10
+    },
+    "POLE": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "BLEND": {
+     "one_at_a_time": -70,
+     "leave_one_out": -99
+    },
+    "BAR": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "BASE": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "LVLPAR": {
+     "one_at_a_time": 0,
+     "leave_one_out": -29
+    }
+   },
+   "sum_oaat": -61,
+   "sum_loo": -118,
+   "residual_oaat": -29,
+   "residual_loo": 28
+  },
+  "Will Hayes": {
+   "pos": "SF",
+   "pick": 56,
+   "ep": 56,
+   "before": 461,
+   "after": 378,
+   "delta": -83,
+   "pct": -18.004338394793926,
+   "channels": {
+    "ISO": {
+     "one_at_a_time": 11,
+     "leave_one_out": 9
+    },
+    "POLE": {
+     "one_at_a_time": -23,
+     "leave_one_out": -22
+    },
+    "BLEND": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "BAR": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "BASE": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "LVLPAR": {
+     "one_at_a_time": -71,
+     "leave_one_out": -71
+    }
+   },
+   "sum_oaat": -83,
+   "sum_loo": -84,
+   "residual_oaat": 0,
+   "residual_loo": 1
+  },
+  "Luke Cleary": {
+   "pos": "SD",
+   "pick": 61,
+   "ep": 61,
+   "before": 37,
+   "after": 29,
+   "delta": -8,
+   "pct": -21.62162162162162,
+   "channels": {
+    "ISO": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "POLE": {
+     "one_at_a_time": -5,
+     "leave_one_out": -4
+    },
+    "BLEND": {
+     "one_at_a_time": -5,
+     "leave_one_out": -3
+    },
+    "BAR": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "BASE": {
+     "one_at_a_time": 0,
+     "leave_one_out": 0
+    },
+    "LVLPAR": {
+     "one_at_a_time": -1,
+     "leave_one_out": 0
+    }
+   },
+   "sum_oaat": -11,
+   "sum_loo": -7,
+   "residual_oaat": 3,
+   "residual_loo": -1
+  }
+ }
+}
