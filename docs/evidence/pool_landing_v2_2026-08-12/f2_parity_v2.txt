@@ -1,0 +1,19 @@
+########## F2 BEFORE the re-seal (the book as committed by ORDER 23)
+psi CONTROL board e2bf7347 F=1.0     shared=802   mismatches=794
+psi CONTROL board e2bf7347 F=1.0524  shared=802   mismatches=44
+
+LANDED   board 88ce647f  F=1.0     shared=802   mismatches=794
+LANDED   board 88ce647f  F=1.0524  shared=802   mismatches=83
+
+########## INSTALL the re-sealed book
+engine/rl_after/s4_matrix.json             99691e0fd69998dbc0c5c115b41e212e -> afeef743c209aa152e73716b3d7d2305
+engine/rl_after/s4_matrix.json.srcmd5      45415814fde17ab74fe2365fac4ffff6 -> 79adfd4f54ff7b9c412b43f470b9134d
+########## F2 AFTER the re-seal
+psi CONTROL board e2bf7347 F=1.0     shared=802   mismatches=793
+psi CONTROL board e2bf7347 F=1.0524  shared=802   mismatches=68
+
+LANDED   board 88ce647f  F=1.0     shared=802   mismatches=794
+LANDED   board 88ce647f  F=1.0524  shared=802   mismatches=0
+
+########## the builder's own parity gate, from its log:
+BOOK PARITY GATE PASS: all 802 shared board players' present value == round(book cur / 1.0524) [numéraire]; 2 board players outside the cohort book (_pvc_exclude): ['adam-treloar', 'jeremy-cameron']
