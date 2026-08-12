@@ -1,0 +1,200 @@
+====================================================================================================================
+ORDER 20B TASK 1 — v0 UNDER THE PAR ARM-SPLIT FIX
+  HEAD probe /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/probe_HEAD.json   (arm_split=False)
+  FIX  probe /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/probe_FIX.json   (arm_split=True)
+  population: 1002 rows carried by the board (active+back) = the BOARD_DELTA population
+====================================================================================================================
+
+  ---- v0_start ----------------------------------------------------------------
+    arm            n  movers    total before    total after      delta      pct   mean|%|    max+%    max-%
+    NATIONAL     668       0        646599.0       646599.0        0.0  0.0000%    0.000     0.00     0.00
+    POOL         334     300        138179.5       209292.9    71113.4 51.4645%  111.221  1223.03   -21.72
+
+  ---- v0_uncapped ----------------------------------------------------------------
+    arm            n  movers    total before    total after      delta      pct   mean|%|    max+%    max-%
+    NATIONAL     668     668        773743.8       748627.9   -25115.9 -3.2460%   10.693   195.95   -55.17
+    POOL         334     334        144540.6       226125.7    81585.2 56.4445%  106.436  1223.03   -21.72
+
+  ---- v0_raw ----------------------------------------------------------------
+    arm            n  movers    total before    total after      delta      pct   mean|%|    max+%    max-%
+    NATIONAL     668     662        773081.9       747078.8   -26003.1 -3.3636%   10.527   195.95   -55.17
+    POOL         334     300        138179.5       209292.9    71113.4 51.4645%  111.221  1223.03   -21.72
+
+  ---- v0_start BY ARM x POSITION GROUP -----------------------------------------
+    arm       pos        n  movers       before        after     delta      pct
+    NATIONAL  MID      193       0     313335.3     313335.3      +0.0  0.0000%
+    NATIONAL  SD       142       0      95757.4      95757.4      +0.0  0.0000%
+    NATIONAL  SF       150       0      98854.3      98854.3      +0.0  0.0000%
+    NATIONAL  KPD       72       0      46719.9      46719.9      +0.0  0.0000%
+    NATIONAL  KPF       84       0      68163.8      68163.8      +0.0  0.0000%
+    NATIONAL  RUCK      27       0      23768.3      23768.3      +0.0  0.0000%
+    POOL      MID       44      44      17811.9      23684.9   +5873.0 32.9726%
+    POOL      SD        73      73      35314.3      47097.5  +11783.2 33.3667%
+    POOL      SF        85      85      25471.1      37889.9  +12418.8 48.7563%
+    POOL      KPD       43      43      30064.5      44799.4  +14734.9 49.0110%
+    POOL      KPF       45      45      16162.8      41631.5  +25468.8 157.5766%
+    POOL      RUCK      44      10      13355.0      14189.6    +834.7  6.2499%
+
+  ---- v0_start BY ARM x PICK BAND (the #338 bands) -----------------------------
+    arm       band        n  movers       before        after     delta      pct
+    NATIONAL  1-3        44       0     128591.8     128591.8      +0.0  0.0000%
+    NATIONAL  4-7        54       0     104937.8     104937.8      +0.0  0.0000%
+    NATIONAL  8-12       71       0     103767.7     103767.7      +0.0  0.0000%
+    NATIONAL  13-20      99       0     104380.1     104380.1      +0.0  0.0000%
+    NATIONAL  21-27      81       0      65758.2      65758.2      +0.0  0.0000%
+    NATIONAL  28-35      80       0      49123.4      49123.4      +0.0  0.0000%
+    NATIONAL  36-48     119       0      56065.2      56065.2      +0.0  0.0000%
+    NATIONAL  49-99     120       0      33974.9      33974.9      +0.0  0.0000%
+    POOL      49-99     334     300     138179.5     209292.9  +71113.4 51.4645%
+
+  ---- KPD: THE OWNER'S QUESTION ('does the v0 for KPDs go backwards too?') ------
+    NATIONAL KPD  n=72 movers=0  v0_start total 46719.9 -> 46719.9  (+0.0, 0.0000%)
+    of the national KPD movers: 0 UP, 0 DOWN, 72 flat
+    every national KPD row, by pick:
+      name                       ep     ageR    v0 HEAD     v0 FIX     delta      pct
+      Jacob Weitering             1       18    2494.93    2494.93     +0.00   +0.00%
+      Harry Dean                  3       18    2330.83    2330.83     +0.00   +0.00%
+      Mac Andrew                  5       18    1516.87    1516.87     +0.00   +0.00%
+      Aaron Francis               6       18    1237.98    1237.98     +0.00   +0.00%
+      Caleb Marchbank             7       18    1212.36    1212.36     +0.00   +0.00%
+      Darcy Moore                 8       18    1181.45    1181.45     +0.00   +0.00%
+      Griffin Logue               8       18    1181.45    1181.45     +0.00   +0.00%
+      Reuben Ginbey               9       18    1103.10    1103.10     +0.00   +0.00%
+      Josh Gibcus                 9       18    1103.10    1103.10     +0.00   +0.00%
+      Alix Tauru                 10       18    1092.84    1092.84     +0.00   +0.00%
+      Zach Reid                  10       18    1092.84    1092.84     +0.00   +0.00%
+      Connor O'Sullivan          11       18    1092.84    1092.84     +0.00   +0.00%
+      Jedd Busslinger            13       18    1040.54    1040.54     +0.00   +0.00%
+      Leek Aleer                 15       20     838.73     838.73     +0.00   +0.00%
+      Jake Lever                 15       18     815.53     815.53     +0.00   +0.00%
+      Adam Tomlinson             15       18     815.53     815.53     +0.00   +0.00%
+      Sam Durdin                 17       18     795.92     795.92     +0.00   +0.00%
+      Aidan Corr                 18       18     792.47     792.47     +0.00   +0.00%
+      Sam De Koning              19       18     788.87     788.87     +0.00   +0.00%
+      Jayden Laverde             20       18     778.39     778.39     +0.00   +0.00%
+      Luke Trainor               21       18     740.39     740.39     +0.00   +0.00%
+      Ben McKay                  21       18     740.39     740.39     +0.00   +0.00%
+      Wil Dawson                 22       18     698.42     698.42     +0.00   +0.00%
+      Darcy Gardiner             22       18     698.42     698.42     +0.00   +0.00%
+      Reef McInnes               24       18     631.69     631.69     +0.00   +0.00%
+      Lewis Hayes                25       18     610.17     610.17     +0.00   +0.00%
+      Blake Thredgold            26       18     595.19     595.19     +0.00   +0.00%
+      Sam Taylor                 28       18     574.06     574.06     +0.00   +0.00%
+      Rory Lobb                  29       20     625.65     625.65     +0.00   +0.00%
+      Charlie Comben             31       18     536.93     536.93     +0.00   +0.00%
+      James Van Es               31       18     536.93     536.93     +0.00   +0.00%
+      James Barrat               32       18     522.08     522.08     +0.00   +0.00%
+      Liam Jones                 32       18     522.08     522.08     +0.00   +0.00%
+      Tom McCartin               33       18     508.00     508.00     +0.00   +0.00%
+      Hugh Davies                33       18     508.00     508.00     +0.00   +0.00%
+      Noah Mraz                  35       18     487.49     487.49     +0.00   +0.00%
+      Tom McCallum               36       18     482.09     482.09     +0.00   +0.00%
+      Rhett Bazzo                37       18     478.58     478.58     +0.00   +0.00%
+      Harrison Petty             37       18     478.58     478.58     +0.00   +0.00%
+      Alex Pearce                37       18     478.58     478.58     +0.00   +0.00%
+      Jed Adams                  38       18     476.98     476.98     +0.00   +0.00%
+      Josh Battle                39       18     475.51     475.51     +0.00   +0.00%
+      Harry O'Farrell            40       18     473.19     473.19     +0.00   +0.00%
+      Ollie Murphy               41       18     468.08     468.08     +0.00   +0.00%
+      Brennan Cox                41       18     468.08     468.08     +0.00   +0.00%
+      Jake Kolodjashnij          41       18     468.08     468.08     +0.00   +0.00%
+      Luke Lloyd                 42       18     460.00     460.00     +0.00   +0.00%
+      Charlie Ballard            42       18     460.00     460.00     +0.00   +0.00%
+      Esava Ratugolea            43       18     449.74     449.74     +0.00   +0.00%
+      Tom Barrass                43       18     449.74     449.74     +0.00   +0.00%
+      Aliir Aliir                44       19     453.03     453.03     +0.00   +0.00%
+      Joel Cochran               47       18     392.25     392.25     +0.00   +0.00%
+      Cooper Bell                49       18     368.11     368.11     +0.00   +0.00%
+      Lewis Young                49       18     368.11     368.11     +0.00   +0.00%
+      Steven May                 49       18     368.11     368.11     +0.00   +0.00%
+      Zane Zakostelsky           51       18     354.28     354.28     +0.00   +0.00%
+      Oscar Adams                51       18     354.28     354.28     +0.00   +0.00%
+      Jack Silvagni              53       18     337.55     337.55     +0.00   +0.00%
+      Patrick Snell              53       18     337.55     337.55     +0.00   +0.00%
+      Oscar McDonald             53       18     337.55     337.55     +0.00   +0.00%
+      Bigoa Nyuon                53       18     337.55     337.55     +0.00   +0.00%
+      Samuel Collins             54       21     398.28     398.28     +0.00   +0.00%
+      Jack Payne                 54       18     330.10     330.10     +0.00   +0.00%
+      Tom McDonald               54       18     330.10     330.10     +0.00   +0.00%
+      Riak Andrew                55       19     332.99     332.99     +0.00   +0.00%
+      Dougal Howard              56       18     311.78     311.78     +0.00   +0.00%
+      Will Darcy                 58       18     288.61     288.61     +0.00   +0.00%
+      Ryan Gardner               58       18     288.61     288.61     +0.00   +0.00%
+      Kyle Marshall              58       18     288.61     288.61     +0.00   +0.00%
+      Harris Andrews             60       18     259.72     259.72     +0.00   +0.00%
+      Zaine Cordy                61       18     244.32     244.32     +0.00   +0.00%
+      Ben Miller                 62       18     228.72     228.72     +0.00   +0.00%
+
+  ---- LARGEST v0_start MOVERS BY NAME (both arms, by |pct|) --------------------
+      name                     arm       pos     ep    v0 HEAD     v0 FIX     delta      pct
+      Mitch Podhajski          POOL      KPF     65      10.38     137.27   +126.89 +1223.03%
+      Will Lewis               POOL      KPF     65      10.38     137.27   +126.89 +1223.03%
+      Nathan Kreuger           POOL      KPF     65      14.23     188.28   +174.05 +1223.03%
+      Mykelti Lefau            POOL      KPF     65      19.00     174.08   +155.08 +816.12%
+      Brodie McLaughlin        POOL      KPF     65      19.00     174.08   +155.08 +816.12%
+      Brandon Ryan             POOL      KPF     65      19.00     174.08   +155.08 +816.12%
+      Jack Hayes               POOL      KPF     65      19.00     174.08   +155.08 +816.12%
+      Marlion Pickett          POOL      SF      65       0.17       1.42     +1.25 +728.43%
+      Lachlan Blakiston        POOL      KPD     65      24.40     177.60   +153.20 +627.92%
+      Anthony Scott            POOL      SF      65       0.44       3.01     +2.57 +586.03%
+      Lachie Sullivan          POOL      SF      65       0.78       4.75     +3.97 +506.87%
+      Tom McCarthy             POOL      SD      65       5.56      33.14    +27.58 +496.33%
+      Flynn Perez              POOL      SD      65       5.56      33.14    +27.58 +496.33%
+      Tom Edwards              POOL      KPF     65      43.31     257.30   +214.00 +494.15%
+      Aidan Johnson            POOL      KPF     65      60.73     360.82   +300.09 +494.15%
+      Brody Mihocek            POOL      KPF     65      57.42     341.16   +283.74 +494.15%
+      Tylar Young              POOL      KPD     65      86.40     447.12   +360.73 +417.51%
+      Ethan Phillips           POOL      KPD     65      58.52     302.85   +244.33 +417.51%
+      Harry Arnold             POOL      KPD     65      58.52     302.85   +244.33 +417.51%
+      Alex Cincotta            POOL      SD      65       1.61       7.91     +6.30 +391.46%
+      Milan Murdock            POOL      SF      65       2.02       9.18     +7.16 +353.93%
+      Jack Henderson           POOL      SF      65       2.02       9.18     +7.16 +353.93%
+      Mason Cox                POOL      KPF     65      73.10     324.43   +251.33 +343.81%
+      Ash Johnson              POOL      KPF     65      73.10     324.43   +251.33 +343.81%
+      Marcus Herbert           POOL      SD      65      17.36      62.51    +45.15 +260.09%
+
+      (by absolute size)
+      Levi Casboult            POOL      KPF     65     846.76    2230.75  +1383.99 +163.45%
+      Matthew Taberner         POOL      KPF     65     680.08    1791.65  +1111.57 +163.45%
+      Finnbar Maley            POOL      KPF     65     608.03    1423.08   +815.05 +134.05%
+      Cooper Trembath          POOL      KPF     65     492.29    1296.92   +804.63 +163.45%
+      Anthony Caminiti         POOL      KPF     65     492.29    1296.92   +804.63 +163.45%
+      Noah Howes               POOL      KPF     65     492.29    1296.92   +804.63 +163.45%
+      Hayden McLean            POOL      KPF     65     492.29    1296.92   +804.63 +163.45%
+      Tom Fullarton            POOL      KPF     65     492.29    1296.92   +804.63 +163.45%
+      Patrick Voss             POOL      KPF     65     565.09    1366.22   +801.12 +141.77%
+      Odin Jones               POOL      KPF     65     562.48    1359.90   +797.42 +141.77%
+      Josh Treacy              POOL      KPF     65     560.46    1355.02   +794.56 +141.77%
+      Jeremy Finlayson         POOL      KPF     65     547.83    1324.48   +776.65 +141.77%
+      Mabior Chol              POOL      KPF     65     546.14    1320.40   +774.26 +141.77%
+      Joel Amartey             POOL      KPF     65     529.58    1280.34   +750.77 +141.77%
+      Harrison Jones           POOL      KPF     65     529.58    1280.34   +750.77 +141.77%
+
+  ---- PREREG P2: is the v0_uncapped RATIO a pure function of (pos, effpk)? ------
+    (pos,effpk) cells with >1 row: 187 | cells whose ratio is NOT constant: 100
+      KPF    pk65  spread 1.089e+01   Josh Treacy=2.417677524, Patrick Voss=2.417677524, Cooper Sharman=2.340476145, Cooper Trembath=2.634461567
+      SF     pk65  spread 6.885e+00   Max Hall=2.038355648, Jack Ginnivan=1.423228237, Dylan Moore=1.423228237, Seth Campbell=1.423228237
+      KPD    pk65  spread 5.969e+00   Callum Wilkie=2.438814341, Mark Keane=2.368776413, Daniel Turner=1.309787171, Jack Buckley=1.538671868
+      SD     pk65  spread 4.737e+00   Bodhi Uwland=1.285575682, Jack Sinclair=1.369507198, John Noble=1.460338116, Tom McCarthy=5.963272741
+      KPF    pk59  spread 1.379e+00   Tyler Welsh=1.581015754, Jy Farrar=2.959529208
+      RUCK   pk65  spread 1.157e+00   Tristan Xerri=1.697406420, Jordon Sweet=1.457548667, Rowan Marshall=1.270589545, Lloyd Meek=1.670925430
+      MID    pk65  spread 8.553e-01   Jai Newcombe=1.330271415, Sam Durham=1.334533511, Nicholas Martin=1.227282343, Lachie Neale=1.336189509
+      MID    pk24  spread 2.113e-01   Tim Kelly=0.713425092, Thomas Liberatore=0.913873408, Harley Barker=0.913873408, Cody Angove=0.924730481
+      SD     pk61  spread 2.058e-01   Connor Idun=0.637719073, Luke Cleary=0.654093679, Jacob Wehr=0.448301427, Taylor Duryea=0.637719073
+      SD     pk38  spread 8.997e-02   Dayne Zorko=0.696872570, Miller Bergman=0.786838759
+
+  ---- PREREG P3: does that ratio EQUAL iso_corr_FIX/iso_corr_HEAD? -------------
+    rows checked 1002 | worst |v0ratio - isoratio| = 1.252e+01  ('Mitch Podhajski', 'KPF', 65, 13.23030902869537, 0.7068247289303005)
+
+  ---- THE ISO MULTIPLIER TABLE (:497 V0 pick-surface synthetics), HEAD vs FIX ---
+    the ONLY par-fed factor that reaches v0. pick 65-70 route to the POOL arm under the fix (KMAX=70).
+      pos        pk1     pk3     pk5    pk10    pk20    pk30    pk40    pk50    pk60    pk64    pk65    pk70
+      MID     +0.57%  +0.84%  +0.84%  +0.84%  +0.84%  +0.84%  +0.84%  +0.84%  +0.84%  +6.17%  -7.61%  -7.61%
+      SD      +0.18%  +0.18%  +0.18%  +3.86%  +3.86%  +4.57%  +4.57%  +4.57%  +4.57%  +5.74% -24.39% -24.39%
+      SF      -0.13%  +1.13%  +1.13%  +1.75%  +1.75%  +1.75%  +1.75%  +1.75%  +2.65%  +7.47% -13.30% -13.30%
+      KPD     +2.10%  +2.10%  +2.10%  +4.89%  +4.89%  +5.57%  +5.57%  +5.57%  +5.57%  +5.70% -30.96% -30.96%
+      KPF     +0.13%  +4.65%  +4.65%  +4.65%  +4.65%  +4.65%  +4.65%  +4.65%  +4.65% +10.71% -29.32% -29.32%
+      RUCK    +0.17%  +0.17%  +0.17%  +0.17%  +1.23%  +1.23%  +1.23%  +1.23%  +1.23%  +1.23%  -7.72%  -7.72%
+      (cells are the PERCENT CHANGE in iso_corr, FIX vs HEAD)
+
+  json -> /home/user/afl-rl-engine/.claude/worktrees/agent-a68ec24184e8a520c/docs/evidence/par_adoption_2026-08-12/scripts/../v0/V0_DELTA.json
