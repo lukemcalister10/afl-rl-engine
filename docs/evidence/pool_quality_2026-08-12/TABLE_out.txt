@@ -1,0 +1,205 @@
+==================================================================================================================================
+ORDER 24B -- THE TABLE
+==================================================================================================================================
+  pre_act  board_pre_act.json             md5 94f1fec59f99c59d5890d5975c79fa9b   active rows 804   [PINNED]
+  live     board_live.json                md5 1dbd1480a34c7823f330273211cbb76a   active rows 804   [PINNED]
+  pr469    rl_app_data.json               md5 665311ca72576df6ff0bbf6dfd007739   active rows 804   [PINNED]
+  a025     board_a0.25.json               md5 322df660ccce6c017ded341403b7215f   active rows 804   [PINNED]
+  a050     board_a0.50.json               md5 87214d5653e0fb8e48b804f1a890b6bc   active rows 804   [PINNED]
+  a100     board_a1.00.json               md5 ca3544d8df9272db191a67001a1bb9e4   active rows 804   [PINNED]
+  psi      board_psi.json                 md5 e2bf7347e07c08f1efbdda17d6601e4e   active rows 804
+
+  CAVEAT (verbatim, carried on every artifact of this order):
+    levels frozen at #469 values; absolute prices ±few points, MSD up to ~5%; re-trued at landing
+
+==================================================================================================================================
+THE SEPARATION LAW -- every ND (national) row identical to the live board 1dbd1480
+==================================================================================================================================
+  national rows on the live board (ty==ND, pick<=64): 561    pool rows: 243
+  a100   ND movers: 0      ND absent: 0     ND board value 620,877 -> 620,877
+  psi    ND movers: 0      ND absent: 0     ND board value 620,877 -> 620,877
+  ASSERTED: 0 ND movers on the psi board. Nothing below is written until this line is reached.
+  a100   delisted `back` rows moved: 12    of which non-pool: 0
+  psi    delisted `back` rows moved: 12    of which non-pool: 0
+
+==================================================================================================================================
+POOL TOTALS AND MOVER COUNTS (pool rows only, 243 rows)
+==================================================================================================================================
+  board        pool total        vs live  vs live %    moved     up   down   vs pr469    vs a100
+  pre_act         123,243         -1,923    -1.536%      119     58     61        205        204
+  live            125,166              0     0.000%        0      0      0        117        118
+  pr469           132,960          7,794     6.227%      117     96     21          0         44
+  a025            135,583         10,417     8.323%      119    109     10         89         89
+  a050            134,590          9,424     7.529%      119    108     11         89         89
+  a100            132,734          7,568     6.046%      118    101     17         44          0
+  psi             132,342          7,176     5.733%      118    101     17         44         33
+
+  THE psi CELL STRUCTURE -- only rows with 0 < phi < 1 can move a100 -> psi:
+    full     n=146    moved a100 -> psi: 0
+    partial  n=42     moved a100 -> psi: 33
+    sit      n=55     moved a100 -> psi: 0
+    movers OUTSIDE the partial cell (must be 0 by construction): 0 []
+
+==================================================================================================================================
+Q_TABLE -- every currently-playing pool row (188 rows), q = clip(avg / par(pathway, depth), 0, 1)
+==================================================================================================================================
+  player                     path    g26   avg26  d      par       q     phi    a100     psi  delta
+  caleb-lewis                MSD       2   12.50  2    62.48  0.2001  0.3623     349     258    -91
+  jacob-newton               MSD       3   27.70  2    62.48  0.4434  0.5000     377     320    -57
+  harrison-ramm              MSD       4   28.75  2    62.48  0.4602  0.7246     620     567    -53
+  luker-kentfield            MSD       3   32.33  3    62.81  0.5147  0.5435     496     449    -47
+  max-ramsden                MSD       2   40.50  5    61.70  0.6564  0.3623     321     292    -29
+  noah-howes                 MSD       1   32.00  2    62.48  0.5122  0.1812     282     255    -27
+  flynn-young                MSD       3   44.00  2    62.48  0.7042  0.5435     203     186    -17
+  lukas-cooke                MSD       2   43.50  1    56.89  0.7646  0.3623     421     404    -17
+  oliver-francou             MSD       4   71.50  1    56.89  1.0000  0.7246     590     601    +11
+  tom-cochrane               RD        3   30.67  2    63.50  0.4830  0.5435     239     229    -10
+  hudson-o-keeffe            SSP       3   29.70  4    56.88  0.5222  0.5435     288     279     -9
+  balyn-o-brien              SSP       4   26.75  1    56.15  0.4764  0.7246     394     386     -8
+  will-mclachlan             MSD       1   28.00  3    62.81  0.4458  0.1812     163     155     -8
+  aidan-johnson              ND>64     1   34.00  2    59.81  0.5684  0.1812     237     230     -7
+  ollie-greeves              RD        4   44.00  1    60.36  0.7290  0.7246     589     582     -7
+  tom-hanily                 MSD       4   47.50  3    62.81  0.7562  0.7246     232     225     -7
+  alex-van-wyk               MSD       1   69.00  1    56.89  1.0000  0.1812     427     433     +6
+  andy-moniz-wakefield       PDN       2   29.50  5    60.07  0.4911  0.3333      61      55     -6
+  ben-jepson                 SSP       4   43.25  2    57.75  0.7489  0.7246     234     228     -6
+  flynn-riley                MSD       1   80.00  1    56.89  1.0000  0.1812     428     434     +6
+  jaxon-artemis              MSD       4   54.25  1    56.89  0.9536  0.7246     536     542     +6
+  matt-hill                  UNR       2   24.00  2    62.75  0.3825  0.3623      63      57     -6
+  mitch-podhajski            MSD       2   48.50  1    56.89  0.8525  0.3623     448     443     -5
+  jordan-boyd                MSD       2   66.00  6    61.70  1.0000  0.3623      62      65     +3
+  darragh-joyce              IRE       3   54.00  6    75.07  0.7194  0.5435      43      41     -2
+  jayden-nguyen              PDN       5   42.60  2    59.64  0.7143  0.9058     473     471     -2
+  shadeau-brain              PDA       2   54.50  4    54.04  1.0000  0.3623     118     120     +2
+  thomas-burton              SSP       5   39.40  1    56.15  0.7017  0.9058     441     439     -2
+  brandon-zerk-thatcher      ND>64     4   37.25  6    74.66  0.4989  0.7246      49      48     -1
+  harry-edwards              RD        2   11.50  6    75.72  0.1519  0.3333     105     104     -1
+  toby-pink                  RD        5   58.80  6    75.72  0.7765  0.8333      32      31     -1
+  vigo-visentini             RD        1   84.00  3    67.14  1.0000  0.1812     182     183     +1
+  wil-parker                 UNR       5   42.40  3    64.32  0.6592  0.9058      25      24     -1
+  adam-saad                  RD        3   75.00  6    75.72  0.9905  0.5435     426     426     +0
+  anthony-caminiti           SSP      18   44.31  4    56.88  0.7790  1.0000    1110    1110     +0
+  archer-day-wicks           RD       19   48.39  2    63.50  0.7621  1.0000     766     766     +0
+  archie-may                 MSD      10   47.80  2    62.48  0.7651  1.0000     476     476     +0
+  billy-frampton             ND>64    21   63.48  6    74.66  0.8502  1.0000      34      34     +0
+  bodhi-uwland               PDA      21   99.95  5    62.66  1.0000  1.0000    4087    4087     +0
+  bradley-close              RD       14   48.29  6    75.72  0.6377  1.0000      15      15     +0
+  brody-mihocek              RD       10   55.30  6    75.72  0.7303  1.0000      10      10     +0
+  bruce-reville              PDA      18   63.18  3    51.73  1.0000  1.0000      52      52     +0
+  buku-khamis                PDN      21   58.13  6    60.07  0.9676  1.0000     144     144     +0
+  callum-brown-ire           IRE      16   54.57  6    75.07  0.7269  1.0000      28      28     +0
+  callum-wilkie              RD       21  104.17  6    75.72  1.0000  1.0000    3633    3633     +0
+  cameron-zurhaar            RD       21   67.67  6    75.72  0.8937  1.0000     125     125     +0
+  campbell-gray              MSD       9   47.00  3    62.81  0.7483  1.0000     176     176     +0
+  campbell-lake              MSD       7   56.57  1    56.89  0.9944  1.0000     161     161     +0
+  changkuoth-jiath           PDN      13   65.47  6    60.07  1.0000  1.0000      12      12     +0
+  charlie-cameron            RD       21   72.20  6    75.72  0.9535  1.0000     151     151     +0
+  chris-scerri               SSP       7   47.60  1    56.15  0.8477  1.0000     459     459     +0
+  connor-budarick            RD       12   74.62  6    75.72  0.9855  1.0000     281     281     +0
+  conor-mckenna              IRE      15   55.05  6    75.07  0.7333  1.0000       6       6     +0
+  conor-nash                 IRE      10   79.10  6    75.07  1.0000  1.0000     235     235     +0
+  cooper-lord                MSD       7   79.44  3    62.81  1.0000  1.0000    1345    1345     +0
+  cooper-sharman             MSD      19   61.97  6    61.70  1.0000  1.0000     429     429     +0
+  cooper-trembath            MSD      21   63.83  2    62.48  1.0000  1.0000    2201    2201     +0
+  dan-houston                RD       21   85.87  6    75.72  1.0000  1.0000    1096    1096     +0
+  dane-rampe                 RD       13   60.70  6    75.72  0.8016  1.0000      12      12     +0
+  daniel-butler              ND>64     8   32.72  6    74.66  0.4382  1.0000      15      15     +0
+  ... (188 rows in total; the full set is in Q_TABLE.md)
+
+  q == 1.0 (at or above par, the clip binds): 67 rows
+  q == 0.0 (games played, no usable average): 0 rows
+
+==================================================================================================================================
+THE TABLE: 152 rows (151 material, 1 named-only). Material against LIVE on the psi column: 101
+==================================================================================================================================
+  player                   path    g26 pre_act    live   pr469    a025    a050    a100     psi psi-a100
+  mani-liddy               MSD       0     128     128    1025     285     238     168     168       0  <-- NAMED
+  nicholas-martin          SSP       0    2828    2822    3520    3517    3515    3513    3513       0  <-- NAMED
+  robert-hansen            MSD       0      80      80     650     215     190     143     143       0  <-- NAMED
+  flynn-young              MSD       3     128     128     502     176     184     203     186     -17
+  james-blanck             MSD       0      60      60     431     125     105      79      79       0
+  caleb-may                MSD       0      52      52     357     370     366     357     357       0
+  harrison-coe             MSD       0      52      52     357     370     366     357     357       0
+  luker-kentfield          MSD       3     179     178     268     454     468     496     449     -47  <-- NAMED
+  max-mapley               MSD       0      52      52     357     370     366     357     357       0
+  max-beattie              MSD       0      39      39     200     331     287     200     200       0
+  oliver-griffin           MSD       0      39      39     200     331     287     200     200       0
+  harrison-ramm            MSD       4     320     351     406     555     578     620     567     -53  <-- NAMED
+  will-mclachlan           MSD       1     100     117     386     181     175     163     155      -8
+  mitch-podhajski          MSD       2     195     186     303     387     407     448     443      -5
+  iliro-smit               MSD       0     100     100     227     337     300     227     227       0
+  ned-moyle                MSD      14    2054    2285    2285    2285    2285    2285    2285       0
+  xavier-walsh             RD        0      86      86     143     314     257     143     143       0
+  luke-beecken             MSD       0     100     100     182     326     278     182     182       0
+  oliver-francou           MSD       4     345     375     397     527     550     590     601      11
+  noah-howes               MSD       1     128     128     185     353     330     282     255     -27
+  jacob-newton             MSD       3     156     156     201     345     355     377     320     -57
+  max-ramsden              MSD       2     115     115     167     335     331     321     292     -29
+  lukas-cooke              MSD       2     182     206     289     363     382     421     404     -17
+  caleb-lewis              MSD       2     128     138     178     348     348     349     258     -91
+  aidan-johnson            ND>64     1      81      80     200     282     267     237     230      -7
+  jaxon-artemis            MSD       4     305     340     360     479     499     536     542       6
+  flynn-riley              MSD       1     232     233     362     391     404     428     434       6
+  alex-van-wyk             MSD       1     233     233     362     391     404     427     433       6
+  xavier-bamert            MSD       8     313     509     509     509     509     509     509       0
+  zac-walker               MSD       0     128     128     168     320     267     168     168       0
+  keighton-matofai-forbes  ND>64     0      65      65     105     247     197     105     105       0
+  lennox-hoffman           ND>64     0      65      65     105     247     197     105     105       0
+  river-stevens            ND>64     0      65      65     105     247     197     105     105       0
+  logan-smith              ND>64     0      91      91     185     270     241     185     185       0
+  jack-henderson           SSP       0      88      88     115     265     215     115     115       0
+  tom-hanily               MSD       4     142     154     331     207     216     232     225      -7
+  hudson-o-keeffe          SSP       3     143     136     185     311     303     288     279      -9
+  chris-scerri             SSP       7     285     459     459     459     459     459     459       0
+  jordan-boyd              MSD       2      37      37     201      65      64      62      65       3
+  ben-jepson               SSP       4      88      88     110     244     240     234     228      -6
+  cooper-trembath          MSD      21    2051    2201    2201    2201    2201    2201    2201       0
+  marcus-herbert           MSD       8    1053     906     906     906     906     906     906       0  <-- NAMED
+  anthony-caminiti         SSP      18     976    1110    1110    1110    1110    1110    1110       0
+  patrick-retschko         RD       16    1483    1608    1608    1608    1608    1608    1608       0
+  fred-rodriguez           RD        0     143     143     200     267     245     200     200       0
+
+  THE EIGHT NAMED ROWS
+    mani-liddy         pre_act    128 live    128 pr469   1025 a025    285 a050    238 a100    168 psi    168  (g26=0 avg=None d=2 par=62.4782 q=0.0 phi=0.0)
+    robert-hansen      pre_act     80 live     80 pr469    650 a025    215 a050    190 a100    143 psi    143  (g26=0 avg=None d=4 par=61.6975 q=0.0 phi=0.0)
+    nicholas-martin    pre_act   2828 live   2822 pr469   3520 a025   3517 a050   3515 a100   3513 psi   3513  (g26=0 avg=None d=5 par=56.8793 q=0.0 phi=0.0)
+    marcus-herbert     pre_act   1053 live    906 pr469    906 a025    906 a050    906 a100    906 psi    906  (g26=8 avg=88.87 d=1 par=56.8896 q=1.0 phi=1.0)
+    jai-newcombe       pre_act   4887 live   4883 pr469   4883 a025   4883 a050   4883 a100   4883 psi   4883  (g26=21 avg=103.15 d=6 par=61.6975 q=1.0 phi=1.0)
+    harrison-ramm      pre_act    320 live    351 pr469    406 a025    555 a050    578 a100    620 psi    567  (g26=4 avg=28.75 d=2 par=62.4782 q=0.46016 phi=0.724638)
+    luker-kentfield    pre_act    179 live    178 pr469    268 a025    454 a050    468 a100    496 psi    449  (g26=3 avg=32.33 d=3 par=62.8113 q=0.514717 phi=0.543478)
+    vigo-visentini     pre_act    167 live    168 pr469    150 a025    242 a050    222 a100    182 psi    183  (g26=1 avg=84.0 d=3 par=67.1363 q=1.0 phi=0.181159)
+
+  TOP MOVERS a100 -> psi, DOWN (25 rows fell):
+    caleb-lewis              MSD    a100    349 -> psi    258     -91  (avg 12.5 vs par 62.4782, q=0.2001, phi=0.3623)
+    jacob-newton             MSD    a100    377 -> psi    320     -57  (avg 27.7 vs par 62.4782, q=0.4434, phi=0.5000)
+    harrison-ramm            MSD    a100    620 -> psi    567     -53  (avg 28.75 vs par 62.4782, q=0.4602, phi=0.7246)
+    luker-kentfield          MSD    a100    496 -> psi    449     -47  (avg 32.33 vs par 62.8113, q=0.5147, phi=0.5435)
+    max-ramsden              MSD    a100    321 -> psi    292     -29  (avg 40.5 vs par 61.6975, q=0.6564, phi=0.3623)
+    noah-howes               MSD    a100    282 -> psi    255     -27  (avg 32.0 vs par 62.4782, q=0.5122, phi=0.1812)
+    flynn-young              MSD    a100    203 -> psi    186     -17  (avg 44.0 vs par 62.4782, q=0.7042, phi=0.5435)
+    lukas-cooke              MSD    a100    421 -> psi    404     -17  (avg 43.5 vs par 56.8896, q=0.7646, phi=0.3623)
+    tom-cochrane             RD     a100    239 -> psi    229     -10  (avg 30.67 vs par 63.4964, q=0.4830, phi=0.5435)
+    hudson-o-keeffe          SSP    a100    288 -> psi    279      -9  (avg 29.7 vs par 56.8793, q=0.5222, phi=0.5435)
+    will-mclachlan           MSD    a100    163 -> psi    155      -8  (avg 28.0 vs par 62.8113, q=0.4458, phi=0.1812)
+    balyn-o-brien            SSP    a100    394 -> psi    386      -8  (avg 26.75 vs par 56.149, q=0.4764, phi=0.7246)
+    aidan-johnson            ND>64  a100    237 -> psi    230      -7  (avg 34.0 vs par 59.8132, q=0.5684, phi=0.1812)
+    tom-hanily               MSD    a100    232 -> psi    225      -7  (avg 47.5 vs par 62.8113, q=0.7562, phi=0.7246)
+    ollie-greeves            RD     a100    589 -> psi    582      -7  (avg 44.0 vs par 60.3602, q=0.7290, phi=0.7246)
+  TOP MOVERS a100 -> psi, UP (7 rows rose):
+    oliver-francou           MSD    a100    590 -> psi    601     +11  (avg 71.5 vs par 56.8896, q=1.0000, phi=0.7246)
+    jaxon-artemis            MSD    a100    536 -> psi    542      +6  (avg 54.25 vs par 56.8896, q=0.9536, phi=0.7246)
+    flynn-riley              MSD    a100    428 -> psi    434      +6  (avg 80.0 vs par 56.8896, q=1.0000, phi=0.1812)
+    alex-van-wyk             MSD    a100    427 -> psi    433      +6  (avg 69.0 vs par 56.8896, q=1.0000, phi=0.1812)
+    jordan-boyd              MSD    a100     62 -> psi     65      +3  (avg 66.0 vs par 61.6975, q=1.0000, phi=0.3623)
+    shadeau-brain            PDA    a100    118 -> psi    120      +2  (avg 54.5 vs par 54.0397, q=1.0000, phi=0.3623)
+    vigo-visentini           RD     a100    182 -> psi    183      +1  (avg 84.0 vs par 67.1363, q=1.0000, phi=0.1812)
+    harry-edwards            RD     a100    105 -> psi    104      -1  (avg 11.5 vs par 75.7198, q=0.1519, phi=0.3333)
+    wil-parker               UNR    a100     25 -> psi     24      -1  (avg 42.4 vs par 64.3238, q=0.6592, phi=0.9058)
+    toby-pink                RD     a100     32 -> psi     31      -1  (avg 58.8 vs par 75.7198, q=0.7765, phi=0.8333)
+    thomas-burton            SSP    a100    441 -> psi    439      -2  (avg 39.4 vs par 56.149, q=0.7017, phi=0.9058)
+    darragh-joyce            IRE    a100     43 -> psi     41      -2  (avg 54.0 vs par 75.0673, q=0.7194, phi=0.5435)
+    jayden-nguyen            PDN    a100    473 -> psi    471      -2  (avg 42.6 vs par 59.6377, q=0.7143, phi=0.9058)
+    mitch-podhajski          MSD    a100    448 -> psi    443      -5  (avg 48.5 vs par 56.8896, q=0.8525, phi=0.3623)
+    ben-jepson               SSP    a100    234 -> psi    228      -6  (avg 43.25 vs par 57.7546, q=0.7489, phi=0.7246)
+
+  wrote docs/evidence/pool_quality_2026-08-12/MOVERS_TABLE_PSI.json
