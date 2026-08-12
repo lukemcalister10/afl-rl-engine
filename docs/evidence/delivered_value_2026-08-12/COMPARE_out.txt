@@ -1,0 +1,197 @@
+==========================================================================================================================
+ORDER 26B  --  STEP 5, THE COMPARISONS AND THE TWO NEW MANDATORY INSTRUMENTS
+==========================================================================================================================
+  matrix   per_entrant_O25R4.json  md5 3c6ffcdeaac9  store d9a24282  v0surf 6ef67f07db98  window_end 2026
+  derived  DERIVE.json md5 19960f0c04b7   ANCHOR_FACTOR 1.4200   NUMERAIRE 1.0524
+  forms    INSTRUMENTS_PRESTATEMENT.md, committed 2026-08-12 BEFORE this harness existed
+  DISPERSION IS BINDING: no mean is printed here without p05/median/p95 beside it.
+
+--------------------------------------------------------------------------------------------------------------------------
+1.  DERIVED v0  vs  PRINTED DAY-0  vs  SIGNED ANCHOR
+--------------------------------------------------------------------------------------------------------------------------
+  printed day-0 = the matrix's r['v0'] (the shipped year-zero surface value the board prices an
+                  entrant at on day one)
+  signed anchor = o26a_bridge.py::anchor_of(r) = the owner's signed level x 1.0524
+  derived v0    = cell_v0 x 1.4200 x 1.0524   (the pre-statement's three declared multiplications)
+
+  WHOLE POOL (n=1201 entrants with a printed day-0 and a derived cell)
+    ratio                               n       mean        p05     median        p95
+    derived / printed day-0          1201     4.7172     0.1487     0.4354     7.2099
+    derived / signed anchor          1201     1.2277     0.6557     1.1382     2.0653
+    printed day-0 / signed ancho     1201     2.9361     0.1841     2.5176     6.9563
+    (the third row is 26A's headline restated on THIS population; 26A measured 2.6498 whole-pool)
+    AGGREGATE (sum/sum, the all-in form): derived/printed 0.4554   derived/anchor 1.1720
+
+  BY DAY-0 POSITION (pooled across pathways)
+  pos         n     derived     printed      anchor      der/prn   der/anch   prn/anch   d/p p05-p95
+  MID       296       336.6       621.6       282.1       0.4823     0.9427     2.3928   0.209-38.150
+  SD        232       304.2       640.4       230.0       0.4169     1.3542     2.9338   0.163-6.651
+  SF        245       216.8       534.5       246.4       0.4353     1.0128     2.3563   0.148-5.816
+  KPD       154       266.2      1015.3       285.6       0.2896     0.7871     3.5866   0.111-0.931
+  KPF       130       263.0       951.4       258.2       0.2681     1.1939     3.9730   0.115-1.689
+  RUCK      144       437.7       349.2       234.0       1.4730     1.9595     1.3303   0.618-2.518
+
+  BY PATHWAY x DAY-0 POSITION  (the named rows the packet carries are marked below the table)
+  path    pos       n     derived     printed      anchor   der/prn  der/anch  prn/anch
+  RD      MID     199       287.7       671.5       293.1    0.4284    0.9814    2.2909
+  RD      SD      123       349.2       735.9       262.0    0.4744    1.3329    2.8093
+  RD      SF      142       261.1       599.5       242.0    0.4356    1.0792    2.4776
+  RD      KPD      92       292.8      1072.7       334.1    0.2730    0.8763    3.2103
+  RD      KPF      67       258.8       996.3       235.0    0.2598    1.1016    4.2401
+  RD      RUCK     68       530.0       425.8       272.0    1.2448    1.9487    1.5654
+  SSP     MID       8       552.6       242.9       325.2    2.2754    1.6993    0.7468
+  SSP     SD        8       280.9       433.2       325.2    0.6485    0.8639    1.3321
+  SSP     SF       13       176.6       214.9       325.2    0.8217    0.5431    0.6609
+  SSP     KPD       4       255.9       776.3       325.2    0.3297    0.7871    2.3873
+  SSP     KPF      12       231.9       600.3       325.2    0.3863    0.7130    1.8459
+  SSP     RUCK      7       416.4       455.8       325.2    0.9136    1.2805    1.4016
+  MSD     MID      25       732.5       344.1       354.7    2.1287    2.0653    0.9702
+  MSD     SD       13       530.2       380.0       354.7    1.3950    1.4949    1.0716
+  MSD     SF       20       289.0       363.7       354.7    0.7944    0.8147    1.0256
+  MSD     KPD      12       463.3       743.0       354.7    0.6235    1.3064    2.0951
+  MSD     KPF      20       317.9       852.2       354.7    0.3730    0.8963    2.4029
+  MSD     RUCK     16       626.9       448.1       354.7    1.3990    1.7676    1.2635
+  IRE     MID       3       139.2       627.0       111.6    0.2220    1.2477    5.6206
+  IRE     SD       37       114.7       515.6       111.6    0.2225    1.0283    4.6215
+  IRE     SF        3        77.8       413.6       111.6    0.1881    0.6975    3.7076
+  IRE     KPD       7        73.1       932.2       111.6    0.0785    0.6557    8.3563
+  IRE     KPF       5        82.9       885.4       111.6    0.0937    0.7435    7.9371
+  IRE     RUCK      2       159.3       148.4       111.6    1.0732    1.4277    1.3303
+  PDA     MID      13       226.6       560.5       202.1    0.4042    1.1213    2.7738
+  PDA     SD       10       454.2       510.5       202.1    0.8897    2.2480    2.5266
+  PDA     SF       13       105.6       538.4       202.1    0.1962    0.5228    2.6648
+  PDA     KPD       3       186.9      1064.8       202.1    0.1755    0.9251    5.2697
+  PDA     KPF       6       149.0       983.7       202.1    0.1515    0.7374    4.8682
+  PDA     RUCK      6       260.4       284.6       202.1    0.9151    1.2890    1.4085
+  PDN     MID       6       155.9       635.0       101.0    0.2455    1.5429    6.2854
+  PDN     SD       12       113.0       490.0       101.0    0.2307    1.1188    4.8497
+  PDN     SF       15        71.9       489.6       101.0    0.1468    0.7114    4.8463
+  PDN     KPD       7       155.3       889.0       101.0    0.1747    1.5373    8.7998
+  PDN     KPF       1       126.7       965.6       101.0    0.1313    1.2544    9.5575
+  PDN     RUCK      2       204.1       134.4       101.0    1.5189    2.0206    1.3303
+  PDS     MID       6       120.1       611.8        58.9    0.1964    2.0385   10.3802
+  PDS     SD        6       101.2       628.8        58.9    0.1610    1.7174   10.6701
+  PDS     SF        3        76.8       484.3        58.9    0.1586    1.3031    8.2176
+  PDS     KPD       5       105.4       883.0        58.9    0.1193    1.7879   14.9828
+  PDS     RUCK      1       182.9        78.4        58.9    2.3332    3.1038    1.3303
+  UNR     MID       6       409.4       189.1        68.4    2.1649    5.9855    2.7649
+  UNR     SD        4       158.8       269.9        68.4    0.5883    2.3214    3.9459
+  UNR     SF        5       109.6       405.2        68.4    0.2705    1.6019    5.9229
+  UNR     KPD       9       144.7       653.4        68.4    0.2215    2.1154    9.5515
+  UNR     KPF       4       135.1       681.0        68.4    0.1984    1.9756    9.9560
+  UNR     RUCK     31       115.8       118.5        68.4    0.9771    1.6929    1.7325
+  ND>64   MID      30       406.1       734.1       312.6    0.5533    1.2993    2.3485
+  ND>64   SD       19       374.1       775.8       312.6    0.4822    1.1969    2.4820
+  ND>64   SF       30       142.0       540.0       312.6    0.2629    0.4543    1.7278
+  ND>64   KPD      15       232.7      1293.7       312.6    0.1798    0.7444    4.1391
+  ND>64   KPF      15       382.5      1244.6       312.6    0.3073    1.2237    3.9818
+  ND>64   RUCK     11       725.1       450.3       312.6    1.6102    2.3198    1.4406
+
+  BY PATHWAY (pooled positions)
+  path         n     derived     printed      anchor   der/prn  der/anch  prn/anch   der/prn p05-p95
+  RD         691       314.9       728.9       274.8    0.4320    1.1459    2.6524   0.183-4.477
+  SSP         52       301.6       417.3       325.2    0.7228    0.9276    1.2834   0.179-37.578
+  MSD        106       499.3       508.9       354.7    0.9811    1.4080    1.4350   0.315-22.677
+  IRE         57       107.7       586.8       111.6    0.1836    0.9657    5.2600   0.072-1.073
+  PDA         51       232.9       592.1       202.1    0.3934    1.1527    2.9301   0.145-3.470
+  PDN         43       116.1       569.6       101.0    0.2038    1.1491    5.6377   0.148-1.519
+  PDS         21       108.0       637.6        58.9    0.1694    1.8328   10.8190   0.109-0.201
+  UNR         59       153.8       280.0        68.4    0.5492    2.2479    4.0929   0.123-21.325
+  ND>64      120       339.6       799.9       312.6    0.4246    1.0866    2.5592   0.149-3.978
+
+--------------------------------------------------------------------------------------------------------------------------
+2.  THE DERIVED ALL-IN CURVE vs TODAY'S PICK CURVE (ND)
+--------------------------------------------------------------------------------------------------------------------------
+  pick                    1       2       3       5       7      10      15      20      30      40      50      64
+  DERIVED (ladder)     3000    3048    2871    2118    1471    1540     952     997     725     568     328     218
+  today PVC            3000    2999    2874    1881    1549    1460    1030     990     663     514     346     185
+  derived/PVC         1.000   1.016   0.999   1.126   0.950   1.055   0.924   1.007   1.094   1.105   0.947   1.180
+  DERIVED x num.       3157    3208    3021    2229    1548    1621    1002    1049     763     598     345     230
+  ND derived day-0 / printed day-0 (per entrant, n=1444): mean 1.1540  p05 0.7506  med 1.2032  p95 1.5655
+  (the ND spread around 1.0 is the year-zero SURFACE -- position/age redistribution around the
+   curve at a given pick. The curve-level comparison is the derived/PVC row above.)
+
+--------------------------------------------------------------------------------------------------------------------------
+3.  THE MARK-PATH PROGRESSION TEST  (new mandatory instrument; form fixed in PREREG §6 and
+    detailed in INSTRUMENTS_PRESTATEMENT.md §3, both committed before this ran)
+--------------------------------------------------------------------------------------------------------------------------
+  PRIMARY reading m_allin(d) = sum(marks at depth d) / sum(derived day-0), dead ZEROED and KEPT.
+  arm        n@d4       d0      d1      d2      d3      d4      d5      d6       peak   at d verdict
+  ND 1-64    1200    0.967   1.204   1.368   1.431   1.402   1.342   1.170      1.431      3 PASS
+  RD          655    0.993   1.088   1.095   1.204   1.171   1.102   0.953      1.204      3 PASS
+  SSP          24    1.324   1.321   1.547   1.284   0.960   0.458   0.279      1.547      2 PASS  [THIN n<40]
+  MSD          44      n/a   0.688   0.661   0.619   0.693   0.947   0.403      0.947      5 FAIL  [m(0) UNDEFINED -- the MSD debut-year gap; REPAIRED from d1: PASS]
+  IRE          48    1.173   1.363   1.174   1.275   1.399   1.221   1.722      1.722      6 PASS
+  PDA          38    0.767   0.955   1.100   1.289   1.517   0.701   1.081      1.517      4 PASS  [THIN n<40]
+  PDN          24    0.854   1.111   0.880   0.921   0.820   1.250   0.880      1.250      5 PASS  [THIN n<40]
+  PDS          21    0.784   0.615   0.286   0.771   1.095   0.857   0.409      1.095      4 PASS  [THIN n<40]
+  UNR          46    0.356   0.501   0.680   1.086   1.306   0.805   0.289      1.306      4 PASS
+  ND>64       113    0.878   1.077   1.026   1.150   1.073   1.033   1.302      1.302      6 PASS
+
+  SECONDARY reading m_mean(d) = mean of per-entrant ratios (PREREG §6's literal 'mean_i' wording)
+  arm            d0      d1      d2      d3      d4      d5      d6       peak   at d verdict
+  ND 1-64     0.944   1.200   1.377   1.395   1.386   1.344   1.181      1.395      3 PASS
+  RD          1.032   1.141   1.133   1.232   1.169   1.081   0.912      1.232      3 PASS
+  SSP         1.503   1.365   1.489   1.171   0.867   0.561   0.310      1.503      0 FAIL
+  MSD           n/a   0.783   0.741   0.582   0.623   0.833   0.424      0.833      5 PASS
+  IRE         1.210   1.343   1.143   1.245   1.345   1.145   1.583      1.583      6 PASS
+  PDA         1.011   1.193   1.093   1.156   1.070   0.487   0.635      1.193      1 FAIL
+  PDN         0.951   1.160   0.922   0.888   0.822   1.061   0.713      1.160      1 FAIL
+  PDS         0.768   0.586   0.263   0.696   1.045   0.828   0.402      1.045      4 PASS
+  UNR         0.399   0.455   0.623   0.763   0.897   0.667   0.277      0.897      4 PASS
+  ND>64       1.089   1.263   1.085   1.161   1.054   0.948   1.038      1.263      1 FAIL
+
+  THE TWO READINGS DISAGREE ON: SSP, MSD, PDA, PDN, ND>64
+  n in the denominator by depth (the dead are IN it; only 'not yet' and 'pre-first-season' leave)
+  arm            d0      d1      d2      d3      d4      d5      d6
+  ND 1-64      1444    1386    1322    1258    1200    1136    1075
+  RD            691     685     676     667     655     645     633
+  SSP            52      43      35      31      24      19      13
+  MSD             0      88      72      55      44      29       9
+  IRE            57      54      51      48      48      46      45
+  PDA            51      48      46      43      38      36      32
+  PDN            43      38      34      33      24      19      17
+  PDS            21      21      21      21      21      21      21
+  UNR            59      56      52      49      46      46      44
+  ND>64         120     120     113     113     113     113     113
+
+--------------------------------------------------------------------------------------------------------------------------
+4.  THE REVERSE NO-ARB TEST  (new mandatory instrument)
+--------------------------------------------------------------------------------------------------------------------------
+  THE PREDICATE, as stated in INSTRUMENTS_PRESTATEMENT.md §4 BEFORE this computation:
+    A pathway FAILS (is a systematic guaranteed-loss hold) iff BOTH
+      (1) m_allin(d) < 1 for EVERY d = 1..6 at which it has any denominator, AND
+      (2) the upper end of a 95%% bootstrap interval on max_{d>=1} m_allin(d) is ALSO below 1.
+    PASS = no pathway fails. Bootstrap: B=2000, ENTRANT-level resampling, seed 20260812,
+    97.5th percentile. n < 8 entrants => printed but marked UNRELIABLE; no FAIL is issued there.
+
+  arm           n       d1      d2      d3      d4      d5      d6   max d>=1    boot lo    boot hi   verdict
+  ND 1-64    1444    1.204   1.368   1.431   1.402   1.342   1.170      1.431      1.339      1.530   PASS
+  RD          691    1.088   1.095   1.204   1.171   1.102   0.953      1.204      1.040      1.442   PASS
+  SSP          52    1.321   1.547   1.284   0.960   0.458   0.279      1.547      0.848      2.678   PASS
+  MSD         106    0.688   0.661   0.619   0.693   0.947   0.403      0.947      0.578      1.806   PASS  [limb 1 red]
+  IRE          57    1.363   1.174   1.275   1.399   1.221   1.722      1.722      0.840      3.989   PASS
+  PDA          51    0.955   1.100   1.289   1.517   0.701   1.081      1.517      0.845      3.169   PASS
+  PDN          43    1.111   0.880   0.921   0.820   1.250   0.880      1.250      0.694      3.035   PASS
+  PDS          21    0.615   0.286   0.771   1.095   0.857   0.409      1.095      0.425      2.655   PASS
+  UNR          59    0.501   0.680   1.086   1.306   0.805   0.289      1.306      0.466      2.520   PASS
+  ND>64       120    1.077   1.026   1.150   1.073   1.033   1.302      1.302      0.916      2.106   PASS
+
+  VERDICT: PASS -- no pathway is a systematic guaranteed-loss hold at the derived entry price.
+  NON-VACUITY: the predicate is able to go red. Limb 1 (every m_allin(d) < 1) is red for MSD;
+  a FAIL needs limb 2 as well, and the bootstrap upper limits are printed above so the distance
+  to the failure line is legible rather than hidden behind a verdict word.
+
+--------------------------------------------------------------------------------------------------------------------------
+5.  THE NAMED ROWS
+--------------------------------------------------------------------------------------------------------------------------
+  'delivered TO DATE' is the OBSERVED leg alone; 'delivered TOTAL' adds Ruling 8's gated projected
+  tail. PREREG §5 wrote 'delivered value to date' for harrison-ramm, so both objects are printed and
+  both are scored in the packet -- the prediction is not quietly re-read onto whichever one it hits.
+  key                path    pos    entry    to date      TOTAL  tail%  derived v0  printed d0      anchor  der/prn   board v
+  willem-duursma     ND 1-64 MID     2025       53.8     3531.0  98.5%      3157.2      3484.6      3484.6   0.9060      3977
+  callum-moore       RD      KPF     2015        5.2        5.2   0.0%       258.8      1773.4       216.8   0.1460 NOT ON BOARD
+  harrison-ramm      MSD     KPD     2025        0.0      696.1 100.0%       463.3       946.0       354.7   0.4898       545
+  vigo-visentini     RD      RUCK    2023       56.0      588.0  90.5%       530.0       359.8       270.5   1.4730       182
+  jai-newcombe       MSD     MID     2021     2016.3     3992.5  49.5%       732.5       688.0       354.7   1.0646      4883
+  callum-moore is NOT on the live board -- his delivered-value score is the object the packet uses.
