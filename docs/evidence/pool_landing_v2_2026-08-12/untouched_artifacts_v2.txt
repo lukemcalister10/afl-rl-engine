@@ -1,0 +1,193 @@
+artifact                               landed md5                         origin/main md5                    verdict
+--------------------------------------------------------------------------------------------------------------------------
+STORE                                  d9a24282357cf3083b1640466e3ecd83   d9a24282357cf3083b1640466e3ecd83   UNMOVED
+pickle v0surf                          fbc5b39387b2b135284a2e157f46c810   fbc5b39387b2b135284a2e157f46c810   UNMOVED
+pickle q97m                            cfdc73216c099e5e8f1fda3968f31c00   cfdc73216c099e5e8f1fda3968f31c00   UNMOVED
+pickle peak_model_v4                   f305fe5330222f4fa14d3654a0e91ef7   f305fe5330222f4fa14d3654a0e91ef7   UNMOVED
+pvc_snapshot.json                      ade79790efc8ad4585c2c6800a935eaa   ade79790efc8ad4585c2c6800a935eaa   UNMOVED
+bust_prior_table.json                  5942aa6ad7be1d482eed737997486c70   5942aa6ad7be1d482eed737997486c70   UNMOVED
+INSTRUMENT noarb_table_338.py          0f8220351c64c56ccfa90c60edcdfa5f   0f8220351c64c56ccfa90c60edcdfa5f   UNMOVED
+INSTRUMENT noarb_table_allarm.py       3f9124de638d5ed30792dbdffef591b8   3f9124de638d5ed30792dbdffef591b8   UNMOVED
+harness_pvc_REPINNED_pass3.py          f2c81da18e02e8a6003ce011c4b8ada3   f2c81da18e02e8a6003ce011c4b8ada3   UNMOVED
+harness_armsplit.py                    5c68354979de09de743fe89c7e00776e   5c68354979de09de743fe89c7e00776e   UNMOVED
+o21_patch.py (the carried patcher)     b2c01de9fc8fdb615adf35819ea5f9b3   b2c01de9fc8fdb615adf35819ea5f9b3   UNMOVED
+pool_retention_derive.py (ORDER 21)    6df38acbdf860db7c8387b4f87159342   6df38acbdf860db7c8387b4f87159342   UNMOVED
+LTI_REGISTER.md                        652d83e87780e415a01a2de6d8b3cc57   652d83e87780e415a01a2de6d8b3cc57   UNMOVED
+season_state.json                      e54f3965a2b1d41801f9f81fe9316037   e54f3965a2b1d41801f9f81fe9316037   UNMOVED
+rl_export.py                           fb2e47e399d05c887f6e27576c743c35   fb2e47e399d05c887f6e27576c743c35   UNMOVED
+s4_matrix_M1v7.py (the book builder)   191d8197db876c874d1f2e80fb3bfc5d   191d8197db876c874d1f2e80fb3bfc5d   UNMOVED
+o22_next_levels.py (carried step)      ccc7ad668b72dcb33644d64e4418949e   ccc7ad668b72dcb33644d64e4418949e   UNMOVED
+
+artifact (vs this branch's parent)           landed md5                         parent md5                         verdict
+--------------------------------------------------------------------------------------------------------------------------
+rl_model.py (ORDER 25 has no code change)    e5eb5e4405c09eebef45a9db89f014bc   e5eb5e4405c09eebef45a9db89f014bc   UNMOVED
+data/model_config.json (no manifest var)     e6e1b616c2632b9b1201648a055f0675   e6e1b616c2632b9b1201648a055f0675   UNMOVED
+the ORDER 23 landing scripts                 535efe653be173ac554dbbc3928ecff1   535efe653be173ac554dbbc3928ecff1   UNMOVED
+the ORDER 24B par derivation                 0c772d45e39927fa4c1c434ab76abede   0c772d45e39927fa4c1c434ab76abede   UNMOVED
+the ORDER 24B U derivation                   63fde84faf8454c52b55cf8a4c59d43c   63fde84faf8454c52b55cf8a4c59d43c   UNMOVED
+o24b_stage_surface.py (carried stager)       0cdd70b9badaea8cf6f2d73c3b8cf1d9   0cdd70b9badaea8cf6f2d73c3b8cf1d9   UNMOVED
+o24b_uharvest.py (carried harvest)           154275abd0c827c46e3af1c664c12b08   154275abd0c827c46e3af1c664c12b08   UNMOVED
+the ORDER 24B psi surface                    e3491b66ff5fd3ad31fa9d210ef0cf95   e3491b66ff5fd3ad31fa9d210ef0cf95   UNMOVED
+the ORDER 24B par table                      cac54dfe5db38bde3e1c575c1b6d45d4   cac54dfe5db38bde3e1c575c1b6d45d4   UNMOVED
+
+band pickle (engine load path) /home/claude/cm_400.pkl  md5 34faa8659cc8f19794f5cb9584fa19b2  == its pin, and this landing never writes it
+
+pvc_curve_v2.curve                    UNCHANGED
+pvc_curve_v2.curve_md5                UNCHANGED
+pvc_curve_v2.pool_value               UNCHANGED
+pvc_curve_v2.domain                   UNCHANGED
+pvc_curve_v2.split                    UNCHANGED
+pvc_curve_v2.numeraire_pin1_3000      UNCHANGED
+pvc_curve_v2.r104_9_strict_descent    UNCHANGED
+pvc_curve_v2.stamp                    UNCHANGED
+pvc_curve_v2.source                   UNCHANGED
+pvc_curve_v2.derived_from             UNCHANGED
+pvc_curve_v2.pin                      UNCHANGED
+pvc_curve_v2.construction             UNCHANGED
+pvc_curve_v2 top-level keys that moved: ['pool_levels']
+
+sitter lever: manifest RL_H_POOLSIT == 1.0 (ORDER 23's, INHERITED not re-moved) YES
+sitter lever: manifest RL_H_UNION == 1.0                    YES
+sitter lever: engine default H_POOLSIT == 1.0               YES
+sitter lever: engine default H_UNION == 1.0                 YES
+sitter lever: H_MATNONRD untouched at 1.0                   YES
+sitter lever: the RL_ITEM_H kill-switch is untouched        YES
+sitter lever: the composed _h_cut cell logic is untouched   YES
+
+FILES THIS BRANCH CHANGES vs origin/main (134):
+    data/expected_boot.json
+    data/model_config.json
+    data/rl_build/rl_app_data.json
+    docs/OPEN_ITEMS_REGISTER.md
+    docs/evidence/pool_dial_2026-08-12/CONTROL_out.txt
+    docs/evidence/pool_dial_2026-08-12/MOVERS_TABLE.json
+    docs/evidence/pool_dial_2026-08-12/MOVERS_TABLE.md
+    docs/evidence/pool_dial_2026-08-12/PREREG_ORDER24.md
+    docs/evidence/pool_dial_2026-08-12/SUMMARY.md
+    docs/evidence/pool_dial_2026-08-12/SURFACE_a0.25.json
+    docs/evidence/pool_dial_2026-08-12/SURFACE_a0.50.json
+    docs/evidence/pool_dial_2026-08-12/SURFACE_a1.00.json
+    docs/evidence/pool_dial_2026-08-12/TABLE_out.txt
+    docs/evidence/pool_dial_2026-08-12/UDERIVE_CONTROL_out.txt
+    docs/evidence/pool_dial_2026-08-12/UDERIVE_a0.25_out.txt
+    docs/evidence/pool_dial_2026-08-12/UDERIVE_a0.50_out.txt
+    docs/evidence/pool_dial_2026-08-12/UDERIVE_a1.00_out.txt
+    docs/evidence/pool_dial_2026-08-12/UHARVEST_out.txt
+    docs/evidence/pool_dial_2026-08-12/UPRIME_TABLE.md
+    docs/evidence/pool_dial_2026-08-12/build_board_o24.sh
+    docs/evidence/pool_dial_2026-08-12/o24_stage_surface.py
+    docs/evidence/pool_dial_2026-08-12/o24_table.py
+    docs/evidence/pool_dial_2026-08-12/o24_uderive.py
+    docs/evidence/pool_dial_2026-08-12/o24_uharvest.py
+    docs/evidence/pool_dial_2026-08-12/o24_write_docs.py
+    docs/evidence/pool_landing_2026-08-12/CONSEQUENCE_O23.json
+    docs/evidence/pool_landing_2026-08-12/CONSEQUENCE_O23_out.txt
+    docs/evidence/pool_landing_2026-08-12/DERIVE_FINAL_O23.json
+    docs/evidence/pool_landing_2026-08-12/DERIVE_FINAL_O23_out.txt
+    docs/evidence/pool_landing_2026-08-12/DERIVE_G1_out.txt
+    docs/evidence/pool_landing_2026-08-12/DERIVE_G2_out.txt
+    docs/evidence/pool_landing_2026-08-12/DERIVE_G3_out.txt
+    docs/evidence/pool_landing_2026-08-12/FINAL_LEVELS_O23.json
+    docs/evidence/pool_landing_2026-08-12/FINAL_SURFACE_O23.json
+    docs/evidence/pool_landing_2026-08-12/ITERATION_O23.json
+    docs/evidence/pool_landing_2026-08-12/ITERATION_O23_out.txt
+    docs/evidence/pool_landing_2026-08-12/LANDING_VERIFICATION.md
+    docs/evidence/pool_landing_2026-08-12/NOARB_MARGINS_O23.json
+    docs/evidence/pool_landing_2026-08-12/NOARB_MARGINS_O23_out.txt
+    docs/evidence/pool_landing_2026-08-12/PREREG_ORDER23.md
+    docs/evidence/pool_landing_2026-08-12/SEPARATION_RUCK_O23.json
+    docs/evidence/pool_landing_2026-08-12/SEPARATION_RUCK_O23_out.txt
+    docs/evidence/pool_landing_2026-08-12/book_build.log
+    docs/evidence/pool_landing_2026-08-12/boot_guard_landed.txt
+    docs/evidence/pool_landing_2026-08-12/build_board_o23.sh
+    docs/evidence/pool_landing_2026-08-12/emit_variant_o23.sh
+    docs/evidence/pool_landing_2026-08-12/f2_parity.txt
+    docs/evidence/pool_landing_2026-08-12/o23_assert_pins_in_copy.py
+    docs/evidence/pool_landing_2026-08-12/o23_bootcheck.py
+    docs/evidence/pool_landing_2026-08-12/o23_build_book.sh
+    docs/evidence/pool_landing_2026-08-12/o23_consequence.py
+    docs/evidence/pool_landing_2026-08-12/o23_derive.py
+    docs/evidence/pool_landing_2026-08-12/o23_f2check.py
+    docs/evidence/pool_landing_2026-08-12/o23_install_book.py
+    docs/evidence/pool_landing_2026-08-12/o23_iterate.sh
+    docs/evidence/pool_landing_2026-08-12/o23_land_config.py
+    docs/evidence/pool_landing_2026-08-12/o23_restamp.py
+    docs/evidence/pool_landing_2026-08-12/o23_separation_ruck.py
+    docs/evidence/pool_landing_2026-08-12/o23_stage.py
+    docs/evidence/pool_landing_2026-08-12/o23_surface_source.py
+    docs/evidence/pool_landing_2026-08-12/o23_trajectory.py
+    docs/evidence/pool_landing_2026-08-12/o23_uderive.py
+    docs/evidence/pool_landing_2026-08-12/o23_untouched.py
+    docs/evidence/pool_landing_2026-08-12/o23_write_ledger.py
+    docs/evidence/pool_landing_2026-08-12/selftest_landed.txt
+    docs/evidence/pool_landing_2026-08-12/selftest_origin_main_control.txt
+    docs/evidence/pool_landing_2026-08-12/untouched_artifacts.txt
+    docs/evidence/pool_landing_v2_2026-08-12/CONTROL_V2_out.txt
+    docs/evidence/pool_landing_v2_2026-08-12/DERIVE_FINAL_V2.json
+    docs/evidence/pool_landing_v2_2026-08-12/DERIVE_FINAL_V2_out.txt
+    docs/evidence/pool_landing_v2_2026-08-12/DERIVE_R1.json
+    docs/evidence/pool_landing_v2_2026-08-12/DERIVE_R1_out.txt
+    docs/evidence/pool_landing_v2_2026-08-12/DERIVE_R2.json
+    docs/evidence/pool_landing_v2_2026-08-12/DERIVE_R3.json
+    docs/evidence/pool_landing_v2_2026-08-12/FINAL_LEVELS_V2.json
+    docs/evidence/pool_landing_v2_2026-08-12/FINAL_SURFACE_V2.json
+    docs/evidence/pool_landing_v2_2026-08-12/ITERATION_V2.json
+    docs/evidence/pool_landing_v2_2026-08-12/ITERATION_V2_out.txt
+    docs/evidence/pool_landing_v2_2026-08-12/PAR_TABLE_V2.md
+    docs/evidence/pool_landing_v2_2026-08-12/PAR_V2.json
+    docs/evidence/pool_landing_v2_2026-08-12/PAR_V2_out.txt
+    docs/evidence/pool_landing_v2_2026-08-12/PREREG_ORDER25.md
+    docs/evidence/pool_landing_v2_2026-08-12/RESTAMP_V2_out.txt
+    docs/evidence/pool_landing_v2_2026-08-12/SEPARATION_V2.json
+    docs/evidence/pool_landing_v2_2026-08-12/SEPARATION_V2_out.txt
+    docs/evidence/pool_landing_v2_2026-08-12/UDERIVE_V2_out.txt
+    docs/evidence/pool_landing_v2_2026-08-12/boot_guard_landed_v2.txt
+    docs/evidence/pool_landing_v2_2026-08-12/build_board_o25.sh
+    docs/evidence/pool_landing_v2_2026-08-12/emit_variant_o25.sh
+    docs/evidence/pool_landing_v2_2026-08-12/o25_bootcheck.py
+    docs/evidence/pool_landing_v2_2026-08-12/o25_derive.py
+    docs/evidence/pool_landing_v2_2026-08-12/o25_iterate.sh
+    docs/evidence/pool_landing_v2_2026-08-12/o25_par.py
+    docs/evidence/pool_landing_v2_2026-08-12/o25_restamp.py
+    docs/evidence/pool_landing_v2_2026-08-12/o25_separation.py
+    docs/evidence/pool_landing_v2_2026-08-12/o25_stage.py
+    docs/evidence/pool_landing_v2_2026-08-12/o25_trajectory.py
+    docs/evidence/pool_landing_v2_2026-08-12/o25_uderive.py
+    docs/evidence/pool_quality_2026-08-12/MOVERS_TABLE_PSI.json
+    docs/evidence/pool_quality_2026-08-12/MOVERS_TABLE_PSI.md
+    docs/evidence/pool_quality_2026-08-12/PAR_TABLE.md
+    docs/evidence/pool_quality_2026-08-12/PAR_out.txt
+    docs/evidence/pool_quality_2026-08-12/PREREG_ORDER24B.md
+    docs/evidence/pool_quality_2026-08-12/Q_TABLE.md
+    docs/evidence/pool_quality_2026-08-12/SUMMARY.md
+    docs/evidence/pool_quality_2026-08-12/SURFACE_psi.json
+    docs/evidence/pool_quality_2026-08-12/TABLE_out.txt
+    docs/evidence/pool_quality_2026-08-12/UDERIVE_CONTROL_out.txt
+    docs/evidence/pool_quality_2026-08-12/UDERIVE_psi_out.txt
+    docs/evidence/pool_quality_2026-08-12/UHARVEST_out.txt
+    docs/evidence/pool_quality_2026-08-12/UPRIME2_TABLE.md
+    docs/evidence/pool_quality_2026-08-12/build_board_o24b.sh
+    docs/evidence/pool_quality_2026-08-12/o24b_par.py
+    docs/evidence/pool_quality_2026-08-12/o24b_stage_surface.py
+    docs/evidence/pool_quality_2026-08-12/o24b_table.py
+    docs/evidence/pool_quality_2026-08-12/o24b_uderive.py
+    docs/evidence/pool_quality_2026-08-12/o24b_uharvest.py
+    docs/evidence/pool_quality_2026-08-12/o24b_write_docs.py
+    docs/evidence/pool_quality_2026-08-12/o24b_write_summary.py
+    docs/evidence/pool_quality_2026-08-12/o24b_write_uprime2.py
+    docs/evidence/pool_quality_2026-08-12/par.json
+    docs/ledgers/POOL_UPDATE_MOVERS_2026-08-12.json
+    docs/ledgers/POOL_UPDATE_MOVERS_2026-08-12.md
+    engine/rl_after/_merged_recover.py
+    engine/rl_after/one_source_selftest.py
+    engine/rl_after/pool_retention_surface.json
+    engine/rl_after/pvc_curve_v2.json
+    engine/rl_after/rl_app_data.json
+    engine/rl_after/rl_app_data.json.srcmd5
+    engine/rl_after/rl_app_data.provenance.json
+    engine/rl_after/rl_model.py
+    engine/rl_after/s4_matrix.json
+    engine/rl_after/s4_matrix.json.srcmd5
+    ui/release_pick_curve.json
+
+SCOPE GUARDS: ALL HELD

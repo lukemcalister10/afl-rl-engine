@@ -1,0 +1,65 @@
+instrument pin COMPUTED at run: noarb_table_338.py 0f8220351c64c56ccfa90c60edcdfa5f
+                                noarb_table_allarm.py 3f9124de638d5ed30792dbdffef591b8
+=== O25R1  (c9e38ac1) ===
+  7             0        584      430        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o22/noarb/noarb_table_338.json
+=== O25FINAL  (3c6ffcde) ===
+  7             0        584      430        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o22/noarb/noarb_table_338.json
+__pycache__
+allarm_FINAL.json
+allarm_FINAL.txt
+allarm_FINAL23.json
+allarm_FINAL23.txt
+allarm_FINALO1.json
+allarm_FINALO1.txt
+allarm_O21STAGED.json
+allarm_O21STAGED.txt
+allarm_O25FINAL.json
+allarm_O25FINAL.txt
+allarm_O25R1.json
+allarm_O25R1.txt
+allarm_SHIP.json
+allarm_SHIP.txt
+harness_pvc_REPINNED_pass3.py
+noarb_table_338.py
+noarb_table_allarm.py
+t338_FINAL.txt
+t338_FINAL23.txt
+t338_FINALO1.txt
+t338_O21STAGED.txt
+t338_O25FINAL.txt
+t338_O25R1.txt
+t338_SHIP.txt
+table_FINAL.json
+table_FINAL23.json
+table_FINALO1.json
+table_O21STAGED.json
+table_O25FINAL.json
+table_O25R1.json
+table_SHIP.json
+
+====================================================================================================================
+BOTH COHORT INSTRUMENTS -- margins against the 14% annual charge. A NEGATIVE MARGIN IS AN ARBITRAGE.
+====================================================================================================================
+
+ALL-ARM DECIDING INSTRUMENT  (noarb_table_allarm.py)
+  window       variant         yr0      yr1      yr2      yr3      yr4      yr5 | apprec 0-1  margin v14%  verdict
+  PRIMARY  cohorts 2005-2023 n=2212 O25R1        1.0000   0.8077   0.9740   1.0702   1.1289   1.1094 |    -19.23%       33.23%   no arb
+  MODERN   cohorts 2019-2023 n=540 O25R1        1.0000   0.8227   0.9272   0.9794   0.9769   1.0340 |    -17.73%       31.73%   no arb
+  PRIMARY  cohorts 2005-2023 n=2212 O25FINAL     1.0000   0.8077   0.9737   1.0703   1.1291   1.1096 |    -19.23%       33.23%   no arb
+  MODERN   cohorts 2019-2023 n=540 O25FINAL     1.0000   0.8225   0.9256   0.9794   0.9772   1.0345 |    -17.75%       31.75%   no arb
+
+LEGACY RETAINED INSTRUMENT  (noarb_table_338.py, UNMODIFIED)
+  group          variant         yr1 apprec 0-1  margin v14%  verdict
+  ALL picks 1-64 O25R1        1.0730      7.30%        6.70%   no arb
+  picks 1-20     O25R1        1.1218     12.18%        1.82%   no arb
+  picks 21-64    O25R1        0.9996     -0.04%       14.04%   no arb
+  ALL picks 1-64 O25FINAL     1.0730      7.30%        6.70%   no arb
+  picks 1-20     O25FINAL     1.1218     12.18%        1.82%   no arb
+  picks 21-64    O25FINAL     0.9996     -0.04%       14.04%   no arb
+
+  ARBITRAGES OPENED: 0 of 10 readings.
+  wrote /home/user/afl-rl-engine/.claude/worktrees/agent-ae867318eb00a513e/docs/evidence/pool_landing_v2_2026-08-12/NOARB_MARGINS_V2.json
