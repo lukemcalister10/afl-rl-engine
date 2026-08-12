@@ -1,0 +1,26 @@
+==============================================================================================================================
+U'' RE-DERIVED   label=psi   delivery=ORDER 24B: quality-conditioned, q = clip(avg_y/par(pathway,d), 0, 1)   surface=SURFACE_a1.00.json
+==============================================================================================================================
+  entry weights e = level(division) * _PL_F, unchanged. Levels read from pvc_curve_v2.json:
+    IRE 106 . MSD 374 . ND65+ 298 . PDA 188 . PDN 96 . PDS 56 . RD:KPD 370 . RD:KPF 209 . RD:MID 289 . RD:RUCK 259 . RD:SD 245 . RD:SF 217 . SSP 315 . UNR 66
+  par read from par.json (K=10 shrink, every cell disclosed in PAR_TABLE.md)
+
+  pathway     cells   sit mass  play mass     q-mass     qbar    U' (o24)         U''   U''-1 /   post-redist mean
+                     Se(1-phi)     Se*phi   Se*phi*q   qmass/                              U'-1     (HALT if != 1)
+  RD           2352   243343.3   409449.9   360474.3   0.8804    1.239884    1.272476    1.1359       1.0000000000
+  ND>64         441    58959.7    79344.6    68323.7   0.8611    1.361599    1.419927    1.1613       1.0000000000
+  IRE           137     7529.9     7753.0     6680.9   0.8617    1.326308    1.378674    1.1605       1.0000000000
+  UNR           126     4503.2     4248.5     3625.8   0.8534    1.510685    1.598397    1.1718       1.0000000000
+  PDA           106    10189.3    10782.9     9599.8   0.8903    1.575357    1.646263    1.1232       1.0000000000
+  PDS            62     2524.4     1129.6      946.2   0.8376    1.779469    1.930577    1.1939       1.0000000000
+  MSD            40    11348.7     4395.2     3955.5   0.9000    1.904002    2.004494    1.1112       1.0000000000
+  PDN            36     2727.8      909.3      812.9   0.8941    1.770823    1.862162    1.1185       1.0000000000
+  SSP            34     3867.6     7403.6     6806.9   0.9194    1.167647    1.182345    1.0877       1.0000000000
+  ALL POOL     3334   344993.9   525416.7   461225.9   0.8778    1.275231    1.313536    1.1392       1.0000000000
+
+  MEAN-PRESERVATION INSTRUMENT: pathways whose post-redistribution entry-weighted mean is not
+  1.0000000000 (tol 1e-9): 0
+  IDENTITY CHECK  U''-1 == (U'-1)/qbar  computed independently: worst |residual| = 2.220e-16
+  U'' >= U' on every pathway: YES  (violations: [])
+
+  wrote docs/evidence/pool_quality_2026-08-12/SURFACE_psi.json

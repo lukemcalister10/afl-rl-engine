@@ -1,0 +1,37 @@
+==============================================================================================================================
+U'' RE-DERIVED   label=CONTROL   delivery=ORDER 24 CONTROL (q == 1 everywhere)   surface=SURFACE_a1.00.json
+==============================================================================================================================
+  entry weights e = level(division) * _PL_F, unchanged. Levels read from pvc_curve_v2.json:
+    IRE 106 . MSD 374 . ND65+ 298 . PDA 188 . PDN 96 . PDS 56 . RD:KPD 370 . RD:KPF 209 . RD:MID 289 . RD:RUCK 259 . RD:SD 245 . RD:SF 217 . SSP 315 . UNR 66
+  par read from par.json (K=10 shrink, every cell disclosed in PAR_TABLE.md)
+
+  pathway     cells   sit mass  play mass     q-mass     qbar    U' (o24)         U''   U''-1 /   post-redist mean
+                     Se(1-phi)     Se*phi   Se*phi*q   qmass/                              U'-1     (HALT if != 1)
+  RD           2352   243343.3   409449.9   409449.9   1.0000    1.239884    1.239884    1.0000       1.0000000000
+  ND>64         441    58959.7    79344.6    79344.6   1.0000    1.361599    1.361599    1.0000       1.0000000000
+  IRE           137     7529.9     7753.0     7753.0   1.0000    1.326308    1.326308    1.0000       1.0000000000
+  UNR           126     4503.2     4248.5     4248.5   1.0000    1.510685    1.510685    1.0000       1.0000000000
+  PDA           106    10189.3    10782.9    10782.9   1.0000    1.575357    1.575357    1.0000       1.0000000000
+  PDS            62     2524.4     1129.6     1129.6   1.0000    1.779469    1.779469    1.0000       1.0000000000
+  MSD            40    11348.7     4395.2     4395.2   1.0000    1.904002    1.904002    1.0000       1.0000000000
+  PDN            36     2727.8      909.3      909.3   1.0000    1.770823    1.770823    1.0000       1.0000000000
+  SSP            34     3867.6     7403.6     7403.6   1.0000    1.167647    1.167647    1.0000       1.0000000000
+  ALL POOL     3334   344993.9   525416.7   525416.7   1.0000    1.275231    1.275231    1.0000       1.0000000000
+
+  MEAN-PRESERVATION INSTRUMENT: pathways whose post-redistribution entry-weighted mean is not
+  1.0000000000 (tol 1e-9): 0
+  IDENTITY CHECK  U''-1 == (U'-1)/qbar  computed independently: worst |residual| = 0.000e+00
+  U'' >= U' on every pathway: YES  (violations: [])
+
+  CONTROL: with q forced to 1 everywhere the instrument must reproduce ORDER 24's U' exactly.
+    RD        order24 1.2398840886    reproduced 1.2398840886    |diff| 4.289e-11
+    ND>64     order24 1.3615989928    reproduced 1.3615989928    |diff| 4.638e-11
+    IRE       order24 1.3263082254    reproduced 1.3263082254    |diff| 1.966e-11
+    UNR       order24 1.5106848065    reproduced 1.5106848065    |diff| 3.951e-11
+    PDA       order24 1.5753573456    reproduced 1.5753573456    |diff| 3.425e-11
+    PDS       order24 1.7794687826    reproduced 1.7794687826    |diff| 8.697e-12
+    MSD       order24 1.9040023582    reproduced 1.9040023582    |diff| 8.954e-12
+    PDN       order24 1.7708232963    reproduced 1.7708232963    |diff| 3.703e-12
+    SSP       order24 1.1676474925    reproduced 1.1676474925    |diff| 3.731e-11
+    worst |diff| = 4.638e-11
+  CONTROL PASSES -- the machinery is ORDER 24's with exactly one factor added.
