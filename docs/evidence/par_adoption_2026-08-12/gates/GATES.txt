@@ -1,0 +1,71 @@
+======================================================================================================================
+ORDER 20B TASK 2 — THE v0-CHAIN LAWS ON THE FIXED ENGINE
+======================================================================================================================
+
+  ---- READING 1 — THE SHIPPED (FROZEN) STATE ----
+    v0surf frozen: HEAD=True FIX=True. With the surface frozen, D14a/D14b are functions of (pos,ageR,pick) alone
+    gate     quantity                                       HEAD                  FIX   verdict
+    D14a     cross_draft_maxdisp                             0.0                  0.0   GREEN
+    D14b     within_cell_inversions                            0                    0   GREEN
+    D14c     kpp_depth_monotone                             True                 True   GREEN
+    D14d     rising_steps_1_64                                 0                    0   GREEN
+    D14d     rising_steps_full_grid                            0                    0   GREEN
+    (info)   population (surface rows)                      1448                 1448   
+    (info)   pool_rows_excluded                              122                  122   
+    REPORT-ONLY (whole-ND incl. pool rows; declared unsatisfiable by the 2026-08-10 population correction —
+    they compare pool division-level prices against national surface prices, two different price objects):
+             report_only_all_nd_maxdisp        324.1610904958867    424.5820378162564   MOVED
+             report_only_all_nd_inversions                   412                  565   MOVED
+
+  ---- READING 2 — WITH THE D14 V0 SURFACE RE-FIT (RL_V0SURF_REFIT=1) ----
+    the state an ADOPTION + re-bake would produce. THIS is where the gates are actually tested against the fix.
+    gate     quantity                                       HEAD                  FIX   verdict
+    D14a     cross_draft_maxdisp                             0.0                  0.0   GREEN
+    D14b     within_cell_inversions                            0                    0   GREEN
+    D14c     kpp_depth_monotone                             True                 True   GREEN
+    D14d     rising_steps_1_64                                 0                    0   GREEN
+    D14d     rising_steps_full_grid                            0                    0   GREEN
+    (info)   population (surface rows)                      1448                 1448   
+    (info)   pool_rows_excluded                              122                  122   
+    REPORT-ONLY (whole-ND incl. pool rows; declared unsatisfiable by the 2026-08-10 population correction —
+    they compare pool division-level prices against national surface prices, two different price objects):
+             report_only_all_nd_maxdisp        324.1610904958867    424.5820378162564   MOVED
+             report_only_all_nd_inversions                   412                  565   MOVED
+
+  ---- _ruc_prior_cap BINDING (V0 PRIOR SCAFFOLD cap, _merged_recover.py:1219) ----
+    population: every REAL RUCK row the board carries. `binds` = the ceiling cut, i.e. min() was active.
+    the ceiling itself is RUC_PRIOR_CAP * _cap_basis(p) * _ruc_head_v0(p) — par-independent.
+
+    shipped (frozen) state:
+      NATIONAL  n=27   binds 6 -> 12   total cut     661.9 ->    1549.1   newly-binding 6  released 0
+          NEWLY BINDING  Lachlan Smith            ep47    v0_uncapped    423.6 ->    572.5   ceiling    546.0 (unmoved)
+          NEWLY BINDING  Alex Dodson              ep53    v0_uncapped    395.7 ->    524.2   ceiling    443.8 (unmoved)
+          NEWLY BINDING  Jacob Molier             ep52    v0_uncapped    354.1 ->    474.5   ceiling    457.8 (unmoved)
+          NEWLY BINDING  Marc Pittonet            ep50    v0_uncapped    389.1 ->    521.8   ceiling    484.4 (unmoved)
+          NEWLY BINDING  Samson Ryan              ep42    v0_uncapped    599.4 ->    794.5   ceiling    681.8 (unmoved)
+          NEWLY BINDING  Rhys Stanley             ep47    v0_uncapped    438.4 ->    592.5   ceiling    546.0 (unmoved)
+      POOL      n=44   binds 34 -> 40   total cut    6361.1 ->   16832.9   newly-binding 6  released 0
+          NEWLY BINDING  Liam Reidy               ep65    v0_uncapped    362.8 ->    533.0   ceiling    394.8 (unmoved)
+          NEWLY BINDING  Darcy Fort               ep65    v0_uncapped    144.4 ->    288.0   ceiling    259.0 (unmoved)
+          NEWLY BINDING  Darryl McDowell-White    ep65    v0_uncapped    132.6 ->    264.4   ceiling    144.2 (unmoved)
+          NEWLY BINDING  Brynn Teakle             ep65    v0_uncapped    324.1 ->    470.9   ceiling    400.4 (unmoved)
+          NEWLY BINDING  Kieran Strachan          ep65    v0_uncapped    286.1 ->    431.9   ceiling    394.8 (unmoved)
+          NEWLY BINDING  Oscar McInerney          ep65    v0_uncapped    369.9 ->    537.5   ceiling    394.8 (unmoved)
+      ceilings that moved: 0 of 71  (the cap's HEIGHT is par-independent; what moves is what it is applied to)
+
+    with the V0 surface re-fit:
+      NATIONAL  n=27   binds 6 -> 12   total cut     661.9 ->    1549.1   newly-binding 6  released 0
+          NEWLY BINDING  Lachlan Smith            ep47    v0_uncapped    423.6 ->    572.5   ceiling    546.0 (unmoved)
+          NEWLY BINDING  Alex Dodson              ep53    v0_uncapped    395.7 ->    524.2   ceiling    443.8 (unmoved)
+          NEWLY BINDING  Jacob Molier             ep52    v0_uncapped    354.1 ->    474.5   ceiling    457.8 (unmoved)
+          NEWLY BINDING  Marc Pittonet            ep50    v0_uncapped    389.1 ->    521.8   ceiling    484.4 (unmoved)
+          NEWLY BINDING  Samson Ryan              ep42    v0_uncapped    599.4 ->    794.5   ceiling    681.8 (unmoved)
+          NEWLY BINDING  Rhys Stanley             ep47    v0_uncapped    438.4 ->    592.5   ceiling    546.0 (unmoved)
+      POOL      n=44   binds 34 -> 40   total cut    6361.1 ->   16832.9   newly-binding 6  released 0
+          NEWLY BINDING  Liam Reidy               ep65    v0_uncapped    362.8 ->    533.0   ceiling    394.8 (unmoved)
+          NEWLY BINDING  Darcy Fort               ep65    v0_uncapped    144.4 ->    288.0   ceiling    259.0 (unmoved)
+          NEWLY BINDING  Darryl McDowell-White    ep65    v0_uncapped    132.6 ->    264.4   ceiling    144.2 (unmoved)
+          NEWLY BINDING  Brynn Teakle             ep65    v0_uncapped    324.1 ->    470.9   ceiling    400.4 (unmoved)
+          NEWLY BINDING  Kieran Strachan          ep65    v0_uncapped    286.1 ->    431.9   ceiling    394.8 (unmoved)
+          NEWLY BINDING  Oscar McInerney          ep65    v0_uncapped    369.9 ->    537.5   ceiling    394.8 (unmoved)
+      ceilings that moved: 0 of 71  (the cap's HEIGHT is par-independent; what moves is what it is applied to)

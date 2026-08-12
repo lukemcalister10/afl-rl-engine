@@ -1,0 +1,52 @@
+############################################################################
+### nd_profile on the HEAD-EMITTED matrix   (/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/matrix_HEAD.json)
+############################################################################
+  pins asserted at entry: board 94f1fec5 / store d9a24282 / instrument 0f822035 — all UNMOVED
+  CONTROL 1 PASS: split=False reproduces harness_pvc_REPINNED_pass3.structural_values on all 2641 eligible rows, value for value (0 differences). The instrument measures the SPLIT and nothing else.
+
+====================================================================================================================
+nd_profile ON THE BASE MATRIX   matrix_HEAD.json
+====================================================================================================================
+  construction          nd_profile (engine arm, n=1443)   nd_profile (published teaches_curve, n=1444)
+  CONTAMINATED S[(pos,t)]    1.0253296290                     1.0252177109
+  ARM-SPLIT   S[(arm,pos,t)] 0.9944115616                     0.9944131659
+
+  ONE-TIME DE-CONTAMINATION DELTA on nd_profile (this is a CONSEQUENCE of the fix, not a law breach):
+    nd_profile_engine_arm                  1.0253296290 -> 0.9944115616   delta -0.0309180674  (-3.0154%)
+    nd_profile_published_teaches_curve     1.0252177109 -> 0.9944131659   delta -0.0308045450  (-3.0047%)
+    national rows whose structural value moves under the split: 428 of 1443
+    completion provenance  contaminated {'completed': 734, 'prior_fallback_no_written': 18, 'concluded_realised': 1846, 'prior_fallback_thin': 43}
+                           arm-split    {'completed': 660, 'prior_fallback_no_written': 18, 'concluded_realised': 1846, 'prior_fallback_thin': 117}
+    fallback share         contaminated 2.310%   arm-split 5.112%
+
+====================================================================================================================
+THE SEPARATION LAW ON nd_profile — pool perturbations
+====================================================================================================================
+  pins asserted at exit: board 94f1fec5 / store d9a24282 / instrument 0f822035 — all UNMOVED
+  VERDICT: LAW HOLDS UNDER ARM-SPLIT
+############################################################################
+### nd_profile on the FIX-EMITTED matrix   (/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/matrix_FIX.json)
+############################################################################
+  pins asserted at entry: board 94f1fec5 / store d9a24282 / instrument 0f822035 — all UNMOVED
+  CONTROL 1 PASS: split=False reproduces harness_pvc_REPINNED_pass3.structural_values on all 2644 eligible rows, value for value (0 differences). The instrument measures the SPLIT and nothing else.
+
+====================================================================================================================
+nd_profile ON THE BASE MATRIX   matrix_FIX.json
+====================================================================================================================
+  construction          nd_profile (engine arm, n=1443)   nd_profile (published teaches_curve, n=1444)
+  CONTAMINATED S[(pos,t)]    1.0196846297                     1.0194505059
+  ARM-SPLIT   S[(arm,pos,t)] 0.9900060981                     0.9900101810
+
+  ONE-TIME DE-CONTAMINATION DELTA on nd_profile (this is a CONSEQUENCE of the fix, not a law breach):
+    nd_profile_engine_arm                  1.0196846297 -> 0.9900060981   delta -0.0296785316  (-2.9106%)
+    nd_profile_published_teaches_curve     1.0194505059 -> 0.9900101810   delta -0.0294403248  (-2.8879%)
+    national rows whose structural value moves under the split: 428 of 1443
+    completion provenance  contaminated {'completed': 734, 'prior_fallback_no_written': 18, 'concluded_realised': 1849, 'prior_fallback_thin': 43}
+                           arm-split    {'completed': 660, 'prior_fallback_no_written': 18, 'concluded_realised': 1849, 'prior_fallback_thin': 117}
+    fallback share         contaminated 2.307%   arm-split 5.106%
+
+====================================================================================================================
+THE SEPARATION LAW ON nd_profile — pool perturbations
+====================================================================================================================
+  pins asserted at exit: board 94f1fec5 / store d9a24282 / instrument 0f822035 — all UNMOVED
+  VERDICT: LAW HOLDS UNDER ARM-SPLIT

@@ -1,0 +1,152 @@
+{
+ "frozen": {
+  "D14a": {
+   "quantity": "cross_draft_maxdisp",
+   "head": 0.0,
+   "fix": 0.0,
+   "law": 0.0,
+   "green_on_fix": true,
+   "flipped_red": false
+  },
+  "D14b": {
+   "quantity": "within_cell_inversions",
+   "head": 0,
+   "fix": 0,
+   "law": 0,
+   "green_on_fix": true,
+   "flipped_red": false
+  },
+  "D14c": {
+   "quantity": "kpp_depth_monotone",
+   "head": true,
+   "fix": true,
+   "law": true,
+   "green_on_fix": true,
+   "flipped_red": false
+  },
+  "D14d/rising_steps_1_64": {
+   "head": 0,
+   "fix": 0,
+   "law": 0,
+   "green_on_fix": true,
+   "flipped_red": false
+  },
+  "D14d/rising_steps_full_grid": {
+   "head": 0,
+   "fix": 0,
+   "law": 0,
+   "green_on_fix": true,
+   "flipped_red": false
+  }
+ },
+ "refit": {
+  "D14a": {
+   "quantity": "cross_draft_maxdisp",
+   "head": 0.0,
+   "fix": 0.0,
+   "law": 0.0,
+   "green_on_fix": true,
+   "flipped_red": false
+  },
+  "D14b": {
+   "quantity": "within_cell_inversions",
+   "head": 0,
+   "fix": 0,
+   "law": 0,
+   "green_on_fix": true,
+   "flipped_red": false
+  },
+  "D14c": {
+   "quantity": "kpp_depth_monotone",
+   "head": true,
+   "fix": true,
+   "law": true,
+   "green_on_fix": true,
+   "flipped_red": false
+  },
+  "D14d/rising_steps_1_64": {
+   "head": 0,
+   "fix": 0,
+   "law": 0,
+   "green_on_fix": true,
+   "flipped_red": false
+  },
+  "D14d/rising_steps_full_grid": {
+   "head": 0,
+   "fix": 0,
+   "law": 0,
+   "green_on_fix": true,
+   "flipped_red": false
+  }
+ },
+ "ruc_frozen": {
+  "NATIONAL": {
+   "n": 27,
+   "binds_head": 6,
+   "binds_fix": 12,
+   "cut_head": 661.8841508655188,
+   "cut_fix": 1549.1191013476157,
+   "newly_binding": [
+    "Lachlan Smith",
+    "Alex Dodson",
+    "Jacob Molier",
+    "Marc Pittonet",
+    "Samson Ryan",
+    "Rhys Stanley"
+   ],
+   "released": []
+  },
+  "POOL": {
+   "n": 44,
+   "binds_head": 34,
+   "binds_fix": 40,
+   "cut_head": 6361.0527453912655,
+   "cut_fix": 16832.858937171182,
+   "newly_binding": [
+    "Liam Reidy",
+    "Darcy Fort",
+    "Darryl McDowell-White",
+    "Brynn Teakle",
+    "Kieran Strachan",
+    "Oscar McInerney"
+   ],
+   "released": []
+  },
+  "ceilings_moved": 0
+ },
+ "ruc_refit": {
+  "NATIONAL": {
+   "n": 27,
+   "binds_head": 6,
+   "binds_fix": 12,
+   "cut_head": 661.8841508655188,
+   "cut_fix": 1549.1191013476157,
+   "newly_binding": [
+    "Lachlan Smith",
+    "Alex Dodson",
+    "Jacob Molier",
+    "Marc Pittonet",
+    "Samson Ryan",
+    "Rhys Stanley"
+   ],
+   "released": []
+  },
+  "POOL": {
+   "n": 44,
+   "binds_head": 34,
+   "binds_fix": 40,
+   "cut_head": 6361.0527453912655,
+   "cut_fix": 16832.858937171182,
+   "newly_binding": [
+    "Liam Reidy",
+    "Darcy Fort",
+    "Darryl McDowell-White",
+    "Brynn Teakle",
+    "Kieran Strachan",
+    "Oscar McInerney"
+   ],
+   "released": []
+  },
+  "ceilings_moved": 0
+ }
+}

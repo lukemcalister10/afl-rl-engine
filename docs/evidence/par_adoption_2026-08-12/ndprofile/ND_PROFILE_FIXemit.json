@@ -1,0 +1,60 @@
+{
+ "base": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/matrix_FIX.json",
+ "variants": {},
+ "base_contaminated": {
+  "nd_profile_engine_arm": 1.0196846297263444,
+  "nd_profile_published_teaches_curve": 1.0194505058555565,
+  "n_engine": 1443,
+  "n_published": 1444,
+  "prov": {
+   "counts": {
+    "completed": 734,
+    "prior_fallback_no_written": 18,
+    "concluded_realised": 1849,
+    "prior_fallback_thin": 43
+   },
+   "fallback_rows": 61,
+   "of_population": 2644,
+   "fallback_share_pct": 2.307,
+   "split": false
+  },
+  "store_md5": "d9a24282",
+  "engine_head": "a8071af4"
+ },
+ "base_armsplit": {
+  "nd_profile_engine_arm": 0.9900060980974666,
+  "nd_profile_published_teaches_curve": 0.9900101810419315,
+  "n_engine": 1443,
+  "n_published": 1444,
+  "prov": {
+   "counts": {
+    "completed": 660,
+    "prior_fallback_no_written": 18,
+    "concluded_realised": 1849,
+    "prior_fallback_thin": 117
+   },
+   "fallback_rows": 135,
+   "of_population": 2644,
+   "fallback_share_pct": 5.106,
+   "split": true
+  },
+  "store_md5": "d9a24282",
+  "engine_head": "a8071af4"
+ },
+ "decontamination_delta": {
+  "nd_profile_engine_arm": {
+   "contaminated": 1.0196846297263444,
+   "armsplit": 0.9900060980974666,
+   "delta": -0.02967853162887779,
+   "pct": -2.9105598695591497
+  },
+  "nd_profile_published_teaches_curve": {
+   "contaminated": 1.0194505058555565,
+   "armsplit": 0.9900101810419315,
+   "delta": -0.02944032481362502,
+   "pct": -2.887862102625348
+  }
+ },
+ "decontamination_row_movers": 428,
+ "verdict": "LAW HOLDS UNDER ARM-SPLIT"
+}

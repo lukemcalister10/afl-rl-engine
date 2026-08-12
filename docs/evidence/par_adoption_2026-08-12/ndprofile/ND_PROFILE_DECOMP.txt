@@ -1,0 +1,25 @@
+=== nd_profile: THE FOUR CORNERS (engine arm, n=1443) ===
+                                   HEAD-emitted matrix FIX-emitted matrix
+CONTAMINATED S[(pos,t)]            1.0253296290     1.0196846297
+ARM-SPLIT    S[(arm,pos,t)]        0.9944115616     0.9900060981
+
+=== DECOMPOSITION of the move from the PUBLISHED figure to the DEFINITIVE one ===
+  published (ORDER 20, HEAD-emit, arm-split strata) : 0.9944115616
+  DEFINITIVE (FIX-emit, arm-split strata)           : 0.9900060981
+  delta                                             : -0.0044054635  (-0.4430%)
+
+=== v0-SIDE (engine) vs STRATA-SIDE, separated ===
+  STRATA-side  (S key change), measured AT FIXED-ENGINE v0s:
+     1.0196846297 -> 0.9900060981   delta -0.0296785316  (-2.9106%)
+  STRATA-side  (S key change), measured at HEAD-engine v0s [ORDER 20 published]:
+     1.0253296290 -> 0.9944115616   delta -0.0309180674  (-3.0154%)
+  ENGINE-side  (HEAD-emit -> FIX-emit), measured under ARM-SPLIT strata:
+     0.9944115616 -> 0.9900060981   delta -0.0044054635  (-0.4430%)
+  ENGINE-side  (HEAD-emit -> FIX-emit), measured under CONTAMINATED strata:
+     1.0253296290 -> 1.0196846297   delta -0.0056449993  (-0.5506%)
+
+=== TOTAL, today s shipped state -> full adoption ===
+  1.0253296290 -> 0.9900060981   delta -0.0353235309  (-3.4451%)
+
+  interaction (strata x engine, non-additivity):
+     sum of the two one-at-a-time legs -0.0365630667 vs actual total -0.0353235309 -> interaction +0.0012395358
