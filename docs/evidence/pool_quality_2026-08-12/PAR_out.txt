@@ -1,0 +1,109 @@
+========================================================================================================================
+ORDER 24B STEP 2 -- THE PAR TABLE
+========================================================================================================================
+  population: the complete-window pool harvest that produced R.
+    national rows encountered and EXCLUDED at the harvest gate: 1390  (SEPARATION, asserted)
+    complete-window cells with a priceable anchor .............. 3334
+    of which PLAYING (games > 0) and carrying an average ....... 2323
+    playing cells with NO usable average (q = 0 by the rule) ... 1
+    non-playing cells (no q exists; phi = 0) ................... 1010
+
+  PATHWAY ALL-DEPTH PAR (the shrink donor), games-weighted:
+    pathway         par      games      cells
+    RD          71.2863      21326       1698
+    ND>64       67.5188       3448        316
+    IRE         67.2237        885         89
+    UNR         68.1112        839         73
+    PDA         55.8204        771         69
+    PDS         59.6831        212         26
+    MSD         61.6975        121         14
+    PDN         60.0740         77         15
+    SSP         56.8793        270         23
+    ALL POOL    69.8713      27949       2323
+
+  THE PAR TABLE -- EVERY CELL DISCLOSED (own value, donor, K=10 weight, what was wired)
+  pathway    d   cells    games    own par      donor        w      WIRED    shrink  shrink%
+  RD         1     194     1437    59.7970    71.2863   0.9510    60.3602   +0.5632   +0.94
+  RD         2     229     2185    63.1562    71.2863   0.9582    63.4964   +0.3402   +0.54
+  RD         3     238     2679    66.9619    71.2863   0.9597    67.1363   +0.1744   +0.26
+  RD         4     211     2883    71.2588    71.2863   0.9548    71.2600   +0.0012   +0.00
+  RD         5     176     2568    72.3917    71.2863   0.9462    72.3323   -0.0594   -0.08
+  RD         6     650     9574    75.7881    71.2863   0.9848    75.7198   -0.0682   -0.09
+  ND>64      1      37      254    60.2163    67.5188   0.7872    61.7700   +1.5537   +2.58   <-- shrink >= 2%
+  ND>64      2      55      441    58.4122    67.5188   0.8462    59.8132   +1.4010   +2.40   <-- shrink >= 2%
+  ND>64      3      53      519    61.2494    67.5188   0.8413    62.2445   +0.9951   +1.62
+  ND>64      4      44      535    65.6615    67.5188   0.8148    66.0054   +0.3439   +0.52
+  ND>64      5      34      414    67.3995    67.5188   0.7727    67.4266   +0.0271   +0.04
+  ND>64      6      93     1285    75.4314    67.5188   0.9029    74.6631   -0.7682   -1.02
+  IRE        1       9       36    52.2206    67.2237   0.4737    60.1170   +7.8964  +15.12   <-- THIN (n<10, donor carries the majority)
+  IRE        2      15       99    54.6475    67.2237   0.6000    59.6780   +5.0305   +9.21   <-- shrink >= 2%
+  IRE        3      17      160    58.1589    67.2237   0.6296    61.5163   +3.3573   +5.77   <-- shrink >= 2%
+  IRE        4      13      137    64.8378    67.2237   0.5652    65.8752   +1.0373   +1.60
+  IRE        5      10      124    66.8174    67.2237   0.5000    67.0206   +0.2031   +0.30
+  IRE        6      25      329    78.2048    67.2237   0.7143    75.0673   -3.1374   -4.01   <-- shrink >= 2%
+  UNR        1       5       42    39.9952    68.1112   0.3333    58.7392  +18.7440  +46.87   <-- THIN (n<10, donor carries the majority)
+  UNR        2      14      110    58.9218    68.1112   0.5833    62.7507   +3.8289   +6.50   <-- shrink >= 2%
+  UNR        3      16      141    61.9567    68.1112   0.6154    64.3238   +2.3671   +3.82   <-- shrink >= 2%
+  UNR        4      11      131    73.9992    68.1112   0.5238    71.1954   -2.8038   -3.79   <-- shrink >= 2%
+  UNR        5       9      133    75.1669    68.1112   0.4737    71.4534   -3.7135   -4.94   <-- THIN (n<10, donor carries the majority)
+  UNR        6      18      282    72.8975    68.1112   0.6429    71.1881   -1.7094   -2.35   <-- shrink >= 2%
+  PDA        1       8       45    51.6200    55.8204   0.4444    53.9535   +2.3335   +4.52   <-- THIN (n<10, donor carries the majority)
+  PDA        2      15      124    30.3855    55.8204   0.6000    40.5594  +10.1740  +33.48   <-- shrink >= 2%
+  PDA        3      14      184    48.8109    55.8204   0.5833    51.7315   +2.9206   +5.98   <-- shrink >= 2%
+  PDA        4       8      144    51.8139    55.8204   0.4444    54.0397   +2.2258   +4.30   <-- THIN (n<10, donor carries the majority)
+  PDA        5       7       86    72.4279    55.8204   0.4118    62.6588   -9.7691  -13.49   <-- THIN (n<10, donor carries the majority)
+  PDA        6      17      188    75.9340    55.8204   0.6296    68.4845   -7.4495   -9.81   <-- shrink >= 2%
+  PDS        1       1       11    49.7300    59.6831   0.0909    58.7782   +9.0482  +18.20   <-- THIN (n<10, donor carries the majority)
+  PDS        2       3       10    30.3010    59.6831   0.2308    52.9026  +22.6016  +74.59   <-- THIN (n<10, donor carries the majority)
+  PDS        3       3        7    40.8571    59.6831   0.2308    55.3386  +14.4815  +35.44   <-- THIN (n<10, donor carries the majority)
+  PDS        4       2       21    73.2095    59.6831   0.1667    61.9375  -11.2720  -15.40   <-- THIN (n<10, donor carries the majority)
+  PDS        5       5       60    58.8900    59.6831   0.3333    59.4187   +0.5287   +0.90   <-- THIN (n<10, donor carries the majority)
+  PDS        6      12      103    62.5822    59.6831   0.5455    61.2644   -1.3178   -2.11   <-- shrink >= 2%
+  MSD        1       9       40    51.5475    61.6975   0.4737    56.8896   +5.3421  +10.36   <-- THIN (n<10, donor carries the majority)
+  MSD        2       3       41    65.0805    61.6975   0.2308    62.4782   -2.6023   -4.00   <-- THIN (n<10, donor carries the majority)
+  MSD        3       2       40    68.3800    61.6975   0.1667    62.8113   -5.5687   -8.14   <-- THIN (n<10, donor carries the majority)
+  MSD        4       0        0      EMPTY    61.6975   0.0000    61.6975         -       -   <-- THIN (n<10, donor carries the majority)
+  MSD        5       0        0      EMPTY    61.6975   0.0000    61.6975         -       -   <-- THIN (n<10, donor carries the majority)
+  MSD        6       0        0      EMPTY    61.6975   0.0000    61.6975         -       -   <-- THIN (n<10, donor carries the majority)
+  PDN        1       2        4    43.5000    60.0740   0.1667    57.3117  +13.8117  +31.75   <-- THIN (n<10, donor carries the majority)
+  PDN        2       3       12    58.1833    60.0740   0.2308    59.6377   +1.4544   +2.50   <-- THIN (n<10, donor carries the majority)
+  PDN        3       7       29    49.7103    60.0740   0.4118    55.8066   +6.0963  +12.26   <-- THIN (n<10, donor carries the majority)
+  PDN        4       3       32    72.2469    60.0740   0.2308    62.8831   -9.3637  -12.96   <-- THIN (n<10, donor carries the majority)
+  PDN        5       0        0      EMPTY    60.0740   0.0000    60.0740         -       -   <-- THIN (n<10, donor carries the majority)
+  PDN        6       0        0      EMPTY    60.0740   0.0000    60.0740         -       -   <-- THIN (n<10, donor carries the majority)
+  SSP        1      10      134    55.4187    56.8793   0.5000    56.1490   +0.7303   +1.32
+  SSP        2       6       52    59.2135    56.8793   0.3750    57.7546   -1.4589   -2.46   <-- THIN (n<10, donor carries the majority)
+  SSP        3       7       84    57.7643    56.8793   0.4118    57.2437   -0.5206   -0.90   <-- THIN (n<10, donor carries the majority)
+  SSP        4       0        0      EMPTY    56.8793   0.0000    56.8793         -       -   <-- THIN (n<10, donor carries the majority)
+  SSP        5       0        0      EMPTY    56.8793   0.0000    56.8793         -       -   <-- THIN (n<10, donor carries the majority)
+  SSP        6       0        0      EMPTY    56.8793   0.0000    56.8793         -       -   <-- THIN (n<10, donor carries the majority)
+  ALL POOL   1     275     2003    58.5696    69.8713   0.9649    58.9661   +0.3966   +0.68
+  ALL POOL   2     343     3074    60.5609    69.8713   0.9717    60.8246   +0.2638   +0.44
+  ALL POOL   3     357     3843    64.4072    69.8713   0.9728    64.5561   +0.1489   +0.23
+  ALL POOL   4     292     3883    69.6511    69.8713   0.9669    69.6584   +0.0073   +0.01
+  ALL POOL   5     241     3385    71.4476    69.8713   0.9602    71.3848   -0.0628   -0.09
+  ALL POOL   6     815    11761    75.6341    69.8713   0.9879    75.5642   -0.0699   -0.09
+
+  MONOTONICITY IN DEPTH (reported, NEVER projected -- par is a measurement, not a shape):
+    RD        60.36  63.50  67.14  71.26  72.33  75.72   d1->d6: up up up up up
+    ND>64     61.77  59.81  62.24  66.01  67.43  74.66   d1->d6: DOWN up up up up
+    IRE       60.12  59.68  61.52  65.88  67.02  75.07   d1->d6: DOWN up up up up
+    UNR       58.74  62.75  64.32  71.20  71.45  71.19   d1->d6: up up up up DOWN
+    PDA       53.95  40.56  51.73  54.04  62.66  68.48   d1->d6: DOWN up up up up
+    PDS       58.78  52.90  55.34  61.94  59.42  61.26   d1->d6: DOWN up up DOWN up
+    MSD       56.89  62.48  62.81  61.70  61.70  61.70   d1->d6: up up DOWN DOWN DOWN
+    PDN       57.31  59.64  55.81  62.88  60.07  60.07   d1->d6: up DOWN up DOWN DOWN
+    SSP       56.15  57.75  57.24  56.88  56.88  56.88   d1->d6: up DOWN DOWN DOWN DOWN
+    ALL POOL  58.97  60.82  64.56  69.66  71.38  75.56   d1->d6: up up up up up
+
+  RECONCILIATION -- the supervising seat's reference points (store md5 d9a24282, complete-window
+  <= 2021, d = Y - draftyr). The seat's quick cut and this harvest gate need not agree; a gap
+  above 5%% is EXPLAINED, never forced away.
+  pathway    d   seat par    own par  wired par   gap own gap wired    seat n
+  MSD        1      58.90    51.5475    56.8896   -12.48%    -3.41%       162   (mine: 9 cells, 40 games)
+  MSD        2      61.40    65.0805    62.4782     5.99%     1.76%       174   (mine: 3 cells, 41 games)
+  RD         3      66.50    66.9619    67.1363     0.69%     0.96%      2878   (mine: 238 cells, 2679 games)
+  SSP        1      57.70    55.4187    56.1490    -3.95%    -2.69%       166   (mine: 10 cells, 134 games)
+
+  wrote /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o24b/par.json
+  wrote docs/evidence/pool_quality_2026-08-12/PAR_TABLE.md
