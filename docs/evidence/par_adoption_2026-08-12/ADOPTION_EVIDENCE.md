@@ -484,7 +484,7 @@ Johnston's rise to the stalled bar in P16's reasoning, and the bar does not fire
 
 ---
 
-## PRE-REGISTRATION SCORED — 5 BREACHES OF 21, EVERY ONE OWNED
+## PRE-REGISTRATION SCORED — 6 BREACHES OF 21, EVERY ONE OWNED
 
 | # | prediction | outcome | verdict |
 |---|---|---|---|
