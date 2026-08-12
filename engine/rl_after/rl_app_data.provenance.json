@@ -1,6 +1,6 @@
 {
   "RL_FV_env": "/home/user/afl-rl-engine/engine/forward_valuation",
-  "config_manifest_identity": "cd38fb0056ac94fd6a7b5d8af06a3f7294983dd8b4403bf4d6b979327a90d30d",
+  "config_manifest_identity": "bf0121056ee4437f407c9af42fbb760c1f4fd2a1fa7bfb9e13cdd94450615672",
   "config_manifest_path": "/home/user/afl-rl-engine/data/model_config.json",
   "distribution_pricing_md5": "8341ca11ac50921eabbe4c79a1a3d0b5",
   "distribution_pricing_path": "/home/user/afl-rl-engine/engine/forward_valuation/distribution_pricing.py",
@@ -17,6 +17,6 @@
     "tail_restore.py": "a437556d8033e327b21067a9fde755a43037705d388a4826d346ab0cfd5b941f"
   },
   "resolved_fv_dir": "/home/user/afl-rl-engine/engine/forward_valuation",
-  "rl_model_md5": "de7ce41659adeda756f4fd1a2caaf172",
+  "rl_model_md5": "e5eb5e4405c09eebef45a9db89f014bc",
   "rl_model_path": "/home/user/afl-rl-engine/engine/rl_after/rl_model.py"
 }
