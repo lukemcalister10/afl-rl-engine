@@ -1,0 +1,14 @@
+  national rows encountered and EXCLUDED at the harvest gate: 1390
+  cells harvested 4241   complete-window with a priceable anchor 3334
+  _b_factor == 1.0 on every harvested row: ASSERTED (violations 0)
+  _PL_F = 1.0524
+  season fractions present in the harvest window: {1.0: 3334}  (1.0 everywhere == completed seasons)
+
+  THE TWO DELIVERIES ON ONE POPULATION
+    CAREER-state sitters (ORDER 21/22/23 flag) .......... 1325 of 3334 cells (0.3974 by count)
+    CURRENT-state: phi == 0 (no games at all this season)  1010 cells
+    CURRENT-state: 0 < phi < 1 (partial participation) ... 656 cells
+    CURRENT-state: phi == 1 (at or above the bar) ........ 1668 cells
+    CAREER non-sitters sitting out THIS season (the Liddy cell in history): 74 cells
+    CAREER sitters PARTLY playing this season .............................. 389 cells
+  wrote /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o24/ucells24.json
