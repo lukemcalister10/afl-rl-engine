@@ -1,0 +1,28 @@
+landed identities: board 88ce647f · config bf012105 · rl_model e5eb5e44 · engine_head 3f1468e5 · fv 2621b56a
+board  data/rl_build/rl_app_data.json           665311ca72576df6ff0bbf6dfd007739 -> 88ce647f531030d8d2e094188b258191
+board  engine/rl_after/rl_app_data.json         665311ca72576df6ff0bbf6dfd007739 -> 88ce647f531030d8d2e094188b258191
+srcmd5 own_md5             : 665311ca72576df6ff0bbf6dfd007739 -> 88ce647f531030d8d2e094188b258191
+
+expected_boot.json -- every key, moved or not:
+  unmoved as_of_round          22
+  unmoved balanced_board_md5   234c3414fa001bd9538deb6668e169f0
+  unmoved band                 34faa8659cc8f19794f5cb9584fa19b2
+  MOVED   board                665311ca72576df6ff0bbf6dfd007739 -> 88ce647f531030d8d2e094188b258191
+  unmoved bust_prior           5942aa6ad7be1d482eed737997486c70
+  unmoved config               bf0121056ee4437f407c9af42fbb760c1f4fd2a1fa7bfb9e13cdd94450615672
+  MOVED   engine_head          72e40e945bc06bdb6f3bf94fc8ef89c9 -> 3f1468e5468462ab789e49aace264c90
+  unmoved fv                   2621b56a32805f15b5084a45f851e882d1a0c6cf9c4fc2512550d394760f7dc6
+  unmoved peak_model           f305fe5330222f4fa14d3654a0e91ef7
+  unmoved pvc_snapshot         ade79790efc8ad4585c2c6800a935eaa
+  unmoved q97m                 cfdc73216c099e5e8f1fda3968f31c00
+  unmoved register             652d83e87780e415a01a2de6d8b3cc57
+  unmoved register_note        LTI_REGISTER.md — owner-authored availability sidecar, pinned as
+  unmoved release_version      v2.11-final-rc1-PROVISIONAL
+  unmoved rl_model             e5eb5e4405c09eebef45a9db89f014bc
+  unmoved store                d9a24282357cf3083b1640466e3ecd83
+  unmoved tag                  ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 — NOT A 
+  unmoved v0surf               fbc5b39387b2b135284a2e157f46c810
+
+keys moved: ['board', 'engine_head']
+PIN CHANGE IS EXACTLY {board, engine_head} -- as pre-registered (D5).
+store d9a24282 and fv 2621b56a asserted UNMOVED before writing.
