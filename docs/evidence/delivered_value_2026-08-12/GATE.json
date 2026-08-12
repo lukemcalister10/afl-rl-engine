@@ -1,0 +1,7858 @@
+{
+ "cfg": {
+  "bars_path": "MA.REPL[P] - rd.REPL_DROP[P], read live inside price6 lowered-REPL context",
+  "repl_drop_pts": 3.0,
+  "season_games_const": 21.0,
+  "disc": "rl_model.disc_factor(a, LENS[bal], k)",
+  "disc_rate": 0.14,
+  "age_disc_on": false,
+  "gamma": 1.0,
+  "scale": 1.4398232006949683,
+  "scale_dist": 1.0,
+  "games_weight": "w = min(1, sqrt(g/10)); >=10 games = full season   [Ruling 10 -- NOT exercised by the gate: projected careers are full seasons by construction]",
+  "truncation": "last listed season; below-bar seasons credit ZERO, never negative   [Ruling 4 -- enforced by posval >= 0]",
+  "position_use": "VALUE at the position played that season; ATTRIBUTE to the acquisition slot   [Ruling 5]",
+  "era_norm": "NONE   [Ruling 7]",
+  "projection_multipliers": "x1.05 KPF/KPD; x(1+runway*elite*PMAX)  -- DECLARED, projection-side only"
+ },
+ "pins": {
+  "store": "d9a24282357cf3083b1640466e3ecd83",
+  "board": "88ce647f531030d8d2e094188b258191",
+  "engine": "3f1468e5468462ab789e49aace264c90",
+  "model": "e5eb5e4405c09eebef45a9db89f014bc",
+  "netting": "48ea1bfeccc6d1ea51add66b0cb93965"
+ },
+ "panel": [
+  "willem-duursma",
+  "nick-daicos",
+  "harry-sheezel",
+  "marcus-bontempelli",
+  "max-gawn",
+  "harley-reid",
+  "jai-newcombe",
+  "harrison-ramm",
+  "vigo-visentini",
+  "josh-treacy",
+  "izak-rankine",
+  "lachlan-ash"
+ ],
+ "rows": [
+  {
+   "key": "willem-duursma",
+   "name": "Willem Duursma",
+   "pos": "MID",
+   "pos_now": "MID",
+   "age": 19,
+   "pick": 1,
+   "typ": "ND",
+   "pool": false,
+   "entry_year": 2025,
+   "nqual": 1,
+   "band": [
+    79.77097517060382,
+    99.85982068926474,
+    107.65206593861045,
+    113.30776473841219,
+    115.39405688414958,
+    119.10045173714065
+   ],
+   "career_vals": [
+    426,
+    2513,
+    3994,
+    5428,
+    6089,
+    7290
+   ],
+   "prod_floor": 162,
+   "mine": 4050.0000000000005,
+   "price6": 4050.0000000000005,
+   "uncomp": 4050.0000000000005,
+   "raw_ev": 4121.076466446125,
+   "ev": 4185,
+   "board_v": 3977,
+   "iso_eff": 1.0058707697495284,
+   "gap_vs_price6": 0.0,
+   "gap_vs_board": 0.018355544380186162,
+   "attr": {
+    "mine_over_p6": 1.0,
+    "uncomp": 1.0,
+    "pole": 1.0175497448015123,
+    "ev_over_raw": 1.015511367982211,
+    "numeraire": 1.052300729192859,
+    "product": 1.018355544380186,
+    "measured": 1.0183555443801862,
+    "residual": -2.220446049250313e-16
+   }
+  },
+  {
+   "key": "nick-daicos",
+   "name": "Nick Daicos",
+   "pos": "MID",
+   "pos_now": "MID",
+   "age": 23,
+   "pick": 4,
+   "typ": "ND",
+   "pool": false,
+   "entry_year": 2021,
+   "nqual": 5,
+   "band": [
+    115.84340585467854,
+    118.74461591388604,
+    125.23536487916338,
+    128.43842132708087,
+    129.13008339528167,
+    129.43304834648504
+   ],
+   "career_vals": [
+    8545,
+    9091,
+    10690,
+    11705,
+    11927,
+    12024
+   ],
+   "prod_floor": 4315,
+   "mine": 10554.84,
+   "price6": 10554.84,
+   "uncomp": 10534.94855431756,
+   "raw_ev": 11515.897148525342,
+   "ev": 11518,
+   "board_v": 10945,
+   "iso_eff": 1.0001546344934193,
+   "gap_vs_price6": 0.0,
+   "gap_vs_board": -0.03564732754682498,
+   "attr": {
+    "mine_over_p6": 1.0,
+    "uncomp": 0.9981154194964168,
+    "pole": 1.093113752682329,
+    "ev_over_raw": 1.0001826042250583,
+    "numeraire": 1.0523526724531749,
+    "product": 0.9643526724531748,
+    "measured": 0.964352672453175,
+    "residual": -2.220446049250313e-16
+   }
+  },
+  {
+   "key": "harry-sheezel",
+   "name": "Harry Sheezel",
+   "pos": "MID",
+   "pos_now": "SF",
+   "age": 22,
+   "pick": 3,
+   "typ": "ND",
+   "pool": false,
+   "entry_year": 2022,
+   "nqual": 4,
+   "band": [
+    117.3368341977714,
+    120.47552929334636,
+    123.1247669979024,
+    124.28886895519021,
+    124.52824731664005,
+    125.68867096386616
+   ],
+   "career_vals": [
+    10474,
+    11010,
+    11559,
+    11828,
+    11884,
+    12174
+   ],
+   "prod_floor": 5250,
+   "mine": 11433.300000000001,
+   "price6": 11433.300000000001,
+   "uncomp": 11339.460347442388,
+   "raw_ev": 12375.443905686416,
+   "ev": 12380,
+   "board_v": 11764,
+   "iso_eff": 1.0003837824125192,
+   "gap_vs_price6": 0.0,
+   "gap_vs_board": -0.02811118667120016,
+   "attr": {
+    "mine_over_p6": 1.0,
+    "uncomp": 0.9917924262848334,
+    "pole": 1.0913609225220047,
+    "ev_over_raw": 1.000368156031275,
+    "numeraire": 1.0523631417885073,
+    "product": 0.9718888133287998,
+    "measured": 0.9718888133287998,
+    "residual": 0.0
+   }
+  },
+  {
+   "key": "marcus-bontempelli",
+   "name": "Marcus Bontempelli",
+   "pos": "MID",
+   "pos_now": "MID",
+   "age": 31,
+   "pick": 4,
+   "typ": "ND",
+   "pool": false,
+   "entry_year": 2013,
+   "nqual": 13,
+   "band": [
+    97.14099376057808,
+    105.53702606759596,
+    113.39338249852554,
+    123.8532409276905,
+    128.0861458505305,
+    125.60078470449875
+   ],
+   "career_vals": [
+    3133,
+    3133,
+    3133,
+    3207,
+    3512,
+    3328
+   ],
+   "prod_floor": 3133,
+   "mine": 3234.0400000000004,
+   "price6": 3234.0400000000004,
+   "uncomp": 3552.7759077373858,
+   "raw_ev": 4078.934312541932,
+   "ev": 4079,
+   "board_v": 3876,
+   "iso_eff": 1.0000001087891266,
+   "gap_vs_price6": 0.0,
+   "gap_vs_board": -0.16562435500515982,
+   "attr": {
+    "mine_over_p6": 1.0,
+    "uncomp": 1.0985565755950406,
+    "pole": 1.1480978306733773,
+    "ev_over_raw": 1.0000161040735238,
+    "numeraire": 1.052373581011352,
+    "product": 0.8343756449948404,
+    "measured": 0.8343756449948402,
+    "residual": 2.220446049250313e-16
+   }
+  },
+  {
+   "key": "max-gawn",
+   "name": "Max Gawn",
+   "pos": "RUCK",
+   "pos_now": "RUCK",
+   "age": 35,
+   "pick": 33,
+   "typ": "ND",
+   "pool": false,
+   "entry_year": 2009,
+   "nqual": 14,
+   "band": [
+    102.25522009906324,
+    113.0904253604027,
+    124.8467781086756,
+    125.8252089696271,
+    127.85750835499412,
+    127.13493309587767
+   ],
+   "career_vals": [
+    2763,
+    2763,
+    2763,
+    2763,
+    2763,
+    2763
+   ],
+   "prod_floor": 2763,
+   "mine": 2763.0,
+   "price6": 2763.0,
+   "uncomp": 3040.4473059454094,
+   "raw_ev": 3511.4520287298938,
+   "ev": 3511,
+   "board_v": 3336,
+   "iso_eff": 0.9999996573087165,
+   "gap_vs_price6": 0.0,
+   "gap_vs_board": -0.1717625899280576,
+   "attr": {
+    "mine_over_p6": 1.0,
+    "uncomp": 1.1004152392129603,
+    "pole": 1.1549129701618124,
+    "ev_over_raw": 0.9998712701394764,
+    "numeraire": 1.0524580335731415,
+    "product": 0.8282374100719425,
+    "measured": 0.8282374100719424,
+    "residual": 1.1102230246251565e-16
+   }
+  },
+  {
+   "key": "harley-reid",
+   "name": "Harley Reid",
+   "pos": "MID",
+   "pos_now": "MID",
+   "age": 21,
+   "pick": 1,
+   "typ": "ND",
+   "pool": false,
+   "entry_year": 2023,
+   "nqual": 3,
+   "band": [
+    89.83635038936528,
+    100.33131636198343,
+    103.93635411294811,
+    106.78791075894766,
+    112.36770992844022,
+    114.07215068920564
+   ],
+   "career_vals": [
+    2038,
+    3426,
+    4045,
+    4620,
+    5976,
+    6504
+   ],
+   "prod_floor": 943,
+   "mine": 4269.3,
+   "price6": 4269.3,
+   "uncomp": 3915.1692250997444,
+   "raw_ev": 4016.1057500664965,
+   "ev": 4020,
+   "board_v": 3820,
+   "iso_eff": 1.0009532868392637,
+   "gap_vs_price6": 0.0,
+   "gap_vs_board": 0.1176178010471205,
+   "attr": {
+    "mine_over_p6": 1.0,
+    "uncomp": 0.9170517942285021,
+    "pole": 1.0257808843407479,
+    "ev_over_raw": 1.0009696582151602,
+    "numeraire": 1.0523560209424083,
+    "product": 1.1176178010471203,
+    "measured": 1.1176178010471205,
+    "residual": -2.220446049250313e-16
+   }
+  },
+  {
+   "key": "jai-newcombe",
+   "name": "Jai Newcombe",
+   "pos": "MID",
+   "pos_now": "MID",
+   "age": 25,
+   "pick": 65,
+   "typ": "MSD",
+   "pool": true,
+   "entry_year": 2021,
+   "nqual": 6,
+   "band": [
+    99.5133138449758,
+    105.0505855889174,
+    108.73263238951985,
+    113.75639397821027,
+    118.11797187555996,
+    120.22195309931553
+   ],
+   "career_vals": [
+    2955,
+    3756,
+    4400,
+    5496,
+    6656,
+    7258
+   ],
+   "prod_floor": 1947,
+   "mine": 4913.14,
+   "price6": 4913.14,
+   "uncomp": 4900.463268299793,
+   "raw_ev": 5145.191667371152,
+   "ev": 5139,
+   "board_v": 4883,
+   "iso_eff": 0.9987722350159797,
+   "gap_vs_price6": 0.0,
+   "gap_vs_board": 0.0061724349784968435,
+   "attr": {
+    "mine_over_p6": 1.0,
+    "uncomp": 0.9974198309634557,
+    "pole": 1.0499398496983874,
+    "ev_over_raw": 0.9987966109386328,
+    "numeraire": 1.0524267868113863,
+    "product": 1.0061724349784966,
+    "measured": 1.0061724349784968,
+    "residual": -2.220446049250313e-16
+   }
+  },
+  {
+   "key": "harrison-ramm",
+   "name": "Harrison Ramm",
+   "pos": "KPD",
+   "pos_now": "KPD",
+   "age": 20,
+   "pick": 65,
+   "typ": "MSD",
+   "pool": true,
+   "entry_year": 2025,
+   "nqual": 0,
+   "band": [
+    44.3517942089072,
+    53.92897333893586,
+    60.44251066111159,
+    69.72299444220009,
+    84.69725616142598,
+    93.93641588432274
+   ],
+   "career_vals": [
+    0,
+    3,
+    27,
+    297,
+    2036,
+    3695
+   ],
+   "prod_floor": 0,
+   "mine": 794.84,
+   "price6": 794.84,
+   "uncomp": 794.84,
+   "raw_ev": 988.5615170371825,
+   "ev": 574,
+   "board_v": 545,
+   "iso_eff": 0.6869862076558295,
+   "gap_vs_price6": 0.0,
+   "gap_vs_board": 0.45842201834862384,
+   "attr": {
+    "mine_over_p6": 1.0,
+    "uncomp": 1.0,
+    "pole": 1.2437239155517872,
+    "ev_over_raw": 0.5806416597323506,
+    "numeraire": 1.0532110091743119,
+    "product": 1.4584220183486236,
+    "measured": 1.4584220183486238,
+    "residual": -2.220446049250313e-16
+   }
+  },
+  {
+   "key": "vigo-visentini",
+   "name": "Vigo Visentini",
+   "pos": "RUCK",
+   "pos_now": "RUCK",
+   "age": 21,
+   "pick": 65,
+   "typ": "RD",
+   "pool": true,
+   "entry_year": 2023,
+   "nqual": 0,
+   "band": [
+    43.46039295279451,
+    65.32466028047331,
+    68.95755350387094,
+    78.0099563924656,
+    96.1684832568041,
+    106.66031219647755
+   ],
+   "career_vals": [
+    0,
+    5,
+    16,
+    200,
+    2022,
+    3881
+   ],
+   "prod_floor": 0,
+   "mine": 791.8400000000001,
+   "price6": 791.8400000000001,
+   "uncomp": 791.8400000000001,
+   "raw_ev": 894.6090138052426,
+   "ev": 192,
+   "board_v": 182,
+   "iso_eff": 0.8804695809510424,
+   "gap_vs_price6": 0.0,
+   "gap_vs_board": 3.350769230769232,
+   "attr": {
+    "mine_over_p6": 1.0,
+    "uncomp": 1.0,
+    "pole": 1.1297850750217753,
+    "ev_over_raw": 0.2146188972357019,
+    "numeraire": 1.054945054945055,
+    "product": 4.350769230769231,
+    "measured": 4.350769230769232,
+    "residual": -8.881784197001252e-16
+   }
+  },
+  {
+   "key": "josh-treacy",
+   "name": "Josh Treacy",
+   "pos": "KPF",
+   "pos_now": "KPF",
+   "age": 24,
+   "pick": 65,
+   "typ": "RD",
+   "pool": true,
+   "entry_year": 2020,
+   "nqual": 5,
+   "band": [
+    90.32329385924145,
+    97.41009429571302,
+    100.74358725620083,
+    105.78018577980288,
+    112.00422779615997,
+    109.23589544874963
+   ],
+   "career_vals": [
+    5495,
+    6288,
+    6787,
+    7633,
+    8955,
+    8293
+   ],
+   "prod_floor": 2467,
+   "mine": 7157.740000000001,
+   "price6": 7157.740000000001,
+   "uncomp": 7005.450485866894,
+   "raw_ev": 8073.089231031693,
+   "ev": 7284,
+   "board_v": 6921,
+   "iso_eff": 0.996421666204745,
+   "gap_vs_price6": 0.0,
+   "gap_vs_board": 0.034206039589654846,
+   "attr": {
+    "mine_over_p6": 1.0,
+    "uncomp": 0.9787237991135321,
+    "pole": 1.1524011549747872,
+    "ev_over_raw": 0.9022568426472288,
+    "numeraire": 1.0524490680537495,
+    "product": 1.0342060395896546,
+    "measured": 1.0342060395896548,
+    "residual": -2.220446049250313e-16
+   }
+  },
+  {
+   "key": "izak-rankine",
+   "name": "Izak Rankine",
+   "pos": "SF",
+   "pos_now": "SF",
+   "age": 26,
+   "pick": 3,
+   "typ": "ND",
+   "pool": false,
+   "entry_year": 2018,
+   "nqual": 7,
+   "band": [
+    91.45290602256038,
+    97.19033137373522,
+    102.24969025401352,
+    106.07115635206749,
+    108.83142669897241,
+    110.11624097192735
+   ],
+   "career_vals": [
+    3084,
+    3787,
+    4439,
+    5049,
+    5513,
+    5745
+   ],
+   "prod_floor": 2545,
+   "mine": 4511.460000000001,
+   "price6": 4511.460000000001,
+   "uncomp": 4491.752380531512,
+   "raw_ev": 4929.745880481489,
+   "ev": 4930,
+   "board_v": 4685,
+   "iso_eff": 1.0000581284960863,
+   "gap_vs_price6": 0.0,
+   "gap_vs_board": -0.03704162219850571,
+   "attr": {
+    "mine_over_p6": 1.0,
+    "uncomp": 0.9956316537288398,
+    "pole": 1.097510606739668,
+    "ev_over_raw": 1.00005154819836,
+    "numeraire": 1.0522945570971185,
+    "product": 0.9629583778014943,
+    "measured": 0.9629583778014943,
+    "residual": 0.0
+   }
+  },
+  {
+   "key": "lachlan-ash",
+   "name": "Lachlan Ash",
+   "pos": "SD",
+   "pos_now": "SD",
+   "age": 25,
+   "pick": 4,
+   "typ": "ND",
+   "pool": false,
+   "entry_year": 2019,
+   "nqual": 7,
+   "band": [
+    100.70365059112073,
+    106.90597018127055,
+    108.6623941650917,
+    114.367228147895,
+    123.67766697420436,
+    121.5711472770975
+   ],
+   "career_vals": [
+    3716,
+    4707,
+    5041,
+    6381,
+    9232,
+    8551
+   ],
+   "prod_floor": 2027,
+   "mine": 6088.960000000001,
+   "price6": 6088.960000000001,
+   "uncomp": 5764.352939105631,
+   "raw_ev": 6027.2437043186,
+   "ev": 6028,
+   "board_v": 5728,
+   "iso_eff": 1.0000939937405184,
+   "gap_vs_price6": 0.0,
+   "gap_vs_board": 0.06301675977653654,
+   "attr": {
+    "mine_over_p6": 1.0,
+    "uncomp": 0.9466892439933305,
+    "pole": 1.0456062923263263,
+    "ev_over_raw": 1.0001254795257173,
+    "numeraire": 1.0523743016759777,
+    "product": 1.0630167597765363,
+    "measured": 1.0630167597765365,
+    "residual": -2.220446049250313e-16
+   }
+  }
+ ],
+ "gate_pass": 2,
+ "gate_n": 12,
+ "identity_pass": 12,
+ "board_wide": [
+  {
+   "key": "nick-daicos",
+   "mine": 10554.84,
+   "price6": 10554.84,
+   "board_v": 10945,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "harry-sheezel",
+   "mine": 11433.300000000001,
+   "price6": 11433.300000000001,
+   "board_v": 11764,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "will-ashcroft",
+   "mine": 7449.780000000001,
+   "price6": 7449.780000000001,
+   "board_v": 7330,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "nasiah-wanganeen-milera",
+   "mine": 9389.420000000002,
+   "price6": 9389.420000000002,
+   "board_v": 9688,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "luke-jackson",
+   "mine": 10164.500000000002,
+   "price6": 10164.500000000002,
+   "board_v": 10203,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "max-holmes",
+   "mine": 8065.580000000001,
+   "price6": 8065.580000000001,
+   "board_v": 8406,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "bailey-smith",
+   "mine": 6112.460000000001,
+   "price6": 6112.460000000001,
+   "board_v": 6683,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "zak-butters",
+   "mine": 6487.360000000001,
+   "price6": 6487.360000000001,
+   "board_v": 7092,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "josh-treacy",
+   "mine": 7157.740000000001,
+   "price6": 7157.740000000001,
+   "board_v": 6921,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 5
+  },
+  {
+   "key": "bodhi-uwland",
+   "mine": 5149.380000000001,
+   "price6": 5149.380000000001,
+   "board_v": 4087,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 3
+  },
+  {
+   "key": "jason-horne-francis",
+   "mine": 6311.120000000001,
+   "price6": 6311.120000000001,
+   "board_v": 6042,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "archie-roberts",
+   "mine": 5710.720000000001,
+   "price6": 5710.720000000001,
+   "board_v": 4726,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "noah-anderson",
+   "mine": 5032.26,
+   "price6": 5032.26,
+   "board_v": 5256,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "errol-gulden",
+   "mine": 6895.360000000001,
+   "price6": 6895.360000000001,
+   "board_v": 7239,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "riley-thilthorpe",
+   "mine": 5141.360000000001,
+   "price6": 5141.360000000001,
+   "board_v": 4468,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "tristan-xerri",
+   "mine": 7524.280000000001,
+   "price6": 7524.280000000001,
+   "board_v": 7800,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 6
+  },
+  {
+   "key": "finn-callaghan",
+   "mine": 6297.760000000001,
+   "price6": 6297.760000000001,
+   "board_v": 6062,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "mac-andrew",
+   "mine": 5078.960000000001,
+   "price6": 5078.960000000001,
+   "board_v": 4169,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "lachlan-ash",
+   "mine": 6088.960000000001,
+   "price6": 6088.960000000001,
+   "board_v": 5728,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "nick-watson",
+   "mine": 4482.000000000001,
+   "price6": 4482.000000000001,
+   "board_v": 3839,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "caleb-serong",
+   "mine": 4951.860000000001,
+   "price6": 4951.860000000001,
+   "board_v": 5027,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "sam-darcy",
+   "mine": 5200.260000000001,
+   "price6": 5200.260000000001,
+   "board_v": 5250,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "matt-rowell",
+   "mine": 4537.540000000001,
+   "price6": 4537.540000000001,
+   "board_v": 4770,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "murphy-reid",
+   "mine": 4521.06,
+   "price6": 4521.06,
+   "board_v": 4141,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "harry-dean",
+   "mine": 2413.88,
+   "price6": 2413.88,
+   "board_v": 2577,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "jai-newcombe",
+   "mine": 4913.14,
+   "price6": 4913.14,
+   "board_v": 4883,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 6
+  },
+  {
+   "key": "brodie-grundy",
+   "mine": 3922.9400000000005,
+   "price6": 3922.9400000000005,
+   "board_v": 4490,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 14
+  },
+  {
+   "key": "willem-duursma",
+   "mine": 4050.0000000000005,
+   "price6": 4050.0000000000005,
+   "board_v": 3977,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "jake-bowey",
+   "mine": 4739.26,
+   "price6": 4739.26,
+   "board_v": 4319,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "sam-lalor",
+   "mine": 4217.26,
+   "price6": 4217.26,
+   "board_v": 4087,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "darcy-wilson",
+   "mine": 3656.5600000000004,
+   "price6": 3656.5600000000004,
+   "board_v": 3224,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "harley-reid",
+   "mine": 4269.3,
+   "price6": 4269.3,
+   "board_v": 3820,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "levi-ashcroft",
+   "mine": 3694.1800000000003,
+   "price6": 3694.1800000000003,
+   "board_v": 3519,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "jagga-smith",
+   "mine": 5062.84,
+   "price6": 5062.84,
+   "board_v": 4855,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "hugo-garcia",
+   "mine": 3683.7800000000007,
+   "price6": 3683.7800000000007,
+   "board_v": 3062,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "noah-mraz",
+   "mine": 4078.8000000000006,
+   "price6": 4078.8000000000006,
+   "board_v": 1769,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "bailey-williams-wc",
+   "mine": 2898.34,
+   "price6": 2898.34,
+   "board_v": 2470,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "sam-durham",
+   "mine": 2877.2200000000003,
+   "price6": 2877.2200000000003,
+   "board_v": 2531,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 6
+  },
+  {
+   "key": "marcus-bontempelli",
+   "mine": 3234.0400000000004,
+   "price6": 3234.0400000000004,
+   "board_v": 3876,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 13
+  },
+  {
+   "key": "logan-morris",
+   "mine": 3606.5000000000005,
+   "price6": 3606.5000000000005,
+   "board_v": 3247,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "chad-warner",
+   "mine": 4660.000000000001,
+   "price6": 4660.000000000001,
+   "board_v": 4411,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "sam-walsh",
+   "mine": 2958.8800000000006,
+   "price6": 2958.8800000000006,
+   "board_v": 3041,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "finn-o-sullivan",
+   "mine": 3684.7000000000007,
+   "price6": 3684.7000000000007,
+   "board_v": 3740,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "callum-wilkie",
+   "mine": 3572.1600000000003,
+   "price6": 3572.1600000000003,
+   "board_v": 3633,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 8
+  },
+  {
+   "key": "darcy-wilmot",
+   "mine": 3884.7000000000007,
+   "price6": 3884.7000000000007,
+   "board_v": 3313,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "ryley-sanders",
+   "mine": 4465.500000000001,
+   "price6": 4465.500000000001,
+   "board_v": 3885,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "sam-berry",
+   "mine": 4379.860000000001,
+   "price6": 4379.860000000001,
+   "board_v": 3992,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "josh-ward",
+   "mine": 3065.4800000000005,
+   "price6": 3065.4800000000005,
+   "board_v": 2817,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "kysaiah-pickett",
+   "mine": 4304.68,
+   "price6": 4304.68,
+   "board_v": 4249,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "max-hall",
+   "mine": 3282.26,
+   "price6": 3282.26,
+   "board_v": 2790,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "luke-davies-uniacke",
+   "mine": 3728.8000000000006,
+   "price6": 3728.8000000000006,
+   "board_v": 4070,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "max-gawn",
+   "mine": 2763.0,
+   "price6": 2763.0,
+   "board_v": 3336,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 14
+  },
+  {
+   "key": "jack-sinclair",
+   "mine": 2914.5200000000004,
+   "price6": 2914.5200000000004,
+   "board_v": 3322,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 12
+  },
+  {
+   "key": "tom-green",
+   "mine": 4297.84,
+   "price6": 4297.84,
+   "board_v": 4719,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "cooper-duff-tytler",
+   "mine": 1383.3600000000001,
+   "price6": 1383.3600000000001,
+   "board_v": 1561,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "isaac-heeney",
+   "mine": 2992.86,
+   "price6": 2992.86,
+   "board_v": 3537,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "colby-mckercher",
+   "mine": 4308.1,
+   "price6": 4308.1,
+   "board_v": 4285,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "izak-rankine",
+   "mine": 4511.460000000001,
+   "price6": 4511.460000000001,
+   "board_v": 4685,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "jordan-dawson",
+   "mine": 2950.3200000000006,
+   "price6": 2950.3200000000006,
+   "board_v": 3443,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "ed-richards",
+   "mine": 3536.1000000000004,
+   "price6": 3536.1000000000004,
+   "board_v": 3924,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "zeke-uwland",
+   "mine": 1740.38,
+   "price6": 1740.38,
+   "board_v": 2633,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "nick-blakey",
+   "mine": 4560.960000000001,
+   "price6": 4560.960000000001,
+   "board_v": 4273,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "reuben-ginbey",
+   "mine": 2742.6800000000003,
+   "price6": 2742.6800000000003,
+   "board_v": 2349,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "connor-macdonald",
+   "mine": 3101.2400000000002,
+   "price6": 3101.2400000000002,
+   "board_v": 2740,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "kieren-briggs",
+   "mine": 2331.0400000000004,
+   "price6": 2331.0400000000004,
+   "board_v": 1992,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "harvey-thomas",
+   "mine": 2530.8400000000006,
+   "price6": 2530.8400000000006,
+   "board_v": 2247,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "connor-o-sullivan",
+   "mine": 3228.82,
+   "price6": 3228.82,
+   "board_v": 2920,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "jed-walter",
+   "mine": 1032.98,
+   "price6": 1032.98,
+   "board_v": 1439,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "timothy-english",
+   "mine": 3376.3800000000006,
+   "price6": 3376.3800000000006,
+   "board_v": 3535,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "connor-rozee",
+   "mine": 2576.8,
+   "price6": 2576.8,
+   "board_v": 2725,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "jack-ross",
+   "mine": 2867.9,
+   "price6": 2867.9,
+   "board_v": 2761,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "josh-worrell",
+   "mine": 4165.620000000001,
+   "price6": 4165.620000000001,
+   "board_v": 3723,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "mitchito-owens",
+   "mine": 2074.4,
+   "price6": 2074.4,
+   "board_v": 2071,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "andrew-brayshaw",
+   "mine": 2976.8600000000006,
+   "price6": 2976.8600000000006,
+   "board_v": 3138,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "nicholas-martin",
+   "mine": 3612.4800000000005,
+   "price6": 3612.4800000000005,
+   "board_v": 3513,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 4
+  },
+  {
+   "key": "zachary-merrett",
+   "mine": 2244.0000000000005,
+   "price6": 2244.0000000000005,
+   "board_v": 2704,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 13
+  },
+  {
+   "key": "sam-flanders",
+   "mine": 2217.6200000000003,
+   "price6": 2217.6200000000003,
+   "board_v": 2067,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "aaron-cadman",
+   "mine": 1725.0600000000002,
+   "price6": 1725.0600000000002,
+   "board_v": 1769,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "tim-taranto",
+   "mine": 2155.82,
+   "price6": 2155.82,
+   "board_v": 2423,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "shannon-neale",
+   "mine": 2953.1800000000003,
+   "price6": 2953.1800000000003,
+   "board_v": 2711,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "zac-bailey",
+   "mine": 2837.3,
+   "price6": 2837.3,
+   "board_v": 2914,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "jye-amiss",
+   "mine": 1539.1200000000001,
+   "price6": 1539.1200000000001,
+   "board_v": 1495,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "jase-burgoyne",
+   "mine": 3255.6200000000003,
+   "price6": 3255.6200000000003,
+   "board_v": 2549,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "sid-draper",
+   "mine": 828.6800000000002,
+   "price6": 828.6800000000002,
+   "board_v": 1250,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "jordan-clark",
+   "mine": 3539.9600000000005,
+   "price6": 3539.9600000000005,
+   "board_v": 3264,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "jordon-sweet",
+   "mine": 2401.34,
+   "price6": 2401.34,
+   "board_v": 2285,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 4
+  },
+  {
+   "key": "connor-idun",
+   "mine": 2548.36,
+   "price6": 2548.36,
+   "board_v": 2224,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "dylan-patterson",
+   "mine": 1348.4,
+   "price6": 1348.4,
+   "board_v": 1628,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "rowan-marshall",
+   "mine": 2079.2200000000003,
+   "price6": 2079.2200000000003,
+   "board_v": 2027,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 9
+  },
+  {
+   "key": "christian-petracca",
+   "mine": 1988.0000000000002,
+   "price6": 1988.0000000000002,
+   "board_v": 2038,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "clayton-oliver",
+   "mine": 2096.0400000000004,
+   "price6": 2096.0400000000004,
+   "board_v": 2334,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "touk-miller",
+   "mine": 2096.6200000000003,
+   "price6": 2096.6200000000003,
+   "board_v": 2378,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "lachie-neale",
+   "mine": 1904.0000000000002,
+   "price6": 1904.0000000000002,
+   "board_v": 2348,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 15
+  },
+  {
+   "key": "jacob-farrow",
+   "mine": 2567.3600000000006,
+   "price6": 2567.3600000000006,
+   "board_v": 2601,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "george-wardlaw",
+   "mine": 3375.5400000000004,
+   "price6": 3375.5400000000004,
+   "board_v": 3235,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "bailey-dale",
+   "mine": 2070.4800000000005,
+   "price6": 2070.4800000000005,
+   "board_v": 2255,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "lachie-whitfield",
+   "mine": 1916.88,
+   "price6": 1916.88,
+   "board_v": 2223,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 14
+  },
+  {
+   "key": "lloyd-meek",
+   "mine": 1449.2800000000002,
+   "price6": 1449.2800000000002,
+   "board_v": 1300,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 6
+  },
+  {
+   "key": "jaspa-fletcher",
+   "mine": 2749.4400000000005,
+   "price6": 2749.4400000000005,
+   "board_v": 2616,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "max-king-stk",
+   "mine": 348.18000000000006,
+   "price6": 348.18000000000006,
+   "board_v": 239,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "shai-bolton",
+   "mine": 2074.9800000000005,
+   "price6": 2074.9800000000005,
+   "board_v": 2150,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "josh-battle",
+   "mine": 2263.1600000000003,
+   "price6": 2263.1600000000003,
+   "board_v": 2028,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "logan-mcdonald",
+   "mine": 1042.0000000000002,
+   "price6": 1042.0000000000002,
+   "board_v": 693,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "toby-nankervis",
+   "mine": 1805.8200000000002,
+   "price6": 1805.8200000000002,
+   "board_v": 2031,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "george-hewett",
+   "mine": 1736.0,
+   "price6": 1736.0,
+   "board_v": 2056,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "will-day",
+   "mine": 2534.1800000000003,
+   "price6": 2534.1800000000003,
+   "board_v": 2387,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "daniel-annable",
+   "mine": 1308.7400000000002,
+   "price6": 1308.7400000000002,
+   "board_v": 1395,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "justin-mcinerney",
+   "mine": 2317.34,
+   "price6": 2317.34,
+   "board_v": 2143,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "alix-tauru",
+   "mine": 1076.5400000000002,
+   "price6": 1076.5400000000002,
+   "board_v": 1684,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "wayne-milera",
+   "mine": 1775.6800000000003,
+   "price6": 1775.6800000000003,
+   "board_v": 1800,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "jacob-van-rooyen",
+   "mine": 1896.5200000000002,
+   "price6": 1896.5200000000002,
+   "board_v": 1894,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "callum-mills",
+   "mine": 1909.4200000000003,
+   "price6": 1909.4200000000003,
+   "board_v": 1994,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "john-noble",
+   "mine": 2114.34,
+   "price6": 2114.34,
+   "board_v": 2159,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 7
+  },
+  {
+   "key": "xavier-taylor",
+   "mine": 877.8200000000002,
+   "price6": 877.8200000000002,
+   "board_v": 802,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "harvey-langford",
+   "mine": 2788.2400000000002,
+   "price6": 2788.2400000000002,
+   "board_v": 2657,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "jack-ginnivan",
+   "mine": 2556.82,
+   "price6": 2556.82,
+   "board_v": 2242,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 5
+  },
+  {
+   "key": "ollie-dempsey",
+   "mine": 2825.5800000000004,
+   "price6": 2825.5800000000004,
+   "board_v": 2428,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 3
+  },
+  {
+   "key": "tobie-travaglia",
+   "mine": 353.88000000000005,
+   "price6": 353.88000000000005,
+   "board_v": 685,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "harris-andrews",
+   "mine": 1685.4400000000003,
+   "price6": 1685.4400000000003,
+   "board_v": 1623,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "sam-cumming",
+   "mine": 2205.34,
+   "price6": 2205.34,
+   "board_v": 2288,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "tom-mccartin",
+   "mine": 2002.3200000000002,
+   "price6": 2002.3200000000002,
+   "board_v": 1689,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "josh-daicos",
+   "mine": 2124.5400000000004,
+   "price6": 2124.5400000000004,
+   "board_v": 2104,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "joel-freijah",
+   "mine": 3227.8000000000006,
+   "price6": 3227.8000000000006,
+   "board_v": 2883,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "nate-caddy",
+   "mine": 1769.2600000000002,
+   "price6": 1769.2600000000002,
+   "board_v": 1862,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "daniel-curtin",
+   "mine": 2455.4200000000005,
+   "price6": 2455.4200000000005,
+   "board_v": 2488,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "sullivan-robey",
+   "mine": 2739.6000000000004,
+   "price6": 2739.6000000000004,
+   "board_v": 2981,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "josh-lindsay",
+   "mine": 2066.8,
+   "price6": 2066.8,
+   "board_v": 2335,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "leo-lombard",
+   "mine": 1992.4000000000003,
+   "price6": 1992.4000000000003,
+   "board_v": 1957,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "tanner-bruhn",
+   "mine": 2322.5400000000004,
+   "price6": 2322.5400000000004,
+   "board_v": 2214,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "aaron-naughton",
+   "mine": 1305.8000000000002,
+   "price6": 1305.8000000000002,
+   "board_v": 1166,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "tom-powell",
+   "mine": 2174.5600000000004,
+   "price6": 2174.5600000000004,
+   "board_v": 2103,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "samuel-grlj",
+   "mine": 1703.3000000000002,
+   "price6": 1703.3000000000002,
+   "board_v": 1735,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "tom-sparrow",
+   "mine": 1750.42,
+   "price6": 1750.42,
+   "board_v": 1632,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "dyson-sharp",
+   "mine": 2828.4800000000005,
+   "price6": 2828.4800000000005,
+   "board_v": 3091,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "josh-smillie",
+   "mine": 1290.6000000000001,
+   "price6": 1290.6000000000001,
+   "board_v": 953,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "jordan-de-goey",
+   "mine": 1381.0000000000002,
+   "price6": 1381.0000000000002,
+   "board_v": 1433,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "hugh-mccluggage",
+   "mine": 1555.7800000000002,
+   "price6": 1555.7800000000002,
+   "board_v": 1543,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "josh-rachele",
+   "mine": 2044.6000000000004,
+   "price6": 2044.6000000000004,
+   "board_v": 2008,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "koltyn-tholstrup",
+   "mine": 1747.1400000000003,
+   "price6": 1747.1400000000003,
+   "board_v": 1698,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "james-sicily",
+   "mine": 1366.5000000000002,
+   "price6": 1366.5000000000002,
+   "board_v": 1421,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "jonty-faull",
+   "mine": 719.82,
+   "price6": 719.82,
+   "board_v": 989,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "tom-mccarthy",
+   "mine": 1659.0600000000002,
+   "price6": 1659.0600000000002,
+   "board_v": 1457,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "patrick-cripps",
+   "mine": 1326.0000000000002,
+   "price6": 1326.0000000000002,
+   "board_v": 1488,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "karl-worner",
+   "mine": 1438.5600000000002,
+   "price6": 1438.5600000000002,
+   "board_v": 1206,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "isaac-kako",
+   "mine": 836.2600000000001,
+   "price6": 836.2600000000001,
+   "board_v": 1413,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "nick-madden",
+   "mine": 2026.4400000000003,
+   "price6": 2026.4400000000003,
+   "board_v": 1766,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "jake-soligo",
+   "mine": 2144.38,
+   "price6": 2144.38,
+   "board_v": 2051,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "latrelle-pickett",
+   "mine": 301.64000000000004,
+   "price6": 301.64000000000004,
+   "board_v": 548,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "peter-wright",
+   "mine": 1441.8600000000001,
+   "price6": 1441.8600000000001,
+   "board_v": 1619,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "luke-parker",
+   "mine": 1216.0000000000002,
+   "price6": 1216.0000000000002,
+   "board_v": 1339,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 16
+  },
+  {
+   "key": "tim-kelly",
+   "mine": 1255.0000000000002,
+   "price6": 1255.0000000000002,
+   "board_v": 1219,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "darcy-cameron",
+   "mine": 1551.1800000000003,
+   "price6": 1551.1800000000003,
+   "board_v": 1669,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "ethan-read",
+   "mine": 553.8000000000001,
+   "price6": 553.8000000000001,
+   "board_v": 1024,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "caleb-daniel",
+   "mine": 1307.8400000000001,
+   "price6": 1307.8400000000001,
+   "board_v": 1338,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "taj-hotton",
+   "mine": 2059.3,
+   "price6": 2059.3,
+   "board_v": 2355,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "xavier-lindsay",
+   "mine": 1821.4200000000003,
+   "price6": 1821.4200000000003,
+   "board_v": 2106,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "luke-trainor",
+   "mine": 1239.14,
+   "price6": 1239.14,
+   "board_v": 1551,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "bradley-hill",
+   "mine": 1146.0000000000002,
+   "price6": 1146.0000000000002,
+   "board_v": 1225,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 14
+  },
+  {
+   "key": "mitch-georgiades",
+   "mine": 1813.1000000000001,
+   "price6": 1813.1000000000001,
+   "board_v": 1427,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "zane-duursma",
+   "mine": 249.88000000000005,
+   "price6": 249.88000000000005,
+   "board_v": 815,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "trent-rivers",
+   "mine": 2137.9800000000005,
+   "price6": 2137.9800000000005,
+   "board_v": 1852,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "harry-kyle",
+   "mine": 843.7800000000001,
+   "price6": 843.7800000000001,
+   "board_v": 1158,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "oskar-taylor",
+   "mine": 1047.94,
+   "price6": 1047.94,
+   "board_v": 629,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "charlie-curnow",
+   "mine": 1224.0800000000002,
+   "price6": 1224.0800000000002,
+   "board_v": 1365,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "phoenix-gothard",
+   "mine": 1878.7000000000003,
+   "price6": 1878.7000000000003,
+   "board_v": 1891,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "marcus-herbert",
+   "mine": 1236.44,
+   "price6": 1236.44,
+   "board_v": 906,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "beau-addinsall",
+   "mine": 1330.28,
+   "price6": 1330.28,
+   "board_v": 1521,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "jack-steele",
+   "mine": 1106.0,
+   "price6": 1106.0,
+   "board_v": 1191,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "taylor-goad",
+   "mine": 1510.8000000000002,
+   "price6": 1510.8000000000002,
+   "board_v": 730,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "bailey-humphrey",
+   "mine": 2563.42,
+   "price6": 2563.42,
+   "board_v": 2573,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "jai-murray",
+   "mine": 978.0800000000002,
+   "price6": 978.0800000000002,
+   "board_v": 1138,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "harry-mckay",
+   "mine": 1531.2600000000002,
+   "price6": 1531.2600000000002,
+   "board_v": 1735,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "mattaes-phillipou",
+   "mine": 2251.32,
+   "price6": 2251.32,
+   "board_v": 2281,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "will-green",
+   "mine": 757.5800000000002,
+   "price6": 757.5800000000002,
+   "board_v": 604,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "dan-houston",
+   "mine": 1173.5,
+   "price6": 1173.5,
+   "board_v": 1096,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 10
+  },
+  {
+   "key": "paul-curtis",
+   "mine": 1641.64,
+   "price6": 1641.64,
+   "board_v": 1622,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "joshua-weddle",
+   "mine": 1586.9600000000003,
+   "price6": 1586.9600000000003,
+   "board_v": 1510,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "luke-ryan",
+   "mine": 1297.6000000000001,
+   "price6": 1297.6000000000001,
+   "board_v": 1315,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 10
+  },
+  {
+   "key": "thomas-stewart",
+   "mine": 1026.0000000000002,
+   "price6": 1026.0000000000002,
+   "board_v": 1101,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "gryan-miers",
+   "mine": 1720.7600000000002,
+   "price6": 1720.7600000000002,
+   "board_v": 1650,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "dylan-moore",
+   "mine": 1271.9,
+   "price6": 1271.9,
+   "board_v": 1182,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 7
+  },
+  {
+   "key": "caleb-windsor",
+   "mine": 1313.0400000000002,
+   "price6": 1313.0400000000002,
+   "board_v": 1784,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "patrick-voss",
+   "mine": 1674.88,
+   "price6": 1674.88,
+   "board_v": 1538,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 3
+  },
+  {
+   "key": "lachlan-carmichael",
+   "mine": 649.94,
+   "price6": 649.94,
+   "board_v": 548,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "jy-simpkin",
+   "mine": 1210.5800000000002,
+   "price6": 1210.5800000000002,
+   "board_v": 1164,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "brent-daniels",
+   "mine": 1238.0800000000002,
+   "price6": 1238.0800000000002,
+   "board_v": 1199,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "joe-berry",
+   "mine": 1174.96,
+   "price6": 1174.96,
+   "board_v": 1259,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "hayden-young",
+   "mine": 1884.2800000000002,
+   "price6": 1884.2800000000002,
+   "board_v": 1762,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "harry-armstrong",
+   "mine": 648.7800000000001,
+   "price6": 648.7800000000001,
+   "board_v": 620,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "lawson-humphries",
+   "mine": 2060.1600000000003,
+   "price6": 2060.1600000000003,
+   "board_v": 1816,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "josh-dunkley",
+   "mine": 1057.2000000000003,
+   "price6": 1057.2000000000003,
+   "board_v": 1134,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "massimo-d-ambrosio",
+   "mine": 1748.2800000000002,
+   "price6": 1748.2800000000002,
+   "board_v": 1565,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 5
+  },
+  {
+   "key": "mitchell-marsh",
+   "mine": 488.4200000000001,
+   "price6": 488.4200000000001,
+   "board_v": 506,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "adam-treloar",
+   "mine": 938.0000000000002,
+   "price6": 938.0000000000002,
+   "board_v": 911,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 13
+  },
+  {
+   "key": "aidan-schubert",
+   "mine": 652.9800000000001,
+   "price6": 652.9800000000001,
+   "board_v": 481,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "james-rowbottom",
+   "mine": 1277.6200000000001,
+   "price6": 1277.6200000000001,
+   "board_v": 1205,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "lachlan-mcandrew",
+   "mine": 1398.3400000000001,
+   "price6": 1398.3400000000001,
+   "board_v": 1279,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "will-graham",
+   "mine": 1717.9600000000003,
+   "price6": 1717.9600000000003,
+   "board_v": 1708,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "cameron-nairn",
+   "mine": 678.4800000000001,
+   "price6": 678.4800000000001,
+   "board_v": 606,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "cooper-sharman",
+   "mine": 641.22,
+   "price6": 641.22,
+   "board_v": 429,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 5
+  },
+  {
+   "key": "mark-keane",
+   "mine": 1852.3200000000002,
+   "price6": 1852.3200000000002,
+   "board_v": 1557,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 3
+  },
+  {
+   "key": "jobe-shanahan",
+   "mine": 1735.9200000000003,
+   "price6": 1735.9200000000003,
+   "board_v": 1739,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "dayne-zorko",
+   "mine": 816.0000000000001,
+   "price6": 816.0000000000001,
+   "board_v": 998,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 15
+  },
+  {
+   "key": "ned-moyle",
+   "mine": 2585.92,
+   "price6": 2585.92,
+   "board_v": 2285,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "mason-redman",
+   "mine": 1213.44,
+   "price6": 1213.44,
+   "board_v": 1176,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "harrison-oliver",
+   "mine": 341.36000000000007,
+   "price6": 341.36000000000007,
+   "board_v": 528,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "louis-emmett",
+   "mine": 571.9400000000002,
+   "price6": 571.9400000000002,
+   "board_v": 749,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "cooper-hynes",
+   "mine": 1057.8400000000001,
+   "price6": 1057.8400000000001,
+   "board_v": 1543,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "adam-cerra",
+   "mine": 1073.2800000000002,
+   "price6": 1073.2800000000002,
+   "board_v": 1030,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "thomas-liberatore",
+   "mine": 856.0000000000001,
+   "price6": 856.0000000000001,
+   "board_v": 1018,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 14
+  },
+  {
+   "key": "reilly-o-brien",
+   "mine": 961.6000000000001,
+   "price6": 961.6000000000001,
+   "board_v": 985,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 7
+  },
+  {
+   "key": "cameron-mackenzie",
+   "mine": 2178.88,
+   "price6": 2178.88,
+   "board_v": 2251,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "harley-barker",
+   "mine": 816.8600000000001,
+   "price6": 816.8600000000001,
+   "board_v": 677,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "joe-richards",
+   "mine": 962.6400000000001,
+   "price6": 962.6400000000001,
+   "board_v": 915,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "lachy-dovaston",
+   "mine": 462.7200000000001,
+   "price6": 462.7200000000001,
+   "board_v": 512,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "bo-allan",
+   "mine": 644.7,
+   "price6": 644.7,
+   "board_v": 1128,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "jedd-busslinger",
+   "mine": 694.7200000000001,
+   "price6": 694.7200000000001,
+   "board_v": 916,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "jordan-croft",
+   "mine": 570.4200000000001,
+   "price6": 570.4200000000001,
+   "board_v": 1048,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "wil-dawson",
+   "mine": 268.32000000000005,
+   "price6": 268.32000000000005,
+   "board_v": 525,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "jacob-weitering",
+   "mine": 1132.16,
+   "price6": 1132.16,
+   "board_v": 1013,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "matt-whitlock",
+   "mine": 397.26000000000005,
+   "price6": 397.26000000000005,
+   "board_v": 372,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "adam-sweid",
+   "mine": 580.4200000000001,
+   "price6": 580.4200000000001,
+   "board_v": 397,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "cooper-trembath",
+   "mine": 2645.0600000000004,
+   "price6": 2645.0600000000004,
+   "board_v": 2201,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "jake-riccardi",
+   "mine": 334.5400000000001,
+   "price6": 334.5400000000001,
+   "board_v": 257,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "zach-reid",
+   "mine": 1100.66,
+   "price6": 1100.66,
+   "board_v": 1093,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "thomas-sims",
+   "mine": 924.7400000000001,
+   "price6": 924.7400000000001,
+   "board_v": 583,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "oliver-hollands",
+   "mine": 1605.2600000000002,
+   "price6": 1605.2600000000002,
+   "board_v": 1739,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "darcy-jones",
+   "mine": 1270.0200000000002,
+   "price6": 1270.0200000000002,
+   "board_v": 1144,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "blake-thredgold",
+   "mine": 816.4800000000001,
+   "price6": 816.4800000000001,
+   "board_v": 373,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "jayden-short",
+   "mine": 903.0600000000001,
+   "price6": 903.0600000000001,
+   "board_v": 887,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 11
+  },
+  {
+   "key": "jarman-impey",
+   "mine": 852.0000000000001,
+   "price6": 852.0000000000001,
+   "board_v": 845,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "toby-greene",
+   "mine": 808.0000000000001,
+   "price6": 808.0000000000001,
+   "board_v": 847,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 15
+  },
+  {
+   "key": "aliir-aliir",
+   "mine": 819.4000000000001,
+   "price6": 819.4000000000001,
+   "board_v": 773,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "sam-draper",
+   "mine": 1176.42,
+   "price6": 1176.42,
+   "board_v": 1107,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 6
+  },
+  {
+   "key": "oliver-hannaford",
+   "mine": 340.82000000000005,
+   "price6": 340.82000000000005,
+   "board_v": 398,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "marcus-windhager",
+   "mine": 1948.9200000000003,
+   "price6": 1948.9200000000003,
+   "board_v": 1864,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "william-mccabe",
+   "mine": 579.7200000000001,
+   "price6": 579.7200000000001,
+   "board_v": 599,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "avery-thomas",
+   "mine": 559.0200000000001,
+   "price6": 559.0200000000001,
+   "board_v": 394,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "zane-peucker",
+   "mine": 605.9800000000001,
+   "price6": 605.9800000000001,
+   "board_v": 384,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "shaun-mannagh",
+   "mine": 654.2200000000001,
+   "price6": 654.2200000000001,
+   "board_v": 663,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "jesse-dattoli",
+   "mine": 679.8800000000001,
+   "price6": 679.8800000000001,
+   "board_v": 318,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "sam-allen",
+   "mine": 901.8200000000002,
+   "price6": 901.8200000000002,
+   "board_v": 618,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "elijah-tsatas",
+   "mine": 969.6600000000001,
+   "price6": 969.6600000000001,
+   "board_v": 1240,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "jack-whitlock",
+   "mine": 1237.16,
+   "price6": 1237.16,
+   "board_v": 1271,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "daniel-turner",
+   "mine": 1830.3000000000002,
+   "price6": 1830.3000000000002,
+   "board_v": 1534,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 3
+  },
+  {
+   "key": "thomas-matthews",
+   "mine": 611.34,
+   "price6": 611.34,
+   "board_v": 337,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "jake-rogers",
+   "mine": 227.54000000000005,
+   "price6": 227.54000000000005,
+   "board_v": 587,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "ed-langdon",
+   "mine": 783.0000000000001,
+   "price6": 783.0000000000001,
+   "board_v": 795,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "kane-farrell",
+   "mine": 1429.42,
+   "price6": 1429.42,
+   "board_v": 1306,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "seth-campbell",
+   "mine": 1161.0600000000002,
+   "price6": 1161.0600000000002,
+   "board_v": 1010,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 3
+  },
+  {
+   "key": "harry-barnett",
+   "mine": 1257.9000000000003,
+   "price6": 1257.9000000000003,
+   "board_v": 553,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "ty-gallop",
+   "mine": 1162.2800000000002,
+   "price6": 1162.2800000000002,
+   "board_v": 1199,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "cody-angove",
+   "mine": 973.1800000000002,
+   "price6": 973.1800000000002,
+   "board_v": 483,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "ned-bowman",
+   "mine": 565.2800000000001,
+   "price6": 565.2800000000001,
+   "board_v": 257,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "riley-bice",
+   "mine": 287.96000000000004,
+   "price6": 287.96000000000004,
+   "board_v": 274,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "tyan-prindable",
+   "mine": 699.3600000000001,
+   "price6": 699.3600000000001,
+   "board_v": 543,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "kai-lohmann",
+   "mine": 901.1200000000001,
+   "price6": 901.1200000000001,
+   "board_v": 879,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "sam-marshall",
+   "mine": 517.8400000000001,
+   "price6": 517.8400000000001,
+   "board_v": 704,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "james-barrat",
+   "mine": 807.9400000000002,
+   "price6": 807.9400000000002,
+   "board_v": 225,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "tom-de-koning",
+   "mine": 2065.0000000000005,
+   "price6": 2065.0000000000005,
+   "board_v": 1830,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "hunter-holmes",
+   "mine": 694.5000000000001,
+   "price6": 694.5000000000001,
+   "board_v": 517,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "james-leake",
+   "mine": 395.62000000000006,
+   "price6": 395.62000000000006,
+   "board_v": 563,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "charlie-edwards",
+   "mine": 776.2000000000002,
+   "price6": 776.2000000000002,
+   "board_v": 624,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "caiden-cleary",
+   "mine": 244.88000000000005,
+   "price6": 244.88000000000005,
+   "board_v": 471,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "darcy-byrne-jones",
+   "mine": 699.0000000000001,
+   "price6": 699.0000000000001,
+   "board_v": 664,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "rory-laird",
+   "mine": 662.0000000000001,
+   "price6": 662.0000000000001,
+   "board_v": 701,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 14
+  },
+  {
+   "key": "sam-taylor",
+   "mine": 1221.64,
+   "price6": 1221.64,
+   "board_v": 1212,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "riley-hardeman",
+   "mine": 267.98,
+   "price6": 267.98,
+   "board_v": 258,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "harry-o-farrell",
+   "mine": 795.0000000000001,
+   "price6": 795.0000000000001,
+   "board_v": 201,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "ned-long",
+   "mine": 1580.8600000000001,
+   "price6": 1580.8600000000001,
+   "board_v": 1416,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 3
+  },
+  {
+   "key": "lewis-hayes",
+   "mine": 199.66000000000003,
+   "price6": 199.66000000000003,
+   "board_v": 250,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "charlie-nicholls",
+   "mine": 623.1200000000001,
+   "price6": 623.1200000000001,
+   "board_v": 199,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "lachie-jaques",
+   "mine": 560.1200000000001,
+   "price6": 560.1200000000001,
+   "board_v": 725,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "darcy-fogarty",
+   "mine": 1023.2000000000002,
+   "price6": 1023.2000000000002,
+   "board_v": 852,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "jevan-phillipou",
+   "mine": 518.7,
+   "price6": 518.7,
+   "board_v": 273,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "cody-curtin",
+   "mine": 517.3800000000001,
+   "price6": 517.3800000000001,
+   "board_v": 427,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "jake-waterman",
+   "mine": 1254.1200000000001,
+   "price6": 1254.1200000000001,
+   "board_v": 1160,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 9
+  },
+  {
+   "key": "samuel-collins",
+   "mine": 658.0000000000001,
+   "price6": 658.0000000000001,
+   "board_v": 619,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "matthew-roberts",
+   "mine": 1908.0000000000002,
+   "price6": 1908.0000000000002,
+   "board_v": 1818,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "max-michalanney",
+   "mine": 408.32000000000005,
+   "price6": 408.32000000000005,
+   "board_v": 493,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "jordan-ridley",
+   "mine": 720.6800000000001,
+   "price6": 720.6800000000001,
+   "board_v": 695,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "joshua-kelly",
+   "mine": 295.00000000000006,
+   "price6": 295.00000000000006,
+   "board_v": 370,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "koby-evans",
+   "mine": 569.2800000000001,
+   "price6": 569.2800000000001,
+   "board_v": 254,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "kayle-gerreyn",
+   "mine": 585.6000000000001,
+   "price6": 585.6000000000001,
+   "board_v": 177,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "ben-miller",
+   "mine": 1236.42,
+   "price6": 1236.42,
+   "board_v": 1042,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "tylah-williams",
+   "mine": 610.2400000000001,
+   "price6": 610.2400000000001,
+   "board_v": 249,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "jack-gunston",
+   "mine": 583.0000000000001,
+   "price6": 583.0000000000001,
+   "board_v": 753,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 15
+  },
+  {
+   "key": "joseph-fonti",
+   "mine": 628.7600000000001,
+   "price6": 628.7600000000001,
+   "board_v": 596,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "josh-gibcus",
+   "mine": 96.78000000000002,
+   "price6": 96.78000000000002,
+   "board_v": 254,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "jhye-clark",
+   "mine": 805.2200000000001,
+   "price6": 805.2200000000001,
+   "board_v": 1059,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "tobyn-murray",
+   "mine": 185.20000000000005,
+   "price6": 185.20000000000005,
+   "board_v": 234,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "oliver-florent",
+   "mine": 763.72,
+   "price6": 763.72,
+   "board_v": 732,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "andrew-mcgrath",
+   "mine": 1102.7800000000002,
+   "price6": 1102.7800000000002,
+   "board_v": 1022,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "nic-newman",
+   "mine": 601.0,
+   "price6": 601.0,
+   "board_v": 628,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 8
+  },
+  {
+   "key": "james-peatling",
+   "mine": 1106.66,
+   "price6": 1106.66,
+   "board_v": 1098,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 5
+  },
+  {
+   "key": "wil-powell",
+   "mine": 775.3600000000001,
+   "price6": 775.3600000000001,
+   "board_v": 775,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "joel-jeffrey",
+   "mine": 1656.5200000000002,
+   "price6": 1656.5200000000002,
+   "board_v": 1579,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "miles-bergman",
+   "mine": 978.3200000000002,
+   "price6": 978.3200000000002,
+   "board_v": 922,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "billy-wilson",
+   "mine": 939.2200000000001,
+   "price6": 939.2200000000001,
+   "board_v": 983,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "angus-clarke",
+   "mine": 610.8200000000002,
+   "price6": 610.8200000000002,
+   "board_v": 555,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "patrick-lipinski",
+   "mine": 759.7600000000001,
+   "price6": 759.7600000000001,
+   "board_v": 735,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "ryan-maric",
+   "mine": 1417.1800000000003,
+   "price6": 1417.1800000000003,
+   "board_v": 1406,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 4
+  },
+  {
+   "key": "jack-dalton",
+   "mine": 557.4000000000001,
+   "price6": 557.4000000000001,
+   "board_v": 437,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "ollie-murphy",
+   "mine": 589.4000000000001,
+   "price6": 589.4000000000001,
+   "board_v": 168,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "samuel-swadling",
+   "mine": 651.4600000000002,
+   "price6": 651.4600000000002,
+   "board_v": 776,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "talor-byrne",
+   "mine": 947.1600000000002,
+   "price6": 947.1600000000002,
+   "board_v": 857,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "jye-caldwell",
+   "mine": 991.7000000000002,
+   "price6": 991.7000000000002,
+   "board_v": 979,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "ben-king",
+   "mine": 340.84000000000003,
+   "price6": 340.84000000000003,
+   "board_v": 218,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "matthew-jefferson",
+   "mine": 184.64000000000001,
+   "price6": 184.64000000000001,
+   "board_v": 405,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "archer-reid",
+   "mine": 391.2800000000001,
+   "price6": 391.2800000000001,
+   "board_v": 762,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "toby-conway",
+   "mine": 1701.0400000000002,
+   "price6": 1701.0400000000002,
+   "board_v": 503,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "elijah-hewett",
+   "mine": 459.0400000000001,
+   "price6": 459.0400000000001,
+   "board_v": 730,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "bailey-williams-wb",
+   "mine": 629.8800000000001,
+   "price6": 629.8800000000001,
+   "board_v": 612,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "sean-darcy",
+   "mine": 766.6000000000001,
+   "price6": 766.6000000000001,
+   "board_v": 734,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "luke-lloyd",
+   "mine": 622.2800000000001,
+   "price6": 622.2800000000001,
+   "board_v": 164,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "hugh-davies",
+   "mine": 226.08000000000004,
+   "price6": 226.08000000000004,
+   "board_v": 185,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "mitchell-edwards",
+   "mine": 2038.2800000000002,
+   "price6": 2038.2800000000002,
+   "board_v": 2439,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "jeremy-cameron",
+   "mine": 570.6200000000001,
+   "price6": 570.6200000000001,
+   "board_v": 778,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 15
+  },
+  {
+   "key": "lachlan-schultz",
+   "mine": 761.8800000000001,
+   "price6": 761.8800000000001,
+   "board_v": 740,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "lachlan-cowan",
+   "mine": 692.4000000000001,
+   "price6": 692.4000000000001,
+   "board_v": 724,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "tai-hayes",
+   "mine": 38.38000000000001,
+   "price6": 38.38000000000001,
+   "board_v": 194,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "jacob-konstanty",
+   "mine": 36.00000000000001,
+   "price6": 36.00000000000001,
+   "board_v": 181,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "edward-allan",
+   "mine": 748.9400000000002,
+   "price6": 748.9400000000002,
+   "board_v": 978,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "oscar-ryan",
+   "mine": 320.14000000000004,
+   "price6": 320.14000000000004,
+   "board_v": 305,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "logan-evans",
+   "mine": 1633.5200000000002,
+   "price6": 1633.5200000000002,
+   "board_v": 1361,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 3
+  },
+  {
+   "key": "josh-dolan",
+   "mine": 284.80000000000007,
+   "price6": 284.80000000000007,
+   "board_v": 501,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "max-kondogiannis",
+   "mine": 361.34000000000003,
+   "price6": 361.34000000000003,
+   "board_v": 435,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "charlie-banfield",
+   "mine": 643.0800000000002,
+   "price6": 643.0800000000002,
+   "board_v": 536,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "harry-demattia",
+   "mine": 668.1600000000001,
+   "price6": 668.1600000000001,
+   "board_v": 430,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "christian-moraes",
+   "mine": 621.2800000000001,
+   "price6": 621.2800000000001,
+   "board_v": 906,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "jack-graham",
+   "mine": 685.84,
+   "price6": 685.84,
+   "board_v": 651,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "keidean-coleman",
+   "mine": 805.8400000000001,
+   "price6": 805.8400000000001,
+   "board_v": 754,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "max-gruzewski",
+   "mine": 431.86000000000007,
+   "price6": 431.86000000000007,
+   "board_v": 626,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "darcy-parish",
+   "mine": 552.3800000000001,
+   "price6": 552.3800000000001,
+   "board_v": 562,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "billy-cootee",
+   "mine": 1.0000000000000002,
+   "price6": 1.0000000000000002,
+   "board_v": 264,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "koby-coulson",
+   "mine": 537.7200000000001,
+   "price6": 537.7200000000001,
+   "board_v": 316,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "josh-sinn",
+   "mine": 72.86000000000001,
+   "price6": 72.86000000000001,
+   "board_v": 266,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "jack-silvagni",
+   "mine": 674.0200000000001,
+   "price6": 674.0200000000001,
+   "board_v": 617,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "lachlan-smith",
+   "mine": 786.1000000000001,
+   "price6": 786.1000000000001,
+   "board_v": 399,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "kane-mcauliffe",
+   "mine": 1210.9000000000003,
+   "price6": 1210.9000000000003,
+   "board_v": 1312,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "ben-camporeale",
+   "mine": 607.2600000000001,
+   "price6": 607.2600000000001,
+   "board_v": 249,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "lance-collard",
+   "mine": 148.30000000000004,
+   "price6": 148.30000000000004,
+   "board_v": 146,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "jed-adams",
+   "mine": 211.48000000000002,
+   "price6": 211.48000000000002,
+   "board_v": 154,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "kade-chandler",
+   "mine": 815.2000000000002,
+   "price6": 815.2000000000002,
+   "board_v": 811,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 4
+  },
+  {
+   "key": "matt-johnson-1",
+   "mine": 1124.5200000000002,
+   "price6": 1124.5200000000002,
+   "board_v": 1131,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "jack-ough",
+   "mine": 525.6000000000001,
+   "price6": 525.6000000000001,
+   "board_v": 687,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "jack-viney",
+   "mine": 175.00000000000003,
+   "price6": 175.00000000000003,
+   "board_v": 229,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 13
+  },
+  {
+   "key": "joel-cochran",
+   "mine": 676.9800000000001,
+   "price6": 676.9800000000001,
+   "board_v": 161,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "brayden-maynard",
+   "mine": 495.24000000000007,
+   "price6": 495.24000000000007,
+   "board_v": 489,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "jack-buckley",
+   "mine": 576.1400000000001,
+   "price6": 576.1400000000001,
+   "board_v": 548,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 5
+  },
+  {
+   "key": "daniel-rioli",
+   "mine": 661.1600000000001,
+   "price6": 661.1600000000001,
+   "board_v": 640,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "archie-ludowyke",
+   "mine": 526.4400000000002,
+   "price6": 526.4400000000002,
+   "board_v": 206,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "ashton-moir",
+   "mine": 236.04000000000005,
+   "price6": 236.04000000000005,
+   "board_v": 214,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "willem-drew",
+   "mine": 607.6,
+   "price6": 607.6,
+   "board_v": 608,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "hugo-mikunda",
+   "mine": 515.2600000000001,
+   "price6": 515.2600000000001,
+   "board_v": 177,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "sam-davidson",
+   "mine": 68.60000000000001,
+   "price6": 68.60000000000001,
+   "board_v": 80,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "will-brodie",
+   "mine": 854.0000000000001,
+   "price6": 854.0000000000001,
+   "board_v": 773,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "will-setterfield",
+   "mine": 553.6600000000001,
+   "price6": 553.6600000000001,
+   "board_v": 559,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "charlie-west",
+   "mine": 568.1600000000001,
+   "price6": 568.1600000000001,
+   "board_v": 692,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "blake-hardwick",
+   "mine": 530.6400000000001,
+   "price6": 530.6400000000001,
+   "board_v": 524,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "max-king-syd",
+   "mine": 514.0600000000001,
+   "price6": 514.0600000000001,
+   "board_v": 156,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "neil-erasmus",
+   "mine": 997.7000000000002,
+   "price6": 997.7000000000002,
+   "board_v": 1026,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "cooper-bell",
+   "mine": 712.8400000000001,
+   "price6": 712.8400000000001,
+   "board_v": 152,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "angus-sheldrick",
+   "mine": 710.6800000000001,
+   "price6": 710.6800000000001,
+   "board_v": 748,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "francis-evans",
+   "mine": 511.9200000000001,
+   "price6": 511.9200000000001,
+   "board_v": 494,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "hugh-boxshall",
+   "mine": 823.3800000000001,
+   "price6": 823.3800000000001,
+   "board_v": 965,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "max-knobel",
+   "mine": 719.8200000000002,
+   "price6": 719.8200000000002,
+   "board_v": 411,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "cameron-rayner",
+   "mine": 412.72,
+   "price6": 412.72,
+   "board_v": 457,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "finnegan-davis",
+   "mine": 405.90000000000003,
+   "price6": 405.90000000000003,
+   "board_v": 165,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "kyle-langford",
+   "mine": 479.4200000000001,
+   "price6": 479.4200000000001,
+   "board_v": 518,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "tom-brown",
+   "mine": 489.5400000000001,
+   "price6": 489.5400000000001,
+   "board_v": 493,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "harry-rowston",
+   "mine": 546.0200000000001,
+   "price6": 546.0200000000001,
+   "board_v": 787,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "jack-ison",
+   "mine": 549.8200000000002,
+   "price6": 549.8200000000002,
+   "board_v": 512,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "alex-dodson",
+   "mine": 693.7800000000001,
+   "price6": 693.7800000000001,
+   "board_v": 274,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "kye-fincher",
+   "mine": 527.1200000000001,
+   "price6": 527.1200000000001,
+   "board_v": 249,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "lucca-grego",
+   "mine": 344.04,
+   "price6": 344.04,
+   "board_v": 124,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "jacob-molier",
+   "mine": 614.7600000000001,
+   "price6": 614.7600000000001,
+   "board_v": 283,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "liam-fawcett",
+   "mine": 288.32000000000005,
+   "price6": 288.32000000000005,
+   "board_v": 454,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "jai-serong",
+   "mine": 1338.94,
+   "price6": 1338.94,
+   "board_v": 1233,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "tew-jiath",
+   "mine": 261.84000000000003,
+   "price6": 261.84000000000003,
+   "board_v": 167,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "angus-hastie",
+   "mine": 131.88000000000002,
+   "price6": 131.88000000000002,
+   "board_v": 181,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "patrick-snell",
+   "mine": 566.82,
+   "price6": 566.82,
+   "board_v": 115,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "leek-aleer",
+   "mine": 204.14000000000004,
+   "price6": 204.14000000000004,
+   "board_v": 231,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "zac-mccarthy",
+   "mine": 610.5000000000001,
+   "price6": 610.5000000000001,
+   "board_v": 147,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "brodie-kemp",
+   "mine": 694.7,
+   "price6": 694.7,
+   "board_v": 680,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "jay-polkinghorne",
+   "mine": 375.30000000000007,
+   "price6": 375.30000000000007,
+   "board_v": 297,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "riak-andrew",
+   "mine": 585.9200000000001,
+   "price6": 585.9200000000001,
+   "board_v": 138,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "anthony-caminiti",
+   "mine": 1024.3200000000002,
+   "price6": 1024.3200000000002,
+   "board_v": 1110,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 4
+  },
+  {
+   "key": "tom-gross",
+   "mine": 485.2200000000001,
+   "price6": 485.2200000000001,
+   "board_v": 460,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "cooper-simpson",
+   "mine": 217.68000000000004,
+   "price6": 217.68000000000004,
+   "board_v": 179,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "peter-ladhams",
+   "mine": 529.5,
+   "price6": 529.5,
+   "board_v": 493,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 5
+  },
+  {
+   "key": "matthew-leray",
+   "mine": 500.9200000000001,
+   "price6": 500.9200000000001,
+   "board_v": 219,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "clay-hall",
+   "mine": 804.6400000000001,
+   "price6": 804.6400000000001,
+   "board_v": 214,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "cooper-lord",
+   "mine": 1479.7000000000003,
+   "price6": 1479.7000000000003,
+   "board_v": 1345,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "adam-saad",
+   "mine": 401.00000000000006,
+   "price6": 401.00000000000006,
+   "board_v": 426,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 11
+  },
+  {
+   "key": "jamarra-ugle-hagan",
+   "mine": 216.28,
+   "price6": 216.28,
+   "board_v": 287,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "tyler-sonsie",
+   "mine": 1090.96,
+   "price6": 1090.96,
+   "board_v": 1095,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "jack-crisp",
+   "mine": 378.00000000000006,
+   "price6": 378.00000000000006,
+   "board_v": 410,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 14
+  },
+  {
+   "key": "archie-may",
+   "mine": 504.96000000000004,
+   "price6": 504.96000000000004,
+   "board_v": 476,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "lukas-cooke",
+   "mine": 290.08000000000004,
+   "price6": 290.08000000000004,
+   "board_v": 364,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "mitch-podhajski",
+   "mine": 64.92,
+   "price6": 64.92,
+   "board_v": 399,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "jack-lukosius",
+   "mine": 481.72,
+   "price6": 481.72,
+   "board_v": 462,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "flynn-riley",
+   "mine": 582.9800000000001,
+   "price6": 582.9800000000001,
+   "board_v": 391,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "alex-van-wyk",
+   "mine": 537.5600000000001,
+   "price6": 537.5600000000001,
+   "board_v": 391,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "oliver-griffin",
+   "mine": 823.9000000000001,
+   "price6": 823.9000000000001,
+   "board_v": 181,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "harrison-coe",
+   "mine": 137.52000000000004,
+   "price6": 137.52000000000004,
+   "board_v": 322,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "caleb-may",
+   "mine": 730.82,
+   "price6": 730.82,
+   "board_v": 322,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "max-beattie",
+   "mine": 51.74000000000001,
+   "price6": 51.74000000000001,
+   "board_v": 181,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "max-mapley",
+   "mine": 730.82,
+   "price6": 730.82,
+   "board_v": 322,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "harrison-ramm",
+   "mine": 794.84,
+   "price6": 794.84,
+   "board_v": 545,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "matthew-flynn",
+   "mine": 515.82,
+   "price6": 515.82,
+   "board_v": 502,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "sam-de-koning",
+   "mine": 1004.7200000000001,
+   "price6": 1004.7200000000001,
+   "board_v": 936,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "mason-wood",
+   "mine": 368.00000000000006,
+   "price6": 368.00000000000006,
+   "board_v": 383,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "will-darcy",
+   "mine": 727.2400000000001,
+   "price6": 727.2400000000001,
+   "board_v": 187,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "sam-banks",
+   "mine": 968.9400000000002,
+   "price6": 968.9400000000002,
+   "board_v": 937,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "scott-pendlebury",
+   "mine": 313.0,
+   "price6": 313.0,
+   "board_v": 353,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 21
+  },
+  {
+   "key": "calsher-dear",
+   "mine": 803.6000000000001,
+   "price6": 803.6000000000001,
+   "board_v": 892,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "darcy-moore",
+   "mine": 140.98000000000002,
+   "price6": 140.98000000000002,
+   "board_v": 141,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "patrick-retschko",
+   "mine": 1801.2200000000003,
+   "price6": 1801.2200000000003,
+   "board_v": 1608,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "caleb-lewis",
+   "mine": 227.60000000000002,
+   "price6": 227.60000000000002,
+   "board_v": 233,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "tyler-welsh",
+   "mine": 533.1,
+   "price6": 533.1,
+   "board_v": 80,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "hamish-davis",
+   "mine": 908.6200000000001,
+   "price6": 908.6200000000001,
+   "board_v": 1028,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "noah-howes",
+   "mine": 915.5600000000001,
+   "price6": 915.5600000000001,
+   "board_v": 229,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "vigo-visentini",
+   "mine": 791.8400000000001,
+   "price6": 791.8400000000001,
+   "board_v": 182,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "elliot-yeo",
+   "mine": 348.00000000000006,
+   "price6": 348.00000000000006,
+   "board_v": 331,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 13
+  },
+  {
+   "key": "isaiah-dudley",
+   "mine": 265.1,
+   "price6": 265.1,
+   "board_v": 234,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "kalani-white",
+   "mine": 1931.2000000000003,
+   "price6": 1931.2000000000003,
+   "board_v": 84,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "noah-chamberlain",
+   "mine": 817.5800000000002,
+   "price6": 817.5800000000002,
+   "board_v": 86,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "liam-hetherton",
+   "mine": 1924.9400000000003,
+   "price6": 1924.9400000000003,
+   "board_v": 168,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "jai-saxena",
+   "mine": 823.9000000000001,
+   "price6": 823.9000000000001,
+   "board_v": 84,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "ryda-luke",
+   "mine": 823.9000000000001,
+   "price6": 823.9000000000001,
+   "board_v": 84,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "toby-whan",
+   "mine": 817.8800000000001,
+   "price6": 817.8800000000001,
+   "board_v": 84,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "jesse-mellor",
+   "mine": 869.5600000000002,
+   "price6": 869.5600000000002,
+   "board_v": 84,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "zac-walker",
+   "mine": 1151.3200000000002,
+   "price6": 1151.3200000000002,
+   "board_v": 152,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "ben-murphy",
+   "mine": 1040.3000000000002,
+   "price6": 1040.3000000000002,
+   "board_v": 85,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "kobe-mcdonald",
+   "mine": 1040.3000000000002,
+   "price6": 1040.3000000000002,
+   "board_v": 85,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "indy-cotton",
+   "mine": 1048.5800000000002,
+   "price6": 1048.5800000000002,
+   "board_v": 48,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "oscar-berry",
+   "mine": 441.18000000000006,
+   "price6": 441.18000000000006,
+   "board_v": 53,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "patrick-carr",
+   "mine": 730.82,
+   "price6": 730.82,
+   "board_v": 31,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "cillian-bourke",
+   "mine": 724.7800000000001,
+   "price6": 724.7800000000001,
+   "board_v": 85,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "fred-rodriguez",
+   "mine": 869.5600000000002,
+   "price6": 869.5600000000002,
+   "board_v": 201,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "riley-onley",
+   "mine": 839.0600000000002,
+   "price6": 839.0600000000002,
+   "board_v": 201,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "leon-kickett",
+   "mine": 586.7400000000001,
+   "price6": 586.7400000000001,
+   "board_v": 151,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "nick-driscoll",
+   "mine": 869.5600000000002,
+   "price6": 869.5600000000002,
+   "board_v": 201,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "hussien-el-achkar",
+   "mine": 275.6,
+   "price6": 275.6,
+   "board_v": 353,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "mitchell-lewis",
+   "mine": 581.3800000000001,
+   "price6": 581.3800000000001,
+   "board_v": 517,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 7
+  },
+  {
+   "key": "logan-smith",
+   "mine": 894.9000000000001,
+   "price6": 894.9000000000001,
+   "board_v": 185,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "jacob-moss",
+   "mine": 645.1400000000001,
+   "price6": 645.1400000000001,
+   "board_v": 36,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "jaime-uhr-henry",
+   "mine": 450.44000000000005,
+   "price6": 450.44000000000005,
+   "board_v": 26,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "iliro-smit",
+   "mine": 769.8800000000001,
+   "price6": 769.8800000000001,
+   "board_v": 204,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "aiden-riddle",
+   "mine": 730.82,
+   "price6": 730.82,
+   "board_v": 151,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "joe-pike",
+   "mine": 730.82,
+   "price6": 730.82,
+   "board_v": 151,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "angus-anderson",
+   "mine": 152.88000000000002,
+   "price6": 152.88000000000002,
+   "board_v": 165,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "charlie-comben",
+   "mine": 836.6400000000001,
+   "price6": 836.6400000000001,
+   "board_v": 809,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "marc-pittonet",
+   "mine": 483.5200000000001,
+   "price6": 483.5200000000001,
+   "board_v": 466,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "milan-murdock",
+   "mine": 240.86000000000004,
+   "price6": 240.86000000000004,
+   "board_v": 208,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "luke-urquhart",
+   "mine": 563.86,
+   "price6": 563.86,
+   "board_v": 143,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "dylan-stephens",
+   "mine": 617.6400000000001,
+   "price6": 617.6400000000001,
+   "board_v": 620,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "billy-dowling",
+   "mine": 597.6200000000001,
+   "price6": 597.6200000000001,
+   "board_v": 150,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "zachary-williams",
+   "mine": 340.00000000000006,
+   "price6": 340.00000000000006,
+   "board_v": 368,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 12
+  },
+  {
+   "key": "oliver-francou",
+   "mine": 692.1600000000001,
+   "price6": 692.1600000000001,
+   "board_v": 576,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "zane-zakostelsky",
+   "mine": 470.64000000000004,
+   "price6": 470.64000000000004,
+   "board_v": 209,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "brayden-fiorini",
+   "mine": 165.26000000000002,
+   "price6": 165.26000000000002,
+   "board_v": 167,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "matthew-kennedy-1",
+   "mine": 408.36000000000007,
+   "price6": 408.36000000000007,
+   "board_v": 423,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "james-worpel",
+   "mine": 432.88000000000005,
+   "price6": 432.88000000000005,
+   "board_v": 413,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "xavier-walsh",
+   "mine": 1082.7600000000002,
+   "price6": 1082.7600000000002,
+   "board_v": 143,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "sam-clohesy",
+   "mine": 301.96000000000004,
+   "price6": 301.96000000000004,
+   "board_v": 288,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 3
+  },
+  {
+   "key": "josh-goater",
+   "mine": 23.320000000000004,
+   "price6": 23.320000000000004,
+   "board_v": 93,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "noah-roberts-thomson",
+   "mine": 402.2200000000001,
+   "price6": 402.2200000000001,
+   "board_v": 213,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "hugo-hall-kahan",
+   "mine": 275.04,
+   "price6": 275.04,
+   "board_v": 215,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "brayden-george",
+   "mine": 191.90000000000003,
+   "price6": 191.90000000000003,
+   "board_v": 234,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "matt-hill",
+   "mine": 94.62000000000002,
+   "price6": 94.62000000000002,
+   "board_v": 56,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "jakob-ryan",
+   "mine": 74.78000000000002,
+   "price6": 74.78000000000002,
+   "board_v": 239,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "brady-hough",
+   "mine": 279.34000000000003,
+   "price6": 279.34000000000003,
+   "board_v": 292,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "bruce-reville",
+   "mine": 36.96,
+   "price6": 36.96,
+   "board_v": 54,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 3
+  },
+  {
+   "key": "isaac-quaynor",
+   "mine": 634.2200000000001,
+   "price6": 634.2200000000001,
+   "board_v": 596,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "bodie-ryan",
+   "mine": 248.70000000000005,
+   "price6": 248.70000000000005,
+   "board_v": 210,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "toby-mcmullin",
+   "mine": 22.160000000000004,
+   "price6": 22.160000000000004,
+   "board_v": 135,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "luke-beecken",
+   "mine": 5.080000000000001,
+   "price6": 5.080000000000001,
+   "board_v": 164,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "alex-neal-bullen",
+   "mine": 349.8,
+   "price6": 349.8,
+   "board_v": 371,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "campbell-chesser",
+   "mine": 215.92000000000004,
+   "price6": 215.92000000000004,
+   "board_v": 330,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "michael-sellwood",
+   "mine": 196.36000000000004,
+   "price6": 196.36000000000004,
+   "board_v": 168,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "sam-butler-1",
+   "mine": 32.28000000000001,
+   "price6": 32.28000000000001,
+   "board_v": 81,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "tom-papley",
+   "mine": 322.00000000000006,
+   "price6": 322.00000000000006,
+   "board_v": 353,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 11
+  },
+  {
+   "key": "joel-fitzgerald",
+   "mine": 71.94000000000001,
+   "price6": 71.94000000000001,
+   "board_v": 72,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "lucas-camporeale",
+   "mine": 536.0200000000001,
+   "price6": 536.0200000000001,
+   "board_v": 159,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "eamonn-armstrong",
+   "mine": 724.7800000000001,
+   "price6": 724.7800000000001,
+   "board_v": 43,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "cillian-burke",
+   "mine": 93.28000000000002,
+   "price6": 93.28000000000002,
+   "board_v": 43,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "matt-duffy",
+   "mine": 201.54000000000002,
+   "price6": 201.54000000000002,
+   "board_v": 43,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "zak-evans",
+   "mine": 1.3600000000000003,
+   "price6": 1.3600000000000003,
+   "board_v": 29,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "ricky-mentha",
+   "mine": 670.2200000000001,
+   "price6": 670.2200000000001,
+   "board_v": 50,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "benny-barrett",
+   "mine": 670.2200000000001,
+   "price6": 670.2200000000001,
+   "board_v": 50,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "daniel-mcstay",
+   "mine": 339.50000000000006,
+   "price6": 339.50000000000006,
+   "board_v": 338,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "lennox-hoffman",
+   "mine": 724.7800000000001,
+   "price6": 724.7800000000001,
+   "board_v": 104,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "river-stevens",
+   "mine": 670.2200000000001,
+   "price6": 670.2200000000001,
+   "board_v": 104,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "keighton-matofai-forbes",
+   "mine": 737.3800000000001,
+   "price6": 737.3800000000001,
+   "board_v": 104,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "harry-charleson",
+   "mine": 724.7800000000001,
+   "price6": 724.7800000000001,
+   "board_v": 105,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "asher-eastham",
+   "mine": 670.2200000000001,
+   "price6": 670.2200000000001,
+   "board_v": 94,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "patrick-said",
+   "mine": 415.8800000000001,
+   "price6": 415.8800000000001,
+   "board_v": 80,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "paddy-dow",
+   "mine": 2.6200000000000006,
+   "price6": 2.6200000000000006,
+   "board_v": 158,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "josh-lai",
+   "mine": 546.1800000000001,
+   "price6": 546.1800000000001,
+   "board_v": 597,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "kye-annand",
+   "mine": 316.32000000000005,
+   "price6": 316.32000000000005,
+   "board_v": 239,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "harvey-gallagher",
+   "mine": 5.940000000000001,
+   "price6": 5.940000000000001,
+   "board_v": 87,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "tom-blamires",
+   "mine": 134.26000000000002,
+   "price6": 134.26000000000002,
+   "board_v": 139,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "matt-carroll",
+   "mine": 880.9200000000001,
+   "price6": 880.9200000000001,
+   "board_v": 1014,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "connor-budarick",
+   "mine": 293.88,
+   "price6": 293.88,
+   "board_v": 281,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 5
+  },
+  {
+   "key": "jack-watkins",
+   "mine": 14.500000000000002,
+   "price6": 14.500000000000002,
+   "board_v": 130,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "luker-kentfield",
+   "mine": 800.7800000000001,
+   "price6": 800.7800000000001,
+   "board_v": 419,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "karl-amon",
+   "mine": 332.20000000000005,
+   "price6": 332.20000000000005,
+   "board_v": 344,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "dion-prestia",
+   "mine": 264.0,
+   "price6": 264.0,
+   "board_v": 251,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 16
+  },
+  {
+   "key": "zac-taylor",
+   "mine": 198.64000000000004,
+   "price6": 198.64000000000004,
+   "board_v": 207,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "braeden-campbell",
+   "mine": 355.44000000000005,
+   "price6": 355.44000000000005,
+   "board_v": 403,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "james-o-donnell",
+   "mine": 678.0600000000001,
+   "price6": 678.0600000000001,
+   "board_v": 727,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 4
+  },
+  {
+   "key": "ollie-greeves",
+   "mine": 858.6200000000001,
+   "price6": 858.6200000000001,
+   "board_v": 583,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "roan-steele",
+   "mine": 13.74,
+   "price6": 13.74,
+   "board_v": 152,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "harvey-johnston",
+   "mine": 221.32000000000005,
+   "price6": 221.32000000000005,
+   "board_v": 329,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "jesse-motlop",
+   "mine": 29.680000000000003,
+   "price6": 29.680000000000003,
+   "board_v": 90,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "zak-johnson",
+   "mine": 576.3000000000001,
+   "price6": 576.3000000000001,
+   "board_v": 730,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "rory-lobb",
+   "mine": 274.00000000000006,
+   "price6": 274.00000000000006,
+   "board_v": 276,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "blake-howes",
+   "mine": 260.14000000000004,
+   "price6": 260.14000000000004,
+   "board_v": 272,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "tom-atkins",
+   "mine": 274.00000000000006,
+   "price6": 274.00000000000006,
+   "board_v": 298,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 8
+  },
+  {
+   "key": "isaac-keeler",
+   "mine": 139.72000000000003,
+   "price6": 139.72000000000003,
+   "board_v": 173,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "flynn-perez",
+   "mine": 7.280000000000001,
+   "price6": 7.280000000000001,
+   "board_v": 139,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "jasper-alger",
+   "mine": 282.82000000000005,
+   "price6": 282.82000000000005,
+   "board_v": 434,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "thomas-anastasopoulos",
+   "mine": 418.68000000000006,
+   "price6": 418.68000000000006,
+   "board_v": 173,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "jaren-carr",
+   "mine": 48.00000000000001,
+   "price6": 48.00000000000001,
+   "board_v": 65,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "rhett-bazzo",
+   "mine": 456.62000000000006,
+   "price6": 456.62000000000006,
+   "board_v": 476,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "george-stevens",
+   "mine": 405.2800000000001,
+   "price6": 405.2800000000001,
+   "board_v": 142,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "will-hayes-b",
+   "mine": 236.72000000000003,
+   "price6": 236.72000000000003,
+   "board_v": 378,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "lachlan-blakiston",
+   "mine": 22.620000000000005,
+   "price6": 22.620000000000005,
+   "board_v": 152,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "noah-balta",
+   "mine": 517.6200000000001,
+   "price6": 517.6200000000001,
+   "board_v": 418,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "jayden-nguyen",
+   "mine": 584.9000000000001,
+   "price6": 584.9000000000001,
+   "board_v": 471,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "steely-green",
+   "mine": 32.800000000000004,
+   "price6": 32.800000000000004,
+   "board_v": 150,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "nick-larkey",
+   "mine": 562.7400000000001,
+   "price6": 562.7400000000001,
+   "board_v": 455,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 8
+  },
+  {
+   "key": "cody-anderson",
+   "mine": 366.20000000000005,
+   "price6": 366.20000000000005,
+   "board_v": 62,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "jaxon-artemis",
+   "mine": 716.8600000000001,
+   "price6": 716.8600000000001,
+   "board_v": 520,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "jeremy-howe",
+   "mine": 219.0,
+   "price6": 219.0,
+   "board_v": 224,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 15
+  },
+  {
+   "key": "campbell-lake",
+   "mine": 184.62000000000003,
+   "price6": 184.62000000000003,
+   "board_v": 161,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "archer-day-wicks",
+   "mine": 471.36000000000007,
+   "price6": 471.36000000000007,
+   "board_v": 766,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "balyn-o-brien",
+   "mine": 603.6800000000001,
+   "price6": 603.6800000000001,
+   "board_v": 383,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "cooper-harvey",
+   "mine": 534.8800000000001,
+   "price6": 534.8800000000001,
+   "board_v": 545,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "paddy-cross",
+   "mine": 12.800000000000002,
+   "price6": 12.800000000000002,
+   "board_v": 139,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "chris-scerri",
+   "mine": 547.8000000000001,
+   "price6": 547.8000000000001,
+   "board_v": 459,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "mykelti-lefau",
+   "mine": 68.98,
+   "price6": 68.98,
+   "board_v": 86,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "ewan-mackinlay",
+   "mine": 101.38000000000002,
+   "price6": 101.38000000000002,
+   "board_v": 152,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "tylar-young",
+   "mine": 307.04,
+   "price6": 307.04,
+   "board_v": 279,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 4
+  },
+  {
+   "key": "oliver-wines",
+   "mine": 235.00000000000003,
+   "price6": 235.00000000000003,
+   "board_v": 255,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 14
+  },
+  {
+   "key": "elijah-hollands",
+   "mine": 683.08,
+   "price6": 683.08,
+   "board_v": 710,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "ben-jepson",
+   "mine": 2.2600000000000002,
+   "price6": 2.2600000000000002,
+   "board_v": 222,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "will-lewis",
+   "mine": 53.620000000000005,
+   "price6": 53.620000000000005,
+   "board_v": 139,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "judson-clarke",
+   "mine": 5.580000000000001,
+   "price6": 5.580000000000001,
+   "board_v": 90,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "liam-baker",
+   "mine": 423.6,
+   "price6": 423.6,
+   "board_v": 402,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 8
+  },
+  {
+   "key": "xavier-bamert",
+   "mine": 619.3000000000002,
+   "price6": 619.3000000000002,
+   "board_v": 509,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "stephen-coniglio",
+   "mine": 226.00000000000003,
+   "price6": 226.00000000000003,
+   "board_v": 215,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 15
+  },
+  {
+   "key": "campbell-gray",
+   "mine": 215.44000000000003,
+   "price6": 215.44000000000003,
+   "board_v": 176,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "mitch-zadow",
+   "mine": 47.300000000000004,
+   "price6": 47.300000000000004,
+   "board_v": 139,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "nikolas-cox",
+   "mine": 92.76,
+   "price6": 92.76,
+   "board_v": 136,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "will-hayward",
+   "mine": 240.78000000000003,
+   "price6": 240.78000000000003,
+   "board_v": 229,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "riley-hamilton",
+   "mine": 338.62000000000006,
+   "price6": 338.62000000000006,
+   "board_v": 305,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "thomas-burton",
+   "mine": 530.32,
+   "price6": 530.32,
+   "board_v": 439,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "jack-hutchinson",
+   "mine": 10.680000000000001,
+   "price6": 10.680000000000001,
+   "board_v": 118,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "corey-warner",
+   "mine": 12.020000000000001,
+   "price6": 12.020000000000001,
+   "board_v": 49,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "liam-puncher",
+   "mine": 180.56000000000003,
+   "price6": 180.56000000000003,
+   "board_v": 124,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "luke-kennedy",
+   "mine": 396.4200000000001,
+   "price6": 396.4200000000001,
+   "board_v": 284,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "will-lorenz",
+   "mine": 469.6400000000001,
+   "price6": 469.6400000000001,
+   "board_v": 284,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "henry-hustwaite",
+   "mine": 138.02,
+   "price6": 138.02,
+   "board_v": 235,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "rob-monahan",
+   "mine": 181.46000000000004,
+   "price6": 181.46000000000004,
+   "board_v": 45,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "nathan-wardius",
+   "mine": 161.60000000000002,
+   "price6": 161.60000000000002,
+   "board_v": 77,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "arthur-jones",
+   "mine": 66.20000000000002,
+   "price6": 66.20000000000002,
+   "board_v": 92,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "oscar-allen",
+   "mine": 126.80000000000001,
+   "price6": 126.80000000000001,
+   "board_v": 100,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "toby-bedford",
+   "mine": 287.32000000000005,
+   "price6": 287.32000000000005,
+   "board_v": 272,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 5
+  },
+  {
+   "key": "tom-doedee",
+   "mine": 225.00000000000003,
+   "price6": 225.00000000000003,
+   "board_v": 228,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "deven-robertson",
+   "mine": 125.02000000000001,
+   "price6": 125.02000000000001,
+   "board_v": 174,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "lachlan-gulbin",
+   "mine": 318.64000000000004,
+   "price6": 318.64000000000004,
+   "board_v": 415,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "hugh-bond",
+   "mine": 61.02000000000001,
+   "price6": 61.02000000000001,
+   "board_v": 153,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "james-trezise",
+   "mine": 117.04000000000002,
+   "price6": 117.04000000000002,
+   "board_v": 118,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 3
+  },
+  {
+   "key": "mani-liddy",
+   "mine": 9.760000000000002,
+   "price6": 9.760000000000002,
+   "board_v": 152,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "heath-chapman",
+   "mine": 461.16,
+   "price6": 461.16,
+   "board_v": 460,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "tom-edwards",
+   "mine": 75.82000000000001,
+   "price6": 75.82000000000001,
+   "board_v": 108,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "oliver-hayes-brown",
+   "mine": 218.96,
+   "price6": 218.96,
+   "board_v": 190,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "zac-banch",
+   "mine": 13.120000000000003,
+   "price6": 13.120000000000003,
+   "board_v": 152,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "lachie-sullivan",
+   "mine": 0.18000000000000002,
+   "price6": 0.18000000000000002,
+   "board_v": 86,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "liam-reidy",
+   "mine": 513.9800000000001,
+   "price6": 513.9800000000001,
+   "board_v": 329,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "josaia-delana",
+   "mine": 317.20000000000005,
+   "price6": 317.20000000000005,
+   "board_v": 391,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "sam-powell-pepper",
+   "mine": 167.22000000000003,
+   "price6": 167.22000000000003,
+   "board_v": 167,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "tom-cochrane",
+   "mine": 325.06000000000006,
+   "price6": 325.06000000000006,
+   "board_v": 230,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "malakai-champion",
+   "mine": 276.78000000000003,
+   "price6": 276.78000000000003,
+   "board_v": 341,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "mitchell-knevitt",
+   "mine": 56.720000000000006,
+   "price6": 56.720000000000006,
+   "board_v": 258,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "brennan-cox",
+   "mine": 273.64000000000004,
+   "price6": 273.64000000000004,
+   "board_v": 259,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "flynn-young",
+   "mine": 5.620000000000001,
+   "price6": 5.620000000000001,
+   "board_v": 168,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "jacob-newton",
+   "mine": 321.64000000000004,
+   "price6": 321.64000000000004,
+   "board_v": 299,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "kaleb-smith",
+   "mine": 33.50000000000001,
+   "price6": 33.50000000000001,
+   "board_v": 67,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "bayley-fritsch",
+   "mine": 209.00000000000003,
+   "price6": 209.00000000000003,
+   "board_v": 199,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "aidan-johnson",
+   "mine": 71.86,
+   "price6": 71.86,
+   "board_v": 229,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "bailey-macdonald",
+   "mine": 70.02000000000001,
+   "price6": 70.02000000000001,
+   "board_v": 148,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "rhys-unwin",
+   "mine": 176.48000000000002,
+   "price6": 176.48000000000002,
+   "board_v": 91,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "oliver-henry",
+   "mine": 182.72000000000003,
+   "price6": 182.72000000000003,
+   "board_v": 197,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "liam-o-connell",
+   "mine": 30.920000000000005,
+   "price6": 30.920000000000005,
+   "board_v": 39,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "saad-el-hawli",
+   "mine": 8.16,
+   "price6": 8.16,
+   "board_v": 118,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "wil-parker",
+   "mine": 9.3,
+   "price6": 9.3,
+   "board_v": 24,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "jayden-laverde",
+   "mine": 202.88000000000002,
+   "price6": 202.88000000000002,
+   "board_v": 193,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "nick-murray",
+   "mine": 347.80000000000007,
+   "price6": 347.80000000000007,
+   "board_v": 321,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 6
+  },
+  {
+   "key": "jake-lloyd",
+   "mine": 182.00000000000003,
+   "price6": 182.00000000000003,
+   "board_v": 173,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 13
+  },
+  {
+   "key": "luke-nankervis",
+   "mine": 420.38000000000005,
+   "price6": 420.38000000000005,
+   "board_v": 384,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 3
+  },
+  {
+   "key": "jack-henderson",
+   "mine": 2.9800000000000004,
+   "price6": 2.9800000000000004,
+   "board_v": 113,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "jack-henry",
+   "mine": 265.0,
+   "price6": 265.0,
+   "board_v": 251,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 9
+  },
+  {
+   "key": "reece-torrent",
+   "mine": 405.6000000000001,
+   "price6": 405.6000000000001,
+   "board_v": 79,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "ryan-angwin",
+   "mine": 446.64000000000004,
+   "price6": 446.64000000000004,
+   "board_v": 483,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "tom-hanily",
+   "mine": 183.72000000000006,
+   "price6": 183.72000000000006,
+   "board_v": 216,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "jake-lever",
+   "mine": 139.58,
+   "price6": 139.58,
+   "board_v": 143,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "brayden-cook",
+   "mine": 777.2800000000001,
+   "price6": 777.2800000000001,
+   "board_v": 782,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "reef-mcinnes",
+   "mine": 23.020000000000003,
+   "price6": 23.020000000000003,
+   "board_v": 164,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "jack-williams",
+   "mine": 395.56000000000006,
+   "price6": 395.56000000000006,
+   "board_v": 415,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "archie-perkins",
+   "mine": 207.14000000000001,
+   "price6": 207.14000000000001,
+   "board_v": 239,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "alex-davies",
+   "mine": 340.02000000000004,
+   "price6": 340.02000000000004,
+   "board_v": 401,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "oliver-wiltshire",
+   "mine": 7.120000000000001,
+   "price6": 7.120000000000001,
+   "board_v": 49,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "liam-duggan",
+   "mine": 220.84000000000003,
+   "price6": 220.84000000000003,
+   "board_v": 210,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "dante-visentini",
+   "mine": 1278.5800000000002,
+   "price6": 1278.5800000000002,
+   "board_v": 1274,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "noah-long",
+   "mine": 24.640000000000004,
+   "price6": 24.640000000000004,
+   "board_v": 124,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "beau-mccreery",
+   "mine": 129.28000000000003,
+   "price6": 129.28000000000003,
+   "board_v": 134,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "jack-darling",
+   "mine": 163.00000000000003,
+   "price6": 163.00000000000003,
+   "board_v": 155,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 16
+  },
+  {
+   "key": "will-mclachlan",
+   "mine": 195.38000000000002,
+   "price6": 195.38000000000002,
+   "board_v": 148,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "jarrod-berry",
+   "mine": 199.40000000000003,
+   "price6": 199.40000000000003,
+   "board_v": 189,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "finnbar-maley",
+   "mine": 250.94000000000003,
+   "price6": 250.94000000000003,
+   "board_v": 192,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "charlie-cameron",
+   "mine": 159.00000000000003,
+   "price6": 159.00000000000003,
+   "board_v": 151,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 13
+  },
+  {
+   "key": "mabior-chol",
+   "mine": 232.50000000000003,
+   "price6": 232.50000000000003,
+   "board_v": 205,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 8
+  },
+  {
+   "key": "harrison-petty",
+   "mine": 218.94000000000003,
+   "price6": 218.94000000000003,
+   "board_v": 207,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "jesse-hogan",
+   "mine": 187.06000000000003,
+   "price6": 187.06000000000003,
+   "board_v": 205,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "conor-nash",
+   "mine": 245.48000000000002,
+   "price6": 245.48000000000002,
+   "board_v": 235,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 7
+  },
+  {
+   "key": "james-tunstill",
+   "mine": 42.540000000000006,
+   "price6": 42.540000000000006,
+   "board_v": 82,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "judd-mcvee",
+   "mine": 294.00000000000006,
+   "price6": 294.00000000000006,
+   "board_v": 316,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 4
+  },
+  {
+   "key": "ben-keays",
+   "mine": 172.70000000000002,
+   "price6": 172.70000000000002,
+   "board_v": 196,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "toby-murray",
+   "mine": 284.16,
+   "price6": 284.16,
+   "board_v": 215,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "hayden-mclean",
+   "mine": 282.86,
+   "price6": 282.86,
+   "board_v": 214,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 7
+  },
+  {
+   "key": "harvey-harrison",
+   "mine": 26.860000000000003,
+   "price6": 26.860000000000003,
+   "board_v": 50,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "oscar-steene",
+   "mine": 548.72,
+   "price6": 548.72,
+   "board_v": 468,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "lachlan-jones",
+   "mine": 100.44000000000001,
+   "price6": 100.44000000000001,
+   "board_v": 125,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "nicholas-coffield",
+   "mine": 22.680000000000003,
+   "price6": 22.680000000000003,
+   "board_v": 50,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "josh-draper",
+   "mine": 318.46000000000004,
+   "price6": 318.46000000000004,
+   "board_v": 389,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "will-edwards",
+   "mine": 219.62000000000003,
+   "price6": 219.62000000000003,
+   "board_v": 214,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "hudson-o-keeffe",
+   "mine": 420.6400000000001,
+   "price6": 420.6400000000001,
+   "board_v": 275,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "shadeau-brain",
+   "mine": 64.86000000000001,
+   "price6": 64.86000000000001,
+   "board_v": 120,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "ben-ainsworth",
+   "mine": 214.96,
+   "price6": 214.96,
+   "board_v": 204,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "nathan-o-driscoll",
+   "mine": 575.2400000000001,
+   "price6": 575.2400000000001,
+   "board_v": 597,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "luke-pedlar",
+   "mine": 28.600000000000005,
+   "price6": 28.600000000000005,
+   "board_v": 112,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "oscar-adams",
+   "mine": 39.400000000000006,
+   "price6": 39.400000000000006,
+   "board_v": 79,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "taylor-walker",
+   "mine": 122.0,
+   "price6": 122.0,
+   "board_v": 132,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 17
+  },
+  {
+   "key": "tim-membrey",
+   "mine": 136.00000000000003,
+   "price6": 136.00000000000003,
+   "board_v": 129,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "james-borlase",
+   "mine": 456.02000000000004,
+   "price6": 456.02000000000004,
+   "board_v": 424,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "lewis-young",
+   "mine": 121.94000000000001,
+   "price6": 121.94000000000001,
+   "board_v": 116,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "jarrod-witts",
+   "mine": 117.00000000000001,
+   "price6": 117.00000000000001,
+   "board_v": 139,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 12
+  },
+  {
+   "key": "tyson-stengle",
+   "mine": 149.62000000000003,
+   "price6": 149.62000000000003,
+   "board_v": 151,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 5
+  },
+  {
+   "key": "jack-buller",
+   "mine": 40.620000000000005,
+   "price6": 40.620000000000005,
+   "board_v": 94,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "tyrell-dewar",
+   "mine": 31.960000000000004,
+   "price6": 31.960000000000004,
+   "board_v": 96,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "robert-hansen",
+   "mine": 25.540000000000006,
+   "price6": 25.540000000000006,
+   "board_v": 132,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "oisin-mullin",
+   "mine": 5.0,
+   "price6": 5.0,
+   "board_v": 14,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 4
+  },
+  {
+   "key": "conor-stone",
+   "mine": 3.8000000000000007,
+   "price6": 3.8000000000000007,
+   "board_v": 76,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "zach-guthrie",
+   "mine": 222.00000000000003,
+   "price6": 222.00000000000003,
+   "board_v": 210,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 8
+  },
+  {
+   "key": "harrison-himmelberg",
+   "mine": 132.00000000000003,
+   "price6": 132.00000000000003,
+   "board_v": 138,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "cameron-zurhaar",
+   "mine": 131.96,
+   "price6": 131.96,
+   "board_v": 125,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 8
+  },
+  {
+   "key": "harry-sharp",
+   "mine": 155.24,
+   "price6": 155.24,
+   "board_v": 155,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "mitchell-hinge",
+   "mine": 322.38000000000005,
+   "price6": 322.38000000000005,
+   "board_v": 322,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 4
+  },
+  {
+   "key": "sandy-brock",
+   "mine": 162.12000000000003,
+   "price6": 162.12000000000003,
+   "board_v": 173,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "finlay-macrae",
+   "mine": 35.760000000000005,
+   "price6": 35.760000000000005,
+   "board_v": 322,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "bailey-laurie",
+   "mine": 19.060000000000002,
+   "price6": 19.060000000000002,
+   "board_v": 56,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "jake-stringer",
+   "mine": 108.00000000000001,
+   "price6": 108.00000000000001,
+   "board_v": 103,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 14
+  },
+  {
+   "key": "jack-payne",
+   "mine": 100.18,
+   "price6": 100.18,
+   "board_v": 94,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "wade-derksen",
+   "mine": 149.82000000000002,
+   "price6": 149.82000000000002,
+   "board_v": 109,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "jai-culley",
+   "mine": 170.22000000000003,
+   "price6": 170.22000000000003,
+   "board_v": 178,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "corey-durdin",
+   "mine": 24.880000000000003,
+   "price6": 24.880000000000003,
+   "board_v": 49,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "luke-cleary",
+   "mine": 15.440000000000001,
+   "price6": 15.440000000000001,
+   "board_v": 29,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "james-jordon",
+   "mine": 185.52,
+   "price6": 185.52,
+   "board_v": 176,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "zac-fisher",
+   "mine": 111.52000000000001,
+   "price6": 111.52000000000001,
+   "board_v": 113,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "samson-ryan",
+   "mine": 297.18,
+   "price6": 297.18,
+   "board_v": 302,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "blake-acres",
+   "mine": 87.00000000000001,
+   "price6": 87.00000000000001,
+   "board_v": 86,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "nick-vlastuin",
+   "mine": 87.00000000000001,
+   "price6": 87.00000000000001,
+   "board_v": 83,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 14
+  },
+  {
+   "key": "esava-ratugolea",
+   "mine": 81.18,
+   "price6": 81.18,
+   "board_v": 64,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "harry-edwards",
+   "mine": 95.24000000000001,
+   "price6": 95.24000000000001,
+   "board_v": 104,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 4
+  },
+  {
+   "key": "andy-moniz-wakefield",
+   "mine": 30.440000000000005,
+   "price6": 30.440000000000005,
+   "board_v": 54,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "christian-salem",
+   "mine": 92.20000000000002,
+   "price6": 92.20000000000002,
+   "board_v": 92,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 13
+  },
+  {
+   "key": "jack-carroll",
+   "mine": 64.10000000000001,
+   "price6": 64.10000000000001,
+   "board_v": 80,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "max-ramsden",
+   "mine": 312.70000000000005,
+   "price6": 312.70000000000005,
+   "board_v": 257,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 0
+  },
+  {
+   "key": "jackson-archer",
+   "mine": 3.3400000000000007,
+   "price6": 3.3400000000000007,
+   "board_v": 27,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "jackson-macrae",
+   "mine": 76.00000000000001,
+   "price6": 76.00000000000001,
+   "board_v": 101,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 14
+  },
+  {
+   "key": "tom-mcdonald",
+   "mine": 76.00000000000001,
+   "price6": 76.00000000000001,
+   "board_v": 75,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 15
+  },
+  {
+   "key": "lachlan-bramble",
+   "mine": 93.98000000000002,
+   "price6": 93.98000000000002,
+   "board_v": 89,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 6
+  },
+  {
+   "key": "james-blanck",
+   "mine": 13.260000000000002,
+   "price6": 13.260000000000002,
+   "board_v": 70,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "maurice-rioli-1",
+   "mine": 3.0800000000000005,
+   "price6": 3.0800000000000005,
+   "board_v": 27,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "oscar-mcdonald",
+   "mine": 71.0,
+   "price6": 71.0,
+   "board_v": 68,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "griffin-logue",
+   "mine": 81.78000000000002,
+   "price6": 81.78000000000002,
+   "board_v": 78,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "jaxon-prior",
+   "mine": 315.06000000000006,
+   "price6": 315.06000000000006,
+   "board_v": 305,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "nick-haynes",
+   "mine": 63.00000000000001,
+   "price6": 63.00000000000001,
+   "board_v": 60,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 15
+  },
+  {
+   "key": "nick-bryan",
+   "mine": 793.9800000000001,
+   "price6": 793.9800000000001,
+   "board_v": 778,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "liam-mcmahon",
+   "mine": 114.50000000000001,
+   "price6": 114.50000000000001,
+   "board_v": 135,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 1
+  },
+  {
+   "key": "jack-higgins",
+   "mine": 54.74000000000001,
+   "price6": 54.74000000000001,
+   "board_v": 52,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "rhylee-west",
+   "mine": 104.76000000000002,
+   "price6": 104.76000000000002,
+   "board_v": 100,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "tyler-brockman",
+   "mine": 22.520000000000003,
+   "price6": 22.520000000000003,
+   "board_v": 50,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "ollie-lord",
+   "mine": 74.26,
+   "price6": 74.26,
+   "board_v": 105,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "joel-amartey",
+   "mine": 33.28,
+   "price6": 33.28,
+   "board_v": 31,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 6
+  },
+  {
+   "key": "harry-perryman",
+   "mine": 72.30000000000001,
+   "price6": 72.30000000000001,
+   "board_v": 68,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "brandon-walker",
+   "mine": 31.840000000000007,
+   "price6": 31.840000000000007,
+   "board_v": 57,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "tom-cole",
+   "mine": 49.0,
+   "price6": 49.0,
+   "board_v": 47,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "lachlan-mcneil",
+   "mine": 6.180000000000001,
+   "price6": 6.180000000000001,
+   "board_v": 20,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 6
+  },
+  {
+   "key": "rhyan-mansell",
+   "mine": 47.78000000000001,
+   "price6": 47.78000000000001,
+   "board_v": 48,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 5
+  },
+  {
+   "key": "jordan-boyd",
+   "mine": 1.6400000000000003,
+   "price6": 1.6400000000000003,
+   "board_v": 55,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 3
+  },
+  {
+   "key": "charlie-ballard",
+   "mine": 45.96000000000001,
+   "price6": 45.96000000000001,
+   "board_v": 45,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "dougal-howard",
+   "mine": 46.00000000000001,
+   "price6": 46.00000000000001,
+   "board_v": 45,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "harrison-jones",
+   "mine": 146.70000000000002,
+   "price6": 146.70000000000002,
+   "board_v": 172,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "mitch-mcgovern",
+   "mine": 42.0,
+   "price6": 42.0,
+   "board_v": 40,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "jack-scrimshaw",
+   "mine": 88.30000000000001,
+   "price6": 88.30000000000001,
+   "board_v": 89,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "jacob-wehr",
+   "mine": 0.18000000000000002,
+   "price6": 0.18000000000000002,
+   "board_v": 14,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "ryan-lester",
+   "mine": 40.00000000000001,
+   "price6": 40.00000000000001,
+   "board_v": 38,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 14
+  },
+  {
+   "key": "michael-frederick",
+   "mine": 53.06000000000001,
+   "price6": 53.06000000000001,
+   "board_v": 50,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "henry-smith",
+   "mine": 114.02000000000001,
+   "price6": 114.02000000000001,
+   "board_v": 82,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 0
+  },
+  {
+   "key": "max-heath",
+   "mine": 787.6000000000001,
+   "price6": 787.6000000000001,
+   "board_v": 682,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "buku-khamis",
+   "mine": 155.18000000000004,
+   "price6": 155.18000000000004,
+   "board_v": 144,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 4
+  },
+  {
+   "key": "billy-frampton",
+   "mine": 36.0,
+   "price6": 36.0,
+   "board_v": 34,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 6
+  },
+  {
+   "key": "lachlan-weller",
+   "mine": 34.00000000000001,
+   "price6": 34.00000000000001,
+   "board_v": 74,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "patrick-dangerfield",
+   "mine": 33.0,
+   "price6": 33.0,
+   "board_v": 63,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 18
+  },
+  {
+   "key": "cody-weightman",
+   "mine": 137.08,
+   "price6": 137.08,
+   "board_v": 153,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "xavier-duursma",
+   "mine": 152.10000000000002,
+   "price6": 152.10000000000002,
+   "board_v": 143,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "xavier-o-halloran",
+   "mine": 49.02,
+   "price6": 49.02,
+   "board_v": 47,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "matt-cottrell",
+   "mine": 74.94000000000001,
+   "price6": 74.94000000000001,
+   "board_v": 72,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 6
+  },
+  {
+   "key": "lachlan-fogarty",
+   "mine": 32.540000000000006,
+   "price6": 32.540000000000006,
+   "board_v": 35,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "todd-marshall",
+   "mine": 84.46000000000001,
+   "price6": 84.46000000000001,
+   "board_v": 61,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "elliot-himmelberg",
+   "mine": 39.32,
+   "price6": 39.32,
+   "board_v": 56,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "eric-hipwood",
+   "mine": 18.42,
+   "price6": 18.42,
+   "board_v": 42,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "tom-barrass",
+   "mine": 20.180000000000003,
+   "price6": 20.180000000000003,
+   "board_v": 21,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "jacob-hopper",
+   "mine": 51.68000000000001,
+   "price6": 51.68000000000001,
+   "board_v": 101,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "corey-wagner",
+   "mine": 20.720000000000002,
+   "price6": 20.720000000000002,
+   "board_v": 20,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "riley-garcia",
+   "mine": 44.32000000000001,
+   "price6": 44.32000000000001,
+   "board_v": 47,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "darcy-fort",
+   "mine": 17.180000000000003,
+   "price6": 17.180000000000003,
+   "board_v": 16,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 4
+  },
+  {
+   "key": "harry-schoenberg",
+   "mine": 10.440000000000001,
+   "price6": 10.440000000000001,
+   "board_v": 50,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "jackson-mead",
+   "mine": 4.48,
+   "price6": 4.48,
+   "board_v": 29,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "ryan-byrnes",
+   "mine": 55.66000000000001,
+   "price6": 55.66000000000001,
+   "board_v": 64,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "jamie-elliott",
+   "mine": 2.0000000000000004,
+   "price6": 2.0000000000000004,
+   "board_v": 19,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 13
+  },
+  {
+   "key": "callum-brown-ire",
+   "mine": 29.440000000000005,
+   "price6": 29.440000000000005,
+   "board_v": 28,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 5
+  },
+  {
+   "key": "brandon-zerk-thatcher",
+   "mine": 43.940000000000005,
+   "price6": 43.940000000000005,
+   "board_v": 48,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 6
+  },
+  {
+   "key": "sam-switkowski",
+   "mine": 13.000000000000002,
+   "price6": 13.000000000000002,
+   "board_v": 15,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 7
+  },
+  {
+   "key": "brody-mihocek",
+   "mine": 4.000000000000001,
+   "price6": 4.000000000000001,
+   "board_v": 10,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 9
+  },
+  {
+   "key": "changkuoth-jiath",
+   "mine": 13.200000000000001,
+   "price6": 13.200000000000001,
+   "board_v": 12,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 6
+  },
+  {
+   "key": "jack-bowes",
+   "mine": 35.2,
+   "price6": 35.2,
+   "board_v": 97,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "callum-ah-chee",
+   "mine": 14.360000000000003,
+   "price6": 14.360000000000003,
+   "board_v": 64,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "lewis-melican",
+   "mine": 21.840000000000003,
+   "price6": 21.840000000000003,
+   "board_v": 21,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 8
+  },
+  {
+   "key": "ned-reeves",
+   "mine": 250.52000000000004,
+   "price6": 250.52000000000004,
+   "board_v": 236,
+   "pos": "RUCK",
+   "pool": true,
+   "nqual": 3
+  },
+  {
+   "key": "isaac-cumming",
+   "mine": 22.020000000000003,
+   "price6": 22.020000000000003,
+   "board_v": 41,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "chayce-jones",
+   "mine": 0.8200000000000001,
+   "price6": 0.8200000000000001,
+   "board_v": 50,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "sam-sturt",
+   "mine": 1.9200000000000002,
+   "price6": 1.9200000000000002,
+   "board_v": 50,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 2
+  },
+  {
+   "key": "jordon-butts",
+   "mine": 7.300000000000001,
+   "price6": 7.300000000000001,
+   "board_v": 18,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 6
+  },
+  {
+   "key": "luke-mcdonald",
+   "mine": 10.000000000000002,
+   "price6": 10.000000000000002,
+   "board_v": 50,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 13
+  },
+  {
+   "key": "lincoln-mccarthy",
+   "mine": 10.000000000000002,
+   "price6": 10.000000000000002,
+   "board_v": 15,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 8
+  },
+  {
+   "key": "tom-lynch-1",
+   "mine": 12.0,
+   "price6": 12.0,
+   "board_v": 50,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 14
+  },
+  {
+   "key": "jamie-cripps",
+   "mine": 10.000000000000002,
+   "price6": 10.000000000000002,
+   "board_v": 28,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 14
+  },
+  {
+   "key": "bradley-close",
+   "mine": 15.680000000000001,
+   "price6": 15.680000000000001,
+   "board_v": 15,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 7
+  },
+  {
+   "key": "liam-henry",
+   "mine": 6.280000000000001,
+   "price6": 6.280000000000001,
+   "board_v": 63,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "finn-maginness",
+   "mine": 0.8400000000000001,
+   "price6": 0.8400000000000001,
+   "board_v": 26,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "bobby-hill",
+   "mine": 17.26,
+   "price6": 17.26,
+   "board_v": 29,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "lachlan-sholl",
+   "mine": 129.16000000000003,
+   "price6": 129.16000000000003,
+   "board_v": 137,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "sam-wicks",
+   "mine": 9.840000000000002,
+   "price6": 9.840000000000002,
+   "board_v": 10,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 7
+  },
+  {
+   "key": "hunter-clark",
+   "mine": 6.0200000000000005,
+   "price6": 6.0200000000000005,
+   "board_v": 50,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "harry-morrison",
+   "mine": 21.28,
+   "price6": 21.28,
+   "board_v": 20,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 9
+  },
+  {
+   "key": "toby-pink",
+   "mine": 20.28,
+   "price6": 20.28,
+   "board_v": 31,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 2
+  },
+  {
+   "key": "mark-o-connor",
+   "mine": 8.280000000000001,
+   "price6": 8.280000000000001,
+   "board_v": 8,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 8
+  },
+  {
+   "key": "ben-mckay",
+   "mine": 6.100000000000001,
+   "price6": 6.100000000000001,
+   "board_v": 35,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "nathan-broad",
+   "mine": 5.000000000000001,
+   "price6": 5.000000000000001,
+   "board_v": 15,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 10
+  },
+  {
+   "key": "jack-martin",
+   "mine": 7.000000000000002,
+   "price6": 7.000000000000002,
+   "board_v": 107,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "aidan-corr",
+   "mine": 6.180000000000001,
+   "price6": 6.180000000000001,
+   "board_v": 38,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "jaeger-o-meara",
+   "mine": 6.0,
+   "price6": 6.0,
+   "board_v": 165,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "mark-blicavs",
+   "mine": 5.000000000000001,
+   "price6": 5.000000000000001,
+   "board_v": 5,
+   "pos": "MID",
+   "pool": true,
+   "nqual": 14
+  },
+  {
+   "key": "rhys-stanley",
+   "mine": 5.000000000000001,
+   "price6": 5.000000000000001,
+   "board_v": 28,
+   "pos": "RUCK",
+   "pool": false,
+   "nqual": 15
+  },
+  {
+   "key": "hugo-ralphsmith",
+   "mine": 34.720000000000006,
+   "price6": 34.720000000000006,
+   "board_v": 54,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "jy-farrar",
+   "mine": 2.8200000000000003,
+   "price6": 2.8200000000000003,
+   "board_v": 10,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "malcolm-rosas",
+   "mine": 16.500000000000004,
+   "price6": 16.500000000000004,
+   "board_v": 25,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 4
+  },
+  {
+   "key": "laitham-vandermeer",
+   "mine": 0.10000000000000002,
+   "price6": 0.10000000000000002,
+   "board_v": 20,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "caleb-graham",
+   "mine": 38.52000000000001,
+   "price6": 38.52000000000001,
+   "board_v": 54,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 3
+  },
+  {
+   "key": "callum-coleman-jones",
+   "mine": 2.66,
+   "price6": 2.66,
+   "board_v": 38,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 3
+  },
+  {
+   "key": "charlie-spargo",
+   "mine": 1.0000000000000002,
+   "price6": 1.0000000000000002,
+   "board_v": 26,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "oskar-baker",
+   "mine": 5.800000000000001,
+   "price6": 5.800000000000001,
+   "board_v": 14,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 5
+  },
+  {
+   "key": "ben-long",
+   "mine": 3.18,
+   "price6": 3.18,
+   "board_v": 28,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 9
+  },
+  {
+   "key": "jade-gresham",
+   "mine": 3.18,
+   "price6": 3.18,
+   "board_v": 39,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "ryan-gardner",
+   "mine": 3.7200000000000006,
+   "price6": 3.7200000000000006,
+   "board_v": 18,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "conor-mckenna",
+   "mine": 2.5400000000000005,
+   "price6": 2.5400000000000005,
+   "board_v": 6,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 8
+  },
+  {
+   "key": "darcy-gardiner",
+   "mine": 3.54,
+   "price6": 3.54,
+   "board_v": 33,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 12
+  },
+  {
+   "key": "jake-kolodjashnij",
+   "mine": 3.64,
+   "price6": 3.64,
+   "board_v": 22,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 11
+  },
+  {
+   "key": "jeremy-sharp",
+   "mine": 19.100000000000005,
+   "price6": 19.100000000000005,
+   "board_v": 63,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 4
+  },
+  {
+   "key": "liam-stocker",
+   "mine": 3.940000000000001,
+   "price6": 3.940000000000001,
+   "board_v": 41,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "bailey-scott",
+   "mine": 2.08,
+   "price6": 2.08,
+   "board_v": 23,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "noah-answerth",
+   "mine": 6.000000000000001,
+   "price6": 6.000000000000001,
+   "board_v": 12,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 6
+  },
+  {
+   "key": "matt-owies",
+   "mine": 0.18000000000000002,
+   "price6": 0.18000000000000002,
+   "board_v": 3,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 5
+  },
+  {
+   "key": "brandon-starcevich",
+   "mine": 0.64,
+   "price6": 0.64,
+   "board_v": 41,
+   "pos": "SD",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "liam-ryan",
+   "mine": 1.2800000000000002,
+   "price6": 1.2800000000000002,
+   "board_v": 24,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 8
+  },
+  {
+   "key": "matt-guelfi",
+   "mine": 1.0000000000000002,
+   "price6": 1.0000000000000002,
+   "board_v": 15,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 8
+  },
+  {
+   "key": "bailey-banfield",
+   "mine": 4.9,
+   "price6": 4.9,
+   "board_v": 10,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 7
+  },
+  {
+   "key": "darragh-joyce",
+   "mine": 2.0800000000000005,
+   "price6": 2.0800000000000005,
+   "board_v": 41,
+   "pos": "KPD",
+   "pool": true,
+   "nqual": 1
+  },
+  {
+   "key": "daniel-butler",
+   "mine": 0.64,
+   "price6": 0.64,
+   "board_v": 15,
+   "pos": "SF",
+   "pool": true,
+   "nqual": 10
+  },
+  {
+   "key": "mason-cox",
+   "mine": 0.0,
+   "price6": 0.0,
+   "board_v": 3,
+   "pos": "KPF",
+   "pool": true,
+   "nqual": 11
+  },
+  {
+   "key": "alex-pearce",
+   "mine": 2.9400000000000004,
+   "price6": 2.9400000000000004,
+   "board_v": 23,
+   "pos": "KPD",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "nicholas-holman",
+   "mine": 0.0,
+   "price6": 0.0,
+   "board_v": 14,
+   "pos": "SF",
+   "pool": false,
+   "nqual": 10
+  },
+  {
+   "key": "dane-rampe",
+   "mine": 1.0000000000000002,
+   "price6": 1.0000000000000002,
+   "board_v": 12,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 14
+  },
+  {
+   "key": "joel-hamling",
+   "mine": 1.7200000000000002,
+   "price6": 1.7200000000000002,
+   "board_v": 18,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 7
+  },
+  {
+   "key": "jed-bews",
+   "mine": 0.0,
+   "price6": 0.0,
+   "board_v": 15,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 10
+  },
+  {
+   "key": "harry-cunningham",
+   "mine": 0.0,
+   "price6": 0.0,
+   "board_v": 10,
+   "pos": "SD",
+   "pool": true,
+   "nqual": 13
+  },
+  {
+   "key": "jake-melksham",
+   "mine": 1.0000000000000002,
+   "price6": 1.0000000000000002,
+   "board_v": 50,
+   "pos": "KPF",
+   "pool": false,
+   "nqual": 16
+  },
+  {
+   "key": "steele-sidebottom",
+   "mine": 1.0000000000000002,
+   "price6": 1.0000000000000002,
+   "board_v": 96,
+   "pos": "MID",
+   "pool": false,
+   "nqual": 18
+  }
+ ]
+}
