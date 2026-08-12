@@ -1,0 +1,23 @@
+======================================================================================================================
+U' RE-DERIVED   label=alpha=0.50   alpha=0.5   delivery=CURRENT-state (ORDER 24)   surface=pool_retention_surface.json
+======================================================================================================================
+  R' = 1 + alpha*(R-1) on the wired surface. Entry weights e = level(division) * _PL_F, unchanged.
+  engine level lookup (int-truncated; ND65+ UNCAPPED per the landed amendment):
+    IRE 106 . MSD 374 . ND65+ 298 . PDA 188 . PDN 96 . PDS 56 . RD:KPD 370 . RD:KPF 209 . RD:MID 289 . RD:RUCK 259 . RD:SD 245 . RD:SF 217 . SSP 315 . UNR 66
+
+  pathway     cells   sit mass  play mass    sit share      mean R'             U'   post-redist mean
+  RD           2352   243343.3   409449.9     0.3728     0.798185       1.119942       1.0000000000
+  ND>64         441    58959.7    79344.6     0.4263     0.756690       1.180799       1.0000000000
+  IRE           137     7529.9     7753.0     0.4927     0.832012       1.163154       1.0000000000
+  UNR           126     4503.2     4248.5     0.5146     0.759099       1.255342       1.0000000000
+  PDA           106    10189.3    10782.9     0.4858     0.695563       1.287679       1.0000000000
+  PDS            62     2524.4     1129.6     0.6909     0.825605       1.389734       1.0000000000
+  MSD            40    11348.7     4395.2     0.7208     0.824948       1.452001       1.0000000000
+  PDN            36     2727.8      909.3     0.7500     0.871529       1.385412       1.0000000000
+  SSP            34     3867.6     7403.6     0.3431     0.839537       1.083824       1.0000000000
+  ALL POOL     3334   344993.9   525416.7     0.3964     0.790415       1.137615       1.0000000000
+
+  MEAN-PRESERVATION INSTRUMENT: pathways whose post-redistribution entry-weighted mean is not
+  1.0000000000 (tol 1e-9): 0
+
+  wrote /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o24/surface_a0.50.json

@@ -1,0 +1,31 @@
+ORDER 24 STEP 1 -- THE CONTROL
+==============================
+
+The board rebuilt on the UNMODIFIED branch tree must reproduce the board committed on
+land/pool-update byte-identically. Non-match would have been a BLOCKER.
+
+committed board on land/pool-update:
+665311ca72576df6ff0bbf6dfd007739  /home/user/afl-rl-engine/.claude/worktrees/agent-adc3eecf1c0fb072b/data/rl_build/rl_app_data.json
+
+(1) THE CONTROL, re-runnable: build at the PRE-REGISTRATION commit f041d93, whose engine is
+    the unmodified land/pool-update engine (the delivery fix landed one commit later).
+  ref: f041d93 -> f041d93
+  config: bf012105  rl_model: e5eb5e44  engine_head: 72e40e94  curve_artifact: 07b7109f
+  OK 665311ca72576df6ff0bbf6dfd007739  -> board_CONTROL.json
+
+    The FIRST run of this control, before any code was edited, went through the ORDER 23
+    harness (build_board_o23.sh <out> nopatch nolevels) at the same commit and printed the
+    same md5:  OK 665311ca72576df6ff0bbf6dfd007739  -> board_CONTROL.json
+    engine_head there was 72e40e94 -- the unmodified _merged_recover.py.
+
+(2) DIAGNOSTIC, printed so it cannot be mistaken for a candidate board: HEAD (delivery fix
+    present) with NO surface staged, i.e. the new delivery running against the OLD
+    career-delivery U literals. This combination is INCOHERENT by construction -- mean
+    preservation does not hold for it -- and it is NOT one of the three alpha boards.
+  ref: HEAD -> ad96ea5
+  config: bf012105  rl_model: e5eb5e44  engine_head: 2734019e  curve_artifact: 07b7109f
+  OK d13f52e9451ba28961fe9f6d803db81e  -> board_DIAG_nostage.json
+    (that board is d13f52e9451ba28961fe9f6d803db81e and is used for nothing)
+
+(3) DETERMINISM: the alpha=1.00 board was built twice from scratch, each time in a fresh
+    detached worktree, and produced ca3544d8df9272db191a67001a1bb9e4 both times.
