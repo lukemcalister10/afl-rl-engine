@@ -1,0 +1,12 @@
+--- cap = 1.4 (shipped) ---
+  Flynn Riley        cap=1.4   e_raw=  536.29 ceil=   407.39 binds=True  e_full=  407.39 | anch=  242.82 lam0=0.1890 sur=1.6674 lam=0.011743 | blend= 244.752 h=1.0000 ev= 245.000 v=233
+  Alex Van Wyk       cap=1.4   e_raw=  492.77 ceil=   406.43 binds=True  e_full=  406.43 | anch=  242.82 lam0=0.1890 sur=1.6598 lam=0.011893 | blend= 244.766 h=1.0000 ev= 245.000 v=233
+  Vigo Visentini     cap=1.4   e_raw=  787.68 ceil=   410.61 binds=True  e_full=  410.61 | anch=  176.29 lam0=0.1890 sur=2.7246 lam=0.002017 | blend= 176.758 h=1.0000 ev= 177.000 v=168
+  Liam Reidy         cap=1.4   e_raw=  493.99 ceil=   414.09 binds=True  e_full=  414.09 | anch=  176.29 lam0=0.6406 sur=0.4646 lam=0.520816 | blend= 300.138 h=1.0000 ev= 306.000 v=291
+  Cameron Owen       cap=1.4   e_raw=  620.05 ceil=   394.80 binds=True  e_full=  394.80 | anch=  176.29 lam0=0.0000 sur=3.2251 lam=0.000000 | blend= 176.285 h=0.8040 ev=   8.000 v=8
+--- cap = 99 (neutralised) ---
+  Flynn Riley        cap=99.0  e_raw=  536.29 ceil= 28808.35 binds=False e_full=  536.29 | anch=  242.82 lam0=0.1890 sur=2.5532 lam=0.002684 | blend= 243.608 h=1.0000 ev= 244.000 v=232
+  Alex Van Wyk       cap=99.0  e_raw=  492.77 ceil= 28740.38 binds=False e_full=  492.77 | anch=  242.82 lam0=0.1890 sur=2.2805 lam=0.004228 | blend= 243.877 h=1.0000 ev= 244.000 v=232
+  Vigo Visentini     cap=99.0  e_raw=  787.68 ceil= 29036.24 binds=False e_full=  787.68 | anch=  176.29 lam0=0.1890 sur=4.8237 lam=0.000061 | blend= 176.323 h=1.0000 ev= 176.000 v=167
+  Liam Reidy         cap=99.0  e_raw=  493.99 ceil= 29282.05 binds=False e_full=  493.99 | anch=  176.29 lam0=0.6406 sur=0.5606 lam=0.499018 | blend= 334.824 h=1.0000 ev= 339.000 v=322
+  Cameron Owen       cap=99.0  e_raw=  620.05 ceil= 27918.00 binds=False e_full=  620.05 | anch=  176.29 lam0=0.0000 sur=5.0308 lam=0.000000 | blend= 176.285 h=0.8040 ev=  16.000 v=15
