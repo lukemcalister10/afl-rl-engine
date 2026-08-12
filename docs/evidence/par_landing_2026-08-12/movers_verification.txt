@@ -1,0 +1,24 @@
+============================================================================================================
+ORDER 20C — MOVERS LEDGER BUILD + VERIFICATION AGAINST ORDER 20's COMMITTED BOARD_DELTA
+============================================================================================================
+
+  NATIONAL
+    n              mine=668        ORDER20=668         MATCH
+    movers         mine=279        ORDER20=279         MATCH
+    total_before   mine=624418     ORDER20=624418      MATCH
+    total_after    mine=622650     ORDER20=622650      MATCH
+    delta          mine=-1768      ORDER20=-1768       MATCH
+    top-40 named movers reproduce to the unit: ALL 40 MATCH
+
+  POOL
+    n              mine=334        ORDER20=334         MATCH
+    movers         mine=195        ORDER20=195         MATCH
+    total_before   mine=123939     ORDER20=123939      MATCH
+    total_after    mine=126244     ORDER20=126244      MATCH
+    delta          mine=2305       ORDER20=2305        MATCH
+    top-40 named movers reproduce to the unit: ALL 40 MATCH
+
+  LEDGER: 474 rows (279 national + 195 pool)
+  decomposed movers carried into the ledger: 7 — Angus Clarke, Harry Dean, Harvey Johnston, James Leake, Luke Cleary, Will Hayes, Willem Duursma
+  BASE channel exactly 0.0 for every decomposed mover: TRUE (all 7)
+

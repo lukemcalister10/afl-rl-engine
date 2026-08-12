@@ -1,0 +1,35 @@
+artifact                           landed md5                         origin/main md5                    verdict
+--------------------------------------------------------------------------------------------------------------------
+STORE                              d9a24282357cf3083b1640466e3ecd83   d9a24282357cf3083b1640466e3ecd83   UNMOVED
+pickle v0surf                      fbc5b39387b2b135284a2e157f46c810   fbc5b39387b2b135284a2e157f46c810   UNMOVED
+pickle q97m                        cfdc73216c099e5e8f1fda3968f31c00   cfdc73216c099e5e8f1fda3968f31c00   UNMOVED
+INSTRUMENT noarb_table_338.py      0f8220351c64c56ccfa90c60edcdfa5f   0f8220351c64c56ccfa90c60edcdfa5f   UNMOVED
+model_config                       efe922cbe21fb69262f53bec70302279   efe922cbe21fb69262f53bec70302279   UNMOVED
+rl_model.py                        de7ce41659adeda756f4fd1a2caaf172   de7ce41659adeda756f4fd1a2caaf172   UNMOVED
+_merged_recover.py                 a8071af4dd86b7d8d3d9d916ae75f787   a8071af4dd86b7d8d3d9d916ae75f787   UNMOVED
+LTI_REGISTER.md                    652d83e87780e415a01a2de6d8b3cc57   652d83e87780e415a01a2de6d8b3cc57   UNMOVED
+peak_model_v4.pkl                  f305fe5330222f4fa14d3654a0e91ef7   f305fe5330222f4fa14d3654a0e91ef7   UNMOVED
+pvc_snapshot.json                  ade79790efc8ad4585c2c6800a935eaa   ade79790efc8ad4585c2c6800a935eaa   UNMOVED
+bust_prior_table.json              5942aa6ad7be1d482eed737997486c70   5942aa6ad7be1d482eed737997486c70   UNMOVED
+
+band pickle (engine load path) /home/claude/cm_400.pkl  md5 34faa8659cc8f19794f5cb9584fa19b2
+   pinned band in expected_boot: 34faa8659cc8f19794f5cb9584fa19b2 -> MATCH, and this landing never writes it
+
+FILES THIS BRANCH CHANGES vs origin/main (12):
+    data/expected_boot.json
+    data/rl_build/rl_app_data.json
+    docs/evidence/par_landing_2026-08-12/PREREG_ORDER20C.md
+    docs/ledgers/PAR_FIX_MOVERS_2026-08-12.json
+    docs/ledgers/PAR_FIX_MOVERS_2026-08-12.md
+    engine/forward_valuation/par_build.py
+    engine/forward_valuation/par_redesign.py
+    engine/rl_after/rl_app_data.json
+    engine/rl_after/rl_app_data.json.srcmd5
+    engine/rl_after/rl_app_data.provenance.json
+    engine/rl_after/s4_matrix.json
+    engine/rl_after/s4_matrix.json.srcmd5
+
+H_POOLSIT / H_UNION in CODE/CONFIG touched by this branch: NO — no non-doc file adds or removes a line mentioning them
+   sitter-config lines identical to origin/main: YES  (8 lines)
+
+SCOPE GUARDS: ALL HELD
