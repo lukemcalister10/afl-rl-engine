@@ -1420,8 +1420,20 @@ _PL_DOC=json.load(open('pvc_curve_v2.json')).get('pool_levels')
 assert _PL_DOC, ('#326 HALT: pvc_curve_v2.json carries no pool_levels block — per-division pool pricing has '
                  'no signed data to read, and pricing every division at one level is the thing this replaces.')
 _POOL_POS_FIELD=_PL_DOC['rd_position_field']
-_ND65=min(float(_PL_DOC['signed_nd65_plus']['measured_k15']),
-          float(_PVC2M[int(_PL_DOC['signed_nd65_plus']['cap_against_curve_pick'])]))
+# ===== #334 ORDER 23 -- THE ND65+ CAP IS AMENDED AWAY (owner ruling, #334 comment 5262928754, owner ruling 2026-08-12) ======================
+# OWNER, VERBATIM: "Happy to amend the law for ND > 64. As it's not going to impact many players
+# anymore, only historical ones, as the ND never goes beyond pick 64 these days. So very few live
+# players draw from that, and those who do would either have been delisted or have production
+# determine their price now."
+# THE SUPERSEDED LAW, PRESERVED HERE AS HISTORY RATHER THAN DELETED:
+#     _ND65 = min(measured_k15, _PVC2M[cap_against_curve_pick])    # "THE CAP IS A LAW, NOT A NUMBER"
+# It held a post-64 selection at the curve's pick-64 value so a pick-65 row could never outprice
+# pick 64. ORDER 22 measured that this one blocked pathway was the SOLE cause of the residual on
+# every other pathway. The owner removed it on the grounds above and accepted the consequence; the
+# draft-boundary tension it guarded is queued for the pick-curve re-derivation. The signed block's
+# `cap_against_curve_pick` key is retired under a dated name, so this file cannot silently re-cap.
+# ND65+ NOW PRICES AT ITS DERIVED LEVEL, READ VERBATIM, LIKE EVERY OTHER SIGNED DIVISION.
+_ND65=float(_PL_DOC['signed_nd65_plus']['measured_k15'])
 _POOL_LEVELS={_k:int(float(_v)) for _k,_v in _PL_DOC['signed_flat'].items()}
 _POOL_LEVELS['ND65+']=int(_ND65)
 for _k,_v in _PL_DOC['signed_rd_positional'].items(): _POOL_LEVELS['RD:'+_k]=int(float(_v))
@@ -1467,7 +1479,7 @@ assert not _pool_slot_mismatch, ('#326 HALT: %d row(s) sit at the pool slot with
                                  'reverse (%s) — the per-division lookup and the ladder would disagree about '
                                  'who is a pool entrant.'%(len(_pool_slot_mismatch),_pool_slot_mismatch[:6]))
 _MSD_CAVEAT=_PL_DOC['msd_completion_optimism_caveat']
-print('#326 POOL LEVELS (N43 signed, read verbatim, LADDER currency; ND65+ = min(%.1f, curve[%d]=%d) = %d): %s'
+print('#326 POOL LEVELS (N43 signed, read verbatim, LADDER currency; ND65+ = %.1f DERIVED, the cap against curve[%d]=%d REMOVED by owner ruling 2026-08-12 -> %d): %s'
       %(float(_PL_DOC['signed_nd65_plus']['measured_k15']),ND_CURVE_LAST,_PVC2M[ND_CURVE_LAST],_POOL_LEVELS['ND65+'],
         ' · '.join('%s %d%s'%(_k,_POOL_LEVELS[_k],' [MSD completion optimism %s]'%_MSD_CAVEAT if _k=='MSD' else '')
                    for _k in sorted(_POOL_LEVELS))))

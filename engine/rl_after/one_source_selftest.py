@@ -488,7 +488,11 @@ if _pvc2_on:
     # store, the per-entrant derivation, and the byte-frozen contract. Live-store divergence means
     # "re-derivation due" in the claims note/checklist; it is not curve corruption and must not re-alarm weekly.
     _curve_contract_path=(os.path.join(_repo,'ui','release_pick_curve.json') if _repo else None)
-    _contract_md5='eae593f220460d880be20da38e3de39d'   # RE-PINNED by #326 (per-division pool entry anchors):
+    _contract_md5='2e745ae3851637a88f68a950c230e363'   # RE-PINNED by #334 ORDER 23 (the pool
+    # update: derived pool levels + the amended ND65+ law move the artifact's bytes, so the
+    # contract's mirror and its pick_curve_file_md5 move with them, and this pin moves in the
+    # same commit exactly as prior acts did). PREVIOUS PIN: eae593f220460d880be20da38e3de39d,
+    # which was RE-PINNED by #326 (per-division pool entry anchors):
     # the curve artifact gains the N43 signed pool_levels block beside pool_value, so the artifact FILE md5
     # moves b7389fe4 -> 988135ef and the contract's pick_curve_file_md5 + its pool_levels mirror move with it.
     # The curve PAYLOAD identity df766dff is UNCHANGED — the ladder itself was not touched — which is why
@@ -621,9 +625,19 @@ print("=== (10) #326 PER-DIVISION POOL ENTRY ANCHORS — the N43 signed levels =
 # levels only from the artifact, an edited level would agree with itself and pass. So the signed numbers are
 # written out once, copied verbatim from the owner's N43 signature (#306 comment 5179992080), and everything
 # else is checked against them. A wrong level in the artifact and a wrong lookup in the code each go red here.
-_N43_FLAT={'MSD':286.8,'SSP':252.8,'PDA':194.3,'PDS':145.0,'IRE':133.4,'PDN':123.0,'UNR':103.7}
-_N43_RD={'KPD':300.3,'MID':294.8,'RUCK':282.5,'SD':246.9,'SF':231.5,'KPF':216.0}
-_N43_ND65_K15=266.1; _N43_RD_LEVEL=261.6; _N43_RD_TARGET=262.2; _N43_POOL_AGG=235.8; _N43_K=15
+# ===== RE-SIGNED BY #334 ORDER 23 (owner ruling, #334 comment 5262928754, owner ruling 2026-08-12) ==========================================
+# The literals below are no longer the 2026 N43 signature -- they are the POOL UPDATE's derived
+# fixed point, and they are written out here for exactly the reason the original ones were: the
+# artifact cannot be its own authority. THE SUPERSEDED SIGNATURE, kept as history:
+#   _N43_FLAT={'MSD':286.8,'SSP':252.8,'PDA':194.3,'PDS':145.0,'IRE':133.4,'PDN':123.0,'UNR':103.7}
+#   _N43_RD={'KPD':300.3,'MID':294.8,'RUCK':282.5,'SD':246.9,'SF':231.5,'KPF':216.0}
+#   _N43_ND65_K15=266.1, capped against curve[64]
+# The four reference quantities below it (rd_division_level, rd_positional_shrink_target,
+# measured_pool_aggregate, K) are N43 CONSTRUCTION constants, are unchanged in the artifact, and
+# are therefore unchanged here.
+_N43_FLAT={'MSD':374,'SSP':315,'PDA':188,'PDS':56,'IRE':106,'PDN':96,'UNR':66}
+_N43_RD={'KPD':370,'MID':289,'RUCK':259,'SD':245,'SF':217,'KPF':209}
+_N43_ND65_K15=298; _N43_RD_LEVEL=261.6; _N43_RD_TARGET=262.2; _N43_POOL_AGG=235.8; _N43_K=15
 _v2doc=json.load(open(hp('pvc_curve_v2.json')))
 _pl=_v2doc.get('pool_levels')
 check(bool(_pl), "#326: the curve artifact carries a pool_levels block beside pool_value")
@@ -632,10 +646,16 @@ if _pl:
           "#326 signed flat levels verbatim (MSD/SSP/PDA/PDS/IRE/PDN/UNR): %s"%_pl['signed_flat'])
     check({_k:float(_v) for _k,_v in _pl['signed_rd_positional'].items()}==_N43_RD,
           "#326 signed RD positional set verbatim (KPD/MID/RUCK/SD/SF/KPF): %s"%_pl['signed_rd_positional'])
+    # #334 ORDER 23 (owner ruling 2026-08-12): THE CAP IS REMOVED and ND65+ prices at its derived
+    # level. The check keeps its job -- the artifact still cannot be its own authority -- and now also
+    # asserts the RETIREMENT: the live key must be GONE and the dated historical key must be present,
+    # so a silent restoration of the cap goes red here.
     check(float(_pl['signed_nd65_plus']['measured_k15'])==_N43_ND65_K15
-          and int(_pl['signed_nd65_plus']['cap_against_curve_pick'])==MA.ND_CURVE_LAST,
-          "#326 ND65+ is stored as the LAW: measured %.1f capped against curve pick %d (never a literal price)"
-          %(float(_pl['signed_nd65_plus']['measured_k15']),int(_pl['signed_nd65_plus']['cap_against_curve_pick'])))
+          and 'cap_against_curve_pick' not in _pl['signed_nd65_plus']
+          and int(_pl['signed_nd65_plus']['cap_against_curve_pick_REMOVED_2026_08_12'])==MA.ND_CURVE_LAST,
+          "#326/ORDER23 ND65+ prices at its DERIVED level %.1f; the min-against-curve[%d] cap is REMOVED "
+          "(owner ruling 2026-08-12) and preserved only as dated history"
+          %(float(_pl['signed_nd65_plus']['measured_k15']),MA.ND_CURVE_LAST))
     check(_pl['rd_position_field']=='future_position',
           "#326 the RD positional key names future_position (got %r)"%_pl['rd_position_field'])
     check(float(_pl['rd_division_level'])==_N43_RD_LEVEL and float(_pl['rd_positional_shrink_target'])==_N43_RD_TARGET
@@ -655,10 +675,10 @@ if _pl:
     # ---- the engine's OWN resolved table, and the cap re-evaluated as the law rather than read back --------
     _want={_k:int(_v) for _k,_v in _N43_FLAT.items()}
     _want.update({'RD:'+_k:int(_v) for _k,_v in _N43_RD.items()})
-    _want['ND65+']=int(min(_N43_ND65_K15,float(MA._PVC2M[MA.ND_CURVE_LAST])))
+    _want['ND65+']=int(_N43_ND65_K15)   # ORDER 23: UNCAPPED -- the derived level itself
     check(len(_want)==14, "#326 fourteen priced levels: eight flat divisions + six RD positional (got %d)"%len(_want))
     check(MA._POOL_LEVELS==_want,
-          "#326 the engine's resolved pool levels == the signed table (ND65+ = min(%.1f, curve[%d]=%d) = %d)"
+          "#326 the engine's resolved pool levels == the signed table (ND65+ = %.1f DERIVED, curve[%d]=%d NOT applied -> %d)"
           %(_N43_ND65_K15,MA.ND_CURVE_LAST,MA._PVC2M[MA.ND_CURVE_LAST],_want['ND65+']))
     # ---- THE CURRENCY LAW (addendum 6 item 5), proven on ONE entrant through EACH SITE CLASS ---------------
     # The signed levels are LADDER/board currency. They enter the ENGINE-VALUE sites (the year-zero floor and
