@@ -1,0 +1,206 @@
+======================================================================================================================
+ORDER 21 -- THE STAGED BOARD: WHAT THE DERIVED POOL RETENTION DOES
+======================================================================================================================
+  pins asserted at entry: board 1dbd1480..  store d9a24282..  instrument 0f822035..
+
+0. CONTROLS
+  board BASE        md5 1dbd1480a34c7823f330273211cbb76a
+  board VARA        md5 452623adeb9aaed115d883dbe6b0239c
+  board VARB        md5 214e8f4c40280ba22e6c32652ed004d5
+  board DERIVEDSIT  md5 a4a7eef93a1cdc25de84496bc8d8afd9
+  board DERIVED     md5 be89cbac9b0db6d70ecedc28696445ff
+  live board  md5 1dbd1480a34c7823f330273211cbb76a
+  CONTROL 1: the HEAD-defaults board build reproduces THE LIVE BOARD BYTE-FOR-BYTE -> REPRODUCED
+  engine_head per build (the machine proof each patch was in the tree that built it):
+     BASE/VARA a8071af4 (unpatched)  VARB a20d7092  DERIVEDSIT cd2e37c0  DERIVED 54347ed4
+
+======================================================================================================================
+1. THE BOARD TOTAL
+======================================================================================================================
+  active rows: 804   back rows: 198   board total today: 746,043
+
+                                          board total         change    change %     moved      up    down
+  --------------------------------------------------------------------------------------------------------
+  TODAY (shipped)                             746,043              -      0.000%         0       0       0
+  VARIANT A  (H lifted only)                  748,355          +2312      0.310%        48      48       0
+  VARIANT B  (H + R:=1 at sitout_ev)          754,501          +8458      1.134%        73      73       0
+  DERIVED, sit site only                      749,028          +2985      0.400%        66      58       8
+  ** STAGED: DERIVED, both sites **           751,554          +5511      0.739%        81      73       8
+
+  back board (delisted/non-active, 2,851 pts): unchanged in every variant -> True
+
+======================================================================================================================
+2. THE SEPARATION LAW ON THE BOARD -- ND ROWS MUST NOT MOVE. ASSERTED, NOT REPORTED.
+======================================================================================================================
+  VARIANT A  (H lifted only)           ND 1-64 rows moved: 0    non-pool rows moved (any): 0
+  VARIANT B  (H + R:=1 at sitout_ev)   ND 1-64 rows moved: 0    non-pool rows moved (any): 0
+  DERIVED, sit site only               ND 1-64 rows moved: 0    non-pool rows moved (any): 0
+  ** STAGED: DERIVED, both sites **    ND 1-64 rows moved: 0    non-pool rows moved (any): 0
+
+  ASSERTION HOLDS on all four variants: ZERO national rows move. The staged configuration is
+  p.get('_pool')-gated at both read sites and at both retired H cells; national prices are
+  byte-identical to the live board.
+  ND 1-64 board value: 620,877 in every variant -> True
+
+======================================================================================================================
+3. THE DISTRIBUTION OF THE MOVES
+======================================================================================================================
+  variant                                   n        min        p25     median        p75        max
+  ------------------------------------------------------------------------------------------------
+  VARIANT A  (H lifted only)               48     14.89%     16.95%     23.92%     26.61%    344.23%
+  VARIANT B  (H + R:=1 at sitout_ev)       73      3.37%     70.24%    106.25%    184.62%    633.33%
+  DERIVED, sit site only                   66    -26.87%     10.04%     22.86%     55.08%    426.92%
+  ** STAGED: DERIVED, both sites **        81    -26.87%     10.14%     30.43%     76.67%    533.75%
+
+  ROWS THAT MOVE DOWN UNDER THE STAGED CONFIGURATION: 8
+  This is the redistribution biting. A row moves down when its DERIVED retention is below what
+  the composed shipped read (R_natl@65 x H) gave it -- the FULL update is not a uniform lift.
+  player                     pathway  g26   d      TODAY     STAGED       move
+  Liam Reidy                 RD         4   4        291        267        -24
+  Patrick Carr               UNR        0   1         67         49        -18
+  Oliver Francou             MSD        4   1        375        358        -17
+  Balyn O'Brien              SSP        4   1        300        285        -15
+  Vigo Visentini             RD         1   3        168        153        -15
+  Jaxon Artemis              MSD        4   1        340        326        -14
+  Jaime Uhr-Henry            UNR        0   2         51         42         -9
+  Thomas Burton              SSP        5   1        415        412         -3
+
+======================================================================================================================
+4. BY PATHWAY -- every live 'active' row of the pathway, moved or not
+======================================================================================================================
+  pathway    rows  moved |       today       VAR A       VAR B      STAGED |   A delta   B delta STG delta |    STG %
+  ----------------------------------------------------------------------------------------------------------------------
+  RD           66     18 |      45,874      46,148      47,687      46,300 |      +274     +1813      +426 |   +0.93%
+  SSP          28      5 |      11,535      12,237      12,719      12,227 |      +702     +1184      +692 |   +6.00%
+  MSD          63     26 |      36,089      36,962      39,118      39,327 |      +873     +3029     +3238 |   +8.97%
+  IRE          14      8 |         712         803       1,285         938 |       +91      +573      +226 |  +31.74%
+  PDA          15      2 |       8,103       8,159       8,444       8,239 |       +56      +341      +136 |   +1.68%
+  PDN          16     11 |       2,729       2,906       3,302       3,326 |      +177      +573      +597 |  +21.88%
+  UNR          13      7 |       1,296       1,376       1,676       1,372 |       +80      +380       +76 |   +5.86%
+  ND>64        28      4 |      18,828      18,887      19,393      18,948 |       +59      +565      +120 |   +0.64%
+  ND 1-64     561      0 |     620,877     620,877     620,877     620,877 |        +0        +0        +0 |   +0.00%
+  ----------------------------------------------------------------------------------------------------------------------
+  ALL POOL    243     81 |     125,166     127,478     133,624     130,677 |     +2312     +8458     +5511 |   +4.40%
+
+======================================================================================================================
+5. EVERY POOL PLAYER ON THE LIVE BOARD WHOSE VALUE MOVES UNDER THE STAGED CONFIGURATION
+======================================================================================================================
+  g26 = games played in 2026 so far; d = sit-out depth in seasons, 'q' = has a qualifying season
+  (so he takes the year-1+ arm and carries the UPLIFT U, not the retention R).
+
+  player                     pathway  age  g26   d |    TODAY    VAR A    VAR B   STAGED |  STG move     STG %
+  ----------------------------------------------------------------------------------------------------------------------
+  Nicholas Martin            SSP       25    0   q |    2,822    3,509    3,509    3,518 |      +696   +24.66%
+  Mani Liddy                 MSD       24    0   q |      128      128      128      783 |      +655  +511.72%
+  Robert Hansen              MSD       22    0   q |       80       80       80      507 |      +427  +533.75%
+  James Blanck               MSD       26    0   q |       60       60       60      332 |      +272  +453.33%
+  Flynn Young                MSD       24    3   q |      128      128      128      385 |      +257  +200.78%
+  Harrison Coe               MSD       27    0   1 |       52      231      286      274 |      +222  +426.92%
+  Max Mapley                 MSD       21    0   1 |       52      231      286      274 |      +222  +426.92%
+  Caleb May                  MSD       21    0   1 |       52      231      286      274 |      +222  +426.92%
+  Will McLachlan             MSD       21    1   q |      117      117      117      317 |      +200  +170.94%
+  Josh Draper                PDN       22    0   q |      315      389      389      449 |      +134   +42.54%
+  Tom Hanily                 MSD       21    4   q |      154      154      154      286 |      +132   +85.71%
+  Jordan Boyd                MSD       28    2   q |       37       37       37      154 |      +117  +316.22%
+  Oliver Griffin             MSD       19    0   1 |       39      172      286      153 |      +114  +292.31%
+  Max Beattie                MSD       23    0   1 |       39      172      286      153 |      +114  +292.31%
+  Tyrell Dewar               PDN       22    0   q |       73       88       88      185 |      +112  +153.42%
+  Andy Moniz-Wakefield       PDN       23    2   q |       27       27       27      108 |       +81  +300.00%
+  Liam Hetherton             PDA       19    0   1 |      100      124      194      170 |       +70   +70.00%
+  Shadeau Brain              PDA       22    2   q |       69       69       69      135 |       +66   +95.65%
+  Riley Onley                RD        19    0   1 |      143      177      294      204 |       +61   +42.66%
+  Nick Driscoll              RD        19    0   1 |      143      177      294      204 |       +61   +42.66%
+  Darragh Joyce              IRE       29    3   q |       20       20       20       81 |       +61  +305.00%
+  Fred Rodriguez             RD        19    0   1 |      143      177      294      204 |       +61   +42.66%
+  Leon Kickett               RD        20    0   1 |      112      139      231      161 |       +49   +43.75%
+  Caleb Graham               ND>64     26    0   q |       37       43       43       85 |       +48  +129.73%
+  Ben Murphy                 IRE       19    0   1 |       60       80      133      106 |       +46   +76.67%
+  Cillian Bourke             IRE       20    0   1 |       60       80      133      106 |       +46   +76.67%
+  Toby Whan                  PDN       19    0   1 |       60       74      123      106 |       +46   +76.67%
+  Ryda Luke                  PDN       19    0   1 |       60       74      123      106 |       +46   +76.67%
+  Jai Saxena                 PDN       19    0   1 |       60       74      123      106 |       +46   +76.67%
+  Jesse Mellor               PDN       19    0   1 |       60       74      123      106 |       +46   +76.67%
+  Kobe McDonald              IRE       19    0   1 |       60       80      133      106 |       +46   +76.67%
+  Aidan Johnson              ND>64     26    1   2 |       80       80      185      124 |       +44   +55.00%
+  Alex Van Wyk               MSD       22    1   1 |      233      233      290      277 |       +44   +18.88%
+  Mitch Podhajski            MSD       27    2   1 |      186      186      277      230 |       +44   +23.66%
+  Flynn Riley                MSD       22    1   1 |      233      233      290      277 |       +44   +18.88%
+  Iliro Smit                 MSD       21    0   3 |      100      170      286      143 |       +43   +43.00%
+  Kalani White               PDN       19    0   1 |       67       85      123      107 |       +40   +59.70%
+  Oscar Berry                UNR       24    0   1 |       47       70      103       86 |       +39   +82.98%
+  Luker Kentfield            MSD       21    3   3 |      178      178      372      215 |       +37   +20.79%
+  Tyson Stengle              RD        28    0   q |      121      150      150      154 |       +33   +27.27%
+  Xavier Walsh               RD        21    0   3 |       86      107      300      116 |       +30   +34.88%
+  Joe Pike                   RD        21    0   2 |      140      174      282      168 |       +28   +20.00%
+  Aiden Riddle               RD        21    0   2 |      140      174      282      168 |       +28   +20.00%
+  Lukas Cooke                MSD       23    2   1 |      206      206      268      233 |       +27   +13.11%
+  Indy Cotton                UNR       19    0   1 |       49       62      103       76 |       +27   +55.10%
+  Logan Smith                ND>64     20    0   2 |       91      114      185      118 |       +27   +29.67%
+  Ollie Greeves              RD        19    4   1 |      475      475      574      501 |       +26    +5.47%
+  Liam Reidy                 RD        26    4   4 |      291      291      354      267 |       -24    -8.25%
+  Ricky Mentha               PDN       20    0   2 |       43       50      123       64 |       +21   +48.84%
+  Jacob Moss                 UNR       22    0   2 |       36       45      103       57 |       +21   +58.33%
+  Benny Barrett              PDN       20    0   2 |       43       50      123       64 |       +21   +48.84%
+  Harrison Ramm              MSD       20    4   2 |      351      351      479      370 |       +19    +5.41%
+  Harry Charleson            RD        20    0   2 |       86      100      246      105 |       +19   +22.09%
+  Asher Eastham              RD        20    0   2 |       81       94      231       99 |       +18   +22.22%
+  Patrick Carr               UNR       21    0   1 |       67       83      103       49 |       -18   -26.87%
+  Peter Ladhams              RD        28    2   q |      489      489      489      506 |       +17    +3.48%
+  Oliver Francou             MSD       20    4   1 |      375      375      454      358 |       -17    -4.53%
+  Harry Edwards              RD        26    2   q |       97       97       97      112 |       +15   +15.46%
+  Vigo Visentini             RD        21    1   3 |      168      168      286      153 |       -15    -8.93%
+  Noah Howes                 MSD       21    1   2 |      128      128      287      143 |       +15   +11.72%
+  Balyn O'Brien              SSP       19    4   1 |      300      300      365      285 |       -15    -5.00%
+  Caleb Lewis                MSD       23    2   2 |      138      138      263      152 |       +14   +10.14%
+  Jaxon Artemis              MSD       20    4   1 |      340      340      412      326 |       -14    -4.12%
+  Zak Evans                  UNR       26    0   2 |       36       42      103       47 |       +11   +30.56%
+  Hudson O'Keeffe            SSP       22    3   4 |      136      136      283      147 |       +11    +8.09%
+  Jacob Newton               MSD       20    3   2 |      156      156      285      166 |       +10    +6.41%
+  Luke Beecken               MSD       25    0   3 |      100      100      286      110 |       +10   +10.00%
+  Jaime Uhr-Henry            UNR       23    0   2 |       51       64      103       42 |        -9   -17.65%
+  Rob Monahan                IRE       22    0   3 |       37       47      133       46 |        +9   +24.32%
+  Max Ramsden                MSD       23    2   5 |      115      115      265      123 |        +8    +6.96%
+  Toby Pink                  RD        28    5   q |       23       23       23       30 |        +7   +30.43%
+  Matt Duffy                 IRE       22    0   2 |       47       54      133       53 |        +6   +12.77%
+  Mitchell Hinge             RD        28    1   q |      320      320      320      326 |        +6    +1.88%
+  Cillian Burke              IRE       23    0   2 |       47       54      133       53 |        +6   +12.77%
+  Eamonn Armstrong           IRE       20    0   2 |       47       54      133       53 |        +6   +12.77%
+  Tom Cochrane               RD        20    3   2 |      148      148      272      154 |        +6    +4.05%
+  Matt Hill                  UNR       22    2   2 |       49       49       97       54 |        +5   +10.20%
+  Jayden Nguyen              PDN       20    5   2 |      452      452      468      456 |        +4    +0.88%
+  Thomas Burton              SSP       19    5   1 |      415      415      429      412 |        -3    -0.72%
+  Jack Henderson             SSP       27    0   2 |       88      103      252       91 |        +3    +3.41%
+  Brandon Zerk-Thatcher      ND>64     28    4   q |       47       47       47       48 |        +1    +2.13%
+  Keighton Matofai-Forbes    ND>64     20    0   2 |       65       75      185       65 |        +0    +0.00%
+  River Stevens              ND>64     20    0   2 |       65       75      185       65 |        +0    +0.00%
+  Noah Chamberlain           PDA       19    0   1 |       87      106      194       87 |        +0    +0.00%
+  Nathan Wardius             PDA       22    0   3 |       54       67      194       54 |        +0    +0.00%
+  Zac Walker                 MSD       20    0   2 |      128      128      286      128 |        +0    +0.00%
+  Lennox Hoffman             ND>64     20    0   2 |       65       75      185       65 |        +0    +0.00%
+  Ben Jepson                 SSP       25    4   2 |       88       88      195       88 |        +0    +0.00%
+  ----------------------------------------------------------------------------------------------------------------------
+  TOTAL (rows listed)                              |   13,693   16,005   22,151   19,204 |     +5511
+
+  Of the moved rows, 20 carry 'q': they have a qualifying season, take the YEAR-1+ arm, and their
+  move is the UPLIFT U, not the retention R. That is the SECOND read site -- the leg neither
+  ORDER 19 variant contained.
+
+======================================================================================================================
+6. WHERE THE DERIVED OBJECT LANDS BETWEEN 'H LIFTED ONLY' AND 'EVERYTHING LIFTED'
+======================================================================================================================
+  VARIANT A   (H lifted, national R still clamped at knot 50 on top)      +2312
+  DERIVED, sit site only                                                 +2985
+  ** STAGED (derived object, both sites) **                              +5511
+  VARIANT B   (H lifted AND R:=1.0 -- no sitter charge at all)            +8458
+
+  position of the staged object on the A->B interval: 0.521
+  the SECOND READ SITE (the uplift leg) is worth +2526 of the staged move (45.8% of it)
+
+  ORDER 19 published A +2,306 / B +8,467 against the SUPERSEDED board 94f1fec5.
+  Rebuilt here on the ADOPTED engine (board 1dbd1480, the par fix landed): A +2312 / B +8458.
+  Difference vs ORDER 19: A +6 (0.26%), B -9 (-0.11%). The par fix moved the base the sitter
+  legs act on; the legs themselves are unchanged code.
+
+wrote RETENTION_CONSEQUENCE.json  md5 3e619e3f021595541c73afebcec15f70
+
+PINS RE-ASSERTED AT EXIT -- all three UNMOVED.

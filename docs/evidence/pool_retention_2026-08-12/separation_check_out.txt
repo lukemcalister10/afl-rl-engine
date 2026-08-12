@@ -1,0 +1,41 @@
+================================================================================================================
+ORDER 21 -- THE SEPARATION LAW ON THE FULL 24-YEAR WALK-FORWARD
+================================================================================================================
+  pins asserted at entry: board 1dbd1480..  store d9a24282..  instrument 0f822035..
+  matrices: per_entrant_O21SHIP.json (engine_head a8071af4)  vs  per_entrant_O21DERIVED.json (54347ed4)
+  records: 2645
+
+  fields compared per record: ['v0', 'vpath', 'cur', 'peak', 'anchor']
+
+  RECORDS WHOSE FIELD CHANGED
+    v0               moved     0   of which pool     0   NON-POOL 0
+    vpath            moved  1054   of which pool  1054   NON-POOL 0
+    cur              moved    84   of which pool    84   NON-POOL 0
+    peak             moved   702   of which pool   702   NON-POOL 0
+    anchor           moved   941   of which pool   941   NON-POOL 0
+
+  v0 MOVED: 0 records. ORDER 19 proved three ways that the sitter machinery never reaches the
+  v0 chain; nothing in ORDER 21 changes WHICH functions are called, so this must be 0.
+  ASSERTION HOLDS: v0 delta is EXACTLY 0 on every one of the 2645 records.
+
+  PRICED PATH MOVED: 1054 records, of which NON-POOL: 0
+  ASSERTION HOLDS: every repriced record is a POOL record. ZERO national records move on any
+  year of the 24-year walk-forward.
+
+================================================================================================================
+  THE LEGACY 1-64 INSTRUMENT'S 0.0001: WHO IT IS
+================================================================================================================
+  The legacy instrument admits `teaches_curve & pick 1..64`. That gate is a STORED PICK NUMBER,
+  not the engine's pool flag -- rookie-ladder picks carried numbers on the old 1-99 ladder, so a
+  POOL row can carry a stored pick inside 1-64 and be admitted. Every such row that moved:
+
+  moved records carrying a stored pick in 1..64: 1
+    daniel-butler                type=ND    pick_stored=65   pick=64   is_pool_engine=True teaches_curve=True
+
+  Every one is a POOL row. The legacy table's picks-21-64 yr1 move of +0.0001 is therefore a
+  POOL row inside a population selected by stored pick number -- exactly the crosser class
+  ORDER 19 documented -- and NOT a national reprice. The aggregate ALL-picks-1-64 reading is
+  unchanged to the published precision.
+
+wrote SEPARATION_CHECK.json  md5 6993a69ffe50ad0de40f5a11e8daac4e
+PINS RE-ASSERTED AT EXIT -- all three UNMOVED.
