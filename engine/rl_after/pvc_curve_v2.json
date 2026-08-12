@@ -94,27 +94,32 @@
   "rd_position_field": "future_position",
   "rd_positional_shrink_target": 262.2,
   "signed_flat": {
-   "IRE": 133.4,
-   "MSD": 286.8,
-   "PDA": 194.3,
-   "PDN": 123.0,
-   "PDS": 145.0,
-   "SSP": 252.8,
-   "UNR": 103.7
+   "SSP": 315,
+   "MSD": 374,
+   "IRE": 106,
+   "PDA": 188,
+   "PDN": 96,
+   "PDS": 56,
+   "UNR": 66
   },
   "signed_nd65_plus": {
-   "_rule": "THE CAP IS A LAW, NOT A NUMBER: the price is min(measured_k15, the ruled curve's pick cap_against_curve_pick) resolved against the ladder in force AT BUILD TIME. A curve re-derivation moves it with no edit here.",
-   "cap_against_curve_pick": 64,
-   "measured_k15": 266.1
+   "_rule": "AMENDED #334 comment 5262928754, owner ruling 2026-08-12: THE CAP IS REMOVED. ND65+ prices at its DERIVED level -- `measured_k15`, read verbatim, exactly like every other signed division. There is no min against the pick curve any more. OWNER, VERBATIM: \"Happy to amend the law for ND > 64. As it's not going to impact many players anymore, only historical ones, as the ND never goes beyond pick 64 these days. So very few live players draw from that, and those who do would either have been delisted or have production determine their price now.\" GROUNDS ON THE RECORD: ORDER 22 measured this pathway returning 1.53x the target and measured the cap to be the SOLE cause of the residual on every other pathway (pool aggregate 1.0389 with it, 0.9969 without). CONSEQUENCE ACCEPTED BY THE OWNER: a post-64 selection may now price above pick 64's curve value; the draft-boundary tension the cap guarded is queued for the pick-curve re-derivation.",
+   "_rule_SUPERSEDED_2026_08_12": "THE CAP IS A LAW, NOT A NUMBER: the price is min(measured_k15, the ruled curve's pick cap_against_curve_pick) resolved against the ladder in force AT BUILD TIME. A curve re-derivation moves it with no edit here.",
+   "_cap_removal_note": "The cap's pick is preserved below under a RETIRED key name rather than deleted, so the history stays readable AND any code still reaching for `cap_against_curve_pick` fails loudly instead of silently re-capping. rl_model.py's read site carries the same amendment and the same history.",
+   "cap_against_curve_pick_REMOVED_2026_08_12": 64,
+   "measured_k15": 298
   },
   "signed_rd_positional": {
-   "KPD": 300.3,
-   "KPF": 216.0,
-   "MID": 294.8,
-   "RUCK": 282.5,
-   "SD": 246.9,
-   "SF": 231.5
-  }
+   "MID": 289,
+   "SD": 245,
+   "SF": 217,
+   "KPD": 370,
+   "KPF": 209,
+   "RUCK": 259
+  },
+  "_signed_flat_ruling_2026_08_12": "THE SEVEN FLAT PATHWAY LEVELS, RE-DERIVED AND OWNER-RULED (#334 comment 5262928754, owner ruling 2026-08-12). DERIVED, NOT PASTED. These levels are the fixed point of ORDER 23's iterate-to-tolerance step: each pathway's level is what it must be for that pathway's realised careers, valued through the engine's own walk-forward, to return the same value per point of ENTRY PRICE as the national draft's picks 1-64 (the measured ND-parity target, arm-split). Owner framing, ruled at #334 comment 5262928754, owner ruling 2026-08-12: THE PRICE IS AN OUTCOME OF THE CAREERS, NEVER A RATIO OF OLD PRICES -- at the fixed point the level that produced the matrix has washed out. Written as INTEGERS because rl_model.py builds its lookup with int(float(v)) and truncates: the signed table and the engine's table are now the same object. Evidence: docs/evidence/pool_landing_2026-08-12/ (iteration, controls and verification) and docs/evidence/pool_final_2026-08-12/SHIPPING_PACKET.md (the derivation this converges). Superseded N43 values (2026 signature, #306 comment 5179992080): IRE 133.4 \u00b7 MSD 286.8 \u00b7 PDA 194.3 \u00b7 PDN 123.0 \u00b7 PDS 145.0 \u00b7 SSP 252.8 \u00b7 UNR 103.7.",
+  "_signed_rd_positional_ruling_2026_08_12": "THE SIX ROOKIE-DRAFT POSITIONAL LEVELS, RE-DERIVED AND OWNER-RULED (#334 comment 5262928754, owner ruling 2026-08-12). Layer 2 of the same derivation: pathway x position, cells at n>=20 deriving on their own outcomes, thin cells borrowing the whole-pool positional shape at K=10, the unsampled remainder priced as its own residual group, and EVERY pathway renormalised after borrowing so the entry-weighted mean of the cells equals the pathway's all-in value exactly. Superseded N43 values: KPD 300.3 \u00b7 KPF 216.0 \u00b7 MID 294.8 \u00b7 RUCK 282.5 \u00b7 SD 246.9 \u00b7 SF 231.5.",
+  "_pool_levels_ruling_2026_08_12": "THE POOL UPDATE (#334 comment 5262928754, owner ruling 2026-08-12). The whole signed table above is replaced by ORDER 23's derived fixed point, landed together with two other levers in one act: H_POOLSIT/H_UNION retired to 1.0 (directive D8) and the derived pool sit-out retention surface wired as the engine's source. Layer 1 shrinks every pathway uniformly at K=15 toward the whole-pool aggregate (owner verbatim, 2026-08-12: \"K=15 was across the board, not PDS\"); layer 2 is wirable for the rookie draft alone, which is a limit of this table's structure and an open owner question, not a silence. DERIVED, NOT PASTED. These levels are the fixed point of ORDER 23's iterate-to-tolerance step: each pathway's level is what it must be for that pathway's realised careers, valued through the engine's own walk-forward, to return the same value per point of ENTRY PRICE as the national draft's picks 1-64 (the measured ND-parity target, arm-split). Owner framing, ruled at #334 comment 5262928754, owner ruling 2026-08-12: THE PRICE IS AN OUTCOME OF THE CAREERS, NEVER A RATIO OF OLD PRICES -- at the fixed point the level that produced the matrix has washed out. Written as INTEGERS because rl_model.py builds its lookup with int(float(v)) and truncates: the signed table and the engine's table are now the same object. Evidence: docs/evidence/pool_landing_2026-08-12/ (iteration, controls and verification) and docs/evidence/pool_final_2026-08-12/SHIPPING_PACKET.md (the derivation this converges)."
  },
  "pool_value": 237.2,
  "pre_split_curve_md5": "89c14729",

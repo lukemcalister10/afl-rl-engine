@@ -1144,6 +1144,51 @@ def _R_surf(cls,pick,tau):                                   # interp over log-p
     return float(np.interp(tau,[0,1,2,3,4,5,6],[1.0]+dv))
 LAM_SIT=[0.0,0.160,0.493,0.547,0.547,0.816,1.0]
 def _sitout_cls(pos): return 'RUCK' if pos=='RUCK' else ('KPP' if pos in ('KPF','KPD') else 'nonKPP')
+
+# ===== #334 -- THE POOL SIT-OUT RETENTION, DERIVED ON POOL HISTORY. LANDED BY ORDER 23. ============
+# THE SOURCE OF THESE NUMBERS IS A COMMITTED SIGNED DATA ARTIFACT -- not a dial, not a constant a
+# seat typed, and not something a rebuild can quietly re-fit:
+#     engine/rl_after/pool_retention_surface.json   md5 53196a529f0ba8ca55aa0313cbb502f3
+#     9 pathway surfaces x 3 classes x 6 depths, plus the mean-preserving uplift U per pathway.
+# DERIVATION PROVENANCE: docs/evidence/pool_retention_2026-08-12/pool_retention_derive.py (ORDER 21,
+# the d13 ND method with departures D1-D7 pre-registered), as amended by ORDER 22's
+# o22_make_relaxed_surface.py under two owner rulings of 2026-08-12 -- the isotonic constraint
+# RELAXED at depths >= 2 (comment 5262159933) and a class-axis K=10 shrinkage toward the all-class
+# same-depth cell (comment 5262213139) -- with U re-derived, entry-weighted and mean-preserving to
+# 1.0000000000 exactly, at ORDER 23's final levels. Verification: docs/evidence/pool_landing_2026-08-12/.
+# The literals below are that artifact inlined by docs/evidence/pool_final_2026-08-12/o21_patch.py,
+# which is the mechanism every measuring act since ORDER 21 has used; ORDER 23 makes it permanent, so
+# the landed engine is byte-for-byte the engine the packet's numbers were measured on.
+# Owner ruling, directive D8 (comment 5253173347): "the pool sitter on top penalty should go, and the
+# pool index should be rederived in the same way the ND one is where possible not for pick 65, but for
+# the pool" + "They're all part of the pool ... rookie draft pick 1 and 30 are the same" (NO PICK AXIS).
+# Derivation: docs/evidence/pool_retention_2026-08-12/pool_retention_derive.py (the d13 ND method,
+# departures D1-D7 declared in PREREG_ORDER21.md). H_POOLSIT / H_UNION are RETIRED to 1.0 alongside.
+# THE ONE DERIVED OBJECT, AT BOTH READ SITES, BY CONSTRUCTION AND NOT BY ACCIDENT:
+#   sitout_ev  fires iff ns==0  == a SITTER by the derivation's own definition  -> R_derived < 1
+#   _a_blend   fires iff ns>=1  == a NON-SITTER by that same definition         -> U_pathway > 1
+# The two engine sites partition the pool population on exactly the variable the derivation splits on,
+# so the mean-preserving pair covers both. U>1 IS A LIFT and is intentional: the owner's D8 amendment
+# requires the sitter differential to REDISTRIBUTE inside the pathway, never to be a net charge.
+# EVERY SITE IS p.get('_pool')-GATED. National rows read the national surface unchanged at both sites.
+_PR_PATH={"RD": {"nonKPP": [0.654026, 0.399825, 0.577713, 0.642941, 0.560105, 0.419938], "KPP": [0.709917, 0.388842, 0.385506, 0.36482, 0.359866, 0.343973], "RUCK": [1.0, 0.532863, 0.585961, 0.459351, 0.388492, 0.373777]}, "ND>64": {"nonKPP": [0.484007, 0.297649, 0.36705, 0.359746, 0.377394, 0.344636], "KPP": [0.888848, 0.638924, 0.500115, 0.417047, 0.40741, 0.377525], "RUCK": [1.0, 0.572287, 0.609, 0.482423, 0.409962, 0.382713]}, "IRE": {"nonKPP": [0.774376, 0.354627, 0.432814, 0.482117, 0.478204, 0.38965], "KPP": [0.910361, 0.57065, 0.47913, 0.342329, 0.360619, 0.367389], "RUCK": [0.841667, 0.498235, 0.623626, 0.478052, 0.395879, 0.373777]}, "UNR": {"nonKPP": [0.701703, 0.420057, 0.483876, 0.511064, 0.478204, 0.38965], "KPP": [0.80197, 0.518584, 0.509762, 0.419198, 0.391681, 0.367389], "RUCK": [0.407619, 0.397152, 0.529881, 0.439138, 0.395879, 0.373777]}, "PDA": {"nonKPP": [0.193817, 0.260196, 0.400412, 0.469149, 0.439276, 0.38965], "KPP": [0.874506, 0.575799, 0.564965, 0.456115, 0.391681, 0.367389], "RUCK": [0.787736, 0.482829, 0.585763, 0.478052, 0.395879, 0.373777]}, "PDS": {"nonKPP": [0.844021, 0.425781, 0.505669, 0.474629, 0.478204, 0.38965], "KPP": [0.874506, 0.590235, 0.57122, 0.427069, 0.391681, 0.367389], "RUCK": [0.913636, 0.498235, 0.623626, 0.478052, 0.395879, 0.373777]}, "MSD": {"nonKPP": [0.473255, 0.423386, 0.497823, 0.511064, 0.478204, 0.38965], "KPP": [0.812085, 0.452324, 0.477958, 0.400794, 0.391681, 0.367389], "RUCK": [0.949998, 0.477417, 0.623626, 0.478052, 0.395879, 0.373777]}, "PDN": {"nonKPP": [0.85026, 0.479633, 0.54829, 0.511064, 0.478204, 0.38965], "KPP": [0.855199, 0.522854, 0.518424, 0.400794, 0.391681, 0.367389], "RUCK": [0.913636, 0.498235, 0.623626, 0.478052, 0.395879, 0.373777]}, "SSP": {"nonKPP": [0.461179, 0.352533, 0.497823, 0.511064, 0.478204, 0.38965], "KPP": [0.865542, 0.490959, 0.477958, 0.400794, 0.391681, 0.367389], "RUCK": [1.0, 0.54385, 0.594713, 0.478052, 0.395879, 0.373777]}}
+_PR_WHOLE={"nonKPP": [0.62565, 0.382786, 0.497823, 0.511064, 0.478204, 0.38965], "KPP": [0.811759, 0.490959, 0.477958, 0.400794, 0.391681, 0.367389], "RUCK": [1.0, 0.498235, 0.623626, 0.478052, 0.395879, 0.373777]}
+_PR_U={"RD": 1.2063266569, "ND>64": 1.3686704435, "IRE": 1.3379685672, "UNR": 1.5040535246, "PDA": 1.6144369057, "PDS": 1.4159780385, "MSD": 3.0959013333, "PDN": 2.0955998571, "SSP": 1.2000961905}
+_PR_U_ALL=1.2522142798
+def _pr_pathway(p):
+    t=p.get('type')
+    if t=='ND': return 'ND>64'
+    return t if t in _PR_PATH else None
+def _pr_R(p,tau):
+    """the derived pool retention: pathway x class x depth, isotonic non-increasing, tau=0 -> 1.0"""
+    cls=_sitout_cls(MA.gfut(p)); pw=_pr_pathway(p)
+    dv=(_PR_PATH[pw][cls] if pw else _PR_WHOLE[cls])
+    return float(np.interp(tau,[0,1,2,3,4,5,6],[1.0]+list(dv)))
+def _pr_U(p):
+    """the mean-preserving uplift the pathway's NON-sitters carry (entry-weighted mean == 1 exactly)"""
+    pw=_pr_pathway(p)
+    return float(_PR_U[pw] if pw else _PR_U_ALL)
+# ===================================================================================================
 # ==== ASK1 (D13 03/07/2026): RUCK PRIOR CAP — cap the hot ruck band prior as a max V0/PVC ratio. Parameterised
 # dial RL_RUC_PRIOR_CAP; DEFAULT 1.73 = the class's own ND-ruck median V0/PVC (Luke's inclination, D13 ASK1:
 # "I'd be inclined to just cap ruck prior at the 1.73 median"). Sits at the raw_ev/band level (for RUCK wage=0
@@ -1961,6 +2006,7 @@ def _surprise(e_full,anchor,gp):
 def sitout_ev(p,Y,e_full):
     fe=_fEy(Y,p); tau=max(0.0,Y-cp.debutyr(p))+((fe**1.5) if Y>=cp.debutyr(p) else 0.0)   # D12: CONCAVE penalty proration tau'=(R/24)^1.5 (Luke OPTION A); completed seasons full (integer knots), in-progress season accrues concavely. PENALTY path only — the lam reward blend below is UNTOUCHED.
     R=_R_surf(_sitout_cls(MA.gfut(p)), MA.effpk(p), tau)     # D13 ASK3: pick-conditioned, isotonic-in-depth surface (was depth-only R_SIT)
+    if p.get('_pool'): R=_pr_R(p,tau)                        # ORDER 21: the sit-out arm is a SITTER by definition -> the derived retention.
     gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
     gp=min(gy/fe,6.0)                                        # hoisted: the ONE games-at-pace clamp the lam ramp AND the resolution fade both read (identical expression; no new clip)
     anch=R*entry_anchor(p)                                   # THE ANCHOR LEG — hoisted; the SAME object the blend and the surprise statistic both read
@@ -2015,8 +2061,21 @@ _A_TAU=_EVW_TAU                              # the engine's own pedigree-fade ra
 # means and is why the union factor is so much deeper.
 # THE #326 FLOOR (0.45) IS NOT TOUCHED, and NO BLANKET LIFTS EXIST ANYWHERE: every factor here is <= 1.
 H_ON=os.environ.get('RL_ITEM_H','1')!='0'   # declared kill-switch: RL_ITEM_H=0 => no cuts, byte-exact
-H_UNION=float(os.environ.get('RL_H_UNION','0.280'))
-H_POOLSIT=float(os.environ.get('RL_H_POOLSIT','0.804'))
+# ===== #334 ORDER 23 -- THE LAST TWO ITEM H CELLS ARE RETIRED TO 1.0 (owner ruling, directive D8,
+# comment 5253173347; landed 2026-08-12 with the derived pool retention surface and the derived
+# pool entry levels, as ONE act -- the three levers are separated in the movers ledger, not in time).
+# OWNER, VERBATIM: "the pool sitter on top penalty should go, and the pool index should be rederived
+# in the same way the ND one is where possible not for pick 65, but for the pool".
+# SUPERSEDED SHIPPED DEFAULTS, preserved here as history: H_UNION 0.280 · H_POOLSIT 0.804. Both were
+# flat END-multipliers on the finished price of a pool sitter, reading only _pool / type / draft age
+# and never games, level or establishment -- the same shape of cut the same ruling retired
+# H_MATNONRD for, and the reason the union factor composed to an 86%% cut on a row in both cells.
+# WHAT REPLACES THEM IS NOT NOTHING: the pool sit-out retention is now DERIVED from pool history
+# (engine/rl_after/pool_retention_surface.json, wired at both pool read sites below) and applied on
+# the v0/prior side, which is the owner's own recorded design direction for a pool discount.
+# The manifest carries the same 1.0 in data/model_config.json; this is the non-gate default.
+H_UNION=float(os.environ.get('RL_H_UNION','1.0'))
+H_POOLSIT=float(os.environ.get('RL_H_POOLSIT','1.0'))
 # ===== #334 ORDER 9 ADOPTION — H_MATNONRD RETIRED TO 1.0 BY OWNER RULING (filed 5249802288).
 # OWNER, verbatim: "H to 1, B to flat, and note these as items of investigation for the rederivation."
 # THE GROUNDS, measured and filed at POOL_ARM_ATTRIBUTION.md before the ruling:
@@ -2175,6 +2234,7 @@ _A_DRAGFADE=os.environ.get('RL_A_DRAGFADE','0')!='0'
 def _a_blend(p,Y,e_full):
     tau=max(0.0,Y-cp.debutyr(p))+((_fEy(Y,p)**1.5) if Y>=cp.debutyr(p) else 0.0)   # sitout_ev's own depth clock
     R=_R_surf(_sitout_cls(MA.gfut(p)),MA.effpk(p),tau)
+    if p.get('_pool'): R=_pr_U(p)                            # ORDER 21: the year-1+ arm is a NON-SITTER by definition -> the uplift.
     anch0=R*entry_anchor(p)
     w=_c_w(p,Y,e_full,entry_anchor(p))                               # THE ONE READ of the evidence weight; both roles below use this value
     anch=anch0*(1.0+w*(C_H-1.0))                                     # #334 ITEM C: the cap release on the taught level
