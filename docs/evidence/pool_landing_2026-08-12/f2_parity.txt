@@ -1,0 +1,6 @@
+CONTROL board 1dbd1480   F=1.0     shared=802   mismatches=795
+CONTROL board 1dbd1480   F=1.0524  shared=802   mismatches=117
+
+LANDED  board 665311ca   F=1.0     shared=802   mismatches=794
+LANDED  board 665311ca   F=1.0524  shared=802   mismatches=0
+
