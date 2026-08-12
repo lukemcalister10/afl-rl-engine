@@ -1,0 +1,31 @@
+ORDER 25 STEP 1 -- THE CONTROL. Run on the UNMODIFIED tree at the pre-registration commit's HEAD,
+before one par cell was computed, one U''' derived or one engine byte edited.
+
+Command (ORDER 24B's own builder, carried verbatim, on ORDER 24B's own committed surface):
+
+    bash docs/evidence/pool_quality_2026-08-12/build_board_o24b.sh \
+         $SP/o25/board_CONTROL_psi.json \
+         docs/evidence/pool_quality_2026-08-12/SURFACE_psi.json
+
+Transcript:
+
+  ref: HEAD -> 8e3bbb8
+  STAGED surface alpha=1.0  U'={'RD': 1.272476, 'ND>64': 1.419927, 'IRE': 1.378674, 'UNR': 1.598397,
+                               'PDA': 1.646263, 'PDS': 1.930577, 'MSD': 2.004494, 'PDN': 1.862162,
+                               'SSP': 1.182345}
+  surface artifact md5 -> e3491b66ff5fd3ad31fa9d210ef0cf95
+  config: bf012105  rl_model: e5eb5e44  engine_head: c327c2b1  curve_artifact: 07b7109f
+  OK e2bf7347e07c08f1efbdda17d6601e4e  -> board_CONTROL_psi.json
+
+RESULT: **e2bf7347e07c08f1efbdda17d6601e4e** -- BYTE-IDENTICAL to the psi board ORDER 24B recorded
+and to the board the ORDER 25 brief names. **CONTROL PASSES.** Pre-registration A1 HELD.
+
+The four identities the control also had to hold, and did (pre-registration A2 HELD):
+
+  config          bf012105   unmoved  (H_POOLSIT / H_UNION already retired to 1.0 by ORDER 23)
+  rl_model        e5eb5e44   unmoved  (the ND65+ cap amendment already landed by ORDER 23)
+  curve_artifact  07b7109f   unmoved  (the #469 signed levels, frozen for this control)
+  store           d9a24282   unmoved  (this act writes no store bytes at any point)
+
+The surface artifact md5 e3491b66 is ORDER 24B's; it moves in this act because the par table and the
+uplift block inside it move, and for no other reason.

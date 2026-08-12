@@ -1,0 +1,85 @@
+======================================================================================================================
+THE ITERATE-TO-TOLERANCE TRAJECTORY.  Declared tolerance: 1.0% relative on every pathway's lambda.
+======================================================================================================================
+
+RAW lambda (pathway career profile / the freshly measured national target) by round:
+  pathway           R1          R2          R3          R4
+  RD          0.999367    0.999708    0.999708    0.999708
+  SSP         0.983315    0.996509    0.998994    0.998994
+  MSD         0.918069    0.976629    1.000793    1.000793
+  IRE         0.997611    0.997611    0.997611    0.997611
+  PDA         1.016577    1.007658    0.998648    0.998648
+  PDN         0.997705    0.997702    0.997702    0.997702
+  PDS         0.996918    0.996918    0.996918    0.996918
+  UNR         0.987809    1.002221    1.002224    1.002224
+  ND>64       0.997469    1.000358    1.000358    1.000358
+  ALLPOOL     0.987742    0.996935    0.999795    0.999795
+
+SHRUNK lambda (the quantity the level step is driven by; K=15 uniform):
+  pathway           R1          R2          R3          R4
+  RD          0.999120    0.999649    0.999709    0.999709
+  SSP         0.984306    0.996604    0.999173    0.999173
+  MSD         0.926706    0.979147    1.000669    1.000669
+  IRE         0.995555    0.997470    0.998066    0.998066
+  PDA         1.010023    1.005221    0.998909    0.998909
+  PDN         0.995129    0.997504    0.998243    0.998243
+  PDS         0.993095    0.996925    0.998117    0.998117
+  UNR         0.987795    1.001150    1.001731    1.001731
+  ND>64       0.996388    0.999978    1.000295    1.000295
+
+THE LEVEL IN FORCE at each round (what the engine actually read, int-truncated):
+  key              R1       R2       R3       R4
+  SSP             315      310      309      309
+  MSD             374      347      337      337
+  IRE             106      106      106      106
+  PDA             188      190      192      192
+  PDN              96       96       96       96
+  PDS              56       56       56       56
+  UNR              66       65       65       65
+  ND65+eff        298      297      297      297
+  RD:MID          289      290      290      290
+  RD:SD           245      245      245      245
+  RD:SF           217      218      218      218
+  RD:KPD          370      369      369      369
+  RD:KPF          209      206      206      206
+  RD:RUCK         259      257      257      257
+
+THE TARGET at each round (the separation law, read at the calibration target itself):
+  target    0.99000609810.99000609810.99000609810.9900060981
+  distinct values across every round: 1  -> the target does NOT move when pool prices move
+
+CONVERGENCE AT THE FINAL ROUND (R4):
+  pathway       raw lam      |raw-1|   shrunk lam   |shrunk-1|    verdict
+  RD           0.999708       0.0292%     0.999709      0.0291%     within
+  SSP          0.998994       0.1006%     0.999173      0.0827%     within
+  MSD          1.000793       0.0793%     1.000669      0.0669%     within
+  IRE          0.997611       0.2389%     0.998066      0.1934%     within
+  PDA          0.998648       0.1352%     0.998909      0.1091%     within
+  PDN          0.997702       0.2298%     0.998243      0.1757%     within
+  PDS          0.996918       0.3082%     0.998117      0.1883%     within
+  UNR          1.002224       0.2224%     1.001731      0.1731%     within
+  ND>64        1.000358       0.0358%     1.000295      0.0295%     within
+
+  THE RESIDUAL IS AN IDENTITY, NOT NOISE. The shrinkage makes
+      shrunk = w*raw + (1-w)*pool_aggregate,  so  raw = (shrunk - (1-w)*pool_agg) / w.
+  With pool_agg = 0.999795 at this round, the predicted raw lambda for each pathway is:
+  pathway           w  raw PREDICTED   raw MEASURED   difference
+  RD           0.9788       0.999708       0.999708     0.00e+00
+  SSP          0.7761       0.998994       0.998994     0.00e+00
+  MSD          0.8760       1.000793       1.000793     0.00e+00
+  IRE          0.7917       0.997611       0.997611     1.11e-16
+  PDA          0.7727       0.998648       0.998648     0.00e+00
+  PDN          0.7414       0.997702       0.997702     1.11e-16
+  PDS          0.5833       0.996918       0.996918     1.11e-16
+  UNR          0.7973       1.002224       1.002224     0.00e+00
+  ND>64        0.8889       1.000358       1.000358     2.22e-16
+
+  So every pathway's raw lambda is pinned by the POOL AGGREGATE. In ORDER 22 that aggregate was held
+  above 1 by ONE pathway a signed law forbade repricing -- ND>64, capped at the curve's pick-64
+  value -- and the 1% residual on every other pathway was that cap's arithmetic shadow. THE OWNER
+  REMOVED THE CAP (ruling 5262928754). The two aggregates below are now the SAME NUMBER to three
+  decimal places, which is what it looks like when the blocked pathway stops blocking:
+    pool aggregate INCLUDING ND>64 : 0.999795
+    pool aggregate EXCLUDING ND>64 : 0.999717   (ND>64 is 12.2% of the pool's entry weight)
+
+wrote /home/user/afl-rl-engine/.claude/worktrees/agent-ae867318eb00a513e/docs/evidence/pool_landing_v2_2026-08-12/ITERATION_V2.json

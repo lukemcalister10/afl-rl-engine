@@ -1,0 +1,36 @@
+########################################################################################
+# CONTROL A -- NON-VACUITY. Hand this file ORDER 24B's OWN par table (relabelled by a
+# shim so the amendment assertion passes) at the checkout levels, and it must reproduce
+# ORDER 24B's published U'' EXACTLY. If it does, the ONLY thing that moved U''' is the par.
+########################################################################################
+  pathway     cells   sit mass  play mass     q-mass     qbar  U'' (o24b)        U'''   post-redist mean
+                     Se(1-phi)     Se*phi   Se*phi*q    ratio  this level    THIS ACT     (HALT if != 1)
+  --------------------------------------------------------------------------------------------------------------------------
+  RD           2352   243343.3   409449.9   360474.3   0.8804    1.239884    1.272476       1.0000000000
+  ND>64         441    58959.7    79344.6    68323.7   0.8611    1.361599    1.419927       1.0000000000
+  IRE           137     7529.9     7753.0     6680.9   0.8617    1.326308    1.378674       1.0000000000
+  UNR           126     4503.2     4248.5     3625.8   0.8534    1.510685    1.598397       1.0000000000
+  PDA           106    10189.3    10782.9     9599.8   0.8903    1.575357    1.646263       1.0000000000
+  PDS            62     2524.4     1129.6      946.2   0.8376    1.779469    1.930577       1.0000000000
+  MSD            40    11348.7     4395.2     3955.5   0.9000    1.904002    2.004494       1.0000000000
+  PDN            36     2727.8      909.3      812.9   0.8941    1.770823    1.862162       1.0000000000
+  SSP            34     3867.6     7403.6     6806.9   0.9194    1.167647    1.182345       1.0000000000
+  ALL POOL     3334   344993.9   525416.7   461225.9   0.8778    1.275231    1.313536       1.0000000000
+
+  MEAN-PRESERVATION INSTRUMENT: pathways whose post-redistribution entry-weighted mean is not
+  1.0000000000 (tol 1e-9): 0
+  IDENTITY CHECK  U-1 == (U_flat-1)/qbar, computed independently: worst |residual| = 2.220e-16
+
+  wrote /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o25/surface_ctrlA.json
+    pathway   ORDER 24B U''    reproduced       |diff|
+    RD        1.2724757601     1.2724757601     0.000e+00
+    ND>64     1.4199268870     1.4199268870     0.000e+00
+    IRE       1.3786744741     1.3786744741     0.000e+00
+    UNR       1.5983967101     1.5983967101     0.000e+00
+    PDA       1.6462630368     1.6462630368     0.000e+00
+    PDS       1.9305766923     1.9305766923     0.000e+00
+    MSD       2.0044940661     2.0044940661     0.000e+00
+    PDN       1.8621622545     1.8621622545     0.000e+00
+    SSP       1.1823452545     1.1823452545     0.000e+00
+    worst |diff| = 0.000e+00
+    CONTROL A PASSES -- the machinery is ORDER 24B's, with the par as its ONLY moving part.

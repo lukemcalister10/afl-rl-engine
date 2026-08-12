@@ -1,0 +1,258 @@
+==========================================================================================================================
+ORDER 25 DERIVATION (landed delivery; ND65+ UNCAPPED)   label=R1   matrix=per_entrant_O25R1.json (c9e38ac1)
+==========================================================================================================================
+  matrix meta: engine_head=8e5ae907  store_md5=d9a24282  recs=2645  eligible=2644
+  pins (computed, not hardcoded): board 665311ca · store d9a24282 · instrument 0f822035 · harness_pvc_REPINNED_pass3.py f2c81da1 · harness_armsplit.py 5c683549
+  strata: ARM-SPLIT S[(arm,pos,tenure)] (ORDER 20). CONTROL PASS -- split=False reproduces the
+          pinned harness on all 2644 eligible rows, value for value.
+  completion provenance {'completed': 660, 'prior_fallback_no_written': 18, 'concluded_realised': 1849, 'prior_fallback_thin': 117}  fallback 5.106%
+
+  DENOMINATOR (the entry price each arm actually pays): BASIS = ANCHOR
+      pool rows     -> entry_anchor = signed level x _PL_F (1.0524)
+      national rows -> v0_start, which IS entry_anchor for them
+
+  *** THE TARGET, MEASURED FRESH ON THIS ENGINE ***
+      national arm profile (engine arm, picks 1-64, n=1443) = 0.9900060981
+      ALL POOL profile                          (n=1200) = 0.9778707053
+      pool delivers 0.987742 of what the national arm delivers per unit of entry price.
+
+  THE OTHER BASIS, PRINTED SO THE DEPARTURE IS VISIBLE (basis=V0):
+      national target 0.9900060981 (IDENTICAL -- entry_anchor == v0_start for a national row)
+      ALL POOL       0.3850366693   ->  pool/target = 0.388924
+      SUM pool entry price:  this basis 312,703   other basis 794,166
+
+==========================================================================================================================
+LAYER 1 -- THE ALL-IN VALUE PER PATHWAY.  UNIFORM K=15 SHRINKAGE TOWARD THE WHOLE-POOL VALUE.
+==========================================================================================================================
+  Owner verbatim (2026-08-12): "K=15 was across the board, not PDS."   w = n/(n+15).
+  shrunk profile = w * own profile + (1-w) * ALL-POOL profile;  lambda = shrunk / target.
+
+  pathway      n        w | raw profile    raw lam | shrunk prof shrunk lam |  S entry now
+  ----------------------------------------------------------------------------------------------------------------------
+  RD         691   0.9788 |    0.989380   0.999367 |    0.989135   0.999120 |      189,980
+  SSP         52   0.7761 |    0.973488   0.983315 |    0.974469   0.984306 |       17,238
+  MSD        106   0.8760 |    0.908894   0.918069 |    0.917445   0.926706 |       41,721
+  IRE         57   0.7917 |    0.987641   0.997611 |    0.985605   0.995555 |        6,359
+  PDA         51   0.7727 |    1.006417   1.016577 |    0.999929   1.010023 |       10,090
+  PDN         43   0.7414 |    0.987734   0.997705 |    0.985183   0.995129 |        4,344
+  PDS         21   0.5833 |    0.986955   0.996918 |    0.983170   0.993095 |        1,238
+  UNR         59   0.7973 |    0.977936   0.987809 |    0.977923   0.987795 |        4,098
+  ND>64      120   0.8889 |    0.987500   0.997469 |    0.986430   0.996388 |       37,634
+  ----------------------------------------------------------------------------------------------------------------------
+  ALL POOL  1200        - |    0.977871   0.987742 |     (donor)            |      312,703
+
+==========================================================================================================================
+THE BORROW DONOR -- WHOLE-POOL POSITIONAL SHAPE (ruled whole-pool-only; ND excluded ON MEASUREMENT)
+==========================================================================================================================
+  pos         n      profile        shape
+  MID       270     1.069956     1.094169
+  SD        272     0.981412     1.003621
+  SF        260     0.798163     0.816225
+  KPD       129     1.101606     1.126536
+  KPF       129     1.029553     1.052852
+  RUCK      140     0.891715     0.911894
+
+==========================================================================================================================
+LAYER 2 -- CELL CENSUS AND OWN-OUTCOME PROFILES.  KEYS: PATHWAY x POSITION x AGE ONLY.
+==========================================================================================================================
+  No pick axis and none invented: effpk == POOL_PICK == 65 for every pool row (isolation law, §0A).
+  The AGE key is the multiplicative _b_shape/_b_factor leg, FLAT at 1.0 by ORDER 9 and not wired here (D7).
+  A cell is SAMPLED at n >= 20 and derives from its own outcomes.
+
+  pathway      n |            MID             SD             SF            KPD            KPF           RUCK | sampled
+  ----------------------------------------------------------------------------------------------------------------------
+  RD         691 |    0.9987/176     1.0015/158     1.0174/149     0.9815/72      0.9781/65      1.0066/71   | 6 of 6
+  SSP         52 |         -/5            -/8            -/16           -/5            -/12           -/6    | 0 of 6
+  MSD        106 |    1.6043/23           -/13      0.6037/23           -/14           -/19           -/14   | 2 of 6
+  IRE         57 |         -/5       0.9550/35           -/4            -/6            -/5            -/2    | 1 of 6
+  PDA         51 |         -/14           -/10           -/14           -/2            -/6            -/5    | 0 of 6
+  PDN         43 |         -/4            -/14           -/16           -/5            -/2            -/2    | 0 of 6
+  PDS         21 |         -/7            -/5            -/3            -/4            -/1            -/1    | 0 of 6
+  UNR         59 |         -/8            -/4            -/5            -/9            -/3       0.5616/30   | 1 of 6
+  ND>64      120 |    0.7121/28      1.0019/25      0.5223/30           -/12           -/16           -/9    | 3 of 6
+  ----------------------------------------------------------------------------------------------------------------------
+  SAMPLED CELLS ACROSS THE POOL: 13 of 54.   (entries are lambda = own profile / target, n after the slash)
+
+==========================================================================================================================
+THE RECONCILIATION TEST, per pathway, tolerance 1e-09 RELATIVE, ENTRY-WEIGHTED IN BOTH LAYERS
+==========================================================================================================================
+  RULE 1 (diagnostic): sampled cells own; unsampled remainder carries THE PATHWAY VALUE.
+  RULE 2 (ruled):      sampled cells own; unsampled remainder is ITS OWN RESIDUAL GROUP.
+
+  pathway   sampled |   RULE 1 resid   verdict |   RULE 2 resid   verdict
+  ----------------------------------------------------------------------------------------------------------------------
+  RD         6 of 6 |       2.47e-04      FAIL |       2.47e-04      FAIL
+  SSP        0 of 6 |       0.00e+00      PASS |       1.01e-03      FAIL
+  MSD        2 of 6 |       8.30e-02      FAIL |       9.32e-03      FAIL
+  IRE        1 of 6 |       2.50e-02      FAIL |       2.07e-03      FAIL
+  PDA        0 of 6 |       0.00e+00      PASS |       6.49e-03      FAIL
+  PDN        0 of 6 |       0.00e+00      PASS |       2.59e-03      FAIL
+  PDS        0 of 6 |       0.00e+00      PASS |       3.85e-03      FAIL
+  UNR        1 of 6 |       2.19e-01      FAIL |       1.36e-05      FAIL
+  ND>64      3 of 6 |       1.84e-01      FAIL |       1.08e-03      FAIL
+
+  pathway     rem n    rem entry    rem profile  pathway value
+  MSD            60       23,616       0.767742       0.917445
+  IRE            22        2,454       1.054738       0.985605
+  UNR            29        2,014       1.414428       0.977923
+  ND>64          37       11,604       1.579775       0.986430
+
+==========================================================================================================================
+THE SHIPPED CONSTRUCTION -- rule 2 + whole-pool borrow at K=10 + PER-PATHWAY RENORMALISATION
+==========================================================================================================================
+    borrowed    v_c = w_c*own_c + (1-w_c)*(S_allin * shape_c),   w_c = n_c/(n_c+K)
+    measure     M   = SUM(e_c*v_c)/SUM(e_c)
+    renormalise v'_c = v_c * (S_allin / M)   ->   SUM(e_c*v'_c)/SUM(e_c) == S_allin EXACTLY
+
+  pathway     S_allin      M pre   renorm k | renormalised cell lambda (vs target)
+                                            |        MID        SD        SF       KPD       KPF      RUCK
+  ----------------------------------------------------------------------------------------------------------------------
+  RD         0.989135   0.990671   0.998449 |     1.0022    1.0000    1.0032    0.9976    0.9864    0.9932
+  SSP        0.974469   0.917546   1.062038 |     1.6194    1.0070    0.6048    1.2444    1.0744    1.0397
+  MSD        0.917445   0.917266   1.000195 |     1.4257    1.0224    0.6501    0.7918    0.7797    0.8067
+  IRE        0.985605   0.990875   0.994682 |     0.9568    0.9597    0.9344    1.5065    0.8185    0.7525
+  PDA        0.999929   1.003668   0.996275 |     1.1201    1.1614    0.8580    1.0826    0.8640    0.9708
+  PDN        0.985183   0.883369   1.115257 |     0.9972    0.7627    0.5930    3.0004    0.9737    0.8434
+  PDS        0.983170   1.052504   0.934125 |     1.3411    0.6207    0.5825    1.2399    0.8879    0.7690
+  UNR        0.977923   0.916761   1.066716 |     1.6993    0.8037    0.6477    1.4862    1.3902    0.6895
+  ND>64      0.986430   0.961458   1.025973 |     0.8327    1.0274    0.6105    1.5345    1.6740    0.7838
+
+  RECONCILIATION OF THE SHIPPED CONSTRUCTION:
+  pathway      entry-wtd mean            S_allin      rel resid  verdict
+  ----------------------------------------------------------------------------------------------------------------------
+  RD           0.989134981601     0.989134981601       0.00e+00     PASS
+  SSP          0.974468957042     0.974468957042       0.00e+00     PASS
+  MSD          0.917444611399     0.917444611399       1.88e-16     PASS
+  IRE          0.985605396312     0.985605396312       0.00e+00     PASS
+  PDA          0.999929214373     0.999929214373       1.78e-16     PASS
+  PDN          0.985183473323     0.985183473323       0.00e+00     PASS
+  PDS          0.983170079490     0.983170079490       0.00e+00     PASS
+  UNR          0.977923124832     0.977923124832       1.12e-16     PASS
+  ND>64        0.986430152007     0.986430152007       1.94e-16     PASS
+  ----------------------------------------------------------------------------------------------------------------------
+  WORST RESIDUAL: 1.94e-16   tolerance 1e-09   -> PASS
+
+==========================================================================================================================
+THE DERIVED LEVELS -- CALIBRATION TARGETS, ITERATED ONTO, NEVER PASTED
+==========================================================================================================================
+
+  THE LEVELS THAT PRODUCED THIS MATRIX (what the engine actually read -- ND65+ UNCAPPED by the
+  2026-08-12 ruling; the retired cap was curve[64]=185):
+    flat   IRE 106.0000 · MSD 374.0000 · PDA 188.0000 · PDN 96.0000 · PDS 56.0000 · SSP 315.0000 · UNR 66.0000
+    RD     KPD 370.0000 · KPF 209.0000 · MID 289.0000 · RUCK 259.0000 · SD 245.0000 · SF 217.0000
+    ND65+  stored 298.0000 -> effective 298.0000  (CAP REMOVED; it would have BOUND at curve[64]=185)
+
+  v0 is a MACHINERY OUTPUT, not a stored curve. The levels below are the CALIBRATION TARGETS the
+  machinery is iterated onto -- what the level must become for the pathway to return the target.
+  next_level = level_in_force * lambda_measured  (the phase-1 construction; lambda < 1 lowers the level)
+
+  LAYER 1 -- pathway levels (positionless; the engine's `signed_flat`, plus the ND65+ law)
+  pathway  level in force   shrunk lam     NEXT LEVEL      change
+  ----------------------------------------------------------------------------------------------------------------------
+  SSP            315.0000     0.984306       310.0564      -1.57%
+  MSD            374.0000     0.926706       346.5881      -7.33%
+  IRE            106.0000     0.995555       105.5288      -0.44%
+  PDA            188.0000     1.010023       189.8844       1.00%
+  PDN             96.0000     0.995129        95.5324      -0.49%
+  PDS             56.0000     0.993095        55.6133      -0.69%
+  UNR             66.0000     0.987795        65.1945      -1.22%
+  ND>64          298.0000     0.996388       296.9236      -0.36%
+  RD         (positional)     0.999120    (see below)               [RD carries NO flat level in the engine -- it prices positionally]
+
+  LAYER 2 -- pathway x position (the load-bearing deliverable)
+  ONLY RD IS WIRABLE. The signed table carries positional cells for the rookie draft alone; the other
+  eight pathways carry ONE flat level each. Their derived positional cells are DERIVED AND REPORTED
+  below but CANNOT BE WIRED without new structure in the signed table -- an owner decision, not a build one.
+
+  RD  [WIRED -- signed_rd_positional]
+    pos    level in force     cell lam     NEXT LEVEL      change       n
+    MID          289.0000     1.002218       289.6409       0.22%     176
+    SD           245.0000     1.000002       245.0004       0.00%     158
+    SF           217.0000     1.003154       217.6843       0.32%     149
+    KPD          370.0000     0.997559       369.0968      -0.24%      72
+    KPF          209.0000     0.986442       206.1664      -1.36%      65
+    RUCK         259.0000     0.993232       257.2470      -0.68%      71
+  SSP  [NOT WIRABLE -- reported only; the pathway ships its one flat level 315.0000 -> 310.0564]
+    pos     flat in force     cell lam   implied cell       n
+    MID          315.0000     1.619355       510.0967       5
+    SD           315.0000     1.007040       317.2177       8
+    SF           315.0000     0.604831       190.5217      16
+    KPD          315.0000     1.244445       392.0000       5
+    KPF          315.0000     1.074401       338.4364      12
+    RUCK         315.0000     1.039748       327.5205       6
+  MSD  [NOT WIRABLE -- reported only; the pathway ships its one flat level 374.0000 -> 346.5881]
+    pos     flat in force     cell lam   implied cell       n
+    MID          374.0000     1.425711       533.2160      23
+    SD           374.0000     1.022424       382.3866      13
+    SF           374.0000     0.650133       243.1499      23
+    KPD          374.0000     0.791835       296.1463      14
+    KPF          374.0000     0.779735       291.6208      19
+    RUCK         374.0000     0.806732       301.7179      14
+  IRE  [NOT WIRABLE -- reported only; the pathway ships its one flat level 106.0000 -> 105.5288]
+    pos     flat in force     cell lam   implied cell       n
+    MID          106.0000     0.956766       101.4172       5
+    SD           106.0000     0.959690       101.7271      35
+    SF           106.0000     0.934405        99.0469       4
+    KPD          106.0000     1.506451       159.6838       6
+    KPF          106.0000     0.818461        86.7569       5
+    RUCK         106.0000     0.752511        79.7661       2
+  PDA  [NOT WIRABLE -- reported only; the pathway ships its one flat level 188.0000 -> 189.8844]
+    pos     flat in force     cell lam   implied cell       n
+    MID          188.0000     1.120092       210.5772      14
+    SD           188.0000     1.161441       218.3509      10
+    SF           188.0000     0.858009       161.3056      14
+    KPD          188.0000     1.082649       203.5379       2
+    KPF          188.0000     0.864018       162.4355       6
+    RUCK         188.0000     0.970793       182.5091       5
+  PDN  [NOT WIRABLE -- reported only; the pathway ships its one flat level 96.0000 -> 95.5324]
+    pos     flat in force     cell lam   implied cell       n
+    MID           96.0000     0.997169        95.7282       4
+    SD            96.0000     0.762662        73.2155      14
+    SF            96.0000     0.593018        56.9298      16
+    KPD           96.0000     3.000419       288.0403       5
+    KPF           96.0000     0.973734        93.4785       2
+    RUCK          96.0000     0.843369        80.9634       2
+  PDS  [NOT WIRABLE -- reported only; the pathway ships its one flat level 56.0000 -> 55.6133]
+    pos     flat in force     cell lam   implied cell       n
+    MID           56.0000     1.341099        75.1015       7
+    SD            56.0000     0.620689        34.7586       5
+    SF            56.0000     0.582455        32.6175       3
+    KPD           56.0000     1.239886        69.4336       4
+    KPF           56.0000     0.887913        49.7231       1
+    RUCK          56.0000     0.769037        43.0661       1
+  UNR  [NOT WIRABLE -- reported only; the pathway ships its one flat level 66.0000 -> 65.1945]
+    pos     flat in force     cell lam   implied cell       n
+    MID           66.0000     1.699254       112.1507       8
+    SD            66.0000     0.803711        53.0449       4
+    SF            66.0000     0.647724        42.7498       5
+    KPD           66.0000     1.486233        98.0914       9
+    KPF           66.0000     1.390222        91.7546       3
+    RUCK          66.0000     0.689522        45.5084      30
+  ND>64  [NOT WIRABLE -- reported only; the pathway ships its one flat level 298.0000 -> 296.9236]
+    pos     flat in force     cell lam   implied cell       n
+    MID          298.0000     0.832655       248.1312      28
+    SD           298.0000     1.027378       306.1585      25
+    SF           298.0000     0.610495       181.9275      30
+    KPD          298.0000     1.534506       457.2829      12
+    KPF          298.0000     1.674047       498.8661      16
+    RUCK         298.0000     0.783788       233.5688       9
+
+==========================================================================================================================
+BOTH HEADLINE METRICS -- the owner's ruling. NEITHER IS A TARGET; BOTH ARE READ.
+==========================================================================================================================
+  pathway      n |   CAREER PROFILE    vs target |        YR4 / YR0    vs target
+  ----------------------------------------------------------------------------------------------------------------------
+  NATIONAL  1443 |         0.990006     1.000000 |         1.554717     1.000000
+  RD         691 |         0.989380     0.999367 |         1.379186     0.887098
+  SSP         52 |         0.973488     0.983315 |         1.266459     0.814591
+  MSD        106 |         0.908894     0.918069 |         0.838512     0.539334
+  IRE         57 |         0.987641     0.997611 |         1.224739     0.787757
+  PDA         51 |         1.006417     1.016577 |         1.626663     1.046276
+  PDN         43 |         0.987734     0.997705 |         1.093580     0.703395
+  PDS         21 |         0.986955     0.996918 |         1.412386     0.908452
+  UNR         59 |         0.977936     0.987809 |         2.406667     1.547978
+  ND>64      120 |         0.987500     0.997469 |         1.232868     0.792985
+  ----------------------------------------------------------------------------------------------------------------------
+  ALL POOL  1200 |         0.977871     0.987742 |         1.327156     0.853632
+
+wrote /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o25/iter/derive_R1.json
