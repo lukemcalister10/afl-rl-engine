@@ -1,0 +1,99 @@
+==========================================================================================================================
+ORDER 23 -- THE COMPOSED POOL-UPDATE MOVERS LEDGER
+==========================================================================================================================
+  pins (computed at run): board 1dbd1480 · store d9a24282 · instrument 0f822035
+
+  LIVE      board_C1_control.json              md5 1dbd1480a34c7823f330273211cbb76a   rows 804
+  VARA      board_L1_H.json                    md5 452623adeb9aaed115d883dbe6b0239c   rows 804
+  STAGED22  board_L2_RET.json                  md5 b5741109af73706b9616ff5ab93eba55   rows 804
+  FINAL     board_FINAL.json                   md5 665311ca72576df6ff0bbf6dfd007739   rows 804
+
+  CONTROL: the unstaged build reproduces the live board 1dbd1480a34c7823f330273211cbb76a BYTE-IDENTICAL.
+
+  board value field: 'v'
+
+  board               total  delta vs LIVE    delta %    moved     up   down
+  ----------------------------------------------------------------------------------------------------------------------
+  LIVE              746,043              0     0.000%        0      0      0
+  VARA              748,355          2,312     0.310%       48     48      0
+  STAGED22          751,679          5,636     0.755%       82     74      8
+  FINAL             753,837          7,794     1.045%      117     96     21
+
+==========================================================================================================================
+THE SEPARATION LAW ON THE BOARD -- ASSERTED, PRINTED
+==========================================================================================================================
+  VARA       non-pool board rows moved: 0      non-pool board value 620,877 -> 620,877
+  STAGED22   non-pool board rows moved: 0      non-pool board value 620,877 -> 620,877
+  FINAL      non-pool board rows moved: 0      non-pool board value 620,877 -> 620,877
+
+==========================================================================================================================
+BY PATHWAY
+==========================================================================================================================
+  pathway     rows   moved         LIVE         VARA     STAGED22        FINAL      FINAL d    FINAL %
+  ----------------------------------------------------------------------------------------------------------------------
+  IRE           14      10          712          803          950          823          111    15.590%
+  MSD           63      34       36,089       36,962       39,404       41,483        5,394    14.946%
+  ND 1-64      561       0      620,877      620,877      620,877      620,877            0     0.000%
+  ND>64         28      13       18,828       18,887       18,945       19,273          445     2.364%
+  PDA           15       5        8,103        8,159        8,263        8,249          146     1.802%
+  PDN           16      10        2,729        2,906        3,325        3,142          413    15.134%
+  RD            66      22       45,874       46,148       46,304       46,237          363     0.791%
+  SSP           28      14       11,535       12,237       12,240       12,546        1,011     8.765%
+  UNR           13       9        1,296        1,376        1,371        1,207          -89    -6.867%
+
+==========================================================================================================================
+EVERY BOARD ROW THAT MOVES, WITH THE LEVER DECOMPOSITION  (H retirement / retention / repricing)
+==========================================================================================================================
+  player                     pathway pos        LIVE      VARA    STAGED     FINAL     delta       pct |    lev H  lev reten lev repric
+  ----------------------------------------------------------------------------------------------------------------------
+  Mani Liddy                 MSD     MID         128       128       785      1025      +897    700.8% |        0        657        240
+  Nicholas Martin            SSP     SF         2822      3509      3518      3520      +698     24.7% |      687          9          2
+  Robert Hansen              MSD     SF           80        80       509       650      +570    712.5% |        0        429        141
+  Flynn Young                MSD     SF          128       128       386       502      +374    292.2% |        0        258        116
+  James Blanck               MSD     KPD          60        60       333       431      +371    618.3% |        0        273         98
+  Caleb May                  MSD     RUCK         52       231       274       357      +305    586.5% |      179         43         83
+  Harrison Coe               MSD     RUCK         52       231       274       357      +305    586.5% |      179         43         83
+  Max Mapley                 MSD     RUCK         52       231       274       357      +305    586.5% |      179         43         83
+  Will McLachlan             MSD     SF          117       117       317       386      +269    229.9% |        0        200         69
+  Tom Hanily                 MSD     SF          154       154       286       331      +177    114.9% |        0        132         45
+  Jordan Boyd                MSD     SD           37        37       154       201      +164    443.2% |        0        117         47
+  Max Beattie                MSD     SF           39       172       153       200      +161    412.8% |      133        -19         47
+  Oliver Griffin             MSD     SF           39       172       153       200      +161    412.8% |      133        -19         47
+  Alex Van Wyk               MSD     RUCK        233       233       277       362      +129     55.4% |        0         44         85
+  Flynn Riley                MSD     RUCK        233       233       277       362      +129     55.4% |        0         44         85
+  Iliro Smit                 MSD     RUCK        100       170       174       227      +127    127.0% |       70          4         53
+  Aidan Johnson              ND>64   KPF          80        80       124       200      +120    150.0% |        0         44         76
+  Josh Draper                PDN     KPD         315       389       448       432      +117     37.1% |       74         59        -16
+  Mitch Podhajski            MSD     KPF         186       186       229       303      +117     62.9% |        0         43         74
+  Logan Smith                ND>64   RUCK         91       114       115       185       +94    103.3% |       23          1         70
+  Luker Kentfield            MSD     KPF         178       178       220       268       +90     50.6% |        0         42         48
+  Tyrell Dewar               PDN     SD           73        88       183       161       +88    120.5% |       15         95        -22
+  Lukas Cooke                MSD     KPD         206       206       233       289       +83     40.3% |        0         27         56
+  Luke Beecken               MSD     MID         100       100       140       182       +82     82.0% |        0         40         42
+  Andy Moniz-Wakefield       PDN     SD           27        27       108       108       +81    300.0% |        0         81          0
+  Caleb Graham               ND>64   KPD          37        43        85       117       +80    216.2% |        6         42         32
+  Shadeau Brain              PDA     SD           69        69       135       134       +65     94.2% |        0         66         -1
+  Liam Hetherton             PDA     KPF         100       124       170       164       +64     64.0% |       24         46         -6
+  Fred Rodriguez             RD      SF          143       177       204       200       +57     39.9% |       34         27         -4
+  Nick Driscoll              RD      SF          143       177       204       200       +57     39.9% |       34         27         -4
+  Noah Howes                 MSD     KPF         128       128       142       185       +57     44.5% |        0         14         43
+  Riley Onley                RD      MID         143       177       204       200       +57     39.9% |       34         27         -4
+  Xavier Walsh               RD      KPF          86       107       116       143       +57     66.3% |       21          9         27
+  Harrison Ramm              MSD     KPD         351       351       368       406       +55     15.7% |        0         17         38
+  Max Ramsden                MSD     KPF         115       115       133       167       +52     45.2% |        0         18         34
+  Hudson O'Keeffe            SSP     KPF         136       136       159       185       +49     36.0% |        0         23         26
+  Jacob Newton               MSD     SF          156       156       166       201       +45     28.8% |        0         10         35
+  Liam Reidy                 RD      KPF         291       291       267       246       -45    -15.5% |        0        -24        -21
+  Darragh Joyce              IRE     KPD          20        20        80        64       +44    220.0% |        0         60        -16
+  Caleb Lewis                MSD     KPF         138       138       151       178       +40     29.0% |        0         13         27
+  Ewan Mackinlay             MSD     SF          128       128       128       168       +40     31.2% |        0          0         40
+  Keighton Matofai-Forbes    ND>64   SF           65        75        65       105       +40     61.5% |       10        -10         40
+  Lachlan Blakiston          MSD     KPD         128       128       128       168       +40     31.2% |        0          0         40
+  Lennox Hoffman             ND>64   SD           65        75        65       105       +40     61.5% |       10        -10         40
+  River Stevens              ND>64   SF           65        75        65       105       +40     61.5% |       10        -10         40
+  ... 117 moved rows in total; the full ledger is in CONSEQUENCE_O23.json['ledger'].
+
+  LEVER TOTALS across every moved row:  H retirement +2303 · retention +3308 · repricing +2183  = +7794
+  rows that go DOWN under the FINAL configuration: 21
+
+wrote /home/user/afl-rl-engine/.claude/worktrees/agent-aca7a2be63ef974c9/docs/evidence/pool_landing_2026-08-12/CONSEQUENCE_O23.json

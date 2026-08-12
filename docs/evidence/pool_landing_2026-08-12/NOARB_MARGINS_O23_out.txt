@@ -1,0 +1,22 @@
+====================================================================================================================
+BOTH COHORT INSTRUMENTS -- margins against the 14% annual charge. A NEGATIVE MARGIN IS AN ARBITRAGE.
+====================================================================================================================
+
+ALL-ARM DECIDING INSTRUMENT  (noarb_table_allarm.py)
+  window       variant         yr0      yr1      yr2      yr3      yr4      yr5 | apprec 0-1  margin v14%  verdict
+  PRIMARY  cohorts 2005-2023 n=2212 SHIP         1.0000   0.7767   0.9581   1.0608   1.1231   1.1047 |    -22.33%       36.33%   no arb
+  MODERN   cohorts 2019-2023 n=540 SHIP         1.0000   0.8007   0.9084   0.9717   0.9734   1.0309 |    -19.93%       33.93%   no arb
+  PRIMARY  cohorts 2005-2023 n=2212 FINAL23      1.0000   0.8028   0.9694   1.0675   1.1299   1.1100 |    -19.72%       33.72%   no arb
+  MODERN   cohorts 2019-2023 n=540 FINAL23      1.0000   0.8202   0.9194   0.9754   0.9788   1.0361 |    -17.98%       31.98%   no arb
+
+LEGACY RETAINED INSTRUMENT  (noarb_table_338.py, UNMODIFIED)
+  group          variant         yr1 apprec 0-1  margin v14%  verdict
+  ALL picks 1-64 SHIP         1.0730      7.30%        6.70%   no arb
+  picks 1-20     SHIP         1.1218     12.18%        1.82%   no arb
+  picks 21-64    SHIP         0.9994     -0.06%       14.06%   no arb
+  ALL picks 1-64 FINAL23      1.0730      7.30%        6.70%   no arb
+  picks 1-20     FINAL23      1.1218     12.18%        1.82%   no arb
+  picks 21-64    FINAL23      0.9996     -0.04%       14.04%   no arb
+
+  ARBITRAGES OPENED: 0 of 10 readings.
+  wrote /home/user/afl-rl-engine/.claude/worktrees/agent-aca7a2be63ef974c9/docs/evidence/pool_landing_2026-08-12/NOARB_MARGINS_O23.json
