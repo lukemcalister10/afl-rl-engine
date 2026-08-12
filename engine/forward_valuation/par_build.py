@@ -207,8 +207,15 @@ def build_pest(pool):
     over the #338 tenure-windowed par cohort. The by-tenure P of the first cut is superseded — it
     double-charged establishment risk the forward band's low quantiles already carry.
     Returns (P, num, den): P is the POOLED rate actually consumed; num/den are the RAW counts, disclosed."""
+    # ORDER 20 — the ALL-POSITION BAND MARGINAL `bnum/bden` (the K_338 shrinkage TARGET, consumed at the
+    # `pbar` line below) is now taken WITHIN ARM by construction, because `pool` is already one arm's rows:
+    # gather() filters before calling this. Before ORDER 20 this loop ran over both arms at once, so a
+    # national (position, band) cell was shrunk toward a marginal that pool rows had written — and since
+    # every pool row sits at MA.POOL_PICK the whole pool landed in ONE band (band 7, 49-99: 292 national
+    # rows against 770 pool rows on the rl_model side of the same split), which is also the band that
+    # donates the gradient to thin national cells.
     num = collections.defaultdict(int); den = collections.defaultdict(int)
-    bnum = collections.defaultdict(int); bden = collections.defaultdict(int)   # all-position band marginal
+    bnum = collections.defaultdict(int); bden = collections.defaultdict(int)   # all-position band marginal, WITHIN ARM
     for p in pool:
         g = MA.gfut(p); b = MA.bandof(MA.effpk(p)); d0 = draftyr(p)
         # MEMBERSHIP: the #338 window must cover at least one tenure year of the par range. Under the
@@ -256,10 +263,45 @@ def season_pos(r):
         return gb if MA.REPL.get(gb, float('inf')) < MA.REPL.get(ga, float('inf')) else ga
     return ga if ga is not None else gb
 
+# ============================================================================================================
+# ORDER 20 — THE ARM SPLIT (owner's law: "The ND and pool need to be entirely separated. Nothing here can
+# impact ND pricing.")
+#
+# THE DEFECT. `gather()`'s population had NO arm filter: 1015 national rows and 743 POOL rows
+# (docs/evidence/nd_pool_separation_2026-08-11/sweep/POPULATION_PROBE.txt — pool is 42.26% of it). Every
+# object fitted from it — `levelfn`/`level_grid` (the local-linear kernel over log(pick)), `gramp`, `base`,
+# and `build_pest`'s ALL-POSITION BAND MARGINAL — was therefore taught partly by pool careers and then read
+# to price NATIONAL picks at `_merged_recover.py:312/397/399/497/2124/2263`.
+#
+# It is not a tail effect. Every pool entrant sits at the SINGLE index MA.POOL_PICK(=65) — that is the
+# owner's own ruling — and the kernel bandwidth is H_LOGPICK=0.40 in log-pick units, so log(65)=4.174 pulls
+# national picks from roughly 44 upward. The pool's whole mass lands on the deep end of the national curve.
+# This is the same concentration hazard rl_model.py:296-310 (THE SPLIT, ADDENDUM 1) named and closed for the
+# PICK-CURVE builders. It was never closed here.
+#
+# THE FIX, and why it needs no call-site changes. The surface is indexed by PICK, and under the ruling the
+# pool occupies EXACTLY ONE index (MA.POOL_PICK) which no national row can ever present. So splitting the fit
+# by index range splits it by arm exactly, with no ambiguity and no player argument:
+#     picks 1..64  -> the NATIONAL fit, taught by national rows alone
+#     pick  >=65   -> the POOL fit,     taught by pool rows alone
+# Nothing is dropped and no arm loses its surface: `fit()` runs the SAME pipeline twice, once per arm, and
+# `level_at`/`par_at` route on the pick. That is "split the shared population per arm", not "delete the
+# sharing".
+# ============================================================================================================
+def _is_pool_row(p):
+    """Arm membership — the ENGINE's own predicate, quoted not re-derived (rl_model.py:215)."""
+    return bool(MA.is_pool(p))
+
+
 # ---- 1. gather on-park observations: (pos, logpick, tenure, lvl, games) -------------------
-def gather():
+def gather(arm=None):
+    """arm=None: the pre-ORDER-20 mixed population (kept ONLY so the contamination can be measured
+    against it — no shipped caller passes None). arm='ND': national rows only. arm='POOL': pool rows only."""
     pool = [p for p in MA.data if MA.GRP.get(p.get('pos'))
             and (p.get('pick') or p.get('_ft')) and DRAFT_LO <= draftyr(p) <= DRAFT_HI]
+    if arm == 'ND':     pool = [p for p in pool if not _is_pool_row(p)]
+    elif arm == 'POOL': pool = [p for p in pool if _is_pool_row(p)]
+    elif arm is not None: raise ValueError('gather: unknown arm %r' % arm)
     # raw rows first (need base_play_rate before applying the gate)
     raw = []  # (pos, pick, ten, Y, games, p)
     for p in pool:
@@ -433,8 +475,10 @@ def _wmedian(v, w):
     return float(v[int(np.searchsorted(c, 0.5*tot))])
 
 # ---- 3. additive backfitting: level_pos(logpick) + ramp_pos(T) ----------------------------
-def fit():
-    obs, base, raw, PEST, PNUM, PDEN = gather()   # #336 VARIANT: gather() now also returns the P(establishes) strata
+def fit(arm='ND'):
+    """ORDER 20: `arm` selects the population this surface is TAUGHT BY. The shipped entry point is
+    `fit_arms()` below, which builds both arms and hands back the national one with the pool one attached."""
+    obs, base, raw, PEST, PNUM, PDEN = gather(arm)   # #336 VARIANT: gather() now also returns the P(establishes) strata
     POS = {g: np.array([(x,T,lv,w) for (pos,x,T,lv,w) in obs if pos==g], dtype=float) for g in GROUPS}
     # E3 LOUD HALT (#279 step 4 item 6). An empty group used to travel silently from here to the ramp step
     # below, where POS[g] is shape (0,) and POS[g][:,1] raised a BARE IndexError naming nothing — a cohort
@@ -525,7 +569,17 @@ def fit():
         ramp_shr[g] = r - r[1]                              # re-anchor yr1 = 0
     return dict(obs=obs, base=base, POS=POS, levelfn=levelfn, ramp=ramp, gramp=gramp,
                 ramp_shr=ramp_shr, sw=sw, n_by_pos=n_by_pos, level_grid=level_grid,
-                pest=PEST, pest_num=PNUM, pest_den=PDEN)   # #336 VARIANT: the strata travel with the fit, for disclosure
+                pest=PEST, pest_num=PNUM, pest_den=PDEN,   # #336 VARIANT: the strata travel with the fit, for disclosure
+                arm=arm)                                   # ORDER 20: the fit knows which arm taught it
+
+
+def fit_arms():
+    """ORDER 20 — THE SHIPPED ENTRY POINT. Fits BOTH arms on their own rows and returns the NATIONAL fit
+    with the POOL fit attached at F['ARM_POOL']. `level_at`/`par_at` route between them on the pick, so no
+    consumer has to know this happened. The national surface is now derived on national rows ALONE."""
+    F = fit('ND')
+    F['ARM_POOL'] = fit('POOL')
+    return F
 
 def _pava(y, w, increasing=True):
     """weighted pool-adjacent-violators. increasing=True -> non-decreasing; False -> non-increasing."""
@@ -539,7 +593,16 @@ def _pava(y, w, increasing=True):
     for v,wt,c in blocks: out += [v]*c
     return np.array(out)
 
+def _arm_fit(F, pick):
+    """ORDER 20 — route to the arm that owns this pick. Every pool entrant sits at MA.POOL_PICK and no
+    national row ever does (rl_model.py:264-268), so the pick alone decides the arm with no ambiguity."""
+    if pick is not None and pick >= MA.POOL_PICK and isinstance(F, dict) and F.get('ARM_POOL') is not None:
+        return F['ARM_POOL']
+    return F
+
+
 def level_at(F, g, pick):
+    F = _arm_fit(F, pick)
     grid = F.get('level_grid',{}).get(g) if isinstance(F.get('level_grid',{}),dict) else None
     if grid is not None:
         xs,ys,es = grid; pk=min(max(pick,1),70)
@@ -554,7 +617,7 @@ def par_at(F, g, pick, T):
     """#336 AMENDMENT 2: this is now the ESTABLISHED-CONDITIONAL anchor, E[level | ever establishes].
     Consumers that price a REAL player must select on his resolved state (par_redesign.par_at_p);
     consumers that price a PICK or a synthetic take the unconditional expectation = pest_at() x this."""
-    lv,_ = level_at(F, g, pick); return lv + F['ramp_shr'][g][T]
+    lv,_ = level_at(F, g, pick); return lv + _arm_fit(F, pick)['ramp_shr'][g][T]   # ORDER 20: ramp from the same arm as the level
 
 def pest_of(F, p):
     """#336 AMENDMENT 2: the career-level P(ever establishes) for the cell a REAL player sits in.

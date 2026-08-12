@@ -34,7 +34,7 @@ _FV=_FVP.resolve_fv()
 # checkout FV so no bare FV import can fall through to a stale workspace copy.
 if _FV not in sys.path: sys.path.insert(0,_FV)
 rd=_L('rd',os.path.join(_FV,'dist_redesign.py')); cp=rd.cp; dp=rd.dp; MA=cp.MA
-pb=_L('pb',os.path.join(_FV,'par_build.py')); F=pb.fit()
+pb=_L('pb',os.path.join(_FV,'par_build.py')); F=pb.fit_arms()   # ORDER 20: national fit + F['ARM_POOL'], each on its own arm
 with contextlib.redirect_stdout(io.StringIO()): import compute
 MA.BASE_REF=MA.AGE_REF=2026; MA._pe_clear()
 SEASON_PROG=getattr(MA,'SEASON_PROG',0.58); CUR_ROUNDS=round(SEASON_PROG*22)
@@ -54,36 +54,50 @@ WIDEN_K     = 0.60    # p10 extends down by WIDEN_K * shortfall * (p50-p10)   (f
 #   p90 and p70 are PRESERVED (upside/optionality untouched)
 
 # ---------- par surface (cached, nan-safe) ----------
+# ORDER 20 — THE ARM SPLIT reaches this file's own par_at/_lvl_safe too. par_build's header records why the
+# split is safe to make on the PICK alone; the same routing has to be applied HERE because par_redesign
+# carries its OWN par_at (this function) and it is the one the board actually calls
+# (_merged_recover.py:312/397/399/497/2124/2263). Fixing par_build and leaving this file reading F's
+# national leg for a pool player is exactly the duplicated-assertion class rl_model.py:307-310 warns about.
 _FB={g:(float(np.median(F['POS'][g][:,2])) if len(F['POS'][g]) else 60.0) for g in GROUPS}
+_FB_POOL={g:(float(np.median(F['ARM_POOL']['POS'][g][:,2])) if len(F['ARM_POOL']['POS'][g]) else _FB[g])
+          for g in GROUPS} if F.get('ARM_POOL') else dict(_FB)
 _PC={}
+def _armF(pick):
+    return F['ARM_POOL'] if (F.get('ARM_POOL') is not None and pick>=MA.POOL_PICK) else F
 def _lvl_safe(pos,pick):
-    lv,ess=pb.level_at(F,pos,min(max(pick,1),70))
+    _F=_armF(pick); _fb=(_FB_POOL if _F is not F else _FB)
+    lv,ess=pb.level_at(F,pos,min(max(pick,1),70))     # pb.level_at does its own arm routing on the pick
     if not np.isfinite(lv) or ess<3.0:
-        lf=F['levelfn'].get(pos)
+        lf=_F['levelfn'].get(pos)
         if lf is not None:
             lv2,_=pb.loclin(np.log(min(max(pick,1),70)),lf[0],lf[1],1.0)
             if np.isfinite(lv2): return lv2
-        return _FB[pos]
+        return _fb[pos]
     return lv
 def par_at(pos,pick,T):
     k=(pos,int(round(pick)),int(max(1,min(T,6))))
-    if k not in _PC: _PC[k]=_lvl_safe(pos,pick)+F['ramp_shr'][pos][k[2]]
+    if k not in _PC: _PC[k]=_lvl_safe(pos,pick)+_armF(k[1])['ramp_shr'][pos][k[2]]
     return _PC[k]
 def draftyr(p): return cp.debutyr(p)-1
 def tenure(p,Y): return max(1,Y-draftyr(p))
 
 # ---------- Fork C: base-rate play-rate per position x tenure (all rostered, incl 0-game) ----------
+# ORDER 20 — BASE_RATE is keyed (pos, tenure) with NO pick axis at all, so before the split a pool career
+# taught the national base rate at FULL WEIGHT — not through a kernel tail, directly. The population was
+# 1015 national + 743 pool rows (POPULATION_PROBE.txt). The key now carries the arm, and `shortfall` selects
+# on MA.is_pool(p) — the engine's own predicate, the same one par_build routes on.
 def _build_base_rate():
     pool=[p for p in MA.data if MA.GRP.get(p.get('pos'))
           and (p.get('pick') or p.get('_ft')) and 2003<=draftyr(p)<=2018]
     by=collections.defaultdict(list)
     for p in pool:
-        pos=MA.gfut(p); d0=draftyr(p)
+        pos=MA.gfut(p); d0=draftyr(p); arm=bool(MA.is_pool(p))
         rows={x['year']:x['games'] for x in p['scoring']}
         maxten=max([y-d0 for y in rows],default=0)
         for T in range(1,7):
             rostered = (T==1) or (maxten>=T)      # yr1: all drafted; later: still on a list (a row at tenure>=T)
-            if rostered: by[(pos,T)].append(rows.get(d0+T,0)/22.0)
+            if rostered: by[(arm,pos,T)].append(rows.get(d0+T,0)/22.0)
     return {k:float(np.median(v)) for k,v in by.items() if v}
 BASE_RATE=_build_base_rate()
 
@@ -100,8 +114,8 @@ def player_rate(p,Y):
         wt=dec**max(0,Y-y); num+=wt*(g/av); den+=wt
     return num/den if den>0 else 0.0
 def shortfall(p,Y):
-    pos=MA.gfut(p); T=tenure(p,Y)
-    base=BASE_RATE.get((pos,T), BASE_RATE.get((pos,min(T,5)),0.5))
+    pos=MA.gfut(p); T=tenure(p,Y); arm=bool(MA.is_pool(p))   # ORDER 20: his own arm's base rate, never the other's
+    base=BASE_RATE.get((arm,pos,T), BASE_RATE.get((arm,pos,min(T,5)),0.5))
     # 0-game current-season players: rate measured since-draft over elapsed rounds
     pr = 0.0 if not any(x['games']>0 for x in p['scoring']) else player_rate(p,Y)
     return max(0.0, base-pr)
