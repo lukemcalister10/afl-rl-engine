@@ -1,0 +1,30 @@
+{
+ "frozen_keys": [
+  "41af73267f1bcd86bdc208e5f32376d1",
+  "6ef67f07db98258786189a6316ce24f9"
+ ],
+ "refit_lo_keys": [
+  "41af73267f1bcd86bdc208e5f32376d1",
+  "6ef67f07db98258786189a6316ce24f9"
+ ],
+ "refit_hi_keys": [
+  "2dff9ca182110c050c4e4f72a21d2aed",
+  "49d0f5ed0aeaf699e14b18cb271f43d8"
+ ],
+ "cap_lo": "1.4",
+ "cap_hi": "99",
+ "pairing": {
+  "2dff9ca182110c050c4e4f72a21d2aed": "6ef67f07db98258786189a6316ce24f9",
+  "49d0f5ed0aeaf699e14b18cb271f43d8": "41af73267f1bcd86bdc208e5f32376d1"
+ },
+ "added": [
+  {
+   "cap_hi_sig": "2dff9ca182110c050c4e4f72a21d2aed",
+   "source_frozen_sig": "6ef67f07db98258786189a6316ce24f9"
+  },
+  {
+   "cap_hi_sig": "49d0f5ed0aeaf699e14b18cb271f43d8",
+   "source_frozen_sig": "41af73267f1bcd86bdc208e5f32376d1"
+  }
+ ]
+}

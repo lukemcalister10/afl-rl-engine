@@ -1,0 +1,177 @@
+====================================================================================================================================
+ORDER 20C — THE RUCK-CAP TABLE.  Three BUILT boards, board values read out, never re-derived.
+====================================================================================================================================
+  BEFORE  (HEAD engine, shipped defaults, the live board)      md5 94f1fec59f99c59d5890d5975c79fa9b   PIN OK
+  AFTER   (ORDER 20 par separation fix)                        md5 1dbd1480a34c7823f330273211cbb76a   PIN OK
+  NO-CAP  (the fix, RL_RUC_PRIOR_CAP=99 via the env dial)      md5 48c23615376bdab34d618de5c6083fbe
+
+  BOARD TOTALS (sum of `v` over all 1002 rows the board carries; active + back)
+    config            ALL       active         back   vs BEFORE
+    BEFORE         748357       745888         2469         +0  (+0.0000%)
+    AFTER          748894       746043         2851       +537  (+0.0718%)
+    NOCAP          748996       746071         2925       +639  (+0.0854%)
+    AFTER -> NO-CAP delta: +102  (+0.0136%)
+
+  ROWS THAT MOVE WHEN THE CAP IS LIFTED (AFTER -> NO-CAP): 17 of 1002
+    of which NON-RUCK (key absent from the engine's own n=71 real-RUCK set): 0   (P10 HOLDS — the cap has NO channel outside the ruck rows)
+    EVERY mover, in full, WITH THE CHANNEL THAT MOVED IT:
+      player                     arm     epk  binds    AFTER   NO-CAP    delta  channel
+      Liam Reidy                 POOL     65   True      291      322      +31  LIVE (sit-out blend)
+      Coen Livingstone           POOL     65   True        3       14      +11  DELISTED-SCRAP
+      Ivan Soldo                 POOL     65   True        3       14      +11  DELISTED-SCRAP
+      Sam Naismith               POOL     65   True        8       17       +9  DELISTED-SCRAP
+      Tom Campbell               POOL     65   True        8       17       +9  DELISTED-SCRAP
+      Will Verrall               POOL     65   True        8       15       +7  DELISTED-SCRAP
+      Cameron Owen               POOL     65   True        8       15       +7  DELISTED-SCRAP
+      Clay Tucker                POOL     65   True        8       14       +6  DELISTED-SCRAP
+      Kaelen Bradtke             POOL     65   True        7       12       +5  DELISTED-SCRAP
+      Joe Furphy                 POOL     65   True        3        6       +3  DELISTED-SCRAP
+      Darryl McDowell-White      POOL     65   True        3        5       +2  DELISTED-SCRAP
+      Oscar McInerney            POOL     65   True        8       10       +2  DELISTED-SCRAP
+      Flynn Riley                POOL     65   True      233      232       -1  LIVE (sit-out blend)
+      Alex Van Wyk               POOL     65   True      233      232       -1  LIVE (sit-out blend)
+      Vigo Visentini             POOL     65   True      168      167       -1  LIVE (sit-out blend)
+      Brynn Teakle               POOL     65   True        8        9       +1  DELISTED-SCRAP
+      Kieran Strachan            POOL     65   True        8        9       +1  DELISTED-SCRAP
+    of the 17 movers, 13 are DELISTED remnants (price == round(0.02 x v0_start), :2230) worth +74
+    the other 4 are live rows worth +28
+
+====================================================================================================================================
+NATIONAL — 12 rucks, `_ruc_prior_cap` BINDING under the FIX engine
+====================================================================================================================================
+  player                    epk   age games |  BEFORE   AFTER  NO-CAP |   d_fix   d_cap |   v0u HEAD    v0u FIX  ceiling | classification
+  --------------------------------------------------------------------------------------------------------------------------------
+  Tom De Koning              30  27.0   113 |    1830    1830    1830 |      +0      +0 |     1114.5     1130.3    928.2 | PRODUCTION-LED  already binding on HEAD  
+  Mitchell Edwards           32  21.0    16 |    2411    2439    2439 |     +28      +0 |      984.3      996.6    865.2 | PRODUCTION-LED  already binding on HEAD  
+  Max Gawn                   33  35.0   268 |    3336    3336    3336 |      +0      +0 |     1066.4     1079.8    834.4 | PRODUCTION-LED  already binding on HEAD  
+  Samson Ryan                42  26.0    29 |     296     302     302 |      +6      +0 |      599.4      794.5    681.8 | PRODUCTION-LED  NEWLY BINDING            
+  Lachlan Smith              47  21.0     2 |     399     399     399 |      +0      +0 |      423.6      572.5    546.0 | PRODUCTION-LED  NEWLY BINDING            
+  Rhys Stanley               47  36.0   230 |      28      28      28 |      +0      +0 |      438.4      592.5    546.0 | PRODUCTION-LED  NEWLY BINDING            
+  Callum Jamieson            48  26.0    17 |      10      10      10 |      +0      +0 |      588.8      784.9    522.2 | PRODUCTION-LED  already binding on HEAD  
+  Darcy Cameron              48  31.0   140 |    1669    1669    1669 |      +0      +0 |      551.4      747.9    522.2 | PRODUCTION-LED  already binding on HEAD  
+  Marc Pittonet              50  30.0    98 |     466     466     466 |      +0      +0 |      389.1      521.8    484.4 | PRODUCTION-LED  NEWLY BINDING            
+  Jacob Molier               52  20.0     0 |     283     283     283 |      +0      +0 |      354.1      474.5    457.8 | PRODUCTION-LED  NEWLY BINDING            
+  Alex Dodson                53  20.0     1 |     274     274     274 |      +0      +0 |      395.7      524.2    443.8 | PRODUCTION-LED  NEWLY BINDING            
+  Dante Visentini            56  23.0    27 |    1268    1274    1274 |      +6      +0 |      431.8      564.7    403.2 | PRODUCTION-LED  already binding on HEAD  
+  --------------------------------------------------------------------------------------------------------------------------------
+  TOTAL (12)                                |   12270   12310   12310 |     +40      +0 |
+  classification: PRIOR-DOMINATED 0   PRODUCTION-LED 12
+  newly binding under the fix: 6   already binding on HEAD: 6
+  ceiling moved HEAD->FIX on 0 of 12 rows
+
+  MECHANISM (reported, NOT used to classify):
+  player                    bestlvl26   nqual in_curve v0start HEAD v0start FIX    ev ceil
+  Tom De Koning                101.50       6     True       952.8       952.8     5399.7
+  Mitchell Edwards              53.30       1     True       904.7       904.7     1040.1
+  Max Gawn                     139.90      13     True       877.4       877.4    14387.4
+  Samson Ryan                   54.20       1     True       735.2       735.2     1050.8
+  Lachlan Smith                  0.00       0     True       579.7       579.7      546.0
+  Rhys Stanley                  98.50      13     True       579.7       579.7     5017.0
+  Callum Jamieson               45.70       0     True       559.8       559.8      943.5
+  Darcy Cameron                109.70       7     True       565.6       565.6     6974.9
+  Marc Pittonet                 88.80       5     True       513.3       513.3     3468.6
+  Jacob Molier                   0.00       0     True       483.6       483.6      457.8
+  Alex Dodson                    0.00       0     True       467.8       467.8      443.8
+  Dante Visentini               55.50       1     True       420.9       420.9     1100.5
+
+====================================================================================================================================
+POOL — 40 rucks, `_ruc_prior_cap` BINDING under the FIX engine
+====================================================================================================================================
+  player                    epk   age games |  BEFORE   AFTER  NO-CAP |   d_fix   d_cap |   v0u HEAD    v0u FIX  ceiling | classification
+  --------------------------------------------------------------------------------------------------------------------------------
+  Aiden Riddle               65  21.0     0 |     140     140     140 |      +0      +0 |      561.2      937.7    394.8 | PRODUCTION-LED  already binding on HEAD  
+  Alex Van Wyk               65  22.0     1 |     233     233     232 |      +0      -1 |      490.1      643.4    400.4 | PRIOR-DOMINATED already binding on HEAD  LIVE (sit-out blend)
+  Brynn Teakle               65  27.0    21 |       6       8       9 |      +2      +1 |      324.1      470.9    400.4 | PRIOR-DOMINATED NEWLY BINDING            DELISTED-SCRAP
+  Caleb May                  65  21.0     0 |      52      52      52 |      +0      +0 |      540.6      787.9    400.4 | PRODUCTION-LED  already binding on HEAD  
+  Cameron Owen               65  22.0     0 |       8       8      15 |      +0      +7 |      461.4      783.1    394.8 | PRIOR-DOMINATED already binding on HEAD  DELISTED-SCRAP
+  Clay Tucker                65  22.0     0 |       8       8      14 |      +0      +6 |      443.5      752.9    400.4 | PRIOR-DOMINATED already binding on HEAD  DELISTED-SCRAP
+  Coen Livingstone           65  21.0     0 |       3       3      14 |      +0     +11 |      443.5      752.9    172.2 | PRIOR-DOMINATED already binding on HEAD  DELISTED-SCRAP
+  Darcy Fort                 65  33.0    77 |      16      16      16 |      +0      +0 |      144.4      288.0    259.0 | PRODUCTION-LED  NEWLY BINDING            
+  Darryl McDowell-White      65  29.0     0 |       3       3       5 |      +0      +2 |      132.6      264.4    144.2 | PRIOR-DOMINATED NEWLY BINDING            DELISTED-SCRAP
+  Flynn Riley                65  22.0     1 |     232     233     232 |      +1      -1 |      490.1      643.4    400.4 | PRIOR-DOMINATED already binding on HEAD  LIVE (sit-out blend)
+  Iliro Smit                 65  21.0     0 |     100     100     100 |      +0      +0 |      443.5      752.9    400.4 | PRODUCTION-LED  already binding on HEAD  
+  Ivan Soldo                 65  30.0    66 |       3       3      14 |      +0     +11 |      443.5      752.9    144.2 | PRIOR-DOMINATED already binding on HEAD  DELISTED-SCRAP
+  Jaime Uhr-Henry            65  23.0     0 |      51      51      51 |      +0      +0 |      490.1      643.4    144.2 | PRODUCTION-LED  already binding on HEAD  
+  Jarrod Witts               65  34.0   217 |     139     139     139 |      +0      +0 |      616.3     1029.9    259.0 | PRODUCTION-LED  already binding on HEAD  
+  Joe Furphy                 65  27.0     0 |       3       3       6 |      +0      +3 |      188.4      311.7    144.2 | PRIOR-DOMINATED already binding on HEAD  DELISTED-SCRAP
+  Joe Pike                   65  21.0     0 |     140     140     140 |      +0      +0 |      561.2      937.7    394.8 | PRODUCTION-LED  already binding on HEAD  
+  Jordon Sweet               65  28.0    67 |    2295    2285    2285 |     -10      +0 |      588.7      858.1    394.8 | PRODUCTION-LED  already binding on HEAD  
+  Kaelen Bradtke             65  25.0     0 |       7       7      12 |      +0      +5 |      490.1      643.4    352.8 | PRIOR-DOMINATED already binding on HEAD  DELISTED-SCRAP
+  Kieran Strachan            65  31.0     7 |       6       8       9 |      +2      +1 |      286.1      431.9    394.8 | PRIOR-DOMINATED NEWLY BINDING            DELISTED-SCRAP
+  Liam Reidy                 65  26.0     7 |     328     291     322 |     -37     +31 |      362.8      533.0    394.8 | PRIOR-DOMINATED NEWLY BINDING            LIVE (sit-out blend)
+  Lloyd Meek                 65  28.0    98 |    1302    1300    1300 |      -2      +0 |      606.9     1014.1    259.0 | PRODUCTION-LED  already binding on HEAD  
+  Logan Smith                65  20.0     0 |      91      91      91 |      +0      +0 |      459.5      780.0    259.0 | PRODUCTION-LED  already binding on HEAD  
+  Max Heath                  65  24.0    11 |     640     682     682 |     +42      +0 |      580.3      943.0    400.4 | PRODUCTION-LED  already binding on HEAD  
+  Max Mapley                 65  21.0     0 |      52      52      52 |      +0      +0 |      540.6      787.9    400.4 | PRODUCTION-LED  already binding on HEAD  
+  Ned Moyle                  65  24.0    27 |    2054    2285    2285 |    +231      +0 |      443.5      752.9    400.4 | PRODUCTION-LED  already binding on HEAD  
+  Ned Reeves                 65  28.0    58 |     228     236     236 |      +8      +0 |      540.6      787.9    352.8 | PRODUCTION-LED  already binding on HEAD  
+  Nick Madden                65  22.0    10 |    1761    1766    1766 |      +5      +0 |      443.5      752.9    271.6 | PRODUCTION-LED  already binding on HEAD  
+  Oliver Hayes-Brown         65  26.0     7 |     221     190     190 |     -31      +0 |      262.7      396.6    144.2 | PRODUCTION-LED  already binding on HEAD  
+  Oscar McInerney            65  32.0   165 |       7       8      10 |      +1      +2 |      369.9      537.5    394.8 | PRIOR-DOMINATED NEWLY BINDING            DELISTED-SCRAP
+  Oscar Steene               65  23.0     8 |     501     468     468 |     -33      +0 |      546.2      921.8    352.8 | PRODUCTION-LED  already binding on HEAD  
+  Patrick Carr               65  21.0     0 |      67      67      67 |      +0      +0 |      540.6      787.9    144.2 | PRODUCTION-LED  already binding on HEAD  
+  Peter Ladhams              65  28.0    65 |     492     489     489 |      -3      +0 |      511.0      877.9    394.8 | PRODUCTION-LED  already binding on HEAD  
+  Reilly O'Brien             65  31.0   148 |     981     985     985 |      +4      +0 |      622.7     1040.5    394.8 | PRODUCTION-LED  already binding on HEAD  
+  Rowan Marshall             65  31.0   175 |    2027    2027    2027 |      +0      +0 |      963.9     1224.7    394.8 | PRODUCTION-LED  already binding on HEAD  
+  Sam Draper                 65  28.0    98 |    1106    1107    1107 |      +1      +0 |      586.5      977.0    394.8 | PRODUCTION-LED  already binding on HEAD  
+  Sam Naismith               65  34.0    33 |       8       8      17 |      +0      +9 |      622.0      906.6    394.8 | PRIOR-DOMINATED already binding on HEAD  DELISTED-SCRAP
+  Tom Campbell               65  35.0    58 |       8       8      17 |      +0      +9 |      615.1      896.6    394.8 | PRIOR-DOMINATED already binding on HEAD  DELISTED-SCRAP
+  Tristan Xerri              65  27.0    93 |    7825    7800    7800 |     -25      +0 |      497.0      843.6    259.0 | PRODUCTION-LED  already binding on HEAD  
+  Vigo Visentini             65  21.0     3 |     167     168     167 |      +1      -1 |      464.8      789.0    394.8 | PRIOR-DOMINATED already binding on HEAD  LIVE (sit-out blend)
+  Will Verrall               65  22.0     0 |       8       8      15 |      +0      +7 |      461.4      783.1    394.8 | PRIOR-DOMINATED already binding on HEAD  DELISTED-SCRAP
+  --------------------------------------------------------------------------------------------------------------------------------
+  TOTAL (40)                                |   23319   23476   23578 |    +157    +102 |
+  classification: PRIOR-DOMINATED 17   PRODUCTION-LED 23
+  newly binding under the fix: 6   already binding on HEAD: 34
+  ceiling moved HEAD->FIX on 0 of 40 rows
+
+  MECHANISM (reported, NOT used to classify):
+  player                    bestlvl26   nqual in_curve v0start HEAD v0start FIX    ev ceil
+  Aiden Riddle                   0.00       0    False       394.8       394.8      394.8
+  Alex Van Wyk                   0.00       0    False       400.4       400.4      400.4
+  Brynn Teakle                  45.40       1    False       324.1       400.4      937.9
+  Caleb May                      0.00       0    False       400.4       400.4      400.4
+  Cameron Owen                   0.00       0    False       394.8       394.8      394.8
+  Clay Tucker                    0.00       0    False       400.4       400.4      400.4
+  Coen Livingstone               0.00       0    False       172.2       172.2      172.2
+  Darcy Fort                    79.30       3    False       144.4       259.0     2351.9
+  Darryl McDowell-White          0.00       0    False       132.6       144.2      144.2
+  Flynn Riley                    0.00       0    False       400.4       400.4      400.4
+  Iliro Smit                     0.00       0    False       400.4       400.4      400.4
+  Ivan Soldo                    86.90       3    False       144.2       144.2     3226.1
+  Jaime Uhr-Henry                0.00       0    False       144.2       144.2      144.2
+  Jarrod Witts                 109.90      11    False       259.0       259.0     7014.3
+  Joe Furphy                     0.00       0    False       144.2       144.2      144.2
+  Joe Pike                       0.00       0    False       394.8       394.8      394.8
+  Jordon Sweet                  97.73       3    False       394.8       394.8     4885.9
+  Kaelen Bradtke                 0.00       0    False       352.8       352.8      352.8
+  Kieran Strachan                0.00       0    False       286.1       394.8      394.8
+  Liam Reidy                     0.00       0    False       362.8       394.8      394.8
+  Lloyd Meek                   104.50       4    False       259.0       259.0     6055.7
+  Logan Smith                    0.00       0    False       259.0       259.0      259.0
+  Max Heath                     51.40       0    False       400.4       400.4     1031.6
+  Max Mapley                     0.00       0    False       400.4       400.4      400.4
+  Ned Moyle                     85.80       1    False       400.4       400.4     3097.3
+  Ned Reeves                    67.20       3    False       352.8       352.8     1485.7
+  Nick Madden                   78.43       0    False       271.6       271.6     2242.4
+  Oliver Hayes-Brown            49.60       0    False       144.2       144.2     1009.5
+  Oscar McInerney               94.60       8    False       369.9       394.8     4341.6
+  Oscar Steene                  51.60       0    False       352.8       352.8     1032.5
+  Patrick Carr                   0.00       0    False       144.2       144.2      144.2
+  Peter Ladhams                 81.90       4    False       394.8       394.8     2662.0
+  Reilly O'Brien               106.20       7    False       394.8       394.8     6360.8
+  Rowan Marshall               116.20       9    False       394.8       394.8     8378.9
+  Sam Draper                    76.40       5    False       394.8       394.8     2015.9
+  Sam Naismith                  68.40       2    False       394.8       394.8     1550.0
+  Tom Campbell                  75.70       0    False       394.8       394.8     1940.4
+  Tristan Xerri                127.00       4    False       259.0       259.0    11182.9
+  Vigo Visentini                 0.00       0    False       394.8       394.8      394.8
+  Will Verrall                   0.00       0    False       394.8       394.8      394.8
+
+====================================================================================================================================
+CROSS-CHECKS
+====================================================================================================================================
+  NATIONAL  ruck rows 27 | binds HEAD  6 -> binds FIX 12 | total cut FIX     1549.1
+  POOL      ruck rows 44 | binds HEAD 34 -> binds FIX 40 | total cut FIX    16832.9
+  rucks NOT binding under FIX that still move on cap lift: 0 
+

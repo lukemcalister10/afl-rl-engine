@@ -13,6 +13,13 @@ S=$(date +%s)
 case "$ARM" in
   HEAD_gate) bash "$HERE/build_board_o20b.sh" "$SP/board_HEAD_gate.json" - ;;
   FIX_gate)  bash "$HERE/build_board_o20b.sh" "$SP/board_FIX_gate.json"  "$HERE/mut_fix.py" ;;
+  # P3 — the dial is REAL and it is READ: the same build with the manifest cap moved to 99 must die on
+  # the frozen-v0surf-signature check, because RL_RUC_PRIOR_CAP is a member of _V0SURF_GATES (:1323).
+  FIX_gate_cap99) bash "$HERE/build_board_o20b.sh" "$SP/board_FIX_gate_cap99.json" "$HERE/mut_fix.py" RL_RUC_PRIOR_CAP=99 ;;
+  # the NO-CAP lane (dev-shell; see build_board_rc.sh for why gate mode cannot host it)
+  FIX_dev)       RC_CAP=1.4 bash "$HERE/build_board_rc.sh" "$SP/board_FIX_dev.json" ;;
+  FIX_dev_cap99) RC_CAP=99  bash "$HERE/build_board_rc.sh" "$SP/board_FIX_dev_cap99.json" ;;
+  HEAD_dev)      RC_CAP=1.4 RC_NOFIX=1 bash "$HERE/build_board_rc.sh" "$SP/board_HEAD_dev.json" ;;
   *) echo "unknown arm $ARM"; exit 2 ;;
 esac
 rc=$?

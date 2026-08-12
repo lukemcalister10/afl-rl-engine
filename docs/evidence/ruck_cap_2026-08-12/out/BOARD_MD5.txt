@@ -1,0 +1,43 @@
+ORDER 20C — THE FOUR BOARDS BUILT FOR THIS MEASUREMENT, AND THE PINS AROUND THEM
+================================================================================
+
+BOARDS (each built in a scratchpad copy; the checkout was never written to)
+
+  94f1fec59f99c59d5890d5975c79fa9b   BEFORE — HEAD engine, shipped defaults, gate mode
+                                     run_board.sh HEAD_gate           == the live board pin
+  1dbd1480a34c7823f330273211cbb76a   AFTER  — ORDER 20 par fix, gate mode
+                                     run_board.sh FIX_gate            == build/nd-pool-separation's figure
+  1dbd1480a34c7823f330273211cbb76a   LANE CONTROL — the same fix, dev shell, merged v0surf pickle,
+                                     cap at its SHIPPED 1.4.  run_board.sh FIX_dev
+                                     Identical to the gate build, so the no-cap lane is inert.
+  48c23615376bdab34d618de5c6083fbe   NO-CAP — the fix, RL_RUC_PRIOR_CAP=99 via the env dial
+                                     run_board.sh FIX_dev_cap99
+
+  (gate mode + cap 99 does not produce a board at all: run_board.sh FIX_gate_cap99 HALTs on the
+   frozen-v0surf-signature check with signature 2dff9ca182110c050c4e4f72a21d2aed. That is P3.)
+
+ARTIFACTS
+
+  fbc5b39387b2b135284a2e157f46c810   data/v0surf.pkl              — the SHIPPED frozen surface, unmoved,
+                                     and reproduced exactly by the committed refit --verify on this box
+  f23af4540224e31ba6e8889fea65931b   $SP/v0surf_merged.pkl        — the shipped surfaces + the SAME
+                                     objects re-keyed under the cap-99 signatures (scratchpad only;
+                                     never written into the checkout).  Provenance: out/V0SURF_MERGE.json
+  25a72f85a96b865505123fb47597cea6   docs/evidence/exec_306_zlaarm/basis/structural_basis_279.json
+                                     — the declared lens-basis input, staged unchanged into both trees
+
+ENGINE IDENTITY (same on all four builds; the fix lives in forward_valuation, not the engine head)
+
+  engine_head  a8071af4…            _merged_recover.py
+  rl_model     de7ce416…            rl_model.py
+  par_build.py      HEAD 09e1c8b9e7b5609463f6e7aea8fce206  ->  FIX 55429817267ffd9813c76104deb21083
+  par_redesign.py   HEAD 867185e28b0a0338c0c6fa00d2c613e1  ->  FIX a2dc7b24e3c0da7f3b9377cc4a2e9164
+
+PINS — ASSERTED AT ENTRY AND AT EXIT, ALL UNMOVED
+
+  94f1fec59f99c59d5890d5975c79fa9b   engine/rl_after/rl_app_data.json      (board)
+  d9a24282357cf3083b1640466e3ecd83   engine/rl_after/rl_model_data.json    (store)
+  0f8220351c64c56ccfa90c60edcdfa5f   docs/evidence/noarb_338_2026-08-06/noarb_table_338.py  (instrument)
+  fbc5b39387b2b135284a2e157f46c810   data/v0surf.pkl
+  d48f9a079a9ad8957ac09fd2b728b502   data/expected_boot.json
+  efe922cbe21fb69262f53bec70302279   data/model_config.json
