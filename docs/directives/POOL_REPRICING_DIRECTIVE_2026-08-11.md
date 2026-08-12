@@ -296,6 +296,14 @@ way the curve does; the years beside it are context, and **year four is one of t
 validating itself: the pick curve is *taught* to reproduce realised value, so the stream it is taught on
 must land near one. Nothing else is required to.
 
+**[CORRECTED BY ORDER 20, 2026-08-11 — comment 5256368356.] 1.0252 WAS MEASURED ON STRATA THAT MIX THE
+ARMS** (45.4% pool rows) and moves when pool prices move — the separation law failing inside the measure
+itself. Arm-split, the target reads **≈0.9944 at pre-fix v0s** — 4.5× closer to the theoretical 1.0, so the
+self-validation argument above *survives the correction and reads better after it*. **ORDER 22 does not use
+either stored figure: it re-measures the target fresh on the adopted engine configuration** (the separation
+law, owner-ruled 2026-08-11), and every figure in this document that divides by 1.0252 — the λ tables, D3A,
+the derived levels — is ~3% stale and is superseded by the ORDER 22 derivation.
+
 **On this basis ND delivers 1.96 times what the pool delivers per unit of entry price** (1.0252 against
 0.5218). **[PROFILE]**
 
@@ -482,6 +490,13 @@ prices and nothing forward-looking.
 **[OWNER RULING, 2026-08-11 — comment 5253173347]: SHRINK PDS TOWARD THE POOL.** Owner verbatim:
 *"Shrink PDS towards the pool."* It is the only pathway thin enough for stream-level shrinkage to
 bite; every other pathway holds 43 players or more.
+
+**[OWNER RULING, 2026-08-12 — comment 5260713967 — SUPERSEDES THE PDS-ONLY SCOPE ABOVE.] SHRINKAGE IS
+UNIFORM: EVERY PATHWAY'S LAYER-1 LEVEL IS SHRUNK TOWARD THE POOL AGGREGATE AT K = 15.** Owner verbatim:
+*"K=15 was across the board, not PDS."* The formula needs no threshold — `w = n/(n+15)` leaves RD (n=688)
+effectively unmoved (w=0.979) and tempers the thin extremes (PDN w=0.741, IRE w=0.792, PDS w=0.583).
+Indicative sizing at the superseded 1.0252 target: PDN +69%, IRE +33%, UNR +10%, PDA +5%, SSP −11%,
+MSD −5.5%; ORDER 22 derives the real figures against the corrected target.
 
 ### The two choices that remained his — **BOTH NOW CLOSED**
 
@@ -748,6 +763,15 @@ not distinguishable without measurement:
 
 > **THE BUILD MUST ESTABLISH WHICH BEFORE IT DERIVES THE REPLACEMENT.** The answer decides whether
 > the pool retention is a genuinely new object or a correction to a mis-scoped one.
+
+**[RESOLVED BY ORDER 17, 2026-08-11 — comment 5253928632.]** The "cannot be determined" above was true of
+`d13_derive.py`, the CONSUMER; the PRODUCER `d13_norm_harvest.py` survives and its gate has **no `_pool`
+exclusion** (admission: a stored pick OR the free-transfer flag). **The answer is SPLIT: ND>64, RD and MSD
+(895 rows) were IN the derivation — `H` double-charged them; SSP, IRE, PDA, PDN, PDS and UNR (283 rows)
+were OUT — `H` was a bolt-on for them.** The `[1,90]` clamp named above is inert (no row above pick 90
+store-wide). The owner subsequently ruled the split irrelevant to treatment — **the pool is ONE population**
+(*"They're all part of the pool… for the purposes of this, rookie draft pick 1 and 30 are the same"*) — so
+the in/out finding stands only as the post-mortem of the old surface's incoherent population.
 
 **(iv) Neither retired cell reproduces on re-derivation.** `H_UNION` re-derives to **0.167** against
 the shipped 0.280; `H_MATNONRD` re-derived to **0.5162 with a confidence interval containing 1.0**,
