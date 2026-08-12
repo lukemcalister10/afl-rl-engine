@@ -1,0 +1,83 @@
+==========================================================================================================================
+ORDER 25 -- SEPARATION, BOARD TOTALS AND THE NAMED ROWS
+==========================================================================================================================
+  live       board_live.json                    md5 1dbd1480a34c7823f330273211cbb76a   active 804
+  pr469      board_LANDED.json                  md5 665311ca72576df6ff0bbf6dfd007739   active 804
+  psi        board_CONTROL_psi.json             md5 e2bf7347e07c08f1efbdda17d6601e4e   active 804
+  landed     board_STAGED.json                  md5 88ce647f531030d8d2e094188b258191   active 804
+
+==========================================================================================================================
+THE SEPARATION LAW -- every national row (ty==ND, pick <= 64) identical to live 1dbd1480a34c7823f330273211cbb76a
+==========================================================================================================================
+  national rows on the live board: 561    pool rows: 243
+
+  board         ND movers    ND absent       ND value       pool value   total (active)
+  live                  0            0        620,877          125,166          746,043
+  pr469                 0            0        620,877          132,960          753,837
+  psi                   0            0        620,877          132,342          753,219
+  landed                0            0        620,877          131,552          752,429
+
+  *** ASSERTED: 0 NATIONAL MOVERS, 0 ABSENT, NATIONAL BOARD VALUE IDENTICAL (620,877). ***
+  Nothing below this line is written until that assertion is reached. HARD FAILURE otherwise.
+
+  DELISTED (`back`) ROWS: 12 moved, of which NON-POOL 0
+
+==========================================================================================================================
+BOARD TOTALS -- live vs landed, pool and national split
+==========================================================================================================================
+  quantity                         live         landed          delta        pct
+  TOTAL (active)                746,043        752,429          6,386     0.856%
+  pool                          125,166        131,552          6,386     5.102%
+  national (ND 1-64)            620,877        620,877              0     0.000%
+
+  ROWS MOVED vs live: 117   (up 101, down 16)   pool 117   non-pool 0
+
+  TOP 15 MOVERS UP
+    player                             live   landed     delta       pct  pathway
+    nicholas-martin                    2822     3513      +691    24.49%      SSP
+    caleb-may                            52      322      +270   519.23%      MSD
+    harrison-coe                         52      322      +270   519.23%      MSD
+    max-mapley                           52      322      +270   519.23%      MSD
+    luker-kentfield                     178      419      +241   135.39%      MSD
+    mitch-podhajski                     186      399      +213   114.52%      MSD
+    oliver-francou                      375      576      +201    53.60%      MSD
+    harrison-ramm                       351      545      +194    55.27%      MSD
+    jaxon-artemis                       340      520      +180    52.94%      MSD
+    alex-van-wyk                        233      391      +158    67.81%      MSD
+    flynn-riley                         233      391      +158    67.81%      MSD
+    lukas-cooke                         206      364      +158    76.70%      MSD
+    aidan-johnson                        80      229      +149   186.25%    ND>64
+    jacob-newton                        156      299      +143    91.67%      MSD
+    max-beattie                          39      181      +142   364.10%      MSD
+  TOP 15 MOVERS DOWN
+    player                             live   landed     delta       pct  pathway
+    patrick-carr                         67       31       -36   -53.73%      UNR
+    jaime-uhr-henry                      51       26       -25   -49.02%      UNR
+    zak-evans                            36       29        -7   -19.44%      UNR
+    wil-parker                           29       24        -5   -17.24%      UNR
+    cillian-burke                        47       43        -4    -8.51%      IRE
+    eamonn-armstrong                     47       43        -4    -8.51%      IRE
+    matt-duffy                           47       43        -4    -8.51%      IRE
+    oisin-mullin                         17       14        -3   -17.65%      IRE
+    jack-watkins                        132      130        -2    -1.52%       RD
+    mason-cox                             5        3        -2   -40.00%      UNR
+    matt-owies                            5        3        -2   -40.00%      UNR
+    bailey-banfield                      11       10        -1    -9.09%       RD
+    conor-mckenna                         7        6        -1   -14.29%      IRE
+    indy-cotton                          49       48        -1    -2.04%      UNR
+    lachlan-mcneil                       21       20        -1    -4.76%       RD
+
+==========================================================================================================================
+THE NAMED ROWS (the pre-registered test names)
+==========================================================================================================================
+  player                  pathway        live       pr469         psi      landed
+  harrison-ramm               MSD         351         406         567         545
+  luker-kentfield             MSD         178         268         449         419
+  mani-liddy                  MSD         128        1025         168         152
+  robert-hansen               MSD          80         650         143         132
+  vigo-visentini               RD         168         150         183         182
+  marcus-herbert              MSD         906         906         906         906
+  jai-newcombe                MSD        4883        4883        4883        4883
+  nicholas-martin             SSP        2822        3520        3513        3513
+
+  wrote /home/user/afl-rl-engine/.claude/worktrees/agent-ae867318eb00a513e/docs/evidence/pool_landing_v2_2026-08-12/SEPARATION_V2.json
