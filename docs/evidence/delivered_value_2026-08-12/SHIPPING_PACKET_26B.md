@@ -128,7 +128,7 @@ the career score does not carry, which is the whole of their −17 %).
 ## 5. LAYER 1 — THE DURABLE HARVEST (Ruling 11)
 
 `data/delivered_value/layer1_player_seasons.json` · md5 **`ad1229ea6f443538479447132382b21c`** ·
-2,842,543 bytes · **2,650 entries** · **11,484 player-seasons** · seasons 2005–2026 · builder and README
+2,842,776 bytes · **2,650 entries** · **11,484 player-seasons** · seasons 2005–2026 · builder and README
 committed beside it. **Deterministic** — no build timestamp; a rebuild reproduces the bytes and the md5,
 verified twice.
 
