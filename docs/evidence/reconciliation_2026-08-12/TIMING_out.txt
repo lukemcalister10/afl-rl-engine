@@ -1,0 +1,81 @@
+======================================================================================================================
+ORDER 26A -- THE TIMING SEPARATION (supplement to WEDGE section E)
+======================================================================================================================
+
+----------------------------------------------------------------------------------------------------------------------
+F1. COMPOSITION CONTROL -- why the career-age axis looked like a huge timing effect
+----------------------------------------------------------------------------------------------------------------------
+  NATIONAL   n=1443   ever played 1250 ( 86.6%)   NEVER played  193 ( 13.4%)
+  ALL POOL   n=1200   ever played  685 ( 57.1%)   NEVER played  515 ( 42.9%)
+  RD         n= 691   ever played  379 ( 54.8%)   NEVER played  312 ( 45.2%)
+
+  The career-age axis has no year for a man who never played, so he leaves it. RD loses 45.2%%
+  of its rows that way and NATIONAL only 13.4%%. That is a COMPOSITION effect, not timing.
+
+  CALENDAR N=4, BOTH ARMS RESTRICTED TO EVER-PLAYED ROWS (the like-for-like control):
+    NATIONAL ever-played      ALL   1.6485 (n=1111)   SURV   1.7530 (n= 976)
+    RD ever-played @v0        ALL   0.9903 (n= 368)   SURV   1.3328 (n= 261)
+    RD ever-played @anchor    ALL   2.5085 (n= 368)   SURV   3.5047 (n= 261)
+
+    wedge on ever-played, ALL      : ND 1.6485 / RD@v0 0.9903 = 1.665x ; after entry fix ND/RD@anchor = 0.657x
+    wedge on ever-played, SURVIVORS: ND 1.7530 / RD@v0 1.3328 = 1.315x ; after entry fix ND/RD@anchor = 0.500x
+
+----------------------------------------------------------------------------------------------------------------------
+F2. THE TRUE TIMING LEG -- the career-age composition of each arm's SURVIVORS at calendar N=4,
+    and the NATIONAL yardstick reweighted onto the pool's own composition.
+----------------------------------------------------------------------------------------------------------------------
+  entry-weighted career-age mix of survivors at calendar N=4:
+    NATIONAL  n= 976  mean career age 3.481   mix {-3: 0.0006, -2: 0.0003, -1: 0.0011, 0: 0.0039, 1: 0.0153, 2: 0.0558, 3: 0.1815, 4: 0.7416}
+    RD        n= 261  mean career age 3.061   mix {-3: 0.0108, -2: 0.0072, -1: 0.0249, 0: 0.0062, 1: 0.053, 2: 0.121, 3: 0.2919, 4: 0.485}
+    the pool is 0.419 seasons EARLIER in career time at the same calendar year.
+
+  NATIONAL survivor own-entry curve by career age (the yardstick):
+    a1 1.2103  a2 1.4607  a3 1.6455  a4 1.8310  a5 1.9272  a6 1.9632  a7 1.8101
+
+  yardstick on the NATIONAL's own career-age mix   : 1.7668
+  yardstick REWEIGHTED onto the POOL's career mix  : 1.6923
+  TIMING LEG (iii) = 1.7668 / 1.6923 = 1.0440x   -- this, and ONLY this, is the debut offset.
+
+----------------------------------------------------------------------------------------------------------------------
+F3. THE CLEAN THREE-WAY DECOMPOSITION, calendar N=4, SURVIVORS' OWN-ENTRY convention
+----------------------------------------------------------------------------------------------------------------------
+  TOTAL WEDGE           ND 1.7452 / RD@board-v0 1.3328            =  1.3094x  (100.0%)
+  (i)   ENTRY-INFLATION RD@anchor 3.5047 / RD@v0 1.3328          =  2.6295x  (+358.6%)
+  (iii) TIMING          yardstick as-read / reweighted        =  1.0440x  (+16.0%)
+  (ii)  MARK-RESIDUAL   the remainder                         =  0.4770x  (-274.6%)
+  check: 2.6295 x 1.0440 x 0.4770 = 1.309423  vs total 1.309423  (residual 0.00e+00)
+
+  A MARK-RESIDUAL BELOW 1.0 MEANS THE POOL MARKS ARE **ABOVE** THE NATIONAL YARDSTICK, NOT BELOW.
+  A value of 0.4770 means pool survivors, once entry is restated on the signed anchor, read
+  2.097x the national survivor yardstick at matched career age.
+
+  THE SAME, ALL-IN (dead zeroed, every row kept -- the derivation's own convention):
+    TOTAL 2.9857x = ENTRY 2.6498x x TIMING 1.0440x x MARK-RESIDUAL 1.0793x   (89.1% / 3.9% / 7.0%)
+
+----------------------------------------------------------------------------------------------------------------------
+G. THE MORTALITY IDENTITY -- why the two conventions disagree about who is suppressed
+----------------------------------------------------------------------------------------------------------------------
+  For any arm at a given year:   ALL-IN  =  SURVIVORS' own-entry  x  SURVIVING ENTRY SHARE
+  (exact, because the dead contribute 0 to the numerator and their entry stays in the denominator)
+
+  arm @ calendar N=4             ALL-IN       SURV alive share      check
+  --------------------------------------------------------------------------
+  NATIONAL (v0=anchor)           1.5547     1.7452     89.09%   1.554717
+  RD @ signed anchor             1.3798     3.5047     39.37%   1.379793
+  RD @ board v0                  0.5207     1.3328     39.07%   0.520725
+  ALL POOL @ signed anchor       1.3381     3.2532     41.13%   1.338050
+  ALL POOL @ board v0            0.4999     1.2009     41.63%   0.499940
+
+  THE WHOLE STORY IN ONE LINE. At calendar N=4, on the SIGNED ANCHOR:
+    NATIONAL  1.5547 = 1.7452 x 0.8909   (89.1% of national entry is still alive)
+    RD        1.3798 = 3.5047 x 0.3937   (39.4% of rookie entry is still alive)
+    pool survivors are marked 2.008x the national survivors' level, but only 0.442x as much of the
+    pool's entry survives. The two nearly cancel: 2.008 x 0.442 = 0.887.
+    THERE IS NO MARK SUPPRESSION OF LIVING POOL PLAYERS. There is a MORTALITY GAP, and the
+    signed levels have already absorbed it by construction.
+
+  H4 CHECK -- the owner's yardstick band for ND survivors at yr4-5 was 2.2x to 3.1x:
+    NATIONAL survivors' own-entry, calendar yr4 : 1.7452  (n=982)   BELOW BAND (2.2-3.1)
+    NATIONAL survivors' own-entry, calendar yr5 : 1.8571  (n=842)   BELOW BAND (2.2-3.1)
+    career-age matched a4 1.8310  a5 1.9272   BELOW BAND (2.2-3.1)
+

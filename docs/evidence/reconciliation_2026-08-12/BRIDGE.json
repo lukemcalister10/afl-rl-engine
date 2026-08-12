@@ -1,0 +1,179 @@
+{
+ "matrix": "per_entrant_O25R4.json",
+ "matrix_md5": "3c6ffcdeaac9786473f3f017dba1d61e",
+ "store": "d9a24282",
+ "window_end": 2026,
+ "PL_F": 1.0524,
+ "levels_int": {
+  "SSP": 309,
+  "MSD": 337,
+  "IRE": 106,
+  "PDA": 192,
+  "PDN": 96,
+  "PDS": 56,
+  "UNR": 65,
+  "ND65+": 297,
+  "RD:MID": 290,
+  "RD:SD": 245,
+  "RD:SF": 218,
+  "RD:KPD": 369,
+  "RD:KPF": 206,
+  "RD:RUCK": 257
+ },
+ "controls": {
+  "derive RD": {
+   "reimplemented": 1.3797934131511334,
+   "published": 1.379793
+  },
+  "derive ALL POOL": {
+   "reimplemented": 1.338050228257064,
+   "published": 1.33805
+  },
+  "derive NATIONAL": {
+   "reimplemented": 1.5547167480345014,
+   "published": 1.554717
+  },
+  "allarm RD": {
+   "reimplemented": 0.5089786852789198,
+   "published": 0.509
+  },
+  "allarm ND": {
+   "reimplemented": 1.4803438660013941,
+   "published": 1.4803
+  }
+ },
+ "h3_year_key_diff_rows": 0,
+ "bridge": [
+  {
+   "step": 0,
+   "name": "allarm as published",
+   "knob": null,
+   "reading": 0.5089786852789198,
+   "n": 623,
+   "delta": null,
+   "cause": "baseline"
+  },
+  {
+   "step": "P",
+   "name": "POPULATION: cohort window 2005-2023 -> all eligible cohorts",
+   "knob": "pop",
+   "value": "derive",
+   "reading": 0.5207246285810163,
+   "n": 667,
+   "delta": 0.011745943302096551,
+   "cause": "POPULATION"
+  },
+  {
+   "step": "I",
+   "name": "YEAR INDEXING: N=4 (cohort+N-1) -> cohort+3",
+   "knob": "ykey",
+   "value": "derive",
+   "reading": 0.5207246285810163,
+   "n": 667,
+   "delta": 0.0,
+   "cause": "YEAR INDEXING"
+  },
+  {
+   "step": "S",
+   "name": "SKIP/ZERO SEMANTICS: allarm branches -> derive branches",
+   "knob": "sem",
+   "value": "derive",
+   "reading": 0.5207246285810163,
+   "n": 667,
+   "delta": 0.0,
+   "cause": "SKIP/ZERO SEMANTICS"
+  },
+  {
+   "step": "A",
+   "name": "AGGREGATION: mean/mean -> sum/sum",
+   "knob": "agg",
+   "value": "sumsum",
+   "reading": 0.5207246285810163,
+   "n": 667,
+   "delta": 0.0,
+   "cause": "AGGREGATION"
+  },
+  {
+   "step": "D",
+   "name": "ENTRY-PRICE OBJECT: r['v0'] -> anchor_of(r) = signed level x _PL_F",
+   "knob": "den",
+   "value": "anchor",
+   "reading": 1.3797934131511334,
+   "n": 667,
+   "delta": 0.859068784570117,
+   "cause": "ENTRY-PRICE OBJECT"
+  }
+ ],
+ "residual": 0.0,
+ "derive_target": 1.3797934131511334,
+ "h1": {
+  "RD (derive pop, anchor den)": {
+   "n": 691,
+   "entry_total": 189891.8988,
+   "entry_kept": 183314.39879999903,
+   "kept_share_pct": 96.53618714565143,
+   "n_kept": 667,
+   "entry_nonzero": 72171.48720000015,
+   "nonzero_share_pct": 38.00661726807702,
+   "n_nonzero": 261,
+   "branch_census": {
+    "skip_notyet": 24,
+    "zero_ended": 406,
+    "path": 261
+   }
+  },
+  "RD (derive pop, v0 den)": {
+   "n": 691,
+   "entry_total": 503672.8,
+   "entry_kept": 485738.4999999992,
+   "kept_share_pct": 96.43929551089501,
+   "n_kept": 667,
+   "entry_nonzero": 189778.09999999998,
+   "nonzero_share_pct": 37.67884626686213,
+   "n_nonzero": 261,
+   "branch_census": {
+    "skip_notyet": 24,
+    "zero_ended": 406,
+    "path": 261
+   }
+  },
+  "ALL POOL (derive pop, anchor den)": {
+   "n": 1200,
+   "entry_total": 308184.816,
+   "entry_kept": 270187.91399999865,
+   "kept_share_pct": 87.67074170195285,
+   "n_kept": 1060,
+   "entry_nonzero": 111128.17800000013,
+   "nonzero_share_pct": 36.05894003551432,
+   "n_nonzero": 423,
+   "branch_census": {
+    "skip_notyet": 140,
+    "path": 423,
+    "zero_ended": 637
+   }
+  },
+  "NATIONAL (derive pop, v0=anchor)": {
+   "n": 1443,
+   "entry_total": 1216753.5,
+   "entry_kept": 1058751.6999999974,
+   "kept_share_pct": 87.01447745989614,
+   "n_kept": 1257,
+   "entry_nonzero": 943193.4999999976,
+   "nonzero_share_pct": 77.51722103121114,
+   "n_nonzero": 982,
+   "branch_census": {
+    "skip_notyet": 186,
+    "path": 982,
+    "zero_ended": 275
+   }
+  }
+ },
+ "h2_numerator_mismatches": 0,
+ "pops": {
+  "derive_RD": 691,
+  "allarm_RD": 623,
+  "derive_POOL": 1200,
+  "derive_ND": 1443,
+  "allarm_ND": 1310
+ }
+}
