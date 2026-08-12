@@ -1,0 +1,916 @@
+{
+ "md5": {
+  "live": "1dbd1480a34c7823f330273211cbb76a",
+  "pr469": "665311ca72576df6ff0bbf6dfd007739",
+  "psi": "e2bf7347e07c08f1efbdda17d6601e4e",
+  "landed": "88ce647f531030d8d2e094188b258191"
+ },
+ "separation": {
+  "live": {
+   "nd_movers": 0,
+   "nd_absent": 0,
+   "nd_value": 620877,
+   "pool_value": 125166,
+   "total": 746043,
+   "nd_mover_keys": []
+  },
+  "pr469": {
+   "nd_movers": 0,
+   "nd_absent": 0,
+   "nd_value": 620877,
+   "pool_value": 132960,
+   "total": 753837,
+   "nd_mover_keys": []
+  },
+  "psi": {
+   "nd_movers": 0,
+   "nd_absent": 0,
+   "nd_value": 620877,
+   "pool_value": 132342,
+   "total": 753219,
+   "nd_mover_keys": []
+  },
+  "landed": {
+   "nd_movers": 0,
+   "nd_absent": 0,
+   "nd_value": 620877,
+   "pool_value": 131552,
+   "total": 752429,
+   "nd_mover_keys": []
+  }
+ },
+ "movers": 117,
+ "movers_detail": [
+  {
+   "key": "aidan-johnson",
+   "live": 80,
+   "landed": 229,
+   "delta": 149,
+   "pathway": "ND>64"
+  },
+  {
+   "key": "aiden-riddle",
+   "live": 140,
+   "landed": 151,
+   "delta": 11,
+   "pathway": "RD"
+  },
+  {
+   "key": "alex-van-wyk",
+   "live": 233,
+   "landed": 391,
+   "delta": 158,
+   "pathway": "MSD"
+  },
+  {
+   "key": "andy-moniz-wakefield",
+   "live": 27,
+   "landed": 54,
+   "delta": 27,
+   "pathway": "PDN"
+  },
+  {
+   "key": "asher-eastham",
+   "live": 81,
+   "landed": 94,
+   "delta": 13,
+   "pathway": "RD"
+  },
+  {
+   "key": "bailey-banfield",
+   "live": 11,
+   "landed": 10,
+   "delta": -1,
+   "pathway": "RD"
+  },
+  {
+   "key": "balyn-o-brien",
+   "live": 300,
+   "landed": 383,
+   "delta": 83,
+   "pathway": "SSP"
+  },
+  {
+   "key": "ben-jepson",
+   "live": 88,
+   "landed": 222,
+   "delta": 134,
+   "pathway": "SSP"
+  },
+  {
+   "key": "ben-murphy",
+   "live": 60,
+   "landed": 85,
+   "delta": 25,
+   "pathway": "IRE"
+  },
+  {
+   "key": "benny-barrett",
+   "live": 43,
+   "landed": 50,
+   "delta": 7,
+   "pathway": "PDN"
+  },
+  {
+   "key": "brandon-zerk-thatcher",
+   "live": 47,
+   "landed": 48,
+   "delta": 1,
+   "pathway": "ND>64"
+  },
+  {
+   "key": "caleb-graham",
+   "live": 37,
+   "landed": 54,
+   "delta": 17,
+   "pathway": "ND>64"
+  },
+  {
+   "key": "caleb-lewis",
+   "live": 138,
+   "landed": 233,
+   "delta": 95,
+   "pathway": "MSD"
+  },
+  {
+   "key": "caleb-may",
+   "live": 52,
+   "landed": 322,
+   "delta": 270,
+   "pathway": "MSD"
+  },
+  {
+   "key": "cillian-bourke",
+   "live": 60,
+   "landed": 85,
+   "delta": 25,
+   "pathway": "IRE"
+  },
+  {
+   "key": "cillian-burke",
+   "live": 47,
+   "landed": 43,
+   "delta": -4,
+   "pathway": "IRE"
+  },
+  {
+   "key": "conor-mckenna",
+   "live": 7,
+   "landed": 6,
+   "delta": -1,
+   "pathway": "IRE"
+  },
+  {
+   "key": "daniel-butler",
+   "live": 10,
+   "landed": 15,
+   "delta": 5,
+   "pathway": "ND>64"
+  },
+  {
+   "key": "darragh-joyce",
+   "live": 20,
+   "landed": 41,
+   "delta": 21,
+   "pathway": "IRE"
+  },
+  {
+   "key": "eamonn-armstrong",
+   "live": 47,
+   "landed": 43,
+   "delta": -4,
+   "pathway": "IRE"
+  },
+  {
+   "key": "ewan-mackinlay",
+   "live": 128,
+   "landed": 152,
+   "delta": 24,
+   "pathway": "MSD"
+  },
+  {
+   "key": "flynn-perez",
+   "live": 113,
+   "landed": 139,
+   "delta": 26,
+   "pathway": "SSP"
+  },
+  {
+   "key": "flynn-riley",
+   "live": 233,
+   "landed": 391,
+   "delta": 158,
+   "pathway": "MSD"
+  },
+  {
+   "key": "flynn-young",
+   "live": 128,
+   "landed": 168,
+   "delta": 40,
+   "pathway": "MSD"
+  },
+  {
+   "key": "fred-rodriguez",
+   "live": 143,
+   "landed": 201,
+   "delta": 58,
+   "pathway": "RD"
+  },
+  {
+   "key": "harrison-coe",
+   "live": 52,
+   "landed": 322,
+   "delta": 270,
+   "pathway": "MSD"
+  },
+  {
+   "key": "harrison-ramm",
+   "live": 351,
+   "landed": 545,
+   "delta": 194,
+   "pathway": "MSD"
+  },
+  {
+   "key": "harry-charleson",
+   "live": 86,
+   "landed": 105,
+   "delta": 19,
+   "pathway": "RD"
+  },
+  {
+   "key": "harry-edwards",
+   "live": 97,
+   "landed": 104,
+   "delta": 7,
+   "pathway": "RD"
+  },
+  {
+   "key": "hudson-o-keeffe",
+   "live": 136,
+   "landed": 275,
+   "delta": 139,
+   "pathway": "SSP"
+  },
+  {
+   "key": "iliro-smit",
+   "live": 100,
+   "landed": 204,
+   "delta": 104,
+   "pathway": "MSD"
+  },
+  {
+   "key": "indy-cotton",
+   "live": 49,
+   "landed": 48,
+   "delta": -1,
+   "pathway": "UNR"
+  },
+  {
+   "key": "jack-buller",
+   "live": 80,
+   "landed": 94,
+   "delta": 14,
+   "pathway": "MSD"
+  },
+  {
+   "key": "jack-henderson",
+   "live": 88,
+   "landed": 113,
+   "delta": 25,
+   "pathway": "SSP"
+  },
+  {
+   "key": "jack-hutchinson",
+   "live": 100,
+   "landed": 118,
+   "delta": 18,
+   "pathway": "MSD"
+  },
+  {
+   "key": "jack-watkins",
+   "live": 132,
+   "landed": 130,
+   "delta": -2,
+   "pathway": "RD"
+  },
+  {
+   "key": "jacob-newton",
+   "live": 156,
+   "landed": 299,
+   "delta": 143,
+   "pathway": "MSD"
+  },
+  {
+   "key": "jai-saxena",
+   "live": 60,
+   "landed": 84,
+   "delta": 24,
+   "pathway": "PDN"
+  },
+  {
+   "key": "jaime-uhr-henry",
+   "live": 51,
+   "landed": 26,
+   "delta": -25,
+   "pathway": "UNR"
+  },
+  {
+   "key": "james-blanck",
+   "live": 60,
+   "landed": 70,
+   "delta": 10,
+   "pathway": "MSD"
+  },
+  {
+   "key": "jaxon-artemis",
+   "live": 340,
+   "landed": 520,
+   "delta": 180,
+   "pathway": "MSD"
+  },
+  {
+   "key": "jayden-nguyen",
+   "live": 452,
+   "landed": 471,
+   "delta": 19,
+   "pathway": "PDN"
+  },
+  {
+   "key": "jed-bews",
+   "live": 10,
+   "landed": 15,
+   "delta": 5,
+   "pathway": "ND>64"
+  },
+  {
+   "key": "jesse-mellor",
+   "live": 60,
+   "landed": 84,
+   "delta": 24,
+   "pathway": "PDN"
+  },
+  {
+   "key": "joe-pike",
+   "live": 140,
+   "landed": 151,
+   "delta": 11,
+   "pathway": "RD"
+  },
+  {
+   "key": "jordan-boyd",
+   "live": 37,
+   "landed": 55,
+   "delta": 18,
+   "pathway": "MSD"
+  },
+  {
+   "key": "jordon-butts",
+   "live": 15,
+   "landed": 18,
+   "delta": 3,
+   "pathway": "RD"
+  },
+  {
+   "key": "josh-draper",
+   "live": 315,
+   "landed": 389,
+   "delta": 74,
+   "pathway": "PDN"
+  },
+  {
+   "key": "kalani-white",
+   "live": 67,
+   "landed": 84,
+   "delta": 17,
+   "pathway": "PDN"
+  },
+  {
+   "key": "keighton-matofai-forbes",
+   "live": 65,
+   "landed": 104,
+   "delta": 39,
+   "pathway": "ND>64"
+  },
+  {
+   "key": "kobe-mcdonald",
+   "live": 60,
+   "landed": 85,
+   "delta": 25,
+   "pathway": "IRE"
+  },
+  {
+   "key": "lachie-sullivan",
+   "live": 70,
+   "landed": 86,
+   "delta": 16,
+   "pathway": "SSP"
+  },
+  {
+   "key": "lachlan-blakiston",
+   "live": 128,
+   "landed": 152,
+   "delta": 24,
+   "pathway": "MSD"
+  },
+  {
+   "key": "lachlan-mcneil",
+   "live": 21,
+   "landed": 20,
+   "delta": -1,
+   "pathway": "RD"
+  },
+  {
+   "key": "lennox-hoffman",
+   "live": 65,
+   "landed": 104,
+   "delta": 39,
+   "pathway": "ND>64"
+  },
+  {
+   "key": "leon-kickett",
+   "live": 112,
+   "landed": 151,
+   "delta": 39,
+   "pathway": "RD"
+  },
+  {
+   "key": "liam-hetherton",
+   "live": 100,
+   "landed": 168,
+   "delta": 68,
+   "pathway": "PDA"
+  },
+  {
+   "key": "liam-reidy",
+   "live": 291,
+   "landed": 329,
+   "delta": 38,
+   "pathway": "RD"
+  },
+  {
+   "key": "lincoln-mccarthy",
+   "live": 10,
+   "landed": 15,
+   "delta": 5,
+   "pathway": "ND>64"
+  },
+  {
+   "key": "logan-smith",
+   "live": 91,
+   "landed": 185,
+   "delta": 94,
+   "pathway": "ND>64"
+  },
+  {
+   "key": "lukas-cooke",
+   "live": 206,
+   "landed": 364,
+   "delta": 158,
+   "pathway": "MSD"
+  },
+  {
+   "key": "luke-beecken",
+   "live": 100,
+   "landed": 164,
+   "delta": 64,
+   "pathway": "MSD"
+  },
+  {
+   "key": "luker-kentfield",
+   "live": 178,
+   "landed": 419,
+   "delta": 241,
+   "pathway": "MSD"
+  },
+  {
+   "key": "mani-liddy",
+   "live": 128,
+   "landed": 152,
+   "delta": 24,
+   "pathway": "MSD"
+  },
+  {
+   "key": "mason-cox",
+   "live": 5,
+   "landed": 3,
+   "delta": -2,
+   "pathway": "UNR"
+  },
+  {
+   "key": "matt-duffy",
+   "live": 47,
+   "landed": 43,
+   "delta": -4,
+   "pathway": "IRE"
+  },
+  {
+   "key": "matt-guelfi",
+   "live": 10,
+   "landed": 15,
+   "delta": 5,
+   "pathway": "ND>64"
+  },
+  {
+   "key": "matt-hill",
+   "live": 49,
+   "landed": 56,
+   "delta": 7,
+   "pathway": "UNR"
+  },
+  {
+   "key": "matt-owies",
+   "live": 5,
+   "landed": 3,
+   "delta": -2,
+   "pathway": "UNR"
+  },
+  {
+   "key": "max-beattie",
+   "live": 39,
+   "landed": 181,
+   "delta": 142,
+   "pathway": "MSD"
+  },
+  {
+   "key": "max-mapley",
+   "live": 52,
+   "landed": 322,
+   "delta": 270,
+   "pathway": "MSD"
+  },
+  {
+   "key": "max-ramsden",
+   "live": 115,
+   "landed": 257,
+   "delta": 142,
+   "pathway": "MSD"
+  },
+  {
+   "key": "mitch-podhajski",
+   "live": 186,
+   "landed": 399,
+   "delta": 213,
+   "pathway": "MSD"
+  },
+  {
+   "key": "mitch-zadow",
+   "live": 113,
+   "landed": 139,
+   "delta": 26,
+   "pathway": "SSP"
+  },
+  {
+   "key": "mitchell-hinge",
+   "live": 320,
+   "landed": 322,
+   "delta": 2,
+   "pathway": "RD"
+  },
+  {
+   "key": "mykelti-lefau",
+   "live": 70,
+   "landed": 86,
+   "delta": 16,
+   "pathway": "SSP"
+  },
+  {
+   "key": "nathan-broad",
+   "live": 10,
+   "landed": 15,
+   "delta": 5,
+   "pathway": "ND>64"
+  },
+  {
+   "key": "nathan-wardius",
+   "live": 54,
+   "landed": 77,
+   "delta": 23,
+   "pathway": "PDA"
+  },
+  {
+   "key": "nicholas-martin",
+   "live": 2822,
+   "landed": 3513,
+   "delta": 691,
+   "pathway": "SSP"
+  },
+  {
+   "key": "nick-driscoll",
+   "live": 143,
+   "landed": 201,
+   "delta": 58,
+   "pathway": "RD"
+  },
+  {
+   "key": "noah-chamberlain",
+   "live": 87,
+   "landed": 86,
+   "delta": -1,
+   "pathway": "PDA"
+  },
+  {
+   "key": "noah-howes",
+   "live": 128,
+   "landed": 229,
+   "delta": 101,
+   "pathway": "MSD"
+  },
+  {
+   "key": "oisin-mullin",
+   "live": 17,
+   "landed": 14,
+   "delta": -3,
+   "pathway": "IRE"
+  },
+  {
+   "key": "oliver-francou",
+   "live": 375,
+   "landed": 576,
+   "delta": 201,
+   "pathway": "MSD"
+  },
+  {
+   "key": "oliver-griffin",
+   "live": 39,
+   "landed": 181,
+   "delta": 142,
+   "pathway": "MSD"
+  },
+  {
+   "key": "ollie-greeves",
+   "live": 475,
+   "landed": 583,
+   "delta": 108,
+   "pathway": "RD"
+  },
+  {
+   "key": "oscar-berry",
+   "live": 47,
+   "landed": 53,
+   "delta": 6,
+   "pathway": "UNR"
+  },
+  {
+   "key": "paddy-cross",
+   "live": 113,
+   "landed": 139,
+   "delta": 26,
+   "pathway": "SSP"
+  },
+  {
+   "key": "patrick-carr",
+   "live": 67,
+   "landed": 31,
+   "delta": -36,
+   "pathway": "UNR"
+  },
+  {
+   "key": "peter-ladhams",
+   "live": 489,
+   "landed": 493,
+   "delta": 4,
+   "pathway": "RD"
+  },
+  {
+   "key": "ricky-mentha",
+   "live": 43,
+   "landed": 50,
+   "delta": 7,
+   "pathway": "PDN"
+  },
+  {
+   "key": "riley-onley",
+   "live": 143,
+   "landed": 201,
+   "delta": 58,
+   "pathway": "RD"
+  },
+  {
+   "key": "river-stevens",
+   "live": 65,
+   "landed": 104,
+   "delta": 39,
+   "pathway": "ND>64"
+  },
+  {
+   "key": "roan-steele",
+   "live": 128,
+   "landed": 152,
+   "delta": 24,
+   "pathway": "MSD"
+  },
+  {
+   "key": "rob-monahan",
+   "live": 37,
+   "landed": 45,
+   "delta": 8,
+   "pathway": "IRE"
+  },
+  {
+   "key": "robert-hansen",
+   "live": 80,
+   "landed": 132,
+   "delta": 52,
+   "pathway": "MSD"
+  },
+  {
+   "key": "ryda-luke",
+   "live": 60,
+   "landed": 84,
+   "delta": 24,
+   "pathway": "PDN"
+  },
+  {
+   "key": "saad-el-hawli",
+   "live": 100,
+   "landed": 118,
+   "delta": 18,
+   "pathway": "MSD"
+  },
+  {
+   "key": "sam-switkowski",
+   "live": 12,
+   "landed": 15,
+   "delta": 3,
+   "pathway": "ND>64"
+  },
+  {
+   "key": "shadeau-brain",
+   "live": 69,
+   "landed": 120,
+   "delta": 51,
+   "pathway": "PDA"
+  },
+  {
+   "key": "thomas-burton",
+   "live": 415,
+   "landed": 439,
+   "delta": 24,
+   "pathway": "SSP"
+  },
+  {
+   "key": "toby-pink",
+   "live": 23,
+   "landed": 31,
+   "delta": 8,
+   "pathway": "RD"
+  },
+  {
+   "key": "toby-whan",
+   "live": 60,
+   "landed": 84,
+   "delta": 24,
+   "pathway": "PDN"
+  },
+  {
+   "key": "tom-blamires",
+   "live": 114,
+   "landed": 139,
+   "delta": 25,
+   "pathway": "SSP"
+  },
+  {
+   "key": "tom-cochrane",
+   "live": 148,
+   "landed": 230,
+   "delta": 82,
+   "pathway": "RD"
+  },
+  {
+   "key": "tom-edwards",
+   "live": 88,
+   "landed": 108,
+   "delta": 20,
+   "pathway": "SSP"
+  },
+  {
+   "key": "tom-hanily",
+   "live": 154,
+   "landed": 216,
+   "delta": 62,
+   "pathway": "MSD"
+  },
+  {
+   "key": "tyrell-dewar",
+   "live": 73,
+   "landed": 96,
+   "delta": 23,
+   "pathway": "PDN"
+  },
+  {
+   "key": "tyson-stengle",
+   "live": 121,
+   "landed": 151,
+   "delta": 30,
+   "pathway": "RD"
+  },
+  {
+   "key": "vigo-visentini",
+   "live": 168,
+   "landed": 182,
+   "delta": 14,
+   "pathway": "RD"
+  },
+  {
+   "key": "wil-parker",
+   "live": 29,
+   "landed": 24,
+   "delta": -5,
+   "pathway": "UNR"
+  },
+  {
+   "key": "will-lewis",
+   "live": 113,
+   "landed": 139,
+   "delta": 26,
+   "pathway": "SSP"
+  },
+  {
+   "key": "will-mclachlan",
+   "live": 117,
+   "landed": 148,
+   "delta": 31,
+   "pathway": "MSD"
+  },
+  {
+   "key": "xavier-walsh",
+   "live": 86,
+   "landed": 143,
+   "delta": 57,
+   "pathway": "RD"
+  },
+  {
+   "key": "zac-banch",
+   "live": 128,
+   "landed": 152,
+   "delta": 24,
+   "pathway": "MSD"
+  },
+  {
+   "key": "zac-walker",
+   "live": 128,
+   "landed": 152,
+   "delta": 24,
+   "pathway": "MSD"
+  },
+  {
+   "key": "zak-evans",
+   "live": 36,
+   "landed": 29,
+   "delta": -7,
+   "pathway": "UNR"
+  }
+ ],
+ "named": {
+  "harrison-ramm": {
+   "live": 351,
+   "pr469": 406,
+   "psi": 567,
+   "landed": 545
+  },
+  "luker-kentfield": {
+   "live": 178,
+   "pr469": 268,
+   "psi": 449,
+   "landed": 419
+  },
+  "mani-liddy": {
+   "live": 128,
+   "pr469": 1025,
+   "psi": 168,
+   "landed": 152
+  },
+  "robert-hansen": {
+   "live": 80,
+   "pr469": 650,
+   "psi": 143,
+   "landed": 132
+  },
+  "vigo-visentini": {
+   "live": 168,
+   "pr469": 150,
+   "psi": 183,
+   "landed": 182
+  },
+  "marcus-herbert": {
+   "live": 906,
+   "pr469": 906,
+   "psi": 906,
+   "landed": 906
+  },
+  "jai-newcombe": {
+   "live": 4883,
+   "pr469": 4883,
+   "psi": 4883,
+   "landed": 4883
+  },
+  "nicholas-martin": {
+   "live": 2822,
+   "pr469": 3520,
+   "psi": 3513,
+   "landed": 3513
+  }
+ },
+ "back_movers": 12,
+ "back_movers_nonpool": 0
+}

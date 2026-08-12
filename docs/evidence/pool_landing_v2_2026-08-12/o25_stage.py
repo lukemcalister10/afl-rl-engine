@@ -182,7 +182,8 @@ prev_cm = OLD_CM.group(1)
 s = s[:OLD_CM.start()] + ("    _contract_md5='%s'   # RE-PINNED by #334 ORDER 25 (THE POOL\n"
                           "    # UPDATE v2: the re-trued pool levels move the artifact's bytes, so the contract's\n"
                           "    # mirror and its pick_curve_file_md5 move with them, and this pin moves in the same\n"
-                          "    # commit exactly as prior acts did). PREVIOUS PIN: %s, set by ORDER 23"
+                          "    # commit exactly as prior acts did). PREVIOUS PIN: %s, which was\n"
+                          "    # RE-PINNED by #334 ORDER 23 (the pool"
                           % (CONTRACT_MD5, prev_cm)) + s[OLD_CM.end():]
 sp.write_text(s)
 print("  [3] one_source_selftest.py RE-SIGNED   md5 -> %s" % md5(sp))

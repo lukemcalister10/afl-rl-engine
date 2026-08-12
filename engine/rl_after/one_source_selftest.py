@@ -488,7 +488,11 @@ if _pvc2_on:
     # store, the per-entrant derivation, and the byte-frozen contract. Live-store divergence means
     # "re-derivation due" in the claims note/checklist; it is not curve corruption and must not re-alarm weekly.
     _curve_contract_path=(os.path.join(_repo,'ui','release_pick_curve.json') if _repo else None)
-    _contract_md5='2e745ae3851637a88f68a950c230e363'   # RE-PINNED by #334 ORDER 23 (the pool
+    _contract_md5='bdc21f33eb70d49dd481f7e63a1b0398'   # RE-PINNED by #334 ORDER 25 (THE POOL
+    # UPDATE v2: the re-trued pool levels move the artifact's bytes, so the contract's
+    # mirror and its pick_curve_file_md5 move with them, and this pin moves in the same
+    # commit exactly as prior acts did). PREVIOUS PIN: 2e745ae3851637a88f68a950c230e363, which was
+    # RE-PINNED by #334 ORDER 23 (the pool
     # update: derived pool levels + the amended ND65+ law move the artifact's bytes, so the
     # contract's mirror and its pick_curve_file_md5 move with them, and this pin moves in the
     # same commit exactly as prior acts did). PREVIOUS PIN: eae593f220460d880be20da38e3de39d,
@@ -635,9 +639,9 @@ print("=== (10) #326 PER-DIVISION POOL ENTRY ANCHORS — the N43 signed levels =
 # The four reference quantities below it (rd_division_level, rd_positional_shrink_target,
 # measured_pool_aggregate, K) are N43 CONSTRUCTION constants, are unchanged in the artifact, and
 # are therefore unchanged here.
-_N43_FLAT={'MSD':374,'SSP':315,'PDA':188,'PDS':56,'IRE':106,'PDN':96,'UNR':66}
-_N43_RD={'KPD':370,'MID':289,'RUCK':259,'SD':245,'SF':217,'KPF':209}
-_N43_ND65_K15=298; _N43_RD_LEVEL=261.6; _N43_RD_TARGET=262.2; _N43_POOL_AGG=235.8; _N43_K=15
+_N43_FLAT={'MSD':337,'SSP':309,'PDA':192,'PDS':56,'IRE':106,'PDN':96,'UNR':65}
+_N43_RD={'KPD':369,'MID':290,'RUCK':257,'SD':245,'SF':218,'KPF':206}
+_N43_ND65_K15=297; _N43_RD_LEVEL=261.6; _N43_RD_TARGET=262.2; _N43_POOL_AGG=235.8; _N43_K=15
 _v2doc=json.load(open(hp('pvc_curve_v2.json')))
 _pl=_v2doc.get('pool_levels')
 check(bool(_pl), "#326: the curve artifact carries a pool_levels block beside pool_value")
