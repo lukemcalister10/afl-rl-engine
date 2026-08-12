@@ -1,0 +1,161 @@
+{
+ "step_P": {
+  "derive_n": 691,
+  "allarm_n": 623,
+  "extra": 68,
+  "admitted": [
+   "james-condos",
+   "andrew-carrazzo",
+   "aaron-davey",
+   "nathan-foley",
+   "luke-buckland",
+   "dylan-pfitzner",
+   "ben-clifton",
+   "brett-jones",
+   "paul-duffield",
+   "ben-cosgriff",
+   "adam-grocke",
+   "aaron-rogers",
+   "zane-leonard",
+   "murray-boyd",
+   "paul-newman",
+   "james-allan",
+   "michael-rix",
+   "michael-embley",
+   "nathan-lovett-murray",
+   "rowan-andrews",
+   "salim-hassan",
+   "david-fanning",
+   "matt-pardew",
+   "adam-bentick",
+   "josh-thurgood",
+   "jaymie-graham",
+   "michael-warren",
+   "andrew-lovett",
+   "brad-dabrowski",
+   "dale-ellis",
+   "dean-benson",
+   "sam-pleming",
+   "joel-campbell",
+   "shaun-bergin",
+   "peter-summers",
+   "luke-taylor",
+   "jake-furfaro",
+   "paul-shelton",
+   "nick-potter",
+   "leigh-ryswyk",
+   "jeremy-stiller",
+   "doug-scott",
+   "michael-johnson",
+   "jacob-surjan"
+  ],
+  "skipped": [
+   "fred-rodriguez",
+   "riley-onley",
+   "jack-watkins",
+   "leon-kickett",
+   "ollie-greeves",
+   "nick-driscoll",
+   "archer-day-wicks",
+   "aiden-riddle",
+   "harry-charleson",
+   "xavier-ivisic",
+   "tom-cochrane",
+   "blake-leidler",
+   "asher-eastham",
+   "patrick-retschko",
+   "joe-pike",
+   "loch-rawlinson",
+   "finnbar-maley",
+   "sam-clohesy",
+   "odin-jones",
+   "vigo-visentini",
+   "xavier-walsh",
+   "matt-carroll",
+   "will-rowlands",
+   "kynan-brown"
+  ],
+  "by_cohort": {
+   "2026": 6,
+   "2025": 9,
+   "2024": 9,
+   "2004": 44
+  }
+ },
+ "step_ISA": {
+  "rows_moved": 0
+ },
+ "step_D": {
+  "rows_moved": 667,
+  "sum_v0": 485738.5,
+  "sum_anchor": 183314.3988,
+  "ratio": 2.6497563921858167,
+  "dead_zeroed_kept": 406,
+  "examples": [
+   {
+    "key": "xavier-richards",
+    "pos": "KPD",
+    "Y": 2016,
+    "mark": 626.0,
+    "anchor": 388.3356,
+    "v0": 2336.7
+   },
+   {
+    "key": "levi-casboult",
+    "pos": "KPF",
+    "Y": 2013,
+    "mark": 619.0,
+    "anchor": 216.7944,
+    "v0": 2230.7
+   },
+   {
+    "key": "rory-thompson",
+    "pos": "KPD",
+    "Y": 2014,
+    "mark": 959.0,
+    "anchor": 388.3356,
+    "v0": 2215.7
+   },
+   {
+    "key": "jordon-butts",
+    "pos": "KPD",
+    "Y": 2022,
+    "mark": 306.0,
+    "anchor": 388.3356,
+    "v0": 2135.4
+   },
+   {
+    "key": "jack-frost",
+    "pos": "KPD",
+    "Y": 2016,
+    "mark": 209.0,
+    "anchor": 388.3356,
+    "v0": 1830.1
+   },
+   {
+    "key": "matthew-taberner",
+    "pos": "KPF",
+    "Y": 2016,
+    "mark": 795.0,
+    "anchor": 216.7944,
+    "v0": 1791.6
+   },
+   {
+    "key": "callum-moore",
+    "pos": "KPF",
+    "Y": 2019,
+    "mark": 85.0,
+    "anchor": 216.7944,
+    "v0": 1773.4
+   },
+   {
+    "key": "fletcher-roberts",
+    "pos": "KPD",
+    "Y": 2015,
+    "mark": 434.0,
+    "anchor": 388.3356,
+    "v0": 1735.6
+   }
+  ]
+ }
+}

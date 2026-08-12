@@ -1,0 +1,82 @@
+======================================================================================================================
+ORDER 26A -- THE ROW-LEVEL LINE-UP OF THE RD BRIDGE   (window end 2026)
+======================================================================================================================
+
+----------------------------------------------------------------------------------------------------------------------
+STEP P -- POPULATION. derive RD n=691 ; allarm RD n=623 ; difference 68 rows.
+----------------------------------------------------------------------------------------------------------------------
+  the 68 rows derive counts and allarm does not, by cohort: {2004: 44, 2024: 9, 2025: 9, 2026: 6}
+  of them, 44 are ADMITTED to the yr4 reading (cohort+3 <= 2026) and 24 are skipped as not-yet-reached.
+  ALL 44 admitted rows come from cohorts BEFORE 2005 -- the pre-2005 rookie classes the all-arm
+  instrument's PRIMARY window excludes by design. NONE come from after 2023.
+
+  named examples of the 44 ADMITTED rows (the ones that move the number):
+    player                       cohort    pos      Y     mark@Y     anchor   board v0
+    james-condos                   2004    MID   2007        0.0      305.2      255.9
+    andrew-carrazzo                2004    MID   2007     3798.0      305.2      441.5
+    aaron-davey                    2004     SF   2007     2353.0      229.4      427.1
+    nathan-foley                   2004    MID   2007     3965.0      305.2      596.5
+    luke-buckland                  2004     SD   2007        0.0      257.8      565.8
+    dylan-pfitzner                 2004     SF   2007        0.0      229.4      484.3
+    ben-clifton                    2004    KPD   2007        0.0      388.3      946.0
+    brett-jones                    2004     SD   2007      824.0      257.8      308.6
+    paul-duffield                  2004     SD   2007      401.0      257.8      565.8
+    ben-cosgriff                   2004     SF   2007        0.0      229.4      484.3
+    adam-grocke                    2004    KPD   2007        0.0      388.3     1292.0
+    aaron-rogers                   2004     SF   2007        0.0      229.4      599.7
+    ... (44 admitted rows in total)
+
+  named examples of the 24 SKIPPED rows (counted by derive's population but not by its yr4):
+    loch-rawlinson               cohort 2024 -> Y 2027 > window end 2026
+    finnbar-maley                cohort 2024 -> Y 2027 > window end 2026
+    sam-clohesy                  cohort 2024 -> Y 2027 > window end 2026
+    odin-jones                   cohort 2024 -> Y 2027 > window end 2026
+    vigo-visentini               cohort 2024 -> Y 2027 > window end 2026
+    xavier-walsh                 cohort 2024 -> Y 2027 > window end 2026
+
+----------------------------------------------------------------------------------------------------------------------
+STEPS I, S, A -- INDEXING, SKIP/ZERO SEMANTICS, AGGREGATION
+----------------------------------------------------------------------------------------------------------------------
+  rows moved: ZERO, in all three cases. The instruments are textually different and
+  arithmetically identical:
+    I : derive cohort+3 ; allarm cohort+N-1 at N=4 -> cohort+3. Same year for all 2644 eligible rows.
+    S : both skip Y>window_end, both skip Y<yrs[0] ('pre'), both score 0 past yrs[-1] and on a
+        null vpath cell. The ONLY textual difference is the empty-yrs row: derive labels it
+        'v=0.0' and allarm labels it 'ended' -- SAME VALUE, and in any case there are 0 such rows.
+    A : allarm's mean/mean is taken over the SAME included set as its own denominator, so it is
+        algebraically sum/sum. The n cancels exactly.
+
+----------------------------------------------------------------------------------------------------------------------
+STEP D -- THE ENTRY-PRICE OBJECT. This is 98.65%% of the whole gap.
+----------------------------------------------------------------------------------------------------------------------
+  rows moved: ALL 667 rows in the reading. Every single one.
+  SUM board v0 485,738  vs  SUM signed anchor 183,314   ->  ratio 2.6498
+
+  the signed RD positional levels x _PL_F=1.0524 (the whole of the anchor for an RD row):
+    MID    level  290  anchor   305.20  |  mean board v0    643.5  |  board v0 / anchor = 2.108  (n=166)
+    SD     level  245  anchor   257.84  |  mean board v0    761.1  |  board v0 / anchor = 2.952  (n=156)
+    SF     level  218  anchor   229.42  |  mean board v0    475.8  |  board v0 / anchor = 2.074  (n=143)
+    KPD    level  369  anchor   388.34  |  mean board v0   1381.9  |  board v0 / anchor = 3.558  (n=71)
+    KPF    level  206  anchor   216.79  |  mean board v0   1108.6  |  board v0 / anchor = 5.114  (n=63)
+    RUCK   level  257  anchor   270.47  |  mean board v0    355.7  |  board v0 / anchor = 1.315  (n=68)
+
+  named examples -- the SAME player, the SAME year, the SAME mark, two entry prices:
+    player                         pos      Y    mark@Y    anchor  board v0  m/anchor      m/v0
+    xavier-richards                KPD   2016     626.0     388.3    2336.7     1.612     0.268
+    levi-casboult                  KPF   2013     619.0     216.8    2230.7     2.855     0.277
+    rory-thompson                  KPD   2014     959.0     388.3    2215.7     2.470     0.433
+    jordon-butts                   KPD   2022     306.0     388.3    2135.4     0.788     0.143
+    jack-frost                     KPD   2016     209.0     388.3    1830.1     0.538     0.114
+    matthew-taberner               KPF   2016     795.0     216.8    1791.6     3.667     0.444
+    callum-moore                   KPF   2019      85.0     216.8    1773.4     0.392     0.048
+    fletcher-roberts               KPD   2015     434.0     388.3    1735.6     1.118     0.250
+
+  and the dead, who are ZEROED and KEPT (the branch the owner suspected of skipping them):
+    406 of the 667 rows in the RD yr4 reading score exactly 0.0 and stay in the denominator.
+      blake-drury                  cohort 2023  Y 2026  emitted yrs 2023..2024  -> past the end, scored 0.0, entry 229.4 KEPT
+      rhett-montgomerie            cohort 2023  Y 2026  emitted yrs 2023..2024  -> past the end, scored 0.0, entry 257.8 KEPT
+      will-verrall                 cohort 2023  Y 2026  emitted yrs 2023..2024  -> past the end, scored 0.0, entry 270.5 KEPT
+      cameron-owen                 cohort 2023  Y 2026  emitted yrs 2023..2024  -> past the end, scored 0.0, entry 270.5 KEPT
+      oscar-murdoch                cohort 2023  Y 2026  emitted yrs 2023..2024  -> past the end, scored 0.0, entry 257.8 KEPT
+      hamish-free                  cohort 2023  Y 2026  emitted yrs 2023..2024  -> past the end, scored 0.0, entry 270.5 KEPT
+

@@ -1,0 +1,65 @@
+======================================================================================================================
+ORDER 26A -- THE BRIDGE.  matrix=per_entrant_O25R4.json (3c6ffcde)  store=d9a24282  v0surf=6ef67f07db98  window_end=2026
+======================================================================================================================
+  eligible rows: 2644 of 2645
+  _PL_F = 1.0524   signed RD positional levels: KPD 369  KPF 206  MID 290  RUCK 257  SD 245  SF 218
+
+----------------------------------------------------------------------------------------------------------------------
+CONTROL 0 -- the re-implementations reproduce BOTH published instruments before any step
+----------------------------------------------------------------------------------------------------------------------
+  derive RD        reimplemented 1.379793413   published 1.379793   PASS
+  derive ALL POOL  reimplemented 1.338050228   published 1.338050   PASS
+  derive NATIONAL  reimplemented 1.554716748   published 1.554717   PASS
+  allarm RD        reimplemented 0.508978685   published 0.509000   PASS
+  allarm ND        reimplemented 1.480343866   published 1.480300   PASS
+  CONTROL PASS -- both instruments reproduced. Everything below is readable.
+
+----------------------------------------------------------------------------------------------------------------------
+H3 -- YEAR INDEXING, MEASURED ROW BY ROW over all 2644 eligible rows
+----------------------------------------------------------------------------------------------------------------------
+  rows where derive's cohort+3 differs from allarm's cohort+N-1 at N=4 : 0
+  both keys resolve to the SAME calendar year for every eligible row.
+
+======================================================================================================================
+THE RD BRIDGE -- allarm 0.5090  ->  derive 1.379793.  Steps in the PRE-REGISTERED order.
+======================================================================================================================
+  #  state                                               reading   n_in        delta
+  --------------------------------------------------------------------------------------------
+  0  ALLARM AS PUBLISHED (pop/idx/sem/agg/den)          0.508979    623           --
+  P  POPULATION: cohort window 2005-2023 -> all eli     0.520725    667    +0.011746
+  I  YEAR INDEXING: N=4 (cohort+N-1) -> cohort+3        0.520725    667    +0.000000
+  S  SKIP/ZERO SEMANTICS: allarm branches -> derive     0.520725    667    +0.000000
+  A  AGGREGATION: mean/mean -> sum/sum                  0.520725    667    +0.000000
+  D  ENTRY-PRICE OBJECT: r['v0'] -> anchor_of(r) =      1.379793    667    +0.859069
+  --------------------------------------------------------------------------------------------
+  =  DERIVE AS PUBLISHED                                1.379793    667             
+  RESIDUAL (bridge end - derive reading) = 0.000e+00   ZERO (< 1e-9)
+
+----------------------------------------------------------------------------------------------------------------------
+H1 -- SURVIVOR BIAS THROUGH THE SKIP BRANCHES. The owner's numeric check: if the 1.38 is
+      survivors-over-their-own-entry, the SURVIVING ENTRY SHARE must be ~ 0.509/1.380 = 36.9%.
+----------------------------------------------------------------------------------------------------------------------
+  RD (derive pop, anchor den)         n= 691  entry total      189,892
+      branch census: {'skip_notyet': 24, 'zero_ended': 406, 'path': 261}
+      entry KEPT in the denominator (not skipped) :      183,314   share  96.54%  (n=667)
+      entry of rows scoring a NON-ZERO mark        :       72,171   share  38.01%  (n=261)
+  RD (derive pop, v0 den)             n= 691  entry total      503,673
+      branch census: {'skip_notyet': 24, 'zero_ended': 406, 'path': 261}
+      entry KEPT in the denominator (not skipped) :      485,738   share  96.44%  (n=667)
+      entry of rows scoring a NON-ZERO mark        :      189,778   share  37.68%  (n=261)
+  ALL POOL (derive pop, anchor den)   n=1200  entry total      308,185
+      branch census: {'skip_notyet': 140, 'path': 423, 'zero_ended': 637}
+      entry KEPT in the denominator (not skipped) :      270,188   share  87.67%  (n=1060)
+      entry of rows scoring a NON-ZERO mark        :      111,128   share  36.06%  (n=423)
+  NATIONAL (derive pop, v0=anchor)    n=1443  entry total    1,216,754
+      branch census: {'skip_notyet': 186, 'path': 982, 'zero_ended': 275}
+      entry KEPT in the denominator (not skipped) :    1,058,752   share  87.01%  (n=1257)
+      entry of rows scoring a NON-ZERO mark        :      943,193   share  77.52%  (n=982)
+
+----------------------------------------------------------------------------------------------------------------------
+H2 -- THE VALUE OBJECT. Are the two instruments reading the SAME number at the SAME year?
+----------------------------------------------------------------------------------------------------------------------
+  rows compared (allarm RD population, n=623)
+  numerator mismatches between the two instruments: 0
+  -> both read vpath[i] for the SAME calendar year; the NUMERATOR is byte-identical.
+
