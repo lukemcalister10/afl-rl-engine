@@ -141,6 +141,21 @@ ORDER 26B  --  STEP 5, THE COMPARISONS AND THE TWO NEW MANDATORY INSTRUMENTS
   UNR         0.399   0.455   0.623   0.763   0.897   0.667   0.277      0.897      4 PASS
   ND>64       1.089   1.263   1.085   1.161   1.054   0.948   1.038      1.263      1 FAIL
 
+  DISPERSION OF THE PER-ENTRANT RATIO vpath[d]/derived_v0 -- the distribution behind each verdict.
+  A ratio of sums is one number; the law of this order is that no such number ships without the
+  spread it sits on.
+  arm      peak d   p05@peak   med@peak   p95@peak  mean@peak      d=4     p05@d4     med@d4     p95@d4
+  ND 1-64       3      0.000      0.644      5.488      1.395     1200      0.000      0.431      5.892
+  RD            3      0.000      0.000      7.595      1.232      655      0.000      0.000      7.387
+  SSP           2      0.000      0.392      8.748      1.489       24      0.000      0.000      6.690
+  MSD           5      0.000      0.000      3.836      0.833       44      0.000      0.000      3.107
+  IRE           6      0.000      0.000      8.535      1.583       48      0.000      0.000      7.794
+  PDA           4      0.000      0.000     10.081      1.070       38      0.000      0.000     10.081
+  PDN           5      0.000      0.000     11.075      1.061       24      0.000      0.000      1.275
+  PDS           4      0.000      0.000      9.348      1.045       21      0.000      0.000      9.348
+  UNR           4      0.000      0.000      7.447      0.897       46      0.000      0.000      7.447
+  ND>64         6      0.000      0.000      5.831      1.038      113      0.000      0.000      5.345
+
   THE TWO READINGS DISAGREE ON: SSP, MSD, PDA, PDN, ND>64
   n in the denominator by depth (the dead are IN it; only 'not yet' and 'pre-first-season' leave)
   arm            d0      d1      d2      d3      d4      d5      d6

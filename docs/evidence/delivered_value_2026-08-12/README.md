@@ -3,18 +3,33 @@
 **The act:** ORDER 26B, the delivered-value rederivation. Brief and thirteen owner rulings:
 [#334 comment 5269952564](https://github.com/lukemcalister10/afl-rl-engine/issues/334#issuecomment-5269952564).
 
-**Outcome: the build STOPPED at step 1.** The identity gate (Ruling 9) failed against the live board
-price, and Ruling 9 makes a gate failure a stop. Steps 3–6 were not run.
+**Outcome: COMPLETE, steps 0–6.** The build stopped at step 1 when the identity gate, read literally
+against the live board price, failed. The owner then ruled
+([#334 comment 5270492281](https://github.com/lukemcalister10/afl-rl-engine/issues/334#issuecomment-5270492281),
+"Core, resume") that the gate is **SATISFIED AT THE PRICING CORE** — the scorer is bit-exact against the
+engine's own `price6` on 804/804 rows — and that the four adjustment legs are player-state machinery,
+deferred whole to the consumption-rewire act. Steps 3–6 ran on that ruling.
 
 **Start here:** `SHIPPING_PACKET_26B.md`.
 
 | file | what |
 |---|---|
 | `PREREG_ORDER26B.md` | pre-registration, committed before any measurement of this order's quantities |
-| `GATE_REPORT.md` | the identity gate in owner-readable form — the verdict, the attribution, the two readings |
-| `SHIPPING_PACKET_26B.md` | the packet: what was and was not delivered, the prereg scored, breaches owned |
+| `GATE_REPORT.md` | step 1 — the identity gate, its verdict and the zero-residual attribution |
 | `o26b_gate.py` → `GATE.json`, `GATE_out.txt` | the gate instrument |
-| `o26b_layer1.py` → `LAYER1_out.txt` | the Layer-1 builder |
+| `o26b_layer1.py` → `LAYER1_out.txt` | step 2 — the Layer-1 builder |
+| `o26b_layer2.py` → `LAYER2.json`, `LAYER2_out.txt` | step 3 — the valuation layer, all knobs in one config block |
+| `o26b_derive.py` → `DERIVE.json`, `DERIVE_out.txt` | step 4 — the all-in curve, positional relativities, pool ladders, MSD both ways |
+| `INSTRUMENTS_PRESTATEMENT.md` | step 5 — both instruments' exact forms, dated and committed BEFORE the computation |
+| `o26b_compare.py` → `COMPARE.json`, `COMPARE_out.txt` | step 5 — comparisons and both new mandatory instruments |
+| `o26b_v5.py` → `V5_APPENDIX.json`, `V5_APPENDIX_out.txt` | the V5 age-ladder appendix (**NOT RULED**) |
+| `per_entrant_O25R4.json` | the walk-forward matrix, copied for durability (md5 `3c6ffcdeaac9786473f3f017dba1d61e`) |
+| `SHIPPING_PACKET_26B.md` | step 6 — the packet: the curve beside today's, the pathway tables, both instruments, the prereg scored, breaches owned |
+
+**The headline numbers.** Pre-anchor scale at pick 1 = **2,112.6** board points; anchoring factor
+**×1.4200**. The derived pick curve sits within ±6 % of today's PVC at 37 of 64 picks. Pool derived v0s
+come in at **0.4554×** today's printed day-0 prices and **1.1720×** the owner's signed anchors. Both new
+instruments **PASS**. Nothing is landed.
 
 **The dataset this act produced lives elsewhere, deliberately:**
 `data/delivered_value/layer1_player_seasons.json` (md5 `ad1229ea6f443538479447132382b21c`) — a

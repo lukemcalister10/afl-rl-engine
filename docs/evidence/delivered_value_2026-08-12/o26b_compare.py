@@ -376,6 +376,25 @@ for arm in ARMS:
       % (arm, "".join(("%8.3f" % mm[d]) if mm[d] == mm[d] else "%8s" % 'n/a' for d in DEPTHS),
          mm[bd], bd, 'PASS' if ok2 else 'FAIL'))
 P()
+P("  DISPERSION OF THE PER-ENTRANT RATIO vpath[d]/derived_v0 -- the distribution behind each verdict.")
+P("  A ratio of sums is one number; the law of this order is that no such number ships without the")
+P("  spread it sits on.")
+P("  %-8s %6s %10s %10s %10s %10s   %6s %10s %10s %10s" %
+  ('arm', 'peak d', 'p05@peak', 'med@peak', 'p95@peak', 'mean@peak', 'd=4', 'p05@d4', 'med@d4', 'p95@d4'))
+for arm, rows in ARMS.items():
+    pd_ = PROG[arm]['peak_d']
+    for tag, d in (('peak', pd_), ('d4', 4)):
+        rr = []
+        for r, v0 in rows:
+            kind, v = sem(r, cohort(r) + d)
+            if v is None: continue
+            rr.append(v / v0)
+        PROG[arm]['disp_' + tag] = disp(rr)
+    a = PROG[arm]['disp_peak']; b = PROG[arm]['disp_d4']
+    P("  %-8s %6d %10.3f %10.3f %10.3f %10.3f   %6d %10.3f %10.3f %10.3f"
+      % (arm, pd_, a['p05'], a['median'], a['p95'], a['mean'], b['n'], b['p05'], b['median'],
+         b['p95']))
+P()
 P("  THE TWO READINGS DISAGREE ON: %s" % (", ".join(DISAGREE) if DISAGREE else "no arm"))
 P("  n in the denominator by depth (the dead are IN it; only 'not yet' and 'pre-first-season' leave)")
 P("  %-8s %s" % ('arm', "".join("%8s" % ('d%d' % d) for d in DEPTHS)))
