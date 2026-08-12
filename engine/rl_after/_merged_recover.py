@@ -1188,6 +1188,53 @@ def _pr_U(p):
     """the mean-preserving uplift the pathway's NON-sitters carry (entry-weighted mean == 1 exactly)"""
     pw=_pr_pathway(p)
     return float(_PR_U[pw] if pw else _PR_U_ALL)
+# ===== ORDER 24 -- CURRENT-STATE DELIVERY. The Liddy fix. =============================================
+# THE DEFECT (issue #334, ORDER 24 brief, comment 5265706155). ORDER 21/23 bound R to sitout_ev and U to
+# _a_blend on the reading that those two sites partition the pool population into sitters and non-sitters.
+# They do not. ev() dispatches on ns=nseas_pro(p,Y), a CAREER counter (:1085) -- seasons EVER played at or
+# above the 6-game bar. The anchor share the multiplier is actually delivered against is a CURRENT-season
+# quantity: _a_share's lam reads gy, this season's games, and LAM_SIT[6]==1.0, so
+#     a pool player AT or ABOVE this season's bar carries anchor share EXACTLY ZERO and never feels U;
+#     a pool player with a career but ZERO games this season carries lam=0 and anchor share exp(-E_q/1.1),
+#     which for a thin record is near 1.
+# The premium therefore landed INVERSELY TO PARTICIPATION. mani-liddy (MSD 2025 pick 15; 9 games @ 51.1 in
+# 2025, 0 games in 2026) has E_q=0.1396 -> anchor share 0.8808, multiplied by U(MSD)=3.0959: 128 -> 1025.
+# robert-hansen 80 -> 650 by the same mechanism.
+#
+# THE FIX. The career-state partition ceases to select who gets what; CURRENT state does. Both read sites
+# compute the SAME object, so which arm of ev() a row lands on no longer decides its multiplier:
+#     M(p,Y) = (1-phi) * R_derived(pathway,cls,tau)  +  phi * U_pathway
+# A pool player with zero current participation reads the derived retention R at his depth. A currently
+# playing pool player receives the U premium IN PROPORTION to current participation.
+#
+# phi IS THE ENGINE'S OWN MID-SEASON CONVENTION, NOT A NEW ONE. The engine judges the in-progress season
+# against a PRORATED 6-game bar in three existing places -- nseas_pro (:1086, games >= 6*_fEy), bestlvl
+# (:1082, same bar) and sitout_ev's own gp=min(gy/fe,6.0), games at pace against that same bar. phi = gp/6
+# is exactly the continuous form of that judgement: 0 at zero games, EXACTLY 1 at or above the bar, linear
+# between. No new constant, no new threshold, no new dial. _fEy(Y,p) supplies the proration and already
+# returns 1.0 for a completed season AND for an availability-register name whose season is priced as
+# complete, so those rows are judged on a full bar without a special case.
+#
+# ON D12, DECLARED RATHER THAN BURIED: the concave clock tau = (Y-debutyr) + fe**1.5 (:2007) is the DEPTH
+# convention for the in-progress season -- how far down the retention curve the row has travelled -- and it
+# is a penalty-path object by its own comment. It is UNTOUCHED and is NOT reused as the participation
+# weight: depth and participation are different quantities, and fe**1.5 would say a player who has played
+# no games is 88% participating, which is the defect inverted. tau continues to feed _pr_R at both sites.
+#
+# SCOPE. Both edits sit inside the existing p.get('_pool') guards. NO NATIONAL CODE PATH CHANGES: _R_surf,
+# LAM_SIT, _a_share, _ev_qual, _surprise, _c_w, C_H, _h_cut and the D12 clock are all untouched. The U
+# figures in _PR_U above are RE-DERIVED for this delivery (mean preservation now weights each cell by its
+# own phi rather than by a career-state flag) -- see docs/evidence/pool_dial_2026-08-12/UPRIME_TABLE.md.
+def _pr_phi(p,Y):
+    """CURRENT-season participation share on the engine's own prorated establishment bar: gp/6, in [0,1]."""
+    fe=_fEy(Y,p)
+    if not fe>0.0: return 0.0
+    gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
+    return float(min(max(gy/(6.0*fe),0.0),1.0))
+def _pr_mult(p,Y,tau):
+    """THE ONE POOL MULTIPLIER, DELIVERED AGAINST CURRENT STATE (ORDER 24). Identical at both read sites."""
+    phi=_pr_phi(p,Y)
+    return (1.0-phi)*_pr_R(p,tau)+phi*_pr_U(p)
 # ===================================================================================================
 # ==== ASK1 (D13 03/07/2026): RUCK PRIOR CAP — cap the hot ruck band prior as a max V0/PVC ratio. Parameterised
 # dial RL_RUC_PRIOR_CAP; DEFAULT 1.73 = the class's own ND-ruck median V0/PVC (Luke's inclination, D13 ASK1:
@@ -2006,7 +2053,7 @@ def _surprise(e_full,anchor,gp):
 def sitout_ev(p,Y,e_full):
     fe=_fEy(Y,p); tau=max(0.0,Y-cp.debutyr(p))+((fe**1.5) if Y>=cp.debutyr(p) else 0.0)   # D12: CONCAVE penalty proration tau'=(R/24)^1.5 (Luke OPTION A); completed seasons full (integer knots), in-progress season accrues concavely. PENALTY path only — the lam reward blend below is UNTOUCHED.
     R=_R_surf(_sitout_cls(MA.gfut(p)), MA.effpk(p), tau)     # D13 ASK3: pick-conditioned, isotonic-in-depth surface (was depth-only R_SIT)
-    if p.get('_pool'): R=_pr_R(p,tau)                        # ORDER 21: the sit-out arm is a SITTER by definition -> the derived retention.
+    if p.get('_pool'): R=_pr_mult(p,Y,tau)                   # ORDER 24: CURRENT-state delivery -- (1-phi)*R + phi*U, the same object at both pool read sites.
     gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
     gp=min(gy/fe,6.0)                                        # hoisted: the ONE games-at-pace clamp the lam ramp AND the resolution fade both read (identical expression; no new clip)
     anch=R*entry_anchor(p)                                   # THE ANCHOR LEG — hoisted; the SAME object the blend and the surprise statistic both read
@@ -2234,7 +2281,7 @@ _A_DRAGFADE=os.environ.get('RL_A_DRAGFADE','0')!='0'
 def _a_blend(p,Y,e_full):
     tau=max(0.0,Y-cp.debutyr(p))+((_fEy(Y,p)**1.5) if Y>=cp.debutyr(p) else 0.0)   # sitout_ev's own depth clock
     R=_R_surf(_sitout_cls(MA.gfut(p)),MA.effpk(p),tau)
-    if p.get('_pool'): R=_pr_U(p)                            # ORDER 21: the year-1+ arm is a NON-SITTER by definition -> the uplift.
+    if p.get('_pool'): R=_pr_mult(p,Y,tau)                   # ORDER 24: CURRENT-state delivery -- (1-phi)*R + phi*U, the same object at both pool read sites.
     anch0=R*entry_anchor(p)
     w=_c_w(p,Y,e_full,entry_anchor(p))                               # THE ONE READ of the evidence weight; both roles below use this value
     anch=anch0*(1.0+w*(C_H-1.0))                                     # #334 ITEM C: the cap release on the taught level
