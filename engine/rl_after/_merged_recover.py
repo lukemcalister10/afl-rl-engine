@@ -1231,10 +1231,76 @@ def _pr_phi(p,Y):
     if not fe>0.0: return 0.0
     gy=sum(x['games'] for x in p['scoring'] if x['year']==Y)
     return float(min(max(gy/(6.0*fe),0.0),1.0))
+# ===== ORDER 24B -- THE QUALITY-CONDITIONED PREMIUM. psi = phi*q. ====================================
+# THE DEFECT (issue #334, ORDER 24B brief, comment 5266656676). ORDER 24 fixed WHO the premium reaches
+# -- current participation, not career state. It did not touch HOW MUCH. `phi*U` is a FLAT pathway
+# premium, so a pool player who plays badly and one who plays well collect the same premium per unit of
+# participation. harrison-ramm (MSD, 4 games in 2026 at 28.75) was lifted 406 -> 620 by the full MSD
+# premium; vigo-visentini (RD ruck, 1 game at 84.00) collected 150 -> 182, a fraction, purely because his
+# participation share is small. THE OWNER'S LAW: "we don't value players on whether they play, we value
+# them on how they play."
+#
+# THE RULE. The premium leg is conditioned on QUALITY, measured against the pathway's own historical
+# PLAYING PAR at the same career depth:
+#     q(p,Y) = clip( avg(p,Y) / par(pathway, d) , 0, 1 )
+#     M(p,Y) = (1-phi)*R(pathway,cls,tau)  +  phi*( 1 + q*(U''(pathway)-1) )
+# q=1 (at or above par) collects the whole premium; q=0 collects none of it and the row is priced at
+# 1.0 on its premium leg -- never below, because the premium is a LIFT and its absence is not a charge.
+# psi = phi*q is the composite weight, and it is the only thing ORDER 24B adds to ORDER 24's M.
+#
+# THE PAR, _PR_PAR BELOW. Games-weighted mean of playing-year scoring averages by pathway x career depth,
+# derived from the SAME complete-window harvest population that produced R (o24b_uharvest.py's WC: pool
+# careers only, ZERO national rows asserted at the gate, Y<=2021, priceable anchor), with a K=10 shrink
+# toward the pathway's all-depth par -- ORDER 22's class-axis shrink form carried verbatim (owner ruling
+# 5262213139), applied at EVERY cell with no thinness threshold, every cell disclosed with its n in
+# docs/evidence/pool_quality_2026-08-12/PAR_TABLE.md. DISCLOSED THERE AND HERE: the MSD, PDN, PDS and SSP
+# cells are THIN in this population (MSD carries 14 playing cells / 121 games complete-window, because the
+# mid-season draft only begins in 2019), so those pathways' pars are largely the pathway donor. That is
+# the honest consequence of deriving par on the population that produced R, and it is reported, not hidden.
+#
+# THE DEPTH AXIS IS THE HARVEST'S OWN, and it is the axis R is indexed on. The harvest sets
+# draftyr = cp.debutyr(p)-1 and d = Y-draftyr, so d = Y-cp.debutyr(p)+1; at an integer depth the engine's
+# np.interp over knots [0..6] returns exactly dv[d-1], so par(pw,d) and R(pw,cls,d) read THE SAME CELL.
+# It is NOT the store's draft-year field: the two disagree for MSD rows (cp.debutyr returns p['year'] for
+# MSD and p['year']+1 otherwise), and the par must be read on the axis it was built on.
+#
+# avg(p,Y) IS GAMES-WEIGHTED WITHIN THE YEAR so a multi-club season reads as one number. games>0 with a
+# missing or zero average gives q=0, per the order -- never a silently par-matching average. games==0
+# gives phi=0, so no premium leg exists at all and no q is formed: SITTERS ARE UNTOUCHED BY THIS ORDER,
+# to the point. The prior fade (D9) is likewise untouched.
+#
+# U'' IS RE-DERIVED per pathway so the entry-weighted mean of M over the harvest is 1.0000000000 exactly
+# under the phi*q weights -- a HALT instrument, not a claim. The numerator is IDENTICAL to ORDER 24's, so
+# U''-1 = (U'-1)/qbar with qbar = SUM(e*phi*q)/SUM(e*phi) <= 1: U'' >= U' for every pathway, ALWAYS,
+# because premium mass shrinks under q-weighting and the surviving premium must be larger to redistribute
+# the same total. See docs/evidence/pool_quality_2026-08-12/UPRIME2_TABLE.md.
+#
+# SCOPE. Both edits remain inside the existing p.get('_pool') guards; the two call sites are UNCHANGED.
+# _pr_phi, _pr_R, _PR_PATH, _PR_WHOLE, the D12 clock, _a_share, LAM_SIT, _ev_qual, _surprise, _c_w, C_H,
+# _h_cut and _R_surf are all untouched. NO NATIONAL CODE PATH CHANGES.
+_PR_PAR={"RD": [60.360175, 63.496399, 67.136307, 71.260044, 72.33229, 75.719848], "ND>64": [61.770018, 59.813231, 62.244542, 66.005422, 67.426603, 74.66315], "IRE": [60.116951, 59.677967, 61.516259, 65.875156, 67.020563, 75.067325], "UNR": [58.739215, 62.750729, 64.32384, 71.195411, 71.453384, 71.18812], "PDA": [53.953535, 40.559436, 51.731492, 54.039708, 62.658764, 68.484532], "PDS": [58.778242, 52.902589, 55.338622, 61.937476, 59.418711, 61.26443], "MSD": [56.889616, 62.478205, 62.811267, 61.697521, 61.697521, 61.697521], "PDN": [57.311688, 59.637712, 55.806628, 62.883145, 60.074026, 60.074026], "SSP": [56.148958, 57.754585, 57.243682, 56.879259, 56.879259, 56.879259]}
+_PR_PAR_ALL=[58.966128, 60.824605, 64.556119, 69.658384, 71.38479, 75.564209]
+def _pr_depth(p,Y):
+    """the harvest's own depth index d = Y - draftyr = Y - cp.debutyr(p) + 1, clipped to [1,6]."""
+    return int(min(max(int(Y)-int(cp.debutyr(p))+1,1),6))
+def _pr_par(p,Y):
+    """the pathway's playing par at this row's career depth (whole-pool par when it has no pathway)."""
+    pw=_pr_pathway(p)
+    return float((_PR_PAR[pw] if pw else _PR_PAR_ALL)[_pr_depth(p,Y)-1])
+def _pr_q(p,Y):
+    """THE QUALITY, in [0,1]: this season's games-weighted average against the cell's par."""
+    yr=[x for x in p['scoring'] if x['year']==Y]
+    gy=sum(x['games'] for x in yr)
+    if not gy>0: return 0.0
+    av=sum(float(x.get('avg') or 0.0)*x['games'] for x in yr)/gy
+    if not av>0.0: return 0.0                                # games played, no usable average -> q = 0
+    par=_pr_par(p,Y)
+    return float(min(max(av/par,0.0),1.0)) if par>0.0 else 0.0
 def _pr_mult(p,Y,tau):
-    """THE ONE POOL MULTIPLIER, DELIVERED AGAINST CURRENT STATE (ORDER 24). Identical at both read sites."""
+    """THE ONE POOL MULTIPLIER (ORDER 24 delivery x ORDER 24B quality). Identical at both read sites."""
     phi=_pr_phi(p,Y)
-    return (1.0-phi)*_pr_R(p,tau)+phi*_pr_U(p)
+    if not phi>0.0: return _pr_R(p,tau)                      # a sitter reads R; no premium leg exists
+    return (1.0-phi)*_pr_R(p,tau)+phi*(1.0+_pr_q(p,Y)*(_pr_U(p)-1.0))
 # ===================================================================================================
 # ==== ASK1 (D13 03/07/2026): RUCK PRIOR CAP — cap the hot ruck band prior as a max V0/PVC ratio. Parameterised
 # dial RL_RUC_PRIOR_CAP; DEFAULT 1.73 = the class's own ND-ruck median V0/PVC (Luke's inclination, D13 ASK1:
