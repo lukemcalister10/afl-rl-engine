@@ -1,0 +1,32 @@
+====================================================================================================================
+BOTH COHORT INSTRUMENTS -- margins against the 14% annual charge. A NEGATIVE MARGIN IS AN ARBITRAGE.
+====================================================================================================================
+
+ALL-ARM DECIDING INSTRUMENT  (noarb_table_allarm.py)
+  window       variant         yr0      yr1      yr2      yr3      yr4      yr5 | apprec 0-1  margin v14%  verdict
+  PRIMARY  cohorts 2005-2023 n=2212 SHIP         1.0000   0.7767   0.9581   1.0608   1.1231   1.1047 |    -22.33%       36.33%   no arb
+  MODERN   cohorts 2019-2023 n=540 SHIP         1.0000   0.8007   0.9084   0.9717   0.9734   1.0309 |    -19.93%       33.93%   no arb
+  PRIMARY  cohorts 2005-2023 n=2212 O21STAGED    1.0000   0.7995   0.9660   1.0638   1.1275   1.1082 |    -20.05%       34.05%   no arb
+  MODERN   cohorts 2019-2023 n=540 O21STAGED    1.0000   0.8178   0.9148   0.9738   0.9783   1.0368 |    -18.22%       32.22%   no arb
+  PRIMARY  cohorts 2005-2023 n=2212 FINAL        1.0000   0.7988   0.9672   1.0671   1.1300   1.1104 |    -20.12%       34.12%   no arb
+  MODERN   cohorts 2019-2023 n=540 FINAL        1.0000   0.8180   0.9184   0.9752   0.9788   1.0362 |    -18.20%       32.20%   no arb
+  PRIMARY  cohorts 2005-2023 n=2212 FINALO1      1.0000   0.7988   0.9674   1.0679   1.1304   1.1106 |    -20.12%       34.12%   no arb
+  MODERN   cohorts 2019-2023 n=540 FINALO1      1.0000   0.8180   0.9185   0.9755   0.9790   1.0362 |    -18.20%       32.20%   no arb
+
+LEGACY RETAINED INSTRUMENT  (noarb_table_338.py, UNMODIFIED)
+  group          variant         yr1 apprec 0-1  margin v14%  verdict
+  ALL picks 1-64 SHIP         1.0730      7.30%        6.70%   no arb
+  picks 1-20     SHIP         1.1218     12.18%        1.82%   no arb
+  picks 21-64    SHIP         0.9994     -0.06%       14.06%   no arb
+  ALL picks 1-64 O21STAGED    1.0730      7.30%        6.70%   no arb
+  picks 1-20     O21STAGED    1.1218     12.18%        1.82%   no arb
+  picks 21-64    O21STAGED    0.9995     -0.05%       14.05%   no arb
+  ALL picks 1-64 FINAL        1.0730      7.30%        6.70%   no arb
+  picks 1-20     FINAL        1.1218     12.18%        1.82%   no arb
+  picks 21-64    FINAL        0.9995     -0.05%       14.05%   no arb
+  ALL picks 1-64 FINALO1      1.0730      7.30%        6.70%   no arb
+  picks 1-20     FINALO1      1.1218     12.18%        1.82%   no arb
+  picks 21-64    FINALO1      0.9995     -0.05%       14.05%   no arb
+
+  ARBITRAGES OPENED: 0 of 20 readings.
+  wrote docs/evidence/pool_final_2026-08-12/NOARB_MARGINS.json

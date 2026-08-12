@@ -1,0 +1,35 @@
+======================================================================================================================
+(a) THE SEPARATION LAW ON THE 24-YEAR WALK-FORWARD   SHIP 8d8b6894  ->  FINAL a9e349c6
+======================================================================================================================
+  records: 1443 national, 1202 pool
+  NATIONAL records whose v0 moved  : 0   <-- must be 0
+  NATIONAL records repriced on ANY walk-forward year: 0   <-- must be 0
+  pool records whose v0 moved      : 122  (the ruck cap -- see (b))
+  pool records repriced on the walk-forward: 1130
+
+  VERDICT: SEPARATION LAW HOLDS -- ND rows moved = 0, national v0 delta = 0 EXACTLY
+
+======================================================================================================================
+(b) `_ruc_prior_cap` ON THE DERIVED POOL RUCK v0s
+======================================================================================================================
+  cap = RUC_PRIOR_CAP * _cap_basis(p) * _ruc_head_v0(p);  for a pool row _cap_basis == pool_level
+  (LADDER currency, UNCONVERTED -- the level enters this site without the 1.0524 board factor).
+
+  pathway    rucks ON the cap      S v0 SHIP     S v0 FINAL    delta %   level SHIP -> FINAL
+  IRE            2          2          372.4          299.6    -19.55%   133 -> 107
+  MSD           14         11         5170.6         6673.3     29.06%   286 -> 379
+  ND             9          0         2092.9         2092.9      0.00%   185 -> 185
+  PDA            5          5         1358.0         1337.0     -1.55%   194 -> 191
+  PDN            2          2          344.4          271.6    -21.14%   123 -> 97
+  PDS            1          1          203.0           79.8    -60.69%   145 -> 57
+  RD            71         66        27575.8        25358.2     -8.04%   282 -> 258
+  SSP            6          4         1905.8         2286.6     19.98%   252 -> 320
+  UNR           30         30         4326.0         2772.0    -35.92%   103 -> 66
+
+  POOL RUCK ROWS WHOSE v0 IS SET BY THE CAP: 121 of 140.
+  Size, from a bound row (flynn-riley): v0 = 1.4000 x the signed level, before and after
+    flynn-riley: level 286 -> 379, v0 400.4 -> 530.6 (32.52%) -- the cap moves the v0 ONE FOR ONE with the level.
+  THE CAP IS THE ONLY ROUTE BY WHICH A SIGNED POOL LEVEL REACHES `v0_start` AT ALL -- which is the
+  same finding the derivation's denominator departure rests on, seen from the other side.
+
+wrote docs/evidence/pool_final_2026-08-12/SEPARATION_RUCK.json
