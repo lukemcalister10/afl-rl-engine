@@ -1,0 +1,41 @@
+{
+ "moved": [
+  "board",
+  "rl_model",
+  "engine_head"
+ ],
+ "unmoved": [
+  "store",
+  "v0surf",
+  "q97m",
+  "band",
+  "peak_model",
+  "bust_prior",
+  "pvc_snapshot",
+  "register",
+  "config"
+ ],
+ "undeclared": [],
+ "actual": {
+  "store": "cb38ef1171dcf20aae66ebf12682be0d",
+  "board": "36d5dfc73e2b508ece530bc7dfae2090",
+  "rl_model": "14000af2a46f7a3c4cdfde303f5a1aff",
+  "engine_head": "a353a9d361937a78014eef521cb65d68",
+  "v0surf": "5dd34ca82735f5c8f021b1c7320df8f8",
+  "q97m": "cfdc73216c099e5e8f1fda3968f31c00",
+  "band": "34faa8659cc8f19794f5cb9584fa19b2",
+  "peak_model": "f305fe5330222f4fa14d3654a0e91ef7",
+  "bust_prior": "5942aa6ad7be1d482eed737997486c70",
+  "pvc_snapshot": "ade79790efc8ad4585c2c6800a935eaa",
+  "register": "652d83e87780e415a01a2de6d8b3cc57",
+  "config": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1"
+ },
+ "expected_movers": {
+  "board": "the entry wiring \u2014 89 day-0 entrants now print derived v0 x numeraire",
+  "rl_model": "the P9 unsigned-cell halt replaced by the signed-cell COVERAGE assert (Step 2)",
+  "engine_head": "the day-0 branch in ev() (_merged_recover.py) \u2014 Step 3"
+ },
+ "pvc_curve_file_md5": "911774bc92de0630199a4cc0c6bfac42",
+ "curve_payload_md5": "9729f0c5",
+ "release_contract_curve_payload_md5_stale": "df766dff"
+}
