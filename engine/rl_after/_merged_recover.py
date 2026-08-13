@@ -924,9 +924,10 @@ def _w4_W(k,ctx):
         W*=(1.0-W4_OVPX*ctx['ovpx'])
     return max(W,0.05)
 _proj_w4_0=MA.proj_from_peak
-def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
+def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0,grace=0):
+    # ORDER 28: `grace` forwarded verbatim from the caller (which holds the record) to disc_factor; 0 => byte-exact.
     ctx=_W4CTX['on']
-    if ctx is None: return _proj_w4_0(g,lp,a,cur,lens,g0=g0,fut=fut,pre_hc=pre_hc)   # synths / lever-off: byte-exact original
+    if ctx is None: return _proj_w4_0(g,lp,a,cur,lens,g0=g0,fut=fut,pre_hc=pre_hc,grace=grace)   # synths / lever-off: byte-exact original
     _off=(MA.AGE_REF-MA.BASE_REF) if _LEGF_ON else 0     # LEG F3 §2.vi (ruling 353, still-implicated proj_from_peak): fwd-lens offset; 0 at k=0/balanced/backward OR RL_LEGF=0 => byte-exact ORIGINAL by construction
     ah=a-_off if _off>0 else a           # form-anchored age SHAPE: the pedigree-driven projection curve-position + young-runway credit hold at BASE_REF, so growth flows through the ADVANCING level (lp from the band at AGE_REF; cur=level_now via _dev_advance) — the premium decays with PROJECTED EVIDENCE, not the age clock (Reid: same map at the projected evidence state; no new multiplier/growth term). k=0: _off=0 => ah==a => byte-exact.
     pa=MA.PEAK_AGE[g]; d=MA.age_disc(ah,MA.LENS[lens],lens); cl=cur if cur else lp*MA.frac(ah,pa); prod=0.0   # #334 age-dynamic future discount (dial-gated; identity when off)
@@ -942,7 +943,7 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
         if _BOARD_PATH and k==ctx.get('ret_k',-1) and ctx.get('ret_hc',0.0)>0: lev*=(1-ctx['ret_hc'])   # Part-2 return-season haircut (BOARD-ONLY: the walk-forward book stays availability-free; single k -> decays next season)
         base=lev+MA.capt_prem(lev)
         Wk=_w4_W(k,ctx)
-        _df=MA.disc_factor(ah,d,k,lens)
+        _df=MA.disc_factor(ah,d,k,lens,grace)
         if k==0: prod+=Wk*MA.posval(base-MA.REPL[g0])*21/_df
         else: prod+=Wk*sum(w*MA.posval(base-MA.REPL[gg]) for gg,w in fut)*21/_df
     if g in('KPF','KPD'): prod*=1.05
@@ -971,6 +972,7 @@ def _prod_floor_w4(p,lens='bal'):
     # byte-exact. QUEUED HYGIENE (registered, NOT this build): option-3 delegation — this fn -> MA.prod_floor for
     # bar resolution, removing the duplicate loop — carries a determinism-proof requirement.
     lowbar=MA.y0dpp_bar(p) if (MA.AGE_REF==MA.BASE_REF) else None
+    _gr=MA.grace_years(p)                                 # ORDER 28 grace-A (dial-gated; 0 => byte-exact). ⚠ MUST match rl_model.prod_floor exactly — the duplicate-loop fence.
     d=MA.age_disc(a,MA.LENS[lens],lens); H=MA.clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0   # #334 age-dynamic future discount (dial-gated; identity when off)
     while k<H:
         ag=a+k; wt=min(1.0,H-k)
@@ -982,7 +984,7 @@ def _prod_floor_w4(p,lens='bal'):
             pv=sp*MA.posval(base-MA.REPL[g])+(1.0-sp)*MA.posval(base-MA.REPL[lowbar])
         else:
             pv=MA.posval(base-MA.REPL[g])
-        prod+=_w4_W(k,ctx)*wt*pv*21/MA.disc_factor(a,d,k,lens); k+=1
+        prod+=_w4_W(k,ctx)*wt*pv*21/MA.disc_factor(a,d,k,lens,_gr); k+=1
     return MA.val(prod)
 MA.prod_floor=_prod_floor_w4
 # ==== L1c — EVIDENCE-CONDITIONED EXPECTED-RERATING CREDIT (2026-07-08 rectification build) ================

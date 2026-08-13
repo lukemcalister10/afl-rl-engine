@@ -195,6 +195,39 @@ def age(p): return _age_at(p,AGE_REF)
 def debut(p): return p['year'] if p['type']=='MSD' else p['year']+1   # ONLY MSD (mid-season) debuts in its draft_year; ND/RD/SSP AND post-draft signings (PDA/PDN/PDS/IRE/UNR) are off-season -> debut year+1 (fixes 2025 post-draft first-years leaking onto the -1 backward board)
 def seasons(p): return max(1,AGE_REF-debut(p))
 # ============================================================================================================
+# GRACE-A — the entry-age grace on the future-discount ladder.  ORDER 28, owner ruling #334 comment
+# 5276077959: "the diminishing seasons only counts from the second season (i.e. age 20 onwards). Same
+# implementation as on the curve. And grace A applies for the pool, for the pathways. For everything."
+#
+# THE RULE: a normal-age entrant (entry age <= 19) carries seasons 1 AND 2 at FULL weight; his THIRD
+# season is the first diminished.  An entrant at 20+ gets no grace and is on today's ladder unchanged.
+#
+# WHY G=1 HERE AND G_O=2 ON THE CURVE.  Two clocks, one rule (PREREG_ORDER28.md §1.1):
+#   curve side  k_c = season_year - entry_year, k_c=1 is the FIRST played season and already discounts;
+#               exponent max(0, k_c - 2)  =>  seasons 1,2 free.
+#   engine side k_e = seasons AHEAD of the pricing year, and k_e=0 is ALWAYS 1.0 (the standing engine
+#               convention in disc_factor: the present season is never discounted).  So the engine only
+#               needs ONE extra free step, and only for a player whose present season IS his first:
+#               exponent max(0, k_e - remaining), remaining = max(0, G - seasons_elapsed), G = 1.
+# Checked season by season in the prereg; the consequence is that a 2nd-year-and-later row is
+# byte-unchanged even with the dial ON, which is the rule, not an approximation of it.
+#
+# ENTRY AGE is taken with the SAME arithmetic Layer 1 used (o26b_layer1.py:121, entry_year - _by, with
+# the same 18 fallback) so the curve side and the board side select the IDENTICAL population.
+# NOT _age_at(): that carries an `18 + (ref - cycle_year)` floor which would shift every off-season
+# entrant by a year and silently change who gets grace.  Named here so it cannot be walked into.
+#
+# DIAL: RL_GRACE, DEFAULT '0' (OFF).  Off => grace_years() returns 0 => disc_factor's exponent is
+# max(0, k - 0) == k => the pre-order power form, bit-for-bit.  NOTHING IS LANDED BY THIS CODE.
+RL_GRACE=os.environ.get('RL_GRACE','0')!='0'
+GRACE_G=1                              # grace-A: ONE extra free future season for a normal-age entrant
+GRACE_MAX_ENTRY_AGE=19                 # entrants at 20+ get no grace (ruled)
+def grace_years(p):
+    """Remaining grace seasons for player p at the current AGE_REF. 0 when the dial is off."""
+    if not RL_GRACE or p is None: return 0
+    if (p['year']-by(p))>GRACE_MAX_ENTRY_AGE: return 0
+    return max(0,GRACE_G-max(0,AGE_REF-debut(p)))
+# ============================================================================================================
 # THE PRICING SPLIT — owner ruling, and RULEBOOK v2.1 law 4 (G-MONO) as amended 2026-07-28.
 #
 #   The national pick curve covers picks 1-64 and descends across that domain; pick 1 = 3000.
@@ -903,15 +936,25 @@ def age_disc(a,d,lens='bal'):
     if a<=21.0: return AGE_DISC_LO
     if a>=26.0: return AGE_DISC_HI
     return AGE_DISC_LO+(AGE_DISC_HI-AGE_DISC_LO)*(a-21.0)/5.0
-def disc_factor(a,d,k,lens='bal'):
+def disc_factor(a,d,k,lens='bal',grace=0):
     """THE DISCOUNT FACTOR for future season k, for a player priced at current age a.
     Modes 0/1/2/3: the existing power form (1+r)**k with r fixed at pricing time.
     Mode 9 (seat-proposed): the PATH PRODUCT prod_{j=1..k} (1+r(a+j)) — the rate for each season is the rate for the
-    age he will be in it. k=0 is 1.0 in every mode, so the present season is never discounted."""
+    age he will be in it. k=0 is 1.0 in every mode, so the present season is never discounted.
+
+    ORDER 28 GRACE-A (dial-gated, default OFF — see grace_years above). `grace` is the number of
+    FUTURE seasons that carry full weight before the ladder engages: the exponent handed to the power
+    form becomes max(0, k - grace).  grace=0 gives max(0,k)==k for k>0, i.e. the pre-order form
+    BIT-FOR-BIT — the dial-off path is identity by construction, not by tolerance.
+    Mode 9 coherence (inactive on the live config, flat 14%): grace drops the EARLIEST factors from
+    the path product, j running grace+1..k, so the same seasons go free under either mode."""
     if k<=0: return 1.0
+    if grace:
+        k=max(0,int(k)-int(grace))
+        if k<=0: return 1.0
     if AGE_DISC and lens in ('bal','balanced') and a is not None and age_disc_mode()==9:
         f=1.0; a=float(a)
-        for j in range(1,int(k)+1): f*=(1.0+_pw_interp(a+j,_V9_KNOTS))
+        for j in range(int(grace)+1,int(grace)+int(k)+1): f*=(1.0+_pw_interp(a+j,_V9_KNOTS))
         return f
     return (1.0+age_disc(a,d,lens))**k
 LENS={'now':0.34,'bal':(0.14 if os.environ.get('RL_DIAL14','1')!='0' else 0.15),'fut':0.05}   # v2.9 L2: dial 14 (owner-ruled D5, "14 for now"); gate RL_DIAL14 (default ON; =0 ⇒ 0.15 ⇒ base). bont 3676 gawn 2501.
@@ -960,7 +1003,10 @@ def survival(b,delta,games):
     # tracking *below* his own bar (mult>1) -- an at-par or above-par player gets no extra bust tax.
     bp=BUST_BAND.get(b,0.15); mult=clamp(1.0-delta/20.0,0.4,1.6); fade=max(0.0,1-games/40.0)
     return 1-bp*max(0.0,mult-1.0)*fade
-def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
+def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0,grace=0):
+    # ORDER 28: `grace` is threaded from the CALLER (which holds the player record) because this
+    # function takes a scalar age, not a record — see PREREG_ORDER28.md §1.2. Synthetic/pick-level
+    # callers omit it: a band node is not a person and has no entry age. grace=0 => byte-exact.
     # g = SETTLED (future) position: drives PEAK_AGE, level trajectory, key-premium, runway.
     # g0 = year-0 (present) position for REPL; fut = years-1+ REPL blend [(pos,wt)]. Defaults reproduce single-position behaviour.
     pa=PEAK_AGE[g]; d=age_disc(a,LENS[lens],lens); cl=cur if cur else lp*frac(a,pa); prod=0.0
@@ -974,7 +1020,7 @@ def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
         if k==0: lev=max(lev,cl)
         if k==0 and pre_hc>0 and BASE_REF==2026 and AGE_REF==2026: lev*=(1-pre_hc)  # B2 present-unavailability haircut (Now board only)
         base=lev+capt_prem(lev)
-        _df=disc_factor(a,d,k,lens)
+        _df=disc_factor(a,d,k,lens,grace)
         if k==0: prod+=posval(base-REPL[g0])*21/_df
         else: prod+=sum(w*posval(base-REPL[gg]) for gg,w in fut)*21/_df
     if g in('KPF','KPD'): prod*=1.05
@@ -995,6 +1041,7 @@ def prod_floor(p,lens='bal'):
     # loop for PROVEN players on the shipped board (run_panel.sh -> ev()). It carries the SAME §1b k==0 split —
     # edit BOTH or neither. Queued hygiene (NOT this build): collapse the copy via option-3 delegation.
     lowbar=y0dpp_bar(p) if (AGE_REF==BASE_REF) else None
+    _gr=grace_years(p)                                    # ORDER 28 grace-A (dial-gated; 0 => byte-exact)
     d=age_disc(a,LENS[lens],lens); H=clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0
     while k<H:
         ag=a+k; wt=min(1.0,H-k)
@@ -1006,7 +1053,7 @@ def prod_floor(p,lens='bal'):
             pv=sp*posval(base-REPL[g])+(1.0-sp)*posval(base-REPL[lowbar])
         else:
             pv=posval(base-REPL[g])
-        prod+=wt*pv*21/disc_factor(a,d,k,lens); k+=1
+        prod+=wt*pv*21/disc_factor(a,d,k,lens,_gr); k+=1
     return val(prod)
 # ===== cont.20: v4 LEARNED FORWARD-PROJECTION (peak_est spine) =====
 # Replaces old blended cohort+demoPeak. Model = forward-realised best-3 (>=Y, completeness-weighted), bust-inclusive.
@@ -1090,7 +1137,7 @@ def peak_est(p):                       # cont.20: learned v4 forward-projection 
     return pe
 def player_raw(p,lens='bal'):
     g0 = bnow(p) if AGE_REF==BASE_REF else gfut(p)   # A2 (PARKED 4): on forward boards (AGE_REF>BASE_REF) the year-0 present has rolled to the future position, so its replacement bar uses gfut, not the present bucket
-    return proj_from_peak(gfut(p),peak_est(p),age(p),level_now(p),lens,g0=g0,fut=futblend(p),pre_hc=p.get('_avail_hc',0.0))
+    return proj_from_peak(gfut(p),peak_est(p),age(p),level_now(p),lens,g0=g0,fut=futblend(p),pre_hc=p.get('_avail_hc',0.0),grace=grace_years(p))   # ORDER 28 grace-A (dial-gated; 0 => byte-exact)
 def pa(g): return PEAK_AGE[g]
 # unplayed prospects: recent national/rookie draftees not yet debuted (valued on pedigree alone, like the old engine)
 extra=[]
