@@ -217,9 +217,21 @@ def seasons(p): return max(1,AGE_REF-debut(p))
 # NOT _age_at(): that carries an `18 + (ref - cycle_year)` floor which would shift every off-season
 # entrant by a year and silently change who gets grace.  Named here so it cannot be walked into.
 #
-# DIAL: RL_GRACE, DEFAULT '0' (OFF).  Off => grace_years() returns 0 => disc_factor's exponent is
-# max(0, k - 0) == k => the pre-order power form, bit-for-bit.  NOTHING IS LANDED BY THIS CODE.
-RL_GRACE=os.environ.get('RL_GRACE','0')!='0'
+# DIAL: RL_GRACE, DEFAULT '1' (ON) — ORDER 29, the landing.  Owner ruling #334 comment 5276077959,
+# "I think we can lock grace A in ... And also apply it at board level too ... For everything.",
+# carried into register v715 and landed here.
+#
+# IT REMAINS A REAL DIAL; ONLY ITS DEFAULT INVERTS.  RL_GRACE=0 still reproduces the dial-off board
+# byte-for-byte on an otherwise-unchanged tree — proven at the landing, not asserted (P4, and the
+# control is recorded in docs/evidence/landing_29_2026-08-13/GRACE_DEFAULT.md).  Off => grace_years()
+# returns 0 on its first line => disc_factor's exponent is max(0, k - 0) == k => the pre-order power
+# form, bit-for-bit.  The grace-A law itself is UNCHANGED from ORDER 28.
+#
+# RL_GRACE is now carried in data/model_config.json (the pinned manifest).  It has to be:
+# config_manifest.enforce() in bake/gate mode clears the ambient model environment and REJECTS
+# unknown RL_* overrides, so a canonical landing build would have refused the dial otherwise —
+# named in advance as ORDER 28 packet §9.8 and closed here.
+RL_GRACE=os.environ.get('RL_GRACE','1')!='0'
 GRACE_G=1                              # grace-A: ONE extra free future season for a normal-age entrant
 GRACE_MAX_ENTRY_AGE=19                 # entrants at 20+ get no grace (ruled)
 def grace_years(p):
