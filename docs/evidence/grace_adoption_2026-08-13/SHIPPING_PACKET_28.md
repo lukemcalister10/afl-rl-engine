@@ -141,7 +141,7 @@ the same seasons go free under either mode. Declared; unreachable on the live co
 | **base0** — engine as committed on `origin/main` | n/a | `88ce647f531030d8d2e094188b258191` | the harness reproduces the live board |
 | **off1** — **modified engine, dial OFF** | `RL_GRACE=0` | **`88ce647f531030d8d2e094188b258191`** | **BYTE-IDENTICAL — PASS** |
 | **on1** — modified engine, dial ON | `RL_GRACE=1` | `0ce52771ed8f9ef326dd61f0e4aa71a8` | the dial is **reachable** |
-| **on2** — independent rebuild, dial ON | `RL_GRACE=1` | see `DETERMINISM.txt` | determinism |
+| **on3** — independent rebuild, dial ON | `RL_GRACE=1` | `0ce52771ed8f9ef326dd61f0e4aa71a8` | **determinism — PASS, identical to on1** |
 
 `base0` is what makes `off1` non-vacuous — the same harness against the *unmodified* engine prints the
 same md5, so `off1`'s match is a statement about the change, not about a harness that always prints
@@ -505,7 +505,32 @@ team-mates rise.
 
 ### 6.6 Determinism
 
-<!--DETERMINISM_RESULT-->
+> **DETERMINISM: PASS.** Two independent dial-ON builds, each from a fresh scratch workspace, both
+> produce **`0ce52771ed8f9ef326dd61f0e4aa71a8`**.
+
+| run | dial | md5 |
+|---|---|---|
+| LIVE board, as committed | n/a | `88ce647f531030d8d2e094188b258191` |
+| **base0** — engine as on `origin/main` (control) | n/a | `88ce647f531030d8d2e094188b258191` |
+| **off1** — modified engine, dial OFF | 0 | `88ce647f531030d8d2e094188b258191` |
+| **on1** — modified engine, dial ON | 1 | `0ce52771ed8f9ef326dd61f0e4aa71a8` |
+| **on3** — modified engine, dial ON, independent rebuild | 1 | `0ce52771ed8f9ef326dd61f0e4aa71a8` |
+
+**An environmental fact belongs here, because determinism is what it threatened.** The first attempts
+at this rebuild and at the identity gate had to be abandoned after burning hours of CPU without
+finishing. The cause: `run_panel.sh` — and every harness that copies its environment — pins **only**
+`OPENBLAS_NUM_THREADS`. `OMP`, `MKL`, `NUMEXPR` and `VECLIB` are left unpinned, so each engine
+process spawns spin-waiting workers; **two** such processes on this 4-core box starve each other
+indefinitely (measured: load average 8.5 against two runnable processes, ~2 CPU-minutes burned per
+wall-minute, no completion). Pinning all five and running the engine processes **sequentially** took
+the identity gate from *1h53m of CPU without finishing* to **about four minutes**.
+
+**It does not taint anything above.** A starved run produces *no* board — it does not produce a wrong
+one — so the failure mode is a hang, never a silent divergence. The partial workspaces were deleted
+and the runs redone from scratch; the PASS above is on two clean, fully-pinned, completed builds.
+**Carried forward as a hygiene item for the landing act**: the pinning belongs in the panel/bake
+environment itself rather than in each harness that remembers to add it. Not fixed here — this order
+does not touch `run_panel.sh`. Full record: `DETERMINISM.txt`.
 
 ---
 
@@ -562,7 +587,7 @@ code and the numbers they predict existed. Git history is the proof, not this pa
 | **P7** | 4–5 pathways outside 64; UNR/PDN/PDS/IRE out, PDA on the boundary inside; pathway values unchanged | **HIT, exactly** |
 | **P8** | pooled aggregates identical to 26B-V grace-A | **HIT** — 0.3477 / 0.8950, `0.000e+00` |
 | **P9** | reconciliation < 1e−12, C1 asserts pass | **HIT** — 2.220e−16, PASS |
-| **P10** | dial-ON board deterministic across two builds | see §6.6 |
+| **P10** | dial-ON board deterministic across two builds | **HIT** — both `0ce52771` |
 | **P11** | duursma's derived v0 unmoved (3157.2) while his board price moves | **HIT** — v0 3157.2 both bases; board 3977 → 4521 |
 | **P12** | 6–12 ascents removed, none at pick 1, the owner's 8>6 case among them | **HIT** — 8 ascents, A1 PASS, 6→7→8 among them |
 | **P13** | the anchor does not move | **HIT** — 3191.2 / 0.9401 / −6.0% |

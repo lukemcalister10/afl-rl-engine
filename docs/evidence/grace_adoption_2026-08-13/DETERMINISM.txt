@@ -1,0 +1,53 @@
+ORDER 28 -- DETERMINISM AND BYTE-IDENTITY RECORD
+================================================
+
+Each run: a FRESH scratch workspace, seeded from the checkout exactly as bootstrap.sh seeds
+the engine workspace, then 'python3 rl_export.py' under the panel's pinned environment
+(PYTHONHASHSEED=0, OPENBLAS_NUM_THREADS=1, RL_GAMMA=1.0, RL_PICK1=3000, RL_RUCK_TAX=0.25,
+RL_RECENCY_DECAY=0.72, RL_PRIOR_TREES=400, PAR_RAMPS=22). The checkout is never written.
+
+  run                                            RL_GRACE   rl_app_data.json md5
+  LIVE board, as committed on this branch        n/a        88ce647f531030d8d2e094188b258191
+  base0  engine as on origin/main (control)      n/a        88ce647f531030d8d2e094188b258191
+  off1   MODIFIED engine, dial OFF               0          88ce647f531030d8d2e094188b258191
+  on1    MODIFIED engine, dial ON                1          0ce52771ed8f9ef326dd61f0e4aa71a8
+  on3    MODIFIED engine, dial ON (rebuild)      1          0ce52771ed8f9ef326dd61f0e4aa71a8
+
+  BYTE-IDENTITY OFF ......... PASS   off1 == the live board, exactly
+  NON-VACUITY CONTROL ....... PASS   base0 == the live board, so the harness is sound
+  DIAL IS REACHABLE ......... PASS   on1 != the live board
+  DETERMINISM ............... PASS   on1 == on3 across two independent builds
+
+NOTE ON on3: an earlier on2 attempt was orphaned (its workspace was removed underneath it by
+the relaunch) and was terminated; its cwd was a deleted inode, so it could not and did not
+write to the workspace measured here. The on3 above is a single clean build.
+
+ENVIRONMENTAL NOTE -- THREAD OVERSUBSCRIPTION, AND THE FIX
+---------------------------------------------------------
+The first attempt at the on2/on3 rebuild and at the identity gate had to be abandoned: both processes
+accrued hours of CPU without finishing. The cause is environmental, not a fault in the engine or in
+this order's code, and it is recorded here because determinism is exactly what it threatens.
+
+The panel environment (run_panel.sh, and every harness that copies it) pins ONLY
+OPENBLAS_NUM_THREADS=1. The other BLAS/threading pools -- OMP, MKL, NUMEXPR, VECLIB -- are left
+unpinned, so each engine process spawns worker threads that SPIN-WAIT. One such process is merely
+wasteful; TWO of them on this 4-core box starve each other indefinitely (measured: load average 8.5
+with two runnable processes, ~2 CPU-minutes burned per wall-minute, no completion).
+
+THE FIX, applied to every run recorded above and to the gate:
+    export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+           NUMEXPR_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1
+and run engine processes SEQUENTIALLY, never two at once.
+
+Effect, measured on this box: the identity gate went from 1h53m of CPU without finishing to
+COMPLETING IN ABOUT FOUR MINUTES. The determinism rebuild likewise.
+
+WHY IT DOES NOT TAINT THE RESULT: every md5 in the table above comes from a run that COMPLETED. A
+starved run produces no board at all -- it does not produce a wrong one -- so the failure mode is a
+hang, never a silent divergence. The partial workspaces from the abandoned attempts were deleted and
+the runs redone from scratch. The determinism PASS above is on two clean, completed, fully-pinned
+builds.
+
+CARRIED FORWARD: the pinning belongs in the panel/bake environment itself, not in each harness that
+remembers to add it. Named as a hygiene item for the landing act, not fixed here (this order does not
+touch run_panel.sh).
