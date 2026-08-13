@@ -531,15 +531,29 @@ code and the numbers they predict existed. Git history is the proof, not this pa
 
 `shadeau-brain` (+1), `tom-hanily` (+7), `will-mclachlan` (+12). **20 points, 0.0027% of the board.**
 
-P1 predicted **zero**. The channel is identified rather than guessed: `_merged_recover.py` builds its
-V0 / cohort-book objects with `MA`'s clock at **historical** years — `rl_export.py:113` re-pins it to
-2026 afterwards and says so in its own comment — and at a historical `AGE_REF` a player who is not
-first-season in 2026 **was** first-season then. Grace fires inside those builds, and the built
-reference objects move with it. That is the ruled *"for backtesting and the live board … for
-everything"* behaviour flowing through the same indirect reference-table channel the owner accepted at
-#334 stage A (154 indirect movers there). **But the prediction said zero, so it is a breach, and a
-landing-time assert is owed: the indirect set must be re-measured and named at landing rather than
-rediscovered.**
+P1 predicted **zero**. What follows separates what is **proven** from what is **inferred**, because
+the difference matters at landing.
+
+**PROVEN.** All three have `grace_years(p) = 0` at `AGE_REF = 2026` — `shadeau-brain` entered PDA 2022
+(debut 2023, 3 seasons elapsed), `tom-hanily` and `will-mclachlan` entered MSD 2024 (debut 2024, 2
+elapsed). The dial cannot reach their own prices. Their prices nonetheless moved. **Therefore the
+movement is INDIRECT by elimination — it did not come through their own discount ladder.** Two further
+facts are measured: **no board-level config table moved** between the two builds (`BASEPK_REG`,
+`CENTERS`, `DELTAS`, the cohort array — all byte-identical), and **all 765 rows outside E and outside
+this trio moved by exactly zero**, so whatever the channel is, it is narrow.
+
+**INFERRED, and flagged as inference.** The most likely channel is the engine's own historical-clock
+build phase: `_merged_recover.py` constructs its V0 / cohort-book objects with `MA`'s clock at
+**historical** years — `rl_export.py:113` re-pins it to 2026 afterwards and says so in its own comment
+(*"_merged_recover's load left MA's clock at a historical V0-build year"*) — and at a historical
+`AGE_REF` a player who is not first-season in 2026 **was** first-season then, so grace fires inside
+those builds. This fits the ruled *"for backtesting and the live board … for everything"* behaviour
+and matches the indirect reference-table channel the owner accepted at #334 stage A (154 indirect
+movers there). **It is not proven here and must not be presented as though it were.**
+
+**What is owed.** The prediction said zero, so this is a breach either way. **A landing-time assert is
+required: the indirect set must be enumerated and named at landing rather than rediscovered**, and the
+inferred channel above must be confirmed or replaced before the landing act arms that assert.
 
 ### 9.2 P1 breach — 39 movers, not 60–75, and one down-mover
 
