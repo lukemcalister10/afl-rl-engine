@@ -163,7 +163,54 @@ engine's own `price6`, running grace — where the scorer takes its grace from *
 the engine's own callable, rather than re-implementing the rule. If grace reached one side and not the
 other, this is where it would show.
 
-<!--GATE_RESULT-->
+> ### THE PRICE-FUNCTION IDENTITY HOLDS BIT-EXACT.
+> **`max |mine / price6 − 1| = 0.000e+00` — 12 of 12 on the panel, and 800 of 800 board-wide.**
+> Not "within tolerance": **zero**. The grace reaches both sides of the identity through the same
+> callable, so the 26B-V §6 landing constraint — *one rule, both sides, they cannot move apart* — is
+> met by measurement and not by assertion.
+
+| key | pos | age | pick | grace | mine | price6 | vs p6 | vs LIVE | vs VARIANT | R9(var) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **willem-duursma** | MID | 19 | 1 | **1** | 4605.00 | 4605.00 | **+0.000000%** | **+15.791%** | **+1.858%** | **PASS** |
+| nick-daicos | MID | 23 | 4 | 0 | 10554.84 | 10554.84 | +0.000000% | −3.565% | −3.565% | FAIL |
+| harry-sheezel | MID | 22 | 3 | 0 | 11433.30 | 11433.30 | +0.000000% | −2.811% | −2.811% | FAIL |
+| marcus-bontempelli | MID | 31 | 4 | 0 | 3234.04 | 3234.04 | +0.000000% | −16.562% | −16.562% | FAIL |
+| max-gawn | RUCK | 35 | 33 | 0 | 2763.00 | 2763.00 | +0.000000% | −17.176% | −17.176% | FAIL |
+| harley-reid | MID | 21 | 1 | 0 | 4269.30 | 4269.30 | +0.000000% | +11.762% | +11.762% | FAIL |
+| **jai-newcombe** | MID | 25 | 65 | 0 | 4913.14 | 4913.14 | +0.000000% | +0.617% | +0.617% | **PASS** |
+| harrison-ramm | KPD | 20 | 65 | 0 | 794.84 | 794.84 | +0.000000% | +45.842% | +45.842% | FAIL |
+| vigo-visentini | RUCK | 21 | 65 | 0 | 791.84 | 791.84 | +0.000000% | +335.077% | +335.077% | FAIL |
+| josh-treacy | KPF | 24 | 65 | 0 | 7157.74 | 7157.74 | +0.000000% | +3.421% | +3.421% | FAIL |
+| izak-rankine | SF | 26 | 3 | 0 | 4511.46 | 4511.46 | +0.000000% | −3.704% | −3.704% | FAIL |
+| lachlan-ash | SD | 25 | 4 | 0 | 6088.96 | 6088.96 | +0.000000% | +6.302% | +6.302% | FAIL |
+
+| leg | result |
+|---|---|
+| **PRICE-FUNCTION IDENTITY** (`≤ 1e−6`) | **12 of 12 PASS · max 0.000e+00 · board-wide 800 of 800 (100.0%), max 0.000e+00** |
+| Ruling 9 ±2% vs the **LIVE** (dial-OFF) board | **1 of 12** — down from 26B's 2 of 12, **as pre-registered** |
+| Ruling 9 ±2% vs the **VARIANT** (dial-ON) board | **2 of 12** — **back to 26B's count**, as pre-registered |
+| board-wide within ±2% | **9.0% (72 of 804)** on both readings — unchanged from 26B's 9.0% |
+
+**`willem-duursma` is the whole story in one row.** He is the only panel member carrying grace. Against
+the frozen live board his gap blows out from 26B's **+1.84%** to **+15.79%** — the scorer moved and
+that board did not. Against the dial-ON board he lands at **+1.858%**, back inside ±2% and **PASS**.
+Both numbers were predicted in the prereg (P3: *"from +1.84% to roughly +14–17%"*, and *"the same leg
+returns to 2/12 with duursma back inside ±2%"*). **The degradation against the live board is the
+correct reading of a moved scorer, not a defect** — which is exactly why both readings are printed.
+
+The un-graced rows are **bit-identical on every leg** between the two readings (`nick-daicos` −3.565%
+either way, and so on down the panel), which is the same statement as §3's byte-identity, seen from
+the pricing side rather than the file side.
+
+**Attribution** is intact: the multiplicative decomposition reproduces the measured `mine/board_v` with
+`max |residual| = 8.882e−16` across the panel — no unnamed leg. Duursma's numéraire leg reads 1.1964
+against the live board (rather than the board-wide 1.0524) precisely because it is absorbing the
+dial's move; every other row reads 1.0524 as before.
+
+**Engine identities recorded** (they carry the dial; §3 is the proof they are inert when it is off):
+`rl_model.py` `e5eb5e44 → 5d1e7b7a` · `_merged_recover.py` `3f1468e5 → e5109864` ·
+`distribution_pricing.py` → `33e07a9e` · `dist_redesign.py` `48ea1bfe` **unmoved**.
+Store `d9a24282` and live board `88ce647f` **asserted unmoved at both entry and exit**.
 
 **The Ruling-9 ±2% leg is read TWICE, and only one reading means anything.** Against the **live**
 board the scorer has moved and the frozen board has not, so young rows must fall out of the ±2% class
@@ -508,7 +555,7 @@ code and the numbers they predict existed. Git history is the proof, not this pa
 |---|---|---|
 | **P1** | movers ⊆ E (75 rows), 60–75 of them, all up, median +6…14%, board total +0.5…1.5% | **PARTIAL BREACH** — see §9.1 and §9.2. Median **+8.70%** ✓, board total **+0.6277%** ✓ |
 | **P2** | byte-identity off PASSES | **HIT** — `88ce647f`, exact |
-| **P3** | price-function identity bit-exact with the dial on | see §4 |
+| **P3** | price-function identity bit-exact with the dial on; duursma leaves the ±2% class vs the live board (+14…17%) and returns vs the variant board; panel 2/12 → 1/12 → 2/12; board-wide within-2% 7–9% | **HIT, every clause** — 0.000e+00 identity 12/12 and 800/800; duursma +15.791% vs live, +1.858% vs variant; 1/12 then 2/12; board-wide 9.0% |
 | **P4** | head/factor/premium and the north/interior curve identical to 26B-V grace-A | **HIT on the anchor** (0.000e+00); **superseded on the interior** by Ruling C, which arrived after P4 was written and legitimately moves picks 6–12 and 15–21 |
 | **P5** | seam `p₀ ∈ [50,58]`, zone 6–14 picks, `ν ∈ [0.02,0.06]` | **HIT** — `p₀ = 56`, zone 8, `ν = 0.0290` |
 | **P6** | pick-64 anchored ∈ [160, 210], point 183 | **HIT** — **179.1** |
