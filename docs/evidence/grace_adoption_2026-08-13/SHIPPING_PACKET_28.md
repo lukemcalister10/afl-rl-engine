@@ -578,7 +578,31 @@ because a future reader will otherwise ask why one curve carries two estimators.
 seam (56), the blend weight at every pick and the method label per pick are all printed in
 `DERIVE28_out.txt` §3.
 
-### 9.6 Scope note — the standing gate suite was NOT run
+### 9.6 Checked and CLEARED — the MSD k-offset is not a new asymmetry
+
+Worth recording because it looks like a defect until it is measured. On the curve side
+`k_c = season_year − entry_year`, and for **MSD** the store's `year` *is* the debut year, so an MSD
+entrant's first played season sits at `k_c = 0` and already discounts at 1.0 under the engine's
+`k ≤ 0` convention. Under grace-A he therefore carries **three** full-weight seasons (k = 0, 1, 2)
+against a normal draftee's two — while the board side gives him the same **one** extra free step as
+everyone.
+
+**That is a pre-existing 26B convention, not something grace creates, and the increment is identical
+on both sides.** Measured, on the grace-A/flat-14 delivered-value ratio for entrants at age ≤ 19:
+
+| mechanism | n | min | median | max |
+|---|---|---|---|---|
+| ND 1-64 | 956 | 1.1400 | 1.2996 | **1.2996** |
+| RD | 227 | 1.1400 | 1.2996 | **1.2996** |
+| **MSD** | 6 | 1.0000 | 1.2996 | **1.2996** |
+| every other pathway | — | — | — | **1.2996** |
+
+Every mechanism, MSD included, tops out at exactly `1.14² = 1.2996` — **not** at `1.14³ = 1.4815`,
+which is what a genuine third free year would produce. The already-free `k = 0` season was free on
+both bases and so contributes nothing extra. **Grace introduces no new curve-vs-board asymmetry.**
+The standing offset is noted only so a reader does not mistake it for one.
+
+### 9.7 Scope note — the standing gate suite was NOT run
 
 `one_source_selftest.py`, the parity gate, and the movers/transition/preflight suites were **not run**
 on this branch. The reason is stated rather than assumed: with the dial off the engine is
@@ -587,7 +611,7 @@ reads on `main` — their verdicts are unchanged **by construction**, not by mea
 covers the dial-OFF state and nothing else. **Running the full suite with the dial ON is a
 landing-time obligation**, and it is listed in §10.
 
-### 9.7 A landing-time item the dial does not yet satisfy
+### 9.8 A landing-time item the dial does not yet satisfy
 
 `config_manifest.enforce()` in `bake`/`gate` mode **clears the ambient model environment and rejects
 unknown `RL_*` overrides**. `RL_GRACE` is not in `data/model_config.json`. Every build in this packet
@@ -610,10 +634,10 @@ incomplete 2011 class.
 
 When the owner gives his word, the landing act needs, in one commit:
 
-1. `RL_GRACE` added to the pinned config manifest and defaulted ON (§9.7);
+1. `RL_GRACE` added to the pinned config manifest and defaulted ON (§9.8);
 2. the candidate curve and v0s written, and every identity carrier re-pinned in the same act;
 3. the **full standing gate suite re-run with the dial ON** — selftest, both parity gates,
-   movers/transition/preflight (§9.6);
+   movers/transition/preflight (§9.7);
 4. the indirect-mover assert from §9.1 armed, so the indirect set is **named**, not rediscovered;
 5. the **dial-ON walk-forward matrix re-emitted** and both instruments re-read on it (§9.3);
 6. the movers registry written **only after** the adoption word (the #334 finding-11 lesson: an
