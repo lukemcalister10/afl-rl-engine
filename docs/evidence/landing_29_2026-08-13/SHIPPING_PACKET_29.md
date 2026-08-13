@@ -383,13 +383,29 @@ contract is that `source_md5` advances and `own_md5` stays **unchanged**
 | all-arm harness · mark-path · reverse no-arb | **NOT RE-RUN on the final board** |
 | identity gate (P16) | **NOT RUN** |
 
-**On the two that did not run, plainly.** `noarb_table_338.py` was re-run unmodified and reproduced
-its table exactly, which is a real result — but the instrument reads a **frozen** walk-forward matrix
-whose identity pins sit upstream of this board, so it measures the teaching basis, **not** the landed
-board. The all-arm harness, the mark-path progression, reverse no-arb and the delivered-value identity
-gate were **not** re-run here. They are named as **outstanding**, not quietly folded into a PASS —
-running an instrument on the wrong basis and reporting the number would be worse than reporting the
-gap.
+**On the ones that did not run, plainly — with the blocking reason MEASURED, not assumed.**
+
+`noarb_table_338.py` was re-run unmodified and reproduced its table exactly, which is a real result —
+but the instrument reads a **frozen** walk-forward matrix whose identity pins sit upstream of this
+board, so it measures the **teaching basis**, not the landed board.
+
+**The identity gate (P16) was attempted and it refused to run**, which is the gate behaving correctly:
+
+```
+PIN ASSERTION FAILED (entry):
+  store cb38ef11… != d9a24282…  (engine/rl_after/rl_model_data.json)
+  board 86c8d5d9… != 88ce647f…  (engine/rl_after/rl_app_data.json)
+```
+
+`o28_gate.py` hard-pins its entry basis to the **pre-landing** store and board (`o28_gate.py:40-41`).
+Landing moves both, so the committed gate cannot read the landed board without **re-pointing its
+pins** — a change to a committed instrument, which this seat will not make unasked at the end of a
+build. **The gate is therefore outstanding, and the work needed is exactly one declared re-point**,
+not a re-derivation.
+
+The all-arm harness, the mark-path progression and reverse no-arb were likewise **not** re-run. All of
+these are named as **outstanding**, not quietly folded into a PASS: running an instrument on the wrong
+basis and reporting its number would be worse than reporting the gap.
 
 ---
 
