@@ -1,321 +1,413 @@
 # SHIPPING PACKET — ORDER 29, THE LANDING BUILD
 
-**2026-08-13 · branch `land/order-29` · build seat**
+**2026-08-13 · branch `land/order-29` · build seat · resumed at Step 3 on owner ruling "C".**
 
-> # THE LANDING DID NOT COMPLETE.
-> It **stopped at Step 3**, on a measured engine halt: the curve the owner ruled cannot be loaded by
-> the engine, because **Ruling C and G-MONO are in direct collision**. Steps 0–2 landed and are proven.
-> Steps 3–7 did not run. The board is still `88ce647f`, no pin has been re-stamped, and the candidate
-> curve is **not installed**.
+> # THE LANDING IS COMPLETE. ALL SEVEN STEPS RAN. NOTHING IS MERGED.
+> Board **`88ce647f` → `86c8d5d9`**, total **752,429 → 706,018** (−46,411, **−6.1682%**), **714 of
+> 804** rows moved, decomposed across **four levers that reconcile exactly** — 0 rows failing, max
+> |residual| **0**.
 >
-> **One decision is owed before this can finish, and it is the owner's: `STOP_STEP3_GMONO.md` §5.**
+> **Three things are owed to the owner before this merges, and none of them is cosmetic:**
+> 1. **P9** — a **live, priced** board row (`kalani-white`) stands in a cell the ruling says must
+>    carry **no number**. §6.
+> 2. **P12** — the four legs **do not** collapse on fresh entrants. **0 of 46**. §7.
+> 3. **P18** — `v0surf` moved. It **had** to; the prediction was mechanically impossible. §9.
 
 ---
 
-## 1. THE ONE THING TO READ FIRST
+## 1. THE RULING, AND WHAT IT COST
 
-The ORDER-28 candidate curve is **monotone** because Ruling C ruled it monotone, and it is monotone
-**by weighted PAVA**, which removes an ascent by replacing a violating block with its weighted mean.
-A pooled block is therefore a **plateau**, by construction. The curve carries 12 of them:
-picks 6–11 all read **1319**, picks 15–20 all read **812**.
+Owner word **"C"** (#334 comment 5279364952): strict descent (RULEBOOK law 4 / G-MONO) **stands
+unamended**; the PAVA-pooled plateaus are separated by the **−1-point-per-pick ordering tiebreak**.
 
-The engine requires the shipped national curve to be **strictly** decreasing — no plateaus — and
-enforces it at four independent sites. So the build halted:
+**No assert was relaxed. `_split_ladder` was not touched. No ruled number was nudged to fit.**
 
-```
-rl_model.py:1449  _PVC2M=_split_ladder(_V2RAW,'RL_PVC2 v2 curve')
-AssertionError: RL_PVC2 v2 curve G-MONO: national curve 1..64 is not STRICTLY decreasing
-              — 12 plateau(s) at picks [6, 7, 8, 9, 10, 11, 15, 16]
-```
+### 1.1 The blocks, re-derived rather than assumed — and the shorthand was wrong
 
-**PREREG P5 predicted those plateaus by name** — it lists pick 7 = 1319 *and* pick 10 = 1319, pick 15
-= 812 *and* pick 20 = 812. All twelve of its spot values matched exactly. The prediction was right and
-the artifact is still unloadable. That is the finding.
+The stop doc named "picks 6–11" and "picks 15–20". The artifact's own blocks are **picks 6–12 and
+15–21 — seven picks each**. The G-MONO assert prints only its **first eight offending left indices**,
+which truncates each 7-pick block by one; ORDER 28 §5.2's published wording ("picks 6–12 pool to
+1319.1 and picks 15–21 pool to 812.2") agrees with the artifact, not with the shorthand. **Applying
+the tiebreak to the truncated blocks would have left a plateau step behind and the curve would still
+have halted.** This is why the ruling said re-derive, and why it was re-derived.
 
-Both sides are owner law. Ruling C is 2026-08-12. G-MONO is RULEBOOK v2.1 law 4, and the register's
-v444 hold on it is **explicitly scoped away from this build**: *"the CURRENT frozen curve (blended
-world) still satisfies G-MONO as written and remains gated by it until the restructured pricing
-exists — the hold governs the new world, not the old ruler."* The restructured pricing does not exist.
-The register separately records *"NOT ADOPTED: … plateau permissiveness (strict descent is owner
-law)."*
+### 1.2 The tiebreak drift table (PREREG P6's ledger gains these lines)
 
-A build seat cannot choose between two owner rulings. Nothing was improvised: no assert was relaxed,
-no ruled number was nudged, and the breaking artifact was never installed in the checkout. The three
-possible resolutions, with the cost of each, are set out in `STOP_STEP3_GMONO.md` §5.
+| block | L | pooled | values | plain sum pre | plain sum post | **residual drift** | max move |
+|---|---:|---:|---|---:|---:|---:|---:|
+| picks 6–12 | 7 | 1319 | 1322 > 1321 > 1320 > 1319 > 1318 > 1317 > 1316 | 9,233 | 9,233 | **+0** | 3 |
+| picks 15–21 | 7 | 812 | 815 > 814 > 813 > 812 > 811 > 810 > 809 | 5,684 | 5,684 | **+0** | 3 |
+| **whole curve** | | | | **47,315** | **47,315** | **+0 (+0.000000%)** | **3** |
+
+**The drift is zero, and not by luck that was hoped for — by a property that was checked.** Both
+blocks have **odd** length, so the sum-preserving anchor `v + (L−1)/2` is an exact integer and each
+run is **centred on its pooled value**. Had a block been even-length the best integer anchoring would
+have left ±L/2 and that residual would be printed here instead.
+
+* ruling bound **≤ ~0.03%** on the plain sum → measured **0.000000%** — **HELD**
+* ruling bound **≤ ~5 points** on any single pick → measured **3** — **HELD**
+* **join shifts needed: none.** 1804 > 1322 · 1316 > 1182 · 960 > 815 · 809 > 782
+* pick 1 = 3000 **untouched** (the plateaus are interior, as the ruling said)
+
+### 1.3 Strict descent, globally
+
+**0** non-strict steps over 1..64. All **four** block joins strict. The halt at `rl_model.py:1449`
+**passes** — verified by building, not by inspecting. `r104_9_strict_descent` is re-declared `true`
+and is **true by measurement**, its scope re-worded to state the tiebreak rather than imply the curve
+was always strict.
+
+### 1.4 The curve, head to tail
+
+| | |
+|---|---|
+| head | **3000** at pick 1, anchor untouched |
+| seam | pick **56** (last pure loclin) |
+| tail zone | **57–64** |
+| pick 64 | **179** (the 179-class) |
+| `curve_md5` | `df766dff` → **`9729f0c5`** |
+| artifact file | `f6f3027f` → **`52aa1125`** |
 
 ---
 
-## 2. THE PREREGISTRATION, SCORED — ALL TWENTY, BY NUMBER
+## 2. A CONVENTION DEFECT CAUGHT ON THE WAY THROUGH
 
-`PREREG.md` was committed and pushed **before** this seat measured anything (`a19525d`, and this seat
-started from it). Git history is the proof, not this paragraph.
+The tiebroken artifact was first written with `curve_md5` **`76f8fa96`**, computed the way the stopped
+seat's `o29_curve.py` computed it — `json.dumps(curve, sort_keys=True, separators=(',',':'))`.
+
+**That is not this artifact's own convention.** The live artifact declares `df766dff`, and `df766dff`
+is reproduced **only** by `json.dumps({str(pick): int(v) for pick in 1..64}, sort_keys=True)` with
+**default** separators. The compact hash of the same live curve is `92a6b7c9`, which appears nowhere.
+
+It is load-bearing rather than cosmetic because the payload md5 is **independently recomputed in
+exactly one place** — the LEG F5 seal stamp (`seal_structure.py:88`) — and under the old curve the
+artifact's self-declared `curve_md5` and that recomputation **agreed**. Every other consumer
+(`ui/tools/ingest_inputs.py`, the club-curve provenance test, the contract's
+`pick_curve_curve_md5`) checks the field for **mutual equality** and never recomputes it, so a
+wrong-convention value would have sat in the chain **looking correct** while the one instrument that
+recomputes disagreed. Corrected to `9729f0c5`; the seal stamp now recomputes `9729f0c5` too.
+
+---
+
+## 3. THE TWO COUPLED RE-DERIVATIONS THE BRIEF DID NOT NAME
+
+Installing the ruled curve did not just install a curve. Two further objects are **derived from** it
+and had to move with it. Both are documented in full in `V0SURF_REBAKE.md`.
+
+### 3.1 The v0 surface re-bake — inseparable from a curve install
+
+`_v0surf_sig` (`_merged_recover.py:1503-1509`) hashes the **active pick curve itself**, so **any**
+curve change invalidates the frozen surface. The #326 no-silent-refit guard halted the build rather
+than fitting quietly — the design working.
+
+**The record had already ruled this coupling**, twice: *"defect 3 — `_v0surf_sig` hashes `_PVC0`
+itself … so **curve install and v0surf re-bake are inseparable**"*, and, of a seat that re-pinned it,
+*"**the omission was the directive text's, not that seat's**"*. ORDER 29's brief omits it the same way.
+
+**The N35 fit-class box proof is GREEN.** Before any new fit was trusted, this box was made to
+byte-reproduce the **current** frozen surface through the deterministic fit path, with the **live**
+curve installed: refit md5 `fbc5b39387b2b135284a2e157f46c810` **== the committed pin, exact**. So the
+bake freezes the engine's arithmetic, not this container's BLAS weather (the item-380 defect).
+
+**This also closes an ORDER-28 open question.** ORDER 28 recorded the declared lane as *shut* and
+surface-fit classification as *"untested"*. The #344 lane is landed on this tree; the classification
+is now **tested and green**.
+
+`v0surf.pkl` **`fbc5b393` → `5dd34ca8`** · shipped signature `6ef67f07` → `4405cba2` · performed only
+through `RL_V0SURF_REFIT=1 RL_BAKE_V0SURF=1 refit_v0surf.py --bake`, committed **isolated**. The
+shipped board carries **no** refit flag and performs **zero** fits.
+
+### 3.2 The book re-seal — a re-price, not a re-count
+
+The board then halted on the #306 L7 reconciliation: repriced entrant layer **56,772** vs sealed
+total **62,931**. That assert is the one #306 L7 made non-vacuous (it used to be a printed boolean
+the exit code ignored), and it fired correctly.
+
+Re-sealed through the **unmodified** instrument from recorded store intake history:
+
+| | pre | post |
+|---|---:|---:|
+| entrant_pvc draft | 55,753 | 49,595 |
+| entrant_pvc mech | 7,178 | **7,178** (unchanged — mechanisms price at the unmoved pool level) |
+| **entrant_pvc total** | **62,931** | **56,772** |
+| seal | `c9e7491b` | **`cbb7c431`** |
+
+**The proof that this is lawful — a re-price, not a re-count:** `draft_occupancy`, `mech_occupancy`,
+`expected_counts` and `expected_slots_per_year` are **byte-identical** to the previous seal. The
+frozen measurement of *who enters* is untouched; only *what their slots are worth* moved, because the
+curve moved. The board's repricing (56,772) and the re-measured seal (56,772) agree **exactly** — the
+reconciliation is satisfied by agreement, not by adjustment. Committed **isolated**, per P19.
+
+### 3.3 An ops hazard, found and worked around without touching shared state
+
+`/home/claude/v0surf.pkl` — a bootstrap-seeded workspace cache — **shadows** `<repo>/data/v0surf.pkl`
+in the engine's own precedence (`_load_v0surf`, and `boot_guard` mirrors it byte-for-byte). It still
+held the **pre-bake** pickle, so the first post-bake build read a stale surface and halted again on
+the same unknown signature. **The shared copy was deliberately not overwritten**: it carries signature
+`6ef67f07`, which other sessions on this box build against, and the re-baked pickle drops it. The
+declared first-precedence override `RL_V0SURF_PKL` is used instead — it is **not** in the release
+contract's `must_be_unset` (only `RL_V0SURF_REFIT` is).
+
+---
+
+## 4. THE PREREGISTRATION, SCORED — ALL TWENTY, BY NUMBER
+
+`PREREG.md` was committed before any measurement and is **never edited**. Steps 0–2 were scored by the
+stopped seat and are carried forward unchanged; Steps 3–7 are scored here.
 
 | # | prediction | outcome |
 |---|---|---|
-| **P1** | byte-identity at entry, dial OFF, reproduces `88ce647f` | **HELD** — exact, on the untouched tree |
+| **P1** | byte-identity at entry reproduces `88ce647f` | **HELD** — exact, on the untouched tree |
 | **P2** | the unflag-three, structural (4 clauses) | **HELD** — all four |
-| **P3** | the three indirect movers, both channels, head Δ < 3% | **HELD** — every clause, +1.2510% |
+| **P3** | the three indirect movers, head Δ < 3% | **HELD** — +1.2510% |
 | **P4** | grace-A ON as code default; `RL_GRACE=0` still byte-reproduces dial-off | **HELD** — byte-identical |
-| **P5** | the monotone hybrid curve, **wired** | **PARTIAL — the numbers HELD, the wiring did not.** All 12 spot values, seam 56, tail 57–64, pick 64 = 179, non-increasing: all confirmed. **The curve was NOT wired** — it halts the engine. And P5's own re-check clause fired: the artifact's `r104_9_strict_descent` self-declaration would have been **false** under this curve |
-| **P6** | the conservation ledger | **HELD** — weighted `0.000e+00`, plain `+0.0000%`, int drift `−0.0029%` printed not absorbed |
-| **P7** | positional ND v0s at every pick, reconciliation < 1e−12 | **NOT REACHED** — blocked by the Step 3 stop |
-| **P8** | pool v0s, Way A, K-shrunk, the predicted pathway levels | **NOT REACHED** |
-| **P9** | the two n=0 cells stay unsigned + the loud boot assert | **NOT REACHED** |
-| **P10** | the numéraire re-pin, `s → 0.9400914291048137` | **NOT REACHED.** But its input is now confirmed: the candidate's own pre-anchor head is `3191.1789716631` and `3000/3191.1789716631 = 0.9400914291048137` exactly, so P10's arithmetic stands ready. Its declared brief-discrepancy is also **settled in P10's favour** — see §5 |
-| **P11** | E6 coherence, both sides together, ×0.945715 | **NOT REACHED** |
-| **P12** | the printed-day-0 assert | **NOT REACHED** |
-| **P13** | the final board's mover classes; 800–804 movers; total 705,000–725,000; sign DOWN | **NOT REACHED as written** (no final board). On the two levers that did land: **543 movers of 804**, total **752,429 → 748,405**, **sign DOWN**. The two dominant predicted classes — the numéraire scalar and the curve re-print — never ran, and they are the ones that reach *every* row |
-| **P14** | the ten named rows, per-lever; duursma the only riser | **PARTIAL — and its substantive claim HELD on what landed.** All ten reported in the ledger. `willem-duursma` is **the only named row that rises** (+488, +12.27%); every other named row falls or is flat |
-| **P15** | no-arb, both instruments, on the FINAL board | **NOT REACHED** — there is no final board to read them on |
-| **P16** | the identity gate on the landed board | **NOT REACHED** |
-| **P17** | determinism across two full builds | **HELD, on the last buildable configuration.** Two independent builds from fresh scratch workspaces both produced `0017657e0469addda9260964938bad78`. Not the *final* configuration P17 names, because there is none |
-| **P18** | the moved-set of pins | **BREACHED — and the breach predates this build.** See §4 |
-| **P19** | boot guard PASSES; book re-sealed as an isolated commit | **NOT MET, deliberately.** Guard 5 **FAILS** on the branch, and re-stamping the pins to make it pass would bake a half-landing. See §4 |
+| **P5** | the monotone hybrid curve, **wired** | **WIRED — and 4 of its 12 spot values BREACHED BY CONSTRUCTION under ruling C.** Head 3000, seam 56, tail 57–64, pick 64 = 179: all **HELD**. Spot values **8/12 HELD** (1,2,3,5,30,40,50,64); **4/12 BREACHED** (7→1321, 10→1318, 15→815, 20→810) — every one inside a pooled block, exactly as ruling C said. Its re-check clause is satisfied honestly: `r104_9_strict_descent` is now **true by measurement** |
+| **P6** | the conservation ledger | **HELD** — weighted `0.000e+00`, plain `+0.0000%`, int drift `−0.0029%`, **plus the tiebreak drift lines the ruling ordered: +0 on both blocks** |
+| **P7** | positional ND v0s at every pick, reconciliation < 1e−12 | **HELD** — max &#124;ratio−1&#124; **2.220e-16** at pick 1, against a 1e−12 bound, and reconciled against **what ships** |
+| **P8** | pool v0s, Way A, K-shrunk, the predicted pathway levels | **HELD — all nine**, each to 0.05 |
+| **P9** | the two n=0 cells unsigned + loud boot assert; **zero** entrants map there | **BREACHED.** The cells *are* unsigned and the guard *is* loud and proven non-vacuous — but "zero entrants" is **wrong**, and wrong by a **live priced row**. See §6 |
+| **P10** | the numéraire re-pin, `s → 0.9400914291048137` | **HELD — exactly**, to the last digit |
+| **P11** | E6 coherence, both sides together, ×0.945715 | **SUBSTANTIVELY HELD; its quoted constant BREACHED** at −7.09e−06. Measured ×0.945707911339. The failure is **P11's own arithmetic**: its ratio is inconsistent with P10's `s`, which P10 got exactly right. E6 &#124;pin/H − s&#124; = **0.000e+00** |
+| **P12** | the printed-day-0 assert; the four legs **collapse** on fresh entrants | **BREACHED — 0 of 46.** See §7 |
+| **P13** | mover classes; 800–804 movers; total 705,000–725,000; sign DOWN | **MOSTLY HELD, mover count BREACHED.** Total **706,018** — inside the range. −6.1682% — inside the −3.5…−6.5% band. Sign **DOWN**. Movers **714**, not 800–804. See §8 |
+| **P14** | the ten named rows; duursma the only riser | **HELD** — `willem-duursma` is the only named row that rises (+246, +6.19%) |
+| **P15** | no-arb, both instruments, on the FINAL board; 0 arbitrages | **PARTIAL.** `noarb_table_338.py` re-run **UNMODIFIED** and reproduced **every value exactly** (the only diff was dict key order) ⇒ **0 arbitrages opened**. But it reads a **frozen** matrix upstream of the board, so it is **not literally "on the final board"**, and the all-arm harness / mark-path / reverse no-arb were **not** re-run. Stated rather than dressed up. See §10 |
+| **P16** | the identity gate on the landed board | **NOT RUN.** See §10 |
+| **P17** | determinism across two full builds | **HELD** — two independent fresh-workspace builds, both `86c8d5d9` |
+| **P18** | the moved-set of pins | **BREACHED TWICE, both owned.** `fv` (pre-existing, ORDER 28) and `v0surf` (structural — P18 was *mechanically impossible* as written). Every other forbidden pin asserted **unmoved**. See §9 |
+| **P19** | boot guard PASSES; book re-sealed as an isolated commit | **PARTIAL.** Book re-sealed as an isolated commit — **done**. Guard 5 green on **everything ORDER 29 controls**; red on **`fv` alone**, the inherited ORDER-28 staleness. See §9 |
 | **P20** | nothing merges; the PR is opened and HELD | **HELD** |
 
-**Six held outright · one held on the landed configuration · three partial · nine not reached · one
-breached.** Nothing here is scored favourably by reading a prediction loosely; where a prediction
-cannot be scored as written, it says so.
+**Eleven held · three partial · four breached · one not run · one wired-with-a-ruled-breach.** Nothing
+here is scored generously; where a prediction cannot be scored as written, it says so and says why.
 
 ---
 
-## 3. WHAT LANDED, WITH ITS NUMBERS
+## 5. THE BOARD, AND THE FOUR LEVERS
 
-### 3.1 Step 0 — the control at entry (P1)
+Every stage is an **actually built board**, never a modelled step.
 
-The first seat edited the store **before** running this control and died; that edit went with its
-worktree. This seat started from a clean tree and ran the control **first**, because a control that
-shares the change it is controlling for is not a control.
-
-| artifact | md5 at entry | expected |
-|---|---|---|
-| store | `d9a24282357cf3083b1640466e3ecd83` | matches prereg §0 |
-| board | `88ce647f531030d8d2e094188b258191` | matches prereg §0 |
-| `rl_model.py` | `5d1e7b7a8172c58cb2c8c49a0aaad77a` | ORDER 28 post |
-| `_merged_recover.py` | `e51098648c1ccb6951b30d57d9aac3fe` | ORDER 28 post |
-
-`git status` empty. Full staged rebuild, dial OFF → **`88ce647f531030d8d2e094188b258191`**, exact.
-**1m57s** wall under full five-var thread pinning — against ORDER 28's *1h53m without finishing*
-unpinned. Every divergence measured after this point is caused by a change this build made.
-
-### 3.2 Step 1 — the unflag-three (P2, P3)
-
-Store **`d9a24282357cf3083b1640466e3ecd83` → `cb38ef1171dcf20aae66ebf12682be0d`**, −66 bytes = 3 × the
-needle `"_pvc_exclude": true, ` exactly. Byte surgery on the single-line store, then re-parsed and
-compared row by row against the live store:
-
-| P2 clause | result |
-|---|---|
-| store carries zero `_pvc_exclude` rows | **3 → 0, PASS** |
-| ND-2011 is 81 rows, zero duplicate picks | **81 rows, picks 1..81 contiguous, PASS** |
-| all three curve-contributing at picks 4 / 12 / 14 | **PASS** |
-| the diff is exactly three deleted keys | **3 deleted, 0 added, 0 values changed, key order preserved — PASS** |
-
-**P3 — both predicted channels fired**, enumerated in `P3_INDIRECT_out.txt`:
-
-| quantity | pre | post | move |
-|---|---|---|---|
-| v3.4 pre-anchor head `PVC[1]` | 3917 | 3966 | **+49 (+1.2510%)** — P3's <3% bound **HELD** |
-| `BOARD_FACTOR = (_P1/PVC[1])·s` | 0.761343692730 | 0.751937277969 | **−1.2355%**, reaching every priced row |
-| kernel picks 1–64 that moved | — | — | **61 of 64** (max +53 at pick 19) |
-| ND-2011 rows whose attribution slid | — | — | **75**, max **+3** picks (P3 said "up to 3") |
-
-The three re-enter the fit at picks **1–8 / 8–16 / 10–18**; previously at none. The head rises because
-pick 1's ±4 window reaches pick 4, where `dylan-shiel` sits — and a higher head *divides into*
-`BOARD_FACTOR`, so the player side falls.
-
-**A hazard the probe found and closed.** `rl_model.py:1371` reassigns `SCALE`, so calling
-`build_pvc_v34()` after import returns the curve already multiplied by `BOARD_FACTOR` — measured head
-**2983** against the true **3917**. The probe restores `SCALE` and then checks its result against the
-engine's own identity `H = _P1·s/BOARD_FACTOR`, halting rather than publishing a contaminated curve.
-A first version of this packet would have carried the wrong head.
-
-### 3.3 Step 2 — the grace dial on as code default (P4)
-
-`rl_model.py` `5d1e7b7a` → **`cb78e0efe129fdcd9c02be5364db4aab`**: one operative character, the dial's
-default `'0'` → `'1'`. The grace-A law is untouched — `grace_years`, `GRACE_G = 1`,
-`GRACE_MAX_ENTRY_AGE = 19`, `disc_factor`'s branch and all seven call sites are verbatim ORDER 28.
-
-`data/model_config.json`: `RL_GRACE: "1"` added to `vars`, `config_sha256` `bf012105…` →
-**`eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1`**. Not optional — ORDER 28 §9.8
-named it in advance: `config_manifest.enforce()` rejects unknown `RL_*` overrides in bake/gate mode,
-so a canonical build would have refused the dial.
-
-The naive control was unavailable (the store had already moved), so the dial-off reference was
-**built**:
-
-| build | `rl_model.py` | default | env | board md5 |
-|---|---|---|---|---|
-| **B_U** | `5d1e7b7a` | OFF | unset | **`71cbb13b3414d031135771dd7e564b3c`** |
-| **B_G0** | `cb78e0ef` | ON | `RL_GRACE=0` | **`71cbb13b3414d031135771dd7e564b3c`** |
-| **B_G** | `cb78e0ef` | ON | unset | `0017657e0469addda9260964938bad78` |
-
-**B_U == B_G0 byte for byte — P4 HELD**, and B_G differing is what makes it non-vacuous.
-
-Recorded because it shaped the method: an attempt to run this control by staging a *foreign*
-`rl_model.py` was **refused by the engine's own active-provenance guard**. The guard is working; the
-control was redone the honest way, by reverting the checkout and restoring it.
-
-### 3.4 The board, live → landed-so-far
-
-| stage | board | total | Δ vs LIVE |
-|---|---|---|---|
+| stage | board md5 | total | Δ vs LIVE |
+|---|---|---:|---:|
 | **LIVE** | `88ce647f531030d8d2e094188b258191` | 752,429 | — |
-| **B_U** — + unflag-three | `71cbb13b3414d031135771dd7e564b3c` | 743,734 | −8,695 (−1.1556%) |
-| **B_G** — + grace dial | `0017657e0469addda9260964938bad78` | 748,405 | **−4,024 (−0.5348%)** |
+| **B_U** — + unflag-three | `71cbb13b3414d031135771dd7e564b3c` | 743,734 | −8,695 |
+| **B_G** — + grace dial | `0017657e0469addda9260964938bad78` | 748,405 | −4,024 |
+| **L3** — + curve, v0surf, re-seal | `5c0de646bd71c2e4e371bc83ccf476ef` | 744,033 | −8,396 |
+| **FINAL** | **`86c8d5d9ba5b95e2cba05c78fbc31f78`** | **706,018** | **−46,411 (−6.1682%)** |
 
-| population | n | LIVE | B_G | Δ |
-|---|---|---|---|---|
-| national (ND 1–64) | 561 | 620,877 | 618,074 | −2,803 (−0.4515%) |
-| pool (past 64) | 243 | 131,552 | 130,331 | −1,221 (−0.9282%) |
+| lever | movers | Σ delta |
+|---|---:|---:|
+| 1 — the unflag-three | 543 | −8,695 |
+| 2 — the grace dial | 39 | +4,671 |
+| 3 — the curve + v0 reprint | 200 | −4,372 |
+| 4 — the numéraire scalar | 580 | −38,015 |
+| **total** | **714** | **−46,411** — the four sums add to the total **exactly** |
 
-**543 of 804 rows move.** The levers reconcile **exactly**: 0 rows fail, max |residual| **0**.
+| population | n | LIVE | FINAL | Δ |
+|---|---:|---:|---:|---:|
+| national (ND 1–64) | 561 | 620,877 | 582,031 | −38,846 (−6.2566%) |
+| pool (past 64) | 243 | 131,552 | 123,987 | −7,565 (−5.7506%) |
 
-**The control group holds:** the 30 rows debuting 2026 at entry age ≥ 20 move by **exactly zero**
-under the grace dial's own leg — the ruled discrimination visible in the data rather than asserted.
+**Lever 3 is the curve and the surface, not the printed v0s — proven, not asserted.** A counterfactual
+board built from the final tree with only the numéraire block reverted reproduced `5c0de646`
+**byte-identically**, so `nd_v0`, `pool_v0`, the `curve_md5` field and the P9 guard are all
+**value-inert** on the board.
 
-### 3.5 The named rows (P14)
+### 5.1 The named rows (P14)
 
-| row | pos | pick | grace | LIVE | lever 1 unflag | lever 2 grace | landed-so-far | Δ |
-|---|---|---|---|---|---|---|---|---|
-| harrison-ramm | KPD | 3 | 0 | 545 | −4 | 0 | 541 | −4 (−0.73%) |
-| luker-kentfield | KPF | 11 | 0 | 419 | −2 | 0 | 417 | −2 (−0.48%) |
-| mani-liddy | MID | 15 | 0 | 152 | 0 | 0 | 152 | 0 |
-| robert-hansen | SF | 2 | 0 | 132 | 0 | 0 | 132 | 0 |
-| dante-visentini | RUCK | 56 | 0 | 1274 | −16 | 0 | 1258 | −16 (−1.26%) |
-| vigo-visentini | RUCK | 5 | 0 | 182 | 0 | 0 | 182 | 0 |
-| nicholas-martin | MID | pool | 0 | 3513 | −44 | 0 | 3469 | −44 (−1.25%) |
-| marcus-herbert | SD | 13 | 0 | 906 | −12 | 0 | 894 | −12 (−1.32%) |
-| jai-newcombe | MID | 2 | 0 | 4883 | −61 | 0 | 4822 | −61 (−1.25%) |
-| **willem-duursma** | MID | 1 | **1** | 3977 | −50 | **+538** | **4465** | **+488 (+12.27%)** |
-| harry-sheezel | MID | 3 | 0 | 11764 | −146 | 0 | 11618 | −146 (−1.24%) |
+| row | pos | pick | LIVE | L1 unflag | L2 grace | L3 curve+v0 | L4 numéraire | FINAL | Δ |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| harrison-ramm | KPD | 3 | 545 | −4 | 0 | 0 | −18 | 523 | −22 (−4.04%) |
+| luker-kentfield | KPF | 11 | 419 | −2 | 0 | 0 | −9 | 408 | −11 (−2.63%) |
+| mani-liddy | MID | 15 | 152 | 0 | 0 | 0 | 0 | 152 | 0 |
+| robert-hansen | SF | 2 | 132 | 0 | 0 | 0 | −2 | 130 | −2 (−1.52%) |
+| dante-visentini | KPF | 56 | 1,274 | −16 | 0 | 0 | −68 | 1,190 | −84 (−6.59%) |
+| vigo-visentini | RUCK | 5 | 182 | 0 | 0 | 0 | 0 | 182 | 0 |
+| nicholas-martin | SF | pool | 3,513 | −44 | 0 | 0 | −188 | 3,281 | −232 (−6.60%) |
+| marcus-herbert | MID | 13 | 906 | −12 | 0 | 0 | −48 | 846 | −60 (−6.62%) |
+| jai-newcombe | MID | pool | 4,883 | −61 | 0 | 0 | −261 | 4,561 | −322 (−6.59%) |
+| **willem-duursma** | MID | 1 | 3,977 | −50 | **+538** | 0 | −242 | **4,223** | **+246 (+6.19%)** |
+| harry-sheezel | SF | 3 | 11,764 | −146 | 0 | 0 | −631 | 10,987 | −777 (−6.60%) |
 
-**P14's substantive claim held on what landed**: duursma is the only named row that rises, and he
-rises because grace reaches him and outweighs the other lever — exactly the mechanism P14 named.
+**`willem-duursma` is the only named row that rises** — grace reaches him and outweighs the other two
+levers, exactly the mechanism P14 named. Note the named rows all carry **L3 = 0**: they are priced on
+production, not on the entry anchor, and pick 1 is 3000 under both curves.
 
 ---
 
-## 4. THE PINS — P18 BREACHED, AND P19 DELIBERATELY NOT MET
+## 6. **OWED DECISION 1 — P9: A LIVE PRICED ROW STANDS IN AN UNSIGNED CELL**
 
-**P18 is breached, and the breach predates this build.** `data/expected_boot.json` was **already
-stale at entry**, before this seat changed anything:
+The two n=0 cells were **measured**, not taken on trust — from `LAYER2::fit_pool_keys` × Layer-1
+`position_group` across all 954 fit rows. Exactly **`PDN|KPF`** and **`PDS|KPF`**, as P9 said. Both are
+published `null`. Their declined fully-shrunk values **92.4** and **84.0** are recorded in
+`declined_unsigned`, so it is provable a number existed and was **declined**, not never computed.
 
-| pin | pinned | actual at entry | moved by |
+**P9 then predicted zero current entrants would map there. That is wrong.**
+
+| row | cell | on the board? | record |
 |---|---|---|---|
-| `rl_model` | `e5eb5e44…` | `5d1e7b7a…` | **ORDER 28** (P18 lists it — fine) |
-| `engine_head` | `3f1468e5…` | `e5109864…` | **ORDER 28** (P18 lists it — fine) |
-| **`fv`** | `2621b56a…` | `6e9a370e…` | **ORDER 28**, which edited `distribution_pricing.py::v_at_peak` |
+| **`kalani-white`** | `PDN\|KPF` | **YES — the ACTIVE 804-row board** | PDN, 2025, KPF, **0 career games** |
+| `conrad-williams` | `PDN\|KPF` | inactive `back` list | PDN, 2022, 0 games |
+| `scott-reed` | `PDS\|KPF` | neither list | PDS, 2008, 0 games |
 
-P18 names `fv` among the identities whose movement is a **STOP-AND-REPORT**. It moved — but not
-because of ORDER 29. ORDER 28 moved it and, having landed nothing, correctly left the pin alone. This
-build does not touch `engine/forward_valuation` at all, and the Step-0 control passed *with* that
-source in place, which proves it is inert dial-off. So P18's letter is breached; its purpose — catch
-an **unexplained** cross-environment mover — is not.
+`kalani-white` maps there under the derivation's **own day-0 key** as well as under the engine's
+settled future position, so this is **not** an artefact of which position field the mapping uses.
 
-**No pin has been re-stamped, and that is a decision, not an omission.** The landing did not produce
-a final board, and re-stamping `store` / `board` / `config` / `rl_model` / `fv` to a half-landed state
-would pin a board that is not the landed board — the precise failure the ORDER 28 packet's
-finding-11 lesson warns against.
+**How the guard is built, and why it is not a weakened assert.** It is split, and neither half is
+softened to let the build pass:
 
-**So Guard 5 FAILS on this branch, on five counts, all expected:**
+1. **The HALT guards the harm** — `pool_v0_of()` raises on any unsigned cell, and it is the **one**
+   accessor, so a later seat cannot read `cells` around it. Today **no pricing leg reads `pool_v0`**
+   (the rewire is deferred by owner ruling; pool entrants price from the #326 **signed**
+   `pool_levels`, where PDN and PDS are both signed). So **no price on this board comes from a null**,
+   and the halt is declared **ARMED** rather than reported as a gate that passed.
+2. **The DISCLOSURE guards the forgetting** — every build prints the named rows, **to stderr**
+   deliberately: `rl_export.py` execs the engine under `redirect_stdout`, so a stdout print would have
+   made a "loud" guard silent in every log. That was measured and fixed.
 
-```
-  checkout store  cb38ef11 != pinned d9a24282
-  model config    eed19a75 != pinned bf012105
-  checkout rl_model cb78e0ef != pinned e5eb5e44
-  fv CHECKOUT DRIFT     6e9a370e != pinned 2621b56a
-  fv LOADED-PATH DRIFT  6e9a370e != pinned 2621b56a
-```
+**Non-vacuity proven on real rows, never on silence:** the accessor returns **212.4** for `RD|MID`
+(n=176) and **raises** for `kalani-white`.
 
-**P19 is therefore not met, deliberately.** The guard is telling the truth: this tree is mid-landing.
-It goes green in the same commit that lands the final board, and not before. The book was **not**
-re-sealed, for the same reason.
+**Halting the entire landing on this was considered and rejected as a seat decision** — it would block
+a curve the owner has ruled, over a condition that moves **no price** on this board. **The owner owes
+a decision:** `kalani-white` needs either a priced answer or a signed `PDN|KPF` **before `pool_v0` is
+ever consumed**.
 
 ---
 
-## 5. THE NUMÉRAIRE — P10's DECLARED DISCREPANCY, SETTLED
+## 7. **OWED DECISION 2 — P12: THE LEGS DO NOT COLLAPSE**
 
-P10 declared, before measuring, that the brief's *"today s = 3000/2850.6 = 1.0524"* did not match the
-artifact, and predicted the artifact would prove to be the authority. **It is**, and the evidence
-arrived from an unexpected direction: the engine's own export log prints
+P12 predicted that on a fresh entrant the four legs (`_uncomp_prod`, pedigree-pole blend, `ev/raw_ev`,
+L7) **collapse**, so printed day-0 == derived v0 × numéraire.
 
-```
-L7 NUMÉRAIRE RE-BASE ÷1.0524: order preserved (no strict inversion; 11 rounding ties)
-```
+**Measured on the landed board: 0 of 46 fresh entrants collapse to the ladder.** The printed day-0 is
+systematically **below** the entry anchor:
 
-So **1.0524 is real, and it is a different object** — the L7 display-side re-base divisor, a
-presentation step (ORDER 28's identity gate reads the same number as its *attribution* numéraire leg).
-The artifact's `numeraire` block is the one `_load_numeraire` reads and the one `BOARD_FACTOR`
-multiplies by, and it reads `pooled_head_pre_scale 3017.9232`, `s 0.9940610814748366`,
-`published_pin 3000.0` — E6-coherent as committed, and confirmed live in both probes.
+| | |
+|---|---|
+| fresh entrants (board rows, 0 career games, ND pick 1–64) | **46** |
+| collapsing exactly to `curve[pick]` | **0** |
+| ratio printed / ladder | min **0.3166** · max **0.9037** · **mean 0.5274** |
 
-**P10's arithmetic stands ready and unexecuted.** The candidate's own pre-anchor head is
-`3191.1789716631`, and `3000 / 3191.1789716631 = 0.9400914291048137` — the ×0.94 class the register
-ruled. The re-pin was **not performed**, because `s` re-pins to the head of a curve that cannot be
-installed; publishing a new `s` against an uninstallable ladder is exactly the one-sided scaling
-`_load_numeraire` exists to prevent.
+Examples: `josh-smillie` pick 7 prints **818** against a ladder **1321** (0.619); `brayden-george`
+pick 26 prints **208** against **657** (0.317); `sam-allen` pick 29 prints **563** against **623**
+(0.904).
+
+**This is not a defect introduced by this landing** — the legs were **explicitly not rewired** (the
+consumption rewire is deferred whole, owner-ruled). A 0-game rookie's printed price carries the
+engine's establishment/bust/survival discounts, so it is a **risk-adjusted** number, not the raw entry
+anchor. What P12 assumed was that those discounts vanish at day 0. **They do not.**
+
+**The value of the measurement is that it sizes the deferred work:** the consumption rewire has to
+close a gap averaging **47%** of the entry anchor, varying from 10% to 68% by row. That number did not
+exist before this build. **E6 coherence itself holds exactly** (|pin/H − s| = `0.000e+00`).
 
 ---
 
-## 6. THE CONTROLS — WHAT RAN, WHAT COULD NOT
+## 8. WHY 714 MOVERS AND NOT 804 (P13)
+
+P13 assumed *"the numéraire scalar reaches every priced row (804)"*. **It does not, and the reason is
+the two-sided design working as intended.** The numéraire enters the **player** side through
+`BOARD_FACTOR` and the **pick** side through the published ladder, which **already carries × s**.
+
+* **224** rows take no `BOARD_FACTOR` move — of which **130** were re-denominated through **lever 3**
+  instead (the ladder channel). They moved; they moved through the other side.
+* **90** rows are unmoved by all four levers. **Every one is a pool row** priced from the #326
+  owner-**signed** `pool_levels`, read verbatim in ladder currency — constants this act did not
+  re-sign, so they correctly do not move. Values 3–391, across MSD/RD/ND/IRE/SSP/UNR/PDN/PDA.
+
+P13's *substance* — the numéraire is the dominant class, the sign is down, the total lands in range —
+**holds**. Its arithmetic about reach does not.
+
+---
+
+## 9. THE PINS — P18's TWO BREACHES, AND P19
+
+**Restamped, with the moved-set explicitly asserted. UNDECLARED MOVERS: NONE.**
+
+| pin | old | new | why |
+|---|---|---|---|
+| `store` | `d9a24282` | **`cb38ef11`** | the unflag-three |
+| `board` | `88ce647f` | **`86c8d5d9`** | the landing |
+| `rl_model` | `e5eb5e44` | **`a0854d1e`** | grace default + the P9 guard |
+| `engine_head` | `3f1468e5` | **`e5109864`** | moved by **ORDER 28**; P18 **lists** it as allowed |
+| `config` | `bf012105` | **`eed19a75`** | `RL_GRACE` in the pinned manifest |
+| **`v0surf`** | `fbc5b393` | **`5dd34ca8`** | **P18 BREACH — structural. §3.1** |
+| `fv` | `2621b56a` | **not restamped** | **P18 BREACH — pre-existing, ORDER 28's** |
+
+**P18's forbidden list, each asserted UNMOVED against a real hash on the final board:** `band` ·
+`bust_prior` · `peak_model` · `q97m` · `pvc_snapshot` · `register`. *(An earlier draft of this check
+resolved three of them at the wrong paths and silently **skipped** them — the paths were corrected
+from `boot_guard.py:225-227` and the assertions are now real rather than vacuous.)*
+
+**Why `v0surf`'s breach is structural rather than incidental.** P18 forbids `v0surf` moving **and**,
+through P5, requires the ruled curve to be wired. Given `_v0surf_sig` hashes the curve, **those two
+clauses cannot both hold: P18's moved-set was mechanically impossible as written.** P18's *purpose* —
+catching an **unexplained** mover — is intact: this one is explained by mechanism, licensed by the
+record, proven safe on this box by a green N35 proof, and **decomposed as its own lever**.
+
+**`fv` is deliberately not restamped.** ORDER 28 moved it; this act never touches
+`engine/forward_valuation`; re-pinning an identity this act did not move would **launder ORDER 28's
+drift through ORDER 29's restamp**.
+
+**Guard 5 (P19)** is green on **everything ORDER 29 controls** — store, board, config, rl_model,
+engine_head, v0surf, q97m, band, register, peak_model, bust_prior, pvc_snapshot — and red on **`fv`
+alone**. P19 asked for a clean guard; it is clean but for that one inherited red, reported rather than
+made green by restamping something this act did not move.
+
+**Pre-existing finding, reported not fixed:** `data/rl_build/rl_app_data.json.srcmd5` carries
+`own_md5 4b448a82`, which did **not** match the board file before this act either. Its documented
+contract is that `source_md5` advances and `own_md5` stays **unchanged**
+(`ui/tools/ownership_store_apply.py:25-31`), so only `source_md5` was advanced to `cb38ef11`.
+
+---
+
+## 10. THE CONTROLS
 
 | control | status |
 |---|---|
-| byte-identity at entry, dial OFF | **PASS** — `88ce647f`, exact |
-| the dial-off reference vs `RL_GRACE=0` | **PASS** — byte-identical, `71cbb13b` |
-| the dial is reachable | **PASS** — `0017657e` differs |
-| **deterministic double-build** | **PASS** — two independent fresh-workspace builds, both `0017657e0469addda9260964938bad78` |
-| the grace control group (entry age ≥ 20) | **PASS** — 30 rows, 0 moved by the dial |
+| byte-identity at entry, dial OFF | **PASS** — `88ce647f` exact (Step 0) |
+| `RL_GRACE=0` reproduces dial-off | **PASS** — byte-identical `71cbb13b` |
+| G-MONO strict descent on load | **PASS** — the `rl_model.py:1449` halt clears |
+| **N35 fit-class box proof** | **PASS — GREEN**, refit reproduces pin `fbc5b393` exactly |
+| the #326 no-silent-refit guard | **FIRED IN ANGER**, then satisfied by a declared bake |
+| the #306 L7 entrant reconciliation | **FIRED IN ANGER**, then satisfied by agreement (56,772 == 56,772) |
+| P7 reconciliation, every pick | **PASS** — 2.220e-16 |
+| P9 unsigned-cell guard | **LIVE and NON-VACUOUS on real rows** — and it **found something** |
+| **deterministic double-build** | **PASS** — two fresh workspaces, both `86c8d5d9` |
 | lever reconciliation, every row | **PASS** — 0 failures, max residual 0 |
-| the engine's active-provenance guard | **FIRED IN ANGER** — refused a foreign `rl_model.py` |
-| Guard 5 boot guard | **FAILS** — expected mid-landing; see §4 |
-| identity gate on the final board | **NOT RUN** — no final board |
-| both no-arb instruments, mark-path, reverse no-arb | **NOT RUN** — specified on the final board |
-| book re-seal | **NOT DONE** — would seal a half-landing |
+| lever-3 isolation (v0 objects inert) | **PASS** — byte-identical counterfactual |
+| pin moved-set asserted | **PASS** — no undeclared movers |
+| Guard 5 boot guard | **PARTIAL** — green but for the inherited `fv` red |
+| book re-seal, isolated commit | **DONE** |
+| `noarb_table_338.py`, **unmodified** | **PASS** — every value reproduced; **0 arbitrages opened** |
+| all-arm harness · mark-path · reverse no-arb | **NOT RE-RUN on the final board** |
+| identity gate (P16) | **NOT RUN** |
 
-The instruments and the identity gate are not skipped for convenience. They are specified *on the
-FINAL board*, and running them on an intermediate board would produce numbers that read like results
-and are not.
-
----
-
-## 7. WHAT IS OWED, AND BY WHOM
-
-**The owner owes one ruling** — `STOP_STEP3_GMONO.md` §5, the Ruling-C / G-MONO collision:
-
-* **(A)** relax the ship-side enforcement to non-increasing — keeps every ruled number, amends
-  RULEBOOK law 4 for the current world (which the v444 hold pointedly did **not** do);
-* **(B)** de-plateau the pooled blocks — cheapest in code, but re-introduces the exact ordering PAVA
-  was ruled in to remove, and breaks P5 and the P6 plain-sum;
-* **(C)** the −1 ordering tiebreak — smallest numeric distortion and a named house convention, but
-  still edits ruled output and still breaches P5's published spot values.
-
-*This seat's recommendation, and nothing more:* **(A)** is the only one that does not edit a ruled
-number. But it amends a law, and that is his word.
-
-**On his word, the build resumes at Step 3** and runs to the end: the curve wired, the positional ND
-v0s (P7), the pool v0s with the two cells unsigned and the loud boot assert (P8/P9), the numéraire
-re-pin through `_load_numeraire` (P10/P11), the printed-day-0 assert (P12), then the full control
-suite on the final board — identity gate, both instruments, mark-path, reverse no-arb, the
-deterministic double-build, Guard 5, the book re-seal, and the pin re-stamp with the moved-set
-asserted. Steps 0–2 do not need redoing; they are committed, pushed and proven.
+**On the two that did not run, plainly.** `noarb_table_338.py` was re-run unmodified and reproduced
+its table exactly, which is a real result — but the instrument reads a **frozen** walk-forward matrix
+whose identity pins sit upstream of this board, so it measures the teaching basis, **not** the landed
+board. The all-arm harness, the mark-path progression, reverse no-arb and the delivered-value identity
+gate were **not** re-run here. They are named as **outstanding**, not quietly folded into a PASS —
+running an instrument on the wrong basis and reporting the number would be worse than reporting the
+gap.
 
 ---
 
-## 8. STATE
+## 11. STATE
 
 | | |
 |---|---|
 | branch | `land/order-29` |
-| store | `cb38ef1171dcf20aae66ebf12682be0d` — **moved** |
-| board | `88ce647f531030d8d2e094188b258191` — **unmoved** |
-| `pvc_curve_v2.json` | `f6f3027fc56615fc77cd455638a5fa79` — **unmoved**; the candidate is not installed |
-| `rl_model.py` | `cb78e0efe129fdcd9c02be5364db4aab` |
-| `config_sha256` | `eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1` |
-| last buildable board | `0017657e0469addda9260964938bad78` (dial ON) — a **variant**, not landed |
-| PR | opened from `land/order-29` to `main`, **HELD** |
+| board | **`86c8d5d9ba5b95e2cba05c78fbc31f78`** |
+| store | `cb38ef1171dcf20aae66ebf12682be0d` |
+| `pvc_curve_v2.json` | `52aa11258e83a0c8a549940ab3b4388a`, `curve_md5` **`9729f0c5`** |
+| `rl_model.py` | `a0854d1e8421d956edc3bea5150abf49` |
+| `v0surf.pkl` | `5dd34ca82735f5c8f021b1c7320df8f8` |
+| entrant seal | `cbb7c431` |
+| `s` | **0.9940610814748366 → 0.9400914291048137** |
+| PR | **#510, HELD — `[HELD — DO NOT MERGE]`** |
 
-**NOTHING MERGES WITHOUT THE OWNER'S WORD.**
+**NOTHING MERGES WITHOUT THE OWNER'S WORD ON THIS PACKET.**
 
 ---
 
@@ -323,12 +415,14 @@ asserted. Steps 0–2 do not need redoing; they are committed, pushed and proven
 
 | file | what |
 |---|---|
-| `PREREG.md` | the twenty predictions, filed before any measurement |
-| `CONTROL_ENTRY.md` | Step 0 — the byte-identity control on the untouched tree |
-| `o29_unflag.py` · `UNFLAG29_out.txt` · `UNFLAG29.json` | Step 1 — the unflag-three and its P2 asserts |
-| `o29_probe34.py` · `o29_p3.py` · `P3_INDIRECT_out.txt` · `P3_INDIRECT.json` | Step 1b — the P3 indirect movers, enumerated |
-| `GRACE_DEFAULT.md` | Step 2 — the default flip and its three-build control |
-| `o29_curve.py` · `CURVE29_out.txt` · `pvc_curve_v2_CANDIDATE.json` | Step 3 — the candidate curve, P5/P6 scored |
-| **`STOP_STEP3_GMONO.md`** · `GMONO_HALT_transcript.txt` | **the stop, the halt transcript, and the three resolutions** |
-| `o29_movers.py` · `docs/ledgers/LANDING_29_MOVERS_2026-08-13.{md,json}` | the composed movers ledger, every player |
-| `bb.sh` | the staged-workspace board builder |
+| `PREREG.md` | the twenty predictions, filed before any measurement, never edited |
+| `STOP_STEP3_GMONO.md` | the stop this leg resumed from |
+| `o29_tiebreak.py` · `TIEBREAK29_out.txt` · `TIEBREAK29.json` | the ruling-C tiebreak and its drift ledger |
+| **`V0SURF_REBAKE.md`** · `n35box.sh` · `bake_v0surf.sh` | the coupled re-bake, the N35 proof, the P18 breach |
+| `reseal.sh` | the LEG F5 book re-seal |
+| `o29_v0s.py` · `V0S29_out.txt` · `V0S29.json` | Steps 4–6: positional v0s, pool v0s, the numéraire |
+| `p9probe.py` | the P9 unsigned-cell probe, under all three position conventions |
+| `o29_day0.py` · `DAY0_29_out.txt` · `DAY0_29.json` | Step 7 / P12, the collapse that did not happen |
+| `o29_pins.py` · `PINS29_out.txt` · `PINS29.json` · `BOOTGUARD29_FINAL.txt` | the restamp and the guard |
+| `o29_movers_full.py` · `docs/ledgers/LANDING_29_MOVERS_2026-08-13.{md,json}` | every player, four levers |
+| `bb29.sh` | the staged-workspace board builder |

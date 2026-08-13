@@ -1,947 +1,937 @@
-# LANDING 29 — THE COMPOSED MOVERS LEDGER
+# THE COMPOSED MOVERS LEDGER — ORDER 29, THE LANDING
 
-**2026-08-13 · branch `land/order-29` · ORDER 29, the landing build.**
+**2026-08-13 · branch `land/order-29` · build seat · every priced row, all four levers, vs live `88ce647f`.**
 
-> ## THIS LEDGER IS PARTIAL, AND SAYS SO IN ITS FIRST LINE.
-> The landing **STOPPED at Step 3**: the ruled curve halts the engine on G-MONO strict descent
-> (`STOP_STEP3_GMONO.md`). Two of the four levers were built and are measured here in full, every
-> player, exactly. The other two — the v0/curve re-print and the numéraire scalar — were **never
-> built**, so they are **absent, not estimated**. No row below carries a modelled or inferred
-> component; every number is a difference of two boards that exist on disk.
+> Each stage below is an **actually built board**, never a modelled step. The four levers reconcile
+> **exactly** on every row — `0` rows failing, max |residual| `0` — so no row carries an unexplained
+> remainder.
 
-## THE STAGES
+## 1. THE STAGES
 
-| stage | what it is | `rl_app_data.json` md5 |
-|---|---|---|
-| **LIVE** | the frozen live board | `88ce647f531030d8d2e094188b258191` |
-| **B_U** | + the unflag-three (store `cb38ef11`), dial OFF | `71cbb13b3414d031135771dd7e564b3c` |
-| **B_G** | + the grace dial ON (the last board this build can produce) | `0017657e0469addda9260964938bad78` |
-| ~~B_V~~ | + the curve / v0 re-print | **BLOCKED — never built** |
-| ~~B_F~~ | + the numéraire re-pin (the intended FINAL board) | **BLOCKED — never built** |
+| stage | board md5 | total | Δ vs LIVE | pct |
+|---|---|---:|---:|---:|
+| **LIVE** | `88ce647f531030d8d2e094188b258191` | 752,429 | — | — |
+| **B_U** | `71cbb13b3414d031135771dd7e564b3c` | 743,734 | -8,695 | -1.1556% |
+| **B_G** | `0017657e0469addda9260964938bad78` | 748,405 | -4,024 | -0.5348% |
+| **L3** | `5c0de646bd71c2e4e371bc83ccf476ef` | 744,033 | -8,396 | -1.1159% |
+| **FINAL** | `86c8d5d9ba5b95e2cba05c78fbc31f78` | 706,018 | -46,411 | -6.1682% |
 
-Each lever is the difference of **consecutive** stages, so the lever columns sum to the total
-**by construction**. The reconciliation assert below is therefore a check on the arithmetic and
-the row alignment, not a fudge factor: it must be exactly zero for every row.
+## 2. THE LEVERS
 
-## 1. BOARD TOTALS
+| lever | movers | Σ delta | what it is |
+|---|---:|---:|---|
+| **lever 1 — THE UNFLAG-THREE** | 543 | -8,695 | store d9a24282 -> cb38ef11; reaches every priced row through the v3.4 kernel head (3917 -> 3966) and hence BOARD_FACTOR (0.761344 -> 0.751937, -1.2355%) |
+| **lever 2 — THE GRACE DIAL** | 39 | +4,671 | RL_GRACE default OFF -> ON; entry age <= 19 gets seasons 1-2 at full weight |
+| **lever 3 — THE CURVE + v0 REPRINT** | 200 | -4,372 | the ruled monotone curve installed with the ruling-C ordering tiebreak (df766dff -> 9729f0c5), the v0surf re-bake it makes inseparable (fbc5b393 -> 5dd34ca8), and the book re-seal (c9e7491b -> cbb7c431). The printed nd_v0/pool_v0 objects are INERT on the board and proven so by byte-identity, so this lever is the curve and the surface |
+| **lever 4 — THE NUMERAIRE SCALAR** | 580 | -38,015 | s 0.9940610814748366 -> 0.9400914291048137; re-denominates every priced row by x0.945707911339, both sides together |
+| **TOTAL (live → final)** | 714 | -46,411 | the four lever sums add to the total **exactly** |
 
-| stage | board total | Δ vs previous | Δ vs LIVE |
-|---|---|---|---|
-| LIVE | 752,429 | — | — |
-| B_U | 743,734 | -8695 (-1.1556%) | -8695 (-1.1556%) |
-| B_G | 748,405 | +4671 (+0.6280%) | -4024 (-0.5348%) |
+**Lever 3 is the curve and the surface, not the printed v0s** — proven, not asserted: a
+counterfactual board built from the final tree with only the numéraire block reverted reproduced
+`5c0de646` **byte-identically**, so the `nd_v0` / `pool_v0` blocks, the `curve_md5` field and the
+P9 guard are all **value-inert** on the board.
 
-### the national / pool split
+**Why the numéraire does not reach all 804 rows.** It enters the **player** side through
+`BOARD_FACTOR` and the **pick** side through the published ladder, which already carries `× s`.
+So 224 rows take no `BOARD_FACTOR` move; **130 of them were re-denominated through lever 3**
+instead. The **90** rows unmoved by all four levers are **all pool rows** priced from the #326
+owner-**signed** `pool_levels`, read verbatim in ladder currency — constants this act did not
+re-sign, so they correctly do not move.
 
-| population | n | LIVE | B_U | B_G | Δ vs LIVE |
-|---|---|---|---|---|---|
-| national (ND 1–64) | 561 | 620,877 | 613,631 | 618,074 | -2803 (-0.4515%) |
-| pool (everything past 64) | 243 | 131,552 | 130,103 | 130,331 | -1221 (-0.9282%) |
+## 3. NATIONAL vs POOL
 
-## 2. THE MOVER COUNT, PER LEVER
+| population | n | LIVE | FINAL | Δ | pct |
+|---|---:|---:|---:|---:|---:|
+| national (ND 1–64) | 561 | 620,877 | 582,031 | -38,846 | -6.2566% |
+| pool (past 64) | 243 | 131,552 | 123,987 | -7,565 | -5.7506% |
 
-| lever | movers | up | down | Σ Δ | what it is |
-|---|---|---|---|---|---|
-| lever 1 — THE UNFLAG-THREE | **543** | 6 | 537 | -8695 | store d9a24282 -> cb38ef11; reaches every priced row through the v3.4 kernel head (3917 -> 3966) and hence BOARD_FACTOR (0.761344 -> 0.751937, -1.2355%) |
-| lever 2 — THE GRACE DIAL | **39** | 38 | 1 | +4671 | RL_GRACE code default '0' -> '1'; entry age <= 19 carries seasons 1 and 2 at full weight |
-| **TOTAL (LIVE → B_G)** | **543 of 804** | 42 | 501 | -4024 | the two landed levers composed |
+**714 of 804 rows move** (88.8%) — 32 rise, 682 fall, 90 unmoved.
 
-## 3. THE RECONCILIATION — EXACT, EVERY ROW
+## 4. THE NAMED ROWS (PREREG P14)
 
-For every one of the 804 priced rows:
+| row | pos | pick | LIVE | L1 unflag | L2 grace | L3 curve+v0 | L4 numéraire | FINAL | Δ | pct |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| harrison-ramm | KPD | 3 | 545 | -4 | +0 | +0 | -18 | 523 | -22 | -4.04% |
+| luker-kentfield | KPF | 11 | 419 | -2 | +0 | +0 | -9 | 408 | -11 | -2.63% |
+| mani-liddy | MID | 15 | 152 | +0 | +0 | +0 | +0 | 152 | +0 | +0.00% |
+| robert-hansen | SF | 2 | 132 | +0 | +0 | +0 | -2 | 130 | -2 | -1.52% |
+| dante-visentini | KPF | 56 | 1,274 | -16 | +0 | +0 | -68 | 1,190 | -84 | -6.59% |
+| vigo-visentini | RUCK | 5 | 182 | +0 | +0 | +0 | +0 | 182 | +0 | +0.00% |
+| nicholas-martin | SF | 65 | 3,513 | -44 | +0 | +0 | -188 | 3,281 | -232 | -6.60% |
+| marcus-herbert | MID | 13 | 906 | -12 | +0 | +0 | -48 | 846 | -60 | -6.62% |
+| jai-newcombe | MID | 2 | 4,883 | -61 | +0 | +0 | -261 | 4,561 | -322 | -6.59% |
+| **willem-duursma** | MID | 1 | 3,977 | -50 | +538 | +0 | -242 | 4,223 | **+246** | +6.19% |
+| harry-sheezel | SF | 3 | 11,764 | -146 | +0 | +0 | -631 | 10,987 | -777 | -6.60% |
 
-```
-  (lever 1) + (lever 2)  ==  total(LIVE -> B_G)
-  rows failing to reconcile : 0
-  max |residual|           : 0
-```
+**`willem-duursma` is the only named row that rises** — willem-duursma — exactly the mechanism P14 named:
+grace reaches him (+538) and outweighs the unflag and the numéraire together.
 
-**PASS** — the levers sum to the total exactly, with no unexplained remainder.
+## 5. THE FIFTY LARGEST ABSOLUTE MOVERS
 
-## 4. DISPERSION (never a bare mean)
+| row | pos | ep | LIVE | L1 | L2 | L3 | L4 | FINAL | Δ |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| harry-sheezel | SF | 3 | 11,764 | -146 | +0 | +0 | -631 | 10,987 | -777 |
+| nick-daicos | MID | 4 | 10,945 | -136 | +0 | +0 | -587 | 10,222 | -723 |
+| luke-jackson | RUCK | 3 | 10,203 | -125 | +0 | +0 | -547 | 9,531 | -672 |
+| nasiah-wanganeen-milera | SD | 11 | 9,688 | -119 | +0 | +0 | -520 | 9,049 | -639 |
+| max-holmes | MID | 21 | 8,406 | -103 | +0 | +0 | -451 | 7,852 | -554 |
+| tristan-xerri | RUCK | 65 | 7,800 | -97 | +0 | +0 | -418 | 7,285 | -515 |
+| will-ashcroft | MID | 2 | 7,330 | -90 | +0 | +0 | -394 | 6,846 | -484 |
+| errol-gulden | MID | 34 | 7,239 | -91 | +0 | +0 | -386 | 6,762 | -477 |
+| zak-butters | MID | 12 | 7,092 | -87 | +0 | +0 | -381 | 6,624 | -468 |
+| josh-treacy | KPF | 65 | 6,921 | -85 | +0 | +0 | -372 | 6,464 | -457 |
+| bailey-smith | MID | 7 | 6,683 | -83 | +0 | +0 | -358 | 6,242 | -441 |
+| finn-callaghan | MID | 3 | 6,062 | -75 | +0 | +0 | -325 | 5,662 | -400 |
+| jason-horne-francis | SF | 1 | 6,042 | -74 | +0 | +0 | -324 | 5,644 | -398 |
+| lachlan-ash | SD | 4 | 5,728 | -71 | +0 | +0 | -307 | 5,350 | -378 |
+| noah-anderson | MID | 2 | 5,256 | -65 | +0 | +0 | -282 | 4,909 | -347 |
+| sam-darcy | KPF | 2 | 5,250 | -66 | +0 | +0 | -281 | 4,903 | -347 |
+| caleb-serong | MID | 8 | 5,027 | -62 | +0 | +0 | -269 | 4,696 | -331 |
+| jagga-smith | SF | 3 | 4,855 | -61 | +0 | +0 | -261 | 4,533 | -322 |
+| jai-newcombe | MID | 65 | 4,883 | -61 | +0 | +0 | -261 | 4,561 | -322 |
+| matt-rowell | MID | 1 | 4,770 | -59 | +0 | +0 | -255 | 4,456 | -314 |
+| tom-green | MID | 10 | 4,719 | -59 | +0 | -1 | -252 | 4,407 | -312 |
+| archie-roberts | SD | 54 | 4,726 | -58 | +0 | +0 | -253 | 4,415 | -311 |
+| izak-rankine | SF | 3 | 4,685 | -58 | +0 | +0 | -251 | 4,376 | -309 |
+| brodie-grundy | RUCK | 22 | 4,490 | -55 | +0 | +0 | -242 | 4,193 | -297 |
+| riley-thilthorpe | KPF | 2 | 4,468 | -55 | +0 | +0 | -240 | 4,173 | -295 |
+| chad-warner | SF | 38 | 4,411 | -55 | +0 | +0 | -237 | 4,119 | -292 |
+| jake-bowey | SD | 22 | 4,319 | -54 | +0 | +0 | -231 | 4,034 | -285 |
+| colby-mckercher | SD | 2 | 4,285 | -53 | +0 | +0 | -229 | 4,003 | -282 |
+| nick-blakey | SD | 10 | 4,273 | -53 | +0 | +0 | -229 | 3,991 | -282 |
+| kysaiah-pickett | SF | 12 | 4,249 | -53 | +0 | +0 | -227 | 3,969 | -280 |
+| mac-andrew | KPD | 5 | 4,169 | -51 | +0 | +0 | -224 | 3,894 | -275 |
+| murphy-reid | SF | 17 | 4,141 | -50 | +0 | +0 | -223 | 3,868 | -273 |
+| bodhi-uwland | SD | 65 | 4,087 | -51 | +0 | +0 | -219 | 3,817 | -270 |
+| sam-lalor | SF | 1 | 4,087 | -51 | +0 | +0 | -219 | 3,817 | -270 |
+| luke-davies-uniacke | MID | 4 | 4,070 | -51 | +0 | +0 | -217 | 3,802 | -268 |
+| sam-berry | MID | 29 | 3,992 | -50 | +0 | +0 | -213 | 3,729 | -263 |
+| ed-richards | MID | 16 | 3,924 | -48 | +0 | +0 | -211 | 3,665 | -259 |
+| marcus-bontempelli | MID | 4 | 3,876 | -49 | +0 | +0 | -207 | 3,620 | -256 |
+| ryley-sanders | SF | 6 | 3,885 | -48 | +0 | +0 | -208 | 3,629 | -256 |
+| nick-watson | SF | 5 | 3,839 | -48 | +0 | +0 | -206 | 3,585 | -254 |
+| harley-reid | MID | 1 | 3,820 | -48 | +0 | +0 | -204 | 3,568 | -252 |
+| finn-o-sullivan | SD | 2 | 3,740 | -47 | +0 | +0 | -200 | 3,493 | -247 |
+| willem-duursma | MID | 1 | 3,977 | -50 | +538 | +0 | -242 | 4,223 | +246 |
+| josh-worrell | SD | 28 | 3,723 | -46 | +0 | +0 | -199 | 3,478 | -245 |
+| callum-wilkie | KPD | 65 | 3,633 | -45 | +0 | +0 | -195 | 3,393 | -240 |
+| isaac-heeney | MID | 4 | 3,537 | -44 | +0 | +0 | -189 | 3,304 | -233 |
+| timothy-english | RUCK | 19 | 3,535 | -44 | +0 | +0 | -189 | 3,302 | -233 |
+| levi-ashcroft | MID | 5 | 3,519 | -44 | +0 | +0 | -188 | 3,287 | -232 |
+| nicholas-martin | SF | 65 | 3,513 | -44 | +0 | +0 | -188 | 3,281 | -232 |
+| jordan-dawson | MID | 55 | 3,443 | -43 | +0 | +0 | -184 | 3,216 | -227 |
 
-| lever | min | p05 | median | mean | p95 | max |
-|---|---|---|---|---|---|---|
-| lever 1 — THE UNFLAG-THREE (relative) | -4.76% | -1.64% | **-1.23%** | -1.20% | -0.56% | +0.45% |
-| lever 1 — THE UNFLAG-THREE (absolute) | -146 | -53 | **-9** | -16.0 | -1 | +1 |
-| lever 2 — THE GRACE DIAL (relative) | -0.41% | +0.84% | **+8.72%** | +8.78% | +13.91% | +14.02% |
-| lever 2 — THE GRACE DIAL (absolute) | -2 | +1 | **+42** | +119.8 | +403 | +538 |
+## 6. EVERY PRICED ROW
 
-## 5. THE NAMED ROWS (PREREG P14)
+All 804 rows, sorted by key. Lever columns sum to Δ exactly on every line.
 
-P14 names ten rows to be reported live → landed with their per-lever split. They are reported
-here **live → B_G**, which is as far as the landing got. Two of the four levers never ran, so
-P14 cannot be scored as written — see the packet.
-
-| row | pos | pick | entry age | grace | LIVE | lever 1 | lever 2 | B_G | Δ vs LIVE |
-|---|---|---|---|---|---|---|---|---|---|
-| **harrison-ramm** | KPD | 3 | 19 | 0 | 545 | -4 | +0 | 541 | -4 (-0.73%) |
-| **luker-kentfield** | KPF | 11 | 19 | 0 | 419 | -2 | +0 | 417 | -2 (-0.48%) |
-| **mani-liddy** | MID | 15 | 23 | 0 | 152 | +0 | +0 | 152 | +0 (+0.00%) |
-| **robert-hansen** | SF | 2 | 19 | 0 | 132 | +0 | +0 | 132 | +0 (+0.00%) |
-| **dante-visentini** | RUCK | 56 | 18 | 0 | 1274 | -16 | +0 | 1258 | -16 (-1.26%) |
-| **vigo-visentini** | RUCK | 5 | 18 | 0 | 182 | +0 | +0 | 182 | +0 (+0.00%) |
-| **nicholas-martin** | MID | pool | 20 | 0 | 3513 | -44 | +0 | 3469 | -44 (-1.25%) |
-| **marcus-herbert** | SD | 13 | 24 | 0 | 906 | -12 | +0 | 894 | -12 (-1.32%) |
-| **jai-newcombe** | MID | 2 | 20 | 0 | 4883 | -61 | +0 | 4822 | -61 (-1.25%) |
-| **willem-duursma** | MID | 1 | 18 | 1 | 3977 | -50 | +538 | 4465 | +488 (+12.27%) |
-| **harry-sheezel** | MID | 3 | 18 | 0 | 11764 | -146 | +0 | 11618 | -146 (-1.24%) |
-
-## 6. THE LARGEST MOVERS, LIVE → B_G
-
-| # | key | pos | pick | entry age | grace | LIVE | lever 1 | lever 2 | B_G | Δ | Δ pct |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | willem-duursma | MID | 1 | 18 | 1 | 3977 | -50 | +538 | 4465 | **+488** | +12.27% |
-| 2 | dyson-sharp | MID | 13 | 18 | 1 | 3091 | -38 | +403 | 3456 | **+365** | +11.81% |
-| 3 | sullivan-robey | MID | 9 | 18 | 1 | 2981 | -37 | +395 | 3339 | **+358** | +12.01% |
-| 4 | jacob-farrow | SD | 10 | 18 | 1 | 2601 | -33 | +356 | 2924 | **+323** | +12.42% |
-| 5 | harry-dean | KPD | 3 | 18 | 1 | 2577 | -32 | +354 | 2899 | **+322** | +12.50% |
-| 6 | josh-lindsay | SD | 19 | 18 | 1 | 2335 | -29 | +316 | 2622 | **+287** | +12.29% |
-| 7 | sam-cumming | MID | 7 | 18 | 1 | 2288 | -28 | +312 | 2572 | **+284** | +12.41% |
-| 8 | samuel-grlj | MID | 8 | 18 | 1 | 1735 | -22 | +237 | 1950 | **+215** | +12.39% |
-| 9 | cooper-duff-tytler | KPF | 4 | 18 | 1 | 1561 | -20 | +216 | 1757 | **+196** | +12.56% |
-| 10 | beau-addinsall | MID | 18 | 18 | 1 | 1521 | -19 | +208 | 1710 | **+189** | +12.43% |
-| 11 | harry-sheezel | MID | 3 | 18 | 0 | 11764 | -146 | +0 | 11618 | **-146** | -1.24% |
-| 12 | dylan-patterson | SD | 5 | 18 | 1 | 1628 | -19 | +162 | 1771 | **+143** | +8.78% |
-| 13 | nick-daicos | MID | 4 | 18 | 0 | 10945 | -136 | +0 | 10809 | **-136** | -1.24% |
-| 14 | luke-jackson | RUCK | 3 | 18 | 0 | 10203 | -125 | +0 | 10078 | **-125** | -1.23% |
-| 15 | nasiah-wanganeen-milera | MID | 11 | 18 | 0 | 9688 | -119 | +0 | 9569 | **-119** | -1.23% |
-| 16 | talor-byrne | SF | 45 | 18 | 1 | 857 | -10 | +117 | 964 | **+107** | +12.49% |
-| 17 | max-holmes | MID | 21 | 18 | 0 | 8406 | -103 | +0 | 8303 | **-103** | -1.23% |
-| 18 | samuel-swadling | MID | 37 | 18 | 1 | 776 | -9 | +106 | 873 | **+97** | +12.50% |
-| 19 | tristan-xerri | RUCK | 71 | 18 | 0 | 7800 | -97 | +0 | 7703 | **-97** | -1.24% |
-| 20 | errol-gulden | MID | 34 | 18 | 0 | 7239 | -91 | +0 | 7148 | **-91** | -1.26% |
-| 21 | will-ashcroft | MID | 2 | 18 | 0 | 7330 | -90 | +0 | 7240 | **-90** | -1.23% |
-| 22 | louis-emmett | KPF | 27 | 18 | 1 | 749 | -10 | +99 | 838 | **+89** | +11.88% |
-| 23 | zak-butters | MID | 12 | 18 | 0 | 7092 | -87 | +0 | 7005 | **-87** | -1.23% |
-| 24 | josh-treacy | KPF | 4 | 18 | 0 | 6921 | -85 | +0 | 6836 | **-85** | -1.23% |
-| 25 | jai-murray | MID | 17 | 18 | 1 | 1138 | -14 | +98 | 1222 | **+84** | +7.38% |
-
-## 7. THE CONTROL GROUP — WHO THE GRACE DIAL MUST NOT REACH
-
-Rows debuting 2026 at entry age >= 20 — the ruled discrimination (20+ gets no grace):
-
-```
-  rows in the control group          : 30
-  moved by lever 2 (the grace dial)  : 0
-```
-
-**PASS** — the dial's own leg moves them by exactly zero, which is the ruling visible in the data
-rather than asserted in a sentence. (They still move under lever 1, which is a board-wide scalar
-and reaches every priced row by construction.)
-
-## 8. EVERY PLAYER
-
-All 804 priced rows, per-lever. Rows are ordered by |Δ vs LIVE| descending.
-
-| key | pos | pick | LIVE | lever 1 (unflag) | lever 2 (grace) | B_G | Δ | Δ pct |
-|---|---|---|---|---|---|---|---|---|
-| willem-duursma | MID | 1 | 3977 | -50 | +538 | 4465 | +488 | +12.27% |
-| dyson-sharp | MID | 13 | 3091 | -38 | +403 | 3456 | +365 | +11.81% |
-| sullivan-robey | MID | 9 | 2981 | -37 | +395 | 3339 | +358 | +12.01% |
-| jacob-farrow | SD | 10 | 2601 | -33 | +356 | 2924 | +323 | +12.42% |
-| harry-dean | KPD | 3 | 2577 | -32 | +354 | 2899 | +322 | +12.50% |
-| josh-lindsay | SD | 19 | 2335 | -29 | +316 | 2622 | +287 | +12.29% |
-| sam-cumming | MID | 7 | 2288 | -28 | +312 | 2572 | +284 | +12.41% |
-| samuel-grlj | MID | 8 | 1735 | -22 | +237 | 1950 | +215 | +12.39% |
-| cooper-duff-tytler | KPF | 4 | 1561 | -20 | +216 | 1757 | +196 | +12.56% |
-| beau-addinsall | MID | 18 | 1521 | -19 | +208 | 1710 | +189 | +12.43% |
-| harry-sheezel | MID | 3 | 11764 | -146 | +0 | 11618 | -146 | -1.24% |
-| dylan-patterson | SD | 5 | 1628 | -19 | +162 | 1771 | +143 | +8.78% |
-| nick-daicos | MID | 4 | 10945 | -136 | +0 | 10809 | -136 | -1.24% |
-| luke-jackson | RUCK | 3 | 10203 | -125 | +0 | 10078 | -125 | -1.23% |
-| nasiah-wanganeen-milera | MID | 11 | 9688 | -119 | +0 | 9569 | -119 | -1.23% |
-| talor-byrne | SF | 45 | 857 | -10 | +117 | 964 | +107 | +12.49% |
-| max-holmes | MID | 21 | 8406 | -103 | +0 | 8303 | -103 | -1.23% |
-| samuel-swadling | MID | 37 | 776 | -9 | +106 | 873 | +97 | +12.50% |
-| tristan-xerri | RUCK | 71 | 7800 | -97 | +0 | 7703 | -97 | -1.24% |
-| errol-gulden | MID | 34 | 7239 | -91 | +0 | 7148 | -91 | -1.26% |
-| will-ashcroft | MID | 2 | 7330 | -90 | +0 | 7240 | -90 | -1.23% |
-| louis-emmett | KPF | 27 | 749 | -10 | +99 | 838 | +89 | +11.88% |
-| zak-butters | MID | 12 | 7092 | -87 | +0 | 7005 | -87 | -1.23% |
-| josh-treacy | KPF | 4 | 6921 | -85 | +0 | 6836 | -85 | -1.23% |
-| jai-murray | MID | 17 | 1138 | -14 | +98 | 1222 | +84 | +7.38% |
-| bailey-smith | MID | 7 | 6683 | -83 | +0 | 6600 | -83 | -1.24% |
-| harry-kyle | SD | 14 | 1158 | -14 | +93 | 1237 | +79 | +6.82% |
-| finn-callaghan | MID | 3 | 6062 | -75 | +0 | 5987 | -75 | -1.24% |
-| jason-horne-francis | MID | 1 | 6042 | -74 | +0 | 5968 | -74 | -1.22% |
-| lachlan-ash | SD | 4 | 5728 | -71 | +0 | 5657 | -71 | -1.24% |
-| sam-darcy | KPF | 2 | 5250 | -66 | +0 | 5184 | -66 | -1.26% |
-| noah-anderson | MID | 2 | 5256 | -65 | +0 | 5191 | -65 | -1.24% |
-| jack-ison | SF | 47 | 512 | -6 | +70 | 576 | +64 | +12.50% |
-| caleb-serong | MID | 8 | 5027 | -62 | +0 | 4965 | -62 | -1.23% |
-| jagga-smith | MID | 3 | 4855 | -61 | +0 | 4794 | -61 | -1.26% |
-| jai-newcombe | MID | 2 | 4883 | -61 | +0 | 4822 | -61 | -1.25% |
-| matt-rowell | MID | 1 | 4770 | -59 | +0 | 4711 | -59 | -1.24% |
-| tom-green | MID | 10 | 4719 | -59 | +0 | 4660 | -59 | -1.25% |
-| archie-roberts | SD | 54 | 4726 | -58 | +0 | 4668 | -58 | -1.23% |
-| izak-rankine | SF | 3 | 4685 | -58 | +0 | 4627 | -58 | -1.24% |
-| brodie-grundy | RUCK | 22 | 4490 | -55 | +0 | 4435 | -55 | -1.22% |
-| chad-warner | MID | 38 | 4411 | -55 | +0 | 4356 | -55 | -1.25% |
-| riley-thilthorpe | KPF | 2 | 4468 | -55 | +0 | 4413 | -55 | -1.23% |
-| jake-bowey | SD | 22 | 4319 | -54 | +0 | 4265 | -54 | -1.25% |
-| colby-mckercher | MID | 2 | 4285 | -53 | +0 | 4232 | -53 | -1.24% |
-| kysaiah-pickett | SF | 12 | 4249 | -53 | +0 | 4196 | -53 | -1.25% |
-| nick-blakey | SD | 10 | 4273 | -53 | +0 | 4220 | -53 | -1.24% |
-| bodhi-uwland | SD | pool | 4087 | -51 | +0 | 4036 | -51 | -1.25% |
-| luke-davies-uniacke | MID | 4 | 4070 | -51 | +0 | 4019 | -51 | -1.25% |
-| mac-andrew | KPD | 5 | 4169 | -51 | +0 | 4118 | -51 | -1.22% |
-| sam-lalor | MID | 1 | 4087 | -51 | +0 | 4036 | -51 | -1.25% |
-| lachy-dovaston | SF | 16 | 512 | -6 | +56 | 562 | +50 | +9.77% |
-| murphy-reid | SF | 17 | 4141 | -50 | +0 | 4091 | -50 | -1.21% |
-| sam-berry | MID | 29 | 3992 | -50 | +0 | 3942 | -50 | -1.25% |
-| marcus-bontempelli | MID | 4 | 3876 | -49 | +0 | 3827 | -49 | -1.26% |
-| ed-richards | MID | 16 | 3924 | -48 | +0 | 3876 | -48 | -1.22% |
-| harley-reid | MID | 1 | 3820 | -48 | +0 | 3772 | -48 | -1.26% |
-| nick-watson | SF | 5 | 3839 | -48 | +0 | 3791 | -48 | -1.25% |
-| ryley-sanders | MID | 6 | 3885 | -48 | +0 | 3837 | -48 | -1.24% |
-| finn-o-sullivan | MID | 2 | 3740 | -47 | +0 | 3693 | -47 | -1.26% |
-| josh-worrell | SD | 28 | 3723 | -46 | +0 | 3677 | -46 | -1.24% |
-| callum-wilkie | KPD | 1 | 3633 | -45 | +0 | 3588 | -45 | -1.24% |
-| isaac-heeney | MID | 4 | 3537 | -44 | +0 | 3493 | -44 | -1.24% |
-| levi-ashcroft | MID | 5 | 3519 | -44 | +0 | 3475 | -44 | -1.25% |
-| nicholas-martin | MID | pool | 3513 | -44 | +0 | 3469 | -44 | -1.25% |
-| timothy-english | RUCK | 19 | 3535 | -44 | +0 | 3491 | -44 | -1.24% |
-| jordan-dawson | MID | 55 | 3443 | -43 | +0 | 3400 | -43 | -1.25% |
-| jack-sinclair | SD | 1 | 3322 | -42 | +0 | 3280 | -42 | -1.26% |
-| darcy-wilmot | SD | 16 | 3313 | -41 | +0 | 3272 | -41 | -1.24% |
-| max-gawn | RUCK | 33 | 3336 | -41 | +0 | 3295 | -41 | -1.23% |
-| darcy-wilson | SF | 18 | 3224 | -40 | +0 | 3184 | -40 | -1.24% |
-| george-wardlaw | MID | 4 | 3235 | -40 | +0 | 3195 | -40 | -1.24% |
-| jordan-clark | SD | 15 | 3264 | -40 | +0 | 3224 | -40 | -1.23% |
-| logan-morris | KPF | 31 | 3247 | -40 | +0 | 3207 | -40 | -1.23% |
-| andrew-brayshaw | MID | 2 | 3138 | -39 | +0 | 3099 | -39 | -1.24% |
-| sam-walsh | MID | 1 | 3041 | -38 | +0 | 3003 | -38 | -1.25% |
-| daniel-annable | MID | 6 | 1395 | -5 | +42 | 1432 | +37 | +2.65% |
-| hugo-garcia | MID | 50 | 3062 | -37 | +0 | 3025 | -37 | -1.21% |
-| connor-o-sullivan | KPD | 11 | 2920 | -36 | +0 | 2884 | -36 | -1.23% |
-| joel-freijah | MID | 45 | 2883 | -36 | +0 | 2847 | -36 | -1.25% |
-| ollie-greeves | MID | 5 | 583 | -3 | +39 | 619 | +36 | +6.17% |
-| zac-bailey | SF | 15 | 2914 | -36 | +0 | 2878 | -36 | -1.24% |
-| josh-ward | MID | 7 | 2817 | -35 | +0 | 2782 | -35 | -1.24% |
-| chris-scerri | SF | pool | 459 | -6 | +40 | 493 | +34 | +7.41% |
-| jack-ross | MID | 43 | 2761 | -34 | +0 | 2727 | -34 | -1.23% |
-| max-hall | SF | 4 | 2790 | -34 | +0 | 2756 | -34 | -1.22% |
-| shannon-neale | KPF | 35 | 2711 | -34 | +0 | 2677 | -34 | -1.25% |
-| thomas-burton | SF | pool | 439 | -6 | +40 | 473 | +34 | +7.74% |
-| connor-macdonald | SF | 26 | 2740 | -33 | +0 | 2707 | -33 | -1.20% |
-| connor-rozee | MID | 5 | 2725 | -33 | +0 | 2692 | -33 | -1.21% |
-| harvey-langford | MID | 6 | 2657 | -33 | +0 | 2624 | -33 | -1.24% |
-| jack-dalton | SF | 34 | 437 | -3 | +36 | 470 | +33 | +7.55% |
-| zachary-merrett | MID | 26 | 2704 | -33 | +0 | 2671 | -33 | -1.22% |
-| bailey-humphrey | MID | 6 | 2573 | -32 | +0 | 2541 | -32 | -1.24% |
-| cameron-nairn | SF | 20 | 606 | -4 | +36 | 638 | +32 | +5.28% |
-| jaspa-fletcher | SD | 12 | 2616 | -32 | +0 | 2584 | -32 | -1.22% |
-| xavier-bamert | SF | 5 | 509 | -6 | +38 | 541 | +32 | +6.29% |
-| bailey-williams-wc | RUCK | 35 | 2470 | -31 | +0 | 2439 | -31 | -1.26% |
-| daniel-curtin | MID | 8 | 2488 | -31 | +0 | 2457 | -31 | -1.25% |
-| jase-burgoyne | SD | 60 | 2549 | -31 | +0 | 2518 | -31 | -1.22% |
-| sam-durham | MID | 9 | 2531 | -31 | +0 | 2500 | -31 | -1.22% |
-| ollie-dempsey | MID | 7 | 2428 | -30 | +0 | 2398 | -30 | -1.24% |
-| will-day | MID | 13 | 2387 | -30 | +0 | 2357 | -30 | -1.26% |
-| clayton-oliver | MID | 4 | 2334 | -29 | +0 | 2305 | -29 | -1.24% |
-| lachie-neale | MID | 66 | 2348 | -29 | +0 | 2319 | -29 | -1.24% |
-| mattaes-phillipou | MID | 10 | 2281 | -29 | +0 | 2252 | -29 | -1.27% |
-| mitchell-edwards | RUCK | 32 | 2439 | -29 | +0 | 2410 | -29 | -1.19% |
-| reuben-ginbey | KPD | 9 | 2349 | -29 | +0 | 2320 | -29 | -1.23% |
-| taj-hotton | MID | 12 | 2355 | -29 | +0 | 2326 | -29 | -1.23% |
-| tim-taranto | MID | 2 | 2423 | -29 | +0 | 2394 | -29 | -1.20% |
-| touk-miller | SF | 29 | 2378 | -29 | +0 | 2349 | -29 | -1.22% |
-| bailey-dale | SD | 45 | 2255 | -28 | +0 | 2227 | -28 | -1.24% |
-| cameron-mackenzie | MID | 7 | 2251 | -28 | +0 | 2223 | -28 | -1.24% |
-| cody-curtin | KPF | 43 | 427 | -3 | +31 | 455 | +28 | +6.56% |
-| cooper-trembath | KPF | 9 | 2201 | -28 | +0 | 2173 | -28 | -1.27% |
-| max-kondogiannis | SD | 36 | 435 | -6 | +34 | 463 | +28 | +6.44% |
-| tanner-bruhn | MID | 12 | 2214 | -28 | +0 | 2186 | -28 | -1.26% |
-| connor-idun | SD | 61 | 2224 | -27 | +0 | 2197 | -27 | -1.21% |
-| harvey-thomas | MID | 59 | 2247 | -27 | +0 | 2220 | -27 | -1.20% |
-| jack-ginnivan | SF | 8 | 2242 | -27 | +0 | 2215 | -27 | -1.20% |
-| john-noble | SD | 8 | 2159 | -27 | +0 | 2132 | -27 | -1.25% |
-| jordon-sweet | RUCK | 14 | 2285 | -27 | +0 | 2258 | -27 | -1.18% |
-| justin-mcinerney | MID | 44 | 2143 | -27 | +0 | 2116 | -27 | -1.26% |
-| ned-moyle | RUCK | 5 | 2285 | -27 | +0 | 2258 | -27 | -1.18% |
-| tom-powell | MID | 13 | 2103 | -27 | +0 | 2076 | -27 | -1.28% |
-| josh-daicos | SD | 57 | 2104 | -26 | +0 | 2078 | -26 | -1.24% |
-| lachie-whitfield | SD | 1 | 2223 | -26 | +0 | 2197 | -26 | -1.17% |
-| sam-flanders | MID | 11 | 2067 | -26 | +0 | 2041 | -26 | -1.26% |
-| shai-bolton | SF | 29 | 2150 | -26 | +0 | 2124 | -26 | -1.21% |
-| toby-nankervis | RUCK | 35 | 2031 | -26 | +0 | 2005 | -26 | -1.28% |
-| xavier-lindsay | MID | 11 | 2106 | -26 | +0 | 2080 | -26 | -1.23% |
-| callum-mills | SD | 3 | 1994 | -25 | +0 | 1969 | -25 | -1.25% |
-| christian-petracca | MID | 2 | 2038 | -25 | +0 | 2013 | -25 | -1.23% |
-| george-hewett | MID | 32 | 2056 | -25 | +0 | 2031 | -25 | -1.22% |
-| jake-soligo | MID | 36 | 2051 | -25 | +0 | 2026 | -25 | -1.22% |
-| josh-battle | KPD | 39 | 2028 | -25 | +0 | 2003 | -25 | -1.23% |
-| josh-rachele | SF | 6 | 2008 | -25 | +0 | 1983 | -25 | -1.25% |
-| kieren-briggs | RUCK | 34 | 1992 | -25 | +0 | 1967 | -25 | -1.26% |
-| mitchito-owens | KPF | 33 | 2071 | -25 | +0 | 2046 | -25 | -1.21% |
-| rowan-marshall | RUCK | 8 | 2027 | -25 | +0 | 2002 | -25 | -1.23% |
-| hussien-el-achkar | SF | 53 | 353 | -4 | +28 | 377 | +24 | +6.80% |
-| jacob-van-rooyen | KPF | 19 | 1894 | -24 | +0 | 1870 | -24 | -1.27% |
-| phoenix-gothard | SF | 12 | 1891 | -24 | +0 | 1867 | -24 | -1.27% |
-| trent-rivers | SD | 32 | 1852 | -24 | +0 | 1828 | -24 | -1.30% |
-| lawson-humphries | SD | 63 | 1816 | -23 | +0 | 1793 | -23 | -1.27% |
-| leo-lombard | SF | 9 | 1957 | -23 | +0 | 1934 | -23 | -1.18% |
-| matthew-roberts | SD | 34 | 1818 | -23 | +0 | 1795 | -23 | -1.27% |
-| riley-hamilton | SF | pool | 305 | -4 | +27 | 328 | +23 | +7.54% |
-| tom-de-koning | RUCK | 30 | 1830 | -23 | +0 | 1807 | -23 | -1.26% |
-| aaron-cadman | KPF | 1 | 1769 | -22 | +0 | 1747 | -22 | -1.24% |
-| balyn-o-brien | SD | pool | 383 | -3 | +25 | 405 | +22 | +5.74% |
-| caleb-windsor | MID | 7 | 1784 | -22 | +0 | 1762 | -22 | -1.23% |
-| harry-mckay | KPF | 10 | 1735 | -22 | +0 | 1713 | -22 | -1.27% |
-| hayden-young | MID | 7 | 1762 | -22 | +0 | 1740 | -22 | -1.25% |
-| jobe-shanahan | KPF | 30 | 1739 | -22 | +0 | 1717 | -22 | -1.27% |
-| marcus-windhager | MID | 47 | 1864 | -22 | +0 | 1842 | -22 | -1.18% |
-| nate-caddy | KPF | 10 | 1862 | -22 | +0 | 1840 | -22 | -1.18% |
-| wayne-milera | SD | 11 | 1800 | -22 | +0 | 1778 | -22 | -1.22% |
-| alix-tauru | KPD | 10 | 1684 | -21 | +0 | 1663 | -21 | -1.25% |
-| gryan-miers | SF | 57 | 1650 | -21 | +0 | 1629 | -21 | -1.27% |
-| koltyn-tholstrup | SD | 13 | 1698 | -21 | +0 | 1677 | -21 | -1.24% |
-| nick-madden | RUCK | pool | 1766 | -21 | +0 | 1745 | -21 | -1.19% |
-| oliver-hollands | MID | 11 | 1739 | -21 | +0 | 1718 | -21 | -1.21% |
-| peter-wright | KPF | 10 | 1619 | -21 | +0 | 1598 | -21 | -1.30% |
-| will-graham | MID | 26 | 1708 | -21 | +0 | 1687 | -21 | -1.23% |
-| darcy-cameron | RUCK | 48 | 1669 | -20 | +0 | 1649 | -20 | -1.20% |
-| harris-andrews | KPD | 60 | 1623 | -20 | +0 | 1603 | -20 | -1.23% |
-| luke-trainor | KPD | 21 | 1551 | -20 | +0 | 1531 | -20 | -1.29% |
-| massimo-d-ambrosio | MID | 3 | 1565 | -20 | +0 | 1545 | -20 | -1.28% |
-| patrick-retschko | MID | 8 | 1608 | -20 | +0 | 1588 | -20 | -1.24% |
-| paul-curtis | SF | 35 | 1622 | -20 | +0 | 1602 | -20 | -1.23% |
-| tom-mccartin | KPD | 33 | 1689 | -20 | +0 | 1669 | -20 | -1.18% |
-| tom-sparrow | MID | 27 | 1632 | -20 | +0 | 1612 | -20 | -1.23% |
-| charlie-banfield | MID | 41 | 536 | -3 | +22 | 555 | +19 | +3.54% |
-| cooper-hynes | MID | 20 | 1543 | -19 | +0 | 1524 | -19 | -1.23% |
-| hugh-mccluggage | MID | 3 | 1543 | -19 | +0 | 1524 | -19 | -1.23% |
-| joel-jeffrey | SD | 30 | 1579 | -19 | +0 | 1560 | -19 | -1.20% |
-| joshua-weddle | SD | 18 | 1510 | -19 | +0 | 1491 | -19 | -1.26% |
-| mark-keane | KPD | pool | 1557 | -19 | +0 | 1538 | -19 | -1.22% |
-| patrick-cripps | MID | 13 | 1488 | -19 | +0 | 1469 | -19 | -1.28% |
-| zeke-uwland | SD | 2 | 2633 | -32 | +51 | 2652 | +19 | +0.72% |
-| charlie-curnow | KPF | 12 | 1365 | -18 | +0 | 1347 | -18 | -1.32% |
-| daniel-turner | KPD | 20 | 1534 | -18 | +0 | 1516 | -18 | -1.17% |
-| james-sicily | SD | 52 | 1421 | -18 | +0 | 1403 | -18 | -1.27% |
-| jordan-de-goey | SF | 6 | 1433 | -18 | +0 | 1415 | -18 | -1.26% |
-| jye-amiss | KPF | 8 | 1495 | -18 | +0 | 1477 | -18 | -1.20% |
-| ned-long | MID | 3 | 1416 | -18 | +0 | 1398 | -18 | -1.27% |
-| patrick-voss | KPF | 5 | 1538 | -18 | +0 | 1520 | -18 | -1.17% |
-| tom-mccarthy | SD | 1 | 1457 | -18 | +0 | 1439 | -18 | -1.24% |
-| caleb-daniel | SD | 46 | 1338 | -17 | +0 | 1321 | -17 | -1.27% |
-| cooper-lord | MID | 9 | 1345 | -17 | +0 | 1328 | -17 | -1.26% |
-| isaac-kako | SF | 13 | 1413 | -17 | +0 | 1396 | -17 | -1.20% |
-| jed-walter | KPF | 3 | 1439 | -17 | +0 | 1422 | -17 | -1.18% |
-| kane-farrell | SD | 51 | 1306 | -17 | +0 | 1289 | -17 | -1.30% |
-| kane-mcauliffe | MID | 40 | 1312 | -17 | +0 | 1295 | -17 | -1.30% |
-| logan-evans | SD | 12 | 1361 | -17 | +0 | 1344 | -17 | -1.25% |
-| luke-parker | SD | 42 | 1339 | -17 | +0 | 1322 | -17 | -1.27% |
-| mitch-georgiades | KPF | 18 | 1427 | -17 | +0 | 1410 | -17 | -1.19% |
-| ryan-maric | MID | 1 | 1406 | -17 | +0 | 1389 | -17 | -1.21% |
-| dante-visentini | RUCK | 56 | 1274 | -16 | +0 | 1258 | -16 | -1.26% |
-| lachlan-mcandrew | RUCK | pool | 1279 | -16 | +0 | 1263 | -16 | -1.25% |
-| lloyd-meek | RUCK | 68 | 1300 | -16 | +0 | 1284 | -16 | -1.23% |
-| luke-ryan | SD | 65 | 1315 | -16 | +0 | 1299 | -16 | -1.22% |
-| xavier-taylor | SD | 11 | 802 | -2 | +18 | 818 | +16 | +2.00% |
-| bradley-hill | SF | 42 | 1225 | -15 | +0 | 1210 | -15 | -1.22% |
-| brent-daniels | SF | 27 | 1199 | -15 | +0 | 1184 | -15 | -1.25% |
-| elijah-tsatas | MID | 5 | 1240 | -15 | +0 | 1225 | -15 | -1.21% |
-| jack-steele | MID | 21 | 1191 | -15 | +0 | 1176 | -15 | -1.26% |
-| jack-whitlock | KPF | 33 | 1271 | -15 | +0 | 1256 | -15 | -1.18% |
-| jai-serong | SD | 53 | 1233 | -15 | +0 | 1218 | -15 | -1.22% |
-| james-rowbottom | MID | 25 | 1205 | -15 | +0 | 1190 | -15 | -1.24% |
-| joe-berry | SF | 15 | 1259 | -15 | +0 | 1244 | -15 | -1.19% |
-| karl-worner | SD | 4 | 1206 | -15 | +0 | 1191 | -15 | -1.24% |
-| matt-johnson-1 | MID | 21 | 1131 | -15 | +0 | 1116 | -15 | -1.33% |
-| noah-mraz | KPD | 35 | 1769 | -15 | +0 | 1754 | -15 | -0.85% |
-| sam-taylor | KPD | 28 | 1212 | -15 | +0 | 1197 | -15 | -1.24% |
-| tim-kelly | MID | 24 | 1219 | -15 | +0 | 1204 | -15 | -1.23% |
-| aaron-naughton | KPF | 9 | 1166 | -14 | +0 | 1152 | -14 | -1.20% |
-| anthony-caminiti | KPF | pool | 1110 | -14 | +0 | 1096 | -14 | -1.26% |
-| dan-houston | SD | 30 | 1096 | -14 | +0 | 1082 | -14 | -1.28% |
-| dylan-moore | SF | 66 | 1182 | -14 | +0 | 1168 | -14 | -1.18% |
-| jake-waterman | KPF | 76 | 1160 | -14 | +0 | 1146 | -14 | -1.21% |
-| james-peatling | MID | 8 | 1098 | -14 | +0 | 1084 | -14 | -1.28% |
-| josh-dunkley | MID | 25 | 1134 | -14 | +0 | 1120 | -14 | -1.23% |
-| jy-simpkin | MID | 12 | 1164 | -14 | +0 | 1150 | -14 | -1.20% |
-| mason-redman | SD | 30 | 1176 | -14 | +0 | 1162 | -14 | -1.19% |
-| thomas-liberatore | MID | 24 | 1018 | -14 | +0 | 1004 | -14 | -1.38% |
-| thomas-stewart | SD | 40 | 1101 | -14 | +0 | 1087 | -14 | -1.27% |
-| ty-gallop | KPF | 42 | 1199 | -14 | +0 | 1185 | -14 | -1.17% |
-| tyler-sonsie | MID | 28 | 1095 | -14 | +0 | 1081 | -14 | -1.28% |
-| zach-reid | KPD | 10 | 1093 | -14 | +0 | 1079 | -14 | -1.28% |
-| andrew-mcgrath | SD | 1 | 1022 | -13 | +0 | 1009 | -13 | -1.27% |
-| billy-wilson | SD | 34 | 983 | -13 | +0 | 970 | -13 | -1.32% |
-| bo-allan | SD | 16 | 1128 | -13 | +0 | 1115 | -13 | -1.15% |
-| darcy-jones | SF | 21 | 1144 | -13 | +0 | 1131 | -13 | -1.14% |
-| dayne-zorko | SD | 38 | 998 | -13 | +0 | 985 | -13 | -1.30% |
-| hamish-davis | MID | 65 | 1028 | -13 | +0 | 1015 | -13 | -1.26% |
-| jhye-clark | MID | 8 | 1059 | -13 | +0 | 1046 | -13 | -1.23% |
-| jordan-croft | KPF | 15 | 1048 | -13 | +0 | 1035 | -13 | -1.24% |
-| jye-caldwell | MID | 11 | 979 | -13 | +0 | 966 | -13 | -1.33% |
-| sam-draper | RUCK | 1 | 1107 | -13 | +0 | 1094 | -13 | -1.17% |
-| adam-cerra | MID | 5 | 1030 | -12 | +0 | 1018 | -12 | -1.17% |
-| ben-miller | KPD | 62 | 1042 | -12 | +0 | 1030 | -12 | -1.15% |
-| edward-allan | MID | 19 | 978 | -12 | +0 | 966 | -12 | -1.23% |
-| ethan-read | KPF | 9 | 1024 | -12 | +0 | 1012 | -12 | -1.17% |
-| jacob-weitering | KPD | 1 | 1013 | -12 | +0 | 1001 | -12 | -1.18% |
-| jayden-short | SD | 9 | 887 | -12 | +0 | 875 | -12 | -1.35% |
-| joe-richards | SF | 48 | 915 | -12 | +0 | 903 | -12 | -1.31% |
-| jonty-faull | KPF | 14 | 989 | -12 | +0 | 977 | -12 | -1.21% |
-| marcus-herbert | SD | 13 | 906 | -12 | +0 | 894 | -12 | -1.32% |
-| matt-carroll | MID | 7 | 1014 | -12 | +0 | 1002 | -12 | -1.18% |
-| miles-bergman | SD | 14 | 922 | -12 | +0 | 910 | -12 | -1.30% |
-| neil-erasmus | MID | 10 | 1026 | -12 | +0 | 1014 | -12 | -1.17% |
-| sam-banks | SD | 29 | 937 | -12 | +0 | 925 | -12 | -1.28% |
-| sam-de-koning | KPD | 19 | 936 | -12 | +0 | 924 | -12 | -1.28% |
-| seth-campbell | SF | 3 | 1010 | -12 | +0 | 998 | -12 | -1.19% |
-| adam-treloar | SF | 14 | 911 | -11 | +0 | 900 | -11 | -1.21% |
-| calsher-dear | KPF | 56 | 892 | -11 | +0 | 881 | -11 | -1.23% |
-| christian-moraes | MID | 38 | 906 | -11 | +0 | 895 | -11 | -1.21% |
-| hugh-boxshall | MID | 45 | 965 | -11 | +0 | 954 | -11 | -1.14% |
-| jedd-busslinger | KPD | 13 | 916 | -11 | +0 | 905 | -11 | -1.20% |
-| kai-lohmann | SF | 20 | 879 | -11 | +0 | 868 | -11 | -1.25% |
-| reilly-o-brien | RUCK | 8 | 985 | -11 | +0 | 974 | -11 | -1.12% |
-| toby-greene | SF | 17 | 847 | -11 | +0 | 836 | -11 | -1.30% |
-| angus-sheldrick | MID | 18 | 748 | -10 | +0 | 738 | -10 | -1.34% |
-| archer-day-wicks | SF | 1 | 766 | -10 | +0 | 756 | -10 | -1.31% |
-| charlie-comben | KPD | 31 | 809 | -10 | +0 | 799 | -10 | -1.24% |
-| darcy-fogarty | KPF | 12 | 852 | -10 | +0 | 842 | -10 | -1.17% |
-| elijah-hewett | MID | 14 | 730 | -10 | +0 | 720 | -10 | -1.37% |
-| elijah-hollands | SF | 7 | 710 | -10 | +0 | 700 | -10 | -1.41% |
-| harry-rowston | MID | 16 | 787 | -10 | +0 | 777 | -10 | -1.27% |
-| jack-gunston | KPF | 29 | 753 | -10 | +0 | 743 | -10 | -1.33% |
-| james-o-donnell | KPD | pool | 727 | -10 | +0 | 717 | -10 | -1.38% |
-| jarman-impey | SD | 21 | 845 | -10 | +0 | 835 | -10 | -1.18% |
-| kade-chandler | SF | 10 | 811 | -10 | +0 | 801 | -10 | -1.23% |
-| sean-darcy | RUCK | 38 | 734 | -10 | +0 | 724 | -10 | -1.36% |
-| will-mclachlan | SF | 6 | 148 | -1 | +11 | 158 | +10 | +6.76% |
-| zane-duursma | SF | 4 | 815 | -10 | +0 | 805 | -10 | -1.23% |
-| aliir-aliir | KPD | 44 | 773 | -9 | +0 | 764 | -9 | -1.16% |
-| archer-reid | KPF | 30 | 762 | -9 | +0 | 753 | -9 | -1.18% |
-| brayden-cook | MID | 26 | 782 | -9 | +0 | 773 | -9 | -1.15% |
-| charlie-west | KPF | 50 | 692 | -9 | +0 | 683 | -9 | -1.30% |
-| ed-langdon | SD | 54 | 795 | -9 | +0 | 786 | -9 | -1.13% |
-| jack-graham | MID | 53 | 651 | -9 | +0 | 642 | -9 | -1.38% |
-| jeremy-cameron | KPF | 12 | 778 | -9 | +0 | 769 | -9 | -1.16% |
-| jordan-ridley | SD | 22 | 695 | -9 | +0 | 686 | -9 | -1.29% |
-| keidean-coleman | SD | 36 | 754 | -9 | +0 | 745 | -9 | -1.19% |
-| lachie-jaques | SD | 29 | 725 | -9 | +0 | 716 | -9 | -1.24% |
-| logan-mcdonald | KPF | 4 | 693 | -9 | +0 | 684 | -9 | -1.30% |
-| nick-bryan | RUCK | 37 | 778 | -9 | +0 | 769 | -9 | -1.16% |
-| oliver-florent | SD | 11 | 732 | -9 | +0 | 723 | -9 | -1.23% |
-| wil-powell | SD | 19 | 775 | -9 | +0 | 766 | -9 | -1.16% |
-| zak-johnson | SD | 70 | 730 | -9 | +0 | 721 | -9 | -1.23% |
-| bailey-williams-wb | SD | 48 | 612 | -8 | +0 | 604 | -8 | -1.31% |
-| brodie-kemp | KPF | 17 | 680 | -8 | +0 | 672 | -8 | -1.18% |
-| darcy-parish | MID | 5 | 562 | -8 | +0 | 554 | -8 | -1.42% |
-| dylan-stephens | MID | 5 | 620 | -8 | +0 | 612 | -8 | -1.29% |
-| isaac-quaynor | SD | 13 | 596 | -8 | +0 | 588 | -8 | -1.34% |
-| jack-ough | MID | 36 | 687 | -8 | +0 | 679 | -8 | -1.16% |
-| jack-silvagni | KPD | 53 | 617 | -8 | +0 | 609 | -8 | -1.30% |
-| joseph-fonti | SD | 44 | 596 | -8 | +0 | 588 | -8 | -1.34% |
-| josh-lai | SD | pool | 597 | -8 | +0 | 589 | -8 | -1.34% |
-| lachlan-cowan | SD | 30 | 724 | -8 | +0 | 716 | -8 | -1.10% |
-| lachlan-schultz | SF | 57 | 740 | -8 | +0 | 732 | -8 | -1.08% |
-| max-heath | RUCK | 7 | 682 | -8 | +0 | 674 | -8 | -1.17% |
-| nathan-o-driscoll | MID | 28 | 597 | -8 | +0 | 589 | -8 | -1.34% |
-| patrick-lipinski | SF | 28 | 735 | -8 | +0 | 727 | -8 | -1.09% |
-| rory-laird | SD | 8 | 701 | -8 | +0 | 693 | -8 | -1.14% |
-| samuel-collins | KPD | 54 | 619 | -8 | +0 | 611 | -8 | -1.29% |
-| tobie-travaglia | SD | 8 | 685 | -8 | +0 | 677 | -8 | -1.17% |
-| angus-clarke | SD | 39 | 555 | -7 | +0 | 548 | -7 | -1.26% |
-| blake-hardwick | SD | 44 | 524 | -7 | +0 | 517 | -7 | -1.34% |
-| daniel-rioli | SD | 15 | 640 | -7 | +0 | 633 | -7 | -1.09% |
-| darcy-byrne-jones | SD | 50 | 664 | -7 | +0 | 657 | -7 | -1.05% |
-| francis-evans | SF | 40 | 494 | -7 | +0 | 487 | -7 | -1.42% |
-| jake-rogers | SF | 14 | 587 | -7 | +0 | 580 | -7 | -1.19% |
-| josh-dolan | SF | 31 | 501 | -7 | +0 | 494 | -7 | -1.40% |
-| max-gruzewski | KPF | 22 | 626 | -7 | +0 | 619 | -7 | -1.12% |
-| nic-newman | SD | 24 | 628 | -7 | +0 | 621 | -7 | -1.11% |
-| sam-marshall | MID | 25 | 704 | -7 | +0 | 697 | -7 | -0.99% |
-| shaun-mannagh | SF | 36 | 663 | -7 | +0 | 656 | -7 | -1.06% |
-| will-brodie | MID | 9 | 773 | -7 | +0 | 766 | -7 | -0.91% |
-| will-setterfield | MID | 5 | 559 | -7 | +0 | 552 | -7 | -1.25% |
-| willem-drew | MID | 33 | 608 | -7 | +0 | 601 | -7 | -1.15% |
-| alex-davies | MID | 17 | 401 | -6 | +0 | 395 | -6 | -1.50% |
-| archie-may | KPF | 6 | 476 | -6 | +0 | 470 | -6 | -1.26% |
-| cameron-rayner | SF | 1 | 457 | -6 | +0 | 451 | -6 | -1.31% |
-| cooper-harvey | SF | 56 | 545 | -6 | +0 | 539 | -6 | -1.10% |
-| cooper-sharman | KPF | 18 | 429 | -6 | +0 | 423 | -6 | -1.40% |
-| heath-chapman | SD | 14 | 460 | -6 | +0 | 454 | -6 | -1.30% |
-| jack-buckley | KPD | pool | 548 | -6 | +0 | 542 | -6 | -1.09% |
-| jack-williams | KPF | 57 | 415 | -6 | +0 | 409 | -6 | -1.45% |
-| james-borlase | KPD | pool | 424 | -6 | +0 | 418 | -6 | -1.42% |
-| james-leake | SD | 17 | 563 | -6 | +0 | 557 | -6 | -1.07% |
-| kyle-langford | KPF | 18 | 518 | -6 | +0 | 512 | -6 | -1.16% |
-| liam-baker | SD | 11 | 402 | -6 | +0 | 396 | -6 | -1.49% |
-| liam-fawcett | KPF | 43 | 454 | -6 | +0 | 448 | -6 | -1.32% |
-| marc-pittonet | RUCK | 50 | 466 | -6 | +0 | 460 | -6 | -1.29% |
-| matthew-kennedy-1 | MID | 13 | 423 | -6 | +0 | 417 | -6 | -1.42% |
-| max-michalanney | SD | 17 | 493 | -6 | +0 | 487 | -6 | -1.22% |
-| mitchell-lewis | KPF | 75 | 517 | -6 | +0 | 511 | -6 | -1.16% |
-| nick-larkey | KPF | 72 | 455 | -6 | +0 | 449 | -6 | -1.32% |
-| noah-roberts-thomson | SF | 54 | 213 | -1 | +7 | 219 | +6 | +2.82% |
-| peter-ladhams | RUCK | 7 | 493 | -6 | +0 | 487 | -6 | -1.22% |
-| rhett-bazzo | KPD | 37 | 476 | -6 | +0 | 470 | -6 | -1.26% |
-| ryan-angwin | MID | 19 | 483 | -6 | +0 | 477 | -6 | -1.24% |
-| tom-brown | SD | 17 | 493 | -6 | +0 | 487 | -6 | -1.22% |
-| adam-saad | SD | 19 | 426 | -5 | +0 | 421 | -5 | -1.17% |
-| alex-neal-bullen | SF | 40 | 371 | -5 | +0 | 366 | -5 | -1.35% |
-| brayden-maynard | SD | 30 | 489 | -5 | +0 | 484 | -5 | -1.02% |
-| caiden-cleary | SF | 24 | 471 | -5 | +0 | 466 | -5 | -1.06% |
-| harrison-oliver | SD | 19 | 528 | -5 | +0 | 523 | -5 | -0.95% |
-| harry-armstrong | KPF | 23 | 620 | -5 | +0 | 615 | -5 | -0.81% |
-| jack-lukosius | SF | 2 | 462 | -5 | +0 | 457 | -5 | -1.08% |
-| jasper-alger | SF | 58 | 434 | -5 | +0 | 429 | -5 | -1.15% |
-| jayden-nguyen | SD | pool | 471 | -5 | +0 | 466 | -5 | -1.06% |
-| josh-draper | KPD | pool | 389 | -5 | +0 | 384 | -5 | -1.29% |
-| karl-amon | SD | 59 | 344 | -5 | +0 | 339 | -5 | -1.45% |
-| lachlan-gulbin | SF | pool | 415 | -5 | +0 | 410 | -5 | -1.20% |
-| luke-nankervis | SD | 1 | 384 | -5 | +0 | 379 | -5 | -1.30% |
-| mason-wood | SF | 44 | 383 | -5 | +0 | 378 | -5 | -1.31% |
-| matthew-flynn | RUCK | 41 | 502 | -5 | +0 | 497 | -5 | -1.00% |
-| matthew-jefferson | KPF | 15 | 405 | -5 | +0 | 400 | -5 | -1.23% |
-| noah-balta | KPF | 25 | 418 | -5 | +0 | 413 | -5 | -1.20% |
-| oliver-francou | MID | 3 | 576 | -5 | +0 | 571 | -5 | -0.87% |
-| oliver-hannaford | SF | 18 | 398 | -5 | +0 | 393 | -5 | -1.26% |
-| oscar-steene | RUCK | pool | 468 | -5 | +0 | 463 | -5 | -1.07% |
-| tom-hanily | SF | 14 | 216 | -2 | +7 | 221 | +5 | +2.31% |
-| wil-dawson | KPD | 22 | 525 | -5 | +0 | 520 | -5 | -0.95% |
-| will-hayes-b | SF | 56 | 378 | -5 | +0 | 373 | -5 | -1.32% |
-| william-mccabe | KPF | 19 | 599 | -5 | +0 | 594 | -5 | -0.83% |
-| brady-hough | SD | 31 | 292 | -4 | +0 | 288 | -4 | -1.37% |
-| braeden-campbell | SD | 5 | 403 | -4 | +0 | 399 | -4 | -0.99% |
-| campbell-chesser | MID | 14 | 330 | -4 | +0 | 326 | -4 | -1.21% |
-| connor-budarick | SD | 9 | 281 | -4 | +0 | 277 | -4 | -1.42% |
-| daniel-mcstay | KPF | 25 | 338 | -4 | +0 | 334 | -4 | -1.18% |
-| elliot-yeo | MID | 36 | 331 | -4 | +0 | 327 | -4 | -1.21% |
-| harrison-ramm | KPD | 3 | 545 | -4 | +0 | 541 | -4 | -0.73% |
-| harvey-johnston | SD | 49 | 329 | -4 | +0 | 325 | -4 | -1.22% |
-| jack-crisp | MID | 34 | 410 | -4 | +0 | 406 | -4 | -0.98% |
-| james-worpel | MID | 45 | 413 | -4 | +0 | 409 | -4 | -0.97% |
-| jaxon-artemis | SD | 1 | 520 | -4 | +0 | 516 | -4 | -0.77% |
-| jaxon-prior | SD | 58 | 305 | -4 | +0 | 301 | -4 | -1.31% |
-| josaia-delana | SF | pool | 391 | -4 | +0 | 387 | -4 | -1.02% |
-| joshua-kelly | MID | 2 | 370 | -4 | +0 | 366 | -4 | -1.08% |
-| malakai-champion | SF | pool | 341 | -4 | +0 | 337 | -4 | -1.17% |
-| mitchell-hinge | SD | 15 | 322 | -4 | +0 | 318 | -4 | -1.24% |
-| nick-murray | KPD | pool | 321 | -4 | +0 | 317 | -4 | -1.25% |
-| oliver-wines | MID | 10 | 255 | -4 | +0 | 251 | -4 | -1.57% |
-| riley-bice | SD | 41 | 274 | -4 | +0 | 270 | -4 | -1.46% |
-| sam-clohesy | MID | 3 | 288 | -4 | +0 | 284 | -4 | -1.39% |
-| thomas-sims | KPF | 28 | 583 | -4 | +0 | 579 | -4 | -0.69% |
-| toby-bedford | SF | 75 | 272 | -4 | +0 | 268 | -4 | -1.47% |
-| tom-doedee | SD | 17 | 228 | -4 | +0 | 224 | -4 | -1.75% |
-| tom-gross | MID | 46 | 460 | -4 | +0 | 456 | -4 | -0.87% |
-| tom-papley | SF | 11 | 353 | -4 | +0 | 349 | -4 | -1.13% |
-| zachary-williams | SF | pool | 368 | -4 | +0 | 364 | -4 | -1.09% |
-| zane-peucker | SF | 31 | 384 | +0 | +4 | 388 | +4 | +1.04% |
-| ben-keays | SF | 24 | 196 | -3 | +0 | 193 | -3 | -1.53% |
-| ben-king | KPF | 6 | 218 | -3 | +0 | 215 | -3 | -1.38% |
-| blake-howes | SD | 39 | 272 | -3 | +0 | 269 | -3 | -1.10% |
-| brennan-cox | KPD | 41 | 259 | -3 | +0 | 256 | -3 | -1.16% |
-| conor-nash | MID | pool | 235 | -3 | +0 | 232 | -3 | -1.28% |
-| dion-prestia | MID | 9 | 251 | -3 | +0 | 248 | -3 | -1.20% |
-| harrison-petty | KPD | 37 | 207 | -3 | +0 | 204 | -3 | -1.45% |
-| hayden-mclean | KPF | pool | 214 | -3 | +0 | 211 | -3 | -1.40% |
-| hugo-hall-kahan | SD | 10 | 215 | -3 | +0 | 212 | -3 | -1.40% |
-| isaiah-dudley | SF | pool | 234 | -3 | +0 | 231 | -3 | -1.28% |
-| jack-henry | KPD | 12 | 251 | -3 | +0 | 248 | -3 | -1.20% |
-| jack-viney | MID | 13 | 229 | -3 | +0 | 226 | -3 | -1.31% |
-| jacob-konstanty | SF | 20 | 181 | -3 | +0 | 178 | -3 | -1.66% |
-| jake-riccardi | KPF | 50 | 257 | -3 | +0 | 254 | -3 | -1.17% |
-| jamarra-ugle-hagan | KPF | 1 | 287 | -3 | +0 | 284 | -3 | -1.05% |
-| james-jordon | MID | 33 | 176 | -3 | +0 | 173 | -3 | -1.70% |
-| jeremy-howe | SD | 35 | 224 | -3 | +0 | 221 | -3 | -1.34% |
-| judd-mcvee | SD | 9 | 316 | -3 | +0 | 313 | -3 | -0.95% |
-| leek-aleer | KPD | 15 | 231 | -3 | +0 | 228 | -3 | -1.30% |
-| liam-duggan | SD | 12 | 210 | -3 | +0 | 207 | -3 | -1.43% |
-| max-king-stk | KPF | 4 | 239 | -3 | +0 | 236 | -3 | -1.26% |
-| milan-murdock | SF | pool | 208 | -3 | +0 | 205 | -3 | -1.44% |
-| ned-reeves | RUCK | pool | 236 | -3 | +0 | 233 | -3 | -1.27% |
-| rory-lobb | KPD | 29 | 276 | -3 | +0 | 273 | -3 | -1.09% |
-| samson-ryan | RUCK | 42 | 302 | -3 | +0 | 299 | -3 | -0.99% |
-| sandy-brock | KPD | pool | 173 | -3 | +0 | 170 | -3 | -1.73% |
-| scott-pendlebury | MID | 5 | 353 | -3 | +0 | 350 | -3 | -0.85% |
-| sid-draper | MID | 4 | 1250 | -3 | +0 | 1247 | -3 | -0.24% |
-| stephen-coniglio | MID | 3 | 215 | -3 | +0 | 212 | -3 | -1.40% |
-| toby-mcmullin | SF | 34 | 135 | -3 | +0 | 132 | -3 | -2.22% |
-| toby-murray | KPF | 7 | 215 | -3 | +0 | 212 | -3 | -1.40% |
-| tom-atkins | MID | 7 | 298 | -3 | +0 | 295 | -3 | -1.01% |
-| tylar-young | KPD | 9 | 279 | -3 | +0 | 276 | -3 | -1.08% |
-| tyson-stengle | SF | 4 | 151 | -3 | +0 | 148 | -3 | -1.99% |
-| will-edwards | KPD | pool | 214 | -3 | +0 | 211 | -3 | -1.40% |
-| will-hayward | SF | 21 | 229 | -3 | +0 | 226 | -3 | -1.31% |
-| will-lorenz | MID | 57 | 284 | -3 | +0 | 281 | -3 | -1.06% |
-| zac-taylor | SF | 44 | 207 | -3 | +0 | 204 | -3 | -1.45% |
-| angus-anderson | MID | 57 | 165 | -2 | +0 | 163 | -2 | -1.21% |
-| archie-perkins | SF | 9 | 239 | -2 | +0 | 237 | -2 | -0.84% |
-| arthur-jones | SF | 43 | 92 | -2 | +0 | 90 | -2 | -2.17% |
-| bailey-macdonald | SD | 51 | 148 | -2 | +0 | 146 | -2 | -1.35% |
-| bayley-fritsch | SF | 31 | 199 | -2 | +0 | 197 | -2 | -1.01% |
-| ben-ainsworth | SF | 4 | 204 | -2 | +0 | 202 | -2 | -0.98% |
-| brayden-fiorini | MID | 20 | 167 | -2 | +0 | 165 | -2 | -1.20% |
-| campbell-gray | KPD | 15 | 176 | -2 | +0 | 174 | -2 | -1.14% |
-| campbell-lake | SF | 7 | 161 | -2 | +0 | 159 | -2 | -1.24% |
-| charlie-cameron | SF | 6 | 151 | -2 | +0 | 149 | -2 | -1.32% |
-| cody-weightman | SF | 15 | 153 | -2 | +0 | 151 | -2 | -1.31% |
-| darcy-moore | KPD | 8 | 141 | -2 | +0 | 139 | -2 | -1.42% |
-| deven-robertson | MID | 22 | 174 | -2 | +0 | 172 | -2 | -1.15% |
-| finnbar-maley | KPF | 2 | 192 | -2 | +0 | 190 | -2 | -1.04% |
-| griffin-logue | KPD | 8 | 78 | -2 | +0 | 76 | -2 | -2.56% |
-| harrison-jones | KPF | 30 | 172 | -2 | +0 | 170 | -2 | -1.16% |
-| harry-sharp | SF | 45 | 155 | -2 | +0 | 153 | -2 | -1.29% |
-| hugh-bond | SD | 50 | 153 | -2 | +0 | 151 | -2 | -1.31% |
-| jack-darling | KPF | 28 | 155 | -2 | +0 | 153 | -2 | -1.29% |
-| jai-culley | MID | 1 | 178 | -2 | +0 | 176 | -2 | -1.12% |
-| jake-lever | KPD | 15 | 143 | -2 | +0 | 141 | -2 | -1.40% |
-| jake-lloyd | SD | 16 | 173 | -2 | +0 | 171 | -2 | -1.16% |
-| jarrod-berry | MID | 17 | 189 | -2 | +0 | 187 | -2 | -1.06% |
-| jayden-laverde | KPD | 20 | 193 | -2 | +0 | 191 | -2 | -1.04% |
-| jesse-hogan | KPF | 5 | 205 | -2 | +0 | 203 | -2 | -0.98% |
-| joel-fitzgerald | MID | 16 | 72 | -2 | +0 | 70 | -2 | -2.78% |
-| kye-annand | KPD | 2 | 239 | -2 | +0 | 237 | -2 | -0.84% |
-| lachlan-bramble | SF | pool | 89 | -2 | +0 | 87 | -2 | -2.25% |
-| luke-kennedy | MID | 62 | 284 | -2 | +0 | 282 | -2 | -0.70% |
-| luker-kentfield | KPF | 11 | 419 | -2 | +0 | 417 | -2 | -0.48% |
-| mabior-chol | KPF | 25 | 205 | -2 | +0 | 203 | -2 | -0.98% |
-| michael-sellwood | SD | 5 | 168 | -2 | +0 | 166 | -2 | -1.19% |
-| noah-long | SF | 57 | 124 | -2 | +0 | 122 | -2 | -1.61% |
-| oliver-hayes-brown | RUCK | pool | 190 | -2 | +0 | 188 | -2 | -1.05% |
-| oliver-henry | SF | 18 | 197 | -2 | +0 | 195 | -2 | -1.02% |
-| oscar-allen | KPF | 21 | 100 | -2 | +0 | 98 | -2 | -2.00% |
-| sam-powell-pepper | SF | 18 | 167 | -2 | +0 | 165 | -2 | -1.20% |
-| steely-green | SF | 55 | 150 | -2 | +0 | 148 | -2 | -1.33% |
-| tim-membrey | KPF | 49 | 129 | -2 | +0 | 127 | -2 | -1.55% |
-| wade-derksen | KPD | 5 | 109 | -2 | +0 | 107 | -2 | -1.83% |
-| zac-fisher | SF | 27 | 113 | -2 | +0 | 111 | -2 | -1.77% |
-| zach-guthrie | SD | 21 | 210 | -2 | +0 | 208 | -2 | -0.95% |
-| aidan-schubert | KPF | 23 | 481 | +1 | -2 | 480 | -1 | -0.21% |
-| angus-hastie | SD | 33 | 181 | -1 | +0 | 180 | -1 | -0.55% |
-| ashton-moir | SF | 29 | 214 | -1 | +0 | 213 | -1 | -0.47% |
-| beau-mccreery | SF | 46 | 134 | -1 | +0 | 133 | -1 | -0.75% |
-| ben-jepson | MID | pool | 222 | +1 | +0 | 223 | +1 | +0.45% |
-| bodie-ryan | SD | 46 | 210 | -1 | +0 | 209 | -1 | -0.48% |
-| buku-khamis | KPD | pool | 144 | -1 | +0 | 143 | -1 | -0.69% |
-| caleb-graham | KPD | 71 | 54 | -1 | +0 | 53 | -1 | -1.85% |
-| cameron-zurhaar | SF | 9 | 125 | -1 | +0 | 124 | -1 | -0.80% |
-| charlie-edwards | MID | 21 | 624 | -1 | +0 | 623 | -1 | -0.16% |
-| christian-salem | SD | 9 | 92 | -1 | +0 | 91 | -1 | -1.09% |
-| clay-hall | MID | 38 | 214 | -1 | +0 | 213 | -1 | -0.47% |
-| corey-durdin | SF | 39 | 49 | -1 | +0 | 48 | -1 | -2.04% |
-| dougal-howard | KPD | 56 | 45 | -1 | +0 | 44 | -1 | -2.22% |
-| harrison-himmelberg | SD | 16 | 138 | -1 | +0 | 137 | -1 | -0.72% |
-| harry-edwards | KPD | 12 | 104 | -1 | +0 | 103 | -1 | -0.96% |
-| harvey-harrison | SF | 52 | 50 | -1 | +0 | 49 | -1 | -2.00% |
-| hudson-o-keeffe | KPF | pool | 275 | -1 | +0 | 274 | -1 | -0.36% |
-| jack-carroll | SD | 43 | 80 | -1 | +0 | 79 | -1 | -1.25% |
-| jack-higgins | SF | 17 | 52 | -1 | +0 | 51 | -1 | -1.92% |
-| jack-payne | KPD | 54 | 94 | -1 | +0 | 93 | -1 | -1.06% |
-| jack-scrimshaw | SD | 7 | 89 | -1 | +0 | 88 | -1 | -1.12% |
-| jacob-newton | SF | 8 | 299 | -1 | +0 | 298 | -1 | -0.33% |
-| jake-stringer | SF | 7 | 103 | -1 | +0 | 102 | -1 | -0.97% |
-| james-trezise | SD | 10 | 118 | -1 | +0 | 117 | -1 | -0.85% |
-| jarrod-witts | RUCK | 74 | 139 | -1 | +0 | 138 | -1 | -0.72% |
-| jay-polkinghorne | SF | 44 | 297 | -1 | +0 | 296 | -1 | -0.34% |
-| jeremy-sharp | MID | 27 | 63 | -1 | +0 | 62 | -1 | -1.59% |
-| jesse-motlop | SF | 27 | 90 | -1 | +0 | 89 | -1 | -1.11% |
-| joel-amartey | KPF | 17 | 31 | -1 | +0 | 30 | -1 | -3.23% |
-| josh-gibcus | KPD | 9 | 254 | -1 | +0 | 253 | -1 | -0.39% |
-| josh-sinn | SD | 12 | 266 | -1 | +0 | 265 | -1 | -0.38% |
-| lachlan-jones | SD | 16 | 125 | -1 | +0 | 124 | -1 | -0.80% |
-| lachlan-sholl | MID | 64 | 137 | -1 | +0 | 136 | -1 | -0.73% |
-| lachlan-smith | RUCK | 47 | 399 | -1 | +0 | 398 | -1 | -0.25% |
-| lewis-melican | KPD | 32 | 21 | -1 | +0 | 20 | -1 | -4.76% |
-| lewis-young | KPD | 49 | 116 | -1 | +0 | 115 | -1 | -0.86% |
-| liam-o-connell | SD | pool | 39 | -1 | +0 | 38 | -1 | -2.56% |
-| liam-reidy | RUCK | 4 | 329 | -1 | +0 | 328 | -1 | -0.30% |
-| lukas-cooke | KPD | 11 | 364 | +1 | +0 | 365 | +1 | +0.27% |
-| matt-cottrell | MID | pool | 72 | -1 | +0 | 71 | -1 | -1.39% |
-| matt-whitlock | KPF | 27 | 372 | -1 | +0 | 371 | -1 | -0.27% |
-| michael-frederick | SF | 60 | 50 | -1 | +0 | 49 | -1 | -2.00% |
-| mitch-mcgovern | SD | 43 | 40 | -1 | +0 | 39 | -1 | -2.50% |
-| nick-haynes | SD | 10 | 60 | -1 | +0 | 59 | -1 | -1.67% |
-| nick-vlastuin | SD | 12 | 83 | -1 | +0 | 82 | -1 | -1.20% |
-| nikolas-cox | KPF | 8 | 136 | -1 | +0 | 135 | -1 | -0.74% |
-| noah-howes | KPF | 14 | 229 | +1 | +0 | 230 | +1 | +0.44% |
-| oscar-adams | KPD | 51 | 79 | -1 | +0 | 78 | -1 | -1.27% |
-| oscar-mcdonald | KPD | 53 | 68 | -1 | +0 | 67 | -1 | -1.47% |
-| oscar-ryan | SD | 27 | 305 | +1 | +0 | 306 | +1 | +0.33% |
-| rhyan-mansell | SF | pool | 48 | -1 | +0 | 47 | -1 | -2.08% |
-| rhylee-west | SF | 26 | 100 | -1 | +0 | 99 | -1 | -1.00% |
-| riley-garcia | SF | 61 | 47 | -1 | +0 | 46 | -1 | -2.13% |
-| riley-hardeman | SD | 23 | 258 | -1 | +0 | 257 | -1 | -0.39% |
-| ryan-byrnes | SD | 51 | 64 | -1 | +0 | 63 | -1 | -1.56% |
-| taylor-walker | KPF | 64 | 132 | -1 | +0 | 131 | -1 | -0.76% |
-| thomas-anastasopoulos | SF | 48 | 173 | -1 | +0 | 172 | -1 | -0.58% |
-| todd-marshall | KPF | 16 | 61 | -1 | +0 | 60 | -1 | -1.64% |
-| tom-cochrane | SF | 5 | 230 | -1 | +0 | 229 | -1 | -0.43% |
-| tom-mcdonald | KPD | 54 | 75 | -1 | +0 | 74 | -1 | -1.33% |
-| tyler-brockman | SF | 48 | 50 | -1 | +0 | 49 | -1 | -2.00% |
-| tyrell-dewar | SF | pool | 96 | -1 | +0 | 95 | -1 | -1.04% |
-| will-green | RUCK | 16 | 604 | +1 | +0 | 605 | +1 | +0.17% |
-| xavier-duursma | MID | 18 | 143 | -1 | +0 | 142 | -1 | -0.70% |
-| adam-sweid | SF | 25 | 397 | +0 | +0 | 397 | +0 | +0.00% |
-| aidan-corr | KPD | 18 | 38 | +0 | +0 | 38 | +0 | +0.00% |
-| aidan-johnson | KPF | 68 | 229 | +0 | +0 | 229 | +0 | +0.00% |
-| aiden-riddle | RUCK | 2 | 151 | +0 | +0 | 151 | +0 | +0.00% |
-| alex-dodson | RUCK | 53 | 274 | +0 | +0 | 274 | +0 | +0.00% |
-| alex-pearce | KPD | 37 | 23 | +0 | +0 | 23 | +0 | +0.00% |
-| alex-van-wyk | RUCK | 14 | 391 | +0 | +0 | 391 | +0 | +0.00% |
-| andy-moniz-wakefield | SD | pool | 54 | +0 | +0 | 54 | +0 | +0.00% |
-| archie-ludowyke | KPF | 50 | 206 | +0 | +0 | 206 | +0 | +0.00% |
-| asher-eastham | SF | 7 | 94 | +0 | +0 | 94 | +0 | +0.00% |
-| avery-thomas | SD | 28 | 394 | +0 | +0 | 394 | +0 | +0.00% |
-| bailey-banfield | SF | 3 | 10 | +0 | +0 | 10 | +0 | +0.00% |
-| bailey-laurie | SF | 23 | 56 | +0 | +0 | 56 | +0 | +0.00% |
-| bailey-scott | MID | 49 | 23 | +0 | +0 | 23 | +0 | +0.00% |
-| ben-camporeale | MID | 43 | 249 | +0 | +0 | 249 | +0 | +0.00% |
-| ben-long | SF | 25 | 28 | +0 | +0 | 28 | +0 | +0.00% |
-| ben-mckay | KPD | 21 | 35 | +0 | +0 | 35 | +0 | +0.00% |
-| ben-murphy | SD | pool | 85 | +0 | +0 | 85 | +0 | +0.00% |
-| benny-barrett | SF | pool | 50 | +0 | +0 | 50 | +0 | +0.00% |
-| billy-cootee | MID | 42 | 264 | +0 | +0 | 264 | +0 | +0.00% |
-| billy-dowling | SF | 43 | 150 | +0 | +0 | 150 | +0 | +0.00% |
-| billy-frampton | KPD | 74 | 34 | +0 | +0 | 34 | +0 | +0.00% |
-| blake-acres | MID | 19 | 86 | +0 | +0 | 86 | +0 | +0.00% |
-| blake-thredgold | KPD | 26 | 373 | +0 | +0 | 373 | +0 | +0.00% |
-| bobby-hill | SF | 24 | 29 | +0 | +0 | 29 | +0 | +0.00% |
-| bradley-close | SF | 8 | 15 | +0 | +0 | 15 | +0 | +0.00% |
-| brandon-starcevich | SD | 18 | 41 | +0 | +0 | 41 | +0 | +0.00% |
-| brandon-walker | SD | 52 | 57 | +0 | +0 | 57 | +0 | +0.00% |
-| brandon-zerk-thatcher | KPD | 65 | 48 | +0 | +0 | 48 | +0 | +0.00% |
-| brayden-george | SF | 26 | 234 | +0 | +0 | 234 | +0 | +0.00% |
-| brody-mihocek | KPF | 14 | 10 | +0 | +0 | 10 | +0 | +0.00% |
-| bruce-reville | MID | pool | 54 | +0 | +0 | 54 | +0 | +0.00% |
-| caleb-lewis | KPF | 13 | 233 | +0 | +0 | 233 | +0 | +0.00% |
-| caleb-may | RUCK | 9 | 322 | +0 | +0 | 322 | +0 | +0.00% |
-| callum-ah-chee | SF | 8 | 64 | +0 | +0 | 64 | +0 | +0.00% |
-| callum-brown-ire | SF | pool | 28 | +0 | +0 | 28 | +0 | +0.00% |
-| callum-coleman-jones | KPF | 20 | 38 | +0 | +0 | 38 | +0 | +0.00% |
-| changkuoth-jiath | SD | pool | 12 | +0 | +0 | 12 | +0 | +0.00% |
-| charlie-ballard | KPD | 42 | 45 | +0 | +0 | 45 | +0 | +0.00% |
-| charlie-nicholls | KPF | 34 | 199 | +0 | +0 | 199 | +0 | +0.00% |
-| charlie-spargo | SF | 29 | 26 | +0 | +0 | 26 | +0 | +0.00% |
-| chayce-jones | SD | 9 | 50 | +0 | +0 | 50 | +0 | +0.00% |
-| cillian-bourke | SD | pool | 85 | +0 | +0 | 85 | +0 | +0.00% |
-| cillian-burke | SD | pool | 43 | +0 | +0 | 43 | +0 | +0.00% |
-| cody-anderson | SF | 64 | 62 | +0 | +0 | 62 | +0 | +0.00% |
-| cody-angove | MID | 24 | 483 | +0 | +0 | 483 | +0 | +0.00% |
-| conor-mckenna | SF | pool | 6 | +0 | +0 | 6 | +0 | +0.00% |
-| conor-stone | SD | 15 | 76 | +0 | +0 | 76 | +0 | +0.00% |
-| cooper-bell | KPD | 49 | 152 | +0 | +0 | 152 | +0 | +0.00% |
-| cooper-simpson | SD | 35 | 179 | +0 | +0 | 179 | +0 | +0.00% |
-| corey-wagner | SD | 43 | 20 | +0 | +0 | 20 | +0 | +0.00% |
-| corey-warner | SF | 40 | 49 | +0 | +0 | 49 | +0 | +0.00% |
-| dane-rampe | SD | 23 | 12 | +0 | +0 | 12 | +0 | +0.00% |
-| daniel-butler | SF | 65 | 15 | +0 | +0 | 15 | +0 | +0.00% |
-| darcy-fort | RUCK | 65 | 16 | +0 | +0 | 16 | +0 | +0.00% |
-| darcy-gardiner | KPD | 22 | 33 | +0 | +0 | 33 | +0 | +0.00% |
-| darragh-joyce | KPD | pool | 41 | +0 | +0 | 41 | +0 | +0.00% |
-| eamonn-armstrong | SD | pool | 43 | +0 | +0 | 43 | +0 | +0.00% |
-| elliot-himmelberg | KPF | 51 | 56 | +0 | +0 | 56 | +0 | +0.00% |
-| eric-hipwood | KPF | 14 | 42 | +0 | +0 | 42 | +0 | +0.00% |
-| esava-ratugolea | KPD | 43 | 64 | +0 | +0 | 64 | +0 | +0.00% |
-| ewan-mackinlay | SF | 10 | 152 | +0 | +0 | 152 | +0 | +0.00% |
-| finlay-macrae | MID | 20 | 322 | +0 | +0 | 322 | +0 | +0.00% |
-| finn-maginness | SF | 29 | 26 | +0 | +0 | 26 | +0 | +0.00% |
-| finnegan-davis | SD | 51 | 165 | +0 | +0 | 165 | +0 | +0.00% |
-| flynn-perez | SD | pool | 139 | +0 | +0 | 139 | +0 | +0.00% |
-| flynn-riley | RUCK | 4 | 391 | +0 | +0 | 391 | +0 | +0.00% |
-| flynn-young | SF | 4 | 168 | +0 | +0 | 168 | +0 | +0.00% |
-| fred-rodriguez | MID | 1 | 201 | +0 | +0 | 201 | +0 | +0.00% |
-| george-stevens | MID | 58 | 142 | +0 | +0 | 142 | +0 | +0.00% |
-| harley-barker | MID | 24 | 677 | +0 | +0 | 677 | +0 | +0.00% |
-| harrison-coe | RUCK | 8 | 322 | +0 | +0 | 322 | +0 | +0.00% |
-| harry-barnett | RUCK | 23 | 553 | +0 | +0 | 553 | +0 | +0.00% |
-| harry-charleson | SD | 3 | 105 | +0 | +0 | 105 | +0 | +0.00% |
-| harry-cunningham | SD | pool | 10 | +0 | +0 | 10 | +0 | +0.00% |
-| harry-demattia | MID | 25 | 430 | +0 | +0 | 430 | +0 | +0.00% |
-| harry-morrison | MID | 73 | 20 | +0 | +0 | 20 | +0 | +0.00% |
-| harry-o-farrell | KPD | 40 | 201 | +0 | +0 | 201 | +0 | +0.00% |
-| harry-perryman | SD | 14 | 68 | +0 | +0 | 68 | +0 | +0.00% |
-| harry-schoenberg | MID | 24 | 50 | +0 | +0 | 50 | +0 | +0.00% |
-| harvey-gallagher | SD | 39 | 87 | +0 | +0 | 87 | +0 | +0.00% |
-| henry-hustwaite | MID | 37 | 235 | +0 | +0 | 235 | +0 | +0.00% |
-| henry-smith | KPF | 50 | 82 | +0 | +0 | 82 | +0 | +0.00% |
-| hugh-davies | KPD | 33 | 185 | +0 | +0 | 185 | +0 | +0.00% |
-| hugo-mikunda | SF | 48 | 177 | +0 | +0 | 177 | +0 | +0.00% |
-| hugo-ralphsmith | MID | 45 | 54 | +0 | +0 | 54 | +0 | +0.00% |
-| hunter-clark | SD | 7 | 50 | +0 | +0 | 50 | +0 | +0.00% |
-| hunter-holmes | MID | 33 | 517 | +0 | +0 | 517 | +0 | +0.00% |
-| iliro-smit | RUCK | 10 | 204 | +0 | +0 | 204 | +0 | +0.00% |
-| indy-cotton | SD | pool | 48 | +0 | +0 | 48 | +0 | +0.00% |
-| isaac-cumming | SD | 20 | 41 | +0 | +0 | 41 | +0 | +0.00% |
-| isaac-keeler | KPF | 44 | 173 | +0 | +0 | 173 | +0 | +0.00% |
-| jack-bowes | MID | 10 | 97 | +0 | +0 | 97 | +0 | +0.00% |
-| jack-buller | KPF | 11 | 94 | +0 | +0 | 94 | +0 | +0.00% |
-| jack-henderson | SF | pool | 113 | +0 | +0 | 113 | +0 | +0.00% |
-| jack-hutchinson | MID | 3 | 118 | +0 | +0 | 118 | +0 | +0.00% |
-| jack-martin | SF | 3 | 107 | +0 | +0 | 107 | +0 | +0.00% |
-| jack-watkins | MID | 3 | 130 | +0 | +0 | 130 | +0 | +0.00% |
-| jackson-archer | SD | 59 | 27 | +0 | +0 | 27 | +0 | +0.00% |
-| jackson-macrae | MID | 8 | 101 | +0 | +0 | 101 | +0 | +0.00% |
-| jackson-mead | SF | 25 | 29 | +0 | +0 | 29 | +0 | +0.00% |
-| jacob-hopper | MID | 7 | 101 | +0 | +0 | 101 | +0 | +0.00% |
-| jacob-molier | RUCK | 52 | 283 | +0 | +0 | 283 | +0 | +0.00% |
-| jacob-moss | KPF | pool | 36 | +0 | +0 | 36 | +0 | +0.00% |
-| jacob-wehr | SD | 61 | 14 | +0 | +0 | 14 | +0 | +0.00% |
-| jade-gresham | SF | 18 | 39 | +0 | +0 | 39 | +0 | +0.00% |
-| jaeger-o-meara | MID | 1 | 165 | +0 | +0 | 165 | +0 | +0.00% |
-| jai-saxena | SF | pool | 84 | +0 | +0 | 84 | +0 | +0.00% |
-| jaime-uhr-henry | RUCK | pool | 26 | +0 | +0 | 26 | +0 | +0.00% |
-| jake-kolodjashnij | KPD | 41 | 22 | +0 | +0 | 22 | +0 | +0.00% |
-| jake-melksham | KPF | 10 | 50 | +0 | +0 | 50 | +0 | +0.00% |
-| jakob-ryan | SD | 28 | 239 | +0 | +0 | 239 | +0 | +0.00% |
-| james-barrat | KPD | 32 | 225 | +0 | +0 | 225 | +0 | +0.00% |
-| james-blanck | KPD | 14 | 70 | +0 | +0 | 70 | +0 | +0.00% |
-| james-tunstill | MID | 41 | 82 | +0 | +0 | 82 | +0 | +0.00% |
-| jamie-cripps | SF | 26 | 28 | +0 | +0 | 28 | +0 | +0.00% |
-| jamie-elliott | SF | 39 | 19 | +0 | +0 | 19 | +0 | +0.00% |
-| jaren-carr | SF | 63 | 65 | +0 | +0 | 65 | +0 | +0.00% |
-| jed-adams | KPD | 38 | 154 | +0 | +0 | 154 | +0 | +0.00% |
-| jed-bews | SD | 77 | 15 | +0 | +0 | 15 | +0 | +0.00% |
-| jesse-dattoli | SF | 22 | 318 | +0 | +0 | 318 | +0 | +0.00% |
-| jesse-mellor | MID | pool | 84 | +0 | +0 | 84 | +0 | +0.00% |
-| jevan-phillipou | SF | 35 | 273 | +0 | +0 | 273 | +0 | +0.00% |
-| joe-pike | RUCK | 9 | 151 | +0 | +0 | 151 | +0 | +0.00% |
-| joel-cochran | KPD | 47 | 161 | +0 | +0 | 161 | +0 | +0.00% |
-| joel-hamling | KPF | 41 | 18 | +0 | +0 | 18 | +0 | +0.00% |
-| jordan-boyd | SD | 17 | 55 | +0 | +0 | 55 | +0 | +0.00% |
-| jordon-butts | KPD | 17 | 18 | +0 | +0 | 18 | +0 | +0.00% |
-| josh-goater | SD | 22 | 93 | +0 | +0 | 93 | +0 | +0.00% |
-| josh-smillie | MID | 7 | 953 | +0 | +0 | 953 | +0 | +0.00% |
-| judson-clarke | SF | 30 | 90 | +0 | +0 | 90 | +0 | +0.00% |
-| jy-farrar | KPF | 59 | 10 | +0 | +0 | 10 | +0 | +0.00% |
-| kalani-white | KPF | pool | 84 | +0 | +0 | 84 | +0 | +0.00% |
-| kaleb-smith | SD | 49 | 67 | +0 | +0 | 67 | +0 | +0.00% |
-| kayle-gerreyn | KPF | 37 | 177 | +0 | +0 | 177 | +0 | +0.00% |
-| keighton-matofai-forbes | SD | 69 | 104 | +0 | +0 | 104 | +0 | +0.00% |
-| kobe-mcdonald | SD | pool | 85 | +0 | +0 | 85 | +0 | +0.00% |
-| koby-coulson | MID | 46 | 316 | +0 | +0 | 316 | +0 | +0.00% |
-| koby-evans | SF | 38 | 254 | +0 | +0 | 254 | +0 | +0.00% |
-| kye-fincher | MID | 52 | 249 | +0 | +0 | 249 | +0 | +0.00% |
-| lachie-sullivan | SF | pool | 86 | +0 | +0 | 86 | +0 | +0.00% |
-| lachlan-blakiston | KPD | 12 | 152 | +0 | +0 | 152 | +0 | +0.00% |
-| lachlan-carmichael | SD | 21 | 548 | +0 | +0 | 548 | +0 | +0.00% |
-| lachlan-fogarty | SF | 22 | 35 | +0 | +0 | 35 | +0 | +0.00% |
-| lachlan-mcneil | SF | 6 | 20 | +0 | +0 | 20 | +0 | +0.00% |
-| lachlan-weller | MID | 14 | 74 | +0 | +0 | 74 | +0 | +0.00% |
-| laitham-vandermeer | SF | 37 | 20 | +0 | +0 | 20 | +0 | +0.00% |
-| lance-collard | SF | 28 | 146 | +0 | +0 | 146 | +0 | +0.00% |
-| latrelle-pickett | SF | 12 | 548 | +0 | +0 | 548 | +0 | +0.00% |
-| lennox-hoffman | SD | 66 | 104 | +0 | +0 | 104 | +0 | +0.00% |
-| leon-kickett | SF | 4 | 151 | +0 | +0 | 151 | +0 | +0.00% |
-| lewis-hayes | KPD | 25 | 250 | +0 | +0 | 250 | +0 | +0.00% |
-| liam-henry | SF | 9 | 63 | +0 | +0 | 63 | +0 | +0.00% |
-| liam-hetherton | KPF | pool | 168 | +0 | +0 | 168 | +0 | +0.00% |
-| liam-mcmahon | KPF | 33 | 135 | +0 | +0 | 135 | +0 | +0.00% |
-| liam-puncher | KPD | 15 | 124 | +0 | +0 | 124 | +0 | +0.00% |
-| liam-ryan | SF | 26 | 24 | +0 | +0 | 24 | +0 | +0.00% |
-| liam-stocker | SD | 19 | 41 | +0 | +0 | 41 | +0 | +0.00% |
-| lincoln-mccarthy | SF | 73 | 15 | +0 | +0 | 15 | +0 | +0.00% |
-| logan-smith | RUCK | 71 | 185 | +0 | +0 | 185 | +0 | +0.00% |
-| lucas-camporeale | MID | 54 | 159 | +0 | +0 | 159 | +0 | +0.00% |
-| lucca-grego | SD | 48 | 124 | +0 | +0 | 124 | +0 | +0.00% |
-| luke-beecken | MID | 16 | 164 | +0 | +0 | 164 | +0 | +0.00% |
-| luke-cleary | SD | 61 | 29 | +0 | +0 | 29 | +0 | +0.00% |
-| luke-lloyd | KPD | 42 | 164 | +0 | +0 | 164 | +0 | +0.00% |
-| luke-mcdonald | SD | 8 | 50 | +0 | +0 | 50 | +0 | +0.00% |
-| luke-pedlar | SF | 11 | 112 | +0 | +0 | 112 | +0 | +0.00% |
-| luke-urquhart | MID | 57 | 143 | +0 | +0 | 143 | +0 | +0.00% |
-| malcolm-rosas | SF | 14 | 25 | +0 | +0 | 25 | +0 | +0.00% |
-| mani-liddy | MID | 15 | 152 | +0 | +0 | 152 | +0 | +0.00% |
-| mark-blicavs | MID | pool | 5 | +0 | +0 | 5 | +0 | +0.00% |
-| mark-o-connor | SD | pool | 8 | +0 | +0 | 8 | +0 | +0.00% |
-| mason-cox | KPF | pool | 3 | +0 | +0 | 3 | +0 | +0.00% |
-| matt-duffy | SD | pool | 43 | +0 | +0 | 43 | +0 | +0.00% |
-| matt-guelfi | SF | 75 | 15 | +0 | +0 | 15 | +0 | +0.00% |
-| matt-hill | SF | pool | 56 | +0 | +0 | 56 | +0 | +0.00% |
-| matt-owies | SF | pool | 3 | +0 | +0 | 3 | +0 | +0.00% |
-| matthew-leray | MID | 56 | 219 | +0 | +0 | 219 | +0 | +0.00% |
-| maurice-rioli-1 | SF | 53 | 27 | +0 | +0 | 27 | +0 | +0.00% |
-| max-beattie | SF | 12 | 181 | +0 | +0 | 181 | +0 | +0.00% |
-| max-king-syd | SF | 49 | 156 | +0 | +0 | 156 | +0 | +0.00% |
-| max-knobel | RUCK | 42 | 411 | +0 | +0 | 411 | +0 | +0.00% |
-| max-mapley | RUCK | 18 | 322 | +0 | +0 | 322 | +0 | +0.00% |
-| max-ramsden | KPF | 6 | 257 | +0 | +0 | 257 | +0 | +0.00% |
-| mitch-podhajski | KPF | 17 | 399 | +0 | +0 | 399 | +0 | +0.00% |
-| mitch-zadow | SF | pool | 139 | +0 | +0 | 139 | +0 | +0.00% |
-| mitchell-knevitt | MID | 25 | 258 | +0 | +0 | 258 | +0 | +0.00% |
-| mitchell-marsh | KPF | 22 | 506 | +0 | +0 | 506 | +0 | +0.00% |
-| mykelti-lefau | KPF | pool | 86 | +0 | +0 | 86 | +0 | +0.00% |
-| nathan-broad | SD | 65 | 15 | +0 | +0 | 15 | +0 | +0.00% |
-| nathan-wardius | SF | pool | 77 | +0 | +0 | 77 | +0 | +0.00% |
-| ned-bowman | SF | 26 | 257 | +0 | +0 | 257 | +0 | +0.00% |
-| nicholas-coffield | SD | 8 | 50 | +0 | +0 | 50 | +0 | +0.00% |
-| nicholas-holman | SF | 49 | 14 | +0 | +0 | 14 | +0 | +0.00% |
-| nick-driscoll | MID | 6 | 201 | +0 | +0 | 201 | +0 | +0.00% |
-| noah-answerth | SD | 55 | 12 | +0 | +0 | 12 | +0 | +0.00% |
-| noah-chamberlain | SF | pool | 86 | +0 | +0 | 86 | +0 | +0.00% |
-| oisin-mullin | SD | pool | 14 | +0 | +0 | 14 | +0 | +0.00% |
-| oliver-griffin | SF | 6 | 181 | +0 | +0 | 181 | +0 | +0.00% |
-| oliver-wiltshire | SF | 61 | 49 | +0 | +0 | 49 | +0 | +0.00% |
-| ollie-lord | KPF | 51 | 105 | +0 | +0 | 105 | +0 | +0.00% |
-| ollie-murphy | KPD | 41 | 168 | +0 | +0 | 168 | +0 | +0.00% |
-| oscar-berry | KPD | pool | 53 | +0 | +0 | 53 | +0 | +0.00% |
-| oskar-baker | MID | 48 | 14 | +0 | +0 | 14 | +0 | +0.00% |
-| oskar-taylor | SD | 15 | 629 | +0 | +0 | 629 | +0 | +0.00% |
-| paddy-cross | SF | pool | 139 | +0 | +0 | 139 | +0 | +0.00% |
-| paddy-dow | MID | 3 | 158 | +0 | +0 | 158 | +0 | +0.00% |
-| patrick-carr | RUCK | pool | 31 | +0 | +0 | 31 | +0 | +0.00% |
-| patrick-dangerfield | SF | 10 | 63 | +0 | +0 | 63 | +0 | +0.00% |
-| patrick-said | SF | 60 | 80 | +0 | +0 | 80 | +0 | +0.00% |
-| patrick-snell | KPD | 53 | 115 | +0 | +0 | 115 | +0 | +0.00% |
-| reece-torrent | MID | 64 | 79 | +0 | +0 | 79 | +0 | +0.00% |
-| reef-mcinnes | KPD | 24 | 164 | +0 | +0 | 164 | +0 | +0.00% |
-| rhys-stanley | RUCK | 47 | 28 | +0 | +0 | 28 | +0 | +0.00% |
-| rhys-unwin | SF | 61 | 91 | +0 | +0 | 91 | +0 | +0.00% |
-| riak-andrew | KPD | 55 | 138 | +0 | +0 | 138 | +0 | +0.00% |
-| ricky-mentha | SF | pool | 50 | +0 | +0 | 50 | +0 | +0.00% |
-| riley-onley | MID | 2 | 201 | +0 | +0 | 201 | +0 | +0.00% |
-| river-stevens | SF | 67 | 104 | +0 | +0 | 104 | +0 | +0.00% |
-| roan-steele | MID | 7 | 152 | +0 | +0 | 152 | +0 | +0.00% |
-| rob-monahan | SD | pool | 45 | +0 | +0 | 45 | +0 | +0.00% |
-| robert-hansen | SF | 2 | 132 | +0 | +0 | 132 | +0 | +0.00% |
-| ryan-gardner | KPD | 58 | 18 | +0 | +0 | 18 | +0 | +0.00% |
-| ryan-lester | SD | 30 | 38 | +0 | +0 | 38 | +0 | +0.00% |
-| ryda-luke | SF | pool | 84 | +0 | +0 | 84 | +0 | +0.00% |
-| saad-el-hawli | SD | 13 | 118 | +0 | +0 | 118 | +0 | +0.00% |
-| sam-allen | MID | 29 | 618 | +0 | +0 | 618 | +0 | +0.00% |
-| sam-butler-1 | SF | 23 | 81 | +0 | +0 | 81 | +0 | +0.00% |
-| sam-davidson | SF | 51 | 80 | +0 | +0 | 80 | +0 | +0.00% |
-| sam-sturt | SF | 17 | 50 | +0 | +0 | 50 | +0 | +0.00% |
-| sam-switkowski | SF | 72 | 15 | +0 | +0 | 15 | +0 | +0.00% |
-| sam-wicks | SD | pool | 10 | +0 | +0 | 10 | +0 | +0.00% |
-| shadeau-brain | SD | pool | 120 | -1 | +1 | 120 | +0 | +0.00% |
-| steele-sidebottom | MID | 11 | 96 | +0 | +0 | 96 | +0 | +0.00% |
-| tai-hayes | SF | 44 | 194 | +0 | +0 | 194 | +0 | +0.00% |
-| taylor-goad | RUCK | 20 | 730 | +0 | +0 | 730 | +0 | +0.00% |
-| tew-jiath | SD | 37 | 167 | +0 | +0 | 167 | +0 | +0.00% |
-| thomas-matthews | SF | 30 | 337 | +0 | +0 | 337 | +0 | +0.00% |
-| toby-conway | RUCK | 24 | 503 | +0 | +0 | 503 | +0 | +0.00% |
-| toby-pink | KPD | 33 | 31 | +0 | +0 | 31 | +0 | +0.00% |
-| toby-whan | SF | pool | 84 | +0 | +0 | 84 | +0 | +0.00% |
-| tobyn-murray | SF | 40 | 234 | +0 | +0 | 234 | +0 | +0.00% |
-| tom-barrass | KPD | 43 | 21 | +0 | +0 | 21 | +0 | +0.00% |
-| tom-blamires | SD | pool | 139 | +0 | +0 | 139 | +0 | +0.00% |
-| tom-cole | SD | 36 | 47 | +0 | +0 | 47 | +0 | +0.00% |
-| tom-edwards | KPF | pool | 108 | +0 | +0 | 108 | +0 | +0.00% |
-| tom-lynch-1 | KPF | 11 | 50 | +0 | +0 | 50 | +0 | +0.00% |
-| tyan-prindable | MID | 32 | 543 | +0 | +0 | 543 | +0 | +0.00% |
-| tylah-williams | SF | 39 | 249 | +0 | +0 | 249 | +0 | +0.00% |
-| tyler-welsh | KPF | 59 | 80 | +0 | +0 | 80 | +0 | +0.00% |
-| vigo-visentini | RUCK | 5 | 182 | +0 | +0 | 182 | +0 | +0.00% |
-| wil-parker | SD | pool | 24 | +0 | +0 | 24 | +0 | +0.00% |
-| will-darcy | KPD | 58 | 187 | +0 | +0 | 187 | +0 | +0.00% |
-| will-lewis | KPF | pool | 139 | +0 | +0 | 139 | +0 | +0.00% |
-| xavier-o-halloran | SF | 22 | 47 | +0 | +0 | 47 | +0 | +0.00% |
-| xavier-walsh | KPD | 6 | 143 | +0 | +0 | 143 | +0 | +0.00% |
-| zac-banch | SF | 2 | 152 | +0 | +0 | 152 | +0 | +0.00% |
-| zac-mccarthy | KPF | 55 | 147 | +0 | +0 | 147 | +0 | +0.00% |
-| zac-walker | SD | 11 | 152 | +0 | +0 | 152 | +0 | +0.00% |
-| zak-evans | MID | pool | 29 | +0 | +0 | 29 | +0 | +0.00% |
-| zane-zakostelsky | KPD | 51 | 209 | +0 | +0 | 209 | +0 | +0.00% |
+| row | pos | ep | LIVE | L1 unflag | L2 grace | L3 curve+v0 | L4 numéraire | FINAL | Δ |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| aaron-cadman | KPF | 1 | 1,769 | -22 | +0 | +0 | -95 | 1,652 | -117 |
+| aaron-naughton | KPF | 9 | 1,166 | -14 | +0 | +0 | -63 | 1,089 | -77 |
+| adam-cerra | MID | 5 | 1,030 | -12 | +0 | +0 | -55 | 963 | -67 |
+| adam-saad | SD | 65 | 426 | -5 | +0 | +0 | -24 | 397 | -29 |
+| adam-sweid | MID | 25 | 397 | +0 | +0 | -47 | +0 | 350 | -47 |
+| adam-treloar | SF | 14 | 911 | -11 | +0 | +0 | -50 | 850 | -61 |
+| aidan-corr | KPD | 18 | 38 | +0 | +0 | -8 | +0 | 30 | -8 |
+| aidan-johnson | KPF | 65 | 229 | +0 | +0 | +0 | +0 | 229 | +0 |
+| aidan-schubert | KPF | 23 | 481 | +1 | -2 | -59 | +0 | 421 | -60 |
+| aiden-riddle | RUCK | 65 | 151 | +0 | +0 | +0 | +0 | 151 | +0 |
+| alex-davies | MID | 17 | 401 | -6 | +0 | +0 | -21 | 374 | -27 |
+| alex-dodson | KPF | 53 | 274 | +0 | +0 | -62 | +0 | 212 | -62 |
+| alex-neal-bullen | SF | 40 | 371 | -5 | +0 | +0 | -19 | 347 | -24 |
+| alex-pearce | KPD | 37 | 23 | +0 | +0 | -1 | +0 | 22 | -1 |
+| alex-van-wyk | RUCK | 65 | 391 | +0 | +0 | +0 | +0 | 391 | +0 |
+| aliir-aliir | KPD | 44 | 773 | -9 | +0 | +0 | -42 | 722 | -51 |
+| alix-tauru | KPF | 10 | 1,684 | -21 | +0 | +0 | -91 | 1,572 | -112 |
+| andrew-brayshaw | MID | 2 | 3,138 | -39 | +0 | +0 | -169 | 2,930 | -208 |
+| andrew-mcgrath | SD | 1 | 1,022 | -13 | +0 | +0 | -54 | 955 | -67 |
+| andy-moniz-wakefield | SD | 65 | 54 | +0 | +0 | +0 | -2 | 52 | -2 |
+| angus-anderson | SF | 57 | 165 | -2 | +0 | +0 | -8 | 155 | -10 |
+| angus-clarke | SD | 39 | 555 | -7 | +0 | -2 | -28 | 518 | -37 |
+| angus-hastie | SD | 33 | 181 | -1 | +0 | -5 | -5 | 170 | -11 |
+| angus-sheldrick | MID | 18 | 748 | -10 | +0 | +0 | -40 | 698 | -50 |
+| anthony-caminiti | KPF | 65 | 1,110 | -14 | +0 | +0 | -60 | 1,036 | -74 |
+| archer-day-wicks | SF | 65 | 766 | -10 | +0 | +0 | -40 | 716 | -50 |
+| archer-reid | KPF | 30 | 762 | -9 | +0 | +0 | -41 | 712 | -50 |
+| archie-ludowyke | KPF | 50 | 206 | +0 | +0 | -43 | +0 | 163 | -43 |
+| archie-may | KPF | 65 | 476 | -6 | +0 | +0 | -25 | 445 | -31 |
+| archie-perkins | SF | 9 | 239 | -2 | +0 | +0 | -13 | 224 | -15 |
+| archie-roberts | SD | 54 | 4,726 | -58 | +0 | +0 | -253 | 4,415 | -311 |
+| arthur-jones | SF | 43 | 92 | -2 | +0 | +0 | -4 | 86 | -6 |
+| asher-eastham | SF | 65 | 94 | +0 | +0 | +0 | +0 | 94 | +0 |
+| ashton-moir | SF | 29 | 214 | -1 | +0 | -10 | -5 | 198 | -16 |
+| avery-thomas | SD | 28 | 394 | +0 | +0 | -36 | +0 | 358 | -36 |
+| bailey-banfield | SD | 65 | 10 | +0 | +0 | +0 | +0 | 10 | +0 |
+| bailey-dale | SD | 45 | 2,255 | -28 | +0 | +0 | -121 | 2,106 | -149 |
+| bailey-humphrey | SF | 6 | 2,573 | -32 | +0 | +0 | -138 | 2,403 | -170 |
+| bailey-laurie | SF | 23 | 56 | +0 | +0 | -8 | +0 | 48 | -8 |
+| bailey-macdonald | SD | 51 | 148 | -2 | +0 | +0 | -7 | 139 | -9 |
+| bailey-scott | MID | 49 | 23 | +0 | +0 | -5 | +0 | 18 | -5 |
+| bailey-smith | MID | 7 | 6,683 | -83 | +0 | +0 | -358 | 6,242 | -441 |
+| bailey-williams-wb | SD | 48 | 612 | -8 | +0 | +0 | -33 | 571 | -41 |
+| bailey-williams-wc | KPF | 35 | 2,470 | -31 | +0 | +0 | -133 | 2,306 | -164 |
+| balyn-o-brien | SD | 65 | 383 | -3 | +25 | +0 | -14 | 391 | +8 |
+| bayley-fritsch | SF | 31 | 199 | -2 | +0 | +0 | -12 | 185 | -14 |
+| beau-addinsall | MID | 18 | 1,521 | -19 | +208 | +0 | -92 | 1,618 | +97 |
+| beau-mccreery | SF | 46 | 134 | -1 | +0 | +0 | -8 | 125 | -9 |
+| ben-ainsworth | SF | 4 | 204 | -2 | +0 | +0 | -11 | 191 | -13 |
+| ben-camporeale | MID | 43 | 249 | +0 | +0 | -32 | +0 | 217 | -32 |
+| ben-jepson | MID | 65 | 222 | +1 | +0 | +0 | +0 | 223 | +1 |
+| ben-keays | SF | 24 | 196 | -3 | +0 | +0 | -11 | 182 | -14 |
+| ben-king | KPF | 6 | 218 | -3 | +0 | +0 | -12 | 203 | -15 |
+| ben-long | SF | 25 | 28 | +0 | +0 | -3 | +0 | 25 | -3 |
+| ben-mckay | KPD | 21 | 35 | +0 | +0 | -5 | +0 | 30 | -5 |
+| ben-miller | KPD | 62 | 1,042 | -12 | +0 | +0 | -56 | 974 | -68 |
+| ben-murphy | SD | 65 | 85 | +0 | +0 | +0 | +0 | 85 | +0 |
+| benny-barrett | SF | 65 | 50 | +0 | +0 | +0 | +0 | 50 | +0 |
+| billy-cootee | MID | 42 | 264 | +0 | +0 | -27 | +0 | 237 | -27 |
+| billy-dowling | SF | 43 | 150 | +0 | +0 | -8 | -5 | 137 | -13 |
+| billy-frampton | KPD | 65 | 34 | +0 | +0 | +0 | -2 | 32 | -2 |
+| billy-wilson | SD | 34 | 983 | -13 | +0 | +0 | -52 | 918 | -65 |
+| blake-acres | MID | 19 | 86 | +0 | +0 | +0 | -5 | 81 | -5 |
+| blake-hardwick | SD | 44 | 524 | -7 | +0 | +0 | -28 | 489 | -35 |
+| blake-howes | SD | 39 | 272 | -3 | +0 | +0 | -14 | 255 | -17 |
+| blake-thredgold | KPD | 26 | 373 | +0 | +0 | -41 | +0 | 332 | -41 |
+| bo-allan | SD | 16 | 1,128 | -13 | +0 | +0 | -61 | 1,054 | -74 |
+| bobby-hill | SF | 24 | 29 | +0 | +0 | -3 | +0 | 26 | -3 |
+| bodhi-uwland | SD | 65 | 4,087 | -51 | +0 | +0 | -219 | 3,817 | -270 |
+| bodie-ryan | SD | 46 | 210 | -1 | +0 | -14 | -7 | 188 | -22 |
+| bradley-close | SF | 65 | 15 | +0 | +0 | +0 | -1 | 14 | -1 |
+| bradley-hill | SF | 42 | 1,225 | -15 | +0 | +0 | -66 | 1,144 | -81 |
+| brady-hough | SD | 31 | 292 | -4 | +0 | +0 | -16 | 272 | -20 |
+| braeden-campbell | SF | 5 | 403 | -4 | +0 | +0 | -23 | 376 | -27 |
+| brandon-starcevich | SD | 18 | 41 | +0 | +0 | -8 | +0 | 33 | -8 |
+| brandon-walker | SD | 52 | 57 | +0 | +0 | -1 | -2 | 54 | -3 |
+| brandon-zerk-thatcher | KPD | 65 | 48 | +0 | +0 | +0 | -3 | 45 | -3 |
+| brayden-cook | SF | 26 | 782 | -9 | +0 | +0 | -42 | 731 | -51 |
+| brayden-fiorini | MID | 20 | 167 | -2 | +0 | +0 | -9 | 156 | -11 |
+| brayden-george | SF | 26 | 234 | +0 | +0 | -26 | +0 | 208 | -26 |
+| brayden-maynard | SD | 30 | 489 | -5 | +0 | +0 | -27 | 457 | -32 |
+| brennan-cox | KPD | 41 | 259 | -3 | +0 | +0 | -14 | 242 | -17 |
+| brent-daniels | SF | 27 | 1,199 | -15 | +0 | +0 | -65 | 1,119 | -80 |
+| brodie-grundy | RUCK | 22 | 4,490 | -55 | +0 | +0 | -242 | 4,193 | -297 |
+| brodie-kemp | KPF | 17 | 680 | -8 | +0 | +0 | -36 | 636 | -44 |
+| brody-mihocek | KPF | 65 | 10 | +0 | +0 | +0 | +0 | 10 | +0 |
+| bruce-reville | MID | 65 | 54 | +0 | +0 | +0 | +0 | 54 | +0 |
+| buku-khamis | KPF | 65 | 144 | -1 | +0 | +0 | -8 | 135 | -9 |
+| caiden-cleary | SF | 24 | 471 | -5 | +0 | +0 | -25 | 441 | -30 |
+| caleb-daniel | SD | 46 | 1,338 | -17 | +0 | +0 | -71 | 1,250 | -88 |
+| caleb-graham | KPD | 65 | 54 | -1 | +0 | +0 | -2 | 51 | -3 |
+| caleb-lewis | KPF | 65 | 233 | +0 | +0 | +0 | +0 | 233 | +0 |
+| caleb-may | RUCK | 65 | 322 | +0 | +0 | +0 | +0 | 322 | +0 |
+| caleb-serong | MID | 8 | 5,027 | -62 | +0 | +0 | -269 | 4,696 | -331 |
+| caleb-windsor | SD | 7 | 1,784 | -22 | +0 | +0 | -96 | 1,666 | -118 |
+| callum-ah-chee | SF | 8 | 64 | +0 | +0 | -8 | +0 | 56 | -8 |
+| callum-brown-ire | SF | 65 | 28 | +0 | +0 | +0 | -2 | 26 | -2 |
+| callum-coleman-jones | RUCK | 20 | 38 | +0 | +0 | -7 | +0 | 31 | -7 |
+| callum-mills | SD | 3 | 1,994 | -25 | +0 | +0 | -107 | 1,862 | -132 |
+| callum-wilkie | KPD | 65 | 3,633 | -45 | +0 | +0 | -195 | 3,393 | -240 |
+| calsher-dear | KPF | 56 | 892 | -11 | +0 | -1 | -48 | 832 | -60 |
+| cameron-mackenzie | MID | 7 | 2,251 | -28 | +0 | +0 | -120 | 2,103 | -148 |
+| cameron-nairn | SF | 20 | 606 | -4 | +36 | -75 | -11 | 552 | -54 |
+| cameron-rayner | SF | 1 | 457 | -6 | +0 | +0 | -23 | 428 | -29 |
+| cameron-zurhaar | SF | 65 | 125 | -1 | +0 | +0 | -7 | 117 | -8 |
+| campbell-chesser | MID | 14 | 330 | -4 | +0 | -10 | -14 | 302 | -28 |
+| campbell-gray | KPD | 65 | 176 | -2 | +0 | +0 | -10 | 164 | -12 |
+| campbell-lake | SF | 65 | 161 | -2 | +0 | +0 | -9 | 150 | -11 |
+| chad-warner | SF | 38 | 4,411 | -55 | +0 | +0 | -237 | 4,119 | -292 |
+| changkuoth-jiath | SD | 65 | 12 | +0 | +0 | +0 | -1 | 11 | -1 |
+| charlie-ballard | KPD | 42 | 45 | +0 | +0 | +0 | -3 | 42 | -3 |
+| charlie-banfield | SF | 41 | 536 | -3 | +22 | -34 | -10 | 511 | -25 |
+| charlie-cameron | SF | 65 | 151 | -2 | +0 | +0 | -8 | 141 | -10 |
+| charlie-comben | KPD | 31 | 809 | -10 | +0 | +0 | -44 | 755 | -54 |
+| charlie-curnow | KPF | 12 | 1,365 | -18 | +0 | +0 | -73 | 1,274 | -91 |
+| charlie-edwards | SD | 21 | 624 | -1 | +0 | -79 | -2 | 542 | -82 |
+| charlie-nicholls | KPF | 34 | 199 | +0 | +0 | -10 | +0 | 189 | -10 |
+| charlie-spargo | SF | 29 | 26 | +0 | +0 | -3 | +0 | 23 | -3 |
+| charlie-west | KPF | 50 | 692 | -9 | +0 | +0 | -36 | 647 | -45 |
+| chayce-jones | SD | 9 | 50 | +0 | +0 | -5 | +0 | 45 | -5 |
+| chris-scerri | SF | 65 | 459 | -6 | +40 | +0 | -26 | 467 | +8 |
+| christian-moraes | SF | 38 | 906 | -11 | +0 | +0 | -48 | 847 | -59 |
+| christian-petracca | SF | 2 | 2,038 | -25 | +0 | +0 | -110 | 1,903 | -135 |
+| christian-salem | SD | 9 | 92 | -1 | +0 | +0 | -5 | 86 | -6 |
+| cillian-bourke | SD | 65 | 85 | +0 | +0 | +0 | +0 | 85 | +0 |
+| cillian-burke | SD | 65 | 43 | +0 | +0 | +0 | +0 | 43 | +0 |
+| clay-hall | MID | 38 | 214 | -1 | +0 | -8 | -3 | 202 | -12 |
+| clayton-oliver | MID | 4 | 2,334 | -29 | +0 | +0 | -125 | 2,180 | -154 |
+| cody-anderson | SF | 64 | 62 | +0 | +0 | -2 | +0 | 60 | -2 |
+| cody-angove | SF | 24 | 483 | +0 | +0 | -59 | +0 | 424 | -59 |
+| cody-curtin | KPF | 43 | 427 | -3 | +31 | -22 | -15 | 418 | -9 |
+| cody-weightman | SF | 15 | 153 | -2 | +0 | +0 | -8 | 143 | -10 |
+| colby-mckercher | SD | 2 | 4,285 | -53 | +0 | +0 | -229 | 4,003 | -282 |
+| connor-budarick | SF | 65 | 281 | -4 | +0 | +0 | -15 | 262 | -19 |
+| connor-idun | SD | 61 | 2,224 | -27 | +0 | +0 | -120 | 2,077 | -147 |
+| connor-macdonald | SF | 26 | 2,740 | -33 | +0 | +0 | -147 | 2,560 | -180 |
+| connor-o-sullivan | KPD | 11 | 2,920 | -36 | +0 | +0 | -157 | 2,727 | -193 |
+| connor-rozee | SD | 5 | 2,725 | -33 | +0 | +0 | -146 | 2,546 | -179 |
+| conor-mckenna | SF | 65 | 6 | +0 | +0 | +0 | +0 | 6 | +0 |
+| conor-nash | MID | 65 | 235 | -3 | +0 | +0 | -13 | 219 | -16 |
+| conor-stone | SD | 15 | 76 | +0 | +0 | -15 | +0 | 61 | -15 |
+| cooper-bell | KPF | 49 | 152 | +0 | +0 | -31 | +0 | 121 | -31 |
+| cooper-duff-tytler | KPF | 4 | 1,561 | -20 | +216 | +0 | -95 | 1,662 | +101 |
+| cooper-harvey | SF | 56 | 545 | -6 | +0 | +0 | -30 | 509 | -36 |
+| cooper-hynes | SF | 20 | 1,543 | -19 | +0 | +0 | -83 | 1,441 | -102 |
+| cooper-lord | MID | 65 | 1,345 | -17 | +0 | +0 | -72 | 1,256 | -89 |
+| cooper-sharman | KPF | 65 | 429 | -6 | +0 | +0 | -23 | 400 | -29 |
+| cooper-simpson | SD | 35 | 179 | +0 | +0 | -6 | +0 | 173 | -6 |
+| cooper-trembath | KPF | 65 | 2,201 | -28 | +0 | +0 | -118 | 2,055 | -146 |
+| corey-durdin | SF | 39 | 49 | -1 | +0 | +0 | -2 | 46 | -3 |
+| corey-wagner | SD | 43 | 20 | +0 | +0 | +0 | -1 | 19 | -1 |
+| corey-warner | SF | 40 | 49 | +0 | +0 | -2 | +0 | 47 | -2 |
+| dan-houston | SD | 65 | 1,096 | -14 | +0 | +0 | -59 | 1,023 | -73 |
+| dane-rampe | SD | 65 | 12 | +0 | +0 | +0 | +0 | 12 | +0 |
+| daniel-annable | MID | 6 | 1,395 | -5 | +42 | -170 | -12 | 1,250 | -145 |
+| daniel-butler | SF | 65 | 15 | +0 | +0 | +0 | +0 | 15 | +0 |
+| daniel-curtin | MID | 8 | 2,488 | -31 | +0 | +0 | -134 | 2,323 | -165 |
+| daniel-mcstay | KPF | 25 | 338 | -4 | +0 | +0 | -19 | 315 | -23 |
+| daniel-rioli | SD | 15 | 640 | -7 | +0 | +0 | -34 | 599 | -41 |
+| daniel-turner | KPD | 65 | 1,534 | -18 | +0 | +0 | -83 | 1,433 | -101 |
+| dante-visentini | KPF | 56 | 1,274 | -16 | +0 | +0 | -68 | 1,190 | -84 |
+| darcy-byrne-jones | SF | 50 | 664 | -7 | +0 | +0 | -37 | 620 | -44 |
+| darcy-cameron | RUCK | 48 | 1,669 | -20 | +0 | +0 | -90 | 1,559 | -110 |
+| darcy-fogarty | KPF | 12 | 852 | -10 | +0 | +0 | -46 | 796 | -56 |
+| darcy-fort | RUCK | 65 | 16 | +0 | +0 | +0 | -1 | 15 | -1 |
+| darcy-gardiner | KPD | 22 | 33 | +0 | +0 | -4 | +0 | 29 | -4 |
+| darcy-jones | SF | 21 | 1,144 | -13 | +0 | -9 | -58 | 1,064 | -80 |
+| darcy-moore | KPD | 8 | 141 | -2 | +0 | +0 | -7 | 132 | -9 |
+| darcy-parish | MID | 5 | 562 | -8 | +0 | +0 | -29 | 525 | -37 |
+| darcy-wilmot | SD | 16 | 3,313 | -41 | +0 | +0 | -178 | 3,094 | -219 |
+| darcy-wilson | SF | 18 | 3,224 | -40 | +0 | +0 | -173 | 3,011 | -213 |
+| darragh-joyce | KPD | 65 | 41 | +0 | +0 | +0 | +0 | 41 | +0 |
+| dayne-zorko | SD | 38 | 998 | -13 | +0 | +0 | -54 | 931 | -67 |
+| deven-robertson | SF | 22 | 174 | -2 | +0 | -3 | -7 | 162 | -12 |
+| dion-prestia | SF | 9 | 251 | -3 | +0 | +0 | -13 | 235 | -16 |
+| dougal-howard | KPD | 56 | 45 | -1 | +0 | +0 | -2 | 42 | -3 |
+| dylan-moore | SF | 65 | 1,182 | -14 | +0 | +0 | -63 | 1,105 | -77 |
+| dylan-patterson | SD | 5 | 1,628 | -19 | +162 | -3 | -90 | 1,678 | +50 |
+| dylan-stephens | MID | 5 | 620 | -8 | +0 | +0 | -33 | 579 | -41 |
+| dyson-sharp | SF | 13 | 3,091 | -38 | +403 | +0 | -187 | 3,269 | +178 |
+| eamonn-armstrong | SD | 65 | 43 | +0 | +0 | +0 | +0 | 43 | +0 |
+| ed-langdon | SF | 54 | 795 | -9 | +0 | +0 | -43 | 743 | -52 |
+| ed-richards | MID | 16 | 3,924 | -48 | +0 | +0 | -211 | 3,665 | -259 |
+| edward-allan | MID | 19 | 978 | -12 | +0 | +0 | -53 | 913 | -65 |
+| elijah-hewett | MID | 14 | 730 | -10 | +0 | +0 | -39 | 681 | -49 |
+| elijah-hollands | SF | 7 | 710 | -10 | +0 | +0 | -38 | 662 | -48 |
+| elijah-tsatas | MID | 5 | 1,240 | -15 | +0 | +0 | -67 | 1,158 | -82 |
+| elliot-himmelberg | KPF | 51 | 56 | +0 | +0 | -6 | -2 | 48 | -8 |
+| elliot-yeo | SF | 36 | 331 | -4 | +0 | +0 | -18 | 309 | -22 |
+| eric-hipwood | KPF | 14 | 42 | +0 | +0 | -8 | +0 | 34 | -8 |
+| errol-gulden | MID | 34 | 7,239 | -91 | +0 | +0 | -386 | 6,762 | -477 |
+| esava-ratugolea | KPD | 43 | 64 | +0 | +0 | +0 | -4 | 60 | -4 |
+| ethan-read | KPF | 9 | 1,024 | -12 | +0 | +0 | -55 | 957 | -67 |
+| ewan-mackinlay | SF | 65 | 152 | +0 | +0 | +0 | +0 | 152 | +0 |
+| finlay-macrae | SF | 20 | 322 | +0 | +0 | -55 | -1 | 266 | -56 |
+| finn-callaghan | MID | 3 | 6,062 | -75 | +0 | +0 | -325 | 5,662 | -400 |
+| finn-maginness | SF | 29 | 26 | +0 | +0 | -3 | +0 | 23 | -3 |
+| finn-o-sullivan | SD | 2 | 3,740 | -47 | +0 | +0 | -200 | 3,493 | -247 |
+| finnbar-maley | KPF | 65 | 192 | -2 | +0 | +0 | -10 | 180 | -12 |
+| finnegan-davis | SD | 51 | 165 | +0 | +0 | -33 | +0 | 132 | -33 |
+| flynn-perez | SD | 65 | 139 | +0 | +0 | +0 | +0 | 139 | +0 |
+| flynn-riley | RUCK | 65 | 391 | +0 | +0 | +0 | +0 | 391 | +0 |
+| flynn-young | SF | 65 | 168 | +0 | +0 | +0 | +0 | 168 | +0 |
+| francis-evans | SF | 40 | 494 | -7 | +0 | +0 | -26 | 461 | -33 |
+| fred-rodriguez | SF | 65 | 201 | +0 | +0 | +0 | +0 | 201 | +0 |
+| george-hewett | MID | 32 | 2,056 | -25 | +0 | +0 | -111 | 1,920 | -136 |
+| george-stevens | MID | 58 | 142 | +0 | +0 | -34 | +0 | 108 | -34 |
+| george-wardlaw | MID | 4 | 3,235 | -40 | +0 | +0 | -174 | 3,021 | -214 |
+| griffin-logue | KPD | 8 | 78 | -2 | +0 | +0 | -4 | 72 | -6 |
+| gryan-miers | SF | 57 | 1,650 | -21 | +0 | +0 | -88 | 1,541 | -109 |
+| hamish-davis | MID | 65 | 1,028 | -13 | +0 | +0 | -54 | 961 | -67 |
+| harley-barker | MID | 24 | 677 | +0 | +0 | -81 | +0 | 596 | -81 |
+| harley-reid | MID | 1 | 3,820 | -48 | +0 | +0 | -204 | 3,568 | -252 |
+| harris-andrews | KPD | 60 | 1,623 | -20 | +0 | +0 | -87 | 1,516 | -107 |
+| harrison-coe | RUCK | 65 | 322 | +0 | +0 | +0 | +0 | 322 | +0 |
+| harrison-himmelberg | SD | 16 | 138 | -1 | +0 | +0 | -8 | 129 | -9 |
+| harrison-jones | KPF | 30 | 172 | -2 | +0 | +0 | -8 | 162 | -10 |
+| harrison-oliver | SD | 19 | 528 | -5 | +0 | -9 | -26 | 488 | -40 |
+| harrison-petty | KPF | 37 | 207 | -3 | +0 | +0 | -11 | 193 | -14 |
+| harrison-ramm | KPD | 65 | 545 | -4 | +0 | +0 | -18 | 523 | -22 |
+| harry-armstrong | KPF | 23 | 620 | -5 | +0 | -17 | -26 | 572 | -48 |
+| harry-barnett | RUCK | 23 | 553 | +0 | +0 | -84 | +0 | 469 | -84 |
+| harry-charleson | SD | 65 | 105 | +0 | +0 | +0 | +0 | 105 | +0 |
+| harry-cunningham | SD | 65 | 10 | +0 | +0 | +0 | +0 | 10 | +0 |
+| harry-dean | KPD | 3 | 2,577 | -32 | +354 | +0 | -158 | 2,741 | +164 |
+| harry-demattia | MID | 25 | 430 | +0 | +0 | -51 | +0 | 379 | -51 |
+| harry-edwards | KPD | 65 | 104 | -1 | +0 | +0 | -6 | 97 | -7 |
+| harry-kyle | SD | 14 | 1,158 | -14 | +93 | +0 | -66 | 1,171 | +13 |
+| harry-mckay | KPF | 10 | 1,735 | -22 | +0 | +0 | -93 | 1,620 | -115 |
+| harry-morrison | MID | 65 | 20 | +0 | +0 | +0 | -2 | 18 | -2 |
+| harry-o-farrell | KPD | 40 | 201 | +0 | +0 | -14 | +0 | 187 | -14 |
+| harry-perryman | SD | 14 | 68 | +0 | +0 | +0 | -3 | 65 | -3 |
+| harry-rowston | MID | 16 | 787 | -10 | +0 | +0 | -42 | 735 | -52 |
+| harry-schoenberg | SF | 24 | 50 | +0 | +0 | -5 | +0 | 45 | -5 |
+| harry-sharp | SF | 45 | 155 | -2 | +0 | +0 | -8 | 145 | -10 |
+| harry-sheezel | SF | 3 | 11,764 | -146 | +0 | +0 | -631 | 10,987 | -777 |
+| harvey-gallagher | SD | 39 | 87 | +0 | +0 | -3 | +0 | 84 | -3 |
+| harvey-harrison | SF | 52 | 50 | -1 | +0 | +0 | -2 | 47 | -3 |
+| harvey-johnston | SD | 49 | 329 | -4 | +0 | +0 | -17 | 308 | -21 |
+| harvey-langford | MID | 6 | 2,657 | -33 | +0 | +0 | -142 | 2,482 | -175 |
+| harvey-thomas | SF | 59 | 2,247 | -27 | +0 | +0 | -121 | 2,099 | -148 |
+| hayden-mclean | KPF | 65 | 214 | -3 | +0 | +0 | -11 | 200 | -14 |
+| hayden-young | MID | 7 | 1,762 | -22 | +0 | +0 | -94 | 1,646 | -116 |
+| heath-chapman | SD | 14 | 460 | -6 | +0 | +0 | -25 | 429 | -31 |
+| henry-hustwaite | MID | 37 | 235 | +0 | +0 | -9 | -1 | 225 | -10 |
+| henry-smith | KPF | 50 | 82 | +0 | +0 | -17 | +0 | 65 | -17 |
+| hudson-o-keeffe | KPF | 65 | 275 | -1 | +0 | +0 | -7 | 267 | -8 |
+| hugh-bond | SD | 50 | 153 | -2 | +0 | +0 | -8 | 143 | -10 |
+| hugh-boxshall | MID | 45 | 965 | -11 | +0 | +0 | -52 | 902 | -63 |
+| hugh-davies | KPD | 33 | 185 | +0 | +0 | -11 | +0 | 174 | -11 |
+| hugh-mccluggage | MID | 3 | 1,543 | -19 | +0 | +0 | -83 | 1,441 | -102 |
+| hugo-garcia | MID | 50 | 3,062 | -37 | +0 | +0 | -165 | 2,860 | -202 |
+| hugo-hall-kahan | SD | 65 | 215 | -3 | +0 | +0 | -12 | 200 | -15 |
+| hugo-mikunda | SF | 48 | 177 | +0 | +0 | -34 | +0 | 143 | -34 |
+| hugo-ralphsmith | MID | 45 | 54 | +0 | +0 | +0 | -3 | 51 | -3 |
+| hunter-clark | MID | 7 | 50 | +0 | +0 | -5 | +0 | 45 | -5 |
+| hunter-holmes | MID | 33 | 517 | +0 | +0 | -32 | +0 | 485 | -32 |
+| hussien-el-achkar | SF | 53 | 353 | -4 | +28 | +0 | -21 | 356 | +3 |
+| iliro-smit | RUCK | 65 | 204 | +0 | +0 | +0 | +0 | 204 | +0 |
+| indy-cotton | SF | 65 | 48 | +0 | +0 | +0 | +0 | 48 | +0 |
+| isaac-cumming | MID | 20 | 41 | +0 | +0 | -8 | +0 | 33 | -8 |
+| isaac-heeney | MID | 4 | 3,537 | -44 | +0 | +0 | -189 | 3,304 | -233 |
+| isaac-kako | SF | 13 | 1,413 | -17 | +0 | +0 | -76 | 1,320 | -93 |
+| isaac-keeler | KPF | 44 | 173 | +0 | +0 | -13 | -4 | 156 | -17 |
+| isaac-quaynor | SD | 13 | 596 | -8 | +0 | +0 | -31 | 557 | -39 |
+| isaiah-dudley | SF | 65 | 234 | -3 | +0 | +0 | -12 | 219 | -15 |
+| izak-rankine | SF | 3 | 4,685 | -58 | +0 | +0 | -251 | 4,376 | -309 |
+| jack-bowes | MID | 10 | 97 | +0 | +0 | -11 | +0 | 86 | -11 |
+| jack-buckley | KPD | 65 | 548 | -6 | +0 | +0 | -30 | 512 | -36 |
+| jack-buller | KPF | 65 | 94 | +0 | +0 | +0 | +0 | 94 | +0 |
+| jack-carroll | SD | 43 | 80 | -1 | +0 | +0 | -4 | 75 | -5 |
+| jack-crisp | MID | 65 | 410 | -4 | +0 | +0 | -23 | 383 | -27 |
+| jack-dalton | MID | 34 | 437 | -3 | +36 | -7 | -16 | 447 | +10 |
+| jack-darling | KPF | 28 | 155 | -2 | +0 | +0 | -8 | 145 | -10 |
+| jack-ginnivan | SF | 65 | 2,242 | -27 | +0 | +0 | -120 | 2,095 | -147 |
+| jack-graham | SF | 53 | 651 | -9 | +0 | +0 | -34 | 608 | -43 |
+| jack-gunston | KPF | 29 | 753 | -10 | +0 | +0 | -40 | 703 | -50 |
+| jack-henderson | SF | 65 | 113 | +0 | +0 | +0 | +0 | 113 | +0 |
+| jack-henry | KPF | 65 | 251 | -3 | +0 | +0 | -13 | 235 | -16 |
+| jack-higgins | SF | 17 | 52 | -1 | +0 | +0 | -3 | 48 | -4 |
+| jack-hutchinson | MID | 65 | 118 | +0 | +0 | +0 | +0 | 118 | +0 |
+| jack-ison | MID | 47 | 512 | -6 | +70 | +0 | -32 | 544 | +32 |
+| jack-lukosius | KPF | 2 | 462 | -5 | +0 | +0 | -25 | 432 | -30 |
+| jack-martin | SF | 3 | 107 | +0 | +0 | -10 | +0 | 97 | -10 |
+| jack-ough | MID | 36 | 687 | -8 | +0 | -2 | -35 | 642 | -45 |
+| jack-payne | KPD | 54 | 94 | -1 | +0 | -1 | -5 | 87 | -7 |
+| jack-ross | SF | 43 | 2,761 | -34 | +0 | +0 | -147 | 2,580 | -181 |
+| jack-scrimshaw | SD | 7 | 89 | -1 | +0 | +0 | -5 | 83 | -6 |
+| jack-silvagni | KPD | 53 | 617 | -8 | +0 | +0 | -32 | 577 | -40 |
+| jack-sinclair | SD | 65 | 3,322 | -42 | +0 | +0 | -178 | 3,102 | -220 |
+| jack-steele | MID | 21 | 1,191 | -15 | +0 | +0 | -63 | 1,113 | -78 |
+| jack-viney | MID | 13 | 229 | -3 | +0 | +0 | -12 | 214 | -15 |
+| jack-watkins | SF | 65 | 130 | +0 | +0 | +0 | +0 | 130 | +0 |
+| jack-whitlock | KPF | 33 | 1,271 | -15 | +0 | +0 | -68 | 1,188 | -83 |
+| jack-williams | KPF | 57 | 415 | -6 | +0 | +0 | -22 | 387 | -28 |
+| jackson-archer | SD | 59 | 27 | +0 | +0 | -6 | +0 | 21 | -6 |
+| jackson-macrae | MID | 8 | 101 | +0 | +0 | -15 | +0 | 86 | -15 |
+| jackson-mead | MID | 25 | 29 | +0 | +0 | -4 | +0 | 25 | -4 |
+| jacob-farrow | SD | 10 | 2,601 | -33 | +356 | +0 | -159 | 2,765 | +164 |
+| jacob-hopper | MID | 7 | 101 | +0 | +0 | -15 | +0 | 86 | -15 |
+| jacob-konstanty | SF | 20 | 181 | -3 | +0 | +0 | -9 | 169 | -12 |
+| jacob-molier | RUCK | 52 | 283 | +0 | +0 | -64 | +0 | 219 | -64 |
+| jacob-moss | KPD | 65 | 36 | +0 | +0 | +0 | +0 | 36 | +0 |
+| jacob-newton | SF | 65 | 299 | -1 | +0 | +0 | -6 | 292 | -7 |
+| jacob-van-rooyen | KPF | 19 | 1,894 | -24 | +0 | +0 | -102 | 1,768 | -126 |
+| jacob-wehr | SD | 61 | 14 | +0 | +0 | -2 | +0 | 12 | -2 |
+| jacob-weitering | KPD | 1 | 1,013 | -12 | +0 | +0 | -56 | 945 | -68 |
+| jade-gresham | SF | 18 | 39 | +0 | +0 | -7 | +0 | 32 | -7 |
+| jaeger-o-meara | MID | 1 | 165 | +0 | +0 | -2 | +0 | 163 | -2 |
+| jagga-smith | SF | 3 | 4,855 | -61 | +0 | +0 | -261 | 4,533 | -322 |
+| jai-culley | MID | 65 | 178 | -2 | +0 | +0 | -10 | 166 | -12 |
+| jai-murray | MID | 17 | 1,138 | -14 | +98 | +0 | -67 | 1,155 | +17 |
+| jai-newcombe | MID | 65 | 4,883 | -61 | +0 | +0 | -261 | 4,561 | -322 |
+| jai-saxena | SF | 65 | 84 | +0 | +0 | +0 | +0 | 84 | +0 |
+| jai-serong | KPD | 53 | 1,233 | -15 | +0 | +0 | -65 | 1,153 | -80 |
+| jaime-uhr-henry | RUCK | 65 | 26 | +0 | +0 | +0 | +0 | 26 | +0 |
+| jake-bowey | SD | 22 | 4,319 | -54 | +0 | +0 | -231 | 4,034 | -285 |
+| jake-kolodjashnij | KPD | 41 | 22 | +0 | +0 | -2 | +0 | 20 | -2 |
+| jake-lever | SD | 15 | 143 | -2 | +0 | +0 | -8 | 133 | -10 |
+| jake-lloyd | SF | 65 | 173 | -2 | +0 | +0 | -9 | 162 | -11 |
+| jake-melksham | KPF | 10 | 50 | +0 | +0 | -5 | +0 | 45 | -5 |
+| jake-riccardi | KPF | 50 | 257 | -3 | +0 | +0 | -14 | 240 | -17 |
+| jake-rogers | SF | 14 | 587 | -7 | +0 | +0 | -32 | 548 | -39 |
+| jake-soligo | SF | 36 | 2,051 | -25 | +0 | +0 | -110 | 1,916 | -135 |
+| jake-stringer | SF | 7 | 103 | -1 | +0 | +0 | -6 | 96 | -7 |
+| jake-waterman | KPF | 65 | 1,160 | -14 | +0 | +0 | -63 | 1,083 | -77 |
+| jakob-ryan | SD | 28 | 239 | +0 | +0 | -21 | +0 | 218 | -21 |
+| jamarra-ugle-hagan | KPF | 1 | 287 | -3 | +0 | -1 | -14 | 269 | -18 |
+| james-barrat | KPF | 32 | 225 | +0 | +0 | -17 | +0 | 208 | -17 |
+| james-blanck | KPD | 65 | 70 | +0 | +0 | +0 | +0 | 70 | +0 |
+| james-borlase | KPD | 65 | 424 | -6 | +0 | +0 | -23 | 395 | -29 |
+| james-jordon | SF | 33 | 176 | -3 | +0 | +0 | -10 | 163 | -13 |
+| james-leake | SF | 17 | 563 | -6 | +0 | -10 | -26 | 521 | -42 |
+| james-o-donnell | KPD | 65 | 727 | -10 | +0 | +0 | -38 | 679 | -48 |
+| james-peatling | MID | 65 | 1,098 | -14 | +0 | +0 | -59 | 1,025 | -73 |
+| james-rowbottom | SF | 25 | 1,205 | -15 | +0 | +0 | -65 | 1,125 | -80 |
+| james-sicily | SD | 52 | 1,421 | -18 | +0 | +0 | -77 | 1,326 | -95 |
+| james-trezise | SD | 65 | 118 | -1 | +0 | +0 | -7 | 110 | -8 |
+| james-tunstill | MID | 41 | 82 | +0 | +0 | -2 | -4 | 76 | -6 |
+| james-worpel | MID | 45 | 413 | -4 | +0 | +0 | -22 | 387 | -26 |
+| jamie-cripps | SF | 26 | 28 | +0 | +0 | -3 | +0 | 25 | -3 |
+| jamie-elliott | SF | 39 | 19 | +0 | +0 | -1 | +0 | 18 | -1 |
+| jaren-carr | SF | 63 | 65 | +0 | +0 | -5 | +0 | 60 | -5 |
+| jarman-impey | SD | 21 | 845 | -10 | +0 | +0 | -45 | 790 | -55 |
+| jarrod-berry | MID | 17 | 189 | -2 | +0 | +0 | -9 | 178 | -11 |
+| jarrod-witts | RUCK | 65 | 139 | -1 | +0 | +0 | -9 | 129 | -10 |
+| jase-burgoyne | SD | 60 | 2,549 | -31 | +0 | +0 | -137 | 2,381 | -168 |
+| jason-horne-francis | SF | 1 | 6,042 | -74 | +0 | +0 | -324 | 5,644 | -398 |
+| jaspa-fletcher | SD | 12 | 2,616 | -32 | +0 | +0 | -141 | 2,443 | -173 |
+| jasper-alger | SF | 58 | 434 | -5 | +0 | +0 | -24 | 405 | -29 |
+| jaxon-artemis | SD | 65 | 520 | -4 | +0 | +0 | -16 | 500 | -20 |
+| jaxon-prior | SD | 58 | 305 | -4 | +0 | +0 | -16 | 285 | -20 |
+| jay-polkinghorne | KPF | 44 | 297 | -1 | +0 | -17 | -9 | 270 | -27 |
+| jayden-laverde | KPD | 20 | 193 | -2 | +0 | +0 | -10 | 181 | -12 |
+| jayden-nguyen | SD | 65 | 471 | -5 | +0 | +0 | -24 | 442 | -29 |
+| jayden-short | SD | 65 | 887 | -12 | +0 | +0 | -47 | 828 | -59 |
+| jed-adams | KPD | 38 | 154 | +0 | +0 | -8 | +0 | 146 | -8 |
+| jed-bews | SD | 65 | 15 | +0 | +0 | +0 | +0 | 15 | +0 |
+| jed-walter | KPF | 3 | 1,439 | -17 | +0 | +0 | -77 | 1,345 | -94 |
+| jedd-busslinger | KPD | 13 | 916 | -11 | +0 | +0 | -50 | 855 | -61 |
+| jeremy-cameron | KPF | 12 | 778 | -9 | +0 | +0 | -42 | 727 | -51 |
+| jeremy-howe | SD | 35 | 224 | -3 | +0 | +0 | -11 | 210 | -14 |
+| jeremy-sharp | MID | 27 | 63 | -1 | +0 | -1 | -4 | 57 | -6 |
+| jesse-dattoli | SF | 22 | 318 | +0 | +0 | -38 | +0 | 280 | -38 |
+| jesse-hogan | KPF | 5 | 205 | -2 | +0 | +0 | -11 | 192 | -13 |
+| jesse-mellor | SF | 65 | 84 | +0 | +0 | +0 | +0 | 84 | +0 |
+| jesse-motlop | SF | 27 | 90 | -1 | +0 | -2 | -3 | 84 | -6 |
+| jevan-phillipou | MID | 35 | 273 | +0 | +0 | -10 | +0 | 263 | -10 |
+| jhye-clark | SF | 8 | 1,059 | -13 | +0 | +0 | -57 | 989 | -70 |
+| jobe-shanahan | KPF | 30 | 1,739 | -22 | +0 | +0 | -93 | 1,624 | -115 |
+| joe-berry | SF | 15 | 1,259 | -15 | +0 | +0 | -69 | 1,175 | -84 |
+| joe-pike | RUCK | 65 | 151 | +0 | +0 | +0 | +0 | 151 | +0 |
+| joe-richards | SF | 48 | 915 | -12 | +0 | +0 | -49 | 854 | -61 |
+| joel-amartey | KPF | 65 | 31 | -1 | +0 | +0 | -1 | 29 | -2 |
+| joel-cochran | SD | 47 | 161 | +0 | +0 | -31 | +0 | 130 | -31 |
+| joel-fitzgerald | MID | 65 | 72 | -2 | +0 | +0 | -3 | 67 | -5 |
+| joel-freijah | SF | 45 | 2,883 | -36 | +0 | +0 | -155 | 2,692 | -191 |
+| joel-hamling | KPD | 41 | 18 | +0 | +0 | -2 | +0 | 16 | -2 |
+| joel-jeffrey | SD | 30 | 1,579 | -19 | +0 | +0 | -84 | 1,476 | -103 |
+| john-noble | SD | 65 | 2,159 | -27 | +0 | +0 | -116 | 2,016 | -143 |
+| jonty-faull | KPF | 14 | 989 | -12 | +0 | +0 | -53 | 924 | -65 |
+| jordan-boyd | SD | 65 | 55 | +0 | +0 | +0 | +0 | 55 | +0 |
+| jordan-clark | SD | 15 | 3,264 | -40 | +0 | +0 | -175 | 3,049 | -215 |
+| jordan-croft | KPF | 15 | 1,048 | -13 | +0 | +0 | -56 | 979 | -69 |
+| jordan-dawson | MID | 55 | 3,443 | -43 | +0 | +0 | -184 | 3,216 | -227 |
+| jordan-de-goey | SF | 6 | 1,433 | -18 | +0 | +0 | -76 | 1,339 | -94 |
+| jordan-ridley | SD | 22 | 695 | -9 | +0 | +0 | -37 | 649 | -46 |
+| jordon-butts | KPD | 65 | 18 | +0 | +0 | +0 | +0 | 18 | +0 |
+| jordon-sweet | RUCK | 65 | 2,285 | -27 | +0 | +0 | -123 | 2,135 | -150 |
+| josaia-delana | SF | 65 | 391 | -4 | +0 | +0 | -21 | 366 | -25 |
+| joseph-fonti | SD | 44 | 596 | -8 | +0 | +0 | -32 | 556 | -40 |
+| josh-battle | KPD | 39 | 2,028 | -25 | +0 | +0 | -108 | 1,895 | -133 |
+| josh-daicos | SD | 57 | 2,104 | -26 | +0 | +0 | -112 | 1,966 | -138 |
+| josh-dolan | SF | 31 | 501 | -7 | +0 | +0 | -26 | 468 | -33 |
+| josh-draper | KPD | 65 | 389 | -5 | +0 | +0 | -20 | 364 | -25 |
+| josh-dunkley | MID | 25 | 1,134 | -14 | +0 | +0 | -61 | 1,059 | -75 |
+| josh-gibcus | KPD | 9 | 254 | -1 | +0 | -18 | -5 | 230 | -24 |
+| josh-goater | SD | 22 | 93 | +0 | +0 | -10 | +0 | 83 | -10 |
+| josh-lai | SD | 65 | 597 | -8 | +0 | +0 | -31 | 558 | -39 |
+| josh-lindsay | SD | 19 | 2,335 | -29 | +316 | +0 | -143 | 2,479 | +144 |
+| josh-rachele | SF | 6 | 2,008 | -25 | +0 | +0 | -107 | 1,876 | -132 |
+| josh-sinn | SD | 12 | 266 | -1 | +0 | -21 | -5 | 239 | -27 |
+| josh-smillie | MID | 7 | 953 | +0 | +0 | -135 | +0 | 818 | -135 |
+| josh-treacy | KPF | 65 | 6,921 | -85 | +0 | +0 | -372 | 6,464 | -457 |
+| josh-ward | MID | 7 | 2,817 | -35 | +0 | +0 | -151 | 2,631 | -186 |
+| josh-worrell | SD | 28 | 3,723 | -46 | +0 | +0 | -199 | 3,478 | -245 |
+| joshua-kelly | MID | 2 | 370 | -4 | +0 | +0 | -20 | 346 | -24 |
+| joshua-weddle | SD | 18 | 1,510 | -19 | +0 | +0 | -81 | 1,410 | -100 |
+| judd-mcvee | SD | 65 | 316 | -3 | +0 | +0 | -17 | 296 | -20 |
+| judson-clarke | SF | 30 | 90 | +0 | +0 | -6 | -1 | 83 | -7 |
+| justin-mcinerney | SF | 44 | 2,143 | -27 | +0 | +0 | -115 | 2,001 | -142 |
+| jy-farrar | KPF | 59 | 10 | +0 | +0 | -2 | +0 | 8 | -2 |
+| jy-simpkin | SF | 12 | 1,164 | -14 | +0 | +0 | -63 | 1,087 | -77 |
+| jye-amiss | KPF | 8 | 1,495 | -18 | +0 | +0 | -81 | 1,396 | -99 |
+| jye-caldwell | MID | 11 | 979 | -13 | +0 | +0 | -52 | 914 | -65 |
+| kade-chandler | SF | 65 | 811 | -10 | +0 | +0 | -44 | 757 | -54 |
+| kai-lohmann | SF | 20 | 879 | -11 | +0 | +0 | -47 | 821 | -58 |
+| kalani-white | KPF | 65 | 84 | +0 | +0 | +0 | +0 | 84 | +0 |
+| kaleb-smith | SD | 49 | 67 | +0 | +0 | -14 | +0 | 53 | -14 |
+| kane-farrell | SD | 51 | 1,306 | -17 | +0 | +0 | -69 | 1,220 | -86 |
+| kane-mcauliffe | MID | 40 | 1,312 | -17 | +0 | +0 | -70 | 1,225 | -87 |
+| karl-amon | SD | 59 | 344 | -5 | +0 | +0 | -18 | 321 | -23 |
+| karl-worner | SD | 65 | 1,206 | -15 | +0 | +0 | -64 | 1,127 | -79 |
+| kayle-gerreyn | RUCK | 37 | 177 | +0 | +0 | -7 | +0 | 170 | -7 |
+| keidean-coleman | SD | 36 | 754 | -9 | +0 | +0 | -41 | 704 | -50 |
+| keighton-matofai-forbes | SF | 65 | 104 | +0 | +0 | +0 | +0 | 104 | +0 |
+| kieren-briggs | RUCK | 34 | 1,992 | -25 | +0 | +0 | -107 | 1,860 | -132 |
+| kobe-mcdonald | SD | 65 | 85 | +0 | +0 | +0 | +0 | 85 | +0 |
+| koby-coulson | MID | 46 | 316 | +0 | +0 | -57 | +0 | 259 | -57 |
+| koby-evans | MID | 38 | 254 | +0 | +0 | -10 | +0 | 244 | -10 |
+| koltyn-tholstrup | SF | 13 | 1,698 | -21 | +0 | +0 | -91 | 1,586 | -112 |
+| kye-annand | KPD | 65 | 239 | -2 | +0 | +0 | -14 | 223 | -16 |
+| kye-fincher | SD | 52 | 249 | +0 | +0 | -55 | +0 | 194 | -55 |
+| kyle-langford | KPF | 18 | 518 | -6 | +0 | +0 | -28 | 484 | -34 |
+| kysaiah-pickett | SF | 12 | 4,249 | -53 | +0 | +0 | -227 | 3,969 | -280 |
+| lachie-jaques | SD | 29 | 725 | -9 | +0 | +0 | -39 | 677 | -48 |
+| lachie-neale | MID | 65 | 2,348 | -29 | +0 | +0 | -126 | 2,193 | -155 |
+| lachie-sullivan | SF | 65 | 86 | +0 | +0 | +0 | +0 | 86 | +0 |
+| lachie-whitfield | SD | 1 | 2,223 | -26 | +0 | +0 | -120 | 2,077 | -146 |
+| lachlan-ash | SD | 4 | 5,728 | -71 | +0 | +0 | -307 | 5,350 | -378 |
+| lachlan-blakiston | KPD | 65 | 152 | +0 | +0 | +0 | +0 | 152 | +0 |
+| lachlan-bramble | SF | 65 | 89 | -2 | +0 | +0 | -4 | 83 | -6 |
+| lachlan-carmichael | SD | 21 | 548 | +0 | +0 | -76 | +0 | 472 | -76 |
+| lachlan-cowan | SD | 30 | 724 | -8 | +0 | +0 | -39 | 677 | -47 |
+| lachlan-fogarty | SF | 22 | 35 | +0 | +0 | -1 | -2 | 32 | -3 |
+| lachlan-gulbin | SF | 65 | 415 | -5 | +0 | +0 | -22 | 388 | -27 |
+| lachlan-jones | SD | 16 | 125 | -1 | +0 | +0 | -7 | 117 | -8 |
+| lachlan-mcandrew | RUCK | 65 | 1,279 | -16 | +0 | +0 | -69 | 1,194 | -85 |
+| lachlan-mcneil | SF | 65 | 20 | +0 | +0 | +0 | +0 | 20 | +0 |
+| lachlan-schultz | SF | 57 | 740 | -8 | +0 | +0 | -40 | 692 | -48 |
+| lachlan-sholl | MID | 64 | 137 | -1 | +0 | +0 | -8 | 128 | -9 |
+| lachlan-smith | RUCK | 47 | 399 | -1 | +0 | -77 | +0 | 321 | -78 |
+| lachlan-weller | MID | 14 | 74 | +0 | +0 | -13 | +0 | 61 | -13 |
+| lachy-dovaston | SF | 16 | 512 | -6 | +56 | +0 | -30 | 532 | +20 |
+| laitham-vandermeer | SF | 37 | 20 | +0 | +0 | -1 | +0 | 19 | -1 |
+| lance-collard | SF | 28 | 146 | +0 | +0 | -11 | -1 | 134 | -12 |
+| latrelle-pickett | SF | 12 | 548 | +0 | +0 | -48 | -4 | 496 | -52 |
+| lawson-humphries | SD | 63 | 1,816 | -23 | +0 | +0 | -97 | 1,696 | -120 |
+| leek-aleer | KPD | 15 | 231 | -3 | +0 | +0 | -11 | 217 | -14 |
+| lennox-hoffman | SD | 65 | 104 | +0 | +0 | +0 | +0 | 104 | +0 |
+| leo-lombard | SF | 9 | 1,957 | -23 | +0 | +0 | -106 | 1,828 | -129 |
+| leon-kickett | SF | 65 | 151 | +0 | +0 | +0 | +0 | 151 | +0 |
+| levi-ashcroft | MID | 5 | 3,519 | -44 | +0 | +0 | -188 | 3,287 | -232 |
+| lewis-hayes | SD | 25 | 250 | +0 | +0 | -31 | +0 | 219 | -31 |
+| lewis-melican | KPD | 65 | 21 | -1 | +0 | +0 | -1 | 19 | -2 |
+| lewis-young | KPF | 49 | 116 | -1 | +0 | +0 | -7 | 108 | -8 |
+| liam-baker | SD | 65 | 402 | -6 | +0 | +0 | -21 | 375 | -27 |
+| liam-duggan | SD | 12 | 210 | -3 | +0 | +0 | -11 | 196 | -14 |
+| liam-fawcett | KPF | 43 | 454 | -6 | +0 | +0 | -23 | 425 | -29 |
+| liam-henry | SF | 9 | 63 | +0 | +0 | -7 | +0 | 56 | -7 |
+| liam-hetherton | KPF | 65 | 168 | +0 | +0 | +0 | +0 | 168 | +0 |
+| liam-mcmahon | KPF | 33 | 135 | +0 | +0 | -8 | +0 | 127 | -8 |
+| liam-o-connell | SD | 65 | 39 | -1 | +0 | +0 | -2 | 36 | -3 |
+| liam-puncher | KPD | 65 | 124 | +0 | +0 | +0 | -8 | 116 | -8 |
+| liam-reidy | KPF | 65 | 329 | -1 | +0 | +0 | +0 | 328 | -1 |
+| liam-ryan | SF | 26 | 24 | +0 | +0 | -3 | +0 | 21 | -3 |
+| liam-stocker | SD | 19 | 41 | +0 | +0 | -8 | +0 | 33 | -8 |
+| lincoln-mccarthy | SF | 65 | 15 | +0 | +0 | +0 | +0 | 15 | +0 |
+| lloyd-meek | RUCK | 65 | 1,300 | -16 | +0 | +0 | -70 | 1,214 | -86 |
+| logan-evans | SD | 65 | 1,361 | -17 | +0 | +0 | -74 | 1,270 | -91 |
+| logan-mcdonald | KPF | 4 | 693 | -9 | +0 | +0 | -37 | 647 | -46 |
+| logan-morris | KPF | 31 | 3,247 | -40 | +0 | +0 | -174 | 3,033 | -214 |
+| logan-smith | RUCK | 65 | 185 | +0 | +0 | +0 | +0 | 185 | +0 |
+| louis-emmett | RUCK | 27 | 749 | -10 | +99 | +0 | -46 | 792 | +43 |
+| lucas-camporeale | MID | 54 | 159 | +0 | +0 | -35 | +0 | 124 | -35 |
+| lucca-grego | SD | 48 | 124 | +0 | +0 | -23 | +0 | 101 | -23 |
+| lukas-cooke | KPD | 65 | 364 | +1 | +0 | +0 | +0 | 365 | +1 |
+| luke-beecken | MID | 65 | 164 | +0 | +0 | +0 | +0 | 164 | +0 |
+| luke-cleary | SD | 61 | 29 | +0 | +0 | -1 | -1 | 27 | -2 |
+| luke-davies-uniacke | MID | 4 | 4,070 | -51 | +0 | +0 | -217 | 3,802 | -268 |
+| luke-jackson | RUCK | 3 | 10,203 | -125 | +0 | +0 | -547 | 9,531 | -672 |
+| luke-kennedy | MID | 62 | 284 | -2 | +0 | -15 | -9 | 258 | -26 |
+| luke-lloyd | KPF | 42 | 164 | +0 | +0 | -18 | +0 | 146 | -18 |
+| luke-mcdonald | SD | 8 | 50 | +0 | +0 | -5 | +0 | 45 | -5 |
+| luke-nankervis | MID | 65 | 384 | -5 | +0 | +0 | -21 | 358 | -26 |
+| luke-parker | SD | 42 | 1,339 | -17 | +0 | +0 | -72 | 1,250 | -89 |
+| luke-pedlar | SF | 11 | 112 | +0 | +0 | -11 | +0 | 101 | -11 |
+| luke-ryan | SD | 65 | 1,315 | -16 | +0 | +0 | -70 | 1,229 | -86 |
+| luke-trainor | SD | 21 | 1,551 | -20 | +0 | +0 | -83 | 1,448 | -103 |
+| luke-urquhart | MID | 57 | 143 | +0 | +0 | -34 | +0 | 109 | -34 |
+| luker-kentfield | KPF | 65 | 419 | -2 | +0 | +0 | -9 | 408 | -11 |
+| mabior-chol | KPF | 65 | 205 | -2 | +0 | +0 | -11 | 192 | -13 |
+| mac-andrew | KPD | 5 | 4,169 | -51 | +0 | +0 | -224 | 3,894 | -275 |
+| malakai-champion | SF | 65 | 341 | -4 | +0 | +0 | -19 | 318 | -23 |
+| malcolm-rosas | SF | 65 | 25 | +0 | +0 | +0 | -1 | 24 | -1 |
+| mani-liddy | MID | 65 | 152 | +0 | +0 | +0 | +0 | 152 | +0 |
+| marc-pittonet | RUCK | 50 | 466 | -6 | +0 | +0 | -26 | 434 | -32 |
+| marcus-bontempelli | MID | 4 | 3,876 | -49 | +0 | +0 | -207 | 3,620 | -256 |
+| marcus-herbert | MID | 65 | 906 | -12 | +0 | +0 | -48 | 846 | -60 |
+| marcus-windhager | SD | 47 | 1,864 | -22 | +0 | +0 | -100 | 1,742 | -122 |
+| mark-blicavs | RUCK | 65 | 5 | +0 | +0 | +0 | +0 | 5 | +0 |
+| mark-keane | KPD | 65 | 1,557 | -19 | +0 | +0 | -83 | 1,455 | -102 |
+| mark-o-connor | SD | 65 | 8 | +0 | +0 | +0 | -1 | 7 | -1 |
+| mason-cox | KPF | 65 | 3 | +0 | +0 | +0 | +0 | 3 | +0 |
+| mason-redman | SD | 30 | 1,176 | -14 | +0 | +0 | -63 | 1,099 | -77 |
+| mason-wood | SF | 44 | 383 | -5 | +0 | +0 | -20 | 358 | -25 |
+| massimo-d-ambrosio | MID | 65 | 1,565 | -20 | +0 | +0 | -84 | 1,461 | -104 |
+| matt-carroll | SD | 65 | 1,014 | -12 | +0 | +0 | -55 | 947 | -67 |
+| matt-cottrell | SF | 65 | 72 | -1 | +0 | +0 | -4 | 67 | -5 |
+| matt-duffy | KPD | 65 | 43 | +0 | +0 | +0 | +0 | 43 | +0 |
+| matt-guelfi | SF | 65 | 15 | +0 | +0 | +0 | +0 | 15 | +0 |
+| matt-hill | SD | 65 | 56 | +0 | +0 | +0 | -1 | 55 | -1 |
+| matt-johnson-1 | MID | 21 | 1,131 | -15 | +0 | +0 | -60 | 1,056 | -75 |
+| matt-owies | SF | 65 | 3 | +0 | +0 | +0 | +0 | 3 | +0 |
+| matt-rowell | MID | 1 | 4,770 | -59 | +0 | +0 | -255 | 4,456 | -314 |
+| matt-whitlock | KPF | 27 | 372 | -1 | +0 | -26 | -6 | 339 | -33 |
+| mattaes-phillipou | SF | 10 | 2,281 | -29 | +0 | +0 | -123 | 2,129 | -152 |
+| matthew-flynn | RUCK | 41 | 502 | -5 | +0 | -2 | -27 | 468 | -34 |
+| matthew-jefferson | KPF | 15 | 405 | -5 | +0 | +0 | -22 | 378 | -27 |
+| matthew-kennedy-1 | MID | 13 | 423 | -6 | +0 | +0 | -23 | 394 | -29 |
+| matthew-leray | MID | 56 | 219 | +0 | +0 | -49 | +0 | 170 | -49 |
+| matthew-roberts | SD | 34 | 1,818 | -23 | +0 | +0 | -97 | 1,698 | -120 |
+| maurice-rioli-1 | SF | 53 | 27 | +0 | +0 | +0 | -2 | 25 | -2 |
+| max-beattie | SF | 65 | 181 | +0 | +0 | +0 | +0 | 181 | +0 |
+| max-gawn | RUCK | 33 | 3,336 | -41 | +0 | +0 | -178 | 3,117 | -219 |
+| max-gruzewski | KPF | 22 | 626 | -7 | +0 | +0 | -35 | 584 | -42 |
+| max-hall | SF | 65 | 2,790 | -34 | +0 | +0 | -150 | 2,606 | -184 |
+| max-heath | KPF | 65 | 682 | -8 | +0 | +0 | -37 | 637 | -45 |
+| max-holmes | MID | 21 | 8,406 | -103 | +0 | +0 | -451 | 7,852 | -554 |
+| max-king-stk | KPF | 4 | 239 | -3 | +0 | -1 | -13 | 222 | -17 |
+| max-king-syd | KPF | 49 | 156 | +0 | +0 | -32 | +0 | 124 | -32 |
+| max-knobel | RUCK | 42 | 411 | +0 | +0 | -46 | +0 | 365 | -46 |
+| max-kondogiannis | SD | 36 | 435 | -6 | +34 | +0 | -26 | 437 | +2 |
+| max-mapley | RUCK | 65 | 322 | +0 | +0 | +0 | +0 | 322 | +0 |
+| max-michalanney | SD | 17 | 493 | -6 | +0 | +0 | -26 | 461 | -32 |
+| max-ramsden | KPF | 65 | 257 | +0 | +0 | +0 | -2 | 255 | -2 |
+| michael-frederick | SF | 60 | 50 | -1 | +0 | +0 | -1 | 48 | -2 |
+| michael-sellwood | SD | 65 | 168 | -2 | +0 | +0 | -9 | 157 | -11 |
+| milan-murdock | SF | 65 | 208 | -3 | +0 | +0 | -11 | 194 | -14 |
+| miles-bergman | SD | 14 | 922 | -12 | +0 | +0 | -49 | 861 | -61 |
+| mitch-georgiades | KPF | 18 | 1,427 | -17 | +0 | +0 | -77 | 1,333 | -94 |
+| mitch-mcgovern | SF | 43 | 40 | -1 | +0 | +0 | -2 | 37 | -3 |
+| mitch-podhajski | KPF | 65 | 399 | +0 | +0 | +0 | +1 | 400 | +1 |
+| mitch-zadow | SF | 65 | 139 | +0 | +0 | +0 | +0 | 139 | +0 |
+| mitchell-edwards | RUCK | 32 | 2,439 | -29 | +0 | +0 | -131 | 2,279 | -160 |
+| mitchell-hinge | SD | 65 | 322 | -4 | +0 | +0 | -17 | 301 | -21 |
+| mitchell-knevitt | MID | 25 | 258 | +0 | +0 | -23 | -4 | 231 | -27 |
+| mitchell-lewis | KPF | 65 | 517 | -6 | +0 | +0 | -28 | 483 | -34 |
+| mitchell-marsh | KPF | 22 | 506 | +0 | +0 | -63 | +0 | 443 | -63 |
+| mitchito-owens | KPF | 33 | 2,071 | -25 | +0 | +0 | -111 | 1,935 | -136 |
+| murphy-reid | SF | 17 | 4,141 | -50 | +0 | +0 | -223 | 3,868 | -273 |
+| mykelti-lefau | KPF | 65 | 86 | +0 | +0 | +0 | +0 | 86 | +0 |
+| nasiah-wanganeen-milera | SD | 11 | 9,688 | -119 | +0 | +0 | -520 | 9,049 | -639 |
+| nate-caddy | KPF | 10 | 1,862 | -22 | +0 | +0 | -100 | 1,740 | -122 |
+| nathan-broad | SD | 65 | 15 | +0 | +0 | +0 | +0 | 15 | +0 |
+| nathan-o-driscoll | MID | 28 | 597 | -8 | +0 | +0 | -31 | 558 | -39 |
+| nathan-wardius | SF | 65 | 77 | +0 | +0 | +0 | +0 | 77 | +0 |
+| ned-bowman | SF | 26 | 257 | +0 | +0 | -28 | +0 | 229 | -28 |
+| ned-long | SF | 65 | 1,416 | -18 | +0 | +0 | -75 | 1,323 | -93 |
+| ned-moyle | RUCK | 65 | 2,285 | -27 | +0 | +0 | -123 | 2,135 | -150 |
+| ned-reeves | RUCK | 65 | 236 | -3 | +0 | +0 | -14 | 219 | -17 |
+| neil-erasmus | MID | 10 | 1,026 | -12 | +0 | +0 | -55 | 959 | -67 |
+| nic-newman | SD | 65 | 628 | -7 | +0 | +0 | -34 | 587 | -41 |
+| nicholas-coffield | SD | 8 | 50 | +0 | +0 | -5 | +0 | 45 | -5 |
+| nicholas-holman | SF | 49 | 14 | +0 | +0 | -3 | +0 | 11 | -3 |
+| nicholas-martin | SF | 65 | 3,513 | -44 | +0 | +0 | -188 | 3,281 | -232 |
+| nick-blakey | SD | 10 | 4,273 | -53 | +0 | +0 | -229 | 3,991 | -282 |
+| nick-bryan | RUCK | 37 | 778 | -9 | +0 | +0 | -42 | 727 | -51 |
+| nick-daicos | MID | 4 | 10,945 | -136 | +0 | +0 | -587 | 10,222 | -723 |
+| nick-driscoll | SF | 65 | 201 | +0 | +0 | +0 | +0 | 201 | +0 |
+| nick-haynes | SD | 10 | 60 | -1 | +0 | +0 | -3 | 56 | -4 |
+| nick-larkey | KPF | 65 | 455 | -6 | +0 | +0 | -24 | 425 | -30 |
+| nick-madden | RUCK | 65 | 1,766 | -21 | +0 | +0 | -95 | 1,650 | -116 |
+| nick-murray | KPD | 65 | 321 | -4 | +0 | +0 | -17 | 300 | -21 |
+| nick-vlastuin | SD | 12 | 83 | -1 | +0 | +0 | -5 | 77 | -6 |
+| nick-watson | SF | 5 | 3,839 | -48 | +0 | +0 | -206 | 3,585 | -254 |
+| nikolas-cox | MID | 8 | 136 | -1 | +0 | +0 | -9 | 126 | -10 |
+| noah-anderson | MID | 2 | 5,256 | -65 | +0 | +0 | -282 | 4,909 | -347 |
+| noah-answerth | SD | 55 | 12 | +0 | +0 | -2 | +0 | 10 | -2 |
+| noah-balta | KPF | 25 | 418 | -5 | +0 | +0 | -22 | 391 | -27 |
+| noah-chamberlain | KPF | 65 | 86 | +0 | +0 | +0 | +0 | 86 | +0 |
+| noah-howes | KPF | 65 | 229 | +1 | +0 | +0 | +0 | 230 | +1 |
+| noah-long | SF | 57 | 124 | -2 | +0 | -4 | -6 | 112 | -12 |
+| noah-mraz | KPD | 35 | 1,769 | -15 | +0 | -24 | -65 | 1,665 | -104 |
+| noah-roberts-thomson | MID | 54 | 213 | -1 | +7 | -34 | -3 | 182 | -31 |
+| oisin-mullin | SD | 65 | 14 | +0 | +0 | +0 | +0 | 14 | +0 |
+| oliver-florent | SD | 11 | 732 | -9 | +0 | +0 | -39 | 684 | -48 |
+| oliver-francou | MID | 65 | 576 | -5 | +0 | +0 | -20 | 551 | -25 |
+| oliver-griffin | SF | 65 | 181 | +0 | +0 | +0 | +0 | 181 | +0 |
+| oliver-hannaford | MID | 18 | 398 | -5 | +0 | -8 | -19 | 366 | -32 |
+| oliver-hayes-brown | RUCK | 65 | 190 | -2 | +0 | +0 | -10 | 178 | -12 |
+| oliver-henry | KPF | 18 | 197 | -2 | +0 | +0 | -11 | 184 | -13 |
+| oliver-hollands | SD | 11 | 1,739 | -21 | +0 | +0 | -93 | 1,625 | -114 |
+| oliver-wiltshire | SF | 61 | 49 | +0 | +0 | -8 | +0 | 41 | -8 |
+| oliver-wines | MID | 10 | 255 | -4 | +0 | +0 | -12 | 239 | -16 |
+| ollie-dempsey | MID | 65 | 2,428 | -30 | +0 | +0 | -130 | 2,268 | -160 |
+| ollie-greeves | MID | 65 | 583 | -3 | +39 | +0 | -21 | 598 | +15 |
+| ollie-lord | KPF | 51 | 105 | +0 | +0 | -3 | -6 | 96 | -9 |
+| ollie-murphy | KPD | 41 | 168 | +0 | +0 | -14 | +0 | 154 | -14 |
+| oscar-adams | KPD | 51 | 79 | -1 | +0 | +0 | -4 | 74 | -5 |
+| oscar-allen | KPF | 21 | 100 | -2 | +0 | +0 | -5 | 93 | -7 |
+| oscar-berry | KPD | 65 | 53 | +0 | +0 | +0 | +0 | 53 | +0 |
+| oscar-mcdonald | KPD | 53 | 68 | -1 | +0 | +0 | -3 | 64 | -4 |
+| oscar-ryan | SD | 27 | 305 | +1 | +0 | -31 | +1 | 276 | -29 |
+| oscar-steene | KPF | 65 | 468 | -5 | +0 | +0 | -25 | 438 | -30 |
+| oskar-baker | SF | 48 | 14 | +0 | +0 | -3 | +0 | 11 | -3 |
+| oskar-taylor | SD | 15 | 629 | +0 | +0 | -128 | +0 | 501 | -128 |
+| paddy-cross | SF | 65 | 139 | +0 | +0 | +0 | +0 | 139 | +0 |
+| paddy-dow | MID | 3 | 158 | +0 | +0 | -17 | +0 | 141 | -17 |
+| patrick-carr | RUCK | 65 | 31 | +0 | +0 | +0 | +0 | 31 | +0 |
+| patrick-cripps | MID | 13 | 1,488 | -19 | +0 | +0 | -79 | 1,390 | -98 |
+| patrick-dangerfield | SF | 10 | 63 | +0 | +0 | -7 | +0 | 56 | -7 |
+| patrick-lipinski | SF | 28 | 735 | -8 | +0 | +0 | -40 | 687 | -48 |
+| patrick-retschko | MID | 65 | 1,608 | -20 | +0 | +0 | -87 | 1,501 | -107 |
+| patrick-said | SF | 60 | 80 | +0 | +0 | -17 | +0 | 63 | -17 |
+| patrick-snell | KPF | 53 | 115 | +0 | +0 | -25 | +0 | 90 | -25 |
+| patrick-voss | KPF | 65 | 1,538 | -18 | +0 | +0 | -82 | 1,438 | -100 |
+| paul-curtis | SF | 35 | 1,622 | -20 | +0 | +0 | -86 | 1,516 | -106 |
+| peter-ladhams | KPF | 65 | 493 | -6 | +0 | +0 | -26 | 461 | -32 |
+| peter-wright | KPF | 10 | 1,619 | -21 | +0 | +0 | -86 | 1,512 | -107 |
+| phoenix-gothard | SF | 12 | 1,891 | -24 | +0 | +0 | -101 | 1,766 | -125 |
+| reece-torrent | MID | 64 | 79 | +0 | +0 | -3 | +0 | 76 | -3 |
+| reef-mcinnes | KPD | 24 | 164 | +0 | +0 | -20 | +0 | 144 | -20 |
+| reilly-o-brien | RUCK | 65 | 985 | -11 | +0 | +0 | -54 | 920 | -65 |
+| reuben-ginbey | SD | 9 | 2,349 | -29 | +0 | +0 | -126 | 2,194 | -155 |
+| rhett-bazzo | KPD | 37 | 476 | -6 | +0 | +0 | -25 | 445 | -31 |
+| rhyan-mansell | SF | 65 | 48 | -1 | +0 | +0 | -2 | 45 | -3 |
+| rhylee-west | SF | 26 | 100 | -1 | +0 | +0 | -6 | 93 | -7 |
+| rhys-stanley | RUCK | 47 | 28 | +0 | +0 | -6 | +0 | 22 | -6 |
+| rhys-unwin | SF | 61 | 91 | +0 | +0 | -16 | +0 | 75 | -16 |
+| riak-andrew | KPD | 55 | 138 | +0 | +0 | -30 | +0 | 108 | -30 |
+| ricky-mentha | SF | 65 | 50 | +0 | +0 | +0 | +0 | 50 | +0 |
+| riley-bice | SD | 41 | 274 | -4 | +0 | +0 | -13 | 257 | -17 |
+| riley-garcia | SF | 61 | 47 | -1 | +0 | -2 | -3 | 41 | -6 |
+| riley-hamilton | SF | 65 | 305 | -4 | +27 | +0 | -17 | 311 | +6 |
+| riley-hardeman | SD | 23 | 258 | -1 | +0 | -16 | -7 | 234 | -24 |
+| riley-onley | MID | 65 | 201 | +0 | +0 | +0 | +0 | 201 | +0 |
+| riley-thilthorpe | KPF | 2 | 4,468 | -55 | +0 | +0 | -240 | 4,173 | -295 |
+| river-stevens | SF | 65 | 104 | +0 | +0 | +0 | +0 | 104 | +0 |
+| roan-steele | MID | 65 | 152 | +0 | +0 | +0 | +0 | 152 | +0 |
+| rob-monahan | SD | 65 | 45 | +0 | +0 | +0 | +0 | 45 | +0 |
+| robert-hansen | SF | 65 | 132 | +0 | +0 | +0 | -2 | 130 | -2 |
+| rory-laird | SD | 65 | 701 | -8 | +0 | +0 | -38 | 655 | -46 |
+| rory-lobb | KPD | 29 | 276 | -3 | +0 | +0 | -15 | 258 | -18 |
+| rowan-marshall | KPF | 65 | 2,027 | -25 | +0 | +0 | -108 | 1,894 | -133 |
+| ryan-angwin | MID | 19 | 483 | -6 | +0 | +0 | -27 | 450 | -33 |
+| ryan-byrnes | SD | 51 | 64 | -1 | +0 | +0 | -3 | 60 | -4 |
+| ryan-gardner | KPD | 58 | 18 | +0 | +0 | -3 | +0 | 15 | -3 |
+| ryan-lester | SD | 30 | 38 | +0 | +0 | +0 | -2 | 36 | -2 |
+| ryan-maric | SD | 65 | 1,406 | -17 | +0 | +0 | -75 | 1,314 | -92 |
+| ryda-luke | SF | 65 | 84 | +0 | +0 | +0 | +0 | 84 | +0 |
+| ryley-sanders | SF | 6 | 3,885 | -48 | +0 | +0 | -208 | 3,629 | -256 |
+| saad-el-hawli | SD | 65 | 118 | +0 | +0 | +0 | +0 | 118 | +0 |
+| sam-allen | SF | 29 | 618 | +0 | +0 | -55 | +0 | 563 | -55 |
+| sam-banks | SD | 29 | 937 | -12 | +0 | +0 | -50 | 875 | -62 |
+| sam-berry | MID | 29 | 3,992 | -50 | +0 | +0 | -213 | 3,729 | -263 |
+| sam-butler-1 | SF | 23 | 81 | +0 | +0 | -11 | +0 | 70 | -11 |
+| sam-clohesy | MID | 65 | 288 | -4 | +0 | +0 | -15 | 269 | -19 |
+| sam-cumming | MID | 7 | 2,288 | -28 | +312 | +0 | -139 | 2,433 | +145 |
+| sam-darcy | KPF | 2 | 5,250 | -66 | +0 | +0 | -281 | 4,903 | -347 |
+| sam-davidson | SF | 51 | 80 | +0 | +0 | -16 | +0 | 64 | -16 |
+| sam-de-koning | KPD | 19 | 936 | -12 | +0 | +0 | -50 | 874 | -62 |
+| sam-draper | KPF | 65 | 1,107 | -13 | +0 | +0 | -60 | 1,034 | -73 |
+| sam-durham | SF | 65 | 2,531 | -31 | +0 | +0 | -136 | 2,364 | -167 |
+| sam-flanders | SF | 11 | 2,067 | -26 | +0 | +0 | -111 | 1,930 | -137 |
+| sam-lalor | SF | 1 | 4,087 | -51 | +0 | +0 | -219 | 3,817 | -270 |
+| sam-marshall | MID | 25 | 704 | -7 | +0 | -18 | -29 | 650 | -54 |
+| sam-powell-pepper | SF | 18 | 167 | -2 | +0 | +0 | -8 | 157 | -10 |
+| sam-sturt | SF | 17 | 50 | +0 | +0 | -9 | +0 | 41 | -9 |
+| sam-switkowski | SF | 65 | 15 | +0 | +0 | +0 | +0 | 15 | +0 |
+| sam-taylor | KPD | 28 | 1,212 | -15 | +0 | +0 | -65 | 1,132 | -80 |
+| sam-walsh | MID | 1 | 3,041 | -38 | +0 | +0 | -163 | 2,840 | -201 |
+| sam-wicks | SD | 65 | 10 | +0 | +0 | +0 | +0 | 10 | +0 |
+| samson-ryan | RUCK | 42 | 302 | -3 | +0 | -2 | -15 | 282 | -20 |
+| samuel-collins | KPD | 54 | 619 | -8 | +0 | +0 | -33 | 578 | -41 |
+| samuel-grlj | SD | 8 | 1,735 | -22 | +237 | +0 | -106 | 1,844 | +109 |
+| samuel-swadling | MID | 37 | 776 | -9 | +106 | +0 | -47 | 826 | +50 |
+| sandy-brock | KPD | 65 | 173 | -3 | +0 | +0 | -9 | 161 | -12 |
+| scott-pendlebury | MID | 5 | 353 | -3 | +0 | +0 | -19 | 331 | -22 |
+| sean-darcy | RUCK | 38 | 734 | -10 | +0 | +0 | -38 | 686 | -48 |
+| seth-campbell | SF | 65 | 1,010 | -12 | +0 | +0 | -54 | 944 | -66 |
+| shadeau-brain | SD | 65 | 120 | -1 | +1 | +0 | -2 | 118 | -2 |
+| shai-bolton | SF | 29 | 2,150 | -26 | +0 | +0 | -116 | 2,008 | -142 |
+| shannon-neale | KPF | 35 | 2,711 | -34 | +0 | +0 | -145 | 2,532 | -179 |
+| shaun-mannagh | SF | 36 | 663 | -7 | +0 | +0 | -36 | 620 | -43 |
+| sid-draper | SF | 4 | 1,250 | -3 | +0 | -76 | -16 | 1,155 | -95 |
+| steele-sidebottom | MID | 11 | 96 | +0 | +0 | -10 | +0 | 86 | -10 |
+| steely-green | SF | 55 | 150 | -2 | +0 | +0 | -8 | 140 | -10 |
+| stephen-coniglio | SF | 3 | 215 | -3 | +0 | +0 | -12 | 200 | -15 |
+| sullivan-robey | SF | 9 | 2,981 | -37 | +395 | +0 | -181 | 3,158 | +177 |
+| tai-hayes | SF | 44 | 194 | +0 | +0 | -27 | +0 | 167 | -27 |
+| taj-hotton | SF | 12 | 2,355 | -29 | +0 | +0 | -126 | 2,200 | -155 |
+| talor-byrne | SF | 45 | 857 | -10 | +117 | +0 | -52 | 912 | +55 |
+| tanner-bruhn | SD | 12 | 2,214 | -28 | +0 | +0 | -118 | 2,068 | -146 |
+| taylor-goad | RUCK | 20 | 730 | +0 | +0 | -133 | +0 | 597 | -133 |
+| taylor-walker | KPF | 64 | 132 | -1 | +0 | +0 | -7 | 124 | -8 |
+| tew-jiath | SD | 37 | 167 | +0 | +0 | -4 | +0 | 163 | -4 |
+| thomas-anastasopoulos | SF | 48 | 173 | -1 | +0 | -26 | -2 | 144 | -29 |
+| thomas-burton | MID | 65 | 439 | -6 | +40 | +0 | -24 | 449 | +10 |
+| thomas-liberatore | MID | 24 | 1,018 | -14 | +0 | +0 | -54 | 950 | -68 |
+| thomas-matthews | SF | 30 | 337 | +0 | +0 | -27 | +0 | 310 | -27 |
+| thomas-sims | KPF | 28 | 583 | -4 | +0 | -17 | -22 | 540 | -43 |
+| thomas-stewart | SD | 40 | 1,101 | -14 | +0 | +0 | -59 | 1,028 | -73 |
+| tim-kelly | SF | 24 | 1,219 | -15 | +0 | +0 | -66 | 1,138 | -81 |
+| tim-membrey | KPF | 49 | 129 | -2 | +0 | +0 | -6 | 121 | -8 |
+| tim-taranto | MID | 2 | 2,423 | -29 | +0 | +0 | -131 | 2,263 | -160 |
+| timothy-english | RUCK | 19 | 3,535 | -44 | +0 | +0 | -189 | 3,302 | -233 |
+| tobie-travaglia | SD | 8 | 685 | -8 | +0 | -3 | -36 | 638 | -47 |
+| toby-bedford | SF | 65 | 272 | -4 | +0 | +0 | -14 | 254 | -18 |
+| toby-conway | RUCK | 24 | 503 | +0 | +0 | -70 | +0 | 433 | -70 |
+| toby-greene | SF | 17 | 847 | -11 | +0 | +0 | -45 | 791 | -56 |
+| toby-mcmullin | MID | 34 | 135 | -3 | +0 | +0 | -7 | 125 | -10 |
+| toby-murray | KPF | 65 | 215 | -3 | +0 | +0 | -12 | 200 | -15 |
+| toby-nankervis | RUCK | 35 | 2,031 | -26 | +0 | +0 | -109 | 1,896 | -135 |
+| toby-pink | KPD | 65 | 31 | +0 | +0 | +0 | -1 | 30 | -1 |
+| toby-whan | MID | 65 | 84 | +0 | +0 | +0 | +0 | 84 | +0 |
+| tobyn-murray | SF | 40 | 234 | +0 | +0 | -15 | +0 | 219 | -15 |
+| todd-marshall | KPF | 16 | 61 | -1 | +0 | +0 | -3 | 57 | -4 |
+| tom-atkins | MID | 65 | 298 | -3 | +0 | +0 | -17 | 278 | -20 |
+| tom-barrass | KPD | 43 | 21 | +0 | +0 | -2 | +0 | 19 | -2 |
+| tom-blamires | SD | 65 | 139 | +0 | +0 | +0 | +0 | 139 | +0 |
+| tom-brown | SD | 17 | 493 | -6 | +0 | +0 | -27 | 460 | -33 |
+| tom-cochrane | SF | 65 | 230 | -1 | +0 | +0 | -5 | 224 | -6 |
+| tom-cole | SF | 36 | 47 | +0 | +0 | +0 | -3 | 44 | -3 |
+| tom-de-koning | RUCK | 30 | 1,830 | -23 | +0 | +0 | -98 | 1,709 | -121 |
+| tom-doedee | SD | 17 | 228 | -4 | +0 | -1 | -11 | 212 | -16 |
+| tom-edwards | KPF | 65 | 108 | +0 | +0 | +0 | +0 | 108 | +0 |
+| tom-green | MID | 10 | 4,719 | -59 | +0 | -1 | -252 | 4,407 | -312 |
+| tom-gross | SF | 46 | 460 | -4 | +0 | -20 | -19 | 417 | -43 |
+| tom-hanily | SF | 65 | 216 | -2 | +7 | +0 | -7 | 214 | -2 |
+| tom-lynch-1 | KPF | 11 | 50 | +0 | +0 | -5 | +0 | 45 | -5 |
+| tom-mccarthy | SD | 65 | 1,457 | -18 | +0 | +0 | -78 | 1,361 | -96 |
+| tom-mccartin | KPD | 33 | 1,689 | -20 | +0 | +0 | -91 | 1,578 | -111 |
+| tom-mcdonald | KPD | 54 | 75 | -1 | +0 | +0 | -4 | 70 | -5 |
+| tom-papley | SF | 65 | 353 | -4 | +0 | +0 | -19 | 330 | -23 |
+| tom-powell | SF | 13 | 2,103 | -27 | +0 | +0 | -112 | 1,964 | -139 |
+| tom-sparrow | SF | 27 | 1,632 | -20 | +0 | +0 | -89 | 1,523 | -109 |
+| touk-miller | SF | 29 | 2,378 | -29 | +0 | +0 | -127 | 2,222 | -156 |
+| trent-rivers | SD | 32 | 1,852 | -24 | +0 | +0 | -99 | 1,729 | -123 |
+| tristan-xerri | RUCK | 65 | 7,800 | -97 | +0 | +0 | -418 | 7,285 | -515 |
+| ty-gallop | KPF | 42 | 1,199 | -14 | +0 | +0 | -65 | 1,120 | -79 |
+| tyan-prindable | MID | 32 | 543 | +0 | +0 | -40 | +0 | 503 | -40 |
+| tylah-williams | SF | 39 | 249 | +0 | +0 | -12 | +0 | 237 | -12 |
+| tylar-young | KPD | 65 | 279 | -3 | +0 | +0 | -16 | 260 | -19 |
+| tyler-brockman | SF | 48 | 50 | -1 | +0 | -1 | -1 | 47 | -3 |
+| tyler-sonsie | SF | 28 | 1,095 | -14 | +0 | +0 | -59 | 1,022 | -73 |
+| tyler-welsh | KPF | 59 | 80 | +0 | +0 | -18 | +0 | 62 | -18 |
+| tyrell-dewar | SD | 65 | 96 | -1 | +0 | +0 | -4 | 91 | -5 |
+| tyson-stengle | SF | 65 | 151 | -3 | +0 | +0 | -7 | 141 | -10 |
+| vigo-visentini | RUCK | 65 | 182 | +0 | +0 | +0 | +0 | 182 | +0 |
+| wade-derksen | KPD | 65 | 109 | -2 | +0 | +0 | -5 | 102 | -7 |
+| wayne-milera | SD | 11 | 1,800 | -22 | +0 | +0 | -97 | 1,681 | -119 |
+| wil-dawson | KPD | 22 | 525 | -5 | +0 | +0 | -29 | 491 | -34 |
+| wil-parker | SD | 65 | 24 | +0 | +0 | +0 | -1 | 23 | -1 |
+| wil-powell | SD | 19 | 775 | -9 | +0 | +0 | -42 | 724 | -51 |
+| will-ashcroft | MID | 2 | 7,330 | -90 | +0 | +0 | -394 | 6,846 | -484 |
+| will-brodie | MID | 9 | 773 | -7 | +0 | -22 | -32 | 712 | -61 |
+| will-darcy | KPF | 58 | 187 | +0 | +0 | -42 | +0 | 145 | -42 |
+| will-day | MID | 13 | 2,387 | -30 | +0 | +0 | -128 | 2,229 | -158 |
+| will-edwards | KPD | 65 | 214 | -3 | +0 | +0 | -11 | 200 | -14 |
+| will-graham | SF | 26 | 1,708 | -21 | +0 | +0 | -92 | 1,595 | -113 |
+| will-green | RUCK | 16 | 604 | +1 | +0 | -117 | +1 | 489 | -115 |
+| will-hayes-b | SF | 56 | 378 | -5 | +0 | +0 | -20 | 353 | -25 |
+| will-hayward | SF | 21 | 229 | -3 | +0 | +0 | -12 | 214 | -15 |
+| will-lewis | KPF | 65 | 139 | +0 | +0 | +0 | +0 | 139 | +0 |
+| will-lorenz | MID | 57 | 284 | -3 | +0 | -16 | -12 | 253 | -31 |
+| will-mclachlan | SF | 65 | 148 | -1 | +11 | +0 | -6 | 152 | +4 |
+| will-setterfield | MID | 5 | 559 | -7 | +0 | +0 | -30 | 522 | -37 |
+| willem-drew | MID | 33 | 608 | -7 | +0 | +0 | -33 | 568 | -40 |
+| willem-duursma | MID | 1 | 3,977 | -50 | +538 | +0 | -242 | 4,223 | +246 |
+| william-mccabe | KPD | 19 | 599 | -5 | +0 | -45 | -18 | 531 | -68 |
+| xavier-bamert | MID | 65 | 509 | -6 | +38 | +0 | -30 | 511 | +2 |
+| xavier-duursma | MID | 18 | 143 | -1 | +0 | +0 | -8 | 134 | -9 |
+| xavier-lindsay | SD | 11 | 2,106 | -26 | +0 | -4 | -111 | 1,965 | -141 |
+| xavier-o-halloran | SF | 22 | 47 | +0 | +0 | +0 | -3 | 44 | -3 |
+| xavier-taylor | SD | 11 | 802 | -2 | +18 | -78 | -5 | 735 | -67 |
+| xavier-walsh | KPF | 65 | 143 | +0 | +0 | +0 | +0 | 143 | +0 |
+| zac-bailey | SF | 15 | 2,914 | -36 | +0 | +0 | -156 | 2,722 | -192 |
+| zac-banch | SF | 65 | 152 | +0 | +0 | +0 | +0 | 152 | +0 |
+| zac-fisher | SF | 27 | 113 | -2 | +0 | +0 | -6 | 105 | -8 |
+| zac-mccarthy | KPF | 55 | 147 | +0 | +0 | -30 | +0 | 117 | -30 |
+| zac-taylor | SF | 44 | 207 | -3 | +0 | +0 | -11 | 193 | -14 |
+| zac-walker | KPD | 65 | 152 | +0 | +0 | +0 | +0 | 152 | +0 |
+| zach-guthrie | SD | 65 | 210 | -2 | +0 | +0 | -11 | 197 | -13 |
+| zach-reid | KPD | 10 | 1,093 | -14 | +0 | +0 | -58 | 1,021 | -72 |
+| zachary-merrett | MID | 26 | 2,704 | -33 | +0 | +0 | -145 | 2,526 | -178 |
+| zachary-williams | SF | 65 | 368 | -4 | +0 | +0 | -20 | 344 | -24 |
+| zak-butters | MID | 12 | 7,092 | -87 | +0 | +0 | -381 | 6,624 | -468 |
+| zak-evans | MID | 65 | 29 | +0 | +0 | +0 | +0 | 29 | +0 |
+| zak-johnson | SD | 65 | 730 | -9 | +0 | +0 | -39 | 682 | -48 |
+| zane-duursma | SF | 4 | 815 | -10 | +0 | +0 | -44 | 761 | -54 |
+| zane-peucker | SF | 31 | 384 | +0 | +4 | -29 | -1 | 358 | -26 |
+| zane-zakostelsky | KPD | 51 | 209 | +0 | +0 | -36 | -2 | 171 | -38 |
+| zeke-uwland | SD | 2 | 2,633 | -32 | +51 | +0 | -143 | 2,509 | -124 |
 
 ---
 
-*Levers 3 (v0 / curve re-print) and 4 (the numéraire scalar) are absent because they were never
-built. `STOP_STEP3_GMONO.md` records why, with the engine's own halt transcript.*
+**Reconciliation:** rows failing `0` · max |residual| `0`.
