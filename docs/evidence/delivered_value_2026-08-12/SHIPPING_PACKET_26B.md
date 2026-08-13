@@ -10,7 +10,13 @@
 > - **§17 — CORRECTION 2 (26B-C2)**, the owner's ruling replacing the aggregator's weighted-mean step
 >   with a **local-linear fit**, which removes one-sided boundary bias at both ends of the curve.
 >
+> - **§18 — THE GRACE-YEARS VARIANTS (26B-V)**, two owner-ordered NOT-RULED measurements placed
+>   beside the operative basis. **They change nothing in §17** — they are a menu, not a correction.
+>
 > Neither correction changes any per-career delivered value; C2 changes no instrument verdict.
+>
+> **V5 (§10, §17.8) was RULED OFF by the owner on 2026-08-13** — *"the XW change addressed the issue
+> and V5 on top would impact the live board a bit too much I think."* It is kept as measured context.
 
 **NOTHING HERE IS LANDED.** No engine file was changed, no pin was moved, no board was rebuilt, no
 score was ingested. Every number below was measured read-only against pinned bytes. The landing is a
@@ -402,7 +408,14 @@ Delivered value in board points, discounted to acquisition, flat 14 %.
 
 ---
 
-## 10. THE V5 AGE-LADDER APPENDIX — **NOT RULED**
+## 10. THE V5 AGE-LADDER APPENDIX — **RULED OFF 2026-08-13**
+
+> **OWNER RULING, 2026-08-13, verbatim:** *"don't worry about V5 for now - the XW change addressed the
+> issue and V5 on top would impact the live board a bit too much I think."*
+
+**V5 is no longer a live option.** This section is kept as **measured context** — it is the evidence
+he ruled on — and nothing in ORDER 26B rests on it. (It was labelled NOT-RULED when written; the
+ruling arrived after §17.)
 
 The owner's parked fifth ladder (`rl_model.py::_V5_KNOTS`), resurfaced on real numbers. Run through the
 **engine's own** `age_disc()` / `disc_factor()` path at `RL_AGE_DISC_MODE=5`, never a reimplemented
@@ -1112,7 +1125,7 @@ Delivered values unchanged; the four pool v0s scale by the anchor-factor ratio (
 **`callum-moore`'s derived v0 (222.0) is now within 2.4 % of his signed anchor (216.8)** — against a
 printed day-0 of 1,773.4.
 
-## 17.8 The V5 appendix
+## 17.8 The V5 appendix — **RULED OFF 2026-08-13** (kept as measured context)
 
 | | C1 | **C2** |
 |---|---|---|
@@ -1193,3 +1206,252 @@ every correction has made *worse*) and **P3.1b** (pathway ordering and equivalen
    The nearest available guard is that the **three-way table (raw / weighted-mean / loclin) is now a
    permanent deliverable**, so the gap between estimators is always on the page where a reader can see
    it.
+
+---
+
+# 18. THE GRACE-YEARS VARIANTS (26B-V) — **MEASUREMENT ONLY, NOT RULED**
+
+**Filed 2026-08-13**, ordered by the owner at
+[#334 comment 5275831956](https://github.com/lukemcalister10/afl-rl-engine/issues/334#issuecomment-5275831956).
+**flat-14 on the C2 basis (§17) remains the operative derivation.** Nothing here lands.
+
+Predictions were registered in `PRESTATEMENT_26BV.md`, committed and pushed **before** the harness
+existed; they are scored in §18.7.
+
+## 18.1 ARM STATUS — carried on the face of the menu, not in a footnote
+
+| arm | status |
+|---|---|
+| **flat-14** | **OPERATIVE** — the live config and the basis of every 26B conclusion |
+| **V5** | **RULED OFF 2026-08-13.** Owner, verbatim: *"don't worry about V5 for now - the XW change addressed the issue and V5 on top would impact the live board a bit too much I think."* Kept in the menu as **measured context** — it is what he ruled on — but it is **not a live option**. |
+| **grace-A** | **NOT RULED** — live variant, measurement only |
+| **grace-B** | **NOT RULED** — live variant, measurement only |
+
+## 18.2 The owner's diagnosis, and the mechanics
+
+> *"the flat-from-year-1 fade compresses the hits' peak seasons (a year-4 peak carries ~0.59 weight
+> from day 0 at 14%) while busts contribute zero under any fade."*
+
+**His arithmetic is exactly right** and is confirmed on the current basis: `1.14⁻⁴ = 0.5921`.
+
+Grace is implemented as an **exponent shift handed to the engine's own callable** —
+`DF(k) = disc_factor(entry_age, 0.14, max(0, k − G))`. The callable is still `disc_factor`; only the
+exponent moves. Entry age comes from Layer 1 (100 % coverage). Everything else is identical to §17's
+basis: loclin curve, force-majeure slide with its asserts still armed, window tiers, games weighting,
+K = 15, bars, positions, tails.
+
+**The k-mapping, and a conflation named before it was measured.** This scorer's `k = season_year −
+entry_year`, so `k = 1` *is* a normal draftee's first season and today carries `1.14⁻¹`. The order's
+formula `(1.14)^(−max(0, j−1−G))` has `j = k`, so **at `G = 0` it already grants one free year to
+everyone — mature-agers included** — which collides with the owner's own restriction, verbatim: *"19
+in their first year. **Not mature age players**."* Both readings were therefore computed and neither
+was silently chosen:
+
+| reading | exponent | grace-A (≤19 / ≥20) | grace-B (≤19 / 20 / ≥21) | mature-ager vs today |
+|---|---|---|---|---|
+| **READING O — PRIMARY** | `max(0, k − Gᴼ)` | **2 / 0** | **3 / 2 / 0** | **unchanged** ✔ |
+| READING L — secondary | `max(0, k − 1 − G)` | 1 / 0 | 2 / 1 / 0 | one free year ✘ |
+
+Reading O reproduces his stated grace-A weights exactly (`k = 1, 2 → 1.0`; `k = 3 → 1.14⁻¹`) **and**
+honours "not mature age players". **Measured, the choice is worth 0.00 % at the head and 3–6 % on the
+pooled pool ratios** (§18.6).
+
+## 18.3 THE FOUR-WAY MENU
+
+| metric | **flat-14** *(operative)* | V5 *(ruled off)* | **grace-A** | **grace-B** |
+|---|---|---|---|---|
+| **pre-anchor head (pick 1)** | **2,463.1** | 2,765.5 | **3,191.2** | **3,602.8** |
+| head ÷ flat-14 | 1.0000 | 1.1228 | **1.2956** | **1.4627** |
+| **anchor factor** | **×1.2180** | ×1.0848 | **×0.9401** | **×0.8327** |
+| **pick-vs-player premium** | **+21.8 %** | +8.5 % | **−6.0 %** | **−16.7 %** |
+| ND cohort mean | 615.5 | 692.1 | 789.1 | 890.9 |
+| **pooled derived / printed day-0** | **0.3906** | 0.3757 | **0.3477** | **0.3472** |
+| **pooled derived / signed anchor** | **1.0056** | 0.9670 | **0.8950** | **0.8937** |
+| reconciliation (asserted) | 2.220e−16 | 2.220e−16 | 2.220e−16 | 2.220e−16 |
+
+**The anchored curve — all four pinned at pick 1 = 3000, so this is shape only:**
+
+| pick | 1 | 2 | 3 | 5 | 7 | 10 | 15 | 20 | 30 | 40 | 50 | 64 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| **flat-14** | 3000 | 2663 | 2563 | 1802 | 1242 | 1309 | 808 | 868 | 614 | 499 | 283 | 105 |
+| V5 *(off)* | 3000 | 2677 | 2587 | 1813 | 1248 | 1324 | 811 | 863 | 618 | 494 | 281 | 109 |
+| **grace-A** | 3000 | 2668 | 2569 | 1804 | 1243 | 1312 | 803 | 859 | 607 | 479 | 274 | 106 |
+| **grace-B** | 3000 | 2669 | 2571 | 1807 | 1243 | 1318 | 804 | 858 | 611 | 476 | 273 | 106 |
+| today PVC | 3000 | 2999 | 2874 | 1881 | 1549 | 1460 | 1030 | 990 | 663 | 514 | 346 | 185 |
+
+**Post-anchor the curve barely moves**: max |variant ÷ flat-14 − 1| across picks 1–64 is **4.25 %**
+(grace-A) and **4.88 %** (grace-B). **Grace is a LEVEL dial, not a shape dial** — and the level
+divides straight back out through the anchor.
+
+### Pathway all-ins and ND-pick equivalents
+
+| path | flat-14 | V5 *(off)* | grace-A | grace-B | | eq flat-14 | eq V5 | **eq grace-A** | **eq grace-B** |
+|---|---|---|---|---|---|---|---|---|---|
+| MSD | 396 | 375 | 335 | 346 | | 45 | 45 | **47** | **46** |
+| ND>64 | 286 | 283 | 264 | 269 | | 50 | 50 | **52** | **51** |
+| SSP | 260 | 245 | 216 | 228 | | 53 | 55 | **57** | **56** |
+| RD | 257 | 247 | 231 | 226 | | 54 | 55 | **56** | **56** |
+| PDA | 195 | 193 | 188 | 189 | | 59 | 60 | **60** | **59** |
+| UNR | 150 | 141 | 125 | 125 | | 62 | 63 | **63** | **63** |
+| PDN | 124 | 120 | 111 | 113 | | 63 | 64 | **64** | **64** |
+| PDS | 111 | 108 | 101 | 101 | | 64 | > 64 | **> 64** | **> 64** |
+| IRE | 103 | 100 | 95 | 96 | | > 64 | > 64 | **> 64** | **> 64** |
+
+*(pick-64 value: flat-14 105 · V5 109 · grace-A 106 · grace-B 106)*
+
+**Every pool pathway loses ground under grace**, because the anchor falls by the *ND* arm's gain while
+the pool — older on average than the draft — gains less. Biggest movers on `derived / signed anchor`,
+grace-A ÷ flat-14: **SSP 0.807 · MSD 0.830 · UNR 0.844 · ND>64 0.852 · PDS 0.903 · PDN 0.906 ·
+IRE 0.931 · RD 0.943 · PDA 0.972.**
+
+## 18.4 THE HITS TABLE — the pick-1 cohort, per player
+
+Entries 2004–2021 attributed to slid pick 1, after the force-majeure exclusion (§16).
+
+| player | entry | entry age | **flat-14** | **grace-A** | **grace-B** | A/flat | B/flat |
+|---|---|---|---|---|---|---|---|
+| `sam-walsh` | 2018 | 18 | 4,589.1 | 5,922.0 | 6,607.5 | 1.2905 | 1.4398 |
+| `brett-deledio` | 2004 | 17 | 4,450.7 | 5,751.3 | 6,471.9 | 1.2922 | 1.4541 |
+| `jason-horne-francis` | 2021 | 18 | 4,225.9 | 5,489.5 | 6,215.1 | 1.2990 | 1.4707 |
+| `marc-murphy` | 2005 | 18 | 4,035.9 | 5,243.7 | 5,959.8 | 1.2993 | 1.4767 |
+| `matt-rowell` | 2019 | 18 | 3,922.4 | 5,021.8 | 5,649.0 | 1.2803 | 1.4402 |
+| **`christian-petracca`** | 2014 | 18 | 3,621.7 | 4,706.8 | 5,343.1 | 1.2996 | 1.4753 |
+| **`joshua-kelly`** | 2013 | 18 | 3,592.8 | 4,668.6 | 5,305.8 | 1.2994 | 1.4768 |
+| `bryce-gibbs` | 2006 | 18 | 3,239.7 | 4,210.3 | 4,732.6 | 1.2996 | 1.4608 |
+| `lachie-whitfield` | 2012 | 18 | 2,761.4 | 3,585.8 | 4,070.3 | 1.2986 | 1.4740 |
+| `jacob-weitering` | 2015 | 18 | 1,505.9 | 1,942.4 | 2,192.9 | 1.2899 | 1.4563 |
+| `matthew-kreuzer` | 2007 | 18 | 1,494.2 | 1,941.7 | 2,191.9 | 1.2996 | 1.4670 |
+| `jack-watts` | 2008 | 17 | 1,469.5 | 1,909.8 | 2,176.7 | 1.2996 | 1.4813 |
+| `jaeger-o-meara` | 2011 | 17 | 1,440.1 | 1,871.6 | 2,078.4 | 1.2996 | 1.4432 |
+| `david-swallow` | 2010 | 17 | 1,385.6 | 1,785.9 | 2,009.7 | 1.2889 | 1.4504 |
+| `andrew-mcgrath` | 2016 | 18 | 1,295.4 | 1,681.3 | 1,911.9 | 1.2979 | 1.4759 |
+| `tom-scully` | 2009 | 18 | 659.9 | 856.0 | 963.2 | 1.2972 | 1.4597 |
+| `cameron-rayner` | 2017 | 18 | 441.3 | 572.5 | 651.7 | 1.2973 | 1.4767 |
+| `jamarra-ugle-hagan` | 2020 | 18 | 149.8 | 194.7 | 221.9 | 1.2994 | 1.4810 |
+| **cohort mean** | | | **2,460.1** | **3,186.4** | **3,597.4** | 1.2953 | 1.4623 |
+| **top ÷ mean** | | | **1.865** | **1.859** | **1.837** | | |
+
+*(`joshua-kelly` and `christian-petracca` are here because of §16's force-majeure slide — they are the
+natural pick-2s who replaced `thomas-boyd` and `paddy-mccartin`.)*
+
+### THE ANSWER TO THE OWNER'S QUESTION, PLAINLY
+
+**Grace lifts every hit by almost exactly the same factor — and that is the finding, not a
+disappointment.** Look down the `A/flat` column: **1.2803 to 1.2996**, a spread of under two
+percentage points across careers ranging from 150 to 4,589 board points. The theoretical ceiling is
+`1.14² = 1.2996` and nearly every row sits on it.
+
+**So grace does NOT restore the hits relative to the busts.** The `top ÷ mean` ratio moves
+**1.865 → 1.859 → 1.837** — it goes very slightly *down*. And every bust is untouched by construction:
+**all 619 board-wide zero careers stay exactly zero under every ladder**, because a career with no
+above-bar season scores zero whatever the discount.
+
+**What grace actually does is raise the LEVEL of the whole curve — which then divides straight back
+out through the pick-1 = 3000 anchor.** That is why the shape barely moves (4.25 %) while the *premium*
+swings hard (+21.8 % → −6.0 %). The owner's observation that the fade compresses peak seasons is
+arithmetically correct; the consequence of fixing it is **not** a re-ranking of hits against busts, it
+is a **repricing of picks against players**. That is the decision grace really puts on the table.
+
+**The one genuine differential**, measured board-wide on ≤19 entrants with non-zero value: careers of
+**8+ seasons gain ×1.2974** against **one-season careers' ×1.2755** — a spread of **2.2 percentage
+points**. Grace does tilt very slightly toward longevity. It is a rounding error next to the level
+effect.
+
+## 18.5 The named rows under each variant
+
+| player | pathway | entry age | delivered flat-14 | grace-A | grace-B | derived v0 flat-14 | grace-A | grace-B |
+|---|---|---|---|---|---|---|---|---|
+| `willem-duursma` | ND 1-64 | 18 | 3,531.0 | 4,580.2 | 5,186.0 | 3,157.2 | **3,157.2** | **3,157.2** |
+| `callum-moore` | RD | 19 | 5.2 | 6.7 | 7.6 | 222.0 | 201.7 | 195.6 |
+| `harrison-ramm` | MSD | 19 | 696.1 | 904.7 | 1,030.4 | 397.3 | 342.5 | 346.7 |
+| `vigo-visentini` | RD | 18 | 588.0 | 764.1 | 871.1 | 454.6 | 391.6 | 374.3 |
+| `jai-newcombe` | MSD | **20** | 3,992.5 | **3,992.5** | 5,146.7 | 628.2 | 504.6 | 547.0 |
+
+Two rows are worth reading twice. **`willem-duursma`'s derived v0 does not move at all** under either
+variant — pick 1 *is* the anchor, so the level effect cancels exactly. And **`jai-newcombe`'s delivered
+value is unchanged under grace-A** (3,992.5 → 3,992.5): he entered at **20**, so under Reading O he
+gets no grace at all — the owner's "not mature age players" clause, visible in a single row.
+
+## 18.6 Reading L vs Reading O, and the grace-0 diagnostic
+
+| arm | head | anchor factor | premium | derived/anchor | derived/printed |
+|---|---|---|---|---|---|
+| flat-14 | 2,463.1 | 1.2180 | +21.8 % | 1.0056 | 0.3906 |
+| V5 *(ruled off)* | 2,765.5 | 1.0848 | +8.5 % | 0.9670 | 0.3757 |
+| **grace-A (Reading O)** | 3,191.2 | 0.9401 | −6.0 % | **0.8950** | 0.3477 |
+| **grace-B (Reading O)** | 3,602.8 | 0.8327 | −16.7 % | **0.8937** | 0.3472 |
+| grace-A (Reading L) | 3,191.2 | 0.9401 | −6.0 % | 0.9476 | 0.3681 |
+| grace-B (Reading L) | 3,602.8 | 0.8327 | −16.7 % | 0.9217 | 0.3580 |
+| **grace-0 (diagnostic)** | 2,807.9 | 1.0684 | **+6.8 %** | 1.0053 | 0.3905 |
+
+**The reading choice is immaterial to the curve and material to the pool**, exactly as pre-registered:
+the head and factor are **identical to four decimal places** (the ND fit population is effectively all
+≤19, so the two readings cannot differ there), while the pooled `derived/anchor` differs by **5.9 %**
+(grace-A) and **3.1 %** (grace-B).
+
+**The grace-0 row is the one to look at if the literal formula is ever adopted:** a universal one-year
+shift, age-targeting nobody, moves the premium from +21.8 % to **+6.8 %** on its own — i.e. **most of
+what the literal formula would deliver has nothing to do with the young-player grace the owner
+described.**
+
+## 18.7 THE PRE-STATEMENT, SCORED
+
+Registered in `PRESTATEMENT_26BV.md` before the harness existed.
+
+| # | prediction | measured | verdict |
+|---|---|---|---|
+| **PV1** | grace-A head ratio ∈ [1.24, 1.30] pt 1.28; grace-B ∈ [1.40, 1.49] pt 1.45 | **1.2956** and **1.4627** | **HIT**, both |
+| **PV2** | grace-A factor ∈ [0.937, 0.982] pt 0.951 → premium ≈ −5 %; grace-B ∈ [0.818, 0.870] pt 0.840 → ≈ −16 %; "grace-A is roughly where the premium vanishes" | **0.9401 / −6.0 %**; **0.8327 / −16.7 %** | **HIT**, all three |
+| **PV3a** | top ÷ cohort mean moves < 5 % under either variant; every zero stays zero | 1.865 → **1.859** (−0.3 %) → **1.837** (−1.5 %); **619 zeros in all three** | **HIT** |
+| **PV3b** | long careers gain **12–16 pp** more than one-season careers under grace-A | **2.2 pp** (1.2974 vs 1.2755) | **MISS** — direction right, magnitude ~6× too large. My reasoning assumed a one-season career's season sits at `k = 1`; most sit later, and projected tails carry the full shift |
+| **PV4** | biggest losers SSP, IRE, UNR, PDA down 15–25 %; RD and ND>64 within ±8 %; MSD to lose | SSP **−19.3 %** ✔ · UNR **−15.6 %** ✔ · MSD **−17.0 %** ✔ · RD **−5.7 %** ✔ · **IRE −6.9 %** ✘ · **PDA −2.8 %** ✘ · **ND>64 −14.8 %** ✘ | **PART** (4 of 7) |
+| **PV5** | derived/anchor → [0.82, 0.97] (A) and [0.72, 0.92] (B); derived/printed → [0.32, 0.38] and [0.28, 0.35]; the pool's agreement gets **worse** | **0.8950 / 0.8937**; **0.3477 / 0.3472**; worse under both | **HIT**, all five limbs |
+| **PV6** | max post-anchor shape move < 5 % (A) and < 8 % (B); reconciliation ~1e−16 | **4.25 %**, **4.88 %**, **2.220e−16** | **HIT** |
+| **PV7** | Reading L vs O: head differs 1–4 %, pool 10–14 %; "immaterial to the curve, material to the pool" | head **0.00 %**, pool **5.9 % / 3.1 %** | **PART** — the qualitative call is **HIT**, both magnitude bands **MISS** (over-predicted) |
+
+**SCORE: HIT 5 · PART 2 · MISS 1.**
+
+The two failures share one cause and it is worth naming: **I over-estimated how much grace
+differentiates between careers.** PV3b and PV7 both predicted large differential effects, and both
+came in small, because an exponent shift is very close to a scalar on anything with more than a
+season or two of content. That is the same fact PV3a got right, so the pre-statement was internally
+inconsistent — it predicted uniformity in one place and strong differentiation in two others. The
+uniform reading was correct.
+
+## 18.8 WHAT THIS DOES NOT DO, AND THE CONSTRAINT ON ANY RULING
+
+**No board is built and no engine byte moves.** This is the **curve side** only. The board-side twin —
+a dial-gated grace parameter inside `rl_model.py::disc_factor` — is the follow-up act **if the owner
+likes what he sees**, and it is not written here.
+
+**AT LANDING THE TWO SIDES CANNOT MOVE APART.** This was recorded in the pre-statement before any
+number was seen. The identity gate ties this scorer to the engine's own `price6`, which discounts
+projected seasons through the *same* `disc_factor`. A grace applied to the curve side alone would
+break that identity: derived v0s would be built on one ladder and printed prices on another, and the
+ruled landing assert — `printed day-0 == derived v0 × the display numéraire` — would fail. **If a
+grace variant is ever ruled in, it must be ruled into `disc_factor` itself and both sides must
+re-derive together.** That is a constraint on the decision, not a detail of it.
+
+## 18.9 ANOMALIES
+
+1. **The real consequence of grace is the premium, not the hits.** The owner asked to see his hits
+   restored; the measurement says grace lifts hits and busts' *relative* positions not at all, and
+   instead swings the pick-vs-player premium from **+21.8 % to −6.0 %** (grace-A) or **−16.7 %**
+   (grace-B). Under either variant **a pick is worth LESS than the players it delivers** — the
+   opposite sign to today. That is a far larger decision than the one that was asked, and it should
+   not be adopted as a side effect of a fade adjustment.
+2. **Grace and the discount rate are the same dial.** flat-14 → +21.8 %, V5 → +8.5 %, grace-0 → +6.8 %,
+   grace-A → −6.0 %. Four different ways of saying "discount young players' futures less", four
+   different premia. The exchange-rate act cannot be settled independently of this choice.
+3. **The pool's agreement with the owner's signed anchors — the strongest single result in the packet
+   (1.0056) — degrades to 0.895 under both variants.** Pre-registered as PV5, so it is not a
+   discovery, but it is a cost: grace makes the derivation agree *less* with the owner's own signed
+   levels.
+4. **grace-B is barely different from grace-A where it matters.** Pooled derived/anchor 0.8937 vs
+   0.8950; derived/printed 0.3472 vs 0.3477. The second grace year moves the head (3,191 → 3,603) and
+   the premium (−6.0 % → −16.7 %) but almost nothing in the pool comparison, because the ND arm and
+   the pool gain together.
+5. **`jai-newcombe` is the visible test of the age clause** — at entry age 20 he receives no grace at
+   all under grace-A (Reading O), so his delivered value is byte-identical to flat-14. If the owner
+   intended mature-age *rookies* like him to benefit, Reading O is the wrong reading and he should say
+   so; Reading L is on the page for exactly that reason.

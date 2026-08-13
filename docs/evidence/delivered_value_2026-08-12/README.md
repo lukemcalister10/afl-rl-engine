@@ -22,7 +22,9 @@ deferred whole to the consumption-rewire act. Steps 3–6 ran on that ruling.
 | `o26b_derive.py` → `DERIVE.json`, `DERIVE_out.txt` | step 4 — the all-in curve, positional relativities, pool ladders, MSD both ways |
 | `INSTRUMENTS_PRESTATEMENT.md` | step 5 — both instruments' exact forms, dated and committed BEFORE the computation |
 | `o26b_compare.py` → `COMPARE.json`, `COMPARE_out.txt` | step 5 — comparisons and both new mandatory instruments |
-| `o26b_v5.py` → `V5_APPENDIX.json`, `V5_APPENDIX_out.txt` | the V5 age-ladder appendix (**NOT RULED**) |
+| `o26b_v5.py` → `V5_APPENDIX.json`, `V5_APPENDIX_out.txt` | the V5 age-ladder appendix (**RULED OFF 2026-08-13**, kept as measured context) |
+| `PRESTATEMENT_26BV.md` | ORDER 26B-V's predictions, committed before the variants harness existed |
+| `o26b_variants.py` → `VARIANTS.json`, `VARIANTS_out.txt` | the grace-years four-way menu + hits table (**NOT RULED**) |
 | `per_entrant_O25R4.json` | the walk-forward matrix, copied for durability (md5 `3c6ffcdeaac9786473f3f017dba1d61e`) |
 | `SHIPPING_PACKET_26B.md` | step 6 — the packet: the curve beside today's, the pathway tables, both instruments, the prereg scored, breaches owned |
 
