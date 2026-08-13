@@ -1,0 +1,46 @@
+====================================================================================================================
+ORDER 29  --  THE PIN RESTAMP, MOVED-SET ASSERTED  (PREREG P18)
+====================================================================================================================
+
+  pin            pinned (pre-restamp)               actual on disk                     verdict
+  ----------------------------------------------------------------------------------------------------------------
+  store          d9a24282357cf3083b1640466e3ecd83   cb38ef1171dcf20aae66ebf12682be0d   MOVED — expected
+  board          88ce647f531030d8d2e094188b258191   86c8d5d9ba5b95e2cba05c78fbc31f78   MOVED — expected
+  rl_model       e5eb5e4405c09eebef45a9db89f014bc   a0854d1e8421d956edc3bea5150abf49   MOVED — expected
+  engine_head    3f1468e5468462ab789e49aace264c90   e51098648c1ccb6951b30d57d9aac3fe   MOVED — expected
+  v0surf         5dd34ca82735f5c8f021b1c7320df8f8   5dd34ca82735f5c8f021b1c7320df8f8   unmoved
+  q97m           cfdc73216c099e5e8f1fda3968f31c00   cfdc73216c099e5e8f1fda3968f31c00   unmoved
+  band           34faa8659cc8f19794f5cb9584fa19b2   34faa8659cc8f19794f5cb9584fa19b2   unmoved
+  peak_model     f305fe5330222f4fa14d3654a0e91ef7   f305fe5330222f4fa14d3654a0e91ef7   unmoved
+  bust_prior     5942aa6ad7be1d482eed737997486c70   5942aa6ad7be1d482eed737997486c70   unmoved
+  pvc_snapshot   ade79790efc8ad4585c2c6800a935eaa   ade79790efc8ad4585c2c6800a935eaa   unmoved
+  register       652d83e87780e415a01a2de6d8b3cc57   652d83e87780e415a01a2de6d8b3cc57   unmoved
+  config         bf0121056ee4437f407c9af42fbb760c   eed19a75f775aeafe4ee5ea4b3990667   MOVED — expected
+
+  MOVED (declared)   ['store', 'board', 'rl_model', 'engine_head', 'config']
+  UNMOVED            ['v0surf', 'q97m', 'band', 'peak_model', 'bust_prior', 'pvc_snapshot', 'register']
+  UNDECLARED MOVERS  NONE
+
+     store        the unflag-three (Step 1) — three _pvc_exclude keys deleted
+     board        the landing itself
+     rl_model     the grace dial default (Step 2) + the P9 unsigned-cell guard (Step 5)
+     engine_head  PRE-EXISTING, moved by ORDER 28 (_merged_recover.py), NOT by ORDER 29 — P18 LISTS engine_head among the identities allowed to move, so this is within the declared set. ORDER 29 does not edit this file; git confirms it unmodified here.
+     config       RL_GRACE added to the pinned manifest (Step 2)
+
+  PREREG P18's FORBIDDEN LIST, each asserted unmoved on the FINAL board:
+     band           UNMOVED   34faa8659cc8f197
+     bust_prior     UNMOVED   5942aa6ad7be1d48
+     peak_model     UNMOVED   f305fe5330222f4f
+     q97m           UNMOVED   cfdc73216c099e5e
+     pvc_snapshot   UNMOVED   ade79790efc8ad45
+     register       UNMOVED   652d83e87780e415
+
+  fv — THE PRE-EXISTING P18 STALENESS, DOCUMENTED AND NOT 'FIXED':
+     expected_boot fv pin      2621b56a32805f15b5084a45f851e882d1a0c6cf9c4fc2512550d394760f7dc6
+     the build's loaded fv     6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346
+     moved by ORDER 28 (distribution_pricing.py::v_at_peak), NOT by ORDER 29. This build does not
+     touch engine/forward_valuation at all, and the Step-0 byte-identity control passed WITH that
+     source in place, which is what proves it inert dial-off. Left alone deliberately: re-pinning
+     an identity this act did not move would launder ORDER 28's drift through ORDER 29's restamp.
+
+  RESTAMPED (surgical, 5 pin lines): ['store', 'board', 'rl_model', 'engine_head', 'config']

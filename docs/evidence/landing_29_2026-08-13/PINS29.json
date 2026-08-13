@@ -1,0 +1,41 @@
+{
+ "moved": [
+  "store",
+  "board",
+  "rl_model",
+  "engine_head",
+  "config"
+ ],
+ "unmoved": [
+  "v0surf",
+  "q97m",
+  "band",
+  "peak_model",
+  "bust_prior",
+  "pvc_snapshot",
+  "register"
+ ],
+ "undeclared": [],
+ "actual": {
+  "store": "cb38ef1171dcf20aae66ebf12682be0d",
+  "board": "86c8d5d9ba5b95e2cba05c78fbc31f78",
+  "rl_model": "a0854d1e8421d956edc3bea5150abf49",
+  "engine_head": "e51098648c1ccb6951b30d57d9aac3fe",
+  "v0surf": "5dd34ca82735f5c8f021b1c7320df8f8",
+  "q97m": "cfdc73216c099e5e8f1fda3968f31c00",
+  "band": "34faa8659cc8f19794f5cb9584fa19b2",
+  "peak_model": "f305fe5330222f4fa14d3654a0e91ef7",
+  "bust_prior": "5942aa6ad7be1d482eed737997486c70",
+  "pvc_snapshot": "ade79790efc8ad4585c2c6800a935eaa",
+  "register": "652d83e87780e415a01a2de6d8b3cc57",
+  "config": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1"
+ },
+ "expected_movers": {
+  "store": "the unflag-three (Step 1) \u2014 three _pvc_exclude keys deleted",
+  "board": "the landing itself",
+  "rl_model": "the grace dial default (Step 2) + the P9 unsigned-cell guard (Step 5)",
+  "config": "RL_GRACE added to the pinned manifest (Step 2)",
+  "v0surf": "PREREG P18 BREACH, OWNED \u2014 the curve install makes the surface re-bake inseparable (_v0surf_sig hashes _PVC0); see V0SURF_REBAKE.md",
+  "engine_head": "PRE-EXISTING, moved by ORDER 28 (_merged_recover.py), NOT by ORDER 29 \u2014 P18 LISTS engine_head among the identities allowed to move, so this is within the declared set. ORDER 29 does not edit this file; git confirms it unmodified here."
+ }
+}
