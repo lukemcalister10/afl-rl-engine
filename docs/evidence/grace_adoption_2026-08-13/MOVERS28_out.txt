@@ -1,0 +1,188 @@
+================================================================================================================================
+ORDER 28  --  STEP 3, THE BOARD MOVERS PACKET.   VARIANT BUILD, NOT LANDED.
+================================================================================================================================
+  LIVE board (dial OFF)     engine/rl_after/rl_app_data.json   md5 88ce647f531030d8d2e094188b258191
+  VARIANT board (dial ON)   scratch bb_on1   md5 0ce52771ed8f9ef326dd61f0e4aa71a8
+  dial-off rebuild control  scratch bb_off1   md5 88ce647f531030d8d2e094188b258191   BYTE-IDENTICAL to live
+  DETERMINISM: second independent dial-ON build md5 88ce647f531030d8d2e094188b258191   DIFFERS -- FAIL
+
+  rows: live 804   variant 804   in both 804
+  ELIGIBLE SET E (grace_years(p) > 0 at AGE_REF=2026): 75 rows
+     = {active row : debut(p)==2026 AND entry_age<=19}.  Definitional, taken off the pinned store.
+
+  MOVERS: 39 of 804 rows
+  DIRECT movers   (inside E, grace reaches their own price) : 36
+  INDIRECT movers (outside E, grace_years==0 at AGE_REF=2026): 3   shadeau-brain, tom-hanily, will-mclachlan
+     PREREG P1 BREACH, OWNED. P1 predicted ZERO rows outside E. The channel is the ENGINE'S
+     OWN HISTORICAL BUILD: _merged_recover.py builds its V0 / cohort-book objects with MA's
+     clock at HISTORICAL years (rl_export.py:113 re-pins it to 2026 afterwards, and says so),
+     and at a historical AGE_REF a player who is NOT first-season in 2026 WAS first-season
+     then -- so grace fires inside those builds and the built reference objects move with it.
+     That is the ruled behaviour ('for backtesting and the live board ... for everything'),
+     not a leak: it is the same indirect-reference-table channel the owner accepted at #334
+     stage A. Total absolute movement through it: 20 points (0.00266% of the board).
+     A LANDING-TIME ASSERT IS OWED: the indirect set must be re-measured and named at landing.
+  ELIGIBLE BUT UNMOVED: 39
+     of which career games == 0: 39   ALL of them
+     MECHANISM, and it matters: an un-debuted prospect is priced on PEDIGREE ALONE (rl_model.py's
+     'unplayed prospects ... valued on pedigree alone'), so his price never enters proj_from_peak
+     and the discount ladder cannot reach him. The grace dial moves NOTHING for a 0-game rookie.
+     What moves him at landing is the CURVE (step 2), through his pedigree anchor -- a separate
+     lever with a separate ruling. The two must not be conflated in the owner's reading.
+     PRECISION: E holds 40 zero-game rows; 39 are unmoved and 1 moved (aidan-schubert -1) -- a zero-game row
+     is USUALLY but not ALWAYS pedigree-pure; where a floor or blend leg touches the ladder it
+     moves, and by a point.  Stated so the mechanism claim is not over-general.
+
+  DIRECTION: 38 up, 1 down   DOWN-MOVERS PRESENT: aidan-schubert
+
+--------------------------------------------------------------------------------------------------------------------------------
+BOARD TOTALS
+--------------------------------------------------------------------------------------------------------------------------------
+  whole board          live     752429   variant     757152   delta    +4723  (+0.6277%)
+  the eligible set E   live      53426   variant      58129   delta    +4703  (+8.8028%)
+  indirect movers      live        484   variant        504   delta      +20  (+4.1322%)
+  everything else      live     698519   variant     698519   delta       +0  (exactly 0 -- the 765 rows that
+                                                                    neither hold grace nor read a
+                                                                    graced historical reference)
+  E's share of the board: live 7.1005%   variant 7.6773%
+
+--------------------------------------------------------------------------------------------------------------------------------
+DISPERSION OF THE MOVE  (the dispersion law: p05 / median / p95, never a bare mean)
+--------------------------------------------------------------------------------------------------------------------------------
+  relative move  min -0.2079%  p05 +0.8333%  med +8.6995%  mean +8.7783%  p95 +13.9654%  max +14.0464%
+  absolute move  min       -1  p05       +1  med      +40  mean   +121.1  p95     +409  max     +544
+  the ceiling on the production leg is x1.14 (one discount step removed from every future
+  season); the measured median sits below it because the pedigree pole, iso_eff, the position
+  caps and the numeraire all damp it.
+
+--------------------------------------------------------------------------------------------------------------------------------
+EVERY MOVER, NAMED  (before -> after -> delta), sorted by absolute points
+--------------------------------------------------------------------------------------------------------------------------------
+  key                        type   pick    age  entA    gr  games    BEFORE     AFTER     delta    delta% chan
+  willem-duursma             ND     1        19    18     1     17      3977      4521      +544   +13.68% DIRECT
+  dyson-sharp                ND     13       19    18     1     11      3091      3500      +409   +13.23% DIRECT
+  sullivan-robey             ND     9        19    18     1     14      2981      3381      +400   +13.42% DIRECT
+  jacob-farrow               ND     10       19    18     1     16      2601      2960      +359   +13.80% DIRECT
+  harry-dean                 ND     3        19    18     1     15      2577      2935      +358   +13.89% DIRECT
+  josh-lindsay               ND     19       19    18     1     12      2335      2654      +319   +13.66% DIRECT
+  sam-cumming                ND     7        19    18     1     13      2288      2605      +317   +13.85% DIRECT
+  samuel-grlj                ND     8        19    18     1     17      1735      1975      +240   +13.83% DIRECT
+  cooper-duff-tytler         ND     4        19    18     1     11      1561      1779      +218   +13.97% DIRECT
+  beau-addinsall             ND     18       19    18     1      6      1521      1731      +210   +13.81% DIRECT
+  dylan-patterson            ND     5        19    18     1      4      1628      1792      +164   +10.07% DIRECT
+  talor-byrne                ND     45       19    18     1     13       857       976      +119   +13.89% DIRECT
+  samuel-swadling            ND     37       19    18     1      5       776       885      +109   +14.05% DIRECT
+  louis-emmett               ND     27       19    18     1      5       749       849      +100   +13.35% DIRECT
+  jai-murray                 ND     17       19    18     1      7      1138      1237       +99    +8.70% DIRECT
+  harry-kyle                 ND     14       19    18     1      5      1158      1252       +94    +8.12% DIRECT
+  jack-ison                  ND     47       19    18     1      7       512       583       +71   +13.87% DIRECT
+  lachy-dovaston             ND     16       19    18     1      6       512       569       +57   +11.13% DIRECT
+  zeke-uwland                ND     2        19    18     1     16      2633      2685       +52    +1.97% DIRECT
+  daniel-annable             ND     6        19    18     1      1      1395      1435       +40    +2.87% DIRECT
+  ollie-greeves              RD     5        19    18     1      3       583       623       +40    +6.86% DIRECT
+  chris-scerri               SSP    None     20    19     1      7       459       499       +40    +8.71% DIRECT
+  thomas-burton              SSP    None     19    18     1      5       439       478       +39    +8.88% DIRECT
+  xavier-bamert              MSD    5        19    19     1      7       509       547       +38    +7.47% DIRECT
+  jack-dalton                ND     34       19    18     1      4       437       474       +37    +8.47% DIRECT
+  cameron-nairn              ND     20       19    18     1      3       606       641       +35    +5.78% DIRECT
+  max-kondogiannis           ND     36       19    18     1      7       435       468       +33    +7.59% DIRECT
+  cody-curtin                ND     43       19    18     1      4       427       458       +31    +7.26% DIRECT
+  hussien-el-achkar          ND     53       19    18     1      7       353       382       +29    +8.22% DIRECT
+  riley-hamilton             PDA    None     20    19     1      4       305       333       +28    +9.18% DIRECT
+  balyn-o-brien              SSP    None     19    18     1      2       383       408       +25    +6.53% DIRECT
+  charlie-banfield           ND     41       19    18     1      3       536       557       +21    +3.92% DIRECT
+  xavier-taylor              ND     11       19    18     1      2       802       820       +18    +2.24% DIRECT
+  will-mclachlan             MSD    6        21    19     0      7       148       160       +12    +8.11% INDIRECT
+  tom-hanily                 MSD    14       21    19     0     12       216       223        +7    +3.24% INDIRECT
+  noah-roberts-thomson       ND     54       19    18     1      3       213       219        +6    +2.82% DIRECT
+  zane-peucker               ND     31       19    18     1      2       384       389        +5    +1.30% DIRECT
+  aidan-schubert             ND     23       19    18     1      0       481       480        -1    -0.21% DIRECT
+  shadeau-brain              PDA    None     22    18     0     11       120       121        +1    +0.83% INDIRECT
+
+--------------------------------------------------------------------------------------------------------------------------------
+CONCENTRATION
+--------------------------------------------------------------------------------------------------------------------------------
+  by ENTRY AGE
+    cell                 n      before       after      delta     delta%      med %
+    entry age 18        34       42224       46822      +4598   +10.890%    +8.884%
+    entry age 19         5        1637        1762       +125    +7.636%    +8.108%
+
+  by CAREER STAGE (career games in the store)
+    cell                 n      before       after      delta     delta%      med %
+    6-14 games          17       19036       21415      +2379   +12.497%   +11.133%
+    15+ games            5       13523       15076      +1553   +11.484%   +13.802%
+    1-5 games           16       10821       11613       +792    +7.319%    +7.260%
+    0 games              1         481         480         -1    -0.208%    -0.208%
+
+  by ND / POOL
+    cell                 n      before       after      delta     delta%      med %
+    ND 1-64             30       40699       45192      +4493   +11.040%   +11.133%
+    POOL: SSP            3        1281        1385       +104    +8.119%    +8.715%
+    POOL: MSD            3         873         930        +57    +6.529%    +7.466%
+    POOL: RD             1         583         623        +40    +6.861%    +6.861%
+    POOL: PDA            2         425         454        +29    +6.824%    +9.180%
+
+  by POSITION (board gf)
+    cell                 n      before       after      delta     delta%      med %
+    MID                 11       20021       22450      +2429   +12.132%   +13.418%
+    SD                   9       12095       13160      +1065    +8.805%    +7.586%
+    SF                  14        5950        6473       +523    +8.790%    +8.467%
+    KPD                  1        2577        2935       +358   +13.892%   +13.892%
+    KPF                  4        3218        3566       +348   +10.814%   +13.351%
+
+  by PICK BAND
+    cell                 n      before       after      delta     delta%      med %
+    ND 1-10             10       23376       26068      +2692   +11.516%   +13.802%
+    ND 11-20             8       11163       12404      +1241   +11.117%   +11.133%
+    ND 21-40             6        3262        3545       +283    +8.676%    +8.467%
+    ND 41+               6        2898        3175       +277    +9.558%    +8.215%
+    pool/no pick         9        3162        3392       +230    +7.274%    +7.466%
+
+--------------------------------------------------------------------------------------------------------------------------------
+THE CONTROL GROUP -- debut-2026 rows that are entry-age >= 20 and therefore get NO grace
+--------------------------------------------------------------------------------------------------------------------------------
+  30 rows.  Moved: 0  (must be 0 -- this is the ruled discrimination, visible)
+  key                        type    entA  games    BEFORE     AFTER
+  marcus-herbert             MSD       24      6       906       906
+  oliver-francou             MSD       20      4       576       576
+  latrelle-pickett           ND        20     15       548       548
+  jaxon-artemis              MSD       20      2       520       520
+  mitch-podhajski            MSD       27      2       399       399
+  flynn-riley                MSD       22      1       391       391
+  alex-van-wyk               MSD       22      0       391       391
+  lukas-cooke                MSD       23      2       364       364
+  harrison-coe               MSD       27      0       322       322
+  caleb-may                  MSD       21      0       322       322
+  max-mapley                 MSD       21      0       322       322
+  billy-cootee               ND        23      5       264       264
+  kye-annand                 MSD       23      7       239       239
+  tobyn-murray               ND        20      0       234       234
+  hugo-hall-kahan            MSD       23      7       215       215
+  milan-murdock              SSP       25     15       208       208
+  tai-hayes                  ND        21      0       194       194
+  max-beattie                MSD       23      0       181       181
+  angus-anderson             ND        22     11       165       165
+  campbell-lake              MSD       22      5       161       161
+
+--------------------------------------------------------------------------------------------------------------------------------
+RANK MOVEMENT ON THE BOARD
+--------------------------------------------------------------------------------------------------------------------------------
+  biggest rank climbs among the movers
+  key                        rank was rank now    climb
+  will-mclachlan                  580      557      +23
+  jack-ison                       338      317      +21
+  cooper-duff-tytler              155      135      +20
+  beau-addinsall                  162      143      +19
+  louis-emmett                    269      251      +18
+  lachy-dovaston                  337      319      +18
+  samuel-grlj                     139      122      +17
+  chris-scerri                    361      344      +17
+  harry-kyle                      204      188      +16
+  balyn-o-brien                   398      382      +16
+  dylan-patterson                 148      133      +15
+  jai-murray                      206      191      +15
+  ollie-greeves                   316      301      +15
+  sam-cumming                      93       79      +14
+  josh-lindsay                     91       77      +14
+  UN-MOVED rows displaced in rank by the movers: 272 (their VALUES are unchanged; only their
+  position in the ordering shifts, which is arithmetic, not a repricing)
