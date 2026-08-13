@@ -442,3 +442,224 @@ basis and reporting its number would be worse than reporting the gap.
 | `o29_pins.py` · `PINS29_out.txt` · `PINS29.json` · `BOOTGUARD29_FINAL.txt` | the restamp and the guard |
 | `o29_movers_full.py` · `docs/ledgers/LANDING_29_MOVERS_2026-08-13.{md,json}` | every player, four levers |
 | `bb29.sh` | the staged-workspace board builder |
+
+---
+
+# 12. FINAL-BOARD CONTROLS — THE BLOCK THE BUILD SEAT LEFT NOT RUN
+
+**Controls seat, same day, same branch. Entry tip `ba4ab18`. THE BOARD DOES NOT MOVE IN THIS SECTION
+AND IS RE-ASSERTED AT THE END OF IT.** Everything below is added evidence under
+`docs/evidence/landing_29_2026-08-13/`; the diff against `ba4ab18` outside that directory is **empty**.
+
+§10 left four things outstanding: the identity gate (P16), and — for P15 — the all-arm harness, the
+mark-path progression and reverse no-arb, plus the observation that `noarb_table_338.py` had measured
+the *teaching basis* rather than the landed board. All four were attempted. **Two came back green,
+one came back green and corrected a claim in a delivered packet, and one HALTED and is reported as a
+halt rather than worked around.**
+
+## 12.1 P16 — THE IDENTITY GATE. **HELD, BIT-EXACT.**
+
+The refusal §10 measured was a stale basis, not a broken gate. Exactly one declared re-point was
+applied, in its own commit, to a **copy** — ORDER 28's `o28_gate.py` is left byte-unchanged
+(`1089b2ba…`), because an act does not rewrite a delivered packet's instrument in place:
+
+| # | what | from | to |
+|---|---|---|---|
+| 1 | `PINS_ASSERT['store']` | `d9a24282…` | **`cb38ef11…`** |
+| 2 | `PINS_ASSERT['board']` | `88ce647f…` | **`86c8d5d9…`** |
+| 3 | `VARIANT_BOARD` | ORDER 28's step-3 dial-ON scratch board (deleted) | the landed board |
+| 4 | stage + output names | `eng28_gate`, `GATE28.*` | `eng29_gate`, `GATE29.*` |
+
+Re-point 3 is a consequence of the landing, not a convenience: ORDER 28 needed two boards because the
+dial had moved the scorer but not the shipped board. **ORDER 29 lands the dial**, so the checkout's
+board *is* the dial-ON board and the two Ruling-9 readings coincide by construction. Both columns are
+still printed so the collapse is visible rather than asserted.
+
+**Nothing the gate checks is weakened** — the full diff ships as `GATE29_REPOINT.diff` and the
+code-only diff is four hunks, every one an identity string or an output path. Unchanged byte for byte:
+the 1e−6 identity tolerance, Ruling 9's ±2% band, the hard `assert _maxres < 1e-3` on the attribution
+residual, the **exit** re-assertion of both pins, the scorer, `band_career`, `score_career`,
+`gate_price`, the panel construction and the board-wide control.
+
+| reading | result |
+|---|---|
+| price-function identity, panel | **12 of 12 PASS** · max &#124;mine/price6 − 1&#124; **0.000e+00** |
+| price-function identity, board-wide | **800 of 800 within 1e−6 (100.0%)** · max **0.000e+00** · over **804** active rows |
+| attribution residual | max **2.220e-16** against the 1e−3 halt |
+| pins at exit | store `cb38ef11` · board `86c8d5d9` — **unmoved**; the gate proves it wrote no byte |
+
+P16 predicted *"price-function identity bit-exact (`0.000e+00`) on the panel and board-wide"*.
+**Measured 0.000e+00 on both. HELD — and held bit-exact, not within tolerance.** The 800-of-804 shape
+is the historical one (804 rows measured, 4 carrying `price6 = 0` and therefore outside a ratio test).
+
+The Ruling-9 legs read 2 of 12 on the panel and 75 of 804 board-wide. **That is not a gate failure and
+is not scored as one:** Ruling 9 compares the *scorer* to a board, and this scorer is the six-career
+band scorer, not the shipped pricing chain — the attribution table names every multiplicative leg
+between them and closes to 2.220e-16. ORDER 28 read 2 of 12 and 72 of 804 on the identical construction.
+
+## 12.2 P15 — THE AS-OF MATRIX. **REGENERATED. This was the expensive half and it is done.**
+
+`emit_variant_o29.sh`, the sibling of ORDER 25's `emit_variant_o25.sh`, with the staging removed
+(ORDER 25 had to inject a candidate that was not yet source; ORDER 29's curve, surface, book and
+numéraire are all committed at HEAD) and `RL_V0SURF_PKL` added for the §3.3 shadowing hazard. The
+emitter is copied, never modified.
+
+| | |
+|---|---|
+| `per_entrant_O29FINAL.json` | **`814df691…`** · 24 as-of years · **3m 14s** |
+| basis | store **`cb38ef11`** · engine head **`e5109864`** · v0surf **`4405cba2`** (the re-baked *shipped* signature) · `frozen=True` |
+| dial | grace-A at its **landed code default** (`RL_GRACE` unset = `'1'`, pinned manifest) |
+| population | **2648** records · ND 1–64 teaching **1447** |
+
+Both deltas against the live emit are **+3, and they are the same three rows**: `adam-treloar`,
+`dylan-shiel`, `jeremy-cameron` — the unflag-three (lever 1), which stop being `_pvc_exclude` and
+therefore start teaching the curve. Nothing else entered; nothing left. **The matrix moved exactly
+where the landing says it should.**
+
+## 12.3 P15 — BOTH COHORT INSTRUMENTS ON THE LANDED MATRIX. **HALTED. Reported, not worked around.**
+
+```
+noarb_table_338.py  ->  harness_pvc_REPINNED_pass3.py:327
+    AssertionError: matrix store cb38ef11 != committed identity d9a24282
+noarb_table_allarm.py:50
+    AssertionError: store pin moved: cb38ef11
+```
+
+Verbatim in `NOARB_LANDED_HALT.txt`. The blocking literals, **measured** (`NOARB_BASIS_out.txt`), not
+guessed:
+
+| file | name | holds | landed matrix carries |
+|---|---|---|---|
+| `harness_pvc_REPINNED_pass3.py` | `EXPECT_STORE` | `d9a24282` | **`cb38ef11`** |
+| `harness_pvc_REPINNED_pass3.py` | `EXPECT_V0SURF` | `6ef67f07db98` | **`4405cba2b42f`** |
+| `harness_pvc_REPINNED_pass3.py` | `EXPECT_N` | `1197` | **`1200`** |
+| `noarb_table_allarm.py` | store + surface, inline | `d9a24282` / `6ef67f07db98` | **`cb38ef11` / `4405cba2b42f`** |
+
+**`noarb_table_338.py` itself carries no pin and needs no edit** — md5 `0f8220351c64c56ccfa90c60edcdfa5f`,
+verified unmoved at run. It delegates to the harness, and `noarb_table_allarm.py` asserts *its* md5.
+`EXPECT_N` 1197 → 1200 is the unflag-three again, by name.
+
+**The control is what makes the halt diagnostic rather than ambiguous.** The same invocation, the same
+instrument copies, on `per_entrant_O25R4.json` — the matrix behind the LIVE board — reproduced
+`NOARB_MARGINS_V2` **to the last digit**: PRIMARY **+33.23%**, MODERN **+31.75%**, ND all/1–20/21–64
+**+6.70% / +1.82% / +14.04%**, **0 arbitrages**. The pipeline, the runner and this seat are sound. The
+pin is the blocker, and only the pin.
+
+**Why this seat stopped instead of re-pointing.** The harness is named `harness_pvc_REPINNED_pass3.py`
+and its header is a *log of successive declared re-points* — *"THE PINS WERE RE-POINTED, NEVER PATCHED
+AWAY, and the asserts are byte-identical"* — one entry per act that moved the store, and it even quotes
+this exact halt shape as proof the assert fires. So the fix is precedented and small: **five literals
+in two files, every one measured above.** It is still not this seat's call. One declared re-point was
+authorised — the gate's — and the standing instruction is to stop rather than modify a pinned
+instrument. Re-pointing the instrument that *defines the basis of the no-arb reading* is the last
+thing to do unasked at the end of a landing.
+
+**No arbitrage was opened on the landed basis, because no reading was taken on it.** That is stated
+rather than dressed up, and the expensive work is banked: the matrix exists, so the owner's word turns
+into numbers in about two minutes.
+
+## 12.4 P15 — MARK-PATH PROGRESSION AND REVERSE NO-ARB. **BOTH PASS, 10 of 10, ON THE LANDED BOARD.**
+
+These carry no store pin, so the landing did not lock them out. `o29_instruments.py` is
+`o28_instruments.py` (`cb55c8b6…`) with **two basis substitutions and nothing else**
+(`INSTRUMENTS29_REBASIS.diff`) — no predicate, tolerance, bootstrap parameter, depth axis or
+population rule touched:
+
+1. **The denominator is now what ships.** ORDER 28 read the *proposed* `candidate.allin` — full float,
+   before ruling C. This reads the **shipped** `pvc_curve_v2.json` (`curve_md5 9729f0c5`). The run
+   **halts** if any pick outside the two ruled blocks (6–12, 15–21) moves by more than rounding, so
+   the provenance is checked rather than assumed. The pool half is unchanged because the landing did
+   not move it — verified by `cell × anchor_factor` reproducing the published landed cell table, with
+   `anchor_factor` bit-equal to the landed `s = 0.9400914291048137`.
+2. **The numerator closes ORDER 28's own declared breach.** That file's header said its marks came from
+   an off-dial matrix and named the re-emit as the follow-up. **The follow-up ran.**
+
+| instrument | result |
+|---|---|
+| mark-path progression | **10 of 10 arms PASS** |
+| reverse no-arb | **10 of 10 arms PASS · 0 pathways fail** |
+
+Peaks: ND 1–64 **1.5653** @d3 · RD **1.4660** @d3 · SSP **2.0527** @d2 · MSD **1.2379** @d5 · IRE
+**2.0281** @d6 · PDA **1.6901** @d4 · PDN **1.5228** @d5 · PDS **1.3118** @d4 · UNR **1.7261** @d4 ·
+ND>64 **1.5181** @d6. Reported as the pre-statement demands: limb 1 is clear on **every** arm, so this
+is *"every arm clears by a printed margin"*, **not** *"the test was hard and was survived"* — the
+smallest `max m(d≥1)` is MSD **1.2379**, 24% above the failure line.
+
+### 12.4.1 A finding that corrects a delivered packet
+
+ORDER 28 could not measure the dial's effect on the marks, so it **predicted the direction** — higher
+at shallow depths, unchanged deeper — and used that prediction to argue its own progressions were
+**conservative** and that *"the instruments' PASS shape cannot be manufactured by the gap"*.
+
+Measured, same denominator both sides so it isolates the numerator:
+
+| | mean Δ (landed − live) |
+|---|---:|
+| shallow, d0–d1 | **−0.0332** |
+| deep, d2–d6 | **−0.0815** |
+
+**The prediction does not hold.** The landed marks are **lower at essentially every arm and every
+depth, and they fall further deep than shallow** — the opposite shape, consistent with a board that
+fell 6.17% under the numéraire re-pin. **ORDER 28's read was optimistic, not conservative.**
+
+Neither verdict in §12.4 depends on that assumption — both instruments run on the landed marks
+directly — but ORDER 28's reported margin was defended by a claim that has now been measured and ran
+the other way. Recorded because it was measured.
+
+## 12.5 THE SCORE, BY NUMBER
+
+| # | prediction | §4 verdict | **final-board verdict** |
+|---|---|---|---|
+| **P15** | no-arb, both instruments, on the FINAL board; 0 arbitrages; mark-path PASS on all 10 arms and reverse no-arb PASS on all 10 | PARTIAL | **STILL PARTIAL, and partial differently.** Its *second* clause is now **fully HELD on the landed board**: mark-path **10/10**, reverse no-arb **10/10, 0 fail**. Its *first* clause is **not scorable**: the as-of matrix was regenerated under the landed engine, but **both cohort instruments refuse it on their store/surface/population pins**, so no landed cohort reading exists. **0 arbitrages opened — on the readings that ran.** The live-basis control reproduced ORDER 25's tables to the last digit. §12.3 |
+| **P16** | the identity gate on the landed board; identity bit-exact `0.000e+00` on the panel and board-wide | NOT RUN | **HELD.** Panel **12/12**, board-wide **800/800**, max &#124;mine/price6 − 1&#124; **0.000e+00** on both, attribution residual **2.220e-16**, pins re-verified unmoved at exit. §12.1 |
+
+**§4's tally is amended by exactly these two lines: eleven held → twelve held; one not run → none not
+run; three partial → two partial.** Every other score in §4 stands untouched.
+
+## 12.6 THE CONTROLS TABLE, EXTENDED
+
+| control | status |
+|---|---|
+| identity gate (P16), re-pointed and run | **PASS — 800 of 800 board-wide at `0.000e+00`** |
+| as-of matrix regenerated under the landed engine | **DONE** — `814df691`, 2648 records, +3 = the unflag-three |
+| `noarb_table_338.py`, unmodified, on the LANDED matrix | **HALTED** on `EXPECT_STORE` / `EXPECT_V0SURF` / `EXPECT_N` |
+| all-arm harness on the LANDED matrix | **HALTED** on the same pins |
+| both cohort instruments on the LIVE matrix (control) | **PASS** — reproduces `NOARB_MARGINS_V2` to the last digit, 0 arbitrages |
+| mark-path progression, landed board | **PASS — 10 of 10 arms** |
+| reverse no-arb, landed board | **PASS — 10 of 10 arms, 0 pathways fail** |
+| ORDER 28's declared off-dial-matrix breach | **CLOSED** — and its stated direction **did not hold** (§12.4.1) |
+| board unmoved by this seat | **PASS** — see §12.7 |
+
+## 12.7 THE BOARD DID NOT MOVE
+
+Re-asserted after every control ran:
+
+| | |
+|---|---|
+| `rl_app_data.json` | **`86c8d5d9ba5b95e2cba05c78fbc31f78`** — unchanged |
+| `rl_model_data.json` | `cb38ef1171dcf20aae66ebf12682be0d` |
+| `pvc_curve_v2.json` | `52aa11258e83a0c8a549940ab3b4388a` |
+| `rl_model.py` | `a0854d1e8421d956edc3bea5150abf49` |
+| `_merged_recover.py` | `e51098648c1ccb6951b30d57d9aac3fe` |
+| `data/v0surf.pkl` | `5dd34ca82735f5c8f021b1c7320df8f8` |
+
+`git diff ba4ab18..HEAD` outside `docs/evidence/landing_29_2026-08-13/` is **empty**. No engine, store,
+curve or surface byte moved. `noarb_table_338.py` is unmodified at `0f8220351c64c56ccfa90c60edcdfa5f`;
+`o28_gate.py` and `o28_instruments.py` are byte-unchanged. **The single declared re-point in this
+section lives in a new file, not in a committed one.**
+
+**THE MERGE HOLD IS UNCHANGED. NOTHING MERGES WITHOUT THE OWNER'S WORD ON THIS PACKET**, and the
+owner now additionally owes a word on §12.3: whether the two cohort instruments are re-pointed to the
+landed basis, which is the only thing standing between this branch and a complete P15.
+
+### Evidence index — final-board controls
+
+| file | what |
+|---|---|
+| `o29_gate.py` · `GATE29.{json,_out.txt}` · `GATE29_REPOINT.diff` | P16: the gate, the declared re-point, and the run |
+| `emit_variant_o29.sh` | the as-of matrix re-emitted on the landed tree |
+| `run_noarb_o29.sh` · `NOARB_MARGINS_29_out.txt` | both cohort instruments: the live basis, and the landed attempt |
+| `NOARB_LANDED_HALT.txt` | the two refusals, verbatim, instrument md5s computed at run |
+| `o29_noarb_basis.py` · `NOARB_BASIS_out.txt` | the blocking literals and the +3 rows, measured |
+| `o29_instruments.py` · `INSTRUMENTS29.{json,_out.txt}` · `INSTRUMENTS29_REBASIS.diff` | mark-path + reverse no-arb ON the landed board |
+| **`NOARB_MARGINS_29.{md,json}`** · `o29_noarb_tables.py` | the owner-facing tables, ORDER 25 layout, landed-vs-live |
