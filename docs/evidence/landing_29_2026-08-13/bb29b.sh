@@ -32,6 +32,9 @@ export PYTHONPATH="$WS/rl_after:$ROOT/vendor:$ROOT"
 export RL_V0SURF_PKL="$ROOT/data/v0surf.pkl"
 export RL_GAMMA=1.0 RL_PICK1=3000 RL_RUCK_TAX=0.25 RL_RECENCY_DECAY=0.72 RL_PRIOR_TREES=400 PAR_RAMPS=22
 if [ "$GR" != "UNSET" ]; then export RL_GRACE="$GR"; fi
+# ORDER 29B's DECLARED kill-switch, passed through when the caller sets it (RL_ENTRY29B=0 must reproduce
+# board 86c8d5d9 byte-exact). Unset => the landed code default '1' => the entry wiring is live.
+if [ -n "${RL_ENTRY29B:-}" ]; then export RL_ENTRY29B; fi
 python3 rl_export.py > "$WS/export_stdout.txt" 2> "$WS/export_stderr.txt" || {
   echo "EXPORT FAILED"; tail -60 "$WS/export_stderr.txt"; exit 1; }
 md5sum "$WS/rl_after/rl_app_data.json"
