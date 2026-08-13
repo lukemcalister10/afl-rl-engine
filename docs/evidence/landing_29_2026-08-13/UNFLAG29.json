@@ -1,0 +1,40 @@
+{
+ "mode": "--apply",
+ "store_md5_pre": "d9a24282357cf3083b1640466e3ecd83",
+ "store_md5_post": "cb38ef1171dcf20aae66ebf12682be0d",
+ "bytes_pre": 1978176,
+ "bytes_post": 1978110,
+ "deleted_keys": [
+  {
+   "row": 1533,
+   "key": "dylan-shiel",
+   "field": "_pvc_exclude"
+  },
+  {
+   "row": 1541,
+   "key": "jeremy-cameron",
+   "field": "_pvc_exclude"
+  },
+  {
+   "row": 1543,
+   "key": "adam-treloar",
+   "field": "_pvc_exclude"
+  }
+ ],
+ "nd2011_rows": 81,
+ "nd2011_dup_picks": {},
+ "three": {
+  "dylan-shiel": {
+   "pick": 4,
+   "in_pvc": true
+  },
+  "jeremy-cameron": {
+   "pick": 12,
+   "in_pvc": true
+  },
+  "adam-treloar": {
+   "pick": 14,
+   "in_pvc": true
+  }
+ }
+}
