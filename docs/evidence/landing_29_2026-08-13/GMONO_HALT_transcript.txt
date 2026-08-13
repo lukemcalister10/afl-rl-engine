@@ -1,0 +1,12 @@
+PROVENANCE {"RL_FV_env": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o29/bb_CURVETEST/forward_valuation", "config_manifest_identity": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1", "config_manifest_path": "/home/user/afl-rl-engine/.claude/worktrees/agent-adf5ad9255e01ffb7/data/model_config.json", "distribution_pricing_md5": "33e07a9ee66a29e9d8ef3dc45cca52f6", "fv_identity": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346", "fv_identity_expected": "2621b56a32805f15b5084a45f851e882d1a0c6cf9c4fc2512550d394760f7dc6", "resolved_fv_dir": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o29/bb_CURVETEST/forward_valuation", "rl_model_md5": "cb78e0efe129fdcd9c02be5364db4aab", "rl_model_path": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o29/bb_CURVETEST/rl_after/rl_model.py"}
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o29/bb_CURVETEST/rl_after/rl_export.py", line 68, in <module>
+    exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], _ens)
+  File "<string>", line 49, in <module>
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o29/bb_CURVETEST/rl_after/rl_model.py", line 1449, in <module>
+    _PVC2M=_split_ladder(_V2RAW,'RL_PVC2 v2 curve')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o29/bb_CURVETEST/rl_after/rl_model.py", line 1436, in _split_ladder
+    assert not _bad, "%s G-MONO: national curve 1..%d is not STRICTLY decreasing — %d plateau(s) at picks %s"%(
+           ^^^^^^^^
+AssertionError: RL_PVC2 v2 curve G-MONO: national curve 1..64 is not STRICTLY decreasing — 12 plateau(s) at picks [6, 7, 8, 9, 10, 11, 15, 16]
