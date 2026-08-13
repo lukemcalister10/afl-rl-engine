@@ -578,7 +578,16 @@ because a future reader will otherwise ask why one curve carries two estimators.
 seam (56), the blend weight at every pick and the method label per pick are all printed in
 `DERIVE28_out.txt` §3.
 
-### 9.6 A landing-time item the dial does not yet satisfy
+### 9.6 Scope note — the standing gate suite was NOT run
+
+`one_source_selftest.py`, the parity gate, and the movers/transition/preflight suites were **not run**
+on this branch. The reason is stated rather than assumed: with the dial off the engine is
+**byte-identical** on a full board rebuild (§3), so every one of those gates reads exactly what it
+reads on `main` — their verdicts are unchanged **by construction**, not by measurement. That argument
+covers the dial-OFF state and nothing else. **Running the full suite with the dial ON is a
+landing-time obligation**, and it is listed in §10.
+
+### 9.7 A landing-time item the dial does not yet satisfy
 
 `config_manifest.enforce()` in `bake`/`gate` mode **clears the ambient model environment and rejects
 unknown `RL_*` overrides**. `RL_GRACE` is not in `data/model_config.json`. Every build in this packet
@@ -599,11 +608,16 @@ ascents** *(now ruled — Ruling C above)* **· the two n = 0 cells · the numé
 number in this packet. Landing this configuration before that fix would bake a curve derived on an
 incomplete 2011 class.
 
-When the owner gives his word, the landing act needs, in one commit: `RL_GRACE` added to the pinned
-config manifest and defaulted ON; the candidate curve and v0s written; every identity carrier
-re-pinned; the indirect-mover assert from §9.1 armed; the dial-ON walk-forward matrix re-emitted and
-the instruments re-read on it (§9.3); and the movers registry written **only after** the adoption word
-(the #334 finding-11 lesson).
+When the owner gives his word, the landing act needs, in one commit:
+
+1. `RL_GRACE` added to the pinned config manifest and defaulted ON (§9.7);
+2. the candidate curve and v0s written, and every identity carrier re-pinned in the same act;
+3. the **full standing gate suite re-run with the dial ON** — selftest, both parity gates,
+   movers/transition/preflight (§9.6);
+4. the indirect-mover assert from §9.1 armed, so the indirect set is **named**, not rediscovered;
+5. the **dial-ON walk-forward matrix re-emitted** and both instruments re-read on it (§9.3);
+6. the movers registry written **only after** the adoption word (the #334 finding-11 lesson: an
+   un-adopted board must never be registered, and the column id is poisoned if it is).
 
 **Until then the dial is OFF, the board is `88ce647f`, and the curve of record is the landed PVC.**
 
