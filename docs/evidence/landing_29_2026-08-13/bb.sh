@@ -8,6 +8,7 @@ ROOT=/home/user/afl-rl-engine/.claude/worktrees/agent-adf5ad9255e01ffb7
 SP=/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o29
 TAG=${1:-x}
 GR=${2:-0}
+RLM=${3:-}        # optional: an rl_model.py to install over the staged one (control builds only)
 WS=$SP/bb_$TAG
 rm -rf "$WS"; mkdir -p "$WS"
 cp -rf "$ROOT/engine/rl_after"          "$WS/rl_after"
@@ -16,8 +17,11 @@ cp -f  "$ROOT/config_manifest.py"       "$WS/rl_after/config_manifest.py"
 cp -f  "$ROOT/fv_provenance.py"         "$WS/rl_after/fv_provenance.py"
 cp -f  "$ROOT/boot_guard.py"            "$WS/rl_after/boot_guard.py"
 cp -f  "$ROOT/LTI_REGISTER.md"          "$WS/rl_after/LTI_REGISTER.md"
+if [ -n "$RLM" ]; then cp -f "$RLM" "$WS/rl_after/rl_model.py"; fi
+if [ -n "${ART:-}" ]; then cp -f "$ART" "$WS/rl_after/pvc_curve_v2.json"; fi
 chmod -R u+w "$WS"
 cd "$WS/rl_after"
+md5sum "$WS/rl_after/rl_model.py" "$WS/rl_after/rl_model_data.json"
 export RL_REPO="$ROOT" RL_FV="$WS/forward_valuation" PYTHONHASHSEED=0
 # FULL FIVE-VAR THREAD PINNING (the proven fix; unpinned OMP/MKL/NUMEXPR/VECLIB workers spin-wait
 # and starve this box).  ENGINE RUNS ARE STRICTLY SEQUENTIAL -- never two builds concurrently.
