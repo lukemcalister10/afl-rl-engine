@@ -1168,5 +1168,11 @@
    "progression_ok": true,
    "reverse_noarb_fail": false
   }
+ },
+ "RESOLVED_2026_08_13": {
+  "note": "The HALTED state recorded in this file was resolved in-session: supervisor-authorized re-point within the ruled ORDER 29 spec, applied to ORDER 29 disclosed copies under noarb/. The landed readings live in noarb/MARGINS_O29.json and the filled tables in NOARB_MARGINS_29.md.",
+  "landed_readings": "noarb/MARGINS_O29.json",
+  "arbitrages_opened": "2 of 10 (legacy ND ALL 1-64 margin -7.73%; picks 1-20 margin -15.92%)",
+  "p15": "BREACHED (first clause measured, 2 arbitrages; second clause held 10/10 + 10/10)"
  }
 }

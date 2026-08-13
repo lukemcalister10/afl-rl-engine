@@ -4,16 +4,18 @@ Companion to `docs/evidence/pool_landing_v2_2026-08-12` / the ORDER 25 `NOARB_RE
 layout so the owner can read landed against live side by side.
 A NEGATIVE margin against the 14% annual charge is an arbitrage.
 
-> ## READ THIS FIRST — THE DECIDING LANDED READING DID NOT RUN
-> The as-of matrix **was** regenerated under the landed engine — that is the expensive half and it
-> is done (`per_entrant_O29FINAL.json`, 2648 records, 3m14s). **Both cohort instruments then
-> refused to read it**, on their own store / surface / population pins. Nothing was tuned to get a
-> number: the halt is transcribed verbatim in `NOARB_LANDED_HALT.txt` and the five blocking
-> literals are measured in `NOARB_BASIS_out.txt`.
-> 
-> **So sections 1–3 below carry the LIVE board's numbers with the landed column marked HALTED.**
-> Section 4 carries the landed readings that *did* run — the pathway-grain instruments and the
-> identity gate, neither of which pins the store.
+> ## READ THIS FIRST — THE LANDED READING NOW EXISTS, AND IT OPENS TWO ARBITRAGES
+> The halt recorded below was resolved the precedented way: the supervisor seat authorized the
+> five-literal re-point within the ruled ORDER 29 spec (#334 comments 5278653175 / 5279364952),
+> applied to **ORDER 29's own instrument copies** under `noarb/` — the composition act's copies and
+> the instrument of record are untouched, `noarb_table_338.py` byte-identical (md5 `0f822035…`,
+> asserted at run). Both instruments then read the landed matrix cleanly (teaching population
+> re-measured 1200 = 1197 + the unflag-three).
+>
+> **THE RESULT: 2 of 10 readings are ARBITRAGES on the landed board** — the legacy ND instrument's
+> ALL picks 1–64 (margin **−7.73%**) and picks 1–20 (**−15.92%**). The all-arm deciding instrument
+> stays no-arb in both windows (+28.71% / +26.66%). The pool yr0→yr1 cliffs did **not** close
+> (§5). Nothing was tuned: the numbers are what the unmodified instrument computed.
 
 ---
 
@@ -41,6 +43,14 @@ prior declared re-points — so the fix is precedented and small, but it re-poin
 that *defines the basis of the no-arb reading*, and this seat was authorised exactly one re-point
 (the identity gate's). It is the owner's call, and it is now a two-minute call.
 
+**RESOLVED (2026-08-13, the supervisor seat, in-session):** the re-point was authorized within the
+ruled ORDER 29 spec — the landing spec itself mandates both cohort instruments on the FINAL board,
+and the pin move is exactly the basis change the landing lawfully made. Applied per this file's own
+convention: ORDER 29's disclosed copies in `noarb/` (header log appended in the house style), five
+literals moved (`EXPECT_STORE d9a24282→cb38ef11`, `EXPECT_V0SURF 6ef67f07db98→4405cba2b42f`,
+`EXPECT_N 1197→1200` + the allarm inline pair), no tolerance, window, band or logic touched,
+`noarb_table_338.py` byte-identical. Sections 1–3 below now carry the landed readings.
+
 ---
 
 ## 1. OVERALL — the all-arm deciding instrument (ND + every pool pathway, one cohort)
@@ -48,49 +58,63 @@ that *defines the basis of the no-arb reading*, and this seat was authorised exa
 | window | n | yr0 | yr1 | yr2 | yr3 | yr4 | yr5 | yr6 | yr7 | apprec 0→1 | margin v14% | verdict |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | PRIMARY 2005-2023 **(LIVE `88ce647f`)** | 2212 | 1.0000 | 0.8077 | 0.9737 | 1.0703 | 1.1291 | 1.1096 | 1.0560 | 0.9260 | -19.23% | **+33.23%** | no arb |
-| PRIMARY 2005-2023 **(LANDED `86c8d5d9`)** | — | — | — | — | — | — | — | — | — | — | **HALTED** | pin |
+| PRIMARY 2005-2023 **(LANDED `86c8d5d9`)** | 2215 | 1.0000 | 0.8529 | 0.9607 | 1.0587 | 1.1188 | 1.0991 | 1.0446 | 0.9149 | -14.71% | **+28.71%** | no arb |
 | MODERN  2019-2023 **(LIVE `88ce647f`)** | 540 | 1.0000 | 0.8225 | 0.9256 | 0.9794 | 0.9772 | 1.0345 | 0.9099 | 0.8009 | -17.75% | **+31.75%** | no arb |
-| MODERN  2019-2023 **(LANDED `86c8d5d9`)** | — | — | — | — | — | — | — | — | — | — | **HALTED** | pin |
+| MODERN  2019-2023 **(LANDED `86c8d5d9`)** | 540 | 1.0000 | 0.8734 | 0.9204 | 0.9754 | 0.9732 | 1.0289 | 0.9017 | 0.7926 | -12.66% | **+26.66%** | no arb |
+
+The landed n rises 2212 → 2215: the unflag-three join the ND arm. Margins narrow ~4.5 points in
+both windows (day-0 falls less than year-1 marks under the landed engine at cohort grain) but stay
+far from the line.
 
 ## 2. ND ONLY (picks 1–64) — the legacy retained instrument, `noarb_table_338.py` UNMODIFIED
 
 | group | yr0 | yr1 | yr2 | yr3 | yr4 | yr5 | yr6 | yr7 | apprec 0→1 | margin v14% | verdict |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | ALL picks 1-64 **(LIVE)** | 1.0000 | 1.0730 | 1.3343 | 1.4952 | 1.5712 | 1.5529 | 1.4981 | 1.3005 | +7.30% | **+6.70%** | no arb |
-| ALL picks 1-64 **(LANDED)** | — | — | — | — | — | — | — | — | — | **HALTED** | pin |
+| ALL picks 1-64 **(LANDED)** | 1.0000 | 1.2173 | 1.4051 | 1.5847 | 1.6700 | 1.6520 | 1.5935 | 1.3827 | +21.73% | **−7.73%** | **ARB** |
 | picks 1-20 **(LIVE)** | 1.0000 | 1.1218 | 1.3642 | 1.4886 | 1.5981 | 1.5685 | 1.4750 | 1.2931 | +12.18% | **+1.82%** | no arb |
-| picks 1-20 **(LANDED)** | — | — | — | — | — | — | — | — | — | **HALTED** | pin |
+| picks 1-20 **(LANDED)** | 1.0000 | 1.2992 | 1.4402 | 1.5825 | 1.7036 | 1.6736 | 1.5741 | 1.3782 | +29.92% | **−15.92%** | **ARB** |
 | picks 21-64 **(LIVE)** | 1.0000 | 0.9996 | 1.2894 | 1.5051 | 1.5307 | 1.5299 | 1.5322 | 1.3113 | -0.04% | **+14.04%** | no arb |
-| picks 21-64 **(LANDED)** | — | — | — | — | — | — | — | — | — | **HALTED** | pin |
+| picks 21-64 **(LANDED)** | 1.0000 | 1.0924 | 1.3516 | 1.5879 | 1.6188 | 1.6197 | 1.6225 | 1.3893 | +9.24% | **+4.76%** | no arb |
+
+**THE TWO ARBITRAGES, stated plainly:** on the landed board, the historical ND cohort's year-0
+price (the rederived curve at their picks) sits low enough relative to their year-1 marks (the
+engine's as-of prices, still produced by the un-rewired four legs) that buying the ND cohort at
+day 0 and holding one year returns +21.7% — above the 14% carry; +29.9% inside picks 1–20. The
+teaching population is 1200 (the unflag-three included). Mechanism hypothesis, NOT asserted as
+measured: the landing repriced the day-0 object (curve −, numeraire −) while year-1+ marks moved
+only with the numeraire — the gap between the two IS the un-consumed rewire that P12 sized at
+~47% of the entry anchor on fresh entrants. The decomposition is a follow-on measurement if the
+owner wants it; this table asserts only the readings.
 
 ## 3. BY ARM — ND vs each pool pathway (all-arm construction, pooled ratio within the arm)
 
-**PRIMARY 2005-2023 — LIVE `88ce647f`.  LANDED: HALTED on the same pins.**
+**PRIMARY 2005-2023 — live and landed side by side** (landed n for ND is 1313: the unflag-three).
 
-| arm | n | yr1 | yr4 |
-|---|---:|---:|---:|
-| ND | 1310 | 1.0141 | 1.4803 |
-| RD | 623 | 0.4379 | 0.5090 |
-| MSD | 55 | n/a\* | 0.6083 |
-| UNR | 49 | 0.2052 | 0.6090 |
-| IRE | 47 | 0.2276 | 0.2181 |
-| PDA | 43 | 0.3062 | 0.5344 |
-| PDN | 33 | 0.1522 | 0.1897 |
-| SSP | 31 | 0.9846 | 0.8108 |
-| PDS | 21 | 0.1329 | 0.1305 |
+| arm | n | yr1 LIVE | yr1 LANDED | Δ | yr4 LIVE | yr4 LANDED | Δ |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| ND | 1313 | 1.0141 | 1.1323 | +0.1182 | 1.4803 | 1.5492 | +0.0689 |
+| RD | 623 | 0.4379 | 0.4145 | −0.0234 | 0.5090 | 0.4559 | −0.0531 |
+| MSD | 55 | n/a\* | n/a\* | — | 0.6083 | 0.5865 | −0.0218 |
+| UNR | 49 | 0.2052 | 0.1977 | −0.0075 | 0.6090 | 0.5612 | −0.0478 |
+| IRE | 47 | 0.2276 | 0.2263 | −0.0013 | 0.2181 | 0.2008 | −0.0173 |
+| PDA | 43 | 0.3062 | 0.2933 | −0.0129 | 0.5344 | 0.4738 | −0.0606 |
+| PDN | 33 | 0.1522 | 0.1444 | −0.0078 | 0.1897 | 0.1685 | −0.0212 |
+| SSP | 31 | 0.9846 | 0.9444 | −0.0402 | 0.8108 | 0.7390 | −0.0718 |
+| PDS | 21 | 0.1329 | 0.1241 | −0.0088 | 0.1305 | 0.1153 | −0.0152 |
 
-**MODERN  2019-2023 — LIVE `88ce647f`.  LANDED: HALTED on the same pins.**
+**MODERN  2019-2023 — live and landed side by side.**
 
-| arm | n | yr1 | yr4 |
-|---|---:|---:|---:|
-| ND | 325 | 0.9962 | 1.2431 |
-| RD | 66 | 0.3398 | 0.3989 |
-| MSD | 55 | n/a\* | 0.6083 |
-| SSP | 31 | 0.9846 | 0.8108 |
-| PDN | 25 | 0.1431 | 0.0982 |
-| UNR | 13 | 0.2664 | 0.2777 |
-| PDA | 13 | 0.1633 | 0.4705 |
-| IRE | 12 | 0.1411 | 0.0260 |
+| arm | n | yr1 LIVE | yr1 LANDED | Δ | yr4 LIVE | yr4 LANDED | Δ |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| ND | 325 | 0.9962 | 1.1088 | +0.1126 | 1.2431 | 1.3001 | +0.0570 |
+| RD | 66 | 0.3398 | 0.3213 | −0.0185 | 0.3989 | 0.3570 | −0.0419 |
+| MSD | 55 | n/a\* | n/a\* | — | 0.6083 | 0.5865 | −0.0218 |
+| SSP | 31 | 0.9846 | 0.9444 | −0.0402 | 0.8108 | 0.7390 | −0.0718 |
+| PDN | 25 | 0.1431 | 0.1346 | −0.0085 | 0.0982 | 0.0865 | −0.0117 |
+| UNR | 13 | 0.2664 | 0.2560 | −0.0104 | 0.2777 | 0.2600 | −0.0177 |
+| PDA | 13 | 0.1633 | 0.1537 | −0.0096 | 0.4705 | 0.4141 | −0.0564 |
+| IRE | 12 | 0.1411 | 0.1395 | −0.0016 | 0.0260 | 0.0244 | −0.0016 |
 
 \* the disclosed MSD debut-year gap: the mid-season draft begins 2019 and its cohort year 1
 precedes the emitted window for part of the population; those rows are EXCLUDED from that year,
@@ -143,10 +167,15 @@ The pool day-0 re-derivation was the point of this landing, so the question the 
 **did the pool yr0→yr1 cliffs close** — the live RD 0.4379, UNR 0.2052, PDN 0.1522, PDS 0.1329,
 IRE 0.2276 of section 3.
 
-**That question cannot be answered from this document, and the reason is section 0, not the board.**
-The instrument that measures those cliffs is the one that refused the landed matrix. Section 4.1's
-landed by-arm numbers are a *different construction* and do not answer it — quoting them as though
-they did would be the exact substitution this packet has refused everywhere else.
+**ANSWER (measured, §3): NO — every pool arm's cliff is unchanged-to-slightly-deeper** (PRIMARY
+yr1: RD 0.4379→0.4145, UNR 0.2052→0.1977, PDN 0.1522→0.1444, PDS 0.1329→0.1241, IRE
+0.2276→0.2263), while the ND arm moved the OTHER way (1.0141→1.1323). This is the un-consumed
+rewire made visible at cohort grain: the landing built the day-0 objects (curve, v0s, numeraire)
+but the PRINTED prices at every horizon still come through the four legs, which this act was
+ruled NOT to touch. P12 measured the same object on fresh entrants (printed ≈ 0.53× of
+v0 × numeraire). The cliffs the owner set out to close live in the legs, and the legs are the
+next act — landing this board does not close them, and this table says so rather than implying
+otherwise.
 
 What **is** measured, landed against live, on identical constructions:
 
@@ -178,3 +207,7 @@ ORDER 28's reported margin was defended by a claim that has now been measured an
 | `o29_noarb_basis.py` · `NOARB_BASIS_out.txt` | the five blocking literals, measured |
 | `o29_instruments.py` · `INSTRUMENTS29.{json,txt}` | mark-path + reverse no-arb, ON the landed board |
 | `o29_gate.py` · `GATE29.{json,txt}` · `GATE29_REPOINT.diff` | the identity gate, re-pointed and run |
+| `noarb/harness_pvc_REPINNED_pass3.py` · `noarb/noarb_table_allarm.py` | ORDER 29's disclosed re-pointed copies (five literals; header log appended) |
+| `noarb/noarb_table_338.py` | byte-identical to the instrument of record, md5 `0f822035…` |
+| `noarb/t338_O29FINAL.txt` · `noarb/allarm_O29FINAL.txt` · `noarb/*.json` | the landed readings, both instruments |
+| `noarb/MARGINS_O29.{txt,json}` | the canonical margins reporter on live + landed: **2 of 10 ARB** |

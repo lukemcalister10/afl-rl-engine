@@ -663,3 +663,51 @@ landed basis, which is the only thing standing between this branch and a complet
 | `o29_noarb_basis.py` · `NOARB_BASIS_out.txt` | the blocking literals and the +3 rows, measured |
 | `o29_instruments.py` · `INSTRUMENTS29.{json,_out.txt}` · `INSTRUMENTS29_REBASIS.diff` | mark-path + reverse no-arb ON the landed board |
 | **`NOARB_MARGINS_29.{md,json}`** · `o29_noarb_tables.py` | the owner-facing tables, ORDER 25 layout, landed-vs-live |
+
+---
+
+# 13. THE COHORT INSTRUMENTS RE-POINTED AND RUN — P15 SCORED IN FULL (appended 2026-08-13, supervisor seat, in-session)
+
+§12.3's owed word arrived: the re-point was **authorized by the supervisor seat within the ruled
+ORDER 29 spec** (the spec itself mandates both cohort instruments on the FINAL board; #334 comments
+5278653175 / 5279364952 carry the brief and the ruling). Applied per the harness's own precedented
+convention — ORDER 29's disclosed copies under `noarb/`, header log appended, five identity literals
+moved (`EXPECT_STORE d9a24282→cb38ef11` · `EXPECT_V0SURF 6ef67f07db98→4405cba2b42f` ·
+`EXPECT_N 1197→1200`, the +3 named as the unflag-three · the allarm inline pair), no tolerance,
+window, band or logic touched. `noarb_table_338.py` byte-identical at `0f822035…`, asserted at run.
+The composition act's copies and the instrument of record are untouched.
+
+## 13.1 THE READINGS (canonical margins reporter, `noarb/MARGINS_O29.{txt,json}`)
+
+| instrument | reading | apprec 0→1 | margin v14% | verdict |
+|---|---|---:|---:|---|
+| all-arm | PRIMARY 2005–2023 (n 2215) | −14.71% | **+28.71%** | no arb |
+| all-arm | MODERN 2019–2023 (n 540) | −12.66% | **+26.66%** | no arb |
+| legacy ND | ALL picks 1–64 (n 1200) | +21.73% | **−7.73%** | **ARB** |
+| legacy ND | picks 1–20 | +29.92% | **−15.92%** | **ARB** |
+| legacy ND | picks 21–64 | +9.24% | **+4.76%** | no arb |
+
+**ARBITRAGES OPENED: 2 of 10 readings.** Full year paths, the by-arm landed-vs-live table, and the
+§5 cliff answer are in `NOARB_MARGINS_29.md` (its HALTED markers now carry the readings).
+
+## 13.2 P15 — FINAL SCORE: **BREACHED, owned by number.**
+
+P15's first clause predicted 0 arbitrages on the final board with both cohort instruments. The
+landed reading opens **two**, both in the legacy ND instrument: the historical ND cohort's
+rederived day-0 sits low enough against year-1 marks (still produced by the un-rewired four legs)
+that yr0→1 appreciation exceeds the 14% carry (+21.7% all-in; +29.9% picks 1–20). The second
+clause (mark-path 10/10, reverse no-arb 10/10) stands HELD. The pool yr0→yr1 cliffs did NOT close
+(measured per arm in `NOARB_MARGINS_29.md` §5) — they belong to the legs, which this act was ruled
+not to touch; P12 measured the same object on fresh entrants (printed ≈ 0.53× v0 × numeraire).
+
+**§4's tally is amended by exactly these lines: P15 PARTIAL → BREACHED (first clause measured and
+failed; second clause held). The breach is a finding about the landed board's interim state, not a
+measurement failure — and the merge decision now explicitly includes it.**
+
+## 13.3 EXIT ASSERTS, RE-RUN AFTER THE RE-POINT
+
+Board `rl_app_data.json` = `86c8d5d9ba5b95e2cba05c78fbc31f78` (unmoved by any reading — instruments
+read the matrix, never the board). `noarb_table_338.py` (all copies) `0f822035…`. Diffs beyond
+`docs/evidence/landing_29_2026-08-13/` since `ba4ab18`: none. **THE MERGE HOLD IS UNCHANGED —
+NOTHING MERGES WITHOUT THE OWNER'S WORD ON THIS PACKET**, which now includes the two open
+arbitrages and the unclosed pool cliffs as named merge considerations.
