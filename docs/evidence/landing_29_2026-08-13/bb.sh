@@ -1,0 +1,30 @@
+#!/bin/bash
+# ORDER 29 board build: stage the checked-out engine into a scratch workspace, rebuild rl_app_data.json.
+# ARG1 = tag for the output dir.  ARG2 = RL_GRACE value (default 0 = unset-equivalent, dial OFF).
+# If ARG2 is the literal string 'UNSET' the variable is not exported at all (tests the code default).
+set -euo pipefail
+export PATH="/root/rl_venv312/bin:$PATH"
+ROOT=/home/user/afl-rl-engine/.claude/worktrees/agent-adf5ad9255e01ffb7
+SP=/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o29
+TAG=${1:-x}
+GR=${2:-0}
+WS=$SP/bb_$TAG
+rm -rf "$WS"; mkdir -p "$WS"
+cp -rf "$ROOT/engine/rl_after"          "$WS/rl_after"
+cp -rf "$ROOT/engine/forward_valuation" "$WS/forward_valuation"
+cp -f  "$ROOT/config_manifest.py"       "$WS/rl_after/config_manifest.py"
+cp -f  "$ROOT/fv_provenance.py"         "$WS/rl_after/fv_provenance.py"
+cp -f  "$ROOT/boot_guard.py"            "$WS/rl_after/boot_guard.py"
+cp -f  "$ROOT/LTI_REGISTER.md"          "$WS/rl_after/LTI_REGISTER.md"
+chmod -R u+w "$WS"
+cd "$WS/rl_after"
+export RL_REPO="$ROOT" RL_FV="$WS/forward_valuation" PYTHONHASHSEED=0
+# FULL FIVE-VAR THREAD PINNING (the proven fix; unpinned OMP/MKL/NUMEXPR/VECLIB workers spin-wait
+# and starve this box).  ENGINE RUNS ARE STRICTLY SEQUENTIAL -- never two builds concurrently.
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1
+export PYTHONPATH="$WS/rl_after:$ROOT/vendor:$ROOT"
+export RL_GAMMA=1.0 RL_PICK1=3000 RL_RUCK_TAX=0.25 RL_RECENCY_DECAY=0.72 RL_PRIOR_TREES=400 PAR_RAMPS=22
+if [ "$GR" != "UNSET" ]; then export RL_GRACE="$GR"; fi
+python3 rl_export.py > "$WS/export_stdout.txt" 2> "$WS/export_stderr.txt" || {
+  echo "EXPORT FAILED"; tail -40 "$WS/export_stderr.txt"; exit 1; }
+md5sum "$WS/rl_after/rl_app_data.json"
