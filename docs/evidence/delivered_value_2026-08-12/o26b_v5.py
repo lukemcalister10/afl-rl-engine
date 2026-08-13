@@ -21,7 +21,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..', '..'))
 HARN_DIR = os.path.join(ROOT, 'docs', 'evidence', 'composition_2026-08-10', 'noarb')
 sys.path.insert(0, HARN_DIR)
-import harness_pvc_REPINNED_pass3 as HP        # the SAME shipped kernel step 4 used
+import harness_pvc_REPINNED_pass3 as HP        # the SAME shipped kernel/bandwidth rule step 4 used
+sys.path.insert(0, HERE)
+import o26b_loclin as LL                        # CORRECTION 26B-C2 -- the same local-linear estimator
 
 L2 = json.load(open(os.path.join(HERE, 'LAYER2.json')))
 D = json.load(open(os.path.join(HERE, 'DERIVE.json')))
@@ -49,7 +51,7 @@ ATTR = L2['attribution']     # CORRECTION 26B-C1 -- the force-majeure slide, rea
 
 def build(SC):
     rows = [dict(key=k, pick=ATTR[k]['pick'], value=SC[k]['total']) for k in L2['fit_nd_keys']]
-    raw, _ = HP.kernel_raw(rows, PICKS)
+    raw, _e, _d = LL.kernel_loclin(rows, PICKS, HP.NMIN, HP.HMIN, HP.HMAX)   # 26B-C2
     pre = raw[0]; af = PIN1 / pre
     allin = {p: raw[i] * af for i, p in enumerate(PICKS)}
     pool = [dict(key=k, mech=ATTR[k]['mechanism'], pos=E[k]['position_group'], value=SC[k]['total'])

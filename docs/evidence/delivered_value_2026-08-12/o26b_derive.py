@@ -53,6 +53,11 @@ for k, (p, exp) in PINS.items():
 
 sys.path.insert(0, HARN_DIR)
 import harness_pvc_REPINNED_pass3 as HP        # noqa: E402  -- the SHIPPED kernel, imported not copied
+sys.path.insert(0, HERE)
+import o26b_loclin as LL                        # noqa: E402  -- CORRECTION 26B-C2, the local-linear fit
+# The C2 module restates the shipped dials for self-description; they must BE the shipped dials.
+assert (LL.NMIN_DEFAULT, LL.HMIN_DEFAULT, LL.HMAX_DEFAULT) == (HP.NMIN, HP.HMIN, HP.HMAX), \
+    "26B-C2: the loclin module's dials have drifted from the shipped aggregator's"
 
 L2 = json.load(open(os.path.join(HERE, 'LAYER2.json')))
 L1 = json.load(open(L1P))
@@ -239,23 +244,68 @@ for r in NDROWS: byp[r['pick']].append(r['value'])
 RAWMEAN = {p: (sum(byp[p]) / len(byp[p]) if byp.get(p) else 0.0) for p in PICKS}
 NPICK = {p: len(byp.get(p, [])) for p in PICKS}
 
-raw, effn = HP.kernel_raw(NDROWS, PICKS)
+# CORRECTION 26B-C2 -- the estimator is now the LOCAL-LINEAR fit (owner ruling 5275737926). The
+# weighted-mean (local-constant) curve is still computed, because the three-way comparison table is a
+# deliverable of the correction order and because a boundary claim needs both numbers beside it.
+wmean, wmeff = HP.kernel_raw(NDROWS, PICKS)                       # the SHIPPED local-constant estimator
+raw, effn, LLDIAG = LL.kernel_loclin(NDROWS, PICKS, HP.NMIN, HP.HMIN, HP.HMAX)
+WMEAN = {p: wmean[i] for i, p in enumerate(PICKS)}
 PRE_ANCHOR_PICK1 = raw[0]
+PRE_ANCHOR_PICK1_WMEAN = wmean[0]
 ANCHOR_FACTOR = PIN1 / PRE_ANCHOR_PICK1
 ALLIN = {p: raw[i] * ANCHOR_FACTOR for i, p in enumerate(PICKS)}
 ALLIN_RAW = {p: raw[i] for i, p in enumerate(PICKS)}
+DIAG = {p: LLDIAG[i] for i, p in enumerate(PICKS)}
+_fb = [p for p in PICKS if DIAG[p]['fallback']]
+_fl = [p for p in PICKS if DIAG[p]['floored']]
 
 P("-" * 118)
 P("(a) THE ALL-IN PICK CURVE  --  ND 1-64, entries 2004-2021, busts at 0, delivered value discounted")
 P("    to acquisition in board points.  n = %d careers." % len(NDROWS))
 P("-" * 118)
-P("  PRE-ANCHOR SCALE: cohort-mean delivered value at pick 1, smoothed = %.1f board points"
-  % PRE_ANCHOR_PICK1)
-P("  ANCHORING FACTOR to pin pick 1 = 3000 (Ruling 6): x %.4f" % ANCHOR_FACTOR)
-P("  raw per-pick cohort means are printed BESIDE the smoothed curve, as PREREG P2.6 pre-committed.")
+P("  ESTIMATOR (CORRECTION 26B-C2, owner ruling #334 comment 5275737926): LOCAL-LINEAR over log(pick),")
+P("  applied across the WHOLE curve, picks 1-64 -- one method, no seam. Same Gaussian kernel and same")
+P("  bandwidth-growth rule as the shipped aggregator; the solver is the engine's own")
+P("  par_build.py::loclin algebra (fsum normal equations, LU with partial pivoting, rank-deficient")
+P("  fallback to the local-constant weighted mean at relcond < 1e-9), reused and cited, not reinvented.")
+P("  rank-deficient fallbacks fired at picks: %s" % (_fb or 'NONE'))
+P("  negative fits floored at 0 at picks:     %s" % (_fl or 'NONE'))
 P()
+P("  PRE-ANCHOR SCALE at pick 1:  LOCLIN %.1f  (weighted-mean %.1f, raw cohort mean %.1f)"
+  % (PRE_ANCHOR_PICK1, PRE_ANCHOR_PICK1_WMEAN, RAWMEAN[1]))
+P("  ANCHORING FACTOR to pin pick 1 = 3000 (Ruling 6): x %.4f   (weighted-mean would give x %.4f)"
+  % (ANCHOR_FACTOR, PIN1 / PRE_ANCHOR_PICK1_WMEAN))
+P("  This SUBSUMES the smoothed-vs-raw anchor question (landing ruling #5): the anchor now reads the")
+P("  LOCLIN value at pick 1 -- principled, not special-cased.")
+P("  raw per-pick cohort means are printed BESIDE the fitted curve, as PREREG P2.6 pre-committed.")
+P()
+P("  %5s %6s %12s %12s %12s %12s %12s %10s %7s %7s %7s" %
+  ('pick', 'n', 'raw mean', 'wtd-mean', 'LOCLIN', 'ANCHORED', 'today PVC', 'der/PVC',
+   'h', 'effn', 'borrow'))
+for p in PICKS:
+    d = DIAG[p]
+    P("  %5d %6d %12.1f %12.1f %12.1f %12.1f %12.0f %10.4f %7.2f %7.1f %6.1f%%" %
+      (p, NPICK[p], RAWMEAN[p], WMEAN[p], ALLIN_RAW[p], ALLIN[p], PVC.get(p, float('nan')),
+       ALLIN[p] / PVC[p] if PVC.get(p) else float('nan'),
+       d['h'], d['effn'], 100 * d['borrowed_share']))
+P()
+P("  THE THREE-WAY TABLE AT THE HEADLINE PICKS  --  both BOUNDARY REGIONS marked")
+P("  %6s %12s %12s %12s %10s %10s   %s" %
+  ('pick', 'raw cohort', 'wtd-mean', 'LOCLIN', 'LL-WM', 'LL/WM', 'region'))
+for p in [1, 2, 3, 5, 7, 10, 15, 20, 30, 40, 50, 64]:
+    reg = ('<<< NORTH BOUNDARY' if p <= 3 else ('>>> SOUTH BOUNDARY' if p >= 50 else ''))
+    P("  %6d %12.1f %12.1f %12.1f %+10.1f %10.4f   %s"
+      % (p, RAWMEAN[p], WMEAN[p], ALLIN_RAW[p], ALLIN_RAW[p] - WMEAN[p],
+         ALLIN_RAW[p] / WMEAN[p] if WMEAN[p] else float('nan'), reg))
+P("  the boundary correction, stated as one number per end:")
+P("    pick  1  LOCLIN/wtd-mean %.4f  (%+.1f%%)   -- the north end, previously dragged DOWN"
+  % (ALLIN_RAW[1] / WMEAN[1], 100 * (ALLIN_RAW[1] / WMEAN[1] - 1)))
+P("    pick 64  LOCLIN/wtd-mean %.4f  (%+.1f%%)   -- the south end, previously FLATTERED UP"
+  % (ALLIN_RAW[64] / WMEAN[64], 100 * (ALLIN_RAW[64] / WMEAN[64] - 1)))
+P()
+P("  FULL PER-PICK CURVE (anchored), for the record")
 P("  %5s %6s %12s %12s %12s %12s %10s" %
-  ('pick', 'n', 'raw mean', 'smoothed', 'ANCHORED', 'today PVC', 'der/PVC'))
+  ('pick', 'n', 'raw mean', 'LOCLIN', 'ANCHORED', 'today PVC', 'der/PVC'))
 for p in PICKS:
     P("  %5d %6d %12.1f %12.1f %12.1f %12.0f %10.4f" %
       (p, NPICK[p], RAWMEAN[p], ALLIN_RAW[p], ALLIN[p], PVC.get(p, float('nan')),
@@ -328,6 +378,11 @@ P("  rows by day-0 position: %s   (unmapped day-0 position: %d, excluded from th
 SHARE = {}
 for g in POSN:
     ind = [dict(key=r['key'], pick=r['pick'], value=(1.0 if r['pos'] == g else 0.0)) for r in NDROWS]
+    # THE POSITION SHARES STAY ON THE LOCAL-CONSTANT WEIGHTED MEAN. DECLARED, with the reason: a share
+    # is a bounded PROPORTION, and a local-linear extrapolation of an indicator can leave [0,1] at a
+    # boundary, which would then have to be clipped -- reintroducing a boundary artefact of a different
+    # kind. The C2 ruling is about the declining VALUE curve's boundary bias; the shares are
+    # renormalised to sum to 1 at every pick regardless, so a first-order slope term in them cancels.
     s, _ = HP.kernel_raw(ind, PICKS)
     SHARE[g] = {p: s[i] for i, p in enumerate(PICKS)}
 # renormalise the shares to sum to 1 at every pick (the unmapped rows carry the remainder)
@@ -336,11 +391,16 @@ for p in PICKS:
     for g in POSN: SHARE[g][p] = SHARE[g][p] / tot if tot else 0.0
 
 RAWPOS = {}
+POSFB = {}
 for g in POSN:
     if len(POSROWS[g]) < 2:
-        RAWPOS[g] = {p: ALLIN_RAW[p] for p in PICKS}; continue
-    v, _ = HP.kernel_raw(POSROWS[g], PICKS, nmin=min(HP.NMIN, max(8.0, len(POSROWS[g]) / 4.0)))
+        RAWPOS[g] = {p: ALLIN_RAW[p] for p in PICKS}; POSFB[g] = []; continue
+    # the positional VALUE curves take the C2 local-linear estimator too -- same method as the all-in
+    # curve, so the relativities carry no seam against it.
+    nm = min(HP.NMIN, max(8.0, len(POSROWS[g]) / 4.0))
+    v, _e, dg = LL.kernel_loclin(POSROWS[g], PICKS, nm, HP.HMIN, HP.HMAX)
     RAWPOS[g] = {p: v[i] for i, p in enumerate(PICKS)}
+    POSFB[g] = [PICKS[i] for i, d in enumerate(dg) if d['fallback'] or d['floored']]
 
 # THE RECONCILIATION LAW, IMPOSED BY CONSTRUCTION AND THEN ASSERTED:
 #   V_g(p) = ALLIN(p) * rawpos_g(p) / sum_h share_h(p) rawpos_h(p)
@@ -556,7 +616,17 @@ OUT = dict(
                   md5=_md5(HARN), fn='kernel_raw', nmin=HP.NMIN, hmin=HP.HMIN, hmax=HP.HMAX,
                   form='Gaussian kernel over log(pick), bandwidth grown until effective n>=NMIN, '
                        'then a weighted mean'),
+    correction_26b_c2=dict(
+        provenance=LL.PROVENANCE, estimator='local-linear over log(pick), whole curve 1-64',
+        weighted_mean_curve=WMEAN, loclin_curve=ALLIN_RAW, raw_cohort_mean=RAWMEAN,
+        pre_anchor_loclin=PRE_ANCHOR_PICK1, pre_anchor_weighted_mean=PRE_ANCHOR_PICK1_WMEAN,
+        pre_anchor_raw=RAWMEAN[1], anchor_factor_loclin=ANCHOR_FACTOR,
+        anchor_factor_weighted_mean=PIN1 / PRE_ANCHOR_PICK1_WMEAN,
+        diagnostics=DIAG, rank_deficient_fallback_picks=_fb, floored_picks=_fl,
+        positional_fallback_picks=POSFB,
+        shares_estimator='local-constant weighted mean, DECLARED -- a share is a bounded proportion'),
     curve=dict(picks=PICKS, n_per_pick=NPICK, raw_mean=RAWMEAN, smoothed=ALLIN_RAW,
+               weighted_mean=WMEAN,
                anchored=ALLIN, pre_anchor_pick1=PRE_ANCHOR_PICK1, anchor_factor=ANCHOR_FACTOR,
                pvc_today=PVC, n_population=len(NDROWS),
                crossing_pick=(cross[0] if cross else None), monotone_ascents=mono,
