@@ -2637,6 +2637,103 @@ print('#326 ENTRY ANCHOR WIRED: %d pool entrants anchor on their signed division
          'Year-zero surface REFIT DECLARED (RL_V0SURF_REFIT=1) — this build did NOT load the freeze, and is '
          'barred from any release build'),
         str(_V0CURVE_META.get('_v0surf_sig'))[:8]))
+# ===== ORDER 29B — THE ENTRY WIRING: THE PRINTED DAY-0 PRICE IS THE DERIVED v0 x NUMERAIRE ==================
+# WHAT ORDER 29 LEFT. It landed the day-0 OBJECTS — the ruled curve, the six positional ND v0 curves
+# (pvc_curve_v2.json::nd_v0.posv), the pool pathway x position v0 cells (::pool_v0.cells) and the numeraire —
+# and NOTHING CONSUMED THEM. Its own P12 measured the consequence on the landed board: of 46 fresh entrants,
+# ZERO printed the entry anchor; the printed day-0 sat at mean 0.5274x of it (range 0.3166-0.9037), because a
+# zero-evidence row was still priced through the legacy legs and carried their sit-out retention, the ITEM H
+# cut and the year-zero floor. ORDER 29B closes exactly that and nothing else.
+#
+# THE SITE, AND WHY THE SET IS COMPLETE. There is exactly ONE place a player price becomes a printed number:
+# this function, ev(p,Y) — the outermost, floor-wrapping definition. Every printed player price in the system
+# is ev(p,Y) at some Y:
+#     board v / vM1 / vM2 / vP1 / vP2   rl_export.py:191-193,197   int(round(ev(p,20XX)/_F))
+#     the numeraire parity re-check     rl_export.py:617           int(round(ev(p,2026)/_F))
+#     the 24-year as-of matrix          emit_matrix_338.py:193     ev(p,Y) under truncated scoring
+#     the cohort book / back_extra      the same ev
+# The wiring is therefore ONE branch in ONE function, not a list of call sites that a later seat could add to
+# and miss. The PICK side (PVC), the sealed entrant layer (draft_occupancy x ladder) and the display bands are
+# NOT player prices and are deliberately NOT in the set — which is why the LEG F5 #306 reconciliation neither
+# moves nor needs a re-seal.
+#
+# THE OBJECT AND THE CURRENCY, stated so the numeraire cannot be double-counted. Both published day-0 objects
+# are ALREADY ANCHORED: posv_g(p) = relat_g(p) x curve(p) where curve is THE SHIPPED ladder (raw x s), and the
+# pool cells are the raw Way-A cells x anchor_factor (== s). So s is inside them, and the only conversion left
+# is BOARD -> ENGINE currency, which is the certified board factor _PL_F. That is exactly ORDER 28's own
+# canonical derived-v0 statement (o28_derive.py:266-271: allin[pick]*NUM for ND, cell*af*NUM for pool).
+#     ev(day-0 entrant, Y) = derived_v0_board(p) * _PL_F      =>   printed = int(round(ev/_F)) = round(v0)
+# THE BRANCH RETURNS AN UNROUNDED FLOAT ON PURPOSE. Every other ev path returns round(...); if this one did
+# too there would be TWO roundings in the chain (engine round, then the print's round(x/_F)) and the identity
+# would break on 18 of the 89 wired rows — measured, not feared. The print's own rounding is left as the only
+# one, so `printed == round(derived v0)` is EXACT rather than tolerance-bounded.
+#
+# WHICH ROW, AND AT WHICH YEAR. A day-0 print is a property of a player AT AN AS-OF YEAR, not of a career
+# total, so the predicate reads games AS OF Y. This is what makes the walk-forward matrix's yr0 mark move
+# with the board: the same function answers both. The population gate is the year-zero floor's own — real
+# store rows, never retired/delisted, never gate synthetics, pool OR national-draft non-pickless — plus
+# Y >= draft year, so nothing is priced as an entrant before it enters.
+#
+# WHAT IS DELIBERATELY NOT TOUCHED. The four legs (_uncomp_prod, the pedigree-pole blend, ev/raw_ev, L7),
+# sitout_ev, entry_anchor, v0_start, pool_level, _cap_basis, the floor schedule, ITEMS A/B/C/E2/H and the
+# whole staleness family are read-unchanged and called unchanged for every row that is not a day-0 entrant.
+# The branch RETURNS BEFORE the legacy chain, so it cannot perturb it. A row with even one game is priced
+# exactly as it was before this act.
+#
+# KILL-SWITCH, DECLARED: RL_ENTRY29B=0 skips this block entirely => board 86c8d5d9 byte-exact. It is a
+# DECLARED kill-switch, not a manifest dial (config_sha256 UNMOVED), exactly as RL_PVC2/RL_EVW/RL_ISOFADE.
+# It also rides RL_PVC2: with the v2 artifact out of the ev channel there is no day-0 object to consume, so
+# the kill-switch chain stays byte-exact in both directions.
+_ENTRY29B=(os.environ.get('RL_ENTRY29B','1')!='0') and (os.environ.get('RL_PVC2','1')!='0')
+_entry29b_derived=None
+if _ENTRY29B:
+    _V0ND=_V2J.get('nd_v0'); _V0POOL=_V2J.get('pool_v0')
+    if not _V0ND or not _V0POOL or not _V0ND.get('posv') or not _V0POOL.get('cells'):
+        raise SystemExit(
+            'ORDER 29B HALT: pvc_curve_v2.json carries no nd_v0.posv / pool_v0.cells, so the printed day-0 '
+            'price has no object to be. This is FAIL-CLOSED BY DESIGN — falling back to the legacy legs '
+            'would silently restore the very 0-of-46 gap this act exists to close. Install the artifact '
+            'that carries both day-0 objects, or set RL_ENTRY29B=0 and say so.')
+    _POSV={_g:{int(_k):float(_v) for _k,_v in _d.items()} for _g,_d in _V0ND['posv'].items()}
+    def day0_v0(p):
+        """The row's OWN derived day-0 v0, in BOARD currency (the numeraire s is already inside).
+        ND in-curve  -> the POSITIONAL ND v0 at his pick, nd_v0.posv[gfut][pick].
+        pool         -> his pathway x position cell, through MA.pool_v0_of (the ONE accessor, which HALTS
+                        on an unsigned cell rather than defaulting).
+        Anything else -> None: not an entrant object, and the legacy chain keeps it byte-for-byte."""
+        if p.get('_pool'): return float(MA.pool_v0_of(p))
+        _pk=p.get('pick')
+        if p.get('type')=='ND' and _pk and 1<=int(_pk)<=MA.ND_CURVE_LAST:
+            _row=_POSV.get(MA.gfut(p))
+            if _row is None:
+                raise SystemExit('ORDER 29B HALT: %s resolves to position %r, which the artifact\'s positional '
+                                 'ND v0 object does not publish (%s). A day-0 print must not be defaulted to '
+                                 'the position-blind ladder.'%(p.get('player'),MA.gfut(p),sorted(_POSV)))
+            return float(_row[int(_pk)])
+        return None
+    def _entry29b_derived(p,Y=2026):
+        """The printed day-0 price this row MUST carry at as-of year Y, in BOARD currency — or None if the
+        row is not a day-0 entrant at Y. This is the ONE predicate; the ev branch and the boot-class assert
+        in rl_export both read it, so they cannot drift apart."""
+        if not _isreal(p) or p.get('_retired') or delisted(p): return None
+        if not p.get('_pool') and (p.get('type')!='ND' or p.get('_pickless')): return None
+        if Y<int(p.get('year') or 0): return None
+        for _r in p['scoring']:
+            if _r['year']<=Y and _r['games']: return None          # he has evidence as of Y: not a day-0 print
+        return day0_v0(p)
+    _ev_pre29b=ev
+    def ev(p,Y=2026):
+        _d0=_entry29b_derived(p,Y)
+        if _d0 is None: return _ev_pre29b(p,Y)
+        return _d0*_PL_F                                            # unrounded ON PURPOSE — see above
+    _D0_NOW=[p for p in MA.data if _entry29b_derived(p,MA.BASE_REF) is not None]
+    _D0_ND=[p for p in _D0_NOW if not p.get('_pool')]
+    print('ORDER 29B ENTRY WIRING LIVE: %d day-0 entrants at Y=%d (%d national in-curve on nd_v0.posv, %d '
+          'pool on pool_v0.cells) print derived v0 x numeraire EXACTLY; every row with evidence keeps the '
+          'legacy legs byte-for-byte.'
+          %(len(_D0_NOW),MA.BASE_REF,len(_D0_ND),len(_D0_NOW)-len(_D0_ND)))
+else:
+    print('ORDER 29B ENTRY WIRING OFF (RL_ENTRY29B=0 or RL_PVC2=0) — the legacy legs print the day-0 price.')
 import json as _w4json
 _PVCFIT_META={}
 if _W4PVC and os.path.exists('pvc_fit_candidate.json'):

@@ -220,6 +220,42 @@ with _ctx.redirect_stdout(_io.StringIO()):
         _p['_v'] = _p['_vM2'] = _p['_vM1'] = _p['_vP1'] = _p['_vP2'] = _nb(_ev(_p, 2026))
         _p['_cvx'] = 1.0
 g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()  # the ev loop advanced the clock to the last as-of year; re-pin to the present so the DISPLAY layer (peak_est/level_now/track/...) reads 2026, as the prior 2-instance display did
+# ==== ORDER 29B — THE PRINTED-DAY-0 ASSERT. A PERMANENT BOOT-CLASS CHECK, NOT A ONE-ACT MEASUREMENT ======
+# THE LAW THIS INSTALLS: from this act on, a day-0 entrant's PRINTED price IS his derived v0 x numeraire.
+# ORDER 29's PREREG P12 predicted that identity and MEASURED it false — 0 of 46 fresh entrants, printed at
+# mean 0.5274x the entry anchor — because the day-0 objects were landed but nothing consumed them. ORDER 29B
+# wires the consumption; this is the check that keeps it true.
+#
+# WHY IT LIVES HERE AND NOT IN THE ENGINE. The engine can only assert about its own return value. This runs
+# on THE NUMBER THAT IS ACTUALLY WRITTEN TO THE BOARD — after ÷_F, after int(round(...)), after the whole
+# display re-base — so it cannot be satisfied by a function that is right while the board is wrong. It is
+# stated as an EQUALITY on integers, so it is exact rather than tolerance-bounded, and it HALTS: a build
+# whose day-0 prints have drifted off the ladder does not get written.
+# NON-VACUITY: the check counts the rows it covered and HALTS if that count is zero, so a predicate that
+# quietly stops matching anybody is a failure, not a silent pass.
+# It rides the same declared kill-switch as the wiring — RL_ENTRY29B=0 leaves _entry29b_derived None and
+# this block is skipped, which is what makes the byte-exact kill-switch proof possible.
+_d0_of = _ens.get('_entry29b_derived')
+if _d0_of is not None:
+    _d0_n = 0; _d0_bad = []
+    with _ctx.redirect_stdout(_io.StringIO()):
+        for _p in players:
+            _d = _d0_of(_p, 2026)
+            if _d is None: continue
+            _d0_n += 1
+            if _p['_v'] != int(round(_d)): _d0_bad.append((_p.get('player'), _p['_v'], _d))
+    if _d0_bad:
+        raise SystemExit(
+            'ORDER 29B PRINTED-DAY-0 HALT: %d of %d day-0 entrants do not print their derived v0 x numeraire '
+            '— %s. The printed day-0 price MUST equal round(nd_v0.posv[pos][pick]) for a national entrant and '
+            'round(pool_v0.cells[pathway|position]) for a pool entrant. Refusing to write the board.'
+            % (len(_d0_bad), _d0_n, ['%s printed %d != %.6f' % t for t in _d0_bad[:6]]))
+    if _d0_n == 0:
+        raise SystemExit('ORDER 29B PRINTED-DAY-0 HALT: the day-0 predicate matched ZERO rows, so the assert '
+                         'is vacuous. A board with no entrants at all is not a board this check can pass.')
+    print('ORDER 29B PRINTED-DAY-0 ASSERT: %d of %d day-0 entrants print EXACTLY round(derived v0 x '
+          'numeraire) — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)'
+          % (_d0_n, _d0_n))
 # ==== (g2) L7 RE-BASE VERIFICATION — order preserved + anchor-pair ratios (register v30, l7_rebase.py) =====
 # A uniform ÷F with round() is monotone (never a STRICT inversion) but can TIE two formerly-distinct values
 # (a rounding artifact, reported not failed). Assert: along the pre-rebase order (desc), the rebased values
