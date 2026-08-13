@@ -1,18 +1,28 @@
 #!/usr/bin/env python3
-"""ORDER 26B-L -- THE PLAYER LEDGER.
+"""ORDER 26B-L / 26B-L2 -- THE PLAYER LEDGER, re-issued on the GRACE-A basis.
 
 Owner request: one row per store player, for his own reading. NO DERIVATION CHANGES -- this file only
 reads Layer 1 and Layer 2 and lays them out. Nothing here feeds a curve, a cell or an instrument.
 
     writes  data/delivered_value/PLAYER_LEDGER.csv   (all 2,650 players, one row each)
-            data/delivered_value/PLAYER_LEDGER.md    (top 60 by observed value + definitions)
+            data/delivered_value/PLAYER_LEDGER.md    (top 60 by grace-A value + definitions)
 
-THE TWO VALUE COLUMNS, both OBSERVED ONLY -- no projected tail anywhere in this file:
-  * OBSERVED DISCOUNTED VALUE = LAYER2.json::base[key].obs -- the flat-14 Layer-2 score's observed
-    leg, discounted to acquisition.
-  * RAW UNDISCOUNTED VALUE    = LAYER2.json::raw_undiscounted[key].obs -- the SAME season valuation
-    (bars via the engine's netting path, identical games weighting) with the discount OFF, so every
-    season counts equally.
+RE-ISSUE (26B-L2): the first issue was built pre-grace, on a reading that the owner's "before the
+year 1 grace thing" was an instruction to exclude grace. It was not -- he was naming the KIND of
+rating he meant. The ledger now leads with GRACE-A, the current ruled basis, and keeps the pre-grace
+number beside it as the baseline.
+
+THE THREE VALUE COLUMNS, all OBSERVED ONLY -- no projected tail anywhere in this file:
+  * GRACE-A (CURRENT BASIS)  = LAYER2.json::grace_a[key].obs -- entry age <=19: seasons 1 and 2
+    undiscounted, the 14%/yr fade starts at season 3; entry age 20+: unchanged.
+  * BASELINE PRE-GRACE       = LAYER2.json::base[key].obs -- the flat-14 score's observed leg, fade
+    from season 1 for everybody.
+  * RAW UNDISCOUNTED         = LAYER2_NODISC.json::obs[key].obs -- the SAME season valuation (bars
+    via the engine's netting path, identical games weighting) with the discount OFF. UNCHANGED by
+    grace: with no discount there is no exponent to shift.
+
+The grace-A leg was already computed and cached by the 26B-V variants run, so this re-issue is pure
+arithmetic on LAYER2.json -- no engine re-boot.
 
 DETERMINISTIC: no timestamp is written, so re-running against the same inputs reproduces the same
 bytes and the same md5. READ-ONLY on the engine; the store pin is asserted at entry and at exit.
@@ -59,7 +69,12 @@ L2 = json.load(open(os.path.join(HERE, 'LAYER2.json')))
 ND = json.load(open(os.path.join(HERE, 'LAYER2_NODISC.json')))
 assert ND['layer1_md5'] == L1_MD5, 'LAYER2_NODISC.json was built against a different Layer 1'
 E = {e['key']: e for e in L1['entries']}
-BASE = L2['base']; NODISC = ND['obs']; ATTR = L2['attribution']
+BASE = L2['base']; NODISC = ND['obs']; GRACEA = L2['grace_a']; ATTR = L2['attribution']
+# The grace-A observed leg is ALREADY in LAYER2.json (written by the 26B-V variants run) -- this
+# re-issue is pure arithmetic on a cached field, with no engine re-boot. Reading O, the primary
+# reading: exponent max(0, k - 2) for entry age <=19, unchanged for 20+.
+assert 'grace-A: G_O = 2 if entry_age <= 19 else 0' in L2['grace_cfg']['reading_O'], \
+    'the grace-A rule in LAYER2.json is not the one this ledger claims to print'
 assert set(NODISC) == set(BASE), 'the undiscounted run and the flat-14 run cover different players'
 FM = L2['force_majeure']; FMK = set(FM['excluded_keys'])
 FITND = set(L2['fit_nd_keys']); FITPOOL = set(L2['fit_pool_keys'])
@@ -96,21 +111,63 @@ for k in sorted(E):
         day0_position=(e['position_group'] or ''),
         n_seasons=e['n_season_rows'],
         career_games=e['career_games_from_seasons'],
-        observed_discounted_value=round(BASE[k]['obs'], 2),
+        observed_discounted_grace_a=round(GRACEA[k]['obs'], 2),
+        observed_discounted_flat14_baseline=round(BASE[k]['obs'], 2),
         raw_undiscounted_value=round(NODISC[k]['obs'], 2),
+        grace_a_over_baseline=(round(GRACEA[k]['obs'] / BASE[k]['obs'], 4)
+                               if BASE[k]['obs'] > 0 else ''),
         flags='|'.join(flags),
         player=e['player'] or ''))
 
 COLS = ['key', 'stream', 'entry_year', 'natural_pick', 'attributed_pick', 'day0_position',
-        'n_seasons', 'career_games', 'observed_discounted_value', 'raw_undiscounted_value',
-        'flags', 'player']
+        'n_seasons', 'career_games',
+        'observed_discounted_grace_a',            # <- THE CURRENT-BASIS RATING
+        'observed_discounted_flat14_baseline',    # <- the pre-grace baseline
+        'raw_undiscounted_value', 'grace_a_over_baseline', 'flags', 'player']
 os.makedirs(OUTDIR, exist_ok=True)
 with open(CSVP, 'w', newline='') as f:
     w = csv.DictWriter(f, fieldnames=COLS, lineterminator='\n')
     w.writeheader()
     for r in rows: w.writerow(r)
 
-top = sorted(rows, key=lambda r: -r['observed_discounted_value'])[:60]
+top = sorted(rows, key=lambda r: -r['observed_discounted_grace_a'])[:60]
+
+# ---- RANK MOVERS between the two observed columns ------------------------------------------------
+# grace-A multiplies a <=19 entrant by ~1.30 and leaves a 20+ entrant at exactly 1.0000, so the two
+# rankings differ purely by entry age. Ranked over players with a non-zero BASELINE, so a rank is a
+# meaningful thing to hold.
+# MATERIAL careers only. A rank move inside the block of players tied at 0.00 is an artefact of tie
+# ordering, not a fact about anybody -- the first cut of this table was 12 of 15 zero-valued rows.
+# Threshold stated on the face of the table.
+RANK_FLOOR = 100.0
+_rk = [r for r in rows if r['observed_discounted_flat14_baseline'] >= RANK_FLOOR]
+_by_base = sorted(_rk, key=lambda r: -r['observed_discounted_flat14_baseline'])
+_by_gr = sorted(_rk, key=lambda r: -r['observed_discounted_grace_a'])
+RANK_BASE = {r['key']: i + 1 for i, r in enumerate(_by_base)}
+RANK_GR = {r['key']: i + 1 for i, r in enumerate(_by_gr)}
+for r in _rk:
+    r['_rank_base'] = RANK_BASE[r['key']]
+    r['_rank_grace'] = RANK_GR[r['key']]
+    r['_rank_move'] = RANK_BASE[r['key']] - RANK_GR[r['key']]   # +ve = moved UP under grace-A
+DOWN = sorted(_rk, key=lambda r: r['_rank_move'])[:15]           # biggest slides
+UP = sorted(_rk, key=lambda r: -r['_rank_move'])[:15]            # biggest rises
+_ages = {}
+for r in _rk:
+    ea = E[r['key']]['entry_age'] or E[r['key']]['entry_age_fallback_if_null']
+    _ages[r['key']] = ea
+
+
+def rline(r):
+    ea = _ages[r['key']]
+    return ("| `%s` | %s | %s | %s | %s | %s | %s | %s | %+d |"
+            % (r['key'], r['player'], r['stream'], r['entry_year'], ea,
+               '{:,.1f}'.format(r['observed_discounted_grace_a']),
+               '{:,.1f}'.format(r['observed_discounted_flat14_baseline']),
+               '%d → %d' % (r['_rank_base'], r['_rank_grace']), r['_rank_move']))
+
+
+RHDR = ("| key | player | stream | entry | entry age | grace-A | baseline | rank base → grace-A | "
+        "move |\n|---|---|---|---|---|---|---|---|---|")
 NAMED = ['joshua-kelly', 'christian-petracca', 'jason-horne-francis', 'willem-duursma',
          'callum-moore', 'thomas-boyd', 'paddy-mccartin', 'harrison-ramm', 'vigo-visentini',
          'jai-newcombe']
@@ -118,19 +175,20 @@ BYK = {r['key']: r for r in rows}
 
 
 def line(r):
-    return ("| `%s` | %s | %s | %s | %s | %s | %s | %s | %s | **%s** | %s | %s |"
+    return ("| `%s` | %s | %s | %s | %s | %s | %s | %s | %s | **%s** | %s | %s | %s |"
             % (r['key'], r['player'], r['stream'], r['entry_year'],
                r['natural_pick'] if r['natural_pick'] != '' else '—',
                r['attributed_pick'] if r['attributed_pick'] != '' else '—',
                r['day0_position'], r['n_seasons'], r['career_games'],
-               '{:,.1f}'.format(r['observed_discounted_value']),
+               '{:,.1f}'.format(r['observed_discounted_grace_a']),
+               '{:,.1f}'.format(r['observed_discounted_flat14_baseline']),
                '{:,.1f}'.format(r['raw_undiscounted_value']),
                r['flags'].replace('|', ' · ') or '—'))
 
 
 HDR = ("| key | player | stream | entry | nat. pick | attr. pick | d0 pos | seasons | games | "
-       "**observed discounted** | raw undiscounted | flags |\n"
-       "|---|---|---|---|---|---|---|---|---|---|---|---|")
+       "**GRACE-A (current basis)** | baseline pre-grace | raw undiscounted | flags |\n"
+       "|---|---|---|---|---|---|---|---|---|---|---|---|---|")
 
 s26 = [s for s in L1['player_seasons'] if s['year'] == 2026]
 n26p = sum(1 for s in s26 if 0 < s['games'] < 10)
@@ -139,9 +197,24 @@ n26z = sum(1 for s in s26 if s['games'] <= 0)
 
 # TOKEN substitution, not %-formatting: this template is full of literal percent signs and a
 # %-format would eat them.
-MD = """# PLAYER LEDGER — ORDER 26B
+MD = """# PLAYER LEDGER — ORDER 26B (re-issued 26B-L2, GRACE-A BASIS)
 
 **One row per store player, 2,650 rows. Built for the owner's own reading. NO derivation changes.**
+
+> ### THE RATING TO READ IS `observed_discounted_grace_a`
+> **RE-ISSUED on the owner's clarification.** The first issue of this ledger was built pre-grace,
+> on a reading that his *"before the year 1 grace thing"* was an instruction to exclude grace. It was
+> not: he was citing the pre-grace number as **the KIND of rating he meant**, not asking for that
+> basis. **The current ruled basis is grace-A**, and the ledger now leads with it.
+>
+> The pre-grace column is **kept as the baseline**, and the raw undiscounted column is **unchanged by
+> grace** (no discount, nothing to shift).
+>
+> **Provenance, stated exactly:** relayed to this seat as ORDER 26B-L2, an owner clarification
+> **still to be filed** on #334. `SHIPPING_PACKET_26B.md` §18 still carries grace-A as NOT-RULED
+> because it was written before this clarification; the two will agree once the clarification is
+> filed. **Nothing in this ledger feeds a derivation**, so no curve, cell or instrument moves either
+> way.
 
 | | |
 |---|---|
@@ -169,10 +242,12 @@ reproduces the same bytes and the same md5. Read-only: the store pin is asserted
 | 6 | `day0_position` | the ACQUISITION-slot position group (Ruling 5) — the position on his card the day he arrived, not the position he ended up playing |
 | 7 | `n_seasons` | played-season rows in the store |
 | 8 | `career_games` | games summed from those season rows |
-| 9 | **`observed_discounted_value`** | **the flat-14 Layer-2 score, OBSERVED ONLY** — every played season valued at the position played that season against its replacement bar (via the engine's own netting path), games-weighted, discounted at 14 %/yr back to acquisition, summed. **Board points.** |
-| 10 | **`raw_undiscounted_value`** | **the same season valuation with the discount OFF** — identical bars, identical games weighting, every season counting equally. The gap between 9 and 10 is purely the time-weighting. |
-| 11 | `flags` | `·`-separated (see below) |
-| 12 | `player` | display name — a convenience column added beyond the eleven specified |
+| 9 | **`observed_discounted_grace_a`** | **THE CURRENT-BASIS RATING.** Every played season valued at the position played that season against its replacement bar (via the engine's own netting path), games-weighted, summed — discounted back to acquisition under **grace-A**: for an entrant aged **≤19**, seasons 1 and 2 are **undiscounted** and the 14 %/yr fade starts at season 3; for an entrant aged **20+**, unchanged from the baseline. **Board points.** |
+| 10 | `observed_discounted_flat14_baseline` | **the BASELINE, PRE-GRACE.** Identical in every respect except that the 14 %/yr fade starts at season 1 for everybody. This was column 9 of the first issue. |
+| 11 | `raw_undiscounted_value` | **the same season valuation with the discount OFF** — identical bars, identical games weighting, every season counting equally. **Unchanged by grace**: with no discount there is no exponent to shift. The gap between 10 and 11 is purely the time-weighting. |
+| 12 | `grace_a_over_baseline` | column 9 ÷ column 10. **Exactly 1.0000 for every 20+ entrant** and ~1.30 for a ≤19 entrant whose value sits past season 2. Blank where the baseline is 0. |
+| 13 | `flags` | `·`-separated (see below) |
+| 14 | `player` | display name — a convenience column |
 
 ### Flags
 
@@ -207,10 +282,17 @@ reproduces the same bytes and the same md5. Read-only: the store pin is asserted
    walk-forward sensitivity only and never shape a curve.
 5. **Pool players fed pathway × position CELLS, not the pick curve.** Their column-5 attribution is
    blank for that reason.
-6. **grace-A / grace-B are NOT applied.** These are pre-grace numbers, as asked. Column 9 is the
-   flat-14 basis; the grace variants (`SHIPPING_PACKET_26B.md` §18) would multiply nearly every
-   non-zero row here by ~1.30 (grace-A) or ~1.46 (grace-B) and are NOT RULED.
-7. **A zero is a real zero.** A career whose every season sat at or below its replacement bar scores
+6. **GRACE-A IS APPLIED — this supersedes the first issue's note.** The first issue said *"grace-A /
+   grace-B are NOT applied. These are pre-grace numbers, as asked."* **That note is withdrawn.**
+   Column 9 is the grace-A basis and is the rating to read; column 10 preserves the pre-grace number
+   it replaced. **grace-B is still not applied** and remains a NOT-RULED variant
+   (`SHIPPING_PACKET_26B.md` §18); it would lift a ≤19 entrant by ~1.46 rather than ~1.30.
+7. **The two observed columns rank players differently, and the difference is entirely entry age.**
+   grace-A multiplies a ≤19 entrant by ~1.30 and a 20+ entrant by exactly 1.0000, so **mature-age
+   entrants slide down the rankings and teenagers rise** — with no change whatever to the seasons
+   underneath. The biggest movers in both directions are listed at the end of this file. A rank
+   difference here is a statement about the discount rule, **not** about the careers.
+8. **A zero is a real zero.** A career whose every season sat at or below its replacement bar scores
    0 and stays in every denominator. @NZERO@ of the @NROWS@ rows score 0.00 in column 9.
 
 ## THE 2026 IN-PROGRESS SEASON — carried as it stands
@@ -252,7 +334,7 @@ placeholder contributes exactly 0. **No 2026 row is extrapolated to a full seaso
 
 ---
 
-## TOP 60 BY OBSERVED DISCOUNTED VALUE
+## TOP 60 BY GRACE-A OBSERVED VALUE (the current basis)
 
 @TOPTABLE@
 
@@ -261,16 +343,39 @@ placeholder contributes exactly 0. **No 2026 row is extrapolated to a full seaso
 ## THE ROWS THE OWNER ASKED FOR BY NAME
 
 @NAMEDTABLE@
+
+---
+
+## RANK MOVERS BETWEEN THE TWO OBSERVED COLUMNS
+
+Ranked over the **@NRANK@ players whose baseline is at least @RFLOOR@ board points** — a material
+career. Rank moves inside the block of players tied at 0.00 are an artefact of tie ordering and are
+excluded for that reason. `move` is positive when a player rises under grace-A.
+
+**The whole effect is the entry-age clause.** A 20+ entrant is multiplied by exactly 1.0000 — his
+grace-A and baseline figures are the same number — and he is simply overtaken by teenagers lifted
+~1.30. Nothing about any career changed.
+
+### Biggest SLIDES (mature-age entrants, passed by teenagers)
+
+@DOWNTABLE@
+
+### Biggest RISES (≤19 entrants)
+
+@UPTABLE@
 """
 
 for _tok, _val in [
         ('@STORE_REL@', STORE_REL), ('@STORE_MD5@', STORE_MD5), ('@L1_MD5@', L1_MD5),
         ('@NROWS@', str(len(rows))),
-        ('@NZERO@', str(sum(1 for r in rows if r['observed_discounted_value'] <= 0))),
+        ('@NZERO@', str(sum(1 for r in rows if r['observed_discounted_grace_a'] <= 0))),
         ('@N26@', str(len(s26))), ('@N26F@', str(n26f)), ('@N26P@', str(n26p)),
         ('@N26Z@', str(n26z)),
+        ('@NRANK@', str(len(_rk))), ('@RFLOOR@', '%.0f' % RANK_FLOOR),
         ('@TOPTABLE@', HDR + "\n" + "\n".join(line(r) for r in top)),
-        ('@NAMEDTABLE@', HDR + "\n" + "\n".join(line(BYK[k]) for k in NAMED if k in BYK))]:
+        ('@NAMEDTABLE@', HDR + "\n" + "\n".join(line(BYK[k]) for k in NAMED if k in BYK)),
+        ('@DOWNTABLE@', RHDR + "\n" + "\n".join(rline(r) for r in DOWN)),
+        ('@UPTABLE@', RHDR + "\n" + "\n".join(rline(r) for r in UP))]:
     MD = MD.replace(_tok, _val)
 assert '@' not in MD.split('## TOP 60')[0], "an unsubstituted token remains in PLAYER_LEDGER.md"
 
@@ -284,7 +389,7 @@ print('ORDER 26B-L -- THE PLAYER LEDGER')
 print('  rows          %d' % len(rows))
 print('  csv           %s  md5 %s' % (os.path.relpath(CSVP, ROOT), csv_md5))
 print('  md            %s' % os.path.relpath(MDP, ROOT))
-print('  zero rows     %d' % sum(1 for r in rows if r['observed_discounted_value'] <= 0))
+print('  zero rows     %d' % sum(1 for r in rows if r['observed_discounted_grace_a'] <= 0))
 print('  2026 rows     %d total (%d full, %d partial, %d placeholder)' % (len(s26), n26f, n26p, n26z))
 print('  store-pvc-exclude rows: %s' % sorted(PVCX))
 print()
@@ -294,7 +399,7 @@ print('  %-26s %-8s %6s %5s %5s %10s %12s' %
 for r in top[:15]:
     print('  %-26s %-8s %6s %5s %5s %10.1f %12.1f' %
           (r['key'], r['stream'], r['entry_year'], r['natural_pick'] or '-',
-           r['attributed_pick'] or '-', r['observed_discounted_value'],
+           r['attributed_pick'] or '-', r['observed_discounted_grace_a'],
            r['raw_undiscounted_value']))
 print()
 print('  NAMED ROWS')
@@ -303,7 +408,7 @@ for k in NAMED:
     r = BYK[k]
     print('  %-26s %-8s %6s nat %-4s attr %-4s %10.1f %12.1f  %s' %
           (r['key'], r['stream'], r['entry_year'], r['natural_pick'] or '-',
-           r['attributed_pick'] or '-', r['observed_discounted_value'],
+           r['attributed_pick'] or '-', r['observed_discounted_grace_a'],
            r['raw_undiscounted_value'], r['flags']))
 assert_pins('exit')
 print('\n  store and Layer 1 pins re-verified at exit -- nothing under engine/ was written.')
