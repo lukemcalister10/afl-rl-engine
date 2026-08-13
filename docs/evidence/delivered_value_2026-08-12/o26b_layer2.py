@@ -28,7 +28,13 @@ import os, sys, io, json, math, contextlib, hashlib, shutil, collections
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..', '..'))
 SP = '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad'
-STAGE = SP + '/eng26b_l2/rl_after'
+# PID-UNIQUE STAGING. The scratchpad path below is session-specific and is baked into this committed
+# file, so a SECOND seat that checks this branch out and runs this harness stages the engine into the
+# SAME directory -- and each run begins with an rmtree of it. Two concurrent runs therefore delete
+# each other's staged engine mid-boot. Observed live on 2026-08-13 with another seat running these
+# scripts off the pushed branch. The staging directory is now per-process and is cleaned up on exit.
+_STAGE_ROOT = SP + '/eng26b_l2_%d' % os.getpid()
+STAGE = _STAGE_ROOT + '/rl_after'
 L1P = os.path.join(ROOT, 'data', 'delivered_value', 'layer1_player_seasons.json')
 L1_MD5 = 'ad1229ea6f443538479447132382b21c'
 
@@ -56,12 +62,22 @@ def assert_pins(when):
 
 
 assert_pins('entry')
-shutil.rmtree(SP + '/eng26b_l2', ignore_errors=True)
+shutil.rmtree(_STAGE_ROOT, ignore_errors=True)
+import atexit
+atexit.register(lambda: shutil.rmtree(_STAGE_ROOT, ignore_errors=True))
 os.makedirs(os.path.dirname(STAGE), exist_ok=True)
 shutil.copytree(ROOT + '/engine/rl_after', STAGE, dirs_exist_ok=True)
 if not os.path.exists(os.path.join(STAGE, 'LTI_REGISTER.md')):
     shutil.copy(os.path.join(ROOT, 'LTI_REGISTER.md'), STAGE)
-os.environ.update(PYTHONHASHSEED='0', RL_REPO=ROOT, OPENBLAS_NUM_THREADS='1')
+# THREAD PINNING. The harness pinned OPENBLAS_NUM_THREADS only. Measured 2026-08-13 on a contended
+# box (4 cores, load 24 from other seats): the engine boot burned >14 min of CPU and never finished,
+# with the process holding 4 threads and doing no I/O -- BLAS worker threads SPIN-WAITING while
+# oversubscribed. Pinning every threading backend to 1 makes the boot single-threaded and immune to
+# it. Determinism is unaffected (the engine's own fsum paths are order-fixed by design); this only
+# removes a source of wall-clock and CPU waste. Set BEFORE numpy is imported by the engine exec.
+os.environ.update(PYTHONHASHSEED='0', RL_REPO=ROOT, OPENBLAS_NUM_THREADS='1',
+                  OMP_NUM_THREADS='1', MKL_NUM_THREADS='1', NUMEXPR_NUM_THREADS='1',
+                  VECLIB_MAXIMUM_THREADS='1')
 sys.path[:0] = [ROOT, ROOT + '/vendor', ROOT + '/engine/forward_valuation', STAGE]
 _cwd = os.getcwd(); os.chdir(STAGE)
 G = {}
@@ -329,11 +345,16 @@ class Disc(object):
     MA.AGE_DISC_MODE in memory on the STAGED copy -- never by reimplementing the ladder here, and
     never by writing a file."""
 
-    def __init__(self, mode='flat14', grace=None):
+    def __init__(self, mode='flat14', grace=None, nodisc=False):
         self.mode = mode
         # ORDER 26B-V: `grace` is a callable entry_age -> G, shifting the EXPONENT handed to the
         # engine's own disc_factor. None = today's ladder, exponent k.
         self.grace = grace
+        # ORDER 26B-L: `nodisc` turns the discount OFF entirely -- every season counts equally.
+        # It is still routed through the engine's own disc_factor, handed exponent 0 (which the
+        # engine defines as 1.0), so the season valuation itself is byte-identical and ONLY the
+        # time-weighting changes. Used for the ledger's RAW UNDISCOUNTED column.
+        self.nodisc = nodisc
 
     def __enter__(self):
         self._sav = (MA.AGE_DISC, MA.AGE_DISC_MODE)
@@ -348,7 +369,9 @@ class Disc(object):
         return False
 
     def f(self, entry_age, k):
-        if self.grace is not None:
+        if self.nodisc:
+            k = 0
+        elif self.grace is not None:
             k = max(0, k - self.grace(entry_age))
         return MA.disc_factor(entry_age, MA.LENS['bal'], k, 'bal')
 
@@ -445,9 +468,9 @@ def tail_value(e, D):
         MA.REPL.update(sav)
 
 
-def score_all(disc_mode='flat14', wfn=w_sqrt, with_tail=True, keys=None, grace=None):
+def score_all(disc_mode='flat14', wfn=w_sqrt, with_tail=True, keys=None, grace=None, nodisc=False):
     out = {}; CTR = collections.Counter()
-    with Disc(disc_mode, grace) as D:
+    with Disc(disc_mode, grace, nodisc) as D:
         for e in ENTRIES:
             if keys is not None and e['key'] not in keys: continue
             obs, det, ctr = observed_value(e, D, wfn)
@@ -483,6 +506,37 @@ for k in sorted(CFG):
                                             for a, b in v.items()}, sort_keys=True)
     P("  %-32s %s" % (k, v))
 P()
+
+# ==================================================================================================
+# ORDER 26B-L -- THE LEDGER FAST PATH.  `python3 o26b_layer2.py --ledger`
+# ==================================================================================================
+# Writes ONLY the raw-undiscounted observed-only scoring, to its OWN side file, and exits before the
+# eight tail-bearing runs above it. Two reasons it is a side file and not a key in LAYER2.json:
+#   1. LAYER2.json is READ by o26b_derive.py, o26b_compare.py and o26b_variants.py, and its md5 is
+#      quoted in DERIVE.json. Adding a key would move that md5 and invalidate three committed
+#      artifacts for a column that feeds no derivation at all.
+#   2. The full script runs eight projected-tail scorings and takes ~15 minutes; the ledger needs
+#      one observed-only pass, which takes seconds. A read-only reporting column should not cost a
+#      re-derivation.
+# The SCORER IS THE SAME OBJECT -- same bars, same games weighting, same truncation, same position
+# rule. Only the discount is off, and even that routes through the engine's own disc_factor (handed
+# exponent 0, which the engine itself defines as 1.0).
+if '--ledger' in sys.argv:
+    NODISC, _ctr = score_all('flat14', w_sqrt, with_tail=False, nodisc=True)
+    _p = os.path.join(HERE, 'LAYER2_NODISC.json')
+    json.dump(dict(what='ORDER 26B-L: observed-only, DISCOUNT OFF -- the ledger\'s raw undiscounted '
+                        'column. Same season valuation and games weighting as LAYER2.json::base; '
+                        'only the time-weighting differs.',
+                   built_by='docs/evidence/delivered_value_2026-08-12/o26b_layer2.py --ledger',
+                   layer1_md5=L1_MD5, pins={k: v[1] for k, v in PINS.items()},
+                   determinism='no build timestamp, deliberately',
+                   season_counters=dict(_ctr), obs=NODISC),
+              open(_p, 'w'), indent=None, separators=(',', ':'), sort_keys=True, default=float)
+    print("ORDER 26B-L -- wrote LAYER2_NODISC.json  (%d careers, observed only, discount OFF)"
+          % len(NODISC))
+    assert_pins('exit')
+    print("  pins re-verified at exit -- nothing under engine/ was written.")
+    raise SystemExit(0)
 
 BASE, CTR = score_all('flat14', w_sqrt, True)
 P("SCORED %d careers  (flat-14, sqrt games weighting, gated tails on live careers)" % len(BASE))
