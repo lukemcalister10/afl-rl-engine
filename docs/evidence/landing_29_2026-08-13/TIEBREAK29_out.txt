@@ -1,0 +1,89 @@
+================================================================================================================
+ORDER 29  --  STEP 3 RESUMED: THE RULING-C -1-POINT-PER-PICK ORDERING TIEBREAK
+================================================================================================================
+
+  ruling            #334 comment 5279364952, owner word "C"
+  strict descent    STANDS UNAMENDED -- no assert relaxed, _split_ladder untouched
+  candidate         pvc_curve_v2_CANDIDATE.json   curve_md5 48046e2b
+
+1. THE PLATEAU BLOCKS, RE-DERIVED FROM THE ARTIFACT (not assumed)
+----------------------------------------------------------------------------------------------------------------
+  blocks found      2
+    picks  6-12  L=7  pooled value 1319   plain sum 9233
+    picks 15-21  L=7  pooled value 812   plain sum 5684
+  plateau STEPS (what G-MONO counts): 12 at picks [6, 7, 8, 9, 10, 11, 15, 16, 17, 18, 19, 20]
+  NOTE: the stop doc's shorthand named 'picks 6-11' and 'picks 15-20'; the artifact's own blocks
+        are picks 6-12 and 15-21 (SEVEN picks each).  The assert printed only its first 8 offending
+        LEFT indices, which truncates each 7-pick block to 6.  ORDER 28 SS5.2's published wording
+        ('picks 6-12 pool to 1319.1 and picks 15-21 pool to 812.2') agrees with the artifact.
+        The tiebreak is applied to the RE-DERIVED blocks, so the shorthand cannot short-change one.
+
+2. THE TIEBREAK, ANCHORED TO PRESERVE EACH BLOCK'S PLAIN SUM
+----------------------------------------------------------------------------------------------------------------
+  A block of L picks at pooled value v becomes  a, a-1, ..., a-(L-1).
+  Its sum is L*a - L(L-1)/2, so the sum-preserving anchor is a* = v + (L-1)/2, rounded to int.
+  For ODD L that is exact (the run is centred on v); for even L the best integer leaves +-L/2.
+
+  block picks  6-12  L=7  v=1319
+      anchor          1322   (no join shift needed)
+      values          1322 > 1321 > 1320 > 1319 > 1318 > 1317 > 1316
+      plain sum       9233 -> 9233      RESIDUAL DRIFT +0 point(s)
+      join north      pick 5 = 1804  >  pick 6 = 1322   OK
+      join south      pick 12 = 1316  >  pick 13 = 1182   OK
+      max move on any single pick in the block   +3 point(s)
+
+  block picks 15-21  L=7  v= 812
+      anchor          815   (no join shift needed)
+      values          815 > 814 > 813 > 812 > 811 > 810 > 809
+      plain sum       5684 -> 5684      RESIDUAL DRIFT +0 point(s)
+      join north      pick 14 = 960  >  pick 15 = 815   OK
+      join south      pick 21 = 809  >  pick 22 = 782   OK
+      max move on any single pick in the block   +3 point(s)
+
+3. THE TIEBREAK DRIFT LEDGER (P6's ledger gains these lines)
+----------------------------------------------------------------------------------------------------------------
+  block             L   pooled    sum pre   sum post    drift max|move|
+  picks  6-12        7     1319       9233       9233       +0         3
+  picks 15-21        7      812       5684       5684       +0         3
+  TOTAL (blocks)                    14917      14917       +0
+
+  whole curve plain sum   47315 -> 47315   drift +0 point(s)  = +0.000000%
+  bound declared in the ruling: total distortion <= ~0.03% on the plain sum   HELD
+  bound declared in the ruling: <= ~5 points on any single pick   MEASURED 3   HELD
+  join shifts applied     0 block(s)   extra drift from joins  +0
+  anchor (pick 1)         3000 -> 3000   UNTOUCHED
+
+4. STRICT DESCENT ASSERTED GLOBALLY OVER 1..64, JOINS INCLUDED
+----------------------------------------------------------------------------------------------------------------
+  non-strict steps over 1..64   0   none
+  block joins checked           4   all strict: True
+      join in  5->6     STRICT
+      join out 12->13   STRICT
+      join in  14->15   STRICT
+      join out 21->22   STRICT
+  pick 1 == 3000                True
+  domain 1..64, 64 entries      True
+
+  ** THE TIEBROKEN CURVE IS STRICTLY DECREASING OVER 1..64.  G-MONO CAN NOW PASS ON LOAD. **
+
+5. PREREG P5's SPOT VALUES, RE-SCORED UNDER RULING C
+----------------------------------------------------------------------------------------------------------------
+      pick 1   predicted  3000   shipped  3000   HELD
+      pick 2   predicted  2668   shipped  2668   HELD
+      pick 3   predicted  2569   shipped  2569   HELD
+      pick 5   predicted  1804   shipped  1804   HELD
+      pick 7   predicted  1319   shipped  1321   BREACHED BY CONSTRUCTION   (inside a pooled block: the tiebreak separates it)
+      pick 10  predicted  1319   shipped  1318   BREACHED BY CONSTRUCTION   (inside a pooled block: the tiebreak separates it)
+      pick 15  predicted   812   shipped   815   BREACHED BY CONSTRUCTION   (inside a pooled block: the tiebreak separates it)
+      pick 20  predicted   812   shipped   810   BREACHED BY CONSTRUCTION   (inside a pooled block: the tiebreak separates it)
+      pick 30  predicted   607   shipped   607   HELD
+      pick 40  predicted   479   shipped   479   HELD
+      pick 50  predicted   274   shipped   274   HELD
+      pick 64  predicted   179   shipped   179   HELD
+
+  P5 spot values HELD      8/12  [1, 2, 3, 5, 30, 40, 50, 64]
+  P5 spot values BREACHED  4/12  [7, 10, 15, 20]  -- BY CONSTRUCTION under ruling C, owned in the packet
+
+  written: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/curve_TB.json
+  curve_md5  48046e2b -> 76f8fa96
+  r104_9_strict_descent = True   -- and TRUE BY MEASUREMENT, re-checked above, not assumed
