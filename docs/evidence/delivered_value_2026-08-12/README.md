@@ -36,11 +36,22 @@ and Layer-2 per-career scores are byte-identical; only the ND cohort attribution
 sections 1–15 carry the pre-correction numbers and are left standing deliberately; §16 is the
 operative version.**
 
-**The headline numbers (corrected).** Pre-anchor scale at pick 1 = **2,284.6** board points; anchoring
-factor **×1.3131**. Pool derived v0s come in at **0.4211×** today's printed day-0 prices and
-**1.0841×** the owner's signed anchors. Both new instruments **PASS**, every verdict unchanged by the
-correction. Nothing is landed.
-*(Pre-correction, for the record: head 2,112.6 · factor ×1.4200 · 0.4554× printed · 1.1720× anchors.)*
+**CORRECTION 2 (26B-C2), 2026-08-13 — `SHIPPING_PACKET_26B.md` §17 is the OPERATIVE version.** Owner
+ruling [#334 comment 5275737926](https://github.com/lukemcalister10/afl-rl-engine/issues/334#issuecomment-5275737926):
+the aggregator's weighted-mean step has one-sided **boundary bias** (pick 1 dragged down, pick 64
+flattered up), and is replaced by a **local-linear fit** over log(pick) across the whole curve — the
+shipped Gaussian kernel and bandwidth rule unchanged, the solver reusing the engine's own
+`par_build.py::loclin` algebra (`o26b_loclin.py`). Engine bytes still 0.
+
+**The headline numbers (C2, operative).** Pre-anchor scale at pick 1 = **2,463.1** board points;
+anchoring factor **×1.2180** (pick-vs-player premium **21.8 %**, down from 31.3 %). Pool derived v0s
+come in at **0.3906×** today's printed day-0 prices and **1.0056×** the owner's signed anchors — within
+0.6 % of parity. Both new instruments **PASS**, every verdict unchanged by either correction. Nothing
+is landed.
+
+*For the record — head · factor · derived/printed · derived/anchor:*
+*original 2,112.6 · ×1.4200 · 0.4554 · 1.1720 → C1 2,284.6 · ×1.3131 · 0.4211 · 1.0841 →*
+***C2 2,463.1 · ×1.2180 · 0.3906 · 1.0056.***
 
 **The dataset this act produced lives elsewhere, deliberately:**
 `data/delivered_value/layer1_player_seasons.json` (md5 `ad1229ea6f443538479447132382b21c`) — a

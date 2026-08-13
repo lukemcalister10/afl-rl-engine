@@ -1,13 +1,16 @@
 # SHIPPING PACKET — ORDER 26B, THE DELIVERED-VALUE REDERIVATION
 
-> ### ⚠ READ §16 FIRST — CORRECTION 1 (26B-C1)
-> **Sections 1–15 below were written before CORRECTION ORDER 26B-C1 and their numbers are the
-> PRE-CORRECTION numbers. They are left standing deliberately — the correction is published as an
-> appendix with its own deltas table rather than by rewriting history.** A standing owner ruling
-> (the force-majeure exclusion of `thomas-boyd` and `paddy-mccartin`, whole-draft slide) was missing
-> from this order's brief, and applying it moves the ND curve. **§16 carries the corrected numbers and
-> is the operative version.** Nothing in §16 changes any per-career delivered value, any pool pathway
-> all-in, or any instrument verdict.
+> ### ⚠ READ §17 FIRST — THERE ARE TWO CORRECTIONS
+> **Sections 1–15 are the ORIGINAL numbers. §16 is CORRECTION 1. §17 is CORRECTION 2 and is the
+> OPERATIVE version.** History is preserved deliberately: each correction is published as its own
+> appendix with its own deltas table, and nothing is rewritten in place.
+>
+> - **§16 — CORRECTION 1 (26B-C1)**, the owner's standing **force-majeure exclusion** of
+>   `thomas-boyd` and `paddy-mccartin` (whole-draft slide), missing from this order's brief.
+> - **§17 — CORRECTION 2 (26B-C2)**, the owner's ruling replacing the aggregator's weighted-mean step
+>   with a **local-linear fit**, which removes one-sided boundary bias at both ends of the curve.
+>
+> Neither correction changes any per-career delivered value; C2 changes no instrument verdict.
 
 **NOTHING HERE IS LANDED.** No engine file was changed, no pin was moved, no board was rebuilt, no
 score was ingested. Every number below was measured read-only against pinned bytes. The landing is a
@@ -607,6 +610,7 @@ right about the levels and wrong about the shapes.
 | `INSTRUMENTS_PRESTATEMENT.md` | step 5's test forms, dated and committed before the computation |
 | `o26b_compare.py` → `COMPARE.json`, `COMPARE_out.txt` | step 5, comparisons and both instruments |
 | `o26b_v5.py` → `V5_APPENDIX.json`, `V5_APPENDIX_out.txt` | the V5 age-ladder appendix (NOT RULED) |
+| `o26b_loclin.py` | **CORRECTION 2** — the local-linear estimator, reusing `par_build.py::loclin`'s algebra |
 | `per_entrant_O25R4.json` | the walk-forward matrix, copied for durability (md5 `3c6ffcde…`) |
 | `SHIPPING_PACKET_26B.md` | this file |
 
@@ -614,7 +618,8 @@ right about the levels and wrong about the shapes.
 
 # 16. CORRECTION 1 (26B-C1) — THE OWNER'S FORCE-MAJEURE EXCLUSION
 
-**Filed 2026-08-13. This section is the operative version of every number it restates.**
+**Filed 2026-08-13. Superseded in its curve numbers by §17 (CORRECTION 2), which is the operative
+version; §16's *attribution* rules remain in force and are carried into §17 unchanged.**
 Sections 1–15 are left exactly as they were written; nothing is rewritten in place.
 
 ## 16.1 What was missed, and whose fault it was
@@ -881,3 +886,310 @@ pick-1 cohort carried two careers the owner had already ruled out.
 5. **`o26b_compare.py` now cross-checks two independent implementations of the same ruling** and
    halts if they disagree (§16.2). That check found nothing wrong here, but it is the pattern the
    other rulings need.
+
+---
+
+# 17. CORRECTION 2 (26B-C2) — THE LOCAL-LINEAR BOUNDARY FIT
+
+**Filed 2026-08-13. THIS IS THE OPERATIVE VERSION.** §16's force-majeure attribution rules stay in
+force and its deriver asserts stay armed; this correction changes the *estimator*, not the population.
+
+## 17.1 The defect the owner found
+
+> **Owner:** *"How does the smoother operate? Is pick 1 punished for not having neighbours north of it
+> to borrow from like pick 10 can?"* … *"But pick 2, to a lesser extent, is still punished by not
+> having north neigbours. I think we use local linear fits to 'extend' the north and south ends of the
+> Pick Curve, do you agree?"*
+> ([#334 comments 5275717636 and 5275737926](https://github.com/lukemcalister10/afl-rl-engine/issues/334#issuecomment-5275737926))
+
+**He is right, and it is structural.** The shipped aggregator is a Gaussian kernel over `log(pick)`
+followed by a weighted **MEAN** — a **local-constant** estimator. At an interior pick the borrowed
+weight comes from both sides of a declining curve and the two pulls cancel to first order. At the ends
+they cannot:
+
+- **pick 1** borrows **45.0 %** of its weight and every borrowed point is **southern and worth less**
+  → the estimate is dragged **DOWN**;
+- **pick 64** borrows **89.5 %** and every borrowed point is **northern and worth more** → the tail is
+  **FLATTERED UP**.
+
+A local-constant estimator *averages* the local slope; it cannot fit it. That is the whole defect.
+
+## 17.2 The fix, and what it reuses
+
+**Local-linear fit over `log(pick)`, applied across the WHOLE curve, picks 1–64 — one method, no
+seam.** Where the curve is locally straight a local-linear fit reproduces the weighted mean; at a
+boundary it fits the local slope and extrapolates along it, cancelling the first-order bias in **both**
+directions.
+
+`o26b_loclin.py` invents nothing. Both halves are reused and cited:
+
+| half | source | what is taken |
+|---|---|---|
+| **kernel + bandwidth rule** | `harness_pvc_REPINNED_pass3.py::kernel_raw` (the shipped year-0 aggregator) | Gaussian over `log(pick)`; bandwidth grown from HMIN 0.10 in 0.02 steps until effective n ≥ 35, capped at 0.60. **Unchanged.** |
+| **the solver** | **`engine/forward_valuation/par_build.py::loclin`, lines 382–428** | the 2-parameter weighted normal equations accumulated with `math.fsum` (the engine's own 2026-07-14 determinism fix), solved by **LU with partial pivoting** — the algorithm LAPACK `dgesv` uses — with the engine's own **rank-deficient fallback to the local-constant weighted mean** at `relcond < 1e-9`. |
+
+**The one deliberate difference, declared:** `par_build` weights with a **tricube** kernel at a fixed
+bandwidth `H_LOGPICK`; this file weights with the pick curve's **own Gaussian** at its **own grown**
+bandwidth — because the ruling changes the **estimator**, not the kernel. The normal equations, the
+fsum accumulation, the pivot and the fallback are `par_build`'s, unchanged.
+
+**`par_build.py` is READ and CITED, never modified and never imported.** Engine bytes: **0**.
+
+**Diagnostics are reported per pick** (bandwidth, effective n, borrowed-weight share, ESS, relcond,
+fallback, flooring), as the shipped harness reports weights and bandwidths. On the all-in curve **no
+rank-deficient fallback fired and no fit went negative**. The **RUCK** positional curve fell back to
+the weighted mean at **picks 63–64** (60 rows across 64 picks) and says so.
+
+**Position SHARE curves deliberately stay on the local-constant weighted mean.** Declared, with the
+reason: a share is a bounded **proportion**, and a local-linear indicator fit can leave `[0,1]` at a
+boundary, which would then need clipping — reintroducing a boundary artefact of a different kind. The
+shares are renormalised to sum to 1 at every pick regardless. The positional **value** curves *do* take
+the loclin, so the relativities carry no seam against the all-in curve.
+
+## 17.3 THE THREE-WAY CURVE TABLE — both boundary regions highlighted
+
+Pre-anchor board points, and the anchored curve beside today's PVC.
+
+| pick | raw cohort mean | weighted mean (old) | **LOCLIN (new)** | LL / WM | anchored C1 | **anchored C2** | Δ | today PVC | **C2 / PVC** | region |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **1** | 2460.1 | 2284.6 | **2463.1** | **1.0781** | 3000 | **3000** | — | 3000 | 1.000 | **⟵ NORTH BOUNDARY** |
+| **2** | 2102.3 | 2132.2 | **2186.2** | **1.0253** | 2800 | **2663** | −4.89 % | 2999 | 0.888 | **⟵ NORTH BOUNDARY** |
+| **3** | 2289.8 | 2054.0 | **2104.7** | **1.0247** | 2697 | **2563** | −4.96 % | 2874 | 0.892 | **⟵ NORTH BOUNDARY** |
+| 5 | 1848.9 | 1412.0 | 1479.7 | 1.0479 | 1854 | **1802** | −2.80 % | 1881 | 0.958 | |
+| 7 | 1150.8 | 1048.1 | 1019.9 | 0.9732 | 1376 | **1242** | −9.73 % | 1549 | 0.802 | |
+| 10 | 1186.4 | 1083.4 | 1074.9 | **0.9921** | 1423 | **1309** | −7.97 % | 1460 | 0.897 | *interior: LL ≈ WM* |
+| 15 | 413.4 | 653.0 | 663.6 | 1.0163 | 857 | **808** | −5.73 % | 1030 | 0.785 | |
+| 20 | 940.0 | 709.3 | 712.9 | **1.0050** | 931 | **868** | −6.78 % | 990 | 0.877 | *interior: LL ≈ WM* |
+| 30 | 425.2 | 500.5 | 504.5 | 1.0079 | 657 | **614** | −6.51 % | 663 | 0.927 | |
+| 40 | 383.6 | 403.0 | 410.0 | 1.0173 | 529 | **499** | −5.64 % | 514 | 0.972 | |
+| **50** | 71.6 | 229.2 | 232.0 | 1.0126 | 301 | **283** | −6.07 % | 346 | 0.817 | **⟵ SOUTH BOUNDARY** |
+| **64** | 177.6 | 150.5 | **86.6** | **0.5751** | 198 | **105** | **−46.66 %** | 185 | **0.570** | **⟵ SOUTH BOUNDARY** |
+
+**The boundary correction, one number per end:**
+
+| end | LOCLIN / weighted-mean | direction |
+|---|---|---|
+| **pick 1** | **1.0781 (+7.8 %)** | the north end, previously dragged **DOWN** |
+| **pick 64** | **0.5751 (−42.5 %)** | the south end, previously **FLATTERED UP** |
+
+**Both corrections are in the ruled directions, and the interior is untouched** — at picks 10 and 20
+the loclin sits within **0.8 %** and **0.5 %** of the weighted mean, which is exactly the property that
+justified applying one method across the whole curve rather than splicing two.
+
+**The strongest single confirmation:** the loclin head at pick 1 is **2,463.1**, and the **raw pick-1
+cohort mean over the same 18 careers is 2,460.1** — a gap of **0.12 %**. Two independent routes to the
+same number. The −7.1 % the weighted mean reported at pick 1 was boundary bias and nothing else.
+
+## 17.4 The head, the factor, and the premium — landing ruling #5 SUBSUMED
+
+| | weighted mean (C1) | **LOCLIN (C2)** | raw-anchor alternative |
+|---|---|---|---|
+| pre-anchor head at pick 1 | 2,284.6 | **2,463.1** | 2,460.1 |
+| **anchoring factor** | ×1.3131 | **×1.2180** | ×1.2195 |
+| **pick-vs-player premium** | **31.3 %** | **21.8 %** | 22.0 % |
+
+**This subsumes landing ruling #5 (smoothed-vs-raw anchor).** That decision existed only because the
+smoother was biased at the anchor point. With the bias removed the two candidates converge — the loclin
+factor sits **0.12 %** from the raw-anchor factor — and the answer is *principled* rather than a choice
+between a convention and a special case. **Landing ruling #5 can be closed as answered.**
+
+The **pick-vs-player premium falls from ~31 % to ~22 %**, which bears directly on the exchange-rate
+question ([#334 comment 5274530786](https://github.com/lukemcalister10/afl-rl-engine/issues/334#issuecomment-5274530786)):
+**about a third of the measured premium was a smoother artefact at the anchor.** The caution attached
+there stands and is now sharper — see §17.8.
+
+## 17.5 The shape, the tail, and the monotonicity picture
+
+| | original | C1 | **C2** | today's PVC |
+|---|---|---|---|---|
+| pick 1 → pick 3 | −4.31 % | −10.09 % | **−14.55 %** | −4.20 % |
+| pick 1 / pick 10 | 1.948 | 2.109 | **2.292** | 2.055 |
+| pick 64 / pick 1 | 0.0727 | 0.0659 | **0.0351** | 0.0617 |
+| **anchored pick 64** | 218 | 198 | **105** | 185 |
+| pick 64 vs PVC | **+18.0 %** | +6.8 % | **−43.0 %** | — |
+| within ±6 % of PVC | 37 of 64 | 31 of 64 | **14 of 64** | — |
+| **monotonicity ascents** | 9 | 7 | **8** | — |
+
+**The +18 % tail reading is gone, and it was the flattery.** The owner's diagnosis — *"part of the
+derived curve's +18 % at pick 64 is likely this"* — is confirmed: pick 64 moves from **+18.0 % above**
+today's PVC to **−43.0 % below** it. On the corrected estimator the derivation says the deep tail of
+today's curve is **substantially over-priced** — the opposite of what the biased smoother said.
+
+**The two curves are now much further apart.** The derived curve sits **below** today's PVC at picks
+1–35 and 39–64, and above it only over **picks 36–38**. That is a real finding, not an artefact:
+removing the boundary flattery removed the only region where the derivation agreed with the deep tail.
+
+**Monotonicity: 8 ascents (7 under C1, 9 originally), at picks 7, 8, 10, 11, 17, 18, 19, 20.** One is
+added (pick 20): local-linear tracks the data's local slope more faithfully than an average does, so
+genuine interior bumps show through instead of being smoothed over. **This interacts with the pending
+monotone ruling:** all eight sit in picks 7–20, **none at either boundary and none involving pick 1**.
+A landing act that wants a monotone printed object should apply the shipped PAVA step explicitly and
+disclose the eight it removes.
+
+## 17.6 Downstream — the pick-64 threshold moves, and four pathways change status
+
+**The `> 64` label means "below the derived pick-64 value", and that value fell from 198 to 105.4.**
+Four pathways that sat *off the bottom* of the national-draft curve now land *inside* it.
+
+| path | shrunk all-in | anchored C1 | **anchored C2** | ND-pick equiv C1 | **ND-pick equiv C2** |
+|---|---|---|---|---|---|
+| MSD | 324.9 | 426.6 | **395.7** | 44 | **45** |
+| ND>64 | 234.9 | 308.5 | **286.1** | 50 | **50** |
+| SSP | 213.3 | 280.0 | **259.7** | 53 | **53** |
+| RD | 211.3 | 277.5 | **257.4** | 54 | **54** |
+| **PDA** | 159.9 | 209.9 | **194.7** | 63 | **59** |
+| **UNR** | 122.9 | 161.4 | **149.7** | **> 64** | **62** |
+| **PDN** | 102.0 | 134.0 | **124.3** | **> 64** | **63** |
+| **PDS** | 91.4 | 120.1 | **111.4** | **> 64** | **64** |
+| IRE | 84.6 | 111.1 | **103.0** | > 64 | **> 64** |
+
+**No pathway's delivered value changed** — every pathway all-in is identical. What moved is the *ruler*
+they are measured against. **Only IRE now sits below the bottom of the national-draft curve.**
+
+### Positional relativities by pick band (C1 → C2)
+
+| band | MID | SD | SF | KPD | KPF | RUCK |
+|---|---|---|---|---|---|---|
+| 1–10 | 1.256→**1.218** | 0.703→**0.753** | 0.589→**0.662** | 0.604→**0.700** | 0.684→**0.671** | 1.259→**1.292** |
+| 11–20 | 1.299→1.264 | 1.012→1.060 | 0.582→0.626 | 0.626→0.649 | 0.825→0.838 | 1.312→**1.140** |
+| 21–30 | 1.322→1.292 | 0.704→0.755 | 0.503→0.497 | 0.683→0.693 | 0.833→0.877 | 2.217→2.255 |
+| 31–45 | 1.323→1.302 | 0.495→0.514 | 0.681→0.686 | 0.802→0.793 | 0.748→0.756 | 2.292→2.329 |
+| 46–64 | 1.113→1.108 | 0.454→**0.570** | 1.040→**0.950** | 1.649→**1.761** | 0.906→0.903 | 1.202→**0.956** |
+
+The 46–64 band moves most, which is where the boundary correction bites. **The reconciliation law still
+holds at 2.220e−16 and is still asserted as a halt.**
+
+### Pooled derived-vs-printed-vs-anchor
+
+| ratio | original | C1 | **C2** |
+|---|---|---|---|
+| derived / printed day-0, **aggregate** | 0.4554 | 0.4211 | **0.3906** |
+| derived / printed day-0, median | 0.4354 | 0.4027 | **0.3735** |
+| derived / **signed anchor**, aggregate | 1.1720 | 1.0841 | **1.0056** |
+| derived / signed anchor, median | 1.1382 | 1.0525 | **0.9763** |
+
+**The derived pool entry prices now equal the owner's signed anchors to within 0.6 % in aggregate.**
+Each correction moved the number toward 1.0 — 1.1720 → 1.0841 → **1.0056** — and **neither correction
+was aimed at that target**. Two independent objects, built from different evidence by different people,
+converging. Against today's printed day-0 the cut is now **~61 %**.
+
+**Per position, derived / printed day-0 (median):** MID 0.4460→**0.4137** · SD 0.3855→**0.3575** ·
+SF 0.4025→**0.3734** · KPD 0.2678→**0.2484** · KPF 0.2479→**0.2299** · RUCK 1.3621→**1.2634**.
+Every §5.2 conclusion and the whole positional ordering are unchanged.
+
+## 17.7 Both instruments, re-run — every verdict unchanged
+
+| arm | progression | peak C1 → **C2** | reverse no-arb | bootstrap hi C1 → **C2** |
+|---|---|---|---|---|
+| ND 1-64 | **PASS** | 1.552 → **1.657** (d3) | **PASS** | 1.660 → 1.772 |
+| RD | **PASS** | 1.302 → **1.404** (d3) | **PASS** | 1.560 → 1.682 |
+| SSP | **PASS** | 1.674 → **1.804** (d2) | **PASS** | 2.896 → 3.122 |
+| MSD | FAIL literal / **PASS repaired** | 1.025 → **1.105** (d5) | **PASS** | 1.953 → 2.106 |
+| IRE | **PASS** | 1.862 → **2.007** (d6) | **PASS** | 4.314 → 4.651 |
+| PDA | **PASS** | 1.640 → **1.769** (d4) | **PASS** | 3.428 → 3.695 |
+| PDN | **PASS** | 1.352 → **1.458** (d5) | **PASS** | 3.283 → 3.539 |
+| PDS | **PASS** | 1.184 → **1.277** (d4) | **PASS** | 2.872 → 3.096 |
+| UNR | **PASS** | 1.412 → **1.522** (d4) | **PASS** | 2.725 → 2.938 |
+| ND>64 | **PASS** | 1.408 → **1.518** (d6) | **PASS** | 2.277 → 2.455 |
+
+**Every verdict is unchanged on both instruments and both readings**, the same five arms (SSP, MSD,
+PDA, PDN, ND>64) disagree between the sum/sum and mean-of-ratios readings, and **no pathway is a
+systematic guaranteed-loss hold**. Peaks rise ~7 % across the board, because a smaller anchor factor
+lowers every derived day-0 denominator. **No arm has limb 1 red** — the loss of that worked example,
+first reported and owned in §16.4, is unchanged.
+
+### The named rows
+
+| player | delivered (to date / TOTAL) | derived v0 C1 → **C2** | printed day-0 | signed anchor |
+|---|---|---|---|---|
+| `willem-duursma` | 53.8 / 3,531.0 | 3,157.2 → **3,157.2** *(pick 1 is the anchor)* | 3,484.6 | 3,484.6 |
+| `callum-moore` | 5.2 / 5.2 | 239.3 → **222.0** | 1,773.4 | 216.8 |
+| `harrison-ramm` | 0.0 / 696.1 | 428.4 → **397.3** | 946.0 | 354.7 |
+| `vigo-visentini` | 56.0 / 588.0 | 490.1 → **454.6** | 359.8 | 270.5 |
+| `jai-newcombe` | 2,016.3 / 3,992.5 | 677.3 → **628.2** | 688.0 | 354.7 |
+
+Delivered values unchanged; the four pool v0s scale by the anchor-factor ratio (×0.9277).
+**`callum-moore`'s derived v0 (222.0) is now within 2.4 % of his signed anchor (216.8)** — against a
+printed day-0 of 1,773.4.
+
+## 17.8 The V5 appendix
+
+| | C1 | **C2** |
+|---|---|---|
+| flat-14 head | 2,284.6 | **2,463.1** |
+| V5 head | 2,571.5 | **2,765.5** |
+| V5 / flat-14 head ratio | 1.1256 | **1.1228** |
+| flat-14 anchor factor | 1.3131 | **1.2180** |
+| **V5 anchor factor** | 1.1666 | **1.0848** |
+| max post-anchor shape move | 1.32 % | **3.42 %** |
+| max ND-pick-equivalent move | 2 picks | **2 picks** |
+| pathway ranking identical | yes | **yes** |
+
+**Every V5 conclusion holds.** One number is worth flagging: under V5 the anchor factor is now
+**1.0848** — a pick-vs-player premium of **8.5 %**. The entanglement flagged at
+[#334 comment 5274530786](https://github.com/lukemcalister10/afl-rl-engine/issues/334#issuecomment-5274530786)
+is now sharper: **at flat-14 the premium is 21.8 %; under the owner's V5 ladder it is 8.5 %.** The
+exchange-rate act and the discount-ladder decision are one decision, not two. The max post-anchor shape
+move rises 1.32 % → 3.42 % because a local-linear estimator is more sensitive at a boundary than an
+average is; it is still small and changes nothing.
+
+## 17.9 PREREG RE-SCORED — the items C2 moves
+
+| # | prediction | C1 verdict | **C2** | what moved |
+|---|---|---|---|---|
+| **P2.1** | pre-anchor ∈ [1800, 3800] pt 2600; factor ∈ [0.79, 1.67] pt 1.15 | HIT | **HIT** | head **2,463.1**, factor **1.2180** — both in band, the factor now much nearer the 1.15 point estimate |
+| **P2.2** | pick 1→3 drop **> 12 %** | MISS (−10.09 %) | **HIT (−14.55 %)** | **turns over.** −4.31 % originally, −10.09 % under C1, **−14.55 %** now — through the threshold |
+| **P2.3** | below the shipped curve through the early picks, crossing above between **18–34** (pt 26), staying above | PART HIT | **PART HIT** | limb 1 **HIT** (below from pick 1 right through to 35); limb 2 **near-MISS** — the crossing is at **pick 36**, two picks outside the window; limb 3 **MISS** (above only 36–38) |
+| **P2.4** | pick64/pick1 ∈ [0.08, 0.18]; anchored pick 64 ∈ [240, 540] | MISS | **MISS** (0.0351; 105.4) | moves **further** from the band — the correction says the deep tail is thinner still |
+| **P2.5** | pick1/pick10 ∈ [1.9, 3.0] | HIT (2.109) | **HIT (2.292)** | more comfortably inside |
+| **P3.1b** | ND-pick equivalents: RD 48–62, SSP 55–64, MSD 58–64, **PDA/PDN/PDS/IRE/UNR all BELOW pick 64** | PART (2 of 5) | **PART (1 of 5)** | **gets worse.** RD **54** ✔; SSP **53** ✘; MSD **45** ✘; the "all below pick 64" limb now fails on **four of its five** members (PDA 59, UNR 62, PDN 63, PDS 64 all land inside; only IRE stays below) |
+| **P3.2** | whole-pool derived/printed ∈ [0.28, 0.55] **pt 0.40** | HIT (0.4211) | **HIT (0.3906)** | lands **almost exactly on the point estimate** |
+| **P3.4** | whole-pool derived/anchor ∈ [0.8, 1.6] pt 1.10 | HIT (1.0841) | **HIT (1.0056)** | now within **0.6 % of parity** with the signed anchors |
+| **P6.1c** | m* ∈ [1.4, 2.6] for RD, MSD, SSP | *(see the correction below)* | **PART (2 of 3)** | RD **1.404 ✔** (crosses the threshold), SSP **1.804 ✔**, MSD **1.105 ✘** |
+| **P6.3b** | the tightest pathway is **PDS** | MISS | **MISS** | MSD still tightest (1.105 vs PDS 1.277) |
+
+**Unchanged:** P2.6, P2.7, P3.1a, P3.3, P3.5, P4.1, P4.2, P5.1–P5.5, P6.1a, P6.1b, P6.2, P6.3a,
+P7.1, P7.2.
+
+### A SCORING ERROR IN §16.5, CORRECTED HERE
+
+§16.5 recorded **P6.1c** as "**PART (2 of 3)**" while its own evidence column listed only **SSP** as a
+hit (RD 1.302 ✘, MSD 1.025 ✘). **That was 1 of 3, and the count was wrong.** The correct C1 verdict is
+**MISS (1 of 3)**. It is corrected here rather than quietly restated, because a scorecard that drifts
+in the scorer's own favour is worth less than no scorecard at all.
+
+**REVISED SCORECARD: HIT 14 · PART 3 · MISS 8 · PREREG ERROR 1 · HONOURED 2.**
+*(original 12 / 2 / 11 / 1 / 2 · C1 12 / 3 / 10 / 1 / 2 once the §16.5 count is fixed.)*
+
+**Read the trend, not the total.** Both corrections were owner rulings about *method*; neither was
+aimed at any prediction; both moved the score up. The prereg's shape predictions (P2.2, P2.3) and its
+two headline pool predictions (P3.2, P3.4) had been scored against a curve carrying a standing
+exclusion the build did not know about **and** a smoother with a known boundary bias. **P3.2 now lands
+on 0.3906 against a pre-registered point estimate of 0.40, and P3.4 on 1.0056 against 1.10** — and no
+correction was trying to hit either. The remaining large misses are **P2.4** (the deep tail, which
+every correction has made *worse*) and **P3.1b** (pathway ordering and equivalents). Those are real.
+
+## 17.10 ANOMALIES FROM THIS CORRECTION
+
+1. **Pick 64 fell 46.7 %** (198 → 105 anchored) and now reads **43 % below** today's PVC. The deep tail
+   is the single largest disagreement between the derivation and the shipped curve, and it is the one
+   region where the corrections have pushed *away* from agreement rather than toward it. It deserves
+   its own look before any landing: n falls to 14–17 at picks 61–64, and the loclin is extrapolating a
+   slope through the thinnest part of the sample.
+2. **The RUCK positional curve hit the rank-deficient fallback at picks 63–64** and degraded to the
+   weighted mean there — the engine's own ruled behaviour, reported rather than hidden. RUCK carries 60
+   rows across 64 picks and is the thinnest positional curve.
+3. **Monotonicity got marginally worse** (7 → 8 ascents). Local-linear tracks the local slope, so real
+   interior bumps show through instead of being averaged away. All eight sit in picks 7–20; none
+   touches a boundary.
+4. **The V5 premium is 8.5 % against flat-14's 21.8 %.** The pick-vs-player exchange-rate question and
+   the discount-ladder question are demonstrably one decision.
+5. **Landing ruling #5 is answered and can be closed** (§17.4) — the loclin anchor and the raw anchor
+   converge to within 0.12 % once the boundary bias is removed.
+6. **Two owner-found method defects in two corrections.** C1 was a standing ruling the brief did not
+   carry; C2 was a statistical bias nobody had checked for. **Both were caught by the owner reading the
+   output, not by any assert in this packet.** C1's ruling is now an assert; **C2's is not assertable in
+   the same form** — "use an unbiased estimator at the boundary" is a design choice, not a predicate.
+   The nearest available guard is that the **three-way table (raw / weighted-mean / loclin) is now a
+   permanent deliverable**, so the gap between estimators is always on the page where a reader can see
+   it.
