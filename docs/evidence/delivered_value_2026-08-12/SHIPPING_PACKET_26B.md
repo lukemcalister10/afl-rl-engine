@@ -1,5 +1,14 @@
 # SHIPPING PACKET — ORDER 26B, THE DELIVERED-VALUE REDERIVATION
 
+> ### ⚠ READ §16 FIRST — CORRECTION 1 (26B-C1)
+> **Sections 1–15 below were written before CORRECTION ORDER 26B-C1 and their numbers are the
+> PRE-CORRECTION numbers. They are left standing deliberately — the correction is published as an
+> appendix with its own deltas table rather than by rewriting history.** A standing owner ruling
+> (the force-majeure exclusion of `thomas-boyd` and `paddy-mccartin`, whole-draft slide) was missing
+> from this order's brief, and applying it moves the ND curve. **§16 carries the corrected numbers and
+> is the operative version.** Nothing in §16 changes any per-career delivered value, any pool pathway
+> all-in, or any instrument verdict.
+
 **NOTHING HERE IS LANDED.** No engine file was changed, no pin was moved, no board was rebuilt, no
 score was ingested. Every number below was measured read-only against pinned bytes. The landing is a
 separate order on the owner's word.
@@ -600,3 +609,275 @@ right about the levels and wrong about the shapes.
 | `o26b_v5.py` → `V5_APPENDIX.json`, `V5_APPENDIX_out.txt` | the V5 age-ladder appendix (NOT RULED) |
 | `per_entrant_O25R4.json` | the walk-forward matrix, copied for durability (md5 `3c6ffcde…`) |
 | `SHIPPING_PACKET_26B.md` | this file |
+
+---
+
+# 16. CORRECTION 1 (26B-C1) — THE OWNER'S FORCE-MAJEURE EXCLUSION
+
+**Filed 2026-08-13. This section is the operative version of every number it restates.**
+Sections 1–15 are left exactly as they were written; nothing is rewritten in place.
+
+## 16.1 What was missed, and whose fault it was
+
+A **standing owner ruling** (register, v533-era) excludes **`thomas-boyd`** (ND pick 1, 2013) and
+**`paddy-mccartin`** (ND pick 1, 2014) from pick valuation as **force majeure**. Owner, verbatim:
+
+> "those players were pick 1 KPF busts, so heavily bias the pool against them, however one retired
+> early with depression, and another with concussion issues. It's a force majeure situation…"
+
+and, on being shown this order's output:
+
+> "I was under the impression that Thomas Boyd and Paddy McCartin were excluded from the pick
+> valuation… It was force majeure, so it seemed wrong for them to contribute to data for pick 1 when
+> those acts of god are unlikely to contribute to pick 1 again."
+
+**ORDER 26B's brief did not carry the ruling, and this build included both rows in the pick-1 cohort.**
+Re-filed at [#334 comment 5274640130](https://github.com/lukemcalister10/afl-rl-engine/issues/334#issuecomment-5274640130),
+which records the failure as the seat's, not the build's — and records that it is the **third ruling
+this week found living as register prose instead of a machine check**. That is why this correction
+ships as **named config plus a halting assert**, not as a patched number.
+
+## 16.2 The mechanics, as the owner amended them
+
+**WHOLE-DRAFT SLIDE.** In each affected draft year every ND draftee slides **up one pick**: natural
+pick N is attributed to slid pick N−1. The excluded key (natural pick 1) is dropped from every cohort
+input entirely. A natural pick 65 slides to 64, **enters** the ND 1-64 fit and **leaves** the ND>64
+pathway for that year. **Slid effective picks are computed BEFORE the ND/pool split.**
+**The store is never edited and Layer 1 is never edited** — the slide is a derivation-time attribution
+rule only, and Layer 1 keeps the natural pick.
+
+It ships as `CFG.force_majeure` in `o26b_layer2.py` — keys, reason, provenance, mechanics, slide
+years, scope — which builds **one** attribution map emitted to `LAYER2.json::attribution`. The
+deriver, the comparison harness and the V5 appendix all **read** that map; none recomputes the slide,
+so no two of them can drift.
+
+### The ruling is now an assert. The deriver HALTS on any violation.
+
+| limb | check | result |
+|---|---|---|
+| **(a)** | neither excluded key appears in **any** ND or pool cohort input, at any pick | **PASS** |
+| **(b)** | each slide year's **pick-N cohort holds the natural pick-(N+1) entrant** | **PASS** — 2013: 60 pick positions checked; 2014: 64 |
+| **(c)** | a natural pick 65 slid to 64, entered the ND fit, left ND>64 | **PASS** — 2014 `daniel-butler` |
+
+Each limb is proved non-vacuous (limb (b) halts if it checks nothing; limb (c) halts if no slide year
+has a natural 65 at all).
+
+### A correction to the correction order, measured rather than assumed
+
+The correction order anticipated that **ND>64 would lose two entrants**. **It loses one.** The **2013
+national draft ends at natural pick 61** — it has no 65th selection — so only 2014's `daniel-butler`
+slides into the ND fit. The assert is written over the natural-65s that **exist**; asserting two would
+have been asserting a fact about the world that is false.
+
+### An independent cross-check the correction order did not ask for
+
+The walk-forward matrix's own emitter **already applies this ruling** (`meta.force_majeure`,
+`meta.slide_years`, per-row `pick_stored`/`pick_slid`). This order's attribution map was built
+separately, from Layer 1. They are now asserted to agree on **the arm of all 1,565 ND rows** and **the
+slid pick of all 1,444 ND 1-64 rows**, with both excluded keys **absent from the matrix entirely**.
+Two independent implementations of the same owner ruling, agreeing. (ND>64 picks are deliberately not
+compared: the matrix pins every one of them to its `pool_pick` sentinel of 65, so its `pick` there is
+a marker, not a draft position.)
+
+## 16.3 Who replaced boyd and mccartin — the owner's question, answered
+
+| year | excluded (natural pick 1) | pos | delivered | → natural pick 2, now the pick-1 cohort member | pos | delivered |
+|---|---|---|---|---|---|---|
+| 2013 | `thomas-boyd` | KPF | **46.6** | **`joshua-kelly`** | MID | **3,592.8** |
+| 2014 | `paddy-mccartin` | KPF | **44.0** | **`christian-petracca`** | MID | **3,621.7** |
+
+**The pick-1 cohort gains 7,123.9 board points across the two rows** (90.6 → 7,214.5) on a cohort of
+18. Two KPF careers ended by acts of god are replaced by two of the best midfield careers of the era.
+
+## 16.4 THE DELTAS — old vs corrected
+
+### The curve (anchored at pick 1 = 3000)
+
+| pick | 1 | 2 | 3 | 5 | 7 | 10 | 15 | 20 | 30 | 40 | 50 | 64 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| **CORRECTED** | **3000** | **2800** | **2697** | **1854** | **1376** | **1423** | **857** | **931** | **657** | **529** | **301** | **198** |
+| old (§4) | 3000 | 3048 | 2871 | 2118 | 1471 | 1540 | 952 | 997 | 725 | 568 | 328 | 218 |
+| **delta** | 0.00 % | **−8.16 %** | −6.05 % | **−12.47 %** | −6.46 % | −7.63 % | −9.94 % | −6.57 % | −9.35 % | −6.79 % | −8.19 % | −9.44 % |
+| today's PVC | 3000 | 2999 | 2874 | 1881 | 1549 | 1460 | 1030 | 990 | 663 | 514 | 346 | 185 |
+| **corrected / PVC** | 1.000 | 0.934 | 0.938 | 0.986 | 0.888 | 0.974 | 0.832 | 0.941 | 0.991 | 1.030 | 0.870 | 1.068 |
+
+Every pick below 1 falls **relative to the anchor** because the anchor itself rose: the pick-1 head is
+now much larger, so pinning it at 3000 divides everything else by more.
+
+### The head, the factor, and the shape
+
+| | old | **corrected** |
+|---|---|---|
+| **PRE-ANCHOR SCALE at pick 1** | 2,112.6 | **2,284.6** (**+8.14 %**) |
+| **ANCHORING FACTOR** | ×1.4200 | **×1.3131** |
+| ND fit population | 1,143 | **1,142** (−2 excluded, +1 slid in) |
+| pick 1 → pick 3 drop | −4.31 % | **−10.09 %** |
+| pick 1 / pick 10 | 1.948 | **2.109** |
+| pick 64 / pick 1 | 0.0727 | **0.0659** |
+| monotonicity ascents | 9 (incl. **pick 2 above pick 1**) | **7 — and the pick-2 ascent is GONE** |
+| within ±6 % of today's PVC | 37 of 64 | 31 of 64 |
+| ND curve tail share (value-weighted) | 14.79 % | 14.78 % |
+
+**The owner's watchdog expectation is confirmed on all three limbs.** The pick-1 cohort mean **rises
+materially** (+8.14 % at the smoothed head). **The top of the curve steepens** — the pick 1→3 drop
+more than doubles, from −4.31 % to −10.09 %, and pick 1 / pick 10 rises from 1.948 to 2.109. And the
+**embarrassment of §4 is gone**: the derived curve no longer reads pick 2 *above* the anchored pick 1.
+That artefact was two force-majeure careers dragging the pick-1 cohort below pick 2's, and the ruling
+removes it.
+
+### Positional relativities — moved, but barely
+
+| band | MID | SD | SF | KPD | KPF | RUCK |
+|---|---|---|---|---|---|---|
+| 1–10 | 1.275→**1.256** | 0.724→**0.703** | 0.585→**0.589** | 0.606→**0.604** | 0.653→**0.684** | 1.255→**1.259** |
+| 11–20 | 1.287→1.299 | 1.016→1.012 | 0.583→0.582 | 0.632→0.626 | 0.834→0.825 | 1.315→1.312 |
+| 21–30 | 1.329→1.322 | 0.705→0.704 | 0.506→0.503 | 0.677→0.683 | 0.830→0.833 | 2.199→2.217 |
+| 31–45 | 1.327→1.323 | 0.496→0.495 | 0.671→0.681 | 0.790→0.802 | 0.742→0.748 | 2.310→2.292 |
+| 46–64 | 1.115→1.113 | 0.450→0.454 | 1.048→1.040 | 1.643→1.649 | 0.903→0.906 | 1.196→1.202 |
+
+Only the 1–10 band moves materially, and in the direction the substitution predicts: **two KPF rows
+out and two MID rows in at pick 1** lifts KPF's relativity (0.653 → 0.684, because the surviving KPF
+rows at the top are no longer averaged against two zeros) and trims MID and SD. **The reconciliation
+law still holds at 2.220e−16 and is still asserted.**
+
+### Pathway all-ins and ND-pick equivalents
+
+| path | n old → new | raw all-in old → new | ND-pick equiv old → new |
+|---|---|---|---|
+| RD | 611 → 611 | 211.7 → 211.7 | 54 → **54** |
+| SSP | 24 → 24 | 223.9 → 223.9 | 54 → **53** |
+| MSD | 29 → 29 | 391.4 → 391.4 | 44 → **44** |
+| PDA | 38 → 38 | 145.5 → 145.5 | 63 → **63** |
+| UNR | 46 → 46 | 99.0 → 99.0 | > 64 → **> 64** |
+| IRE | 47 → 47 | 48.9 → 48.9 | > 64 → **> 64** |
+| PDN | 24 → 24 | 43.2 → 43.2 | > 64 → **> 64** |
+| PDS | 21 → 21 | 16.6 → 16.6 | > 64 → **> 64** |
+| **ND>64** | **115 → 114** | **239.1 → 240.0 (+0.37 %)** | 50 → **50** |
+
+**No pool pathway's delivered value changes** — the slide touches only ND rows. `ND>64` is the sole
+mover, losing `daniel-butler` to the ND fit; its all-in ticks up 0.37 % because the entrant it lost
+was below its mean. The `> 64` label now means "below the derived pick-64 value of **198**" (was 218).
+`SSP` moves one pick because the *curve* moved beneath it, not because SSP did.
+
+### Pooled derived-vs-printed-vs-anchor
+
+| ratio | old | **corrected** |
+|---|---|---|
+| derived / printed day-0, **aggregate** | 0.4554 | **0.4211** |
+| derived / printed day-0, median | 0.4354 | **0.4027** |
+| derived / **signed anchor**, aggregate | 1.1720 | **1.0841** |
+| derived / signed anchor, median | 1.1382 | **1.0525** |
+| n | 1,201 | 1,200 |
+
+**The correction moves the derivation CLOSER to the owner's signed anchors, not further** — the
+whole-pool aggregate falls from 1.1720 to **1.0841**, and the median from 1.1382 to **1.0525**. The
+headline finding of §5 is strengthened, not weakened: the derived pool entry prices and the owner's
+signed levels are now within **8.4 %** of each other in aggregate, against a printed day-0 that is
+2.5× the anchors.
+
+**Per position, derived / printed day-0 (median):** MID 0.4823→**0.4460** · SD 0.4169→**0.3855** ·
+SF 0.4353→**0.4025** · KPD 0.2896→**0.2678** · KPF 0.2681→**0.2479** · RUCK 1.4730→**1.3621**. The
+ordering and every §5.2 conclusion are unchanged; all six shift down by the same ~7 % anchor-factor
+effect.
+
+### Both instruments, re-run
+
+| arm | progression old → new | peak old → new | reverse no-arb old → new | bootstrap hi old → new |
+|---|---|---|---|---|
+| ND 1-64 | PASS → **PASS** | 1.431 → **1.552** (d3) | PASS → **PASS** | 1.530 → 1.660 |
+| RD | PASS → **PASS** | 1.204 → **1.302** (d3) | PASS → **PASS** | 1.442 → 1.560 |
+| SSP | PASS → **PASS** | 1.547 → **1.674** (d2) | PASS → **PASS** | 2.678 → 2.896 |
+| MSD | FAIL literal / PASS repaired → **same** | 0.947 → **1.025** (d5) | PASS → **PASS** | 1.806 → 1.953 |
+| IRE | PASS → **PASS** | 1.722 → **1.862** (d6) | PASS → **PASS** | 3.989 → 4.314 |
+| PDA | PASS → **PASS** | 1.517 → **1.640** (d4) | PASS → **PASS** | 3.169 → 3.428 |
+| PDN | PASS → **PASS** | 1.250 → **1.352** (d5) | PASS → **PASS** | 3.035 → 3.283 |
+| PDS | PASS → **PASS** | 1.095 → **1.184** (d4) | PASS → **PASS** | 2.655 → 2.872 |
+| UNR | PASS → **PASS** | 1.306 → **1.412** (d4) | PASS → **PASS** | 2.520 → 2.725 |
+| ND>64 | PASS → **PASS** | 1.302 → **1.408** (d6) | PASS → **PASS** | 2.106 → 2.277 |
+
+**Every verdict is unchanged**, on both instruments and on both readings; the same five arms
+(SSP, MSD, PDA, PDN, ND>64) still disagree between the sum/sum and mean-of-ratios readings. All peaks
+rise by roughly the anchor-factor ratio (1.3131 / 1.4200 = 0.925), because a lower derived day-0
+denominator lifts every `m(d)`.
+
+**One thing got WEAKER and it must be said.** §8 reported MSD's limb 1 as **red** — every `m(d) < 1` —
+and used that as the live demonstration that the reverse no-arb predicate can go red. After the
+correction **MSD's peak crosses above 1.0** (1.0246 at d5) and **no arm has limb 1 red any more**. The
+predicate is still able to fire — it is a plain comparison — but the packet no longer has a worked
+example of it firing. §6's recommendation of structural borrowing for MSD loses this second supporting
+argument; the first (Way A is 57.6 % projection on 29 careers) and the third (the standing completion-
+optimism caveat) are untouched, and **the recommendation stands**.
+
+### The named rows
+
+| player | delivered (to date / TOTAL) | derived v0 old → **new** | printed day-0 | signed anchor |
+|---|---|---|---|---|
+| `willem-duursma` | 53.8 / 3,531.0 | 3,157.2 → **3,157.2** *(unchanged: pick 1 is the anchor)* | 3,484.6 | 3,484.6 |
+| `callum-moore` | 5.2 / 5.2 | 258.8 → **239.3** | 1,773.4 | 216.8 |
+| `harrison-ramm` | 0.0 / 696.1 | 463.3 → **428.4** | 946.0 | 354.7 |
+| `vigo-visentini` | 56.0 / 588.0 | 530.0 → **490.1** | 359.8 | 270.5 |
+| `jai-newcombe` | 2,016.3 / 3,992.5 | 732.5 → **677.3** | 688.0 | 354.7 |
+
+**Confirmed as the correction order asked: every named row's delivered value is unchanged.** The only
+movement is the cohort-level effect — the four pool rows' derived v0s fall by exactly the anchor-factor
+ratio (×0.925), and `willem-duursma` does not move at all because pick 1 *is* the anchor. `jai-newcombe`
+still clears the derived pick-1 all-in.
+
+### MSD both ways, and the V5 appendix
+
+**MSD both ways is completely unchanged** (Way A 391.4, Way B 165.9, A/B 2.3593) — MSD is a pool
+pathway and the slide does not touch it. **V5 is unchanged in every conclusion**: the V5/flat-14 ND
+cohort-mean ratio is still **1.1245**, the max post-anchor shape move is 1.32 % (was 1.35 %), the
+pathway ranking is still identical, and the max ND-pick-equivalent move is still **2 picks**. V5's own
+pre-anchor head rises 2,378.2 → 2,571.5 in step with flat-14's.
+
+## 16.5 PREREG RE-SCORED — the items the correction moves
+
+Re-scored against the committed prereg text, not against a revised expectation.
+
+| # | prediction | old verdict | **corrected** | what moved |
+|---|---|---|---|---|
+| **P2.1** | pre-anchor ∈ [1800, 3800] pt 2600; factor ∈ [0.79, 1.67] pt 1.15 | HIT | **HIT** | head 2112.6→**2284.6**, factor 1.4200→**1.3131** — both still in band, and the head moves *toward* the 2600 point estimate |
+| **P2.2** | pick 1→3 drop **> 12 %** | MISS (−4.31 %) | **MISS (−10.09 %)** | still a miss, but the gap closes from 7.7 pp to **1.9 pp**. The correction removes most of the error |
+| **P2.3** | below the shipped curve through the early picks, crossing above between picks **18–34** (point 26), staying above | MISS on all three limbs | **PART HIT** | the derived curve is now **below** today's from pick 2 through the early range (limb 1 **HIT**), and its main crossing above runs **picks 32–41** — the crossing lands at **32, inside the predicted 18–34 window** (limb 2 **HIT**). It still does not stay above through 64 (below again 42–61, above 62–64), so limb 3 **MISS** |
+| **P2.4** | pick64/pick1 ∈ [0.08, 0.18]; anchored pick 64 ∈ [240, 540] | MISS | **MISS** (0.0659; 197.6) | moves *further* from the band |
+| **P2.5** | pick1/pick10 ∈ [1.9, 3.0] | HIT (1.948) | **HIT (2.109)** | more comfortably inside |
+| **P2.6** | per-pick n ≈ 18–20 for picks 1–20 | HIT | **HIT** (n = 18 at every pick 1–20) | unchanged; picks 61–64 now carry n 14–17 |
+| **P2.7** | reconciliation ≤ 0.5 %, else HALT | HIT | **HIT** (2.220e−16) | unchanged |
+| **P3.1b** | SSP ND-pick equivalent ∈ 55–64 | MISS (54) | **MISS (53)** | moves one further out |
+| **P3.2** | whole-pool derived/printed ∈ [0.28, 0.55] pt **0.40** | HIT (0.4554) | **HIT (0.4211)** | moves **toward** the point estimate |
+| **P3.3** | RUCK > 0.60, KPF < 0.30, ordering | HIT | **HIT** (RUCK 1.3621, KPF 0.2479) | unchanged |
+| **P3.4** | whole-pool derived/anchor ∈ [0.8, 1.6] pt **1.10** | HIT (1.1720) | **HIT (1.0841)** | lands almost exactly on the point estimate |
+| **P6.1c** | m* ∈ [1.4, 2.6] for RD, MSD, SSP | MISS (1 of 3) | **PART (2 of 3)** | SSP 1.674 ✔, **MSD 1.025 still ✘**, RD 1.302 still ✘ but now much closer to 1.4 |
+| **P6.3b** | the tightest pathway is **PDS** | MISS | **MISS** | MSD is still tightest (max 1.025 vs PDS 1.184) |
+
+**Unchanged verdicts:** P3.1a (ordering), P3.5, P4.1, P4.2, P5.1–P5.5, P6.1a, P6.1b, P6.2, P6.3a,
+P7.1, P7.2. §12's other rows stand.
+
+**REVISED SCORECARD: HIT 13 · PART 3 · MISS 9 · PREREG ERROR 1 · HONOURED 2** (was 12 / 2 / 11 / 1 / 2).
+
+**The correction improved the prereg's score, and that is worth saying plainly rather than quietly
+banking.** Three predictions the packet had recorded as misses (P2.2's magnitude, P2.3's direction,
+P6.1c's band) move toward or into their predicted ranges once the owner's ruling is applied. §12's
+summary line — *"the prereg was right about the levels and wrong about the shapes"* — needs amending:
+**it was right about the levels, and it was more right about the shapes than a build missing a
+standing owner ruling could show.** The shape predictions were being scored against a curve whose
+pick-1 cohort carried two careers the owner had already ruled out.
+
+## 16.6 ANOMALIES FROM THE CORRECTION
+
+1. **ND>64 loses ONE entrant, not the two the correction order anticipated.** The 2013 national draft
+   ends at natural pick 61. Measured, asserted over the natural-65s that exist, and reported.
+2. **The reverse no-arb test no longer has a worked example of limb 1 firing** (§16.4). The predicate
+   is unchanged and still able to fire; the packet's demonstration of it is gone.
+3. **Picks 61–64 now carry n 14–17** against 18 everywhere else, because the 2013 draft contributes to
+   picks 1–60 after the slide instead of 1–61. The deep tail of the curve is one career thinner than
+   it was.
+4. **This is the third ruling this week found living as register prose instead of a machine check.**
+   The exclusion now ships as named config with a halting assert. **The remaining risk is not in this
+   order**: any other standing ruling that exists only as register prose is invisible to a build seat
+   that was not told about it, and no assert in this packet can catch that class of failure. The
+   register-wide sweep is a separate act and it should be ordered.
+5. **`o26b_compare.py` now cross-checks two independent implementations of the same ruling** and
+   halts if they disagree (§16.2). That check found nothing wrong here, but it is the pattern the
+   other rulings need.

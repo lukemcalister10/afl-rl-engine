@@ -26,10 +26,21 @@ deferred whole to the consumption-rewire act. Steps 3–6 ran on that ruling.
 | `per_entrant_O25R4.json` | the walk-forward matrix, copied for durability (md5 `3c6ffcdeaac9786473f3f017dba1d61e`) |
 | `SHIPPING_PACKET_26B.md` | step 6 — the packet: the curve beside today's, the pathway tables, both instruments, the prereg scored, breaches owned |
 
-**The headline numbers.** Pre-anchor scale at pick 1 = **2,112.6** board points; anchoring factor
-**×1.4200**. The derived pick curve sits within ±6 % of today's PVC at 37 of 64 picks. Pool derived v0s
-come in at **0.4554×** today's printed day-0 prices and **1.1720×** the owner's signed anchors. Both new
-instruments **PASS**. Nothing is landed.
+**CORRECTION 1 (26B-C1), 2026-08-13 — READ `SHIPPING_PACKET_26B.md` §16 FIRST.** A standing owner
+ruling missing from this order's brief (the force-majeure exclusion of `thomas-boyd` and
+`paddy-mccartin`, implemented as the whole-draft slide of the 2013 and 2014 national drafts) was
+applied by correction order, re-filed at
+[#334 comment 5274640130](https://github.com/lukemcalister10/afl-rl-engine/issues/334#issuecomment-5274640130).
+It ships as named config (`CFG.force_majeure`) with a **halting deriver assert**. Layer 1 is untouched
+and Layer-2 per-career scores are byte-identical; only the ND cohort attribution moves. **Packet
+sections 1–15 carry the pre-correction numbers and are left standing deliberately; §16 is the
+operative version.**
+
+**The headline numbers (corrected).** Pre-anchor scale at pick 1 = **2,284.6** board points; anchoring
+factor **×1.3131**. Pool derived v0s come in at **0.4211×** today's printed day-0 prices and
+**1.0841×** the owner's signed anchors. Both new instruments **PASS**, every verdict unchanged by the
+correction. Nothing is landed.
+*(Pre-correction, for the record: head 2,112.6 · factor ×1.4200 · 0.4554× printed · 1.1720× anchors.)*
 
 **The dataset this act produced lives elsewhere, deliberately:**
 `data/delivered_value/layer1_player_seasons.json` (md5 `ad1229ea6f443538479447132382b21c`) — a
