@@ -711,3 +711,273 @@ read the matrix, never the board). `noarb_table_338.py` (all copies) `0f822035�
 `docs/evidence/landing_29_2026-08-13/` since `ba4ab18`: none. **THE MERGE HOLD IS UNCHANGED —
 NOTHING MERGES WITHOUT THE OWNER'S WORD ON THIS PACKET**, which now includes the two open
 arbitrages and the unclosed pool cliffs as named merge considerations.
+
+---
+
+# 14. ORDER 29B — THE ENTRY WIRING (appended 2026-08-13, build seat, entry tip `53e7c92`)
+
+> ## THE PRINTED DAY-0 PRICE NOW **IS** THE DERIVED v0 × NUMÉRAIRE. **89 of 89, TOLERANCE 0.**
+> ORDER 29 landed the day-0 OBJECTS and **nothing consumed them** — its own P12 measured the cost:
+> **0 of 46** fresh entrants printed the entry anchor, at mean **0.5274×**. ORDER 29B closes exactly
+> that. Board **`86c8d5d9` → `36d5dfc7`**, total **706,018 → 717,527** (**+11,509, +1.6301%**),
+> **89 movers, all of them entrants, zero coupled movers, zero rows with evidence touched.**
+>
+> **Three things the owner must read before this merges, and none of them is cosmetic:**
+> 1. **The two open ND arbitrages did NOT close. They WIDENED, and a third opened** — 2 of 10 → **3 of
+>    10**. Predicted direction **BREACHED**, mechanism measured, nothing tuned. §14.6.
+> 2. **The mark-path progression falls 10/10 → 6/10.** Four arms now peak at d0/d1. §14.6.
+> 3. **An owed decision on the day-0 predicate** — as-of games vs career-total games. One line of code;
+>    it decides whether 1 and 2 above happen at all. This seat did **not** switch after seeing the
+>    reading. §14.7.
+
+---
+
+## 14.1 THE PREREGISTRATION, SCORED — ALL THIRTY-ONE, BY NUMBER
+
+`PREREG_29B.md` was committed **before a line of wiring was written** (tip `44adeed`) and is never
+edited.
+
+| # | prediction | outcome |
+|---|---|---|
+| **0.2a** | the branch returns unrounded, so `printed == round(derived v0)` is EXACT, tolerance 0 | **HELD** — 89 of 89, zero mismatches. Pre-rounding was measured to break 18 of 89, which is why it does not |
+| **1** | the P12 identity moves **0/46 → 46/46** | **HELD** — exact |
+| **2** | the full wired population **89/89**, `kalani-white` included through the borrowed cell | **HELD** — exact |
+| **3** | the legacy position-blind reading stays **0/46 both before and after** | **HELD** — 0/46 on both boards, and the reason is printed: `posv/curve = relat_g(pick)` over these 46 rows reads min 0.1005 max 1.9424 mean 0.9531, and equals 1.0 on **0 of 46** |
+| **4** | the entry board reproduces ORDER 29's P12 ratio statistics | **HELD** — min **0.3166** max **0.9037** mean **0.5274**, to the digit. The instrument is reading the same object |
+| **5** | the `v` mover set is **exactly the 89**; **zero** coupled movers | **HELD** — 89 movers, all `cg == 0`; no `cg > 0` row moved; no `cg == 0` row failed to move |
+| **6** | the two entrant-coupled objects; exactly **1** active row reached by the borrow | **HELD** — `kalani-white` only (`conrad-williams` and `scott-reed` are off the board) |
+| **7** | `v`/`vP1`/`vP2` = the same 89; `vM1` ≤ 89 extra; `vM2` ≤ 183 extra | **HELD** — vP1/vP2 exactly 89; vM1 **76** extra; vM2 **111** extra. Their **present** price is byte-identical |
+| **8** | total **717,527 ± 5** | **HELD EXACTLY** — 717,527. The row-by-row prediction summed to the unit |
+| **9** | the ten ORDER-29 named rows unmoved; `kalani-white` 84 → 92 | **HELD** — all ten at **+0**; kalani-white **84 → 92** |
+| **10** | one site, `ev(p,Y)`, and the set is complete because it is the function | **HELD** — implemented as declared |
+| **11** | the LEG F5 #306 reconciliation does not fire; no re-seal | **HELD** — `f5_draft_pvc` 49,595 · `f5_mech_pvc` 7,178 · `entrant_layer_pvc` **56,772**, all unchanged |
+| **12** | the year-zero floor's own population gate | **HELD** |
+| **13** | the borrowed cells reproduce `declined_unsigned` **92.4 / 84.0** exactly | **HELD** — 92.35874340265629 and 83.97715038537063, round-1 **92.4 / 84.0** |
+| **14** | each borrowed cell flagged **on the cell**, a disclosed field | **HELD** — `cell_signature` (all 54) + `borrowed_cells` (full per-cell provenance); `unsigned_cells` → `[]` |
+| **15** | the halt retires, a coverage assert replaces it, and it passes | **HELD** — **1202 of 1202** pool rows map to a signed cell; non-vacuity re-proven on a real row every build |
+| **16** | the four fallers named in advance; no fresh entrant on the RUCK 63/64 zero floor | **HELD** — sweid −44, davis −43, anderson −42, torrent −19; the two RUCK entrants sit at picks 42 and 52 |
+| **17** | rows sharing a cell print the same number afterwards | **HELD** — the seven `IRE\|SD` rows (85/85/43/43/85/43/45) all print **87** |
+| **18** | control at entry reproduces `86c8d5d9` byte-exactly | **HELD** — run before the prereg was committed |
+| **19** | deterministic double-build | **HELD** — two fresh workspaces, both `36d5dfc7`. **Plus** the declared kill-switch: `RL_ENTRY29B=0` on the full 29B tree reproduces `86c8d5d9` **byte-exact** |
+| **20** | the identity gate, bit-exact, after one declared re-point | **HELD** — panel **12/12**, board-wide **800/800**, max ǀmine/price6−1ǀ **0.000e+00** on both, attribution residual **2.220e-16**, pins re-verified unmoved at exit. Code diff: **three lines** |
+| **21** | Guard 5 green but for the inherited `fv` red | **HELD** — red on `fv` **alone** |
+| **22** | pins move: board, rl_model, engine_head — and nothing else | **HELD** — **UNDECLARED MOVERS: NONE**. store, v0surf, config, band, bust_prior, peak_model, q97m, pvc_snapshot, register all asserted **UNMOVED** against real hashes |
+| **23** | no book re-seal | **HELD** |
+| **24** | no instrument re-point is needed | **HELD** — `EXPECT_STORE cb38ef11`, `EXPECT_V0SURF 4405cba2b42f`, `EXPECT_N 1200` all still hold. **29B re-points nothing** |
+| **25** | the matrix store does not move; the yr0 **denominator** moves where the mark is a day-0 print | **PARTIAL — its second clause BREACHED.** Store/surface/population unmoved and the matrix md5 moves: **HELD**. But **0 of 2648** yr0 values moved: `emit_matrix_338.py:252` writes `v0 = v0_start(p)`, the frozen surface — **the instruments do not read the printed day-0 price at yr0 at all.** §14.6 |
+| **26** | the arbitrages do not close; **direction** — the ND readings move *toward* the carry line | **HALF HELD, HALF BREACHED.** They did **not** close: HELD. They moved **AWAY**: **BREACHED**. −7.73% → **−18.01%**, −15.92% → **−20.93%**, and picks 21–64 crossed **+4.76% → −13.56%**. **3 of 10 arbitrages.** §14.6 |
+| **27** | mark-path **10/10** and reverse no-arb **10/10** | **BREACHED on the first clause, HELD on the second.** Mark-path **6 of 10** (RD, PDN, PDS, ND>64 now peak at d0/d1); reverse no-arb **10 of 10 PASS, 0 fail** |
+| **28** | `noarb_table_338.py` byte-identical `0f822035…` | **HELD** — computed at run |
+| **29** | both ledgers reconcile exactly | **HELD** — **0 rows failing, max ǀresidualǀ 0**; the five lever sums add to live→final to the unit |
+| **30** | nothing merges; PR #510 stays HELD | **HELD** |
+
+**Twenty-seven held · one partial · two breached.** The three that did not hold are all in the same
+place — the no-arb block — and they share one root cause, measured in §14.6. **Nothing here is scored
+generously.**
+
+## 14.2 THE BOARD
+
+| stage | board md5 | total | Δ |
+|---|---|---:|---:|
+| LIVE | `88ce647f531030d8d2e094188b258191` | 752,429 | — |
+| ORDER 29 FINAL | `86c8d5d9ba5b95e2cba05c78fbc31f78` | 706,018 | −46,411 |
+| **ORDER 29B FINAL** | **`36d5dfc73e2b508ece530bc7dfae2090`** | **717,527** | **−34,902 vs live** |
+
+| lever | movers | Σ delta |
+|---|---:|---:|
+| 1 — the unflag-three | 543 | −8,695 |
+| 2 — the grace dial | 39 | +4,671 |
+| 3 — the curve + v0 reprint | 200 | −4,372 |
+| 4 — the numéraire scalar | 580 | −38,015 |
+| **5 — THE ENTRY WIRING** | **89** | **+11,509** |
+| **total** | **757** | **−34,902** — the five sums add to the live→final total **exactly** |
+
+Levers 1–4 are read **verbatim** from ORDER 29's committed ledger; the instrument first asserts that
+ORDER 29's `final` column equals the entry board row for row, so the two ledgers cannot compose on a
+false basis. Lever 5 splits **ND +8,495 / pool +3,014**.
+
+## 14.3 THE NAMED-ROW DAY-0 TABLE
+
+`derived v0 × numéraire` is in board currency — the numéraire `s` is already inside both published
+objects (`posv` is built on the shipped ladder; the cells carry `× anchor_factor == s`), so the printed
+value is `round(derived v0)` and the identity is exact.
+
+| row | object read | old print | **derived v0 × numéraire** | **new print** | Δ |
+|---|---|---:|---:|---:|---:|
+| `josh-smillie` | `posv[MID][7]` | 818 | 1616.974 | **1617** | **+799** |
+| `harry-demattia` | `posv[MID][25]` | 379 | 891.822 | **892** | +513 |
+| `max-knobel` | `posv[RUCK][42]` | 365 | 833.837 | **834** | +469 |
+| `oskar-taylor` | `posv[SD][15]` | 501 | 945.957 | **946** | +445 |
+| `logan-smith` | `cells[ND>64\|RUCK]` | 185 | 566.043 | **566** | +381 |
+| `sam-allen` | `posv[MID][29]` | 563 | 839.585 | **840** | +277 |
+| `brayden-george` | `posv[SF][26]` | 208 | 292.886 | **293** | +85 |
+| **`kalani-white`** | **`cells[PDN\|KPF]` — BORROWED** | **84** | **92.35874340265629** | **92** | **+8** |
+| `adam-sweid` | `posv[SF][25]` | 350 | 305.972 | **306** | −44 |
+| `finnegan-davis` | `posv[SD][51]` | 132 | 89.028 | **89** | −43 |
+| `cody-anderson` | `posv[SF][64]` | 60 | 17.992 | **18** | −42 |
+| `reece-torrent` | `posv[MID][64]` | 76 | 56.657 | **57** | −19 |
+
+The four fallers were **named in the prereg before measurement** (P29B-16). They fall because the
+positional relativity in a thin part of the tail is well below 1 — `cody-anderson` at SF pick 64 is
+the sharpest consequence of consuming the positional object rather than the position-blind ladder, and
+it was published in advance so it could not be presented afterwards as a surprise. All 89 rows are
+tabled in `PREREG_29B.md` §5–6 (predicted) and `docs/ledgers/LANDING_29B_MOVERS_2026-08-13.md`
+(measured); the two agree row for row.
+
+**The ten ORDER-29 named rows are all `+0` on this lever.** They have careers; the legacy legs price
+them and this act does not touch the legacy legs.
+
+## 14.4 THE FORK IN THE BRIEF, RESOLVED IN THE OPEN AND IN ADVANCE
+
+The brief said "printed day-0 = derived v0 × numéraire … (the P12 harness's own definition)" **and**
+"ND entrants: positional ND v0 at their pick". **Those two cannot be satisfied by one number:** P12's
+harness compares to `curve[pick]`, the *position-blind* ladder, while `posv_g(p) = relat_g(p)·curve(p)`
+and `relat_g ≠ 1` at essentially every (position, pick). The reconciliation
+`Σ_g share_g(p)·posv_g(p) = curve(p)` is a **population** identity, never a per-row one.
+
+`PREREG_29B` §0.3 resolved it **before any wiring was written**: the **population** is P12's, unchanged
+(46 ND + the 43 `cg==0` pool rows the brief's pool clause names); the **value** is the row's own derived
+v0, because wiring `curve[pick]` would leave `nd_v0` exactly as unconsumed as it was. **The legacy
+position-blind reading is not dropped — `o29b_day0.py` prints it on every run**, and it reads 0/46 on
+both boards, so the declared re-point is a number a reader can check rather than a sentence.
+
+## 14.5 THE BORROWED CELLS — OWNER OPTION A, DERIVED NOT TYPED
+
+| | |
+|---|---|
+| pool-wide KPF positional relativity `lens[KPF]` | **0.8318314538303738** (99 pool KPF rows, mean 189.276874 / pool aggregate 227.5423379495) |
+| **`PDN\|KPF`** | 118.1061694003 × lens × 0.9400914291048137 = **92.35874340265629** → prints **92** |
+| **`PDS\|KPF`** | 107.3879871441 × lens × 0.9400914291048137 = **83.97715038537063** → prints **84** |
+
+At `n = 0` the K-shrink weight `w = n/(n+15)` is **0**, so `o28_derive.py:256`'s own expression
+`w·own + (1−w)·path·lens` **collapses to `pathway_level × lens[KPF]`. The limiting case IS Option A** —
+the ruling named the arithmetic the derivation already ran. `o29b_sign_cells.py` re-derives `lens[]`
+and the pathway levels from the same inputs and its control **reproduces DERIVE28's own 54 cells at
+max |err| = 0.000e+00** before it is permitted to write. The values reproduce ORDER 29's published
+`declined_unsigned` **92.4 / 84.0 exactly** — the proof that the owner signed a declined number rather
+than a new one.
+
+**The guard is replaced, not removed.** A halt keyed on `unsigned_cells` could never fire once nothing
+is unsigned, which is worse than no guard. In its place: a **coverage assert** over the whole store
+pool population (**1202 of 1202** rows map to a signed cell — deliberately wider than the ordered
+"active entrant"); `pool_v0_of()` remains the one accessor and still raises on a null; and its
+non-vacuity is **proven on a real row every build** by temporarily nulling the heavily populated
+`RD|MID` cell, requiring the raise, and restoring it. (That the `RL_ENTRY29B=0` build is byte-exact is
+also the proof the restore is exact.)
+
+## 14.6 **THE FINDING: THE ARBITRAGE DID NOT CLOSE — IT MOVED, AND GREW**
+
+Full tables in `NOARB_MARGINS_29.md` **Part B**, appended beside the ORDER 29 readings rather than
+over them.
+
+| reading | LIVE | ORDER 29 | **ORDER 29B** | verdict |
+|---|---:|---:|---:|---|
+| all-arm PRIMARY, margin v14% | +33.23% | +28.71% | **+20.75%** | no arb |
+| all-arm MODERN, margin v14% | +31.75% | +26.66% | **+18.11%** | no arb |
+| legacy ND ALL picks 1–64 | +6.70% | **−7.73%** ARB | **−18.01%** | **ARB** |
+| legacy ND picks 1–20 | +1.82% | **−15.92%** ARB | **−20.93%** | **ARB** |
+| legacy ND picks 21–64 | +14.04% | +4.76% | **−13.56%** | **ARB — NEW** |
+| mark-path progression | — | 10/10 PASS | **6/10 PASS** | **BREACH** |
+| reverse no-arb | — | 10/10 PASS | **10/10 PASS, 0 fail** | HELD |
+
+**ARBITRAGES: 2 of 10 → 3 of 10.** No literal was re-pointed; the live control still reproduces
+`NOARB_MARGINS_V2` to the last digit (0 of 10 arbitrages), so the pipeline is sound and the movement is
+real.
+
+**THE MECHANISM, MEASURED — `o29b_noarb_why.py`:**
+
+* **the instruments' year-0 is NOT the printed day-0 price.** `emit_matrix_338.py:252` writes
+  `v0 = round(v0_start(p), 1)` — the **frozen year-zero surface** — while years 1…7 are `ev(p, Y)`.
+  ORDER 29B wires `ev()`. Measured: **0 of 2648** `v0` values moved; the in-curve ND Σ`v0` is
+  **byte-identical** at 1,707,328.
+* **the numerator rose, concentrated at cohort years 1–2**: 54.5% of year-1 cells and 35.8% of year-2
+  cells moved; in-curve ND Σ year-1 went **1,533,377 → 1,690,071, +10.22%**. 2,277 cells rose, 234 fell.
+* **so the appreciation had to rise.** A day-0 print is a property of a player *at an as-of year*, and
+  on a national-draft cohort the printed day-0 is overwhelmingly a **year-1** cell — a draftee who did
+  not play his first season — never the year-0 cell.
+
+**What that means, stated plainly: the gap P12 sized has been closed at day 0 and TRANSFERRED to the
+yr0→yr1 step.** The year-1+ marks are still produced by the un-rewired legs, which this act is ruled
+not to touch. Closing the entry gap without the year-1+ rewire does not remove the arbitrage — it
+relocates it and makes it larger where it now sits.
+
+The **mark-path** failures are the same mechanism seen through a shape test: **no arm's peak value
+fell — all four that flip ROSE** — but the *shallow* marks rose further, so `RD`, `PDN`, `PDS` and
+`ND>64` now peak at d0/d1 instead of d3–d6. **Reverse no-arb is a level test and is untouched:** 10/10,
+smallest `max m(d≥1)` MSD **1.2379**, 24% above the failure line.
+
+**A correction to §12.4.1, measured.** ORDER 29 found the landed marks lower at shallow and deeper
+(−0.0332 / −0.0815) and called ORDER 28's read "optimistic". On the entry-wired marks the shape
+**inverts** — shallow **+0.2134**, deep **−0.0747** — and ORDER 28's original prediction reads
+**CONFIRMED**. Both numbers are real measurements of two different boards; both are recorded.
+
+## 14.7 **THE OWED DECISION**
+
+The wiring keys on **games as of Y**. That is why it reaches the historical matrix at all, and it is
+the whole of §14.6. The alternative — keying on **career-total** games — is **one line** and would
+leave every matrix cell except the 89 current entrants untouched: §14.6 would then read exactly as
+ORDER 29 did, with 2 of 10 arbitrages and mark-path 10/10.
+
+**This seat did not switch to it after seeing the reading. That would be tuning, and `PREREG_29B`
+forbids it by name.** The as-of predicate was declared in **P29B-7 before any wiring was written**, and
+it was declared because the brief itself asked for the yr0 denominator to move *"wherever the
+instrument reads printed day-0"*. The measurement then found the instruments **do not** read the print
+at yr0 — so the premise that selected the predicate was false about the plumbing.
+
+**The owner owes a word on which predicate the day-0 print carries.** Both readings are on the table
+and neither was suppressed.
+
+## 14.8 THE CONTROLS
+
+| control | status |
+|---|---|
+| byte-identity at entry | **PASS** — `86c8d5d9` exact, before the prereg was committed |
+| **`RL_ENTRY29B=0` kill-switch on the FULL 29B tree** | **PASS — `86c8d5d9` BYTE-EXACT.** The strongest control in the act: it proves the wiring is the only thing that moves the board, that the borrowed cells are inert except through it, and that the guard's non-vacuity probe leaves no residue |
+| deterministic double-build | **PASS** — two fresh workspaces, both `36d5dfc7` |
+| printed-day-0 assert, on the WRITTEN board | **PASS — 89 of 89, tolerance 0.** Now a permanent boot-class check that HALTS the build and refuses to pass vacuously |
+| pool v0 coverage assert | **PASS — 1202 of 1202**; non-vacuity proven on a real row |
+| identity gate, one declared re-point | **PASS — 800 of 800 board-wide at `0.000e+00`**, residual 2.220e-16 |
+| Guard 5 boot guard | **PARTIAL** — green but for the inherited `fv` red |
+| pin moved-set asserted | **PASS** — no undeclared movers |
+| LEG F5 #306 entrant reconciliation | **PASS, silently** — the entrant layer is occupancy × ladder and does not move. No re-seal |
+| lever reconciliation, every row | **PASS** — 0 failures, max residual 0 |
+| as-of matrix re-emitted under the wired engine | **DONE** — `ca24a49a`, 2648 records, identities unmoved |
+| both cohort instruments on the 29B matrix | **RAN CLEAN — no re-point needed.** **3 of 10 ARBITRAGES** |
+| both cohort instruments on the LIVE matrix (control) | **PASS** — reproduces `NOARB_MARGINS_V2` to the last digit, 0 arbitrages |
+| mark-path progression | **6 of 10 — BREACH** |
+| reverse no-arb | **PASS — 10 of 10, 0 pathways fail** |
+| `noarb_table_338.py` unmodified | **PASS** — `0f822035…`, computed at run |
+
+## 14.9 STATE
+
+| | |
+|---|---|
+| branch | `land/order-29` |
+| board | **`36d5dfc73e2b508ece530bc7dfae2090`** |
+| store | `cb38ef1171dcf20aae66ebf12682be0d` — **UNMOVED** |
+| `pvc_curve_v2.json` | `911774bc92de0630199a4cc0c6bfac42`, `curve_md5` **`9729f0c5` — payload UNMOVED** |
+| `rl_model.py` | `14000af2a46f7a3c4cdfde303f5a1aff` |
+| `_merged_recover.py` | `a353a9d361937a78014eef521cb65d68` |
+| `v0surf.pkl` | `5dd34ca82735f5c8f021b1c7320df8f8` — **UNMOVED, no re-bake** |
+| entrant seal | `cbb7c431` — **unchanged, no re-seal** |
+| kill-switch | `RL_ENTRY29B` (declared, not a manifest dial; `config_sha256` UNMOVED) |
+| PR | **#510, HELD — `[HELD — DO NOT MERGE]`** |
+
+**NOTHING MERGES WITHOUT THE OWNER'S WORD ON THIS PACKET**, which now additionally includes the third
+open arbitrage, the mark-path breach, and the §14.7 predicate decision as named merge considerations.
+
+### Evidence index — ORDER 29B
+
+| file | what |
+|---|---|
+| `PREREG_29B.md` | the thirty-one predictions, filed before any wiring, never edited |
+| `o29b_sign_cells.py` · `SIGN29B.{json,_out.txt}` | Step 2: the borrowed cells derived, controlled against DERIVE28, and signed |
+| `o29b_day0.py` · `DAY0_29B_{ENTRY,FINAL}.{json,_out.txt}` | Step 4: the identity instrument, both readings, both boards |
+| `bb29b.sh` · `DETERMINISM29B.txt` | the staged board builder, the double-build and the kill-switch proof |
+| `o29b_pins.py` · `PINS29B.{json,_out.txt}` · `bootguard29b.sh` · `BOOTGUARD29B.txt` | the restamp and Guard 5 |
+| `o29b_gate.py` · `GATE29B.{json,_out.txt}` · `GATE29B_REPOINT.diff` | the identity gate, one declared re-point, three lines of code |
+| `o29b_movers.py` · `MOVERS29B_out.txt` · `docs/ledgers/LANDING_29B_MOVERS_2026-08-13.{md,json}` | every player, five levers |
+| `run_noarb_o29b.sh` · `NOARB_MARGINS_29B_out.txt` · `noarb29b/` | both cohort instruments, three bases |
+| `o29b_noarb_why.py` · `NOARB_WHY_29B.{json,_out.txt}` | **why the margins moved: the mechanism, measured** |
+| `o29b_instruments.py` · `INSTRUMENTS29B.{json,_out.txt}` · `INSTRUMENTS29B_REBASIS.diff` | mark-path + reverse no-arb |
+| `NOARB_MARGINS_29.md` **Part B** | the owner-facing tables, ORDER 25 layout, live vs 29 vs 29B |

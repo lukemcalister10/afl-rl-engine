@@ -211,3 +211,185 @@ ORDER 28's reported margin was defended by a claim that has now been measured an
 | `noarb/noarb_table_338.py` | byte-identical to the instrument of record, md5 `0f822035…` |
 | `noarb/t338_O29FINAL.txt` · `noarb/allarm_O29FINAL.txt` · `noarb/*.json` | the landed readings, both instruments |
 | `noarb/MARGINS_O29.{txt,json}` | the canonical margins reporter on live + landed: **2 of 10 ARB** |
+
+---
+---
+
+# PART B — THE ORDER 29B COLUMN: THE ENTRY WIRING, BOARD `36d5dfc7`
+
+**Appended 2026-08-13 by the ORDER 29B build seat. Nothing above this line is edited.** Every ORDER 29
+reading in Part A stands exactly as it was published; this part adds a column beside it.
+
+> ## READ THIS FIRST — THE ARBITRAGES DID NOT CLOSE. THEY WIDENED, AND A THIRD OPENED.
+> `PREREG_29B` **P29B-26** predicted the direction: *"raising the day-0 denominator reduces measured
+> yr0→1 appreciation … the ND legacy readings should move toward the carry line."* **That is BREACHED,
+> and it is breached in the opposite direction.** The legacy ND instrument moves **−7.73% → −18.01%**
+> (ALL picks 1–64) and **−15.92% → −20.93%** (picks 1–20), and **picks 21–64 crosses from no-arb
+> (+4.76%) into ARB (−13.56%)**. **Arbitrages: 2 of 10 → 3 of 10.**
+>
+> **The mechanism is measured, not guessed** (`o29b_noarb_why.py`, §B3): **the cohort instruments'
+> year-0 is not the printed day-0 price at all.** `emit_matrix_338.py:252` writes
+> `v0 = round(v0_start(p), 1)` — the frozen year-zero *surface* value — while years 1…7 are `ev(p, Y)`.
+> ORDER 29B wires `ev()`. So the denominator is **byte-identical across the two matrices (0 of 2648
+> rows moved)** and the entire move sits in the numerator. P29B-26 assumed the instrument read the
+> print as its yr0; it does not. **The prediction was wrong about the plumbing, and the reading is
+> published as it came out. Nothing was tuned and no literal was re-pointed to make it look better.**
+>
+> **The all-arm deciding instrument stays no-arb in both windows** (+20.75% / +18.11%), and **reverse
+> no-arb still passes 10 of 10**. What breaks is the **mark-path progression: 10/10 → 6/10** (§B5).
+
+---
+
+## B0. NO RE-POINT WAS NEEDED — P29B-24 HELD
+
+ORDER 29's §12.3 halted on three literals and §13 re-pointed them. **ORDER 29B re-points nothing.**
+
+| literal | ORDER 29's re-pointed value | ORDER 29B matrix carries | verdict |
+|---|---|---|---|
+| `EXPECT_STORE` | `cb38ef11` | `cb38ef11` | **holds — the store does not move** |
+| `EXPECT_V0SURF` | `4405cba2b42f` | `4405cba2b42f` | **holds — no re-bake; the curve payload is untouched** |
+| `EXPECT_N` | `1200` | `1200` | **holds — the teaching population does not change** |
+
+`noarb_table_338.py` md5 **`0f8220351c64c56ccfa90c60edcdfa5f`**, computed at run, byte-identical.
+The instruments used are ORDER 29's disclosed copies under `noarb/`, copied into a scratch run
+directory and **not modified by this act in any way**.
+
+**The live-basis control still reproduces `NOARB_MARGINS_V2` to the last digit** (PRIMARY +33.23%,
+MODERN +31.75%, ND +6.70% / +1.82% / +14.04%, **0 arbitrages**) — run on the *pre*-re-point copies
+under `composition_2026-08-10/noarb/`, because ORDER 29's copies are pinned to the landed store and
+correctly **refuse** the live matrix. That refusal is printed in `NOARB_MARGINS_29B_out.txt` rather
+than hidden. The pipeline, the runner and this seat are sound.
+
+## B1. THE MATRIX
+
+| | |
+|---|---|
+| `per_entrant_O29B.json` | **`ca24a49a`** · 24 as-of years · 1m 46s |
+| basis | store **`cb38ef11`** (unmoved) · engine head **`a353a9d3`** · artifact **`911774bc`** · board **`36d5dfc7`** · v0surf **`4405cba2`** (unmoved) · `frozen=True` |
+| population | **2648** records · ND 1–64 teaching **1447** · ruled pool **1201** — all identical to ORDER 29's emit |
+| emitter | `emit_matrix_338.py` md5 `bffde2f7`, **copied, never modified** |
+
+## B2. THE READINGS — LIVE vs ORDER 29 vs ORDER 29B
+
+**All-arm deciding instrument** (`noarb_table_allarm.py`):
+
+| window | LIVE `88ce647f` | ORDER 29 `86c8d5d9` | **ORDER 29B `36d5dfc7`** | verdict 29B |
+|---|---:|---:|---:|---|
+| PRIMARY 2005–2023 (n 2215) apprec 0→1 | −19.23% | −14.71% | **−6.75%** | |
+| PRIMARY margin vs 14% | **+33.23%** | **+28.71%** | **+20.75%** | no arb |
+| MODERN 2019–2023 (n 540) apprec 0→1 | −17.75% | −12.66% | **−4.11%** | |
+| MODERN margin vs 14% | **+31.75%** | **+26.66%** | **+18.11%** | no arb |
+
+**Legacy retained instrument** (`noarb_table_338.py`, UNMODIFIED):
+
+| group | LIVE | ORDER 29 | **ORDER 29B** | verdict 29B |
+|---|---:|---:|---:|---|
+| ALL picks 1–64 · apprec 0→1 | +7.30% | +21.73% | **+32.01%** | |
+| ALL picks 1–64 · margin | **+6.70%** | **−7.73%** ARB | **−18.01%** | **ARB** |
+| picks 1–20 · apprec 0→1 | +12.18% | +29.92% | **+34.93%** | |
+| picks 1–20 · margin | **+1.82%** | **−15.92%** ARB | **−20.93%** | **ARB** |
+| picks 21–64 · apprec 0→1 | −0.04% | +9.24% | **+27.56%** | |
+| picks 21–64 · margin | **+14.04%** | **+4.76%** | **−13.56%** | **ARB — NEW** |
+
+**ARBITRAGES OPENED ON THE 29B BASIS: 3 of 10 readings** (ORDER 29: 2 of 10; live: 0 of 10).
+
+## B3. WHY — THE MECHANISM, MEASURED ON THE TWO MATRICES
+
+`o29b_noarb_why.py` · `NOARB_WHY_29B_out.txt` · `NOARB_WHY_29B.json`.
+
+| | |
+|---|---|
+| rows whose `v0` (the yr0 **denominator**) moved | **0 of 2648 — BYTE-IDENTICAL** |
+| in-curve ND Σ `v0` before → after | 1,707,328 → **1,707,328** |
+| in-curve ND Σ year-1 mark (the **numerator**) before → after | 1,533,377 → **1,690,071**, **+10.22%** |
+| in-curve ND year-1 marks that moved | **1,194 of 2,259 (52.9%)** |
+
+Where the numerator moved, by cohort year:
+
+| cohort year | cells | moved | % | Σ delta |
+|---:|---:|---:|---:|---:|
+| 1 | 2,630 | 1,434 | 54.5% | **+170,584** |
+| 2 | 2,490 | 892 | 35.8% | +145,880 |
+| 3 | 1,674 | 129 | 7.7% | +31,174 |
+| 4 | 1,399 | 31 | 2.2% | +7,048 |
+| 5 | 1,180 | 15 | 1.3% | +2,221 |
+| 6 | 998 | 7 | 0.7% | +752 |
+| 7 | 862 | 3 | 0.3% | +345 |
+| ≥8 | 740 | 0 | 0.0% | 0 |
+
+2,277 cells rose, 234 fell.
+
+**In one sentence: the denominator is fixed and the numerator rose, so the appreciation had to rise.**
+A day-0 print is a property of a player *at an as-of year*. On a national-draft cohort the printed
+day-0 is overwhelmingly a **year-1** cell — a draftee who did not play his first season — never the
+year-0 cell, which the instruments take from the frozen surface. So the act pushes years 1–2 up and
+leaves year 0 exactly where it was.
+
+**The honest reading of that: the day-0 gap P12 sized has been closed at day 0 and TRANSFERRED to the
+yr0→yr1 step.** The year-1+ marks are still produced by the un-rewired legs. Closing the entry gap
+without the year-1+ rewire does not remove the arbitrage; it moves it, and makes it bigger where it
+now sits. That is a finding about the landed board's **interim** state, and it is a merge consideration.
+
+## B4. AN OWED DECISION THIS SEAT WILL NOT TAKE ON ITS OWN
+
+The wiring keys on **games as of Y**, which is why it reaches the historical matrix at all. The
+alternative — keying on **career-total** games — is a one-line change and would leave every matrix cell
+except the 89 current entrants untouched, so **all of §B2 and §B5 would read exactly as ORDER 29 did**.
+
+**This seat did not switch to it after seeing the reading. That would be tuning, and PREREG_29B
+forbids it by name.** The as-of predicate was declared in P29B-7 *before* any wiring was written, and
+it was declared because the brief itself asked for the yr0 denominator to move "wherever the
+instrument reads printed day-0". The measurement then found that the instruments **do not** read the
+print at yr0 — so the premise that chose the predicate turned out to be false about the plumbing.
+**The owner owes a word on which predicate the day-0 print should carry.** Both readings are on the
+table above; neither was suppressed.
+
+## B5. MARK-PATH PROGRESSION AND REVERSE NO-ARB, ON THE ENTRY-WIRED BOARD
+
+`o29b_instruments.py` is `o29_instruments.py` (md5 `83e2fadb`) with **exactly one basis substitution** —
+the matrix path — and nothing else (`INSTRUMENTS29B_REBASIS.diff`). **The denominator is NOT
+substituted and must not be:** it is the derived day-0 (shipped ladder for ND, DERIVE28 cells ×
+anchor_factor for pool), which is precisely the object ORDER 29B has now wired to the print. This act
+does not move these instruments' denominator; it makes the engine agree with it.
+
+| instrument | ORDER 29 | **ORDER 29B** |
+|---|---|---|
+| mark-path progression | **10 of 10 PASS** | **6 of 10 PASS — P29B-27 BREACHED** |
+| reverse no-arb | 10 of 10 PASS · 0 fail | **10 of 10 PASS · 0 fail — HELD** |
+
+**The four arms that flip, and why**, with their peak depth (the predicate is `peak at d ≥ 2` and
+`some d ≥ 2 above base` — carried verbatim, not touched):
+
+| arm | ORDER 29 peak (at d) | **ORDER 29B peak (at d)** | verdict |
+|---|---|---|---|
+| `RD` | 1.4660 @ **d3** | **1.6446 @ d1** | **FAIL** |
+| `PDN` | 1.5228 @ **d5** | **1.7091 @ d1** | **FAIL [THIN]** |
+| `PDS` | 1.3118 @ **d4** | **1.3856 @ d0** | **FAIL [THIN]** |
+| `ND>64` | 1.5181 @ **d6** | **1.5493 @ d1** | **FAIL** |
+| `ND 1-64` | 1.5653 @ d3 | 1.5706 @ d3 | PASS |
+| `SSP` · `MSD` · `IRE` · `PDA` · `UNR` | — | peaks unchanged in depth | PASS |
+
+**No arm's peak VALUE fell. Every one of the four rose.** They fail because the *shallow* marks rose
+further — the same mechanism as §B3 — so the path peaks immediately instead of progressing. The
+predicate is about SHAPE, and the entry wiring changed the shape by lifting d0/d1.
+
+Reverse no-arb is unaffected because its predicate is a **level** test (`max m(d≥1) ≥ 1`), and every
+arm clears it by a printed margin — the smallest `max m(d≥1)` is MSD **1.2379**, 24% above the line.
+
+**A correction to Part A's §12.4.1, measured.** ORDER 29 reported the landed marks as *lower at
+essentially every arm and depth* (shallow −0.0332, deep −0.0815) and concluded ORDER 28's read was
+"optimistic, not conservative". On the entry-wired marks the shape **inverts**: shallow **+0.2134**,
+deep **−0.0747**, and ORDER 28's original prediction — higher shallow, unchanged/lower deep — now
+reads **CONFIRMED**. Both numbers are real; they are measurements of two different boards, and both
+are recorded rather than one being quietly replaced.
+
+## B6. PROVENANCE
+
+| file | what |
+|---|---|
+| `run_noarb_o29b.sh` · `NOARB_MARGINS_29B_out.txt` | both cohort instruments: the 29B matrix, ORDER 29's, and the live control |
+| `noarb29b/MARGINS_O29B.{txt,json}` | the canonical margins reporter, three variants: **3 of 10 ARB on 29B** |
+| `noarb29b/t338_O29BFINAL.txt` · `noarb29b/allarm_O29BFINAL.{txt,json}` | the raw 29B readings, both instruments |
+| `o29b_noarb_why.py` · `NOARB_WHY_29B.{json,_out.txt}` | the mechanism: the denominator does not move, the numerator does |
+| `o29b_instruments.py` · `INSTRUMENTS29B.{json,_out.txt}` · `INSTRUMENTS29B_REBASIS.diff` | mark-path + reverse no-arb on the entry-wired board |
+| `o29b_day0.py` · `DAY0_29B_{ENTRY,FINAL}.{json,_out.txt}` | the printed-day-0 identity, 0/89 → 89/89 |

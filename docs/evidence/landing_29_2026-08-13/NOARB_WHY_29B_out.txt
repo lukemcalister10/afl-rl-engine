@@ -1,0 +1,35 @@
+======================================================================================================================
+ORDER 29B  --  WHY THE COHORT MARGINS MOVED: THE MECHANISM, MEASURED ON THE MATRICES
+======================================================================================================================
+
+  before  per_entrant_O29FINAL.json    md5 814df691  store cb38ef11  v0surf 4405cba2b42f
+  after   per_entrant_O29B.json        md5 ca24a49a  store cb38ef11  v0surf 4405cba2b42f
+  records 2648 -> 2648
+
+  (1) THE YEAR-0 DENOMINATOR  (rec['v0'] == round(v0_start(p),1), emit_matrix_338.py:252)
+      rows whose v0 moved: 0 of 2648
+      => BYTE-IDENTICAL. The instruments' yr0 does NOT read the printed day-0 price, so the entry wiring cannot move it.
+
+  (2) THE YEAR-1..7 NUMERATOR  (vpath[k] == ev(p, C+k) under truncated scoring, :193)
+      cohort      cells      moved      pct      sum delta
+      1            2630       1434    54.5%        +170584
+      2            2490        892    35.8%        +145880
+      3            1674        129     7.7%         +31174
+      4            1399         31     2.2%          +7048
+      5            1180         15     1.3%          +2221
+      6             998          7     0.7%           +752
+      7             862          3     0.3%           +345
+      8             740          0     0.0%             +0
+      cells that ROSE 2277   cells that FELL 234
+
+  (3) THE LEGACY ND INSTRUMENT'S OWN POPULATION (in-curve national rows), year 1 only
+      in-curve rows with a year-1 mark: 2259 ; year-1 marks that MOVED: 1194 (52.9%)
+      SUM v0 (denominator)  before 1707328   after 1707328   UNMOVED
+      SUM year-1 (numerator) before 1533377   after 1690071   +10.22%
+
+      THE ARITHMETIC OF THE BREACH, in one line: the denominator is fixed and the numerator rose,
+      so yr0->1 appreciation HAD to rise. P29B-26 assumed the instrument read the printed day-0
+      price as its yr0. IT DOES NOT -- it reads v0_start, the frozen year-zero surface. The entry
+      wiring moves the PRINT, and on a national-draft cohort the printed day-0 is overwhelmingly
+      a YEAR-1 cell (a draftee who did not play his first season), never the yr0 cell. So the act
+      pushes the numerator up and leaves the denominator where it was.
