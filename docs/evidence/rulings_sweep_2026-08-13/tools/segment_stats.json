@@ -1,0 +1,14 @@
+{
+  "register_bytes": 1765759,
+  "line1_bytes": 962590,
+  "tail_lines": 8438,
+  "units_total": 2911,
+  "line1_segments": 2507,
+  "tail_blocks": 404,
+  "broad_hits": 1184,
+  "broad_hit_chars": 1383569,
+  "core_hits": 647,
+  "core_hit_chars": 873490,
+  "no_hit_units": 1727,
+  "no_hit_chars": 373863
+}
