@@ -1,4 +1,6 @@
 {
+ "curve_md5_house": "9729f0c5",
+ "curve_md5_compact": "76f8fa96",
  "blocks": [
   {
    "a": 6,
@@ -53,8 +55,8 @@
   15,
   20
  ],
- "curve_md5_pre": "48046e2b",
- "curve_md5_post": "76f8fa96",
+ "curve_md5_pre_compact": "48046e2b",
+ "curve_md5_post": "9729f0c5",
  "curve": {
   "1": 3000,
   "2": 2668,

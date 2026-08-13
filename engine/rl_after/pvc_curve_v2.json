@@ -67,7 +67,7 @@
   "63": 182,
   "64": 179
  },
- "curve_md5": "76f8fa96",
+ "curve_md5": "9729f0c5",
  "derived_from": "docs/evidence/store_328_jujn3g/per_entrant_328_corrected_store.json (store f1e8c9fe, surface e4215093) \u2014 #328 re-closure: the matrix emitted on the #323 corrected store and the surface re-fit on it, committed with its identity block and F-C full-md5 binding. Post-slide membership and Addendum-6 per-season bars unchanged.",
  "domain": "1-64 (national draft curve). Selections past 64 are NOT on the curve.",
  "gate": "RL_PVC2 (parallel of RL_PVCADOPT). RL_PVC2=0 => _PVC0 stays L1b => board 9829d01a byte-exact.",
@@ -156,7 +156,9 @@
   "_doc": "RULING C (owner word \"C\", #334 comment 5279364952, 2026-08-13). Strict descent (RULEBOOK law 4 / G-MONO) stands UNAMENDED; the PAVA-pooled plateaus are separated by the register's named house convention -- \"an ordering tiebreak below data resolution, conceded as such, not measured precision\". Where the data cannot separate two picks, a higher pick still never prices below a lower one. This is an ORDERING convention, NOT a claim of measured precision at 1-point resolution.",
   "convention": "-1 point per pick within each pooled block",
   "anchoring": "the integer anchoring that preserves the block plain sum as closely as integers allow; shifted minimally if a block join would otherwise be non-strict",
-  "pre_tiebreak_curve_md5": "48046e2b",
+  "pre_tiebreak_curve_md5_compact_convention": "48046e2b",
+  "curve_md5_convention": "json.dumps({str(pick): int(value) for pick in 1..64}, sort_keys=True) with DEFAULT separators -- the convention that reproduces the live artifact's own df766dff and that the LEG F5 seal stamp independently recomputes. The stopped seat's o29_curve.py used COMPACT separators; that value is recorded below.",
+  "curve_md5_compact_convention": "76f8fa96",
   "blocks": [
    {
     "picks": "6-12",

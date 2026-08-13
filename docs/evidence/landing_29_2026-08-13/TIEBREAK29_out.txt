@@ -84,6 +84,13 @@ ORDER 29  --  STEP 3 RESUMED: THE RULING-C -1-POINT-PER-PICK ORDERING TIEBREAK
   P5 spot values HELD      8/12  [1, 2, 3, 5, 30, 40, 50, 64]
   P5 spot values BREACHED  4/12  [7, 10, 15, 20]  -- BY CONSTRUCTION under ruling C, owned in the packet
 
+6. THE curve_md5 CONVENTION
+----------------------------------------------------------------------------------------------------------------
+  live artifact declares df766dff, reproduced ONLY by the DEFAULT-separator payload hash -- so that
+  is the house convention, and the LEG F5 seal stamp recomputes the payload md5 the same way.
+  house convention (published)   9729f0c5
+  compact convention (recorded)  76f8fa96   <- the stopped seat's o29_curve.py convention
+
   written: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/curve_TB.json
-  curve_md5  48046e2b -> 76f8fa96
+  curve_md5 (house convention)  9729f0c5
   r104_9_strict_descent = True   -- and TRUE BY MEASUREMENT, re-checked above, not assumed

@@ -187,7 +187,19 @@ assert set(breached) <= {7, 10, 15, 20}, 'unexpected P5 breach outside the poole
 
 # ---------------------------------------------------------------- 6. compose
 art['curve'] = collections.OrderedDict((str(k), new[k]) for k in sorted(new))
-art['curve_md5'] = hashlib.md5(
+# THE curve_md5 CONVENTION, MEASURED RATHER THAN INHERITED.  o29_curve.py (the stopped seat) hashed the
+# curve with COMPACT separators, which is NOT the convention the artifact's own history uses: the live
+# artifact declares curve_md5 df766dff, and df766dff is reproduced ONLY by json.dumps(payload,
+# sort_keys=True) with DEFAULT separators over a {str(pick): int} payload built over range(1,65).
+# It matters because the payload md5 is INDEPENDENTLY RECOMPUTED in exactly one place -- the LEG F5 seal
+# stamp (seal_structure.py:88, 'curve_payload_md5') -- and under the old curve the artifact's self-declared
+# curve_md5 and that recomputation AGREED (both df766dff).  Publishing the compact-separator hash would
+# leave the artifact declaring one identity while the seal stamp recomputed another, breaking a provenance
+# chain that was coherent before this build touched it.  The house convention is used here; the
+# compact-separator value is recorded beside it so the stop doc's candidate label 48046e2b stays traceable.
+_pay = {str(k): int(new[k]) for k in range(1, 65)}
+art['curve_md5'] = hashlib.md5(json.dumps(_pay, sort_keys=True).encode()).hexdigest()[:8]
+_compact = hashlib.md5(
     json.dumps(art['curve'], sort_keys=True, separators=(',', ':')).encode()).hexdigest()[:8]
 art['r104_9_strict_descent'] = True
 art['r104_9_strict_descent_scope'] = (
@@ -209,7 +221,12 @@ art['ordering_tiebreak'] = collections.OrderedDict([
     ('convention', '-1 point per pick within each pooled block'),
     ('anchoring', 'the integer anchoring that preserves the block plain sum as closely as integers allow; '
                   'shifted minimally if a block join would otherwise be non-strict'),
-    ('pre_tiebreak_curve_md5', '48046e2b'),
+    ('pre_tiebreak_curve_md5_compact_convention', '48046e2b'),
+    ('curve_md5_convention', 'json.dumps({str(pick): int(value) for pick in 1..64}, sort_keys=True) with '
+                             'DEFAULT separators -- the convention that reproduces the live artifact\'s own '
+                             'df766dff and that the LEG F5 seal stamp independently recomputes. The stopped '
+                             'seat\'s o29_curve.py used COMPACT separators; that value is recorded below.'),
+    ('curve_md5_compact_convention', None),   # filled in below
     ('blocks', [collections.OrderedDict([
         ('picks', '%d-%d' % (r['a'], r['b'])), ('n', r['L']), ('pooled_value', r['v']),
         ('values', [r['top'] - t for t in range(r['L'])]),
@@ -221,14 +238,22 @@ art['ordering_tiebreak'] = collections.OrderedDict([
     ('max_move_on_any_pick', _mx),
     ('prereg_P5_spot_values_breached', breached),
 ])
+art['ordering_tiebreak']['curve_md5_compact_convention'] = _compact
 json.dump(art, open(OUT, 'w'), indent=1)
 P()
+P("6. THE curve_md5 CONVENTION")
+P("-" * 112)
+P("  live artifact declares df766dff, reproduced ONLY by the DEFAULT-separator payload hash -- so that")
+P("  is the house convention, and the LEG F5 seal stamp recomputes the payload md5 the same way.")
+P("  house convention (published)   %s" % art['curve_md5'])
+P("  compact convention (recorded)  %s   <- the stopped seat's o29_curve.py convention" % _compact)
+P()
 P("  written: %s" % OUT)
-P("  curve_md5  %s -> %s" % ('48046e2b', art['curve_md5']))
+P("  curve_md5 (house convention)  %s" % art['curve_md5'])
 P("  r104_9_strict_descent = True   -- and TRUE BY MEASUREMENT, re-checked above, not assumed")
 open(HERE + '/TIEBREAK29_out.txt', 'w').write("\n".join(LOG) + "\n")
-json.dump({'blocks': rows, 'total_drift': tot_drift, 'plain_pre': plain_pre, 'plain_post': plain_post,
+json.dump({'curve_md5_house': art['curve_md5'], 'curve_md5_compact': _compact, 'blocks': rows, 'total_drift': tot_drift, 'plain_pre': plain_pre, 'plain_post': plain_post,
            'max_move': _mx, 'P5_held': held, 'P5_breached': breached,
-           'curve_md5_pre': '48046e2b', 'curve_md5_post': art['curve_md5'],
+           'curve_md5_pre_compact': '48046e2b', 'curve_md5_post': art['curve_md5'],
            'curve': {str(k): new[k] for k in sorted(new)}},
           open(HERE + '/TIEBREAK29.json', 'w'), indent=1)
