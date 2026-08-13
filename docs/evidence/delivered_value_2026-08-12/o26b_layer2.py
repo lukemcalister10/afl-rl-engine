@@ -150,6 +150,63 @@ CFG = dict(
     anchor='pick 1 = 3000 (frozen ruler) -- applied at the CURVE, not at the scorer.',
 )
 
+# ==================================================================================================
+# CORRECTION 26B-C1 -- THE OWNER'S FORCE-MAJEURE EXCLUSION, AS NAMED CONFIG
+# ==================================================================================================
+# A STANDING owner ruling that ORDER 26B's brief did not carry, re-filed at #334 comment 5274640130
+# (2026-08-13). It ships HERE, as named config with its keys, its reason and its provenance -- never
+# as a hardcoded special case buried in a loop -- and the deriver asserts it (o26b_derive.py) so that
+# a future edit cannot silently drop it again. That is the whole point: this is the third ruling this
+# week found living as register prose instead of a machine check.
+FORCE_MAJEURE = dict(
+    rule='WHOLE-DRAFT SLIDE',
+    excluded_keys=['thomas-boyd', 'paddy-mccartin'],
+    excluded_detail={'thomas-boyd': 'ND pick 1, 2013', 'paddy-mccartin': 'ND pick 1, 2014'},
+    reason='owner force-majeure ruling -- two pick-1 KPF careers ended by acts of god (one '
+           'concussion, one mental health). OWNER VERBATIM: "those players were pick 1 KPF busts, '
+           'so heavily bias the pool against them, however one retired early with depression, and '
+           'another with concussion issues. It\'s a force majeure situation..." They may not teach '
+           'the pick-1 cohort, because those acts of god are unlikely to recur at pick 1.',
+    provenance='standing owner ruling, register v533-era, verbatim; mechanics settled by the owner\'s '
+               'own amendment and re-filed at #334 comment 5274640130 (2026-08-13). Applied to this '
+               'order by CORRECTION ORDER 26B-C1.',
+    mechanics='In each affected draft year EVERY ND draftee slides UP one pick: natural pick N is '
+              'attributed to slid pick N-1. The excluded key (natural pick 1) is dropped from every '
+              'cohort input entirely. A natural pick 65 slides to 64, ENTERS the ND 1-64 fit and '
+              'LEAVES the ND>64 pathway for that year. Slid effective picks are computed BEFORE the '
+              'ND/pool split, so the split is taken on the SLID pick, never the stored one.',
+    slide_years=[2013, 2014],
+    scope='ND rows in the slide years only. No pool pathway (RD/SSP/MSD/IRE/PDA/PDN/PDS/UNR) is '
+          'touched, and no other draft year is touched.',
+    store_untouched='THE SLIDE IS A DERIVATION-TIME ATTRIBUTION RULE ONLY. The store is never edited '
+                    'and Layer 1 is never edited -- raw facts carry no attribution. Layer 1 keeps the '
+                    'natural pick; the slid pick exists only in this attribution map.',
+    layer2_scores_unaffected='Per-career delivered value is UNCHANGED by this correction. Only the '
+                             'cohort a career is ATTRIBUTED to moves (Ruling 5\'s acquisition slot). '
+                             'LAYER2.json::base is byte-identical across the correction.',
+)
+FM_KEYS = set(FORCE_MAJEURE['excluded_keys'])
+FM_YEARS = set(FORCE_MAJEURE['slide_years'])
+CFG['force_majeure'] = FORCE_MAJEURE
+
+
+def attribute(e):
+    """Ruling 5's ACQUISITION SLOT, with the owner's force-majeure whole-draft slide applied.
+    This is the ONLY place a cohort key is decided; the deriver and the comparison harness both read
+    its output out of LAYER2.json rather than recomputing it."""
+    key, ty, yr, pk = e['key'], e['type'], e['entry_year'], e['pick']
+    if key in FM_KEYS:
+        return dict(excluded=True, mechanism=None, pick=None, natural_pick=pk, slid=False,
+                    why='owner force-majeure exclusion')
+    slid = False
+    if ty == 'ND' and yr in FM_YEARS and pk:
+        pk = pk - 1
+        slid = True
+    mech = e['mechanism']
+    if ty == 'ND':                       # the ND/pool split is taken on the SLID pick, per the ruling
+        mech = 'ND 1-64' if (pk and 1 <= pk <= 64) else 'ND>64'
+    return dict(excluded=False, mechanism=mech, pick=pk, natural_pick=e['pick'], slid=slid, why=None)
+
 # THE BARS. Computed, never typed. This is the only place a bar number exists in this harness.
 BARS = {g: MA.REPL[g] - rd.REPL_DROP.get(g, 0.0) for g in MA.REPL}
 RULING1 = {'KPD': 65.4, 'KPF': 63.8, 'MID': 77.1, 'RUCK': 75.5, 'SD': 75.3, 'SF': 67.9}
@@ -447,12 +504,34 @@ for k in NAMED:
       % (k, (e['mechanism'] or '')[:5], e['pick'], e['position_group'], e['entry_year'],
          e['n_season_rows'], r['obs'], r['tail'], r['total'], 100 * r['tail_share']))
 
+# ---- the attribution map (CORRECTION 26B-C1) -----------------------------------------------------
+ATTR = {e['key']: attribute(e) for e in ENTRIES}
+P()
+P("CORRECTION 26B-C1 -- THE OWNER'S FORCE-MAJEURE EXCLUSION (%s)" % FORCE_MAJEURE['rule'])
+P("  provenance: %s" % FORCE_MAJEURE['provenance'])
+P("  EXCLUDED  : %s" % ", ".join("%s (%s, delivered %.1f)"
+                                % (k, FORCE_MAJEURE['excluded_detail'][k], BASE[k]['total'])
+                                for k in FORCE_MAJEURE['excluded_keys']))
+P("  slide years %s -- every ND draftee slides UP one pick; the ND/pool split is taken on the SLID pick"
+  % sorted(FM_YEARS))
+for yr in sorted(FM_YEARS):
+    sl = [e for e in ENTRIES if ATTR[e['key']]['slid'] and e['entry_year'] == yr]
+    nat = sorted(e['pick'] for e in sl)
+    n65 = [e['key'] for e in sl if e['pick'] == 65]
+    P("    %d: %d rows slid, natural picks %d..%d -> slid %d..%d   natural-65: %s"
+      % (yr, len(sl), nat[0], nat[-1], nat[0] - 1, nat[-1] - 1,
+         (n65[0] + ' (enters the ND fit, leaves ND>64)') if n65
+         else 'NONE -- this draft ends at natural pick %d' % nat[-1]))
+P("  Layer-2 per-career scores are UNCHANGED by this correction; only the cohort attribution moves.")
+P("  Layer 1 is UNTOUCHED: it keeps the natural pick, and the slid pick exists only in this map.")
+
 # ---- the fit population -------------------------------------------------------------------------
 FITLO = CFG['window_floor']
-ND = [e for e in ENTRIES if e['mechanism'] == 'ND 1-64' and e['pick'] and 1 <= e['pick'] <= 64
+ND = [e for e in ENTRIES if ATTR[e['key']]['mechanism'] == 'ND 1-64'
+      and ATTR[e['key']]['pick'] and 1 <= ATTR[e['key']]['pick'] <= 64
       and e['entry_year'] is not None and FITLO <= e['entry_year'] <= 2021]
 POOLM = ['RD', 'SSP', 'MSD', 'IRE', 'PDA', 'PDN', 'PDS', 'UNR', 'ND>64']
-POOL = [e for e in ENTRIES if e['mechanism'] in POOLM
+POOL = [e for e in ENTRIES if ATTR[e['key']]['mechanism'] in POOLM
         and e['entry_year'] is not None and FITLO <= e['entry_year'] <= 2021]
 P()
 P("THE FIT POPULATION (Ruling 8: <=2014 core + 2015-2021 augmented; 2022+ EXCLUDED)")
@@ -462,7 +541,9 @@ P("  EXCLUDED (2022+ sensitivity only)          : %d"
   % sum(1 for e in ENTRIES if e['entry_year'] and e['entry_year'] >= 2022))
 P("  EXCLUDED (pre-%d, scoring data begins 2005): %d"
   % (FITLO, sum(1 for e in ENTRIES if e['entry_year'] and e['entry_year'] < FITLO)))
-byp = collections.Counter(e['pick'] for e in ND)
+P("  EXCLUDED (owner force-majeure)             : %d  %s"
+  % (len(FM_KEYS), sorted(FM_KEYS)))
+byp = collections.Counter(ATTR[e['key']]['pick'] for e in ND)
 P("  per-pick n, picks 1-64: min %d  median %d  max %d   (picks 1-20 mean %.1f)"
   % (min(byp.values()), sorted(byp.values())[len(byp) // 2], max(byp.values()),
      sum(byp[i] for i in range(1, 21)) / 20.0))
@@ -477,6 +558,7 @@ P("  Ruling 1 %s" % RULING1)
 OUT = dict(cfg=CFG, pins={k: v[1] for k, v in PINS.items()}, layer1_md5=L1_MD5,
            now=NOW, base=BASE, v5=V5, linear_named={k: LIN[k] for k in NAMED},
            linear_all=ALLLIN, named=NAMED,
+           force_majeure=FORCE_MAJEURE, attribution=ATTR,
            fit_nd_keys=[e['key'] for e in ND], fit_pool_keys=[e['key'] for e in POOL],
            season_counters=dict(CTR))
 json.dump(OUT, open(os.path.join(HERE, 'LAYER2.json'), 'w'), indent=None,

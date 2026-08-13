@@ -2,7 +2,7 @@
 ORDER 26B  --  STEP 4, THE DERIVATIONS
 ======================================================================================================================
   layer1  ad1229ea6f443538479447132382b21c
-  layer2  LAYER2.json md5 6e0342df60d7614f657760c20715177c
+  layer2  LAYER2.json md5 d8b10886a019487a9512915e622b7a18
   store   d9a24282   board 88ce647f
   SMOOTHER: harness_pvc_REPINNED_pass3.py::kernel_raw  md5 f2c81da18e02
             Gaussian kernel over log(pick); bandwidth grows from HMIN=0.10 in 0.02 steps until the
@@ -11,102 +11,126 @@ ORDER 26B  --  STEP 4, THE DERIVATIONS
   K-shrinkage K=15  (pvc_curve_v2.json::pool_levels.k -- the owner's own signed-level constant)
 
 ----------------------------------------------------------------------------------------------------------------------
-(a) THE ALL-IN PICK CURVE  --  ND 1-64, entries 2004-2021, busts at 0, delivered value discounted
-    to acquisition in board points.  n = 1143 careers.
+CORRECTION 26B-C1 -- THE OWNER'S FORCE-MAJEURE EXCLUSION, ASSERTED
 ----------------------------------------------------------------------------------------------------------------------
-  PRE-ANCHOR SCALE: cohort-mean delivered value at pick 1, smoothed = 2112.6 board points
-  ANCHORING FACTOR to pin pick 1 = 3000 (Ruling 6): x 1.4200
+  rule       WHOLE-DRAFT SLIDE
+  provenance standing owner ruling, register v533-era, verbatim; mechanics settled by the owner's own amendment and re-filed at #334 comment 5274640130 (2026-08-13). Applied to this order by CORRECTION ORDER 26B-C1.
+  EXCLUDED   thomas-boyd (ND pick 1, 2013, delivered 46.6), paddy-mccartin (ND pick 1, 2014, delivered 44.0)
+  ASSERT (a) the two keys appear in NO ND or pool cohort input, at any pick .......... PASS
+  ASSERT (b) each slide year's pick-N cohort holds the natural pick-(N+1) entrant ... PASS
+               2013: 60 pick positions checked (natural picks 2..61 -> slid 1..60)
+               2014: 64 pick positions checked (natural picks 2..76 -> slid 1..75)
+  ASSERT (c) a natural pick 65 slides to 64, enters the ND fit, leaves ND>64 ........ PASS
+               2013: NO natural pick 65 EXISTS -- this national draft ends at natural
+                     pick 61, so the 65-clause has nothing to act on. MEASURED, not
+                     assumed.
+               2014: daniel-butler -- natural 65 -> slid 64, in the ND fit, out of ND>64
+               => ND>64 loses ONE entrant to the ND fit, not two. The correction order
+                  anticipated two; the 2013 draft is 61 picks long and has no 65th.
+
+  WHO REPLACED THE EXCLUDED ROWS IN THE PICK-1 COHORT (the owner's question, answered)
+    year   excluded (natural 1)   pos       delivered   natural 2 -> slid pick 1   pos       delivered
+    2013   thomas-boyd            KPF            46.6   joshua-kelly               MID          3592.8
+    2014   paddy-mccartin         KPF            44.0   christian-petracca         MID          3621.7
+    the pick-1 cohort gains 7123.9 board points across the two rows (90.6 -> 7214.5)
+
+----------------------------------------------------------------------------------------------------------------------
+(a) THE ALL-IN PICK CURVE  --  ND 1-64, entries 2004-2021, busts at 0, delivered value discounted
+    to acquisition in board points.  n = 1142 careers.
+----------------------------------------------------------------------------------------------------------------------
+  PRE-ANCHOR SCALE: cohort-mean delivered value at pick 1, smoothed = 2284.6 board points
+  ANCHORING FACTOR to pin pick 1 = 3000 (Ruling 6): x 1.3131
   raw per-pick cohort means are printed BESIDE the smoothed curve, as PREREG P2.6 pre-committed.
 
    pick      n     raw mean     smoothed     ANCHORED    today PVC    der/PVC
-      1     18       2064.3       2112.6       3000.0         3000     1.0000
-      2     18       2349.6       2146.8       3048.5         2999     1.0165
-      3     18       1853.9       2021.7       2870.8         2874     0.9989
-      4     18       2314.5       1959.4       2782.4         2424     1.1478
-      5     18       1754.8       1491.7       2118.3         1881     1.1262
-      6     18        480.9        958.2       1360.6         1550     0.8778
-      7     18       1062.5       1036.1       1471.3         1549     0.9498
-      8     18       1464.3       1190.4       1690.4         1548     1.0920
-      9     18        767.2       1061.6       1507.5         1475     1.0220
-     10     18       1214.1       1084.5       1540.1         1460     1.0548
-     11     18       1088.8       1119.9       1590.3         1459     1.0900
-     12     18       1184.5       1080.0       1533.6         1458     1.0519
-     13     18       1104.3        956.5       1358.2         1347     1.0083
-     14     18        778.6        793.0       1126.0         1165     0.9665
-     15     18        511.8        670.5        952.1         1030     0.9243
-     16     18        544.2        625.9        888.8         1004     0.8853
-     17     18        591.9        640.2        909.1         1003     0.9063
-     18     18        680.3        675.3        959.0         1002     0.9571
-     19     18        776.4        701.1        995.6         1001     0.9946
-     20     18        723.9        702.1        997.0          990     1.0071
-     21     18        856.9        677.9        962.6          942     1.0219
-     22     18        663.8        639.0        907.3          887     1.0229
-     23     18        479.0        599.4        851.1          836     1.0181
-     24     18        497.2        569.2        808.3          795     1.0167
-     25     18        560.5        551.2        782.8          763     1.0259
-     26     18        634.4        542.6        770.5          739     1.0426
-     27     18        234.3        537.8        763.7          719     1.0621
-     28     18        621.5        531.9        755.3          702     1.0759
-     29     18        942.5        522.6        742.2          684     1.0850
-     30     18        502.4        510.6        725.1          663     1.0937
-     31     18        193.7        497.9        707.1          641     1.1031
-     32     18        325.8        486.4        690.7          618     1.1177
-     33     18        647.2        476.8        677.1          596     1.1361
-     34     18        593.0        468.7        665.6          577     1.1535
-     35     18        541.8        461.1        654.7          561     1.1671
-     36     18        240.3        452.8        643.1          549     1.1713
-     37     18        281.7        443.1        629.2          539     1.1674
-     38     18        828.9        431.2        612.4          531     1.1533
-     39     18        348.9        416.8        591.9          523     1.1318
-     40     18        416.8        399.8        567.8          514     1.1046
-     41     18        364.1        380.5        540.4          502     1.0765
-     42     18        464.8        359.6        510.6          487     1.0485
-     43     18        367.9        337.8        479.7          470     1.0207
-     44     18        431.8        316.3        449.2          450     0.9982
-     45     18        179.7        296.1        420.4          429     0.9800
-     46     18        283.7        277.9        394.6          409     0.9647
-     47     18        193.1        262.2        372.4          390     0.9548
-     48     18        187.0        249.3        354.0          373     0.9492
-     49     18        206.2        239.0        339.4          358     0.9480
-     50     18         99.3        230.8        327.8          346     0.9473
-     51     18        128.1        224.2        318.4          338     0.9420
-     52     18        259.1        218.6        310.5          327     0.9494
-     53     18        327.0        213.5        303.2          317     0.9565
-     54     18        303.6        208.5        296.1          308     0.9613
-     55     18        324.2        203.4        288.8          298     0.9690
-     56     18        192.3        197.9        281.1          288     0.9760
-     57     18        260.0        192.3        273.0          277     0.9857
-     58     18         59.5        186.5        264.8          265     0.9991
-     59     18         62.6        180.6        256.4          252     1.0175
-     60     18        243.6        174.7        248.1          238     1.0424
-     61     18        209.0        169.0        240.0          224     1.0716
-     62     16         43.9        163.6        232.3          210     1.1063
-     63     15         11.7        158.5        225.0          197     1.1423
-     64     14        167.8        153.7        218.2          185     1.1797
+      1     18       2460.1       2284.6       3000.0         3000     1.0000
+      2     18       2102.3       2132.2       2799.8         2999     0.9336
+      3     18       2289.8       2054.0       2697.2         2874     0.9385
+      4     18       1745.3       1775.7       2331.7         2424     0.9619
+      5     18       1848.9       1412.0       1854.1         1881     0.9857
+      6     18        379.9        946.1       1242.4         1550     0.8015
+      7     18       1150.8       1048.1       1376.3         1549     0.8885
+      8     18       1427.1       1187.8       1559.7         1548     1.0076
+      9     18        766.6       1048.6       1376.9         1475     0.9335
+     10     18       1186.4       1083.4       1422.6         1460     0.9744
+     11     18       1080.2       1145.2       1503.8         1459     1.0307
+     12     18       1394.0       1101.6       1446.6         1458     0.9922
+     13     18        903.2        946.5       1242.9         1347     0.9227
+     14     18        847.9        768.4       1009.0         1165     0.8661
+     15     18        413.4        653.0        857.4         1030     0.8325
+     16     18        541.8        622.8        817.8         1004     0.8145
+     17     18        681.0        648.3        851.4         1003     0.8488
+     18     18        645.2        688.2        903.6         1002     0.9018
+     19     18        739.4        712.9        936.1         1001     0.9351
+     20     18        940.0        709.3        931.5          990     0.9409
+     21     18        630.5        680.5        893.6          942     0.9486
+     22     18        801.9        640.0        840.4          887     0.9474
+     23     18        330.7        601.7        790.1          836     0.9451
+     24     18        509.9        573.1        752.6          795     0.9466
+     25     18        894.6        554.8        728.6          763     0.9549
+     26     18        286.5        543.6        713.9          739     0.9660
+     27     18        259.4        535.1        702.6          719     0.9772
+     28     18        866.7        525.5        690.1          702     0.9830
+     29     18        753.7        513.7        674.6          684     0.9862
+     30     18        425.2        500.5        657.3          663     0.9914
+     31     18        268.0        487.9        640.7          641     0.9996
+     32     18        257.6        477.3        626.8          618     1.0143
+     33     18        661.9        469.1        615.9          596     1.0334
+     34     18        707.8        462.4        607.2          577     1.0524
+     35     18        402.1        456.4        599.3          561     1.0682
+     36     18        244.8        449.8        590.7          549     1.0760
+     37     18        277.1        441.9        580.3          539     1.0766
+     38     18        828.9        431.8        567.0          531     1.0678
+     39     18        391.9        418.9        550.1          523     1.0518
+     40     18        383.6        403.0        529.2          514     1.0296
+     41     18        356.0        384.2        504.6          502     1.0051
+     42     18        555.8        363.2        477.0          487     0.9794
+     43     18        334.6        340.9        447.7          470     0.9525
+     44     18        456.7        318.6        418.3          450     0.9296
+     45     18        242.2        297.3        390.5          429     0.9102
+     46     18        206.1        278.2        365.3          409     0.8932
+     47     18        123.8        261.8        343.8          390     0.8814
+     48     18        190.6        248.3        326.0          373     0.8741
+     49     18        251.9        237.6        312.0          358     0.8714
+     50     18         71.6        229.2        300.9          346     0.8697
+     51     18        261.9        222.4        292.1          338     0.8642
+     52     18        118.8        216.8        284.7          327     0.8707
+     53     18        359.6        211.7        278.0          317     0.8769
+     54     18        259.2        206.7        271.4          308     0.8811
+     55     18        359.9        201.5        264.6          298     0.8878
+     56     18        185.7        196.0        257.4          288     0.8936
+     57     18        241.6        190.2        249.8          277     0.9018
+     58     18         87.9        184.3        242.0          265     0.9131
+     59     18        157.3        178.2        234.0          252     0.9286
+     60     18        110.0        172.2        226.1          238     0.9501
+     61     17        217.6        166.3        218.4          224     0.9751
+     62     16         43.9        160.7        211.1          210     1.0050
+     63     15         11.7        155.4        204.1          197     1.0361
+     64     14        177.6        150.5        197.6          185     1.0683
 
   TAIL SHARE OF THE CURVE ITSELF (Ruling 8's disclosure, VALUE-WEIGHTED -- the honest aggregate:
   a per-player mean tail share understates how much of a COHORT MEAN is projection, because the
   live young careers that carry tails are also the big ones).
   band          n    sum total     sum tail   tail wt%   per-player median
-  1-10        180       275872        44922      16.3%   0.0000
-  11-20       180       143724        20717      14.4%   0.0000
-  21-30       180       107862        15674      14.5%   0.0000
-  31-45       270       112078        15154      13.5%   0.0000
-  46-64       333        63314         7451      11.8%   0.0000
-  ALL 1-64   1143       702849       103917      14.8%   0.0000
+  1-10        180       276430        44922      16.3%   0.0000
+  11-20       180       147352        20746      14.1%   0.0000
+  21-30       180       103664        15645      15.1%   0.0000
+  31-45       270       114643        15247      13.3%   0.0000
+  46-64       332        60807         7357      12.1%   0.0000
+  ALL 1-64   1142       702895       103917      14.8%   0.0000
   by tier: core<=2014 0.6%   augmented 2015-2021 37.0%   (2022+ is EXCLUDED from the curve)
 
   HEADLINE PICKS
   pick                  1       2       3       5       7      10      15      20      30      40      50      64
-  DERIVED            3000    3048    2871    2118    1471    1540     952     997     725     568     328     218
+  DERIVED            3000    2800    2697    1854    1376    1423     857     931     657     529     301     198
   today PVC          3000    2999    2874    1881    1549    1460    1030     990     663     514     346     185
-  ratio             1.000   1.016   0.999   1.126   0.950   1.055   0.924   1.007   1.094   1.105   0.947   1.180
+  ratio             1.000   0.934   0.938   0.986   0.888   0.974   0.832   0.941   0.991   1.030   0.870   1.068
 
-  SHAPE: pick1->pick3 drop  DERIVED -4.31%   today -4.20%
-  TOP RATIO pick1/pick10    DERIVED 1.948          today 2.055
-  DEEP TAIL pick64/pick1    DERIVED 0.0727         today 0.0617
-  CROSSING (derived first rises above today's curve): pick 2
-  MONOTONICITY: the derived curve is NOT monotone over picks 1-64 (9 ascents)  ascents at picks [2, 7, 8, 10, 11, 17, 18, 19, 20]
+  SHAPE: pick1->pick3 drop  DERIVED -10.09%   today -4.20%
+  TOP RATIO pick1/pick10    DERIVED 2.109          today 2.055
+  DEEP TAIL pick64/pick1    DERIVED 0.0659         today 0.0617
+  CROSSING (derived first rises above today's curve): pick 8
+  MONOTONICITY: the derived curve is NOT monotone over picks 1-64 (7 ascents)  ascents at picks [7, 8, 10, 11, 17, 18, 19]
   NOTE: no isotonic step is applied. The shipped fitter PAVA-projects and then HARD-SETS pick 1;
         this derivation reports what the data says and anchors by a single scalar, so that the
         anchoring factor is legible as one number (Ruling 13's 'pre-anchor scale reported').
@@ -114,7 +138,7 @@ ORDER 26B  --  STEP 4, THE DERIVATIONS
 ----------------------------------------------------------------------------------------------------------------------
 (b) POSITIONAL ND RELATIVITIES BY PICK BAND  --  position = the ACQUISITION SLOT (day-0), Ruling 5
 ----------------------------------------------------------------------------------------------------------------------
-  rows by day-0 position: {'MID': 422, 'SD': 180, 'SF': 211, 'KPD': 125, 'KPF': 145, 'RUCK': 60}   (unmapped day-0 position: 0, excluded from the positional split)
+  rows by day-0 position: {'MID': 422, 'SD': 180, 'SF': 212, 'KPD': 125, 'KPF': 143, 'RUCK': 60}   (unmapped day-0 position: 0, excluded from the positional split)
   RECONCILIATION LAW (Ruling 13): position-weighted mean == all-in at EVERY pick.
      max |weighted mean / all-in - 1| over picks 1-64 = 2.220e-16   ASSERTED IN CODE (halt, not
      tolerance). The law holds BY CONSTRUCTION -- the positional curves are renormalised onto the
@@ -122,38 +146,38 @@ ORDER 26B  --  STEP 4, THE DERIVATIONS
 
   RELATIVITIES (V_pos(pick) / all-in(pick)) BY PICK BAND, and the positional values themselves
   band          MID         SD         SF        KPD        KPF       RUCK       all-in
-  1-10        1.275      0.724      0.585      0.606      0.653      1.255         2139
-  11-20       1.287      1.016      0.583      0.632      0.834      1.315         1131
-  21-30       1.329      0.705      0.506      0.677      0.830      2.199          807
-  31-45       1.327      0.496      0.671      0.790      0.742      2.310          589
-  46-64       1.115      0.450      1.048      1.643      0.903      1.196          292
-  n             422        180        211        125        145         60
+  1-10        1.256      0.703      0.589      0.604      0.684      1.259         1966
+  11-20       1.299      1.012      0.582      0.626      0.825      1.312         1050
+  21-30       1.322      0.704      0.503      0.683      0.833      2.217          744
+  31-45       1.323      0.495      0.681      0.802      0.748      2.292          543
+  46-64       1.113      0.454      1.040      1.649      0.906      1.202          267
+  n             422        180        212        125        143         60
 
 ----------------------------------------------------------------------------------------------------------------------
 (c) POOL PATHWAY ALL-INS AND POSITIONAL v0s  --  Ruling 12's BORROWING LADDER, K=15
 ----------------------------------------------------------------------------------------------------------------------
-  ALL-POOL all-in            n= 955 mean     196.2 | p05      0.0  med      0.0  p95    1234.7
+  ALL-POOL all-in            n= 954 mean     196.2 | p05      0.0  med      0.0  p95    1234.7
   ALL-POOL POSITIONAL LENS (rung-2's lens; mean_pos / all-pool mean)
     pos           n         mean          p05       median          p95     lens
-    MID         253        227.3          0.0          0.0       1449.8   1.1587
-    SD          185        203.5          0.0          0.1       1248.4   1.0372
-    SF          179        132.3          0.0          0.0        976.6   0.6746
-    KPD         128        166.1          0.0          0.0       1144.6   0.8467
-    KPF          99        163.1          0.0          0.0        888.7   0.8312
-    RUCK        111        280.2          0.0          0.0       1790.0   1.4282
+    MID         253        227.3          0.0          0.0       1449.8   1.1583
+    SD          185        203.5          0.0          0.1       1248.4   1.0369
+    SF          178        132.3          0.0          0.0        976.6   0.6742
+    KPD         128        166.1          0.0          0.0       1144.6   0.8465
+    KPF          99        163.1          0.0          0.0        888.7   0.8310
+    RUCK        111        280.2          0.0          0.0       1790.0   1.4278
 
   PATHWAY ALL-INS (entries 2004-2021, busts at 0), with ND-pick equivalents on the ANCHORED curve
   path         n  raw all-in        p05     median         p95      shrunk   borrow anchored ND-pick equiv
-  MSD         29       391.4        0.0        0.0      1688.8       324.8    34.1%      461  44
-  ND>64      115       239.1        0.0        0.3      1702.7       234.1    11.5%      332  50
-  SSP         24       223.9        0.0        3.0       346.1       213.2    38.5%      303  54
-  RD         611       211.7        0.0        0.0      1302.3       211.3     2.4%      300  54
-  PDA         38       145.5        0.0        0.0      1191.3       159.8    28.3%      227  63
-  UNR         46        99.0        0.0        0.0       386.1       122.9    24.6%      175  >64 (below the pick-64 value 218)
-  IRE         47        48.9        0.0        0.0       206.7        84.6    24.2%      120  >64 (below the pick-64 value 218)
-  PDN         24        43.2        0.0        0.0       225.4       102.0    38.5%      145  >64 (below the pick-64 value 218)
-  PDS         21        16.6        0.0        0.0        97.9        91.4    41.7%      130  >64 (below the pick-64 value 218)
-  ND 1-64 (reference)  n=1143  raw all-in 614.9  anchored 873  == the curve's own population
+  MSD         29       391.4        0.0        0.0      1688.8       324.9    34.1%      427  44
+  ND>64      114       240.0        0.0        0.3      1702.7       234.9    11.6%      308  50
+  SSP         24       223.9        0.0        3.0       346.1       213.3    38.5%      280  53
+  RD         611       211.7        0.0        0.0      1302.3       211.3     2.4%      278  54
+  PDA         38       145.5        0.0        0.0      1191.3       159.9    28.3%      210  63
+  UNR         46        99.0        0.0        0.0       386.1       122.9    24.6%      161  >64 (below the pick-64 value 198)
+  IRE         47        48.9        0.0        0.0       206.7        84.6    24.2%      111  >64 (below the pick-64 value 198)
+  PDN         24        43.2        0.0        0.0       225.4       102.0    38.5%      134  >64 (below the pick-64 value 198)
+  PDS         21        16.6        0.0        0.0        97.9        91.4    41.7%      120  >64 (below the pick-64 value 198)
+  ND 1-64 (reference)  n=1142  raw all-in 615.5  anchored 808  == the curve's own population
 
   THE BORROWING LADDER, CELL BY CELL  (own cell -> pathway-all-in x all-pool lens -> all-pool)
   rung 1 = the cell's own mean.  rung 2 = shrunk pathway all-in x the all-pool positional lens.
@@ -162,60 +186,60 @@ ORDER 26B  --  STEP 4, THE DERIVATIONS
   come from the cell's own careers.  TOTAL borrowing compounds the pathway rung's own borrowing.
 
   path    pos       n    own cell       rung2    v0 (raw)   borrow from pool  anchored
-  RD      MID     180       188.1       244.9       192.5     7.7%     0.2%       273
-  RD      SD      108       235.6       219.2       233.6    12.2%     0.3%       332
-  RD      SF      121       178.7       142.6       174.7    11.0%     0.3%       248
-  RD      KPD      83       199.0       178.9       195.9    15.3%     0.4%       278
-  RD      KPF      61       172.6       175.7       173.2    19.7%     0.5%       246
-  RD      RUCK     58       368.3       301.8       354.6    20.5%     0.5%       504
-  SSP     MID       6       676.6       247.1       369.8    71.4%    27.5%       525
-  SSP     SD        4        63.5       221.2       188.0    78.9%    30.4%       267
-  SSP     SF        4        22.0       143.8       118.2    78.9%    30.4%       168
-  SSP     KPD       2       101.6       180.5       171.3    88.2%    33.9%       243
-  SSP     KPF       6        99.9       177.2       155.2    71.4%    27.5%       220
-  SSP     RUCK      2        84.5       304.5       278.6    88.2%    33.9%       396
-  MSD     MID      10       660.7       376.4       490.1    60.0%    20.5%       696
-  MSD     SD        3       443.9       336.9       354.8    83.3%    28.4%       504
-  MSD     SF        2         0.0       219.1       193.4    88.2%    30.1%       275
-  MSD     KPD       2       572.3       275.1       310.0    88.2%    30.1%       440
-  MSD     KPF       6        69.4       270.0       212.7    71.4%    24.4%       302
-  MSD     RUCK      6       308.4       463.9       419.5    71.4%    24.4%       596
-  IRE     MID       3        68.9        98.0        93.1    83.3%    20.2%       132
-  IRE     SD       29        71.1        87.7        76.8    34.1%     8.2%       109
-  IRE     SF        2        14.7        57.0        52.1    88.2%    21.3%        74
-  IRE     KPD       7         0.4        71.6        48.9    68.2%    16.5%        70
-  IRE     KPF       4         0.0        70.3        55.5    78.9%    19.1%        79
-  IRE     RUCK      2         0.0       120.8       106.6    88.2%    21.3%       151
-  PDA     MID      11       105.8       185.2       151.6    57.7%    16.3%       215
-  PDA     SD        7       600.0       165.8       303.9    68.2%    19.3%       432
-  PDA     SF        8         1.0       107.8        70.7    65.2%    18.5%       100
-  PDA     KPD       2        48.0       135.4       125.1    88.2%    25.0%       178
-  PDA     KPF       5         0.2       132.9        99.7    75.0%    21.2%       142
-  PDA     RUCK      5        12.2       228.3       174.3    75.0%    21.2%       247
-  PDN     MID       2         0.0       118.2       104.3    88.2%    33.9%       148
-  PDN     SD        9        25.3       105.8        75.6    62.5%    24.0%       107
-  PDN     SF        7         3.7        68.8        48.1    68.2%    26.2%        68
-  PDN     KPD       5       156.5        86.4       103.9    75.0%    28.8%       148
-  PDN     KPF       0       --           84.8        84.8   100.0%    38.5%       120
-  PDN     RUCK      1         0.0       145.7       136.6    93.8%    36.1%       194
-  PDS     MID       6        16.6       105.9        80.4    71.4%    29.8%       114
-  PDS     SD        6         0.0        94.8        67.7    71.4%    29.8%        96
-  PDS     SF        3         0.0        61.7        51.4    83.3%    34.7%        73
-  PDS     KPD       5        49.8        77.4        70.5    75.0%    31.2%       100
-  PDS     KPF       0       --           76.0        76.0   100.0%    41.7%       108
-  PDS     RUCK      1         0.0       130.6       122.4    93.8%    39.1%       174
-  UNR     MID       5       668.7       142.4       274.0    75.0%    18.4%       389
-  UNR     SD        3         0.1       127.5       106.3    83.3%    20.5%       151
-  UNR     SF        2         1.4        82.9        73.3    88.2%    21.7%       104
-  UNR     KPD       7        81.3       104.1        96.8    68.2%    16.8%       138
-  UNR     KPF       3        31.7       102.2        90.4    83.3%    20.5%       128
-  UNR     RUCK     26        20.9       175.5        77.5    36.6%     9.0%       110
-  ND>64   MID      30       272.0       271.3       271.8    33.3%     3.8%       386
-  ND>64   SD       16       257.3       242.9       250.3    48.4%     5.6%       355
-  ND>64   SF       30        63.5       157.9        95.0    33.3%     3.8%       135
-  ND>64   KPD      15       113.1       198.3       155.7    50.0%     5.8%       221
-  ND>64   KPF      14       321.6       194.6       255.9    51.7%     6.0%       363
-  ND>64   RUCK     10       711.3       334.4       485.2    60.0%     6.9%       689
+  RD      MID     180       188.1       244.8       192.5     7.7%     0.2%       253
+  RD      SD      108       235.6       219.1       233.6    12.2%     0.3%       307
+  RD      SF      121       178.7       142.5       174.7    11.0%     0.3%       229
+  RD      KPD      83       199.0       178.9       195.9    15.3%     0.4%       257
+  RD      KPF      61       172.6       175.6       173.2    19.7%     0.5%       227
+  RD      RUCK     58       368.3       301.7       354.6    20.5%     0.5%       466
+  SSP     MID       6       676.6       247.0       369.7    71.4%    27.5%       486
+  SSP     SD        4        63.5       221.1       188.0    78.9%    30.4%       247
+  SSP     SF        4        22.0       143.8       118.1    78.9%    30.4%       155
+  SSP     KPD       2       101.6       180.5       171.2    88.2%    33.9%       225
+  SSP     KPF       6        99.9       177.2       155.1    71.4%    27.5%       204
+  SSP     RUCK      2        84.5       304.5       278.6    88.2%    33.9%       366
+  MSD     MID      10       660.7       376.3       490.1    60.0%    20.5%       644
+  MSD     SD        3       443.9       336.9       354.7    83.3%    28.4%       466
+  MSD     SF        2         0.0       219.0       193.3    88.2%    30.1%       254
+  MSD     KPD       2       572.3       275.0       310.0    88.2%    30.1%       407
+  MSD     KPF       6        69.4       270.0       212.7    71.4%    24.4%       279
+  MSD     RUCK      6       308.4       463.8       419.4    71.4%    24.4%       551
+  IRE     MID       3        68.9        98.0        93.1    83.3%    20.2%       122
+  IRE     SD       29        71.1        87.7        76.8    34.1%     8.2%       101
+  IRE     SF        2        14.7        57.0        52.1    88.2%    21.3%        68
+  IRE     KPD       7         0.4        71.6        48.9    68.2%    16.5%        64
+  IRE     KPF       4         0.0        70.3        55.5    78.9%    19.1%        73
+  IRE     RUCK      2         0.0       120.8       106.6    88.2%    21.3%       140
+  PDA     MID      11       105.8       185.2       151.6    57.7%    16.3%       199
+  PDA     SD        7       600.0       165.8       303.9    68.2%    19.3%       399
+  PDA     SF        8         1.0       107.8        70.7    65.2%    18.5%        93
+  PDA     KPD       2        48.0       135.3       125.1    88.2%    25.0%       164
+  PDA     KPF       5         0.2       132.8        99.7    75.0%    21.2%       131
+  PDA     RUCK      5        12.2       228.3       174.2    75.0%    21.2%       229
+  PDN     MID       2         0.0       118.2       104.3    88.2%    33.9%       137
+  PDN     SD        9        25.3       105.8        75.6    62.5%    24.0%        99
+  PDN     SF        7         3.7        68.8        48.1    68.2%    26.2%        63
+  PDN     KPD       5       156.5        86.4       103.9    75.0%    28.8%       136
+  PDN     KPF       0       --           84.8        84.8   100.0%    38.5%       111
+  PDN     RUCK      1         0.0       145.7       136.6    93.8%    36.1%       179
+  PDS     MID       6        16.6       105.9        80.4    71.4%    29.8%       106
+  PDS     SD        6         0.0        94.8        67.7    71.4%    29.8%        89
+  PDS     SF        3         0.0        61.7        51.4    83.3%    34.7%        67
+  PDS     KPD       5        49.8        77.4        70.5    75.0%    31.2%        93
+  PDS     KPF       0       --           76.0        76.0   100.0%    41.7%       100
+  PDS     RUCK      1         0.0       130.6       122.4    93.8%    39.1%       161
+  UNR     MID       5       668.7       142.4       274.0    75.0%    18.4%       360
+  UNR     SD        3         0.1       127.5       106.2    83.3%    20.5%       140
+  UNR     SF        2         1.4        82.9        73.3    88.2%    21.7%        96
+  UNR     KPD       7        81.3       104.1        96.8    68.2%    16.8%       127
+  UNR     KPF       3        31.7       102.1        90.4    83.3%    20.5%       119
+  UNR     RUCK     26        20.9       175.5        77.5    36.6%     9.0%       102
+  ND>64   MID      30       272.0       272.1       272.0    33.3%     3.9%       357
+  ND>64   SD       16       257.3       243.6       250.7    48.4%     5.6%       329
+  ND>64   SF       29        61.0       158.4        94.2    34.1%     4.0%       124
+  ND>64   KPD      15       113.1       198.8       156.0    50.0%     5.8%       205
+  ND>64   KPF      14       321.6       195.2       256.2    51.7%     6.0%       336
+  ND>64   RUCK     10       711.3       335.4       485.8    60.0%     7.0%       638
 
   BORROWING SUMMARY (share of each cell's v0 NOT from its own careers)
   path         MID      SD      SF     KPD     KPF    RUCK
@@ -227,7 +251,7 @@ ORDER 26B  --  STEP 4, THE DERIVATIONS
   PDN          88%     62%     68%     75%    100%     94%
   PDS          71%     71%     83%     75%    100%     94%
   UNR          75%     83%     88%     68%     83%     37%
-  ND>64        33%     48%     33%     50%     52%     60%
+  ND>64        33%     48%     34%     50%     52%     60%
 
 ----------------------------------------------------------------------------------------------------------------------
 (d) THE MSD / YOUNG-PATHWAY QUESTION, BOTH WAYS
@@ -244,19 +268,19 @@ ORDER 26B  --  STEP 4, THE DERIVATIONS
   MSD tail share VALUE-WEIGHTED: 0.5761  -- this, not the per-player median, is what moves the all-in.
 
                                           all-in         p05      median         p95   anchored
-  WAY A  MSD with gated tails              391.4         0.0         0.0      1688.8        556
-  WAY B  MSD observed-only                 165.9         0.0         0.0       800.4        236
+  WAY A  MSD with gated tails              391.4         0.0         0.0      1688.8        514
+  WAY B  MSD observed-only                 165.9         0.0         0.0       800.4        218
   WAY A / WAY B at the all-in level: 2.3593  (tails RAISE the MSD all-in by +135.9%)
-  ALL-POOL observed-only all-in 170.5  =>  MSD PATHWAY OFFSET = 0.9731
+  ALL-POOL observed-only all-in 170.5  =>  MSD PATHWAY OFFSET = 0.9729
 
   THE TWO MSD POSITIONAL v0 TABLES, SIDE BY SIDE
   pos        n   WAY A (v0)   WAY B (v0)        A/B      brw A
-  MID       10        490.1        196.6     2.4930        60%
-  SD         3        354.8        177.0     2.0039        83%
-  SF         2        193.4        113.3     1.7062        88%
-  KPD        2        310.0        144.2     2.1503        88%
+  MID       10        490.1        196.6     2.4932        60%
+  SD         3        354.7        177.0     2.0039        83%
+  SF         2        193.3        113.2     1.7075        88%
+  KPD        2        310.0        144.1     2.1504        88%
   KPF        6        212.7        115.8     1.8361        71%
-  RUCK       6        419.5        231.8     1.8098        71%
+  RUCK       6        419.4        231.7     1.8099        71%
 
   RECOMMENDATION -- see DERIVE.json::msd.recommendation and the packet. PREREG §4 P4.2 pre-committed
   to STRUCTURAL BORROWING before any of these numbers existed; the scoring is in the packet.

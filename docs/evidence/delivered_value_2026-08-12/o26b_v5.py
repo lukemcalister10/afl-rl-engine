@@ -44,12 +44,15 @@ def q(xs, f):
     return xs[min(len(xs) - 1, int(f * len(xs)))] if xs else float('nan')
 
 
+ATTR = L2['attribution']     # CORRECTION 26B-C1 -- the force-majeure slide, read not recomputed
+
+
 def build(SC):
-    rows = [dict(key=k, pick=E[k]['pick'], value=SC[k]['total']) for k in L2['fit_nd_keys']]
+    rows = [dict(key=k, pick=ATTR[k]['pick'], value=SC[k]['total']) for k in L2['fit_nd_keys']]
     raw, _ = HP.kernel_raw(rows, PICKS)
     pre = raw[0]; af = PIN1 / pre
     allin = {p: raw[i] * af for i, p in enumerate(PICKS)}
-    pool = [dict(key=k, mech=E[k]['mechanism'], pos=E[k]['position_group'], value=SC[k]['total'])
+    pool = [dict(key=k, mech=ATTR[k]['mechanism'], pos=E[k]['position_group'], value=SC[k]['total'])
             for k in L2['fit_pool_keys']]
     ap = sum(r['value'] for r in pool) / len(pool)
     path = {}

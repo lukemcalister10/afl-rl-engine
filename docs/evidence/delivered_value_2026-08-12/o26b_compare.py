@@ -76,6 +76,8 @@ NUM = float(json.load(open(os.path.join(ROOT, 'engine/rl_after/pick_redenominati
 ALLIN = {int(k): float(v) for k, v in D['curve']['anchored'].items()}
 PVC = {int(k): float(v) for k, v in D['curve']['pvc_today'].items()}
 CELLS = {tuple(k.split('|')): v for k, v in D['pool']['cells'].items()}
+ATTR = L2['attribution']          # CORRECTION 26B-C1 -- the one attribution map, read not recomputed
+FM = L2['force_majeure']
 POSN = ['MID', 'SD', 'SF', 'KPD', 'KPF', 'RUCK']
 POOLM = ['RD', 'SSP', 'MSD', 'IRE', 'PDA', 'PDN', 'PDS', 'UNR', 'ND>64']
 
@@ -134,15 +136,32 @@ def sem(r, Y):
 # ---- THE DERIVED DAY-0, as the pre-statement fixed it -------------------------------------------
 def derived_v0(r):
     """cell_v0 x ANCHOR_FACTOR x NUMERAIRE. The position is the ACQUISITION SLOT (Ruling 5), read off
-    Layer 1's day0_position group -- NOT the matrix's r['pos'], which is the modelling position."""
+    Layer 1's day0_position group -- NOT the matrix's r['pos'], which is the modelling position.
+
+    CORRECTION 26B-C1: the mechanism and the pick come from the ONE attribution map built in
+    o26b_layer2.py (`LAYER2.json::attribution`), which carries the owner's force-majeure whole-draft
+    slide. This harness does NOT recompute the slide, so the two implementations cannot drift.
+    A force-majeure-excluded key has no derived v0 at all and is dropped from every population here.
+    """
     k = r['key']; e = E.get(k)
-    st = stream(r)
-    if st == 'ND 1-64' and r.get('pick') and 1 <= r['pick'] <= 64:
-        return ALLIN[r['pick']] * NUM, 'nd_curve'
+    a = ATTR.get(k)
+    if a is not None and a.get('excluded'):
+        return None, 'force_majeure_excluded'
+    st = a['mechanism'] if a else stream(r)
+    pk = a['pick'] if a else r.get('pick')
+    if st == 'ND 1-64' and pk and 1 <= pk <= 64:
+        return ALLIN[pk] * NUM, 'nd_curve'
     g = (e or {}).get('position_group')
     c = CELLS.get((st, g))
     if c is None: return None, 'no_cell'
     return float(c['v0']) * AF * NUM, 'pool_cell'
+
+
+def arm_of(r):
+    """The arm a matrix row belongs to under the corrected attribution."""
+    a = ATTR.get(r['key'])
+    if a is None: return stream(r)
+    return a['mechanism']
 
 
 LOG = []
@@ -184,14 +203,47 @@ P("  signed anchor = o26a_bridge.py::anchor_of(r) = the owner's signed level x %
 P("  derived v0    = cell_v0 x %.4f x %.4f   (the pre-statement's three declared multiplications)" % (AF, NUM))
 P()
 
-POOLROWS = [r for r in R if r.get('is_pool_engine') and (r.get('v0') or 0) > 0
+# ---- CORRECTION 26B-C1 CROSS-CHECK: two independent implementations of the same owner ruling ----
+# The walk-forward matrix's OWN emitter already applies the force-majeure slide (meta.force_majeure,
+# meta.slide_years, per-row pick_stored/pick_slid). This order's attribution map was built
+# independently from Layer 1. They must agree on every row, and the two excluded keys must be absent
+# from the matrix entirely. If they ever disagree, one of the two implementations is wrong and this
+# harness halts rather than silently preferring either.
+_mk = set(r['key'] for r in R)
+_absent = [k for k in FM['excluded_keys'] if k in _mk]
+assert not _absent, ("26B-C1 CROSS-CHECK FAILED: force-majeure keys present in the matrix: %s" % _absent)
+_ndm = [r for r in R if r['key'] in ATTR and r.get('type') == 'ND']
+_dism = [(r['key'], stream(r), ATTR[r['key']]['mechanism']) for r in _ndm
+         if stream(r) != ATTR[r['key']]['mechanism']]
+assert not _dism, ("26B-C1 CROSS-CHECK FAILED: %d ND rows where the matrix's arm and this order's "
+                   "disagree: %s" % (len(_dism), _dism[:5]))
+# PICKS are compared only on the ND 1-64 arm. The matrix pins EVERY ND>64 row to its `pool_pick`
+# SENTINEL (meta.pool_pick = %s), so its `pick` there is a marker, not a draft position -- comparing
+# it to a real slid pick would compare two different quantities. Disclosed, not quietly skipped.
+_disp = [(r['key'], r.get('pick'), ATTR[r['key']]['pick']) for r in _ndm
+         if ATTR[r['key']]['mechanism'] == 'ND 1-64' and r.get('pick') != ATTR[r['key']]['pick']]
+assert not _disp, ("26B-C1 CROSS-CHECK FAILED: %d ND 1-64 rows where the matrix's SLID pick and this "
+                   "order's disagree: %s" % (len(_disp), _disp[:5]))
+_nslid = sum(1 for r in R if r.get('slid'))
+P("  CORRECTION 26B-C1 CROSS-CHECK: the matrix's own force-majeure slide (%d slid rows, years %s)"
+  % (_nslid, META.get('slide_years')))
+P("    agrees with this order's INDEPENDENTLY-built attribution map on the arm of every ND row (%d)"
+  % len(_ndm))
+P("    and on the slid pick of every ND 1-64 row (%d). Both excluded keys (%s) are absent from the"
+  % (sum(1 for r in _ndm if ATTR[r['key']]['mechanism'] == 'ND 1-64'), ", ".join(FM['excluded_keys'])))
+P("    matrix entirely. Asserted; this harness HALTS on disagreement.")
+P("    NOT compared: the pick of an ND>64 row. The matrix pins every one of them to its pool_pick")
+P("    SENTINEL (%s), so its `pick` there is a marker rather than a draft position." % META.get('pool_pick'))
+P()
+
+POOLROWS = [r for r in R if arm_of(r) in POOLM and (r.get('v0') or 0) > 0
             and cohort(r) is not None]
-NDROWS_M = [r for r in R if stream(r) == 'ND 1-64' and (r.get('v0') or 0) > 0]
+NDROWS_M = [r for r in R if arm_of(r) == 'ND 1-64' and (r.get('v0') or 0) > 0]
 CMP = []
 for r in POOLROWS:
     d, how = derived_v0(r)
     if d is None: continue
-    CMP.append(dict(key=r['key'], mech=stream(r), pos=E.get(r['key'], {}).get('position_group'),
+    CMP.append(dict(key=r['key'], mech=arm_of(r), pos=E.get(r['key'], {}).get('position_group'),
                     derived=d, printed=float(r['v0']), anchor=anchor_of(r), entry=r['year']))
 
 dp_ = disp([c['derived'] / c['printed'] for c in CMP])
@@ -322,7 +374,7 @@ ARMS = collections.OrderedDict()
 ARMS['ND 1-64'] = [(r, derived_v0(r)[0]) for r in NDROWS_M
                    if cohort(r) is not None and derived_v0(r)[0]]
 for m in POOLM:
-    rows = [(r, derived_v0(r)[0]) for r in POOLROWS if stream(r) == m and derived_v0(r)[0]]
+    rows = [(r, derived_v0(r)[0]) for r in POOLROWS if arm_of(r) == m and derived_v0(r)[0]]
     if rows: ARMS[m] = rows
 
 P("  PRIMARY reading m_allin(d) = sum(marks at depth d) / sum(derived day-0), dead ZEROED and KEPT.")

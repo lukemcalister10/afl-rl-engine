@@ -58,6 +58,8 @@ L2 = json.load(open(os.path.join(HERE, 'LAYER2.json')))
 L1 = json.load(open(L1P))
 E = {e['key']: e for e in L1['entries']}
 BASE = L2['base']; V5 = L2['v5']
+FM = L2['force_majeure']                # CORRECTION 26B-C1 -- named config, read, never re-derived
+ATTR = L2['attribution']                # the ONE attribution map; this file does not recompute it
 BOARD = json.load(open(os.path.join(ROOT, 'engine/rl_after/rl_app_data.json')))
 PVC = {int(k): float(v) for k, v in BOARD['PVC'].items()}
 
@@ -106,14 +108,131 @@ P("            effective n reaches NMIN=%.0f (cap HMAX=%.2f); then a weighted ME
 P("            SHIPPED year-zero aggregator, imported -- 26B does not invent a smoother.")
 P("  K-shrinkage K=%d  (pvc_curve_v2.json::pool_levels.k -- the owner's own signed-level constant)"
   % K_SHRINK)
-P()
+REPL = {}
+
+
+def report_c1():
+    """Printed only AFTER the three asserts below have run and passed -- a report of an assert that
+    has not yet fired is a claim, not a check."""
+    P()
+    P("-" * 118)
+    P("CORRECTION 26B-C1 -- THE OWNER'S FORCE-MAJEURE EXCLUSION, ASSERTED")
+    P("-" * 118)
+    P("  rule       %s" % FM['rule'])
+    P("  provenance %s" % FM['provenance'])
+    P("  EXCLUDED   %s" % ", ".join("%s (%s, delivered %.1f)"
+                                    % (k, FM['excluded_detail'][k], BASE[k]['total'])
+                                    for k in FM['excluded_keys']))
+    P("  ASSERT (a) the two keys appear in NO ND or pool cohort input, at any pick .......... PASS")
+    P("  ASSERT (b) each slide year's pick-N cohort holds the natural pick-(N+1) entrant ... PASS")
+    for yr in sorted(FM_YEARS):
+        P("               %d: %d pick positions checked (natural picks 2..%d -> slid 1..%d)"
+          % (yr, _C1B[yr], _MAXNAT[yr], _MAXNAT[yr] - 1))
+    P("  ASSERT (c) a natural pick 65 slides to 64, enters the ND fit, leaves ND>64 ........ PASS")
+    for yr in sorted(FM_YEARS):
+        if _C1C[yr]:
+            P("               %d: %s -- natural 65 -> slid 64, in the ND fit, out of ND>64"
+              % (yr, ", ".join(_C1C[yr])))
+        else:
+            P("               %d: NO natural pick 65 EXISTS -- this national draft ends at natural"
+              % yr)
+            P("                     pick %d, so the 65-clause has nothing to act on. MEASURED, not"
+              % _MAXNAT[yr])
+            P("                     assumed.")
+    P("               => ND>64 loses ONE entrant to the ND fit, not two. The correction order")
+    P("                  anticipated two; the 2013 draft is 61 picks long and has no 65th.")
+    P()
+    P("  WHO REPLACED THE EXCLUDED ROWS IN THE PICK-1 COHORT (the owner's question, answered)")
+    P("    %-6s %-22s %-6s %12s   %-26s %-6s %12s" %
+      ('year', 'excluded (natural 1)', 'pos', 'delivered', 'natural 2 -> slid pick 1', 'pos',
+       'delivered'))
+    for yr in sorted(FM_YEARS):
+        ex = [k for k in FM['excluded_keys'] if E[k]['entry_year'] == yr]
+        n2 = [k for k in ATTR if E[k]['entry_year'] == yr and E[k]['type'] == 'ND'
+              and ATTR[k]['natural_pick'] == 2]
+        for a, b in zip(ex, n2):
+            REPL[yr] = dict(excluded=a, excluded_value=BASE[a]['total'],
+                            excluded_pos=E[a]['position_group'], replacement=b,
+                            replacement_value=BASE[b]['total'],
+                            replacement_pos=E[b]['position_group'],
+                            delta=BASE[b]['total'] - BASE[a]['total'])
+            P("    %-6d %-22s %-6s %12.1f   %-26s %-6s %12.1f" %
+              (yr, a, E[a]['position_group'], BASE[a]['total'], b, E[b]['position_group'],
+               BASE[b]['total']))
+    P("    the pick-1 cohort gains %.1f board points across the two rows (%.1f -> %.1f)"
+      % (sum(v['delta'] for v in REPL.values()),
+         sum(v['excluded_value'] for v in REPL.values()),
+         sum(v['replacement_value'] for v in REPL.values())))
+    P()
+
 
 # ==================================================================================================
 # (a) THE ALL-IN PICK CURVE
 # ==================================================================================================
-NDROWS = [dict(key=k, pick=E[k]['pick'], value=BASE[k]['total'], pos=E[k]['position_group'],
+NDROWS = [dict(key=k, pick=ATTR[k]['pick'], natural_pick=ATTR[k]['natural_pick'],
+               slid=ATTR[k]['slid'], value=BASE[k]['total'], pos=E[k]['position_group'],
                entry=E[k]['entry_year'], tier=E[k]['window_tier'])
           for k in L2['fit_nd_keys']]
+
+# ==================================================================================================
+# CORRECTION 26B-C1 -- THE RULING BECOMES AN ASSERT.  Each limb is able to fire, and the deriver
+# HALTS on any violation rather than reporting a curve built on a broken exclusion.
+# ==================================================================================================
+FM_KEYS = set(FM['excluded_keys']); FM_YEARS = set(FM['slide_years'])
+_ALLCOHORT = set(L2['fit_nd_keys']) | set(L2['fit_pool_keys'])
+
+# (a) the two excluded keys appear in NO cohort input, at any pick, on either arm
+_leak = sorted(FM_KEYS & _ALLCOHORT)
+assert not _leak, ("26B-C1 ASSERT (a) FAILED: force-majeure keys present in a cohort input: %s" % _leak)
+_leakpick = sorted(k for k in FM_KEYS if ATTR.get(k, {}).get('pick') is not None)
+assert not _leakpick, ("26B-C1 ASSERT (a) FAILED: a force-majeure key still carries a cohort pick: %s"
+                       % _leakpick)
+
+# (b) in each slide year, the pick-N cohort contains the NATURAL pick-(N+1) entrant
+_bypick = collections.defaultdict(dict)
+for r in NDROWS:
+    _bypick[r['entry']][r['pick']] = r
+_C1B = {}
+for yr in sorted(FM_YEARS):
+    nat = {ATTR[k]['natural_pick']: k for k in ATTR
+           if E[k]['entry_year'] == yr and E[k]['type'] == 'ND' and ATTR[k]['natural_pick']}
+    checked = 0
+    for N in range(1, 65):
+        want = nat.get(N + 1)
+        if want is None: continue
+        got = _bypick.get(yr, {}).get(N)
+        assert got is not None and got['key'] == want, (
+            "26B-C1 ASSERT (b) FAILED: %d slid pick %d should hold the natural pick-%d entrant %s, "
+            "holds %s" % (yr, N, N + 1, want, (got or {}).get('key')))
+        checked += 1
+    _C1B[yr] = checked
+assert all(v > 0 for v in _C1B.values()), "26B-C1 ASSERT (b) is VACUOUS -- it checked nothing"
+
+# (c) a natural pick 65 in a slide year is in the ND fit and absent from the ND>64 pathway.
+#     MEASURED, not assumed: the 2013 national draft ENDS AT NATURAL PICK 61, so it HAS no natural
+#     65. The assert is written over the natural-65s that exist, and it records which years have one
+#     -- asserting two would be asserting a fact about the world that is false.
+_POOLSET = set(L2['fit_pool_keys'])
+_C1C = {}
+for yr in sorted(FM_YEARS):
+    n65 = [k for k in ATTR if E[k]['entry_year'] == yr and E[k]['type'] == 'ND'
+           and ATTR[k]['natural_pick'] == 65]
+    for k in n65:
+        assert ATTR[k]['pick'] == 64 and ATTR[k]['mechanism'] == 'ND 1-64', (
+            "26B-C1 ASSERT (c) FAILED: natural 65 %s did not slide into the ND fit (pick %s, mech %s)"
+            % (k, ATTR[k]['pick'], ATTR[k]['mechanism']))
+        assert k not in _POOLSET, (
+            "26B-C1 ASSERT (c) FAILED: natural 65 %s is still in the ND>64 pool pathway" % k)
+        assert k in set(L2['fit_nd_keys']), (
+            "26B-C1 ASSERT (c) FAILED: natural 65 %s is not in the ND fit population" % k)
+    _C1C[yr] = n65
+assert any(_C1C.values()), ("26B-C1 ASSERT (c) is VACUOUS -- no slide year has a natural pick 65, so "
+                            "the limb never engaged; if that is genuinely true the ruling's 65-clause "
+                            "needs re-reading, not silent passing")
+_MAXNAT = {yr: max((ATTR[k]['natural_pick'] for k in ATTR if E[k]['entry_year'] == yr
+                    and E[k]['type'] == 'ND' and ATTR[k]['natural_pick']), default=None)
+           for yr in sorted(FM_YEARS)}
+report_c1()          # printed only now: the three asserts above have run and passed
 PICKS = list(range(1, 65))
 byp = collections.defaultdict(list)
 for r in NDROWS: byp[r['pick']].append(r['value'])
@@ -270,7 +389,7 @@ P()
 P("-" * 118)
 P("(c) POOL PATHWAY ALL-INS AND POSITIONAL v0s  --  Ruling 12's BORROWING LADDER, K=%d" % K_SHRINK)
 P("-" * 118)
-POOLROWS = [dict(key=k, mech=E[k]['mechanism'], pos=E[k]['position_group'],
+POOLROWS = [dict(key=k, mech=ATTR[k]['mechanism'], pos=E[k]['position_group'],
                  value=BASE[k]['total'], obs=BASE[k]['obs'], entry=E[k]['entry_year'])
             for k in L2['fit_pool_keys']]
 
@@ -456,7 +575,13 @@ OUT = dict(
                         all_pool_observed=POOL_B, by_pos=POOL_B_POS),
              tail_shares=dts, tail_share_value_weighted=MSD_TW, both=MSD_BOTH,
              recommendation='STRUCTURAL BORROWING (WAY B) -- see SHIPPING_PACKET_26B.md'),
-    anchor_factor=ANCHOR_FACTOR)
+    anchor_factor=ANCHOR_FACTOR,
+    correction_26b_c1=dict(config=FM, asserts_passed=['a: excluded keys absent from every cohort',
+                                                      'b: slid pick-N holds natural pick-(N+1)',
+                                                      'c: a natural 65 enters the ND fit and leaves ND>64'],
+                           picks_checked_b=_C1B, natural_65_by_year=_C1C,
+                           max_natural_pick_by_year=_MAXNAT, replacements=REPL,
+                           nd_gt64_entrants_moved=sum(len(v) for v in _C1C.values())))
 json.dump(OUT, open(os.path.join(HERE, 'DERIVE.json'), 'w'), indent=1, sort_keys=True, default=float)
 open(os.path.join(HERE, 'DERIVE_out.txt'), 'w').write("\n".join(LOG) + "\n")
 P()
