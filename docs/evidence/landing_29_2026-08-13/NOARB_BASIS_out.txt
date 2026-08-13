@@ -1,0 +1,10 @@
+LIVE (O25R4)       store=d9a24282   v0surf=6ef67f07db98   recs=2645  ND-teaching(EXPECT_N)=1197
+LANDED (O29FINAL)  store=cb38ef11   v0surf=4405cba2b42f   recs=2648  ND-teaching(EXPECT_N)=1200
+
+ND teaching-population delta LANDED vs LIVE:  +3 entered  /  -0 left
+  entered: ['adam-treloar', 'dylan-shiel', 'jeremy-cameron']
+  left   : []
+
+matrix meta keys: ['basis', 'emitter', 'engine_head', 'force_majeure', 'n_records', 'nd_curve_last', 'pool_pick', 'rule_338', 'slide_years', 'store_md5', 'v0surf_frozen', 'v0surf_sig']
+
+full LANDED meta:

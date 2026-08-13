@@ -1,0 +1,68 @@
+instrument pin COMPUTED at run: noarb_table_338.py 0f8220351c64c56ccfa90c60edcdfa5f
+                                noarb_table_allarm.py 3f9124de638d5ed30792dbdffef591b8
+=== O29LIVE  (3c6ffcde) ===
+  7             0        584      430        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o22/noarb/noarb_table_338.json
+=== O29FINAL  (814df691) ===
+    assert meta['store_md5'] == EXPECT_STORE, \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: matrix store cb38ef11 != committed identity d9a24282
+__pycache__
+allarm_FINAL.json
+allarm_FINAL.txt
+allarm_FINAL23.json
+allarm_FINAL23.txt
+allarm_FINALO1.json
+allarm_FINALO1.txt
+allarm_O21STAGED.json
+allarm_O21STAGED.txt
+allarm_O25FINAL.json
+allarm_O25FINAL.txt
+allarm_O25R1.json
+allarm_O25R1.txt
+allarm_O29FINAL.txt
+allarm_O29LIVE.json
+allarm_O29LIVE.txt
+allarm_SHIP.json
+allarm_SHIP.txt
+harness_pvc_REPINNED_pass3.py
+noarb_table_338.py
+noarb_table_allarm.py
+t338_FINAL.txt
+t338_FINAL23.txt
+t338_FINALO1.txt
+t338_O21STAGED.txt
+t338_O25FINAL.txt
+t338_O25R1.txt
+t338_O29FINAL.txt
+t338_O29LIVE.txt
+t338_SHIP.txt
+table_FINAL.json
+table_FINAL23.json
+table_FINALO1.json
+table_O21STAGED.json
+table_O25FINAL.json
+table_O25R1.json
+table_O29LIVE.json
+table_SHIP.json
+
+====================================================================================================================
+BOTH COHORT INSTRUMENTS -- margins against the 14% annual charge. A NEGATIVE MARGIN IS AN ARBITRAGE.
+====================================================================================================================
+
+ALL-ARM DECIDING INSTRUMENT  (noarb_table_allarm.py)
+  window       variant         yr0      yr1      yr2      yr3      yr4      yr5 | apprec 0-1  margin v14%  verdict
+  PRIMARY  cohorts 2005-2023 n=2212 O29LIVE      1.0000   0.8077   0.9737   1.0703   1.1291   1.1096 |    -19.23%       33.23%   no arb
+  MODERN   cohorts 2019-2023 n=540 O29LIVE      1.0000   0.8225   0.9256   0.9794   0.9772   1.0345 |    -17.75%       31.75%   no arb
+  (no allarm json for O29FINAL)
+
+LEGACY RETAINED INSTRUMENT  (noarb_table_338.py, UNMODIFIED)
+  group          variant         yr1 apprec 0-1  margin v14%  verdict
+  ALL picks 1-64 O29LIVE      1.0730      7.30%        6.70%   no arb
+  picks 1-20     O29LIVE      1.1218     12.18%        1.82%   no arb
+  picks 21-64    O29LIVE      0.9996     -0.04%       14.04%   no arb
+  (no table json for O29FINAL)
+
+  ARBITRAGES OPENED: 0 of 5 readings.
+  wrote /home/user/afl-rl-engine/.claude/worktrees/agent-a89c1dbcba703b573/docs/evidence/landing_29_2026-08-13/NOARB_MARGINS_29.json

@@ -1,0 +1,84 @@
+ORDER 29 -- THE TWO COHORT NO-ARB INSTRUMENTS REFUSE THE LANDED MATRIX.
+VERBATIM TRANSCRIPTS. NOTHING WAS TUNED, PATCHED OR RE-POINTED TO MAKE THESE PASS.
+==============================================================================================================
+
+INSTRUMENT MD5s, COMPUTED AT RUN (all three UNMODIFIED on this branch):
+  noarb_table_338.py               0f8220351c64c56ccfa90c60edcdfa5f
+  noarb_table_allarm.py            3f9124de638d5ed30792dbdffef591b8
+  harness_pvc_REPINNED_pass3.py    f2c81da18e02e8a6003ce011c4b8ada3
+
+MATRIX UNDER TEST: per_entrant_O29FINAL.json  814df6917961db122af2571a0f65bbb9
+  emitted by docs/evidence/landing_29_2026-08-13/emit_variant_o29.sh on the LANDED tree,
+  store cb38ef11 / engine head e5109864 / v0surf 4405cba2 / 2648 records.
+
+==============================================================================================================
+### 1. noarb_table_338.py  (the pinned legacy instrument)  on per_entrant_O29FINAL.json
+==============================================================================================================
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o22/noarb/noarb_table_338.py", line 189, in <module>
+    main()
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o22/noarb/noarb_table_338.py", line 95, in main
+    meta, ND = H.load_matrix(MATRIX)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o22/noarb/harness_pvc_REPINNED_pass3.py", line 327, in load_matrix
+    assert meta['store_md5'] == EXPECT_STORE, \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: matrix store cb38ef11 != committed identity d9a24282
+
+==============================================================================================================
+### 2. noarb_table_allarm.py  (the all-arm deciding instrument)  on per_entrant_O29FINAL.json
+==============================================================================================================
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o22/noarb/noarb_table_allarm.py", line 50, in <module>
+    assert meta['store_md5'][:8] == 'd9a24282', "store pin moved: %s" % meta['store_md5']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: store pin moved: cb38ef11
+
+==============================================================================================================
+### 3. THE SAME TWO INSTRUMENTS ON THE LIVE MATRIX -- THE CONTROL, WHICH PASSES
+==============================================================================================================
+Run in the same invocation, same instrument copies, on per_entrant_O25R4.json (3c6ffcde), the
+matrix behind the LIVE board 88ce647f. It is the byte-identical file the ORDER 25 landing scored
+as O25FINAL, so its numbers MUST reproduce NOARB_MARGINS_V2 -- and they do, to the last digit.
+This is what proves the blocker is the PIN and not the pipeline, this seat or the emit.
+
+o-apples).
+
+### picks 1-20   (cohort n=377)
+  yrN   n_incl  n_zero notreach   mean_yrN    med_yrN  mean_yr0*   med_yr0*    ratio
+  ----------------------------------------------------------------------------------
+  0        377       0        0     1601.4     1315.4     1601.4     1315.4    1.000
+  1        377       0        0     1796.4     1359.0     1601.4     1315.4    1.122
+  2        377       0        0     2184.5     1832.0     1601.4     1315.4    1.364
+  3        377       0        0     2383.7     1906.0     1601.4     1315.4    1.489
+  4        377       0        0     2559.1     1819.0     1601.4     1315.4    1.598
+  5        357      25       20     2497.1     1573.0     1592.0     1315.4    1.568
+  6        337      42       40     2342.8     1273.0     1588.4     1308.1    1.475
+  7        317      57       60     2064.1     1194.0     1596.2     1308.1    1.293
+  * mean_yr0 / med_yr0 are computed over the SAME included set as that row (apples-to-apples).
+
+### picks 21-64   (cohort n=820)
+  yrN   n_incl  n_zero notreach   mean_yrN    med_yrN  mean_yr0*   med_yr0*    ratio
+  ----------------------------------------------------------------------------------
+  0        820       0        0      489.0      437.4      489.0      437.4    1.000
+  1        820       0        0      488.8      341.0      489.0      437.4    1.000
+  2        820       0        0      630.5      360.0      489.0      437.4    1.289
+  3        820     141        0      736.0      349.5      489.0      437.4    1.505
+  4        820     257        0      748.6      219.5      489.0      437.4    1.531
+  5        782     308       38      749.5      109.0      489.9      436.4    1.530
+  6        738     349       82      751.4       45.5      490.4      436.4    1.532
+  7        697     373      123      642.1        0.0      489.7      436.5    1.311
+  * mean_yr0 / med_yr0 are computed over the SAME included set as that row (apples-to-apples).
+
+### zero-source breakdown, ALL picks 1-64  (how each included row got its number)
+  yrN     from_v0  from_path    ended     null
+  0          1197          0        0        0
+  1             0       1197        0        0
+  2             0       1197        0        0
+  3             0       1056      141        0
+  4             0        940      257        0
+  5             0        806      333        0
+  6             0        684      391        0
+  7             0        584      430        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o22/noarb/noarb_table_338.json
