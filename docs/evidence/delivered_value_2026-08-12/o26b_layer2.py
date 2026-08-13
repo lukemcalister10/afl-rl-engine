@@ -185,6 +185,78 @@ FORCE_MAJEURE = dict(
                              'cohort a career is ATTRIBUTED to moves (Ruling 5\'s acquisition slot). '
                              'LAYER2.json::base is byte-identical across the correction.',
 )
+# ==================================================================================================
+# ORDER 26B-V -- THE GRACE-YEARS VARIANTS.  **MEASUREMENT ONLY. NOT RULED.**
+# ==================================================================================================
+# Owner order #334 comment 5275831956 (2026-08-13). His diagnosis: the flat-from-year-1 fade
+# compresses the hits' peak seasons (a year-4 peak carries 1.14^-4 = 0.5921 from day 0) while busts
+# score zero under any fade. The variants delay the START of the fade for young entrants only.
+#
+# THE k MAPPING, STATED (PRESTATEMENT_26BV.md §2). This scorer's k is `season_year - entry_year`, so
+# k = 1 IS a normal draftee's first played season and today carries 1.14^-1. The order's formula
+# (1.14)^-max(0, j-1-G) has j = k. At G = 0 that formula gives max(0, k-1) -- ONE FREE YEAR FOR
+# EVERYONE, which collides with the owner's own "Not mature age players". Both readings are computed;
+# neither is silently chosen:
+#   READING O (PRIMARY)   exponent max(0, k - G_O)   -- reproduces his stated grace-A weights exactly
+#                         (k=1,2 -> 1.0; k=3 -> 1.14^-1) AND leaves mature-agers on today's ladder
+#   READING L (SECONDARY) exponent max(0, k - 1 - G) -- the order's formula, taken literally
+GRACE = dict(
+    status='MEASUREMENT ONLY -- NOT RULED. flat-14 remains the operative basis.',
+    provenance='owner order #334 comment 5275831956 (2026-08-13); readings and the k-mapping fixed in '
+               'PRESTATEMENT_26BV.md, committed before any variant was computed.',
+    owner_diagnosis='the flat-from-year-1 fade compresses the hits\' peak seasons (year-4 weight '
+                    '0.5921) while busts score zero under any fade',
+    owner_spec_A='"the future season fade only starts after season 1... years 1 and 2 are 100%, then '
+                 'year 3 14% less" -- for normal-draft-age entrants only ("19 in their first year. '
+                 'Not mature age players")',
+    owner_spec_B='"normal draft age kids get two seasons of grace, and kids drafted one year older '
+                 'get one"',
+    mechanism='an EXPONENT SHIFT in the existing discount ladder: DF(k) = disc_factor(entry_age, '
+              '0.14, max(0, k - G)). It still routes through the engine\'s own disc_factor callable; '
+              'only the exponent handed to it moves.',
+    k_convention='k = season_year - entry_year; k = 1 is a normal draftee\'s FIRST played season and '
+                 'carries 1.14^-1 on the current basis. k <= 0 discounts at 1.0 (engine convention).',
+    reading_O='PRIMARY. exponent max(0, k - G_O).  grace-A: G_O = 2 if entry_age <= 19 else 0.  '
+              'grace-B: G_O = 3 if <= 19, 2 if == 20, else 0.',
+    reading_L='SECONDARY. exponent max(0, k - 1 - G).  grace-A: G = 1 if <= 19 else 0.  grace-B: '
+              'G = 2 if <= 19, 1 if == 20, else 0.  Gives EVERY entrant one free year at G = 0.',
+    grace0_diagnostic='exponent max(0, k - 1) for everyone -- isolates the universal one-year shift '
+                      'the literal formula embeds, so the conflation is a number and not an argument.',
+    age_source='Layer 1 entry_age (100% coverage); the recorded year-18 fallback is used only where '
+               'entry_age is null, and it never overwrites a real age.',
+    everything_else='identical to the operative C2 basis: loclin curve, force-majeure slide, window '
+                    'tiers, games weighting, K=15, bars, positions, tails.',
+    landing_constraint='AT LANDING THE TWO SIDES CANNOT MOVE APART. The identity gate ties this '
+                       'scorer to price6, which discounts projected seasons through the same '
+                       'disc_factor. A grace on the curve side alone would break that identity and '
+                       'the ruled landing assert with it. If a grace is ever ruled in it must be '
+                       'ruled into disc_factor itself, and both sides re-derive together.',
+)
+
+
+def grace_O(variant):
+    """READING O -- the PRIMARY reading. Returns G_O(entry_age)."""
+    if variant == 'A':
+        return lambda a: 2 if (a is not None and a <= 19) else 0
+    if variant == 'B':
+        return lambda a: 3 if (a is not None and a <= 19) else (2 if a == 20 else 0)
+    raise ValueError(variant)
+
+
+def grace_L(variant):
+    """READING L -- the order's formula taken literally. Returns G_O-equivalent = 1 + G."""
+    if variant == 'A':
+        return lambda a: 2 if (a is not None and a <= 19) else 1
+    if variant == 'B':
+        return lambda a: 3 if (a is not None and a <= 19) else (2 if a == 20 else 1)
+    raise ValueError(variant)
+
+
+def grace_zero(_variant=None):
+    """The grace-0 diagnostic: the universal one-year shift, nobody age-targeted."""
+    return lambda a: 1
+
+
 FM_KEYS = set(FORCE_MAJEURE['excluded_keys'])
 FM_YEARS = set(FORCE_MAJEURE['slide_years'])
 CFG['force_majeure'] = FORCE_MAJEURE
@@ -257,8 +329,11 @@ class Disc(object):
     MA.AGE_DISC_MODE in memory on the STAGED copy -- never by reimplementing the ladder here, and
     never by writing a file."""
 
-    def __init__(self, mode='flat14'):
+    def __init__(self, mode='flat14', grace=None):
         self.mode = mode
+        # ORDER 26B-V: `grace` is a callable entry_age -> G, shifting the EXPONENT handed to the
+        # engine's own disc_factor. None = today's ladder, exponent k.
+        self.grace = grace
 
     def __enter__(self):
         self._sav = (MA.AGE_DISC, MA.AGE_DISC_MODE)
@@ -273,6 +348,8 @@ class Disc(object):
         return False
 
     def f(self, entry_age, k):
+        if self.grace is not None:
+            k = max(0, k - self.grace(entry_age))
         return MA.disc_factor(entry_age, MA.LENS['bal'], k, 'bal')
 
 
@@ -368,9 +445,9 @@ def tail_value(e, D):
         MA.REPL.update(sav)
 
 
-def score_all(disc_mode='flat14', wfn=w_sqrt, with_tail=True, keys=None):
+def score_all(disc_mode='flat14', wfn=w_sqrt, with_tail=True, keys=None, grace=None):
     out = {}; CTR = collections.Counter()
-    with Disc(disc_mode) as D:
+    with Disc(disc_mode, grace) as D:
         for e in ENTRIES:
             if keys is not None and e['key'] not in keys: continue
             obs, det, ctr = observed_value(e, D, wfn)
@@ -555,8 +632,43 @@ P("o26b_gate.py::season_raw, and the bars are recomputed here off the engine, no
 P("  bars %s" % {g: round(BARS[g], 4) for g in sorted(BARS)})
 P("  Ruling 1 %s" % RULING1)
 
+# ---- ORDER 26B-V: the grace variants, as separate labelled Layer-2 runs -------------------------
+GA_O, _ = score_all('flat14', w_sqrt, True, grace=grace_O('A'))
+GB_O, _ = score_all('flat14', w_sqrt, True, grace=grace_O('B'))
+GA_L, _ = score_all('flat14', w_sqrt, True, grace=grace_L('A'))
+GB_L, _ = score_all('flat14', w_sqrt, True, grace=grace_L('B'))
+G0, _ = score_all('flat14', w_sqrt, True, grace=grace_zero())
+P()
+P("ORDER 26B-V -- THE GRACE-YEARS VARIANTS  **MEASUREMENT ONLY, NOT RULED**")
+P("  %s" % GRACE['mechanism'])
+P("  READING O (primary):   %s" % GRACE['reading_O'])
+P("  READING L (secondary): %s" % GRACE['reading_L'])
+P("  %-26s %10s %10s %10s %10s %10s" % ('whole population', 'flat-14', 'graceA_O', 'graceB_O',
+                                        'graceA_L', 'graceB_L'))
+_nz = [k for k in BASE if BASE[k]['total'] > 0]
+P("  %-26s %10.1f %10.1f %10.1f %10.1f %10.1f"
+  % ('mean delivered (n>0)', sum(BASE[k]['total'] for k in _nz) / len(_nz),
+     sum(GA_O[k]['total'] for k in _nz) / len(_nz), sum(GB_O[k]['total'] for k in _nz) / len(_nz),
+     sum(GA_L[k]['total'] for k in _nz) / len(_nz), sum(GB_L[k]['total'] for k in _nz) / len(_nz)))
+for lo, hi, lbl in [(0, 19, 'entry age <=19'), (20, 20, 'entry age 20'), (21, 99, 'entry age 21+')]:
+    ks = [k for k in _nz if lo <= (EMETA[k]['entry_age'] or EMETA[k]['entry_age_fallback_if_null']
+                                   or 0) <= hi]
+    if not ks: continue
+    P("    %-24s n=%4d   A_O %.4f  B_O %.4f  A_L %.4f  B_L %.4f   (x flat-14)"
+      % (lbl, len(ks),
+         sum(GA_O[k]['total'] for k in ks) / sum(BASE[k]['total'] for k in ks),
+         sum(GB_O[k]['total'] for k in ks) / sum(BASE[k]['total'] for k in ks),
+         sum(GA_L[k]['total'] for k in ks) / sum(BASE[k]['total'] for k in ks),
+         sum(GB_L[k]['total'] for k in ks) / sum(BASE[k]['total'] for k in ks)))
+P("  ZEROS ARE INVARIANT under every ladder (a bust scores 0 whatever the discount): flat-14 %d, "
+  "graceA_O %d, graceB_O %d"
+  % (sum(1 for k in BASE if BASE[k]['total'] <= 0), sum(1 for k in GA_O if GA_O[k]['total'] <= 0),
+     sum(1 for k in GB_O if GB_O[k]['total'] <= 0)))
+
 OUT = dict(cfg=CFG, pins={k: v[1] for k, v in PINS.items()}, layer1_md5=L1_MD5,
            now=NOW, base=BASE, v5=V5, linear_named={k: LIN[k] for k in NAMED},
+           grace_cfg=GRACE, grace_a=GA_O, grace_b=GB_O,
+           grace_a_readingL=GA_L, grace_b_readingL=GB_L, grace_zero=G0,
            linear_all=ALLLIN, named=NAMED,
            force_majeure=FORCE_MAJEURE, attribution=ATTR,
            fit_nd_keys=[e['key'] for e in ND], fit_pool_keys=[e['key'] for e in POOL],

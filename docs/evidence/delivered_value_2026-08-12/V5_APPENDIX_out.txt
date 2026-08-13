@@ -1,6 +1,10 @@
 ==============================================================================================================
-ORDER 26B -- THE V5 AGE-LADDER APPENDIX.  **NOT RULED.**  flat-14 is the live config.
+ORDER 26B -- THE V5 AGE-LADDER APPENDIX.  **RULED OFF 2026-08-13.**  flat-14 is the live config.
 ==============================================================================================================
+  OWNER RULING 2026-08-13, verbatim: "don't worry about V5 for now - the XW change addressed the
+  issue and V5 on top would impact the live board a bit too much I think."
+  This appendix is KEPT as measured context -- it is what the owner ruled ON -- but V5 is no
+  longer a live option. Nothing in ORDER 26B rests on it.
   V5 knots (rl_model.py::_V5_KNOTS, the owner's fifth ladder, keyed on the age at pricing --
   here the ENTRY age, because Ruling 2 discounts from acquisition):
     18:.120  19:.125  20:.130  21:.135  22:.140  23:.140  24:.145  25:.150  26:.150  27:.155  28+:.160

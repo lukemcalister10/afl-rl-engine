@@ -124,4 +124,15 @@ o26b_gate.py::season_raw, and the bars are recomputed here off the engine, not c
   bars {'KPD': 65.4, 'KPF': 63.8, 'MID': 77.1, 'RUCK': 75.5, 'SD': 75.3, 'SF': 67.9}
   Ruling 1 {'KPD': 65.4, 'KPF': 63.8, 'MID': 77.1, 'RUCK': 75.5, 'SD': 75.3, 'SF': 67.9}
 
+ORDER 26B-V -- THE GRACE-YEARS VARIANTS  **MEASUREMENT ONLY, NOT RULED**
+  an EXPONENT SHIFT in the existing discount ladder: DF(k) = disc_factor(entry_age, 0.14, max(0, k - G)). It still routes through the engine's own disc_factor callable; only the exponent handed to it moves.
+  READING O (primary):   PRIMARY. exponent max(0, k - G_O).  grace-A: G_O = 2 if entry_age <= 19 else 0.  grace-B: G_O = 3 if <= 19, 2 if == 20, else 0.
+  READING L (secondary): SECONDARY. exponent max(0, k - 1 - G).  grace-A: G = 1 if <= 19 else 0.  grace-B: G = 2 if <= 19, 1 if == 20, else 0.  Gives EVERY entrant one free year at G = 0.
+  whole population              flat-14   graceA_O   graceB_O   graceA_L   graceB_L
+  mean delivered (n>0)            581.4      730.8      824.8      741.9      832.2
+    entry age <=19           n=1659   A_O 1.2978  B_O 1.4700  A_L 1.2978  B_L 1.4700   (x flat-14)
+    entry age 20             n=  83   A_O 1.0000  B_O 1.2924  A_L 1.1397  B_L 1.2924   (x flat-14)
+    entry age 21+            n= 289   A_O 1.0000  B_O 1.0000  A_L 1.1381  B_L 1.1381   (x flat-14)
+  ZEROS ARE INVARIANT under every ladder (a bust scores 0 whatever the discount): flat-14 619, graceA_O 619, graceB_O 619
+
 wrote LAYER2.json  (pins re-verified at exit: engine, store, board and Layer 1 untouched)

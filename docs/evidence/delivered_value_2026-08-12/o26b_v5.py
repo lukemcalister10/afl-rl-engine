@@ -79,8 +79,12 @@ def nd_equiv(v, allin, af):
 
 
 P("=" * 110)
-P("ORDER 26B -- THE V5 AGE-LADDER APPENDIX.  **NOT RULED.**  flat-14 is the live config.")
+P("ORDER 26B -- THE V5 AGE-LADDER APPENDIX.  **RULED OFF 2026-08-13.**  flat-14 is the live config.")
 P("=" * 110)
+P('  OWNER RULING 2026-08-13, verbatim: "don\'t worry about V5 for now - the XW change addressed the')
+P('  issue and V5 on top would impact the live board a bit too much I think."')
+P("  This appendix is KEPT as measured context -- it is what the owner ruled ON -- but V5 is no")
+P("  longer a live option. Nothing in ORDER 26B rests on it.")
 P("  V5 knots (rl_model.py::_V5_KNOTS, the owner's fifth ladder, keyed on the age at pricing --")
 P("  here the ENTRY age, because Ruling 2 discounts from acquisition):")
 P("    18:.120  19:.125  20:.130  21:.135  22:.140  23:.140  24:.145  25:.150  26:.150  27:.155  28+:.160")
@@ -131,7 +135,10 @@ P("    ranking identical: %s" % (ordA == ordB))
 P("    every pathway all-in moves in the same direction (up): %s"
   % all(MOVES[m]['ratio'] >= 1.0 for m in POOLM))
 
-OUT = dict(note='NOT RULED. flat-14 is the live config and the basis of every 26B conclusion.',
+OUT = dict(note='RULED OFF 2026-08-13 (owner: the XW change addressed the issue, and V5 on top would '
+                'move the live board too much). Kept as measured context. flat-14 is the live config '
+                'and the basis of every 26B conclusion.',
+           ruling_date='2026-08-13', ruling_status='RULED OFF',
            knots=[[18, .12], [19, .125], [20, .13], [21, .135], [22, .14], [23, .14],
                   [24, .145], [25, .15], [26, .15], [27, .155], [28, .16]],
            flat14=dict(pre_anchor=A['pre'], anchor_factor=A['af'], nd_mean=A['nd_mean'],
