@@ -1,0 +1,29 @@
+MOVERS ABLATION A: PEDIGREE POLE deleted (vs the Step-2 board)
+  old rl_app_data.json  total 706672
+  new rl_app_data.json  total 687399  (delta -19273, -2.7273%)
+  movers 271 of 804   sum delta -19273
+  by career-games class:
+     cg 1-2    movers    5   sum       -11
+     cg 3-5    movers   24   sum      -613
+     cg 6-10   movers   33   sum     -1666
+     cg 11-15  movers   26   sum     -1018
+     cg 16+    movers  183   sum    -15965
+  by entry type: IRE 1(-7), MSD 33(-815), ND 196(-16035), PDA 7(-475), PDN 6(-472), RD 16(-896), SSP 10(-469), UNR 2(-104)
+  LARGEST 15 MOVES
+  key                             old      new     delta    cg    yr    ty   pk
+  isaac-kako                     1320      747      -573    36  2024    ND   13
+  alix-tauru                     1572     1071      -501    18  2024    ND   10
+  caleb-windsor                  1666     1167      -499    54  2023    ND    7
+  ethan-read                      957      502      -455    38  2023    ND    9
+  cooper-hynes                   1441      987      -454    27  2024    ND   20
+  bo-allan                       1054      621      -433    24  2024    ND   16
+  jed-walter                     1345      920      -425    46  2023    ND    3
+  jordan-croft                    979      589      -390    18  2023    ND   15
+  archer-day-wicks                716      352      -364    24  2024    RD    1
+  zeke-uwland                    2509     2150      -359    17  2025    ND    2
+  mitchell-edwards               2279     1951      -328    16  2023    ND   32
+  jake-rogers                     548      229      -319    25  2023    ND   14
+  archer-reid                     712      403      -309    20  2023    ND   30
+  tobie-travaglia                 638      342      -296    17  2024    ND    8
+  zane-duursma                    761      467      -294    38  2023    ND    4
+  wrote /home/user/afl-rl-engine/.claude/worktrees/agent-a65ed71c2045dbc94/docs/evidence/one_machinery_2026-08-14/ABL_NOPOLE.json

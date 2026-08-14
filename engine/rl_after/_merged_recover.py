@@ -391,6 +391,11 @@ def price6(p,bb,Y=2026):
     finally: MA.REPL.update(sav)
 def recover(perf,par): return float(np.clip(np.interp(perf/max(1.0,par),RECX,RECY),0,1))
 def synth(pk,avg,pos,nyr=2): return {'player':'s','pos':GRPPOS.get(pos,midpos),'pick':float(pk),'year':2023,'dob':'2005-03-01','type':'ND','scoring':[{'year':2024+i,'games':18,'avg':float(avg)} for i in range(nyr)],'_pos_now':None,'_futpos':None}   # DPP STRIP: single-position synth (gfut falls back to bnow=pos)
+# ORDER 30B STEP-3 MEASUREMENT DIALS. BOTH DEFAULT OFF => the shipped expressions are byte-identical.
+# They exist to PRICE the forbidden-set boundary (which objects the 26A deletion reaches) before the owner
+# rules it, exactly as the STEP-2 stop priced its three options. No board ships with either set.
+_O30B_NOPOLE=os.environ.get('RL_O30B_NOPOLE','0')!='0'   # delete the PEDIGREE POLE leg from raw_ev
+_O30B_NOISO=os.environ.get('RL_O30B_NOISO','0')!='0'     # delete the par-built ISO pick-tax from the production path
 _POLE={}
 def par_pole(pos,pk,T):
     k=(pos,int(min(pk,cp.KMAX)),int(min(max(T,1),6)))
@@ -473,6 +478,13 @@ def raw_ev(p,Y=2026):
         expgate=_expgate(p,Y)                                                         # EXPOSURE REGIME (regime 4): smoothed (was 1.0 if nqual>=4 else exposure/POLE_RAMP ramp); RL_EVW=0 => base gate
         w=wage*tfade*expgate
     perf=cp._lvl_wt(p,Y)                                  # WEIGHTED games x recency level (RL_RECENCY_DECAY), not flat best-3
+    # ORDER 30B MEASUREMENT DIAL, DECLARED AND DEFAULT-OFF (RL_O30B_NOPOLE=1). This line IS the PEDIGREE
+    # POLE leg — `po` is par_pole(pos,pk,T), a forbidden-set object, added on top of the production price
+    # `pr` and faded by wage x tfade x expgate. The dial deletes the leg (raw_ev == the production price)
+    # so the price consequence of the STEP-3 forbidden-set boundary can be MEASURED before it is ruled.
+    # Default 0 => this expression is byte-identical to the shipped one. It is a MEASUREMENT dial for the
+    # step-3 stop, not a pricing lever, and no board ships with it set.
+    if _O30B_NOPOLE: return pr
     return pr+w*recover(perf,par)*max(0.0,po-pr)
 # ===== (3) ISOTONIC PICK GUARD: per pos, monotone non-increasing in pick at par; correction factor =====
 # ==== LEG A — iso_corr EVIDENCE-FADE + ISO MONOTONIZATION (RL_ISOFADE; item 132, spec §3 Leg A) ====
@@ -502,6 +514,7 @@ for pos in ['MID','SF','KPF','SD','KPD','RUCK']:
     ISO[pos]=(np.array(PICKS), fs)
 def iso_corr(pos,pk): xs,fs=ISO[pos]; return float(np.interp(min(pk,70),xs,fs))
 def iso_eff(p,Y=2026):                                        # LEG A (b): per-REAL-player EFFECTIVE iso — the pick tax faded on the v2.10 evidence weight w=E_q
+    if _O30B_NOISO: return 1.0                                # ORDER 30B measurement dial (default off): the ISO table is BUILT FROM par_at synths (:497) and is a PICK-side correction on the production leg — the two properties that put it on the forbidden-set boundary
     base=iso_corr(MA.gfut(p),MA.effpk(p))
     if not _ISOFADE or not _isreal(p): return base            # switch off, or a synth (structural scaffold; zero-evidence convention) => raw/monotonized table, unfaded
     return 1.0+(base-1.0)*_math.exp(-_ev_qual(p,Y)/_ISOFADE_TAU)   # full at w=0 (V0 unchanged by construction) -> 1.0 as evidence saturates (residual-0 member of the pedigree-fade family)

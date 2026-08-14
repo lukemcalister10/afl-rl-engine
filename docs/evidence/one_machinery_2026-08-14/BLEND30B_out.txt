@@ -1,0 +1,59 @@
+==============================================================================================================
+ORDER 30B STEP 3  --  THE BLEND WEIGHT w(g), CALIBRATED TO THE RE-DERIVED CUMULATIVE BACKBONE
+==============================================================================================================
+  source          FADE30B_DRIFT.json::backbone_r1  (the R1 re-derived row; ruling 4 survives the
+                  re-derivation intact -- max drift vs the ruled backbone 0.0182)
+  D(2) wired      0.5501935857356868
+  backbone <=0    0.5501935857356869   == D(2)?  True   (w(0)=0 makes this EXACT by construction)
+  free targets    <=2 0.648475   <=5 0.688668   <=10 0.822284
+  form (PREREG P13, declared before the fit)   w(g) = 1 - exp(-(g/tau)^beta)
+  scale           B(g) = w(g)*1 + (1-w(g))*D(2)   =>   w = (B - D2)/(1 - D2)
+
+  THE THREE w POINTS THE BACKBONE IMPLIES (an inversion, not a fit):
+    g = 2     B = 0.648475   w = (B - 0.5502)/(1 - 0.5502) = 0.218497
+    g = 5     B = 0.688668   w = (B - 0.5502)/(1 - 0.5502) = 0.307853
+    g = 10    B = 0.822284   w = (B - 0.5502)/(1 - 0.5502) = 0.604906
+
+  FIT (least squares in D units; dense grid then deterministic local refinement)
+    tau  = 11.650213
+    beta = 0.937162
+    SSE  = 1.159e-03     RMS residual = 0.019658  in D units
+
+    g        B target   B fitted   residual |   w target   w fitted
+    0        0.550194   0.550194  -0.000000 |   0.000000   0.000000
+    2        0.648475   0.628687  -0.019788 |   0.218497   0.174505
+    5        0.688668   0.713937  +0.025269 |   0.307853   0.364031
+    10       0.822284   0.810917  -0.011367 |   0.604906   0.579635
+
+  ENTRY CROSSOVER (w = 0.5, the point where demonstrated production outweighs the faded entry
+  price):  g = 7.879 games.   RULED WINDOW: 6-10 games (owner ruling 4).   INSIDE
+
+  THE SCHEDULE, games 0-20:
+    g        w(g)     1-w(g)
+    0     0.00000    1.00000
+    1     0.09530    0.90470
+    2     0.17451    0.82549
+    3     0.24454    0.75546
+    4     0.30733    0.69267
+    5     0.36403    0.63597
+    6     0.41547    0.58453
+    7     0.46227    0.53773
+    8     0.50495    0.49505
+    9     0.54395    0.45605
+    10    0.57963    0.42037
+    11    0.61233    0.38767
+    12    0.64232    0.35768
+    13    0.66985    0.33015
+    14    0.69514    0.30486
+    15    0.71839    0.28161
+    16    0.73979    0.26021
+    17    0.75948    0.24052
+    18    0.77762    0.22238
+    19    0.79434    0.20566
+    20    0.80974    0.19026
+
+  PREREG SCORING OF THE FIT
+    P13  form as declared, w(0)=0 exact, strictly increasing        HELD
+    P14  RMS residual <= 0.05 D units                                HELD  (0.019658)
+    P15  crossover in 6-10 games                                     HELD  (7.879)
+    P15  proxy band tau in [4,12]                                    HELD  (11.6502)
