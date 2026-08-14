@@ -1576,108 +1576,58 @@ assert not _pool_slot_mismatch, ('#326 HALT: %d row(s) sit at the pool slot with
 # the owner has ruled, over a condition that moves no price on this board. It is reported to the owner as
 # an OWED DECISION instead — kalani-white needs either a priced answer or a signed PDN|KPF before pool_v0
 # is ever consumed.
-#
-# ===== ORDER 29B — THE OWED DECISION ARRIVED, AND THIS GUARD IS REPLACED RATHER THAN REMOVED ===============
-# OWNER RULING (#334 comment 5280881134), OPTION A: the two empty cells are SIGNED as BORROWED — the
-# K-shrink limiting case, 100% borrow (pathway level x pool-wide KPF positional relativity). The values are
-# PDN|KPF 92.35874340265629 and PDS|KPF 83.97715038537063, carried in the artifact with a per-cell
-# `borrowed` disclosure and a `cell_signature` map, and they reproduce ORDER 29's own `declined_unsigned`
-# 92.4 / 84.0 exactly — the ruling signed the arithmetic the derivation had already run and declined.
-#
-# WHY THE SHAPE OF THE GUARD CHANGES, STATED PLAINLY. Under ORDER 29 nothing read pool_v0, so declining a
-# number cost nothing and the halt was ARMED-but-never-fired. ORDER 29B WIRES pool_v0 TO THE DAY-0 PRINT,
-# so the trigger the old comment named ("it goes live in the same commit that wires pool_v0 to a pricing
-# site") has arrived. An unsigned cell is now a MISSING PRICE, not a deferred question.
-#   * THE UNSIGNED-CELL HALT RETIRES FOR CELLS SIGNED THIS WAY — there are no unsigned cells left, so a
-#     halt keyed on `unsigned_cells` would be a guard that can never fire, which is worse than no guard.
-#   * IT IS REPLACED BY A COVERAGE ASSERT, which is the thing that actually matters once the object is
-#     consumed: EVERY pathway x position cell an entrant maps to must carry a SIGNED value — borrowed or
-#     fitted. Stated over the WHOLE store pool population, not merely the active board, so a row that is
-#     not priced today but is listed tomorrow cannot arrive at a null.
-#   * `pool_v0_of()` REMAINS THE ONE ACCESSOR AND STILL RAISES on a null or a missing key, so the
-#     fail-closed behaviour is intact for any cell a future derivation leaves unsigned. Its non-vacuity is
-#     still PROVEN on a real row every build (below) rather than assumed — the proof now temporarily nulls
-#     a populated cell and requires the raise, because with nothing unsigned there is no natural specimen.
 _PV0=json.load(open('pvc_curve_v2.json')).get('pool_v0')
 if _PV0:
     _PV0_UNSIGNED=set(_PV0.get('unsigned_cells') or [])
     _PV0_CELLS=_PV0.get('cells') or {}
-    _PV0_SIG=_PV0.get('cell_signature') or {}
-    _PV0_BORROWED=sorted(_PV0.get('borrowed_cells') or {})
     def _pool_v0_cell(p):
         """The printed pool day-0 cell an entrant maps to: '<pathway>|<position>'."""
         _d=pool_division(p)
         _path='ND>64' if _d=='ND65+' else _d.split(':')[0]
         return '%s|%s'%(_path,gfut(p))
-    # ---- (1) THE HALT: no price may ever be READ from an unsigned cell. LIVE — pool_v0 is now CONSUMED.
+    # ---- (1) THE HALT: no price may ever be READ from an unsigned cell. ARMED, not vacuously passing.
     def pool_v0_of(p):
-        """The printed pool day-0 v0 for an entrant, in BOARD currency (the numeraire s is already inside
-        via the artifact's anchor_factor). ORDER 29B: this IS the pool entrant's printed day-0 price, read
-        through this ONE accessor so the halt below cannot be bypassed by reading `cells` directly."""
+        """The printed pool day-0 v0 for an entrant. NOT wired to any pricing site in this act — this is the
+        one accessor, so the halt below cannot be bypassed by a future seat reading `cells` directly."""
         _c=_pool_v0_cell(p)
         _v=_PV0_CELLS.get(_c,'MISSING')
         if _v is None or _v=='MISSING':
             raise SystemExit(
-                'ORDER 29 P9 HALT: %s maps to pool v0 cell %r, which is UNSIGNED (published null) or absent. '
-                'ORDER 29B wires pool_v0 to the DAY-0 PRINT, so this is now a MISSING PRICE and not a '
-                'deferred question. An entrant standing here must be priced by an OWNER DECISION — never by '
-                'back-filling a declined number, never by silently taking the pathway level. HALT AND ASK.'
-                %(p.get('player'),_c))
+                'ORDER 29 P9 HALT: %s maps to pool v0 cell %r, which is UNSIGNED (published null). That cell '
+                'has ZERO fit rows behind it and the derivation\'s fully-shrunk number for it was DECLINED, '
+                'not lost (see the artifact\'s `declined_unsigned`). An entrant standing here must be priced '
+                'by an OWNER DECISION — never by back-filling the declined number, never by silently taking '
+                'the pathway level. HALT AND ASK.'%(p.get('player'),_c))
         return float(_v)
-    # ---- (2) THE COVERAGE ASSERT, which is what replaces the unsigned-cell halt now the object is consumed.
-    #      EVERY cell any pool row maps to must be signed. Wider than "active entrant" deliberately.
-    _pv0_rows=[p for p in data if p.get('_pool')]
-    # ACTIVE = membership of the shipped `players` list built at :1166-1174, which IS the board's own
-    # population. (ORDER 29's disclosure keyed on p['_active']/p['active'], fields the store does not
-    # carry, so it printed 0 active while kalani-white demonstrably stood on the 804-row board. Corrected
-    # here rather than carried forward: a disclosure that under-reports is worse than none.)
-    _pv0_players=set(map(id,players))
-    _pv0_active=[p for p in _pv0_rows if id(p) in _pv0_players]
-    _pv0_missing=[(p.get('player'),_pool_v0_cell(p)) for p in _pv0_rows
-                  if _PV0_CELLS.get(_pool_v0_cell(p),None) is None]
-    assert not _pv0_missing, (
-        'ORDER 29B HALT (pool v0 coverage): %d pool row(s) map to a cell carrying no signed value — %s. '
-        'pool_v0 is CONSUMED by the day-0 print, so an unsigned cell is a missing price. Sign it by owner '
-        'ruling or halt; do not default it.'%(len(_pv0_missing),_pv0_missing[:6]))
-    assert not _PV0_UNSIGNED, (
-        'ORDER 29B HALT: the artifact still declares unsigned_cells %s while pool_v0 is CONSUMED by the '
-        'day-0 print. Every cell must be signed (borrowed or fitted) before this object prices anyone.'
-        %sorted(_PV0_UNSIGNED))
-    # ---- (3) THE DISCLOSURE: named, loud, every build. The BORROW is never allowed to go quiet.
-    _pv0_on_borrowed=[(p.get('player'),_pool_v0_cell(p),'ACTIVE' if id(p) in _pv0_players else 'inactive')
-                      for p in _pv0_rows if _PV0_SIG.get(_pool_v0_cell(p))=='borrowed']
+    # ---- (2) THE DISCLOSURE: named, loud, every build.
+    _uns_all=[p for p in data if p.get('_pool') and _pool_v0_cell(p) in _PV0_UNSIGNED]
+    _uns_active=[p.get('player') for p in _uns_all if p.get('_active') or p.get('active')]
     # STDERR, deliberately: rl_export.py execs the engine under contextlib.redirect_stdout, so a stdout
     # print here is SWALLOWED and a "loud" guard would be silent in every build log. Measured, not assumed.
     __import__('sys').stderr.write(
-          '#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: %d of %d pool rows map to a SIGNED cell '
-          '(%d of them on the shipped board). BORROWED CELLS %s — owner OPTION A, K-shrink limiting case; '
-          '%d row(s) stand on a borrowed cell: %s. The halt in pool_v0_of() is LIVE, not armed.\n'
-          %(len(_pv0_rows),len(_pv0_rows),len(_pv0_active),_PV0_BORROWED,len(_pv0_on_borrowed),
-            (' · '.join('%s [%s, %s]'%t for t in _pv0_on_borrowed[:6]) or 'none')))
+          '#P9 UNSIGNED POOL v0 CELLS %s — NOT CONSUMED BY ANY PRICING LEG IN THIS ACT (deferred rewire), '
+          'so no price on this board is read from a null. STANDING CONDITION, OWED TO THE OWNER: %d store '
+          'row(s) map to an unsigned cell and PREREG P9 predicted zero — %s. The halt in pool_v0_of() is '
+          'ARMED and fires the moment pool_v0 is wired to a pricing site.\n'
+          %(sorted(_PV0_UNSIGNED),len(_uns_all),
+            ', '.join('%s [%s]'%(p.get('player'),_pool_v0_cell(p)) for p in _uns_all[:6])))
     # ---- NON-VACUITY, proven rather than asserted: the accessor must RETURN for a populated cell and must
-    #      RAISE for an unsigned one. With nothing unsigned there is no natural specimen, so the raise is
-    #      proven by TEMPORARILY nulling a real, heavily populated cell on the real code path and restoring
-    #      it immediately. The guard is never trusted on silence.
+    #      RAISE for an unsigned one. Proven here on real rows, so the halt above is never trusted on silence.
     _p9_probe=[p for p in data if p.get('_pool') and _pool_v0_cell(p)=='RD|MID']
     assert _p9_probe and pool_v0_of(_p9_probe[0])>0, (
         'ORDER 29 P9 HALT: the pool v0 accessor did not return a value for the heavily populated RD|MID '
-        'cell, so its behaviour on an unsigned cell proves nothing. The mapping is broken.')
-    _p9_keep=_PV0_CELLS['RD|MID']
-    try:
-        _PV0_CELLS['RD|MID']=None
+        'cell, so its behaviour on the unsigned cells proves nothing. The mapping is broken.')
+    if _uns_all:
         try:
-            pool_v0_of(_p9_probe[0]); _p9_fired=False
+            pool_v0_of(_uns_all[0]); _p9_fired=False
         except SystemExit:
             _p9_fired=True
-    finally:
-        _PV0_CELLS['RD|MID']=_p9_keep
-    assert _p9_fired and pool_v0_of(_p9_probe[0])==float(_p9_keep), (
-        'ORDER 29B HALT: the unsigned-cell guard did NOT fire on a deliberately nulled cell, or the cell '
-        'was not restored. The guard is vacuous.')
-    __import__('sys').stderr.write(
-          '#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns %.1f for RD|MID (n=%d rows) and '
-          'RAISES the moment that same cell is null. The guard is live, not silent.\n'
-          %(pool_v0_of(_p9_probe[0]),len(_p9_probe)))
+        assert _p9_fired, ('ORDER 29 P9 HALT: the unsigned-cell guard did NOT fire on %s, who demonstrably '
+                           'maps to an unsigned cell. The guard is vacuous.'%_uns_all[0].get('player'))
+        __import__('sys').stderr.write(
+              '#P9 NON-VACUITY PROVEN ON REAL ROWS: the accessor returns %.1f for RD|MID (n=%d rows) and '
+              'RAISES for %s [%s]. The guard is live, not silent.\n'
+              %(pool_v0_of(_p9_probe[0]),len(_p9_probe),_uns_all[0].get('player'),_pool_v0_cell(_uns_all[0])))
 _MSD_CAVEAT=_PL_DOC['msd_completion_optimism_caveat']
 print('#326 POOL LEVELS (N43 signed, read verbatim, LADDER currency; ND65+ = %.1f DERIVED, the cap against curve[%d]=%d REMOVED by owner ruling 2026-08-12 -> %d): %s'
       %(float(_PL_DOC['signed_nd65_plus']['measured_k15']),ND_CURVE_LAST,_PVC2M[ND_CURVE_LAST],_POOL_LEVELS['ND65+'],
