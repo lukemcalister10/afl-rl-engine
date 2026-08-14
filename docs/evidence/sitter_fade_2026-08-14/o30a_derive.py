@@ -60,7 +60,14 @@ def md5f(p):
 
 
 def git_show(ref, rel):
-    return subprocess.check_output(['git', '-C', ROOT, 'show', '%s:%s' % (ref, rel)])
+    """Read a pinned input out of git rather than duplicating 7 MB of it into this directory.
+    If the ref is missing:  git fetch origin build/delivered-value"""
+    try:
+        return subprocess.check_output(['git', '-C', ROOT, 'show', '%s:%s' % (ref, rel)],
+                                       stderr=subprocess.PIPE)
+    except subprocess.CalledProcessError as ex:
+        raise SystemExit('cannot read %s:%s -- run `git fetch origin %s` first.\n  %s'
+                         % (ref, rel, ref.split('/', 1)[-1], (ex.stderr or b'').decode().strip()))
 
 
 LOG = []
