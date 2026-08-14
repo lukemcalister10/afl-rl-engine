@@ -1,0 +1,795 @@
+{
+ "act": "ORDER 29C \u2014 the re-based no-arb reading",
+ "brief": "#334 comment 5289123976",
+ "board": "36d5dfc73e2b508ece530bc7dfae2090",
+ "charge": 0.14,
+ "basis_definitions": {
+  "HISTORICAL-PRINT": "year-0 = emit_matrix_338.py:252 `round(v0_start(p),1)`, the FROZEN FITTED SURFACE. Years 1-7 = ev(p,Y) under the landed 29B engine. MIXED BASIS: landed-law numerator over a pre-landing denominator.",
+  "LANDED-LAW": "year-0 = the ORDER 29B entry law's own day-0 price (ND: nd_v0.posv[gfut][pick]; pool: pool_v0_of cell; x _PL_F), the same object ev() returns for a day-0 entrant on board 36d5dfc7. Years 1-7 IDENTICAL to the HISTORICAL-PRINT basis, byte for byte.",
+  "LIVE": "the pinned matrix behind live board 88ce647f, read on the pre-re-point instrument copies. Pipeline control only."
+ },
+ "matrices": {
+  "LIVE                  (control)": {
+   "label": "O29CLIVE",
+   "matrix": "per_entrant_O25R4.json",
+   "store": "d9a24282",
+   "v0surf": "6ef67f07db98",
+   "window_end": 2026,
+   "canonical_instrument_md5": "0f8220351c64c56ccfa90c60edcdfa5f"
+  },
+  "HISTORICAL-PRINT      (the record)": {
+   "label": "O29BFINAL",
+   "matrix": "per_entrant_O29B.json",
+   "store": "cb38ef11",
+   "v0surf": "4405cba2b42f",
+   "window_end": 2026,
+   "canonical_instrument_md5": "0f8220351c64c56ccfa90c60edcdfa5f"
+  },
+  "LANDED-LAW            (the merge criterion)": {
+   "label": "O29CFINAL",
+   "matrix": "per_entrant_O29CFINAL.json",
+   "store": "cb38ef11",
+   "v0surf": "4405cba2b42f",
+   "window_end": 2026,
+   "canonical_instrument_md5": "0f8220351c64c56ccfa90c60edcdfa5f"
+  }
+ },
+ "allarm": [
+  {
+   "basis": "LIVE                  (control)",
+   "instrument": "noarb_table_allarm.py",
+   "window": "PRIMARY  cohorts 2005-2023",
+   "population": "all arms, one cohort",
+   "n": 2212,
+   "year_path": {
+    "0": 1.0,
+    "1": 0.8077,
+    "2": 0.9737,
+    "3": 1.0703,
+    "4": 1.1291,
+    "5": 1.1096,
+    "6": 1.056,
+    "7": 0.926
+   },
+   "apprec_0_1": -19.23,
+   "margin_v14": 33.23,
+   "verdict": "no arb"
+  },
+  {
+   "basis": "LIVE                  (control)",
+   "instrument": "noarb_table_allarm.py",
+   "window": "MODERN   cohorts 2019-2023",
+   "population": "all arms, one cohort",
+   "n": 540,
+   "year_path": {
+    "0": 1.0,
+    "1": 0.8225,
+    "2": 0.9256,
+    "3": 0.9794,
+    "4": 0.9772,
+    "5": 1.0345,
+    "6": 0.9099,
+    "7": 0.8009
+   },
+   "apprec_0_1": -17.75,
+   "margin_v14": 31.75,
+   "verdict": "no arb"
+  },
+  {
+   "basis": "HISTORICAL-PRINT      (the record)",
+   "instrument": "noarb_table_allarm.py",
+   "window": "PRIMARY  cohorts 2005-2023",
+   "population": "all arms, one cohort",
+   "n": 2215,
+   "year_path": {
+    "0": 1.0,
+    "1": 0.9325,
+    "2": 1.0381,
+    "3": 1.0742,
+    "4": 1.1228,
+    "5": 1.1006,
+    "6": 1.0451,
+    "7": 0.9152
+   },
+   "apprec_0_1": -6.75,
+   "margin_v14": 20.75,
+   "verdict": "no arb"
+  },
+  {
+   "basis": "HISTORICAL-PRINT      (the record)",
+   "instrument": "noarb_table_allarm.py",
+   "window": "MODERN   cohorts 2019-2023",
+   "population": "all arms, one cohort",
+   "n": 540,
+   "year_path": {
+    "0": 1.0,
+    "1": 0.9589,
+    "2": 0.9986,
+    "3": 0.9923,
+    "4": 0.9768,
+    "5": 1.0289,
+    "6": 0.9017,
+    "7": 0.7926
+   },
+   "apprec_0_1": -4.11,
+   "margin_v14": 18.11,
+   "verdict": "no arb"
+  },
+  {
+   "basis": "LANDED-LAW            (the merge criterion)",
+   "instrument": "noarb_table_allarm.py",
+   "window": "PRIMARY  cohorts 2005-2023",
+   "population": "all arms, one cohort",
+   "n": 2211,
+   "year_path": {
+    "0": 1.0,
+    "1": 1.331,
+    "2": 1.481,
+    "3": 1.5318,
+    "4": 1.6013,
+    "5": 1.5795,
+    "6": 1.5108,
+    "7": 1.3273
+   },
+   "apprec_0_1": 33.1,
+   "margin_v14": -19.1,
+   "verdict": "ARB"
+  },
+  {
+   "basis": "LANDED-LAW            (the merge criterion)",
+   "instrument": "noarb_table_allarm.py",
+   "window": "MODERN   cohorts 2019-2023",
+   "population": "all arms, one cohort",
+   "n": 540,
+   "year_path": {
+    "0": 1.0,
+    "1": 1.2648,
+    "2": 1.324,
+    "3": 1.3156,
+    "4": 1.2951,
+    "5": 1.3782,
+    "6": 1.2321,
+    "7": 1.0841
+   },
+   "apprec_0_1": 26.48,
+   "margin_v14": -12.48,
+   "verdict": "ARB"
+  }
+ ],
+ "legacy_nd": [
+  {
+   "basis": "LIVE                  (control)",
+   "instrument": "noarb_table_338.py (UNMODIFIED)",
+   "group": "ALL picks 1-64",
+   "population": "legacy ND teaching set",
+   "n": 1197,
+   "year_path": {
+    "0": 1.0,
+    "1": 1.073,
+    "2": 1.3343,
+    "3": 1.4952,
+    "4": 1.5712,
+    "5": 1.5529,
+    "6": 1.4981,
+    "7": 1.3005
+   },
+   "mean_year0": 839.36,
+   "apprec_0_1": 7.3,
+   "margin_v14": 6.7,
+   "verdict": "no arb"
+  },
+  {
+   "basis": "LIVE                  (control)",
+   "instrument": "noarb_table_338.py (UNMODIFIED)",
+   "group": "picks 1-20",
+   "population": "legacy ND teaching set",
+   "n": 377,
+   "year_path": {
+    "0": 1.0,
+    "1": 1.1218,
+    "2": 1.3642,
+    "3": 1.4886,
+    "4": 1.5981,
+    "5": 1.5685,
+    "6": 1.475,
+    "7": 1.2931
+   },
+   "mean_year0": 1601.37,
+   "apprec_0_1": 12.18,
+   "margin_v14": 1.82,
+   "verdict": "no arb"
+  },
+  {
+   "basis": "LIVE                  (control)",
+   "instrument": "noarb_table_338.py (UNMODIFIED)",
+   "group": "picks 21-64",
+   "population": "legacy ND teaching set",
+   "n": 820,
+   "year_path": {
+    "0": 1.0,
+    "1": 0.9996,
+    "2": 1.2894,
+    "3": 1.5051,
+    "4": 1.5307,
+    "5": 1.5299,
+    "6": 1.5322,
+    "7": 1.3113
+   },
+   "mean_year0": 489.02,
+   "apprec_0_1": -0.04,
+   "margin_v14": 14.04,
+   "verdict": "no arb"
+  },
+  {
+   "basis": "HISTORICAL-PRINT      (the record)",
+   "instrument": "noarb_table_338.py (UNMODIFIED)",
+   "group": "ALL picks 1-64",
+   "population": "legacy ND teaching set",
+   "n": 1200,
+   "year_path": {
+    "0": 1.0,
+    "1": 1.3201,
+    "2": 1.471,
+    "3": 1.608,
+    "4": 1.6747,
+    "5": 1.653,
+    "6": 1.5937,
+    "7": 1.3829
+   },
+   "mean_year0": 743.52,
+   "apprec_0_1": 32.01,
+   "margin_v14": -18.01,
+   "verdict": "ARB"
+  },
+  {
+   "basis": "HISTORICAL-PRINT      (the record)",
+   "instrument": "noarb_table_338.py (UNMODIFIED)",
+   "group": "picks 1-20",
+   "population": "legacy ND teaching set",
+   "n": 380,
+   "year_path": {
+    "0": 1.0,
+    "1": 1.3493,
+    "2": 1.4649,
+    "3": 1.5883,
+    "4": 1.7076,
+    "5": 1.6736,
+    "6": 1.5741,
+    "7": 1.3782
+   },
+   "mean_year0": 1417.71,
+   "apprec_0_1": 34.93,
+   "margin_v14": -20.93,
+   "verdict": "ARB"
+  },
+  {
+   "basis": "HISTORICAL-PRINT      (the record)",
+   "instrument": "noarb_table_338.py (UNMODIFIED)",
+   "group": "picks 21-64",
+   "population": "legacy ND teaching set",
+   "n": 820,
+   "year_path": {
+    "0": 1.0,
+    "1": 1.2756,
+    "2": 1.4803,
+    "3": 1.638,
+    "4": 1.6246,
+    "5": 1.622,
+    "6": 1.623,
+    "7": 1.3899
+   },
+   "mean_year0": 431.09,
+   "apprec_0_1": 27.56,
+   "margin_v14": -13.56,
+   "verdict": "ARB"
+  },
+  {
+   "basis": "LANDED-LAW            (the merge criterion)",
+   "instrument": "noarb_table_338.py (UNMODIFIED)",
+   "group": "ALL picks 1-64",
+   "population": "legacy ND teaching set",
+   "n": 1200,
+   "year_path": {
+    "0": 1.0,
+    "1": 1.3074,
+    "2": 1.4568,
+    "3": 1.5925,
+    "4": 1.6586,
+    "5": 1.635,
+    "6": 1.5753,
+    "7": 1.364
+   },
+   "mean_year0": 750.76,
+   "apprec_0_1": 30.74,
+   "margin_v14": -16.74,
+   "verdict": "ARB"
+  },
+  {
+   "basis": "LANDED-LAW            (the merge criterion)",
+   "instrument": "noarb_table_338.py (UNMODIFIED)",
+   "group": "picks 1-20",
+   "population": "legacy ND teaching set",
+   "n": 380,
+   "year_path": {
+    "0": 1.0,
+    "1": 1.3112,
+    "2": 1.4235,
+    "3": 1.5434,
+    "4": 1.6594,
+    "5": 1.6232,
+    "6": 1.5268,
+    "7": 1.3323
+   },
+   "mean_year0": 1458.9,
+   "apprec_0_1": 31.12,
+   "margin_v14": -17.12,
+   "verdict": "ARB"
+  },
+  {
+   "basis": "LANDED-LAW            (the merge criterion)",
+   "instrument": "noarb_table_338.py (UNMODIFIED)",
+   "group": "picks 21-64",
+   "population": "legacy ND teaching set",
+   "n": 820,
+   "year_path": {
+    "0": 1.0,
+    "1": 1.3012,
+    "2": 1.51,
+    "3": 1.6709,
+    "4": 1.6572,
+    "5": 1.6536,
+    "6": 1.6517,
+    "7": 1.4141
+   },
+   "mean_year0": 422.6,
+   "apprec_0_1": 30.12,
+   "margin_v14": -16.12,
+   "verdict": "ARB"
+  }
+ ],
+ "by_arm": {
+  "PRIMARY  cohorts 2005-2023": {
+   "LIVE                  (control)": {
+    "ND": {
+     "n": 1310,
+     "yr1": 1.0141,
+     "yr4": 1.4803
+    },
+    "RD": {
+     "n": 623,
+     "yr1": 0.4379,
+     "yr4": 0.509
+    },
+    "MSD": {
+     "n": 55,
+     "yr1": NaN,
+     "yr4": 0.6083
+    },
+    "UNR": {
+     "n": 49,
+     "yr1": 0.2052,
+     "yr4": 0.609
+    },
+    "IRE": {
+     "n": 47,
+     "yr1": 0.2276,
+     "yr4": 0.2181
+    },
+    "PDA": {
+     "n": 43,
+     "yr1": 0.3062,
+     "yr4": 0.5344
+    },
+    "PDN": {
+     "n": 33,
+     "yr1": 0.1522,
+     "yr4": 0.1897
+    },
+    "SSP": {
+     "n": 31,
+     "yr1": 0.9846,
+     "yr4": 0.8108
+    },
+    "PDS": {
+     "n": 21,
+     "yr1": 0.1329,
+     "yr4": 0.1305
+    }
+   },
+   "HISTORICAL-PRINT      (the record)": {
+    "ND": {
+     "n": 1313,
+     "yr1": 1.2308,
+     "yr4": 1.5539
+    },
+    "RD": {
+     "n": 623,
+     "yr1": 0.4602,
+     "yr4": 0.4585
+    },
+    "MSD": {
+     "n": 55,
+     "yr1": NaN,
+     "yr4": 0.6039
+    },
+    "UNR": {
+     "n": 49,
+     "yr1": 0.4363,
+     "yr4": 0.5612
+    },
+    "IRE": {
+     "n": 47,
+     "yr1": 0.223,
+     "yr4": 0.2008
+    },
+    "PDA": {
+     "n": 43,
+     "yr1": 0.412,
+     "yr4": 0.4738
+    },
+    "PDN": {
+     "n": 33,
+     "yr1": 0.1484,
+     "yr4": 0.1685
+    },
+    "SSP": {
+     "n": 31,
+     "yr1": 0.9474,
+     "yr4": 0.739
+    },
+    "PDS": {
+     "n": 21,
+     "yr1": 0.1721,
+     "yr4": 0.1233
+    }
+   },
+   "LANDED-LAW            (the merge criterion)": {
+    "ND": {
+     "n": 1309,
+     "yr1": 1.3068,
+     "yr4": 1.6484
+    },
+    "RD": {
+     "n": 623,
+     "yr1": 1.4461,
+     "yr4": 1.4407
+    },
+    "MSD": {
+     "n": 55,
+     "yr1": NaN,
+     "yr4": 0.8567
+    },
+    "UNR": {
+     "n": 49,
+     "yr1": 1.049,
+     "yr4": 1.3492
+    },
+    "IRE": {
+     "n": 47,
+     "yr1": 1.5547,
+     "yr4": 1.3997
+    },
+    "PDA": {
+     "n": 43,
+     "yr1": 1.2628,
+     "yr4": 1.4523
+    },
+    "PDN": {
+     "n": 33,
+     "yr1": 1.0361,
+     "yr4": 1.1764
+    },
+    "SSP": {
+     "n": 31,
+     "yr1": 2.4081,
+     "yr4": 1.8783
+    },
+    "PDS": {
+     "n": 21,
+     "yr1": 1.3689,
+     "yr4": 0.9806
+    }
+   }
+  },
+  "MODERN   cohorts 2019-2023": {
+   "LIVE                  (control)": {
+    "ND": {
+     "n": 325,
+     "yr1": 0.9962,
+     "yr4": 1.2431
+    },
+    "RD": {
+     "n": 66,
+     "yr1": 0.3398,
+     "yr4": 0.3989
+    },
+    "MSD": {
+     "n": 55,
+     "yr1": NaN,
+     "yr4": 0.6083
+    },
+    "SSP": {
+     "n": 31,
+     "yr1": 0.9846,
+     "yr4": 0.8108
+    },
+    "PDN": {
+     "n": 25,
+     "yr1": 0.1431,
+     "yr4": 0.0982
+    },
+    "UNR": {
+     "n": 13,
+     "yr1": 0.2664,
+     "yr4": 0.2777
+    },
+    "PDA": {
+     "n": 13,
+     "yr1": 0.1633,
+     "yr4": 0.4705
+    },
+    "IRE": {
+     "n": 12,
+     "yr1": 0.1411,
+     "yr4": 0.026
+    }
+   },
+   "HISTORICAL-PRINT      (the record)": {
+    "ND": {
+     "n": 325,
+     "yr1": 1.2119,
+     "yr4": 1.3037
+    },
+    "RD": {
+     "n": 66,
+     "yr1": 0.365,
+     "yr4": 0.357
+    },
+    "MSD": {
+     "n": 55,
+     "yr1": NaN,
+     "yr4": 0.6039
+    },
+    "SSP": {
+     "n": 31,
+     "yr1": 0.9474,
+     "yr4": 0.739
+    },
+    "PDN": {
+     "n": 25,
+     "yr1": 0.1371,
+     "yr4": 0.0865
+    },
+    "UNR": {
+     "n": 13,
+     "yr1": 0.4865,
+     "yr4": 0.26
+    },
+    "PDA": {
+     "n": 13,
+     "yr1": 0.3318,
+     "yr4": 0.4141
+    },
+    "IRE": {
+     "n": 12,
+     "yr1": 0.1246,
+     "yr4": 0.0244
+    }
+   },
+   "LANDED-LAW            (the merge criterion)": {
+    "ND": {
+     "n": 325,
+     "yr1": 1.2386,
+     "yr4": 1.3324
+    },
+    "RD": {
+     "n": 66,
+     "yr1": 1.3157,
+     "yr4": 1.2869
+    },
+    "MSD": {
+     "n": 55,
+     "yr1": NaN,
+     "yr4": 0.8567
+    },
+    "SSP": {
+     "n": 31,
+     "yr1": 2.4081,
+     "yr4": 1.8783
+    },
+    "PDN": {
+     "n": 25,
+     "yr1": 1.0339,
+     "yr4": 0.6523
+    },
+    "UNR": {
+     "n": 13,
+     "yr1": 1.3188,
+     "yr4": 0.7046
+    },
+    "PDA": {
+     "n": 13,
+     "yr1": 0.9344,
+     "yr4": 1.1664
+    },
+    "IRE": {
+     "n": 12,
+     "yr1": 1.0,
+     "yr4": 0.1959
+    }
+   }
+  }
+ },
+ "year0_by_arm": {
+  "emitter_population": [
+   {
+    "arm": "ND 1-64",
+    "n": 1446,
+    "old_mean_v0": 746.61,
+    "new_mean_v0": 755.93,
+    "ratio": 0.9877,
+    "unmappable": 0,
+    "old_median": 542.2,
+    "new_median": 496.4
+   },
+   {
+    "arm": "RD",
+    "n": 691,
+    "old_mean_v0": 761.45,
+    "new_mean_v0": 245.39,
+    "ratio": 3.103,
+    "unmappable": 0,
+    "old_median": 638.4,
+    "new_median": 223.5
+   },
+   {
+    "arm": "ND>64",
+    "n": 122,
+    "old_mean_v0": 832.54,
+    "new_mean_v0": 264.24,
+    "ratio": 3.1508,
+    "unmappable": 0,
+    "old_median": 864.8,
+    "new_median": 273.9
+   },
+   {
+    "arm": "MSD",
+    "n": 106,
+    "old_mean_v0": 497.16,
+    "new_mean_v0": 351.74,
+    "ratio": 1.4134,
+    "unmappable": 0,
+    "old_median": 471.8,
+    "new_median": 342.5
+   },
+   {
+    "arm": "UNR",
+    "n": 59,
+    "old_mean_v0": 281.76,
+    "new_mean_v0": 115.24,
+    "ratio": 2.445,
+    "unmappable": 0,
+    "old_median": 91.0,
+    "new_median": 83.9
+   },
+   {
+    "arm": "IRE",
+    "n": 57,
+    "old_mean_v0": 597.26,
+    "new_mean_v0": 86.41,
+    "ratio": 6.9122,
+    "unmappable": 0,
+    "old_median": 602.3,
+    "new_median": 91.6
+   },
+   {
+    "arm": "SSP",
+    "n": 52,
+    "old_mean_v0": 424.26,
+    "new_mean_v0": 197.82,
+    "ratio": 2.1447,
+    "unmappable": 0,
+    "old_median": 398.9,
+    "new_median": 168.2
+   },
+   {
+    "arm": "PDA",
+    "n": 51,
+    "old_mean_v0": 626.13,
+    "new_mean_v0": 193.93,
+    "ratio": 3.2286,
+    "unmappable": 0,
+    "old_median": 635.3,
+    "new_median": 188.8
+   },
+   {
+    "arm": "PDN",
+    "n": 43,
+    "old_mean_v0": 601.34,
+    "new_mean_v0": 86.19,
+    "ratio": 6.9771,
+    "unmappable": 0,
+    "old_median": 602.3,
+    "new_median": 87.9
+   },
+   {
+    "arm": "PDS",
+    "n": 21,
+    "old_mean_v0": 678.42,
+    "new_mean_v0": 85.28,
+    "ratio": 7.9552,
+    "unmappable": 0,
+    "old_median": 635.3,
+    "new_median": 81.6
+   }
+  ]
+ },
+ "matrix_identity": {
+  "n_records": 2648,
+  "schema_identical": true,
+  "fields_differing": {
+   "v0": 2648
+  },
+  "non_v0_fields_differing": {},
+  "v0_moved": 2648,
+  "meta_keys_differing": [
+   "basis_29c",
+   "emitter"
+  ],
+  "pins": {
+   "store_29B": "cb38ef11",
+   "store_29C": "cb38ef11",
+   "v0surf_29B": "4405cba2b42fb96f50496ec791cb806c",
+   "v0surf_29C": "4405cba2b42fb96f50496ec791cb806c"
+  }
+ },
+ "replication": {
+  "ok": 89,
+  "bad": 0,
+  "n": 89,
+  "mismatches": [],
+  "board": "36d5dfc73e2b508ece530bc7dfae2090",
+  "tolerance": 0,
+  "note": "printed integer AND unrounded derived_v0"
+ },
+ "unmappable": {
+  "n": 0,
+  "rows": [],
+  "gfut_source_census": {
+   "_futpos": 2648
+  }
+ },
+ "v0_column_delta": {
+  "n": 2648,
+  "moved": 2648,
+  "unchanged": 0,
+  "rose": 887,
+  "fell": 1761,
+  "sum_old": 1904793.4,
+  "sum_new": 1369559.9,
+  "ratio": 0.719007
+ },
+ "roundtrip_1dp": {
+  "ok": 87,
+  "n": 89,
+  "mismatches": [
+   [
+    "hunter-holmes",
+    661,
+    660,
+    695.1
+   ],
+   [
+    "cooper-bell",
+    409,
+    408,
+    429.9
+   ]
+  ]
+ },
+ "n_arb": {
+  "LIVE                  (control)": 0,
+  "HISTORICAL-PRINT      (the record)": 3,
+  "LANDED-LAW            (the merge criterion)": 5
+ }
+}

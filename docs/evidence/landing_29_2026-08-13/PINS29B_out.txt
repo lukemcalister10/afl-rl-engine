@@ -1,0 +1,58 @@
+====================================================================================================================
+ORDER 29B  --  THE PIN RESTAMP, MOVED-SET ASSERTED  (PREREG_29B P29B-22)
+====================================================================================================================
+
+  pin            pinned (pre-restamp)               actual on disk                     verdict
+  ----------------------------------------------------------------------------------------------------------------
+  store          cb38ef1171dcf20aae66ebf12682be0d   cb38ef1171dcf20aae66ebf12682be0d   unmoved
+  board          86c8d5d9ba5b95e2cba05c78fbc31f78   36d5dfc73e2b508ece530bc7dfae2090   MOVED — declared
+  rl_model       a0854d1e8421d956edc3bea5150abf49   14000af2a46f7a3c4cdfde303f5a1aff   MOVED — declared
+  engine_head    e51098648c1ccb6951b30d57d9aac3fe   a353a9d361937a78014eef521cb65d68   MOVED — declared
+  v0surf         5dd34ca82735f5c8f021b1c7320df8f8   5dd34ca82735f5c8f021b1c7320df8f8   unmoved
+  q97m           cfdc73216c099e5e8f1fda3968f31c00   cfdc73216c099e5e8f1fda3968f31c00   unmoved
+  band           34faa8659cc8f19794f5cb9584fa19b2   34faa8659cc8f19794f5cb9584fa19b2   unmoved
+  peak_model     f305fe5330222f4fa14d3654a0e91ef7   f305fe5330222f4fa14d3654a0e91ef7   unmoved
+  bust_prior     5942aa6ad7be1d482eed737997486c70   5942aa6ad7be1d482eed737997486c70   unmoved
+  pvc_snapshot   ade79790efc8ad4585c2c6800a935eaa   ade79790efc8ad4585c2c6800a935eaa   unmoved
+  register       652d83e87780e415a01a2de6d8b3cc57   652d83e87780e415a01a2de6d8b3cc57   unmoved
+  config         eed19a75f775aeafe4ee5ea4b3990667   eed19a75f775aeafe4ee5ea4b3990667   unmoved
+
+  MOVED (declared)   ['board', 'rl_model', 'engine_head']
+  UNMOVED            ['store', 'v0surf', 'q97m', 'band', 'peak_model', 'bust_prior', 'pvc_snapshot', 'register', 'config']
+  UNDECLARED MOVERS  NONE
+
+     board        the entry wiring — 89 day-0 entrants now print derived v0 x numeraire
+     rl_model     the P9 unsigned-cell halt replaced by the signed-cell COVERAGE assert (Step 2)
+     engine_head  the day-0 branch in ev() (_merged_recover.py) — Step 3
+
+  P29B-22's MUST-NOT-MOVE LIST, each asserted against a real hash on the FINAL board:
+     store          UNMOVED   cb38ef1171dcf20a
+     v0surf         UNMOVED   5dd34ca82735f5c8
+     config         UNMOVED   eed19a75f775aeaf
+     band           UNMOVED   34faa8659cc8f197
+     bust_prior     UNMOVED   5942aa6ad7be1d48
+     peak_model     UNMOVED   f305fe5330222f4f
+     q97m           UNMOVED   cfdc73216c099e5e
+     pvc_snapshot   UNMOVED   ade79790efc8ad45
+     register       UNMOVED   652d83e87780e415
+
+  pvc_curve_v2.json — NOT pinned in expected_boot, measured and declared here:
+     file md5              52aa11258e83a0c8a549940ab3b4388a  ->  911774bc92de0630199a4cc0c6bfac42
+     curve_md5 (PAYLOAD)   9729f0c5  ->  9729f0c5   UNMOVED
+     unsigned_cells        ['PDN|KPF','PDS|KPF']  ->  []
+     borrowed_cells        ['PDN|KPF', 'PDS|KPF']
+
+  fv — THE INHERITED ORDER-28 STALENESS, CARRIED FORWARD AND NOT 'FIXED':
+     expected_boot fv pin      2621b56a32805f15b5084a45f851e882d1a0c6cf9c4fc2512550d394760f7dc6
+     moved by ORDER 28 (distribution_pricing.py::v_at_peak), NOT by ORDER 29 and NOT by ORDER 29B.
+     This act does not touch engine/forward_valuation at all — the RL_ENTRY29B=0 kill-switch build
+     reproduces 86c8d5d9 BYTE-EXACT with that source in place, which is what proves it inert here.
+     Re-pinning an identity this act did not move would launder ORDER 28's drift through 29B's
+     restamp, so it is left red and reported.
+
+  PRE-EXISTING, REPORTED NOT FIXED: data/release_contract.json::pvc_provenance.curve_payload_md5
+     carries 'df766dff' while the shipped curve payload is '9729f0c5'. It was ALREADY stale at ORDER 29's landing
+     (the ruling-C tiebreak moved df766dff -> 9729f0c5 and the contract was not restamped). ORDER 29B
+     does not move the curve payload, so this is not 29B's drift and 29B does not restamp it.
+
+  RESTAMPED (surgical, 3 pin lines): ['board', 'rl_model', 'engine_head']
