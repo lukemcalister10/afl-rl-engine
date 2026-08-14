@@ -1,0 +1,134 @@
+{
+ "meta": {
+  "store": "cb38ef11",
+  "engine_head": "a353a9d3",
+  "artifact": "911774bc",
+  "PL_F": 1.0524,
+  "anchor_factor": 0.9400914291048137,
+  "board_probed": "36d5dfc73e2b508ece530bc7dfae2090",
+  "v0surf_sig": "4405cba2b42fb96f50496ec791cb806c",
+  "v0surf_frozen": true
+ },
+ "replication": {
+  "ok": 89,
+  "bad": 0,
+  "n": 89,
+  "mismatches": []
+ },
+ "population": 2648,
+ "unmappable": [],
+ "gfut_source_census": {
+  "_futpos": 2648
+ },
+ "by_arm": [
+  {
+   "arm": "ND 1-64",
+   "n": 1446,
+   "old_mean_v0": 746.61,
+   "new_mean_v0": 755.93,
+   "ratio": 0.9877,
+   "unmappable": 0,
+   "old_median": 542.2,
+   "new_median": 496.4
+  },
+  {
+   "arm": "RD",
+   "n": 691,
+   "old_mean_v0": 761.45,
+   "new_mean_v0": 245.39,
+   "ratio": 3.103,
+   "unmappable": 0,
+   "old_median": 638.4,
+   "new_median": 223.5
+  },
+  {
+   "arm": "ND>64",
+   "n": 122,
+   "old_mean_v0": 832.54,
+   "new_mean_v0": 264.24,
+   "ratio": 3.1508,
+   "unmappable": 0,
+   "old_median": 864.8,
+   "new_median": 273.9
+  },
+  {
+   "arm": "MSD",
+   "n": 106,
+   "old_mean_v0": 497.16,
+   "new_mean_v0": 351.74,
+   "ratio": 1.4134,
+   "unmappable": 0,
+   "old_median": 471.8,
+   "new_median": 342.5
+  },
+  {
+   "arm": "UNR",
+   "n": 59,
+   "old_mean_v0": 281.76,
+   "new_mean_v0": 115.24,
+   "ratio": 2.445,
+   "unmappable": 0,
+   "old_median": 91.0,
+   "new_median": 83.9
+  },
+  {
+   "arm": "IRE",
+   "n": 57,
+   "old_mean_v0": 597.26,
+   "new_mean_v0": 86.41,
+   "ratio": 6.9122,
+   "unmappable": 0,
+   "old_median": 602.3,
+   "new_median": 91.6
+  },
+  {
+   "arm": "SSP",
+   "n": 52,
+   "old_mean_v0": 424.26,
+   "new_mean_v0": 197.82,
+   "ratio": 2.1447,
+   "unmappable": 0,
+   "old_median": 398.9,
+   "new_median": 168.2
+  },
+  {
+   "arm": "PDA",
+   "n": 51,
+   "old_mean_v0": 626.13,
+   "new_mean_v0": 193.93,
+   "ratio": 3.2286,
+   "unmappable": 0,
+   "old_median": 635.3,
+   "new_median": 188.8
+  },
+  {
+   "arm": "PDN",
+   "n": 43,
+   "old_mean_v0": 601.34,
+   "new_mean_v0": 86.19,
+   "ratio": 6.9771,
+   "unmappable": 0,
+   "old_median": 602.3,
+   "new_median": 87.9
+  },
+  {
+   "arm": "PDS",
+   "n": 21,
+   "old_mean_v0": 678.42,
+   "new_mean_v0": 85.28,
+   "ratio": 7.9552,
+   "unmappable": 0,
+   "old_median": 635.3,
+   "new_median": 81.6
+  }
+ ],
+ "n_zero_new_v0": 5,
+ "n_zero_old_v0": 1,
+ "nd_relativity": {
+  "n": 1446,
+  "min": 0.0,
+  "max": 3.594805398202449,
+  "mean": 0.9531252510536704,
+  "n_equal_1": 0
+ }
+}

@@ -1,0 +1,14 @@
+records 2648   landed-v0 map misses: 0 []
+WINDOW_END 2026  (unchanged: derived from vpath, which ORDER 29C does not touch)
+all-arm eligible: OLD basis 2647   LANDED-LAW basis 2643   (delta -4 — the v0<=0 exclusion)
+  rows the landed law drops from the all-arm population: [('matthew-dick', 'ND', 'RUCK', 63), ('matthew-arnot', 'ND', 'RUCK', 63), ('tom-downie', 'ND', 'RUCK', 64), ('tom-derickx', 'ND', 'RUCK', 63), ('luke-davis', 'ND', 'RUCK', 64)]
+PRIMARY  cohorts 2005-2023   n=2211  yr1 1.3310  apprec +33.10%  margin -19.10%  ARB
+    by arm: ND yr1 1.3068 yr4 1.6484  RD yr1 1.4461 yr4 1.4407  MSD yr1 nan yr4 0.8567  UNR yr1 1.0490 yr4 1.3492  IRE yr1 1.5547 yr4 1.3997  PDA yr1 1.2628 yr4 1.4523  PDN yr1 1.0361 yr4 1.1764  SSP yr1 2.4081 yr4 1.8783  PDS yr1 1.3689 yr4 0.9806
+MODERN   cohorts 2019-2023   n= 540  yr1 1.2648  apprec +26.48%  margin -12.48%  ARB
+    by arm: ND yr1 1.2386 yr4 1.3324  RD yr1 1.3157 yr4 1.2869  MSD yr1 nan yr4 0.8567  SSP yr1 2.4081 yr4 1.8783  PDN yr1 1.0339 yr4 0.6523  UNR yr1 1.3188 yr4 0.7046  PDA yr1 0.9344 yr4 1.1664  IRE yr1 1.0000 yr4 0.1959
+legacy ND population, via the harness's own load_matrix: 1200 (EXPECT_N pin 1200, asserted)
+ALL picks 1-64   n=1200  yr1 1.3074  apprec +30.74%  margin -16.74%  ARB
+picks 1-20       n= 380  yr1 1.3112  apprec +31.12%  margin -17.12%  ARB
+picks 21-64      n= 820  yr1 1.3012  apprec +30.12%  margin -16.12%  ARB
+PREDICTED ARBITRAGES: 5 of 5 primary readings
+wrote /home/user/afl-rl-engine/.claude/worktrees/agent-af1b7a7e7e39d652e/docs/evidence/landing_29_2026-08-13/noarb29c/PREDICT_29C.json
