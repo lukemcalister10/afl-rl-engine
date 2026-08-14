@@ -1,0 +1,48 @@
+====================================================================================================
+ORDER 30B-M -- POST-MEASUREMENT DERIVATION (arithmetic on the measurement; nothing re-decided)
+====================================================================================================
+
+1. THE ENTRY RULER AGAINST OUTCOMES -- realized R6 as a fraction of v0, by pick band
+   (states at g=0; the pick ladder's SHAPE is what is being checked, not its level)
+   pickband      n    mean R6    mean v0      R6/v0
+   A 1-6        88      883.0     2291.8     0.3853
+   B 7-12       90      568.9     1324.6     0.4295
+   C 13-20     120      394.8      895.3     0.4410
+   D 21-40     300      255.0      605.1     0.4214
+   E 41-64     355      112.5      280.8     0.4005
+   spread of R6/v0 across the five bands: min 0.3853  max 0.4410  max/min 1.145
+   READING: a FLAT R6/v0 across pick bands means the v0 ladder's pick shape is confirmed by
+   outcomes; a sloped one would mean the ladder is mis-shaped. This is a check on the STEP-1 ruler.
+
+2. THE BLEND'S OWN FORM, REFITTED TO THE MEASURED PEDIGREE SHARE
+   measured points (games midpoint, sigma, n): [(2.5, 0.7011, 382), (10.5, 0.6641, 591), (25.5, 0.3313, 834), (53.0, 0.1645, 887), (85.5, 0.0221, 1339)]
+   ruled blend      : tau  11.650213  beta 0.937162   n-weighted SSE vs measured 98.86113
+   refitted to data : tau  23.000000  beta 0.800000   n-weighted SSE vs measured 13.53151
+   games      measured  ruled blend     refitted
+   2.5           70.1%        78.9%        84.4%
+   10.5          66.4%        40.4%        58.6%
+   25.5          33.1%        12.4%        33.8%
+   53.0          16.5%         1.6%        14.2%
+   85.5           2.2%         0.2%         5.7%
+   crossover (w = 0.5) : ruled 7.879 games   refitted 14.547 games
+   pedigree share at the named states:
+     g= 13  measured-form   53.1%   ruled blend   33.0%
+     g= 18  measured-form   44.0%   ruled blend   22.2%
+     g= 19  measured-form   42.4%   ruled blend   20.6%
+     g= 36  measured-form   23.9%   ruled blend    5.6%
+     g= 50  measured-form   15.5%   ruled blend    2.0%
+     g=100  measured-form    3.9%   ruled blend    0.1%
+   CAVEAT, stated: sigma is the pedigree share of EXPECTED REMAINING DELIVERED VALUE over a
+   6-season window; 1-w is the weight on the v0-fade leg of a PRICE. They are the same concept
+   only to the extent the price is that expectation. The refit is offered as a CALIBRATION
+   CANDIDATE for the owner to rule on, not as a wiring.
+
+3. NAMED ROWS -- the pedigree component under the fitted LEVEL form
+   level-form pedigree term = (0.490757 -0.090950 * log1p(g)) * v0
+   player             pk  games       v0   board v    pred L  ped part    ped %   old 40%     blend
+   isaac-kako         13     36    759.8      1320     449.0     123.3    27.5%     528.0      74.2
+   willem-duursma      1     19   3879.3      4223    2010.5     846.8    42.1%    1689.2     868.5
+   dyson-sharp        13     13   1551.0      3269    1251.0     388.9    31.1%    1307.6    1079.3
+   jacob-farrow       10     18   1284.5      2765    1115.2     286.4    25.7%    1106.0     614.9
+   columns: "old 40%%" = the old machinery's anchor-carry share of TODAY'S board price;
+            "blend"    = the ruled blend's 1-w(g) share of the same price.
