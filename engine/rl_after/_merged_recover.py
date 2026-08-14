@@ -2734,6 +2734,115 @@ if _ENTRY29B:
           %(len(_D0_NOW),MA.BASE_REF,len(_D0_ND),len(_D0_NOW)-len(_D0_ND)))
 else:
     print('ORDER 29B ENTRY WIRING OFF (RL_ENTRY29B=0 or RL_PVC2=0) — the legacy legs print the day-0 price.')
+# ===== ORDER 30B STEP 2 — THE SITTER FADE, WIRED. SITTING IS EVIDENCE. =====================================
+# THE LAW. A listed player who has not played is not frozen at his entry price: the sitting itself is the
+# evidence, and it is priced. The schedule is the R1 RE-DERIVED listed-conditional row — re-derived against
+# the STEP-1 FINAL v0s with the 30A-2 harness byte-identical, because the fade is a RATIO TO v0 and the
+# calibration must ride its own ruler:
+#
+#       D(1) = 1.0000   (entry — no discount)
+#       D(2) = 0.5502   n = 464
+#       D(3) = 0.2628   n = 100
+#       D(4) = 0.3460   n =  11      <-- ABOVE D(3). THIS IS NOT A DEFECT AND IT IS NOT SMOOTHED.
+#       D(c) = 0.3460   FLAT for every c >= 4
+#
+# WHY THE KINK IS KEPT (owner ruling, #334 comment 5292534855, "AS MEASURED, FLAT DEEP END", 2026-08-14).
+# The depth-3 -> depth-4 cell count falls 100 -> 11: that is the year-3->4 DELIST WAVE. What survives it is
+# selected. In the owner's words: "players who last on a list that long without production may well do so for
+# good reason - whereas those who are no good are likely to be delisted before then." The kink is SELECTION,
+# it is real, and it is disclosed rather than isotonised away. The listed-conditional schedule is therefore
+# NOT required to be monotone in depth (STOP_STEP2_FADE_RULER.md Q3, answered NO).
+#
+# THE DEEP END HOLDS FLAT, AND THE EARLIER RULING IS AMENDED. Ruling 2 of the sitter law said "extrapolate
+# the fitted decay past year 4". On the re-derived ruler that fitted decay reads 0.1176 at year 4 while the
+# measured year-4 cell reads 0.3460 — 2.94x apart — because a decay fitted through depths 2 and 3 is being
+# extrapolated THROUGH a selection kink. The owner AMENDED (retired) the extrapolate ruling FOR THIS LAW:
+# a still-listed deep sitter is at least as selected as the year-4 group, so D holds flat at 0.3460 from
+# depth 4 out. Nothing extrapolates. (STOP_STEP2_FADE_RULER.md Q1/Q2, answered: R1 row, measured deep end.)
+#
+# THE CLOCK IS CONTINUOUS, in season fractions, exactly the packet-2 convention:
+#       c(p,Y) = (Y - entry_year(p)) + fE(Y,p)
+# fE is the engine's OWN season fraction _fEy(Y,p) — data/season_state.json::calendar_progress (0.92) for the
+# in-progress season, 1.0 for a completed one (and 1.0 for an LTI out-for-the-remainder name, whose season IS
+# complete at his real games). ONE clock convention in the engine, not a second one. Packet 2 quoted its named
+# rows at NOW=2026 only; the generalisation to an as-of year Y is the same expression with the same fE, so the
+# 24-year as-of matrix and the board read one law. DECLARED, because packet 2 never had to say it.
+# Interpolation between integer depths is LOG-LINEAR in D:  D(c) = D(N)^(1-f) * D(N+1)^f,  f = c - N.
+# c <= 1 => D = 1.0 (a player drafted this year, and every earlier as-of year, pays no sitting discount).
+#
+# POPULATION AT THIS STEP: ND in-curve (type ND, pick 1..64) — the exact population the law was derived on.
+# POOL ROWS ARE DELIBERATELY NOT FADED HERE. Their fade is derived by the same construction on their own
+# pathway values at STEP 4 (owner ruling 5 governs MSD there); wiring the ND-derived numbers onto pool rows
+# would be exactly the pathway-specific-machinery mistake this order exists to end, in reverse.
+#
+# WHAT THIS SUPERSEDES. ORDER 29B's flat hold — "a zero-evidence row prints its derived v0, full stop" — and
+# its games-as-of predicate as a PRICE law. The predicate itself survives unchanged as the POPULATION test
+# (who is a sitter at Y); what changes is that the sitter's price is now v0 x D(c) instead of v0. 29B's
+# printed-day-0 identity is not dropped, it is RESTATED: printed == round(v0 x D(c)), tolerance 0, and at
+# c <= 1 (D == 1) it reduces to 29B's own equality exactly.
+#
+# los_decay RETIRES FROM THE LIVE PATH. Measured, not asserted: los_decay(p) is called at rl_model.py:1748
+# (the LEGACY rl_model value() chain, which the board's ev() does not call) and at rl_export.py:332, where it
+# is a DISPLAY field ('losd') in the UI bundle and not a price. It is therefore not reachable from any printed
+# price, before or after this act. It is KEPT IN CODE as the declared fallback — the existing convention for
+# every superseded law in this engine (RL_PVC2/RL_EVW/RL_ISOFADE/RL_ENTRY29B all keep their old leg) — behind
+# this block's declared kill-switch RL_ONEMACH=0, which restores the 29B flat hold exactly.
+#
+# KILL-SWITCH, DECLARED: RL_ONEMACH=0 makes this whole block inert => the STEP-1 board 84c9ea16 byte-exact.
+# It is a DECLARED kill-switch, not a manifest dial (config_sha256 UNMOVED).
+_ONEMACH=(os.environ.get('RL_ONEMACH','1')!='0')
+FADE30B_D={1:1.0,
+           2:0.5501935857356868,      # R1 re-derived, listed-conditional (L-B), n=464
+           3:0.26278629823610156,     # R1 re-derived, listed-conditional (L-B), n=100
+           4:0.3460004697526451}      # R1 re-derived, listed-conditional (L-B), n=11 — the selection kink
+FADE30B_FLAT_FROM=4                   # owner ruling: FLAT from depth 4 out; nothing is extrapolated
+FADE30B_SRC=('#334 comment 5292534855 (owner, 2026-08-14) on FADE30B_TABLE.json / o30b_fade_rederive.py; '
+             'amends the earlier extrapolate-the-decay ruling for this law')
+def fade30b_D(c):
+    """The ruled sitter fade at continuous depth c. Log-linear between integer depths, 1.0 at/below depth 1,
+    FLAT at D(4) from depth 4 out. Pure function of c — no player state, so it is trivially auditable."""
+    if c<=1.0: return 1.0
+    if c>=FADE30B_FLAT_FROM: return FADE30B_D[FADE30B_FLAT_FROM]
+    n=int(_math.floor(c)); f=c-n
+    d0=FADE30B_D[n]; d1=FADE30B_D[n+1]
+    if f<=0.0: return d0
+    return _math.exp((1.0-f)*_math.log(d0)+f*_math.log(d1))
+def fade30b_clock(p,Y):
+    """Continuous season-fraction depth. c = (Y - entry_year) + fE(Y,p).
+    MSD (owner ruling 5): the first season IS season 1, so the MSD clock runs one season ahead of the
+    entry_year+1 debut convention every other route uses. Stated here so the pool step inherits it."""
+    n=Y-int(p.get('year') or 0)
+    if p.get('type')=='MSD': n+=1
+    return max(0.0,float(n)+_fEy(Y,p))
+def fade30b_of(p,Y):
+    """The fade multiplier this row carries at Y, or 1.0 if the law does not reach him at this step."""
+    if not _ONEMACH: return 1.0
+    if p.get('_pool'): return 1.0                                  # pool fade is derived at STEP 4
+    _pk=p.get('pick')
+    if p.get('type')!='ND' or not _pk or not (1<=int(_pk)<=MA.ND_CURVE_LAST): return 1.0
+    return fade30b_D(fade30b_clock(p,Y))
+_entry30b_price=None
+if _ONEMACH and _ENTRY29B:
+    def _entry30b_price(p,Y=2026):
+        """The printed sitter price this row MUST carry at as-of year Y, in BOARD currency, or None if he is
+        not a sitter at Y. ONE predicate: the ev branch and the rl_export boot-class assert both read it."""
+        _d0=_entry29b_derived(p,Y)
+        if _d0 is None: return None
+        return _d0*fade30b_of(p,Y)
+    _ev_pre30b=ev
+    def ev(p,Y=2026):
+        _d0=_entry30b_price(p,Y)
+        if _d0 is None: return _ev_pre30b(p,Y)
+        return _d0*_PL_F                                           # unrounded ON PURPOSE — see the 29B note
+    _S30=[p for p in MA.data if _entry30b_price(p,MA.BASE_REF) is not None]
+    _S30ND=[p for p in _S30 if fade30b_of(p,MA.BASE_REF)<1.0]
+    print('ORDER 30B STEP 2 — SITTER FADE LIVE: D(2)=%.4f D(3)=%.4f D(4+)=%.4f FLAT (as measured; the '
+          'depth-4 kink is SELECTION, kept and disclosed). Continuous clock c=(Y-entry)+fE, log-linear. '
+          '%d sitters at Y=%d, %d of them carry a discount (%d at D=1: entry-year or pool). los_decay is '
+          'off the live path.'
+          %(FADE30B_D[2],FADE30B_D[3],FADE30B_D[4],len(_S30),MA.BASE_REF,len(_S30ND),len(_S30)-len(_S30ND)))
+elif not _ONEMACH:
+    print('ORDER 30B ONE-MACHINERY OFF (RL_ONEMACH=0) — the 29B flat hold prints the sitter price.')
 import json as _w4json
 _PVCFIT_META={}
 if _W4PVC and os.path.exists('pvc_fit_candidate.json'):

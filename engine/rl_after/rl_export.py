@@ -235,7 +235,15 @@ g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()  # the ev loop advanced the cl
 # quietly stops matching anybody is a failure, not a silent pass.
 # It rides the same declared kill-switch as the wiring — RL_ENTRY29B=0 leaves _entry29b_derived None and
 # this block is skipped, which is what makes the byte-exact kill-switch proof possible.
-_d0_of = _ens.get('_entry29b_derived')
+#
+# ORDER 30B RESTATEMENT (PREREG_30B P25). The 29B identity `printed == round(v0)` was the FADE == 1 special
+# case of the law that now holds: `printed == round(v0 x D(c))`, the sitter fade at his continuous depth.
+# It is SUPERSEDED, NOT DROPPED — the same rows, the same tolerance 0, the same halt, one factor wider. The
+# predicate is read from the engine (`_entry30b_price`), so the board and the engine cannot drift apart; when
+# the 30B block is killed (RL_ONEMACH=0) that name is None and the check falls back to the 29B predicate,
+# which is what keeps the kill-switch chain byte-exact in both directions.
+_d0_of = _ens.get('_entry30b_price') or _ens.get('_entry29b_derived')
+_d0_law = 'round(derived v0 x sitter fade D(c))' if _ens.get('_entry30b_price') else 'round(derived v0)'
 if _d0_of is not None:
     _d0_n = 0; _d0_bad = []
     with _ctx.redirect_stdout(_io.StringIO()):
@@ -246,16 +254,15 @@ if _d0_of is not None:
             if _p['_v'] != int(round(_d)): _d0_bad.append((_p.get('player'), _p['_v'], _d))
     if _d0_bad:
         raise SystemExit(
-            'ORDER 29B PRINTED-DAY-0 HALT: %d of %d day-0 entrants do not print their derived v0 x numeraire '
-            '— %s. The printed day-0 price MUST equal round(nd_v0.posv[pos][pick]) for a national entrant and '
-            'round(pool_v0.cells[pathway|position]) for a pool entrant. Refusing to write the board.'
-            % (len(_d0_bad), _d0_n, ['%s printed %d != %.6f' % t for t in _d0_bad[:6]]))
+            'PRINTED-DAY-0 HALT: %d of %d day-0/sitter rows do not print %s x numeraire '
+            '— %s. Refusing to write the board.'
+            % (len(_d0_bad), _d0_n, _d0_law, ['%s printed %d != %.6f' % t for t in _d0_bad[:6]]))
     if _d0_n == 0:
-        raise SystemExit('ORDER 29B PRINTED-DAY-0 HALT: the day-0 predicate matched ZERO rows, so the assert '
+        raise SystemExit('PRINTED-DAY-0 HALT: the day-0 predicate matched ZERO rows, so the assert '
                          'is vacuous. A board with no entrants at all is not a board this check can pass.')
-    print('ORDER 29B PRINTED-DAY-0 ASSERT: %d of %d day-0 entrants print EXACTLY round(derived v0 x '
-          'numeraire) — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)'
-          % (_d0_n, _d0_n))
+    print('PRINTED-DAY-0 ASSERT: %d of %d day-0/sitter rows print EXACTLY %s x '
+          'numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)'
+          % (_d0_n, _d0_n, _d0_law))
 # ==== (g2) L7 RE-BASE VERIFICATION — order preserved + anchor-pair ratios (register v30, l7_rebase.py) =====
 # A uniform ÷F with round() is monotone (never a STRICT inversion) but can TIE two formerly-distinct values
 # (a rounding artifact, reported not failed). Assert: along the pre-rebase order (desc), the rebased values
