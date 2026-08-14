@@ -981,3 +981,175 @@ open arbitrage, the mark-path breach, and the §14.7 predicate decision as named
 | `o29b_noarb_why.py` · `NOARB_WHY_29B.{json,_out.txt}` | **why the margins moved: the mechanism, measured** |
 | `o29b_instruments.py` · `INSTRUMENTS29B.{json,_out.txt}` · `INSTRUMENTS29B_REBASIS.diff` | mark-path + reverse no-arb |
 | `NOARB_MARGINS_29.md` **Part B** | the owner-facing tables, ORDER 25 layout, live vs 29 vs 29B |
+
+---
+
+# 15. ORDER 29C — THE RE-BASED NO-ARB READING (appended 2026-08-14, measurement seat, tip `60fb833`)
+
+> ## THE REVIEW PACK WAS MIXED-BASIS. ON A COHERENT RULER THE DECIDING INSTRUMENT OPENS AN ARBITRAGE.
+> §14.6 measured that `emit_matrix_338.py:252` writes the cohort matrix's year-0 from the **frozen
+> fitted surface** while years 1…7 are the landed `ev()` — so **every margin in §13 and §14 divides a
+> landed-law numerator by a pre-landing denominator**. ORDER 29C changes that **one column** to the
+> landed entry law and nothing else. The board does not move. Nothing merges.
+>
+> | reading | HISTORICAL-PRINT (§13/§14, the record) | **LANDED-LAW (the merge criterion)** | |
+> |---|---:|---:|---|
+> | all-arm PRIMARY, margin v14% | +20.75% no arb | **−19.10%** | **ARB — NEW** |
+> | all-arm MODERN, margin v14% | +18.11% no arb | **−12.48%** | **ARB — NEW** |
+> | legacy ND ALL 1–64 | −18.01% ARB | **−16.74%** | ARB |
+> | legacy ND 1–20 | −20.93% ARB | **−17.12%** | ARB |
+> | legacy ND 21–64 | −13.56% ARB | **−16.12%** | ARB |
+>
+> **ARBITRAGES: 3 of 5 → 5 of 5.** The ND arbitrage §13.2 and §14.6 reported is **real and survives
+> the re-basis** — it is not an artefact of the mixed basis. What is new is that the **all-arm
+> deciding instrument flips in both windows**.
+>
+> **The numerator did not move.** The legacy ND `mean_yrN` columns are byte-identical across the two
+> bases (981.53 / 1093.71 / 1195.56 / 1245.19). What moved is that **the pool arms' year-0
+> denominators were wrong by 2–8×**.
+
+Full tables: `noarb29c/NOARB_LANDED_LAW_29C.{md,json}`. Preregistration: `noarb29c/PREREG_29C.md`,
+committed at `b81f84f` before the emitter existed, never edited.
+
+## 15.1 THE ONE DECLARED CHANGE, AND THE PROOF THAT IT IS THE LANDED LAW
+
+`noarb29c/emit_matrix_29c.py` is `emit_matrix_338.py` (`bffde2f7…`) copied byte-for-byte with **one
+value site changed** — `v0=round(v0_start(p),1)` → `v0=round(_landed_v0_engine(p),1)`. The standing
+emitter's md5 is asserted **inside the copy at run**, so the "one declared change" claim is checkable
+rather than merely stated. Full diff: `noarb29c/EMITTER_29C.diff`.
+
+| the proof | result |
+|---|---|
+| **replication vs the board's own printed day-0** (89 wired entrants, board `36d5dfc7`) | **89 of 89 EXACT, tolerance 0** — on the printed integer **and** the unrounded `derived_v0`. **Fail-closed inside the emitter**: it halts rather than emit on anything less |
+| **unmappable entrants** | **0 of 2648.** The law's position key `MA.gfut(p)` reads `_futpos`/`_pos_now`/`pos` — **all store columns, none scoring-derived** — so it is invariant under the walk-forward's truncation. Census: `_futpos` on **2648 of 2648**. The `layer1`/LEDGER day-0-position fallback the brief authorised is **never reached** |
+| **matrix identity** | **every field except `v0` byte-identical on all 2648 records.** Schema, record order, store `cb38ef11`, v0surf `4405cba2b42f`, `n_records` unmoved. Only `meta.emitter` + the new `meta.basis_29c` differ |
+| **the year-0 column** | **2648 of 2648 cells move** (ORDER 29B moved **0 of 2648** — that contrast is the act). 887 rise, 1761 fall. Σ`v0` **1,904,793.4 → 1,369,559.9**, ×0.7190 |
+| matrix | `per_entrant_O29CFINAL.json` **`6db06e40`** · 24 as-of years · 2m 37s · population 2648 / ND 1–64 teaching 1447 / ruled pool 1201, all identical to §14's emit |
+
+## 15.2 THE DENOMINATOR SHIFT — THE OWNER'S DIAGNOSIS, CONFIRMED TO THE DIGIT
+
+Mean year-0, engine currency, over the emitter's own population (verified against **both emitted
+matrices**, not against the pre-emit probe — `noarb29c/ARMCHECK_29C_out.txt`):
+
+| arm | n | HISTORICAL-PRINT | **LANDED-LAW** | old ÷ new |
+|---|---:|---:|---:|---:|
+| ND 1–64 | 1446 | 746.61 | **755.93** | **0.988** — year-0 *rises* |
+| RD | 691 | 761.45 | **245.39** | 3.10× |
+| ND>64 | 122 | 832.54 | **264.24** | 3.15× |
+| MSD | 106 | 497.16 | **351.74** | 1.41× |
+| UNR | 59 | 281.76 | **115.24** | 2.45× |
+| IRE | 57 | 597.26 | **86.41** | **6.91×** |
+| SSP | 52 | 424.26 | **197.82** | 2.15× |
+| PDA | 51 | 626.13 | **193.93** | 3.23× |
+| PDN | 43 | 601.34 | **86.19** | **6.98×** |
+| PDS | 21 | 678.42 | **85.28** | **7.96×** |
+
+In the all-arm PRIMARY window the instrument's own per-arm figure reads **RD mean year-0 `772.2`** on
+the historical-print basis — the "~772" the brief named — against rederived RD cells of 206–369. On
+the landed law it reads **`245.8`**, inside that band. **The old column really was reconstructing the
+pre-landing entry class.**
+
+**Seven of nine pool arms cross 1.0 at yr1** on the landed law (`RD` 0.4602→**1.4461**, `IRE`
+0.2230→**1.5547**, `PDN` 0.1484→**1.0361**, `PDS` 0.1721→**1.3689**, `PDA` 0.4120→**1.2628**, `UNR`
+0.4363→**1.0490**, `SSP` 0.9474→**2.4081**). **The pool yr0→yr1 "cliffs" §13.2 and §14.6 reported
+were, to that extent, a measurement artefact rather than a property of the board.**
+
+**The thesis in one cell:** `IRE` MODERN yr1 reads **exactly `1.0000000000`** — predicted at exactly
+that before the emit. All twelve rows played no games in cohort year 1, so their year-1 `ev()` **is a
+day-0 print**; on a coherent ruler the step is exactly flat. The `0.1246` the mixed-basis pack
+reported for the same twelve rows was the artefact.
+
+## 15.3 THE PREREGISTRATION, SCORED — ALL FIFTEEN, BY NUMBER
+
+`PREREG_29C.md` was committed at `b81f84f` **before the ORDER 29C emitter existed**, and is never
+edited. Its predictions were tabled as **numbers**, from the artifact and the committed 29B matrix, so
+each is scoreable rather than adjectival.
+
+| # | prediction | outcome |
+|---|---|---|
+| **1** | replication 89 of 89, tolerance 0, on printed int AND unrounded `derived_v0` | **HELD — exact**, and re-run fail-closed inside the emitter |
+| **2** | 0 unmappable; `_futpos` census 2648/2648; the day-0-position fallback never reached | **HELD — exact** |
+| **3** | only the `v0` field differs; population 2648 / ND 1447 / pool 1201 | **HELD** — diffed record by record, not asserted |
+| **4** | 2648 of 2648 `v0` cells move; 887 up, 1761 down; Σ ×0.7190 | **HELD — exact** |
+| **5** | the ten per-arm year-0 means, both columns, tabled in advance | **HELD — every arm, both columns, to 2 dp**, scored against the emitted matrices |
+| **6** | five RUCK rows at exactly 0 (named); all-arm PRIMARY n 2215→**2211**, MODERN **540** | **HELD — exact**, all five names right |
+| **7** | the 1-dp round-trip is 87 of 89; `hunter-holmes` and `cooper-bell` one point low | **HELD — exact.** The column was **not** un-rounded to make it 89 |
+| **8** | the per-arm yr1/yr4 tables, both windows, and which arms cross 1.0 | **HELD — every cell, to 4 dp, in both windows** |
+| **9** | `IRE` MODERN yr1 = **exactly** 1.0000000000 | **HELD — exactly** |
+| **10** | ND moves modestly, and **every** legacy ND reading improves | **BREACHED on its second clause.** "Modestly" HELD; "every reading improves" is **wrong** — **picks 21–64 got WORSE, −13.56% → −16.12%.** P29C-11's own table said so, so the prereg contradicted itself and the generalisation is the half that fails. Scored against the seat, not around it |
+| **11** | the ND arbitrage persists; all three ARB at −16.74 / −17.12 / −16.12; yr1 1.3074 / 1.3112 / 1.3012 | **HELD — every figure exact** |
+| **12** | both all-arm windows FLIP to ARB at −19.10% / −12.48%; 5 of 5 readings ARB | **HELD on every number — PARTIAL on one clause.** The margins, apprecs, year-paths and populations all printed exactly as filed. The filed sentence "the reporter line will read *8 of 10*" is **BREACHED**: it reads **"8 of 15"**, because this seat ran **three** variants (the live control included), not two. The arbitrage COUNT of 8 is exact; the denominator was this seat's own bookkeeping error |
+| **13** | the historical-print control reproduces §B2 to the digit | **HELD — to the digit**, all ten figures |
+| **14** | no pin moves, no instrument re-pointed, `noarb_table_338.py` `0f822035…`, standing emitter `bffde2f7…` | **HELD** — all computed at run |
+| **15** | board `36d5dfc7` unmoved; tree scope; nothing merges | **HELD** |
+
+**Thirteen held · one partial · one breached.** The two that did not hold cleanly are **this seat's
+own bookkeeping**, not the board's: a generalisation P29C-11's table already contradicted, and a
+denominator that assumed two variants when three were run. **No reading was tuned, no literal
+re-pointed, and nothing was re-run to get a better number.**
+
+## 15.4 THE CONTROLS
+
+| control | status |
+|---|---|
+| **LIVE-basis control** (pre-re-point copies, `per_entrant_O25R4.json`) | **PASS** — reproduces `NOARB_MARGINS_V2` to the last digit; **0 arbitrages** |
+| **HISTORICAL-PRINT control** (`per_entrant_O29B.json` `ca24a49a`, re-run this session, same copies) | **PASS — reproduces §B2 to the digit**; **3 ARB** |
+| replication, fail-closed inside the emitter | **PASS — 89 of 89, tolerance 0** |
+| unmappable entrants | **0 of 2648** |
+| matrix identity — only `v0` differs | **PASS**, all 2648 records |
+| identity pins `cb38ef11` / `4405cba2b42f` / `EXPECT_N 1200` | **ALL HOLD — 29C re-points nothing** |
+| `noarb_table_338.py` byte-identical | **PASS — `0f8220351c64c56ccfa90c60edcdfa5f`**, all three copies, computed at run |
+| standing `emit_matrix_338.py` unmodified | **PASS — `bffde2f786be85037483e9f5f1563068`**, asserted in-copy at run |
+| board / store / artifact / engine unmoved | **PASS** — `36d5dfc7` · `cb38ef11` · `911774bc` · `14000af2` · `a353a9d3` · `5dd34ca8` |
+| tree scope | **PASS** — `noarb29c/` plus this section |
+| 1-dp round-trip | **87 of 89 — DISCLOSED, not repaired** |
+
+## 15.5 WHAT THE OWNER'S MERGE DECISION NOW RESTS ON
+
+1. **The pool cliffs were largely a measurement artefact** — seven of nine pool arms cross 1.0 at yr1
+   once the denominator is the object the board actually prices. §13.2's and §14.6's pool-cliff
+   language should be read against §15.2, not deleted: both readings are real, of two different rulers.
+2. **The ND arbitrage is real and survives.** −18.01% → −16.74% all-in, all three groups still ARB.
+   §13.2's P15 breach and §14.6's widening are **not** artefacts of the mixed basis.
+3. **The deciding instrument flips.** All-arm PRIMARY **+20.75% → −19.10%**, MODERN **+18.11% →
+   −12.48%**. This is new information and it points the same way §14.6 did: **day 0 is now priced
+   correctly while years 1+ are still produced by the un-rewired legs**, so the whole discontinuity
+   sits in one step and the coherent ruler shows it against the 14% carry.
+4. **§14.7's owed decision (as-of vs career-total) is unchanged.** ORDER 29C does not touch it and
+   does not prefer either predicate; it removes the reason the question looked like a measurement
+   problem. The instruments did not read the print at yr0 — **so this act made them, and the answer
+   did not flatter the board**.
+5. **Nothing here moves a byte of the board, store, curve or engine.** It moves the **ruler**, and the
+   ruler now says something different about the deciding instrument than §13 and §14 do.
+
+## 15.6 STATE
+
+| | |
+|---|---|
+| branch | `land/order-29` |
+| board | **`36d5dfc73e2b508ece530bc7dfae2090` — UNMOVED** |
+| store · artifact · engine · surface | `cb38ef11` · `911774bc` · `a353a9d3` · `5dd34ca8` — all **UNMOVED** |
+| 29C matrix | `per_entrant_O29CFINAL.json` **`6db06e40`** |
+| instruments | ORDER 29's disclosed copies, **unmodified**; `noarb_table_338.py` `0f822035…` |
+| PR | **#510, HELD — `[HELD — DO NOT MERGE]`** |
+
+**NOTHING MERGES WITHOUT THE OWNER'S WORD ON THIS PACKET**, which now additionally includes the
+**two new all-arm arbitrages on the landed-law basis** and the **re-based pool readings** as named
+merge considerations.
+
+### Evidence index — ORDER 29C
+
+| file | what |
+|---|---|
+| `noarb29c/PREREG_29C.md` | the fifteen predictions, filed before the emitter existed, never edited |
+| `noarb29c/o29c_lawprobe.py` · `LAWPROBE_29C.*` · `LANDED_V0_29C.json` | the law replicated standalone and proven 89/89; the landed-law year-0 column |
+| `noarb29c/o29c_predict.py` · `PREDICT_29C.*` | the predicted readings, from committed inputs, before any instrument ran |
+| `noarb29c/emit_matrix_29c.py` · `EMITTER_29C.diff` | **the disclosed emitter copy — one declared change, fail-closed replication inside it** |
+| `noarb29c/emit_variant_o29c.sh` · `EMIT_O29CFINAL_out.txt` | the emit on a detached worktree of HEAD |
+| `noarb29c/o29c_matrixdiff.py` · `MATRIXDIFF_29C.*` | **the identity assert: only `v0` differs, on all 2648 records** |
+| `noarb29c/o29c_armcheck.py` · `ARMCHECK_29C.*` | P29C-5 scored against the emitted matrices |
+| `noarb29c/o29c_delta.py` · `o29c_roundtrip.py` · `V0DELTA_29C.json` · `ROUNDTRIP_29C.json` | the year-0 movement; the disclosed 1-dp round-trip |
+| `noarb29c/run_noarb_o29c.sh` · `NOARB_MARGINS_29C_out.txt` · `MARGINS_O29C.*` | both instruments, three bases, canonical margins reporter |
+| `noarb29c/t338_O29CFINAL.txt` · `allarm_O29CFINAL.*` · `table_O29CFINAL.json` | the raw landed-law readings |
+| `noarb29c/t338_O29BFINAL_control.txt` · `allarm_O29BFINAL_control.txt` | the historical-print control, re-run this session |
+| **`noarb29c/NOARB_LANDED_LAW_29C.{md,json}`** | **the two bases side by side, every table labelled with instrument / population / window / basis** |
