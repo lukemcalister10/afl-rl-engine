@@ -1,0 +1,63 @@
+==============================================================================================================
+ORDER 30B STEP 2 -- THE FADE, RE-DERIVED AGAINST THE STEP-1 FINAL v0s (R1)
+==============================================================================================================
+Instrument: o30a2_recut.py, BYTE-IDENTICAL (md5 fe6f436ab23056d717f693091946309a). The ONLY thing
+that changed under it is nd_v0.posv -- the denominator of every ratio it forms.
+
+THE HEADLINE ROW, BOTH RULERS SIDE BY SIDE
+  depth  | ON THE 29B v0s (the RULING)  | ON THE 30B v0s (R1)          | drift     
+  1   L-B|     1.0000  (n=1140)         |     1.0000  (n=1142)         |   0.0000
+  1   UNC|     1.0000  (n=1140)         |     1.0000  (n=1142)         |   0.0000
+  2   L-B|     0.5684  (n= 462)         |     0.5502  (n= 464)         |  -0.0182
+  2   UNC|     0.5684  (n= 462)         |     0.5502  (n= 464)         |  -0.0182
+  3   L-B|     0.3600  (n= 100)         |     0.2628  (n= 100)         |  -0.0972
+  3   UNC|     0.2143  (n= 234)         |     0.1579  (n= 234)         |  -0.0564
+  4   L-B|     0.3073  (n=  11)         |     0.3460  (n=  11)         |   0.0387
+  4   UNC|     0.1052  (n= 154)         |     0.0846  (n= 154)         |  -0.0206
+  5   L-B|     0.5362  (n=   2)         |     0.5415  (n=   2)         |   0.0053
+  5   UNC|     0.0742  (n= 130)         |     0.0509  (n= 130)         |  -0.0233
+  6   L-B|     1.0216  (n=   1)         |     1.0342  (n=   1)         |   0.0127
+  6   UNC|     0.0905  (n= 117)         |     0.0610  (n= 117)         |  -0.0295
+
+  RAW(1) normaliser  1.028605 -> 1.020106  (-0.8263%)
+
+MONOTONICITY OF THE L-B ROW OVER THE DEPTHS THE RULING NAMES (2 / 3 / 4)
+  RULING  0.5684 > 0.3600 > 0.3073   monotone decreasing: True
+  R1      0.5502 > 0.2628 ? 0.3460   monotone decreasing: False
+  the UNCONDITIONAL row stays monotone on BOTH rulers:
+    RULING  0.5684 > 0.2143 > 0.1052 > 0.0742 > 0.0905
+    R1      0.5502 > 0.1579 > 0.0846 > 0.0509 > 0.0610
+
+RULING 2 -- "DEEP END = EXTRAPOLATE THE FITTED DECAY PAST YEAR 4", EVALUATED ON BOTH RULERS
+  RULING  fitted exp(-0.5650*(c-1)^0.8547)   at c=4 -> 0.2358   at c=5 -> 0.1576   at c=6 -> 0.1069
+           the MEASURED depth-4 cell (n=11) reads 0.3073 -- ABOVE the fitted decay by 0.0715
+  R1      fitted exp(-0.5975*(c-1)^1.1614)   at c=4 -> 0.1176   at c=5 -> 0.0503   at c=6 -> 0.0208
+           the MEASURED depth-4 cell (n=11) reads 0.3460 -- ABOVE the fitted decay by 0.2284
+
+THE CUMULATIVE GAMES BACKBONE (ruling 4), BOTH RULERS
+  <= k     RULING     R1         drift   
+  <=0      0.5684     0.5502     -0.0182
+  <=2      0.6560     0.6485     -0.0075
+  <=5      0.6936     0.6887     -0.0049
+  <=10     0.8236     0.8223     -0.0013
+
+ATTRIBUTION -- the drift is ENTIRELY the denominator (v0), by construction
+  fitted rows whose v0 moved: 1140 of 1142
+  v0 UP on 505 rows, DOWN on 635 rows
+  rows PRESENT ONLY IN THE R1 FIT: 2 ['tom-derickx', 'tom-downie']
+    (the A2 cure re-admits them: their v0 was exactly 0 on the 29B cells and ORDER 30A/30A-2
+     dropped every v0 == 0 row from every ratio.)
+  mean v0 over the common rows  748.05 -> 748.44  (+0.05%)
+  TEN LARGEST v0 MOVES AMONG THE FITTED ROWS
+  key                           pos  pick  v0 RULING      v0 R1    delta%
+  ben-crocker                    SF    64      17.99     100.00   +455.8%
+  daniel-butler                  SF    64      17.99     100.00   +455.8%
+  rhys-o-keeffe                  SF    64      17.99     100.00   +455.8%
+  luke-lowden                  RUCK    62      30.93     101.99   +229.8%
+  chris-bryan                  RUCK    62      30.93     101.99   +229.8%
+  cameron-rayner                 SF     1     810.86    1595.12    +96.7%
+  matthew-kreuzer              RUCK     1    1967.72    3477.24    +76.7%
+  taj-woewodin                  MID    64      56.66     100.00    +76.5%
+  thomas-hutchesson             MID    64      56.66     100.00    +76.5%
+  tom-north                     MID    64      56.66     100.00    +76.5%
+
