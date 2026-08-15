@@ -394,8 +394,40 @@ def synth(pk,avg,pos,nyr=2): return {'player':'s','pos':GRPPOS.get(pos,midpos),'
 # ORDER 30B STEP-3 MEASUREMENT DIALS. BOTH DEFAULT OFF => the shipped expressions are byte-identical.
 # They exist to PRICE the forbidden-set boundary (which objects the 26A deletion reaches) before the owner
 # rules it, exactly as the STEP-2 stop priced its three options. No board ships with either set.
-_O30B_NOPOLE=os.environ.get('RL_O30B_NOPOLE','0')!='0'   # delete the PEDIGREE POLE leg from raw_ev
-_O30B_NOISO=os.environ.get('RL_O30B_NOISO','0')!='0'     # delete the par-built ISO pick-tax from the production path
+# ===== ORDER 30B-P — THE STEP-3 PREVIEW DIAL. ONE NEW DECLARED DIAL, DEFAULT OFF. =========================
+# RL_O30B_PREVIEW=1 wires the SEAT-RECOMMENDED Step-3 configuration so the owner can rule the still-OPEN
+# forbidden-set boundary from a BOARD rather than from prose (#334 comment 5299562714). NOTHING IS GREENLIT:
+# with the dial unset every expression below is byte-identical to the committed Step-2 build and the board
+# reproduces 9298203135202a0c707bb0977ba38c31 EXACTLY.
+#
+# IT COMPOSES WITH — DOES NOT DUPLICATE — THE TWO STEP-3 MEASUREMENT DIALS. The preview IMPLIES both
+# ablations: RL_O30B_PREVIEW=1 sets _O30B_NOPOLE and _O30B_NOISO to True by the `or` below, so the pole leg
+# and the par-built ISO pick-tax are deleted through THE SAME TWO LINES the ablation boards used (:487,:517)
+# and no third deletion path exists. Either ablation dial may still be set on its own, exactly as before.
+#
+# THE PREVIEW IS PRE-NUMERAIRE. Step 6's re-pin has NOT run; every table generated from this lane says so.
+_O30B_PREVIEW=os.environ.get('RL_O30B_PREVIEW','0')!='0'  # ORDER 30B-P: the whole preview lane
+_O30B_NOPOLE=(os.environ.get('RL_O30B_NOPOLE','0')!='0') or _O30B_PREVIEW   # delete the PEDIGREE POLE leg from raw_ev
+_O30B_NOISO=(os.environ.get('RL_O30B_NOISO','0')!='0') or _O30B_PREVIEW     # delete the par-built ISO pick-tax from the production path
+# THE EFFECTIVE POSITIONAL BARS — the ONE object the preview re-references the two retained par denominators
+# to. It is `MA.REPL[pos] - rd.REPL_DROP[pos]`, i.e. the position bar the pricing core ITSELF subtracts inside
+# price6 (`MA.REPL[g]=sav[g]-rd.REPL_DROP.get(g,0)`), and it is the identical object ORDER 30B-M's harness
+# read live off the engine and asserted against the owner's Ruling 1 numbers
+# (KPD 65.4 · KPF 63.8 · MID 77.1 · RUCK 75.5 · SD 75.3 · SF 67.9 — o30bm_measure.py:70-73).
+# It is POSITION-LEVEL and PICK-BLIND by construction: there is no pick axis in it at all.
+_O30BP_BARS={_g:(MA.REPL[_g]-rd.REPL_DROP.get(_g,0.0)) for _g in MA.REPL}
+# The preview blend is INSTALLED LATER (it needs day0_v0, which the ORDER 29B block defines ~2300 lines
+# below). This is the late-bound hook; it FAILS CLOSED — a preview-on call that reaches a price before the
+# blend is installed halts rather than silently falling through to the superseded machinery.
+_PV={'on':_O30B_PREVIEW,'blend':None}
+def _pv_apply(p,Y,e):
+    _f=_PV['blend']
+    if _f is None:
+        raise SystemExit('ORDER 30B-P HALT: RL_O30B_PREVIEW is set but the preview blend is not installed '
+                         'yet — a price was formed before the pedigree object existed. FAIL-CLOSED BY '
+                         'DESIGN: falling through here would print a superseded-machinery price under a '
+                         'preview label.')
+    return _f(p,Y,e)
 _POLE={}
 def par_pole(pos,pk,T):
     k=(pos,int(min(pk,cp.KMAX)),int(min(max(T,1),6)))
@@ -2308,7 +2340,13 @@ def _c_w(p,Y,e_full,anchor):
     gt,sa=_c_career(p)
     if gt<=0 or anchor<=0: return 0.0
     T=int(min(max(_ageR(p)-18,1),6))                                  # the eff_ten draft-age bridge
-    par=float(PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),T))
+    # STOP §5 Q2 — THE EVIDENCE WEIGHT IS RETAINED, ITS DENOMINATOR IS RE-REFERENCED (ORDER 30B-P preview).
+    # `Q = clip(sa/par,0,2)` is not a pedestal and not a pole, so the preview KEEPS it; but its denominator
+    # `PR.par_at(pos, effpk, T)` is a PAR TABLE READ AT THE PLAYER'S OWN PICK, which is the property that put
+    # it on the forbidden-set boundary. The preview re-references it to the POSITION-LEVEL, PICK-BLIND
+    # effective bar (_O30BP_BARS). FORM, CLIP AND CONSTANTS ARE UNCHANGED — only the object in the
+    # denominator moves, so the before/after is a pure re-referencing and not a re-tuning.
+    par=(_O30BP_BARS[MA.gfut(p)] if _O30B_PREVIEW else float(PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),T)))
     G=gt/(gt+_C_G0)
     Q=float(np.clip(sa/par,0.0,_C_QMAX)) if par>0 else 0.0
     gate=min(e_full/anchor,1.0) if e_full>0 else 0.0
@@ -2448,11 +2486,26 @@ def ev(p,Y=2026):
 
     # (2) staleness family — D10: prorated bars + V0 basis (old-PVC draftval PURGED from every penalty path)
     with _form_anchor_clock(): el=PR.tenure(p,_fa_year(Y))          # LEG F3 §2.vi: the staleness/tenure clock keys on the FORM ANCHOR (BASE_REF year-arg + AGE_REF pin) — a developing pick is NOT relabeled "stalled prospect" purely by the forward lens advancing the clock (item-352 155-mislabeled-exits defect). k=0 identity by construction.
-    pos=MA.gfut(p); ns=nseas_pro(p,Y); v0=v0_start(p); par=PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)); pr=bestlvl(p,Y)/max(1,par)
+    pos=MA.gfut(p); ns=nseas_pro(p,Y); v0=v0_start(p)
+    # STOP §5 Q3 — THE DECAY GATE IS RETAINED, ITS DENOMINATOR IS RE-REFERENCED (ORDER 30B-P preview), by
+    # exactly the same rule as Q2's site: form/threshold/constants untouched, the pick-conditional par table
+    # replaced by the position-level pick-blind effective bar. This `par` has ONE consumer, `pr`, two lines
+    # of code below — verified, so the re-reference cannot leak anywhere else in ev().
+    par=(_O30BP_BARS[pos] if _O30B_PREVIEW else PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)))
+    pr=bestlvl(p,Y)/max(1,par)
     if ns==0:                                                 # SIT-OUT: derived games-ramp treatment (V0-anchored, prorated, scoring-aware, continuous at graduation)
+        # ORDER 30B-P, STOP §5 Q4 — REPLACE, NOT WRAP. sitout_ev's ns==0 arm IS an anchor<->production blend
+        # ((1-lam)*R*entry_anchor + lam*e_full), so the ruled blend REPLACES it rather than wrapping it;
+        # wrapping would count pedigree twice and exceed the measured share by construction. Note this arm
+        # is reached ONLY by rows that HAVE evidence and have not yet banked a 6-game season — a row with no
+        # games at all is intercepted by _entry30b_price above and keeps the Step-2 fade untouched.
+        if _PV['on']: return round(_pv_apply(p,Y,e*_h_cut(p,Y)))
         return round(sitout_ev(p,Y,e)*_h_cut(p,Y))            # #334 ITEM H: the ruled cuts, cell-qualified
     e=e*_h_cut(p,Y)                                           # #334 ITEM H on the year-1+ arm (mature nonRD reaches it; sitter cells cannot, by definition)
-    if _A_ON and _isreal(p):                                  # #334 ITEM A: the anchor leg no longer stops at qualification — it fades (see _a_blend above)
+    # ORDER 30B-P, STOP §5 Q4 — ITEM A's anchor carry is the OTHER superseded anchor<->production blend and
+    # is likewise REPLACED, not wrapped. _c_w / C_H / the ruck ceiling are NOT touched by this: they are an
+    # evidence weight and a ceiling, they survive, and their par denominator is re-referenced above.
+    if _A_ON and _isreal(p) and not _PV['on']:                # #334 ITEM A: the anchor leg no longer stops at qualification — it fades (see _a_blend above)
         e=_a_blend(p,Y,e)
     keyruc = pos in ('KPF','KPD','RUCK'); onset = (4 if keyruc else 3)
     if el>=onset and ns<=1:                                   # stalled: D8 graded release at evaluated year
@@ -2463,6 +2516,11 @@ def ev(p,Y=2026):
     elif el>=onset+2 and pr<0.55:                             # mediocre-for-years (played but never near par) -> decays too
         frac=0.45*max(0.3,1-0.08*(el-onset))*(1.5 if keyruc else 1.0)
         e=min(e, v0*frac)
+    # ORDER 30B-P — THE BLEND SITE. `e` is now the FINISHED PRODUCTION LEG: pole deleted, ISO deleted, and
+    # the RETAINED form machinery (ITEM H's ruled cuts, the ruck ceiling, the KPF compression, D8 graded
+    # staleness, the decay gate) all applied to it, exactly as the boundary reading "bars/aging/form
+    # legitimately retained" says they should be. The pedigree leg is added ONCE, here, at the measured share.
+    if _PV['on']: return round(_pv_apply(p,Y,e))
     return round(e)
 # ==== M3 PROPORTIONAL-TENURE/AGE BLEND (BAKE CANDIDATE v2, D7 02/07/2026 — design + backtest:
 # session_2026-07-02/m3_design_proportional_tenure.md; NOT baked until Luke's bake word) ====
@@ -2516,6 +2574,12 @@ ev_prefloor=_ev_m3                                            # harnesses read t
 # which is the case it was written for. Retired/delisted/gate-synthetic rows stay out, exactly as before.
 def ev(p,Y=2026):
     v=ev_prefloor(p,Y)
+    # ORDER 30B-P, STOP §5 Q4 — THE YEAR-ZERO FLOOR IS REPLACED, NOT WRAPPED. `floor_frac x entry_anchor` is
+    # an ANCHOR LOWER BOUND: it is the third object in the supersession list and the ablation that identified
+    # ITEM A proved it is the thing a zeroed production leg actually falls to. The ruled blend already carries
+    # the pedigree leg at the measured share for every row, so leaving the floor underneath it would put a
+    # SECOND, uncalibrated pedigree object under the same price. In the preview lane it does not run.
+    if _PV['on']: return v
     _pool=bool(p.get('_pool'))
     if not _isreal(p) or p.get('_retired') or delisted(p): return v          # out of scope: byte-exact passthrough
     if not _pool and (p.get('type')!='ND' or p.get('_pickless')): return v   # non-pool: the national-draft scope, unchanged
@@ -2856,6 +2920,131 @@ if _ONEMACH and _ENTRY29B:
           %(FADE30B_D[2],FADE30B_D[3],FADE30B_D[4],len(_S30),MA.BASE_REF,len(_S30ND),len(_S30)-len(_S30ND)))
 elif not _ONEMACH:
     print('ORDER 30B ONE-MACHINERY OFF (RL_ONEMACH=0) — the 29B flat hold prints the sitter price.')
+# ===== ORDER 30B-P — THE STEP-3 PREVIEW BLEND. INSTALLED HERE, BEHIND RL_O30B_PREVIEW (DEFAULT OFF). ======
+# #334 comment 5299562714. NOTHING IS GREENLIT: the Step-3 forbidden-set boundary word is still OPEN, and
+# this lane exists so the owner can rule it from a board. Dial unset => every branch above is False and the
+# committed Step-2 board 9298203135202a0c707bb0977ba38c31 reproduces BYTE-EXACT.
+#
+# THE FORMULA, for a row that HAS evidence at Y:
+#
+#       price(p,Y) = (1 - sigma(g)) x production(p,Y)  +  sigma(g) x pedigree(p)
+#
+#   production  the finished production leg at the blend site in ev(): POLE DELETED, ISO DELETED (both via
+#               the two existing ablation lines, which RL_O30B_PREVIEW implies), with the retained
+#               bars/aging/form machinery applied and BOTH superseded anchor blends removed.
+#   pedigree    the STEP-1 POSITIONAL v0 — day0_v0(p) — converted BOARD -> ENGINE currency by _PL_F.
+#   sigma(g)    the MEASURED pedigree share at g games (ORDER 30B-M).
+#
+# ---- THE CURRENCY CONVERSION, STATED EXACTLY (the 29B/29C conventions, no new object) -------------------
+# day0_v0(p) is in BOARD currency and the numeraire s is ALREADY INSIDE IT: for an ND in-curve row it is
+# nd_v0.posv[gfut][pick] (the STEP-1 re-fitted positional ladder, `posv_g = relat_g x curve`, curve = the
+# shipped ladder raw x s); for a pool row it is the signed pool_v0 cell x anchor_factor, read through the
+# ONE accessor MA.pool_v0_of which HALTS on an unsigned cell. ev() works in ENGINE currency and the printed
+# board price is int(round(ev/_F)) with _F == _PL_F == the certified 1.0524. So the ONE conversion the
+# pedigree leg needs is BOARD -> ENGINE, i.e. x _PL_F — precisely the conversion ORDER 29B's own day-0
+# branch performs one screen above (`return _d0*_PL_F`). No second numeraire is introduced and none is
+# re-pinned: THE PREVIEW IS PRE-NUMERAIRE, Step 6 has not run, and every table generated says so.
+#
+# ---- THE NO-STACKING CONSTRAINT -------------------------------------------------------------------------
+# The owner's constraint: a PLAYED player's pedigree share equals the measured sigma curve, and the sitter
+# fade D(clock) governs GAMELESS clocks only. Both objects are therefore applied to disjoint populations and
+# are NEVER multiplied together:
+#   * zero evidence at Y  -> _entry30b_price() intercepts the row ABOVE this lane and prints v0 x D(c).
+#                            THE STEP-2 WIRING IS UNTOUCHED; day-0 prints are byte-identical under the
+#                            preview, which is why the printed-day-0 identity re-verifies at 89 of 89.
+#   * any evidence at Y   -> this blend, with an UNFADED pedigree leg at weight sigma(g).
+# Stacking (1-w) and D on the same row is exactly the double-discount the constraint forbids, and the code
+# cannot do it: the two branches are mutually exclusive by the _entry30b_price predicate.
+#
+# ---- sigma(g): THE MEASURED CURVE, AND THE INTERPOLATION, STATED ---------------------------------------
+# ORDER 30B-M measured the pedigree share at five games bands, at their n-weighted midpoints:
+#       g   2.5    10.5    25.5    53.0    85.5
+#   sigma  70.1%  66.4%  33.1%  16.5%   2.2%          (PERSISTENCE_TABLE.json / PACKET section 2)
+# The preview uses the packet's own REFIT (section 6): the SAME functional family ruling 4 ruled,
+# sigma(g) = exp(-(g/tau)^beta), refitted to those five midpoints by n-weighted least squares ->
+# tau = 23.0, beta = 0.80. THIS IS THE INTERPOLATION BETWEEN THE BAND MIDPOINTS, and it is the one the
+# owner's brief names ("the 30B-M refit, tau~23.0 beta~0.80 class"). It is used rather than a raw
+# point-to-point interpolation because it is the ruled functional form, it is monotone and smooth
+# everywhere (ruling 6's continuity acceptance curve needs that), and it is defined below 2.5 and above
+# 85.5 games where a point-to-point rule would have to extrapolate. Its fit to the five measured points is
+# published in the packet (2.5 84.4% / 10.5 58.6% / 25.5 33.8% / 53.0 14.2% / 85.5 5.7%) and its known
+# residuals — it runs HOT at the shallow end and HOT again past 71 games — are carried into this lane
+# unchanged rather than patched. THE RAW LOG-LINEAR MIDPOINT INTERPOLATION IS ALSO PROVIDED BELOW
+# (sigma30bp_raw) as the declared alternative, so the difference can be priced without another dial.
+#   sigma(0) = 1 exactly, so the blend is CONTINUOUS INTO the pedigree leg on the games axis. It is NOT
+#   continuous into the Step-2 sitter price, because the sitter price is v0 x D(c) < v0 while the blend
+#   approaches v0 as g -> 0. That STEP AT THE FIRST GAME is a property of the no-stacking constraint as
+#   stated, not of this implementation, and it is MEASURED and reported rather than smoothed away.
+#
+# ---- THE GAMES AXIS, AND MSD (owner ruling 5) -----------------------------------------------------------
+# g is CAREER games as of Y (never future), the same axis the measurement used. Ruling 5 makes the MSD
+# entry season a season 1 of AT MOST 12 games, and says the evidence clock scales on games-of-12; so an MSD
+# row's entry-season games are credited at cp.SEASON/12 per game, and every other season on every route is
+# credited 1:1. Stated rather than assumed: this is the ONLY place the games axis is not raw games, it
+# touches the MSD entry season alone, and pool rows are carried as PROVISIONAL because their own values are
+# Step 4's work.
+SIGMA30BP_TAU=23.0; SIGMA30BP_BETA=0.80
+SIGMA30BP_SRC=('ORDER 30B-M PEDIGREE_PERSISTENCE_PACKET.md section 6 refit of ruling 4\'s functional form '
+               'to the five measured sigma band midpoints; #334 comment 5299562714')
+SIGMA30BP_BANDS=((2.5,0.701),(10.5,0.664),(25.5,0.331),(53.0,0.165),(85.5,0.022))   # the MEASURED points
+def sigma30bp(g):
+    """The measured pedigree share at g career games. exp(-(g/tau)^beta); sigma(0)=1 exactly, strictly
+    decreasing, positive everywhere. Pure function of g — no player state, trivially auditable."""
+    g=float(max(0.0,g))
+    if g<=0.0: return 1.0
+    return _math.exp(-((g/SIGMA30BP_TAU)**SIGMA30BP_BETA))
+def sigma30bp_raw(g):
+    """THE DECLARED ALTERNATIVE, published for comparison and NOT wired: log-linear in sigma between the
+    five measured band midpoints, flat outside them. This is the reading that hits the measured points
+    exactly and interpolates nothing else."""
+    g=float(max(0.0,g)); xs=[b[0] for b in SIGMA30BP_BANDS]; ys=[b[1] for b in SIGMA30BP_BANDS]
+    if g<=xs[0]: return ys[0]
+    if g>=xs[-1]: return ys[-1]
+    for i in range(len(xs)-1):
+        if xs[i]<=g<=xs[i+1]:
+            f=(g-xs[i])/(xs[i+1]-xs[i])
+            return _math.exp((1.0-f)*_math.log(ys[i])+f*_math.log(ys[i+1]))
+    return ys[-1]
+def pv_games(p,Y=2026):
+    """The games axis sigma reads: career games as of Y, with ruling 5's MSD games-of-12 scaling."""
+    _msd=(p.get('type')=='MSD'); _e=int(p.get('year') or 0); _k=float(cp.SEASON)/12.0
+    _g=0.0
+    for _x in p.get('scoring') or []:
+        if _x['year']>Y or not _x['games']: continue
+        _g+=float(_x['games'])*(_k if (_msd and _x['year']==_e) else 1.0)
+    return _g
+_PV_STATS={'n':0,'noped':0}
+if _O30B_PREVIEW:
+    if not (_ENTRY29B and _ONEMACH):
+        raise SystemExit('ORDER 30B-P HALT: the preview needs the ORDER 29B day-0 object (the pedigree leg) '
+                         'and the ORDER 30B Step-2 fade (the zero-evidence lane). One of them is switched '
+                         'off, so the preview has nothing coherent to be. FAIL-CLOSED BY DESIGN.')
+    def pv_pedigree(p):
+        """The pedigree leg in ENGINE currency: the STEP-1 positional v0 (pool: the signed pool cell) x _PL_F."""
+        _v=day0_v0(p)
+        if _v is None:
+            raise SystemExit('ORDER 30B-P HALT: %r carries evidence but has no day-0 v0 object, so the '
+                             'preview cannot form its pedigree leg. Measured before wiring: 0 of the 715 '
+                             'priced rows are in this state. FAIL-CLOSED rather than defaulted.'
+                             %(p.get('key'),))
+        return float(_v)*_PL_F
+    def _pv_blend(p,Y,e):
+        """price = (1-sigma(g)) x production + sigma(g) x pedigree. ONE pedigree leg, at the measured share."""
+        _s=sigma30bp(pv_games(p,Y))
+        return (1.0-_s)*float(e)+_s*pv_pedigree(p)
+    _PV['blend']=_pv_blend
+    _PV_ROWS=[p for p in MA.data if _isreal(p) and not p.get('_retired') and not delisted(p)
+              and MA.GRP.get(p.get('pos')) and _entry30b_price(p,MA.BASE_REF) is None]
+    print('ORDER 30B-P STEP-3 PREVIEW LIVE (RL_O30B_PREVIEW=1) — NOTHING IS GREENLIT, THE BOUNDARY IS STILL '
+          'UNRULED, AND THIS BOARD IS PRE-NUMERAIRE. pole DELETED + ISO DELETED (via the two existing '
+          'ablation lines) · blend sigma(g)=exp(-(g/%.4g)^%.4g) on the measured 30B-M curve · pedigree leg = '
+          'STEP-1 positional v0 x %.4f · Q and the decay gate RETAINED with their denominators re-referenced '
+          'to the effective positional bars (%s) · _a_blend, sitout_ev\'s ns==0 arm and the year-zero floor '
+          'REPLACED, not wrapped. %d rows carry the blend; %d zero-evidence rows keep the Step-2 fade '
+          'untouched.'
+          %(SIGMA30BP_TAU,SIGMA30BP_BETA,_PL_F,
+            ' '.join('%s %.1f'%(_g,_O30BP_BARS[_g]) for _g in sorted(_O30BP_BARS)),
+            len(_PV_ROWS),len(_S30) if _ONEMACH and _ENTRY29B else 0))
 import json as _w4json
 _PVCFIT_META={}
 if _W4PVC and os.path.exists('pvc_fit_candidate.json'):
