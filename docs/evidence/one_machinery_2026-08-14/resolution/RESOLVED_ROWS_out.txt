@@ -1,0 +1,56 @@
+====================================================================================================================
+ORDER 30B-R -- THE NAMED ROWS UNDER THE RESOLVED CONFIGURATION.   *** DERIVED, NOT BUILT ***
+====================================================================================================================
+  No engine ran.  No board exists.  NOTHING WIRES UNTIL THE OWNER RULES.
+  READING = additive (T1) | CLOCK = raw career games, RETAINED (T2) | CURVE = the join (T3)
+  | OBJECT = OPEN (T4): both printed.
+
+row               path     g     lane    prod P        v0    anchor |  STEP-2 PREVIEW |  RESOLVED w/ anchor weight-rd
+isaac-kako        ND      36     deep     744.3     759.8    1069.0 |    1320     748 |       886       944       748
+willem-duursma    ND      19     deep    4198.2    3879.3    3435.7 |    4223    4063 |      5215      5099      4063
+dyson-sharp       ND      13   bridge    3247.1    1551.0    1597.7 |    3269    2347 |      2811         -      2031
+jacob-farrow      ND      18     deep    2720.0    1284.5     942.0 |    2765    2089 |      3067      2974      2089
+cooper-trembath   MSD     26     deep    2346.8     217.5     354.7 |    2055    1652 |      2394      2424      1652
+chris-scerri      SSP      7     thin     491.6     124.4     325.2 |     467     242 |       165       431       165
+josh-smillie      ND       0   sitter         -    1688.8    1821.3 |     471     471 |       471       508       471
+harry-demattia    ND       0   sitter         -     890.6     911.6 |     301     301 |       301       309       301
+max-knobel        ND       0   sitter         -     830.5     641.5 |     287     287 |       287       222       287
+
+  dyson-sharp       DECLARED BRIDGE -- not a measurement
+  cooper-trembath   POOL -- v0 cell provisional, Step 4
+  chris-scerri      backbone lane: production does NOT enter -- see the T3 conflict ; POOL FADE NOT DERIVED (D forced to 1.0) -- Step 4
+  josh-smillie      gameless -- the sitter law is untouched by every task in this order
+  harry-demattia    gameless -- the sitter law is untouched by every task in this order
+  max-knobel        gameless -- the sitter law is untouched by every task in this order
+
+  RESOLVED  = the additive reading on the v0 object, on the joined curve.
+  w/ anchor = the same, with entry_anchor substituted for v0 (T4 -- the OWNER'S word).
+  weight-rd = the same lane, but under the preview's WEIGHT reading, so the cost of T1 is visible.
+
+  Movement against the preview board:
+  row                  PREVIEW   RESOLVED    delta %
+  isaac-kako               748        886     +18.5%
+  willem-duursma          4063       5215     +28.4%
+  dyson-sharp             2347       2811     +19.8%
+  jacob-farrow            2089       3067     +46.8%
+  cooper-trembath         1652       2394     +44.9%
+  chris-scerri             242        165     -32.0%
+  josh-smillie             471        471      -0.0%
+  harry-demattia           301        301      +0.1%
+  max-knobel               287        287      +0.1%
+
+====================================================================================================================
+THE WHOLE BOOK UNDER THE RESOLVED CONFIGURATION   *** DERIVED, NOT BUILT ***
+====================================================================================================================
+configuration                            book total vs preview
+PREVIEW as built (weight, v0, no join)       679874     -0.00%
+weight reading, v0, JOINED                   667260     -1.86%
+ADDITIVE reading, v0, no join                755464    +11.12%
+RESOLVED: additive, v0, JOINED               715229     +5.20%
+RESOLVED: additive, ANCHOR, JOINED           715377     +5.22%
+
+  preview board as printed (integers, 804 rows): 679875
+  RESOLVED lane populations: {'sitter': (89, 17243), 'thin': (99, 35470), 'bridge': (44, 29578), 'deep': (572, 632937)}
+
+  THE PRE-NUMERAIRE WARNING STANDS: Step 6's re-pin has not run.  Read the MOVEMENT, not the level.
+

@@ -1,0 +1,117 @@
+====================================================================================================
+ORDER 30B-R -- T1 THE READING (definitional) + T4 THE OBJECT
+====================================================================================================
+pins: {"merged_recover": "95caabf76193b9f8d562a5cda1d38cdc", "o30bm_measure": "e910fe6482ab7b05a92f18c173667073", "persistence_table": "c7b201c5fe9fcb7f3b7b3e939ae89532", "preview_movers": "5b605c7380211721d6dc6a86c58e0d68", "store": "cb38ef1171dcf20aae66ebf12682be0d"}
+
+====================================================================================================
+T1.1 -- SIGMA AS CONSTRUCTED IN o30bm_measure.py::band_fit
+====================================================================================================
+  line 506: Returns beta_v0, cluster SE, pedigree share sigma = beta*mean(v0)/mean(R)."""
+  line 531: sig = b[i] * mv0 / mR if mR > 0 else None
+
+  The fitted equation, band b:   R_i = c + gamma'Z_i + beta_b * v0_i + eps_i
+  where Z = [pos dummies, age, age^2, o, o^2, cur, cur3, games_at_Y, log1p(g)].
+  Band means:                    Rbar = (c + gamma'Zbar) + beta_b * v0bar   ==   Pibar + beta_b*v0bar
+  Definition of sigma:           sigma_b := beta_b * v0bar / Rbar            ==   (pedigree contribution)/(total)
+  Complement, therefore:         1 - sigma_b == Pibar / Rbar                 ==   (production contribution)/(total)
+
+  READ THAT AGAIN: sigma is a ratio of CONTRIBUTIONS TO THE LEVEL OF THE OUTCOME.
+  It is a VALUE share by construction.  It is not, and was never fitted as, a mixing weight.
+
+band          n    beta_v0      mean v0       mean R v0bar/Rbar      sigma
+0-5         382    0.29683        600.2        254.1      2.362     0.7011
+6-15        591    0.36226        730.4        398.4      1.833     0.6641
+16-35       834    0.22330        847.4        571.2      1.483     0.3313
+36-70       887    0.15315        920.5        857.0      1.074     0.1645
+71+        1339    0.02007       1123.8       1018.2      1.104     0.0221
+
+  IDENTITY CHECKED: sigma == beta*mean(v0)/mean(R) to 1e-12 in all five bands.
+  mean(v0)/mean(R) > 1 in EVERY band -- the pedigree object is systematically LARGER than the
+  outcome it is a share of.  That single fact is what breaks the weight reading.
+
+====================================================================================================
+T1.2 -- THE THREE WIRINGS, AND THE ALGEBRA THAT SEPARATES THEM
+====================================================================================================
+
+  W  WEIGHT form (wired in the 30B-P preview)
+        price = (1 - sigma) * P  +  sigma * V
+        implied value share  s_W = sigma*V / [(1-sigma)*P + sigma*V]
+        s_W == sigma  <=>  V == price.  Never true in general; mean(v0)/mean(R) is 1.07..2.36.
+        AND: it multiplies the production block by (1 - sigma).  The regression NEVER shrinks the
+        production block -- its coefficient on Z is gamma, estimated free, and the production
+        contribution at the band mean is (1-sigma)*Rbar, NOT (1-sigma)*Pbar.
+
+  V  VALUE form (harmonic; not built by the preview)
+        solve  (1-w)V / [wP + (1-w)V] = sigma   ->   1/price = (1-sigma)/P + sigma/V
+        implied value share  s_V == sigma  EXACTLY, for every row, by construction.
+        Reproduces the band-mean identity beta*v0bar = sigma*Rbar exactly.
+        But it is harmonic in (P, V); the fit is LINEAR in v0, so this is not the fitted form either.
+
+  A  ADDITIVE form (the regression itself)
+        price = P + beta(g) * V
+        This IS the fitted equation with the production block at unit weight.
+        Band-mean check:  mean(P + beta*V) = Pibar + beta*v0bar = Rbar.  Exact, by construction.
+        Requires no v0 == price assumption and imposes no production shrink.
+        beta -- not sigma -- is the object band_fit actually ESTIMATED; sigma is derived FROM it.
+
+====================================================================================================
+T1.3 -- THE FOUR ROWS T1 NAMES, UNDER ALL THREE WIRINGS
+====================================================================================================
+row                    g    sigma    prod P      v0 V  beta(g) |  W price  V price  A price |      s_W      s_V      s_A
+isaac-kako            36   0.2391     744.3     759.8   0.1869 |    748.0    747.9    886.3 |   0.2428   0.2391   0.1602
+willem-duursma        19   0.4239    4198.2    3879.3   0.2622 |   4063.0   4056.8   5215.2 |   0.4047   0.4239   0.1950
+dyson-sharp           13   0.5307    3247.1    1551.0   0.3224 |   2347.0   2054.7   3747.2 |   0.3507   0.5307   0.1335
+jacob-farrow          18   0.4396    2720.0    1284.5   0.2700 |   2089.0   1824.0   3066.9 |   0.2703   0.4396   0.1131
+
+  s_W is the WEIGHT wiring's implied VALUE share.  s_V == sigma exactly.  s_A is the additive
+  form's.  The measurement's sigma column is the middle one -- read the first against it.
+
+====================================================================================================
+T1.4 -- THE WHOLE BLENDED BOOK: what each wiring totals, and what pedigree share it prints
+====================================================================================================
+  blended rows: 715 of 804
+  W : total     662631   pedigree pts     88942   book value share 0.1342   median row share 0.1688
+  V : total     595059   pedigree pts     86990   book value share 0.1462   median row share 0.0875
+  A : total     738221   pedigree pts     53989   book value share 0.0731   median row share 0.1164
+
+  preview printed total (blended rows only, integers): 662631
+  Step-2 total (blended rows only):                    689428
+
+cg            n      W total      V total      A total    W share    V share    A share
+1-5          60        30398        27672        46659     0.7719     0.8260     0.1873
+6-15         87        42677        36921        59560     0.5410     0.5796     0.2204
+16-35       104        66771        54266        83599     0.3645     0.3775     0.1883
+36-70       111       110638        88960       125736     0.1078     0.1454     0.0816
+71+         353       412147       387240       422667     0.0149     0.0241     0.0145
+
+====================================================================================================
+T4 -- THE OBJECT: entry_anchor against the Step-1 positional v0
+====================================================================================================
+  entry_anchor read for 2650 store rows
+  blended rows with NO entry_anchor: 0  []
+
+  entry_anchor / v0_step1  over 715 covered blended rows:
+     share above 1.0  0.6615  (473 of 715)
+     median 1.0791   mean 1.1731   p25 0.9157   p75 1.3738   p10 0.7397   p90 1.6902   sd 0.4131
+     ND (non-pool)  n  515  median 1.0682  p25 0.9115  p75 1.3049  above-1 0.647
+     POOL           n  200  median 1.1427  p25 0.9890  p75 1.7077  above-1 0.700
+
+  pedigree %% of printed, whole blended book, by OBJECT and by WIRING:
+wiring           obj=v0 tot obj=v0 share obj=anch tot obj=anch share
+W                    662631       0.1342       667414       0.1404
+A                    738221       0.0731       741399       0.0771
+
+  share delta (anchor - v0):  W +0.6205 pp/100   A +0.3973 pp/100
+
+  THE NAMED ROWS UNDER BOTH OBJECTS (weight wiring = the preview's own, then additive):
+row                    g    sigma      prod        v0    anchor |    W(v0)  W(anch) |    A(v0)  A(anch)
+isaac-kako            36   0.2391     744.3     759.8    1069.0 |    748.0    821.9 |    886.3    944.1
+willem-duursma        19   0.4239    4198.2    3879.3    3435.7 |   4063.0   3875.0 |   5215.2   5098.9
+dyson-sharp           13   0.5307    3247.1    1551.0    1597.7 |   2347.0   2371.8 |   3747.2   3762.3
+jacob-farrow          18   0.4396    2720.0    1284.5     942.0 |   2089.0   1938.4 |   3066.9   2974.4
+cooper-trembath       26   0.3263    2346.8     217.5     354.7 |   1652.0   1696.8 |   2394.4   2424.4
+chris-scerri           7   0.6797     491.6     124.4     325.2 |    242.0    378.5 |    534.2    603.0
+josh-smillie        day0        -      none    1688.8    1821.3 |    470.8    507.8 |    470.8    507.8   (DAY-0: sitter law v0 x D=0.2788)
+harry-demattia      day0        -      none     890.6     911.6 |    301.4    308.6 |    301.4    308.6   (DAY-0: sitter law v0 x D=0.3385)
+max-knobel          day0        -      none     830.5     641.5 |    287.4    221.9 |    287.4    221.9   (DAY-0: sitter law v0 x D=0.3460)
+
