@@ -3013,7 +3013,6 @@ def pv_games(p,Y=2026):
         if _x['year']>Y or not _x['games']: continue
         _g+=float(_x['games'])*(_k if (_msd and _x['year']==_e) else 1.0)
     return _g
-_PV_STATS={'n':0,'noped':0}
 if _O30B_PREVIEW:
     if not (_ENTRY29B and _ONEMACH):
         raise SystemExit('ORDER 30B-P HALT: the preview needs the ORDER 29B day-0 object (the pedigree leg) '
