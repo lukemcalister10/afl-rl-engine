@@ -1080,7 +1080,15 @@ def survival(b,delta,games):
 # knobs (PREREG_I.md §3; ORDER E's dose warning binds — full S1 overshoots).
 # RL_O36 unset  =>  o36_bar IS REPL[pos]  =>  the landing candidate 1f176444 reproduces BYTE-EXACT.
 _O36=os.environ.get('RL_O36','0')!='0'
-O36_LAM_S1=float(os.environ.get('RL_O36_LAM_S1','0.35'))
+# THE DOSE. NOT hand-picked and NOT chosen by looking at harry-dean. The joint calibration
+# (docs/evidence/order_i_2026-08-18/o36_calibrate.py) swept it against the counterweight and the
+# relief; the owner's own mature-row law then PINNED the counterweight (0 of 11 knob moves and 4 of 5
+# relief values move mature rows, MATURE_GATE_36.json), leaving the dose as the single free axis.
+# NO DOSE IS FEASIBLE ON ALL OF THE OWNER'S LAWS AT ONCE — the seat HALTS AND REPORTS that, with the
+# ladder printed (PACKET_I.md §5). 0.25 is carried because it is the point at which the year-1 class
+# cohort lands on G1's stated IDEAL of ~1.08 (mean_0515 = 1.0788, against 1.0421 today). It is
+# CARRIED FOR THE OWNER TO LOOK AT. IT IS NOT A RECOMMENDATION AND NOTHING LANDS ON THIS SEAT'S WORD.
+O36_LAM_S1=float(os.environ.get('RL_O36_LAM_S1','0.25'))
 O36_TALLPOS=frozenset(('KPD','KPF','RUCK'))
 O36_GATE_DELTA={'TALL':{18:22.334475609756097,19:20.55500752464971,20:16.306362402208926,
                         21:11.588672690048071,22:7.826894964594814,23:6.439783302063788},
