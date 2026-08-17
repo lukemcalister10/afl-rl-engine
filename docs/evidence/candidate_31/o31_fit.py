@@ -3,7 +3,7 @@
 
     price(p,Y) = rho(g) * Phat  +  pi(g, c_u, s) * V0
 
-    pi(g, c_u, s) = Phi(g,s) * [ D(c_u) * (1 - rho(g))  +  beta_mono(g) * rho(g) ]
+    pi(g, c_u, s) = D(c_u) * (1 - rho(g))  +  Phi(g,s) * beta_mono(g) * rho(g)
 
 THE TWO ENDPOINTS ARE THE TWO RULED LAWS, REPRODUCED EXACTLY, NOT APPROXIMATED:
 
@@ -145,7 +145,14 @@ z, SSE_RHO = nelder_mead(obj_rho, [math.log(20.0), math.log(0.9)])
 TAU_RHO, B_RHO = math.exp(z[0]), math.exp(z[1])
 rho = lambda g: 0.0 if float(g) <= 0.0 else 1.0 - math.exp(-((float(g) / TAU_RHO) ** B_RHO))
 
-def pi(g, D, s=0): return phi(g, s) * (D * (1.0 - rho(g)) + beta_mono(g) * rho(g))
+def pi(g, D, s=0):
+    # Phi conditions the MEASURED COEFFICIENT ONLY.  beta_stall/beta_pooled is a ratio of ADDITIVE
+    # COEFFICIENTS estimated on played players; the D(c_u) channel is the sitter fade, measured on
+    # GAMELESS listed players, and no stall measurement was ever taken on it.  Applying Phi to both
+    # would push a conditioning through a population it was not estimated on -- and it makes
+    # pi(0,c,s) == D(c) hold for EVERY s structurally, not merely on an unreachable-state argument.
+    r = rho(g)
+    return D * (1.0 - r) + phi(g, s) * beta_mono(g) * r
 
 RHO_ROWS = []
 for g, y in RHO_TARGETS:
@@ -163,7 +170,7 @@ CHK['pi(0,c)==D(c) exactly']    = all(pi(0.0, FADE_D[k], 0) == FADE_D[k] for k i
 # s>0 at g==0 is STRUCTURALLY UNREACHABLE: s counts PLAYED-but-not-delivered seasons, so s>=1 implies
 # at least one season with games>0, i.e. g>=1.  It is asserted ON THE BOARD POPULATION in the engine
 # (a build-failing assert), not papered over with a maths trick here.
-CHK['s>0 implies g>0 (engine)'] = True
+CHK['pi(0,c,s)==D(c) any s']   = all(pi(0.0, FADE_D[k], s) == FADE_D[k] for k in FADE_D for s in (0,1,2,5,9))
 CHK['rho strictly increasing']  = all(rho(GRID[i]) < rho(GRID[i + 1]) for i in range(len(GRID) - 1))
 CHK['rho -> 1']                 = rho(400.0) > 0.999
 CHK['rho in [0,1)']             = all(0.0 <= rho(g) < 1.0 for g in GRID)
@@ -183,7 +190,7 @@ CHK['deep -> additive (1e-3)']  = abs(pi(300.0, 0.3460004697526451) - beta_mono(
 
 OUT = {
     'order': 'ORDER 31 -- THE ONE LAW',
-    'law': 'price = rho(g)*Phat + Phi(g,s)*[ D(c_u)*(1-rho(g)) + beta_mono(g)*rho(g) ]*V0',
+    'law': 'price = rho(g)*Phat + [ D(c_u)*(1-rho(g)) + Phi(g,s)*beta_mono(g)*rho(g) ]*V0',
     'endpoints': {'g=0': 'price = D(c)*V0  -- the wired Step-2 sitter law, EXACT',
                   'deep': 'price = Phat + beta(g)*V0 -- the 30B-R additive reading (T1), EXACT'},
     'inputs': {'READING.json': {'md5': md5(P_READING), 'beta_points': BETA_POOLED},
@@ -198,7 +205,7 @@ OUT = {
     'rho': {'form': 'rho(g) = 1 - exp(-(g/TAU_RHO)^B_RHO)', 'TAU_RHO': TAU_RHO, 'B_RHO': B_RHO,
             'sse': SSE_RHO, 'rms_D_units': RMS_RHO, 'targets_exact': RHO_TARGETS, 'rows': RHO_ROWS,
             'calibration': 'B(g) == rho(g)*1.0 + [D(2)*(1-rho(g)) + beta_mono(g)*rho(g)] on the R1 backbone'},
-    'phi': {'form': 'Phi(g,s) = 1 - min(s,2)/2 * (1 - PhiStall(g))',
+    'phi': {'form': 'Phi(g,s) = 1 - min(s,2)/2 * (1 - PhiStall(g)); it multiplies the MEASURED COEFFICIENT beta_mono ONLY',
             'beta_stall_raw': BETA_STALL_RAW, 'beta_stall_floored': BETA_STALL,
             'beta_stall_monotone': STALL_MONO_PTS, 'PhiStall_knots': PHI_STALL_PTS,
             'ramp_denominator': PHI_RAMP,
@@ -222,7 +229,7 @@ OUT = {
 json.dump(OUT, open(os.path.join(HERE, 'LAW31.json'), 'w'), indent=1, sort_keys=True)
 
 print('=== ORDER 31 — THE ONE LAW ==================================================')
-print('price = rho(g)*Phat + Phi(g,s)*[ D(c_u)*(1-rho(g)) + beta_mono(g)*rho(g) ]*V0')
+print('price = rho(g)*Phat + [ D(c_u)*(1-rho(g)) + Phi(g,s)*beta_mono(g)*rho(g) ]*V0')
 print()
 print('beta measured  :', ' '.join('%.4f' % b for _, b in BETA_POOLED))
 print('beta MONOTONE  :', ' '.join('%.4f' % b for _, b in BETA_MONO_PTS), '  <- the brief\'s "pi decays in g"')

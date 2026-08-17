@@ -1,0 +1,107 @@
+ORDER 31 STEP 2 — THE POOL FADE, BY THE ND LAW'S OWN CONSTRUCTION
+  transplanted prefix : docs/evidence/sitter_fade_2026-08-14/o30a2_recut.py  md5 fe6f436ab23056d717f693091946309a  (exec'd verbatim to its `POP = []` line)
+
+POPULATION — pool pathways (every non-ND route with a SIGNED pool v0 cell)
+  total pool rows carried                1080
+  FITTED window 2004-2021                 840
+  SENSITIVITY 2022+  (EXCLUDED)           195
+  pre-2004 (EXCLUDED, DV floor)            45
+  skipped: no attribution / excluded            2
+  by pathway (fitted): {'SSP': 24, 'RD': 611, 'IRE': 47, 'PDA': 38, 'PDN': 24, 'UNR': 46, 'MSD': 29, 'PDS': 21}
+
+CONTROL — the RULED ND fade re-derived by THIS transplanted estimator (L-B, fitted window)
+  D(N) here : 1:1.000000  2:0.550194  3:0.262786  4:0.346000  5:0.541492  6:1.034213
+  D(N) ruled: 2:0.550194  3:0.262786  4:0.346000
+  max deviation 0.0
+  VERDICT REPRODUCED — the pool row below is produced by the SAME estimator
+
+THE POOLED POOL ROW — L-B listed-conditional, fitted window 2004-2021
+   N     n   mean(v/v0)    D(N)=mean/mean(1)   median      p25      p75   n_ever  tail_share
+   1   840     0.964855         1.000000     0.0000   0.0000   0.2391    468      0.0306
+   2   588     0.535075         0.554566     0.0000   0.0000   0.0026    216      0.0256
+   3    17     2.183975         2.263527     1.0042   0.5493   2.7574     17      0.4540
+   4     4     1.161706         1.204022     1.0684   0.7637   1.4664      4      0.6272
+   5     1     0.090020         0.093299     0.0900   0.0900   0.0900      1      0.4754
+   6     1     0.102622         0.106360     0.1026   0.1026   0.1026      1      0.4754
+
+BY PATHWAY — raw cell, then K-shrunk toward the pooled pool row (K = 15). BORROWING PRINTED.
+  pathway   N     n    raw D      w_own     SHRUNK D   borrowed from the pool row
+  IRE       1    47   1.000000    0.7581   1.000000    24.2%
+  IRE       2    38   0.399150    0.7170   0.443136    28.3%
+  IRE       3     1   0.900700    0.0625   2.178351    93.8%
+  IRE       4     0       —       0.0000   1.204022   100.0%
+  IRE       5     0       —       0.0000   0.093299   100.0%
+  IRE       6     0       —       0.0000   0.106360   100.0%
+  MSD       1    29   1.000000    0.6591   1.000000    34.1%
+  MSD       2    14   0.371810    0.4828   0.466339    51.7%
+  MSD       3     1   0.974418    0.0625   2.182958    93.8%
+  MSD       4     1   1.110836    0.0625   1.198198    93.8%
+  MSD       5     0       —       0.0000   0.093299   100.0%
+  MSD       6     0       —       0.0000   0.106360   100.0%
+  PDA       1    38   1.000000    0.7170   1.000000    28.3%
+  PDA       2    30   0.375968    0.6667   0.435500    33.3%
+  PDA       3     1   0.860556    0.0625   2.175841    93.8%
+  PDA       4     1   0.981033    0.0625   1.190085    93.8%
+  PDA       5     0       —       0.0000   0.093299   100.0%
+  PDA       6     0       —       0.0000   0.106360   100.0%
+  PDN       1    24   1.000000    0.6154   1.000000    38.5%
+  PDN       2    22   1.151043    0.5946   0.909228    40.5%
+  PDN       3     4   4.812850    0.2105   2.800227    78.9%
+  PDN       4     0       —       0.0000   1.204022   100.0%
+  PDN       5     0       —       0.0000   0.093299   100.0%
+  PDN       6     0       —       0.0000   0.106360   100.0%
+  PDS       1    21   1.000000    0.5833   1.000000    41.7%
+  PDS       2    20   1.046296    0.5714   0.835554    42.9%
+  PDS       3     0       —       0.0000   2.263527   100.0%
+  PDS       4     0       —       0.0000   1.204022   100.0%
+  PDS       5     0       —       0.0000   0.093299   100.0%
+  PDS       6     0       —       0.0000   0.106360   100.0%
+  RD        1   611   1.000000    0.9760   1.000000     2.4%
+  RD        2   413   0.555532    0.9650   0.555498     3.5%
+  RD        3     9   2.561070    0.3750   2.375106    62.5%
+  RD        4     2   1.191755    0.1176   1.202579    88.2%
+  RD        5     1   0.085482    0.0625   0.092810    93.8%
+  RD        6     1   0.097450    0.0625   0.105803    93.8%
+  SSP       1    24   1.000000    0.6154   1.000000    38.5%
+  SSP       2    10   0.114346    0.4000   0.378478    60.0%
+  SSP       3     1   0.921342    0.0625   2.179641    93.8%
+  SSP       4     0       —       0.0000   1.204022   100.0%
+  SSP       5     0       —       0.0000   0.093299   100.0%
+  SSP       6     0       —       0.0000   0.106360   100.0%
+  UNR       1    46   1.000000    0.7541   1.000000    24.6%
+  UNR       2    41   1.061582    0.7321   0.925774    26.8%
+  UNR       3     0       —       0.0000   2.263527   100.0%
+  UNR       4     0       —       0.0000   1.204022   100.0%
+  UNR       5     0       —       0.0000   0.093299   100.0%
+  UNR       6     0       —       0.0000   0.106360   100.0%
+
+THE WIRED POOL SCHEDULE  (n floor 8; a cell must BE A FADE (D<=1); FLAT from depth 2 out)
+  REJECTED D_pool(3) = 2.263527   n 17   n_ever 17   tail_share 0.4540   -- D > 1.0 -- the cell INVERTS (selection)
+  REJECTED D_pool(4) = 1.204022   n 4   n_ever 4   tail_share 0.6272   -- n 4 below the floor 8
+  REJECTED D_pool(5) = 0.093299   n 1   n_ever 1   tail_share 0.4754   -- n 1 below the floor 8
+  REJECTED D_pool(6) = 0.106360   n 1   n_ever 1   tail_share 0.4754   -- n 1 below the floor 8
+  D_pool(1) = 1.0000000000000000     n = 840
+  D_pool(2) = 0.5545657072981915     n = 588
+  D_pool(c >= 2) = 0.5545657072981915  FLAT
+
+AGAINST THE ND LAW: ND 2:0.5502 3:0.2628 4+:0.3460   POOL 1:1.0000 2:0.5546
+
+NAMED POOL ROWS — pathway, entry year, signed v0 cell, leading sit
+  luke-beecken         MSD   entry 2024  v0_pool 479.5  leading_sit 0  retired False
+  liam-reidy           RD    entry 2022  v0_pool 372.1  leading_sit 1  retired False
+  cooper-trembath      MSD   entry 2025  v0_pool 217.5  leading_sit 0  retired False
+  chris-scerri         SSP   entry 2025  v0_pool 124.4  leading_sit 0  retired False
+  nick-madden          PDA   entry 2022  v0_pool 204.4  leading_sit 2  retired False
+  kalani-white         PDN   entry 2025  v0_pool 92.4  leading_sit 0  retired False
+  jai-newcombe         MSD   entry 2021  v0_pool 479.5  leading_sit 0  retired False
+  marcus-herbert       MSD   entry 2026  v0_pool 358.5  leading_sit 0  retired False
+  jaxon-artemis        MSD   entry 2026  v0_pool 358.5  leading_sit 0  retired False
+  nicholas-martin      SSP   entry 2021  v0_pool 360.4  leading_sit 0  retired False
+
+LIMITATIONS, STATED
+  1. The pool population is SMALL and its depth cells are thinner than the ND law's at every depth; n is printed on every cell and no cell below the n floor is wired.
+  2. Pathways are POOLED into one pool row for the wired schedule. The per-pathway cells are published K-shrunk so the borrowing is visible, but the WIRED object is the pooled row -- a per-pathway law would be fitted on cells that mostly do not clear the floor.
+  3. The DV grace-A scores were built on store d9a24282 and this branch carries a different store; Layer 1 is byte-identical, so the population and every sit fact are unaffected. Inherited disclosure from 30A-2.
+  4. MSD depth runs one season ahead (owner ruling 5) via debut_year_338's MSD clause, inherited from the transplanted prefix rather than restated here.
+  5. beta_pool is NOT separately fitted in this step. The pooled ND beta curve is carried on pool rows and THE BORROWING IS DISCLOSED ON THE PACKET rather than hidden here. It is the largest open item this step leaves.
+  6. THE DEPTH-3 POOL CELL INVERTS (D = 2.26 on n = 17, every one of the 17 an eventual player, 45% of the value in the unobserved tail). It is PUBLISHED and NOT WIRED, by the declared rule above. Wiring it would price a three-season pool sitter at 2.26x his entry value, which contradicts the premise of the law the owner ruled. This is the seat's reading of the owner's flat-deep-end amendment applied to a cell that inverts, and it is flagged on the packet as an OWED CONFIRMATION, not presented as ruled.

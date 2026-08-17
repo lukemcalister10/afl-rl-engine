@@ -417,7 +417,25 @@ def synth(pk,avg,pos,nyr=2): return {'player':'s','pos':GRPPOS.get(pos,midpos),'
 # and the current-board row control could not be scored. NOTHING IS GREENLIT and NOTHING WIRES PERMANENTLY:
 # with both dials unset the committed board 9298203135202a0c707bb0977ba38c31 reproduces BYTE-EXACT.
 _O30B_RESOLVED=os.environ.get('RL_O30B_RESOLVED','0')!='0'  # ORDER 30B-N: the RESOLVED candidate's law
-_O30B_PREVIEW=(os.environ.get('RL_O30B_PREVIEW','0')!='0') or _O30B_RESOLVED  # ORDER 30B-P: the whole preview lane
+# ===== ORDER 31 — THE ONE LAW. A THIRD DECLARED DIAL, DEFAULT OFF, THAT REPLACES THE LANES. ===============
+# #334 comment 5310338355. The lanes/bridge/join design (30B-N above) is CONDEMNED by the brief -- "the four
+# row diagnosis killed the thin lane" -- and is REPLACED, not amended. RL_O31=1 implies RL_O30B_PREVIEW=1 by
+# the `or` below and nowhere else, so the ONE LAW consumes the SAME production leg the preview built (pole
+# deleted, ISO deleted, the two par denominators re-referenced, the three supersessions applied) and swaps
+# ONLY the price law. With the dial unset every expression below is inert and the committed Step-2 board
+# 9298203135202a0c707bb0977ba38c31 reproduces BYTE-EXACT.
+#
+#     price(p,Y) = rho(g) * Phat  +  [ D(c_u) * (1 - rho(g))  +  Phi(g,s) * beta_mono(g) * rho(g) ] * V0
+#
+# ONE FORMULA, EVERY ROW, EVERY PATHWAY, EVERY GAMES COUNT. There is no sitter branch, no thin lane, no
+# bridge and no deep lane: RL_O31 switches OFF the _entry30b_price interception in the ev() wrapper so that
+# a zero-games row is priced by the SAME expression as a 300-game row. It agrees with the two ruled laws at
+# their own endpoints EXACTLY, which is why no lane is needed:
+#     g = 0     rho(0)=0, Phi(.,0)=1  ->  price = D(c) * V0        the wired STEP-2 SITTER LAW, exactly
+#     rho -> 1                        ->  price = Phat + beta*V0   the 30B-R ADDITIVE READING (T1), exactly
+_O31=os.environ.get('RL_O31','0')!='0'                      # ORDER 31: THE ONE LAW
+_O31_NOPHI=os.environ.get('RL_O31_NOPHI','0')!='0'           # declared, default off: price the 30B-C conditioning by removing it
+_O30B_PREVIEW=(os.environ.get('RL_O30B_PREVIEW','0')!='0') or _O30B_RESOLVED or _O31  # ORDER 30B-P: the whole preview lane
 _O30B_NOPOLE=(os.environ.get('RL_O30B_NOPOLE','0')!='0') or _O30B_PREVIEW   # delete the PEDIGREE POLE leg from raw_ev
 _O30B_NOISO=(os.environ.get('RL_O30B_NOISO','0')!='0') or _O30B_PREVIEW     # delete the par-built ISO pick-tax from the production path
 # THE EFFECTIVE POSITIONAL BARS — the ONE object the preview re-references the two retained par denominators
@@ -2510,7 +2528,12 @@ def ev(p,Y=2026):
         # wrapping would count pedigree twice and exceed the measured share by construction. Note this arm
         # is reached ONLY by rows that HAVE evidence and have not yet banked a 6-game season — a row with no
         # games at all is intercepted by _entry30b_price above and keeps the Step-2 fade untouched.
-        if _PV['on']: return round(_pv_apply(p,Y,e*_h_cut(p,Y)))
+        if _PV['on']:
+            # ORDER 31: UNROUNDED ON PURPOSE, exactly as ORDER 29B's day-0 branch is. The board applies
+            # int(round(ev/_F)) once at write time; rounding here too would double-round and put the
+            # printed-day-0 identity a point off on 26 of 89 rows. Measured, not guessed.
+            _q=_pv_apply(p,Y,e*_h_cut(p,Y))
+            return _q if _O31 else round(_q)
         return round(sitout_ev(p,Y,e)*_h_cut(p,Y))            # #334 ITEM H: the ruled cuts, cell-qualified
     e=e*_h_cut(p,Y)                                           # #334 ITEM H on the year-1+ arm (mature nonRD reaches it; sitter cells cannot, by definition)
     # ORDER 30B-P, STOP §5 Q4 — ITEM A's anchor carry is the OTHER superseded anchor<->production blend and
@@ -2531,7 +2554,9 @@ def ev(p,Y=2026):
     # the RETAINED form machinery (ITEM H's ruled cuts, the ruck ceiling, the KPF compression, D8 graded
     # staleness, the decay gate) all applied to it, exactly as the boundary reading "bars/aging/form
     # legitimately retained" says they should be. The pedigree leg is added ONCE, here, at the measured share.
-    if _PV['on']: return round(_pv_apply(p,Y,e))
+    if _PV['on']:
+        _q=_pv_apply(p,Y,e)                                   # ORDER 31: unrounded (see the ns==0 arm)
+        return _q if _O31 else round(_q)
     return round(e)
 # ==== M3 PROPORTIONAL-TENURE/AGE BLEND (BAKE CANDIDATE v2, D7 02/07/2026 — design + backtest:
 # session_2026-07-02/m3_design_proportional_tenure.md; NOT baked until Luke's bake word) ====
@@ -2559,7 +2584,12 @@ def _ev_m3(p,Y=2026):
     _M3PIN['on']=True
     try: vpin=_ev_click(p,Y)
     finally: _M3PIN['on']=False
-    return round(w*v+(1.0-w)*vpin)
+    # ORDER 31: unrounded in ENGINE currency. Measured: rounding here and again at board-write time
+    # (int(round(ev/_F)), _F = 1.0524) moved 26 of the 89 printed-day-0 rows by one point -- e.g.
+    # 470.82 -> round 495.49 = 495 -> /1.0524 = 470.4 -> 470, against the identity's 471. One rounding,
+    # at the board, is the convention ORDER 29B's day-0 branch already used ("unrounded ON PURPOSE").
+    _m3=w*v+(1.0-w)*vpin
+    return _m3 if _O31 else round(_m3)
 # ==== PRICING FLOOR (BAKE CANDIDATE v2, D7 02/07/2026 — Luke's ruling, B5 amendment: the crater floor
 # becomes a PRICING FEATURE; prototype engine/prototypes/floor_pricing_clamp.py 66fbf0f6, D6) ====
 # D12 03/07/2026 (Luke ruling R8): floor basis RE-ANCHORED old-PVC draftval -> live V0 start value.
@@ -2811,6 +2841,11 @@ if _ENTRY29B:
         return day0_v0(p)
     _ev_pre29b=ev
     def ev(p,Y=2026):
+        # ORDER 31 — NO LANES. The 29B day-0 interception is the OTHER lane boundary the one law replaces:
+        # under RL_O31 a zero-evidence row is priced by the same expression as everybody else, which
+        # returns v0 x D(c_u) identically (rho(0)=0, pi(0,c)=D(c)). Both interceptions must go, or the
+        # first one still owns the row and "one formula, all g" is false of the code.
+        if _O31: return _ev_pre29b(p,Y)
         _d0=_entry29b_derived(p,Y)
         if _d0 is None: return _ev_pre29b(p,Y)
         return _d0*_PL_F                                            # unrounded ON PURPOSE — see above
@@ -2919,6 +2954,11 @@ if _ONEMACH and _ENTRY29B:
         return _d0*fade30b_of(p,Y)
     _ev_pre30b=ev
     def ev(p,Y=2026):
+        # ORDER 31 — NO LANES. The one law prices a zero-games row with the SAME expression as every other
+        # row (rho(0)=0 and pi(0,c)=D(c) make it identically v0 x D(c)), so the interception is switched OFF
+        # and the row falls through to the blend site. This is the single line that makes "one formula, all
+        # g" TRUE OF THE CODE and not merely of the algebra.
+        if _O31: return _ev_pre30b(p,Y)
         _d0=_entry30b_price(p,Y)
         if _d0 is None: return _ev_pre30b(p,Y)
         return _d0*_PL_F                                           # unrounded ON PURPOSE — see the 29B note
@@ -3124,6 +3164,151 @@ if _O30B_PREVIEW:
             _t=(_math.log1p(_g)-_math.log1p(10.0))/(_math.log1p(16.0)-_math.log1p(10.0))
             return _t10+_t*(_d16-_t10)
         return _P+beta30bn(_g)*_V          # deep: the additive reading
+    # ================= ORDER 31 — THE ONE LAW, AT ev(). ==============================================
+    # Constants are TRANSCRIBED from docs/evidence/candidate_31/LAW31.json, produced by o31_fit.py from
+    # the committed artifacts only (READING.json's beta curve, BLEND30B.json's R1 backbone and D(2),
+    # CIRCULARITY.json's stall-cohort coefficients). Nothing here is fitted at build time.
+    O31_TAU_RHO=27.01905446763426; O31_B_RHO=0.8377677559729777
+    # beta under the brief's EXPLICIT "pi decays in g" constraint: the monotone non-increasing projection
+    # of the measured pooled curve. The projection deletes the measured 2.5->10.5 RISE, which 30B-C 4.3
+    # measured paying 57 of 352 stall paths MORE pedigree for stalling. DISCLOSED, not hidden: the raw
+    # measured value at 10.5 is 0.362259307264279 and this law carries 0.2968279384332228 there.
+    O31_BETA=((2.5,0.2968279384332228),(10.5,0.2968279384332228),(25.5,0.22329587551741345),
+              (53.0,0.15314862603013868),(85.5,0.020068021140596692))
+    # PhiStall = beta_stall / beta_pooled at the five band midpoints (30B-C 3.2), the deep two ZERO-FLOORED
+    # because t=-0.29 / -0.90 with CIs spanning zero, then made non-increasing.
+    O31_PHIST=((2.5,0.5834702550962193),(10.5,0.28802290519477386),(25.5,0.28802290519477386),
+               (53.0,0.0),(85.5,0.0))
+    O31_PHI_RAMP=2.0                       # 30B-C's OWN continued-staller definition: two stall seasons
+    O31_SRC=('docs/evidence/candidate_31/LAW31.json / o31_fit.py; #334 comment 5310338355; '
+             'rho calibrated on the R1 re-derived cumulative backbone, pi pinned at D(c) at g=0 and '
+             'handing over to the measured beta as evidence accumulates')
+    # ---- ORDER 31 STEP 2 — THE POOL FADE, DERIVED BY THE ND LAW'S OWN ESTIMATOR ---------------------
+    # docs/evidence/candidate_31/o31_pool.py execs the 30A-2 harness VERBATIM to its surface builder and
+    # rebuilds the population on the POOL pathways with the SIGNED pool v0 cell as the object. CONTROL:
+    # that transplanted estimator re-derives the RULED ND row at deviation 0.0 (D 0.550194 / 0.262786 /
+    # 0.346000), so the pool row below is produced by the same instrument, not an analogue of it.
+    #   D_pool(1) = 1.0                  n 840
+    #   D_pool(2) = 0.5545657072981915   n 588      (the ND law reads 0.5501936 at the same depth)
+    #   FLAT from depth 2 out.
+    # The depth-3 pool cell measures 2.2635 on n 17 -- it INVERTS. All 17 are eventual players and 45% of
+    # their value is in the unobserved tail: it is survivorship, in the extreme. It is PUBLISHED IN FULL
+    # in POOL31.json and NOT WIRED, by the declared rule "wire the deepest cell that clears the n floor
+    # AND is a fade (D <= 1)". Flagged on the packet as an OWED CONFIRMATION, not presented as ruled.
+    O31_POOL_D={1:1.0,2:0.5545657072981915}
+    O31_POOL_FLAT_FROM=2
+    def o31_pool_D(c):
+        if c<=1.0: return 1.0
+        if c>=O31_POOL_FLAT_FROM: return O31_POOL_D[O31_POOL_FLAT_FROM]
+        _n=int(_math.floor(c)); _f=c-_n
+        _d0=O31_POOL_D[_n]; _d1=O31_POOL_D[_n+1]
+        return _d0 if _f<=0.0 else _math.exp((1.0-_f)*_math.log(_d0)+_f*_math.log(_d1))
+    def _o31_loglin(pts,g):
+        g=max(1e-9,float(g))
+        if g<=pts[0][0]: return pts[0][1]
+        if g>=pts[-1][0]: return pts[-1][1]
+        for _i in range(1,len(pts)):
+            g0,y0=pts[_i-1]; g1,y1=pts[_i]
+            if g0<=g<=g1:
+                _t=(_math.log(g)-_math.log(g0))/(_math.log(g1)-_math.log(g0))
+                if y0<=0.0 or y1<=0.0: return y0+_t*(y1-y0)
+                return _math.exp(_math.log(y0)+_t*(_math.log(y1)-_math.log(y0)))
+        return pts[-1][1]
+    def rho31(g):
+        """MEASURED PRODUCTION RELIABILITY. rho(0)=0 EXACTLY, strictly increasing, -> 1. Fitted so a thin
+        cohort's aggregate price matches the R1 cumulative backbone. Pure function of g."""
+        g=float(g)
+        return 0.0 if g<=0.0 else 1.0-_math.exp(-((g/O31_TAU_RHO)**O31_B_RHO))
+    def beta31(g):   return _o31_loglin(O31_BETA,g)
+    def phistall31(g): return _o31_loglin(O31_PHIST,g)
+    def phi31(g,s):
+        """THE 30B-C STALL CONDITIONING. Phi(g,0)=1 EXACTLY, so it cannot touch a gameless row."""
+        if s<=0: return 1.0
+        return 1.0-(min(float(s),O31_PHI_RAMP)/O31_PHI_RAMP)*(1.0-phistall31(g))
+    def o31_played_units(p,Y):
+        """Season-units in which the row PLAYED, on the same clock the fade uses: 1.0 per completed season,
+        _fEy for the in-progress one."""
+        _u=0.0
+        for _x in p.get('scoring') or []:
+            if _x['year']>Y or not _x['games']: continue
+            _u+=(_fEy(Y,p) if _x['year']==Y else 1.0)
+        return _u
+    def o31_cu(p,Y):
+        """THE UNPLAYED CLOCK. c_u = the fade clock MINUS the time he actually played. This is the brief's
+        'the time-fade applies to UNPLAYED time only' -- a played season advances g, not the sitter clock,
+        which is what kills the sitter-fade-while-playing defect. For a row that has NEVER played it is the
+        fade clock EXACTLY, so every printed-day-0 price is unmoved by construction."""
+        return max(0.0,fade30b_clock(p,Y)-o31_played_units(p,Y))
+    def o31_D(p,Y):
+        """The fade at the UNPLAYED depth. ONE law for every pathway: the ruled ND schedule is applied to
+        every non-pool row (a BORROW for RD and pickless-ND rows, disclosed), and pool rows take the
+        Step-2-derived pool schedule."""
+        _cu=o31_cu(p,Y)
+        return (o31_pool_D(_cu) if p.get('_pool') else fade30b_D(_cu))
+    def o31_stall_run(p,Y):
+        """s -- THE CURRENT STALL RUN: consecutive most-recent seasons the row PLAYED but did not DELIVER
+        (delivered == games >= 10 AND avg >= his position's v0-language bar). A delivered season RESETS it.
+        A GAMELESS season is SKIPPED, never counted: unplayed time is D(c_u)'s channel and counting it in
+        both would be exactly the double-discount the no-stacking constraint forbids.
+        s >= 1 therefore IMPLIES g >= 1, which is what makes pi(0,c)=D(c) safe for every s."""
+        _bar=_O30BP_BARS.get(MA.gfut(p))
+        if _bar is None: return 0
+        _s=0
+        for _x in sorted((p.get('scoring') or []),key=lambda r:-r['year']):
+            if _x['year']>Y: continue
+            _g=float(_x['games'] or 0.0)
+            if _g<=0.0: continue                                   # gameless: D(c_u)'s channel, skipped
+            _u=(_fEy(Y,p) if _x['year']==Y else 1.0)
+            if _g>=10.0*_u and float(_x['avg'] or 0.0)>=_bar: break # DELIVERED -> the run resets
+            _s+=1
+        return _s
+    def o31_pi(p,Y,g=None):
+        """pi(g, c_u, s) = Phi(g,s) * [ D(c_u)*(1-rho(g)) + beta_mono(g)*rho(g) ].
+        At g=0 this is D(c_u) EXACTLY. As rho -> 1 it is the measured additive beta EXACTLY."""
+        _g=pv_games(p,Y) if g is None else float(g)
+        _r=rho31(_g)
+        # Phi multiplies the MEASURED COEFFICIENT ONLY. beta_stall/beta_pooled is a ratio of ADDITIVE
+        # COEFFICIENTS estimated on PLAYED players; D(c_u) is the sitter fade, estimated on GAMELESS
+        # listed players, and no stall measurement was ever taken on that channel. This also makes
+        # pi(0,c,s) == D(c) true for EVERY s structurally rather than by an unreachable-state argument.
+        # RL_O31_NOPHI=1 is a DECLARED, DEFAULT-OFF measurement dial that prices the conditioning by
+        # removing it -- so the unconditioned alternative's cost is MEASURED, not argued.
+        return o31_D(p,Y)*(1.0-_r)+(1.0 if _O31_NOPHI else phi31(_g,o31_stall_run(p,Y)))*beta31(_g)*_r
+    def _pv_order31(p,Y,e):
+        """THE ONE LAW. One expression, every row, every pathway, every games count."""
+        _g=pv_games(p,Y)
+        return rho31(_g)*float(e)+o31_pi(p,Y,_g)*pv_pedigree(p)
+    if _O31:
+        _PV['blend']=_pv_order31
+        # THE DAY-0 PREDICATE IS RESTATED, NOT DROPPED. Under the one law a zero-games row's price IS
+        # v0 x D(c_u) with c_u == the fade clock, so rl_export's printed-day-0 assert keeps its meaning and
+        # its tolerance-0 equality -- it now proves the one law reproduces the ruled sitter law rather than
+        # asserting a separately-wired branch against itself.
+        def _entry30b_price(p,Y=2026,__d=_entry29b_derived):
+            _d0=__d(p,Y)
+            if _d0 is None: return None
+            return _d0*o31_D(p,Y)
+        # BUILD-FAILING STRUCTURAL ASSERTS (the brief's assert wall, at the law itself).
+        _o31_bad=[]
+        for _p in MA.data:
+            if not (_isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos'))): continue
+            _gg=pv_games(_p,MA.BASE_REF)
+            if _gg<=0.0:
+                if o31_stall_run(_p,MA.BASE_REF)>0: _o31_bad.append(('s>0 at g==0',_p.get('key')))
+                if abs(o31_pi(_p,MA.BASE_REF,0.0)-o31_D(_p,MA.BASE_REF))>0.0: _o31_bad.append(('pi(0)!=D',_p.get('key')))
+        if _o31_bad:
+            raise SystemExit('ORDER 31 HALT: %d structural violations of the one law — %s'%(len(_o31_bad),_o31_bad[:6]))
+        print('ORDER 31 THE ONE LAW LIVE (RL_O31=1) — NOTHING IS GREENLIT AND NOTHING MERGES. '
+              'price = rho(g)*Phat + [D(c_u)*(1-rho(g)) + Phi(g,s)*beta(g)*rho(g)]*v0, ONE FORMULA FOR '
+              'EVERY ROW: no sitter branch, no thin lane, no bridge, no deep lane. rho = 1-exp(-(g/%.4f)^'
+              '%.4f) calibrated on the R1 backbone, rho(0)=0 exactly · beta MONOTONE-PROJECTED (the brief\'s '
+              '"pi decays in g"; the measured 2.5->10.5 rise is deleted and disclosed) · D on the UNPLAYED '
+              'clock c_u only · Phi = the 30B-C stall conditioning on the current stall run, Phi(g,0)=1 '
+              'exactly. %d rows priced; %d carry a stall conditioning; %d carry an unplayed-clock discount.'
+              %(O31_TAU_RHO,O31_B_RHO,
+                sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos'))),
+                sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and o31_stall_run(_p,MA.BASE_REF)>0),
+                sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and o31_cu(_p,MA.BASE_REF)>1.0)))
     if _O30B_RESOLVED:
         _PV['blend']=_pv_resolved
         print('ORDER 30B-N RESOLVED CANDIDATE LIVE (RL_O30B_RESOLVED=1) — NOTHING IS GREENLIT, T4 (the '
@@ -3132,8 +3317,9 @@ if _O30B_PREVIEW:
               'swapped. ADDITIVE reading P + beta(g)xv0 · raw games-as-of-Y clock · JOINED lanes '
               'sitter/thin<=10/bridge<16/deep>=16 · beta from the 30B-R band fit (NON-monotone, carried) · '
               'backbone lift lane 2 if c<2.5 else 3. Pool fade NOT DERIVED (D=1.0) — Step 4.')
+    # ORDER 31 — under the one law there is no zero-evidence EXCLUSION: every priced row carries the law.
     _PV_ROWS=[p for p in MA.data if _isreal(p) and not p.get('_retired') and not delisted(p)
-              and MA.GRP.get(p.get('pos')) and _entry30b_price(p,MA.BASE_REF) is None]
+              and MA.GRP.get(p.get('pos')) and (_O31 or _entry30b_price(p,MA.BASE_REF) is None)]
     print('ORDER 30B-P STEP-3 PREVIEW LIVE (RL_O30B_PREVIEW=1) — NOTHING IS GREENLIT, THE BOUNDARY IS STILL '
           'UNRULED, AND THIS BOARD IS PRE-NUMERAIRE. pole DELETED + ISO DELETED (via the two existing '
           'ablation lines) · blend sigma(g)=exp(-(g/%.4g)^%.4g) on the measured 30B-M curve · pedigree leg = '

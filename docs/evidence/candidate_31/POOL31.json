@@ -1,0 +1,383 @@
+{
+ "K_SHRINK": 15.0,
+ "by_pathway": {
+  "IRE": {
+   "n_cell": {
+    "1": 47,
+    "2": 38,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+   },
+   "n_rows": 47,
+   "raw": {
+    "1": 1.0,
+    "2": 0.39914997176051886,
+    "3": 0.9007002100542394,
+    "4": null,
+    "5": null,
+    "6": null
+   },
+   "shrunk": {
+    "1": 1.0,
+    "2": 0.4431355572900489,
+    "3": 2.1783505271439285,
+    "4": 1.204021735192999,
+    "5": 0.09329858810051933,
+    "6": 0.10636039043459203
+   }
+  },
+  "MSD": {
+   "n_cell": {
+    "1": 29,
+    "2": 14,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+   },
+   "n_rows": 29,
+   "raw": {
+    "1": 1.0,
+    "2": 0.37181036728385486,
+    "3": 0.9744175097511578,
+    "4": 1.11083596111632,
+    "5": null,
+    "6": null
+   },
+   "shrunk": {
+    "1": 1.0,
+    "2": 0.4663389914292014,
+    "3": 2.182957858374986,
+    "4": 1.1981976243132064,
+    "5": 0.09329858810051933,
+    "6": 0.10636039043459203
+   }
+  },
+  "PDA": {
+   "n_cell": {
+    "1": 38,
+    "2": 30,
+    "3": 1,
+    "4": 1,
+    "5": 0,
+    "6": 0
+   },
+   "n_rows": 38,
+   "raw": {
+    "1": 1.0,
+    "2": 0.3759676671014987,
+    "3": 0.8605555897542827,
+    "4": 0.9810333723198824,
+    "5": null,
+    "6": null
+   },
+   "shrunk": {
+    "1": 1.0,
+    "2": 0.435500347167063,
+    "3": 2.1758414883751813,
+    "4": 1.190084962513429,
+    "5": 0.09329858810051933,
+    "6": 0.10636039043459203
+   }
+  },
+  "PDN": {
+   "n_cell": {
+    "1": 24,
+    "2": 22,
+    "3": 4,
+    "4": 0,
+    "5": 0,
+    "6": 0
+   },
+   "n_rows": 24,
+   "raw": {
+    "1": 1.0,
+    "2": 1.1510426556627105,
+    "3": 4.812850449392892,
+    "4": null,
+    "5": null,
+    "6": null
+   },
+   "shrunk": {
+    "1": 1.0,
+    "2": 0.9092276765960137,
+    "3": 2.800226843253694,
+    "4": 1.204021735192999,
+    "5": 0.09329858810051933,
+    "6": 0.10636039043459203
+   }
+  },
+  "PDS": {
+   "n_cell": {
+    "1": 21,
+    "2": 20,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+   },
+   "n_rows": 21,
+   "raw": {
+    "1": 1.0,
+    "2": 1.0462955933795488,
+    "3": null,
+    "4": null,
+    "5": null,
+    "6": null
+   },
+   "shrunk": {
+    "1": 1.0,
+    "2": 0.8355542136303957,
+    "3": 2.263527214949908,
+    "4": 1.204021735192999,
+    "5": 0.09329858810051933,
+    "6": 0.10636039043459203
+   }
+  },
+  "RD": {
+   "n_cell": {
+    "1": 611,
+    "2": 413,
+    "3": 9,
+    "4": 2,
+    "5": 1,
+    "6": 1
+   },
+   "n_rows": 611,
+   "raw": {
+    "1": 1.0,
+    "2": 0.5555318526708528,
+    "3": 2.5610695181721206,
+    "4": 1.1917550267807362,
+    "5": 0.08548220605673221,
+    "6": 0.09744971490467472
+   },
+   "shrunk": {
+    "1": 1.0,
+    "2": 0.5554979924358296,
+    "3": 2.375105578658238,
+    "4": 1.2025785930268504,
+    "5": 0.09281006422278264,
+    "6": 0.1058034732139722
+   }
+  },
+  "SSP": {
+   "n_cell": {
+    "1": 24,
+    "2": 10,
+    "3": 1,
+    "4": 0,
+    "5": 0,
+    "6": 0
+   },
+   "n_rows": 24,
+   "raw": {
+    "1": 1.0,
+    "2": 0.11434552850116474,
+    "3": 0.9213418225246827,
+    "4": null,
+    "5": null,
+    "6": null
+   },
+   "shrunk": {
+    "1": 1.0,
+    "2": 0.3784776357793808,
+    "3": 2.179640627923331,
+    "4": 1.204021735192999,
+    "5": 0.09329858810051933,
+    "6": 0.10636039043459203
+   }
+  },
+  "UNR": {
+   "n_cell": {
+    "1": 46,
+    "2": 41,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0
+   },
+   "n_rows": 46,
+   "raw": {
+    "1": 1.0,
+    "2": 1.061581786085258,
+    "3": null,
+    "4": null,
+    "5": null,
+    "6": null
+   },
+   "shrunk": {
+    "1": 1.0,
+    "2": 0.9257739078387224,
+    "3": 2.263527214949908,
+    "4": 1.204021735192999,
+    "5": 0.09329858810051933,
+    "6": 0.10636039043459203
+   }
+  }
+ },
+ "control_nd": {
+  "D": {
+   "1": 1.0,
+   "2": 0.5501935857356868,
+   "3": 0.26278629823610156,
+   "4": 0.3460004697526451,
+   "5": 0.5414917661152997,
+   "6": 1.0342127623564588
+  },
+  "max_dev": 0.0,
+  "reproduced": true,
+  "ruled": {
+   "2": 0.5501935857356868,
+   "3": 0.26278629823610156,
+   "4": 0.3460004697526451
+  }
+ },
+ "flat_from": 2,
+ "harness_prefix": {
+  "md5": "fe6f436ab23056d717f693091946309a",
+  "path": "docs/evidence/sitter_fade_2026-08-14/o30a2_recut.py"
+ },
+ "limitations": [
+  "The pool population is SMALL and its depth cells are thinner than the ND law's at every depth; n is printed on every cell and no cell below the n floor is wired.",
+  "Pathways are POOLED into one pool row for the wired schedule. The per-pathway cells are published K-shrunk so the borrowing is visible, but the WIRED object is the pooled row -- a per-pathway law would be fitted on cells that mostly do not clear the floor.",
+  "The DV grace-A scores were built on store d9a24282 and this branch carries a different store; Layer 1 is byte-identical, so the population and every sit fact are unaffected. Inherited disclosure from 30A-2.",
+  "MSD depth runs one season ahead (owner ruling 5) via debut_year_338's MSD clause, inherited from the transplanted prefix rather than restated here.",
+  "beta_pool is NOT separately fitted in this step. The pooled ND beta curve is carried on pool rows and THE BORROWING IS DISCLOSED ON THE PACKET rather than hidden here. It is the largest open item this step leaves.",
+  "THE DEPTH-3 POOL CELL INVERTS (D = 2.26 on n = 17, every one of the 17 an eventual player, 45% of the value in the unobserved tail). It is PUBLISHED and NOT WIRED, by the declared rule above. Wiring it would price a three-season pool sitter at 2.26x his entry value, which contradicts the premise of the law the owner ruled. This is the seat's reading of the owner's flat-deep-end amendment applied to a cell that inverts, and it is flagged on the packet as an OWED CONFIRMATION, not presented as ruled."
+ ],
+ "n_floor": 8,
+ "order": "ORDER 31 STEP 2 \u2014 the pool fade",
+ "pool_D": {
+  "1": 1.0,
+  "2": 0.5545657072981915,
+  "3": 2.263527214949908,
+  "4": 1.204021735192999,
+  "5": 0.09329858810051933,
+  "6": 0.10636039043459203
+ },
+ "pool_surface": {
+  "1": {
+   "mean": 0.9648548811230487,
+   "median": 7.67941960217228e-06,
+   "n": 840,
+   "n_ever": 468,
+   "n_zero": 373,
+   "p25": 0.0,
+   "p75": 0.23913523559443173,
+   "pooled": 1.0390019603642364,
+   "tail_share": 0.03060904823521871
+  },
+  "2": {
+   "mean": 0.535075429590116,
+   "median": 0.0,
+   "n": 588,
+   "n_ever": 216,
+   "n_zero": 373,
+   "p25": 0.0,
+   "p75": 0.0026125995856832165,
+   "pooled": 0.5967633882214359,
+   "tail_share": 0.02557045826707326
+  },
+  "3": {
+   "mean": 2.183975281899279,
+   "median": 1.0042186275975489,
+   "n": 17,
+   "n_ever": 17,
+   "n_zero": 0,
+   "p25": 0.5493191108425792,
+   "p75": 2.7574050006158513,
+   "pooled": 2.303404608984003,
+   "tail_share": 0.4540251862898165
+  },
+  "4": {
+   "mean": 1.1617062481792078,
+   "median": 1.0683991604857561,
+   "n": 4,
+   "n_ever": 4,
+   "n_zero": 0,
+   "p25": 0.7637329540736673,
+   "p75": 1.4663724545912968,
+   "pooled": 1.3492595468795427,
+   "tail_share": 0.6272440962660545
+  },
+  "5": {
+   "mean": 0.09001959813067487,
+   "median": 0.09001959813067487,
+   "n": 1,
+   "n_ever": 1,
+   "n_zero": 0,
+   "p25": 0.09001959813067487,
+   "p75": 0.09001959813067487,
+   "pooled": 0.09001959813067487,
+   "tail_share": 0.4754359335304678
+  },
+  "6": {
+   "mean": 0.10262234186896935,
+   "median": 0.10262234186896935,
+   "n": 1,
+   "n_ever": 1,
+   "n_zero": 0,
+   "p25": 0.10262234186896935,
+   "p75": 0.10262234186896935,
+   "pooled": 0.10262234186896935,
+   "tail_share": 0.4754359335304678
+  }
+ },
+ "population": {
+  "by_pathway_fitted": {
+   "IRE": 47,
+   "MSD": 29,
+   "PDA": 38,
+   "PDN": 24,
+   "PDS": 21,
+   "RD": 611,
+   "SSP": 24,
+   "UNR": 46
+  },
+  "fitted": 840,
+  "pre2004": 45,
+  "sens2022plus": 195,
+  "skipped": {
+   "no attribution / excluded": 2
+  },
+  "total": 1080
+ },
+ "rejected_cells": {
+  "3": {
+   "D": 2.263527214949908,
+   "n": 17,
+   "n_ever": 17,
+   "tail_share": 0.4540251862898165,
+   "why": "D > 1.0 -- the cell INVERTS (selection)"
+  },
+  "4": {
+   "D": 1.204021735192999,
+   "n": 4,
+   "n_ever": 4,
+   "tail_share": 0.6272440962660545,
+   "why": "n 4 below the floor 8"
+  },
+  "5": {
+   "D": 0.09329858810051933,
+   "n": 1,
+   "n_ever": 1,
+   "tail_share": 0.4754359335304678,
+   "why": "n 1 below the floor 8"
+  },
+  "6": {
+   "D": 0.10636039043459203,
+   "n": 1,
+   "n_ever": 1,
+   "tail_share": 0.4754359335304678,
+   "why": "n 1 below the floor 8"
+  }
+ },
+ "wired": {
+  "1": 1.0,
+  "2": 0.5545657072981915
+ },
+ "wiring_rule": "deepest cell clearing n>=8 AND D<=1.0 (a fade cannot amplify); FLAT from there"
+}
