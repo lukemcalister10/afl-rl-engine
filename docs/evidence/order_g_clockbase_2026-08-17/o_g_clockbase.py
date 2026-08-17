@@ -10,7 +10,8 @@
 # file touched.  Nothing here moves a single board number.
 #
 # PART 0  identities and lifts
-# PART 1  the accretion factors, LIFTED FROM ORDER F (disc_factor exec'd verbatim, md5 asserted)
+# PART 1  THE TICK VERDICT -- owner correction G-1: does the ENGINE deviate from the ruling (a defect),
+#         or did ORDER F misread the ladder?  Decided on the code, with the deciding lines quoted.
 # PART 2  the house delivered-value ruler (S4), lifted by source text, and s1
 # PART 3  the MARKS -- the standing instruments, re-run unchanged, with halting controls
 # PART 4  T1  the re-based five-band table, three boards
@@ -31,6 +32,15 @@ S4SRC = os.path.join(EV, 'order32_s4_2026-08-17', 's4_shootout.py')
 RLSRC = os.path.join(ROOT, 'engine', 'rl_after', 'rl_model.py')
 EXT_SRC = os.path.join(EV, 'candidate_31f', 'ext_2026-08-17', 't338_extended_DISCLOSED.py')
 HARN = os.path.join(EV, 'landing_29_2026-08-13', 'noarb', 'harness_pvc_REPINNED_pass3.py')
+EMITSRC = os.path.join(EV, 'landing_29_2026-08-13', 'noarb29c', 'emit_matrix_29c.py')
+L2SRC = os.path.join(EV, 'grace_adoption_2026-08-13', 'inputs', 'o26b_layer2.py')
+FWSRC = os.path.join(EV, 'order_f_timing_2026-08-17', 'o_f_wedge.py')
+
+
+def quote(path, a, b):
+    """Quote lines a..b of a file, verbatim, with line numbers -- so the quote cannot drift."""
+    L = open(path).read().split('\n')
+    return '\n'.join('    %5d | %s' % (i, L[i - 1]) for i in range(a, b + 1))
 
 BOARDS = [('D', 'O35FINAL', '1f17644445f074d11e631b5cbae98a9a', 'THE LANDING CANDIDATE (Order D wire)'),
           ('C32R', 'O32RFINAL', '7802ee977cd5e8972010b09f1bb1bee6', 'the repaired C32 (dial-off identity)'),
@@ -89,8 +99,13 @@ P()
 
 # =====================================================================================================
 P('=' * 122)
-P('PART 1 -- THE ACCRETION FACTORS, LIFTED FROM ORDER F.  NOT RE-DERIVED.')
+P('PART 1 -- THE TICK VERDICT.  OWNER CORRECTION G-1, RESOLVED ON THE CODE.')
 P('=' * 122)
+P()
+P('  THE OWNER\'S CANONICAL RULING: "Each player\'s present season is 100%, and the next season is 86%,')
+P('  bar first year young players who have one extra at 100%."  Fair entry->year-1 accretion under it:')
+P('  1.00 for entry age <=19, 1.14 for >=20.  ORDER F measured 1.2996 for the mature entrant.')
+P('  Question: does the ENGINE deviate from the ruling (a DEFECT), or did ORDER F misread the ladder?')
 P()
 _src = open(RLSRC).read()
 _blk = _src.split("def disc_factor(a,d,k,lens='bal',grace=0):")[1].split('\nLENS=')[0]
@@ -106,25 +121,120 @@ P('    lifted-text md5 %s  -- ASSERTED equal to Order F\'s (93a198a8...).  PASS'
 assert abs(disc_factor(18, 0.14, 3, 'bal', 0) - CARRY ** 3) < 1e-12
 P('    control: disc_factor(18, 0.14, 3, grace=0) == 1.14^3 -> %.10f  PASS' % disc_factor(18, 0.14, 3, 'bal', 0))
 P()
+P('  DECIDING LINE 1 -- the engine convention.  disc_factor, engine/rl_after/rl_model.py:')
+P(quote(RLSRC, 996, 1001))
+P(quote(RLSRC, 1009, 1012))
+P('  -> k <= 0 returns 1.0.  THE PRESENT SEASON IS NEVER DISCOUNTED.  That IS the owner\'s "100%".')
+P()
+P('  DECIDING LINE 2 -- the grace dial, and the two-clock reconciliation the law itself states:')
+P(quote(RLSRC, 208, 215))
+P(quote(RLSRC, 236, 241))
+P('  -> GRACE_G = 1 on the engine, G_O = 2 on the curve, and the law says WHY: the engine\'s k_e = 0 is')
+P('     already free, so it needs ONE FEWER free step than the curve to describe the SAME free set.')
+P()
+P('  DECIDING LINE 3 -- the curve clock, o26b_layer2.py (the entry / day-0 print):')
+P(quote(L2SRC, 389, 396))
+P('  -> k = season_year - entry_year, so a mature entrant\'s FIRST played season (k=1) carries 1.14^-1.')
+P('     The curve prices from the DRAFT-YEAR vantage: the draft-year season is k=0, and his first')
+P('     played season is NEXT season.  That is the owner\'s "next season is 86%".')
+P()
+P('  DECIDING LINE 4 -- WHICH VANTAGE THE YEAR-1 MARK IS ACTUALLY TAKEN AT.  This is the line that')
+P('  settles it, and it is in the emitter, not in the model:')
+P(quote(EMITSRC, 326, 332))
+P(quote(EMITSRC, 376, 378))
+P('  -> MA.AGE_REF = Y, and vpath[0] = ASOF[(p, C+1)].  THE YEAR-1 BOARD IS PRICED AT AGE_REF = C+1,')
+P('     the entrant\'s DEBUT year.  His first season is the PRESENT season there, k_e = 0, weight 1.0;')
+P('     and grace_years = max(0, 1 - max(0, AGE_REF - debut)) = max(0, 1 - 0) = 1 for a <=19 entrant.')
+P()
+P('  DECIDING LINE 5 -- what ORDER F assumed instead (o_f_wedge.py):')
+P(quote(FWSRC, 142, 144))
+P(quote(FWSRC, 153, 154))
+P('  -> F used k_e = j - 2 AND engine grace 0.  Both of those hold only at AGE_REF = C+2.  F placed the')
+P('     year-1 board ONE YEAR TOO FAR FORWARD.')
+P()
+
 GO = {'age<=19': 2, 'age>=20': 0}       # curve clock, grace-A reading O (Order 28)
-GE = {'age<=19': 0, 'age>=20': 0}       # engine clock at the year-1 vantage
-ACC = {}
+GRACE_G, GRACE_MAX_ENTRY_AGE = 1, 19    # rl_model.py:237-238, lifted as constants
+
+
+def grace_years_at(entry_age, AGE_REF, debut):
+    """rl_model.py:239-243, transcribed.  Remaining grace seasons at a given board vantage."""
+    if entry_age > GRACE_MAX_ENTRY_AGE:
+        return 0
+    return max(0, GRACE_G - max(0, AGE_REF - debut))
+
+
+ACC = {}; ACC_F = {}; LADDERS = {}
+E0 = 0                                   # entry year, w.l.o.g.
+DEBUT = E0 + 1
+AGEREF_Y1 = E0 + 1                       # DECIDING LINE 4: the emitter's own vantage
+P('  THE TWO LADDERS, SIDE BY SIDE (entry year e = 0, debut = 1, year-1 board AGE_REF = %d):' % AGEREF_Y1)
 for lab in ('age<=19', 'age>=20'):
     a = 18 if lab == 'age<=19' else 21
+    gr1 = grace_years_at(a, AGEREF_Y1, DEBUT)
     f0 = [1.0 / disc_factor(a, 0.14, j, 'bal', GO[lab]) for j in range(1, 8)]
-    f1 = [(0.0 if j == 1 else 1.0 / disc_factor(a, 0.14, j - 2, 'bal', GE[lab])) for j in range(1, 8)]
+    # CORRECT: season e+j sits k_e = (e+j) - AGE_REF = j - 1 seasons ahead of the year-1 board
+    f1 = [(None if j == 1 else 1.0 / disc_factor(a, 0.14, (E0 + j) - AGEREF_Y1, 'bal', gr1))
+          for j in range(1, 8)]
+    # ORDER F's construction, reproduced so the divergence is visible, not asserted
+    fF = [(None if j == 1 else 1.0 / disc_factor(a, 0.14, j - 2, 'bal', 0)) for j in range(1, 8)]
     r = [f1[j - 1] / f0[j - 1] for j in range(2, 8)]
+    rF = [fF[j - 1] / f0[j - 1] for j in range(2, 8)]
     assert all(abs(x - r[0]) < 1e-12 for x in r), 'accretion not uniform across surviving seasons'
-    ACC[lab] = r[0]
-    P('  entry %-8s : ENTRY weights %s' % (lab, ' '.join('%.5f' % x for x in f0[:5])))
-    P('  %-14s   YEAR-1 weights %s   (season 1 is DELIVERED)'
-      % ('', ' '.join(('%.5f' % x) if j else '  --   ' for j, x in enumerate(f1[:5]))))
-    P('  %-14s   accretion yr1/entry, every surviving season: %.5f' % ('', r[0]))
+    ACC[lab] = r[0]; ACC_F[lab] = rF[0]
+    LADDERS[lab] = dict(entry=f0[:6], yr1=[x for x in f1[:6]], yr1_orderF=[x for x in fF[:6]],
+                        engine_grace_at_yr1=gr1, curve_G=GO[lab], acc=r[0], acc_orderF=rF[0])
+    P()
+    P('  entry %-8s  curve G_O = %d ; engine grace at the yr-1 board = %d' % (lab, GO[lab], gr1))
+    P('    season j            %s' % ''.join('%10d' % j for j in range(1, 7)))
+    P('    ENTRY weight        %s' % ''.join('%10.5f' % x for x in f0[:6]))
+    P('    YR-1 weight  CORRECT%s' % ''.join(('%10s' % 'delivered') if x is None else '%10.5f' % x
+                                             for x in f1[:6]))
+    P('    YR-1 weight  ORDER F%s' % ''.join(('%10s' % 'delivered') if x is None else '%10.5f' % x
+                                             for x in fF[:6]))
+    P('    ACCRETION    CORRECT%s' % ('%10s' % 'n/a' + ''.join('%10.5f' % x for x in r[:5])))
+    P('    ACCRETION    ORDER F%s' % ('%10s' % 'n/a' + ''.join('%10.5f' % x for x in rF[:5])))
 assert abs(ACC['age<=19'] - 1.0) < 1e-12, 'ACC[<=19] != 1.00'
-assert abs(ACC['age>=20'] - CARRY ** 2) < 1e-12, 'ACC[>=20] != 1.14^2'
+assert abs(ACC['age>=20'] - CARRY) < 1e-12, 'ACC[>=20] != 1.14'
 P()
-P('  ASSERTED: ACC[age<=19] == 1.00000 exactly ; ACC[age>=20] == 1.14^2 == %.5f.  Both PASS.' % ACC['age>=20'])
-P('  These are ORDER F\'s numbers, rebuilt by F\'s own loop on F\'s own lifted disc_factor.')
+P('  ASSERTED (PREREG addendum G-1): ACC[age<=19] == 1.00000 and ACC[age>=20] == 1.14000, both exact.')
+P('  These are EXACTLY the owner\'s ruled accretions, read off the engine\'s own disc_factor.')
+P()
+P('  *** THE TICK VERDICT: (b).  ORDER F\'S MEASUREMENT MISREAD THE LADDER.  NO ENGINE DEFECT. ***')
+P()
+P('  The misread is a VANTAGE MISALIGNMENT, and it is one line: o_f_wedge.py:154 indexes the year-1')
+P('  board at k_e = j - 2 with grace 0.  Both of those are true only at AGE_REF = C+2.  The year-1')
+P('  mark is taken at AGE_REF = C+1 (emit_matrix_29c.py:328 + 376-378).  F put the year-1 board one')
+P('  year too far forward, which hands every surviving season one extra 1.14.')
+P()
+P('  WHY IT WENT UNSEEN: at the CORRECT vantage a young entrant still has grace_years = 1, and that')
+P('  one remaining free step absorbs the index shift EXACTLY -- so F\'s ladder and the correct ladder')
+P('  are IDENTICAL for entry age <=19 (both give 1.00000, see the table above).  96% of the drafted')
+P('  population is <=19.  The error is invisible everywhere except on mature entrants.')
+P()
+P('  CORROBORATION FROM ORDER F\'S OWN CONSOLE.  Its Part 2 prose contradicts its own computed number:')
+P(quote(FWSRC, 172, 173))
+P('  printed as: "the step accretes by 1.30, and Order C\'s fair_C = 1.14 x (1 - s1) is exactly right')
+P('  for him."  The prose says 1.14 is right for the mature entrant.  The number said 1.30.  The prose')
+P('  was right.')
+P()
+P('  NO DEFECT IS REPORTED.  A mature entrant\'s day-0 print does NOT discount his present season: at')
+P('  the draft-year vantage his first played season is NEXT season, and 86% is what the ruling orders.')
+P('  A second, independent confirmation that the code is right: if the entry print were "corrected" to')
+P('  free a mature entrant\'s first season, his entry->year-1 accretion would become 1.00, not 1.14 --')
+P('  which would CONTRADICT the owner\'s own ruled 1.14.  The ruled 1.14 is producible only by the code')
+P('  exactly as it stands.  No counterfactual "corrected mature entry print" column is emitted,')
+P('  because branch (a) of addendum G-1 did not fire.')
+P()
+P('  WHAT THIS RETRACTS: the "mature-entrant ~+30%" implication carried to the owner with PACKET_F is')
+P('  WITHDRAWN.  The correct figure is +14%, which is Order C\'s original flat benchmark.  For a mature')
+P('  entrant Order C was right all along; the re-base bites on YOUNG entrants only.')
+P('  ORDER F\'s CENTRAL FINDING SURVIVES UNCHANGED: a young entrant earns NO carry over the entry->')
+P('  year-1 step (accretion 1.00), so the flat-1.14 benchmark was wrong for the 96% who are young.')
+P()
+P('  Order F\'s superseded mature accretion (%.5f) is carried in every table below as a diagnostic'
+  % ACC_F['age>=20'])
+P('  column, so the move against the numbers first shown to the owner is visible, not silent.')
 P()
 
 # =====================================================================================================
@@ -195,9 +305,10 @@ def s1_of(rows):
     return sv1 / (sv1 + dv1), dv1
 
 
-def accmix(rows, weight='v0'):
-    """v0-weighted (default) entry-age accretion mix -- Order F's ALT-2 weighting (o_f_wedge.py:467-471).
-       Returns (acc_mix, share_le19, n_le19, n)."""
+def accmix(rows, weight='v0', table=None):
+    """v0-weighted (default) entry-age accretion mix -- Order F's ALT-2 weighting (o_f_wedge.py:467-471),
+       now carrying the OWNER-RULED accretions (1.00 / 1.14).  Returns (acc_mix, share_le19, n_le19, n)."""
+    A = table or ACC
     if weight == 'v0':
         w = [max(0.0, float(r['v0'])) for r in rows]
     else:
@@ -206,23 +317,26 @@ def accmix(rows, weight='v0'):
     if tot <= 0:
         return float('nan'), float('nan'), 0, len(rows)
     le = [1.0 if (r['aged'] is not None and r['aged'] <= 19) else 0.0 for r in rows]
-    acc = sum(wi * (ACC['age<=19'] if l else ACC['age>=20']) for wi, l in zip(w, le)) / tot
+    acc = sum(wi * (A['age<=19'] if l else A['age>=20']) for wi, l in zip(w, le)) / tot
     sh = sum(wi * l for wi, l in zip(w, le)) / tot
     return acc, sh, int(sum(le)), len(rows)
 
 
 def exact_clock_ratio(rows):
     """The exactly-clock-consistent object PREREG_G S2.5 names: sum_i Y1_i / sum_i E_i, where
-       E_i weights the entrant's delivered stream on the ENTRY clock (grace-A) and Y1_i on the
-       ENGINE clock at the year-1 vantage.  Delivered-value weighted, printed as a CONTROL."""
+       E_i weights the entrant's delivered stream on the ENTRY clock (curve, grace-A) and Y1_i on the
+       ENGINE clock AT THE VANTAGE THE YEAR-1 MARK IS TAKEN AT (AGE_REF = C+1, engine grace as
+       grace_years() returns it there).  Delivered-value weighted, printed as a CONTROL."""
     E = 0.0; Y = 0.0
     for r in rows:
-        g = 2 if (r['aged'] is not None and r['aged'] <= 19) else 0
-        a = 18 if g == 2 else 21
+        young = (r['aged'] is not None and r['aged'] <= 19)
+        g = 2 if young else 0
+        a = 18 if young else 21
+        gr1 = grace_years_at(a, 1, 1)          # AGE_REF = C+1 = debut
         for j, v in r['full'].items():
             E += v / disc_factor(a, 0.14, j, 'bal', g)
             if j >= 2:
-                Y += v / disc_factor(a, 0.14, j - 2, 'bal', 0)
+                Y += v / disc_factor(a, 0.14, j - 1, 'bal', gr1)
     return (Y / E) if E > 0 else float('nan')
 
 
@@ -236,9 +350,11 @@ def bench(rows):
     s1, _ = s1_of(rows)
     acc, sh19, n19, n = accmix(rows, 'v0')
     accn, sh19n, _, _ = accmix(rows, 'n')
+    accF, _, _, _ = accmix(rows, 'v0', ACC_F)
     return dict(n=n, s1=s1, acc=acc, share_le19=sh19, n_le19=n19,
-                acc_headcount=accn, share_le19_headcount=sh19n,
+                acc_headcount=accn, share_le19_headcount=sh19n, acc_orderF=accF,
                 fair_G=acc * (1.0 - s1), fair_C=CARRY * (1.0 - s1),
+                fair_orderF=accF * (1.0 - s1),
                 exact=exact_clock_ratio(rows))
 
 
@@ -407,9 +523,13 @@ P('=' * 122)
 P()
 P('  ' + NOTE)
 P()
-P('  fair_G = (v0-weighted entry-age accretion mix) x (1 - s1).   accretion 1.0000 for entry age <=19,')
-P('  %.4f for >=20 -- the board\'s OWN ruled grace clock, read off its own disc_factor.' % ACC['age>=20'])
-P('  fair_C = 1.14 x (1 - s1) is the OLD flat ruler, printed so the move is visible.')
+P('  fair_G = (v0-weighted entry-age accretion mix) x (1 - s1), with the OWNER-RULED accretions:')
+P('    entry age <=19 -> %.4f   (his present season plus one extra at 100%%; the step earns NO carry)' % ACC['age<=19'])
+P('    entry age >=20 -> %.4f   (ONE tick; his clock runs like everyone else\'s)' % ACC['age>=20'])
+P('  So fair_G always sits BETWEEN 1.00 and 1.14 x (1 - s1): a cell\'s benchmark is just the blend of')
+P('  those two, by how much of its entry value was bought young.')
+P('  fair_C = 1.14 x (1 - s1) is the OLD flat ruler.  fair_F is ORDER F\'s SUPERSEDED reading')
+P('  (mature accretion %.4f), carried so the move against the first-shown numbers is visible.' % ACC_F['age>=20'])
 P('  The two RAIL columns are the ABSOLUTE exploit tests and are UNCHANGED by the re-base.')
 P()
 
@@ -418,8 +538,9 @@ for t, _, bh, desc in BOARDS:
     P('-' * 122)
     P('BOARD %s  [%s]  -- %s' % (t, bh[:8], desc))
     P('-' * 122)
-    P('  %-15s %5s %9s | %7s %8s | %8s %8s | %8s %8s | %6s %6s'
-      % ('cell', 'n', 'mark', 'sh<=19', 'acc_mix', 'fair_G', 'gap_G', 'fair_C', 'gap_C', 'SELL', 'BUY'))
+    P('  %-15s %5s %9s | %7s %8s | %8s %8s | %8s %8s | %8s | %6s %6s'
+      % ('cell', 'n', 'mark', 'sh<=19', 'acc_mix', 'fair_G', 'gap_G', 'fair_C', 'gap_C', 'fair_F(sup)',
+         'SELL', 'BUY'))
     T1[t] = {}
     for g in WINDOWS_ND + BANDS5:
         rw = {x['N']: x['ratio_meanN_over_mean0'] for x in EXT[t]['groups'][g]['rows']}
@@ -427,9 +548,9 @@ for t, _, bh, desc in BOARDS:
         b = bench(NDROWS[t][g])
         s, bu = rails(m)
         T1[t][g] = dict(mark=m, apprec=m - 1.0, sell=s, buy=bu, path={N: rw[N] for N in rw}, **b)
-        P('  %-15s %5d %+8.2f%% | %7.3f %8.4f | %8.4f %+8.4f | %8.4f %+8.4f | %6s %6s'
+        P('  %-15s %5d %+8.2f%% | %7.3f %8.4f | %8.4f %+8.4f | %8.4f %+8.4f | %11.4f | %6s %6s'
           % (g, b['n'], 100 * (m - 1.0), b['share_le19'], b['acc'],
-             b['fair_G'], m - b['fair_G'], b['fair_C'], m - b['fair_C'], s, bu))
+             b['fair_G'], m - b['fair_G'], b['fair_C'], m - b['fair_C'], b['fair_orderF'], s, bu))
     P()
 P('  READING: gap_G is the CLOCK-FAIR GAP -- mark minus the board\'s own ruled benchmark.  It is a')
 P('  FAIRNESS reading and carries no RED of its own.  SELL/BUY are the absolute exploit rails.')
@@ -473,9 +594,9 @@ for t, _, bh, desc in BOARDS:
     for wname in ('PRIMARY 2005-2023', 'MODERN 2019-2023'):
         P('-' * 122)
         P('BOARD %s [%s]  --  %s' % (t, bh[:8], wname))
-        P('  %-10s %5s %9s %6s | %7s %8s | %8s %8s | %8s %8s | %6s %6s %6s'
+        P('  %-10s %5s %9s %6s | %7s %8s | %8s %8s | %8s %8s | %11s | %6s %6s %6s'
           % ('arm', 'n', 'mark', 'n_pre', 'sh<=19', 'acc_mix', 'fair_G', 'gap_G', 'fair_C', 'gap_C',
-             'SELL', 'BUY', 'thin?'))
+             'fair_F(sup)', 'SELL', 'BUY', 'thin?'))
         T2[t][wname] = {}
         grp = ARMP[t][wname]
         for nm in ARMS + ['ALLPOOL']:
@@ -493,9 +614,9 @@ for t, _, bh, desc in BOARDS:
             T2[t][wname][nm] = dict(mark=m, apprec=m - 1.0, n_pre=rows[1]['n_pre'],
                                     sell=s, buy=bu, thin=thin,
                                     path={N: rows[N]['ratio'] for N in rows}, **b)
-            P('  %-10s %5d %+8.2f%% %6d | %7.3f %8.4f | %8.4f %+8.4f | %8.4f %+8.4f | %6s %6s %6s'
+            P('  %-10s %5d %+8.2f%% %6d | %7.3f %8.4f | %8.4f %+8.4f | %8.4f %+8.4f | %11.4f | %6s %6s %6s'
               % (nm, b['n'], 100 * (m - 1.0), rows[1]['n_pre'], b['share_le19'], b['acc'],
-                 b['fair_G'], m - b['fair_G'], b['fair_C'], m - b['fair_C'], s, bu,
+                 b['fair_G'], m - b['fair_G'], b['fair_C'], m - b['fair_C'], b['fair_orderF'], s, bu,
                  'THIN' if thin else ''))
         P()
 P('  THE TWO ALL-ARM WINDOWS are the ALLPOOL rows above -- PRIMARY 2005-2023 and MODERN 2019-2023.')
@@ -556,6 +677,72 @@ P()
 
 # =====================================================================================================
 P('=' * 122)
+P('PART 6B -- THE ENTRY-AGE NATURAL EXPERIMENT, RE-RUN ON THE OWNER-RULED ACCRETIONS')
+P('=' * 122)
+P()
+P('  grace-A cuts at entry age <= 19, a RULED discrete boundary.  Order C\'s own window (2005-2021),')
+P('  so the rows are comparable with its published age table.  The mature rows are where the tick')
+P('  verdict bites, so they are printed with their rails.')
+P()
+POPA = []
+for k, r in Arecs.items():
+    if k in FM: continue
+    y = r['year']
+    if y < 2005 or y > 2021: continue
+    if not (r.get('teaches_curve') and r['type'] == 'ND') and not r.get('is_pool'): continue
+    if not r.get('vpath') or r['vpath'][0] is None: continue
+    POPA.append(dict(key=k, y=y, aged=r.get('age_draft'), v0=float(r['v0']),
+                     p1=float(r['vpath'][0]), full=prof_of(k, y)))
+
+
+def agebucket(a):
+    if a is None: return None
+    if a <= 17: return '17-'
+    if a == 18: return '18'
+    if a == 19: return '19'
+    if a == 20: return '20'
+    return '21+'
+
+
+P('  %-6s %6s %8s %8s %8s %9s %8s %9s %11s %9s | %6s %6s'
+  % ('age', 'n', 'mark', 's1', 'fair_G', 'gap_G', 'fair_C', 'gap_C', 'fair_F(sup)', 'gap_F',
+     'SELL', 'BUY'))
+AGEROWS = []
+for bkt in ('17-', '18', '19', '20', '21+'):
+    rows = [r for r in POPA if agebucket(r['aged']) == bkt]
+    if not rows: continue
+    b = bench(rows)
+    mark = sum(r['p1'] for r in rows) / sum(r['v0'] for r in rows)
+    s, bu = rails(mark)
+    AGEROWS.append(dict(age=bkt, n=len(rows), mark=mark, s1=b['s1'], fair_G=b['fair_G'],
+                        gap_G=mark - b['fair_G'], fair_C=b['fair_C'], gap_C=mark - b['fair_C'],
+                        fair_orderF=b['fair_orderF'], gap_orderF=mark - b['fair_orderF'],
+                        sell=s, buy=bu))
+    P('  %-6s %6d %8.3f %8.4f %8.4f %+9.4f %8.4f %+9.4f %11.4f %+9.4f | %6s %6s'
+      % (bkt, len(rows), mark, b['s1'], b['fair_G'], mark - b['fair_G'], b['fair_C'],
+         mark - b['fair_C'], b['fair_orderF'], mark - b['fair_orderF'], s, bu))
+P()
+mg = sum(abs(r['gap_G']) for r in AGEROWS) / len(AGEROWS)
+mc = sum(abs(r['gap_C']) for r in AGEROWS) / len(AGEROWS)
+mf = sum(abs(r['gap_orderF']) for r in AGEROWS) / len(AGEROWS)
+P('  mean |gap| across the five buckets: flat-1.14 %.4f | OWNER-RULED clock %.4f | Order F (sup) %.4f'
+  % (mc, mg, mf))
+P()
+P('  THE FINDING ON THE MATURE ROWS, STATED PLAINLY AND NOT SMOOTHED: under the owner-ruled 1.14 the')
+P('  age-20 and age-21+ buckets sit ABOVE their benchmark (gap_G %+.3f and %+.3f), and the age-20'
+  % (AGEROWS[3]['gap_G'], AGEROWS[4]['gap_G']))
+P('  bucket also breaches the BUY-SIDE exploit rail at mark %.3f > 1.14.' % AGEROWS[3]['mark'])
+P('  Order F\'s superseded 1.2996 fitted those two rows better (%+.3f, %+.3f).  That is a fit, not a'
+  % (AGEROWS[3]['gap_orderF'], AGEROWS[4]['gap_orderF']))
+P('  law, and this seat does not choose the benchmark by which one fits: the code and the owner\'s')
+P('  ruling both say 1.14, so 1.14 governs and the excess is REPORTED as a live finding rather than')
+P('  absorbed into the ruler.  What it says in plain words: mature-age entrants appear to be marked')
+P('  CHEAP AT ENTRY relative to what the board pays them a year later.  That is an entry-side,')
+P('  AGE-TARGETED question for the owner -- it is not something this seat prices.')
+P()
+
+# =====================================================================================================
+P('=' * 122)
 P('PART 7 -- THE W2 CLASS TARGET, RE-DERIVED UNDER THE CLOCK')
 P('=' * 122)
 P()
@@ -563,8 +750,9 @@ P('  ' + NOTE)
 P()
 P('  The band [1.100, 1.117] was built on the FLAT identity  R* = 1.14 x (1 - SV1sh).')
 P('  Under the clock the identity becomes  R* = acc_mix x (1 - SV1sh), acc_mix the v0-weighted')
-P('  entry-age accretion mix of the class.  Object, class set, population and ruler are W2\'s own;')
-P('  the ONLY thing that changes is the benchmark.')
+P('  entry-age accretion mix of the class, on the OWNER-RULED accretions (1.00 young / 1.14 mature).')
+P('  Object, class set, population and ruler are W2\'s own; the ONLY thing that changes is the')
+P('  benchmark.  W2\'s population is ALL-ARM, so its age mix is much older than the draft\'s.')
 P()
 import numpy as np
 
@@ -604,7 +792,7 @@ W2PUB = {2005: 1.1161, 2006: 1.1198, 2007: 1.1086, 2008: 1.1020, 2009: 1.0692, 2
          2011: 1.0978, 2012: 1.1165, 2013: 1.1329, 2014: 1.1288, 2015: 1.1038, 2016: 1.1130,
          2017: 1.1014, 2018: 1.1012, 2019: 1.0968, 2020: 1.1214, 2021: 1.0532}
 P('  %-6s %5s %9s %9s %9s %8s %9s %9s %9s %9s'
-  % ('class', 'n', 'R_cand', 'R*flat', 'SV1sh', 'sh<=19', 'acc_mix', 'R*CLOCK', 'exact', 'acc(head)'))
+  % ('class', 'n', 'R_cand', 'R*flat', 'SV1sh', 'sh<=19', 'acc_mix', 'R*CLOCK', 'exact', 'R*F(sup)'))
 CLS = []
 devw = 0
 for y in range(2005, 2022):
@@ -616,15 +804,17 @@ for y in range(2005, 2022):
     sv1sh = SV1 / (SV1 + DV1)
     acc, sh19, _, _ = accmix(rows, 'v0')
     accn, sh19n, _, _ = accmix(rows, 'n')
+    accF, _, _, _ = accmix(rows, 'v0', ACC_F)
     rclock = acc * (1.0 - sv1sh)
     ex = exact_clock_ratio(rows)
     if abs(round(rflat, 4) - W2PUB[y]) > 1e-4:
         devw += 1
     CLS.append(dict(cls=y, n=len(rows), R_cand=P1 / P0, R_flat=rflat, SV1sh=sv1sh,
                     share_le19=sh19, acc_mix=acc, R_clock=rclock, exact=ex,
-                    acc_headcount=accn, R_clock_headcount=accn * (1.0 - sv1sh)))
+                    acc_headcount=accn, R_clock_headcount=accn * (1.0 - sv1sh),
+                    acc_orderF=accF, R_orderF=accF * (1.0 - sv1sh)))
     P('  %-6d %5d %9.4f %9.4f %9.4f %8.3f %9.4f %9.4f %9.4f %9.4f'
-      % (y, len(rows), P1 / P0, rflat, sv1sh, sh19, acc, rclock, ex, accn))
+      % (y, len(rows), P1 / P0, rflat, sv1sh, sh19, acc, rclock, ex, accF * (1.0 - sv1sh)))
 P()
 P('  CONTROL 3: R*flat reproduces PACKET_W2\'s published per-class R*full column -- %s'
   % ('EXACT on all 17 classes' if devw == 0 else 'FAIL %d classes' % devw))
@@ -654,6 +844,7 @@ S_flat = summ([c['R_flat'] for c in WELL]); CI_flat = cls_boot([c['R_flat'] for 
 S_clk = summ([c['R_clock'] for c in WELL]); CI_clk = cls_boot([c['R_clock'] for c in WELL])
 S_ex = summ([c['exact'] for c in WELL]); CI_ex = cls_boot([c['exact'] for c in WELL])
 S_hd = summ([c['R_clock_headcount'] for c in WELL]); CI_hd = cls_boot([c['R_clock_headcount'] for c in WELL])
+S_oF = summ([c['R_orderF'] for c in WELL]); CI_oF = cls_boot([c['R_orderF'] for c in WELL])
 S_cand = summ([c['R_cand'] for c in WELL])
 CAND_ALL = summ([c['R_cand'] for c in CLS])
 
@@ -666,20 +857,39 @@ P('    %-34s mean %.4f  median %.4f  range [%.4f, %.4f]  90%% CI [%.4f, %.4f]'
   % ('control: exact clock ratio', S_ex['mean'], S_ex['median'], S_ex['lo'], S_ex['hi'], CI_ex[0], CI_ex[1]))
 P('    %-34s mean %.4f  median %.4f  range [%.4f, %.4f]  90%% CI [%.4f, %.4f]'
   % ('control: head-count age mix', S_hd['mean'], S_hd['median'], S_hd['lo'], S_hd['hi'], CI_hd[0], CI_hd[1]))
+P('    %-34s mean %.4f  median %.4f  range [%.4f, %.4f]  90%% CI [%.4f, %.4f]'
+  % ('SUPERSEDED: Order F mature 1.2996', S_oF['mean'], S_oF['median'], S_oF['lo'], S_oF['hi'],
+     CI_oF[0], CI_oF[1]))
 P()
 P('    candidate class marks R_cand 2005-2015: mean %.4f  median %.4f  range [%.4f, %.4f]'
   % (S_cand['mean'], S_cand['median'], S_cand['lo'], S_cand['hi']))
 P('    candidate class marks R_cand all 17   : mean %.4f  median %.4f  range [%.4f, %.4f]'
   % (CAND_ALL['mean'], CAND_ALL['median'], CAND_ALL['lo'], CAND_ALL['hi']))
 P()
-LAND = 1.042
+# the landing candidate's OWN class marks, on the same population, so the comparison is apples-to-apples
+DREC = {r['key']: r for r in MX['D']['recs']}
+RD_D = []
+for y in range(2005, 2016):
+    rows = [p for p in POP if p['yr'] == y]
+    P0 = sum(float(DREC[p['key']]['v0']) for p in rows)
+    P1 = sum(float(DREC[p['key']]['vpath'][0]) for p in rows)
+    RD_D.append(P1 / P0)
+S_candD = summ(RD_D)
+SCD = json.load(open(os.path.join(EV, 'order_d_2026-08-17', 'W2_D_SCORECARD.json')))
+P('    landing candidate (D) class marks 2005-2015, recomputed here: mean %.4f  range [%.4f, %.4f]'
+  % (S_candD['mean'], S_candD['lo'], S_candD['hi']))
+P('    the number of record, from the Order-D wire\'s own W2 scorecard (mean_0515): %.4f'
+  % SCD['flat']['mean_0515'])
+P()
+LAND = round(SCD['flat']['mean_0515'], 3)
 lo, hi = CI_clk
 where = 'INSIDE' if lo <= LAND <= hi else ('BELOW' if LAND < lo else 'ABOVE')
 P('  THE CORRECTED CLASS TARGET BAND: [%.4f, %.4f]   (was [1.100, 1.117])' % (lo, hi))
 P('  The landing candidate\'s class number 1.042 sits %s it.  Distance to the near edge: %+.4f'
   % (where, (LAND - lo) if LAND < lo else ((LAND - hi) if LAND > hi else 0.0)))
-P('  Old shortfall vs the old band: %+.4f.  New shortfall vs the new band: %+.4f.'
-  % (LAND - 1.100, (LAND - lo) if LAND < lo else 0.0))
+P('  Under the OLD flat ruler it was SHORT of the band by %.4f ("the missing 6 points").' % (1.100 - LAND))
+P('  Under the OWNER-RULED clock it is ABOVE the band by %.4f.  The sign REVERSES.' % (LAND - hi))
+P('  It is still well inside the buy-side exploit rail (%.3f < 1.14), so no arbitrage is created.' % LAND)
 P()
 # per-board acc_mix sensitivity: the v0 weights differ between boards
 P('  acc_mix sensitivity across the three boards (2005-2015 class mean of acc_mix):')
@@ -725,6 +935,16 @@ P()
 
 json.dump(dict(order='ORDER G -- clock re-base instrument seat (reporting only; no price moves)',
                note=NOTE,
+               tick_verdict=dict(verdict='b -- ORDER F misread the ladder; NO engine defect',
+                                 owner_ruled_accretion=ACC, order_f_superseded=ACC_F,
+                                 ladders=LADDERS,
+                                 misread='o_f_wedge.py:154 indexes the year-1 board at k_e = j-2 with '
+                                         'engine grace 0, which is AGE_REF = C+2; the year-1 mark is '
+                                         'taken at AGE_REF = C+1 (emit_matrix_29c.py:328,376-378)',
+                                 invisible_because='at the correct vantage a <=19 entrant still has '
+                                                   'grace_years = 1, which absorbs the index shift '
+                                                   'exactly; both ladders give 1.00 for the young',
+                                 age_table=AGEROWS),
                accretion=ACC, lifts=dict(disc_factor=LIFT_MD5, s4_ruler=RUL_MD5),
                boards={t: bh for t, _, bh, _ in BOARDS},
                five_band=T1, five_band_controls=CTRL1, pool_arms=T2,
@@ -739,10 +959,12 @@ json.dump(dict(order='ORDER G -- the W2 class target re-derived under the clock 
                old_band=[1.100, 1.117], old_construction='fair = 1.14 x (1 - SV1sh)',
                new_construction='fair = v0-weighted entry-age accretion mix x (1 - SV1sh)',
                per_class=CLS,
+               accretion=ACC, order_f_superseded=ACC_F,
                well_observed=dict(flat=dict(summary=S_flat, ci90=CI_flat),
                                   clock=dict(summary=S_clk, ci90=CI_clk),
                                   exact_control=dict(summary=S_ex, ci90=CI_ex),
                                   headcount_control=dict(summary=S_hd, ci90=CI_hd),
+                                  order_f_superseded=dict(summary=S_oF, ci90=CI_oF),
                                   candidate=S_cand),
                corrected_band=CI_clk, landing_candidate_class=LAND, verdict_where=where),
           open(os.path.join(HERE, 'W2_TARGET_G.json'), 'w'), indent=1, sort_keys=True, default=float)
