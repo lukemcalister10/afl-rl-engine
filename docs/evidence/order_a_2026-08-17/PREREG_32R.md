@@ -92,6 +92,29 @@ preview pages · named rows traced: dean, duff-tytler, wilson, gothard, madden, 
 murdock, annand, cooke + late-pick young rows gallop (ty-gallop), charlie-west, dodson, mccabe,
 busslinger. Packet addendum and final report in PLAIN LANGUAGE (short sentences, terms defined).
 
+## AMENDMENT A1 (owner addendum 2, filed before the affected analyses ran)
+
+- **Pool arms join the standing tables.** Every no-arb delivery includes the per-arm pool table
+  (RD / MSD / UNR / IRE / PDA / PDN / SSP / PDS year-paths, both windows) AND the pooled all-pool
+  path (every non-ND arm, the all-arm reader construction), under the SAME two-sided rules: sell-
+  side RED for any arm with negative yr0→1; buy-side RED for any arm whose yr0→1 appreciation
+  exceeds the 14% carry. Arms join the R3(c) vantage-consistency matrix. MSD's yr1 cell carries a
+  plain-words caption for the debut-gap exclusion — never a silent nan.
+- **Named breach to investigate (NOT wire): SSP.** yr0→1 +51.0% in C32 (+38.2% in C31), n=31 —
+  thin, bound honestly. Hypothesis to test: the SSP entry cells (v0 ~124–209) price development-
+  class entries while SSP entrants are mature-age and convert production immediately. Report the
+  finding and the candidate fix direction (likely an SSP entry-cell re-anchor at the next v0
+  refit); an entry-surface change is rulings-material and is NOT wired here.
+- **R3(c) diagnosis refinement (supersedes the 'early yr1 marks too high' line).** The fair yr1
+  level PER BAND = 1.14 × (1 − that band's yr1 delivered share). Compute the band-level fair yr1
+  numbers explicitly (early picks deliver more in yr1, so their fair yr1 sits BELOW the class
+  ~1.10; picks 1-20 at ~1.087 is close to fair on that test). Attribute each band's vantage
+  inconsistency to the specific leg — the yr1 mark vs the later-year marks (the remaining S4
+  mid-career residual) — against the band-level fair benchmarks, never by averaging.
+- **Continuity gate precision note:** feasibility tests the ruled ledger gate EXACTLY (integer
+  game steps 0..20, tolerance 1e-9, at-bar rows); the first diagnosis run's 0.25-step check was
+  stricter than the ruled object and is retired.
+
 ## Predictions
 
 - **PR1** dean and duff-tytler recover toward Candidate 31 or above (the age credit offsets the

@@ -3363,17 +3363,43 @@ if _O30B_PREVIEW:
                 if y0<=0.0 or y1<=0.0: return y0+_t*(y1-y0)
                 return _math.exp(_math.log(y0)+_t*(_math.log(y1)-_math.log(y0)))
         return pts[-1][1]
+    def o31_rho_base(g):
+        """The 31-F reliability curve UNTOUCHED — the pre-existing production leg's own weight."""
+        g=float(g)
+        return 0.0 if g<=0.0 else 1.0-_math.exp(-((g/O31_TAU_RHO)**O31_B_RHO))
     def rho31(g):
         """MEASURED PRODUCTION RELIABILITY. rho(0)=0 EXACTLY, strictly increasing, -> 1. Fitted so a thin
         cohort's aggregate price matches the R1 cumulative backbone. Pure function of g.
         ORDER A stage 6: the R-REMIX low-g bump rides on top (see the O32 block above); rho(0)=0 and
         the deep end are untouched by construction."""
-        g=float(g)
-        if g<=0.0: return 0.0
-        _r=1.0-_math.exp(-((g/O31_TAU_RHO)**O31_B_RHO))
-        if _O32S>=6 and O32_KAPPA>0.0:
+        _r=o31_rho_base(g)
+        if _r>0.0 and _O32S>=6 and O32_KAPPA>0.0:
+            g=float(g)
             _r=_r+O32_KAPPA*((g/O32_GAMMA)*_math.exp(1.0-g/O32_GAMMA))*(1.0-_r)
         return _r
+    # ---- ORDER A REPAIR R1 (PREREG_32R.md; owner-directed) -----------------------------------------
+    # The re-mix's ADDED production weight reads shown production at the player's AGE-APPROPRIATE
+    # expectation: the owner caught that the re-mix judged young output against the MATURE bars —
+    # the same defect S1 measured in the gate (86-100% of age-18/19 seasons flagged). The repair
+    # credits the re-mix leg with A(p,Y) = Δ(age, class)·20·_PL_F — the S1 C3 development gap as one
+    # 20-game season, engine currency. ONLY the κ-bump weight carries it: the pre-existing
+    # production leg (Phat at rho_base) is untouched (the gate-only scope discipline), m_u(0)=0 so
+    # day-0 prints cannot move, and ages >= 24 carry zero (cap law).
+    def o32_age_gap(p,Y):
+        """Δ(age at Y, class) in points per game; 0 from age 24; 0 without a birth year."""
+        _by=p.get('_by')
+        if not _by: return 0.0
+        _a=Y-int(_by)
+        if _a>=24: return 0.0
+        return O32_GATE_DELTA['TALL' if MA.gfut(p) in O32_TALLPOS else 'SMALL'][max(18,min(23,int(_a)))]
+    def o32_age_credit(p,Y,g):
+        """The R1 age credit on the re-mix's added production weight: κ·m_u(g)·(1-rho_base)·A(p,Y)."""
+        if _O32S<6 or O32_KAPPA<=0.0: return 0.0
+        g=float(g)
+        if g<=0.0: return 0.0
+        _d=o32_age_gap(p,Y)
+        if _d<=0.0: return 0.0
+        return O32_KAPPA*((g/O32_GAMMA)*_math.exp(1.0-g/O32_GAMMA))*(1.0-o31_rho_base(g))*_d*20.0*_PL_F
     def beta31(g,pool=False):
         """The measured additive pedigree coefficient. ORDER 31-F: pool rows take the POOL-DERIVED curve
         (o31f_pool.py), ND rows the ND curve. One law still — the same expression, the row's own
@@ -3473,9 +3499,11 @@ if _O30B_PREVIEW:
             _pi*=max(0.0,1.0-O32_ETA*((_g/O32_GAMMA_D)*_math.exp(1.0-_g/O32_GAMMA_D)))
         return _pi
     def _pv_order31(p,Y,e):
-        """THE ONE LAW. One expression, every row, every pathway, every games count."""
+        """THE ONE LAW. One expression, every row, every pathway, every games count.
+        ORDER A REPAIR R1: + the age credit on the re-mix's added production weight (zero at g=0,
+        zero from age 24, zero below stage 6 — the dial-off path is unchanged byte-for-byte)."""
         _g=pv_games(p,Y)
-        return rho31(_g)*float(e)+o31_pi(p,Y,_g)*pv_pedigree(p)
+        return rho31(_g)*float(e)+o31_pi(p,Y,_g)*pv_pedigree(p)+o32_age_credit(p,Y,_g)
     if _O31:
         _PV['blend']=_pv_order31
         # THE DAY-0 PREDICATE IS RESTATED, NOT DROPPED. Under the one law a zero-games row's price IS
