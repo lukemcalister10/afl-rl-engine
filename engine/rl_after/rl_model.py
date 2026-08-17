@@ -1060,6 +1060,64 @@ def survival(b,delta,games):
     # tracking *below* his own bar (mult>1) -- an at-par or above-par player gets no extra bust tax.
     bp=BUST_BAND.get(b,0.15); mult=clamp(1.0-delta/20.0,0.4,1.6); fade=max(0.0,1-games/40.0)
     return 1-bp*max(0.0,mult-1.0)*fade
+# ==== ORDER I — S1, THE AGE-REFERENCED BAR INSIDE THE PROJECTION CORE (RL_O36, DEFAULT OFF) =========
+# ISSUE #334 comment 5317842435 / PREREG_I.md, pushed before this edit. ORDER E located and priced the
+# defect (docs/evidence/order_e_diag_2026-08-17/PACKET_E.md §1): the projection loop and the
+# demonstrated-production floor subtract the MATURE replacement bar from a YOUNG player's output, so a
+# 19-year-old key defender averaging 59.7 is priced BELOW replacement against 65.4 when his own age's
+# bar is 44.8. Cost, measured and controlled: harry-dean 843 board points, cooper-duff-tytler 448,
+# milan-murdock (26) EXACTLY 0.00.
+#
+# THE CORRECTION, AT THESE FOUR SITES ONLY (proj_from_peak k==0 and k>=1; prod_floor k==0 both halves
+# and k>=1) AND THE PARALLEL COPIES IN _merged_recover.py:
+#     bar(pos, age) = REPL[pos] - LAM_S1 * DELTA(class, clamp(int(age),18,23)),  DELTA = 0 from age 24
+# DELTA is the engine's OWN S1 C3 development surface (docs/evidence/order32_s1_2026-08-17/
+# CONSTRUCTIONS_S1.json::C3, already transcribed as _merged_recover.O32_GATE_DELTA and asserted
+# byte-equal to this copy at load). It has NO PICK AXIS, it is CAPPED at the flat bar (DELTA >= 0), and
+# it is FLAT FROM AGE 24 — which is why every mature row is byte-identical store-wide and murdock
+# cannot move. `age` is the age AT THAT PROJECTION HORIZON, not the age today.
+# LAM_S1 IS NOT HAND-PICKED: it is a grid axis in the ONE joint calibration with the re-mix and relief
+# knobs (PREREG_I.md §3; ORDER E's dose warning binds — full S1 overshoots).
+# RL_O36 unset  =>  o36_bar IS REPL[pos]  =>  the landing candidate 1f176444 reproduces BYTE-EXACT.
+_O36=os.environ.get('RL_O36','0')!='0'
+O36_LAM_S1=float(os.environ.get('RL_O36_LAM_S1','0.35'))
+O36_TALLPOS=frozenset(('KPD','KPF','RUCK'))
+O36_GATE_DELTA={'TALL':{18:22.334475609756097,19:20.55500752464971,20:16.306362402208926,
+                        21:11.588672690048071,22:7.826894964594814,23:6.439783302063788},
+                'SMALL':{18:20.080511089352214,19:20.080511089352214,20:14.306977484301457,
+                         21:11.265167414136857,22:6.761247284555768,23:4.584052475875439}}
+# THE SCOPE GATE — declared, and it is a SCOPE DECISION, not a convenience. S1 corrects how a REAL
+# PLAYER'S OWN OUTPUT is judged. It must NOT reach the synthetic band-node and baseline-draftee
+# projections (rl_model:base_prod / v_at_peak / the pick-value curve, all of which evaluate
+# proj_from_peak at a literal age 19), because those objects build the PEDIGREE machinery — the PVC,
+# the V0 surface and the entry anchors. Letting S1 into them would move day-0 prints and re-price
+# mature rows through the rebuilt tables, which is exactly what ORDER E's isolation control proved S1
+# does NOT do (ISOLATE_E: v0, the day-0 pedigree leg, the entry anchor, rho31, pi and the age credit
+# all move by 0.0000000000). This flag is set by _merged_recover's raw_ev wrapper — the engine's own
+# "real players only; synths delegate clean" boundary — and by nothing else.
+# THE SECOND HALF OF THE SCOPE GATE — 'armed'. THE BOARD'S DENOMINATORS ARE FROZEN ON THE DIAL-OFF
+# BASIS. This is ORDER B's ruling applied to this lever (see the RL_O33 pre-anchor block at :1269
+# below, verbatim: "The ruled mechanisms reprice VETERANS; they must not re-denominate the board").
+# _merged_recover derives cross-player reference objects at LOAD by pricing the whole store — medians,
+# proven-population references and conservation renormalisers. If S1 were live during that derivation
+# it would move those shared denominators, and a shared denominator moves EVERY row, including the
+# mature ones the cap law says cannot move. MEASURED, not assumed: with S1 live at load, sam-taylor
+# (27) moved -5.92, tom-green (25) +4.59, toby-greene (33) +1.53 and taylor-walker (36) +0.08 while
+# S1 was never once evaluated inside their own pricing (251,850 load-time evaluations, 8 sites — the
+# leak diagnostic is in the packet). Armed at the end of the module load; the board and every price
+# read afterwards carry S1 in full.
+_O36_SCOPE={'on':False,'armed':False}
+def o36_bar(pos,age):
+    """THE ONE EXPRESSION. Returns REPL[pos] byte-exact with the dial off, outside the real-player
+    scope, at a missing/unknown age, or from age 24 up. Never returns a bar ABOVE the flat bar (the
+    cap law is structural: DELTA >= 0)."""
+    _b=REPL.get(pos)
+    if (_b is None or not _O36 or not _O36_SCOPE['armed'] or not _O36_SCOPE['on']
+            or O36_LAM_S1<=0.0 or age is None): return _b
+    try: _a=int(age)
+    except Exception: return _b
+    if _a>=24: return _b
+    return _b-O36_LAM_S1*O36_GATE_DELTA['TALL' if pos in O36_TALLPOS else 'SMALL'][max(18,min(23,_a))]
 def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0,grace=0):
     # ORDER 28: `grace` is threaded from the CALLER (which holds the player record) because this
     # function takes a scalar age, not a record — see PREREG_ORDER28.md §1.2. Synthetic/pick-level
@@ -1078,8 +1136,8 @@ def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0,grace=0):
         if k==0 and pre_hc>0 and BASE_REF==2026 and AGE_REF==2026: lev*=(1-pre_hc)  # B2 present-unavailability haircut (Now board only)
         base=lev+capt_prem(lev)
         _df=disc_factor(a,d,k,lens,grace)
-        if k==0: prod+=posval(base-REPL[g0])*21/_df
-        else: prod+=sum(w*posval(base-REPL[gg]) for gg,w in fut)*21/_df
+        if k==0: prod+=posval(base-o36_bar(g0,ag))*21/_df        # ORDER I S1 site 1 (dial off => REPL[g0])
+        else: prod+=sum(w*posval(base-o36_bar(gg,ag)) for gg,w in fut)*21/_df   # ORDER I S1 site 2 (dial off => REPL[gg])
     if g in('KPF','KPD'): prod*=1.05
     if _O33 and _O33S>=1 and g in('KPF','KPD'): prod*=O33_SSTAR   # ORDER B B-1: anchor-preserving renorm on the tall PROJECTION stream only (the floor is a current-level object and is NOT renormed — disclosed in the packet)
     runway=clamp((25-a)/6.0,0,1); elite=clamp((lp/PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*PMAX)
@@ -1108,9 +1166,9 @@ def prod_floor(p,lens='bal'):
         base=lev+capt_prem(lev)
         if k==0 and lowbar is not None:
             sp=SEASON_PROG                                    # banked (sp) vs present bar; remaining (1-sp) vs low bar
-            pv=sp*posval(base-REPL[g])+(1.0-sp)*posval(base-REPL[lowbar])
+            pv=sp*posval(base-o36_bar(g,ag))+(1.0-sp)*posval(base-o36_bar(lowbar,ag))   # ORDER I S1 site 3
         else:
-            pv=posval(base-REPL[g])
+            pv=posval(base-o36_bar(g,ag))                                               # ORDER I S1 site 4
         prod+=wt*pv*21/disc_factor(a,d,k,lens,_gr); k+=1
     return val(prod)
 # ===== cont.20: v4 LEARNED FORWARD-PROJECTION (peak_est spine) =====

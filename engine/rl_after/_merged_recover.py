@@ -450,6 +450,15 @@ _O34=os.environ.get('RL_O34','0')!='0'                      # ORDER C: the age-c
 # reproduces the repaired Candidate 32 board 7802ee97 BYTE-EXACT. THE LANDING CANDIDATE on the
 # owner's word.
 _O35=os.environ.get('RL_O35','0')!='0'                      # ORDER D: the pick-curve fade
+# ORDER I — THE COORDINATED BUILD (#334 comment 5317842435; PREREG_I.md pushed before the first engine
+# edit). THREE MEASURED LEVERS ON ONE DIAL: (1) S1, the age-referenced bar inside the projection core
+# (wired in rl_model.o36_bar and its two duplicate loops here); (2) THE COUNTERWEIGHT — the O32 re-mix
+# and relief constants RE-DERIVED JOINTLY on the corrected age-fair readings, so the S1 lift is paid to
+# performers and charged to sub-expectation-with-games rows; (3) Order H's smooth TALL/SMALL factor on
+# the wired pick-curve fade. RL_O36 IMPLIES RL_O35 (and so RL_O32/RL_O31) on the next lines and nowhere
+# else. Dial-off reproduces the landing candidate 1f176444 BYTE-EXACT. NOTHING LANDS WITHOUT THE OWNER.
+_O36=MA._O36                                                # ORDER I: read in rl_model (S1 needs it at import)
+_O35=_O35 or _O36                                           # ORDER I implies the pick-curve fade
 _O32=(os.environ.get('RL_O32','0')!='0') or _O34 or _O35    # ORDER A: CANDIDATE 32 (ORDERS C/D build ON it)
 _O32S=(int(os.environ.get('RL_O32_STAGE','6')) if _O32 else 0)
 _O31=(os.environ.get('RL_O31','0')!='0') or _O32            # ORDER 31: THE ONE LAW (O32 implies it)
@@ -1077,8 +1086,10 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0,grace=0):
         base=lev+MA.capt_prem(lev)
         Wk=_w4_W(k,ctx)
         _df=MA.disc_factor(ah,d,k,lens,grace)
-        if k==0: prod+=Wk*MA.posval(base-MA.REPL[g0])*21/_df
-        else: prod+=Wk*sum(w*MA.posval(base-MA.REPL[gg]) for gg,w in fut)*21/_df
+        # ORDER I (RL_O36) — S1, the age-referenced bar. DUPLICATE-LOOP FENCE: this MUST match
+        # rl_model.proj_from_peak's two sites exactly. Dial off => o36_bar IS MA.REPL[...] byte-exact.
+        if k==0: prod+=Wk*MA.posval(base-MA.o36_bar(g0,ag))*21/_df
+        else: prod+=Wk*sum(w*MA.posval(base-MA.o36_bar(gg,ag)) for gg,w in fut)*21/_df
     if g in('KPF','KPD'): prod*=1.05
     if MA._O33 and MA._O33S>=1 and g in('KPF','KPD'): prod*=MA.O33_SSTAR   # ORDER B B-1 renorm — duplicate-loop fence: matches rl_model.proj_from_peak
     runway=MA.clamp((25-ah)/6.0,0,1); elite=MA.clamp((lp/MA.PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*MA.PMAX)
@@ -1115,9 +1126,10 @@ def _prod_floor_w4(p,lens='bal'):
         base=lev+MA.capt_prem(lev)
         if k==0 and lowbar is not None:
             sp=MA.SEASON_PROG                                 # banked (sp) vs present bar; remaining (1-sp) vs low bar
-            pv=sp*MA.posval(base-MA.REPL[g])+(1.0-sp)*MA.posval(base-MA.REPL[lowbar])
+            # ORDER I (RL_O36) S1 — DUPLICATE-LOOP FENCE: matches rl_model.prod_floor exactly.
+            pv=sp*MA.posval(base-MA.o36_bar(g,ag))+(1.0-sp)*MA.posval(base-MA.o36_bar(lowbar,ag))
         else:
-            pv=MA.posval(base-MA.REPL[g])
+            pv=MA.posval(base-MA.o36_bar(g,ag))
         prod+=_w4_W(k,ctx)*wt*pv*21/MA.disc_factor(a,d,k,lens,_gr); k+=1
     return MA.val(prod)
 MA.prod_floor=_prod_floor_w4
@@ -1196,8 +1208,12 @@ def _ycred_mult(p,Y):
 _raw_ev_w4_0=raw_ev
 def raw_ev(p,Y=2026):                                        # W4: context-setting wrapper (real players only; synths delegate clean) + L1c credit
     prev=_W4CTX['on']; _W4CTX['on']=_w4_ctx(p,Y)
+    # ORDER I (RL_O36): S1's scope rides the ENGINE'S OWN real-player boundary — the same wrapper, the
+    # same try/finally. Outside it (synthetic band nodes, the baseline-draftee curve, the pedigree
+    # machinery) the projection keeps the flat bar, which is what keeps day-0 and mature rows exact.
+    _o36prev=MA._O36_SCOPE['on']; MA._O36_SCOPE['on']=True
     try: return _raw_ev_w4_0(p,Y)*_ycred_mult(p,Y)           # L1c: ×1.0 exactly when RL_YOUNG=0 (byte-exact off-path)
-    finally: _W4CTX['on']=prev
+    finally: _W4CTX['on']=prev; MA._O36_SCOPE['on']=_o36prev
 _B6PIN={'L':None}                                            # W4 KPF: band pin — collapse the forward band to one level (production-implied EFV probe)
 _b6_pre_w4=b6
 def b6(p,Y=2026):
@@ -3398,6 +3414,37 @@ if _O30B_PREVIEW:
     O32_GAMMA=11.0
     O32_ETA=0.41
     O32_GAMMA_D=14.0
+    # ===== ORDER I (RL_O36) — LEVER 2: THE COUNTERWEIGHT ==========================================
+    # docs/evidence/order_i_2026-08-18/REMIX_36.json::chosen. With S1 live, "below expectation"
+    # finally means below AGE-expectation, so the re-mix and the relief are RE-DERIVED on the
+    # corrected readings rather than inherited. ONE joint calibration over
+    # (lambda_S1, kappa, gamma_u, eta, gamma_d, lambda_rel) — the dose is a grid axis, never a
+    # hand-picked number (PREREG_I.md §3; ORDER E's dose warning). Selection = minimum
+    # corrected-surface SSE among the points feasible on BOTH the ruled constraints (rho32 monotone,
+    # the ruled at-bar continuity object incl. the age credit, W inside the corrected hindsight 90%
+    # CI [0.3117, 0.5560], slope in [0.885, 1.115], max class <= 1.139) AND the owner's acceptance
+    # gates G1-G5. THE MECHANISM, stated so the direction is not claimed after the fact: kappa moves
+    # weight OFF a row's pedigree leg and ONTO his shown production, and eta charges the pedigree leg
+    # down as games accumulate — so a young row ABOVE his age bar gains twice while a young row BELOW
+    # it loses. That is how the S1 lift is paid to performers and charged to sub-expectation rows.
+    # m_u(0) = m_d(0) = 0 exactly, so day-0 prints cannot move. Dial off => the O32 repair values.
+    # THE MATURE-ROW IDENTITY GATE BINDS HERE, and it is the finding, not an oversight: the re-mix is
+    # keyed on CAREER GAMES, not on age, so ANY move in (kappa, gamma_u, eta, gamma_d) re-prices mature
+    # rows too and breaks the owner's byte-identity law. ORDER C hit the same wall (REMIX_34.json: the
+    # repaired knob point is the ONLY one of 3,960 the mature gate admits). The joint calibration
+    # therefore carries the mature-row identity as a HARD constraint, which pins these four to the
+    # repair values; the unconstrained optimum is REPORTED and NEVER CHOSEN. See PACKET_I.md §4.
+    # The declared overrides below exist so the grid can be swept and the pinning PROVED, not asserted.
+    O36_KAPPA=float(os.environ.get('RL_O36_KAPPA','0.24'))
+    O36_GAMMA=float(os.environ.get('RL_O36_GAMMA','11.0'))
+    O36_ETA=float(os.environ.get('RL_O36_ETA','0.41'))
+    O36_GAMMA_D=float(os.environ.get('RL_O36_GAMMA_D','14.0'))
+    O36_LAMBDA=float(os.environ.get('RL_O36_LAMBDA','1.08'))
+    if _O36:
+        # THE REBIND. Every consumer below reads the O32_* names; with the dial off not one byte of
+        # this block executes, which is what makes 1f176444 reproduce exactly.
+        O32_KAPPA=O36_KAPPA; O32_GAMMA=O36_GAMMA; O32_ETA=O36_ETA
+        O32_GAMMA_D=O36_GAMMA_D; O32_LAMBDA=O36_LAMBDA
     # ---- ORDER D — THE PICK-CURVE SITTER FADE (RL_O35; owner word: the MEASURED curve) ----------
     # docs/evidence/order_d_2026-08-17/O35_CURVE.json — the prereg'd logistic fit (sit-penalty
     # s(p) = γ0 + γ1·ln(pick), SAT vs played-11+, ND 2005-2020) and the redistribution constant
@@ -3415,6 +3462,35 @@ if _O30B_PREVIEW:
         _pk=MA.effpk(p)
         _pk=max(1.0,min(64.0,float(_pk if _pk else 64)))
         return min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0+O35_G1*_math.log(_pk))/O35_SNORM))
+    # ===== ORDER I (RL_O36) — LEVER 3: THE TALL/SMALL SITTER FACTOR ================================
+    # ORDER H (docs/evidence/order_h_posfade_2026-08-17/PACKET_H.md §6 + H_RESULTS.json). The owner's
+    # premise was CONFIRMED on base rates: rucks sit 3.55x more than smalls at the same pick (90% CI
+    # 2.18-5.91), KPP 1.70x. The interaction resolves for TALL POOLED (h_TALL -0.6921, CI -1.239 to
+    # -0.080, 96.8% of draws in the owner's direction) but NOT for RUCK alone (F2 fired at n=53) —
+    # which is why this is a TALL/SMALL factor and never a ruck factor.
+    #   s(pick, group) = g0 + g1*ln(pick) + h_TALL*(group is TALL)
+    #   kappa(pick, group) = clip( s / s_norm', 0.5, 2.0 )
+    # SMOOTH IN ln(pick): one constant added inside a logarithmic curve. No band, no threshold, no
+    # cliff — R-PICKFADE's condition and H's falsifier F7. s_norm' is H's RE-SOLVED redistribution
+    # constant: the mean of D2^kappa over H's fitted sitters still equals the ruled depth-2 fade
+    # 0.5582775 EXACTLY (H residual -1.1e-16). THIS REDISTRIBUTES THE FADE BETWEEN TALLS AND SMALLS;
+    # IT DOES NOT CHANGE THE TOTAL FADE THE BOARD CHARGES. m_TALL = 0.677 is the multiplicative
+    # translation the owner asked for. TWO DECLARED SIDE EFFECTS, reported with numbers on the packet
+    # and NOT discovered later: (i) D's 0.5 clip binds for talls over picks 1-24 and for smalls over
+    # picks 1-9 — a flat spot the clip, not the fit, is setting; (ii) the total is pinned, so LATE
+    # SMALL SITTERS PAY for the talls' relief (a small at pick 64 goes from exponent 1.1533 to 1.4527).
+    O36_TG0=-0.8778138796894399                        # H_RESULTS.json interaction['SAT1|ctl1|TALL-pooled'].coef[3]
+    O36_TG1=0.7100022285392401                         # ...coef[4]  (PACKET_H prints these rounded to -0.8778/+0.7100)
+    O36_HTALL=-0.6921227120657417
+    O36_SNORM=1.4284052406915069
+    O36_D2=0.5582775                                   # the ruled depth-2 fade the identity is pinned to
+    def o36_kappa(p):
+        """The fade exponent at the row's effective pick AND position class. Pure function of
+        (pick, TALL/SMALL). TALL = the engine's own O32_TALLPOS = {KPD, KPF, RUCK}."""
+        _pk=MA.effpk(p)
+        _pk=max(1.0,min(64.0,float(_pk if _pk else 64)))
+        _s=O36_TG0+O36_TG1*_math.log(_pk)+(O36_HTALL if MA.gfut(p) in O32_TALLPOS else 0.0)
+        return min(O35_CLIP[1],max(O35_CLIP[0],_s/O36_SNORM))
     # ORDER C (RL_O34) — the R1 age credit's SURVIVING SCALE under the corrected normalization.
     # The repair's credit partially compensated the BLIND denominators; with the denominators fixed the
     # unchanged credit would DOUBLE-PAY age on every row the sites now pay correctly, so the credit is
@@ -3542,7 +3618,10 @@ if _O30B_PREVIEW:
         # the row's own schedule BEFORE the relief; 1^kappa == 1 so rows the fade does not reach
         # cannot move, and the redistribution identity keeps the pooled fade at the ruled row.
         if _O35 and _D<1.0:
-            _D=_D**o35_kappa(p)
+            # ORDER I (RL_O36): the pooled exponent becomes the TALL/SMALL exponent. Same site, same
+            # smooth log-pick curve, same clips; only the numerator carries the position term and the
+            # normaliser is re-solved so the pooled fade stays pinned at the ruled row.
+            _D=_D**(o36_kappa(p) if _O36 else o35_kappa(p))
         if _O32S>=5 and _D<1.0:
             _sg=o32_sigma_sel(p,Y)
             if _sg>0.0: _D=min(1.0,_D*(1.0+O32_LAMBDA*_sg))
@@ -3648,6 +3727,87 @@ if _O30B_PREVIEW:
                 _prevk=_kk
             if abs((O35_G0+O35_G1*_math.log(64.0))/O35_SNORM-1.153311931087099)>1e-9:
                 raise SystemExit('ORDER D HALT: the transcribed curve does not reproduce O35_CURVE.json at pick 64')
+        if _O36:
+            # ===== ORDER I BUILD-FAILING ASSERTS (only with the dial on) ==============================
+            # A1 — the S1 surface in rl_model is BYTE-EQUAL to the C3 object this file already carries.
+            # Two copies exist only because rl_model is imported before this block runs; they may never
+            # drift, and a drift is a build failure, not a warning.
+            if MA.O36_GATE_DELTA!=O32_GATE_DELTA or set(MA.O36_TALLPOS)!=set(O32_TALLPOS):
+                raise SystemExit('ORDER I HALT: rl_model.O36_GATE_DELTA/TALLPOS has drifted from the '
+                                 'C3 object O32_GATE_DELTA in this file — the two copies must be identical')
+            # A2 — THE CAP LAW AND THE MATURE-ROW IDENTITY, on the S1 bar itself: never above the flat
+            # bar, and EXACTLY the flat bar from age 24 (this is what makes murdock byte-identical).
+            for _pos in MA.REPL:
+                for _a in range(16,40):
+                    _bb=MA.o36_bar(_pos,_a)
+                    if not (_bb<=MA.REPL[_pos]+1e-12):
+                        raise SystemExit('ORDER I HALT: S1 bar ABOVE the flat bar at %s age %d'%(_pos,_a))
+                    if _a>=24 and _bb!=MA.REPL[_pos]:
+                        raise SystemExit('ORDER I HALT: S1 bar is not byte-identical at %s age %d — the '
+                                         'cap law (flat from 24) is broken and mature rows would move'%(_pos,_a))
+                if MA.o36_bar(_pos,None)!=MA.REPL[_pos]:
+                    raise SystemExit('ORDER I HALT: S1 bar moved a row with no age at %s'%_pos)
+            if not (0.0<=MA.O36_LAM_S1<=1.0):
+                raise SystemExit('ORDER I HALT: lambda_S1 %r is outside the declared [0,1] dose range'%MA.O36_LAM_S1)
+            # A3 — the S1 surface is MONOTONE NON-INCREASING in age over 18..23: the development gap
+            # must shrink as a player matures, never widen. The final step at age 24 (gap -> 0) is the
+            # RULED CAP LAW itself — the same structural step the O32 stage-1 gate already ships — and
+            # is DISCLOSED with its number on the packet rather than asserted away.
+            for _cls in ('TALL','SMALL'):
+                _tab=O32_GATE_DELTA[_cls]
+                for _a in range(18,23):
+                    if _tab[_a+1]>_tab[_a]+1e-12:
+                        raise SystemExit('ORDER I HALT: the S1 development gap WIDENS from age %d to %d '
+                                         'in class %s — the surface is not monotone'%(_a,_a+1,_cls))
+            # A4 — THE TALL/SMALL FADE: smooth and monotone in pick within each class, bounded by the
+            # clips, and transcribed EXACTLY from H_RESULTS.json (every pick H published, 1e-12).
+            _HK={1:(0.5,0.5),5:(0.5,0.5),10:(0.5299803208304396,0.5),16:(0.7636000350961567,0.5),
+                 20:(0.8745156311776653,0.5),24:(0.96514027182361,0.5),
+                 30:(1.0760558679051182,0.5915136019227577),40:(1.2190509415248914,0.734508675542531),
+                 50:(1.3299665376063998,0.8454242716240395),53:(1.3589296451644084,0.8743873791820481),
+                 64:(1.4526706557906086,0.9681283898082481)}
+            def _kap36(_pk,_tall):
+                _s=O36_TG0+O36_TG1*_math.log(float(_pk))+(O36_HTALL if _tall else 0.0)
+                return min(O35_CLIP[1],max(O35_CLIP[0],_s/O36_SNORM))
+            for _pk,(_ks,_kt) in _HK.items():
+                if abs(_kap36(_pk,False)-_ks)>1e-12 or abs(_kap36(_pk,True)-_kt)>1e-12:
+                    raise SystemExit('ORDER I HALT: the transcribed tall/small curve does not reproduce '
+                                     'H_RESULTS.json at pick %d'%_pk)
+            _ps=_pt=None
+            for _pk in range(1,65):
+                _a1=_kap36(_pk,False); _a2=_kap36(_pk,True)
+                for _v in (_a1,_a2):
+                    if not (O35_CLIP[0]-1e-12<=_v<=O35_CLIP[1]+1e-12):
+                        raise SystemExit('ORDER I HALT: kappa breached its clip at pick %d'%_pk)
+                if (_ps is not None and _a1<_ps-1e-12) or (_pt is not None and _a2<_pt-1e-12):
+                    raise SystemExit('ORDER I HALT: kappa(pick) broke monotone at pick %d'%_pk)
+                # smoothness: no step between neighbouring picks bigger than the pick-1->2 step
+                if _ps is not None and (_a1-_ps)>O36_TG1/O36_SNORM*_math.log(2.0)+1e-12:
+                    raise SystemExit('ORDER I HALT: kappa(pick) took a step larger than the log curve '
+                                     'allows at pick %d — that is a cliff'%_pk)
+                _ps=_a1; _pt=_a2
+            # A5 — m_TALL, the multiplicative translation the owner asked for, reproduced from the wire.
+            _mt=(sum(_kap36(_p,True) for _p in range(1,65))/sum(_kap36(_p,False) for _p in range(1,65)))
+            print('ORDER I LIVE (RL_O36=1) — THE COORDINATED BUILD. NOTHING IS GREENLIT AND NOTHING MERGES.\n'
+                  '  LEVER 1  S1, the age-referenced projection bar: lambda_S1=%.3f applied to the C3 gap at '
+                  'the four projection/floor sites. NO pick axis, capped at the flat bar, FLAT FROM AGE 24 '
+                  '(every mature row byte-identical, store-wide).\n'
+                  '  LEVER 2  the counterweight, re-derived JOINTLY on the corrected age-fair surface: '
+                  'kappa=%.2f gamma_u=%.1f / eta=%.2f gamma_d=%.1f / relief lambda=%.2f '
+                  '(was %.2f/%.1f/%.2f/%.1f/%.2f).\n'
+                  '  LEVER 3  the tall/small sitter factor: h_TALL=%.4f, s_norm\'=%.6f, clip [%.1f, %.1f]; '
+                  'kappa(16) small %.3f / tall %.3f, kappa(64) small %.3f / tall %.3f; m_TALL=%.3f. '
+                  'DECLARED: the 0.5 clip binds for talls over picks 1-24 and smalls over picks 1-9, and '
+                  'the pinned identity means LATE SMALL SITTERS PAY for the talls\' relief.\n'
+                  '  %d active rows sit at a developing age and can be reached by S1; %d have no birth '
+                  'year and keep the flat bar.'
+                  %(MA.O36_LAM_S1,O36_KAPPA,O36_GAMMA,O36_ETA,O36_GAMMA_D,O36_LAMBDA,
+                    0.24,11.0,0.41,14.0,1.08,
+                    O36_HTALL,O36_SNORM,O35_CLIP[0],O35_CLIP[1],
+                    _kap36(16,False),_kap36(16,True),_kap36(64,False),_kap36(64,True),_mt,
+                    sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and _p.get('_by') and (MA.BASE_REF-int(_p['_by']))<24),
+                    sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and not _p.get('_by'))))
+        if _O35:
             print('ORDER D PICK-CURVE FADE LIVE (RL_O35=1) — THE LANDING CANDIDATE ON THE OWNER\'S WORD. '
                   'D_eff = D(c_u)^kappa(pick), kappa = clip((%.4f%+.4f·ln p)/%.4f, %.1f, %.1f): '
                   'kappa(1)=%.3f kappa(20)=%.3f kappa(64)=%.3f. Smooth in ln(pick), never a band; '
@@ -3832,6 +3992,12 @@ if _AVAIL_ON:
     if _AVAIL_REPORT:
         print("    register store-vs-designation anomalies (REPORT-ONLY, register governs, engine never re-diagnoses):")
         for _a in _AVAIL_REPORT: print("      - "+_a)
+# ==== ORDER I (RL_O36) — ARM S1. Everything above this line — every load-time reference median, every
+# proven-population denominator, every conservation renormaliser — was derived on the DIAL-OFF BASIS,
+# so the dial-on and dial-off boards share ONE currency and S1 cannot re-denominate the board (ORDER
+# B's ruling, rl_model.py:1269, applied to this lever). From here down S1 is live in full: the board
+# export, every ev() a harness calls, and every price the owner reads. Dial off => this is a no-op.
+MA._O36_SCOPE['armed']=True
 print("=== AFTER (wired: delist + staleness + isotonic) — named players ===")
 print(f"{'player':22s}{'pos':8s}{'pk':>3s}{'g':>3s}{'ten':>4s}{'dlst':>5s}{'draft':>6s}{'BEFORE':>7s}{'AFTER':>7s}  reasoning")
 before={'Ronin O':526,'Will Martyn':554,'Sam Philp':714,'Oscar Ryan':570,'Tew Jiath':509,'Jakob Ryan':594,'Harrison Jones':528,'Keidean Coleman':723,'Dylan Stephens':761}
