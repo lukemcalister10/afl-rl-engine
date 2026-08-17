@@ -1,0 +1,1279 @@
+{
+ "constants": {
+  "d2": 0.5582775239783688,
+  "g0": -0.8778138796894399,
+  "g1": 0.7100022285392401,
+  "h_TALL": -0.6921227120657417,
+  "m_TALL_H": 0.6769908866406418,
+  "m_TALL_wire": 0.6451693545005825,
+  "s_norm_prime": 1.4284052406915069
+ },
+ "day0": {
+  "derived_v0_identical": 89,
+  "down": 57,
+  "n_wired": 89,
+  "printed_moved": 89,
+  "rows": {
+   "adam-sweid": {
+    "derived_v0": 427.74856986691657,
+    "printed_off": 249.59712490093338,
+    "printed_on": 239.60887224381077
+   },
+   "aiden-riddle": {
+    "derived_v0": 372.0760157379352,
+    "printed_off": 179.12194186642012,
+    "printed_on": 199.78573560146106
+   },
+   "asher-eastham": {
+    "derived_v0": 200.77927605040077,
+    "printed_off": 96.65759761847254,
+    "printed_on": 81.01885412462208
+   },
+   "avery-thomas": {
+    "derived_v0": 464.2716234574562,
+    "printed_off": 266.6680284902965,
+    "printed_on": 252.32894919413386
+   },
+   "ben-camporeale": {
+    "derived_v0": 574.1348036742866,
+    "printed_off": 149.14204590119147,
+    "printed_on": 115.79247307258737
+   },
+   "ben-murphy": {
+    "derived_v0": 87.02989219418069,
+    "printed_off": 44.2394503180476,
+    "printed_on": 37.60900242492732
+   },
+   "benny-barrett": {
+    "derived_v0": 54.67806545309878,
+    "printed_off": 26.3226890398561,
+    "printed_on": 22.063802081092852
+   },
+   "blake-thredgold": {
+    "derived_v0": 503.37499764375303,
+    "printed_off": 279.8661778326325,
+    "printed_on": 353.1633845128086
+   },
+   "brayden-george": {
+    "derived_v0": 426.75247479816056,
+    "printed_off": 173.52925641162435,
+    "printed_on": 160.36401100637949
+   },
+   "caleb-may": {
+    "derived_v0": 448.21342329607927,
+    "printed_off": 227.837987292311,
+    "printed_on": 251.91183335841868
+   },
+   "charlie-nicholls": {
+    "derived_v0": 489.37805170109186,
+    "printed_off": 137.0667513358984,
+    "printed_on": 207.4050337865196
+   },
+   "cillian-bourke": {
+    "derived_v0": 87.02989219418069,
+    "printed_off": 44.2394503180476,
+    "printed_on": 37.60900242492732
+   },
+   "cillian-burke": {
+    "derived_v0": 87.02989219418069,
+    "printed_off": 41.897253869829214,
+    "printed_on": 35.11847576535695
+   },
+   "cody-anderson": {
+    "derived_v0": 100.0,
+    "printed_off": 22.866983278900875,
+    "printed_on": 15.799366133849754
+   },
+   "cooper-bell": {
+    "derived_v0": 377.0043047947659,
+    "printed_off": 93.91688348313235,
+    "printed_on": 127.66898089051334
+   },
+   "eamonn-armstrong": {
+    "derived_v0": 87.02989219418069,
+    "printed_off": 41.897253869829214,
+    "printed_on": 35.11847576535695
+   },
+   "finnegan-davis": {
+    "derived_v0": 171.2443930470505,
+    "printed_off": 90.48159048687232,
+    "printed_on": 79.32255920684777
+   },
+   "fred-rodriguez": {
+    "derived_v0": 212.39992549540213,
+    "printed_off": 107.96814421584625,
+    "printed_on": 91.78627149379707
+   },
+   "harley-barker": {
+    "derived_v0": 843.128494491119,
+    "printed_off": 474.47464512460635,
+    "printed_on": 456.44431936882023
+   },
+   "harrison-coe": {
+    "derived_v0": 448.21342329607927,
+    "printed_off": 227.837987292311,
+    "printed_on": 251.91183335841868
+   },
+   "harry-charleson": {
+    "derived_v0": 254.6586738490823,
+    "printed_off": 122.59579828736663,
+    "printed_on": 102.76037624007226
+   },
+   "harry-demattia": {
+    "derived_v0": 842.1323994223629,
+    "printed_off": 336.5222321438937,
+    "printed_on": 312.9725486512461
+   },
+   "hugo-mikunda": {
+    "derived_v0": 279.365239418357,
+    "printed_off": 148.86129215726993,
+    "printed_on": 131.51366390239212
+   },
+   "hunter-holmes": {
+    "derived_v0": 649.7423122413339,
+    "printed_off": 364.7587256985159,
+    "printed_on": 337.99922038130796
+   },
+   "iliro-smit": {
+    "derived_v0": 448.21342329607927,
+    "printed_off": 215.7754204934741,
+    "printed_on": 240.66761815340107
+   },
+   "indy-cotton": {
+    "derived_v0": 107.69641281841622,
+    "printed_off": 54.74475475256128,
+    "printed_on": 46.539810043733674
+   },
+   "jacob-molier": {
+    "derived_v0": 253.89886259144387,
+    "printed_off": 62.055947106259325,
+    "printed_on": 82.90044840335794
+   },
+   "jacob-moss": {
+    "derived_v0": 91.4029494151171,
+    "printed_off": 44.002497067925624,
+    "printed_on": 49.07869551555321
+   },
+   "jai-saxena": {
+    "derived_v0": 54.67806545309878,
+    "printed_off": 27.7942152875729,
+    "printed_on": 23.628519401445704
+   },
+   "jaime-uhr-henry": {
+    "derived_v0": 79.68694966717874,
+    "printed_off": 38.36227158444455,
+    "printed_on": 42.78780459826006
+   },
+   "james-barrat": {
+    "derived_v0": 474.3233365082129,
+    "printed_off": 135.45782623660497,
+    "printed_on": 208.64717523797214
+   },
+   "jaren-carr": {
+    "derived_v0": 101.03102119751203,
+    "printed_off": 23.21969845583104,
+    "printed_on": 16.117329956756482
+   },
+   "jesse-mellor": {
+    "derived_v0": 112.72490408994679,
+    "printed_off": 57.300861443872186,
+    "printed_on": 48.712816761962884
+   },
+   "jevan-phillipou": {
+    "derived_v0": 417.7876191793564,
+    "printed_off": 232.62823612721047,
+    "printed_on": 213.9530583919814
+   },
+   "joe-pike": {
+    "derived_v0": 372.0760157379352,
+    "printed_off": 179.12194186642012,
+    "printed_on": 199.78573560146106
+   },
+   "joel-cochran": {
+    "derived_v0": 378.9964949322779,
+    "printed_off": 95.68315330014711,
+    "printed_on": 131.66934941890904
+   },
+   "josh-smillie": {
+    "derived_v0": 1577.6493483192783,
+    "printed_off": 733.4589420313932,
+    "printed_on": 808.4273840779566
+   },
+   "kalani-white": {
+    "derived_v0": 92.35874340265629,
+    "printed_off": 46.94823740655312,
+    "printed_on": 51.90888797159864
+   },
+   "kayle-gerreyn": {
+    "derived_v0": 433.1494485184478,
+    "printed_off": 118.07305019995454,
+    "printed_on": 174.28845163838204
+   },
+   "keighton-matofai-forbes": {
+    "derived_v0": 260.29088995681457,
+    "printed_off": 125.30721596428269,
+    "printed_on": 105.03309932288765
+   },
+   "kobe-mcdonald": {
+    "derived_v0": 87.02989219418069,
+    "printed_off": 44.2394503180476,
+    "printed_on": 37.60900242492732
+   },
+   "koby-coulson": {
+    "derived_v0": 461.1674832087404,
+    "printed_off": 247.19596685583767,
+    "printed_on": 219.5755917850093
+   },
+   "koby-evans": {
+    "derived_v0": 414.7993339730884,
+    "printed_off": 228.3350295061938,
+    "printed_on": 207.8168542175562
+   },
+   "kye-fincher": {
+    "derived_v0": 297.31869110911623,
+    "printed_off": 156.67222107382003,
+    "printed_on": 137.01075280027055
+   },
+   "lachlan-carmichael": {
+    "derived_v0": 774.6263762367552,
+    "printed_off": 463.1111497690497,
+    "printed_on": 454.55921612989914
+   },
+   "lennox-hoffman": {
+    "derived_v0": 260.29088995681457,
+    "printed_off": 125.30721596428269,
+    "printed_on": 105.03309932288765
+   },
+   "leon-kickett": {
+    "derived_v0": 200.77927605040077,
+    "printed_off": 102.06108020801608,
+    "printed_on": 86.7645367525755
+   },
+   "liam-hetherton": {
+    "derived_v0": 117.30450712681677,
+    "printed_off": 56.47182354542845,
+    "printed_on": 62.9865034412873
+   },
+   "logan-smith": {
+    "derived_v0": 566.0434372785456,
+    "printed_off": 272.50022946248964,
+    "printed_on": 303.93629182141296
+   },
+   "luke-lloyd": {
+    "derived_v0": 391.3888219994144,
+    "printed_off": 137.5687484412635,
+    "printed_on": 180.5147723010251
+   },
+   "luke-urquhart": {
+    "derived_v0": 216.32103138355853,
+    "printed_off": 51.33779339379977,
+    "printed_on": 36.696148518590206
+   },
+   "matt-duffy": {
+    "derived_v0": 87.02989219418069,
+    "printed_off": 41.897253869829214,
+    "printed_on": 35.11847576535695
+   },
+   "matthew-leray": {
+    "derived_v0": 233.58255468161664,
+    "printed_off": 121.82302945922048,
+    "printed_on": 105.53434129303359
+   },
+   "max-beattie": {
+    "derived_v0": 207.68237377991244,
+    "printed_off": 105.57009580422039,
+    "printed_on": 89.74763385522908
+   },
+   "max-king-syd": {
+    "derived_v0": 278.369144349601,
+    "printed_off": 140.61481225376238,
+    "printed_on": 122.54667555100922
+   },
+   "max-knobel": {
+    "derived_v0": 636.5737622861208,
+    "printed_off": 230.7440480664587,
+    "printed_on": 300.2415586106583
+   },
+   "max-mapley": {
+    "derived_v0": 448.21342329607927,
+    "printed_off": 227.837987292311,
+    "printed_on": 251.91183335841868
+   },
+   "mitchell-marsh": {
+    "derived_v0": 721.6177415249131,
+    "printed_off": 428.63478723457996,
+    "printed_on": 524.4178054863766
+   },
+   "nathan-wardius": {
+    "derived_v0": 86.64903086038251,
+    "printed_off": 41.71390256846553,
+    "printed_on": 34.96478983993824
+   },
+   "ned-bowman": {
+    "derived_v0": 426.75247479816056,
+    "printed_off": 130.26250835188412,
+    "printed_on": 117.2129580676807
+   },
+   "nick-driscoll": {
+    "derived_v0": 212.39992549540213,
+    "printed_off": 107.96814421584625,
+    "printed_on": 91.78627149379707
+   },
+   "noah-chamberlain": {
+    "derived_v0": 86.64903086038251,
+    "printed_off": 41.71390256846553,
+    "printed_on": 34.96478983993824
+   },
+   "oliver-griffin": {
+    "derived_v0": 207.68237377991244,
+    "printed_off": 105.57009580422039,
+    "printed_on": 89.74763385522908
+   },
+   "ollie-murphy": {
+    "derived_v0": 398.35828513161437,
+    "printed_off": 140.8553881634055,
+    "printed_on": 185.8376456599429
+   },
+   "oscar-berry": {
+    "derived_v0": 95.39801931497091,
+    "printed_off": 48.49317664910307,
+    "printed_on": 53.61706877868594
+   },
+   "oskar-taylor": {
+    "derived_v0": 903.8014284605089,
+    "printed_off": 566.2524969698811,
+    "printed_on": 580.126368442575
+   },
+   "patrick-carr": {
+    "derived_v0": 79.68694966717874,
+    "printed_off": 40.506850714375986,
+    "printed_on": 44.786890668686105
+   },
+   "patrick-said": {
+    "derived_v0": 158.47972369779984,
+    "printed_off": 36.99726052278131,
+    "printed_on": 26.05074039173487
+   },
+   "patrick-snell": {
+    "derived_v0": 373.01992451974183,
+    "printed_off": 123.78219104911076,
+    "printed_on": 154.09872232093494
+   },
+   "reece-torrent": {
+    "derived_v0": 100.0,
+    "printed_off": 31.67161059158583,
+    "printed_on": 23.81328172531953
+   },
+   "riak-andrew": {
+    "derived_v0": 371.0277343822298,
+    "printed_off": 89.06735796093527,
+    "printed_on": 117.04379921158767
+   },
+   "ricky-mentha": {
+    "derived_v0": 54.67806545309878,
+    "printed_off": 26.3226890398561,
+    "printed_on": 22.063802081092852
+   },
+   "riley-onley": {
+    "derived_v0": 212.39992549540213,
+    "printed_off": 107.96814421584625,
+    "printed_on": 91.78627149379707
+   },
+   "river-stevens": {
+    "derived_v0": 103.02153132816662,
+    "printed_off": 49.59582441495169,
+    "printed_on": 41.57145389983717
+   },
+   "rob-monahan": {
+    "derived_v0": 87.02989219418069,
+    "printed_off": 41.897253869829214,
+    "printed_on": 35.11847576535695
+   },
+   "ryda-luke": {
+    "derived_v0": 54.67806545309878,
+    "printed_off": 27.7942152875729,
+    "printed_on": 23.628519401445704
+   },
+   "sam-allen": {
+    "derived_v0": 791.8152857422534,
+    "printed_off": 452.5858397290119,
+    "printed_on": 426.34041768943695
+   },
+   "tai-hayes": {
+    "derived_v0": 297.50193648008405,
+    "printed_off": 160.45756256904966,
+    "printed_on": 143.3379200208418
+   },
+   "thomas-matthews": {
+    "derived_v0": 422.7680945231365,
+    "printed_off": 240.50798095550985,
+    "printed_on": 225.5850152928243
+   },
+   "toby-whan": {
+    "derived_v0": 54.67806545309878,
+    "printed_off": 27.7942152875729,
+    "printed_on": 23.628519401445704
+   },
+   "tobyn-murray": {
+    "derived_v0": 390.3565125714025,
+    "printed_off": 213.3509450583233,
+    "printed_on": 192.91510112188286
+   },
+   "tyan-prindable": {
+    "derived_v0": 678.0150923775213,
+    "printed_off": 382.26492505459396,
+    "printed_on": 355.6117993456492
+   },
+   "tylah-williams": {
+    "derived_v0": 413.90503384951523,
+    "printed_off": 227.0202735628041,
+    "printed_on": 205.93795524466236
+   },
+   "tyler-welsh": {
+    "derived_v0": 210.21958335972116,
+    "printed_off": 49.34116783395074,
+    "printed_on": 63.51816674727011
+   },
+   "will-darcy": {
+    "derived_v0": 368.03944917596175,
+    "printed_off": 191.01243182238716,
+    "printed_on": 213.61626554214556
+   },
+   "xavier-walsh": {
+    "derived_v0": 204.37405209598916,
+    "printed_off": 98.38816674581507,
+    "printed_on": 109.73838304215523
+   },
+   "zac-mccarthy": {
+    "derived_v0": 214.2039636347452,
+    "printed_off": 111.99688623177651,
+    "printed_on": 126.10016612350469
+   },
+   "zac-walker": {
+    "derived_v0": 358.5352973164835,
+    "printed_off": 172.60327450994865,
+    "printed_on": 144.67687862626
+   },
+   "zak-evans": {
+    "derived_v0": 264.74599677792054,
+    "printed_off": 127.4519588427941,
+    "printed_on": 106.83083291745537
+   }
+  },
+  "up": 32
+ },
+ "identity_residual": -1.1102230246251565e-16,
+ "kappa_by_pick": {
+  "1": {
+   "small": 0.5,
+   "tall": 0.5
+  },
+  "10": {
+   "small": 0.5299803208304396,
+   "tall": 0.5
+  },
+  "11": {
+   "small": 0.5773551400594604,
+   "tall": 0.5
+  },
+  "12": {
+   "small": 0.6206049614763839,
+   "tall": 0.5
+  },
+  "13": {
+   "small": 0.6603909404181956,
+   "tall": 0.5
+  },
+  "14": {
+   "small": 0.6972270033804079,
+   "tall": 0.5
+  },
+  "15": {
+   "small": 0.7315205575578924,
+   "tall": 0.5
+  },
+  "16": {
+   "small": 0.7636000350961567,
+   "tall": 0.5
+  },
+  "17": {
+   "small": 0.7937340722501927,
+   "tall": 0.5
+  },
+  "18": {
+   "small": 0.8221451982038368,
+   "tall": 0.5
+  },
+  "19": {
+   "small": 0.8490198178840583,
+   "tall": 0.5
+  },
+  "2": {
+   "small": 0.5,
+   "tall": 0.5
+  },
+  "20": {
+   "small": 0.8745156311776653,
+   "tall": 0.5
+  },
+  "21": {
+   "small": 0.8987672401078609,
+   "tall": 0.5
+  },
+  "22": {
+   "small": 0.9218904504066865,
+   "tall": 0.5
+  },
+  "23": {
+   "small": 0.9439856161122603,
+   "tall": 0.5
+  },
+  "24": {
+   "small": 0.96514027182361,
+   "tall": 0.5
+  },
+  "25": {
+   "small": 0.9854312272591739,
+   "tall": 0.5008889612768135
+  },
+  "26": {
+   "small": 1.0049262507654215,
+   "tall": 0.5203839847830611
+  },
+  "27": {
+   "small": 1.0236854349312896,
+   "tall": 0.5391431689489292
+  },
+  "28": {
+   "small": 1.0417623137276337,
+   "tall": 0.5572200477452733
+  },
+  "29": {
+   "small": 1.0592047835244565,
+   "tall": 0.5746625175420961
+  },
+  "3": {
+   "small": 0.5,
+   "tall": 0.5
+  },
+  "30": {
+   "small": 1.0760558679051182,
+   "tall": 0.5915136019227577
+  },
+  "31": {
+   "small": 1.0923543570274767,
+   "tall": 0.6078120910451162
+  },
+  "32": {
+   "small": 1.1081353454433827,
+   "tall": 0.6235930794610223
+  },
+  "33": {
+   "small": 1.1234306871341393,
+   "tall": 0.6388884211517789
+  },
+  "34": {
+   "small": 1.1382693825974188,
+   "tall": 0.6537271166150583
+  },
+  "35": {
+   "small": 1.1526779098091424,
+   "tall": 0.6681356438267819
+  },
+  "36": {
+   "small": 1.1666805085510625,
+   "tall": 0.682138242568702
+  },
+  "37": {
+   "small": 1.180299425773624,
+   "tall": 0.6957571597912635
+  },
+  "38": {
+   "small": 1.1935551282312844,
+   "tall": 0.709012862248924
+  },
+  "39": {
+   "small": 1.206466487492874,
+   "tall": 0.7219242215105138
+  },
+  "4": {
+   "small": 0.5,
+   "tall": 0.5
+  },
+  "40": {
+   "small": 1.2190509415248914,
+   "tall": 0.734508675542531
+  },
+  "41": {
+   "small": 1.2313246363197472,
+   "tall": 0.7467823703373867
+  },
+  "42": {
+   "small": 1.2433025504550865,
+   "tall": 0.7587602844727263
+  },
+  "43": {
+   "small": 1.2549986049947541,
+   "tall": 0.7704563390123936
+  },
+  "44": {
+   "small": 1.2664257607539122,
+   "tall": 0.7818834947715518
+  },
+  "45": {
+   "small": 1.277596104632571,
+   "tall": 0.7930538386502107
+  },
+  "46": {
+   "small": 1.2885209264594863,
+   "tall": 0.803978660477126
+  },
+  "47": {
+   "small": 1.2992107875712489,
+   "tall": 0.8146685215888886
+  },
+  "48": {
+   "small": 1.3096755821708357,
+   "tall": 0.8251333161884753
+  },
+  "49": {
+   "small": 1.3199245923591107,
+   "tall": 0.8353823263767504
+  },
+  "5": {
+   "small": 0.5,
+   "tall": 0.5
+  },
+  "50": {
+   "small": 1.3299665376063998,
+   "tall": 0.8454242716240395
+  },
+  "51": {
+   "small": 1.3398096193248712,
+   "tall": 0.8552673533425109
+  },
+  "52": {
+   "small": 1.3494615611126473,
+   "tall": 0.864919295130287
+  },
+  "53": {
+   "small": 1.3589296451644084,
+   "tall": 0.8743873791820481
+  },
+  "54": {
+   "small": 1.3682207452785156,
+   "tall": 0.8836784792961553
+  },
+  "55": {
+   "small": 1.3773413568354211,
+   "tall": 0.8927990908530608
+  },
+  "56": {
+   "small": 1.3862976240748597,
+   "tall": 0.9017553580924994
+  },
+  "57": {
+   "small": 1.3950953649587372,
+   "tall": 0.9105530989763769
+  },
+  "58": {
+   "small": 1.4037400938716824,
+   "tall": 0.9191978278893218
+  },
+  "59": {
+   "small": 1.4122370423810864,
+   "tall": 0.9276947763987259
+  },
+  "6": {
+   "small": 0.5,
+   "tall": 0.5
+  },
+  "60": {
+   "small": 1.4205911782523442,
+   "tall": 0.9360489122699835
+  },
+  "61": {
+   "small": 1.4288072228923627,
+   "tall": 0.9442649569100022
+  },
+  "62": {
+   "small": 1.4368896673747025,
+   "tall": 0.952347401392342
+  },
+  "63": {
+   "small": 1.4448427871825393,
+   "tall": 0.9603005212001788
+  },
+  "64": {
+   "small": 1.4526706557906086,
+   "tall": 0.9681283898082481
+  },
+  "7": {
+   "small": 0.5,
+   "tall": 0.5
+  },
+  "8": {
+   "small": 0.5,
+   "tall": 0.5
+  },
+  "9": {
+   "small": 0.5,
+   "tall": 0.5
+  }
+ },
+ "mature_moved": [
+  {
+   "age": 25,
+   "key": "nick-bryan",
+   "landing": 692.9106563988743,
+   "move": 41.4545470105694,
+   "name": "Nick Bryan",
+   "pick": 37,
+   "pos": "RUCK",
+   "with_factor": 734.3652034094437
+  },
+  {
+   "age": 24,
+   "key": "liam-mcmahon",
+   "landing": 190.2056615407698,
+   "move": 41.08913522951758,
+   "name": "Liam McMahon",
+   "pick": 33,
+   "pos": "KPF",
+   "with_factor": 231.29479677028738
+  },
+  {
+   "age": 25,
+   "key": "luke-beecken",
+   "landing": 211.25916644100076,
+   "move": -32.19143861662033,
+   "name": "Luke Beecken",
+   "pick": 65,
+   "pos": "MID",
+   "with_factor": 179.06772782438043
+  },
+  {
+   "age": 27,
+   "key": "callum-coleman-jones",
+   "landing": 91.62303682112172,
+   "move": 30.214964191652655,
+   "name": "Callum Coleman-Jones",
+   "pick": 20,
+   "pos": "KPF",
+   "with_factor": 121.83800101277437
+  },
+  {
+   "age": 24,
+   "key": "reef-mcinnes",
+   "landing": 63.934315935522434,
+   "move": 27.199351366501773,
+   "name": "Reef McInnes",
+   "pick": 24,
+   "pos": "KPD",
+   "with_factor": 91.13366730202421
+  },
+  {
+   "age": 27,
+   "key": "harrison-coe",
+   "landing": 239.77669782642806,
+   "move": 25.33531559997175,
+   "name": "Harrison Coe",
+   "pick": 65,
+   "pos": "RUCK",
+   "with_factor": 265.1120134263998
+  },
+  {
+   "age": 26,
+   "key": "zak-evans",
+   "landing": 134.1304414861565,
+   "move": -21.70167292382648,
+   "name": "Zak Evans",
+   "pick": null,
+   "pos": "MID",
+   "with_factor": 112.42876856233003
+  },
+  {
+   "age": 28,
+   "key": "will-brodie",
+   "landing": 791.147185956373,
+   "move": 20.830130023489232,
+   "name": "Will Brodie",
+   "pick": 9,
+   "pos": "MID",
+   "with_factor": 811.9773159798623
+  },
+  {
+   "age": 26,
+   "key": "samson-ryan",
+   "landing": 242.75497938567483,
+   "move": 18.517832716040544,
+   "name": "Samson Ryan",
+   "pick": 42,
+   "pos": "RUCK",
+   "with_factor": 261.2728121017154
+  },
+  {
+   "age": 24,
+   "key": "mani-liddy",
+   "landing": 153.0432154515652,
+   "move": -18.117713080482275,
+   "name": "Mani Liddy",
+   "pick": 65,
+   "pos": "MID",
+   "with_factor": 134.92550237108293
+  },
+  {
+   "age": 25,
+   "key": "saad-el-hawli",
+   "landing": 89.00195761703475,
+   "move": -13.452730923911119,
+   "name": "Saad El-Hawli",
+   "pick": 65,
+   "pos": "SD",
+   "with_factor": 75.54922669312363
+  },
+  {
+   "age": 24,
+   "key": "max-heath",
+   "landing": 468.5059613298633,
+   "move": 11.83911710787254,
+   "name": "Max Heath",
+   "pick": 65,
+   "pos": "RUCK",
+   "with_factor": 480.3450784377358
+  },
+  {
+   "age": 25,
+   "key": "ben-jepson",
+   "landing": 121.95474291778712,
+   "move": -9.952256725666686,
+   "name": "Ben Jepson",
+   "pick": null,
+   "pos": "MID",
+   "with_factor": 112.00248619212043
+  },
+  {
+   "age": 24,
+   "key": "ollie-lord",
+   "landing": 86.89081205855403,
+   "move": 9.54462279515839,
+   "name": "Ollie Lord",
+   "pick": 51,
+   "pos": "KPF",
+   "with_factor": 96.43543485371242
+  },
+  {
+   "age": 24,
+   "key": "henry-smith",
+   "landing": 89.4923023926593,
+   "move": 9.06283444051087,
+   "name": "Henry Smith",
+   "pick": 50,
+   "pos": "KPF",
+   "with_factor": 98.55513683317017
+  },
+  {
+   "age": 26,
+   "key": "liam-reidy",
+   "landing": 234.71966303428053,
+   "move": 8.170791977237855,
+   "name": "Liam Reidy",
+   "pick": 65,
+   "pos": "RUCK",
+   "with_factor": 242.89045501151838
+  },
+  {
+   "age": 24,
+   "key": "jack-carroll",
+   "landing": 86.98866223895602,
+   "move": -7.731193866480453,
+   "name": "Jack Carroll",
+   "pick": 43,
+   "pos": "SD",
+   "with_factor": 79.25746837247557
+  },
+  {
+   "age": 24,
+   "key": "tyler-brockman",
+   "landing": 47.952090588686275,
+   "move": -6.347286883820985,
+   "name": "Tyler Brockman",
+   "pick": 48,
+   "pos": "SF",
+   "with_factor": 41.60480370486529
+  },
+  {
+   "age": 28,
+   "key": "jordan-boyd",
+   "landing": 42.78524457464076,
+   "move": -6.2152393706777715,
+   "name": "Jordan Boyd",
+   "pick": 65,
+   "pos": "SD",
+   "with_factor": 36.570005203962985
+  },
+  {
+   "age": 28,
+   "key": "oskar-baker",
+   "landing": 30.24959647721096,
+   "move": -5.957875191776516,
+   "name": "Oskar Baker",
+   "pick": 48,
+   "pos": "SF",
+   "with_factor": 24.291721285434445
+  },
+  {
+   "age": 24,
+   "key": "oscar-berry",
+   "landing": 51.034219105516065,
+   "move": 5.392384077173013,
+   "name": "Oscar Berry",
+   "pick": null,
+   "pos": "KPD",
+   "with_factor": 56.42660318268908
+  },
+  {
+   "age": 24,
+   "key": "bailey-laurie",
+   "landing": 104.45545862664041,
+   "move": -5.233715369859539,
+   "name": "Bailey Laurie",
+   "pick": 23,
+   "pos": "SF",
+   "with_factor": 99.22174325678087
+  },
+  {
+   "age": 30,
+   "key": "jy-farrar",
+   "landing": 29.19567284426136,
+   "move": 5.034348663638525,
+   "name": "Jy Farrar",
+   "pick": 59,
+   "pos": "KPF",
+   "with_factor": 34.230021507899885
+  },
+  {
+   "age": 33,
+   "key": "joel-hamling",
+   "landing": 11.723573414795261,
+   "move": 4.747333713566384,
+   "name": "Joel Hamling",
+   "pick": 41,
+   "pos": "KPF",
+   "with_factor": 16.470907128361645
+  },
+  {
+   "age": 29,
+   "key": "ryan-gardner",
+   "landing": 29.770824854284612,
+   "move": 4.681920732436481,
+   "name": "Ryan Gardner",
+   "pick": 58,
+   "pos": "KPD",
+   "with_factor": 34.45274558672109
+  },
+  {
+   "age": 27,
+   "key": "jack-henderson",
+   "landing": 38.141137697655104,
+   "move": -4.580279123300798,
+   "name": "Jack Henderson",
+   "pick": null,
+   "pos": "SF",
+   "with_factor": 33.560858574354306
+  },
+  {
+   "age": 29,
+   "key": "corey-wagner",
+   "landing": 42.9236348990482,
+   "move": -4.480157632870139,
+   "name": "Corey Wagner",
+   "pick": 43,
+   "pos": "SD",
+   "with_factor": 38.443477266178064
+  },
+  {
+   "age": 26,
+   "key": "aidan-johnson",
+   "landing": 114.13957013677994,
+   "move": 4.331116411593484,
+   "name": "Aidan Johnson",
+   "pick": 65,
+   "pos": "KPF",
+   "with_factor": 118.47068654837342
+  },
+  {
+   "age": 26,
+   "key": "james-blanck",
+   "landing": 50.474159322041814,
+   "move": 4.3188766966866865,
+   "name": "James Blanck",
+   "pick": 65,
+   "pos": "KPD",
+   "with_factor": 54.7930360187285
+  },
+  {
+   "age": 26,
+   "key": "matt-cottrell",
+   "landing": 99.13858880085456,
+   "move": -4.002893187360286,
+   "name": "Matt Cottrell",
+   "pick": null,
+   "pos": "MID",
+   "with_factor": 95.13569561349428
+  },
+  {
+   "age": 25,
+   "key": "riley-garcia",
+   "landing": 45.56039956343563,
+   "move": -3.4545323640295393,
+   "name": "Riley Garcia",
+   "pick": 61,
+   "pos": "SF",
+   "with_factor": 42.10586719940609
+  },
+  {
+   "age": 25,
+   "key": "malcolm-rosas",
+   "landing": 41.47191668773302,
+   "move": -3.296668475436398,
+   "name": "Malcolm Rosas",
+   "pick": 65,
+   "pos": "SF",
+   "with_factor": 38.17524821229662
+  },
+  {
+   "age": 24,
+   "key": "oliver-wiltshire",
+   "landing": 39.12700573294586,
+   "move": -3.255650972724375,
+   "name": "Oliver Wiltshire",
+   "pick": 61,
+   "pos": "SF",
+   "with_factor": 35.871354760221486
+  },
+  {
+   "age": 28,
+   "key": "elliot-himmelberg",
+   "landing": 58.0284927138298,
+   "move": 3.220015411519789,
+   "name": "Elliott Himmelberg",
+   "pick": 51,
+   "pos": "KPF",
+   "with_factor": 61.24850812534959
+  },
+  {
+   "age": 25,
+   "key": "jackson-mead",
+   "landing": 36.7147323069362,
+   "move": -3.0208160215043094,
+   "name": "Jackson Mead",
+   "pick": 25,
+   "pos": "SF",
+   "with_factor": 33.69391628543189
+  },
+  {
+   "age": 26,
+   "key": "oliver-hayes-brown",
+   "landing": 115.21978533404138,
+   "move": 2.735971238603142,
+   "name": "Oliver Hayes-Brown",
+   "pick": null,
+   "pos": "RUCK",
+   "with_factor": 117.95575657264452
+  },
+  {
+   "age": 27,
+   "key": "sam-wicks",
+   "landing": 36.08070211040818,
+   "move": -2.72267116994702,
+   "name": "Sam Wicks",
+   "pick": null,
+   "pos": "SD",
+   "with_factor": 33.35803094046116
+  },
+  {
+   "age": 28,
+   "key": "jacob-wehr",
+   "landing": 30.217647027198414,
+   "move": -2.662549466140554,
+   "name": "Jacob Wehr",
+   "pick": 61,
+   "pos": "SD",
+   "with_factor": 27.55509756105786
+  },
+  {
+   "age": 26,
+   "key": "caleb-graham",
+   "landing": 83.17932109824264,
+   "move": 2.228382148014262,
+   "name": "Caleb Graham",
+   "pick": 65,
+   "pos": "KPD",
+   "with_factor": 85.4077032462569
+  },
+  {
+   "age": 24,
+   "key": "finlay-macrae",
+   "landing": 121.05308542340558,
+   "move": -2.164050978307472,
+   "name": "Finlay Macrae",
+   "pick": 20,
+   "pos": "MID",
+   "with_factor": 118.8890344450981
+  },
+  {
+   "age": 24,
+   "key": "ryan-angwin",
+   "landing": 491.39447917191063,
+   "move": -1.710821929355859,
+   "name": "Ryan Angwin",
+   "pick": 19,
+   "pos": "MID",
+   "with_factor": 489.6836572425548
+  },
+  {
+   "age": 25,
+   "key": "deven-robertson",
+   "landing": 241.45308750647763,
+   "move": -1.6708289577633764,
+   "name": "Deven Robertson",
+   "pick": 22,
+   "pos": "MID",
+   "with_factor": 239.78225854871425
+  },
+  {
+   "age": 26,
+   "key": "oisin-mullin",
+   "landing": 16.955566797261845,
+   "move": -1.457273437572077,
+   "name": "Oisin Mullin",
+   "pick": null,
+   "pos": "SD",
+   "with_factor": 15.498293359689768
+  },
+  {
+   "age": 25,
+   "key": "jaxon-prior",
+   "landing": 264.43780036485225,
+   "move": -1.3418710354760037,
+   "name": "Jaxon Prior",
+   "pick": 58,
+   "pos": "SD",
+   "with_factor": 263.09592932937625
+  },
+  {
+   "age": 24,
+   "key": "brandon-walker",
+   "landing": 46.63501339792906,
+   "move": -1.111875718629662,
+   "name": "Brandon Walker",
+   "pick": 52,
+   "pos": "SD",
+   "with_factor": 45.523137679299396
+  },
+  {
+   "age": 26,
+   "key": "sam-sturt",
+   "landing": 76.87022016096061,
+   "move": 0.9526113184361975,
+   "name": "Sam Sturt",
+   "pick": 17,
+   "pos": "SF",
+   "with_factor": 77.82283147939681
+  },
+  {
+   "age": 26,
+   "key": "callum-brown-ire",
+   "landing": 30.763074183715137,
+   "move": -0.7982018514628813,
+   "name": "Callum M. Brown",
+   "pick": null,
+   "pos": "SF",
+   "with_factor": 29.964872332252256
+  },
+  {
+   "age": 27,
+   "key": "noah-answerth",
+   "landing": 16.280135419944457,
+   "move": -0.7567727736992662,
+   "name": "Noah Answerth",
+   "pick": 55,
+   "pos": "SD",
+   "with_factor": 15.523362646245191
+  },
+  {
+   "age": 29,
+   "key": "matt-owies",
+   "landing": 7.521808003630917,
+   "move": -0.7428891959092301,
+   "name": "Matt Owies",
+   "pick": null,
+   "pos": "SF",
+   "with_factor": 6.778918807721687
+  },
+  {
+   "age": 25,
+   "key": "hugo-ralphsmith",
+   "landing": 87.57525277185704,
+   "move": -0.7339646069742827,
+   "name": "Hugo Ralphsmith",
+   "pick": 45,
+   "pos": "MID",
+   "with_factor": 86.84128816488276
+  },
+  {
+   "age": 29,
+   "key": "darragh-joyce",
+   "landing": 7.909550068531474,
+   "move": 0.7210114564302339,
+   "name": "Darragh Joyce",
+   "pick": null,
+   "pos": "KPD",
+   "with_factor": 8.630561524961708
+  },
+  {
+   "age": 29,
+   "key": "tom-doedee",
+   "landing": 232.76875759992066,
+   "move": 0.579131804239239,
+   "name": "Tom Doedee",
+   "pick": 17,
+   "pos": "SD",
+   "with_factor": 233.3478894041599
+  },
+  {
+   "age": 33,
+   "key": "jed-bews",
+   "landing": 5.46424970676081,
+   "move": -0.31949398896887526,
+   "name": "Jed Bews",
+   "pick": 65,
+   "pos": "SD",
+   "with_factor": 5.144755717791934
+  },
+  {
+   "age": 30,
+   "key": "conor-mckenna",
+   "landing": 4.854173296716781,
+   "move": -0.1989171490133268,
+   "name": "Conor McKenna",
+   "pick": null,
+   "pos": "SF",
+   "with_factor": 4.655256147703454
+  }
+ ],
+ "mature_totals": {
+  "abs_total": 453.5860491204279,
+  "mature_pool": 362702.9879707407,
+  "n_mature": 429,
+  "n_moved": 54,
+  "n_over_jtol_cap_for_reference": 44,
+  "net_total": 110.81744314129215,
+  "pct_of_board": 0.06791091380483627
+ },
+ "n_fitted_sitters": 408,
+ "order": "ORDER J \u2014 the owner-ruled tall/small sitter factor, disclosed",
+ "ruling": "R-TALLFACTOR ADOPTED \u2014 issue #334 comment 5320813582",
+ "transcription_worst_dev": 0.0
+}

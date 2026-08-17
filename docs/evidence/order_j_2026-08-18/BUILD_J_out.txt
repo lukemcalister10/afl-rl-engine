@@ -1,0 +1,42 @@
+=== ORDER J BOARD SUITE ===
+  reference point: lambda_S1=0.10 kappa=0.240 gamma_u=10.5 eta=0.425 gamma_d=14.0 relief=1.08
+  ruled tall factor: lambda_S1=0, knobs at the repair point
+
+--- cand (RL_O36 unset; must be 1f176444) ---
+6c5675648d1be84c9e4673ad9b862c52  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o37/bb_cand/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o37/bb_cand/rl_after/rl_model_data.json
+1f17644445f074d11e631b5cbae98a9a  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o37/bb_cand/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- tall (the owner-ruled factor alone) ---
+6c5675648d1be84c9e4673ad9b862c52  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o37/bb_tall/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o37/bb_tall/rl_after/rl_model_data.json
+d1058fe02cbf59f70441dd3a1b4001ff  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o37/bb_tall/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- tall2 (determinism repeat) ---
+6c5675648d1be84c9e4673ad9b862c52  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o37/bb_tall2/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o37/bb_tall2/rl_after/rl_model_data.json
+d1058fe02cbf59f70441dd3a1b4001ff  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o37/bb_tall2/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- ref (the disclosed sub-gate reference; NOT CARRIED) ---
+6c5675648d1be84c9e4673ad9b862c52  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o37/bb_ref/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o37/bb_ref/rl_after/rl_model_data.json
+73bb064c9c5409a83e658216b8082dc4  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o37/bb_ref/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- s1 (S1 alone at the reference dose, tall factor removed) ---
+6c5675648d1be84c9e4673ad9b862c52  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o37/bb_s1/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o37/bb_s1/rl_after/rl_model_data.json
+69bf858e37aae27855a3e854c6c7fd13  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o37/bb_s1/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+=== BOARD MD5s ===
+  cand   1f17644445f074d11e631b5cbae98a9a
+  tall   d1058fe02cbf59f70441dd3a1b4001ff
+  tall2  d1058fe02cbf59f70441dd3a1b4001ff
+  ref    73bb064c9c5409a83e658216b8082dc4
+  s1     69bf858e37aae27855a3e854c6c7fd13
+  DETERMINISM x2      : PASS
+  DIAL-OFF = 1f176444 : PASS
