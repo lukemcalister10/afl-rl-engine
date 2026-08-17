@@ -1,0 +1,27 @@
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+ORDER J — J-TOL ON THE REFERENCE POINT AND ITS RUNNERS-UP (board points, tall factor OFF)
+  caps: per row min(25, max(1, 0.5% of value)) · churn <= 1001.87 · net <= 667.91
+
+point                                             moved   over     worst   its cap     churn       net  J-TOL
+REFERENCE   d0.10 k0.240 gu10.5 e0.425 gd14.0       426     21    10.376     8.227     106.5    -106.3  FAIL (needs 2.22% per row)
+runner-up 1 d0.15 k0.230 gu10.0 e0.425 gd13.5       426     40    19.084     8.227     196.7     -32.9  FAIL (needs 2.60% per row)
+runner-up 2 d0.10 k0.240 gu10.0 e0.425 gd13.5       426     36    15.194     8.227     174.0     -24.9  FAIL (needs 3.44% per row)
+the repair point itself (counterweight frozen)        0      0     0.000     5.579       0.0      +0.0  PASS
+
+-- THE REFERENCE POINT: WHO BREAKS, AND BY HOW MUCH OF HIS OWN VALUE --
+   row                       age      value       move      as %   its cap
+   Billy Cootee               24      256.6      -5.61    -2.19%      1.28
+   Mani Liddy                 24      153.0      -3.03    -1.98%      1.00
+   Wade Derksen               25      174.3      -2.76    -1.58%      1.00
+   Liam McMahon               24      190.2      -2.56    -1.35%      1.00
+   Ben Jepson                 25      122.0      -2.35    -1.92%      1.00
+   Jack Watkins               26       80.7      -1.79    -2.22%      1.00
+   Mitch Podhajski            27      146.8      -1.65    -1.12%      1.00
+   Milan Murdock              26      169.8      -1.64    -0.97%      1.00
+   Aidan Johnson              26      114.1      -1.63    -1.43%      1.00
+   Tom Blamires               24      121.6      -1.59    -1.31%      1.00
+   Saad El-Hawli              25       89.0      -1.52    -1.71%      1.00
+   Finlay Macrae              24      121.1      -1.50    -1.24%      1.00
+
+written: JTOL_REF_J.json

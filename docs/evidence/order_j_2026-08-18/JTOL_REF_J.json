@@ -1,0 +1,397 @@
+{
+ "REFERENCE   d0.10 k0.240 gu10.5 e0.425 gd14.0": {
+  "churn": 106.52073261574844,
+  "dose": 0.1,
+  "eta": 0.425,
+  "gamma_d": 14.0,
+  "gamma_u": 10.5,
+  "kappa": 0.24,
+  "lam_rel": 1.08,
+  "n_moved": 426,
+  "n_over": 21,
+  "needs_pct": 2.2164191173281202,
+  "net": -106.29831239911964,
+  "passes": false,
+  "top_over": [
+   {
+    "age": 24,
+    "cap": 1.2829442773706499,
+    "key": "billy-cootee",
+    "move": -5.610235817840817,
+    "name": "Billy Cootee",
+    "pct": -2.1864690138136016,
+    "value": 256.58885547412996
+   },
+   {
+    "age": 24,
+    "cap": 1.0,
+    "key": "mani-liddy",
+    "move": -3.0269335083748103,
+    "name": "Mani Liddy",
+    "pct": -1.9778292683172014,
+    "value": 153.0432154515652
+   },
+   {
+    "age": 25,
+    "cap": 1.0,
+    "key": "wade-derksen",
+    "move": -2.7565010684427307,
+    "name": "Wade Derksen",
+    "pct": -1.581339325738247,
+    "value": 174.3143311228196
+   },
+   {
+    "age": 24,
+    "cap": 1.0,
+    "key": "liam-mcmahon",
+    "move": -2.5635462420903252,
+    "name": "Liam McMahon",
+    "pct": -1.3477759922203156,
+    "value": 190.2056615407698
+   },
+   {
+    "age": 25,
+    "cap": 1.0,
+    "key": "ben-jepson",
+    "move": -2.345678765828339,
+    "name": "Ben Jepson",
+    "pct": -1.9234010172196603,
+    "value": 121.95474291778712
+   },
+   {
+    "age": 26,
+    "cap": 1.0,
+    "key": "jack-watkins",
+    "move": -1.7885153211421994,
+    "name": "Jack Watkins",
+    "pct": -2.2164191173281202,
+    "value": 80.69391331086531
+   },
+   {
+    "age": 27,
+    "cap": 1.0,
+    "key": "mitch-podhajski",
+    "move": -1.6461859600832156,
+    "name": "Mitch Podhajski",
+    "pct": -1.1212455478497079,
+    "value": 146.81761396869965
+   },
+   {
+    "age": 26,
+    "cap": 1.0,
+    "key": "milan-murdock",
+    "move": -1.6423710317237976,
+    "name": "Milan Murdock",
+    "pct": -0.9669592738142858,
+    "value": 169.84903875478332
+   },
+   {
+    "age": 26,
+    "cap": 1.0,
+    "key": "aidan-johnson",
+    "move": -1.6282034404901253,
+    "name": "Aidan Johnson",
+    "pct": -1.4265021661978896,
+    "value": 114.13957013677994
+   },
+   {
+    "age": 24,
+    "cap": 1.0,
+    "key": "tom-blamires",
+    "move": -1.5902806029751133,
+    "name": "Tom Blamires",
+    "pct": -1.3074804458539124,
+    "value": 121.62939859008789
+   },
+   {
+    "age": 25,
+    "cap": 1.0,
+    "key": "saad-el-hawli",
+    "move": -1.5221685959242137,
+    "name": "Saad El-Hawli",
+    "pct": -1.710264174720663,
+    "value": 89.00195761703475
+   },
+   {
+    "age": 24,
+    "cap": 1.0,
+    "key": "finlay-macrae",
+    "move": -1.5040755616620771,
+    "name": "Finlay Macrae",
+    "pct": -1.242492544821385,
+    "value": 121.05308542340558
+   }
+  ],
+  "worst": 10.375603013828822,
+  "worst_row": "ned-moyle"
+ },
+ "runner-up 1 d0.15 k0.230 gu10.0 e0.425 gd13.5": {
+  "churn": 196.70162160416865,
+  "dose": 0.15,
+  "eta": 0.425,
+  "gamma_d": 13.5,
+  "gamma_u": 10.0,
+  "kappa": 0.23,
+  "lam_rel": 1.08,
+  "n_moved": 426,
+  "n_over": 40,
+  "needs_pct": 2.598334084692862,
+  "net": -32.855753127282505,
+  "passes": false,
+  "top_over": [
+   {
+    "age": 24,
+    "cap": 1.2829442773706499,
+    "key": "billy-cootee",
+    "move": -6.667035689307625,
+    "name": "Billy Cootee",
+    "pct": -2.598334084692862,
+    "value": 256.58885547412996
+   },
+   {
+    "age": 24,
+    "cap": 1.1212144621023845,
+    "key": "conor-stone",
+    "move": 5.6755661464407865,
+    "name": "Conor Stone",
+    "pct": 2.5309904296982384,
+    "value": 224.2428924204769
+   },
+   {
+    "age": 24,
+    "cap": 1.0,
+    "key": "liam-mcmahon",
+    "move": -3.829130321506085,
+    "name": "Liam McMahon",
+    "pct": -2.0131526530220167,
+    "value": 190.2056615407698
+   },
+   {
+    "age": 24,
+    "cap": 3.727528106938643,
+    "key": "marcus-herbert",
+    "move": -12.156049541812308,
+    "name": "Marcus Herbert",
+    "pct": -1.6305778512017541,
+    "value": 745.5056213877285
+   },
+   {
+    "age": 24,
+    "cap": 1.091921114033605,
+    "key": "luke-pedlar",
+    "move": 3.4582392077568898,
+    "name": "Luke Pedlar",
+    "pct": 1.5835572567060276,
+    "value": 218.38422280672097
+   },
+   {
+    "age": 25,
+    "cap": 1.0,
+    "key": "wade-derksen",
+    "move": -3.0793170815812516,
+    "name": "Wade Derksen",
+    "pct": -1.766531220781615,
+    "value": 174.3143311228196
+   },
+   {
+    "age": 25,
+    "cap": 1.0,
+    "key": "ben-jepson",
+    "move": -3.025927135533209,
+    "name": "Ben Jepson",
+    "pct": -2.4811885648211858,
+    "value": 121.95474291778712
+   },
+   {
+    "age": 26,
+    "cap": 4.486460004287596,
+    "key": "lachlan-mcandrew",
+    "move": -13.335915791507432,
+    "name": "Lachlan McAndrew",
+    "pct": -1.4862403519436966,
+    "value": 897.2920008575193
+   },
+   {
+    "age": 25,
+    "cap": 1.0,
+    "key": "jack-hutchinson",
+    "move": 2.9581237181570685,
+    "name": "Jack Hutchinson",
+    "pct": 2.480385196467905,
+    "value": 119.26065848036298
+   },
+   {
+    "age": 24,
+    "cap": 2.3425298066493165,
+    "key": "max-heath",
+    "move": -6.555694297665923,
+    "name": "Max Heath",
+    "pct": -1.3992766023846221,
+    "value": 468.5059613298633
+   },
+   {
+    "age": 25,
+    "cap": 1.0,
+    "key": "roan-steele",
+    "move": 2.7298447031325708,
+    "name": "Roan Steele",
+    "pct": 2.2373053428629217,
+    "value": 122.01484754152428
+   },
+   {
+    "age": 26,
+    "cap": 1.0,
+    "key": "milan-murdock",
+    "move": -2.6441409010978703,
+    "name": "Milan Murdock",
+    "pct": -1.5567594144087586,
+    "value": 169.84903875478332
+   }
+  ],
+  "worst": 19.08355883989725,
+  "worst_row": "ned-moyle"
+ },
+ "runner-up 2 d0.10 k0.240 gu10.0 e0.425 gd13.5": {
+  "churn": 173.98727059230407,
+  "dose": 0.1,
+  "eta": 0.425,
+  "gamma_d": 13.5,
+  "gamma_u": 10.0,
+  "kappa": 0.24,
+  "lam_rel": 1.08,
+  "n_moved": 426,
+  "n_over": 36,
+  "needs_pct": 3.4447425191620398,
+  "net": -24.902955091880287,
+  "passes": false,
+  "top_over": [
+   {
+    "age": 24,
+    "cap": 1.2829442773706499,
+    "key": "billy-cootee",
+    "move": -8.83882540394859,
+    "name": "Billy Cootee",
+    "pct": -3.4447425191620398,
+    "value": 256.58885547412996
+   },
+   {
+    "age": 25,
+    "cap": 1.0,
+    "key": "ben-jepson",
+    "move": -4.122273248999676,
+    "name": "Ben Jepson",
+    "pct": -3.3801664046625954,
+    "value": 121.95474291778712
+   },
+   {
+    "age": 24,
+    "cap": 1.1212144621023845,
+    "key": "conor-stone",
+    "move": 4.604952173504017,
+    "name": "Conor Stone",
+    "pct": 2.0535554655927695,
+    "value": 224.2428924204769
+   },
+   {
+    "age": 24,
+    "cap": 1.0,
+    "key": "liam-mcmahon",
+    "move": -3.874430960315806,
+    "name": "Liam McMahon",
+    "pct": -2.036969314651729,
+    "value": 190.2056615407698
+   },
+   {
+    "age": 25,
+    "cap": 1.0,
+    "key": "wade-derksen",
+    "move": -3.307819058336065,
+    "name": "Wade Derksen",
+    "pct": -1.8976173886732348,
+    "value": 174.3143311228196
+   },
+   {
+    "age": 24,
+    "cap": 1.091921114033605,
+    "key": "luke-pedlar",
+    "move": 3.278735997562677,
+    "name": "Luke Pedlar",
+    "pct": 1.5013612043139644,
+    "value": 218.38422280672097
+   },
+   {
+    "age": 27,
+    "cap": 1.0,
+    "key": "mitch-podhajski",
+    "move": -2.9798934576674583,
+    "name": "Mitch Podhajski",
+    "pct": -2.029656644810171,
+    "value": 146.81761396869965
+   },
+   {
+    "age": 26,
+    "cap": 1.0,
+    "key": "aidan-johnson",
+    "move": -2.6602000096598317,
+    "name": "Aidan Johnson",
+    "pct": -2.330655360338192,
+    "value": 114.13957013677994
+   },
+   {
+    "age": 25,
+    "cap": 1.0,
+    "key": "jack-hutchinson",
+    "move": 2.6045108063284346,
+    "name": "Jack Hutchinson",
+    "pct": 2.1838809541348323,
+    "value": 119.26065848036298
+   },
+   {
+    "age": 26,
+    "cap": 4.486460004287596,
+    "key": "lachlan-mcandrew",
+    "move": -9.922071182341938,
+    "name": "Lachlan McAndrew",
+    "pct": -1.10577952025201,
+    "value": 897.2920008575193
+   },
+   {
+    "age": 26,
+    "cap": 1.0,
+    "key": "jack-watkins",
+    "move": -2.1136851256917453,
+    "name": "Jack Watkins",
+    "pct": -2.6193860713496226,
+    "value": 80.69391331086531
+   },
+   {
+    "age": 25,
+    "cap": 1.0,
+    "key": "roan-steele",
+    "move": 2.039361125518255,
+    "name": "Roan Steele",
+    "pct": 1.6714040681190183,
+    "value": 122.01484754152428
+   }
+  ],
+  "worst": 15.194022263360011,
+  "worst_row": "ned-moyle"
+ },
+ "the repair point itself (counterweight frozen)": {
+  "churn": 0.0,
+  "dose": 0.1,
+  "eta": 0.41,
+  "gamma_d": 14.0,
+  "gamma_u": 11.0,
+  "kappa": 0.24,
+  "lam_rel": 1.08,
+  "n_moved": 0,
+  "n_over": 0,
+  "needs_pct": 0.0,
+  "net": 0.0,
+  "passes": true,
+  "top_over": [],
+  "worst": 0.0,
+  "worst_row": "aaron-naughton"
+ }
+}
