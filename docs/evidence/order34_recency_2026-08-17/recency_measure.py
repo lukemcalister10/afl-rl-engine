@@ -144,6 +144,9 @@ def q(v, f):
 def agg(rows, label):
     P('')
     P('EFFECTIVE WEIGHT BY YEARS-BACK -- %s  (n players = %d)' % (label, len(rows)))
+    if not rows:
+        P('  (empty split)')
+        return []
     P('%8s %6s %8s %8s %8s %8s' % ('back', 'n', 'mean', 'median', 'q25', 'q75'))
     by = collections.defaultdict(list)
     for r in rows:
