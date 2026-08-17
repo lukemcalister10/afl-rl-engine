@@ -1,0 +1,11 @@
+ORDER 33 W3 ASYMMETRY PROBE (post-hoc, disclosed) — store cb38ef11 — seed 33
+Mechanism test: reliability/shrinkage predicts FIRST2 hurts ABOVE bar, not below.
+ALL AGES 6u (n=6373)
+  F2xBELOW          -2.118  [ -3.190,  -0.997] *
+  F2xABOVE          -2.193  [ -3.683,  -0.661] *
+AGE 23+ 6u (n=3911)
+  F2xBELOW          -0.553  [ -2.510,  +1.430]
+  F2xABOVE          -1.756  [ -4.253,  +0.704]
+ALL AGES 6u career games split (n=6373)
+  cgBELOW           +2.514  [ +1.821,  +3.220] *
+  cgABOVE           +2.251  [ +1.714,  +2.802] *

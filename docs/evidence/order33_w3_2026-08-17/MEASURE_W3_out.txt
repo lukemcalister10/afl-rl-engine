@@ -1,0 +1,217 @@
+ORDER 33 W3 MEASURE — store cb38ef11 — seed 33
+base n=7823 (players 1516), conditional n=6373
+
+LONGITUDINAL AGE CURVE of next-season change d1 = avg(Y+1)-avg(Y), conditional sample
+(the age-adjustment reference; cells pooled to n>=20; 27 = 27+)
+age    TALL mean d1 (n, sd)     SMALL mean d1 (n, sd)   
+18      +6.61 (n75, sd 11.7)     +8.42 (n334, sd 13.8)  
+19      +6.61 (n75, sd 11.7)     +8.42 (n334, sd 13.8)  
+20      +4.90 (n117, sd 11.3)    +6.01 (n470, sd 13.6)  
+21      +5.20 (n158, sd 12.4)    +4.16 (n550, sd 13.4)  
+22      +2.75 (n190, sd 12.5)    +2.15 (n568, sd 12.5)  
+23      +2.81 (n196, sd 12.2)    +2.13 (n514, sd 12.8)  
+24      +1.61 (n184, sd 12.1)    -0.22 (n482, sd 12.3)  
+25      +0.72 (n173, sd 13.7)    -0.09 (n443, sd 12.0)  
+26      -0.07 (n159, sd 11.7)    -1.65 (n377, sd 12.5)  
+27+     -1.93 (n424, sd 10.8)    -2.69 (n959, sd 12.9)  
+overall: mean d1 +1.48 sd 13.0 | mean dA +0.000 sd 12.6
+
+M1 POOLED REGRESSIONS — dA ~ exposure + age dummies + pos + avg-bar + band dummies
+cluster bootstrap by player, B=1000, seed 33; * = 95% CI excludes 0
+owner's claim predicts: careergames/50 < 0, sidx < 0, FIRST2 > 0
+M1a exposure = career games / 50  (n=6373, y=dA)
+  cg/50           +2.343  [ +1.833,  +2.848] *
+M1b exposure = played-season index X2  (n=6373, y=dA)
+  sidx            +0.435  [ +0.233,  +0.644] *
+M1c exposure = FIRST2 (X2<=2)  (n=6373, y=dA)
+  FIRST2          -2.142  [ -3.173,  -1.122] *
+M1d exposure = listed tenure X3  (n=6373, y=dA)
+  ltenure         +0.054  [ -0.157,  +0.264]
+
+M3 SHAPE — X2 dummies (baseline = 5+), same frame
+M3  (n=6373, y=dA)
+  sidx=1          -3.842  [ -5.398,  -2.396] *
+  sidx=2          -1.985  [ -3.257,  -0.709] *
+  sidx=3          -0.239  [ -1.370,  +0.855]
+  sidx=4          -1.547  [ -2.796,  -0.418] *
+
+CENSORING LPMs on base sample (linear probability, same controls):
+LPM exit1 (no Y+1 season at all)  (n=7823, y=exit1f)
+  FIRST2          +0.003  [ -0.018,  +0.024]
+LPM improve&survive (O3)  (n=7823, y=impsurv)
+  FIRST2          -0.073  [ -0.108,  -0.036] *
+
+O4 HORIZON (Y<=2023): best avg in Y+1..Y+3 (games>=6u) minus avg(Y)
+  n=6890, with any qualifying later season 6132 (89.0%)
+O4 dA3 ~ FIRST2  (n=6132, y=dA3)
+  FIRST2          -2.185  [ -3.460,  -0.908] *
+O4 P(any season in Y+1..Y+3) ~ FIRST2  (n=6890, y=any3)
+  FIRST2          -0.029  [ -0.056,  -0.003] *
+
+M2 KEY CELLS — LOW = first/second played season (X2<=2), HIGH = X2>=4 (veterans)
+columns per group: n | mean d1 | sd | mean dA | exit1% | P(imp&surv)%  (d-cols on cond rows)
+
+AGE 23
+ TALL B0<-10
+  LOW  n= 25/ 14  d1 +10.42 sd  18.5  dA  +7.61  exit1 24.0%  imp&surv 36.0%
+  HIGH n= 25/ 19  d1  +6.84 sd   6.6  dA  +4.03  exit1 16.0%  imp&surv 68.0%
+ TALL B1[-10,0)
+  LOW  n=  7/  5  d1  -8.64 sd   8.1  dA -11.45  exit1  0.0%  imp&surv 14.3%
+  HIGH n= 42/ 37  d1  +3.39 sd   9.0  dA  +0.58  exit1  2.4%  imp&surv 50.0%
+ TALL B2[0,10)
+  LOW  n=  8/  8  d1  +1.51 sd  10.6  dA  -1.30  exit1  0.0%  imp&surv 50.0%
+  HIGH n= 38/ 33  d1  +4.51 sd   9.0  dA  +1.69  exit1  7.9%  imp&surv 57.9%
+ TALL B3>=10
+  LOW  n=  4/  4  d1  +2.03 sd   5.3  dA  -0.78  exit1  0.0%  imp&surv 50.0%  UNSUPPORTED(n<5)
+  HIGH n= 39/ 38  d1  -2.98 sd  14.8  dA  -5.79  exit1  0.0%  imp&surv 38.5%
+ SMALL B0<-10
+  LOW  n= 43/ 21  d1  +7.72 sd   9.9  dA  +5.59  exit1 23.3%  imp&surv 41.9%
+  HIGH n=137/ 92  d1  +7.43 sd  14.1  dA  +5.30  exit1 16.1%  imp&surv 48.2%
+ SMALL B1[-10,0)
+  LOW  n= 21/ 16  d1  +6.01 sd  14.9  dA  +3.89  exit1  9.5%  imp&surv 57.1%
+  HIGH n=105/ 81  d1  +0.21 sd  11.3  dA  -1.92  exit1 10.5%  imp&surv 36.2%
+ SMALL B2[0,10)
+  LOW  n= 17/ 16  d1  -0.42 sd  15.9  dA  -2.54  exit1  5.9%  imp&surv 41.2%
+  HIGH n= 96/ 84  d1  +1.93 sd  11.9  dA  -0.20  exit1  2.1%  imp&surv 49.0%
+ SMALL B3>=10
+  LOW  n= 10/  9  d1 -11.21 sd  11.5  dA -13.34  exit1  0.0%  imp&surv 20.0%
+  HIGH n=151/142  d1  -0.98 sd  10.7  dA  -3.11  exit1  2.0%  imp&surv 45.7%
+ ALL pos/bands age 23
+  LOW  n=135/ 93  d1  +2.94 sd  15.1  dA  +0.59  exit1 14.1%  imp&surv 40.7%
+  HIGH n=633/526  d1  +1.93 sd  12.1  dA  -0.37  exit1  7.3%  imp&surv 46.6%
+
+AGE 24
+ TALL B0<-10
+  LOW  n=  9/  6  d1  +2.28 sd  10.7  dA  +0.67  exit1 22.2%  imp&surv 55.6%
+  HIGH n= 35/ 24  d1  +8.96 sd  13.7  dA  +7.35  exit1  5.7%  imp&surv 54.3%
+ TALL B1[-10,0)
+  LOW  n=  5/  1  d1  -1.50 sd   0.0  dA  -3.11  exit1 60.0%  imp&surv  0.0%  UNSUPPORTED(n<5)
+  HIGH n= 48/ 40  d1  +6.14 sd  10.9  dA  +4.53  exit1  8.3%  imp&surv 64.6%
+ TALL B2[0,10)
+  LOW  n=  5/  4  d1  +0.72 sd   1.7  dA  -0.88  exit1  0.0%  imp&surv 40.0%  UNSUPPORTED(n<5)
+  HIGH n= 38/ 30  d1  -2.72 sd   9.9  dA  -4.33  exit1 10.5%  imp&surv 28.9%
+ TALL B3>=10
+  LOW  n=  8/  7  d1  -4.39 sd  12.2  dA  -6.00  exit1  0.0%  imp&surv 37.5%
+  HIGH n= 55/ 52  d1  -2.72 sd  11.6  dA  -4.33  exit1  0.0%  imp&surv 43.6%
+ SMALL B0<-10
+  LOW  n= 24/ 19  d1  +6.73 sd  13.2  dA  +6.96  exit1 12.5%  imp&surv 54.2%
+  HIGH n=119/ 80  d1  +7.29 sd  12.1  dA  +7.51  exit1 21.8%  imp&surv 48.7%
+ SMALL B1[-10,0)
+  LOW  n= 15/ 12  d1  -1.93 sd  10.5  dA  -1.71  exit1  6.7%  imp&surv 46.7%
+  HIGH n= 96/ 79  d1  -0.78 sd  11.7  dA  -0.55  exit1  8.3%  imp&surv 41.7%
+ SMALL B2[0,10)
+  LOW  n= 10/  7  d1  -3.32 sd  12.1  dA  -3.10  exit1 10.0%  imp&surv 20.0%
+  HIGH n= 86/ 80  d1  -0.48 sd  10.8  dA  -0.26  exit1  2.3%  imp&surv 48.8%
+ SMALL B3>=10
+  LOW  n=  5/  5  d1  -7.50 sd  15.6  dA  -7.27  exit1  0.0%  imp&surv 40.0%
+  HIGH n=175/165  d1  -3.84 sd  11.3  dA  -3.62  exit1  2.3%  imp&surv 36.6%
+ ALL pos/bands age 24
+  LOW  n= 81/ 61  d1  +0.46 sd  12.8  dA  +0.15  exit1 12.3%  imp&surv 42.0%
+  HIGH n=652/550  d1  +0.16 sd  12.3  dA  -0.10  exit1  7.7%  imp&surv 44.3%
+
+AGE 25
+ TALL B0<-10
+  LOW  n=  6/  5  d1 +10.70 sd  13.2  dA  +9.98  exit1  0.0%  imp&surv 50.0%
+  HIGH n= 25/ 15  d1  +6.37 sd  16.1  dA  +5.65  exit1 20.0%  imp&surv 36.0%
+ TALL B1[-10,0)
+  LOW  n=  5/  5  d1  +3.54 sd   6.7  dA  +2.82  exit1  0.0%  imp&surv 60.0%
+  HIGH n= 40/ 33  d1  +8.95 sd  11.2  dA  +8.23  exit1  7.5%  imp&surv 67.5%
+ TALL B2[0,10)
+  LOW  n=  3/  3  d1  +3.17 sd   0.4  dA  +2.45  exit1  0.0%  imp&surv 100.0%  UNSUPPORTED(n<5)
+  HIGH n= 48/ 43  d1  -0.55 sd  12.3  dA  -1.27  exit1  2.1%  imp&surv 35.4%
+ TALL B3>=10
+  LOW  n=  1/  1  d1 -20.98 sd   0.0  dA -21.70  exit1  0.0%  imp&surv  0.0%  UNSUPPORTED(n<5)
+  HIGH n= 65/ 58  d1  -6.22 sd  11.5  dA  -6.94  exit1  4.6%  imp&surv 21.5%
+ SMALL B0<-10
+  LOW  n= 17/ 12  d1  +8.21 sd  10.3  dA  +8.31  exit1 29.4%  imp&surv 58.8%
+  HIGH n=112/ 76  d1  +5.26 sd  10.8  dA  +5.35  exit1 17.0%  imp&surv 47.3%
+ SMALL B1[-10,0)
+  LOW  n=  9/  8  d1  +2.55 sd  14.2  dA  +2.64  exit1  0.0%  imp&surv 44.4%
+  HIGH n= 88/ 73  d1  +0.93 sd  12.1  dA  +1.02  exit1  2.3%  imp&surv 43.2%
+ SMALL B2[0,10)
+  LOW  n=  7/  6  d1  +0.70 sd  11.2  dA  +0.79  exit1  0.0%  imp&surv 42.9%
+  HIGH n=105/ 96  d1  -1.52 sd  11.7  dA  -1.42  exit1  2.9%  imp&surv 39.0%
+ SMALL B3>=10
+  LOW  n=  4/  4  d1  -4.55 sd   3.9  dA  -4.46  exit1  0.0%  imp&surv  0.0%  UNSUPPORTED(n<5)
+  HIGH n=157/148  d1  -3.70 sd  11.7  dA  -3.61  exit1  3.2%  imp&surv 36.9%
+ ALL pos/bands age 25
+  LOW  n= 52/ 44  d1  +3.74 sd  11.9  dA  +3.58  exit1  9.6%  imp&surv 50.0%
+  HIGH n=640/542  d1  -0.41 sd  12.5  dA  -0.54  exit1  6.4%  imp&surv 40.2%
+
+AGE 26+
+ TALL B0<-10
+  LOW  n= 12/  5  d1 +10.50 sd  14.2  dA +11.69  exit1 16.7%  imp&surv 25.0%
+  HIGH n= 85/ 47  d1  +6.68 sd   9.2  dA  +8.09  exit1 23.5%  imp&surv 37.6%
+ TALL B1[-10,0)
+  LOW  n=  9/  6  d1  +1.20 sd   7.5  dA  +2.51  exit1 11.1%  imp&surv 44.4%
+  HIGH n=143/110  d1  +2.44 sd  10.5  dA  +3.79  exit1 11.9%  imp&surv 42.7%
+ TALL B2[0,10)
+  LOW  n=  4/  3  d1  +0.23 sd   2.5  dA  +0.92  exit1 25.0%  imp&surv 50.0%  UNSUPPORTED(n<5)
+  HIGH n=164/130  d1  -1.63 sd  10.2  dA  -0.15  exit1  7.9%  imp&surv 32.9%
+ TALL B3>=10
+  LOW  n=  2/  2  d1  -9.15 sd   3.4  dA  -7.22  exit1  0.0%  imp&surv  0.0%  UNSUPPORTED(n<5)
+  HIGH n=286/262  d1  -4.46 sd  10.8  dA  -3.00  exit1  3.1%  imp&surv 30.8%
+ SMALL B0<-10
+  LOW  n= 16/  6  d1  +0.65 sd  17.1  dA  +2.99  exit1 31.2%  imp&surv 12.5%
+  HIGH n=331/193  d1  +4.83 sd  12.9  dA  +7.20  exit1 28.1%  imp&surv 37.5%
+ SMALL B1[-10,0)
+  LOW  n= 12/ 10  d1  +0.39 sd   7.7  dA  +2.56  exit1  0.0%  imp&surv 41.7%
+  HIGH n=310/243  d1  -0.43 sd  11.8  dA  +1.98  exit1 12.3%  imp&surv 37.7%
+ SMALL B2[0,10)
+  LOW  n=  8/  7  d1  +0.27 sd  10.6  dA  +2.22  exit1  0.0%  imp&surv 62.5%
+  HIGH n=334/290  d1  -1.18 sd  12.5  dA  +1.22  exit1  6.0%  imp&surv 36.8%
+ SMALL B3>=10
+  LOW  n=  2/  1  d1  -7.19 sd   0.0  dA  -4.50  exit1  0.0%  imp&surv  0.0%  UNSUPPORTED(n<5)
+  HIGH n=583/561  d1  -6.68 sd  11.8  dA  -4.26  exit1  0.7%  imp&surv 29.5%
+ ALL pos/bands age 26+
+  LOW  n= 65/ 40  d1  +1.11 sd  11.5  dA  +2.91  exit1 13.8%  imp&surv 32.3%
+  HIGH n=2236/1836  d1  -2.21 sd  12.3  dA  -0.09  exit1  9.6%  imp&surv 34.5%
+
+AGE POOLED 23+
+ TALL B0<-10
+  LOW  n= 52/ 30  d1  +8.85 sd  16.0  dA  +7.30  exit1 19.2%  imp&surv 38.5%
+  HIGH n=170/105  d1  +7.19 sd  11.3  dA  +6.84  exit1 18.2%  imp&surv 45.3%
+ TALL B1[-10,0)
+  LOW  n= 26/ 17  d1  -1.16 sd   8.8  dA  -1.84  exit1 15.4%  imp&surv 30.8%
+  HIGH n=273/220  d1  +4.25 sd  10.7  dA  +4.05  exit1  9.2%  imp&surv 51.3%
+ TALL B2[0,10)
+  LOW  n= 20/ 18  d1  +1.40 sd   7.2  dA  -0.21  exit1  5.0%  imp&surv 55.0%
+  HIGH n=288/236  d1  -0.72 sd  10.7  dA  -0.63  exit1  7.3%  imp&surv 36.1%
+ TALL B3>=10
+  LOW  n= 15/ 14  d1  -4.42 sd  10.9  dA  -5.80  exit1  0.0%  imp&surv 33.3%
+  HIGH n=445/410  d1  -4.35 sd  11.5  dA  -3.98  exit1  2.7%  imp&surv 31.7%
+ SMALL B0<-10
+  LOW  n=100/ 58  d1  +6.77 sd  12.2  dA  +6.33  exit1 23.0%  imp&surv 43.0%
+  HIGH n=699/441  d1  +5.89 sd  12.7  dA  +6.54  exit1 22.9%  imp&surv 43.1%
+ SMALL B1[-10,0)
+  LOW  n= 57/ 46  d1  +2.12 sd  12.8  dA  +1.92  exit1  5.3%  imp&surv 49.1%
+  HIGH n=599/476  d1  -0.17 sd  11.8  dA  +0.75  exit1  9.8%  imp&surv 38.9%
+ SMALL B2[0,10)
+  LOW  n= 42/ 36  d1  -0.66 sd  13.6  dA  -1.17  exit1  4.8%  imp&surv 40.5%
+  HIGH n=621/550  d1  -0.66 sd  12.1  dA  +0.33  exit1  4.3%  imp&surv 40.7%
+ SMALL B3>=10
+  LOW  n= 21/ 19  d1  -8.62 sd  11.7  dA  -9.41  exit1  0.0%  imp&surv 19.0%
+  HIGH n=1066/1016  d1  -4.99 sd  11.8  dA  -3.90  exit1  1.5%  imp&surv 34.1%
+ ALL pos/bands age POOLED 23+
+  LOW  n=333/238  d1  +2.15 sd  13.4  dA  +1.42  exit1 12.9%  imp&surv 40.8%
+  HIGH n=4161/3454  d1  -0.92 sd  12.4  dA  -0.21  exit1  8.4%  imp&surv 38.7%
+
+POOLED 23+ raw cell contrast (no controls beyond the dA age adjustment):
+  mean dA LOW (n=238) +1.42  vs HIGH (n=3454) -0.21;  diff +1.62  [+0.11, +3.17] (cluster boot)
+  IQR dA LOW  p25/p50/p75: -6.9/+0.9/+9.1
+  IQR dA HIGH p25/p50/p75: -8.2/-0.4/+7.6
+
+M4 NAMED ROWS (2026 in progress, u=0.92) + veteran comparators (rule: same age & POS in 2026,
+games>=6u, X2>=4, nearest avg)
+  milan-murdock          SF   age 26  17g @ 70.1  careerG  17  X2=1  X3=2  type SSP
+    comparator:
+  toby-bedford           SF   age 26  16g @ 70.5  careerG  99  X2=6  X3=8  type ND
+
+  hugo-hall-kahan        SD   age 23   9g @ 73.0  careerG   9  X2=1  X3=1  type MSD
+    comparator:
+  matthew-roberts        SD   age 23  17g @ 73.3  careerG  65  X2=5  X3=5  type ND
+
+  lachlan-mcandrew       RUCK age 26  20g @ 87.3  careerG  22  X2=2  X3=3  type SSP
+    comparator:
+  bailey-williams-wc     RUCK age 26  16g @ 90.4  careerG 104  X2=7  X3=8  type ND
+
