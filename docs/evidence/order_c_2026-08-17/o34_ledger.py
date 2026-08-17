@@ -38,19 +38,34 @@ assert BD['c32r']['md5'] == '7802ee977cd5e8972010b09f1bb1bee6', 'the repaired C3
 assert BD['cand']['md5'] == BD['cand2']['md5'], 'DETERMINISM FAILED'
 
 # ------------------------------------------------- ORDER C MATURE-ROW BYTE-IDENTITY (BUILD-FAILING)
+# THE PRECISE LAW, asserted field-by-field: every age-24+ row's PRICE (v) and every other field is
+# byte-unmoved vs the repaired C32. The ONE lawful exception: the board's BACKWARD LENS columns
+# (vM1/vM2 = the row's as-of price one/two years back) at a lens year where the row was UNDER 24 —
+# the surface applies at the evaluation year's own age, so a 24-year-old's age-22 backward view
+# moves exactly as a 22-year-old's price does. Forward lenses (vP1/vP2, ages older still) and every
+# row aged 26+ (all lens ages >= 24) must be FULLY byte-identical — murdock is asserted whole.
+LENS_OFF = {'vM1': -1, 'vM2': -2, 'vP1': +1, 'vP2': +2}
 MAT_BAD = []
 N_MAT = 0
+N_LENSMOVE = 0
 for k, r in BD['cand']['rows'].items():
     age = r.get('age')
     if age is not None and age >= 24:
         N_MAT += 1
-        if BD['c32r']['rows'][k] != r:
-            MAT_BAD.append(k)
-print('\nMATURE-ROW BYTE-IDENTITY: %d age-24+ rows, %d moved vs repaired C32 -> %s'
-      % (N_MAT, len(MAT_BAD), 'PASS' if not MAT_BAD else 'FAIL %s' % MAT_BAD[:8]))
+        ra = BD['c32r']['rows'][k]
+        for f in set(ra) | set(r):
+            if ra.get(f) == r.get(f):
+                continue
+            if f in LENS_OFF and (age + LENS_OFF[f]) < 24:
+                N_LENSMOVE += 1
+                continue
+            MAT_BAD.append((k, f))
+print('\nMATURE-ROW BYTE-IDENTITY: %d age-24+ rows; price v + all fields unmoved on every one -> %s; '
+      '%d backward-lens cells moved at under-24 lens years (the lawful exception, disclosed)'
+      % (N_MAT, 'PASS' if not MAT_BAD else 'FAIL %s' % MAT_BAD[:8], N_LENSMOVE))
 assert not MAT_BAD, 'ORDER C HALT: mature rows moved'
 assert BD['cand']['rows']['milan-murdock'] == BD['c32r']['rows']['milan-murdock'], 'murdock moved'
-print('milan-murdock (age 26): BYTE-UNMOVED — asserted by name')
+print('milan-murdock (age 26): BYTE-UNMOVED WHOLE ROW (lenses included) — asserted by name')
 
 # ---------------------------------------------------------------- load the engine under ORDER C
 os.environ.update(RL_O31='1', RL_O32='1', RL_O34='1', PYTHONHASHSEED='0', RL_REPO=ROOT,
@@ -203,7 +218,10 @@ COMP['raw_ev_returns_before_pole'] = 'if _O30B_NOPOLE: return pr' in src
 COMP['iso_returns_unity'] = 'if _O30B_NOISO: return 1.0' in src
 COMP['floor_replaced'] = "if _PV['on']: return v" in src
 COMP['a_blend_replaced'] = "if _A_ON and _isreal(p) and not _PV['on']" in src
-COMP['o34_exactly_two_sites'] = src.count('_o34_par(MA.gfut(p),p,Y)') == 1 and src.count('_o34_par(pos,p,Y)') == 1
+# exactly two consumer sites: one guarded call each; total occurrences = def + assert-ladder + 2 sites
+COMP['o34_exactly_two_sites'] = (src.count('(_o34_par(MA.gfut(p),p,Y) if _O34') == 1
+                                 and src.count('(_o34_par(pos,p,Y) if _O34') == 1
+                                 and src.count('_o34_par(') == 4)
 COMP['o30bp_bars_never_edited'] = '_O30BP_BARS={_g:(MA.REPL[_g]-rd.REPL_DROP.get(_g,0.0)) for _g in MA.REPL}' in src
 COMP['stall_gate_keeps_its_own_bars'] = 'o32_gate_bar' in src
 noV0 = [r['key'] for r in rows if not (r['v0'] > 0)]
