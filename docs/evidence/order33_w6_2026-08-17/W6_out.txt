@@ -1,0 +1,317 @@
+======================================================================================================================
+ORDER 33 W6 -- THE FROZEN q97 CEILING vs REALIZED 97th-PERCENTILE OUTCOMES.  PREREG_W6.md governs.
+======================================================================================================================
+C0 IDENTITY
+  pvc_curve_v2.json    78ad9842525ae4f09875b95afc2e2b39
+  q97m.pkl             cfdc73216c099e5e8f1fda3968f31c00
+  rl_model.py          14000af2a46f7a3c4cdfde303f5a1aff
+  rl_model_data.json   cb38ef1171dcf20aae66ebf12682be0d
+  q97m.pkl == expected_boot pin cfdc73216c099e5e8f1fda3968f31c00  (FROZEN artefact confirmed)
+  engine loaded in 69.3s
+C1 q97m: GradientBoostingRegressor(loss=quantile, alpha=0.97, n_estimators=200, max_depth=4, lr=0.05, min_samples_leaf=25) on 11 features -- matches refit_q97m.py Q97M_KW
+  v7 taper: asc = interp(age, [20,22,24,27], [1.0,0.76,0.58,0.40]); bb[5] = m + asc*(bb[5]-m), m = band median bb[2]; W4 form-retention ON=True (V7W=0.6, needs lcr>4 and nqual>=1)
+
+VANTAGE SWEEP -- every real store player with a mapped group, Y = debutyr-1 .. min(last, 2019), T1 rule applied (first observable season 2005)
+  9877 vantages from 2008 players in 2.5s
+  batch predictions in 0.2s
+C2 pre-taper inversions (b5_raw < b[4]): 0 of 9877  (code fact: band[5]=max(pred,b[4]) -> expected 0)
+   post-taper inversions at historical vantages: 3154 of 9877 (31.9%) -- ALL taper-caused by construction
+C3 engine-reconstruction control (200 sampled vantages): max|_b6_core - (b4,b5_raw)| = 0.000e+00   max|b6[5] - b5_tap| = 0.000e+00
+
+======================================================================================================================
+PRIMARY WINDOW (vantages <= 2019, outcomes observed to 2026).  peak units = season-avg level (the model's own units); dv units = board points (grace-A season valuation, vantage-discounted)
+  exceed = share of vantages whose realized forward best-3 EXCEEDED the model ceiling (calibrated 97th percentile target ~3%%)
+======================================================================================================================
+
+AGE <=19
+age    pos   games  |     n  npl |   q97pk    q97dv |     pred    b5raw    b5tap | x_pred  x_raw  x_tap | taperbite
+<=19   MID   0      |   608  489 |  115.4     3546  |    111.5    111.5    111.5 |   4.8%   4.8%   4.8% |   -0.00
+<=19   MID   1-10   |   124  124 |  110.7     3058  |    109.4    109.4    109.4 |   4.8%   4.8%   4.8% |    0.00
+<=19   MID   11-30  |    75   75 |  125.7     5957  |    117.9    118.0    118.0 |   6.7%   6.7%   6.7% |    0.00
+<=19   SD    0      |   456  370 |  104.4     2078  |    104.8    104.9    104.9 |   2.6%   2.6%   2.6% |    0.00
+<=19   SD    1-10   |    91   91 |  100.2     1752  |    102.4    102.4    102.4 |   3.3%   3.3%   3.3% |    0.00
+<=19   SD    11-30  |    37   37 |  109.3     2780  |    105.9    106.2    106.2 |   2.7%   2.7%   2.7% |    0.00
+<=19   SF    0      |   397  326 |   96.0     1718  |     94.6     94.7     94.7 |   2.5%   2.5%   2.5% |    0.00
+<=19   SF    1-10   |    82   82 |   97.0     1859  |     91.6     91.6     91.6 |   4.9%   4.9%   4.9% |    0.00
+<=19   SF    11-30  |    53   53 |  109.0     3170  |     96.6     96.7     96.7 |   9.4%   9.4%   9.4% |    0.00
+<=19   KPD   0      |   245  186 |   90.5     1746  |     98.0     98.0     98.0 |   0.0%   0.0%   0.0% |    0.00
+<=19   KPD   1-10   |    50   50 |   93.6     2252  |     94.7     94.7     94.7 |   0.0%   0.0%   0.0% |    0.00
+<=19   KPD   11-30  |     9    9 |   90.7*    2374* |     94.0     94.0     94.0 |   0.0%   0.0%   0.0% |    0.00
+<=19   KPF   0      |   240  188 |   92.7     2008  |     95.5     95.5     95.5 |   4.2%   4.2%   4.2% |    0.00
+<=19   KPF   1-10   |    49   49 |   94.3     2801  |     93.1     93.1     93.1 |   4.1%   4.1%   4.1% |    0.00
+<=19   KPF   11-30  |    11   11 |  111.3*    5303* |     98.9     98.9     98.9 |   9.1%   9.1%   9.1% |    0.00
+<=19   RUCK  0      |   162  121 |  118.5     3174  |    112.8    112.8    112.8 |   4.9%   4.9%   4.9% |   -0.00
+<=19   RUCK  1-10   |    20   20 |  128.9*    5354* |    114.6    114.6    114.6 |   5.0%   5.0%   5.0% |    0.00
+<=19   RUCK  11-30  |     1    1 | UNRESOLVED (n<8)  max_pk 101.4 max_dv 1590.5
+<=19   TALL  0      |   647  495 |  101.9     2170  |    100.8    100.8    100.8 |   2.8%   2.8%   2.8% |   -0.00
+<=19   TALL  1-10   |   119  119 |  102.7     2799  |     97.4     97.4     97.4 |   2.5%   2.5%   2.5% |    0.00
+<=19   TALL  11-30  |    21   21 |  111.3*    5303* |     97.6     97.6     97.6 |   4.8%   4.8%   4.8% |    0.00
+<=19   ALL   0      |  2108 1680 |  109.3     2511  |    103.6    103.6    103.6 |   3.3%   3.3%   3.3% |   -0.00
+<=19   ALL   1-10   |   416  416 |  108.2     2686  |    100.9    100.9    100.9 |   3.8%   3.8%   3.8% |    0.00
+<=19   ALL   11-30  |   186  186 |  118.9     5382  |    107.2    107.3    107.3 |   6.5%   6.5%   6.5% |    0.00
+
+AGE 20-21
+age    pos   games  |     n  npl |   q97pk    q97dv |     pred    b5raw    b5tap | x_pred  x_raw  x_tap | taperbite
+20-21  MID   0      |   109   87 |  100.9     1699  |    103.5    103.5    101.6 |   1.8%   1.8%   4.6% |    1.90
+20-21  MID   1-10   |   167  133 |  109.0     3028  |    104.7    104.7    102.5 |   6.0%   6.0%   6.0% |    2.12
+20-21  MID   11-30  |   206  163 |  116.6     4582  |    108.4    108.4    106.2 |   4.9%   4.9%   5.3% |    2.20
+20-21  MID   31-60  |   156  121 |  125.9     6170  |    116.1    116.2    114.4 |   2.6%   2.6%   6.4% |    1.76
+20-21  MID   61+    |    15   15 |  128.0*    6631* |    121.1    121.4    120.1 |   0.0%   0.0%   0.0% |    1.26
+20-21  SD    0      |    98   84 |   99.4     1888  |     99.9     99.9     98.4 |   2.0%   2.0%   4.1% |    1.47
+20-21  SD    1-10   |   155  126 |   96.7     1666  |     98.2     98.2     96.6 |   1.9%   1.9%   2.6% |    1.67
+20-21  SD    11-30  |   173  137 |  111.0     3090  |    101.0    101.0     98.8 |   5.8%   5.8%   6.9% |    2.15
+20-21  SD    31-60  |    74   57 |  109.6     4173  |    105.3    105.4    103.3 |   4.1%   2.7%   6.8% |    2.07
+20-21  SD    61+    |     6    5 | UNRESOLVED (n<8)  max_pk 99.8 max_dv 1823.1
+20-21  SF    0      |    63   55 |   89.1     1463  |     89.5     89.5     87.7 |   3.2%   3.2%   3.2% |    1.80
+20-21  SF    1-10   |   109   85 |   91.1     1537  |     90.5     90.5     89.0 |   2.8%   2.8%   3.7% |    1.58
+20-21  SF    11-30  |   154  116 |   96.7     2280  |     91.8     91.8     90.3 |   3.2%   3.2%   4.5% |    1.55
+20-21  SF    31-60  |    86   67 |  115.1     4087  |    100.0    100.0     98.2 |   8.1%   8.1%   8.1% |    1.71
+20-21  SF    61+    |     4    4 | UNRESOLVED (n<8)  max_pk 97.3 max_dv 2831.8
+20-21  KPD   0      |    71   54 |   97.1     2983  |     95.8     95.8     94.5 |   2.8%   2.8%   5.6% |    1.26
+20-21  KPD   1-10   |    93   73 |   85.4     1483  |     92.3     92.3     90.8 |   0.0%   0.0%   0.0% |    1.56
+20-21  KPD   11-30  |    81   64 |   94.9     2489  |     93.2     93.2     91.7 |   1.2%   1.2%   2.5% |    1.58
+20-21  KPD   31-60  |    28   25 |   96.3*    2890* |     96.0     96.0     94.3 |   0.0%   0.0%   0.0% |    1.77
+20-21  KPF   0      |    53   44 |   88.2     1879  |     95.6     95.6     94.4 |   1.9%   1.9%   1.9% |    1.25
+20-21  KPF   1-10   |    87   70 |   85.0     1133  |     93.5     93.5     92.0 |   1.1%   1.1%   1.1% |    1.53
+20-21  KPF   11-30  |    67   60 |   98.0     3027  |     95.6     95.6     93.6 |   3.0%   3.0%   3.0% |    1.95
+20-21  KPF   31-60  |    29   25 |  111.3*    6061* |    101.7    101.8     99.9 |   6.9%   3.4%   6.9% |    1.93
+20-21  KPF   61+    |     1    1 | UNRESOLVED (n<8)  max_pk 85.0 max_dv 2068.4
+20-21  RUCK  0      |    59   45 |  111.8     2585  |    110.3    110.3    108.4 |   5.1%   5.1%   6.8% |    1.91
+20-21  RUCK  1-10   |    61   47 |  121.0     4711  |    112.3    112.3    109.9 |   6.6%   6.6%   8.2% |    2.42
+20-21  RUCK  11-30  |    24   20 |  128.9*    6102* |    114.2    114.2    110.8 |   4.2%   4.2%  12.5% |    3.46
+20-21  RUCK  31-60  |     7    5 | UNRESOLVED (n<8)  max_pk 128.9 max_dv 6529.4
+20-21  TALL  0      |   183  143 |  106.7     2490  |    100.4    100.4     98.9 |   3.3%   3.3%   4.9% |    1.47
+20-21  TALL  1-10   |   241  190 |  105.6     2251  |     97.8     97.8     96.0 |   2.1%   2.1%   2.5% |    1.77
+20-21  TALL  11-30  |   172  144 |  103.3     2996  |     97.1     97.1     95.1 |   2.3%   2.3%   4.1% |    1.99
+20-21  TALL  31-60  |    64   55 |  113.4     6005  |    101.2    101.3     99.5 |   3.1%   1.6%   4.7% |    1.81
+20-21  TALL  61+    |     1    1 | UNRESOLVED (n<8)  max_pk 85.0 max_dv 2068.4
+20-21  ALL   0      |   453  369 |  101.2     2129  |     99.5     99.5     97.9 |   2.6%   2.6%   4.4% |    1.62
+20-21  ALL   1-10   |   672  534 |  103.4     2127  |     98.4     98.4     96.6 |   3.1%   3.1%   3.6% |    1.80
+20-21  ALL   11-30  |   705  560 |  110.7     3229  |    100.2    100.2     98.2 |   4.1%   4.1%   5.2% |    1.99
+20-21  ALL   31-60  |   380  300 |  120.0     5818  |    107.9    107.9    106.1 |   4.2%   3.7%   6.6% |    1.82
+20-21  ALL   61+    |    26   25 |  128.0*    6631* |    114.0    114.1    112.6 |   0.0%   0.0%   0.0% |    1.54
+
+AGE 22-23
+age    pos   games  |     n  npl |   q97pk    q97dv |     pred    b5raw    b5tap | x_pred  x_raw  x_tap | taperbite
+22-23  MID   0      |    38   32 |  109.0     2580  |     92.3     92.3     81.6 |  15.8%  15.8%  26.3% |   10.71
+22-23  MID   1-10   |    42   33 |   95.1     1346  |     94.8     94.8     83.8 |   4.8%   4.8%   9.5% |   10.94
+22-23  MID   11-30  |   134  102 |  105.8     2412  |     99.5     99.5     89.6 |   2.2%   2.2%   9.7% |    9.92
+22-23  MID   31-60  |   137  108 |  115.5     4393  |    105.9    105.9     98.5 |   2.9%   2.9%   8.0% |    7.44
+22-23  MID   61+    |   174  111 |  126.5     6592  |    116.8    116.9    112.4 |   1.1%   1.1%   8.0% |    4.51
+22-23  SD    0      |    32   28 |  110.0*    4904* |     89.3     89.3     81.3 |  18.8%  18.8%  21.9% |    8.05
+22-23  SD    1-10   |    37   33 |   91.8      772  |     88.2     88.2     80.1 |   5.4%   5.4%  16.2% |    8.10
+22-23  SD    11-30  |   112   90 |   97.8     1793  |     92.9     92.9     85.0 |   3.6%   3.6%   8.9% |    7.88
+22-23  SD    31-60  |   153  111 |  111.1     3511  |     97.4     97.4     91.2 |   4.6%   4.6%  10.5% |    6.24
+22-23  SD    61+    |    73   56 |  112.7     3960  |    102.4    102.4     97.2 |   2.7%   2.7%  15.1% |    5.20
+22-23  SF    0      |    44   40 |   81.0      582  |     77.9     77.9     70.7 |   6.8%   6.8%  11.4% |    7.19
+22-23  SF    1-10   |    35   32 |   84.5     1011  |     80.7     80.7     73.5 |  11.4%  11.4%  20.0% |    7.16
+22-23  SF    11-30  |    86   70 |   93.3     1745  |     84.6     84.6     77.6 |   7.0%   7.0%  11.6% |    6.94
+22-23  SF    31-60  |   108   82 |   92.6     1967  |     89.9     89.9     84.2 |   2.8%   2.8%   7.4% |    5.65
+22-23  SF    61+    |    74   52 |  117.6     4358  |    102.3    102.3     97.7 |   4.1%   4.1%   9.5% |    4.57
+22-23  KPD   0      |    22   18 |   96.6*    2195* |     89.8     89.8     82.8 |   4.5%   4.5%  22.7% |    6.95
+22-23  KPD   1-10   |    25   21 |   90.0*    2322* |     82.4     82.4     75.8 |   8.0%   8.0%   8.0% |    6.66
+22-23  KPD   11-30  |    71   54 |   96.0     2354  |     85.7     85.7     79.6 |   5.6%   5.6%  15.5% |    6.19
+22-23  KPD   31-60  |    73   53 |   94.0     2790  |     87.1     87.1     82.5 |   1.4%   1.4%   8.2% |    4.63
+22-23  KPD   61+    |    27   20 |   96.3*    2918* |     91.1     91.2     87.4 |   3.7%   3.7%   7.4% |    3.79
+22-23  KPF   0      |    18   14 |   80.0*    1092* |     85.6     85.6     78.0 |   0.0%   0.0%   0.0% |    7.55
+22-23  KPF   1-10   |    31   21 |   80.0*     390* |     85.0     85.0     77.1 |   0.0%   0.0%   3.2% |    7.88
+22-23  KPF   11-30  |    49   36 |   80.4     1156  |     86.7     86.7     79.1 |   2.0%   2.0%   2.0% |    7.54
+22-23  KPF   31-60  |    51   40 |   96.2     3140  |     93.0     93.0     87.6 |   3.9%   3.9%   7.8% |    5.36
+22-23  KPF   61+    |    34   24 |  111.3     5683  |     99.5     99.5     95.5 |   2.9%   2.9%   8.8% |    4.01
+22-23  RUCK  0      |    28   23 |  102.7*    1762* |    105.4    105.4     94.5 |   3.6%   3.6%  10.7% |   10.92
+22-23  RUCK  1-10   |    35   23 |  111.4     3042  |    108.5    108.5     97.5 |   8.6%   8.6%  17.1% |   11.07
+22-23  RUCK  11-30  |    45   34 |  126.6     6481  |    113.9    113.9    102.2 |   4.4%   4.4%  15.6% |   11.70
+22-23  RUCK  31-60  |    23   17 |  118.3*    5808* |    117.9    117.9    108.9 |   0.0%   0.0%  13.0% |    9.05
+22-23  RUCK  61+    |    10    6 |  128.9*    7222* |    122.6    123.9    121.2 |   0.0%   0.0%  10.0% |    2.72
+22-23  TALL  0      |    68   55 |   96.5     1644  |     95.1     95.1     86.4 |   2.9%   2.9%  11.8% |    8.74
+22-23  TALL  1-10   |    91   65 |  104.7     2490  |     93.3     93.3     84.6 |   5.5%   5.5%   9.9% |    8.77
+22-23  TALL  11-30  |   165  124 |  109.5     3527  |     93.7     93.7     85.6 |   4.2%   4.2%  11.5% |    8.09
+22-23  TALL  31-60  |   147  110 |  105.0     3199  |     94.0     94.0     88.4 |   2.0%   2.0%   8.8% |    5.57
+22-23  TALL  61+    |    71   50 |  113.2     5785  |     99.5     99.8     96.0 |   2.8%   2.8%   8.5% |    3.74
+22-23  ALL   0      |   182  155 |  101.2     2215  |     89.3     89.3     80.7 |   9.3%   9.3%  16.5% |    8.66
+22-23  ALL   1-10   |   205  163 |   99.2     1983  |     90.5     90.5     81.7 |   6.3%   6.3%  12.7% |    8.82
+22-23  ALL   11-30  |   497  386 |  105.1     2417  |     93.5     93.5     85.2 |   4.0%   4.0%  10.5% |    8.34
+22-23  ALL   31-60  |   545  411 |  110.4     3482  |     97.1     97.1     90.9 |   3.1%   3.1%   8.8% |    6.24
+22-23  ALL   61+    |   392  269 |  125.2     6033  |    108.3    108.4    103.8 |   2.3%   2.3%   9.7% |    4.51
+
+AGE 24-26
+age    pos   games  |     n  npl |   q97pk    q97dv |     pred    b5raw    b5tap | x_pred  x_raw  x_tap | taperbite
+24-26  MID   0      |    12   11 |   94.9*    1527* |     83.5     83.5     69.0 |  16.7%  16.7%  58.3% |   14.46
+24-26  MID   1-10   |    20   16 |  101.2*    2151* |     84.2     84.2     69.1 |   0.0%   0.0%  30.0% |   15.14
+24-26  MID   11-30  |    46   36 |  104.1     2429  |     90.6     90.6     76.5 |   2.2%   2.2%  17.4% |   14.11
+24-26  MID   31-60  |    81   59 |  103.7     2074  |     95.3     95.3     83.6 |   4.9%   4.9%   7.4% |   11.66
+24-26  MID   61+    |   366  148 |  119.6     4632  |    108.1    108.1    100.8 |   2.2%   2.2%   8.2% |    7.32
+24-26  SD    0      |     9    9 |   84.0*     726* |     80.9     80.9     70.7 |  11.1%  11.1%  44.4% |   10.17
+24-26  SD    1-10   |    12    9 |   78.4*     271* |     81.0     81.0     69.6 |   0.0%   0.0%   8.3% |   11.38
+24-26  SD    11-30  |    40   30 |   96.7     1365  |     83.4     83.4     72.3 |   5.0%   5.0%  22.5% |   11.15
+24-26  SD    31-60  |    92   61 |  102.7     2372  |     89.5     89.5     80.1 |   6.5%   6.5%  12.0% |    9.42
+24-26  SD    61+    |   252  108 |  110.1     3565  |     95.0     95.0     87.5 |   3.6%   3.6%  13.1% |    7.41
+24-26  SF    0      |    12   12 |   82.2*     430* |     70.2     70.2     61.2 |  41.7%  41.7%  50.0% |    8.91
+24-26  SF    1-10   |    16   13 |   74.7*     255* |     70.9     70.9     60.9 |  18.8%  18.8%  37.5% |    9.97
+24-26  SF    11-30  |    45   29 |   85.9     1187  |     75.3     75.3     66.5 |   8.9%   8.9%  28.9% |    8.84
+24-26  SF    31-60  |    64   43 |   92.6     1690  |     82.7     82.7     75.0 |   6.2%   6.2%  15.6% |    7.69
+24-26  SF    61+    |   189   79 |  110.5     3365  |     92.3     92.3     85.9 |   2.1%   2.1%   7.9% |    6.45
+24-26  KPD   0      |     5    4 | UNRESOLVED (n<8)  max_pk 72.5 max_dv 411.1
+24-26  KPD   1-10   |     6    5 | UNRESOLVED (n<8)  max_pk 72.5 max_dv 466.9
+24-26  KPD   11-30  |    25   17 |   85.4*    1405* |     82.3     82.3     74.6 |   8.0%   8.0%  16.0% |    7.70
+24-26  KPD   31-60  |    48   32 |   95.0     3005  |     79.4     79.4     72.7 |  10.4%  10.4%  18.8% |    6.73
+24-26  KPD   61+    |   121   51 |   96.4     2778  |     85.5     85.5     80.5 |   3.3%   3.3%  12.4% |    5.04
+24-26  KPF   0      |     9    7 |   68.5*     410* |     77.9     77.9     69.2 |   0.0%   0.0%   0.0% |    8.64
+24-26  KPF   1-10   |    15   13 |   80.0*     131* |     75.8     75.8     65.5 |   6.7%   6.7%   6.7% |   10.34
+24-26  KPF   11-30  |    23   13 |   85.7*    1254* |     78.7     78.7     68.0 |   8.7%   8.7%  21.7% |   10.61
+24-26  KPF   31-60  |    36   24 |   73.9      824  |     80.1     80.1     71.8 |   0.0%   0.0%  13.9% |    8.38
+24-26  KPF   61+    |    94   39 |  102.1     3816  |     94.2     94.3     88.7 |   3.2%   3.2%  14.9% |    5.61
+24-26  RUCK  0      |    25   19 |  100.5*     593* |     96.5     96.5     80.8 |   4.0%   4.0%  12.0% |   15.71
+24-26  RUCK  1-10   |    16   12 |  102.7*    2290* |     96.7     96.7     79.6 |   6.2%   6.2%  31.2% |   17.17
+24-26  RUCK  11-30  |    44   29 |  100.9     2267  |    102.2    102.2     86.3 |   4.5%   4.5%  11.4% |   15.98
+24-26  RUCK  31-60  |    39   27 |  112.6     3850  |    108.7    108.7     97.4 |   7.7%   7.7%  17.9% |   11.22
+24-26  RUCK  61+    |    56   26 |  129.9     6835  |    113.1    113.2    104.5 |   3.6%   3.6%  14.3% |    8.65
+24-26  TALL  0      |    39   30 |   86.8      420  |     90.5     90.5     77.2 |   2.6%   2.6%   7.7% |   13.22
+24-26  TALL  1-10   |    37   30 |   84.9      987  |     84.5     84.5     71.4 |   5.4%   5.4%  21.6% |   13.10
+24-26  TALL  11-30  |    92   59 |   95.8     1452  |     90.9     90.9     78.5 |   6.5%   6.5%  15.2% |   12.39
+24-26  TALL  31-60  |   123   83 |  109.4     3486  |     88.9     88.9     80.3 |   6.5%   6.5%  17.1% |    8.64
+24-26  TALL  61+    |   271  116 |  111.2     4659  |     94.2     94.3     88.3 |   3.3%   3.3%  13.7% |    5.98
+24-26  ALL   0      |    72   62 |   87.0      592  |     84.7     84.7     72.4 |  12.5%  12.5%  27.8% |   12.33
+24-26  ALL   1-10   |    85   68 |   84.3      933  |     81.4     81.4     68.6 |   5.9%   5.9%  24.7% |   12.74
+24-26  ALL   11-30  |   223  154 |  100.3     1721  |     86.4     86.4     74.6 |   5.8%   5.8%  19.7% |   11.80
+24-26  ALL   31-60  |   360  246 |  107.4     2746  |     89.4     89.4     80.0 |   6.1%   6.1%  13.3% |    9.35
+24-26  ALL   61+    |  1078  451 |  115.2     4077  |     98.8     98.8     91.9 |   2.8%   2.8%  10.7% |    6.85
+
+AGE 27+
+age    pos   games  |     n  npl |   q97pk    q97dv |     pred    b5raw    b5tap | x_pred  x_raw  x_tap | taperbite
+27+    MID   0      |     1    1 | UNRESOLVED (n<8)  max_pk 64.6 max_dv 1.1
+27+    MID   11-30  |     2    2 | UNRESOLVED (n<8)  max_pk 64.6 max_dv 23.7
+27+    MID   31-60  |    14   10 |   94.7*    1313* |     86.3     86.3     70.3 |   0.0%   0.0%  28.6% |   16.02
+27+    MID   61+    |   362  107 |  108.3     2922  |     99.5     99.5     89.0 |   1.1%   1.1%  15.5% |   10.43
+27+    SD    0      |     1    1 | UNRESOLVED (n<8)  max_pk 69.7 max_dv 394.3
+27+    SD    1-10   |     2    2 | UNRESOLVED (n<8)  max_pk 68.6 max_dv 13.5
+27+    SD    11-30  |     7    5 | UNRESOLVED (n<8)  max_pk 72.0 max_dv 0.5
+27+    SD    31-60  |     9    5 |   78.4*     164* |     78.7     78.7     65.6 |   0.0%   0.0%  33.3% |   13.09
+27+    SD    61+    |   230   75 |  104.8     2358  |     90.0     90.0     80.4 |   2.2%   2.2%  13.5% |    9.66
+27+    SF    0      |     3    3 | UNRESOLVED (n<8)  max_pk 68.6 max_dv 162.3
+27+    SF    1-10   |     4    4 | UNRESOLVED (n<8)  max_pk 68.6 max_dv 58.0
+27+    SF    11-30  |     2    2 | UNRESOLVED (n<8)  max_pk 67.4 max_dv 45.6
+27+    SF    31-60  |    14    9 |   72.3*     258* |     74.4     74.4     64.4 |   0.0%   0.0%  28.6% |   10.03
+27+    SF    61+    |   175   56 |   98.9     2204  |     84.7     84.8     76.5 |   4.0%   4.0%  16.0% |    8.28
+27+    KPD   0      |     1    1 | UNRESOLVED (n<8)  max_pk 63.0 max_dv 13.4
+27+    KPD   1-10   |     1    1 | UNRESOLVED (n<8)  max_pk 63.0 max_dv 0.0
+27+    KPD   11-30  |     1    1 | UNRESOLVED (n<8)  max_pk 68.0 max_dv 95.4
+27+    KPD   31-60  |    16    7 |   78.4*     666* |     75.7     75.7     65.8 |   0.0%   0.0%  25.0% |    9.91
+27+    KPD   61+    |   173   45 |   91.4     1799  |     80.7     80.7     73.2 |   0.6%   0.6%  12.1% |    7.49
+27+    KPF   0      |    10    6 |   82.5*    1516* |     73.7     73.7     62.8 |  20.0%  20.0%  20.0% |   10.90
+27+    KPF   1-10   |     2    2 | UNRESOLVED (n<8)  max_pk 57.7 max_dv 7.6
+27+    KPF   11-30  |     6    5 | UNRESOLVED (n<8)  max_pk 82.5 max_dv 937.7
+27+    KPF   31-60  |    17    9 |   78.2*     631* |     78.0     78.0     67.2 |   0.0%   0.0%   5.9% |   10.83
+27+    KPF   61+    |    96   30 |  100.8     3363  |     90.8     90.9     83.5 |   4.2%   3.1%  13.5% |    7.35
+27+    RUCK  0      |     2    2 | UNRESOLVED (n<8)  max_pk 66.8 max_dv 37.2
+27+    RUCK  1-10   |     9    5 |   85.0*     147* |     89.2     89.2     70.4 |   0.0%   0.0%  55.6% |   18.76
+27+    RUCK  11-30  |    13    9 |  100.0*     524* |     93.0     93.0     73.9 |   7.7%   7.7%  53.8% |   19.11
+27+    RUCK  31-60  |    18   12 |   87.1*     931* |     98.0     98.0     82.8 |   0.0%   0.0%  11.1% |   15.20
+27+    RUCK  61+    |   101   30 |  111.0     3432  |    105.5    105.5     94.8 |   1.0%   1.0%  12.9% |   10.72
+27+    TALL  0      |    13    9 |   82.5*    1516* |     75.9     75.9     63.7 |  15.4%  15.4%  15.4% |   12.20
+27+    TALL  1-10   |    12    8 |   85.0*     147* |     84.6     84.6     67.5 |   0.0%   0.0%  50.0% |   17.16
+27+    TALL  11-30  |    20   15 |  100.0*     938* |     88.2     88.2     71.5 |   5.0%   5.0%  45.0% |   16.70
+27+    TALL  31-60  |    51   28 |   83.9      648  |     84.4     84.4     72.3 |   0.0%   0.0%  13.7% |   12.09
+27+    TALL  61+    |   370  105 |  108.1     3017  |     90.1     90.1     81.8 |   1.6%   1.4%  12.7% |    8.34
+27+    ALL   0      |    18   14 |   82.5*    1516* |     74.0     74.0     61.4 |  22.2%  22.2%  33.3% |   12.59
+27+    ALL   1-10   |    18   14 |   85.0*     147* |     79.3     79.3     63.6 |  11.1%  11.1%  55.6% |   15.68
+27+    ALL   11-30  |    31   24 |  100.0*     938* |     85.0     85.0     68.8 |   3.2%   3.2%  45.2% |   16.13
+27+    ALL   31-60  |    88   52 |   86.2      672  |     82.5     82.5     70.0 |   0.0%   0.0%  20.5% |   12.49
+27+    ALL   61+    |  1137  343 |  107.3     2864  |     92.2     92.2     83.0 |   1.9%   1.8%  14.2% |    9.26
+
+OVERALL exceedance (all, <=2019, n=9877)  pred_raw   3.63%  [3.28%, 4.02%]   target ~3%
+OVERALL exceedance (all, <=2019, n=9877)  b5_raw     3.60%  [3.25%, 3.99%]   target ~3%
+OVERALL exceedance (all, <=2019, n=9877)  b5_tap     8.66%  [8.12%, 9.23%]   target ~3%
+OVERALL exceedance (trainpool, <=2019, n=9380)  pred_raw   3.67%  [3.31%, 4.07%]   target ~3%
+OVERALL exceedance (trainpool, <=2019, n=9380)  b5_raw     3.64%  [3.28%, 4.03%]   target ~3%
+OVERALL exceedance (trainpool, <=2019, n=9380)  b5_tap     8.68%  [8.13%, 9.26%]   target ~3%
+
+======================================================================================================================
+TRAINING-CONSTRUCTION AUDIT (refit_q97m.py / in-engine pool: debut<=2021, pick or _ft, not MSD; target fwd_best3_from(p,Y,2026))
+======================================================================================================================
+  training vantages (reconstructed): 13169 from 1900 players
+  CENSORING:   750 rows (5.7%) have < 3 forward seasons observable to 2026 (their best-3 target is right-censored)
+  CENSORING:  1718 rows (13.0%) have < 5 forward seasons observable to 2026 (their best-3 target is right-censored)
+  censored(<5 fwd yrs) share by debut cohort: 2004-2006:0%  2007-2009:2%  2010-2012:8%  2013-2015:15%  2016-2018:26%  2019-2021:41%
+  EXCLUDED from the training pool entirely (pathway counts, whole store): {'ND': 315, 'RD': 46, 'PDN': 43, 'PDA': 51, 'SSP': 52, 'MSD': 106, 'IRE': 57, 'UNR': 59, 'PDS': 21}
+  RUCK training vantages: 1000 of 13169 (7.6%); min_samples_leaf=25 bounds how local the tree can get
+
+======================================================================================================================
+NAMED ROWS (2026 vantage; cells matched on age x pos x games, primary window, all scope)
+======================================================================================================================
+nick-madden        RUCK PDA  age 22   g 10  cand   715 | pred_raw  111.4  b5_raw  111.4  b5_tap  105.1 (asc 0.76, lcr 0.4, nq 0)  [not in training pool: pathway class (pickless pool: SSP/IRE/UNR/PD*) excluded]
+    cell 22-23|RUCK|1-10                            n=35   realized q97 peak 111.4   TALL-pooled n=91   q97 104.7
+    realized q97 DV-from-vantage 3042   |   S6 scenario prices [462, 488, 592, 649, 1010, 1388]
+    local training density (same pos, age+-1.5, comparable exposure): 80 rows
+ned-moyle          RUCK MSD  age 24   g 27  cand  1545 | pred_raw  114.4  b5_raw  114.4  b5_tap  104.3 (asc 0.58, lcr 4.9, nq 1)  [not in training pool: pathway class MSD excluded]
+    cell 24-26|RUCK|11-30                           n=44   realized q97 peak 100.9   TALL-pooled n=92   q97 95.8
+    realized q97 DV-from-vantage 2267   |   S6 scenario prices [679, 927, 1194, 1565, 2859, 2445]
+    local training density (same pos, age+-1.5, comparable exposure): 107 rows
+lachlan-mcandrew   RUCK SSP  age 26   g 22  cand   873 | pred_raw  103.7  b5_raw  103.7  b5_tap   91.0 (asc 0.46, lcr 8.8, nq 1)  [not in training pool: pathway class (pickless pool: SSP/IRE/UNR/PD*) excluded]
+    cell 24-26|RUCK|11-30                           n=44   realized q97 peak 100.9   TALL-pooled n=92   q97 95.8
+    realized q97 DV-from-vantage 2267   |   S6 scenario prices [651, 651, 651, 787, 1462, 1169]
+    local training density (same pos, age+-1.5, comparable exposure): 90 rows
+samuel-grlj        MID  ND   age 19   g 19  cand  1831 | pred_raw  114.0  b5_raw  114.0  b5_tap  114.0 (asc 1.00, lcr -26.5, nq 1)  [not in training pool: debut>2021 (resolved-only window, by design)]
+    cell <=19|MID|11-30                             n=75   realized q97 peak 125.7   TALL-pooled n=21   q97 111.3*
+    realized q97 DV-from-vantage 5957   |   S6 scenario prices [901, 912, 1051, 1849, 3210, 4048]
+    local training density (same pos, age+-1.5, comparable exposure): 252 rows
+mitchell-edwards   RUCK ND   age 21   g 16  cand  1148 | pred_raw  124.0  b5_raw  124.0  b5_tap  119.3 (asc 0.88, lcr -25.2, nq 1)  [not in training pool: debut>2021 (resolved-only window, by design)]
+    cell 20-21|RUCK|11-30                           n=24   realized q97 peak 128.9*   TALL-pooled n=172  q97 103.3
+    realized q97 DV-from-vantage 6102*   |   S6 scenario prices [237, 240, 519, 912, 2535, 3481]
+    local training density (same pos, age+-1.5, comparable exposure): 65 rows
+jordan-croft       KPF  ND   age 21   g 18  cand   526 | pred_raw   87.4  b5_raw   87.4  b5_tap   84.3 (asc 0.88, lcr -26.8, nq 1)  [not in training pool: debut>2021 (resolved-only window, by design)]
+    cell 20-21|KPF|11-30                            n=67   realized q97 peak 98.0   TALL-pooled n=172  q97 103.3
+    realized q97 DV-from-vantage 3027   |   S6 scenario prices [243, 243, 270, 470, 889, 1452]
+    local training density (same pos, age+-1.5, comparable exposure): 149 rows
+jonty-faull        KPF  ND   age 20   g 26  cand   763 | pred_raw   88.8  b5_raw   88.8  b5_tap   88.8 (asc 1.00, lcr -29.7, nq 2)  [not in training pool: debut>2021 (resolved-only window, by design)]
+    cell 20-21|KPF|11-30                            n=67   realized q97 peak 98.0   TALL-pooled n=172  q97 103.3
+    realized q97 DV-from-vantage 3027   |   S6 scenario prices [378, 379, 408, 707, 1256, 2000]
+    local training density (same pos, age+-1.5, comparable exposure): 104 rows
+alix-tauru         KPD  ND   age 20   g 18  cand  1005 | pred_raw   92.0  b5_raw   92.0  b5_tap   92.0 (asc 1.00, lcr -23.0, nq 1)  [not in training pool: debut>2021 (resolved-only window, by design)]
+    cell 20-21|KPD|11-30                            n=81   realized q97 peak 94.9   TALL-pooled n=172  q97 103.3
+    realized q97 DV-from-vantage 2489   |   S6 scenario prices [497, 530, 794, 1162, 1447, 2075]
+    local training density (same pos, age+-1.5, comparable exposure): 137 rows
+
+======================================================================================================================
+BOARD IMPACT BOUND -- variant A (taper off) and variant B (cell-matched realized-q97 ceiling)
+  first-order: dPrice_row ~= rho * m_downstream * W6[5] * dSix_raw[5]  (the S6-disclosed reading)
+======================================================================================================================
+C4 b6 reproduction vs the committed S6 emit: max dev 0.000e+00 over 804 rows (7.1s)
+  VARIANT A (taper off): 566 rows move > 0.5 pts, total +30223 pts (board total 666,913 -> +4.53%)
+  VARIANT B (cell-matched realized q97, resolved non-thin cells only): 613 rows move, total +125976 pts
+    segment early (age<=23 & games<=30)  variant A: 102 rows +  3778 pts   variant B: 160 rows + 14784 pts
+    segment rest                         variant A: 464 rows + 26446 pts   variant B: 453 rows +111192 pts   (B here is mostly cell-coarseness, not model error)
+
+  TOP MOVERS, VARIANT A (taper off)
+   Tom De Koning            RUCK ND   a27  g113  cand  1664  ceil   97.4 ->  112.2  dprice  +206.8  [was inverted]
+   Nick Bryan               RUCK ND   a25  g34   cand   679  ceil   87.3 ->  103.3  dprice  +165.5  [was inverted]
+   Samson Ryan              RUCK ND   a26  g29   cand   264  ceil   72.8 ->   96.1  dprice  +164.3  [was inverted]
+   Dante Visentini          RUCK ND   a23  g27   cand   762  ceil   99.0 ->  111.8  dprice  +156.9  [was inverted]
+   Sean Darcy               RUCK ND   a28  g134  cand   703  ceil   82.6 ->   97.5  dprice  +156.6  [was inverted]
+   Will Day                 MID  ND   a25  g85   cand  2139  ceil  107.6 ->  116.3  dprice  +156.1  [was inverted]
+   Wil Powell               SD   ND   a27  g149  cand   746  ceil   87.8 ->   99.9  dprice  +152.0  [was inverted]
+   Will Setterfield         MID  ND   a28  g93   cand   594  ceil   84.0 ->  103.8  dprice  +148.9  [was inverted]
+   Jake Soligo              MID  ND   a23  g103  cand  1829  ceil  101.2 ->  109.4  dprice  +144.2
+   Adam Cerra               MID  ND   a27  g165  cand  1030  ceil   92.4 ->  104.9  dprice  +142.9  [was inverted]
+   Ned Reeves               RUCK SSP  a28  g58   cand   214  ceil   79.9 ->   96.4  dprice  +141.9  [was inverted]
+   Andrew McGrath           SD   ND   a28  g198  cand  1035  ceil   90.2 ->  102.8  dprice  +139.2  [was inverted]
+   Lachlan Ash              SD   ND   a25  g146  cand  5303  ceil  121.6 ->  126.5  dprice  +138.3  [was inverted]
+   Peter Ladhams            RUCK RD   a28  g65   cand   449  ceil   72.7 ->   92.9  dprice  +138.2  [was inverted]
+   Massimo D'Ambrosio       MID  MSD  a23  g87   cand  1532  ceil  103.2 ->  111.5  dprice  +137.9
+
+  TOP MOVERS, VARIANT B (realized-q97 ceiling)
+   Jesse Motlop             SF   ND   a23  g63   cand    66  ceil   67.1 ->  117.6 (22-23|SF|61+)  dprice  +789.4
+   Finn Maginness           SF   ND   a25  g64   cand    66  ceil   54.5 ->  110.5 (24-26|SF|61+)  dprice  +771.8
+   Jeremy Sharp             MID  ND   a25  g62   cand    94  ceil   69.7 ->  119.6 (24-26|MID|61+)  dprice  +685.7
+   Matt Johnson             MID  ND   a23  g75   cand   941  ceil   95.4 ->  126.5 (22-23|MID|61+)  dprice  +651.5
+   Harry Schoenberg         MID  ND   a25  g67   cand   130  ceil   61.0 ->  119.6 (24-26|MID|61+)  dprice  +651.1
+   Bailey Scott             MID  ND   a26  g116  cand    20  ceil   61.2 ->  119.6 (24-26|MID|61+)  dprice  +643.0
+   James Jordon             MID  ND   a26  g135  cand   164  ceil   71.7 ->  119.6 (24-26|MID|61+)  dprice  +625.3
+   Jake Soligo              MID  ND   a23  g103  cand  1829  ceil  101.2 ->  126.5 (22-23|MID|61+)  dprice  +608.5
+   Kai Lohmann              SF   ND   a23  g74   cand   789  ceil   82.7 ->  117.6 (22-23|SF|61+)  dprice  +592.1
+   Oliver Henry             SF   ND   a24  g105  cand   189  ceil   68.2 ->  110.5 (24-26|SF|61+)  dprice  +591.6
+   Bailey Humphrey          MID  ND   a22  g81   cand  2223  ceil  102.4 ->  126.5 (22-23|MID|61+)  dprice  +588.4
+   Paul Curtis              SF   ND   a23  g96   cand  1442  ceil   86.4 ->  117.6 (22-23|SF|61+)  dprice  +588.0
+   Bobby Hill               SF   ND   a26  g97   cand    36  ceil   62.0 ->  110.5 (24-26|SF|61+)  dprice  +584.3
+   Liam Henry               SF   ND   a25  g69   cand   142  ceil   57.0 ->  110.5 (24-26|SF|61+)  dprice  +573.8
+   Mattaes Phillipou        MID  ND   a22  g63   cand  1932  ceil  101.1 ->  126.5 (22-23|MID|61+)  dprice  +572.8

@@ -1,0 +1,850 @@
+{
+ "alix-tauru": {
+  "age": 20,
+  "asc_base": 1.0,
+  "b6_engine": [
+   51.305643975375276,
+   63.85946673925834,
+   74.01051706597633,
+   80.61623549832726,
+   84.53312236342204,
+   91.95791084577878
+  ],
+  "b6_pre_taper": [
+   51.305643975375276,
+   63.85946673925834,
+   74.01051706597633,
+   80.61623549832726,
+   84.53312236342204,
+   91.95791084577878
+  ],
+  "cand": 1005,
+  "cell": "primary_2019|all|20-21|KPD|11-30",
+  "cell_stats": {
+   "dv": {
+    "max": 3074.7850248651903,
+    "median": 269.6531211689591,
+    "min": 0.0,
+    "q90": {
+     "resolved": true,
+     "value": 1553.5214890040559
+    },
+    "q97": {
+     "resolved": true,
+     "value": 2488.9860095010654
+    },
+    "thin_players": false
+   },
+   "n": 81,
+   "n_players": 64,
+   "peak": {
+    "max": 96.26666666666665,
+    "median": 69.35666666666667,
+    "min": 34.5,
+    "q90": {
+     "resolved": true,
+     "value": 85.23333333333333
+    },
+    "q97": {
+     "resolved": true,
+     "value": 94.88399999999999
+    },
+    "thin_players": false
+   }
+  },
+  "cell_tall": "primary_2019|all|20-21|TALL|11-30",
+  "cell_tall_stats": {
+   "dv": {
+    "max": 6102.06701433054,
+    "median": 300.2488087647401,
+    "min": 0.0,
+    "q90": {
+     "resolved": true,
+     "value": 2301.8232674896162
+    },
+    "q97": {
+     "resolved": true,
+     "value": 2996.445731316304
+    },
+    "thin_players": false
+   },
+   "n": 172,
+   "n_players": 144,
+   "peak": {
+    "max": 128.86666666666667,
+    "median": 70.64833333333334,
+    "min": 27.7,
+    "q90": {
+     "resolved": true,
+     "value": 94.28666666666666
+    },
+    "q97": {
+     "resolved": true,
+     "value": 103.316
+    },
+    "thin_players": false
+   }
+  },
+  "excluded_from_trainpool": true,
+  "games": 18,
+  "lcr": -23.03940634595702,
+  "m_downstream": 1.0291655553302619,
+  "nqual": 1,
+  "pathway": "ND",
+  "pos": "KPD",
+  "pred_raw": 91.95791084577878,
+  "rho": 0.49270677629398674,
+  "scenario_prices": [
+   497.21324938016045,
+   530.1732441777334,
+   793.8532025583171,
+   1162.4980674480946,
+   1446.9681763933013,
+   2074.729308076306
+  ],
+  "train_density_local": 137,
+  "trainpool_exclusion_reason": "debut>2021 (resolved-only window, by design)"
+ },
+ "jonty-faull": {
+  "age": 20,
+  "asc_base": 1.0,
+  "b6_engine": [
+   51.918448342463634,
+   52.85167398916356,
+   61.504335641050496,
+   72.39799449101804,
+   80.82159574005344,
+   88.81927666377203
+  ],
+  "b6_pre_taper": [
+   51.918448342463634,
+   52.85167398916356,
+   61.504335641050496,
+   72.39799449101804,
+   80.82159574005344,
+   88.81927666377203
+  ],
+  "cand": 763,
+  "cell": "primary_2019|all|20-21|KPF|11-30",
+  "cell_stats": {
+   "dv": {
+    "max": 3343.3942247104123,
+    "median": 326.3517949225997,
+    "min": 0.0,
+    "q90": {
+     "resolved": true,
+     "value": 2314.902804624093
+    },
+    "q97": {
+     "resolved": true,
+     "value": 3027.0444993002766
+    },
+    "thin_players": false
+   },
+   "n": 67,
+   "n_players": 60,
+   "peak": {
+    "max": 104.0,
+    "median": 70.12333333333333,
+    "min": 27.7,
+    "q90": {
+     "resolved": true,
+     "value": 93.33266666666665
+    },
+    "q97": {
+     "resolved": true,
+     "value": 97.95553333333332
+    },
+    "thin_players": false
+   }
+  },
+  "cell_tall": "primary_2019|all|20-21|TALL|11-30",
+  "cell_tall_stats": {
+   "dv": {
+    "max": 6102.06701433054,
+    "median": 300.2488087647401,
+    "min": 0.0,
+    "q90": {
+     "resolved": true,
+     "value": 2301.8232674896162
+    },
+    "q97": {
+     "resolved": true,
+     "value": 2996.445731316304
+    },
+    "thin_players": false
+   },
+   "n": 172,
+   "n_players": 144,
+   "peak": {
+    "max": 128.86666666666667,
+    "median": 70.64833333333334,
+    "min": 27.7,
+    "q90": {
+     "resolved": true,
+     "value": 94.28666666666666
+    },
+    "q97": {
+     "resolved": true,
+     "value": 103.316
+    },
+    "thin_players": false
+   }
+  },
+  "excluded_from_trainpool": true,
+  "games": 26,
+  "lcr": -29.712592155706275,
+  "m_downstream": 0.9617363462132219,
+  "nqual": 2,
+  "pathway": "ND",
+  "pos": "KPF",
+  "pred_raw": 88.81927666377203,
+  "rho": 0.5980002235271894,
+  "scenario_prices": [
+   377.98113551048664,
+   378.55625406049637,
+   408.4624186610023,
+   706.9489461160517,
+   1255.6120428253332,
+   2000.3905650879324
+  ],
+  "train_density_local": 104,
+  "trainpool_exclusion_reason": "debut>2021 (resolved-only window, by design)"
+ },
+ "jordan-croft": {
+  "age": 21,
+  "asc_base": 0.88,
+  "b6_engine": [
+   48.10722638682014,
+   50.88563095862255,
+   60.912455139619254,
+   69.79558245507896,
+   77.32779875469238,
+   84.25693427878512
+  ],
+  "b6_pre_taper": [
+   48.10722638682014,
+   50.88563095862255,
+   60.912455139619254,
+   69.79558245507896,
+   77.32779875469238,
+   87.44027234321683
+  ],
+  "cand": 526,
+  "cell": "primary_2019|all|20-21|KPF|11-30",
+  "cell_stats": {
+   "dv": {
+    "max": 3343.3942247104123,
+    "median": 326.3517949225997,
+    "min": 0.0,
+    "q90": {
+     "resolved": true,
+     "value": 2314.902804624093
+    },
+    "q97": {
+     "resolved": true,
+     "value": 3027.0444993002766
+    },
+    "thin_players": false
+   },
+   "n": 67,
+   "n_players": 60,
+   "peak": {
+    "max": 104.0,
+    "median": 70.12333333333333,
+    "min": 27.7,
+    "q90": {
+     "resolved": true,
+     "value": 93.33266666666665
+    },
+    "q97": {
+     "resolved": true,
+     "value": 97.95553333333332
+    },
+    "thin_players": false
+   }
+  },
+  "cell_tall": "primary_2019|all|20-21|TALL|11-30",
+  "cell_tall_stats": {
+   "dv": {
+    "max": 6102.06701433054,
+    "median": 300.2488087647401,
+    "min": 0.0,
+    "q90": {
+     "resolved": true,
+     "value": 2301.8232674896162
+    },
+    "q97": {
+     "resolved": true,
+     "value": 2996.445731316304
+    },
+    "thin_players": false
+   },
+   "n": 172,
+   "n_players": 144,
+   "peak": {
+    "max": 128.86666666666667,
+    "median": 70.64833333333334,
+    "min": 27.7,
+    "q90": {
+     "resolved": true,
+     "value": 94.28666666666666
+    },
+    "q97": {
+     "resolved": true,
+     "value": 103.316
+    },
+    "thin_players": false
+   }
+  },
+  "excluded_from_trainpool": true,
+  "games": 18,
+  "lcr": -26.77251535674909,
+  "m_downstream": 1.0814001429982723,
+  "nqual": 1,
+  "pathway": "ND",
+  "pos": "KPF",
+  "pred_raw": 87.44027234321683,
+  "rho": 0.49270677629398674,
+  "scenario_prices": [
+   242.73520186703794,
+   243.26801504537846,
+   270.4414871407458,
+   470.2464290184464,
+   889.0375871941068,
+   1451.688303521712
+  ],
+  "train_density_local": 149,
+  "trainpool_exclusion_reason": "debut>2021 (resolved-only window, by design)"
+ },
+ "lachlan-mcandrew": {
+  "age": 26,
+  "asc_base": 0.46,
+  "b6_engine": [
+   59.92139284939431,
+   72.08390135685492,
+   78.8329965023423,
+   83.95119338116287,
+   94.74036467915857,
+   91.03310512905102
+  ],
+  "b6_pre_taper": [
+   59.92139284939431,
+   72.08390135685492,
+   78.8329965023423,
+   83.95119338116287,
+   94.74036467915857,
+   103.7453739084958
+  ],
+  "cand": 873,
+  "cell": "primary_2019|all|24-26|RUCK|11-30",
+  "cell_stats": {
+   "dv": {
+    "max": 2865.285100212928,
+    "median": 24.08156834330982,
+    "min": 0.0,
+    "q90": {
+     "resolved": true,
+     "value": 441.46739893835326
+    },
+    "q97": {
+     "resolved": true,
+     "value": 2266.621823182232
+    },
+    "thin_players": true
+   },
+   "n": 44,
+   "n_players": 29,
+   "peak": {
+    "max": 109.36666666666667,
+    "median": 67.275,
+    "min": 36.0,
+    "q90": {
+     "resolved": true,
+     "value": 86.39166666666668
+    },
+    "q97": {
+     "resolved": true,
+     "value": 100.89933333333333
+    },
+    "thin_players": true
+   }
+  },
+  "cell_tall": "primary_2019|all|24-26|TALL|11-30",
+  "cell_tall_stats": {
+   "dv": {
+    "max": 2865.285100212928,
+    "median": 31.94081199044107,
+    "min": 0.0,
+    "q90": {
+     "resolved": true,
+     "value": 878.9217294212971
+    },
+    "q97": {
+     "resolved": true,
+     "value": 1452.327883740371
+    },
+    "thin_players": false
+   },
+   "n": 92,
+   "n_players": 59,
+   "peak": {
+    "max": 109.36666666666667,
+    "median": 66.85,
+    "min": 28.0,
+    "q90": {
+     "resolved": true,
+     "value": 83.70233333333334
+    },
+    "q97": {
+     "resolved": true,
+     "value": 95.76599999999998
+    },
+    "thin_players": false
+   }
+  },
+  "excluded_from_trainpool": true,
+  "games": 22,
+  "lcr": 8.769999999999996,
+  "m_downstream": 0.96011013419261,
+  "nqual": 1,
+  "pathway": "SSP",
+  "pos": "RUCK",
+  "pred_raw": 103.7453739084958,
+  "rho": 0.5493643597368256,
+  "scenario_prices": [
+   650.5425660491246,
+   650.5425660491246,
+   650.5425660491246,
+   787.1521909383429,
+   1461.7611107580735,
+   1169.026200281177
+  ],
+  "train_density_local": 90,
+  "trainpool_exclusion_reason": "pathway class (pickless pool: SSP/IRE/UNR/PD*) excluded"
+ },
+ "mitchell-edwards": {
+  "age": 21,
+  "asc_base": 0.88,
+  "b6_engine": [
+   57.280544589823975,
+   66.50523527663464,
+   84.52987701821628,
+   92.57156316250558,
+   112.08731900949893,
+   119.29048742620435
+  ],
+  "b6_pre_taper": [
+   57.280544589823975,
+   66.50523527663464,
+   84.52987701821628,
+   92.57156316250558,
+   112.08731900949893,
+   124.03057066365726
+  ],
+  "cand": 1148,
+  "cell": "primary_2019|all|20-21|RUCK|11-30",
+  "cell_stats": {
+   "dv": {
+    "max": 6102.06701433054,
+    "median": 662.5297862193852,
+    "min": 0.0,
+    "q90": {
+     "resolved": true,
+     "value": 2739.4497135384377
+    },
+    "q97": {
+     "resolved": false,
+     "value": 6102.06701433054
+    },
+    "thin_players": true
+   },
+   "n": 24,
+   "n_players": 20,
+   "peak": {
+    "max": 128.86666666666667,
+    "median": 87.08166666666666,
+    "min": 52.26666666666667,
+    "q90": {
+     "resolved": true,
+     "value": 108.26666666666667
+    },
+    "q97": {
+     "resolved": false,
+     "value": 128.86666666666667
+    },
+    "thin_players": true
+   }
+  },
+  "cell_tall": "primary_2019|all|20-21|TALL|11-30",
+  "cell_tall_stats": {
+   "dv": {
+    "max": 6102.06701433054,
+    "median": 300.2488087647401,
+    "min": 0.0,
+    "q90": {
+     "resolved": true,
+     "value": 2301.8232674896162
+    },
+    "q97": {
+     "resolved": true,
+     "value": 2996.445731316304
+    },
+    "thin_players": false
+   },
+   "n": 172,
+   "n_players": 144,
+   "peak": {
+    "max": 128.86666666666667,
+    "median": 70.64833333333334,
+    "min": 27.7,
+    "q90": {
+     "resolved": true,
+     "value": 94.28666666666666
+    },
+    "q97": {
+     "resolved": true,
+     "value": 103.316
+    },
+    "thin_players": false
+   }
+  },
+  "excluded_from_trainpool": true,
+  "games": 16,
+  "lcr": -25.20000000000001,
+  "m_downstream": 1.038650733752974,
+  "nqual": 1,
+  "pathway": "ND",
+  "pos": "RUCK",
+  "pred_raw": 124.03057066365726,
+  "rho": 0.4607230291631852,
+  "scenario_prices": [
+   237.45252176082087,
+   240.32370363460427,
+   519.3068757038924,
+   911.7017317876252,
+   2534.8765510998464,
+   3481.4095088237777
+  ],
+  "train_density_local": 65,
+  "trainpool_exclusion_reason": "debut>2021 (resolved-only window, by design)"
+ },
+ "ned-moyle": {
+  "age": 24,
+  "asc_base": 0.58,
+  "b6_engine": [
+   75.77335487916936,
+   85.53817236497062,
+   90.1806763617721,
+   95.03081340468688,
+   108.29695319677577,
+   104.34442630525533
+  ],
+  "b6_pre_taper": [
+   75.77335487916936,
+   85.53817236497062,
+   90.1806763617721,
+   95.03081340468688,
+   108.29695319677577,
+   114.41291774525186
+  ],
+  "cand": 1545,
+  "cell": "primary_2019|all|24-26|RUCK|11-30",
+  "cell_stats": {
+   "dv": {
+    "max": 2865.285100212928,
+    "median": 24.08156834330982,
+    "min": 0.0,
+    "q90": {
+     "resolved": true,
+     "value": 441.46739893835326
+    },
+    "q97": {
+     "resolved": true,
+     "value": 2266.621823182232
+    },
+    "thin_players": true
+   },
+   "n": 44,
+   "n_players": 29,
+   "peak": {
+    "max": 109.36666666666667,
+    "median": 67.275,
+    "min": 36.0,
+    "q90": {
+     "resolved": true,
+     "value": 86.39166666666668
+    },
+    "q97": {
+     "resolved": true,
+     "value": 100.89933333333333
+    },
+    "thin_players": true
+   }
+  },
+  "cell_tall": "primary_2019|all|24-26|TALL|11-30",
+  "cell_tall_stats": {
+   "dv": {
+    "max": 2865.285100212928,
+    "median": 31.94081199044107,
+    "min": 0.0,
+    "q90": {
+     "resolved": true,
+     "value": 878.9217294212971
+    },
+    "q97": {
+     "resolved": true,
+     "value": 1452.327883740371
+    },
+    "thin_players": false
+   },
+   "n": 92,
+   "n_players": 59,
+   "peak": {
+    "max": 109.36666666666667,
+    "median": 66.85,
+    "min": 28.0,
+    "q90": {
+     "resolved": true,
+     "value": 83.70233333333334
+    },
+    "q97": {
+     "resolved": true,
+     "value": 95.76599999999998
+    },
+    "thin_players": false
+   }
+  },
+  "excluded_from_trainpool": true,
+  "games": 27,
+  "lcr": 4.928612769866376,
+  "m_downstream": 0.914885906615742,
+  "nqual": 1,
+  "pathway": "MSD",
+  "pos": "RUCK",
+  "pred_raw": 114.41291774525186,
+  "rho": 0.6090956260971931,
+  "scenario_prices": [
+   678.8059304306695,
+   927.3407702582051,
+   1194.264959220962,
+   1565.3954599499727,
+   2859.336935464631,
+   2444.740700416007
+  ],
+  "train_density_local": 107,
+  "trainpool_exclusion_reason": "pathway class MSD excluded"
+ },
+ "nick-madden": {
+  "age": 22,
+  "asc_base": 0.76,
+  "b6_engine": [
+   61.52483013195021,
+   76.81889233192362,
+   85.42769127096928,
+   87.8898316269322,
+   97.70862231773164,
+   105.14658120987704
+  ],
+  "b6_pre_taper": [
+   61.52483013195021,
+   76.81889233192362,
+   85.42769127096928,
+   87.8898316269322,
+   97.70862231773164,
+   111.37359908532159
+  ],
+  "cand": 715,
+  "cell": "primary_2019|all|22-23|RUCK|1-10",
+  "cell_stats": {
+   "dv": {
+    "max": 4082.9878018968166,
+    "median": 247.1527611600185,
+    "min": 0.0,
+    "q90": {
+     "resolved": true,
+     "value": 2316.4283041652016
+    },
+    "q97": {
+     "resolved": true,
+     "value": 3042.392963472616
+    },
+    "thin_players": true
+   },
+   "n": 35,
+   "n_players": 23,
+   "peak": {
+    "max": 112.8,
+    "median": 71.14333333333333,
+    "min": 32.0,
+    "q90": {
+     "resolved": true,
+     "value": 102.15466666666667
+    },
+    "q97": {
+     "resolved": true,
+     "value": 111.36913333333334
+    },
+    "thin_players": true
+   }
+  },
+  "cell_tall": "primary_2019|all|22-23|TALL|1-10",
+  "cell_tall_stats": {
+   "dv": {
+    "max": 4082.9878018968166,
+    "median": 9.862698961265792,
+    "min": 0.0,
+    "q90": {
+     "resolved": true,
+     "value": 599.4008935167312
+    },
+    "q97": {
+     "resolved": true,
+     "value": 2490.480757313786
+    },
+    "thin_players": false
+   },
+   "n": 91,
+   "n_players": 65,
+   "peak": {
+    "max": 112.8,
+    "median": 63.8,
+    "min": 5.0,
+    "q90": {
+     "resolved": true,
+     "value": 84.81666666666666
+    },
+    "q97": {
+     "resolved": true,
+     "value": 104.73266666666665
+    },
+    "thin_players": false
+   }
+  },
+  "excluded_from_trainpool": true,
+  "games": 10,
+  "lcr": 0.35924046202310933,
+  "m_downstream": 0.9787773513003882,
+  "nqual": 0,
+  "pathway": "PDA",
+  "pos": "RUCK",
+  "pred_raw": 111.37359908532159,
+  "rho": 0.34537078133905263,
+  "scenario_prices": [
+   461.95595525026124,
+   488.3231609391567,
+   592.1017782018608,
+   648.8926827625588,
+   1009.9205760412821,
+   1387.8505242487843
+  ],
+  "train_density_local": 80,
+  "trainpool_exclusion_reason": "pathway class (pickless pool: SSP/IRE/UNR/PD*) excluded"
+ },
+ "samuel-grlj": {
+  "age": 19,
+  "asc_base": 1.0,
+  "b6_engine": [
+   61.871453864277036,
+   71.08177823720192,
+   80.80453288195064,
+   95.22689333007042,
+   108.44830992078515,
+   114.00890558389405
+  ],
+  "b6_pre_taper": [
+   61.871453864277036,
+   71.08177823720192,
+   80.80453288195064,
+   95.22689333007042,
+   108.44830992078515,
+   114.00890558389405
+  ],
+  "cand": 1831,
+  "cell": "primary_2019|all|<=19|MID|11-30",
+  "cell_stats": {
+   "dv": {
+    "max": 6695.126408829169,
+    "median": 2026.8939321840885,
+    "min": 2.790517508684603e-05,
+    "q90": {
+     "resolved": true,
+     "value": 4788.726373548969
+    },
+    "q97": {
+     "resolved": true,
+     "value": 5957.210814324304
+    },
+    "thin_players": false
+   },
+   "n": 75,
+   "n_players": 75,
+   "peak": {
+    "max": 128.03333333333333,
+    "median": 101.23333333333335,
+    "min": 52.166666666666664,
+    "q90": {
+     "resolved": true,
+     "value": 116.51333333333335
+    },
+    "q97": {
+     "resolved": true,
+     "value": 125.72000000000001
+    },
+    "thin_players": false
+   }
+  },
+  "cell_tall": "primary_2019|all|<=19|TALL|11-30",
+  "cell_tall_stats": {
+   "dv": {
+    "max": 5303.326906225457,
+    "median": 944.8623581578162,
+    "min": 0.5948740541102381,
+    "q90": {
+     "resolved": true,
+     "value": 2373.680969115866
+    },
+    "q97": {
+     "resolved": false,
+     "value": 5303.326906225457
+    },
+    "thin_players": true
+   },
+   "n": 21,
+   "n_players": 21,
+   "peak": {
+    "max": 111.26666666666667,
+    "median": 77.76666666666667,
+    "min": 50.0,
+    "q90": {
+     "resolved": true,
+     "value": 101.23333333333333
+    },
+    "q97": {
+     "resolved": false,
+     "value": 111.26666666666667
+    },
+    "thin_players": true
+   }
+  },
+  "excluded_from_trainpool": true,
+  "games": 19,
+  "lcr": -26.529999999999994,
+  "m_downstream": 1.0125299102364655,
+  "nqual": 1,
+  "pathway": "ND",
+  "pos": "MID",
+  "pred_raw": 114.00890558389405,
+  "rho": 0.5077281496541688,
+  "scenario_prices": [
+   900.774821159518,
+   912.084799790983,
+   1051.4031729331195,
+   1849.2707563891938,
+   3210.0668217295474,
+   4047.519330395749
+  ],
+  "train_density_local": 252,
+  "trainpool_exclusion_reason": "debut>2021 (resolved-only window, by design)"
+ }
+}
