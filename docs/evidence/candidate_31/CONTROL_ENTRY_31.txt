@@ -1,0 +1,12 @@
+ORDER 31 — STEP 0 ENTRY BYTE-IDENTITY CONTROL
+=============================================
+Ran on the UNTOUCHED tree at land/order-29 tip cd8d154, before any Order-31 edit existed.
+Build: docs/evidence/candidate_31/bb31.sh entry   (bb30b.sh with ROOT and scratch re-pointed; nothing else changed)
+Pinned venv /root/rl_venv312 · five-var thread pinning · PYTHONHASHSEED=0 · RL_V0SURF_PKL set · strictly sequential.
+
+  rl_model.py        md5 14000af2a46f7a3c4cdfde303f5a1aff
+  rl_model_data.json md5 cb38ef1171dcf20aae66ebf12682be0d
+  rl_app_data.json   md5 9298203135202a0c707bb0977ba38c31   <-- THE COMMITTED STEP-2 BOARD
+
+VERDICT: PASS. The committed board 9298203135202a0c707bb0977ba38c31 reproduces byte-exact on the
+untouched tree. P37 CLOSED.
