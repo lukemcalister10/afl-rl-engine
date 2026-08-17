@@ -1,0 +1,39 @@
+rebuilt primary rows 3218 (W5: 3218)
+rows with no trailing-2 L (ratio held 1.0, disclosed): 387
+C-TIER star|surv: 27:0.95(pub 0.95) 28:0.96(pub 0.96) 29:1.03(pub 1.03) 30:1.11(pub 1.11) 31:1.03(pub 1.03)  PASS
+C-TIER mid|surv: 27:0.91(pub 0.91) 28:1.08(pub 1.08) 29:0.77(pub 0.77) 30:0.88(pub 0.88) 31:1.16(pub 1.16)  PASS
+C-TIER role|surv: 27:1.28(pub 1.28) 28:1.57(pub 1.57) 29:2.03(pub 2.03) 30:0.57(pub 0.57) 31:0.93(pub 0.93)  PASS
+  grid 0/465
+  grid 50/465
+  grid 100/465
+  grid 150/465
+  grid 200/465
+  grid 250/465
+  grid 300/465
+  grid 350/465
+  grid 400/465
+  grid 450/465
+
+FIT: A=0.02 s0=64.0  loss=8.032  (feasible 308 of 465 grid points)
+  unconstrained best: A=0.02 s0=64.0 loss=8.032 feasible=True
+  mean star-tier surplus (28-31): 17.04  -> G at fit = 0.766
+  star|surv B: ladder-only 27:0.95 28:0.96 29:1.03 30:1.11 31:1.03  -> with fade 27:0.95 28:0.96 29:1.02 30:1.10 31:1.02
+  mid|surv B: ladder-only 27:0.91 28:1.08 29:0.77 30:0.88 31:1.16  -> with fade 27:0.91 28:1.07 29:0.77 30:0.87 31:1.15
+  role|surv B: ladder-only 27:1.28 28:1.57 29:2.03 30:0.57 31:0.93  -> with fade 27:1.28 28:1.57 29:2.03 30:0.56 31:0.92
+  STAR GATE: PASS  27:0.950(meas 0.950) 28:0.956(meas 0.960) 29:1.022(meas 1.030) 30:1.100(meas 1.111) 31:1.017(meas 1.028)
+  boot (500 ok, 0 failed draws): A CI [0.00, 0.60]  s0 CI [2.0, 64.0]  G(star) CI [0.000, 0.766]
+  IDENTIFICATION: A-CI excludes 0: False;  G(star) CI below 0.5: False  ==> FAILED -> FALLBACK (flat hazard knots)
+
+  effective rate r(a,s):
+   age 27: s=0:0.140  s=2:0.140  s=5:0.140  s=10:0.140  s=15:0.140  s=20:0.140  s=30:0.140
+   age 28: s=0:0.145  s=2:0.145  s=5:0.145  s=10:0.144  s=15:0.144  s=20:0.144  s=30:0.143
+   age 29: s=0:0.150  s=2:0.150  s=5:0.149  s=10:0.149  s=15:0.148  s=20:0.147  s=30:0.146
+   age 30: s=0:0.155  s=2:0.154  s=5:0.154  s=10:0.153  s=15:0.152  s=20:0.151  s=30:0.149
+   age 31: s=0:0.160  s=2:0.159  s=5:0.159  s=10:0.157  s=15:0.156  s=20:0.155  s=30:0.152
+   age 32: s=0:0.160  s=2:0.159  s=5:0.159  s=10:0.157  s=15:0.156  s=20:0.155  s=30:0.152
+  step 27->28 n=242 engine 0.8160 -> new 0.8125  realized 0.7431
+  step 28->29 n=206 engine 0.7528 -> new 0.7504  realized 0.7007
+  step 29->30 n=153 engine 0.7632 -> new 0.7614  realized 0.6613
+  step 30->31 n=101 engine 0.7864 -> new 0.7855  realized 0.6321
+
+wrote RESULTS_B_FADE_FIT.json

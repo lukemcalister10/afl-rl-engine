@@ -823,7 +823,60 @@ def best2(p):
     d=debut(p); s=sorted([r['avg'] for r in p['scoring'] if r['games']>=7 and r['year']>=d],reverse=True)[:2]; return float(np.mean(s)) if s else 0
 REPL={'MID':80.1,'SD':78.3,'RUCK':78.5,'KPD':68.4,'SF':70.9,'KPF':66.8}  # v3.3 derived (rl_replacement_derive.py): Rule-1 pool, kfru 0.5, SD/MID 50/50 @4.16/5.20, KPD@2.0, SF@4.0, KPF@2.0, RUCK@1.64  [BAKE 2026-07-04: KPF REPL-1, 67.8->66.8, owner dial]
 DELTAS={-8:.58,-7:.62,-6:.68,-5:.74,-4:.80,-3:.86,-2:.92,-1:.97,0:1.0,1:.99,2:.98,3:.96,4:.94,5:.91,6:.88,7:.84,8:.79,9:.73,10:.66,11:.58,12:.50,13:.42,14:.34}
-def frac(a,pa): return DELTAS[max(-8,min(14,int(round(a-pa))))]
+# ==== ORDER B — THE VETERAN FIXES (RL_O33, DEFAULT OFF; #334 c.5312733761 commission, c.5314553763 the
+# owner's B rulings, derivation packet docs/evidence/order_b_derivation_2026-08-17/). NOTHING IS GREENLIT:
+# RL_O33 unset => every expression below is inert => the board is BYTE-EXACT to the pre-order tree, and
+# this build LANDS ONLY AFTER the repaired Candidate 32 lands (two packets, two reviews — the ruling's
+# sequencing). Stage sub-dial RL_O33_STAGE (declared, default 3 = the full candidate):
+#   1 = B-1 the ANCHORED TALL LADDER: KPD/KPF post-peak decline rho_j = 0.030 + 0.025*(j-1) (the
+#       derivation's fitted family, ADOPTED by ruling B-1 — f(1..5) = .970/.917/.843/.755/.657 at ages
+#       28-32), consumed by frac() below only when the caller passes g in {KPD,KPF} and only past peak;
+#       pre-peak DELTAS and PEAK_AGE (27/27) untouched; RUCK keeps the current curve (derivation: KEEP).
+#       Plus the ANCHOR-PRESERVING renorm s* on the tall projection stream (the naive wiring cut
+#       prime/young talls 17-30% and was REJECTED by the prime-anchor evidence) — derived at build time
+#       as the fixed point conserving the aggregate board value of KPD/KPF rows aged 23-26, then PINNED
+#       below. RL_O33_SSTAR is the derivation-shell override ONLY (the s* fixed-point iteration runs
+#       with it at 1.0); it is never set on a shipping board.
+#   2 = B-2 the TERMINAL FADE — THE FALLBACK POSITION, and the packet says so plainly: the owner
+#       withdrew the universal terminal knob ("are all 31-year-olds equal?") and ordered an
+#       OUTPUT-CONDITIONAL fade, fallback flat-hazard ONLY if the conditional fit fails identification.
+#       IT FAILED, twice, both shown in RESULTS_B_FADE_FIT{,2}.json: the prereg'd tier-level loss cannot
+#       identify any fade (A CI [0.00,0.60] spans 0), and the rate-instrument rescue identifies a fade
+#       (A CI [0.14,0.60]) but NOT output-conditionality — s0 runs to the grid ceiling (G(star) CI
+#       [0.12,0.77], not below the 0.5 identification bar) because the mid/role rate gaps exhaust the
+#       whole discount family (the un-closable remainder is the k=0 exit-hazard channel the derivation
+#       named for a future order). So the wired object is the ruled fallback: the HAZARD-ARITHMETIC
+#       knots (29: 0.211 · 30: 0.232 · 31: 0.246 — r(a) = 0.14 + the measured excess exit hazard),
+#       piecewise-linear in CONTINUOUS age via _pw_interp (no integer cliffs), 0.14 at <=28 (zero rows
+#       below 28 move), flat beyond 31, BALANCED LENS ONLY. The fitted-34% boundary value is DEAD
+#       (owner ruling). The 34%-family knots do not appear here at all.
+#   3 = B-3 TAPER RETIREMENT: the v7 ascending age-taper on the q97 ceiling band is not applied
+#       (asc == 1 => band[5] = max(q97m, q90) exactly as _b6_core emits it) — the derivation's quantile
+#       re-fit found asc*=1 the boundary solution in EVERY band the taper bites; kills all 341 v-inversions
+#       by construction. Wired at the b6 wrapper in _merged_recover.py; the frozen q97m is NOT touched
+#       (its censoring-aware refit is bake-time per R-W6).
+# Prereg: docs/evidence/order_b_build_2026-08-17/PREREG_B_BUILD.md (pushed before these lines existed).
+_O33=os.environ.get('RL_O33','0')!='0'                       # ORDER B: the veteran fixes (default OFF)
+_O33S=(int(os.environ.get('RL_O33_STAGE','3')) if _O33 else 0)
+def _o33_ladder(rho0=0.030,g=0.025,n=14):                    # B-1 family, the derivation's own construction (b2_fit.ladder_of)
+    f,out=1.0,{}
+    for j in range(1,n+1):
+        f*=(1.0-min(0.60,max(0.0,rho0+g*(j-1)))); out[j]=f
+    return out
+O33_TALL_LADDER=_o33_ladder()                                # f(1..5)=.970/.9167/.8433/.7548/.6566 (ages 28-32); tail = the family continued (W5 measures nothing past 31 — extrapolation-by-rule, bounded by the frac<0.42 projection stop)
+O33_SSTAR_PIN=1.2988                                          # s* PINNED (derived 2026-08-17 on THIS tree at base cf443a6, RL_O32=1 stage-1 ladder-only fixed point ON THE FROZEN PRE-ANCHOR BASIS: conserves the aggregate board value of the 55 KPD/KPF rows aged 23-26 to -0.06%, inside the prereg'd 0.2% tolerance; iteration log docs/evidence/order_b_build_2026-08-17/SSTAR_DERIVE_out.txt. Board-value s* (1.299) vs the derivation's production-stream preview s* (1.365): the pedigree leg and the max(proj, floor) resolution dampen the projection cut — same anchor object, the engine's own arithmetic.)
+_o33sstar=os.environ.get('RL_O33_SSTAR')                     # derivation-shell override (the s* fixed point itself); never set on a shipping board
+O33_SSTAR=(float(_o33sstar) if _o33sstar not in (None,'') else O33_SSTAR_PIN)
+O33_FADE_KNOTS=[(28.0,0.14),(29.0,0.211),(30.0,0.232),(31.0,0.246)]   # B-2 FALLBACK: hazard-arithmetic knots (RESULTS_B_FIT.json hazard_reference; 28 pinned at the 0.14 base so nothing below 28 moves)
+def o33_fade(a):
+    """B-2 extra per-annum discount above the flat 0.14, continuous in age, 0 at a<=28. Balanced lens only
+    (enforced at the call sites). Returns 0 whenever the dial/stage is off — identity by construction."""
+    if not _O33 or _O33S<2 or a is None: return 0.0
+    return _pw_interp(float(a),O33_FADE_KNOTS)-0.14
+def frac(a,pa,g=None):
+    j=max(-8,min(14,int(round(a-pa))))
+    if _O33 and _O33S>=1 and j>0 and g in ('KPD','KPF'): return O33_TALL_LADDER[j]   # B-1: tall post-peak ladder (two-arg callers and dial-off take the shared DELTAS verbatim)
+    return DELTAS[j]
 KAPPA=0.10;SCONV=30.0;LOWBASE=54.0;GAMMA=float(__import__('os').environ.get('RL_GAMMA','1.0'))  # 0.85=SCAR(concave); 1.0=VOR(linear) via RL_GAMMA env (for the SCAR-vs-VOR dual-column build)
 S_SH=3.0
 def comp(v): return v   # no compression (v2.0)
@@ -1021,13 +1074,13 @@ def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0,grace=0):
     # callers omit it: a band node is not a person and has no entry age. grace=0 => byte-exact.
     # g = SETTLED (future) position: drives PEAK_AGE, level trajectory, key-premium, runway.
     # g0 = year-0 (present) position for REPL; fut = years-1+ REPL blend [(pos,wt)]. Defaults reproduce single-position behaviour.
-    pa=PEAK_AGE[g]; d=age_disc(a,LENS[lens],lens); cl=cur if cur else lp*frac(a,pa); prod=0.0
+    pa=PEAK_AGE[g]; d=age_disc(a,LENS[lens],lens)+(o33_fade(a) if lens in ('bal','balanced') else 0.0); cl=cur if cur else lp*frac(a,pa,g); prod=0.0   # ORDER B: frac carries g (B-1 ladder, dial-off identical); o33_fade = B-2 fallback (0 when off)
     if g0 is None: g0=g
     if fut is None: fut=[(g,1.0)]
     for k in range(18):
         ag=a+k
-        if ag>38 or frac(ag,pa)<0.42: break
-        lev=lp*frac(ag,pa)
+        if ag>38 or frac(ag,pa,g)<0.42: break
+        lev=lp*frac(ag,pa,g)
         if ag<=pa: lev=max(lev,cl)
         if k==0: lev=max(lev,cl)
         if k==0 and pre_hc>0 and BASE_REF==2026 and AGE_REF==2026: lev*=(1-pre_hc)  # B2 present-unavailability haircut (Now board only)
@@ -1036,6 +1089,7 @@ def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0,grace=0):
         if k==0: prod+=posval(base-REPL[g0])*21/_df
         else: prod+=sum(w*posval(base-REPL[gg]) for gg,w in fut)*21/_df
     if g in('KPF','KPD'): prod*=1.05
+    if _O33 and _O33S>=1 and g in('KPF','KPD'): prod*=O33_SSTAR   # ORDER B B-1: anchor-preserving renorm on the tall PROJECTION stream only (the floor is a current-level object and is NOT renormed — disclosed in the packet)
     runway=clamp((25-a)/6.0,0,1); elite=clamp((lp/PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*PMAX)
     return prod
 def prod_floor(p,lens='bal'):
@@ -1054,10 +1108,10 @@ def prod_floor(p,lens='bal'):
     # edit BOTH or neither. Queued hygiene (NOT this build): collapse the copy via option-3 delegation.
     lowbar=y0dpp_bar(p) if (AGE_REF==BASE_REF) else None
     _gr=grace_years(p)                                    # ORDER 28 grace-A (dial-gated; 0 => byte-exact)
-    d=age_disc(a,LENS[lens],lens); H=clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0
+    d=age_disc(a,LENS[lens],lens)+(o33_fade(a) if lens in ('bal','balanced') else 0.0); H=clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0   # ORDER B B-2 fallback fade (0 when off)
     while k<H:
         ag=a+k; wt=min(1.0,H-k)
-        lev=cur*min(1.0, frac(ag,pa_)/max(frac(a,pa_),1e-6))
+        lev=cur*min(1.0, frac(ag,pa_,g)/max(frac(a,pa_,g),1e-6))   # ORDER B B-1: the ladder reaches the floor's decline RATIO (dial-off identical)
         if k==0 and p.get('_avail_hc',0)>0 and BASE_REF==2026 and AGE_REF==2026: lev*=(1-p['_avail_hc'])
         base=lev+capt_prem(lev)
         if k==0 and lowbar is not None:
@@ -1174,6 +1228,15 @@ for p in players:
 players=[_best[k] for k in _order]
 played=[p for p in players if not p.get('_unplayed')]
 STBL=True
+# ==== ORDER B (RL_O33): THE PRE-ANCHOR BASIS SECTION RUNS ON THE DIAL-OFF BASIS. ======================
+# The ruled mechanisms reprice VETERANS; they must not re-denominate the board. Two anchors in this
+# module are computed FROM player/pick streams at load: the P99 `ref` (line below) and the v3.4
+# pre-anchor PVC head that BOARD_FACTOR divides by (:~1447). With the dial live during load, the tall
+# ladder moves that basis and SCALE lifts EVERY row (+6.4% measured — the leg-1 diagnosis,
+# docs/evidence/order_b_build_2026-08-17/QUICKLOOK_out.txt pre-fix). So the stage is forced to 0 from
+# here until just after BOARD_FACTOR, then restored: dial-on and dial-off boards share ONE currency, and
+# the numeraire s (pick_redenomination.json) is untouched either way. Dial off => nothing happens here.
+if _O33 and _O33S>=1: _o33_bas=_O33S; _O33S=0
 ref=np.percentile([player_raw(p,'bal') for p in played],99); SCALE=7000/ref**GAMMA   # anchor on stable basis
 STBL=False
 for p in played: p['_pr']=player_raw(p,'bal')
@@ -1382,6 +1445,7 @@ _P1=float(__import__('os').environ.get('RL_PICK1','3000'))
 _NUM=_load_numeraire(_P1)                                    # LOUD-HALTs on a missing block or an incoherent s
 BOARD_FACTOR=(_P1/PVC[1])*_NUM['s']; SCALE=SCALE*BOARD_FACTOR   # SCALE reassigned → val() (late-binding) scales players too
 PVC={k:int(round(v*BOARD_FACTOR)) for k,v in PVC.items()}    # pre-swap basis only; the shipped curve comes from the artifact
+if _O33 and '_o33_bas' in globals(): _O33S=_o33_bas; del _o33_bas   # ORDER B: end of the dial-off BASIS section (see the block above the P99 ref) — the stage returns live for every runtime consumer
 # --- de-plateau (Luke): the monotone pass pools noisy mid-curve bands to a flat run; ramp each interior flat run
 #     linearly through its real endpoints so picks decline smoothly, leaving the genuine DEEP-TAIL floor flat
 #     (runs starting at pick>=46 are the floor and stay flat). Mid-curve only; pure shape, anchor (pick1) untouched.

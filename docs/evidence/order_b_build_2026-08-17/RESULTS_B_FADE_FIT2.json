@@ -1,0 +1,480 @@
+{
+ "meta": {
+  "deviation": "DISCLOSED: loss moved from tier LEVEL cells (prereg; failed identification, bb_fade_fit.py) to the tier-resolved RATE instrument (bb_fade_diag.py shows the signal lives there); family/surplus/grids/floors/ident-rule/star-gate unchanged",
+  "input": {
+   "path": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/per_entrant_O31FFINAL.json",
+   "md5": "d97f1aee4161ebcf785cd635ed095038"
+  },
+  "seed": 37,
+  "B_boot": 500,
+  "pairs": 702,
+  "cells": {
+   "star|27": 107,
+   "star|28": 86,
+   "star|29": 66,
+   "star|30": 45,
+   "mid|27": 93,
+   "mid|28": 67,
+   "mid|29": 57,
+   "mid|30": 33,
+   "role|27": 42,
+   "role|28": 53,
+   "role|29": 30,
+   "role|30": 23
+  }
+ },
+ "targets": {
+  "star|27": {
+   "realized": 0.7612,
+   "sd": 0.0231
+  },
+  "star|28": {
+   "realized": 0.721,
+   "sd": 0.0299
+  },
+  "star|29": {
+   "realized": 0.6775,
+   "sd": 0.0356
+  },
+  "star|30": {
+   "realized": 0.6571,
+   "sd": 0.0452
+  },
+  "mid|27": {
+   "realized": 0.6548,
+   "sd": 0.0422
+  },
+  "mid|28": {
+   "realized": 0.6402,
+   "sd": 0.0769
+  },
+  "mid|29": {
+   "realized": 0.6145,
+   "sd": 0.1029
+  },
+  "mid|30": {
+   "realized": 0.5673,
+   "sd": 0.1157
+  },
+  "role|27": {
+   "realized": 0.7103,
+   "sd": 0.0974
+  },
+  "role|28": {
+   "realized": 0.4719,
+   "sd": 0.0924
+  },
+  "role|29": {
+   "realized": 0.1462,
+   "sd": 0.0711
+  },
+  "role|30": {
+   "realized": 0.416,
+   "sd": 0.1483
+  }
+ },
+ "fit": {
+  "A": 0.16,
+  "s0": 50.0,
+  "A_ci": [
+   0.14,
+   0.6
+  ],
+  "s0_ci": [
+   8.0,
+   64.0
+  ],
+  "star_mean_surplus": 17.04,
+  "G_at_star": 0.7112,
+  "G_star_ci": [
+   0.11883438502655726,
+   0.7662451971765288
+  ],
+  "identified": false,
+  "ident_A": true,
+  "ident_G": false,
+  "unconstrained": {
+   "A": 0.6,
+   "s0": 64.0,
+   "feasible": false
+  },
+  "n_feasible_grid": 308
+ },
+ "closure": {
+  "star|27": {
+   "n": 107,
+   "engine": 0.7808,
+   "new": 0.7566,
+   "realized": 0.7612,
+   "sd": 0.0231
+  },
+  "star|28": {
+   "n": 86,
+   "engine": 0.7374,
+   "new": 0.721,
+   "realized": 0.721,
+   "sd": 0.0299
+  },
+  "star|29": {
+   "n": 66,
+   "engine": 0.7317,
+   "new": 0.7205,
+   "realized": 0.6775,
+   "sd": 0.0356
+  },
+  "star|30": {
+   "n": 45,
+   "engine": 0.7242,
+   "new": 0.7204,
+   "realized": 0.6571,
+   "sd": 0.0452
+  },
+  "mid|27": {
+   "n": 93,
+   "engine": 0.9635,
+   "new": 0.9393,
+   "realized": 0.6548,
+   "sd": 0.0422
+  },
+  "mid|28": {
+   "n": 67,
+   "engine": 0.784,
+   "new": 0.7695,
+   "realized": 0.6402,
+   "sd": 0.0769
+  },
+  "mid|29": {
+   "n": 57,
+   "engine": 0.9276,
+   "new": 0.909,
+   "realized": 0.6145,
+   "sd": 0.1029
+  },
+  "mid|30": {
+   "n": 33,
+   "engine": 0.9809,
+   "new": 0.9724,
+   "realized": 0.5673,
+   "sd": 0.1157
+  },
+  "role|27": {
+   "n": 42,
+   "engine": 1.2744,
+   "new": 1.2474,
+   "realized": 0.7103,
+   "sd": 0.0974
+  },
+  "role|28": {
+   "n": 53,
+   "engine": 1.0241,
+   "new": 1.0061,
+   "realized": 0.4719,
+   "sd": 0.0924
+  },
+  "role|29": {
+   "n": 30,
+   "engine": 1.088,
+   "new": 1.0858,
+   "realized": 0.1462,
+   "sd": 0.0711
+  },
+  "role|30": {
+   "n": 23,
+   "engine": 2.7998,
+   "new": 2.7043,
+   "realized": 0.416,
+   "sd": 0.1483
+  }
+ },
+ "tier_B_fit_surv": {
+  "star": {
+   "27": 0.9495,
+   "28": 0.9315,
+   "29": 0.9799,
+   "30": 1.0417,
+   "31": 0.9564
+  },
+  "mid": {
+   "27": 0.9136,
+   "28": 1.0533,
+   "29": 0.7469,
+   "30": 0.8407,
+   "31": 1.1208
+  },
+  "role": {
+   "27": 1.2846,
+   "28": 1.5396,
+   "29": 2.001,
+   "30": 0.5457,
+   "31": 0.8968
+  }
+ },
+ "star_gate": {
+  "27": {
+   "B_new": 0.9495,
+   "B_meas": 0.9495,
+   "ci": [
+    0.8612,
+    1.0431
+   ],
+   "passes": true
+  },
+  "28": {
+   "B_new": 0.9315,
+   "B_meas": 0.9598,
+   "ci": [
+    0.8579,
+    1.079
+   ],
+   "passes": true
+  },
+  "29": {
+   "B_new": 0.9799,
+   "B_meas": 1.0298,
+   "ci": [
+    0.8787,
+    1.2186
+   ],
+   "passes": true
+  },
+  "30": {
+   "B_new": 1.0417,
+   "B_meas": 1.1106,
+   "ci": [
+    0.916,
+    1.3894
+   ],
+   "passes": false
+  },
+  "31": {
+   "B_new": 0.9564,
+   "B_meas": 1.0281,
+   "ci": [
+    0.8197,
+    1.3384
+   ],
+   "passes": false
+  }
+ },
+ "star_gate_pass": false,
+ "rate_table": {
+  "27": {
+   "0": 0.14,
+   "2": 0.14,
+   "5": 0.14,
+   "10": 0.14,
+   "15": 0.14,
+   "20": 0.14,
+   "30": 0.14
+  },
+  "28": {
+   "0": 0.18,
+   "2": 0.1784,
+   "5": 0.1762,
+   "10": 0.1727,
+   "15": 0.1696,
+   "20": 0.1668,
+   "30": 0.162
+  },
+  "29": {
+   "0": 0.22,
+   "2": 0.2169,
+   "5": 0.2124,
+   "10": 0.2055,
+   "15": 0.1993,
+   "20": 0.1936,
+   "30": 0.1839
+  },
+  "30": {
+   "0": 0.26,
+   "2": 0.2553,
+   "5": 0.2486,
+   "10": 0.2382,
+   "15": 0.2289,
+   "20": 0.2204,
+   "30": 0.2059
+  },
+  "31": {
+   "0": 0.3,
+   "2": 0.2937,
+   "5": 0.2848,
+   "10": 0.271,
+   "15": 0.2585,
+   "20": 0.2473,
+   "30": 0.2278
+  },
+  "32": {
+   "0": 0.3,
+   "2": 0.2937,
+   "5": 0.2848,
+   "10": 0.271,
+   "15": 0.2585,
+   "20": 0.2473,
+   "30": 0.2278
+  }
+ },
+ "floors_used": [
+  {
+   "group": "tier:star",
+   "age": 28,
+   "floor": 0.8888,
+   "B_at_zero": 0.9543
+  },
+  {
+   "group": "tier:star",
+   "age": 29,
+   "floor": 0.8437,
+   "B_at_zero": 1.0416
+  },
+  {
+   "group": "tier:star",
+   "age": 30,
+   "floor": 0.7989,
+   "B_at_zero": 1.1042
+  },
+  {
+   "group": "tier:star",
+   "age": 31,
+   "floor": 0.7622,
+   "B_at_zero": 1.0756
+  },
+  {
+   "group": "tier:mid",
+   "age": 28,
+   "floor": 0.698,
+   "B_at_zero": 1.1219
+  },
+  {
+   "group": "tier:mid",
+   "age": 29,
+   "floor": 0.6963,
+   "B_at_zero": 0.7879
+  },
+  {
+   "group": "tier:mid",
+   "age": 30,
+   "floor": 0.588,
+   "B_at_zero": 1.0652
+  },
+  {
+   "group": "tier:mid",
+   "age": 31,
+   "floor": 0.4277,
+   "B_at_zero": 1.6752
+  },
+  {
+   "group": "tier:role",
+   "age": 28,
+   "floor": 0.5487,
+   "B_at_zero": 1.5758
+  },
+  {
+   "group": "tier:role",
+   "age": 29,
+   "floor": 0.4755,
+   "B_at_zero": 3.5883
+  },
+  {
+   "group": "tier:role",
+   "age": 30,
+   "floor": 0.1954,
+   "B_at_zero": 0.7932
+  },
+  {
+   "group": "tier:role",
+   "age": 31,
+   "floor": 0.0968,
+   "B_at_zero": 1.1455
+  },
+  {
+   "group": "ALL",
+   "age": 28,
+   "floor": 0.903,
+   "B_at_zero": 1.0003
+  },
+  {
+   "group": "ALL",
+   "age": 29,
+   "floor": 0.8628,
+   "B_at_zero": 1.0225
+  },
+  {
+   "group": "ALL",
+   "age": 30,
+   "floor": 0.8211,
+   "B_at_zero": 1.0838
+  },
+  {
+   "group": "ALL",
+   "age": 31,
+   "floor": 0.7833,
+   "B_at_zero": 1.153
+  },
+  {
+   "group": "TALL",
+   "age": 28,
+   "floor": 0.8296,
+   "B_at_zero": 1.2898
+  },
+  {
+   "group": "TALL",
+   "age": 29,
+   "floor": 0.774,
+   "B_at_zero": 1.3374
+  },
+  {
+   "group": "TALL",
+   "age": 30,
+   "floor": 0.6736,
+   "B_at_zero": 1.763
+  },
+  {
+   "group": "TALL",
+   "age": 31,
+   "floor": 0.4888,
+   "B_at_zero": 1.468
+  },
+  {
+   "group": "SMALL",
+   "age": 28,
+   "floor": 0.874,
+   "B_at_zero": 0.9035
+  },
+  {
+   "group": "SMALL",
+   "age": 29,
+   "floor": 0.8067,
+   "B_at_zero": 0.9165
+  },
+  {
+   "group": "SMALL",
+   "age": 30,
+   "floor": 0.7578,
+   "B_at_zero": 0.8832
+  },
+  {
+   "group": "SMALL",
+   "age": 31,
+   "floor": 0.7097,
+   "B_at_zero": 1.1276
+  },
+  {
+   "group": "RUCK",
+   "age": 28,
+   "floor": 0.7324,
+   "B_at_zero": 1.0702
+  },
+  {
+   "group": "RUCK",
+   "age": 29,
+   "floor": 0.6594,
+   "B_at_zero": 1.0787
+  },
+  {
+   "group": "RUCK",
+   "age": 30,
+   "floor": 0.6221,
+   "B_at_zero": 1.1524
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+totals: base(C32R)=667154  leg1 ladder+s*=657897  leg2 +fade=652602  full +taper=680847
+row                    pos   age      base     leg1     leg2     full     d_full
+callum-wilkie          KPD    30      3422     1975     1905     1938      -1484
+peter-wright           KPF    30      1531      963      940      950       -581
+harris-andrews         KPD    30      1521      934      906      919       -602
+josh-battle            KPD    28      1879     1256     1256     1311       -568
+harry-mckay            KPF    29      1636      995      976     1005       -631
+charlie-curnow         KPF    29      1297      797      782      810       -487
+ned-moyle              RUCK   24      1608     1608     1609     1734       +126
+lachlan-mcandrew       RUCK   26       874      874      874      984       +110
+sam-de-koning          KPD    25       861      835      835      925        +64
+tom-de-koning          RUCK   27      1688     1688     1691     1887       +199
+marcus-bontempelli     MID    31      3677     3677     3439     3469       -208
+jack-sinclair          SD     31      3180     3180     2944     2972       -208
+zachary-merrett        MID    31      2542     2542     2396     2400       -142
+isaac-heeney           MID    30      3359     3359     3131     3199       -160
+timothy-english        RUCK   29      3289     3288     2984     3024       -265
+tall 28-30     base(C32R)=18813  leg1 ladder+s*=11861  leg2 +fade=11689  full +taper=12282
+tall 23-26     base(C32R)=43227  leg1 ladder+s*=43201  leg2 +fade=43199  full +taper=46303
+tall <=24      base(C32R)=74946  leg1 ladder+s*=75882  leg2 +fade=75878  full +taper=79089
+non-tall 31+   base(C32R)=50878  leg1 ladder+s*=50672  leg2 +fade=48114  full +taper=48713
+age <=22 all   base(C32R)=215722  leg1 ladder+s*=216235  leg2 +fade=216228  full +taper=221078
