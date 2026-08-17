@@ -19,6 +19,7 @@
 | dial-off control | `RL_O31` unset → **`9298203135202a0c707bb0977ba38c31` BYTE-EXACT** |
 | printed-day-0 identity | **89 of 89, tolerance 0**, on the WRITTEN board |
 | continuity assert | **PASS** — max discontinuity at `g=0` is **3.9e-08** relative |
+| determinism | **PASS** — built twice, byte-identical |
 | completeness assert | **PASS** — the 26A forbidden set is unreachable; cell coverage **100.0%** |
 | reconciliation | **0 of 804** rows fail `production + pedigree == price` at ±1 point |
 | **exact numéraire `s`** | **NOT RE-PINNED — Step 5 was not reached. The board is PRE-NUMÉRAIRE.** See §9. |
@@ -433,7 +434,7 @@ full table is in the ledger.
 | **P35** | **HELD** | `D_pool(2) = 0.5546`, inside the declared 0.35–0.80, and shallower than ND's 0.5502 as predicted |
 | **P36** | **HELD** | the MSD season-1 clock is inherited from `debut_year_338`'s own MSD clause in the transplanted harness, not restated |
 | **P37** | **HELD** | entry byte-identity, closed at filing time |
-| **P38** | **NOT RUN** | the deterministic double-build was not run. §9 |
+| **P38** | **HELD** | deterministic double-build: an independent build reproduces **`d9a57cc8770802b83c1264a08356fb60` byte-exact** |
 | **P39** | **HELD** | dial-off reproduces `9298203135202a0c707bb0977ba38c31` **byte-exact** |
 | **P40** | **NOT REACHED** | no identity-gate re-point was made (Step 7 not reached) |
 | **P41** | **HELD** | boot guard passed on every build; `expected_boot` fv pin stale by design |
@@ -442,7 +443,7 @@ full table is in the ledger.
 | **P44** | **HELD** | no foreign `rl_model.py` was installed for any board in this packet |
 | **P45** | **HELD** | nothing merged; `main` untouched; PR #510 still `[HELD — DO NOT MERGE]` |
 
-**Score: 27 HELD · 12 BREACHED · 6 NOT REACHED.** Every breach is the seat's own prediction being wrong,
+**Score: 28 HELD · 12 BREACHED · 5 NOT REACHED.** Every breach is the seat's own prediction being wrong,
 and every one of the twelve is in the *same direction* — the seat systematically over-predicted the
 candidate's prices because it did not price its own Step-2 pool derivation or the full weight of the
 stall conditioning before filing. **That is the most useful thing the prereg found and it is stated as a
@@ -505,8 +506,7 @@ that no number above can be read as more settled than it is.**
 
 ### 9.3 · CONTROLS NOT RUN
 
-15. **The deterministic double-build was not run** (P38). Every board in this packet was built once.
-16. **No identity gate re-point, no book re-seal, no as-of matrix.** Steps 6–7's control set is
+15. **No identity gate re-point, no book re-seal, no as-of matrix.** Steps 6–7's control set is
     unexecuted apart from the asserts in §2, §3 and the dial-off byte-identity.
 
 ---
@@ -519,7 +519,7 @@ that no number above can be read as more settled than it is.**
    and it is absent.
 4. Step 4 (the position gate).
 5. `β_pool`.
-6. The double-build and the remaining controls.
+6. The remaining Step-6/7 controls (identity gate, book re-seal).
 
 ---
 

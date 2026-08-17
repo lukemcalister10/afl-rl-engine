@@ -1,0 +1,12 @@
+ORDER 31 DETERMINISM CONTROL (P38)
+==================================
+Two independent builds of the candidate, strictly sequential, pinned venv, five-var thread pinning:
+  bb_o31   rl_app_data.json  d9a57cc8770802b83c1264a08356fb60
+  bb_o31b  rl_app_data.json  d9a57cc8770802b83c1264a08356fb60
+VERDICT: BYTE-IDENTICAL. P38 HELD.
+
+DIAL-OFF CONTROL (P39)
+  bb_o31off rl_app_data.json 9298203135202a0c707bb0977ba38c31  == the committed Step-2 board. HELD.
+
+STALL-CONDITIONING COST DIAL (declared, default off)
+  bb_o31nophi rl_app_data.json 08ff8af55906f306798a89325ea97e19  total 679,242 (+15,184 vs the candidate)
