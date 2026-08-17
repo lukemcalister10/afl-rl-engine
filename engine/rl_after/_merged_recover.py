@@ -3515,6 +3515,11 @@ if _O30B_PREVIEW:
     O36_HTALL=-0.6921227120657417
     O36_SNORM=1.4284052406915069
     O36_D2=0.5582775                                   # the ruled depth-2 fade the identity is pinned to
+    # DECLARED, DEFAULT-ON measurement dial (the same discipline RL_O31_NOPHI applies to the stall
+    # conditioning): RL_O36_TALL=0 prices the tall/small factor BY REMOVING IT, so its cost on every
+    # row and every band is a NUMBER on the movers ledger rather than a paragraph. It falls back to
+    # Order D's wired pooled exponent exactly.
+    _O36_TALL=os.environ.get('RL_O36_TALL','1')!='0'
     def o36_kappa(p):
         """The fade exponent at the row's effective pick AND position class. Pure function of
         (pick, TALL/SMALL). TALL = the engine's own O32_TALLPOS = {KPD, KPF, RUCK}."""
@@ -3652,7 +3657,7 @@ if _O30B_PREVIEW:
             # ORDER I (RL_O36): the pooled exponent becomes the TALL/SMALL exponent. Same site, same
             # smooth log-pick curve, same clips; only the numerator carries the position term and the
             # normaliser is re-solved so the pooled fade stays pinned at the ruled row.
-            _D=_D**(o36_kappa(p) if _O36 else o35_kappa(p))
+            _D=_D**(o36_kappa(p) if (_O36 and _O36_TALL) else o35_kappa(p))
         if _O32S>=5 and _D<1.0:
             _sg=o32_sigma_sel(p,Y)
             if _sg>0.0: _D=min(1.0,_D*(1.0+O32_LAMBDA*_sg))

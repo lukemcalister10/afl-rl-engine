@@ -30,6 +30,7 @@ if [ -n "${RL_O32:-}" ]; then export RL_O32; fi
 if [ -n "${RL_O35:-}" ]; then export RL_O35; fi
 if [ -n "${RL_O36:-}" ]; then export RL_O36; fi
 if [ -n "${RL_O36_LAM_S1:-}" ]; then export RL_O36_LAM_S1; fi
+if [ -n "${RL_O36_TALL:-}" ]; then export RL_O36_TALL; fi
 python3 rl_export.py > "$WS/export_stdout.txt" 2> "$WS/export_stderr.txt" || {
   echo "EXPORT FAILED"; tail -60 "$WS/export_stderr.txt"; exit 1; }
 md5sum "$WS/rl_after/rl_app_data.json"
