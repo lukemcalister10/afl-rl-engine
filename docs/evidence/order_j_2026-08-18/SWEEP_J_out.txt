@@ -1,0 +1,72 @@
+ORDER J sweep — legs 1986 rows x 15 doses (Order I leg identity: PASS)
+grid: 15 x 14 x 6 x 9 x 6 x 6 = 408240 points
+
+CONTROL 1 — corrected age-fair surface vs REMIX_32R.json: W 0.4126838584 vs 0.4126838584 (dev 0.00e+00) · cells 0.00e+00 · terciles 0.00e+00  -> EXACT
+   W 90% CI [0.3117, 0.5560]  ·  5-9g risers 1.9875  ·  5-9g sub-expectation 0.8543
+
+CONTROL 2 — the vectorised price equals ORDER I's scalar `p1_of` on 12 random grid points x 1986 rows: worst absolute deviation 9.095e-13  -> EXACT
+
+CONTROL 3 — the LANDING CANDIDATE on this instrument (dose 0, repair knobs, POOLED fade):
+   class mark mean_0515 = 1.0421   (the Order-D wire's own W2 number of record: 1.0421)
+   max class 1.1311 on 2011 · slope 0.9902 · W 0.3081 · bands {'1-10': '+7.20%', '11-20': '+11.52%', '21-30': '+5.92%', '31-40': '-10.46%', '41-64': '-7.30%'}
+
+CONTROL 4 — the RULED TALL FACTOR ALONE (dose 0, repair knobs, tall exponent):
+   class mark 1.0420 (-0.0001) · max class 1.1279 on 2011 · bands {'1-10': '+7.40%', '11-20': '+12.62%', '21-30': '+6.75%', '31-40': '-8.90%', '41-64': '-8.23%'}
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+
+ruled at-bar continuity object: 8 at-bar rows per dose
+rho32 monotonicity: 73 of 84 (kappa, gamma_u) pairs pass
+  dose 0.00 done — 6 ruled-feasible so far  (1s)
+  dose 0.10 done — 30 ruled-feasible so far  (1s)
+  dose 0.15 done — 66 ruled-feasible so far  (2s)
+  dose 0.20 done — 96 ruled-feasible so far  (2s)
+  dose 0.25 done — 120 ruled-feasible so far  (3s)
+  dose 0.30 done — 162 ruled-feasible so far  (3s)
+  dose 0.35 done — 180 ruled-feasible so far  (4s)
+  dose 0.40 done — 198 ruled-feasible so far  (4s)
+  dose 0.45 done — 210 ruled-feasible so far  (5s)
+  dose 0.50 done — 210 ruled-feasible so far  (5s)
+  dose 0.55 done — 216 ruled-feasible so far  (5s)
+  dose 0.60 done — 216 ruled-feasible so far  (6s)
+  dose 0.70 done — 216 ruled-feasible so far  (6s)
+  dose 0.85 done — 216 ruled-feasible so far  (7s)
+  dose 1.00 done — 216 ruled-feasible so far  (7s)
+
+swept 408240 grid points in 7s
+ruled-constraint failures: {'1.14line': 331170, 'W': 14106, 'continuity': 9288, 'mono': 53460}
+points feasible on the RULED constraints: 216 of 408240
+
+owner-law failures over the ruled-feasible set: {'G1floor': 12, 'G2a-4164': 120, 'G3': 12}
+points that ALSO satisfy G1 + G2-improve + G3 on the calibrator: 96
+points that ALSO satisfy G2's NO-SELL-RED aspiration: 0
+
+-- TOP 25 BY THE SELECTION LAW (min corrected-surface SSE), G1+G2-improve+G3 satisfied --
+   dose  kappa    gu   eta    gd   rel |    class  maxcls     SSE | five bands yr0->1
+   0.15   0.24    11  0.45    14  0.80 |   1.0503  1.1388   29.31 |  +8.04% +13.64%  +7.69%  -8.45%  -7.30%
+   0.15   0.24    11  0.45    14  0.90 |   1.0503  1.1388   29.31 |  +8.04% +13.64%  +7.69%  -8.45%  -7.30%
+   0.15   0.24    11  0.45    14  1.00 |   1.0503  1.1388   29.31 |  +8.04% +13.64%  +7.69%  -8.45%  -7.30%
+   0.15   0.24    11  0.45    14  1.08 |   1.0503  1.1388   29.31 |  +8.04% +13.64%  +7.69%  -8.45%  -7.30%
+   0.15   0.24    11  0.45    14  1.20 |   1.0503  1.1388   29.31 |  +8.04% +13.64%  +7.69%  -8.45%  -7.30%
+   0.15   0.24    11  0.45    14  1.30 |   1.0503  1.1388   29.31 |  +8.04% +13.64%  +7.69%  -8.45%  -7.30%
+   0.45   0.18     8  0.50    14  0.80 |   1.0483  1.1352   31.67 |  +7.69% +13.60%  +7.94%  -8.96%  -7.16%
+   0.45   0.18     8  0.50    14  0.90 |   1.0483  1.1352   31.67 |  +7.69% +13.60%  +7.94%  -8.96%  -7.16%
+   0.45   0.18     8  0.50    14  1.00 |   1.0483  1.1352   31.67 |  +7.69% +13.60%  +7.94%  -8.96%  -7.16%
+   0.45   0.18     8  0.50    14  1.08 |   1.0483  1.1352   31.67 |  +7.69% +13.60%  +7.94%  -8.96%  -7.16%
+   0.45   0.18     8  0.50    14  1.20 |   1.0483  1.1352   31.67 |  +7.69% +13.60%  +7.94%  -8.96%  -7.16%
+   0.45   0.18     8  0.50    14  1.30 |   1.0483  1.1352   31.67 |  +7.69% +13.60%  +7.94%  -8.96%  -7.16%
+   0.25   0.22     8  0.45    12  0.80 |   1.0502  1.1359   33.60 |  +7.91% +13.17%  +7.60%  -8.67%  -6.83%
+   0.25   0.22     8  0.45    12  0.90 |   1.0502  1.1359   33.60 |  +7.91% +13.17%  +7.60%  -8.67%  -6.83%
+   0.25   0.22     8  0.45    12  1.00 |   1.0502  1.1359   33.60 |  +7.91% +13.17%  +7.60%  -8.67%  -6.83%
+   0.25   0.22     8  0.45    12  1.08 |   1.0502  1.1359   33.60 |  +7.91% +13.17%  +7.60%  -8.67%  -6.83%
+   0.25   0.22     8  0.45    12  1.20 |   1.0502  1.1359   33.60 |  +7.91% +13.17%  +7.60%  -8.67%  -6.83%
+   0.25   0.22     8  0.45    12  1.30 |   1.0502  1.1359   33.60 |  +7.91% +13.17%  +7.60%  -8.67%  -6.83%
+   0.40   0.20     8  0.50    14  0.80 |   1.0519  1.1385   33.77 |  +7.58% +13.82%  +8.26%  -8.54%  -6.50%
+   0.40   0.20     8  0.50    14  0.90 |   1.0519  1.1385   33.77 |  +7.58% +13.82%  +8.26%  -8.54%  -6.50%
+   0.40   0.20     8  0.50    14  1.00 |   1.0519  1.1385   33.77 |  +7.58% +13.82%  +8.26%  -8.54%  -6.50%
+   0.40   0.20     8  0.50    14  1.08 |   1.0519  1.1385   33.77 |  +7.58% +13.82%  +8.26%  -8.54%  -6.50%
+   0.40   0.20     8  0.50    14  1.20 |   1.0519  1.1385   33.77 |  +7.58% +13.82%  +8.26%  -8.54%  -6.50%
+   0.40   0.20     8  0.50    14  1.30 |   1.0519  1.1385   33.77 |  +7.58% +13.82%  +8.26%  -8.54%  -6.50%
+   0.25   0.24     8  0.50    12  0.80 |   1.0469  1.1351   34.82 |  +6.51% +12.53%  +7.32%  -8.69%  -6.34%
+
+written: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/O37_SWEEP.json
