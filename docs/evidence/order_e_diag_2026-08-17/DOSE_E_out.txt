@@ -1,0 +1,63 @@
+=== ORDER E · S1 DOSE-RESPONSE (board points) ===
+lambda = the fraction of the engine's own measured C3 development gap applied to the bar.
+   lam       dean        CDT    murdock   ashcroft    osulliv     morris
+  0.00     2400.5     1571.6      169.8     3173.2     2375.8     2681.6
+  0.10     2437.7     1586.8      169.8     3225.0     2421.1     2734.1
+  0.15     2460.1     1595.4      169.8     3252.2     2444.3     2760.7
+  0.20     2485.6     1605.2      169.8     3279.9     2468.0     2787.4
+  0.25     2514.2     1616.1      169.8     3308.7     2492.0     2814.0
+  0.30     2546.5     1628.3      169.8     3337.8     2516.3     2840.8
+  0.40     2620.8     1657.4      169.8     3399.1     2565.4     2894.7
+  0.50     2707.7     1694.4      169.8     3463.0     2615.3     2948.9
+  0.75     2962.1     1828.3      169.8     3632.3     2742.2     3084.5
+  1.00     3243.9     2020.0      169.8     3811.2     2870.5     3220.5
+
+owner-expected neighbourhood: dean >= 2600 (C31 2670), CDT >= 1800 (C31 1832)
+
+YEAR-1 CLASS (live board, type ND, draft year 2025, active, non-pool): 58 rows
+
+LIVE-BOARD DRAFT-CLOCK PROXY (see PREREG_E §5: this is NOT the committed walk-forward 338
+instrument; it is the live 2026 year-1 class measured against its own year-zero pedigree object).
+  BASELINE (repaired C32)       class total    43935.1   mean    757.5   n 58
+      picks 1-10   n  10   mean yr0   1900.0   mean yr1   2066.0   yr0->1   +8.74%  ok
+      picks 11-20  n  10   mean yr0    949.0   mean yr1   1039.7   yr0->1   +9.56%  ok
+      picks 21-30  n  10   mean yr0    623.2   mean yr1    406.8   yr0->1  -34.73%  sell-RED (<0%)
+      picks 31-40  n  10   mean yr0    478.1   mean yr1    374.8   yr0->1  -21.61%  sell-RED (<0%)
+      picks 41-64  n  18   mean yr0    317.4   mean yr1    281.2   yr0->1  -11.38%  sell-RED (<0%)
+
+  S1 lam=1.00                   class total    53699.1   mean    925.8   n 58
+      picks 1-10   n  10   mean yr0   1900.0   mean yr1   2615.9   yr0->1  +37.68%  BUY-RED (>+14%)
+      picks 11-20  n  10   mean yr0    949.0   mean yr1   1311.7   yr0->1  +38.22%  BUY-RED (>+14%)
+      picks 21-30  n  10   mean yr0    623.2   mean yr1    419.2   yr0->1  -32.73%  sell-RED (<0%)
+      picks 31-40  n  10   mean yr0    478.1   mean yr1    417.4   yr0->1  -12.71%  sell-RED (<0%)
+      picks 41-64  n  18   mean yr0    317.4   mean yr1    336.5   yr0->1   +6.03%  ok
+
+  S1 lam=0.50                   class total    47678.9   mean    822.1   n 58
+      picks 1-10   n  10   mean yr0   1900.0   mean yr1   2281.7   yr0->1  +20.09%  BUY-RED (>+14%)
+      picks 11-20  n  10   mean yr0    949.0   mean yr1   1149.9   yr0->1  +21.18%  BUY-RED (>+14%)
+      picks 21-30  n  10   mean yr0    623.2   mean yr1    410.6   yr0->1  -34.11%  sell-RED (<0%)
+      picks 31-40  n  10   mean yr0    478.1   mean yr1    388.1   yr0->1  -18.83%  sell-RED (<0%)
+      picks 41-64  n  18   mean yr0    317.4   mean yr1    298.6   yr0->1   -5.91%  sell-RED (<0%)
+
+  S1 lam=0.25                   class total    45515.4   mean    784.7   n 58
+      picks 1-10   n  10   mean yr0   1900.0   mean yr1   2157.1   yr0->1  +13.53%  ok
+      picks 11-20  n  10   mean yr0    949.0   mean yr1   1087.5   yr0->1  +14.60%  BUY-RED (>+14%)
+      picks 21-30  n  10   mean yr0    623.2   mean yr1    408.3   yr0->1  -34.49%  sell-RED (<0%)
+      picks 31-40  n  10   mean yr0    478.1   mean yr1    380.2   yr0->1  -20.49%  sell-RED (<0%)
+      picks 41-64  n  18   mean yr0    317.4   mean yr1    288.0   yr0->1   -9.26%  sell-RED (<0%)
+
+  S1 lam=0.20                   class total    45154.4   mean    778.5   n 58
+      picks 1-10   n  10   mean yr0   1900.0   mean yr1   2136.3   yr0->1  +12.44%  ok
+      picks 11-20  n  10   mean yr0    949.0   mean yr1   1076.7   yr0->1  +13.46%  ok
+      picks 21-30  n  10   mean yr0    623.2   mean yr1    407.9   yr0->1  -34.54%  sell-RED (<0%)
+      picks 31-40  n  10   mean yr0    478.1   mean yr1    378.9   yr0->1  -20.75%  sell-RED (<0%)
+      picks 41-64  n  18   mean yr0    317.4   mean yr1    286.4   yr0->1   -9.76%  sell-RED (<0%)
+
+  S1 lam=0.15                   class total    44816.6   mean    772.7   n 58
+      picks 1-10   n  10   mean yr0   1900.0   mean yr1   2116.8   yr0->1  +11.41%  ok
+      picks 11-20  n  10   mean yr0    949.0   mean yr1   1066.5   yr0->1  +12.39%  ok
+      picks 21-30  n  10   mean yr0    623.2   mean yr1    407.6   yr0->1  -34.60%  sell-RED (<0%)
+      picks 31-40  n  10   mean yr0    478.1   mean yr1    377.8   yr0->1  -20.99%  sell-RED (<0%)
+      picks 41-64  n  18   mean yr0    317.4   mean yr1    284.9   yr0->1  -10.22%  sell-RED (<0%)
+
+RESTORE CONTROL after every scenario: all six named rows byte-identical to baseline — PASS
