@@ -1,0 +1,123 @@
+======================================================================================================================
+ORDER 32 S7 -- THE PEDIGREE-LEG CELL FANS.  PREREG_S7.md governs; committed before this ran.
+======================================================================================================================
+
+CONTROL C1 -- the ND population IS the fit population (HEADFIX_31F_out.txt line 5)
+  rows 1142 (target 1142)   per-position {'MID': 422, 'KPF': 143, 'KPD': 125, 'SF': 212, 'SD': 180, 'RUCK': 60}
+  VERDICT REPRODUCED
+
+POOL PREFIX -- docs/evidence/sitter_fade_2026-08-14/o30a2_recut.py  md5 fe6f436ab23056d717f693091946309a  (must equal POOL31F.json instruments.fade.md5)
+CONTROL C2 -- the pool population IS the pool fit population (POOL31F.json fade)
+  fitted 2004-2021 840 (target 840)   total 1080 (target 1080)   skips {'no attribution / excluded': 2}
+  VERDICT REPRODUCED
+
+======================================================================================================================
+ND LANE -- OUTCOME FANS PER PICK BAND x POSITION   (* = BOUND(max), an unresolved level)
+  columns: q10 q30 q50 q70 q90 q97   value = realized career delivered value (grace-A total)
+======================================================================================================================
+
+BAND 1-10
+  ALL   n= 180  n0=  0 (   0%)      19.7     374.6    1190.7    2652.9    5114.9    7281.6   mean   1992.5  mean/med    1.7
+        fitted-v0 comparator (head-fixed posv over the cell rows)   1895.3   mean/v0 1.051
+  KPD   n=  19  n0=  0 (   0%)       5.9     225.6     397.3    1247.7    3359.9    3817.6*  mean   1112.5  mean/med    2.8
+  KPF   n=  31  n0=  0 (   0%)      27.8     340.8    1003.8    1611.7    3429.6    6491.7*  mean   1405.6  mean/med    1.4
+  MID   n=  96  n0=  0 (   0%)      23.2     570.2    1931.1    3543.3    5742.3    8098.7   mean   2512.2  mean/med    1.3
+  RUCK  n=   7  n0=  0 (   0%)  min      0.1  med   1941.7  max   8447.8   UNRESOLVED (n < 8): min/median/max only
+  SD    n=  12  n0=  0 (   0%)     147.8     346.8     666.6    1620.7    3389.1    3986.7*  mean   1287.4  mean/med    1.9
+  SF    n=  15  n0=  0 (   0%)      98.3     367.2     684.5    1345.5    3415.4    3950.8*  mean   1254.1  mean/med    1.8
+
+BAND 11-20
+  ALL   n= 180  n0=  2 (   1%)       1.8      83.1     425.9    1177.8    2875.2    5113.6   mean   1054.0  mean/med    2.5
+        fitted-v0 comparator (head-fixed posv over the cell rows)    964.4   mean/v0 1.093
+  KPD   n=  17  n0=  0 (   0%)      66.7     230.5     468.7     742.2    2021.6    2895.6*  mean    755.1  mean/med    1.6
+  KPF   n=  24  n0=  1 (   4%)       3.4      85.0     215.9     938.2    2553.5    3406.0*  mean    786.1  mean/med    3.6
+  MID   n=  65  n0=  1 (   2%)       0.2      52.5     477.7    1476.2    4250.3    5784.6   mean   1374.3  mean/med    2.9
+  RUCK  n=   8  n0=  0 (   0%)       3.4      52.4     135.3     285.9    4951.8*   4951.8*  mean    807.1  mean/med    6.0
+  SD    n=  33  n0=  0 (   0%)       1.5     189.3     623.9    1301.0    2804.2    8298.3*  mean   1140.8  mean/med    1.8
+  SF    n=  33  n0=  0 (   0%)       1.9      32.9     366.1    1003.8    2016.3    3869.1*  mean    745.2  mean/med    2.0
+
+BAND 21-30
+  ALL   n= 180  n0= 10 (   6%)       0.0       4.7      79.1     596.7    2771.1    4194.3   mean    739.2  mean/med    9.3
+        fitted-v0 comparator (head-fixed posv over the cell rows)    677.3   mean/v0 1.091
+  KPD   n=  21  n0=  3 (  14%)       0.0       0.2      23.0     318.7     997.0    3036.9*  mean    405.5  mean/med   17.6
+  KPF   n=  17  n0=  1 (   6%)       0.1       1.9     359.0     607.5    2840.6    3588.1*  mean    880.0  mean/med    2.5
+  MID   n=  77  n0=  2 (   3%)       0.0      13.0     122.9     708.6    3109.6    5301.2   mean    961.2  mean/med    7.8
+  RUCK  n=   5  n0=  0 (   0%)  min      2.1  med   1455.5  max   6991.7   UNRESOLVED (n < 8): min/median/max only
+  SD    n=  23  n0=  2 (   9%)       0.0       0.0      48.2     461.1    1936.0    3229.7*  mean    596.7  mean/med   12.4
+  SF    n=  37  n0=  2 (   5%)       0.0       6.5      26.6     277.6     816.6    1316.4   mean    285.7  mean/med   10.7
+
+BAND 31-40
+  ALL   n= 180  n0= 21 (  12%)       0.0       1.2      31.3     306.7    1822.9    3226.4   mean    547.5  mean/med   17.5
+        fitted-v0 comparator (head-fixed posv over the cell rows)    539.3   mean/v0 1.015
+  KPD   n=  22  n0=  4 (  18%)       0.0       4.5     116.4     228.5     952.3    2367.8*  mean    345.3  mean/med    3.0
+  KPF   n=  23  n0=  5 (  22%)       0.0       0.2       3.0     317.7    1599.4    2168.0*  mean    418.8  mean/med  140.9
+  MID   n=  60  n0=  6 (  10%)       0.0       0.2      15.3     298.9    1794.8    4438.0   mean    583.3  mean/med   38.2
+  RUCK  n=  14  n0=  0 (   0%)      29.7     418.0     952.2    2156.9    4332.8    6134.8*  mean   1695.5  mean/med    1.8
+  SD    n=  28  n0=  5 (  18%)       0.0       0.2       7.9      39.7     832.3    3149.8*  mean    294.4  mean/med   37.1
+  SF    n=  33  n0=  1 (   3%)       0.2       1.8      55.0     427.2    1379.6    2294.8*  mean    434.5  mean/med    7.9
+
+BAND 41-64
+  ALL   n= 422  n0= 88 (  21%)       0.0       0.0       1.9      80.3     953.3    2301.1   mean    287.2  mean/med  153.6
+        fitted-v0 comparator (head-fixed posv over the cell rows)    279.1   mean/v0 1.029
+  KPD   n=  46  n0=  8 (  17%)       0.0       7.7      83.7     305.3    1477.2    2897.9   mean    442.8  mean/med    5.3
+  KPF   n=  48  n0= 18 (  38%)       0.0       0.0       0.1     180.2     802.0    1394.7   mean    227.4  mean/med 1615.9
+  MID   n= 124  n0= 24 (  19%)       0.0       0.0       0.7      56.5    1373.1    3517.6   mean    389.1  mean/med  551.9
+  RUCK  n=  26  n0=  3 (  12%)       0.0       5.4      50.8     362.4     991.1    1877.1*  mean    311.2  mean/med    6.1
+  SD    n=  84  n0= 16 (  19%)       0.0       0.0       0.3      17.1     202.5    1157.4   mean    129.5  mean/med  481.9
+  SF    n=  94  n0= 19 (  20%)       0.0       0.0       1.4      42.6     690.3    2041.4   mean    241.6  mean/med  171.1
+
+ND FINER CUT -- position-pooled 5-pick bands (published only if EVERY cell n >= 34)
+  cell n: 1-5:90  6-10:90  11-15:90  16-20:90  21-25:90  26-30:90  31-35:90  36-40:90  41-45:90  46-50:90  51-55:90  56-60:90  61-64:62
+  SUPPORTED: True
+  1-5    n=  90  n0=  0 (   0%)     193.3     861.6    2249.6    3789.8    5515.7    8448.7   mean   2710.4  mean/med    1.2
+  6-10   n=  90  n0=  0 (   0%)       7.3     147.1     611.7    1445.4    3307.8    6105.8   mean   1274.6  mean/med    2.1
+  11-15  n=  90  n0=  1 (   1%)       1.8      66.8     534.7    1457.9    2896.7    5580.1   mean   1202.2  mean/med    2.2
+  16-20  n=  90  n0=  1 (   1%)       2.6      83.7     335.0     948.3    2864.4    4025.9   mean    905.9  mean/med    2.7
+  21-25  n=  90  n0=  5 (   6%)       0.0       7.9      39.8     587.0    2793.2    5772.7   mean    811.5  mean/med   20.4
+  26-30  n=  90  n0=  5 (   6%)       0.0       1.1     186.4     664.1    2429.6    3264.1   mean    667.0  mean/med    3.6
+  31-35  n=  90  n0= 12 (  13%)       0.0       0.7      65.3     437.2    1822.9    2666.0   mean    579.6  mean/med    8.9
+  36-40  n=  90  n0=  9 (  10%)       0.0       1.3      18.7     201.0    1813.3    3494.8   mean    515.3  mean/med   27.6
+  41-45  n=  90  n0= 14 (  16%)       0.0       0.1      29.5     172.8    1706.7    3708.7   mean    500.6  mean/med   17.0
+  46-50  n=  90  n0= 21 (  23%)       0.0       0.0       3.5      68.0     616.0    1356.0   mean    207.4  mean/med   59.6
+  51-55  n=  90  n0= 17 (  19%)       0.0       0.0       6.8     112.2     966.9    3207.5   mean    343.9  mean/med   50.5
+  56-60  n=  90  n0= 20 (  22%)       0.0       0.0       1.2      27.2     613.7    1631.7   mean    194.0  mean/med  165.6
+  61-64  n=  62  n0= 16 (  26%)       0.0       0.0       0.0       4.5     260.4    1624.2   mean    146.3  mean/med 13163.2
+
+======================================================================================================================
+POOL LANE -- OUTCOME FANS PER POOL ARM (position-pooled; fitted window 2004-2021)
+  arms seen: ['IRE', 'MSD', 'PDA', 'PDN', 'PDS', 'RD', 'SSP', 'UNR']
+======================================================================================================================
+  RD   n= 611  n0=261 (  43%)       0.0       0.0       0.0      24.0     824.6    2086.0   mean    245.7  mean/med 38900.8
+       mean signed pool v0 of the cell rows    232.9   mean/v0 1.055
+  SSP  n=  24  n0=  7 (  29%)       0.0       0.0       2.1     108.4     275.7    3797.5*  mean    231.4  mean/med  110.8
+       mean signed pool v0 of the cell rows    198.1   mean/v0 1.168
+  MSD  n=  29  n0= 11 (  38%)       0.0       0.0       0.0     119.7    1527.7    3992.5*  mean    422.3  mean/med 114853.0
+       mean signed pool v0 of the cell rows    363.4   mean/v0 1.162
+  UNR  n=  46  n0= 26 (  57%)       0.0       0.0       0.0       0.2     162.4    1078.8   mean    101.7  mean/med    inf
+       mean signed pool v0 of the cell rows    111.8   mean/v0 0.909
+  IRE  n=  47  n0= 26 (  55%)       0.0       0.0       0.0       0.3      83.6     442.3   mean     60.0  mean/med    inf
+       mean signed pool v0 of the cell rows     82.1   mean/v0 0.731
+  PDA  n=  38  n0= 15 (  39%)       0.0       0.0       0.0       1.1     173.4    1543.1   mean    189.0  mean/med 7957.1
+       mean signed pool v0 of the cell rows    185.3   mean/v0 1.020
+  PDN  n=  24  n0= 13 (  54%)       0.0       0.0       0.0       1.0     222.6     511.7*  mean     49.7  mean/med    inf
+       mean signed pool v0 of the cell rows     84.7   mean/v0 0.587
+  PDS  n=  21  n0= 14 (  67%)       0.0       0.0       0.0       0.0       1.8     323.7*  mean     21.6  mean/med    inf
+       mean signed pool v0 of the cell rows     81.0   mean/v0 0.266
+
+POOL ARM x POSITION SPLIT -- published only where the cell has n >= 20 (a split of a thin arm)
+  RD   KPD   n=  83  n0= 39 (  47%)       0.0       0.0       0.0      40.9     562.1    1681.9   mean    220.2  mean/med 25792.9
+  RD   KPF   n=  61  n0= 29 (  48%)       0.0       0.0       0.0      39.1     403.7    1248.6   mean    203.8  mean/med 46838.6
+  RD   MID   n= 180  n0= 81 (  45%)       0.0       0.0       0.0      11.6     515.3    2031.5   mean    221.2  mean/med 116897.9
+  RD   RUCK  n=  58  n0= 27 (  47%)       0.0       0.0       0.0     230.1    1184.6    2634.4   mean    407.7  mean/med 5770291.3
+  RD   SD    n= 108  n0= 33 (  31%)       0.0       0.0       0.4     139.0     937.9    1890.4   mean    273.2  mean/med  746.8
+  RD   SF    n= 121  n0= 52 (  43%)       0.0       0.0       0.0       8.7     880.7    1894.6   mean    218.7  mean/med 616098.5
+  UNR  RUCK  n=  26  n0= 22 (  85%)       0.0       0.0       0.0       0.0       0.0     419.3*  mean     24.6  mean/med    inf
+  IRE  SD    n=  29  n0= 16 (  55%)       0.0       0.0       0.0       1.9     155.1    1604.6*  mean     86.6  mean/med    inf
+
+======================================================================================================================
+SIGNATURE SHAPES (PREREG §7), mechanically evaluated
+======================================================================================================================
+  late picks 41-64 ALL : median 1.9 vs mean 287.2, zero-share 21%, q90 953.3, q97 2301.1
+  early picks 1-10 ALL : median 1190.7 vs mean 1992.5, zero-share 0%, mean/med 1.67
+  mean > median in 33 of 33 resolved ND cells with a finite ratio
+  mean/median by band (ALL): 1-10:1.67  11-20:2.47  21-30:9.34  31-40:17.48  41-64:153.56
