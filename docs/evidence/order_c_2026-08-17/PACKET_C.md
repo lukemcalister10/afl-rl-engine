@@ -222,10 +222,10 @@ marks, same leg attribution as the repair (31-40: the year-1 leg; 41-64: both le
 
 ## 8 · Prereg scorecard (every PC-numbered prediction, held or breached)
 
-- **PC-1 (dean):** direction-conditional prediction HELD (the "DOWN if α<1" branch fired; −12
+- **PC-1 (dean):** direction-conditional prediction HELD (the "DOWN if α<1" branch fired; −11
   as bounded) — but the OWNER'S EXPECTATION of recovery is NOT met, and this packet leads with
   that, per the prereg's own honesty pre-commitment.
-- **PC-2 (duff-tytler):** same — held as predicted, recovery not achieved (−14).
+- **PC-2 (duff-tytler):** same — held as predicted, recovery not achieved (−15).
 - **PC-3 (madden UP through site 1): BREACHED.** The site-1 ceiling release almost never binds
   (its condition `ceiling < production ≤ uncapped-v0` needs a hot prior with real production
   behind it); madden's board price moves only through α (−6) and his matrix marks likewise.
@@ -234,8 +234,11 @@ marks, same leg attribution as the repair (31-40: the year-1 leg; 41-64: both le
   negative (−1 to −15).
 - **PC-6 (murdock byte-unmoved):** HELD and asserted.
 - **PC-7 (day-0 89/89 unmoved):** HELD and asserted.
-- **PC-8 (under-priced played cells move toward real; no class over 1.139):** HELD — obj 33.0 →
-  31.3; max class 1.1272.
+- **PC-8 (under-priced played cells move toward real; no class over 1.139): PARTIALLY HELD,
+  stated precisely.** The overall corrected-surface objective improves (33.0 → 31.3) and the
+  1.14 gate holds with more headroom (1.1272); the 16+ cell moves toward its target (gap 0.194
+  → 0.181) — but the 10–15 cell drifts a hair further under (0.304 → 0.307), because the SSE
+  gain comes mostly from the OVER-priced 1–9-game cells shedding credit. Reported exactly.
 - **PC-9 (walk-forward RUCK cut shrinks): BREACHED.** The re-cut attribution reads RUCK
   −0.432 — unchanged from the repair's −0.43. Same mechanism as PC-3: the one live consumer of
   the corrected Q weight is a release that rarely binds for young rucks, so the corrected
