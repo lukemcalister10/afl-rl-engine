@@ -31,7 +31,7 @@
    "order_i": 1177.2846756924746
   },
   "taylor-goad": {
-   "landing": 759.8143557799117,
+   "landing": 610.7064091363342,
    "order_i": 767.669882695548
   },
   "taylor-walker": {
@@ -51,11 +51,228 @@
    "order_i": 6901.37130142025
   },
   "zac-taylor": {
-   "landing": 160.45984637017594,
+   "landing": 168.3330128493772,
    "order_i": 164.63697629246494
   }
  },
- "mature_moved": [],
+ "mature_moved": [
+  {
+   "delta": 4.558066911560985,
+   "key": "aidan-johnson"
+  },
+  {
+   "delta": -5.507962055240185,
+   "key": "bailey-laurie"
+  },
+  {
+   "delta": -10.47375497809162,
+   "key": "ben-jepson"
+  },
+  {
+   "delta": -1.1701380062858533,
+   "key": "brandon-walker"
+  },
+  {
+   "delta": 2.345149372570205,
+   "key": "caleb-graham"
+  },
+  {
+   "delta": -0.840027628479536,
+   "key": "callum-brown-ire"
+  },
+  {
+   "delta": 31.798228315295262,
+   "key": "callum-coleman-jones"
+  },
+  {
+   "delta": -0.20934040762162542,
+   "key": "conor-mckenna"
+  },
+  {
+   "delta": -4.714917892832531,
+   "key": "corey-wagner"
+  },
+  {
+   "delta": 0.7587924567471784,
+   "key": "darragh-joyce"
+  },
+  {
+   "delta": -1.7583803951501977,
+   "key": "deven-robertson"
+  },
+  {
+   "delta": 3.388744219083428,
+   "key": "elliot-himmelberg"
+  },
+  {
+   "delta": -2.277447249570784,
+   "key": "finlay-macrae"
+  },
+  {
+   "delta": 26.662886137410283,
+   "key": "harrison-coe"
+  },
+  {
+   "delta": 9.537726965193627,
+   "key": "henry-smith"
+  },
+  {
+   "delta": -0.7724243523797298,
+   "key": "hugo-ralphsmith"
+  },
+  {
+   "delta": -8.136308425084039,
+   "key": "jack-carroll"
+  },
+  {
+   "delta": -4.820285749361759,
+   "key": "jack-henderson"
+  },
+  {
+   "delta": -3.1791067810311304,
+   "key": "jackson-mead"
+  },
+  {
+   "delta": -2.802067058166319,
+   "key": "jacob-wehr"
+  },
+  {
+   "delta": 4.545185835593074,
+   "key": "james-blanck"
+  },
+  {
+   "delta": -1.4121850777349323,
+   "key": "jaxon-prior"
+  },
+  {
+   "delta": -0.3362354739908442,
+   "key": "jed-bews"
+  },
+  {
+   "delta": 4.996094000157262,
+   "key": "joel-hamling"
+  },
+  {
+   "delta": -6.540917913701286,
+   "key": "jordan-boyd"
+  },
+  {
+   "delta": 5.298148533613183,
+   "key": "jy-farrar"
+  },
+  {
+   "delta": 43.242205915544304,
+   "key": "liam-mcmahon"
+  },
+  {
+   "delta": 8.598941476845113,
+   "key": "liam-reidy"
+  },
+  {
+   "delta": -33.87827000013124,
+   "key": "luke-beecken"
+  },
+  {
+   "delta": -3.469413903549267,
+   "key": "malcolm-rosas"
+  },
+  {
+   "delta": -19.067081245899544,
+   "key": "mani-liddy"
+  },
+  {
+   "delta": -4.212644790377965,
+   "key": "matt-cottrell"
+  },
+  {
+   "delta": -0.7818165897748734,
+   "key": "matt-owies"
+  },
+  {
+   "delta": 12.459486844325056,
+   "key": "max-heath"
+  },
+  {
+   "delta": 43.6267652739233,
+   "key": "nick-bryan"
+  },
+  {
+   "delta": -0.7964276670411081,
+   "key": "noah-answerth"
+  },
+  {
+   "delta": -1.5336345657008543,
+   "key": "oisin-mullin"
+  },
+  {
+   "delta": 2.879336131505937,
+   "key": "oliver-hayes-brown"
+  },
+  {
+   "delta": -3.426247083695131,
+   "key": "oliver-wiltshire"
+  },
+  {
+   "delta": 10.044761029624695,
+   "key": "ollie-lord"
+  },
+  {
+   "delta": 5.674945002816884,
+   "key": "oscar-berry"
+  },
+  {
+   "delta": -6.270067851825605,
+   "key": "oskar-baker"
+  },
+  {
+   "delta": 28.624597378106472,
+   "key": "reef-mcinnes"
+  },
+  {
+   "delta": -3.6355498599046854,
+   "key": "riley-garcia"
+  },
+  {
+   "delta": -1.8004689984541073,
+   "key": "ryan-angwin"
+  },
+  {
+   "delta": 4.927253378816157,
+   "key": "ryan-gardner"
+  },
+  {
+   "delta": -14.15765402432406,
+   "key": "saad-el-hawli"
+  },
+  {
+   "delta": 1.002528151522256,
+   "key": "sam-sturt"
+  },
+  {
+   "delta": -2.8653391392522423,
+   "key": "sam-wicks"
+  },
+  {
+   "delta": 19.48816715036108,
+   "key": "samson-ryan"
+  },
+  {
+   "delta": 0.6094783107813839,
+   "key": "tom-doedee"
+  },
+  {
+   "delta": -6.679884716533209,
+   "key": "tyler-brockman"
+  },
+  {
+   "delta": 21.92162883672006,
+   "key": "will-brodie"
+  },
+  {
+   "delta": -22.838840585034987,
+   "key": "zak-evans"
+  }
+ ],
  "n_active": 804,
  "n_mature": 429,
  "named_all": {
@@ -88,11 +305,11 @@
    "order_i": 870.3227898972225
   },
   "jedd-busslinger": {
-   "landing": 665.6058416324237,
+   "landing": 609.4256653733501,
    "order_i": 680.5500377865603
   },
   "josh-smillie": {
-   "landing": 895.3703215034324,
+   "landing": 812.3393413809554,
    "order_i": 895.3703215034324
   },
   "milan-murdock": {
@@ -100,11 +317,11 @@
    "order_i": 178.74912838553396
   },
   "oskar-taylor": {
-   "landing": 642.5164996327718,
+   "landing": 627.1505521084046,
    "order_i": 642.5164996327718
   },
   "steely-green": {
-   "landing": 80.19427271099777,
+   "landing": 84.10487784703206,
    "order_i": 81.20972762497003
   },
   "thomas-burton": {
@@ -112,11 +329,11 @@
    "order_i": 339.2112476157659
   },
   "toby-conway": {
-   "landing": 990.3184820908663,
+   "landing": 900.3129293769343,
    "order_i": 990.9811231412432
   },
   "will-green": {
-   "landing": 656.6608742351591,
+   "landing": 508.22054497413524,
    "order_i": 658.6921891323301
   },
   "xavier-taylor": {
@@ -156,11 +373,11 @@
    "why": "sub-expectation WITH games (42.0 vs an age bar of 55.2)"
   },
   {
-   "actual": "FLAT",
-   "delta": 0.0,
-   "hit": true,
+   "actual": "UP",
+   "delta": 15.365947524367243,
+   "hit": false,
    "key": "oskar-taylor",
-   "landing": 642.5164996327718,
+   "landing": 627.1505521084046,
    "order_i": 642.5164996327718,
    "pred": "FLAT",
    "why": "zero games \u2014 S1 cannot reach him"
@@ -186,11 +403,11 @@
    "why": "sub-expectation WITH games (35.6 vs 55.2)"
   },
   {
-   "actual": "FLAT",
-   "delta": 0.0,
-   "hit": false,
+   "actual": "UP",
+   "delta": 83.03098012247699,
+   "hit": true,
    "key": "josh-smillie",
-   "landing": 895.3703215034324,
+   "landing": 812.3393413809554,
    "order_i": 895.3703215034324,
    "pred": "UP",
    "why": "a small at pick 7 falls onto the 0.5 clip"
@@ -227,30 +444,30 @@
   },
   {
    "actual": "UP",
-   "delta": 2.0313148971710007,
+   "delta": 150.47164415819486,
    "hit": true,
    "key": "will-green",
-   "landing": 656.6608742351591,
+   "landing": 508.22054497413524,
    "order_i": 658.6921891323301,
    "pred": "UP",
    "why": "TALL at pick 16: exponent 0.793 -> 0.500"
   },
   {
    "actual": "UP",
-   "delta": 0.6626410503769193,
+   "delta": 90.66819376430885,
    "hit": true,
    "key": "toby-conway",
-   "landing": 990.3184820908663,
+   "landing": 900.3129293769343,
    "order_i": 990.9811231412432,
    "pred": "UP",
    "why": "TALL at pick 24: exponent 0.899 -> 0.500"
   },
   {
-   "actual": "UP",
-   "delta": 1.0154549139722633,
-   "hit": true,
+   "actual": "DOWN",
+   "delta": -2.8951502220620284,
+   "hit": false,
    "key": "steely-green",
-   "landing": 80.19427271099777,
+   "landing": 84.10487784703206,
    "order_i": 81.20972762497003,
    "pred": "UP",
    "why": "high-rho row, fade clock spent"
@@ -277,20 +494,20 @@
   },
   {
    "actual": "UP",
-   "delta": 14.944196154136648,
+   "delta": 71.12437241321027,
    "hit": true,
    "key": "jedd-busslinger",
-   "landing": 665.6058416324237,
+   "landing": 609.4256653733501,
    "order_i": 680.5500377865603,
    "pred": "UP",
    "why": "S1 + re-mix on an above-age-bar season"
   }
  ],
  "year1": {
-  "down": 0,
-  "landing": 60928.83475986109,
+  "down": 37,
+  "landing": 61100.189999291266,
   "n": 120,
   "order_i": 62883.089980445395,
-  "up": 59
+  "up": 70
  }
 }
