@@ -86,4 +86,18 @@ both preview pages refreshed (the landing candidate if ruled in) · named rows: 
 carmichael, dean, duff-tytler, gothard, wilson, madden, busslinger, mccabe, green, dodson,
 west, gallop, annand, murdock.
 
+## AMENDMENT AD1 — OWNER WORD RECEIVED: WIRE OPTION (A), THE MEASURED CURVE
+
+The owner rules the MEASURED direction in: sit-penalty rising with pick, κ from 0.50 at pick 1
+to 1.15 at pick 64 under the redistribution identity, smooth, clips [0.5, 2.0] as prereg'd.
+The D3 predictions are superseded by the packet's own both-direction arithmetic, now the live
+predictions: **PD1' smillie RISES to ~700–770** (the number the owner will look for) ·
+PD2' carmichael ~+30 · PD3' dodson/west fade slightly DEEPER (late picks), mccabe/green SOFTEN
+(high picks) · PD4' the early bands' yr0→1 appreciation RISES as early sitter fades soften —
+picks 1-10 (+6.1%, headroom 7.9 points to the 14% line) must stay under 14%; the late-band
+sell-reds may WIDEN slightly (late fades deepen) — reported per band, before/after ·
+PD5/PD6 unchanged (day-0 identity 89/89 with sitter prints moving BY DESIGN; entry prints
+unmoved; dial-off = 7802ee97 byte-exact; determinism; vantage matrix diagnostic-only).
+This becomes THE LANDING CANDIDATE on the owner's word.
+
 *— Order A seat, Order D leg, 2026-08-17. Committed before any Order-D edit.*
