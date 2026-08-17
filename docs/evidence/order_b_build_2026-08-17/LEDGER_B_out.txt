@@ -1,0 +1,70 @@
+boards: {'off_o32': '7802ee97', 'leg1': '0bb36527', 'leg2': 'f18c9c97', 'full1': 'b786141a'}
+ledger rows: 804 of 804 C31 rows
+totals: {'live': 752429, 'cand31': 666913, 'c32base': 667398, 'b_preview': 680932, 'leg_ladder': -9318, 'leg_fade': -5294, 'leg_taper': 28146}
+rank moves (27+, within the 804-row board): max 148 mean 21.3
+Spearman base->B: all 27+ 0.9921  tall 27+ 0.9859
+age profile of board moves (all | tall):
+  age 19 n= 71    +0.12%   tall n=12    +0.79%
+  age 20 n= 87    +0.52%   tall n=19    +2.57%
+  age 21 n= 75    +3.46%   tall n=20    +4.95%
+  age 22 n= 61    +5.17%   tall n=13    +6.65%
+  age 23 n= 81    +6.29%   tall n=20    +7.64%
+  age 24 n= 58    +6.51%   tall n=16    +6.67%
+  age 25 n= 51    +4.39%   tall n= 8    +9.07%
+  age 26 n= 55    +4.73%   tall n=11    +3.16%
+  age 27 n= 46    +1.98%   tall n=17   -11.98%
+  age 28 n= 57    +4.04%   tall n=16   -25.56%
+  age 29 n= 40    -7.67%   tall n=10   -37.02%
+  age 30 n= 33   -13.83%   tall n=12   -39.88%
+  age 31 n= 24    -5.82%   tall n= 5   -26.02%
+  age 32 n= 19    -8.18%   tall n= 5   -28.28%
+  age 33 n= 22    -3.96%   tall n= 4   -16.59%
+  age 34 n= 11    -0.96%   tall n= 3    +1.60%
+  age 35 n=  5    -5.82%   tall n= 3   -21.10%
+  age 36 n=  4    -0.40%   tall n= 0        —
+  age 37 n=  3    -0.18%   tall n= 1    -3.10%
+tall-anchor gate (23-26, ladder leg only): -0.06% (bound +-3%)
+wrote docs/ledgers/ORDER_B_MOVERS.json (+ evidence copy LEDGER_B.json)
+
+top 12 fallers vs C32 base:
+  Callum Wilkie            KPD  30    -1484 (ladder -1447 fade -70 taper +33)
+  Harry McKay              KPF  29     -631 (ladder -641 fade -19 taper +29)
+  Harris Andrews           KPD  30     -602 (ladder -587 fade -28 taper +13)
+  Peter Wright             KPF  30     -581 (ladder -568 fade -23 taper +10)
+  Josh Battle              KPD  28     -568 (ladder -623 fade +0 taper +55)
+  Charlie Curnow           KPF  29     -487 (ladder -500 fade -15 taper +28)
+  Jacob Weitering          KPD  29     -376 (ladder -397 fade -11 taper +32)
+  Brodie Grundy            RUCK 32     -332 (ladder -2 fade -349 taper +19)
+  Jake Waterman            KPF  28     -328 (ladder -372 fade +0 taper +44)
+  Rowan Marshall           RUCK 31     -290 (ladder -203 fade -137 taper +50)
+  Timothy English          RUCK 29     -265 (ladder -1 fade -304 taper +40)
+  Tom McCartin             KPD  27     -256 (ladder -336 fade -1 taper +81)
+top 12 risers vs C32 base:
+  Josh Treacy              KPF  24     +403 (ladder +351 fade -1 taper +53)
+  Noah Mraz                KPD  20     +310 (ladder +319 fade +0 taper -9)
+  Tom De Koning            RUCK 27     +199 (ladder +0 fade +3 taper +196)
+  Logan Morris             KPF  21     +191 (ladder +166 fade +0 taper +25)
+  Nick Bryan               RUCK 25     +173 (ladder +0 fade +0 taper +173)
+  Samson Ryan              RUCK 26     +171 (ladder +0 fade +0 taper +171)
+  Dante Visentini          RUCK 23     +170 (ladder +0 fade +0 taper +170)
+  Sam Darcy                KPF  23     +155 (ladder +112 fade +0 taper +43)
+  Sean Darcy               RUCK 28     +152 (ladder +0 fade +0 taper +152)
+  Riley Thilthorpe         KPF  24     +145 (ladder +98 fade +0 taper +47)
+  Jake Soligo              MID  23     +144 (ladder +0 fade +0 taper +144)
+  Will Day                 MID  25     +144 (ladder +0 fade +0 taper +144)
+
+NAMED ROWS (B-preview vs everything):
+row                    pos   age     live   cand31  c32base |  ladder    fade   taper |   B-prev  vs-base   vs-C31  vs-live
+Callum Wilkie          KPD    30     3633     3422     3422 |   -1447     -70     +33 |     1938    -1484    -1484    -1695
+Peter Wright           KPF    30     1619     1522     1531 |    -568     -23     +10 |      950     -581     -572     -669
+Harris Andrews         KPD    30     1623     1521     1521 |    -587     -28     +13 |      919     -602     -602     -704
+Josh Battle            KPD    28     2028     1879     1879 |    -623      +0     +55 |     1311     -568     -568     -717
+Harry McKay            KPF    29     1735     1626     1636 |    -641     -19     +29 |     1005     -631     -621     -730
+Charlie Curnow         KPF    29     1365     1289     1297 |    -500     -15     +28 |      810     -487     -479     -555
+Ned Moyle              RUCK   24     2285     1545     1645 |      +0      +1    +128 |     1774     +129     +229     -511
+Lachlan McAndrew       RUCK   26     1279      873      897 |      +0      +0    +113 |     1010     +113     +137     -269
+Sam De Koning          KPD    25      936      841      861 |     -26      +0     +89 |      924      +63      +83      -12
+Tom De Koning          RUCK   27     1830     1664     1688 |      +0      +3    +196 |     1887     +199     +223      +57
+Marcus Bontempelli     MID    31     3876     3677     3677 |      +0    -238     +30 |     3469     -208     -208     -407
+Jack Sinclair          SD     31     3322     3180     3180 |      +0    -236     +28 |     2972     -208     -208     -350
+Zachary Merrett        MID    31     2704     2542     2542 |      +0    -146      +4 |     2400     -142     -142     -304
