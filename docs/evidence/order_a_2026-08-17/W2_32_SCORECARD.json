@@ -1,0 +1,146 @@
+{
+ "W": 0.11644003961017627,
+ "cells": {
+  "0": {
+   "gap": -0.02542427757169069,
+   "mean_price_share": 0.37054549794213526,
+   "mean_real_share": 0.34512122037044457,
+   "n": 912
+  },
+  "1-4": {
+   "gap": -0.030247673799632446,
+   "mean_price_share": 0.9368111810117188,
+   "mean_real_share": 0.9065635072120863,
+   "n": 294
+  },
+  "10-15": {
+   "gap": 0.23604299743364177,
+   "mean_price_share": 2.1481290787313005,
+   "mean_real_share": 2.3841720761649423,
+   "n": 145
+  },
+  "16+": {
+   "gap": -0.028389787378811704,
+   "mean_price_share": 3.4172963121882973,
+   "mean_real_share": 3.3889065248094856,
+   "n": 147
+  },
+  "5-9": {
+   "gap": 0.010556361246255586,
+   "mean_price_share": 1.3688476268312968,
+   "mean_real_share": 1.3794039880775524,
+   "n": 192
+  }
+ },
+ "instrument": "evidence/order33_w2_2026-08-17/w2_forward_calibration.py",
+ "instrument_md5": "106c6880d3fd4d1e9c948df38f2fdfc6",
+ "max_class": 1.1317030551705527,
+ "mean_0515": 1.017241172833031,
+ "min_class": 0.7805401343260032,
+ "scorecard": [
+  {
+   "gate": "A1 class mean 2005-15 in [1.100,1.117]",
+   "value": 1.017241172833031,
+   "verdict": "FAIL"
+  },
+  {
+   "gate": "A1 every class in [1.07,1.13]",
+   "value": [
+    0.7805401343260032,
+    1.1317030551705527
+   ],
+   "verdict": "FAIL"
+  },
+  {
+   "gate": "A1 HARD no class > 1.14",
+   "value": 1.1317030551705527,
+   "verdict": "PASS"
+  },
+  {
+   "gate": "A2 slope in [0.885,1.115]",
+   "value": 0.9396187092874446,
+   "verdict": "PASS"
+  },
+  {
+   "gate": "A3 W in [0.09,0.16]",
+   "value": 0.11644003961017627,
+   "verdict": "PASS"
+  },
+  {
+   "gate": "A4 5-9 poor gap halved (|gap|<=0.3445)",
+   "value": -0.3069421488242462,
+   "verdict": "PASS"
+  },
+  {
+   "gate": "A4 5-9 riser gap halved (|gap|<=0.2355)",
+   "value": 0.24549185203416846,
+   "verdict": "FAIL"
+  },
+  {
+   "gate": "A5 g=0 gap within +-0.10",
+   "value": -0.02542427757169069,
+   "verdict": "PASS"
+  }
+ ],
+ "slope": 0.9396187092874446,
+ "substitutions": [
+  {
+   "from": "CAND_P = SP + '/per_entrant_O31FFINAL.json'",
+   "to": "CAND_P = SP + '/per_entrant_O32FINAL.json'"
+  },
+  {
+   "from": "assert md5f(CAND_P) == 'd97f1aee4161ebcf785cd635ed095038', 'matrix md5 mismatch'",
+   "to": "assert md5f(CAND_P) == '7a4b49dbdfef147b1c4fc63c7f46ccd4', 'matrix md5 mismatch'"
+  },
+  {
+   "from": "assert A['meta']['engine_head'] == '71d9949a', 'engine head mismatch'",
+   "to": "assert A['meta']['engine_head'] == 'd145fa8a', 'engine head mismatch'"
+  },
+  {
+   "from": "print('identity OK: matrix md5 d97f1aee store cb38ef11 head 71d9949a n=2648')",
+   "to": "print('identity OK: matrix md5 7a4b49db store cb38ef11 head d145fa8a n=2648')"
+  },
+  {
+   "from": "with open(os.path.join(HERE, 'RESULTS_W2.json'), 'w') as f:",
+   "to": "with open(os.path.join('/home/user/afl-rl-engine/.claude/worktrees/agent-a9b412b92decdb5b8/docs/evidence/order_a_2026-08-17', 'W2_32_RESULTS.json'), 'w') as f:"
+  }
+ ],
+ "terciles": {
+  "1-4/mid": {
+   "gap": -0.05000709025281391,
+   "mean_price_share": 0.9725304753543529,
+   "mean_real_share": 0.922523385101539,
+   "n": 98
+  },
+  "1-4/poor": {
+   "gap": 0.055550628834103666,
+   "mean_price_share": 0.846426901392578,
+   "mean_real_share": 0.9019775302266817,
+   "n": 98
+  },
+  "1-4/riser": {
+   "gap": -0.09628655998018765,
+   "mean_price_share": 0.991476166288226,
+   "mean_real_share": 0.8951896063080383,
+   "n": 98
+  },
+  "5-9/mid": {
+   "gap": 0.09311938052884483,
+   "mean_price_share": 1.268120704307492,
+   "mean_real_share": 1.3612400848363368,
+   "n": 64
+  },
+  "5-9/poor": {
+   "gap": -0.3069421488242462,
+   "mean_price_share": 1.1467764328196373,
+   "mean_real_share": 0.8398342839953911,
+   "n": 64
+  },
+  "5-9/riser": {
+   "gap": 0.24549185203416846,
+   "mean_price_share": 1.6916457433667609,
+   "mean_real_share": 1.9371375954009293,
+   "n": 64
+  }
+ }
+}

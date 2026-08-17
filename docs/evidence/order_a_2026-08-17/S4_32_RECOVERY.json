@@ -1,0 +1,261 @@
+{
+ "c32_matrix_md5": "7a4b49dbdfef147b1c4fc63c7f46ccd4",
+ "early_wins_retained": [
+  4,
+  4
+ ],
+ "instrument": "order32_s4_2026-08-17/s4_shootout.py",
+ "instrument_md5": "241842f61ddd3c486f04f201a7efcce9",
+ "median_recovery_oldlaw_cells": 0.6169517102615691,
+ "oldlaw_cells_flipped": [
+  [
+   4,
+   "dv1",
+   "tie"
+  ],
+  [
+   4,
+   "dvrest",
+   "tie"
+  ],
+  [
+   5,
+   "dv1",
+   "tie"
+  ],
+  [
+   6,
+   "dv1",
+   "tie"
+  ]
+ ],
+ "order": "ORDER A / Candidate 32 \u2014 S4 mid-career rescore (A6, report-only)",
+ "primary_cells": [
+  {
+   "N": 1,
+   "c32_ci": [
+    0.0599,
+    0.0916
+   ],
+   "c32_delta": 0.0754,
+   "c32_verdict": "candidate",
+   "hz": "dv1",
+   "m2_c32": "candidate",
+   "m2_s4": "tie",
+   "n": 1201,
+   "recovery": 0.11189634864546473,
+   "rho_c31": 0.5698,
+   "rho_c32": 0.5603,
+   "rho_old": 0.4849,
+   "s4_verdict": "candidate"
+  },
+  {
+   "N": 1,
+   "c32_ci": [
+    0.0291,
+    0.0597
+   ],
+   "c32_delta": 0.0446,
+   "c32_verdict": "candidate",
+   "hz": "dvrest",
+   "m2_c32": "candidate",
+   "m2_s4": "tie",
+   "n": 1201,
+   "recovery": 0.0785123966942154,
+   "rho_c31": 0.5763,
+   "rho_c32": 0.5725,
+   "rho_old": 0.5279,
+   "s4_verdict": "candidate"
+  },
+  {
+   "N": 2,
+   "c32_ci": [
+    0.0294,
+    0.0642
+   ],
+   "c32_delta": 0.0465,
+   "c32_verdict": "candidate",
+   "hz": "dv1",
+   "m2_c32": "candidate",
+   "m2_s4": "candidate",
+   "n": 1137,
+   "recovery": -0.09411764705882365,
+   "rho_c31": 0.6681,
+   "rho_c32": 0.6721,
+   "rho_old": 0.6256,
+   "s4_verdict": "candidate"
+  },
+  {
+   "N": 2,
+   "c32_ci": [
+    0.0277,
+    0.0636
+   ],
+   "c32_delta": 0.0458,
+   "c32_verdict": "candidate",
+   "hz": "dvrest",
+   "m2_c32": "candidate",
+   "m2_s4": "candidate",
+   "n": 1137,
+   "recovery": -0.35905044510385686,
+   "rho_c31": 0.6772,
+   "rho_c32": 0.6893,
+   "rho_old": 0.6435,
+   "s4_verdict": "candidate"
+  },
+  {
+   "N": 3,
+   "c32_ci": [
+    0.0099,
+    0.0337
+   ],
+   "c32_delta": 0.0217,
+   "c32_verdict": "candidate",
+   "hz": "dv1",
+   "m2_c32": "candidate",
+   "m2_s4": "candidate",
+   "n": 955,
+   "recovery": -0.8869565217391328,
+   "rho_c31": 0.6767,
+   "rho_c32": 0.6869,
+   "rho_old": 0.6652,
+   "s4_verdict": "tie"
+  },
+  {
+   "N": 3,
+   "c32_ci": [
+    0.0066,
+    0.0316
+   ],
+   "c32_delta": 0.0188,
+   "c32_verdict": "candidate",
+   "hz": "dvrest",
+   "m2_c32": "candidate",
+   "m2_s4": "candidate",
+   "n": 955,
+   "recovery": 8.230769230769116,
+   "rho_c31": 0.689,
+   "rho_c32": 0.7104,
+   "rho_old": 0.6916,
+   "s4_verdict": "tie"
+  },
+  {
+   "N": 4,
+   "c32_ci": [
+    -0.0089,
+    0.0058
+   ],
+   "c32_delta": -0.0015,
+   "c32_verdict": "tie",
+   "hz": "dv1",
+   "m2_c32": "tie",
+   "m2_s4": "tie",
+   "n": 807,
+   "recovery": 0.9246231155778867,
+   "rho_c31": 0.6814,
+   "rho_c32": 0.6998,
+   "rho_old": 0.7013,
+   "s4_verdict": "oldlaw"
+  },
+  {
+   "N": 4,
+   "c32_ci": [
+    -0.0089,
+    0.0052
+   ],
+   "c32_delta": -0.0018,
+   "c32_verdict": "tie",
+   "hz": "dvrest",
+   "m2_c32": "tie",
+   "m2_s4": "oldlaw",
+   "n": 807,
+   "recovery": 0.9217391304347861,
+   "rho_c31": 0.7285,
+   "rho_c32": 0.7497,
+   "rho_old": 0.7515,
+   "s4_verdict": "oldlaw"
+  },
+  {
+   "N": 5,
+   "c32_ci": [
+    -0.0122,
+    0.0012
+   ],
+   "c32_delta": -0.0053,
+   "c32_verdict": "tie",
+   "hz": "dv1",
+   "m2_c32": "tie",
+   "m2_s4": "tie",
+   "n": 680,
+   "recovery": 0.6267605633802834,
+   "rho_c31": 0.7035,
+   "rho_c32": 0.7124,
+   "rho_old": 0.7177,
+   "s4_verdict": "oldlaw"
+  },
+  {
+   "N": 5,
+   "c32_ci": [
+    -0.0133,
+    -0.0004
+   ],
+   "c32_delta": -0.0067,
+   "c32_verdict": "oldlaw",
+   "hz": "dvrest",
+   "m2_c32": "oldlaw",
+   "m2_s4": "oldlaw",
+   "n": 680,
+   "recovery": 0.607142857142855,
+   "rho_c31": 0.7483,
+   "rho_c32": 0.7585,
+   "rho_old": 0.7651,
+   "s4_verdict": "oldlaw"
+  },
+  {
+   "N": 6,
+   "c32_ci": [
+    -0.0088,
+    0.0022
+   ],
+   "c32_delta": -0.0033,
+   "c32_verdict": "tie",
+   "hz": "dv1",
+   "m2_c32": "oldlaw",
+   "m2_s4": "tie",
+   "n": 574,
+   "recovery": 0.5657894736842028,
+   "rho_c31": 0.7258,
+   "rho_c32": 0.7301,
+   "rho_old": 0.7334,
+   "s4_verdict": "oldlaw"
+  },
+  {
+   "N": 6,
+   "c32_ci": [
+    -0.0108,
+    -0.0008
+   ],
+   "c32_delta": -0.0057,
+   "c32_verdict": "oldlaw",
+   "hz": "dvrest",
+   "m2_c32": "oldlaw",
+   "m2_s4": "tie",
+   "n": 574,
+   "recovery": 0.4368932038834912,
+   "rho_c31": 0.7909,
+   "rho_c32": 0.7954,
+   "rho_old": 0.8012,
+   "s4_verdict": "oldlaw"
+  }
+ ],
+ "substitutions": [
+  {
+   "from": "CAND_P = SP + '/per_entrant_O31FFINAL.json'",
+   "to": "CAND_P = SP + '/per_entrant_O32FINAL.json'"
+  },
+  {
+   "from": "with open(os.path.join(HERE, 'RESULTS_S4.json'), 'w') as f:",
+   "to": "with open('/home/user/afl-rl-engine/.claude/worktrees/agent-a9b412b92decdb5b8/docs/evidence/order_a_2026-08-17/RESULTS_S4_32.json', 'w') as f:"
+  }
+ ]
+}

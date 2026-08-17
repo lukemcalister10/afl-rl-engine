@@ -1,0 +1,31 @@
+ORDER A / CANDIDATE 32 — S4 rescore controls
+  C32 matrix   md5 7a4b49db
+  base matrix  md5 d97f1aee (d97f1aee = the committed S4 candidate input)
+  CONTROL v0 column identical on all 2648 ......... PASS
+  CONTROL yrs/seasons identical on all 2648 ....... PASS
+
+S4 SCORER RUN WHOLE — committed md5 241842f61ddd3c486f04f201a7efcce9, as-run md5 70b18574200d5fe0c9a6e9c70169a7b5
+  SUB  CAND_P = SP + '/per_entrant_O31FFINAL.json'                  -> CAND_P = SP + '/per_entrant_O32FINAL.json'
+  SUB  with open(os.path.join(HERE, 'RESULTS_S4.json'), 'w') as f:  -> with open('/home/user/afl-rl-engine/.claude/worktrees/agent-a9b412b92decdb5b8/do
+  scorer ran clean; console S4_32_console.txt (12 lines)
+
+  CONTROL rho_old unchanged in every scored cell ... PASS
+
+=== PRIMARY ND CELLS: Candidate 32 vs Candidate 31 vs the old law (M1 Spearman) ===
+  N   hz         n  rho_old  rho_c31  rho_c32    S4 verd   C32 verd  recovery
+  1   dv1     1201    0.485    0.570    0.560  candidate  candidate     +11%
+  1   dvrest  1201    0.528    0.576    0.573  candidate  candidate      +8%
+  2   dv1     1137    0.626    0.668    0.672  candidate  candidate      -9%
+  2   dvrest  1137    0.643    0.677    0.689  candidate  candidate     -36%
+  3   dv1      955    0.665    0.677    0.687        tie  candidate     -89%
+  3   dvrest   955    0.692    0.689    0.710        tie  candidate    +823%
+  4   dv1      807    0.701    0.681    0.700     oldlaw        tie     +92%
+  4   dvrest   807    0.751    0.729    0.750     oldlaw        tie     +92%
+  5   dv1      680    0.718    0.704    0.712     oldlaw        tie     +63%
+  5   dvrest   680    0.765    0.748    0.758     oldlaw     oldlaw     +61%
+  6   dv1      574    0.733    0.726    0.730     oldlaw        tie     +57%
+  6   dvrest   574    0.801    0.791    0.795     oldlaw     oldlaw     +44%
+
+  A6 READING: 6 S4 old-law-won primary M1 cells (years 4-6); MEDIAN RECOVERY +62%; per-cell ['N4 dv1 +92%', 'N4 dvrest +92%', 'N5 dv1 +63%', 'N5 dvrest +61%', 'N6 dv1 +57%', 'N6 dvrest +44%']
+  years 1-3 candidate wins retained: 4 of 4 (all)
+  old-law cells no longer old-law wins: 4 of 6 -> [(4, 'dv1', 'tie'), (4, 'dvrest', 'tie'), (5, 'dv1', 'tie'), (6, 'dv1', 'tie')]
