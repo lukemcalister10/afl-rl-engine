@@ -1,0 +1,37 @@
+{
+ "as_run_md5": "91d017d8d0b56f28c172c652acfdbb5c",
+ "deviations": {
+  "0-5": 0.0,
+  "16-35": 0.0,
+  "36-70": 0.0,
+  "6-15": 0.0,
+  "71+": 0.0
+ },
+ "instrument": "docs/evidence/pedigree_persistence_2026-08-14/o30bm_measure.py",
+ "instrument_md5": "e910fe6482ab7b05a92f18c173667073",
+ "max_abs_deviation": 0.0,
+ "order": "ORDER 33 W1 CONTROL",
+ "substitutions": [
+  {
+   "from": "V0P = os.path.join(ROOT, 'docs', 'evidence', 'one_machinery_2026-08-14', 'V0REFIT30B.json')",
+   "to": "V0P = os.path.join(ROOT, 'docs', 'evidence', 'candidate_31f', 'HEADFIX_31F.json')"
+  },
+  {
+   "from": "POSV = V0ART['posv_out']",
+   "to": "POSV = V0ART['posv_headfixed']"
+  },
+  {
+   "from": "OUT_JSON = os.path.join(HERE, 'PERSISTENCE_TABLE.json')",
+   "to": "OUT_JSON = os.path.join(ROOT, 'docs', 'evidence', 'order33_w1_2026-08-17', 'PERSISTENCE_W1CTRL.json')"
+  },
+  {
+   "from": "OUT_TXT = os.path.join(HERE, 'MEASURE_out.txt')",
+   "to": "OUT_TXT = os.path.join(ROOT, 'docs', 'evidence', 'order33_w1_2026-08-17', 'MEASURE_W1CTRL_out.txt')"
+  },
+  {
+   "from": "SP = '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad'",
+   "to": "SP = '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o33w1'"
+  }
+ ],
+ "verdict": "PASS"
+}

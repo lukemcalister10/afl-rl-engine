@@ -1,0 +1,21 @@
+ORDER 33 W1 CONTROL -- the 31-F beta derivation rerun whole
+  instrument     docs/evidence/pedigree_persistence_2026-08-14/o30bm_measure.py
+  committed md5  e910fe6482ab7b05a92f18c173667073
+  as-run md5     91d017d8d0b56f28c172c652acfdbb5c
+    SUB  V0P = os.path.join(ROOT, 'docs', 'evidence', 'one_machinery_2026-08-14', 'V0RE ->  V0P = os.path.join(ROOT, 'docs', 'evidence', 'candidate_31f', 'HEADFIX_31F.json')
+    SUB  POSV = V0ART['posv_out']                                                       ->  POSV = V0ART['posv_headfixed']
+    SUB  OUT_JSON = os.path.join(HERE, 'PERSISTENCE_TABLE.json')                        ->  OUT_JSON = os.path.join(ROOT, 'docs', 'evidence', 'order33_w1_2026-08-17', 'PERSISTENCE_W1CTRL.j
+    SUB  OUT_TXT = os.path.join(HERE, 'MEASURE_out.txt')                                ->  OUT_TXT = os.path.join(ROOT, 'docs', 'evidence', 'order33_w1_2026-08-17', 'MEASURE_W1CTRL_out.tx
+    SUB  SP = '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f5369 ->  SP = '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o33
+
+  harness ran clean; console MEASURE_W1CTRL_console.txt (237 lines)
+
+P1 CHECK: the five band coefficients against BETA_31F.json
+  band            n       BETA_31F     W1 CONTROL    deviation
+  0-5           382   0.2878886216   0.2878886216   +0.000e+00
+  6-15          591   0.3561227659   0.3561227659   +0.000e+00
+  16-35         834   0.2177287658   0.2177287658   +0.000e+00
+  36-70         887   0.1415515229   0.1415515229   +0.000e+00
+  71+          1339   0.0238490217   0.0238490217   +0.000e+00
+  max |deviation| = 0.000e+00   n identical: True   clusters identical: True
+  P1 VERDICT: PASS
