@@ -1,0 +1,395 @@
+======================================================================================================================
+ORDER F -- ENTRY TIMING-WEDGE VERIFICATION.  READ-ONLY.  Rule fixed in PREREG_F.md (commit d20f71c).
+======================================================================================================================
+  sources, md5-stamped:
+    docs/evidence/order32_s4_2026-08-17/s4_shootout.py         241842f61ddd3c486f04f201a7efcce9
+    engine/rl_after/rl_model.py                                8ca5bf4ce9c02ce3f0e5bc2e8897da50
+    docs/evidence/grace_adoption_2026-08-13/inputs/o26b_layer2.py b6398210e07a6ef151d45febdee8be91
+    docs/evidence/grace_adoption_2026-08-13/o28_derive.py      389779fb7222f53f109d95affd0c6ba5
+    docs/evidence/candidate_31f/o31f_headfix.py                7445f6688c8cdba7431892014b6de35c
+    per_entrant_O34FINAL.json                                  0889c6ace2d191a33a9858cb996fb1a7
+    per_entrant_O32RFINAL.json                                 f43003083af56e4d5074e0f38c2bb605
+
+======================================================================================================================
+PART 1 -- P1: WHAT VALUE WAS THE v0 ENTRY SURFACE FITTED TO?
+======================================================================================================================
+
+The v0 entry surface (the pick curve and the positional surface on it) is derived in
+docs/evidence/grace_adoption_2026-08-13/o28_derive.py.  Its fit target is the argument SC:
+
+   158 | def derive(SC, boundary='hybrid', monotone=True):
+   159 |     nd = [dict(key=k, pick=ATTR[k]['pick'], value=SC[k]['total'], pos=E[k]['position_group'])
+   160 |           for k in L2['fit_nd_keys']]
+   161 |     assert not (set(FM['excluded_keys']) & set(L2['fit_nd_keys'])), "26B-C1 (a) breached"
+   162 |     nper = collections.Counter(r['pick'] for r in nd)
+   163 |     rawmean = {p: (sum(r['value'] for r in nd if r['pick'] == p) / nper[p]) if nper[p] else 0.0
+   164 |                for p in PICKS}
+   165 |     ll, effn, dg = LL.kernel_loclin(nd, PICKS, HP.NMIN, HP.HMIN, HP.HMAX)   # 26B-C2
+
+and the call site names SC exactly:
+
+   311 | GA = L2['grace_a']
+   312 | CAND = derive(GA, 'hybrid', True)                 # THE CANDIDATE LANDING CURVE
+   313 | NOMONO = derive(GA, 'hybrid', False)              # the hybrid before the monotone step
+   314 | PURE_LL = derive(GA, 'loclin', False)             # 26B-V's grace-A curve, reproduced here
+
+L2['grace_a'] is built in o26b_layer2.py by score_all(...) with the grace-A reading:
+
+   636 | GA_O, _ = score_all('flat14', w_sqrt, True, grace=grace_O('A'))
+   637 | GB_O, _ = score_all('flat14', w_sqrt, True, grace=grace_O('B'))
+   638 | GA_L, _ = score_all('flat14', w_sqrt, True, grace=grace_L('A'))
+
+score_all sums an OBSERVED leg and a projected TAIL leg into `total`:
+
+   448 | def score_all(disc_mode='flat14', wfn=w_sqrt, with_tail=True, keys=None, grace=None):
+   449 |     out = {}; CTR = collections.Counter()
+   450 |     with Disc(disc_mode, grace) as D:
+   451 |         for e in ENTRIES:
+   452 |             if keys is not None and e['key'] not in keys: continue
+   453 |             obs, det, ctr = observed_value(e, D, wfn)
+   454 |             CTR.update(ctr)
+   455 |             tail, ntail, firsty = (tail_value(e, D) if with_tail else (0.0, 0, None))
+   456 |             tot = obs + tail
+   457 |             out[e['key']] = dict(key=e['key'], obs=obs, tail=tail, total=tot,
+   458 |                                  tail_share=(tail / tot if tot > 0 else 0.0),
+   459 |                                  n_tail_seasons=ntail, first_tail_year=firsty,
+   460 |                                  n_obs_seasons=len(det))
+   461 |     return out, CTR
+
+and the observed leg -- THE LINE THAT DECIDES P1 -- is:
+
+   376 | def observed_value(e, D, wfn):
+   377 |     """The observed leg of a career: every played season, valued at the position PLAYED, weighted by
+   378 |     games, discounted to acquisition. Returns (board points, per-season detail, counters)."""
+   379 |     ey, ea = e['entry_year'], e['entry_age']
+   380 |     if ea is None: ea = e['entry_age_fallback_if_null']
+   381 |     tot = 0.0; det = []; ctr = collections.Counter()
+   382 |     p = BYKEY.get(e['key'])
+   383 |     for s in SEASONS.get(e['key'], []):
+   384 |         pos, how = season_bar_group(s['position_played'], p)
+   385 |         ctr['bar_' + how] += 1
+   386 |         if pos is None or pos not in BARS:
+   387 |             ctr['season_no_bar_position'] += 1
+   388 |             continue
+   389 |         k = (s['year'] - ey) if ey is not None else 0
+   390 |         if k < 0: ctr['season_before_entry'] += 1
+   391 |         w = wfn(s['games'])
+   392 |         if s['games'] < 10: ctr['season_part_weighted'] += 1
+   393 |         raw = season_raw(s['avg'], pos)
+   394 |         if raw <= 0: ctr['season_below_bar_zero'] += 1
+   395 |         pts = MA.SCALE * raw * w / D.f(ea, k)
+   396 |         tot += pts
+   397 |         det.append(dict(year=s['year'], k=k, games=s['games'], avg=s['avg'], pos=pos,
+   398 |                         w=round(w, 6), pts=pts))
+   399 |     return tot, det, ctr
+
+  `pts = MA.SCALE * raw * w / D.f(ea, k)` -- every season is DIVIDED BY A DISCOUNT FACTOR,
+  keyed on k = season_year - entry_year.  D.f is:
+
+   350 |     def f(self, entry_age, k):
+   351 |         if self.grace is not None:
+   352 |             k = max(0, k - self.grace(entry_age))
+   353 |         return MA.disc_factor(entry_age, MA.LENS['bal'], k, 'bal')
+
+  and the tail leg discounts on the SAME ladder, by its own docstring:
+
+   402 | def tail_value(e, D):
+   403 |     """The projected tail off the engine's own band machinery (Ruling 8), discounted to acquisition
+   404 |     on the SAME ladder as the observed leg. Seasons at or before the last observed year are dropped,
+   405 |     so nothing is double-counted. Returns (board points, n_tail_seasons, first_tail_year)."""
+
+The same target reappears in the ORDER 31-F head fix, which reconstructs the fit population:
+
+    80 | L2 = json.load(open(os.path.join(O28, 'inputs/LAYER2.json')))
+    81 | L1 = json.load(open(os.path.join(O28, 'inputs/layer1_player_seasons.json')))
+    82 | E = {e['key']: e for e in L1['entries']}; ATTR = L2['attribution']; GA = L2['grace_a']
+    83 | nd = [dict(key=k, pick=ATTR[k]['pick'], value=GA[k]['total'], pos=E[k]['position_group'])
+    84 |       for k in L2['fit_nd_keys']]
+
+*** P1 VERDICT: FALSIFIED. ***  The v0 fit target is NOT an undiscounted career total.  It is a
+TIME-OF-DELIVERY DISCOUNTED career value: flat 14%/yr (LENS[bal] = 0.14, AGE_DISC off), with the
+grace-A exponent shift max(0, k - G) that the owner ruled at ORDER 28.  The hypothesis as posed --
+"fitted to career-integrated delivered value WITHOUT time-of-delivery discounting" -- is false on
+the code.  Per PREREG_F.md section 5, the wedge computation as specified STOPS here and is
+reported only as a counterfactual bound; the seat proceeds to the replacement question.
+
+======================================================================================================================
+PART 2 -- THE TWO-CLOCK ARITHMETIC: WHAT THE BOARD'S OWN CONVENTION SAYS THE yr0->1 MARK IS
+======================================================================================================================
+
+The engine's discount factor, LIFTED BY SOURCE TEXT and exec'd VERBATIM (no re-implementation):
+
+  1004 | def disc_factor(a,d,k,lens='bal',grace=0):
+  1005 |     """THE DISCOUNT FACTOR for future season k, for a player priced at current age a.
+  1006 |     Modes 0/1/2/3: the existing power form (1+r)**k with r fixed at pricing time.
+  1007 |     Mode 9 (seat-proposed): the PATH PRODUCT prod_{j=1..k} (1+r(a+j)) — the rate for each season is the rate for the
+  1008 |     age he will be in it. k=0 is 1.0 in every mode, so the present season is never discounted.
+  1009 | 
+  1010 |     ORDER 28 GRACE-A (dial-gated, default OFF — see grace_years above). `grace` is the number of
+  1011 |     FUTURE seasons that carry full weight before the ladder engages: the exponent handed to the power
+  1012 |     form becomes max(0, k - grace).  grace=0 gives max(0,k)==k for k>0, i.e. the pre-order form
+  1013 |     BIT-FOR-BIT — the dial-off path is identity by construction, not by tolerance.
+  1014 |     Mode 9 coherence (inactive on the live config, flat 14%): grace drops the EARLIEST factors from
+  1015 |     the path product, j running grace+1..k, so the same seasons go free under either mode."""
+  1016 |     if k<=0: return 1.0
+  1017 |     if grace:
+  1018 |         k=max(0,int(k)-int(grace))
+  1019 |         if k<=0: return 1.0
+  1020 |     if AGE_DISC and lens in ('bal','balanced') and a is not None and age_disc_mode()==9:
+  1021 |         f=1.0; a=float(a)
+  1022 |         for j in range(int(grace)+1,int(grace)+int(k)+1): f*=(1.0+_pw_interp(a+j,_V9_KNOTS))
+  1023 |         return f
+  1024 |     return (1.0+age_disc(a,d,lens))**k
+
+  lifted disc_factor text md5 93a198a86f7c832dba79e41de5146d8c  (20 lines).  Live config asserted: AGE_DISC off, LENS[bal]=0.14.
+  control: disc_factor(18, 0.14, 3, grace=0) == 1.14^3 -> 1.4815440000  PASS
+
+The grace-A dial, engine side (rl_model.py:234-241), DEFAULT ON since ORDER 29's landing:
+
+   234 | RL_GRACE=os.environ.get('RL_GRACE','1')!='0'
+   235 | GRACE_G=1                              # grace-A: ONE extra free future season for a normal-age entrant
+   236 | GRACE_MAX_ENTRY_AGE=19                 # entrants at 20+ get no grace (ruled)
+   237 | def grace_years(p):
+   238 |     """Remaining grace seasons for player p at the current AGE_REF. 0 when the dial is off."""
+   239 |     if not RL_GRACE or p is None: return 0
+   240 |     if (p['year']-by(p))>GRACE_MAX_ENTRY_AGE: return 0
+   241 |     return max(0,GRACE_G-max(0,AGE_REF-debut(p)))
+
+TWO CLOCKS, ONE RULE (PREREG_ORDER28 sec 1.1, quoted in rl_model.py:206-213):
+
+   202 | # THE RULE: a normal-age entrant (entry age <= 19) carries seasons 1 AND 2 at FULL weight; his THIRD
+   203 | # season is the first diminished.  An entrant at 20+ gets no grace and is on today's ladder unchanged.
+   204 | #
+   205 | # WHY G=1 HERE AND G_O=2 ON THE CURVE.  Two clocks, one rule (PREREG_ORDER28.md §1.1):
+   206 | #   curve side  k_c = season_year - entry_year, k_c=1 is the FIRST played season and already discounts;
+   207 | #               exponent max(0, k_c - 2)  =>  seasons 1,2 free.
+   208 | #   engine side k_e = seasons AHEAD of the pricing year, and k_e=0 is ALWAYS 1.0 (the standing engine
+   209 | #               convention in disc_factor: the present season is never discounted).  So the engine only
+   210 | #               needs ONE extra free step, and only for a player whose present season IS his first:
+   211 | #               exponent max(0, k_e - remaining), remaining = max(0, G - seasons_elapsed), G = 1.
+   212 | # Checked season by season in the prereg; the consequence is that a 2nd-year-and-later row is
+   213 | # byte-unchanged even with the dial ON, which is the rule, not an approximation of it.
+
+So put the two vantages side by side for one entrant drafted in year e.  Let his season e+j carry
+delivered value v_j, j = 1, 2, 3, ...  (j=1 is his first played season; debut = e+1).
+
+  ENTRY (the curve clock, k_c = j, exponent max(0, k_c - G_O), G_O = 2 for entry age <= 19)
+  YEAR 1 (the engine clock; the yr1 board prices forward from his SECOND season, so k_e = j - 2,
+          and grace_years = max(0, 1 - max(0, AGE_REF - debut)) = 0 at that vantage)
+
+  entry age age<=19   (curve G_O = 2 ; engine grace at the yr1 vantage = 0)
+    season j                            1         2         3         4         5         6         7
+    weight in ENTRY price         1.00000   1.00000   0.87719   0.76947   0.67497   0.59208   0.51937
+    weight in YEAR-1 price      delivered   1.00000   0.87719   0.76947   0.67497   0.59208   0.51937
+    accretion yr1/entry               n/a   1.00000   1.00000   1.00000   1.00000   1.00000   1.00000
+    -> every surviving season accretes by EXACTLY 1.00000 over the entry->year-1 step.
+
+  entry age age>=20   (curve G_O = 0 ; engine grace at the yr1 vantage = 0)
+    season j                            1         2         3         4         5         6         7
+    weight in ENTRY price         0.87719   0.76947   0.67497   0.59208   0.51937   0.45559   0.39964
+    weight in YEAR-1 price      delivered   1.00000   0.87719   0.76947   0.67497   0.59208   0.51937
+    accretion yr1/entry               n/a   1.29960   1.29960   1.29960   1.29960   1.29960   1.29960
+    -> every surviving season accretes by EXACTLY 1.29960 over the entry->year-1 step.
+
+*** THE FINDING THAT REPLACES THE HYPOTHESIS ***
+  For a grace-eligible entrant (entry age <= 19 -- the overwhelming majority of the draft), the
+  entry price and the year-1 price weight every surviving season IDENTICALLY (accretion 1.00000).
+  The grace-A rule gives seasons 1 and 2 full weight at the entry clock and exactly one extra free
+  step at the engine clock, and the two were DESIGNED to line up.  The consequence, which appears
+  not to have been carried into the no-arb benchmark, is that THE ENTRY->YEAR-1 STEP EARNS NO CARRY
+  FOR A GRACE-ELIGIBLE ENTRANT.  His board-consistent fair year-1 mark is
+        fair_grace = 1.00 x (1 - s1)        NOT   fair_C = 1.14 x (1 - s1).
+  For a mature-age entrant (>= 20) there is no grace on either clock, the step accretes by 1.30,
+  and Order C's fair_C = 1.14 x (1 - s1) is exactly right for him.
+
+======================================================================================================================
+PART 3 -- DELIVERY TIMING PROFILES ON THE HOUSE RULER
+======================================================================================================================
+
+  S4 ruler lifted by source text from docs/evidence/order32_s4_2026-08-17/s4_shootout.py
+    lifted text md5 ce730ab0c5fa62da8f920c2c9ec8672c  (38 lines).  BARS {'KPD': 65.4, 'KPF': 63.8, 'MID': 77.1, 'RUCK': 75.5, 'SD': 75.3, 'SF': 67.9} ; LAST_REAL_SEASON 2025 ; FM ['paddy-mccartin', 'thomas-boyd']
+    control: season value == w_sqrt(games) * posval(avg + capt_prem(avg) - BAR) * 21.0
+
+  SV assembly lifted verbatim too (md5 27255cd17480f7801a34c07b2f4f6ef2); 2648 players carry a season map.
+
+DELIVERY TIMING PROFILE -- value-weighted share of career delivered value arriving in year k after
+entry.  Classes 2005-2019.  Full observable window (right-censored at 2025) and the fixed 6-year horizon.
+
+  cell           n   U=0     yr1    yr2    yr3    yr4    yr5    yr6    yr7    yr8    mean_yr p50wedge
+  ND 1-10      150     0   0.007  0.039  0.069  0.098  0.111  0.131  0.110  0.099       6.22    0.460
+  ND 11-20     150     2   0.012  0.028  0.050  0.098  0.114  0.134  0.127  0.100       6.49    0.474
+  ND 21-30     150     6   0.007  0.032  0.071  0.113  0.094  0.134  0.134  0.106       6.35    0.525
+  ND 31-40     150    16   0.015  0.023  0.062  0.078  0.104  0.118  0.100  0.078       6.21    0.532
+  ND 41-64     354    72   0.013  0.025  0.044  0.079  0.093  0.127  0.119  0.121       6.68    0.593
+  ARM RD       543   230   0.031  0.040  0.077  0.100  0.103  0.111  0.128  0.116       6.38    0.630
+  ARM MSD        9     6   0.014  0.017  0.069  0.160  0.117  0.624  0.000  0.000       5.22    0.699
+  ARM SSP       13     5   0.097  0.151  0.270  0.055  0.223  0.080  0.125  0.000       3.89    0.700
+  ARM UNR       44    24   0.004  0.034  0.057  0.154  0.183  0.087  0.008  0.047       6.55    0.659
+  ARM IRE       43    23   0.004  0.023  0.007  0.051  0.111  0.140  0.243  0.127       6.53    0.675
+  ARM PDA       32    13   0.002  0.001  0.149  0.184  0.162  0.058  0.220  0.117       5.71    0.675
+  ARM PDN       17     9   0.000  0.002  0.008  0.209  0.071  0.278  0.252  0.180       6.09    0.675
+  ARM PDS       21    14   0.000  0.000  0.000  0.116  0.131  0.116  0.039  0.122       7.54    0.519
+
+  "mean_yr" is the value-weighted mean year of delivery -- the single number that says how late a
+  cell's value arrives.  "p50wedge" is the median PLAYER's own sum_k s_k 1.14^-k (dispersion below).
+
+  cross-player dispersion of the per-player pure wedge (p25 / p50 / p75):
+    ND 1-10     0.402 / 0.460 / 0.566   (n with U>0: 150)
+    ND 11-20    0.402 / 0.474 / 0.594   (n with U>0: 148)
+    ND 21-30    0.436 / 0.525 / 0.650   (n with U>0: 144)
+    ND 31-40    0.435 / 0.532 / 0.669   (n with U>0: 134)
+    ND 41-64    0.450 / 0.593 / 0.755   (n with U>0: 282)
+    ARM RD      0.460 / 0.630 / 0.769   (n with U>0: 313)
+    ARM MSD     0.506 / 0.699 / 0.877   (n with U>0: 3)
+    ARM SSP     0.667 / 0.700 / 0.760   (n with U>0: 8)
+    ARM UNR     0.563 / 0.659 / 0.769   (n with U>0: 20)
+    ARM IRE     0.537 / 0.675 / 0.753   (n with U>0: 20)
+    ARM PDA     0.519 / 0.675 / 0.730   (n with U>0: 19)
+    ARM PDN     0.573 / 0.675 / 0.801   (n with U>0: 8)
+    ARM PDS     0.347 / 0.519 / 0.671   (n with U>0: 7)
+
+======================================================================================================================
+PART 4 -- THE WEDGE TABLE
+======================================================================================================================
+
+  W_pure     = sum_k s_k * 1.14^-k     -- the wedge IF the entry price were an undiscounted career
+                                          total.  P1 falsified that premise, so this column is a
+                                          COUNTERFACTUAL BOUND, printed for the record, not the
+                                          operative finding (PREREG_F sec 5).
+  W_target   = sum_k s_k * 1.14^-max(0,k-G)  -- the ladder the fit target ACTUALLY uses, G = 2 for
+                                          entry age <= 19 and 0 otherwise (grace-A, reading O).
+  W_resid    = W_pure / W_target       -- how much the entry price still overstates a STRICT-carry
+                                          present value.  This is the only wedge that survives P1.
+
+  cell           n    W_pure    W_targ   W_resid  W_pure_h     meanG
+  ND 1-10      150     0.404     0.540     0.748     0.568      2.00
+  ND 11-20     150     0.402     0.530     0.760     0.560      1.93
+  ND 21-30     150     0.412     0.540     0.763     0.566      1.90
+  ND 31-40     150     0.374     0.477     0.785     0.567      1.51
+  ND 41-64     354     0.385     0.500     0.770     0.560      1.81
+  ARM RD       543     0.434     0.506     0.858     0.591      1.13
+  ARM MSD        9     0.511     0.511     1.000     0.511      0.00
+  ARM SSP       13     0.618     0.728     0.849     0.649      1.43
+  ARM UNR       44     0.414     0.434     0.956     0.567      0.24
+  ARM IRE       43     0.374     0.477     0.784     0.528      1.33
+  ARM PDA       32     0.478     0.623     0.766     0.580      1.99
+  ARM PDN       17     0.458     0.504     0.909     0.518      0.54
+  ARM PDS       21     0.387     0.503     0.770     0.522      2.00
+
+  Read the W_resid column: it is essentially 1/1.14^G -- a LEVEL, set by the entrant's age, not a
+  TIMING gradient.  The grace ladder and the strict ladder differ by a constant for every season
+  from k = G+1 onward, so the residual cannot vary with how LATE a cell delivers.  That is the
+  structural reason the timing story cannot produce a band spread on this board.
+
+======================================================================================================================
+PART 5 -- THE MATCH TEST AT THE PREREG TOLERANCE
+======================================================================================================================
+
+  s1 is rebuilt with ORDER C's OWN construction (o34_attribution.py cell_line), so fair_C here is
+  comparable to the published table; the only difference is my class window (2005-2019, prereg) vs its
+  2005-2021, which is disclosed and reported below as a control.
+
+  cell           n      s1 obs mark   fair_C W_implied    W_pure      diff verdict
+  ND 1-10      150   0.016    1.048    1.122     0.934     0.404    -0.529    MISS
+  ND 11-20     150   0.026    1.087    1.110     0.979     0.402    -0.577    MISS
+  ND 21-30     150   0.014    1.037    1.124     0.923     0.412    -0.511    MISS
+  ND 31-40     150   0.034    0.885    1.101     0.804     0.374    -0.429    MISS
+  ND 41-64     354   0.029    0.929    1.107     0.839     0.385    -0.454    MISS
+  ARM RD       543   0.061    0.980    1.070     0.916     0.434    -0.482    MISS
+  ARM MSD        9   0.024      n/a    1.112       n/a     0.511       n/a no mark
+  ARM SSP       13   0.138    1.510    0.983     1.536     0.618    -0.918    THIN
+  ARM UNR       44   0.009    0.620    1.130     0.549     0.414    -0.134    MISS
+  ARM IRE       43   0.008    1.090    1.130     0.964     0.374    -0.590    MISS
+  ARM PDA       32   0.003    0.810    1.137     0.712     0.478    -0.235    MISS
+  ARM PDN       17   0.000    0.640    1.140     0.561     0.458    -0.103    MISS
+  ARM PDS       21   0.001    0.760    1.139     0.667     0.387    -0.280    MISS
+
+  tally: {'MISS': 11, 'THIN': 1}
+  scored cells (n>=15): 11   MATCH 0   NEAR 0   MISS 11
+  band-only rank correlation between W_pure and W_implied (5 bands): rho = 0.600
+  band W_pure spread   (max-min): 0.038
+  band W_implied spread(max-min): 0.175
+
+  SIGN TEST S1 (prereg): W_SSP must be the LARGEST pool-arm wedge.
+    W by arm: RD 0.434  MSD 0.511  SSP 0.618  UNR 0.414  IRE 0.374  PDA 0.478  PDN 0.458  PDS 0.387
+    largest = SSP (0.618) ; W_SSP = 0.618  -> PASS
+  SIGN TEST S2 (prereg): W_PDS, W_PDN, W_PDA must all sit BELOW W_RD.
+    W_RD 0.434 | PDS 0.387 PDN 0.458 PDA 0.478  -> FAIL
+
+======================================================================================================================
+PART 6 -- THE ADVERSARIAL ALTERNATIVES, ON THE SAME DATA
+======================================================================================================================
+
+ALT-2 FIRST (it is the one PART 2 predicts): re-base the fair mark onto the board's OWN clock.
+  fair_board = accretion(entry age) x (1 - s1),  with PART 2's OWN computed accretions:
+    entry age <= 19 : 1.00000   (grace-A absorbs the step -- no carry is earned)
+    entry age >= 20 : 1.29960   (= 1.14^2: no grace, AND the curve clock sits one index step ahead
+                              of the engine clock at the corresponding vantage)
+  mixed by entry points inside each cell.  Order C uses 1.14 for EVERYONE.
+
+  cell           n sh<=19      obs   fair_C    gap_C   fair_bd    gap_bd better?
+  ND 1-10      150   1.00    1.048    1.122   -0.074     0.984    +0.064     yes
+  ND 11-20     150   0.98    1.087    1.110   -0.023     0.981    +0.106      no
+  ND 21-30     150   0.97    1.037    1.124   -0.087     0.994    +0.043     yes
+  ND 31-40     150   0.95    0.885    1.101   -0.216     0.980    -0.095     yes
+  ND 41-64     354   0.91    0.929    1.107   -0.178     0.998    -0.069     yes
+  ARM RD       543   0.73    0.980    1.070   -0.090     1.015    -0.035     yes
+  ARM SSP       13   0.56    1.510    0.983   +0.527     0.975    +0.535      no
+  ARM UNR       44   0.27    0.620    1.130   -0.510     1.209    -0.589      no
+  ARM IRE       43   0.57    1.090    1.130   -0.040     1.118    -0.028     yes
+  ARM PDA       32   0.90    0.810    1.137   -0.327     1.028    -0.218     yes
+  ARM PDN       17   0.76    0.640    1.140   -0.500     1.071    -0.431     yes
+  ARM PDS       21   1.00    0.760    1.139   -0.379     0.999    -0.239     yes
+
+  mean |gap|, all 12 cells : fair_C 0.2460 -> fair_board 0.2044
+  mean |gap|, 5 ND bands   : fair_C 0.1157 -> fair_board 0.0753
+  cells improved: 9 of 12
+  ND-band gap SPREAD (max-min): fair_C 0.193 -> fair_board 0.201   (a uniform re-basing cannot move it)
+
+THE NATURAL EXPERIMENT AT THE RULED BOUNDARY.  grace-A cuts at entry age <= 19.  A timing story
+predicts marks vary SMOOTHLY with age; the grace story predicts a DISCONTINUITY at 19/20.
+Classes 2005-2021 (Order C's own window) so the comparison is against its published age table.
+
+  age         n  entry pts     mark   fair_C    gap_C   fair_bd    gap_bd
+  17         93      64206    0.861    1.134   -0.273     0.995    -0.133
+  18       1401     827351    1.014    1.122   -0.107     0.984    +0.030
+  19        167      51353    0.954    1.129   -0.176     0.990    -0.037
+  20         80      21265    1.282    1.074   +0.208     1.225    +0.058
+  21+       245      60690    1.110    0.991   +0.120     1.129    -0.019
+
+  mean |gap| across the five age buckets: fair_C 0.1768 -> fair_board 0.0555
+  The discontinuity is AT the ruled boundary: age 19 gap_C -0.176 vs age 20 gap_C +0.208 -- a 0.384
+  jump across a one-year age step that no delivery-timing story can produce.  Under the board's
+  own clock the same step is -0.037 -> +0.058, a jump of 0.095.
+
+ALT-1: "the year-1 marks are simply too low".  Its discriminator (prereg sec 6): the deficit should
+track WHO SAT and the year-1 re-pricing inputs, and should NOT track how late a cell delivers.
+
+  band-level: mean year of delivery vs the observed gap under each benchmark
+  band         mean_yr     gap_C    gap_bd
+  ND 1-10         6.22    -0.074    +0.064
+  ND 11-20        6.49    -0.023    +0.106
+  ND 21-30        6.35    -0.087    +0.043
+  ND 31-40        6.21    -0.216    -0.095
+  ND 41-64        6.68    -0.178    -0.069
+  rank corr(mean_yr, gap): under fair_C 0.300 ; under fair_board 0.300
+  (the timing story needs this STRONGLY NEGATIVE -- later delivery, deeper drop.)
+
+  year-one sitting rate by band (ALT-1's own variable), classes 2005-2019:
+  band            n  sat(0g) sat share     gap_bd
+  ND 1-10       150       16    0.107     +0.064
+  ND 11-20      150       36    0.240     +0.106
+  ND 21-30      150       45    0.300     +0.043
+  ND 31-40      150       78    0.520     -0.095
+  ND 41-64      354      211    0.596     -0.069
+  rank corr(sat share, gap_bd) over the five bands: -0.800
+  rank corr(mean_yr,  gap_bd) over the five bands: 0.300
+  ALT-1 predicts the FIRST to be strongly negative and the second to be near zero or positive.
+
+SCOREBOARD ON THE BAND SPREAD (the V-shape's defining feature, 0.19 ratio points):
+  timing story  -- band W_pure spread 0.038 against an implied spread of 0.175: it can supply at most
+                   22% of the spread even as a counterfactual, and P1 says the premise is false.
+  clock story   -- explains the LEVEL (mean |gap| 0.246 -> 0.204) and, being uniform in pick, NONE of
+                   the spread; it does explain the age-boundary discontinuity, which timing cannot.
+  ALT-1         -- the only candidate left standing for the SPREAD; sit share tracks it at rho -0.800.
+
