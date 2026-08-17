@@ -1,0 +1,106 @@
+extended 338 committed md5 d59ad550116ebbe3d90ed82becd2c4d5 (owner five bands standing, yr0..12)
+harness md5 02dcf28c7bd0d39b3526e24c5cc0a87a (must begin 02dcf28c)
+THE ONE EDIT to the disclosed copy: output filename tagged per matrix (printed above); as-run md5 0dbe5fa24816509066742f1ddc81044d
+CONTROL: the C32R extended rerun reproduces the repair packet's own five-band yr0->1 numbers — EXACT
+
+====================================================================================================
+TWO-SIDED FIVE-BAND TABLE (ND, draft clock, extended 338 instrument) — the repaired C32 vs ORDER D (the landing candidate)
+====================================================================================================
+A group is fairly priced if it appreciates BETWEEN 0%% and +14%% over its first year.
+band             | C32R yr0-1       sell        buy |    D yr0-1       sell        buy
+ALL picks 1-64   |     +1.95%         ok         ok |     +2.98%         ok         ok
+picks 1-20       |     +6.56%         ok         ok |     +8.36%         ok         ok
+picks 21-64      |     -5.34%        RED         ok |     -5.54%        RED         ok
+picks 1-10       |     +6.13%         ok         ok |     +7.93%         ok         ok
+picks 11-20      |     +7.40%         ok         ok |     +9.20%         ok         ok
+picks 21-30      |     +1.62%         ok         ok |     +2.76%         ok         ok
+picks 31-40      |    -12.88%        RED         ok |    -12.84%        RED         ok
+picks 41-64      |     -6.14%        RED         ok |     -7.88%        RED         ok
+five-band spread (widest minus narrowest): C32R 20.3 points -> Order-D 22.0 points  [DIAGNOSTIC — reported, not targeted]
+
+====================================================================================================
+TWO-SIDED POOL-ARM TABLE (cohort clock, all-arm instrument semantics) — repair, both windows
+====================================================================================================
+MSD year-1 caption, in plain words: a mid-season draftee debuts in the SAME year he is drafted,
+but the matrix stores his seasons starting the year after. His true first-season cell cannot be
+read from this matrix, so those rows are EXCLUDED from that one year and counted — never scored
+zero and never printed as a blank. The n_pre column is that count.
+
+--- PRIMARY 2005-2023 ---
+arm          n |      yr0      yr1      yr2      yr4      yr8 |     yr0->1  n_pre      sell side       buy side
+RD         623 |   1.0000   0.9779   1.1686   1.2164   1.0094 |     -2.21%      0            RED             ok
+MSD         55 | (window has no year-1 cell)
+SSP         31 |   1.0000   1.5052   1.5896   1.6397   0.3017 |    +50.52%      0             ok            RED
+UNR         49 |   1.0000   0.5794   0.7836   1.2243   0.4020 |    -42.06%      0            RED             ok
+IRE         47 |   1.0000   1.1351   1.5240   1.1852   1.2615 |    +13.51%      0             ok             ok
+PDA         43 |   1.0000   0.8167   0.9271   1.1650   0.7324 |    -18.33%      0            RED             ok
+PDN         33 |   1.0000   0.6219   1.0369   0.8720   0.9071 |    -37.81%      0            RED             ok
+PDS         21 |   1.0000   0.7453   0.7927   0.7247   0.3017 |    -25.47%      0            RED             ok
+ALLPOOL   1016 |   1.0000   0.9609   1.1168   1.1687   1.0519 |     -3.91%     55            RED             ok
+
+--- MODERN 2019-2023 ---
+arm          n |      yr0      yr1      yr2      yr4      yr8 |     yr0->1  n_pre      sell side       buy side
+RD          66 |   1.0000   0.8135   0.9875   1.0963   1.5899 |    -18.65%      0            RED             ok
+MSD         55 | (window has no year-1 cell)
+SSP         31 |   1.0000   1.5052   1.5896   1.6397   0.3017 |    +50.52%      0             ok            RED
+UNR         13 |   1.0000   0.6719   0.7436   0.5623   0.0074 |    -32.81%      0            RED             ok
+IRE         12 |   1.0000   0.5066   0.5106   0.1777   0.0821 |    -49.34%      0            RED             ok
+PDA         13 |   1.0000   0.5885   0.7205   0.9184   0.0987 |    -41.15%      0            RED             ok
+PDN         25 |   1.0000   0.6507   1.1138   0.4872   0.2354 |    -34.93%      0            RED             ok
+PDS          0 | (window has no year-1 cell)
+ALLPOOL    229 |   1.0000   0.9085   0.9312   0.9323   0.7208 |     -9.15%     55            RED             ok
+
+====================================================================================================
+VANTAGE-CONSISTENCY MATRIX — DIAGNOSTIC ONLY (amendment A2: nothing was calibrated toward this)
+====================================================================================================
+Reading guide: each cell is how much the group is priced to GROW from vantage year V over the
+next k years. The carry column is the fair benchmark (1.14^k). A well-priced group sits near
+the carry from EVERY vantage. Divergence is printed RED as a FINDING for investigation.
+
+picks 1-10   (fair yr1 mark 1.120; actual yr1 mark 1.072 — near fair)
+  vantage           k=1        k=2        k=3        k=4 | carry: 1.14 1.30 1.48 1.69
+  yr 0           1.079      1.179      1.360      1.521 
+  yr 1           1.093      1.260      1.409      1.392 
+  yr 2           1.153      1.290      1.274      1.208 
+
+picks 11-20   (fair yr1 mark 1.111; actual yr1 mark 1.115 — near fair)
+  vantage           k=1        k=2        k=3        k=4 | carry: 1.14 1.30 1.48 1.69
+  yr 0           1.092      1.203      1.345      1.538 
+  yr 1           1.101      1.232      1.409      1.504 
+  yr 2           1.118      1.279      1.365      1.324 
+
+picks 21-30   (fair yr1 mark 1.124; actual yr1 mark 1.059 — 6 points below fair)
+  vantage           k=1        k=2        k=3        k=4 | carry: 1.14 1.30 1.48 1.69
+  yr 0           1.028      1.182      1.418      1.599 
+  yr 1           1.150      1.380      1.556      1.567 
+  yr 2           1.200      1.352      1.362      1.428 
+
+picks 31-40   (fair yr1 mark 1.103; actual yr1 mark 0.895 — 21 points below fair)
+  vantage           k=1        k=2        k=3        k=4 | carry: 1.14 1.30 1.48 1.69
+  yr 0           0.872*     0.941*     1.255      1.249 
+  yr 1           1.080      1.440*     1.433      1.600 
+  yr 2           1.333*     1.327      1.482      1.379 
+
+picks 41-64   (fair yr1 mark 1.107; actual yr1 mark 0.927 — 18 points below fair)
+  vantage           k=1        k=2        k=3        k=4 | carry: 1.14 1.30 1.48 1.69
+  yr 0           0.921*     1.073      1.152      1.256 
+  yr 1           1.164      1.251      1.363      1.493 
+  yr 2           1.074      1.171      1.282      1.415 
+
+band-vs-band spread of forward growth (max band minus min band, in growth-ratio points):
+  vantage       k=1      k=2      k=3      k=4
+  yr 0        0.220    0.262    0.266    0.350
+  yr 1        0.085    0.208    0.192    0.207
+  yr 2        0.259    0.182    0.207    0.220
+  yr-1-vantage spread on the repaired C32: k=1 0.079  k=2 0.207  k=3 0.229  k=4 0.187
+
+WHERE EACH BAND'S INCONSISTENCY LIVES (using the band-level fair yr1 = 1.14 x (1 - yr1 delivered share)):
+  picks 1-10   yr1-mark leg -0.048 (mark 1.072 vs fair 1.120) · later-years leg (yr1->5 growth 1.392 vs carry 1.689) -0.297
+  picks 11-20  yr1-mark leg +0.004 (mark 1.115 vs fair 1.111) · later-years leg (yr1->5 growth 1.504 vs carry 1.689) -0.185
+  picks 21-30  yr1-mark leg -0.065 (mark 1.059 vs fair 1.124) · later-years leg (yr1->5 growth 1.567 vs carry 1.689) -0.122
+  picks 31-40  yr1-mark leg -0.207 (mark 0.895 vs fair 1.103) · later-years leg (yr1->5 growth 1.600 vs carry 1.689) -0.089
+  picks 41-64  yr1-mark leg -0.180 (mark 0.927 vs fair 1.107) · later-years leg (yr1->5 growth 1.493 vs carry 1.689) -0.196
+
+Plain reading: a NEGATIVE yr1-mark leg means the band is priced too low at the end of year one;
+a POSITIVE later-years leg means its price is then expected to grow faster than the carry —
+the two legs of the same mispricing. The late bands carry most of both.

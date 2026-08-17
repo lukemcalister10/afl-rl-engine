@@ -91,19 +91,19 @@ def page_head(title, sub, banner):
             '<header><div class="brand">CANDIDATE <b>32</b><span class="sub">%s</span></div>'
             '<div class="spacer"></div>'
             '<div class="stamp">live <b>88ce647f</b> %d · candidate 31 <b>fe6be9d6</b> %d<br>'
-            'candidate 32 <b>%s</b> <b>%d</b> · store cb38ef11 · PRE-NUMERAIRE</div></header>\n'
+            'ORDER D <b>%s</b> <b>%d</b> · store cb38ef11 · PRE-NUMERAIRE</div></header>\n'
             % (title, CSS, banner, sub, T['live'], T['c31'], B['candidate32'][:8], T['candidate32']))
 
 
 # ================= PAGE 1: the full player table ==================================================
 rows_sorted = sorted(ROWS, key=lambda r: -r['cand'])
 H = [page_head('Candidate 32 · The Board', 'ORDER A · THE FULL PLAYER TABLE',
-               'NOTHING LANDS WITHOUT THE OWNER\'S WORD — PREVIEW OF A CANDIDATE, PRE-NUMERAIRE, F2 LEVEL QUESTION OPEN')]
+               'THE LANDING CANDIDATE (ORDER D, owner word: the measured pick-curve fade) — PRE-NUMERAIRE; THE OWNER\'S FINAL WORD DECIDES')]
 H.append('<div class="box"><h2>All %d priced rows · click any column to sort · deltas vs BOTH baselines</h2>' % len(rows_sorted))
 H.append('<table id="t1"><thead><tr>')
 cols = [('#', True), ('player', False), ('path', False), ('pos', False), ('g', True),
-        ('live', True), ('cand 31', True), ('cand 32', True), ('Δ live', True), ('Δ c31', True),
-        ('bars', True), ('credit', True), ('reset', True), ('refit', True), ('relief', True), ('re-mix', True)]
+        ('live', True), ('cand 31', True), ('c32 repair', True), ('ORDER D', True), ('Δ live', True), ('Δ c32r', True),
+        ('bars', True), ('credit', True), ('reset', True), ('refit', True), ('relief', True), ('re-mix', True), ('pick-fade', True)]
 for i, (nm, num) in enumerate(cols):
     H.append('<th class="%s" onclick="sortTable(\'t1\',%d,%s)">%s</th>'
              % ('l' if nm in ('player', 'path', 'pos') else '', i, 'true' if num else 'false', nm))
@@ -114,16 +114,17 @@ for i, r in enumerate(rows_sorted):
              % (i + 1, i + 1, html.escape(r['name'] or r['key']), r['pathway'] or '?', r['pos'], int(r['g']), int(r['g'])))
     H.append('<td class="num" data-v="%s">%s</td>' % (r['live'] if r['live'] is not None else '', r['live'] if r['live'] is not None else '—'))
     H.append('<td class="num" data-v="%d">%d</td>' % (r['c31'], r['c31']))
+    H.append('<td class="num" data-v="%d">%d</td>' % (r['c32r'], r['c32r']))
     H.append('<td class="num" data-v="%d"><b>%d</b></td>' % (r['cand'], r['cand']))
     H.append(delta_td(r['d_vs_live']))
-    H.append(delta_td(r['d_vs_c31']))
-    for leg in ('leg_bars', 'leg_credit', 'leg_reset', 'leg_refit', 'leg_relief', 'leg_remix'):
+    H.append(delta_td(r['d_vs_c32r']))
+    for leg in ('leg_bars', 'leg_credit', 'leg_reset', 'leg_refit', 'leg_relief', 'leg_remix', 'leg_pickfade'):
         H.append(delta_td(r[leg]))
     H.append('</tr>')
 H.append('</tbody></table>')
 H.append('<div class="note">Legs are REAL BOARD DELTAS from the cumulative stage ladder '
-         '(bars → +credit → +reset → +Φ refit → +relief → +re-mix); their sum is Δ vs Candidate 31 exactly. '
-         'Board totals: live %d · step-2 %d · C31 %d · C32 %d.</div></div>' % (T['live'], T['step2'], T['c31'], T['candidate32']))
+         '(bars → +credit → +reset → +Φ refit → +relief → +re-mix → +pick-fade); the first six sum to C32R−C31 and the pick-fade leg is Order D−C32R exactly. '
+         'Board totals: live %d · step-2 %d · C31 %d · C32R %d · Order D %d.</div></div>' % (T['live'], T['step2'], T['c31'], T['c32r'], T['candidate32']))
 H.append('<script>%s</script></div>' % SORT_JS)
 open(os.path.join(HERE, 'PREVIEW_32_PLAYERS.html'), 'w').write('\n'.join(H))
 
@@ -138,7 +139,7 @@ def draft_key(r):
 
 Y1.sort(key=draft_key)
 H = [page_head('Candidate 32 · Year-1 Class', 'ORDER A · THE YEAR-1 CLASS · DRAFT ORDER',
-               'NOTHING LANDS WITHOUT THE OWNER\'S WORD — THE CLASS-LEVEL (+6.7 TO +8.4 PT) QUESTION IS HALTED TO THE OWNER (F2)')]
+               'THE LANDING CANDIDATE (ORDER D) — THE LATE-BAND/THIN-ARM RESIDUAL QUESTIONS STAND AS FILED')]
 H.append('<div class="box warn"><h2>The level, read before the table</h2>'
          '<div class="note">The W2-fair year-1 class mark is ~1.10–1.11. Candidate 32 marks the class at '
          '1.0334 (walk-forward 2005–15 mean) — the mechanisms and the re-mix close the MIX '
@@ -148,7 +149,7 @@ H.append('<div class="box warn"><h2>The level, read before the table</h2>'
 H.append('<div class="box"><h2>Year-1 class (2025 entrants + 2026 mid-season) · draft order · %d rows</h2>' % len(Y1))
 H.append('<table id="t2"><thead><tr>')
 cols = [('order', True), ('player', False), ('path', False), ('pick', True), ('pos', False), ('g', True),
-        ('v0', True), ('live', True), ('cand 31', True), ('cand 32', True), ('Δ live', True), ('Δ c31', True)]
+        ('v0', True), ('live', True), ('cand 31', True), ('c32 repair', True), ('ORDER D', True), ('Δ live', True), ('Δ c32r', True)]
 for i, (nm, num) in enumerate(cols):
     H.append('<th class="%s" onclick="sortTable(\'t2\',%d,%s)">%s</th>'
              % ('l' if nm in ('player', 'path', 'pos') else '', i, 'true' if num else 'false', nm))
@@ -162,9 +163,10 @@ for i, r in enumerate(Y1):
     H.append('<td class="num k" data-v="%.0f">%.0f</td>' % (r['v0'], r['v0']))
     H.append('<td class="num" data-v="%s">%s</td>' % (r['live'] if r['live'] is not None else '', r['live'] if r['live'] is not None else '—'))
     H.append('<td class="num" data-v="%d">%d</td>' % (r['c31'], r['c31']))
+    H.append('<td class="num" data-v="%d">%d</td>' % (r['c32r'], r['c32r']))
     H.append('<td class="num" data-v="%d"><b>%d</b></td>' % (r['cand'], r['cand']))
     H.append(delta_td(r['d_vs_live']))
-    H.append(delta_td(r['d_vs_c31']))
+    H.append(delta_td(r['d_vs_c32r']))
     H.append('</tr>')
 H.append('</tbody></table>')
 H.append('<div class="note">Draft order: ND by pick, then RD, pathway routes (PDA/PDN/PDS/IRE/UNR), SSP, MSD '

@@ -1,6 +1,6 @@
 #P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
 #P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
-ORDER 31-F REPLICATION: 89 of 89 wired entrants on board 7802ee97 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board 1f176444 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
   ASOF 2003 done
   ASOF 2004 done
   ASOF 2005 done
@@ -25,7 +25,7 @@ ORDER 31-F REPLICATION: 89 of 89 wired entrants on board 7802ee97 reproduce prin
   ASOF 2024 done
   ASOF 2025 done
   ASOF 2026 done
-exec OK. store=cb38ef11 engine=bf63592c v0surf=4405cba2b42fb96f50496ec791cb806c frozen=True
+exec OK. store=cb38ef11 engine=5189e4ae v0surf=4405cba2b42fb96f50496ec791cb806c frozen=True
 records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
 #338 windows extended: 698 of 2648 records
 #338 band reading differs under the slid pick on 4 records: ['jack-lonie', 'jack-steele', 'jake-kolodjashnij', 'jarman-impey']
@@ -36,4 +36,4 @@ ORDER 29C year-0 basis: LANDED ENTRY LAW (was v0_start, the frozen fitted surfac
 ORDER 29C gfut source census (all STORE columns, so the key is as-of invariant): {'_futpos': 2648}
 ORDER 29C unmappable rows EXCLUDED AND COUNTED: 0
 ORDER 29C year-0 == 0 rows (the artifact's own declared ruck_floor_63_64): 0 []
-wrote /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o32/emit_O32RFINAL/per_entrant_338_confirmation.json
+wrote /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o32/emit_O35FINAL/per_entrant_338_confirmation.json

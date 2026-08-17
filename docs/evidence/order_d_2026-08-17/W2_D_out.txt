@@ -1,0 +1,27 @@
+==== REPAIRED CANDIDATE — W2 SCORECARD, BOTH SURFACES ====
+flat-bar surface (continuity of record): mean 2005-15 1.0421 | classes [0.8599, 1.1311] | slope 0.9902 | W 0.0889
+  hard 1.14 line: max class 1.1311 -> PASS
+  g=0 gap -0.0182 (band +-0.10) -> PASS
+
+CORRECTED (age-fair) surface — the repair's own yardstick:
+  W (age-adjusted prod leg): candidate 0.3081 vs hindsight 0.4127, CI [0.3117, 0.5560] -> OUT
+  5-9g terciles (price vs realized, age-fair cuts):
+    5-9/poor   n  64  price 1.113  realized 0.854  gap -0.258
+    5-9/mid    n  64  price 1.439  realized 1.296  gap -0.143
+    5-9/riser  n  64  price 1.849  realized 1.988  gap +0.138
+
+BAND-LEVEL FAIR YR1 (addendum 3): fair = 1.14 x (1 - the band's own year-1 delivered share)
+  band         n  yr1 dlv share   fair yr1   mark yr1  gap vs fair
+  1-10       170          0.017      1.120      1.072       -0.048
+  11-20      170          0.026      1.111      1.115       +0.004
+  21-30      170          0.014      1.124      1.059       -0.065
+  31-40      170          0.033      1.103      0.895       -0.207
+  41-64      399          0.029      1.107      0.927       -0.180
+  RD         565          0.061      1.071      0.995       -0.075
+  MSD         29          0.090      1.038      0.760       -0.277
+  SSP         24          0.213      0.897      1.591       +0.694
+  UNR         46          0.009      1.130      0.537       -0.593
+  IRE         46          0.008      1.130      1.155       +0.025
+  PDA         38          0.003      1.137      0.840       -0.296
+  PDN         24          0.000      1.140      0.615       -0.525
+  PDS         21          0.001      1.139      0.745       -0.394

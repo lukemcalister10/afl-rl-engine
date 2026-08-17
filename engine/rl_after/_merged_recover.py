@@ -444,7 +444,13 @@ _O30B_RESOLVED=os.environ.get('RL_O30B_RESOLVED','0')!='0'  # ORDER 30B-N: the R
 # (RL_O31=1) / the Step-2-law board (RL_O31 unset) reproduce BYTE-EXACT. NOTHING LANDS WITHOUT THE
 # OWNER'S WORD ON THE PACKET.
 _O34=os.environ.get('RL_O34','0')!='0'                      # ORDER C: the age-conditional normalization (#334 c.5315155802; PREREG_C.md pushed first). IMPLIES RL_O32 on the next line and nowhere else.
-_O32=(os.environ.get('RL_O32','0')!='0') or _O34            # ORDER A: CANDIDATE 32 (ORDER C builds ON it)
+# ORDER D — THE PICK-CURVE SITTER FADE (owner word: WIRE OPTION (A), the MEASURED curve; ruling
+# R-PICKFADE's smooth-curve condition; PREREG_D.md + amendment AD1; docs/evidence/order_d_2026-08-17).
+# RL_O35 implies RL_O32 below and nowhere else; NOT stacked on RL_O34 (Order C shelved). Dial-off
+# reproduces the repaired Candidate 32 board 7802ee97 BYTE-EXACT. THE LANDING CANDIDATE on the
+# owner's word.
+_O35=os.environ.get('RL_O35','0')!='0'                      # ORDER D: the pick-curve fade
+_O32=(os.environ.get('RL_O32','0')!='0') or _O34 or _O35    # ORDER A: CANDIDATE 32 (ORDERS C/D build ON it)
 _O32S=(int(os.environ.get('RL_O32_STAGE','6')) if _O32 else 0)
 _O31=(os.environ.get('RL_O31','0')!='0') or _O32            # ORDER 31: THE ONE LAW (O32 implies it)
 _O31_NOPHI=os.environ.get('RL_O31_NOPHI','0')!='0'           # declared, default off: price the 30B-C conditioning by removing it
@@ -3392,6 +3398,23 @@ if _O30B_PREVIEW:
     O32_GAMMA=11.0
     O32_ETA=0.41
     O32_GAMMA_D=14.0
+    # ---- ORDER D — THE PICK-CURVE SITTER FADE (RL_O35; owner word: the MEASURED curve) ----------
+    # docs/evidence/order_d_2026-08-17/O35_CURVE.json — the prereg'd logistic fit (sit-penalty
+    # s(p) = γ0 + γ1·ln(pick), SAT vs played-11+, ND 2005-2020) and the redistribution constant
+    # s_norm solved so the pick-weighted mean fade at the ruled depth-2 cell equals the ruled
+    # D(2) exactly (identity residual 0.0). SMOOTH in ln(pick), never a band step (R-PICKFADE's
+    # condition). Effective picks past 64 (the pool index and every pickless convention) evaluate
+    # the curve at 64 — a flat extension, disclosed; the clip bounds everything to [0.5, 2.0].
+    O35_G0=0.1286221202379088
+    O35_G1=0.4535958546743124
+    O35_SNORM=1.7472066252064105
+    O35_CLIP=(0.5,2.0)
+    def o35_kappa(p):
+        """The fade exponent at the row's effective pick. kappa < 1 softens (early picks — their
+        sitters measured the safest), kappa > 1 deepens (late picks). Pure function of pick."""
+        _pk=MA.effpk(p)
+        _pk=max(1.0,min(64.0,float(_pk if _pk else 64)))
+        return min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0+O35_G1*_math.log(_pk))/O35_SNORM))
     # ORDER C (RL_O34) — the R1 age credit's SURVIVING SCALE under the corrected normalization.
     # The repair's credit partially compensated the BLIND denominators; with the denominators fixed the
     # unchanged credit would DOUBLE-PAY age on every row the sites now pay correctly, so the credit is
@@ -3514,6 +3537,12 @@ if _O30B_PREVIEW:
         stays production-only. σ_sel(0 games)=0, so gameless rows are untouched."""
         _cu=o31_cu(p,Y)
         _D=(o31_pool_D(_cu) if p.get('_pool') else o31_fade_D(_cu))
+        # ORDER D (RL_O35, owner word: the MEASURED curve): the per-year sitting cost scales with
+        # the fitted pick-signal — D^kappa(pick), smooth in ln(pick), NEVER a band step. Applied to
+        # the row's own schedule BEFORE the relief; 1^kappa == 1 so rows the fade does not reach
+        # cannot move, and the redistribution identity keeps the pooled fade at the ruled row.
+        if _O35 and _D<1.0:
+            _D=_D**o35_kappa(p)
         if _O32S>=5 and _D<1.0:
             _sg=o32_sigma_sel(p,Y)
             if _sg>0.0: _D=min(1.0,_D*(1.0+O32_LAMBDA*_sg))
@@ -3607,6 +3636,26 @@ if _O30B_PREVIEW:
                 if not (_r<1.0+1e-12):
                     raise SystemExit('ORDER A HALT: rho32 breaches 1 at g=%.2f'%_gg)
                 _prev=_r; _gg+=0.25
+        if _O35:
+            # ORDER D BUILD-FAILING ASSERTS: the curve is smooth and monotone in pick, bounded by
+            # its clips, and transcribed exactly from O35_CURVE.json (kappa(1)=0.5, kappa(64)
+            # within 1e-9 of the derivation's own table).
+            _prevk=None
+            for _pk in range(1,65):
+                _kk=min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0+O35_G1*_math.log(float(_pk)))/O35_SNORM))
+                if not (O35_CLIP[0]-1e-12<=_kk<=O35_CLIP[1]+1e-12) or (_prevk is not None and _kk<_prevk-1e-12):
+                    raise SystemExit('ORDER D HALT: kappa(pick) broke monotone/clip at pick %d'%_pk)
+                _prevk=_kk
+            if abs((O35_G0+O35_G1*_math.log(64.0))/O35_SNORM-1.153311931087099)>1e-9:
+                raise SystemExit('ORDER D HALT: the transcribed curve does not reproduce O35_CURVE.json at pick 64')
+            print('ORDER D PICK-CURVE FADE LIVE (RL_O35=1) — THE LANDING CANDIDATE ON THE OWNER\'S WORD. '
+                  'D_eff = D(c_u)^kappa(pick), kappa = clip((%.4f%+.4f·ln p)/%.4f, %.1f, %.1f): '
+                  'kappa(1)=%.3f kappa(20)=%.3f kappa(64)=%.3f. Smooth in ln(pick), never a band; '
+                  'pooled fade pinned at the ruled row by the redistribution identity.'
+                  %(O35_G0,O35_G1,O35_SNORM,O35_CLIP[0],O35_CLIP[1],
+                    min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0)/O35_SNORM)),
+                    min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0+O35_G1*_math.log(20.0))/O35_SNORM)),
+                    min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0+O35_G1*_math.log(64.0))/O35_SNORM))))
         if _O32S>=1:
             print('ORDER A CANDIDATE 32 LIVE (RL_O32=1, stage %d of 6) — NOTHING IS GREENLIT AND NOTHING '
                   'MERGES. bars(age) gate-only · credit f·min(1,g/2) · delivered reset · Phi_32 row · '

@@ -17,8 +17,8 @@ ROOT = os.path.dirname(os.path.dirname(EV))
 SP = os.environ.get('RL_SCRATCH', '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o32')
 md5 = lambda p: hashlib.md5(open(p, 'rb').read()).hexdigest()
 
-BOARDS = {'cand': 'bb_rfinal', 'cand2': 'bb_rfinal2', 's1': 'bb_s1', 's2': 'bb_s2', 's3': 'bb_s3',
-          's4': 'bb_s4', 's5': 'bb_s5', 'c31': 'bb_r0o31', 'off': 'bb_r0off'}
+BOARDS = {'cand': 'bb_dfinal', 'cand2': 'bb_dfinal2', 'c32r': 'bb_rfinal', 's1': 'bb_s1', 's2': 'bb_s2',
+          's3': 'bb_s3', 's4': 'bb_s4', 's5': 'bb_s5', 'c31': 'bb_r0o31', 'off': 'bb_d0off'}
 BD = {}
 for k, d in BOARDS.items():
     p = os.path.join(SP, d, 'rl_after', 'rl_app_data.json')
@@ -30,11 +30,12 @@ PREV = json.load(open(os.path.join(EV, 'one_machinery_2026-08-14', 'preview', 'P
 PRVR = {r['key']: r for r in PREV['rows']}
 LIVE_MD5, STEP2_MD5 = PREV['boards']['live'], PREV['boards']['step2']
 assert BD['c31']['md5'] == 'fe6be9d6ac76ebc34d26ebc11d796505', 'the Candidate 31 baseline did not reproduce'
-assert BD['off']['md5'] == 'bce0c65d853722e52629ab97677a98e3', 'the dial-off control is not the Step-2-law board'
+assert BD['off']['md5'] == '7802ee977cd5e8972010b09f1bb1bee6', 'the Order-D dial-off control is not the repaired C32 board'
+assert BD['c32r']['md5'] == '7802ee977cd5e8972010b09f1bb1bee6', 'the C32R baseline board did not reproduce'
 assert BD['cand']['md5'] == BD['cand2']['md5'], 'DETERMINISM FAILED'
 
 # ---------------------------------------------------------------- load the engine under Candidate 32
-os.environ.update(RL_O31='1', RL_O32='1', PYTHONHASHSEED='0', RL_REPO=ROOT,
+os.environ.update(RL_O31='1', RL_O32='1', RL_O35='1', PYTHONHASHSEED='0', RL_REPO=ROOT,
                   OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1', MKL_NUM_THREADS='1',
                   NUMEXPR_NUM_THREADS='1', VECLIB_MAXIMUM_THREADS='1',
                   RL_V0SURF_PKL=os.path.join(ROOT, 'data', 'v0surf.pkl'),
@@ -80,7 +81,7 @@ for p in MA.data:
     V0 = float(G['pv_pedigree'](p)) / F
     pi = float(G['o31_pi'](p, BASE, g))                       # includes the re-mix pedigree factor
     sg = float(G['o32_sigma_sel'](p, BASE))
-    vals = {kk: int(BD[kk]['rows'][k]['v']) for kk in ('cand', 's1', 's2', 's3', 's4', 's5', 'c31')}
+    vals = {kk: int(BD[kk]['rows'][k]['v']) for kk in ('cand', 'c32r', 's1', 's2', 's3', 's4', 's5', 'c31')}
     pr = PRVR.get(k, {})
     step2 = pr.get('step2'); live = pr.get('live')
     ped = pi * V0
@@ -93,7 +94,9 @@ for p in MA.data:
                      cand=vals['cand'], c31=vals['c31'], step2=step2, live=live,
                      leg_bars=vals['s1'] - vals['c31'], leg_credit=vals['s2'] - vals['s1'],
                      leg_reset=vals['s3'] - vals['s2'], leg_refit=vals['s4'] - vals['s3'],
-                     leg_relief=vals['s5'] - vals['s4'], leg_remix=vals['cand'] - vals['s5'],
+                     leg_relief=vals['s5'] - vals['s4'], leg_remix=vals['c32r'] - vals['s5'],
+                     leg_pickfade=vals['cand'] - vals['c32r'], c32r=vals['c32r'],
+                     d_vs_c32r=vals['cand'] - vals['c32r'],
                      d_vs_c31=vals['cand'] - vals['c31'],
                      d_vs_step2=(vals['cand'] - step2) if step2 is not None else None,
                      d_vs_live=(vals['cand'] - live) if live is not None else None))
@@ -207,11 +210,11 @@ def band(cg):
     return '0' if cg == 0 else '1-5' if cg < 6 else '6-15' if cg < 16 else '16-35' if cg < 36 \
         else '36-70' if cg < 71 else '71+'
 CLASS = collections.defaultdict(lambda: dict(n=0, cand=0, c31=0, step2=0, live=0,
-                                             bars=0, credit=0, reset=0, refit=0, relief=0, remix=0))
+                                             bars=0, credit=0, reset=0, refit=0, relief=0, remix=0, pickfade=0))
 for r in rows:
     c = CLASS[band(r['cg'])]
     c['n'] += 1; c['cand'] += r['cand']; c['c31'] += r['c31']
-    for leg in ('bars', 'credit', 'reset', 'refit', 'relief', 'remix'):
+    for leg in ('bars', 'credit', 'reset', 'refit', 'relief', 'remix', 'pickfade'):
         c[leg] += r['leg_' + leg]
     if r['step2'] is not None: c['step2'] += r['step2']
     if r['live'] is not None: c['live'] += r['live']
@@ -241,12 +244,12 @@ print('CELL COVERAGE: %.1f%%' % COMP['cell_coverage_pct'])
 
 OUT = {'order': 'ORDER A — Candidate 32, the pre-landing recalibration',
        'boards': {'live': LIVE_MD5, 'step2': STEP2_MD5,
-                  'candidate31': BD['c31']['md5'], 'candidate32': BD['cand']['md5'],
+                  'candidate31': BD['c31']['md5'], 'candidate32r': BD['c32r']['md5'], 'candidate32': BD['cand']['md5'],
                   'candidate32_rebuild': BD['cand2']['md5'],
                   'stage1_bars': BD['s1']['md5'], 'stage2_credit': BD['s2']['md5'],
                   'stage3_reset': BD['s3']['md5'], 'stage4_refit': BD['s4']['md5'],
                   'stage5_relief': BD['s5']['md5'], 'dial_off_control': BD['off']['md5']},
-       'totals': {'live': T_LIVE, 'step2': T_STEP2, 'c31': TOT['c31'],
+       'totals': {'live': T_LIVE, 'step2': T_STEP2, 'c31': TOT['c31'], 'c32r': TOT['c32r'],
                   's1': TOT['s1'], 's2': TOT['s2'], 's3': TOT['s3'], 's4': TOT['s4'],
                   's5': TOT['s5'], 'candidate32': TOT['cand']},
        'determinism': BD['cand']['md5'] == BD['cand2']['md5'],
@@ -288,7 +291,8 @@ L.append('| CANDIDATE 31 (31-F) | `%s` | %d |' % (BD['c31']['md5'], TOT['c31']))
 for nm, kk in (('+ M1 bars', 's1'), ('+ M2 credit', 's2'), ('+ M3 reset', 's3'),
                ('+ M6 Phi refit', 's4'), ('+ M4 relief', 's5')):
     L.append('| %s | `%s` | %d |' % (nm, BD[kk]['md5'], TOT[kk]))
-L.append('| **CANDIDATE 32 (+ M5 re-mix)** | **`%s`** | **%d** |' % (BD['cand']['md5'], TOT['cand']))
+L.append('| CANDIDATE 32 REPAIRED (+ M5 re-mix) | `%s` | %d |' % (BD['c32r']['md5'], TOT['c32r']))
+L.append('| **ORDER D (+ the pick-curve fade)** | **`%s`** | **%d** |' % (BD['cand']['md5'], TOT['cand']))
 L.append('| determinism rebuild | `%s` | %d |' % (BD['cand2']['md5'], TOT['cand']))
 L.append('| dial-off (RL_O31=1) | `%s` | %d |' % (BD['c31']['md5'], TOT['c31']))
 L.append('| fully-off (Step-2 law) | `%s` | — |' % BD['off']['md5'])
@@ -299,18 +303,18 @@ L.append('vs LIVE **%+d** (%.2f%%) · vs STEP-2 **%+d** · vs CANDIDATE 31 **%+d
             100.0 * (TOT['cand'] - TOT['c31']) / TOT['c31']))
 L.append('')
 L.append('Mechanism legs (board totals): bars %+d · credit %+d · reset %+d · Phi refit %+d · '
-         'relief %+d · re-mix %+d' % (TOT['s1'] - TOT['c31'], TOT['s2'] - TOT['s1'],
+         'relief %+d · re-mix %+d · pick-fade %+d' % (TOT['s1'] - TOT['c31'], TOT['s2'] - TOT['s1'],
                                       TOT['s3'] - TOT['s2'], TOT['s4'] - TOT['s3'],
-                                      TOT['s5'] - TOT['s4'], TOT['cand'] - TOT['s5']))
+                                      TOT['s5'] - TOT['s4'], TOT['c32r'] - TOT['s5'], TOT['cand'] - TOT['c32r']))
 L.append('')
 L.append('## BY CAREER-GAMES CLASS')
 L.append('')
-L.append('| games | n | C32 | C31 | step-2 | live | vs C31 | bars | credit | reset | refit | relief | re-mix |')
-L.append('|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|')
+L.append('| games | n | Order D | C31 | step-2 | live | vs C31 | bars | credit | reset | refit | relief | re-mix | pick-fade |')
+L.append('|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|')
 for k, v in sorted(CLASS.items()):
-    L.append('| %s | %d | %d | %d | %d | %d | %+d | %+d | %+d | %+d | %+d | %+d | %+d |'
+    L.append('| %s | %d | %d | %d | %d | %d | %+d | %+d | %+d | %+d | %+d | %+d | %+d | %+d |'
              % (k, v['n'], v['cand'], v['c31'], v['step2'], v['live'], v['cand'] - v['c31'],
-                v['bars'], v['credit'], v['reset'], v['refit'], v['relief'], v['remix']))
+                v['bars'], v['credit'], v['reset'], v['refit'], v['relief'], v['remix'], v['pickfade']))
 L.append('')
 L.append('## BY PATHWAY')
 L.append('')
@@ -321,26 +325,26 @@ for k, v in sorted(PATHW.items()):
 L.append('')
 L.append('## THE NAMED TWENTY, TRACED THROUGH EVERY MECHANISM')
 L.append('')
-L.append('| player | path | pos | g | live | C31 | **C32** | Δ vs C31 | bars | credit | reset | refit | relief | re-mix | c_u | D | s | σ_sel |')
-L.append('|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|')
+L.append('| player | path | pos | g | live | C31 | C32R | **Order D** | Δ vs C32R | bars | credit | reset | refit | relief | re-mix | pick-fade | c_u | D | s |')
+L.append('|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|')
 for k in NAMED:
     if k not in BY: continue
     r = BY[k]
-    L.append('| %s | %s | %s | %.0f | %s | %d | **%d** | %+d | %+d | %+d | %+d | %+d | %+d | %+d | %.2f | %.3f | %d | %.2f |'
-             % (k, r['pathway'], r['pos'], r['g'], r['live'], r['c31'], r['cand'], r['d_vs_c31'],
+    L.append('| %s | %s | %s | %.0f | %s | %d | %d | **%d** | %+d | %+d | %+d | %+d | %+d | %+d | %+d | %+d | %.2f | %.3f | %d |'
+             % (k, r['pathway'], r['pos'], r['g'], r['live'], r['c31'], r['c32r'], r['cand'], r['d_vs_c32r'],
                 r['leg_bars'], r['leg_credit'], r['leg_reset'], r['leg_refit'], r['leg_relief'],
-                r['leg_remix'], r['c_u'], r['D'], r['s'], r['sigma_sel']))
+                r['leg_remix'], r['leg_pickfade'], r['c_u'], r['D'], r['s']))
 L.append('')
 L.append('## ALL %d ROWS (sorted by |Δ vs Candidate 31|)' % len(rows))
 L.append('')
-L.append('| player | path | pos | g | live | C31 | **C32** | Δ vs C31 | Δ vs live | bars | credit | reset | refit | relief | re-mix |')
-L.append('|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|')
+L.append('| player | path | pos | g | live | C31 | C32R | **Order D** | Δ vs C32R | Δ vs live | bars | credit | reset | refit | relief | re-mix | pick-fade |')
+L.append('|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|')
 for r in OUT['rows']:
-    L.append('| %s | %s | %s | %.0f | %s | %d | **%d** | %+d | %s | %+d | %+d | %+d | %+d | %+d | %+d |'
+    L.append('| %s | %s | %s | %.0f | %s | %d | %d | **%d** | %+d | %s | %+d | %+d | %+d | %+d | %+d | %+d | %+d |'
              % (r['key'], r['pathway'], r['pos'], r['g'],
-                r['live'] if r['live'] is not None else '—', r['c31'], r['cand'], r['d_vs_c31'],
+                r['live'] if r['live'] is not None else '—', r['c31'], r['c32r'], r['cand'], r['d_vs_c32r'],
                 ('%+d' % r['d_vs_live']) if r['d_vs_live'] is not None else '—',
                 r['leg_bars'], r['leg_credit'], r['leg_reset'], r['leg_refit'],
-                r['leg_relief'], r['leg_remix']))
+                r['leg_relief'], r['leg_remix'], r['leg_pickfade']))
 open(os.path.join(ROOT, 'docs', 'ledgers', 'CANDIDATE_32_MOVERS.md'), 'w').write('\n'.join(L) + '\n')
 print('\nwritten: docs/ledgers/CANDIDATE_32_MOVERS.{json,md} / CONTINUITY_32.json / COMPLETENESS_32.json')
