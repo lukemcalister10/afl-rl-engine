@@ -6,7 +6,9 @@ c.5312733761 (commission) · c.5314553763 (rulings B-1/B-2/B-3) · PACKET_B_DERI
 `PREREG_B_BUILD.md` pushed before any engine edit (a6c6ec3). Everything is behind **RL_O33, default
 OFF**; with the dial off the current tree's boards reproduce **byte-exact** (asserted after every
 rebase; the repair seat moved the base under this build twice and the identities were re-run each
-time — final asserts at base 3e40344: default board `bce0c65d`, RL_O32=1 board `7802ee97`).
+time — final asserts at base 3e40344: default board `bce0c65d`, RL_O32=1 board `7802ee97`; re-proven once more
+at the delivery HEAD 31b79a7 after the Order C seat's eff2044 landed under this build — all three
+boards byte-identical: bce0c65d / 7802ee97 / candidate b786141a).
 
 Plain-language glossary, used throughout: a row's **mark** is its board price. **Output surplus** is
 how far a player's demonstrated scoring level sits above his position's replacement level. The
