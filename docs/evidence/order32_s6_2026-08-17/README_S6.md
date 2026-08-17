@@ -189,5 +189,20 @@ python3 docs/evidence/order32_s6_2026-08-17/s6_emit_fan.py     # ~75s (engine lo
 python3 docs/evidence/order32_s6_2026-08-17/s6_build_page.py   # instant
 ```
 
+**One reproducibility dependency, declared.** The emitter reads the candidate board from
+`$RL_SCRATCH/bb_f2on/rl_after/rl_app_data.json` (default
+`/tmp/claude-0/…/scratchpad/o31f`), which is **ephemeral scratch, not committed**. It is used only to
+read the printed prices and to assert the board md5 — every *number* comes from the engine loaded out of
+the repo plus the committed `docs/ledgers/CANDIDATE_31_MOVERS.json`. If that scratch tree is gone,
+rebuild it before re-running:
+
+```bash
+RL_ROOT=<this worktree> RL_SCRATCH=<scratch>/o31f \
+  docs/evidence/candidate_31f/bb31f.sh f2on UNSET       # with RL_O31=1 exported; must print fe6be9d6…
+```
+
+The emitter halts loudly if the tree is missing or its md5 is not `fe6be9d6` — it will not silently
+emit against a different board.
+
 The emitter **halts** rather than emitting if any artefact md5 fails, if the reused candidate tree is not
 board `fe6be9d6`, if `RL_O31` is not live, or if any of the four validations breaches its bound.
