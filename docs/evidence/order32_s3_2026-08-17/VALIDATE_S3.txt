@@ -1,0 +1,2 @@
+VALIDATION GATE — replica season scorer vs LAYER2 base.obs (flat-14 to acquisition)
+careers ok 2650  bad 0  frac_ok 1.000000  gate(>=0.99) PASS
