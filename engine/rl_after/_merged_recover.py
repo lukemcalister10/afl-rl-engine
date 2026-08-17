@@ -757,7 +757,7 @@ def _v7(bb,p,Y):
 _b6_pre_v7=b6
 def b6(p,Y=2026):
     bb=_b6_pre_v7(p,Y)
-    if MA._O33 and MA._O33S>=3: return bb                 # ORDER B B-3 TAPER RETIREMENT (dial-gated): asc == 1, band[5] stays max(q97m, q90) exactly as _b6_core emits it — the derivation's boundary solution in every band; kills all 341 v-inversions by construction; q97m itself untouched (bake-time refit per R-W6). Dial off => the v7 taper applies byte-exact below.
+    if MA._O33 and MA._O33S>=2: return bb                 # ORDER B B-3 TAPER RETIREMENT (stage 2 after the B-A1 re-map; was 3) (dial-gated): asc == 1, band[5] stays max(q97m, q90) exactly as _b6_core emits it — the derivation's boundary solution in every band; kills all 341 v-inversions by construction; q97m itself untouched (bake-time refit per R-W6). Dial off => the v7 taper applies byte-exact below.
     if _isreal(p):
         try: return _v7(bb,p,Y)
         except Exception: return bb
@@ -1057,7 +1057,7 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0,grace=0):
     if ctx is None: return _proj_w4_0(g,lp,a,cur,lens,g0=g0,fut=fut,pre_hc=pre_hc,grace=grace)   # synths / lever-off: byte-exact original
     _off=(MA.AGE_REF-MA.BASE_REF) if _LEGF_ON else 0     # LEG F3 §2.vi (ruling 353, still-implicated proj_from_peak): fwd-lens offset; 0 at k=0/balanced/backward OR RL_LEGF=0 => byte-exact ORIGINAL by construction
     ah=a-_off if _off>0 else a           # form-anchored age SHAPE: the pedigree-driven projection curve-position + young-runway credit hold at BASE_REF, so growth flows through the ADVANCING level (lp from the band at AGE_REF; cur=level_now via _dev_advance) — the premium decays with PROJECTED EVIDENCE, not the age clock (Reid: same map at the projected evidence state; no new multiplier/growth term). k=0: _off=0 => ah==a => byte-exact.
-    pa=MA.PEAK_AGE[g]; d=MA.age_disc(ah,MA.LENS[lens],lens)+(MA.o33_fade(ah) if lens in ('bal','balanced') else 0.0); cl=cur if cur else lp*MA.frac(ah,pa,g); prod=0.0   # #334 age-dynamic future discount (dial-gated; identity when off) + ORDER B: frac carries g (B-1 ladder) and o33_fade is the B-2 fallback (both 0/identity when RL_O33 off) — duplicate-loop fence: matches rl_model.proj_from_peak
+    pa=MA.PEAK_AGE[g]; d=MA.age_disc(ah,MA.LENS[lens],lens); cl=cur if cur else lp*MA.frac(ah,pa,g); prod=0.0   # #334 age-dynamic future discount (dial-gated; identity when off) + ORDER B: frac carries g (B-1 ladder; identity when RL_O33 off); the B-2 fade call site DELETED (owner ruling, rl_model RL_O33 obituary) — duplicate-loop fence: matches rl_model.proj_from_peak
     if g0 is None: g0=g
     if fut is None: fut=[(g,1.0)]
     for k in range(18):
@@ -1101,7 +1101,7 @@ def _prod_floor_w4(p,lens='bal'):
     # bar resolution, removing the duplicate loop — carries a determinism-proof requirement.
     lowbar=MA.y0dpp_bar(p) if (MA.AGE_REF==MA.BASE_REF) else None
     _gr=MA.grace_years(p)                                 # ORDER 28 grace-A (dial-gated; 0 => byte-exact). ⚠ MUST match rl_model.prod_floor exactly — the duplicate-loop fence.
-    d=MA.age_disc(a,MA.LENS[lens],lens)+(MA.o33_fade(a) if lens in ('bal','balanced') else 0.0); H=MA.clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0   # #334 age-dynamic future discount (dial-gated; identity when off) + ORDER B B-2 fallback fade (0 when off) — duplicate-loop fence: matches rl_model.prod_floor
+    d=MA.age_disc(a,MA.LENS[lens],lens); H=MA.clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0   # #334 age-dynamic future discount (dial-gated; identity when off); the ORDER B B-2 fade call site DELETED (owner ruling) — duplicate-loop fence: matches rl_model.prod_floor
     while k<H:
         ag=a+k; wt=min(1.0,H-k)
         lev=cur*min(1.0, MA.frac(ag,pa_,g)/max(MA.frac(a,pa_,g),1e-6))   # ORDER B B-1 ladder in the floor ratio (dial-off identical)

@@ -837,42 +837,34 @@ DELTAS={-8:.58,-7:.62,-6:.68,-5:.74,-4:.80,-3:.86,-2:.92,-1:.97,0:1.0,1:.99,2:.9
 #       as the fixed point conserving the aggregate board value of KPD/KPF rows aged 23-26, then PINNED
 #       below. RL_O33_SSTAR is the derivation-shell override ONLY (the s* fixed-point iteration runs
 #       with it at 1.0); it is never set on a shipping board.
-#   2 = B-2 the TERMINAL FADE — THE FALLBACK POSITION, and the packet says so plainly: the owner
-#       withdrew the universal terminal knob ("are all 31-year-olds equal?") and ordered an
-#       OUTPUT-CONDITIONAL fade, fallback flat-hazard ONLY if the conditional fit fails identification.
-#       IT FAILED, twice, both shown in RESULTS_B_FADE_FIT{,2}.json: the prereg'd tier-level loss cannot
-#       identify any fade (A CI [0.00,0.60] spans 0), and the rate-instrument rescue identifies a fade
-#       (A CI [0.14,0.60]) but NOT output-conditionality — s0 runs to the grid ceiling (G(star) CI
-#       [0.12,0.77], not below the 0.5 identification bar) because the mid/role rate gaps exhaust the
-#       whole discount family (the un-closable remainder is the k=0 exit-hazard channel the derivation
-#       named for a future order). So the wired object is the ruled fallback: the HAZARD-ARITHMETIC
-#       knots (29: 0.211 · 30: 0.232 · 31: 0.246 — r(a) = 0.14 + the measured excess exit hazard),
-#       piecewise-linear in CONTINUOUS age via _pw_interp (no integer cliffs), 0.14 at <=28 (zero rows
-#       below 28 move), flat beyond 31, BALANCED LENS ONLY. The fitted-34% boundary value is DEAD
-#       (owner ruling). The 34%-family knots do not appear here at all.
-#   3 = B-3 TAPER RETIREMENT: the v7 ascending age-taper on the q97 ceiling band is not applied
-#       (asc == 1 => band[5] = max(q97m, q90) exactly as _b6_core emits it) — the derivation's quantile
-#       re-fit found asc*=1 the boundary solution in EVERY band the taper bites; kills all 341 v-inversions
-#       by construction. Wired at the b6 wrapper in _merged_recover.py; the frozen q97m is NOT touched
-#       (its censoring-aware refit is bake-time per R-W6).
-# Prereg: docs/evidence/order_b_build_2026-08-17/PREREG_B_BUILD.md (pushed before these lines existed).
+#   2 = B-3 TAPER RETIREMENT (the candidate, default): the v7 ascending age-taper on the q97 ceiling
+#       band is not applied (asc == 1 => band[5] = max(q97m, q90) exactly as _b6_core emits it) — the
+#       derivation's quantile re-fit found asc*=1 the boundary solution in EVERY band the taper bites;
+#       kills every ceiling v-inversion by construction. Wired at the b6 wrapper in _merged_recover.py;
+#       the frozen q97m is NOT touched (its censoring-aware refit is bake-time per R-W6).
+# ── OBITUARY — the B-2 TERMINAL FADE (deleted 2026-08-17 by owner ruling #334 c.5316404479; SSI/CORE
+#    rule 7, delete-don't-disable). What stood here for one build: the ruled FALLBACK hazard knots
+#    (28,0.14)(29,0.211)(30,0.232)(31,0.246) added to the balanced-lens per-annum discount at 29+,
+#    wired as old stage 2 after the OUTPUT-CONDITIONAL fade failed identification twice
+#    (RESULTS_B_FADE_FIT.json: A CI [0.00,0.60] spans 0; RESULTS_B_FADE_FIT2.json: A identified but
+#    G(star) CI [0.12,0.77] — the family cannot separate itself from flat on these samples, and flat
+#    breaks the star gate). The owner DROPPED the flat fade — it cut validated stars (bontempelli −238
+#    class), the exact behaviour his B-2 question rejected — and the quality-conditional fade waits for
+#    the exit-hazard order. Resurrection ref: git show 6a61029:engine/rl_after/rl_model.py (o33_fade +
+#    O33_FADE_KNOTS + the four call sites). ──
+# Prereg: docs/evidence/order_b_build_2026-08-17/PREREG_B_BUILD.md + PREREG_B_A1.md (each pushed
+# before the engine edits they govern).
 _O33=os.environ.get('RL_O33','0')!='0'                       # ORDER B: the veteran fixes (default OFF)
-_O33S=(int(os.environ.get('RL_O33_STAGE','3')) if _O33 else 0)
-def _o33_ladder(rho0=0.030,g=0.025,n=14):                    # B-1 family, the derivation's own construction (b2_fit.ladder_of)
+_O33S=(int(os.environ.get('RL_O33_STAGE','2')) if _O33 else 0)
+def _o33_ladder(rho0=0.050,g=0.0125,n=14):                   # B-1 family, the derivation's own construction (b2_fit.ladder_of). R-VETLEAN RE-TUNE (#334 c.5316404479, PREREG_B_A1): the owner's lean-over-not-under preference ruling moves the point INSIDE the fitted CI box (rho0 CI [0,.08], g CI [.010,.045]) from the fit optimum (.030,.025) to (.050,.0125) — the point holding EVERY tall survivor cell >= .945 (predicted 27:0.967 28:0.975 29:0.952 30:1.189 31:0.980) while the original over-mark calls stay dead (the 30-cell leans over at ~1.19, ~.06pp of CI-lo headroom from any call — leaning over is the ruling). The family provably cannot hold 29>=.945 with 30<=1.15 anywhere in the box (VETLEAN_TRADEOFF.json publishes the frontier); the alternative max-min point (.050,.0150; cells .925-1.148) is on the table for a one-word swap.
     f,out=1.0,{}
     for j in range(1,n+1):
         f*=(1.0-min(0.60,max(0.0,rho0+g*(j-1)))); out[j]=f
     return out
-O33_TALL_LADDER=_o33_ladder()                                # f(1..5)=.970/.9167/.8433/.7548/.6566 (ages 28-32); tail = the family continued (W5 measures nothing past 31 — extrapolation-by-rule, bounded by the frac<0.42 projection stop)
-O33_SSTAR_PIN=1.2988                                          # s* PINNED (derived 2026-08-17 on THIS tree at base cf443a6, RL_O32=1 stage-1 ladder-only fixed point ON THE FROZEN PRE-ANCHOR BASIS: conserves the aggregate board value of the 55 KPD/KPF rows aged 23-26 to -0.06%, inside the prereg'd 0.2% tolerance; iteration log docs/evidence/order_b_build_2026-08-17/SSTAR_DERIVE_out.txt. Board-value s* (1.299) vs the derivation's production-stream preview s* (1.365): the pedigree leg and the max(proj, floor) resolution dampen the projection cut — same anchor object, the engine's own arithmetic.)
+O33_TALL_LADDER=_o33_ladder()                                # f(1..5)=.950/.8906/.8238/.7517/.6766 (ages 28-32; was .970/.9167/.8433/.7548/.6566 at the fit optimum); tail = the family continued (W5 measures nothing past 31 — extrapolation-by-rule, bounded by the frac<0.42 projection stop)
+O33_SSTAR_PIN=1.3451                                          # s* PINNED for the R-VETLEAN ladder (re-derived 2026-08-17 at base e4e1470, RL_O32=1 stage-1 fixed point on the frozen pre-anchor basis: conserves the 55 tall-anchor rows 23-26 to -0.09%, inside the prereg'd 0.2% tolerance; log SSTAR_A1_out.txt. The first build's s*=1.2988 belonged to the fit-optimum ladder and retired with it; note the softened ladder's harsher j=1 pulls the renorm NEARER the derivation preview's 1.365.)
 _o33sstar=os.environ.get('RL_O33_SSTAR')                     # derivation-shell override (the s* fixed point itself); never set on a shipping board
 O33_SSTAR=(float(_o33sstar) if _o33sstar not in (None,'') else O33_SSTAR_PIN)
-O33_FADE_KNOTS=[(28.0,0.14),(29.0,0.211),(30.0,0.232),(31.0,0.246)]   # B-2 FALLBACK: hazard-arithmetic knots (RESULTS_B_FIT.json hazard_reference; 28 pinned at the 0.14 base so nothing below 28 moves)
-def o33_fade(a):
-    """B-2 extra per-annum discount above the flat 0.14, continuous in age, 0 at a<=28. Balanced lens only
-    (enforced at the call sites). Returns 0 whenever the dial/stage is off — identity by construction."""
-    if not _O33 or _O33S<2 or a is None: return 0.0
-    return _pw_interp(float(a),O33_FADE_KNOTS)-0.14
 def frac(a,pa,g=None):
     j=max(-8,min(14,int(round(a-pa))))
     if _O33 and _O33S>=1 and j>0 and g in ('KPD','KPF'): return O33_TALL_LADDER[j]   # B-1: tall post-peak ladder (two-arg callers and dial-off take the shared DELTAS verbatim)
@@ -1074,7 +1066,7 @@ def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0,grace=0):
     # callers omit it: a band node is not a person and has no entry age. grace=0 => byte-exact.
     # g = SETTLED (future) position: drives PEAK_AGE, level trajectory, key-premium, runway.
     # g0 = year-0 (present) position for REPL; fut = years-1+ REPL blend [(pos,wt)]. Defaults reproduce single-position behaviour.
-    pa=PEAK_AGE[g]; d=age_disc(a,LENS[lens],lens)+(o33_fade(a) if lens in ('bal','balanced') else 0.0); cl=cur if cur else lp*frac(a,pa,g); prod=0.0   # ORDER B: frac carries g (B-1 ladder, dial-off identical); o33_fade = B-2 fallback (0 when off)
+    pa=PEAK_AGE[g]; d=age_disc(a,LENS[lens],lens); cl=cur if cur else lp*frac(a,pa,g); prod=0.0   # ORDER B: frac carries g (B-1 ladder, dial-off identical); the B-2 fade call site DELETED (owner ruling — see the obituary at the RL_O33 block)
     if g0 is None: g0=g
     if fut is None: fut=[(g,1.0)]
     for k in range(18):
@@ -1108,7 +1100,7 @@ def prod_floor(p,lens='bal'):
     # edit BOTH or neither. Queued hygiene (NOT this build): collapse the copy via option-3 delegation.
     lowbar=y0dpp_bar(p) if (AGE_REF==BASE_REF) else None
     _gr=grace_years(p)                                    # ORDER 28 grace-A (dial-gated; 0 => byte-exact)
-    d=age_disc(a,LENS[lens],lens)+(o33_fade(a) if lens in ('bal','balanced') else 0.0); H=clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0   # ORDER B B-2 fallback fade (0 when off)
+    d=age_disc(a,LENS[lens],lens); H=clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0   # (the ORDER B B-2 fade call site DELETED — owner ruling, see the RL_O33 obituary)
     while k<H:
         ag=a+k; wt=min(1.0,H-k)
         lev=cur*min(1.0, frac(ag,pa_,g)/max(frac(a,pa_,g),1e-6))   # ORDER B B-1: the ladder reaches the floor's decline RATIO (dial-off identical)
