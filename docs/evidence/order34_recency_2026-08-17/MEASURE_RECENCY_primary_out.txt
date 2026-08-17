@@ -1,0 +1,184 @@
+RECENCY AUDIT [primary]  store cb38ef11  dial RL_O31=1  BASE_REF=2026
+sample: 38 players (cells 15; base ev >= 100 filter applied)
+  darcy-jones                  SF   ns=2 base=   991.1  totdv=508.296  w=[2:0.530, 1:0.470]
+  leo-lombard                  SF   ns=2 base=  1594.8  totdv= 47.683  w=[1:0.000, 0:1.000]
+  riley-bice                   SD   ns=2 base=   319.9  totdv= 81.489  w=[1:0.081, 0:0.919]
+  zac-taylor                   SF   ns=3 base=   151.0  totdv= 82.620  w=[2:0.012, 1:0.463, 0:0.524]
+  zane-duursma                 SF   ns=3 base=   804.8  totdv=109.125  w=[2:0.000, 1:0.503, 0:0.497]
+  judson-clarke                SF   ns=4 base=   147.3  totdv=  2.616  w=[4:-0.029, 3:1.102, 2:-0.029, 0:-0.044]
+  connor-macdonald             SF   ns=5 base=  2582.1  totdv=297.428  w=[4:0.002, 3:0.005, 2:0.131, 1:0.171, 0:0.692]
+  matthew-roberts              SD   ns=5 base=  1582.2  totdv=454.061  w=[4:0.000, 3:0.002, 2:0.264, 1:0.311, 0:0.423]
+  conor-stone                  SD   ns=6 base=   395.8  totdv=  7.122  w=[5:-0.001, 4:0.000, 3:-0.001, 2:-0.001, 1:0.235, 0:0.768]
+  alix-tauru                   KPD  ns=2 base=  1057.6  totdv= 14.315  w=[1:1.897, 0:-0.897]
+  charlie-west                 KPF  ns=2 base=   347.3  totdv= 11.111  w=[1:0.000, 0:1.000]
+  oscar-adams                  KPD  ns=2 base=   110.1  totdv= 14.649  w=[1:0.062, 0:0.938]
+  connor-o-sullivan            KPD  ns=3 base=  2522.4  totdv= 34.445  w=[2:-0.011, 1:1.412, 0:-0.401]
+  logan-morris                 KPF  ns=3 base=  2823.5  totdv= 72.997  w=[2:0.200, 1:0.061, 0:0.739]
+  max-gruzewski                KPF  ns=3 base=   457.7  totdv= 11.961  w=[2:0.000, 1:0.036, 0:0.964]
+  aaron-cadman                 KPF  ns=4 base=  1801.8  totdv=673.286  w=[3:0.000, 2:0.021, 1:0.220, 0:0.759]
+  jack-williams                KPF  ns=4 base=   320.0  totdv=145.428  w=[3:0.328, 2:0.215, 1:0.214, 0:0.243]
+  reuben-ginbey                KPD  ns=4 base=  2183.1  totdv=-40.840  w=[3:NA, 2:NA, 1:NA, 0:NA]
+  max-king-stk                 KPF  ns=5 base=   275.0  totdv= 68.929  w=[6:0.023, 5:0.112, 4:0.170, 3:0.250, 2:0.446]
+  shannon-neale                KPF  ns=5 base=  2334.0  totdv=227.303  w=[4:0.000, 3:0.000, 2:0.027, 1:0.233, 0:0.740]
+  zach-reid                    KPD  ns=5 base=   959.9  totdv=179.766  w=[5:0.000, 4:0.013, 2:0.000, 1:0.385, 0:0.601]
+  charlie-comben               KPD  ns=6 base=   736.0  totdv=239.397  w=[5:0.000, 4:0.000, 3:0.001, 2:0.144, 1:0.262, 0:0.593]
+  jack-payne                   KPD  ns=6 base=   108.7  totdv= 20.260  w=[6:0.000, 5:-0.005, 4:-0.007, 3:0.043, 2:0.203, 1:0.766]
+  cooper-hynes                 MID  ns=2 base=  1043.6  totdv=  9.952  w=[1:-0.599, 0:1.599]
+  finn-o-sullivan              MID  ns=2 base=  3371.6  totdv=124.227  w=[1:0.151, 0:0.849]
+  sam-lalor                    MID  ns=2 base=  3874.7  totdv=162.884  w=[1:0.032, 0:0.968]
+  colby-mckercher              MID  ns=3 base=  4229.0  totdv=-84.164  w=[2:NA, 1:NA, 0:NA]
+  harley-reid                  MID  ns=3 base=  3876.6  totdv=618.585  w=[2:0.088, 1:0.328, 0:0.584]
+  ryley-sanders                MID  ns=3 base=  3573.0  totdv=168.160  w=[2:-0.009, 1:-0.063, 0:1.072]
+  elijah-tsatas                MID  ns=4 base=  1593.4  totdv= 65.443  w=[3:0.168, 2:0.144, 1:0.147, 0:0.541]
+  henry-hustwaite              MID  ns=4 base=   507.9  totdv=  2.422  w=[3:0.250, 2:0.250, 1:0.250, 0:0.250]
+  oliver-hollands              MID  ns=4 base=  1517.8  totdv=289.239  w=[3:0.000, 2:0.020, 1:0.326, 0:0.653]
+  james-tunstill               MID  ns=5 base=   333.6  totdv=  6.395  w=[4:0.000, 3:0.000, 2:0.000, 1:0.000, 0:1.000]
+  jason-horne-francis          MID  ns=5 base=  5844.6  totdv=207.968  w=[4:-0.058, 3:-0.052, 2:0.093, 1:0.133, 0:0.884]
+  nick-daicos                  MID  ns=5 base= 10410.0  totdv=257.572  w=[4:0.007, 3:0.043, 2:0.060, 1:0.099, 0:0.791]
+  brayden-cook                 MID  ns=6 base=   762.8  totdv=213.501  w=[5:0.000, 4:0.003, 3:0.000, 2:0.013, 1:0.001, 0:0.983]
+  errol-gulden                 MID  ns=6 base=  6779.4  totdv=469.904  w=[5:0.001, 4:-0.101, 3:-0.069, 2:0.073, 1:0.068, 0:1.028]
+  james-jordon                 MID  ns=6 base=   172.8  totdv=106.761  w=[5:0.000, 4:0.000, 3:0.039, 2:0.073, 1:0.142, 0:0.745]
+
+usable (positive total response): 36 of 38;  unresponsive: ['reuben-ginbey', 'colby-mckercher']
+negative single-season responses (disclosed): 25  [('judson-clarke', 2022, -0.07596642659950703), ('judson-clarke', 2024, -0.07596642659950703), ('judson-clarke', 2026, -0.1152038026025366), ('conor-stone', 2021, -0.007061937502157889), ('conor-stone', 2023, -0.007061937502157889), ('conor-stone', 2024, -0.007061937502157889), ('alix-tauru', 2026, -12.840639247019908), ('connor-o-sullivan', 2024, -0.39134340737291495), ('connor-o-sullivan', 2026, -13.813921293121439), ('reuben-ginbey', 2023, -0.19934701455531467), ('reuben-ginbey', 2024, -2.4711525590364545), ('reuben-ginbey', 2025, -2.4956902041267313)]
+
+EFFECTIVE WEIGHT BY YEARS-BACK -- ALL  (n players = 36)
+    back      n     mean   median      q25      q75
+       0     33    0.667    0.745    0.541    0.964
+       1     34    0.259    0.161    0.061    0.323
+       2     28    0.106    0.066    0.000    0.158
+       3     19    0.111    0.002    0.000    0.105
+       4     15   -0.000    0.000   -0.003    0.002
+       5      8    0.013    0.000   -0.000    0.000
+       6      2    0.012    0.012    0.006    0.017
+LATEST-SEASON SHARE (back<=1 = 2025 completed + 2026 in-progress): mean 0.856  median 0.985  IQR [0.841, 1.000]
+  of which 2026 in-progress alone: median 0.739;  2025 alone: median 0.149
+
+EFFECTIVE WEIGHT BY YEARS-BACK -- seasons-of-history 2-3  (n players = 16)
+    back      n     mean   median      q25      q75
+       0     15    0.690    0.919    0.554    0.984
+       1     16    0.302    0.071    0.024    0.465
+       2      8    0.101    0.006   -0.002    0.116
+LATEST-SEASON SHARE (back<=1 = 2025 completed + 2026 in-progress): mean 0.949  median 1.000  IQR [0.997, 1.000]
+  of which 2026 in-progress alone: median 0.884;  2025 alone: median 0.071
+
+EFFECTIVE WEIGHT BY YEARS-BACK -- seasons-of-history 4-6  (n players = 20)
+    back      n     mean   median      q25      q75
+       0     18    0.647    0.716    0.554    0.785
+       1     18    0.220    0.217    0.135    0.259
+       2     20    0.107    0.073    0.019    0.159
+       3     19    0.111    0.002    0.000    0.105
+       4     15   -0.000    0.000   -0.003    0.002
+       5      8    0.013    0.000   -0.000    0.000
+       6      2    0.012    0.012    0.006    0.017
+LATEST-SEASON SHARE (back<=1 = 2025 completed + 2026 in-progress): mean 0.781  median 0.889  IQR [0.722, 0.985]
+  of which 2026 in-progress alone: median 0.672;  2025 alone: median 0.192
+
+EFFECTIVE WEIGHT BY YEARS-BACK -- latest completed <10 games  (n players = 11)
+    back      n     mean   median      q25      q75
+       0     11    0.818    0.964    0.654    1.000
+       1     10    0.013    0.019    0.000    0.126
+       2      7    0.054    0.000   -0.000    0.079
+       3      6    0.253    0.084    0.000    0.229
+       4      4   -0.007    0.000   -0.007    0.001
+       5      2   -0.000   -0.000   -0.001   -0.000
+LATEST-SEASON SHARE (back<=1 = 2025 completed + 2026 in-progress): mean 0.830  median 1.000  IQR [0.836, 1.000]
+  of which 2026 in-progress alone: median 0.964;  2025 alone: median 0.001
+
+EFFECTIVE WEIGHT BY YEARS-BACK -- 10-17  (n players = 11)
+    back      n     mean   median      q25      q75
+       0      9    0.530    0.601    0.497    0.919
+       1     10    0.454    0.300    0.094    0.493
+       2      8    0.130    0.083    0.009    0.206
+       3      5    0.100    0.043   -0.052    0.250
+       4      5    0.003   -0.007   -0.058    0.013
+       5      4    0.027    0.000   -0.001    0.029
+       6      2    0.012    0.012    0.006    0.017
+LATEST-SEASON SHARE (back<=1 = 2025 completed + 2026 in-progress): mean 0.846  median 1.000  IQR [0.877, 1.000]
+  of which 2026 in-progress alone: median 0.524;  2025 alone: median 0.214
+
+EFFECTIVE WEIGHT BY YEARS-BACK -- 18+  (n players = 14)
+    back      n     mean   median      q25      q75
+       0     13    0.634    0.739    0.593    0.759
+       1     14    0.295    0.227    0.144    0.323
+       2     13    0.118    0.073    0.021    0.144
+       3      8    0.011    0.001    0.000    0.013
+       4      6    0.002    0.000    0.000    0.002
+       5      2    0.000    0.000    0.000    0.000
+LATEST-SEASON SHARE (back<=1 = 2025 completed + 2026 in-progress): mean 0.883  median 0.901  IQR [0.857, 0.980]
+  of which 2026 in-progress alone: median 0.715;  2025 alone: median 0.227
+
+EFFECTIVE WEIGHT BY YEARS-BACK -- group KEY  (n players = 13)
+    back      n     mean   median      q25      q75
+       0     11    0.480    0.739    0.418    0.848
+       1     12    0.462    0.227    0.062    0.481
+       2     10    0.124    0.085    0.005    0.202
+       3      6    0.104    0.022    0.001    0.198
+       4      5    0.035    0.000    0.000    0.013
+       5      4    0.027    0.000   -0.001    0.028
+       6      2    0.012    0.012    0.006    0.017
+LATEST-SEASON SHARE (back<=1 = 2025 completed + 2026 in-progress): mean 0.833  median 0.979  IQR [0.800, 1.000]
+  of which 2026 in-progress alone: median 0.601;  2025 alone: median 0.220
+
+EFFECTIVE WEIGHT BY YEARS-BACK -- group GEN  (n players = 9)
+    back      n     mean   median      q25      q75
+       0      8    0.597    0.608    0.478    0.806
+       1      8    0.279    0.273    0.148    0.465
+       2      7    0.130    0.012   -0.000    0.198
+       3      4    0.277    0.003    0.001    0.279
+       4      4   -0.007    0.000   -0.007    0.001
+       5      1   -0.001   -0.001   -0.001   -0.001
+LATEST-SEASON SHARE (back<=1 = 2025 completed + 2026 in-progress): mean 0.779  median 0.988  IQR [0.734, 1.000]
+  of which 2026 in-progress alone: median 0.524;  2025 alone: median 0.235
+
+EFFECTIVE WEIGHT BY YEARS-BACK -- group MR  (n players = 14)
+    back      n     mean   median      q25      q75
+       0     14    0.853    0.867    0.676    0.996
+       1     14    0.073    0.116    0.009    0.150
+       2     11    0.073    0.073    0.017    0.090
+       3      9    0.042    0.000    0.000    0.043
+       4      6   -0.025    0.000   -0.044    0.002
+       5      3    0.000    0.000    0.000    0.000
+LATEST-SEASON SHARE (back<=1 = 2025 completed + 2026 in-progress): mean 0.926  median 0.992  IQR [0.896, 1.000]
+  of which 2026 in-progress alone: median 0.867;  2025 alone: median 0.116
+
+PERTURBATION-SIZE SENSITIVITY (delta 1 vs 4), first 10 sampled players
+  darcy-jones                  max|dw(1)-dw(4)| = 0.1297
+  leo-lombard                  max|dw(1)-dw(4)| = 0.0000
+  riley-bice                   max|dw(1)-dw(4)| = 0.0057
+  zac-taylor                   max|dw(1)-dw(4)| = 0.0962
+  zane-duursma                 max|dw(1)-dw(4)| = 0.5342
+  judson-clarke                max|dw(1)-dw(4)| = NA
+  connor-macdonald             max|dw(1)-dw(4)| = 0.0555
+  matthew-roberts              max|dw(1)-dw(4)| = 0.2141
+  conor-stone                  max|dw(1)-dw(4)| = 0.3867
+  alix-tauru                   max|dw(1)-dw(4)| = 0.1852
+  sample median max|dw| = 0.1297  (trip at > 0.10: FIRED)
+
+BOARD ROWS WITH LARGEST LATEST-vs-HISTORY DIVERGENCE (store-only; top 12 each side)
+  LATEST ABOVE HISTORY (risers)
+    daniel-curtin              MID  latest   72.9 (25g) vs prior   32.7  div  +40.2  board(cand) 2047
+    ryan-maric                 MID  latest   85.1 (22g) vs prior   45.2  div  +39.9  board(cand) 1238
+    zach-reid                  KPD  latest   79.8 (10g) vs prior   40.5  div  +39.3  board(cand) 912
+    ned-long                   MID  latest   78.9 (25g) vs prior   41.8  div  +37.1  board(cand) 1145
+    will-lorenz                MID  latest   58.3 ( 6g) vs prior   22.0  div  +36.3  board(cand) 258
+    finn-callaghan             MID  latest  111.6 (21g) vs prior   75.6  div  +36.0  board(cand) 5471
+    jack-buller                KPF  latest   52.8 ( 9g) vs prior   17.0  div  +35.8  board(cand) 78
+    riley-thilthorpe           KPF  latest   97.8 (25g) vs prior   62.9  div  +34.9  board(cand) 4067
+    sam-banks                  SD   latest   81.0 (22g) vs prior   48.5  div  +32.5  board(cand) 771
+    clay-hall                  MID  latest   66.8 (13g) vs prior   34.3  div  +32.5  board(cand) 327
+    lachlan-ash                SD   latest  107.9 (24g) vs prior   76.4  div  +31.5  board(cand) 5303
+    tristan-xerri              RUCK latest  127.0 (20g) vs prior   96.6  div  +30.4  board(cand) 6948
+  LATEST BELOW HISTORY (faders)
+    stephen-coniglio           MID  latest   59.3 (10g) vs prior   92.7  div  -33.4  board(cand) 211
+    zac-fisher                 SF   latest   47.4 ( 7g) vs prior   74.4  div  -27.0  board(cand) 116
+    kyle-langford              KPF  latest   52.3 ( 9g) vs prior   77.6  div  -25.3  board(cand) 505
+    liam-henry                 SF   latest   33.0 ( 6g) vs prior   58.1  div  -25.1  board(cand) 142
+    peter-ladhams              RUCK latest   49.1 (10g) vs prior   73.5  div  -24.4  board(cand) 449
+    bailey-scott               MID  latest   45.9 (12g) vs prior   70.2  div  -24.3  board(cand) 20
+    koltyn-tholstrup           SD   latest   33.9 ( 9g) vs prior   58.0  div  -24.1  board(cand) 1488
+    jordan-de-goey             SF   latest   63.3 (11g) vs prior   86.9  div  -23.6  board(cand) 1365
+    sean-darcy                 RUCK latest   78.1 (17g) vs prior  100.2  div  -22.1  board(cand) 703
+    luke-nankervis             SD   latest   47.3 ( 7g) vs prior   68.9  div  -21.6  board(cand) 294
+    nicholas-holman            SF   latest   39.3 (16g) vs prior   60.8  div  -21.5  board(cand) 2
+    tom-barrass                KPD  latest   61.0 (25g) vs prior   82.5  div  -21.5  board(cand) 20
