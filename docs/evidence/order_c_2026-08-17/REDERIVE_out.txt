@@ -22,3 +22,21 @@ mature-identity gate over the 3960 knob points: 1 pass
   closest knob points: k=0.35 gu=8 e=0.30 gd=4 -> mature max 0.5249 board pts
   closest knob points: k=0.40 gu=8 e=0.25 gd=4 -> mature max 0.5304 board pts
   closest knob points: k=0.15 gu=16 e=0.40 gd=6 -> mature max 0.5518 board pts
+
+constraint failure counts over the grid: {'W': 7083, '1.14line': 19347, 'continuity': 13279, 'mature': 151, 'mono': 4620}
+ruled-gates feasible: 153   + mature gate: 2
+after the declared refinement pass (alpha axis): 6 feasible points
+  k=0.24 gu=11 e=0.41 gd=14 a=0.75 | obj  31.3 W 0.326 sl 0.998 mean 1.0301 mx 1.1272 | bands {'1-10': 1.048, '11-20': 1.087, '21-30': 1.037, '31-40': 0.885, '41-64': 0.929} spread 0.202
+  k=0.24 gu=11 e=0.41 gd=14 a=0.80 | obj  31.6 W 0.326 sl 0.999 mean 1.0321 mx 1.1293 | bands {'1-10': 1.049, '11-20': 1.089, '21-30': 1.039, '31-40': 0.887, '41-64': 0.932} spread 0.202
+  k=0.24 gu=11 e=0.41 gd=14 a=0.85 | obj  32.0 W 0.326 sl 0.999 mean 1.0340 mx 1.1313 | bands {'1-10': 1.05, '11-20': 1.091, '21-30': 1.042, '31-40': 0.889, '41-64': 0.935} spread 0.202
+  k=0.24 gu=11 e=0.41 gd=14 a=0.90 | obj  32.3 W 0.326 sl 1.000 mean 1.0359 mx 1.1334 | bands {'1-10': 1.051, '11-20': 1.093, '21-30': 1.044, '31-40': 0.891, '41-64': 0.938} spread 0.202
+  k=0.24 gu=11 e=0.41 gd=14 a=0.95 | obj  32.6 W 0.326 sl 1.001 mean 1.0378 mx 1.1354 | bands {'1-10': 1.053, '11-20': 1.095, '21-30': 1.047, '31-40': 0.893, '41-64': 0.941} spread 0.202
+  k=0.24 gu=11 e=0.41 gd=14 a=1.00 | obj  33.0 W 0.326 sl 1.001 mean 1.0398 mx 1.1375 | bands {'1-10': 1.054, '11-20': 1.097, '21-30': 1.049, '31-40': 0.895, '41-64': 0.945} spread 0.202
+
+CHOSEN: kappa=0.24 gamma_u=11.0 eta=0.41 gamma_d=14.0 ALPHA=0.75
+  obj 31.3  mean 1.0301  W 0.3257  slope 0.9978  max class 1.1272  min band 0.8853  band spread 0.2019
+  cells: {'0': (0.365, 0.345), '1-4': (1.035, 0.907), '5-9': (1.457, 1.379), '10-15': (2.077, 2.384), '16+': (3.208, 3.389)}
+  terciles: {'1-4/poor': (0.859, 0.827), '1-4/mid': (1.074, 1.055), '1-4/riser': (1.173, 0.838), '5-9/poor': (1.103, 0.854), '5-9/mid': (1.428, 1.296), '5-9/riser': (1.841, 1.988)}
+DIAGNOSTIC unconstrained (ruled gates only, NO mature gate — reported, never chosen):
+  k=0.25 gu=16 e=0.30 gd=12 a=0.00 obj 20.6 (mature max |delta| 35.3 board points)
+written: REMIX_34.json

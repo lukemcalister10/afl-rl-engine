@@ -3398,7 +3398,12 @@ if _O30B_PREVIEW:
     # RE-DERIVED jointly with the re-mix knobs on the corrected surface (REMIX_34.json — same
     # joint-derivation discipline, min corrected-SSE inside the ruled gates + the ORDER C mature-row
     # identity gate). Read ONLY when _O34 is set: the dial-off credit path is byte-identical.
-    O34_ALPHA=1.0
+    # REMIX_34.json::chosen — the joint grid left the repaired knob point (the ONLY knob point the
+    # mature gate admits, 1 of 3960) x alpha in [0.75, 1.00] feasible (the 1.14 line kills alpha >
+    # 1.00; the ruled at-bar continuity object kills alpha < 0.75); min corrected-SSE selects the
+    # boundary 0.75 (obj 31.3 vs 33.0 at alpha=1). The unconstrained minimum (alpha 0, different
+    # knobs, obj 20.6) moves mature rows up to 35 board points and is REPORTED, NEVER CHOSEN.
+    O34_ALPHA=0.75
     def o31_pool_D(c):
         if c<=1.0: return 1.0
         if c>=O31_POOL_FLAT_FROM: return O31_POOL_D[O31_POOL_FLAT_FROM]
