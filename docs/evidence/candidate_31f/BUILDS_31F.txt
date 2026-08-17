@@ -1,0 +1,11 @@
+ORDER 31-F -- THE BUILD LADDER. Every board built FOREGROUND and STRICTLY SEQUENTIAL in its own staged
+workspace on the pinned venv (/root/rl_venv312) under five-var thread pinning with RL_V0SURF_PKL set.
+No two engine runs ever ran concurrently. rl_model.py 14000af2... and rl_model_data.json cb38ef11...
+are byte-identical on every line below (the active-provenance guard: no foreign rl_model.py installed).
+
+  tag     dial        artifact              rl_app_data.json                   total    what it isolates
+  f0off   -           06146b00 (as-found)   9298203135202a0c707bb0977ba38c31   706,672  ENTRY CONTROL: the committed Step-2 board
+  f0on    RL_O31=1    06146b00 (as-found)   d9a57cc8770802b83c1264a08356fb60   664,058  ENTRY CONTROL: the ORDER-31 candidate
+  f1off   -           78ad9842 (head-fixed) bce0c65d853722e52629ab97677a98e3   706,862  THE HEAD FIX ALONE, on the Step-2 law (+190)
+  f1on    RL_O31=1    78ad9842 (head-fixed) c52a1deae0603bac343865453bdf9591   665,578  THE HEAD FIX ALONE, on the one law (+1,520)
+  f2on    RL_O31=1    78ad9842 (head-fixed) fe6be9d6ac76ebc34d26ebc11d796505   666,913  + the re-derived fade/beta/rho/Phi + beta_pool

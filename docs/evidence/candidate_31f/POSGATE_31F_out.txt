@@ -1,0 +1,102 @@
+ORDER 31-F  F3 -- THE POSITION GATE (original Step 4).  READ-ONLY AUDIT.
+  board audited: fe6be9d6ac76ebc34d26ebc11d796505   804 active rows
+  the six position groups the v0 surface publishes: KPD KPF MID RUCK SD SF
+  the bars they key: KPD 65.4  KPF 63.8  MID 77.1  RUCK 75.5  SD 75.3  SF 67.9
+
+CHECK A -- gfut resolves to one of the six published groups
+  rows audited 804   UNRESOLVED 0   PASS
+
+CHECK B -- future vs present position
+  rows where gfut != present: 1 of 804 (0.1%)
+  THIS IS NOT A DEFECT BY ITSELF: present != future is the taxonomy working as designed (item 216).
+  It is a defect only where the FUTURE key is unsupported by the eligibility column -- CHECK C.
+    MID->SF           1
+
+CHECK C -- gfut is CONTAINED in the collapsed eligibility set (the owner-maintained declaration)
+  rows with an EMPTY eligibility column .......... 0   (bar falls back to present position, by law)
+  rows where gfut is NOT in the collapsed set .... 50   <-- THE RESIDUAL CLASS
+
+  THE RESIDUALS, NAMED IN FULL (never summarised away). Each is a row whose FUTURE position key
+  is outside its own CURRENT eligibility declaration. That is legitimate for a genuine positional
+  move (a mid becoming a key defender) and is a DEFECT where the column is simply stale. This seat
+  cannot tell those apart from the store alone, so it names every one and prices it.
+    key                        gfut   pres   eligibilities       price        v0     bar
+    reuben-ginbey              KPD    KPD    SD                   2074     927.3    65.4
+    sam-flanders               MID    MID    SD,SF                1923    1573.7    77.1
+    taj-hotton                 MID    MID    SF                   1848    1572.7    77.1
+    luke-trainor               KPD    KPD    SD                    979     643.3    65.4
+    jai-serong                 SD     SD     KPD                   781     169.3    75.3
+    marcus-herbert             SD     SD     MID                   719     358.5    75.3
+    louis-emmett               KPF    KPF    RUCK                  668     601.0    63.8
+    cody-angove                MID    MID    SF                    627     843.1    77.1
+    jack-lukosius              SF     SF     KPF                   503    2420.6    67.9
+    jack-dalton                SF     SF     MID                   467     418.8    67.9
+    braeden-campbell           SD     SD     SF                    420    1595.0    75.3
+    xavier-bamert              SF     SF     MID                   369     207.7    67.9
+    jack-ison                  SF     SF     MID                   364     280.4    67.9
+    oliver-hannaford           SF     SF     MID                   352     595.2    67.9
+    william-mccabe             KPF    KPF    KPD                   316     729.7    63.8
+    noah-roberts-thomson       SF     SF     MID                   295     273.4    67.9
+    luke-nankervis             SD     SD     MID                   294     254.7    75.3
+    adam-sweid                 SF     SF     MID                   250     427.7    67.9
+    jevan-phillipou            SF     SF     MID                   244     417.8    67.9
+    koby-evans                 SF     SF     MID                   243     414.8    67.9
+    jay-polkinghorne           SF     SF     KPF                   215     297.5    67.9
+    lewis-hayes                KPD    KPD    SD                    215     519.1    65.4
+    thomas-burton              SF     SF     MID                   213     124.4    67.9
+    zac-walker                 SD     SD     KPD                   199     358.5    75.3
+    oliver-henry               SF     SF     KPF                   189     595.2    67.9
+    alex-dodson                RUCK   RUCK   KPF                   175     237.2    75.5
+    nikolas-cox                KPF    KPF    MID                   174    1125.7    63.8
+    toby-mcmullin              SF     SF     MID                   162     418.8    67.9
+    max-king-syd               SF     SF     KPF                   155     278.4    67.9
+    jake-lever                 KPD    KPD    SD                    153     651.1    65.4
+    luke-lloyd                 KPD    KPD    KPF                   151     391.4    65.4
+    kayle-gerreyn              KPF    KPF    RUCK                  126     433.1    63.8
+    fred-rodriguez             MID    MID    SF                    123     212.4    77.1
+    nick-driscoll              MID    MID    SF                    123     212.4    77.1
+    xavier-walsh               KPD    KPD    KPF                   113     204.4    65.4
+    joel-cochran               KPD    KPD    SD                    110     379.0    65.4
+    callum-coleman-jones       KPF    KPF    RUCK                   75     725.8    63.8
+    jesse-mellor               MID    MID    SF                     66     112.7    77.1
+    hunter-clark               SD     SD     MID                    66    1291.1    75.3
+    indy-cotton                SD     SD     SF                     63     107.7    75.3
+    matt-hill                  SF     SF     SD                     52      77.5    67.9
+    jacob-moss                 KPF    KPF    KPD                    51      91.4    63.8
+    noah-chamberlain           SF     SF     KPF                    48      86.6    67.9
+    matt-duffy                 SD     SD     KPD                    48      87.0    75.3
+    isaac-cumming              SD     SD     MID                    39     783.8    75.3
+    tyrell-dewar               SF     SF     SD,MID                 33      54.7    67.9
+    toby-whan                  SF     SF     MID                    32      54.7    67.9
+    jackson-mead               SF     SF     MID                    18     427.7    67.9
+    bailey-banfield            SF     SF     SD                     13     200.8    67.9
+    joel-hamling               KPF    KPF    KPD                     9     362.0    63.8
+    TOTAL PRICE STANDING ON A RESIDUAL POSITION KEY: 16945 board points (2.54% of the book)
+
+CHECK D -- THE BAKER CLASS (owner item 217, verbatim "Yes, G-DEF. Lock it in.", 2026-07-16)
+  The ruling: sam-flanders / oskar-baker / ed-langdon carry eligibilities 'G-DEF,G-FWD' -- NOT MID
+  ("a player should NOT have three positions"), plus sam-flanders present_position MID -> GDEF.
+  The store write was QUEUED TO LEG C and, on this branch, HAS NOT BEEN EXECUTED. Current state:
+    sam-flanders     gfut MID   present MID   eligibilities 'SD,SF'            price   1923  v0   1573.7  bar 77.1   ruling ALREADY SATISFIED
+    oskar-baker      gfut SF    present MID   eligibilities 'SD,SF'            price     18  v0    279.4  bar 67.9   ruling ALREADY SATISFIED
+    ed-langdon       gfut SD    present SD    eligibilities 'SD,SF'            price    744  v0    168.3  bar 75.3   ruling ALREADY SATISFIED
+
+  WHAT IS REACHABLE FROM THIS SEAT, STATED PRECISELY:
+    * The ruling is an ELIGIBILITY-COLUMN correction. In this engine the eligibility column drives the
+      YEAR-0 DPP bar (rl_model.py::_collapse_elig / _fit_bar), NOT gfut. gfut comes from
+      future_position, which the owner explicitly left untouched for these rows ("future stays per the
+      owner's flex register").
+    * So the v0 CELL of every Baker-class row is UNAFFECTED by the ruling, and the price at stake is
+      the year-0 bar only.
+    * The store write itself is an EXECUTION ACT and is NOT this candidate's to make (#334: "Store
+      writes are an execution act with the owner's word, never a seam act"). It is REPORTED, PRICED
+      AND LEFT FOR THE STORE WRITER. Nothing about it is applied silently.
+
+THE GATE'S VERDICT
+  rows audited ................................. 804
+  rows with an UNRESOLVED position key ......... 0
+  rows re-keyed by this act .................... 0  (a store write is not a pricing act)
+  rows flagged as RESIDUAL (gfut outside elig) . 50
+  Baker-class rows on the board ................ 3 of 3
+  Baker-class rows already satisfying the ruling 3
+

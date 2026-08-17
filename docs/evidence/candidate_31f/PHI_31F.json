@@ -1,0 +1,126 @@
+{
+ "as_run_md5": "a947fd3292b9ce03a22eeff66927b580",
+ "beta_stall_31f": {
+  "10.5": 0.0858614087734944,
+  "2.5": 0.1667717754120163,
+  "25.5": 0.08159325465565312,
+  "53.0": -0.0053594644594759195,
+  "85.5": -0.011317082799413533
+ },
+ "beta_stall_committed": {
+  "10.5": 0.0854932451705123,
+  "2.5": 0.1731902729573174,
+  "25.5": 0.07958997660557308,
+  "53.0": -0.0062270626227617625,
+  "85.5": -0.012764454630426735
+ },
+ "beta_stall_floored": [
+  [
+   2.5,
+   0.1667717754120163
+  ],
+  [
+   10.5,
+   0.0858614087734944
+  ],
+  [
+   25.5,
+   0.08159325465565312
+  ],
+  [
+   53.0,
+   0.0
+  ],
+  [
+   85.5,
+   0.0
+  ]
+ ],
+ "beta_stall_monotone": [
+  [
+   2.5,
+   0.1667717754120163
+  ],
+  [
+   10.5,
+   0.0858614087734944
+  ],
+  [
+   25.5,
+   0.08159325465565312
+  ],
+  [
+   53.0,
+   0.0
+  ],
+  [
+   85.5,
+   0.0
+  ]
+ ],
+ "instrument": "docs/evidence/one_machinery_2026-08-14/circularity/o30bc_circ.py",
+ "instrument_md5": "838af6a5b2b210c629a4f4a2efca745f",
+ "order": "ORDER 31-F F1(d) -- Phi re-derived on head-fixed v0",
+ "phistall_31f": [
+  [
+   2.5,
+   0.5792926948039687
+  ],
+  [
+   10.5,
+   0.298245232115451
+  ],
+  [
+   25.5,
+   0.298245232115451
+  ],
+  [
+   53.0,
+   0.0
+  ],
+  [
+   85.5,
+   0.0
+  ]
+ ],
+ "phistall_committed": [
+  [
+   2.5,
+   0.5834702550962193
+  ],
+  [
+   10.5,
+   0.28802290519477386
+  ],
+  [
+   25.5,
+   0.28802290519477386
+  ],
+  [
+   53.0,
+   0.0
+  ],
+  [
+   85.5,
+   0.0
+  ]
+ ],
+ "substitutions": [
+  {
+   "from": "SRC = open(MEASURE).read()",
+   "to": "SRC = open(MEASURE).read().replace(\"V0P = os.path.join(ROOT, 'docs', 'evidence', 'one_machinery_2026-08-14', 'V0REFIT30B.json')\", \"V0P = os.path.join(ROOT, 'docs', 'evidence', 'candidate_31f', 'HEADFIX_31F.json')\").replace(\"POSV = V0ART['posv_out']\", \"POSV = V0ART['posv_headfixed']\")"
+  },
+  {
+   "from": "OUT_JSON = os.path.join(HERE, 'CIRCULARITY.json')",
+   "to": "OUT_JSON = os.path.join(ROOT, 'docs', 'evidence', 'candidate_31f', 'CIRCULARITY_31F.json')"
+  },
+  {
+   "from": "OUT_TXT = os.path.join(HERE, 'CIRC_out.txt')",
+   "to": "OUT_TXT = os.path.join(ROOT, 'docs', 'evidence', 'candidate_31f', 'CIRC_31F_out.txt')"
+  },
+  {
+   "from": "PTABLEP = os.path.join(ROOT, 'docs', 'evidence', 'pedigree_persistence_2026-08-14', 'PERSISTENCE_TABLE.json')",
+   "to": "PTABLEP = os.path.join(ROOT, 'docs', 'evidence', 'candidate_31f', 'PERSISTENCE_31F.json')"
+  }
+ ]
+}

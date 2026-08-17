@@ -1,0 +1,121 @@
+ORDER 31-F  F2 -- THE POOL PARAMETERS (beta_pool DERIVED; D_pool re-controlled)
+
+PART 1 -- D_pool.  transplanted prefix docs/evidence/sitter_fade_2026-08-14/o30a2_recut.py  md5 fe6f436ab23056d717f693091946309a
+  CONTROL -- this transplanted estimator must reproduce THE 31-F ND ROW (not the superseded one)
+    here  2:0.558278  3:0.274786  4:0.397271
+    31-F  2:0.558278  3:0.274786  4:0.397271
+    max deviation 0.000e+00   VERDICT REPRODUCED
+  THE POOLED POOL ROW (L-B listed-conditional, fitted window 2004-2021)
+     N      n   mean(v/v0)         D(N)    median       p25       p75  n_ever tail_share
+     1    840     0.964855     1.000000    0.0000    0.0000    0.2391     468     0.0306
+     2    588     0.535075     0.554566    0.0000    0.0000    0.0026     216     0.0256
+     3     17     2.183975     2.263527    1.0042    0.5493    2.7574      17     0.4540
+     4      4     1.161706     1.204022    1.0684    0.7637    1.4664       4     0.6272
+     5      1     0.090020     0.093299    0.0900    0.0900    0.0900       1     0.4754
+     6      1     0.102622     0.106360    0.1026    0.1026    0.1026       1     0.4754
+  THE WIRED POOL FADE (n floor 8; a cell must BE A FADE (D<=1); FLAT from depth 2 out)
+    REJECTED D_pool(3) = 2.263527  n 17  n_ever 17  tail_share 0.4540  -- D > 1.0 -- the cell INVERTS (selection)
+    REJECTED D_pool(4) = 1.204022  n 4  n_ever 4  tail_share 0.6272  -- n 4 below the floor 8
+    REJECTED D_pool(5) = 0.093299  n 1  n_ever 1  tail_share 0.4754  -- n 1 below the floor 8
+    REJECTED D_pool(6) = 0.106360  n 1  n_ever 1  tail_share 0.4754  -- n 1 below the floor 8
+    D_pool(1) = 1.0000000000000000   n = 840
+    D_pool(2) = 0.5545657072981915   n = 588
+    D_pool(c >= 2) FLAT at 0.5545657072981915
+
+PART 2 -- beta_pool.  transplanted panel docs/evidence/pedigree_persistence_2026-08-14/o30bm_measure.py  md5 e910fe6482ab7b05a92f18c173667073 (v0 source re-pointed to the head-fixed surface)
+  CONTROL -- band_fit on the ND panel reproduces the 31-F ND beta row
+    here  0-5:0.2878886  6-15:0.3561228  16-35:0.2177288  36-70:0.1415515  71+:0.0238490
+    31-F  0-5:0.2878886  6-15:0.3561228  16-35:0.2177288  36-70:0.1415515  71+:0.0238490
+    max deviation 0.000e+00   VERDICT REPRODUCED
+  POOL PANEL: 1706 states over 442 careers  (dropped for an unsigned/absent pool v0 cell: 0 {})
+  by pathway tier: {'ND': 252, 'RD': 1240, 'PDN': 7, 'SSP': 6, 'MSD': 3, 'UNR': 51, 'PDA': 58, 'IRE': 65, 'PDS': 24}
+
+  beta_pool BY GAMES BAND -- the SAME band_fit, on the pool panel
+    band        mid       n clusters      beta_pool         t    sigma % ND beta 31-F
+    0-5         2.5     279      242      0.3730572      1.33      56.62     0.287889
+    6-15       10.5     305      247      0.3857427      0.79      35.66     0.356123
+    16-35      25.5     368      246      1.0645188      1.81      64.50     0.217729
+    36-70      53.0     323      168      1.7978057      2.46      71.21     0.141552
+    71+        85.5     431      115      1.9732053      2.13      76.49     0.023849
+
+  BY PATHWAY TIER, K-SHRUNK TOWARD THE POOLED POOL ROW (K = 15). BORROWING PRINTED.
+    tier   band          n      raw beta    w_own   SHRUNK beta  borrowed
+    IRE    0-5          17      no fit     0.0000     0.3730572    100.0%
+    IRE    6-15         14      no fit     0.0000     0.3857427    100.0%
+    IRE    16-35        13      no fit     0.0000     1.0645188    100.0%
+    IRE    36-70         5      no fit     0.0000     1.7978057    100.0%
+    IRE    71+          16      no fit     0.0000     1.9732053    100.0%
+    MSD    0-5           3      no fit     0.0000     0.3730572    100.0%
+    MSD    6-15          0      no fit     0.0000     0.3857427    100.0%
+    MSD    16-35         0      no fit     0.0000     1.0645188    100.0%
+    MSD    36-70         0      no fit     0.0000     1.7978057    100.0%
+    MSD    71+           0      no fit     0.0000     1.9732053    100.0%
+    ND     0-5          57    -0.0109641   0.7917     0.0690404     20.8%
+    ND     6-15         44    -0.4719107   0.7458    -0.2538632     25.4%
+    ND     16-35        50     2.5084206   0.7692     2.1752125     23.1%
+    ND     36-70        49     0.2775401   0.7656     0.6338523     23.4%
+    ND     71+          52    -0.2179890   0.7761     0.2725769     22.4%
+    PDA    0-5          13      no fit     0.0000     0.3730572    100.0%
+    PDA    6-15         19      no fit     0.0000     0.3857427    100.0%
+    PDA    16-35         6      no fit     0.0000     1.0645188    100.0%
+    PDA    36-70        10      no fit     0.0000     1.7978057    100.0%
+    PDA    71+          10      no fit     0.0000     1.9732053    100.0%
+    PDN    0-5           5      no fit     0.0000     0.3730572    100.0%
+    PDN    6-15          2      no fit     0.0000     0.3857427    100.0%
+    PDN    16-35         0      no fit     0.0000     1.0645188    100.0%
+    PDN    36-70         0      no fit     0.0000     1.7978057    100.0%
+    PDN    71+           0      no fit     0.0000     1.9732053    100.0%
+    PDS    0-5           4      no fit     0.0000     0.3730572    100.0%
+    PDS    6-15          6      no fit     0.0000     0.3857427    100.0%
+    PDS    16-35         8      no fit     0.0000     1.0645188    100.0%
+    PDS    36-70         5      no fit     0.0000     1.7978057    100.0%
+    PDS    71+           1      no fit     0.0000     1.9732053    100.0%
+    RD     0-5         167     0.5800072   0.9176     0.5629509      8.2%
+    RD     6-15        206     1.6447729   0.9321     1.5593183      6.8%
+    RD     16-35       280     3.3193918   0.9492     3.2047373      5.1%
+    RD     36-70       242     5.3185324   0.9416     5.1130425      5.8%
+    RD     71+         345     3.4863432   0.9583     3.4232957      4.2%
+    SSP    0-5           1      no fit     0.0000     0.3730572    100.0%
+    SSP    6-15          3      no fit     0.0000     0.3857427    100.0%
+    SSP    16-35         2      no fit     0.0000     1.0645188    100.0%
+    SSP    36-70         0      no fit     0.0000     1.7978057    100.0%
+    SSP    71+           0      no fit     0.0000     1.9732053    100.0%
+    UNR    0-5          12      no fit     0.0000     0.3730572    100.0%
+    UNR    6-15         11      no fit     0.0000     0.3857427    100.0%
+    UNR    16-35         9      no fit     0.0000     1.0645188    100.0%
+    UNR    36-70        12      no fit     0.0000     1.7978057    100.0%
+    UNR    71+           7      no fit     0.0000     1.9732053    100.0%
+
+  THE WIRED beta_pool  (pooled pool row; ND-borrowed where band_fit has no fit; then the SAME
+  monotone non-increasing projection the ND beta carries)
+    raw       0.3731 0.3857 1.0645 1.7978 1.9732
+    floored   0.3731 0.3857 1.0645 1.7978 1.9732
+    monotone  0.3731 0.3731 0.3731 0.3731 0.3731
+    ND 31-F   0.2879 0.2879 0.2177 0.1416 0.0238
+    BANDS BORROWED FROM THE ND ROW: none
+    negative raw cells zero-floored: none
+
+  Phi ON POOL ROWS -- can the pool panel carry the 30B-C conditioning by the same construction?
+    band       n_pool  n_stall beta_stall_pool        t
+    0-5           279      254      0.0791829     0.61
+    6-15          305      239      0.0136109     0.07
+    16-35         368      256      0.2732483     1.31
+    36-70         323      168      0.9838711     1.74
+    71+           431      204      0.0846676     0.39
+
+  PhiStall_pool = beta_stall_pool / beta_pool, zero-floored, monotone, clipped to [0,1]
+       mid      beta_pool  beta_stall_pool  PhiStall_pool PhiStall_ND(31-F)
+       2.5      0.3730572        0.0791829      0.2122541        0.5792927
+      10.5      0.3730572        0.0136109      0.0364849        0.2982452
+      25.5      0.3730572        0.0136109      0.0364849        0.2982452
+      53.0      0.3730572        0.0136109      0.0364849        0.0000000
+      85.5      0.3730572        0.0136109      0.0364849        0.0000000
+    VERDICT: SUPPORTED -- every pool games band clears band_fit's own n>=40 floor, so pool rows carry a POOL-MEASURED PhiStall by the same construction as the ND row. NOTHING IS BORROWED HERE.
+
+LIMITATIONS, STATED
+  1. beta_pool is now DERIVED rather than borrowed -- the largest open item ORDER 31 left. What is still borrowed is named on every line above: any games band whose pool panel does not clear band_fit's own n >= 40 floor carries the ND 31-F coefficient, and those bands are listed.
+  2. The WIRED beta_pool object is the POOLED POOL ROW, not a per-tier law. Per-tier cells are published K-shrunk (K = 15) so the borrowing is visible; most do not clear the fitting floor on their own.
+  3. The pool panel is SMALLER and MORE HETEROGENEOUS than the ND panel: it mixes rookie-draft, mid-season draft, pre-season and supplemental routes whose entry ages and clocks differ. The tier table is the disclosure of that heterogeneity.
+  4. THE DEPTH-3 POOL FADE CELL STILL INVERTS and is still NOT WIRED, by the pre-declared rule. OWED OWNER CONFIRMATION.
+  5. The DV grace-A scores were built on store d9a24282; this branch carries a different store. Layer 1 is byte-identical, so the population and every sit fact are unaffected. Inherited from 30A-2.
+  6. MSD first-season-is-season-1 (owner ruling 5) rides debut_year_338's own MSD clause inside the transplanted prefix, inherited rather than restated.

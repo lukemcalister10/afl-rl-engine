@@ -3168,21 +3168,59 @@ if _O30B_PREVIEW:
     # Constants are TRANSCRIBED from docs/evidence/candidate_31/LAW31.json, produced by o31_fit.py from
     # the committed artifacts only (READING.json's beta curve, BLEND30B.json's R1 backbone and D(2),
     # CIRCULARITY.json's stall-cohort coefficients). Nothing here is fitted at build time.
-    O31_TAU_RHO=27.01905446763426; O31_B_RHO=0.8377677559729777
+    # ORDER 31-F (#334 comment 5310576233) RE-FITS EVERY ONE OF THESE ON THE HEAD-FIXED RULER.
+    # R1 ruler discipline: rho, beta, PhiStall and the sitter fade were all measured against the STEP-1
+    # positional v0 surface. F1's head fix MOVED that surface, so all four were re-measured with their
+    # COMMITTED HARNESSES RUN WHOLE (only the v0 source and the output directory re-pointed) and the fit
+    # core LIFTED BY SOURCE TEXT from o31_fit.py and exec'd verbatim. Constants transcribed from
+    # docs/evidence/candidate_31f/LAW31F.json. Drifts are published in SHIPPING_PACKET_31.md.
+    #   D(2)   0.5501936 -> 0.5582775     beta(2.5)  0.2968279 -> 0.2878886
+    #   D(3)   0.2627863 -> 0.2747858     beta(10.5) 0.3622593 -> 0.3561228 (monotone-projected as before)
+    #   D(4+)  0.3460005 -> 0.3972709     PhiStall(2.5) 0.5834703 -> 0.5792927
+    #   TAU_RHO 27.019054 -> 29.194254    B_RHO 0.8377678 -> 0.8015424   RMS 0.015333 -> 0.017369
+    O31_TAU_RHO=29.194253560287144; O31_B_RHO=0.8015424473253033
     # beta under the brief's EXPLICIT "pi decays in g" constraint: the monotone non-increasing projection
     # of the measured pooled curve. The projection deletes the measured 2.5->10.5 RISE, which 30B-C 4.3
     # measured paying 57 of 352 stall paths MORE pedigree for stalling. DISCLOSED, not hidden: the raw
     # measured value at 10.5 is 0.362259307264279 and this law carries 0.2968279384332228 there.
-    O31_BETA=((2.5,0.2968279384332228),(10.5,0.2968279384332228),(25.5,0.22329587551741345),
-              (53.0,0.15314862603013868),(85.5,0.020068021140596692))
+    # ORDER 31-F: re-measured on the head-fixed ruler. The raw measured value at 10.5 is 0.3561228 and
+    # this law carries 0.2878886 there -- the SAME deletion, disclosed exactly as before.
+    O31_BETA=((2.5,0.2878886216033701),(10.5,0.2878886216033701),(25.5,0.21772876584106796),
+              (53.0,0.14155152291809878),(85.5,0.023849021706229417))
     # PhiStall = beta_stall / beta_pooled at the five band midpoints (30B-C 3.2), the deep two ZERO-FLOORED
     # because t=-0.29 / -0.90 with CIs spanning zero, then made non-increasing.
-    O31_PHIST=((2.5,0.5834702550962193),(10.5,0.28802290519477386),(25.5,0.28802290519477386),
+    # ORDER 31-F: the 30B-C circularity harness re-run on the head-fixed ruler. The seat did NOT rely on
+    # the "the ratio is invariant because both coefficients move together" argument -- it MEASURED it, and
+    # the ratio in fact moved slightly MORE than the coefficients did (max |dPhiStall| 0.0102 against
+    # max |dbeta_stall| 0.0064). PHI_31F.json.
+    O31_PHIST=((2.5,0.5792926948039687),(10.5,0.298245232115451),(25.5,0.298245232115451),
                (53.0,0.0),(85.5,0.0))
     O31_PHI_RAMP=2.0                       # 30B-C's OWN continued-staller definition: two stall seasons
-    O31_SRC=('docs/evidence/candidate_31/LAW31.json / o31_fit.py; #334 comment 5310338355; '
-             'rho calibrated on the R1 re-derived cumulative backbone, pi pinned at D(c) at g=0 and '
-             'handing over to the measured beta as evidence accumulates')
+    O31_SRC=('docs/evidence/candidate_31f/LAW31F.json / o31f_fit.py; #334 comment 5310576233 (31-F), '
+             'superseding docs/evidence/candidate_31/LAW31.json; rho calibrated on the 31-F re-derived '
+             'cumulative backbone, pi pinned at D(c) at g=0 and handing over to the measured beta as '
+             'evidence accumulates. EVERY constant re-measured on the HEAD-FIXED v0 surface (R1).')
+    # ---- ORDER 31-F — THE SITTER FADE, RE-DERIVED ON THE HEAD-FIXED RULER ---------------------------
+    # The Step-2 wired row FADE30B_D above is the RULED row, measured on the PRE-head-fix v0s, and it is
+    # LEFT EXACTLY WHERE IT IS so that the dial-off board remains the Step-2 law and the head fix can be
+    # priced in isolation. THE ONE LAW USES ITS OWN, re-measured by o30a2_recut.py run WHOLE on the
+    # head-fixed surface (FADE_31F.json). Same construction, same listing reading (L-B outcome-blind
+    # floor), same owner rulings: the depth-4 > depth-3 SELECTION kink is kept unsmoothed and the deep end
+    # HOLDS FLAT at depth 4. Nothing is extrapolated.
+    O31_FADE_D={1:1.0,
+                2:0.5582775239783688,      # 31-F re-derived, listed-conditional (L-B), n=464
+                3:0.2747857941376827,      # 31-F re-derived, listed-conditional (L-B), n=100
+                4:0.39727085107749216}     # 31-F re-derived, listed-conditional (L-B), n=11 — the kink
+    O31_FADE_FLAT_FROM=4
+    def o31_fade_D(c):
+        """The 31-F sitter fade at continuous depth c. IDENTICAL RULE to fade30b_D — log-linear between
+        integer depths, 1.0 at/below depth 1, FLAT from depth 4 out — on the re-measured row."""
+        if c<=1.0: return 1.0
+        if c>=O31_FADE_FLAT_FROM: return O31_FADE_D[O31_FADE_FLAT_FROM]
+        _n=int(_math.floor(c)); _f=c-_n
+        _d0=O31_FADE_D[_n]; _d1=O31_FADE_D[_n+1]
+        if _f<=0.0: return _d0
+        return _math.exp((1.0-_f)*_math.log(_d0)+_f*_math.log(_d1))
     # ---- ORDER 31 STEP 2 — THE POOL FADE, DERIVED BY THE ND LAW'S OWN ESTIMATOR ---------------------
     # docs/evidence/candidate_31/o31_pool.py execs the 30A-2 harness VERBATIM to its surface builder and
     # rebuilds the population on the POOL pathways with the SIGNED pool v0 cell as the object. CONTROL:
@@ -3197,6 +3235,33 @@ if _O30B_PREVIEW:
     # AND is a fade (D <= 1)". Flagged on the packet as an OWED CONFIRMATION, not presented as ruled.
     O31_POOL_D={1:1.0,2:0.5545657072981915}
     O31_POOL_FLAT_FROM=2
+    # ---- ORDER 31-F F2 — beta_pool, DERIVED. The largest borrowing ORDER 31 left, closed. ----------
+    # docs/evidence/candidate_31f/o31f_pool.py transplants the 30B-M PANEL CONSTRUCTION to pool cohorts:
+    # the harness's own panel(nd_only=False) pool states, its own band_fit regression, its own games
+    # bands, its own H=6 horizon and its own player clustering. The ONE thing supplied is the v0 pool
+    # rows never had — MA.pool_v0_of, the accessor that HALTS on an unsigned cell. CONTROL: re-running
+    # band_fit on the ND panel reproduces the 31-F ND beta row at deviation 0.0.
+    #   MEASURED   2.5:0.3731(t 1.33) 10.5:0.3857(t 0.79) 25.5:1.0645(t 1.81) 53:1.7978(t 2.46) 85.5:1.9732(t 2.13)
+    # THE MEASURED CURVE RISES. Under the brief's EXPLICIT "pi decays in g" it takes the SAME monotone
+    # non-increasing projection the ND beta takes, which deletes the rise and leaves the row FLAT at the
+    # shallow-band value. THE DELETION IS LARGE AND IT IS DISCLOSED ON THE PACKET, with the reason: on
+    # pool rows v0 takes only ~54 distinct values (pathway x position), so inside a games band it acts as
+    # a pathway fixed effect rather than as pedigree, and the deep bands' "rise" is that identification
+    # failure, not persistence. The two SHALLOW bands — the ones that price beecken/madden/reidy/scerri —
+    # have t of 1.33 and 0.79: INDISTINGUISHABLE FROM ZERO, and that is on the packet too.
+    O31_BETA_POOL=((2.5,0.3730572000100778),(10.5,0.3730572000100778),(25.5,0.3730572000100778),
+                   (53.0,0.3730572000100778),(85.5,0.3730572000100778))
+    # Phi on pool rows: the brief's condition — "by the same construction if the pool panel supports it".
+    # IT DOES: every pool games band clears band_fit's own n>=40 floor, so this is POOL-MEASURED, not
+    # ND-borrowed. Same construction as the ND row: zero-floor, monotone, ratio to the wired beta_pool,
+    # clip to [0,1], monotone again. The stall coefficients' t are 0.61/0.07/1.31/1.74/0.39 — weak, and
+    # said so on the packet.
+    O31_PHIST_POOL=((2.5,0.21225409196511028),(10.5,0.03648485735530794),(25.5,0.03648485735530794),
+                    (53.0,0.03648485735530794),(85.5,0.036484857355307924))
+    # DECLARED, DEFAULT-OFF: price the beta_pool decision by REMOVING it (pool rows fall back to the ND
+    # beta and the ND PhiStall, i.e. exactly ORDER 31's behaviour), so its cost is a NUMBER, not a
+    # paragraph — the same discipline RL_O31_NOPHI applies to the stall conditioning.
+    _O31F_NOBPOOL=os.environ.get('RL_O31F_NOBPOOL','0')!='0'
     def o31_pool_D(c):
         if c<=1.0: return 1.0
         if c>=O31_POOL_FLAT_FROM: return O31_POOL_D[O31_POOL_FLAT_FROM]
@@ -3219,12 +3284,17 @@ if _O30B_PREVIEW:
         cohort's aggregate price matches the R1 cumulative backbone. Pure function of g."""
         g=float(g)
         return 0.0 if g<=0.0 else 1.0-_math.exp(-((g/O31_TAU_RHO)**O31_B_RHO))
-    def beta31(g):   return _o31_loglin(O31_BETA,g)
-    def phistall31(g): return _o31_loglin(O31_PHIST,g)
-    def phi31(g,s):
+    def beta31(g,pool=False):
+        """The measured additive pedigree coefficient. ORDER 31-F: pool rows take the POOL-DERIVED curve
+        (o31f_pool.py), ND rows the ND curve. One law still — the same expression, the row's own
+        measured coefficient. RL_O31F_NOBPOOL=1 restores ORDER 31's ND-borrowed behaviour."""
+        return _o31_loglin(O31_BETA_POOL if (pool and not _O31F_NOBPOOL) else O31_BETA,g)
+    def phistall31(g,pool=False):
+        return _o31_loglin(O31_PHIST_POOL if (pool and not _O31F_NOBPOOL) else O31_PHIST,g)
+    def phi31(g,s,pool=False):
         """THE 30B-C STALL CONDITIONING. Phi(g,0)=1 EXACTLY, so it cannot touch a gameless row."""
         if s<=0: return 1.0
-        return 1.0-(min(float(s),O31_PHI_RAMP)/O31_PHI_RAMP)*(1.0-phistall31(g))
+        return 1.0-(min(float(s),O31_PHI_RAMP)/O31_PHI_RAMP)*(1.0-phistall31(g,pool))
     def o31_played_units(p,Y):
         """Season-units in which the row PLAYED, on the same clock the fade uses: 1.0 per completed season,
         _fEy for the in-progress one."""
@@ -3244,7 +3314,7 @@ if _O30B_PREVIEW:
         every non-pool row (a BORROW for RD and pickless-ND rows, disclosed), and pool rows take the
         Step-2-derived pool schedule."""
         _cu=o31_cu(p,Y)
-        return (o31_pool_D(_cu) if p.get('_pool') else fade30b_D(_cu))
+        return (o31_pool_D(_cu) if p.get('_pool') else o31_fade_D(_cu))
     def o31_stall_run(p,Y):
         """s -- THE CURRENT STALL RUN: consecutive most-recent seasons the row PLAYED but did not DELIVER
         (delivered == games >= 10 AND avg >= his position's v0-language bar). A delivered season RESETS it.
@@ -3273,7 +3343,8 @@ if _O30B_PREVIEW:
         # pi(0,c,s) == D(c) true for EVERY s structurally rather than by an unreachable-state argument.
         # RL_O31_NOPHI=1 is a DECLARED, DEFAULT-OFF measurement dial that prices the conditioning by
         # removing it -- so the unconditioned alternative's cost is MEASURED, not argued.
-        return o31_D(p,Y)*(1.0-_r)+(1.0 if _O31_NOPHI else phi31(_g,o31_stall_run(p,Y)))*beta31(_g)*_r
+        _pl=bool(p.get('_pool'))
+        return o31_D(p,Y)*(1.0-_r)+(1.0 if _O31_NOPHI else phi31(_g,o31_stall_run(p,Y),_pl))*beta31(_g,_pl)*_r
     def _pv_order31(p,Y,e):
         """THE ONE LAW. One expression, every row, every pathway, every games count."""
         _g=pv_games(p,Y)

@@ -1,0 +1,360 @@
+======================================================================================================================
+ORDER 30B-C -- THE CIRCULARITY DECOMPOSITION.   READ-ONLY.  NOTHING WIRES.
+======================================================================================================================
+committed 30B-M harness md5 : e910fe6482ab7b05a92f18c173667073  (PINNED, asserted)
+layer1 md5                  : ad1229ea6f443538479447132382b21c
+v0 artifact md5             : ce86ce4baf4f81dfd1b1ecf2b22fe916
+board md5                   : 36d5dfc73e2b508ece530bc7dfae2090
+
+CONTROL -- panel re-derived: 4033 states over 767 careers
+committed PERSISTENCE_TABLE.json md5: ba3cc778b8a98da2571197a3f251b690
+  band 0-5    n  382  beta 0.28788862160337  (committed 0.28788862160337, dev 0.00e+00 ; sigma dev 0.00e+00)
+  band 6-15   n  591  beta 0.35612276591846  (committed 0.35612276591846, dev 0.00e+00 ; sigma dev 0.00e+00)
+  band 16-35  n  834  beta 0.21772876584107  (committed 0.21772876584107, dev 0.00e+00 ; sigma dev 0.00e+00)
+  band 36-70  n  887  beta 0.14155152291810  (committed 0.14155152291810, dev 0.00e+00 ; sigma dev 0.00e+00)
+  band 71+    n 1339  beta 0.02384902170623  (committed 0.02384902170623, dev 0.00e+00 ; sigma dev 0.00e+00)
+
+beta_wired(g) asserted against 4 committed resolved rows to 1e-12  (e.g. kako g=36 -> 0.186935)
+
+======================================================================================================================
+M0 -- THE CLASS MIX.  Who, sitting in a low/mid state, was about to play well?
+======================================================================================================================
+band     tier            n |   breakout slow-bloom       bust |    mean v0
+0-5      T1 1-20        89 |    15   17%    34   38%    40   45% |     1107.6
+0-5      T2 21-64      293 |    41   14%    51   17%   201   69% |      444.6
+0-5      BOTH          382 |    56 14.7%    85 22.3%   241 63.1% |      599.1   <== band total
+6-15     T1 1-20       187 |    75   40%    45   24%    67   36% |     1311.9
+6-15     T2 21-64      404 |    85   21%    64   16%   255   63% |      453.0
+6-15     BOTH          591 |   160 27.1%   109 18.4%   322 54.5% |      724.8   <== band total
+16-35    T1 1-20       335 |   169   50%    57   17%   109   33% |     1401.4
+16-35    T2 21-64      499 |   179   36%    55   11%   265   53% |      468.0
+16-35    BOTH          834 |   348 41.7%   112 13.4%   374 44.8% |      842.9   <== band total
+36-70    T1 1-20       389 |   270   69%    44   11%    75   19% |     1459.3
+36-70    T2 21-64      498 |   232   47%    51   10%   215   43% |      485.5
+36-70    BOTH          887 |   502 56.6%    95 10.7%   290 32.7% |      912.6   <== band total
+71+      T1 1-20       710 |   538   76%    29    4%   143   20% |     1593.5
+71+      T2 21-64      629 |   373   59%    21    3%   235   37% |      528.2
+71+      BOTH         1339 |   911 68.0%    50  3.7%   378 28.2% |     1093.1   <== band total
+
+======================================================================================================================
+M1 -- THE DELIVERY DECOMPOSITION.  beta_b = SUM_i c_i,  c_i = v0~_i * R_i / SUM v0~^2   (EXACT)
+======================================================================================================================
+  band 0-5     beta(FWL) 0.287888621603   beta(band_fit) 0.287888621603   |dev| 2.016e-13
+  band 6-15    beta(FWL) 0.356122765918   beta(band_fit) 0.356122765918   |dev| 3.270e-14
+  band 16-35   beta(FWL) 0.217728765841   beta(band_fit) 0.217728765841   |dev| 2.752e-13
+  band 36-70   beta(FWL) 0.141551522918   beta(band_fit) 0.141551522918   |dev| 1.466e-13
+  band 71+     beta(FWL) 0.023849021706   beta(band_fit) 0.023849021706   |dev| 3.863e-13
+  MAX identity deviation across the five bands: 3.863e-13
+
+band    tier      class           n  signed%   gross%  pts/state |   mean R6      p25      med      p75   zero% |   mean v0  mean v0~
+0-5     T1 1-20   breakout       15    61.4%    30.8%      105.9 |    1051.1    488.1    676.9   1127.9    0.0% |    1201.2     474.5
+0-5     T1 1-20   slow-bloom     34    51.0%    26.2%       87.9 |     445.1    198.3    344.0    576.4    0.0% |    1134.7     433.4
+0-5     T1 1-20   bust           40     1.9%     1.3%        3.3 |      42.4      0.8     13.1     39.7    7.5% |    1049.4     328.5
+0-5     T1 1-20   ALL            89   114.3%    58.3%      197.1 |     366.2     16.6    177.7    550.4    3.4% |    1107.6     393.2
+0-5     T2 21-64  breakout       41    -4.4%    23.1%       -7.6 |     933.4    381.8    637.3   1496.5    0.0% |     532.6     -59.7
+0-5     T2 21-64  slow-bloom     51   -10.7%    15.6%      -18.5 |     442.9    168.0    332.7    547.9    0.0% |     495.6    -122.3
+0-5     T2 21-64  bust          201     0.9%     3.0%        1.6 |      18.0      0.0      0.1      3.8   27.9% |     413.8    -130.9
+0-5     T2 21-64  ALL           293   -14.3%    41.7%      -24.6 |     220.1      0.0      3.2    218.1   19.1% |     444.6    -119.4
+
+6-15    T1 1-20   breakout       75   128.4%    58.3%      331.4 |    1251.8    628.0    961.3   1665.2    0.0% |    1464.0     560.4
+6-15    T1 1-20   slow-bloom     45    20.7%     9.6%       53.4 |     507.0    182.7    446.1    674.3    0.0% |    1286.0     414.8
+6-15    T1 1-20   bust           67     1.5%     0.7%        3.8 |      24.8      0.2      4.0     24.4    6.0% |    1159.0     439.3
+6-15    T1 1-20   ALL           187   150.5%    68.6%      388.6 |     633.0     15.5    300.7    858.3    2.1% |    1311.9     482.0
+6-15    T2 21-64  breakout       85   -30.8%    21.8%      -79.5 |     981.6    380.6    707.0   1354.6    0.0% |     515.6    -200.8
+6-15    T2 21-64  slow-bloom     64   -18.0%     8.7%      -46.4 |     463.9    171.8    318.8    607.9    0.0% |     447.7    -299.0
+6-15    T2 21-64  bust          255    -1.7%     0.9%       -4.5 |      15.7      0.0      0.2      7.2   22.0% |     433.5    -211.5
+6-15    T2 21-64  ALL           404   -50.5%    31.4%     -130.5 |     289.9      0.0     13.7    307.4   13.9% |     453.0    -223.1
+
+16-35   T1 1-20   breakout      169   203.5%    59.8%      373.4 |    1348.8    594.2   1069.5   1883.6    0.0% |    1538.5     430.2
+16-35   T1 1-20   slow-bloom     57    18.9%     6.1%       34.6 |     473.8    155.1    304.6    719.5    0.0% |    1360.4     311.9
+16-35   T1 1-20   bust          109     1.5%     0.4%        2.7 |      17.6      0.0      0.3     13.2   22.9% |    1210.0     493.5
+16-35   T1 1-20   ALL           335   223.8%    66.3%      410.7 |     766.8     21.2    437.6   1124.4    7.5% |    1401.4     430.7
+16-35   T2 21-64  breakout      179  -110.7%    30.3%     -203.1 |    1089.2    271.1    753.2   1528.5    0.0% |     533.5    -319.5
+16-35   T2 21-64  slow-bloom     55   -10.5%     2.7%      -19.4 |     347.0    163.4    286.3    438.3    0.0% |     457.1    -334.1
+16-35   T2 21-64  bust          265    -2.6%     0.8%       -4.7 |      20.6      0.0      1.7     19.2   23.0% |     426.0    -259.3
+16-35   T2 21-64  ALL           499  -123.8%    33.7%     -227.2 |     439.9      1.1     62.8    484.9   12.2% |     468.0    -289.1
+
+36-70   T1 1-20   breakout      270   395.3%    64.6%      510.6 |    1585.2    786.4   1271.9   2180.6    0.0% |    1561.1     390.3
+36-70   T1 1-20   slow-bloom     44     6.4%     1.3%        8.2 |     363.1    143.8    270.2    471.4    0.0% |    1184.6     206.6
+36-70   T1 1-20   bust           75     2.8%     0.3%        3.7 |      27.7      0.1      0.7     34.2   17.3% |    1253.9     486.4
+36-70   T1 1-20   ALL           389   404.5%    66.2%      522.5 |    1146.7    160.8    854.1   1654.6    3.3% |    1459.3     388.1
+36-70   T2 21-64  breakout      232  -285.9%    31.8%     -369.3 |    1271.3    345.4    778.0   1807.8    0.0% |     508.1    -378.4
+36-70   T2 21-64  slow-bloom     51   -16.8%     1.8%      -21.6 |     299.4     97.8    234.6    475.6    0.0% |     394.0    -431.4
+36-70   T2 21-64  bust          215    -1.8%     0.2%       -2.3 |      17.9      0.0      2.3     21.2   19.5% |     482.9    -191.5
+36-70   T2 21-64  ALL           498  -304.5%    33.8%     -393.3 |     630.6      6.7    159.6    753.0    8.4% |     485.5    -303.1
+
+71+     T1 1-20   breakout      538  1988.6%    61.5%      518.4 |    1554.1    590.8   1353.6   2198.0    0.0% |    1621.5     368.9
+71+     T1 1-20   slow-bloom     29    31.8%     0.9%        8.3 |     513.3    116.2    509.6    770.8    0.0% |    1414.2     355.2
+71+     T1 1-20   bust          143     6.0%     0.2%        1.6 |      15.1      0.0      2.6     21.2   21.7% |    1524.6     524.9
+71+     T1 1-20   ALL           710  2026.4%    62.6%      528.2 |    1201.6    141.4    873.9   1828.1    4.4% |    1593.5     399.8
+71+     T2 21-64  breakout      373 -1891.9%    36.6%     -493.2 |    1332.7    420.2   1002.2   1930.1    0.0% |     560.2    -536.9
+71+     T2 21-64  slow-bloom     21   -24.9%     0.5%       -6.5 |     443.4    159.9    260.8    352.0    0.0% |     580.3    -330.7
+71+     T2 21-64  bust          235    -9.6%     0.2%       -2.5 |      16.4      0.0      1.1     12.0   23.0% |     472.7    -326.1
+71+     T2 21-64  ALL           629 -1926.4%    37.4%     -502.2 |     811.2      6.2    315.7   1251.1    8.6% |     528.2    -451.3
+
+
+WITHIN-TIER GROSS MASS SHARE (each tier normalised to its own gross |c| total) -- the C3 lens:
+band    tier        breakout   slow-bloom       bust     tier n
+0-5     T1 1-20        52.8%        44.9%       2.3%         89
+0-5     T2 21-64       55.5%        37.4%       7.1%        293
+6-15    T1 1-20        85.0%        14.0%       1.0%        187
+6-15    T2 21-64       69.3%        27.8%       2.9%        404
+16-35   T1 1-20        90.2%         9.2%       0.6%        335
+16-35   T2 21-64       89.8%         7.9%       2.3%        499
+36-70   T1 1-20        97.5%         2.0%       0.5%        389
+36-70   T2 21-64       94.0%         5.3%       0.7%        498
+71+     T1 1-20        98.3%         1.5%       0.2%        710
+71+     T2 21-64       98.1%         1.4%       0.6%        629
+THIN CELLS (n<8, collapsed into their tier ALL row, disclosed): NONE
+
+POOLED LOW/MID (0-5, 6-15, 16-35; n=1807 states) -- gross beta-mass share vs population share,
+  n-weighted across the three bands (each band normalised to its own gross mass first):
+  class             mass%    states%
+  breakout          79.2%      31.2%
+  slow-bloom        18.9%      16.9%
+  bust               2.0%      51.9%
+
+======================================================================================================================
+M2 -- THE STALL-PERSISTENCE QUESTION.  What do CONTINUED STALLERS measure forward, and what does
+     the wired additive law pay them?   (continued staller = no delivered season at Y+1 or Y+2)
+======================================================================================================================
+band    tier      group              n  clust |   mean R6    median       p75     zero% |    law pays ped excess (90% CI)
+0-5     T1 1-20   breakout          15     15 |    1051.1     676.9    1127.9      0.0% |       366.4  +762.6 (+419..+1140)
+0-5     T1 1-20   cont. staller     74     67 |     227.4     108.8     319.3      4.1% |       334.8   -45.0 (-108..+20)
+0-5     T1 1-20     of which bust    40     34 |      42.4      13.1      39.7      7.5% |       322.0  -237.4 (-268..-207)
+0-5     T2 21-64  breakout          41     39 |     933.4     637.3    1496.5      0.0% |       164.4  +641.0 (+441..+827)
+0-5     T2 21-64  cont. staller    252    216 |     104.0       0.8      73.0     22.2% |       131.7  -136.5 (-162..-114)
+0-5     T2 21-64    of which bust   201    169 |      18.0       0.1       3.8     27.9% |       126.7  -212.1 (-225..-200)
+
+6-15    T1 1-20   breakout          75     70 |    1251.8     961.3    1665.2      0.0% |       483.3  +584.0 (+444..+752)
+6-15    T1 1-20   cont. staller    112     92 |     218.6      39.4     262.9      3.6% |       412.1  -181.1 (-242..-119)
+6-15    T1 1-20     of which bust    67     51 |      24.8       4.0      24.4      6.0% |       395.0  -300.1 (-345..-255)
+6-15    T2 21-64  breakout          85     78 |     981.6     707.0    1354.6      0.0% |       175.4  +486.0 (+370..+592)
+6-15    T2 21-64  cont. staller    319    234 |     105.6       1.1      56.3     17.6% |       147.4  -203.2 (-233..-167)
+6-15    T2 21-64    of which bust   255    180 |      15.7       0.2       7.2     22.0% |       146.4  -261.7 (-293..-230)
+
+16-35   T1 1-20   breakout         169    148 |    1348.8    1069.5    1883.6      0.0% |       361.0  +386.6 (+257..+502)
+16-35   T1 1-20   cont. staller    166    102 |     174.3      19.9     189.4     15.1% |       299.6  -293.6 (-362..-226)
+16-35   T1 1-20     of which bust   109     56 |      17.6       0.3      13.2     22.9% |       286.7  -283.7 (-345..-215)
+16-35   T2 21-64  breakout         179    148 |    1089.2     753.2    1528.5      0.0% |       122.7  +324.6 (+201..+460)
+16-35   T2 21-64  cont. staller    320    196 |      76.7       6.4      55.3     19.1% |       102.4  -233.4 (-275..-194)
+16-35   T2 21-64    of which bust   265    155 |      20.6       1.7      19.2     23.0% |       101.3  -238.3 (-281..-193)
+
+THE RE-PRICE -- continued stallers who played again at Y+2 (so a state exists there):
+band    tier          n |   g at Y g at Y+2      d g |   beta(Y) beta(Y+2)    ratio |    law(Y)  law(Y+2)
+0-5     T1 1-20      66 |      3.1     20.2     17.1 |    0.3083    0.2700    0.876 |     332.8     292.0   [median |dbeta|/beta 18.6%; beta ROSE for 20 of 66; mean R6 from Y+2 396.2 on n=56]
+0-5     T2 21-64    148 |      2.7     19.7     17.0 |    0.3061    0.2716    0.887 |     145.1     129.3   [median |dbeta|/beta 16.0%; beta ROSE for 50 of 148; mean R6 from Y+2 273.2 on n=126]
+6-15    T1 1-20      96 |      9.9     31.0     21.1 |    0.3394    0.2134    0.629 |     415.8     258.9   [median |dbeta|/beta 38.3%; beta ROSE for 1 of 96; mean R6 from Y+2 360.8 on n=84]
+6-15    T2 21-64    195 |     10.3     28.7     18.4 |    0.3373    0.2236    0.663 |     152.3     100.4   [median |dbeta|/beta 34.9%; beta ROSE for 7 of 195; mean R6 from Y+2 234.3 on n=171]
+16-35   T1 1-20     110 |     23.4     45.0     21.6 |    0.2395    0.1589    0.664 |     316.5     206.5   [median |dbeta|/beta 31.2%; beta ROSE for 0 of 110; mean R6 from Y+2 381.1 on n=93]
+16-35   T2 21-64    192 |     24.0     46.1     22.1 |    0.2361    0.1547    0.655 |     107.2      70.1   [median |dbeta|/beta 30.4%; beta ROSE for 0 of 192; mean R6 from Y+2 153.7 on n=169]
+
+THE PURE CASE -- continued stallers with FEWER THAN 10 GAMES TOTAL across Y+1 and Y+2
+(the games clock barely moves, so beta(g) cannot re-price them):
+band    tier          n |   g at Y g at Y+2 |   beta(Y) beta(Y+2)    ratio |      law(Y)    law(Y+2)   mean R6    med R6
+0-5     T1 1-20      20 |      2.8      6.9 |    0.3055    0.3355    1.098 |       335.1       364.0     133.4      79.1
+0-5     T2 21-64    145 |      2.8      5.3 |    0.3062    0.3220    1.052 |       129.0       136.6      36.4       0.0
+6-15    T1 1-20      26 |     10.2     15.2 |    0.3409    0.3008    0.882 |       403.2       348.6      47.8       0.6
+6-15    T2 21-64    167 |     10.6     13.6 |    0.3340    0.3113    0.932 |       139.4       129.7      20.9       0.0
+16-35   T1 1-20      69 |     24.5     27.5 |    0.2347    0.2196    0.936 |       281.2       263.9      23.9       0.0
+16-35   T2 21-64    137 |     23.2     25.7 |    0.2405    0.2280    0.948 |        98.4        93.0      27.2       0.0
+
+WHO COLLECTS -- inside the T1 (picks 1-20) continued-staller cohort, how concentrated is the
+realized value, and how many of them ever earn back even the law's pedigree top-up?
+band        n | top-10% R6 top-10% mass   R6 > law ped  R6 > 2x law ped
+0-5        74 |          7        36.9%          28.4%             8.1%
+6-15      112 |         11        48.6%          17.0%             8.9%
+16-35     166 |         17        57.3%          21.7%             9.6%
+
+BETA RE-FITTED ON THE STALL SUBPOPULATION (states whose Y+1 and Y+2 are both stall seasons).
+The committed band_fit refuses n<40; where it refuses, this order reports NO SIGNAL.
+band         n    clust  beta_stall        t     sigma         sigma 90% CI
+0-5        326      283     0.16677     3.54     73.2%      43.5% .. 109.7   %
+6-15       431      326     0.08586     2.11     40.6%       8.0% .. 72.5    %
+16-35      486      298     0.08159     2.71     53.0%      28.4% .. 86.9    %
+36-70      385      198    -0.00536    -0.23     -3.9%     -35.0% .. 28.2    %
+71+        428      164    -0.01132    -0.76    -14.3%     -45.8% .. 24.8    %
+
+BETA RE-FITTED ON THE BREAKOUT SUBPOPULATION (contrast; same fitter, same rule):
+0-5         56       54     0.68099     2.41     50.2%
+6-15       160      148     0.29488     2.95     25.5%
+16-35      348      296     0.17743     2.09     14.9%
+36-70      502      295     0.11780     1.44      8.8%
+71+        911      231     0.05564     0.94      4.5%
+
+======================================================================================================================
+M3 -- THE WIRED LAW ALONG HISTORICAL STALL PATHS (picks 1-20, low/mid states, k>=2 stall seasons)
+======================================================================================================================
+T1 (picks 1-20) low/mid states with k>=2 consecutive stall seasons: 352 paths over 159 careers
+
+THE GAP PATH, aggregated over those paths (mean over paths that reach step t):
+step t      n     mean g   beta_wired    cohort beta     law pays  cohort says |   GAP (pts)  law/coh   GAP@coh>=0
+0         352       15.1       0.2847         0.1009        342.8        119.8 |      +223.0    2.86x       +223.0
+1         352       23.5       0.2486         0.0737        296.3         86.2 |      +210.1    3.44x       +208.9
+2         352       31.6       0.2137         0.0526        253.3         60.1 |      +193.2    4.21x       +190.6
+3         285       36.7       0.1917         0.0449        221.6         50.8 |      +170.8    4.37x       +167.4
+4         254       39.6       0.1814         0.0432        208.2         48.7 |      +159.5    4.28x       +155.7
+
+NAMED HISTORICAL STALL PATHS -- the law's pedigree pay year by year against what the stall cohort
+measured from the same state, and what the player actually went on to deliver.
+Selection rule (fixed, mechanical): the 10 longest/highest-pedigree BUST paths, then the 6 paths with
+the LARGEST realized R6 from the state -- the stallers who DID eventually collect.
+
+  Jonathan O Rourke      pick  2 MID   v0  2869.2  state 2013 (age 19, 1 games)  class=bust  k=6  R6 at state 0.2
+     year    games    cum g  beta(g)    LAW PAYS  cohort says          GAP realized R6      law/R6
+     2013        1      1.0   0.2968       851.6        478.5       +373.2         0.2          -
+     2014        8      9.0   0.3546      1017.4        246.4       +771.0         0.2          -
+     2015        2     11.0   0.3532      1013.3        246.4       +767.0         0.0          -
+     2016        7     18.0   0.2700       774.7        234.1       +540.6         0.0          -
+     2017        0     18.0   0.2700       774.7        234.1       +540.6         0.0          -
+     2018        3     21.0   0.2482       712.2        234.1       +478.1         0.0          -
+     2019        0     21.0   0.2482       712.2        234.1       +478.1         0.0          -
+
+  Paddy Dow              pick  3 MID   v0  2729.0  state 2018 (age 19, 20 games)  class=bust  k=6  R6 at state 1.3
+     year    games    cum g  beta(g)    LAW PAYS  cohort says          GAP realized R6      law/R6
+     2018       20     20.0   0.2549       695.7        222.7       +473.0         1.3     523.97x
+     2019       19     39.0   0.1794       489.5        -14.6       +504.2         0.6          -
+     2020        3     42.0   0.1727       471.2        -14.6       +485.8   censored          -
+     2021       17     59.0   0.0971       265.0        -14.6       +279.6   censored          -
+     2022        4     63.0   0.0735       200.5        -14.6       +215.1   censored          -
+     2023       10     73.0   0.0393       107.2        -30.9       +138.1   censored          -
+     2024       10     83.0   0.0228        62.1        -30.9        +93.0   censored          -
+
+  Xavier Ellis           pick  3 SD    v0  2729.0  state 2007 (age 19, 13 games)  class=bust  k=6  R6 at state 167.4
+     year    games    cum g  beta(g)    LAW PAYS  cohort says          GAP realized R6      law/R6
+     2007       13     13.0   0.3224       879.9        234.3       +645.6       167.4       5.26x
+     2008       21     34.0   0.1925       525.4        222.7       +302.7       159.0       3.30x
+     2009       11     45.0   0.1666       454.7        -14.6       +469.3       141.4       3.22x
+     2010       22     67.0   0.0566       154.3        -14.6       +169.0       115.4       1.34x
+     2011        8     75.0   0.0350        95.6        -30.9       +126.5         2.6      36.12x
+     2012        3     78.0   0.0296        80.9        -30.9       +111.8         2.8      28.75x
+     2013        2     80.0   0.0266        72.6        -30.9       +103.5         3.2      22.64x
+
+  Anthony Morabito       pick  4 MID   v0  2479.3  state 2010 (age 19, 23 games)  class=bust  k=6  R6 at state 0.0
+     year    games    cum g  beta(g)    LAW PAYS  cohort says          GAP realized R6      law/R6
+     2010       23     23.0   0.2362       585.7        202.3       +383.4         0.0          -
+     2011        0     23.0   0.2362       585.7        202.3       +383.4         0.0          -
+     2012        0     23.0   0.2362       585.7        202.3       +383.4         0.0          -
+     2013        0     23.0   0.2362       585.7        202.3       +383.4         0.0          -
+     2014        3     26.0   0.2211       548.1        202.3       +345.8         0.0          -
+     2015        0     26.0   0.2211       548.1        202.3       +345.8         0.0          -
+     2016        0     26.0   0.2211       548.1        202.3       +345.8         0.0          -
+
+  Josh Schache           pick  2 KPF   v0  2180.0  state 2016 (age 19, 17 games)  class=bust  k=6  R6 at state 8.3
+     year    games    cum g  beta(g)    LAW PAYS  cohort says          GAP realized R6      law/R6
+     2016       17     17.0   0.2786       607.3        177.9       +429.4         8.3      72.78x
+     2017       10     27.0   0.2168       472.7        177.9       +294.8         9.4      50.04x
+     2018       13     40.0   0.1771       386.0        -11.7       +397.7         8.8      43.71x
+     2019       14     54.0   0.1415       308.4        -11.7       +320.1         2.0     156.30x
+     2020        2     56.0   0.1212       264.2        -11.7       +275.9   censored          -
+     2021        9     65.0   0.0643       140.2        -11.7       +151.9   censored          -
+     2022        7     72.0   0.0417        90.8        -24.7       +115.5   censored          -
+
+  Jarrod Pickett         pick  5 SF    v0  2061.9  state 2017 (age 21, 10 games)  class=bust  k=6  R6 at state 0.0
+     year    games    cum g  beta(g)    LAW PAYS  cohort says          GAP realized R6      law/R6
+     2017       10     10.0   0.3598       741.9        177.0       +564.9         0.0          -
+     2018        7     17.0   0.2786       574.4        168.2       +406.1         0.0          -
+     2019        0     17.0   0.2786       574.4        168.2       +406.1         0.0          -
+     2020        0     17.0   0.2786       574.4        168.2       +406.1   censored          -
+     2021        0     17.0   0.2786       574.4        168.2       +406.1   censored          -
+     2022        0     17.0   0.2786       574.4        168.2       +406.1   censored          -
+     2023        0     17.0   0.2786       574.4        168.2       +406.1   censored          -
+
+  Scott Gumbleton        pick  3 KPF   v0  2035.4  state 2007 (age 19, 5 games)  class=bust  k=6  R6 at state 10.5
+     year    games    cum g  beta(g)    LAW PAYS  cohort says          GAP realized R6      law/R6
+     2007        5      5.0   0.3268       665.2        339.4       +325.7        10.5      63.10x
+     2008        0      5.0   0.3268       665.2        339.4       +325.7        12.0      55.35x
+     2009        0      5.0   0.3268       665.2        339.4       +325.7        13.7      48.55x
+     2010       17     22.0   0.2420       492.6        166.1       +326.5        13.2      37.20x
+     2011        0     22.0   0.2420       492.6        166.1       +326.5        15.1      32.63x
+     2012        6     28.0   0.2128       433.1        166.1       +267.0        10.0      43.20x
+     2013        7     35.0   0.1897       386.0        166.1       +220.0         0.0          -
+
+  Jimmy Toumpas          pick  6 MID   v0  1578.6  state 2013 (age 19, 14 games)  class=bust  k=6  R6 at state 1.0
+     year    games    cum g  beta(g)    LAW PAYS  cohort says          GAP realized R6      law/R6
+     2013       14     14.0   0.3097       488.8        135.5       +353.3         1.0          -
+     2014        4     18.0   0.2700       426.2        128.8       +297.4         1.0     409.93x
+     2015        9     27.0   0.2168       342.3        128.8       +213.5         0.5          -
+     2016        8     35.0   0.1897       299.4        128.8       +170.6         0.0          -
+     2017        2     37.0   0.1843       291.0         -8.5       +299.4         0.0          -
+     2018        0     37.0   0.1843       291.0         -8.5       +299.4         0.0          -
+     2019        0     37.0   0.1843       291.0         -8.5       +299.4         0.0          -
+
+  Jarrad Oakley Nicholls pick  8 MID   v0  1576.7  state 2006 (age 18, 4 games)  class=bust  k=6  R6 at state 0.0
+     year    games    cum g  beta(g)    LAW PAYS  cohort says          GAP realized R6      law/R6
+     2006        4      4.0   0.3168       499.5        262.9       +236.6         0.0          -
+     2007        3      7.0   0.3424       539.9        135.4       +404.5         0.0          -
+     2008        2      9.0   0.3546       559.1        135.4       +423.7         0.0          -
+     2009        4     13.0   0.3224       508.4        135.4       +373.0         0.0          -
+     2010        0     13.0   0.3224       508.4        135.4       +373.0         0.0          -
+     2011        0     13.0   0.3224       508.4        135.4       +373.0         0.0          -
+     2012        0     13.0   0.3224       508.4        135.4       +373.0         0.0          -
+
+  Chayce Jones           pick  9 MID   v0  1575.7  state 2019 (age 19, 8 games)  class=bust  k=6  R6 at state 22.8
+     year    games    cum g  beta(g)    LAW PAYS  cohort says          GAP realized R6      law/R6
+     2019        8      8.0   0.3488       549.7        135.3       +414.4        22.8      24.07x
+     2020       15     23.0   0.2362       372.2        128.6       +243.6   censored          -
+     2021       15     38.0   0.1818       286.5         -8.4       +294.9   censored          -
+     2022       20     58.0   0.1044       164.5         -8.4       +173.0   censored          -
+     2023       18     76.0   0.0331        52.2        -17.8        +70.0   censored          -
+     2024       16     92.0   0.0201        31.6        -17.8        +49.5   censored          -
+     2025        5     97.0   0.0201        31.6        -17.8        +49.5   censored          -
+
+  ----------------------------------------------------------------------------------------------------
+  THE VINDICATED -- players who stalled >= 2 seasons from a low/mid state and still delivered:
+  ----------------------------------------------------------------------------------------------------
+
+  Callum Mills           pick  3 MID   v0  2729.0  state 2016 (age 19, 22 games)  class=slow-bloom  k=2  R6 at state 1839.1
+     year    games    cum g  beta(g)    LAW PAYS  cohort says          GAP realized R6      law/R6
+     2016       22     22.0   0.2420       660.5        222.7       +437.8      1839.1       0.36x
+     2017       24     46.0   0.1647       449.6        -14.6       +464.2      2191.5       0.21x
+     2018        9     55.0   0.1308       357.1        -14.6       +371.7      2389.6       0.15x
+
+  Luke Davies Uniacke    pick  4 MID   v0  2479.3  state 2018 (age 19, 7 games)  class=slow-bloom  k=2  R6 at state 1839.0
+     year    games    cum g  beta(g)    LAW PAYS  cohort says          GAP realized R6      law/R6
+     2018        7      7.0   0.3424       849.0        212.9       +636.1      1839.0       0.46x
+     2019       14     21.0   0.2482       615.5        202.3       +413.2      2356.9       0.26x
+     2020        9     30.0   0.2054       509.1        202.3       +306.8   censored          -
+
+  Taylor Adams           pick 19 SF    v0   924.7  state 2012 (age 19, 15 games)  class=slow-bloom  k=2  R6 at state 1729.0
+     year    games    cum g  beta(g)    LAW PAYS  cohort says          GAP realized R6      law/R6
+     2012       15     15.0   0.2982       275.8         79.4       +196.4      1729.0       0.16x
+     2013       16     31.0   0.2019       186.7         75.4       +111.3      2167.3       0.09x
+     2014       12     43.0   0.1706       157.7         -5.0       +162.7      2903.3       0.05x
+
+  Callan Ward            pick 19 SD    v0   924.7  state 2008 (age 19, 6 games)  class=slow-bloom  k=2  R6 at state 1535.4
+     year    games    cum g  beta(g)    LAW PAYS  cohort says          GAP realized R6      law/R6
+     2008        6      6.0   0.3352       309.9         79.4       +230.5      1535.4       0.20x
+     2009       22     28.0   0.2128       196.8         75.4       +121.3      2122.3       0.09x
+     2010       10     38.0   0.1818       168.1         -5.0       +173.1      2715.9       0.06x
+
+  Ben Mcevoy             pick  9 KPF   v0  1253.0  state 2008 (age 19, 1 games)  class=slow-bloom  k=2  R6 at state 1426.8
+     year    games    cum g  beta(g)    LAW PAYS  cohort says          GAP realized R6      law/R6
+     2008        1      1.0   0.2968       371.9        209.0       +163.0      1426.8       0.26x
+     2009       11     12.0   0.3368       422.0        107.6       +314.5      1712.5       0.25x
+     2010       19     31.0   0.2019       253.0        102.2       +150.8      1954.3       0.13x
+
+  Bradley Ebert          pick 13 MID   v0  1444.8  state 2009 (age 20, 32 games)  class=slow-bloom  k=2  R6 at state 1300.2
+     year    games    cum g  beta(g)    LAW PAYS  cohort says          GAP realized R6      law/R6
+     2009       17     32.0   0.1986       287.0        117.9       +169.1      1300.2       0.22x
+     2010       22     54.0   0.1415       204.4         -7.7       +212.1      1526.1       0.13x
+     2011       22     76.0   0.0331        47.8        -16.4        +64.2      2024.1       0.02x
+
+PATHS WHERE THE WIRED LAW PAID **MORE** PEDIGREE AFTER A STALLED SEASON: 57 of 352
+   Jed Anderson           pick 16  g 5 -> 9   law 312.3 -> 338.9  (+26.6)
+   Jye Caldwell           pick 11  g 2 -> 11   law 467.1 -> 555.8  (+88.7)
+   Aiden Bonar            pick 11  g 4 -> 6   law 498.6 -> 527.5  (+28.9)
+   Aiden Bonar            pick 11  g 6 -> 12   law 527.5 -> 530.0  (+2.6)
+   Jarrod Brander         pick 13  g 1 -> 3   law 303.2 -> 311.0  (+7.8)
+   Jarrod Brander         pick 13  g 3 -> 11   law 311.0 -> 360.8  (+49.8)
+   Brandon Starcevich     pick 18  g 4 -> 5   law 273.1 -> 281.6  (+8.6)
+   Callum Coleman Jones   pick 20  g 1 -> 9   law 215.4 -> 257.4  (+41.9)
+
+C8 -- THE STRONG FORM: law pedigree leg vs the WHOLE realized R6, T1 continued stallers:
+band        n   mean law ped        mean R6    ratio
+0-5        74          334.8          227.4     1.47
+6-15      112          412.1          218.6     1.89
+16-35     166          299.6          174.3     1.72
+
+wrote /home/user/afl-rl-engine/.claude/worktrees/agent-a8ab36345dce038ee/docs/evidence/candidate_31f/CIRCULARITY_31F.json
+wrote /home/user/afl-rl-engine/.claude/worktrees/agent-a8ab36345dce038ee/docs/evidence/candidate_31f/CIRC_31F_out.txt

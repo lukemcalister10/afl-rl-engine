@@ -1,0 +1,40 @@
+ORDER 31-F  F1(b) -- THE SITTER FADE + THE R1 BACKBONE, RE-DERIVED ON THE HEAD-FIXED v0 SURFACE
+  instrument      docs/evidence/sitter_fade_2026-08-14/o30a2_recut.py
+  committed md5   fe6f436ab23056d717f693091946309a
+  as-run md5      7eaab55cb0b8a9c4aac25ada8680f4bd
+  THE ONLY EDIT   'OUTD = HERE'  ->  "OUTD = '/home/user/afl-rl-engine/.claude/worktrees/agent-a8ab36345dce038ee/docs/evidence/candidate_31f'"     (output directory only; no estimator touched)
+  artifact        engine/rl_after/pvc_curve_v2.json  md5 78ad9842525ae4f09875b95afc2e2b39   <-- HEAD-FIXED (F1)
+
+  instrument ran clean; its full console is RECUT30A2_31F_console.txt (419 lines)
+
+THE FADE, THREE RULERS SIDE BY SIDE  (D = mean(V_from_N/v0) / RAW(1), L-B outcome-blind floor)
+  depth        n        29B v0s   R1 / 30B v0s 31-F HEAD-FIXED  drift vs R1
+  1         1142      1.0000000      1.0000000      1.0000000   +0.0000000
+  2          464      0.5683750      0.5501936      0.5582775   +0.0080839
+  3          100      0.3599786      0.2627863      0.2747858   +0.0119995
+  4           11      0.3072515      0.3460005      0.3972709   +0.0512704
+  5            2      0.5361789      0.5414918      0.7022600   +0.1607682
+  6            1      1.0215534      1.0342128      1.4081109   +0.3738981
+  RAW(1) normaliser   R1 1.020106  ->  31-F 0.995498   (-2.412%)
+
+THE WIRED ROW, BY THE OWNER'S OWN RULES (#334 c.5292534855 -- no new rule is made here)
+  D(2) = 0.5582775239783688      ruled 0.5501935857356868      drift +0.0080839
+  D(3) = 0.2747857941376827      ruled 0.2627862982361016      drift +0.0119995
+  D(4) = 0.3972708510774922      ruled 0.3460004697526451      drift +0.0512704
+  D(4+) HOLDS FLAT at 0.3972708510774922   -- the amendment that retired extrapolation through a selection kink
+
+THE RULED PROPERTIES (prereg F10 -- THE STOP CONDITION)
+  0 < D <= 1 at every wired depth ............ PASS
+  depth 2 is still a fade .................... PASS
+  the ruled depth-4 > depth-3 kink SURVIVES .. YES
+  max |drift| vs the ruled row ............... 0.0512704
+
+THE R1 CUMULATIVE BACKBONE  B(<= k games by depth 2), RE-DERIVED  (the object rho is calibrated on)
+  <= games         n   R1 / 30B v0s 31-F HEAD-FIXED        drift
+  <= 0           464      0.5501936      0.5582775   +0.0080839
+  <= 2           597      0.6484752      0.6591973   +0.0107221
+  <= 5           742      0.6886678      0.6896771   +0.0010093
+  <= 10          903      0.8222841      0.8204557   -0.0018284
+  THE BACKBONE'S OWN COHERENCE: B(<=0) must equal D(2) exactly (the RAW(1) normalisation)
+    B(<=0) 0.5582775239783694    D(2) 0.5582775239783688    |diff| 5.551e-16
+
