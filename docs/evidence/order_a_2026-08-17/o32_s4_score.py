@@ -27,7 +27,7 @@ def md5f(p):
             h.update(c)
     return h.hexdigest()
 
-C32_P = SP + '/per_entrant_O32FINAL.json'
+C32_P = SP + '/per_entrant_O32RFINAL.json'
 BASE_P = SP + '/per_entrant_O31FFINAL.json'
 C32 = json.load(open(C32_P)); BASE = json.load(open(BASE_P))
 P('ORDER A / CANDIDATE 32 — S4 rescore controls')
@@ -46,7 +46,7 @@ S4_SRC = os.path.join(S4DIR, 's4_shootout.py')
 _txt = open(S4_SRC).read()
 S4_MD5 = hashlib.md5(_txt.encode()).hexdigest()
 SUBS = [
-    ("CAND_P = SP + '/per_entrant_O31FFINAL.json'", "CAND_P = SP + '/per_entrant_O32FINAL.json'"),
+    ("CAND_P = SP + '/per_entrant_O31FFINAL.json'", "CAND_P = SP + '/per_entrant_O32RFINAL.json'"),
     ("with open(os.path.join(HERE, 'RESULTS_S4.json'), 'w') as f:",
      "with open(%r, 'w') as f:" % os.path.join(HERE, 'RESULTS_S4_32.json')),
 ]

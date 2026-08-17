@@ -1,13 +1,23 @@
 {
- "c32_matrix_md5": "c775d6c76b0955612849eb0be6c60d2f",
+ "c32_matrix_md5": "44a55fcf171cdca737e413bf2a288569",
  "early_wins_retained": [
   4,
   4
  ],
  "instrument": "order32_s4_2026-08-17/s4_shootout.py",
  "instrument_md5": "241842f61ddd3c486f04f201a7efcce9",
- "median_recovery_oldlaw_cells": 0.48348423876592905,
+ "median_recovery_oldlaw_cells": 0.5136212008895462,
  "oldlaw_cells_flipped": [
+  [
+   4,
+   "dv1",
+   "tie"
+  ],
+  [
+   4,
+   "dvrest",
+   "tie"
+  ],
   [
    6,
    "dv1",
@@ -19,216 +29,216 @@
   {
    "N": 1,
    "c32_ci": [
-    0.0662,
-    0.1001
+    0.0696,
+    0.1068
    ],
-   "c32_delta": 0.0821,
+   "c32_delta": 0.0872,
    "c32_verdict": "candidate",
    "hz": "dv1",
    "m2_c32": "tie",
    "m2_s4": "tie",
    "n": 1201,
-   "recovery": 0.03297997644287427,
+   "recovery": -0.025912838633686458,
    "rho_c31": 0.5698,
-   "rho_c32": 0.567,
+   "rho_c32": 0.572,
    "rho_old": 0.4849,
    "s4_verdict": "candidate"
   },
   {
    "N": 1,
    "c32_ci": [
-    0.0322,
-    0.0647
+    0.0306,
+    0.0663
    ],
-   "c32_delta": 0.0483,
+   "c32_delta": 0.0485,
    "c32_verdict": "candidate",
    "hz": "dvrest",
-   "m2_c32": "candidate",
+   "m2_c32": "tie",
    "m2_s4": "tie",
    "n": 1201,
-   "recovery": 0.0020661157024791112,
+   "recovery": -0.0020661157024791112,
    "rho_c31": 0.5763,
-   "rho_c32": 0.5762,
+   "rho_c32": 0.5764,
    "rho_old": 0.5279,
    "s4_verdict": "candidate"
   },
   {
    "N": 2,
    "c32_ci": [
-    0.0312,
-    0.0668
+    0.0222,
+    0.0598
    ],
-   "c32_delta": 0.0488,
+   "c32_delta": 0.0407,
    "c32_verdict": "candidate",
    "hz": "dv1",
    "m2_c32": "candidate",
    "m2_s4": "candidate",
    "n": 1137,
-   "recovery": -0.14823529411764647,
+   "recovery": 0.04235294117647117,
    "rho_c31": 0.6681,
-   "rho_c32": 0.6744,
+   "rho_c32": 0.6663,
    "rho_old": 0.6256,
    "s4_verdict": "candidate"
   },
   {
    "N": 2,
    "c32_ci": [
-    0.0238,
-    0.0595
+    0.0175,
+    0.0555
    ],
-   "c32_delta": 0.0416,
+   "c32_delta": 0.0366,
    "c32_verdict": "candidate",
    "hz": "dvrest",
    "m2_c32": "candidate",
    "m2_s4": "candidate",
    "n": 1137,
-   "recovery": -0.23738872403560807,
+   "recovery": -0.08605341246290826,
    "rho_c31": 0.6772,
-   "rho_c32": 0.6852,
+   "rho_c32": 0.6801,
    "rho_old": 0.6435,
    "s4_verdict": "candidate"
   },
   {
    "N": 3,
    "c32_ci": [
-    0.0081,
-    0.032
+    0.0052,
+    0.0299
    ],
-   "c32_delta": 0.0202,
+   "c32_delta": 0.0175,
    "c32_verdict": "candidate",
    "hz": "dv1",
    "m2_c32": "candidate",
    "m2_s4": "candidate",
    "n": 955,
-   "recovery": -0.7565217391304413,
+   "recovery": -0.5217391304347851,
    "rho_c31": 0.6767,
-   "rho_c32": 0.6854,
+   "rho_c32": 0.6827,
    "rho_old": 0.6652,
    "s4_verdict": "tie"
   },
   {
    "N": 3,
    "c32_ci": [
-    0.0013,
-    0.0259
+    -0.0004,
+    0.0258
    ],
-   "c32_delta": 0.0132,
-   "c32_verdict": "candidate",
+   "c32_delta": 0.0126,
+   "c32_verdict": "tie",
    "hz": "dvrest",
    "m2_c32": "candidate",
    "m2_s4": "candidate",
    "n": 955,
-   "recovery": 6.076923076922982,
+   "recovery": 5.84615384615378,
    "rho_c31": 0.689,
-   "rho_c32": 0.7048,
+   "rho_c32": 0.7042,
    "rho_old": 0.6916,
    "s4_verdict": "tie"
   },
   {
    "N": 4,
    "c32_ci": [
-    -0.0161,
-    -0.0004
+    -0.0149,
+    0.0006
    ],
-   "c32_delta": -0.0082,
-   "c32_verdict": "oldlaw",
+   "c32_delta": -0.007,
+   "c32_verdict": "tie",
    "hz": "dv1",
    "m2_c32": "tie",
    "m2_s4": "tie",
    "n": 807,
-   "recovery": 0.5879396984924636,
+   "recovery": 0.6482412060301509,
    "rho_c31": 0.6814,
-   "rho_c32": 0.6931,
+   "rho_c32": 0.6943,
    "rho_old": 0.7013,
    "s4_verdict": "oldlaw"
   },
   {
    "N": 4,
    "c32_ci": [
-    -0.016,
-    -0.0007
+    -0.0147,
+    0.0005
    ],
-   "c32_delta": -0.0083,
-   "c32_verdict": "oldlaw",
+   "c32_delta": -0.007,
+   "c32_verdict": "tie",
    "hz": "dvrest",
    "m2_c32": "tie",
    "m2_s4": "oldlaw",
    "n": 807,
-   "recovery": 0.6391304347826084,
+   "recovery": 0.691304347826086,
    "rho_c31": 0.7285,
-   "rho_c32": 0.7432,
+   "rho_c32": 0.7444,
    "rho_old": 0.7515,
    "s4_verdict": "oldlaw"
   },
   {
    "N": 5,
    "c32_ci": [
-    -0.0137,
-    -0.0011
+    -0.0134,
+    -0.0005
    ],
-   "c32_delta": -0.0074,
+   "c32_delta": -0.0069,
    "c32_verdict": "oldlaw",
    "hz": "dv1",
    "m2_c32": "tie",
    "m2_s4": "tie",
    "n": 680,
-   "recovery": 0.478873239436622,
+   "recovery": 0.514084507042252,
    "rho_c31": 0.7035,
-   "rho_c32": 0.7103,
+   "rho_c32": 0.7108,
    "rho_old": 0.7177,
    "s4_verdict": "oldlaw"
   },
   {
    "N": 5,
    "c32_ci": [
-    -0.015,
-    -0.0025
+    -0.0148,
+    -0.0019
    ],
-   "c32_delta": -0.0086,
+   "c32_delta": -0.0082,
    "c32_verdict": "oldlaw",
    "hz": "dvrest",
    "m2_c32": "oldlaw",
    "m2_s4": "oldlaw",
    "n": 680,
-   "recovery": 0.48809523809523614,
+   "recovery": 0.5119047619047639,
    "rho_c31": 0.7483,
-   "rho_c32": 0.7565,
+   "rho_c32": 0.7569,
    "rho_old": 0.7651,
    "s4_verdict": "oldlaw"
   },
   {
    "N": 6,
    "c32_ci": [
-    -0.0097,
-    0.0011
+    -0.0093,
+    0.0018
    ],
-   "c32_delta": -0.0043,
+   "c32_delta": -0.0037,
    "c32_verdict": "tie",
    "hz": "dv1",
-   "m2_c32": "oldlaw",
+   "m2_c32": "tie",
    "m2_s4": "tie",
    "n": 574,
-   "recovery": 0.43421052631578255,
+   "recovery": 0.5131578947368406,
    "rho_c31": 0.7258,
-   "rho_c32": 0.7291,
+   "rho_c32": 0.7297,
    "rho_old": 0.7334,
    "s4_verdict": "oldlaw"
   },
   {
    "N": 6,
    "c32_ci": [
-    -0.0118,
-    -0.0019
+    -0.0113,
+    -0.0013
    ],
-   "c32_delta": -0.0068,
+   "c32_delta": -0.0062,
    "c32_verdict": "oldlaw",
    "hz": "dvrest",
-   "m2_c32": "oldlaw",
+   "m2_c32": "tie",
    "m2_s4": "tie",
    "n": 574,
-   "recovery": 0.33980582524271413,
+   "recovery": 0.3980582524271847,
    "rho_c31": 0.7909,
-   "rho_c32": 0.7944,
+   "rho_c32": 0.795,
    "rho_old": 0.8012,
    "s4_verdict": "oldlaw"
   }
@@ -236,7 +246,7 @@
  "substitutions": [
   {
    "from": "CAND_P = SP + '/per_entrant_O31FFINAL.json'",
-   "to": "CAND_P = SP + '/per_entrant_O32FINAL.json'"
+   "to": "CAND_P = SP + '/per_entrant_O32RFINAL.json'"
   },
   {
    "from": "with open(os.path.join(HERE, 'RESULTS_S4.json'), 'w') as f:",

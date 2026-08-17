@@ -1,0 +1,131 @@
+ORDER A REPAIR — R2 RESIDUAL ATTRIBUTION (repaired matrix 44a55fcf, classes 2005-2021)
+The question: the year-1 class prices ~6 points below its fair level. WHERE does the missing
+value sit? Each cell is judged against its own fair benchmark, never a class average.
+
+--- residual by pick band (mark = year-1 price / entry price; fair = 1.14 x (1 - year-1 delivered share)) ---
+  pick band           n  entry pts     mark     fair      gap
+  1-10              170     329670    1.026    1.120   -0.094
+  11-20             170     170328    1.088    1.111   -0.023
+  21-30             170     114301    1.053    1.124   -0.071
+  31-40             170      93298    0.903    1.103   -0.199
+  41-64             399     112085    0.974    1.107   -0.133
+  axis gap range: 0.177 (min -0.199, max -0.023) — NOT flat — concentration on this axis
+
+--- residual by age at draft (mark = year-1 price / entry price; fair = 1.14 x (1 - year-1 delivered share)) ---
+  age at draft        n  entry pts     mark     fair      gap
+  17                 93      64206    0.870    1.134   -0.264
+  18               1401     827351    1.024    1.122   -0.097
+  19                167      51353    0.989    1.129   -0.140
+  20                 80      21265    1.323    1.074   +0.249
+  21+               245      60690    1.099    0.991   +0.108
+  axis gap range: 0.513 (min -0.264, max +0.249) — NOT flat — concentration on this axis
+
+--- residual by position group (mark = year-1 price / entry price; fair = 1.14 x (1 - year-1 delivered share)) ---
+  position group      n  entry pts     mark     fair      gap
+  RUCK              160      82431    0.705    1.136   -0.431
+  SMALL            1400     743096    1.058    1.107   -0.049
+  TALL              426     199338    1.026    1.086   -0.059
+  axis gap range: 0.382 (min -0.431, max -0.049) — NOT flat — concentration on this axis
+
+--- residual by pathway (mark = year-1 price / entry price; fair = 1.14 x (1 - year-1 delivered share)) ---
+  pathway             n  entry pts     mark     fair      gap
+  ND               1193     849655    1.020    1.114   -0.095
+  RD                565     138424    1.065    1.071   -0.005
+  MSD                29      11090    0.790    1.038   -0.248
+  SSP                24       5004    1.645    0.897   +0.747
+  UNR                46       5414    0.578    1.130   -0.552
+  IRE                46       3938    1.297    1.130   +0.167
+  PDA                38       7412    0.924    1.137   -0.213
+  PDN                24       2138    0.682    1.140   -0.458
+  PDS                21       1791    0.805    1.139   -0.335
+  axis gap range: 1.299 (min -0.552, max +0.747) — NOT flat — concentration on this axis
+
+--- the two-way concentration table: ND pick band x age at draft (gap vs own fair) ---
+  band        age<=18  age 19-20    age 21+
+  1-10      -0.092 (n169) -0.578 (n1 THIN)              —
+  11-20     -0.023 (n161) -0.262 (n6 THIN) +0.394 (n3 THIN)
+  21-30     -0.066 (n159) -0.262 (n7 THIN) -0.089 (n4 THIN)
+  31-40     -0.267 (n145)   -0.317 (n17) +1.127 (n8 THIN)
+  41-64     -0.174 (n336)   +0.347 (n31)   -0.172 (n32)
+
+VERDICT ON UNIFORMITY: the residual is NOT uniform. It concentrates in ND bands 31-40 (gap
+~-0.20) and 41-64 (~-0.13) and in the thin development arms (PDN/PDS/UNR/PDA/MSD, gaps -0.21
+to -0.55), while band 11-20 sits within 0.03 of fair and RD within 0.01. The owner's "large
+share of the missing value belongs to the late pick bands" hypothesis is CONFIRMED with the
+band-level fair benchmarks. No uniform component is claimed.
+
+====================================================================================================
+LANE L1 — is late-pick ENTRY value too low? (the S5 head-smoothing connection)
+====================================================================================================
+S5 measured the fitted entry curve against raw delivered means by band:
+  R_total: 1-10 -5.1%%, 11-20 -9.3%%, 21-30 -9.1%%, 31-40 -1.5%%, 41-64 -2.9%% — the deficit
+  sits at the HEAD (picks 1-30, the loclin smoothing stage), NOT the late bands.
+FINDING (L1): the owner's hypothesis as posed is NOT supported — late-pick ENTRY cells are
+within ~3%% of their own delivered history; it is picks 11-30 whose entry sits ~9%% low (the
+smoothing stage). Because a too-low entry price raises the yr0->1 ratio rather than lowering
+it, the S5 head deficit is NOT the source of the late-band yr1 depreciation — the late-band
+problem lives in the YEAR-1 MARKS (see L3), not the entry cells. The S5 re-fit of the
+smoothing head remains owed at the next v0 refit (rulings-material, out of this repair).
+
+====================================================================================================
+LANE L2 — the pool arms' entry cells vs their own delivered history
+====================================================================================================
+Price-to-delivered multiple per arm: K0 = (discounted delivered value from entry) / (entry
+price), summed over the arm, classes 2005-2019 (tails observable). A LOW K0 relative to other
+arms means the arm's entry cells are HIGH against what its players actually delivered.
+  arm          n       K0   (ND=the reference language level)
+  ND        1068    0.507
+  RD         543    0.552
+  MSD          9    0.110
+  SSP         13    0.214
+  UNR         44    0.603
+  IRE         43    0.425
+  PDA         32    0.311
+  PDN         17    0.293
+  PDS         21    0.135
+  relative to ND (arm K0 / ND K0): RD 1.09  MSD 0.22  SSP 0.42  UNR 1.19  IRE 0.84  PDA 0.61  PDN 0.58  PDS 0.27
+
+  cohort-path peaks (PRIMARY window, repair matrix): the owner's named facts re-measured —
+    PDN  path peak 1.248
+    PDS  path peak 1.000
+    UNR  path peak 1.456
+    IRE  path peak 1.878
+    SSP  path peak 2.038
+  S7's own-arm delivered-history ratios (delivered / signed v0 cell): PDS 0.27, PDN 0.59, IRE 0.73.
+FINDING (L2): CONFIRMED for the thin development arms — PDS/PDN (and partially IRE, UNR, PDA)
+carry entry cells ABOVE their own arms' delivered history (K0 far below ND's), the K-shrink
+borrowing being the located mechanism. Candidate fix: OWN-ARM RE-ANCHOR of those entry cells at
+the next v0 refit — RULINGS-MATERIAL, not wired here. The CONTRAST case is SSP: entry too LOW
+(K0 far above ND's; the +55%% yr0->1 buy-side red) — mature-age entrants convert production
+immediately while their cells price development-class entries. Same fix family, opposite sign.
+RD is career-fair at entry (K0 ~ ND's, mark ~ fair): its weak years 1-3 marks are the
+leg-attribution question, not an entry question.
+
+====================================================================================================
+LANE L3 — is year-one sitting less PREDICTIVE of washout for late picks? (measured, not assumed)
+====================================================================================================
+Washout = the player delivered ZERO surplus above the replacement bar in the five seasons after
+entry (S1's own SDV object: games x max(0, avg - bar) summed, == 0). Population: ND entrants
+2005-2020 (five observable years).
+  P(washout) by year-one games, per band:
+  band          n |   sat (0g)       1-4g      5-10g       11+g |    RR sat vs 11+    RR 1-4 vs 11+
+  1-10        160 |     18% n17     25% n20     36% n45     15% n78  |             1.1x             1.6x
+  11-20       160 |     62% n37     46% n39     48% n42     17% n42  |             3.7x             2.8x
+  21-30       160 |     78% n50     61% n46     47% n34     30% n30  |             2.6x             2.0x
+  31-40       160 |     74% n82     69% n36     44% n18     38% n24  |             2.0x             1.9x
+  41-64       375 |     89% n222    62% n64     54% n50     59% n39  |             1.5x             1.1x
+  Prevalence of year-one sitting/low games by band: 1-10 23%  11-20 48%  21-30 60%  31-40 74%  41-64 76%
+
+FINDING (L3): the interaction IS material, in the owner's predicted direction. A year of
+sitting multiplies washout risk 3.7x for an 11-20 pick but only 2.0x at 31-40 and 1.5x at
+41-64 — the signal weakens steadily down the draft — while sitting itself becomes far MORE
+common (23%% of top-10 year-ones, 76%% of 41-64). So the single fade schedule the law applies
+to every band discounts a late pick's sit-year as if it carried an early pick's information,
+which it does not. (Top-10 is its own case: base washout rates are so low, 15-18%%, that RR is
+~1.1x on n=17 — sitting is nearly uninformative there too.) The implied correction — a
+BAND-DEPENDENT fade or credit — touches the owner's earlier band rulings and the 30A fade
+lineage (whose multi-year lens scan found pick unusable on the DEPTH axis; this year-one
+selection interaction is a different, untested object until now). RULINGS-MATERIAL: reported
+with these tables, wired nowhere. It is also the best-evidenced candidate closure for the
+late-band residual R2 found (31-40 gap -0.199, 41-64 -0.133): the value the class is owed
+sits where the fade is over-charging late-band sitters.
