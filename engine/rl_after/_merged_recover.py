@@ -527,7 +527,17 @@ def _pv_apply(p,Y,e):
 _POLE={}
 def par_pole(pos,pk,T):
     k=(pos,int(min(pk,cp.KMAX)),int(min(max(T,1),6)))
-    if k not in _POLE: sp=synth(k[1],PR.par_at(*k),pos); _POLE[k]=price6(sp,b6(sp))
+    # ORDER I (RL_O36): the pedigree pole is priced off a SYNTHETIC row (dob 2005-03-01, i.e. a
+    # 21-year-old at BASE_REF), NOT off a person. S1 corrects how a REAL player's OWN output is judged,
+    # so it must not reach this object — it is pedigree machinery, and it is MEMOISED, which would also
+    # make the leak depend on which player happened to fill the cache first. MEASURED: with the pole
+    # left inside S1's scope, three rows whose displayed age is 24+ moved by up to 0.09 board points at
+    # full dose. Dial off => the guard is a no-op and this line is byte-identical.
+    if k not in _POLE:
+        sp=synth(k[1],PR.par_at(*k),pos)
+        _s36=MA._O36_SCOPE['on']; MA._O36_SCOPE['on']=False
+        try: _POLE[k]=price6(sp,b6(sp))
+        finally: MA._O36_SCOPE['on']=_s36
     _SCALE={'MID':1.19,'SF':0.93,'KPF':0.95,'SD':1.08,'KPD':1.05,'RUCK':1.13}  # STEP3-B: principled re-level (trajectory-integrated pole / 2yr synth); piece-2 SHAPE kept, LEVEL rescaled
     return _POLE[k]*_SCALE.get(pos,1.0),PR.par_at(*k)
 # ==== LEG B v1.1 — UN-COMPRESS MAP at the PRODUCTION-VALUE hook (pr=price6, ONCE per player; memo v1.1 §2/§4)
@@ -1088,8 +1098,17 @@ def _proj_w4(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0,grace=0):
         _df=MA.disc_factor(ah,d,k,lens,grace)
         # ORDER I (RL_O36) — S1, the age-referenced bar. DUPLICATE-LOOP FENCE: this MUST match
         # rl_model.proj_from_peak's two sites exactly. Dial off => o36_bar IS MA.REPL[...] byte-exact.
-        if k==0: prod+=Wk*MA.posval(base-MA.o36_bar(g0,ag))*21/_df
-        else: prod+=Wk*sum(w*MA.posval(base-MA.o36_bar(gg,ag)) for gg,w in fut)*21/_df
+        # THE AGE THE BAR READS IS `a+k`, THE PLAYER'S REAL AGE AT THAT HORIZON — NOT `ag`. `ag` is
+        # `ah+k`, a CURVE POSITION: LEG F3 holds the projection shape one year back on the forward lens
+        # (_off=1), so on that lens a 24-year-old's loop runs from ah=23. The level curve wants the
+        # curve position; the REPLACEMENT BAR wants the man's age, because the bar asks "what does a
+        # player this old have to beat". MEASURED: reading `ag` moved 21 rows aged 24+ (worst
+        # braeden-campbell 1.04 board points) purely through that one-year anchor offset. With `a+k`
+        # the cap law holds and rl_model's own copy (which has no offset, so ag == a+k there) stays
+        # byte-identical to this one.
+        _abar=a+k
+        if k==0: prod+=Wk*MA.posval(base-MA.o36_bar(g0,_abar))*21/_df
+        else: prod+=Wk*sum(w*MA.posval(base-MA.o36_bar(gg,_abar)) for gg,w in fut)*21/_df
     if g in('KPF','KPD'): prod*=1.05
     if MA._O33 and MA._O33S>=1 and g in('KPF','KPD'): prod*=MA.O33_SSTAR   # ORDER B B-1 renorm — duplicate-loop fence: matches rl_model.proj_from_peak
     runway=MA.clamp((25-ah)/6.0,0,1); elite=MA.clamp((lp/MA.PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*MA.PMAX)
@@ -1211,7 +1230,14 @@ def raw_ev(p,Y=2026):                                        # W4: context-setti
     # ORDER I (RL_O36): S1's scope rides the ENGINE'S OWN real-player boundary — the same wrapper, the
     # same try/finally. Outside it (synthetic band nodes, the baseline-draftee curve, the pedigree
     # machinery) the projection keeps the flat bar, which is what keeps day-0 and mature rows exact.
-    _o36prev=MA._O36_SCOPE['on']; MA._O36_SCOPE['on']=True
+    # THE CAP LAW IS A PROPERTY OF THE ROW, NOT OF THE VANTAGE. A player who is 24 today may still be
+    # priced, inside his own ev(), through a lens whose clock stands a year earlier — and at that
+    # vantage he is 23, so a per-horizon age test alone would let S1 reach him. MEASURED: 21 rows aged
+    # 24+ moved that way (worst braeden-campbell 1.04 board points), and every one of them was exactly
+    # 24. The owner's law says a mature row is byte-identical, full stop, so the gate is taken on the
+    # ROW'S OWN AGE ON THE BOARD'S CLOCK (BASE_REF) and S1 is switched off entirely for him.
+    _o36prev=MA._O36_SCOPE['on']
+    MA._O36_SCOPE['on']=(MA._age_at(p,MA.BASE_REF)<24) if p.get('_by') else False
     try: return _raw_ev_w4_0(p,Y)*_ycred_mult(p,Y)           # L1c: ×1.0 exactly when RL_YOUNG=0 (byte-exact off-path)
     finally: _W4CTX['on']=prev; MA._O36_SCOPE['on']=_o36prev
 _B6PIN={'L':None}                                            # W4 KPF: band pin — collapse the forward band to one level (production-implied EFV probe)
@@ -1491,7 +1517,12 @@ def _build_ruc_ceiling():                                     # pick-neutral pro
     avs=list(np.linspace(15.0,150.0,46))
     def _sp(a):
         sp=synth(int(RUC_CEIL_REFPK),float(a),'RUCK')
-        with contextlib.redirect_stdout(io.StringIO()): return raw_ev(sp)*iso_eff(sp)   # LEG A site 2/6 (synth: iso_eff returns the monotonized table unfaded — structural scaffold)
+        # ORDER I (RL_O36): the same synthetic-row rule as the pedigree pole — this ceiling is a
+        # scaffold priced off a made-up 21-year-old, not off a person, and it is cached. S1 stays out.
+        _s36=MA._O36_SCOPE['on']; MA._O36_SCOPE['on']=False
+        try:
+            with contextlib.redirect_stdout(io.StringIO()): return raw_ev(sp)*iso_eff(sp)   # LEG A site 2/6 (synth: iso_eff returns the monotonized table unfaded — structural scaffold)
+        finally: MA._O36_SCOPE['on']=_s36
     ys=[_sp(a) for a in avs]
     for i in range(1,len(ys)): ys[i]=max(ys[i],ys[i-1])     # enforce monotone non-decreasing (guard tiny pole wiggles)
     _RUCCEIL['grid']=(np.array(avs),np.array(ys))

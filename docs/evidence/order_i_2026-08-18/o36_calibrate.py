@@ -3,32 +3,30 @@
 
 Plain words. There is one calibration, not three. It chooses the S1 dose, the two re-mix knobs and
 their two shapes, and the selection relief TOGETHER, because they push on the same rows in opposite
-directions: S1 lifts every young player who produces anything, and the re-mix decides who keeps the
-lift. Choosing the dose first and the counterweight afterwards would be choosing twice.
+directions: S1 lifts every young player who produces anything, and the counterweight decides who
+keeps the lift. Choosing the dose first and the counterweight afterwards would be choosing twice.
 
-What is fixed before any number is looked at (PREREG_I.md §3):
-  * the RULED feasibility constraints — rho32 monotone, the at-bar continuity object, the hindsight
-    weight W inside the corrected 90% CI, the calibration slope band, no class above 1.139;
-  * the MATURE-ROW IDENTITY, which is the owner's law G6 and which this seat measured to be BINDING
-    on the re-mix knobs (see below);
+Fixed before any number was looked at (PREREG_I.md §3):
+  * the RULED feasibility constraints — rho32 monotone, the ruled at-bar continuity object, the
+    hindsight weight W inside the corrected 90% CI, the calibration slope band, no class above 1.139;
   * the owner's acceptance gates G1-G5;
-  * and the selection rule: minimum corrected-surface SSE among the points that satisfy all of it,
-    ties broken by the smaller dose.
+  * the selection rule: minimum corrected-surface SSE among the points that satisfy all of it, ties
+    broken by the smaller dose;
+  * and halt-and-report, with the tension quantified, if that set is empty.
 
-THE MATURE-ROW FINDING, stated here because it decides the shape of the answer: the re-mix is keyed
-on CAREER GAMES, not on age. Any move in (kappa, gamma_u, eta, gamma_d) therefore re-prices mature
-rows too. Measured on this tree: (kappa 0.24 -> 0.34, eta 0.41 -> 0.44) moved milan-murdock, 26, by
-+5.67 board points. The owner's law says he cannot move at all. ORDER C hit the identical wall
-(REMIX_34.json: the repaired knob point is the ONLY one of 3,960 the mature gate admits). So the
-mature-row identity is carried as a HARD constraint and is TESTED here, knob point by knob point, on
-the live board — not assumed. Whatever it leaves feasible is what the counterweight is allowed to be.
+The mature-row law G6 is enforced UPSTREAM, by o36_mature_gate.py, which measures on the live board
+which knobs the law leaves free. This script reads that verdict and sweeps only what is left.
+
+CONTROLS PRINTED FIRST, so the instrument is checked before it is trusted:
+  * the corrected surface must reproduce REMIX_32R.json's own W, cells and terciles;
+  * the LANDING CANDIDATE point (dose 0, repair knobs, pooled pick fade) must reproduce the Order-D
+    wire's own class mark 1.0421.
 """
-import os, sys, json, math, io, contextlib, time, itertools
+import os, sys, json, math, time, collections
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-EV = os.path.dirname(HERE)
-ROOT = os.path.dirname(os.path.dirname(EV))
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
 SP = '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad'
 
 L = json.load(open(SP + '/O36_LEGS.json'))
@@ -36,13 +34,18 @@ DOSES = L['doses']; POP = L['pop']; PLF = L['PLF']
 LEGS = {float(k): v for k, v in L['legs'].items()}
 CONT = {float(k): v for k, v in L['cont'].items()}
 POP = [q for q in POP if q['key'] in LEGS[DOSES[0]]]
-print('legs loaded: %d rows x %d doses (identity %s)' % (len(POP), len(DOSES), L['leg_identity']))
+print('legs loaded: %d rows x %d doses (leg identity %s)' % (len(POP), len(DOSES), L['leg_identity']))
+MG = json.load(open(os.path.join(HERE, 'MATURE_GATE_36.json')))
+print('mature gate: knob moves that keep every mature row byte-identical: %s' % (MG['knob_axis_free'] or 'NONE'))
+print('             relief values that do: %s' % (MG['relief_axis_free'] or 'NONE'))
+print('             S1 doses that do:      %s' % (MG['dose_axis_free'] or 'NONE'))
 
 O31_TAU_RHO = 29.194253560287144
 O31_B_RHO = 0.8015424473253033
 rho_base = lambda g: 0.0 if g <= 0.0 else 1.0 - math.exp(-((g / O31_TAU_RHO) ** O31_B_RHO))
 CLASSES_H6 = list(range(2005, 2019))
 BANDS5 = ['1-10', '11-20', '21-30', '31-40', '41-64']
+REPAIR = (0.24, 11.0, 0.41, 14.0, 1.08)
 
 
 def nd_band(pk):
@@ -66,7 +69,6 @@ def ols(Xm, yv):
     return b
 
 
-# ---- the CORRECTED (age-fair) hindsight surface — rebuilt here, dose-independent ------------------
 rows_h = []
 for y in CLASSES_H6:
     rows = [q for q in POP if q['yr'] == y]
@@ -88,8 +90,6 @@ for _ in range(1000):
     t = ols([PRA[i], PD[i]], Yh[i])
     wb.append(t[1] / t[2])
 W_LO, W_HI = float(np.percentile(wb, 5)), float(np.percentile(wb, 95))
-print('corrected hindsight W: %.4f  90%% CI [%.4f, %.4f]' % (W_HIND, W_LO, W_HI))
-
 REAL_CELLS = {b: float(np.mean([r['y'] for r in rows_h if bucket(r['g1']) == b]))
               for b in ('0', '1-4', '5-9', '10-15', '16+')}
 TERC_KEYS = {}; REAL_TERC = {}
@@ -99,29 +99,38 @@ for b in ('1-4', '5-9'):
     for nm, seg in (('poor', rs[:n3]), ('mid', rs[n3:2 * n3]), ('riser', rs[2 * n3:])):
         TERC_KEYS['%s/%s' % (b, nm)] = set(r['key'] for r in seg)
         REAL_TERC['%s/%s' % (b, nm)] = float(np.mean([r['y'] for r in seg]))
-print('corrected tercile targets (the W2 5-9g objects the order names):',
-      {k: round(v, 3) for k, v in REAL_TERC.items() if k.startswith('5-9')})
 assert [r['key'] for r in rows_h] == [q['key'] for y in CLASSES_H6 for q in POP if q['yr'] == y]
 
+REF = json.load(open(os.path.join(ROOT, 'docs', 'evidence', 'order_a_2026-08-17', 'REMIX_32R.json')))
+CS = REF['corrected_surface']
+print('\nCONTROL 1 — the corrected age-fair hindsight surface reproduces REMIX_32R.json:')
+d1 = abs(W_HIND - CS['W_hind_age'])
+d2 = max(abs(REAL_CELLS[b] - CS['cells_realized'][b]) for b in REAL_CELLS)
+d3 = max(abs(REAL_TERC[t] - CS['terciles_realized'][t]) for t in REAL_TERC)
+print('   W %.10f vs %.10f (dev %.2e) · cells max dev %.2e · terciles max dev %.2e  -> %s'
+      % (W_HIND, CS['W_hind_age'], d1, d2, d3, 'EXACT' if max(d1, d2, d3) < 1e-9 else 'DEVIATION'))
+print('   the W2 objects this order names: 5-9g risers %.4f · 5-9g sub-expectation %.4f (of entry)'
+      % (REAL_TERC['5-9/riser'], REAL_TERC['5-9/poor']))
+print('   W 90%% CI [%.4f, %.4f]' % (W_LO, W_HI))
 
-def p1_of(Lg, kap, gu, eta, gd, lrel):
+
+def p1_of(Lg, kap, gu, eta, gd, lrel, fade):
     g = Lg['g']
+    Df = Lg['Dfade'] if fade == 'tall' else Lg['Dfade_pool']
+    D = min(1.0, Df * (1.0 + lrel * Lg['sig'])) if Df < 1.0 else Df
     if g <= 0:
-        D = min(1.0, Lg['Dfade'] * (1.0 + lrel * Lg['sig'])) if Lg['Dfade'] < 1.0 else Lg['Dfade']
         return D * Lg['V0']
     mu = (g / gu) * math.exp(1.0 - g / gu)
     md = (g / gd) * math.exp(1.0 - g / gd)
     rb = Lg['rho']
     r2 = rb + kap * mu * (1.0 - rb)
-    D = min(1.0, Lg['Dfade'] * (1.0 + lrel * Lg['sig'])) if Lg['Dfade'] < 1.0 else Lg['Dfade']
     ped = (D * (1.0 - r2) + Lg['Phi'] * Lg['beta'] * r2) * Lg['V0'] * max(0.0, 1.0 - eta * md)
-    acr = kap * mu * (1.0 - rb) * Lg['agap'] * 20.0 * PLF
-    return r2 * Lg['Phat'] + ped + acr
+    return r2 * Lg['Phat'] + ped + kap * mu * (1.0 - rb) * Lg['agap'] * 20.0 * PLF
 
 
-def metrics(dose, kap, gu, eta, gd, lrel):
+def metrics(dose, kap, gu, eta, gd, lrel, fade):
     Ld = LEGS[dose]
-    p1 = {q['key']: p1_of(Ld[q['key']], kap, gu, eta, gd, lrel) for q in POP}
+    p1 = {q['key']: p1_of(Ld[q['key']], kap, gu, eta, gd, lrel, fade) for q in POP}
     Rc = {}
     for y in range(2005, 2022):
         rows = [q for q in POP if q['yr'] == y]
@@ -157,11 +166,26 @@ def metrics(dose, kap, gu, eta, gd, lrel):
         terc[tk] = dict(n=len(seg), price=pr, real=REAL_TERC[tk], gap=REAL_TERC[tk] - pr)
         if tk.startswith('5-9'):
             obj += len(seg) * (REAL_TERC[tk] - pr) ** 2
-    return dict(dose=dose, kappa=kap, gamma_u=gu, eta=eta, gamma_d=gd, lam_rel=lrel, obj=obj,
-                slope=slope, W=W, mean_0515=mean_0515, max_class=max(Rc.values()),
-                min_class=min(Rc.values()), per_class=Rc, band_R=bandR,
-                min_band=min(bandR.values()), band_spread=max(bandR.values()) - min(bandR.values()),
-                cells=cells, terciles=terc)
+    return dict(dose=dose, kappa=kap, gamma_u=gu, eta=eta, gamma_d=gd, lam_rel=lrel, fade=fade,
+                obj=obj, slope=slope, W=W, mean_0515=mean_0515, max_class=max(Rc.values()),
+                max_class_year=max(Rc, key=Rc.get), min_class=min(Rc.values()), per_class=Rc,
+                band_R=bandR, min_band=min(bandR.values()),
+                band_spread=max(bandR.values()) - min(bandR.values()), cells=cells, terciles=terc)
+
+
+CANDPT = metrics(0.0, *REPAIR, 'pool')
+print('\nCONTROL 2 — the LANDING CANDIDATE on this instrument (dose 0, repair knobs, POOLED pick fade):')
+print('   class mark mean_0515 = %.4f   (the Order-D wire\'s own W2 scorecard number of record: 1.0421)'
+      % CANDPT['mean_0515'])
+print('   max class %.4f on %s  ·  min class %.4f  ·  slope %.4f  ·  W %.4f'
+      % (CANDPT['max_class'], CANDPT['max_class_year'], CANDPT['min_class'], CANDPT['slope'], CANDPT['W']))
+print('   five-band yr0->1: %s' % {k: '%+.2f%%' % (100 * (v - 1)) for k, v in CANDPT['band_R'].items()})
+FADEONLY = metrics(0.0, *REPAIR, 'tall')
+print('\nCONTROL 3 — the TALL/SMALL FADE ALONE (dose 0, repair knobs, tall exponent):')
+print('   class mark %.4f (%+.4f) · max class %.4f on %s · bands %s'
+      % (FADEONLY['mean_0515'], FADEONLY['mean_0515'] - CANDPT['mean_0515'], FADEONLY['max_class'],
+         FADEONLY['max_class_year'],
+         {k: '%+.2f%%' % (100 * (v - 1)) for k, v in FADEONLY['band_R'].items()}))
 
 
 def rho32_monotone(kap, gu):
@@ -175,36 +199,13 @@ def rho32_monotone(kap, gu):
     return True
 
 
-def continuity_ok(dose, kap, gu, eta, gd, lrel):
-    """The ledger's ruled at-bar object: integer game steps 0..20, tolerance 1e-9, at-bar rows only,
-    the age credit included. A price that DIPS as a game is added is the cliff this forbids."""
-    for c in CONT[dose]:
-        if not c['atbar']:
-            continue
-        D = min(1.0, c['Dfade'] * (1.0 + lrel * c['sig'])) if c['Dfade'] < 1.0 else c['Dfade']
-        prev = None
-        for gg in range(0, 21):
-            rb = rho_base(gg)
-            mu = ((gg / gu) * math.exp(1.0 - gg / gu)) if gg > 0 else 0.0
-            r2 = rb + kap * mu * (1.0 - rb)
-            mix = max(0.0, 1.0 - eta * ((gg / gd) * math.exp(1.0 - gg / gd))) if gg > 0 else 1.0
-            pi = (D * (1.0 - r2) + PHI(gg, c['s'], c['pool']) * BETA(gg, c['pool']) * r2) * mix
-            pu = r2 * c['Phat'] + pi * c['V0'] + kap * mu * (1.0 - rb) * c['agap'] * 20.0 * PLF
-            if prev is not None and pu < prev - 1e-9:
-                return False
-            prev = pu
-    return True
+ENGF = {}
 
 
-# phi31/beta31 are pure functions of (g, pool); lift them off the engine once
-_ENG = {}
-
-
-def _load_engine_funcs():
-    os.environ.update(RL_O31='1', RL_O32='1', RL_O36='1', RL_O32_STAGE='5', RL_O36_LAM_S1='0.0',
+def _phi_beta():
+    import io, contextlib
+    os.environ.update(RL_O31='1', RL_O32='1', RL_O32_STAGE='5', RL_O36='1', RL_O36_LAM_S1='0.0',
                       PYTHONHASHSEED='0', RL_REPO=ROOT,
-                      OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1', MKL_NUM_THREADS='1',
-                      NUMEXPR_NUM_THREADS='1', VECLIB_MAXIMUM_THREADS='1',
                       RL_V0SURF_PKL=os.path.join(ROOT, 'data', 'v0surf.pkl'),
                       RL_GAMMA='1.0', RL_PICK1='3000', RL_RUCK_TAX='0.25', RL_RECENCY_DECAY='0.72',
                       RL_PRIOR_TREES='400', PAR_RAMPS='22',
@@ -213,186 +214,85 @@ def _load_engine_funcs():
     cwd = os.getcwd(); os.chdir(ROOT + '/engine/rl_after')
     NSE = {}
     with contextlib.redirect_stdout(io.StringIO()):
-        import rl_model as MA
+        import rl_model as _MA
         exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], NSE)
     os.chdir(cwd)
-    _ENG['MA'] = NSE.get('MA', MA); _ENG['NSE'] = NSE
-    return _ENG
+    ENGF['phi'] = NSE['phi31']; ENGF['beta'] = NSE['beta31']
 
 
-_load_engine_funcs()
-PHI = lambda g, s, pl: float(_ENG['NSE']['phi31'](g, s, pl))
-BETA = lambda g, pl: float(_ENG['NSE']['beta31'](g, pl))
-
-# ================= THE MATURE-ROW IDENTITY TEST, ON THE LIVE BOARD ==================================
-MA = _ENG['MA']; NSE = _ENG['NSE']; ev = NSE['ev']
-BY = {}
-for p in MA.data:
-    BY.setdefault(p.get('key'), []).append(p)
-PB = {k: max(v, key=lambda q: len(q['scoring'])) for k, v in BY.items()}
-MATURE = [p for p in PB.values()
-          if NSE['_isreal'](p) and not p.get('_retired') and not NSE['delisted'](p)
-          and MA.GRP.get(p.get('pos')) and p.get('_by') and (2026 - int(p['_by'])) >= 24]
-print('mature (age 24+) active rows under the store-wide identity assert: %d' % len(MATURE))
+_phi_beta()
 
 
-MATURE.sort(key=lambda p: p.get('key') or '')
-PROBE_MAT = [p.get('key') for p in MATURE[::5]]     # deterministic 1-in-5 probe; the CHOSEN point is
-print('  (the knob probe uses a deterministic 1-in-5 mature sample, n=%d; the CHOSEN point is asserted '
-      'store-wide on all %d)' % (len(PROBE_MAT), len(MATURE)))
+def continuity_ok(dose, kap, gu, eta, gd, lrel, fade):
+    for c in CONT[dose]:
+        if not c['atbar']:
+            continue
+        Df = c['Dfade'] if fade == 'tall' else c['Dfade_pool']
+        D = min(1.0, Df * (1.0 + lrel * c['sig'])) if Df < 1.0 else Df
+        prev = None
+        for gg in range(0, 21):
+            rb = rho_base(gg)
+            mu = ((gg / gu) * math.exp(1.0 - gg / gu)) if gg > 0 else 0.0
+            r2 = rb + kap * mu * (1.0 - rb)
+            mix = max(0.0, 1.0 - eta * ((gg / gd) * math.exp(1.0 - gg / gd))) if gg > 0 else 1.0
+            pi = (D * (1.0 - r2) + float(ENGF['phi'](gg, c['s'], c['pool'])) *
+                  float(ENGF['beta'](gg, c['pool'])) * r2) * mix
+            pu = r2 * c['Phat'] + pi * c['V0'] + kap * mu * (1.0 - rb) * c['agap'] * 20.0 * PLF
+            if prev is not None and pu < prev - 1e-9:
+                return False
+            prev = pu
+    return True
 
 
-def price_all(keys, dose, kap, gu, eta, gd, lrel):
-    NSE['O32_KAPPA'] = kap; NSE['O32_GAMMA'] = gu; NSE['O32_ETA'] = eta
-    NSE['O32_GAMMA_D'] = gd; NSE['O32_LAMBDA'] = lrel
-    MA.O36_LAM_S1 = dose
-    MA._pe_clear()
-    out = {}
-    for k in keys:
-        p = PB.get(k)
-        if p is None: continue
-        with contextlib.redirect_stdout(io.StringIO()):
-            out[k] = float(ev(p, 2026))
-    return out
+# ============ THE SWEEP: the axes the mature law leaves open ========================================
+KNOBS_PINNED = not MG['knob_axis_free']
+REL_PINNED = (MG['relief_axis_free'] == ['lambda_rel = 1.08'] or not MG['relief_axis_free'])
+GRID_K = [REPAIR[0]] if KNOBS_PINNED else [round(0.15 + 0.05 * i, 2) for i in range(10)]
+GRID_GU = [REPAIR[1]] if KNOBS_PINNED else [8.0, 10.0, 11.0, 12.0, 14.0, 16.0]
+GRID_E = [REPAIR[2]] if KNOBS_PINNED else [0.0, 0.1, 0.2, 0.3, 0.4, 0.41, 0.5]
+GRID_GD = [REPAIR[3]] if KNOBS_PINNED else [4.0, 6.0, 8.0, 10.0, 12.0, 14.0]
+GRID_REL = [REPAIR[4]] if REL_PINNED else [0.80, 1.08, 1.30]
+print('\nTHE JOINT GRID THE OWNER\'S LAWS LEAVE OPEN: dose %d values x kappa %d x gamma_u %d x eta %d '
+      'x gamma_d %d x relief %d = %d points'
+      % (len(DOSES), len(GRID_K), len(GRID_GU), len(GRID_E), len(GRID_GD), len(GRID_REL),
+         len(DOSES) * len(GRID_K) * len(GRID_GU) * len(GRID_E) * len(GRID_GD) * len(GRID_REL)))
 
-
-REPAIR = (0.24, 11.0, 0.41, 14.0, 1.08)
-MKEYS = [p.get('key') for p in MATURE]
-BASE_MAT = price_all(MKEYS, 0.0, *REPAIR)     # the landing candidate's own mature prices
-
-
-def mature_identity(dose, kap, gu, eta, gd, lrel, keys=None):
-    """Every active row aged 24+, tolerance ZERO. Returns (n_moved, worst_abs, worst_key)."""
-    keys = MKEYS if keys is None else keys
-    cur = price_all(keys, dose, kap, gu, eta, gd, lrel)
-    bad = [(abs(cur[k] - BASE_MAT[k]), k) for k in keys if cur.get(k) != BASE_MAT.get(k)]
-    if not bad:
-        return 0, 0.0, None
-    bad.sort(reverse=True)
-    return len(bad), bad[0][0], bad[0][1]
-
-
-# The knob axes are tested against the mature law FIRST, because if a knob point cannot pass it,
-# nothing else about that point matters. The dose and the relief are tested with it.
-print('\n--- THE MATURE-ROW IDENTITY, TESTED KNOB POINT BY KNOB POINT (owner law G6) ---')
-KNOB_PROBE = [(0.24, 11.0, 0.41, 14.0), (0.25, 11.0, 0.41, 14.0), (0.24, 11.0, 0.42, 14.0),
-              (0.24, 12.0, 0.41, 14.0), (0.24, 11.0, 0.41, 13.0), (0.30, 11.0, 0.41, 14.0),
-              (0.24, 11.0, 0.50, 14.0), (0.20, 11.0, 0.41, 14.0), (0.24, 11.0, 0.30, 14.0)]
-KNOB_OK = {}
-for kp in KNOB_PROBE:
-    n, w, k = mature_identity(0.35, *kp, 1.08, PROBE_MAT)
-    KNOB_OK[kp] = (n == 0)
-    print('  kappa %.2f gu %4.1f eta %.2f gd %4.1f -> mature rows moved: %-5d worst %8.3f  %s'
-          % (kp[0], kp[1], kp[2], kp[3], n, w, ('' if n == 0 else 'on ' + str(k))))
-print('  RELIEF axis (knobs at the repair point):')
-REL_OK = {}
-for lr in (0.80, 1.08, 1.30, 1.50):
-    n, w, k = mature_identity(0.35, *REPAIR[:4], lr, PROBE_MAT)
-    REL_OK[lr] = (n == 0)
-    print('    lambda_rel %.2f -> mature rows moved: %-5d worst %8.3f  %s'
-          % (lr, n, w, ('' if n == 0 else 'on ' + str(k))))
-print('  DOSE axis (knobs and relief at the repair point):')
-DOSE_OK = {}
-for dz in (0.15, 0.35, 0.70, 1.00):
-    n, w, k = mature_identity(dz, *REPAIR, PROBE_MAT)
-    DOSE_OK[dz] = (n == 0)
-    print('    lambda_S1 %.2f -> mature rows moved: %-5d worst %8.3f  %s'
-          % (dz, n, w, ('' if n == 0 else 'on ' + str(k))))
-
-MAT_FREE_KNOBS = [kp for kp, ok in KNOB_OK.items() if ok]
-MAT_FREE_REL = [lr for lr, ok in REL_OK.items() if ok]
-json.dump(dict(knob_probe={('%.2f/%.1f/%.2f/%.1f' % kp): ok for kp, ok in KNOB_OK.items()},
-               relief_probe=REL_OK, dose_probe=DOSE_OK, n_mature=len(MATURE)),
-          open(os.path.join(HERE, 'MATURE_GATE_36.json'), 'w'), indent=1, sort_keys=True, default=float)
-print('  -> knob points that pass the mature law: %d of %d;  relief values that pass: %s'
-      % (len(MAT_FREE_KNOBS), len(KNOB_PROBE), MAT_FREE_REL))
-
-# ================= THE JOINT SWEEP =================================================================
-# The knob axes are the ones the MATURE LAW leaves open, and no others. If the law admits only the
-# repair point, the honest joint grid is (dose x relief) and the packet says so — it does not pretend
-# to have swept knobs the owner's own law forbids. The FULL prereg'd knob grid is swept anyway with
-# the mature law switched off, and reported as the UNCONSTRAINED diagnostic that is NEVER CHOSEN
-# (exactly the discipline ORDER C used for its alpha=0 optimum).
-if len(MAT_FREE_KNOBS) <= 1:
-    GRID_K = [REPAIR[0]]; GRID_GU = [REPAIR[1]]; GRID_E = [REPAIR[2]]; GRID_GD = [REPAIR[3]]
-    print('  -> THE MATURE LAW PINS THE RE-MIX KNOBS. The joint grid is (dose x relief).')
-else:
-    GRID_K = sorted(set(k[0] for k in MAT_FREE_KNOBS))
-    GRID_GU = sorted(set(k[1] for k in MAT_FREE_KNOBS))
-    GRID_E = sorted(set(k[2] for k in MAT_FREE_KNOBS))
-    GRID_GD = sorted(set(k[3] for k in MAT_FREE_KNOBS))
-GRID_REL = sorted(set([0.80, 1.08, 1.30] + MAT_FREE_REL))
-MONO = {(k, gu): rho32_monotone(k, gu) for k in GRID_K for gu in GRID_GU}
-
-import collections
 FAIL = collections.Counter()
-feas = []
-allpts = []
-T0 = time.time()
+feas = []; allpts = []
 for dose in DOSES:
     for kap in GRID_K:
         for gu in GRID_GU:
-            if not MONO[(kap, gu)]:
-                FAIL['mono'] += len(GRID_E) * len(GRID_GD) * len(GRID_REL); continue
+            if not rho32_monotone(kap, gu):
+                FAIL['mono'] += 1; continue
             for eta in GRID_E:
                 for gd in GRID_GD:
                     for lrel in GRID_REL:
-                        M = metrics(dose, kap, gu, eta, gd, lrel)
+                        M = metrics(dose, kap, gu, eta, gd, lrel, 'tall')
                         f = []
                         if not (0.885 <= M['slope'] <= 1.115): f.append('slope')
                         if not (W_LO <= M['W'] <= W_HI): f.append('W')
                         if not (M['max_class'] <= 1.139): f.append('1.14line')
-                        if not continuity_ok(dose, kap, gu, eta, gd, lrel): f.append('continuity')
+                        if not continuity_ok(dose, kap, gu, eta, gd, lrel, 'tall'): f.append('continuity')
                         for x in f: FAIL[x] += 1
                         M['ruled_fails'] = f
                         allpts.append(M)
-                        if not f:
-                            feas.append(M)
-print('\nruled-constraint failure counts over the joint grid (%d points, %.0fs): %s'
-      % (len(allpts), time.time() - T0, dict(FAIL)))
-print('points feasible on the RULED constraints alone: %d' % len(feas))
-json.dump(dict(W_hind=W_HIND, W_ci=[W_LO, W_HI], real_cells=REAL_CELLS, real_terc=REAL_TERC,
-               n_grid=len(allpts), n_ruled_feasible=len(feas), fail_counts=dict(FAIL),
-               doses=DOSES, grid=dict(kappa=GRID_K, gamma_u=GRID_GU, eta=GRID_E, gamma_d=GRID_GD,
-                                      lam_rel=GRID_REL),
-               feasible=sorted(feas, key=lambda m: m['obj'])[:400]),
-          open(SP + '/O36_SWEEP.json', 'w'), default=float)
-for M in sorted(feas, key=lambda m: (m['obj'], m['dose']))[:12]:
-    print('  dose %.2f k=%.2f gu=%.0f e=%.2f gd=%.0f lrel=%.2f | obj %5.1f W %.3f sl %.3f class %.4f '
-          'max %.4f | bands %s'
-          % (M['dose'], M['kappa'], M['gamma_u'], M['eta'], M['gamma_d'], M['lam_rel'], M['obj'],
-             M['W'], M['slope'], M['mean_0515'], M['max_class'],
-             {k: round(100 * (v - 1), 2) for k, v in M['band_R'].items()}))
+                        if not f: feas.append(M)
+print('\nruled-constraint failures over that grid: %s' % dict(FAIL))
+print('points feasible on the RULED constraints: %d of %d' % (len(feas), len(allpts)))
 
-# ---- THE UNCONSTRAINED DIAGNOSTIC — the full prereg'd knob grid with the mature law SWITCHED OFF.
-# REPORTED, NEVER CHOSEN. Its only job is to put a number on what the owner's mature-row law costs.
-DK = [round(0.15 + 0.05 * i, 2) for i in range(10)]
-DGU = [8.0, 10.0, 11.0, 12.0, 14.0, 16.0]
-DE = [0.0, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.41, 0.45, 0.5]
-DGD = [4.0, 6.0, 8.0, 10.0, 12.0, 14.0]
-DDOSE = [d for d in DOSES if d in (0.15, 0.25, 0.35, 0.50, 0.70)]
-DMONO = {(k, gu): rho32_monotone(k, gu) for k in DK for gu in DGU}
-unc = []
-T1 = time.time()
-for dose in DDOSE:
-    for kap in DK:
-        for gu in DGU:
-            if not DMONO[(kap, gu)]: continue
-            for eta in DE:
-                for gd in DGD:
-                    M = metrics(dose, kap, gu, eta, gd, 1.08)
-                    if not (0.885 <= M['slope'] <= 1.115): continue
-                    if not (W_LO <= M['W'] <= W_HI): continue
-                    if M['max_class'] > 1.139: continue
-                    if not continuity_ok(dose, kap, gu, eta, gd, 1.08): continue
-                    unc.append(M)
-print('\nUNCONSTRAINED DIAGNOSTIC (mature law OFF, %d ruled-feasible of the full knob grid, %.0fs):'
-      % (len(unc), time.time() - T1))
-for M in sorted(unc, key=lambda m: m['obj'])[:6]:
-    print('  dose %.2f k=%.2f gu=%.0f e=%.2f gd=%.0f | obj %5.1f class %.4f bands %s   [NEVER CHOSEN]'
-          % (M['dose'], M['kappa'], M['gamma_u'], M['eta'], M['gamma_d'], M['obj'], M['mean_0515'],
-             {k: round(100 * (v - 1), 2) for k, v in M['band_R'].items()}))
-json.dump(dict(unconstrained_best=sorted(unc, key=lambda m: m['obj'])[:20],
-               n_unconstrained_feasible=len(unc), doses=DDOSE),
-          open(SP + '/O36_UNCONSTRAINED.json', 'w'), default=float)
-print('written: %s/O36_SWEEP.json  %s/O36_UNCONSTRAINED.json' % (SP, SP))
+print('\n-- THE DOSE RESPONSE (knobs and relief where the mature law pins them, tall fade live) --')
+print('  %6s %10s %10s %10s %8s %8s | %s' % ('dose', 'class', 'max class', 'yr', 'slope', 'W', 'five bands yr0->1'))
+for M in sorted([m for m in allpts if (m['kappa'], m['gamma_u'], m['eta'], m['gamma_d'], m['lam_rel']) == REPAIR],
+                key=lambda m: m['dose']):
+    print('  %6.2f %10.4f %10.4f %10s %8.4f %8.4f | %s   %s'
+          % (M['dose'], M['mean_0515'], M['max_class'], M['max_class_year'], M['slope'], M['W'],
+             ' '.join('%+6.2f%%' % (100 * (M['band_R'][b] - 1)) for b in BANDS5),
+             ('FEASIBLE' if not M['ruled_fails'] else 'fails ' + ','.join(M['ruled_fails']))))
+
+json.dump(dict(W_hind=W_HIND, W_ci=[W_LO, W_HI], real_cells=REAL_CELLS, real_terc=REAL_TERC,
+               control_landing=CANDPT, control_fade_only=FADEONLY,
+               knobs_pinned=KNOBS_PINNED, relief_pinned=REL_PINNED,
+               n_grid=len(allpts), n_ruled_feasible=len(feas), fail_counts=dict(FAIL),
+               doses=DOSES, points=allpts, feasible=sorted(feas, key=lambda m: m['obj'])[:200]),
+          open(SP + '/O36_SWEEP.json', 'w'), default=float)
+print('\nwritten: %s/O36_SWEEP.json' % SP)
