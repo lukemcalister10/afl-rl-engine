@@ -1,0 +1,69 @@
+ORDER 31-F  F7 -- THE CONTROLS, ON THE FINAL BOARD
+
+1 -- THE PINS.  Entry tip b495431c  ->  the final tree.  MOVED-SET ASSERTED.
+    carrier                                                  AT ENTRY (tip b495431)             NOW
+    engine/rl_after/rl_model.py                              14000af2a46f7a3c4cdfde303f5a1aff   14000af2a46f7a3c4cdfde303f5a1aff
+    engine/rl_after/rl_model_data.json                       cb38ef1171dcf20aae66ebf12682be0d   cb38ef1171dcf20aae66ebf12682be0d
+    engine/rl_after/pvc_curve_v2.json                        06146b00daf2043487f58a8b9f842a1e   78ad9842525ae4f09875b95afc2e2b39   <-- MOVED
+    engine/rl_after/pick_redenomination.json                 2765f83dd271b06f82e35879fb18eeb3   2765f83dd271b06f82e35879fb18eeb3
+    data/v0surf.pkl                                          5dd34ca82735f5c8f021b1c7320df8f8   5dd34ca82735f5c8f021b1c7320df8f8
+    data/model_config.json                                   269d20ab86e3b9d13867987065c757d2   269d20ab86e3b9d13867987065c757d2
+    config_manifest.py                                       6e561e77aaffa67e9030f96f9ffd3b08   6e561e77aaffa67e9030f96f9ffd3b08
+    fv_provenance.py                                         e98953f4673caa23c07a38727e536b5c   e98953f4673caa23c07a38727e536b5c
+    boot_guard.py                                            2075be2da62d0c7ee6cf1350ec8c9882   2075be2da62d0c7ee6cf1350ec8c9882
+    docs/evidence/noarb_338_2026-08-06/noarb_table_338.py    0f8220351c64c56ccfa90c60edcdfa5f   0f8220351c64c56ccfa90c60edcdfa5f
+    docs/evidence/composition_2026-08-10/noarb/noarb_table_338.py 0f8220351c64c56ccfa90c60edcdfa5f   0f8220351c64c56ccfa90c60edcdfa5f
+    docs/evidence/landing_29_2026-08-13/noarb/noarb_table_338.py 0f8220351c64c56ccfa90c60edcdfa5f   0f8220351c64c56ccfa90c60edcdfa5f
+    docs/evidence/noarb_338_2026-08-06/emit_matrix_338.py    bffde2f786be85037483e9f5f1563068   bffde2f786be85037483e9f5f1563068
+    docs/evidence/landing_29_2026-08-13/noarb29c/emit_matrix_29c.py 0c3efa545832dd1131bd2b403588af29   0c3efa545832dd1131bd2b403588af29
+
+    MOVED     : ['engine/rl_after/pvc_curve_v2.json']
+    DECLARED  : ['engine/rl_after/pvc_curve_v2.json']
+    UNDECLARED: NONE
+    MOVED-SET ASSERT: PASS -- the moved set is exactly the declared set
+
+2 -- noarb_table_338.py BYTE-IDENTICAL EVERYWHERE IT APPEARS
+    docs/evidence/composition_2026-08-10/noarb/noarb_table_338.py          0f8220351c64c56ccfa90c60edcdfa5f
+    docs/evidence/landing_29_2026-08-13/noarb/noarb_table_338.py           0f8220351c64c56ccfa90c60edcdfa5f
+    docs/evidence/noarb_338_2026-08-06/noarb_table_338.py                  0f8220351c64c56ccfa90c60edcdfa5f
+    VERDICT: BYTE-IDENTICAL  (3 copies, 1 distinct md5)
+
+3 -- THE BOOT GUARD AND THE ACTIVE-PROVENANCE GUARD, from the FINAL BUILD's own output
+    LOADED-PROVENANCE OK  fv_modules=7 rl_model=/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o31f/bb_f2on/rl_aft
+    rl_model_md5 ................ 14000af2a46f7a3c4cdfde303f5a1aff   (unmoved from the entry tip: True)
+    config_manifest_identity .... eed19a75f775aeafe4ee5ea4b3990667
+    fv_identity ................. 6e9a370e5970c5aefa859858070f4c34
+    fv_identity_expected ........ 2621b56a32805f15b5084a45f851e882
+    THE expected_boot fv PIN IS STALE, BY DESIGN AND BY STANDING DECLARATION: fv_identity does
+    not equal fv_identity_expected, and it did not on the entry board either. It is carried as a
+    known, declared staleness (PREREG_31 P41, PREREG_31F F37), not repaired inside a pricing act.
+    ACTIVE-PROVENANCE GUARD: the build ran from a STAGED workspace and loaded ITS OWN rl_model.py
+    (rl_model.py) -- no foreign copy was installed for any board in this packet.
+
+4 -- THE IDENTITY GATE (the o29_gate lineage), DECLARED
+    The gate proves the BOARD side and the DERIVATION side speak one language: the RL_GRACE dial in
+    rl_model.py::disc_factor against the delivered-value lane's grace-A scores.
+    ORDER 31-F MOVES NEITHER SIDE. Measured, not asserted:
+      rl_model.py md5 14000af2a46f7a3c4cdfde303f5a1aff -- UNMOVED from the entry tip (the pin table above)
+      LAYER2.json / grace-A scores -- not read, not written, not re-derived by any 31-F act
+      the RL_GRACE default -- untouched; every 31-F build ran with RL_GRACE UNSET (the code default)
+    THEREFORE NO IDENTITY LITERAL MOVES AND NO RE-POINT IS MADE. The declaration PREREG_31F F36 asked
+    for is discharged as a NO-OP, and the reason is printed rather than the gate being re-run to
+    produce a number that could not have changed.
+    THE ONE RE-POINT THIS ORDER DOES MAKE is the EMITTER's, and it is a different object: the
+    RL_DAY0_FINAL-class guard in the disclosed emitter copy, declared in emit_matrix_31f.py's header,
+    diffed at 29 code-body lines, and re-proven FAIL-CLOSED at 89 of 89 against THIS board.
+
+5 -- THE BOOK RE-SEAL
+    The book re-seal fires when a MANIFEST pin moves. The manifest config_sha256 is UNMOVED (the pin
+    table above: data/model_config.json and config_manifest.py both unmoved), because the ORDER-31
+    block is a DECLARED DIAL and the head fix is an ARTIFACT re-stamp, neither of which is a manifest
+    change. **THE RE-SEAL DID NOT FIRE, and it did not fire for a stated reason rather than by being
+    skipped.**
+
+THE CONTROL VERDICT
+  moved-set asserted against the declaration .......... PASS
+  noarb_table_338.py byte-identical ................... PASS
+  boot guard / active-provenance ...................... PASS (expected_boot fv pin stale BY DESIGN)
+  identity gate ....................................... PASS (no-op: neither side moved)
+  book re-seal ........................................ did not fire (manifest unmoved)

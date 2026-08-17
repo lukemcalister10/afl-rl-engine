@@ -9,3 +9,14 @@ are byte-identical on every line below (the active-provenance guard: no foreign 
   f1off   -           78ad9842 (head-fixed) bce0c65d853722e52629ab97677a98e3   706,862  THE HEAD FIX ALONE, on the Step-2 law (+190)
   f1on    RL_O31=1    78ad9842 (head-fixed) c52a1deae0603bac343865453bdf9591   665,578  THE HEAD FIX ALONE, on the one law (+1,520)
   f2on    RL_O31=1    78ad9842 (head-fixed) fe6be9d6ac76ebc34d26ebc11d796505   666,913  + the re-derived fade/beta/rho/Phi + beta_pool
+
+  f2on2   RL_O31=1    78ad9842 (head-fixed) fe6be9d6ac76ebc34d26ebc11d796505   666,913  DETERMINISM: byte-identical rebuild
+  f2nophi +NOPHI=1    78ad9842 (head-fixed) e42ed909b152b97cbe291ad581ef8dec   686,238  the stall conditioning REMOVED (+19,325)
+  f2nobp  +NOBPOOL=1  78ad9842 (head-fixed) 485e729d8ce07fe20238e83a4bcd2677   662,485  beta_pool REMOVED (-4,428)
+
+THE FINAL CANDIDATE BOARD IS fe6be9d6ac76ebc34d26ebc11d796505, total 666,913.
+
+WALK-FORWARD EMIT (24 years, own worktree of HEAD 983d422, RL_O31=1, RL_DAY0_FINAL re-pointed):
+  per_entrant_O31FFINAL.json  d97f1aee   2,648 records   cost 1m46s
+  ORDER 31-F REPLICATION: 89 of 89 wired entrants reproduce this board's printed day-0 EXACTLY,
+  fail-closed, BEFORE a single record was written.

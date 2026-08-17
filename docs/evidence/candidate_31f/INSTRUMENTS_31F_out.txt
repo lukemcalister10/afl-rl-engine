@@ -1,0 +1,163 @@
+======================================================================================================================
+ORDER 31-F  F6 -- THE INSTRUMENTS.  YEAR-0 = THIS CANDIDATE'S OWN ENTRY LAW.
+======================================================================================================================
+  BASIS (the supervisor's filed resolution, #334 c.5310447449): year-0 is the price THIS BOARD
+  actually charges day 0 -- the head-fixed positional v0 for an ND in-curve row, the signed pool
+  cell for a pool row -- and years 1..7 are ev(p,Y) under the ONE LAW with RL_O31=1. Both ends of
+  every ratio below are on ONE ruler. The emitter proved it: 89 of 89 wired entrants reproduce this
+  board's printed day-0 EXACTLY, fail-closed, before a single record was written.
+  THE NUMERAIRE IS RE-PINNED and is the identity (s = 0.9400914291048137, unmoved) -- these tables
+  are NOT pre-numeraire.
+  matrices: CANDIDATE per_entrant_O31FFINAL.json d97f1aee   LIVE per_entrant_O25R4.json 3c6ffcde
+
+1 -- THE YEAR PATHS AS %% OF ENTRY  (yr0 = 100).  LIVE vs CANDIDATE, SIDE BY SIDE.
+
+  PRIMARY  cohorts 2005-2023
+    year                0        1        2        3        4        5        6        7
+    CANDIDATE       100.0    103.8    113.8    124.9    139.5    144.8    142.0    127.7
+    LIVE            100.0     80.8     97.4    107.0    112.9    111.0    105.6     92.6
+    diff             +0.0    +23.0    +16.4    +17.9    +26.6    +33.8    +36.4    +35.1
+    n                2216     2161     2216     2216     2216     2111     2008     1900
+    n_zero              0        0        0      683      864      975     1043     1077
+
+  MODERN   cohorts 2019-2023
+    year                0        1        2        3        4        5        6        7
+    CANDIDATE       100.0    101.2    104.9    109.9    116.1    130.2    118.3    108.7
+    LIVE            100.0     82.2     92.6     97.9     97.7    103.5     91.0     80.1
+    diff             +0.0    +19.0    +12.3    +12.0    +18.4    +26.8    +27.4    +28.6
+    n                 540      485      540      540      540      435      332      224
+    n_zero              0        0        0      167      211      198      176      135
+
+2 -- MARK-PATH and REVERSE NO-ARB.  The charge is 14% a year. A NEGATIVE MARGIN IS AN ARBITRAGE.
+    forward margin at node N->N+1  =  charge - (mark(N+1)/mark(N) - 1)
+    reverse margin at node N->N-1  =  (mark(N)/mark(N-1) - 1) - charge      [the same node, walked back]
+    A node with BOTH a negative forward and a negative reverse margin is a two-sided arbitrage.
+
+  O31FFINAL   PRIMARY  cohorts 2005-2023
+    node      mark(N)  mark(N+1)   fwd margin   rev margin    verdict
+    0->1        100.0      103.8      +10.24%      -10.24%     no arb
+    1->2        103.8      113.8       +4.31%       -4.31%     no arb
+    2->3        113.8      124.9       +4.25%       -4.25%     no arb
+    3->4        124.9      139.5       +2.35%       -2.35%     no arb
+    4->5        139.5      144.8      +10.17%      -10.17%     no arb
+    5->6        144.8      142.0      +15.93%      -15.93%     no arb
+    6->7        142.0      127.7      +24.04%      -24.04%     no arb
+
+  O31FFINAL   MODERN   cohorts 2019-2023
+    node      mark(N)  mark(N+1)   fwd margin   rev margin    verdict
+    0->1        100.0      101.2      +12.77%      -12.77%     no arb
+    1->2        101.2      104.9      +10.37%      -10.37%     no arb
+    2->3        104.9      109.9       +9.23%       -9.23%     no arb
+    3->4        109.9      116.1       +8.36%       -8.36%     no arb
+    4->5        116.1      130.2       +1.86%       -1.86%     no arb
+    5->6        130.2      118.3      +23.10%      -23.10%     no arb
+    6->7        118.3      108.7      +22.15%      -22.15%     no arb
+
+  O31FLIVE    PRIMARY  cohorts 2005-2023
+    node      mark(N)  mark(N+1)   fwd margin   rev margin    verdict
+    0->1        100.0       80.8      +33.23%      -33.23%     no arb
+    1->2         80.8       97.4       -6.55%       +6.55%   ARB(fwd)
+    2->3         97.4      107.0       +4.08%       -4.08%     no arb
+    3->4        107.0      112.9       +8.51%       -8.51%     no arb
+    4->5        112.9      111.0      +15.73%      -15.73%     no arb
+    5->6        111.0      105.6      +18.83%      -18.83%     no arb
+    6->7        105.6       92.6      +26.31%      -26.31%     no arb
+
+  O31FLIVE    MODERN   cohorts 2019-2023
+    node      mark(N)  mark(N+1)   fwd margin   rev margin    verdict
+    0->1        100.0       82.2      +31.75%      -31.75%     no arb
+    1->2         82.2       92.6       +1.47%       -1.47%     no arb
+    2->3         92.6       97.9       +8.19%       -8.19%     no arb
+    3->4         97.9       97.7      +14.22%      -14.22%     no arb
+    4->5         97.7      103.5       +8.14%       -8.14%     no arb
+    5->6        103.5       91.0      +26.04%      -26.04%     no arb
+    6->7         91.0       80.1      +25.98%      -25.98%     no arb
+
+  EVERY NEGATIVE FORWARD MARGIN, NAMED (this is the arbitrage list, printed in full):
+    O31FLIVE   PRIMARY  cohorts 2005-2023     1->2        -6.55%
+  NEGATIVE MARK-PATH MARGINS: 1 of 28 nodes across both bases.
+
+3 -- BOTH COHORT INSTRUMENTS, EVERY READING WITH ITS SIGN  (MARGINS_O31F.json, read not re-typed)
+    instr     window / group                     variant           yr1  margin v14%    verdict
+    allarm    PRIMARY  cohorts 2005-2023         O31FLIVE            -      +33.23%           
+    allarm    MODERN   cohorts 2019-2023         O31FLIVE            -      +31.75%           
+    allarm    PRIMARY  cohorts 2005-2023         O29CFINAL           -      -19.10%           
+    allarm    MODERN   cohorts 2019-2023         O29CFINAL           -      -12.48%           
+    allarm    PRIMARY  cohorts 2005-2023         O31FFINAL           -      +10.24%           
+    allarm    MODERN   cohorts 2019-2023         O31FFINAL           -      +12.77%           
+    legacy338 ALL picks 1-64                     O31FLIVE            -       +6.70%           
+    legacy338 picks 1-20                         O31FLIVE            -       +1.82%           
+    legacy338 picks 21-64                        O31FLIVE            -      +14.04%           
+    legacy338 ALL picks 1-64                     O29CFINAL           -      -16.74%           
+    legacy338 picks 1-20                         O29CFINAL           -      -17.12%           
+    legacy338 picks 21-64                        O29CFINAL           -      -16.12%           
+    legacy338 ALL picks 1-64                     O31FFINAL           -       +7.38%           
+    legacy338 picks 1-20                         O31FFINAL           -       -0.78%           
+    legacy338 picks 21-64                        O31FFINAL           -      +20.28%           
+
+    NEGATIVE MARGINS (arbitrages), NAMED IN FULL: 6 of 15 readings
+      allarm    PRIMARY  cohorts 2005-2023         O29CFINAL     -19.10%
+      allarm    MODERN   cohorts 2019-2023         O29CFINAL     -12.48%
+      legacy338 ALL picks 1-64                     O29CFINAL     -16.74%
+      legacy338 picks 1-20                         O29CFINAL     -17.12%
+      legacy338 picks 21-64                        O29CFINAL     -16.12%
+      legacy338 picks 1-20                         O31FFINAL      -0.78%
+    OF WHICH THIS CANDIDATE'S OWN: 1
+
+4 -- THE BY-ARM yr1 / yr4 VIEW (the all-arm instrument's own by_arm block, as a ratio to entry)
+
+  PRIMARY  cohorts 2005-2023
+    arm          n        yr1        yr4     LIVE yr1     LIVE yr4
+    ND        1314     1.0599     1.4519       1.0141       1.4803
+    RD         623     0.9301     1.1728       0.4379       0.5090
+    MSD         55        nan     0.7442          nan       0.6083
+    UNR         49     0.6342     1.1861       0.2052       0.6090
+    IRE         47     0.9471     1.1333       0.2276       0.2181
+    PDA         43     0.7723     1.0915       0.3062       0.5344
+    PDN         33     0.6284     0.7263       0.1522       0.1897
+    SSP         31     1.3817     1.5945       0.9846       0.8108
+    PDS         21     0.7116     0.6237       0.1329       0.1305
+
+  MODERN   cohorts 2019-2023
+    arm          n        yr1        yr4     LIVE yr1     LIVE yr4
+    ND         325     1.0285     1.2091       0.9962       1.2431
+    RD          66     0.8147     1.0841       0.3398       0.3989
+    MSD         55        nan     0.7442          nan       0.6083
+    SSP         31     1.3817     1.5945       0.9846       0.8108
+    PDN         25     0.6382     0.3738       0.1431       0.0982
+    UNR         13     0.6743     0.5747       0.2664       0.2777
+    PDA         13     0.6194     0.7970       0.1633       0.4705
+    IRE         12     0.5547     0.1211       0.1411       0.0260
+
+5 -- THE YEAR-1 / 2 / 3 CLASS VIEWS  (candidate board, cg band), with the named rows
+    cg band       n    CANDIDATE     ORDER-31       step-2         live    vs step-2
+    0            89        14240        13731        17244        18266        -3004
+    1-5          60        23002        22406        23347        25129         -345
+    6-15         87        39698        39806        47166        47757        -7468
+    16-35       104        64826        64752        78522        82563       -13696
+    36-70       111       109390       109814       121030       129627       -11640
+    71+         353       415757       413549       419363       449087        -3606
+
+    NAMED ROWS -- their own walk-forward path as %% of THEIR OWN entry price
+    row                  arm       cg       yr0    yr1 %    yr2 %    yr3 %    yr4 %
+    isaac-kako           ND        36     937.8    151.0     90.5        -        -
+    willem-duursma       ND        19    3444.3    122.2        -        -        -
+    dyson-sharp          ND        13    1520.5    157.9        -        -        -
+    jacob-farrow         ND        18    1355.6    162.5        -        -        -
+    noah-mraz            ND         4     477.8     55.8    252.6        -        -
+    nick-madden          PDA       10     215.1     55.5     55.5    163.7    350.0
+    liam-reidy           RD         7     391.6     55.5     61.8     59.4     68.3
+    luke-beecken         MSD        1     504.6     53.4     53.4        -        -
+    cooper-trembath      MSD       24     228.8    713.9        -        -        -
+    chris-scerri         SSP        7     130.9    186.2        -        -        -
+    josh-smillie         ND         0    1660.3     55.8     29.1        -        -
+    harry-demattia       ND         0     886.3     55.8     27.5     38.6        -
+    max-knobel           ND         0     669.9     55.8     27.5     39.7     39.7
+    toby-conway          ND         6    1123.8     55.8     59.8     95.7        -
+    marcus-herbert       MSD        8     377.3        -        -        -        -
+    jaxon-artemis        MSD        4     377.3        -        -        -        -
+    jai-newcombe         MSD      123     504.6    359.4    749.7    957.5    952.3
+    jack-martin          ND       181    2453.5     55.8     71.0     97.3    117.9
+    harry-sheezel        ND        88    2872.0    211.3    304.3    268.3    377.8
+    nicholas-martin      SSP       83     379.3    354.9    637.9   1249.6   1290.5
+
