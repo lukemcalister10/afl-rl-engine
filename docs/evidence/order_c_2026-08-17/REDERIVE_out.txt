@@ -1,0 +1,24 @@
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+population: 1986 players (classes 2005-2021, all-arm)
+leg-identity control PASS on 1986 rows (corrected-normalization legs)
+mature control set: 426 age-24+ played rows on the 2026 board (milan-murdock in set: True)
+corrected hindsight W (age-adjusted prod leg): 0.4127  90% CI [0.3117, 0.5560]
+corrected tercile targets: {'1-4/poor': 0.827, '1-4/mid': 1.055, '1-4/riser': 0.838, '5-9/poor': 0.854, '5-9/mid': 1.296, '5-9/riser': 1.988}
+
+STAGE-5 baseline (no re-mix, corrected legs): mean 1.0477  W(age) 0.2337  slope 0.9542  bands {'1-10': 1.163, '11-20': 1.131, '21-30': 1.052, '31-40': 0.879, '41-64': 0.881}  spread 0.283
+repaired point (k.24/11, e.41/14, alpha 1) ON CORRECTED LEGS: obj 33.0 W 0.3257 slope 1.0014 max_class 1.1375 bands {'1-10': 1.054, '11-20': 1.097, '21-30': 1.049, '31-40': 0.895, '41-64': 0.945}
+mature gate at the repaired point (self): 0.000000 board points (must be 0)
+  D-1: kappa+.02  -> mature max |delta|    4.331 board points (worst row marcus-herbert)  GATE FAIL
+  D-1: kappa-.02  -> mature max |delta|    4.331 board points (worst row marcus-herbert)  GATE FAIL
+  D-1: eta+.03    -> mature max |delta|    9.553 board points (worst row billy-cootee)  GATE FAIL
+  D-1: eta-.03    -> mature max |delta|    9.553 board points (worst row billy-cootee)  GATE FAIL
+  D-1: gu 11->10  -> mature max |delta|    1.673 board points (worst row ned-moyle)  GATE FAIL
+  D-1: gd 14->13  -> mature max |delta|    4.738 board points (worst row zach-reid)  GATE FAIL
+
+mature-identity gate over the 3960 knob points: 1 pass
+  closest knob points: k=0.24 gu=11 e=0.41 gd=14 -> mature max 0.0000 board pts
+  closest knob points: k=0.25 gu=12 e=0.41 gd=14 -> mature max 0.5199 board pts
+  closest knob points: k=0.35 gu=8 e=0.30 gd=4 -> mature max 0.5249 board pts
+  closest knob points: k=0.40 gu=8 e=0.25 gd=4 -> mature max 0.5304 board pts
+  closest knob points: k=0.15 gu=16 e=0.40 gd=6 -> mature max 0.5518 board pts
