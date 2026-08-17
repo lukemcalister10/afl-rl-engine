@@ -1,0 +1,11 @@
+REFERENCE SELF-CHECK: independent reimplementation vs committed RESOLVED_ALLROWS.json
+  804 rows, max |delta| = 0.0000000000   OK
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+
+1. beta30bn(g) vs beta_at(g)          4009 points  max |delta| = 0.000e+00  EXACT
+2. b_lift30bn(g,c) vs b_lift(g,c)     48108 points  max |delta| = 0.000e+00  EXACT
+3. engine _pv_resolved vs book()      14592 points  max |delta| = 1.819e-12  EXACT   
+
+WIRING PROOF: HELD — the wired law IS the resolution arithmetic, exactly.
+wrote LAWCHECK_30BN.json

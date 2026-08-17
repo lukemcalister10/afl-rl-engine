@@ -1,0 +1,34 @@
+ORDER 30B-N — EVERY BOARD BUILT BY THIS SEAT, IN ORDER, WITH ITS md5.
+Build script: bb30bn.sh == the committed bb30bp.sh (itself verbatim bb30b.sh) with ROOT re-pointed to
+this seat's worktree, scratch re-pointed to o30bn, and ONE pass-through added for RL_O30B_RESOLVED.
+NOTHING ELSE CHANGED: same staging, same five-var thread pinning, same RL_V0SURF_PKL override.
+ENGINE RUNS ARE STRICTLY SEQUENTIAL AND FOREGROUND. No build in this order was backgrounded.
+
+pinned every build:
+  rl_model.py            14000af2a46f7a3c4cdfde303f5a1aff
+  rl_model_data.json     cb38ef1171dcf20aae66ebf12682be0d   (the store -- UNMOVED)
+  pvc_curve_v2.json      06146b00daf2043487f58a8b9f842a1e   (the artifact -- UNMOVED)
+  data/v0surf.pkl        5dd34ca82735f5c8f021b1c7320df8f8   (UNMOVED since the preview commit 7a1c6ee,
+                                                             checked with git show, not assumed)
+  env  RL_GAMMA=1.0 RL_PICK1=3000 RL_RUCK_TAX=0.25 RL_RECENCY_DECAY=0.72 RL_PRIOR_TREES=400 PAR_RAMPS=22
+       PYTHONHASHSEED=0 + OPENBLAS/OMP/MKL/NUMEXPR/VECLIB _NUM_THREADS=1
+
+tag         dial                        rl_app_data.json md5                 note
+--------------------------------------------------------------------------------------------------
+bb_dialoff  present, unset              9298203135202a0c707bb0977ba38c31     P1 HELD — byte-exact with
+                                                                             BOTH new lanes in the file
+bb_prevctl  RL_O30B_PREVIEW=1           6a392bca7ad0dee04a6b4f037c758f65     P2 HELD — the committed
+                                                                             preview board, undisturbed
+bb_resA     RL_O30B_RESOLVED=1          d3c65bc46cebb656914cacb34a693b77     THE RESOLVED BOARD
+bb_resB     RL_O30B_RESOLVED=1          d3c65bc46cebb656914cacb34a693b77     P4 HELD — determinism
+
+CONTROLS READ, NOT BUILT:
+  88ce647f531030d8d2e094188b258191   the LIVE board (origin/main:engine/rl_after/rl_app_data.json)
+  36d5dfc73e2b508ece530bc7dfae2090   the committed rl_app_data.json at HEAD (the ORDER 29B entry board;
+                                     the repo's board file is deliberately NOT refreshed to the Step-2
+                                     board, because nothing in ORDER 30B is greenlit)
+
+CROSS-CHECK, RUN NOT ASSUMED: the bb_prevctl and bb_dialoff boards reproduce the `preview` and `step2`
+columns of the committed PREVIEW_MOVERS.json for all 804 rows with ZERO mismatches. The engine in this
+worktree is therefore the same pricing machine the preview seat ran, which is what makes the derived
+resolved board a legitimate control here at all.

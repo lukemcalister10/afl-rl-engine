@@ -406,7 +406,18 @@ def synth(pk,avg,pos,nyr=2): return {'player':'s','pos':GRPPOS.get(pos,midpos),'
 # and no third deletion path exists. Either ablation dial may still be set on its own, exactly as before.
 #
 # THE PREVIEW IS PRE-NUMERAIRE. Step 6's re-pin has NOT run; every table generated from this lane says so.
-_O30B_PREVIEW=os.environ.get('RL_O30B_PREVIEW','0')!='0'  # ORDER 30B-P: the whole preview lane
+# ===== ORDER 30B-N — THE RESOLVED CANDIDATE. A SECOND DECLARED DIAL, DEFAULT OFF, THAT EXTENDS THE ABOVE. =
+# #334 comment 5310246218. The owner is ruling on the RESOLVED configuration (ORDER 30B-R) and requires ITS
+# no-arb tables, so the resolved law has to exist AS A PRICE at as-of years, not only as a derived board.
+# RL_O30B_RESOLVED=1 IMPLIES RL_O30B_PREVIEW=1 — by the `or` on the next line and nowhere else. That is the
+# whole point: the resolved law swaps the BLEND FUNCTION and nothing else. The production leg it consumes is
+# the preview lane's finished production leg (pole DELETED, ISO DELETED, par denominators re-referenced to
+# the effective positional bars, both superseded anchor blends and the year-zero floor REPLACED). If the
+# resolved dial re-derived its own production leg it would no longer be the law RESOLVED_ALLROWS.json prices,
+# and the current-board row control could not be scored. NOTHING IS GREENLIT and NOTHING WIRES PERMANENTLY:
+# with both dials unset the committed board 9298203135202a0c707bb0977ba38c31 reproduces BYTE-EXACT.
+_O30B_RESOLVED=os.environ.get('RL_O30B_RESOLVED','0')!='0'  # ORDER 30B-N: the RESOLVED candidate's law
+_O30B_PREVIEW=(os.environ.get('RL_O30B_PREVIEW','0')!='0') or _O30B_RESOLVED  # ORDER 30B-P: the whole preview lane
 _O30B_NOPOLE=(os.environ.get('RL_O30B_NOPOLE','0')!='0') or _O30B_PREVIEW   # delete the PEDIGREE POLE leg from raw_ev
 _O30B_NOISO=(os.environ.get('RL_O30B_NOISO','0')!='0') or _O30B_PREVIEW     # delete the par-built ISO pick-tax from the production path
 # THE EFFECTIVE POSITIONAL BARS — the ONE object the preview re-references the two retained par denominators
@@ -3032,6 +3043,95 @@ if _O30B_PREVIEW:
         _s=sigma30bp(pv_games(p,Y))
         return (1.0-_s)*float(e)+_s*pv_pedigree(p)
     _PV['blend']=_pv_blend
+    # ---- ORDER 30B-N — THE RESOLVED LAW AT THE ev() LEVEL. -------------------------------------------
+    # It prices AS-OF YEARS, which the derived board could not: g is games-as-of-Y on the raw clock, D and
+    # c are the LIVE Step-2 fade and its continuous clock at Y, and P is the finished production leg at Y.
+    # THE ARITHMETIC IS TRANSCRIBED, NOT REDERIVED, from o30br_resolved.py::book() / o30br_allrows.py.
+    #
+    #   sitter  zero games at Y   v0 x D(c)          <- NOT REACHED HERE. _entry30b_price intercepts the row
+    #                                                   in the ev() wrapper above; the Step-2 wiring is
+    #                                                   untouched and day-0 prints stay byte-identical. The
+    #                                                   g<=0 case below is a CONTINUITY GUARD, not a branch:
+    #                                                   b_lift(0)=1 exactly, so it returns the same v0 x D.
+    #   thin    0 < g <= 10       v0 x D(c) x b_lift(g,c)      production does NOT enter (the T3 conflict)
+    #   bridge  10 < g < 16       thin10 + t x (d16 - thin10)  a DECLARED bridge, not a measurement
+    #   deep    g >= 16           P + beta(g) x v0             the additive reading (T1)
+    #
+    # CURRENCY. Every lane is homogeneous of degree 1 in currency, so the law commutes with the BOARD ->
+    # ENGINE conversion: P arrives in engine currency and pv_pedigree() already applies _PL_F, exactly as
+    # the preview blend does. No second numeraire is introduced and none is re-pinned. PRE-NUMERAIRE.
+    #
+    # T4 IS OPEN and this lane does NOT choose it: it prices the v0 OBJECT, which is the object
+    # RESOLVED_ALLROWS.json totals (715,228.6). The entry_anchor object is not wired here.
+    #
+    # POOL, DISCLOSED: fade30b_of() returns 1.0 for every pool row because the pool fade is STEP 4's work
+    # and is NOT DERIVED. A pool row therefore carries D=1.0 through the thin and bridge lanes. That is
+    # carried unchanged from the resolution arithmetic, which prints the same caveat on its own rows.
+    BETA30BN_PTS=((2.5,0.2968279384332228),(10.5,0.362259307264279),(25.5,0.22329587551741345),
+                  (53.0,0.15314862603013868),(85.5,0.020068021140596692))
+    BETA30BN_SRC=('ORDER 30B-R resolution/READING.json::beta_curve.points -- sigma_b := beta_v0 x mean(v0) /'
+                  ' mean(R), o30bm_measure.py::band_fit; log-linear in log(games) between band midpoints,'
+                  ' FLAT outside. #334 comment 5310246218')
+    # The cumulative backbone, by DEPTH LANE (2 if the fade clock c < 2.5 else 3). JOIN.json::backbone.
+    BACKBONE30BN={2:((0,0.5684),(2,0.656),(5,0.6936),(10,0.8236)),
+                  3:((0,0.36),(2,0.5933),(5,0.6807),(10,0.693))}
+    def beta30bn(g):
+        """The ADDITIVE reading's pedigree coefficient at g games. Log-linear in log(g) between the five
+        band midpoints, flat outside. Pure function of g -- no player state, trivially auditable.
+        NOTE, disclosed rather than smoothed: this curve is NOT monotone. It RISES from 2.5 to 10.5 games
+        before falling. That is what the band fit measured; it is carried, not patched."""
+        g=max(1e-6,float(g))
+        if g<=BETA30BN_PTS[0][0]: return BETA30BN_PTS[0][1]
+        if g>=BETA30BN_PTS[-1][0]: return BETA30BN_PTS[-1][1]
+        for _i in range(1,len(BETA30BN_PTS)):
+            g0,b0=BETA30BN_PTS[_i-1]; g1,b1=BETA30BN_PTS[_i]
+            if g0<=g<=g1:
+                _t=(_math.log(g)-_math.log(g0))/(_math.log(g1)-_math.log(g0))
+                return _math.exp(_math.log(b0)+_t*(_math.log(b1)-_math.log(b0)))
+        return BETA30BN_PTS[-1][1]
+    def b_lift30bn(g,c):
+        """The cumulative backbone as a LIFT ON THE SITTER PRICE: the lane's curve normalised by its own
+        g=0 value, so lift(0)=1 EXACTLY and the thin lane is continuous into the Step-2 sitter price at the
+        first game. Log-linear in log1p(g); beyond 10 games it extrapolates on the last segment's slope
+        (never reached in the thin lane, which ends at 10, but kept identical to the resolution's own
+        b_lift so the two cannot drift)."""
+        _pts=BACKBONE30BN[2 if c<2.5 else 3]
+        _b0=_pts[0][1]
+        _lift=[(_k,_v/_b0) for _k,_v in _pts]
+        if g<=0: return 1.0
+        _x=_math.log1p(float(g))
+        for _i in range(1,len(_lift)):
+            _k0,_l0=_lift[_i-1]; _k1,_l1=_lift[_i]
+            _x0,_x1=_math.log1p(_k0),_math.log1p(_k1)
+            if _x0<=_x<=_x1:
+                _t=(_x-_x0)/(_x1-_x0)
+                return _math.exp(_math.log(_l0)+_t*(_math.log(_l1)-_math.log(_l0)))
+        (_k0,_l0),(_k1,_l1)=_lift[-2],_lift[-1]
+        _sl=(_math.log(_l1)-_math.log(_l0))/(_math.log1p(_k1)-_math.log1p(_k0))
+        return _math.exp(_math.log(_l1)+_sl*(_x-_math.log1p(_k1)))
+    def _pv_resolved(p,Y,e):
+        """THE RESOLVED LAW: additive reading, v0 object, joined lanes, on the raw games-as-of-Y clock."""
+        _g=pv_games(p,Y)                   # raw career games as of Y (T2: the recency clock LOST)
+        _V=pv_pedigree(p)                  # the v0 object, ENGINE currency (T4 is OPEN; v0 is priced)
+        _D=fade30b_of(p,Y)                 # the LIVE Step-2 sitter fade at Y (1.0 for pool -- Step 4)
+        _c=fade30b_clock(p,Y)              # its continuous depth clock at Y
+        _P=float(e)                        # the finished production leg at Y
+        if _g<=10.0:                       # thin (and the g<=0 continuity guard: b_lift(0)=1 -> v0 x D)
+            return _V*_D*b_lift30bn(_g,_c)
+        if _g<16.0:                        # the DECLARED bridge
+            _t10=_V*_D*b_lift30bn(10.0,_c)
+            _d16=_P+beta30bn(16.0)*_V
+            _t=(_math.log1p(_g)-_math.log1p(10.0))/(_math.log1p(16.0)-_math.log1p(10.0))
+            return _t10+_t*(_d16-_t10)
+        return _P+beta30bn(_g)*_V          # deep: the additive reading
+    if _O30B_RESOLVED:
+        _PV['blend']=_pv_resolved
+        print('ORDER 30B-N RESOLVED CANDIDATE LIVE (RL_O30B_RESOLVED=1) — NOTHING IS GREENLIT, T4 (the '
+              'OBJECT) IS STILL OPEN, AND THIS BOARD IS PRE-NUMERAIRE. The preview lane\'s production leg '
+              'is consumed UNCHANGED (this dial implies RL_O30B_PREVIEW); only the BLEND FUNCTION is '
+              'swapped. ADDITIVE reading P + beta(g)xv0 · raw games-as-of-Y clock · JOINED lanes '
+              'sitter/thin<=10/bridge<16/deep>=16 · beta from the 30B-R band fit (NON-monotone, carried) · '
+              'backbone lift lane 2 if c<2.5 else 3. Pool fade NOT DERIVED (D=1.0) — Step 4.')
     _PV_ROWS=[p for p in MA.data if _isreal(p) and not p.get('_retired') and not delisted(p)
               and MA.GRP.get(p.get('pos')) and _entry30b_price(p,MA.BASE_REF) is None]
     print('ORDER 30B-P STEP-3 PREVIEW LIVE (RL_O30B_PREVIEW=1) — NOTHING IS GREENLIT, THE BOUNDARY IS STILL '
