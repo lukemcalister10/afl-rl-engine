@@ -1,0 +1,57 @@
+input: per_entrant_O33W.json md5 6e31f211 recs 2648
+primary rows 3218  censored rows 814  excl {'left_censor': 216}
+
+== M-BIAS ==
+  bias[ALL|full] anchor=3.088  27:B=0.9294 28:B=0.9521 29:B=0.952 30:B=0.9899 31:B=1.0414
+  bias[ALL|survivor] anchor=2.994  27:B=0.9349 28:B=0.9483 29:B=0.9292 30:B=0.9676 31:B=0.9356
+  bias[pos:TALL|full] anchor=2.605  27:B=1.0572 28:B=1.071 29:B=1.0543 30:B=1.3354* 31:B=1.0743
+  bias[pos:TALL|survivor] anchor=2.499  27:B=1.0842 28:B=1.0638 29:B=1.0398 30:B=1.2642 31:B=1.0323
+  bias[pos:SMALL|full] anchor=3.296  27:B=0.8915* 28:B=0.9047 29:B=0.9101 30:B=0.8632 31:B=1.0719
+  bias[pos:SMALL|survivor] anchor=3.202  27:B=0.8926* 28:B=0.9082 29:B=0.8802 30:B=0.867 31:B=0.9263
+  bias[pos:RUCK|full] anchor=2.873  27:B=0.9659 28:B=1.0592 29:B=1.0657 30:B=1.1152 31:B=None
+  bias[pos:RUCK|survivor] anchor=2.816  27:B=0.9592 28:B=1.0258 29:B=1.0563 30:B=None 31:B=None
+  bias[tier:star|full] anchor=2.985  27:B=0.9194 28:B=0.9117 29:B=0.9783 30:B=1.03 31:B=0.9944
+  bias[tier:star|survivor] anchor=2.967  27:B=0.9239 28:B=0.9175 29:B=0.9662 30:B=1.0366 31:B=0.9501
+  bias[tier:mid|full] anchor=3.529  27:B=0.8836 28:B=1.0066 29:B=0.7012 30:B=0.8897 31:B=1.4098
+  bias[tier:mid|survivor] anchor=3.287  27:B=0.8819 28:B=0.9659 29:B=0.6911* 30:B=0.7513 31:B=0.9384
+  bias[tier:role|full] anchor=3.372  27:B=1.2768 28:B=1.6624* 29:B=3.577* 30:B=0.7313 31:B=0.9037
+  bias[tier:role|survivor] anchor=2.592  27:B=1.3664 28:B=1.6428* 29:B=2.0595* 30:B=0.4948 31:B=0.7352
+  bias[era:<=2015|full] anchor=2.767  27:B=0.9983 28:B=0.946 29:B=1.2451* 30:B=None 31:B=None
+  bias[era:<=2015|survivor] anchor=2.703  27:B=1.0028 28:B=0.9325 29:B=1.2599* 30:B=None 31:B=None
+  bias[era:2016+|full] anchor=3.923  27:B=0.753* 28:B=0.7732* 29:B=0.7266* 30:B=0.7403* 31:B=0.8154
+  bias[era:2016+|survivor] anchor=3.753  27:B=0.7644* 28:B=0.7812* 29:B=0.7121* 30:B=0.7315* 31:B=0.7461*
+
+== EXIT SHARE (primary, full) ==
+  age 23 n=619 exit(no season after Y)=0.132  R==0 share=0.132
+  age 24 n=558 exit(no season after Y)=0.142  R==0 share=0.142
+  age 25 n=486 exit(no season after Y)=0.130  R==0 share=0.130
+  age 26 n=413 exit(no season after Y)=0.136  R==0 share=0.136
+  age 27 n=348 exit(no season after Y)=0.129  R==0 share=0.129
+  age 28 n=287 exit(no season after Y)=0.129  R==0 share=0.129
+  age 29 n=234 exit(no season after Y)=0.201  R==0 share=0.201
+  age 30 n=167 exit(no season after Y)=0.222  R==0 share=0.222
+  age 31 n=106 exit(no season after Y)=0.236  R==0 share=0.236
+
+== M-RATE (survivor-linked pairs) ==
+  26->27 n=340 engine 0.807 realized 0.802 delta 0.005 [-0.051,0.062] match
+  27->28 n=285 engine 0.791 realized 0.748 delta 0.043 [-0.024,0.113] match
+  28->29 n=230 engine 0.744 realized 0.698 delta 0.046 [-0.038,0.135] match
+  29->30 n=165 engine 0.752 realized 0.662 delta 0.090 [-0.012,0.210] match
+  30->31 n=106 engine 0.781 realized 0.632 delta 0.149 [0.017,0.310] engine_shallower
+
+== M-RANK (Spearman mark vs R, full primary) ==
+  ALL age 27 n=348 rho=0.748 [0.703,0.789]
+  ALL age 28 n=287 rho=0.720 [0.667,0.761]
+  ALL age 29 n=234 rho=0.696 [0.635,0.749]
+  ALL age 30 n=167 rho=0.643 [0.553,0.718]
+  ALL age 31 n=106 rho=0.565 [0.429,0.678]
+  era<=2015 age 27 n=126 rho=0.758 [0.675,0.823]
+  era<=2015 age 28 n=57 rho=0.570 [0.390,0.718]
+  era<=2015 age 29 n=30 rho=0.826 [0.686,0.897]
+  era2016+ age 27 n=222 rho=0.737 [0.673,0.788]
+  era2016+ age 28 n=230 rho=0.753 [0.703,0.793]
+  era2016+ age 29 n=204 rho=0.682 [0.613,0.738]
+  era2016+ age 30 n=152 rho=0.635 [0.543,0.717]
+  era2016+ age 31 n=98 rho=0.569 [0.426,0.688]
+
+wrote RESULTS_W5_O33W.json

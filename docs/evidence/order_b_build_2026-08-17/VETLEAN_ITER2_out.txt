@@ -1,0 +1,6 @@
+rebuilt primary rows 3218 (W5: 3218)
+rows with no trailing-2 L (ratio held 1.0, disclosed): 387
+offline B at the iter-1 point: 27:0.949 28:1.008 29:1.055 30:1.338 31:1.234
+admissible: 0 of 255
+EMPTY at iter 2 — frontier head rho0=0.025 g=0.0100 min 0.941 cells 27:1.105 28:0.987 29:0.946 30:1.175 31:0.941
+wrote VETLEAN_ITER2.json
