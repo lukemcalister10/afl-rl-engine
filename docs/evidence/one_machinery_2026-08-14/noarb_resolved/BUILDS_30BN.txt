@@ -32,3 +32,6 @@ CROSS-CHECK, RUN NOT ASSUMED: the bb_prevctl and bb_dialoff boards reproduce the
 columns of the committed PREVIEW_MOVERS.json for all 804 rows with ZERO mismatches. The engine in this
 worktree is therefore the same pricing machine the preview seat ran, which is what makes the derived
 resolved board a legitimate control here at all.
+bb_dialoff2 present, unset             9298203135202a0c707bb0977ba38c31     re-verified AFTER every code
+                                                                             and document change in this
+                                                                             order; third identical dial-off
