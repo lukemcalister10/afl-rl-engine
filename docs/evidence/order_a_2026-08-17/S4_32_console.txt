@@ -1,4 +1,4 @@
-inputs: CAND per_entrant_O32RFINAL.json md5 44a55fcf  |  OLD per_entrant_O29CFINAL.json md5 6db06e40
+inputs: CAND per_entrant_O32RFINAL.json md5 f4300308  |  OLD per_entrant_O29CFINAL.json md5 6db06e40
 vantage N=0: cohort 2311 (ND 1265, pool 1046); excluded window_closed=0 future_unobs=121
 vantage N=1: cohort 2193 (ND 1201, pool 992); excluded window_closed=0 future_unobs=239
 vantage N=2: cohort 2074 (ND 1137, pool 937); excluded window_closed=21 future_unobs=337
@@ -7,6 +7,6 @@ vantage N=4: cohort 1152 (ND 807, pool 345); excluded window_closed=726 future_u
 vantage N=5: cohort 961 (ND 680, pool 281); excluded window_closed=829 future_unobs=642
 vantage N=6: cohort 818 (ND 574, pool 244); excluded window_closed=872 future_unobs=742
 
-PRIMARY ND (N=1..6 x 2 horizons x 2 metrics): {'candidate': 9, 'tie': 11, 'oldlaw': 4}
-ALL SCORED CELLS: {'candidate': 74, 'tie': 188, 'oldlaw': 18}
+PRIMARY ND (N=1..6 x 2 horizons x 2 metrics): {'candidate': 10, 'tie': 8, 'oldlaw': 6}
+ALL SCORED CELLS: {'candidate': 86, 'tie': 173, 'oldlaw': 21}
 wrote RESULTS_S4.json  cells=148

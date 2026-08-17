@@ -1,5 +1,5 @@
 ORDER A / CANDIDATE 32 — S4 rescore controls
-  C32 matrix   md5 44a55fcf
+  C32 matrix   md5 f4300308
   base matrix  md5 d97f1aee (d97f1aee = the committed S4 candidate input)
   CONTROL v0 column identical on all 2648 ......... PASS
   CONTROL yrs/seasons identical on all 2648 ....... PASS
@@ -13,19 +13,19 @@ S4 SCORER RUN WHOLE — committed md5 241842f61ddd3c486f04f201a7efcce9, as-run m
 
 === PRIMARY ND CELLS: Candidate 32 vs Candidate 31 vs the old law (M1 Spearman) ===
   N   hz         n  rho_old  rho_c31  rho_c32    S4 verd   C32 verd  recovery
-  1   dv1     1201    0.485    0.570    0.572  candidate  candidate      -3%
-  1   dvrest  1201    0.528    0.576    0.576  candidate  candidate      -0%
-  2   dv1     1137    0.626    0.668    0.666  candidate  candidate      +4%
-  2   dvrest  1137    0.643    0.677    0.680  candidate  candidate      -9%
-  3   dv1      955    0.665    0.677    0.683        tie  candidate     -52%
-  3   dvrest   955    0.692    0.689    0.704        tie        tie    +585%
-  4   dv1      807    0.701    0.681    0.694     oldlaw        tie     +65%
-  4   dvrest   807    0.751    0.729    0.744     oldlaw        tie     +69%
-  5   dv1      680    0.718    0.704    0.711     oldlaw     oldlaw     +51%
-  5   dvrest   680    0.765    0.748    0.757     oldlaw     oldlaw     +51%
-  6   dv1      574    0.733    0.726    0.730     oldlaw        tie     +51%
+  1   dv1     1201    0.485    0.570    0.572  candidate  candidate      -2%
+  1   dvrest  1201    0.528    0.576    0.577  candidate  candidate      -1%
+  2   dv1     1137    0.626    0.668    0.671  candidate  candidate      -7%
+  2   dvrest  1137    0.643    0.677    0.682  candidate  candidate     -15%
+  3   dv1      955    0.665    0.677    0.684        tie  candidate     -67%
+  3   dvrest   955    0.692    0.689    0.704        tie  candidate    +588%
+  4   dv1      807    0.701    0.681    0.694     oldlaw     oldlaw     +62%
+  4   dvrest   807    0.751    0.729    0.744     oldlaw     oldlaw     +67%
+  5   dv1      680    0.718    0.704    0.711     oldlaw     oldlaw     +54%
+  5   dvrest   680    0.765    0.748    0.757     oldlaw     oldlaw     +52%
+  6   dv1      574    0.733    0.726    0.730     oldlaw        tie     +53%
   6   dvrest   574    0.801    0.791    0.795     oldlaw     oldlaw     +40%
 
-  A6 READING: 6 S4 old-law-won primary M1 cells (years 4-6); MEDIAN RECOVERY +51%; per-cell ['N4 dv1 +65%', 'N4 dvrest +69%', 'N5 dv1 +51%', 'N5 dvrest +51%', 'N6 dv1 +51%', 'N6 dvrest +40%']
+  A6 READING: 6 S4 old-law-won primary M1 cells (years 4-6); MEDIAN RECOVERY +53%; per-cell ['N4 dv1 +62%', 'N4 dvrest +67%', 'N5 dv1 +54%', 'N5 dvrest +52%', 'N6 dv1 +53%', 'N6 dvrest +40%']
   years 1-3 candidate wins retained: 4 of 4 (all)
-  old-law cells no longer old-law wins: 3 of 6 -> [(4, 'dv1', 'tie'), (4, 'dvrest', 'tie'), (6, 'dv1', 'tie')]
+  old-law cells no longer old-law wins: 1 of 6 -> [(6, 'dv1', 'tie')]

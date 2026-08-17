@@ -17,8 +17,8 @@ ROOT = os.path.dirname(os.path.dirname(EV))
 SP = os.environ.get('RL_SCRATCH', '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o32')
 md5 = lambda p: hashlib.md5(open(p, 'rb').read()).hexdigest()
 
-BOARDS = {'cand': 'bb_final', 'cand2': 'bb_final2', 's1': 'bb_s1', 's2': 'bb_s2', 's3': 'bb_s3',
-          's4': 'bb_s4', 's5': 'bb_s5', 'c31': 'bb_h1o31', 'off': 'bb_h0off'}
+BOARDS = {'cand': 'bb_rfinal', 'cand2': 'bb_rfinal2', 's1': 'bb_s1', 's2': 'bb_s2', 's3': 'bb_s3',
+          's4': 'bb_s4', 's5': 'bb_s5', 'c31': 'bb_r0o31', 'off': 'bb_r0off'}
 BD = {}
 for k, d in BOARDS.items():
     p = os.path.join(SP, d, 'rl_after', 'rl_app_data.json')
@@ -52,7 +52,7 @@ G = {k: NSE.get(k) for k in
      ('rho31', 'beta31', 'phi31', 'phistall31', 'o31_cu', 'o31_D', 'o31_stall_run', 'o31_pi',
       'pv_games', 'pv_pedigree', 'ev', '_PL_F', 'fade30b_clock', 'o31_pool_D', 'o31_fade_D',
       '_O30BP_BARS', '_O30B_NOPOLE', '_O30B_NOISO', '_PV', 'o32_gate_bar', 'o32_sigma_sel',
-      'o32_delivered', 'O32_LAMBDA', 'O32_KAPPA', 'O32_GAMMA', 'O32_ETA', 'O32_GAMMA_D', '_O32S',
+      'o32_delivered', 'o32_age_credit', 'O32_LAMBDA', 'O32_KAPPA', 'O32_GAMMA', 'O32_ETA', 'O32_GAMMA_D', '_O32S',
       'delisted', '_isreal')}
 missing = [k for k, v in G.items() if v is None]
 if missing:
@@ -111,7 +111,8 @@ def continuity(p, gmax=20):
     cand = BD['cand']['rows'][p.get('key') or MA.slug(p['player'])]['v']
     pi_now = float(G['o31_pi'](p, BASE, g_now))
     V0 = float(G['pv_pedigree'](p)) / F
-    Phat = max(0.0, cand - pi_now * V0) / max(1e-9, float(G['rho31'](g_now))) if g_now > 0 else None
+    cr_now = float(G['o32_age_credit'](p, BASE, g_now)) / F      # the R1 age credit, the law's own
+    Phat = max(0.0, cand - pi_now * V0 - cr_now) / max(1e-9, float(G['rho31'](g_now))) if g_now > 0 else None
     if Phat is None:
         Phat = float(G['_O30BP_BARS'].get(MA.gfut(p), 70.0)) * 20.0
     D = float(G['o31_D'](p, BASE)); s = int(G['o31_stall_run'](p, BASE))
@@ -119,7 +120,8 @@ def continuity(p, gmax=20):
     for gg in range(0, gmax + 1):
         r = float(G['rho31'](gg))
         pi = float(G['o31_pi'](p, BASE, float(gg)))
-        out.append({'g': gg, 'price': r * Phat + pi * V0, 'rho': r, 'pi': pi})
+        cr = float(G['o32_age_credit'](p, BASE, float(gg))) / F
+        out.append({'g': gg, 'price': r * Phat + pi * V0 + cr, 'rho': r, 'pi': pi})
     return Phat, V0, D, s, out
 
 CONT_KEYS = ['lachlan-carmichael', 'josh-smillie', 'harry-demattia', 'max-knobel', 'dyson-sharp',
@@ -143,7 +145,8 @@ for k in CONT_KEYS:
     for eps in (1e-2, 1e-4, 1e-6, 1e-9):
         r = float(G['rho31'](eps))
         pi_e = float(G['o31_pi'](p, BASE, eps))
-        lim.append({'g': eps, 'price': r * Phat + pi_e * V0})
+        cr_e = float(G['o32_age_credit'](p, BASE, eps)) / F
+        lim.append({'g': eps, 'price': r * Phat + pi_e * V0 + cr_e})
     p0 = cur[0]['price']
     gap = abs(lim[-1]['price'] - p0) / max(1e-9, abs(p0))
     CONT[k] = {'Phat_fixed': Phat, 'v0': V0, 'D': D, 's': s, 'step_0_to_1_pct': step01,
@@ -221,7 +224,8 @@ for r in rows:
 NAMED = ['lachlan-carmichael', 'josh-smillie', 'phoenix-gothard', 'billy-wilson', 'harry-dean',
          'cooper-duff-tytler', 'kye-annand', 'lukas-cooke', 'chris-scerri', 'thomas-burton',
          'milan-murdock', 'nick-madden', 'jedd-busslinger', 'isaac-kako', 'alex-dodson',
-         'will-green', 'william-mccabe', 'charlie-edwards', 'xavier-taylor', 'daniel-annable']
+         'will-green', 'william-mccabe', 'charlie-edwards', 'xavier-taylor', 'daniel-annable',
+         'ty-gallop', 'charlie-west']
 BY = {r['key']: r for r in rows}
 
 # ---------------------------------------------------------------- reconciliation

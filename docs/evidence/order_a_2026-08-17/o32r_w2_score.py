@@ -21,11 +21,11 @@ HARNESS_MD5 = hashlib.md5(_txt.encode()).hexdigest()
 SUBS = [
     ("CAND_P = SP + '/per_entrant_O31FFINAL.json'", "CAND_P = SP + '/per_entrant_O32RFINAL.json'"),
     ("assert md5f(CAND_P) == 'd97f1aee4161ebcf785cd635ed095038', 'matrix md5 mismatch'",
-     "assert md5f(CAND_P) == '44a55fcf171cdca737e413bf2a288569', 'matrix md5 mismatch'"),
+     "assert md5f(CAND_P) == 'f43003083af56e4d5074e0f38c2bb605', 'matrix md5 mismatch'"),
     ("assert A['meta']['engine_head'] == '71d9949a', 'engine head mismatch'",
-     "assert A['meta']['engine_head'] == '0e07ecea', 'engine head mismatch'"),
+     "assert A['meta']['engine_head'] == 'bf63592c', 'engine head mismatch'"),
     ("print('identity OK: matrix md5 d97f1aee store cb38ef11 head 71d9949a n=2648')",
-     "print('identity OK: matrix md5 44a55fcf store cb38ef11 head 0e07ecea n=2648')"),
+     "print('identity OK: matrix md5 f4300308 store cb38ef11 head bf63592c n=2648')"),
     ("with open(os.path.join(HERE, 'RESULTS_W2.json'), 'w') as f:",
      "with open(os.path.join(%r, 'W2_32R_RESULTS.json'), 'w') as f:" % HERE),
 ]

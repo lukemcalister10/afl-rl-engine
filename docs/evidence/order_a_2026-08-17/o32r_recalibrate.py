@@ -492,6 +492,25 @@ if not feas:
                    fail_counts=dict(FAILCOUNT)),
               open(os.path.join(HERE, 'REMIX_32R_DIAG.json'), 'w'), indent=1, sort_keys=True, default=float)
     _s.exit('NO FEASIBLE POINT — diagnosis written to REMIX_32R_DIAG.json')
+# DECLARED REFINEMENT PASS (same selection law — min corrected-surface SSE inside the ruled
+# gates; nothing else): the coarse grid left ONE feasible point, so the region around the
+# feasible set is refined before choosing. No named row, band spread or matrix figure enters
+# the selection (amendment A2).
+REF_K = [round(0.22 + 0.02 * i, 2) for i in range(0, 11)]
+REF_GU = [7.0, 8.0, 9.0, 10.0, 11.0]
+REF_E = [round(0.38 + 0.03 * i, 2) for i in range(0, 8)]
+REF_GD = [9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 16.0]
+for kap in REF_K:
+    for gu in REF_GU:
+        if not rho32_monotone(kap, gu):
+            continue
+        for eta in REF_E:
+            for gd in REF_GD:
+                M = metrics(kap, gu, eta, gd)
+                if (0.885 <= M['slope'] <= 1.115) and (W_LO <= M['W'] <= W_HI) \
+                        and (M['max_class'] <= 1.139) and continuity_ok(kap, gu, eta, gd):
+                    feas.append(M)
+print('after the declared refinement pass: %d feasible points' % len(feas))
 pool = feas
 for M in sorted(pool, key=lambda m: m['obj'])[:10]:
     print('  k=%.2f gu=%.0f e=%.2f gd=%.0f | obj %5.1f W %.3f sl %.3f mean %.4f mx %.4f | bands %s spread %.3f'

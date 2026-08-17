@@ -1,27 +1,27 @@
 ==== REPAIRED CANDIDATE — W2 SCORECARD, BOTH SURFACES ====
-flat-bar surface (continuity of record): mean 2005-15 1.0425 | classes [0.8501, 1.1384] | slope 1.0172 | W 0.0958
-  hard 1.14 line: max class 1.1384 -> PASS
-  g=0 gap -0.0163 (band +-0.10) -> PASS
+flat-bar surface (continuity of record): mean 2005-15 1.0397 | classes [0.8556, 1.1375] | slope 1.0013 | W 0.0919
+  hard 1.14 line: max class 1.1375 -> PASS
+  g=0 gap -0.0168 (band +-0.10) -> PASS
 
 CORRECTED (age-fair) surface — the repair's own yardstick:
-  W (age-adjusted prod leg): candidate 0.3418 vs hindsight 0.4127, CI [0.3117, 0.5560] -> IN BAND
+  W (age-adjusted prod leg): candidate 0.3258 vs hindsight 0.4127, CI [0.3117, 0.5560] -> IN BAND
   5-9g terciles (price vs realized, age-fair cuts):
-    5-9/poor   n  64  price 1.105  realized 0.854  gap -0.250
-    5-9/mid    n  64  price 1.458  realized 1.296  gap -0.161
-    5-9/riser  n  64  price 1.917  realized 1.988  gap +0.070
+    5-9/poor   n  64  price 1.115  realized 0.854  gap -0.261
+    5-9/mid    n  64  price 1.443  realized 1.296  gap -0.146
+    5-9/riser  n  64  price 1.852  realized 1.988  gap +0.135
 
 BAND-LEVEL FAIR YR1 (addendum 3): fair = 1.14 x (1 - the band's own year-1 delivered share)
   band         n  yr1 dlv share   fair yr1   mark yr1  gap vs fair
-  1-10       170          0.017      1.120      1.026       -0.094
-  11-20      170          0.026      1.111      1.088       -0.023
-  21-30      170          0.014      1.124      1.053       -0.071
-  31-40      170          0.033      1.103      0.903       -0.199
-  41-64      399          0.029      1.107      0.974       -0.133
-  RD         565          0.061      1.071      1.065       -0.005
-  MSD         29          0.090      1.038      0.790       -0.248
-  SSP         24          0.213      0.897      1.645       +0.747
-  UNR         46          0.009      1.130      0.578       -0.552
-  IRE         46          0.008      1.130      1.297       +0.167
-  PDA         38          0.003      1.137      0.924       -0.213
-  PDN         24          0.000      1.140      0.682       -0.458
-  PDS         21          0.001      1.139      0.805       -0.335
+  1-10       170          0.017      1.120      1.054       -0.067
+  11-20      170          0.026      1.111      1.097       -0.014
+  21-30      170          0.014      1.124      1.049       -0.075
+  31-40      170          0.033      1.103      0.895       -0.208
+  41-64      399          0.029      1.107      0.945       -0.162
+  RD         565          0.061      1.071      1.029       -0.042
+  MSD         29          0.090      1.038      0.789       -0.249
+  SSP         24          0.213      0.897      1.616       +0.719
+  UNR         46          0.009      1.130      0.581       -0.549
+  IRE         46          0.008      1.130      1.194       +0.064
+  PDA         38          0.003      1.137      0.881       -0.256
+  PDN         24          0.000      1.140      0.658       -0.482
+  PDS         21          0.001      1.139      0.791       -0.349

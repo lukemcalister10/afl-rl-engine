@@ -3343,10 +3343,10 @@ if _O30B_PREVIEW:
     # the ruled at-bar continuity object (integer-step, the ledger's own gate, age credit
     # included)} — ONE feasible point on the grid; the vantage matrix and band spreads are
     # DIAGNOSTIC-ONLY and justified no part of this choice (amendment A2).
-    O32_KAPPA=0.30
-    O32_GAMMA=8.0
-    O32_ETA=0.50
-    O32_GAMMA_D=12.0
+    O32_KAPPA=0.24
+    O32_GAMMA=11.0
+    O32_ETA=0.41
+    O32_GAMMA_D=14.0
     def o31_pool_D(c):
         if c<=1.0: return 1.0
         if c>=O31_POOL_FLAT_FROM: return O31_POOL_D[O31_POOL_FLAT_FROM]

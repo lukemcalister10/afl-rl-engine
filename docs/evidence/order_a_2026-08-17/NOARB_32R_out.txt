@@ -8,15 +8,15 @@ TWO-SIDED FIVE-BAND TABLE (ND, draft clock, extended 338 instrument) — before 
 ====================================================================================================
 A group is fairly priced if it appreciates BETWEEN 0%% and +14%% over its first year.
 band             |  C31 yr0-1       sell        buy |  32R yr0-1       sell        buy
-ALL picks 1-64   |     +6.62%         ok         ok |     +1.14%         ok         ok
-picks 1-20       |    +14.78%         ok        RED |     +4.37%         ok         ok
-picks 21-64      |     -6.28%        RED         ok |     -3.96%        RED         ok
-picks 1-10       |    +16.19%         ok        RED |     +3.31%         ok         ok
-picks 11-20      |    +12.04%         ok         ok |     +6.43%         ok         ok
-picks 21-30      |     +3.68%         ok         ok |     +2.03%         ok         ok
-picks 31-40      |    -12.38%        RED         ok |    -12.07%        RED         ok
-picks 41-64      |    -11.36%        RED         ok |     -3.27%        RED         ok
-five-band spread (widest minus narrowest): C31 28.6 points -> repair 18.5 points  [DIAGNOSTIC — reported, not targeted]
+ALL picks 1-64   |     +6.62%         ok         ok |     +1.95%         ok         ok
+picks 1-20       |    +14.78%         ok        RED |     +6.56%         ok         ok
+picks 21-64      |     -6.28%        RED         ok |     -5.34%        RED         ok
+picks 1-10       |    +16.19%         ok        RED |     +6.13%         ok         ok
+picks 11-20      |    +12.04%         ok         ok |     +7.40%         ok         ok
+picks 21-30      |     +3.68%         ok         ok |     +1.62%         ok         ok
+picks 31-40      |    -12.38%        RED         ok |    -12.88%        RED         ok
+picks 41-64      |    -11.36%        RED         ok |     -6.14%        RED         ok
+five-band spread (widest minus narrowest): C31 28.6 points -> repair 20.3 points  [DIAGNOSTIC — reported, not targeted]
 
 ====================================================================================================
 TWO-SIDED POOL-ARM TABLE (cohort clock, all-arm instrument semantics) — repair, both windows
@@ -28,27 +28,27 @@ zero and never printed as a blank. The n_pre column is that count.
 
 --- PRIMARY 2005-2023 ---
 arm          n |      yr0      yr1      yr2      yr4      yr8 |     yr0->1  n_pre      sell side       buy side
-RD         623 |   1.0000   1.0474   1.2227   1.2162   1.0094 |     +4.74%      0             ok             ok
+RD         623 |   1.0000   1.0116   1.2001   1.2190   1.0097 |     +1.16%      0             ok             ok
 MSD         55 | (window has no year-1 cell)
-SSP         31 |   1.0000   1.5516   1.6264   1.6415   0.3025 |    +55.16%      0             ok            RED
-UNR         49 |   1.0000   0.6212   0.8284   1.2280   0.4018 |    -37.88%      0            RED             ok
-IRE         47 |   1.0000   1.2746   1.6327   1.1800   1.2621 |    +27.46%      0             ok            RED
-PDA         43 |   1.0000   0.8963   1.0010   1.1775   0.7328 |    -10.37%      0            RED             ok
-PDN         33 |   1.0000   0.6954   1.1632   0.8655   0.9076 |    -30.46%      0            RED             ok
-PDS         21 |   1.0000   0.8048   0.8751   0.7288   0.2994 |    -19.52%      0            RED             ok
-ALLPOOL   1016 |   1.0000   1.0312   1.1740   1.1694   1.0519 |     +3.12%     55             ok             ok
+SSP         31 |   1.0000   1.5317   1.6145   1.6414   0.3017 |    +53.17%      0             ok            RED
+UNR         49 |   1.0000   0.6224   0.8189   1.2273   0.4022 |    -37.76%      0            RED             ok
+IRE         47 |   1.0000   1.1744   1.5605   1.1876   1.2620 |    +17.44%      0             ok            RED
+PDA         43 |   1.0000   0.8566   0.9596   1.1684   0.7326 |    -14.34%      0            RED             ok
+PDN         33 |   1.0000   0.6663   1.0784   0.8751   0.9071 |    -33.37%      0            RED             ok
+PDS         21 |   1.0000   0.7907   0.8360   0.7321   0.3024 |    -20.93%      0            RED             ok
+ALLPOOL   1016 |   1.0000   0.9954   1.1479   1.1717   1.0522 |     -0.46%     55            RED             ok
 
 --- MODERN 2019-2023 ---
 arm          n |      yr0      yr1      yr2      yr4      yr8 |     yr0->1  n_pre      sell side       buy side
-RD          66 |   1.0000   0.8722   1.0675   1.0916   1.5904 |    -12.78%      0            RED             ok
+RD          66 |   1.0000   0.8508   1.0196   1.0985   1.5899 |    -14.92%      0            RED             ok
 MSD         55 | (window has no year-1 cell)
-SSP         31 |   1.0000   1.5516   1.6264   1.6415   0.3025 |    +55.16%      0             ok            RED
-UNR         13 |   1.0000   0.7218   0.8161   0.5529   0.0075 |    -27.82%      0            RED             ok
-IRE         12 |   1.0000   0.5547   0.5574   0.1848   0.0823 |    -44.53%      0            RED             ok
-PDA         13 |   1.0000   0.6419   0.7767   0.9346   0.0989 |    -35.81%      0            RED             ok
-PDN         25 |   1.0000   0.7377   1.2364   0.4941   0.2359 |    -26.23%      0            RED             ok
+SSP         31 |   1.0000   1.5317   1.6145   1.6414   0.3017 |    +53.17%      0             ok            RED
+UNR         13 |   1.0000   0.7166   0.7868   0.5656   0.0074 |    -28.34%      0            RED             ok
+IRE         12 |   1.0000   0.5547   0.5564   0.1808   0.0821 |    -44.53%      0            RED             ok
+PDA         13 |   1.0000   0.6312   0.7541   0.9212   0.0987 |    -36.88%      0            RED             ok
+PDN         25 |   1.0000   0.6959   1.1563   0.4906   0.2354 |    -30.41%      0            RED             ok
 PDS          0 | (window has no year-1 cell)
-ALLPOOL    229 |   1.0000   0.9682   0.9856   0.9341   0.7213 |     -3.18%     55            RED             ok
+ALLPOOL    229 |   1.0000   0.9448   0.9609   0.9349   0.7208 |     -5.52%     55            RED             ok
 
 ====================================================================================================
 VANTAGE-CONSISTENCY MATRIX — DIAGNOSTIC ONLY (amendment A2: nothing was calibrated toward this)
@@ -57,49 +57,49 @@ Reading guide: each cell is how much the group is priced to GROW from vantage ye
 next k years. The carry column is the fair benchmark (1.14^k). A well-priced group sits near
 the carry from EVERY vantage. Divergence is printed RED as a FINDING for investigation.
 
-picks 1-10   (fair yr1 mark 1.120; actual yr1 mark 1.026 — 9 points below fair)
+picks 1-10   (fair yr1 mark 1.120; actual yr1 mark 1.054 — 7 points below fair)
   vantage           k=1        k=2        k=3        k=4 | carry: 1.14 1.30 1.48 1.69
-  yr 0           1.033      1.154      1.351      1.517 
-  yr 1           1.117      1.307      1.468      1.453 
-  yr 2           1.171      1.315      1.301      1.233 
+  yr 0           1.061      1.170      1.354      1.517 
+  yr 1           1.102      1.276      1.429      1.413 
+  yr 2           1.157      1.296      1.282      1.216 
 
-picks 11-20   (fair yr1 mark 1.111; actual yr1 mark 1.088 — near fair)
+picks 11-20   (fair yr1 mark 1.111; actual yr1 mark 1.097 — near fair)
   vantage           k=1        k=2        k=3        k=4 | carry: 1.14 1.30 1.48 1.69
-  yr 0           1.064      1.172      1.328      1.528 
-  yr 1           1.101      1.248      1.435      1.540 
-  yr 2           1.134      1.304      1.399      1.358 
+  yr 0           1.074      1.190      1.337      1.531 
+  yr 1           1.108      1.245      1.426      1.526 
+  yr 2           1.124      1.287      1.377      1.337 
 
-picks 21-30   (fair yr1 mark 1.124; actual yr1 mark 1.053 — 7 points below fair)
+picks 21-30   (fair yr1 mark 1.124; actual yr1 mark 1.049 — 8 points below fair)
   vantage           k=1        k=2        k=3        k=4 | carry: 1.14 1.30 1.48 1.69
-  yr 0           1.020      1.164      1.405      1.591 
-  yr 1           1.141      1.377      1.560      1.577 
-  yr 2           1.206      1.367      1.382      1.450 
+  yr 0           1.016      1.174      1.411      1.596 
+  yr 1           1.155      1.388      1.571      1.583 
+  yr 2           1.202      1.360      1.371      1.437 
 
-picks 31-40   (fair yr1 mark 1.103; actual yr1 mark 0.903 — 20 points below fair)
+picks 31-40   (fair yr1 mark 1.103; actual yr1 mark 0.895 — 21 points below fair)
   vantage           k=1        k=2        k=3        k=4 | carry: 1.14 1.30 1.48 1.69
-  yr 0           0.879*     0.948*     1.256      1.242 
-  yr 1           1.078      1.428      1.412      1.582 
-  yr 2           1.324*     1.309      1.467      1.368 
+  yr 0           0.871*     0.941*     1.254      1.248 
+  yr 1           1.080      1.440*     1.433      1.600 
+  yr 2           1.334*     1.327      1.482      1.380 
 
-picks 41-64   (fair yr1 mark 1.107; actual yr1 mark 0.974 — 13 points below fair)
+picks 41-64   (fair yr1 mark 1.107; actual yr1 mark 0.945 — 16 points below fair)
   vantage           k=1        k=2        k=3        k=4 | carry: 1.14 1.30 1.48 1.69
-  yr 0           0.967*     1.106      1.158      1.253 
-  yr 1           1.143      1.197      1.295      1.420 
-  yr 2           1.047      1.133      1.242      1.373 
+  yr 0           0.939*     1.087      1.157      1.259 
+  yr 1           1.159      1.233      1.342      1.468 
+  yr 2           1.064      1.158      1.267      1.397 
 
 band-vs-band spread of forward growth (max band minus min band, in growth-ratio points):
   vantage       k=1      k=2      k=3      k=4
-  yr 0        0.185    0.223    0.247    0.350
-  yr 1        0.065    0.231    0.265    0.162
-  yr 2        0.277    0.234    0.225    0.216
+  yr 0        0.203    0.249    0.253    0.348
+  yr 1        0.079    0.207    0.229    0.187
+  yr 2        0.269    0.202    0.216    0.222
   yr-1-vantage spread BEFORE the repair (C31): k=1 0.097  k=2 0.211  k=3 0.240  k=4 0.280
 
 WHERE EACH BAND'S INCONSISTENCY LIVES (using the band-level fair yr1 = 1.14 x (1 - yr1 delivered share)):
-  picks 1-10   yr1-mark leg -0.094 (mark 1.026 vs fair 1.120) · later-years leg (yr1->5 growth 1.453 vs carry 1.689) -0.236
-  picks 11-20  yr1-mark leg -0.023 (mark 1.088 vs fair 1.111) · later-years leg (yr1->5 growth 1.540 vs carry 1.689) -0.149
-  picks 21-30  yr1-mark leg -0.071 (mark 1.053 vs fair 1.124) · later-years leg (yr1->5 growth 1.577 vs carry 1.689) -0.112
-  picks 31-40  yr1-mark leg -0.199 (mark 0.903 vs fair 1.103) · later-years leg (yr1->5 growth 1.582 vs carry 1.689) -0.107
-  picks 41-64  yr1-mark leg -0.133 (mark 0.974 vs fair 1.107) · later-years leg (yr1->5 growth 1.420 vs carry 1.689) -0.269
+  picks 1-10   yr1-mark leg -0.067 (mark 1.054 vs fair 1.120) · later-years leg (yr1->5 growth 1.413 vs carry 1.689) -0.276
+  picks 11-20  yr1-mark leg -0.014 (mark 1.097 vs fair 1.111) · later-years leg (yr1->5 growth 1.526 vs carry 1.689) -0.163
+  picks 21-30  yr1-mark leg -0.075 (mark 1.049 vs fair 1.124) · later-years leg (yr1->5 growth 1.583 vs carry 1.689) -0.106
+  picks 31-40  yr1-mark leg -0.208 (mark 0.895 vs fair 1.103) · later-years leg (yr1->5 growth 1.600 vs carry 1.689) -0.089
+  picks 41-64  yr1-mark leg -0.162 (mark 0.945 vs fair 1.107) · later-years leg (yr1->5 growth 1.468 vs carry 1.689) -0.221
 
 Plain reading: a NEGATIVE yr1-mark leg means the band is priced too low at the end of year one;
 a POSITIVE later-years leg means its price is then expected to grow faster than the carry —
