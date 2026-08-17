@@ -17,6 +17,14 @@ CAND = SW['control_landing']
 NA = G['named_all']
 
 
+D0A = json.load(open(os.path.join(ROOT, 'docs', 'evidence', 'order_a_2026-08-17', 'DAY0_32_FINAL.json')))
+D0B = json.load(open(os.path.join(HERE, 'DAY0_I_FINAL.json')))
+_A = {r['key']: r for r in D0A['rows']}; _B = {r['key']: r for r in D0B['rows']}
+D0_SAME_V0 = sum(1 for k in _A if abs(_A[k]['derived_v0'] - _B[k]['derived_v0']) == 0.0)
+D0_MOVED = [k for k in _A if _A[k]['printed'] != _B[k]['printed']]
+D0_UP = sum(1 for k in D0_MOVED if _B[k]['printed'] > _A[k]['printed'])
+
+
 def pct(a):
     return '%+.2f%%' % (100 * a)
 
@@ -50,7 +58,7 @@ standing instruments (§6); the class mark is W2's own estimator; the row number
 | **G5** | sub-expectation-with-games rows do not rise | see the table below | **FAIL** |
 | **G6** | every row aged 24+ byte-identical, store-wide, tolerance 0 | **%d of %d move** | **PASS** |
 | **G6** | murdock, whole row | %r -> %r | **PASS — identical** |
-| **G6** | day-0 prints 89/89 unmoved | 89 of 89 at tolerance 0 (the emit's own replication guard) | **PASS** |
+| **G6** | day-0 prints 89/89 unmoved | the raw entry object `derived_v0` is **IDENTICAL on 89 of 89** at tolerance 0; the **printed** day-0 price moves on **89 of 89** (%d up, %d down; largest up mitchell-marsh 451 -> 552, largest down ben-camporeale 157 -> 122) | **FAIL as stated** — see below |
 | **G6** | determinism x2 | two identical builds byte-equal | **PASS** |
 | **G6** | dial-off = 1f176444 byte-exact | `1f17644445f074d11e631b5cbae98a9a` | **PASS** |
 | side | josh-smillie holds in the ~700s | **%.0f -> %.0f** | **FAIL — he rises**, exactly as the prereg predicted (§7) |
@@ -60,6 +68,18 @@ standing instruments (§6); the class mark is W2's own estimator; the row number
 | row | landing candidate | ORDER I | move | verdict |
 |---|---:|---:|---:|---|
 %s
+
+**THE DAY-0 GATE, IN PLAIN WORDS — it fails, and the reason is worth understanding.** A day-0 price for
+a player who has never played **is** `v0 x D(c_u)` — his entry value multiplied by the sitter fade.
+Order H's factor is a change to exactly that fade. So it moves the printed day-0 of every wired sitter
+**by construction**: all 89 of them, %d up and %d down. What did **not** move is `derived_v0`, the raw
+entry object the walk-forward matrix writes as year-0 — **identical on 89 of 89 at tolerance zero**
+(oskar-taylor 903.8014284605089 on both boards). So V0 is untouched and the year-0 column of the matrix
+is untouched; what moved is what the board charges a sitter **today**. The guard file was therefore
+re-based on this board and the re-base is disclosed (`o36_day0.py`, `DAY0_I_FINAL.json`, 89 of 89 at
+tolerance 0) — the same re-base ORDER D's own pick-curve fade required when it landed. **This seat
+reports it as a gate failure against the law as written and does not decide whether the re-base is
+acceptable. That is the owner's ruling.**
 
 **Why G5 fails, stated plainly.** S1 lowers the bar these young rows are judged against, so even a
 poor first season clears more of it and their production leg rises a little. The mechanism that was
@@ -79,8 +99,9 @@ they did not, because the counterweight the prediction assumed turned out to be 
        dean['order_i'], dean['landing'], cdt['order_i'], cdt['landing'], 1800 - cdt['order_i'],
        len(G['mature_moved']), G['n_mature'],
        NA['milan-murdock']['landing'], NA['milan-murdock']['order_i'],
+       D0_UP, len(D0_MOVED) - D0_UP,
        NA['josh-smillie']['landing'], NA['josh-smillie']['order_i'],
-       subrows)
+       subrows, D0_UP, len(D0_MOVED) - D0_UP)
 if buyred_arm0:
     GATES += ('\n**An inherited buy-red, declared in the prereg and reported here rather than hidden.** '
               'The pool arms %s were ALREADY above the +14%% rail on the landing candidate '

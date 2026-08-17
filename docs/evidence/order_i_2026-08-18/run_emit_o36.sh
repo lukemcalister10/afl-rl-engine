@@ -22,7 +22,11 @@ export RL_WORKDIR="$REPO/engine/rl_after" RL_VENDOR="$REPO/vendor" RL_OUT="$OUT"
 export PYTHONPATH="$REPO/engine/rl_after:$REPO:$REPO/vendor"
 export RL_V0SURF_PKL="$REPO/data/v0surf.pkl"
 export RL_O31=1 RL_O32=1 RL_O35=1
-export RL_DAY0_FINAL="$REPO/docs/evidence/order_a_2026-08-17/DAY0_32_FINAL.json"
+# ORDER I: the day-0 guard is RE-BASED on this board -- Lever 3 changes the sitter fade, and a
+# day-0 sitter price IS the sitter fade, so the landing candidate's file cannot match by
+# construction. The RAW ENTRY OBJECT derived_v0 is byte-identical on all 89 rows; only the
+# printed price moves. Disclosed on the packet as a gate result, exactly as ORDER D's was.
+export RL_DAY0_FINAL="${RL_DAY0_FINAL:-$HERE/DAY0_I_FINAL.json}"
 echo "  emit starting $(date -u +%H:%M:%S)  (RL_O36=${RL_O36:-unset} lambda_S1=${RL_O36_LAM_S1:-default})"
 S=$(date +%s)
 python3 "$OUT/emit.py" > "$OUT/emit.log" 2>&1

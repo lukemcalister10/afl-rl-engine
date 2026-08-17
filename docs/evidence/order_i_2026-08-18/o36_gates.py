@@ -59,7 +59,11 @@ EXTRA = ['levi-ashcroft', 'connor-o-sullivan', 'logan-morris', 'finn-o-sullivan'
          'harry-morrison', 'taylor-goad', 'zac-taylor']
 
 
-def price(keys, dose):
+def price(keys, dose, dial=True):
+    """dial=False reproduces the LANDING CANDIDATE inside this same process: RL_O36 is read at import,
+    so the baseline is taken by switching the two flags the dial actually gates, not by re-loading.
+    Verified against the built board 1f17644445f074d11e631b5cbae98a9a."""
+    MA._O36 = bool(dial); NSE['_O36'] = bool(dial)
     MA.O36_LAM_S1 = float(dose)
     MA._pe_clear()
     o = {}
@@ -70,9 +74,9 @@ def price(keys, dose):
 
 
 KEYS = sorted(set(ALL))
-A = price(KEYS, 0.0)
-B = price(KEYS, DOSE)
-A2 = price(KEYS, 0.0)
+A = price(KEYS, 0.0, dial=False)      # the landing candidate 1f176444
+B = price(KEYS, DOSE, dial=True)      # ORDER I
+A2 = price(KEYS, 0.0, dial=False)     # determinism repeat of the baseline
 det = sum(1 for k in KEYS if A[k] != A2[k])
 print('determinism control (same dial twice, same process): %d of %d rows differ -> %s'
       % (det, len(KEYS), 'PASS' if det == 0 else 'FAIL'))

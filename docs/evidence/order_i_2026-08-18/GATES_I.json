@@ -1,0 +1,296 @@
+{
+ "determinism_diffs": 0,
+ "dose": 0.25,
+ "extra": {
+  "connor-o-sullivan": {
+   "landing": 2500.3296445961305,
+   "order_i": 2622.5890428039293
+  },
+  "finn-o-sullivan": {
+   "landing": 3491.050994983396,
+   "order_i": 3629.7988766327726
+  },
+  "harry-morrison": {
+   "landing": 34.55287041143269,
+   "order_i": 34.55287041143269
+  },
+  "keidean-coleman": {
+   "landing": 708.464993234641,
+   "order_i": 708.464993234641
+  },
+  "levi-ashcroft": {
+   "landing": 3339.4851025258477,
+   "order_i": 3482.0346019836015
+  },
+  "logan-morris": {
+   "landing": 2822.1117117494778,
+   "order_i": 2961.4916666115946
+  },
+  "sam-taylor": {
+   "landing": 1177.2846756924746,
+   "order_i": 1177.2846756924746
+  },
+  "taylor-goad": {
+   "landing": 759.8143557799117,
+   "order_i": 767.669882695548
+  },
+  "taylor-walker": {
+   "landing": 135.72347139984245,
+   "order_i": 135.72347139984245
+  },
+  "toby-greene": {
+   "landing": 847.4717469479411,
+   "order_i": 847.4717469479411
+  },
+  "tom-green": {
+   "landing": 4566.286125057783,
+   "order_i": 4566.286125057783
+  },
+  "will-ashcroft": {
+   "landing": 6826.719724747343,
+   "order_i": 6901.37130142025
+  },
+  "zac-taylor": {
+   "landing": 160.45984637017594,
+   "order_i": 164.63697629246494
+  }
+ },
+ "mature_moved": [],
+ "n_active": 804,
+ "n_mature": 429,
+ "named_all": {
+  "alix-tauru": {
+   "landing": 968.7117792892644,
+   "order_i": 991.0742853010665
+  },
+  "chris-scerri": {
+   "landing": 329.28286796986646,
+   "order_i": 345.09671557826107
+  },
+  "cooper-duff-tytler": {
+   "landing": 1653.916158740416,
+   "order_i": 1700.7428230093346
+  },
+  "daniel-annable": {
+   "landing": 1610.3569906993582,
+   "order_i": 1634.227664001915
+  },
+  "dylan-patterson": {
+   "landing": 1543.687700146882,
+   "order_i": 1571.7933778630609
+  },
+  "harry-dean": {
+   "landing": 2526.2799831780226,
+   "order_i": 2645.963453225883
+  },
+  "isaac-kako": {
+   "landing": 829.6636770465519,
+   "order_i": 870.3227898972225
+  },
+  "jedd-busslinger": {
+   "landing": 665.6058416324237,
+   "order_i": 680.5500377865603
+  },
+  "josh-smillie": {
+   "landing": 895.3703215034324,
+   "order_i": 895.3703215034324
+  },
+  "milan-murdock": {
+   "landing": 178.74912838553396,
+   "order_i": 178.74912838553396
+  },
+  "oskar-taylor": {
+   "landing": 642.5164996327718,
+   "order_i": 642.5164996327718
+  },
+  "steely-green": {
+   "landing": 80.19427271099777,
+   "order_i": 81.20972762497003
+  },
+  "thomas-burton": {
+   "landing": 325.1261125777045,
+   "order_i": 339.2112476157659
+  },
+  "toby-conway": {
+   "landing": 990.3184820908663,
+   "order_i": 990.9811231412432
+  },
+  "will-green": {
+   "landing": 656.6608742351591,
+   "order_i": 658.6921891323301
+  },
+  "xavier-taylor": {
+   "landing": 1237.7699709209362,
+   "order_i": 1246.217596572326
+  }
+ },
+ "scorecard": [
+  {
+   "actual": "UP",
+   "delta": 119.68347004786028,
+   "hit": true,
+   "key": "harry-dean",
+   "landing": 2526.2799831780226,
+   "order_i": 2645.963453225883,
+   "pred": "UP",
+   "why": "above his age bar by 14.9 a game"
+  },
+  {
+   "actual": "UP",
+   "delta": 46.82666426891865,
+   "hit": true,
+   "key": "cooper-duff-tytler",
+   "landing": 1653.916158740416,
+   "order_i": 1700.7428230093346,
+   "pred": "UP",
+   "why": "above his age bar by 7.1 a game"
+  },
+  {
+   "actual": "UP",
+   "delta": 8.447625651389899,
+   "hit": false,
+   "key": "xavier-taylor",
+   "landing": 1237.7699709209362,
+   "order_i": 1246.217596572326,
+   "pred": "DOWN",
+   "why": "sub-expectation WITH games (42.0 vs an age bar of 55.2)"
+  },
+  {
+   "actual": "FLAT",
+   "delta": 0.0,
+   "hit": true,
+   "key": "oskar-taylor",
+   "landing": 642.5164996327718,
+   "order_i": 642.5164996327718,
+   "pred": "FLAT",
+   "why": "zero games \u2014 S1 cannot reach him"
+  },
+  {
+   "actual": "UP",
+   "delta": 23.870673302556725,
+   "hit": false,
+   "key": "daniel-annable",
+   "landing": 1610.3569906993582,
+   "order_i": 1634.227664001915,
+   "pred": "DOWN",
+   "why": "sub-expectation WITH games (38.0 vs 57.0)"
+  },
+  {
+   "actual": "UP",
+   "delta": 28.10567771617889,
+   "hit": false,
+   "key": "dylan-patterson",
+   "landing": 1543.687700146882,
+   "order_i": 1571.7933778630609,
+   "pred": "DOWN",
+   "why": "sub-expectation WITH games (35.6 vs 55.2)"
+  },
+  {
+   "actual": "FLAT",
+   "delta": 0.0,
+   "hit": false,
+   "key": "josh-smillie",
+   "landing": 895.3703215034324,
+   "order_i": 895.3703215034324,
+   "pred": "UP",
+   "why": "a small at pick 7 falls onto the 0.5 clip"
+  },
+  {
+   "actual": "UP",
+   "delta": 15.81384760839461,
+   "hit": true,
+   "key": "chris-scerri",
+   "landing": 329.28286796986646,
+   "order_i": 345.09671557826107,
+   "pred": "UP",
+   "why": "pool row \u2014 production dominates a small pedigree"
+  },
+  {
+   "actual": "UP",
+   "delta": 14.085135038061424,
+   "hit": true,
+   "key": "thomas-burton",
+   "landing": 325.1261125777045,
+   "order_i": 339.2112476157659,
+   "pred": "UP",
+   "why": "same channel, weaker"
+  },
+  {
+   "actual": "FLAT",
+   "delta": 0.0,
+   "hit": true,
+   "key": "milan-murdock",
+   "landing": 178.74912838553396,
+   "order_i": 178.74912838553396,
+   "pred": "EXACTLY FLAT",
+   "why": "age 26 \u2014 the cap law"
+  },
+  {
+   "actual": "UP",
+   "delta": 2.0313148971710007,
+   "hit": true,
+   "key": "will-green",
+   "landing": 656.6608742351591,
+   "order_i": 658.6921891323301,
+   "pred": "UP",
+   "why": "TALL at pick 16: exponent 0.793 -> 0.500"
+  },
+  {
+   "actual": "UP",
+   "delta": 0.6626410503769193,
+   "hit": true,
+   "key": "toby-conway",
+   "landing": 990.3184820908663,
+   "order_i": 990.9811231412432,
+   "pred": "UP",
+   "why": "TALL at pick 24: exponent 0.899 -> 0.500"
+  },
+  {
+   "actual": "UP",
+   "delta": 1.0154549139722633,
+   "hit": true,
+   "key": "steely-green",
+   "landing": 80.19427271099777,
+   "order_i": 81.20972762497003,
+   "pred": "UP",
+   "why": "high-rho row, fade clock spent"
+  },
+  {
+   "actual": "UP",
+   "delta": 40.65911285067057,
+   "hit": true,
+   "key": "isaac-kako",
+   "landing": 829.6636770465519,
+   "order_i": 870.3227898972225,
+   "pred": "UP",
+   "why": "S1 on a high-rho row"
+  },
+  {
+   "actual": "UP",
+   "delta": 22.36250601180211,
+   "hit": true,
+   "key": "alix-tauru",
+   "landing": 968.7117792892644,
+   "order_i": 991.0742853010665,
+   "pred": "UP",
+   "why": "S1, and tall gaps are the largest"
+  },
+  {
+   "actual": "UP",
+   "delta": 14.944196154136648,
+   "hit": true,
+   "key": "jedd-busslinger",
+   "landing": 665.6058416324237,
+   "order_i": 680.5500377865603,
+   "pred": "UP",
+   "why": "S1 + re-mix on an above-age-bar season"
+  }
+ ],
+ "year1": {
+  "down": 0,
+  "landing": 60928.83475986109,
+  "n": 120,
+  "order_i": 62883.089980445395,
+  "up": 59
+ }
+}
