@@ -1,45 +1,34 @@
 {
  "meta": {
   "boards": {
-   "off_o32": "7802ee977cd5e8972010b09f1bb1bee6",
-   "leg1": "0bb365277cd6a542c7cb34029a756875",
-   "leg2": "f18c9c9795716abe12287e2881a62170",
-   "full1": "b786141a083222cf22ad8a7d7df78307"
+   "moff": "7802ee977cd5e8972010b09f1bb1bee6",
+   "mleg1": "e27431900fab23e54da4ee4fd987b4bf",
+   "mfull1": "9d25c93685ee2aa8151466aca35e9a46"
   },
   "baselines": {
    "live": "88ce647f531030d8d2e094188b258191",
    "cand31": "fe6be9d6ac76ebc34d26ebc11d796505"
   },
-  "legs": "ladder = stage1 - base; fade = stage2 - stage1; taper = full - stage2"
+  "legs": "ladder = stage1 - base; taper = full - stage1; the fade leg is 0 BY DELETION (owner ruling c.5316404479)"
  },
  "totals": {
   "live": 752429,
   "cand31": 666913,
   "c32base": 667398,
-  "b_preview": 680932,
-  "leg_ladder": -9318,
-  "leg_fade": -5294,
-  "leg_taper": 28146
+  "b_preview": 688047,
+  "leg_ladder": -7860,
+  "leg_fade": 0,
+  "leg_taper": 28509
  },
  "acceptance": {
   "rank_moves_27plus": {
-   "max": 147.5,
-   "mean": 21.27,
+   "max": 132.5,
+   "mean": 19.59,
    "biggest": [
     [
      "jake-lever",
      558,
-     705
-    ],
-    [
-     "jack-silvagni",
-     292,
-     407
-    ],
-    [
-     "mabior-chol",
-     432,
-     543
+     690
     ],
     [
      "tylar-young",
@@ -47,154 +36,164 @@
      545
     ],
     [
-     "jack-buckley",
-     315,
-     422
+     "mabior-chol",
+     432,
+     533
     ],
     [
      "darcy-moore",
      561,
-     663
+     660
     ],
     [
      "daniel-mcstay",
      390,
-     485
+     489
     ],
     [
      "brennan-cox",
      444,
-     539
+     535
     ],
     [
      "ned-reeves",
      472,
-     379
+     381
     ],
     [
-     "kyle-langford",
-     314,
-     405
+     "jack-henry",
+     420,
+     510
+    ],
+    [
+     "jack-silvagni",
+     292,
+     378
+    ],
+    [
+     "jesse-hogan",
+     481,
+     565
     ]
    ]
   },
   "spearman_base_to_B": {
-   "all27": 0.9921,
-   "tall27": 0.9859
+   "all27": 0.9933,
+   "tall27": 0.9901
   },
-  "tall_anchor_gate_pct": -0.06,
+  "tall_anchor_gate_pct": -0.088,
   "age_profile": {
    "19": {
     "n": 71,
-    "rel_move": 0.0012,
+    "rel_move": 0.0016,
     "n_tall": 12,
-    "rel_move_tall": 0.0079
+    "rel_move_tall": 0.0103
    },
    "20": {
     "n": 87,
-    "rel_move": 0.0052,
+    "rel_move": 0.0049,
     "n_tall": 19,
-    "rel_move_tall": 0.0257
+    "rel_move_tall": 0.0246
    },
    "21": {
     "n": 75,
-    "rel_move": 0.0346,
+    "rel_move": 0.0349,
     "n_tall": 20,
-    "rel_move_tall": 0.0495
+    "rel_move_tall": 0.0507
    },
    "22": {
     "n": 61,
-    "rel_move": 0.0517,
+    "rel_move": 0.0516,
     "n_tall": 13,
-    "rel_move_tall": 0.0665
+    "rel_move_tall": 0.0657
    },
    "23": {
     "n": 81,
-    "rel_move": 0.0629,
+    "rel_move": 0.0636,
     "n_tall": 20,
-    "rel_move_tall": 0.0764
+    "rel_move_tall": 0.0785
    },
    "24": {
     "n": 58,
-    "rel_move": 0.0651,
+    "rel_move": 0.0653,
     "n_tall": 16,
-    "rel_move_tall": 0.0667
+    "rel_move_tall": 0.0665
    },
    "25": {
     "n": 51,
-    "rel_move": 0.0439,
+    "rel_move": 0.0441,
     "n_tall": 8,
-    "rel_move_tall": 0.0907
+    "rel_move_tall": 0.08
    },
    "26": {
     "n": 55,
     "rel_move": 0.0473,
     "n_tall": 11,
-    "rel_move_tall": 0.0316
+    "rel_move_tall": 0.0261
    },
    "27": {
     "n": 46,
-    "rel_move": 0.0198,
+    "rel_move": 0.0211,
     "n_tall": 17,
-    "rel_move_tall": -0.1198
+    "rel_move_tall": -0.1169
    },
    "28": {
     "n": 57,
-    "rel_move": 0.0404,
+    "rel_move": 0.0467,
     "n_tall": 16,
-    "rel_move_tall": -0.2556
+    "rel_move_tall": -0.2305
    },
    "29": {
     "n": 40,
-    "rel_move": -0.0767,
+    "rel_move": -0.0084,
     "n_tall": 10,
-    "rel_move_tall": -0.3702
+    "rel_move_tall": -0.283
    },
    "30": {
     "n": 33,
-    "rel_move": -0.1383,
+    "rel_move": -0.0608,
     "n_tall": 12,
-    "rel_move_tall": -0.3988
+    "rel_move_tall": -0.2906
    },
    "31": {
     "n": 24,
-    "rel_move": -0.0582,
+    "rel_move": 0.0085,
     "n_tall": 5,
-    "rel_move_tall": -0.2602
+    "rel_move_tall": -0.2628
    },
    "32": {
     "n": 19,
-    "rel_move": -0.0818,
+    "rel_move": -0.0229,
     "n_tall": 5,
-    "rel_move_tall": -0.2828
+    "rel_move_tall": -0.2536
    },
    "33": {
     "n": 22,
-    "rel_move": -0.0396,
+    "rel_move": -0.0128,
     "n_tall": 4,
-    "rel_move_tall": -0.1659
+    "rel_move_tall": -0.1779
    },
    "34": {
     "n": 11,
-    "rel_move": -0.0096,
+    "rel_move": 0.0116,
     "n_tall": 3,
-    "rel_move_tall": 0.016
+    "rel_move_tall": -0.012
    },
    "35": {
     "n": 5,
-    "rel_move": -0.0582,
+    "rel_move": -0.0013,
     "n_tall": 3,
-    "rel_move_tall": -0.211
+    "rel_move_tall": -0.0138
    },
    "36": {
     "n": 4,
-    "rel_move": -0.004,
+    "rel_move": 0.0,
     "n_tall": 0,
     "rel_move_tall": null
    },
    "37": {
     "n": 3,
-    "rel_move": -0.0018,
+    "rel_move": 0.0,
     "n_tall": 1,
     "rel_move_tall": -0.031
    }
@@ -255,11 +254,11 @@
    "c32base": 3689,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": -2,
-   "b_preview": 3687,
-   "d_vs_c32base": -2,
-   "d_vs_cand31": 270,
-   "d_vs_live": -1168
+   "leg_taper": -3,
+   "b_preview": 3686,
+   "d_vs_c32base": -3,
+   "d_vs_cand31": 269,
+   "d_vs_live": -1169
   },
   {
    "key": "archie-roberts",
@@ -273,12 +272,12 @@
    "cand31": 3405,
    "c32base": 3441,
    "leg_ladder": 0,
-   "leg_fade": -5,
+   "leg_fade": 0,
    "leg_taper": 25,
-   "b_preview": 3461,
-   "d_vs_c32base": 20,
-   "d_vs_cand31": 56,
-   "d_vs_live": -1265
+   "b_preview": 3466,
+   "d_vs_c32base": 25,
+   "d_vs_cand31": 61,
+   "d_vs_live": -1260
   },
   {
    "key": "dyson-sharp",
@@ -330,12 +329,12 @@
    "cand31": 715,
    "c32base": 1009,
    "leg_ladder": 0,
-   "leg_fade": 4,
-   "leg_taper": 59,
-   "b_preview": 1072,
-   "d_vs_c32base": 63,
-   "d_vs_cand31": 357,
-   "d_vs_live": -694
+   "leg_fade": 0,
+   "leg_taper": 60,
+   "b_preview": 1069,
+   "d_vs_c32base": 60,
+   "d_vs_cand31": 354,
+   "d_vs_live": -697
   },
   {
    "key": "sullivan-robey",
@@ -387,12 +386,12 @@
    "cand31": 3139,
    "c32base": 3147,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 4,
-   "b_preview": 3150,
-   "d_vs_c32base": 3,
-   "d_vs_cand31": 11,
-   "d_vs_live": -991
+   "b_preview": 3151,
+   "d_vs_c32base": 4,
+   "d_vs_cand31": 12,
+   "d_vs_live": -990
   },
   {
    "key": "patrick-retschko",
@@ -425,12 +424,12 @@
    "cand31": 10310,
    "c32base": 10307,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 20,
-   "b_preview": 10326,
-   "d_vs_c32base": 19,
-   "d_vs_cand31": 16,
-   "d_vs_live": -1438
+   "leg_fade": 0,
+   "leg_taper": 21,
+   "b_preview": 10328,
+   "d_vs_c32base": 21,
+   "d_vs_cand31": 18,
+   "d_vs_live": -1436
   },
   {
    "key": "jacob-farrow",
@@ -463,8 +462,8 @@
    "cand31": 1545,
    "c32base": 1645,
    "leg_ladder": 0,
-   "leg_fade": 1,
-   "leg_taper": 128,
+   "leg_fade": 0,
+   "leg_taper": 129,
    "b_preview": 1774,
    "d_vs_c32base": 129,
    "d_vs_cand31": 229,
@@ -538,13 +537,13 @@
    "live": 1769,
    "cand31": 1147,
    "c32base": 1795,
-   "leg_ladder": 319,
+   "leg_ladder": 294,
    "leg_fade": 0,
-   "leg_taper": -9,
-   "b_preview": 2105,
-   "d_vs_c32base": 310,
-   "d_vs_cand31": 958,
-   "d_vs_live": 336
+   "leg_taper": -8,
+   "b_preview": 2081,
+   "d_vs_c32base": 286,
+   "d_vs_cand31": 934,
+   "d_vs_live": 312
   },
   {
    "key": "isaac-kako",
@@ -577,12 +576,12 @@
    "cand31": 2100,
    "c32base": 2137,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 54,
-   "b_preview": 2190,
-   "d_vs_c32base": 53,
-   "d_vs_cand31": 90,
-   "d_vs_live": -600
+   "b_preview": 2191,
+   "d_vs_c32base": 54,
+   "d_vs_cand31": 91,
+   "d_vs_live": -599
   },
   {
    "key": "cooper-trembath",
@@ -614,13 +613,13 @@
    "live": 5250,
    "cand31": 4428,
    "c32base": 4400,
-   "leg_ladder": 112,
+   "leg_ladder": 164,
    "leg_fade": 0,
-   "leg_taper": 43,
-   "b_preview": 4555,
-   "d_vs_c32base": 155,
-   "d_vs_cand31": 127,
-   "d_vs_live": -695
+   "leg_taper": 35,
+   "b_preview": 4599,
+   "d_vs_c32base": 199,
+   "d_vs_cand31": 171,
+   "d_vs_live": -651
   },
   {
    "key": "luke-trainor",
@@ -672,12 +671,12 @@
    "cand31": 8593,
    "c32base": 8592,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 36,
-   "b_preview": 8627,
-   "d_vs_c32base": 35,
-   "d_vs_cand31": 34,
-   "d_vs_live": -1061
+   "leg_fade": 0,
+   "leg_taper": 37,
+   "b_preview": 8629,
+   "d_vs_c32base": 37,
+   "d_vs_cand31": 36,
+   "d_vs_live": -1059
   },
   {
    "key": "jordan-croft",
@@ -690,13 +689,13 @@
    "live": 1048,
    "cand31": 526,
    "c32base": 563,
-   "leg_ladder": -12,
+   "leg_ladder": -14,
    "leg_fade": 0,
-   "leg_taper": 40,
-   "b_preview": 591,
-   "d_vs_c32base": 28,
-   "d_vs_cand31": 65,
-   "d_vs_live": -457
+   "leg_taper": 41,
+   "b_preview": 590,
+   "d_vs_c32base": 27,
+   "d_vs_cand31": 64,
+   "d_vs_live": -458
   },
   {
    "key": "matt-carroll",
@@ -804,13 +803,13 @@
    "live": 916,
    "cand31": 469,
    "c32base": 537,
-   "leg_ladder": -13,
+   "leg_ladder": -17,
    "leg_fade": 0,
-   "leg_taper": 61,
-   "b_preview": 585,
-   "d_vs_c32base": 48,
-   "d_vs_cand31": 116,
-   "d_vs_live": -331
+   "leg_taper": 63,
+   "b_preview": 583,
+   "d_vs_c32base": 46,
+   "d_vs_cand31": 114,
+   "d_vs_live": -333
   },
   {
    "key": "jobe-shanahan",
@@ -823,13 +822,13 @@
    "live": 1739,
    "cand31": 1240,
    "c32base": 1285,
-   "leg_ladder": 16,
+   "leg_ladder": 20,
    "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 1301,
-   "d_vs_c32base": 16,
-   "d_vs_cand31": 61,
-   "d_vs_live": -438
+   "b_preview": 1305,
+   "d_vs_c32base": 20,
+   "d_vs_cand31": 65,
+   "d_vs_live": -434
   },
   {
    "key": "daniel-annable",
@@ -938,12 +937,12 @@
    "cand31": 3114,
    "c32base": 3138,
    "leg_ladder": 0,
-   "leg_fade": -7,
-   "leg_taper": 101,
-   "b_preview": 3232,
-   "d_vs_c32base": 94,
-   "d_vs_cand31": 118,
-   "d_vs_live": -491
+   "leg_fade": 0,
+   "leg_taper": 102,
+   "b_preview": 3240,
+   "d_vs_c32base": 102,
+   "d_vs_cand31": 126,
+   "d_vs_live": -483
   },
   {
    "key": "hamish-davis",
@@ -977,11 +976,11 @@
    "c32base": 2649,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 39,
-   "b_preview": 2688,
-   "d_vs_c32base": 39,
-   "d_vs_cand31": 36,
-   "d_vs_live": -536
+   "leg_taper": 40,
+   "b_preview": 2689,
+   "d_vs_c32base": 40,
+   "d_vs_cand31": 37,
+   "d_vs_live": -535
   },
   {
    "key": "elijah-tsatas",
@@ -1033,12 +1032,12 @@
    "cand31": 6494,
    "c32base": 6487,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 27,
-   "b_preview": 6513,
-   "d_vs_c32base": 26,
-   "d_vs_cand31": 19,
-   "d_vs_live": -817
+   "b_preview": 6514,
+   "d_vs_c32base": 27,
+   "d_vs_cand31": 20,
+   "d_vs_live": -816
   },
   {
    "key": "logan-morris",
@@ -1051,13 +1050,13 @@
    "live": 3247,
    "cand31": 2683,
    "c32base": 2682,
-   "leg_ladder": 166,
+   "leg_ladder": 174,
    "leg_fade": 0,
-   "leg_taper": 25,
-   "b_preview": 2873,
-   "d_vs_c32base": 191,
-   "d_vs_cand31": 190,
-   "d_vs_live": -374
+   "leg_taper": 19,
+   "b_preview": 2875,
+   "d_vs_c32base": 193,
+   "d_vs_cand31": 192,
+   "d_vs_live": -372
   },
   {
    "key": "ty-gallop",
@@ -1070,13 +1069,13 @@
    "live": 1199,
    "cand31": 781,
    "c32base": 835,
-   "leg_ladder": 5,
+   "leg_ladder": 7,
    "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 840,
-   "d_vs_c32base": 5,
-   "d_vs_cand31": 59,
-   "d_vs_live": -359
+   "b_preview": 842,
+   "d_vs_c32base": 7,
+   "d_vs_cand31": 61,
+   "d_vs_live": -357
   },
   {
    "key": "tristan-xerri",
@@ -1089,13 +1088,13 @@
    "live": 7800,
    "cand31": 6948,
    "c32base": 6966,
-   "leg_ladder": -2,
-   "leg_fade": -19,
+   "leg_ladder": -1,
+   "leg_fade": 0,
    "leg_taper": 63,
-   "b_preview": 7008,
-   "d_vs_c32base": 42,
-   "d_vs_cand31": 60,
-   "d_vs_live": -792
+   "b_preview": 7028,
+   "d_vs_c32base": 62,
+   "d_vs_cand31": 80,
+   "d_vs_live": -772
   },
   {
    "key": "archer-reid",
@@ -1108,13 +1107,13 @@
    "live": 762,
    "cand31": 377,
    "c32base": 405,
-   "leg_ladder": -11,
+   "leg_ladder": -13,
    "leg_fade": 0,
-   "leg_taper": 31,
-   "b_preview": 425,
-   "d_vs_c32base": 20,
-   "d_vs_cand31": 48,
-   "d_vs_live": -337
+   "leg_taper": 32,
+   "b_preview": 424,
+   "d_vs_c32base": 19,
+   "d_vs_cand31": 47,
+   "d_vs_live": -338
   },
   {
    "key": "talor-byrne",
@@ -1146,13 +1145,13 @@
    "live": 6921,
    "cand31": 6133,
    "c32base": 6133,
-   "leg_ladder": 351,
-   "leg_fade": -1,
-   "leg_taper": 53,
-   "b_preview": 6536,
-   "d_vs_c32base": 403,
-   "d_vs_cand31": 403,
-   "d_vs_live": -385
+   "leg_ladder": 390,
+   "leg_fade": 0,
+   "leg_taper": 36,
+   "b_preview": 6559,
+   "d_vs_c32base": 426,
+   "d_vs_cand31": 426,
+   "d_vs_live": -362
   },
   {
    "key": "connor-o-sullivan",
@@ -1165,13 +1164,13 @@
    "live": 2920,
    "cand31": 2397,
    "c32base": 2376,
-   "leg_ladder": 20,
+   "leg_ladder": 33,
    "leg_fade": 0,
    "leg_taper": 26,
-   "b_preview": 2422,
-   "d_vs_c32base": 46,
-   "d_vs_cand31": 25,
-   "d_vs_live": -498
+   "b_preview": 2435,
+   "d_vs_c32base": 59,
+   "d_vs_cand31": 38,
+   "d_vs_live": -485
   },
   {
    "key": "nick-daicos",
@@ -1185,12 +1184,12 @@
    "cand31": 9892,
    "c32base": 9891,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 31,
-   "b_preview": 9921,
-   "d_vs_c32base": 30,
-   "d_vs_cand31": 29,
-   "d_vs_live": -1024
+   "leg_fade": 0,
+   "leg_taper": 33,
+   "b_preview": 9924,
+   "d_vs_c32base": 33,
+   "d_vs_cand31": 32,
+   "d_vs_live": -1021
   },
   {
    "key": "lachlan-mcandrew",
@@ -1223,12 +1222,12 @@
    "cand31": 6442,
    "c32base": 6442,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 63,
-   "b_preview": 6504,
-   "d_vs_c32base": 62,
-   "d_vs_cand31": 62,
-   "d_vs_live": -735
+   "leg_fade": 0,
+   "leg_taper": 64,
+   "b_preview": 6506,
+   "d_vs_c32base": 64,
+   "d_vs_cand31": 64,
+   "d_vs_live": -733
   },
   {
    "key": "charlie-west",
@@ -1279,13 +1278,13 @@
    "live": 2711,
    "cand31": 2218,
    "c32base": 2247,
-   "leg_ladder": -1,
+   "leg_ladder": 6,
    "leg_fade": 0,
-   "leg_taper": 71,
-   "b_preview": 2317,
-   "d_vs_c32base": 70,
-   "d_vs_cand31": 99,
-   "d_vs_live": -394
+   "leg_taper": 67,
+   "b_preview": 2320,
+   "d_vs_c32base": 73,
+   "d_vs_cand31": 102,
+   "d_vs_live": -391
   },
   {
    "key": "leo-lombard",
@@ -1337,12 +1336,12 @@
    "cand31": 3510,
    "c32base": 3529,
    "leg_ladder": 0,
-   "leg_fade": -6,
-   "leg_taper": 99,
-   "b_preview": 3622,
-   "d_vs_c32base": 93,
-   "d_vs_cand31": 112,
-   "d_vs_live": -465
+   "leg_fade": 0,
+   "leg_taper": 101,
+   "b_preview": 3630,
+   "d_vs_c32base": 101,
+   "d_vs_cand31": 120,
+   "d_vs_live": -457
   },
   {
    "key": "jesse-dattoli",
@@ -1413,12 +1412,12 @@
    "cand31": 7562,
    "c32base": 7562,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 45,
-   "b_preview": 7606,
-   "d_vs_c32base": 44,
-   "d_vs_cand31": 44,
-   "d_vs_live": -800
+   "leg_fade": 0,
+   "leg_taper": 46,
+   "b_preview": 7608,
+   "d_vs_c32base": 46,
+   "d_vs_cand31": 46,
+   "d_vs_live": -798
   },
   {
    "key": "finn-o-sullivan",
@@ -1528,11 +1527,11 @@
    "c32base": 560,
    "leg_ladder": -4,
    "leg_fade": 0,
-   "leg_taper": 58,
-   "b_preview": 614,
-   "d_vs_c32base": 54,
-   "d_vs_cand31": 62,
-   "d_vs_live": -278
+   "leg_taper": 59,
+   "b_preview": 615,
+   "d_vs_c32base": 55,
+   "d_vs_cand31": 63,
+   "d_vs_live": -277
   },
   {
    "key": "cooper-lord",
@@ -1564,13 +1563,13 @@
    "live": 1271,
    "cand31": 912,
    "c32base": 944,
-   "leg_ladder": 0,
+   "leg_ladder": 3,
    "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 944,
-   "d_vs_c32base": 0,
-   "d_vs_cand31": 32,
-   "d_vs_live": -327
+   "b_preview": 947,
+   "d_vs_c32base": 3,
+   "d_vs_cand31": 35,
+   "d_vs_live": -324
   },
   {
    "key": "daniel-curtin",
@@ -1603,12 +1602,12 @@
    "cand31": 1420,
    "c32base": 1423,
    "leg_ladder": 0,
-   "leg_fade": 2,
+   "leg_fade": 0,
    "leg_taper": 69,
-   "b_preview": 1494,
-   "d_vs_c32base": 71,
-   "d_vs_cand31": 74,
-   "d_vs_live": -322
+   "b_preview": 1492,
+   "d_vs_c32base": 69,
+   "d_vs_cand31": 72,
+   "d_vs_live": -324
   },
   {
    "key": "levi-ashcroft",
@@ -1659,13 +1658,13 @@
    "live": 1862,
    "cand31": 1469,
    "c32base": 1548,
-   "leg_ladder": -1,
+   "leg_ladder": 2,
    "leg_fade": 0,
-   "leg_taper": 43,
-   "b_preview": 1590,
-   "d_vs_c32base": 42,
-   "d_vs_cand31": 121,
-   "d_vs_live": -272
+   "leg_taper": 45,
+   "b_preview": 1595,
+   "d_vs_c32base": 47,
+   "d_vs_cand31": 126,
+   "d_vs_live": -267
   },
   {
    "key": "kane-mcauliffe",
@@ -1697,13 +1696,13 @@
    "live": 1024,
    "cand31": 694,
    "c32base": 624,
-   "leg_ladder": -16,
+   "leg_ladder": -18,
    "leg_fade": 0,
    "leg_taper": 32,
-   "b_preview": 640,
-   "d_vs_c32base": 16,
-   "d_vs_cand31": -54,
-   "d_vs_live": -384
+   "b_preview": 638,
+   "d_vs_c32base": 14,
+   "d_vs_cand31": -56,
+   "d_vs_live": -386
   },
   {
    "key": "edward-allan",
@@ -1774,12 +1773,12 @@
    "cand31": 2129,
    "c32base": 2130,
    "leg_ladder": 0,
-   "leg_fade": -5,
+   "leg_fade": 0,
    "leg_taper": 56,
-   "b_preview": 2181,
-   "d_vs_c32base": 51,
-   "d_vs_cand31": 52,
-   "d_vs_live": -368
+   "b_preview": 2186,
+   "d_vs_c32base": 56,
+   "d_vs_cand31": 57,
+   "d_vs_live": -363
   },
   {
    "key": "joe-berry",
@@ -2078,12 +2077,12 @@
    "cand31": 3808,
    "c32base": 3807,
    "leg_ladder": 0,
-   "leg_fade": -8,
-   "leg_taper": 98,
-   "b_preview": 3897,
-   "d_vs_c32base": 90,
-   "d_vs_cand31": 89,
-   "d_vs_live": -422
+   "leg_fade": 0,
+   "leg_taper": 100,
+   "b_preview": 3907,
+   "d_vs_c32base": 100,
+   "d_vs_cand31": 99,
+   "d_vs_live": -412
   },
   {
    "key": "willem-duursma",
@@ -2116,12 +2115,12 @@
    "cand31": 3362,
    "c32base": 3345,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 34,
-   "b_preview": 3378,
-   "d_vs_c32base": 33,
-   "d_vs_cand31": 16,
-   "d_vs_live": -461
+   "b_preview": 3379,
+   "d_vs_c32base": 34,
+   "d_vs_cand31": 17,
+   "d_vs_live": -460
   },
   {
    "key": "cameron-mackenzie",
@@ -2229,9 +2228,9 @@
    "live": 599,
    "cand31": 316,
    "c32base": 385,
-   "leg_ladder": -3,
+   "leg_ladder": -4,
    "leg_fade": 0,
-   "leg_taper": 28,
+   "leg_taper": 29,
    "b_preview": 410,
    "d_vs_c32base": 25,
    "d_vs_cand31": 94,
@@ -2248,13 +2247,13 @@
    "live": 1538,
    "cand31": 1223,
    "c32base": 1243,
-   "leg_ladder": 3,
+   "leg_ladder": -1,
    "leg_fade": 0,
-   "leg_taper": 96,
-   "b_preview": 1342,
-   "d_vs_c32base": 99,
-   "d_vs_cand31": 119,
-   "d_vs_live": -196
+   "leg_taper": 97,
+   "b_preview": 1339,
+   "d_vs_c32base": 96,
+   "d_vs_cand31": 116,
+   "d_vs_live": -199
   },
   {
    "key": "christian-moraes",
@@ -2383,11 +2382,11 @@
    "c32base": 147,
    "leg_ladder": -5,
    "leg_fade": 0,
-   "leg_taper": 17,
-   "b_preview": 159,
-   "d_vs_c32base": 12,
-   "d_vs_cand31": -39,
-   "d_vs_live": -240
+   "leg_taper": 16,
+   "b_preview": 158,
+   "d_vs_c32base": 11,
+   "d_vs_cand31": -40,
+   "d_vs_live": -241
   },
   {
    "key": "charlie-edwards",
@@ -2420,8 +2419,8 @@
    "cand31": 3527,
    "c32base": 3527,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 134,
+   "leg_fade": 0,
+   "leg_taper": 133,
    "b_preview": 3660,
    "d_vs_c32base": 133,
    "d_vs_cand31": 133,
@@ -2438,13 +2437,13 @@
    "live": 4169,
    "cand31": 3694,
    "c32base": 3692,
-   "leg_ladder": -42,
-   "leg_fade": -1,
-   "leg_taper": 91,
-   "b_preview": 3740,
-   "d_vs_c32base": 48,
-   "d_vs_cand31": 46,
-   "d_vs_live": -429
+   "leg_ladder": -11,
+   "leg_fade": 0,
+   "leg_taper": 90,
+   "b_preview": 3771,
+   "d_vs_c32base": 79,
+   "d_vs_cand31": 77,
+   "d_vs_live": -398
   },
   {
    "key": "iliro-smit",
@@ -2478,11 +2477,11 @@
    "c32base": 288,
    "leg_ladder": -2,
    "leg_fade": 0,
-   "leg_taper": 22,
-   "b_preview": 308,
-   "d_vs_c32base": 20,
-   "d_vs_cand31": 97,
-   "d_vs_live": -111
+   "leg_taper": 23,
+   "b_preview": 309,
+   "d_vs_c32base": 21,
+   "d_vs_cand31": 98,
+   "d_vs_live": -110
   },
   {
    "key": "mattaes-phillipou",
@@ -2533,13 +2532,13 @@
    "live": 454,
    "cand31": 231,
    "c32base": 256,
-   "leg_ladder": -7,
+   "leg_ladder": -8,
    "leg_fade": 0,
    "leg_taper": 35,
-   "b_preview": 284,
-   "d_vs_c32base": 28,
-   "d_vs_cand31": 53,
-   "d_vs_live": -170
+   "b_preview": 283,
+   "d_vs_c32base": 27,
+   "d_vs_cand31": 52,
+   "d_vs_live": -171
   },
   {
    "key": "harry-o-farrell",
@@ -2571,13 +2570,13 @@
    "live": 1110,
    "cand31": 845,
    "c32base": 844,
-   "leg_ladder": -31,
+   "leg_ladder": -33,
    "leg_fade": 0,
-   "leg_taper": 111,
-   "b_preview": 924,
-   "d_vs_c32base": 80,
-   "d_vs_cand31": 79,
-   "d_vs_live": -186
+   "leg_taper": 112,
+   "b_preview": 923,
+   "d_vs_c32base": 79,
+   "d_vs_cand31": 78,
+   "d_vs_live": -187
   },
   {
    "key": "finn-callaghan",
@@ -2591,12 +2590,12 @@
    "cand31": 5471,
    "c32base": 5468,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 52,
-   "b_preview": 5519,
-   "d_vs_c32base": 51,
-   "d_vs_cand31": 48,
-   "d_vs_live": -543
+   "b_preview": 5520,
+   "d_vs_c32base": 52,
+   "d_vs_cand31": 49,
+   "d_vs_live": -542
   },
   {
    "key": "harrison-coe",
@@ -2837,13 +2836,13 @@
    "live": 1561,
    "cand31": 1832,
    "c32base": 1572,
-   "leg_ladder": 13,
+   "leg_ladder": 18,
    "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 1585,
-   "d_vs_c32base": 13,
-   "d_vs_cand31": -247,
-   "d_vs_live": 24
+   "b_preview": 1590,
+   "d_vs_c32base": 18,
+   "d_vs_cand31": -242,
+   "d_vs_live": 29
   },
   {
    "key": "oscar-steene",
@@ -2875,13 +2874,13 @@
    "live": 124,
    "cand31": 285,
    "c32base": 213,
-   "leg_ladder": -7,
+   "leg_ladder": -8,
    "leg_fade": 0,
    "leg_taper": 49,
-   "b_preview": 255,
-   "d_vs_c32base": 42,
-   "d_vs_cand31": -30,
-   "d_vs_live": 131
+   "b_preview": 254,
+   "d_vs_c32base": 41,
+   "d_vs_cand31": -31,
+   "d_vs_live": 130
   },
   {
    "key": "riley-hamilton",
@@ -2951,13 +2950,13 @@
    "live": 727,
    "cand31": 514,
    "c32base": 514,
-   "leg_ladder": -23,
+   "leg_ladder": -31,
    "leg_fade": 0,
    "leg_taper": 60,
-   "b_preview": 551,
-   "d_vs_c32base": 37,
-   "d_vs_cand31": 37,
-   "d_vs_live": -176
+   "b_preview": 543,
+   "d_vs_c32base": 29,
+   "d_vs_cand31": 29,
+   "d_vs_live": -184
   },
   {
    "key": "jonty-faull",
@@ -3065,13 +3064,13 @@
    "live": 405,
    "cand31": 223,
    "c32base": 240,
-   "leg_ladder": -9,
+   "leg_ladder": -11,
    "leg_fade": 0,
    "leg_taper": 60,
-   "b_preview": 291,
-   "d_vs_c32base": 51,
-   "d_vs_cand31": 68,
-   "d_vs_live": -114
+   "b_preview": 289,
+   "d_vs_c32base": 49,
+   "d_vs_cand31": 66,
+   "d_vs_live": -116
   },
   {
    "key": "will-green",
@@ -3103,13 +3102,13 @@
    "live": 1439,
    "cand31": 1196,
    "c32base": 1141,
-   "leg_ladder": -8,
+   "leg_ladder": -7,
    "leg_fade": 0,
    "leg_taper": 46,
-   "b_preview": 1179,
-   "d_vs_c32base": 38,
-   "d_vs_cand31": -17,
-   "d_vs_live": -260
+   "b_preview": 1180,
+   "d_vs_c32base": 39,
+   "d_vs_cand31": -16,
+   "d_vs_live": -259
   },
   {
    "key": "max-gruzewski",
@@ -3122,13 +3121,13 @@
    "live": 626,
    "cand31": 435,
    "c32base": 453,
-   "leg_ladder": -14,
+   "leg_ladder": -16,
    "leg_fade": 0,
-   "leg_taper": 76,
-   "b_preview": 515,
-   "d_vs_c32base": 62,
-   "d_vs_cand31": 80,
-   "d_vs_live": -111
+   "leg_taper": 77,
+   "b_preview": 514,
+   "d_vs_c32base": 61,
+   "d_vs_cand31": 79,
+   "d_vs_live": -112
   },
   {
    "key": "jaeger-o-meara",
@@ -3160,13 +3159,13 @@
    "live": 10203,
    "cand31": 9386,
    "c32base": 9386,
-   "leg_ladder": -3,
-   "leg_fade": -26,
+   "leg_ladder": -2,
+   "leg_fade": 0,
    "leg_taper": 31,
-   "b_preview": 9388,
-   "d_vs_c32base": 2,
-   "d_vs_cand31": 2,
-   "d_vs_live": -815
+   "b_preview": 9415,
+   "d_vs_c32base": 29,
+   "d_vs_cand31": 29,
+   "d_vs_live": -788
   },
   {
    "key": "jacob-van-rooyen",
@@ -3179,13 +3178,13 @@
    "live": 1894,
    "cand31": 1624,
    "c32base": 1658,
-   "leg_ladder": 51,
+   "leg_ladder": 47,
    "leg_fade": 0,
    "leg_taper": 77,
-   "b_preview": 1786,
-   "d_vs_c32base": 128,
-   "d_vs_cand31": 162,
-   "d_vs_live": -108
+   "b_preview": 1782,
+   "d_vs_c32base": 124,
+   "d_vs_cand31": 158,
+   "d_vs_live": -112
   },
   {
    "key": "ollie-dempsey",
@@ -3200,11 +3199,11 @@
    "c32base": 2123,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 126,
-   "b_preview": 2249,
-   "d_vs_c32base": 126,
-   "d_vs_cand31": 125,
-   "d_vs_live": -179
+   "leg_taper": 124,
+   "b_preview": 2247,
+   "d_vs_c32base": 124,
+   "d_vs_cand31": 123,
+   "d_vs_live": -181
   },
   {
    "key": "xavier-bamert",
@@ -3236,13 +3235,13 @@
    "live": 389,
    "cand31": 222,
    "c32base": 253,
-   "leg_ladder": -13,
+   "leg_ladder": -15,
    "leg_fade": 0,
    "leg_taper": 56,
-   "b_preview": 296,
-   "d_vs_c32base": 43,
-   "d_vs_cand31": 74,
-   "d_vs_live": -93
+   "b_preview": 294,
+   "d_vs_c32base": 41,
+   "d_vs_cand31": 72,
+   "d_vs_live": -95
   },
   {
    "key": "jordon-sweet",
@@ -3256,12 +3255,12 @@
    "cand31": 1993,
    "c32base": 2011,
    "leg_ladder": 0,
-   "leg_fade": -6,
+   "leg_fade": 0,
    "leg_taper": 76,
-   "b_preview": 2081,
-   "d_vs_c32base": 70,
-   "d_vs_cand31": 88,
-   "d_vs_live": -204
+   "b_preview": 2087,
+   "d_vs_c32base": 76,
+   "d_vs_cand31": 94,
+   "d_vs_live": -198
   },
   {
    "key": "daniel-turner",
@@ -3274,8 +3273,8 @@
    "live": 1534,
    "cand31": 1292,
    "c32base": 1311,
-   "leg_ladder": -58,
-   "leg_fade": -1,
+   "leg_ladder": -59,
+   "leg_fade": 0,
    "leg_taper": 71,
    "b_preview": 1323,
    "d_vs_c32base": 12,
@@ -3293,13 +3292,13 @@
    "live": 287,
    "cand31": 408,
    "c32base": 535,
-   "leg_ladder": -13,
+   "leg_ladder": -16,
    "leg_fade": 0,
    "leg_taper": 98,
-   "b_preview": 620,
-   "d_vs_c32base": 85,
-   "d_vs_cand31": 212,
-   "d_vs_live": 333
+   "b_preview": 617,
+   "d_vs_c32base": 82,
+   "d_vs_cand31": 209,
+   "d_vs_live": 330
   },
   {
    "key": "hugo-hall-kahan",
@@ -3389,12 +3388,12 @@
    "cand31": 1349,
    "c32base": 1366,
    "leg_ladder": -1,
-   "leg_fade": -4,
+   "leg_fade": 0,
    "leg_taper": 118,
-   "b_preview": 1479,
-   "d_vs_c32base": 113,
-   "d_vs_cand31": 130,
-   "d_vs_live": 179
+   "b_preview": 1483,
+   "d_vs_c32base": 117,
+   "d_vs_cand31": 134,
+   "d_vs_live": 183
   },
   {
    "key": "darcy-fort",
@@ -3409,11 +3408,11 @@
    "c32base": 171,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 30,
-   "b_preview": 201,
-   "d_vs_c32base": 30,
-   "d_vs_cand31": 55,
-   "d_vs_live": 185
+   "leg_taper": 31,
+   "b_preview": 202,
+   "d_vs_c32base": 31,
+   "d_vs_cand31": 56,
+   "d_vs_live": 186
   },
   {
    "key": "harry-armstrong",
@@ -3426,13 +3425,13 @@
    "live": 620,
    "cand31": 701,
    "c32base": 607,
-   "leg_ladder": -3,
+   "leg_ladder": -2,
    "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 604,
-   "d_vs_c32base": -3,
-   "d_vs_cand31": -97,
-   "d_vs_live": -16
+   "b_preview": 605,
+   "d_vs_c32base": -2,
+   "d_vs_cand31": -96,
+   "d_vs_live": -15
   },
   {
    "key": "deven-robertson",
@@ -3465,12 +3464,12 @@
    "cand31": 719,
    "c32base": 746,
    "leg_ladder": 0,
-   "leg_fade": 1,
-   "leg_taper": 54,
-   "b_preview": 801,
-   "d_vs_c32base": 55,
-   "d_vs_cand31": 82,
-   "d_vs_live": -105
+   "leg_fade": 0,
+   "leg_taper": 53,
+   "b_preview": 799,
+   "d_vs_c32base": 53,
+   "d_vs_cand31": 80,
+   "d_vs_live": -107
   },
   {
    "key": "lachlan-smith",
@@ -3540,13 +3539,13 @@
    "live": 749,
    "cand31": 668,
    "c32base": 644,
-   "leg_ladder": -2,
+   "leg_ladder": -1,
    "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 642,
-   "d_vs_c32base": -2,
-   "d_vs_cand31": -26,
-   "d_vs_live": -107
+   "b_preview": 643,
+   "d_vs_c32base": -1,
+   "d_vs_cand31": -25,
+   "d_vs_live": -106
   },
   {
    "key": "joe-richards",
@@ -3618,11 +3617,11 @@
    "c32base": 1145,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 115,
-   "b_preview": 1260,
-   "d_vs_c32base": 115,
-   "d_vs_cand31": 113,
-   "d_vs_live": 162
+   "leg_taper": 114,
+   "b_preview": 1259,
+   "d_vs_c32base": 114,
+   "d_vs_cand31": 112,
+   "d_vs_live": 161
   },
   {
    "key": "darcy-wilmot",
@@ -3636,12 +3635,12 @@
    "cand31": 2973,
    "c32base": 2973,
    "leg_ladder": 0,
-   "leg_fade": -6,
-   "leg_taper": 63,
-   "b_preview": 3030,
-   "d_vs_c32base": 57,
-   "d_vs_cand31": 57,
-   "d_vs_live": -283
+   "leg_fade": 0,
+   "leg_taper": 64,
+   "b_preview": 3037,
+   "d_vs_c32base": 64,
+   "d_vs_cand31": 64,
+   "d_vs_live": -276
   },
   {
    "key": "kieren-briggs",
@@ -3655,12 +3654,12 @@
    "cand31": 1739,
    "c32base": 1808,
    "leg_ladder": 0,
-   "leg_fade": -6,
+   "leg_fade": 0,
    "leg_taper": 78,
-   "b_preview": 1880,
-   "d_vs_c32base": 72,
-   "d_vs_cand31": 141,
-   "d_vs_live": -112
+   "b_preview": 1886,
+   "d_vs_c32base": 78,
+   "d_vs_cand31": 147,
+   "d_vs_live": -106
   },
   {
    "key": "samuel-swadling",
@@ -3692,13 +3691,13 @@
    "live": 2349,
    "cand31": 2074,
    "c32base": 2072,
-   "leg_ladder": -48,
-   "leg_fade": -1,
+   "leg_ladder": -38,
+   "leg_fade": 0,
    "leg_taper": 45,
-   "b_preview": 2068,
-   "d_vs_c32base": -4,
-   "d_vs_cand31": -6,
-   "d_vs_live": -281
+   "b_preview": 2079,
+   "d_vs_c32base": 7,
+   "d_vs_cand31": 5,
+   "d_vs_live": -270
   },
   {
    "key": "sam-butler-1",
@@ -3768,13 +3767,13 @@
    "live": 2071,
    "cand31": 1818,
    "c32base": 1818,
-   "leg_ladder": 56,
-   "leg_fade": -1,
-   "leg_taper": 82,
-   "b_preview": 1955,
-   "d_vs_c32base": 137,
-   "d_vs_cand31": 137,
-   "d_vs_live": -116
+   "leg_ladder": 55,
+   "leg_fade": 0,
+   "leg_taper": 81,
+   "b_preview": 1954,
+   "d_vs_c32base": 136,
+   "d_vs_cand31": 136,
+   "d_vs_live": -117
   },
   {
    "key": "jai-culley",
@@ -3807,12 +3806,12 @@
    "cand31": 2310,
    "c32base": 2310,
    "leg_ladder": 0,
-   "leg_fade": -83,
+   "leg_fade": 0,
    "leg_taper": 4,
-   "b_preview": 2231,
-   "d_vs_c32base": -79,
-   "d_vs_cand31": -79,
-   "d_vs_live": -117
+   "b_preview": 2314,
+   "d_vs_c32base": 4,
+   "d_vs_cand31": 4,
+   "d_vs_live": -34
   },
   {
    "key": "jai-murray",
@@ -3883,8 +3882,8 @@
    "cand31": 3684,
    "c32base": 3634,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 31,
+   "leg_fade": 0,
+   "leg_taper": 30,
    "b_preview": 3664,
    "d_vs_c32base": 30,
    "d_vs_cand31": -20,
@@ -3941,11 +3940,11 @@
    "c32base": 4003,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 116,
-   "b_preview": 4119,
-   "d_vs_c32base": 116,
-   "d_vs_cand31": 115,
-   "d_vs_live": -292
+   "leg_taper": 117,
+   "b_preview": 4120,
+   "d_vs_c32base": 117,
+   "d_vs_cand31": 116,
+   "d_vs_live": -291
   },
   {
    "key": "harry-charleson",
@@ -3977,13 +3976,13 @@
    "live": 2027,
    "cand31": 2008,
    "c32base": 2008,
-   "leg_ladder": -203,
-   "leg_fade": -137,
-   "leg_taper": 50,
-   "b_preview": 1718,
-   "d_vs_c32base": -290,
-   "d_vs_cand31": -290,
-   "d_vs_live": -309
+   "leg_ladder": -138,
+   "leg_fade": 0,
+   "leg_taper": 59,
+   "b_preview": 1929,
+   "d_vs_c32base": -79,
+   "d_vs_cand31": -79,
+   "d_vs_live": -98
   },
   {
    "key": "noah-roberts-thomson",
@@ -4017,11 +4016,11 @@
    "c32base": 2019,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 95,
-   "b_preview": 2114,
-   "d_vs_c32base": 95,
-   "d_vs_cand31": 159,
-   "d_vs_live": -100
+   "leg_taper": 94,
+   "b_preview": 2113,
+   "d_vs_c32base": 94,
+   "d_vs_cand31": 158,
+   "d_vs_live": -101
   },
   {
    "key": "kye-annand",
@@ -4034,13 +4033,13 @@
    "live": 239,
    "cand31": 334,
    "c32base": 282,
-   "leg_ladder": -7,
+   "leg_ladder": -10,
    "leg_fade": 0,
-   "leg_taper": 67,
-   "b_preview": 342,
-   "d_vs_c32base": 60,
-   "d_vs_cand31": 8,
-   "d_vs_live": 103
+   "leg_taper": 68,
+   "b_preview": 340,
+   "d_vs_c32base": 58,
+   "d_vs_cand31": 6,
+   "d_vs_live": 101
   },
   {
    "key": "luke-kennedy",
@@ -4072,13 +4071,13 @@
    "live": 1557,
    "cand31": 1344,
    "c32base": 1344,
-   "leg_ladder": -160,
+   "leg_ladder": -153,
    "leg_fade": 0,
-   "leg_taper": 82,
-   "b_preview": 1266,
-   "d_vs_c32base": -78,
-   "d_vs_cand31": -78,
-   "d_vs_live": -291
+   "leg_taper": 86,
+   "b_preview": 1277,
+   "d_vs_c32base": -67,
+   "d_vs_cand31": -67,
+   "d_vs_live": -280
   },
   {
    "key": "jarrod-witts",
@@ -4092,12 +4091,12 @@
    "cand31": 240,
    "c32base": 241,
    "leg_ladder": 0,
-   "leg_fade": -2,
-   "leg_taper": 31,
-   "b_preview": 270,
-   "d_vs_c32base": 29,
-   "d_vs_cand31": 30,
-   "d_vs_live": 131
+   "leg_fade": 0,
+   "leg_taper": 33,
+   "b_preview": 274,
+   "d_vs_c32base": 33,
+   "d_vs_cand31": 34,
+   "d_vs_live": 135
   },
   {
    "key": "will-hayes-b",
@@ -4130,8 +4129,8 @@
    "cand31": 1251,
    "c32base": 1238,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 76,
+   "leg_fade": 0,
+   "leg_taper": 75,
    "b_preview": 1313,
    "d_vs_c32base": 75,
    "d_vs_cand31": 62,
@@ -4167,13 +4166,13 @@
    "live": 424,
    "cand31": 285,
    "c32base": 304,
-   "leg_ladder": -14,
+   "leg_ladder": -19,
    "leg_fade": 0,
    "leg_taper": 57,
-   "b_preview": 347,
-   "d_vs_c32base": 43,
-   "d_vs_cand31": 62,
-   "d_vs_live": -77
+   "b_preview": 342,
+   "d_vs_c32base": 38,
+   "d_vs_cand31": 57,
+   "d_vs_live": -82
   },
   {
    "key": "dylan-stephens",
@@ -4205,13 +4204,13 @@
    "live": 1093,
    "cand31": 912,
    "c32base": 973,
-   "leg_ladder": 59,
+   "leg_ladder": 44,
    "leg_fade": 0,
-   "leg_taper": 49,
-   "b_preview": 1081,
-   "d_vs_c32base": 108,
-   "d_vs_cand31": 169,
-   "d_vs_live": -12
+   "leg_taper": 50,
+   "b_preview": 1067,
+   "d_vs_c32base": 94,
+   "d_vs_cand31": 155,
+   "d_vs_live": -26
   },
   {
    "key": "joseph-fonti",
@@ -4245,11 +4244,11 @@
    "c32base": 2453,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 90,
-   "b_preview": 2543,
-   "d_vs_c32base": 90,
-   "d_vs_cand31": 89,
-   "d_vs_live": -197
+   "leg_taper": 91,
+   "b_preview": 2544,
+   "d_vs_c32base": 91,
+   "d_vs_cand31": 90,
+   "d_vs_live": -196
   },
   {
    "key": "riley-thilthorpe",
@@ -4262,13 +4261,13 @@
    "live": 4468,
    "cand31": 4067,
    "c32base": 4066,
-   "leg_ladder": 98,
+   "leg_ladder": 124,
    "leg_fade": 0,
-   "leg_taper": 47,
-   "b_preview": 4211,
-   "d_vs_c32base": 145,
-   "d_vs_cand31": 144,
-   "d_vs_live": -257
+   "leg_taper": 37,
+   "b_preview": 4227,
+   "d_vs_c32base": 161,
+   "d_vs_cand31": 160,
+   "d_vs_live": -241
   },
   {
    "key": "josh-sinn",
@@ -4301,12 +4300,12 @@
    "cand31": 6137,
    "c32base": 6155,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 58,
-   "b_preview": 6212,
-   "d_vs_c32base": 57,
-   "d_vs_cand31": 75,
-   "d_vs_live": -471
+   "leg_fade": 0,
+   "leg_taper": 59,
+   "b_preview": 6214,
+   "d_vs_c32base": 59,
+   "d_vs_cand31": 77,
+   "d_vs_live": -469
   },
   {
    "key": "sam-banks",
@@ -4358,12 +4357,12 @@
    "cand31": 4305,
    "c32base": 4339,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 69,
-   "b_preview": 4407,
-   "d_vs_c32base": 68,
-   "d_vs_cand31": 102,
-   "d_vs_live": -312
+   "b_preview": 4408,
+   "d_vs_c32base": 69,
+   "d_vs_cand31": 103,
+   "d_vs_live": -311
   },
   {
    "key": "jack-ross",
@@ -4377,12 +4376,12 @@
    "cand31": 2479,
    "c32base": 2479,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 80,
-   "b_preview": 2558,
-   "d_vs_c32base": 79,
-   "d_vs_cand31": 79,
-   "d_vs_live": -203
+   "b_preview": 2559,
+   "d_vs_c32base": 80,
+   "d_vs_cand31": 80,
+   "d_vs_live": -202
   },
   {
    "key": "zane-peucker",
@@ -4434,12 +4433,12 @@
    "cand31": 2116,
    "c32base": 2116,
    "leg_ladder": 0,
-   "leg_fade": -141,
-   "leg_taper": 50,
-   "b_preview": 2025,
-   "d_vs_c32base": -91,
-   "d_vs_cand31": -91,
-   "d_vs_live": -134
+   "leg_fade": 0,
+   "leg_taper": 57,
+   "b_preview": 2173,
+   "d_vs_c32base": 57,
+   "d_vs_cand31": 57,
+   "d_vs_live": 14
   },
   {
    "key": "lucas-camporeale",
@@ -4511,11 +4510,11 @@
    "c32base": 3197,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 94,
-   "b_preview": 3291,
-   "d_vs_c32base": 94,
-   "d_vs_cand31": 108,
-   "d_vs_live": -222
+   "leg_taper": 95,
+   "b_preview": 3292,
+   "d_vs_c32base": 95,
+   "d_vs_cand31": 109,
+   "d_vs_live": -221
   },
   {
    "key": "lachy-dovaston",
@@ -4566,13 +4565,13 @@
    "live": 455,
    "cand31": 521,
    "c32base": 524,
-   "leg_ladder": -177,
+   "leg_ladder": -173,
    "leg_fade": 0,
-   "leg_taper": 32,
-   "b_preview": 379,
-   "d_vs_c32base": -145,
-   "d_vs_cand31": -142,
-   "d_vs_live": -76
+   "leg_taper": 34,
+   "b_preview": 385,
+   "d_vs_c32base": -139,
+   "d_vs_cand31": -136,
+   "d_vs_live": -70
   },
   {
    "key": "karl-worner",
@@ -4604,9 +4603,9 @@
    "live": 476,
    "cand31": 351,
    "c32base": 352,
-   "leg_ladder": -13,
+   "leg_ladder": -14,
    "leg_fade": 0,
-   "leg_taper": 75,
+   "leg_taper": 76,
    "b_preview": 414,
    "d_vs_c32base": 62,
    "d_vs_cand31": 63,
@@ -4644,11 +4643,11 @@
    "c32base": 2536,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 112,
-   "b_preview": 2648,
-   "d_vs_c32base": 112,
-   "d_vs_cand31": 110,
-   "d_vs_live": -169
+   "leg_taper": 111,
+   "b_preview": 2647,
+   "d_vs_c32base": 111,
+   "d_vs_cand31": 109,
+   "d_vs_live": -170
   },
   {
    "key": "rory-laird",
@@ -4662,12 +4661,12 @@
    "cand31": 748,
    "c32base": 749,
    "leg_ladder": 0,
-   "leg_fade": -22,
-   "leg_taper": 3,
-   "b_preview": 730,
-   "d_vs_c32base": -19,
-   "d_vs_cand31": -18,
-   "d_vs_live": 29
+   "leg_fade": 0,
+   "leg_taper": 2,
+   "b_preview": 751,
+   "d_vs_c32base": 2,
+   "d_vs_cand31": 3,
+   "d_vs_live": 50
   },
   {
    "key": "caleb-lewis",
@@ -4680,9 +4679,9 @@
    "live": 233,
    "cand31": 141,
    "c32base": 153,
-   "leg_ladder": -3,
+   "leg_ladder": -4,
    "leg_fade": 0,
-   "leg_taper": 25,
+   "leg_taper": 26,
    "b_preview": 175,
    "d_vs_c32base": 22,
    "d_vs_cand31": 34,
@@ -4756,13 +4755,13 @@
    "live": 254,
    "cand31": 322,
    "c32base": 206,
-   "leg_ladder": -5,
+   "leg_ladder": -6,
    "leg_fade": 0,
    "leg_taper": 68,
-   "b_preview": 269,
-   "d_vs_c32base": 63,
-   "d_vs_cand31": -53,
-   "d_vs_live": 15
+   "b_preview": 268,
+   "d_vs_c32base": 62,
+   "d_vs_cand31": -54,
+   "d_vs_live": 14
   },
   {
    "key": "sam-marshall",
@@ -4833,12 +4832,12 @@
    "cand31": 5554,
    "c32base": 5552,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 29,
-   "b_preview": 5580,
-   "d_vs_c32base": 28,
-   "d_vs_cand31": 26,
-   "d_vs_live": -462
+   "b_preview": 5581,
+   "d_vs_c32base": 29,
+   "d_vs_cand31": 27,
+   "d_vs_live": -461
   },
   {
    "key": "will-day",
@@ -4853,11 +4852,11 @@
    "c32base": 2137,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 144,
-   "b_preview": 2281,
-   "d_vs_c32base": 144,
-   "d_vs_cand31": 142,
-   "d_vs_live": -106
+   "leg_taper": 145,
+   "b_preview": 2282,
+   "d_vs_c32base": 145,
+   "d_vs_cand31": 143,
+   "d_vs_live": -105
   },
   {
    "key": "fred-rodriguez",
@@ -4966,12 +4965,12 @@
    "cand31": 1111,
    "c32base": 1111,
    "leg_ladder": 0,
-   "leg_fade": -53,
-   "leg_taper": 54,
-   "b_preview": 1112,
-   "d_vs_c32base": 1,
-   "d_vs_cand31": 1,
-   "d_vs_live": 16
+   "leg_fade": 0,
+   "leg_taper": 60,
+   "b_preview": 1171,
+   "d_vs_c32base": 60,
+   "d_vs_cand31": 60,
+   "d_vs_live": 75
   },
   {
    "key": "jayden-short",
@@ -4985,12 +4984,12 @@
    "cand31": 916,
    "c32base": 917,
    "leg_ladder": 0,
-   "leg_fade": -46,
-   "leg_taper": 53,
-   "b_preview": 924,
-   "d_vs_c32base": 7,
-   "d_vs_cand31": 8,
-   "d_vs_live": 37
+   "leg_fade": 0,
+   "leg_taper": 61,
+   "b_preview": 978,
+   "d_vs_c32base": 61,
+   "d_vs_cand31": 62,
+   "d_vs_live": 91
   },
   {
    "key": "oliver-griffin",
@@ -5060,9 +5059,9 @@
    "live": 275,
    "cand31": 180,
    "c32base": 236,
-   "leg_ladder": -8,
+   "leg_ladder": -9,
    "leg_fade": 0,
-   "leg_taper": 53,
+   "leg_taper": 54,
    "b_preview": 281,
    "d_vs_c32base": 45,
    "d_vs_cand31": 101,
@@ -5138,11 +5137,11 @@
    "c32base": 2926,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 31,
-   "b_preview": 2957,
-   "d_vs_c32base": 31,
-   "d_vs_cand31": 31,
-   "d_vs_live": -84
+   "leg_taper": 32,
+   "b_preview": 2958,
+   "d_vs_c32base": 32,
+   "d_vs_cand31": 32,
+   "d_vs_live": -83
   },
   {
    "key": "luke-ryan",
@@ -5156,12 +5155,12 @@
    "cand31": 1315,
    "c32base": 1315,
    "leg_ladder": 0,
-   "leg_fade": -87,
-   "leg_taper": 42,
-   "b_preview": 1270,
-   "d_vs_c32base": -45,
-   "d_vs_cand31": -45,
-   "d_vs_live": -45
+   "leg_fade": 0,
+   "leg_taper": 47,
+   "b_preview": 1362,
+   "d_vs_c32base": 47,
+   "d_vs_cand31": 47,
+   "d_vs_live": 47
   },
   {
    "key": "finlay-macrae",
@@ -5269,13 +5268,13 @@
    "live": 415,
    "cand31": 304,
    "c32base": 324,
-   "leg_ladder": -18,
+   "leg_ladder": -22,
    "leg_fade": 0,
-   "leg_taper": 96,
-   "b_preview": 402,
-   "d_vs_c32base": 78,
-   "d_vs_cand31": 98,
-   "d_vs_live": -13
+   "leg_taper": 97,
+   "b_preview": 399,
+   "d_vs_c32base": 75,
+   "d_vs_cand31": 95,
+   "d_vs_live": -16
   },
   {
    "key": "bailey-williams-wc",
@@ -5288,13 +5287,13 @@
    "live": 2470,
    "cand31": 2223,
    "c32base": 2252,
-   "leg_ladder": -1,
-   "leg_fade": 1,
-   "leg_taper": 72,
-   "b_preview": 2324,
-   "d_vs_c32base": 72,
-   "d_vs_cand31": 101,
-   "d_vs_live": -146
+   "leg_ladder": -4,
+   "leg_fade": 0,
+   "leg_taper": 73,
+   "b_preview": 2321,
+   "d_vs_c32base": 69,
+   "d_vs_cand31": 98,
+   "d_vs_live": -149
   },
   {
    "key": "nic-newman",
@@ -5308,12 +5307,12 @@
    "cand31": 669,
    "c32base": 672,
    "leg_ladder": 0,
-   "leg_fade": -19,
+   "leg_fade": 0,
    "leg_taper": 2,
-   "b_preview": 655,
-   "d_vs_c32base": -17,
-   "d_vs_cand31": -14,
-   "d_vs_live": 27
+   "b_preview": 674,
+   "d_vs_c32base": 2,
+   "d_vs_cand31": 5,
+   "d_vs_live": 46
   },
   {
    "key": "tyler-sonsie",
@@ -5345,9 +5344,9 @@
    "live": 135,
    "cand31": 208,
    "c32base": 188,
-   "leg_ladder": -4,
+   "leg_ladder": -6,
    "leg_fade": 0,
-   "leg_taper": 11,
+   "leg_taper": 13,
    "b_preview": 195,
    "d_vs_c32base": 7,
    "d_vs_cand31": -13,
@@ -5403,12 +5402,12 @@
    "cand31": 1035,
    "c32base": 1035,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 127,
-   "b_preview": 1161,
-   "d_vs_c32base": 126,
-   "d_vs_cand31": 126,
-   "d_vs_live": 139
+   "b_preview": 1162,
+   "d_vs_c32base": 127,
+   "d_vs_cand31": 127,
+   "d_vs_live": 140
   },
   {
    "key": "lance-collard",
@@ -5441,12 +5440,12 @@
    "cand31": 462,
    "c32base": 462,
    "leg_ladder": 0,
-   "leg_fade": -8,
+   "leg_fade": 0,
    "leg_taper": 1,
-   "b_preview": 455,
-   "d_vs_c32base": -7,
-   "d_vs_cand31": -7,
-   "d_vs_live": 45
+   "b_preview": 463,
+   "d_vs_c32base": 1,
+   "d_vs_cand31": 1,
+   "d_vs_live": 53
   },
   {
    "key": "wade-derksen",
@@ -5459,13 +5458,13 @@
    "live": 109,
    "cand31": 180,
    "c32base": 174,
-   "leg_ladder": -4,
+   "leg_ladder": -6,
    "leg_fade": 0,
    "leg_taper": 45,
-   "b_preview": 215,
-   "d_vs_c32base": 41,
-   "d_vs_cand31": 35,
-   "d_vs_live": 106
+   "b_preview": 213,
+   "d_vs_c32base": 39,
+   "d_vs_cand31": 33,
+   "d_vs_live": 104
   },
   {
    "key": "jacob-weitering",
@@ -5478,13 +5477,13 @@
    "live": 1013,
    "cand31": 1023,
    "c32base": 1023,
-   "leg_ladder": -397,
-   "leg_fade": -11,
-   "leg_taper": 32,
-   "b_preview": 647,
-   "d_vs_c32base": -376,
-   "d_vs_cand31": -376,
-   "d_vs_live": -366
+   "leg_ladder": -318,
+   "leg_fade": 0,
+   "leg_taper": 42,
+   "b_preview": 747,
+   "d_vs_c32base": -276,
+   "d_vs_cand31": -276,
+   "d_vs_live": -266
   },
   {
    "key": "jack-sinclair",
@@ -5498,12 +5497,12 @@
    "cand31": 3180,
    "c32base": 3180,
    "leg_ladder": 0,
-   "leg_fade": -236,
-   "leg_taper": 28,
-   "b_preview": 2972,
-   "d_vs_c32base": -208,
-   "d_vs_cand31": -208,
-   "d_vs_live": -350
+   "leg_fade": 0,
+   "leg_taper": 34,
+   "b_preview": 3214,
+   "d_vs_c32base": 34,
+   "d_vs_cand31": 34,
+   "d_vs_live": -108
   },
   {
    "key": "izak-rankine",
@@ -5517,12 +5516,12 @@
    "cand31": 4299,
    "c32base": 4342,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 63,
-   "b_preview": 4404,
-   "d_vs_c32base": 62,
-   "d_vs_cand31": 105,
-   "d_vs_live": -281
+   "b_preview": 4405,
+   "d_vs_c32base": 63,
+   "d_vs_cand31": 106,
+   "d_vs_live": -280
   },
   {
    "key": "tom-atkins",
@@ -5536,12 +5535,12 @@
    "cand31": 355,
    "c32base": 355,
    "leg_ladder": 0,
-   "leg_fade": -9,
-   "leg_taper": 20,
-   "b_preview": 366,
-   "d_vs_c32base": 11,
-   "d_vs_cand31": 11,
-   "d_vs_live": 68
+   "leg_fade": 0,
+   "leg_taper": 21,
+   "b_preview": 376,
+   "d_vs_c32base": 21,
+   "d_vs_cand31": 21,
+   "d_vs_live": 78
   },
   {
    "key": "ryan-maric",
@@ -5593,12 +5592,12 @@
    "cand31": 421,
    "c32base": 427,
    "leg_ladder": 0,
-   "leg_fade": -33,
-   "leg_taper": 0,
-   "b_preview": 394,
-   "d_vs_c32base": -33,
-   "d_vs_cand31": -27,
-   "d_vs_live": 24
+   "leg_fade": 0,
+   "leg_taper": 1,
+   "b_preview": 428,
+   "d_vs_c32base": 1,
+   "d_vs_cand31": 7,
+   "d_vs_live": 58
   },
   {
    "key": "liam-reidy",
@@ -5632,11 +5631,11 @@
    "c32base": 1442,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 83,
-   "b_preview": 1525,
-   "d_vs_c32base": 83,
-   "d_vs_cand31": 83,
-   "d_vs_live": -97
+   "leg_taper": 84,
+   "b_preview": 1526,
+   "d_vs_c32base": 84,
+   "d_vs_cand31": 84,
+   "d_vs_live": -96
   },
   {
    "key": "tim-taranto",
@@ -5651,11 +5650,11 @@
    "c32base": 2337,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 47,
-   "b_preview": 2384,
-   "d_vs_c32base": 47,
-   "d_vs_cand31": 47,
-   "d_vs_live": -39
+   "leg_taper": 48,
+   "b_preview": 2385,
+   "d_vs_c32base": 48,
+   "d_vs_cand31": 48,
+   "d_vs_live": -38
   },
   {
    "key": "mitchell-lewis",
@@ -5668,13 +5667,13 @@
    "live": 517,
    "cand31": 557,
    "c32base": 566,
-   "leg_ladder": -170,
+   "leg_ladder": -162,
    "leg_fade": 0,
-   "leg_taper": 31,
-   "b_preview": 427,
-   "d_vs_c32base": -139,
-   "d_vs_cand31": -130,
-   "d_vs_live": -90
+   "leg_taper": 34,
+   "b_preview": 438,
+   "d_vs_c32base": -128,
+   "d_vs_cand31": -119,
+   "d_vs_live": -79
   },
   {
    "key": "charlie-cameron",
@@ -5688,12 +5687,12 @@
    "cand31": 215,
    "c32base": 215,
    "leg_ladder": 0,
-   "leg_fade": -3,
+   "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 212,
-   "d_vs_c32base": -3,
-   "d_vs_cand31": -3,
-   "d_vs_live": 61
+   "b_preview": 215,
+   "d_vs_c32base": 0,
+   "d_vs_cand31": 0,
+   "d_vs_live": 64
   },
   {
    "key": "jack-martin",
@@ -5764,12 +5763,12 @@
    "cand31": 6551,
    "c32base": 6551,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 44,
-   "b_preview": 6594,
-   "d_vs_c32base": 43,
-   "d_vs_cand31": 43,
-   "d_vs_live": -498
+   "leg_fade": 0,
+   "leg_taper": 45,
+   "b_preview": 6596,
+   "d_vs_c32base": 45,
+   "d_vs_cand31": 45,
+   "d_vs_live": -496
   },
   {
    "key": "tom-papley",
@@ -5783,12 +5782,12 @@
    "cand31": 403,
    "c32base": 403,
    "leg_ladder": 0,
-   "leg_fade": -14,
+   "leg_fade": 0,
    "leg_taper": -4,
-   "b_preview": 385,
-   "d_vs_c32base": -18,
-   "d_vs_cand31": -18,
-   "d_vs_live": 32
+   "b_preview": 399,
+   "d_vs_c32base": -4,
+   "d_vs_cand31": -4,
+   "d_vs_live": 46
   },
   {
    "key": "alex-van-wyk",
@@ -5858,13 +5857,13 @@
    "live": 2577,
    "cand31": 2670,
    "c32base": 2400,
-   "leg_ladder": 46,
+   "leg_ladder": 56,
    "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 2446,
-   "d_vs_c32base": 46,
-   "d_vs_cand31": -224,
-   "d_vs_live": -131
+   "b_preview": 2456,
+   "d_vs_c32base": 56,
+   "d_vs_cand31": -214,
+   "d_vs_live": -121
   },
   {
    "key": "sam-davidson",
@@ -5915,13 +5914,13 @@
    "live": 462,
    "cand31": 503,
    "c32base": 503,
-   "leg_ladder": 0,
+   "leg_ladder": -5,
    "leg_fade": 0,
    "leg_taper": 68,
-   "b_preview": 571,
-   "d_vs_c32base": 68,
-   "d_vs_cand31": 68,
-   "d_vs_live": 109
+   "b_preview": 566,
+   "d_vs_c32base": 63,
+   "d_vs_cand31": 63,
+   "d_vs_live": 104
   },
   {
    "key": "ben-ainsworth",
@@ -5972,13 +5971,13 @@
    "live": 257,
    "cand31": 185,
    "c32base": 207,
-   "leg_ladder": -9,
+   "leg_ladder": -11,
    "leg_fade": 0,
-   "leg_taper": 70,
-   "b_preview": 268,
-   "d_vs_c32base": 61,
-   "d_vs_cand31": 83,
-   "d_vs_live": 11
+   "leg_taper": 71,
+   "b_preview": 267,
+   "d_vs_c32base": 60,
+   "d_vs_cand31": 82,
+   "d_vs_live": 10
   },
   {
    "key": "jake-waterman",
@@ -5991,13 +5990,13 @@
    "live": 1160,
    "cand31": 1153,
    "c32base": 1157,
-   "leg_ladder": -372,
+   "leg_ladder": -339,
    "leg_fade": 0,
-   "leg_taper": 44,
-   "b_preview": 829,
-   "d_vs_c32base": -328,
-   "d_vs_cand31": -324,
-   "d_vs_live": -331
+   "leg_taper": 46,
+   "b_preview": 864,
+   "d_vs_c32base": -293,
+   "d_vs_cand31": -289,
+   "d_vs_live": -296
   },
   {
    "key": "jaxon-artemis",
@@ -6029,13 +6028,13 @@
    "live": 583,
    "cand31": 609,
    "c32base": 745,
-   "leg_ladder": 3,
+   "leg_ladder": 5,
    "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 748,
-   "d_vs_c32base": 3,
-   "d_vs_cand31": 139,
-   "d_vs_live": 165
+   "b_preview": 750,
+   "d_vs_c32base": 5,
+   "d_vs_cand31": 141,
+   "d_vs_live": 167
   },
   {
    "key": "darcy-parish",
@@ -6049,12 +6048,12 @@
    "cand31": 594,
    "c32base": 594,
    "leg_ladder": 0,
-   "leg_fade": -20,
-   "leg_taper": 73,
-   "b_preview": 647,
-   "d_vs_c32base": 53,
-   "d_vs_cand31": 53,
-   "d_vs_live": 85
+   "leg_fade": 0,
+   "leg_taper": 79,
+   "b_preview": 673,
+   "d_vs_c32base": 79,
+   "d_vs_cand31": 79,
+   "d_vs_live": 111
   },
   {
    "key": "tom-gross",
@@ -6087,12 +6086,12 @@
    "cand31": 2998,
    "c32base": 2998,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 54,
-   "b_preview": 3051,
-   "d_vs_c32base": 53,
-   "d_vs_cand31": 53,
-   "d_vs_live": -87
+   "b_preview": 3052,
+   "d_vs_c32base": 54,
+   "d_vs_cand31": 54,
+   "d_vs_live": -86
   },
   {
    "key": "rhys-unwin",
@@ -6145,11 +6144,11 @@
    "c32base": 3019,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 120,
-   "b_preview": 3139,
-   "d_vs_c32base": 120,
-   "d_vs_cand31": 51,
-   "d_vs_live": -96
+   "leg_taper": 119,
+   "b_preview": 3138,
+   "d_vs_c32base": 119,
+   "d_vs_cand31": 50,
+   "d_vs_live": -97
   },
   {
    "key": "adam-cerra",
@@ -6181,13 +6180,13 @@
    "live": 1042,
    "cand31": 907,
    "c32base": 926,
-   "leg_ladder": -208,
-   "leg_fade": -1,
-   "leg_taper": 42,
-   "b_preview": 759,
-   "d_vs_c32base": -167,
-   "d_vs_cand31": -148,
-   "d_vs_live": -283
+   "leg_ladder": -206,
+   "leg_fade": 0,
+   "leg_taper": 43,
+   "b_preview": 763,
+   "d_vs_c32base": -163,
+   "d_vs_cand31": -144,
+   "d_vs_live": -279
   },
   {
    "key": "christian-petracca",
@@ -6201,12 +6200,12 @@
    "cand31": 1970,
    "c32base": 1977,
    "leg_ladder": 0,
-   "leg_fade": -102,
-   "leg_taper": 39,
-   "b_preview": 1914,
-   "d_vs_c32base": -63,
-   "d_vs_cand31": -56,
-   "d_vs_live": -124
+   "leg_fade": 0,
+   "leg_taper": 49,
+   "b_preview": 2026,
+   "d_vs_c32base": 49,
+   "d_vs_cand31": 56,
+   "d_vs_live": -12
   },
   {
    "key": "flynn-perez",
@@ -6238,13 +6237,13 @@
    "live": 205,
    "cand31": 258,
    "c32base": 261,
-   "leg_ladder": -84,
+   "leg_ladder": -80,
    "leg_fade": 0,
-   "leg_taper": 13,
-   "b_preview": 190,
-   "d_vs_c32base": -71,
-   "d_vs_cand31": -68,
-   "d_vs_live": -15
+   "leg_taper": 17,
+   "b_preview": 198,
+   "d_vs_c32base": -63,
+   "d_vs_cand31": -60,
+   "d_vs_live": -7
   },
   {
    "key": "lachie-whitfield",
@@ -6258,12 +6257,12 @@
    "cand31": 2143,
    "c32base": 2143,
    "leg_ladder": 0,
-   "leg_fade": -121,
-   "leg_taper": 29,
-   "b_preview": 2051,
-   "d_vs_c32base": -92,
-   "d_vs_cand31": -92,
-   "d_vs_live": -172
+   "leg_fade": 0,
+   "leg_taper": 34,
+   "b_preview": 2177,
+   "d_vs_c32base": 34,
+   "d_vs_cand31": 34,
+   "d_vs_live": -46
   },
   {
    "key": "steele-sidebottom",
@@ -6428,13 +6427,13 @@
    "live": 1769,
    "cand31": 1712,
    "c32base": 1702,
-   "leg_ladder": 27,
+   "leg_ladder": 20,
    "leg_fade": 0,
    "leg_taper": 60,
-   "b_preview": 1789,
-   "d_vs_c32base": 87,
-   "d_vs_cand31": 77,
-   "d_vs_live": 20
+   "b_preview": 1782,
+   "d_vs_c32base": 80,
+   "d_vs_cand31": 70,
+   "d_vs_live": 13
   },
   {
    "key": "clayton-oliver",
@@ -6448,12 +6447,12 @@
    "cand31": 2240,
    "c32base": 2240,
    "leg_ladder": 0,
-   "leg_fade": -119,
-   "leg_taper": 65,
-   "b_preview": 2186,
-   "d_vs_c32base": -54,
-   "d_vs_cand31": -54,
-   "d_vs_live": -148
+   "leg_fade": 0,
+   "leg_taper": 72,
+   "b_preview": 2312,
+   "d_vs_c32base": 72,
+   "d_vs_cand31": 72,
+   "d_vs_live": -22
   },
   {
    "key": "will-edwards",
@@ -6466,13 +6465,13 @@
    "live": 214,
    "cand31": 141,
    "c32base": 176,
-   "leg_ladder": -9,
+   "leg_ladder": -11,
    "leg_fade": 0,
    "leg_taper": 56,
-   "b_preview": 223,
-   "d_vs_c32base": 47,
-   "d_vs_cand31": 82,
-   "d_vs_live": 9
+   "b_preview": 221,
+   "d_vs_c32base": 45,
+   "d_vs_cand31": 80,
+   "d_vs_live": 7
   },
   {
    "key": "jye-caldwell",
@@ -6487,11 +6486,11 @@
    "c32base": 972,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 127,
-   "b_preview": 1099,
-   "d_vs_c32base": 127,
-   "d_vs_cand31": 126,
-   "d_vs_live": 120
+   "leg_taper": 126,
+   "b_preview": 1098,
+   "d_vs_c32base": 126,
+   "d_vs_cand31": 125,
+   "d_vs_live": 119
   },
   {
    "key": "paddy-dow",
@@ -6524,12 +6523,12 @@
    "cand31": 1921,
    "c32base": 1921,
    "leg_ladder": 0,
-   "leg_fade": -117,
-   "leg_taper": 68,
-   "b_preview": 1872,
-   "d_vs_c32base": -49,
-   "d_vs_cand31": -49,
-   "d_vs_live": -122
+   "leg_fade": 0,
+   "leg_taper": 76,
+   "b_preview": 1997,
+   "d_vs_c32base": 76,
+   "d_vs_cand31": 76,
+   "d_vs_live": 3
   },
   {
    "key": "hugh-bond",
@@ -6638,12 +6637,12 @@
    "cand31": 3677,
    "c32base": 3677,
    "leg_ladder": 0,
-   "leg_fade": -238,
-   "leg_taper": 30,
-   "b_preview": 3469,
-   "d_vs_c32base": -208,
-   "d_vs_cand31": -208,
-   "d_vs_live": -407
+   "leg_fade": 0,
+   "leg_taper": 35,
+   "b_preview": 3712,
+   "d_vs_c32base": 35,
+   "d_vs_cand31": 35,
+   "d_vs_live": -164
   },
   {
    "key": "max-kondogiannis",
@@ -6770,13 +6769,13 @@
    "live": 809,
    "cand31": 699,
    "c32base": 726,
-   "leg_ladder": -46,
+   "leg_ladder": -56,
    "leg_fade": 0,
-   "leg_taper": 57,
-   "b_preview": 737,
-   "d_vs_c32base": 11,
-   "d_vs_cand31": 38,
-   "d_vs_live": -72
+   "leg_taper": 59,
+   "b_preview": 729,
+   "d_vs_c32base": 3,
+   "d_vs_cand31": 30,
+   "d_vs_live": -80
   },
   {
    "key": "connor-idun",
@@ -6790,12 +6789,12 @@
    "cand31": 2021,
    "c32base": 2021,
    "leg_ladder": 0,
-   "leg_fade": -4,
-   "leg_taper": 40,
-   "b_preview": 2057,
-   "d_vs_c32base": 36,
-   "d_vs_cand31": 36,
-   "d_vs_live": -167
+   "leg_fade": 0,
+   "leg_taper": 42,
+   "b_preview": 2063,
+   "d_vs_c32base": 42,
+   "d_vs_cand31": 42,
+   "d_vs_live": -161
   },
   {
    "key": "jay-polkinghorne",
@@ -6847,12 +6846,12 @@
    "cand31": 3914,
    "c32base": 3914,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 103,
-   "b_preview": 4016,
-   "d_vs_c32base": 102,
-   "d_vs_cand31": 102,
-   "d_vs_live": -233
+   "b_preview": 4017,
+   "d_vs_c32base": 103,
+   "d_vs_cand31": 103,
+   "d_vs_live": -232
   },
   {
    "key": "matthew-kennedy-1",
@@ -6866,12 +6865,12 @@
    "cand31": 449,
    "c32base": 449,
    "leg_ladder": 0,
-   "leg_fade": -15,
-   "leg_taper": 81,
-   "b_preview": 515,
-   "d_vs_c32base": 66,
-   "d_vs_cand31": 66,
-   "d_vs_live": 92
+   "leg_fade": 0,
+   "leg_taper": 87,
+   "b_preview": 536,
+   "d_vs_c32base": 87,
+   "d_vs_cand31": 87,
+   "d_vs_live": 113
   },
   {
    "key": "isaac-heeney",
@@ -6885,12 +6884,12 @@
    "cand31": 3359,
    "c32base": 3359,
    "leg_ladder": 0,
-   "leg_fade": -228,
-   "leg_taper": 68,
-   "b_preview": 3199,
-   "d_vs_c32base": -160,
-   "d_vs_cand31": -160,
-   "d_vs_live": -338
+   "leg_fade": 0,
+   "leg_taper": 77,
+   "b_preview": 3436,
+   "d_vs_c32base": 77,
+   "d_vs_cand31": 77,
+   "d_vs_live": -101
   },
   {
    "key": "campbell-lake",
@@ -6960,13 +6959,13 @@
    "live": 1107,
    "cand31": 981,
    "c32base": 993,
-   "leg_ladder": -95,
+   "leg_ladder": -81,
    "leg_fade": 0,
    "leg_taper": 127,
-   "b_preview": 1025,
-   "d_vs_c32base": 32,
-   "d_vs_cand31": 44,
-   "d_vs_live": -82
+   "b_preview": 1039,
+   "d_vs_c32base": 46,
+   "d_vs_cand31": 58,
+   "d_vs_live": -68
   },
   {
    "key": "reilly-o-brien",
@@ -6980,12 +6979,12 @@
    "cand31": 973,
    "c32base": 977,
    "leg_ladder": 0,
-   "leg_fade": -61,
-   "leg_taper": 62,
-   "b_preview": 978,
-   "d_vs_c32base": 1,
-   "d_vs_cand31": 5,
-   "d_vs_live": -7
+   "leg_fade": 0,
+   "leg_taper": 71,
+   "b_preview": 1048,
+   "d_vs_c32base": 71,
+   "d_vs_cand31": 75,
+   "d_vs_live": 63
   },
   {
    "key": "liam-hetherton",
@@ -7017,13 +7016,13 @@
    "live": 231,
    "cand31": 269,
    "c32base": 292,
-   "leg_ladder": -14,
+   "leg_ladder": -17,
    "leg_fade": 0,
    "leg_taper": 65,
-   "b_preview": 343,
-   "d_vs_c32base": 51,
-   "d_vs_cand31": 74,
-   "d_vs_live": 112
+   "b_preview": 340,
+   "d_vs_c32base": 48,
+   "d_vs_cand31": 71,
+   "d_vs_live": 109
   },
   {
    "key": "adam-sweid",
@@ -7379,12 +7378,12 @@
    "cand31": 446,
    "c32base": 446,
    "leg_ladder": 0,
-   "leg_fade": -16,
+   "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 430,
-   "d_vs_c32base": -16,
-   "d_vs_cand31": -16,
-   "d_vs_live": 4
+   "b_preview": 446,
+   "d_vs_c32base": 0,
+   "d_vs_cand31": 0,
+   "d_vs_live": 20
   },
   {
    "key": "jake-lloyd",
@@ -7398,12 +7397,12 @@
    "cand31": 211,
    "c32base": 211,
    "leg_ladder": 0,
-   "leg_fade": -3,
+   "leg_fade": 0,
    "leg_taper": 2,
-   "b_preview": 210,
-   "d_vs_c32base": -1,
-   "d_vs_cand31": -1,
-   "d_vs_live": 37
+   "b_preview": 213,
+   "d_vs_c32base": 2,
+   "d_vs_cand31": 2,
+   "d_vs_live": 40
   },
   {
    "key": "angus-anderson",
@@ -7435,13 +7434,13 @@
    "live": 136,
    "cand31": 174,
    "c32base": 250,
-   "leg_ladder": -7,
+   "leg_ladder": -9,
    "leg_fade": 0,
    "leg_taper": 52,
-   "b_preview": 295,
-   "d_vs_c32base": 45,
-   "d_vs_cand31": 121,
-   "d_vs_live": 159
+   "b_preview": 293,
+   "d_vs_c32base": 43,
+   "d_vs_cand31": 119,
+   "d_vs_live": 157
   },
   {
    "key": "caleb-serong",
@@ -7455,12 +7454,12 @@
    "cand31": 4648,
    "c32base": 4648,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 93,
-   "b_preview": 4740,
-   "d_vs_c32base": 92,
-   "d_vs_cand31": 92,
-   "d_vs_live": -287
+   "leg_fade": 0,
+   "leg_taper": 94,
+   "b_preview": 4742,
+   "d_vs_c32base": 94,
+   "d_vs_cand31": 94,
+   "d_vs_live": -285
   },
   {
    "key": "nick-bryan",
@@ -7550,12 +7549,12 @@
    "cand31": 5303,
    "c32base": 5303,
    "leg_ladder": 0,
-   "leg_fade": -11,
-   "leg_taper": 152,
-   "b_preview": 5444,
-   "d_vs_c32base": 141,
-   "d_vs_cand31": 141,
-   "d_vs_live": -284
+   "leg_fade": 0,
+   "leg_taper": 153,
+   "b_preview": 5456,
+   "d_vs_c32base": 153,
+   "d_vs_cand31": 153,
+   "d_vs_live": -272
   },
   {
    "key": "river-stevens",
@@ -7702,12 +7701,12 @@
    "cand31": 1664,
    "c32base": 1688,
    "leg_ladder": 0,
-   "leg_fade": 3,
+   "leg_fade": 0,
    "leg_taper": 196,
-   "b_preview": 1887,
-   "d_vs_c32base": 199,
-   "d_vs_cand31": 223,
-   "d_vs_live": 57
+   "b_preview": 1884,
+   "d_vs_c32base": 196,
+   "d_vs_cand31": 220,
+   "d_vs_live": 54
   },
   {
    "key": "indy-cotton",
@@ -7798,11 +7797,11 @@
    "c32base": 82,
    "leg_ladder": -1,
    "leg_fade": 0,
-   "leg_taper": 16,
-   "b_preview": 97,
-   "d_vs_c32base": 15,
-   "d_vs_cand31": 22,
-   "d_vs_live": 59
+   "leg_taper": 15,
+   "b_preview": 96,
+   "d_vs_c32base": 14,
+   "d_vs_cand31": 21,
+   "d_vs_live": 58
   },
   {
    "key": "wil-parker",
@@ -7855,11 +7854,11 @@
    "c32base": 59,
    "leg_ladder": -2,
    "leg_fade": 0,
-   "leg_taper": 46,
-   "b_preview": 103,
-   "d_vs_c32base": 44,
-   "d_vs_cand31": 2,
-   "d_vs_live": -61
+   "leg_taper": 45,
+   "b_preview": 102,
+   "d_vs_c32base": 43,
+   "d_vs_cand31": 1,
+   "d_vs_live": -62
   },
   {
    "key": "henry-smith",
@@ -7872,13 +7871,13 @@
    "live": 82,
    "cand31": 108,
    "c32base": 93,
-   "leg_ladder": -5,
+   "leg_ladder": -6,
    "leg_fade": 0,
    "leg_taper": 46,
-   "b_preview": 134,
-   "d_vs_c32base": 41,
-   "d_vs_cand31": 26,
-   "d_vs_live": 52
+   "b_preview": 133,
+   "d_vs_c32base": 40,
+   "d_vs_cand31": 25,
+   "d_vs_live": 51
   },
   {
    "key": "nick-murray",
@@ -7891,13 +7890,13 @@
    "live": 321,
    "cand31": 343,
    "c32base": 342,
-   "leg_ladder": -30,
+   "leg_ladder": -36,
    "leg_fade": 0,
    "leg_taper": 47,
-   "b_preview": 359,
-   "d_vs_c32base": 17,
-   "d_vs_cand31": 16,
-   "d_vs_live": 38
+   "b_preview": 353,
+   "d_vs_c32base": 11,
+   "d_vs_cand31": 10,
+   "d_vs_live": 32
   },
   {
    "key": "finn-maginness",
@@ -7967,13 +7966,13 @@
    "live": 173,
    "cand31": 119,
    "c32base": 139,
-   "leg_ladder": -6,
+   "leg_ladder": -8,
    "leg_fade": 0,
-   "leg_taper": 42,
-   "b_preview": 175,
-   "d_vs_c32base": 36,
-   "d_vs_cand31": 56,
-   "d_vs_live": 2
+   "leg_taper": 41,
+   "b_preview": 172,
+   "d_vs_c32base": 33,
+   "d_vs_cand31": 53,
+   "d_vs_live": -1
   },
   {
    "key": "jy-simpkin",
@@ -7988,11 +7987,11 @@
    "c32base": 1129,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 104,
-   "b_preview": 1233,
-   "d_vs_c32base": 104,
-   "d_vs_cand31": 104,
-   "d_vs_live": 69
+   "leg_taper": 103,
+   "b_preview": 1232,
+   "d_vs_c32base": 103,
+   "d_vs_cand31": 103,
+   "d_vs_live": 68
   },
   {
    "key": "brayden-fiorini",
@@ -8006,12 +8005,12 @@
    "cand31": 198,
    "c32base": 198,
    "leg_ladder": 0,
-   "leg_fade": -11,
-   "leg_taper": 39,
-   "b_preview": 226,
-   "d_vs_c32base": 28,
-   "d_vs_cand31": 28,
-   "d_vs_live": 59
+   "leg_fade": 0,
+   "leg_taper": 44,
+   "b_preview": 242,
+   "d_vs_c32base": 44,
+   "d_vs_cand31": 44,
+   "d_vs_live": 75
   },
   {
    "key": "jordan-dawson",
@@ -8025,12 +8024,12 @@
    "cand31": 3174,
    "c32base": 3176,
    "leg_ladder": 0,
-   "leg_fade": -202,
-   "leg_taper": 11,
-   "b_preview": 2985,
-   "d_vs_c32base": -191,
-   "d_vs_cand31": -189,
-   "d_vs_live": -458
+   "leg_fade": 0,
+   "leg_taper": 13,
+   "b_preview": 3189,
+   "d_vs_c32base": 13,
+   "d_vs_cand31": 15,
+   "d_vs_live": -254
   },
   {
    "key": "jake-melksham",
@@ -8290,13 +8289,13 @@
    "live": 239,
    "cand31": 261,
    "c32base": 315,
-   "leg_ladder": -16,
+   "leg_ladder": -19,
    "leg_fade": 0,
    "leg_taper": 56,
-   "b_preview": 355,
-   "d_vs_c32base": 40,
-   "d_vs_cand31": 94,
-   "d_vs_live": 116
+   "b_preview": 352,
+   "d_vs_c32base": 37,
+   "d_vs_cand31": 91,
+   "d_vs_live": 113
   },
   {
    "key": "lachlan-fogarty",
@@ -8329,12 +8328,12 @@
    "cand31": 278,
    "c32base": 278,
    "leg_ladder": 0,
-   "leg_fade": -6,
+   "leg_fade": 0,
    "leg_taper": 1,
-   "b_preview": 273,
-   "d_vs_c32base": -5,
-   "d_vs_cand31": -5,
-   "d_vs_live": 18
+   "b_preview": 279,
+   "d_vs_c32base": 1,
+   "d_vs_cand31": 1,
+   "d_vs_live": 24
   },
   {
    "key": "tobyn-murray",
@@ -8387,11 +8386,11 @@
    "c32base": 88,
    "leg_ladder": -8,
    "leg_fade": 0,
-   "leg_taper": 10,
-   "b_preview": 90,
-   "d_vs_c32base": 2,
-   "d_vs_cand31": -24,
-   "d_vs_live": -62
+   "leg_taper": 9,
+   "b_preview": 89,
+   "d_vs_c32base": 1,
+   "d_vs_cand31": -25,
+   "d_vs_live": -63
   },
   {
    "key": "brent-daniels",
@@ -8519,12 +8518,12 @@
    "cand31": 1183,
    "c32base": 1183,
    "leg_ladder": 0,
-   "leg_fade": -3,
+   "leg_fade": 0,
    "leg_taper": 79,
-   "b_preview": 1259,
-   "d_vs_c32base": 76,
-   "d_vs_cand31": 76,
-   "d_vs_live": -47
+   "b_preview": 1262,
+   "d_vs_c32base": 79,
+   "d_vs_cand31": 79,
+   "d_vs_live": -44
   },
   {
    "key": "jack-henry",
@@ -8537,13 +8536,13 @@
    "live": 251,
    "cand31": 272,
    "c32base": 273,
-   "leg_ladder": -94,
+   "leg_ladder": -93,
    "leg_fade": 0,
    "leg_taper": 38,
-   "b_preview": 217,
-   "d_vs_c32base": -56,
-   "d_vs_cand31": -55,
-   "d_vs_live": -34
+   "b_preview": 218,
+   "d_vs_c32base": -55,
+   "d_vs_cand31": -54,
+   "d_vs_live": -33
   },
   {
    "key": "liam-duggan",
@@ -8557,12 +8556,12 @@
    "cand31": 233,
    "c32base": 233,
    "leg_ladder": 0,
-   "leg_fade": -9,
-   "leg_taper": 37,
-   "b_preview": 261,
-   "d_vs_c32base": 28,
-   "d_vs_cand31": 28,
-   "d_vs_live": 51
+   "leg_fade": 0,
+   "leg_taper": 41,
+   "b_preview": 274,
+   "d_vs_c32base": 41,
+   "d_vs_cand31": 41,
+   "d_vs_live": 64
   },
   {
    "key": "jack-viney",
@@ -8576,12 +8575,12 @@
    "cand31": 251,
    "c32base": 254,
    "leg_ladder": 0,
-   "leg_fade": -19,
-   "leg_taper": 0,
-   "b_preview": 235,
-   "d_vs_c32base": -19,
-   "d_vs_cand31": -16,
-   "d_vs_live": 6
+   "leg_fade": 0,
+   "leg_taper": 1,
+   "b_preview": 255,
+   "d_vs_c32base": 1,
+   "d_vs_cand31": 4,
+   "d_vs_live": 26
   },
   {
    "key": "cameron-nairn",
@@ -8670,13 +8669,13 @@
    "live": 852,
    "cand31": 832,
    "c32base": 832,
-   "leg_ladder": -148,
+   "leg_ladder": -152,
    "leg_fade": 0,
-   "leg_taper": 28,
-   "b_preview": 712,
-   "d_vs_c32base": -120,
-   "d_vs_cand31": -120,
-   "d_vs_live": -140
+   "leg_taper": 29,
+   "b_preview": 709,
+   "d_vs_c32base": -123,
+   "d_vs_cand31": -123,
+   "d_vs_live": -143
   },
   {
    "key": "tyson-stengle",
@@ -8842,12 +8841,12 @@
    "cand31": 3014,
    "c32base": 3014,
    "leg_ladder": 0,
-   "leg_fade": -7,
-   "leg_taper": 67,
-   "b_preview": 3074,
-   "d_vs_c32base": 60,
-   "d_vs_cand31": 60,
-   "d_vs_live": -190
+   "leg_fade": 0,
+   "leg_taper": 68,
+   "b_preview": 3082,
+   "d_vs_c32base": 68,
+   "d_vs_cand31": 68,
+   "d_vs_live": -182
   },
   {
    "key": "oliver-florent",
@@ -8862,11 +8861,11 @@
    "c32base": 719,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 73,
-   "b_preview": 792,
-   "d_vs_c32base": 73,
-   "d_vs_cand31": 73,
-   "d_vs_live": 60
+   "leg_taper": 74,
+   "b_preview": 793,
+   "d_vs_c32base": 74,
+   "d_vs_cand31": 74,
+   "d_vs_live": 61
   },
   {
    "key": "darcy-cameron",
@@ -8880,12 +8879,12 @@
    "cand31": 1524,
    "c32base": 1532,
    "leg_ladder": -1,
-   "leg_fade": -129,
-   "leg_taper": 35,
-   "b_preview": 1437,
-   "d_vs_c32base": -95,
-   "d_vs_cand31": -87,
-   "d_vs_live": -232
+   "leg_fade": 0,
+   "leg_taper": 41,
+   "b_preview": 1572,
+   "d_vs_c32base": 40,
+   "d_vs_cand31": 48,
+   "d_vs_live": -97
   },
   {
    "key": "max-knobel",
@@ -8918,12 +8917,12 @@
    "cand31": 1695,
    "c32base": 1695,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 68,
-   "b_preview": 1762,
-   "d_vs_c32base": 67,
-   "d_vs_cand31": 67,
-   "d_vs_live": -90
+   "leg_fade": 0,
+   "leg_taper": 69,
+   "b_preview": 1764,
+   "d_vs_c32base": 69,
+   "d_vs_cand31": 69,
+   "d_vs_live": -88
   },
   {
    "key": "patrick-cripps",
@@ -8937,12 +8936,12 @@
    "cand31": 1424,
    "c32base": 1424,
    "leg_ladder": 0,
-   "leg_fade": -74,
-   "leg_taper": 2,
-   "b_preview": 1352,
-   "d_vs_c32base": -72,
-   "d_vs_cand31": -72,
-   "d_vs_live": -136
+   "leg_fade": 0,
+   "leg_taper": 3,
+   "b_preview": 1427,
+   "d_vs_c32base": 3,
+   "d_vs_cand31": 3,
+   "d_vs_live": -61
   },
   {
    "key": "patrick-carr",
@@ -9012,13 +9011,13 @@
    "live": 936,
    "cand31": 841,
    "c32base": 861,
-   "leg_ladder": -26,
+   "leg_ladder": -38,
    "leg_fade": 0,
-   "leg_taper": 89,
-   "b_preview": 924,
-   "d_vs_c32base": 63,
-   "d_vs_cand31": 83,
-   "d_vs_live": -12
+   "leg_taper": 92,
+   "b_preview": 915,
+   "d_vs_c32base": 54,
+   "d_vs_cand31": 74,
+   "d_vs_live": -21
   },
   {
    "key": "brody-mihocek",
@@ -9031,13 +9030,13 @@
    "live": 10,
    "cand31": 43,
    "c32base": 43,
-   "leg_ladder": -3,
+   "leg_ladder": -2,
    "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 40,
-   "d_vs_c32base": -3,
-   "d_vs_cand31": -3,
-   "d_vs_live": 30
+   "b_preview": 41,
+   "d_vs_c32base": -2,
+   "d_vs_cand31": -2,
+   "d_vs_live": 31
   },
   {
    "key": "kai-lohmann",
@@ -9109,11 +9108,11 @@
    "c32base": 187,
    "leg_ladder": -2,
    "leg_fade": 0,
-   "leg_taper": 9,
-   "b_preview": 194,
-   "d_vs_c32base": 7,
-   "d_vs_cand31": 17,
-   "d_vs_live": 40
+   "leg_taper": 8,
+   "b_preview": 193,
+   "d_vs_c32base": 6,
+   "d_vs_cand31": 16,
+   "d_vs_live": 39
   },
   {
    "key": "oscar-adams",
@@ -9126,13 +9125,13 @@
    "live": 79,
    "cand31": 105,
    "c32base": 115,
-   "leg_ladder": -3,
+   "leg_ladder": -4,
    "leg_fade": 0,
-   "leg_taper": 33,
-   "b_preview": 145,
-   "d_vs_c32base": 30,
-   "d_vs_cand31": 40,
-   "d_vs_live": 66
+   "leg_taper": 32,
+   "b_preview": 143,
+   "d_vs_c32base": 28,
+   "d_vs_cand31": 38,
+   "d_vs_live": 64
   },
   {
    "key": "mitch-zadow",
@@ -9165,12 +9164,12 @@
    "cand31": 2065,
    "c32base": 2065,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 86,
-   "b_preview": 2150,
-   "d_vs_c32base": 85,
-   "d_vs_cand31": 85,
-   "d_vs_live": -92
+   "b_preview": 2151,
+   "d_vs_c32base": 86,
+   "d_vs_cand31": 86,
+   "d_vs_live": -91
   },
   {
    "key": "keidean-coleman",
@@ -9222,12 +9221,12 @@
    "cand31": 126,
    "c32base": 126,
    "leg_ladder": 0,
-   "leg_fade": -3,
+   "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 123,
-   "d_vs_c32base": -3,
-   "d_vs_cand31": -3,
-   "d_vs_live": 20
+   "b_preview": 126,
+   "d_vs_c32base": 0,
+   "d_vs_cand31": 0,
+   "d_vs_live": 23
   },
   {
    "key": "tom-lynch-1",
@@ -9240,13 +9239,13 @@
    "live": 50,
    "cand31": 15,
    "c32base": 15,
-   "leg_ladder": 1,
+   "leg_ladder": 0,
    "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 16,
-   "d_vs_c32base": 1,
-   "d_vs_cand31": 1,
-   "d_vs_live": -34
+   "b_preview": 15,
+   "d_vs_c32base": 0,
+   "d_vs_cand31": 0,
+   "d_vs_live": -35
   },
   {
    "key": "zeke-uwland",
@@ -9297,13 +9296,13 @@
    "live": 3633,
    "cand31": 3422,
    "c32base": 3422,
-   "leg_ladder": -1447,
-   "leg_fade": -70,
-   "leg_taper": 33,
-   "b_preview": 1938,
-   "d_vs_c32base": -1484,
-   "d_vs_cand31": -1484,
-   "d_vs_live": -1695
+   "leg_ladder": -1135,
+   "leg_fade": 0,
+   "leg_taper": 42,
+   "b_preview": 2329,
+   "d_vs_c32base": -1093,
+   "d_vs_cand31": -1093,
+   "d_vs_live": -1304
   },
   {
    "key": "ned-bowman",
@@ -9337,11 +9336,11 @@
    "c32base": 340,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 16,
-   "b_preview": 356,
-   "d_vs_c32base": 16,
-   "d_vs_cand31": 108,
-   "d_vs_live": 51
+   "leg_taper": 15,
+   "b_preview": 355,
+   "d_vs_c32base": 15,
+   "d_vs_cand31": 107,
+   "d_vs_live": 50
   },
   {
    "key": "jaxon-prior",
@@ -9394,11 +9393,11 @@
    "c32base": 9,
    "leg_ladder": -1,
    "leg_fade": 0,
-   "leg_taper": 2,
-   "b_preview": 10,
-   "d_vs_c32base": 1,
-   "d_vs_cand31": -3,
-   "d_vs_live": -31
+   "leg_taper": 3,
+   "b_preview": 11,
+   "d_vs_c32base": 2,
+   "d_vs_cand31": -2,
+   "d_vs_live": -30
   },
   {
    "key": "lukas-cooke",
@@ -9411,13 +9410,13 @@
    "live": 364,
    "cand31": 338,
    "c32base": 307,
-   "leg_ladder": -6,
+   "leg_ladder": -7,
    "leg_fade": 0,
    "leg_taper": 33,
-   "b_preview": 334,
-   "d_vs_c32base": 27,
-   "d_vs_cand31": -4,
-   "d_vs_live": -30
+   "b_preview": 333,
+   "d_vs_c32base": 26,
+   "d_vs_cand31": -5,
+   "d_vs_live": -31
   },
   {
    "key": "cooper-sharman",
@@ -9430,13 +9429,13 @@
    "live": 429,
    "cand31": 427,
    "c32base": 426,
-   "leg_ladder": -44,
+   "leg_ladder": -51,
    "leg_fade": 0,
-   "leg_taper": 30,
-   "b_preview": 412,
-   "d_vs_c32base": -14,
-   "d_vs_cand31": -15,
-   "d_vs_live": -17
+   "leg_taper": 31,
+   "b_preview": 406,
+   "d_vs_c32base": -20,
+   "d_vs_cand31": -21,
+   "d_vs_live": -23
   },
   {
    "key": "rhylee-west",
@@ -9468,13 +9467,13 @@
    "live": 1166,
    "cand31": 1116,
    "c32base": 1116,
-   "leg_ladder": -217,
+   "leg_ladder": -215,
    "leg_fade": 0,
-   "leg_taper": 53,
-   "b_preview": 952,
-   "d_vs_c32base": -164,
-   "d_vs_cand31": -164,
-   "d_vs_live": -214
+   "leg_taper": 55,
+   "b_preview": 956,
+   "d_vs_c32base": -160,
+   "d_vs_cand31": -160,
+   "d_vs_live": -210
   },
   {
    "key": "jeremy-cameron",
@@ -9487,13 +9486,13 @@
    "live": 778,
    "cand31": 754,
    "c32base": 754,
-   "leg_ladder": -144,
+   "leg_ladder": -152,
    "leg_fade": 0,
-   "leg_taper": 2,
-   "b_preview": 612,
-   "d_vs_c32base": -142,
-   "d_vs_cand31": -142,
-   "d_vs_live": -166
+   "leg_taper": 0,
+   "b_preview": 602,
+   "d_vs_c32base": -152,
+   "d_vs_cand31": -152,
+   "d_vs_live": -176
   },
   {
    "key": "maurice-rioli-1",
@@ -9525,13 +9524,13 @@
    "live": 1427,
    "cand31": 1307,
    "c32base": 1307,
-   "leg_ladder": -12,
+   "leg_ladder": -22,
    "leg_fade": 0,
-   "leg_taper": 60,
-   "b_preview": 1355,
-   "d_vs_c32base": 48,
-   "d_vs_cand31": 48,
-   "d_vs_live": -72
+   "leg_taper": 59,
+   "b_preview": 1344,
+   "d_vs_c32base": 37,
+   "d_vs_cand31": 37,
+   "d_vs_live": -83
   },
   {
    "key": "ben-king",
@@ -9544,13 +9543,13 @@
    "live": 218,
    "cand31": 229,
    "c32base": 244,
-   "leg_ladder": -24,
+   "leg_ladder": -28,
    "leg_fade": 0,
    "leg_taper": 40,
-   "b_preview": 260,
-   "d_vs_c32base": 16,
-   "d_vs_cand31": 31,
-   "d_vs_live": 42
+   "b_preview": 256,
+   "d_vs_c32base": 12,
+   "d_vs_cand31": 27,
+   "d_vs_live": 38
   },
   {
    "key": "luke-davies-uniacke",
@@ -9564,12 +9563,12 @@
    "cand31": 3828,
    "c32base": 3828,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 120,
-   "b_preview": 3947,
-   "d_vs_c32base": 119,
-   "d_vs_cand31": 119,
-   "d_vs_live": -123
+   "b_preview": 3948,
+   "d_vs_c32base": 120,
+   "d_vs_cand31": 120,
+   "d_vs_live": -122
   },
   {
    "key": "griffin-logue",
@@ -9603,11 +9602,11 @@
    "c32base": 30,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 8,
-   "b_preview": 38,
-   "d_vs_c32base": 8,
-   "d_vs_cand31": 8,
-   "d_vs_live": -26
+   "leg_taper": 9,
+   "b_preview": 39,
+   "d_vs_c32base": 9,
+   "d_vs_cand31": 9,
+   "d_vs_live": -25
   },
   {
    "key": "jordan-de-goey",
@@ -9621,12 +9620,12 @@
    "cand31": 1365,
    "c32base": 1365,
    "leg_ladder": 0,
-   "leg_fade": -69,
-   "leg_taper": 9,
-   "b_preview": 1305,
-   "d_vs_c32base": -60,
-   "d_vs_cand31": -60,
-   "d_vs_live": -128
+   "leg_fade": 0,
+   "leg_taper": 12,
+   "b_preview": 1377,
+   "d_vs_c32base": 12,
+   "d_vs_cand31": 12,
+   "d_vs_live": -56
   },
   {
    "key": "ricky-mentha",
@@ -9677,13 +9676,13 @@
    "live": 215,
    "cand31": 175,
    "c32base": 214,
-   "leg_ladder": -9,
+   "leg_ladder": -11,
    "leg_fade": 0,
-   "leg_taper": 79,
-   "b_preview": 284,
-   "d_vs_c32base": 70,
-   "d_vs_cand31": 109,
-   "d_vs_live": 69
+   "leg_taper": 80,
+   "b_preview": 283,
+   "d_vs_c32base": 69,
+   "d_vs_cand31": 108,
+   "d_vs_live": 68
   },
   {
    "key": "campbell-gray",
@@ -9696,13 +9695,13 @@
    "live": 176,
    "cand31": 189,
    "c32base": 216,
-   "leg_ladder": 0,
+   "leg_ladder": -2,
    "leg_fade": 0,
    "leg_taper": 51,
-   "b_preview": 267,
-   "d_vs_c32base": 51,
-   "d_vs_cand31": 78,
-   "d_vs_live": 91
+   "b_preview": 265,
+   "d_vs_c32base": 49,
+   "d_vs_cand31": 76,
+   "d_vs_live": 89
   },
   {
    "key": "jye-amiss",
@@ -9715,13 +9714,13 @@
    "live": 1495,
    "cand31": 1371,
    "c32base": 1370,
-   "leg_ladder": 10,
+   "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 70,
-   "b_preview": 1450,
-   "d_vs_c32base": 80,
-   "d_vs_cand31": 79,
-   "d_vs_live": -45
+   "leg_taper": 72,
+   "b_preview": 1442,
+   "d_vs_c32base": 72,
+   "d_vs_cand31": 71,
+   "d_vs_live": -53
   },
   {
    "key": "jackson-archer",
@@ -9754,12 +9753,12 @@
    "cand31": 4586,
    "c32base": 4586,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 124,
-   "b_preview": 4709,
-   "d_vs_c32base": 123,
-   "d_vs_cand31": 123,
-   "d_vs_live": -174
+   "b_preview": 4710,
+   "d_vs_c32base": 124,
+   "d_vs_cand31": 124,
+   "d_vs_live": -173
   },
   {
    "key": "josh-daicos",
@@ -9773,12 +9772,12 @@
    "cand31": 1941,
    "c32base": 1941,
    "leg_ladder": 0,
-   "leg_fade": -5,
+   "leg_fade": 0,
    "leg_taper": 59,
-   "b_preview": 1995,
-   "d_vs_c32base": 54,
-   "d_vs_cand31": 54,
-   "d_vs_live": -109
+   "b_preview": 2000,
+   "d_vs_c32base": 59,
+   "d_vs_cand31": 59,
+   "d_vs_live": -104
   },
   {
    "key": "christian-salem",
@@ -9792,12 +9791,12 @@
    "cand31": 111,
    "c32base": 111,
    "leg_ladder": 0,
-   "leg_fade": -4,
-   "leg_taper": 42,
-   "b_preview": 149,
-   "d_vs_c32base": 38,
-   "d_vs_cand31": 38,
-   "d_vs_live": 57
+   "leg_fade": 0,
+   "leg_taper": 44,
+   "b_preview": 155,
+   "d_vs_c32base": 44,
+   "d_vs_cand31": 44,
+   "d_vs_live": 63
   },
   {
    "key": "cody-curtin",
@@ -9810,13 +9809,13 @@
    "live": 427,
    "cand31": 394,
    "c32base": 438,
-   "leg_ladder": -1,
+   "leg_ladder": 0,
    "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 437,
-   "d_vs_c32base": -1,
-   "d_vs_cand31": 43,
-   "d_vs_live": 10
+   "b_preview": 438,
+   "d_vs_c32base": 0,
+   "d_vs_cand31": 44,
+   "d_vs_live": 11
   },
   {
    "key": "jack-watkins",
@@ -9848,13 +9847,13 @@
    "live": 108,
    "cand31": 132,
    "c32base": 86,
-   "leg_ladder": -5,
+   "leg_ladder": -6,
    "leg_fade": 0,
    "leg_taper": 32,
-   "b_preview": 113,
-   "d_vs_c32base": 27,
-   "d_vs_cand31": -19,
-   "d_vs_live": 5
+   "b_preview": 112,
+   "d_vs_c32base": 26,
+   "d_vs_cand31": -20,
+   "d_vs_live": 4
   },
   {
    "key": "harry-demattia",
@@ -9924,13 +9923,13 @@
    "live": 476,
    "cand31": 421,
    "c32base": 440,
-   "leg_ladder": -21,
+   "leg_ladder": -26,
    "leg_fade": 0,
-   "leg_taper": 60,
-   "b_preview": 479,
-   "d_vs_c32base": 39,
-   "d_vs_cand31": 58,
-   "d_vs_live": 3
+   "leg_taper": 62,
+   "b_preview": 476,
+   "d_vs_c32base": 36,
+   "d_vs_cand31": 55,
+   "d_vs_live": 0
   },
   {
    "key": "logan-mcdonald",
@@ -9943,13 +9942,13 @@
    "live": 693,
    "cand31": 671,
    "c32base": 737,
-   "leg_ladder": 2,
+   "leg_ladder": -5,
    "leg_fade": 0,
-   "leg_taper": 58,
-   "b_preview": 797,
-   "d_vs_c32base": 60,
-   "d_vs_cand31": 126,
-   "d_vs_live": 104
+   "leg_taper": 59,
+   "b_preview": 791,
+   "d_vs_c32base": 54,
+   "d_vs_cand31": 120,
+   "d_vs_live": 98
   },
   {
    "key": "jy-farrar",
@@ -9962,13 +9961,13 @@
    "live": 10,
    "cand31": 32,
    "c32base": 32,
-   "leg_ladder": 0,
+   "leg_ladder": -1,
    "leg_fade": 0,
-   "leg_taper": 1,
-   "b_preview": 33,
-   "d_vs_c32base": 1,
-   "d_vs_cand31": 1,
-   "d_vs_live": 23
+   "leg_taper": 3,
+   "b_preview": 34,
+   "d_vs_c32base": 2,
+   "d_vs_cand31": 2,
+   "d_vs_live": 24
   },
   {
    "key": "ed-richards",
@@ -9983,11 +9982,11 @@
    "c32base": 3641,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 78,
-   "b_preview": 3719,
-   "d_vs_c32base": 78,
-   "d_vs_cand31": 78,
-   "d_vs_live": -205
+   "leg_taper": 79,
+   "b_preview": 3720,
+   "d_vs_c32base": 79,
+   "d_vs_cand31": 79,
+   "d_vs_live": -204
   },
   {
    "key": "jack-scrimshaw",
@@ -10096,12 +10095,12 @@
    "cand31": 622,
    "c32base": 622,
    "leg_ladder": 0,
-   "leg_fade": -31,
-   "leg_taper": 66,
-   "b_preview": 657,
-   "d_vs_c32base": 35,
-   "d_vs_cand31": 35,
-   "d_vs_live": 17
+   "leg_fade": 0,
+   "leg_taper": 73,
+   "b_preview": 695,
+   "d_vs_c32base": 73,
+   "d_vs_cand31": 73,
+   "d_vs_live": 55
   },
   {
    "key": "jayden-laverde",
@@ -10114,9 +10113,9 @@
    "live": 193,
    "cand31": 204,
    "c32base": 204,
-   "leg_ladder": -57,
+   "leg_ladder": -58,
    "leg_fade": 0,
-   "leg_taper": 1,
+   "leg_taper": 2,
    "b_preview": 148,
    "d_vs_c32base": -56,
    "d_vs_cand31": -56,
@@ -10134,12 +10133,12 @@
    "cand31": 258,
    "c32base": 258,
    "leg_ladder": 0,
-   "leg_fade": -4,
+   "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 254,
-   "d_vs_c32base": -4,
-   "d_vs_cand31": -4,
-   "d_vs_live": 3
+   "b_preview": 258,
+   "d_vs_c32base": 0,
+   "d_vs_cand31": 0,
+   "d_vs_live": 7
   },
   {
    "key": "zac-banch",
@@ -10210,12 +10209,12 @@
    "cand31": 746,
    "c32base": 746,
    "leg_ladder": 0,
-   "leg_fade": 1,
-   "leg_taper": 140,
-   "b_preview": 887,
-   "d_vs_c32base": 141,
-   "d_vs_cand31": 141,
-   "d_vs_live": 112
+   "leg_fade": 0,
+   "leg_taper": 139,
+   "b_preview": 885,
+   "d_vs_c32base": 139,
+   "d_vs_cand31": 139,
+   "d_vs_live": 110
   },
   {
    "key": "mitchell-marsh",
@@ -10247,13 +10246,13 @@
    "live": 105,
    "cand31": 75,
    "c32base": 90,
-   "leg_ladder": -5,
+   "leg_ladder": -7,
    "leg_fade": 0,
    "leg_taper": 49,
-   "b_preview": 134,
-   "d_vs_c32base": 44,
-   "d_vs_cand31": 59,
-   "d_vs_live": 29
+   "b_preview": 132,
+   "d_vs_c32base": 42,
+   "d_vs_cand31": 57,
+   "d_vs_live": 27
   },
   {
    "key": "hunter-clark",
@@ -10287,11 +10286,11 @@
    "c32base": 11,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 3,
-   "b_preview": 14,
-   "d_vs_c32base": 3,
-   "d_vs_cand31": 3,
-   "d_vs_live": -25
+   "leg_taper": 4,
+   "b_preview": 15,
+   "d_vs_c32base": 4,
+   "d_vs_cand31": 4,
+   "d_vs_live": -24
   },
   {
    "key": "kyle-langford",
@@ -10304,13 +10303,13 @@
    "live": 518,
    "cand31": 505,
    "c32base": 505,
-   "leg_ladder": -164,
+   "leg_ladder": -136,
    "leg_fade": 0,
-   "leg_taper": -3,
-   "b_preview": 338,
-   "d_vs_c32base": -167,
-   "d_vs_cand31": -167,
-   "d_vs_live": -180
+   "leg_taper": 0,
+   "b_preview": 369,
+   "d_vs_c32base": -136,
+   "d_vs_cand31": -136,
+   "d_vs_live": -149
   },
   {
    "key": "jack-steele",
@@ -10324,12 +10323,12 @@
    "cand31": 1134,
    "c32base": 1134,
    "leg_ladder": 0,
-   "leg_fade": -57,
+   "leg_fade": 0,
    "leg_taper": 2,
-   "b_preview": 1079,
-   "d_vs_c32base": -55,
-   "d_vs_cand31": -55,
-   "d_vs_live": -112
+   "b_preview": 1136,
+   "d_vs_c32base": 2,
+   "d_vs_cand31": 2,
+   "d_vs_live": -55
   },
   {
    "key": "harley-barker",
@@ -10437,13 +10436,13 @@
    "live": 143,
    "cand31": 153,
    "c32base": 153,
-   "leg_ladder": -92,
-   "leg_fade": -1,
-   "leg_taper": 2,
-   "b_preview": 62,
-   "d_vs_c32base": -91,
-   "d_vs_cand31": -91,
-   "d_vs_live": -81
+   "leg_ladder": -88,
+   "leg_fade": 0,
+   "leg_taper": 6,
+   "b_preview": 71,
+   "d_vs_c32base": -82,
+   "d_vs_cand31": -82,
+   "d_vs_live": -72
   },
   {
    "key": "jesse-hogan",
@@ -10456,13 +10455,13 @@
    "live": 205,
    "cand31": 212,
    "c32base": 224,
-   "leg_ladder": -56,
+   "leg_ladder": -59,
    "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 168,
-   "d_vs_c32base": -56,
-   "d_vs_cand31": -44,
-   "d_vs_live": -37
+   "b_preview": 165,
+   "d_vs_c32base": -59,
+   "d_vs_cand31": -47,
+   "d_vs_live": -40
   },
   {
    "key": "nick-haynes",
@@ -10476,12 +10475,12 @@
    "cand31": 76,
    "c32base": 76,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 75,
-   "d_vs_c32base": -1,
-   "d_vs_cand31": -1,
-   "d_vs_live": 15
+   "b_preview": 76,
+   "d_vs_c32base": 0,
+   "d_vs_cand31": 0,
+   "d_vs_live": 16
   },
   {
    "key": "lucca-grego",
@@ -10513,13 +10512,13 @@
    "live": 192,
    "cand31": 161,
    "c32base": 189,
-   "leg_ladder": -9,
+   "leg_ladder": -11,
    "leg_fade": 0,
    "leg_taper": 73,
-   "b_preview": 253,
-   "d_vs_c32base": 64,
-   "d_vs_cand31": 92,
-   "d_vs_live": 61
+   "b_preview": 251,
+   "d_vs_c32base": 62,
+   "d_vs_cand31": 90,
+   "d_vs_live": 59
   },
   {
    "key": "gryan-miers",
@@ -10572,11 +10571,11 @@
    "c32base": 151,
    "leg_ladder": -61,
    "leg_fade": 0,
-   "leg_taper": 2,
-   "b_preview": 92,
-   "d_vs_c32base": -59,
-   "d_vs_cand31": -59,
-   "d_vs_live": -49
+   "leg_taper": 6,
+   "b_preview": 96,
+   "d_vs_c32base": -55,
+   "d_vs_cand31": -55,
+   "d_vs_live": -45
   },
   {
    "key": "darcy-gardiner",
@@ -10609,12 +10608,12 @@
    "cand31": 969,
    "c32base": 970,
    "leg_ladder": 0,
-   "leg_fade": -24,
-   "leg_taper": 2,
-   "b_preview": 948,
-   "d_vs_c32base": -22,
-   "d_vs_cand31": -21,
-   "d_vs_live": -70
+   "leg_fade": 0,
+   "leg_taper": 1,
+   "b_preview": 971,
+   "d_vs_c32base": 1,
+   "d_vs_cand31": 2,
+   "d_vs_live": -47
   },
   {
    "key": "jesse-motlop",
@@ -10685,12 +10684,12 @@
    "cand31": 1077,
    "c32base": 1077,
    "leg_ladder": 0,
-   "leg_fade": -48,
-   "leg_taper": 53,
-   "b_preview": 1082,
-   "d_vs_c32base": 5,
-   "d_vs_cand31": 5,
-   "d_vs_live": -52
+   "leg_fade": 0,
+   "leg_taper": 58,
+   "b_preview": 1135,
+   "d_vs_c32base": 58,
+   "d_vs_cand31": 58,
+   "d_vs_live": 1
   },
   {
    "key": "marc-pittonet",
@@ -10704,12 +10703,12 @@
    "cand31": 416,
    "c32base": 431,
    "leg_ladder": 0,
-   "leg_fade": -24,
-   "leg_taper": 94,
-   "b_preview": 501,
-   "d_vs_c32base": 70,
-   "d_vs_cand31": 85,
-   "d_vs_live": 35
+   "leg_fade": 0,
+   "leg_taper": 107,
+   "b_preview": 538,
+   "d_vs_c32base": 107,
+   "d_vs_cand31": 122,
+   "d_vs_live": 72
   },
   {
    "key": "jarman-impey",
@@ -10723,12 +10722,12 @@
    "cand31": 808,
    "c32base": 808,
    "leg_ladder": 0,
-   "leg_fade": -44,
-   "leg_taper": 8,
-   "b_preview": 772,
-   "d_vs_c32base": -36,
-   "d_vs_cand31": -36,
-   "d_vs_live": -73
+   "leg_fade": 0,
+   "leg_taper": 9,
+   "b_preview": 817,
+   "d_vs_c32base": 9,
+   "d_vs_cand31": 9,
+   "d_vs_live": -28
   },
   {
    "key": "nick-vlastuin",
@@ -10742,12 +10741,12 @@
    "cand31": 95,
    "c32base": 95,
    "leg_ladder": 0,
-   "leg_fade": -2,
-   "leg_taper": 22,
-   "b_preview": 115,
-   "d_vs_c32base": 20,
-   "d_vs_cand31": 20,
-   "d_vs_live": 32
+   "leg_fade": 0,
+   "leg_taper": 23,
+   "b_preview": 118,
+   "d_vs_c32base": 23,
+   "d_vs_cand31": 23,
+   "d_vs_live": 35
   },
   {
    "key": "oskar-taylor",
@@ -10874,13 +10873,13 @@
    "live": 338,
    "cand31": 332,
    "c32base": 332,
-   "leg_ladder": -90,
+   "leg_ladder": -93,
    "leg_fade": 0,
    "leg_taper": -2,
-   "b_preview": 240,
-   "d_vs_c32base": -92,
-   "d_vs_cand31": -92,
-   "d_vs_live": -98
+   "b_preview": 237,
+   "d_vs_c32base": -95,
+   "d_vs_cand31": -95,
+   "d_vs_live": -101
   },
   {
    "key": "brodie-grundy",
@@ -10893,13 +10892,13 @@
    "live": 4490,
    "cand31": 4210,
    "c32base": 4210,
-   "leg_ladder": -2,
-   "leg_fade": -349,
-   "leg_taper": 19,
-   "b_preview": 3878,
-   "d_vs_c32base": -332,
-   "d_vs_cand31": -332,
-   "d_vs_live": -612
+   "leg_ladder": -1,
+   "leg_fade": 0,
+   "leg_taper": 22,
+   "b_preview": 4231,
+   "d_vs_c32base": 21,
+   "d_vs_cand31": 21,
+   "d_vs_live": -259
   },
   {
    "key": "max-gawn",
@@ -10913,12 +10912,12 @@
    "cand31": 3134,
    "c32base": 3136,
    "leg_ladder": 0,
-   "leg_fade": -80,
+   "leg_fade": 0,
    "leg_taper": 5,
-   "b_preview": 3061,
-   "d_vs_c32base": -75,
-   "d_vs_cand31": -73,
-   "d_vs_live": -275
+   "b_preview": 3141,
+   "d_vs_c32base": 5,
+   "d_vs_cand31": 7,
+   "d_vs_live": -195
   },
   {
    "key": "rhys-stanley",
@@ -10988,13 +10987,13 @@
    "live": 94,
    "cand31": 78,
    "c32base": 76,
-   "leg_ladder": -3,
+   "leg_ladder": -4,
    "leg_fade": 0,
    "leg_taper": 34,
-   "b_preview": 107,
-   "d_vs_c32base": 31,
-   "d_vs_cand31": 29,
-   "d_vs_live": 13
+   "b_preview": 106,
+   "d_vs_c32base": 30,
+   "d_vs_cand31": 28,
+   "d_vs_live": 12
   },
   {
    "key": "xavier-o-halloran",
@@ -11045,13 +11044,13 @@
    "live": 100,
    "cand31": 109,
    "c32base": 125,
-   "leg_ladder": -22,
+   "leg_ladder": -24,
    "leg_fade": 0,
    "leg_taper": 33,
-   "b_preview": 136,
-   "d_vs_c32base": 11,
-   "d_vs_cand31": 27,
-   "d_vs_live": 36
+   "b_preview": 134,
+   "d_vs_c32base": 9,
+   "d_vs_cand31": 25,
+   "d_vs_live": 34
   },
   {
    "key": "tim-kelly",
@@ -11065,12 +11064,12 @@
    "cand31": 1154,
    "c32base": 1154,
    "leg_ladder": 0,
-   "leg_fade": -51,
-   "leg_taper": 2,
-   "b_preview": 1105,
-   "d_vs_c32base": -49,
-   "d_vs_cand31": -49,
-   "d_vs_live": -114
+   "leg_fade": 0,
+   "leg_taper": 3,
+   "b_preview": 1157,
+   "d_vs_c32base": 3,
+   "d_vs_cand31": 3,
+   "d_vs_live": -62
   },
   {
    "key": "jack-payne",
@@ -11083,13 +11082,13 @@
    "live": 94,
    "cand31": 103,
    "c32base": 125,
-   "leg_ladder": -38,
+   "leg_ladder": -40,
    "leg_fade": 0,
-   "leg_taper": 16,
-   "b_preview": 103,
-   "d_vs_c32base": -22,
-   "d_vs_cand31": 0,
-   "d_vs_live": 9
+   "leg_taper": 17,
+   "b_preview": 102,
+   "d_vs_c32base": -23,
+   "d_vs_cand31": -1,
+   "d_vs_live": 8
   },
   {
    "key": "harry-perryman",
@@ -11121,13 +11120,13 @@
    "live": 2028,
    "cand31": 1879,
    "c32base": 1879,
-   "leg_ladder": -623,
+   "leg_ladder": -544,
    "leg_fade": 0,
-   "leg_taper": 55,
-   "b_preview": 1311,
-   "d_vs_c32base": -568,
-   "d_vs_cand31": -568,
-   "d_vs_live": -717
+   "leg_taper": 60,
+   "b_preview": 1395,
+   "d_vs_c32base": -484,
+   "d_vs_cand31": -484,
+   "d_vs_live": -633
   },
   {
    "key": "harrison-himmelberg",
@@ -11141,12 +11140,12 @@
    "cand31": 145,
    "c32base": 145,
    "leg_ladder": 0,
-   "leg_fade": -6,
-   "leg_taper": 51,
-   "b_preview": 190,
-   "d_vs_c32base": 45,
-   "d_vs_cand31": 45,
-   "d_vs_live": 52
+   "leg_fade": 0,
+   "leg_taper": 55,
+   "b_preview": 200,
+   "d_vs_c32base": 55,
+   "d_vs_cand31": 55,
+   "d_vs_live": 62
   },
   {
    "key": "ben-mckay",
@@ -11198,12 +11197,12 @@
    "cand31": 2542,
    "c32base": 2542,
    "leg_ladder": 0,
-   "leg_fade": -146,
-   "leg_taper": 4,
-   "b_preview": 2400,
-   "d_vs_c32base": -142,
-   "d_vs_cand31": -142,
-   "d_vs_live": -304
+   "leg_fade": 0,
+   "leg_taper": 5,
+   "b_preview": 2547,
+   "d_vs_c32base": 5,
+   "d_vs_cand31": 5,
+   "d_vs_live": -157
   },
   {
    "key": "aidan-corr",
@@ -11237,11 +11236,11 @@
    "c32base": 3977,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 34,
-   "b_preview": 4011,
-   "d_vs_c32base": 34,
-   "d_vs_cand31": -7,
-   "d_vs_live": -274
+   "leg_taper": 31,
+   "b_preview": 4008,
+   "d_vs_c32base": 31,
+   "d_vs_cand31": -10,
+   "d_vs_live": -277
   },
   {
    "key": "tom-brown",
@@ -11293,12 +11292,12 @@
    "cand31": 4471,
    "c32base": 4471,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 39,
-   "b_preview": 4509,
-   "d_vs_c32base": 38,
-   "d_vs_cand31": 38,
-   "d_vs_live": -261
+   "b_preview": 4510,
+   "d_vs_c32base": 39,
+   "d_vs_cand31": 39,
+   "d_vs_live": -260
   },
   {
    "key": "will-hayward",
@@ -11349,13 +11348,13 @@
    "live": 1365,
    "cand31": 1289,
    "c32base": 1297,
-   "leg_ladder": -500,
-   "leg_fade": -15,
-   "leg_taper": 28,
-   "b_preview": 810,
-   "d_vs_c32base": -487,
-   "d_vs_cand31": -479,
-   "d_vs_live": -555
+   "leg_ladder": -396,
+   "leg_fade": 0,
+   "leg_taper": 35,
+   "b_preview": 936,
+   "d_vs_c32base": -361,
+   "d_vs_cand31": -353,
+   "d_vs_live": -429
   },
   {
    "key": "jack-darling",
@@ -11368,13 +11367,13 @@
    "live": 155,
    "cand31": 160,
    "c32base": 160,
-   "leg_ladder": 0,
+   "leg_ladder": -4,
    "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 160,
-   "d_vs_c32base": 0,
-   "d_vs_cand31": 0,
-   "d_vs_live": 5
+   "b_preview": 156,
+   "d_vs_c32base": -4,
+   "d_vs_cand31": -4,
+   "d_vs_live": 1
   },
   {
    "key": "patrick-dangerfield",
@@ -11483,12 +11482,12 @@
    "cand31": 196,
    "c32base": 196,
    "leg_ladder": 0,
-   "leg_fade": -7,
-   "leg_taper": 23,
-   "b_preview": 212,
-   "d_vs_c32base": 16,
-   "d_vs_cand31": 16,
-   "d_vs_live": 16
+   "leg_fade": 0,
+   "leg_taper": 25,
+   "b_preview": 221,
+   "d_vs_c32base": 25,
+   "d_vs_cand31": 25,
+   "d_vs_live": 25
   },
   {
    "key": "bailey-dale",
@@ -11502,12 +11501,12 @@
    "cand31": 2092,
    "c32base": 2092,
    "leg_ladder": 0,
-   "leg_fade": -148,
-   "leg_taper": 53,
-   "b_preview": 1997,
-   "d_vs_c32base": -95,
-   "d_vs_cand31": -95,
-   "d_vs_live": -258
+   "leg_fade": 0,
+   "leg_taper": 63,
+   "b_preview": 2155,
+   "d_vs_c32base": 63,
+   "d_vs_cand31": 63,
+   "d_vs_live": -100
   },
   {
    "key": "toby-greene",
@@ -11521,12 +11520,12 @@
    "cand31": 805,
    "c32base": 805,
    "leg_ladder": 0,
-   "leg_fade": -25,
-   "leg_taper": 4,
-   "b_preview": 784,
-   "d_vs_c32base": -21,
-   "d_vs_cand31": -21,
-   "d_vs_live": -63
+   "leg_fade": 0,
+   "leg_taper": 5,
+   "b_preview": 810,
+   "d_vs_c32base": 5,
+   "d_vs_cand31": 5,
+   "d_vs_live": -37
   },
   {
    "key": "jamie-cripps",
@@ -11540,12 +11539,12 @@
    "cand31": 11,
    "c32base": 11,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 10,
-   "d_vs_c32base": -1,
-   "d_vs_cand31": -1,
-   "d_vs_live": -18
+   "b_preview": 11,
+   "d_vs_c32base": 0,
+   "d_vs_cand31": 0,
+   "d_vs_live": -17
   },
   {
    "key": "jack-gunston",
@@ -11558,13 +11557,13 @@
    "live": 753,
    "cand31": 717,
    "c32base": 717,
-   "leg_ladder": -154,
-   "leg_fade": -1,
-   "leg_taper": 2,
-   "b_preview": 564,
-   "d_vs_c32base": -153,
-   "d_vs_cand31": -153,
-   "d_vs_live": -189
+   "leg_ladder": -11,
+   "leg_fade": 0,
+   "leg_taper": 1,
+   "b_preview": 707,
+   "d_vs_c32base": -10,
+   "d_vs_cand31": -10,
+   "d_vs_live": -46
   },
   {
    "key": "samuel-grlj",
@@ -11653,9 +11652,9 @@
    "live": 139,
    "cand31": 126,
    "c32base": 75,
-   "leg_ladder": -5,
+   "leg_ladder": -6,
    "leg_fade": 0,
-   "leg_taper": 29,
+   "leg_taper": 30,
    "b_preview": 99,
    "d_vs_c32base": 24,
    "d_vs_cand31": -27,
@@ -11749,8 +11748,8 @@
    "cand31": 2559,
    "c32base": 2559,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 64,
+   "leg_fade": 0,
+   "leg_taper": 63,
    "b_preview": 2622,
    "d_vs_c32base": 63,
    "d_vs_cand31": 63,
@@ -11768,12 +11767,12 @@
    "cand31": 3978,
    "c32base": 3978,
    "leg_ladder": 0,
-   "leg_fade": -9,
-   "leg_taper": 78,
-   "b_preview": 4047,
-   "d_vs_c32base": 69,
-   "d_vs_cand31": 69,
-   "d_vs_live": -226
+   "leg_fade": 0,
+   "leg_taper": 79,
+   "b_preview": 4057,
+   "d_vs_c32base": 79,
+   "d_vs_cand31": 79,
+   "d_vs_live": -216
   },
   {
    "key": "nicholas-coffield",
@@ -11805,13 +11804,13 @@
    "live": 1212,
    "cand31": 1119,
    "c32base": 1119,
-   "leg_ladder": -247,
+   "leg_ladder": -243,
    "leg_fade": 0,
-   "leg_taper": 75,
-   "b_preview": 947,
-   "d_vs_c32base": -172,
-   "d_vs_cand31": -172,
-   "d_vs_live": -265
+   "leg_taper": 81,
+   "b_preview": 957,
+   "d_vs_c32base": -162,
+   "d_vs_cand31": -162,
+   "d_vs_live": -255
   },
   {
    "key": "bayley-fritsch",
@@ -11825,12 +11824,12 @@
    "cand31": 198,
    "c32base": 198,
    "leg_ladder": 0,
-   "leg_fade": -8,
+   "leg_fade": 0,
    "leg_taper": 1,
-   "b_preview": 191,
-   "d_vs_c32base": -7,
-   "d_vs_cand31": -7,
-   "d_vs_live": -8
+   "b_preview": 199,
+   "d_vs_c32base": 1,
+   "d_vs_cand31": 1,
+   "d_vs_live": 0
   },
   {
    "key": "todd-marshall",
@@ -11845,11 +11844,11 @@
    "c32base": 83,
    "leg_ladder": -27,
    "leg_fade": 0,
-   "leg_taper": 19,
-   "b_preview": 75,
-   "d_vs_c32base": -8,
-   "d_vs_cand31": 5,
-   "d_vs_live": 14
+   "leg_taper": 18,
+   "b_preview": 74,
+   "d_vs_c32base": -9,
+   "d_vs_cand31": 4,
+   "d_vs_live": 13
   },
   {
    "key": "timothy-english",
@@ -11862,13 +11861,13 @@
    "live": 3535,
    "cand31": 3289,
    "c32base": 3289,
-   "leg_ladder": -1,
-   "leg_fade": -304,
-   "leg_taper": 40,
-   "b_preview": 3024,
-   "d_vs_c32base": -265,
-   "d_vs_cand31": -265,
-   "d_vs_live": -511
+   "leg_ladder": 0,
+   "leg_fade": 0,
+   "leg_taper": 44,
+   "b_preview": 3333,
+   "d_vs_c32base": 44,
+   "d_vs_cand31": 44,
+   "d_vs_live": -202
   },
   {
    "key": "brennan-cox",
@@ -11881,13 +11880,13 @@
    "live": 259,
    "cand31": 255,
    "c32base": 255,
-   "leg_ladder": -100,
+   "leg_ladder": -99,
    "leg_fade": 0,
-   "leg_taper": 36,
-   "b_preview": 191,
-   "d_vs_c32base": -64,
-   "d_vs_cand31": -64,
-   "d_vs_live": -68
+   "leg_taper": 39,
+   "b_preview": 195,
+   "d_vs_c32base": -60,
+   "d_vs_cand31": -60,
+   "d_vs_live": -64
   },
   {
    "key": "tom-doedee",
@@ -11901,12 +11900,12 @@
    "cand31": 225,
    "c32base": 226,
    "leg_ladder": 0,
-   "leg_fade": -6,
-   "leg_taper": 13,
-   "b_preview": 233,
-   "d_vs_c32base": 7,
-   "d_vs_cand31": 8,
-   "d_vs_live": 5
+   "leg_fade": 0,
+   "leg_taper": 15,
+   "b_preview": 241,
+   "d_vs_c32base": 15,
+   "d_vs_cand31": 16,
+   "d_vs_live": 13
   },
   {
    "key": "zachary-williams",
@@ -11920,12 +11919,12 @@
    "cand31": 357,
    "c32base": 357,
    "leg_ladder": 0,
-   "leg_fade": -11,
+   "leg_fade": 0,
    "leg_taper": -2,
-   "b_preview": 344,
-   "d_vs_c32base": -13,
-   "d_vs_cand31": -13,
-   "d_vs_live": -24
+   "b_preview": 355,
+   "d_vs_c32base": -2,
+   "d_vs_cand31": -2,
+   "d_vs_live": -13
   },
   {
    "key": "oliver-francou",
@@ -12014,13 +12013,13 @@
    "live": 680,
    "cand31": 624,
    "c32base": 663,
-   "leg_ladder": -15,
+   "leg_ladder": -25,
    "leg_fade": 0,
-   "leg_taper": 86,
-   "b_preview": 734,
-   "d_vs_c32base": 71,
-   "d_vs_cand31": 110,
-   "d_vs_live": 54
+   "leg_taper": 87,
+   "b_preview": 725,
+   "d_vs_c32base": 62,
+   "d_vs_cand31": 101,
+   "d_vs_live": 45
   },
   {
    "key": "jack-higgins",
@@ -12052,13 +12051,13 @@
    "live": 418,
    "cand31": 403,
    "c32base": 412,
-   "leg_ladder": -90,
+   "leg_ladder": -96,
    "leg_fade": 0,
-   "leg_taper": 44,
-   "b_preview": 366,
-   "d_vs_c32base": -46,
-   "d_vs_cand31": -37,
-   "d_vs_live": -52
+   "leg_taper": 46,
+   "b_preview": 362,
+   "d_vs_c32base": -50,
+   "d_vs_cand31": -41,
+   "d_vs_live": -56
   },
   {
    "key": "harrison-petty",
@@ -12071,13 +12070,13 @@
    "live": 207,
    "cand31": 205,
    "c32base": 214,
-   "leg_ladder": -39,
+   "leg_ladder": -43,
    "leg_fade": 0,
    "leg_taper": 36,
-   "b_preview": 211,
-   "d_vs_c32base": -3,
-   "d_vs_cand31": 6,
-   "d_vs_live": 4
+   "b_preview": 207,
+   "d_vs_c32base": -7,
+   "d_vs_cand31": 2,
+   "d_vs_live": 0
   },
   {
    "key": "joel-amartey",
@@ -12109,13 +12108,13 @@
    "live": 548,
    "cand31": 500,
    "c32base": 503,
-   "leg_ladder": -197,
-   "leg_fade": -2,
-   "leg_taper": 8,
-   "b_preview": 312,
-   "d_vs_c32base": -191,
-   "d_vs_cand31": -188,
-   "d_vs_live": -236
+   "leg_ladder": -162,
+   "leg_fade": 0,
+   "leg_taper": 11,
+   "b_preview": 352,
+   "d_vs_c32base": -151,
+   "d_vs_cand31": -148,
+   "d_vs_live": -196
   },
   {
    "key": "ben-long",
@@ -12148,8 +12147,8 @@
    "cand31": 1996,
    "c32base": 1996,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 72,
+   "leg_fade": 0,
+   "leg_taper": 71,
    "b_preview": 2067,
    "d_vs_c32base": 71,
    "d_vs_cand31": 71,
@@ -12166,13 +12165,13 @@
    "live": 493,
    "cand31": 449,
    "c32base": 471,
-   "leg_ladder": -79,
+   "leg_ladder": -69,
    "leg_fade": 0,
    "leg_taper": 140,
-   "b_preview": 532,
-   "d_vs_c32base": 61,
-   "d_vs_cand31": 83,
-   "d_vs_live": 39
+   "b_preview": 542,
+   "d_vs_c32base": 71,
+   "d_vs_cand31": 93,
+   "d_vs_live": 49
   },
   {
    "key": "lachlan-weller",
@@ -12186,12 +12185,12 @@
    "cand31": 49,
    "c32base": 49,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 11,
-   "b_preview": 59,
-   "d_vs_c32base": 10,
-   "d_vs_cand31": 10,
-   "d_vs_live": -15
+   "b_preview": 60,
+   "d_vs_c32base": 11,
+   "d_vs_cand31": 11,
+   "d_vs_live": -14
   },
   {
    "key": "daniel-butler",
@@ -12223,13 +12222,13 @@
    "live": 276,
    "cand31": 270,
    "c32base": 270,
-   "leg_ladder": -34,
-   "leg_fade": -1,
-   "leg_taper": 1,
-   "b_preview": 236,
-   "d_vs_c32base": -34,
-   "d_vs_cand31": -34,
-   "d_vs_live": -40
+   "leg_ladder": -38,
+   "leg_fade": 0,
+   "leg_taper": 0,
+   "b_preview": 232,
+   "d_vs_c32base": -38,
+   "d_vs_cand31": -38,
+   "d_vs_live": -44
   },
   {
    "key": "jake-kolodjashnij",
@@ -12337,13 +12336,13 @@
    "live": 64,
    "cand31": 71,
    "c32base": 79,
-   "leg_ladder": -44,
+   "leg_ladder": -42,
    "leg_fade": 0,
-   "leg_taper": 4,
-   "b_preview": 39,
-   "d_vs_c32base": -40,
-   "d_vs_cand31": -32,
-   "d_vs_live": -25
+   "leg_taper": 6,
+   "b_preview": 43,
+   "d_vs_c32base": -36,
+   "d_vs_cand31": -28,
+   "d_vs_live": -21
   },
   {
    "key": "eric-hipwood",
@@ -12358,11 +12357,11 @@
    "c32base": 23,
    "leg_ladder": -6,
    "leg_fade": 0,
-   "leg_taper": 6,
-   "b_preview": 23,
-   "d_vs_c32base": 0,
-   "d_vs_cand31": 0,
-   "d_vs_live": -19
+   "leg_taper": 8,
+   "b_preview": 25,
+   "d_vs_c32base": 2,
+   "d_vs_cand31": 2,
+   "d_vs_live": -17
   },
   {
    "key": "corey-wagner",
@@ -12376,12 +12375,12 @@
    "cand31": 30,
    "c32base": 44,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 22,
-   "b_preview": 65,
-   "d_vs_c32base": 21,
-   "d_vs_cand31": 35,
-   "d_vs_live": 45
+   "leg_fade": 0,
+   "leg_taper": 23,
+   "b_preview": 67,
+   "d_vs_c32base": 23,
+   "d_vs_cand31": 37,
+   "d_vs_live": 47
   },
   {
    "key": "alex-pearce",
@@ -12396,11 +12395,11 @@
    "c32base": 17,
    "leg_ladder": -2,
    "leg_fade": 0,
-   "leg_taper": 0,
-   "b_preview": 15,
-   "d_vs_c32base": -2,
-   "d_vs_cand31": 4,
-   "d_vs_live": -8
+   "leg_taper": 1,
+   "b_preview": 16,
+   "d_vs_c32base": -1,
+   "d_vs_cand31": 5,
+   "d_vs_live": -7
   },
   {
    "key": "stephen-coniglio",
@@ -12414,12 +12413,12 @@
    "cand31": 211,
    "c32base": 211,
    "leg_ladder": 0,
-   "leg_fade": -4,
+   "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 207,
-   "d_vs_c32base": -4,
-   "d_vs_cand31": -4,
-   "d_vs_live": -8
+   "b_preview": 211,
+   "d_vs_c32base": 0,
+   "d_vs_cand31": 0,
+   "d_vs_live": -4
   },
   {
    "key": "jamie-elliott",
@@ -12490,12 +12489,12 @@
    "cand31": 2712,
    "c32base": 2712,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 62,
-   "b_preview": 2773,
-   "d_vs_c32base": 61,
-   "d_vs_cand31": 61,
-   "d_vs_live": -141
+   "b_preview": 2774,
+   "d_vs_c32base": 62,
+   "d_vs_cand31": 62,
+   "d_vs_live": -140
   },
   {
    "key": "charlie-ballard",
@@ -12510,11 +12509,11 @@
    "c32base": 52,
    "leg_ladder": -11,
    "leg_fade": 0,
-   "leg_taper": 22,
-   "b_preview": 63,
-   "d_vs_c32base": 11,
-   "d_vs_cand31": 11,
-   "d_vs_live": 18
+   "leg_taper": 21,
+   "b_preview": 62,
+   "d_vs_c32base": 10,
+   "d_vs_cand31": 10,
+   "d_vs_live": 17
   },
   {
    "key": "dylan-moore",
@@ -12529,11 +12528,11 @@
    "c32base": 1116,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 74,
-   "b_preview": 1190,
-   "d_vs_c32base": 74,
-   "d_vs_cand31": 75,
-   "d_vs_live": 8
+   "leg_taper": 75,
+   "b_preview": 1191,
+   "d_vs_c32base": 75,
+   "d_vs_cand31": 76,
+   "d_vs_live": 9
   },
   {
    "key": "will-brodie",
@@ -12565,13 +12564,13 @@
    "live": 1619,
    "cand31": 1522,
    "c32base": 1531,
-   "leg_ladder": -568,
-   "leg_fade": -23,
-   "leg_taper": 10,
-   "b_preview": 950,
-   "d_vs_c32base": -581,
-   "d_vs_cand31": -572,
-   "d_vs_live": -669
+   "leg_ladder": -392,
+   "leg_fade": 0,
+   "leg_taper": 12,
+   "b_preview": 1151,
+   "d_vs_c32base": -380,
+   "d_vs_cand31": -371,
+   "d_vs_live": -468
   },
   {
    "key": "brayden-maynard",
@@ -12585,12 +12584,12 @@
    "cand31": 467,
    "c32base": 467,
    "leg_ladder": 0,
-   "leg_fade": -23,
-   "leg_taper": 49,
-   "b_preview": 493,
-   "d_vs_c32base": 26,
-   "d_vs_cand31": 26,
-   "d_vs_live": 4
+   "leg_fade": 0,
+   "leg_taper": 56,
+   "b_preview": 523,
+   "d_vs_c32base": 56,
+   "d_vs_cand31": 56,
+   "d_vs_live": 34
   },
   {
    "key": "toby-nankervis",
@@ -12604,12 +12603,12 @@
    "cand31": 1906,
    "c32base": 1911,
    "leg_ladder": 0,
-   "leg_fade": -119,
-   "leg_taper": 16,
-   "b_preview": 1808,
-   "d_vs_c32base": -103,
-   "d_vs_cand31": -98,
-   "d_vs_live": -223
+   "leg_fade": 0,
+   "leg_taper": 19,
+   "b_preview": 1930,
+   "d_vs_c32base": 19,
+   "d_vs_cand31": 24,
+   "d_vs_live": -101
   },
   {
    "key": "jackson-macrae",
@@ -12623,12 +12622,12 @@
    "cand31": 96,
    "c32base": 96,
    "leg_ladder": 0,
-   "leg_fade": -2,
-   "leg_taper": 15,
-   "b_preview": 109,
-   "d_vs_c32base": 13,
-   "d_vs_cand31": 13,
-   "d_vs_live": 8
+   "leg_fade": 0,
+   "leg_taper": 16,
+   "b_preview": 112,
+   "d_vs_c32base": 16,
+   "d_vs_cand31": 16,
+   "d_vs_live": 11
   },
   {
    "key": "andy-moniz-wakefield",
@@ -12680,12 +12679,12 @@
    "cand31": 4918,
    "c32base": 4918,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 71,
-   "b_preview": 4988,
-   "d_vs_c32base": 70,
-   "d_vs_cand31": 70,
-   "d_vs_live": -268
+   "b_preview": 4989,
+   "d_vs_c32base": 71,
+   "d_vs_cand31": 71,
+   "d_vs_live": -267
   },
   {
    "key": "mason-redman",
@@ -12699,12 +12698,12 @@
    "cand31": 1090,
    "c32base": 1094,
    "leg_ladder": 0,
-   "leg_fade": -65,
-   "leg_taper": 57,
-   "b_preview": 1086,
-   "d_vs_c32base": -8,
-   "d_vs_cand31": -4,
-   "d_vs_live": -90
+   "leg_fade": 0,
+   "leg_taper": 64,
+   "b_preview": 1158,
+   "d_vs_c32base": 64,
+   "d_vs_cand31": 68,
+   "d_vs_live": -18
   },
   {
    "key": "alex-neal-bullen",
@@ -12718,12 +12717,12 @@
    "cand31": 356,
    "c32base": 356,
    "leg_ladder": 0,
-   "leg_fade": -16,
-   "leg_taper": 13,
-   "b_preview": 353,
-   "d_vs_c32base": -3,
-   "d_vs_cand31": -3,
-   "d_vs_live": -18
+   "leg_fade": 0,
+   "leg_taper": 14,
+   "b_preview": 370,
+   "d_vs_c32base": 14,
+   "d_vs_cand31": 14,
+   "d_vs_live": -1
   },
   {
    "key": "oscar-mcdonald",
@@ -12736,13 +12735,13 @@
    "live": 68,
    "cand31": 73,
    "c32base": 84,
-   "leg_ladder": -17,
+   "leg_ladder": -18,
    "leg_fade": 0,
    "leg_taper": 1,
-   "b_preview": 68,
-   "d_vs_c32base": -16,
-   "d_vs_cand31": -5,
-   "d_vs_live": 0
+   "b_preview": 67,
+   "d_vs_c32base": -17,
+   "d_vs_cand31": -6,
+   "d_vs_live": -1
   },
   {
    "key": "nicholas-holman",
@@ -12794,12 +12793,12 @@
    "cand31": 219,
    "c32base": 219,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": -1,
-   "b_preview": 217,
-   "d_vs_c32base": -2,
-   "d_vs_cand31": -2,
-   "d_vs_live": -7
+   "b_preview": 218,
+   "d_vs_c32base": -1,
+   "d_vs_cand31": -1,
+   "d_vs_live": -6
   },
   {
    "key": "harrison-oliver",
@@ -12926,13 +12925,13 @@
    "live": 144,
    "cand31": 127,
    "c32base": 133,
-   "leg_ladder": -13,
+   "leg_ladder": -15,
    "leg_fade": 0,
-   "leg_taper": 34,
-   "b_preview": 154,
-   "d_vs_c32base": 21,
-   "d_vs_cand31": 27,
-   "d_vs_live": 10
+   "leg_taper": 32,
+   "b_preview": 150,
+   "d_vs_c32base": 17,
+   "d_vs_cand31": 23,
+   "d_vs_live": 6
   },
   {
    "key": "liam-ryan",
@@ -13002,13 +13001,13 @@
    "live": 116,
    "cand31": 116,
    "c32base": 130,
-   "leg_ladder": -35,
+   "leg_ladder": -32,
    "leg_fade": 0,
-   "leg_taper": 17,
-   "b_preview": 112,
-   "d_vs_c32base": -18,
-   "d_vs_cand31": -4,
-   "d_vs_live": -4
+   "leg_taper": 15,
+   "b_preview": 113,
+   "d_vs_c32base": -17,
+   "d_vs_cand31": -3,
+   "d_vs_live": -3
   },
   {
    "key": "tom-cole",
@@ -13022,12 +13021,12 @@
    "cand31": 52,
    "c32base": 56,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 17,
-   "b_preview": 72,
-   "d_vs_c32base": 16,
-   "d_vs_cand31": 20,
-   "d_vs_live": 25
+   "leg_fade": 0,
+   "leg_taper": 18,
+   "b_preview": 74,
+   "d_vs_c32base": 18,
+   "d_vs_cand31": 22,
+   "d_vs_live": 27
   },
   {
    "key": "lewis-melican",
@@ -13060,12 +13059,12 @@
    "cand31": 89,
    "c32base": 89,
    "leg_ladder": 0,
-   "leg_fade": -2,
+   "leg_fade": 0,
    "leg_taper": 17,
-   "b_preview": 104,
-   "d_vs_c32base": 15,
-   "d_vs_cand31": 15,
-   "d_vs_live": 18
+   "b_preview": 106,
+   "d_vs_c32base": 17,
+   "d_vs_cand31": 17,
+   "d_vs_live": 20
   },
   {
    "key": "elliot-yeo",
@@ -13079,12 +13078,12 @@
    "cand31": 317,
    "c32base": 318,
    "leg_ladder": 0,
-   "leg_fade": -8,
+   "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 310,
-   "d_vs_c32base": -8,
-   "d_vs_cand31": -7,
-   "d_vs_live": -21
+   "b_preview": 318,
+   "d_vs_c32base": 0,
+   "d_vs_cand31": 1,
+   "d_vs_live": -13
   },
   {
    "key": "milan-murdock",
@@ -13118,11 +13117,11 @@
    "c32base": 1922,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 95,
-   "b_preview": 2017,
-   "d_vs_c32base": 95,
-   "d_vs_cand31": 94,
-   "d_vs_live": -50
+   "leg_taper": 96,
+   "b_preview": 2018,
+   "d_vs_c32base": 96,
+   "d_vs_cand31": 95,
+   "d_vs_live": -49
   },
   {
    "key": "cody-weightman",
@@ -13193,12 +13192,12 @@
    "cand31": 685,
    "c32base": 685,
    "leg_ladder": 0,
-   "leg_fade": -34,
-   "leg_taper": 57,
-   "b_preview": 708,
-   "d_vs_c32base": 23,
-   "d_vs_cand31": 23,
-   "d_vs_live": -32
+   "leg_fade": 0,
+   "leg_taper": 61,
+   "b_preview": 746,
+   "d_vs_c32base": 61,
+   "d_vs_cand31": 61,
+   "d_vs_live": 6
   },
   {
    "key": "lachlan-sholl",
@@ -13249,13 +13248,13 @@
    "live": 1689,
    "cand31": 1571,
    "c32base": 1571,
-   "leg_ladder": -336,
-   "leg_fade": -1,
-   "leg_taper": 81,
-   "b_preview": 1315,
-   "d_vs_c32base": -256,
-   "d_vs_cand31": -256,
-   "d_vs_live": -374
+   "leg_ladder": -311,
+   "leg_fade": 0,
+   "leg_taper": 84,
+   "b_preview": 1344,
+   "d_vs_c32base": -227,
+   "d_vs_cand31": -227,
+   "d_vs_live": -345
   },
   {
    "key": "oskar-baker",
@@ -13307,12 +13306,12 @@
    "cand31": 1319,
    "c32base": 1320,
    "leg_ladder": 0,
-   "leg_fade": -83,
-   "leg_taper": 31,
-   "b_preview": 1268,
-   "d_vs_c32base": -52,
-   "d_vs_cand31": -51,
-   "d_vs_live": -153
+   "leg_fade": 0,
+   "leg_taper": 38,
+   "b_preview": 1358,
+   "d_vs_c32base": 38,
+   "d_vs_cand31": 39,
+   "d_vs_live": -63
   },
   {
    "key": "dane-rampe",
@@ -13364,12 +13363,12 @@
    "cand31": 1151,
    "c32base": 1151,
    "leg_ladder": 0,
-   "leg_fade": -41,
+   "leg_fade": 0,
    "leg_taper": 6,
-   "b_preview": 1116,
-   "d_vs_c32base": -35,
-   "d_vs_cand31": -35,
-   "d_vs_live": -109
+   "b_preview": 1157,
+   "d_vs_c32base": 6,
+   "d_vs_cand31": 6,
+   "d_vs_live": -68
   },
   {
    "key": "dayne-zorko",
@@ -13383,12 +13382,12 @@
    "cand31": 938,
    "c32base": 938,
    "leg_ladder": 0,
-   "leg_fade": -2,
+   "leg_fade": 0,
    "leg_taper": 4,
-   "b_preview": 940,
-   "d_vs_c32base": 2,
-   "d_vs_cand31": 2,
-   "d_vs_live": -58
+   "b_preview": 942,
+   "d_vs_c32base": 4,
+   "d_vs_cand31": 4,
+   "d_vs_live": -56
   },
   {
    "key": "brayden-cook",
@@ -13534,13 +13533,13 @@
    "live": 1735,
    "cand31": 1626,
    "c32base": 1636,
-   "leg_ladder": -641,
-   "leg_fade": -19,
-   "leg_taper": 29,
-   "b_preview": 1005,
-   "d_vs_c32base": -631,
-   "d_vs_cand31": -621,
-   "d_vs_live": -730
+   "leg_ladder": -514,
+   "leg_fade": 0,
+   "leg_taper": 35,
+   "b_preview": 1157,
+   "d_vs_c32base": -479,
+   "d_vs_cand31": -469,
+   "d_vs_live": -578
   },
   {
    "key": "tim-membrey",
@@ -13553,13 +13552,13 @@
    "live": 129,
    "cand31": 127,
    "c32base": 127,
-   "leg_ladder": -21,
+   "leg_ladder": -24,
    "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 106,
-   "d_vs_c32base": -21,
-   "d_vs_cand31": -21,
-   "d_vs_live": -23
+   "b_preview": 103,
+   "d_vs_c32base": -24,
+   "d_vs_cand31": -24,
+   "d_vs_live": -26
   },
   {
    "key": "luke-parker",
@@ -13573,12 +13572,12 @@
    "cand31": 1256,
    "c32base": 1256,
    "leg_ladder": 0,
-   "leg_fade": -39,
+   "leg_fade": 0,
    "leg_taper": 5,
-   "b_preview": 1222,
-   "d_vs_c32base": -34,
-   "d_vs_cand31": -34,
-   "d_vs_live": -117
+   "b_preview": 1261,
+   "d_vs_c32base": 5,
+   "d_vs_cand31": 5,
+   "d_vs_live": -78
   },
   {
    "key": "hugo-mikunda",
@@ -13705,13 +13704,13 @@
    "live": 70,
    "cand31": 75,
    "c32base": 54,
-   "leg_ladder": -1,
+   "leg_ladder": -2,
    "leg_fade": 0,
    "leg_taper": 23,
-   "b_preview": 76,
-   "d_vs_c32base": 22,
-   "d_vs_cand31": 1,
-   "d_vs_live": 6
+   "b_preview": 75,
+   "d_vs_c32base": 21,
+   "d_vs_cand31": 0,
+   "d_vs_live": 5
   },
   {
    "key": "oliver-henry",
@@ -13764,11 +13763,11 @@
    "c32base": 1650,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 113,
-   "b_preview": 1763,
-   "d_vs_c32base": 113,
-   "d_vs_cand31": 112,
-   "d_vs_live": 1
+   "leg_taper": 112,
+   "b_preview": 1762,
+   "d_vs_c32base": 112,
+   "d_vs_cand31": 111,
+   "d_vs_live": 0
   },
   {
    "key": "caleb-graham",
@@ -13783,11 +13782,11 @@
    "c32base": 85,
    "leg_ladder": -4,
    "leg_fade": 0,
-   "leg_taper": 24,
-   "b_preview": 105,
-   "d_vs_c32base": 20,
-   "d_vs_cand31": 49,
-   "d_vs_live": 51
+   "leg_taper": 23,
+   "b_preview": 104,
+   "d_vs_c32base": 19,
+   "d_vs_cand31": 48,
+   "d_vs_live": 50
   },
   {
    "key": "ned-reeves",
@@ -13876,13 +13875,13 @@
    "live": 1623,
    "cand31": 1521,
    "c32base": 1521,
-   "leg_ladder": -587,
-   "leg_fade": -28,
-   "leg_taper": 13,
-   "b_preview": 919,
-   "d_vs_c32base": -602,
-   "d_vs_cand31": -602,
-   "d_vs_live": -704
+   "leg_ladder": -416,
+   "leg_fade": 0,
+   "leg_taper": 14,
+   "b_preview": 1119,
+   "d_vs_c32base": -402,
+   "d_vs_cand31": -402,
+   "d_vs_live": -504
   },
   {
    "key": "george-hewett",
@@ -13896,12 +13895,12 @@
    "cand31": 1925,
    "c32base": 1928,
    "leg_ladder": 0,
-   "leg_fade": -107,
-   "leg_taper": 3,
-   "b_preview": 1824,
-   "d_vs_c32base": -104,
-   "d_vs_cand31": -101,
-   "d_vs_live": -232
+   "leg_fade": 0,
+   "leg_taper": 4,
+   "b_preview": 1932,
+   "d_vs_c32base": 4,
+   "d_vs_cand31": 7,
+   "d_vs_live": -124
   },
   {
    "key": "tom-mcdonald",
@@ -13914,13 +13913,13 @@
    "live": 75,
    "cand31": 75,
    "c32base": 75,
-   "leg_ladder": 3,
+   "leg_ladder": 1,
    "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 78,
-   "d_vs_c32base": 3,
-   "d_vs_cand31": 3,
-   "d_vs_live": 3
+   "b_preview": 76,
+   "d_vs_c32base": 1,
+   "d_vs_cand31": 1,
+   "d_vs_live": 1
   },
   {
    "key": "taylor-walker",
@@ -14047,9 +14046,9 @@
    "live": 209,
    "cand31": 175,
    "c32base": 238,
-   "leg_ladder": -4,
+   "leg_ladder": -5,
    "leg_fade": 0,
-   "leg_taper": 23,
+   "leg_taper": 24,
    "b_preview": 257,
    "d_vs_c32base": 19,
    "d_vs_cand31": 82,
@@ -14066,13 +14065,13 @@
    "live": 250,
    "cand31": 215,
    "c32base": 215,
-   "leg_ladder": -1,
+   "leg_ladder": -2,
    "leg_fade": 0,
    "leg_taper": 8,
-   "b_preview": 222,
-   "d_vs_c32base": 7,
-   "d_vs_cand31": 7,
-   "d_vs_live": -28
+   "b_preview": 221,
+   "d_vs_c32base": 6,
+   "d_vs_cand31": 6,
+   "d_vs_live": -29
   },
   {
    "key": "kaleb-smith",
@@ -14104,13 +14103,13 @@
    "live": 172,
    "cand31": 166,
    "c32base": 202,
-   "leg_ladder": -12,
+   "leg_ladder": -15,
    "leg_fade": 0,
    "leg_taper": 86,
-   "b_preview": 276,
-   "d_vs_c32base": 74,
-   "d_vs_cand31": 110,
-   "d_vs_live": 104
+   "b_preview": 273,
+   "d_vs_c32base": 71,
+   "d_vs_cand31": 107,
+   "d_vs_live": 101
   },
   {
    "key": "michael-frederick",
@@ -14161,13 +14160,13 @@
    "live": 48,
    "cand31": 49,
    "c32base": 55,
-   "leg_ladder": -18,
+   "leg_ladder": -19,
    "leg_fade": 0,
    "leg_taper": 12,
-   "b_preview": 49,
-   "d_vs_c32base": -6,
-   "d_vs_cand31": 0,
-   "d_vs_live": 1
+   "b_preview": 48,
+   "d_vs_c32base": -7,
+   "d_vs_cand31": -1,
+   "d_vs_live": 0
   },
   {
    "key": "changkuoth-jiath",
@@ -14238,12 +14237,12 @@
    "cand31": 493,
    "c32base": 493,
    "leg_ladder": 0,
-   "leg_fade": -23,
-   "leg_taper": 63,
-   "b_preview": 533,
-   "d_vs_c32base": 40,
-   "d_vs_cand31": 40,
-   "d_vs_live": 9
+   "leg_fade": 0,
+   "leg_taper": 69,
+   "b_preview": 562,
+   "d_vs_c32base": 69,
+   "d_vs_cand31": 69,
+   "d_vs_live": 38
   },
   {
    "key": "dougal-howard",
@@ -14275,13 +14274,13 @@
    "live": 773,
    "cand31": 726,
    "c32base": 728,
-   "leg_ladder": -234,
+   "leg_ladder": -194,
    "leg_fade": 0,
    "leg_taper": 7,
-   "b_preview": 501,
-   "d_vs_c32base": -227,
-   "d_vs_cand31": -225,
-   "d_vs_live": -272
+   "b_preview": 541,
+   "d_vs_c32base": -187,
+   "d_vs_cand31": -185,
+   "d_vs_live": -232
   },
   {
    "key": "mason-wood",
@@ -14295,12 +14294,12 @@
    "cand31": 362,
    "c32base": 364,
    "leg_ladder": 0,
-   "leg_fade": -8,
-   "leg_taper": 0,
-   "b_preview": 356,
-   "d_vs_c32base": -8,
-   "d_vs_cand31": -6,
-   "d_vs_live": -27
+   "leg_fade": 0,
+   "leg_taper": 1,
+   "b_preview": 365,
+   "d_vs_c32base": 1,
+   "d_vs_cand31": 3,
+   "d_vs_live": -18
   },
   {
    "key": "lincoln-mccarthy",
@@ -14467,11 +14466,11 @@
    "c32base": 10,
    "leg_ladder": 0,
    "leg_fade": 0,
-   "leg_taper": 11,
-   "b_preview": 21,
-   "d_vs_c32base": 11,
-   "d_vs_cand31": 11,
-   "d_vs_live": 13
+   "leg_taper": 12,
+   "b_preview": 22,
+   "d_vs_c32base": 12,
+   "d_vs_cand31": 12,
+   "d_vs_live": 14
   },
   {
    "key": "harry-cunningham",
@@ -14580,12 +14579,12 @@
    "cand31": 622,
    "c32base": 613,
    "leg_ladder": 0,
-   "leg_fade": -22,
-   "leg_taper": 26,
-   "b_preview": 617,
-   "d_vs_c32base": 4,
-   "d_vs_cand31": -5,
-   "d_vs_live": -46
+   "leg_fade": 0,
+   "leg_taper": 28,
+   "b_preview": 641,
+   "d_vs_c32base": 28,
+   "d_vs_cand31": 19,
+   "d_vs_live": -22
   },
   {
    "key": "tylar-young",
@@ -14598,9 +14597,9 @@
    "live": 279,
    "cand31": 262,
    "c32base": 259,
-   "leg_ladder": -107,
+   "leg_ladder": -109,
    "leg_fade": 0,
-   "leg_taper": 36,
+   "leg_taper": 38,
    "b_preview": 188,
    "d_vs_c32base": -71,
    "d_vs_cand31": -74,
@@ -14655,13 +14654,13 @@
    "live": 257,
    "cand31": 242,
    "c32base": 242,
-   "leg_ladder": -54,
+   "leg_ladder": -58,
    "leg_fade": 0,
    "leg_taper": 31,
-   "b_preview": 219,
-   "d_vs_c32base": -23,
-   "d_vs_cand31": -23,
-   "d_vs_live": -38
+   "b_preview": 215,
+   "d_vs_c32base": -27,
+   "d_vs_cand31": -27,
+   "d_vs_live": -42
   },
   {
    "key": "bailey-scott",
@@ -14732,12 +14731,12 @@
    "cand31": 1030,
    "c32base": 1030,
    "leg_ladder": 0,
-   "leg_fade": -39,
+   "leg_fade": 0,
    "leg_taper": 4,
-   "b_preview": 995,
-   "d_vs_c32base": -35,
-   "d_vs_cand31": -35,
-   "d_vs_live": -106
+   "b_preview": 1034,
+   "d_vs_c32base": 4,
+   "d_vs_cand31": 4,
+   "d_vs_live": -67
   },
   {
    "key": "elliot-himmelberg",
@@ -14752,11 +14751,11 @@
    "c32base": 59,
    "leg_ladder": -12,
    "leg_fade": 0,
-   "leg_taper": 22,
-   "b_preview": 69,
-   "d_vs_c32base": 10,
-   "d_vs_cand31": 19,
-   "d_vs_live": 13
+   "leg_taper": 21,
+   "b_preview": 68,
+   "d_vs_c32base": 9,
+   "d_vs_cand31": 18,
+   "d_vs_live": 12
   },
   {
    "key": "samuel-collins",
@@ -14769,13 +14768,13 @@
    "live": 619,
    "cand31": 580,
    "c32base": 583,
-   "leg_ladder": -175,
+   "leg_ladder": -160,
    "leg_fade": 0,
    "leg_taper": 6,
-   "b_preview": 414,
-   "d_vs_c32base": -169,
-   "d_vs_cand31": -166,
-   "d_vs_live": -205
+   "b_preview": 429,
+   "d_vs_c32base": -154,
+   "d_vs_cand31": -151,
+   "d_vs_live": -190
   },
   {
    "key": "mitch-mcgovern",
@@ -14789,12 +14788,12 @@
    "cand31": 39,
    "c32base": 41,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 10,
-   "b_preview": 50,
-   "d_vs_c32base": 9,
-   "d_vs_cand31": 11,
-   "d_vs_live": 10
+   "b_preview": 51,
+   "d_vs_c32base": 10,
+   "d_vs_cand31": 12,
+   "d_vs_live": 11
   },
   {
    "key": "conor-mckenna",
@@ -14827,12 +14826,12 @@
    "cand31": 622,
    "c32base": 623,
    "leg_ladder": 0,
-   "leg_fade": -33,
+   "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 590,
-   "d_vs_c32base": -33,
-   "d_vs_cand31": -32,
-   "d_vs_live": -74
+   "b_preview": 623,
+   "d_vs_c32base": 0,
+   "d_vs_cand31": 1,
+   "d_vs_live": -41
   },
   {
    "key": "karl-amon",
@@ -14846,12 +14845,12 @@
    "cand31": 323,
    "c32base": 324,
    "leg_ladder": 0,
-   "leg_fade": -15,
-   "leg_taper": 40,
-   "b_preview": 349,
-   "d_vs_c32base": 25,
-   "d_vs_cand31": 26,
-   "d_vs_live": 5
+   "leg_fade": 0,
+   "leg_taper": 43,
+   "b_preview": 367,
+   "d_vs_c32base": 43,
+   "d_vs_cand31": 44,
+   "d_vs_live": 23
   },
   {
    "key": "ryan-lester",
@@ -14865,12 +14864,12 @@
    "cand31": 38,
    "c32base": 38,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 37,
-   "d_vs_c32base": -1,
-   "d_vs_cand31": -1,
-   "d_vs_live": -1
+   "b_preview": 38,
+   "d_vs_c32base": 0,
+   "d_vs_cand31": 0,
+   "d_vs_live": 0
   },
   {
    "key": "tyan-prindable",
@@ -14959,13 +14958,13 @@
    "live": 525,
    "cand31": 490,
    "c32base": 353,
-   "leg_ladder": -8,
+   "leg_ladder": -10,
    "leg_fade": 0,
-   "leg_taper": 32,
-   "b_preview": 377,
-   "d_vs_c32base": 24,
-   "d_vs_cand31": -113,
-   "d_vs_live": -148
+   "leg_taper": 33,
+   "b_preview": 376,
+   "d_vs_c32base": 23,
+   "d_vs_cand31": -114,
+   "d_vs_live": -149
   },
   {
    "key": "liam-o-connell",
@@ -15074,12 +15073,12 @@
    "cand31": 1522,
    "c32base": 1522,
    "leg_ladder": 0,
-   "leg_fade": -1,
-   "leg_taper": 89,
-   "b_preview": 1610,
-   "d_vs_c32base": 88,
-   "d_vs_cand31": 88,
-   "d_vs_live": -22
+   "leg_fade": 0,
+   "leg_taper": 87,
+   "b_preview": 1609,
+   "d_vs_c32base": 87,
+   "d_vs_cand31": 87,
+   "d_vs_live": -23
   },
   {
    "key": "james-jordon",
@@ -15149,13 +15148,13 @@
    "live": 104,
    "cand31": 98,
    "c32base": 112,
-   "leg_ladder": -18,
+   "leg_ladder": -20,
    "leg_fade": 0,
    "leg_taper": 26,
-   "b_preview": 120,
-   "d_vs_c32base": 8,
-   "d_vs_cand31": 22,
-   "d_vs_live": 16
+   "b_preview": 118,
+   "d_vs_c32base": 6,
+   "d_vs_cand31": 20,
+   "d_vs_live": 14
   },
   {
    "key": "hayden-mclean",
@@ -15168,13 +15167,13 @@
    "live": 214,
    "cand31": 201,
    "c32base": 201,
-   "leg_ladder": -44,
+   "leg_ladder": -48,
    "leg_fade": 0,
    "leg_taper": 40,
-   "b_preview": 197,
-   "d_vs_c32base": -4,
-   "d_vs_cand31": -4,
-   "d_vs_live": -17
+   "b_preview": 193,
+   "d_vs_c32base": -8,
+   "d_vs_cand31": -8,
+   "d_vs_live": -21
   },
   {
    "key": "james-worpel",
@@ -15207,12 +15206,12 @@
    "cand31": 87,
    "c32base": 87,
    "leg_ladder": 0,
-   "leg_fade": -2,
-   "leg_taper": 52,
-   "b_preview": 137,
-   "d_vs_c32base": 50,
-   "d_vs_cand31": 50,
-   "d_vs_live": 36
+   "leg_fade": 0,
+   "leg_taper": 54,
+   "b_preview": 141,
+   "d_vs_c32base": 54,
+   "d_vs_cand31": 54,
+   "d_vs_live": 40
   },
   {
    "key": "jack-silvagni",
@@ -15225,13 +15224,13 @@
    "live": 617,
    "cand31": 576,
    "c32base": 580,
-   "leg_ladder": -254,
-   "leg_fade": -3,
-   "leg_taper": 11,
-   "b_preview": 334,
-   "d_vs_c32base": -246,
-   "d_vs_cand31": -242,
-   "d_vs_live": -283
+   "leg_ladder": -219,
+   "leg_fade": 0,
+   "leg_taper": 15,
+   "b_preview": 376,
+   "d_vs_c32base": -204,
+   "d_vs_cand31": -200,
+   "d_vs_live": -241
   },
   {
    "key": "touk-miller",
@@ -15245,12 +15244,12 @@
    "cand31": 2223,
    "c32base": 2223,
    "leg_ladder": 0,
-   "leg_fade": -141,
-   "leg_taper": 42,
-   "b_preview": 2124,
-   "d_vs_c32base": -99,
-   "d_vs_cand31": -99,
-   "d_vs_live": -254
+   "leg_fade": 0,
+   "leg_taper": 48,
+   "b_preview": 2271,
+   "d_vs_c32base": 48,
+   "d_vs_cand31": 48,
+   "d_vs_live": -107
   },
   {
    "key": "caleb-daniel",
@@ -15264,12 +15263,12 @@
    "cand31": 1249,
    "c32base": 1249,
    "leg_ladder": 0,
-   "leg_fade": -77,
-   "leg_taper": 56,
-   "b_preview": 1228,
-   "d_vs_c32base": -21,
-   "d_vs_cand31": -21,
-   "d_vs_live": -110
+   "leg_fade": 0,
+   "leg_taper": 64,
+   "b_preview": 1313,
+   "d_vs_c32base": 64,
+   "d_vs_cand31": 64,
+   "d_vs_live": -25
   },
   {
    "key": "ed-langdon",
@@ -15283,12 +15282,12 @@
    "cand31": 744,
    "c32base": 744,
    "leg_ladder": 0,
-   "leg_fade": -38,
-   "leg_taper": 0,
-   "b_preview": 706,
-   "d_vs_c32base": -38,
-   "d_vs_cand31": -38,
-   "d_vs_live": -89
+   "leg_fade": 0,
+   "leg_taper": -1,
+   "b_preview": 743,
+   "d_vs_c32base": -1,
+   "d_vs_cand31": -1,
+   "d_vs_live": -52
   },
   {
    "key": "mason-cox",
@@ -15322,11 +15321,11 @@
    "c32base": 22,
    "leg_ladder": -6,
    "leg_fade": 0,
-   "leg_taper": 0,
-   "b_preview": 16,
-   "d_vs_c32base": -6,
-   "d_vs_cand31": -4,
-   "d_vs_live": -5
+   "leg_taper": 1,
+   "b_preview": 17,
+   "d_vs_c32base": -5,
+   "d_vs_cand31": -3,
+   "d_vs_live": -4
   },
   {
    "key": "hunter-holmes",
@@ -15358,13 +15357,13 @@
    "live": 229,
    "cand31": 229,
    "c32base": 118,
-   "leg_ladder": -4,
+   "leg_ladder": -5,
    "leg_fade": 0,
    "leg_taper": 28,
-   "b_preview": 142,
-   "d_vs_c32base": 24,
-   "d_vs_cand31": -87,
-   "d_vs_live": -87
+   "b_preview": 141,
+   "d_vs_c32base": 23,
+   "d_vs_cand31": -88,
+   "d_vs_live": -88
   },
   {
    "key": "archie-perkins",
@@ -15398,11 +15397,11 @@
    "c32base": 25,
    "leg_ladder": -2,
    "leg_fade": 0,
-   "leg_taper": 17,
-   "b_preview": 40,
-   "d_vs_c32base": 15,
-   "d_vs_cand31": 22,
-   "d_vs_live": 22
+   "leg_taper": 16,
+   "b_preview": 39,
+   "d_vs_c32base": 14,
+   "d_vs_cand31": 21,
+   "d_vs_live": 21
   },
   {
    "key": "sam-switkowski",
@@ -15416,12 +15415,12 @@
    "cand31": 15,
    "c32base": 16,
    "leg_ladder": 0,
-   "leg_fade": -1,
+   "leg_fade": 0,
    "leg_taper": 3,
-   "b_preview": 18,
-   "d_vs_c32base": 2,
-   "d_vs_cand31": 3,
-   "d_vs_live": 3
+   "b_preview": 19,
+   "d_vs_c32base": 3,
+   "d_vs_cand31": 4,
+   "d_vs_live": 4
   },
   {
    "key": "wayne-milera",
@@ -15435,12 +15434,12 @@
    "cand31": 1681,
    "c32base": 1698,
    "leg_ladder": 0,
-   "leg_fade": -91,
-   "leg_taper": 49,
-   "b_preview": 1656,
-   "d_vs_c32base": -42,
-   "d_vs_cand31": -25,
-   "d_vs_live": -144
+   "leg_fade": 0,
+   "leg_taper": 56,
+   "b_preview": 1754,
+   "d_vs_c32base": 56,
+   "d_vs_cand31": 73,
+   "d_vs_live": -46
   },
   {
    "key": "matthew-flynn",
@@ -15454,12 +15453,12 @@
    "cand31": 468,
    "c32base": 532,
    "leg_ladder": 0,
-   "leg_fade": -21,
-   "leg_taper": 102,
-   "b_preview": 613,
-   "d_vs_c32base": 81,
-   "d_vs_cand31": 145,
-   "d_vs_live": 111
+   "leg_fade": 0,
+   "leg_taper": 114,
+   "b_preview": 646,
+   "d_vs_c32base": 114,
+   "d_vs_cand31": 178,
+   "d_vs_live": 144
   },
   {
    "key": "bailey-williams-wb",
@@ -15473,12 +15472,12 @@
    "cand31": 571,
    "c32base": 571,
    "leg_ladder": 0,
-   "leg_fade": -27,
-   "leg_taper": 64,
-   "b_preview": 608,
-   "d_vs_c32base": 37,
-   "d_vs_cand31": 37,
-   "d_vs_live": -4
+   "leg_fade": 0,
+   "leg_taper": 70,
+   "b_preview": 641,
+   "d_vs_c32base": 70,
+   "d_vs_cand31": 70,
+   "d_vs_live": 29
   },
   {
    "key": "adam-treloar",
@@ -15492,12 +15491,12 @@
    "cand31": 850,
    "c32base": 850,
    "leg_ladder": 0,
-   "leg_fade": -31,
+   "leg_fade": 0,
    "leg_taper": 0,
-   "b_preview": 819,
-   "d_vs_c32base": -31,
-   "d_vs_cand31": -31,
-   "d_vs_live": -92
+   "b_preview": 850,
+   "d_vs_c32base": 0,
+   "d_vs_cand31": 0,
+   "d_vs_live": -61
   }
  ]
 }

@@ -39,8 +39,8 @@ def page_head(title, sub, banner):
             '<div class="spacer"></div>'
             '<div class="stamp">live <b>88ce647f</b> %d · candidate 31 <b>fe6be9d6</b> %d<br>'
             'C32-base (repair) <b>%s</b> %d · <b>B-preview %s</b> <b>%d</b> · PRE-NUMERAIRE</div></header>\n'
-            % (title, CSS, banner, sub, T['live'], T['cand31'], MD['off_o32'][:8], T['c32base'],
-               MD['full1'][:8], T['b_preview']))
+            % (title, CSS, banner, sub, T['live'], T['cand31'], MD['moff'][:8], T['c32base'],
+               MD['mfull1'][:8], T['b_preview']))
 
 
 rows_sorted = sorted(ROWS, key=lambda r: -r['b_preview'])
@@ -97,8 +97,7 @@ H.append('<div class="box"><h2>The unchanged-rows assertion, read before the tab
          'Attribution: the moves are the B-3 taper-retirement leg (the ruled ceiling repair through the '
          '0.10 WQ6 weight) plus, on %d year-1 TALL rows, the B-1 ladder/renorm leg — the disclosed W-A '
          'young-tall reach (prime-anchor-conserving renorm lifts young tall projection streams; the '
-         'derivation packet\'s Order-A overlap note). The B-2 fade reaches NO year-1 row beyond ±1 pt of '
-         'integer rounding (%d rows above that: none). Day-0 prints: 89/89 byte-identical (the emit '
+         'derivation packet\'s Order-A overlap note). The B-2 fade is DELETED (%d rows carry any fade leg: none). Day-0 prints: 89/89 byte-identical (the emit '
          'guard). v0: untouched.</div></div>'
          % (unchanged, len(Y1), len(moved), mx, tall_leg, fade_leg))
 H.append('<div class="box"><h2>Year-1 class (2025 entrants + 2026 mid-season) · draft order · %d rows</h2>' % len(Y1))

@@ -25,7 +25,7 @@ echo "  t338_extended_DISCLOSED.py    $(md5sum "$N/t338_extended_DISCLOSED.py" |
 echo "  noarb_table_allarm.py         $(md5sum "$N/noarb_table_allarm.py" | cut -c1-32)"
 echo "  harness_pvc_REPINNED_pass3.py $(md5sum "$N/harness_pvc_REPINNED_pass3.py" | cut -c1-32)   <- must begin 02dcf28c"
 cd "$N"
-for L in O32RFINAL O33B; do
+for L in O32RFINAL O33M; do
   MX="$SP/per_entrant_$L.json"
   echo "=== $L  ($(md5sum "$MX" | cut -c1-8)) ==="
   python t338_extended_DISCLOSED.py "$MX" > "t338ext_$L.txt" 2>&1 || tail -5 "t338ext_$L.txt"

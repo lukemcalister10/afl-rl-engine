@@ -5,7 +5,7 @@
   (2) continuity sweeps: a synthetic tall (KPF) and a MID at fixed levels, board-value objects
       val(proj_from_peak(...)) over ages 20..36 ON vs OFF — max adjacent-age step reported;
   (3) the fade's output-continuity: r(a,s) is output-FLAT by the ruled fallback (stated, no sweep).
-Runs with RL_O33=1 (stage 3)."""
+Runs with RL_O33=1 (stage 2 = the full candidate after the B-A1 re-map)."""
 import os, sys, json, io, contextlib
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -27,9 +27,9 @@ with contextlib.redirect_stdout(io.StringIO()):
 os.chdir(_cwd)
 MA = NSE.get('MA', MA)
 b6 = NSE['b6']
-assert MA._O33 and MA._O33S >= 3
+assert MA._O33 and MA._O33S >= 2   # B-A1 stage re-map: 2 = the full candidate (ladder + taper)
 
-BOARD = json.load(open(SP + '/bb_off_o32/rl_after/rl_app_data.json'))
+BOARD = json.load(open(SP + '/bb_moff/rl_after/rl_app_data.json'))
 KEYS = {r['key'] for r in BOARD['active']}
 P_BY = {}
 for p in MA.data:
@@ -46,7 +46,7 @@ for k, p in P_BY.items():
 MA._O33S = 0
 for k in list(ON):
     OFF[k] = [float(x) for x in b6(P_BY[k], 2026)]
-MA._O33S = 3
+MA._O33S = 2
 
 inv_off = sum(1 for k in OFF if OFF[k][5] < OFF[k][4] - 1e-9)
 inv_on = sum(1 for k in ON if ON[k][5] < ON[k][4] - 1e-9)
@@ -72,7 +72,7 @@ for gname, L in (('KPF', 80.0), ('KPF', 95.0), ('MID', 95.0), ('MID', 110.0)):
         on_v.append(float(MA.val(MA.proj_from_peak(*args))))
         MA._O33S = 0
         off_v.append(float(MA.val(MA.proj_from_peak(*args))))
-        MA._O33S = 3
+        MA._O33S = 2
     ratio = [o / f if f > 0 else None for o, f in zip(on_v, off_v)]
     steps = [abs(ratio[i + 1] - ratio[i]) for i in range(len(ratio) - 1)
              if ratio[i] is not None and ratio[i + 1] is not None]

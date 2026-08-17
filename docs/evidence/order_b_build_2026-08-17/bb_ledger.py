@@ -12,7 +12,7 @@ SP = '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f
 C31 = json.load(open(SP + '/cand31.json'))
 assert C31['boards']['candidate'].startswith('fe6be9d6') and C31['boards']['live'].startswith('88ce647f')
 BOARDS = {}
-for tag in ('off_o32', 'leg1', 'leg2', 'full1'):
+for tag in ('moff', 'mleg1', 'mfull1'):
     BOARDS[tag] = {r['key']: r for r in json.load(open(SP + '/o33/bb_%s/rl_after/rl_app_data.json' % tag))['active']}
 import hashlib
 md5 = {t: hashlib.md5(open(SP + '/o33/bb_%s/rl_after/rl_app_data.json' % t, 'rb').read()).hexdigest()
@@ -22,14 +22,14 @@ print('boards:', {t: m[:8] for t, m in md5.items()})
 rows = []
 for r in C31['rows']:
     k = r['key']
-    b = BOARDS['off_o32'].get(k)
+    b = BOARDS['moff'].get(k)
     if b is None:
         continue
-    v0, v1, v2, v3 = (BOARDS[t][k]['v'] for t in ('off_o32', 'leg1', 'leg2', 'full1'))
+    v0, v1, v3 = (BOARDS[t][k]['v'] for t in ('moff', 'mleg1', 'mfull1'))
     rows.append(dict(key=k, name=r['name'], pos=(b.get('gf') or b['grp']), pos_now=b['grp'],
                      age=b['age'], pathway=r['pathway'], pick=r.get('pick'),
                      live=r['live'], cand31=r['cand'], c32base=v0,
-                     leg_ladder=v1 - v0, leg_fade=v2 - v1, leg_taper=v3 - v2,
+                     leg_ladder=v1 - v0, leg_fade=0, leg_taper=v3 - v1,
                      b_preview=v3,
                      d_vs_c32base=v3 - v0, d_vs_cand31=v3 - r['cand'], d_vs_live=v3 - r['live']))
 print('ledger rows: %d of %d C31 rows' % (len(rows), len(C31['rows'])))
@@ -94,7 +94,7 @@ FADE = {round(a, 1): round(np.interp(a, [28, 29, 30, 31], [0.14, 0.211, 0.232, 0
 
 OUT = dict(meta=dict(boards={t: m for t, m in md5.items()},
                      baselines=dict(live=C31['boards']['live'], cand31=C31['boards']['candidate']),
-                     legs='ladder = stage1 - base; fade = stage2 - stage1; taper = full - stage2'),
+                     legs='ladder = stage1 - base; taper = full - stage1; the fade leg is 0 BY DELETION (owner ruling c.5316404479)'),
            totals={k: round(v) for k, v in tot.items()},
            acceptance=dict(rank_moves_27plus=dict(max=float(dmoves.max()), mean=round(float(dmoves.mean()), 2),
                                                   biggest=[[k, a, b] for _, k, a, b in biggest]),

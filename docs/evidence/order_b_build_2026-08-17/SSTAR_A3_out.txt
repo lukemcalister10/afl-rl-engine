@@ -1,0 +1,6 @@
+tall anchor rows 23-26: n base 55 / new 55
+sum V base 43321.0  new 43055.0  new/base-1 = -0.6140%
+next s* iterate = 1.267784
+tall anchor rows 23-26: n base 55 / new 55
+sum V base 43321.0  new 43283.0  new/base-1 = -0.0877%
+next s* iterate = 1.268897

@@ -1,7 +1,7 @@
 breached cell     control     stage2       full    no-taper      full  attribution
-picks 41-64       263.981    265.971    269.049      +0.75%    +1.92%  TAPER LEG (B-3 ruled ceiling repair)
-arm RD              1.012      1.012      1.039      +0.02%    +2.68%  TAPER LEG (B-3 ruled ceiling repair)
-arm UNR             0.622      0.620      0.655      -0.34%    +5.16%  TAPER LEG (B-3 ruled ceiling repair)
-arm SSP             1.532      1.533      1.598      +0.08%    +4.35%  TAPER LEG (B-3 ruled ceiling repair)
-arm ALLPOOL         0.995      0.996      1.022      +0.05%    +2.67%  TAPER LEG (B-3 ruled ceiling repair)
+picks 41-64       263.981    265.790    268.858      +0.69%    +1.85%  TAPER LEG (B-3 ruled ceiling repair)
+arm RD              1.012      1.014      1.041      +0.19%    +2.86%  TAPER LEG (B-3 ruled ceiling repair)
+arm UNR             0.622      0.620      0.654      -0.39%    +5.12%  TAPER LEG (B-3 ruled ceiling repair)
+arm SSP             1.532      1.532      1.597      -0.01%    +4.29%  TAPER LEG (B-3 ruled ceiling repair)
+arm ALLPOOL         0.995      0.997      1.023      +0.16%    +2.80%  TAPER LEG (B-3 ruled ceiling repair)
 wrote ENTRY_ATTRIB.json

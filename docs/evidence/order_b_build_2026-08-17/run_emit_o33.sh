@@ -25,7 +25,14 @@ export RL_V0SURF_PKL="$REPO/data/v0surf.pkl"
 export RL_O31=1 RL_O32=1
 if [ -n "${RL_O33:-}" ]; then export RL_O33; fi
 if [ -n "${RL_O33_STAGE:-}" ]; then export RL_O33_STAGE; fi
-export RL_DAY0_FINAL="$REPO/docs/evidence/order_a_2026-08-17/DAY0_32_FINAL.json"
+# DAY-0 GUARD RE-POINT (2026-08-17, after Order D landed 0e1187f): DAY0_32_FINAL.json now carries the
+# ORDER D (RL_O35-on) prints — deep-sitter day-0 moves BY DESIGN under their dial, so an RL_O33-only
+# emit fails 0/89 against it (observed, EMIT_O33M halt). This build's law is B on top of the REPAIRED
+# C32 (no RL_O35), so the guard points at the repair board's own published day-0: a BYTE-CARRIED copy
+# of DAY0_32_FINAL.json at commit 3e40344 (git show 3e40344:docs/evidence/order_a_2026-08-17/DAY0_32_FINAL.json),
+# kept beside this script. The assert's meaning is unchanged: the RL_O33 board must print the 89
+# day-0 entrants IDENTICALLY to the repaired Candidate 32 board.
+export RL_DAY0_FINAL="$HERE/DAY0_32R_FOR_O33.json"
 echo "  emit starting $(date -u +%H:%M:%S)"
 S=$(date +%s)
 python3 "$OUT/emit.py" > "$OUT/emit.log" 2>&1

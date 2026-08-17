@@ -18,7 +18,7 @@ CHARGE = 0.14
 BANDS = ['picks 1-10', 'picks 11-20', 'picks 21-30', 'picks 31-40', 'picks 41-64']
 WINDOWS = [('PRIMARY', 2005, 2023), ('MODERN', 2019, 2023)]
 YEARS = list(range(0, 8))
-LABELS = ['O32RFINAL', 'O33B']
+LABELS = ['O32RFINAL', 'O33M']
 
 OUTDOC = {'charge': CHARGE, 'labels': LABELS, 'nd': {}, 'arms': {}, 'vantage': {}, 'entry_control': {}}
 L = []
@@ -158,18 +158,18 @@ P('   bound: every ND-band and pool-arm yr0 and yr1 MEAN within +-1.5%% of the O
 breaches = []
 for b in BANDS:
     r_c = {r['N']: r for r in T338['O32RFINAL']['groups'][b]['rows']}
-    r_n = {r['N']: r for r in T338['O33B']['groups'][b]['rows']}
+    r_n = {r['N']: r for r in T338['O33M']['groups'][b]['rows']}
     for N in (0, 1):
         c = r_c[N]['mean_yearN']; n_ = r_n[N]['mean_yearN']
         rel = n_ / c - 1.0
         ok = abs(rel) <= 0.015
-        OUTDOC['entry_control']['%s|yr%d' % (b, N)] = dict(control=c, o33b=n_, rel=round(rel, 5), ok=bool(ok))
+        OUTDOC['entry_control']['%s|yr%d' % (b, N)] = dict(control=c, o33m=n_, rel=round(rel, 5), ok=bool(ok))
         if not ok:
             breaches.append((b, N, rel))
         P('   %-12s yr%d: control %9.1f  O33B %9.1f  %+6.2f%%  %s' % (b, N, c, n_, 100 * rel, 'ok' if ok else 'BREACH'))
 for key, d in ARMP['O32RFINAL'].items():
     wname, arm = key
-    d2 = ARMP['O33B'].get(key)
+    d2 = ARMP['O33M'].get(key)
     if d2 is None or wname != 'PRIMARY':
         continue
     for N in (0, 1):

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ORDER B — entry-year-control breach ATTRIBUTION. The five yr1 cells outside +-1.5% are re-read on
-the stage-2 matrix (ladder+fade, NO taper). If stage-2 sits inside the bound, the movement is the
+the stage-1 matrix (ladder only, NO taper). If stage-2 sits inside the bound, the movement is the
 B-3 taper-retirement leg — the RULED ceiling repair lifting mature-age year-1 rows through the 0.10
 WQ6 weight — attributed, not a veteran-mechanism leak."""
 import json
@@ -57,15 +57,15 @@ print('%-14s %10s %10s %10s   %9s %9s  %s' % ('breached cell', 'control', 'stage
 OUT = {}
 for name, spec in CELLS:
     vals = {}
-    for lab in ('O32RFINAL', 'O33L2', 'O33B'):
+    for lab in ('O32RFINAL', 'O33ML1', 'O33M'):
         m = SP + '/per_entrant_%s.json' % lab
         vals[lab] = yr1_nd(m, spec[1], spec[2]) if spec[0] == 'nd' else yr1_arm(m, spec[1])
-    r2 = vals['O33L2'] / vals['O32RFINAL'] - 1
-    rf = vals['O33B'] / vals['O32RFINAL'] - 1
+    r2 = vals['O33ML1'] / vals['O32RFINAL'] - 1
+    rf = vals['O33M'] / vals['O32RFINAL'] - 1
     attrib = 'TAPER LEG (B-3 ruled ceiling repair)' if abs(r2) <= 0.015 else 'NOT taper alone — investigate'
-    OUT[name] = dict(control=vals['O32RFINAL'], stage2=vals['O33L2'], full=vals['O33B'],
+    OUT[name] = dict(control=vals['O32RFINAL'], stage1=vals['O33ML1'], full=vals['O33M'],
                      rel_stage2=round(r2, 5), rel_full=round(rf, 5), attribution=attrib)
     print('%-14s %10.3f %10.3f %10.3f   %+8.2f%% %+8.2f%%  %s' % (
-        name, vals['O32RFINAL'], vals['O33L2'], vals['O33B'], 100 * r2, 100 * rf, attrib))
+        name, vals['O32RFINAL'], vals['O33ML1'], vals['O33M'], 100 * r2, 100 * rf, attrib))
 json.dump(OUT, open('ENTRY_ATTRIB.json', 'w'), indent=1)
 print('wrote ENTRY_ATTRIB.json')
