@@ -1,5 +1,53 @@
 # PREREG G — THE CLOCK RE-BASE INSTRUMENT SEAT
 
+---
+
+## ADDENDUM G-1 — THE OWNER CORRECTION (registered before any re-based number was computed)
+
+**Binding, and it supersedes §2.1 of the body below.** The owner has re-stated the grace ruling as
+canonical:
+
+> *"Each player's present season is 100%, and the next season is 86%, bar first year young players who
+> have one extra at 100%."*
+
+Under that ruling the fair entry→year-1 accretion is **1.00 for a young entrant (entry age ≤ 19)** and
+**1.14 for a mature entrant (≥ 20)** — ONE tick, his clock running like everyone's. **NOT** the
+1.2996 (= 1.14²) that Order F measured.
+
+**FIRST PRIORITY, ADDED TO THIS SEAT: resolve the discrepancy from the code, before anything else.**
+Two possibilities, and the run decides between them by quoting the lines:
+
+- **(a) THE ENGINE DEVIATES FROM THE RULING.** A mature entrant's day-0 print discounts his current
+  season (`k`-indexing gives his first season `1.14^1` where the ruling says `1.14^0`). That is a
+  **DEFECT**: mature entry prints would be ~12% too cheap by construction. It would be reported as a
+  formal finding with the located code site, the affected rows (mature-age entrants — SSP, IRE, the
+  mature picks), and the SSP implication (part of its +51% would be this). If (a) holds, the tables
+  additionally carry a **counterfactual column "if mature entry prints are corrected"**, so the owner
+  sees both worlds.
+- **(b) ORDER F'S MEASUREMENT MISREAD THE LADDER** (e.g. a vantage misalignment). Then the misread is
+  documented, the correct engine behaviour is stated, and no defect is reported.
+
+**The verdict is read off the code, not off which answer fits the marks better.** If the fit and the
+law disagree, the law governs the benchmark and the misfit is reported as a finding in its own right.
+
+**Consequent changes to the body of this prereg:**
+
+1. §2.1's halting assert `ACC[age>=20] == 1.14**2` is **REPLACED** by `ACC[age>=20] == 1.14` and
+   `ACC[age<=19] == 1.00`, both exact to 1e-12, derived from the same verbatim `disc_factor` lift
+   (md5 `93a198a8…` — the lift itself is unchanged) at **the vantage the year-1 mark is actually
+   taken at**, which the run must establish from the emitter, not assume.
+2. Order F's 1.2996 is retained in every table as a **superseded diagnostic column**, so the owner can
+   see exactly what moved against the numbers he was first shown.
+3. Everything else in the body stands unchanged: three readings per cell, the two absolute exploit
+   rails untouched, the three board columns, the W2 re-derivation, the honesty clauses.
+4. §8.4 (the registered expectation that UNR would worsen under the correction) is **withdrawn as a
+   prediction** and re-registered as a question: under a 1.14 mature accretion the mature-heavy arms
+   revert to Order C's own benchmark, so UNR should land back at Order C's number rather than deeper.
+   Registered here before the number is seen.
+
+---
+
+
 **Order G. Issue #334. Branch `land/order-29`. Authority: the owner's **R-CLOCKBASE** ruling
 (#334 comment 5317457543) and the derivation it adopts, `docs/evidence/order_f_timing_2026-08-17/PACKET_F.md`.**
 
