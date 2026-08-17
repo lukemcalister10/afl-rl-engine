@@ -115,6 +115,41 @@ busslinger. Packet addendum and final report in PLAIN LANGUAGE (short sentences,
   game steps 0..20, tolerance 1e-9, at-bar rows); the first diagnosis run's 0.25-step check was
   stricter than the ruled object and is retired.
 
+## AMENDMENT A2 (owner-directed, binding — filed before the re-calibration's chosen point was wired)
+
+- **The vantage matrix is DIAGNOSTIC-ONLY.** The R3(c) acceptance language ("the yr1 cross-band
+  spread must narrow materially") is STRUCK. Nothing in this repair is calibrated toward the
+  matrix; no parameter choice may be justified by its effect on the cross-band spread. Permitted
+  changes remain exactly R1 (justified by the measured age-gap surface) and R2 closures
+  (justified by the attribution's own published cut tables). The matrix REPORTS the surviving
+  divergence as a red-printed FINDING with candidate root causes ranked by evidence. If two
+  evidence-equivalent parameterisations differ only in matrix greenness: stop and report both.
+- **Procedural consequence, disclosed:** the recalibrator's draft selection rule preferred
+  feasible points where all five bands appreciate. That preference is REMOVED (selection = min
+  corrected-surface SSE among the ruled-gate-feasible set, full stop). On the measured grid the
+  preference was VACUOUS — the feasible set has one point — so the chosen point is unchanged;
+  the rule is cleaned so the provenance is clean.
+- **R2 gains three named investigation lanes (measure, don't assume; report positive or null):**
+  L1 late-pick entry value too low (connect to S5's loclin −9% head-underpricing finding);
+  L2 the v0 level per band as the divergence source (band-level price-to-delivered multiples);
+  L3 band-dependent sitting predictiveness — P(washout | low yr1 games) by pick band and the
+  fade/credit channel's predictive strength by band (the year-one selection interaction, which
+  the 30A multi-year lens scan did NOT test). If the signal is materially weaker down the draft,
+  the implied band-dependent correction is RULINGS-MATERIAL: reported, never wired here.
+
+## AMENDMENT A3 (owner round — named evidence for lane L2, filed before the lane ran)
+
+Named facts to carry into L2: on the C32 matrix (yr0–12 extension, all-arm construction) PDN's
+cohort path PEAKS at 0.862 and PDS at 0.720 — both arms never regain their entry value at any
+year. S7's own-arm raw-mean ratios: PDS/PDN/IRE delivered history = 0.27 / 0.59 / 0.73 of their
+signed v0 cells (the K-shrink borrowing made visible). Together: the thin development arms' entry
+cells sit ABOVE own-arm delivered history — the owner's "priced too high to begin with" hypothesis
+is likely TRUE for PDN/PDS (partially IRE), the borrowing being the located mechanism. Report as a
+formal L2 finding with the candidate fix (own-arm re-anchor of those cells at the next v0 refit —
+rulings-material, no entry-surface change wired here). Contrast case in the same lane: SSP entry
+too LOW (the +51% yr1 buy-side breach of amendment A1). The big-arm (RD) ambiguity stays with the
+leg-attribution machinery (entry fitted career-fair by construction vs yr1–3 marks too low).
+
 ## Predictions
 
 - **PR1** dean and duff-tytler recover toward Candidate 31 or above (the age credit offsets the

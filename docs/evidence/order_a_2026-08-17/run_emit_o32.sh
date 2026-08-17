@@ -6,7 +6,7 @@
 # Candidate 32 board's own printed day-0 file (89/89 at tolerance 0, and byte-identical prints to
 # fe6be9d6's — A10). Same env, same five-var thread pinning, strictly sequential.
 set -uo pipefail
-LABEL="O32FINAL"
+LABEL="O32RFINAL"
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO="$(cd "$HERE/../../.." && pwd)"
 SP=/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad

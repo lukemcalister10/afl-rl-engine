@@ -17,7 +17,7 @@ import os, sys, json, io, contextlib, hashlib
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
 SP = '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o32'
-BOARDP = os.path.join(SP, 'bb_final', 'rl_after', 'rl_app_data.json')
+BOARDP = os.path.join(SP, 'bb_rfinal', 'rl_after', 'rl_app_data.json')
 
 os.environ.update(RL_O31='1', RL_O32='1', PYTHONHASHSEED='0', RL_REPO=ROOT,
                   OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1', MKL_NUM_THREADS='1',

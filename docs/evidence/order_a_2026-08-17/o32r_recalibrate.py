@@ -471,7 +471,6 @@ for kap in GRID_K:
                 if not continuity_ok(kap, gu, eta, gd): fails.append('continuity')
                 for f in fails: FAILCOUNT[f] += 1
                 if not fails:
-                    M['all_bands_up'] = M['min_band'] >= 1.0
                     feas.append(M)
                 elif len(fails) == 1:
                     NEAR.append((fails[0], M))
@@ -479,8 +478,10 @@ print('\nconstraint failure counts over the grid:', dict(FAILCOUNT))
 for f, M in sorted(NEAR, key=lambda t: t[1]['obj'])[:8]:
     print('  NEAR (only %s fails): k=%.2f gu=%.0f e=%.2f gd=%.0f  W %.3f sl %.3f mx %.4f mean %.4f'
           % (f, M['kappa'], M['gamma_u'], M['eta'], M['gamma_d'], M['W'], M['slope'], M['max_class'], M['mean_0515']))
-print('feasible points: %d  (of which all five ND bands appreciate: %d)'
-      % (len(feas), sum(1 for m in feas if m['all_bands_up'])))
+# AMENDMENT A2 (PREREG_32R): selection = min corrected-surface SSE among the ruled-gate-feasible
+# set, FULL STOP. The vantage matrix and the band spread are DIAGNOSTIC-ONLY — no parameter
+# choice is justified by them; band figures are computed for the report only.
+print('feasible points: %d' % len(feas))
 if not feas:
     import sys as _s
     json.dump(dict(order='ORDER A REPAIR R1 — DIAGNOSIS RUN, no feasible point',
@@ -491,7 +492,7 @@ if not feas:
                    fail_counts=dict(FAILCOUNT)),
               open(os.path.join(HERE, 'REMIX_32R_DIAG.json'), 'w'), indent=1, sort_keys=True, default=float)
     _s.exit('NO FEASIBLE POINT — diagnosis written to REMIX_32R_DIAG.json')
-pool = [m for m in feas if m['all_bands_up']] or feas
+pool = feas
 for M in sorted(pool, key=lambda m: m['obj'])[:10]:
     print('  k=%.2f gu=%.0f e=%.2f gd=%.0f | obj %5.1f W %.3f sl %.3f mean %.4f mx %.4f | bands %s spread %.3f'
           % (M['kappa'], M['gamma_u'], M['eta'], M['gamma_d'], M['obj'], M['W'], M['slope'],
@@ -510,7 +511,7 @@ json.dump(dict(order='ORDER A REPAIR R1 — corrected surface + re-calibration',
                                       cells_realized=REAL_CELLS, terciles_realized=REAL_TERC,
                                       poor_bucket_moved_rows=len(moved)),
                baseline_stage5=BASE, shipped_c32_point=SHIPPED, chosen=best,
-               n_feasible=len(feas), n_all_bands_up=sum(1 for m in feas if m['all_bands_up']),
+               n_feasible=len(feas),
                grid=dict(kappa=GRID_K, gamma_u=GRID_GU, eta=GRID_E, gamma_d=GRID_GD),
                constraints=dict(slope=[0.885, 1.115], W='corrected hindsight 90% CI',
                                 max_class='<=1.139', mono='rho32 monotone',
