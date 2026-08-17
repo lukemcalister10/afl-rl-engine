@@ -433,7 +433,19 @@ _O30B_RESOLVED=os.environ.get('RL_O30B_RESOLVED','0')!='0'  # ORDER 30B-N: the R
 # their own endpoints EXACTLY, which is why no lane is needed:
 #     g = 0     rho(0)=0, Phi(.,0)=1  ->  price = D(c) * V0        the wired STEP-2 SITTER LAW, exactly
 #     rho -> 1                        ->  price = Phat + beta*V0   the 30B-R ADDITIVE READING (T1), exactly
-_O31=os.environ.get('RL_O31','0')!='0'                      # ORDER 31: THE ONE LAW
+# ==== ORDER A — CANDIDATE 32 (#334 comment 5312733761), DEFAULT OFF. RL_O32=1 implies RL_O31=1 (the
+# one law is the substrate). RL_O32_STAGE (declared, default 6 = the full candidate) wires the ruled
+# mechanisms CUMULATIVELY so every leg of the movers decomposition is a real board:
+#   1 age-referenced gate bars (S1 C3, gate-only object) · 2 +per-season played credit G*=2 ·
+#   3 +delivered-season reset of c_u · 4 +joint re-derived Phi row (the D row re-derived at deviation
+#   0.0 — FADE_32.json — so no stage-4 D constant exists) · 5 +selection relief inside D (capped at
+#   full pedigree) · 6 +the 5-15g re-mix (R-REMIX, two-sided).
+# Dial unset => _O32S == 0 => every branch below is inert and the Candidate 31 board fe6be9d6
+# (RL_O31=1) / the Step-2-law board (RL_O31 unset) reproduce BYTE-EXACT. NOTHING LANDS WITHOUT THE
+# OWNER'S WORD ON THE PACKET.
+_O32=os.environ.get('RL_O32','0')!='0'                      # ORDER A: CANDIDATE 32
+_O32S=(int(os.environ.get('RL_O32_STAGE','6')) if _O32 else 0)
+_O31=(os.environ.get('RL_O31','0')!='0') or _O32            # ORDER 31: THE ONE LAW (O32 implies it)
 _O31_NOPHI=os.environ.get('RL_O31_NOPHI','0')!='0'           # declared, default off: price the 30B-C conditioning by removing it
 _O30B_PREVIEW=(os.environ.get('RL_O30B_PREVIEW','0')!='0') or _O30B_RESOLVED or _O31  # ORDER 30B-P: the whole preview lane
 _O30B_NOPOLE=(os.environ.get('RL_O30B_NOPOLE','0')!='0') or _O30B_PREVIEW   # delete the PEDIGREE POLE leg from raw_ev
@@ -3262,6 +3274,72 @@ if _O30B_PREVIEW:
     # beta and the ND PhiStall, i.e. exactly ORDER 31's behaviour), so its cost is a NUMBER, not a
     # paragraph — the same discipline RL_O31_NOPHI applies to the stall conditioning.
     _O31F_NOBPOOL=os.environ.get('RL_O31F_NOBPOOL','0')!='0'
+    # ================= ORDER A — CANDIDATE 32 CONSTANTS AND HELPERS (all behind _O32S). ============
+    # Sources: docs/evidence/order_a_2026-08-17/{PREREG_32.md, PHI_32.json, FADE_32.json,
+    # RELIEF_32.json, REMIX_32.json}; #334 comment 5312733761. NOTHING here runs with the dial off.
+    #
+    # M1 — THE AGE-REFERENCED GATE BARS (S1 construction C3). A NEW, GATE-ONLY object:
+    # bar(pos, age) = _O30BP_BARS[pos] - Δ(class, clamp(age,18,23)); flat from age 24 (cap law
+    # structural, Δ >= 0). CONSUMED ONLY inside the stall-run test and the delivered test below.
+    # _O30BP_BARS ITSELF IS NEVER EDITED: the production references and both par denominators keep
+    # the flat bars untouched (S1 §12 coupling warning).
+    O32_TALLPOS=frozenset(('KPD','KPF','RUCK'))
+    O32_GATE_DELTA={'TALL':{18:22.334475609756097,19:20.55500752464971,20:16.306362402208926,
+                            21:11.588672690048071,22:7.826894964594814,23:6.439783302063788},
+                    'SMALL':{18:20.080511089352214,19:20.080511089352214,20:14.306977484301457,
+                             21:11.265167414136857,22:6.761247284555768,23:4.584052475875439}}
+    def o32_gate_bar(pos,age):
+        """The gate's AVG bar for a season played at `age`. Flat at/after 24; the C3 class-pooled
+        development offset below; ages <= 18 take the age-18 column. None if the position has no bar."""
+        _b=_O30BP_BARS.get(pos)
+        if _b is None: return None
+        if _O32S<1 or age is None or age>=24: return _b
+        return _b-O32_GATE_DELTA['TALL' if pos in O32_TALLPOS else 'SMALL'][max(18,min(23,int(age)))]
+    # M6b-2 — THE PHI ROW RE-DERIVED UNDER THE NEW BARS (PHI_32.json; the Δ≡0 control reproduced
+    # CIRCULARITY_31F at deviation 0). beta is UNCHANGED (owner ruling R-W1) — only the stall RATIO
+    # moves. Pool rows keep the 31-F pool row (O31_PHIST_POOL): the pool stall coefficients were not
+    # re-derived under the new bars — an OWED LIMITATION, disclosed on the packet, not hidden here.
+    O32_PHIST=((2.5,0.645228057068287),(10.5,0.14783270364736742),(25.5,0.14783270364736742),
+               (53.0,0.14783270364736742),(85.5,0.0))
+    # M4/M6b-4(b) — SELECTION RELIEF INSIDE D (S3 sketch (a), the capped form). RELIEF_32.json:
+    # λ fit on the S2 spectrum surface under the NEW clock definitions (identifiability band
+    # [0.46, 1.20] published). The cap at full pedigree (D -> at most 1) is STRUCTURAL: the ceiling
+    # stays production-only, relief can never pay above v0.
+    O32_LAMBDA=1.08
+    def o32_sigma_sel(p,Y):
+        """The S3 threshold shape on current + most-recent-season selection: zero below ~5 games,
+        rising 5-10, flat >= 10; the in-progress season prorated by its own fraction."""
+        _s=0.0
+        for _x in (p.get('scoring') or []):
+            if _x['year'] in (Y,Y-1) and _x.get('games'):
+                _f=(_fEy(Y,p) if _x['year']==Y else 1.0)
+                if _f>0.0:
+                    _s=max(_s,max(0.0,min(1.0,(float(_x['games'])-5.0*_f)/(5.0*_f))))
+        return _s
+    # M3 — THE DELIVERED PREDICATE (one predicate: the stall run and the reset both read it).
+    def o32_delivered(p,Y,x):
+        """Season row x is DELIVERED as of Y: games >= 10 x season-fraction AND avg >= the
+        age-referenced gate bar (the flat bar below stage 1)."""
+        _u=(_fEy(Y,p) if x['year']==Y else 1.0)
+        if float(x.get('games') or 0.0)<10.0*_u: return False
+        _bar=o32_gate_bar(MA.gfut(p),(x['year']-p['_by']) if p.get('_by') else None)
+        return _bar is not None and float(x.get('avg') or 0.0)>=_bar
+    # M5/M6c — THE 5-15g RE-MIX (R-REMIX, two-sided acknowledged). TWO knobs, both from W2's own
+    # translation ("raise the production-leg loading ... but then the pedigree leg must come down
+    # in step"):
+    #   rho32(g)     = rho31(g) + κ·m_u(g)·(1-rho31(g)),   m_u = (g/γ_u)·exp(1-g/γ_u)
+    #   pedigree leg x max(0, 1-η·m_d(g)),                 m_d = (g/γ_d)·exp(1-g/γ_d)
+    # m_u(0)=m_d(0)=0 exactly: g=0 sitters untouched and pi(0)=D preserved. Two-sided BY
+    # CONSTRUCTION: weight moves from the pedigree leg to shown production, so poor starters CAN
+    # fall below entry and risers rise. Calibrated on W2's hindsight surface subject to the slope
+    # band, the W band, the HARD no-arb line (max class <= 1.139 — this also CURES the inherited
+    # 2010 class mark of 1.1405) and the η <= 0.75 non-degeneracy guard (REMIX_32.json; the prereg
+    # one-knob family measured INFEASIBLE there — a disclosed prereg deviation). Monotonicity of
+    # rho32 asserted at load.
+    O32_KAPPA=0.50                                 # REMIX_32.json::chosen (rho32-monotone, F5-checked)
+    O32_GAMMA=10.0
+    O32_ETA=0.75
+    O32_GAMMA_D=8.0
     def o31_pool_D(c):
         if c<=1.0: return 1.0
         if c>=O31_POOL_FLAT_FROM: return O31_POOL_D[O31_POOL_FLAT_FROM]
@@ -3281,54 +3359,92 @@ if _O30B_PREVIEW:
         return pts[-1][1]
     def rho31(g):
         """MEASURED PRODUCTION RELIABILITY. rho(0)=0 EXACTLY, strictly increasing, -> 1. Fitted so a thin
-        cohort's aggregate price matches the R1 cumulative backbone. Pure function of g."""
+        cohort's aggregate price matches the R1 cumulative backbone. Pure function of g.
+        ORDER A stage 6: the R-REMIX low-g bump rides on top (see the O32 block above); rho(0)=0 and
+        the deep end are untouched by construction."""
         g=float(g)
-        return 0.0 if g<=0.0 else 1.0-_math.exp(-((g/O31_TAU_RHO)**O31_B_RHO))
+        if g<=0.0: return 0.0
+        _r=1.0-_math.exp(-((g/O31_TAU_RHO)**O31_B_RHO))
+        if _O32S>=6 and O32_KAPPA>0.0:
+            _r=_r+O32_KAPPA*((g/O32_GAMMA)*_math.exp(1.0-g/O32_GAMMA))*(1.0-_r)
+        return _r
     def beta31(g,pool=False):
         """The measured additive pedigree coefficient. ORDER 31-F: pool rows take the POOL-DERIVED curve
         (o31f_pool.py), ND rows the ND curve. One law still — the same expression, the row's own
         measured coefficient. RL_O31F_NOBPOOL=1 restores ORDER 31's ND-borrowed behaviour."""
         return _o31_loglin(O31_BETA_POOL if (pool and not _O31F_NOBPOOL) else O31_BETA,g)
     def phistall31(g,pool=False):
-        return _o31_loglin(O31_PHIST_POOL if (pool and not _O31F_NOBPOOL) else O31_PHIST,g)
+        if pool and not _O31F_NOBPOOL: return _o31_loglin(O31_PHIST_POOL,g)
+        return _o31_loglin(O32_PHIST if _O32S>=4 else O31_PHIST,g)
     def phi31(g,s,pool=False):
         """THE 30B-C STALL CONDITIONING. Phi(g,0)=1 EXACTLY, so it cannot touch a gameless row."""
         if s<=0: return 1.0
         return 1.0-(min(float(s),O31_PHI_RAMP)/O31_PHI_RAMP)*(1.0-phistall31(g,pool))
     def o31_played_units(p,Y):
         """Season-units in which the row PLAYED, on the same clock the fade uses: 1.0 per completed season,
-        _fEy for the in-progress one."""
+        _fEy for the in-progress one. ORDER A stage 2 (M2, owner ruling on S2 P1): a season's credit is
+        f·min(1, g/2) — the G*=2 per-season played credit that retires the one-game full-cure cliff.
+        u(0)=0, so day-0 prices are untouched by construction."""
         _u=0.0
         for _x in p.get('scoring') or []:
             if _x['year']>Y or not _x['games']: continue
-            _u+=(_fEy(Y,p) if _x['year']==Y else 1.0)
+            _f=(_fEy(Y,p) if _x['year']==Y else 1.0)
+            _u+=_f*(min(1.0,float(_x['games'])/2.0) if _O32S>=2 else 1.0)
         return _u
     def o31_cu(p,Y):
         """THE UNPLAYED CLOCK. c_u = the fade clock MINUS the time he actually played. This is the brief's
         'the time-fade applies to UNPLAYED time only' -- a played season advances g, not the sitter clock,
         which is what kills the sitter-fade-while-playing defect. For a row that has NEVER played it is the
-        fade clock EXACTLY, so every printed-day-0 price is unmoved by construction."""
+        fade clock EXACTLY, so every printed-day-0 price is unmoved by construction.
+        ORDER A stage 3 (M3, owner ruling on S2 P2): a DELIVERED season (the one o32_delivered
+        predicate: games >= 10·f AND avg >= the age-referenced gate bar) RESETS accumulated c_u to
+        zero as of that season; fade re-accrues only on subsequent sitting. A gameless career has no
+        delivered season, so day-0 prices are again untouched by construction."""
+        if _O32S>=3:
+            _yd=None
+            for _x in (p.get('scoring') or []):
+                if _x['year']<=Y and _x.get('games') and o32_delivered(p,Y,_x):
+                    _yd=_x['year'] if _yd is None else max(_yd,_x['year'])
+            if _yd is not None:
+                _clk=max(0.0,float(Y-_yd-1)+(_fEy(Y,p) if Y>_yd else 0.0))
+                _cred=0.0
+                for _x in (p.get('scoring') or []):
+                    if _yd<_x['year']<=Y and _x.get('games'):
+                        _f=(_fEy(Y,p) if _x['year']==Y else 1.0)
+                        _cred+=_f*min(1.0,float(_x['games'])/2.0)
+                return max(0.0,_clk-_cred)
         return max(0.0,fade30b_clock(p,Y)-o31_played_units(p,Y))
     def o31_D(p,Y):
         """The fade at the UNPLAYED depth. ONE law for every pathway: the ruled ND schedule is applied to
         every non-pool row (a BORROW for RD and pickless-ND rows, disclosed), and pool rows take the
-        Step-2-derived pool schedule."""
+        Step-2-derived pool schedule.
+        ORDER A stage 5 (M4): current + most-recent-season selection buys back the discount on
+        unproven pedigree — D·(1+λ·σ_sel) — CAPPED AT 1: never above full pedigree, the ceiling
+        stays production-only. σ_sel(0 games)=0, so gameless rows are untouched."""
         _cu=o31_cu(p,Y)
-        return (o31_pool_D(_cu) if p.get('_pool') else o31_fade_D(_cu))
+        _D=(o31_pool_D(_cu) if p.get('_pool') else o31_fade_D(_cu))
+        if _O32S>=5 and _D<1.0:
+            _sg=o32_sigma_sel(p,Y)
+            if _sg>0.0: _D=min(1.0,_D*(1.0+O32_LAMBDA*_sg))
+        return _D
     def o31_stall_run(p,Y):
         """s -- THE CURRENT STALL RUN: consecutive most-recent seasons the row PLAYED but did not DELIVER
         (delivered == games >= 10 AND avg >= his position's v0-language bar). A delivered season RESETS it.
         A GAMELESS season is SKIPPED, never counted: unplayed time is D(c_u)'s channel and counting it in
         both would be exactly the double-discount the no-stacking constraint forbids.
         s >= 1 therefore IMPLIES g >= 1, which is what makes pi(0,c)=D(c) safe for every s."""
-        _bar=_O30BP_BARS.get(MA.gfut(p))
-        if _bar is None: return 0
+        _pos=MA.gfut(p)
+        _bar0=_O30BP_BARS.get(_pos)
+        if _bar0 is None: return 0
         _s=0
         for _x in sorted((p.get('scoring') or []),key=lambda r:-r['year']):
             if _x['year']>Y: continue
             _g=float(_x['games'] or 0.0)
             if _g<=0.0: continue                                   # gameless: D(c_u)'s channel, skipped
             _u=(_fEy(Y,p) if _x['year']==Y else 1.0)
+            # ORDER A stage 1 (M1): the AVG leg reads the age-referenced gate bar — a NEW gate-only
+            # object; the flat production references are untouched. The GAMES leg is unchanged (S1 §3).
+            _bar=(o32_gate_bar(_pos,_x['year']-p['_by']) if (_O32S>=1 and p.get('_by')) else _bar0)
             if _g>=10.0*_u and float(_x['avg'] or 0.0)>=_bar: break # DELIVERED -> the run resets
             _s+=1
         return _s
@@ -3344,7 +3460,12 @@ if _O30B_PREVIEW:
         # RL_O31_NOPHI=1 is a DECLARED, DEFAULT-OFF measurement dial that prices the conditioning by
         # removing it -- so the unconditioned alternative's cost is MEASURED, not argued.
         _pl=bool(p.get('_pool'))
-        return o31_D(p,Y)*(1.0-_r)+(1.0 if _O31_NOPHI else phi31(_g,o31_stall_run(p,Y),_pl))*beta31(_g,_pl)*_r
+        _pi=o31_D(p,Y)*(1.0-_r)+(1.0 if _O31_NOPHI else phi31(_g,o31_stall_run(p,Y),_pl))*beta31(_g,_pl)*_r
+        # ORDER A stage 6 (M5): the pedigree leg comes down in step — W2's own translation. m_d(0)=0
+        # so pi(0,c)=D(c) still holds EXACTLY and gameless rows are untouched.
+        if _O32S>=6 and O32_ETA>0.0 and _g>0.0:
+            _pi*=max(0.0,1.0-O32_ETA*((_g/O32_GAMMA_D)*_math.exp(1.0-_g/O32_GAMMA_D)))
+        return _pi
     def _pv_order31(p,Y,e):
         """THE ONE LAW. One expression, every row, every pathway, every games count."""
         _g=pv_games(p,Y)
@@ -3369,6 +3490,39 @@ if _O30B_PREVIEW:
                 if abs(o31_pi(_p,MA.BASE_REF,0.0)-o31_D(_p,MA.BASE_REF))>0.0: _o31_bad.append(('pi(0)!=D',_p.get('key')))
         if _o31_bad:
             raise SystemExit('ORDER 31 HALT: %d structural violations of the one law — %s'%(len(_o31_bad),_o31_bad[:6]))
+        # ORDER A — CANDIDATE 32 BUILD-FAILING ASSERTS (only with the dial on).
+        if _O32S>=1:
+            # cap law: every gate bar <= the flat bar, flat from 24 (murdock guard, structural)
+            for _pos in _O30BP_BARS:
+                for _a in range(16,30):
+                    _b=o32_gate_bar(_pos,_a)
+                    if not (_b<=_O30BP_BARS[_pos]+1e-12) or (_a>=24 and _b!=_O30BP_BARS[_pos]):
+                        raise SystemExit('ORDER A HALT: gate-bar cap law broken at %s age %d'%(_pos,_a))
+            # S1 flat-bar identity: the C3 construction was built on these exact flat bars
+            _s1flat={'KPD':65.4,'KPF':63.8,'MID':77.1,'RUCK':75.5,'SD':75.3,'SF':67.9}
+            for _pos,_v in _s1flat.items():
+                if abs(_O30BP_BARS.get(_pos,-1)-_v)>1e-9:
+                    raise SystemExit('ORDER A HALT: _O30BP_BARS[%s]=%r is not the S1 flat bar %r — the '
+                                     'C3 offsets do not apply to this object'%(_pos,_O30BP_BARS.get(_pos),_v))
+        if _O32S>=6 and O32_KAPPA>0.0:
+            _prev=-1.0
+            _gg=0.0
+            while _gg<=300.0:
+                _r=rho31(_gg)
+                if _r<_prev-1e-12:
+                    raise SystemExit('ORDER A HALT: rho32 non-monotone at g=%.2f (PREREG_32 F5)'%_gg)
+                if not (_r<1.0+1e-12):
+                    raise SystemExit('ORDER A HALT: rho32 breaches 1 at g=%.2f'%_gg)
+                _prev=_r; _gg+=0.25
+        if _O32S>=1:
+            print('ORDER A CANDIDATE 32 LIVE (RL_O32=1, stage %d of 6) — NOTHING IS GREENLIT AND NOTHING '
+                  'MERGES. bars(age) gate-only · credit f·min(1,g/2) · delivered reset · Phi_32 row · '
+                  'relief min(1, D·(1+%.2f·σ_sel)) · re-mix κ=%.2f γu=%.1f / η=%.2f γd=%.1f. '
+                  '%d rows carry a stall run; %d carry c_u>1; %d carry relief.'
+                  %(_O32S,O32_LAMBDA,O32_KAPPA,O32_GAMMA,O32_ETA,O32_GAMMA_D,
+                    sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and o31_stall_run(_p,MA.BASE_REF)>0),
+                    sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and o31_cu(_p,MA.BASE_REF)>1.0),
+                    sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and _O32S>=5 and o32_sigma_sel(_p,MA.BASE_REF)>0.0 and (o31_pool_D(o31_cu(_p,MA.BASE_REF)) if _p.get('_pool') else o31_fade_D(o31_cu(_p,MA.BASE_REF)))<1.0)))
         print('ORDER 31 THE ONE LAW LIVE (RL_O31=1) — NOTHING IS GREENLIT AND NOTHING MERGES. '
               'price = rho(g)*Phat + [D(c_u)*(1-rho(g)) + Phi(g,s)*beta(g)*rho(g)]*v0, ONE FORMULA FOR '
               'EVERY ROW: no sitter branch, no thin lane, no bridge, no deep lane. rho = 1-exp(-(g/%.4f)^'
