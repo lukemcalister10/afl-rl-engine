@@ -186,3 +186,16 @@ read here, the question has had its properly-powered day in court.
 *Prediction (seat's own, non-binding, filed for honesty): most likely outcome is O3 or a small
 NEGATIVE TRAJ read (extra mean reversion beyond the level), because the 31-F time-block already
 showed T degrading out of era; but that expectation exerts no force on the rule above.*
+
+---
+
+## AMENDMENT A1 — filed 2026-08-17, BEFORE the measurement run (w4_measure.py has not executed)
+
+The bootstrap for the QUANTILE-regression TRAJ coefficients (secondary read 1 only) is reduced
+from B=1000 to **B=200**. Reason: one pinball LP at the panel's size was timed at ~4.5 s on a
+synthetic same-shape problem (no panel data touched); 3 quantiles × 1000 cluster resamples ≈ 3.8
+hours exceeds the seat's runtime budget, while B=200 (~45 min) still gives a serviceable 95% CI on
+a secondary, descriptive read. ALL OLS bootstraps (primary TRAJ coefficient, secondary targets,
+sign split, age localisation, pooled sort-table gap) remain at the preregistered **B=1000, seed
+0**. No point estimate, threshold, or decision rule changes. The quantile point estimates
+themselves are computed exactly as preregistered.
