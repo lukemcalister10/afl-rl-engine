@@ -443,7 +443,8 @@ _O30B_RESOLVED=os.environ.get('RL_O30B_RESOLVED','0')!='0'  # ORDER 30B-N: the R
 # Dial unset => _O32S == 0 => every branch below is inert and the Candidate 31 board fe6be9d6
 # (RL_O31=1) / the Step-2-law board (RL_O31 unset) reproduce BYTE-EXACT. NOTHING LANDS WITHOUT THE
 # OWNER'S WORD ON THE PACKET.
-_O32=os.environ.get('RL_O32','0')!='0'                      # ORDER A: CANDIDATE 32
+_O34=os.environ.get('RL_O34','0')!='0'                      # ORDER C: the age-conditional normalization (#334 c.5315155802; PREREG_C.md pushed first). IMPLIES RL_O32 on the next line and nowhere else.
+_O32=(os.environ.get('RL_O32','0')!='0') or _O34            # ORDER A: CANDIDATE 32 (ORDER C builds ON it)
 _O32S=(int(os.environ.get('RL_O32_STAGE','6')) if _O32 else 0)
 _O31=(os.environ.get('RL_O31','0')!='0') or _O32            # ORDER 31: THE ONE LAW (O32 implies it)
 _O31_NOPHI=os.environ.get('RL_O31_NOPHI','0')!='0'           # declared, default off: price the 30B-C conditioning by removing it
@@ -457,6 +458,45 @@ _O30B_NOISO=(os.environ.get('RL_O30B_NOISO','0')!='0') or _O30B_PREVIEW     # de
 # (KPD 65.4 · KPF 63.8 · MID 77.1 · RUCK 75.5 · SD 75.3 · SF 67.9 — o30bm_measure.py:70-73).
 # It is POSITION-LEVEL and PICK-BLIND by construction: there is no pick axis in it at all.
 _O30BP_BARS={_g:(MA.REPL[_g]-rd.REPL_DROP.get(_g,0.0)) for _g in MA.REPL}
+# ===== ORDER C (#334 comment 5315155802) — THE AGE-CONDITIONAL NORMALIZATION SURFACE (RL_O34). =========
+# THE DEFECT: ORDER 31's lawful deletion of the pick-prior par tables (aimed at the PICK axis) also
+# deleted their DEVELOPMENT axis, re-referencing the production leg's two RETAINED normalization
+# denominators (the Q evidence weight in _c_w; the decay-gate par inside ev()) to the FLAT bars above —
+# so young output is judged against MATURE standards inside the production core (S1: those bars fail
+# 86-100% of age-18/19 seasons even for players who turn out fine). ORDER C replaces the OBJECT in those
+# two denominators — AND ONLY THOSE TWO — with the measured S1 C3 age x position expected-output surface:
+#     par34(pos, age) = _O30BP_BARS[pos] - DELTA(class, clamp(age, 18, 23))
+# NO PICK AXIS (the forbidden-set ruling stays fully honoured) · CAPPED AT THE FLAT BAR (DELTA >= 0,
+# load-asserted) · FLAT FROM AGE 24 on the integer age Y - birth-year (the SAME basis every O32 age
+# object uses), so every mature row prices BYTE-IDENTICALLY — the core identity control. The stall gate
+# keeps its own repair-built age bars (o32_gate_bar); the v0-language, the instruments and every other
+# reader keep the flat bars; _O30BP_BARS itself is NEVER edited. DELTA is the C3 class-pooled table the
+# repair already carries (O32_GATE_DELTA lineage; CONSTRUCTIONS_S1.json::C3), duplicated here because
+# the two denominator sites are read before the O32 block exists. With RL_O34 unset _o34_par returns the
+# flat bar on every call and the repaired Candidate 32 board 7802ee97 reproduces BYTE-EXACT.
+_O34_TALL=frozenset(('KPD','KPF','RUCK'))
+_O34_DELTA={'TALL':{18:22.334475609756097,19:20.55500752464971,20:16.306362402208926,
+                    21:11.588672690048071,22:7.826894964594814,23:6.439783302063788},
+            'SMALL':{18:20.080511089352214,19:20.080511089352214,20:14.306977484301457,
+                     21:11.265167414136857,22:6.761247284555768,23:4.584052475875439}}
+def _o34_par(pos,p,Y):
+    """ORDER C: the two retained normalization denominators' object. The flat effective positional bar
+    unless RL_O34 is set AND the row is at a developing age (Y - birth year < 24); a row with no birth
+    year keeps the flat bar (count disclosed on the packet). Never above the flat bar, by cap law."""
+    _b=_O30BP_BARS[pos]
+    if not _O34: return _b
+    _by=p.get('_by')
+    if not _by: return _b
+    _a=Y-int(_by)
+    if _a>=24: return _b                                    # FLAT FROM 24 — mature-row byte-identity
+    return _b-_O34_DELTA['TALL' if pos in _O34_TALL else 'SMALL'][max(18,min(23,int(_a)))]
+if _O34:
+    # BUILD-FAILING STRUCTURAL ASSERTS (cap law + flat-from-24), evaluated on a synthetic age ladder.
+    for _pos34 in _O30BP_BARS:
+        for _a34 in range(16,30):
+            _pb34=_o34_par(_pos34,{'_by':2026-_a34},2026)
+            if not (_pb34<=_O30BP_BARS[_pos34]+1e-12) or (_a34>=24 and _pb34!=_O30BP_BARS[_pos34]):
+                raise SystemExit('ORDER C HALT: par34 cap/flat law broken at %s age %d'%(_pos34,_a34))
 # The preview blend is INSTALLED LATER (it needs day0_v0, which the ORDER 29B block defines ~2300 lines
 # below). This is the late-bound hook; it FAILS CLOSED — a preview-on call that reaches a price before the
 # blend is installed halts rather than silently falling through to the superseded machinery.
@@ -2389,7 +2429,9 @@ def _c_w(p,Y,e_full,anchor):
     # it on the forbidden-set boundary. The preview re-references it to the POSITION-LEVEL, PICK-BLIND
     # effective bar (_O30BP_BARS). FORM, CLIP AND CONSTANTS ARE UNCHANGED — only the object in the
     # denominator moves, so the before/after is a pure re-referencing and not a re-tuning.
-    par=(_O30BP_BARS[MA.gfut(p)] if _O30B_PREVIEW else float(PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),T)))
+    # ORDER C (RL_O34) — SITE 1 of exactly two: the SAME retained denominator, its object now the
+    # age-conditional surface _o34_par (flat-bar-identical with the dial off, and for every age >= 24).
+    par=((_o34_par(MA.gfut(p),p,Y) if _O34 else _O30BP_BARS[MA.gfut(p)]) if _O30B_PREVIEW else float(PR.par_at(MA.gfut(p),min(MA.effpk(p),cp.KMAX),T)))
     G=gt/(gt+_C_G0)
     Q=float(np.clip(sa/par,0.0,_C_QMAX)) if par>0 else 0.0
     gate=min(e_full/anchor,1.0) if e_full>0 else 0.0
@@ -2534,7 +2576,8 @@ def ev(p,Y=2026):
     # exactly the same rule as Q2's site: form/threshold/constants untouched, the pick-conditional par table
     # replaced by the position-level pick-blind effective bar. This `par` has ONE consumer, `pr`, two lines
     # of code below — verified, so the re-reference cannot leak anywhere else in ev().
-    par=(_O30BP_BARS[pos] if _O30B_PREVIEW else PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)))
+    # ORDER C (RL_O34) — SITE 2 of exactly two: the decay-gate denominator, same re-referencing rule.
+    par=((_o34_par(pos,p,Y) if _O34 else _O30BP_BARS[pos]) if _O30B_PREVIEW else PR.par_at(pos,min(MA.effpk(p),cp.KMAX),min(max(el,1),6)))
     pr=bestlvl(p,Y)/max(1,par)
     if ns==0:                                                 # SIT-OUT: derived games-ramp treatment (V0-anchored, prorated, scoring-aware, continuous at graduation)
         # ORDER 30B-P, STOP §5 Q4 — REPLACE, NOT WRAP. sitout_ev's ns==0 arm IS an anchor<->production blend
@@ -3349,6 +3392,13 @@ if _O30B_PREVIEW:
     O32_GAMMA=11.0
     O32_ETA=0.41
     O32_GAMMA_D=14.0
+    # ORDER C (RL_O34) — the R1 age credit's SURVIVING SCALE under the corrected normalization.
+    # The repair's credit partially compensated the BLIND denominators; with the denominators fixed the
+    # unchanged credit would DOUBLE-PAY age on every row the sites now pay correctly, so the credit is
+    # RE-DERIVED jointly with the re-mix knobs on the corrected surface (REMIX_34.json — same
+    # joint-derivation discipline, min corrected-SSE inside the ruled gates + the ORDER C mature-row
+    # identity gate). Read ONLY when _O34 is set: the dial-off credit path is byte-identical.
+    O34_ALPHA=1.0
     def o31_pool_D(c):
         if c<=1.0: return 1.0
         if c>=O31_POOL_FLAT_FROM: return O31_POOL_D[O31_POOL_FLAT_FROM]
@@ -3402,7 +3452,8 @@ if _O30B_PREVIEW:
         if g<=0.0: return 0.0
         _d=o32_age_gap(p,Y)
         if _d<=0.0: return 0.0
-        return O32_KAPPA*((g/O32_GAMMA)*_math.exp(1.0-g/O32_GAMMA))*(1.0-o31_rho_base(g))*_d*20.0*_PL_F
+        _c=O32_KAPPA*((g/O32_GAMMA)*_math.exp(1.0-g/O32_GAMMA))*(1.0-o31_rho_base(g))*_d*20.0*_PL_F
+        return _c*O34_ALPHA if _O34 else _c                 # ORDER C: re-derived scale; dial-off byte-identical
     def beta31(g,pool=False):
         """The measured additive pedigree coefficient. ORDER 31-F: pool rows take the POOL-DERIVED curve
         (o31f_pool.py), ND rows the ND curve. One law still — the same expression, the row's own
@@ -3560,6 +3611,16 @@ if _O30B_PREVIEW:
                     sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and o31_stall_run(_p,MA.BASE_REF)>0),
                     sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and o31_cu(_p,MA.BASE_REF)>1.0),
                     sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and _O32S>=5 and o32_sigma_sel(_p,MA.BASE_REF)>0.0 and (o31_pool_D(o31_cu(_p,MA.BASE_REF)) if _p.get('_pool') else o31_fade_D(o31_cu(_p,MA.BASE_REF)))<1.0)))
+        if _O34:
+            print('ORDER C LIVE (RL_O34=1) — NOTHING IS GREENLIT AND NOTHING MERGES. The two retained '
+                  'normalization denominators (Q evidence weight; decay gate) read the S1 C3 '
+                  'age-conditional surface: flat bar - DELTA(class, age), NO pick axis, capped at the '
+                  'flat bar, FLAT FROM AGE 24 (mature rows byte-identical). R1 age credit scale '
+                  'alpha=%.2f (re-derived). %d active rows are at a developing age; %d active rows have '
+                  'no birth year and keep the flat bar.'
+                  %(O34_ALPHA,
+                    sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and _p.get('_by') and (MA.BASE_REF-int(_p['_by']))<24),
+                    sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and not _p.get('_by'))))
         print('ORDER 31 THE ONE LAW LIVE (RL_O31=1) — NOTHING IS GREENLIT AND NOTHING MERGES. '
               'price = rho(g)*Phat + [D(c_u)*(1-rho(g)) + Phi(g,s)*beta(g)*rho(g)]*v0, ONE FORMULA FOR '
               'EVERY ROW: no sitter branch, no thin lane, no bridge, no deep lane. rho = 1-exp(-(g/%.4f)^'
