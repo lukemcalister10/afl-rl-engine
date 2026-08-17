@@ -20,3 +20,14 @@ WALK-FORWARD EMIT (24 years, own worktree of HEAD 983d422, RL_O31=1, RL_DAY0_FIN
   per_entrant_O31FFINAL.json  d97f1aee   2,648 records   cost 1m46s
   ORDER 31-F REPLICATION: 89 of 89 wired entrants reproduce this board's printed day-0 EXACTLY,
   fail-closed, BEFORE a single record was written.
+
+  f7off   -           06146b00 RESTORED  9298203135202a0c707bb0977ba38c31   706,672  THE STRONGEST CONTROL
+
+THE STRONGEST CONTROL, f7off, run LAST and on the FINAL tree: the FINAL engine code -- every ORDER 31-F
+edit in place (the re-derived fade/beta/rho/Phi, beta_pool, Phi_pool, the new dial) -- with RL_O31 UNSET
+and ONLY the original pvc_curve_v2.json restored, reproduces the committed Step-2 board
+9298203135202a0c707bb0977ba38c31 BYTE-EXACT.
+
+That proves, by measurement rather than by inspection, that EVERY engine edit this order made is inside
+the declared dial, and that the ONE thing outside the dial is the ONE artifact re-stamp that was declared
+in PREREG_31F.md F38 before it happened. There is no third thing.

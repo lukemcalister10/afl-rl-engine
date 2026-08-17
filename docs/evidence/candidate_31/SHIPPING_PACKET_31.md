@@ -18,7 +18,7 @@ resolution 5310447449 · 2026-08-17 · PR #510 stays `[HELD — DO NOT MERGE]`.*
 | vs STEP-2 `92982031` (706,672) | **−39,759 (−5.63%)** |
 | rows that moved vs Step-2 | **795 of 804** |
 | **exact numéraire `s`** | **`0.9400914291048137` · re-pinned · old → new `\|diff\| = 0`** |
-| entry dial-off control | untouched tree, `RL_O31` unset → **`92982031…` BYTE-EXACT** |
+| dial-off control | **FINAL engine code**, `RL_O31` unset, original artifact restored → **`92982031…` BYTE-EXACT** |
 | determinism | **PASS** — the final board built twice, byte-identical |
 | printed-day-0 identity | **89 of 89, tolerance 0**, on the WRITTEN board |
 | continuity assert | **PASS** — max discontinuity at `g=0` is **7.8e-08** relative |
@@ -624,7 +624,7 @@ not run.)
 | **F32** | **HELD** | the head fix alone is **+1,520** on the one law (and **+190** on the Step-2 law), inside [−25,000 , +15,000] |
 | **F33** | **HELD** | entry controls closed at filing time |
 | **F34** | **HELD** | deterministic double-build byte-identical |
-| **F35** | **BREACH, AND THE SEAT'S SPECIFICATION WAS WRONG** | the prereg predicted dial-off byte-identity to `92982031` **on the final tree**. That was never possible: the head fix rewrites `pvc_curve_v2.json`, which the Step-2 lineage also reads, so it is **outside** the dial by construction. What IS proven is stronger and is what the control should have said: dial-off on the **untouched** tree reproduces `92982031` byte-exact, and dial-off on the **head-fixed** tree gives `bce0c65d` (+190), **which isolates the head fix's own price on the Step-2 law to a single number** |
+| **F35** | **BREACH ON THE LETTER, PASSED ON SOMETHING STRONGER** | the prereg predicted dial-off byte-identity to `92982031` **on the final tree with the head-fixed artifact**. That was never possible: the head fix rewrites `pvc_curve_v2.json`, which the Step-2 lineage also reads, so it is **outside** the dial by construction — the seat's control was mis-specified. **What was run instead, last and on the final tree, is a harder control and it PASSES: the FINAL engine code — every 31-F edit in place — with `RL_O31` UNSET and ONLY the original artifact restored reproduces `9298203135202a0c707bb0977ba38c31` BYTE-EXACT** (board `f7off`). That proves by measurement that **every engine edit this order made is inside the declared dial**, and that the one thing outside it is the one declared artifact re-stamp. There is no third thing. The head fix's own price on the Step-2 law is separately isolated at **+190** (`bce0c65d`) |
 | **F36** | **HELD** | identity gate: no literal moves; discharged as a declared no-op with the reason printed |
 | **F37** | **HELD** | boot guard passes; `expected_boot` fv pin stale by design and stated |
 | **F38** | **HELD** | moved set is **exactly** `{pvc_curve_v2.json}` — the declared set; zero undeclared moves |
