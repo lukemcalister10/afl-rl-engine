@@ -4,7 +4,7 @@
 `w2_forward_calibration.py` is the committed instrument (REUSED, NOT REINVENTED). Disclosed-copy
 convention: character-level substitutions only, each printed and counted-unique — (1) the matrix
 path/md5/engine-head identity re-pointed at per_entrant_O32FINAL.json (the Candidate 32 emit,
-7a4b49db, engine d145fa8a, store cb38ef11 unchanged), (2) the output file re-pointed into this
+c775d6c7, engine 0b6773ec, store cb38ef11 unchanged), (2) the output file re-pointed into this
 directory. Every estimator, every seed, every bootstrap and every band is the instrument's own.
 """
 import os, sys, json, hashlib, io, contextlib
@@ -19,11 +19,11 @@ HARNESS_MD5 = hashlib.md5(_txt.encode()).hexdigest()
 SUBS = [
     ("CAND_P = SP + '/per_entrant_O31FFINAL.json'", "CAND_P = SP + '/per_entrant_O32FINAL.json'"),
     ("assert md5f(CAND_P) == 'd97f1aee4161ebcf785cd635ed095038', 'matrix md5 mismatch'",
-     "assert md5f(CAND_P) == '7a4b49dbdfef147b1c4fc63c7f46ccd4', 'matrix md5 mismatch'"),
+     "assert md5f(CAND_P) == 'c775d6c76b0955612849eb0be6c60d2f', 'matrix md5 mismatch'"),
     ("assert A['meta']['engine_head'] == '71d9949a', 'engine head mismatch'",
-     "assert A['meta']['engine_head'] == 'd145fa8a', 'engine head mismatch'"),
+     "assert A['meta']['engine_head'] == '0b6773ec', 'engine head mismatch'"),
     ("print('identity OK: matrix md5 d97f1aee store cb38ef11 head 71d9949a n=2648')",
-     "print('identity OK: matrix md5 7a4b49db store cb38ef11 head d145fa8a n=2648')"),
+     "print('identity OK: matrix md5 c775d6c7 store cb38ef11 head 0b6773ec n=2648')"),
     ("with open(os.path.join(HERE, 'RESULTS_W2.json'), 'w') as f:",
      "with open(os.path.join(%r, 'W2_32_RESULTS.json'), 'w') as f:" % HERE),
 ]

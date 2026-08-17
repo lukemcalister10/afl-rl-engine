@@ -1,0 +1,85 @@
+{
+ "attribution": "UNIFORM \u2014 the shares identity makes cell-wise closure level-neutral",
+ "band": [
+  1.1,
+  1.117
+ ],
+ "cells": {
+  "0": {
+   "gap": -0.018648600261316373,
+   "mean_price_share": 0.36376982063176094,
+   "mean_real_share": 0.34512122037044457,
+   "n": 912
+  },
+  "1-4": {
+   "gap": -0.08424814853974316,
+   "mean_price_share": 0.9908116557518295,
+   "mean_real_share": 0.9065635072120863,
+   "n": 294
+  },
+  "10-15": {
+   "gap": 0.2798058422088108,
+   "mean_price_share": 2.1043662339561315,
+   "mean_real_share": 2.3841720761649423,
+   "n": 145
+  },
+  "16+": {
+   "gap": 0.06321952646369278,
+   "mean_price_share": 3.325686998345793,
+   "mean_real_share": 3.3889065248094856,
+   "n": 147
+  },
+  "5-9": {
+   "gap": -0.04212832500747665,
+   "mean_price_share": 1.421532313085029,
+   "mean_real_share": 1.3794039880775524,
+   "n": 192
+  }
+ },
+ "mean_0515": 1.0333875856962569,
+ "n_weighted_gap_sum_per_row": -8.408789772308878e-17,
+ "owner_geometry": "a uniform lift on year-1 marks breaches 1.14 at the hot classes; an entry-basis wire does not",
+ "residual_points": [
+  6.661241430374321,
+  8.36124143037431
+ ],
+ "terciles": {
+  "1-4/mid": {
+   "gap": -0.12376318464906755,
+   "mean_price_share": 1.0462865697506065,
+   "mean_real_share": 0.922523385101539,
+   "n": 98
+  },
+  "1-4/poor": {
+   "gap": -0.032697480627240094,
+   "mean_price_share": 0.9346750108539218,
+   "mean_real_share": 0.9019775302266817,
+   "n": 98
+  },
+  "1-4/riser": {
+   "gap": -0.09628378034292207,
+   "mean_price_share": 0.9914733866509604,
+   "mean_real_share": 0.8951896063080383,
+   "n": 98
+  },
+  "5-9/mid": {
+   "gap": 0.00460031849931597,
+   "mean_price_share": 1.3566397663370209,
+   "mean_real_share": 1.3612400848363368,
+   "n": 64
+  },
+  "5-9/poor": {
+   "gap": -0.5131554379509436,
+   "mean_price_share": 1.3529897219463347,
+   "mean_real_share": 0.8398342839953911,
+   "n": 64
+  },
+  "5-9/riser": {
+   "gap": 0.38217014442919783,
+   "mean_price_share": 1.5549674509717315,
+   "mean_real_share": 1.9371375954009293,
+   "n": 64
+  }
+ },
+ "verdict": "F2 HALT: uniform component requires an explicit owner word"
+}

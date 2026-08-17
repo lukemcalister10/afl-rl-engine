@@ -3336,10 +3336,16 @@ if _O30B_PREVIEW:
     # 2010 class mark of 1.1405) and the η <= 0.75 non-degeneracy guard (REMIX_32.json; the prereg
     # one-knob family measured INFEASIBLE there — a disclosed prereg deviation). Monotonicity of
     # rho32 asserted at load.
-    O32_KAPPA=0.50                                 # REMIX_32.json::chosen (rho32-monotone, F5-checked)
-    O32_GAMMA=10.0
-    O32_ETA=0.75
-    O32_GAMMA_D=8.0
+    # REMIX_32.json::chosen — the min-SSE point of the feasible set {slope band, W band, max class
+    # <= 1.139, rho32 monotone (F5), THE RULED AT-BAR CONTINUITY OBJECT on the ledger's own
+    # continuity rows}. The continuity gate is the binding constraint: it caps the pedigree
+    # de-rating at eta 0.30 (duursma-class rows — D=1, v0 ~ 0.8x an at-bar Phat — dip otherwise),
+    # which caps W at ~0.091 and leaves the 5-9g tercile halving OUT OF REACH of any g-keyed
+    # re-mix. Stated on the packet, not hidden.
+    O32_KAPPA=0.25
+    O32_GAMMA=14.0
+    O32_ETA=0.30
+    O32_GAMMA_D=12.0
     def o31_pool_D(c):
         if c<=1.0: return 1.0
         if c>=O31_POOL_FLAT_FROM: return O31_POOL_D[O31_POOL_FLAT_FROM]

@@ -299,6 +299,57 @@ def metrics(kap, gu, eta=0.0, gd=10.0):
 
 json.dump({k: v for k, v in LEGS.items()}, open(SP + '/o32_year1_legs.json', 'w'))
 
+# ---- THE RULED CONTINUITY OBJECT AS A FEASIBILITY CONSTRAINT --------------------------------------
+# The ledger's build-failing continuity gate (o31f_ledger.py lineage): price-vs-games at FIXED
+# output must be monotone non-decreasing wherever the held output is AT OR ABOVE the position bar.
+# The first Candidate 32 cut FAILED it on willem-duursma (D=1, v0/Phat 0.78) — the pedigree
+# de-rating dips faster at 2-8 games than the production leg rises. The gate tests ACTUAL rows, so
+# the constraint here is evaluated on the ledger's own continuity keys with their legs read off the
+# stage-5 engine at the 2026 vantage (Phat is re-mix-invariant, so these legs are exact).
+CONT_KEYS = ['lachlan-carmichael', 'josh-smillie', 'harry-demattia', 'max-knobel', 'dyson-sharp',
+             'isaac-kako', 'noah-mraz', 'willem-duursma', 'toby-conway', 'luke-beecken', 'chris-scerri']
+STOREK = {p.get('key'): p for p in MA.data}
+CONT_LEGS = []
+for ck in CONT_KEYS:
+    p = STOREK.get(ck)
+    if p is None:
+        continue
+    try:
+        with contextlib.redirect_stdout(io.StringIO()):
+            e = float(ev(p, 2026))
+    except Exception:
+        continue
+    g = float(G['pv_games'](p, 2026))
+    r = float(G['rho31'](g))
+    D = float(G['o31_D'](p, 2026))
+    s = int(G['o31_stall_run'](p, 2026))
+    pl = bool(p.get('_pool'))
+    V0 = float(G['pv_pedigree'](p))
+    pi = D * (1.0 - r) + float(G['phi31'](g, s, pl)) * float(G['beta31'](g, pl)) * r
+    Phat = (e - pi * V0) / r if g > 0 else float(NSE['_O30BP_BARS'].get(MA.gfut(p), 70.0)) * 20.0 * float(NSE['_PL_F'])
+    atbar = Phat >= float(NSE['_O30BP_BARS'].get(MA.gfut(p), 70.0)) * 20.0 * float(NSE['_PL_F'])
+    CONT_LEGS.append(dict(key=ck, Phat=Phat, V0=V0, D=D, s=s, pool=pl, atbar=atbar))
+    print('  continuity row %-20s Phat %9.1f V0 %9.1f D %.3f s %d atbar %s' % (ck, Phat, V0, D, s, atbar))
+phi31_f = G['phi31']; beta31_f = G['beta31']
+
+
+def continuity_ok(kap, gu, eta, gd):
+    for c in CONT_LEGS:
+        if not c['atbar']:
+            continue
+        prev = None
+        gg = 0.0
+        while gg <= 20.0:
+            r = rho31_base(gg)
+            r2 = r + kap * ((gg / gu) * math.exp(1.0 - gg / gu)) * (1.0 - r) if gg > 0 else 0.0
+            mix = max(0.0, 1.0 - eta * ((gg / gd) * math.exp(1.0 - gg / gd))) if gg > 0 else 1.0
+            pi = (c['D'] * (1.0 - r2) + float(phi31_f(gg, c['s'], c['pool'])) * float(beta31_f(gg, c['pool'])) * r2) * mix
+            pu = r2 * c['Phat'] + pi * c['V0']
+            if prev is not None and pu < prev - 1e-9:
+                return False
+            prev = pu; gg += 0.25
+    return True
+
 BASE = metrics(0.0, 14.0)
 print('\nSTAGE-5 BASELINE (mechanisms 1-5, no re-mix):')
 print('  class mean 2005-15 %.4f | slope %.4f | W %.4f | classes [%.4f, %.4f]'
@@ -359,7 +410,8 @@ for kap in GRID_K:
         for eta in GRID_E:
             for gd in GRID_GD:
                 M = metrics(kap, gu, eta, gd)
-                ok = (0.885 <= M['slope'] <= 1.115) and (0.09 <= M['W'] <= 0.16) and (M['max_class'] <= 1.139)
+                ok = (0.885 <= M['slope'] <= 1.115) and (0.09 <= M['W'] <= 0.16) and (M['max_class'] <= 1.139) \
+                    and continuity_ok(kap, gu, eta, gd)
                 if ok:
                     feas.append(M)
                     if best is None or M['obj'] < best['obj']:

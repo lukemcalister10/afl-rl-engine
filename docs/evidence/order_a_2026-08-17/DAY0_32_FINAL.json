@@ -1,7 +1,7 @@
 {
  "base_ref": 2026,
  "board": "ORDER 31-F candidate",
- "board_md5": "00026b85f36de8ada696cfe44047ccf5",
+ "board_md5": "6477f6f48de1c5226b32a994fd476fbe",
  "entry_year_note": "at a row's OWN entry year the fade clock c_u <= 1 so D == 1 and the day-0 price IS day0_v0(p); the fade below is the value at Y=2026 for rows that entered earlier and have never played",
  "identity_all": "89 of 89 at tolerance 0",
  "label": "ORDER A / CANDIDATE 32 -- the candidate's own printed day-0 prices",

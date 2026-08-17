@@ -1,0 +1,32 @@
+ORDER A / CANDIDATE 32 — M7 RESIDUAL ATTRIBUTION (R-CLASSLEVEL)
+
+  measured class mean 2005-15 .... 1.0334
+  target band .................... [1.100, 1.117]
+  residual ....................... +6.7 to +8.4 points of year-1 class appreciation
+
+  BY CELL (within-class shares; gap = realized - candidate price):
+  cell         n  price share   real share      gap n-weighted gap (level)
+  0          912        0.364        0.345   -0.019                  -17.0
+  1-4        294        0.991        0.907   -0.084                  -24.8
+  5-9        192        1.422        1.379   -0.042                   -8.1
+  10-15      145        2.104        2.384   +0.280                   40.6
+  16+        147        3.326        3.389   +0.063                    9.3
+  SUM       1690                                      -0.0000  <- the shares identity: ~0
+
+  THE ALGEBRA: shares are normalized within class, so Σ n·gap ≈ 0 (measured -0.0000 per row).
+  Closing every cell to its realized share moves the class-mean LEVEL by ~zero. The residual
+  has NO cell-wise closure on the hindsight surface: it is a UNIFORM level component —
+  W2's own identity (R* = 1.14·(1−SV1sh) ≈ 1.11) says the fair level is a CARRY statement.
+
+  WHAT REMAINS CELL-WISE (the mix, already pushed to its feasible edge): the 5-9g terciles
+  still gap (poor -0.513, riser +0.382) because the ruled at-bar continuity object caps the
+  pedigree de-rating at η=0.30 (REMIX_32.json). Closing THOSE would need a channel that
+  discriminates SHOWN production inside the cell beyond ρ·Phat — out of the ruled scope,
+  named for the owner.
+
+  VERDICT: F2 FIRES — the residual is uniform. HALT AND REPORT: the +6.7 to +8.4 point
+  class-level component requires an explicit owner word (W2's named wire: the class-level
+  entry basis / early-curve carry). NOTHING IS ADDED SILENTLY. Note the constraint the owner
+  will face: a uniform +8 points lifts the hot classes (2010 at 1.1352) through the 1.14
+  no-arb line unless the wire acts on the ENTRY BASIS (the denominator) rather than the
+  year-1 marks — stated here so the halt question arrives with its geometry attached.
