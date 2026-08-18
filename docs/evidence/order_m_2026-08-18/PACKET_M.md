@@ -87,7 +87,7 @@ because the order asks what breaks first and at what dose.**
 | rail | settings that break it | whose rail |
 |---|---:|---|
 | G3 — no ND band above +14% | **7,560 of 7,560** | yours |
-| the 1.139 no-arb line on a single class | **7,560 of 7,560** | yours |
+| the 1.139 no-arb line on a single class | **7,560 of 7,560** | yours (see the floor probe below — this one *can* be met outside the grid, G3 cannot) |
 | G1's 1.14 buy rail | 7,410 of 7,560 | yours |
 | the W band | 3,654 | inherited calibration |
 | at-bar continuity | 3,276 | ruled |
@@ -101,16 +101,46 @@ band would be a weaker finding, and this one does not.
 
 ### The floor of the grid
 
-The coolest setting reachable anywhere with eta at zero is dose 0.00, kappa 0.15, gamma_u 16
-(lambda_rel makes no difference at all — it moves the worst class by less than 0.0001).
+The coolest setting reachable inside the declared grid with eta at zero is dose 0.00, kappa 0.15,
+gamma_u 16 (lambda_rel makes no difference at all — it moves the worst class by less than 0.0001).
 
-| quantity | the coolest eta=0 setting | your rail | over by |
+| quantity | the coolest eta=0 setting in the grid | your rail | over by |
 |---|---:|---:|---:|
 | worst single class | 1.2067 | 1.139 | **0.0677** |
 | picks 1-10 | +22.40% | +14% | **8.4 points** |
 | class mark | 1.1162 | under 1.14 | inside, just |
 
-Source: `SWEEP_M_out.txt`, `SWEEP_M.json`.
+### And I went outside the grid too, on purpose, so nobody has to wonder
+
+A reasonable objection: the grid stops kappa at 0.15 and lambda_rel at 0.80. Is a legal board hiding
+just past the edge? I checked, going outside the declared grid in the direction that makes the board
+coolest. **kappa = 0 is the counterweight switched off entirely.** It is not a setting anyone has ruled
+and it is not proposed. It is a bound.
+
+| setting | class | worst class | picks 1-10 |
+|---|---:|---:|---:|
+| dose 0, **kappa 0** (no counterweight at all), eta 0 | 1.0501 | **1.1285 — inside 1.139** | **+18.30%** |
+| dose 0, kappa 0.05, eta 0 | 1.0721 | 1.1546 | +19.93% |
+| dose 0, kappa 0.10, eta 0 | 1.0942 | 1.1806 | +21.55% |
+| dose 0, kappa 0.15, eta 0 | 1.1162 | 1.2067 | +23.18% |
+
+**At the very bottom of everything the two rails part company, and I am not going to round that away.**
+With no counterweight and no age bar, the 1.139 no-arb class line *is* satisfied, at 1.1285. **The +14%
+band rail is not.** Picks 1-10 read +18.30%, over by 4.30 points, with every lever in the stack set to
+its coolest value and two of them switched off entirely.
+
+**So the law that binds, at the floor of everything, is G3 — your own band rail.**
+
+Why no edge can save it, one line each:
+
+- **lambda_rel** moves the worst class by under 0.0001 across its whole range. It is not a lever here.
+- **kappa** — lower is cooler, and it is already at zero above.
+- **gamma_u** spans under 0.01 on the worst class across 8 to 16.
+- **dose** makes it worse monotonically at every step. Dose 0 is already the coolest.
+
+There is no direction left to travel.
+
+Source: `SWEEP_M_out.txt`, `SWEEP_M.json`, `FLOORPROBE_M_out.txt`.
 
 ---
 
