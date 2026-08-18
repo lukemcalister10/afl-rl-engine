@@ -1,0 +1,114 @@
+==============================================================================================================================
+B — DOES THE CLASS MARK TRACK REALISED CLASS STRENGTH?  n = 11 classes. CIs are 2.5/97.5 percentile
+    over 20000 bootstrap resamples of the eleven classes.
+==============================================================================================================================
+
+  ---- realised measure: year-1 surplus points per row ----
+  board          Spearman 95% CI                Pearson 95% CI              
+  ORDER K          +0.264 [-0.422, +0.733]       +0.275 [-0.275, +0.679]
+  ORDER P          +0.355 [-0.346, +0.860]       +0.416 [-0.224, +0.826]
+  landing cand     +0.245 [-0.408, +0.767]       +0.281 [-0.259, +0.683]
+  P minus K (S)    +0.091 [-0.364, +0.533] P>K in 69% of resamples
+  P minus K (r)    +0.141 [-0.113, +0.395] P>K in 86% of resamples
+  the MOVE P-K     +0.309 [-0.508, +0.848]       +0.531 [-0.246, +0.899]
+
+  ---- realised measure: year-1 production per row ----
+  board          Spearman 95% CI                Pearson 95% CI              
+  ORDER K          +0.418 [-0.271, +0.902]       +0.686 [+0.164, +0.926]
+  ORDER P          +0.755 [+0.183, +0.972]       +0.826 [+0.574, +0.952]
+  landing cand     +0.591 [-0.023, +0.943]       +0.729 [+0.323, +0.926]
+  P minus K (S)    +0.336 [-0.068, +0.861] P>K in 91% of resamples
+  P minus K (r)    +0.140 [+0.003, +0.492] P>K in 98% of resamples
+  the MOVE P-K     +0.827 [+0.389, +0.971]       +0.787 [+0.573, +0.967]
+
+  ---- realised measure: year-1 games per row ----
+  board          Spearman 95% CI                Pearson 95% CI              
+  ORDER K          +0.418 [-0.242, +0.856]       +0.681 [+0.166, +0.916]
+  ORDER P          +0.727 [+0.131, +0.944]       +0.786 [+0.505, +0.924]
+  landing cand     +0.609 [+0.010, +0.898]       +0.721 [+0.308, +0.914]
+  P minus K (S)    +0.309 [-0.121, +0.863] P>K in 87% of resamples
+  P minus K (r)    +0.106 [-0.049, +0.455] P>K in 91% of resamples
+  the MOVE P-K     +0.727 [+0.143, +0.923]       +0.696 [+0.373, +0.965]
+
+  ---- realised measure: year-1 points per game above the age bar ----
+  board          Spearman 95% CI                Pearson 95% CI              
+  ORDER K          +0.227 [-0.484, +0.743]       +0.281 [-0.338, +0.681]
+  ORDER P          +0.300 [-0.406, +0.808]       +0.404 [-0.280, +0.798]
+  landing cand     +0.191 [-0.441, +0.778]       +0.278 [-0.338, +0.675]
+  P minus K (S)    +0.073 [-0.463, +0.557] P>K in 62% of resamples
+  P minus K (r)    +0.123 [-0.141, +0.388] P>K in 83% of resamples
+  the MOVE P-K     +0.227 [-0.549, +0.827]       +0.490 [-0.304, +0.883]
+
+  ---- realised measure: year-1 points per game ----
+  board          Spearman 95% CI                Pearson 95% CI              
+  ORDER K          +0.309 [-0.408, +0.858]       +0.427 [-0.186, +0.783]
+  ORDER P          +0.555 [-0.157, +0.888]       +0.599 [+0.135, +0.862]
+  landing cand     +0.373 [-0.336, +0.877]       +0.455 [-0.080, +0.785]
+  P minus K (S)    +0.245 [-0.184, +0.676] P>K in 85% of resamples
+  P minus K (r)    +0.172 [+0.009, +0.453] P>K in 98% of resamples
+  the MOVE P-K     +0.591 [-0.037, +0.858]       +0.705 [+0.336, +0.921]
+
+  ---- realised measure: share of year-1 players above the age bar ----
+  board          Spearman 95% CI                Pearson 95% CI              
+  ORDER K          -0.036 [-0.801, +0.611]       +0.278 [-0.645, +0.699]
+  ORDER P          +0.255 [-0.512, +0.856]       +0.488 [-0.353, +0.860]
+  landing cand     -0.009 [-0.769, +0.642]       +0.306 [-0.551, +0.724]
+  P minus K (S)    +0.291 [-0.074, +0.760] P>K in 93% of resamples
+  P minus K (r)    +0.210 [+0.006, +0.561] P>K in 98% of resamples
+  the MOVE P-K     +0.364 [-0.370, +0.889]       +0.709 [+0.106, +0.952]
+
+  ---- realised measure: share of the class that played in year 1 ----
+  board          Spearman 95% CI                Pearson 95% CI              
+  ORDER K          +0.736 [+0.225, +0.944]       +0.574 [+0.261, +0.875]
+  ORDER P          +0.609 [-0.005, +0.916]       +0.560 [+0.295, +0.838]
+  landing cand     +0.727 [+0.221, +0.933]       +0.572 [+0.249, +0.872]
+  P minus K (S)    -0.127 [-0.676, +0.299] P>K in 26% of resamples
+  P minus K (r)    -0.015 [-0.240, +0.171] P>K in 37% of resamples
+  the MOVE P-K     +0.355 [-0.362, +0.801]       +0.322 [-0.173, +0.723]
+
+  ---- realised measure: career games per row ----
+  board          Spearman 95% CI                Pearson 95% CI              
+  ORDER K          -0.055 [-0.549, +0.602]       -0.020 [-0.382, +0.387]
+  ORDER P          -0.236 [-0.729, +0.430]       -0.121 [-0.528, +0.335]
+  landing cand     -0.173 [-0.644, +0.505]       -0.040 [-0.410, +0.366]
+  P minus K (S)    -0.182 [-0.673, +0.284] P>K in 18% of resamples
+  P minus K (r)    -0.101 [-0.365, +0.131] P>K in 22% of resamples
+  the MOVE P-K     -0.373 [-0.806, +0.296]       -0.270 [-0.686, +0.402]
+
+  ---- realised measure: share reaching 100 career games ----
+  board          Spearman 95% CI                Pearson 95% CI              
+  ORDER K          -0.018 [-0.646, +0.590]       +0.074 [-0.525, +0.446]
+  ORDER P          +0.064 [-0.523, +0.650]       +0.126 [-0.463, +0.518]
+  landing cand     -0.073 [-0.640, +0.521]       +0.064 [-0.502, +0.437]
+  P minus K (S)    +0.082 [-0.396, +0.533] P>K in 66% of resamples
+  P minus K (r)    +0.051 [-0.200, +0.354] P>K in 71% of resamples
+  the MOVE P-K     -0.064 [-0.720, +0.602]       +0.177 [-0.549, +0.631]
+
+==============================================================================================================================
+B-SUMMARY — the paired difference in correlation, ORDER P minus ORDER K, on all nine measures
+==============================================================================================================================
+  realised measure                            dSpearman 95% CI                 dPearson 95% CI              
+  year-1 surplus points per row                  +0.091 [-0.364, +0.533]     +0.141 [-0.113, +0.395]
+  year-1 production per row                      +0.336 [-0.068, +0.861]     +0.140 [+0.003, +0.492]
+  year-1 games per row                           +0.309 [-0.121, +0.863]     +0.106 [-0.049, +0.455]
+  year-1 points per game above the age bar       +0.073 [-0.463, +0.557]     +0.123 [-0.141, +0.388]
+  year-1 points per game                         +0.245 [-0.184, +0.676]     +0.172 [+0.009, +0.453]
+  share of year-1 players above the age bar      +0.291 [-0.074, +0.760]     +0.210 [+0.006, +0.561]
+  share of the class that played in year 1       -0.127 [-0.676, +0.299]     -0.015 [-0.240, +0.171]
+  career games per row                           -0.182 [-0.673, +0.284]     -0.101 [-0.365, +0.131]
+  share reaching 100 career games                +0.082 [-0.396, +0.533]     +0.051 [-0.200, +0.354]
+  ORDER P correlates MORE strongly than ORDER K on 7 of 9 measures (Spearman), 7 of 9 (Pearson).
+
+  raw inputs, for anyone who wants to redo this by hand:
+  class     mark K    mark P      move   surp/row   prod/row   gms/row
+  2005      0.8562    0.8230   -0.0332       -2.1      146.3      2.71
+  2006      1.0579    1.0155   -0.0424        2.1      163.4      3.02
+  2007      1.0713    1.0378   -0.0335       12.5      188.1      3.22
+  2008      1.0063    1.0263   +0.0200       11.2      196.0      3.26
+  2009      1.0432    1.0680   +0.0248       16.6      270.0      4.29
+  2010      1.1359    1.1570   +0.0211       12.0      264.3      4.46
+  2011      1.1363    1.1595   +0.0232       -1.1      240.7      4.12
+  2012      1.0673    1.0901   +0.0228      -12.3      255.4      4.55
+  2013      1.0535    1.0760   +0.0226        7.6      241.7      4.26
+  2014      1.0300    1.0158   -0.0142       -7.8      200.5      3.76
+  2015      1.1060    1.2047   +0.0987       26.9      260.9      4.20
