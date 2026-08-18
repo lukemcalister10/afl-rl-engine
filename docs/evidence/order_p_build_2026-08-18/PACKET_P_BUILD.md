@@ -188,7 +188,7 @@ not worse.
 | strictly under the 1.14 rail | **PASS — 1.0613**, 0.0787 under |
 | no pick band above +14% year 0→1 | **ONE BREACH: modern picks 1-10 at +18.85%.** Predicted. §6 |
 | no pool arm above +14% | **ONE BREACH: SSP at +58.17%. INHERITED — ORDER K reads +52.71%.** §7.2 |
-| picks 31-40 and 41-64 materially improve vs ORDER K | **PASS** — primary +1.82 and +1.86 points; modern +2.54 and +0.17 |
+| picks 31-40 and 41-64 materially improve vs ORDER K | **PASS in the primary window** — +1.82 and +1.86 points. **In the modern window 31-40 improves +2.54 and 41-64 improves only +0.17**, which is not much; it matches the estimate exactly and it is stated rather than rounded up to "improves" |
 | picks 1-10 stay near ORDER K's +8.22% | **PASS — +8.62%**, forty basis points above |
 | day-0 ENTRY values bit-identical, 89/89 | **PASS.** §5.3 |
 | determinism ×2 | **PASS** |
