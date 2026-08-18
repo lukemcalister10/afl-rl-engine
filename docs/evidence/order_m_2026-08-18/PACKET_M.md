@@ -436,9 +436,11 @@ Two things fall out of this table.
 constraint — but it does mean there is no slack at your dose. Any reduction in eta at dose 0.40 is
 immediately illegal.
 
-**Two. Above dose 0.70 no eta works at all.** Even eta at 0.75 cannot hold the board inside the rails
-once the age bar is dosed that hard. That is a separate limit on the age bar and it is not what this
-order was about, but it is on the record now.
+**Two. Above dose 0.70 nothing in the swept range works.** eta was walked from 0.00 to 0.75 in steps
+of 0.01, and at doses 0.85 and 1.00 no value in that range holds the board inside the rails. (0.75 is
+where the range was cut, and it was cut there because ORDER I's own non-degeneracy guard puts eta at
+or below 0.75. So this is "nothing inside the guard works", not "nothing conceivable works".) That is
+a separate limit on the age bar, it is not what this order was about, and it is on the record now.
 
 ### What the blind charge actually costs, by games played
 
