@@ -1,0 +1,50 @@
+=== ORDER Q CENSUS  tag=QB2  dials={'RL_O37': '1', 'RL_O38B2': '1'} ===
+board total (numeraire): 663570
+
+BURN CENSUS
+  -- the supervisor's population (|fK-fP|>=0.02), n=268
+     band         n  burned  pts(board)
+     1-10        43      24        1820
+     11-20       44      13         292
+     21-30       35      11          38
+     31-40       28       4          28
+     41+         51      13          60
+     pool        67      12          70
+     TOTAL      268      77        2308
+  -- all young rows, n=289
+     band         n  burned  pts(board)
+     1-10        49      24        1820
+     11-20       47      13         292
+     21-30       36      11          38
+     31-40       32       4          28
+     41+         54      13          60
+     pool        71      12          70
+     TOTAL      289      77        2308
+  worst five (all young rows):
+     Sam Lalor                1     age 20   22g  v0   3273 ->   1715     3060 ->   3395  (+335)
+     Willem Duursma           1     age 19   19g  v0   3273 ->   2674     3920 ->   4226  (+306)
+     Finn O'Sullivan          2     age 20   39g  v0   2869 ->   1180     2810 ->   3054  (+244)
+     Sam Cumming              7     age 19   14g  v0   1578 ->   1142     2007 ->   2149  (+142)
+     Harvey Langford          6     age 20   43g  v0   1579 ->   1370     2422 ->   2535  (+113)
+
+BIRTHDAY CENSUS — the price on the 24th birthday, with games and output UNCHANGED
+  age-23 rows with a pedigree leg: 81
+  rows that GAIN 50% or more from the birthday alone: 0
+  points handed back across all age-23 rows: NET +150   GAINS ONLY +430   (the two readings are
+  different objects and both are printed: the birthday RAISES some rows and LOWERS others)
+  worst ratio: 1.4247   rows moving at all: 67
+  band         n  gain50+   movers     net points     gains only
+  1-10        10        0        9             -8            +61
+  11-20        8        0        6            +96            +98
+  21-30       10        0        9            +35           +101
+  31-40        9        0        6            +42            +44
+  41+         13        0       11            +34            +53
+  pool        31        0       26            -49            +73
+  the five largest ratios:
+     Josh Sinn                12      30g       73 ->    104   x1.425
+     Corey Warner             40      28g       33 ->     47   x1.424
+     James Tunstill           41      23g       42 ->     58   x1.381
+     Mitchell Knevitt         25      23g       75 ->    101   x1.347
+     Harvey Gallagher         39      28g       21 ->     27   x1.286
+
+wrote CENSUS_QB2.json

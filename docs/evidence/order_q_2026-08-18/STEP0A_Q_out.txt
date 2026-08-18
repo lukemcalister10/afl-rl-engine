@@ -1,0 +1,41 @@
+BOARD PINS: Kref f3101883  P 374d4e44
+engine b29a049e  store cb38ef11  players 804  numeraire 1.0524
+IN-PROCESS BOARD REPRODUCTION vs 374d4e44: 0 of 804 rows disagree
+
+1. THE DECOMPOSITION, WITH M3 CARRIED
+   rows decomposed: 804 of 804
+   worst |decomposition - ev()|: 9.095e-13
+   rows above 1e-9: 0
+   rows the engine prices through TWO blend calls (the M3 clock pin): 396
+
+   young ND+pool rows, age<24, games>0: 289
+   with |fK - fP| >= 0.02 on the EFFECTIVE factor: 268   <- supervisor says 267
+   with |fK - fP| >= 0.02 on the FULL-CLICK factor: 268
+   of the selected rows, how many are M3 two-call rows: 158 of 268
+   worst gap between a row's TWO ORDER P charge factors: 0.0000
+   worst gap between its two ORDER K factors:            0.0000
+
+2. THE INFERENCE  ped_P = (P_K - P_P) * fP / (fK - fP)
+   (a) |board(P_K - P_P) - engine exact leg difference|: max 0.9234 mean 0.2950  (pure board rounding: <=1.0)
+   (b) inference on the EFFECTIVE (M3-correct) factor:
+       |inferred - TRUE| points : max     25.1  mean   1.62  median   0.54
+       as % of the true leg    : max   100.00% mean   2.14% median   0.53%
+       rows off by >2% of the leg: 66 of 268;  by >1 board point: 98 of 268
+   (b) inference on the FULL-CLICK only (what a single-factor read gives) factor:
+       |inferred - TRUE| points : max     25.1  mean   1.62  median   0.54
+       as % of the true leg    : max   100.00% mean   2.14% median   0.53%
+       rows off by >2% of the leg: 66 of 268;  by >1 board point: 98 of 268
+
+   THE TEN WORST on the effective factor:
+     Will Ashcroft            2     age 22    79g M3=0 fK 0.9728 fP 1.0000  true    393.1  inferred    368.0     -25.1 (  -6.38%)
+     Jase Burgoyne            60    age 23    77g M3=0 fK 0.9695 fP 1.0000  true     23.5  inferred     -0.0     -23.5 (-100.00%)
+     Ollie Dempsey            pool  age 23    79g M3=0 fK 0.9728 fP 1.0000  true     93.7  inferred    110.4     +16.7 ( +17.86%)
+     Reuben Ginbey            9     age 22    76g M3=0 fK 0.9676 fP 1.0000  true    138.0  inferred    123.5     -14.4 ( -10.47%)
+     Sam Banks                29    age 23    59g M3=0 fK 0.9153 fP 0.9399  true     88.9  inferred     76.5     -12.4 ( -13.92%)
+     Riley Hamilton           pool  age 20     6g M3=1 fK 0.6205 fP 0.5951  true     35.5  inferred     46.7     +11.2 ( +31.69%)
+     Archie Ludowyke          50    age 19     2g M3=1 fK 0.8317 fP 0.9073  true    182.1  inferred    191.9      +9.8 (  +5.37%)
+     Matthew Roberts          34    age 23    65g M3=0 fK 0.9392 fP 1.0000  true     73.7  inferred     82.3      +8.6 ( +11.70%)
+     Anthony Caminiti         pool  age 23    74g M3=0 fK 0.9636 fP 1.0000  true     46.6  inferred     55.0      +8.4 ( +18.06%)
+     Bodhi Uwland             pool  age 23    70g M3=0 fK 0.9542 fP 1.0000  true    167.1  inferred    174.7      +7.6 (  +4.56%)
+
+wrote STEP0A_Q.json

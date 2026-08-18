@@ -73,9 +73,13 @@ def install_recorder(NS):
             old_f = max(0.0, 1.0 - NS['O32_ETA'] * ((g / NS['O32_GAMMA_D'])
                                                     * _m.exp(1.0 - g / NS['O32_GAMMA_D'])))
             d['f_K'] = old_f
-            d['f'] = NS['o37_factor'](p, Y, g) if NS.get('_O37') else old_f
+            # the factor the engine ACTUALLY applied at this site. Under an ORDER Q dial that is
+            # o38_factor, not o37_factor -- reading the wrong one puts pi_base out by the whole repair.
+            d['f'] = ((NS['o38_factor'](p, Y, g) if NS.get('_O38') else NS['o37_factor'](p, Y, g))
+                      if NS.get('_O37') else old_f)
+            d['f_P37'] = NS['o37_factor'](p, Y, g) if NS.get('_O37') else old_f
         else:
-            d['f_K'] = d['f'] = 1.0
+            d['f_K'] = d['f'] = d['f_P37'] = 1.0
         d['pi_base'] = d['pi'] / d['f'] if d['f'] > 0 else None
         d['s_P'] = NS['o37_surplus'](p, Y) if 'o37_surplus' in NS else None
         d['prod_leg'] = d['rho'] * float(e)
@@ -132,6 +136,8 @@ def assemble(NS, p, Y=2026):
     o['f_eff'] = o['pi_eff'] / o['pi_base_eff'] if o['pi_base_eff'] else 1.0
     o['f_K_eff'] = o['pi_K_eff'] / o['pi_base_eff'] if o['pi_base_eff'] else 1.0
     o['f_c'], o['f_p'], o['fK_c'], o['fK_p'] = c['f'], q['f'], c['f_K'], q['f_K']
+    o['pi_P37_eff'] = ws[0] * c['pi_base'] * c['f_P37'] + ws[1] * q['pi_base'] * q['f_P37']
+    o['f_P37_eff'] = o['pi_P37_eff'] / o['pi_base_eff'] if o['pi_base_eff'] else 1.0
     o['s_P'] = c['s_P']
     o['price'] = o['prod_leg'] + o['ped_leg'] + o['credit']
     return o

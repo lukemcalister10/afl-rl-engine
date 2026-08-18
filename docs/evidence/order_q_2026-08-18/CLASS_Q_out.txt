@@ -1,0 +1,60 @@
+======================================================================================================================
+ORDER Q — THE YEAR-1 CLASS COHORT MARK, on the BUILT walk-forward matrices
+======================================================================================================================
+  THE REGISTERED W2 BASIS = DRAFT classes 2005-2015 = cohort years 2006-2016. THE RAIL IS ON THIS.
+  the cohort clock       = DRAFT classes 2004-2014 = cohort years 2005-2015. NOT the rail.
+  the owner's floor: the class must GROW, mark >= 1.03.   the buy rail: mark < 1.14.
+
+label     board                                                         W2 mark     cohort  max class   year
+OKRULED   ORDER K f3101883                                               1.0513     1.0324     1.1363   2012
+PBUILT    ORDER P 374d4e44 — THE BASE FOR THIS ORDER                     1.0613     1.0322     1.2047   2016
+QA        ORDER Q FIX A — monotonised in entry price                     1.0697     1.0410     1.2081   2016
+QB1       ORDER Q FIX B1 — the age gate deleted                          1.0611     1.0321     1.2046   2016
+QB2       ORDER Q FIX B2 — the 23-26 ramp                                1.0611     1.0321     1.2045   2016
+QAB1      ORDER Q FIX A + B1                                             1.0696     1.0409     1.2083   2016
+QAB2      ORDER Q FIX A + B2                                             1.0696     1.0409     1.2081   2016
+
+  INSTRUMENT VALIDATION — this file must reproduce ORDER K's own published marks off ORDER K's
+  own matrix before any ORDER P number is quoted:  W2 1.0513 vs 1.0513 (0.0000)  ·  cohort 1.0324 vs
+  1.0324 (0.0000)   -> VALIDATED
+
+----------------------------------------------------------------------------------------------------------------------
+THE RAIL, ON THE REGISTERED BASIS
+----------------------------------------------------------------------------------------------------------------------
+  ORDER P   W2 1.0613   floor +0.0313   rail -0.0787   PASS — the class GROWS and stays under the buy rail
+  ORDER K   W2 1.0513   floor +0.0213   rail -0.0887
+  ORDER P estimate published in PACKET_P: 1.0613 on this basis. BUILT: 1.0613. DIFFERENCE -0.0000.
+
+  per class, on the registered W2 window (DRAFT class -> cohort year):
+  draft class       ORDER K    ORDER P       move
+  2005 (coh 2006)     0.8562     0.8230    -0.0332
+  2006 (coh 2007)     1.0579     1.0155    -0.0424
+  2007 (coh 2008)     1.0713     1.0378    -0.0335
+  2008 (coh 2009)     1.0063     1.0263    +0.0200
+  2009 (coh 2010)     1.0432     1.0680    +0.0248
+  2010 (coh 2011)     1.1359     1.1570    +0.0211
+  2011 (coh 2012)     1.1363     1.1595    +0.0232
+  2012 (coh 2013)     1.0673     1.0901    +0.0228
+  2013 (coh 2014)     1.0535     1.0760    +0.0226
+  2014 (coh 2015)     1.0300     1.0158    -0.0142
+  2015 (coh 2016)     1.1060     1.2047    +0.0987
+
+  every class in the FULL range, so a single class breaking the 1.14 rail cannot hide:
+  cohort      ORDER K    ORDER P       move over 1.14?
+  2005         0.8985     0.8854    -0.0131 
+  2006         0.8562     0.8230    -0.0332 
+  2007         1.0579     1.0155    -0.0424 
+  2008         1.0713     1.0378    -0.0335 
+  2009         1.0063     1.0263    +0.0200 
+  2010         1.0432     1.0680    +0.0248 
+  2011         1.1359     1.1570    +0.0211 BREACH
+  2012         1.1363     1.1595    +0.0232 BREACH
+  2013         1.0673     1.0901    +0.0228 
+  2014         1.0535     1.0760    +0.0226 
+  2015         1.0300     1.0158    -0.0142 
+  2016         1.1060     1.2047    +0.0987 BREACH
+  2017         1.0289     1.0486    +0.0198 
+  2018         1.0562     1.0501    -0.0061 
+  2019         1.0147     1.0712    +0.0565 
+  2020         0.9810     1.0030    +0.0219 
+  2021         0.9170     0.9295    +0.0126 

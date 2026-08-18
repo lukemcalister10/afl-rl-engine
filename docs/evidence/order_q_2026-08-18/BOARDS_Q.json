@@ -1,0 +1,38 @@
+{
+ "md5": {
+  "candQ": "1f17644445f074d11e631b5cbae98a9a",
+  "KrefQ": "f3101883a60b0a7b8cb50f9d8a5abfff",
+  "Qoff": "374d4e442665771801c5f1edd2a7e0e2",
+  "QA": "d7aad579b66542a297abfdf162faa77d",
+  "QB1": "1b1817f389175aac2794dc95d39f9e23",
+  "QB2": "96708014094ccde4422a9cc8b8014ec0",
+  "QAB1": "cbbb94d4b5541bf9c4ea5db01bc3aa1e",
+  "QAB2": "d9607467c2696e2e891b3a937aa56267",
+  "QAimp": "d7aad579b66542a297abfdf162faa77d",
+  "QA_2": "d7aad579b66542a297abfdf162faa77d",
+  "QB1_2": "1b1817f389175aac2794dc95d39f9e23",
+  "QB2_2": "96708014094ccde4422a9cc8b8014ec0",
+  "QAB1_2": "cbbb94d4b5541bf9c4ea5db01bc3aa1e",
+  "QAB2_2": "d9607467c2696e2e891b3a937aa56267",
+  "Peta0": "73bf961724e77f0bda996825125a07ad",
+  "landing": "1f17644445f074d11e631b5cbae98a9a"
+ },
+ "totals": {
+  "candQ": 667916,
+  "KrefQ": 673097,
+  "Qoff": 666434,
+  "QA": 668791,
+  "QB1": 659867,
+  "QB2": 663570,
+  "QAB1": 662685,
+  "QAB2": 666093,
+  "QAimp": 668791,
+  "QA_2": 668791,
+  "QB1_2": 659867,
+  "QB2_2": 663570,
+  "QAB1_2": 662685,
+  "QAB2_2": 666093,
+  "Peta0": 702734,
+  "landing": 667916
+ }
+}

@@ -1,0 +1,46 @@
+=== ORDER Q CENSUS  tag=QAB1  dials={'RL_O37': '1', 'RL_O38A': '1', 'RL_O38B1': '1'} ===
+board total (numeraire): 662685
+
+BURN CENSUS
+  -- the supervisor's population (|fK-fP|>=0.02), n=268
+     band         n  burned  pts(board)
+     1-10        43       0           0
+     11-20       44       0           0
+     21-30       35       0           0
+     31-40       28       0           0
+     41+         51       0           0
+     pool        67       0           0
+     TOTAL      268       0           0
+  -- all young rows, n=289
+     band         n  burned  pts(board)
+     1-10        49       0           0
+     11-20       47       0           0
+     21-30       36       0           0
+     31-40       32       0           0
+     41+         54       0           0
+     pool        71       0           0
+     TOTAL      289       0           0
+  worst five (all young rows):
+     (none — the census is ZERO)
+
+BIRTHDAY CENSUS — the price on the 24th birthday, with games and output UNCHANGED
+  age-23 rows with a pedigree leg: 81
+  rows that GAIN 50% or more from the birthday alone: 0
+  points handed back across all age-23 rows: NET +0   GAINS ONLY +0   (the two readings are
+  different objects and both are printed: the birthday RAISES some rows and LOWERS others)
+  worst ratio: 1.0000   rows moving at all: 0
+  band         n  gain50+   movers     net points     gains only
+  1-10        10        0        0             +0             +0
+  11-20        8        0        0             +0             +0
+  21-30       10        0        0             +0             +0
+  31-40        9        0        0             +0             +0
+  41+         13        0        0             +0             +0
+  pool        31        0        0             +0             +0
+  the five largest ratios:
+     Nick Daicos              4      115g     9944 ->   9944   x1.000
+     Nasiah Wanganeen-Milera  11     102g     8644 ->   8644   x1.000
+     Bodhi Uwland             pool    70g     3568 ->   3568   x1.000
+     Jason Horne-Francis      1      100g     5600 ->   5600   x1.000
+     Finn Callaghan           3       90g     5516 ->   5516   x1.000
+
+wrote CENSUS_QAB1.json

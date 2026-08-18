@@ -1,0 +1,121 @@
+=== ORDER Q BOARD SUITE ===
+  base (ORDER K, unchanged): lambda_S1=0.40 kappa=0.20 gamma_u=8.0 eta=0.50 gamma_d=14.0 relief=1.08
+  ORDER P: pi *= exp(-LAMBDA*A(g)*T(s_P)) below age 24 — the base for this order
+  ORDER Q: A = monotonise the pedigree leg in entry price · B1 = delete the age gate · B2 = ramp 23-26
+
+--- candQ (every ORDER I/P/Q dial off; must be 1f176444) ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_candQ/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_candQ/rl_after/rl_model_data.json
+1f17644445f074d11e631b5cbae98a9a  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_candQ/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- KrefQ :  ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_KrefQ/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_KrefQ/rl_after/rl_model_data.json
+f3101883a60b0a7b8cb50f9d8a5abfff  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_KrefQ/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- Qoff : RL_O37=1 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_Qoff/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_Qoff/rl_after/rl_model_data.json
+374d4e442665771801c5f1edd2a7e0e2  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_Qoff/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- QA : RL_O37=1 RL_O38A=1 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QA/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QA/rl_after/rl_model_data.json
+d7aad579b66542a297abfdf162faa77d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QA/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- QB1 : RL_O37=1 RL_O38B1=1 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QB1/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QB1/rl_after/rl_model_data.json
+1b1817f389175aac2794dc95d39f9e23  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QB1/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- QB2 : RL_O37=1 RL_O38B2=1 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QB2/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QB2/rl_after/rl_model_data.json
+96708014094ccde4422a9cc8b8014ec0  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QB2/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- QAB1 : RL_O37=1 RL_O38A=1 RL_O38B1=1 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QAB1/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QAB1/rl_after/rl_model_data.json
+cbbb94d4b5541bf9c4ea5db01bc3aa1e  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QAB1/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- QAB2 : RL_O37=1 RL_O38A=1 RL_O38B2=1 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QAB2/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QAB2/rl_after/rl_model_data.json
+d9607467c2696e2e891b3a937aa56267  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QAB2/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- QAimp (RL_O38A=1 ALONE — the dial must imply the O37/O36-K stack) ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QAimp/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QAimp/rl_after/rl_model_data.json
+d7aad579b66542a297abfdf162faa77d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QAimp/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- QA_2 : RL_O37=1 RL_O38A=1 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QA_2/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QA_2/rl_after/rl_model_data.json
+d7aad579b66542a297abfdf162faa77d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QA_2/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- QB1_2 : RL_O37=1 RL_O38B1=1 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QB1_2/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QB1_2/rl_after/rl_model_data.json
+1b1817f389175aac2794dc95d39f9e23  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QB1_2/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- QB2_2 : RL_O37=1 RL_O38B2=1 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QB2_2/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QB2_2/rl_after/rl_model_data.json
+96708014094ccde4422a9cc8b8014ec0  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QB2_2/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- QAB1_2 : RL_O37=1 RL_O38A=1 RL_O38B1=1 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QAB1_2/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QAB1_2/rl_after/rl_model_data.json
+cbbb94d4b5541bf9c4ea5db01bc3aa1e  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QAB1_2/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- QAB2_2 : RL_O37=1 RL_O38A=1 RL_O38B2=1 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QAB2_2/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QAB2_2/rl_after/rl_model_data.json
+d9607467c2696e2e891b3a937aa56267  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/oq/bb_QAB2_2/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+=== BOARD MD5s ===
+  candQ    1f17644445f074d11e631b5cbae98a9a
+  KrefQ    f3101883a60b0a7b8cb50f9d8a5abfff
+  Qoff     374d4e442665771801c5f1edd2a7e0e2
+  QA       d7aad579b66542a297abfdf162faa77d
+  QB1      1b1817f389175aac2794dc95d39f9e23
+  QB2      96708014094ccde4422a9cc8b8014ec0
+  QAB1     cbbb94d4b5541bf9c4ea5db01bc3aa1e
+  QAB2     d9607467c2696e2e891b3a937aa56267
+  QAimp    d7aad579b66542a297abfdf162faa77d
+  QA_2     d7aad579b66542a297abfdf162faa77d
+  QB1_2    1b1817f389175aac2794dc95d39f9e23
+  QB2_2    96708014094ccde4422a9cc8b8014ec0
+  QAB1_2   cbbb94d4b5541bf9c4ea5db01bc3aa1e
+  QAB2_2   d9607467c2696e2e891b3a937aa56267
+
+  Q4 BASE STACK   = 1f176444 : PASS
+  Q5 ORDER K LINE = f3101883 : PASS
+  Q1 ALL O38 OFF  = 374d4e44 : PASS
+  Q3 DIAL CARRIES THE STACK  : PASS
+  Q2 DETERMINISM x2 QA       : PASS
+  Q2 DETERMINISM x2 QB1       : PASS
+  Q2 DETERMINISM x2 QB2       : PASS
+  Q2 DETERMINISM x2 QAB1       : PASS
+  Q2 DETERMINISM x2 QAB2       : PASS
+
+=== THE FIVE VARIANT BOARDS ===
+  QA     d7aad579
+  QB1    1b1817f3
+  QB2    96708014
+  QAB1   cbbb94d4
+  QAB2   d9607467

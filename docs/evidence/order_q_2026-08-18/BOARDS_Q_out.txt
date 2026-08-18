@@ -1,0 +1,268 @@
+====================================================================================================================
+ORDER Q — THE BOARDS. NOTHING IS ADOPTED AND NOTHING LANDS.
+====================================================================================================================
+  boards: {'KrefQ': 'f3101883', 'Peta0': '73bf9617', 'QA': 'd7aad579', 'QAB1': 'cbbb94d4', 'QAB1_2': 'cbbb94d4', 'QAB2': 'd9607467', 'QAB2_2': 'd9607467', 'QA_2': 'd7aad579', 'QAimp': 'd7aad579', 'QB1': '1b1817f3', 'QB1_2': '1b1817f3', 'QB2': '96708014', 'QB2_2': '96708014', 'Qoff': '374d4e44', 'candQ': '1f176444', 'landing': '1f176444'}
+  active priced rows: 804
+
+== THE BUILD-FAILING IDENTITIES ==
+  Q4  base stack        = 1f176444 : PASS (1f176444)
+  Q5  ORDER K line      = f3101883 : PASS (f3101883)
+  Q1  every RL_O38* off = 374d4e44 : PASS (374d4e44)
+  Q3  RL_O38A alone carries the stack: PASS (d7aad579 vs d7aad579)
+  Q2  determinism x2 QA             : PASS (d7aad579 vs d7aad579)
+  Q2  determinism x2 QB1            : PASS (1b1817f3 vs 1b1817f3)
+  Q2  determinism x2 QB2            : PASS (96708014 vs 96708014)
+  Q2  determinism x2 QAB1           : PASS (cbbb94d4 vs cbbb94d4)
+  Q2  determinism x2 QAB2           : PASS (d9607467 vs d9607467)
+
+== BOARD TOTALS ==
+  board    md5               total     vs ORDER P     vs ORDER K
+  landing  1f176444         667916         +1482         -5181  
+  KrefQ    f3101883         673097         +6663            +0  
+  Qoff     374d4e44         666434            +0         -6663  
+  QA       d7aad579         668791         +2357         -4306  FIX A — the pedigree leg monotonised in entry price
+  QB1      1b1817f3         659867         -6567        -13230  FIX B1 — the age-24 gate deleted
+  QB2      96708014         663570         -2864         -9527  FIX B2 — the charge ramped out across ages 23-26 (invented endpoint)
+  QAB1     cbbb94d4         662685         -3749        -10412  FIX A + B1
+  QAB2     d9607467         666093          -341         -7004  FIX A + B2
+  Peta0    73bf9617         702734        +36300        +29637  
+  (ORDER P 374d4e44 = 666,434, ORDER K f3101883 = 673,097, live 88ce647f = 752,429 never touched)
+
+== WHERE THE MONEY MOVES, against ORDER P and against ORDER K ==
+  QA    FIX A — the pedigree leg monotonised in entry price
+     vs ORDER P:  77 rows move ( 77 up,   0 down)   net   +2357
+     vs ORDER K: 280 rows move (129 up, 151 down)   net   -4306
+  QB1   FIX B1 — the age-24 gate deleted
+     vs ORDER P: 245 rows move ( 46 up, 199 down)   net   -6567
+     vs ORDER K: 525 rows move (171 up, 354 down)   net  -13230
+  QB2   FIX B2 — the charge ramped out across ages 23-26 (invented endpoint)
+     vs ORDER P:  84 rows move ( 13 up,  71 down)   net   -2864
+     vs ORDER K: 364 rows move (138 up, 226 down)   net   -9527
+  QAB1  FIX A + B1
+     vs ORDER P: 322 rows move (124 up, 198 down)   net   -3749
+     vs ORDER K: 525 rows move (176 up, 349 down)   net  -10412
+  QAB2  FIX A + B2
+     vs ORDER P: 161 rows move ( 91 up,  70 down)   net    -341
+     vs ORDER K: 364 rows move (143 up, 221 down)   net   -7004
+
+== MATURE-ROW MOVEMENT. The order expects ZERO under A and B2 and NON-ZERO under B1. ==
+   "mature" = aged 24 and over at the year priced. Movement is measured against ORDER K, which is
+   the board those rows have been byte-identical to since ORDER P.
+                                     rows 24+     moving     net vs K     net vs P
+  QA    FIX A — the pedigree leg m        429          0           +0           +0
+  QB1   FIX B1 — the age-24 gate d        429        245        -6567        -6567
+  QB2   FIX B2 — the charge ramped        429         84        -2864        -2864
+  QAB1  FIX A + B1                        429        245        -6106        -6106
+  QAB2  FIX A + B2                        429         84        -2698        -2698
+  by exact age, net points against ORDER K:
+     age        n        QA       QB1       QB2      QAB1      QAB2
+     19        71     +1648     +1009     +1009     +1648     +1648
+     20        87      -945     -1894     -1894      -945      -945
+     21        75     -1273     -1510     -1510     -1273     -1273
+     22        61     -2348     -2735     -2735     -2348     -2348
+     23        81     -1388     -1533     -1533     -1388     -1388
+     24        58        +0     -2420     -2011     -2288     -1890
+     25        51        +0     -1667      -853     -1619      -808
+     26        55        +0      -699        +0      -633        +0
+     27        46        +0      -770        +0      -720        +0
+     28        57        +0      -589        +0      -488        +0
+     29        40        +0      -146        +0      -108        +0
+     30        33        +0       -84        +0       -76        +0
+     31        24        +0       -38        +0       -38        +0
+     32        19        +0       -31        +0       -24        +0
+     33        22        +0      -112        +0      -103        +0
+     34        11        +0        -8        +0        -6        +0
+     35         5        +0        -3        +0        -3        +0
+     36         4        +0        +0        +0        +0        +0
+     37         3        +0        +0        +0        +0        +0
+     39         1        +0        +0        +0        +0        +0
+
+== THE GAMELESS ROWS. A(0)=0, so no row with zero career games may move (Q9). ==
+  QA    zero-games rows  95, of which move: 0  (net +0)
+  QB1   zero-games rows  95, of which move: 0  (net +0)
+  QB2   zero-games rows  95, of which move: 0  (net +0)
+  QAB1  zero-games rows  95, of which move: 0  (net +0)
+  QAB2  zero-games rows  95, of which move: 0  (net +0)
+
+== Q8 — NO ROW MAY PRICE ABOVE ITS OWN UNCHARGED PRICE (the eta-zero board 73bf9617) ==
+  KrefQ rows above their uncharged price: 0 of 804  
+  Qoff  rows above their uncharged price: 0 of 804  
+  QA    rows above their uncharged price: 0 of 804  
+  QB1   rows above their uncharged price: 0 of 804  
+  QB2   rows above their uncharged price: 0 of 804  
+  QAB1  rows above their uncharged price: 0 of 804  
+  QAB2  rows above their uncharged price: 0 of 804  
+
+== Q7 — FIX A MAY ONLY CAP A CHARGE. No row may price BELOW its ORDER P price under A. ==
+  QA    vs Qoff  : 0 rows price LOWER  (PASS)
+  QAB1  vs QB1   : 0 rows price LOWER  (PASS)
+  QAB2  vs QB2   : 0 rows price LOWER  (PASS)
+
+== Q10 — UNDER B2 A ROW AGED 26 OR OVER MUST BE BYTE-IDENTICAL TO ORDER K ==
+  QB2   rows aged 26+: 320, of which move against ORDER K: 0  (PASS)
+  QAB2  rows aged 26+: 320, of which move against ORDER K: 0  (PASS)
+
+== THE NAMED ROWS. CONSEQUENCES, NEVER TARGETS. No row's value is an acceptance criterion. ==
+  row                       age  pick     g  ORDER K  ORDER P       QA      QB1      QB2     QAB1     QAB2
+  Sam Lalor                  20     1    20     3456     3060     3395     3060     3060     3395     3395
+  Willem Duursma             19     1    17     3703     3920     4236     3920     3920     4236     4236
+  Zane Duursma               21     4    38      629      194      206      194      194      206      206
+  Finn O'Sullivan            20     2    37     3462     2810     3055     2810     2810     3055     3055
+  Harley Reid                21     1    58     3786     3723     3813     3723     3723     3813     3813
+  Zeke Uwland                19     2    16     1949     1486     1582     1486     1486     1582     1582
+  Josh Sinn                  23    12    30      357       73       76       73       73       76       76
+  Campbell Chesser           23    14    39      333      167      168      167      167      168      168
+  James Tunstill             23    41    23      176       42       44       42       42       44       44
+  Sam Darcy                  23     2    51     4373     4450     4450     4450     4450     4450     4450
+  Taj Hotton                 20    12    13     1628     1722     1829     1722     1722     1829     1829
+
+== MOVERS LEDGER — QA (FIX A — the pedigree leg monotonised in entry price), against ORDER P ==
+  TOP 10 UP:
+    Sam Lalor                  1     age 20   20g     3060 ->   3395    +335
+    Willem Duursma             1     age 19   17g     3920 ->   4236    +316
+    Finn O'Sullivan            2     age 20   37g     2810 ->   3055    +245
+    Sam Cumming                7     age 19   13g     2007 ->   2150    +143
+    Harvey Langford            6     age 20   41g     2422 ->   2536    +114
+    Taj Hotton                 12    age 20   13g     1722 ->   1829    +107
+    Zeke Uwland                2     age 19   16g     1486 ->   1582     +96
+    Harley Reid                1     age 21   58g     3723 ->   3813     +90
+    Samuel Grlj                8     age 19   17g     1390 ->   1467     +77
+    Cameron Mackenzie          7     age 22   63g     1852 ->   1924     +72
+  TOP 10 DOWN:
+  games profile (net against ORDER P):
+    0        rows   95  net       +0  per row     +0.0
+    1-4      rows   48  net       +1  per row     +0.0
+    5-9      rows   53  net      +35  per row     +0.7
+    10-15    rows   48  net     +283  per row     +5.9
+    16-29    rows   79  net    +1060  per row    +13.4
+    30-59    rows   99  net     +707  per row     +7.1
+    60+      rows  382  net     +271  per row     +0.7
+
+== MOVERS LEDGER — QB1 (FIX B1 — the age-24 gate deleted), against ORDER P ==
+  TOP 10 UP:
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+    Ned Moyle                  5     age 24   25g     1568 ->   1671    +103
+    Lachlan McAndrew           None  age 26   21g      841 ->    920     +79
+    Tom McCarthy               1     age 26   28g     1211 ->   1259     +48
+    Milan Murdock              None  age 26   15g      156 ->    196     +40
+    Elijah Hollands            7     age 24   47g      708 ->    732     +24
+    Sandy Brock                None  age 24   19g      130 ->    153     +23
+    Max Hall                   4     age 24   42g     2110 ->   2131     +21
+    Daniel Turner              20    age 24   52g     1303 ->   1322     +19
+    Will Brodie                9     age 28   55g      788 ->    807     +19
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    297    -237
+    Conor Stone                15    age 24   28g      218 ->     17    -201
+    Paddy Dow                  3     age 27   83g      206 ->     10    -196
+    Luke Pedlar                11    age 24   49g      217 ->     43    -174
+    Dylan Stephens             5     age 25  100g      687 ->    515    -172
+    Billy Cootee               42    age 24    5g      232 ->     62    -170
+    Ryan Angwin                19    age 24   46g      487 ->    340    -147
+    Nick Bryan                 37    age 25   33g      718 ->    574    -144
+    Nikolas Cox                8     age 24   61g      249 ->    109    -140
+    Will Setterfield           5     age 28   91g      664 ->    528    -136
+  games profile (net against ORDER P):
+    0        rows   95  net       +0  per row     +0.0
+    1-4      rows   48  net      -69  per row     -1.4
+    5-9      rows   53  net     -440  per row     -8.3
+    10-15    rows   48  net     -134  per row     -2.8
+    16-29    rows   79  net     -659  per row     -8.3
+    30-59    rows   99  net    -1607  per row    -16.2
+    60+      rows  382  net    -3658  per row     -9.6
+
+== MOVERS LEDGER — QB2 (FIX B2 — the charge ramped out across ages 23-26 (invented endpoint)), against ORDER P ==
+  TOP 10 UP:
+    Ned Moyle                  5     age 24   25g     1568 ->   1631     +63
+    Marcus Herbert             13    age 24    6g      690 ->    750     +60
+    Elijah Hollands            7     age 24   47g      708 ->    724     +16
+    Sandy Brock                None  age 24   19g      130 ->    144     +14
+    Max Hall                   4     age 24   42g     2110 ->   2123     +13
+    Daniel Turner              20    age 24   52g     1303 ->   1315     +12
+    James Borlase              None  age 24   30g      294 ->    302      +8
+    Shannon Neale              35    age 24   64g     2243 ->   2247      +4
+    Joel Jeffrey               30    age 24   71g     1352 ->   1353      +1
+    Nicholas Martin            None  age 25   83g     3196 ->   3197      +1
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    349    -185
+    Conor Stone                15    age 24   28g      218 ->     38    -180
+    Luke Pedlar                11    age 24   49g      217 ->     67    -150
+    Billy Cootee               42    age 24    5g      232 ->     96    -136
+    Ryan Angwin                19    age 24   46g      487 ->    364    -123
+    Dylan Stephens             5     age 25  100g      687 ->    571    -116
+    Nikolas Cox                8     age 24   61g      249 ->    135    -114
+    Nathan O'Driscoll          28    age 24   50g      562 ->    465     -97
+    Brayden Cook               26    age 24   48g      710 ->    613     -97
+    Tanner Bruhn               12    age 24   82g     2018 ->   1923     -95
+  games profile (net against ORDER P):
+    0        rows   95  net       +0  per row     +0.0
+    1-4      rows   48  net      -14  per row     -0.3
+    5-9      rows   53  net     -241  per row     -4.5
+    10-15    rows   48  net      -86  per row     -1.8
+    16-29    rows   79  net     -458  per row     -5.8
+    30-59    rows   99  net     -919  per row     -9.3
+    60+      rows  382  net    -1146  per row     -3.0
+
+== MOVERS LEDGER — QAB1 (FIX A + B1), against ORDER P ==
+  TOP 10 UP:
+    Sam Lalor                  1     age 20   20g     3060 ->   3395    +335
+    Willem Duursma             1     age 19   17g     3920 ->   4236    +316
+    Finn O'Sullivan            2     age 20   37g     2810 ->   3055    +245
+    Sam Cumming                7     age 19   13g     2007 ->   2150    +143
+    Harvey Langford            6     age 20   41g     2422 ->   2536    +114
+    Taj Hotton                 12    age 20   13g     1722 ->   1829    +107
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+    Ned Moyle                  5     age 24   25g     1568 ->   1671    +103
+    Zeke Uwland                2     age 19   16g     1486 ->   1582     +96
+    Harley Reid                1     age 21   58g     3723 ->   3813     +90
+  TOP 10 DOWN:
+    Conor Stone                15    age 24   28g      218 ->     17    -201
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    335    -199
+    Paddy Dow                  3     age 27   83g      206 ->     20    -186
+    Luke Pedlar                11    age 24   49g      217 ->     43    -174
+    Billy Cootee               42    age 24    5g      232 ->     62    -170
+    Dylan Stephens             5     age 25  100g      687 ->    522    -165
+    Ryan Angwin                19    age 24   46g      487 ->    341    -146
+    Nick Bryan                 37    age 25   33g      718 ->    574    -144
+    Nikolas Cox                8     age 24   61g      249 ->    110    -139
+    Brayden Cook               26    age 24   48g      710 ->    594    -116
+  games profile (net against ORDER P):
+    0        rows   95  net       +0  per row     +0.0
+    1-4      rows   48  net      -68  per row     -1.4
+    5-9      rows   53  net     -401  per row     -7.6
+    10-15    rows   48  net     +165  per row     +3.4
+    16-29    rows   79  net     +415  per row     +5.3
+    30-59    rows   99  net     -857  per row     -8.7
+    60+      rows  382  net    -3003  per row     -7.9
+
+== MOVERS LEDGER — QAB2 (FIX A + B2), against ORDER P ==
+  TOP 10 UP:
+    Sam Lalor                  1     age 20   20g     3060 ->   3395    +335
+    Willem Duursma             1     age 19   17g     3920 ->   4236    +316
+    Finn O'Sullivan            2     age 20   37g     2810 ->   3055    +245
+    Sam Cumming                7     age 19   13g     2007 ->   2150    +143
+    Harvey Langford            6     age 20   41g     2422 ->   2536    +114
+    Taj Hotton                 12    age 20   13g     1722 ->   1829    +107
+    Zeke Uwland                2     age 19   16g     1486 ->   1582     +96
+    Harley Reid                1     age 21   58g     3723 ->   3813     +90
+    Samuel Grlj                8     age 19   17g     1390 ->   1467     +77
+    Cameron Mackenzie          7     age 22   63g     1852 ->   1924     +72
+  TOP 10 DOWN:
+    Conor Stone                15    age 24   28g      218 ->     38    -180
+    Luke Pedlar                11    age 24   49g      217 ->     67    -150
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    384    -150
+    Billy Cootee               42    age 24    5g      232 ->     96    -136
+    Ryan Angwin                19    age 24   46g      487 ->    366    -121
+    Nikolas Cox                8     age 24   61g      249 ->    136    -113
+    Dylan Stephens             5     age 25  100g      687 ->    585    -102
+    Nathan O'Driscoll          28    age 24   50g      562 ->    470     -92
+    Brayden Cook               26    age 24   48g      710 ->    619     -91
+    Braeden Campbell           5     age 24   96g      419 ->    340     -79
+  games profile (net against ORDER P):
+    0        rows   95  net       +0  per row     +0.0
+    1-4      rows   48  net      -13  per row     -0.3
+    5-9      rows   53  net     -203  per row     -3.8
+    10-15    rows   48  net     +207  per row     +4.3
+    16-29    rows   79  net     +611  per row     +7.7
+    30-59    rows   99  net     -187  per row     -1.9
+    60+      rows  382  net     -756  per row     -2.0
+
