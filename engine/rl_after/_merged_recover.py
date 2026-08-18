@@ -3487,12 +3487,17 @@ if _O30B_PREVIEW:
     O35_G1=0.4535958546743124
     O35_SNORM=1.7472066252064105
     O35_CLIP=(0.5,2.0)
+    def o35_kappa_at(_pk):
+        """Order D's POOLED exponent as a pure function of the effective pick. Split out (ORDER K) so
+        the tall/small floor can be re-sited at a small's own PRE-FACTOR value without duplicating the
+        constants — there is one pooled curve in this file and both callers read it."""
+        _pk=max(1.0,min(64.0,float(_pk)))
+        return min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0+O35_G1*_math.log(_pk))/O35_SNORM))
     def o35_kappa(p):
         """The fade exponent at the row's effective pick. kappa < 1 softens (early picks — their
         sitters measured the safest), kappa > 1 deepens (late picks). Pure function of pick."""
         _pk=MA.effpk(p)
-        _pk=max(1.0,min(64.0,float(_pk if _pk else 64)))
-        return min(O35_CLIP[1],max(O35_CLIP[0],(O35_G0+O35_G1*_math.log(_pk))/O35_SNORM))
+        return o35_kappa_at(float(_pk if _pk else 64))
     # ===== ORDER I (RL_O36) — LEVER 3: THE TALL/SMALL SITTER FACTOR ================================
     # ORDER H (docs/evidence/order_h_posfade_2026-08-17/PACKET_H.md §6 + H_RESULTS.json). The owner's
     # premise was CONFIRMED on base rates: rucks sit 3.55x more than smalls at the same pick (90% CI
@@ -3515,18 +3520,81 @@ if _O30B_PREVIEW:
     O36_HTALL=-0.6921227120657417
     O36_SNORM=1.4284052406915069
     O36_D2=0.5582775                                   # the ruled depth-2 fade the identity is pinned to
+    # ===== ORDER K — THE FADE FLOOR FIX (PREREG_K.md §2, owner comment 5321546243) =================
+    # THE DEFECT. Because the fade base D(c_u) is BELOW 1, a HIGHER exponent is a HEAVIER fade. The
+    # pooled fit (slope 0.4536) and the tall/small fit (slope 0.7100) are different lines, so the SMALL
+    # curve does not sit above the pooled curve — IT CROSSES IT, and below pick 19 it sits BELOW, i.e.
+    # LIGHTER. The redistribution identity pins only the MEAN, so nothing stopped that locally. The
+    # symmetric 0.5 clip does not cause it and does not cure it: it clips the small curve part-way back
+    # toward the pooled line and stops, leaving the inversion in place. Measured on Order J's own built
+    # board: SEVEN smalls were made LIGHTER by a talls-only relief, +126 board points, worst
+    # josh-smillie (MID, pick 7, 0 games) +79 — 772 -> 851, out of the range the owner's fade ruling
+    # put him in.
+    # THE FIX — THE FLOOR IS RE-SITED, NOT REMOVED. A SMALL's floor stops being the abstract number 0.5
+    # and becomes HIS OWN PRE-FACTOR EXPONENT: the value Order D's pooled curve would have charged him
+    # if the tall factor did not exist. The owner's acceptance test — "no small's sitting fade may
+    # become lighter as a result of the tall factor" — therefore holds BY CONSTRUCTION, at every pick,
+    # for every row, with no tolerance, no special case and no named row anywhere in the mechanism.
+    # Talls keep the [0.5, 2.0] clip they were ruled with, and h_TALL is UNCHANGED at -0.6921227120657417.
+    # THE COST, DISCLOSED: the identity is a real constraint, so charging smalls at picks 6-18 properly
+    # must be given back, and it is given back by the normaliser rising 1.4284052407 -> 1.4340996146
+    # (+0.40%), re-solved WITH the re-sited floor inside the constraint set on Order H's own 408 fitted
+    # sitters (residual -1.1e-16). Late talls therefore end up with slightly MORE relief, not less
+    # (pick 64: +11.40% -> +11.65%); talls at picks 1-25 are on the 0.5 floor either way and do not move.
+    # REJECTED ALTERNATIVES, with their reasons, so the choice is on the record: (A) "re-solve the
+    # normalisation with the clip inside the constraint set" is a NO-OP — Order H's solve already
+    # carried the clip (oh_posfade.py:383) and re-solving the wired form reproduces 1.4284052406915069
+    # to the last bit; the small curve's problem is its SLOPE, not its LEVEL. (B) "apply the factor
+    # after the clip" discards Order H's fitted small slope and carries a ruled h onto a curve it was
+    # never fitted against — a re-optimisation of a ruled object, which this seat is forbidden to make.
+    O36_SNORM_K=1.4340996145830727                     # re-solved with the re-sited floor inside the constraint set
+    O36_D2_FULL=0.5582775239783688                     # the depth-2 fade at the precision the identity was SOLVED at
+    # ORDER H's own 408 fitted sitters, as (effective pick, is TALL) -> count. Transcribed so the
+    # redistribution-identity assert needs no external file and cannot pass vacuously. Reproduced by
+    # docs/evidence/order_k_2026-08-18/ok_floor_design.py from the same population Order H fitted on
+    # (ND 2005-2020, picks 1-64, teaches_curve, year-1 games == 0, force-majeure rows removed).
+    _O36K_SATCOUNTS={(1,False):2,(3,False):3,(4,False):1,(4,True):1,(5,False):1,(5,True):2,(7,False):1,
+     (8,False):1,(8,True):1,(9,False):2,(10,True):2,(11,True):1,(12,True):2,(13,False):3,(13,True):1,
+     (14,False):2,(14,True):1,(15,False):3,(15,True):3,(16,False):4,(16,True):2,(17,False):4,(17,True):1,
+     (18,False):3,(18,True):1,(19,False):2,(19,True):1,(20,False):2,(20,True):1,(21,False):2,(21,True):1,
+     (22,False):5,(22,True):1,(23,False):6,(24,False):2,(24,True):2,(25,False):2,(25,True):3,(26,False):5,
+     (27,False):2,(27,True):1,(28,False):5,(29,False):4,(29,True):4,(30,False):3,(30,True):2,(31,False):4,
+     (31,True):4,(32,False):4,(32,True):2,(33,False):5,(33,True):4,(34,False):3,(34,True):7,(35,False):4,
+     (35,True):5,(36,False):4,(36,True):4,(37,False):5,(37,True):3,(38,False):7,(38,True):3,(39,False):6,
+     (39,True):1,(40,False):6,(40,True):1,(41,False):6,(41,True):5,(42,False):7,(42,True):4,(43,False):5,
+     (43,True):4,(44,False):6,(44,True):3,(45,False):8,(45,True):1,(46,False):3,(46,True):2,(47,False):8,
+     (47,True):3,(48,False):6,(48,True):3,(49,False):8,(49,True):5,(50,False):6,(50,True):3,(51,False):5,
+     (51,True):3,(52,False):5,(52,True):4,(53,False):4,(53,True):2,(54,False):5,(54,True):4,(55,False):6,
+     (55,True):3,(56,False):6,(56,True):1,(57,False):9,(58,False):5,(58,True):4,(59,False):6,(59,True):2,
+     (60,False):6,(60,True):4,(61,False):8,(61,True):3,(62,False):10,(62,True):2,(63,False):6,(63,True):3,
+     (64,False):5,(64,True):5}
+    # DECLARED, DEFAULT-ON measurement dial: RL_O36_FLOORFIX=0 restores Order J's wired form EXACTLY
+    # (s_norm 1.4284052406915069, symmetric [0.5, 2.0] clip on both groups), so the fix's cost on every
+    # row and every band is a NUMBER on the movers ledger rather than a paragraph.
+    _O36_FLOORFIX=os.environ.get('RL_O36_FLOORFIX','1')!='0'
     # DECLARED, DEFAULT-ON measurement dial (the same discipline RL_O31_NOPHI applies to the stall
     # conditioning): RL_O36_TALL=0 prices the tall/small factor BY REMOVING IT, so its cost on every
     # row and every band is a NUMBER on the movers ledger rather than a paragraph. It falls back to
     # Order D's wired pooled exponent exactly.
     _O36_TALL=os.environ.get('RL_O36_TALL','1')!='0'
+    def o36_kappa_at(_pk,_tall):
+        """The fade exponent as a pure function of (effective pick, TALL/SMALL) — no player object, so
+        the build-failing asserts below can sweep it over every pick without inventing rows."""
+        _pk=max(1.0,min(64.0,float(_pk)))
+        if not _O36_FLOORFIX:
+            _s=O36_TG0+O36_TG1*_math.log(_pk)+(O36_HTALL if _tall else 0.0)
+            return min(O35_CLIP[1],max(O35_CLIP[0],_s/O36_SNORM))
+        _s=O36_TG0+O36_TG1*_math.log(_pk)+(O36_HTALL if _tall else 0.0)
+        if _tall:
+            return min(O35_CLIP[1],max(O35_CLIP[0],_s/O36_SNORM_K))
+        # THE RE-SITED FLOOR: a small's floor is his own Order-D pooled exponent, which is itself
+        # already >= O35_CLIP[0], so the 0.5 hard floor is subsumed and never breached.
+        return min(O35_CLIP[1],max(o35_kappa_at(_pk),_s/O36_SNORM_K))
     def o36_kappa(p):
         """The fade exponent at the row's effective pick AND position class. Pure function of
         (pick, TALL/SMALL). TALL = the engine's own O32_TALLPOS = {KPD, KPF, RUCK}."""
         _pk=MA.effpk(p)
-        _pk=max(1.0,min(64.0,float(_pk if _pk else 64)))
-        _s=O36_TG0+O36_TG1*_math.log(_pk)+(O36_HTALL if MA.gfut(p) in O32_TALLPOS else 0.0)
-        return min(O35_CLIP[1],max(O35_CLIP[0],_s/O36_SNORM))
+        return o36_kappa_at(float(_pk if _pk else 64),MA.gfut(p) in O32_TALLPOS)
     # ORDER C (RL_O34) — the R1 age credit's SURVIVING SCALE under the corrected normalization.
     # The repair's credit partially compensated the BLIND denominators; with the denominators fixed the
     # unchanged credit would DOUBLE-PAY age on every row the sites now pay correctly, so the credit is
@@ -3822,6 +3890,68 @@ if _O30B_PREVIEW:
                     raise SystemExit('ORDER I HALT: kappa(pick) took a step larger than the log curve '
                                      'allows at pick %d — that is a cliff'%_pk)
                 _ps=_a1; _pt=_a2
+            # ===== ORDER K — K-FLOOR, THE BUILD-FAILING ASSERTS ON THE FIX (PREREG_K.md §2.6) =======
+            # A4 above is left UNTOUCHED and still runs on the WIRED form. That is deliberate: it keeps
+            # proving that the RULED FIT CONSTANTS (TG0, TG1, h_TALL and Order H's own s_norm) are
+            # transcribed exactly and have not been quietly re-fitted by this order. What follows gates
+            # the LIVE exponent — the one the board actually charges.
+            # K-FLOOR (a) — NO SMALL IS MADE LIGHTER, at any pick, structurally. This is the owner's
+            # acceptance test written as an inequality the build cannot pass without satisfying it.
+            # K-FLOOR (d) — the talls' relief survives: a TALL is never made HEAVIER by the factor.
+            # ON THE DECLARED REMOVAL LANE (RL_O36_FLOORFIX=0) THESE ARE NOT HALTS. That lane exists to
+            # PRICE the defect by rebuilding it, exactly as RL_O36_TALL=0 prices the adopted factor by
+            # removing it; halting there would make the defect unmeasurable. The inequalities are still
+            # evaluated and the breach is PRINTED with its picks — and the fact that they fire the
+            # moment the fix is removed is the NON-VACUITY PROOF that they are live and not decorative
+            # (the firing run is kept at docs/evidence/order_k_2026-08-18/K1_NONVACUITY_PROOF.txt).
+            _k1=[_pk for _pk in range(1,65) if o36_kappa_at(_pk,False)<o35_kappa_at(_pk)-1e-12]
+            _k3=[_pk for _pk in range(1,65) if o36_kappa_at(_pk,True)>o35_kappa_at(_pk)+1e-12]
+            if _O36_FLOORFIX:
+                if _k1:
+                    raise SystemExit('ORDER K HALT (K1): a SMALL is made LIGHTER by the tall factor at '
+                                     'picks %s — at pick %d kappa %.10f is below his pre-factor %.10f. '
+                                     'The fade floor has inverted again.'
+                                     %(_k1,_k1[0],o36_kappa_at(_k1[0],False),o35_kappa_at(_k1[0])))
+                if _k3:
+                    raise SystemExit('ORDER K HALT (K3): a TALL is made HEAVIER by the tall factor at '
+                                     'picks %s — the ruled relief has reversed'%_k3)
+            else:
+                print('ORDER K MEASUREMENT LANE (RL_O36_FLOORFIX=0) — THE FADE FLOOR FIX IS REMOVED AND '
+                      'THE DEFECT IS REBUILT ON PURPOSE, so it can be priced. K1 BREACH: smalls are made '
+                      'LIGHTER at picks %s. K3 breach: %s. This board is a MEASUREMENT, never a candidate.'
+                      %(_k1 or 'none',_k3 or 'none'))
+            # The live curve is bounded, monotone in pick within each class, and smooth (no cliff). The
+            # small side is the max of two monotone curves, so it is monotone and continuous; the step
+            # bound is the looser of the two curves' own one-pick steps.
+            _ps=_pt=None
+            _stepmax=max(O36_TG1/(O36_SNORM_K if _O36_FLOORFIX else O36_SNORM),O35_G1/O35_SNORM)*_math.log(2.0)
+            for _pk in range(1,65):
+                _a1=o36_kappa_at(_pk,False); _a2=o36_kappa_at(_pk,True)
+                for _v in (_a1,_a2):
+                    if not (O35_CLIP[0]-1e-12<=_v<=O35_CLIP[1]+1e-12):
+                        raise SystemExit('ORDER K HALT: the live kappa breached its clip at pick %d'%_pk)
+                if (_ps is not None and _a1<_ps-1e-12) or (_pt is not None and _a2<_pt-1e-12):
+                    raise SystemExit('ORDER K HALT: the live kappa(pick) broke monotone at pick %d'%_pk)
+                if _ps is not None and (_a1-_ps)>_stepmax+1e-12:
+                    raise SystemExit('ORDER K HALT: the live kappa(pick) took a step larger than either '
+                                     'log curve allows at pick %d — that is a cliff'%_pk)
+                _ps=_a1; _pt=_a2
+            # K-FLOOR (e) — THE REDISTRIBUTION IDENTITY. The pick-weighted mean of D2^kappa over ORDER
+            # H's own 408 fitted sitters must still equal the ruled depth-2 fade 0.5582775. The sitter
+            # set is transcribed here as (pick, TALL) counts so the assert needs no external file and
+            # cannot be satisfied vacuously; the counts are H's SATROWS, reproduced in
+            # docs/evidence/order_k_2026-08-18/ok_floor_design.py.
+            _SATC=_O36K_SATCOUNTS
+            _n=sum(_SATC.values())
+            if _n!=408:
+                raise SystemExit('ORDER K HALT: the transcribed sitter set is %d rows, not ORDER H\'s 408'%_n)
+            _idr=(sum(_c*(O36_D2_FULL**o36_kappa_at(_pk,_tl)) for (_pk,_tl),_c in _SATC.items())/_n
+                  -O36_D2_FULL)
+            if abs(_idr)>1e-9:
+                raise SystemExit('ORDER K HALT (K4): the tall/small redistribution identity misses the '
+                                 'ruled depth-2 fade %.7f by %.3e — the total fade the board charges has '
+                                 'moved'%(O36_D2,_idr))
+            O36_IDENT_RESID=_idr
             # A5 — m_TALL, the multiplicative translation the owner asked for, reproduced from the wire.
             _mt=(sum(_kap36(_p,True) for _p in range(1,65))/sum(_kap36(_p,False) for _p in range(1,65)))
             print('ORDER I LIVE (RL_O36=1) — THE COORDINATED BUILD. NOTHING IS GREENLIT AND NOTHING MERGES.\n'
@@ -3831,16 +3961,30 @@ if _O30B_PREVIEW:
                   '  LEVER 2  the counterweight, re-derived JOINTLY on the corrected age-fair surface: '
                   'kappa=%.2f gamma_u=%.1f / eta=%.2f gamma_d=%.1f / relief lambda=%.2f '
                   '(was %.2f/%.1f/%.2f/%.1f/%.2f).\n'
-                  '  LEVER 3  the tall/small sitter factor: h_TALL=%.4f, s_norm\'=%.6f, clip [%.1f, %.1f]; '
+                  '  LEVER 3  the tall/small sitter factor: h_TALL=%.4f, s_norm=%.10f, clip [%.1f, %.1f]; '
                   'kappa(16) small %.3f / tall %.3f, kappa(64) small %.3f / tall %.3f; m_TALL=%.3f. '
-                  'DECLARED: the 0.5 clip binds for talls over picks 1-24 and smalls over picks 1-9, and '
-                  'the pinned identity means LATE SMALL SITTERS PAY for the talls\' relief.\n'
+                  'DECLARED: the pinned identity means LATE SMALL SITTERS PAY for the talls\' relief.\n'
+                  '  ORDER K FADE FLOOR: %s. A SMALL\'s floor is HIS OWN PRE-FACTOR (Order D pooled) '
+                  'exponent, so no small can be made lighter by a talls-only relief; talls keep the '
+                  '[0.5, 2.0] clip. h_TALL UNCHANGED; the normaliser re-solved WITH the re-sited floor '
+                  'inside the constraint set (%.10f -> %.10f). Redistribution identity residual %.3e '
+                  'against the ruled depth-2 fade %.7f. The floor still binds: talls picks 1-%d on 0.5; '
+                  'smalls picks 1-%d on their own pooled exponent (of those, picks 1-%d also on 0.5 '
+                  'because the pooled curve is itself clipped there).\n'
                   '  %d active rows sit at a developing age and can be reached by S1; %d have no birth '
                   'year and keep the flat bar.'
                   %(MA.O36_LAM_S1,O36_KAPPA,O36_GAMMA,O36_ETA,O36_GAMMA_D,O36_LAMBDA,
                     0.24,11.0,0.41,14.0,1.08,
-                    O36_HTALL,O36_SNORM,O35_CLIP[0],O35_CLIP[1],
-                    _kap36(16,False),_kap36(16,True),_kap36(64,False),_kap36(64,True),_mt,
+                    O36_HTALL,(O36_SNORM_K if _O36_FLOORFIX else O36_SNORM),O35_CLIP[0],O35_CLIP[1],
+                    o36_kappa_at(16,False),o36_kappa_at(16,True),o36_kappa_at(64,False),
+                    o36_kappa_at(64,True),_mt,
+                    ('LIVE (RL_O36_FLOORFIX=1, the default)' if _O36_FLOORFIX else
+                     'REMOVED (RL_O36_FLOORFIX=0) — Order J\'s wired form, THE DEFECT IS BACK: '
+                     'smalls at picks 6-18 are made LIGHTER by a talls-only relief'),
+                    O36_SNORM,(O36_SNORM_K if _O36_FLOORFIX else O36_SNORM),O36_IDENT_RESID,O36_D2,
+                    max([_p for _p in range(1,65) if abs(o36_kappa_at(_p,True)-O35_CLIP[0])<1e-12] or [0]),
+                    max([_p for _p in range(1,65) if abs(o36_kappa_at(_p,False)-o35_kappa_at(_p))<1e-12] or [0]),
+                    max([_p for _p in range(1,65) if abs(o36_kappa_at(_p,False)-O35_CLIP[0])<1e-12] or [0]),
                     sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and _p.get('_by') and (MA.BASE_REF-int(_p['_by']))<24),
                     sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and not _p.get('_by'))))
         if _O35:
