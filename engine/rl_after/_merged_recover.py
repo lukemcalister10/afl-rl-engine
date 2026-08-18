@@ -481,6 +481,26 @@ if _O38B1 and _O38B2:
 if _O38 and not _O37:
     raise SystemExit('ORDER Q HALT: an RL_O38* dial is set but RL_O37 is not live. The ORDER Q repairs '
                      'act on the ORDER P charge; without it there is nothing to repair.')
+# ORDER R — THE OWNER'S TWO SOFTENINGS, PRICED AND NOT ADOPTED (RL_O39_TMAXPCT / RL_O39_BETASAT;
+# PREREG_R.md pushed before this edit; docs/evidence/order_r_2026-08-18). The owner judged the ORDER P
+# charge too harsh on hard underperformers -- "effectively stripped their pedigree" -- and ruled two
+# softenings: (1) "tmax should be 15 or 20 not 5", i.e. set the cap at the 15th or 20th percentile of
+# the young cohort's own surplus instead of the 5th; (2) "maybe soften the charge a little bit", i.e.
+# lower BETA_sat, but ONLY inside its published 90% CI. Both dials default OFF and both act ONLY on the
+# ORDER Q charge path, so with them unset every ORDER P and ORDER Q board reproduces BYTE-EXACT.
+# NOTHING IS ADOPTED AND NOTHING LANDS.
+_O39_PCT_RAW=os.environ.get('RL_O39_TMAXPCT','')
+_O39_BSAT_RAW=os.environ.get('RL_O39_BETASAT','')
+_O39=(_O39_PCT_RAW!='' or _O39_BSAT_RAW!='')
+if _O39 and not _O38:
+    raise SystemExit('ORDER R HALT: an RL_O39_* dial is set but no RL_O38* dial is live. The ORDER R '
+                     'softenings reach the ORDER Q charge path only. Setting one without an RL_O38 dial '
+                     'would silently do nothing and print a board labelled as though it had.')
+_O39_PCT=int(_O39_PCT_RAW) if _O39_PCT_RAW!='' else 5
+if _O39_PCT not in (5,15,20):
+    raise SystemExit('ORDER R HALT: RL_O39_TMAXPCT=%r. Only 5 (ORDER P\'s own), 15 and 20 are measured '
+                     'percentiles of the young cohort surplus. Nothing else is priced and nothing else '
+                     'may be invented at the dial.'%_O39_PCT_RAW)
 _O35=_O35 or _O36                                           # ORDER I implies the pick-curve fade
 _O32=(os.environ.get('RL_O32','0')!='0') or _O34 or _O35    # ORDER A: CANDIDATE 32 (ORDERS C/D build ON it)
 _O32S=(int(os.environ.get('RL_O32_STAGE','6')) if _O32 else 0)
@@ -3839,6 +3859,56 @@ if _O30B_PREVIEW:
     O37_AGE_GATE=24                                            # the age bar has content below 24 and none at or above it
     O37_THETA_R=O37_BETA_SAT/O37_LAMBDA                        # NOT FREE
     O37_TMAX=1.0-O37_THETA_R*(O37_S_P5-O37_S0)                 # NOT FREE
+    # ===== ORDER R (RL_O39_TMAXPCT / RL_O39_BETASAT) — THE OWNER'S TWO SOFTENINGS ==================
+    # PREREG_R.md, pushed before this edit · docs/evidence/order_r_2026-08-18.
+    # THIS IS A MEASUREMENT ORDER. NOTHING HERE IS ADOPTED AND NOTHING LANDS. Both dials off => the
+    # effective constants below are the ORDER P constants BIT FOR BIT (same float expressions, same
+    # order of operations), so ORDER P's 374d4e44 and every ORDER Q board reproduce BYTE-EXACT.
+    #
+    # THE CAP. TMAX is T evaluated at the young cohort's own Qth percentile of s_P, so the worst
+    # -producing Q% all pay the same top rate rather than an unbounded one. ORDER P set Q = 5, which
+    # charges a row sitting at the cap 97.3% of his pedigree leg. The owner ruled Q = 15 or 20. The
+    # three percentiles below are np.percentile(sP, Q) over the SAME 4,143 young-cohort season rows in
+    # STEP2_P.json that produced MECH_P.json::s_p5, by the SAME call, unweighted. The Q=5 entry
+    # reproduces MECH_P.json::s_p5 to the last bit and that is asserted at load (R10 below).
+    O39_S_PQ={5:-33.06133449874688,           # == O37_S_P5, MECH_P.json::s_p5
+              15:-22.148794633345666,
+              20:-19.024574086528315}
+    # THE SLOPE. BETA_sat is the MEASURED saturated slope of the pedigree leg's response to surplus.
+    # Its published 90% CI is a parametric bootstrap over the seven games bins, ORDER P seed 32.
+    # SOFTENING OUTSIDE THE MEASURED INTERVAL IS FORBIDDEN and the dial HALTS on it (R11).
+    O39_BSAT_CI=(0.10416359711151935,0.1271777523096214)      # MECH_P.json::BETA_sat_ci
+    O39_BETA_SAT=(float(_O39_BSAT_RAW) if _O39_BSAT_RAW!='' else O37_BETA_SAT)
+    if _O39_BSAT_RAW!='' and not (O39_BSAT_CI[0]<=O39_BETA_SAT<=O39_BSAT_CI[1]):
+        raise SystemExit('ORDER R HALT (R11): RL_O39_BETASAT=%.17g is OUTSIDE the published 90%% CI '
+                         '[%.17g, %.17g]. The owner ruled the charge may be softened INSIDE the measured '
+                         'interval and not beyond it. This dial does not price an unmeasured slope.'
+                         %(O39_BETA_SAT,O39_BSAT_CI[0],O39_BSAT_CI[1]))
+    # THETA_R FOLLOWS the slope and TMAX FOLLOWS THETA_R AND the percentile. NEITHER IS FREE, and TMAX
+    # is RECOMPUTED from the effective THETA_R every time rather than carried from ORDER P. Holding a
+    # stale TMAX while moving BETA_sat would break LAMBDA*THETA_R == BETA_sat's meaning at the cap.
+    O39_THETA_R=O39_BETA_SAT/O37_LAMBDA                        # NOT FREE
+    O39_TMAX=1.0-O39_THETA_R*(O39_S_PQ[_O39_PCT]-O37_S0)       # NOT FREE — recomputed, never stale
+    # DISCLOSED, LOUDLY: LAMBDA IS NOT RE-SOLVED. On ORDER P, LAMBDA was SOLVED by an anchoring
+    # identity — bisection so the new charge removes exactly the same total points from the year-1
+    # class-mark population as ORDER K's blind charge did. Moving BETA_sat or TMAX BREAKS that anchor,
+    # so these variants remove LESS total charge than ORDER P by construction. THAT IS THE SOFTENING.
+    # Re-solving LAMBDA would claw back exactly what the owner asked to give away. The choice is the
+    # order's and it is written on the prereg, not discovered afterwards.
+    # R9/R10 — the two identities, asserted at load on every path including dial-off.
+    if abs(O37_LAMBDA*O39_THETA_R-O39_BETA_SAT)>1e-15:
+        raise SystemExit('ORDER R HALT (R9): LAMBDA*THETA_R = %.17g is not the effective BETA_sat = '
+                         '%.17g — the tilt has come loose from the measurement.'
+                         %(O37_LAMBDA*O39_THETA_R,O39_BETA_SAT))
+    if abs(O39_TMAX-(1.0-O39_THETA_R*(O39_S_PQ[_O39_PCT]-O37_S0)))>1e-12:
+        raise SystemExit('ORDER R HALT (R10): TMAX is not 1 - THETA_R*(s_pQ - s0) on the EFFECTIVE '
+                         'THETA_R. A stale cap is being carried.')
+    if abs(O39_S_PQ[5]-O37_S_P5)>0.0:
+        raise SystemExit('ORDER R HALT (R10): the Q=5 percentile in O39_S_PQ is not MECH_P.json::s_p5 '
+                         'bit for bit. The percentile table has drifted from the population it came from.')
+    if not _O39 and (O39_THETA_R!=O37_THETA_R or O39_TMAX!=O37_TMAX):
+        raise SystemExit('ORDER R HALT (R1): with both ORDER R dials unset the effective constants are '
+                         'not the ORDER P constants bit for bit. Dial-off would not be byte-exact.')
     # THE PEDIGREE PREMIUM SURFACE, in AFL Fantasy points per game, as a function of ln(v0).
     # Estimated by games-weighted LOCAL-LINEAR KERNEL REGRESSION on ln(v0), tricube kernel, bandwidth
     # 0.40 in log-v0 units — the SAME estimator family par_build.py used over log-pick at the same
@@ -4039,7 +4109,9 @@ if _O30B_PREVIEW:
         _O38_PCACHE[_ck]=_r
         return _r
     def o38_T(_s):
-        return min(max(1.0-O37_THETA_R*(_s-O37_S0),0.0),O37_TMAX)
+        # ORDER R: the EFFECTIVE cap and slope. With both R dials unset these are O37_THETA_R and
+        # O37_TMAX bit for bit (asserted above), so this line is byte-identical to ORDER Q's.
+        return min(max(1.0-O39_THETA_R*(_s-O37_S0),0.0),O39_TMAX)
     def o38_mono(p,Y,g,_s):
         """FIX A. The charge, capped wherever the pedigree leg would otherwise FALL as entry price
         RISES. Returns the multiplier the pedigree leg is charged by, in (0,1]."""
@@ -4070,8 +4142,8 @@ if _O30B_PREVIEW:
             _a,_b=_cand[_j],_cand[_j+1]
             _sa,_sb=_sx(_a),_sx(_b)
             if _sa==_sb: continue
-            for _tv in (0.0,O37_TMAX):
-                _st=O37_S0+(1.0-_tv)/O37_THETA_R
+            for _tv in (0.0,O39_TMAX):                     # ORDER R: the EFFECTIVE clip boundaries
+                _st=O37_S0+(1.0-_tv)/O39_THETA_R
                 if (_sa-_st)*(_sb-_st)<0.0:
                     _extra.append(_a+(_b-_a)*(_st-_sa)/(_sb-_sa))
         if _extra: _cand=sorted(set(_cand+_extra))
@@ -4501,6 +4573,56 @@ if _O30B_PREVIEW:
                   'P left on the ORDER K charge). A(0)=0 still, so no day-0 print can move.'
                   %('LIVE' if _O38A else 'off','LIVE' if _O38B1 else 'off','LIVE' if _O38B2 else 'off',
                     _o38n,_o38m,O37_AGE_GATE))
+            # ===== ORDER R — THE OWNER'S TWO SOFTENINGS, PRICED AND NOT ADOPTED ======================
+            # R-S1  T is still NON-INCREASING in surplus on the effective constants.
+            # R-S2  the factor exp(-LAMBDA*A(g)*T) is still in (0,1] everywhere, so no row can price
+            #       above its own uncharged price.
+            # R-S3  A(0) = 0 EXACTLY still, so no day-0 print and no gameless row can move.
+            # R-S4  the softening only ever RAISES the factor: at the SAME surplus a lower cap or a
+            #       lower slope charges LESS. Asserted against ORDER P's own constants across the
+            #       whole surplus range, so "softening" is proved rather than asserted.
+            _rprev=None
+            for _i in range(0,20001):
+                _ss=-120.0+0.01*_i
+                _Tr=min(max(1.0-O39_THETA_R*(_ss-O37_S0),0.0),O39_TMAX)
+                if _rprev is not None and _Tr>_rprev+1e-12:
+                    raise SystemExit('ORDER R HALT (R-S1): T RISES with surplus at s=%.2f'%_ss)
+                _rprev=_Tr
+                for _gq in (0.0,1.0,17.0,60.0,400.0):
+                    _fr=_math.exp(-O37_LAMBDA*(1.0-_math.exp(-_gq/O37_G0))*_Tr)
+                    if not (0.0<_fr<=1.0+1e-15):
+                        raise SystemExit('ORDER R HALT (R-S2): the factor left (0,1] at s=%.2f g=%.2f: '
+                                         '%.9g'%(_ss,_gq,_fr))
+                    _Tp=min(max(1.0-O37_THETA_R*(_ss-O37_S0),0.0),O37_TMAX)
+                    _fp=_math.exp(-O37_LAMBDA*(1.0-_math.exp(-_gq/O37_G0))*_Tp)
+                    if _fr<_fp-1e-12:
+                        raise SystemExit('ORDER R HALT (R-S4): the ORDER R constants charge MORE than '
+                                         'ORDER P at s=%.2f g=%.2f (%.9f < %.9f). These dials may only '
+                                         'SOFTEN.'%(_ss,_gq,_fr,_fp))
+            if (1.0-_math.exp(-0.0/O37_G0))!=0.0:
+                raise SystemExit('ORDER R HALT (R-S3): A(0) is not 0 exactly')
+            print('ORDER R %s — THE OWNER\'S TWO SOFTENINGS, PRICED AND NOT ADOPTED. NOTHING IS GREENLIT '
+                  'AND NOTHING MERGES.\n'
+                  '  THE CAP: TMAX at the young cohort\'s p%d of s_P = %+.5f pts/g  =>  TMAX %.4f '
+                  '(ORDER P p5: s_p5 %+.5f, TMAX %.4f). %s\n'
+                  '  THE SLOPE: BETA_sat %.8f%s, 90%% CI [%.5f, %.5f]  =>  THETA_R %.6f (ORDER P: '
+                  'BETA_sat %.8f, THETA_R %.6f).\n'
+                  '  LAMBDA*THETA_R = %.8f = the effective BETA_sat. TMAX is RECOMPUTED from this '
+                  'THETA_R, never carried stale. NO FREE PARAMETER IS INTRODUCED.\n'
+                  '  LAMBDA IS NOT RE-SOLVED. ORDER P solved it by an anchoring identity that held the '
+                  'total charge constant; moving the cap or the slope BREAKS that anchor ON PURPOSE, and '
+                  'that broken anchor IS the softening. Disclosed on PREREG_R.md, not discovered after.\n'
+                  '  A row at the cap with 38 games is charged %.2f%% of his pedigree leg (ORDER P: '
+                  '%.2f%%).'
+                  %('LIVE' if _O39 else 'off (dial-off: the ORDER P constants, bit for bit)',
+                    _O39_PCT,O39_S_PQ[_O39_PCT],O39_TMAX,O37_S_P5,O37_TMAX,
+                    'THE CAP IS UNCHANGED FROM ORDER P.' if _O39_PCT==5 else
+                    'The worst-producing %d%% now all pay the same top rate.'%_O39_PCT,
+                    O39_BETA_SAT,'' if _O39_BSAT_RAW=='' else ' (RL_O39_BETASAT)',
+                    O39_BSAT_CI[0],O39_BSAT_CI[1],O39_THETA_R,O37_BETA_SAT,O37_THETA_R,
+                    O37_LAMBDA*O39_THETA_R,
+                    100.0*(1.0-_math.exp(-O37_LAMBDA*(1.0-_math.exp(-38.0/O37_G0))*O39_TMAX)),
+                    100.0*(1.0-_math.exp(-O37_LAMBDA*(1.0-_math.exp(-38.0/O37_G0))*O37_TMAX))))
         if _O35:
             print('ORDER D PICK-CURVE FADE LIVE (RL_O35=1) — THE LANDING CANDIDATE ON THE OWNER\'S WORD. '
                   'D_eff = D(c_u)^kappa(pick), kappa = clip((%.4f%+.4f·ln p)/%.4f, %.1f, %.1f): '
