@@ -203,14 +203,35 @@ for tag, dose, eta in KMAXTAGS:
          'G6: %d of 3 STILL RISE' % g6 if g6 else 'G6 holds'))
 OUT['kappa_max'] = KM
 P()
-P('  -> %s'
-  % ('KAPPA CANNOT CHARGE THEM. At the hardest kappa the ruled constraints allow, with eta at zero, '
-     'the sub-expectation rows still rise above their landing values.'
-     if any(r['g6_rising'] for r in KM) else
-     'kappa DOES hold them at its hardest setting — the packet must be corrected.'))
+P('  THE SAME TWO BOARDS AT THE GENTLEST kappa, so the DIRECTION of the kappa axis is visible:')
+P('  %-6s %5s %6s | %8s %8s %8s' % ('tag', 'dose', 'kappa', 'x-tayl', 'annable', 'patters'))
+P('  %-6s %5.2f %6.2f | %8d %8d %8d   (the coolest eta=0 point in the grid)'
+  % ('MLO', 0.0, 0.15, V['MLO']['xavier-taylor'], V['MLO']['daniel-annable'],
+     V['MLO']['dylan-patterson']))
+P('  %-6s %5.2f %6.2f | %8d %8d %8d   (the HARDEST kappa the ruled constraints allow)'
+  % ('KMAX', 0.0, 0.60, V['KMAX']['xavier-taylor'], V['KMAX']['daniel-annable'],
+     V['KMAX']['dylan-patterson']))
+P('  %-6s %5s %6s | %+8d %+8d %+8d   <- what turning kappa UP four times over does to them'
+  % ('move', '', '',
+     V['KMAX']['xavier-taylor'] - V['MLO']['xavier-taylor'],
+     V['KMAX']['daniel-annable'] - V['MLO']['daniel-annable'],
+     V['KMAX']['dylan-patterson'] - V['MLO']['dylan-patterson']))
+worse = (V['KMAX']['xavier-taylor'] > V['MLO']['xavier-taylor']
+         and V['KMAX']['daniel-annable'] > V['MLO']['daniel-annable']
+         and V['KMAX']['dylan-patterson'] > V['MLO']['dylan-patterson'])
+P()
+if any(r['g6_rising'] for r in KM):
+    P('  -> KAPPA CANNOT CHARGE THEM. At the hardest kappa the ruled constraints allow, with eta at')
+    P('     zero, all three sub-expectation rows still sit ABOVE their landing values.')
+    if worse:
+        P('     AND IT IS WORSE THAN THAT, so the packet says it in the strong form: turning kappa UP')
+        P('     does not charge them at all — it RAISES them further. Kappa is not a weak substitute')
+        P('     for eta. It pushes the wrong way on exactly these rows.')
+else:
+    P('  -> kappa DOES hold them at its hardest setting — the packet must be corrected.')
 P('     The reason is structural. Kappa moves weight BETWEEN two legs — off pedigree, onto shown')
-P('     production. Eta charged one leg DOWN. Those are different operations. Kappa can tilt the')
-P('     balance; only eta could subtract value from the row.')
+P('     production — and it carries its own age credit alongside. Eta charged one leg DOWN. Those are')
+P('     different operations. Kappa can tilt the balance; only eta could subtract from the row.')
 
 json.dump(OUT, open(os.path.join(HERE, 'LADDER_M.json'), 'w'), indent=1, default=float)
 open(os.path.join(HERE, 'LADDER_M_out.txt'), 'w').write('\n'.join(L) + '\n')

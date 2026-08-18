@@ -190,12 +190,23 @@ Here is the proof, not the argument.
 Annable +141, Dylan Patterson +257. So this is not the age bar's doing.
 
 **Second**, turn kappa up as far as the ruled constraints allow. rho32 monotonicity is what caps kappa,
-and the highest monotone value on the grid is 0.60 at gamma_u 16 — four times ORDER K's 0.20. I built
-that board rather than argue it. The result is in `LADDER_M_out.txt` under tag `KMAX`.
+and the highest monotone value on the grid is **0.60 at gamma_u 16** — three times ORDER K's 0.20. I
+built that board rather than argue it. Tag `KMAX`, dose 0, eta 0.
 
-The reason is structural, and it is worth one sentence. **Kappa moves weight between two legs. Eta
-charged one leg down.** Those are different operations. Kappa can tilt the balance between pedigree
-and shown production; it cannot remove value from the row. Only eta could subtract.
+| board | dose | kappa | xavier-taylor | daniel-annable | dylan-patterson |
+|---|---:|---:|---:|---:|---:|
+| *landing candidate* | — | — | 1,176 | 1,530 | 1,467 |
+| MLO — gentlest kappa | 0.00 | 0.15 | 1,307 | 1,671 | 1,724 |
+| **KMAX — hardest kappa allowed** | 0.00 | **0.60** | **1,358** | **1,781** | **1,889** |
+| what turning kappa up does | | | **+51** | **+110** | **+165** |
+
+**Turning kappa up does not charge these rows. It raises them further.** Kappa is not a weak
+substitute for eta — on exactly these rows it pushes the wrong way.
+
+The reason is structural, and it is worth one sentence. **Kappa moves weight between two legs, and
+carries its own age credit alongside. Eta charged one leg down.** Those are different operations.
+Kappa can tilt the balance between pedigree and shown production; it cannot remove value from the row.
+Only eta could subtract.
 
 **And this is worse than undoing what ORDER K added.** The landing candidate `1f176444` already
 carries eta at 0.41. Setting eta to zero removes a charge the base board was already levying. That is
