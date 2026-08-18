@@ -1,0 +1,31 @@
+========================================================================================================
+ORDER M — EVERY BOARD BUILT BY THIS ORDER, md5 RECOMPUTED FROM THE FILE ON DISK
+========================================================================================================
+  tag   what it is                                 dose   kappa    eta  md5
+  cand  dial off — the landing candidate              -       -      -  1f17644445f074d11e631b5cbae98a9a
+  K     ORDER K's ruled setting, rebuilt here      0.40    0.20   0.50  f3101883a60b0a7b8cb50f9d8a5abfff
+  s1    the age bar alone, tall factor removed     0.40  repair repair  0423c8b20c0571fab0e5dd5ebc01c394
+  M0    ORDER K's knobs with ETA = 0               0.40    0.20   0.00  73bf961724e77f0bda996825125a07ad
+  M0R   the determinism repeat of M0               0.40    0.20   0.00  73bf961724e77f0bda996825125a07ad
+  MLO   the coolest eta=0 point in the grid        0.00    0.15   0.00  ba97fb732cedcc653bb93cae493eccd3
+  MMIN  the smallest legal eta anywhere            0.00    0.20   0.31  d0fa4ab799abd681516f6346bf8c9f62
+  E10   ladder A                                   0.40    0.20   0.10  481ccb6a2c70af2a695f89ed301b12ea
+  E20   ladder A                                   0.40    0.20   0.20  752ea00a863d99f3693d455431e1fd8a
+  E30   ladder A                                   0.40    0.20   0.30  f1b1ebf6f7e26559a7245ac089a305bd
+  E40   ladder A                                   0.40    0.20   0.40  44e12fd8ccd5371576ae86c2d0891603
+  F20   ladder B — the legal frontier              0.20    0.20   0.39  e9c263396a30d23a0af45815a4f8dd30
+  F60   ladder B — the legal frontier              0.60    0.20   0.64  f2b73c67923e1bb56f5c635b74704380
+  F70   ladder B — the legal frontier              0.70    0.20   0.72  a6f4eca4903875c8ce43fb7fe3996288
+  KMAX  the maximum-kappa control (gamma_u 16)     0.00    0.60   0.00  NOT BUILT
+  KMX4  the maximum-kappa control (gamma_u 16)     0.40    0.60   0.00  NOT BUILT
+
+  M1  dial-off = 1f176444          : PASS
+  M2  ORDER K rebuilds to f3101883 : PASS
+  M3  determinism x2 on M0         : PASS
+
+  DISCLOSURE: BUILD_LADDER_M_out.txt is TRUNCATED and this seat truncated it. A `git stash` was run
+  on that log file to clear the working tree for a push while the ladder build was still writing to
+  it; the stash-pop reverted the lines that had landed in between. The BOARDS are unaffected — they
+  are on disk, built by the same bbM.sh as every other board here, and their md5s are recomputed
+  above from the files themselves. A log tail was lost, not a result. It is written down rather
+  than quietly regenerated.

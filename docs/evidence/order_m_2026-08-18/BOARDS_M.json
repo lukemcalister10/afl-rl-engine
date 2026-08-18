@@ -1,0 +1,100 @@
+{
+ "E10": {
+  "dose": "0.40",
+  "eta": "0.10",
+  "kappa": "0.20",
+  "md5": "481ccb6a2c70af2a695f89ed301b12ea",
+  "what": "ladder A"
+ },
+ "E20": {
+  "dose": "0.40",
+  "eta": "0.20",
+  "kappa": "0.20",
+  "md5": "752ea00a863d99f3693d455431e1fd8a",
+  "what": "ladder A"
+ },
+ "E30": {
+  "dose": "0.40",
+  "eta": "0.30",
+  "kappa": "0.20",
+  "md5": "f1b1ebf6f7e26559a7245ac089a305bd",
+  "what": "ladder A"
+ },
+ "E40": {
+  "dose": "0.40",
+  "eta": "0.40",
+  "kappa": "0.20",
+  "md5": "44e12fd8ccd5371576ae86c2d0891603",
+  "what": "ladder A"
+ },
+ "F20": {
+  "dose": "0.20",
+  "eta": "0.39",
+  "kappa": "0.20",
+  "md5": "e9c263396a30d23a0af45815a4f8dd30",
+  "what": "ladder B \u2014 the legal frontier"
+ },
+ "F60": {
+  "dose": "0.60",
+  "eta": "0.64",
+  "kappa": "0.20",
+  "md5": "f2b73c67923e1bb56f5c635b74704380",
+  "what": "ladder B \u2014 the legal frontier"
+ },
+ "F70": {
+  "dose": "0.70",
+  "eta": "0.72",
+  "kappa": "0.20",
+  "md5": "a6f4eca4903875c8ce43fb7fe3996288",
+  "what": "ladder B \u2014 the legal frontier"
+ },
+ "K": {
+  "dose": "0.40",
+  "eta": "0.50",
+  "kappa": "0.20",
+  "md5": "f3101883a60b0a7b8cb50f9d8a5abfff",
+  "what": "ORDER K's ruled setting, rebuilt here"
+ },
+ "M0": {
+  "dose": "0.40",
+  "eta": "0.00",
+  "kappa": "0.20",
+  "md5": "73bf961724e77f0bda996825125a07ad",
+  "what": "ORDER K's knobs with ETA = 0"
+ },
+ "M0R": {
+  "dose": "0.40",
+  "eta": "0.00",
+  "kappa": "0.20",
+  "md5": "73bf961724e77f0bda996825125a07ad",
+  "what": "the determinism repeat of M0"
+ },
+ "MLO": {
+  "dose": "0.00",
+  "eta": "0.00",
+  "kappa": "0.15",
+  "md5": "ba97fb732cedcc653bb93cae493eccd3",
+  "what": "the coolest eta=0 point in the grid"
+ },
+ "MMIN": {
+  "dose": "0.00",
+  "eta": "0.31",
+  "kappa": "0.20",
+  "md5": "d0fa4ab799abd681516f6346bf8c9f62",
+  "what": "the smallest legal eta anywhere"
+ },
+ "cand": {
+  "dose": "-",
+  "eta": "-",
+  "kappa": "-",
+  "md5": "1f17644445f074d11e631b5cbae98a9a",
+  "what": "dial off \u2014 the landing candidate"
+ },
+ "s1": {
+  "dose": "0.40",
+  "eta": "repair",
+  "kappa": "repair",
+  "md5": "0423c8b20c0571fab0e5dd5ebc01c394",
+  "what": "the age bar alone, tall factor removed"
+ }
+}

@@ -6,9 +6,11 @@
                        ORDER K, the landing candidate and candidate 31 — plus the trade-off ladder
                        in board points on the owner's own named rows.
 
-House conventions carried from o32_pages.py (same CSS, same click-to-sort script, same column
-grammar), exactly as ORDER K and ORDER L carried them. The "what is in this board and what is still
-broken" box is sliced out of the published ORDER_K_NOARB.html BYTE FOR BYTE, not retyped, so it
+House conventions carried from o32_pages.py (same CSS, same column grammar), exactly as ORDER K and
+ORDER L carried them. The click-to-sort script is NOT carried: these are fixed comparison tables with
+a meaningful row order, not browsable lists, and a sort control that does nothing would be a lie.
+
+The "what is in this board and what is still broken" box is sliced out of the published ORDER_K_NOARB.html BYTE FOR BYTE, not retyped, so it
 cannot drift; ORDER M's own breakage box is written beneath it and clearly labelled as this order's.
 """
 import json, os, html
@@ -26,7 +28,6 @@ SW = json.load(open(os.path.join(HERE, 'SWEEP_M.json')))
 
 src = open(os.path.join(ROOT, 'docs', 'evidence', 'order_a_2026-08-17', 'o32_pages.py')).read()
 CSS = src.split('CSS = """')[1].split('"""')[0]
-SORT_JS = src.split('SORT_JS = """')[1].split('"""')[0]
 CSS += """
 .brk{background:var(--card-2);border:1px solid var(--warn);border-left:4px solid var(--warn);padding:16px 18px;margin:14px 0}
 .brk h2{color:var(--warn);margin-bottom:12px}
@@ -114,7 +115,7 @@ H.append('<h2>G1 &mdash; the year-1 class mark, on the registered basis</h2>')
 H.append('<p class="sub">The W2 scorer, draft classes 2005-2015, ENTRY_FLOOR 2005. This is the '
          'instrument your 1.03 floor and your ~1.08 prior were registered against (ORDER L). The '
          'cohort-window reading is printed beside it so the two are never confused again.</p>')
-H.append('<table class="srt"><thead><tr><th>board</th><th class="num">registered basis '
+H.append('<table><thead><tr><th>board</th><th class="num">registered basis '
          '(W2, draft 05-15)</th><th class="num">vs the 1.03 floor</th><th class="num">vs the 1.14 buy '
          'rail</th><th class="num">cohort window (ok_class 05-15)</th><th>G1</th></tr></thead><tbody>')
 for lab, nice in LABELS:
@@ -134,7 +135,7 @@ H.append('<p class="sub">Below 0% is a sell-side red. Above +14% is a buy-side r
          'either rail are shaded. PRIMARY = cohorts 2005-2023. MODERN = cohorts 2019-2023.</p>')
 for w in ('PRIMARY', 'MODERN'):
     H.append('<h3>%s window</h3>' % w)
-    H.append('<table class="srt"><thead><tr><th>band</th>'
+    H.append('<table><thead><tr><th>band</th>'
              + ''.join('<th class="num">%s</th>' % e(n) for _, n in LABELS)
              + '</tr></thead><tbody>')
     for bn in BANDS:
@@ -152,7 +153,7 @@ H.append('<p class="sub">SSP&rsquo;s buy-side red is INHERITED &mdash; it is on 
          '(+52.71% &rarr; +64.96%).</p>')
 for w in ('PRIMARY', 'MODERN'):
     H.append('<h3>%s window</h3>' % w)
-    H.append('<table class="srt"><thead><tr><th>arm</th>'
+    H.append('<table><thead><tr><th>arm</th>'
              + ''.join('<th class="num">%s</th>' % e(n) for _, n in LABELS)
              + '</tr></thead><tbody>')
     for arm in ARMS:
@@ -173,7 +174,7 @@ H.append('<h2>Your named rows, in board points</h2>')
 NROWS = ['harry-dean', 'cooper-duff-tytler', 'isaac-kako', 'alix-tauru', 'jedd-busslinger',
          'xavier-taylor', 'daniel-annable', 'dylan-patterson', 'josh-smillie', 'oskar-taylor',
          'will-green', 'toby-conway', 'william-mccabe', 'alex-dodson', 'milan-murdock']
-H.append('<table class="srt"><thead><tr><th>row</th><th class="num">cand 31</th>'
+H.append('<table><thead><tr><th>row</th><th class="num">cand 31</th>'
          '<th class="num">landing</th><th class="num">ORDER K</th><th class="num">ETA = 0</th>'
          '<th class="num">dose 0, eta .31</th><th class="num">eta 0 &minus; ORDER K</th>'
          '</tr></thead><tbody>')
@@ -192,7 +193,7 @@ H.append('<h2>The trade-off, priced</h2>')
 H.append('<p class="sub">Ladder A walks eta from 0 to 0.50 at your ruled dose 0.40, every other knob '
          'held. It answers one question: is there an eta that gives you Harry Dean AND holds the three '
          'sub-expectation rows AND keeps the board legal?</p>')
-H.append('<table class="srt"><thead><tr><th>eta</th><th class="num">harry-dean</th>'
+H.append('<table><thead><tr><th>eta</th><th class="num">harry-dean</th>'
          '<th class="num">duff-tytler</th><th class="num">xavier-taylor</th>'
          '<th class="num">daniel-annable</th><th class="num">dylan-patterson</th>'
          '<th class="num">class (nav)</th><th class="num">picks 1-10 (nav)</th><th>legal?</th>'
@@ -218,7 +219,7 @@ H.append('</tbody></table>')
 H.append('<p class="sub">Ladder B is the legal frontier itself: at each dose, the smallest eta the '
          'board can carry. It answers the other question: over the whole legal region, what is the '
          'best Harry Dean you can buy?</p>')
-H.append('<table class="srt"><thead><tr><th>dose</th><th class="num">smallest legal eta</th>'
+H.append('<table><thead><tr><th>dose</th><th class="num">smallest legal eta</th>'
          '<th class="num">harry-dean</th><th class="num">duff-tytler</th>'
          '<th class="num">xavier-taylor</th><th class="num">daniel-annable</th>'
          '<th class="num">dylan-patterson</th><th class="num">veteran net move</th>'
@@ -235,7 +236,7 @@ H.append('<h2>How much eta the board needs, dose by dose</h2>')
 H.append('<p class="sub">Kappa, gamma_u, gamma_d and lambda_rel held at your ruled values, so eta is '
          'the only thing moving. Read the top row: even with the age bar switched off entirely, the '
          'board needs eta of 0.31.</p>')
-H.append('<table class="srt"><thead><tr><th>S1 dose</th><th class="num">smallest eta that keeps '
+H.append('<table><thead><tr><th>S1 dose</th><th class="num">smallest eta that keeps '
          'every band inside +14%</th><th class="num">smallest eta that keeps every class inside '
          '1.139</th><th class="num">class mark at that eta</th><th class="num">picks 1-10 at that '
          'eta</th></tr></thead><tbody>')
@@ -254,7 +255,7 @@ H.append('</tbody></table>')
 H.append('<h2>The whole eta = 0 grid, and what it breaks</h2>')
 H.append('<p class="sub">7,560 settings. S1 dose &times; kappa &times; gamma_u &times; lambda_rel, '
          'with eta pinned at zero. Gamma_d is inert at eta = 0 and was not swept.</p>')
-H.append('<table class="srt"><thead><tr><th>rail</th><th class="num">settings that break it</th>'
+H.append('<table><thead><tr><th>rail</th><th class="num">settings that break it</th>'
          '<th>note</th></tr></thead><tbody>')
 for k, v in sorted(SW['law_fail_counts'].items(), key=lambda x: -x[1]):
     H.append('<tr><td>%s</td><td class="num">%d of 7560</td><td>%s</td></tr>'
@@ -281,7 +282,6 @@ H.append('<div class="brk"><h2>AND WHAT ORDER M ADDS TO THAT LIST</h2><ul>'
          'dose 0 with eta 0.31 reads +15.11% there, outside your rail, while its primary reading '
          '(+9.84%) looks safe. Read both.</li></ul></div>')
 
-H.append('<script>%s</script>' % SORT_JS)
 open(os.path.join(HERE, 'ORDER_M_NOARB.html'), 'w').write('\n'.join(H))
 print('wrote ORDER_M_NOARB.html  (%d bytes)'
       % os.path.getsize(os.path.join(HERE, 'ORDER_M_NOARB.html')))

@@ -516,8 +516,9 @@ under-estimated the size of the same charge.
 
 Everything above is measurement. This section is not.
 
-**Your ruling is right about the mechanism.** A charge that reads only games played, and charges a man
-producing 15 points a game clear of his age bar exactly as hard as a man producing 19 points below it,
+**Your ruling is right about the mechanism.** A charge that reads only games played, and charges Harry Dean,
+who is 14.9 points a game clear of his own age bar, exactly as hard as Daniel Annable, who is 19.0
+points below his,
 is not a defensible feature. Harry Dean at +221 lift and −218 charge is the proof, and it is why you
 called it.
 
