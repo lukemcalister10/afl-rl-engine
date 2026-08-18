@@ -85,13 +85,19 @@ for lab in LABELS:
             P('  ' + '-' * 112)
 
 BASE = 'PBUILT'
+# BOTH BASELINES ON EVERY ROW. ORDER K is where this mechanism path began and ORDER P is the board
+# this order changes one thing inside. Printing only one of them hides half the arc.
 for lab in [x for x in LABELS if x != BASE]:
-    P('\n-- THE MOVE, BAND BY BAND (%s minus ORDER P, in points of yr0->1 appreciation) --' % lab)
-    P('  %-16s %12s %12s %12s   %s' % ('band', 'ORDER P', lab, 'move', 'verdict move'))
+    P('\n-- THE MOVE, BAND BY BAND (%s against BOTH baselines, in points of yr0->1 appreciation) --' % lab)
+    P('  %-16s %11s %11s %11s %11s %11s   %s'
+      % ('band', 'ORDER K', 'ORDER P', lab, 'vs ORDER P', 'vs ORDER K', 'verdict P -> this'))
     for b in CLASSIC + BANDS5:
+        ak = OUT['nd']['OKRULED'][b]['apprec01'] if 'OKRULED' in OUT['nd'] else None
         a0 = OUT['nd'][BASE][b]['apprec01']; a1 = OUT['nd'][lab][b]['apprec01']
-        P('  %-16s %+11.2f%% %+11.2f%% %+11.2f   %s -> %s'
-          % (b, 100 * a0, 100 * a1, 100 * (a1 - a0),
+        P('  %-16s %s %+10.2f%% %+10.2f%% %+11.2f %s   %s -> %s'
+          % (b, ('%+10.2f%%' % (100 * ak)) if ak is not None else '          -',
+             100 * a0, 100 * a1, 100 * (a1 - a0),
+             ('%+11.2f' % (100 * (a1 - ak))) if ak is not None else '          -',
              OUT['nd'][BASE][b]['verdict'], OUT['nd'][lab][b]['verdict']))
 
 # ---- pool arms -------------------------------------------------------------------------------------

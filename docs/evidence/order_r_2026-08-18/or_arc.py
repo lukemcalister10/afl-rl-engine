@@ -65,7 +65,11 @@ SPAN = 'R20b2A' if 'R20b2A' in LAB else ('R20b2' if 'R20b2' in LAB else 'RB1')
 # ---- the mechanism diagnostics, from the engine-measured censuses ---------------------------------
 # CENSUS_<tag>.json carries, per row, the charge factor the engine ACTUALLY applied at the blend site
 # (M3-reassembled), plus the pedigree premium and the two surpluses. Read, never recomputed here.
-CTAG = {'K': 'RK', 'P': 'RP', 'RB1': 'RB1', 'RAB1': 'RAB1', 'R15': 'R15', 'R20': 'R20',
+# ORDER K's charge is NOT read from its own census run. It is read from the f_K field the leg
+# recorder captures on EVERY board: that field IS ORDER K's blind games-only eta charge, computed by
+# the engine at the same call site in the same clock state. Reading it off the ORDER P census gives
+# the identical object and saves a thirteenth engine load. The choice is declared, not hidden.
+CTAG = {'P': 'RP', 'RB1': 'RB1', 'RAB1': 'RAB1', 'R15': 'R15', 'R20': 'R20',
         'R15A': 'R15A', 'R20A': 'R20A', 'Rb1': 'Rb1', 'Rb2': 'Rb2', 'R15b1': 'R15b1',
         'R20b2': 'R20b2', 'R20b2A': 'R20b2A'}
 CH = {}
@@ -75,8 +79,12 @@ for l in LAB:
     f = os.path.join(HERE, 'CENSUS_%s.json' % t) if t else None
     if f and os.path.exists(f):
         CH[l] = {c['key']: c for c in json.load(open(f))['charge']}
-    else:
+    elif l != 'K':
         MISSING_CENSUS.append(l)
+if 'P' in CH:
+    CH['K'] = {k: dict(c, f=c.get('f_K')) for k, c in CH['P'].items() if c.get('f_K') is not None}
+else:
+    MISSING_CENSUS.append('K')
 
 BASE = 'P' if 'P' in LAB else LAB[0]
 KEYS = sorted(ROWS[BASE])
