@@ -593,6 +593,19 @@ The ten largest moves in each direction are in `LEDGER_P_out.txt`. The largest r
   the real counts are on the board and in the ledger. Disclosed rather than quietly corrected.
 - **The veteran board (RL_O33) is still parked**, so key-position talls aged 28-30 remain about 30%
   over-priced. Nothing in this order touches them.
+- **`run_panel.sh` / Guard 5 does not pass on this branch, and it did not pass before this order
+  either.** It reports four things: a stale workspace store (`d9a24282` against the checked-out
+  `cb38ef11`), a stale workspace engine, an `engine_head` pin in `data/expected_boot.json`
+  (`a353a9d3`) that matches neither the checked-out engine before this order (`411f4a6d`) nor after
+  it (`7df6a923`), and a `forward_valuation` identity drift. **Three of the four are inherited: the
+  pins were already stale at ORDER K's tree, and this seat has not touched the workspace,
+  `data/expected_boot.json`, or `engine/forward_valuation`.** The fourth is the ordinary consequence
+  of editing the engine at all — the `engine_head` pin moves whenever the source moves, and the
+  guard's own instruction is to re-stamp it *at a bake, in the same commit that moves the source*,
+  which is a landing act and not this seat's to take. **Every board in this order was built through
+  `bbP.sh`, which pins the store, the engine, the forward-valuation tree and the five thread
+  variables explicitly and prints their md5s on every run**, so nothing here was built on an
+  unverified tree. It is recorded so nobody reads a green build suite as a green Guard 5.
 
 ---
 
