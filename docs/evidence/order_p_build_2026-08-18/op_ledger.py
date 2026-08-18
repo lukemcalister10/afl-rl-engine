@@ -98,7 +98,9 @@ def mech(key):
         prem = pg(v0, 'TALL' if pos in TALLPOS else 'SMALL')
         anum += gg * (float(s['avg']) - b); pnum += gg * prem
         num += gg * (float(s['avg']) - (b + prem)); den += gg
-    if den <= 0: return out
+    if den <= 0:
+        out['charge_p'] = out['charge_k']       # no played season: A(0)=0, nothing is charged either way
+        return out
     out['sN'] = anum / den; out['premium'] = pnum / den; out['sP'] = num / den
     out['gated'] = (out['age'] is not None and out['age'] >= C['O37_AGE_GATE'])
     if out['gated'] or g <= 0:

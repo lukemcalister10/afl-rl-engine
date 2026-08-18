@@ -38,10 +38,12 @@ os.environ.update(RL_O31='1', RL_O32='1', RL_O36='1', RL_O37='1', RL_O36_LAM_S1=
 sys.path[:0] = [ROOT, ROOT + '/vendor', ROOT + '/engine/forward_valuation', ROOT + '/engine/rl_after']
 _cwd = os.getcwd(); os.chdir(ROOT + '/engine/rl_after')
 NS = {}
-with contextlib.redirect_stdout(io.StringIO()):
+_BANNER = io.StringIO()
+with contextlib.redirect_stdout(_BANNER):
     import rl_model as MA
     exec(open('_merged_recover.py').read().split('print("=== AFTER')[0], NS)
 os.chdir(_cwd)
+BANNER = _BANNER.getvalue()
 OUT = {}
 L = []
 
@@ -58,6 +60,18 @@ FAC = lambda g, s: math.exp(-LAM * A(g) * T(s))
 OLD = lambda g: max(0.0, 1.0 - ETA * ((g / GD) * math.exp(1.0 - g / GD))) if g > 0 else 1.0
 
 P('ORDER P BUILD — B8, CONTINUITY. Six objects, each measured, none argued.')
+P()
+P('== THE ENGINE\'S OWN BANNER, printed at load with the dial on (it is swallowed by rl_export, so')
+P('   it is captured here) ==')
+_cap = False
+for _ln in BANNER.split('\n'):
+    if _ln.startswith('ORDER P LIVE'):
+        _cap = True
+    elif _cap and not _ln.startswith('  '):
+        _cap = False
+    if _cap:
+        P('   ' + _ln)
+open(os.path.join(HERE, 'ENGINE_BANNER_P.txt'), 'w').write(BANNER)
 
 # ---- AGE -------------------------------------------------------------------------------------------
 MA._O36_SCOPE['armed'] = True; MA._O36_SCOPE['on'] = True

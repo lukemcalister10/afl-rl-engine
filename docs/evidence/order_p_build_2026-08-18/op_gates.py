@@ -28,7 +28,7 @@ V = {t: {k: r['v'] for k, r in B[t].items()} for t in TAGS}
 KEYS = sorted(V['P'])
 AGE = {k: B['P'][k]['age'] for k in KEYS}
 POS = {k: (B['P'][k].get('gf') or B['P'][k]['grp']) for k in KEYS}
-NAME = {k: B['P'][k].get('player') or B['P'][k].get('name') or k for k in KEYS}
+NAME = {k: B['P'][k].get('name') or k for k in KEYS}
 C31 = json.load(open(SP + '/cand31.json'))
 R31 = {r['key']: r for r in C31['rows']}
 LED = json.load(open(os.path.join(ROOT, 'docs', 'ledgers', 'ORDER_P_MOVERS.json')))
@@ -92,16 +92,28 @@ mat = [k for k in KEYS if AGE[k] >= 24]
 mv = [(k, V['P'][k] - V['Kref'][k]) for k in mat]
 mv = [(k, d) for k, d in mv if d != 0]
 churn = sum(abs(d) for _, d in mv); net = sum(d for _, d in mv)
+mvL = [(k, V['P'][k] - V['candP'][k]) for k in mat]
+mvL = [(k, d) for k, d in mvL if d != 0]
+churnL = sum(abs(d) for _, d in mvL); netL = sum(d for _, d in mvL)
+mvK = [(k, V['Kref'][k] - V['candP'][k]) for k in mat]
+mvK = [(k, d) for k, d in mvK if d != 0]
 P('  board total (ORDER K) %d   ·   mature rows %d of %d' % (TOT, len(mat), len(KEYS)))
 P('  rails: churn <= %.0f (0.15%% of the board)   |net| <= %.0f (0.10%%)' % (CH_RAIL, NET_RAIL))
-P('  ORDER P vs ORDER K: %d mature rows move · churn %.0f · net %+.0f  -> %s'
+P('  TWO READINGS, because ORDER P\'s own published estimate was taken against the LANDING CANDIDATE,')
+P('  not against ORDER K, and reporting only one of them would be misleading:')
+P('    ORDER P vs ORDER K            : %d mature rows move · churn %.0f · net %+.0f  -> %s'
   % (len(mv), churn, net, 'INSIDE BOTH' if (churn <= CH_RAIL and abs(net) <= NET_RAIL) else 'BREACH — B4 FIRES'))
-P('  (ORDER K vs the landing candidate read churn 947 / net -601; ORDER P\'s published estimate was 951 / -595)')
+P('    ORDER P vs the landing candidate: %d mature rows move · churn %.0f · net %+.0f  -> %s'
+  % (len(mvL), churnL, netL,
+     'INSIDE BOTH' if (churnL <= CH_RAIL and abs(netL) <= NET_RAIL) else 'BREACH — B4 FIRES'))
+P('    ORDER K vs the landing candidate: %d mature rows move · churn %.0f · net %+.0f  (ORDER K\'s own '
+  'published 947 / -601)' % (len(mvK), sum(abs(d) for _, d in mvK), sum(d for _, d in mvK)))
+P('  ORDER P\'s PUBLISHED ESTIMATE, on the landing-candidate basis, was churn 951 / net -595.')
 if mv:
     P('  every mature row that moves:')
     for k, d in sorted(mv, key=lambda x: -abs(x[1]))[:25]:
         P('    %-28s age %2d  %6d -> %6d  %+5d' % (NAME[k][:28], AGE[k], V['Kref'][k], V['P'][k], d))
-OUT['veteran'] = dict(n=len(mv), churn=churn, net=net, churn_rail=CH_RAIL, net_rail=NET_RAIL,
+OUT['veteran'] = dict(n=len(mv), churn=churn, net=net, n_vs_landing=len(mvL), churn_vs_landing=churnL, net_vs_landing=netL, churn_rail=CH_RAIL, net_rail=NET_RAIL,
                       inside=bool(churn <= CH_RAIL and abs(net) <= NET_RAIL))
 P()
 P('  THE AGE GATE, read on the whole board:')
@@ -114,7 +126,7 @@ P()
 P('== B3 — THE DAY-0 ENTRY VALUES ==')
 zero = [k for k in KEYS if (LR.get(k) or {}).get('m_g', 0) == 0]
 zmove = [k for k in zero if V['P'][k] != V['Kref'][k]]
-P('  rows with ZERO career games on the board: %d.  A(0) = 0 exactly, so not one of them may move.')
+P('  rows with ZERO career games on the board: %d.  A(0) = 0 exactly, so not one may move.' % len(zero))
 P('  rows with zero games that moved: %d  -> %s' % (len(zmove), 'PASS' if not zmove else 'FAIL — B3 FIRES'))
 P('  the emit\'s own printed-day-0 replication proof is run against ORDER K\'s OWN DAY0_K.json, so it')
 P('  is the same test at the printed-price level: see EMIT_PBUILT_out.txt for the 89-of-89 line.')
@@ -213,9 +225,7 @@ P()
 
 # ---- the year-1 class on the 2026 board ------------------------------------------------------------------
 P('== THE YEAR-1 CLASS ON THE 2026 BOARD (board points) ==')
-y1 = [k for k in KEYS if (R31.get(k) or {}).get('yr') == 2025]
-if not y1:
-    y1 = [k for k in KEYS if (LR.get(k) or {}).get('yr') == 2025]
+y1 = [k for k in KEYS if (LR.get(k) or {}).get('yr') == 2025]
 a = sum(V['Kref'][k] for k in y1); b = sum(V['P'][k] for k in y1)
 P('  %d rows, %d -> %d (%+.2f%%);  %d up, %d down, %d unchanged'
   % (len(y1), a, b, 100 * (b - a) / a if a else 0,
