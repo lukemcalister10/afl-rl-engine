@@ -465,6 +465,22 @@ _O36=MA._O36                                                # ORDER I: read in r
 # RL_O37 IMPLIES RL_O36 (and so RL_O35/RL_O32/RL_O31) in rl_model, and nowhere else. Dial off =>
 # ORDER K's board f3101883 reproduces BYTE-EXACT. NOTHING LANDS WITHOUT THE OWNER'S WORD.
 _O37=MA._O37                                                # ORDER P: read in rl_model (it sets the O36 dose default)
+# ORDER Q — TWO DEFECT REPAIRS, PRICED AND NOT ADOPTED (RL_O38A / RL_O38B1 / RL_O38B2; PREREG_Q.md
+# pushed before this edit). RL_O38A monotonises the pedigree leg in ENTRY PRICE. RL_O38B1 deletes the
+# age-24 gate. RL_O38B2 ramps the charge out across ages 23-26 with an INVENTED endpoint. Each implies
+# RL_O37 (and so the whole O36/O35/O32/O31 stack) in rl_model and nowhere else. All three unset =>
+# ORDER P's board 374d4e44 reproduces BYTE-EXACT. NOTHING IS ADOPTED AND NOTHING LANDS.
+_O38A=os.environ.get('RL_O38A','0')!='0'
+_O38B1=os.environ.get('RL_O38B1','0')!='0'
+_O38B2=os.environ.get('RL_O38B2','0')!='0'
+_O38=_O38A or _O38B1 or _O38B2
+if _O38B1 and _O38B2:
+    raise SystemExit('ORDER Q HALT: RL_O38B1 and RL_O38B2 are ALTERNATIVES, not a stack. B1 deletes '
+                     'the age gate outright; B2 ramps the charge out across 23-26. Running both would '
+                     'price a variant nobody asked for and label it one of the two.')
+if _O38 and not _O37:
+    raise SystemExit('ORDER Q HALT: an RL_O38* dial is set but RL_O37 is not live. The ORDER Q repairs '
+                     'act on the ORDER P charge; without it there is nothing to repair.')
 _O35=_O35 or _O36                                           # ORDER I implies the pick-curve fade
 _O32=(os.environ.get('RL_O32','0')!='0') or _O34 or _O35    # ORDER A: CANDIDATE 32 (ORDERS C/D build ON it)
 _O32S=(int(os.environ.get('RL_O32_STAGE','6')) if _O32 else 0)
@@ -3935,6 +3951,158 @@ if _O30B_PREVIEW:
         if _s is None: return _old
         _T=min(max(1.0-O37_THETA_R*(_s-O37_S0),0.0),O37_TMAX)
         return _math.exp(-O37_LAMBDA*(1.0-_math.exp(-float(g)/O37_G0))*_T)
+    # ===== ORDER Q (RL_O38A / RL_O38B1 / RL_O38B2) — TWO DEFECTS IN THE ORDER P CHARGE ============
+    # PREREG_Q.md, pushed before this edit · docs/evidence/order_q_2026-08-18.
+    # THIS IS A MEASUREMENT ORDER. NOTHING HERE IS ADOPTED AND NOTHING LANDS. All three dials off =>
+    # not one byte of this block executes and ORDER P's board 374d4e44 reproduces BYTE-EXACT.
+    #
+    # DEFECT 1 — THE PICK REVERSAL (repaired by RL_O38A). Hold a row's output and games fixed and
+    # raise ONLY his entry price. His pedigree leg is  v0 * exp(-LAMBDA*A(g)*T(s_P)). Raising v0
+    # raises the bar he is judged against through PG, which raises his charge. Differentiating, the
+    # leg FALLS with price wherever  dPG/dln(v0) > 1/(BETA_sat*A).  At saturation that threshold is
+    # 1/0.1146463 = 8.723 and the measured SMALL premium slope averages about 8.95 across its
+    # support, so this is a board-wide reversal and not an exotic corner. A higher pick can be worth
+    # LESS than a lower pick on identical evidence.
+    #
+    # THE REPAIR, WITH NO FREE PARAMETER. Write x = ln(v0) in engine currency and
+    #     psi(x) = x - LAMBDA*A(g)*T( OUT - wTALL*PG(x,TALL) - wSMALL*PG(x,SMALL) )
+    # so that the charged pedigree leg is proportional to exp(psi(x)). The charge is CAPPED at its
+    # own inversion point by taking the RUNNING MAXIMUM from the left:
+    #     psi_A(x) = max over u <= x of psi(u)        factor = exp( psi_A(x) - x )
+    # exp(psi_A) is non-decreasing in x BY CONSTRUCTION, so no lower entry price can price higher.
+    # psi_A >= psi always, so the charge is only ever CAPPED, never raised: a price can only move UP
+    # against ORDER P. And psi(u) <= u for every u <= x, so the factor stays in (0,1] and no row can
+    # price above its own uncharged price. This is the same isotonic idea the ISO multiplier already
+    # uses in this engine over pick, applied here over entry price.
+    #
+    # IT IS COMPUTED EXACTLY, NOT ON A GRID. PG is piecewise linear on its published nodes and T is
+    # piecewise linear in s with two clip breakpoints, so psi is piecewise linear in x. The maximum
+    # of a piecewise linear function sits at a breakpoint. The candidate set is therefore the premium
+    # grid nodes of both classes below x, the flat-support boundaries, the clip crossings inside each
+    # segment, and x itself.
+    # ONE DISCLOSED RESIDUAL: the engine reads the premium at v0 ROUNDED TO ONE DECIMAL, which makes
+    # the true function a staircase with steps of 0.1 in engine currency. Monotonicity therefore holds
+    # up to one rounding cell, not to the last bit. The residual is bounded by BETA_sat*A*(dPG/dx)*
+    # (0.1/v0) in log terms -- about 3e-5 of the leg at v0 = 3,000, well under one board point -- and
+    # it is MEASURED densely in the continuity suite rather than asserted.
+    #
+    # DEFECT 2 — THE AGE-24 CLIFF (repaired by RL_O38B1 or RL_O38B2). ORDER P's own age gate reads
+    # `if (int(Y)-int(_by))>=O37_AGE_GATE: return _old`. At 24 the charge does not switch off. It
+    # HANDS BACK to ORDER K's games-only charge. So on his 24th birthday, with his games and his
+    # output unchanged, a player's price becomes his ORDER K price. The owner's words: "players
+    # shouldn't have drastic price changes for no reason other than getting older."
+    #   RL_O38B1 — DELETE THE GATE. The charge runs at every age on the same bar. From 24 the S1 age
+    #     bar already equals the flat bar by construction, so a mature row is judged against the flat
+    #     bar plus the measured premium. No phase-out and no new parameter. THE KNOWN COST: mature
+    #     rows are NO LONGER byte-identical to ORDER K. That is the price of this option and it is
+    #     measured and reported in full, never buried.
+    #   RL_O38B2 — RAMP THE CHARGE OUT ACROSS AGES 23 TO 26, in the exponent:
+    #       ln f = w(age)*ln f_P + (1 - w(age))*ln f_K
+    #       w = 1 at 23 and below, 2/3 at 24, 1/3 at 25, 0 at 26 and above.
+    #     THE ENDPOINT 26 IS A FREE PARAMETER. IT WAS INVENTED BY THIS SEAT AND IT WAS NOT MEASURED.
+    #     It is never described as derived. A second disclosure: age in this engine is the integer
+    #     int(Y) - int(birth year), so this does not remove the step. It replaces one step of full
+    #     size with three steps of a third the size. That is what a ramp can be on an integer axis.
+    # The two are alternatives, not a stack. Setting both HALTS at load.
+    def o38_pg_at(_x,cls):
+        """PG read directly at ln(v0) rather than at v0. Identical to o37_pg by construction:
+        o37_pg(v) takes the log first and then does exactly this interpolation."""
+        _lo,_hi,_y=O37_PG_GRID[cls]
+        if _x<=_lo: return _y[0]
+        if _x>=_hi: return _y[-1]
+        _t=(_x-_lo)/(_hi-_lo)*(len(_y)-1)
+        _i=int(_t)
+        if _i>=len(_y)-1: return _y[-1]
+        return _y[_i]+(_t-_i)*(_y[_i+1]-_y[_i])
+    _O38_PCACHE={}
+    def o38_parts(p,Y):
+        """(OUT, wTALL, wSMALL) on exactly o37_surplus's own rules and fallbacks.
+        OUT is the games-weighted mean of (season avg - AGE bar): the part of s_P that does NOT move
+        with entry price. wTALL/wSMALL are the games shares of the two premium classes. Then
+            s_P(v) = OUT - wTALL*PG(v,'TALL') - wSMALL*PG(v,'SMALL')     EXACTLY.
+        Returns None wherever o37_surplus returns None, so the fallback population is identical."""
+        _ck=(id(p),p.get('key'),int(Y))
+        if _ck in _O38_PCACHE: return _O38_PCACHE[_ck]
+        _r=None; _by=p.get('_by')
+        if _by:
+            _num=_den=_wt=0.0; _ok=True
+            for _x in (p.get('scoring') or []):
+                if _x['year']>Y: continue
+                _gg=float(_x.get('games') or 0.0)
+                if _gg<=0.0: continue
+                _pos=MA._fit_bar(p,_x['year'])
+                _b=o32_gate_bar(_pos,_x['year']-_by)
+                if _b is None or _x.get('avg') is None: _ok=False; break
+                _num+=_gg*(float(_x['avg'])-_b); _den+=_gg
+                if _pos in O32_TALLPOS: _wt+=_gg
+            if _ok and _den>0.0: _r=(_num/_den,_wt/_den,1.0-_wt/_den)
+        _O38_PCACHE[_ck]=_r
+        return _r
+    def o38_T(_s):
+        return min(max(1.0-O37_THETA_R*(_s-O37_S0),0.0),O37_TMAX)
+    def o38_mono(p,Y,g,_s):
+        """FIX A. The charge, capped wherever the pedigree leg would otherwise FALL as entry price
+        RISES. Returns the multiplier the pedigree leg is charged by, in (0,1]."""
+        _A=1.0-_math.exp(-float(g)/O37_G0)
+        _pr=o38_parts(p,Y)
+        _v=day0_v0(p)
+        if _pr is None or _v is None:
+            return _math.exp(-O37_LAMBDA*_A*o38_T(_s))
+        _OUT,_wT,_wS=_pr
+        _X=_math.log(round(float(_v)*_PL_F,1))
+        def _sx(_x):
+            return _OUT-(_wT*o38_pg_at(_x,'TALL')+_wS*o38_pg_at(_x,'SMALL'))
+        def _psi(_x):
+            return _x-O37_LAMBDA*_A*o38_T(_sx(_x))
+        _cand=[]
+        for _c,_wc in (('TALL',_wT),('SMALL',_wS)):
+            if _wc<=0.0: continue
+            _lo,_hi,_y=O37_PG_GRID[_c]; _n=len(_y)
+            for _i in range(_n):
+                _xi=_lo+(_hi-_lo)*_i/(_n-1.0)
+                if _xi<_X: _cand.append(_xi)
+        _cand.append(_X)
+        _cand=sorted(set(_cand))
+        # the clip crossings: s is affine on each segment, so the pre-clip T is affine and its two
+        # clip boundaries are the only interior places psi can change slope.
+        _extra=[]
+        for _j in range(len(_cand)-1):
+            _a,_b=_cand[_j],_cand[_j+1]
+            _sa,_sb=_sx(_a),_sx(_b)
+            if _sa==_sb: continue
+            for _tv in (0.0,O37_TMAX):
+                _st=O37_S0+(1.0-_tv)/O37_THETA_R
+                if (_sa-_st)*(_sb-_st)<0.0:
+                    _extra.append(_a+(_b-_a)*(_st-_sa)/(_sb-_sa))
+        if _extra: _cand=sorted(set(_cand+_extra))
+        _m=_psi(_X)
+        for _x in _cand:
+            _q=_psi(_x)
+            if _q>_m: _m=_q
+        return _math.exp(_m-_X)
+    def o38_w(_age):
+        """The weight on the ORDER P charge. B1: 1 at every age. B2: the 23-to-26 ramp.
+        Neither: ORDER P's own hard gate at 24."""
+        if _O38B1: return 1.0
+        if _O38B2:
+            if _age<=23: return 1.0
+            if _age>=26: return 0.0
+            return (26.0-float(_age))/3.0
+        return 1.0 if _age<O37_AGE_GATE else 0.0
+    def o38_factor(p,Y,g):
+        """The ORDER Q multiplier. Falls back to the ORDER K charge, byte for byte, on exactly the
+        rows ORDER P falls back on: no birth year, no day-0 v0, no readable bar."""
+        _old=max(0.0,1.0-O32_ETA*((float(g)/O32_GAMMA_D)*_math.exp(1.0-float(g)/O32_GAMMA_D)))
+        _by=p.get('_by')
+        if not _by: return _old
+        _w=o38_w(int(Y)-int(_by))
+        if _w<=0.0: return _old
+        _s=o37_surplus(p,Y)
+        if _s is None: return _old
+        _f=o38_mono(p,Y,g,_s) if _O38A else _math.exp(-O37_LAMBDA*(1.0-_math.exp(-float(g)/O37_G0))*o38_T(_s))
+        if _w>=1.0: return _f
+        if _f<=0.0 or _old<=0.0: return _f*_w+_old*(1.0-_w)
+        return _math.exp(_w*_math.log(_f)+(1.0-_w)*_math.log(_old))
     def o31_pi(p,Y,g=None):
         """pi(g, c_u, s) = Phi(g,s) * [ D(c_u)*(1-rho(g)) + beta_mono(g)*rho(g) ].
         At g=0 this is D(c_u) EXACTLY. As rho -> 1 it is the measured additive beta EXACTLY."""
@@ -3955,8 +4123,10 @@ if _O30B_PREVIEW:
             # site. Dial off => the second branch runs and not one byte of the first executes, which
             # is what makes f3101883 reproduce exactly. m_d(0) = 0 and A(0) = 0, so BOTH forms leave
             # every gameless row untouched and pi(0,c) = D(c) still holds for both.
-            _pi*=(o37_factor(p,Y,_g) if _O37 else
-                  max(0.0,1.0-O32_ETA*((_g/O32_GAMMA_D)*_math.exp(1.0-_g/O32_GAMMA_D))))
+            # ORDER Q (RL_O38A/B1/B2): the two defect repairs sit at this same one site. With all
+            # three dials off `_O38` is False and o37_factor runs exactly as before, byte for byte.
+            _pi*=(((o38_factor(p,Y,_g) if _O38 else o37_factor(p,Y,_g)) if _O37 else
+                  max(0.0,1.0-O32_ETA*((_g/O32_GAMMA_D)*_math.exp(1.0-_g/O32_GAMMA_D)))))
         return _pi
     def _pv_order31(p,Y,e):
         """THE ONE LAW. One expression, every row, every pathway, every games count.
@@ -4259,6 +4429,78 @@ if _O30B_PREVIEW:
                     O37_PG_GRID['TALL'][2][0],O37_PG_GRID['TALL'][2][-1],
                     _math.exp(O37_PG_GRID['TALL'][0]),_math.exp(O37_PG_GRID['TALL'][1]),
                     _stepPG,O37_LAMBDA*O37_THETA_R,_o37n))
+        if _O38:
+            # ===== ORDER Q — BUILD-FAILING STRUCTURAL ASSERTS ==========================================
+            # Q-A1  the FIX A factor is never SMALLER than ORDER P's: the repair CAPS a charge, it never
+            #       raises one, so a price can only move UP against ORDER P.
+            # Q-A2  the FIX A factor stays in (0, 1]: no row can price above its own uncharged price.
+            # Q-A3  the monotonised leg is NON-DECREASING in entry price on a dense synthetic sweep.
+            # Q-B1  the ORDER K charge is strictly positive at every games count, so the B2 ramp's
+            #       geometric blend is defined everywhere.
+            # Q-B2  the ramp weight is 1 at 23, 0 at 26 and above, and non-increasing between.
+            if _O38A:
+                _qA=1.0-_math.exp(-17.0/O37_G0)
+                for _cls in ('TALL','SMALL'):
+                    _lo,_hi,_y=O37_PG_GRID[_cls]
+                    _wT,_wS=(1.0,0.0) if _cls=='TALL' else (0.0,1.0)
+                    for _OUT in (-30.0,-12.0,-4.0,0.0,6.0,20.0):
+                        _prev=None; _pm=None
+                        for _k in range(0,1201):
+                            _x=_lo-0.6+(_hi-_lo+1.2)*_k/1200.0
+                            _sx=_OUT-(_wT*o38_pg_at(_x,'TALL')+_wS*o38_pg_at(_x,'SMALL'))
+                            _ps=_x-O37_LAMBDA*_qA*o38_T(_sx)
+                            _pm=_ps if _pm is None else max(_pm,_ps)
+                            _fA=_math.exp(_pm-_x); _fP=_math.exp(-O37_LAMBDA*_qA*o38_T(_sx))
+                            if _fA<_fP-1e-12:
+                                raise SystemExit('ORDER Q HALT (Q-A1): the monotonised factor is BELOW '
+                                                 'ORDER P\'s at %s x=%.4f (%.9f < %.9f). FIX A may only '
+                                                 'CAP a charge.'%(_cls,_x,_fA,_fP))
+                            if not (0.0<_fA<=1.0+1e-12):
+                                raise SystemExit('ORDER Q HALT (Q-A2): the monotonised factor left (0,1] '
+                                                 'at %s x=%.4f: %.9f'%(_cls,_x,_fA))
+                            _leg=_math.exp(_pm)
+                            if _prev is not None and _leg<_prev-1e-9:
+                                raise SystemExit('ORDER Q HALT (Q-A3): the monotonised pedigree leg FALLS '
+                                                 'with entry price at %s x=%.4f (%.9f -> %.9f)'
+                                                 %(_cls,_x,_prev,_leg))
+                            _prev=_leg
+            for _gq in [0.01*_i for _i in range(1,20001)]:
+                if not (max(0.0,1.0-O32_ETA*((_gq/O32_GAMMA_D)*_math.exp(1.0-_gq/O32_GAMMA_D)))>0.0):
+                    raise SystemExit('ORDER Q HALT (Q-B1): the ORDER K charge reaches zero at g=%.2f, so '
+                                     'the B2 geometric ramp is undefined there.'%_gq)
+            _wprev=None
+            for _ag in range(16,41):
+                _wq=(1.0 if _ag<=23 else (0.0 if _ag>=26 else (26.0-float(_ag))/3.0))
+                if _wprev is not None and _wq>_wprev+1e-15:
+                    raise SystemExit('ORDER Q HALT (Q-B2): the B2 ramp weight RISES with age at %d'%_ag)
+                _wprev=_wq
+            if abs(o38_w(23)-1.0)>1e-15 or (not _O38B1 and abs(o38_w(26)-0.0)>1e-15):
+                raise SystemExit('ORDER Q HALT (Q-B2): the ramp endpoints are not 1 at 23 and 0 at 26')
+            _o38n=sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p)
+                      and MA.GRP.get(_p.get('pos')) and _p.get('_by')
+                      and o38_w(MA.BASE_REF-int(_p['_by']))>0.0
+                      and o37_surplus(_p,MA.BASE_REF) is not None)
+            _o38m=sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p)
+                      and MA.GRP.get(_p.get('pos')) and _p.get('_by')
+                      and (MA.BASE_REF-int(_p['_by']))>=O37_AGE_GATE
+                      and o38_w(MA.BASE_REF-int(_p['_by']))>0.0
+                      and o37_surplus(_p,MA.BASE_REF) is not None)
+            print('ORDER Q LIVE — TWO DEFECT REPAIRS, PRICED AND NOT ADOPTED. NOTHING IS GREENLIT AND '
+                  'NOTHING MERGES.\n'
+                  '  FIX A (RL_O38A) %s — the pedigree leg is monotonised in ENTRY PRICE by the running '
+                  'maximum of x - LAMBDA*A(g)*T(s_P(x)) over x = ln(v0). No free parameter: the charge is '
+                  'CAPPED at its own inversion point. Exact on the piecewise-linear breakpoints, up to the '
+                  'engine\'s own one-decimal rounding of the premium axis, which is disclosed and measured.\n'
+                  '  FIX B1 (RL_O38B1) %s — the age-24 gate is DELETED. Mature rows are NO LONGER '
+                  'byte-identical to ORDER K and that movement is the price of this option.\n'
+                  '  FIX B2 (RL_O38B2) %s — the charge is ramped out across ages 23 to 26 in the exponent, '
+                  'w = 1, 2/3, 1/3, 0. THE ENDPOINT 26 IS A FREE PARAMETER INVENTED BY THIS SEAT. IT WAS '
+                  'NOT MEASURED. Age here is an integer, so this replaces one full step with three '
+                  'third-sized steps rather than removing the step.\n'
+                  '  %d active rows now carry the ORDER P charge (%d of them aged %d or over, which ORDER '
+                  'P left on the ORDER K charge). A(0)=0 still, so no day-0 print can move.'
+                  %('LIVE' if _O38A else 'off','LIVE' if _O38B1 else 'off','LIVE' if _O38B2 else 'off',
+                    _o38n,_o38m,O37_AGE_GATE))
         if _O35:
             print('ORDER D PICK-CURVE FADE LIVE (RL_O35=1) — THE LANDING CANDIDATE ON THE OWNER\'S WORD. '
                   'D_eff = D(c_u)^kappa(pick), kappa = clip((%.4f%+.4f·ln p)/%.4f, %.1f, %.1f): '

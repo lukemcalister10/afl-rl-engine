@@ -1083,7 +1083,12 @@ def survival(b,delta,games):
 # O35/O32/O31) and, where the ORDER K constants are not passed explicitly, defaults them to ORDER K's
 # RULED values — the dose 0.40 below, and kappa 0.20 / gamma_u 8.0 / eta 0.50 in _merged_recover.py.
 # RL_O37 unset => this line is byte-identical and the whole ORDER P block is inert.
-_O37=os.environ.get('RL_O37','0')!='0'
+# ORDER Q (RL_O38A / RL_O38B1 / RL_O38B2) — the two defect repairs. Each IMPLIES RL_O37, and so
+# the whole O36/O35/O32/O31 stack and ORDER K's ruled defaults, exactly as RL_O37 itself does.
+# All three unset => this line is byte-identical and the whole ORDER Q block is inert.
+_O37=(os.environ.get('RL_O37','0')!='0'
+      or os.environ.get('RL_O38A','0')!='0' or os.environ.get('RL_O38B1','0')!='0'
+      or os.environ.get('RL_O38B2','0')!='0')
 _O36=(os.environ.get('RL_O36','0')!='0') or _O37
 # THE DOSE. NOT hand-picked and NOT chosen by looking at harry-dean. The joint calibration
 # (docs/evidence/order_i_2026-08-18/o36_calibrate.py) swept it against the counterweight and the
