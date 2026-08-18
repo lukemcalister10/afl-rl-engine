@@ -652,6 +652,16 @@ candidate's and candidate 31's matrices were **reused, not rebuilt**.
 | `om_continuity.py` · `CONTINUITY_M.json` | age, games, pick, rho32 — at eta = 0 |
 | `om_day0_identity.py` · `DAY0_IDENTITY_M.json` | derived_v0, 89 of 89 |
 | `om_pages.py` · `ORDER_M_NOARB.html` | the owner document |
+| `om_floorprobe.py` · `FLOORPROBE_M.json` · `FLOORPROBE_M_out.txt` | the outside-the-grid bound |
+| `om_md5s.py` · `BOARDS_M.json` · `BOARDS_M_out.txt` | every board built here, md5 recomputed from disk |
+| `build_kmaxM.sh` · `BUILD_KMAX_M_out.txt` | the maximum-kappa control boards |
+| `om_packet_fill.py` | fills this packet's ladder tables from the built boards, so they are never retyped |
+
+**THE OWNER DOCUMENT IS PUBLISHED**, so you do not have to open the repo to read it:
+
+**https://claude.ai/code/artifact/328c7501-7198-4ce5-a506-e723e73030c5**
+
+It is private to your account until you share it.
 
 **Why there are not three owner documents.** The prereg declared that the player list, the year-1
 class page and the no-arb tables would be produced **if outcome (a) obtained** — if a legal setting
