@@ -23,7 +23,11 @@ LADDER_A = [('M0', 0.40, 0.00), ('E10', 0.40, 0.10), ('E20', 0.40, 0.20), ('E30'
             ('E40', 0.40, 0.40), ('K', 0.40, 0.50)]
 LADDER_B = [('MLO', 0.00, 0.00), ('MMIN', 0.00, 0.31), ('F20', 0.20, 0.39), ('K', 0.40, 0.50),
             ('F60', 0.60, 0.64), ('F70', 0.70, 0.72)]
-TAGS = sorted({t for t, _, _ in LADDER_A + LADDER_B} | {'cand'})
+# the MAXIMUM-KAPPA control: kappa as hard as rho32 monotonicity permits (0.60 at gamma_u 16), with
+# eta at zero, at dose 0 and at the ruled dose 0.40. This is the built test of the packet's claim that
+# kappa alone cannot charge the sub-expectation rows.
+KMAXTAGS = [('KMAX', 0.00, 0.00), ('KMX4', 0.40, 0.00)]
+TAGS = sorted({t for t, _, _ in LADDER_A + LADDER_B + KMAXTAGS} | {'cand'})
 BP = {t: OM + '/bb_%s/rl_after/rl_app_data.json' % t for t in TAGS}
 MD5 = {t: hashlib.md5(open(BP[t], 'rb').read()).hexdigest() for t in TAGS}
 V = {t: {r['key']: r['v'] for r in json.load(open(BP[t]))['active']} for t in TAGS}
@@ -110,22 +114,52 @@ P()
 P('=' * 128)
 P('WHAT THE LADDER SAYS, IN ONE PLACE')
 P('=' * 128)
-A = OUT['ladderA']
-cross_dean = [r for r in A if r['dean'] >= 2600]
-hold_g6 = [r for r in A if r['xavier'] <= V['cand']['xavier-taylor']
-           and r['annable'] <= V['cand']['daniel-annable']
-           and r['patterson'] <= V['cand']['dylan-patterson']]
-P('  At the ruled dose 0.40:')
-P('    harry-dean reaches the owner\'s ~2,600 at eta <= %s'
-  % (max(r['eta'] for r in cross_dean) if cross_dean else 'no eta on the ladder'))
-P('    all three G6 rows hold at eta >= %s'
-  % (min(r['eta'] for r in hold_g6) if hold_g6 else 'no eta on the ladder'))
-P('    the board is legal at eta >= 0.50 (the navigation curve, Q1)')
-if cross_dean and hold_g6:
-    lo = min(r['eta'] for r in hold_g6); hi = max(r['eta'] for r in cross_dean)
-    P('    -> the dean window and the G6 window %s'
-      % ('OVERLAP at eta in [%.2f, %.2f]' % (lo, hi) if lo <= hi else
-         'DO NOT OVERLAP: G6 needs eta >= %.2f, dean needs eta <= %.2f' % (lo, hi)))
+A = sorted(OUT['ladderA'], key=lambda r: r['eta'])
+
+
+def cross(field, target, falling=True):
+    """the eta at which `field` crosses `target`, by linear interpolation between built boards.
+    Every row on this ladder is a REAL BOARD; only the crossing point between two of them is
+    interpolated, and it is labelled as such wherever it is printed."""
+    for a, b in zip(A, A[1:]):
+        va, vb = a[field], b[field]
+        if (va >= target >= vb) or (va <= target <= vb):
+            if va == vb:
+                return a['eta']
+            return a['eta'] + (b['eta'] - a['eta']) * (va - target) / (va - vb)
+    return None
+
+
+P('  At the RULED DOSE 0.40, every knob but eta held. Crossings are interpolated between built boards.')
+P()
+ED = cross('dean', 2600)
+EC = cross('cdt', 1800)
+EX = cross('xavier', V['cand']['xavier-taylor'])
+EA = cross('annable', V['cand']['daniel-annable'])
+EP = cross('patterson', V['cand']['dylan-patterson'])
+P('    harry-dean reaches ~2,600           at eta = %s   -> he needs eta AT OR BELOW this'
+  % ('%.2f' % ED if ED is not None else 'not on the ladder'))
+P('    cooper-duff-tytler reaches ~1,800   at eta = %s   -> he needs eta AT OR BELOW this'
+  % ('%.2f' % EC if EC is not None else 'not on the ladder'))
+P('    xavier-taylor stops rising          at eta = %s   -> G6 needs eta AT OR ABOVE this'
+  % ('%.2f' % EX if EX is not None else 'not reached even at eta 0.50'))
+P('    daniel-annable stops rising         at eta = %s   -> G6 needs eta AT OR ABOVE this'
+  % ('%.2f' % EA if EA is not None else 'NOT REACHED even at eta 0.50 — this is ORDER K\'s own +7 breach'))
+P('    dylan-patterson stops rising        at eta = %s   -> G6 needs eta AT OR ABOVE this'
+  % ('%.2f' % EP if EP is not None else 'not reached even at eta 0.50'))
+P('    the BOARD IS LEGAL                  at eta = 0.50 and above  (TRADEOFF_M.json Q1, dose 0.40)')
+P()
+need_lo = max([x for x in (EX, EA, EP) if x is not None] + [0.50])
+want_hi = min([x for x in (ED, EC) if x is not None] or [0.0])
+P('    THE TWO WINDOWS:')
+P('      to satisfy G5 (the owner\'s two rows) eta must be at or below   %.2f' % want_hi)
+P('      to satisfy G6 and the board\'s own rails eta must be at least   %.2f' % need_lo)
+if want_hi < need_lo:
+    P('      -> THEY DO NOT OVERLAP. The gap is %.2f of eta. There is no setting of eta at the ruled'
+      % (need_lo - want_hi))
+    P('         dose that gives the owner both. This is the finding, and it is not a near miss.')
+else:
+    P('      -> they overlap at eta in [%.2f, %.2f]' % (need_lo, want_hi))
 B = OUT['ladderB']
 best = max(B, key=lambda r: r['dean'])
 legal = [r for r in B if r['eta'] > 0]
@@ -142,6 +176,42 @@ if illegal:
     P('    the ILLEGAL far end (dose 0, no eta at all) buys dean %d and CDT %d.'
       % (illegal[0]['dean'], illegal[0]['cdt']))
 P('    That gap is the trade the owner is being asked to make, and it is priced here rather than argued.')
+# ---- the maximum-kappa control ---------------------------------------------------------------------
+P()
+P('=' * 128)
+P('THE MAXIMUM-KAPPA CONTROL — can kappa charge the sub-expectation rows once eta is gone?')
+P('=' * 128)
+P('  kappa 0.60 with gamma_u 16 is the HARDEST kappa the ruled rho32-monotonicity constraint admits')
+P('  anywhere on the declared grid. It is three times ORDER K\'s 0.20. eta is at zero on both rows.')
+P()
+P('  %-6s %5s %6s %5s | %8s %8s %8s | %8s %8s'
+  % ('tag', 'dose', 'kappa', 'eta', 'x-tayl', 'annable', 'patters', 'dean', 'CDT'))
+P('  %-6s %5s %6s %5s | %8d %8d %8d | %8d %8d'
+  % ('base', '-', '-', '-', V['cand']['xavier-taylor'], V['cand']['daniel-annable'],
+     V['cand']['dylan-patterson'], V['cand']['harry-dean'], V['cand']['cooper-duff-tytler']))
+KM = []
+for tag, dose, eta in KMAXTAGS:
+    g6 = sum(1 for k in ('xavier-taylor', 'daniel-annable', 'dylan-patterson')
+             if V[tag][k] > V['cand'][k])
+    KM.append(dict(tag=tag, dose=dose, kappa=0.60, gamma_u=16.0, eta=eta, md5=MD5[tag][:8],
+                   xavier=V[tag]['xavier-taylor'], annable=V[tag]['daniel-annable'],
+                   patterson=V[tag]['dylan-patterson'], dean=V[tag]['harry-dean'],
+                   cdt=V[tag]['cooper-duff-tytler'], g6_rising=g6))
+    P('  %-6s %5.2f %6.2f %5.2f | %8d %8d %8d | %8d %8d   %s'
+      % (tag, dose, 0.60, eta, V[tag]['xavier-taylor'], V[tag]['daniel-annable'],
+         V[tag]['dylan-patterson'], V[tag]['harry-dean'], V[tag]['cooper-duff-tytler'],
+         'G6: %d of 3 STILL RISE' % g6 if g6 else 'G6 holds'))
+OUT['kappa_max'] = KM
+P()
+P('  -> %s'
+  % ('KAPPA CANNOT CHARGE THEM. At the hardest kappa the ruled constraints allow, with eta at zero, '
+     'the sub-expectation rows still rise above their landing values.'
+     if any(r['g6_rising'] for r in KM) else
+     'kappa DOES hold them at its hardest setting — the packet must be corrected.'))
+P('     The reason is structural. Kappa moves weight BETWEEN two legs — off pedigree, onto shown')
+P('     production. Eta charged one leg DOWN. Those are different operations. Kappa can tilt the')
+P('     balance; only eta could subtract value from the row.')
+
 json.dump(OUT, open(os.path.join(HERE, 'LADDER_M.json'), 'w'), indent=1, default=float)
 open(os.path.join(HERE, 'LADDER_M_out.txt'), 'w').write('\n'.join(L) + '\n')
 print('\nwritten: LADDER_M.json / LADDER_M_out.txt')

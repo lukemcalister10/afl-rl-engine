@@ -182,11 +182,18 @@ I said in the prereg that this would happen and why. It happened.
 
 **Say it plainly: kappa alone cannot charge these rows.**
 
-Here is the proof, not the argument. Take the age bar off entirely — dose 0.00 — and set kappa to
-0.15, and they still rise: Xavier Taylor +131, Daniel Annable +141, Dylan Patterson +257. Raising
-kappa to its highest monotone value does not close it either, because kappa moves weight *between*
-two legs and eta charged one leg *down*. They are different operations. Kappa can tilt. Only eta can
-subtract.
+Here is the proof, not the argument.
+
+**First**, take the age bar off entirely — dose 0.00 — and they still rise: Xavier Taylor +131, Daniel
+Annable +141, Dylan Patterson +257. So this is not the age bar's doing.
+
+**Second**, turn kappa up as far as the ruled constraints allow. rho32 monotonicity is what caps kappa,
+and the highest monotone value on the grid is 0.60 at gamma_u 16 — four times ORDER K's 0.20. I built
+that board rather than argue it. The result is in `LADDER_M_out.txt` under tag `KMAX`.
+
+The reason is structural, and it is worth one sentence. **Kappa moves weight between two legs. Eta
+charged one leg down.** Those are different operations. Kappa can tilt the balance between pedigree
+and shown production; it cannot remove value from the row. Only eta could subtract.
 
 **And this is worse than undoing what ORDER K added.** The landing candidate `1f176444` already
 carries eta at 0.41. Setting eta to zero removes a charge the base board was already levying. That is
@@ -407,15 +414,22 @@ Everything the standing acceptance suite asks for was run, on the eta = 0 board.
 | **M6** | the sweep instrument reproduces `REMIX_32R` | **PASS** | deviation 0.00e+00 |
 | **M6** | the landing-candidate control | **PASS** | 1.0421 |
 | **M7** | eta = 0 must materially raise harry-dean | **DID NOT FIRE** | +666 |
-| **J-TOL** | veteran pool, per-row cap | **BREACH** | 105 of 429 rows over their own cap |
-| **J-TOL** | veteran pool, churn cap ≤ 1,001.87 | **BREACH** | **2,923** |
-| **J-TOL** | veteran pool, net cap ≤ 667.92 | **BREACH** | **+2,781** |
+| **J-TOL** | veteran pool, per-row cap | **BREACH** | 105 of 429 rows over their own cap (ORDER K, same lane: 79) |
+| **J-TOL** | veteran pool, churn cap ≤ 1,001.87 | **BREACH** | **2,923** (ORDER K, same lane: 947 — inside) |
+| **J-TOL** | veteran pool, net cap ≤ 667.92 | **BREACH** | **+2,781** (ORDER K, same lane: −601 — inside) |
 
-**The veteran breach deserves its own sentence.** ORDER K breached the net cap by 27 points, in the
-negative direction — veterans got slightly cheaper. Eta = 0 breaches it by **2,113 points in the
-positive direction**. Veterans get *more expensive*, four times further out of tolerance, and in the
-opposite direction. The cause is the same one ORDER K named: the counterweight keys on career games,
-not on age, so a 27-year-old with 20 games sits on the same curve as a 19-year-old with 20 games.
+**The veteran breach deserves its own paragraph, and the lanes must be named or the comparison is
+wrong.** The three J-TOL numbers above are read on the **whole board** lane — every lever live,
+including the exempt tall factor — for both ORDER K and eta = 0, so they are like for like.
+
+On that lane ORDER K is **inside** all three caps: churn 947 against 1,001.87, net −601 against
+667.92. (ORDER K's own packet reported −695 against 667.92, over by 27; that is a **different lane** —
+the gated levers with the tall factor removed — and this seat is not going to blur the two.)
+
+**Eta = 0 is outside all three, and in the opposite direction.** Net **+2,781** against a 668 line, four
+times out of tolerance. Veterans get *more expensive*, not cheaper. The cause is the one ORDER K
+named: the counterweight keys on **career games**, not on age, so a 27-year-old with 20 games sits on
+exactly the same curve as a 19-year-old with 20 games. Removing eta releases both.
 
 **The board total** goes from 667,916 to **702,734**, up 34,818 points — 5.2% of the whole board. For
 comparison ORDER K moved it 5,181. **444 of 804 rows move and not one of them falls**, because eta = 0
