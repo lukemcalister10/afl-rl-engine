@@ -1021,7 +1021,11 @@ advance. §6.
   in-engine for every variant; it was run in-engine for ORDER P and by the validated exact shortcut
   for the other five. (2) The birthday census was extended to EVERY age, not only 23, because
   restricting it to 23 would have hidden B2's real behaviour. (3) A per-class table across all seven
-  boards was added; the prereg only promised the three flagged classes.
+  boards was added; the prereg only promised the three flagged classes. (4) The two baseline columns
+  in every no-arb table are ORDER K and ORDER P, not ORDER K and the landing candidate. ORDER P is
+  the base this order changes, so it is the baseline that matters here; the landing candidate
+  `1f176444` is still built and still reproduces, and its own band table is in
+  `t338ext_O35FINAL.txt` from the ORDER P run.
 
 ---
 
