@@ -1,0 +1,117 @@
+======================================================================================================================
+ORDER N (reusing ORDER L/K machinery unchanged) — THE YEAR-1 CLASS MARK, WITH AND WITHOUT THE 2005 AND 2006 COHORTS
+======================================================================================================================
+  instrument   : ok_class.py machinery, unchanged (cohort clock; per-class pooled ratio
+                 sum(year-1 price) / sum(entry price); a class needs 5 scorable rows or it is
+                 not marked; the published mark is the MEAN of the per-class ratios)
+  standing mark: mean over cohort classes 2005-2015  (11 classes)
+  exclusion    : mean over cohort classes 2007-2015  ( 9 classes) — SENSITIVITY, not a correction
+  what "cohort class 2005 and 2006" means: the 2004 and 2005 NATIONAL DRAFTS. The cohort clock
+                 labels a class by the year its players were first eligible to debut.
+
+label       board                                            standing excl 05/06       move
+PDERIV      ORDER P — THE PEDIGREE-CONDITIONAL CHARGE (EST     1.0322     1.0718    +0.0396
+NVARB       ORDER P — the age-only-bar charge, frontier po     1.0324     1.0706    +0.0382
+OKRULED     ORDER K f3101883 — the current candidate, eta      1.0324     1.0669    +0.0344
+M0ETA0      ORDER M0 73bf9617 — ORDER K's knobs with ETA S     1.1829     1.2197    +0.0368
+O35FINAL    the landing candidate 1f176444                     1.0232     1.0564    +0.0332
+O31FFINAL   candidate 31 fe6be9d6                              1.0360     1.0633    +0.0273
+
+PER-CLASS ROWS (cohort clock). "n" is the number of scorable rows in that class on this board.
+  class  draft        PDERIV       NVARB     OKRULED      M0ETA0    O35FINAL   O31FFINAL   in the mark?
+  2005   2004         0.8854      0.8815      0.8985      1.0366      0.8880      0.9251   <- IN the standing mark, REMOVED by the sensitivity
+  2006   2005         0.8230      0.8393      0.8562      0.9983      0.8599      0.9011   <- IN the standing mark, REMOVED by the sensitivity
+  2007   2006         1.0155      1.0030      1.0579      1.1981      1.0351      1.0313   <- in both marks
+  2008   2007         1.0378      1.0591      1.0713      1.2205      1.0480      1.0626   <- in both marks
+  2009   2008         1.0263      1.0364      1.0063      1.1540      1.0007      1.0084   <- in both marks
+  2010   2009         1.0680      1.0777      1.0432      1.1952      1.0391      1.0574   <- in both marks
+  2011   2010         1.1570      1.1602      1.1359      1.3061      1.1308      1.1410   <- in both marks
+  2012   2011         1.1595      1.1309      1.1363      1.2900      1.1311      1.1197   <- in both marks
+  2013   2012         1.0901      1.0682      1.0673      1.2192      1.0536      1.0606   <- in both marks
+  2014   2013         1.0760      1.0819      1.0535      1.2156      1.0461      1.0720   <- in both marks
+  2015   2014         1.0159      1.0177      1.0300      1.1781      1.0230      1.0167   <- in both marks
+  2016   2015         1.2047      1.1900      1.1060      1.2754      1.0955      1.1069   
+  2017   2016         1.0486      1.0549      1.0289      1.1937      1.0145      1.0429   
+  2018   2017         1.0501      1.0530      1.0562      1.2350      1.0518      1.0883   
+  2019   2018         1.0712      1.0554      1.0147      1.1410      1.0086      1.0140   
+  2020   2019         1.0030      1.0140      0.9810      1.1403      0.9735      1.0024   
+  2021   2020         0.9295      0.9039      0.9170      1.0949      0.9159      0.9767   
+
+  n by class (ORDER M0): 2005:110  2006:109  2007:122  2008:122  2009:134  2010:126  2011:138  2012:145  2013:108  2014:100  2015:121  2016:110  2017:125  2018:106  2019:124  2020:91  2021:88
+
+----------------------------------------------------------------------------------------------------------------------
+L-SC4  the registered arithmetic check
+  ORDER K standing mark, from CLASS_K.json            1.0324
+  its class 2005 / class 2006                         0.8985 / 0.8562
+  implied exclusion mark = (mark x 11 - 2005 - 2006)/9 1.0669
+  ORDER L recomputed exclusion mark                    1.0669
+  the supervisor's number                              1.0669
+  ORDER L minus supervisor                             -0.00005
+  L-SC4 PASS — the supervisor's 1.0669 is REPRODUCED (agrees to within rounding of the published 4-decimal per-class rows)
+  the standing mark also reproduces CLASS_K.json exactly: 1.032405 vs 1.032405  PASS
+
+----------------------------------------------------------------------------------------------------------------------
+THE SECOND READING — the W2 SCORER'S OWN CLASS MARK, on the same three boards.
+  source     : w2_forward_calibration.py  md5 106c6880d3fd4d1e9c948df38f2fdfc6 (read, not modified)
+  class clock: r["year"] — the DRAFT YEAR. NOT the cohort clock ok_class.py uses.
+  window     : DRAFT classes 2005-2015. ok_class.py marks COHORT classes 2005-2015, which are
+               DRAFT classes 2004-2014. The two windows are OFF BY ONE YEAR at both ends.
+  price      : P1 = vpath[0] (positional), P0 = v0.  R_cand = sum(P1)/sum(P0), pooled.
+
+  label         W2 05-15   W2 06-15       move
+  PDERIV          1.0613     1.0851    +0.0238
+  NVARB           1.0604     1.0825    +0.0221
+  OKRULED         1.0513     1.0708    +0.0195
+  M0ETA0          1.2046     1.2252    +0.0206
+  O35FINAL        1.0421     1.0603    +0.0182
+  O31FFINAL       1.0525     1.0676    +0.0151
+
+  CROSS-CHECK against the filed W2 packet (candidate 31, PACKET_W2.md table (a)):
+    W2 packet draft class 2005 R_cand = 0.9011 ; this run reads 0.9011
+    W2 packet draft class 2006 R_cand = 1.0313 ; this run reads 1.0313
+    W2 packet mean R_cand over 17 classes = 1.0411 ; this run reads 1.0411
+    and ok_class.py's COHORT class 2006 on candidate 31 reads 0.9011 — the SAME NUMBER as the W2
+    packet's DRAFT class 2005. That is the off-by-one, demonstrated rather than asserted.
+
+  WINDOW-ALIGNMENT DIAGNOSTIC — is the gap the INSTRUMENT, or is it the CLASS WINDOW?
+  label            okclass      okclass    W2 scorer   difference
+                 coh 05-15    coh 06-16  draft 05-15      aligned
+  PDERIV            1.0322       1.0613       1.0613     -0.00000
+  NVARB             1.0324       1.0604       1.0604     -0.00000
+  OKRULED           1.0324       1.0513       1.0513     -0.00000
+  M0ETA0            1.1829       1.2046       1.2046     -0.00000
+  O35FINAL          1.0232       1.0421       1.0421     -0.00000
+  O31FFINAL         1.0360       1.0525       1.0525      0.00000
+  cohort classes 2006-2016 ARE draft classes 2005-2015. Aligning the window closes the gap to
+  the fourth decimal on all three boards. The two instruments are not disagreeing about the
+  board. They are marking different sets of draft classes.
+
+  THE FLOOR TEST, laid out on both instruments (the current candidate):
+    ok_class.py  cohort classes 2005-2015   1.0324   floor 1.03: CLEARS (margin +0.0024)
+    W2 scorer    draft  classes 2005-2015   1.0513   floor 1.03: CLEARS (margin +0.0213)
+    navigation calibrator (Order I record)  1.0515   floor 1.03: CLEARS (margin +0.0215)
+    ok_class.py, 2005/06 excluded           1.0669   floor 1.03: CLEARS (margin +0.0369)   SENSITIVITY
+    W2 scorer, draft classes 2006-2015      1.0708   floor 1.03: CLEARS (margin +0.0408)   SENSITIVITY
+
+----------------------------------------------------------------------------------------------------------------------
+ORDER M — G1 ON THE REGISTERED BASIS. THE W2 SCORER, DRAFT CLASSES 2005-2015, ENTRY_FLOOR 2005.
+  This is the instrument the owner's 1.03 floor and ~1.08 prior were registered against.
+  The 1.14 BUY RAIL is the other side of the same law: a class that appreciates more than 14% in
+  its first year is a free trade for the buyer. G1 needs BOTH: at or above 1.03, and under 1.14.
+----------------------------------------------------------------------------------------------------------------------
+  board          W2 05-15      vs 1.03      vs 1.14   G1 verdict
+  PDERIV           1.0613      +0.0313      -0.0787   PASS
+  NVARB            1.0604      +0.0304      -0.0796   PASS
+  OKRULED          1.0513      +0.0213      -0.0887   PASS
+  M0ETA0           1.2046      +0.1746      +0.0646   FAIL — ABOVE THE 1.14 BUY RAIL
+  O35FINAL         1.0421      +0.0121      -0.0979   PASS
+  O31FFINAL        1.0525      +0.0225      -0.0875   PASS
+
+  the cohort-window reading (ok_class.py, cohort classes 2005-2015) on the same boards:
+  board       cohort mark
+  PDERIV           1.0322
+  NVARB            1.0324
+  OKRULED          1.0324
+  M0ETA0           1.1829
+  O35FINAL         1.0232
+  O31FFINAL        1.0360
