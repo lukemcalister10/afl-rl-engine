@@ -32,6 +32,12 @@ cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fe
 f3101883a60b0a7b8cb50f9d8a5abfff  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/ok/bb_K/rl_after/rl_app_data.json
 PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
 
+--- cw (the GATED levers alone: S1 at the ruled dose + the ruled counterweight, tall factor removed) ---
+6c5675648d1be84c9e4673ad9b862c52  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/ok/bb_cw/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/ok/bb_cw/rl_after/rl_model_data.json
+a7d149d1d7b0a4ffbcc0b754a6f247f6  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/ok/bb_cw/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
 --- K2 (determinism repeat) ---
 6c5675648d1be84c9e4673ad9b862c52  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/ok/bb_K2/rl_after/rl_model.py
 cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/ok/bb_K2/rl_after/rl_model_data.json
@@ -43,6 +49,7 @@ PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 
   tallJ  d1058fe02cbf59f70441dd3a1b4001ff
   tallK  eb4b8f04b20c1b3d6a36db1033825ddf
   s1     0423c8b20c0571fab0e5dd5ebc01c394
+  cw     a7d149d1d7b0a4ffbcc0b754a6f247f6
   K      f3101883a60b0a7b8cb50f9d8a5abfff
   K2     f3101883a60b0a7b8cb50f9d8a5abfff
   DETERMINISM x2      : PASS

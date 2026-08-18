@@ -1,0 +1,7 @@
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: 411f4a6d31e77c229aeb0454fa31d80b
+  emit starting 00:21:06  (RL_O36=1 lambda_S1=0.40 floorfix=1)
+  emit exit=0  COST: 2m 8s
+  OK -> per_entrant_OKRULED.json  (66340278)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201

@@ -36,12 +36,16 @@ echo; echo "--- K (THE RULED SETTING IN FULL -- the decision board) ---"
 env -u RL_O35 RL_O31=1 RL_O32=1 RL_O36=1 RL_O36_LAM_S1="$K_DOSE" RL_O36_TALL=1 RL_O36_FLOORFIX=1 \
     RL_O36_KAPPA="$K_KAPPA" RL_O36_GAMMA="$K_GU" RL_O36_ETA="$K_ETA" RL_O36_GAMMA_D="$K_GD" \
     RL_O36_LAMBDA="$K_REL" bash "$HERE/bbK.sh" K
+echo; echo "--- cw (the GATED levers alone: S1 at the ruled dose + the ruled counterweight, tall factor removed) ---"
+env -u RL_O35 RL_O31=1 RL_O32=1 RL_O36=1 RL_O36_LAM_S1="$K_DOSE" RL_O36_TALL=0 \
+    RL_O36_KAPPA="$K_KAPPA" RL_O36_GAMMA="$K_GU" RL_O36_ETA="$K_ETA" RL_O36_GAMMA_D="$K_GD" \
+    RL_O36_LAMBDA="$K_REL" bash "$HERE/bbK.sh" cw
 echo; echo "--- K2 (determinism repeat) ---"
 env -u RL_O35 RL_O31=1 RL_O32=1 RL_O36=1 RL_O36_LAM_S1="$K_DOSE" RL_O36_TALL=1 RL_O36_FLOORFIX=1 \
     RL_O36_KAPPA="$K_KAPPA" RL_O36_GAMMA="$K_GU" RL_O36_ETA="$K_ETA" RL_O36_GAMMA_D="$K_GD" \
     RL_O36_LAMBDA="$K_REL" bash "$HERE/bbK.sh" K2
 echo; echo "=== BOARD MD5s ==="
-for t in cand tallJ tallK s1 K K2; do
+for t in cand tallJ tallK s1 cw K K2; do
   printf '  %-6s %s\n' "$t" "$(md5sum "$SP/bb_$t/rl_after/rl_app_data.json" 2>/dev/null | cut -c1-32)"
 done
 A=$(md5sum "$SP/bb_K/rl_after/rl_app_data.json" | cut -c1-32)

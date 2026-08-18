@@ -1,0 +1,154 @@
+ORDER K — THE BOARD GATES.  board points (the currency the owner reads).
+  boards: {'cand': '1f176444', 'tallJ': 'd1058fe0', 'tallK': 'eb4b8f04', 's1': '0423c8b2', 'cw': 'a7d149d1', 'K': 'f3101883', 'K2': 'f3101883'}
+  active priced rows: 804
+
+== THE BUILD-FAILING IDENTITIES ==
+  K5  dial-off reproduces the landing candidate 1f176444        : PASS  (1f17644445f074d11e631b5cbae98a9a)
+  K7  determinism x2 (two identical builds of the DECISION board): PASS  (f3101883 vs f3101883)
+  CHAIN  the floor-fix REMOVAL lane reproduces ORDER J's ruled board d1058fe0 BYTE-EXACT: PASS (d1058fe0)
+         — which is what proves the fade floor fix is the ONLY thing this order changed.
+
+====================================================================================================================
+K-FLOOR — THE ACCEPTANCE TEST FOR THE FADE FLOOR FIX (PREREG_K.md §2.6)
+====================================================================================================================
+
+(a) STRUCTURAL — no small is made lighter, at any pick:
+    ORDER J, the wired floor   : smalls made LIGHTER at picks [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]   <- THE DEFECT
+    ORDER K, the re-sited floor: NONE — at no pick, for any row.  PASS
+    The engine carries this as a BUILD-FAILING assert on the live lane, and it is PROVEN
+    NON-VACUOUS: it fired the moment the fix was removed (K1_NONVACUITY_PROOF.txt).
+
+(b) ON THE BOARD — every small whose sitting fade changes, with its direction.
+    "Made lighter" = the tall factor RAISED his price. The gate is that no small is raised.
+    ORDER J wired floor : 134 smalls move; 7 of them are made LIGHTER (+126 board points)
+        Josh Smillie               MID   pick 7        772 ->    851  +79
+        Will Brodie                MID   pick 9        791 ->    812  +21
+        Oskar Taylor               SD    pick 15       596 ->    611  +15
+        Campbell Chesser           MID   pick 14       332 ->    338  +6
+        James Leake                SD    pick 17       457 ->    459  +2
+        Tom Brown                  SD    pick 17       507 ->    509  +2
+        Sam Sturt                  SF    pick 17        77 ->     78  +1
+    ORDER K re-sited    : 127 smalls move; 0 of them are made LIGHTER  -> PASS — not one
+    The seven rows the fix RELEASES (their Order J gain removed), and where they land:
+        Josh Smillie               ORDER J    851  ->  ORDER K (factor alone)    772   [-79]   ON THE DECISION BOARD: 772
+        Will Brodie                ORDER J    812  ->  ORDER K (factor alone)    791   [-21]   ON THE DECISION BOARD: 788
+        Oskar Taylor               ORDER J    611  ->  ORDER K (factor alone)    596   [-15]   ON THE DECISION BOARD: 596
+        Campbell Chesser           ORDER J    338  ->  ORDER K (factor alone)    332   [-6]   ON THE DECISION BOARD: 333
+        James Leake                ORDER J    459  ->  ORDER K (factor alone)    457   [-2]   ON THE DECISION BOARD: 438
+        Tom Brown                  ORDER J    509  ->  ORDER K (factor alone)    507   [-2]   ON THE DECISION BOARD: 515
+        Sam Sturt                  ORDER J     78  ->  ORDER K (factor alone)     77   [-1]   ON THE DECISION BOARD: 75
+    Smalls made HEAVIER by the factor under ORDER K (the intended direction): 127 rows, -1256 points
+      the ten largest: Ben Camporeale -34, Luke Beecken -31, Zac Walker -29, Koby Coulson -28, Hunter Holmes -27, Tyan Prindable -27, Sam Allen -26, Harry DeMattia -23, Tylah Williams -22, Keighton Matofai-Forbes -21
+
+(c) SMILLIE RETURNS.  predicted in the prereg: 772 exactly.
+    landing 772 · ORDER J 851 (+79, the defect) · the factor alone under ORDER K 772 · DECISION BOARD 772
+    -> PASS — back inside the ruled ~700s
+
+(d) THE TALLS KEEP THEIR RELIEF.
+    row                    pos    pick   landing   ORDER J   ORDER K |     leg J     leg K | decision board
+    will-green             RUCK     16       483       624       624 |      +141      +141 | 621
+    toby-conway            RUCK     24       855       941       941 |       +86       +86 | 899
+    william-mccabe         KPF      19       410       480       480 |       +70       +70 | 474
+    alex-dodson            RUCK     53       171       187       187 |       +16       +16 | 198
+    -> PASS — all four keep a meaningful positive relief
+    across the whole board: 82 talls move on the factor, 82 up (+2511 pts), 0 down (0 pts)
+
+(e) THE REDISTRIBUTION IDENTITY holds: residual -1.110e-16 against the ruled depth-2 fade 0.5582775 (build-failing above 1e-9).
+    s_norm  ORDER J 1.4284052406915069  ->  ORDER K 1.4340996145830727
+    h_TALL  -0.6921227120657417 — UNCHANGED from the owner-ruled value
+
+WHERE THE FLOOR STILL BINDS, AND FOR WHOM
+  TALL on the 0.5 hard floor: picks 1-25 (25 of 64).  Under ORDER J it was picks 1-24.
+  SMALL on the RE-SITED floor (his own pooled exponent): picks 1-18 (18 of 64) — these are the rows
+    the fit wanted to make LIGHTER and the re-sited floor holds at neutral instead.
+  ...of which picks 1-5 also sit on the 0.5 hard floor, because Order D's pooled curve is itself
+    clipped there — at those picks nothing in the factor can move a small either way.
+  ON THE 2026 BOARD: {'tall rows sitting on the 0.5 floor': 117, 'small rows sitting on the re-sited floor': 241}
+
+====================================================================================================================
+THE OWNER'S LAWS ON THE 2026 BOARD
+====================================================================================================================
+
+== S1's ZERO-TOLERANCE MATURE LAW, and J-TOL on the counterweight ==
+  board total (landing candidate, integer prices) = 667916;  mature rows aged 24+ = 429
+  S1 alone at the ruled dose 0.40 (ZERO TOLERANCE — the owner's law)         0 move · churn     0 · net    +0 · worst   +0 (-)
+  THE GATED LEVERS: S1 + the ruled counterweight, tall factor removed (J-TOL reads HERE) 104 move · churn   695 · net  -695 · worst  -77 (Ned Moyle)
+  the tall/small factor alone, ORDER K floor (EXEMPT — R-TALLFACTOR is adopted)  48 move · churn   428 · net  +102 · worst  +42 (Liam McMahon)
+  THE DECISION BOARD (all three levers together)                           124 move · churn   947 · net  -601 · worst  -77 (Ned Moyle)
+  J-TOL rails (PREREG_J §2.2): per row min(25, max(1, 0.5% of his own price)) · churn <= 1001.87 (0.15% of the board) · net <= 667.92 (0.10%)
+  S1 alone             per-row breaches   0 · churn      0 vs  1001.87 OK · net     +0 vs   667.92 OK
+  THE GATED LEVERS     per-row breaches  59 · churn    695 vs  1001.87 OK · net   -695 vs   667.92 BREACH
+  the decision board   per-row breaches  79 · churn    947 vs  1001.87 OK · net   -601 vs   667.92 OK
+  NOTE the decision board carries the EXEMPT tall factor as well, so its mature movement is not a
+  J-TOL reading of the counterweight alone; the counterweight's own reading is the S1 row plus the
+  remix leg, and the tall factor's mature movement is DISCLOSED, never gated (R-TALLFACTOR adopted).
+
+== THE NAMED ROWS, ON THE DECISION BOARD (board points) ==
+row                     age  pick     g      live       C31   landing |   ORDER K | predict  actual   hit?
+harry-dean               19     3    17      2577      2670      2400 |      2403 | UP       UP       HIT
+cooper-duff-tytler       19     4    13      1561      1832      1572 |      1505 | UP       DOWN     MISS
+xavier-taylor            19    11     2       802      1288      1176 |      1162 | DOWN     DOWN     HIT
+daniel-annable           19     6     2      1395      1633      1530 |      1537 | DOWN     UP       MISS
+dylan-patterson          19     5     5      1628      1675      1467 |      1440 | DOWN     DOWN     HIT
+oskar-taylor             19    15     0       629       529       596 |       596 | FLAT     FLAT     HIT
+josh-smillie             20     7     0       953       459       772 |       772 | FLAT     FLAT     HIT
+will-brodie              28     9    55       773       702       791 |       788 | FLAT     DOWN     MISS
+campbell-chesser         23    14    39       330       352       332 |       333 | FLAT     UP       MISS
+chris-scerri             20  None     7       459       232       313 |       321 | UP       UP       HIT
+thomas-burton            19  None     5       439       213       309 |       323 | UP       UP       HIT
+milan-murdock            26  None    17       208       187       170 |       156 | MOVES    DOWN     HIT
+will-green               21    16     1       604       338       483 |       621 | UP       UP       HIT
+toby-conway              23    24     6       503       729       855 |       899 | UP       UP       HIT
+william-mccabe           21    19     4       599       316       410 |       474 | UP       UP       HIT
+alex-dodson              20    53     1       274       175       171 |       198 | UP       UP       HIT
+steely-green             22    55    43       150        60        80 |        76 | DOWN     DOWN     HIT
+isaac-kako               20    13    36      1413       806       788 |       832 | UP       UP       HIT
+alix-tauru               20    10    18      1684      1005       920 |       881 | UP       DOWN     MISS
+jedd-busslinger          22    13    15       916       469       579 |       605 | UP       UP       HIT
+
+prereg named-row scorecard: 15 of 20 directions correct
+
+== G5 — SUB-EXPECTATION-WITH-GAMES ROWS MUST NOT RISE ==
+  xavier-taylor        landing  1176 · ORDER K  1162 (-14)   [S1 leg alone +15]  -> FELL — G5 holds
+  daniel-annable       landing  1530 · ORDER K  1537 (+7)   [S1 leg alone +40]  -> ROSE — K13 FIRES
+  dylan-patterson      landing  1467 · ORDER K  1440 (-27)   [S1 leg alone +48]  -> FELL — G5 holds
+  -> G5 FAIL — K13 FIRES
+
+== G10 (reported, not gated) — the owner's two reference levels ==
+  harry-dean           owner ~2600 · C31 2670 · landing 2400 · ORDER K 2403  -> still 267 short of C31, 197 short of ~2600
+  cooper-duff-tytler   owner ~1800 · C31 1832 · landing 1572 · ORDER K 1505  -> still 327 short of C31, 295 short of ~1800
+  -> BOTH REMAIN BELOW their Candidate-31 levels. This is a KNOWN OPEN DEFECT, carried on every page.
+
+== CONTROLS AND OTHER ROWS OF RECORD ==
+  levi-ashcroft          landing   3173 · ORDER K   3365 ( +192)   [legs: tall +0 · S1 +226]
+  connor-o-sullivan      landing   2376 · ORDER K   2539 ( +163)   [legs: tall +0 · S1 +189]
+  logan-morris           landing   2682 · ORDER K   2889 ( +207)   [legs: tall +0 · S1 +213]
+  finn-o-sullivan        landing   3317 · ORDER K   3462 ( +145)   [legs: tall +0 · S1 +219]
+  sam-taylor             landing   1119 · ORDER K   1119 (   +0)   [legs: tall +0 · S1 +0]
+  tom-green              landing   4339 · ORDER K   4339 (   +0)   [legs: tall +0 · S1 +0]
+  toby-greene            landing    805 · ORDER K    805 (   +0)   [legs: tall +0 · S1 +0]
+  will-ashcroft          landing   6487 · ORDER K   6597 ( +110)   [legs: tall +0 · S1 +113]
+  taylor-walker          landing    129 · ORDER K    129 (   +0)   [legs: tall +0 · S1 +0]
+  keidean-coleman        landing    673 · ORDER K    673 (   +0)   [legs: tall +0 · S1 +0]
+  harry-morrison         landing     33 · ORDER K     33 (   +0)   [legs: tall +0 · S1 +0]
+  taylor-goad            landing    580 · ORDER K    728 ( +148)   [legs: tall +142 · S1 +13]
+  zac-taylor             landing    160 · ORDER K    157 (   -3)   [legs: tall -7 · S1 +6]
+  noah-mraz              landing   1795 · ORDER K   2019 ( +224)   [legs: tall +28 · S1 +208]
+  murphy-reid            landing   3147 · ORDER K   3383 ( +236)   [legs: tall +0 · S1 +277]
+  oskar-taylor           landing    596 · ORDER K    596 (   +0)   [legs: tall +0 · S1 +0]
+  will-brodie            landing    791 · ORDER K    788 (   -3)   [legs: tall +0 · S1 +0]
+  campbell-chesser       landing    332 · ORDER K    333 (   +1)   [legs: tall +0 · S1 +7]
+  james-leake            landing    457 · ORDER K    438 (  -19)   [legs: tall +0 · S1 +16]
+  tom-brown              landing    507 · ORDER K    515 (   +8)   [legs: tall +0 · S1 +10]
+  sam-sturt              landing     77 · ORDER K     75 (   -2)   [legs: tall +0 · S1 +0]
+
+== THE YEAR-1 CLASS ON THE 2026 BOARD (board points) ==
+  120 rows, 58060 -> 57823 (-0.41%);  43 up, 76 down, 1 unchanged
+
+== BOARD TOTALS ==
+  cand   1f176444  total 667916  (+0 vs the landing candidate)
+  tallJ  d1058fe0  total 669231  (+1315 vs the landing candidate)
+  tallK  eb4b8f04  total 669171  (+1255 vs the landing candidate)
+  s1     0423c8b2  total 680773  (+12857 vs the landing candidate)
+  cw     a7d149d1  total 671898  (+3982 vs the landing candidate)
+  K      f3101883  total 673097  (+5181 vs the landing candidate)
