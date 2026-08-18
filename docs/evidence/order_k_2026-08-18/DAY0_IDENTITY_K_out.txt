@@ -1,0 +1,13 @@
+lane=on  wired entrants=89  -> DAY0_V0_ON.json
+
+== G6 — THE DAY-0 ENTRY IDENTITY, dial ON vs dial OFF ==
+  derived_v0 (THE RAW ENTRY OBJECT) BIT-IDENTICAL : 89 of 89   -> PASS
+  printed day-0 (entry value x sitting discount)  : 2 of 89 unchanged, 87 MOVE
+  the 87 that move are sitters whose sitting DISCOUNT the ruled tall/small factor changes.
+  This is the ruled fade's intended effect. The PRINT reference regenerates, disclosed
+  exactly as ORDER D disclosed it when the pick-curve fade landed.
+  largest up  : mitchell-marsh +100.8, james-barrat +77.7, blake-thredgold +77.6, charlie-nicholls +74.7, max-knobel +74.0, kayle-gerreyn +59.8
+  largest down: sam-allen -26.6, tyan-prindable -27.2, hunter-holmes -27.3, koby-coulson -28.4, zac-walker -28.9, ben-camporeale -34.3
+  count up 30 · count down 57
+
+wrote DAY0_IDENTITY_K.json

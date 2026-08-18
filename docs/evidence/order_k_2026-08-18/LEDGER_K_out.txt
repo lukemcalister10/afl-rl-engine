@@ -64,3 +64,20 @@ TOP 20 DOWN — ORDER K vs the landing candidate:
   Marcus Herbert             SD     24   13  15g     746 ->    690    -56   [tall +0 · S1 +0 · CW -56]
   Jagga Smith                MID    20    3  20g    3689 ->   3637    -52   [tall +0 · S1 +225 · CW -277]
   Alix Tauru                 KPD    20   10  18g     920 ->    881    -39   [tall +0 · S1 +40 · CW -79]
+  Tobie Travaglia            SD     20    8  17g     560 ->    521    -39   [tall +0 · S1 +11 · CW -50]
+  Clay Hall                  MID    21   38  16g     372 ->    336    -36   [tall +0 · S1 +5 · CW -41]
+  Luke Beecken               MID    25   16   1g     211 ->    176    -35   [tall -31 · S1 +0 · CW -4]
+  Ben Camporeale             MID    20   43   0g     157 ->    123    -34   [tall -34 · S1 +0 · CW +0]
+  Latrelle Pickett           SF     21   12  15g     478 ->    446    -32   [tall +0 · S1 +17 · CW -49]
+  Harry Kyle                 SD     19   14   7g     957 ->    925    -32   [tall +0 · S1 +34 · CW -66]
+  Mani Liddy                 MID    24   15  16g     153 ->    122    -31   [tall -18 · S1 +0 · CW -15]
+  Jordan Croft               KPF    21   15  18g     563 ->    533    -30   [tall +0 · S1 +16 · CW -46]
+  Harry Armstrong            KPF    20   23  11g     607 ->    577    -30   [tall +0 · S1 +23 · CW -53]
+  Elijah Tsatas              MID    22    5  22g    1107 ->   1078    -29   [tall +0 · S1 +36 · CW -65]
+  Zac Walker                 SD     20   11   0g     182 ->    153    -29   [tall -29 · S1 +0 · CW +0]
+  Thomas Sims                KPF    20   28  11g     745 ->    717    -28   [tall +0 · S1 +37 · CW -65]
+
+age profile of the rows that move: {19: 70, 20: 85, 21: 74, 22: 60, 23: 80, 24: 45, 25: 26, 26: 20, 27: 8, 28: 16, 29: 6, 30: 1, 33: 2}
+pathway profile: {'ND': 329, 'PDA': 12, 'RD': 35, 'MSD': 58, 'SSP': 25, 'PDN': 13, 'UNR': 11, 'IRE': 10}
+
+wrote docs/ledgers/ORDER_K_MOVERS.json
