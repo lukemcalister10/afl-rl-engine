@@ -29,4 +29,5 @@ for S in or_bands.py or_tables.py or_class.py or_boards.py; do
 done
 echo "--- or_pathtest.py ---"; python3 or_pathtest.py > or_pathtest_run.txt 2>&1; echo "  rc=$?"; tail -3 or_pathtest_run.txt
 echo "--- or_arc.py ---";      python3 or_arc.py      > or_arc_run.txt      2>&1; echo "  rc=$?"; tail -8 or_arc_run.txt
+echo "--- or_digest.py ---"; python3 or_digest.py > or_digest_run.txt 2>&1; echo "  rc=$?"
 echo; echo "=== ORDER R MEASUREMENT COMPLETE $(date -u +%H:%M:%S) ==="
