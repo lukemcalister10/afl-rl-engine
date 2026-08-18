@@ -1,0 +1,1644 @@
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Order P · The No-Arb Tables</title>
+<style>
+:root{--pitch:#0a0c10;--card:#12151c;--card-2:#181c25;--edge:#232936;--edge-2:#2f3747;
+--text:#f2f5f9;--dim:#8b95a6;--faint:#525c6d;--volt:#c8f04a;--volt-soft:rgba(200,240,74,.12);
+--up:#4ade80;--dn:#f0655e;--warn:#f5b445;
+--cond:"Arial Narrow","Helvetica Neue Condensed","Roboto Condensed",Arial,sans-serif;
+--sans:"Helvetica Neue",Arial,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--pitch);color:var(--text);font-family:var(--sans);font-size:13px;line-height:1.45}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.banner{background:var(--volt-soft);border-bottom:1px solid var(--volt);color:var(--volt);
+font-family:var(--cond);font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-align:center;
+padding:7px 12px;font-weight:700}
+.app{max-width:1500px;margin:0 auto;padding:0 18px 80px}
+header{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;padding:22px 0 14px}
+.brand{font-family:var(--cond);font-weight:900;font-size:38px;letter-spacing:.01em;text-transform:uppercase;line-height:.92}
+.brand b{color:var(--volt)}
+.brand .sub{display:block;font-size:10.5px;letter-spacing:.28em;color:var(--dim);font-weight:700;margin-top:6px}
+.spacer{flex:1}
+.stamp{font-family:var(--mono);font-size:10.5px;color:var(--dim);text-align:right;line-height:1.75}
+.stamp b{color:var(--text)}
+h2{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);margin:0 0 10px}
+.box{background:var(--card);border:1px solid var(--edge);padding:16px 18px;margin:12px 0}
+.box.warn{border-color:var(--warn);border-left:4px solid var(--warn)}
+.box.warn h2{color:var(--warn)}
+table{border-collapse:collapse;width:100%;font-size:12px}
+th{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+color:var(--dim);text-align:right;padding:6px 8px;border-bottom:1px solid var(--edge-2);cursor:pointer;
+position:sticky;top:0;background:var(--card);white-space:nowrap;user-select:none}
+th.l,td.l{text-align:left}
+th:hover{color:var(--volt)}
+th.sorted{color:var(--volt)}
+td{padding:4px 8px;border-bottom:1px solid var(--edge);text-align:right}
+tr:hover td{background:var(--card-2)}
+td.up{color:var(--up)}td.dn{color:var(--dn)}
+.k{color:var(--dim)}
+.sec{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--volt);padding-top:16px}
+.note{color:var(--dim);font-size:11.5px;margin-top:8px}
+
+.brk{background:var(--card-2);border:1px solid var(--warn);border-left:4px solid var(--warn);padding:16px 18px;margin:14px 0}
+.brk h2{color:var(--warn);margin-bottom:12px}
+.brk h3{font-family:var(--cond);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--text);margin:14px 0 6px}
+.brk ul{margin:0 0 4px;padding-left:20px}
+.brk li{margin:5px 0;color:var(--text)}
+.brk li b{color:var(--warn)}
+.ok{color:var(--up)}
+.defs{background:var(--card-2);border:1px solid var(--edge-2);padding:14px 18px;margin:12px 0;color:var(--dim)}
+.defs b{color:var(--text)}
+.defs p{margin:7px 0}
+details{background:var(--card);border:1px solid var(--edge);padding:12px 18px;margin:12px 0}
+summary{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);cursor:pointer}
+summary:hover{color:var(--volt)}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 7px;border:1px solid var(--edge-2);color:var(--dim);margin-right:6px}
+.pill.red{border-color:var(--dn);color:var(--dn)}
+.pill.grn{border-color:var(--up);color:var(--up)}
+.pill.amb{border-color:var(--warn);color:var(--warn)}
+td.sell{color:var(--dn)}
+td.buy{color:var(--warn)}
+</style>
+<div class="banner">NOTHING LANDS ON THIS SEAT'S WORD &mdash; ORDER P IS BUILT FOR YOUR REVIEW AND IS NOT ADOPTED. ONE CELL IS EXPECTED TO BREACH AND IT IS NAMED ON EVERY PAGE.</div>
+<div class="app">
+<header><div class="brand">ORDER <b>P</b><span class="sub">YEAR PATHS · APPRECIATION · MARGIN · VERDICT · BOTH WINDOWS</span></div><div class="spacer"></div><div class="stamp">live <b>88ce647f</b> 752,429 &middot; candidate 31 <b>fe6be9d6</b> 666,913<br>landing <b>1f176444</b> 667,916 &middot; ORDER K <b>f3101883</b> 673,097 &middot; <b>ORDER P 374d4e44</b> <b>666,434</b><br>the charge: pi &times;= exp(&minus;0.17438 &middot; A(g) &middot; T(s_P)) below age 24 &middot; A(g)=1&minus;e^(&minus;g/9.89) &middot; PRE-NUMERAIRE</div></header>
+
+<div class="brk"><h2>What is in this board, and what is still broken</h2><p>Read this before you read a single price. It is the same box on all three pages, and it is written in plain words on purpose.</p><h3>The one thing this board changes</h3><p>Order K charged a young player's draft pedigree down as he played games, and the charge <b>read nothing except how many games he had played</b>. It peaked at exactly 14 games and then fell away again, so a player with 36 games kept MORE of his unearned entry price than a player with 17 games &mdash; however well or badly either of them had actually played. Two real players, Zeke Uwland and Cooper Harvey, both had 17 games and both sat about 1.7 points a game below what is normal for their age, and Order K charged them the identical 49.0%, to the last decimal.</p><p><b>On this board the charge reads performance, and it reads it against the bar the player's own entry price implies.</b> Uwland was pick 2 and cost 2,583; a player at that price normally produces 19.2 points a game clear of his age bar, so against what is priced into him he is 20.9 short. Harvey was pick 56 and cost 265; a player at that price normally produces 1.3 points a game BELOW the age bar, so he is half a point short. Same production for their age, same games, opposite verdicts &mdash; because they were priced differently to begin with. That is your own sentence, on two real rows.</p><p>The bar a young player is measured against is now his age bar plus a <b>measured</b> pedigree premium: how far above the age bar a player who entered at his price actually produces, estimated on 5,041 real seasons over 1,575 players. Nothing in it was chosen. The level of the charge was SOLVED so it removes exactly the same total number of points from the year-1 class as the old charge did, and the steepness follows from the measurement. There is no free parameter and no player's value was targeted.</p><h3>What is unchanged from Order K</h3><ul><li>The age-referenced projection bar at dose 0.40, the counterweight at kappa 0.20 / gamma_u 8, the selection relief at 1.08.</li><li>Your tall/small sitter factor, with the Order K fade-floor fix.</li><li>The measured pick-curve fade.</li><li><b>Entry values.</b> A player who has never played cannot move on this board at all: the charge is exactly zero at zero games, by construction. All 89 wired entrants print bit-identical day-0 prices, and the emit's own replication proof was run against Order K's own reference file rather than a regenerated one, so that is a test and not a claim.</li><li>Turn the new dial off and this engine rebuilds Order K's board <b>f3101883</b> byte for byte.</li></ul><h3>What is still broken &mdash; open defects, none of them fixed here</h3><ul><li><b>MODERN picks 1-10 is over your buy rail at +18.85%.</b> On the recent-era window only (2019-2023, fifty rows) the top ten picks appreciate more than 14% in their first year. Order K reads +13.65% there, so that cell had about a third of a point of room before this order touched anything. <b>This was predicted before the build and it is the branch you already agreed to rule on.</b> No cap has been bolted on to hide it and no constant was moved to chase it. In the full-history window the same band reads +8.62% against Order K's +8.22%, which is inside the rail.</li><li><b>Late picks still lose money in year one.</b> Picks 31-40 read <b>-8.88%</b> and picks 41-64 read <b>-5.03%</b>. Both are better than Order K (-10.70% and -6.89%), and both are still negative: a player drafted there is still worth less a year later.</li><li><b>Supplemental selection (SSP) still appreciates about half again in year one.</b> +58.17% on this board against +52.71% on Order K. SSP players enter outside the 1-64 pick curve, their entry prices are low, so their pedigree bar is low and they clear it easily &mdash; which means this order pushes the arm FURTHER into the red. <b>It was already over the rail before this order and it is reported on its own line, never folded into a pass.</b></li><li><b>Three individual draft classes go over the 1.14 line on this board, and Order K has none.</b> The class rule you read is the AVERAGE over draft classes 2005-2015, and that average is fine (1.0613, well under 1.14). But class by class, the 2010, 2011 and 2015 draft classes appreciate <b>1.1570, 1.1595 and 1.2047</b> in their first year. Order K's worst single class is 1.1363. Two of those three were already sitting just under the line on Order K (1.1359 and 1.1363) and this board pushes them through it; the 2015 class moves much further, from 1.1060 to 1.2047. <b>This is a real breach of a line the engine's own earlier calibrations were held to, it is new to this board, and it was not printed in the Order P offline packet even though that packet's own files contain the same number.</b> It is reported here rather than left for you to find.</li><li><b>The peaks are not restored.</b> A charge that grows with evidence cannot fall back in the years where the peaks sit. Growing with evidence is exactly the defect you asked to have removed, so the two cannot both be had from this shape. The trade is priced on the no-arb page, not hidden.</li><li><b>The pedigree premium is measured on players who play.</b> A cheap player has to be good to get a game; an expensive one plays anyway. So the measured premium is a lower bound on the real gap, and the bar is if anything LESS demanding of expensive players than the truth. Not repaired here.</li><li><b>The premium is thin at both ends for talls</b> (effective sample 19 at the cheap end, 47 at the dear end). Outside the fitted range it is held flat, never extrapolated.</li><li><b>Veteran key-position talls aged 28-30 are over-priced by roughly 30%</b>, because the veteran board is parked. Nothing in this order touches them.</li><li><b>The engine leans too hard on the most recent season.</b> A player who broke out once is probably too expensive here &mdash; <b>Xerri, Callaghan, Ash, Thilthorpe</b>. A good player who had one bad year is probably too cheap &mdash; <b>Coniglio, De Goey, Langford</b>.</li><li><b>The ceiling column on the dial page is wrong for anyone 22 or older.</b> It prints roughly the 87th percentile where it should print the 97th.</li></ul><h3>The year-1 class</h3><p>Your growth rule is written on draft classes 2005 to 2015. On that basis this board reads <b>1.0613</b> against Order K's <b>1.0513</b>: the class grows more, it clears your 1.03 floor, and it stays under the 1.14 buy rail. That basis is <b>draft</b> classes 2005-2015, which on the cohort clock is cohort years 2006-2016 &mdash; not the same window as the cohort-clock number printed beside it, and the two are shown together on the year-1 page so they cannot be confused.</p></div>
+<div class="defs"><h2>What these tables are asking, in plain words</h2><p>Every table asks one question: <b>if you owned this group of players on draft day, and sold them a year later, would you have made money or lost it?</b></p><p><b>yr0</b> is always 1.000 &mdash; it is the group's own entry value, the starting point. <b>yr1</b> is what the same group is worth one year later, as a multiple of that starting point. <b>yr2</b> through <b>yr7</b> carry the same clock forward.</p><p><b>yr0&rarr;1</b> is the first-year appreciation. This is the number the verdict is about. <b>The 14% rail</b> is the cost of carrying a player for a year. <b>margin</b> is how much room is left before that cost is beaten.</p><p><b>SELL-RED</b> means the group loses value in year one: you could sell on draft day, buy the same players back a year later, and pocket the difference. <b>BUY-RED</b> means the group gains more than 14% in year one: you could buy on draft day, carry them, and still beat the cost. Both are arbitrages against the board. <b>ok</b> is between the two lines.</p><p>The <b>five bands</b> are your bands: picks 1-10, 11-20, 21-30, 31-40, 41-64. The three above them (ALL 1-64, 1-20, 21-64) are the coarse view. <b>Both windows are shown for every band and every arm</b>: the <b>primary</b> window is 2005-2023 (everything the store holds) and the <b>modern</b> window is 2019-2023 (the recent era only, where the samples are thinner &mdash; picks 1-10 there is fifty rows).</p><p>The last two columns of every table are the two baselines: <b>ORDER K</b>, the board this one is built on, and <b>landing</b>, the landing candidate underneath it.</p></div>
+<div class="box"><h2>ORDER P 374d4e44 &middot; the owner's five bands plus the coarse three &middot; PRIMARY window 2005-2023</h2><table id="n1"><thead><tr>
+<th class="" onclick="sortTable('n1',0,true)">#</th>
+<th class="l" onclick="sortTable('n1',1,false)">band</th>
+<th class="" onclick="sortTable('n1',2,true)">n</th>
+<th class="" onclick="sortTable('n1',3,true)">yr0</th>
+<th class="" onclick="sortTable('n1',4,true)">yr1</th>
+<th class="" onclick="sortTable('n1',5,true)">yr2</th>
+<th class="" onclick="sortTable('n1',6,true)">yr3</th>
+<th class="" onclick="sortTable('n1',7,true)">yr4</th>
+<th class="" onclick="sortTable('n1',8,true)">yr5</th>
+<th class="" onclick="sortTable('n1',9,true)">yr6</th>
+<th class="" onclick="sortTable('n1',10,true)">yr7</th>
+<th class="" onclick="sortTable('n1',11,true)">yr0&rarr;1</th>
+<th class="" onclick="sortTable('n1',12,true)">margin to the 14% rail</th>
+<th class="l" onclick="sortTable('n1',13,false)">verdict</th>
+<th class="" onclick="sortTable('n1',14,true)">ORDER K</th>
+<th class="" onclick="sortTable('n1',15,true)">landing</th>
+</tr></thead><tbody>
+<tr><td class="num k" data-v="1">1</td><td class="l">ALL picks 1-64</td><td class="num k" data-v="1200">1200</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0532830418149888">1.053</td>
+<td class="num" data-v="1.1724887820602146">1.172</td>
+<td class="num" data-v="1.3389325489710053">1.339</td>
+<td class="num" data-v="1.4624384675906814">1.462</td>
+<td class="num" data-v="1.5007769351343874">1.501</td>
+<td class="num" data-v="1.490948317953225">1.491</td>
+<td class="num" data-v="1.3198734105530512">1.320</td>
+<td class="num ok" data-v="0.053283">+5.33%</td><td class="num" data-v="0.086717">+8.67%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.042259">+4.23%</td>
+<td class="num k" data-v="0.029774">+2.98%</td>
+</tr>
+<tr><td class="num k" data-v="2">2</td><td class="l">picks 1-20</td><td class="num k" data-v="380">380</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0979277204067894">1.098</td>
+<td class="num" data-v="1.2053970209597829">1.205</td>
+<td class="num" data-v="1.3534048315358254">1.353</td>
+<td class="num" data-v="1.5109501178153515">1.511</td>
+<td class="num" data-v="1.5273746662588055">1.527</td>
+<td class="num" data-v="1.4791122762480344">1.479</td>
+<td class="num" data-v="1.3171896121305569">1.317</td>
+<td class="num ok" data-v="0.097928">+9.79%</td><td class="num" data-v="0.042072">+4.21%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.092211">+9.22%</td>
+<td class="num k" data-v="0.083646">+8.36%</td>
+</tr>
+<tr><td class="num k" data-v="3">3</td><td class="l">picks 21-64</td><td class="num k" data-v="820">820</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.9827351713920008">0.983</td>
+<td class="num" data-v="1.1204869254680192">1.120</td>
+<td class="num" data-v="1.316063334826964">1.316</td>
+<td class="num" data-v="1.3857799783371858">1.386</td>
+<td class="num" data-v="1.4591744487109128">1.459</td>
+<td class="num" data-v="1.509407281879782">1.509</td>
+<td class="num" data-v="1.3240702835134333">1.324</td>
+<td class="num sell" data-v="-0.017265">-1.73%</td><td class="num" data-v="0.157265">+15.73%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.036675">-3.67%</td>
+<td class="num k" data-v="-0.055354">-5.54%</td>
+</tr>
+<tr><td class="num k" data-v="4">4</td><td class="l">picks 1-10</td><td class="num k" data-v="190">190</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0861757081143364">1.086</td>
+<td class="num" data-v="1.1814301275009982">1.181</td>
+<td class="num" data-v="1.3506105778706108">1.351</td>
+<td class="num" data-v="1.5024395268504758">1.502</td>
+<td class="num" data-v="1.4798055604887914">1.480</td>
+<td class="num" data-v="1.4227399552386493">1.423</td>
+<td class="num" data-v="1.2465250975119748">1.247</td>
+<td class="num ok" data-v="0.086176">+8.62%</td><td class="num" data-v="0.053824">+5.38%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.082219">+8.22%</td>
+<td class="num k" data-v="0.079320">+7.93%</td>
+</tr>
+<tr><td class="num k" data-v="5">5</td><td class="l">picks 11-20</td><td class="num k" data-v="190">190</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.1207484627083737">1.121</td>
+<td class="num" data-v="1.2519373313152853">1.252</td>
+<td class="num" data-v="1.3588308761341676">1.359</td>
+<td class="num" data-v="1.527476479293746">1.527</td>
+<td class="num" data-v="1.6195525172500498">1.620</td>
+<td class="num" data-v="1.5887443410217958">1.589</td>
+<td class="num" data-v="1.456495025096541">1.456</td>
+<td class="num ok" data-v="0.120748">+12.07%</td><td class="num" data-v="0.019252">+1.93%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.111614">+11.16%</td>
+<td class="num k" data-v="0.092047">+9.20%</td>
+</tr>
+<tr><td class="num k" data-v="6">6</td><td class="l">picks 21-30</td><td class="num k" data-v="190">190</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0737477211563504">1.074</td>
+<td class="num" data-v="1.2420814622481433">1.242</td>
+<td class="num" data-v="1.4471994885919706">1.447</td>
+<td class="num" data-v="1.5947509648091294">1.595</td>
+<td class="num" data-v="1.593569314263644">1.594</td>
+<td class="num" data-v="1.6858111487215661">1.686</td>
+<td class="num" data-v="1.4581828475124763">1.458</td>
+<td class="num ok" data-v="0.073748">+7.37%</td><td class="num" data-v="0.066252">+6.63%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.052573">+5.26%</td>
+<td class="num k" data-v="0.027588">+2.76%</td>
+</tr>
+<tr><td class="num k" data-v="7">7</td><td class="l">picks 31-40</td><td class="num k" data-v="190">190</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.9112370251183725">0.911</td>
+<td class="num" data-v="0.9784875214567965">0.978</td>
+<td class="num" data-v="1.2951955976605853">1.295</td>
+<td class="num" data-v="1.2540091088181196">1.254</td>
+<td class="num" data-v="1.3841468153634504">1.384</td>
+<td class="num" data-v="1.2920441266676483">1.292</td>
+<td class="num" data-v="1.1608378525801406">1.161</td>
+<td class="num sell" data-v="-0.088763">-8.88%</td><td class="num" data-v="0.228763">+22.88%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.106955">-10.70%</td>
+<td class="num k" data-v="-0.128377">-12.84%</td>
+</tr>
+<tr><td class="num k" data-v="8">8</td><td class="l">picks 41-64</td><td class="num k" data-v="440">440</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.9497264942207813">0.950</td>
+<td class="num" data-v="1.115508412050255">1.116</td>
+<td class="num" data-v="1.1993517319069604">1.199</td>
+<td class="num" data-v="1.2827223057721073">1.283</td>
+<td class="num" data-v="1.3847044643090933">1.385</td>
+<td class="num" data-v="1.5130922017942077">1.513</td>
+<td class="num" data-v="1.325280567319632">1.325</td>
+<td class="num sell" data-v="-0.050274">-5.03%</td><td class="num" data-v="0.190274">+19.03%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.068903">-6.89%</td>
+<td class="num k" data-v="-0.078815">-7.88%</td>
+</tr>
+</tbody></table></div>
+<div class="box warn"><h2>ORDER P &middot; the same bands &middot; MODERN window 2019-2023 &middot; THIS IS WHERE THE ONE EXPECTED BREACH IS</h2><table id="n1m"><thead><tr>
+<th class="" onclick="sortTable('n1m',0,true)">#</th>
+<th class="l" onclick="sortTable('n1m',1,false)">band</th>
+<th class="" onclick="sortTable('n1m',2,true)">n</th>
+<th class="" onclick="sortTable('n1m',3,true)">yr0</th>
+<th class="" onclick="sortTable('n1m',4,true)">yr1</th>
+<th class="" onclick="sortTable('n1m',5,true)">yr2</th>
+<th class="" onclick="sortTable('n1m',6,true)">yr3</th>
+<th class="" onclick="sortTable('n1m',7,true)">yr4</th>
+<th class="" onclick="sortTable('n1m',8,true)">yr5</th>
+<th class="" onclick="sortTable('n1m',9,true)">yr6</th>
+<th class="" onclick="sortTable('n1m',10,true)">yr7</th>
+<th class="" onclick="sortTable('n1m',11,true)">yr0&rarr;1</th>
+<th class="" onclick="sortTable('n1m',12,true)">margin to the 14% rail</th>
+<th class="l" onclick="sortTable('n1m',13,false)">verdict</th>
+<th class="" onclick="sortTable('n1m',14,true)">ORDER K</th>
+<th class="" onclick="sortTable('n1m',15,true)">landing</th>
+</tr></thead><tbody>
+<tr><td class="num k" data-v="1">1</td><td class="l">ALL picks 1-64</td><td class="num k" data-v="311">311</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0144675572487583">1.014</td>
+<td class="num" data-v="1.0625069121077018">1.063</td>
+<td class="num" data-v="1.1322032415515475">1.132</td>
+<td class="num" data-v="1.186619892674569">1.187</td>
+<td class="num" data-v="1.3349213342079391">1.335</td>
+<td class="num" data-v="1.2377361373855513">1.238</td>
+<td class="num" data-v="1.193034806122702">1.193</td>
+<td class="num ok" data-v="0.014468">+1.45%</td><td class="num" data-v="0.125532">+12.55%</td><td class="l ok">ok</td>
+<td class="num k" data-v="-0.009604">-0.96%</td>
+<td class="num k" data-v="-0.016934">-1.69%</td>
+</tr>
+<tr><td class="num k" data-v="2">2</td><td class="l">picks 1-20</td><td class="num k" data-v="100">100</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.128789579758258">1.129</td>
+<td class="num" data-v="1.1840248263916733">1.184</td>
+<td class="num" data-v="1.2796129830695129">1.280</td>
+<td class="num" data-v="1.422337337417606">1.422</td>
+<td class="num" data-v="1.5416002706175023">1.542</td>
+<td class="num" data-v="1.3561159375720764">1.356</td>
+<td class="num" data-v="1.5483124675379998">1.548</td>
+<td class="num ok" data-v="0.128790">+12.88%</td><td class="num" data-v="0.011210">+1.12%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.095768">+9.58%</td>
+<td class="num k" data-v="0.089190">+8.92%</td>
+</tr>
+<tr><td class="num k" data-v="3">3</td><td class="l">picks 21-64</td><td class="num k" data-v="211">211</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.8298781198344433">0.830</td>
+<td class="num" data-v="0.8662986668277926">0.866</td>
+<td class="num" data-v="0.8941888969931335">0.894</td>
+<td class="num" data-v="0.8060199911093081">0.806</td>
+<td class="num" data-v="1.0143996420694041">1.014</td>
+<td class="num" data-v="1.0576325997024194">1.058</td>
+<td class="num" data-v="0.6473920220636343">0.647</td>
+<td class="num sell" data-v="-0.170122">-17.01%</td><td class="num" data-v="0.310122">+31.01%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.179742">-17.97%</td>
+<td class="num k" data-v="-0.188287">-18.83%</td>
+</tr>
+<tr><td class="num k" data-v="4">4</td><td class="l">picks 1-10</td><td class="num k" data-v="50">50</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.1884928280329132">1.188</td>
+<td class="num" data-v="1.2515854773477408">1.252</td>
+<td class="num" data-v="1.3940661463525499">1.394</td>
+<td class="num" data-v="1.5687904504625492">1.569</td>
+<td class="num" data-v="1.6393621611382387">1.639</td>
+<td class="num" data-v="1.4256070960146785">1.426</td>
+<td class="num" data-v="1.6044300307766337">1.604</td>
+<td class="num buy" data-v="0.188493">+18.85%</td><td class="num" data-v="-0.048493">-4.85%</td><td class="l buy">BUY-RED</td>
+<td class="num k" data-v="0.136527">+13.65%</td>
+<td class="num k" data-v="0.132420">+13.24%</td>
+</tr>
+<tr><td class="num k" data-v="5">5</td><td class="l">picks 11-20</td><td class="num k" data-v="50">50</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.019429784641236">1.019</td>
+<td class="num" data-v="1.0602724484215664">1.060</td>
+<td class="num" data-v="1.06996652581902">1.070</td>
+<td class="num" data-v="1.15407584579548">1.154</td>
+<td class="num" data-v="1.366835588895813">1.367</td>
+<td class="num" data-v="1.2327811764705883">1.233</td>
+<td class="num" data-v="1.442356559801254">1.442</td>
+<td class="num ok" data-v="0.019430">+1.94%</td><td class="num" data-v="0.120570">+12.06%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.021108">+2.11%</td>
+<td class="num k" data-v="0.010004">+1.00%</td>
+</tr>
+<tr><td class="num k" data-v="6">6</td><td class="l">picks 21-30</td><td class="num k" data-v="50">50</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.8615542511433613">0.862</td>
+<td class="num" data-v="1.0130571260518324">1.013</td>
+<td class="num" data-v="0.867856242572653">0.868</td>
+<td class="num" data-v="0.741174211050692">0.741</td>
+<td class="num" data-v="1.013874810624639">1.014</td>
+<td class="num" data-v="1.3613836380238185">1.361</td>
+<td class="num" data-v="0.48490773286467487">0.485</td>
+<td class="num sell" data-v="-0.138446">-13.84%</td><td class="num" data-v="0.278446">+27.84%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.142605">-14.26%</td>
+<td class="num k" data-v="-0.163357">-16.34%</td>
+</tr>
+<tr><td class="num k" data-v="7">7</td><td class="l">picks 31-40</td><td class="num k" data-v="50">50</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.8827058095965659">0.883</td>
+<td class="num" data-v="0.9077740186983886">0.908</td>
+<td class="num" data-v="1.2498162901524248">1.250</td>
+<td class="num" data-v="1.2214958710757031">1.221</td>
+<td class="num" data-v="1.5073235626308574">1.507</td>
+<td class="num" data-v="1.3493263950423577">1.349</td>
+<td class="num" data-v="1.017963475924298">1.018</td>
+<td class="num sell" data-v="-0.117294">-11.73%</td><td class="num" data-v="0.257294">+25.73%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.142664">-14.27%</td>
+<td class="num k" data-v="-0.159235">-15.92%</td>
+</tr>
+<tr><td class="num k" data-v="8">8</td><td class="l">picks 41-64</td><td class="num k" data-v="111">111</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.7511907974420604">0.751</td>
+<td class="num" data-v="0.6770726778665428">0.677</td>
+<td class="num" data-v="0.614975493733801">0.615</td>
+<td class="num" data-v="0.5154536953943281">0.515</td>
+<td class="num" data-v="0.5985049633406752">0.599</td>
+<td class="num" data-v="0.481571700910824">0.482</td>
+<td class="num" data-v="0.48701678335638615">0.487</td>
+<td class="num sell" data-v="-0.248809">-24.88%</td><td class="num" data-v="0.388809">+38.88%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.250554">-25.06%</td>
+<td class="num k" data-v="-0.239415">-23.94%</td>
+</tr>
+</tbody></table><div class="defs"><p>Picks 1-10 in this window is the cell that goes over your rail. It carries <b>50 rows</b>. It was predicted to breach before this board was built, and it is the branch you already said you would rule on. No cap was added and no constant was moved.</p></div></div>
+<div class="box"><h2>The move, band by band, in BOTH windows &middot; ORDER P minus ORDER K</h2>
+<table id="mv"><thead><tr>
+<th class="" onclick="sortTable('mv',0,true)">#</th>
+<th class="l" onclick="sortTable('mv',1,false)">band</th>
+<th class="" onclick="sortTable('mv',2,true)">PRI landing</th>
+<th class="" onclick="sortTable('mv',3,true)">PRI ORDER K</th>
+<th class="" onclick="sortTable('mv',4,true)">PRI ORDER P</th>
+<th class="" onclick="sortTable('mv',5,true)">PRI move</th>
+<th class="" onclick="sortTable('mv',6,true)">MOD landing</th>
+<th class="" onclick="sortTable('mv',7,true)">MOD ORDER K</th>
+<th class="" onclick="sortTable('mv',8,true)">MOD ORDER P</th>
+<th class="" onclick="sortTable('mv',9,true)">MOD move</th>
+<th class="l" onclick="sortTable('mv',10,false)">verdict PRI</th>
+<th class="l" onclick="sortTable('mv',11,false)">verdict MOD</th>
+</tr></thead><tbody>
+<tr><td class="num k" data-v="1">1</td><td class="l">ALL picks 1-64</td><td class="num k" data-v="0.029774">+2.98%</td><td class="num" data-v="0.042259">+4.23%</td><td class="num volt" data-v="0.053283">+5.33%</td><td class="num up" data-v="1.1024">+1.10</td><td class="num k" data-v="-0.016934">-1.69%</td><td class="num" data-v="-0.009604">-0.96%</td><td class="num volt" data-v="0.014468">+1.45%</td><td class="num up" data-v="2.4071">+2.41</td><td class="l ok">ok &rarr; ok</td><td class="l ok">SELL-RED &rarr; ok</td></tr>
+<tr><td class="num k" data-v="2">2</td><td class="l">picks 1-20</td><td class="num k" data-v="0.083646">+8.36%</td><td class="num" data-v="0.092211">+9.22%</td><td class="num volt" data-v="0.097928">+9.79%</td><td class="num up" data-v="0.5717">+0.57</td><td class="num k" data-v="0.089190">+8.92%</td><td class="num" data-v="0.095768">+9.58%</td><td class="num volt" data-v="0.128790">+12.88%</td><td class="num up" data-v="3.3022">+3.30</td><td class="l ok">ok &rarr; ok</td><td class="l ok">ok &rarr; ok</td></tr>
+<tr><td class="num k" data-v="3">3</td><td class="l">picks 21-64</td><td class="num k" data-v="-0.055354">-5.54%</td><td class="num" data-v="-0.036675">-3.67%</td><td class="num volt" data-v="-0.017265">-1.73%</td><td class="num up" data-v="1.9410">+1.94</td><td class="num k" data-v="-0.188287">-18.83%</td><td class="num" data-v="-0.179742">-17.97%</td><td class="num volt" data-v="-0.170122">-17.01%</td><td class="num up" data-v="0.9620">+0.96</td><td class="l sell">SELL-RED &rarr; SELL-RED</td><td class="l sell">SELL-RED &rarr; SELL-RED</td></tr>
+<tr><td class="num k" data-v="4">4</td><td class="l">picks 1-10</td><td class="num k" data-v="0.079320">+7.93%</td><td class="num" data-v="0.082219">+8.22%</td><td class="num volt" data-v="0.086176">+8.62%</td><td class="num up" data-v="0.3957">+0.40</td><td class="num k" data-v="0.132420">+13.24%</td><td class="num" data-v="0.136527">+13.65%</td><td class="num volt" data-v="0.188493">+18.85%</td><td class="num up" data-v="5.1966">+5.20</td><td class="l ok">ok &rarr; ok</td><td class="l buy">ok &rarr; BUY-RED</td></tr>
+<tr><td class="num k" data-v="5">5</td><td class="l">picks 11-20</td><td class="num k" data-v="0.092047">+9.20%</td><td class="num" data-v="0.111614">+11.16%</td><td class="num volt" data-v="0.120748">+12.07%</td><td class="num up" data-v="0.9135">+0.91</td><td class="num k" data-v="0.010004">+1.00%</td><td class="num" data-v="0.021108">+2.11%</td><td class="num volt" data-v="0.019430">+1.94%</td><td class="num dn" data-v="-0.1678">-0.17</td><td class="l ok">ok &rarr; ok</td><td class="l ok">ok &rarr; ok</td></tr>
+<tr><td class="num k" data-v="6">6</td><td class="l">picks 21-30</td><td class="num k" data-v="0.027588">+2.76%</td><td class="num" data-v="0.052573">+5.26%</td><td class="num volt" data-v="0.073748">+7.37%</td><td class="num up" data-v="2.1175">+2.12</td><td class="num k" data-v="-0.163357">-16.34%</td><td class="num" data-v="-0.142605">-14.26%</td><td class="num volt" data-v="-0.138446">-13.84%</td><td class="num up" data-v="0.4159">+0.42</td><td class="l ok">ok &rarr; ok</td><td class="l sell">SELL-RED &rarr; SELL-RED</td></tr>
+<tr><td class="num k" data-v="7">7</td><td class="l">picks 31-40</td><td class="num k" data-v="-0.128377">-12.84%</td><td class="num" data-v="-0.106955">-10.70%</td><td class="num volt" data-v="-0.088763">-8.88%</td><td class="num up" data-v="1.8192">+1.82</td><td class="num k" data-v="-0.159235">-15.92%</td><td class="num" data-v="-0.142664">-14.27%</td><td class="num volt" data-v="-0.117294">-11.73%</td><td class="num up" data-v="2.5370">+2.54</td><td class="l sell">SELL-RED &rarr; SELL-RED</td><td class="l sell">SELL-RED &rarr; SELL-RED</td></tr>
+<tr><td class="num k" data-v="8">8</td><td class="l">picks 41-64</td><td class="num k" data-v="-0.078815">-7.88%</td><td class="num" data-v="-0.068903">-6.89%</td><td class="num volt" data-v="-0.050274">-5.03%</td><td class="num up" data-v="1.8629">+1.86</td><td class="num k" data-v="-0.239415">-23.94%</td><td class="num" data-v="-0.250554">-25.06%</td><td class="num volt" data-v="-0.248809">-24.88%</td><td class="num up" data-v="0.1745">+0.17</td><td class="l sell">SELL-RED &rarr; SELL-RED</td><td class="l sell">SELL-RED &rarr; SELL-RED</td></tr>
+</tbody></table></div>
+<div class="box"><h2>The pool arms &middot; ORDER P &middot; PRIMARY window 2005-2023</h2><table id="a1"><thead><tr>
+<th class="" onclick="sortTable('a1',0,true)">#</th>
+<th class="l" onclick="sortTable('a1',1,false)">arm</th>
+<th class="" onclick="sortTable('a1',2,true)">n</th>
+<th class="" onclick="sortTable('a1',3,true)">yr0</th>
+<th class="" onclick="sortTable('a1',4,true)">yr1</th>
+<th class="" onclick="sortTable('a1',5,true)">yr2</th>
+<th class="" onclick="sortTable('a1',6,true)">yr3</th>
+<th class="" onclick="sortTable('a1',7,true)">yr4</th>
+<th class="" onclick="sortTable('a1',8,true)">yr5</th>
+<th class="" onclick="sortTable('a1',9,true)">yr6</th>
+<th class="" onclick="sortTable('a1',10,true)">yr7</th>
+<th class="" onclick="sortTable('a1',11,true)">yr0&rarr;1</th>
+<th class="" onclick="sortTable('a1',12,true)">margin</th>
+<th class="l" onclick="sortTable('a1',13,false)">verdict</th>
+<th class="" onclick="sortTable('a1',14,true)">ORDER K</th>
+<th class="" onclick="sortTable('a1',15,true)">landing</th>
+</tr></thead><tbody>
+<tr><td class="num k" data-v="1">1</td><td class="l">RD</td><td class="num k" data-v="623">623</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.9813718267248744">0.981</td>
+<td class="num" data-v="1.1776831597290256">1.178</td>
+<td class="num" data-v="1.0968911896793612">1.097</td>
+<td class="num" data-v="1.231176538207317">1.231</td>
+<td class="num" data-v="1.2692062126668304">1.269</td>
+<td class="num" data-v="1.2271158637972357">1.227</td>
+<td class="num" data-v="1.128491454022635">1.128</td>
+<td class="num sell" data-v="-0.018628">-1.86%</td><td class="num" data-v="0.158628">+15.86%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.033873740421718646">-3.39%</td>
+<td class="num k" data-v="-0.022134222647197888">-2.21%</td>
+</tr>
+<tr><td class="num k" data-v="2">2</td><td class="l">MSD</td><td class="num k" data-v="55">55</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="-1e+18">&mdash;</td>
+<td class="num" data-v="0.6764104106374272">0.676</td>
+<td class="num" data-v="0.685817256730973">0.686</td>
+<td class="num" data-v="0.7539084262267602">0.754</td>
+<td class="num" data-v="0.9472535887493768">0.947</td>
+<td class="num" data-v="1.2295623004923442">1.230</td>
+<td class="num" data-v="0.6083312868369353">0.608</td>
+<td class="num k" data-v="-1e18">&mdash;</td><td class="num k" data-v="-1e18">&mdash;</td><td class="l k" style="font-size:11px">n/a — MSD debuts in his draft year, so the matrix has no year-1 cell for him; those rows are excluded and counted, never scored zero</td>
+<td class="num k" data-v="-1e+18">&mdash;</td>
+<td class="num k" data-v="-1e+18">&mdash;</td>
+</tr>
+<tr><td class="num k" data-v="3">3</td><td class="l">UNR</td><td class="num k" data-v="49">49</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.5687651843244955">0.569</td>
+<td class="num" data-v="0.7686349072215767">0.769</td>
+<td class="num" data-v="0.6709446850463011">0.671</td>
+<td class="num" data-v="1.2126861730220766">1.213</td>
+<td class="num" data-v="1.4562916720536359">1.456</td>
+<td class="num" data-v="0.9181981050181925">0.918</td>
+<td class="num" data-v="0.3764795578004384">0.376</td>
+<td class="num sell" data-v="-0.431235">-43.12%</td><td class="num" data-v="0.571235">+57.12%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.42912221400654915">-42.91%</td>
+<td class="num k" data-v="-0.4205837822611881">-42.06%</td>
+</tr>
+<tr><td class="num k" data-v="4">4</td><td class="l">IRE</td><td class="num k" data-v="47">47</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.1361768108094803">1.136</td>
+<td class="num" data-v="1.5318106864216976">1.532</td>
+<td class="num" data-v="1.0745982131869753">1.075</td>
+<td class="num" data-v="1.2148113509389382">1.215</td>
+<td class="num" data-v="1.3958799931087102">1.396</td>
+<td class="num" data-v="1.2763988762596974">1.276</td>
+<td class="num" data-v="1.875221075416414">1.875</td>
+<td class="num ok" data-v="0.136177">+13.62%</td><td class="num" data-v="0.003823">+0.38%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.13344490659841024">+13.34%</td>
+<td class="num k" data-v="0.13511850557456162">+13.51%</td>
+</tr>
+<tr><td class="num k" data-v="5">5</td><td class="l">PDA</td><td class="num k" data-v="43">43</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.7974343475048694">0.797</td>
+<td class="num" data-v="0.8927955761524168">0.893</td>
+<td class="num" data-v="1.0217498376877785">1.022</td>
+<td class="num" data-v="1.1924575189737392">1.192</td>
+<td class="num" data-v="1.5520325971099749">1.552</td>
+<td class="num" data-v="0.7329357864882554">0.733</td>
+<td class="num" data-v="1.2454206794733136">1.245</td>
+<td class="num sell" data-v="-0.202566">-20.26%</td><td class="num" data-v="0.342566">+34.26%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.20697606734278107">-20.70%</td>
+<td class="num k" data-v="-0.18326728905008172">-18.33%</td>
+</tr>
+<tr><td class="num k" data-v="6">6</td><td class="l">PDN</td><td class="num k" data-v="33">33</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.5922862165236273">0.592</td>
+<td class="num" data-v="1.0373625616103126">1.037</td>
+<td class="num" data-v="0.828835349670837">0.829</td>
+<td class="num" data-v="0.8783993382276911">0.878</td>
+<td class="num" data-v="0.8949534633553156">0.895</td>
+<td class="num" data-v="1.2384335568943958">1.238</td>
+<td class="num" data-v="0.9809073724007562">0.981</td>
+<td class="num sell" data-v="-0.407714">-40.77%</td><td class="num" data-v="0.547714">+54.77%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.40323303346775585">-40.32%</td>
+<td class="num k" data-v="-0.3781063661117431">-37.81%</td>
+</tr>
+<tr><td class="num k" data-v="7">7</td><td class="l">SSP</td><td class="num k" data-v="31">31</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.5817320306832736">1.582</td>
+<td class="num" data-v="1.6239446836752016">1.624</td>
+<td class="num" data-v="2.0492043648037535">2.049</td>
+<td class="num" data-v="1.6350882066953742">1.635</td>
+<td class="num" data-v="1.3070128105202152">1.307</td>
+<td class="num" data-v="0.6800870226206389">0.680</td>
+<td class="num" data-v="0.40243478260869564">0.402</td>
+<td class="num buy" data-v="0.581732">+58.17%</td><td class="num" data-v="-0.441732">-44.17%</td><td class="l buy">BUY-RED</td>
+<td class="num k" data-v="0.5270948125511259">+52.71%</td>
+<td class="num k" data-v="0.5051936225710358">+50.52%</td>
+</tr>
+<tr><td class="num k" data-v="8">8</td><td class="l">PDS</td><td class="num k" data-v="21">21</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.7384555251549499">0.738</td>
+<td class="num" data-v="0.7729074766876989">0.773</td>
+<td class="num" data-v="0.40973812049807357">0.410</td>
+<td class="num" data-v="0.7275671450108884">0.728</td>
+<td class="num" data-v="0.9619744262661232">0.962</td>
+<td class="num" data-v="0.7760343961136857">0.776</td>
+<td class="num" data-v="0.40845385001954326">0.408</td>
+<td class="num sell" data-v="-0.261544">-26.15%</td><td class="num" data-v="0.401544">+40.15%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.27695572058741413">-27.70%</td>
+<td class="num k" data-v="-0.2546764196772573">-25.47%</td>
+</tr>
+<tr><td class="num k" data-v="9">9</td><td class="l">ALLPOOL</td><td class="num k" data-v="1016">1016</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.9639637735678921">0.964</td>
+<td class="num" data-v="1.1207642880573558">1.121</td>
+<td class="num" data-v="1.05484315671893">1.055</td>
+<td class="num" data-v="1.1799434416546426">1.180</td>
+<td class="num" data-v="1.2416679956068393">1.242</td>
+<td class="num" data-v="1.1794436147963105">1.179</td>
+<td class="num" data-v="1.1536504231868498">1.154</td>
+<td class="num sell" data-v="-0.036036">-3.60%</td><td class="num" data-v="0.176036">+17.60%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.049289570060029986">-4.93%</td>
+<td class="num k" data-v="-0.03905321719985311">-3.91%</td>
+</tr>
+</tbody></table></div>
+<div class="box"><h2>The pool arms &middot; ORDER P &middot; MODERN window 2019-2023</h2><table id="a2"><thead><tr>
+<th class="" onclick="sortTable('a2',0,true)">#</th>
+<th class="l" onclick="sortTable('a2',1,false)">arm</th>
+<th class="" onclick="sortTable('a2',2,true)">n</th>
+<th class="" onclick="sortTable('a2',3,true)">yr0</th>
+<th class="" onclick="sortTable('a2',4,true)">yr1</th>
+<th class="" onclick="sortTable('a2',5,true)">yr2</th>
+<th class="" onclick="sortTable('a2',6,true)">yr3</th>
+<th class="" onclick="sortTable('a2',7,true)">yr4</th>
+<th class="" onclick="sortTable('a2',8,true)">yr5</th>
+<th class="" onclick="sortTable('a2',9,true)">yr6</th>
+<th class="" onclick="sortTable('a2',10,true)">yr7</th>
+<th class="" onclick="sortTable('a2',11,true)">yr0&rarr;1</th>
+<th class="" onclick="sortTable('a2',12,true)">margin</th>
+<th class="l" onclick="sortTable('a2',13,false)">verdict</th>
+<th class="" onclick="sortTable('a2',14,true)">ORDER K</th>
+<th class="" onclick="sortTable('a2',15,true)">landing</th>
+</tr></thead><tbody>
+<tr><td class="num k" data-v="1">1</td><td class="l">RD</td><td class="num k" data-v="66">66</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.8025943778101606">0.803</td>
+<td class="num" data-v="0.9873270311001506">0.987</td>
+<td class="num" data-v="0.9146458418961501">0.915</td>
+<td class="num" data-v="1.1154329982936644">1.115</td>
+<td class="num" data-v="1.437652753906558">1.438</td>
+<td class="num" data-v="1.4135860277860914">1.414</td>
+<td class="num" data-v="0.9719757984788367">0.972</td>
+<td class="num sell" data-v="-0.197406">-19.74%</td><td class="num" data-v="0.337406">+33.74%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.20411887058002964">-20.41%</td>
+<td class="num k" data-v="-0.1864638991642691">-18.65%</td>
+</tr>
+<tr><td class="num k" data-v="2">2</td><td class="l">MSD</td><td class="num k" data-v="55">55</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="-1e+18">&mdash;</td>
+<td class="num" data-v="0.6764104106374272">0.676</td>
+<td class="num" data-v="0.685817256730973">0.686</td>
+<td class="num" data-v="0.7539084262267602">0.754</td>
+<td class="num" data-v="0.9472535887493768">0.947</td>
+<td class="num" data-v="1.2295623004923442">1.230</td>
+<td class="num" data-v="0.6083312868369353">0.608</td>
+<td class="num k" data-v="-1e18">&mdash;</td><td class="num k" data-v="-1e18">&mdash;</td><td class="l k" style="font-size:11px">n/a — MSD debuts in his draft year, so the matrix has no year-1 cell for him; those rows are excluded and counted, never scored zero</td>
+<td class="num k" data-v="-1e+18">&mdash;</td>
+<td class="num k" data-v="-1e+18">&mdash;</td>
+</tr>
+<tr><td class="num k" data-v="3">3</td><td class="l">UNR</td><td class="num k" data-v="13">13</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.6462141860001329">0.646</td>
+<td class="num" data-v="0.726583793126371">0.727</td>
+<td class="num" data-v="0.4798245030911386">0.480</td>
+<td class="num" data-v="0.5444392740809678">0.544</td>
+<td class="num" data-v="0.13323643410852712">0.133</td>
+<td class="num" data-v="0.05499031007751937">0.055</td>
+<td class="num" data-v="0.03857649915934989">0.039</td>
+<td class="num sell" data-v="-0.353786">-35.38%</td><td class="num" data-v="0.493786">+49.38%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.3512597221298944">-35.13%</td>
+<td class="num k" data-v="-0.32805956258725">-32.81%</td>
+</tr>
+<tr><td class="num k" data-v="4">4</td><td class="l">IRE</td><td class="num k" data-v="12">12</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.4502487562189055">0.450</td>
+<td class="num" data-v="0.4383291873963516">0.438</td>
+<td class="num" data-v="0.48393449419568824">0.484</td>
+<td class="num" data-v="0.16842868988391377">0.168</td>
+<td class="num" data-v="0.20677860696517414">0.207</td>
+<td class="num" data-v="0.03812691914022518">0.038</td>
+<td class="num" data-v="0.1705797101449275">0.171</td>
+<td class="num sell" data-v="-0.549751">-54.98%</td><td class="num" data-v="0.689751">+68.98%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.5497512437810945">-54.98%</td>
+<td class="num k" data-v="-0.4933665008291874">-49.34%</td>
+</tr>
+<tr><td class="num k" data-v="5">5</td><td class="l">PDA</td><td class="num k" data-v="13">13</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.540807298866464">0.541</td>
+<td class="num" data-v="0.6789328172518662">0.679</td>
+<td class="num" data-v="0.6847110865358031">0.685</td>
+<td class="num" data-v="0.9567044512026541">0.957</td>
+<td class="num" data-v="1.9186751300529756">1.919</td>
+<td class="num" data-v="0.03566159964081843">0.036</td>
+<td class="num" data-v="-1e+18">&mdash;</td>
+<td class="num sell" data-v="-0.459193">-45.92%</td><td class="num" data-v="0.599193">+59.92%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.45576444567320984">-45.58%</td>
+<td class="num k" data-v="-0.41150124412496547">-41.15%</td>
+</tr>
+<tr><td class="num k" data-v="6">6</td><td class="l">PDN</td><td class="num k" data-v="25">25</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.628754376266814">0.629</td>
+<td class="num" data-v="1.1137829371660217">1.114</td>
+<td class="num" data-v="0.861018979178183">0.861</td>
+<td class="num" data-v="0.4969596462133775">0.497</td>
+<td class="num" data-v="0.2907786302926968">0.291</td>
+<td class="num" data-v="0.41150743512489063">0.412</td>
+<td class="num" data-v="0.11220081727962637">0.112</td>
+<td class="num sell" data-v="-0.371246">-37.12%</td><td class="num" data-v="0.511246">+51.12%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.36525704809286896">-36.53%</td>
+<td class="num k" data-v="-0.3492721577298693">-34.93%</td>
+</tr>
+<tr><td class="num k" data-v="7">7</td><td class="l">SSP</td><td class="num k" data-v="31">31</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.5817320306832736">1.582</td>
+<td class="num" data-v="1.6239446836752016">1.624</td>
+<td class="num" data-v="2.0492043648037535">2.049</td>
+<td class="num" data-v="1.6350882066953742">1.635</td>
+<td class="num" data-v="1.3070128105202152">1.307</td>
+<td class="num" data-v="0.6800870226206389">0.680</td>
+<td class="num" data-v="0.40243478260869564">0.402</td>
+<td class="num buy" data-v="0.581732">+58.17%</td><td class="num" data-v="-0.441732">-44.17%</td><td class="l buy">BUY-RED</td>
+<td class="num k" data-v="0.5270948125511259">+52.71%</td>
+<td class="num k" data-v="0.5051936225710358">+50.52%</td>
+</tr>
+<tr><td class="num k" data-v="8">8</td><td class="l">ALLPOOL</td><td class="num k" data-v="229">229</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.9100530525408668">0.910</td>
+<td class="num" data-v="0.9215217828493114">0.922</td>
+<td class="num" data-v="0.9059043476317807">0.906</td>
+<td class="num" data-v="0.9406083109260598">0.941</td>
+<td class="num" data-v="1.0714842361272976">1.071</td>
+<td class="num" data-v="0.9789915837090147">0.979</td>
+<td class="num" data-v="0.58108635583906">0.581</td>
+<td class="num sell" data-v="-0.089947">-8.99%</td><td class="num" data-v="0.229947">+22.99%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.10470171784905313">-10.47%</td>
+<td class="num k" data-v="-0.0914879547093479">-9.15%</td>
+</tr>
+</tbody></table><div class="defs"><p>The modern window carries small samples. Read it as a direction, not a measurement.</p></div></div>
+<div class="box warn"><h2>The arms above the buy rail, stated separately so they cannot be mistaken for a pass</h2><div class="defs"><p><b>Supplemental selection (SSP) reads +58.17% on this board</b>, against +52.71% on Order K and +50.52% on the landing candidate. <b>It was already over the rail before this order existed.</b> SSP players enter at pick 65, outside the 1-64 pick curve; their entry prices are low, so the bar this order sets for them is low and they clear it easily. That means this order pushes the arm <b>+5.46 points further into the red</b>, and that is stated here rather than buried. It is an inherited, separately-tracked problem and nothing in this order reaches it.</p></div></div>
+<details><summary>The comparison boards, in full, both windows</summary>
+<div class="box"><h2>ORDER K f3101883 &middot; ND bands &middot; primary 2005-2023</h2><table id="zOKRULEDPRIMARY"><thead><tr>
+<th class="" onclick="sortTable('zOKRULEDPRIMARY',0,true)">#</th>
+<th class="l" onclick="sortTable('zOKRULEDPRIMARY',1,false)">band</th>
+<th class="" onclick="sortTable('zOKRULEDPRIMARY',2,true)">n</th>
+<th class="" onclick="sortTable('zOKRULEDPRIMARY',3,true)">yr0</th>
+<th class="" onclick="sortTable('zOKRULEDPRIMARY',4,true)">yr1</th>
+<th class="" onclick="sortTable('zOKRULEDPRIMARY',5,true)">yr2</th>
+<th class="" onclick="sortTable('zOKRULEDPRIMARY',6,true)">yr3</th>
+<th class="" onclick="sortTable('zOKRULEDPRIMARY',7,true)">yr4</th>
+<th class="" onclick="sortTable('zOKRULEDPRIMARY',8,true)">yr5</th>
+<th class="" onclick="sortTable('zOKRULEDPRIMARY',9,true)">yr6</th>
+<th class="" onclick="sortTable('zOKRULEDPRIMARY',10,true)">yr7</th>
+<th class="" onclick="sortTable('zOKRULEDPRIMARY',11,true)">yr0&rarr;1</th>
+<th class="" onclick="sortTable('zOKRULEDPRIMARY',12,true)">margin to the 14% rail</th>
+<th class="l" onclick="sortTable('zOKRULEDPRIMARY',13,false)">verdict</th>
+<th class="" onclick="sortTable('zOKRULEDPRIMARY',14,true)">ORDER K</th>
+<th class="" onclick="sortTable('zOKRULEDPRIMARY',15,true)">landing</th>
+</tr></thead><tbody>
+<tr><td class="num k" data-v="1">1</td><td class="l">ALL picks 1-64</td><td class="num k" data-v="1200">1200</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0422591488628288">1.042</td>
+<td class="num" data-v="1.1757899279911928">1.176</td>
+<td class="num" data-v="1.364346509173426">1.364</td>
+<td class="num" data-v="1.4977372860525737">1.498</td>
+<td class="num" data-v="1.5315285141302843">1.532</td>
+<td class="num" data-v="1.4917930032713245">1.492</td>
+<td class="num" data-v="1.3198734105530512">1.320</td>
+<td class="num ok" data-v="0.042259">+4.23%</td><td class="num" data-v="0.097741">+9.77%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.042259">+4.23%</td>
+<td class="num k" data-v="0.029774">+2.98%</td>
+</tr>
+<tr><td class="num k" data-v="2">2</td><td class="l">picks 1-20</td><td class="num k" data-v="380">380</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0922109455137015">1.092</td>
+<td class="num" data-v="1.2202369012956478">1.220</td>
+<td class="num" data-v="1.3959830711367736">1.396</td>
+<td class="num" data-v="1.5587615218845317">1.559</td>
+<td class="num" data-v="1.5660362136238393">1.566</td>
+<td class="num" data-v="1.4803541407235385">1.480</td>
+<td class="num" data-v="1.3171896121305569">1.317</td>
+<td class="num ok" data-v="0.092211">+9.22%</td><td class="num" data-v="0.047789">+4.78%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.092211">+9.22%</td>
+<td class="num k" data-v="0.083646">+8.36%</td>
+</tr>
+<tr><td class="num k" data-v="3">3</td><td class="l">picks 21-64</td><td class="num k" data-v="820">820</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.9633249289585466">0.963</td>
+<td class="num" data-v="1.1055544730101696">1.106</td>
+<td class="num" data-v="1.3143541664257965">1.314</td>
+<td class="num" data-v="1.401306311120536">1.401</td>
+<td class="num" data-v="1.4775537561717749">1.478</td>
+<td class="num" data-v="1.5096325442589025">1.510</td>
+<td class="num" data-v="1.3240702835134333">1.324</td>
+<td class="num sell" data-v="-0.036675">-3.67%</td><td class="num" data-v="0.176675">+17.67%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.036675">-3.67%</td>
+<td class="num k" data-v="-0.055354">-5.54%</td>
+</tr>
+<tr><td class="num k" data-v="4">4</td><td class="l">picks 1-10</td><td class="num k" data-v="190">190</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0822190975467392">1.082</td>
+<td class="num" data-v="1.20940053902905">1.209</td>
+<td class="num" data-v="1.4003054443880607">1.400</td>
+<td class="num" data-v="1.5523522975782083">1.552</td>
+<td class="num" data-v="1.5176422060921324">1.518</td>
+<td class="num" data-v="1.423379403105144">1.423</td>
+<td class="num" data-v="1.2465250975119748">1.247</td>
+<td class="num ok" data-v="0.082219">+8.22%</td><td class="num" data-v="0.057781">+5.78%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.082219">+8.22%</td>
+<td class="num k" data-v="0.079320">+7.93%</td>
+</tr>
+<tr><td class="num k" data-v="5">5</td><td class="l">picks 11-20</td><td class="num k" data-v="190">190</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.11161369815693">1.112</td>
+<td class="num" data-v="1.2412795810187993">1.241</td>
+<td class="num" data-v="1.387589634877161">1.388</td>
+<td class="num" data-v="1.5712073271311433">1.571</td>
+<td class="num" data-v="1.6598125321591108">1.660</td>
+<td class="num" data-v="1.5911577765008902">1.591</td>
+<td class="num" data-v="1.456495025096541">1.456</td>
+<td class="num ok" data-v="0.111614">+11.16%</td><td class="num" data-v="0.028386">+2.84%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.111614">+11.16%</td>
+<td class="num k" data-v="0.092047">+9.20%</td>
+</tr>
+<tr><td class="num k" data-v="6">6</td><td class="l">picks 21-30</td><td class="num k" data-v="190">190</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0525732189505086">1.053</td>
+<td class="num" data-v="1.2234458483612056">1.223</td>
+<td class="num" data-v="1.466809776732513">1.467</td>
+<td class="num" data-v="1.6319124924038546">1.632</td>
+<td class="num" data-v="1.628685255010094">1.629</td>
+<td class="num" data-v="1.6856409365529754">1.686</td>
+<td class="num" data-v="1.4581828475124763">1.458</td>
+<td class="num ok" data-v="0.052573">+5.26%</td><td class="num" data-v="0.087427">+8.74%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.052573">+5.26%</td>
+<td class="num k" data-v="0.027588">+2.76%</td>
+</tr>
+<tr><td class="num k" data-v="7">7</td><td class="l">picks 31-40</td><td class="num k" data-v="190">190</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.8930453098419013">0.893</td>
+<td class="num" data-v="0.9736355013498103">0.974</td>
+<td class="num" data-v="1.2883447833583583">1.288</td>
+<td class="num" data-v="1.2683405208001322">1.268</td>
+<td class="num" data-v="1.4025229600874498">1.403</td>
+<td class="num" data-v="1.2942360520341258">1.294</td>
+<td class="num" data-v="1.1608378525801406">1.161</td>
+<td class="num sell" data-v="-0.106955">-10.70%</td><td class="num" data-v="0.246955">+24.70%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.106955">-10.70%</td>
+<td class="num k" data-v="-0.128377">-12.84%</td>
+</tr>
+<tr><td class="num k" data-v="8">8</td><td class="l">picks 41-64</td><td class="num k" data-v="440">440</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.9310970697021539">0.931</td>
+<td class="num" data-v="1.0958825844417273">1.096</td>
+<td class="num" data-v="1.180140466167953">1.180</td>
+<td class="num" data-v="1.2771010730929953">1.277</td>
+<td class="num" data-v="1.3859934234365878">1.386</td>
+<td class="num" data-v="1.5120591134239718">1.512</td>
+<td class="num" data-v="1.325280567319632">1.325</td>
+<td class="num sell" data-v="-0.068903">-6.89%</td><td class="num" data-v="0.208903">+20.89%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.068903">-6.89%</td>
+<td class="num k" data-v="-0.078815">-7.88%</td>
+</tr>
+</tbody></table></div>
+<div class="box"><h2>ORDER K f3101883 &middot; pool arms &middot; primary 2005-2023</h2><table id="yOKRULEDPRIMARY"><thead><tr>
+<th class="" onclick="sortTable('yOKRULEDPRIMARY',0,true)">#</th>
+<th class="l" onclick="sortTable('yOKRULEDPRIMARY',1,false)">arm</th>
+<th class="" onclick="sortTable('yOKRULEDPRIMARY',2,true)">n</th>
+<th class="" onclick="sortTable('yOKRULEDPRIMARY',3,true)">yr0</th>
+<th class="" onclick="sortTable('yOKRULEDPRIMARY',4,true)">yr1</th>
+<th class="" onclick="sortTable('yOKRULEDPRIMARY',5,true)">yr2</th>
+<th class="" onclick="sortTable('yOKRULEDPRIMARY',6,true)">yr3</th>
+<th class="" onclick="sortTable('yOKRULEDPRIMARY',7,true)">yr4</th>
+<th class="" onclick="sortTable('yOKRULEDPRIMARY',8,true)">yr5</th>
+<th class="" onclick="sortTable('yOKRULEDPRIMARY',9,true)">yr6</th>
+<th class="" onclick="sortTable('yOKRULEDPRIMARY',10,true)">yr7</th>
+<th class="" onclick="sortTable('yOKRULEDPRIMARY',11,true)">yr0&rarr;1</th>
+<th class="" onclick="sortTable('yOKRULEDPRIMARY',12,true)">margin</th>
+<th class="l" onclick="sortTable('yOKRULEDPRIMARY',13,false)">verdict</th>
+<th class="" onclick="sortTable('yOKRULEDPRIMARY',14,true)">ORDER K</th>
+<th class="" onclick="sortTable('yOKRULEDPRIMARY',15,true)">landing</th>
+</tr></thead><tbody>
+<tr><td class="num k" data-v="1">1</td><td class="l">RD</td><td class="num k" data-v="623">623</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.9661262595782814">0.966</td>
+<td class="num" data-v="1.1578192477407927">1.158</td>
+<td class="num" data-v="1.0831432699266135">1.083</td>
+<td class="num" data-v="1.2215309836009898">1.222</td>
+<td class="num" data-v="1.2673529113193638">1.267</td>
+<td class="num" data-v="1.2271158637972357">1.227</td>
+<td class="num" data-v="1.128491454022635">1.128</td>
+<td class="num sell" data-v="-0.033874">-3.39%</td><td class="num" data-v="0.173874">+17.39%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.033873740421718646">-3.39%</td>
+<td class="num k" data-v="-0.022134222647197888">-2.21%</td>
+</tr>
+<tr><td class="num k" data-v="2">2</td><td class="l">MSD</td><td class="num k" data-v="55">55</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="-1e+18">&mdash;</td>
+<td class="num" data-v="0.7001641760874816">0.700</td>
+<td class="num" data-v="0.7020031454757901">0.702</td>
+<td class="num" data-v="0.7526758730174381">0.753</td>
+<td class="num" data-v="0.9429689684092815">0.943</td>
+<td class="num" data-v="1.2295623004923442">1.230</td>
+<td class="num" data-v="0.6083312868369353">0.608</td>
+<td class="num k" data-v="-1e18">&mdash;</td><td class="num k" data-v="-1e18">&mdash;</td><td class="l k" style="font-size:11px">n/a — MSD debuts in his draft year, so the matrix has no year-1 cell for him; those rows are excluded and counted, never scored zero</td>
+<td class="num k" data-v="-1e+18">&mdash;</td>
+<td class="num k" data-v="-1e+18">&mdash;</td>
+</tr>
+<tr><td class="num k" data-v="3">3</td><td class="l">UNR</td><td class="num k" data-v="49">49</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.5708777859934508">0.571</td>
+<td class="num" data-v="0.7748494771310869">0.775</td>
+<td class="num" data-v="0.668268722932291">0.668</td>
+<td class="num" data-v="1.2051864370972851">1.205</td>
+<td class="num" data-v="1.4485529061928595">1.449</td>
+<td class="num" data-v="0.9181981050181925">0.918</td>
+<td class="num" data-v="0.3764795578004384">0.376</td>
+<td class="num sell" data-v="-0.429122">-42.91%</td><td class="num" data-v="0.569122">+56.91%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.42912221400654915">-42.91%</td>
+<td class="num k" data-v="-0.4205837822611881">-42.06%</td>
+</tr>
+<tr><td class="num k" data-v="4">4</td><td class="l">IRE</td><td class="num k" data-v="47">47</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.1334449065984102">1.133</td>
+<td class="num" data-v="1.5302601461937932">1.530</td>
+<td class="num" data-v="1.049125052299968">1.049</td>
+<td class="num" data-v="1.1970170559425068">1.197</td>
+<td class="num" data-v="1.3923851246585122">1.392</td>
+<td class="num" data-v="1.2763988762596974">1.276</td>
+<td class="num" data-v="1.875221075416414">1.875</td>
+<td class="num ok" data-v="0.133445">+13.34%</td><td class="num" data-v="0.006555">+0.66%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.13344490659841024">+13.34%</td>
+<td class="num k" data-v="0.13511850557456162">+13.51%</td>
+</tr>
+<tr><td class="num k" data-v="5">5</td><td class="l">PDA</td><td class="num k" data-v="43">43</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.7930239326572189">0.793</td>
+<td class="num" data-v="0.8995903015649137">0.900</td>
+<td class="num" data-v="0.992533637808673">0.993</td>
+<td class="num" data-v="1.178946425772942">1.179</td>
+<td class="num" data-v="1.554825478635131">1.555</td>
+<td class="num" data-v="0.7329357864882554">0.733</td>
+<td class="num" data-v="1.2454206794733136">1.245</td>
+<td class="num sell" data-v="-0.206976">-20.70%</td><td class="num" data-v="0.346976">+34.70%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.20697606734278107">-20.70%</td>
+<td class="num k" data-v="-0.18326728905008172">-18.33%</td>
+</tr>
+<tr><td class="num k" data-v="6">6</td><td class="l">PDN</td><td class="num k" data-v="33">33</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.5967669665322441">0.597</td>
+<td class="num" data-v="1.0235756385068762">1.024</td>
+<td class="num" data-v="0.8087409092475787">0.809</td>
+<td class="num" data-v="0.8436562920070314">0.844</td>
+<td class="num" data-v="0.8684345914597073">0.868</td>
+<td class="num" data-v="1.2384335568943958">1.238</td>
+<td class="num" data-v="0.9809073724007562">0.981</td>
+<td class="num sell" data-v="-0.403233">-40.32%</td><td class="num" data-v="0.543233">+54.32%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.40323303346775585">-40.32%</td>
+<td class="num k" data-v="-0.3781063661117431">-37.81%</td>
+</tr>
+<tr><td class="num k" data-v="7">7</td><td class="l">SSP</td><td class="num k" data-v="31">31</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.527094812551126">1.527</td>
+<td class="num" data-v="1.5985244864255836">1.599</td>
+<td class="num" data-v="2.0429997993548485">2.043</td>
+<td class="num" data-v="1.632510688212869">1.633</td>
+<td class="num" data-v="1.3120091132561904">1.312</td>
+<td class="num" data-v="0.6800870226206389">0.680</td>
+<td class="num" data-v="0.40243478260869564">0.402</td>
+<td class="num buy" data-v="0.527095">+52.71%</td><td class="num" data-v="-0.387095">-38.71%</td><td class="l buy">BUY-RED</td>
+<td class="num k" data-v="0.5270948125511259">+52.71%</td>
+<td class="num k" data-v="0.5051936225710358">+50.52%</td>
+</tr>
+<tr><td class="num k" data-v="8">8</td><td class="l">PDS</td><td class="num k" data-v="21">21</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.7230442794125859">0.723</td>
+<td class="num" data-v="0.7710089898933496">0.771</td>
+<td class="num" data-v="0.4199006086325311">0.420</td>
+<td class="num" data-v="0.7134401697470545">0.713</td>
+<td class="num" data-v="0.9504718298062427">0.950</td>
+<td class="num" data-v="0.7760343961136857">0.776</td>
+<td class="num" data-v="0.40845385001954326">0.408</td>
+<td class="num sell" data-v="-0.276956">-27.70%</td><td class="num" data-v="0.416956">+41.70%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.27695572058741413">-27.70%</td>
+<td class="num k" data-v="-0.2546764196772573">-25.47%</td>
+</tr>
+<tr><td class="num k" data-v="9">9</td><td class="l">ALLPOOL</td><td class="num k" data-v="1016">1016</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.95071042993997">0.951</td>
+<td class="num" data-v="1.1074411315099448">1.107</td>
+<td class="num" data-v="1.0427532208026653">1.043</td>
+<td class="num" data-v="1.171540303717028">1.172</td>
+<td class="num" data-v="1.2396543133794093">1.240</td>
+<td class="num" data-v="1.1797393636541162">1.180</td>
+<td class="num" data-v="1.1536504231868498">1.154</td>
+<td class="num sell" data-v="-0.049290">-4.93%</td><td class="num" data-v="0.189290">+18.93%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.049289570060029986">-4.93%</td>
+<td class="num k" data-v="-0.03905321719985311">-3.91%</td>
+</tr>
+</tbody></table></div>
+<div class="box"><h2>ORDER K f3101883 &middot; ND bands &middot; modern 2019-2023</h2><table id="zOKRULEDMODERN"><thead><tr>
+<th class="" onclick="sortTable('zOKRULEDMODERN',0,true)">#</th>
+<th class="l" onclick="sortTable('zOKRULEDMODERN',1,false)">band</th>
+<th class="" onclick="sortTable('zOKRULEDMODERN',2,true)">n</th>
+<th class="" onclick="sortTable('zOKRULEDMODERN',3,true)">yr0</th>
+<th class="" onclick="sortTable('zOKRULEDMODERN',4,true)">yr1</th>
+<th class="" onclick="sortTable('zOKRULEDMODERN',5,true)">yr2</th>
+<th class="" onclick="sortTable('zOKRULEDMODERN',6,true)">yr3</th>
+<th class="" onclick="sortTable('zOKRULEDMODERN',7,true)">yr4</th>
+<th class="" onclick="sortTable('zOKRULEDMODERN',8,true)">yr5</th>
+<th class="" onclick="sortTable('zOKRULEDMODERN',9,true)">yr6</th>
+<th class="" onclick="sortTable('zOKRULEDMODERN',10,true)">yr7</th>
+<th class="" onclick="sortTable('zOKRULEDMODERN',11,true)">yr0&rarr;1</th>
+<th class="" onclick="sortTable('zOKRULEDMODERN',12,true)">margin to the 14% rail</th>
+<th class="l" onclick="sortTable('zOKRULEDMODERN',13,false)">verdict</th>
+<th class="" onclick="sortTable('zOKRULEDMODERN',14,true)">ORDER K</th>
+<th class="" onclick="sortTable('zOKRULEDMODERN',15,true)">landing</th>
+</tr></thead><tbody>
+<tr><td class="num k" data-v="1">1</td><td class="l">ALL picks 1-64</td><td class="num k" data-v="311">311</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.9903960905944165">0.990</td>
+<td class="num" data-v="1.0710180895016845">1.071</td>
+<td class="num" data-v="1.1803577294283296">1.180</td>
+<td class="num" data-v="1.240871891202187">1.241</td>
+<td class="num" data-v="1.3758941159515876">1.376</td>
+<td class="num" data-v="1.2377361373855513">1.238</td>
+<td class="num" data-v="1.193034806122702">1.193</td>
+<td class="num sell" data-v="-0.009604">-0.96%</td><td class="num" data-v="0.149604">+14.96%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.009604">-0.96%</td>
+<td class="num k" data-v="-0.016934">-1.69%</td>
+</tr>
+<tr><td class="num k" data-v="2">2</td><td class="l">picks 1-20</td><td class="num k" data-v="100">100</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0957679127975666">1.096</td>
+<td class="num" data-v="1.1936755248344104">1.194</td>
+<td class="num" data-v="1.336015642123608">1.336</td>
+<td class="num" data-v="1.4801793819062434">1.480</td>
+<td class="num" data-v="1.5782559511808725">1.578</td>
+<td class="num" data-v="1.3561159375720764">1.356</td>
+<td class="num" data-v="1.5483124675379998">1.548</td>
+<td class="num ok" data-v="0.095768">+9.58%</td><td class="num" data-v="0.044232">+4.42%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.095768">+9.58%</td>
+<td class="num k" data-v="0.089190">+8.92%</td>
+</tr>
+<tr><td class="num k" data-v="3">3</td><td class="l">picks 21-64</td><td class="num k" data-v="211">211</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.8202580458604335">0.820</td>
+<td class="num" data-v="0.8729699227027704">0.873</td>
+<td class="num" data-v="0.9290255197386309">0.929</td>
+<td class="num" data-v="0.8544753412774112">0.854</td>
+<td class="num" data-v="1.062067467824185">1.062</td>
+<td class="num" data-v="1.0576325997024194">1.058</td>
+<td class="num" data-v="0.6473920220636343">0.647</td>
+<td class="num sell" data-v="-0.179742">-17.97%</td><td class="num" data-v="0.319742">+31.97%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.179742">-17.97%</td>
+<td class="num k" data-v="-0.188287">-18.83%</td>
+</tr>
+<tr><td class="num k" data-v="4">4</td><td class="l">picks 1-10</td><td class="num k" data-v="50">50</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.1365271873595695">1.137</td>
+<td class="num" data-v="1.2572497042887176">1.257</td>
+<td class="num" data-v="1.4499274280608054">1.450</td>
+<td class="num" data-v="1.6206403892541879">1.621</td>
+<td class="num" data-v="1.6669986003535948">1.667</td>
+<td class="num" data-v="1.4256070960146785">1.426</td>
+<td class="num" data-v="1.6044300307766337">1.604</td>
+<td class="num ok" data-v="0.136527">+13.65%</td><td class="num" data-v="0.003473">+0.35%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.136527">+13.65%</td>
+<td class="num k" data-v="0.132420">+13.24%</td>
+</tr>
+<tr><td class="num k" data-v="5">5</td><td class="l">picks 11-20</td><td class="num k" data-v="50">50</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0211082243545955">1.021</td>
+<td class="num" data-v="1.077225257206221">1.077</td>
+<td class="num" data-v="1.127360838046652">1.127</td>
+<td class="num" data-v="1.2228937663089654">1.223</td>
+<td class="num" data-v="1.4196145751272797">1.420</td>
+<td class="num" data-v="1.2327811764705883">1.233</td>
+<td class="num" data-v="1.442356559801254">1.442</td>
+<td class="num ok" data-v="0.021108">+2.11%</td><td class="num" data-v="0.118892">+11.89%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.021108">+2.11%</td>
+<td class="num k" data-v="0.010004">+1.00%</td>
+</tr>
+<tr><td class="num k" data-v="6">6</td><td class="l">picks 21-30</td><td class="num k" data-v="50">50</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.8573949368000289">0.857</td>
+<td class="num" data-v="1.005791830218349">1.006</td>
+<td class="num" data-v="0.9167927064952524">0.917</td>
+<td class="num" data-v="0.8096318436625973">0.810</td>
+<td class="num" data-v="1.0928438820404947">1.093</td>
+<td class="num" data-v="1.3613836380238185">1.361</td>
+<td class="num" data-v="0.48490773286467487">0.485</td>
+<td class="num sell" data-v="-0.142605">-14.26%</td><td class="num" data-v="0.282605">+28.26%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.142605">-14.26%</td>
+<td class="num k" data-v="-0.163357">-16.34%</td>
+</tr>
+<tr><td class="num k" data-v="7">7</td><td class="l">picks 31-40</td><td class="num k" data-v="50">50</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.8573356615373423">0.857</td>
+<td class="num" data-v="0.9196915129688239">0.920</td>
+<td class="num" data-v="1.283291498417549">1.283</td>
+<td class="num" data-v="1.264345738295318">1.264</td>
+<td class="num" data-v="1.5393186698392431">1.539</td>
+<td class="num" data-v="1.3493263950423577">1.349</td>
+<td class="num" data-v="1.017963475924298">1.018</td>
+<td class="num sell" data-v="-0.142664">-14.27%</td><td class="num" data-v="0.282664">+28.27%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.142664">-14.27%</td>
+<td class="num k" data-v="-0.159235">-15.92%</td>
+</tr>
+<tr><td class="num k" data-v="8">8</td><td class="l">picks 41-64</td><td class="num k" data-v="111">111</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.7494461772107414">0.749</td>
+<td class="num" data-v="0.69379090914796">0.694</td>
+<td class="num" data-v="0.6362435439638022">0.636</td>
+<td class="num" data-v="0.5478295794712169">0.548</td>
+<td class="num" data-v="0.6269197115529674">0.627</td>
+<td class="num" data-v="0.481571700910824">0.482</td>
+<td class="num" data-v="0.48701678335638615">0.487</td>
+<td class="num sell" data-v="-0.250554">-25.06%</td><td class="num" data-v="0.390554">+39.06%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.250554">-25.06%</td>
+<td class="num k" data-v="-0.239415">-23.94%</td>
+</tr>
+</tbody></table></div>
+<div class="box"><h2>ORDER K f3101883 &middot; pool arms &middot; modern 2019-2023</h2><table id="yOKRULEDMODERN"><thead><tr>
+<th class="" onclick="sortTable('yOKRULEDMODERN',0,true)">#</th>
+<th class="l" onclick="sortTable('yOKRULEDMODERN',1,false)">arm</th>
+<th class="" onclick="sortTable('yOKRULEDMODERN',2,true)">n</th>
+<th class="" onclick="sortTable('yOKRULEDMODERN',3,true)">yr0</th>
+<th class="" onclick="sortTable('yOKRULEDMODERN',4,true)">yr1</th>
+<th class="" onclick="sortTable('yOKRULEDMODERN',5,true)">yr2</th>
+<th class="" onclick="sortTable('yOKRULEDMODERN',6,true)">yr3</th>
+<th class="" onclick="sortTable('yOKRULEDMODERN',7,true)">yr4</th>
+<th class="" onclick="sortTable('yOKRULEDMODERN',8,true)">yr5</th>
+<th class="" onclick="sortTable('yOKRULEDMODERN',9,true)">yr6</th>
+<th class="" onclick="sortTable('yOKRULEDMODERN',10,true)">yr7</th>
+<th class="" onclick="sortTable('yOKRULEDMODERN',11,true)">yr0&rarr;1</th>
+<th class="" onclick="sortTable('yOKRULEDMODERN',12,true)">margin</th>
+<th class="l" onclick="sortTable('yOKRULEDMODERN',13,false)">verdict</th>
+<th class="" onclick="sortTable('yOKRULEDMODERN',14,true)">ORDER K</th>
+<th class="" onclick="sortTable('yOKRULEDMODERN',15,true)">landing</th>
+</tr></thead><tbody>
+<tr><td class="num k" data-v="1">1</td><td class="l">RD</td><td class="num k" data-v="66">66</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.7958811294199704">0.796</td>
+<td class="num" data-v="0.9851785425151639">0.985</td>
+<td class="num" data-v="0.9058775174681463">0.906</td>
+<td class="num" data-v="1.1139010325200214">1.114</td>
+<td class="num" data-v="1.43502735773191">1.435</td>
+<td class="num" data-v="1.4135860277860914">1.414</td>
+<td class="num" data-v="0.9719757984788367">0.972</td>
+<td class="num sell" data-v="-0.204119">-20.41%</td><td class="num" data-v="0.344119">+34.41%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.20411887058002964">-20.41%</td>
+<td class="num k" data-v="-0.1864638991642691">-18.65%</td>
+</tr>
+<tr><td class="num k" data-v="2">2</td><td class="l">MSD</td><td class="num k" data-v="55">55</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="-1e+18">&mdash;</td>
+<td class="num" data-v="0.7001641760874816">0.700</td>
+<td class="num" data-v="0.7020031454757901">0.702</td>
+<td class="num" data-v="0.7526758730174381">0.753</td>
+<td class="num" data-v="0.9429689684092815">0.943</td>
+<td class="num" data-v="1.2295623004923442">1.230</td>
+<td class="num" data-v="0.6083312868369353">0.608</td>
+<td class="num k" data-v="-1e18">&mdash;</td><td class="num k" data-v="-1e18">&mdash;</td><td class="l k" style="font-size:11px">n/a — MSD debuts in his draft year, so the matrix has no year-1 cell for him; those rows are excluded and counted, never scored zero</td>
+<td class="num k" data-v="-1e+18">&mdash;</td>
+<td class="num k" data-v="-1e+18">&mdash;</td>
+</tr>
+<tr><td class="num k" data-v="3">3</td><td class="l">UNR</td><td class="num k" data-v="13">13</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.6487402778701056">0.649</td>
+<td class="num" data-v="0.7338961643289236">0.734</td>
+<td class="num" data-v="0.47025194442597873">0.470</td>
+<td class="num" data-v="0.5415808017017881">0.542</td>
+<td class="num" data-v="0.13323643410852712">0.133</td>
+<td class="num" data-v="0.05499031007751937">0.055</td>
+<td class="num" data-v="0.03857649915934989">0.039</td>
+<td class="num sell" data-v="-0.351260">-35.13%</td><td class="num" data-v="0.491260">+49.13%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.3512597221298944">-35.13%</td>
+<td class="num k" data-v="-0.32805956258725">-32.81%</td>
+</tr>
+<tr><td class="num k" data-v="4">4</td><td class="l">IRE</td><td class="num k" data-v="12">12</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.4502487562189055">0.450</td>
+<td class="num" data-v="0.4544983416252073">0.454</td>
+<td class="num" data-v="0.46952736318407967">0.470</td>
+<td class="num" data-v="0.154332504145937">0.154</td>
+<td class="num" data-v="0.20055970149253732">0.201</td>
+<td class="num" data-v="0.03812691914022518">0.038</td>
+<td class="num" data-v="0.1705797101449275">0.171</td>
+<td class="num sell" data-v="-0.549751">-54.98%</td><td class="num" data-v="0.689751">+68.98%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.5497512437810945">-54.98%</td>
+<td class="num k" data-v="-0.4933665008291874">-49.34%</td>
+</tr>
+<tr><td class="num k" data-v="5">5</td><td class="l">PDA</td><td class="num k" data-v="13">13</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.5442355543267902">0.544</td>
+<td class="num" data-v="0.6795410561238596">0.680</td>
+<td class="num" data-v="0.6364943323196018">0.636</td>
+<td class="num" data-v="0.9195189383466963">0.920</td>
+<td class="num" data-v="1.9148570610413782">1.915</td>
+<td class="num" data-v="0.03566159964081843">0.036</td>
+<td class="num" data-v="-1e+18">&mdash;</td>
+<td class="num sell" data-v="-0.455764">-45.58%</td><td class="num" data-v="0.595764">+59.58%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.45576444567320984">-45.58%</td>
+<td class="num k" data-v="-0.41150124412496547">-41.15%</td>
+</tr>
+<tr><td class="num k" data-v="6">6</td><td class="l">PDN</td><td class="num k" data-v="25">25</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.634742951907131">0.635</td>
+<td class="num" data-v="1.1006080707573245">1.101</td>
+<td class="num" data-v="0.8478901787359497">0.848</td>
+<td class="num" data-v="0.4650819974203058">0.465</td>
+<td class="num" data-v="0.25937766410912194">0.259</td>
+<td class="num" data-v="0.41150743512489063">0.412</td>
+<td class="num" data-v="0.11220081727962637">0.112</td>
+<td class="num sell" data-v="-0.365257">-36.53%</td><td class="num" data-v="0.505257">+50.53%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.36525704809286896">-36.53%</td>
+<td class="num k" data-v="-0.3492721577298693">-34.93%</td>
+</tr>
+<tr><td class="num k" data-v="7">7</td><td class="l">SSP</td><td class="num k" data-v="31">31</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.527094812551126">1.527</td>
+<td class="num" data-v="1.5985244864255836">1.599</td>
+<td class="num" data-v="2.0429997993548485">2.043</td>
+<td class="num" data-v="1.632510688212869">1.633</td>
+<td class="num" data-v="1.3120091132561904">1.312</td>
+<td class="num" data-v="0.6800870226206389">0.680</td>
+<td class="num" data-v="0.40243478260869564">0.402</td>
+<td class="num buy" data-v="0.527095">+52.71%</td><td class="num" data-v="-0.387095">-38.71%</td><td class="l buy">BUY-RED</td>
+<td class="num k" data-v="0.5270948125511259">+52.71%</td>
+<td class="num k" data-v="0.5051936225710358">+50.52%</td>
+</tr>
+<tr><td class="num k" data-v="8">8</td><td class="l">ALLPOOL</td><td class="num k" data-v="229">229</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.8952982821509469">0.895</td>
+<td class="num" data-v="0.925785992536702">0.926</td>
+<td class="num" data-v="0.9043197002763357">0.904</td>
+<td class="num" data-v="0.9365992089797924">0.937</td>
+<td class="num" data-v="1.0685530104511733">1.069</td>
+<td class="num" data-v="0.9789915837090147">0.979</td>
+<td class="num" data-v="0.58108635583906">0.581</td>
+<td class="num sell" data-v="-0.104702">-10.47%</td><td class="num" data-v="0.244702">+24.47%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.10470171784905313">-10.47%</td>
+<td class="num k" data-v="-0.0914879547093479">-9.15%</td>
+</tr>
+</tbody></table></div>
+<div class="box"><h2>the landing candidate 1f176444 &middot; ND bands &middot; primary 2005-2023</h2><table id="zO35FINALPRIMARY"><thead><tr>
+<th class="" onclick="sortTable('zO35FINALPRIMARY',0,true)">#</th>
+<th class="l" onclick="sortTable('zO35FINALPRIMARY',1,false)">band</th>
+<th class="" onclick="sortTable('zO35FINALPRIMARY',2,true)">n</th>
+<th class="" onclick="sortTable('zO35FINALPRIMARY',3,true)">yr0</th>
+<th class="" onclick="sortTable('zO35FINALPRIMARY',4,true)">yr1</th>
+<th class="" onclick="sortTable('zO35FINALPRIMARY',5,true)">yr2</th>
+<th class="" onclick="sortTable('zO35FINALPRIMARY',6,true)">yr3</th>
+<th class="" onclick="sortTable('zO35FINALPRIMARY',7,true)">yr4</th>
+<th class="" onclick="sortTable('zO35FINALPRIMARY',8,true)">yr5</th>
+<th class="" onclick="sortTable('zO35FINALPRIMARY',9,true)">yr6</th>
+<th class="" onclick="sortTable('zO35FINALPRIMARY',10,true)">yr7</th>
+<th class="" onclick="sortTable('zO35FINALPRIMARY',11,true)">yr0&rarr;1</th>
+<th class="" onclick="sortTable('zO35FINALPRIMARY',12,true)">margin to the 14% rail</th>
+<th class="l" onclick="sortTable('zO35FINALPRIMARY',13,false)">verdict</th>
+<th class="" onclick="sortTable('zO35FINALPRIMARY',14,true)">ORDER K</th>
+<th class="" onclick="sortTable('zO35FINALPRIMARY',15,true)">landing</th>
+</tr></thead><tbody>
+<tr><td class="num k" data-v="1">1</td><td class="l">ALL picks 1-64</td><td class="num k" data-v="1200">1200</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.029774467414941">1.030</td>
+<td class="num" data-v="1.1429939912695866">1.143</td>
+<td class="num" data-v="1.3246461992340206">1.325</td>
+<td class="num" data-v="1.4684469794214179">1.468</td>
+<td class="num" data-v="1.516890991655525">1.517</td>
+<td class="num" data-v="1.49393388994678">1.494</td>
+<td class="num" data-v="1.3207122718634694">1.321</td>
+<td class="num ok" data-v="0.029774">+2.98%</td><td class="num" data-v="0.110226">+11.02%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.042259">+4.23%</td>
+<td class="num k" data-v="0.029774">+2.98%</td>
+</tr>
+<tr><td class="num k" data-v="2">2</td><td class="l">picks 1-20</td><td class="num k" data-v="380">380</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0836462227349009">1.084</td>
+<td class="num" data-v="1.1872345050149151">1.187</td>
+<td class="num" data-v="1.354634558265598">1.355</td>
+<td class="num" data-v="1.526889988800225">1.527</td>
+<td class="num" data-v="1.5502116237067676">1.550</td>
+<td class="num" data-v="1.4814776083761645">1.481</td>
+<td class="num" data-v="1.3173089539656357">1.317</td>
+<td class="num ok" data-v="0.083646">+8.36%</td><td class="num" data-v="0.056354">+5.64%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.092211">+9.22%</td>
+<td class="num k" data-v="0.083646">+8.36%</td>
+</tr>
+<tr><td class="num k" data-v="3">3</td><td class="l">picks 21-64</td><td class="num k" data-v="820">820</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.9446458981509341">0.945</td>
+<td class="num" data-v="1.0730847852992906">1.073</td>
+<td class="num" data-v="1.2772583596551659">1.277</td>
+<td class="num" data-v="1.376094878726874">1.376</td>
+<td class="num" data-v="1.4647729694058458">1.465</td>
+<td class="num" data-v="1.5133601523660987">1.513</td>
+<td class="num" data-v="1.326034315703009">1.326</td>
+<td class="num sell" data-v="-0.055354">-5.54%</td><td class="num" data-v="0.195354">+19.54%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.036675">-3.67%</td>
+<td class="num k" data-v="-0.055354">-5.54%</td>
+</tr>
+<tr><td class="num k" data-v="4">4</td><td class="l">picks 1-10</td><td class="num k" data-v="190">190</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0793198360689864">1.079</td>
+<td class="num" data-v="1.1792245908415888">1.179</td>
+<td class="num" data-v="1.3595557349495373">1.360</td>
+<td class="num" data-v="1.5208943372751647">1.521</td>
+<td class="num" data-v="1.5028340962343814">1.503</td>
+<td class="num" data-v="1.4242445384539315">1.424</td>
+<td class="num" data-v="1.2467372467628068">1.247</td>
+<td class="num ok" data-v="0.079320">+7.93%</td><td class="num" data-v="0.060680">+6.07%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.082219">+8.22%</td>
+<td class="num k" data-v="0.079320">+7.93%</td>
+</tr>
+<tr><td class="num k" data-v="5">5</td><td class="l">picks 11-20</td><td class="num k" data-v="190">190</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0920474524769124">1.092</td>
+<td class="num" data-v="1.202788623123239">1.203</td>
+<td class="num" data-v="1.3450783306060288">1.345</td>
+<td class="num" data-v="1.538532694319804">1.539</td>
+<td class="num" data-v="1.642018240564302">1.642</td>
+<td class="num" data-v="1.5927836450367945">1.593</td>
+<td class="num" data-v="1.4564314098215687">1.456</td>
+<td class="num ok" data-v="0.092047">+9.20%</td><td class="num" data-v="0.047953">+4.80%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.111614">+11.16%</td>
+<td class="num k" data-v="0.092047">+9.20%</td>
+</tr>
+<tr><td class="num k" data-v="6">6</td><td class="l">picks 21-30</td><td class="num k" data-v="190">190</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0275876220315843">1.028</td>
+<td class="num" data-v="1.181994964840698">1.182</td>
+<td class="num" data-v="1.4178661342130394">1.418</td>
+<td class="num" data-v="1.598461040652203">1.598</td>
+<td class="num" data-v="1.610026887567622">1.610</td>
+<td class="num" data-v="1.6873763987667512">1.687</td>
+<td class="num" data-v="1.4591628348445753">1.459</td>
+<td class="num ok" data-v="0.027588">+2.76%</td><td class="num" data-v="0.112412">+11.24%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.052573">+5.26%</td>
+<td class="num k" data-v="0.027588">+2.76%</td>
+</tr>
+<tr><td class="num k" data-v="7">7</td><td class="l">picks 31-40</td><td class="num k" data-v="190">190</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.871623074648531">0.872</td>
+<td class="num" data-v="0.9411075739131437">0.941</td>
+<td class="num" data-v="1.254708014761508">1.255</td>
+<td class="num" data-v="1.2485945078281309">1.249</td>
+<td class="num" data-v="1.3943644201663201">1.394</td>
+<td class="num" data-v="1.297791441850413">1.298</td>
+<td class="num" data-v="1.1616628123464472">1.162</td>
+<td class="num sell" data-v="-0.128377">-12.84%</td><td class="num" data-v="0.268377">+26.84%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.106955">-10.70%</td>
+<td class="num k" data-v="-0.128377">-12.84%</td>
+</tr>
+<tr><td class="num k" data-v="8">8</td><td class="l">picks 41-64</td><td class="num k" data-v="440">440</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.9211847580227418">0.921</td>
+<td class="num" data-v="1.072658230507713">1.073</td>
+<td class="num" data-v="1.152264614922126">1.152</td>
+<td class="num" data-v="1.2557264893721045">1.256</td>
+<td class="num" data-v="1.3753472629890506">1.375</td>
+<td class="num" data-v="1.5179649054330244">1.518</td>
+<td class="num" data-v="1.3291936374838886">1.329</td>
+<td class="num sell" data-v="-0.078815">-7.88%</td><td class="num" data-v="0.218815">+21.88%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.068903">-6.89%</td>
+<td class="num k" data-v="-0.078815">-7.88%</td>
+</tr>
+</tbody></table></div>
+<div class="box"><h2>the landing candidate 1f176444 &middot; pool arms &middot; primary 2005-2023</h2><table id="yO35FINALPRIMARY"><thead><tr>
+<th class="" onclick="sortTable('yO35FINALPRIMARY',0,true)">#</th>
+<th class="l" onclick="sortTable('yO35FINALPRIMARY',1,false)">arm</th>
+<th class="" onclick="sortTable('yO35FINALPRIMARY',2,true)">n</th>
+<th class="" onclick="sortTable('yO35FINALPRIMARY',3,true)">yr0</th>
+<th class="" onclick="sortTable('yO35FINALPRIMARY',4,true)">yr1</th>
+<th class="" onclick="sortTable('yO35FINALPRIMARY',5,true)">yr2</th>
+<th class="" onclick="sortTable('yO35FINALPRIMARY',6,true)">yr3</th>
+<th class="" onclick="sortTable('yO35FINALPRIMARY',7,true)">yr4</th>
+<th class="" onclick="sortTable('yO35FINALPRIMARY',8,true)">yr5</th>
+<th class="" onclick="sortTable('yO35FINALPRIMARY',9,true)">yr6</th>
+<th class="" onclick="sortTable('yO35FINALPRIMARY',10,true)">yr7</th>
+<th class="" onclick="sortTable('yO35FINALPRIMARY',11,true)">yr0&rarr;1</th>
+<th class="" onclick="sortTable('yO35FINALPRIMARY',12,true)">margin</th>
+<th class="l" onclick="sortTable('yO35FINALPRIMARY',13,false)">verdict</th>
+<th class="" onclick="sortTable('yO35FINALPRIMARY',14,true)">ORDER K</th>
+<th class="" onclick="sortTable('yO35FINALPRIMARY',15,true)">landing</th>
+</tr></thead><tbody>
+<tr><td class="num k" data-v="1">1</td><td class="l">RD</td><td class="num k" data-v="623">623</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.9778657773528021">0.978</td>
+<td class="num" data-v="1.1685953857046192">1.169</td>
+<td class="num" data-v="1.0738504103018285">1.074</td>
+<td class="num" data-v="1.216435194256558">1.216</td>
+<td class="num" data-v="1.2665581622730624">1.267</td>
+<td class="num" data-v="1.2342783604815792">1.234</td>
+<td class="num" data-v="1.1312563392200936">1.131</td>
+<td class="num sell" data-v="-0.022134">-2.21%</td><td class="num" data-v="0.162134">+16.21%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.033873740421718646">-3.39%</td>
+<td class="num k" data-v="-0.022134222647197888">-2.21%</td>
+</tr>
+<tr><td class="num k" data-v="2">2</td><td class="l">MSD</td><td class="num k" data-v="55">55</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="-1e+18">&mdash;</td>
+<td class="num" data-v="0.7006029650300003">0.701</td>
+<td class="num" data-v="0.6836233120183798">0.684</td>
+<td class="num" data-v="0.7452312516331329">0.745</td>
+<td class="num" data-v="0.9442573932491399">0.944</td>
+<td class="num" data-v="1.240419123879601">1.240</td>
+<td class="num" data-v="0.6083312868369353">0.608</td>
+<td class="num k" data-v="-1e18">&mdash;</td><td class="num k" data-v="-1e18">&mdash;</td><td class="l k" style="font-size:11px">n/a — MSD debuts in his draft year, so the matrix has no year-1 cell for him; those rows are excluded and counted, never scored zero</td>
+<td class="num k" data-v="-1e+18">&mdash;</td>
+<td class="num k" data-v="-1e+18">&mdash;</td>
+</tr>
+<tr><td class="num k" data-v="3">3</td><td class="l">UNR</td><td class="num k" data-v="49">49</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.5794162177388119">0.579</td>
+<td class="num" data-v="0.7836343790711594">0.784</td>
+<td class="num" data-v="0.682247103975212">0.682</td>
+<td class="num" data-v="1.2243054822013308">1.224</td>
+<td class="num" data-v="1.4638642114400755">1.464</td>
+<td class="num" data-v="0.9253273738064016">0.925</td>
+<td class="num" data-v="0.3814352425426475">0.381</td>
+<td class="num sell" data-v="-0.420584">-42.06%</td><td class="num" data-v="0.560584">+56.06%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.42912221400654915">-42.91%</td>
+<td class="num k" data-v="-0.4205837822611881">-42.06%</td>
+</tr>
+<tr><td class="num k" data-v="4">4</td><td class="l">IRE</td><td class="num k" data-v="47">47</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.1351185055745616">1.135</td>
+<td class="num" data-v="1.5239595382835767">1.524</td>
+<td class="num" data-v="1.0298540523245798">1.030</td>
+<td class="num" data-v="1.1851788043612022">1.185</td>
+<td class="num" data-v="1.39142526642219">1.391</td>
+<td class="num" data-v="1.2802907291425036">1.280</td>
+<td class="num" data-v="1.877148061135602">1.877</td>
+<td class="num ok" data-v="0.135119">+13.51%</td><td class="num" data-v="0.004881">+0.49%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.13344490659841024">+13.34%</td>
+<td class="num k" data-v="0.13511850557456162">+13.51%</td>
+</tr>
+<tr><td class="num k" data-v="5">5</td><td class="l">PDA</td><td class="num k" data-v="43">43</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.8167327109499183">0.817</td>
+<td class="num" data-v="0.9270938276580026">0.927</td>
+<td class="num" data-v="0.9919851344392953">0.992</td>
+<td class="num" data-v="1.1649763807732778">1.165</td>
+<td class="num" data-v="1.5513444958646465">1.551</td>
+<td class="num" data-v="0.7367173296487528">0.737</td>
+<td class="num" data-v="1.2472060565483853">1.247</td>
+<td class="num sell" data-v="-0.183267">-18.33%</td><td class="num" data-v="0.323267">+32.33%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.20697606734278107">-20.70%</td>
+<td class="num k" data-v="-0.18326728905008172">-18.33%</td>
+</tr>
+<tr><td class="num k" data-v="6">6</td><td class="l">PDN</td><td class="num k" data-v="33">33</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.6218936338882569">0.622</td>
+<td class="num" data-v="1.0369489539172096">1.037</td>
+<td class="num" data-v="0.8052941784717195">0.805</td>
+<td class="num" data-v="0.8719539516768346">0.872</td>
+<td class="num" data-v="0.8839623965202751">0.884</td>
+<td class="num" data-v="1.2599181539161075">1.260</td>
+<td class="num" data-v="0.9833648393194707">0.983</td>
+<td class="num sell" data-v="-0.378106">-37.81%</td><td class="num" data-v="0.518106">+51.81%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.40323303346775585">-40.32%</td>
+<td class="num k" data-v="-0.3781063661117431">-37.81%</td>
+</tr>
+<tr><td class="num k" data-v="7">7</td><td class="l">SSP</td><td class="num k" data-v="31">31</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.5051936225710358">1.505</td>
+<td class="num" data-v="1.589634362797302">1.590</td>
+<td class="num" data-v="2.013983423623651">2.014</td>
+<td class="num" data-v="1.6397339136608478">1.640</td>
+<td class="num" data-v="1.3158662589683634">1.316</td>
+<td class="num" data-v="0.6839663442635843">0.684</td>
+<td class="num" data-v="0.40459130434782614">0.405</td>
+<td class="num buy" data-v="0.505194">+50.52%</td><td class="num" data-v="-0.365194">-36.52%</td><td class="l buy">BUY-RED</td>
+<td class="num k" data-v="0.5270948125511259">+52.71%</td>
+<td class="num k" data-v="0.5051936225710358">+50.52%</td>
+</tr>
+<tr><td class="num k" data-v="8">8</td><td class="l">PDS</td><td class="num k" data-v="21">21</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.7453235803227427">0.745</td>
+<td class="num" data-v="0.7927299123345803">0.793</td>
+<td class="num" data-v="0.41487520241219494">0.415</td>
+<td class="num" data-v="0.7246635769724719">0.725</td>
+<td class="num" data-v="0.9771623206209168">0.977</td>
+<td class="num" data-v="0.7950192640571779">0.795</td>
+<td class="num" data-v="0.4147076888715171">0.415</td>
+<td class="num sell" data-v="-0.254676">-25.47%</td><td class="num" data-v="0.394676">+39.47%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.27695572058741413">-27.70%</td>
+<td class="num k" data-v="-0.2546764196772573">-25.47%</td>
+</tr>
+<tr><td class="num k" data-v="9">9</td><td class="l">ALLPOOL</td><td class="num k" data-v="1016">1016</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.9609467828001469">0.961</td>
+<td class="num" data-v="1.1168317893062274">1.117</td>
+<td class="num" data-v="1.0339152825451683">1.034</td>
+<td class="num" data-v="1.168722248783824">1.169</td>
+<td class="num" data-v="1.2403259912767466">1.240</td>
+<td class="num" data-v="1.1871052554619201">1.187</td>
+<td class="num" data-v="1.1568140847519552">1.157</td>
+<td class="num sell" data-v="-0.039053">-3.91%</td><td class="num" data-v="0.179053">+17.91%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.049289570060029986">-4.93%</td>
+<td class="num k" data-v="-0.03905321719985311">-3.91%</td>
+</tr>
+</tbody></table></div>
+<div class="box"><h2>the landing candidate 1f176444 &middot; ND bands &middot; modern 2019-2023</h2><table id="zO35FINALMODERN"><thead><tr>
+<th class="" onclick="sortTable('zO35FINALMODERN',0,true)">#</th>
+<th class="l" onclick="sortTable('zO35FINALMODERN',1,false)">band</th>
+<th class="" onclick="sortTable('zO35FINALMODERN',2,true)">n</th>
+<th class="" onclick="sortTable('zO35FINALMODERN',3,true)">yr0</th>
+<th class="" onclick="sortTable('zO35FINALMODERN',4,true)">yr1</th>
+<th class="" onclick="sortTable('zO35FINALMODERN',5,true)">yr2</th>
+<th class="" onclick="sortTable('zO35FINALMODERN',6,true)">yr3</th>
+<th class="" onclick="sortTable('zO35FINALMODERN',7,true)">yr4</th>
+<th class="" onclick="sortTable('zO35FINALMODERN',8,true)">yr5</th>
+<th class="" onclick="sortTable('zO35FINALMODERN',9,true)">yr6</th>
+<th class="" onclick="sortTable('zO35FINALMODERN',10,true)">yr7</th>
+<th class="" onclick="sortTable('zO35FINALMODERN',11,true)">yr0&rarr;1</th>
+<th class="" onclick="sortTable('zO35FINALMODERN',12,true)">margin to the 14% rail</th>
+<th class="l" onclick="sortTable('zO35FINALMODERN',13,false)">verdict</th>
+<th class="" onclick="sortTable('zO35FINALMODERN',14,true)">ORDER K</th>
+<th class="" onclick="sortTable('zO35FINALMODERN',15,true)">landing</th>
+</tr></thead><tbody>
+<tr><td class="num k" data-v="1">1</td><td class="l">ALL picks 1-64</td><td class="num k" data-v="311">311</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.9830655424622124">0.983</td>
+<td class="num" data-v="1.044587014976371">1.045</td>
+<td class="num" data-v="1.1471593919656138">1.147</td>
+<td class="num" data-v="1.2152962673793086">1.215</td>
+<td class="num" data-v="1.363483296757514">1.363</td>
+<td class="num" data-v="1.2386693964038147">1.239</td>
+<td class="num" data-v="1.1930149594383388">1.193</td>
+<td class="num sell" data-v="-0.016934">-1.69%</td><td class="num" data-v="0.156934">+15.69%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.009604">-0.96%</td>
+<td class="num k" data-v="-0.016934">-1.69%</td>
+</tr>
+<tr><td class="num k" data-v="2">2</td><td class="l">picks 1-20</td><td class="num k" data-v="100">100</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0891897743492696">1.089</td>
+<td class="num" data-v="1.164355898406385">1.164</td>
+<td class="num" data-v="1.2952110029455948">1.295</td>
+<td class="num" data-v="1.4489846786308063">1.449</td>
+<td class="num" data-v="1.5621758052093868">1.562</td>
+<td class="num" data-v="1.3568632727174055">1.357</td>
+<td class="num" data-v="1.5483960290269674">1.548</td>
+<td class="num ok" data-v="0.089190">+8.92%</td><td class="num" data-v="0.050810">+5.08%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.095768">+9.58%</td>
+<td class="num k" data-v="0.089190">+8.92%</td>
+</tr>
+<tr><td class="num k" data-v="3">3</td><td class="l">picks 21-64</td><td class="num k" data-v="211">211</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.8117126234878271">0.812</td>
+<td class="num" data-v="0.8512028329369926">0.851</td>
+<td class="num" data-v="0.9081086563402286">0.908</td>
+<td class="num" data-v="0.8379725338040509">0.838</td>
+<td class="num" data-v="1.055347111568118">1.055</td>
+<td class="num" data-v="1.0588487241014526">1.059</td>
+<td class="num" data-v="0.6472133589668744">0.647</td>
+<td class="num sell" data-v="-0.188287">-18.83%</td><td class="num" data-v="0.328287">+32.83%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.179742">-17.97%</td>
+<td class="num k" data-v="-0.188287">-18.83%</td>
+</tr>
+<tr><td class="num k" data-v="4">4</td><td class="l">picks 1-10</td><td class="num k" data-v="50">50</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.1324197705590364">1.132</td>
+<td class="num" data-v="1.2301269105014954">1.230</td>
+<td class="num" data-v="1.4069700053202203">1.407</td>
+<td class="num" data-v="1.5860351960991936">1.586</td>
+<td class="num" data-v="1.6508395247516416">1.651</td>
+<td class="num" data-v="1.426160367386332">1.426</td>
+<td class="num" data-v="1.604467624384718">1.604</td>
+<td class="num ok" data-v="0.132420">+13.24%</td><td class="num" data-v="0.007580">+0.76%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.136527">+13.65%</td>
+<td class="num k" data-v="0.132420">+13.24%</td>
+</tr>
+<tr><td class="num k" data-v="5">5</td><td class="l">picks 11-20</td><td class="num k" data-v="50">50</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.0100044089791795">1.010</td>
+<td class="num" data-v="1.043881642562355">1.044</td>
+<td class="num" data-v="1.090499501387977">1.090</td>
+<td class="num" data-v="1.1979461347633817">1.198</td>
+<td class="num" data-v="1.4036755282249058">1.404</td>
+<td class="num" data-v="1.2338729411764706">1.234</td>
+<td class="num" data-v="1.4425269135218266">1.443</td>
+<td class="num ok" data-v="0.010004">+1.00%</td><td class="num" data-v="0.129996">+13.00%</td><td class="l ok">ok</td>
+<td class="num k" data-v="0.021108">+2.11%</td>
+<td class="num k" data-v="0.010004">+1.00%</td>
+</tr>
+<tr><td class="num k" data-v="6">6</td><td class="l">picks 21-30</td><td class="num k" data-v="50">50</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.8366433793078613">0.837</td>
+<td class="num" data-v="0.9733995942717898">0.973</td>
+<td class="num" data-v="0.8884127384253423">0.888</td>
+<td class="num" data-v="0.7927004933559004">0.793</td>
+<td class="num" data-v="1.0837284330074441">1.084</td>
+<td class="num" data-v="1.3631029860315118">1.363</td>
+<td class="num" data-v="0.485618043350908">0.486</td>
+<td class="num sell" data-v="-0.163357">-16.34%</td><td class="num" data-v="0.303357">+30.34%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.142605">-14.26%</td>
+<td class="num k" data-v="-0.163357">-16.34%</td>
+</tr>
+<tr><td class="num k" data-v="7">7</td><td class="l">picks 31-40</td><td class="num k" data-v="50">50</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.8407653970679181">0.841</td>
+<td class="num" data-v="0.8816435665175161">0.882</td>
+<td class="num" data-v="1.2461711957510277">1.246</td>
+<td class="num" data-v="1.2328094874313362">1.233</td>
+<td class="num" data-v="1.5330151828323726">1.533</td>
+<td class="num" data-v="1.3497891986161044">1.350</td>
+<td class="num" data-v="1.0163047985536333">1.016</td>
+<td class="num sell" data-v="-0.159235">-15.92%</td><td class="num" data-v="0.299235">+29.92%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.142664">-14.27%</td>
+<td class="num k" data-v="-0.159235">-15.92%</td>
+</tr>
+<tr><td class="num k" data-v="8">8</td><td class="l">picks 41-64</td><td class="num k" data-v="111">111</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.7605853891193433">0.761</td>
+<td class="num" data-v="0.6971766020069408">0.697</td>
+<td class="num" data-v="0.6371064406609473">0.637</td>
+<td class="num" data-v="0.5447419781985227">0.545</td>
+<td class="num" data-v="0.6223335244244637">0.622</td>
+<td class="num" data-v="0.4829384412099939">0.483</td>
+<td class="num" data-v="0.4872449343352964">0.487</td>
+<td class="num sell" data-v="-0.239415">-23.94%</td><td class="num" data-v="0.379415">+37.94%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.250554">-25.06%</td>
+<td class="num k" data-v="-0.239415">-23.94%</td>
+</tr>
+</tbody></table></div>
+<div class="box"><h2>the landing candidate 1f176444 &middot; pool arms &middot; modern 2019-2023</h2><table id="yO35FINALMODERN"><thead><tr>
+<th class="" onclick="sortTable('yO35FINALMODERN',0,true)">#</th>
+<th class="l" onclick="sortTable('yO35FINALMODERN',1,false)">arm</th>
+<th class="" onclick="sortTable('yO35FINALMODERN',2,true)">n</th>
+<th class="" onclick="sortTable('yO35FINALMODERN',3,true)">yr0</th>
+<th class="" onclick="sortTable('yO35FINALMODERN',4,true)">yr1</th>
+<th class="" onclick="sortTable('yO35FINALMODERN',5,true)">yr2</th>
+<th class="" onclick="sortTable('yO35FINALMODERN',6,true)">yr3</th>
+<th class="" onclick="sortTable('yO35FINALMODERN',7,true)">yr4</th>
+<th class="" onclick="sortTable('yO35FINALMODERN',8,true)">yr5</th>
+<th class="" onclick="sortTable('yO35FINALMODERN',9,true)">yr6</th>
+<th class="" onclick="sortTable('yO35FINALMODERN',10,true)">yr7</th>
+<th class="" onclick="sortTable('yO35FINALMODERN',11,true)">yr0&rarr;1</th>
+<th class="" onclick="sortTable('yO35FINALMODERN',12,true)">margin</th>
+<th class="l" onclick="sortTable('yO35FINALMODERN',13,false)">verdict</th>
+<th class="" onclick="sortTable('yO35FINALMODERN',14,true)">ORDER K</th>
+<th class="" onclick="sortTable('yO35FINALMODERN',15,true)">landing</th>
+</tr></thead><tbody>
+<tr><td class="num k" data-v="1">1</td><td class="l">RD</td><td class="num k" data-v="66">66</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.8135361008357309">0.814</td>
+<td class="num" data-v="0.9874889461819177">0.987</td>
+<td class="num" data-v="0.889667326782">0.890</td>
+<td class="num" data-v="1.0962647436136954">1.096</td>
+<td class="num" data-v="1.418865008909002">1.419</td>
+<td class="num" data-v="1.4209139094586636">1.421</td>
+<td class="num" data-v="0.9747834912935159">0.975</td>
+<td class="num sell" data-v="-0.186464">-18.65%</td><td class="num" data-v="0.326464">+32.65%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.20411887058002964">-20.41%</td>
+<td class="num k" data-v="-0.1864638991642691">-18.65%</td>
+</tr>
+<tr><td class="num k" data-v="2">2</td><td class="l">MSD</td><td class="num k" data-v="55">55</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="-1e+18">&mdash;</td>
+<td class="num" data-v="0.7006029650300003">0.701</td>
+<td class="num" data-v="0.6836233120183798">0.684</td>
+<td class="num" data-v="0.7452312516331329">0.745</td>
+<td class="num" data-v="0.9442573932491399">0.944</td>
+<td class="num" data-v="1.240419123879601">1.240</td>
+<td class="num" data-v="0.6083312868369353">0.608</td>
+<td class="num k" data-v="-1e18">&mdash;</td><td class="num k" data-v="-1e18">&mdash;</td><td class="l k" style="font-size:11px">n/a — MSD debuts in his draft year, so the matrix has no year-1 cell for him; those rows are excluded and counted, never scored zero</td>
+<td class="num k" data-v="-1e+18">&mdash;</td>
+<td class="num k" data-v="-1e+18">&mdash;</td>
+</tr>
+<tr><td class="num k" data-v="3">3</td><td class="l">UNR</td><td class="num k" data-v="13">13</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.67194043741275">0.672</td>
+<td class="num" data-v="0.7436016751977662">0.744</td>
+<td class="num" data-v="0.49212258193179537">0.492</td>
+<td class="num" data-v="0.5623213454763012">0.562</td>
+<td class="num" data-v="0.14890180878552972">0.149</td>
+<td class="num" data-v="0.057897286821705425">0.058</td>
+<td class="num" data-v="0.03988417709695498">0.040</td>
+<td class="num sell" data-v="-0.328060">-32.81%</td><td class="num" data-v="0.468060">+46.81%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.3512597221298944">-35.13%</td>
+<td class="num k" data-v="-0.32805956258725">-32.81%</td>
+</tr>
+<tr><td class="num k" data-v="4">4</td><td class="l">IRE</td><td class="num k" data-v="12">12</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.5066334991708126">0.507</td>
+<td class="num" data-v="0.5105721393034826">0.511</td>
+<td class="num" data-v="0.46745439469320077">0.467</td>
+<td class="num" data-v="0.17765339966832502">0.178</td>
+<td class="num" data-v="0.21517412935323385">0.215</td>
+<td class="num" data-v="0.04055783009211873">0.041</td>
+<td class="num" data-v="0.1726086956521739">0.173</td>
+<td class="num sell" data-v="-0.493367">-49.34%</td><td class="num" data-v="0.633367">+63.34%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.5497512437810945">-54.98%</td>
+<td class="num k" data-v="-0.4933665008291874">-49.34%</td>
+</tr>
+<tr><td class="num k" data-v="5">5</td><td class="l">PDA</td><td class="num k" data-v="13">13</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.5884987558750345">0.588</td>
+<td class="num" data-v="0.7205142383190489">0.721</td>
+<td class="num" data-v="0.6348354990323472">0.635</td>
+<td class="num" data-v="0.9183577550456178">0.918</td>
+<td class="num" data-v="1.9083663437216625">1.908</td>
+<td class="num" data-v="0.03970239240587519">0.040</td>
+<td class="num" data-v="-1e+18">&mdash;</td>
+<td class="num sell" data-v="-0.411501">-41.15%</td><td class="num" data-v="0.551501">+55.15%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.45576444567320984">-45.58%</td>
+<td class="num k" data-v="-0.41150124412496547">-41.15%</td>
+</tr>
+<tr><td class="num k" data-v="6">6</td><td class="l">PDN</td><td class="num k" data-v="25">25</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.6507278422701307">0.651</td>
+<td class="num" data-v="1.1137829371660217">1.114</td>
+<td class="num" data-v="0.8377096001474109">0.838</td>
+<td class="num" data-v="0.48719366132301445">0.487</td>
+<td class="num" data-v="0.27884342142654167">0.279</td>
+<td class="num" data-v="0.42598892020604523">0.426</td>
+<td class="num" data-v="0.11360186806771744">0.114</td>
+<td class="num sell" data-v="-0.349272">-34.93%</td><td class="num" data-v="0.489272">+48.93%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.36525704809286896">-36.53%</td>
+<td class="num k" data-v="-0.3492721577298693">-34.93%</td>
+</tr>
+<tr><td class="num k" data-v="7">7</td><td class="l">SSP</td><td class="num k" data-v="31">31</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="1.5051936225710358">1.505</td>
+<td class="num" data-v="1.589634362797302">1.590</td>
+<td class="num" data-v="2.013983423623651">2.014</td>
+<td class="num" data-v="1.6397339136608478">1.640</td>
+<td class="num" data-v="1.3158662589683634">1.316</td>
+<td class="num" data-v="0.6839663442635843">0.684</td>
+<td class="num" data-v="0.40459130434782614">0.405</td>
+<td class="num buy" data-v="0.505194">+50.52%</td><td class="num" data-v="-0.365194">-36.52%</td><td class="l buy">BUY-RED</td>
+<td class="num k" data-v="0.5270948125511259">+52.71%</td>
+<td class="num k" data-v="0.5051936225710358">+50.52%</td>
+</tr>
+<tr><td class="num k" data-v="8">8</td><td class="l">ALLPOOL</td><td class="num k" data-v="229">229</td>
+<td class="num" data-v="1.0">1.000</td>
+<td class="num" data-v="0.9085120452906521">0.909</td>
+<td class="num" data-v="0.9312251875135001">0.931</td>
+<td class="num" data-v="0.8898493188437101">0.890</td>
+<td class="num" data-v="0.9322884467848975">0.932</td>
+<td class="num" data-v="1.0660220324577327">1.066</td>
+<td class="num" data-v="0.9861585093779329">0.986</td>
+<td class="num" data-v="0.5831972306965374">0.583</td>
+<td class="num sell" data-v="-0.091488">-9.15%</td><td class="num" data-v="0.231488">+23.15%</td><td class="l sell">SELL-RED</td>
+<td class="num k" data-v="-0.10470171784905313">-10.47%</td>
+<td class="num k" data-v="-0.0914879547093479">-9.15%</td>
+</tr>
+</tbody></table></div>
+<div class="box"><h2>Vantage-consistency matrix &middot; diagnostic only</h2><div class="defs"><p>This asks the same question from a later starting point: if you bought at year V and held k more years, did you beat the compounded 14% carry? It is a thermometer. No decision in this order was made on it and nothing was calibrated toward it.</p></div>
+<table><thead><tr><th class="l">band</th><th>from year</th><th>k=1</th><th>k=2</th><th>k=3</th><th>k=4</th></tr></thead><tbody>
+<tr><td class="l">picks 1-10</td><td class="num k">0</td><td class="num">+8.6%</td><td class="num">+18.1%</td><td class="num">+35.1%</td><td class="num">+50.2%</td></tr>
+<tr><td class="l"></td><td class="num k">1</td><td class="num">+8.8%</td><td class="num">+24.3%</td><td class="num">+38.3%</td><td class="num">+36.2%</td></tr>
+<tr><td class="l"></td><td class="num k">2</td><td class="num">+14.3%</td><td class="num">+27.2%</td><td class="num">+25.3%</td><td class="num">+20.4%</td></tr>
+<tr><td class="l">picks 11-20</td><td class="num k">0</td><td class="num">+12.1%</td><td class="num">+25.2%</td><td class="num">+35.9%</td><td class="num">+52.8%</td></tr>
+<tr><td class="l"></td><td class="num k">1</td><td class="num">+11.7%</td><td class="num">+21.2%</td><td class="num">+36.3%</td><td class="num">+44.5%</td></tr>
+<tr><td class="l"></td><td class="num k">2</td><td class="num">+8.5%</td><td class="num">+22.0%</td><td class="num">+29.4%</td><td class="num">+26.9%</td></tr>
+<tr><td class="l">picks 21-30</td><td class="num k">0</td><td class="num">+7.4%</td><td class="num">+24.2%</td><td class="num">+44.7%</td><td class="num">+59.5%</td></tr>
+<tr><td class="l"></td><td class="num k">1</td><td class="num">+15.7%</td><td class="num">+34.8%</td><td class="num">+48.5%</td><td class="num">+48.4%</td></tr>
+<tr><td class="l"></td><td class="num k">2</td><td class="num">+16.5%</td><td class="num">+28.4%</td><td class="num">+28.3%</td><td class="num">+35.7%</td></tr>
+<tr><td class="l">picks 31-40</td><td class="num k">0</td><td class="num">-8.9%</td><td class="num">-2.1%</td><td class="num">+29.5%</td><td class="num">+25.4%</td></tr>
+<tr><td class="l"></td><td class="num k">1</td><td class="num">+7.4%</td><td class="num">+42.1%</td><td class="num">+37.6%</td><td class="num">+51.9%</td></tr>
+<tr><td class="l"></td><td class="num k">2</td><td class="num">+32.4%</td><td class="num">+28.2%</td><td class="num">+41.5%</td><td class="num">+32.0%</td></tr>
+<tr><td class="l">picks 41-64</td><td class="num k">0</td><td class="num">-5.0%</td><td class="num">+11.5%</td><td class="num">+19.9%</td><td class="num">+28.3%</td></tr>
+<tr><td class="l"></td><td class="num k">1</td><td class="num">+17.5%</td><td class="num">+26.3%</td><td class="num">+35.1%</td><td class="num">+45.8%</td></tr>
+<tr><td class="l"></td><td class="num k">2</td><td class="num">+7.5%</td><td class="num">+15.0%</td><td class="num">+24.1%</td><td class="num">+35.6%</td></tr>
+</tbody></table><div class="defs"><p>the compounded carry for reference: k=1 +14.0% &middot; k=2 +30.0% &middot; k=3 +48.2% &middot; k=4 +68.9%</p></div></div>
+</details>
+<script>
+function sortTable(tid, col, numeric){
+  var tb=document.getElementById(tid).tBodies[0];
+  var rows=Array.prototype.slice.call(tb.rows).filter(function(r){return !r.classList.contains('sechead')});
+  var th=document.getElementById(tid).tHead.rows[0].cells[col];
+  var dir=th.dataset.dir==='asc'?'desc':'asc';
+  var ths=document.getElementById(tid).tHead.rows[0].cells;
+  for(var i=0;i<ths.length;i++){ths[i].classList.remove('sorted');ths[i].dataset.dir='';}
+  th.classList.add('sorted');th.dataset.dir=dir;
+  rows.sort(function(a,b){
+    var x=a.cells[col].dataset.v!==undefined?a.cells[col].dataset.v:a.cells[col].textContent;
+    var y=b.cells[col].dataset.v!==undefined?b.cells[col].dataset.v:b.cells[col].textContent;
+    if(numeric){x=parseFloat(x)||-1e18;y=parseFloat(y)||-1e18;return dir==='asc'?x-y:y-x;}
+    return dir==='asc'?String(x).localeCompare(String(y)):String(y).localeCompare(String(x));
+  });
+  rows.forEach(function(r){tb.appendChild(r);});
+}
+</script></div>

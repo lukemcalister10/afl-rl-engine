@@ -1,0 +1,77 @@
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+ORDER P BUILD — B8, CONTINUITY. Six objects, each measured, none argued.
+
+== THE ENGINE'S OWN BANNER, printed at load with the dial on (it is swallowed by rl_export, so
+   it is captured here) ==
+   ORDER P LIVE (RL_O37=1) — THE PEDIGREE-CONDITIONAL CHARGE. NOTHING IS GREENLIT AND NOTHING MERGES.
+     THE BLIND ETA CHARGE IS GONE. It read games and nothing else, peaked at 14 games and then FELL AWAY, so a 36-game row kept more unearned pedigree than a 17-game row however either of them played.
+     IN ITS PLACE: pi *= exp(-LAMBDA*A(g)*T(s_P)) below age 24; the old charge at 24 and above. A(g)=1-exp(-g/9.89) · T=clip(1-0.65744*(s+2.4527), 0, 21.1233) · LAMBDA=0.17438.
+     s_P is production against the S1 AGE BAR PLUS the MEASURED PEDIGREE PREMIUM PG(ln v0, class), pooled over age, fitted on 5,041 season rows by local-linear kernel regression on ln(v0) (tricube, h=0.40), monotone guarded, held flat outside support.
+     PG spans -7.04 to +25.44 points a game for SMALLS (v0 91 to 3444) and -5.45 to +22.92 for TALLS (v0 96 to 2947). Largest one-node step 1.6276 — no cliff.
+     LAMBDA*THETA_R = 0.11465 = BETA_sat, the measured saturated slope. NO FREE PARAMETER.
+     0 active rows are inside the age gate AND carry a readable pedigree surplus; every other row keeps the ORDER K charge byte for byte, and A(0)=0 means no day-0 print moves.
+
+== AGE: the S1 bar, ages 18 to 30, per position class (UNCHANGED by ORDER P) ==
+   pos         18      19      20      21      22      23      24      25      26      27      28      29      30
+   KPD      59.47   60.18   61.88   63.76   65.27   65.82   68.40   68.40   68.40   68.40   68.40   68.40   68.40
+   KPF      57.87   58.58   60.28   62.16   63.67   64.22   66.80   66.80   66.80   66.80   66.80   66.80   66.80
+   MID      72.07   72.07   74.38   75.59   77.40   78.27   80.10   80.10   80.10   80.10   80.10   80.10   80.10
+   RUCK     69.57   70.28   71.98   73.86   75.37   75.92   78.50   78.50   78.50   78.50   78.50   78.50   78.50
+   SD       70.27   70.27   72.58   73.79   75.60   76.47   78.30   78.30   78.30   78.30   78.30   78.30   78.30
+   SF       62.87   62.87   65.18   66.39   68.20   69.07   70.90   70.90   70.90   70.90   70.90   70.90   70.90
+   rises with age, never above the flat bar, EXACTLY the flat bar from 24: PASS
+
+== GAMES (a): the CHARGE FACTOR, swept at 0.01 games from 0 to 400 ==
+   s_P        max jump       at g    n rises       f(0) | the blind charge
+   -33.0     3.709e-03       0.01          0   1.000000 | -
+   -20.0     2.207e-03       0.01          0   1.000000 | -
+   -10.0     1.050e-03       0.01          0   1.000000 | -
+   -5.0      4.713e-04       0.01          0   1.000000 | -
+   0.0       0.000e+00       0.00          0   1.000000 | -
+   5.0       0.000e+00       0.00          0   1.000000 | -
+   15.0      0.000e+00       0.00          0   1.000000 | -
+   THE CHARGE BEING REPLACED, same sweep: max jump 9.701e-04 at g 0.01, and it RISES at 38600 of 40,000
+   steps — every one of them past 14 games. THAT IS THE DEFECT: more evidence bought a smaller
+   charge. The ORDER P factor never rises at any surplus.
+
+== GAMES (b): the ruled AT-BAR CONTINUITY OBJECT, run against BOTH bars ==
+   ORDER K, blind charge (the base)               rows   8   worst step +6.4673e+00 (josh-smillie)   falling rows 0
+   ORDER P, rows AT THEIR AGE BAR                 rows   4   worst step +2.4517e+00 (willem-duursma)   falling rows 0
+   ORDER P, the same rows AT THEIR PEDIGREE BAR   rows   8   worst step +3.9477e+00 (josh-smillie)   falling rows 0
+
+   READ THIS PLAINLY. The object asks: for a row sitting exactly ON HIS BAR, does his price fall as
+   career games step 0, 1, 2 ... 20? Under ORDER K the answer was no, for a row at his AGE bar.
+   Under ORDER P a row at his AGE bar is NOT at his own bar if he was expensively drafted — he is
+   below it by the whole pedigree premium — so the charge grows with his games and his price can
+   fall. THAT IS THE MECHANISM THE OWNER ASKED FOR, working. Measured on the same rows, at their
+   PEDIGREE bar, the price does not fall at all: T(0) clips to zero, so they pay nothing at any
+   games count. Both numbers are printed above and neither is smoothed away.
+
+== PICK: the live fade exponent, swept at 0.01-pick resolution (UNCHANGED by ORDER P) ==
+   SMALL  largest step over a 0.01-pick move: 5.017e-04 at pick 5.18
+   TALL   largest step over a 0.01-pick move: 1.975e-04 at pick 25.07
+
+== SURPLUS (NEW AXIS): the charge factor across the whole surplus range, 0.01 points a game ==
+   games        max jump     at s_P      n rises   range of f
+   1           1.102e-04      -0.94            0 0.7017-1.0000
+   2           2.098e-04      -0.94            0 0.5095-1.0000
+   5           4.547e-04      -0.94            0 0.2318-1.0000
+   14          8.671e-04      -0.94            0 0.0615-1.0000
+   30          1.090e-03      -0.94            0 0.0300-1.0000
+   60          1.142e-03      -0.94            0 0.0253-1.0000
+   200         1.145e-03      -0.94            0 0.0251-1.0000
+   "n rises" counts steps where a BETTER player was charged MORE. It is zero everywhere.
+
+== ENTRY PRICE (NEW AXIS): the premium, swept at 0.1% of price from 40 to 6,000 ==
+   class      max jump        at v0      n falls          range
+   TALL      5.705e-02       2871.9            0 -5.45 to +22.92
+   SMALL     3.597e-02       3359.9            0 -7.04 to +25.44
+   The premium is read by linear interpolation on an even grid and HELD FLAT outside its support,
+   so a 0.1%% move in price can only move it by a thousandth of a point a game. No cliff.
+
+== rho32, monotone in games and strictly below 1 (UNCHANGED by ORDER P) ==
+   swept g = 0 to 300 in steps of 0.25: 0 violations -> PASS
+
+B8 CONTINUITY: PASS — no cliff on any of the six axes, and the charge is monotone in games and in surplus everywhere
+  largest jump anywhere: games 3.709e-03 · surplus 1.145e-03 · price 5.705e-02 (per 0.01g / 0.01pt / 0.1% of price)

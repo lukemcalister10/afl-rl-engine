@@ -19,6 +19,15 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
 J = json.load(open(os.path.join(ROOT, 'docs', 'ledgers', 'ORDER_P_MOVERS.json')))
 ROWS = J['rows']; T = J['totals']; MD = J['meta']['boards']; SET = J['meta']['setting']['order_p']
 ST = json.load(open(os.path.join(HERE, 'STANDING_TABLES_P.json')))
+BD = json.load(open(os.path.join(HERE, 'BANDS_BUILD.json')))['nd']
+# The ND band tables in BOTH windows come from ORDER P's own band machinery (op_bands_build.py),
+# which is ORDER L/M/N's file with only the board list changed. ST['nd'] is the pooled canonical
+# reader and is kept for the entry-year control and the vantage matrix.
+NDW = {w: {lab: {b: BD[lab]['%s|ALLCOH|%s' % (w, b)] for b in
+                 ['ALL picks 1-64', 'picks 1-20', 'picks 21-64', 'picks 1-10', 'picks 11-20',
+                  'picks 21-30', 'picks 31-40', 'picks 41-64']}
+           for lab in ('PBUILT', 'OKRULED', 'O35FINAL', 'PDERIV')}
+       for w in ('PRIMARY', 'MODERN')}
 GP = json.load(open(os.path.join(HERE, 'GATES_P.json')))
 CP = json.load(open(os.path.join(HERE, 'CLASS_P.json')))
 src = open(os.path.join(ROOT, 'docs', 'evidence', 'order_a_2026-08-17', 'o32_pages.py')).read()
@@ -46,7 +55,7 @@ td.sell{color:var(--dn)}
 td.buy{color:var(--warn)}
 """
 Y1 = [r for r in ROWS if r['yr'] == 2025 or (r['yr'] == 2026 and r['pathway'] == 'MSD')]
-ND = ST['nd']; ARMS = ST['arms']
+ND = NDW['PRIMARY']; ARMS = ST['arms']
 LAND, OKL, PL = 'O35FINAL', 'OKRULED', 'PBUILT'
 BANDS = ['ALL picks 1-64', 'picks 1-20', 'picks 21-64', 'picks 1-10', 'picks 11-20',
          'picks 21-30', 'picks 31-40', 'picks 41-64']
@@ -81,8 +90,8 @@ def broken_box():
     b3140 = ND[PL]['picks 31-40']['apprec01']; b4164 = ND[PL]['picks 41-64']['apprec01']
     k3140 = ND[OKL]['picks 31-40']['apprec01']; k4164 = ND[OKL]['picks 41-64']['apprec01']
     ssp = ARMS[PL]['PRIMARY|SSP']['apprec01']; sspK = ARMS[OKL]['PRIMARY|SSP']['apprec01']
-    modP = ST['nd_modern'][PL]['picks 1-10']['apprec01']
-    modK = ST['nd_modern'][OKL]['picks 1-10']['apprec01']
+    modP = NDW['MODERN'][PL]['picks 1-10']['apprec01']
+    modK = NDW['MODERN'][OKL]['picks 1-10']['apprec01']
     w2 = CP['PBUILT']['w2']; w2k = CP['OKRULED']['w2']
     return ('<div class="brk"><h2>What is in this board, and what is still broken</h2>'
             '<p>Read this before you read a single price. It is the same box on all three pages, and '
@@ -138,6 +147,16 @@ def broken_box():
             'their entry prices are low, so their pedigree bar is low and they clear it easily &mdash; '
             'which means this order pushes the arm FURTHER into the red. <b>It was already over the '
             'rail before this order and it is reported on its own line, never folded into a pass.</b></li>'
+            '<li><b>Three individual draft classes go over the 1.14 line on this board, and Order K '
+            'has none.</b> The class rule you read is the AVERAGE over draft classes 2005-2015, and '
+            'that average is fine (%.4f, well under 1.14). But class by class, the 2010, 2011 and 2015 '
+            'draft classes appreciate <b>%.4f, %.4f and %.4f</b> in their first year. Order K\'s worst '
+            'single class is 1.1363. Two of those three were already sitting just under the line on '
+            'Order K (1.1359 and 1.1363) and this board pushes them through it; the 2015 class moves '
+            'much further, from 1.1060 to %.4f. <b>This is a real breach of a line the engine\'s own '
+            'earlier calibrations were held to, it is new to this board, and it was not printed in the '
+            'Order P offline packet even though that packet\'s own files contain the same number.</b> '
+            'It is reported here rather than left for you to find.</li>'
             '<li><b>The peaks are not restored.</b> A charge that grows with evidence cannot fall back '
             'in the years where the peaks sit. Growing with evidence is exactly the defect you asked '
             'to have removed, so the two cannot both be had from this shape. The trade is priced on '
@@ -166,7 +185,10 @@ def broken_box():
             'the year-1 page so they cannot be confused.</p>'
             '</div>'
             % (pc(modP), pc(modK), pc(p1p), pc(k1p), pc(b3140), pc(b4164), pc(k3140), pc(k4164),
-               pc(ssp), pc(sspK), w2, w2k))
+               pc(ssp), pc(sspK),
+               w2, CP[PL]['per_class']['2011'], CP[PL]['per_class']['2012'],
+               CP[PL]['per_class']['2016'], CP[PL]['per_class']['2016'],
+               w2, w2k))
 
 
 def num_td(v, cls=''):
@@ -382,6 +404,7 @@ print('wrote ORDER_P_YEAR1.html  (%d rows)' % len(ys))
 
 # ==================================================================== 3. THE NO-ARB TABLES
 def vcls(v):
+    v = (v or '').rstrip('*')
     return 'sell' if v == 'SELL-RED' else ('buy' if v == 'BUY-RED' else 'ok')
 
 
@@ -395,7 +418,7 @@ def sortable_head(tid, cols):
 
 
 def band_table(lab, tid, window='PRIMARY'):
-    D = ND if window == 'PRIMARY' else ST['nd_modern']
+    D = NDW[window]
     cols = ([('#', True, False), ('band', False, True), ('n', True, False)]
             + [('yr%d' % n, True, False) for n in range(8)]
             + [('yr0&rarr;1', True, False), ('margin to the 14% rail', True, False),
@@ -487,7 +510,7 @@ H.append('<div class="box warn"><h2>ORDER P &middot; the same bands &middot; MOD
          'carries <b>%d rows</b>. It was predicted to breach before this board was built, and it is '
          'the branch you already said you would rule on. No cap was added and no constant was '
          'moved.</p></div></div>'
-         % (band_table(PL, 'n1m', 'MODERN'), ST['nd_modern'][PL]['picks 1-10']['n']))
+         % (band_table(PL, 'n1m', 'MODERN'), NDW['MODERN'][PL]['picks 1-10']['n']))
 H.append('<div class="box"><h2>The move, band by band, in BOTH windows &middot; ORDER P minus ORDER K</h2>')
 H.append('\n'.join(sortable_head('mv', [('#', True, False), ('band', False, True),
                                         ('PRI landing', True, False), ('PRI ORDER K', True, False),
@@ -497,7 +520,7 @@ H.append('\n'.join(sortable_head('mv', [('#', True, False), ('band', False, True
                                         ('verdict PRI', False, True), ('verdict MOD', False, True)])))
 for _bi, b in enumerate(BANDS):
     row = ['<tr><td class="num k" data-v="%d">%d</td><td class="l">%s</td>' % (_bi + 1, _bi + 1, b)]
-    for D in (ND, ST['nd_modern']):
+    for D in (NDW['PRIMARY'], NDW['MODERN']):
         a0 = D[LAND][b]['apprec01']; ak = D[OKL][b]['apprec01']; ap = D[PL][b]['apprec01']
         row.append('<td class="num k" data-v="%.6f">%s</td><td class="num" data-v="%.6f">%s</td>'
                    '<td class="num volt" data-v="%.6f">%s</td>'
@@ -506,8 +529,8 @@ for _bi, b in enumerate(BANDS):
                       'up' if ap > ak else 'dn', 100 * (ap - ak), 100 * (ap - ak)))
     row.append('<td class="l %s">%s &rarr; %s</td><td class="l %s">%s &rarr; %s</td></tr>'
                % (vcls(ND[PL][b]['verdict']), ND[OKL][b]['verdict'], ND[PL][b]['verdict'],
-                  vcls(ST['nd_modern'][PL][b]['verdict']), ST['nd_modern'][OKL][b]['verdict'],
-                  ST['nd_modern'][PL][b]['verdict']))
+                  vcls(NDW['MODERN'][PL][b]['verdict']), NDW['MODERN'][OKL][b]['verdict'],
+                  NDW['MODERN'][PL][b]['verdict']))
     H.append(''.join(row))
 H.append('</tbody></table></div>')
 

@@ -31,7 +31,7 @@ CLASSIC = ['ALL picks 1-64', 'picks 1-20', 'picks 21-64']
 WINDOWS = [('PRIMARY', 2005, 2023), ('MODERN', 2019, 2023)]
 YEARS = list(range(0, 8))
 LABELS = [l for l in ('O35FINAL', 'OKRULED', 'PBUILT')
-          if os.path.exists(SP + '/ok/noarb/table_EXT_%s.json' % l)]
+          if os.path.exists(N36 + '/table_EXT_%s.json' % l)]
 NICE = {'O35FINAL': 'THE LANDING CANDIDATE 1f176444 (Order D) — the oldest comparison column',
         'OKRULED': 'ORDER K f3101883 — the base this order changes ONE mechanism inside. It carries the '
                    'DEFECTIVE blind eta charge',

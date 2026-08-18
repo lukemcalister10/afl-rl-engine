@@ -1,0 +1,99 @@
+======================================================================================================================
+ORDER P BUILD — THE OWNER'S LAWS ON THE BUILT BOARD.  board points.
+======================================================================================================================
+  boards: {'candP': '1f176444', 'Kref': 'f3101883', 'P': '374d4e44', 'Pimp': '374d4e44', 'P2': '374d4e44', 'Peta0': '73bf9617'}
+  active priced rows: 804
+
+== THE BUILD-FAILING IDENTITIES ==
+  B1  DIAL OFF reproduces ORDER K f3101883 BYTE-EXACT     : PASS  (f3101883)
+  B2  determinism x2 on the DECISION board                : PASS  (374d4e44 vs 374d4e44)
+      the new dial IMPLIES the O32/O35/O36-K stack alone  : PASS  (374d4e44 vs 374d4e44)
+      the base stack still reproduces 1f176444            : PASS  (1f176444)
+
+== B10 — NO ROW PRICES ABOVE ITS OWN UNCHARGED PRICE (the forbidden-set bound P-F1) ==
+  the uncharged board (the same stack with the charge switched off, RL_O36_ETA=0) totals 702734;
+  ORDER P totals 666434 and ORDER K totals 673097.
+  rows priced ABOVE their own uncharged price:  ORDER P 0 of 804   ·   ORDER K 0 of 804
+  -> B10 DID NOT FIRE — the charge can only ever subtract, so the ceiling this mechanism can reach is a board the forbidden set is already absent from
+
+== THE MATURE-ROW LAW AND THE VETERAN CAPS (age 24 and over) ==
+  board total (ORDER K) 673097   ·   mature rows 429 of 804
+  rails: churn <= 1010 (0.15% of the board)   |net| <= 673 (0.10%)
+  TWO READINGS, because ORDER P's own published estimate was taken against the LANDING CANDIDATE,
+  not against ORDER K, and reporting only one of them would be misleading:
+    ORDER P vs ORDER K            : 0 mature rows move · churn 0 · net +0  -> INSIDE BOTH
+    ORDER P vs the landing candidate: 124 mature rows move · churn 947 · net -601  -> INSIDE BOTH
+    ORDER K vs the landing candidate: 124 mature rows move · churn 947 · net -601  (ORDER K's own published 947 / -601)
+  ORDER P's PUBLISHED ESTIMATE, on the landing-candidate basis, was churn 951 / net -595.
+
+  THE AGE GATE, read on the whole board:
+    20 and under   rows  158   total    -885
+    21-23          rows  217   total   -5778
+    24 and over    rows  429   total      +0
+
+== B3 — THE DAY-0 ENTRY VALUES ==
+  rows with ZERO career games on the board: 89.  A(0) = 0 exactly, so not one may move.
+  rows with zero games that moved: 0  -> PASS
+  the emit's own printed-day-0 replication proof is run against ORDER K's OWN DAY0_K.json, so it
+  is the same test at the printed-price level: see EMIT_PBUILT_out.txt for the 89-of-89 line.
+
+== THE CHARGE, SIDE BY SIDE. Percentage of the pedigree leg removed. ==
+  games  | ORDER K      | ORDER P, by pedigree-conditional surplus s_P  
+         | blind        |    s_P=-25    s_P=-10      s_P=0    s_P=+10
+  1      |         9.0% |      23.3%       9.5%       0.0%       0.0%
+  2      |        16.8% |      39.7%      17.3%       0.0%       0.0%
+  3      |        23.5% |      51.4%      23.8%       0.0%       0.0%
+  5      |        34.0% |      66.5%      33.8%       0.0%       0.0%
+  8      |        43.9% |      78.4%      43.8%       0.0%       0.0%
+  10     |        47.5% |      82.7%      48.4%       0.0%       0.0%
+  14     |        50.0% |      87.6%      54.5%       0.0%       0.0%
+  17     |        49.0% |      89.6%      57.4%       0.0%       0.0%
+  20     |        46.5% |      90.9%      59.4%       0.0%       0.0%
+  25     |        40.7% |      92.1%      61.6%       0.0%       0.0%
+  30     |        34.2% |      92.8%      62.8%       0.0%       0.0%
+  36     |        26.7% |      93.2%      63.7%       0.0%       0.0%
+  50     |        13.6% |      93.6%      64.4%       0.0%       0.0%
+  READ THE 17-GAME ROW AGAINST THE 36-GAME ROW IN THE ORDER K COLUMN: 49.0% falls to 26.7%.
+  A 36-game player kept MORE unearned pedigree than a 17-game player, whatever either of them did.
+  The ORDER P column never falls as games rise, at any surplus. That is the defect, removed.
+  THE ZERO POINT: T hits zero at s_P = -0.93. A young player producing within about a point a game
+  of what a player at his price normally produces, at his age, pays NOTHING on his pedigree leg.
+
+== WHERE THE CHARGE FALLS, BY PICK BAND, ON THE YOUNG BOARD ==
+  This is the owner's own test: under ORDER K the charge is flat in pick because it only reads
+  games. Under ORDER P it should fall HARDEST ON THE TOP OF THE DRAFT, because that is where the
+  most expectation is priced in.
+  pick band            rows  chg ORDER K  chg ORDER P med s vs age med s vs ped
+  1-10                   84        26.8%        33.6%        +4.57        -4.42
+  11-20                  57        27.9%        44.1%        -5.02       -11.83
+  21-40                  68        29.6%        40.2%        -7.33       -10.44
+  41-64 and pool         80        34.0%        34.7%        -7.91        -7.18
+
+== THE NAMED ROWS, ON THE DECISION BOARD. CONSEQUENCES, NEVER TARGETS. ==
+  Not one constant in this build was chosen with any of these rows in view. The PREREG wrote down
+  a DIRECTION for each of them before the engine was touched; the direction is scored, the value
+  is not. No row's number is an acceptance criterion — that is a standing prohibition here.
+  row                     age  pick     g       v0  premium s vs ped |   chg K   chg P | landing ORDER K ORDER P prereg
+  Harry Dean               19     3    17     2438    12.95     1.91 |   49.0%    0.0% |    2400    2403    3069 up ok
+  Cooper Duff-Tytler       19     4    13     1858    10.81    -3.75 |   49.9%   21.1% |    1572    1505    1824 up ok
+  Xavier Taylor            19    11     2     1355     9.23   -22.45 |   16.8%   36.3% |    1176    1162     950 down ok
+  Daniel Annable           19     6     2     1661    13.54   -32.56 |   16.8%   48.5% |    1530    1537    1115 down ok
+  Dylan Patterson          19     5     5     1679    13.73   -33.35 |   34.0%   76.8% |    1467    1440     955 down ok
+  Isaac Kako               20    13    36      938     6.53    -5.70 |   26.7%   41.3% |     788     832     784 down ok
+  Josh Smillie             20     7     0     1660        -        - |    0.0%    0.0% |     772     772     772 flat ok
+  Milan Murdock            26  None    17      131    -7.04     9.21 |   49.0%   49.0% |     170     156     156 flat ok
+  Zeke Uwland              19     2    17     2583    19.22   -20.86 |   49.0%   84.7% |    2017    1949    1486 down ok
+  Cooper Harvey            22    56    17      265    -1.26    -0.54 |   49.0%    0.0% |     333     331     373 up ok
+  prereg named-row DIRECTION scorecard: 10 of 10 correct
+
+== THE YEAR-1 CLASS ON THE 2026 BOARD (board points) ==
+  102 rows, 52563 -> 53301 (+1.40%);  23 up, 25 down, 54 unchanged
+
+== BOARD TOTALS ==
+  candP   1f176444     667916
+  Kref    f3101883     673097
+  P       374d4e44     666434
+  Pimp    374d4e44     666434
+  P2      374d4e44     666434
+  Peta0   73bf9617     702734
+  ORDER P vs ORDER K: -6663 points (-0.99%).  280 of 804 rows move (125 up, 155 down).
