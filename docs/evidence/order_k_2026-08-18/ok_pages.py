@@ -111,8 +111,8 @@ def broken_box():
             'limitation of this build, not a failure of it &mdash; no setting inside your rules '
             'reaches zero on either band.</li>'
             '<li><b>Harry Dean and Cooper Duff-Tytler are still below their candidate-31 levels.</b> '
-            'Dean reads <b>%d</b> against 2,670 on candidate 31 (%d short). Duff-Tytler reads '
-            '<b>%d</b> against 1,832 (%d short) &mdash; and he is also <b>below</b> the landing '
+            'Dean reads <b>%s</b> against 2,670 on candidate 31 (%d short). Duff-Tytler reads '
+            '<b>%s</b> against 1,832 (%d short) &mdash; and he is also <b>below</b> the landing '
             'candidate\'s 1,572. The age bar lifts them both, and this setting\'s counterweight takes '
             'most of it back: Dean +221 then -218, Duff-Tytler +85 then -152.</li>'
             '<li><b>Supplemental selection (SSP) players still appreciate about 50%% in their first '
@@ -159,7 +159,8 @@ def broken_box():
             % (pc(b3140), pc(b4164),
                100 * (b3140 - ND[LAND]['picks 31-40']['apprec01']),
                100 * (b4164 - ND[LAND]['picks 41-64']['apprec01']),
-               dean['orderK'], dean['short_of_c31'], cdt['orderK'], cdt['short_of_c31'],
+               '{:,}'.format(dean['orderK']), dean['short_of_c31'],
+               '{:,}'.format(cdt['orderK']), cdt['short_of_c31'],
                pc(ssp), pc(ssp0),
                pc(ARMS[OKL]['PRIMARY|PDA']['apprec01']), pc(ARMS[OKL]['PRIMARY|PDN']['apprec01']),
                pc(ARMS[OKL]['PRIMARY|PDS']['apprec01']), pc(ARMS[OKL]['PRIMARY|UNR']['apprec01'])))
@@ -264,6 +265,14 @@ H.append('<div class="defs"><h2>How to read this page</h2>'
          '<p>The four price columns and the legs mean the same as on the player list.</p></div>')
 H.append('<div class="box"><h2>%d rows in the year-1 class &middot; %s &rarr; %s board points '
          '(%+.2f%%) &middot; %d up, %d down</h2>'
+         '<div class="defs"><p><b>This class\'s prices go slightly DOWN on today\'s board, and that '
+         'does not contradict the class growth rule below.</b> They are two different questions. The '
+         'growth rule asks a historical question: across the intake classes of 2005 to 2015, how much '
+         'did a class appreciate between draft day and a year later? That number goes UP. This table '
+         'is the CURRENT class priced on today\'s board. The 2025 intake is mostly high picks with '
+         'very few games behind them, and that is exactly the shape this setting\'s counterweight '
+         'charges hardest &mdash; so today\'s rookies are marked down a little even while the '
+         'historical growth rate improves. Both are true and both are printed.</p></div>'
          % (len(ys), '{:,}'.format(GK['year1']['landing']), '{:,}'.format(GK['year1']['orderK']),
             100 * (GK['year1']['orderK'] - GK['year1']['landing']) / max(1, GK['year1']['landing']),
             sum(1 for r in ys if r['d_vs_landing'] > 0), sum(1 for r in ys if r['d_vs_landing'] < 0)))

@@ -318,9 +318,22 @@ Murphy Reid +236, Noah Mraz +224, Logan Morris +207, Levi Ashcroft +192, Colby M
 **The twenty largest falls** are the counterweight on rows with high pedigree and thin production:
 Ned Moyle −77, Sid Draper −72, Cooper Duff-Tytler −67, Lachlan McAndrew −56, Marcus Herbert −56.
 
-**The year-1 class on the 2026 board** goes from 58,060 to 57,823, down 237 points across 120 rows.
-That is not the same object as the year-1 class growth rate in section 4 — this is the current class's
-prices on today's board, that is how historical classes appreciated in their first year.
+**The year-1 class on the 2026 board goes DOWN**, from 58,060 to 57,823 across 120 rows — a fall of
+237 points, or 0.41%.
+
+That looks like it contradicts section 4, and it does not. They are two different objects.
+
+Section 4's class mark asks a **historical** question: across the intake classes of 2005 to 2015, how
+much did a class appreciate between draft day and one year later? That number goes **up** (1.0232 to
+1.0324).
+
+This number is the **current** class's prices on today's board. The 2025 intake is mostly high picks
+with very few games behind them, which is precisely the shape this setting's counterweight charges
+hardest. So today's rookies are marked down a little even though the historical class-growth rate
+improves.
+
+Both are true and both are printed. If you want the class of 2025 to price higher on today's board,
+that is a different lever from the one you ruled here.
 
 ---
 
