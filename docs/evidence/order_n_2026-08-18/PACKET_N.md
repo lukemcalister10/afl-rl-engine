@@ -541,8 +541,10 @@ six points is rounding on rows whose current prices are untouched.
 his age bar. Every large fall is a high pick who is well below it. That is the mechanism, and none of
 those rows was aimed at.
 
-Gameless rows move by exactly zero, which is the `A(0) = 0` law holding. 60-plus rows move by exactly
-zero, which is the age gate.
+Gameless rows move by exactly zero, which is the `A(0) = 0` law holding. The 24-and-over rows move by
+six points net, which is the age gate holding. The 60-plus-GAMES line still moves −1,065 because it
+contains 21-, 22- and 23-year-olds with long careers, and they are inside the gate: the gate is on age,
+not on games.
 
 ---
 
