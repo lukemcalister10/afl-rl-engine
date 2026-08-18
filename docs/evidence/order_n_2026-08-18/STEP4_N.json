@@ -1,0 +1,1711 @@
+{
+ "mechanism": {
+  "form": "pi *= exp( -LAMBDA * A(g) * T(s) )",
+  "A": "A(g) = 1 - exp(-g/G0)",
+  "T": "T(s) = clip( 1 - THETA_R*(s - s0), 0, TMAX )",
+  "constraint": "LAMBDA * THETA_R = BETA_sat  (so the delivered slope IS the measured slope)",
+  "G0": 9.720000000000008,
+  "G0_ci": [
+   7.390000000000006,
+   12.84000000000001
+  ],
+  "BETA_sat": 0.11521373620091824,
+  "BETA_sat_ci": [
+   0.10434116600981065,
+   0.12827984151530944
+  ],
+  "s0": 2.31626572379253,
+  "s_p5": -31.715658461578588,
+  "fit": {
+   "bins": [
+    {
+     "bin": "1-3",
+     "g": 1.913659793814433,
+     "beta": 0.017643586615691577,
+     "lo": 0.007155697213784191,
+     "hi": 0.02814335352833205,
+     "n": 776,
+     "sd": 0.006379794521122777
+    },
+    {
+     "bin": "4-7",
+     "g": 5.380097879282219,
+     "beta": 0.04517678492480783,
+     "lo": 0.03129255038721722,
+     "hi": 0.05840859224178789,
+     "n": 613,
+     "sd": 0.00824269144994586
+    },
+    {
+     "bin": "8-12",
+     "g": 9.855325914149443,
+     "beta": 0.06961538174294367,
+     "lo": 0.053159522852815694,
+     "hi": 0.08651572318382862,
+     "n": 629,
+     "sd": 0.010139564938928463
+    },
+    {
+     "bin": "13-17",
+     "g": 15.0,
+     "beta": 0.10419299420559487,
+     "lo": 0.08572512100095397,
+     "hi": 0.12181806276722726,
+     "n": 465,
+     "sd": 0.01097147526529974
+    },
+    {
+     "bin": "18-24",
+     "g": 20.841392649903288,
+     "beta": 0.10414213313039153,
+     "lo": 0.08865739974050944,
+     "hi": 0.11947220732931066,
+     "n": 517,
+     "sd": 0.009367036398829165
+    },
+    {
+     "bin": "25-39",
+     "g": 31.6048,
+     "beta": 0.11146437296218902,
+     "lo": 0.09595265697105379,
+     "hi": 0.1268651275480522,
+     "n": 625,
+     "sd": 0.009396723839278868
+    },
+    {
+     "bin": "40-60",
+     "g": 48.63127413127413,
+     "beta": 0.1081652760476202,
+     "lo": 0.09135577921530375,
+     "hi": 0.1246737013731339,
+     "n": 518,
+     "sd": 0.010127929200478676
+    }
+   ],
+   "sse": 2.5591125816437468
+  },
+  "deviations": [
+   "D1 exp(-X) in place of (1-X)",
+   "D2 linear-in-s tilt in place of exponential"
+  ],
+  "note": "LAMBDA solved by the anchoring identity in on_step4.py; THETA_R = BETA_sat/LAMBDA; TMAX from s_p5.",
+  "LAMBDA": 0.7844741840662242,
+  "THETA_R": 0.14686746682181712,
+  "TMAX": 5.998182496177588,
+  "zero_charge_at_surplus": 9.12512558663215,
+  "anchor": {
+   "n": 603,
+   "points_old": 101402.7,
+   "points_new": 101402.69999999998,
+   "classes": [
+    2005,
+    2015
+   ]
+  }
+ },
+ "charge_table": {
+  "1": {
+   "old": 9.03889655437147,
+   "new": [
+    31.912900171733938,
+    19.380024859157572,
+    9.767870007788805,
+    0.0
+   ]
+  },
+  "2": {
+   "old": 16.831560302740435,
+   "new": [
+    51.86620014354318,
+    33.62080416779667,
+    17.759347756957467,
+    0.0
+   ]
+  },
+  "3": {
+   "old": 23.506858983338084,
+   "new": [
+    64.79856574329077,
+    44.29761979336908,
+    24.360378037771746,
+    0.0
+   ]
+  },
+  "5": {
+   "old": 33.962627575333016,
+   "new": [
+    79.42509306922587,
+    58.774467676693945,
+    34.47829339877999,
+    0.0
+   ]
+  },
+  "8": {
+   "old": 43.858943121577425,
+   "new": [
+    88.97837299219759,
+    70.94405149443011,
+    44.55088458527292,
+    0.0
+   ]
+  },
+  "10": {
+   "old": 47.52543562311964,
+   "new": [
+    92.00511975105024,
+    75.72883380967308,
+    49.11265827620087,
+    0.0
+   ]
+  },
+  "14": {
+   "old": 50.0,
+   "new": [
+    95.02360747020369,
+    81.39210272871368,
+    55.171685171838966,
+    0.0
+   ]
+  },
+  "17": {
+   "old": 49.00357749675578,
+   "new": [
+    96.11386794344769,
+    83.80027819491168,
+    58.04012124743303,
+    0.0
+   ]
+  },
+  "20": {
+   "old": 46.531361252218254,
+   "new": [
+    96.75928788731888,
+    85.3680711546285,
+    60.029246752321285,
+    0.0
+   ]
+  },
+  "25": {
+   "old": 40.69589449357296,
+   "new": [
+    97.35202732397013,
+    86.93420669314791,
+    62.13098812496116,
+    0.0
+   ]
+  },
+  "30": {
+   "old": 34.16855971328255,
+   "new": [
+    97.65325821693506,
+    87.78926921504973,
+    63.33436395303531,
+    0.0
+   ]
+  },
+  "36": {
+   "old": 26.71048120417725,
+   "new": [
+    97.83951509403101,
+    88.3422716015564,
+    64.1362473532821,
+    0.0
+   ]
+  },
+  "50": {
+   "old": 13.64755124835144,
+   "new": [
+    97.99343389487342,
+    88.81528238160897,
+    64.83806836153498,
+    0.0
+   ]
+  },
+  "80": {
+   "old": 2.5617909306962283,
+   "new": [
+    98.03688120412258,
+    88.95166152105749,
+    65.04328900451823,
+    0.0
+   ]
+  },
+  "141": {
+   "old": 0.0578615028865352,
+   "new": [
+    98.0389325554516,
+    88.95813324899177,
+    65.05306036244637,
+    0.0
+   ]
+  }
+ },
+ "property": {
+  "1-4": {
+   "n": 42,
+   "rho_k": 0.13507819463576695,
+   "rho_n": 0.36520541285147073,
+   "chg_rho_k": 0.09866257433538572,
+   "chg_rho_n": -0.7480132741525597
+  },
+  "5-9": {
+   "n": 33,
+   "rho_k": 0.2610294117647059,
+   "rho_n": 0.4929812834224599,
+   "chg_rho_k": 0.44161745015017645,
+   "chg_rho_n": -0.9030748663101604
+  },
+  "10-15": {
+   "n": 33,
+   "rho_k": 0.4344919786096257,
+   "rho_n": 0.5243983957219251,
+   "chg_rho_k": 0.22643042673233513,
+   "chg_rho_n": -0.982213674566245
+  },
+  "16-24": {
+   "n": 36,
+   "rho_k": 0.7073359073359073,
+   "rho_n": 0.8010296010296011,
+   "chg_rho_k": 0.12015452698703326,
+   "chg_rho_n": -0.9951039190405564
+  },
+  "25-39": {
+   "n": 29,
+   "rho_k": 0.787192118226601,
+   "rho_n": 0.8403940886699507,
+   "chg_rho_k": -0.15596679800122137,
+   "chg_rho_n": -0.9995072677700363
+  },
+  "40-60": {
+   "n": 22,
+   "rho_k": 0.5381140598531903,
+   "rho_n": 0.5618294748729531,
+   "chg_rho_k": -0.43587401744381926,
+   "chg_rho_n": -0.9157015435010396
+  }
+ },
+ "named": {
+  "harry-dean": {
+   "age": 19,
+   "pick": 3,
+   "g": 17.0,
+   "ps": 14.855007524649707,
+   "A": 0.8260471847758901,
+   "chg_k": 49.00357749675578,
+   "chg_n": 0.0,
+   "landing": 2400,
+   "orderk": 2403,
+   "derived": 3069.080197643482
+  },
+  "cooper-duff-tytler": {
+   "age": 19,
+   "pick": 4,
+   "g": 13.0,
+   "ps": 7.05500752464971,
+   "A": 0.7374853948077917,
+   "chg_k": 49.86620928325659,
+   "chg_n": 16.129372092439965,
+   "landing": 1572,
+   "orderk": 1505,
+   "derived": 1878.563283922463
+  },
+  "xavier-taylor": {
+   "age": 19,
+   "pick": 11,
+   "g": 2.0,
+   "ps": -13.21948891064779,
+   "A": 0.1859726523093791,
+   "chg_k": 16.831560302740435,
+   "chg_n": 38.0454546095423,
+   "landing": 1176,
+   "orderk": 1162,
+   "derived": 931.3949068795135
+  },
+  "daniel-annable": {
+   "age": 19,
+   "pick": 6,
+   "g": 2.0,
+   "ps": -19.019488910647787,
+   "A": 0.1859726523093791,
+   "chg_k": 16.831560302740435,
+   "chg_n": 45.28561397372811,
+   "landing": 1530,
+   "orderk": 1537,
+   "derived": 1157.9247434435574
+  },
+  "dylan-patterson": {
+   "age": 19,
+   "pick": 5,
+   "g": 5.0,
+   "ps": -19.61948891064779,
+   "A": 0.40214276571088026,
+   "chg_k": 33.962627575333016,
+   "chg_n": 73.59999877540102,
+   "landing": 1467,
+   "orderk": 1440,
+   "derived": 991.1630558722918
+  },
+  "isaac-kako": {
+   "age": 20,
+   "pick": 13,
+   "g": 36.0,
+   "ps": 0.8359017319727653,
+   "A": 0.9753678727838591,
+   "chg_k": 26.71048120417725,
+   "chg_n": 60.604081628591466,
+   "landing": 788,
+   "orderk": 832,
+   "derived": 720.6385404789054
+  },
+  "josh-smillie": {
+   "age": 20,
+   "pick": 7,
+   "g": 0.0,
+   "ps": null,
+   "A": 0.0,
+   "chg_k": 0.0,
+   "chg_n": 0.0,
+   "landing": 772,
+   "orderk": 772,
+   "derived": 771.8548080577726
+  },
+  "milan-murdock": {
+   "age": 26,
+   "pick": null,
+   "g": 17.0,
+   "ps": 2.1699999999999875,
+   "A": 0.8260471847758901,
+   "chg_k": 49.00357749675578,
+   "chg_n": 48.414682067115386,
+   "landing": 170,
+   "orderk": 156,
+   "derived": 156.59445077917144
+  }
+ },
+ "board": {
+  "total_k": 673097.0,
+  "total_n": 657390.6309388066
+ },
+ "movers": [
+  {
+   "key": "willem-duursma",
+   "name": "Willem Duursma",
+   "age": 19,
+   "g": 19.0,
+   "pick": 1,
+   "pos": "MID",
+   "orderk": 3703.0,
+   "new": 4586.374002280501,
+   "d": 883.3740022805014
+  },
+  {
+   "key": "sam-lalor",
+   "name": "Sam Lalor",
+   "age": 20,
+   "g": 22.0,
+   "pick": 1,
+   "pos": "MID",
+   "orderk": 3456.0,
+   "new": 4244.203724819461,
+   "d": 788.2037248194611
+  },
+  {
+   "key": "jagga-smith",
+   "name": "Jagga Smith",
+   "age": 20,
+   "g": 20.0,
+   "pick": 3,
+   "pos": "MID",
+   "orderk": 3637.0,
+   "new": 4347.681489927784,
+   "d": 710.6814899277842
+  },
+  {
+   "key": "harry-dean",
+   "name": "Harry Dean",
+   "age": 19,
+   "g": 17.0,
+   "pick": 3,
+   "pos": "KPD",
+   "orderk": 2403.0,
+   "new": 3069.080197643482,
+   "d": 666.0801976434818
+  },
+  {
+   "key": "sid-draper",
+   "name": "Sid Draper",
+   "age": 20,
+   "g": 10.0,
+   "pick": 4,
+   "pos": "MID",
+   "orderk": 1267.0,
+   "new": 602.9076396807297,
+   "d": -664.0923603192703
+  },
+  {
+   "key": "toby-conway",
+   "name": "Toby Conway",
+   "age": 23,
+   "g": 6.0,
+   "pick": 24,
+   "pos": "RUCK",
+   "orderk": 899.0,
+   "new": 1441.0870391486126,
+   "d": 542.0870391486126
+  },
+  {
+   "key": "sullivan-robey",
+   "name": "Sullivan Robey",
+   "age": 19,
+   "g": 14.0,
+   "pick": 9,
+   "pos": "MID",
+   "orderk": 2379.0,
+   "new": 2864.120106423413,
+   "d": 485.12010642341284
+  },
+  {
+   "key": "dyson-sharp",
+   "name": "Dyson Sharp",
+   "age": 19,
+   "g": 13.0,
+   "pick": 13,
+   "pos": "MID",
+   "orderk": 2427.0,
+   "new": 2878.84834663626,
+   "d": 451.84834663626
+  },
+  {
+   "key": "dylan-patterson",
+   "name": "Dylan Patterson",
+   "age": 19,
+   "g": 5.0,
+   "pick": 5,
+   "pos": "SD",
+   "orderk": 1440.0,
+   "new": 991.1630558722918,
+   "d": -448.8369441277082
+  },
+  {
+   "key": "zane-duursma",
+   "name": "Zane Duursma",
+   "age": 21,
+   "g": 38.0,
+   "pick": 4,
+   "pos": "SF",
+   "orderk": 629.0,
+   "new": 211.2314709236032,
+   "d": -417.7685290763968
+  },
+  {
+   "key": "daniel-annable",
+   "name": "Daniel Annable",
+   "age": 19,
+   "g": 2.0,
+   "pick": 6,
+   "pos": "MID",
+   "orderk": 1537.0,
+   "new": 1157.9247434435574,
+   "d": -379.0752565564426
+  },
+  {
+   "key": "cooper-duff-tytler",
+   "name": "Cooper Duff-Tytler",
+   "age": 19,
+   "g": 13.0,
+   "pick": 4,
+   "pos": "KPF",
+   "orderk": 1505.0,
+   "new": 1878.563283922463,
+   "d": 373.5632839224629
+  },
+  {
+   "key": "jacob-farrow",
+   "name": "Jacob Farrow",
+   "age": 19,
+   "g": 18.0,
+   "pick": 10,
+   "pos": "SD",
+   "orderk": 2155.0,
+   "new": 2514.538198403649,
+   "d": 359.53819840364895
+  },
+  {
+   "key": "caleb-graham",
+   "name": "Caleb Graham",
+   "age": 26,
+   "g": 37.0,
+   "pick": 71,
+   "pos": "KPD",
+   "orderk": 82.0,
+   "new": 426.54884074496385,
+   "d": 344.54884074496385
+  },
+  {
+   "key": "jhye-clark",
+   "name": "Jhye Clark",
+   "age": 22,
+   "g": 33.0,
+   "pick": 8,
+   "pos": "MID",
+   "orderk": 921.0,
+   "new": 578.2972253895857,
+   "d": -342.7027746104143
+  },
+  {
+   "key": "jed-walter",
+   "name": "Jed Walter",
+   "age": 21,
+   "g": 46.0,
+   "pick": 3,
+   "pos": "KPF",
+   "orderk": 1170.0,
+   "new": 866.4956290383884,
+   "d": -303.5043709616116
+  },
+  {
+   "key": "phoenix-gothard",
+   "name": "Phoenix Gothard",
+   "age": 21,
+   "g": 15.0,
+   "pick": 12,
+   "pos": "SF",
+   "orderk": 1319.0,
+   "new": 1614.1201064234133,
+   "d": 295.1201064234133
+  },
+  {
+   "key": "josh-sinn",
+   "name": "Josh Sinn",
+   "age": 23,
+   "g": 30.0,
+   "pick": 12,
+   "pos": "SD",
+   "orderk": 357.0,
+   "new": 70.60053211706575,
+   "d": -286.39946788293423
+  },
+  {
+   "key": "elijah-tsatas",
+   "name": "Elijah Tsatas",
+   "age": 22,
+   "g": 22.0,
+   "pick": 5,
+   "pos": "MID",
+   "orderk": 1078.0,
+   "new": 796.6552641581147,
+   "d": -281.34473584188527
+  },
+  {
+   "key": "sam-cumming",
+   "name": "Sam Cumming",
+   "age": 19,
+   "g": 14.0,
+   "pick": 7,
+   "pos": "MID",
+   "orderk": 1932.0,
+   "new": 2202.109464082098,
+   "d": 270.10946408209793
+  },
+  {
+   "key": "taj-hotton",
+   "name": "Taj Hotton",
+   "age": 20,
+   "g": 15.0,
+   "pick": 12,
+   "pos": "MID",
+   "orderk": 1628.0,
+   "new": 1891.0110224249333,
+   "d": 263.01102242493334
+  },
+  {
+   "key": "josh-lindsay",
+   "name": "Josh Lindsay",
+   "age": 19,
+   "g": 13.0,
+   "pick": 19,
+   "pos": "SD",
+   "orderk": 1796.0,
+   "new": 2050.4561003420754,
+   "d": 254.4561003420754
+  },
+  {
+   "key": "tobie-travaglia",
+   "name": "Tobie Travaglia",
+   "age": 20,
+   "g": 17.0,
+   "pick": 8,
+   "pos": "SD",
+   "orderk": 521.0,
+   "new": 269.76434815659445,
+   "d": -251.23565184340555
+  },
+  {
+   "key": "max-king-stk",
+   "name": "Max King",
+   "age": 26,
+   "g": 83.0,
+   "pick": 4,
+   "pos": "KPF",
+   "orderk": 346.0,
+   "new": 590.2698593690612,
+   "d": 244.26985936906124
+  },
+  {
+   "key": "harry-barnett",
+   "name": "Harry Barnett",
+   "age": 22,
+   "g": 2.0,
+   "pick": 23,
+   "pos": "RUCK",
+   "orderk": 740.0,
+   "new": 503.89585708855947,
+   "d": -236.10414291144053
+  },
+  {
+   "key": "xavier-taylor",
+   "name": "Xavier Taylor",
+   "age": 19,
+   "g": 2.0,
+   "pick": 11,
+   "pos": "SD",
+   "orderk": 1162.0,
+   "new": 931.3949068795135,
+   "d": -230.60509312048646
+  },
+  {
+   "key": "latrelle-pickett",
+   "name": "Latrelle Pickett",
+   "age": 21,
+   "g": 15.0,
+   "pick": 12,
+   "pos": "SF",
+   "orderk": 446.0,
+   "new": 220.1634359559103,
+   "d": -225.8365640440897
+  },
+  {
+   "key": "isaac-quaynor",
+   "name": "Isaac Quaynor",
+   "age": 26,
+   "g": 152.0,
+   "pick": 13,
+   "pos": "SD",
+   "orderk": 602.0,
+   "new": 379.60851387305206,
+   "d": -222.39148612694794
+  },
+  {
+   "key": "neil-erasmus",
+   "name": "Neil Erasmus",
+   "age": 23,
+   "g": 60.0,
+   "pick": 10,
+   "pos": "MID",
+   "orderk": 1010.0,
+   "new": 790.668947168377,
+   "d": -219.33105283162297
+  },
+  {
+   "key": "conor-stone",
+   "name": "Conor Stone",
+   "age": 24,
+   "g": 28.0,
+   "pick": 15,
+   "pos": "SD",
+   "orderk": 218.0,
+   "new": 12.162675788673509,
+   "d": -205.8373242113265
+  },
+  {
+   "key": "harry-rowston",
+   "name": "Harry Rowston",
+   "age": 22,
+   "g": 27.0,
+   "pick": 16,
+   "pos": "MID",
+   "orderk": 575.0,
+   "new": 372.4819460281262,
+   "d": -202.51805397187383
+  },
+  {
+   "key": "zeke-uwland",
+   "name": "Zeke Uwland",
+   "age": 19,
+   "g": 17.0,
+   "pick": 2,
+   "pos": "SD",
+   "orderk": 1949.0,
+   "new": 1752.8506271379704,
+   "d": -196.14937286202962
+  },
+  {
+   "key": "billy-cootee",
+   "name": "Billy Cootee",
+   "age": 24,
+   "g": 7.0,
+   "pick": 42,
+   "pos": "MID",
+   "orderk": 232.0,
+   "new": 41.23907259597111,
+   "d": -190.7609274040289
+  },
+  {
+   "key": "louis-emmett",
+   "name": "Louis Emmett",
+   "age": 19,
+   "g": 6.0,
+   "pick": 27,
+   "pos": "KPF",
+   "orderk": 627.0,
+   "new": 439.28164196123146,
+   "d": -187.71835803876854
+  },
+  {
+   "key": "xavier-lindsay",
+   "name": "Xavier Lindsay",
+   "age": 20,
+   "g": 23.0,
+   "pick": 11,
+   "pos": "MID",
+   "orderk": 1539.0,
+   "new": 1351.7673888255415,
+   "d": -187.2326111744585
+  },
+  {
+   "key": "elijah-hewett",
+   "name": "Elijah Hewett",
+   "age": 22,
+   "g": 40.0,
+   "pick": 14,
+   "pos": "MID",
+   "orderk": 595.0,
+   "new": 407.82972253895855,
+   "d": -187.17027746104145
+  },
+  {
+   "key": "mitchell-edwards",
+   "name": "Mitchell Edwards",
+   "age": 21,
+   "g": 16.0,
+   "pick": 32,
+   "pos": "RUCK",
+   "orderk": 1406.0,
+   "new": 1220.7335613835044,
+   "d": -185.26643861649563
+  },
+  {
+   "key": "luke-pedlar",
+   "name": "Luke Pedlar",
+   "age": 24,
+   "g": 49.0,
+   "pick": 11,
+   "pos": "SF",
+   "orderk": 217.0,
+   "new": 35.63283922462942,
+   "d": -181.36716077537056
+  },
+  {
+   "key": "mitchell-knevitt",
+   "name": "Mitchell Knevitt",
+   "age": 23,
+   "g": 23.0,
+   "pick": 25,
+   "pos": "MID",
+   "orderk": 245.0,
+   "new": 64.70923603192702,
+   "d": -180.29076396807298
+  },
+  {
+   "key": "ethan-read",
+   "name": "Ethan Read",
+   "age": 21,
+   "g": 38.0,
+   "pick": 9,
+   "pos": "KPF",
+   "orderk": 627.0,
+   "new": 448.02356518434055,
+   "d": -178.97643481565945
+  },
+  {
+   "key": "cooper-hynes",
+   "name": "Cooper Hynes",
+   "age": 20,
+   "g": 27.0,
+   "pick": 20,
+   "pos": "MID",
+   "orderk": 923.0,
+   "new": 744.2987457240592,
+   "d": -178.70125427594076
+  },
+  {
+   "key": "caleb-windsor",
+   "name": "Caleb Windsor",
+   "age": 21,
+   "g": 54.0,
+   "pick": 7,
+   "pos": "MID",
+   "orderk": 1307.0,
+   "new": 1131.3188901558342,
+   "d": -175.6811098441658
+  },
+  {
+   "key": "edward-allan",
+   "name": "Edward Allan",
+   "age": 22,
+   "g": 31.0,
+   "pick": 19,
+   "pos": "MID",
+   "orderk": 700.0,
+   "new": 528.0311668567085,
+   "d": -171.96883314329148
+  },
+  {
+   "key": "harrison-oliver",
+   "name": "Harrison Oliver",
+   "age": 20,
+   "g": 5.0,
+   "pick": 19,
+   "pos": "SD",
+   "orderk": 463.0,
+   "new": 291.7141771189662,
+   "d": -171.28582288103382
+  },
+  {
+   "key": "jamarra-ugle-hagan",
+   "name": "Jamarra Ugle-Hagan",
+   "age": 24,
+   "g": 70.0,
+   "pick": 1,
+   "pos": "KPF",
+   "orderk": 534.0,
+   "new": 363.4549600912201,
+   "d": -170.54503990877993
+  },
+  {
+   "key": "bo-allan",
+   "name": "Bo Allan",
+   "age": 20,
+   "g": 24.0,
+   "pick": 16,
+   "pos": "SD",
+   "orderk": 620.0,
+   "new": 450.5891296085139,
+   "d": -169.41087039148613
+  },
+  {
+   "key": "campbell-chesser",
+   "name": "Campbell Chesser",
+   "age": 23,
+   "g": 39.0,
+   "pick": 14,
+   "pos": "MID",
+   "orderk": 333.0,
+   "new": 164.38616495629037,
+   "d": -168.61383504370963
+  },
+  {
+   "key": "matt-whitlock",
+   "name": "Matt Whitlock",
+   "age": 20,
+   "g": 5.0,
+   "pick": 27,
+   "pos": "KPF",
+   "orderk": 482.0,
+   "new": 316.3245914101102,
+   "d": -165.6754085898898
+  },
+  {
+   "key": "sam-marshall",
+   "name": "Sam Marshall",
+   "age": 20,
+   "g": 13.0,
+   "pick": 25,
+   "pos": "MID",
+   "orderk": 542.0,
+   "new": 376.75788673508174,
+   "d": -165.24211326491826
+  },
+  {
+   "key": "dylan-stephens",
+   "name": "Dylan Stephens",
+   "age": 25,
+   "g": 102.0,
+   "pick": 5,
+   "pos": "MID",
+   "orderk": 687.0,
+   "new": 524.2303306727481,
+   "d": -162.7696693272519
+  },
+  {
+   "key": "nick-bryan",
+   "name": "Nick Bryan",
+   "age": 25,
+   "g": 34.0,
+   "pick": 37,
+   "pos": "RUCK",
+   "orderk": 718.0,
+   "new": 557.0125427594071,
+   "d": -160.9874572405929
+  },
+  {
+   "key": "ryan-angwin",
+   "name": "Ryan Angwin",
+   "age": 24,
+   "g": 48.0,
+   "pick": 19,
+   "pos": "MID",
+   "orderk": 487.0,
+   "new": 328.96237172177877,
+   "d": -158.03762827822123
+  },
+  {
+   "key": "jake-rogers",
+   "name": "Jake Rogers",
+   "age": 21,
+   "g": 25.0,
+   "pick": 14,
+   "pos": "SF",
+   "orderk": 328.0,
+   "new": 171.32269099201827,
+   "d": -156.67730900798173
+  },
+  {
+   "key": "matthew-jefferson",
+   "name": "Matthew Jefferson",
+   "age": 22,
+   "g": 21.0,
+   "pick": 15,
+   "pos": "KPF",
+   "orderk": 297.0,
+   "new": 141.77118966172557,
+   "d": -155.22881033827443
+  },
+  {
+   "key": "oliver-hannaford",
+   "name": "Oliver Hannaford",
+   "age": 20,
+   "g": 5.0,
+   "pick": 18,
+   "pos": "SF",
+   "orderk": 357.0,
+   "new": 205.15013302926644,
+   "d": -151.84986697073356
+  },
+  {
+   "key": "taylor-goad",
+   "name": "Taylor Goad",
+   "age": 21,
+   "g": 2.0,
+   "pick": 20,
+   "pos": "RUCK",
+   "orderk": 728.0,
+   "new": 578.2022044849867,
+   "d": -149.79779551501326
+  },
+  {
+   "key": "aaron-cadman",
+   "name": "Aaron Cadman",
+   "age": 22,
+   "g": 75.0,
+   "pick": 1,
+   "pos": "KPF",
+   "orderk": 1814.0,
+   "new": 1666.0965412390726,
+   "d": -147.90345876092738
+  },
+  {
+   "key": "harry-kyle",
+   "name": "Harry Kyle",
+   "age": 19,
+   "g": 7.0,
+   "pick": 14,
+   "pos": "SD",
+   "orderk": 925.0,
+   "new": 777.8411250475104,
+   "d": -147.15887495248955
+  },
+  {
+   "key": "nikolas-cox",
+   "name": "Nikolas Cox",
+   "age": 24,
+   "g": 61.0,
+   "pick": 8,
+   "pos": "KPF",
+   "orderk": 249.0,
+   "new": 102.62257696693273,
+   "d": -146.37742303306726
+  },
+  {
+   "key": "samuel-grlj",
+   "name": "Samuel Grlj",
+   "age": 19,
+   "g": 19.0,
+   "pick": 8,
+   "pos": "MID",
+   "orderk": 1613.0,
+   "new": 1467.502850627138,
+   "d": -145.49714937286194
+  },
+  {
+   "key": "jonty-faull",
+   "name": "Jonty Faull",
+   "age": 20,
+   "g": 26.0,
+   "pick": 14,
+   "pos": "KPF",
+   "orderk": 639.0,
+   "new": 495.24895477004947,
+   "d": -143.75104522995053
+  },
+  {
+   "key": "angus-sheldrick",
+   "name": "Angus Sheldrick",
+   "age": 23,
+   "g": 46.0,
+   "pick": 18,
+   "pos": "MID",
+   "orderk": 691.0,
+   "new": 547.6054732041049,
+   "d": -143.3945267958951
+  },
+  {
+   "key": "james-tunstill",
+   "name": "James Tunstill",
+   "age": 23,
+   "g": 23.0,
+   "pick": 41,
+   "pos": "MID",
+   "orderk": 176.0,
+   "new": 35.91790193842645,
+   "d": -140.08209806157356
+  },
+  {
+   "key": "brayden-cook",
+   "name": "Brayden Cook",
+   "age": 24,
+   "g": 50.0,
+   "pick": 26,
+   "pos": "MID",
+   "orderk": 710.0,
+   "new": 572.500950209046,
+   "d": -137.49904979095402
+  },
+  {
+   "key": "harry-armstrong",
+   "name": "Harry Armstrong",
+   "age": 20,
+   "g": 11.0,
+   "pick": 23,
+   "pos": "KPF",
+   "orderk": 577.0,
+   "new": 440.80197643481563,
+   "d": -136.19802356518437
+  },
+  {
+   "key": "nathan-o-driscoll",
+   "name": "Nathan O'Driscoll",
+   "age": 24,
+   "g": 52.0,
+   "pick": 28,
+   "pos": "MID",
+   "orderk": 562.0,
+   "new": 427.40402888635504,
+   "d": -134.59597111364496
+  },
+  {
+   "key": "max-gruzewski",
+   "name": "Max Gruzewski",
+   "age": 22,
+   "g": 23.0,
+   "pick": 22,
+   "pos": "KPF",
+   "orderk": 434.0,
+   "new": 304.35195743063474,
+   "d": -129.64804256936526
+  },
+  {
+   "key": "paddy-dow",
+   "name": "Paddy Dow",
+   "age": 27,
+   "g": 83.0,
+   "pick": 3,
+   "pos": "MID",
+   "orderk": 206.0,
+   "new": 77.06195362979855,
+   "d": -128.93804637020145
+  },
+  {
+   "key": "riley-hardeman",
+   "name": "Riley Hardeman",
+   "age": 21,
+   "g": 25.0,
+   "pick": 23,
+   "pos": "SD",
+   "orderk": 287.0,
+   "new": 159.16001520334473,
+   "d": -127.83998479665527
+  },
+  {
+   "key": "william-mccabe",
+   "name": "William McCabe",
+   "age": 21,
+   "g": 4.0,
+   "pick": 19,
+   "pos": "KPF",
+   "orderk": 474.0,
+   "new": 347.49144811858605,
+   "d": -126.50855188141395
+  },
+  {
+   "key": "mattaes-phillipou",
+   "name": "Mattaes Phillipou",
+   "age": 22,
+   "g": 63.0,
+   "pick": 10,
+   "pos": "MID",
+   "orderk": 2001.0,
+   "new": 1876.3778031166858,
+   "d": -124.62219688331425
+  },
+  {
+   "key": "jordan-croft",
+   "name": "Jordan Croft",
+   "age": 21,
+   "g": 18.0,
+   "pick": 15,
+   "pos": "KPF",
+   "orderk": 533.0,
+   "new": 410.11022424933486,
+   "d": -122.88977575066514
+  },
+  {
+   "key": "alex-davies",
+   "name": "Alex Davies",
+   "age": 24,
+   "g": 46.0,
+   "pick": 17,
+   "pos": "MID",
+   "orderk": 437.0,
+   "new": 315.5644241733182,
+   "d": -121.43557582668183
+  },
+  {
+   "key": "tyler-sonsie",
+   "name": "Tyler Sonsie",
+   "age": 23,
+   "g": 55.0,
+   "pick": 28,
+   "pos": "MID",
+   "orderk": 958.0,
+   "new": 837.4192322310907,
+   "d": -120.58076776890925
+  },
+  {
+   "key": "jai-murray",
+   "name": "Jai Murray",
+   "age": 19,
+   "g": 8.0,
+   "pick": 17,
+   "pos": "MID",
+   "orderk": 940.0,
+   "new": 820.0304066894716,
+   "d": -119.96959331052835
+  },
+  {
+   "key": "jeremy-sharp",
+   "name": "Jeremy Sharp",
+   "age": 25,
+   "g": 62.0,
+   "pick": 27,
+   "pos": "MID",
+   "orderk": 149.0,
+   "new": 29.361459521094638,
+   "d": -119.63854047890536
+  },
+  {
+   "key": "leek-aleer",
+   "name": "Leek Aleer",
+   "age": 25,
+   "g": 32.0,
+   "pick": 15,
+   "pos": "KPD",
+   "orderk": 285.0,
+   "new": 165.5264158114785,
+   "d": -119.4735841885215
+  },
+  {
+   "key": "liam-henry",
+   "name": "Liam Henry",
+   "age": 25,
+   "g": 69.0,
+   "pick": 9,
+   "pos": "SF",
+   "orderk": 138.0,
+   "new": 20.80957810718358,
+   "d": -117.19042189281642
+  },
+  {
+   "key": "deven-robertson",
+   "name": "Deven Robertson",
+   "age": 25,
+   "g": 51.0,
+   "pick": 22,
+   "pos": "MID",
+   "orderk": 239.0,
+   "new": 122.10186240973015,
+   "d": -116.89813759026985
+  },
+  {
+   "key": "nicholas-coffield",
+   "name": "Nicholas Coffield",
+   "age": 27,
+   "g": 77.0,
+   "pick": 8,
+   "pos": "SD",
+   "orderk": 161.0,
+   "new": 46.08513873052071,
+   "d": -114.91486126947929
+  },
+  {
+   "key": "wil-dawson",
+   "name": "Wil Dawson",
+   "age": 21,
+   "g": 16.0,
+   "pick": 22,
+   "pos": "KPD",
+   "orderk": 326.0,
+   "new": 212.8468263017864,
+   "d": -113.1531736982136
+  },
+  {
+   "key": "james-peatling",
+   "name": "James Peatling",
+   "age": 26,
+   "g": 91.33333333333333,
+   "pick": 8,
+   "pos": "MID",
+   "orderk": 1145.0,
+   "new": 1032.022044849867,
+   "d": -112.97795515013308
+  },
+  {
+   "key": "harvey-langford",
+   "name": "Harvey Langford",
+   "age": 20,
+   "g": 43.0,
+   "pick": 6,
+   "pos": "MID",
+   "orderk": 2500.0,
+   "new": 2612.789813759027,
+   "d": 112.78981375902686
+  },
+  {
+   "key": "tom-brown",
+   "name": "Tom Brown",
+   "age": 23,
+   "g": 58.0,
+   "pick": 17,
+   "pos": "SD",
+   "orderk": 515.0,
+   "new": 402.698593690612,
+   "d": -112.30140630938803
+  },
+  {
+   "key": "cameron-mackenzie",
+   "name": "Cameron Mackenzie",
+   "age": 22,
+   "g": 65.0,
+   "pick": 7,
+   "pos": "MID",
+   "orderk": 2027.0,
+   "new": 1914.7662485746864,
+   "d": -112.23375142531359
+  },
+  {
+   "key": "isaac-kako",
+   "name": "Isaac Kako",
+   "age": 20,
+   "g": 36.0,
+   "pick": 13,
+   "pos": "SF",
+   "orderk": 832.0,
+   "new": 720.6385404789054,
+   "d": -111.36145952109462
+  },
+  {
+   "key": "christian-moraes",
+   "name": "Christian Moraes",
+   "age": 20,
+   "g": 25.0,
+   "pick": 38,
+   "pos": "MID",
+   "orderk": 584.0,
+   "new": 473.86925123527175,
+   "d": -110.13074876472825
+  },
+  {
+   "key": "leo-lombard",
+   "name": "Leo Lombard",
+   "age": 20,
+   "g": 25.0,
+   "pick": 9,
+   "pos": "SF",
+   "orderk": 1557.0,
+   "new": 1448.0235651843407,
+   "d": -108.97643481565933
+  },
+  {
+   "key": "oliver-hollands",
+   "name": "Oliver Hollands",
+   "age": 22,
+   "g": 76.0,
+   "pick": 11,
+   "pos": "MID",
+   "orderk": 1550.0,
+   "new": 1442.987457240593,
+   "d": -107.0125427594071
+  },
+  {
+   "key": "levi-ashcroft",
+   "name": "Levi Ashcroft",
+   "age": 20,
+   "g": 48.0,
+   "pick": 5,
+   "pos": "MID",
+   "orderk": 3365.0,
+   "new": 3471.2086659064994,
+   "d": 106.20866590649939
+  },
+  {
+   "key": "lachy-dovaston",
+   "name": "Lachy Dovaston",
+   "age": 19,
+   "g": 6.0,
+   "pick": 16,
+   "pos": "SF",
+   "orderk": 550.0,
+   "new": 445.2679589509692,
+   "d": -104.73204104903078
+  },
+  {
+   "key": "zach-reid",
+   "name": "Zach Reid",
+   "age": 24,
+   "g": 40.0,
+   "pick": 10,
+   "pos": "KPD",
+   "orderk": 957.0,
+   "new": 853.9528696313189,
+   "d": -103.04713036868111
+  },
+  {
+   "key": "callum-coleman-jones",
+   "name": "Callum Coleman-Jones",
+   "age": 27,
+   "g": 37.0,
+   "pick": 20,
+   "pos": "KPF",
+   "orderk": 120.0,
+   "new": 17.00874192322311,
+   "d": -102.99125807677689
+  },
+  {
+   "key": "henry-hustwaite",
+   "name": "Henry Hustwaite",
+   "age": 22,
+   "g": 11.0,
+   "pick": 37,
+   "pos": "MID",
+   "orderk": 235.0,
+   "new": 132.36412010642343,
+   "d": -102.63587989357657
+  },
+  {
+   "key": "mani-liddy",
+   "name": "Mani Liddy",
+   "age": 24,
+   "g": 16.5,
+   "pick": 15,
+   "pos": "MID",
+   "orderk": 122.0,
+   "new": 20.619536297985555,
+   "d": -101.38046370201445
+  },
+  {
+   "key": "rhett-bazzo",
+   "name": "Rhett Bazzo",
+   "age": 23,
+   "g": 40.0,
+   "pick": 37,
+   "pos": "KPD",
+   "orderk": 436.0,
+   "new": 335.32877232991257,
+   "d": -100.67122767008743
+  },
+  {
+   "key": "joe-berry",
+   "name": "Joe Berry",
+   "age": 20,
+   "g": 33.0,
+   "pick": 15,
+   "pos": "SF",
+   "orderk": 1001.0,
+   "new": 901.3683010262258,
+   "d": -99.63169897377418
+  },
+  {
+   "key": "aidan-schubert",
+   "name": "Aidan Schubert",
+   "age": 19,
+   "g": 1.0,
+   "pick": 23,
+   "pos": "KPF",
+   "orderk": 630.0,
+   "new": 530.5967312808817,
+   "d": -99.40326871911827
+  },
+  {
+   "key": "james-leake",
+   "name": "James Leake",
+   "age": 21,
+   "g": 8.0,
+   "pick": 17,
+   "pos": "SD",
+   "orderk": 438.0,
+   "new": 338.84454580007605,
+   "d": -99.15545419992395
+  },
+  {
+   "key": "cody-angove",
+   "name": "Cody Angove",
+   "age": 20,
+   "g": 4.0,
+   "pick": 24,
+   "pos": "MID",
+   "orderk": 689.0,
+   "new": 590.9350057012542,
+   "d": -98.06499429874577
+  },
+  {
+   "key": "matt-johnson-1",
+   "name": "Matt Johnson",
+   "age": 23,
+   "g": 75.0,
+   "pick": 21,
+   "pos": "MID",
+   "orderk": 1039.0,
+   "new": 941.0870391486127,
+   "d": -97.91296085138731
+  },
+  {
+   "key": "sam-butler-1",
+   "name": "Sam Butler",
+   "age": 23,
+   "g": 33.0,
+   "pick": 23,
+   "pos": "SF",
+   "orderk": 136.0,
+   "new": 38.86354998099582,
+   "d": -97.13645001900417
+  },
+  {
+   "key": "liam-mcmahon",
+   "name": "Liam McMahon",
+   "age": 24,
+   "g": 7.0,
+   "pick": 33,
+   "pos": "KPF",
+   "orderk": 213.0,
+   "new": 116.68567084758647,
+   "d": -96.31432915241353
+  },
+  {
+   "key": "darcy-fort",
+   "name": "Darcy Fort",
+   "age": 33,
+   "g": 77.0,
+   "pick": 65,
+   "pos": "RUCK",
+   "orderk": 170.0,
+   "new": 73.83124287343216,
+   "d": -96.16875712656784
+  },
+  {
+   "key": "jack-ough",
+   "name": "Jack Ough",
+   "age": 20,
+   "g": 5.0,
+   "pick": 36,
+   "pos": "MID",
+   "orderk": 460.0,
+   "new": 363.8350437096161,
+   "d": -96.16495629038388
+  },
+  {
+   "key": "lance-collard",
+   "name": "Lance Collard",
+   "age": 21,
+   "g": 15.0,
+   "pick": 28,
+   "pos": "SF",
+   "orderk": 197.0,
+   "new": 101.48232611174458,
+   "d": -95.51767388825542
+  },
+  {
+   "key": "daniel-curtin",
+   "name": "Daniel Curtin",
+   "age": 21,
+   "g": 46.0,
+   "pick": 8,
+   "pos": "MID",
+   "orderk": 2242.0,
+   "new": 2334.9486887115168,
+   "d": 92.94868871151675
+  },
+  {
+   "key": "tanner-bruhn",
+   "name": "Tanner Bruhn",
+   "age": 24,
+   "g": 84.0,
+   "pick": 12,
+   "pos": "MID",
+   "orderk": 2018.0,
+   "new": 1925.2185480805776,
+   "d": -92.78145191942235
+  },
+  {
+   "key": "braeden-campbell",
+   "name": "Braeden Campbell",
+   "age": 24,
+   "g": 98.0,
+   "pick": 5,
+   "pos": "SD",
+   "orderk": 419.0,
+   "new": 327.5370581527936,
+   "d": -91.46294184720642
+  },
+  {
+   "key": "toby-mcmullin",
+   "name": "Toby McMullin",
+   "age": 22,
+   "g": 34.0,
+   "pick": 34,
+   "pos": "SF",
+   "orderk": 118.0,
+   "new": 26.79589509692132,
+   "d": -91.20410490307867
+  },
+  {
+   "key": "jobe-shanahan",
+   "name": "Jobe Shanahan",
+   "age": 20,
+   "g": 30.0,
+   "pick": 30,
+   "pos": "KPF",
+   "orderk": 1347.0,
+   "new": 1437.8563283922463,
+   "d": 90.85632839224627
+  },
+  {
+   "key": "karl-worner",
+   "name": "Karl Worner",
+   "age": 24,
+   "g": 52.0,
+   "pick": 4,
+   "pos": "SD",
+   "orderk": 1041.0,
+   "new": 950.3040668947168,
+   "d": -90.69593310528319
+  },
+  {
+   "key": "george-wardlaw",
+   "name": "George Wardlaw",
+   "age": 22,
+   "g": 53.0,
+   "pick": 4,
+   "pos": "MID",
+   "orderk": 3085.0,
+   "new": 3175.2185480805774,
+   "d": 90.21854808057742
+  },
+  {
+   "key": "corey-warner",
+   "name": "Corey Warner",
+   "age": 23,
+   "g": 28.0,
+   "pick": 40,
+   "pos": "SF",
+   "orderk": 104.0,
+   "new": 16.9137210186241,
+   "d": -87.0862789813759
+  },
+  {
+   "key": "roan-steele",
+   "name": "Roan Steele",
+   "age": 25,
+   "g": 25.166666666666664,
+   "pick": 7,
+   "pos": "MID",
+   "orderk": 118.0,
+   "new": 31.64196123147092,
+   "d": -86.35803876852908
+  },
+  {
+   "key": "harry-o-farrell",
+   "name": "Harry O'Farrell",
+   "age": 20,
+   "g": 6.0,
+   "pick": 40,
+   "pos": "KPD",
+   "orderk": 505.0,
+   "new": 591.1250475104523,
+   "d": 86.1250475104523
+  },
+  {
+   "key": "talor-byrne",
+   "name": "Talor Byrne",
+   "age": 19,
+   "g": 15.0,
+   "pick": 45,
+   "pos": "SF",
+   "orderk": 687.0,
+   "new": 772.7099961991638,
+   "d": 85.70999619916381
+  },
+  {
+   "key": "caiden-cleary",
+   "name": "Caiden Cleary",
+   "age": 21,
+   "g": 25.0,
+   "pick": 24,
+   "pos": "SF",
+   "orderk": 265.0,
+   "new": 179.96959331052832,
+   "d": -85.03040668947168
+  },
+  {
+   "key": "max-kondogiannis",
+   "name": "Max Kondogiannis",
+   "age": 19,
+   "g": 9.0,
+   "pick": 36,
+   "pos": "SD",
+   "orderk": 358.0,
+   "new": 273.4701634359559,
+   "d": -84.5298365640441
+  },
+  {
+   "key": "harry-schoenberg",
+   "name": "Harry Schoenberg",
+   "age": 25,
+   "g": 67.0,
+   "pick": 24,
+   "pos": "MID",
+   "orderk": 127.0,
+   "new": 44.279741543139494,
+   "d": -82.7202584568605
+  }
+ ]
+}

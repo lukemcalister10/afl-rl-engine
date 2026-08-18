@@ -1,0 +1,60 @@
+======================================================================================================================
+ORDER N — THE STANDING TABLES ON THE DERIVED CHARGE. ESTIMATE PENDING A BUILD.
+======================================================================================================================
+mechanism: pi *= exp( -0.78447 * (1 - exp(-g/9.7200)) * clip(1 - 0.14687*(s -2.3163), 0, 5.9982) )
+
+----------------------------------------------------------------------------------------------------------------------
+PRIMARY window — year-0 -> year-1 appreciation. Below 0% is a sell-side red. Above +14% is a buy-side red.
+----------------------------------------------------------------------------------------------------------------------
+  band                 n |     ORDER N     ORDER K     landing       eta=0  dose0 e.31     cand 31
+  ALL picks 1-64    1200 |      +6.20%      +4.23%      +2.98%     +21.72%B      +4.66%      +6.62%
+  picks 1-20         380 |     +14.20%B      +9.22%      +8.36%     +30.90%B     +10.35%     +14.78%B
+  picks 21-64        820 |      -6.44%S      -3.67%S      -5.54%S      +7.21%      -4.32%S      -6.28%S
+  picks 1-10         190 |     +16.50%B      +8.22%      +7.93%     +31.58%B      +9.84%     +16.19%B
+  picks 11-20        190 |      +9.74%     +11.16%      +9.20%     +29.58%B     +11.34%     +12.04%
+  picks 21-30        190 |      +2.61%      +5.26%      +2.76%     +19.81%B      +4.81%      +3.68%
+  picks 31-40        190 |     -13.06%S     -10.70%S     -12.84%S      -1.57%S     -10.61%S     -12.38%S
+  picks 41-64        440 |     -10.13%S      -6.89%S      -7.88%S      +1.71%      -8.39%S     -11.36%S
+  (B = buy-side red, over the +14%% rail.  S = sell-side red, below 0%%.)
+
+----------------------------------------------------------------------------------------------------------------------
+MODERN window — year-0 -> year-1 appreciation. Below 0% is a sell-side red. Above +14% is a buy-side red.
+----------------------------------------------------------------------------------------------------------------------
+  band                 n |     ORDER N     ORDER K     landing       eta=0  dose0 e.31     cand 31
+  ALL picks 1-64     311 |      +1.57%      -0.96%S      -1.69%S     +15.72%B      -0.03%S      +3.00%
+  picks 1-20         100 |     +15.77%B      +9.58%      +8.92%     +31.27%B     +10.93%     +16.12%B
+  picks 21-64        211 |     -21.36%S     -17.97%S     -18.83%S      -9.39%S     -17.73%S     -18.17%S
+  picks 1-10          50 |     +24.35%B     +13.65%     +13.24%     +37.46%B     +15.11%B     +22.25%B
+  picks 11-20         50 |      +0.06%      +2.11%      +1.00%     +19.94%B      +3.29%      +4.89%
+  picks 21-30         50 |     -17.86%S     -14.26%S     -16.34%S      -4.40%S     -13.63%S     -14.76%S
+  picks 31-40         50 |     -15.27%S     -14.27%S     -15.92%S      -5.46%S     -14.68%S     -16.55%S
+  picks 41-64        111 |     -30.29%S     -25.06%S     -23.94%S     -18.00%S     -24.64%S     -23.12%S
+  (B = buy-side red, over the +14%% rail.  S = sell-side red, below 0%%.)
+
+----------------------------------------------------------------------------------------------------------------------
+THE VETERAN POOL — J-TOL, on the same definition ORDER M used: ledger rows aged 24+, measured
+against the LANDING candidate, board total = the landing candidate's.
+----------------------------------------------------------------------------------------------------------------------
+  board total (landing) = 667916 ;  mature rows aged 24+ = 429
+  rails: per row min(25, max(1, 0.5% of his own price)) · churn <= 1001.87 (0.15%) · net <= 667.92 (0.10%)
+
+  board          move    churn       net    worst per-row breaches
+  ORDER K         124      947      -601      -77       79   churn OK · net OK
+  ORDER N         208     9778     -8196     +344      184   churn BREACH · net BREACH
+
+  ORDER M read the same three numbers on the eta = 0 board as churn 2923 / net +2781 / 105 breaches.
+
+----------------------------------------------------------------------------------------------------------------------
+THE NAMED ROWS — against the landing candidate as well as ORDER K. ILLUSTRATIONS, NEVER TARGETS.
+----------------------------------------------------------------------------------------------------------------------
+  row                    age  pick     g  surplus |  landing  ORDER K  ORDER N |     vs K
+  Harry Dean              19     3    17   +14.86 |     2400     2403     3069 |     +666
+  Cooper Duff-Tytler      19     4    13    +7.06 |     1572     1505     1879 |     +374
+  Xavier Taylor           19    11     2   -13.22 |     1176     1162      931 |     -231
+  Daniel Annable          19     6     2   -19.02 |     1530     1537     1158 |     -379
+  Dylan Patterson         19     5     5   -19.62 |     1467     1440      991 |     -449
+  Isaac Kako              20    13    36    +0.84 |      788      832      721 |     -111
+  Josh Smillie            20     7     0 n/a (0 g) |      772      772      772 |       +0
+  anthony-scerri          NOT ON THE 804-ROW BOARD
+  Milan Murdock           26  None    17    +2.17 |      170      156      157 |       +1
+

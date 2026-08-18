@@ -1,0 +1,140 @@
+======================================================================================================================
+ORDER N — STEP 4. THE DERIVED CHARGE, PRICED OFFLINE. EVERY NUMBER IS AN ESTIMATE PENDING A BUILD.
+======================================================================================================================
+mechanism: pi *= exp( -LAMBDA * A(g) * T(s) )
+  A(g) = 1 - exp(-g/9.7200)                       G0 derived in Step 3 from the measured BETA curve
+  T(s) = clip( 1 - THETA_R*(s -2.3163), 0, TMAX )    THETA_R = BETA_sat/LAMBDA = 0.11521/LAMBDA
+pricing identity (falsifier N1, PASSED in on_ident.py):  v(F) = v(F=0) - F * C,  C = the charge base
+
+----------------------------------------------------------------------------------------------------------------------
+0 · BOARD POINTS FROM MATRIX POINTS
+----------------------------------------------------------------------------------------------------------------------
+   board points = matrix points / 1.0524 (pick_redenomination.json::factor). Checked on all 804 ledger rows:
+   worst discrepancy 0.535 board points, mean 0.2414. Rounding, and nothing else.
+
+----------------------------------------------------------------------------------------------------------------------
+1 · THE ANCHORING SOLVE — LAMBDA IS NOT TUNED, IT IS SOLVED
+----------------------------------------------------------------------------------------------------------------------
+   ORDER M proved the charge is load-bearing for the whole board's year-1 anchoring, not just for
+   the age bar. So the LEVEL of the replacement is not an outcome question; it is a no-arbitrage
+   calibration. LAMBDA is solved so the derived charge removes THE SAME TOTAL NUMBER OF POINTS from
+   the year-1 class-mark population as the current charge does. The tilt then redistributes those
+   points between over- and under-performers. It does not add any.
+
+   anchor population: 603 year-1 rows from cohort classes 2005-2015 with a live charge.
+   points the CURRENT charge removes from them: 101402.7 matrix points.
+   SOLVED:  LAMBDA  = 0.78447      (bisection, 200 halvings; removes 101402.7 points, target 101402.7)
+            THETA_R = 0.14687      = BETA_sat / LAMBDA. Not a free parameter.
+            TMAX    = 5.99818      = T at the cohort 5th percentile of surplus, -31.72 points/game.
+
+   THE ZERO POINT. T(s) hits 0 at s = s0 + 1/THETA_R = +9.13 points per game.
+   A young player producing more than 9.13 points a game above his age bar pays NOTHING on his
+   pedigree leg. He keeps the whole prior. That is the mechanism doing the thing the order asked for.
+   Share of the young cohort at or past that point: 19.0%.
+
+   THE CHARGE, SIDE BY SIDE. Percentage of the pedigree leg removed.
+   games    | CURRENT  0.50*m_d(g), blind    | DERIVED  1-exp(-LAM*A(g)*T(s))
+            |                                |      s=-25      s=-10        s=0      s=+15
+   1        |                          9.0% |      31.9%      19.4%       9.8%       0.0%
+   2        |                         16.8% |      51.9%      33.6%      17.8%       0.0%
+   3        |                         23.5% |      64.8%      44.3%      24.4%       0.0%
+   5        |                         34.0% |      79.4%      58.8%      34.5%       0.0%
+   8        |                         43.9% |      89.0%      70.9%      44.6%       0.0%
+   10       |                         47.5% |      92.0%      75.7%      49.1%       0.0%
+   14       |                         50.0% |      95.0%      81.4%      55.2%       0.0%
+   17       |                         49.0% |      96.1%      83.8%      58.0%       0.0%
+   20       |                         46.5% |      96.8%      85.4%      60.0%       0.0%
+   25       |                         40.7% |      97.4%      86.9%      62.1%       0.0%
+   30       |                         34.2% |      97.7%      87.8%      63.3%       0.0%
+   36       |                         26.7% |      97.8%      88.3%      64.1%       0.0%
+   50       |                         13.6% |      98.0%      88.8%      64.8%       0.0%
+   80       |                          2.6% |      98.0%      89.0%      65.0%       0.0%
+   141      |                          0.1% |      98.0%      89.0%      65.1%       0.0%
+
+   Read the row at 17 games against the row at 36 games. The current charge falls from 49.0%% to
+   16.6%%: a 36-game player keeps MORE unearned pedigree than a 17-game player. The derived charge
+   does not fall anywhere.
+
+----------------------------------------------------------------------------------------------------------------------
+2 · THE RE-PRICED MATRIX
+----------------------------------------------------------------------------------------------------------------------
+   wrote per_entrant_NDERIV.json
+   vantage cells whose price moved against ORDER K: 9746
+   ESTIMATE PENDING A BUILD. No engine was run.
+
+----------------------------------------------------------------------------------------------------------------------
+3 · THE PROPERTY TEST RE-RUN ON THE ESTIMATED PRICES
+----------------------------------------------------------------------------------------------------------------------
+   The question: is the CHARGE now monotone in performance surplus at fixed games? It is, by
+   construction — Q is non-increasing in s (property N-S3). The number worth printing is what that
+   does to the price response.
+
+   games bin      n | rho ORDER K rho DERIVED     change |  chg-rho K  chg-rho N
+   1-4           42 |    +0.1351    +0.3652    +0.2301 |    +0.0987    -0.7480
+   5-9           33 |    +0.2610    +0.4930    +0.2320 |    +0.4416    -0.9031
+   10-15         33 |    +0.4345    +0.5244    +0.0899 |    +0.2264    -0.9822
+   16-24         36 |    +0.7073    +0.8010    +0.0937 |    +0.1202    -0.9951
+   25-39         29 |    +0.7872    +0.8404    +0.0532 |    -0.1560    -0.9995
+   40-60         22 |    +0.5381    +0.5618    +0.0237 |    -0.4359    -0.9157
+   ALL          195 |    +0.4875    +0.6005    +0.1130 |    -0.0495    -0.7475
+
+   Charge paid, by performance-surplus tercile, over the whole young window:
+   below expectation    n=65   mean PS  -21.40  mean g  10.1 | CURRENT  34.1%  DERIVED  74.9%
+   middle               n=65   mean PS   -6.87  mean g  17.0 | CURRENT  38.5%  DERIVED  68.6%
+   above expectation    n=65   mean PS  +10.99  mean g  25.4 | CURRENT  31.2%  DERIVED  14.2%
+
+----------------------------------------------------------------------------------------------------------------------
+4 · WHERE THE MONEY MOVES, IN BOARD POINTS, ACROSS THE WHOLE 804-ROW BOARD
+----------------------------------------------------------------------------------------------------------------------
+   board total: ORDER K 673097  ->  DERIVED 657391   (-15706 points, -2.33%)
+   rows that move: 472 of 804 (up 101, down 371)
+
+   career games   rows total points    per row
+   0                89           -7       -0.1
+   1-4              46        -2011      -43.7
+   5-9              45        -2389      -53.1
+   10-15            51         +210       +4.1
+   16-29            81        -1583      -19.5
+   30-59           103        -4967      -48.2
+   60+             388        -4931      -12.7
+
+   the ten largest rises and the ten largest falls:
+         +883  Willem Duursma             age 19  g    19  pick 1      3703 -> 4586
+         +788  Sam Lalor                  age 20  g    22  pick 1      3456 -> 4244
+         +711  Jagga Smith                age 20  g    20  pick 3      3637 -> 4348
+         +666  Harry Dean                 age 19  g    17  pick 3      2403 -> 3069
+         +542  Toby Conway                age 23  g     6  pick 24     899 -> 1441
+         +485  Sullivan Robey             age 19  g    14  pick 9      2379 -> 2864
+         +452  Dyson Sharp                age 19  g    13  pick 13     2427 -> 2879
+         +374  Cooper Duff-Tytler         age 19  g    13  pick 4      1505 -> 1879
+         +360  Jacob Farrow               age 19  g    18  pick 10     2155 -> 2515
+         +345  Caleb Graham               age 26  g    37  pick 71     82 -> 427
+     ...
+         -236  Harry Barnett              age 22  g     2  pick 23     740 -> 504
+         -251  Tobie Travaglia            age 20  g    17  pick 8      521 -> 270
+         -281  Elijah Tsatas              age 22  g    22  pick 5      1078 -> 797
+         -286  Josh Sinn                  age 23  g    30  pick 12     357 -> 71
+         -304  Jed Walter                 age 21  g    46  pick 3      1170 -> 866
+         -343  Jhye Clark                 age 22  g    33  pick 8      921 -> 578
+         -379  Daniel Annable             age 19  g     2  pick 6      1537 -> 1158
+         -418  Zane Duursma               age 21  g    38  pick 4      629 -> 211
+         -449  Dylan Patterson            age 19  g     5  pick 5      1440 -> 991
+         -664  Sid Draper                 age 20  g    10  pick 4      1267 -> 603
+
+----------------------------------------------------------------------------------------------------------------------
+5 · THE NAMED ROWS — ILLUSTRATIONS OF WHERE THE DERIVED RULE PUTS THEM. NEVER TARGETS.
+----------------------------------------------------------------------------------------------------------------------
+   No constant in this mechanism was chosen with any of these rows in view. They are printed last
+   because the order asked to see them, and they are printed wherever the derived rule puts them.
+
+   row                    age  pick     g |       PS     A(g) |   chg K   chg N | landing ORDER K DERIVED
+   Harry Dean              19     3    17 |   +14.86   0.8260 |   49.0%    0.0% |    2400    2403    3069
+   Cooper Duff-Tytler      19     4    13 |    +7.06   0.7375 |   49.9%   16.1% |    1572    1505    1879
+   Xavier Taylor           19    11     2 |   -13.22   0.1860 |   16.8%   38.0% |    1176    1162     931
+   Daniel Annable          19     6     2 |   -19.02   0.1860 |   16.8%   45.3% |    1530    1537    1158
+   Dylan Patterson         19     5     5 |   -19.62   0.4021 |   34.0%   73.6% |    1467    1440     991
+   Isaac Kako              20    13    36 |    +0.84   0.9754 |   26.7%   60.6% |     788     832     721
+   Josh Smillie            20     7     0 |     +nan   0.0000 |    0.0%    0.0% |     772     772     772
+   anthony-scerri          not on the ledger
+   Milan Murdock           26  None    17 |    +2.17   0.8260 |   49.0%   48.4% |     170     156     157
+

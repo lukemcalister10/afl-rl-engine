@@ -1,0 +1,55 @@
+======================================================================================================================
+ORDER N — WHY THE TWO RAILS DO NOT OVERLAP
+======================================================================================================================
+
+THE SHORT VERSION. The young players who are ABOVE their age bar are, very largely, the young
+players taken at the TOP of the draft. So a charge that relieves over-performers relieves the top
+of the draft, and the top of the draft is exactly where the +14%% buy rail has almost no headroom.
+The conflict is between the owner's fix and the no-arbitrage rail, and it runs through one
+population fact. Here is the fact.
+
+----------------------------------------------------------------------------------------------------------------------
+1 · PICK AGAINST PERFORMANCE SURPLUS, on the 3248 vantage rows of the Step 2 cohort with a draft pick
+----------------------------------------------------------------------------------------------------------------------
+   Spearman(pick, surplus) = -0.3303      (negative means earlier picks produce further above their bar)
+
+   pick band      rows |    PS p25 PS median    PS p75 | share at or
+                       |                               |  past +9.13
+   1-10            584 |     -3.05     +6.12    +14.76 |       41.3%
+   11-20           572 |     -8.05     +0.63     +9.59 |       26.4%
+   21-40          1015 |    -13.49     -4.78     +4.54 |       15.7%
+   41-64           888 |    -17.30     -7.60     +2.09 |       12.5%
+   pool/none       189 |    -21.99     -9.52     +0.46 |       13.2%
+   ALL            3248 |    -12.68     -2.98     +7.03 |       21.2%
+
+   A pick 1-10 row is roughly 3.3 times as likely to sit past the zero point as a pick 41-64 row.
+
+----------------------------------------------------------------------------------------------------------------------
+2 · THE SAME AT THE YEAR-1 VANTAGE ONLY — the exact rows the year-0 -> year-1 band table reads
+----------------------------------------------------------------------------------------------------------------------
+   pick band      rows | PS median    mean g | share past 0-pt | window     
+   1-10            163 |     +4.68      12.5 |       36.2% | PRIMARY    
+   11-20           136 |     -0.77       8.9 |       26.5% | PRIMARY    
+   21-40           200 |     -4.18       7.3 |       16.5% | PRIMARY    
+   41-64           150 |     -6.41       6.9 |       15.3% | PRIMARY    
+
+   1-10             47 |     +6.78      12.4 |       34.0% | MODERN     
+   11-20            35 |     -2.02       9.2 |       17.1% | MODERN     
+   21-40            44 |     -4.37       7.1 |       13.6% | MODERN     
+   41-64            34 |    -13.92       5.9 |        5.9% | MODERN     
+
+----------------------------------------------------------------------------------------------------------------------
+3 · THE HEADROOM THAT WAS ALREADY GONE
+----------------------------------------------------------------------------------------------------------------------
+   board          picks 1-10 PRIMARY       picks 1-10 MODERN       
+   ORDER K            +8.22%  headroom  +5.78     +13.65%  headroom  +0.35
+   landing            +7.93%  headroom  +6.07     +13.24%  headroom  +0.76
+   candidate 31      +16.19%  headroom  -2.19     +22.25%  headroom  -8.25
+   dose 0, eta 0.31     +9.84%  headroom  +4.16     +15.11%  headroom  -1.11
+   eta = 0           +31.58%  headroom -17.58     +37.46%  headroom -23.46
+
+   ORDER K has 0.35 points of headroom on the modern picks 1-10 cell and 5.78 on the primary one.
+   ORDER M flagged this in its own words: "Anything that lifts the top of the draft has less
+   headroom than the primary table suggests." This order is the thing that lifts the top of the draft.
+   The modern cell carries n = 50 rows at year 1.
+
