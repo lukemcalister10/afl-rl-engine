@@ -1,0 +1,36 @@
+=== ORDER M EMITS (strictly sequential) ===
+
+--- M0ETA0 (dose .40 k .20 gu 8 ETA 0 gd 14 rel 1.08) ---
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: 411f4a6d31e77c229aeb0454fa31d80b
+  emit starting 05:14:28  (lambda_S1=0.40 kappa=0.20 eta=0.0)
+  emit exit=0  COST: 3m 7s
+  OK -> per_entrant_M0ETA0.json  (baa58328)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+
+--- MLOETA0 (dose 0 k .15 gu 16 ETA 0 gd 14 rel 1.08) ---
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: 411f4a6d31e77c229aeb0454fa31d80b
+  emit starting 05:17:35  (lambda_S1=0.0 kappa=0.15 eta=0.0)
+  emit exit=0  COST: 3m 16s
+  OK -> per_entrant_MLOETA0.json  (1f683f29)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+
+--- MMIN031 (dose 0 k .20 gu 8 ETA 0.31 gd 14 rel 1.08) ---
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: 411f4a6d31e77c229aeb0454fa31d80b
+  emit starting 05:20:51  (lambda_S1=0.0 kappa=0.20 eta=0.31)
+  emit exit=0  COST: 3m 2s
+  OK -> per_entrant_MMIN031.json  (9c5c574b)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+
+=== MATRICES ===
+  O31FFINAL d97f1aee4161ebcf785cd635ed095038
+  O35FINAL  e029bc9f646ed0a360a3043df18eba08
+  OKRULED   66340278ea04cba10ce90d7d05579b86
+  M0ETA0    baa58328fd3ad9f632b1bee710c1b9cb
+  MLOETA0   1f683f29b11ff590ef6d1fab3131adad
+  MMIN031   9c5c574bca4d21e2889fc4ca00b33773
