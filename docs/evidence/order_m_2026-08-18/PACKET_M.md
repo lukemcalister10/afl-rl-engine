@@ -15,9 +15,11 @@ You ruled that eta must be zero. I set it to zero and built the board.
 **It gives you exactly what you asked for on the two rows you named.** Harry Dean goes from 2,403 to
 **3,069**. Cooper Duff-Tytler goes from 1,505 to **2,057**. Both clear your stated references.
 
-**It also breaks four of your six laws, and it breaks them by a lot.** The year-1 class mark goes to
-**1.2046** against a buy rail of 1.14. Picks 1-10 read **+31.58%** against a rail of +14%. All three
-sub-expectation rows rise. The veteran pool moves +2,781 points against a 668-point line.
+**It also breaks three of your six laws outright, and it breaks them by a lot.** G1: the year-1 class
+mark goes to **1.2046** against a buy rail of 1.14. G3: picks 1-10 read **+31.58%** against a rail of
++14%. G6: all three sub-expectation rows rise. The veteran pool moves +2,781 points against a
+668-point line. G4's "stay near +8.22%" is not met either, but that is the same fact as the G3 breach
+rather than a separate one, and I am not going to count it twice.
 
 **And there is no dose that fixes it.** I swept all 7,560 settings the declared grid allows with eta
 pinned at zero. **Not one of them is legal.** Not at dose 0.40. Not at dose 0.10. Not at dose 0.00,
@@ -337,6 +339,13 @@ ladders, both built as real boards.
 ### LADDER B — the legal frontier: at each dose, the smallest eta the board can carry
 
 <!--LADDER_B-->
+
+### The maximum-kappa control — can kappa charge the sub-expectation rows on its own?
+
+kappa 0.60 at gamma_u 16 is the hardest kappa the ruled rho32-monotonicity constraint admits anywhere
+on the grid. It is three times ORDER K's 0.20. eta is at zero on both rows.
+
+<!--KAPPAMAX-->
 
 ### How much eta the board needs, dose by dose
 
