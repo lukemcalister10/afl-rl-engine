@@ -3,6 +3,7 @@
 Read-only seat. No price moved. No board was built. No engine, board or law file was touched.
 Prereg: `PREREG_L.md`, pushed before any number (commit 5e1d6e3).
 Document: `ORDER_L_NOARB.html` (this directory).
+Published copy: https://claude.ai/code/artifact/f1273981-1688-4b9c-9ec9-4432d7af159d (private until shared).
 
 The owner raised two gaps in Order K's no-arb document. Both are closed here.
 
