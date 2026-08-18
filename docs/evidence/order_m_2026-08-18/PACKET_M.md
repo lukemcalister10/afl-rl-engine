@@ -345,18 +345,68 @@ ladders, both built as real boards.
 
 ### LADDER A — eta walked at your ruled dose 0.40, every other knob held
 
-<!--LADDER_A-->
+| eta | harry-dean (want ~2,600) | duff-tytler (want ~1,800) | xavier-taylor (must not rise) | daniel-annable (must not rise) | dylan-patterson (must not rise) | board legal? |
+|---:|---:|---:|---:|---:|---:|---|
+| *landing candidate* | 2,400 | 1,572 | 1,176 | 1,530 | 1,467 | — |
+| 0.00 | **3069** | **2057** | **1345** | **1761** | **1824** | illegal |
+| 0.10 | **2936** | **1947** | **1308** | **1716** | **1747** | illegal |
+| 0.20 | **2803** | **1836** | **1271** | **1672** | **1670** | illegal |
+| 0.30 | **2670** | 1726 | **1235** | **1627** | **1593** | illegal |
+| 0.40 | 2536 | 1616 | **1198** | **1582** | **1517** | illegal |
+| 0.50 | 2403 | 1505 | 1162 | **1537** | 1440 | LEGAL |
+
+Bold means the cell is on the wrong side of the rule it is being read against: bold in the first two columns means the row **reaches** the owner's reference, bold in the last three means the row **rises** when it must not.
 
 ### LADDER B — the legal frontier: at each dose, the smallest eta the board can carry
 
-<!--LADDER_B-->
+| board | S1 dose | smallest legal eta | harry-dean | duff-tytler | xavier-taylor | daniel-annable | dylan-patterson | veteran net move (cap 668) |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| *landing candidate* | — | — | 2,400 | 1,572 | 1,176 | 1,530 | 1,467 | 0 |
+| MLO | 0.00 | **none — ILLEGAL** | 2872 | 1965 | 1307 | 1671 | 1724 | +2832 |
+| MMIN | 0.00 | 0.31 | 2451 | 1635 | 1216 | 1582 | 1538 | +688 |
+| F20 | 0.20 | 0.39 | 2424 | 1578 | 1193 | 1564 | 1497 | +144 |
+| K | 0.40 | 0.50 | 2403 | 1505 | 1162 | 1537 | 1440 | -601 |
+| F60 | 0.60 | 0.64 | 2388 | 1428 | 1123 | 1501 | 1370 | -1542 |
+| F70 | 0.70 | 0.72 | 2378 | 1392 | 1101 | 1480 | 1331 | -2082 |
+
+`MLO` is the top row and it is the odd one out: it is dose 0 with **no eta at all**, and its kappa is 0.15 / gamma_u 16 rather than the ruled 0.20 / 8, because that is the coolest point the whole eta = 0 grid reaches. It is illegal, and it is in the table as the far end of the curve rather than as an option. Every other row is a cheapest-legal-eta point at the ruled knobs.
+
+### WHAT THE TWO LADDERS SAY, IN ONE PLACE
+
+**At your ruled dose 0.40, the windows do not overlap.** Crossings interpolated between built boards.
+
+| what needs to be true | the eta it needs |
+|---|---|
+| harry-dean reaches ~2,600 | eta **at or below 0.35** |
+| cooper-duff-tytler reaches ~1,800 | eta **at or below 0.23** |
+| xavier-taylor stops rising | eta at or above 0.46 |
+| dylan-patterson stops rising | eta at or above 0.46 |
+| daniel-annable stops rising | **not reached even at 0.50** — this is ORDER K's own +7 breach |
+| the board stays inside your rails | eta **at or above 0.50** |
+
+**To give you both named rows, eta must be at or below 0.23. To keep the board legal, eta must be at
+least 0.50. The gap is 0.27 of eta, and there is nothing in it.** This is not a near miss.
+
+**And over the whole legal frontier — every legal dose at its cheapest legal eta —** the best Harry
+Dean you can buy is **2,451**, at dose 0.00 with eta 0.31. That is 149 short of your ~2,600. The best
+Cooper Duff-Tytler is **1,635**, which is 165 short of ~1,800. The illegal far end of the curve buys
+Dean 2,872 and Duff-Tytler 1,965. That gap is the trade, priced.
+
+**One more thing the frontier shows.** Look at the veteran column in ladder B. It crosses zero between
+dose 0.20 and dose 0.40. Below the ruled dose the veteran pool gets *more* expensive; above it, *less*.
+ORDER K's dose sits close to where that column changes sign, which is not something anyone designed
+and is worth knowing.
 
 ### The maximum-kappa control — can kappa charge the sub-expectation rows on its own?
 
 kappa 0.60 at gamma_u 16 is the hardest kappa the ruled rho32-monotonicity constraint admits anywhere
 on the grid. It is three times ORDER K's 0.20. eta is at zero on both rows.
 
-<!--KAPPAMAX-->
+| board | dose | kappa | gamma_u | eta | xavier-taylor | daniel-annable | dylan-patterson |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| *landing candidate* | — | — | — | — | 1,176 | 1,530 | 1,467 |
+| KMAX | 0.00 | 0.60 | 16 | 0.00 | 1358 | 1781 | 1889 |
+| KMX4 | 0.40 | 0.60 | 16 | 0.00 | 1377 | 1835 | 1956 |
 
 ### How much eta the board needs, dose by dose
 

@@ -55,6 +55,20 @@
   "md5": "f3101883a60b0a7b8cb50f9d8a5abfff",
   "what": "ORDER K's ruled setting, rebuilt here"
  },
+ "KMAX": {
+  "dose": "0.00",
+  "eta": "0.00",
+  "kappa": "0.60",
+  "md5": "5d7fb89ae2aada54ca159f2ec10bdeab",
+  "what": "the maximum-kappa control (gamma_u 16)"
+ },
+ "KMX4": {
+  "dose": "0.40",
+  "eta": "0.00",
+  "kappa": "0.60",
+  "md5": "4d60b14a1cb8844d824605f2d65e13a7",
+  "what": "the maximum-kappa control (gamma_u 16)"
+ },
  "M0": {
   "dose": "0.40",
   "eta": "0.00",

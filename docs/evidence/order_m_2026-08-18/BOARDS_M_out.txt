@@ -16,8 +16,8 @@ ORDER M — EVERY BOARD BUILT BY THIS ORDER, md5 RECOMPUTED FROM THE FILE ON DIS
   F20   ladder B — the legal frontier              0.20    0.20   0.39  e9c263396a30d23a0af45815a4f8dd30
   F60   ladder B — the legal frontier              0.60    0.20   0.64  f2b73c67923e1bb56f5c635b74704380
   F70   ladder B — the legal frontier              0.70    0.20   0.72  a6f4eca4903875c8ce43fb7fe3996288
-  KMAX  the maximum-kappa control (gamma_u 16)     0.00    0.60   0.00  NOT BUILT
-  KMX4  the maximum-kappa control (gamma_u 16)     0.40    0.60   0.00  NOT BUILT
+  KMAX  the maximum-kappa control (gamma_u 16)     0.00    0.60   0.00  5d7fb89ae2aada54ca159f2ec10bdeab
+  KMX4  the maximum-kappa control (gamma_u 16)     0.40    0.60   0.00  4d60b14a1cb8844d824605f2d65e13a7
 
   M1  dial-off = 1f176444          : PASS
   M2  ORDER K rebuilds to f3101883 : PASS
