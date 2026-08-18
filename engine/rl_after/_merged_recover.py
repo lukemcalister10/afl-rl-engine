@@ -458,6 +458,13 @@ _O35=os.environ.get('RL_O35','0')!='0'                      # ORDER D: the pick-
 # the wired pick-curve fade. RL_O36 IMPLIES RL_O35 (and so RL_O32/RL_O31) on the next lines and nowhere
 # else. Dial-off reproduces the landing candidate 1f176444 BYTE-EXACT. NOTHING LANDS WITHOUT THE OWNER.
 _O36=MA._O36                                                # ORDER I: read in rl_model (S1 needs it at import)
+# ORDER P — THE PEDIGREE-CONDITIONAL CHARGE (RL_O37; PREREG_P_BUILD.md pushed before this edit;
+# docs/evidence/order_p_2026-08-18 is the measurement and the derivation). It REPLACES the ORDER A
+# stage-6 blind eta charge — a pure function of GAMES, peaking at gamma_d = 14 and blind to how the
+# player actually played — with a charge read against the bar the player's OWN ENTRY PRICE implies.
+# RL_O37 IMPLIES RL_O36 (and so RL_O35/RL_O32/RL_O31) in rl_model, and nowhere else. Dial off =>
+# ORDER K's board f3101883 reproduces BYTE-EXACT. NOTHING LANDS WITHOUT THE OWNER'S WORD.
+_O37=MA._O37                                                # ORDER P: read in rl_model (it sets the O36 dose default)
 _O35=_O35 or _O36                                           # ORDER I implies the pick-curve fade
 _O32=(os.environ.get('RL_O32','0')!='0') or _O34 or _O35    # ORDER A: CANDIDATE 32 (ORDERS C/D build ON it)
 _O32S=(int(os.environ.get('RL_O32_STAGE','6')) if _O32 else 0)
@@ -3466,9 +3473,12 @@ if _O30B_PREVIEW:
     # therefore carries the mature-row identity as a HARD constraint, which pins these four to the
     # repair values; the unconstrained optimum is REPORTED and NEVER CHOSEN. See PACKET_I.md §4.
     # The declared overrides below exist so the grid can be swept and the pinning PROVED, not asserted.
-    O36_KAPPA=float(os.environ.get('RL_O36_KAPPA','0.24'))
-    O36_GAMMA=float(os.environ.get('RL_O36_GAMMA','11.0'))
-    O36_ETA=float(os.environ.get('RL_O36_ETA','0.41'))
+    # ORDER P: with RL_O37 on, the DEFAULTS become ORDER K's RULED setting (register v735) so the new
+    # dial carries the O36-K stack on its own. An explicit RL_O36_* still wins, and the ORDER P build
+    # line passes them explicitly anyway, so the two agree number for number rather than by trust.
+    O36_KAPPA=float(os.environ.get('RL_O36_KAPPA','0.20' if _O37 else '0.24'))
+    O36_GAMMA=float(os.environ.get('RL_O36_GAMMA','8.0' if _O37 else '11.0'))
+    O36_ETA=float(os.environ.get('RL_O36_ETA','0.50' if _O37 else '0.41'))
     O36_GAMMA_D=float(os.environ.get('RL_O36_GAMMA_D','14.0'))
     O36_LAMBDA=float(os.environ.get('RL_O36_LAMBDA','1.08'))
     if _O36:
@@ -3751,6 +3761,180 @@ if _O30B_PREVIEW:
             if _g>=10.0*_u and float(_x['avg'] or 0.0)>=_bar: break # DELIVERED -> the run resets
             _s+=1
         return _s
+    # ===== ORDER P (RL_O37) — THE PEDIGREE-CONDITIONAL CHARGE =====================================
+    # PREREG_P_BUILD.md (pushed before this edit) · docs/evidence/order_p_2026-08-18 (the measurement,
+    # the derivation and the offline pricing) · docs/evidence/order_p_build_2026-08-18 (this wiring).
+    #
+    # WHAT IS REPLACED, AND WHY. The ORDER A stage-6 charge below reads GAMES AND NOTHING ELSE:
+    #     pi *= max(0, 1 - eta*(g/gamma_d)*exp(1 - g/gamma_d))          eta 0.50, gamma_d 14
+    # It peaks at exactly 14 games and then FALLS AWAY, so a 36-game row keeps MORE of his unearned
+    # entry price than a 17-game row however either of them played. Measured on the young board: two
+    # rows within two games of each other and 63 points a game apart on production-against-age paid
+    # the identical charge to the last decimal (PACKET_N). That is the defect the owner asked to
+    # remove, and this block removes it.
+    #
+    # WHAT REPLACES IT, for rows aged UNDER 24 at the year being priced:
+    #     pi *= exp( -LAMBDA * A(g) * T(s_P) )
+    #     A(g)  = 1 - exp(-g/G0)                        how much evidence g games is. A(0) = 0 EXACTLY.
+    #     T(s)  = clip( 1 - THETA_R*(s - s0), 0, TMAX )  what the evidence says. Non-increasing in s.
+    #     s_P   = the games-weighted mean of ( season avg - BAR_P ) over every season played to date
+    #     BAR_P = o32_gate_bar(that season's bar, his age that season) + PG(ln v0, class)
+    #
+    # THE ONE NEW OBJECT IS PG, THE PEDIGREE PREMIUM: how far above his AGE bar a player who entered
+    # at that price actually produces. It is MEASURED FROM OUTCOMES, never from prices — v0 is the
+    # axis the outcomes are indexed by and no board price is added to anything. It is the whole of the
+    # owner's sentence: "there should be a higher bar / more positive signs required to maintain a
+    # higher valuation".
+    #
+    # WORKED, ON TWO REAL ROWS THAT SIT 17 GAMES EACH AND ABOUT 1.7 POINTS A GAME BELOW THEIR AGE BAR.
+    # Under the charge above they pay the IDENTICAL 49.0%, because it only reads games. Zeke Uwland
+    # was pick 2 and cost 2,583; a player at that price produces 19.2 points a game clear of the age
+    # bar, so against what is priced into him he is 20.9 short and he pays 84.7%. Cooper Harvey was
+    # pick 56 and cost 265; a player at that price produces 1.3 BELOW the age bar, so he is half a
+    # point short and he pays nothing. Same production for their age, opposite verdicts.
+    #
+    # ON THE FORBIDDEN SET. This object is NOT the deleted par machinery returning. Par entered price
+    # as max(0, pole - production) and as a level substitute, both strictly NON-NEGATIVE: a high pick
+    # was PAID for being a high pick. This object enters a CHARGE and T is non-increasing in surplus,
+    # so raising an expensive row's bar RAISES his charge and LOWERS his price — the opposite sign.
+    # Three bounds, all asserted below or in the build proofs: F = 1 - exp(-LAMBDA*A*T) is in [0,1),
+    # so no row can price above its own UNCHARGED (eta-zero) price, a board the forbidden set is
+    # already absent from (0 of 9,746 vantages, STEP4_P_out.txt); A(0) = 0 exactly, so no day-0 print
+    # moves; and the bar reads outcomes, never prices. THE OWNER STILL RULES ON THE WORD.
+    #
+    # THE CONSTANTS ARE MEASURED AND SOLVED. NOT ONE OF THEM IS RE-FITTED HERE.
+    #   G0, BETA_sat  — the BETA_P(g) curve of PACKET_P section 4.5, fitted as BETA_sat*(1-exp(-g/G0))
+    #                   weighted by each bin's own inverse variance. MECH_P.json.
+    #   LAMBDA        — SOLVED, not chosen: bisection so the derived charge removes exactly the same
+    #                   total points from the year-1 class-mark population (cohort classes 2005-2015)
+    #                   as the current charge does. 101,402.7 matrix points, matched to the last
+    #                   decimal. STEP4_P.json::mechanism.LAMBDA.
+    #   THETA_R       — FOLLOWS as BETA_sat/LAMBDA, so the delivered slope d ln(retained pedigree)/ds
+    #                   equals the MEASURED slope at every level of surplus. It is not free.
+    #   s0            — the games-weighted mean of s_P over the young cohort. T(s0) = 1.
+    #   TMAX          — T at the cohort's own 5th percentile of s_P, so the worst 5% all pay the same
+    #                   top rate rather than an unbounded one. It is not free.
+    # THERE IS NO FREE PARAMETER. LAMBDA*THETA_R == BETA_sat is asserted at load.
+    O37_G0=9.890000000000008                                   # MECH_P.json::G0        90% CI [7.60, 12.98]
+    O37_BETA_SAT=0.11464630061141393                           # MECH_P.json::BETA_sat  90% CI [0.10416, 0.12718]
+    O37_LAMBDA=0.1743833036575403                              # STEP4_P.json — SOLVED by the anchoring identity
+    O37_S0=-2.452720891469074                                  # MECH_P.json::s0
+    O37_S_P5=-33.06133449874688                                # MECH_P.json::s_p5 — the cohort's own 5th percentile
+    O37_AGE_GATE=24                                            # the age bar has content below 24 and none at or above it
+    O37_THETA_R=O37_BETA_SAT/O37_LAMBDA                        # NOT FREE
+    O37_TMAX=1.0-O37_THETA_R*(O37_S_P5-O37_S0)                 # NOT FREE
+    # THE PEDIGREE PREMIUM SURFACE, in AFL Fantasy points per game, as a function of ln(v0).
+    # Estimated by games-weighted LOCAL-LINEAR KERNEL REGRESSION on ln(v0), tricube kernel, bandwidth
+    # 0.40 in log-v0 units — the SAME estimator family par_build.py used over log-pick at the same
+    # bandwidth, chosen deliberately so the comparison with the deleted object is like-for-like rather
+    # than flattering. Fitted separately for TALL (KPD/KPF/RUCK) and SMALL (MID/SD/SF) — the same
+    # class pooling the C3 age surface uses — on 5,041 season rows over 1,575 players and 58,488
+    # games: every season with games played, at age 18-23, by an entrant from 2005 on, up to 2025.
+    # The house monotonicity guard (pool-adjacent-violators, increasing) is applied to the fitted
+    # grid: a more expensively priced player is never expected to produce less.
+    # POOLED OVER AGE. The age-carrying variant WAS measured (PACKET_P section 7.1) and is WORSE on
+    # every rail — picks 1-10 primary +11.36% against +8.62%, modern +21.51% against +18.85%. It is
+    # not built and it is not a dial.
+    # Each entry is (lo, hi, y): 121 nodes evenly spaced in ln(v0) from the 1st to the 99th percentile
+    # of the fitted population. Linear between nodes; HELD FLAT outside — never extrapolated.
+    # Regenerated and proved by docs/evidence/order_p_build_2026-08-18/op_surface_emit.py.
+    O37_PG_GRID={
+        'TALL':(4.5664293576716606,7.9885090493489335,(
+         -5.4455867081102411,-5.4455867081102411,-5.4455867081102411,-5.4455867081102411,-5.4455867081102411,-5.4455867081102411,
+         -5.4047760344362308,-4.9137051657926945,-4.1839519626341524,-3.547798820225772,-3.1187175304818613,-2.8306827587028107,
+         -2.6045867243204794,-2.392965577383134,-2.1575978172075794,-1.8634270971665809,-1.560737614127947,-1.2463682940640921,
+         -0.82697777110007242,-0.28727210729525771,0.28334745102024395,0.77364690364419653,1.1176538458895451,1.3142810568719852,
+         1.4310924620360834,1.520241712493009,1.6268839845690664,1.776900578289401,1.9598395453176443,2.1565703297145311,
+         2.3199477429090098,2.3199477429090098,2.3199477429090098,2.3199477429090098,2.3199477429090098,2.3199477429090098,
+         2.3199477429090098,2.3199477429090098,2.3199477429090098,2.474881949521277,2.6717527927652842,2.8539009509446318,
+         3.0553005117574554,3.2248913696028327,3.3244578540162637,3.3857104690490463,3.4355619922454075,3.4938807892483328,
+         3.5947902186262426,3.7601719898077497,3.9754096770391913,4.2049119382434821,4.4059043555525639,4.5912396350554889,
+         4.7996043033283202,5.0266845168513967,5.2423954980924758,5.4329737318027815,5.5893790725385122,5.7119077410334489,
+         5.8151049019440784,5.9120969830277739,6.0208086283023166,6.1708840705720354,6.3531589632807055,6.5402149256632711,
+         6.7098008286908533,6.8522404947596378,6.980153007982616,7.1048873555435152,7.2306252201587577,7.3540943529449283,
+         7.4757697071890457,7.5836700076450869,7.62948305161009,7.6303872722392505,7.6303872722392505,7.6430773265604213,
+         7.6870980531344522,7.7766525774302959,7.8756881756463715,7.9633911919679612,8.0445919060075664,8.1221435028876048,
+         8.1926242718733544,8.2856734010323052,8.4537394810191948,8.7338293170424244,9.1427768527383044,9.6774305607147912,
+         10.334428729611606,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,
+         10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,
+         10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,
+         10.806543129062868,10.806543129062868,10.806543129062868,10.806543129062868,11.289519873909789,12.494465623798206,
+         13.790014604208249,15.165841316681965,16.629718563960207,18.166261696501994,19.724615375615219,21.29444967737923,
+         22.922043787483595)),
+        'SMALL':(4.513054897080286,8.1444759697678766,(
+         -7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,
+         -7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,-7.0364117904300656,
+         -7.0364117904300656,-7.0364117904300656,-6.9773343756962305,-6.9102456731853668,-6.8867837853820841,-6.8464823480538177,
+         -6.511703309229838,-5.8993680558490569,-5.2586397290260249,-4.6294139565183876,-4.0039710870706218,-3.369989812391148,
+         -2.6987267228160507,-2.0594809191407717,-1.5456971844867691,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,
+         -1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,
+         -1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,
+         -1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.2623139425581236,
+         -1.2623139425581236,-1.2623139425581236,-1.2623139425581236,-1.0572820081904364,-0.58708959825022011,-0.035343884619787727,
+         0.52871229816215748,1.0565821790478596,1.5489700305648837,2.0044630763037796,2.4129854340099217,2.7675906478389396,
+         3.0699264814972471,3.335506691763455,3.606059236306455,3.8818979295555134,4.1761265754243224,4.4790899072732095,
+         4.7631474761536525,5.0094995251320986,5.2124068582748908,5.3699927357834421,5.4864157942619096,5.5900876575677954,
+         5.7114709064914733,5.8704887287729814,6.0776429038458968,6.3145545807411683,6.5320472490656307,6.5320472490656307,
+         6.5320472490656307,6.5320472490656307,6.5320472490656307,6.5320472490656307,6.5320472490656307,6.5320472490656307,
+         6.5320472490656307,7.0464452408760305,7.7002183677861256,8.2807077727565961,8.7699574761164047,9.1743996939167616,
+         9.5102475540686697,9.9191904515388014,10.516979561510675,11.299647269537539,12.150777171882492,12.934785820087493,
+         13.596950104805869,14.125890693373643,14.515989950412777,14.862776535541089,15.326868021342062,15.893077430881478,
+         16.433508150193134,16.840860053165954,17.132174599855659,17.34201506740057,17.486029109510262,17.571748104372329,
+         17.74030898924396,18.262436503686921,18.900128819869604,19.553610645797963,20.215990248694148,20.855503188591502,
+         21.440141766150504,21.955229100286488,22.432987140706345,22.94209310608661,23.554904535865262,24.351188761151118,
+         25.440230012706913)),
+    }
+    def o37_pg(v0,cls):
+        """PG(ln v0, class) in points per game. Linear on the fitted grid, held flat outside its
+        support. Reproduces op_lib.Premium.at_v0 — proved node by node in the build packet."""
+        _lo,_hi,_y=O37_PG_GRID[cls]
+        _x=_math.log(max(1e-9,float(v0)))
+        if _x<=_lo: return _y[0]
+        if _x>=_hi: return _y[-1]
+        _t=(_x-_lo)/(_hi-_lo)*(len(_y)-1)
+        _i=int(_t)
+        if _i>=len(_y)-1: return _y[-1]
+        return _y[_i]+(_t-_i)*(_y[_i+1]-_y[_i])
+    _O37_SCACHE={}
+    def o37_surplus(p,Y):
+        """s_P — the games-weighted mean of (season avg - BAR_P) over every season the row PLAYED up
+        to and including Y, in AFL Fantasy points per game. POSITIVE means he is producing above what
+        a player priced like him produces at his age.
+        Returns None — and the ORDER K charge is then kept UNCHANGED for that row — when the row has
+        never played, has no day-0 v0 object, has no birth year, or carries a season the bar cannot
+        read. That is the SAME fallback op_step4.py::F_new used offline, so the built board and the
+        published estimate are comparable line by line rather than nearly."""
+        _ck=(id(p),p.get('key'),int(Y))
+        if _ck in _O37_SCACHE: return _O37_SCACHE[_ck]
+        _r=None; _v=day0_v0(p); _by=p.get('_by')
+        if _v is not None and _by:
+            # ENGINE currency, at the matrix emitter's own one-decimal convention, so the axis this
+            # premium is read on is EXACTLY the axis it was fitted on.
+            _v0=round(float(_v)*_PL_F,1)
+            _num=_den=0.0; _ok=True
+            for _x in (p.get('scoring') or []):
+                if _x['year']>Y: continue
+                _gg=float(_x.get('games') or 0.0)
+                if _gg<=0.0: continue
+                _pos=MA._fit_bar(p,_x['year'])
+                _b=o32_gate_bar(_pos,_x['year']-_by)
+                if _b is None or _x.get('avg') is None: _ok=False; break
+                _num+=_gg*(float(_x['avg'])-(_b+o37_pg(_v0,'TALL' if _pos in O32_TALLPOS else 'SMALL')))
+                _den+=_gg
+            if _ok and _den>0.0: _r=_num/_den
+        _O37_SCACHE[_ck]=_r
+        return _r
+    def o37_factor(p,Y,g):
+        """The multiplier the pedigree leg is charged by. Falls back to the ORDER K charge, byte for
+        byte, for every row this object cannot speak about — a mature row, a row with no birth year,
+        a row with no day-0 v0, a row whose seasons carry no bar."""
+        _old=max(0.0,1.0-O32_ETA*((float(g)/O32_GAMMA_D)*_math.exp(1.0-float(g)/O32_GAMMA_D)))
+        _by=p.get('_by')
+        if not _by or (int(Y)-int(_by))>=O37_AGE_GATE: return _old
+        _s=o37_surplus(p,Y)
+        if _s is None: return _old
+        _T=min(max(1.0-O37_THETA_R*(_s-O37_S0),0.0),O37_TMAX)
+        return _math.exp(-O37_LAMBDA*(1.0-_math.exp(-float(g)/O37_G0))*_T)
     def o31_pi(p,Y,g=None):
         """pi(g, c_u, s) = Phi(g,s) * [ D(c_u)*(1-rho(g)) + beta_mono(g)*rho(g) ].
         At g=0 this is D(c_u) EXACTLY. As rho -> 1 it is the measured additive beta EXACTLY."""
@@ -3767,7 +3951,12 @@ if _O30B_PREVIEW:
         # ORDER A stage 6 (M5): the pedigree leg comes down in step — W2's own translation. m_d(0)=0
         # so pi(0,c)=D(c) still holds EXACTLY and gameless rows are untouched.
         if _O32S>=6 and O32_ETA>0.0 and _g>0.0:
-            _pi*=max(0.0,1.0-O32_ETA*((_g/O32_GAMMA_D)*_math.exp(1.0-_g/O32_GAMMA_D)))
+            # ORDER P (RL_O37): the pedigree-conditional charge REPLACES the blind one at this one
+            # site. Dial off => the second branch runs and not one byte of the first executes, which
+            # is what makes f3101883 reproduce exactly. m_d(0) = 0 and A(0) = 0, so BOTH forms leave
+            # every gameless row untouched and pi(0,c) = D(c) still holds for both.
+            _pi*=(o37_factor(p,Y,_g) if _O37 else
+                  max(0.0,1.0-O32_ETA*((_g/O32_GAMMA_D)*_math.exp(1.0-_g/O32_GAMMA_D))))
         return _pi
     def _pv_order31(p,Y,e):
         """THE ONE LAW. One expression, every row, every pathway, every games count.
@@ -3987,6 +4176,89 @@ if _O30B_PREVIEW:
                     max([_p for _p in range(1,65) if abs(o36_kappa_at(_p,False)-O35_CLIP[0])<1e-12] or [0]),
                     sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and _p.get('_by') and (MA.BASE_REF-int(_p['_by']))<24),
                     sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p) and MA.GRP.get(_p.get('pos')) and not _p.get('_by'))))
+        if _O37:
+            # ===== ORDER P BUILD-FAILING ASSERTS (only with the dial on) ==============================
+            # P1 — THE TILT IS THE MEASUREMENT. LAMBDA*THETA_R must equal BETA_sat, the saturated slope
+            # measured on outcomes. If this drifts, the charge no longer responds to surplus at the rate
+            # the data says it should and every claim in PACKET_P is void.
+            if abs(O37_LAMBDA*O37_THETA_R-O37_BETA_SAT)>1e-15:
+                raise SystemExit('ORDER P HALT (P1): LAMBDA*THETA_R = %.17g is not BETA_sat = %.17g — the '
+                                 'tilt has come loose from the measurement'%(O37_LAMBDA*O37_THETA_R,O37_BETA_SAT))
+            # P2 — THE PUBLISHED CONSTANTS, transcribed and not quietly re-fitted.
+            for _nm,_got,_want in (('G0',O37_G0,9.89),('BETA_sat',O37_BETA_SAT,0.11465),
+                                   ('LAMBDA',O37_LAMBDA,0.17438),('THETA_R',O37_THETA_R,0.65744),
+                                   ('s0',O37_S0,-2.4527),('TMAX',O37_TMAX,21.12)):
+                if abs(round(_got,{'G0':2,'BETA_sat':5,'LAMBDA':5,'THETA_R':5,'s0':4,'TMAX':2}[_nm])-_want)>1e-12:
+                    raise SystemExit('ORDER P HALT (P2): %s is %.17g, which does not round to the published '
+                                     '%.5f — a derived constant has been changed'%(_nm,_got,_want))
+            # P-S1 — A(0) = 0 EXACTLY, so pi(0,c) = D(c) and NO DAY-0 PRINT CAN MOVE. This is the same
+            # structural law m_d(0) = 0 gave the charge being replaced, and it is asserted, not assumed.
+            if (1.0-_math.exp(-0.0/O37_G0))!=0.0:
+                raise SystemExit('ORDER P HALT (P-S1): A(0) is not exactly zero')
+            # P-S2 — A is non-decreasing in g. THIS IS THE DEFECT BEING REMOVED: the charge it replaces
+            # RISES to g=14 and then FALLS, so more evidence bought a smaller charge. A never falls.
+            _pa=-1.0; _gg=0.0
+            while _gg<=400.0:
+                _av=1.0-_math.exp(-_gg/O37_G0)
+                if _av<_pa-1e-15:
+                    raise SystemExit('ORDER P HALT (P-S2): A(g) fell at g=%.2f — the blind bump is back'%_gg)
+                _pa=_av; _gg+=0.25
+            # P-S3 — T is non-increasing in the surplus, and P-S4 — the factor is in (0, 1]. Both are
+            # checked on a real spread rather than argued from the formula.
+            _pt=None
+            _ss=-60.0
+            while _ss<=40.0:
+                _T=min(max(1.0-O37_THETA_R*(_ss-O37_S0),0.0),O37_TMAX)
+                if _pt is not None and _T>_pt+1e-12:
+                    raise SystemExit('ORDER P HALT (P-S3): T rose at s=%.2f — a better player was charged '
+                                     'more for being better'%_ss)
+                for _gq in (0.0,1.0,5.0,14.0,30.0,60.0,150.0,400.0):
+                    _f=_math.exp(-O37_LAMBDA*(1.0-_math.exp(-_gq/O37_G0))*_T)
+                    if not (0.0<_f<=1.0+1e-15):
+                        raise SystemExit('ORDER P HALT (P-S4): the charge factor left (0,1] at s=%.2f '
+                                         'g=%.1f — %.17g'%(_ss,_gq,_f))
+                _pt=_T; _ss+=0.25
+            # P3 — THE PREMIUM SURFACE IS NON-DECREASING IN PRICE. A more expensively priced player is
+            # never expected to produce LESS. The house monotonicity guard was applied to the fitted grid
+            # offline; this asserts it survived transcription.
+            for _cls in ('TALL','SMALL'):
+                _lo,_hi,_y=O37_PG_GRID[_cls]
+                if len(_y)!=121 or not (_hi>_lo):
+                    raise SystemExit('ORDER P HALT (P3): the %s premium grid is malformed'%_cls)
+                for _i in range(1,len(_y)):
+                    if _y[_i]<_y[_i-1]-1e-12:
+                        raise SystemExit('ORDER P HALT (P3): the %s premium FALLS with price at node %d '
+                                         '(%.6f -> %.6f)'%(_cls,_i,_y[_i-1],_y[_i]))
+            # P4 — CONTINUITY IN PRICE. The premium is read by linear interpolation on an even grid and
+            # held flat outside, so it can have no cliff; the largest one-node step is printed so the
+            # owner can see the size of the biggest jump the surface is capable of.
+            _stepPG=max(max(_y[_i]-_y[_i-1] for _i in range(1,len(_y)))
+                        for _lo,_hi,_y in O37_PG_GRID.values())
+            _o37n=sum(1 for _p in MA.data if _isreal(_p) and not _p.get('_retired') and not delisted(_p)
+                      and MA.GRP.get(_p.get('pos')) and _p.get('_by')
+                      and (MA.BASE_REF-int(_p['_by']))<O37_AGE_GATE
+                      and o37_surplus(_p,MA.BASE_REF) is not None)
+            print('ORDER P LIVE (RL_O37=1) — THE PEDIGREE-CONDITIONAL CHARGE. NOTHING IS GREENLIT AND '
+                  'NOTHING MERGES.\n'
+                  '  THE BLIND ETA CHARGE IS GONE. It read games and nothing else, peaked at %.0f games '
+                  'and then FELL AWAY, so a 36-game row kept more unearned pedigree than a 17-game row '
+                  'however either of them played.\n'
+                  '  IN ITS PLACE: pi *= exp(-LAMBDA*A(g)*T(s_P)) below age %d; the old charge at %d and '
+                  'above. A(g)=1-exp(-g/%.2f) · T=clip(1-%.5f*(s%+.4f), 0, %.4f) · LAMBDA=%.5f.\n'
+                  '  s_P is production against the S1 AGE BAR PLUS the MEASURED PEDIGREE PREMIUM '
+                  'PG(ln v0, class), pooled over age, fitted on 5,041 season rows by local-linear kernel '
+                  'regression on ln(v0) (tricube, h=0.40), monotone guarded, held flat outside support.\n'
+                  '  PG spans %+.2f to %+.2f points a game for SMALLS (v0 %.0f to %.0f) and %+.2f to '
+                  '%+.2f for TALLS (v0 %.0f to %.0f). Largest one-node step %.4f — no cliff.\n'
+                  '  LAMBDA*THETA_R = %.5f = BETA_sat, the measured saturated slope. NO FREE PARAMETER.\n'
+                  '  %d active rows are inside the age gate AND carry a readable pedigree surplus; every '
+                  'other row keeps the ORDER K charge byte for byte, and A(0)=0 means no day-0 print moves.'
+                  %(O32_GAMMA_D,O37_AGE_GATE,O37_AGE_GATE,O37_G0,O37_THETA_R,-O37_S0,O37_TMAX,O37_LAMBDA,
+                    O37_PG_GRID['SMALL'][2][0],O37_PG_GRID['SMALL'][2][-1],
+                    _math.exp(O37_PG_GRID['SMALL'][0]),_math.exp(O37_PG_GRID['SMALL'][1]),
+                    O37_PG_GRID['TALL'][2][0],O37_PG_GRID['TALL'][2][-1],
+                    _math.exp(O37_PG_GRID['TALL'][0]),_math.exp(O37_PG_GRID['TALL'][1]),
+                    _stepPG,O37_LAMBDA*O37_THETA_R,_o37n))
         if _O35:
             print('ORDER D PICK-CURVE FADE LIVE (RL_O35=1) — THE LANDING CANDIDATE ON THE OWNER\'S WORD. '
                   'D_eff = D(c_u)^kappa(pick), kappa = clip((%.4f%+.4f·ln p)/%.4f, %.1f, %.1f): '

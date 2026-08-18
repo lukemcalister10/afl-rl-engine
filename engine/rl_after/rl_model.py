@@ -1079,7 +1079,12 @@ def survival(b,delta,games):
 # LAM_S1 IS NOT HAND-PICKED: it is a grid axis in the ONE joint calibration with the re-mix and relief
 # knobs (PREREG_I.md §3; ORDER E's dose warning binds — full S1 overshoots).
 # RL_O36 unset  =>  o36_bar IS REPL[pos]  =>  the landing candidate 1f176444 reproduces BYTE-EXACT.
-_O36=os.environ.get('RL_O36','0')!='0'
+# ORDER P (RL_O37) — THE PEDIGREE-CONDITIONAL CHARGE. The new dial IMPLIES the O36 stack (and so
+# O35/O32/O31) and, where the ORDER K constants are not passed explicitly, defaults them to ORDER K's
+# RULED values — the dose 0.40 below, and kappa 0.20 / gamma_u 8.0 / eta 0.50 in _merged_recover.py.
+# RL_O37 unset => this line is byte-identical and the whole ORDER P block is inert.
+_O37=os.environ.get('RL_O37','0')!='0'
+_O36=(os.environ.get('RL_O36','0')!='0') or _O37
 # THE DOSE. NOT hand-picked and NOT chosen by looking at harry-dean. The joint calibration
 # (docs/evidence/order_i_2026-08-18/o36_calibrate.py) swept it against the counterweight and the
 # relief; the owner's own mature-row law then PINNED the counterweight (0 of 11 knob moves and 4 of 5
@@ -1088,7 +1093,9 @@ _O36=os.environ.get('RL_O36','0')!='0'
 # ladder printed (PACKET_I.md §5). 0.25 is carried because it is the point at which the year-1 class
 # cohort lands on G1's stated IDEAL of ~1.08 (mean_0515 = 1.0788, against 1.0421 today). It is
 # CARRIED FOR THE OWNER TO LOOK AT. IT IS NOT A RECOMMENDATION AND NOTHING LANDS ON THIS SEAT'S WORD.
-O36_LAM_S1=float(os.environ.get('RL_O36_LAM_S1','0.25'))
+# ORDER P: under RL_O37 the default is ORDER K's RULED dose 0.40 (register v735), not 0.25. An explicit
+# RL_O36_LAM_S1 still wins, so the ORDER K build line and the ORDER P build line agree number for number.
+O36_LAM_S1=float(os.environ.get('RL_O36_LAM_S1','0.40' if _O37 else '0.25'))
 O36_TALLPOS=frozenset(('KPD','KPF','RUCK'))
 O36_GATE_DELTA={'TALL':{18:22.334475609756097,19:20.55500752464971,20:16.306362402208926,
                         21:11.588672690048071,22:7.826894964594814,23:6.439783302063788},
