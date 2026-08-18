@@ -4578,10 +4578,22 @@ if _O30B_PREVIEW:
             # R-S2  the factor exp(-LAMBDA*A(g)*T) is still in (0,1] everywhere, so no row can price
             #       above its own uncharged price.
             # R-S3  A(0) = 0 EXACTLY still, so no day-0 print and no gameless row can move.
-            # R-S4  the softening only ever RAISES the factor: at the SAME surplus a lower cap or a
-            #       lower slope charges LESS. Asserted against ORDER P's own constants across the
-            #       whole surplus range, so "softening" is proved rather than asserted.
-            _rprev=None
+            # R-S4  THE SOFTENING IS NOT UNIFORM, AND THIS ASSERT IS THE CORRECTED ONE.
+            #       The FIRST version of this assert said the ORDER R factor may never be below
+            #       ORDER P's at any surplus. IT FIRED, on the very first in-process load, and it was
+            #       RIGHT to fire: the assert was wrong, not the dials. Lowering BETA_sat lowers
+            #       THETA_R, which FLATTENS the T line about s0. T(s0) = 1 on every board by
+            #       construction, so a flatter line sits ABOVE ORDER P's for s BELOW s0 and BELOW it
+            #       for s ABOVE s0. In plain words: lowering the slope softens the charge on rows
+            #       producing under the cohort centre -- every row the owner's complaint is about --
+            #       and STIFFENS it very slightly on rows producing just above the centre, until the
+            #       zero clip catches up. The TMAX lever has no such effect: it only lowers the cap.
+            #       What is asserted here is therefore the true statement, not the convenient one:
+            #         R-S4a  for every s AT OR BELOW s0, the ORDER R factor is >= ORDER P's. The
+            #                softening may never charge an underperformer MORE. THIS HALTS.
+            #         R-S4b  the region above s0 where ORDER R charges more is BOUNDED and MEASURED,
+            #                and the bound is printed on the banner rather than asserted away.
+            _rprev=None; _rstiff=0.0; _rstiffn=0; _rstiffs=None; _rstiffhi=None
             for _i in range(0,20001):
                 _ss=-120.0+0.01*_i
                 _Tr=min(max(1.0-O39_THETA_R*(_ss-O37_S0),0.0),O39_TMAX)
@@ -4595,10 +4607,14 @@ if _O30B_PREVIEW:
                                          '%.9g'%(_ss,_gq,_fr))
                     _Tp=min(max(1.0-O37_THETA_R*(_ss-O37_S0),0.0),O37_TMAX)
                     _fp=_math.exp(-O37_LAMBDA*(1.0-_math.exp(-_gq/O37_G0))*_Tp)
+                    if _ss<=O37_S0 and _fr<_fp-1e-12:
+                        raise SystemExit('ORDER R HALT (R-S4a): the ORDER R constants charge MORE than '
+                                         'ORDER P at s=%.4f g=%.2f (%.9f < %.9f), and that surplus is AT '
+                                         'OR BELOW the cohort centre s0=%.4f. The softening may never '
+                                         'charge an underperformer more.'%(_ss,_gq,_fr,_fp,O37_S0))
                     if _fr<_fp-1e-12:
-                        raise SystemExit('ORDER R HALT (R-S4): the ORDER R constants charge MORE than '
-                                         'ORDER P at s=%.2f g=%.2f (%.9f < %.9f). These dials may only '
-                                         'SOFTEN.'%(_ss,_gq,_fr,_fp))
+                        _rstiff=max(_rstiff,_fp-_fr); _rstiffs=_ss if _rstiffn==0 else _rstiffs
+                        _rstiffn+=1; _rstiffhi=_ss
             if (1.0-_math.exp(-0.0/O37_G0))!=0.0:
                 raise SystemExit('ORDER R HALT (R-S3): A(0) is not 0 exactly')
             print('ORDER R %s — THE OWNER\'S TWO SOFTENINGS, PRICED AND NOT ADOPTED. NOTHING IS GREENLIT '
@@ -4613,7 +4629,9 @@ if _O30B_PREVIEW:
                   'total charge constant; moving the cap or the slope BREAKS that anchor ON PURPOSE, and '
                   'that broken anchor IS the softening. Disclosed on PREREG_R.md, not discovered after.\n'
                   '  A row at the cap with 38 games is charged %.2f%% of his pedigree leg (ORDER P: '
-                  '%.2f%%).'
+                  '%.2f%%).\n'
+                  '  R-S4b, MEASURED NOT ASSERTED: lowering BETA_sat FLATTENS T about s0, so it softens '
+                  'the charge BELOW the cohort centre and STIFFENS it slightly ABOVE. %s'
                   %('LIVE' if _O39 else 'off (dial-off: the ORDER P constants, bit for bit)',
                     _O39_PCT,O39_S_PQ[_O39_PCT],O39_TMAX,O37_S_P5,O37_TMAX,
                     'THE CAP IS UNCHANGED FROM ORDER P.' if _O39_PCT==5 else
@@ -4622,7 +4640,14 @@ if _O30B_PREVIEW:
                     O39_BSAT_CI[0],O39_BSAT_CI[1],O39_THETA_R,O37_BETA_SAT,O37_THETA_R,
                     O37_LAMBDA*O39_THETA_R,
                     100.0*(1.0-_math.exp(-O37_LAMBDA*(1.0-_math.exp(-38.0/O37_G0))*O39_TMAX)),
-                    100.0*(1.0-_math.exp(-O37_LAMBDA*(1.0-_math.exp(-38.0/O37_G0))*O37_TMAX))))
+                    100.0*(1.0-_math.exp(-O37_LAMBDA*(1.0-_math.exp(-38.0/O37_G0))*O37_TMAX)),
+                    ('There is NO surplus at which this board charges more than ORDER P.'
+                     if _rstiffn==0 else
+                     'It charges MORE than ORDER P over s in (%.4f, %.4f], a window %.4f points a game '
+                     'wide, and the WORST extra charge anywhere in it is %.4f%% of the pedigree leg. '
+                     'That window sits ABOVE the cohort centre, so it lands on rows already producing '
+                     'at or above what their entry price implies. IT IS REPORTED, NOT ARGUED AWAY.'
+                     %(_rstiffs,_rstiffhi,_rstiffhi-_rstiffs,100.0*_rstiff))))
         if _O35:
             print('ORDER D PICK-CURVE FADE LIVE (RL_O35=1) — THE LANDING CANDIDATE ON THE OWNER\'S WORD. '
                   'D_eff = D(c_u)^kappa(pick), kappa = clip((%.4f%+.4f·ln p)/%.4f, %.1f, %.1f): '
