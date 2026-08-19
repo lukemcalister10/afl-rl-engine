@@ -1,0 +1,29 @@
+THREAD PINS: OPENBLAS=1 OMP=1 MKL=1 NUMEXPR=1 VECLIB=1  PYTHONHASHSEED=0
+engine: 53fff6de156efa870da11edc5cbaa75a
+
+===== 1 · THE BURN CENSUS + THE BIRTHDAY PROBE — THE CANDIDATE (RL_O42=1) =====
+exit=1
+board total (numeraire): 660578
+
+===== 2 · THE BURN CENSUS + THE BIRTHDAY PROBE — THE BASE, for like-for-like =====
+exit=1
+board total (numeraire): 659222
+
+===== 3 · THE TAIL CALIBRATION =====
+exit=0
+ASSEMBLY BUILD — THE TAIL CALIBRATION, ON THE CANDIDATE'S OWN CHARGE FORM
+population : stages 1+2 pooled — deep cell n = 40 (10-22 games, surplus < -20)
+reading    : > 1 the charge FRONT-LOADS (the deep cell delivers more than it was charged for)
+             < 1 the charge is GENEROUS to the deep cell
+  *** THE CANDIDATE (BETA_sat 0.105, SMOOTH compression p15) ***     0.8004       0.3722
+    [the anchor it replaced: SMOOTH p20 at the ruled slope]          0.7378       0.4038
+  realized ratio (deep / at-bar), the same on every row above: 0.2979
+  BETA_sat                            CLIP p5     CLIP p20   SMOOTH p20   SMOOTH p15
+slope the hard clip at p20 lands near 1.04-1.17, the SMOOTH compression at p20 near 0.73-0.80,
+and the SMOOTH compression at p15 — THE RULED ANCHOR — lands where the table shows.
+gap-preserving) and the deep cell is exactly where the clip was binding. The ~1.04 on the register
+  SMOOTH p20 at the ruled slope   0.7378   (the anchor the previous candidate carried)
+  SMOOTH p15 at the ruled slope   0.8004   *** THE CANDIDATE ***
+  the move is worth +0.0625 of calibration.
+
+ACCEPTANCE SUITE DONE

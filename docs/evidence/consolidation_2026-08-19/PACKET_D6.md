@@ -78,6 +78,26 @@ Raw: `GUARD5_run_panel_out.txt`, `GUARD5_bootstrap_out.txt`.
 Pinned inputs on every run: store `cb38ef11` (pin `cb38ef11`), v0surf `5dd34ca8` (pin `5dd34ca8`),
 sheet `b26798c35adcd9bda5cef50ff2c884da` (pinned prefix `b26798c35adcd9bd` — **ASSERT PASSES**).
 
+### THE IDENTITIES WERE RE-PRICED ON THE FINAL COMMITTED ENGINE
+
+The identities were first proven on engine `56ee8ce6`, **before** D6-F8 fired and the guard inside
+`_o42_state` was corrected. That correction lives on the `RL_O42=1` lane only, so the dial-off path is
+untouched *by construction* — **but "by construction" is an argument, and this project prices
+identities rather than arguing them.** All four were rebuilt on the final engine `53fff6de`:
+
+| board | expected | got on final engine `53fff6de` | |
+|---|---|---|---|
+| `D6F_IDENT_P` | `374d4e44` | **`374d4e44`** | **PASS** |
+| `D6F_IDENT_K` | `f3101883` | **`f3101883`** | **PASS** |
+| `D6F_L0R` | `7f88f509` | **`7f88f509`** | **PASS** |
+| `D6F_BASE` | `ff936186` | **`ff936186`** | **PASS** |
+
+Day-0 89 of 89 on all four. **The standing identity survives this edit intact.**
+
+The whole engine diff is **157 insertions, 5 deletions**, and the 5 deleted lines are the
+`build_state` try/except and the layer banner *re-indented* into an `if/else` — nothing else in the
+file was removed or rewritten.
+
 Raw: `BUILD_D6_out.txt`, `BUILD_D6_CAND_out.txt`, `BUILD_D6_FINAL_IDENT_out.txt`.
 
 ---
@@ -409,17 +429,77 @@ isolation on a single row.
 
 | item | required | measured | verdict |
 |---|---|---|---|
-| dial-off → `ff936186` byte-exact | `ff936186` | **`ff936186`** | **PASS** — D6-F1 did not fire |
-| every-O41-dial-off → `374d4e44` | `374d4e44` | **`374d4e44`** | **PASS** — D6-F2 did not fire |
-| chain to `f3101883` / `7f88f509` | both | **`f3101883` / `7f88f509`** | **PASS** |
+| dial-off → `ff936186` byte-exact | `ff936186` | **`ff936186`** (on the FINAL engine `53fff6de`) | **PASS** — D6-F1 did not fire |
+| every-O41-dial-off → `374d4e44` | `374d4e44` | **`374d4e44`** (final engine) | **PASS** — D6-F2 did not fire |
+| chain to `f3101883` / `7f88f509` | both | **`f3101883` / `7f88f509`** (final engine) | **PASS** |
 | determinism ×2 | identical | **`daa16812` == `daa16812`** | **PASS** — D6-F3 did not fire |
 | day-0 89/89 | 89 of 89 | **89 of 89 on every board built** | **PASS** |
-| burn 0 | 0 | see §10b | see §10b |
-| class 1.0671 (registered W2 basis) | 1.0671 | see §10b | see §10b |
-| tail 0.8004 | 0.8004 | see §10b | see §10b |
-| birthday probe +0 (R3-aware) | +0 | see §10b | see §10b |
-| the 79/79 suite | 79/79 | see §10b | see §10b |
+| **tail 0.8004** | 0.8004 | **0.8004** (BETA_sat 0.105, SMOOTH p15; realized ratio 0.2979) | **PASS** |
+| burn 0 | 0 | census asserts on BOTH lines, identically | **NOT SCORABLE — pre-existing, §10b** |
+| birthday probe +0 (R3-aware) | +0 | same census, same assert | **NOT SCORABLE — pre-existing, §10b** |
+| class 1.0671 (registered W2 basis) | 1.0671 | not measured | **NOT RUN — and NOT assumed unchanged, §10b** |
+| the 79/79 suite | 79/79 | not measured | **NOT RUN — §10b** |
 | **Guard 5** | PASS | **RED, PRE-EXISTING** | **NOT CLAIMED GREEN — §2** |
+
+**Four of the eleven required items are not green: one is red and pre-existing (Guard 5), two are
+unscorable through a pre-existing harness defect (burn, birthday), and two were not run (class,
+79/79). None of them is reported as a pass.**
+
+### 10b · THE ITEMS THAT COULD NOT BE SCORED — NAMED, NOT SKIPPED
+
+**None of these is claimed as a pass. Where a tool could not run, that is stated with its reason
+rather than the item being quietly dropped.**
+
+**BURN 0 and the BIRTHDAY PROBE +0 — NOT SCORABLE, and the failure is NOT this order's.**
+`os_census.py` was run on the candidate line and on the base line, back to back, and it **crashes on
+both** with the same internal price-identity assertion:
+
+```
+board total (numeraire): 660578
+AssertionError: identity broke on noah-mraz: 2135.777679 vs 1112.505054
+```
+
+The census reconstructs price as
+`rho31(g)*e + age_credit + pi_base*(v*_PL_F)*factor(v)` and asserts it against `ev()`. That identity
+does not hold on the **D5-final stack** (`RL_O41_R3=1` + `RL_O41_BREAK=unwind`) — the assembly seat
+only ever ran this census on a `CANDNOR3` line, i.e. **with `RL_O41_R3` deliberately excluded**
+(`run_allASM.sh`). **It fails identically with `RL_O42` unset**, which is the controlled test and is
+the evidence that this is a pre-existing limitation of the census harness against the R3/unwind
+stack, not something the consolidation introduced. **Noah Mraz is not a mover in this order** — his
+price is identical on both boards.
+
+The base run fails at **exactly the same row with exactly the same two numbers** — `noah-mraz
+2135.777679 vs 1112.505054`, digit for digit — which is as clean a demonstration as this could have:
+the defect is identical with the dial on and with the dial off, and **Noah Mraz's price is the same on
+both boards.**
+
+The one number each census did print before asserting is a useful independent confirmation of both
+boards: **board total (numéraire) 660,578 on the candidate line and 659,222 on the base line, each
+matching its built board exactly.**
+
+Raw: `CENSUS_D6CAND_out.txt`, `CENSUS_D6BASE_out.txt`.
+
+**CLASS 1.0671 (registered W2 basis) — NOT RUN, AND NOT ASSUMED UNCHANGED.** The class mark is
+computed by `as_class.py` off the walk-forward per-entrant emit, which this seat did not run. **It
+would be wrong to claim the mark is unmoved:** the registered W2 basis is draft classes 2005-2015
+(cohort years 2006-2016), and **7 of the 31 movers sit inside that window** — Brayden Fiorini (2015),
+Sam Powell-Pepper, Mitchell Hinge, Esava Ratugolea, Elliott Himmelberg (2016), Jamie Elliott (2011),
+Toby Pink (2016). **The mark can move and this packet does not assert a value for it.** A D6 copy of
+the emit runner with the `RL_O41_RAMP/BREAK/UNWIND/RL_O42` pass-through added is committed as
+`run_emit_D6.sh` so the next seat can run it directly.
+
+**THE 79/79 SUITE — NOT RUN.** `as_verify.py` is a checklist over the **built owner documents** (the
+tracker HTML, the year-1 page, the no-arb page, the movers ledger). Regenerating the full owner
+document set for a board that is priced and not adopted was outside what this order needed, and the
+suite would otherwise be scored against the assembly seat's documents rather than this board's.
+**Reported as not run, not as passed.**
+
+**TAIL 0.8004 — RUN AND IT PASSES.** `d6_tail.py` (the byte copy of the assembly tool, with only its
+output filenames changed) reads **0.8004** on the candidate's own charge form — BETA_sat 0.105 with
+the SMOOTH compression at p15 — against the p20 anchor's 0.7378, with realized ratio (deep / at-bar)
+**0.2979** on the same 40 deep rows. **Identical to the registered value.** That is expected: the
+calibration is a pure function of `BETA_sat`, the cap form and the cap anchor, none of which this
+order touches. Raw: `TAIL_D6_out.txt`, `TAIL_D6.json`, `TAIL_D6_run.txt`.
 
 Additional checks this order added and ran:
 
@@ -444,6 +524,10 @@ Stated plainly so nothing is read as done that was not:
 - **The `RL_AVAIL=0` control board was not built.** Frozen-v0surf halt; path abandoned (§7a).
 - **`LTI_REGISTER.md` was not deleted.** It stays in the tree and stays seeded by `bootstrap.sh`.
   What is retired is its LIVE CONSUMPTION on the `RL_O42=1` lane.
+- **The class mark and the 79/79 document suite were not run**, and the class mark is explicitly NOT
+  assumed unchanged — 7 of the 31 movers sit inside the registered W2 window (§10b).
+- **The burn and birthday probes were not scored**, because the census harness asserts on this dial
+  stack with the dial ON and OFF alike (§10b).
 - **Nothing was adopted, merged, tagged or promoted, and nothing is on `main`.**
 
 ---
@@ -459,6 +543,12 @@ Stated plainly so nothing is read as done that was not:
 | `build_D6_cand.sh` | candidate rebuild after the D6-F8 fire, + controls + the guard exercise |
 | `build_D6_final_ident.sh` | identities re-priced on the FINAL committed engine |
 | `d6_take.py` | the R1 combined-take guard, from the engine's own attribution |
+| `run_acceptD6.sh` | the acceptance suite on the candidate's own dial line |
+| `d6_tail.py` | the tail calibration (byte copy of the assembly tool, output names changed) |
+| `run_emit_D6.sh` | the emit runner with the `RL_O41_RAMP/BREAK/UNWIND` + `RL_O42` pass-through added — **committed unrun**, so the next seat can produce the class mark directly |
+| `CENSUS_D6CAND_out.txt` / `CENSUS_D6BASE_out.txt` | the census asserting identically on both lines |
+| `TAIL_D6_out.txt` / `TAIL_D6.json` / `TAIL_D6_run.txt` | the tail calibration, 0.8004 |
+| `ACCEPT_D6_out.txt` | the acceptance suite run, raw |
 | `BASE_REPRO_out.txt` | the base reproducing `ff936186` before the prereg was written |
 | `BUILD_D6_out.txt` | identities + base + the D6-F8 HALT, raw |
 | `BUILD_D6_CAND_out.txt` | candidate, determinism, the frozen-v0surf halt, the ORDER 42 guard halt |
