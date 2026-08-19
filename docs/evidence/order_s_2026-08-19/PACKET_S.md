@@ -447,3 +447,92 @@ and counting it in both would be exactly the double-discount the no-stacking con
 **The no-stacking rule is explicit in the source. Whether it holds in the measured board population
 is that seat's question, not this one's, and this seat does not answer it.**
 
+
+---
+
+## 8 · EVERY DISCLOSURE, AND EVERYTHING THIS SEAT COULD NOT MEASURE
+
+- **NOTHING IS ADOPTED. NOTHING LANDS. NO VARIANT IS RECOMMENDED. NO PULL REQUEST WAS OPENED.
+  NOTHING WAS PUSHED TO `main`.** This seat delivers prices.
+- **S3 HALTS. There is no solved `LAMBDA` in this packet and there is not meant to be one.** The two
+  boards `SL56` and `SL10` are the frontier's endpoints, built so the offline frontier could be
+  checked against real boards. **Neither is a proposal.**
+- **A FALSIFIER THIS SEAT WROTE FIRED ON ITS OWN FIRST RUN AND THE CHECK WAS WRONG, NOT THE ENGINE.**
+  S-F4's first version left the zero crossing out of FIX A's candidate set and read a 1.358e-02 miss.
+  Both runs are printed in `FIXA_S_out.txt`. §2.4
+- **S1's two priced retentions come from TWO DIFFERENT CRITERIA and this seat does not choose between
+  them.** `w = 0.47` is the optimum of the DIRECT criterion, which is what the engine does with the
+  object; `w = 0.28` is the optimum of the CALIBRATED criterion, which isolates the weighting from
+  mean reversion. **Both are priced. The choice is a judgement about what the surplus is FOR, and
+  that is the owner's.**
+- **THE RECENCY FIT IS ON A DIFFERENT PREDICTAND FROM THE ONE THE CHARGE USES.** It predicts NEXT
+  SEASON's per-game production. The charge reads the surplus as a statement about a player's whole
+  record to date. **Those are related but not identical objects, and the weights transfer on the
+  argument that a season's worth as evidence about the near future is the right measure of its worth
+  as evidence at all. That argument is stated, not proved.**
+- **THE RECENCY WEIGHT IS GEOMETRIC AND ONE-PARAMETER BY CHOICE.** Richer forms — a games-dependent
+  decay, an age-dependent decay, a per-class decay — were NOT priced, even though §1.5 measures that
+  the optimum differs by history depth (0.20 to 0.41). **Pricing a decay that varies by cohort would
+  introduce a second free parameter and this order priced the minimal form. That is a limitation.**
+- **THE MATURE PREMIUM IS PRICED AS A HARD AGE-24 SWITCH, and §5.5 measures that the true object
+  varies smoothly with CAREER STAGE rather than jumping at a birthday.** An age-faded premium was
+  named on the prereg as an alternative and **was NOT built**. The switch is placed at 24 because
+  that is where `o32_gate_bar` already goes flat and where FIX B1's own domain question sits, so it
+  introduces no new constant — but it is a coarse read on a smoother object and it is disclosed as
+  one. **The 200+ career-games stage band was TOO THIN TO FIT (382 rows) and is reported as unfitted
+  rather than extrapolated.**
+- **THE PREMIUM SURFACES HAVE NO HOLD-OUT.** ORDER P disclosed that `PG` is estimated on the same
+  board's `v0` it is applied to. **The mature companion inherits exactly that defect** and it is
+  unchanged, not repaired, here.
+- **`BETA_sat` IS NOT MOVED** in this order. ORDER R priced that lever and this order does not
+  re-price it.
+- **`s0` IS NOT MOVED.** `T(s0) = 1` on every board.
+- **THE PERCENTILES ARE UNWEIGHTED** — `s_p5`/`s_p15`/`s_p20` are `np.percentile` over the 4,143
+  young-cohort SEASON ROWS while `s0` is a games-weighted mean over the same rows. **That
+  inconsistency is ORDER P's**, carried unchanged by ORDER R and carried unchanged here so the
+  compression's anchor is the same kind of object as the cap it replaces.
+- **S4 AND S6 WERE HANDED OFF MID-ORDER** on the owner's parallelisation request and are NOT measured
+  here. §4/§6.
+- **The three draft classes over 1.14 are ORDER P's breach and this order does not repair them.** On
+  the PER-CLASS reading of the class law there is no admissible `LAMBDA` anywhere on the S3 frontier.
+- **The `run_panel.sh` / Guard 5 lane does not pass on this branch and did not pass before this
+  order** (register v737: five stale pins on `land/order-29`, all predating ORDER P). This seat has
+  not touched the workspace, `data/expected_boot.json` or `engine/forward_valuation`. The
+  `engine_head` pin necessarily moves because this order edits `_merged_recover.py`; re-stamping it
+  is a landing act and this order lands nothing.
+- **CONTROL BOARDS AND MATRICES WERE REUSED WHERE THEY ARE PROVABLY IDENTICAL, AND THE REUSE IS
+  DECLARED RATHER THAN LEFT TO BE NOTICED.** ORDER K's board `f3101883` and ORDER P's uncharged
+  ceiling `73bf9617` are read off ORDER R's and ORDER P's own scratch dirs; the `QB1`, `QAB1`,
+  `PBUILT` and `R20A` matrices are ORDER Q/P/R's, emitted from the identical dial line. **This seat
+  proved byte-exact board identity on `SRoff`, `SB1`, `SAB1` and `SR20A` with its own edited engine
+  first**, which is the stronger test.
+- **NO NAMED-PLAYER TARGETS.** Not one constant in this order was chosen with any row in view and no
+  row's value is an acceptance criterion. Draper, Travaglia, Barnett, Setterfield, Pickett and the
+  Duursmas inform BAND-LEVEL evidence only. This is a standing prohibition in this project after a
+  real error.
+- **The veteran board (RL_O33) is still parked.** Nothing here touches it.
+
+---
+
+## 9 · EVERY FILE
+
+| file | what it is |
+|---|---|
+| `PREREG_S.md` | the prereg, pushed at `218b997` **before the first engine edit**, with the S4/S6 handoff recorded on it |
+| `os_recency.py` · `RECENCY_S.json` · `RECENCY_S_out.txt` | **S1** — the walk-forward recency fit, both scorings, the splits, the prereg scored |
+| `os_mature.py` · `MATURE_S.json` · `MATURE_S_out.txt` | **S5** — the mature premium refit, the player-clustered bootstrap, the career-stage axis |
+| `os_lambda.py` · `LAMBDA_S.json` · `LAMBDA_S_out.txt` | **S3** — the anchor reproduced, the `LAMBDA` frontier, and **S2's offline read** |
+| `os_fixa.py` · `FIXA_S.json` · `FIXA_S_out.txt` | **falsifier S-F4** — FIX A's node maximum under the compression, including this seat's own wrong first check |
+| `os_identity.py` · `run_identityS.sh` · `IDENTITY_S_*` | **falsifier S-F3** — FIX A's decomposition identity re-proved under every ORDER S dial, on every real row |
+| `bbS.sh` · `build_allS.sh` · `BUILD_S_out.txt` | the board suite: four controls, eleven variants, the dial-implies test, eleven determinism repeats |
+| `os_boards.py` · `BOARDS_S.json` · `BOARDS_S_out.txt` | totals, the build-failing identities, movers, mature-row movement, the two laws |
+| `os_census.py` · `CENSUS_*.json` | the burn census, the birthday census, **the charge distribution** and the named rows, per board |
+| `os_continuity.py` · `CONTINUITY_*` | continuity on every axis **including the SEASON-TURN axis**, on each board's effective constants and through the engine's own cap function |
+| `os_cap.py` · `CAP_S.json` · `CAP_S_out.txt` | **S2 scored on real rows** — the parked-row counts, the pairwise gap test, the relief regressivity |
+| `run_emit_S.sh` · `run_emits_S.sh` · `EMITS_S_out.txt` | the walk-forward matrices, day-0 guard pointed at ORDER K's own reference |
+| `bb_noarbS.sh` · `NOARB_S_out.txt` · `t338ext_*.txt` | the disclosed no-arb instruments, md5-pinned at run |
+| `os_bands.py` · `BANDS_S.json` · `BANDS_S_out.txt` | the ND band tables in **both** windows |
+| `os_tables.py` · `STANDING_TABLES_S.json` · `STANDING_TABLES_S_out.txt` | the standing suite, pool arms both windows, both baselines |
+| `os_pathtest.py` · `PATHTEST_S.json` · `PATHTEST_S_out.txt` | **the owner's two-limb path test on every breaching cell** |
+| `os_class.py` · `CLASS_S.json` · `CLASS_S_out.txt` | the class marks on both bases and the per-class table |
+| `run_measureS.sh` · `run_afterbuildS.sh` · `MEASURE_S_out.txt` · `AFTERBUILD_S_out.txt` | the sequential run chain |
