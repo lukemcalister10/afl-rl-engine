@@ -40,8 +40,10 @@ exactly ONE of the three staleness failure modes the parallel seat mapped.** §1
 
 **S2 — THE OWNER'S COMPRESSED CAP. IT WORKS, IT ADDS NO FREE PARAMETER, AND THE MEASUREMENT SHOWS
 THE OWNER'S DIAGNOSIS WAS SHARPER THAN THE FIX HE HAD ALREADY ORDERED.** Lowering the cap to p20 —
-his own earlier instruction, which ORDER R priced — **more than doubles the number of rows parked at
-the cap and therefore tied to each other**, so it makes the very defect he later named WORSE. The
+his own earlier instruction, which ORDER R priced — **takes the population of rows PARKED at the cap,
+and therefore tied to each other, from 12 to 97 — EIGHT TIMES — and widens the band of records inside
+which performance stops mattering from 36.7 to 51.0 points a game.** It makes the very defect he
+later named WORSE. The
 compression unties all of them: **at exactly equal career games it has ZERO inversions and ZERO ties
 on all 1,067 pairs, where ORDER P's p5 clip has 9 and ORDER R's p20 clip has 120.** It is also **the
 largest single softening in the whole ORDER P/Q/R/S arc (+8,193 against FIX B1)**, it cuts the
@@ -826,7 +828,34 @@ two-sided, and correcting it costs the veterans money rather than giving it back
 **The instrument that actually shrinks B1's mature cost is the COMPRESSION** — −6,567 to −4,887 —
 and it was not aimed at that population at all.
 
-### 6.12 THE TWO ROW-LEVEL PREDICTIONS, SCORED
+### 6.12 THE POOL ARMS, AND THE ENTRY-YEAR CONTROL
+
+Year-1 appreciation by pool arm, both windows, on the all-arm instrument's own cohort semantics.
+MSD has no year-1 cell by construction (he debuts in his draft year); those rows are excluded and
+counted in words, never scored zero.
+
+| board | PRIMARY ALLPOOL | RD | IRE | SSP | MODERN ALLPOOL | RD |
+|---|---:|---:|---:|---:|---:|---:|
+| ORDER K | −4.93% | −3.39% | +13.34% | **+52.71% BUY** | −10.47% | −20.41% |
+| **ORDER P** | −3.60% | −1.86% | +13.62% | **+58.17% BUY** | −8.99% | −19.74% |
+| QB1 / **SW47** | −3.77% | −2.04% | **+14.04% BUY** | +56.71% | −9.76% | −20.48% |
+| QAB1 / **SW47A** | −3.73% | −2.00% | **+14.04% BUY** | +56.96% | −9.66% | −20.37% |
+| SR20A | −3.18% | −1.39% | **+14.58% BUY** | +57.21% | −9.44% | −20.05% |
+| **SC20** | **−2.30%** | **−0.51%** | **+14.98% BUY** | +58.44% | **−8.59%** | **−19.20%** |
+| SC20A | −2.29% | −0.49% | +14.98% | +58.44% | −8.59% | −19.20% |
+| SM | −3.93% | −2.21% | +14.02% | +56.55% | −9.84% | −20.53% |
+| **SALL** | −2.40% | −0.60% | +14.96% | +58.32% | −8.64% | −19.24% |
+
+**The compression improves every pool sell-side arm and takes RD from −1.86% to −0.51%, the closest
+to flat anywhere in the arc, without closing it.** The **IRE** arm's +14% breach is **ORDER Q FIX
+B1's**, inherited by every cell here (QB1 already reads +14.04%), and the **SSP** arm has been over
+the rail since ORDER K. **Neither is created by this order and neither is repaired by it.**
+
+**THE ENTRY-YEAR CONTROL PASSES ON EVERY BOARD** — every year-0 cell is inside ±0.1%. The dials in
+this order are production and charge corrections and a day-0 row has no production, so its entry
+price must not move; it does not.
+
+### 6.13 THE TWO ROW-LEVEL PREDICTIONS, SCORED
 
 **S1-P5 — the recency dial's row-level shape.** The prereg said rows whose bad seasons are OLD would
 gain and rows whose bad seasons are RECENT would lose, with a correlation above +0.8 between the
@@ -887,7 +916,7 @@ acceptance criterion.**
 | **S5-P1** | the mature premium is ≥ 2 pts a game shallower at `v0` 3,000 on both classes | **WRONG** — SMALL −4.71, TALL −1.97 |
 | **S5-P2** | the mature fit's ESS at `v0` 3,000 exceeds the young fit's | **WRONG** — 36.1 against 43.6 (TALL), 203.9 against 215.7 (SMALL) |
 | **S5-P3** | pricing the mature refit cuts B1's mature-row cost by > 20% | **WRONG IN DIRECTION** — it makes it 7.6% worse, −6,567 → −7,064 |
-| **S5-P4** | the Setterfield-shaped population moves most under the mature refit | **RIGHT BY A WHISKER, AND REPORTED AS EFFECTIVELY A NULL** — −3.4 points per moving row against −3.3 for other mature rows, §6.12 |
+| **S5-P4** | the Setterfield-shaped population moves most under the mature refit | **RIGHT BY A WHISKER, AND REPORTED AS EFFECTIVELY A NULL** — −3.4 points per moving row against −3.3 for other mature rows, §6.13 |
 
 ---
 
