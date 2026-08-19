@@ -544,6 +544,46 @@ _O40_CAPPCT=(int(_O40_CAPPCT_RAW) if _O40_CAPPCT_RAW!='' else None)
 if _O40_CAPPCT is not None and _O40_CAPPCT not in (15,20):
     raise SystemExit('ORDER S HALT: RL_O40_CAPPCT=%r. The owner named the 15th and 20th percentiles of '
                      'the young cohort\'s own surplus. Nothing else is priced.'%_O40_CAPPCT_RAW)
+# ORDER 41 — THE ASSEMBLY. THE SD LEVEL OFFSET AND THE ABSENCE PACKAGE (RL_O41_SDOFF /
+# RL_O41_CREDIT / RL_O41_RESET / RL_O41_INJ / RL_O41_R3; PREREG_ASSEMBLY.md pushed BEFORE this edit,
+# docs/evidence/assembly_2026-08-19). EVERY constant these dials introduce is copied from a named
+# measured artifact — F1's guarded credit curve, F2's reversal cells, F4's unconditional fade row,
+# F3's measured cost of absence, T1's SD level. NOT ONE OF THEM IS FITTED HERE.
+#   RL_O41_SDOFF   G  the SD position's charge bar lowered by the MEASURED 2.98 pts/game (T1),
+#                     STANDALONE — no offsetting change to SF or any other position. SF is NOT wired
+#                     (survivor-bias caveat) and RUCK is NOT wired (its misfire is the C3 age-delta
+#                     object, not PG — the diagnosis is in PREREG_ASSEMBLY.md section 3).
+#   RL_O41_CREDIT  I1 the F1 guarded measured credit curve replaces min(1, games/2).
+#   RL_O41_RESET   I2 the graded restore replaces the all-or-nothing delivered wipe, and the fade row
+#                     at depth >= 3 takes F4's UNCONDITIONAL monotone population instead of the
+#                     11-row inverting cell.
+#   RL_O41_INJ     I3 the injury stream, LIVE BOARD ONLY, on the owner's pinned v1 annotations.
+#   RL_O41_R3      I4 the production leg fades with MULTI-SEASON UNEXPLAINED absence, sized by the
+#                     owner's R1 combined-take law to F3's measured cost. No free parameter.
+# All five unset => not one byte of the ORDER 41 blocks executes and ORDER P's 374d4e44 reproduces.
+_O41_SDOFF_RAW=os.environ.get('RL_O41_SDOFF','')
+_O41_CREDIT=os.environ.get('RL_O41_CREDIT','0')!='0'
+_O41_RESET=os.environ.get('RL_O41_RESET','0')!='0'
+_O41_INJ=os.environ.get('RL_O41_INJ','0')!='0'
+_O41_R3=os.environ.get('RL_O41_R3','0')!='0'
+_O41_ANY=bool(_O41_SDOFF_RAW!='' or _O41_CREDIT or _O41_RESET or _O41_INJ or _O41_R3)
+if _O41_ANY and not (_O38A or _O38B1 or _O38B2):
+    raise SystemExit('ORDER 41 HALT: an RL_O41_* dial is set but no RL_O38* dial is live. The assembly '
+                     'sits on the ORDER Q repairs; setting one without an RL_O38 dial would price a '
+                     'stack the owner never ruled.')
+if _O41_SDOFF_RAW!='':
+    try: _O41_SDOFF=float(_O41_SDOFF_RAW)
+    except ValueError:
+        raise SystemExit('ORDER 41 HALT: RL_O41_SDOFF=%r is not a number.'%_O41_SDOFF_RAW)
+    if not (0.0<=_O41_SDOFF<=6.0):
+        raise SystemExit('ORDER 41 HALT: RL_O41_SDOFF=%.17g is outside the T1 measurement it comes '
+                         'from (point 2.98, 90%% CI [1.66, 4.33]). A value outside [0, 6] is not a '
+                         'reading of that measurement.'%_O41_SDOFF)
+else:
+    _O41_SDOFF=0.0
+# ORDER 41: the pre-cap production leg, stashed at the staleness site and read by the R3 sizing law.
+# It is a REFERENCE quantity for one arithmetic and is never written to a board.
+_O41_PRED8={}
 _O35=_O35 or _O36                                           # ORDER I implies the pick-curve fade
 _O32=(os.environ.get('RL_O32','0')!='0') or _O34 or _O35    # ORDER A: CANDIDATE 32 (ORDERS C/D build ON it)
 _O32S=(int(os.environ.get('RL_O32_STAGE','6')) if _O32 else 0)
@@ -2738,6 +2778,7 @@ def ev(p,Y=2026):
     if _A_ON and _isreal(p) and not _PV['on']:                # #334 ITEM A: the anchor leg no longer stops at qualification — it fades (see _a_blend above)
         e=_a_blend(p,Y,e)
     keyruc = pos in ('KPF','KPD','RUCK'); onset = (4 if keyruc else 3)
+    _o41_e_pre=e                                              # ORDER 41: the production leg BEFORE the caps
     if el>=onset and ns<=1:                                   # stalled: D8 graded release at evaluated year
         frac=0.25*max(0.4,1-0.10*(el-onset))*(1.6 if keyruc else 1.0)
         cap=v0*frac
@@ -2746,6 +2787,14 @@ def ev(p,Y=2026):
     elif el>=onset+2 and pr<0.55:                             # mediocre-for-years (played but never near par) -> decays too
         frac=0.45*max(0.3,1-0.08*(el-onset))*(1.5 if keyruc else 1.0)
         e=min(e, v0*frac)
+    # ORDER 41 (RL_O41_R3): the pre-cap production leg is stashed so the R3 sizing law can form the
+    # ABSENCE-FREE reference price. THE D8 STALENESS CAP IS AN ABSENCE COLLECTOR AND F3 COUNTED IT AS
+    # ONE, so it must be inside "what has already been taken" or the 8 double-priced rows of F3 §12
+    # would be charged the same fact twice. DISCLOSED: the mediocre-for-years branch is stashed on the
+    # same channel; it is a production cap rather than a staleness cap, and folding it in is the
+    # conservative direction (it can only make the take look LARGER and the R3 residual SMALLER).
+    if _O41_R3 and _o41_e_pre!=e:
+        _O41_PRED8[(id(p),int(Y))]=float(_o41_e_pre)
     # ORDER 30B-P — THE BLEND SITE. `e` is now the FINISHED PRODUCTION LEG: pole deleted, ISO deleted, and
     # the RETAINED form machinery (ITEM H's ruled cuts, the ruck ceiling, the KPF compression, D8 graded
     # staleness, the decay gate) all applied to it, exactly as the boundary reading "bars/aging/form
@@ -3408,9 +3457,18 @@ if _O30B_PREVIEW:
                 3:0.2747857941376827,      # 31-F re-derived, listed-conditional (L-B), n=100
                 4:0.39727085107749216}     # 31-F re-derived, listed-conditional (L-B), n=11 — the kink
     O31_FADE_FLAT_FROM=4
+    def _o31_fade_row():
+        """The fade row in force. ORDER 41 (RL_O41_RESET) swaps DEPTHS 3 AND 4 ONLY for F4's
+        UNCONDITIONAL monotone population — 154 rows at depth 4 instead of the 11-row cell whose
+        inversion flips under a change of v0 basis. Depths 1 and 2 are UNTOUCHED (the charter scopes
+        the swap to depth >= 3), which is the declared seam: the row then joins two conditionings at
+        the depth-2/depth-3 boundary. Dial off => the wired 31-F row, byte for byte."""
+        if not _O41_RESET: return O31_FADE_D
+        _r=dict(O31_FADE_D); _r.update(O41_FADE_D_UNCOND); return _r
     def o31_fade_D(c):
         """The 31-F sitter fade at continuous depth c. IDENTICAL RULE to fade30b_D — log-linear between
         integer depths, 1.0 at/below depth 1, FLAT from depth 4 out — on the re-measured row."""
+        O31_FADE_D=_o31_fade_row()
         if c<=1.0: return 1.0
         if c>=O31_FADE_FLAT_FROM: return O31_FADE_D[O31_FADE_FLAT_FROM]
         _n=int(_math.floor(c)); _f=c-_n
@@ -3763,6 +3821,139 @@ if _O30B_PREVIEW:
         """THE 30B-C STALL CONDITIONING. Phi(g,0)=1 EXACTLY, so it cannot touch a gameless row."""
         if s<=0: return 1.0
         return 1.0-(min(float(s),O31_PHI_RAMP)/O31_PHI_RAMP)*(1.0-phistall31(g,pool))
+    # ===== ORDER 41 (RL_O41_*) — THE ABSENCE PACKAGE. THE MEASURED CONSTANTS ======================
+    # PREREG_ASSEMBLY.md sections 4.1-4.4, pushed BEFORE this edit. Every row of every table below is
+    # COPIED from a named artifact in docs/evidence/order_s_readonly_2026-08-19. Nothing is fitted here
+    # and nothing is interpolated that the measurement declined to interpolate.
+    #
+    # I1 — THE CREDIT CURVE. FOLLOWUP_F1.json::iso — F1's GUARDED isotonic curve (the house
+    # pool-adjacent-violators monotonicity guard, ORDER P's own instrument, 400-draw band), measured on
+    # 1,068 ND entrants 2005-2019 at depth 2. It replaces the wired step min(1, g/2), which F1 measured
+    # to sit 5.41 credit-units above this curve summed over g=1..10 and OUTSIDE the band at every g
+    # from 1 to 8. c(0) = 0 EXACTLY, so day-0 prices are untouched by construction.
+    O41_CREDIT=((0,0.0),(1,0.1286875208353465),(2,0.23834489196711883),(3,0.23834489196711883),
+                (4,0.23834489196711883),(5,0.2455042373957035),(6,0.38568558243890977),
+                (7,0.38568558243890977),(8,0.45188866847720316),(9,0.8878514765964253),
+                (10,0.8878514765964253),(11,1.0))
+    def o41_credit(g):
+        """The per-season played credit at g games. Linear between the measured integer knots, held at
+        1.0 from 11 games, 0 at 0 games. RL_O41_CREDIT off => the wired min(1, g/2) step, byte for byte."""
+        _g=float(g)
+        if not _O41_CREDIT: return min(1.0,_g/2.0)
+        if _g<=0.0: return 0.0
+        if _g>=11.0: return 1.0
+        _n=int(_math.floor(_g)); _f=_g-_n
+        _c0=O41_CREDIT[_n][1]; _c1=O41_CREDIT[min(_n+1,11)][1]
+        return _c0 if _f<=0.0 else (1.0-_f)*_c0+_f*_c1
+    # I2 — THE GRADED RESET. FOLLOWUP_F2.json::partA.games — the reversal curve on 134 returners
+    # scored against 760 kept-sitting and 1,704 never-sat rows. `r` is how much of the way back to a
+    # never-sat comparable a returning season buys. THE WIRED RESET CREDITS 1.0 AT TEN GAMES AND 0.0
+    # BELOW, AND NO MEASURED CELL REACHES 1.0 — the best (15+) reaches 0.596 with an interval topping
+    # out at 0.886, and the whole 10-14 cell reads 0.213 with an interval that EXCLUDES 1.0 on 22 rows.
+    # READ AS A STEP FUNCTION ON THE MEASURED BANDS, NOT INTERPOLATED: F2's own preregistered NULL
+    # (F2-P4) is that this sample CANNOT separate a step at ten from a smooth curve, so a smooth
+    # interpolant here would claim a shape the measurement declines to supply.
+    # NO POSITION CUT: F2 has no position cut, the 0.60 is pooled and ruck-specific recovery is
+    # unmeasured (register v741). The TALL/SMALL exponent carries through the EXISTING o36_kappa
+    # exponent on D in o31_D, which acts on the clock this reset produces — so position differentiation
+    # keeps coming from the object that measured it and is not applied twice.
+    O41_REVERSAL=((2.0,0.17599730114691226),      # 1-2 games      n 38   CI [+0.053, +0.333]
+                  (5.0,0.1690225197655352),       # 3-5 games      n 29   CI [+0.030, +0.353]
+                  (9.0,0.09435725147204567),      # 6-9 games      n 27   CI [+0.004, +0.214]
+                  (14.0,0.21251254122424307),     # 10-14 games    n 22   CI [+0.054, +0.449]  wired 1.0
+                  (1e9,0.5959292983878227))       # 15+ games      n 18   CI [+0.321, +0.886]  wired 1.0
+    def o41_reversal(g):
+        """r(g) — the share of ACCRUED sitting clock a returning season of g games restores. The dial
+        off returns 1.0, which IS the wired all-or-nothing wipe, so the identity setting is exact."""
+        if not _O41_RESET: return 1.0
+        _g=float(g)
+        for _hi,_r in O41_REVERSAL:
+            if _g<=_hi: return _r
+        return O41_REVERSAL[-1][1]
+    # I2 (continued) — THE FADE ROW AT DEPTH >= 3. FOLLOWUP_F4.json::readings. The WIRED row carries
+    # D(4) = 0.3973 ABOVE D(3) = 0.2748 — an INVERSION that rests on an 11-row cell whose mean is 4.9x
+    # its median, whose pooled aggregate reads the inversion at 2.5% of the mean-based size, and whose
+    # ordering FLIPS under a change of v0 basis (F4 sections 17-19). IT IS NOT RELIED ON. The candidate
+    # takes the UNCONDITIONAL population's row at depth >= 3 — strictly monotone down, 154 rows at
+    # depth 4 instead of 11. DISCLOSED, and it is a real seam: the unconditional reading is a DIFFERENT
+    # CONDITIONING (it does not condition on still being listed) and its own depth-2 value is 0.5684
+    # against the wired 0.5583. Only depths 3 and 4 are taken, per the charter, so the candidate row
+    # joins two conditionings at the depth-2/depth-3 boundary. Said here, not smoothed over.
+    O41_FADE_D_UNCOND={3:0.21432976349908311,4:0.10522475297738024}
+    # I4 — THE MEASURED COST OF ABSENCE. FOLLOWUP_F3.json::dcurve — this seat's own re-measurement on
+    # the house ruler, NOT a read-back of the wired schedule (which would be circular). Depth c = 2
+    # means ONE unplayed season. The cost is a fraction of DELIVERED VALUE.
+    O41_COST=((2.0,0.36723755424736493),      # n 463   90% CI [+0.201, +0.513]
+              (3.0,0.7628696536230766),       # n 242   90% CI [+0.680, +0.836]
+              (4.0,0.8883339330826462),       # n 161   90% CI [+0.822, +0.947]
+              (5.0,0.945109511421381))        # n 132   90% CI [+0.872, +0.994]
+    def o41_cost(c):
+        """The measured TOTAL cost of absence at unexplained depth c. ZERO BELOW DEPTH 2 BY
+        CONSTRUCTION — F3 cannot speak about depth 1, which is its own normaliser, and the owner's
+        words are 'two seasons out'. Linear between the measured depths, flat from depth 5."""
+        _c=float(c)
+        if _c<=2.0: return 0.0 if _c<2.0 else O41_COST[0][1]
+        if _c>=5.0: return O41_COST[-1][1]
+        for _i in range(len(O41_COST)-1):
+            _c0,_v0c=O41_COST[_i]; _c1,_v1c=O41_COST[_i+1]
+            if _c0<=_c<=_c1:
+                _f=(_c-_c0)/(_c1-_c0)
+                return (1.0-_f)*_v0c+_f*_v1c
+        return O41_COST[-1][1]
+    # I3 — THE INJURY STREAM. The owner-authored annotation, LIVE BOARD ONLY, no backtest.
+    # OWNER-RULED TWO-CHANNEL LAW: for a DELIVERED row a logged-injured absence PAUSES the sitting
+    # clock (those weeks accrue nothing); an UNEXPLAINED absence gets NO grace year and fades
+    # continuously on the existing fE season fraction. ROOKIES AND NEVER-DELIVERED ROWS ARE
+    # CAUSE-BLIND AND UNCHANGED — the owner ruled the same penalty either way, so no annotation is
+    # read for a row with no delivered season whatever its flag says.
+    # THE FILE IS A PINNED INPUT: md5 asserted, row count asserted, injured count asserted, and the
+    # name match asserted 37 of 37. ANY of those failing HALTS THE BUILD LOUDLY.
+    O41_INJ_MD5='b26798c35adcd9bda5cef50ff2c884da'
+    O41_INJ_ROWS=219
+    O41_INJ_Y=37
+    _O41_INJSET=frozenset()
+    if _O41_INJ:
+        import csv as _csv, hashlib as _hl, re as _re
+        _ip=os.path.join(os.environ.get('RL_REPO','.'),'docs/owner_annotations/SITTER_2026_v1.csv')
+        if not os.path.exists(_ip):
+            raise SystemExit('ORDER 41 HALT: RL_O41_INJ=1 but the owner\'s annotation file is ABSENT at '
+                             '%s. The injury stream reads a PINNED OWNER INPUT and will not run without '
+                             'it, and will not substitute a guess for it.'%_ip)
+        _ib=open(_ip,'rb').read(); _im=_hl.md5(_ib).hexdigest()
+        if _im!=O41_INJ_MD5:
+            raise SystemExit('ORDER 41 HALT: SITTER_2026_v1.csv md5 %s != the pinned %s. The owner\'s '
+                             'annotation has moved; the build stops rather than price an input nobody '
+                             'ruled on.'%(_im,O41_INJ_MD5))
+        _ir=list(_csv.DictReader(_ib.decode('utf-8').splitlines()))
+        if len(_ir)!=O41_INJ_ROWS:
+            raise SystemExit('ORDER 41 HALT: SITTER_2026_v1.csv holds %d rows, pinned %d.'
+                             %(len(_ir),O41_INJ_ROWS))
+        def _inorm(n):
+            return _re.sub(r'[^a-z0-9]+','-',str(n).strip().lower().replace('’',"'")).strip('-')
+        _iy=[r for r in _ir if (r.get('injured') or '').strip().upper()=='Y']
+        if len(_iy)!=O41_INJ_Y:
+            raise SystemExit('ORDER 41 HALT: SITTER_2026_v1.csv marks %d rows injured=Y, pinned %d.'
+                             %(len(_iy),O41_INJ_Y))
+        _known=set()
+        for _p in MA.data:
+            for _f in ('key','player'):
+                if _p.get(_f): _known.add(_inorm(_p[_f]))
+        _want=set(_inorm(r['player']) for r in _iy)
+        _missing=sorted(_want-_known)
+        if _missing:
+            raise SystemExit('ORDER 41 HALT: %d of %d injured-annotated players do not match an engine '
+                             'row: %s. A silent miss would quietly charge an injured row as though he '
+                             'had sat by choice.'%(len(_missing),len(_iy),_missing[:8]))
+        _O41_INJSET=frozenset(_want)
+    def o41_injured(p):
+        """Is this row logged-injured by the owner for the live season? False whenever the dial is off,
+        so every non-live board and every dial-off board is untouched by construction."""
+        if not _O41_INJ or not _O41_INJSET: return False
+        for _f in ('key','player'):
+            if p.get(_f):
+                _k=_re.sub(r'[^a-z0-9]+','-',str(p[_f]).strip().lower().replace('’',"'")).strip('-')
+                if _k in _O41_INJSET: return True
+        return False
     def o31_played_units(p,Y):
         """Season-units in which the row PLAYED, on the same clock the fade uses: 1.0 per completed season,
         _fEy for the in-progress one. ORDER A stage 2 (M2, owner ruling on S2 P1): a season's credit is
@@ -3772,7 +3963,9 @@ if _O30B_PREVIEW:
         for _x in p.get('scoring') or []:
             if _x['year']>Y or not _x['games']: continue
             _f=(_fEy(Y,p) if _x['year']==Y else 1.0)
-            _u+=_f*(min(1.0,float(_x['games'])/2.0) if _O32S>=2 else 1.0)
+            # ORDER 41 (RL_O41_CREDIT): the F1 GUARDED MEASURED credit curve replaces the wired step.
+            # o41_credit falls back to min(1, g/2) with the dial off, byte for byte.
+            _u+=_f*(o41_credit(_x['games']) if _O32S>=2 else 1.0)
         return _u
     def o31_cu(p,Y):
         """THE UNPLAYED CLOCK. c_u = the fade clock MINUS the time he actually played. This is the brief's
@@ -3784,18 +3977,45 @@ if _O30B_PREVIEW:
         zero as of that season; fade re-accrues only on subsequent sitting. A gameless career has no
         delivered season, so day-0 prices are again untouched by construction."""
         if _O32S>=3:
-            _yd=None
+            _yd=None; _xd=None
             for _x in (p.get('scoring') or []):
                 if _x['year']<=Y and _x.get('games') and o32_delivered(p,Y,_x):
-                    _yd=_x['year'] if _yd is None else max(_yd,_x['year'])
+                    if _yd is None or _x['year']>_yd: _yd=_x['year']; _xd=_x
             if _yd is not None:
                 _clk=max(0.0,float(Y-_yd-1)+(_fEy(Y,p) if Y>_yd else 0.0))
+                # ORDER 41 (RL_O41_INJ) — THE INJURY STREAM, LIVE BOARD ONLY, DELIVERED ROWS ONLY.
+                # A logged-injured absence PAUSES the sitting clock: the live season's absence accrues
+                # NOTHING. The annotation is a 2026 log and carries no statement about earlier seasons,
+                # so the pause is the live year's fraction and no more — extending it backwards would
+                # be inventing injury history the owner did not write. Unexplained absence is
+                # untouched here and keeps fading continuously on fE: that is the other channel.
+                # This arm is reachable ONLY for a row with a delivered season, which is exactly the
+                # owner's ruling that rookies and never-delivered rows stay CAUSE-BLIND.
+                if _O41_INJ and Y>_yd and o41_injured(p):
+                    _clk=max(0.0,_clk-(_fEy(Y,p) or 0.0))
                 _cred=0.0
                 for _x in (p.get('scoring') or []):
                     if _yd<_x['year']<=Y and _x.get('games'):
                         _f=(_fEy(Y,p) if _x['year']==Y else 1.0)
-                        _cred+=_f*min(1.0,float(_x['games'])/2.0)
-                return max(0.0,_clk-_cred)
+                        # ORDER 41 (RL_O41_CREDIT): the same one credit object as o31_played_units.
+                        _cred+=_f*o41_credit(_x['games'])
+                _post=max(0.0,_clk-_cred)
+                # ORDER 41 (RL_O41_RESET) — THE GRADED RESTORE. The wired law WIPES all accrued
+                # sitting clock at a delivered season. F2 measured that no returning season restores a
+                # never-sat comparable: the best cell (15+ games) reaches 0.596 and the cell at the
+                # wired threshold reads 0.213 with an interval that excludes 1.0. So the pre-delivery
+                # clock is restored only by r and the remainder is CARRIED:
+                #     c_u = (1 - r) * c_pre + c_post
+                # r = 1 IS the wired wipe, which is why the dial-off identity is exact. c_pre is the
+                # UNRESET clock as it stood at the delivered season. Where a row has several delivered
+                # seasons the grading is applied at the LAST one — that is F2's own estimand, a
+                # returner's single return season restoring accrued damage — and the carry from any
+                # earlier delivery is already inside c_pre.
+                if _O41_RESET:
+                    _r=o41_reversal(float((_xd or {}).get('games') or 0.0))
+                    _pre=max(0.0,fade30b_clock(p,_yd)-o31_played_units(p,_yd))
+                    return max(0.0,(1.0-_r)*_pre+_post)
+                return _post
         return max(0.0,fade30b_clock(p,Y)-o31_played_units(p,Y))
     def o31_D(p,Y):
         """The fade at the UNPLAYED depth. ONE law for every pathway: the ruled ND schedule is applied to
@@ -4202,7 +4422,19 @@ if _O30B_PREVIEW:
                 # ORDER S (RL_O40_PGMAT): a season played at 24+ reads the MATURE premium.
                 _pgv=(o40_pg(_v0,_cls) if (_O40_PGMAT and (_x['year']-_by)>=O37_AGE_GATE)
                       else o37_pg(_v0,_cls))
-                _num+=_wt*(float(_x['avg'])-(_b+_pgv))
+                # ORDER 41 (RL_O41_SDOFF) — THE SD LEVEL OFFSET, STANDALONE. T1 measured the SD
+                # position over-barred by 2.98 points a game against the pooled bar (90% CI
+                # [-4.33, -1.66], flat in age — the age slope is +0.540 [-0.214, +1.293] and does NOT
+                # exclude zero, which is what makes a LEVEL the right object for SD). Lowering SD's
+                # charge bar RAISES his surplus and so LOWERS his charge. NOTHING OFFSETS IT: the
+                # zero-sum was a property of the fit, not a wiring constraint (register v744). SF is
+                # NOT wired (survivor-bias caveat, and it would hurt the very rows it looks like it
+                # helps) and RUCK is NOT wired — RUCK's residual SWINGS with age (+5.779 a year,
+                # CI [+4.139, +7.630]) and an age column removes 17.76% more of it than a level does
+                # against SD's 0.86%, so RUCK's misfiring object is the C3 age delta O32_GATE_DELTA,
+                # not PG, and a level offset would be wrong at both ends. PREREG_ASSEMBLY.md §3.
+                _bar=_b+_pgv-(_O41_SDOFF if _pos=='SD' else 0.0)
+                _num+=_wt*(float(_x['avg'])-_bar)
                 _den+=_wt
             if _ok and _den>0.0: _r=_num/_den
         _O37_SCACHE[_ck]=_r
@@ -4415,9 +4647,12 @@ if _O30B_PREVIEW:
         if _w>=1.0: return _f
         if _f<=0.0 or _old<=0.0: return _f*_w+_old*(1.0-_w)
         return _math.exp(_w*_math.log(_f)+(1.0-_w)*_math.log(_old))
-    def o31_pi(p,Y,g=None):
+    def o31_pi(p,Y,g=None,_Dov=None):
         """pi(g, c_u, s) = Phi(g,s) * [ D(c_u)*(1-rho(g)) + beta_mono(g)*rho(g) ].
-        At g=0 this is D(c_u) EXACTLY. As rho -> 1 it is the measured additive beta EXACTLY."""
+        At g=0 this is D(c_u) EXACTLY. As rho -> 1 it is the measured additive beta EXACTLY.
+        ORDER 41: _Dov overrides the sitter fade D — used ONLY to form the ABSENCE-FREE reference
+        price the R3 sizing law needs (_Dov=1.0 = the row as if he had never sat). It is a reference
+        quantity that is never written to a board, and it is None on every real pricing call."""
         _g=pv_games(p,Y) if g is None else float(g)
         _r=rho31(_g)
         # Phi multiplies the MEASURED COEFFICIENT ONLY. beta_stall/beta_pooled is a ratio of ADDITIVE
@@ -4427,7 +4662,7 @@ if _O30B_PREVIEW:
         # RL_O31_NOPHI=1 is a DECLARED, DEFAULT-OFF measurement dial that prices the conditioning by
         # removing it -- so the unconditioned alternative's cost is MEASURED, not argued.
         _pl=bool(p.get('_pool'))
-        _pi=o31_D(p,Y)*(1.0-_r)+(1.0 if _O31_NOPHI else phi31(_g,o31_stall_run(p,Y),_pl))*beta31(_g,_pl)*_r
+        _pi=(o31_D(p,Y) if _Dov is None else float(_Dov))*(1.0-_r)+(1.0 if _O31_NOPHI else phi31(_g,o31_stall_run(p,Y),_pl))*beta31(_g,_pl)*_r
         # ORDER A stage 6 (M5): the pedigree leg comes down in step — W2's own translation. m_d(0)=0
         # so pi(0,c)=D(c) still holds EXACTLY and gameless rows are untouched.
         if _O32S>=6 and O32_ETA>0.0 and _g>0.0:
@@ -4440,12 +4675,62 @@ if _O30B_PREVIEW:
             _pi*=(((o38_factor(p,Y,_g) if _O38 else o37_factor(p,Y,_g)) if _O37 else
                   max(0.0,1.0-O32_ETA*((_g/O32_GAMMA_D)*_math.exp(1.0-_g/O32_GAMMA_D)))))
         return _pi
+    # ===== ORDER 41 (RL_O41_R3) — THE PRODUCTION FADE, SIZED BY THE OWNER'S R1 COMBINED-TAKE LAW ===
+    # THE OWNER: "his production leg should fade with 2 seasons out." Conway is the exhibit, never the
+    # target. THE SIZING LAW IS HIS R1 RULING: split collection across mechanisms is NOT a defect, an
+    # UNCALIBRATED TOTAL is. So this collector does not carry a rate of its own — it collects exactly
+    # the RESIDUAL between what the existing collectors have already taken and what F3 MEASURED the
+    # absence to cost. However many collectors there are, the one fact is collected once, at the
+    # calibrated total. THERE IS NO FREE PARAMETER IN THIS BLOCK.
+    #
+    # WHY A NEW COLLECTOR AT ALL. F3 §15 published the STRUCTURAL CEILING: the sitter fade multiplies
+    # only the (1-rho) share of the pedigree leg, and in THREE OF FOUR c_u bands the ceiling of that
+    # collector plus the D8 cap sits BELOW the lower limit of the measured cost. No setting of either
+    # existing dial can reach it, because the collectors act on a share of the price that is smaller
+    # than the cost is. The production leg is the one that can reach.
+    #
+    # THE LIMITATION F3 STATED, CARRIED FORWARD RATHER THAN QUIETLY DROPPED: a row whose absence has
+    # already depressed his PRODUCTION leg has paid for it somewhere these attributions do not count,
+    # so F3's gap is an UPPER BOUND on the shortfall, not a point estimate. The take is therefore
+    # CAPPED so the total can never EXCEED the measured cost's point estimate, and capped again at the
+    # production leg itself so the factor stays inside [0, 1].
+    def o41_r3_take(p,Y,g,e,ped):
+        """Board points to remove from the production leg so the TOTAL absence collection lands at
+        F3's measured cost. Returns 0.0 for every row the law does not reach."""
+        if not _O41_R3: return 0.0
+        # THE TWO-CHANNEL LAW: an injured-annotated row is EXEMPT. His absence is explained and the
+        # engine does not charge him for it on any channel.
+        if o41_injured(p): return 0.0
+        _cx=o31_cu(p,Y)
+        # ZERO BELOW DEPTH 2 BY CONSTRUCTION. F3 cannot speak about depth 1 — it is its own normaliser
+        # — and the owner's words are "two seasons out". So day-0 rows and one-season-out rows are
+        # untouched, which also keeps every printed day-0 price exactly where it was.
+        if _cx<2.0: return 0.0
+        _tgt=o41_cost(_cx)
+        if _tgt<=0.0: return 0.0
+        _ac=o32_age_credit(p,Y,g)
+        _prod=rho31(g)*float(e)
+        if _prod<=0.0: return 0.0
+        # THE ABSENCE-FREE REFERENCE: the same row with BOTH existing absence collectors neutralised —
+        # the sitter fade forced to 1 and the production cap released. This is F3's own denominator.
+        _epre=_O41_PRED8.get((id(p),int(Y)),e)
+        _free=rho31(g)*float(_epre)+o31_pi(p,Y,g,_Dov=1.0)*ped+_ac
+        if not (_free>0.0): return 0.0
+        _now=_prod+o31_pi(p,Y,g)*ped+_ac
+        _taken=max(0.0,(_free-_now)/_free)          # what the fade and the D8 cap have ALREADY taken
+        _resid=max(0.0,_tgt-_taken)                 # what is still owed against the measured cost
+        if _resid<=0.0: return 0.0                  # already at or past the target: collect NOTHING
+        return min(_resid*_free,_prod)              # never more than the production leg holds
     def _pv_order31(p,Y,e):
         """THE ONE LAW. One expression, every row, every pathway, every games count.
         ORDER A REPAIR R1: + the age credit on the re-mix's added production weight (zero at g=0,
-        zero from age 24, zero below stage 6 — the dial-off path is unchanged byte-for-byte)."""
+        zero from age 24, zero below stage 6 — the dial-off path is unchanged byte-for-byte).
+        ORDER 41 (RL_O41_R3): the production leg fades with MULTI-SEASON UNEXPLAINED absence, at the
+        residual the combined-take law leaves. Dial off => this line is not reached."""
         _g=pv_games(p,Y)
-        return rho31(_g)*float(e)+o31_pi(p,Y,_g)*pv_pedigree(p)+o32_age_credit(p,Y,_g)
+        _ped=pv_pedigree(p)
+        _v=rho31(_g)*float(e)+o31_pi(p,Y,_g)*_ped+o32_age_credit(p,Y,_g)
+        return _v-o41_r3_take(p,Y,_g,e,_ped) if _O41_R3 else _v
     if _O31:
         _PV['blend']=_pv_order31
         # THE DAY-0 PREDICATE IS RESTATED, NOT DROPPED. Under the one law a zero-games row's price IS
@@ -4901,6 +5186,7 @@ if _O30B_PREVIEW:
             #   S-S5  UNDER THE COMPRESSION, T' <= the hard clip at the SAME anchor AND <= ORDER P's
             #         own p5 clip, at every surplus. So no row is charged more than it was — S2-F2.
             _sprev=None; _sflat=0; _sflats=None
+            _s5stiff=0.0; _s5n=0; _s5s=None; _s5hi=None      # ORDER 41: the S-S5 limb-2 window, measured
             for _i in range(0,22001):
                 _ss=20.0-0.01*_i
                 _Ts=o38_T(_ss)
@@ -4910,10 +5196,34 @@ if _O30B_PREVIEW:
                     _Traw=max(1.0-O40_THETA_R*(_ss-O37_S0),0.0)
                     _Tclip=min(_Traw,O40_CAPC)
                     _TP=min(max(1.0-O37_THETA_R*(_ss-O37_S0),0.0),O37_TMAX)
-                    if _Ts>_Tclip+1e-12 or _Ts>_TP+1e-12:
+                    # S-S5 LIMB 1 — THE COMPRESSION LAW ITSELF, STILL A HALT. T' must never exceed the
+                    # hard clip AT THE SAME ANCHOR AND THE SAME EFFECTIVE SLOPE. This is the property
+                    # the cap form actually promises ("both would be at or above the old P20") and it
+                    # is asserted here exactly as ORDER S wrote it.
+                    if _Ts>_Tclip+1e-12:
                         raise SystemExit('ORDER S HALT (S-S5): the compression charges MORE than the '
-                                         'hard clip at s=%.4f (%.9f vs anchor clip %.9f, ORDER P clip '
-                                         '%.9f).'%(_ss,_Ts,_Tclip,_TP))
+                                         'hard clip at the SAME anchor at s=%.4f (%.9f vs %.9f).'
+                                         %(_ss,_Ts,_Tclip))
+                    # S-S5 LIMB 2 — MEASURED AND REPORTED, NOT HALTED. ASSEMBLY BUILD, DISCLOSED
+                    # DEVIATION (PREREG_ASSEMBLY.md; reported in PACKET_ASSEMBLY.md and to the owner).
+                    # ORDER S wrote this second limb as a HALT comparing T' against ORDER P's OWN p5
+                    # clip at ORDER P's OWN slope. That comparison is vacuous while BETA_sat is ORDER
+                    # P's — the only case ORDER S ever built — and it is NOT vacuous once the owner's
+                    # ruled slope 0.105 is live. What trips it is THE SLOPE, NOT THE CAP FORM: a
+                    # gentler slope makes T decay toward zero more slowly, so in a narrow window just
+                    # above the cohort centre the softened board charges a hair MORE than ORDER P did.
+                    # THAT EFFECT IS ALREADY THE HOUSE'S OWN, MEASURED AND DISCLOSED RATHER THAN
+                    # FORBIDDEN: ORDER R's banner does exactly this for exactly this phenomenon
+                    # (_rstiff/_rstiffs/_rstiffhi, "IT IS REPORTED, NOT ARGUED AWAY"). Halting here
+                    # would forbid on one dial line what the house reports on another, and it would
+                    # veto a combination THE OWNER HIMSELF RULED (slope 0.105 at v745, compression p20
+                    # standing). So it is measured on the same sweep and printed in the banner.
+                    # NO LAW IS TRADED SILENTLY: limb 1 above still HALTS, S-S2 (no row above its
+                    # uncharged price) still HALTS, and this window is published with its size.
+                    if _Ts>_TP+1e-12:
+                        _s5stiff=max(_s5stiff,_Ts-_TP)
+                        _s5s=_ss if _s5n==0 else _s5s
+                        _s5n+=1; _s5hi=_ss
                     if _sprev is not None and _Traw>1e-12 and _Ts<=_sprev[1]:
                         _sflat+=1; _sflats=_ss if _sflats is None else _sflats
                 for _gq in (0.0,1.0,17.0,60.0,400.0):
@@ -4927,6 +5237,21 @@ if _O30B_PREVIEW:
                                  'the dense sweep, first at s=%.4f. The owner\'s requirement is that '
                                  'worse play ALWAYS costs at least slightly more. It does not hold.'
                                  %(_sflat,_sflats))
+            # ORDER 41 — S-S5 LIMB 2, PUBLISHED. Printed on EVERY compression board so the window can
+            # never ride unreported, and printed as ZERO when there is none.
+            if _O40_CAPFORM=='smooth':
+                print('ORDER S S-S5 LIMB 2 (vs ORDER P\'s own p5 clip) — %s'
+                      %('NO surplus at which this board\'s cap exceeds ORDER P\'s.' if _s5n==0 else
+                        'the cap exceeds ORDER P\'s over s in (%.4f, %.4f], a window %.4f points a game '
+                        'wide; the WORST excess in T anywhere in it is %.9f, i.e. at most %.4f%% of the '
+                        'pedigree leg at 38 games. THE CAUSE IS THE RULED SLOPE (BETA_sat %.5f vs ORDER '
+                        'P\'s %.5f), NOT THE CAP FORM — the same-anchor limb holds everywhere. This '
+                        'window sits ABOVE the cohort centre (s0 = %.4f), so it lands on rows already '
+                        'producing at or above what their entry price implies. MEASURED AND REPORTED, '
+                        'NOT ARGUED AWAY.'
+                        %(_s5s,_s5hi,_s5hi-_s5s,_s5stiff,
+                          100.0*(1.0-_math.exp(-O40_LAMBDA*(1.0-_math.exp(-38.0/O37_G0))*_s5stiff)),
+                          O39_BETA_SAT,O37_BETA_SAT,O37_S0)))
             if (1.0-_math.exp(-0.0/O37_G0))!=0.0:
                 raise SystemExit('ORDER S HALT (S-S3): A(0) is not 0 exactly')
             _sA38=1.0-_math.exp(-38.0/O37_G0)

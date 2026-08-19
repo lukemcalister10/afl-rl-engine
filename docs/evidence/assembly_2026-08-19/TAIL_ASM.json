@@ -1,0 +1,38 @@
+{
+ "C_candidate": 10.978275150116307,
+ "beta_sat_candidate": 0.105,
+ "built_minus_expected": -0.30218184022818284,
+ "candidate_calib": 0.7378181597718172,
+ "candidate_calib_median": 0.24289014903984832,
+ "f5_expectation": 1.04,
+ "n_deep": 40,
+ "n_ref": 342,
+ "realized_ratio": 0.29793491803057653,
+ "rows": [
+  {
+   "calib": 1.9024924747012808,
+   "charged": 0.15660241603707614,
+   "form": "ORDER P as wired (BETA_sat 0.11465, hard clip p5)"
+  },
+  {
+   "calib": 1.0412566340697875,
+   "charged": 0.28613015109069473,
+   "form": "F5's convergence point (BETA_sat CI FLOOR 0.10416, hard clip p20)"
+  },
+  {
+   "calib": 0.7378181597718172,
+   "charged": 0.40380534700137766,
+   "form": "*** THE CANDIDATE (BETA_sat 0.105, SMOOTH compression p20) ***"
+  },
+  {
+   "calib": 1.6427318381031732,
+   "charged": 0.18136552243036544,
+   "form": "  the slope 0.105 alone (hard clip p5)"
+  },
+  {
+   "calib": 0.7996516494106278,
+   "charged": 0.3725808835011662,
+   "form": "  the compression p20 alone (BETA_sat as ORDER P)"
+  }
+ ]
+}
