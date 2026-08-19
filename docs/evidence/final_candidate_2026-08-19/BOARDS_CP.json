@@ -1,6 +1,17 @@
 {
  "fail": [],
  "lever": {
+  "CP_CAND": {
+   "down": 0,
+   "marginal": 4371,
+   "moved": 23,
+   "prev": "FC_CAND",
+   "up": 23,
+   "worst": [
+    "Tom Green",
+    1212
+   ]
+  },
   "FC_BASE": {
    "down": 50,
    "marginal": -6027,

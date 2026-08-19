@@ -1465,7 +1465,9 @@
    "d_R_cand": 0,
    "d_live_K": -1,
    "d_live_cand": -1,
-   "levers": {},
+   "levers": {
+    "CP_CAND": 9
+   },
    "live": 373,
    "name": "Blake Thredgold",
    "pick": 26,
@@ -1770,6 +1772,7 @@
    "d_live_K": 31,
    "d_live_cand": 15,
    "levers": {
+    "CP_CAND": 167,
     "FC_CAND": 2,
     "L1_REC": -6,
     "V750_L2C15": 1,
@@ -3085,7 +3088,9 @@
    "d_R_cand": 0,
    "d_live_K": -166,
    "d_live_cand": -166,
-   "levers": {},
+   "levers": {
+    "CP_CAND": 821
+   },
    "live": 2725,
    "name": "Connor Rozee",
    "pick": 5,
@@ -3730,7 +3735,9 @@
    "d_R_cand": 0,
    "d_live_K": -106,
    "d_live_cand": -49,
-   "levers": {},
+   "levers": {
+    "CP_CAND": 149
+   },
    "live": 1144,
    "name": "Darcy Jones",
    "pick": 21,
@@ -4745,7 +4752,9 @@
    "d_R_cand": 0,
    "d_live_K": -196,
    "d_live_cand": -196,
-   "levers": {},
+   "levers": {
+    "CP_CAND": 23
+   },
    "live": 677,
    "name": "Harley Barker",
    "pick": 24,
@@ -4950,6 +4959,7 @@
    "d_live_K": -43,
    "d_live_cand": -145,
    "levers": {
+    "CP_CAND": 43,
     "FC_CAND": -43,
     "V750_L2C15": 37
    },
@@ -5080,6 +5090,7 @@
    "d_live_K": 7,
    "d_live_cand": -15,
    "levers": {
+    "CP_CAND": 18,
     "L1_REC": -14,
     "V750_L2C15": 3
    },
@@ -6547,7 +6558,9 @@
    "d_R_cand": 0,
    "d_live_K": 25,
    "d_live_cand": 25,
-   "levers": {},
+   "levers": {
+    "CP_CAND": 305
+   },
    "live": 229,
    "name": "Jack Viney",
    "pick": 13,
@@ -8208,6 +8221,7 @@
    "d_live_K": 4,
    "d_live_cand": -36,
    "levers": {
+    "CP_CAND": 5,
     "L1_REC": -8,
     "V750_L2C15": 6,
     "V750_L5A": -9
@@ -8965,6 +8979,7 @@
    "d_live_K": 91,
    "d_live_cand": -107,
    "levers": {
+    "CP_CAND": 3,
     "V750_L2C15": 36,
     "V750_L4SD": 8
    },
@@ -9071,6 +9086,7 @@
    "d_live_K": 57,
    "d_live_cand": 57,
    "levers": {
+    "CP_CAND": 342,
     "L1_REC": -14,
     "V750_L2C15": -1,
     "V750_L3MAT": 15
@@ -9528,6 +9544,7 @@
    "d_live_K": -45,
    "d_live_cand": -48,
    "levers": {
+    "CP_CAND": 3,
     "FC_CAND": -3
    },
    "live": 85,
@@ -10479,7 +10496,9 @@
    "d_R_cand": 0,
    "d_live_K": -102,
    "d_live_cand": -102,
-   "levers": {},
+   "levers": {
+    "CP_CAND": 4
+   },
    "live": 168,
    "name": "Liam Hetherton",
    "pick": null,
@@ -12009,7 +12028,9 @@
    "d_R_cand": 0,
    "d_live_K": -27,
    "d_live_cand": -27,
-   "levers": {},
+   "levers": {
+    "CP_CAND": 9
+   },
    "live": 156,
    "name": "Maxwell King",
    "pick": 49,
@@ -12342,6 +12363,7 @@
    "d_live_K": -17,
    "d_live_cand": -128,
    "levers": {
+    "CP_CAND": 109,
     "FC_CAND": -109,
     "V750_L5B": -2
    },
@@ -12781,7 +12803,9 @@
    "d_R_cand": 0,
    "d_live_K": -317,
    "d_live_cand": -314,
-   "levers": {},
+   "levers": {
+    "CP_CAND": 969
+   },
    "live": 3513,
    "name": "Nicholas Martin",
    "pick": null,
@@ -13113,7 +13137,9 @@
    "d_R_cand": 0,
    "d_live_K": -49,
    "d_live_cand": -49,
-   "levers": {},
+   "levers": {
+    "CP_CAND": 3
+   },
    "live": 86,
    "name": "Noah Chamberlain",
    "pick": null,
@@ -13502,6 +13528,7 @@
    "d_live_K": -10,
    "d_live_cand": -31,
    "levers": {
+    "CP_CAND": 2,
     "L1_REC": -6,
     "V750_L2C15": 7,
     "V750_L5A": 3
@@ -14288,6 +14315,7 @@
    "d_live_K": -6,
    "d_live_cand": -7,
    "levers": {
+    "CP_CAND": 10,
     "FC_CAND": -10,
     "L1_REC": 3,
     "V750_L5A": 6
@@ -14727,6 +14755,7 @@
    "d_live_K": -168,
    "d_live_cand": -190,
    "levers": {
+    "CP_CAND": 22,
     "FC_CAND": -22
    },
    "live": 618,
@@ -15038,6 +15067,7 @@
    "d_live_K": 13,
    "d_live_cand": -70,
    "levers": {
+    "CP_CAND": 76,
     "FC_CAND": -76,
     "L1_REC": -6,
     "V750_L3MAT": -1
@@ -15795,6 +15825,7 @@
    "d_live_K": 134,
    "d_live_cand": 87,
    "levers": {
+    "CP_CAND": 67,
     "FC_CAND": -67,
     "V750_L2C15": 35
    },
@@ -16376,7 +16407,9 @@
    "d_R_cand": 0,
    "d_live_K": -380,
    "d_live_cand": -380,
-   "levers": {},
+   "levers": {
+    "CP_CAND": 1212
+   },
    "live": 4719,
    "name": "Tom Green",
    "pick": 10,

@@ -163,8 +163,10 @@ P()
 # D4 (register v755) — THE RAMP IS ITS OWN STEP IN THE STACK. Without V755_L5CR between L5C and
 # the candidate, the R3 marginal would silently absorb the ramp's 8 rows, which is exactly the
 # conflation caught and corrected in as_unwindrows.py. One lever, one step, no exceptions.
+# D7 (register v771) — THE PARITY GUARD IS ITS OWN STEP IN THE STACK, for the same reason D4 is:
+# folded into D6's marginal it would be invisible, and the owner ruled it as its own act.
 STACK = ['L0_R', 'L1_REC', 'V750_L2C15', 'V750_L3MAT', 'V750_L4SD', 'V750_L5A', 'V750_L5B',
-         'V750_L5C', 'V755_L5CR', 'V755_CAND', 'FC_BASE', 'FC_CAND']
+         'V750_L5C', 'V755_L5CR', 'V755_CAND', 'FC_BASE', 'FC_CAND', 'CP_CAND']
 P('  %-9s %10s %12s %8s %8s %8s %10s  %s'
   % ('board', 'total', 'marginal', 'moved', 'up', 'down', 'worst row', 'the lever added'))
 LEVER = {}
@@ -189,9 +191,9 @@ for i, t in enumerate(STACK):
       % (t, '{:,}'.format(TOT[t]), '{:+,}'.format(TOT[t] - TOT[prev]), len(mv), up, dn,
          ('{:+,}'.format(V[t][worst] - V[prev][worst]) if worst else '—'), NICE[t]))
 P()
-if 'FC_CAND' in TOT and 'L0_R' in TOT:
+if 'CP_CAND' in TOT and 'L0_R' in TOT:
     P('  THE WHOLE ARC R -> CANDIDATE: %s  (sum of the marginals: %s)'
-      % ('{:+,}'.format(TOT['FC_CAND'] - TOT['L0_R']),
+      % ('{:+,}'.format(TOT['CP_CAND'] - TOT['L0_R']),
          '{:+,}'.format(sum(LEVER[t]['marginal'] for t in STACK[1:] if t in LEVER))))
     P('  These agree by construction — the stack is a chain, not an attribution. Interactions are')
     P('  INSIDE each marginal (each lever is measured on top of the ones above it), which is the')
@@ -209,7 +211,7 @@ if 'V750_L4SD' in TOT and 'FC_CAND' in TOT:
     P('  D4 the in-season ramp      %12s' % '{:+,}'.format(TOT.get('V755_L5CR', 0) - TOT.get('V750_L5C', 0)))
     P('  I4 the R3 production fade  %12s' % '{:+,}'.format(TOT['FC_CAND'] - TOT.get('V755_L5CR', 0)))
     P('  ' + '-' * 44)
-    P('  the package total          %12s' % '{:+,}'.format(TOT['FC_CAND'] - TOT['V750_L4SD']))
+    P('  the package total          %12s' % '{:+,}'.format(TOT['CP_CAND'] - TOT['V750_L4SD']))
 P()
 
 # ---- mature rows ----------------------------------------------------------------------------------

@@ -52,8 +52,9 @@ is a subtraction and not an argument (the owner's own ask, register v742).
   V755_CAND    665,249       -1,025        9        0        9       -606  + absence I4  the R3 production fade
   FC_BASE      659,222       -6,027       50        0       50       -972  + the unwind U0=7 return games (BREAK=unwind)  — OWNER-RULED, DATA-SUPPORTED
   FC_CAND      660,578       +1,356       31       20       11       +708  + D6 the injury consolidation (RL_O42=1)
+  CP_CAND      664,949       +4,371       23       23        0     +1,212  + D7 THE PARITY GUARD (RL_O43=1) max(injury, healthy)  = THE CANDIDATE
 
-  THE WHOLE ARC R -> CANDIDATE: -4,372  (sum of the marginals: -4,372)
+  THE WHOLE ARC R -> CANDIDATE: -1  (sum of the marginals: -1)
   These agree by construction — the stack is a chain, not an attribution. Interactions are
   INSIDE each marginal (each lever is measured on top of the ones above it), which is the
   honest reading and the one the owner asked for.
@@ -65,7 +66,7 @@ THE ABSENCE PACKAGE ON ITS OWN (L4_SD -> CANDIDATE), sub-part by sub-part:
   D4 the in-season ramp               +11
   I4 the R3 production fade        -5,696
   --------------------------------------------
-  the package total                -9,407
+  the package total                -5,036
 
 ==========================================================================================================================
 MATURE-ROW MOVEMENT — BUILT vs EXPECTED. The prereg predicted B1 + the mature refit at about
