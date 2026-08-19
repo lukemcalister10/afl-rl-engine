@@ -1,0 +1,65 @@
+=== ORDER D7b BUILD — THE THIRD WIRING SITE o31_D (register v775, ruling v771) ===
+  engine : 5f434b9592ad8adb7dcd534da49df3c7  (D7 was 29376d5a)
+  store  : cb38ef1171dcf20aae66ebf12682be0d  (pin cb38ef11)
+  v0surf : 5dd34ca82735f5c8f021b1c7320df8f8  (pin 5dd34ca8)
+  sheet  : b26798c35adcd9bda5cef50ff2c884da  (pin b26798c3)
+  U0     : 7 return games — OWNER-RULED, DATA-SUPPORTED (D5-final, 2026-08-19)
+  GUARD 5: RED, PRE-EXISTING on this branch. NOT claimed green anywhere. NOT re-pinned.
+  ONE SITE. THE LAW HAS NO FREE PARAMETER: it is a per-row max. Nothing here is fitted.
+
+--- D7B_IDENT_P : RL_O37=1 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_IDENT_P/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_IDENT_P/rl_after/rl_model_data.json
+374d4e442665771801c5f1edd2a7e0e2  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_IDENT_P/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- D7B_IDENT_K :  ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_IDENT_K/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_IDENT_K/rl_after/rl_model_data.json
+f3101883a60b0a7b8cb50f9d8a5abfff  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_IDENT_K/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- D7B_L0R : RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_TMAXPCT=20 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_L0R/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_L0R/rl_after/rl_model_data.json
+7f88f5096ff5b781da4614b7142d332c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_L0R/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- D7B_NOO42 : RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_BETASAT=0.105 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=15 RL_O40_RECW=0.47 RL_O40_PGMAT=1 RL_O41_SDOFF=2.98 RL_O41_CREDIT=1 RL_O41_RESET=1 RL_O41_INJ=1 RL_O41_R3=1 RL_O41_RAMP=1 RL_O41_BREAK=unwind RL_O41_UNWIND=7 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_NOO42/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_NOO42/rl_after/rl_model_data.json
+ff9361867357c085c8111ba957ce4f3b  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_NOO42/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- D7B_BASE : RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_BETASAT=0.105 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=15 RL_O40_RECW=0.47 RL_O40_PGMAT=1 RL_O41_SDOFF=2.98 RL_O41_CREDIT=1 RL_O41_RESET=1 RL_O41_INJ=1 RL_O41_R3=1 RL_O41_RAMP=1 RL_O41_BREAK=unwind RL_O41_UNWIND=7 RL_O42=1 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_BASE/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_BASE/rl_after/rl_model_data.json
+daa16812e50fb71241e627d89180412c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_BASE/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- D7B_CAND : RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_BETASAT=0.105 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=15 RL_O40_RECW=0.47 RL_O40_PGMAT=1 RL_O41_SDOFF=2.98 RL_O41_CREDIT=1 RL_O41_RESET=1 RL_O41_INJ=1 RL_O41_R3=1 RL_O41_RAMP=1 RL_O41_BREAK=unwind RL_O41_UNWIND=7 RL_O42=1 RL_O43=1 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_CAND/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_CAND/rl_after/rl_model_data.json
+a05fe951f78482c70520480e184c80ec  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_CAND/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- D7B_CAND2 : RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_BETASAT=0.105 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=15 RL_O40_RECW=0.47 RL_O40_PGMAT=1 RL_O41_SDOFF=2.98 RL_O41_CREDIT=1 RL_O41_RESET=1 RL_O41_INJ=1 RL_O41_R3=1 RL_O41_RAMP=1 RL_O41_BREAK=unwind RL_O41_UNWIND=7 RL_O42=1 RL_O43=1 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_CAND2/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_CAND2/rl_after/rl_model_data.json
+a05fe951f78482c70520480e184c80ec  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/d7bbb/bb_D7B_CAND2/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+=== BOARD IDS ===
+D7B_IDENT_P   374d4e442665771801c5f1edd2a7e0e2
+D7B_IDENT_K   f3101883a60b0a7b8cb50f9d8a5abfff
+D7B_L0R       7f88f5096ff5b781da4614b7142d332c
+D7B_NOO42     ff9361867357c085c8111ba957ce4f3b
+D7B_BASE      daa16812e50fb71241e627d89180412c
+D7B_CAND      a05fe951f78482c70520480e184c80ec
+D7B_CAND2     a05fe951f78482c70520480e184c80ec
+
+=== EXPECTED ===
+  D7B_IDENT_P 374d4e44 | D7B_IDENT_K f3101883 | D7B_L0R 7f88f509 | D7B_NOO42 ff936186
+  D7B_BASE    daa16812 (D7B-F2: the dial UNSET must reproduce THE BASE byte-exact)
+  D7B_CAND    a05fe951 (D7B-F1: THE BOARD MUST NOT MOVE. If it does: HALT, do not renormalise.)
+  D7B_CAND == D7B_CAND2 (D7B-F4 determinism)

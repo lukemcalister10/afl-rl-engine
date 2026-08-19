@@ -6043,36 +6043,65 @@ if _O43:
             _f=_D7_FLOOR.get(p.get('key'))
             if _f is not None and _f>_v: return _f
         return _v
-    # ---- THE SECOND WIRING SITE OF THIS ONE DIAL, AND WHY IT IS NEEDED. ---------------------------
-    # DISCLOSED LOUDLY: this is a SECOND SITE, not a second dial and not a second rule. It is the SAME
-    # max, on the SAME ruling, gated on the SAME _O43.
+    # ---- ORDER D7b — THE THIRD WIRING SITE. IT SUBSUMES THE SECOND; IT DOES NOT STACK ON IT. ------
+    # PREREG_D7B.md, pushed at cfd4748 BEFORE this edit. Register v775, on the v771 ruling.
+    # DISCLOSED LOUDLY: this is a THIRD SITE OF ONE DIAL, not a second dial and not a second rule. It
+    # is the SAME per-row max, on the SAME ruling, gated on the SAME _O43. NO NEW DIAL, NO NEW
+    # PARAMETER, NOTHING FITTED.
     #
-    # WHAT FORCED IT, MEASURED NOT REASONED. The first candidate build HALTED and the halt was right:
-    #   PRINTED-DAY-0 HALT: 7 of 89 day-0/sitter rows do not print round(derived v0 x sitter fade
-    #   D(c)) x numeraire — ['Sam Allen printed 450 != 428.105725', ...]. Refusing to write the board.
-    # ORDER 29B/30B installs a PERMANENT boot-class identity: a day-0 row's PRINTED price must equal
-    # round(day0_v0(p) * o31_D(p,Y)). rl_export reads the left side off the WRITTEN board and the
-    # right side out of the engine's own `_entry30b_price`, precisely so the two cannot drift apart.
-    # The parity guard lifts a guarded day-0 row to his HEALTHY price, while `_entry30b_price` still
-    # recomputed `o31_D` at his LIVE (injury) depth — so the engine was contradicting itself about the
-    # same row, and the assert caught it. THE ASSERT IS NOT WEAKENED, NOT BYPASSED, AND NOT RE-POINTED;
-    # the frozen DAY0_K.json reference is NOT touched. The engine's own predicate is simply told the
-    # same thing the price was told.
+    # WHAT D7 DID, AND WHAT IT MISSED. D7 wired the max at ev() above and at the day-0 predicate
+    # `_entry30b_price`. It did NOT wire `o31_D`, THE FADE ITSELF — and the ORDER 31-F emitter reads
+    # `o31_D` STRAIGHT OUT OF THE ENGINE NAMESPACE (emit_matrix_31f.py:83, `o31_D = G['o31_D']`)
+    # precisely so its replication guard cannot drift from the law it is guarding. With the fade
+    # unguarded, that emitter formed the LIVE-depth (injury) fade while the board carried the HEALTHY
+    # one, and it fail-closed at 82 of 89 on exactly the seven rows where the healthy fade wins. THE
+    # EMITTER WAS RIGHT: the law had moved one level above the symbol it was told to read. The emitter
+    # is byte-carried and is NOT modified; DAY0_CP.json is correct and is NOT touched.
+    # (docs/evidence/final_candidate_2026-08-19/HALT_EMIT_CP.md and O31D_PROBE_out.txt.)
+    #
+    # WHY THIS REPLACES THE SECOND SITE RATHER THAN JOINING IT — ARITHMETIC, NOT OPINION. Under _O31
+    # the day-0 predicate IS the fade: `_entry30b_price` is `_d0*o31_D(p,Y)` (:5109-5112), and it
+    # resolves o31_D as a MODULE GLOBAL AT CALL TIME. So the moment o31_D returns the healthy fade the
+    # predicate ALREADY returns _d0*_dh — exactly the board's printed day-0 price. Had D7's ratio
+    # wrapper ALSO fired, the predicate would return _d0*_dh^2/_dl and the ONE ruling would be applied
+    # TWICE. Worked on harley-barker: _d0*_dl = 481.44 (what the emitter formed), _d0*_dh = 503.51 ->
+    # 504 (THE BOARD, CORRECT), _d0*_dh^2/_dl = 526.60 -> 527 (both sites firing, WRONG). The ruling,
+    # the dial and the arithmetic are UNCHANGED; only the LEVEL moves down one, from the predicate to
+    # the fade the predicate is built from. ONE correction, at the ONE symbol every consumer — ev(),
+    # the day-0 predicate, and the emitter — reads. THE 29B/30B PRINTED-DAY-0 ASSERT IS NOT WEAKENED,
+    # NOT BYPASSED AND NOT RE-POINTED, and the frozen DAY0_K.json reference is NOT touched.
     #
     # WHY THE FADE AND NOT THE VALUE: for a zero-games row the one law collapses to v = v0 * D(c_u)
     # exactly (rho(0)=0 kills the production leg, o32_age_credit(...,0)=0), so a max on the VALUE is
-    # identically a max on the FADE. Substituting the fade ratio keeps this in the predicate's own
-    # units and needs NO numeraire conversion, so no currency can be got wrong here.
-    if _D7_DFADE and '_entry30b_price' in globals():
-        _d0_pre43=_entry30b_price
-        def _entry30b_price(p,Y=2026,__inner=_d0_pre43):
-            """ORDER D7: the engine's day-0 predicate, told the same thing the price was told."""
-            _v=__inner(p,Y)
-            if _v is None or int(Y)!=2026: return _v
+    # identically a max on the FADE. Working in the fade keeps this in the predicate's own units and
+    # needs NO numeraire conversion, so no currency can be got wrong here.
+    #
+    # Y==2026 ONLY. The parity ruling is a 2026 ruling. The walk-forward matrix's years 1..7 are formed
+    # from ev(p,Y) at Y>2026 and MUST NOT move; this wrapper cannot reach them.
+    # A MAX, SO IT CAN ONLY RAISE. _D7_DFADE carries only rows whose healthy VALUE won, and the wrapper
+    # additionally requires _dh>_dl — so a riser (the Murphy type) is returned UNTOUCHED. The shield is
+    # not a charge. Dial off => this wrapper is never installed.
+    if _D7_DFADE:
+        # THE SUBSUMPTION IS ASSERTED, NOT ASSUMED. If the LIVE day-0 predicate is not the one built on
+        # o31_D — it is `_d0*fade30b_of` when _O31 is off (:3371) — then wrapping the fade does NOT
+        # reach it, and dropping D7's ratio wrapper would SILENTLY REGRESS the predicate. HALT instead.
+        _e30b_co=getattr(globals().get('_entry30b_price'),'__code__',None)
+        if _e30b_co is not None and 'o31_D' not in _e30b_co.co_names:
+            raise SystemExit('ORDER D7b HALT: the live _entry30b_price is NOT the day-0 predicate built '
+                             'on o31_D, so this third wiring site does not reach it. Refusing to retire '
+                             'the D7 second site against a predicate that still has to carry it.')
+        _o31D_pre43=o31_D
+        def o31_D(p,Y,__inner=_o31D_pre43):
+            """ORDER D7b (RL_O43) — THE PARITY GUARD AT THE FADE ITSELF: the one symbol that ev(), the
+            day-0 predicate and the ORDER 31-F emitter all read. A guarded row's fade is lifted to its
+            HEALTHY-counterpart fade at Y=2026. max only: a row whose live fade already sits at or above
+            its healthy one is returned UNTOUCHED. Dial off => this wrapper is never installed."""
+            _d=__inner(p,Y)
+            if int(Y)!=2026: return _d
             _pr=_D7_DFADE.get(p.get('key'))
-            if not _pr: return _v
+            if not _pr: return _d
             _dl,_dh=_pr
-            return _v*(_dh/_dl) if (_dl>0.0 and _dh>_dl) else _v
+            return max(_d,_dh) if (_dl>0.0 and _dh>_dl) else _d
     print("=== ORDER D7 PARITY GUARD LIVE (register v771) — %d rows carry injury treatment; %d are "
           "LIFTED to their healthy counterpart, %d keep an injury-regime value at or above it. The "
           "guard is a per-row max at Y=2026: it can only RAISE. NO FREE PARAMETER. ==="
