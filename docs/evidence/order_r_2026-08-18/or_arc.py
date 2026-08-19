@@ -216,7 +216,7 @@ json.dump(dict(summary=SUM, columns=COLS, rows=REC),
 
 # ---- HTML -----------------------------------------------------------------------------------------
 def f0(x):
-    return '' if x is None else '%d' % round(x)
+    return '' if x is None else '{:,}'.format(int(round(x)))
 
 
 def f2(x):
@@ -228,203 +228,367 @@ def fp(x):
 
 
 def fs(x):
-    return '' if x is None else '%+d' % round(x)
+    return '' if x is None else '{:+,}'.format(int(round(x)))
 
 
 def fc(x):
     return '' if x is None else '%.1f%%' % (100.0 * x)
 
 
+def cls_of(x):
+    return 'pos' if (x or 0) > 0 else ('neg' if (x or 0) < 0 else 'nil')
+
+
+def bar(v, mx, klass):
+    """A magnitude bar behind a number: size in FORM as well as in digits."""
+    if not v or not mx:
+        return ''
+    return '<span class="bar %s" style="width:%.1f%%"></span>' % (klass, min(100.0, 100.0 * abs(v) / mx))
+
+
+CSS = """
+/* ORDER R — whole-arc movers. Cool-slate ledger palette; slab display over a humanist body face.
+   Light is the bare :root. Dark redefines TOKENS ONLY, in both the un-stamped and the stamped state,
+   so the page resolves as a set whichever of the three theme states the viewer is in. */
+:root{
+  --ground:#F6F7FA; --surface:#FFFFFF; --raise:#EDF0F5;
+  --ink:#14181F; --body:#2C333F; --muted:#5D6675; --faint:#8A93A3;
+  --line:#DCE1E9; --line-strong:#C3CAD6;
+  --accent:#2E4A7D; --accent-soft:#E7ECF6;
+  --pos:#1B6B4A; --pos-soft:#E2F0E9; --neg:#9E3436; --neg-soft:#F7E6E6;
+  --flag:#8A5A12; --flag-soft:#FBF1DF; --flag-line:#D9B472;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1218; --surface:#161B23; --raise:#1D242E;
+    --ink:#E9EDF3; --body:#C7CEDA; --muted:#8C97A8; --faint:#6B7686;
+    --line:#262D38; --line-strong:#39424F;
+    --accent:#8CAEE4; --accent-soft:#1B2536;
+    --pos:#57BC8D; --pos-soft:#12291F; --neg:#E08183; --neg-soft:#2C1719;
+    --flag:#E0B166; --flag-soft:#2A2110; --flag-line:#6B5423;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1218; --surface:#161B23; --raise:#1D242E;
+  --ink:#E9EDF3; --body:#C7CEDA; --muted:#8C97A8; --faint:#6B7686;
+  --line:#262D38; --line-strong:#39424F;
+  --accent:#8CAEE4; --accent-soft:#1B2536;
+  --pos:#57BC8D; --pos-soft:#12291F; --neg:#E08183; --neg-soft:#2C1719;
+  --flag:#E0B166; --flag-soft:#2A2110; --flag-line:#6B5423;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; padding:0 0 5rem;
+  background:var(--ground); color:var(--body);
+  font-family:"Source Sans 3",ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:15px; line-height:1.6;
+  font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1;
+}
+.wrap{max-width:1560px;margin:0 auto;padding:0 clamp(1rem,3vw,2.25rem)}
+.narrow{max-width:70ch}
+.mast{border-bottom:2px solid var(--ink);margin:0 0 1.75rem;padding:2.75rem 0 1.5rem}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+  display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin:0 0 .9rem
+}
+h1{
+  font-family:Bitter,Georgia,"Times New Roman",serif; font-weight:700;
+  font-size:clamp(2rem,4.2vw,3.05rem); line-height:1.06; letter-spacing:-.022em;
+  color:var(--ink); margin:0 0 .6rem; text-wrap:balance;
+}
+.dek{font-size:1.05rem;color:var(--muted);margin:0;max-width:76ch}
+.dek b{color:var(--ink);font-weight:600}
+h2{
+  font-family:Bitter,Georgia,serif;font-weight:600;color:var(--ink);
+  font-size:1.42rem;letter-spacing:-.014em;margin:3.25rem 0 .2rem;text-wrap:balance;
+}
+h3{font-weight:600;color:var(--ink);font-size:.95rem;margin:1.8rem 0 .55rem}
+.sec-rule{height:1px;background:var(--line-strong);margin:.5rem 0 1.2rem}
+p{margin:.55rem 0}
+.notice{
+  background:var(--flag-soft);border:1px solid var(--flag-line);border-left-width:5px;
+  border-radius:4px;padding:1rem 1.25rem;
+}
+.notice .lbl{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--flag);font-weight:500;display:block;margin-bottom:.4rem
+}
+.notice p{margin:.35rem 0;color:var(--body);max-width:80ch}
+.notice strong{color:var(--ink)}
+.notices{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,26rem),1fr));gap:1rem;margin:1rem 0}
+.step{
+  display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;
+  margin:3rem 0 .2rem;padding-top:1.4rem;border-top:1px solid var(--line-strong);
+}
+.step .from,.step .to{
+  font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;
+  padding:.15rem .5rem;border-radius:3px;background:var(--raise);color:var(--ink);
+  border:1px solid var(--line);white-space:nowrap
+}
+.step .arrow{color:var(--accent)}
+.step .what{font-family:Bitter,Georgia,serif;font-size:1.18rem;font-weight:600;color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));gap:1px;
+       background:var(--line);border:1px solid var(--line);border-radius:5px;overflow:hidden;margin:1.1rem 0}
+.stat{background:var(--surface);padding:.8rem .95rem}
+.stat .k{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);font-weight:600}
+.stat .v{font-family:Bitter,Georgia,serif;font-size:1.6rem;font-weight:600;letter-spacing:-.02em;
+         line-height:1.15;margin-top:.15rem;color:var(--ink)}
+.stat .v.pos{color:var(--pos)} .stat .v.neg{color:var(--neg)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:5px;background:var(--surface);max-width:100%}
+.scroll.tall{max-height:78vh;overflow-y:auto}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13.5px}
+th,td{padding:.4rem .6rem;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line)}
+thead th{
+  position:sticky;top:0;z-index:3;background:var(--raise);color:var(--muted);
+  font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;
+  border-bottom:1px solid var(--line-strong);
+}
+td.l,th.l{text-align:left}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:var(--accent-soft)}
+.pos{color:var(--pos)} .neg{color:var(--neg)} .nil{color:var(--faint)}
+td.num{font-weight:600}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
+.tot{font-family:Bitter,Georgia,serif;font-weight:600;color:var(--ink)}
+.cell-bar{position:relative}
+.bar{position:absolute;left:0;top:50%;transform:translateY(-50%);height:1.15em;border-radius:2px;z-index:0}
+.bar.pos{background:var(--pos-soft)} .bar.neg{background:var(--neg-soft)}
+.cell-bar span.n{position:relative;z-index:1}
+.ledger th.name,.ledger td.name{
+  position:sticky;left:0;z-index:2;background:var(--surface);
+  border-right:1px solid var(--line-strong);text-align:left;
+  font-weight:600;color:var(--ink);min-width:11.5rem
+}
+.ledger thead th.name{z-index:4;background:var(--raise)}
+.ledger tbody tr:hover td.name{background:var(--accent-soft)}
+.ledger td.sep,.ledger th.sep{border-left:1px solid var(--line-strong)}
+.chip{
+  display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.03em;
+  padding:.05rem .38rem;border-radius:3px;background:var(--raise);color:var(--muted);
+  border:1px solid var(--line)
+}
+.chip.up{background:var(--pos-soft);color:var(--pos);border-color:transparent}
+.chip.dn{background:var(--neg-soft);color:var(--neg);border-color:transparent}
+.foot{margin-top:3.5rem;padding-top:1.25rem;border-top:2px solid var(--ink);color:var(--muted)}
+.foot strong{color:var(--ink)}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+"""
+
 H = []
 A = H.append
 A('<title>Whole-Arc Movers</title>')
-A('<style>')
-A('''
-:root{--bg:#fbfaf8;--fg:#1a1a1a;--mut:#6b6560;--line:#e2ddd6;--card:#ffffff;
-      --up:#1f6f43;--upbg:#e8f4ec;--dn:#9b2c2c;--dnbg:#fbeaea;--acc:#2f5d8f;--warnbg:#fdf4e3;--warn:#8a6014;}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-      --bg:#16151a;--fg:#eceaf0;--mut:#9a95a3;--line:#2f2d36;--card:#1e1d24;
-      --up:#63c68e;--upbg:#17301f;--dn:#e28585;--dnbg:#331a1a;--acc:#8fb6e5;--warnbg:#2e2510;--warn:#e2b661;}}
-:root[data-theme="dark"]{--bg:#16151a;--fg:#eceaf0;--mut:#9a95a3;--line:#2f2d36;--card:#1e1d24;
-      --up:#63c68e;--upbg:#17301f;--dn:#e28585;--dnbg:#331a1a;--acc:#8fb6e5;--warnbg:#2e2510;--warn:#e2b661;}
-*{box-sizing:border-box}
-body{background:var(--bg);color:var(--fg);margin:0;padding:2rem 1.25rem 5rem;
-     font:15px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
-.wrap{max-width:1500px;margin:0 auto}
-h1{font-size:1.85rem;line-height:1.2;margin:0 0 .4rem;letter-spacing:-.02em}
-h2{font-size:1.15rem;margin:2.4rem 0 .7rem;letter-spacing:-.01em;
-   border-bottom:1px solid var(--line);padding-bottom:.35rem}
-h3{font-size:.98rem;margin:1.4rem 0 .5rem;color:var(--mut);font-weight:600}
-p{margin:.5rem 0;max-width:78ch}
-.sub{color:var(--mut);margin:0 0 1.4rem}
-.warn{background:var(--warnbg);border:1px solid var(--warn);border-left-width:4px;
-      border-radius:6px;padding:.9rem 1.1rem;margin:1.2rem 0}
-.warn b{color:var(--warn)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.9rem 1.1rem;margin:1rem 0}
-.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);
-        border-radius:8px;background:var(--card)}
-table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
-th,td{padding:.34rem .5rem;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line)}
-th{position:sticky;top:0;background:var(--card);text-align:right;font-weight:600;
-   font-size:11.5px;letter-spacing:.02em;color:var(--mut);text-transform:uppercase;z-index:2}
-td.l,th.l{text-align:left}
-tbody tr:hover{background:color-mix(in srgb,var(--acc) 7%,transparent)}
-.up{color:var(--up);font-weight:600}
-.dn{color:var(--dn);font-weight:600}
-.mut{color:var(--mut)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.8rem;margin:1rem 0}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.75rem .9rem}
-.stat .k{font-size:11.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--mut)}
-.stat .v{font-size:1.45rem;font-weight:650;letter-spacing:-.02em;margin-top:.15rem}
-code{font:12.5px ui-monospace,SFMono-Regular,Menlo,monospace;background:color-mix(in srgb,var(--acc) 10%,transparent);
-     padding:.08em .35em;border-radius:3px}
-''')
-A('</style>')
+A('<link rel="preconnect" href="https://fonts.googleapis.com">')
+A('<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>')
+A('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
+  'family=Bitter:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&'
+  'family=IBM+Plex+Mono:wght@400;500&display=swap">')
+A('<style>' + CSS + '</style>')
 A('<div class="wrap">')
-A('<h1>The whole-arc movers list</h1>')
-A('<p class="sub">ORDER K <code>f3101883</code> &rarr; ORDER P <code>374d4e44</code> &rarr; the ORDER R variants. '
-  'One row per active player, all %d. <b>Nothing here is adopted and nothing lands.</b></p>' % len(REC))
-
-A('<div class="warn"><b>READ RANK, NOT POINTS.</b><p>The board totals are different numbers. '
-  'ORDER K totals <b>%s</b> and ORDER P totals <b>%s</b> &mdash; %s points fewer on the same %d players. '
-  'So most rows fall in absolute points for a reason that has nothing to do with any individual player: '
-  'there are simply fewer points on the board to go round. <b>RANK is the fair comparison across these '
-  'boards. Absolute points are not.</b> Both are printed, and the rank-change columns are the ones to '
-  'read when comparing one board with another.</p></div>'
+A('<header class="mast">')
+A('<div class="eyebrow"><span>ORDER R</span><span>Measurement only</span>'
+  '<span>%d active rows</span><span>%d boards</span></div>' % (len(REC), len(LAB)))
+A('<h1>Whole-arc movers</h1>')
+A('<p class="dek">Who the pedigree-conditional charge has hurt, who it has helped, and by how much '
+  '&mdash; across the entire arc rather than the last step. <b>ORDER K</b> is the last board before '
+  'this mechanism path began; <b>ORDER P</b> is where the charge was introduced; the <b>ORDER R</b> '
+  'boards are the softening the owner ruled. <b>Nothing here is adopted and nothing lands.</b></p>')
+A('</header>')
+A('<div class="notices">')
+A('<div class="notice"><span class="lbl">Read rank, not points</span>'
+  '<p>The board totals are different numbers. ORDER K totals <strong>%s</strong> and ORDER P totals '
+  '<strong>%s</strong> &mdash; <strong>%s fewer points</strong> spread across the same %d players. Most '
+  'rows therefore fall in absolute terms for a reason that has nothing to do with any individual '
+  'player: there are simply fewer points on the board to go round.</p>'
+  '<p><strong>Rank is the fair comparison across these boards. Absolute points are not.</strong> Both '
+  'are shown; the rank-change columns are the ones to read when comparing one board with another.</p>'
+  '</div>'
   % ('{:,}'.format(TOT.get('K', 0)), '{:,}'.format(TOT.get('P', 0)),
      '{:,}'.format(TOT.get('K', 0) - TOT.get('P', 0)), len(REC)))
+A('<div class="notice"><span class="lbl">The spanning variant is not a recommendation</span>'
+  '<p>The &ldquo;softening&rdquo; and &ldquo;whole arc&rdquo; columns use <strong>%s</strong> &mdash; %s. '
+  'It is the far corner of the grid: both levers at their softest. It was chosen because it spans the '
+  'arc, <strong>not because this seat prefers it. This seat recommends nothing.</strong></p>'
+  '<p>Every other variant carries its own value, rank and charge columns in the ledger below and in '
+  '<span class="mono">ARC_R.csv</span>.</p></div>'
+  % (SPAN, html.escape(NICE.get(SPAN, SPAN))))
+A('</div>')
 
-A('<div class="warn"><b>THE SPANNING VARIANT IS NOT A RECOMMENDATION.</b><p>The "softening" and '
-  '"whole arc" columns use <code>%s</code> &mdash; %s. It is the FAR CORNER of the grid: both levers at '
-  'their softest. It was chosen because it spans the arc, not because this seat prefers it. '
-  '<b>This seat recommends nothing.</b> Every other variant has its own value and rank columns in the '
-  'table below and in <code>ARC_R.csv</code>.</p></div>' % (SPAN, html.escape(NICE.get(SPAN, SPAN))))
-
-A('<h2>The boards</h2>')
-A('<div class="scroll"><table><thead><tr><th class="l">board</th><th class="l">md5</th>'
-  '<th>total</th><th>vs ORDER K</th><th>vs ORDER P</th><th class="l">what it is</th></tr></thead><tbody>')
+A('<h2>The boards</h2><div class="sec-rule"></div>')
+A('<div class="scroll"><table><thead><tr>'
+  '<th class="l">Board</th><th class="l">md5</th><th>Total</th>'
+  '<th>vs ORDER K</th><th>vs ORDER P</th><th class="l">What it is</th>'
+  '</tr></thead><tbody>')
 for l in LAB:
-    A('<tr><td class="l"><b>%s</b></td><td class="l mut"><code>%s</code></td><td>%s</td>'
-      '<td class="%s">%s</td><td class="%s">%s</td><td class="l mut">%s</td></tr>'
-      % (l, MD5[l][:8], '{:,}'.format(TOT[l]),
-         'up' if TOT[l] > TOT.get('K', 0) else 'dn', '{:+,}'.format(TOT[l] - TOT.get('K', 0)),
-         'up' if TOT[l] > TOT.get('P', 0) else 'dn', '{:+,}'.format(TOT[l] - TOT.get('P', 0)),
+    dk = TOT[l] - TOT.get('K', 0)
+    dp = TOT[l] - TOT.get('P', 0)
+    A('<tr><td class="l"><b>%s</b></td><td class="l mono">%s</td>'
+      '<td class="tot">%s</td><td class="num %s">%s</td><td class="num %s">%s</td>'
+      '<td class="l" style="color:var(--muted)">%s</td></tr>'
+      % (l, MD5[l][:8], '{:,}'.format(TOT[l]), cls_of(dk), fs(dk), cls_of(dp), fs(dp),
          html.escape(NICE[l])))
 A('</tbody></table></div>')
 if MISSING_CENSUS:
-    A('<p class="mut">Charge columns are absent for: %s &mdash; the engine-measured census for those '
-      'boards is not on disk. Reported as absent, never as zero.</p>' % ', '.join(MISSING_CENSUS))
+    A('<p style="color:var(--muted)">Charge columns are absent for %s &mdash; the engine-measured '
+      'census for those boards is not on disk. <b>Reported as absent, never as zero.</b></p>'
+      % ', '.join(MISSING_CENSUS))
 
-A('<h2>Summary</h2>')
-for s, nm in STEPS:
-    e = SUM['steps'][s]
-    A('<h3>%s</h3>' % html.escape(nm))
-    A('<div class="grid">')
-    for kk, vv, cls in (('rows that ROSE in points', e['up'], 'up'),
-                        ('rows that FELL in points', e['down'], 'dn'),
-                        ('rows unchanged', e['flat'], 'mut'),
-                        ('net points', '{:+,}'.format(e['net']), 'up' if e['net'] > 0 else 'dn'),
-                        ('rows that ROSE in RANK', e['rank_up'], 'up'),
-                        ('rows that FELL in RANK', e['rank_down'], 'dn')):
-        A('<div class="stat"><div class="k">%s</div><div class="v %s">%s</div></div>' % (kk, cls, vv))
+STEPLBL = {'PK': ('ORDER K', 'ORDER P', 'The mechanism is introduced'),
+           'SPAN_P': ('ORDER P', SPAN, 'The softening'),
+           'ARC': ('ORDER K', SPAN, 'The whole arc')}
+for st, nm in STEPS:
+    e = SUM['steps'][st]
+    fr, to, what = STEPLBL[st]
+    A('<div class="step"><span class="from">%s</span><span class="arrow">&rarr;</span>'
+      '<span class="to">%s</span><span class="what">%s</span></div>' % (fr, to, what))
+    A('<div class="stats">')
+    for k, v, c in (('Rows up in points', '{:,}'.format(e['up']), 'pos'),
+                    ('Rows down in points', '{:,}'.format(e['down']), 'neg'),
+                    ('Unchanged', '{:,}'.format(e['flat']), ''),
+                    ('Net points', '{:+,}'.format(e['net']), cls_of(e['net'])),
+                    ('Rows up in rank', '{:,}'.format(e['rank_up']), 'pos'),
+                    ('Rows down in rank', '{:,}'.format(e['rank_down']), 'neg')):
+        A('<div class="stat"><div class="k">%s</div><div class="v %s">%s</div></div>' % (k, c, v))
     A('</div>')
     if e['null']:
-        A('<p class="mut">%d rows could not be scored on both sides of this step and are counted as '
-          'NULLS, never as zeros. The reason is in each row\'s note column.</p>' % e['null'])
-    A('<div class="scroll"><table><thead><tr><th class="l">pick band</th><th>n</th><th>pts up</th>'
-      '<th>pts down</th><th>net pts</th><th>rank up</th><th>rank down</th></tr></thead><tbody>')
+        A('<p style="color:var(--muted)">%d rows could not be scored on both sides of this step. They '
+          'are counted as <b>nulls, never as zeros</b>, and each carries its reason in the note '
+          'column of the ledger.</p>' % e['null'])
+    mxb = max([abs(d['net']) for d in e['by_band'].values()] or [1])
+    A('<h3>By pick band</h3>')
+    A('<div class="scroll"><table><thead><tr><th class="l">Band</th><th>n</th>'
+      '<th>Up</th><th>Down</th><th>Net points</th><th class="sep">Rank up</th><th>Rank down</th>'
+      '</tr></thead><tbody>')
     for b, d in e['by_band'].items():
-        A('<tr><td class="l">%s</td><td>%d</td><td class="up">%d</td><td class="dn">%d</td>'
-          '<td class="%s">%s</td><td class="up">%d</td><td class="dn">%d</td></tr>'
-          % (b, d['n'], d['up'], d['down'], 'up' if d['net'] > 0 else 'dn',
-             '{:+,}'.format(d['net']), d['rank_up'], d['rank_down']))
+        A('<tr><td class="l"><b>%s</b></td><td class="nil">%d</td>'
+          '<td class="pos">%d</td><td class="neg">%d</td>'
+          '<td class="num cell-bar %s">%s<span class="n">%s</span></td>'
+          '<td class="pos sep">%d</td><td class="neg">%d</td></tr>'
+          % (b, d['n'], d['up'], d['down'], cls_of(d['net']),
+             bar(d['net'], mxb, cls_of(d['net'])), fs(d['net']), d['rank_up'], d['rank_down']))
     A('</tbody></table></div>')
-    A('<div class="scroll"><table><thead><tr><th class="l">cohort</th><th>n</th><th>pts up</th>'
-      '<th>pts down</th><th>net pts</th><th>rank up</th><th>rank down</th></tr></thead><tbody>')
+    coh = [(c, d) for c, d in e['by_cohort'].items() if d['up'] is not None]
+    mxc = max([abs(d['net']) for _, d in coh] or [1])
+    A('<h3>By cohort year <span style="font-weight:400;color:var(--muted)">'
+      '(draft year + 1, except MSD where it is the draft year &mdash; the engine&rsquo;s own clock)'
+      '</span></h3>')
+    A('<div class="scroll"><table><thead><tr><th class="l">Cohort</th><th>n</th>'
+      '<th>Up</th><th>Down</th><th>Net points</th><th class="sep">Rank up</th><th>Rank down</th>'
+      '</tr></thead><tbody>')
     for c, d in e['by_cohort'].items():
         if d['up'] is None:
-            A('<tr><td class="l mut">%s</td><td>%d</td><td colspan="5" class="l mut">not scored</td></tr>'
+            A('<tr><td class="l nil">%s</td><td class="nil">%d</td>'
+              '<td class="l nil" colspan="5">not scored &mdash; a null, reported as one</td></tr>'
               % (html.escape(str(c)), d['n']))
             continue
-        A('<tr><td class="l">%s</td><td>%d</td><td class="up">%d</td><td class="dn">%d</td>'
-          '<td class="%s">%s</td><td class="up">%d</td><td class="dn">%d</td></tr>'
-          % (c, d['n'], d['up'], d['down'], 'up' if d['net'] > 0 else 'dn',
-             '{:+,}'.format(d['net']), d['rank_up'], d['rank_down']))
+        A('<tr><td class="l"><b>%s</b></td><td class="nil">%d</td>'
+          '<td class="pos">%d</td><td class="neg">%d</td>'
+          '<td class="num cell-bar %s">%s<span class="n">%s</span></td>'
+          '<td class="pos sep">%d</td><td class="neg">%d</td></tr>'
+          % (c, d['n'], d['up'], d['down'], cls_of(d['net']),
+             bar(d['net'], mxc, cls_of(d['net'])), fs(d['net']), d['rank_up'], d['rank_down']))
     A('</tbody></table></div>')
-    for lab2, key in (('Ten largest movers UP', 'top_up'), ('Ten largest movers DOWN', 'top_down')):
-        A('<h3>%s &mdash; %s</h3>' % (lab2, html.escape(nm)))
-        if not e[key]:
-            A('<p class="mut">(none &mdash; a null, reported as one)</p>')
-            continue
-        A('<div class="scroll"><table><thead><tr><th class="l">player</th><th>pick</th>'
-          '<th class="l">band</th><th>age</th><th>points</th><th>percent</th><th>rank change</th>'
-          '</tr></thead><tbody>')
-        for r in e[key]:
-            A('<tr><td class="l">%s</td><td>%s</td><td class="l">%s</td><td>%s</td>'
-              '<td class="%s">%s</td><td class="%s">%s</td><td class="%s">%s</td></tr>'
-              % (html.escape(str(r['player'])), r['pick'] if r['pick'] else 'pool', r['band'],
-                 r['age'] if r['age'] is not None else '',
-                 'up' if r['d'] > 0 else 'dn', fs(r['d']),
-                 'up' if r['d'] > 0 else 'dn', fp(r['dpct']),
-                 'up' if (r['drank'] or 0) > 0 else 'dn', fs(r['drank'])))
-        A('</tbody></table></div>')
+    A('<h3>The ten largest movers each way</h3>')
+    A('<div class="scroll"><table><thead><tr>'
+      '<th class="l">Player</th><th>Pick</th><th class="l">Band</th><th>Age</th>'
+      '<th>Points</th><th>Percent</th><th>Rank</th>'
+      '<th class="sep l">Player</th><th>Pick</th><th class="l">Band</th><th>Age</th>'
+      '<th>Points</th><th>Percent</th><th>Rank</th>'
+      '</tr></thead><tbody>')
+    up, dn = e['top_up'], e['top_down']
+    for i in range(max(len(up), len(dn), 1)):
+        cells = []
+        for j, src in ((0, up), (1, dn)):
+            sepc = ' sep' if j else ''
+            if i < len(src):
+                r = src[i]
+                cc = cls_of(r['d']); dr = r['drank']
+                cells.append(
+                    '<td class="l%s">%s</td><td class="nil">%s</td><td class="l nil">%s</td>'
+                    '<td class="nil">%s</td><td class="num %s">%s</td><td class="%s">%s</td>'
+                    '<td><span class="chip %s">%s</span></td>'
+                    % (sepc, html.escape(str(r['player'])),
+                       r['pick'] if r['pick'] else 'pool', r['band'],
+                       r['age'] if r['age'] is not None else '',
+                       cc, fs(r['d']), cc, fp(r['dpct']),
+                       'up' if (dr or 0) > 0 else ('dn' if (dr or 0) < 0 else ''), fs(dr) or '0'))
+            else:
+                cells.append('<td class="l%s nil">&mdash;</td><td colspan="6"></td>' % sepc)
+        A('<tr>' + ''.join(cells) + '</tr>')
+    A('</tbody></table></div>')
 
-A('<h2>Every row, sorted by the whole-arc absolute move</h2>')
-A('<p>Sorted by the size of <b>%s minus ORDER K</b>, largest first, so the biggest movers in both '
-  'directions are at the top. Rank 1 is the most valuable row of the %d. A POSITIVE rank change means '
-  'the row moved UP the board.</p>' % (SPAN, len(REC)))
-A('<p class="mut">Mechanism diagnostics: <b>pg</b> is the pedigree premium PG(ln v0, class) in points '
-  'a game; <b>s(age)</b> is production against the S1 age bar alone; <b>s(ped)</b> is production '
-  'against the age bar PLUS the premium, which is what the charge actually reads. By construction '
-  's(ped) = s(age) &minus; pg. <b>chg</b> columns are the share of the pedigree leg removed.</p>')
-A('<div class="scroll"><table><thead><tr>')
-head = (['player', 'coh', 'pos', 'path', 'pick', 'age', 'g', 'v0', 'pg', 's(age)', 's(ped)']
-        + ['%s' % l for l in LAB] + ['#%s' % l for l in LAB]
-        + ['chg %s' % l for l in LAB if l in CH]
-        + ['P&minus;K', '%', '&Delta;#', '%s&minus;P' % SPAN, '%', '&Delta;#',
-           'ARC', '%', '&Delta;#', 'note'])
-for i, h in enumerate(head):
-    A('<th class="%s">%s</th>' % ('l' if i in (0, 2, 3) or h == 'note' else '', h))
-A('</tr></thead><tbody>')
+A('<h2>Every row, sorted by the whole-arc move</h2><div class="sec-rule"></div>')
+A('<p class="narrow">Sorted by the size of <b>%s minus ORDER K</b>, largest first, so the biggest '
+  'movers in both directions sit at the top. Rank 1 is the most valuable of the %d rows, and a '
+  '<b>positive</b> rank change means the row moved <b>up</b> the board. The player column stays put '
+  'as you scroll sideways.</p>' % (SPAN, len(REC)))
+A('<p class="narrow" style="color:var(--muted)">Mechanism diagnostics: <b>PG</b> is the pedigree '
+  'premium at the row&rsquo;s entry price, in points a game. <b>s(age)</b> is production against the '
+  'S1 age bar alone; <b>s(ped)</b> is production against that bar <i>plus</i> the premium, which is '
+  'what the charge actually reads. By construction s(ped) = s(age) &minus; PG. The <b>chg</b> columns '
+  'are the share of the pedigree leg removed on each board.</p>')
+A('<div class="scroll tall"><table class="ledger"><thead><tr>')
+A('<th class="name">Player</th><th>Coh</th><th class="l">Pos</th><th class="l">Path</th>'
+  '<th>Pick</th><th>Age</th><th>G</th><th>v0</th>'
+  '<th class="sep">PG</th><th>s(age)</th><th>s(ped)</th>')
+for i, l in enumerate(LAB):
+    A('<th class="%s">%s</th>' % ('sep' if i == 0 else '', l))
+for i, l in enumerate(LAB):
+    A('<th class="%s">#%s</th>' % ('sep' if i == 0 else '', l))
+_first = True
+for l in LAB:
+    if l in CH:
+        A('<th class="%s">chg %s</th>' % ('sep' if _first else '', l))
+        _first = False
+for i, lbl in enumerate(('P&minus;K', '%', '&Delta;#', '%s&minus;P' % SPAN, '%', '&Delta;#',
+                         'ARC', '%', '&Delta;#')):
+    A('<th class="%s">%s</th>' % ('sep' if i == 0 else '', lbl))
+A('<th class="l sep">Note</th></tr></thead><tbody>')
 for r in REC:
-    c = []
-    c.append('<td class="l">%s</td>' % html.escape(str(r['player'])))
-    c.append('<td>%s</td>' % (r['cohort'] if r['cohort'] is not None else '<span class="mut">null</span>'))
-    c.append('<td class="l">%s</td>' % (r['pos'] or ''))
-    c.append('<td class="l">%s</td>' % (r['pathway'] or ''))
-    c.append('<td>%s</td>' % (r['pick'] if r['pick'] else ''))
-    c.append('<td>%s</td>' % (r['age'] if r['age'] is not None else ''))
-    c.append('<td>%s</td>' % f0(r['games']))
-    c.append('<td>%s</td>' % f0(r['v0']))
-    c.append('<td>%s</td>' % f2(r['pg']))
-    c.append('<td>%s</td>' % f2(r['s_age']))
-    c.append('<td>%s</td>' % f2(r['s_ped']))
-    for l in LAB:
-        c.append('<td>%s</td>' % f0(r.get('v_' + l)))
-    for l in LAB:
-        c.append('<td class="mut">%s</td>' % f0(r.get('rank_' + l)))
+    c = ['<td class="name">%s</td>' % html.escape(str(r['player'])),
+         '<td>%s</td>' % (r['cohort'] if r['cohort'] is not None
+                          else '<span class="nil">null</span>'),
+         '<td class="l">%s</td>' % (r['pos'] or ''),
+         '<td class="l">%s</td>' % (r['pathway'] or ''),
+         '<td>%s</td>' % (r['pick'] if r['pick'] else '<span class="nil">pool</span>'),
+         '<td>%s</td>' % (r['age'] if r['age'] is not None else ''),
+         '<td>%s</td>' % f0(r['games']),
+         '<td>%s</td>' % f0(r['v0']),
+         '<td class="sep">%s</td>' % f2(r['pg']),
+         '<td>%s</td>' % f2(r['s_age']),
+         '<td>%s</td>' % f2(r['s_ped'])]
+    for j, l in enumerate(LAB):
+        c.append('<td class="%s">%s</td>' % ('sep' if j == 0 else '', f0(r.get('v_' + l))))
+    for j, l in enumerate(LAB):
+        c.append('<td class="nil%s">%s</td>' % (' sep' if j == 0 else '', f0(r.get('rank_' + l))))
+    fst = True
     for l in LAB:
         if l in CH:
-            c.append('<td>%s</td>' % fc(r.get('charge_' + l)))
-    for s, _ in STEPS:
-        d = r['d_' + s]
-        cls = 'up' if (d or 0) > 0 else ('dn' if (d or 0) < 0 else 'mut')
-        c.append('<td class="%s">%s</td>' % (cls, fs(d)))
-        c.append('<td class="%s">%s</td>' % (cls, fp(r['dpct_' + s])))
-        dr = r['drank_' + s]
-        c.append('<td class="%s">%s</td>' % ('up' if (dr or 0) > 0 else ('dn' if (dr or 0) < 0 else 'mut'), fs(dr)))
-    c.append('<td class="l mut">%s</td>' % html.escape(r['note']))
+            c.append('<td class="%s">%s</td>' % ('sep' if fst else '', fc(r.get('charge_' + l))))
+            fst = False
+    for j, (st, _x) in enumerate(STEPS):
+        d = r['d_' + st]; dr = r['drank_' + st]
+        c.append('<td class="num %s%s">%s</td>' % (cls_of(d), ' sep' if j == 0 else '', fs(d)))
+        c.append('<td class="%s">%s</td>' % (cls_of(d), fp(r['dpct_' + st])))
+        c.append('<td><span class="chip %s">%s</span></td>'
+                 % ('up' if (dr or 0) > 0 else ('dn' if (dr or 0) < 0 else ''), fs(dr) or '0'))
+    c.append('<td class="l sep nil">%s</td>' % html.escape(r['note']))
     A('<tr>' + ''.join(c) + '</tr>')
 A('</tbody></table></div>')
-A('<h2>What this page is not</h2>')
-A('<p>It is a report. <b>No player\'s value is an acceptance criterion</b> and not one constant in '
-  'ORDER R was chosen with any row in view. That is a standing prohibition in this project after a '
-  'real error. Nothing on this page is adopted, nothing lands, and no variant is recommended.</p>')
+A('<div class="foot"><p class="narrow"><strong>What this page is not.</strong> It is a report. '
+  '<strong>No player&rsquo;s value is an acceptance criterion</strong> and not one constant in ORDER R '
+  'was chosen with any row in view &mdash; a standing prohibition in this project after a real error. '
+  'Nothing on this page is adopted, nothing lands, and no variant is recommended.</p>'
+  '<p class="narrow mono">ORDER R &middot; engine ea5c5e5e &middot; store cb38ef11 &middot; '
+  'ARC_R.csv &middot; ARC_R.json</p></div>')
 A('</div>')
 open(os.path.join(HERE, 'ARC_R.html'), 'w').write('\n'.join(H) + '\n')
 print('wrote ARC_R.csv, ARC_R.json, ARC_R.html   (%d rows, %d boards, spanning variant %s)'
       % (len(REC), len(LAB), SPAN))
-for s, nm in STEPS:
-    e = SUM['steps'][s]
+for _st, _nm in STEPS:
+    _e = SUM['steps'][_st]
     print('  %-52s up %3d  down %3d  flat %3d  null %2d  net %+8d'
-          % (nm, e['up'], e['down'], e['flat'], e['null'], e['net']))
+          % (_nm, _e['up'], _e['down'], _e['flat'], _e['null'], _e['net']))

@@ -970,5 +970,9 @@ that were not are named here and were named on `PREREG_R.md` before the first bu
 | `or_class.py` · `CLASS_R.json` · `CLASS_R_out.txt` | the class marks on both bases and the per-class table for all thirteen boards |
 | `or_boards.py` · `BOARDS_R.json` · `BOARDS_R_out.txt` | totals, falsifiers, mature-row movement, the named rows, the movers ledgers |
 | **`or_arc.py` · `ARC_R.csv` · `ARC_R.json` · `ARC_R.html`** | **the whole-arc movers list** — one row per player, all 804, ORDER K → ORDER P → every variant, values, ranks, deltas and mechanism diagnostics |
+
+**The readable movers page is also published at**
+`https://claude.ai/code/artifact/2d9aa722-50fe-4243-a8d5-b822f1c113d1` — private to the owner's
+account until he shares it. It is the same file as `ARC_R.html` in this directory.
 | `or_digest.py` · `DIGEST_R_out.txt` | a compact digest of every result, so this packet quotes files rather than memory |
 | `run_measureR.sh` · `run_afterbuildR.sh` · `MEASURE_R_out.txt` · `AFTERBUILD_R_out.txt` | the sequential run chain |
