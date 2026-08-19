@@ -1,0 +1,41 @@
+========================================================================================================
+SITE 1 · THE LTI LOST-SEASON FRACTION — the one true games/season-length ratio on the board
+========================================================================================================
+  L = 1 - min(g2026 / G_FULL, 1)      lti_register.py:117      G_FULL = 22
+  CONSUMERS: (a) _avail_hc, the Part-1 present haircut (lost production) -> LOWERS price;
+             (b) the LTI clock advance  g += L*cp.SEASON  [_merged_recover.py:1380].
+  IDENTITY: L*SEASON == SEASON - g2026. The advance adds "the games he would have played".
+
+  key                      g2026     L@22     L@18 phantom22 phantom18   price
+  andy-moniz-wakefield         2   0.9091   0.8889      20.0      16.0      38
+  archie-may                  10   0.5455   0.4444      12.0       8.0     337
+  brayden-fiorini              2   0.9091   0.8889      20.0      16.0     180
+  brody-mihocek               10   0.5455   0.4444      12.0       8.0      30
+  connor-rozee                 2   0.9091   0.8889      20.0      16.0    2559
+  deven-robertson              4   0.8182   0.7778      18.0      14.0     130
+  esava-ratugolea              8   0.6364   0.5556      14.0      10.0      67
+  ewan-mackinlay              14   0.3636   0.2222       8.0       4.0     109
+  harry-edwards                2   0.9091   0.8889      20.0      16.0      89
+  jacob-newton                 3   0.8636   0.8333      19.0      15.0     183
+  jai-culley                   7   0.6818   0.6111      15.0      11.0     157
+  jamie-elliott               11   0.5000   0.3889      11.0       7.0       8
+  joel-amartey                15   0.3182   0.1667       7.0       3.0      37
+  jonty-faull                 10   0.5455   0.4444      12.0       8.0     550
+  josh-gibcus                  1   0.9545   0.9444      21.0      17.0     176
+  judson-clarke                1   0.9545   0.9444      21.0      17.0      55
+  matt-carroll                10   0.5455   0.4444      12.0       8.0     619
+  ollie-lord                   1   0.9545   0.9444      21.0      17.0      74
+  oscar-steene                 8   0.6364   0.5556      14.0      10.0     346
+  sam-darcy                    6   0.7273   0.6667      16.0      12.0    4450
+  sam-flanders                12   0.4545   0.3333      10.0       6.0    1923
+  toby-pink                    5   0.7727   0.7222      17.0      13.0      39
+
+  BOARD CONFIRMATION: 41 of 43 register rows carry avail_hc EXACTLY equal to L@22.
+  This site is LIVE on the delivered board, not theoretical.
+
+  rows with zero 2026 games (L=1.0 on any norm, unaffected): 21
+  rows where the norm BITES today: 22
+
+  WORKED EXAMPLE, no target: a row with 15 games in 2026 who is then registered out is booked
+  as having lost 31.8%% of a season. On an 18-game realistic season he lost 16.7%%. The haircut
+  is close to DOUBLE what the owner's reading of a full season would give.
