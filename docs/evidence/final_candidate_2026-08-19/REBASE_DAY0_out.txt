@@ -1,0 +1,51 @@
+======================================================================================================================
+DAY-0 PRINT REFERENCE — REGENERATED ON THE PARITY BOARD a05fe951  (tag CP_CAND)
+======================================================================================================================
+  authority : v763 bake item -> v769 pull-forward -> v771 parity ruling (the STOP) ->
+              v773 six-row finding (D7-F8 FIRED) -> v774 owner completion word on a05fe951
+  disclosure: docs/evidence/final_candidate_2026-08-19/REBASE_DAY0_AMENDED.md — pushed BEFORE this run
+  supersedes: REBASE_DAY0.md at d5c37da (three rows, superseded board daa16812) — NOT deleted
+  precedent : ORDER D (pick-curve fade) and ORDER K (tall/small factor) each regenerated this file
+  generator : ok_day0.py carried; board path, dial line, output name, and the ASSERTION BLOCK
+  engine    : 29376d5a73a3e8274fcebe5cd90ada0b
+  v0surf    : 5dd34ca82735f5c8f021b1c7320df8f8   (RL_V0SURF_PKL bound EXPLICITLY — register v767 footgun)
+  sheet     : b26798c35adcd9bda5cef50ff2c884da
+  dial line : RL_O31=1 RL_O32=1 RL_O36=1 RL_O36_ETA=0.50 RL_O36_FLOORFIX=1 RL_O36_GAMMA=8.0 RL_O36_GAMMA_D=14.0 RL_O36_KAPPA=0.20 RL_O36_LAMBDA=1.08 RL_O36_LAM_S1=0.40 RL_O36_TALL=1 RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_BETASAT=0.105 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=15 RL_O40_PGMAT=1 RL_O40_RECW=0.47 RL_O41_BREAK=unwind RL_O41_CREDIT=1 RL_O41_INJ=1 RL_O41_R3=1 RL_O41_RAMP=1 RL_O41_RESET=1 RL_O41_SDOFF=2.98 RL_O41_UNWIND=7 RL_O42=1 RL_O43=1
+  U0 = 7 return games — OWNER-RULED, DATA-SUPPORTED
+  board     : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/compscratch/bb_CP_CAND/rl_after/rl_app_data.json
+  board md5 : a05fe951f78482c70520480e184c80ec   BASE_REF 2026
+
+ASSERTIONS AGAINST THE OLD REFERENCE  docs/evidence/order_k_2026-08-18/DAY0_K.json  (board f3101883, 89 of 89 at tolerance 0)
+----------------------------------------------------------------------------------------------------------------------
+  A7  printed-day-0 identity on the WRITTEN board a05fe951 : 89 of 89 at tolerance 0  (ND 46, pool 43)
+  A1  key set        : new 89 rows, old 89 rows, symmetric difference 0
+  A2  derived_v0     : BIT-IDENTICAL on 89 of 89  — the matrix year-0 column does not move
+  A3  printed movers : 6  ['blake-thredgold', 'harley-barker', 'liam-hetherton', 'max-king-syd', 'noah-chamberlain', 'ollie-murphy']
+      exactly the SIX rows the D7 parity harness named, no more and no fewer.
+  A4  each mover against the D7 parity harness's OWN raw output (PARITY_TABLE_out.txt):
+      key                 old print  new print     D7 old     D7 new     derived_v0 (unmoved)   verdict
+      blake-thredgold           372        381        372        381        503.3749976437530   MATCHES THE D7 TABLE
+      harley-barker             481        504        481        504        843.1284944911190   MATCHES THE D7 TABLE
+      liam-hetherton             66         70         66         70        117.3045071268168   MATCHES THE D7 TABLE
+      max-king-syd              129        138        129        138        278.3691443496010   MATCHES THE D7 TABLE
+      noah-chamberlain           37         40         37         40         86.6490308603825   MATCHES THE D7 TABLE
+      ollie-murphy              196        200        196        200        398.3582851316144   MATCHES THE D7 TABLE
+  A5  sheet          : 219 rows, 37 annotated injured=Y (engine-resolved to 37 store keys); 11 of the 89 wired entrants are annotated
+      annotated wired entrants: ['blake-thredgold', 'harley-barker', 'kobe-mcdonald', 'liam-hetherton', 'max-king-syd', 'nathan-wardius', 'noah-chamberlain', 'ollie-murphy', 'ricky-mentha', 'rob-monahan', 'sam-allen']
+      every moved row is annotated injured=Y. 5 annotated wired entrants did NOT move: ['kobe-mcdonald', 'nathan-wardius', 'ricky-mentha', 'rob-monahan', 'sam-allen']
+  A6  non-movers     : 83 of 83 rows BYTE-IDENTICAL on every field ['key', 'ty', 'pos', 'pick', 'cell', 'printed', 'derived_v0', 'fade_D', 'day0_price']
+  A8  direction      : 6 of 6 movers move strictly UP  (RL_O43 is a max — it can only RAISE)
+      blake-thredgold       372 -> 381     +9  UP
+      harley-barker         481 -> 504     +23  UP
+      liam-hetherton         66 -> 70      +4  UP
+      max-king-syd          129 -> 138     +9  UP
+      noah-chamberlain       37 -> 40      +3  UP
+      ollie-murphy          196 -> 200     +4  UP
+  A9  parity-restored rows (moved on the SUPERSEDED board daa16812, must NOT move here):
+      kobe-mcdonald      frozen     40 | priced     40 | expected     40   RESTORES EXACTLY
+      sam-allen          frozen    450 | priced    450 | expected    450   RESTORES EXACTLY
+----------------------------------------------------------------------------------------------------------------------
+ALL NINE ASSERTIONS PASS. 83 of 89 rows byte-identical to the ORDER K reference; exactly 6 move (blake-thredgold, harley-barker, liam-hetherton, max-king-syd, noah-chamberlain, ollie-murphy), every one sheet-annotated injured=Y, every one UP, each to the value the D7 parity harness itself published; sam-allen and kobe-mcdonald restore exactly.
+
+PRINTED DAY-0 IDENTITY: 89 of 89 at tolerance 0 (ND 46, pool 43) on board a05fe951f784
+DAY0_CP.json written  (md5 210510fe5d09)

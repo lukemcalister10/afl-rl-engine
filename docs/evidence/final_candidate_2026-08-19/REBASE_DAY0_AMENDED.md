@@ -248,3 +248,79 @@ anything else, that is reported as a failure and no matrix is used.
 | `docs/evidence/order_k_2026-08-18/DAY0_K.json` | the ORDER K reference — untouched, filed history |
 
 **Priced, not adopted.**
+
+---
+
+## 8 · APPENDIX — ADDED AFTER THE RUN: TWO INSTRUMENT DEFECTS THE FIRST RUN EXPOSED
+
+**This section is appended after `cprb_day0.py` was run. §§0–7 above are as pushed at `355152c`,
+before the reference was touched, and are not edited.** The first run of `cprb_day0.py` **HALTED with
+three assertion failures**. Both root causes were in the **carried instrument**, not in the board, and
+both are recorded here rather than quietly corrected.
+
+### 8.1 · The carried generator pre-dated the D7 second wiring site — A7 and A6
+
+`ok_day0.py` → `fcrb_day0.py` forms the day-0 price as `d0 × o31_D(p, Y)` — the **LIVE (injury)**
+fade. Under `RL_O43` the engine's own `_entry30b_price` no longer does that: it multiplies by the
+fade ratio `_dh/_dl` out of `_D7_DFADE`, so the price is formed on the **healthy** fade wherever the
+healthy counterpart wins (`PACKET_D7.md` §5, the second wiring site). **A generator that keeps the old
+formula measures a different law from the one the board was written with.**
+
+First run, with the stale formula:
+
+```
+  A7  printed-day-0 identity on the WRITTEN board a05fe951 : 82 of 89 at tolerance 0
+      MISMATCHES: harley-barker, blake-thredgold, sam-allen, max-king-syd,
+                  noah-chamberlain, liam-hetherton, kobe-mcdonald
+  A6  non-movers : 81 of 83 byte-identical  (sam-allen, kobe-mcdonald moved on fade_D / day0_price)
+```
+
+Those seven are exactly the rows where the healthy fade won — the six movers **less** `ollie-murphy`
+(a riser, whose injury-regime fade is already the max, so no ratio applies) **plus** `sam-allen` and
+`kobe-mcdonald`. **The board was self-consistent the whole time**; the engine's own in-board assert
+read **89 of 89** on this same board. The fix reads the engine's own ratio, character for character
+as the engine applies it — **the assertion is not relaxed and the engine is not touched.** A7 then
+reads **89 of 89**, agreeing with the board's own assert.
+
+**A6 then reads 83 of 83 byte-identical on EVERY field**, `fade_D` and `day0_price` included: under
+the guard the healthy fade for `sam-allen` and `kobe-mcdonald` reproduces ORDER K's fade **exactly**,
+not merely to the rounded integer. The assertion as disclosed in §5 holds in full.
+
+### 8.2 · The membership join — the artifact `PACKET_D7.md` §4.2 already named
+
+A5 tested annotation by **re-normalising the sheet's `player` column**. That mis-maps the three rows
+the D7 seat already caught: `Maxwell King` (Sydney) → naive `maxwell-king` → **engine key
+`max-king-syd`**. So A5 fired on `max-king-syd` — **a row that IS annotated `injured=Y`, sheet line
+126.** The row was never unannotated; **the join was wrong.**
+
+The fix reads the annotated set out of the engine's own `_AVAIL_STATE`, which the ORDER 42 builder
+constructs by matching the normalised sheet name against **both** the record's `key` and its `player`
+field, and which it **asserts** is a 37 → 37 distinct-single-record correspondence (halting on a miss,
+a duplicate or an ambiguity). **This is strictly stronger than the naive test, not weaker.**
+
+### 8.3 · A corrected count, against this seat's own convenience
+
+§5 above says *"Only 10 of the 89 wired entrants are annotated on the sheet at all."* That number was
+carried from the superseded `REBASE_DAY0.md` and it is **wrong** — it is the naive join's count.
+**The engine resolves 11 of the 89 wired entrants as annotated**, the eleventh being `max-king-syd`:
+
+```
+  A5  annotated wired entrants: blake-thredgold, harley-barker, kobe-mcdonald, liam-hetherton,
+      max-king-syd, nathan-wardius, noah-chamberlain, ollie-murphy, ricky-mentha, rob-monahan,
+      sam-allen
+      every moved row is annotated injured=Y. 5 annotated wired entrants did NOT move:
+      kobe-mcdonald, nathan-wardius, ricky-mentha, rob-monahan, sam-allen
+```
+
+A5 is therefore a subset test against a set of **11**, not 10. **It still has real teeth**: 5 of the
+11 annotated wired entrants do **not** move, so annotation alone does not carry a row through.
+
+### 8.4 · What did NOT change
+
+**None of the order's four halt conditions fired, on either run.** No seventh row moved; no named row
+failed to move; no mover was unannotated once the join was read off the engine; nothing moved down.
+`A3`, `A4`, `A8` and `A9` passed **on the first run too**, before either fix — the six-row finding
+never depended on the two defects. `DAY0_CP.json` was written only after all nine assertions passed.
+
+Both fixes are **SCRIPT changes to an evidence instrument**, of the same class as the `RL_O43`
+pass-through disclosed in §2a. **No engine file, no emitter file, and no guard was modified.**
