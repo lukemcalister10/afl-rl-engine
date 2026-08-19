@@ -1,11 +1,11 @@
 ==========================================================================================================================
 THE R3 BIRTHDAY QUESTION — IS THE CONTINUITY HARNESS READING A BOARD DEFECT OR ITS OWN GAP?
 ==========================================================================================================================
-  board before R3   1270991c    666,263
-  THE CANDIDATE     81cf787b    665,238
+  board before R3   5cc1fca4    666,274
+  THE CANDIDATE     db1ccef5    665,249
   R3-charged rows   9   total marginal -1025
 
-  engine md5  6682e52b
+  engine md5  e886222f
 
 SELF-CHECK 1 — the re-formed take must equal the ENGINE's own take at every call, exactly.
   calls checked 1200   worst absolute disagreement 0.000e+00   EXACT

@@ -1,0 +1,144 @@
+{
+ "boards": {
+  "pre": "1270991c",
+  "binary_noramp": "81cf787b",
+  "binary": "db1ccef5",
+  "fractional": "d0efbbce",
+  "unwind": "a411487e",
+  "ident_p": "374d4e44"
+ },
+ "totals": {
+  "pre": 666263,
+  "binary_noramp": 665238,
+  "binary": 665249,
+  "fractional": 649988,
+  "unwind": 660681
+ },
+ "U0": 5.0,
+ "ramp_rows": [
+  {
+   "key": "clay-hall",
+   "delta": 6
+  },
+  {
+   "key": "elijah-hollands",
+   "delta": 3
+  },
+  {
+   "key": "max-king-stk",
+   "delta": 1
+  },
+  {
+   "key": "jamarra-ugle-hagan",
+   "delta": 1
+  },
+  {
+   "key": "matthew-flynn",
+   "delta": -1
+  },
+  {
+   "key": "nikolas-cox",
+   "delta": -1
+  },
+  {
+   "key": "cody-weightman",
+   "delta": 1
+  },
+  {
+   "key": "lachlan-fogarty",
+   "delta": 1
+  }
+ ],
+ "named": [
+  {
+   "name": "Will Brodie",
+   "g": 1.0,
+   "u": 0.2,
+   "pre": 767,
+   "binary": 767,
+   "unwind": 147,
+   "note": "*** STRIPPED \u2014 binary shielded him, unwind charges 620 ***"
+  },
+  {
+   "name": "Toby Conway",
+   "g": 0.0,
+   "u": 0.0,
+   "pre": 1066,
+   "binary": 460,
+   "unwind": 460,
+   "note": "identical under both"
+  },
+  {
+   "name": "Harry Barnett",
+   "g": 0.0,
+   "u": 0.0,
+   "pre": 674,
+   "binary": 422,
+   "unwind": 422,
+   "note": "identical under both"
+  },
+  {
+   "name": "Charlie Edwards",
+   "g": 2.0,
+   "u": 0.4,
+   "pre": 468,
+   "binary": 468,
+   "unwind": 284,
+   "note": "*** STRIPPED \u2014 binary shielded him, unwind charges 184 ***"
+  },
+  {
+   "name": "Nick Madden",
+   "g": 7.0,
+   "u": 1.0,
+   "pre": 1064,
+   "binary": 1064,
+   "unwind": 1064,
+   "note": "untouched by either rule"
+  },
+  {
+   "name": "Noah Mraz",
+   "g": 4.0,
+   "u": 0.8,
+   "pre": 2029,
+   "binary": 2029,
+   "unwind": 1232,
+   "note": "*** STRIPPED \u2014 binary shielded him, unwind charges 797 ***"
+  },
+  {
+   "name": "Jedd Busslinger",
+   "g": 8.0,
+   "u": 1.0,
+   "pre": 801,
+   "binary": 801,
+   "unwind": 801,
+   "note": "untouched by either rule"
+  },
+  {
+   "name": "Taylor Goad",
+   "g": 2.0,
+   "u": 0.4,
+   "pre": 728,
+   "binary": 728,
+   "unwind": 437,
+   "note": "*** STRIPPED \u2014 binary shielded him, unwind charges 291 ***"
+  },
+  {
+   "name": "Dante Visentini",
+   "g": 13.0,
+   "u": 1.0,
+   "pre": 807,
+   "binary": 807,
+   "unwind": 807,
+   "note": "untouched by either rule"
+  },
+  {
+   "name": "Vigo Visentini",
+   "g": 1.0,
+   "u": 0.2,
+   "pre": 295,
+   "binary": 295,
+   "unwind": 188,
+   "note": "*** STRIPPED \u2014 binary shielded him, unwind charges 107 ***"
+  }
+ ]
+}

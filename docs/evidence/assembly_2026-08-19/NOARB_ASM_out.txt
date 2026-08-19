@@ -15,7 +15,7 @@ json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f5369
   12            0        226      471        0
 
 json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/asm/noarb/noarb_table_338_EXT.json
-=== ASMCAND  (48ffd892) ===
+=== ASMCAND  (af451743) ===
   12            0        226      471        0
 
 json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/asm/noarb/noarb_table_338_EXT.json

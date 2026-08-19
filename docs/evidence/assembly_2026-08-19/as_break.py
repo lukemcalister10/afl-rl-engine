@@ -50,11 +50,11 @@ def board(tag):
 
 
 PRE, mPRE = board('V750_L5C')       # the board before R3
-BIN, mBIN = board('V754_CAND')      # R3, BINARY break — THE CANDIDATE
-FRA, mFRA = board('V754_FRAC')      # R3, FRACTIONAL break
-FR2, mFR2 = board('V754_FRAC2')
+BIN, mBIN = board('V755_CAND')      # R3, BINARY break — THE CANDIDATE
+FRA, mFRA = board('V755_FRAC')      # R3, FRACTIONAL break
+FR2, mFR2 = board('V755_FRAC2')
 IDP, mIDP = board('IDENT_P')
-CHK, mCHK = board('V754_CANDC')     # dial-off re-check
+CHK, mCHK = board('V755_CANDU')     # dial-off re-check
 STORE = {x['key']: x for x in json.load(open(os.path.join(REPO, 'engine/rl_after/rl_model_data.json')))}
 
 

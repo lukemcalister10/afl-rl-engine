@@ -13,7 +13,7 @@ instrument pins, computed at run on unmodified copies:
 ######################################################################################################################
 # *** THE ASSEMBLY CANDIDATE — THE BOARD UNDER REVIEW ***   [ASMCAND]
 ######################################################################################################################
-  matrix per_entrant_ASMCAND.json  md5 48ffd892  store cb38ef11  v0surf 4405cba2b42f  records 2648
+  matrix per_entrant_ASMCAND.json  md5 af451743  store cb38ef11  v0surf 4405cba2b42f  records 2648
   ND population 1200, draft years 2004..2022, observed window end 2026
 
 ----------------------------------------------------------------------------------------------------------------------

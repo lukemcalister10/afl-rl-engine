@@ -37,6 +37,11 @@ IN_IT = [
      'players — and stays documented as thin. ONE CONSEQUENCE, STATED PLAINLY: because the schedule '
      'rises there, anything that pulls a player DOWN across that rise (an injury pause, a returning '
      'season) can lower his price rather than raise it. One row on this board does exactly that.'),
+    ('The in-season ramp on the absence clocks',
+     'how much an unfinished season counts toward an absence now rises with the season rather than '
+     'in a straight line — less early, more late. It is the engine\'s own existing shape, already '
+     'used elsewhere for exactly this question, so no new number was invented. It moves 8 rows and '
+     '11 points in total.'),
     ('The absence package',
      'a short season now earns the credit it was measured to earn instead of a full pass at two '
      'games; a delivered season restores only part of the accrued sitting clock instead of wiping '
@@ -56,14 +61,27 @@ BROKEN = [
      'Picks 31-40 fall 11.04% in year one against ORDER P\'s 8.88%, and picks 41-64 fall 7.44% '
      'against ORDER P\'s 5.03%. Both were already sell-side reds; this board makes both DEEPER. '
      'That is a real cost of the levers in it and it is not dressed up as an improvement.'),
-    ('AN OPEN DEFECT IN THE ABSENCE FADE: ONE GAME CAN SHIELD A WHOLE SEASON',
+    ('AN OPEN DEFECT IN THE ABSENCE FADE: ONE GAME CAN SHIELD A WHOLE SEASON — THREE FIXES PRICED',
      'The production fade stops the moment a player appears in a single game, because a played '
-     'season breaks the absence run outright. Measured on this board that is worth +560 points to '
-     'one player off ONE 2026 game, and 63 rows have their run broken by a season of two games or '
-     'fewer. A graded alternative has been BUILT AND PRICED — it charges by how much of the season '
-     'was actually missed, using the same measured credit curve already in the board and no new '
-     'constant — and the two sit side by side in the packet for you to choose between. '
-     'NEITHER IS ADOPTED. The board in front of you uses the ONE-GAME-BREAKS-IT rule.'),
+     'season breaks the absence run outright. Measured on this board that is worth 620 points to '
+     'one player off ONE 2026 game, and 52 rows have their run broken by a season of two games or '
+     'fewer. THREE RULES ARE NOW BUILT AND PRICED and the board in front of you still uses the '
+     'first: ONE GAME BREAKS IT (collects 1,025 from 9 rows); YOUR OWN UNWIND, where the first five '
+     'games back each knock 20% off (collects 5,593 from 45 rows); and a graded rule using the '
+     'measured credit curve (collects 16,286 from 118 rows). YOUR UNWIND IS THE ONLY ONE OF THE '
+     'THREE THAT BOTH CLOSES THE ONE-GAME HOLE AND LEAVES GENUINE RETURNERS ALONE — the graded rule '
+     'strips a player who came back for 7 games as if he had been away. NONE IS ADOPTED; the choice '
+     'is yours.'),
+    ('WHAT THE DATA SAYS ABOUT THE FIVE-GAME UNWIND — IT DISAGREES WITH IT',
+     'You ruled that five games back should clear the penalty. Measured on 134 returners, a return '
+     'of three-to-five games only reverses about 17% of the damage, not 100%, and the measured '
+     'figure stays flat at roughly a tenth to a fifth of the way back until a player gets past '
+     'fifteen games. Tested properly out of sample, every version of the five-games idea predicts '
+     'WORSE than assuming nothing about the return at all, and the slower the unwind the better it '
+     'does. TWO THINGS ARE TRUE AT ONCE AND NEITHER IS BEING HIDDEN: the measurement disagrees with '
+     'the shape, and the measurement is too weak to overturn it — it cannot even tell its own five '
+     'buckets apart. So five games stands as YOUR RULING, and it is labelled a ruling, never a '
+     'measurement. The slower versions are built and priced if you want to look at them.'),
     ('TWO INJURY REGISTERS EXIST AND THE FADE ONLY READS ONE — AN OPEN QUESTION FOR YOU',
      'The exemption that spares an injured player reads your sitter annotation. The engine ALSO '
      'carries its own long-term-injury register of 43 rows, and 21 of those are not marked injured '

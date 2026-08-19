@@ -601,13 +601,48 @@ _O41_RAMP_P=1.5                                  # D12's own exponent. Not a new
 # CREDIT CURVE the engine already carries for I1 — one measured object, two consumers, NO NEW
 # CONSTANT — so a one-game season leaves about 87% of the run intact while a full season still
 # breaks it outright.
+#   'unwind'     register v755, THE OWNER'S OWN SHAPE, priced not adopted: the accrued penalty
+#                unwinds LINEARLY over the first U0 return games — his words, "their first 5 games on
+#                return each knock 20% off the sitter penalty" — so u(g)=min(1, g/U0) with U0=5, and a
+#                season that fully unwinds (g >= U0) stops the walk.
 _O41_BREAK=(os.environ.get('RL_O41_BREAK','binary').strip().lower() or 'binary')
-if _O41_BREAK not in ('binary','fractional'):
-    raise SystemExit('ORDER 41 HALT: RL_O41_BREAK=%r. Only "binary" (the wired rule) and '
-                     '"fractional" (the F1-credit-graded rule) are priced.'%_O41_BREAK)
-if _O41_BREAK=='fractional' and not _O41_R3:
-    raise SystemExit('ORDER 41 HALT: RL_O41_BREAK=fractional but RL_O41_R3 is unset. The break rule '
-                     'shapes a collector that is not switched on.')
+if _O41_BREAK not in ('binary','fractional','unwind'):
+    raise SystemExit('ORDER 41 HALT: RL_O41_BREAK=%r. Only "binary" (the wired rule), "fractional" '
+                     '(the F1-credit-graded rule) and "unwind" (the owner\'s linear U0-game unwind) '
+                     'are priced.'%_O41_BREAK)
+if _O41_BREAK!='binary' and not _O41_R3:
+    raise SystemExit('ORDER 41 HALT: RL_O41_BREAK=%s but RL_O41_R3 is unset. The break rule '
+                     'shapes a collector that is not switched on.'%_O41_BREAK)
+# RL_O41_UNWIND — U0, THE NUMBER OF RETURN GAMES THAT FULLY UNWIND AN ACCRUED ABSENCE.
+#
+# THIS CONSTANT IS **RULED, NOT MEASURED**, AND IT IS LABELLED THAT WAY EVERYWHERE IT APPEARS.
+# It is the owner's word — 20% a game over five games — and nothing this seat holds measures it. That
+# is lawful and has precedent in this engine (G*=2, dose 0.40, eta 0.50), but the distinction is not
+# allowed to blur: NO DOCUMENT MAY DESCRIBE U0 AS MEASURED. It is exposed as a dial so the break-speed
+# adjudication (D6) can sweep 3/5/7/11 against F2's measured reversal curve rather than assert one.
+_O41_UNWIND_RAW=os.environ.get('RL_O41_UNWIND','5').strip()
+try:
+    _O41_UNWIND=float(_O41_UNWIND_RAW)
+except Exception:
+    raise SystemExit('ORDER 41 HALT: RL_O41_UNWIND=%r is not a number. U0 is a count of return games.'
+                     %_O41_UNWIND_RAW)
+if not (_O41_UNWIND>0.0):
+    raise SystemExit('ORDER 41 HALT: RL_O41_UNWIND=%r. U0 must be > 0 — it is the number of return '
+                     'games that fully unwind an accrued absence, and a non-positive value would '
+                     'unwind every absence at zero games, i.e. delete the collector silently.'
+                     %_O41_UNWIND_RAW)
+def o41_unwind(g):
+    """u(g) — the share of an ACCRUED absence penalty that a return of g games has unwound.
+
+    THE OWNER'S SHAPE, LINEAR: u(g) = min(1, g/U0), U0 = 5 by his ruling. Each of the first five
+    games on return knocks 20% off. RULED, NOT MEASURED — see the dial note above.
+
+    WHAT THIS IS NOT, SO THE TWO ARE NEVER CONFUSED: `o41_reversal` is the MEASURED F2 curve for the
+    same question and it reads 0.169 at 3-5 games where this returns 0.8. They are different objects
+    with different authority and the packet reports both against each other."""
+    _g=float(g)
+    if _g<=0.0: return 0.0
+    return min(1.0,_g/_O41_UNWIND)
 def _o41_fe(Y,p=None):
     """The in-progress season's contribution to an ABSENCE DEPTH clock. Dial off => the linear fE the
     engine has always used, byte for byte."""
@@ -4821,6 +4856,33 @@ if _O30B_PREVIEW:
         # absence standing; a sixteen-game season credits 1.0 and breaks the run outright.
         # WHY A GRADED BREAK IS THE RIGHT SHAPE HERE: the run is a DEPTH, and "how much of a season
         # did he miss" is exactly what one minus the played-credit measures.
+        # ---- RL_O41_BREAK=unwind — THE OWNER'S LINEAR U0-GAME UNWIND (register v755) ---------------
+        # STRUCTURALLY THIS IS THE FRACTIONAL WALK WITH o41_unwind SUBSTITUTED FOR o41_credit, and
+        # saying so plainly is more useful than presenting it as a new mechanism. The walk, the break
+        # condition and the in-progress term are identical; ONLY THE CURVE DIFFERS. The F1 credit curve
+        # is concave and saturates at 11 games; the owner's unwind is linear and saturates at U0 = 5.
+        #
+        # THE IN-PROGRESS INTERACTION, WIRED EXACTLY AS PREREGGED (PREREG_D4_D5.md §3.1): the GAMES are
+        # counted RAW and are NOT prorated — his phrase is "their first 5 games on return", a count of
+        # games actually played — while the ABSENCE those games fail to unwind carries the in-season
+        # weight `_o41_fe`, which under the folded-in D4 ramp is f**1.5 rather than f. The alternative
+        # (prorating the threshold to U0*f, so fewer games are needed the later it gets) is REFUSED and
+        # the reason is on the record: it would let a player clear his penalty with less evidence the
+        # longer he waited, which inverts the plain meaning of the ruling.
+        if _O41_BREAK=='unwind':
+            _n=0.0
+            _gl=float(_pg.get(_y,0.0))
+            if not (_O41_INJ and o41_injured(p)):
+                _n+=max(0.0,1.0-o41_unwind(_gl))*float(_o41_fe(Y,p) or 0.0)
+            if o41_unwind(_gl)>=1.0: return 1.0        # U0+ games this season breaks the run outright
+            _yy=_y-1
+            while _floor is None or _yy>_floor:
+                _u=o41_unwind(float(_pg.get(_yy,0.0)))
+                if _u>=1.0: break                      # a FULLY UNWOUND season breaks the run
+                _n+=1.0-_u                             # otherwise its un-unwound share stands
+                _yy-=1
+                if _floor is None and _y-_yy>40: break
+            return 1.0+_n
         if _O41_BREAK=='fractional':
             _n=0.0
             _gl=float(_pg.get(_y,0.0))
@@ -4886,14 +4948,15 @@ if _O30B_PREVIEW:
             if _gg>0.0: _pg[int(_x['year'])]=_gg
         _y=int(Y); _floor=(int(p['year']) if p.get('year') else None)
         # a live season that BREAKS the run leaves no run at all, hence no completed season inside it.
-        if _O41_BREAK=='fractional':
-            if o41_credit(float(_pg.get(_y,0.0)))>=1.0: return 0
-        elif _y in _pg: return 0
+        # THE BREAK RULE IS READ FROM THE ACTIVE MODE so this object and the depth walk cannot drift.
+        def _brk(_gv):
+            if _O41_BREAK=='unwind': return o41_unwind(float(_gv))>=1.0
+            if _O41_BREAK=='fractional': return o41_credit(float(_gv))>=1.0
+            return float(_gv)>0.0
+        if _brk(_pg.get(_y,0.0)): return 0
         _k=0; _yy=_y-1
         while _floor is None or _yy>_floor:
-            if _O41_BREAK=='fractional':
-                if o41_credit(float(_pg.get(_yy,0.0)))>=1.0: break
-            elif _yy in _pg: break
+            if _brk(_pg.get(_yy,0.0)): break
             _k+=1
             _yy-=1
             if _floor is None and _y-_yy>40: break

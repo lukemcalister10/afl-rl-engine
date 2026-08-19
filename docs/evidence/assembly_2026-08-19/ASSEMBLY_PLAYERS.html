@@ -45,11 +45,13 @@ code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
 <li><b>Recency 0.47</b> — a season two years ago counts less than this one; the weight was fitted out of sample.</li>
 <li><b>The SD level offset, 2.98 points a game</b> — small defenders were measured to be over-barred by that much, flat at every age, and the bar is lowered by exactly the measured amount. Nothing was moved to offset it.</li>
 <li><b>The deep sitter schedule is KEPT AS MEASURED — the rise at depth 4 stays</b> — The sitting clock is counted as a DEPTH. The measured schedule falls from depth 1 to depth 3 and then RISES at depth 4, so a player standing at depth 4 who is still on a list is priced slightly above one standing at depth 3. That is not a glitch: clubs cut the sitters at depths 2 and 3 who are not up to it, so a player still contracted at depth 4 has survived a cut that others did not, and that survival is itself a signal. The depth-4 cell is thin — eleven players — and stays documented as thin. ONE CONSEQUENCE, STATED PLAINLY: because the schedule rises there, anything that pulls a player DOWN across that rise (an injury pause, a returning season) can lower his price rather than raise it. One row on this board does exactly that.</li>
+<li><b>The in-season ramp on the absence clocks</b> — how much an unfinished season counts toward an absence now rises with the season rather than in a straight line — less early, more late. It is the engine's own existing shape, already used elsewhere for exactly this question, so no new number was invented. It moves 8 rows and 11 points in total.</li>
 <li><b>The absence package</b> — a short season now earns the credit it was measured to earn instead of a full pass at two games; a delivered season restores only part of the accrued sitting clock instead of wiping it; a logged-injured absence pauses the clock for a player who has delivered; and the production leg fades when a player is out for more than one season with no explanation.</li>
 </ul><p class="boxsub boxred">What is still broken, in plain words:</p><ul>
 <li><b>MODERN PICKS 1-10 *AND* 1-20 BOTH FAIL — A DOCUMENTED STANDING RED, AND IT IS WIDER THAN 1-10</b> — On the modern window the top ten appreciate +21.52% in year one and the top TWENTY appreciate +15.04%, both above the +14% carry line, so BOTH cells are buy-side reds. Earlier boxes named only 1-10; the 1-20 cell fails as well and is named here. NO LEVER IN THIS BOARD REACHES EITHER. It was inherited from ORDER P (which read +18.85% and +12.88%), the level cannot fix it and the recency dial structurally cannot. YOU HAVE ACCEPTED IT AS A STANDING RED: it rides every table flagged, it is not chased and it is not capped.</li>
 <li><b>THE LATE BANDS SELL DEEPER ON THIS BOARD THAN ON ORDER P, AND THAT IS A COST OF THE PACKAGE</b> — Picks 31-40 fall 11.04% in year one against ORDER P's 8.88%, and picks 41-64 fall 7.44% against ORDER P's 5.03%. Both were already sell-side reds; this board makes both DEEPER. That is a real cost of the levers in it and it is not dressed up as an improvement.</li>
-<li><b>AN OPEN DEFECT IN THE ABSENCE FADE: ONE GAME CAN SHIELD A WHOLE SEASON</b> — The production fade stops the moment a player appears in a single game, because a played season breaks the absence run outright. Measured on this board that is worth +560 points to one player off ONE 2026 game, and 63 rows have their run broken by a season of two games or fewer. A graded alternative has been BUILT AND PRICED — it charges by how much of the season was actually missed, using the same measured credit curve already in the board and no new constant — and the two sit side by side in the packet for you to choose between. NEITHER IS ADOPTED. The board in front of you uses the ONE-GAME-BREAKS-IT rule.</li>
+<li><b>AN OPEN DEFECT IN THE ABSENCE FADE: ONE GAME CAN SHIELD A WHOLE SEASON — THREE FIXES PRICED</b> — The production fade stops the moment a player appears in a single game, because a played season breaks the absence run outright. Measured on this board that is worth 620 points to one player off ONE 2026 game, and 52 rows have their run broken by a season of two games or fewer. THREE RULES ARE NOW BUILT AND PRICED and the board in front of you still uses the first: ONE GAME BREAKS IT (collects 1,025 from 9 rows); YOUR OWN UNWIND, where the first five games back each knock 20% off (collects 5,593 from 45 rows); and a graded rule using the measured credit curve (collects 16,286 from 118 rows). YOUR UNWIND IS THE ONLY ONE OF THE THREE THAT BOTH CLOSES THE ONE-GAME HOLE AND LEAVES GENUINE RETURNERS ALONE — the graded rule strips a player who came back for 7 games as if he had been away. NONE IS ADOPTED; the choice is yours.</li>
+<li><b>WHAT THE DATA SAYS ABOUT THE FIVE-GAME UNWIND — IT DISAGREES WITH IT</b> — You ruled that five games back should clear the penalty. Measured on 134 returners, a return of three-to-five games only reverses about 17% of the damage, not 100%, and the measured figure stays flat at roughly a tenth to a fifth of the way back until a player gets past fifteen games. Tested properly out of sample, every version of the five-games idea predicts WORSE than assuming nothing about the return at all, and the slower the unwind the better it does. TWO THINGS ARE TRUE AT ONCE AND NEITHER IS BEING HIDDEN: the measurement disagrees with the shape, and the measurement is too weak to overturn it — it cannot even tell its own five buckets apart. So five games stands as YOUR RULING, and it is labelled a ruling, never a measurement. The slower versions are built and priced if you want to look at them.</li>
 <li><b>TWO INJURY REGISTERS EXIST AND THE FADE ONLY READS ONE — AN OPEN QUESTION FOR YOU</b> — The exemption that spares an injured player reads your sitter annotation. The engine ALSO carries its own long-term-injury register of 43 rows, and 21 of those are not marked injured in the annotation. After the repair described below, ONE row on the engine's register is still charged by the fade, for 606 points — the single largest charge on the board. WHETHER THE ENGINE'S OWN REGISTER SHOULD ALSO EXEMPT A ROW IS YOUR CALL AND THIS SEAT HAS NOT MADE IT. Nothing was changed to answer it.</li>
 <li><b>THE CONTINUITY INSTRUMENT CANNOT SEE THE ABSENCE FADE — MY DEFECT, NOW OPEN</b> — The tool that checks nobody's price jumps on a birthday rebuilds each price from parts, and it was written before the absence fade existed, so it rebuilds the price WITHOUT it. Run on this board it therefore reported nine false birthday jumps that were really just the fade itself. The board is fine — measured directly, the true birthday movement from the fade is ZERO on every charged row — but THE INSTRUMENT IS BLIND and its age reading cannot be trusted on any board carrying the fade until it is repaired. That is on this seat, it is not repaired, and it is written down rather than quietly worked around.</li>
 <li><b>SSP — an inherited breach, worsened</b> — The supplementary-selection arm was already breaching before this board and ORDER P made it worse. IT IS NOT REPAIRED HERE. It is parked, named, and reported separately so it cannot be read as fixed.</li>
@@ -60,7 +62,7 @@ code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
 <li><b>THE CHARGE STILL CONVICTS SOMEWHAT FAST ON VERY FEW GAMES</b> — A player with one or two games is charged on less evidence than the outcomes support. It was measured, it was left alone deliberately — repairing it would reopen the level the whole board is anchored on — and it stays on the record as an open finding.</li>
 <li><b>THE DEEP CELL IS OPTION-SHAPED, AND THE MEAN HIDES THAT</b> — Among the worst underperformers, about half deliver almost nothing and a few deliver a lot. The board prices the average, which is the right thing for a price, but the typical player in that group is charged GENEROUSLY rather than harshly.</li>
 </ul><p class="boxfoot">This board is a CANDIDATE FOR REVIEW. It has not been adopted, it has not been merged, and the live board is untouched.</p></div>
-<div class="sub k">Board totals: live <code>88ce647f</code> 752,429 &middot; K <code>f3101883</code> 673,097 &middot; P <code>374d4e44</code> 666,434 &middot; R <code>7f88f509</code> 664,950 &middot; CANDIDATE <code>81cf787b</code> 665,238</div>
+<div class="sub k">Board totals: live <code>88ce647f</code> 752,429 &middot; K <code>f3101883</code> 673,097 &middot; P <code>374d4e44</code> 666,434 &middot; R <code>7f88f509</code> 664,950 &middot; CANDIDATE <code>db1ccef5</code> 665,249</div>
 <h2>All 804 rows on the board</h2>
 <div class="sub">Sorted by the candidate price. Every column sorts — click a header. The mechanism legs show how each price is actually made: the production leg is what he has shown, the pedigree leg is what he was bought for, the charge is the multiplier the pedigree leg pays for producing below the bar his price implies, the clock is how many seasons of unexplained absence he carries, and the fade is what that clock costs him.</div>
 <div class="wrap"><table class="s"><thead><tr><th class="l">player</th><th class="l">pos</th><th class="l">club</th><th class="l">cat</th><th>age</th><th>pick</th>
@@ -4017,6 +4019,21 @@ code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
 <td data-v="3.400334038171667">3.40</td>
 <td data-v="-1">—</td>
 </tr>
+<tr><td class="l">Elijah Hollands</td><td class="l">SF</td><td class="l">Carlton</td><td class="l"></td><td data-v="24">24</td><td data-v="7">7</td>
+<td data-v="710">710</td>
+<td data-v="708">708</td>
+<td data-v="708">708</td>
+<td data-v="733">733</td>
+<td data-v="633">633</td>
+<td data-v="-100" class="d">-100</td>
+<td data-v="-77" class="d">-77</td>
+<td data-v="-1">—</td>
+<td data-v="160.59376170205752">161</td>
+<td data-v="0.1376928533845635">0.138</td>
+<td data-v="0.7793479791867146">0.779</td>
+<td data-v="2.477991994680239">2.48</td>
+<td data-v="-1">—</td>
+</tr>
 <tr><td class="l">Logan McDonald</td><td class="l">KPF</td><td class="l">Sydney</td><td class="l"></td><td data-v="24">24</td><td data-v="4">4</td>
 <td data-v="693">693</td>
 <td data-v="736">736</td>
@@ -4045,21 +4062,6 @@ code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
 <td data-v="0.2641735533734744">0.264</td>
 <td data-v="1.0">1.000</td>
 <td data-v="1.5481113315227968">1.55</td>
-<td data-v="-1">—</td>
-</tr>
-<tr><td class="l">Elijah Hollands</td><td class="l">SF</td><td class="l">Carlton</td><td class="l"></td><td data-v="24">24</td><td data-v="7">7</td>
-<td data-v="710">710</td>
-<td data-v="708">708</td>
-<td data-v="708">708</td>
-<td data-v="733">733</td>
-<td data-v="630">630</td>
-<td data-v="-103" class="d">-103</td>
-<td data-v="-80" class="d">-80</td>
-<td data-v="-1">—</td>
-<td data-v="160.59376170205752">161</td>
-<td data-v="0.1376928533845635">0.138</td>
-<td data-v="0.7793479791867146">0.779</td>
-<td data-v="2.477991994680239">2.48</td>
 <td data-v="-1">—</td>
 </tr>
 <tr><td class="l">Brayden Cook</td><td class="l">SF</td><td class="l">Adelaide</td><td class="l"></td><td data-v="24">24</td><td data-v="26">26</td>
@@ -4647,21 +4649,6 @@ code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
 <td data-v="1.1612198496501516">1.16</td>
 <td data-v="-1">—</td>
 </tr>
-<tr><td class="l">Matthew Flynn</td><td class="l">RUCK</td><td class="l">West Coast</td><td class="l">Academy</td><td data-v="29">29</td><td data-v="41">41</td>
-<td data-v="502">502</td>
-<td data-v="530">530</td>
-<td data-v="530">530</td>
-<td data-v="543">543</td>
-<td data-v="505">505</td>
-<td data-v="-38" class="d">-38</td>
-<td data-v="3" class="u">+3</td>
-<td data-v="-1">—</td>
-<td data-v="118.63442290002429">119</td>
-<td data-v="0.16185537321789237">0.162</td>
-<td data-v="0.9072448276519123">0.907</td>
-<td data-v="3.478225355489111">3.48</td>
-<td data-v="-1">—</td>
-</tr>
 <tr><td class="l">Jack Buckley</td><td class="l">KPD</td><td class="l">GWS</td><td class="l"></td><td data-v="29">29</td><td data-v="999">—</td>
 <td data-v="548">548</td>
 <td data-v="503">503</td>
@@ -4675,6 +4662,21 @@ code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
 <td data-v="0.2561292057186827">0.256</td>
 <td data-v="1.0">1.000</td>
 <td data-v="2.0272219618693432">2.03</td>
+<td data-v="-1">—</td>
+</tr>
+<tr><td class="l">Matthew Flynn</td><td class="l">RUCK</td><td class="l">West Coast</td><td class="l">Academy</td><td data-v="29">29</td><td data-v="41">41</td>
+<td data-v="502">502</td>
+<td data-v="530">530</td>
+<td data-v="530">530</td>
+<td data-v="543">543</td>
+<td data-v="504">504</td>
+<td data-v="-39" class="d">-39</td>
+<td data-v="2" class="u">+2</td>
+<td data-v="-1">—</td>
+<td data-v="118.63442290002429">119</td>
+<td data-v="0.16185537321789237">0.162</td>
+<td data-v="0.9072448276519123">0.907</td>
+<td data-v="3.478225355489111">3.48</td>
 <td data-v="-1">—</td>
 </tr>
 <tr><td class="l">Joseph Fonti</td><td class="l">SD</td><td class="l">GWS</td><td class="l"></td><td data-v="22">22</td><td data-v="44">44</td>
@@ -5232,6 +5234,21 @@ code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
 <td data-v="2.2488340309130477">2.25</td>
 <td data-v="-1">—</td>
 </tr>
+<tr><td class="l">Clay Hall</td><td class="l">MID</td><td class="l">West Coast</td><td class="l"></td><td data-v="21">21</td><td data-v="38">38</td>
+<td data-v="214">214</td>
+<td data-v="336">336</td>
+<td data-v="391">391</td>
+<td data-v="403">403</td>
+<td data-v="415">415</td>
+<td data-v="12" class="u">+12</td>
+<td data-v="201" class="u">+201</td>
+<td data-v="-1">—</td>
+<td data-v="276.15725963842493">276</td>
+<td data-v="0.4170205048883134">0.417</td>
+<td data-v="0.8028875824916756">0.803</td>
+<td data-v="2.307281304264145">2.31</td>
+<td data-v="-1">—</td>
+</tr>
 <tr><td class="l">Rhett Bazzo</td><td class="l">KPD</td><td class="l">West Coast</td><td class="l"></td><td data-v="23">23</td><td data-v="37">37</td>
 <td data-v="476">476</td>
 <td data-v="436">436</td>
@@ -5260,21 +5277,6 @@ code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
 <td data-v="0.2789409812437613">0.279</td>
 <td data-v="1.0">1.000</td>
 <td data-v="1.504262425000973">1.50</td>
-<td data-v="-1">—</td>
-</tr>
-<tr><td class="l">Clay Hall</td><td class="l">MID</td><td class="l">West Coast</td><td class="l"></td><td data-v="21">21</td><td data-v="38">38</td>
-<td data-v="214">214</td>
-<td data-v="336">336</td>
-<td data-v="391">391</td>
-<td data-v="403">403</td>
-<td data-v="409">409</td>
-<td data-v="6" class="u">+6</td>
-<td data-v="195" class="u">+195</td>
-<td data-v="-1">—</td>
-<td data-v="276.15725963842493">276</td>
-<td data-v="0.4170205048883134">0.417</td>
-<td data-v="0.8028875824916756">0.803</td>
-<td data-v="2.307281304264145">2.31</td>
 <td data-v="-1">—</td>
 </tr>
 <tr><td class="l">Zak Johnson</td><td class="l">SD</td><td class="l">Essendon</td><td class="l"></td><td data-v="20">20</td><td data-v="70">70</td>
@@ -6477,6 +6479,21 @@ code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
 <td data-v="1.504262425000973">1.50</td>
 <td data-v="-1">—</td>
 </tr>
+<tr><td class="l">Jamarra Ugle-Hagan</td><td class="l">KPF</td><td class="l">Gold Coast</td><td class="l">Next Gen</td><td data-v="24">24</td><td data-v="1">1</td>
+<td data-v="287">287</td>
+<td data-v="534">534</td>
+<td data-v="534">534</td>
+<td data-v="335">335</td>
+<td data-v="255">255</td>
+<td data-v="-80" class="d">-80</td>
+<td data-v="-32" class="d">-32</td>
+<td data-v="-1">—</td>
+<td data-v="83.08133677742782">83</td>
+<td data-v="0.03327991228758789">0.033</td>
+<td data-v="0.6461993067227667">0.646</td>
+<td data-v="2.409663033161361">2.41</td>
+<td data-v="-1">—</td>
+</tr>
 <tr><td class="l">Jaxon Prior</td><td class="l">SD</td><td class="l">Brisbane</td><td class="l"></td><td data-v="25">25</td><td data-v="58">58</td>
 <td data-v="305">305</td>
 <td data-v="263">263</td>
@@ -6505,21 +6522,6 @@ code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
 <td data-v="0.02844922400852371">0.028</td>
 <td data-v="1.0">1.000</td>
 <td data-v="0.4493866341486299">0.45</td>
-<td data-v="-1">—</td>
-</tr>
-<tr><td class="l">Jamarra Ugle-Hagan</td><td class="l">KPF</td><td class="l">Gold Coast</td><td class="l">Next Gen</td><td data-v="24">24</td><td data-v="1">1</td>
-<td data-v="287">287</td>
-<td data-v="534">534</td>
-<td data-v="534">534</td>
-<td data-v="335">335</td>
-<td data-v="254">254</td>
-<td data-v="-81" class="d">-81</td>
-<td data-v="-33" class="d">-33</td>
-<td data-v="-1">—</td>
-<td data-v="83.08133677742782">83</td>
-<td data-v="0.03327991228758789">0.033</td>
-<td data-v="0.6461993067227667">0.646</td>
-<td data-v="2.409663033161361">2.41</td>
 <td data-v="-1">—</td>
 </tr>
 <tr><td class="l">Iliro Smit</td><td class="l">RUCK</td><td class="l">Collingwood</td><td class="l"></td><td data-v="21">21</td><td data-v="10">10</td>
@@ -6617,9 +6619,9 @@ code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
 <td data-v="346">346</td>
 <td data-v="346">346</td>
 <td data-v="319">319</td>
-<td data-v="247">247</td>
-<td data-v="-72" class="d">-72</td>
-<td data-v="8" class="u">+8</td>
+<td data-v="248">248</td>
+<td data-v="-71" class="d">-71</td>
+<td data-v="9" class="u">+9</td>
 <td data-v="-1">—</td>
 <td data-v="57.92367303649072">58</td>
 <td data-v="0.031182940774311416">0.031</td>
@@ -8252,9 +8254,9 @@ code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
 <td data-v="184">184</td>
 <td data-v="184">184</td>
 <td data-v="167">167</td>
-<td data-v="141">141</td>
-<td data-v="-26" class="d">-26</td>
-<td data-v="-12" class="d">-12</td>
+<td data-v="142">142</td>
+<td data-v="-25" class="d">-25</td>
+<td data-v="-11" class="d">-11</td>
 <td data-v="-1">—</td>
 <td data-v="28.59352922735608">29</td>
 <td data-v="0.04286335668652404">0.043</td>
@@ -8802,21 +8804,6 @@ code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
 <td data-v="1.8713124791646534">1.87</td>
 <td data-v="-1">—</td>
 </tr>
-<tr><td class="l">Nikolas Cox</td><td class="l">MID</td><td class="l">Essendon</td><td class="l"></td><td data-v="24">24</td><td data-v="8">8</td>
-<td data-v="136">136</td>
-<td data-v="249">249</td>
-<td data-v="249">249</td>
-<td data-v="110">110</td>
-<td data-v="109">109</td>
-<td data-v="-1" class="d">-1</td>
-<td data-v="-27" class="d">-27</td>
-<td data-v="-1">—</td>
-<td data-v="45.21913670604272">45</td>
-<td data-v="0.0381705961055041">0.038</td>
-<td data-v="0.9920512401808462">0.992</td>
-<td data-v="3.277143306778537">3.28</td>
-<td data-v="-1">—</td>
-</tr>
 <tr><td class="l">Zac Fisher</td><td class="l">SF</td><td class="l">North Melbourne</td><td class="l"></td><td data-v="28">28</td><td data-v="27">27</td>
 <td data-v="113">113</td>
 <td data-v="116">116</td>
@@ -8875,6 +8862,21 @@ code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
 <td data-v="0.31704246883616644">0.317</td>
 <td data-v="0.8855024535974995">0.886</td>
 <td data-v="3.5651692641562027">3.57</td>
+<td data-v="-1">—</td>
+</tr>
+<tr><td class="l">Nikolas Cox</td><td class="l">MID</td><td class="l">Essendon</td><td class="l"></td><td data-v="24">24</td><td data-v="8">8</td>
+<td data-v="136">136</td>
+<td data-v="249">249</td>
+<td data-v="249">249</td>
+<td data-v="110">110</td>
+<td data-v="108">108</td>
+<td data-v="-2" class="d">-2</td>
+<td data-v="-28" class="d">-28</td>
+<td data-v="-1">—</td>
+<td data-v="45.21913670604272">45</td>
+<td data-v="0.0381705961055041">0.038</td>
+<td data-v="0.9920512401808462">0.992</td>
+<td data-v="3.277143306778537">3.28</td>
 <td data-v="-1">—</td>
 </tr>
 <tr><td class="l">Jack Scrimshaw</td><td class="l">SD</td><td class="l">Hawthorn</td><td class="l"></td><td data-v="28">28</td><td data-v="7">7</td>
@@ -10137,6 +10139,21 @@ code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
 <td data-v="2.3268243721890842">2.33</td>
 <td data-v="-1">—</td>
 </tr>
+<tr><td class="l">Lachlan Fogarty</td><td class="l">SF</td><td class="l">Carlton</td><td class="l"></td><td data-v="27">27</td><td data-v="22">22</td>
+<td data-v="35">35</td>
+<td data-v="71">71</td>
+<td data-v="71">71</td>
+<td data-v="57">57</td>
+<td data-v="48">48</td>
+<td data-v="-9" class="d">-9</td>
+<td data-v="13" class="u">+13</td>
+<td data-v="-1">—</td>
+<td data-v="19.510345958798084">20</td>
+<td data-v="0.03560970645043375">0.036</td>
+<td data-v="0.9251196365633602">0.925</td>
+<td data-v="2.4224374806390396">2.42</td>
+<td data-v="-1">—</td>
+</tr>
 <tr><td class="l">Patrick Carr</td><td class="l">RUCK</td><td class="l">Richmond</td><td class="l"></td><td data-v="21">21</td><td data-v="999">—</td>
 <td data-v="31">31</td>
 <td data-v="47">47</td>
@@ -10150,21 +10167,6 @@ code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
 <td data-v="0.5927206910310605">0.593</td>
 <td data-v="0.5927206910310605">0.593</td>
 <td data-v="1.92">1.92</td>
-<td data-v="-1">—</td>
-</tr>
-<tr><td class="l">Lachlan Fogarty</td><td class="l">SF</td><td class="l">Carlton</td><td class="l"></td><td data-v="27">27</td><td data-v="22">22</td>
-<td data-v="35">35</td>
-<td data-v="71">71</td>
-<td data-v="71">71</td>
-<td data-v="57">57</td>
-<td data-v="47">47</td>
-<td data-v="-10" class="d">-10</td>
-<td data-v="12" class="u">+12</td>
-<td data-v="-1">—</td>
-<td data-v="19.510345958798084">20</td>
-<td data-v="0.03560970645043375">0.036</td>
-<td data-v="0.9251196365633602">0.925</td>
-<td data-v="2.4224374806390396">2.42</td>
 <td data-v="-1">—</td>
 </tr>
 <tr><td class="l">Brandon Zerk-Thatcher</td><td class="l">KPD</td><td class="l">Essendon</td><td class="l"></td><td data-v="28">28</td><td data-v="65">65</td>

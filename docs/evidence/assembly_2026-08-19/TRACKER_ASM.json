@@ -56,12 +56,19 @@
    "prev": "V750_L5B",
    "up": 1
   },
-  "V754_CAND": {
+  "V755_CAND": {
    "dn": 9,
    "marg": -1025,
    "moved": 9,
-   "prev": "V750_L5C",
+   "prev": "V755_L5CR",
    "up": 0
+  },
+  "V755_L5CR": {
+   "dn": 2,
+   "marg": 11,
+   "moved": 8,
+   "prev": "V750_L5C",
+   "up": 6
   }
  },
  "md5": {
@@ -76,7 +83,8 @@
   "V750_L5A": "e1e3d97dabdea5c815fd271688cf596a",
   "V750_L5B": "b74a2a0e57182d096a139c26b7a6677b",
   "V750_L5C": "1270991cdde819b22ac7bf5f42908f5a",
-  "V754_CAND": "81cf787b0b18b89806d3a4cd1e33d9c0",
+  "V755_CAND": "db1ccef59cc2df69e86a1705fa7fe85c",
+  "V755_L5CR": "5cc1fca4bb1cab3861dde2cad4138e75",
   "live": "88ce647f531030d8d2e094188b258191"
  },
  "n_tracked": 801,
@@ -92,7 +100,8 @@
   "V750_L5A": 666458,
   "V750_L5B": 666275,
   "V750_L5C": 666263,
-  "V754_CAND": 665238,
+  "V755_CAND": 665249,
+  "V755_L5CR": 666274,
   "live": 752429
  }
 }

@@ -11,8 +11,9 @@
   "V750_L5A": "e1e3d97dabdea5c815fd271688cf596a",
   "V750_L5B": "b74a2a0e57182d096a139c26b7a6677b",
   "V750_L5C": "1270991cdde819b22ac7bf5f42908f5a",
-  "V754_CAND": "81cf787b0b18b89806d3a4cd1e33d9c0",
-  "V754_CAND2": "81cf787b0b18b89806d3a4cd1e33d9c0",
+  "V755_CAND": "db1ccef59cc2df69e86a1705fa7fe85c",
+  "V755_CAND2": "db1ccef59cc2df69e86a1705fa7fe85c",
+  "V755_L5CR": "5cc1fca4bb1cab3861dde2cad4138e75",
   "live": "88ce647f531030d8d2e094188b258191"
  },
  "n_moved": 801,
@@ -2029,7 +2030,7 @@
    "d_live_cand": 12,
    "levers": {
     "L1_REC": -1,
-    "V754_CAND": -26
+    "V755_CAND": -26
    },
    "live": 54,
    "name": "Caleb Graham",
@@ -2816,18 +2817,19 @@
    "R": 403,
    "age": 21,
    "band": 6,
-   "cand": 409,
+   "cand": 415,
    "cat": null,
    "d_K_P": 55,
-   "d_K_cand": 73,
+   "d_K_cand": 79,
    "d_P_R": 12,
-   "d_R_cand": 6,
+   "d_R_cand": 12,
    "d_live_K": 122,
-   "d_live_cand": 195,
+   "d_live_cand": 201,
    "levers": {
     "L1_REC": 48,
     "V750_L2C15": 5,
-    "V750_L5B": -47
+    "V750_L5B": -47,
+    "V755_L5CR": 6
    },
    "live": 214,
    "name": "Clay Hall",
@@ -2926,19 +2928,20 @@
    "R": 167,
    "age": 25,
    "band": 3,
-   "cand": 141,
+   "cand": 142,
    "cat": null,
    "d_K_P": 0,
-   "d_K_cand": -43,
+   "d_K_cand": -42,
    "d_P_R": -17,
-   "d_R_cand": -26,
+   "d_R_cand": -25,
    "d_live_K": 31,
-   "d_live_cand": -12,
+   "d_live_cand": -11,
    "levers": {
     "L1_REC": -24,
     "V750_L2C15": 3,
     "V750_L3MAT": -1,
-    "V750_L5B": -4
+    "V750_L5B": -4,
+    "V755_L5CR": 1
    },
    "live": 153,
    "name": "Cody Weightman",
@@ -4122,19 +4125,20 @@
    "R": 733,
    "age": 24,
    "band": 1,
-   "cand": 630,
+   "cand": 633,
    "cat": null,
    "d_K_P": 0,
-   "d_K_cand": -78,
+   "d_K_cand": -75,
    "d_P_R": 25,
-   "d_R_cand": -103,
+   "d_R_cand": -100,
    "d_live_K": -2,
-   "d_live_cand": -80,
+   "d_live_cand": -77,
    "levers": {
     "L1_REC": -56,
     "V750_L2C15": 7,
     "V750_L3MAT": -14,
-    "V750_L5B": -40
+    "V750_L5B": -40,
+    "V755_L5CR": 3
    },
    "live": 710,
    "name": "Elijah Hollands",
@@ -4340,7 +4344,7 @@
    "levers": {
     "V750_L2C15": 17,
     "V750_L5A": 8,
-    "V754_CAND": -24
+    "V755_CAND": -24
    },
    "live": 322,
    "name": "Finlay Macrae",
@@ -4948,7 +4952,7 @@
    "levers": {
     "V750_L2C15": 13,
     "V750_L5A": 5,
-    "V754_CAND": -252
+    "V755_CAND": -252
    },
    "live": 553,
    "name": "Harry Barnett",
@@ -5590,7 +5594,7 @@
    "levers": {
     "V750_L2C15": 14,
     "V750_L5A": 3,
-    "V754_CAND": -57
+    "V755_CAND": -57
    },
    "live": 185,
    "name": "Hugh Davies",
@@ -7286,7 +7290,7 @@
    "levers": {
     "V750_L2C15": 1,
     "V750_L4SD": 1,
-    "V754_CAND": -14
+    "V755_CAND": -14
    },
    "live": 239,
    "name": "Jakob Ryan",
@@ -7299,20 +7303,21 @@
    "R": 335,
    "age": 24,
    "band": 0,
-   "cand": 254,
+   "cand": 255,
    "cat": "Next Gen",
    "d_K_P": 0,
-   "d_K_cand": -280,
+   "d_K_cand": -279,
    "d_P_R": -199,
-   "d_R_cand": -81,
+   "d_R_cand": -80,
    "d_live_K": 247,
-   "d_live_cand": -33,
+   "d_live_cand": -32,
    "levers": {
     "L1_REC": -94,
     "V750_L2C15": 48,
     "V750_L3MAT": -3,
     "V750_L5A": -16,
-    "V750_L5B": -16
+    "V750_L5B": -16,
+    "V755_L5CR": 1
    },
    "live": 287,
    "name": "Jamarra Ugle-Hagan",
@@ -7355,7 +7360,7 @@
    "d_live_cand": -55,
    "levers": {
     "V750_L2C15": 6,
-    "V754_CAND": -10
+    "V755_CAND": -10
    },
    "live": 70,
    "name": "James Blanck",
@@ -9833,19 +9838,20 @@
    "R": 57,
    "age": 27,
    "band": 4,
-   "cand": 47,
+   "cand": 48,
    "cat": null,
    "d_K_P": 0,
-   "d_K_cand": -24,
+   "d_K_cand": -23,
    "d_P_R": -14,
-   "d_R_cand": -10,
+   "d_R_cand": -9,
    "d_live_K": 36,
-   "d_live_cand": 12,
+   "d_live_cand": 13,
    "levers": {
     "L1_REC": -9,
     "V750_L2C15": 2,
     "V750_L3MAT": -1,
-    "V750_L5B": -2
+    "V750_L5B": -2,
+    "V755_L5CR": 1
    },
    "live": 35,
    "name": "Lachlan Fogarty",
@@ -11650,19 +11656,20 @@
    "R": 543,
    "age": 29,
    "band": 6,
-   "cand": 505,
+   "cand": 504,
    "cat": "Academy",
    "d_K_P": 0,
-   "d_K_cand": -25,
+   "d_K_cand": -26,
    "d_P_R": 13,
-   "d_R_cand": -38,
+   "d_R_cand": -39,
    "d_live_K": 28,
-   "d_live_cand": 3,
+   "d_live_cand": 2,
    "levers": {
     "L1_REC": -37,
     "V750_L2C15": 3,
     "V750_L3MAT": 5,
-    "V750_L5B": -9
+    "V750_L5B": -9,
+    "V755_L5CR": -1
    },
    "live": 502,
    "name": "Matthew Flynn",
@@ -11911,20 +11918,21 @@
    "R": 319,
    "age": 26,
    "band": 1,
-   "cand": 247,
+   "cand": 248,
    "cat": null,
    "d_K_P": 0,
-   "d_K_cand": -99,
+   "d_K_cand": -98,
    "d_P_R": -27,
-   "d_R_cand": -72,
+   "d_R_cand": -71,
    "d_live_K": 107,
-   "d_live_cand": 8,
+   "d_live_cand": 9,
    "levers": {
     "L1_REC": -72,
     "V750_L2C15": 16,
     "V750_L3MAT": -5,
     "V750_L5B": -14,
-    "V750_L5C": 3
+    "V750_L5C": 3,
+    "V755_L5CR": 1
    },
    "live": 239,
    "name": "Max King",
@@ -12944,20 +12952,21 @@
    "R": 110,
    "age": 24,
    "band": 2,
-   "cand": 109,
+   "cand": 108,
    "cat": null,
    "d_K_P": 0,
-   "d_K_cand": -140,
+   "d_K_cand": -141,
    "d_P_R": -139,
-   "d_R_cand": -1,
+   "d_R_cand": -2,
    "d_live_K": 113,
-   "d_live_cand": -27,
+   "d_live_cand": -28,
    "levers": {
     "L1_REC": -15,
     "V750_L2C15": 15,
     "V750_L3MAT": -1,
     "V750_L5A": -1,
-    "V750_L5B": 1
+    "V750_L5B": 1,
+    "V755_L5CR": -1
    },
    "live": 136,
    "name": "Nikolas Cox",
@@ -13682,7 +13691,7 @@
     "V750_L3MAT": 2,
     "V750_L5A": -8,
     "V750_L5B": 2,
-    "V754_CAND": -3
+    "V755_CAND": -3
    },
    "live": 158,
    "name": "Paddy Dow",
@@ -15597,7 +15606,7 @@
     "V750_L2C15": 3,
     "V750_L4SD": 1,
     "V750_L5A": 11,
-    "V754_CAND": -33
+    "V755_CAND": -33
    },
    "live": 167,
    "name": "Tew Jiath",
@@ -15877,7 +15886,7 @@
    "d_live_K": 396,
    "d_live_cand": -43,
    "levers": {
-    "V754_CAND": -606
+    "V755_CAND": -606
    },
    "live": 503,
    "name": "Toby Conway",
@@ -17737,8 +17746,9 @@
   "V750_L5A": 666458,
   "V750_L5B": 666275,
   "V750_L5C": 666263,
-  "V754_CAND": 665238,
-  "V754_CAND2": 665238,
+  "V755_CAND": 665249,
+  "V755_CAND2": 665249,
+  "V755_L5CR": 666274,
   "live": 752429
  }
 }

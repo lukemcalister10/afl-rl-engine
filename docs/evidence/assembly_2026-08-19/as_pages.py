@@ -92,7 +92,7 @@ def page(title, h1, subtitle, body):
 
 # ---- boards ---------------------------------------------------------------------------------------
 import hashlib
-CANDTAG = 'V754_CAND'
+CANDTAG = 'V755_CAND'
 COLS = [('live', 'live'), ('IDENT_K', 'K'), ('IDENT_P', 'P'), ('L0_R', 'R'), (CANDTAG, 'CANDIDATE')]
 PATHS = {}
 for t, _ in COLS:

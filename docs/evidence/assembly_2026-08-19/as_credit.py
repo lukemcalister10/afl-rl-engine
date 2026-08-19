@@ -50,9 +50,9 @@ def board(tag):
 
 BASE, mB = board('V750_L4SD')          # the board I1 sits on top of
 GRD, mG = board('V750_L5A')            # + I1 guarded
-CAND, mC = board('V754_CAND')          # the candidate (guarded, full stack)
-RAWB, mR = board('V754_RAW')           # the candidate with I1 raw
-RAW2, mR2 = board('V754_RAW2')
+CAND, mC = board('V755_CAND')          # the candidate (guarded, full stack)
+RAWB, mR = board('V755_RAW')           # the candidate with I1 raw
+RAW2, mR2 = board('V755_RAW2')
 IDP, mIDP = board('IDENT_P')           # every ORDER 41 dial off -> must be 374d4e44
 
 P('=' * 122)

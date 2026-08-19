@@ -7,11 +7,16 @@
 > **THE CANDIDATE IS FOR OWNER REVIEW. NOTHING LANDS. NOTHING MERGES. NO PULL REQUEST. NOTHING ON
 > `main`. THE LIVE BOARD `88ce647f` WAS NEVER TOUCHED.**
 
-# THE CANDIDATE IS `81cf787b`. THE TOTAL IS **665,238**.
+# THE CANDIDATE IS `db1ccef5`. THE TOTAL IS **665,249**.
 
 *Superseding, in order: `ca73176e` / 654,031 (the R3 collector read the wrong population) → `fbf61d05`
-/ 665,180 (R3 charged rows whose only absence was the in-progress season) → **`81cf787b` / 665,238**.
+/ 665,180 (R3 charged rows whose only absence was the in-progress season) → `81cf787b` / 665,238
+(the audit fix pass) → **`db1ccef5` / 665,249** (D4: the in-season ramp folded in, register v755).
 Every superseded board is named wherever its numbers appear, never quietly replaced.*
+
+**PRICED THIS PASS AND NOT ADOPTED:** the owner's unwind shape (`a411487e` / 660,681), the fractional
+break (`d0efbbce` / 649,988), and the U0 sweep at 3 / 7 / 11. **The choice between the three
+run-break rules is the owner's and this packet does not make it.**
 
 ---
 
@@ -60,6 +65,22 @@ Fixed. The box now carries the **built tail calibration 0.8004**, the **modern 1
 1-10, the **late-band deepening**, the **one-game shield defect**, the **two-register question**, and
 a **new instrument defect this pass found** (§6h). **Nothing the owner knows about is absent from the
 box.**
+
+### D-SERIES (register v755) — THE RAMP FOLDED IN, THE OWNER'S UNWIND PRICED, THE SPEED ADJUDICATED
+
+**Preregged first** (`PREREG_D4_D5.md`, `c6ae99d`) — third consecutive pass honouring F6. Full
+accounts in **§6i, §6j, §6k**. Headline: the candidate becomes **`db1ccef5` / 665,249**; the owner's
+unwind is **built and priced, not adopted**; and **the adjudication separated and did not go the
+ruling's way**, which is reported in §6k rather than softened. `U0 = 5` stands as an owner constant,
+**labelled RULED and never MEASURED** — an obligation now carried in the engine source, the prereg,
+this packet and `FOLLOWUP_TASKS.md` FT-4.
+
+### D6 (Decision 6, owner Option A) — THE INJURY CONSOLIDATION IS **QUEUED, NOT STARTED**
+
+The owner's ruling to retire `LTI_REGISTER.md`'s consumption is **acknowledged and deliberately not
+touched in this pass.** Engine edits stay strictly sequential and it gets **its own prereg** before a
+line moves. **Nothing in this delivery anticipates it**, and the open two-register question in §6g is
+left exactly as it was so the owner is reading the same state that ruling was made against.
 
 ### F6 — THREE OF FOUR ENGINE-EDITING PASSES HAD NO PREREG
 
@@ -487,11 +508,13 @@ turn superseded `ca73176e` / 654,031 — the R3 collector was reading the wrong 
 | V750_L5A | `e1e3d97d` | 666,458 | −85,971 | −6,639 | +1,508 | + absence I1, the credit curve |
 | V750_L5B | `b74a2a0e` | 666,275 | −86,154 | −6,822 | +1,325 | + absence I2, the graded reset |
 | V750_L5C | `1270991c` | 666,263 | −86,166 | −6,834 | +1,313 | + absence I3, the injury stream |
-| **CANDIDATE** | **`81cf787b`** | **665,238** | **−87,191** | **−7,859** | **+288** | + absence I4, the R3 fade |
-| CAND repeat | `81cf787b` | 665,238 | — | — | — | **the determinism proof** |
-| CAND, break dial set explicitly to `binary` | `81cf787b` | 665,238 | — | — | — | proves unset == binary |
+| V755_L5CR | `5cc1fca4` | 666,274 | −86,155 | −6,823 | +1,324 | **+ D4 the in-season ramp, FOLDED IN (v755)** |
+| *(the pre-D4 candidate)* | *`81cf787b`* | *665,238* | *−87,191* | *−7,859* | *+288* | *binary R3, no ramp — superseded* |
+| **CANDIDATE** | **`db1ccef5`** | **665,249** | **−87,180** | **−7,848** | **+299** | + absence I4, the R3 fade |
+| CAND repeat | `db1ccef5` | 665,249 | — | — | — | **the determinism proof** |
+| CAND, break dial set explicitly to `binary` | `db1ccef5` | 665,249 | — | — | — | proves unset == binary |
 
-**THE CANDIDATE NOW SITS +288 ABOVE R, NOT −10,919 BELOW IT.** That reversal is not a new lever: it
+**THE CANDIDATE NOW SITS +299 ABOVE R, NOT −10,919 BELOW IT.** That reversal is not a new lever: it
 is what two successive repairs to the R3 collector did to a number that was never real. The
 cumulative-clock version took −12,232 by charging players who were on the field; the corrected
 current-run version takes **−1,025** from nine genuinely absent rows. **The +288 is the honest
@@ -508,9 +531,16 @@ reading and it is the reason preregistered prediction P3 fired — see §9.**
 | + I1 the credit curve | −3,527 | 168 | 29 | 139 |
 | + I2 the graded reset | **−183** | 32 | 6 | 26 |
 | + I3 the injury stream | −12 | 2 | 1 | 1 |
+| **+ D4 the in-season ramp (FOLDED IN, v755)** | **+11** | 8 | 6 | 2 |
 | + I4 the R3 production fade | **−1,025** | 9 | 0 | 9 |
-| **the absence package alone** | **−4,747** | | | |
-| **THE WHOLE ARC R → CANDIDATE** | **+288** | | | |
+| **the absence package alone** | **−4,736** | | | |
+| **THE WHOLE ARC R → CANDIDATE** | **+299** | | | |
+
+**THE RAMP IS ITS OWN ROW AND THAT IS DELIBERATE.** Measuring R3 against a ramp-off baseline counts
+the ramp's 8 rows as the collector's and prints "17 rows" for a collector that charges 9. That
+conflation was caught three separate times this pass — in the row comparison, in this table, and by
+`as_r3age.py`'s self-check, which refused to draw a conclusion until the baseline was right. The
+ramp-on / R3-off board `5cc1fca4` exists solely to be the correct denominator.
 
 **THE ANCHOR MOVE, p20 → p15, AS ITS OWN STEP:** the compression lever is **+4,769** at p15 against
 **+5,792** at p20 — the tighter anchor gives back **1,023 board points**, i.e. it charges more, which
@@ -1046,6 +1076,181 @@ kept.
 
 ---
 
+## 6i · D4 — THE IN-SEASON RAMP IS FOLDED IN (RULED)
+
+**PREREGGED FIRST** — `PREREG_D4_D5.md`, pushed at `c6ae99d` **before the engine edit**. Third
+consecutive pass honouring F6.
+
+**WHAT WAS DONE, AND THE ONE THING THAT WAS DELIBERATELY NOT DONE.** `RL_O41_RAMP=1` is added to
+**the candidate's dial line**. The dial's **default was NOT flipped**, because the standing identity
+law is that *every ORDER 41 dial unset reproduces `374d4e44`* — flipping the default would make
+"unset" mean "on" and break that identity at its root. Anyone can still reproduce ORDER P by unsetting
+everything, and `IDENT_P` on the edited engine returns **`374d4e44`** to prove it.
+
+**THE COST, MEASURED AND NOT ASSUMED: +11 board points on 8 rows.**
+
+| board | md5 | total |
+|---|---|---:|
+| the previous candidate (binary, no ramp) | `81cf787b` | 665,238 |
+| **THE CANDIDATE — ramp folded in** | **`db1ccef5`** | **665,249** |
+
+| row | delta | | row | delta |
+|---|---:|---|---|---:|
+| Clay Hall | +6 | | Matthew Flynn | −1 |
+| Elijah Hollands | +3 | | Nikolas Cox | −1 |
+| Max King | +1 | | Cody Weightman | +1 |
+| Jamarra Ugle-Hagan | +1 | | Lachlan Fogarty | +1 |
+
+**A CONFLATION CAUGHT IN MY OWN WORKING AND FIXED BEFORE IT REACHED A NUMBER.** The first read of the
+R3 marginal measured the candidate against `V750_L5C`, which has the ramp **off** — so it counted the
+ramp's 8 rows as R3's and printed **"17 rows"** for a collector that charges 9. A ramp-on / R3-off
+baseline (**`V755_L5CR`**, 666,274) was built specifically to be the correct denominator, and **the
+lever stack now carries the ramp as its own step** so the same conflation cannot recur in the tracker
+or the per-lever document. **One lever, one step, no exceptions.**
+
+---
+
+## 6j · D5 — THE OWNER'S UNWIND SHAPE, PRICED (NOT ADOPTED)
+
+**HIS WORDS:** *"their first 5 games on return each knock 20% off the sitter penalty."*
+**THE FORM:** `u(g) = min(1, g/U0)`, `U0 = 5`, as a third `RL_O41_BREAK` mode.
+
+**SAID PLAINLY RATHER THAN DRESSED UP AS NEW: mechanically `unwind` IS `fractional` with
+`min(1, g/U0)` substituted for the F1 guarded credit curve.** Same walk, same break condition, same
+in-progress term. **Only the shape and the speed differ** — F1's credit is concave and saturates at
+11 games; the owner's unwind is linear and saturates at 5.
+
+**THE IN-PROGRESS INTERACTION, WIRED EXACTLY AS PREREGGED.** The **games are counted raw and are NOT
+prorated** — his phrase is a count of games actually played — while **the absence those games fail to
+unwind carries the ramped in-season weight** `f**1.5`. The alternative (prorating the threshold to
+`U0·f`, so fewer games are needed the later it gets) is **refused**, and the reason is on the record:
+it would let a player clear his penalty with *less* evidence the longer he waited.
+
+### THE THREE RULES, R3 ALONE, AGAINST THE RAMP-ON BASELINE `5cc1fca4` (666,274)
+
+| rule | board | total | R3 collects | rows |
+|---|---|---:|---:|---:|
+| **BINARY — THE CANDIDATE** | **`db1ccef5`** | **665,249** | **−1,025** | **9** |
+| **UNWIND U0=5 — the owner's shape** | `a411487e` | 660,681 | **−5,593** | **45** |
+| FRACTIONAL — priced v754 | `d0efbbce` | 649,988 | −16,286 | 118 |
+
+**P-D-3 HELD:** unwind sits between binary and fractional, as preregistered.
+
+### THE NAMED ROWS — BINARY vs UNWIND. **Illustrations of a rule, never targets of one.**
+
+| row | g 2026 | u(g) | pre-R3 | BINARY | UNWIND | what the unwind does |
+|---|---:|---:|---:|---:|---:|---|
+| Will Brodie | 1 | 0.200 | 767 | 767 | **147** | **STRIPPED — binary shielded him, unwind charges 620** |
+| Toby Conway | 0 | 0.000 | 1,066 | 460 | 460 | identical under both |
+| Harry Barnett | 0 | 0.000 | 674 | 422 | 422 | identical under both |
+| Charlie Edwards | 2 | 0.400 | 468 | 468 | **284** | **STRIPPED — charges 184** |
+| Nick Madden | 7 | 1.000 | 1,064 | 1,064 | 1,064 | **untouched — fully unwound** |
+| Noah Mraz | 4 | 0.800 | 2,029 | 2,029 | **1,232** | **STRIPPED — charges 797** |
+| Jedd Busslinger | 8 | 1.000 | 801 | 801 | 801 | **untouched — fully unwound** |
+| Taylor Goad | 2 | 0.400 | 728 | 728 | **437** | **STRIPPED — charges 291** |
+| Dante Visentini | 13 | 1.000 | 807 | 807 | 807 | untouched — fully unwound |
+| Vigo Visentini | 1 | 0.200 | 295 | 295 | **188** | **STRIPPED — charges 107** |
+
+**P-D-4 HELD** (Brodie stripped). **P-D-5 HELD** (Madden restored). **This is the one place the
+owner's shape is plainly kinder than fractional**, which stripped Madden for 947 and Mraz for 1,251.
+The unwind closes the Brodie hole **and** leaves the genuine returners alone — **which is exactly
+what the fractional rule failed to do, and it is the strongest thing that can be said for the ruling.**
+
+**THE SHIELD POPULATION** (52 rows whose run breaks on a season of ≤2 games): binary collects **0**,
+unwind **−2,172**, fractional **−3,105**.
+
+---
+
+## 6k · D6 — THE BREAK-SPEED ADJUDICATION. **THE DATA SEPARATED, AND IT DID NOT GO THE RULING'S WAY.**
+
+**P-D-1 FIRED.** I preregistered that the four speeds would **not** separate, on the grounds that F2
+had published `step_separable: false` and 134 rows split five ways gives wide intervals. **They
+separate — every single pair, decisively.** I was wrong about that and the design is what caught it:
+the test was built to be able to say "silent", and it did not need to.
+
+**THE TEST.** F2's own returner population, rebuilt through **F2's own harness and matrix** — the
+rebuild returns **134 / 760 / 1704, exactly F2's published counts**, so the reuse is a real reuse.
+Walk-forward by entry year, 8 usable folds, 80 held-out rows, anchors re-estimated inside each fold
+from training rows only, paired bootstrap over folds.
+
+| arm | out-of-sample RMSE | MAE |
+|---|---:|---:|
+| **F2 MEASURED reversal curve** | **0.5534** | 0.3381 |
+| **CONSTANT — the intercept-only control** | **0.5806** | 0.3306 |
+| F1 credit curve (what `fractional` uses) | 0.6904 | 0.5428 |
+| U0 = 11 | 0.7177 | 0.5881 |
+| U0 = 7 | 0.8051 | 0.7024 |
+| **U0 = 5 — THE OWNER'S RULING** | **0.8471** | 0.7656 |
+| U0 = 3 | 0.8957 | 0.8381 |
+
+**THE RANKING IS PERFECTLY MONOTONE IN SPEED: THE SLOWER THE UNWIND, THE BETTER IT PREDICTS.**
+
+**P-D-2 HELD, AND I SAID BEFOREHAND I WOULD REPORT IT IN THESE WORDS.** `U0 = 5` scores **worse than
+both slower speeds** and is **sixth of seven arms**. It separates from `U0 = 7` (+0.0419,
+CI [+0.0276, +0.0610]) and from `U0 = 11` (+0.1294, CI [+0.1030, +0.1638]) — a positive difference
+means **higher error**.
+
+### THE FINDING THAT MATTERS MOST, AND IT IS NOT COMFORTABLE
+
+**EVERY LINEAR UNWIND IS WORSE THAN PREDICTING A FLAT LINE, AND THREE OF THE FOUR SEPARATE FROM IT.**
+`U0` = 3, 5 and 7 are each **significantly worse than the CONSTANT control**. Only the **F2 measured
+curve** beats CONSTANT at all, and even that does not separate from it (−0.0273, CI [−0.0746,
++0.0221]).
+
+**In plain words: on this evidence, the claim that a return progressively unwinds the penalty over its
+first few games is not merely unsupported — it predicts worse than assuming nothing about the return
+at all.**
+
+### WHY, READ OFF THE MEASUREMENT CELL BY CELL
+
+| return games | n | F2 measured | F2 90% CI | U0=3 | U0=5 | U0=7 | U0=11 |
+|---|---:|---:|---|---:|---:|---:|---:|
+| 1-2 | 38 | 0.176 | [0.053, 0.333] | 0.500 | **0.300** | 0.214 | 0.136 |
+| 3-5 | 29 | 0.169 | [0.030, 0.353] | 1.000 | **0.800** | 0.571 | 0.364 |
+| 6-9 | 27 | 0.094 | [0.004, 0.214] | 1.000 | **1.000** | 1.000 | 0.682 |
+| 10-14 | 22 | 0.213 | [0.054, 0.449] | 1.000 | **1.000** | 1.000 | 1.000 |
+| 15+ | 18 | 0.596 | [0.321, 0.886] | 1.000 | **1.000** | 1.000 | 1.000 |
+
+**cells falling OUTSIDE F2's own 90% interval:** U0=3 **5 of 5** · **U0=5 4 of 5** · U0=7 4 of 5 ·
+U0=11 4 of 5.
+
+**The measured reversal is roughly FLAT at 0.09-0.21 from one game all the way to fourteen, and only
+reaches 0.60 at fifteen or more.** `min(1, g/5)` asserts the penalty is **fully** unwound at five
+games, where the measurement of that very cell reads **0.169**. **The owner's shape is roughly five
+times faster than the measured curve in the region it governs.**
+
+### WHAT THIS DOES AND DOES NOT LICENSE — STATED CAREFULLY
+
+**IT IS EVIDENCE ABOUT THE SHAPE. IT IS NOT A VETO ON THE RULING, AND THIS SEAT IS NOT CASTING IT AS
+ONE.** Two things are both true and neither is suppressed:
+
+- **The measurement disagrees with the ruled shape**, clearly and in the same direction on every axis
+  tested.
+- **F2 itself published `step_separable: false`** on these same cells, and the sample is 134 rows in
+  cells of 18-38 with intervals ~0.3 wide. **A measurement that cannot separate its own bins is not
+  strong enough to overturn an owner constant** — and the owner may be pricing a *policy* about how
+  returning players should be treated, which is his to set and is not the same claim as a prediction
+  about what returns actually do.
+
+**`U0 = 5` THEREFORE STANDS AS AN OWNER CONSTANT, LABELLED RULED AND NEVER MEASURED** — lawful, with
+precedent (`G* = 2`, dose `0.40`, `eta 0.50`). **The engine's own dial note says so in the source, so
+no future pass can promote it to "measured" by forgetting.** It is logged as standing obligation FT-4.
+
+**IF THE OWNER WANTS THE MEASUREMENT TO DRIVE IT INSTEAD**, the sweep boards are built and priced:
+
+| U0 | board | total | R3 collects | rows |
+|---|---|---:|---:|---:|
+| 3 | `2cdb81fd` | 663,161 | −3,113 | 25 |
+| **5 — RULED** | **`a411487e`** | **660,681** | **−5,593** | **45** |
+| 7 | `ff936186` | 659,222 | −7,052 | 59 |
+| 11 | `4063748a` | 652,230 | −14,044 | 110 |
+
+**A slower unwind collects MORE and converges toward the fractional rule** — which is consistent, since
+`U0 = 11` and the F1 credit curve saturate at the same games count. **No value is recommended and none
+is wired beyond the ruled 5.**
+
+---
+
 ## 7 · THE TAIL CALIBRATION ON THE p15 ANCHOR — THE BUILT NUMBER, AND IT MISSES
 
 **THE CANDIDATE READS 0.8004.** The supervisor's estimate for the p15 board was **~0.95-1.1**.
@@ -1117,6 +1322,13 @@ current annotation set.
 | **P8** | injury stream < 25 rows, all upward | **HALF FALSIFIED.** 2 rows, not 25 — but **one moved DOWN**, and the cause is the ruled fade inversion, not the wiring. §8 |
 | **P9** | R3 > I1+I2+I3 combined | ### **FIRED.** R3 is **−1,025**; I1+I2+I3 are **−3,722**. R3 is the **SMALLEST** of the four, not the largest. The previous packet scored this HELD by quoting **−12,232** — the marginal of the defective cumulative collector, already withdrawn when that line was written. **What I got wrong:** I sized R3 by the number of rows I thought were multi-season absent, and after both repairs that population is **nine rows**, not 124. |
 | **P10** | modern 1-10 still fails | **HELD** — fails the path test on the candidate, exactly as accepted. §6 |
+| **P-D-1** | the four unwind speeds will NOT separate | ### **FIRED.** They separate on **every single pair**, decisively. I reasoned from F2's own `step_separable: false` and from cells of 18-38 with intervals ~0.3 wide, and that reasoning was wrong: the walk-forward test pools 80 held-out rows across 8 folds and has far more power than the binned CIs suggested. **The design is what caught me — it was built to be able to say "silent" and did not need to.** |
+| **P-D-2** | `U0 = 5` scores WORSE than the slower speeds | **HELD**, and reported in the words I preregistered. RMSE 0.8471 against 0.8051 at U0=7 and 0.7177 at U0=11, **sixth of seven arms**, separating from both. §6k |
+| **P-D-3** | unwind collects more than binary, less than fractional | **HELD** — −5,593 against −1,025 and −16,286 |
+| **P-D-4** | Brodie STRIPPED under unwind | **HELD** — charged 620 |
+| **P-D-5** | Madden RESTORED under unwind | **HELD** — `u(7) = 1.0`, untouched, where fractional stripped him 947 |
+| **P-D-6** | day-0 stays 89/89 | **HELD** — on every board built this pass, plus the emit's independent guard |
+| **P-D-7** | no acceptance law moves | **HELD** — `374d4e44`, burn 0, class **1.0671**, continuity clean, tail 0.8004 |
 
 ---
 
@@ -1127,7 +1339,7 @@ current annotation set.
 | all assembly dials off → `374d4e44` byte-exact | **PASS** |
 | K/landing chain `f3101883` intact | **PASS** |
 | R `7f88f509` reproduces, 664,950 | **PASS** |
-| determinism ×2 | **PASS** — `81cf787b` on both runs, and a third build with `RL_O41_BREAK=binary` set explicitly returns the same board, proving unset == binary |
+| determinism ×2 | **PASS** — `db1ccef5` on both runs, and a third build with `RL_O41_BREAK=binary` set explicitly returns the same board, proving unset == binary. The unwind variant is `a411487e` on both its runs. |
 | **day-0 ENTRY values bit-identical 89/89** | **PASS — verified TWO ways.** The engine's own assert reads 89 of 89 at tolerance 0 on every build; and the walk-forward emit's independent replication guard reads **"89 of 89 wired entrants reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)"** against the **frozen** reference. An independent check over the 89 truly gameless board rows finds **0 moved**. |
 | burn census 0 of all young rows | **PASS** — the census is ZERO, every band |
 | birthday census 0 at every age | **PASS on the R3-off line** (0 gain-50+, 0 movers, worst ratio 1.0000) **and PASS on the candidate when measured with an instrument that can see R3** — 0 points of birthday step on all 9 charged rows, self-checks exact (§6h). **The standing continuity harness reads this WRONG on any board carrying R3 and that is an open instrument defect.** |
@@ -1184,7 +1396,7 @@ run through the R3 term, so the interaction of entry price with the R3 collector
 | # | deliverable | file | status |
 |---|---|---|---|
 | 1 | **PREREG**, pushed before the first engine edit | `PREREG_ASSEMBLY.md` (`c1dbd3e`) | done |
-| 2 | **THE CANDIDATE** + this packet | board **`81cf787b`** · `PACKET_ASSEMBLY.md` | regenerated for the fixed board |
+| 2 | **THE CANDIDATE** + this packet | board **`db1ccef5`** · `PACKET_ASSEMBLY.md` | regenerated for the ramp-folded board |
 | 3 | **THE TRACKER** (v741/v742) | `TRACKER_ASSEMBLY.html` (801 rows) + `.csv` | regenerated |
 | 4 | **THE PER-LEVER BREAKDOWN** | `LEVERS_ASSEMBLY.html` (9 levers, p20→p15 visible) | regenerated |
 | 5 | the 804-row player list | `ASSEMBLY_PLAYERS.html` | regenerated |

@@ -1,7 +1,7 @@
-=== ORDER R CENSUS  tag=CANDNOR3  dials={'RL_O37': '1', 'RL_O38A': '1', 'RL_O38B1': '1', 'RL_O39_BETASAT': '0.105', 'RL_O40_CAPFORM': 'smooth', 'RL_O40_CAPPCT': '15', 'RL_O40_RECW': '0.47', 'RL_O40_PGMAT': '1', 'RL_O41_SDOFF': '2.98', 'RL_O41_CREDIT': '1', 'RL_O41_RESET': '1', 'RL_O41_INJ': '1'} ===
+=== ORDER R CENSUS  tag=CANDNOR3  dials={'RL_O37': '1', 'RL_O38A': '1', 'RL_O38B1': '1', 'RL_O39_BETASAT': '0.105', 'RL_O40_CAPFORM': 'smooth', 'RL_O40_CAPPCT': '15', 'RL_O40_RECW': '0.47', 'RL_O40_PGMAT': '1', 'RL_O41_SDOFF': '2.98', 'RL_O41_CREDIT': '1', 'RL_O41_RESET': '1', 'RL_O41_INJ': '1', 'RL_O41_RAMP': '1'} ===
 #P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
 #P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
-board total (numeraire): 666263
+board total (numeraire): 666274
 
 BURN CENSUS
   -- the supervisor's population (|fK-fP|>=0.02), n=264
@@ -57,8 +57,8 @@ DIAGNOSTIC IDENTITY  s_ped == s_age - pg : 0 of 715 rows disagree by more than 1
 
 CHARGE DISTRIBUTION — the share of the pedigree leg removed
   population                      n max charge      >90%      >75%      >50%    pts removed
-  all rows with a leg           715     84.46%         0        32       215          30282
-  carrying the new charge       715     84.46%         0        32       215          30282
+  all rows with a leg           715     84.46%         0        32       215          30290
+  carrying the new charge       715     84.46%         0        32       215          30290
   the ten most heavily charged rows (CONSEQUENCES, NEVER TARGETS):
      Callum Coleman-Jones     20    age 27    37g  v0    726   charged  84.46%
      Paddy Dow                3     age 27    83g  v0   2729   charged  83.67%

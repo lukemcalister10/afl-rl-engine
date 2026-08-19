@@ -61,13 +61,17 @@ def board(tag):
             hashlib.md5(open(p, 'rb').read()).hexdigest()[:8])
 
 
-PRE, mPRE = board('V754_L5C')      # the board before R3
-CAND, mCAND = board('V754_CAND')   # the candidate
+# THE BASELINE MUST MATCH THE CANDIDATE ON EVERY DIAL EXCEPT R3, OR ROWS THAT MOVED FOR ANOTHER
+# REASON ARE ATTRIBUTED TO R3. `V755_L5C` has the D4 ramp OFF; the candidate has it ON, so 8 ramp
+# rows would be counted as R3's and the self-check below rightly refused to draw a conclusion when
+# that was tried. `V755_L5CR` is ramp-ON, R3-OFF — the only correct denominator.
+PRE, mPRE = board('V755_L5CR')     # ramp ON, R3 OFF — the board before R3 and NOTHING else
+CAND, mCAND = board('V755_CAND')   # the candidate
 
 DIALS = dict(RL_O37='1', RL_O38A='1', RL_O38B1='1', RL_O39_BETASAT='0.105',
              RL_O40_CAPFORM='smooth', RL_O40_CAPPCT='15', RL_O40_RECW='0.47', RL_O40_PGMAT='1',
              RL_O41_SDOFF='2.98', RL_O41_CREDIT='1', RL_O41_RESET='1', RL_O41_INJ='1',
-             RL_O41_R3='1')
+             RL_O41_R3='1', RL_O41_RAMP='1')
 
 P('=' * 122)
 P('THE R3 BIRTHDAY QUESTION — IS THE CONTINUITY HARNESS READING A BOARD DEFECT OR ITS OWN GAP?')
