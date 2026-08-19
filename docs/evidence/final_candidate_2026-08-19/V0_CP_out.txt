@@ -1,0 +1,21 @@
+======================================================================================================================
+THE ENTRY PRICE v0, ON THE PARITY BOARD a05fe951 (RL_O42=1 RL_O43=1)
+======================================================================================================================
+  engine  29376d5a
+  dials   RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_BETASAT=0.105 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=15 RL_O40_PGMAT=1 RL_O40_RECW=0.47 RL_O41_BREAK=unwind RL_O41_CREDIT=1 RL_O41_INJ=1 RL_O41_R3=1 RL_O41_RAMP=1 RL_O41_RESET=1 RL_O41_SDOFF=2.98 RL_O41_UNWIND=7 RL_O42=1 RL_O43=1
+  rows with a v0 object : 804
+  rows with NO v0 object (not an entrant under the law — COUNTED, never defaulted): 0
+
+SELF-CHECK — the six rows the D7 parity harness named, plus the two it restores, must reproduce
+EXACTLY the derived_v0 the FROZEN reference carries (read from docs/evidence/order_k_2026-08-18/DAY0_K.json, not transcribed).
+  key                         guard printed              read here    agree
+  harley-barker              843.1284944911         843.1284944911      yes
+  blake-thredgold            503.3749976438         503.3749976438      yes
+  max-king-syd               278.3691443496         278.3691443496      yes
+  liam-hetherton             117.3045071268         117.3045071268      yes
+  ollie-murphy               398.3582851316         398.3582851316      yes
+  noah-chamberlain            86.6490308604          86.6490308604      yes
+  sam-allen                  791.8152857423         791.8152857423      yes
+  kobe-mcdonald               87.0298921942          87.0298921942      yes
+  all eight reproduce at tolerance 0.
+

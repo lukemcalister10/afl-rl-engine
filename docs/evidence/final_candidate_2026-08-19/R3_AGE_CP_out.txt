@@ -1,0 +1,86 @@
+==========================================================================================================================
+THE R3 BIRTHDAY QUESTION — IS THE CONTINUITY HARNESS READING A BOARD DEFECT OR ITS OWN GAP?
+==========================================================================================================================
+  board before R3   03e3264d    672,399
+  THE CANDIDATE     a05fe951    664,949
+  R3-charged rows   67   total marginal -7450
+
+  engine md5  29376d5a
+
+SELF-CHECK 1 — the re-formed take must equal the ENGINE's own take at every call, exactly.
+  calls checked 1200   worst absolute disagreement 0.000e+00   EXACT
+
+SELF-CHECK 2 — the blended take must reproduce the board's own per-row R3 delta, tolerance 0.
+  numeraire read off Noah Mraz: 1.0527496141
+  row                        calls  board delta    re-formed    agree
+  Noah Mraz                      2         -972    1023.2726      yes
+  Toby Conway                    2         -767     806.5638 *** NO ***
+  Will Brodie                    2         -620     652.3753      yes
+  Taylor Goad                    2         -291     306.7264      yes
+  Harry Barnett                  2         -252     265.3831      yes
+  Oscar Ryan                     2         -237     249.1879      yes
+  William McCabe                 2         -225     236.7747      yes
+  James Leake                    2         -203     212.8565 *** NO ***
+  Charlie Edwards                2         -184     192.9363 *** NO ***
+  Tom Doedee                     2         -177     186.2542      yes
+  Hudson O'Keeffe                2         -177     186.2947      yes
+  Lachlan Smith                  2         -172     180.5334 *** NO ***
+  Cody Angove                    2         -159     167.9641 *** NO ***
+  Liam Reidy                     2         -155     163.8512 *** NO ***
+  George Stevens                 2         -149     156.1880 *** NO ***
+  Max Ramsden                    2         -145     152.4663      yes
+  Luker Kentfield                2         -144     151.6999      yes
+  Zane Zakostelsky               2         -141     148.6257      yes
+  Jesse Dattoli                  2         -135     141.3417 *** NO ***
+  Jamarra Ugle-Hagan             2         -131     137.9821      yes
+  Deven Robertson                2         -120     125.9957      yes
+  Matt Whitlock                  2         -116     121.7507      yes
+  Tom Anastasopoulos             2         -112     118.0595      yes
+  Vigo Visentini                 2         -107     112.1511      yes
+  Harry O'Farrell                2         -103       0.0000 *** NO ***
+  Jack Ough                      2          -93      97.4976      yes
+  Henry Hustwaite                2          -90      94.6262      yes
+  Will Green                     2          -89      94.2692 *** NO ***
+  Cooper Simpson                 2          -85      89.5240      yes
+  Lucas Camporeale               2          -84      87.9481      yes
+  Luke Kennedy                   2          -83      87.3832      yes
+  Harrison Oliver                2          -79      83.5429      yes
+  Bodie Ryan                     2          -78      82.1400      yes
+  Alex Dodson                    2          -77      81.0276      yes
+  Oliver Hannaford               2          -69      72.4743      yes
+  Jay Polkinghorne               2          -60      62.9270      yes
+  Hugh Davies                    2          -57      59.6474      yes
+  Tom Cochrane                   2          -55      57.8237      yes
+  Lachlan Sholl                  2          -47      49.8063      yes
+  Max King                       2          -35       0.0000 *** NO ***
+  Will Lorenz                    2          -34      35.0908 *** NO ***
+  Rhys Unwin                     2          -34      35.4213      yes
+  Tew Jiath                      2          -33      34.4369      yes
+  Jed Adams                      2          -31      33.3367 *** NO ***
+  Shadeau Brain                  2          -28      29.2059      yes
+  Caleb Graham                   2          -26      27.3108      yes
+  Lucca Grego                    2          -25      27.2361 *** NO ***
+  Finlay Macrae                  2          -24      25.2134      yes
+  Matt Hill                      2          -22      23.2922      yes
+  Josh Gibcus                    2          -19       0.0000 *** NO ***
+  Josh Goater                    2          -16      16.8845      yes
+  Jakob Ryan                     2          -14      14.4677      yes
+  Brandon Walker                 2          -13      14.0209      yes
+  Elliott Himmelberg             2          -12       0.0000 *** NO ***
+  James Blanck                   2          -10      10.9808      yes
+  Aidan Johnson                  2           -7       7.4998      yes
+  Henry Smith                    2           -5       0.0000 *** NO ***
+  Lewis Hayes                    2           -4       0.0000 *** NO ***
+  Harry Schoenberg               2           -4       4.1065      yes
+  Paddy Dow                      2           -3       3.0109      yes
+  Ryan Gardner                   2           -3       3.2617      yes
+  Reef McInnes                   2           -2       0.0000 *** NO ***
+  Callum Coleman-Jones           2           -2       2.0758      yes
+  Luke Beecken                   2           -1       0.7868      yes
+  Jackson Archer                 2           -1       0.7767      yes
+  Sam Sturt                      2           -1       0.0000 *** NO ***
+  Darragh Joyce                  2           -1       1.3374      yes
+  agree 47 of 67
+
+*** A SELF-CHECK FAILED. This probe cannot reproduce the board and therefore says NOTHING
+    about the birthday question. Reported as a failure, not worked around. ***

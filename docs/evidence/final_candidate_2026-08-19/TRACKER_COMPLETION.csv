@@ -1,0 +1,802 @@
+player,pos,club,cat,age,band,pick,live,K,d_live_K,P,d_K_P,R,d_P_R,candidate,d_R_cand,d_live_cand,d_K_cand
+Tom Green,MID,GWS,Academy,25,2,10,4719,4339,-380,4339,0,4339,0,5551,1212,832,1212
+Noah Mraz,KPD,Hawthorn,,20,5,35,1769,2019,250,2089,70,2089,0,1057,-1032,-712,-962
+Nicholas Martin,SF,Essendon,,25,7,,3513,3196,-317,3196,0,3199,3,4168,969,655,972
+Connor Rozee,SD,Port Adelaide,,26,1,5,2725,2559,-166,2559,0,2559,0,3380,821,655,821
+Sam Flanders,SF,St Kilda,,25,2,11,2067,1922,-145,1922,0,1923,1,2631,708,564,709
+Will Brodie,MID,Port Adelaide,,28,2,9,773,788,15,788,0,807,19,147,-660,-626,-641
+Sam Darcy,KPF,Western Bulldogs,Father-Son,23,0,2,5250,4373,-877,4450,77,4450,0,5076,626,-174,703
+Toby Conway,RUCK,Geelong,,23,4,24,503,899,396,1066,167,1066,0,460,-606,-43,-439
+Joshua Kelly,MID,GWS,,31,0,2,370,427,57,427,0,427,0,769,342,399,342
+Jack Viney,MID,Melbourne,Father-Son,32,3,13,229,254,25,254,0,254,0,559,305,330,305
+Jesse Dattoli,SF,Sydney,,20,4,22,318,531,213,617,86,617,0,349,-268,31,-182
+Harry Barnett,RUCK,West Coast,,22,4,23,553,740,187,557,-183,656,99,422,-234,-131,-318
+Taylor Goad,RUCK,North Melbourne,,21,3,20,730,728,-2,590,-138,655,65,437,-218,-293,-291
+Sam Lalor,SF,Richmond,,20,0,1,4087,3456,-631,3060,-396,3395,335,3607,212,-480,151
+Jamarra Ugle-Hagan,KPF,Gold Coast,Next Gen,24,0,1,287,534,247,534,0,335,-199,124,-211,-163,-410
+Oscar Ryan,SD,Adelaide,,21,4,27,305,366,61,387,21,387,0,182,-205,-123,-184
+Tom Doedee,SD,Brisbane,,29,3,17,228,233,5,233,0,234,1,34,-200,-194,-199
+Cody Angove,SF,GWS,,20,4,24,483,689,206,622,-67,622,0,423,-199,-60,-266
+James Leake,SF,GWS,,21,3,17,563,438,-125,368,-70,368,0,172,-196,-391,-266
+George Stevens,MID,Geelong,,21,7,58,142,227,85,246,19,246,0,65,-181,-77,-162
+William McCabe,KPD,Hawthorn,Father-Son,21,3,19,599,474,-125,359,-115,410,51,229,-181,-370,-245
+Charlie Banfield,SF,St Kilda,Father-Son,19,6,41,536,683,147,798,115,798,0,620,-178,84,-63
+Zeke Uwland,SD,Gold Coast,Academy,19,0,2,2633,1949,-684,1486,-463,1582,96,1758,176,-875,-191
+Hudson O'Keeffe,KPF,Carlton,,22,7,,275,229,-46,215,-14,216,1,46,-170,-229,-183
+Brayden Fiorini,MID,Essendon,,29,3,20,167,198,31,198,0,190,-8,349,159,182,151
+Matt Whitlock,KPF,North Melbourne,,20,4,27,372,482,110,336,-146,392,56,235,-157,-137,-247
+Josh Gibcus,KPD,Richmond,,23,2,9,254,231,-23,330,99,330,0,176,-154,-78,-55
+Darcy Jones,SF,GWS,,22,4,21,1144,1038,-106,1095,57,1095,0,1244,149,100,206
+Aaron Cadman,KPF,GWS,,22,0,1,1769,1814,45,1592,-222,1634,42,1781,147,12,-33
+Lachlan Smith,RUCK,Western Bulldogs,,21,6,47,399,301,-98,289,-12,289,0,148,-141,-251,-153
+Leo Lombard,SF,Gold Coast,Academy,20,2,9,1957,1557,-400,1540,-17,1540,0,1677,137,-280,120
+Max Ramsden,KPF,Hawthorn,,23,7,6,257,194,-63,189,-5,189,0,54,-135,-203,-140
+Luker Kentfield,KPF,Melbourne,,21,7,11,419,298,-121,274,-24,280,6,147,-133,-272,-151
+Finn O'Sullivan,SD,North Melbourne,,20,0,2,3740,3462,-278,2810,-652,3055,245,3186,131,-554,-276
+Jedd Busslinger,KPD,Western Bulldogs,,22,3,13,916,605,-311,671,66,671,0,801,130,-115,196
+Harry Kyle,SD,Sydney,Academy,19,3,14,1158,925,-233,841,-84,841,0,965,124,-193,40
+Liam Reidy,KPF,Carlton,,26,7,4,329,230,-99,230,0,200,-30,76,-124,-253,-154
+Oliver Francou,MID,West Coast,,20,7,3,576,528,-48,661,133,661,0,537,-124,-39,9
+Daniel Annable,MID,Brisbane,Academy,19,1,6,1395,1537,142,1115,-422,1340,225,1218,-122,-177,-319
+Cooper Simpson,SD,Fremantle,,21,5,35,179,204,25,203,-1,203,0,84,-119,-95,-120
+Zane Zakostelsky,KPD,Brisbane,,21,7,51,209,256,47,259,3,259,0,141,-118,-68,-115
+Samuel Grlj,SD,Richmond,,19,2,8,1735,1613,-122,1390,-223,1467,77,1584,117,-151,-29
+Jack Ough,MID,GWS,,20,6,36,687,460,-227,389,-71,401,12,288,-113,-399,-172
+Lucas Camporeale,MID,Carlton,Father-Son,20,7,54,159,283,124,272,-11,272,0,162,-110,3,-121
+Max King,KPF,St Kilda,,26,1,4,239,346,107,346,0,319,-27,209,-110,-30,-137
+Xavier Lindsay,SD,Melbourne,,20,2,11,2106,1539,-567,1298,-241,1355,57,1465,110,-641,-74
+Charlie Edwards,SD,Adelaide,,21,4,21,624,434,-190,378,-56,393,15,284,-109,-340,-150
+Henry Hustwaite,MID,Hawthorn,,22,6,37,235,235,0,147,-88,169,22,62,-107,-173,-173
+Vigo Visentini,RUCK,Essendon,,21,7,5,182,257,75,295,38,295,0,188,-107,6,-69
+Elijah Tsatas,MID,Essendon,,22,1,5,1240,1078,-162,689,-389,750,61,853,103,-387,-225
+Zane Peucker,SF,Richmond,,19,5,31,384,487,103,505,18,505,0,404,-101,20,-83
+Elijah Hollands,SF,Carlton,,24,1,7,710,708,-2,708,0,733,25,633,-100,-77,-75
+Harrison Oliver,SD,GWS,,20,3,19,528,463,-65,314,-149,373,59,273,-100,-255,-190
+Oliver Hannaford,MID,GWS,,20,3,18,398,357,-41,229,-128,291,62,193,-98,-205,-164
+Jack Dalton,MID,Hawthorn,,19,5,34,437,489,52,557,68,557,0,460,-97,23,-29
+Tom Anastasopoulos,SF,Port Adelaide,,21,6,48,173,181,8,180,-1,180,0,84,-96,-89,-97
+Jay Polkinghorne,KPF,Geelong,,20,6,44,297,258,-39,271,13,271,0,176,-95,-121,-82
+Alex Dodson,KPF,St Kilda,,20,7,53,274,198,-76,176,-22,188,12,96,-92,-178,-102
+Bo Allan,SD,West Coast,,20,3,16,1128,620,-508,472,-148,472,0,563,91,-565,-57
+Will Lorenz,MID,Port Adelaide,,21,7,57,284,251,-33,272,21,273,1,183,-90,-101,-68
+Luke Kennedy,MID,Western Bulldogs,,20,7,62,284,223,-61,213,-10,213,0,124,-89,-160,-99
+Mitchell Edwards,RUCK,Geelong,,21,5,32,2439,1406,-1033,1237,-169,1237,0,1326,89,-1113,-80
+Xavier Taylor,SD,Melbourne,,19,2,11,802,1162,360,950,-212,1001,51,914,-87,112,-248
+Jed Walter,KPF,Gold Coast,Academy,21,0,3,1439,1170,-269,857,-313,857,0,942,85,-497,-228
+Cameron Nairn,SF,Hawthorn,,19,3,20,606,596,-10,612,16,612,0,528,-84,-78,-68
+Tobie Travaglia,SD,St Kilda,,20,2,8,685,521,-164,276,-245,322,46,403,81,-282,-118
+Matt Carroll,SD,Carlton,,21,7,7,1014,570,-444,609,39,609,0,687,78,-327,117
+Levi Ashcroft,MID,Brisbane,Father-Son,20,1,5,3519,3365,-154,3471,106,3471,0,3394,-77,-125,29
+Cooper Hynes,SF,Western Bulldogs,,20,3,20,1543,923,-620,765,-158,765,0,840,75,-703,-83
+Tom Cochrane,SF,Port Adelaide,,20,7,5,230,243,13,208,-35,214,6,140,-74,-90,-103
+Jai Murray,MID,Gold Coast,Academy,19,3,17,1138,940,-198,877,-63,877,0,949,72,-189,9
+Sam Marshall,MID,Brisbane,Academy,20,4,25,704,542,-162,397,-145,421,24,489,68,-215,-53
+Jonty Faull,KPF,Richmond,,20,3,14,989,639,-350,513,-126,513,0,580,67,-409,-59
+Max Gruzewski,KPF,GWS,,22,4,22,626,434,-192,318,-116,318,0,385,67,-241,-49
+Tanner Bruhn,SD,Geelong,,24,2,12,2214,2018,-196,2018,0,1930,-88,1997,67,-217,-21
+Bodie Ryan,SD,Hawthorn,,21,6,46,210,136,-74,124,-12,128,4,62,-66,-148,-74
+Harvey Langford,MID,Melbourne,,20,1,6,2657,2500,-157,2422,-78,2536,114,2470,-66,-187,-30
+Oscar Steene,KPF,Collingwood,,23,7,,468,323,-145,334,11,334,0,398,64,-70,75
+Jhye Clark,SF,Geelong,,22,2,8,1059,921,-138,569,-352,621,52,681,60,-378,-240
+Rhys Unwin,SF,Essendon,,20,7,61,91,163,72,134,-29,143,9,85,-58,-6,-78
+Lachlan Sholl,MID,Adelaide,,26,7,64,137,128,-9,128,0,129,1,73,-56,-64,-55
+Esava Ratugolea,KPD,Port Adelaide,,28,6,43,64,79,15,79,0,72,-7,127,55,63,48
+Jack Payne,KPD,Brisbane,,27,7,54,94,125,31,125,0,104,-21,159,55,65,34
+Latrelle Pickett,SF,Melbourne,,21,2,12,548,446,-102,238,-208,284,46,339,55,-209,-107
+Harry O'Farrell,KPD,Carlton,,20,6,40,201,505,304,591,86,591,0,537,-54,336,32
+Will Green,RUCK,Sydney,,21,3,16,604,621,17,673,52,673,0,619,-54,15,-2
+Harry Schoenberg,SF,Adelaide,,25,4,24,50,127,77,127,0,68,-59,15,-53,-35,-112
+Rhett Bazzo,KPD,West Coast,,23,6,37,476,436,-40,361,-75,361,0,414,53,-62,-22
+Lachy Dovaston,SF,North Melbourne,,19,3,16,512,550,38,502,-48,502,0,552,50,40,2
+Flynn Riley,RUCK,Carlton,,22,7,4,391,361,-30,408,47,408,0,359,-49,-32,-2
+Jaxon Artemis,SD,Essendon,,20,7,1,520,425,-95,469,44,469,0,420,-49,-100,-5
+Karl Worner,SD,Fremantle,,24,7,4,1206,1041,-165,1041,0,1007,-34,1056,49,-150,15
+Oliver Hollands,SD,Carlton,,22,2,11,1739,1550,-189,1405,-145,1449,44,1498,49,-241,-52
+Archie Ludowyke,KPF,Adelaide,,19,7,50,206,327,121,343,16,343,0,295,-48,89,-32
+Neil Erasmus,MID,Fremantle,,23,2,10,1026,1010,-16,779,-231,793,14,841,48,-185,-169
+Josh Sinn,SD,Port Adelaide,,23,2,12,266,357,91,73,-284,115,42,162,47,-104,-195
+Jordan Croft,KPF,Western Bulldogs,Father-Son,21,3,15,1048,533,-515,427,-106,427,0,473,46,-575,-60
+Alex Van Wyk,RUCK,Port Adelaide,,22,7,14,391,360,-31,390,30,390,0,345,-45,-46,-15
+Max Kondogiannis,SD,Essendon,,19,6,36,435,358,-77,312,-46,312,0,357,45,-78,-1
+Jake Rogers,SF,Gold Coast,Academy,21,3,14,587,328,-259,184,-144,196,12,240,44,-347,-88
+Harry Rowston,MID,GWS,Academy,22,3,16,787,575,-212,386,-189,399,13,442,43,-345,-133
+Koltyn Tholstrup,SF,Melbourne,,21,3,13,1698,1635,-63,1655,20,1700,45,1743,43,45,108
+Matthew Jefferson,KPF,Melbourne,,22,3,15,405,297,-108,150,-147,170,20,213,43,-192,-84
+Liam McMahon,KPF,Essendon,,24,5,33,135,213,78,213,0,147,-66,188,41,53,-25
+Hugh Davies,KPD,Fremantle,,22,5,33,185,260,75,201,-59,227,26,187,-40,2,-73
+Lucca Grego,SD,West Coast,,20,6,48,124,110,-14,115,5,115,0,75,-40,-49,-35
+Matthew Flynn,RUCK,West Coast,Academy,29,6,41,502,530,28,530,0,543,13,504,-39,2,-26
+Francis Evans,SF,Carlton,,25,6,40,494,460,-34,460,0,409,-51,447,38,-47,-13
+Josh Dolan,SF,Western Bulldogs,,20,5,31,501,281,-220,240,-41,242,2,280,38,-221,-1
+Noah Roberts-Thomson,MID,Richmond,,19,7,54,213,322,109,290,-32,290,0,252,-38,39,-70
+Harry Armstrong,KPF,Richmond,,20,4,23,620,577,-43,454,-123,481,27,518,37,-102,-59
+Caiden Cleary,SF,Sydney,Academy,21,4,24,471,265,-206,217,-48,221,4,257,36,-214,-8
+Ethan Read,KPF,Gold Coast,Academy,21,2,9,1024,627,-397,458,-169,460,2,496,36,-528,-131
+Michael Sellwood,SD,Western Bulldogs,,23,7,5,168,187,19,175,-12,175,0,211,36,43,24
+Ollie Greeves,MID,Hawthorn,,19,7,5,583,519,-64,512,-7,512,0,476,-36,-107,-43
+Peter Ladhams,KPF,Sydney,,28,7,7,493,470,-23,470,0,474,4,438,-36,-55,-32
+Alex Davies,MID,Gold Coast,Academy,24,3,17,401,437,36,437,0,352,-85,317,-35,-84,-120
+Bailey J. Williams,KPF,West Coast,,26,5,35,2470,2252,-218,2252,0,2208,-44,2243,35,-227,-9
+Thomas Sims,KPF,Richmond,,20,5,28,583,717,134,702,-15,702,0,737,35,154,20
+Sid Draper,SF,Adelaide,,20,1,4,1250,1267,17,623,-644,880,257,914,34,-336,-353
+Mattaes Phillipou,SF,St Kilda,,22,2,10,2281,2001,-280,1840,-161,1882,42,1915,33,-366,-86
+Brayden Cook,SF,Adelaide,,24,4,26,782,710,-72,710,0,594,-116,626,32,-156,-84
+Cooper Harvey,SF,North Melbourne,Father-Son,22,7,56,545,331,-214,373,42,373,0,341,-32,-204,10
+Wil Dawson,KPD,North Melbourne,,21,4,22,525,326,-199,228,-98,230,2,262,32,-263,-64
+Edward Allan,MID,Collingwood,,22,3,19,978,700,-278,551,-149,552,1,583,31,-395,-117
+Joseph Fonti,SD,GWS,,22,6,44,596,480,-116,464,-16,467,3,498,31,-98,18
+Ryan Angwin,MID,GWS,,24,3,19,483,487,4,487,0,341,-146,372,31,-111,-115
+Isaac Kako,SF,Essendon,Next Gen,20,3,13,1413,832,-581,784,-48,784,0,754,-30,-659,-78
+Jai Culley,MID,Melbourne,,23,7,1,178,206,28,191,-15,205,14,175,-30,-3,-31
+Isaac Keeler,KPF,St Kilda,,22,6,44,173,155,-18,128,-27,128,0,157,29,-16,2
+Max Heath,KPF,Melbourne,,24,7,7,682,447,-235,447,0,400,-47,429,29,-253,-18
+Alix Tauru,KPF,St Kilda,,20,2,10,1684,881,-803,935,54,935,0,907,-28,-777,26
+Dylan Patterson,SD,Gold Coast,Academy,19,1,5,1628,1440,-188,955,-485,1189,234,1217,28,-411,-223
+Mani Liddy,MID,Port Adelaide,,24,7,15,152,122,-30,122,0,50,-72,78,28,-74,-44
+Tom Gross,SF,West Coast,,20,6,46,460,434,-26,441,7,446,5,418,-28,-42,-16
+Caleb Graham,KPD,Gold Coast,Academy,26,7,71,54,82,28,82,0,93,11,66,-27,12,-16
+Hugh Boxshall,MID,St Kilda,,20,6,45,965,636,-329,674,38,697,23,670,-27,-295,34
+Louis Emmett,RUCK,Western Bulldogs,,19,4,27,749,627,-122,454,-173,533,79,560,27,-189,-67
+Zane Duursma,SF,North Melbourne,,21,1,4,815,629,-186,194,-435,257,63,284,27,-531,-345
+Elliott Himmelberg,KPF,Adelaide,,28,7,51,56,61,5,61,0,57,-4,31,-26,-25,-30
+Joe Berry,SF,Port Adelaide,,20,3,15,1259,1001,-258,982,-19,1002,20,1028,26,-231,27
+Cody Weightman,SF,Western Bulldogs,,25,3,15,153,184,31,184,0,167,-17,142,-25,-11,-42
+Leek Aleer,KPD,GWS,,25,3,15,231,285,54,285,0,180,-105,205,25,-26,-80
+Shadeau Brain,SD,Brisbane,,22,7,,120,90,-30,99,9,99,0,74,-25,-46,-16
+Bailey Laurie,SF,Melbourne,,24,4,23,56,96,40,96,0,31,-65,55,24,-1,-41
+Billy Cootee,MID,Sydney,,24,6,42,264,232,-32,232,0,138,-94,162,24,-102,-70
+Christian Moraes,SF,Port Adelaide,,20,6,38,906,584,-322,506,-78,519,13,543,24,-363,-41
+Kane McAuliffe,MID,Richmond,,21,6,40,1312,923,-389,1012,89,1012,0,1036,24,-276,113
+Oscar Adams,KPD,Gold Coast,,23,7,51,79,115,36,50,-65,55,5,79,24,0,-36
+Samuel Swadling,MID,Collingwood,,19,6,37,776,682,-94,773,91,773,0,749,-24,-27,67
+Sandy Brock,KPD,West Coast,,24,7,,173,130,-43,130,0,154,24,130,-24,-43,0
+Will Setterfield,MID,Essendon,Academy,28,1,5,559,664,105,664,0,569,-95,593,24,34,-71
+Darcy Parish,MID,Essendon,,29,1,5,562,594,32,594,0,594,0,571,-23,9,-23
+Harley Barker,MID,Geelong,,19,4,24,677,481,-196,481,0,481,0,504,23,-173,23
+Jack Lukosius,KPF,Port Adelaide,,26,0,2,462,503,41,503,0,472,-31,449,-23,-13,-54
+Noah Long,SF,West Coast,,22,7,57,124,78,-46,78,0,78,0,55,-23,-69,-23
+Oscar Allen,KPF,West Coast,,27,4,21,100,125,25,125,0,125,0,102,-23,2,-23
+Tyler Sonsie,SF,Richmond,,23,5,28,1095,958,-137,853,-105,858,5,881,23,-214,-77
+Will Hayes,SF,Collingwood,,20,7,56,378,220,-158,207,-13,207,0,184,-23,-194,-36
+Zach Reid,KPD,Essendon,,24,2,10,1093,957,-136,957,0,892,-65,869,-23,-224,-88
+Deven Robertson,SF,West Coast,,25,4,22,174,239,65,239,0,135,-104,113,-22,-61,-126
+Lachie Jaques,SD,Western Bulldogs,,20,5,29,725,483,-242,583,100,586,3,608,22,-117,125
+Tom Brown,SD,Richmond,,23,3,17,493,515,22,420,-95,425,5,447,22,-46,-68
+Tom Sparrow,SF,Melbourne,,26,4,27,1632,1522,-110,1522,0,1500,-22,1522,22,-110,0
+Aidan Schubert,KPF,Hawthorn,,19,4,23,481,630,149,546,-84,581,35,560,-21,79,-70
+Cooper Duff-Tytler,KPF,West Coast,,19,1,4,1561,1505,-56,1824,319,1824,0,1845,21,284,340
+Jacob Hopper,MID,Richmond,Academy,29,1,7,101,87,-14,87,0,85,-2,64,-21,-37,-23
+James Peatling,MID,Adelaide,,26,7,8,1098,1145,47,1145,0,1126,-19,1147,21,49,2
+Jed Adams,KPD,Melbourne,,22,6,38,154,229,75,204,-25,211,7,190,-21,36,-39
+Matt Hill,SD,Hawthorn,,22,7,,56,61,5,52,-9,57,5,36,-21,-20,-25
+Matt Johnson,MID,Fremantle,,23,4,21,1131,1039,-92,961,-78,964,3,985,21,-146,-54
+Riley Hardeman,SD,North Melbourne,,21,4,23,258,287,29,183,-104,192,9,213,21,-45,-74
+Adam Cerra,MID,Carlton,,27,1,5,1030,1030,0,1030,0,1025,-5,1005,-20,-25,-25
+Balyn O'Brien,SD,Port Adelaide,,19,7,,383,346,-37,297,-49,316,19,296,-20,-87,-50
+Brodie Kemp,KPF,Carlton,,25,3,17,680,662,-18,662,0,639,-23,619,-20,-61,-43
+George Wardlaw,MID,North Melbourne,,22,1,4,3235,3085,-150,2914,-171,2974,60,2954,-20,-281,-131
+Josh Ward,MID,Hawthorn,,23,1,7,2817,2576,-241,2510,-66,2546,36,2566,20,-251,-10
+Judson Clarke,SF,Richmond,,23,5,30,90,41,-49,34,-7,35,1,55,20,-35,14
+Liam Puncher,KPD,Collingwood,,23,7,15,124,193,69,122,-71,140,18,160,20,36,-33
+Toby Pink,KPD,North Melbourne,,28,7,33,31,59,28,59,0,28,-31,48,20,17,-11
+Archer Reid,KPF,West Coast,,21,5,30,762,382,-380,328,-54,328,0,347,19,-415,-35
+Ashton Moir,SF,Carlton,,21,5,29,214,226,12,219,-7,221,2,202,-19,-12,-24
+Brandon Walker,SD,Fremantle,Next Gen,24,7,52,57,45,-12,45,0,38,-7,19,-19,-38,-26
+Elijah Hewett,MID,West Coast,,22,3,14,730,595,-135,431,-164,439,8,458,19,-272,-137
+Riley Bice,SD,Sydney,,26,6,41,274,269,-5,269,0,285,16,304,19,30,35
+Ben Jepson,MID,Gold Coast,,25,7,,222,103,-119,103,0,69,-34,51,-18,-171,-52
+Cameron Mackenzie,MID,Hawthorn,,22,1,7,2251,2027,-224,1852,-175,1924,72,1942,18,-309,-85
+Cooper Lord,MID,Carlton,,21,7,9,1345,1018,-327,1070,52,1070,0,1052,-18,-293,34
+Dylan Stephens,MID,North Melbourne,,25,1,5,620,687,67,687,0,530,-157,548,18,-72,-139
+Jye Amiss,KPF,Fremantle,,23,2,8,1495,1427,-68,1379,-48,1381,2,1399,18,-96,-28
+Lewis Young,KPF,Carlton,,28,7,49,116,130,14,130,0,131,1,113,-18,-3,-17
+Logan McDonald,KPF,Sydney,,24,1,4,693,736,43,736,0,650,-86,632,-18,-61,-104
+Tew Jiath,SD,Collingwood,,21,6,37,167,125,-42,109,-16,117,8,99,-18,-68,-26
+Conor Stone,SD,GWS,,24,3,15,76,218,142,218,0,51,-167,68,17,-8,-150
+Braeden Campbell,SF,Sydney,Academy,24,1,5,403,419,16,419,0,325,-94,341,16,-62,-78
+Darcy Fort,RUCK,Geelong,,33,7,65,16,170,154,170,0,104,-66,88,-16,72,-82
+Keidean Coleman,SD,Brisbane,Academy,26,6,36,754,673,-81,673,0,674,1,658,-16,-96,-15
+Liam Fawcett,KPF,Richmond,,21,6,43,454,258,-196,221,-37,222,1,238,16,-216,-20
+Luke Pedlar,SF,Adelaide,,24,2,11,112,217,105,217,0,50,-167,66,16,-46,-151
+Thomas Burton,MID,Richmond,,19,7,,439,323,-116,321,-2,321,0,305,-16,-134,-18
+Jack Watkins,SF,Port Adelaide,,26,7,3,130,72,-58,72,0,38,-34,53,15,-77,-19
+Jasper Alger,SF,Richmond,,20,7,58,434,218,-216,226,8,232,6,217,-15,-217,-1
+Lukas Cooke,KPD,Melbourne,,23,7,11,364,298,-66,249,-49,249,0,234,-15,-130,-64
+Mitchell Lewis,KPF,Hawthorn,,28,7,75,517,565,48,565,0,567,2,552,-15,35,-13
+Reef McInnes,KPD,Collingwood,Next Gen,24,4,24,164,87,-77,87,0,35,-52,50,15,-114,-37
+Zak Johnson,SD,Essendon,,20,7,70,730,380,-350,394,14,394,0,409,15,-321,29
+Aidan Johnson,KPF,Melbourne,,26,7,68,229,110,-119,110,0,79,-31,65,-14,-164,-45
+Finnbar Maley,KPF,Adelaide,,23,7,2,192,175,-17,152,-23,153,1,167,14,-25,-8
+Isaac Cumming,MID,Adelaide,Academy,28,3,20,41,54,13,54,0,44,-10,30,-14,-11,-24
+Jacob Konstanty,SF,North Melbourne,,22,3,20,181,116,-65,51,-65,56,5,70,14,-111,-46
+Jacob Newton,SF,West Coast,,20,7,8,299,232,-67,193,-39,202,9,188,-14,-111,-44
+Luke Nankervis,MID,Adelaide,,23,7,1,384,316,-68,327,11,327,0,313,-14,-71,-3
+Roan Steele,MID,Collingwood,,25,7,7,152,118,-34,118,0,35,-83,49,14,-103,-69
+Scott Pendlebury,MID,Collingwood,,39,1,5,353,381,28,381,0,381,0,367,-14,14,-14
+Sean Darcy,RUCK,Fremantle,,28,6,38,734,703,-31,703,0,703,0,689,-14,-45,-14
+Toby Murray,KPF,Adelaide,,23,7,7,215,196,-19,187,-9,187,0,201,14,-14,5
+Beau Addinsall,MID,Gold Coast,Academy,19,3,18,1521,1158,-363,1297,139,1297,0,1310,13,-211,152
+Jack Scrimshaw,SD,Hawthorn,,28,1,7,89,128,39,128,0,117,-11,104,-13,15,-24
+Jack Whitlock,KPF,Port Adelaide,,20,5,33,1271,937,-334,981,44,981,0,994,13,-277,57
+Jake Stringer,SF,GWS,,32,1,7,103,126,23,126,0,123,-3,110,-13,7,-16
+Jye Caldwell,MID,Essendon,,26,2,11,979,972,-7,972,0,973,1,960,-13,-19,-12
+Liam Duggan,SD,West Coast,,30,2,12,210,233,23,233,0,218,-15,231,13,21,-2
+Nate Caddy,KPF,Essendon,,21,2,10,1862,1607,-255,1586,-21,1590,4,1577,-13,-285,-30
+Oliver Florent,SD,Carlton,,28,2,11,732,719,-13,719,0,701,-18,714,13,-18,-5
+Saad El-Hawli,SD,Essendon,,25,7,13,118,71,-47,71,0,28,-43,41,13,-77,-30
+Samson Ryan,RUCK,Richmond,Academy,26,6,42,302,252,-50,252,0,199,-53,212,13,-90,-40
+Arthur Jones,SF,Western Bulldogs,,23,6,43,92,90,-2,54,-36,54,0,66,12,-26,-24
+Bailey Scott,MID,North Melbourne,,26,7,49,23,20,-3,20,0,20,0,8,-12,-15,-12
+Charlie Comben,KPD,North Melbourne,,25,5,31,809,724,-85,724,0,711,-13,699,-12,-110,-25
+Clay Hall,MID,West Coast,,21,6,38,214,336,122,391,55,403,12,415,12,201,79
+Harrison Jones,KPF,Essendon,,25,5,30,172,202,30,202,0,149,-53,137,-12,-35,-65
+Jakob Ryan,SD,Collingwood,,22,5,28,239,176,-63,141,-35,161,20,149,-12,-90,-27
+Jamie Elliott,SF,Collingwood,,34,6,39,19,9,-10,9,0,9,0,21,12,2,12
+Joel Amartey,KPF,Sydney,,27,7,17,31,50,19,50,0,38,-12,50,12,19,0
+Josh Goater,SD,North Melbourne,,23,4,22,93,87,-6,63,-24,63,0,75,12,-18,-12
+Mitch Podhajski,KPF,Collingwood,,27,7,17,399,139,-260,139,0,110,-29,98,-12,-301,-41
+Steele Sidebottom,MID,Collingwood,,36,2,11,96,20,-76,20,0,20,0,8,-12,-88,-12
+Tom Blamires,SD,North Melbourne,,24,7,,139,111,-28,111,0,123,12,135,12,-4,24
+Will Lewis,KPF,Western Bulldogs,,27,7,,139,67,-72,67,0,47,-20,59,12,-80,-8
+Xavier Duursma,MID,Essendon,,26,3,18,143,175,32,175,0,157,-18,145,-12,2,-30
+Ben Ainsworth,SF,Carlton,,28,1,4,204,262,58,262,0,221,-41,210,-11,6,-52
+Billy Wilson,SD,Carlton,,21,5,34,983,664,-319,767,103,767,0,756,-11,-227,92
+Darcy Moore,KPD,Collingwood,Father-Son,30,2,8,141,151,10,151,0,151,0,140,-11,-1,-11
+Harvey Harrison,SF,Collingwood,,23,7,52,50,43,-7,31,-12,31,0,42,11,-8,-1
+Jordan Ridley,SD,Essendon,,28,4,22,695,662,-33,662,0,662,0,651,-11,-44,-11
+Kaleb Smith,SD,Richmond,,22,7,49,67,48,-19,37,-11,39,2,50,11,-17,2
+Lachlan Blakiston,KPD,Essendon,,28,7,12,152,87,-65,87,0,27,-60,38,11,-114,-49
+Oscar McDonald,KPD,Fremantle,,30,7,53,68,84,16,84,0,80,-4,69,-11,1,-15
+Sam De Koning,KPD,Geelong,,25,3,19,936,861,-75,861,0,860,-1,849,-11,-87,-12
+Sam Sturt,SF,Fremantle,,26,3,17,50,75,25,75,0,19,-56,30,11,-20,-45
+Tom De Koning,RUCK,St Kilda,,27,5,30,1830,1688,-142,1688,0,1688,0,1677,-11,-153,-11
+Tom Hanily,SF,Sydney,,21,7,14,216,144,-72,131,-13,133,2,144,11,-72,0
+Willem Duursma,MID,West Coast,,19,0,1,3977,3703,-274,3920,217,4236,316,4225,-11,248,522
+Cooper Sharman,KPF,St Kilda,,26,7,18,429,426,-3,426,0,408,-18,418,10,-11,-8
+Corey Warner,SF,Sydney,,23,6,40,49,104,55,33,-71,33,0,43,10,-6,-61
+Harry Perryman,SD,Collingwood,Academy,28,3,14,68,81,13,81,0,81,0,71,-10,3,-10
+Lachlan Jones,SD,Port Adelaide,Next Gen,24,3,16,125,153,28,153,0,92,-61,102,10,-23,-51
+Luke Trainor,SD,Richmond,,20,4,21,1551,972,-579,1018,46,1018,0,1008,-10,-543,36
+Nick Larkey,KPF,North Melbourne,,28,7,72,455,524,69,524,0,520,-4,510,-10,55,-14
+Robert Hansen,SF,North Melbourne,,22,7,2,132,72,-60,37,-35,40,3,50,10,-82,-22
+Sam Davidson,SF,Western Bulldogs,,25,7,51,80,103,23,103,0,83,-20,73,-10,-7,-30
+Xavier Bamert,MID,Port Adelaide,,19,7,5,509,414,-95,395,-19,401,6,411,10,-98,-3
+Aaron Naughton,KPF,Western Bulldogs,,27,2,9,1166,1116,-50,1116,0,1116,0,1107,-9,-59,-9
+Blake Howes,SD,Melbourne,,23,6,39,272,212,-60,197,-15,197,0,206,9,-66,-6
+Blake Thredgold,KPD,North Melbourne,,19,4,26,373,372,-1,372,0,372,0,381,9,8,9
+Campbell Chesser,MID,Carlton,,23,3,14,330,333,3,167,-166,186,19,195,9,-135,-138
+Cody Curtin,KPF,Brisbane,,19,6,43,427,440,13,400,-40,400,0,391,-9,-36,-49
+Griffin Logue,KPD,North Melbourne,,28,2,8,78,120,42,120,0,94,-26,85,-9,7,-35
+Hunter Clark,MID,St Kilda,,27,1,7,50,66,16,66,0,30,-36,21,-9,-29,-45
+Jack Buller,KPF,Collingwood,,25,7,11,94,72,-22,72,0,36,-36,45,9,-49,-27
+Jack Carroll,SD,St Kilda,,24,6,43,80,78,-2,78,0,46,-32,55,9,-25,-23
+Jack Martin,SF,Geelong,,32,0,3,107,37,-70,37,0,21,-16,12,-9,-95,-25
+James Trezise,SD,Richmond,,24,7,10,118,147,29,147,0,99,-48,108,9,-10,-39
+Josh Lai,SD,Port Adelaide,,21,7,,597,315,-282,350,35,355,5,364,9,-233,49
+Lachlan Fogarty,SF,Carlton,,27,4,22,35,71,36,71,0,57,-14,48,-9,13,-23
+Maxwell King,KPF,Sydney,Academy,19,7,49,156,129,-27,129,0,129,0,138,9,-18,9
+Mitch Zadow,SF,Port Adelaide,,22,7,,139,87,-52,75,-12,75,0,84,9,-55,-3
+Nick Bryan,RUCK,Essendon,,25,6,37,778,718,-60,718,0,574,-144,583,9,-195,-135
+Noah Balta,KPF,Richmond,,27,4,25,418,412,-6,412,0,409,-3,400,-9,-18,-12
+Riley Garcia,SF,Western Bulldogs,,25,7,61,47,41,-6,41,0,41,0,50,9,3,9
+Tom Edwards,KPF,Essendon,,26,7,,108,79,-29,79,0,57,-22,66,9,-42,-13
+Tylar Young,KPD,West Coast,,28,7,9,279,258,-21,258,0,241,-17,250,9,-29,-8
+Zac Taylor,SF,Adelaide,,23,6,44,207,157,-50,140,-17,140,0,149,9,-58,-8
+Anthony Caminiti,KPF,St Kilda,,23,7,,1110,861,-249,863,2,863,0,855,-8,-255,-6
+Archie Perkins,SF,Essendon,,24,2,9,239,224,-15,224,0,200,-24,192,-8,-47,-32
+Brennan Cox,KPD,Fremantle,,28,6,41,259,255,-4,255,0,255,0,247,-8,-12,-8
+Caleb Windsor,SD,Melbourne,,21,1,7,1784,1307,-477,1093,-214,1137,44,1145,8,-639,-162
+Charlie Ballard,KPD,Gold Coast,,27,6,42,45,52,7,52,0,52,0,44,-8,-1,-8
+Dion Prestia,SF,Richmond,,34,2,9,251,258,7,258,0,258,0,250,-8,-1,-8
+Dougal Howard,KPD,St Kilda,,30,7,56,45,51,6,51,0,51,0,43,-8,-2,-8
+Jarrod Berry,MID,Brisbane,,28,3,17,189,195,6,195,0,195,0,187,-8,-2,-8
+Jayden Nguyen,SD,GWS,,20,7,,471,302,-169,301,-1,301,0,293,-8,-178,-9
+Jesse Hogan,KPF,GWS,,32,1,5,205,224,19,224,0,224,0,216,-8,11,-8
+Kieren Briggs,RUCK,GWS,,27,5,34,1992,1808,-184,1808,0,1810,2,1802,-8,-190,-6
+Liam O'Connell,SD,St Kilda,,23,7,,39,38,-1,26,-12,26,0,34,8,-5,-4
+Oliver Wiltshire,SF,Geelong,,24,7,61,49,33,-16,33,0,24,-9,16,-8,-33,-17
+Angus Hastie,SD,St Kilda,,21,5,33,181,171,-10,100,-71,112,12,119,7,-62,-52
+Archer Day-Wicks,SF,Essendon,,20,7,1,766,316,-450,311,-5,323,12,330,7,-436,14
+Bobby Hill,SF,Collingwood,,26,4,24,29,49,20,49,0,33,-16,26,-7,-3,-23
+Campbell Gray,KPD,Richmond,,23,7,15,176,206,30,200,-6,200,0,207,7,31,1
+Hamish Davis,MID,West Coast,,20,7,65,1028,622,-406,625,3,625,0,632,7,-396,10
+Harry Edwards,KPD,West Coast,,26,7,12,104,111,7,111,0,100,-11,107,7,3,-4
+Harry Morrison,MID,Hawthorn,,28,7,73,20,33,13,33,0,31,-2,24,-7,4,-9
+Henry Smith,KPF,Brisbane,,24,7,50,82,93,11,93,0,78,-15,85,7,3,-8
+Jack Hutchinson,MID,West Coast,,25,7,3,118,118,0,118,0,37,-81,44,7,-74,-74
+Jaeger O'Meara,MID,Fremantle,,33,0,1,165,33,-132,33,0,19,-14,12,-7,-153,-21
+Jordan Boyd,SD,Carlton,,28,7,17,55,36,-19,36,0,8,-28,15,7,-40,-21
+Kade Chandler,SF,Melbourne,,26,7,10,811,791,-20,791,0,785,-6,792,7,-19,1
+Kyle Langford,KPF,Essendon,,30,3,18,518,505,-13,505,0,505,0,498,-7,-20,-7
+Miles Bergman,SD,Port Adelaide,,25,3,14,922,872,-50,872,0,853,-19,860,7,-62,-12
+Nathan O'Driscoll,MID,Fremantle,,24,5,28,597,562,-35,562,0,447,-115,440,-7,-157,-122
+Oliver Hayes-Brown,RUCK,Richmond,,26,7,,190,112,-78,112,0,101,-11,108,7,-82,-4
+Oskar Baker,SF,Western Bulldogs,,28,6,48,14,24,10,24,0,7,-17,14,7,0,-10
+Sam Clohesy,MID,Gold Coast,,24,7,3,288,235,-53,235,0,235,0,228,-7,-60,-7
+Sam Powell-Pepper,SF,Port Adelaide,,28,3,18,167,180,13,180,0,180,0,173,-7,6,-7
+Toby McMullin,MID,GWS,,22,5,34,135,118,-17,42,-76,43,1,50,7,-85,-68
+Todd Marshall,KPF,Port Adelaide,,28,3,16,61,83,22,83,0,70,-13,63,-7,2,-20
+Zac Fisher,SF,North Melbourne,,28,4,27,113,116,3,116,0,116,0,109,-7,-4,-7
+Archie May,KPF,Essendon,,22,7,6,476,336,-140,340,4,340,0,346,6,-130,10
+Bailey Humphrey,SF,Gold Coast,,22,1,6,2573,2309,-264,2269,-40,2297,28,2303,6,-270,-6
+Flynn Perez,SD,Hawthorn,,25,7,,139,49,-90,49,0,16,-33,22,6,-117,-27
+Harley Reid,MID,West Coast,,21,0,1,3820,3786,-34,3723,-63,3813,90,3819,6,-1,33
+Harvey Johnston,SD,West Coast,,21,7,49,329,170,-159,151,-19,153,2,147,-6,-182,-23
+Isaiah Dudley,SF,Fremantle,,23,7,,234,182,-52,185,3,185,0,191,6,-43,9
+Jack Darling,KPF,North Melbourne,Priority (West Coast),34,5,28,155,160,5,160,0,160,0,154,-6,-1,-6
+Jack Higgins,SF,St Kilda,,27,3,17,52,60,8,60,0,60,0,54,-6,2,-6
+Jacob Weitering,KPD,Carlton,,29,0,1,1013,1023,10,1023,0,1016,-7,1010,-6,-3,-13
+Jake Lever,SD,Melbourne,,30,3,15,143,153,10,153,0,153,0,147,-6,4,-6
+Jarman Impey,SD,Hawthorn,,31,4,21,845,808,-37,808,0,802,-6,808,6,-37,0
+Jesse Motlop,SF,Carlton,,23,4,27,90,94,4,63,-31,65,2,59,-6,-31,-35
+Lachlan Gulbin,SF,Gold Coast,,20,7,,415,195,-220,217,22,217,0,211,-6,-204,16
+Lachlan Weller,MID,Gold Coast,,30,3,14,74,49,-25,49,0,43,-6,37,-6,-37,-12
+Mark Blicavs,RUCK,Geelong,,35,7,,5,56,51,56,0,56,0,50,-6,45,-6
+Matthew Kennedy,MID,Western Bulldogs,Academy,29,3,13,423,449,26,449,0,443,-6,449,6,26,0
+Max Michalanney,SD,Adelaide,Father-Son,22,3,17,493,421,-72,381,-40,381,0,387,6,-106,-34
+Noah Howes,KPF,Collingwood,,21,7,14,229,221,-8,207,-14,211,4,217,6,-12,-4
+Ollie Lord,KPF,Port Adelaide,,24,7,51,105,95,-10,95,0,70,-25,76,6,-29,-19
+Paddy Cross,SF,Melbourne,,23,7,,139,59,-80,59,0,59,0,65,6,-74,6
+Stephen Coniglio,SF,GWS,,33,0,3,215,211,-4,211,0,210,-1,204,-6,-11,-7
+Toby Bedford,SF,GWS,Next Gen,26,7,75,272,279,7,279,0,273,-6,279,6,7,0
+Will McLachlan,SF,Brisbane,,21,7,6,148,140,-8,114,-26,124,10,130,6,-18,-10
+Andrew McGrath,SD,Essendon,,28,0,1,1022,1035,13,1035,0,998,-37,1003,5,-19,-32
+Andy Moniz-Wakefield,SD,Melbourne,,23,7,,54,39,-15,43,4,43,0,38,-5,-16,-1
+Billy Dowling,SF,Adelaide,,22,6,43,150,135,-15,162,27,162,0,157,-5,7,22
+Brandon Zerk-Thatcher,KPD,Essendon,,28,7,65,48,55,7,55,0,51,-4,46,-5,-2,-9
+Bruce Reville,MID,Brisbane,,25,7,,54,61,7,61,0,33,-28,38,5,-16,-23
+Charlie West,KPF,Collingwood,,20,7,50,692,377,-315,347,-30,347,0,342,-5,-350,-35
+Harry Sharp,SF,Brisbane,,24,6,45,155,152,-3,152,0,108,-44,113,5,-42,-39
+Heath Chapman,SD,Fremantle,,24,3,14,460,461,1,461,0,413,-48,408,-5,-52,-53
+Jack Bowes,MID,Geelong,Academy,28,2,10,97,69,-28,69,0,49,-20,44,-5,-53,-25
+Jack Ison,MID,Carlton,Next Gen,19,6,47,512,417,-95,453,36,453,0,458,5,-54,41
+Jade Gresham,SF,Essendon,,29,3,18,39,11,-28,11,0,11,0,6,-5,-33,-5
+Jake Riccardi,KPF,GWS,,27,7,50,257,242,-15,242,0,233,-9,238,5,-19,-4
+Josaia Delana,SF,GWS,,20,7,,391,196,-195,205,9,205,0,200,-5,-191,4
+Noah Answerth,SD,Brisbane,,27,7,55,12,16,4,16,0,12,-4,7,-5,-5,-9
+Sam Butler,SF,Hawthorn,,23,4,23,81,136,55,63,-73,69,6,64,-5,-17,-72
+Blake Acres,MID,Carlton,,31,3,19,86,89,3,89,0,89,0,85,-4,-1,-4
+Bradley Close,SF,Geelong,,28,7,8,15,22,7,22,0,22,0,18,-4,3,-4
+Charlie Spargo,SF,Melbourne,,27,5,29,26,17,-9,17,0,8,-9,4,-4,-22,-13
+Corey Wagner,SD,Fremantle,Academy - Unmatched,29,6,43,20,38,18,38,0,28,-10,32,4,12,-6
+Daniel McStay,KPF,Collingwood,,31,4,25,338,332,-6,332,0,324,-8,328,4,-10,-4
+Hayden McLean,KPF,Sydney,,27,7,,214,201,-13,201,0,201,0,197,-4,-17,-4
+Isaac Quaynor,SD,Collingwood,Next Gen,26,3,13,596,602,6,602,0,569,-33,573,4,-23,-29
+Jack Henderson,SF,Melbourne,,27,7,,113,31,-82,31,0,22,-9,26,4,-87,-5
+Jack Henry,KPF,Geelong,,28,7,12,251,273,22,273,0,273,0,269,-4,18,-4
+James Blanck,KPD,Hawthorn,,26,7,14,70,54,-16,54,0,19,-35,15,-4,-55,-39
+Jeremy Sharp,MID,Fremantle,,25,4,27,63,149,86,149,0,37,-112,41,4,-22,-108
+Lachlan Ash,SD,GWS,,25,1,4,5728,5303,-425,5303,0,5299,-4,5303,4,-425,0
+Lance Collard,SF,St Kilda,,21,5,28,146,197,51,115,-82,134,19,138,4,-8,-59
+Liam Henry,SF,St Kilda,Next Gen,25,2,9,63,138,75,138,0,31,-107,35,4,-28,-103
+Liam Hetherton,KPF,Sydney,,19,7,,168,66,-102,66,0,66,0,70,4,-98,4
+Liam Ryan,SF,St Kilda,,30,4,26,24,13,-11,13,0,9,-4,5,-4,-19,-8
+Mitchell Knevitt,MID,Geelong,,23,4,25,258,245,-13,75,-170,99,24,95,-4,-163,-150
+Oliver Wines,MID,Port Adelaide,,32,2,10,255,278,23,278,0,278,0,274,-4,19,-4
+Ollie Murphy,KPD,Fremantle,,21,6,41,168,196,28,196,0,196,0,200,4,32,4
+Rhylee West,SF,Western Bulldogs,Father-Son,26,4,26,100,120,20,120,0,113,-7,109,-4,9,-11
+Sam Cumming,MID,Richmond,,19,1,7,2288,1932,-356,2007,75,2150,143,2146,-4,-142,214
+Taj Hotton,SF,Richmond,,20,2,12,2355,1628,-727,1722,94,1829,107,1825,-4,-530,197
+Xavier O'Halloran,SF,GWS,,26,4,22,47,74,27,74,0,47,-27,51,4,4,-23
+Zach Guthrie,SD,Geelong,,28,7,21,210,246,36,246,0,243,-3,247,4,37,1
+Angus Sheldrick,MID,Sydney,,23,3,18,748,691,-57,573,-118,576,3,579,3,-169,-112
+Callum Ah Chee,SF,Adelaide,,29,2,8,64,30,-34,30,0,17,-13,20,3,-44,-10
+Cameron Rayner,SF,Brisbane,,27,0,1,457,513,56,513,0,459,-54,456,-3,-1,-57
+Charlie Cameron,SF,Brisbane,,32,7,6,151,215,64,215,0,215,0,212,-3,61,-3
+Charlie Curnow,KPF,Carlton,,29,2,12,1365,1297,-68,1297,0,1297,0,1294,-3,-71,-3
+Connor Budarick,SF,Western Bulldogs,Academy,25,7,9,281,253,-28,253,0,239,-14,236,-3,-45,-17
+Corey Durdin,SF,Carlton,,24,6,39,49,59,10,59,0,30,-29,33,3,-16,-26
+Flynn Young,SF,Carlton,,24,7,4,168,52,-116,52,0,20,-32,23,3,-145,-29
+Hussien El Achkar,SF,Essendon,Next Gen,19,7,53,353,313,-40,361,48,361,0,364,3,11,51
+Jackson Mead,MID,Port Adelaide,Father-Son,25,4,25,29,34,5,34,0,11,-23,14,3,-15,-20
+Jy Farrar,KPF,Gold Coast,,30,7,59,10,34,24,34,0,9,-25,12,3,2,-22
+Laitham Vandermeer,SF,Western Bulldogs,,27,6,37,20,36,16,36,0,7,-29,4,-3,-16,-32
+Liam Stocker,SD,St Kilda,,26,3,19,41,58,17,58,0,10,-48,13,3,-28,-45
+Luke Cleary,SD,Western Bulldogs,,24,7,61,29,48,19,48,0,27,-21,24,-3,-5,-24
+Marc Pittonet,RUCK,Carlton,,30,7,50,466,431,-35,431,0,432,1,429,-3,-37,-2
+Mason Redman,SD,Essendon,,29,5,30,1176,1094,-82,1094,0,1094,0,1091,-3,-85,-3
+Nick Murray,KPD,Adelaide,,26,7,,321,341,20,341,0,313,-28,316,3,-5,-25
+Noah Chamberlain,KPF,Sydney,,19,7,,86,37,-49,37,0,37,0,40,3,-46,3
+Oisin Mullin,SD,Geelong,,26,7,,14,15,1,15,0,5,-10,8,3,-6,-7
+Patrick Dangerfield,SF,Geelong,,37,2,10,63,41,-22,41,0,41,0,38,-3,-25,-3
+Ryan Gardner,KPD,Western Bulldogs,,29,7,58,18,34,16,34,0,10,-24,7,-3,-11,-27
+Sam Banks,SD,Richmond,,23,5,29,937,816,-121,818,2,821,3,824,3,-113,8
+Tom Lynch,KPF,Richmond,,34,2,11,50,15,-35,15,0,15,0,12,-3,-38,-3
+Wil Parker,SD,Collingwood,,24,7,,24,31,7,31,0,16,-15,13,-3,-11,-18
+Bayley Fritsch,SF,Melbourne,,30,5,31,199,198,-1,198,0,198,0,196,-2,-3,-2
+Ben King,KPF,Gold Coast,,26,1,6,218,244,26,244,0,214,-30,212,-2,-6,-32
+Ben McKay,KPD,Essendon,,29,4,21,35,35,0,35,0,12,-23,14,2,-21,-21
+Brady Hough,SD,West Coast,,23,5,31,292,263,-29,257,-6,257,0,259,2,-33,-4
+Brody Mihocek,KPF,Melbourne,,33,7,14,10,43,33,43,0,40,-3,38,-2,28,-5
+Callum Coleman-Jones,RUCK,North Melbourne,,27,3,20,38,120,82,120,0,23,-97,25,2,-13,-95
+Campbell Lake,SF,St Kilda,,22,7,7,161,164,3,203,39,203,0,201,-2,40,37
+Changkuoth Jiath,SD,Melbourne,,27,7,,12,18,6,18,0,19,1,17,-2,5,-1
+Chris Scerri,SF,Fremantle,,20,7,,459,321,-138,355,34,355,0,353,-2,-106,32
+Conor McKenna,SF,Brisbane,,30,7,,6,5,-1,5,0,5,0,3,-2,-3,-2
+Dane Rampe,SD,Sydney,,36,7,23,12,5,-7,5,0,5,0,3,-2,-9,-2
+Daniel Butler,SF,St Kilda,,30,7,65,15,4,-11,4,0,3,-1,1,-2,-14,-3
+Darragh Joyce,KPD,Brisbane,,29,7,,41,8,-33,8,0,4,-4,6,2,-35,-2
+Harrison Petty,KPF,Melbourne,,27,6,37,207,214,7,214,0,198,-16,200,2,-7,-14
+Harry Cunningham,SD,Sydney,,33,7,,10,7,-3,7,0,4,-3,2,-2,-8,-5
+Harvey Gallagher,SD,Western Bulldogs,,23,6,39,87,48,-39,21,-27,21,0,19,-2,-68,-29
+Hayden Young,MID,Fremantle,,25,1,7,1762,1650,-112,1650,0,1651,1,1649,-2,-113,-1
+Joel Hamling,KPD,Sydney,,33,6,41,18,17,-1,17,0,8,-9,6,-2,-12,-11
+Lachie Sullivan,SF,Collingwood,,29,7,,86,29,-57,29,0,15,-14,17,2,-69,-12
+Lachlan McNeil,SF,Western Bulldogs,,25,7,6,20,26,6,26,0,9,-17,11,2,-9,-15
+Luke Beecken,MID,Brisbane,,25,7,16,164,176,12,176,0,159,-17,157,-2,-7,-19
+Matt Guelfi,SF,Essendon,,29,7,75,15,7,-8,7,0,5,-2,3,-2,-12,-4
+Mitchell Hinge,SD,Adelaide,,28,7,15,322,305,-17,305,0,305,0,303,-2,-19,-2
+Nicholas Holman,SF,Gold Coast,,31,7,49,14,6,-8,6,0,3,-3,1,-2,-13,-5
+Nick Haynes,SD,Carlton,,34,2,10,60,76,16,76,0,71,-5,69,-2,9,-7
+Nikolas Cox,MID,Essendon,,24,2,8,136,249,113,249,0,110,-139,108,-2,-28,-141
+Tim Membrey,KPF,St Kilda,,32,7,49,129,127,-2,127,0,127,0,125,-2,-4,-2
+Tom Barrass,KPD,Hawthorn,,31,6,43,21,22,1,22,0,22,0,20,-2,-1,-2
+Tom Powell,SF,North Melbourne,,24,3,13,2103,1907,-196,1907,0,1900,-7,1898,-2,-205,-9
+Tyrell Dewar,SD,West Coast,,22,7,,96,38,-58,37,-1,37,0,39,2,-57,1
+Tyson Stengle,SF,Richmond,,28,7,4,151,181,30,181,0,182,1,180,-2,29,-1
+Alex Pearce,KPD,Fremantle,,31,6,37,23,17,-6,17,0,8,-9,7,-1,-16,-10
+Angus Anderson,SF,Collingwood,,23,7,57,165,151,-14,171,20,176,5,177,1,12,26
+Bailey Macdonald,SD,Hawthorn,,22,7,51,148,85,-63,60,-25,62,2,63,1,-85,-22
+Billy Frampton,KPD,Collingwood,,30,7,74,34,45,11,45,0,38,-7,39,1,5,-6
+Brandon Starcevich,SD,Brisbane,,27,3,18,41,26,-15,26,0,4,-22,5,1,-36,-21
+Buku Khamis,KPF,Western Bulldogs,,26,7,,144,133,-11,133,0,128,-5,129,1,-15,-4
+Caleb Lewis,KPF,Gold Coast,,23,7,13,233,155,-78,120,-35,139,19,140,1,-93,-15
+Darcy Fogarty,KPF,Adelaide,,27,2,12,852,832,-20,832,0,805,-27,804,-1,-48,-28
+Darcy Gardiner,KPD,Brisbane,,31,4,22,33,10,-23,10,0,6,-4,5,-1,-28,-5
+Ewan Mackinlay,SF,Port Adelaide,,23,7,10,152,99,-53,105,6,114,9,115,1,-37,16
+Finlay Macrae,SF,West Coast,,24,3,20,322,112,-210,112,0,50,-62,51,1,-271,-61
+Finn Maginness,SF,Hawthorn,Father-Son,25,5,29,26,64,38,64,0,12,-52,11,-1,-15,-53
+Hugh Bond,SD,Adelaide,,22,7,50,153,74,-79,62,-12,65,3,64,-1,-89,-10
+Hugo Ralphsmith,MID,Richmond,,25,6,45,54,87,33,87,0,38,-49,37,-1,-17,-50
+Jack Ross,SF,Richmond,,26,6,43,2761,2479,-282,2479,0,2478,-1,2479,1,-282,0
+Jacob Wehr,SD,Port Adelaide,,28,7,61,14,28,14,28,0,5,-23,4,-1,-10,-24
+Jake Kolodjashnij,KPD,Geelong,,31,6,41,22,11,-11,11,0,6,-5,5,-1,-17,-6
+James Jordon,SF,Sydney,,26,5,33,176,180,4,180,0,167,-13,168,1,-8,-12
+Jamie Cripps,SF,West Coast,,34,4,26,28,11,-17,11,0,11,0,10,-1,-18,-1
+Judd McVee,SD,Fremantle,,23,7,9,316,268,-48,263,-5,263,0,262,-1,-54,-6
+Kye Annand,KPD,Richmond,,23,7,2,239,263,24,328,65,328,0,329,1,90,66
+Lewis Melican,KPD,Sydney,,30,7,32,21,32,11,32,0,26,-6,25,-1,4,-7
+Lincoln McCarthy,SF,Brisbane,,33,7,73,15,12,-3,12,0,12,0,11,-1,-4,-1
+Luke McDonald,SD,North Melbourne,Father-Son,31,2,8,50,15,-35,15,0,12,-3,11,-1,-39,-4
+Malcolm Rosas,SF,Sydney,Academy,25,7,14,25,38,13,38,0,21,-17,20,-1,-5,-18
+Mason Cox,KPF,Fremantle,,35,7,,3,3,0,3,0,3,0,2,-1,-1,-1
+Matt Cottrell,SF,Carlton,,26,7,,72,95,23,95,0,80,-15,81,1,9,-14
+Maurice Rioli,SF,Richmond,Father-Son,24,7,53,27,49,22,49,0,15,-34,16,1,-11,-33
+Mitch McGovern,SF,Carlton,,32,6,43,40,41,1,41,0,41,0,40,-1,0,-1
+Nathan Broad,SD,Richmond,,33,7,65,15,10,-5,10,0,7,-3,8,1,-7,-2
+Ned Reeves,RUCK,Hawthorn,,28,7,,236,231,-5,231,0,201,-30,202,1,-34,-29
+Nic Newman,SD,Carlton,,33,7,24,628,672,44,672,0,672,0,671,-1,43,-1
+Nicholas Coffield,SD,Western Bulldogs,,27,2,8,50,161,111,161,0,53,-108,52,-1,2,-109
+Oliver Henry,KPF,Geelong,,24,3,18,197,188,-9,188,0,166,-22,167,1,-30,-21
+Paddy Dow,MID,St Kilda,,27,0,3,158,206,48,206,0,29,-177,28,-1,-130,-178
+Rhys Stanley,RUCK,Geelong,,36,6,47,28,6,-22,6,0,6,0,5,-1,-23,-1
+Riley Hamilton,SF,GWS,,20,7,,305,210,-95,208,-2,208,0,207,-1,-98,-3
+Rory Lobb,KPD,Western Bulldogs,,33,5,29,276,270,-6,270,0,270,0,269,-1,-7,-1
+Ryan Byrnes,SD,St Kilda,,25,7,51,64,58,-6,58,0,53,-5,54,1,-10,-4
+Sam Wicks,SD,Sydney,,27,7,,10,33,23,33,0,16,-17,17,1,7,-16
+Steely Green,SF,Richmond,,22,7,55,150,76,-74,38,-38,39,1,38,-1,-112,-38
+Thomas Liberatore,MID,Western Bulldogs,Father-Son,34,4,24,1018,970,-48,970,0,970,0,969,-1,-49,-1
+Tyler Brockman,SF,West Coast,,24,6,48,50,42,-8,42,0,31,-11,30,-1,-20,-12
+Wade Derksen,KPD,Carlton,,25,7,5,109,158,49,158,0,158,0,159,1,50,1
+Will Edwards,KPD,Sydney,,23,7,,214,161,-53,183,22,184,1,185,1,-29,24
+Zac Banch,SF,North Melbourne,,23,7,2,152,69,-83,33,-36,40,7,39,-1,-113,-30
+Adam Saad,SD,Carlton,,32,7,19,426,446,20,446,0,446,0,446,0,20,0
+Adam Sweid,MID,Fremantle,Academy - Unmatched,19,4,25,397,253,-144,253,0,253,0,253,0,-144,0
+Adam Treloar,SF,Western Bulldogs,,33,3,14,911,850,-61,850,0,850,0,850,0,-61,0
+Aidan Corr,KPD,North Melbourne,,32,3,18,38,14,-24,14,0,9,-5,9,0,-29,-5
+Aiden Riddle,RUCK,Fremantle,,21,7,2,151,211,60,211,0,211,0,211,0,60,0
+Alex Neal-Bullen,SF,Adelaide,,30,6,40,371,356,-15,356,0,356,0,356,0,-15,0
+Aliir Aliir,KPD,Port Adelaide,,32,6,44,773,728,-45,728,0,728,0,728,0,-45,0
+Andrew Brayshaw,MID,Fremantle,,27,0,2,3138,2998,-140,2998,0,2998,0,2998,0,-140,0
+Angus Clarke,SD,Essendon,,20,6,39,555,451,-104,532,81,532,0,532,0,-23,81
+Archie Roberts,SD,Essendon,,21,7,54,4726,3561,-1165,3571,10,3571,0,3571,0,-1155,10
+Asher Eastham,SF,Gold Coast,,20,7,7,94,86,-8,86,0,86,0,86,0,-8,0
+Avery Thomas,SD,Gold Coast,,19,5,28,394,266,-128,266,0,266,0,266,0,-128,0
+Bailey Banfield,SD,Fremantle,,28,7,3,10,17,7,17,0,10,-7,10,0,0,-7
+Bailey Dale,SD,Western Bulldogs,,30,6,45,2255,2092,-163,2092,0,2092,0,2092,0,-163,0
+Bailey Smith,MID,Geelong,,26,1,7,6683,6155,-528,6155,0,6155,0,6155,0,-528,0
+Bailey Williams,SD,Western Bulldogs,,29,6,48,612,571,-41,571,0,571,0,571,0,-41,0
+Beau McCreery,SF,Collingwood,,25,6,46,134,122,-12,122,0,116,-6,116,0,-18,-6
+Ben Camporeale,MID,Carlton,Father-Son,20,6,43,249,123,-126,123,0,123,0,123,0,-126,0
+Ben Long,SF,Gold Coast,,29,4,25,28,13,-15,13,0,7,-6,7,0,-21,-6
+Ben Miller,KPD,Richmond,,27,7,62,1042,926,-116,926,0,927,1,927,0,-115,1
+Ben Murphy,SD,Brisbane,,19,7,,85,40,-45,40,0,40,0,40,0,-45,0
+Benny Barrett,SF,Port Adelaide,,20,7,,50,23,-27,23,0,23,0,23,0,-27,0
+Blake Hardwick,SD,Hawthorn,,29,6,44,524,493,-31,493,0,493,0,493,0,-31,0
+Bodhi Uwland,SD,Gold Coast,,23,7,,4087,3560,-527,3568,8,3568,0,3568,0,-519,8
+Bradley Hill,SF,St Kilda,,33,6,42,1225,1151,-74,1151,0,1151,0,1151,0,-74,0
+Brayden George,SF,North Melbourne,,22,4,26,234,169,-65,169,0,169,0,169,0,-65,0
+Brayden Maynard,SD,Collingwood,,30,5,30,489,467,-22,467,0,467,0,467,0,-22,0
+Brent Daniels,SF,GWS,,27,4,27,1199,1089,-110,1089,0,1089,0,1089,0,-110,0
+Brodie Grundy,RUCK,Sydney,,32,4,22,4490,4210,-280,4210,0,4210,0,4210,0,-280,0
+Caleb Daniel,SD,North Melbourne,,30,6,46,1338,1249,-89,1249,0,1249,0,1249,0,-89,0
+Caleb May,RUCK,Western Bulldogs,,21,7,9,322,266,-56,266,0,266,0,266,0,-56,0
+Caleb Serong,MID,Fremantle,,25,2,8,5027,4648,-379,4648,0,4648,0,4648,0,-379,0
+Callum M. Brown,SF,GWS,,26,7,,28,30,2,30,0,29,-1,29,0,1,-1
+Callum Mills,SD,Sydney,Academy,29,0,3,1994,1921,-73,1921,0,1921,0,1921,0,-73,0
+Callum Wilkie,KPD,St Kilda,,30,7,1,3633,3422,-211,3422,0,3422,0,3422,0,-211,0
+Calsher Dear,KPF,Hawthorn,Father-Son,21,7,56,892,568,-324,592,24,592,0,592,0,-300,24
+Cameron Zurhaar,SF,North Melbourne,,28,7,9,125,121,-4,121,0,121,0,121,0,-4,0
+Chad Warner,SF,Sydney,,25,6,38,4411,4003,-408,4003,0,4004,1,4004,0,-407,1
+Charlie Nicholls,KPF,Fremantle,,20,5,34,199,219,20,219,0,219,0,219,0,20,0
+Chayce Jones,SD,Adelaide,,26,2,9,50,88,38,88,0,12,-76,12,0,-38,-76
+Christian Petracca,SF,Gold Coast,,30,0,2,2038,1977,-61,1977,0,1977,0,1977,0,-61,0
+Christian Salem,SD,Melbourne,,31,2,9,92,111,19,111,0,111,0,111,0,19,0
+Cillian Bourke,SD,Essendon,,20,7,,85,40,-45,40,0,40,0,40,0,-45,0
+Cillian Burke,SD,Geelong,,23,7,,43,37,-6,37,0,37,0,37,0,-6,0
+Clayton Oliver,MID,GWS,,29,1,4,2334,2240,-94,2240,0,2240,0,2240,0,-94,0
+Cody Anderson,SF,Hawthorn,,20,7,64,62,17,-45,17,0,17,0,17,0,-45,0
+Colby McKercher,SD,North Melbourne,,21,0,2,4285,4167,-118,4223,56,4223,0,4223,0,-62,56
+Connor Idun,SD,GWS,,26,7,61,2224,2021,-203,2021,0,2021,0,2021,0,-203,0
+Connor MacDonald,SF,Hawthorn,,23,4,26,2740,2495,-245,2495,0,2495,0,2495,0,-245,0
+Connor O'Sullivan,KPD,Geelong,,21,2,11,2920,2539,-381,2589,50,2589,0,2589,0,-331,50
+Conor Nash,MID,Hawthorn,,28,7,,235,252,17,252,0,252,0,252,0,17,0
+Cooper Bell,KPF,Gold Coast,Academy - Unmatched,20,7,49,152,135,-17,135,0,135,0,135,0,-17,0
+Cooper Trembath,KPF,North Melbourne,,21,7,9,2201,1728,-473,1779,51,1779,0,1779,0,-422,51
+Dan Houston,SD,Collingwood,,29,7,30,1096,1111,15,1111,0,1111,0,1111,0,15,0
+Daniel Curtin,MID,Adelaide,,21,2,8,2488,2242,-246,2335,93,2335,0,2335,0,-153,93
+Daniel Rioli,SD,Gold Coast,,29,3,15,640,622,-18,622,0,622,0,622,0,-18,0
+Daniel Turner,KPD,Melbourne,,24,7,20,1534,1303,-231,1303,0,1322,19,1322,0,-212,19
+Dante Visentini,KPF,Port Adelaide,,23,7,56,1274,813,-461,800,-13,807,7,807,0,-467,-6
+Darcy Byrne-Jones,SF,Port Adelaide,,31,7,50,664,623,-41,623,0,623,0,623,0,-41,0
+Darcy Cameron,RUCK,Collingwood,,31,6,48,1669,1532,-137,1532,0,1532,0,1532,0,-137,0
+Darcy Wilmot,SD,Brisbane,,23,3,16,3313,3013,-300,3013,0,3013,0,3013,0,-300,0
+Darcy Wilson,SF,St Kilda,,21,3,18,3224,2818,-406,2829,11,2829,0,2829,0,-395,11
+Dayne Zorko,SD,Brisbane,,37,6,38,998,938,-60,938,0,938,0,938,0,-60,0
+Dylan Moore,SF,Hawthorn,,27,7,66,1182,1116,-66,1116,0,1116,0,1116,0,-66,0
+Dyson Sharp,SF,Essendon,,19,3,13,3091,2427,-664,2879,452,2879,0,2879,0,-212,452
+Eamonn Armstrong,SD,St Kilda,,20,7,,43,37,-6,37,0,37,0,37,0,-6,0
+Ed Langdon,SF,Melbourne,,30,7,54,795,744,-51,744,0,744,0,744,0,-51,0
+Ed Richards,MID,Western Bulldogs,,27,3,16,3924,3641,-283,3641,0,3641,0,3641,0,-283,0
+Elliot Yeo,SF,West Coast,,33,6,36,331,318,-13,318,0,318,0,318,0,-13,0
+Eric Hipwood,KPF,Brisbane,Academy,29,3,14,42,23,-19,23,0,18,-5,18,0,-24,-5
+Errol Gulden,MID,Sydney,Academy,24,5,34,7239,6442,-797,6442,0,6442,0,6442,0,-797,0
+Finn Callaghan,MID,GWS,,23,0,3,6062,5512,-550,5516,4,5516,0,5516,0,-546,4
+Finnegan Davis,SD,GWS,,19,7,51,165,84,-81,84,0,84,0,84,0,-81,0
+Fred Rodriguez,SF,West Coast,,19,7,1,201,97,-104,97,0,97,0,97,0,-104,0
+George Hewett,MID,Carlton,,31,5,32,2056,1928,-128,1928,0,1928,0,1928,0,-128,0
+Gryan Miers,SF,Geelong,,27,7,57,1650,1524,-126,1524,0,1524,0,1524,0,-126,0
+Harris Andrews,KPD,Brisbane,Academy,30,7,60,1623,1521,-102,1521,0,1521,0,1521,0,-102,0
+Harrison Coe,RUCK,Collingwood,,27,7,8,322,266,-56,266,0,266,0,266,0,-56,0
+Harrison Himmelberg,SD,GWS,Academy,30,3,16,138,145,7,145,0,145,0,145,0,7,0
+Harrison Ramm,KPD,Port Adelaide,,20,7,3,545,438,-107,391,-47,402,11,402,0,-143,-36
+Harry Charleson,SD,Carlton,,20,7,3,105,109,4,109,0,109,0,109,0,4,0
+Harry Dean,KPD,Carlton,Father-Son,19,0,3,2577,2403,-174,3069,666,3069,0,3069,0,492,666
+Harry DeMattia,MID,Collingwood,,21,4,25,430,331,-99,331,0,331,0,331,0,-99,0
+Harry McKay,KPF,Carlton,,29,2,10,1735,1636,-99,1636,0,1636,0,1636,0,-99,0
+Harry Sheezel,SF,North Melbourne,,22,0,3,11764,10428,-1336,10433,5,10433,0,10433,0,-1331,5
+Harvey Thomas,SF,GWS,Academy,21,7,59,2247,1954,-293,1958,4,1958,0,1958,0,-289,4
+Hugh McCluggage,MID,Brisbane,,28,0,3,1543,1482,-61,1482,0,1482,0,1482,0,-61,0
+Hugo Garcia,MID,St Kilda,,21,7,50,3062,2444,-618,2462,18,2462,0,2462,0,-600,18
+Hugo Hall-Kahan,SD,Adelaide,,23,7,10,215,253,38,352,99,352,0,352,0,137,99
+Hugo Mikunda,SF,North Melbourne,,19,6,48,177,139,-38,139,0,139,0,139,0,-38,0
+Hunter Holmes,MID,Geelong,,19,5,33,517,357,-160,357,0,357,0,357,0,-160,0
+Iliro Smit,RUCK,Collingwood,,21,7,10,204,254,50,254,0,254,0,254,0,50,0
+Indy Cotton,SF,Adelaide,,19,7,,48,49,1,49,0,49,0,49,0,1,0
+Isaac Heeney,MID,Sydney,Academy,30,1,4,3537,3359,-178,3359,0,3359,0,3359,0,-178,0
+Izak Rankine,SF,Adelaide,,26,0,3,4685,4342,-343,4342,0,4342,0,4342,0,-343,0
+Jack Buckley,KPD,GWS,,29,7,,548,503,-45,503,0,504,1,504,0,-44,1
+Jack Crisp,MID,Collingwood,,33,7,34,410,462,52,462,0,462,0,462,0,52,0
+Jack Ginnivan,SF,Collingwood,,24,7,8,2242,2065,-177,2065,0,2065,0,2065,0,-177,0
+Jack Graham,SF,West Coast,,28,7,53,651,604,-47,604,0,604,0,604,0,-47,0
+Jack Gunston,KPF,Hawthorn,,35,5,29,753,717,-36,717,0,717,0,717,0,-36,0
+Jack Silvagni,KPD,St Kilda,Father-Son,29,7,53,617,580,-37,580,0,580,0,580,0,-37,0
+Jack Sinclair,SD,St Kilda,,31,7,1,3322,3180,-142,3180,0,3180,0,3180,0,-142,0
+Jack Steele,MID,Melbourne,Academy,31,4,21,1191,1134,-57,1134,0,1134,0,1134,0,-57,0
+Jack Williams,KPF,West Coast,,23,7,57,415,327,-88,313,-14,315,2,315,0,-100,-12
+Jackson Archer,SD,North Melbourne,Father-Son,23,7,59,27,24,-3,12,-12,12,0,12,0,-15,-12
+Jackson Macrae,MID,St Kilda,,32,2,8,101,96,-5,96,0,96,0,96,0,-5,0
+Jacob Farrow,SD,Essendon,,19,2,10,2601,2155,-446,2515,360,2515,0,2515,0,-86,360
+Jacob Molier,RUCK,Geelong,,20,7,52,283,88,-195,88,0,88,0,88,0,-195,0
+Jacob Moss,KPD,Port Adelaide,,22,7,,36,52,16,52,0,52,0,52,0,16,0
+Jacob Van Rooyen,KPF,Melbourne,,23,3,19,1894,1716,-178,1719,3,1719,0,1719,0,-175,3
+Jagga Smith,SF,Carlton,,20,0,3,4855,3637,-1218,4348,711,4348,0,4348,0,-507,711
+Jai Newcombe,MID,Hawthorn,,25,7,2,4883,4586,-297,4586,0,4586,0,4586,0,-297,0
+Jai Saxena,SF,Collingwood,,19,7,,84,25,-59,25,0,25,0,25,0,-59,0
+Jai Serong,KPD,Sydney,,23,7,53,1233,841,-392,868,27,868,0,868,0,-365,27
+Jaime Uhr-Henry,RUCK,Hawthorn,,23,7,,26,45,19,45,0,45,0,45,0,19,0
+Jake Bowey,SD,Melbourne,,24,4,22,4319,3807,-512,3807,0,3808,1,3808,0,-511,1
+Jake Lloyd,SF,Sydney,,33,7,16,173,211,38,211,0,211,0,211,0,38,0
+Jake Melksham,KPF,Melbourne,,35,2,10,50,5,-45,5,0,2,-3,2,0,-48,-3
+Jake Soligo,SF,Adelaide,,23,6,36,2051,1874,-177,1874,0,1874,0,1874,0,-177,0
+Jake Waterman,KPF,West Coast,Father-Son,28,7,76,1160,1157,-3,1157,0,1157,0,1157,0,-3,0
+James Barrat,KPF,St Kilda,,20,5,32,225,220,-5,220,0,220,0,220,0,-5,0
+James Borlase,KPD,Adelaide,,24,7,,424,294,-130,294,0,307,13,307,0,-117,13
+James O'Donnell,KPD,Western Bulldogs,,24,7,,727,513,-214,513,0,514,1,514,0,-213,1
+James Rowbottom,SF,Sydney,,26,4,25,1205,1129,-76,1129,0,1129,0,1129,0,-76,0
+James Sicily,SD,Hawthorn,,31,7,52,1421,1320,-101,1320,0,1320,0,1320,0,-101,0
+James Tunstill,MID,Brisbane,,23,6,41,82,176,94,42,-134,69,27,69,0,-13,-107
+James Worpel,MID,Geelong,,27,6,45,413,388,-25,388,0,388,0,388,0,-25,0
+Jaren Carr,SF,Fremantle,Next Gen,22,7,63,65,17,-48,17,0,17,0,17,0,-48,0
+Jarrod Witts,RUCK,Gold Coast,,34,7,74,139,241,102,241,0,241,0,241,0,102,0
+Jase Burgoyne,SD,Port Adelaide,Father-Son,23,7,60,2549,2163,-386,2163,0,2163,0,2163,0,-386,0
+Jason Horne-Francis,SF,Port Adelaide,,23,0,1,6042,5597,-445,5600,3,5600,0,5600,0,-442,3
+Jaspa Fletcher,SD,Brisbane,Academy,22,2,12,2616,2454,-162,2456,2,2456,0,2456,0,-160,2
+Jaxon Prior,SD,Brisbane,,25,7,58,305,263,-42,263,0,255,-8,255,0,-50,-8
+Jayden Laverde,KPD,Essendon,,30,3,20,193,204,11,204,0,195,-9,195,0,2,-9
+Jayden Short,SD,Richmond,,30,7,9,887,917,30,917,0,917,0,917,0,30,0
+Jed Bews,SD,Geelong,Father-Son,33,7,77,15,5,-10,5,0,1,-4,1,0,-14,-4
+Jeremy Cameron,KPF,Geelong,,33,2,12,778,754,-24,754,0,754,0,754,0,-24,0
+Jeremy Howe,SD,Collingwood,,36,5,35,224,219,-5,219,0,219,0,219,0,-5,0
+Jesse Mellor,SF,Geelong,,19,7,,84,51,-33,51,0,51,0,51,0,-33,0
+Jevan Phillipou,MID,Sydney,,19,5,35,273,226,-47,226,0,226,0,226,0,-47,0
+Jobe Shanahan,KPF,West Coast,,20,5,30,1739,1347,-392,1438,91,1438,0,1438,0,-301,91
+Joe Pike,RUCK,Geelong,,21,7,9,151,211,60,211,0,211,0,211,0,60,0
+Joe Richards,SF,Port Adelaide,,27,6,48,915,745,-170,745,0,759,14,759,0,-156,14
+Joel Cochran,SD,Collingwood,Academy - Unmatched,20,6,47,161,139,-22,139,0,139,0,139,0,-22,0
+Joel Fitzgerald,MID,Melbourne,,23,7,16,72,184,112,240,56,257,17,257,0,185,73
+Joel Freijah,SF,Western Bulldogs,,21,6,45,2883,2500,-383,2512,12,2512,0,2512,0,-371,12
+Joel Jeffrey,SD,Gold Coast,Academy,24,5,30,1579,1352,-227,1352,0,1354,2,1354,0,-225,2
+John Noble,SD,Gold Coast,,29,7,8,2159,2116,-43,2116,0,2116,0,2116,0,-43,0
+Jordan Clark,SD,Fremantle,,26,3,15,3264,3014,-250,3014,0,3014,0,3014,0,-250,0
+Jordan Dawson,MID,Adelaide,,29,7,55,3443,3176,-267,3176,0,3176,0,3176,0,-267,0
+Jordan De Goey,SF,Collingwood,,30,1,6,1433,1365,-68,1365,0,1365,0,1365,0,-68,0
+Jordon Butts,KPD,Adelaide,,27,7,17,18,25,7,25,0,12,-13,12,0,-6,-13
+Jordon Sweet,RUCK,Port Adelaide,,28,7,14,2285,2007,-278,2007,0,2017,10,2017,0,-268,10
+Josh Battle,KPD,St Kilda,,28,6,39,2028,1879,-149,1879,0,1879,0,1879,0,-149,0
+Josh Daicos,SD,Collingwood,Father-Son,28,7,57,2104,1941,-163,1941,0,1941,0,1941,0,-163,0
+Josh Draper,KPD,Fremantle,,22,7,,389,247,-142,264,17,264,0,264,0,-125,17
+Josh Dunkley,MID,Brisbane,Father-Son,29,4,25,1134,1077,-57,1077,0,1077,0,1077,0,-57,0
+Josh Lindsay,SD,West Coast,,19,3,19,2335,1796,-539,2050,254,2050,0,2050,0,-285,254
+Josh Rachele,SF,Adelaide,,23,1,6,2008,1872,-136,1874,2,1874,0,1874,0,-134,2
+Josh Smillie,MID,Richmond,,20,1,7,953,772,-181,772,0,772,0,772,0,-181,0
+Josh Treacy,KPF,Fremantle,,24,7,4,6921,6133,-788,6133,0,6133,0,6133,0,-788,0
+Josh Worrell,SD,Adelaide,,25,5,28,3723,3136,-587,3136,0,3138,2,3138,0,-585,2
+Joshua Weddle,SD,Hawthorn,,22,3,18,1510,1433,-77,1437,4,1437,0,1437,0,-73,4
+Justin McInerney,SF,Sydney,,26,6,44,2143,1950,-193,1950,0,1950,0,1950,0,-193,0
+Jy Simpkin,SF,North Melbourne,,28,2,12,1164,1129,-35,1129,0,1129,0,1129,0,-35,0
+Kai Lohmann,SF,Brisbane,,23,3,20,879,820,-59,823,3,823,0,823,0,-56,3
+Kalani White,KPF,Melbourne,,19,7,,84,55,-29,55,0,55,0,55,0,-29,0
+Kane Farrell,SD,Port Adelaide,,27,7,51,1306,1183,-123,1183,0,1183,0,1183,0,-123,0
+Karl Amon,SD,Hawthorn,,31,7,59,344,324,-20,324,0,324,0,324,0,-20,0
+Kayle Gerreyn,RUCK,Essendon,,20,6,37,177,184,7,184,0,184,0,184,0,7,0
+Keighton Matofai-Forbes,SF,Geelong,,20,7,69,104,111,7,111,0,111,0,111,0,7,0
+Kobe McDonald,SD,St Kilda,,19,7,,85,40,-45,40,0,40,0,40,0,-45,0
+Koby Coulson,MID,Gold Coast,Academy,19,6,46,316,232,-84,232,0,232,0,232,0,-84,0
+Koby Evans,MID,Brisbane,Academy - Unmatched,19,6,38,254,219,-35,219,0,219,0,219,0,-35,0
+Kye Fincher,SD,St Kilda,Next Gen,19,7,52,249,145,-104,145,0,145,0,145,0,-104,0
+Kysaiah Pickett,SF,Melbourne,,25,2,12,4249,3914,-335,3914,0,3914,0,3914,0,-335,0
+Lachie Neale,MID,Brisbane,,33,7,66,2348,2310,-38,2310,0,2310,0,2310,0,-38,0
+Lachie Whitfield,SD,GWS,,32,0,1,2223,2143,-80,2143,0,2143,0,2143,0,-80,0
+Lachlan Bramble,SF,Western Bulldogs,,28,7,,89,88,-1,88,0,88,0,88,0,-1,0
+Lachlan Carmichael,SD,Western Bulldogs,Academy - Unmatched,19,4,21,548,479,-69,479,0,479,0,479,0,-69,0
+Lachlan Cowan,SD,Carlton,,22,5,30,724,612,-112,620,8,620,0,620,0,-104,8
+Lachlan McAndrew,RUCK,Adelaide,,26,7,,1279,841,-438,841,0,920,79,920,0,-359,79
+Lachlan Schultz,SF,Fremantle,,29,7,57,740,685,-55,685,0,685,0,685,0,-55,0
+Lawson Humphries,SD,Geelong,,23,7,63,1816,1451,-365,1456,5,1456,0,1456,0,-360,5
+Lennox Hoffman,SD,Geelong,,20,7,66,104,111,7,111,0,111,0,111,0,7,0
+Leon Kickett,SF,Fremantle,,20,7,4,151,92,-59,92,0,92,0,92,0,-59,0
+Lewis Hayes,SD,Essendon,,22,4,25,250,311,61,338,27,338,0,338,0,88,27
+Liam Baker,SD,West Coast,,28,7,11,402,421,19,421,0,421,0,421,0,19,0
+Lloyd Meek,RUCK,Hawthorn,,28,7,68,1300,1365,65,1365,0,1367,2,1367,0,67,2
+Logan Evans,SD,Port Adelaide,,21,7,12,1361,1318,-43,1339,21,1339,0,1339,0,-22,21
+Logan Morris,KPF,Brisbane,,21,5,31,3247,2889,-358,2896,7,2896,0,2896,0,-351,7
+Logan Smith,RUCK,GWS,,20,7,71,185,321,136,321,0,321,0,321,0,136,0
+Luke Davies-Uniacke,MID,North Melbourne,,27,1,4,4070,3828,-242,3828,0,3828,0,3828,0,-242,0
+Luke Jackson,RUCK,Fremantle,,25,0,3,10203,9386,-817,9386,0,9386,0,9386,0,-817,0
+Luke Lloyd,KPF,Brisbane,,21,6,42,164,191,27,191,0,191,0,191,0,27,0
+Luke Parker,SD,North Melbourne,,34,6,42,1339,1256,-83,1256,0,1256,0,1256,0,-83,0
+Luke Urquhart,MID,North Melbourne,,20,7,57,143,39,-104,39,0,39,0,39,0,-104,0
+Mabior Chol,KPF,Hawthorn,,29,7,25,205,261,56,261,0,261,0,261,0,56,0
+Mac Andrew,KPD,Gold Coast,,23,1,5,4169,3747,-422,3750,3,3750,0,3750,0,-419,3
+Malakai Champion,SF,West Coast,,20,7,,341,167,-174,166,-1,166,0,166,0,-175,-1
+Marcus Bontempelli,MID,Western Bulldogs,,31,1,4,3876,3677,-199,3677,0,3677,0,3677,0,-199,0
+Marcus Herbert,MID,West Coast,,24,7,13,906,690,-216,690,0,793,103,793,0,-113,103
+Marcus Windhager,SD,St Kilda,Next Gen,23,6,47,1864,1682,-182,1683,1,1683,0,1683,0,-181,1
+Mark Keane,KPD,Adelaide,,26,7,,1557,1341,-216,1341,0,1345,4,1345,0,-212,4
+Mark O'Connor,SD,Geelong,,29,7,,8,10,2,10,0,9,-1,9,0,1,-1
+Mason Wood,SF,St Kilda,,33,6,44,383,364,-19,364,0,364,0,364,0,-19,0
+Massimo D'Ambrosio,MID,Hawthorn,,23,7,3,1565,1563,-2,1566,3,1566,0,1566,0,1,3
+Matt Duffy,KPD,Carlton,,22,7,,43,37,-6,37,0,37,0,37,0,-6,0
+Matt Owies,SF,Carlton,,29,7,,3,7,4,7,0,3,-4,3,0,0,-4
+Matt Rowell,MID,Gold Coast,,25,0,1,4770,4471,-299,4471,0,4471,0,4471,0,-299,0
+Matthew LeRay,MID,Hawthorn,,19,7,56,219,111,-108,111,0,111,0,111,0,-108,0
+Matthew Roberts,SD,Sydney,,23,5,34,1818,1548,-270,1553,5,1553,0,1553,0,-265,5
+Max Beattie,SF,Hawthorn,,23,7,12,181,95,-86,95,0,95,0,95,0,-86,0
+Max Gawn,RUCK,Melbourne,,35,5,33,3336,3136,-200,3136,0,3136,0,3136,0,-200,0
+Max Hall,SF,St Kilda,,24,7,4,2790,2110,-680,2110,0,2131,21,2131,0,-659,21
+Max Holmes,MID,Geelong,,24,4,21,8406,7562,-844,7562,0,7562,0,7562,0,-844,0
+Max Knobel,RUCK,Gold Coast,,22,6,42,411,317,-94,317,0,317,0,317,0,-94,0
+Max Mapley,RUCK,Melbourne,,21,7,18,322,266,-56,266,0,266,0,266,0,-56,0
+Michael Frederick,SF,Fremantle,,26,7,60,50,52,2,52,0,51,-1,51,0,1,-1
+Milan Murdock,SF,West Coast,,26,7,,208,156,-52,156,0,196,40,196,0,-12,40
+Mitch Georgiades,KPF,Port Adelaide,,25,3,18,1427,1307,-120,1307,0,1307,0,1307,0,-120,0
+Mitchell Marsh,KPF,Adelaide,,19,4,22,506,552,46,552,0,552,0,552,0,46,0
+Mitchito Owens,KPF,St Kilda,Next Gen,23,5,33,2071,1879,-192,1880,1,1880,0,1880,0,-191,1
+Murphy Reid,SF,Fremantle,,20,3,17,4141,3383,-758,3422,39,3422,0,3422,0,-719,39
+Mykelti Lefau,KPF,Richmond,,28,7,,86,77,-9,77,0,62,-15,62,0,-24,-15
+Nasiah Wanganeen-Milera,SD,St Kilda,,23,2,11,9688,8644,-1044,8644,0,8644,0,8644,0,-1044,0
+Nathan Wardius,SF,GWS,,22,7,,77,37,-40,37,0,37,0,37,0,-40,0
+Ned Bowman,SF,Sydney,,20,4,26,257,124,-133,124,0,124,0,124,0,-133,0
+Ned Long,SF,Collingwood,,23,7,3,1416,1175,-241,1182,7,1182,0,1182,0,-234,7
+Ned Moyle,RUCK,Gold Coast,,24,7,5,2285,1568,-717,1568,0,1671,103,1671,0,-614,103
+Nick Blakey,SD,Sydney,Academy,26,2,10,4273,3978,-295,3978,0,3978,0,3978,0,-295,0
+Nick Daicos,MID,Collingwood,Father-Son,23,1,4,10945,9944,-1001,9944,0,9944,0,9944,0,-1001,0
+Nick Driscoll,SF,Geelong,,19,7,6,201,97,-104,97,0,97,0,97,0,-104,0
+Nick Madden,RUCK,GWS,,22,7,,1766,1018,-748,1064,46,1064,0,1064,0,-702,46
+Nick Vlastuin,SD,Richmond,,32,2,12,83,95,12,95,0,95,0,95,0,12,0
+Nick Watson,SF,Hawthorn,,21,1,5,3839,3507,-332,3535,28,3535,0,3535,0,-304,28
+Noah Anderson,MID,Gold Coast,,25,0,2,5256,4918,-338,4918,0,4918,0,4918,0,-338,0
+Oliver Griffin,SF,North Melbourne,,19,7,6,181,95,-86,95,0,95,0,95,0,-86,0
+Ollie Dempsey,MID,Geelong,,23,7,7,2428,2159,-269,2162,3,2162,0,2162,0,-266,3
+Oscar Berry,KPD,Melbourne,,24,7,,53,57,4,57,0,57,0,57,0,4,0
+Oskar Taylor,SD,GWS,,19,3,15,629,596,-33,596,0,596,0,596,0,-33,0
+Patrick Carr,RUCK,Richmond,,21,7,,31,47,16,47,0,47,0,47,0,16,0
+Patrick Cripps,MID,Carlton,,31,3,13,1488,1424,-64,1424,0,1424,0,1424,0,-64,0
+Patrick Lipinski,SF,Collingwood,,28,5,28,735,692,-43,692,0,692,0,692,0,-43,0
+Patrick Retschko,MID,Geelong,,20,7,8,1608,1047,-561,1116,69,1116,0,1116,0,-492,69
+Patrick Said,SF,St Kilda,,20,7,60,80,28,-52,28,0,28,0,28,0,-52,0
+Patrick Snell,KPF,Sydney,,21,7,53,115,163,48,163,0,163,0,163,0,48,0
+Patrick Voss,KPF,Fremantle,,23,7,5,1538,1277,-261,1293,16,1293,0,1293,0,-245,16
+Paul Curtis,SF,North Melbourne,,23,5,35,1622,1486,-136,1486,0,1486,0,1486,0,-136,0
+Peter Wright,KPF,Essendon,,30,2,10,1619,1531,-88,1531,0,1531,0,1531,0,-88,0
+Phoenix Gothard,SF,GWS,,21,2,12,1891,1319,-572,1614,295,1614,0,1614,0,-277,295
+Reece Torrent,MID,Brisbane,,21,7,64,79,25,-54,25,0,25,0,25,0,-54,0
+Reilly O'Brien,RUCK,Adelaide,,31,7,8,985,977,-8,977,0,977,0,977,0,-8,0
+Reuben Ginbey,SD,West Coast,,22,2,9,2349,2140,-209,2144,4,2144,0,2144,0,-205,4
+Rhyan Mansell,SF,Richmond,,26,7,,48,54,6,54,0,48,-6,48,0,0,-6
+Riak Andrew,KPD,Sydney,Academy - Unmatched,21,7,55,138,124,-14,124,0,124,0,124,0,-14,0
+Ricky Mentha,SF,Melbourne,,20,7,,50,23,-27,23,0,23,0,23,0,-27,0
+Riley Onley,MID,Melbourne,,19,7,2,201,97,-104,97,0,97,0,97,0,-104,0
+Riley Thilthorpe,KPF,Adelaide,,24,0,2,4468,4065,-403,4065,0,4067,2,4067,0,-401,2
+River Stevens,SF,North Melbourne,Father-Son,20,7,67,104,44,-60,44,0,44,0,44,0,-60,0
+Rob Monahan,SD,Carlton,,22,7,,45,37,-8,37,0,37,0,37,0,-8,0
+Rory Laird,SD,Adelaide,,33,7,8,701,749,48,749,0,749,0,749,0,48,0
+Rowan Marshall,KPF,St Kilda,,31,7,8,2027,2008,-19,2008,0,2008,0,2008,0,-19,0
+Ryan Lester,SD,Brisbane,,34,5,30,38,38,0,38,0,37,-1,37,0,-1,-1
+Ryan Maric,SD,West Coast,,22,7,1,1406,1283,-123,1289,6,1289,0,1289,0,-117,6
+Ryda Luke,SF,Fremantle,,19,7,,84,25,-59,25,0,25,0,25,0,-59,0
+Ryley Sanders,SF,Western Bulldogs,,21,1,6,3885,3508,-377,3560,52,3560,0,3560,0,-325,52
+Sam Allen,SF,West Coast,,19,5,29,618,450,-168,450,0,450,0,450,0,-168,0
+Sam Berry,MID,Adelaide,,24,5,29,3992,3526,-466,3526,0,3527,1,3527,0,-465,1
+Sam Draper,KPF,Brisbane,,28,7,1,1107,993,-114,993,0,993,0,993,0,-114,0
+Sam Durham,SF,Essendon,,25,7,9,2531,2443,-88,2443,0,2444,1,2444,0,-87,1
+Sam Switkowski,SF,Fremantle,,30,7,72,15,16,1,16,0,16,0,16,0,1,0
+Sam Taylor,KPD,GWS,,27,5,28,1212,1119,-93,1119,0,1119,0,1119,0,-93,0
+Sam Walsh,MID,Carlton,,26,0,1,3041,2926,-115,2926,0,2926,0,2926,0,-115,0
+Samuel Collins,KPD,Gold Coast,,32,7,54,619,583,-36,583,0,583,0,583,0,-36,0
+Seth Campbell,SF,Richmond,,22,7,3,1010,922,-88,928,6,928,0,928,0,-82,6
+Shai Bolton,SF,Fremantle,,28,5,29,2150,1996,-154,1996,0,1996,0,1996,0,-154,0
+Shannon Neale,KPF,Geelong,,24,5,35,2711,2243,-468,2243,0,2249,6,2249,0,-462,6
+Shaun Mannagh,SF,Geelong,,29,6,36,663,609,-54,609,0,622,13,622,0,-41,13
+Sullivan Robey,SF,Essendon,,19,2,9,2981,2379,-602,2864,485,2864,0,2864,0,-117,485
+Tai Hayes,SF,Brisbane,,22,6,44,194,151,-43,151,0,151,0,151,0,-43,0
+Talor Byrne,SF,Carlton,,19,6,45,857,687,-170,773,86,773,0,773,0,-84,86
+Taylor Walker,KPF,Adelaide,,37,7,64,132,129,-3,129,0,129,0,129,0,-3,0
+Thomas Matthews,SF,Melbourne,,19,5,30,337,238,-99,238,0,238,0,238,0,-99,0
+Thomas Stewart,SD,Geelong,,33,6,40,1101,1030,-71,1030,0,1030,0,1030,0,-71,0
+Tim Kelly,SF,West Coast,,32,4,24,1219,1154,-65,1154,0,1154,0,1154,0,-65,0
+Tim Taranto,MID,Richmond,,28,0,2,2423,2337,-86,2337,0,2337,0,2337,0,-86,0
+Timothy English,RUCK,Western Bulldogs,,29,3,19,3535,3289,-246,3289,0,3289,0,3289,0,-246,0
+Toby Greene,SF,GWS,,33,3,17,847,805,-42,805,0,805,0,805,0,-42,0
+Toby Nankervis,RUCK,Richmond,,32,5,35,2031,1911,-120,1911,0,1911,0,1911,0,-120,0
+Toby Whan,MID,Fremantle,,19,7,,84,25,-59,25,0,25,0,25,0,-59,0
+Tobyn Murray,SF,Fremantle,,21,6,40,234,204,-30,204,0,204,0,204,0,-30,0
+Tom Atkins,MID,Geelong,,31,7,7,298,355,57,355,0,355,0,355,0,57,0
+Tom Cole,SF,West Coast,,29,6,36,47,56,9,56,0,49,-7,49,0,2,-7
+Tom McCarthy,SD,West Coast,,26,7,1,1457,1211,-246,1211,0,1259,48,1259,0,-198,48
+Tom McCartin,KPD,Sydney,,27,5,33,1689,1571,-118,1571,0,1571,0,1571,0,-118,0
+Tom Papley,SF,Sydney,,30,7,11,353,403,50,403,0,403,0,403,0,50,0
+Touk Miller,SF,Gold Coast,,30,5,29,2378,2223,-155,2223,0,2223,0,2223,0,-155,0
+Trent Rivers,SD,Melbourne,,25,5,32,1852,1695,-157,1695,0,1695,0,1695,0,-157,0
+Tristan Xerri,RUCK,North Melbourne,,27,7,71,7800,6965,-835,6965,0,6968,3,6968,0,-832,3
+Ty Gallop,KPF,Brisbane,Academy,20,6,42,1199,854,-345,933,79,933,0,933,0,-266,79
+Tyan Prindable,MID,Collingwood,Academy - Unmatched,19,5,32,543,375,-168,375,0,375,0,375,0,-168,0
+Tylah Williams,SF,West Coast,Next Gen,19,6,39,249,217,-32,217,0,217,0,217,0,-32,0
+Tyler Welsh,KPF,Adelaide,,20,7,59,80,67,-13,67,0,67,0,67,0,-13,0
+Wayne Milera,SD,Adelaide,,29,2,11,1800,1698,-102,1698,0,1698,0,1698,0,-102,0
+Wil Powell,SD,Gold Coast,,27,3,19,775,746,-29,746,0,746,0,746,0,-29,0
+Will Ashcroft,MID,Brisbane,Father-Son,22,0,2,7330,6597,-733,6607,10,6607,0,6607,0,-723,10
+Will Darcy,KPF,Western Bulldogs,Father-Son,19,7,58,187,225,38,225,0,225,0,225,0,38,0
+Will Day,MID,Hawthorn,,25,3,13,2387,2136,-251,2136,0,2139,3,2139,0,-248,3
+Will Graham,SF,Gold Coast,Academy,21,4,26,1708,1368,-340,1439,71,1439,0,1439,0,-269,71
+Will Hayward,SF,Carlton,,28,4,21,229,229,0,229,0,227,-2,227,0,-2,-2
+Willem Drew,MID,Port Adelaide,,28,5,33,608,585,-23,585,0,585,0,585,0,-23,0
+Xavier Walsh,KPF,Port Adelaide,,21,7,6,143,116,-27,116,0,116,0,116,0,-27,0
+Zac Bailey,SF,Brisbane,,27,3,15,2914,2712,-202,2712,0,2712,0,2712,0,-202,0
+Zac McCarthy,KPF,Collingwood,Next Gen,19,7,55,147,133,-14,133,0,133,0,133,0,-14,0
+Zac Walker,KPD,Western Bulldogs,,20,7,11,152,153,1,153,0,153,0,153,0,1,0
+Zachary Merrett,MID,Essendon,,31,4,26,2704,2542,-162,2542,0,2542,0,2542,0,-162,0
+Zachary Williams,SF,Carlton,,32,7,,368,357,-11,357,0,357,0,357,0,-11,0
+Zak Butters,MID,Port Adelaide,,26,2,12,7092,6551,-541,6551,0,6551,0,6551,0,-541,0
+Zak Evans,MID,Gold Coast,,26,7,,29,113,84,113,0,113,0,113,0,84,0
