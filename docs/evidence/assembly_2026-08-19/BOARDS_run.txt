@@ -1,0 +1,78 @@
+==========================================================================================================================
+ASSEMBLY BUILD — THE BOARDS AND THE LEVER STACK. NOTHING IS ADOPTED. THE CANDIDATE IS FOR OWNER REVIEW.
+==========================================================================================================================
+
+  board     md5             total      vs live         vs K         vs R  the lever added
+  IDENT_P   374d4e44      666,434      -85,995       -6,663       +1,484  every assembly dial OFF          = ORDER P, the identity
+  IDENT_K   f3101883      673,097      -79,332           +0       +8,147  ORDER K's ruled line             = the K/landing chain
+  L0_R      7f88f509      664,950      -87,479       -8,147           +0  R20A  A+B1+p20 clip              = R, the owner's reference
+  L1_REC    b692d709      664,770      -87,659       -8,327         -180  + recency w=0.47
+  L2_COMP   c3cb6686      670,562      -81,867       -2,535       +5,612  + compressed cap p20 + slope 0.105  (replaces the clip)
+  L3_MAT    ccdd395f      670,068      -82,361       -3,029       +5,118  + the mature refit
+  L4_SD     7a9dbbe1      670,995      -81,434       -2,102       +6,045  + the SD level offset 2.98, standalone
+  L5A_CRED  b9666afc      667,383      -85,046       -5,714       +2,433  + absence I1  the measured credit curve
+  L5B_RSET  2978d9e7      661,718      -90,711      -11,379       -3,232  + absence I2  the graded reset + the F4 depth>=3 row
+  L5C_INJ   f33e1fc5      661,761      -90,668      -11,336       -3,189  + absence I3  the injury stream (live board only)
+  CAND      5949cf9b      650,439     -101,990      -22,658      -14,511  + absence I4  the R3 production fade   = THE CANDIDATE
+  CAND_2    5949cf9b      650,439     -101,990      -22,658      -14,511  the determinism repeat of THE CANDIDATE
+  live      88ce647f      752,429           +0      +79,332      +87,479  
+
+THE DIAL-CHAIN IDENTITIES — A-F1 and A-F2. These decide whether anything else is believable.
+  IDENT_P   expected 374d4e44  got 374d4e44   OK
+  IDENT_K   expected f3101883  got f3101883   OK
+  L0_R      expected 7f88f509  got 7f88f509   OK
+  live      total expected 752,429  got 752,429   OK
+  IDENT_K   total expected 673,097  got 673,097   OK
+  IDENT_P   total expected 666,434  got 666,434   OK
+  L0_R      total expected 664,950  got 664,950   OK
+  DETERMINISM (A-F4): IDENTICAL on the repeat — 5949cf9b. Did not fire.
+
+  Every identity holds. A-F1, A-F2 and A-F4 did not fire.
+
+==========================================================================================================================
+THE PER-LEVER BREAKDOWN — each board is the one above it plus ONE lever, so every marginal effect
+is a subtraction and not an argument (the owner's own ask, register v742).
+==========================================================================================================================
+
+  board          total     marginal    moved       up     down  worst row  the lever added
+  L0_R         664,950            —        —        —        —          —  R20A  A+B1+p20 clip              = R, the owner's reference
+  L1_REC       664,770         -180      316      121      195       +218  + recency w=0.47
+  L2_COMP      670,562       +5,792      393      362       31       +160  + compressed cap p20 + slope 0.105  (replaces the clip)
+  L3_MAT       670,068         -494      173       16      157        -27  + the mature refit
+  L4_SD        670,995         +927      102      102        0        +75  + the SD level offset 2.98, standalone
+  L5A_CRED     667,383       -3,612      167       30      137       -202  + absence I1  the measured credit curve
+  L5B_RSET     661,718       -5,665      189        0      189       -245  + absence I2  the graded reset + the F4 depth>=3 row
+  L5C_INJ      661,761          +43        2        2        0        +29  + absence I3  the injury stream (live board only)
+  CAND         650,439      -11,322      117        0      117       -994  + absence I4  the R3 production fade   = THE CANDIDATE
+
+  THE WHOLE ARC R -> CANDIDATE: -14,511  (sum of the marginals: -14,511)
+  These agree by construction — the stack is a chain, not an attribution. Interactions are
+  INSIDE each marginal (each lever is measured on top of the ones above it), which is the
+  honest reading and the one the owner asked for.
+
+THE ABSENCE PACKAGE ON ITS OWN (L4_SD -> CANDIDATE), sub-part by sub-part:
+  I1 the credit curve              -3,612
+  I2 the graded reset + F4         -5,665
+  I3 the injury stream                +43
+  I4 the R3 production fade       -11,322
+  --------------------------------------------
+  the package total               -20,556
+
+==========================================================================================================================
+MATURE-ROW MOVEMENT — BUILT vs EXPECTED. The prereg predicted B1 + the mature refit at about
+-7,064 before interactions, and predicted the BUILT number would differ because six other levers
+are live. Reported loudly either way.
+==========================================================================================================================
+  mature rows on the board (age >= 24): 429   young rows: 375
+  vs IDENT_P  mature       -9,708 on  294 moved rows   ·   young       -6,287
+  vs L0_R     mature       -3,931 on  256 moved rows   ·   young      -10,580
+  THE MATURE REFIT LEVER ALONE (L2_COMP -> L3_MAT): -494 on 173 moved mature rows
+  BUILT vs EXPECTED: the -7,064 estimate was for B1 + refit against a different base and
+  WITHOUT the six other levers. The built refit-alone number above is the like-for-like one.
+
+A-F7 — NO ROW ABOVE ITS UNCHARGED PRICE. The uncharged ceiling is ORDER P's own eta-zero board.
+  (checked in as_accept.py against the built ceiling board; reported there)
+
+MOVERS LEDGER: 801 rows moved by the mechanism or the repairs -> MOVERS_LEDGER.json
+
+written: BOARDS_ASM.json · BOARDS_ASM_out.txt · MOVERS_LEDGER.json

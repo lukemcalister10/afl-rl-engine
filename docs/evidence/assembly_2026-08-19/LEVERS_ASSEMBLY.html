@@ -1,0 +1,153 @@
+<title>Assembly Levers</title>
+<style>
+:root{--bg:#fbfbfa;--fg:#1a1a18;--mut:#6b6b66;--line:#e0dfdb;--hd:#f2f1ee;--up:#186a3b;--dn:#a03028;--acc:#2b4c7e}
+:root[data-theme=dark]{--bg:#16171a;--fg:#e9e8e4;--mut:#9a9a94;--line:#2e2f33;--hd:#1f2024;--up:#4ec27e;--dn:#e8776b;--acc:#7aa7e0}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#16171a;--fg:#e9e8e4;--mut:#9a9a94;--line:#2e2f33;--hd:#1f2024;--up:#4ec27e;--dn:#e8776b;--acc:#7aa7e0}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;margin:0;padding:24px}
+h1{font-size:20px;margin:0 0 4px}h2{font-size:15px;margin:26px 0 8px;color:var(--acc)}
+.sub{color:var(--mut);font-size:13px;margin-bottom:16px;max-width:70em}
+.warn{border-left:3px solid var(--dn);background:color-mix(in srgb,var(--dn) 7%,transparent);padding:10px 14px;margin:14px 0;max-width:70em;border-radius:0 4px 4px 0}
+.note{border-left:3px solid var(--acc);background:color-mix(in srgb,var(--acc) 7%,transparent);padding:10px 14px;margin:14px 0;max-width:70em;border-radius:0 4px 4px 0}
+.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;max-width:100%}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:13px}
+th,td{padding:5px 9px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:nth-child(-n+5),td:nth-child(-n+5){text-align:left}
+thead th{background:var(--hd);position:sticky;top:0;cursor:pointer;user-select:none;font-weight:600}
+thead th:hover{color:var(--acc)}
+tbody tr:hover{background:color-mix(in srgb,var(--acc) 6%,transparent)}
+.u{color:var(--up)}.d{color:var(--dn)}
+.tot{font-weight:600}
+code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
+.k{color:var(--mut);font-size:12px}
+</style>
+<h1>THE PER-LEVER BREAKDOWN — R &rarr; THE CANDIDATE, one lever at a time</h1>
+<div class="sub">The owner asked to see what each lever is doing (register v742). Each board below is the one above it <b>plus one lever</b>, built from the dial stack by strictly sequential engine runs, so every marginal effect is a subtraction and not an argument. Interactions live <i>inside</i> each marginal — each lever is measured on top of the ones above it — which is the honest reading and the one that was asked for.</div>
+<h2>The board, lever by lever</h2>
+<div class="wrap"><table><thead><tr><th>lever</th><th>md5</th><th>board total</th><th>marginal</th><th>rows moved</th><th>up</th><th>down</th><th>cumulative vs R</th></tr></thead><tbody>
+<tr><td>R — the reference (A + B1 + p20 clip)</td><td class="k">7f88f509</td><td data-v="664950" class="tot">664,950</td><td class="k">—</td><td class="k">—</td><td class="k">—</td><td class="k">—</td><td class="k">—</td></tr>
+<tr><td>+ recency w = 0.47</td><td class="k">b692d709</td><td data-v="664770" class="tot">664,770</td><td data-v="-180" class="d">-180</td><td data-v="316">316</td><td data-v="121">121</td><td data-v="195">195</td><td data-v="-180" class="d">-180</td></tr>
+<tr><td>+ the compressed cap p20 and the slope 0.105 (replacing the clip)</td><td class="k">c3cb6686</td><td data-v="670562" class="tot">670,562</td><td data-v="5792" class="u">+5,792</td><td data-v="393">393</td><td data-v="362">362</td><td data-v="31">31</td><td data-v="5612" class="u">+5,612</td></tr>
+<tr><td>+ the mature refit</td><td class="k">ccdd395f</td><td data-v="670068" class="tot">670,068</td><td data-v="-494" class="d">-494</td><td data-v="173">173</td><td data-v="16">16</td><td data-v="157">157</td><td data-v="5118" class="u">+5,118</td></tr>
+<tr><td>+ the SD level offset 2.98, standalone</td><td class="k">7a9dbbe1</td><td data-v="670995" class="tot">670,995</td><td data-v="927" class="u">+927</td><td data-v="102">102</td><td data-v="102">102</td><td data-v="0">0</td><td data-v="6045" class="u">+6,045</td></tr>
+<tr><td>+ absence I1 — the measured credit curve</td><td class="k">b9666afc</td><td data-v="667383" class="tot">667,383</td><td data-v="-3612" class="d">-3,612</td><td data-v="167">167</td><td data-v="30">30</td><td data-v="137">137</td><td data-v="2433" class="u">+2,433</td></tr>
+<tr><td>+ absence I2 — the graded reset and the F4 depth&ge;3 row</td><td class="k">2978d9e7</td><td data-v="661718" class="tot">661,718</td><td data-v="-5665" class="d">-5,665</td><td data-v="189">189</td><td data-v="0">0</td><td data-v="189">189</td><td data-v="-3232" class="d">-3,232</td></tr>
+<tr><td>+ absence I3 — the injury stream (live board only)</td><td class="k">f33e1fc5</td><td data-v="661761" class="tot">661,761</td><td data-v="43" class="u">+43</td><td data-v="2">2</td><td data-v="2">2</td><td data-v="0">0</td><td data-v="-3189" class="d">-3,189</td></tr>
+<tr><td>+ absence I4 — the R3 production fade  =  THE CANDIDATE</td><td class="k">5949cf9b</td><td data-v="650439" class="tot">650,439</td><td data-v="-11322" class="d">-11,322</td><td data-v="117">117</td><td data-v="0">0</td><td data-v="117">117</td><td data-v="-14511" class="d">-14,511</td></tr>
+</tbody></table></div>
+<h2>The rows each lever moves most</h2>
+<div class="sub">The ten largest absolute movers for every lever. <b>These are consequences, never targets.</b> No named player gates anything in this build.</div>
+<h2 style="font-size:13px;color:var(--fg)">+ recency w = 0.47 <span class="k">&nbsp;marginal -180 on 316 rows</span></h2>
+<div class="wrap"><table><thead><tr><th>player</th><th>pos</th><th>age</th><th>before</th><th>after</th><th>change</th></tr></thead><tbody>
+<tr><td>Sam Lalor</td><td>SF</td><td data-v="20">20</td><td data-v="3395">3,395</td><td data-v="3613">3,613</td><td data-v="218" class="u">+218</td></tr>
+<tr><td>Aaron Cadman</td><td>KPF</td><td data-v="22">22</td><td data-v="1634">1,634</td><td data-v="1785">1,785</td><td data-v="151" class="u">+151</td></tr>
+<tr><td>Elijah Tsatas</td><td>MID</td><td data-v="22">22</td><td data-v="750">750</td><td data-v="901">901</td><td data-v="151" class="u">+151</td></tr>
+<tr><td>Josh Gibcus</td><td>KPD</td><td data-v="23">23</td><td data-v="330">330</td><td data-v="186">186</td><td data-v="-144" class="d">-144</td></tr>
+<tr><td>Leo Lombard</td><td>SF</td><td data-v="20">20</td><td data-v="1540">1,540</td><td data-v="1671">1,671</td><td data-v="131" class="u">+131</td></tr>
+<tr><td>Jedd Busslinger</td><td>KPD</td><td data-v="22">22</td><td data-v="671">671</td><td data-v="782">782</td><td data-v="111" class="u">+111</td></tr>
+<tr><td>Jamarra Ugle-Hagan</td><td>KPF</td><td data-v="24">24</td><td data-v="335">335</td><td data-v="241">241</td><td data-v="-94" class="d">-94</td></tr>
+<tr><td>Levi Ashcroft</td><td>MID</td><td data-v="20">20</td><td data-v="3471">3,471</td><td data-v="3399">3,399</td><td data-v="-72" class="d">-72</td></tr>
+<tr><td>Max King</td><td>KPF</td><td data-v="26">26</td><td data-v="319">319</td><td data-v="247">247</td><td data-v="-72" class="d">-72</td></tr>
+<tr><td>Colby McKercher</td><td>SD</td><td data-v="21">21</td><td data-v="4223">4,223</td><td data-v="4154">4,154</td><td data-v="-69" class="d">-69</td></tr>
+</tbody></table></div>
+<h2 style="font-size:13px;color:var(--fg)">+ the compressed cap p20 and the slope 0.105 (replacing the clip) <span class="k">&nbsp;marginal +5,792 on 393 rows</span></h2>
+<div class="wrap"><table><thead><tr><th>player</th><th>pos</th><th>age</th><th>before</th><th>after</th><th>change</th></tr></thead><tbody>
+<tr><td>Zeke Uwland</td><td>SD</td><td data-v="19">19</td><td data-v="1582">1,582</td><td data-v="1742">1,742</td><td data-v="160" class="u">+160</td></tr>
+<tr><td>Xavier Taylor</td><td>SD</td><td data-v="19">19</td><td data-v="1001">1,001</td><td data-v="1110">1,110</td><td data-v="109" class="u">+109</td></tr>
+<tr><td>Dylan Patterson</td><td>SD</td><td data-v="19">19</td><td data-v="1189">1,189</td><td data-v="1294">1,294</td><td data-v="105" class="u">+105</td></tr>
+<tr><td>Mitchell Edwards</td><td>RUCK</td><td data-v="21">21</td><td data-v="1237">1,237</td><td data-v="1338">1,338</td><td data-v="101" class="u">+101</td></tr>
+<tr><td>Sid Draper</td><td>SF</td><td data-v="20">20</td><td data-v="880">880</td><td data-v="977">977</td><td data-v="97" class="u">+97</td></tr>
+<tr><td>Harry Kyle</td><td>SD</td><td data-v="19">19</td><td data-v="841">841</td><td data-v="936">936</td><td data-v="95" class="u">+95</td></tr>
+<tr><td>Daniel Annable</td><td>MID</td><td data-v="19">19</td><td data-v="1340">1,340</td><td data-v="1427">1,427</td><td data-v="87" class="u">+87</td></tr>
+<tr><td>Tobie Travaglia</td><td>SD</td><td data-v="20">20</td><td data-v="322">322</td><td data-v="404">404</td><td data-v="82" class="u">+82</td></tr>
+<tr><td>Jai Murray</td><td>MID</td><td data-v="19">19</td><td data-v="877">877</td><td data-v="957">957</td><td data-v="80" class="u">+80</td></tr>
+<tr><td>Sam Marshall</td><td>MID</td><td data-v="20">20</td><td data-v="421">421</td><td data-v="499">499</td><td data-v="78" class="u">+78</td></tr>
+</tbody></table></div>
+<h2 style="font-size:13px;color:var(--fg)">+ the mature refit <span class="k">&nbsp;marginal -494 on 173 rows</span></h2>
+<div class="wrap"><table><thead><tr><th>player</th><th>pos</th><th>age</th><th>before</th><th>after</th><th>change</th></tr></thead><tbody>
+<tr><td>Riley Bice</td><td>SD</td><td data-v="26">26</td><td data-v="304">304</td><td data-v="277">277</td><td data-v="-27" class="d">-27</td></tr>
+<tr><td>Zach Reid</td><td>KPD</td><td data-v="24">24</td><td data-v="891">891</td><td data-v="871">871</td><td data-v="-20" class="d">-20</td></tr>
+<tr><td>Francis Evans</td><td>SF</td><td data-v="25">25</td><td data-v="465">465</td><td data-v="447">447</td><td data-v="-18" class="d">-18</td></tr>
+<tr><td>Wade Derksen</td><td>KPD</td><td data-v="25">25</td><td data-v="178">178</td><td data-v="162">162</td><td data-v="-16" class="d">-16</td></tr>
+<tr><td>Joshua Kelly</td><td>MID</td><td data-v="31">31</td><td data-v="412">412</td><td data-v="427">427</td><td data-v="15" class="u">+15</td></tr>
+<tr><td>Mitchell Lewis</td><td>KPF</td><td data-v="28">28</td><td data-v="567">567</td><td data-v="552">552</td><td data-v="-15" class="d">-15</td></tr>
+<tr><td>Nick Larkey</td><td>KPF</td><td data-v="28">28</td><td data-v="524">524</td><td data-v="510">510</td><td data-v="-14" class="d">-14</td></tr>
+<tr><td>Brayden Cook</td><td>SF</td><td data-v="24">24</td><td data-v="659">659</td><td data-v="646">646</td><td data-v="-13" class="d">-13</td></tr>
+<tr><td>Elijah Hollands</td><td>SF</td><td data-v="24">24</td><td data-v="684">684</td><td data-v="671">671</td><td data-v="-13" class="d">-13</td></tr>
+<tr><td>Nick Bryan</td><td>RUCK</td><td data-v="25">25</td><td data-v="601">601</td><td data-v="590">590</td><td data-v="-11" class="d">-11</td></tr>
+</tbody></table></div>
+<h2 style="font-size:13px;color:var(--fg)">+ the SD level offset 2.98, standalone <span class="k">&nbsp;marginal +927 on 102 rows</span></h2>
+<div class="wrap"><table><thead><tr><th>player</th><th>pos</th><th>age</th><th>before</th><th>after</th><th>change</th></tr></thead><tbody>
+<tr><td>Finn O&#x27;Sullivan</td><td>SD</td><td data-v="20">20</td><td data-v="3111">3,111</td><td data-v="3186">3,186</td><td data-v="75" class="u">+75</td></tr>
+<tr><td>Colby McKercher</td><td>SD</td><td data-v="21">21</td><td data-v="4150">4,150</td><td data-v="4223">4,223</td><td data-v="73" class="u">+73</td></tr>
+<tr><td>Samuel Grlj</td><td>SD</td><td data-v="19">19</td><td data-v="1526">1,526</td><td data-v="1586">1,586</td><td data-v="60" class="u">+60</td></tr>
+<tr><td>Zeke Uwland</td><td>SD</td><td data-v="19">19</td><td data-v="1742">1,742</td><td data-v="1786">1,786</td><td data-v="44" class="u">+44</td></tr>
+<tr><td>Harry Kyle</td><td>SD</td><td data-v="19">19</td><td data-v="936">936</td><td data-v="972">972</td><td data-v="36" class="u">+36</td></tr>
+<tr><td>Jaxon Artemis</td><td>SD</td><td data-v="20">20</td><td data-v="477">477</td><td data-v="505">505</td><td data-v="28" class="u">+28</td></tr>
+<tr><td>Riley Bice</td><td>SD</td><td data-v="26">26</td><td data-v="277">277</td><td data-v="304">304</td><td data-v="27" class="u">+27</td></tr>
+<tr><td>Tanner Bruhn</td><td>SD</td><td data-v="24">24</td><td data-v="1970">1,970</td><td data-v="1997">1,997</td><td data-v="27" class="u">+27</td></tr>
+<tr><td>Oliver Hollands</td><td>SD</td><td data-v="22">22</td><td data-v="1472">1,472</td><td data-v="1498">1,498</td><td data-v="26" class="u">+26</td></tr>
+<tr><td>Harley Reid</td><td>MID</td><td data-v="21">21</td><td data-v="3795">3,795</td><td data-v="3819">3,819</td><td data-v="24" class="u">+24</td></tr>
+</tbody></table></div>
+<h2 style="font-size:13px;color:var(--fg)">+ absence I1 — the measured credit curve <span class="k">&nbsp;marginal -3,612 on 167 rows</span></h2>
+<div class="wrap"><table><thead><tr><th>player</th><th>pos</th><th>age</th><th>before</th><th>after</th><th>change</th></tr></thead><tbody>
+<tr><td>Xavier Taylor</td><td>SD</td><td data-v="19">19</td><td data-v="1126">1,126</td><td data-v="924">924</td><td data-v="-202" class="d">-202</td></tr>
+<tr><td>Daniel Annable</td><td>MID</td><td data-v="19">19</td><td data-v="1427">1,427</td><td data-v="1241">1,241</td><td data-v="-186" class="d">-186</td></tr>
+<tr><td>Charlie Banfield</td><td>SF</td><td data-v="19">19</td><td data-v="798">798</td><td data-v="620">620</td><td data-v="-178" class="d">-178</td></tr>
+<tr><td>Jesse Dattoli</td><td>SF</td><td data-v="20">20</td><td data-v="617">617</td><td data-v="484">484</td><td data-v="-133" class="d">-133</td></tr>
+<tr><td>Oliver Francou</td><td>MID</td><td data-v="20">20</td><td data-v="661">661</td><td data-v="537">537</td><td data-v="-124" class="d">-124</td></tr>
+<tr><td>Zane Peucker</td><td>SF</td><td data-v="19">19</td><td data-v="513">513</td><td data-v="404">404</td><td data-v="-109" class="d">-109</td></tr>
+<tr><td>Cameron Nairn</td><td>SF</td><td data-v="19">19</td><td data-v="630">630</td><td data-v="529">529</td><td data-v="-101" class="d">-101</td></tr>
+<tr><td>Jack Dalton</td><td>MID</td><td data-v="19">19</td><td data-v="558">558</td><td data-v="460">460</td><td data-v="-98" class="d">-98</td></tr>
+<tr><td>Cody Angove</td><td>SF</td><td data-v="20">20</td><td data-v="680">680</td><td data-v="586">586</td><td data-v="-94" class="d">-94</td></tr>
+<tr><td>Jaxon Artemis</td><td>SD</td><td data-v="20">20</td><td data-v="505">505</td><td data-v="420">420</td><td data-v="-85" class="d">-85</td></tr>
+</tbody></table></div>
+<h2 style="font-size:13px;color:var(--fg)">+ absence I2 — the graded reset and the F4 depth&ge;3 row <span class="k">&nbsp;marginal -5,665 on 189 rows</span></h2>
+<div class="wrap"><table><thead><tr><th>player</th><th>pos</th><th>age</th><th>before</th><th>after</th><th>change</th></tr></thead><tbody>
+<tr><td>Will Green</td><td>RUCK</td><td data-v="21">21</td><td data-v="708">708</td><td data-v="463">463</td><td data-v="-245" class="d">-245</td></tr>
+<tr><td>Harry DeMattia</td><td>MID</td><td data-v="21">21</td><td data-v="331">331</td><td data-v="98">98</td><td data-v="-233" class="d">-233</td></tr>
+<tr><td>Max Knobel</td><td>RUCK</td><td data-v="22">22</td><td data-v="317">317</td><td data-v="116">116</td><td data-v="-201" class="d">-201</td></tr>
+<tr><td>Toby Conway</td><td>RUCK</td><td data-v="23">23</td><td data-v="1066">1,066</td><td data-v="867">867</td><td data-v="-199" class="d">-199</td></tr>
+<tr><td>Harry Barnett</td><td>RUCK</td><td data-v="22">22</td><td data-v="689">689</td><td data-v="499">499</td><td data-v="-190" class="d">-190</td></tr>
+<tr><td>Jedd Busslinger</td><td>KPD</td><td data-v="22">22</td><td data-v="801">801</td><td data-v="645">645</td><td data-v="-156" class="d">-156</td></tr>
+<tr><td>Taylor Goad</td><td>RUCK</td><td data-v="21">21</td><td data-v="739">739</td><td data-v="586">586</td><td data-v="-153" class="d">-153</td></tr>
+<tr><td>Lewis Hayes</td><td>SD</td><td data-v="22">22</td><td data-v="338">338</td><td data-v="199">199</td><td data-v="-139" class="d">-139</td></tr>
+<tr><td>Charlie Edwards</td><td>SD</td><td data-v="21">21</td><td data-v="472">472</td><td data-v="334">334</td><td data-v="-138" class="d">-138</td></tr>
+<tr><td>Brayden George</td><td>SF</td><td data-v="22">22</td><td data-v="169">169</td><td data-v="45">45</td><td data-v="-124" class="d">-124</td></tr>
+</tbody></table></div>
+<h2 style="font-size:13px;color:var(--fg)">+ absence I3 — the injury stream (live board only) <span class="k">&nbsp;marginal +43 on 2 rows</span></h2>
+<div class="wrap"><table><thead><tr><th>player</th><th>pos</th><th>age</th><th>before</th><th>after</th><th>change</th></tr></thead><tbody>
+<tr><td>Josh Gibcus</td><td>KPD</td><td data-v="23">23</td><td data-v="139">139</td><td data-v="168">168</td><td data-v="29" class="u">+29</td></tr>
+<tr><td>Max King</td><td>KPF</td><td data-v="26">26</td><td data-v="232">232</td><td data-v="246">246</td><td data-v="14" class="u">+14</td></tr>
+</tbody></table></div>
+<h2 style="font-size:13px;color:var(--fg)">+ absence I4 — the R3 production fade  =  THE CANDIDATE <span class="k">&nbsp;marginal -11,322 on 117 rows</span></h2>
+<div class="wrap"><table><thead><tr><th>player</th><th>pos</th><th>age</th><th>before</th><th>after</th><th>change</th></tr></thead><tbody>
+<tr><td>Mitchell Edwards</td><td>RUCK</td><td data-v="21">21</td><td data-v="1314">1,314</td><td data-v="320">320</td><td data-v="-994" class="d">-994</td></tr>
+<tr><td>Nick Madden</td><td>RUCK</td><td data-v="22">22</td><td data-v="1064">1,064</td><td data-v="255">255</td><td data-v="-809" class="d">-809</td></tr>
+<tr><td>Noah Mraz</td><td>KPD</td><td data-v="20">20</td><td data-v="2013">2,013</td><td data-v="1384">1,384</td><td data-v="-629" class="d">-629</td></tr>
+<tr><td>Toby Conway</td><td>RUCK</td><td data-v="23">23</td><td data-v="867">867</td><td data-v="261">261</td><td data-v="-606" class="d">-606</td></tr>
+<tr><td>Will Brodie</td><td>MID</td><td data-v="28">28</td><td data-v="692">692</td><td data-v="207">207</td><td data-v="-485" class="d">-485</td></tr>
+<tr><td>Jedd Busslinger</td><td>KPD</td><td data-v="22">22</td><td data-v="645">645</td><td data-v="248">248</td><td data-v="-397" class="d">-397</td></tr>
+<tr><td>Max Heath</td><td>KPF</td><td data-v="24">24</td><td data-v="434">434</td><td data-v="92">92</td><td data-v="-342" class="d">-342</td></tr>
+<tr><td>Taylor Goad</td><td>RUCK</td><td data-v="21">21</td><td data-v="586">586</td><td data-v="295">295</td><td data-v="-291" class="d">-291</td></tr>
+<tr><td>Dante Visentini</td><td>KPF</td><td data-v="23">23</td><td data-v="780">780</td><td data-v="514">514</td><td data-v="-266" class="d">-266</td></tr>
+<tr><td>Harry Barnett</td><td>RUCK</td><td data-v="22">22</td><td data-v="499">499</td><td data-v="248">248</td><td data-v="-251" class="d">-251</td></tr>
+</tbody></table></div>
+<script>
+document.querySelectorAll('table').forEach(function(T){
+  T.querySelectorAll('thead th').forEach(function(H,i){
+    H.addEventListener('click',function(){
+      var b=T.tBodies[0],rs=[].slice.call(b.rows),asc=H.dataset.asc!=='1';
+      H.dataset.asc=asc?'1':'0';
+      rs.sort(function(x,y){
+        var a=x.cells[i].dataset.v,c=y.cells[i].dataset.v;
+        if(a===undefined)a=x.cells[i].textContent;if(c===undefined)c=y.cells[i].textContent;
+        var na=parseFloat(a),nc=parseFloat(c);
+        if(!isNaN(na)&&!isNaN(nc))return asc?na-nc:nc-na;
+        return asc?String(a).localeCompare(String(c)):String(c).localeCompare(String(a));
+      });
+      rs.forEach(function(r){b.appendChild(r)});
+    });
+  });
+});
+</script>

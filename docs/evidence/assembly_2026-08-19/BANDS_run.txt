@@ -1,0 +1,16 @@
+======================================================================================================================
+ORDER P BUILD — ND BAND TABLES, BOTH WINDOWS. The same file, only the board list changed:
+the BUILT ORDER P board is added and ORDER P's own OFFLINE ESTIMATE is kept beside it, so the
+built-versus-estimated comparison is on one page and cannot be quietly reconciled.
+======================================================================================================================
+instrument pins, computed at run on unmodified copies:
+  harness_repointed.py           02dcf28c7bd0d39b3526e24c5cc0a87a
+  t338_extended_DISCLOSED.py     d59ad550116ebbe3d90ed82becd2c4d5   <- pinned, asserted
+  noarb_table_338.py             0f8220351c64c56ccfa90c60edcdfa5f   <- pinned, asserted
+  noarb_table_allarm.py          8673d7e33a6267ff51ff6331cc13b171
+  value_at()                     byte-identical to the disclosed instrument   <- asserted
+Traceback (most recent call last):
+  File "/home/user/wt-assembly/docs/evidence/assembly_2026-08-19/as_bands.py", line 174, in <module>
+    assert os.path.exists(MX), 'MATRIX MISSING: %s' % MX
+           ^^^^^^^^^^^^^^^^^^
+AssertionError: MATRIX MISSING: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/per_entrant_ASMCAND.json

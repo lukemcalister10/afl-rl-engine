@@ -1,0 +1,123 @@
+{
+ "fail": [],
+ "lever": {
+  "CAND": {
+   "down": 117,
+   "marginal": -11322,
+   "moved": 117,
+   "prev": "L5C_INJ",
+   "up": 0,
+   "worst": [
+    "Mitchell Edwards",
+    -994
+   ]
+  },
+  "L1_REC": {
+   "down": 195,
+   "marginal": -180,
+   "moved": 316,
+   "prev": "L0_R",
+   "up": 121,
+   "worst": [
+    "Sam Lalor",
+    218
+   ]
+  },
+  "L2_COMP": {
+   "down": 31,
+   "marginal": 5792,
+   "moved": 393,
+   "prev": "L1_REC",
+   "up": 362,
+   "worst": [
+    "Zeke Uwland",
+    160
+   ]
+  },
+  "L3_MAT": {
+   "down": 157,
+   "marginal": -494,
+   "moved": 173,
+   "prev": "L2_COMP",
+   "up": 16,
+   "worst": [
+    "Riley Bice",
+    -27
+   ]
+  },
+  "L4_SD": {
+   "down": 0,
+   "marginal": 927,
+   "moved": 102,
+   "prev": "L3_MAT",
+   "up": 102,
+   "worst": [
+    "Finn O'Sullivan",
+    75
+   ]
+  },
+  "L5A_CRED": {
+   "down": 137,
+   "marginal": -3612,
+   "moved": 167,
+   "prev": "L4_SD",
+   "up": 30,
+   "worst": [
+    "Xavier Taylor",
+    -202
+   ]
+  },
+  "L5B_RSET": {
+   "down": 189,
+   "marginal": -5665,
+   "moved": 189,
+   "prev": "L5A_CRED",
+   "up": 0,
+   "worst": [
+    "Will Green",
+    -245
+   ]
+  },
+  "L5C_INJ": {
+   "down": 0,
+   "marginal": 43,
+   "moved": 2,
+   "prev": "L5B_RSET",
+   "up": 2,
+   "worst": [
+    "Josh Gibcus",
+    29
+   ]
+  }
+ },
+ "md5": {
+  "CAND": "5949cf9b9e08e64ce5066d61210033d3",
+  "CAND_2": "5949cf9b9e08e64ce5066d61210033d3",
+  "IDENT_K": "f3101883a60b0a7b8cb50f9d8a5abfff",
+  "IDENT_P": "374d4e442665771801c5f1edd2a7e0e2",
+  "L0_R": "7f88f5096ff5b781da4614b7142d332c",
+  "L1_REC": "b692d7099a8d39f59843e41b51e0cc39",
+  "L2_COMP": "c3cb66862a54cba17b2efc7252d87fd9",
+  "L3_MAT": "ccdd395fdc8328fe2ae5f1a1b6724f6f",
+  "L4_SD": "7a9dbbe1d9575beb6156fbd6c96a8127",
+  "L5A_CRED": "b9666afce35433cd28ea7b09cc0253c6",
+  "L5B_RSET": "2978d9e7ee2f25e09f0837f9d6307cdc",
+  "L5C_INJ": "f33e1fc58f189b3e211d939494f28dda",
+  "live": "88ce647f531030d8d2e094188b258191"
+ },
+ "totals": {
+  "CAND": 650439,
+  "CAND_2": 650439,
+  "IDENT_K": 673097,
+  "IDENT_P": 666434,
+  "L0_R": 664950,
+  "L1_REC": 664770,
+  "L2_COMP": 670562,
+  "L3_MAT": 670068,
+  "L4_SD": 670995,
+  "L5A_CRED": 667383,
+  "L5B_RSET": 661718,
+  "L5C_INJ": 661761,
+  "live": 752429
+ }
+}

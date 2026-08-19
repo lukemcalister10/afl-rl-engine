@@ -11,7 +11,47 @@
 
 ## 0 · THE THINGS THAT WENT WRONG, FIRST
 
-Three of these. They are at the top because burying them at the bottom would be the wrong order.
+They are at the top because burying them at the bottom would be the wrong order.
+
+> ### ⛔ THE ONE THAT NEEDS AN OWNER RULING BEFORE ANYTHING ELSE
+>
+> **TWO ITEMS THE OWNER RULED ARE MUTUALLY INCOMPATIBLE, AND NO BUILD CAN SATISFY BOTH.**
+>
+> - **Acceptance requires:** *"day-0 ENTRY values bit-identical 89/89."*
+> - **Item I2 requires:** the F4 depth-4 inversion *"must not be relied on — use the unconditional
+>   monotone population's shape for depth ≥ 3."*
+>
+> **A day-0 sitter's price IS `v0 × D(c_u)`.** Changing `D` at depths 3 and 4 — which is exactly what
+> the F4 repair was ruled to do — **necessarily moves the day-0 price of every sitter standing at
+> those depths.** The two rulings cannot both hold.
+>
+> **Measured, and attributed to the exact lever:** **28 of 95 day-0 rows move, net −1,876.** All of it
+> arrives at **I2** (`L5B_RSET`); the credit curve moves 6 rows for +4 and the R3 fade moves none.
+> The largest are Will Green 673→373, Harry DeMattia 331→98, Oscar Ryan 387→160.
+>
+> **The engine's own internal day-0 identity still holds 89/89** — every printed day-0 price still
+> equals `round(derived v0 × D(c)) × numeraire` at tolerance 0. What moved is `D` itself, by ruling.
+>
+> **CONSEQUENCE, AND WHAT THIS SEAT DID NOT DO.** The walk-forward emit refuses to run against a moved
+> day-0 column (`ORDER 31-F HALT (replication): 67 of 89`). That emit feeds the year-1 class mark and
+> the no-arb band tables, **so those two owner documents could not be produced for the candidate.**
+> The emit's own header states the rule: an order that changes the fade must regenerate the day-0
+> reference, and ORDER D and ORDER K both did. **This order changes the fade — but this seat did NOT
+> regenerate the reference, because doing so would re-base a guard on my own authority to make a
+> breach disappear, and the charter says to halt and report rather than trade a law silently.**
+>
+> **THE OWNER'S CHOICE, stated without a recommendation:**
+> 1. **Keep the F4 repair** and accept that day-0 sitters at depth ≥ 3 re-price — then the day-0
+>    reference is regenerated (as ORDER D and ORDER K each did) and the class and no-arb tables are
+>    produced on the new basis. One further build and this seat can deliver them.
+> 2. **Keep day-0 frozen** and drop the depth-≥3 swap, leaving the 11-row inverting cell wired — the
+>    board then keeps a schedule where sitting a fourth year is priced as *better* than sitting a
+>    third.
+>
+> **Everything else in this packet is unaffected by that choice** — the candidate board, the tracker,
+> the per-lever document, the censuses, continuity and the tail calibration all stand as built.
+
+
 
 **(1) THE TAIL CALIBRATION IS NOT ~1.04. IT IS 0.7378.** The register (v746) recorded that the
 owner's two ruled softenings land the measured tail at approximately calibration, and added that
@@ -368,9 +408,106 @@ been visible in any total, any band table or any tracker column.
 
 ---
 
+## 4 · THE CANDIDATE, AND THE LEVER STACK
+
+**THE CANDIDATE IS `5949cf9b`. THE TOTAL IS 650,439.**
+
+| board | md5 | total | vs live | vs K | vs R | the lever added |
+|---|---|---:|---:|---:|---:|---|
+| live | `88ce647f` | 752,429 | 0 | +79,332 | +87,479 | **NEVER TOUCHED** |
+| ORDER K | `f3101883` | 673,097 | −79,332 | 0 | +8,147 | the K/landing chain |
+| ORDER P | `374d4e44` | 666,434 | −85,995 | −6,663 | +1,484 | **every assembly dial OFF — the identity** |
+| R = R20A | `7f88f509` | 664,950 | −87,479 | −8,147 | 0 | the owner's reference |
+| L1_REC | `b692d709` | 664,770 | −87,659 | −8,327 | −180 | + recency 0.47 |
+| L2_COMP | `c3cb6686` | 670,562 | −81,867 | −2,535 | +5,612 | + compressed cap p20 + slope 0.105 |
+| L3_MAT | `ccdd395f` | 670,068 | −82,361 | −3,029 | +5,118 | + the mature refit |
+| L4_SD | `7a9dbbe1` | 670,995 | −81,434 | −2,102 | +6,045 | + the SD level offset, standalone |
+| L5A_CRED | `b9666afc` | 667,383 | −85,046 | −5,714 | +2,433 | + absence I1, the credit curve |
+| L5B_RSET | `2978d9e7` | 661,718 | −90,711 | −11,379 | −3,232 | + absence I2, the graded reset + F4 |
+| L5C_INJ | `f33e1fc5` | 661,761 | −90,668 | −11,336 | −3,189 | + absence I3, the injury stream |
+| **CANDIDATE** | **`5949cf9b`** | **650,439** | **−101,990** | **−22,658** | **−14,511** | + absence I4, the R3 fade |
+| CAND repeat | `5949cf9b` | 650,439 | — | — | — | **the determinism proof** |
+
+**Each marginal effect, and how many rows carry it:**
+
+| lever | marginal | rows moved | up | down |
+|---|---:|---:|---:|---:|
+| + recency 0.47 | −180 | 316 | 121 | 195 |
+| + compressed cap p20 + slope 0.105 | **+5,792** | 393 | 362 | 31 |
+| + the mature refit | −494 | 173 | 16 | 157 |
+| + the SD level offset | +927 | 102 | 102 | 0 |
+| + I1 the credit curve | −3,612 | 167 | 30 | 137 |
+| + I2 the graded reset + F4 | −5,665 | — | — | — |
+| + I3 the injury stream | **+43** | — | — | **0 down** |
+| + I4 the R3 production fade | −11,322 | — | — | — |
+| **the absence package alone** | **−20,556** | | | |
+| **THE WHOLE ARC R → CANDIDATE** | **−14,511** | | | |
+
+**The two levers that ADD value are the two the owner ruled as softenings** — the compression with
+the slope (+5,792) and the SD offset (+927). **Everything the absence package does is subtract**,
+which is what it is for.
+
+**MATURE ROWS, BUILT vs EXPECTED — reported loudly.** The board carries 429 mature rows (age ≥ 24)
+and 375 young. Against ORDER P the candidate moves mature rows **−9,708 on 294 moved rows**, and
+young rows −6,287. Against R, mature −3,931 and young −10,580. **The prereg's ~−7,064 figure was for
+B1 + the refit against a different base and without the six other levers, so it is not the
+like-for-like number.** The like-for-like one is **the mature refit lever alone: −494 on 173 moved
+mature rows.** Reported both ways rather than picking the flattering one.
+
+---
+
 ## 9 · MY OWN PREREG PREDICTIONS, SCORED HONESTLY
 
-*(filled from the built boards — see PREDICTIONS_ASM in §10)*
+| # | prediction | outcome |
+|---|---|---|
+| **P1** | dial-chain identity holds | **HELD.** `374d4e44`, `f3101883`, `7f88f509` all byte-exact |
+| **P2** | mature movement between −5,000 and −10,000 | **HELD** on the vs-ORDER-P reading (−9,708); the refit lever alone is −494 |
+| **P3** | candidate total 630,000-660,000 | **HELD** — 650,439. *(The first, defective R3 build read 624,060 and would have MISSED it; the miss was a symptom of the bug, not of the range.)* |
+| **P4** | tail calibration 0.90-1.25 | **FALSIFIED.** 0.7378. §7 |
+| **P5** | class mark in [1.03, 1.14) | see §10 |
+| **P6** | burn 0, birthday 0 | see §10 |
+| **P7** | I1 moves more board points than I2 | **FALSIFIED.** I1 −3,612, I2 −5,665. The graded reset moved more than the credit curve, the opposite of what I predicted from F2's six-row cliff census. F2 measured the *delivered-cliff flip* at six rows; the graded reset's reach is much wider than that flip because it changes the clock for **every** row with a delivered season behind it, not only the rows sitting at the threshold. I read F2's census as bounding the lever and it does not. |
+| **P8** | injury stream moves < 25 rows, all upward | **HELD on direction** — +43 net, **zero rows down**. A pause can only remove clock, and it did. |
+| **P9** | R3 moves more than I1+I2+I3 combined | **HELD** — R3 −11,322 against −9,234 for the other three. |
+| **P10** | modern 1-10 still fails | see §10 |
+
+---
+
+## 10 · ACCEPTANCE, ITEM BY ITEM
+
+| item | result |
+|---|---|
+| **dial-chain: all assembly dials off → `374d4e44` byte-exact** | **PASS** |
+| **K/landing chain `f3101883` intact** | **PASS** |
+| **R = `7f88f509` reproduces, total 664,950** | **PASS** |
+| **determinism ×2** | **PASS** — `5949cf9b` on both runs, byte-identical |
+| **burn census 0 of all young rows (Fix A)** | **PASS** — 0 of 289 young rows, 0 board points, every band. Also 0 on the supervisor's 264-row |fK−fP|≥0.02 population |
+| **birthday census 0 at every age (B1)** | **PASS** — 81 age-23 rows with a pedigree leg, **0 movers**, net +0, worst ratio 1.0000 |
+| **continuity — age 23/24** | **PASS** — largest step in the charge factor between consecutive ages **0.0000**; the charge does not read current age at all |
+| **continuity — the season turn** | **PASS** — S1-F2 does not fire; the geometric recency weight is **exactly** invariant to the turn |
+| **continuity — games axis** | **PASS** — the charge rises with games at **0 of 280,000** steps |
+| **continuity — surplus axis** | **PASS** — a better player is charged more at **0 of 10,000** steps |
+| **no row above its uncharged price** | **PASS** — the engine's own S-S2 assert runs at load on every build and did not fire |
+| **LAMBDA untouched at the anchor** | **PASS** — `RL_O40_LAMBDA` never set on any board here |
+| **R9/R10 asserts at BETA_sat 0.105** | **PASS** — asserted at load on every build |
+| **day-0 ENTRY values bit-identical 89/89** | **⛔ BREACH — see §0.** 28 of 95 day-0 rows move, net −1,876, all of it from the ruled I2 F4 repair. The engine's internal day-0 identity still holds 89/89. **The two rulings are incompatible; the owner must choose.** |
+| **year-1 class mark in [1.03, 1.14) registered basis** | **NOT PRODUCIBLE** — blocked by the same emit halt. The instrument reproduced its controls exactly (ORDER K W2 1.0513, ORDER P W2 1.0613, both PASS), so it is ready the moment the day-0 question is ruled. |
+| **no-arb tables, both windows, both baselines** | **NOT PRODUCIBLE** — same cause. Instruments pinned and verified (`d59ad550`, `0f822035`, `02dcf28c`); the reference matrices for K, P, R and the landing candidate all ran clean. |
+| **tail calibration vs F5 ~1.04** | **REPORTED — 0.7378, a −0.30 miss. §7** |
+| **modern picks 1-10** | **DOCUMENTED STANDING RED**, carried in the box on every owner page. Its band table for the candidate awaits the emit. |
+| **SSP** | reported separately, parked, named in the box on every page |
+| **S-S5 limb 2 window (the disclosed deviation)** | **MEASURED: s ∈ [−2.010, −0.800], 1.210 pts/game wide, worst excess in T 0.0833 = at most 1.41% of the pedigree leg at 38 games.** The window sits above the cohort centre (s0 = −2.4527), i.e. on rows already producing at or above what their price implies. |
+
+**A NOTE ON HOW THE CENSUSES WERE RUN, DISCLOSED.** The burn census reconstructs a row's price from
+`[rho·e + age credit] + pi_base · (v·PL_F) · factor(v)` and sweeps the entry price. **That identity
+has no absence-collector term**, so with R3 live it broke on the first R3-faded row it reached
+(`noah-mraz`, 2118.41 vs 1457.03) — the reconstruction cannot see the R3 subtraction. The censuses
+are therefore run on the **R3-off** line (`L5C_INJ`), which is the correct basis for what they test:
+they exist to prove FIX A's monotonisation and B1's gate deletion, and **R3 is a production-leg
+collector that does not touch the pedigree charge at all**. **What is NOT covered by that choice, said
+plainly: the burn sweep has not been run through the R3 term, so the interaction of entry price with
+the R3 collector is unswept.** Extending the instrument is a small piece of work and it is named here
+rather than left implicit.
 
 ---
 
@@ -387,3 +524,39 @@ been visible in any total, any band table or any tracker column.
 - **C2 (the veteran board RL_O33 × B1), C3 (Guard 5), C5, C7, C8, C9** are out of this seat by charter.
   **C2 in particular must be re-tested against this candidate before RL_O33 merges behind it** — B1
   moves mature rows and nobody has looked at the two together.
+
+- **The year-1 class table and the no-arb band tables for the candidate** — blocked by the day-0
+  emit halt in §0. Not worked around, not produced on a quietly re-based guard.
+- **The production-leg and absence-take columns on the player page** — the leg recorder captured the
+  charge, the fade `D` and the unplayed clock for all 2,650 store rows, but not the production input
+  `e`, which is only visible at the blend site through a wrapper this seat could not attach cleanly
+  in the time available. The columns are present and empty rather than filled with a guess.
+
+---
+
+## 12 · THE DELIVERABLES, AND WHERE THEY ARE
+
+| # | deliverable | file | status |
+|---|---|---|---|
+| 1 | **PREREG**, pushed before the first engine edit | `PREREG_ASSEMBLY.md` (`c1dbd3e`) | done |
+| 2 | **THE CANDIDATE** + this packet | board `5949cf9b` · `PACKET_ASSEMBLY.md` | done |
+| 3 | **THE TRACKER** (v741/v742) | `TRACKER_ASSEMBLY.html` (801 rows) + `.csv` | done |
+| 4 | **THE PER-LEVER BREAKDOWN** | `LEVERS_ASSEMBLY.html` (8 levers) | done |
+| 5 | the 804-row player list | `ASSEMBLY_PLAYERS.html` | done |
+| 5 | the year-1 class in draft order | `ASSEMBLY_YEAR1.html` (102 rows, the 2025 draft) | done |
+| 5 | the no-arb tables | — | **blocked, §0** |
+| 6 | the movers ledger | `MOVERS_LEDGER.json` (801 rows) | done |
+| — | the RUCK diagnosis | `as_ruck.py` · `RUCK_DIAG.json` · `RUCK_DIAG_out.txt` | done |
+| — | the tail calibration | `as_tail.py` · `TAIL_ASM.json` · `TAIL_ASM_out.txt` | done |
+| — | boards and levers, scored | `BOARDS_ASM.json` · `BOARDS_ASM_out.txt` | done |
+| — | censuses / continuity | `CENSUS_NOR3_out.txt` · `CONTINUITY_CAND_out.txt` | done |
+
+**The three owner pages each carry the same "what is in this board and what is still broken" box
+(`as_box.py`), with the modern 1-10 red and SSP named in it, so nothing broken can appear on one page
+and be missing from another.**
+
+**Thread pins printed on every run: `OPENBLAS=1 OMP=1 MKL=1 NUMEXPR=1 VECLIB=1`, `PYTHONHASHSEED=0`.
+Engine runs were STRICTLY SEQUENTIAL throughout — never two at once.**
+
+**NOTHING IS ADOPTED. NOTHING MERGED. NO PULL REQUEST. NOTHING ON `main`. THE LIVE BOARD `88ce647f`
+WAS NEVER TOUCHED. THE CANDIDATE IS FOR OWNER REVIEW.**

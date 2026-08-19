@@ -168,11 +168,11 @@ open(os.path.join(HERE, 'ASSEMBLY_PLAYERS.html'), 'w').write(page(
 Y1 = [r for r in CAND.values() if (r.get('ep') == 0 or r.get('age') is not None)
       and r.get('draft') and r.get('pk') is not None]
 # the year-1 class = the most recent draft cohort on the board
-maxyr = max((r.get('year') or 0) for r in CAND.values())
-Y1 = sorted([r for r in CAND.values() if (r.get('year') or 0) == maxyr],
+maxyr = max((r.get('yr') or 0) for r in CAND.values()) - 1   # year-0 is the 2026 class; the YEAR-1 class is the one drafted the year before
+Y1 = sorted([r for r in CAND.values() if (r.get('yr') or 0) == maxyr],
             key=lambda r: (r.get('pk') if r.get('pk') is not None else 999))
 h = ['<div class="sub k">Board totals: %s</div>' % HDR,
-     '<h2>The year-1 class (%s draft), in draft order — %d rows</h2>' % (maxyr, len(Y1)),
+     '<h2>The year-1 class — the %s draft, in draft order — %d rows</h2>' % (maxyr, len(Y1)),
      '<div class="sub">In pick order, with the entry price v0 beside the board columns so the '
      'first-year mark can be read directly off the page.</div>',
      '<div class="wrap"><table class="s"><thead><tr><th>pick</th><th class="l">player</th>'

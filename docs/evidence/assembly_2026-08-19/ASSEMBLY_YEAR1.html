@@ -1,0 +1,902 @@
+<title>Assembly Year One</title>
+<style>
+:root{--bg:#fbfbfa;--fg:#1a1a18;--mut:#6b6b66;--line:#e0dfdb;--hd:#f2f1ee;--up:#186a3b;--dn:#a03028;--acc:#2b4c7e;--warn:#8a6d1f}
+:root[data-theme=dark]{--bg:#16171a;--fg:#e9e8e4;--mut:#9a9a94;--line:#2e2f33;--hd:#1f2024;--up:#4ec27e;--dn:#e8776b;--acc:#7aa7e0;--warn:#d8b455}
+:root[data-theme=dark]{--bg:#16171a;--fg:#e9e8e4;--mut:#9a9a94;--line:#2e2f33;--hd:#1f2024;--up:#4ec27e;--dn:#e8776b;--acc:#7aa7e0;--warn:#d8b455}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#16171a;--fg:#e9e8e4;--mut:#9a9a94;--line:#2e2f33;--hd:#1f2024;--up:#4ec27e;--dn:#e8776b;--acc:#7aa7e0;--warn:#d8b455}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;margin:0;padding:24px}
+h1{font-size:20px;margin:0 0 4px}h2{font-size:15px;margin:26px 0 8px;color:var(--acc)}
+.sub{color:var(--mut);font-size:13px;margin-bottom:16px;max-width:78em}
+.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;max-width:100%;margin-bottom:18px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:13px}
+th,td{padding:5px 9px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th.l,td.l{text-align:left}
+thead th{background:var(--hd);position:sticky;top:0;cursor:pointer;user-select:none;font-weight:600}
+thead th:hover{color:var(--acc)}
+tbody tr:hover{background:color-mix(in srgb,var(--acc) 6%,transparent)}
+.u{color:var(--up)}.d{color:var(--dn)}
+.red{background:color-mix(in srgb,var(--dn) 14%,transparent);font-weight:600}
+.amber{background:color-mix(in srgb,var(--warn) 16%,transparent)}
+.flag{color:var(--dn);font-weight:700}
+.k{color:var(--mut);font-size:12px}
+code{background:var(--hd);padding:1px 5px;border-radius:3px;font-size:12px}
+
+.box{border:1px solid var(--line);border-left:4px solid var(--acc);background:var(--hd);
+     padding:14px 18px;margin:0 0 22px;border-radius:0 6px 6px 0;max-width:78em}
+.box h3{margin:0 0 8px;font-size:14px;letter-spacing:.03em}
+.box ul{margin:4px 0 10px;padding-left:20px}
+.box li{margin:3px 0;font-size:13px;line-height:1.45}
+.boxsub{margin:8px 0 2px;font-weight:600;font-size:13px}
+.boxred{color:var(--dn)}
+.boxfoot{margin:10px 0 0;font-size:12px;color:var(--mut);font-style:italic}
+</style>
+<h1>THE YEAR-1 CLASS — THE CANDIDATE</h1>
+<div class="sub">The most recent draft class in pick order, with entry price beside every board.</div>
+<div class="box">
+<h3>WHAT IS IN THIS BOARD, AND WHAT IS STILL BROKEN</h3>
+<p class="boxsub">What this board now does that the last one did not:</p><ul>
+<li><b>The pedigree-conditional charge (ORDER P)</b> — a player is charged against a bar set by what his entry price implies, not by games alone.</li>
+<li><b>FIX A — the pick reversal repaired</b> — a more expensive row can no longer come out cheaper than a less expensive one on the same play.</li>
+<li><b>B1 — the age-24 cliff deleted</b> — the charge runs at every age on the same bar instead of switching off at a birthday.</li>
+<li><b>The mature refit</b> — each season is measured against the ruler for the age it was actually played at.</li>
+<li><b>The compressed cap at the 20th percentile</b> — the old hard ceiling is replaced by a smooth one, so worse play always costs at least slightly more and nobody sits on a flat segment.</li>
+<li><b>The softened slope 0.105</b> — the charge responds less steeply to shortfall, inside the measured interval.</li>
+<li><b>Recency 0.47</b> — a season two years ago counts less than this one; the weight was fitted out of sample.</li>
+<li><b>The SD level offset, 2.98 points a game</b> — small defenders were measured to be over-barred by that much, flat at every age, and the bar is lowered by exactly the measured amount. Nothing was moved to offset it.</li>
+<li><b>The absence package</b> — a short season now earns the credit it was measured to earn instead of a full pass at two games; a delivered season restores only part of the accrued sitting clock instead of wiping it; a logged-injured absence pauses the clock for a player who has delivered; and the production leg fades when a player is out for more than one season with no explanation.</li>
+</ul><p class="boxsub boxred">What is still broken, in plain words:</p><ul>
+<li><b>MODERN PICKS 1-10 — A DOCUMENTED STANDING RED</b> — This cell fails the no-arb test even on the loosened reading, and NO LEVER IN THIS BOARD REACHES IT. It was inherited from ORDER P, the level cannot fix it, and the recency dial structurally cannot. THE OWNER HAS ACCEPTED IT AS A STANDING RED: it rides every table flagged, it is not chased and it is not capped. It is printed on every page for that reason.</li>
+<li><b>SSP — an inherited breach, worsened</b> — The supplementary-selection arm was already breaching before this board and ORDER P made it worse. IT IS NOT REPAIRED HERE. It is parked, named, and reported separately so it cannot be read as fixed.</li>
+<li><b>THE TAIL IS NOT WHERE THE RECORD EXPECTED IT</b> — The register expected the deep-underperformer cell to calibrate near 1.04. On this board it reads 0.74. The cause is the cap FORM, not the slope: the smooth compression charges the deep cell noticeably less than the hard ceiling it replaced. On the mean this board now UNDER-charges the deep underperformer by about a quarter rather than over-charging him. The direction is the one that was asked for; the size overshoots the calibration point.</li>
+<li><b>RUCK IS STILL MIS-BARRED AND NOTHING WAS DONE ABOUT IT</b> — Rucks measure 5.57 points a game over-barred, but the error SWINGS with age — heavily over-barred at 21, slightly under-barred at 23 — so it is not a level and a level offset would have been wrong at both ends. The misfiring object is the class-pooled age-development delta, which rucks share with key forwards and key defenders. It is diagnosed, not repaired.</li>
+<li><b>SF WAS DELIBERATELY LEFT ALONE</b> — Small forwards measure UNDER-barred by 2.71, which would mean charging them more. It was not wired, because the measurement carries a survivor-bias caveat and it would penalise exactly the kind of row this engine has most trouble with.</li>
+<li><b>THE VETERAN BOARD HAS NOT BEEN TESTED AGAINST THIS ONE</b> — A separate veteran-board change was built before B1 existed. B1 moves a lot of mature rows. Nobody has yet looked at the two together, and that must happen before the veteran board goes in behind this one.</li>
+<li><b>THE CHARGE STILL CONVICTS SOMEWHAT FAST ON VERY FEW GAMES</b> — A player with one or two games is charged on less evidence than the outcomes support. It was measured, it was left alone deliberately — repairing it would reopen the level the whole board is anchored on — and it stays on the record as an open finding.</li>
+<li><b>THE DEEP CELL IS OPTION-SHAPED, AND THE MEAN HIDES THAT</b> — Among the worst underperformers, about half deliver almost nothing and a few deliver a lot. The board prices the average, which is the right thing for a price, but the typical player in that group is charged GENEROUSLY rather than harshly.</li>
+</ul><p class="boxfoot">This board is a CANDIDATE FOR REVIEW. It has not been adopted, it has not been merged, and the live board is untouched.</p></div>
+<div class="sub k">Board totals: live <code>88ce647f</code> 752,429 &middot; K <code>f3101883</code> 673,097 &middot; P <code>374d4e44</code> 666,434 &middot; R <code>7f88f509</code> 664,950 &middot; CANDIDATE <code>5949cf9b</code> 650,439</div>
+<h2>The year-1 class — the 2025 draft, in draft order — 102 rows</h2>
+<div class="sub">In pick order, with the entry price v0 beside the board columns so the first-year mark can be read directly off the page.</div>
+<div class="wrap"><table class="s"><thead><tr><th>pick</th><th class="l">player</th><th class="l">pos</th><th class="l">club</th><th class="l">cat</th><th>v0</th>
+<th>live</th>
+<th>K</th>
+<th>P</th>
+<th>R</th>
+<th>CANDIDATE</th>
+<th>&Delta; R&rarr;cand</th></tr></thead><tbody>
+<tr><td data-v="1">1</td><td class="l">Willem Duursma</td><td class="l">MID</td><td class="l">West Coast</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="3977">3,977</td>
+<td data-v="3703">3,703</td>
+<td data-v="3920">3,920</td>
+<td data-v="4236">4,236</td>
+<td data-v="4225">4,225</td>
+<td data-v="-11" class="d">-11</td>
+</tr>
+<tr><td data-v="1">1</td><td class="l">Tom McCarthy</td><td class="l">SD</td><td class="l">West Coast</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="1457">1,457</td>
+<td data-v="1211">1,211</td>
+<td data-v="1211">1,211</td>
+<td data-v="1259">1,259</td>
+<td data-v="1259">1,259</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="1">1</td><td class="l">Fred Rodriguez</td><td class="l">SF</td><td class="l">West Coast</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="201">201</td>
+<td data-v="97">97</td>
+<td data-v="97">97</td>
+<td data-v="97">97</td>
+<td data-v="97">97</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="2">2</td><td class="l">Zeke Uwland</td><td class="l">SD</td><td class="l">Gold Coast</td><td class="l">Academy</td><td data-v="0">—</td>
+<td data-v="2633">2,633</td>
+<td data-v="1949">1,949</td>
+<td data-v="1486">1,486</td>
+<td data-v="1582">1,582</td>
+<td data-v="1786">1,786</td>
+<td data-v="204" class="u">+204</td>
+</tr>
+<tr><td data-v="2">2</td><td class="l">Riley Onley</td><td class="l">MID</td><td class="l">Melbourne</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="201">201</td>
+<td data-v="97">97</td>
+<td data-v="97">97</td>
+<td data-v="97">97</td>
+<td data-v="97">97</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="2">2</td><td class="l">Zac Banch</td><td class="l">SF</td><td class="l">North Melbourne</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="152">152</td>
+<td data-v="69">69</td>
+<td data-v="33">33</td>
+<td data-v="40">40</td>
+<td data-v="40">40</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="3">3</td><td class="l">Harry Dean</td><td class="l">KPD</td><td class="l">Carlton</td><td class="l">Father-Son</td><td data-v="0">—</td>
+<td data-v="2577">2,577</td>
+<td data-v="2403">2,403</td>
+<td data-v="3069">3,069</td>
+<td data-v="3069">3,069</td>
+<td data-v="3069">3,069</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="3">3</td><td class="l">Harrison Ramm</td><td class="l">KPD</td><td class="l">Port Adelaide</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="545">545</td>
+<td data-v="438">438</td>
+<td data-v="391">391</td>
+<td data-v="402">402</td>
+<td data-v="405">405</td>
+<td data-v="3" class="u">+3</td>
+</tr>
+<tr><td data-v="3">3</td><td class="l">Jack Watkins</td><td class="l">SF</td><td class="l">Port Adelaide</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="130">130</td>
+<td data-v="72">72</td>
+<td data-v="72">72</td>
+<td data-v="38">38</td>
+<td data-v="56">56</td>
+<td data-v="18" class="u">+18</td>
+</tr>
+<tr><td data-v="4">4</td><td class="l">Cooper Duff-Tytler</td><td class="l">KPF</td><td class="l">West Coast</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="1561">1,561</td>
+<td data-v="1505">1,505</td>
+<td data-v="1824">1,824</td>
+<td data-v="1824">1,824</td>
+<td data-v="1848">1,848</td>
+<td data-v="24" class="u">+24</td>
+</tr>
+<tr><td data-v="4">4</td><td class="l">Leon Kickett</td><td class="l">SF</td><td class="l">Fremantle</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="151">151</td>
+<td data-v="92">92</td>
+<td data-v="92">92</td>
+<td data-v="92">92</td>
+<td data-v="92">92</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="4">4</td><td class="l">Flynn Young</td><td class="l">SF</td><td class="l">Carlton</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="168">168</td>
+<td data-v="52">52</td>
+<td data-v="52">52</td>
+<td data-v="20">20</td>
+<td data-v="24">24</td>
+<td data-v="4" class="u">+4</td>
+</tr>
+<tr><td data-v="5">5</td><td class="l">Dylan Patterson</td><td class="l">SD</td><td class="l">Gold Coast</td><td class="l">Academy</td><td data-v="0">—</td>
+<td data-v="1628">1,628</td>
+<td data-v="1440">1,440</td>
+<td data-v="955">955</td>
+<td data-v="1189">1,189</td>
+<td data-v="1248">1,248</td>
+<td data-v="59" class="u">+59</td>
+</tr>
+<tr><td data-v="5">5</td><td class="l">Michael Sellwood</td><td class="l">SD</td><td class="l">Western Bulldogs</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="168">168</td>
+<td data-v="187">187</td>
+<td data-v="175">175</td>
+<td data-v="175">175</td>
+<td data-v="212">212</td>
+<td data-v="37" class="u">+37</td>
+</tr>
+<tr><td data-v="5">5</td><td class="l">Ollie Greeves</td><td class="l">MID</td><td class="l">Hawthorn</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="583">583</td>
+<td data-v="519">519</td>
+<td data-v="512">512</td>
+<td data-v="512">512</td>
+<td data-v="477">477</td>
+<td data-v="-35" class="d">-35</td>
+</tr>
+<tr><td data-v="6">6</td><td class="l">Daniel Annable</td><td class="l">MID</td><td class="l">Brisbane</td><td class="l">Academy</td><td data-v="0">—</td>
+<td data-v="1395">1,395</td>
+<td data-v="1537">1,537</td>
+<td data-v="1115">1,115</td>
+<td data-v="1340">1,340</td>
+<td data-v="1241">1,241</td>
+<td data-v="-99" class="d">-99</td>
+</tr>
+<tr><td data-v="6">6</td><td class="l">Archie May</td><td class="l">KPF</td><td class="l">Essendon</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="476">476</td>
+<td data-v="336">336</td>
+<td data-v="340">340</td>
+<td data-v="340">340</td>
+<td data-v="337">337</td>
+<td data-v="-3" class="d">-3</td>
+</tr>
+<tr><td data-v="6">6</td><td class="l">Nick Driscoll</td><td class="l">SF</td><td class="l">Geelong</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="201">201</td>
+<td data-v="97">97</td>
+<td data-v="97">97</td>
+<td data-v="97">97</td>
+<td data-v="97">97</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="7">7</td><td class="l">Sam Cumming</td><td class="l">MID</td><td class="l">Richmond</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="2288">2,288</td>
+<td data-v="1932">1,932</td>
+<td data-v="2007">2,007</td>
+<td data-v="2150">2,150</td>
+<td data-v="2146">2,146</td>
+<td data-v="-4" class="d">-4</td>
+</tr>
+<tr><td data-v="7">7</td><td class="l">Roan Steele</td><td class="l">MID</td><td class="l">Collingwood</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="152">152</td>
+<td data-v="118">118</td>
+<td data-v="118">118</td>
+<td data-v="35">35</td>
+<td data-v="55">55</td>
+<td data-v="20" class="u">+20</td>
+</tr>
+<tr><td data-v="8">8</td><td class="l">Samuel Grlj</td><td class="l">SD</td><td class="l">Richmond</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="1735">1,735</td>
+<td data-v="1613">1,613</td>
+<td data-v="1390">1,390</td>
+<td data-v="1467">1,467</td>
+<td data-v="1586">1,586</td>
+<td data-v="119" class="u">+119</td>
+</tr>
+<tr><td data-v="8">8</td><td class="l">Jacob Newton</td><td class="l">SF</td><td class="l">West Coast</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="299">299</td>
+<td data-v="232">232</td>
+<td data-v="193">193</td>
+<td data-v="202">202</td>
+<td data-v="185">185</td>
+<td data-v="-17" class="d">-17</td>
+</tr>
+<tr><td data-v="9">9</td><td class="l">Sullivan Robey</td><td class="l">SF</td><td class="l">Essendon</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="2981">2,981</td>
+<td data-v="2379">2,379</td>
+<td data-v="2864">2,864</td>
+<td data-v="2864">2,864</td>
+<td data-v="2864">2,864</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="9">9</td><td class="l">Cooper Trembath</td><td class="l">KPF</td><td class="l">North Melbourne</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="2201">2,201</td>
+<td data-v="1728">1,728</td>
+<td data-v="1779">1,779</td>
+<td data-v="1779">1,779</td>
+<td data-v="1779">1,779</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="10">10</td><td class="l">Jacob Farrow</td><td class="l">SD</td><td class="l">Essendon</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="2601">2,601</td>
+<td data-v="2155">2,155</td>
+<td data-v="2515">2,515</td>
+<td data-v="2515">2,515</td>
+<td data-v="2515">2,515</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="10">10</td><td class="l">Ewan Mackinlay</td><td class="l">SF</td><td class="l">Port Adelaide</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="152">152</td>
+<td data-v="99">99</td>
+<td data-v="105">105</td>
+<td data-v="114">114</td>
+<td data-v="109">109</td>
+<td data-v="-5" class="d">-5</td>
+</tr>
+<tr><td data-v="11">11</td><td class="l">Xavier Taylor</td><td class="l">SD</td><td class="l">Melbourne</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="802">802</td>
+<td data-v="1162">1,162</td>
+<td data-v="950">950</td>
+<td data-v="1001">1,001</td>
+<td data-v="924">924</td>
+<td data-v="-77" class="d">-77</td>
+</tr>
+<tr><td data-v="11">11</td><td class="l">Zac Walker</td><td class="l">KPD</td><td class="l">Western Bulldogs</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="152">152</td>
+<td data-v="153">153</td>
+<td data-v="153">153</td>
+<td data-v="153">153</td>
+<td data-v="153">153</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="12">12</td><td class="l">Latrelle Pickett</td><td class="l">SF</td><td class="l">Melbourne</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="548">548</td>
+<td data-v="446">446</td>
+<td data-v="238">238</td>
+<td data-v="284">284</td>
+<td data-v="354">354</td>
+<td data-v="70" class="u">+70</td>
+</tr>
+<tr><td data-v="12">12</td><td class="l">Lachlan Blakiston</td><td class="l">KPD</td><td class="l">Essendon</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="152">152</td>
+<td data-v="87">87</td>
+<td data-v="87">87</td>
+<td data-v="27">27</td>
+<td data-v="40">40</td>
+<td data-v="13" class="u">+13</td>
+</tr>
+<tr><td data-v="13">13</td><td class="l">Dyson Sharp</td><td class="l">SF</td><td class="l">Essendon</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="3091">3,091</td>
+<td data-v="2427">2,427</td>
+<td data-v="2879">2,879</td>
+<td data-v="2879">2,879</td>
+<td data-v="2879">2,879</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="13">13</td><td class="l">Caleb Lewis</td><td class="l">KPF</td><td class="l">Gold Coast</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="233">233</td>
+<td data-v="155">155</td>
+<td data-v="120">120</td>
+<td data-v="139">139</td>
+<td data-v="143">143</td>
+<td data-v="4" class="u">+4</td>
+</tr>
+<tr><td data-v="14">14</td><td class="l">Harry Kyle</td><td class="l">SD</td><td class="l">Sydney</td><td class="l">Academy</td><td data-v="0">—</td>
+<td data-v="1158">1,158</td>
+<td data-v="925">925</td>
+<td data-v="841">841</td>
+<td data-v="841">841</td>
+<td data-v="972">972</td>
+<td data-v="131" class="u">+131</td>
+</tr>
+<tr><td data-v="14">14</td><td class="l">Noah Howes</td><td class="l">KPF</td><td class="l">Collingwood</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="229">229</td>
+<td data-v="221">221</td>
+<td data-v="207">207</td>
+<td data-v="211">211</td>
+<td data-v="218">218</td>
+<td data-v="7" class="u">+7</td>
+</tr>
+<tr><td data-v="15">15</td><td class="l">Oskar Taylor</td><td class="l">SD</td><td class="l">GWS</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="629">629</td>
+<td data-v="596">596</td>
+<td data-v="596">596</td>
+<td data-v="596">596</td>
+<td data-v="596">596</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="15">15</td><td class="l">Mani Liddy</td><td class="l">MID</td><td class="l">Port Adelaide</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="152">152</td>
+<td data-v="122">122</td>
+<td data-v="122">122</td>
+<td data-v="50">50</td>
+<td data-v="76">76</td>
+<td data-v="26" class="u">+26</td>
+</tr>
+<tr><td data-v="16">16</td><td class="l">Lachy Dovaston</td><td class="l">SF</td><td class="l">North Melbourne</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="512">512</td>
+<td data-v="550">550</td>
+<td data-v="502">502</td>
+<td data-v="502">502</td>
+<td data-v="558">558</td>
+<td data-v="56" class="u">+56</td>
+</tr>
+<tr><td data-v="17">17</td><td class="l">Jai Murray</td><td class="l">MID</td><td class="l">Gold Coast</td><td class="l">Academy</td><td data-v="0">—</td>
+<td data-v="1138">1,138</td>
+<td data-v="940">940</td>
+<td data-v="877">877</td>
+<td data-v="877">877</td>
+<td data-v="957">957</td>
+<td data-v="80" class="u">+80</td>
+</tr>
+<tr><td data-v="18">18</td><td class="l">Beau Addinsall</td><td class="l">MID</td><td class="l">Gold Coast</td><td class="l">Academy</td><td data-v="0">—</td>
+<td data-v="1521">1,521</td>
+<td data-v="1158">1,158</td>
+<td data-v="1297">1,297</td>
+<td data-v="1297">1,297</td>
+<td data-v="1311">1,311</td>
+<td data-v="14" class="u">+14</td>
+</tr>
+<tr><td data-v="19">19</td><td class="l">Josh Lindsay</td><td class="l">SD</td><td class="l">West Coast</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="2335">2,335</td>
+<td data-v="1796">1,796</td>
+<td data-v="2050">2,050</td>
+<td data-v="2050">2,050</td>
+<td data-v="2050">2,050</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="20">20</td><td class="l">Cameron Nairn</td><td class="l">SF</td><td class="l">Hawthorn</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="606">606</td>
+<td data-v="596">596</td>
+<td data-v="612">612</td>
+<td data-v="612">612</td>
+<td data-v="529">529</td>
+<td data-v="-83" class="d">-83</td>
+</tr>
+<tr><td data-v="21">21</td><td class="l">Lachlan Carmichael</td><td class="l">SD</td><td class="l">Western Bulldogs</td><td class="l">Academy - Unmatched</td><td data-v="0">—</td>
+<td data-v="548">548</td>
+<td data-v="479">479</td>
+<td data-v="479">479</td>
+<td data-v="479">479</td>
+<td data-v="479">479</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="22">22</td><td class="l">Mitchell Marsh</td><td class="l">KPF</td><td class="l">Adelaide</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="506">506</td>
+<td data-v="552">552</td>
+<td data-v="552">552</td>
+<td data-v="552">552</td>
+<td data-v="552">552</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="23">23</td><td class="l">Aidan Schubert</td><td class="l">KPF</td><td class="l">Hawthorn</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="481">481</td>
+<td data-v="630">630</td>
+<td data-v="546">546</td>
+<td data-v="581">581</td>
+<td data-v="565">565</td>
+<td data-v="-16" class="d">-16</td>
+</tr>
+<tr><td data-v="24">24</td><td class="l">Harley Barker</td><td class="l">MID</td><td class="l">Geelong</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="677">677</td>
+<td data-v="481">481</td>
+<td data-v="481">481</td>
+<td data-v="481">481</td>
+<td data-v="481">481</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="25">25</td><td class="l">Adam Sweid</td><td class="l">MID</td><td class="l">Fremantle</td><td class="l">Academy - Unmatched</td><td data-v="0">—</td>
+<td data-v="397">397</td>
+<td data-v="253">253</td>
+<td data-v="253">253</td>
+<td data-v="253">253</td>
+<td data-v="253">253</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="26">26</td><td class="l">Blake Thredgold</td><td class="l">KPD</td><td class="l">North Melbourne</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="373">373</td>
+<td data-v="372">372</td>
+<td data-v="372">372</td>
+<td data-v="372">372</td>
+<td data-v="372">372</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="27">27</td><td class="l">Louis Emmett</td><td class="l">RUCK</td><td class="l">Western Bulldogs</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="749">749</td>
+<td data-v="627">627</td>
+<td data-v="454">454</td>
+<td data-v="533">533</td>
+<td data-v="574">574</td>
+<td data-v="41" class="u">+41</td>
+</tr>
+<tr><td data-v="28">28</td><td class="l">Avery Thomas</td><td class="l">SD</td><td class="l">Gold Coast</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="394">394</td>
+<td data-v="266">266</td>
+<td data-v="266">266</td>
+<td data-v="266">266</td>
+<td data-v="266">266</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="29">29</td><td class="l">Sam Allen</td><td class="l">SF</td><td class="l">West Coast</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="618">618</td>
+<td data-v="450">450</td>
+<td data-v="450">450</td>
+<td data-v="450">450</td>
+<td data-v="450">450</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="30">30</td><td class="l">Thomas Matthews</td><td class="l">SF</td><td class="l">Melbourne</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="337">337</td>
+<td data-v="238">238</td>
+<td data-v="238">238</td>
+<td data-v="238">238</td>
+<td data-v="238">238</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="31">31</td><td class="l">Zane Peucker</td><td class="l">SF</td><td class="l">Richmond</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="384">384</td>
+<td data-v="487">487</td>
+<td data-v="505">505</td>
+<td data-v="505">505</td>
+<td data-v="404">404</td>
+<td data-v="-101" class="d">-101</td>
+</tr>
+<tr><td data-v="32">32</td><td class="l">Tyan Prindable</td><td class="l">MID</td><td class="l">Collingwood</td><td class="l">Academy - Unmatched</td><td data-v="0">—</td>
+<td data-v="543">543</td>
+<td data-v="375">375</td>
+<td data-v="375">375</td>
+<td data-v="375">375</td>
+<td data-v="375">375</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="33">33</td><td class="l">Hunter Holmes</td><td class="l">MID</td><td class="l">Geelong</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="517">517</td>
+<td data-v="357">357</td>
+<td data-v="357">357</td>
+<td data-v="357">357</td>
+<td data-v="357">357</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="34">34</td><td class="l">Jack Dalton</td><td class="l">MID</td><td class="l">Hawthorn</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="437">437</td>
+<td data-v="489">489</td>
+<td data-v="557">557</td>
+<td data-v="557">557</td>
+<td data-v="460">460</td>
+<td data-v="-97" class="d">-97</td>
+</tr>
+<tr><td data-v="35">35</td><td class="l">Jevan Phillipou</td><td class="l">MID</td><td class="l">Sydney</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="273">273</td>
+<td data-v="226">226</td>
+<td data-v="226">226</td>
+<td data-v="226">226</td>
+<td data-v="226">226</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="36">36</td><td class="l">Max Kondogiannis</td><td class="l">SD</td><td class="l">Essendon</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="435">435</td>
+<td data-v="358">358</td>
+<td data-v="312">312</td>
+<td data-v="312">312</td>
+<td data-v="360">360</td>
+<td data-v="48" class="u">+48</td>
+</tr>
+<tr><td data-v="37">37</td><td class="l">Samuel Swadling</td><td class="l">MID</td><td class="l">Collingwood</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="776">776</td>
+<td data-v="682">682</td>
+<td data-v="773">773</td>
+<td data-v="773">773</td>
+<td data-v="750">750</td>
+<td data-v="-23" class="d">-23</td>
+</tr>
+<tr><td data-v="38">38</td><td class="l">Koby Evans</td><td class="l">MID</td><td class="l">Brisbane</td><td class="l">Academy - Unmatched</td><td data-v="0">—</td>
+<td data-v="254">254</td>
+<td data-v="219">219</td>
+<td data-v="219">219</td>
+<td data-v="219">219</td>
+<td data-v="219">219</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="39">39</td><td class="l">Tylah Williams</td><td class="l">SF</td><td class="l">West Coast</td><td class="l">Next Gen</td><td data-v="0">—</td>
+<td data-v="249">249</td>
+<td data-v="217">217</td>
+<td data-v="217">217</td>
+<td data-v="217">217</td>
+<td data-v="217">217</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="40">40</td><td class="l">Tobyn Murray</td><td class="l">SF</td><td class="l">Fremantle</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="234">234</td>
+<td data-v="204">204</td>
+<td data-v="204">204</td>
+<td data-v="204">204</td>
+<td data-v="204">204</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="41">41</td><td class="l">Charlie Banfield</td><td class="l">SF</td><td class="l">St Kilda</td><td class="l">Father-Son</td><td data-v="0">—</td>
+<td data-v="536">536</td>
+<td data-v="683">683</td>
+<td data-v="798">798</td>
+<td data-v="798">798</td>
+<td data-v="620">620</td>
+<td data-v="-178" class="d">-178</td>
+</tr>
+<tr><td data-v="42">42</td><td class="l">Billy Cootee</td><td class="l">MID</td><td class="l">Sydney</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="264">264</td>
+<td data-v="232">232</td>
+<td data-v="232">232</td>
+<td data-v="138">138</td>
+<td data-v="176">176</td>
+<td data-v="38" class="u">+38</td>
+</tr>
+<tr><td data-v="43">43</td><td class="l">Cody Curtin</td><td class="l">KPF</td><td class="l">Brisbane</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="427">427</td>
+<td data-v="440">440</td>
+<td data-v="400">400</td>
+<td data-v="400">400</td>
+<td data-v="394">394</td>
+<td data-v="-6" class="d">-6</td>
+</tr>
+<tr><td data-v="44">44</td><td class="l">Tai Hayes</td><td class="l">SF</td><td class="l">Brisbane</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="194">194</td>
+<td data-v="151">151</td>
+<td data-v="151">151</td>
+<td data-v="151">151</td>
+<td data-v="151">151</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="45">45</td><td class="l">Talor Byrne</td><td class="l">SF</td><td class="l">Carlton</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="857">857</td>
+<td data-v="687">687</td>
+<td data-v="773">773</td>
+<td data-v="773">773</td>
+<td data-v="773">773</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="46">46</td><td class="l">Koby Coulson</td><td class="l">MID</td><td class="l">Gold Coast</td><td class="l">Academy</td><td data-v="0">—</td>
+<td data-v="316">316</td>
+<td data-v="232">232</td>
+<td data-v="232">232</td>
+<td data-v="232">232</td>
+<td data-v="232">232</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="47">47</td><td class="l">Jack Ison</td><td class="l">MID</td><td class="l">Carlton</td><td class="l">Next Gen</td><td data-v="0">—</td>
+<td data-v="512">512</td>
+<td data-v="417">417</td>
+<td data-v="453">453</td>
+<td data-v="453">453</td>
+<td data-v="458">458</td>
+<td data-v="5" class="u">+5</td>
+</tr>
+<tr><td data-v="48">48</td><td class="l">Hugo Mikunda</td><td class="l">SF</td><td class="l">North Melbourne</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="177">177</td>
+<td data-v="139">139</td>
+<td data-v="139">139</td>
+<td data-v="139">139</td>
+<td data-v="139">139</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="49">49</td><td class="l">Maxwell King</td><td class="l">KPF</td><td class="l">Sydney</td><td class="l">Academy</td><td data-v="0">—</td>
+<td data-v="156">156</td>
+<td data-v="129">129</td>
+<td data-v="129">129</td>
+<td data-v="129">129</td>
+<td data-v="129">129</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="50">50</td><td class="l">Archie Ludowyke</td><td class="l">KPF</td><td class="l">Adelaide</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="206">206</td>
+<td data-v="327">327</td>
+<td data-v="343">343</td>
+<td data-v="343">343</td>
+<td data-v="295">295</td>
+<td data-v="-48" class="d">-48</td>
+</tr>
+<tr><td data-v="51">51</td><td class="l">Finnegan Davis</td><td class="l">SD</td><td class="l">GWS</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="165">165</td>
+<td data-v="84">84</td>
+<td data-v="84">84</td>
+<td data-v="84">84</td>
+<td data-v="84">84</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="52">52</td><td class="l">Kye Fincher</td><td class="l">SD</td><td class="l">St Kilda</td><td class="l">Next Gen</td><td data-v="0">—</td>
+<td data-v="249">249</td>
+<td data-v="145">145</td>
+<td data-v="145">145</td>
+<td data-v="145">145</td>
+<td data-v="145">145</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="53">53</td><td class="l">Hussien El Achkar</td><td class="l">SF</td><td class="l">Essendon</td><td class="l">Next Gen</td><td data-v="0">—</td>
+<td data-v="353">353</td>
+<td data-v="313">313</td>
+<td data-v="361">361</td>
+<td data-v="361">361</td>
+<td data-v="364">364</td>
+<td data-v="3" class="u">+3</td>
+</tr>
+<tr><td data-v="54">54</td><td class="l">Noah Roberts-Thomson</td><td class="l">MID</td><td class="l">Richmond</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="213">213</td>
+<td data-v="322">322</td>
+<td data-v="290">290</td>
+<td data-v="290">290</td>
+<td data-v="254">254</td>
+<td data-v="-36" class="d">-36</td>
+</tr>
+<tr><td data-v="55">55</td><td class="l">Zac McCarthy</td><td class="l">KPF</td><td class="l">Collingwood</td><td class="l">Next Gen</td><td data-v="0">—</td>
+<td data-v="147">147</td>
+<td data-v="133">133</td>
+<td data-v="133">133</td>
+<td data-v="133">133</td>
+<td data-v="133">133</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="56">56</td><td class="l">Matthew LeRay</td><td class="l">MID</td><td class="l">Hawthorn</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="219">219</td>
+<td data-v="111">111</td>
+<td data-v="111">111</td>
+<td data-v="111">111</td>
+<td data-v="111">111</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="57">57</td><td class="l">Angus Anderson</td><td class="l">SF</td><td class="l">Collingwood</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="165">165</td>
+<td data-v="151">151</td>
+<td data-v="171">171</td>
+<td data-v="176">176</td>
+<td data-v="177">177</td>
+<td data-v="1" class="u">+1</td>
+</tr>
+<tr><td data-v="58">58</td><td class="l">Will Darcy</td><td class="l">KPF</td><td class="l">Western Bulldogs</td><td class="l">Father-Son</td><td data-v="0">—</td>
+<td data-v="187">187</td>
+<td data-v="225">225</td>
+<td data-v="225">225</td>
+<td data-v="225">225</td>
+<td data-v="225">225</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Kalani White</td><td class="l">KPF</td><td class="l">Melbourne</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="84">84</td>
+<td data-v="55">55</td>
+<td data-v="55">55</td>
+<td data-v="55">55</td>
+<td data-v="55">55</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Noah Chamberlain</td><td class="l">KPF</td><td class="l">Sydney</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="86">86</td>
+<td data-v="37">37</td>
+<td data-v="37">37</td>
+<td data-v="37">37</td>
+<td data-v="37">37</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Liam Hetherton</td><td class="l">KPF</td><td class="l">Sydney</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="168">168</td>
+<td data-v="66">66</td>
+<td data-v="66">66</td>
+<td data-v="66">66</td>
+<td data-v="66">66</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Jai Saxena</td><td class="l">SF</td><td class="l">Collingwood</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="84">84</td>
+<td data-v="25">25</td>
+<td data-v="25">25</td>
+<td data-v="25">25</td>
+<td data-v="25">25</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Ryda Luke</td><td class="l">SF</td><td class="l">Fremantle</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="84">84</td>
+<td data-v="25">25</td>
+<td data-v="25">25</td>
+<td data-v="25">25</td>
+<td data-v="25">25</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Toby Whan</td><td class="l">MID</td><td class="l">Fremantle</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="84">84</td>
+<td data-v="25">25</td>
+<td data-v="25">25</td>
+<td data-v="25">25</td>
+<td data-v="25">25</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Jesse Mellor</td><td class="l">SF</td><td class="l">Geelong</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="84">84</td>
+<td data-v="51">51</td>
+<td data-v="51">51</td>
+<td data-v="51">51</td>
+<td data-v="51">51</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Ben Murphy</td><td class="l">SD</td><td class="l">Brisbane</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="85">85</td>
+<td data-v="40">40</td>
+<td data-v="40">40</td>
+<td data-v="40">40</td>
+<td data-v="40">40</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Kobe McDonald</td><td class="l">SD</td><td class="l">St Kilda</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="85">85</td>
+<td data-v="40">40</td>
+<td data-v="40">40</td>
+<td data-v="40">40</td>
+<td data-v="40">40</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Indy Cotton</td><td class="l">SF</td><td class="l">Adelaide</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="48">48</td>
+<td data-v="49">49</td>
+<td data-v="49">49</td>
+<td data-v="49">49</td>
+<td data-v="49">49</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Oscar Berry</td><td class="l">KPD</td><td class="l">Melbourne</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="53">53</td>
+<td data-v="57">57</td>
+<td data-v="57">57</td>
+<td data-v="57">57</td>
+<td data-v="57">57</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Patrick Carr</td><td class="l">RUCK</td><td class="l">Richmond</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="31">31</td>
+<td data-v="47">47</td>
+<td data-v="47">47</td>
+<td data-v="47">47</td>
+<td data-v="47">47</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Cillian Bourke</td><td class="l">SD</td><td class="l">Essendon</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="85">85</td>
+<td data-v="40">40</td>
+<td data-v="40">40</td>
+<td data-v="40">40</td>
+<td data-v="40">40</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Milan Murdock</td><td class="l">SF</td><td class="l">West Coast</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="208">208</td>
+<td data-v="156">156</td>
+<td data-v="156">156</td>
+<td data-v="196">196</td>
+<td data-v="196">196</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Tom Blamires</td><td class="l">SD</td><td class="l">North Melbourne</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="139">139</td>
+<td data-v="111">111</td>
+<td data-v="111">111</td>
+<td data-v="123">123</td>
+<td data-v="135">135</td>
+<td data-v="12" class="u">+12</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Flynn Perez</td><td class="l">SD</td><td class="l">Hawthorn</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="139">139</td>
+<td data-v="49">49</td>
+<td data-v="49">49</td>
+<td data-v="16">16</td>
+<td data-v="24">24</td>
+<td data-v="8" class="u">+8</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Balyn O&#x27;Brien</td><td class="l">SD</td><td class="l">Port Adelaide</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="383">383</td>
+<td data-v="346">346</td>
+<td data-v="297">297</td>
+<td data-v="316">316</td>
+<td data-v="298">298</td>
+<td data-v="-18" class="d">-18</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Paddy Cross</td><td class="l">SF</td><td class="l">Melbourne</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="139">139</td>
+<td data-v="59">59</td>
+<td data-v="59">59</td>
+<td data-v="59">59</td>
+<td data-v="66">66</td>
+<td data-v="7" class="u">+7</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Chris Scerri</td><td class="l">SF</td><td class="l">Fremantle</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="459">459</td>
+<td data-v="321">321</td>
+<td data-v="355">355</td>
+<td data-v="355">355</td>
+<td data-v="353">353</td>
+<td data-v="-2" class="d">-2</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Will Lewis</td><td class="l">KPF</td><td class="l">Western Bulldogs</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="139">139</td>
+<td data-v="67">67</td>
+<td data-v="67">67</td>
+<td data-v="47">47</td>
+<td data-v="61">61</td>
+<td data-v="14" class="u">+14</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Mitch Zadow</td><td class="l">SF</td><td class="l">Port Adelaide</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="139">139</td>
+<td data-v="87">87</td>
+<td data-v="75">75</td>
+<td data-v="75">75</td>
+<td data-v="86">86</td>
+<td data-v="11" class="u">+11</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Riley Hamilton</td><td class="l">SF</td><td class="l">GWS</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="305">305</td>
+<td data-v="210">210</td>
+<td data-v="208">208</td>
+<td data-v="208">208</td>
+<td data-v="208">208</td>
+<td data-v="0" class="">0</td>
+</tr>
+<tr><td data-v="999">—</td><td class="l">Thomas Burton</td><td class="l">MID</td><td class="l">Richmond</td><td class="l"></td><td data-v="0">—</td>
+<td data-v="439">439</td>
+<td data-v="323">323</td>
+<td data-v="321">321</td>
+<td data-v="321">321</td>
+<td data-v="306">306</td>
+<td data-v="-15" class="d">-15</td>
+</tr>
+</tbody></table></div>
+<script>
+document.querySelectorAll('table.s').forEach(function(T){
+  T.querySelectorAll('thead th').forEach(function(H,i){
+    H.addEventListener('click',function(){
+      var b=T.tBodies[0],rs=[].slice.call(b.rows),asc=H.dataset.asc!=='1';
+      H.dataset.asc=asc?'1':'0';
+      rs.sort(function(x,y){
+        var a=x.cells[i].dataset.v,c=y.cells[i].dataset.v;
+        if(a===undefined)a=x.cells[i].textContent;if(c===undefined)c=y.cells[i].textContent;
+        var na=parseFloat(a),nc=parseFloat(c);
+        if(!isNaN(na)&&!isNaN(nc))return asc?na-nc:nc-na;
+        return asc?String(a).localeCompare(String(c)):String(c).localeCompare(String(a));
+      });
+      rs.forEach(function(r){b.appendChild(r)});
+    });
+  });
+});
+</script>
