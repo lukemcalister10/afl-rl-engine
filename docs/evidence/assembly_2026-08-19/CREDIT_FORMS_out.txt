@@ -1,0 +1,102 @@
+==========================================================================================================================
+THE I1 CREDIT CURVE — GUARDED vs RAW, PRICED SIDE BY SIDE. NOTHING IS ADOPTED.
+==========================================================================================================================
+
+THE TWO READINGS OF THE SAME MEASUREMENT (FOLLOWUP_F1.json). CIs are F1's own.
+  g    GUARDED      RAW cell     F1 90% CI on the raw cell  n        note
+  0    0.00000      0.00000      [+0.000, +0.000]       463      
+  1    0.12869      0.12869      [-0.123, +0.405]       59       
+  2    0.23834      0.47061      [+0.148, +0.877]       64       
+  3    0.23834      0.47061      [-0.167, +0.353]       52       raw cell INVERTS here
+  4    0.23834      0.47061      [-0.203, +0.410]       38       
+  5    0.24550      0.47061      [-0.133, +0.756]       40       
+  6    0.38569      0.57110      [+0.145, +1.086]       26       
+  7    0.38569      0.57110      [-0.106, +0.634]       30       raw cell INVERTS here
+  8    0.45189      0.57110      [+0.082, +0.888]       31       
+  9    0.88785      1.00000      [+0.439, +1.796]       25       raw cell reads 1.03200 — CAPPED at 1.0 (structural)
+  10   0.88785      1.00000      [+0.186, +1.552]       31       raw cell INVERTS here
+  11+  1.00000      1.00000      [+1.000, +1.000]       209      
+
+HOW THE RAW READING WAS MADE MONOTONE, AND WHAT WAS NOT INVENTED.
+  The raw cells INVERT at g = 3, 7 and 10 — a 3-game season would credit LESS than a 2-game one,
+  which is exactly what the guard exists to remove. The raw variant is monotonised by RUNNING
+  MAXIMUM, deliberately NOT by the pool-adjacent-violators guard: PAVA AVERAGES the violating
+  cells and therefore produces numbers that are not any measured cell (the guarded 0.23834 is a
+  pooled value, not an F1 reading). A running maximum carries only MEASURED CELL VALUES forward.
+  THE ONE NON-CELL NUMBER IS THE CAP AT 1.0 at g=9, where the raw cell reads 1.03200. That cap is
+  STRUCTURAL AND PRE-EXISTING — the wired law and the charter both cap a season at one full played
+  season — so it is applied, not invented. Nothing else was chosen.
+
+  READ THE TWO COLUMNS: the raw reading is UNIFORMLY MORE GENEROUS from 2 games up. At 2 games it
+  credits 0.471 against the guarded 0.238; at 5 games 0.471 against 0.246; at 9 games 1.000
+  against 0.888. The guarded curve is the harsher of the two everywhere they differ.
+
+==========================================================================================================================
+THE BOARDS
+==========================================================================================================================
+  L4_SD (the board I1 sits on)           c3f78667    669,985
+  + I1 GUARDED  (V750_L5A)               e1e3d97d    666,458
+  THE CANDIDATE (guarded, full stack)    fbf61d05    665,180
+  THE RAW VARIANT (full stack, I1 raw)   8e6e9972    665,935
+  the raw variant, determinism repeat    8e6e9972    665,935
+  ORDER P identity (every ORDER 41 dial OFF) NO BOARD
+
+  DETERMINISM (raw variant, x2): IDENTICAL — 8e6e9972
+
+  *** BOARD TOTAL DELTA, RAW vs GUARDED: +755 board points ***
+      139 rows differ; 94 up, 45 down under the raw reading.
+
+==========================================================================================================================
+THE I1 MOVERS — TOP TEN BY THE GUARDED CURVE, WITH THE RAW READING BESIDE THEM
+These are CONSEQUENCES, never targets. No named row gates anything in this build.
+==========================================================================================================================
+  player                    age   before   guarded   I1 move  candidate       RAW  raw-cand
+  Xavier Taylor              19     1113       914      -199        914       969       +55
+  Daniel Annable             19     1399      1218      -181       1218      1269       +51
+  Charlie Banfield           19      798       620      -178        620       665       +45
+  Jesse Dattoli              20      617       484      -133        484       507       +23
+  Oliver Francou             20      661       537      -124        537       568       +31
+  Zane Peucker               19      513       404      -109        404       432       +28
+  Cameron Nairn              19      628       528      -100        528       555       +27
+  Jack Dalton                19      558       460       -98        460       485       +25
+  Cody Angove                20      674       582       -92        582       606       +24
+  Jaxon Artemis              20      505       420       -85        420       441       +21
+
+  I1 moved 168 rows in total on the guarded curve.
+
+==========================================================================================================================
+THE MID-SEASON TIMING CENSUS — A CENSUS OF EXPOSURE, NOT A PROJECTION OF ANY SEASON
+==========================================================================================================================
+THE ISSUE, STATED PLAINLY. F1 measured this curve on COMPLETED seasons. The engine applies it to
+the 2026 season while that season is IN PROGRESS, at fE = 0.92. A first-year who has played a few
+games so far is being credited as though a few games were his whole season. If he goes on to play
+more, his credit rises steeply — the curve is at its steepest exactly where these rows sit.
+NOTHING IS PROJECTED BELOW. The census asks only: how many I1-moved rows are exposed to this, and
+how much would their credit move if the same row finished on a higher games count.
+
+  I1-moved rows: 168
+  of those, IN-PROGRESS FIRST-YEARS (games in 2026, none in any earlier season): 41
+
+  player                    age  g 2026  cred now cred @11g   credit still to come
+  Xavier Taylor              19       2    0.2383    1.0000   +0.7617
+  Daniel Annable             19       2    0.2383    1.0000   +0.7617
+  Charlie Banfield           19       3    0.2383    1.0000   +0.7617
+  Oliver Francou             20       4    0.2383    1.0000   +0.7617
+  Zane Peucker               19       2    0.2383    1.0000   +0.7617
+  Cameron Nairn              19       3    0.2383    1.0000   +0.7617
+  Jack Dalton                19       4    0.2383    1.0000   +0.7617
+  Jaxon Artemis              20       4    0.2383    1.0000   +0.7617
+  Harrison Oliver            20       5    0.2455    1.0000   +0.7545
+  Noah Roberts-Thomson       19       3    0.2383    1.0000   +0.7617
+  Noah Mraz                  20       4    0.2383    1.0000   +0.7617
+  Jack Ough                  20       5    0.2455    1.0000   +0.7545
+  Dylan Patterson            19       5    0.2455    1.0000   +0.7545
+  Archie Ludowyke            19       2    0.2383    1.0000   +0.7617
+  Lukas Cooke                23       2    0.2383    1.0000   +0.7617
+
+  the exposed rows by games so far: 1-2: 14 · 3-5: 21 · 6-8: 6
+
+  READ THIS AS THE EXPOSURE IT IS: every one of these rows sits BELOW 11 games today, so
+  every one of them would gain credit — and price — if his season finished higher. The
+  guarded curve makes that gap wider than the raw curve does, because it is the harsher
+  reading at every games count where the two differ.

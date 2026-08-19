@@ -14,13 +14,6 @@
    "prev": "L1_REC",
    "up": 362
   },
-  "V750_CAND": {
-   "dn": 124,
-   "marg": -12232,
-   "moved": 124,
-   "prev": "V750_L5C",
-   "up": 0
-  },
   "V750_L2C15": {
    "dn": 258,
    "marg": -1023,
@@ -62,37 +55,42 @@
    "moved": 2,
    "prev": "V750_L5B",
    "up": 1
+  },
+  "V751_CAND": {
+   "dn": 12,
+   "marg": -1083,
+   "moved": 12,
+   "prev": "V750_L5C",
+   "up": 0
   }
  },
  "md5": {
   "IDENT_K": "f3101883a60b0a7b8cb50f9d8a5abfff",
-  "IDENT_P": "374d4e442665771801c5f1edd2a7e0e2",
   "L0_R": "7f88f5096ff5b781da4614b7142d332c",
   "L1_REC": "b692d7099a8d39f59843e41b51e0cc39",
   "L2_COMP": "c3cb66862a54cba17b2efc7252d87fd9",
-  "V750_CAND": "ca73176e7668f92b085896b9539c3cf7",
   "V750_L2C15": "3dca39b04fad63ffe1a8db478751a575",
   "V750_L3MAT": "62507bdf320dce4f8c8ea832eae78560",
   "V750_L4SD": "c3f7866784bf3b072666da3f1080d654",
   "V750_L5A": "e1e3d97dabdea5c815fd271688cf596a",
   "V750_L5B": "b74a2a0e57182d096a139c26b7a6677b",
   "V750_L5C": "1270991cdde819b22ac7bf5f42908f5a",
+  "V751_CAND": "fbf61d052d6cd77e73f9338e17113eb6",
   "live": "88ce647f531030d8d2e094188b258191"
  },
  "n_tracked": 801,
  "totals": {
   "IDENT_K": 673097,
-  "IDENT_P": 666434,
   "L0_R": 664950,
   "L1_REC": 664770,
   "L2_COMP": 670562,
-  "V750_CAND": 654031,
   "V750_L2C15": 669539,
   "V750_L3MAT": 669018,
   "V750_L4SD": 669985,
   "V750_L5A": 666458,
   "V750_L5B": 666275,
   "V750_L5C": 666263,
+  "V751_CAND": 665180,
   "live": 752429
  }
 }

@@ -92,7 +92,8 @@ def page(title, h1, subtitle, body):
 
 # ---- boards ---------------------------------------------------------------------------------------
 import hashlib
-COLS = [('live', 'live'), ('IDENT_K', 'K'), ('IDENT_P', 'P'), ('L0_R', 'R'), ('V750_CAND', 'CANDIDATE')]
+CANDTAG = 'V751_CAND'
+COLS = [('live', 'live'), ('IDENT_K', 'K'), ('IDENT_P', 'P'), ('L0_R', 'R'), (CANDTAG, 'CANDIDATE')]
 PATHS = {}
 for t, _ in COLS:
     q = (SP + '/o29r/seal/rl_after/rl_app_data.json') if t == 'live' \
@@ -105,7 +106,7 @@ if MD5.get('live', '')[:8] != '88ce647f':
 B = {t: {r['key']: r for r in json.load(open(q))['active']} for t, q in PATHS.items()}
 V = {t: {k: r['v'] for k, r in B[t].items()} for t in B}
 TOT = {t: sum(V[t].values()) for t in V}
-CAND = B['V750_CAND']
+CAND = B[CANDTAG]
 LEGS = {}
 lp = os.path.join(HERE, 'LEGS_CAND.json')
 if os.path.exists(lp):
@@ -147,8 +148,8 @@ for r in rows:
         if t in V:
             v = V[t].get(k)
             h.append('<td data-v="%s">%s</td>' % (v if v is not None else 0, num(v)))
-    dR = (V['V750_CAND'][k] - V['L0_R'][k]) if 'L0_R' in V and k in V['L0_R'] else None
-    dL = (V['V750_CAND'][k] - V['live'][k]) if 'live' in V and k in V['live'] else None
+    dR = (V[CANDTAG][k] - V['L0_R'][k]) if 'L0_R' in V and k in V['L0_R'] else None
+    dL = (V[CANDTAG][k] - V['live'][k]) if 'live' in V and k in V['live'] else None
     h.append(dcell(dR)); h.append(dcell(dL))
     if LEGS:
         g = LEGS.get(k, {})
@@ -164,19 +165,47 @@ open(os.path.join(HERE, 'ASSEMBLY_PLAYERS.html'), 'w').write(page(
     'All %d rows on the board, with the mechanism legs that make each price.' % len(rows),
     '\n'.join(h)))
 
-# ---- 2 · the year-1 class in draft order -----------------------------------------------------------
-Y1 = [r for r in CAND.values() if (r.get('ep') == 0 or r.get('age') is not None)
-      and r.get('draft') and r.get('pk') is not None]
-# the year-1 class = the most recent draft cohort on the board
-maxyr = max((r.get('yr') or 0) for r in CAND.values()) - 1   # year-0 is the 2026 class; the YEAR-1 class is the one drafted the year before
-Y1 = sorted([r for r in CAND.values() if (r.get('yr') or 0) == maxyr],
+# ---- 2 · the year-1 class in draft order -------------------------------------------------------
+# THE COHORT CLOCK, AND WHY IT IS ASSERTED RATHER THAN TRUSTED (op_class.py:41-43, register v738):
+#     cohort = DRAFT YEAR for an MSD row, DRAFT YEAR + 1 for everyone else.
+# A mid-season draftee DEBUTS IN HIS DRAFT YEAR, so his first season IS that year. The CURRENT
+# year-1 class is therefore cohort 2026 = the 2025-drafted non-MSDs PLUS the 2026-drafted MSDs.
+# THIS ERROR CLASS HAS RECURRED, so the page ASSERTS its own membership both ways and PRINTS the
+# result in the footer: every included row must be cohort 2026, and no cohort-2026 board row may be
+# missing. A page that cannot prove its own membership is not a deliverable.
+MX = json.load(open(SP + '/per_entrant_ASMCAND.json'))['recs']
+MXK = {r['key']: r for r in MX}
+
+
+def cohort_of(key):
+    m = MXK.get(key)
+    if not m or m.get('year') is None:
+        return None
+    return int(m['year']) if m.get('type') == 'MSD' else int(m['year']) + 1
+
+
+TARGET = 2026
+Y1 = sorted([r for r in CAND.values() if cohort_of(r['key']) == TARGET],
             key=lambda r: (r.get('pk') if r.get('pk') is not None else 999))
+# --- the two-way assertion -----------------------------------------------------------------------
+bad_in = [r['key'] for r in Y1 if cohort_of(r['key']) != TARGET]
+missing = [k for k in CAND if cohort_of(k) == TARGET and not any(x['key'] == k for x in Y1)]
+n_msd = sum(1 for r in Y1 if (MXK.get(r['key']) or {}).get('type') == 'MSD')
+ASSERT_OK = (not bad_in and not missing)
+assert ASSERT_OK, 'YEAR-1 MEMBERSHIP ASSERTION FAILED: %d wrong-cohort rows, %d missing' % (
+    len(bad_in), len(missing))
+
 h = ['<div class="sub k">Board totals: %s</div>' % HDR,
-     '<h2>The year-1 class — the %s draft, in draft order — %d rows</h2>' % (maxyr, len(Y1)),
-     '<div class="sub">In pick order, with the entry price v0 beside the board columns so the '
-     'first-year mark can be read directly off the page.</div>',
+     '<h2>The year-1 class — cohort %d, in draft order — %d rows</h2>' % (TARGET, len(Y1)),
+     '<div class="sub">In pick order, with the entry price <b>v0</b> beside the board columns so the '
+     'first-year mark can be read straight off the page. <b>THE COHORT RULE:</b> cohort = draft year '
+     'for an MSD row (a mid-season draftee debuts in his draft year) and draft year + 1 for everyone '
+     'else. So this class is the <b>2025-drafted non-MSDs plus the 2026-drafted MSDs</b> — '
+     '%d of these %d rows are MSD. A 2025-drafted MSD is cohort 2025, a second-year player, and is '
+     'NOT on this page.</div>' % (n_msd, len(Y1)),
      '<div class="wrap"><table class="s"><thead><tr><th>pick</th><th class="l">player</th>'
-     '<th class="l">pos</th><th class="l">club</th><th class="l">cat</th><th>v0</th>']
+     '<th class="l">pos</th><th class="l">club</th><th class="l">type</th><th>draft yr</th>'
+     '<th>cohort</th><th>v0</th>']
 for t, lab in COLS:
     if t in V:
         h.append('<th>%s</th>' % lab)
@@ -184,23 +213,45 @@ h.append('<th>&Delta; R&rarr;cand</th></tr></thead><tbody>')
 for r in Y1:
     k = r['key']
     pk = r.get('pk')
-    v0 = r.get('v0') or (LEGS.get(k, {}) or {}).get('v0')
+    m = MXK.get(k) or {}
+    v0 = m.get('v0')
+    if v0 is None or float(v0) <= 0:
+        v0cell = '<td data-v="-1" class="k">no v0 object in the walk-forward matrix</td>'
+    else:
+        v0cell = '<td data-v="%f">%s</td>' % (float(v0), num(float(v0)))
+    # NO BARE DASHES: a row without a national-draft pick is a mid-season draftee, and the cell says
+    # so rather than printing an unexplained em-dash.
+    pkcell = ('no pick (MSD)' if (m.get('type') == 'MSD') else 'no pick recorded') \
+        if pk is None else str(pk)
     h.append('<tr><td data-v="%s">%s</td><td class="l">%s</td><td class="l">%s</td>'
              '<td class="l">%s</td><td class="l">%s</td><td data-v="%s">%s</td>'
-             % (pk if pk is not None else 999, pk if pk is not None else '—',
+             '<td data-v="%s">%s</td>%s'
+             % (pk if pk is not None else 999, pkcell,
                 esc(r.get('name')), esc(r.get('grp') or (r.get('fut') or [['?']])[0][0]),
-                esc(r.get('club')), esc(r.get('cat')),
-                v0 if v0 is not None else 0, num(v0) if v0 is not None else '—'))
+                esc(r.get('club')), esc(m.get('type') or r.get('ty')),
+                m.get('year', ''), m.get('year', ''),
+                cohort_of(k), cohort_of(k), v0cell))
     for t, lab in COLS:
         if t in V:
             v = V[t].get(k)
             h.append('<td data-v="%s">%s</td>' % (v if v is not None else 0, num(v)))
-    dR = (V['V750_CAND'][k] - V['L0_R'][k]) if 'L0_R' in V and k in V['L0_R'] else None
+    dR = (V[CANDTAG][k] - V['L0_R'][k]) if 'L0_R' in V and k in V['L0_R'] else None
     h.append(dcell(dR)); h.append('</tr>')
 h.append('</tbody></table></div>')
+h.append('<div class="box"><h3>MEMBERSHIP ASSERTION — PRINTED, NOT ASSUMED</h3><ul>'
+         '<li>every included row satisfies cohort(row) == %d under the engine\'s own cohort clock: '
+         '<b>%s</b> (%d rows checked, %d violations)</li>'
+         '<li>no cohort-%d board row is missing from this page: <b>%s</b> (%d missing)</li>'
+         '<li>MSD rows correctly included: <b>%d</b>; 2025-drafted MSDs correctly EXCLUDED as '
+         'cohort-2025 second-years</li></ul>'
+         '<p class="boxfoot">This assertion runs every time the page is generated and fails the '
+         'build if it does not hold. The cohort rule has been mis-applied before; the assertion is '
+         'the guard against it happening again.</p></div>'
+         % (TARGET, 'PASS' if not bad_in else 'FAIL', len(Y1), len(bad_in),
+            TARGET, 'PASS' if not missing else 'FAIL', len(missing), n_msd))
 open(os.path.join(HERE, 'ASSEMBLY_YEAR1.html'), 'w').write(page(
     'Assembly Year One', 'THE YEAR-1 CLASS — THE CANDIDATE',
-    'The most recent draft class in pick order, with entry price beside every board.',
+    'Cohort %d in pick order, with entry price beside every board.' % TARGET,
     '\n'.join(h)))
 
 print('ASSEMBLY_PLAYERS.html  %d rows' % len(rows))

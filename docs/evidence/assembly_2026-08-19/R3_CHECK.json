@@ -1,0 +1,260 @@
+{
+ "md5": {
+  "pre": "1270991c",
+  "old": "ca73176e",
+  "new": "fbf61d05"
+ },
+ "totals": {
+  "pre": 666263,
+  "old": 654031,
+  "new": 665180
+ },
+ "give_back": 11149,
+ "n_playing_charged_new": 0,
+ "day0_gameless": 89,
+ "day0_moved": 0,
+ "shield": [
+  {
+   "key": "will-brodie",
+   "year": 2026,
+   "games": 1.0,
+   "value": 560
+  },
+  {
+   "key": "taylor-goad",
+   "year": 2026,
+   "games": 2.0,
+   "value": 291
+  },
+  {
+   "key": "oscar-ryan",
+   "year": 2026,
+   "games": 2.0,
+   "value": 237
+  },
+  {
+   "key": "charlie-edwards",
+   "year": 2026,
+   "games": 2.0,
+   "value": 184
+  },
+  {
+   "key": "lachlan-smith",
+   "year": 2026,
+   "games": 2.0,
+   "value": 172
+  },
+  {
+   "key": "tom-doedee",
+   "year": 2025,
+   "games": 1.0,
+   "value": 148
+  },
+  {
+   "key": "will-green",
+   "year": 2026,
+   "games": 1.0,
+   "value": 89
+  },
+  {
+   "key": "isaac-keeler",
+   "year": 2026,
+   "games": 2.0,
+   "value": 77
+  },
+  {
+   "key": "vigo-visentini",
+   "year": 2026,
+   "games": 1.0,
+   "value": 34
+  },
+  {
+   "key": "shadeau-brain",
+   "year": 2026,
+   "games": 2.0,
+   "value": 31
+  },
+  {
+   "key": "jed-adams",
+   "year": 2025,
+   "games": 1.0,
+   "value": 31
+  },
+  {
+   "key": "george-stevens",
+   "year": 2026,
+   "games": 2.0,
+   "value": 12
+  },
+  {
+   "key": "jeremy-sharp",
+   "year": 2026,
+   "games": 2.0,
+   "value": 9
+  },
+  {
+   "key": "matt-hill",
+   "year": 2026,
+   "games": 2.0,
+   "value": 5
+  },
+  {
+   "key": "ryan-gardner",
+   "year": 2026,
+   "games": 1.0,
+   "value": 3
+  },
+  {
+   "key": "zane-peucker",
+   "year": 2026,
+   "games": 2.0,
+   "value": 0
+  },
+  {
+   "key": "zac-fisher",
+   "year": 2026,
+   "games": 1.0,
+   "value": 0
+  },
+  {
+   "key": "xavier-taylor",
+   "year": 2026,
+   "games": 2.0,
+   "value": 0
+  },
+  {
+   "key": "will-mclachlan",
+   "year": 2026,
+   "games": 1.0,
+   "value": 0
+  },
+  {
+   "key": "tom-gross",
+   "year": 2026,
+   "games": 2.0,
+   "value": 0
+  },
+  {
+   "key": "tew-jiath",
+   "year": 2024,
+   "games": 1.0,
+   "value": 0
+  },
+  {
+   "key": "sam-marshall",
+   "year": 2026,
+   "games": 2.0,
+   "value": 0
+  },
+  {
+   "key": "rhys-unwin",
+   "year": 2026,
+   "games": 2.0,
+   "value": 0
+  },
+  {
+   "key": "rhys-stanley",
+   "year": 2026,
+   "games": 1.0,
+   "value": 0
+  },
+  {
+   "key": "reilly-o-brien",
+   "year": 2026,
+   "games": 2.0,
+   "value": 0
+  },
+  {
+   "key": "peter-ladhams",
+   "year": 2026,
+   "games": 2.0,
+   "value": 0
+  },
+  {
+   "key": "ollie-lord",
+   "year": 2026,
+   "games": 1.0,
+   "value": 0
+  },
+  {
+   "key": "noah-howes",
+   "year": 2026,
+   "games": 1.0,
+   "value": 0
+  },
+  {
+   "key": "mitchell-knevitt",
+   "year": 2026,
+   "games": 2.0,
+   "value": 0
+  },
+  {
+   "key": "mitchell-hinge",
+   "year": 2026,
+   "games": 1.0,
+   "value": 0
+  },
+  {
+   "key": "mitch-podhajski",
+   "year": 2026,
+   "games": 2.0,
+   "value": 0
+  },
+  {
+   "key": "max-ramsden",
+   "year": 2026,
+   "games": 2.0,
+   "value": 0
+  },
+  {
+   "key": "luke-cleary",
+   "year": 2026,
+   "games": 2.0,
+   "value": 0
+  },
+  {
+   "key": "luke-beecken",
+   "year": 2025,
+   "games": 1.0,
+   "value": 0
+  },
+  {
+   "key": "lukas-cooke",
+   "year": 2026,
+   "games": 2.0,
+   "value": 0
+  },
+  {
+   "key": "lucca-grego",
+   "year": 2025,
+   "games": 1.0,
+   "value": 0
+  },
+  {
+   "key": "lewis-hayes",
+   "year": 2025,
+   "games": 1.0,
+   "value": 0
+  },
+  {
+   "key": "laitham-vandermeer",
+   "year": 2026,
+   "games": 2.0,
+   "value": 0
+  },
+  {
+   "key": "lachlan-fogarty",
+   "year": 2026,
+   "games": 2.0,
+   "value": 0
+  },
+  {
+   "key": "lachie-sullivan",
+   "year": 2026,
+   "games": 2.0,
+   "value": 0
+  }
+ ],
+ "shield_max": 560,
+ "shield_n": 63
+}

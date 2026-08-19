@@ -1,0 +1,82 @@
+==========================================================================================================================
+THE R3 FIX — BUILT vs EXPECTED, AND THE EXPLOIT-SAFETY VERIFICATION
+==========================================================================================================================
+  before R3 at all      1270991c  666,263
+  R3 CUMULATIVE (old)   ca73176e  654,031
+  R3 CURRENT RUN (new)  fbf61d05  665,180
+
+  R3 marginal, OLD rule: -12,232 on 124 rows
+  R3 marginal, NEW rule: -1,083 on 12 rows
+  THE FIX GIVES BACK +11,149 board points.
+
+==========================================================================================================================
+1 · BUILT vs EXPECTED — the two halves of the expectation, measured by name
+==========================================================================================================================
+EXPECTED: returned players largely RESTORED; currently-absent players STILL STRIPPED.
+
+  THE RESTORED — largest gains from the fix (these are the returned players):
+    player                    g2026   pre-R3    old R3    new R3   restored
+    Mitchell Edwards             16     1326       317      1326      +1009
+    Nick Madden                   7     1064       255      1064       +809
+    Noah Mraz                     4     2029      1384      2029       +645
+    Will Brodie                   1      767       207       767       +560
+    Jedd Busslinger               8      801       403       801       +398
+    Max Heath                     7      429        88       429       +341
+    Dante Visentini              13      807       513       807       +294
+    Taylor Goad                   2      728       437       728       +291
+    Oscar Ryan                    2      419       182       419       +237
+    William McCabe                4      454       229       454       +225
+
+  STILL STRIPPED under the new rule — these are the rows that are genuinely ABSENT NOW:
+    player                    g2026   pre-R3    new R3   stripped   last played
+    Toby Conway                   0     1066       460       -606   2024
+    Harry Barnett                 0      674       422       -252   2024
+    Hugh Davies                   0      244       187        -57   2024
+    Jack Payne                    0      100        64        -36   2025
+    Tew Jiath                     0      132        99        -33   2024
+    Caleb Graham                  0       92        66        -26   2022
+    Finlay Macrae                 0       75        51        -24   2024
+    Noah Long                     0       50        35        -15   2025
+    Jakob Ryan                    0      163       149        -14   2023
+    James Blanck                  0       25        15        -10   2023
+
+  ROWS STILL CHARGED BY R3 THAT ARE PLAYING THIS SEASON: 0
+  (under the OLD rule this was 106 — the defect the fix removes; it must now be ZERO by construction)
+
+==========================================================================================================================
+2 · DAY-0 UNDER THE NEW RULE — VERIFIED, NOT ASSUMED
+==========================================================================================================================
+  truly gameless board rows: 89
+  of those, moved by the R3 rule change: 0   <-- must be 0
+  WHY: a gameless row has no played season to break the run, so his run still walks back to his
+  draft year exactly as it did under the old rule. The two definitions AGREE on him by
+  construction — but that is checked above rather than argued.
+
+==========================================================================================================================
+3 · EXPLOIT-SAFETY — VERIFIED, NOT ASSERTED
+==========================================================================================================================
+A token-games season now BREAKS the run. Could a row bank a cheap season to shield a large
+production leg? The shield value is MEASURED: the two boards differ only in this definition, so
+the per-row gap between them IS what the break is worth to that row.
+
+  rows whose current run is broken by a season of <= 2 games: 63
+  player                   break yr   games     old R3     new R3   shield value
+  Will Brodie                  2026       1        207        767         +560
+  Taylor Goad                  2026       2        437        728         +291
+  Oscar Ryan                   2026       2        182        419         +237
+  Charlie Edwards              2026       2        284        468         +184
+  Lachlan Smith                2026       2        148        320         +172
+  Tom Doedee                   2025       1         63        211         +148
+  Will Green                   2026       1        619        708          +89
+  Isaac Keeler                 2026       2         80        157          +77
+  Vigo Visentini               2026       1        261        295          +34
+  Shadeau Brain                2026       2         71        102          +31
+  Jed Adams                    2025       1        190        221          +31
+  George Stevens               2026       2        202        214          +12
+
+  *** LARGEST SHIELD VALUE AMONG RUN-BREAKING <=2-GAME SEASONS: +560 board points ***
+      total across all 63 such rows: +1,883 board points
+
+  *** THIS IS MATERIALLY LARGE (>= 400 points on a single row). THE EXPLOIT-SAFETY ARGUMENT
+      DOES NOT HOLD ON THIS BOARD AND THE FIX SHOULD NOT BE WIRED WITHOUT A GUARD. ***
+      Reported rather than waved through — the instruction was to verify, not assume.

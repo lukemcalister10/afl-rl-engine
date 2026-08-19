@@ -563,10 +563,40 @@ if _O40_CAPPCT is not None and _O40_CAPPCT not in (15,20):
 # All five unset => not one byte of the ORDER 41 blocks executes and ORDER P's 374d4e44 reproduces.
 _O41_SDOFF_RAW=os.environ.get('RL_O41_SDOFF','')
 _O41_CREDIT=os.environ.get('RL_O41_CREDIT','0')!='0'
+# RL_O41_CREDITFORM — WHICH F1 READING THE CREDIT CURVE USES. 'guarded' (default) is F1's guarded
+# isotonic curve; 'raw' is F1's RAW per-games cells. F1 PUBLISHED BOTH, their CIs overlap heavily,
+# and the choice between them was a SEAT CALL that was never owner-ruled — so it is a DIAL, not a
+# decision. Unset or 'guarded' => byte-identical to the candidate ca73176e.
+_O41_CREDITFORM=(os.environ.get('RL_O41_CREDITFORM','guarded').strip().lower() or 'guarded')
+if _O41_CREDITFORM not in ('guarded','raw'):
+    raise SystemExit('ORDER 41 HALT: RL_O41_CREDITFORM=%r. F1 published exactly two readings of this '
+                     'curve — "guarded" (the isotonic guard) and "raw" (the per-games cells). Nothing '
+                     'else is measured and nothing else is priced.'%_O41_CREDITFORM)
+if _O41_CREDITFORM=='raw' and not _O41_CREDIT:
+    raise SystemExit('ORDER 41 HALT: RL_O41_CREDITFORM=raw but RL_O41_CREDIT is unset. The form '
+                     'selects between two readings of a curve that is not switched on.')
 _O41_RESET=os.environ.get('RL_O41_RESET','0')!='0'
 _O41_INJ=os.environ.get('RL_O41_INJ','0')!='0'
 _O41_R3=os.environ.get('RL_O41_R3','0')!='0'
-_O41_ANY=bool(_O41_SDOFF_RAW!='' or _O41_CREDIT or _O41_RESET or _O41_INJ or _O41_R3)
+# RL_O41_RAMP — THE IN-SEASON RAMP FOR ABSENCE DEPTH. Owner's ruling: the mid-season effect must not
+# be linear in rounds — "less at the start and more at the end". THE SHAPE IS NOT INVENTED AND IT IS
+# NOT FITTED: it is the engine's OWN, already active and already owner-ruled — the D12 concave
+# proration tau' = f**1.5 ("Luke OPTION A"), which the engine uses at two existing sites (the sitout_ev
+# depth clock in _a_blend and the D12 penalty clock) for exactly this question, on exactly this axis.
+# WHERE IT IS APPLIED, AND WHERE IT IS REFUSED: the engine's own comment at the D12 site states that
+# f**1.5 is a DEPTH convention and is NOT to be reused as a PARTICIPATION weight, because "f**1.5
+# would say a player who has played no games is 88% participating, which is the defect inverted".
+# That reasoning is correct and it decides the scope here: the ramp goes on the two DEPTH quantities
+# (the sitter-fade clock's in-progress accrual and the R3 current-run fraction) and is DELIBERATELY
+# NOT applied to the I1 credit, which is a participation weight.
+_O41_RAMP=os.environ.get('RL_O41_RAMP','0')!='0'
+_O41_RAMP_P=1.5                                  # D12's own exponent. Not a new constant.
+def _o41_fe(Y,p=None):
+    """The in-progress season's contribution to an ABSENCE DEPTH clock. Dial off => the linear fE the
+    engine has always used, byte for byte."""
+    _f=float(_fEy(Y,p) or 0.0)
+    return (_f**_O41_RAMP_P) if (_O41_RAMP and 0.0<_f<1.0) else _f
+_O41_ANY=bool(_O41_SDOFF_RAW!='' or _O41_CREDIT or _O41_RESET or _O41_INJ or _O41_R3 or _O41_RAMP)
 if _O41_ANY and not (_O38A or _O38B1 or _O38B2):
     raise SystemExit('ORDER 41 HALT: an RL_O41_* dial is set but no RL_O38* dial is live. The assembly '
                      'sits on the ORDER Q repairs; setting one without an RL_O38 dial would price a '
@@ -3842,15 +3872,35 @@ if _O30B_PREVIEW:
                 (4,0.23834489196711883),(5,0.2455042373957035),(6,0.38568558243890977),
                 (7,0.38568558243890977),(8,0.45188866847720316),(9,0.8878514765964253),
                 (10,0.8878514765964253),(11,1.0))
+    # I1 ALTERNATIVE READING (RL_O41_CREDITFORM=raw) — F1's RAW PER-GAMES CELLS, FOLLOWUP_F1.json::curve.
+    # F1 published BOTH readings and their intervals overlap heavily; the guarded/raw choice was a seat
+    # call, never owner-ruled, so both are priced and the owner picks on built numbers.
+    # THE RAW CELLS AS MEASURED (chat):
+    #   0 0.0 · 1 0.12869 · 2 0.47061 · 3 0.07238 · 4 0.07428 · 5 0.24550 · 6 0.57110
+    #   7 0.22499 · 8 0.45189 · 9 1.03200 · 10 0.77161 · 11+ 1.0
+    # THEY INVERT AT g = 3, 7 AND 10 (a 3-game season would credit LESS than a 2-game one, which is
+    # what the guard exists to remove). MONOTONISED BY RUNNING MAXIMUM — deliberately NOT by the
+    # pool-adjacent-violators guard, because PAVA AVERAGES the violating cells and so produces numbers
+    # that are not any measured cell (0.23834 is the guarded curve's own pooled value, not an F1
+    # reading). THE RUNNING MAXIMUM CARRIES ONLY MEASURED CELL VALUES FORWARD AND INVENTS NOTHING.
+    # The one non-cell number is the CAP AT 1.0 at g=9, where the raw cell reads 1.03200: the cap is
+    # STRUCTURAL and pre-existing — the wired law and the charter both cap a season's credit at one
+    # full played season — so it is applied, not invented, and it is disclosed here.
+    O41_CREDIT_RAW=((0,0.0),(1,0.1286875208353465),(2,0.4706058223361502),(3,0.4706058223361502),
+                    (4,0.4706058223361502),(5,0.4706058223361502),(6,0.5711028628770571),
+                    (7,0.5711028628770571),(8,0.5711028628770571),(9,1.0),(10,1.0),(11,1.0))
     def o41_credit(g):
         """The per-season played credit at g games. Linear between the measured integer knots, held at
-        1.0 from 11 games, 0 at 0 games. RL_O41_CREDIT off => the wired min(1, g/2) step, byte for byte."""
+        1.0 from 11 games, 0 at 0 games. RL_O41_CREDIT off => the wired min(1, g/2) step, byte for byte.
+        RL_O41_CREDITFORM selects which F1 reading the knots come from; 'guarded' is the default and
+        reproduces the candidate exactly."""
         _g=float(g)
         if not _O41_CREDIT: return min(1.0,_g/2.0)
         if _g<=0.0: return 0.0
         if _g>=11.0: return 1.0
+        _tab=(O41_CREDIT_RAW if _O41_CREDITFORM=='raw' else O41_CREDIT)
         _n=int(_math.floor(_g)); _f=_g-_n
-        _c0=O41_CREDIT[_n][1]; _c1=O41_CREDIT[min(_n+1,11)][1]
+        _c0=_tab[_n][1]; _c1=_tab[min(_n+1,11)][1]
         return _c0 if _f<=0.0 else (1.0-_f)*_c0+_f*_c1
     # I2 — THE GRADED RESET. FOLLOWUP_F2.json::partA.games — the reversal curve on 134 returners
     # scored against 760 kept-sitting and 1,704 never-sat rows. `r` is how much of the way back to a
@@ -3986,7 +4036,9 @@ if _O30B_PREVIEW:
                 if _x['year']<=Y and _x.get('games') and o32_delivered(p,Y,_x):
                     if _yd is None or _x['year']>_yd: _yd=_x['year']; _xd=_x
             if _yd is not None:
-                _clk=max(0.0,float(Y-_yd-1)+(_fEy(Y,p) if Y>_yd else 0.0))
+                # ORDER 41 (RL_O41_RAMP): the in-progress season enters this DEPTH clock on the
+                # engine's own D12 concave proration f**1.5 instead of linearly. Dial off => _fEy.
+                _clk=max(0.0,float(Y-_yd-1)+(_o41_fe(Y,p) if Y>_yd else 0.0))
                 # ORDER 41 (RL_O41_INJ) — THE INJURY STREAM, LIVE BOARD ONLY, DELIVERED ROWS ONLY.
                 # A logged-injured absence PAUSES the sitting clock: the live season's absence accrues
                 # NOTHING. The annotation is a 2026 log and carries no statement about earlier seasons,
@@ -4719,26 +4771,45 @@ if _O30B_PREVIEW:
         MEASURED, NOT REASONED: the first candidate built on o31_cu faded the production leg of a ruck
         with 187 career games who has played EVERY season since 2015 and has no unplayed season at
         all. The absence collector must read absence, so it counts absence.
-        Injured-logged live absence is NOT counted — that is the two-channel law."""
-        _yd=None
-        for _x in (p.get('scoring') or []):
-            if _x['year']<=Y and _x.get('games') and o32_delivered(p,Y,_x):
-                _yd=_x['year'] if _yd is None else max(_yd,_x['year'])
+        Injured-logged live absence is NOT counted — that is the two-channel law.
+
+        register v751 — THE RUN IS *CURRENT AND CONSECUTIVE*, NOT CUMULATIVE-SINCE-DELIVERY.
+        THE DEFECT THIS REPLACES: the first version counted EVERY unplayed season since the last
+        DELIVERED one, and charged that total against TODAY'S production leg. Because "delivered"
+        needs games >= 10*f AND an average over the gate bar, a player can be playing every week and
+        still never deliver — so old gaps kept accruing while he was on the field. Measured on the
+        built board: a ruck playing 16 games THIS SEASON was charged depth 3 for 2024+2025 and lost
+        920 board points, and a row with 7 games this season (under the prorated 9.2-game threshold)
+        lost 809 — while a genuinely absent row lost only 606, because he had less production left to
+        strip. THE COLLECTOR WAS LANDING HARDEST ON THE PLAYERS WHO HAD COME BACK, which is backwards
+        against the owner's ruling: his words are present-tense, "his production leg should fade with
+        two seasons OUT". It was also out of domain — F3 measured the cost on CURRENTLY-ABSENT rows,
+        and F2 separately measured that returners recover substantially.
+        THE RULE NOW: walk BACK from Y. ANY season with games > 0 BREAKS THE RUN. A row playing this
+        season has a run of zero and pays nothing, whatever his history. Nothing else about the R3
+        sizing changes."""
         _pl=set()
         for _x in (p.get('scoring') or []):
             if _x.get('games') and float(_x['games'] or 0.0)>0.0: _pl.add(int(_x['year']))
-        _st=(int(_yd) if _yd is not None else (int(p['year']) if p.get('year') else None))
-        if _st is None: return 1.0
+        _y=int(Y)
+        # A row cannot be absent before he was drafted: the walk stops at his draft year.
+        _floor=(int(p['year']) if p.get('year') else None)
+        # HE IS PLAYING NOW -> the current run is zero -> depth 1 -> no take. This one line is the fix.
+        if _y in _pl: return 1.0
         _n=0.0
-        for _yy in range(_st+1,int(Y)+1):
-            if _yy in _pl: continue
-            if _yy==int(Y):
-                # the live, in-progress season counts only by the fraction elapsed, and not at all
-                # for a row the owner has logged injured.
-                if _O41_INJ and o41_injured(p): continue
-                _n+=float(_fEy(Y,p) or 0.0)
-            else:
-                _n+=1.0
+        # the live, in-progress season counts only by the fraction elapsed, and not at all for a row
+        # the owner has logged injured. An injured live season does NOT break the run either — injury
+        # does not erase an earlier unexplained absence, it just is not itself charged.
+        if not (_O41_INJ and o41_injured(p)):
+            # ORDER 41 (RL_O41_RAMP): the same D12 concave proration, same reason — this is the
+            # DEPTH of the current absence run, not a participation weight.
+            _n+=float(_o41_fe(Y,p) or 0.0)
+        _yy=_y-1
+        while _floor is None or _yy>_floor:
+            if _yy in _pl: break                       # a played season BREAKS the run
+            _n+=1.0
+            _yy-=1
+            if _floor is None and _y-_yy>40: break     # structural guard on a missing draft year
         return 1.0+_n
     def o41_r3_take(p,Y,g,e,ped):
         """Board points to remove from the production leg so the TOTAL absence collection lands at
