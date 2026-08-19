@@ -92,7 +92,7 @@ def page(title, h1, subtitle, body):
 
 # ---- boards ---------------------------------------------------------------------------------------
 import hashlib
-COLS = [('live', 'live'), ('IDENT_K', 'K'), ('IDENT_P', 'P'), ('L0_R', 'R'), ('CAND', 'CANDIDATE')]
+COLS = [('live', 'live'), ('IDENT_K', 'K'), ('IDENT_P', 'P'), ('L0_R', 'R'), ('V750_CAND', 'CANDIDATE')]
 PATHS = {}
 for t, _ in COLS:
     q = (SP + '/o29r/seal/rl_after/rl_app_data.json') if t == 'live' \
@@ -105,7 +105,7 @@ if MD5.get('live', '')[:8] != '88ce647f':
 B = {t: {r['key']: r for r in json.load(open(q))['active']} for t, q in PATHS.items()}
 V = {t: {k: r['v'] for k, r in B[t].items()} for t in B}
 TOT = {t: sum(V[t].values()) for t in V}
-CAND = B['CAND']
+CAND = B['V750_CAND']
 LEGS = {}
 lp = os.path.join(HERE, 'LEGS_CAND.json')
 if os.path.exists(lp):
@@ -147,8 +147,8 @@ for r in rows:
         if t in V:
             v = V[t].get(k)
             h.append('<td data-v="%s">%s</td>' % (v if v is not None else 0, num(v)))
-    dR = (V['CAND'][k] - V['L0_R'][k]) if 'L0_R' in V and k in V['L0_R'] else None
-    dL = (V['CAND'][k] - V['live'][k]) if 'live' in V and k in V['live'] else None
+    dR = (V['V750_CAND'][k] - V['L0_R'][k]) if 'L0_R' in V and k in V['L0_R'] else None
+    dL = (V['V750_CAND'][k] - V['live'][k]) if 'live' in V and k in V['live'] else None
     h.append(dcell(dR)); h.append(dcell(dL))
     if LEGS:
         g = LEGS.get(k, {})
@@ -195,7 +195,7 @@ for r in Y1:
         if t in V:
             v = V[t].get(k)
             h.append('<td data-v="%s">%s</td>' % (v if v is not None else 0, num(v)))
-    dR = (V['CAND'][k] - V['L0_R'][k]) if 'L0_R' in V and k in V['L0_R'] else None
+    dR = (V['V750_CAND'][k] - V['L0_R'][k]) if 'L0_R' in V and k in V['L0_R'] else None
     h.append(dcell(dR)); h.append('</tr>')
 h.append('</tbody></table></div>')
 open(os.path.join(HERE, 'ASSEMBLY_YEAR1.html'), 'w').write(page(

@@ -20,16 +20,17 @@ SP = '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f
 ASM = SP + '/asm'
 
 COLS = [('live', 'live', '88ce647f'), ('IDENT_K', 'K', 'f3101883'),
-        ('IDENT_P', 'P', '374d4e44'), ('L0_R', 'R', '7f88f509'), ('CAND', 'CANDIDATE', None)]
+        ('IDENT_P', 'P', '374d4e44'), ('L0_R', 'R', '7f88f509'), ('V750_CAND', 'CANDIDATE', None)]
 STACK = [('L0_R', 'R — the reference (A + B1 + p20 clip)'),
          ('L1_REC', '+ recency w = 0.47'),
-         ('L2_COMP', '+ the compressed cap p20 and the slope 0.105 (replacing the clip)'),
-         ('L3_MAT', '+ the mature refit'),
-         ('L4_SD', '+ the SD level offset 2.98, standalone'),
-         ('L5A_CRED', '+ absence I1 — the measured credit curve'),
-         ('L5B_RSET', '+ absence I2 — the graded reset and the F4 depth&ge;3 row'),
-         ('L5C_INJ', '+ absence I3 — the injury stream (live board only)'),
-         ('CAND', '+ absence I4 — the R3 production fade  =  THE CANDIDATE')]
+         ('L2_COMP', '&nbsp;&nbsp;[superseded] the compressed cap at p20 — kept so the anchor move is visible'),
+         ('V750_L2C15', '+ the compressed cap <b>p15</b> and the slope 0.105 (replacing the clip) — ANCHOR RULED AT v750'),
+         ('V750_L3MAT', '+ the mature refit'),
+         ('V750_L4SD', '+ the SD level offset 2.98, standalone'),
+         ('V750_L5A', '+ absence I1 — the measured credit curve'),
+         ('V750_L5B', '+ absence I2 — the graded reset (the F4 row swap WITHDRAWN at v750)'),
+         ('V750_L5C', '+ absence I3 — the injury stream (live board only)'),
+         ('V750_CAND', '+ absence I4 — the R3 production fade  =  THE CANDIDATE')]
 
 PATHS = {}
 for t, _, _x in COLS:
@@ -49,7 +50,7 @@ V = {t: {k: r['v'] for k, r in B[t].items()} for t in B}
 TOT = {t: sum(V[t].values()) for t in V}
 
 META = {}
-for t in ('CAND', 'L0_R', 'IDENT_P', 'live'):
+for t in ('V750_CAND', 'L0_R', 'IDENT_P', 'live'):
     for k, r in B.get(t, {}).items():
         if k not in META:
             META[k] = dict(name=r.get('name') or k, pos=r.get('grp') or (r.get('fut') or [['?']])[0][0],
@@ -62,7 +63,7 @@ present = [t for t, _, _x in COLS if t in V]
 ROWS = []
 for k in KEYS:
     vals = {t: V[t].get(k) for t in present}
-    if vals.get('CAND') is None:
+    if vals.get('V750_CAND') is None:
         continue
     seq = [vals[t] for t in present if vals[t] is not None]
     if len(set(seq)) <= 1:
@@ -78,13 +79,13 @@ for k, vals in ROWS:
     TR.append(dict(key=k, name=m.get('name'), pos=m.get('pos'), age=m.get('age'), club=m.get('club'),
                    band=m.get('band'), pick=m.get('pick'), cat=m.get('cat'),
                    live=vals.get('live'), K=vals.get('IDENT_K'), P=vals.get('IDENT_P'),
-                   R=vals.get('L0_R'), cand=vals.get('CAND'),
+                   R=vals.get('L0_R'), cand=vals.get('V750_CAND'),
                    d_live_K=d(vals.get('live'), vals.get('IDENT_K')),
                    d_K_P=d(vals.get('IDENT_K'), vals.get('IDENT_P')),
                    d_P_R=d(vals.get('IDENT_P'), vals.get('L0_R')),
-                   d_R_cand=d(vals.get('L0_R'), vals.get('CAND')),
-                   d_live_cand=d(vals.get('live'), vals.get('CAND')),
-                   d_K_cand=d(vals.get('IDENT_K'), vals.get('CAND'))))
+                   d_R_cand=d(vals.get('L0_R'), vals.get('V750_CAND')),
+                   d_live_cand=d(vals.get('live'), vals.get('V750_CAND')),
+                   d_K_cand=d(vals.get('IDENT_K'), vals.get('V750_CAND'))))
 TR.sort(key=lambda r: -abs(r['d_R_cand'] or 0))
 
 CSS = """
@@ -180,7 +181,7 @@ for r in TR:
     for t, lab, _w in COLS:
         if t not in V:
             continue
-        key = {'live': 'live', 'IDENT_K': 'K', 'IDENT_P': 'P', 'L0_R': 'R', 'CAND': 'cand'}[t]
+        key = {'live': 'live', 'IDENT_K': 'K', 'IDENT_P': 'P', 'L0_R': 'R', 'V750_CAND': 'cand'}[t]
         h.append('<td data-v="%s">%s</td>' % (r[key] if r[key] is not None else 0, num(r[key])))
         if t == 'IDENT_K':
             h.append(dlt(r['d_live_K']))

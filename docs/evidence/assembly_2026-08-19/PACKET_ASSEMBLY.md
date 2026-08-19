@@ -9,71 +9,57 @@
 
 ---
 
-## 0 · THE THINGS THAT WENT WRONG, FIRST
+## 0 · WHERE THIS PACKET STANDS
 
-They are at the top because burying them at the bottom would be the wrong order.
+**BOTH HALTS THIS SEAT RAISED HAVE BEEN RULED ON BY THE OWNER (register v750), AND THE BOARD BELOW IS
+THE REBUILD THAT CARRIES HIS RULINGS.**
 
-> ### ⛔ THE ONE THAT NEEDS AN OWNER RULING BEFORE ANYTHING ELSE
->
-> **TWO ITEMS THE OWNER RULED ARE MUTUALLY INCOMPATIBLE, AND NO BUILD CAN SATISFY BOTH.**
->
-> - **Acceptance requires:** *"day-0 ENTRY values bit-identical 89/89."*
-> - **Item I2 requires:** the F4 depth-4 inversion *"must not be relied on — use the unconditional
->   monotone population's shape for depth ≥ 3."*
->
-> **A day-0 sitter's price IS `v0 × D(c_u)`.** Changing `D` at depths 3 and 4 — which is exactly what
-> the F4 repair was ruled to do — **necessarily moves the day-0 price of every sitter standing at
-> those depths.** The two rulings cannot both hold.
->
-> **Measured, and attributed to the exact lever:** **28 of 95 day-0 rows move, net −1,876.** All of it
-> arrives at **I2** (`L5B_RSET`); the credit curve moves 6 rows for +4 and the R3 fade moves none.
-> The largest are Will Green 673→373, Harry DeMattia 331→98, Oscar Ryan 387→160.
->
-> **The engine's own internal day-0 identity still holds 89/89** — every printed day-0 price still
-> equals `round(derived v0 × D(c)) × numeraire` at tolerance 0. What moved is `D` itself, by ruling.
->
-> **CONSEQUENCE, AND WHAT THIS SEAT DID NOT DO.** The walk-forward emit refuses to run against a moved
-> day-0 column (`ORDER 31-F HALT (replication): 67 of 89`). That emit feeds the year-1 class mark and
-> the no-arb band tables, **so those two owner documents could not be produced for the candidate.**
-> The emit's own header states the rule: an order that changes the fade must regenerate the day-0
-> reference, and ORDER D and ORDER K both did. **This order changes the fade — but this seat did NOT
-> regenerate the reference, because doing so would re-base a guard on my own authority to make a
-> breach disappear, and the charter says to halt and report rather than trade a law silently.**
->
-> **THE OWNER'S CHOICE, stated without a recommendation:**
-> 1. **Keep the F4 repair** and accept that day-0 sitters at depth ≥ 3 re-price — then the day-0
->    reference is regenerated (as ORDER D and ORDER K each did) and the class and no-arb tables are
->    produced on the new basis. One further build and this seat can deliver them.
-> 2. **Keep day-0 frozen** and drop the depth-≥3 swap, leaving the 11-row inverting cell wired — the
->    board then keeps a schedule where sitting a fourth year is priced as *better* than sitting a
->    third.
->
-> **Everything else in this packet is unaffected by that choice** — the candidate board, the tracker,
-> the per-lever document, the censuses, continuity and the tail calibration all stand as built.
+### Halt 1 — the day-0 collision — RESOLVED: THE F4 SWAP IS WITHDRAWN
 
+The seat halted because two ruled items could not both hold: acceptance demanded *day-0 bit-identical
+89/89*, while item I2 demanded the F4 depth-4 inversion *not be relied on*. A day-0 sitter's price
+**is** `v0 × D(c_u)`, so touching `D` at depths 3-4 necessarily re-prices sitters standing there —
+measured at **28 of 95 day-0 rows, net −1,876**.
 
+**THE OWNER RULED THE SWAP OUT. The measured wired row stays, rise and all.** His reasoning, on the
+record: **a fourth-year sitter who is still listed is itself information** — clubs cut the two- and
+three-year sitters who are not up to it, so surviving to a contracted fourth year signals potential.
+That is the engine's own selection-as-evidence principle applied to the same object. The row is
+measured (F4's control verified the engine literal against `FADE_31F.json::wired` at every depth to
+1e-16) and it **stays documented as thin — n = 11 at depth 4**.
 
-**(1) THE TAIL CALIBRATION IS NOT ~1.04. IT IS 0.7378.** The register (v746) recorded that the
-owner's two ruled softenings land the measured tail at approximately calibration, and added that
-"the compression at the same anchor behaves ~identically at the parked tail; the assembly build
-verifies on real boards." **This build verified it and it does not hold.** §7.
+**Also on the record, and it matters: the swap was never green-lit.** It was folded into the absence
+package without the owner's word. The halt was correct.
 
-**(2) AN ENGINE GUARD HALTED THE FIRST BOARD THAT EVER COMBINED THE COMPRESSION WITH THE RULED
-SLOPE**, and this seat changed it rather than silently working around it. §8.
+**CONSEQUENCE, now satisfied:** day-0 reads **89/89 bit-identical against the frozen reference**, and
+the walk-forward emit runs — so the class mark and the full no-arb tables are in this packet.
 
-**(3) MY OWN PREREG PREDICTION P4 IS FALSIFIED** by (1). It predicted 0.90 to 1.25 and the built
-number is 0.7378. Recorded as a miss, not reframed. §9.
+### Halt 2 — the tail calibration — RESOLVED: THE ANCHOR MOVES TO p15
 
-**(4) THE FIRST SD-OFFSET BOARD WAS BYTE-IDENTICAL TO THE BOARD WITHOUT THE DIAL** — my wiring was
-wrong and the comparison caught it. §8b.
+The p20 compression read **0.7378** against the register's ~1.04 expectation. **The owner ruled the
+compression anchor to the 15th percentile.** `RL_O40_CAPPCT=15`, smooth form unchanged, slope 0.105
+unchanged, `TMAX`/`THETA_R` recomputed under the assert discipline. **The built number is in §7 and it
+rules; no other dial was moved to chase it.**
 
-**(5) THE FIRST R3 BOARD FADED THE PRODUCTION LEG OF PLAYERS WHO HAD NEVER MISSED A SEASON** — a
-187-game ruck who has played every year since 2015 lost 66% of his price for "absence". My wiring
-read the wrong clock. Caught, diagnosed and repaired before the candidate was published. §8c.
+### One numeric discrepancy in the instruction, flagged rather than silently resolved
 
-**(6) THE ENGINE'S OWN PARITY GATE THEN CAUGHT A THIRD DEFECT** — my R3 reference value was cached in
-a way that made one row's price depend on evaluation order. The gate failed the build rather than
-letting it through. §8d.
+The v750 instruction quotes the row to keep as **D(3)=0.2628, D(4)=0.3460**. Those are the **ORDER A /
+R1 vintage** values from F4 §16. The row **actually wired in the engine** — and the one F4 verified to
+1e-16 — is the **31-F re-derived** row, **D(3)=0.2747857941376827, D(4)=0.39727085107749216**.
+
+**This seat DROPPED THE SWAP, which restores the wired 31-F row untouched.** That is the only reading
+consistent with the instruction's own requirement that day-0 come back to **89/89 bit-identical
+against the frozen reference**: wiring 0.2628/0.3460 would have *changed* the fade row and broken
+day-0 again. **If the owner meant to revert the fade row all the way to the R1 vintage, that is a
+different and larger change and it has not been made — say the word and it is one build.**
+
+### What went wrong inside this seat's own work, kept on the record
+
+Three defects in my own wiring were found and repaired during the build. They are not tidied away
+because the way each was caught is the useful part: **§8b** the SD offset that moved nothing (caught
+by the per-lever md5 comparison), **§8c** the R3 collector reading the wrong clock and fading players
+who had never missed a season (caught by reading rows, not totals), **§8d** an order-dependent price
+(caught by the engine's own parity gate, not by me).
 
 ---
 

@@ -10,8 +10,9 @@ export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_TH
 export PYTHONHASHSEED=0
 echo "THREAD PINS: OPENBLAS=$OPENBLAS_NUM_THREADS OMP=$OMP_NUM_THREADS MKL=$MKL_NUM_THREADS NUMEXPR=$NUMEXPR_NUM_THREADS VECLIB=$VECLIB_MAXIMUM_THREADS PYTHONHASHSEED=$PYTHONHASHSEED"
 
-CAND="RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_BETASAT=0.105 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=20 \
-RL_O40_RECW=0.47 RL_O40_PGMAT=1 RL_O41_SDOFF=2.98 RL_O41_CREDIT=1 RL_O41_RESET=1 RL_O41_INJ=1 RL_O41_R3=1"
+CANDNOR3="RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_BETASAT=0.105 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=15 \
+RL_O40_RECW=0.47 RL_O40_PGMAT=1 RL_O41_SDOFF=2.98 RL_O41_CREDIT=1 RL_O41_RESET=1 RL_O41_INJ=1"
+CAND="$CANDNOR3 RL_O41_R3=1"
 
 echo; echo "########## 1 · THE BOARDS AND THE LEVER STACK (no engine) ##########"
 python3 "$HERE/as_boards.py"  > "$HERE/BOARDS_run.txt" 2>&1; echo "exit=$?"; tail -30 "$HERE/BOARDS_run.txt"
@@ -23,7 +24,7 @@ echo; echo "########## 3 · THE MECHANISM LEGS + THE S-S5 WINDOW (engine) ######
 python3 "$HERE/as_legs.py"    > "$HERE/LEGS_run.txt" 2>&1; echo "exit=$?"; tail -14 "$HERE/LEGS_run.txt"
 
 echo; echo "########## 4 · THE TWO CENSUSES + THE CHARGE DISTRIBUTION (engine) ##########"
-python3 "$HERE/os_census.py" CAND $CAND > "$HERE/CENSUS_CAND_out.txt" 2>&1; echo "exit=$?"
+python3 "$HERE/os_census.py" CANDNOR3 $CANDNOR3 > "$HERE/CENSUS_CAND_out.txt" 2>&1; echo "exit=$?"
 grep -iE "burn|birthday|CENSUS|0 of|VIOLAT" "$HERE/CENSUS_CAND_out.txt" | head -20
 
 echo; echo "########## 5 · CONTINUITY, EVERY AXIS (engine) ##########"
@@ -45,5 +46,8 @@ grep -iE "ASMCAND|W2|FLOOR|RAIL|BREACH" "$HERE/CLASS_ASM_out.txt" | head -20
 
 echo; echo "########## 10 · THE OWNER DOCUMENTS ##########"
 python3 "$HERE/as_pages.py"  > "$HERE/PAGES_run.txt" 2>&1; echo "exit=$?"; tail -8 "$HERE/PAGES_run.txt"
+python3 "$HERE/as_noarb.py"  > "$HERE/NOARBPAGE_run.txt" 2>&1; echo "noarb exit=$?"; tail -14 "$HERE/NOARBPAGE_run.txt"
+echo; echo "########## 11 · THE TAIL CALIBRATION ON THE p15 ANCHOR ##########"
+python3 "$HERE/as_tail.py" > "$HERE/TAIL_run.txt" 2>&1; echo "exit=$?"; sed -n "/charge form/,/median/p" "$HERE/TAIL_ASM_out.txt" | head -40
 
 echo; echo "ALL DONE"

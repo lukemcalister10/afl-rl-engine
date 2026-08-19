@@ -115,18 +115,21 @@ th_f = 0.10416359711151935 / LAMBDA
 c_f, ch_f, _ = calib(lambda g, s: f_clip(g, s, th_f, 1.0 - th_f * (S_PQ[20] - S0)))
 ROWS.append(("F5's convergence point (BETA_sat CI FLOOR 0.10416, hard clip p20)", c_f, ch_f))
 
-# the candidate: BETA_sat 0.105, SMOOTH compression anchored p20
+# the candidate: BETA_sat 0.105, SMOOTH compression anchored p15 (register v750)
 BSAT_C = 0.105
 th_c = BSAT_C / LAMBDA
-C_c = 1.0 - th_c * (S_PQ[20] - S0)
+C_c = 1.0 - th_c * (S_PQ[15] - S0)
 c_c, ch_c, ou_c = calib(lambda g, s: f_smooth(g, s, th_c, C_c))
-ROWS.append(('*** THE CANDIDATE (BETA_sat 0.105, SMOOTH compression p20) ***', c_c, ch_c))
+ROWS.append(('*** THE CANDIDATE (BETA_sat 0.105, SMOOTH compression p15) ***', c_c, ch_c))
 
 # the two halves of the candidate's softening, separated
 c_s1, ch_s1, _ = calib(lambda g, s: f_clip(g, s, th_c, 1.0 - th_c * (S_PQ[5] - S0)))
 ROWS.append(('  the slope 0.105 alone (hard clip p5)', c_s1, ch_s1))
-c_s2, ch_s2, _ = calib(lambda g, s: f_smooth(g, s, th_p, 1.0 - th_p * (S_PQ[20] - S0)))
-ROWS.append(('  the compression p20 alone (BETA_sat as ORDER P)', c_s2, ch_s2))
+c_s2, ch_s2, _ = calib(lambda g, s: f_smooth(g, s, th_p, 1.0 - th_p * (S_PQ[15] - S0)))
+ROWS.append(('  the compression p15 alone (BETA_sat as ORDER P)', c_s2, ch_s2))
+# THE ANCHOR MOVE ITSELF, p20 -> p15 at the ruled slope — the delta v750 asked to see
+c_p20, ch_p20, _ = calib(lambda g, s: f_smooth(g, s, th_c, 1.0 - th_c * (S_PQ[20] - S0)))
+ROWS.append(('  [the anchor it replaced: SMOOTH p20 at the ruled slope]', c_p20, ch_p20))
 
 P('  %-62s %10s %12s' % ('charge form', 'CALIB', 'charged ratio'))
 for nm, c, ch in ROWS:
@@ -140,7 +143,7 @@ P('  BUILT vs EXPECTED: %+.4f against F5\'s ~1.04.' % (c_c - 1.04))
 P()
 P('WHY THEY DIFFER — AND IT IS NOT THE SLOPE. THE CAP FORM IS DOING ALL OF IT.')
 P()
-P('  %-30s %14s %14s %14s' % ('BETA_sat', 'HARD CLIP p5', 'HARD CLIP p20', 'SMOOTH p20'))
+P('  %-30s %12s %12s %12s %12s' % ('BETA_sat', 'CLIP p5', 'CLIP p20', 'SMOOTH p20', 'SMOOTH p15'))
 GRID = {}
 for bname, bs in (('ORDER P  0.11465', BETA_SAT_P), ('CI floor 0.10416', 0.10416359711151935),
                   ('RULED    0.105', 0.105)):
@@ -149,37 +152,37 @@ for bname, bs in (('ORDER P  0.11465', BETA_SAT_P), ('CI floor 0.10416', 0.10416
     r20 = calib(lambda g, s, th=th, tm=1.0 - th * (S_PQ[20] - S0): f_clip(g, s, th, tm))[0]
     Cq = 1.0 - th * (S_PQ[20] - S0)
     rs = calib(lambda g, s, th=th, Cq=Cq: f_smooth(g, s, th, Cq))[0]
-    GRID[bname.split()[0]] = dict(clip5=r5, clip20=r20, smooth20=rs)
-    P('  %-30s %14.4f %14.4f %14.4f' % (bname, r5, r20, rs))
+    C15 = 1.0 - th * (S_PQ[15] - S0)
+    rs15 = calib(lambda g, s, th=th, C15=C15: f_smooth(g, s, th, C15))[0]
+    GRID[bname.split()[0]] = dict(clip5=r5, clip20=r20, smooth20=rs, smooth15=rs15)
+    P('  %-30s %12.4f %12.4f %12.4f %12.4f' % (bname, r5, r20, rs, rs15))
 P()
-P('READ THE LAST TWO COLUMNS. At EVERY slope the hard clip at p20 lands near 1.04-1.17 and the')
-P('SMOOTH COMPRESSION at the SAME ANCHOR lands near 0.73-0.80. The slope barely moves the answer;')
-P('THE CAP FORM MOVES IT BY ABOUT 0.35 OF CALIBRATION.')
+P('READ ACROSS. The slope barely moves the answer; THE CAP FORM AND ITS ANCHOR MOVE IT. At every')
+P('slope the hard clip at p20 lands near 1.04-1.17, the SMOOTH compression at p20 near 0.73-0.80,')
+P('and the SMOOTH compression at p15 — THE RULED ANCHOR — lands where the table shows.')
 P()
-P('*** THIS CORRECTS A STATEMENT ON THE REGISTER, AND THE CORRECTION IS THE POINT OF THIS TABLE. ***')
+P('*** THIS CORRECTS A STATEMENT ON THE REGISTER, AND THE CORRECTION STANDS. ***')
 P('v746 recorded: "the compression at the same anchor behaves ~identically at the parked tail; the')
-P('assembly build verifies on real boards." THIS BUILD VERIFIED IT AND IT DOES NOT HOLD. The')
-P('compression and the clip differ at the tail by roughly a third of a calibration unit, because the')
-P('compression is STRICTLY BELOW the clip ceiling everywhere (T\' < C by construction, which is the')
-P('very property that makes it monotone and gap-preserving) and the deep cell is exactly where the')
-P('clip was binding. The ~1.04 figure on the register belongs to the CLIP. THE CANDIDATE USES THE')
-P('COMPRESSION, AND ITS NUMBER IS %.4f.' % c_c)
+P('assembly build verifies on real boards." IT DOES NOT. The compression sits STRICTLY BELOW the clip')
+P('ceiling everywhere (T\' < C by construction — the very property that makes it monotone and')
+P('gap-preserving) and the deep cell is exactly where the clip was binding. The ~1.04 on the register')
+P('belongs to the CLIP.')
 P()
-P('WHAT THAT MEANS IN PLAIN WORDS. On the mean, the candidate no longer over-charges the deep')
-P('underperformer — it now UNDER-charges him by about a quarter. The direction is the one the owner')
-P('asked for (his objection was that the charge was too harsh) but the ruled pair of softenings')
-P('travels PAST the calibration point rather than landing on it. THIS SEAT IS NOT PROPOSING A FIX')
-P('AND HAS NOT APPLIED ONE: the dials are ruled and the charter does not authorise re-opening them.')
-P('It is reported here, loudly, because the acceptance item asked for exactly this comparison and')
-P('because a number that misses its expectation by -0.30 must not be quietly filed as agreement.')
+P('THE RULED ANCHOR MOVE, p20 -> p15, AND WHAT IT BOUGHT:')
+P('  SMOOTH p20 at the ruled slope   %.4f   (the anchor the previous candidate carried)' % c_p20)
+P('  SMOOTH p15 at the ruled slope   %.4f   *** THE CANDIDATE ***' % c_c)
+P('  the move is worth %+.4f of calibration.' % (c_c - c_p20))
 P()
-P('THE OWNER\'S CHOICE, LAID OUT WITHOUT A RECOMMENDATION. If he wants the tail AT the calibration')
-P('point, the hard clip at p20 with his ruled slope 0.105 reads %.4f — and that is a board this seat'
-  % GRID['RULED']['clip20'])
-P('can build on request. If he prefers the compression for the reason he chose it — no flat segment,')
-P('worse play always costs strictly more — then %.4f is the price of that property at the tail.' % c_c)
+P('AGAINST THE SUPERVISOR\'S ESTIMATE OF ~0.95-1.1 FOR THE p15 BOARD:')
+_lo, _hi = 0.95, 1.10
+if _lo <= c_c <= _hi:
+    P('  THE BUILT NUMBER IS %.4f — INSIDE the estimated band. The estimate held.' % c_c)
+else:
+    P('  *** THE BUILT NUMBER IS %.4f — OUTSIDE the estimated band [%.2f, %.2f]. ***' % (c_c, _lo, _hi))
+    P('  The estimate MISSED by %+.4f. The BUILT NUMBER RULES and no other dial is touched to chase it'
+      % (c_c - (_lo if c_c < _lo else _hi)))
+    P('  — that is the instruction and it is followed exactly.')
 P()
-
 # the median reading, printed because F5 printed it
 c_med, _, _ = calib(lambda g, s: f_smooth(g, s, th_c, C_c), np.median)
 P('THE MEDIAN READING, PRINTED BECAUSE F5 PRINTED IT AND BURYING IT WOULD BE DISHONEST:')

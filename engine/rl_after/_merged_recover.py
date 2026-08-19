@@ -3463,18 +3463,19 @@ if _O30B_PREVIEW:
                 3:0.2747857941376827,      # 31-F re-derived, listed-conditional (L-B), n=100
                 4:0.39727085107749216}     # 31-F re-derived, listed-conditional (L-B), n=11 — the kink
     O31_FADE_FLAT_FROM=4
-    def _o31_fade_row():
-        """The fade row in force. ORDER 41 (RL_O41_RESET) swaps DEPTHS 3 AND 4 ONLY for F4's
-        UNCONDITIONAL monotone population — 154 rows at depth 4 instead of the 11-row cell whose
-        inversion flips under a change of v0 basis. Depths 1 and 2 are UNTOUCHED (the charter scopes
-        the swap to depth >= 3), which is the declared seam: the row then joins two conditionings at
-        the depth-2/depth-3 boundary. Dial off => the wired 31-F row, byte for byte."""
-        if not _O41_RESET: return O31_FADE_D
-        _r=dict(O31_FADE_D); _r.update(O41_FADE_D_UNCOND); return _r
+    # ORDER 41 / register v750 — THE F4 DEPTH->=3 SWAP IS WITHDRAWN. THE MEASURED WIRED ROW STAYS,
+    # INCLUDING THE DEPTH-3 -> DEPTH-4 RISE. Owner's ruling: a fourth-year sitter STILL BEING LISTED is
+    # itself information — clubs cut the two- and three-year sitters who are not up to it, so surviving
+    # to a contracted fourth year signals potential. That is the engine's own selection-as-evidence
+    # principle applied to this same object. The row is MEASURED (F4's control verified this engine
+    # literal against FADE_31F.json::wired at every depth, to 1e-16) and it stays DOCUMENTED AS THIN
+    # (n = 11 at depth 4). ALSO ON THE RECORD: the swap was never green-lit — it was folded into the
+    # absence package without the owner's word, and the halt raised against it was correct.
+    # RL_O41_RESET now does ONE thing: the graded restore inside o31_cu. It does not touch this row,
+    # so every day-0 sitter price is bit-identical to the frozen reference BY CONSTRUCTION.
     def o31_fade_D(c):
         """The 31-F sitter fade at continuous depth c. IDENTICAL RULE to fade30b_D — log-linear between
         integer depths, 1.0 at/below depth 1, FLAT from depth 4 out — on the re-measured row."""
-        O31_FADE_D=_o31_fade_row()
         if c<=1.0: return 1.0
         if c>=O31_FADE_FLAT_FROM: return O31_FADE_D[O31_FADE_FLAT_FROM]
         _n=int(_math.floor(c)); _f=c-_n
@@ -3876,16 +3877,13 @@ if _O30B_PREVIEW:
         for _hi,_r in O41_REVERSAL:
             if _g<=_hi: return _r
         return O41_REVERSAL[-1][1]
-    # I2 (continued) — THE FADE ROW AT DEPTH >= 3. FOLLOWUP_F4.json::readings. The WIRED row carries
-    # D(4) = 0.3973 ABOVE D(3) = 0.2748 — an INVERSION that rests on an 11-row cell whose mean is 4.9x
-    # its median, whose pooled aggregate reads the inversion at 2.5% of the mean-based size, and whose
-    # ordering FLIPS under a change of v0 basis (F4 sections 17-19). IT IS NOT RELIED ON. The candidate
-    # takes the UNCONDITIONAL population's row at depth >= 3 — strictly monotone down, 154 rows at
-    # depth 4 instead of 11. DISCLOSED, and it is a real seam: the unconditional reading is a DIFFERENT
-    # CONDITIONING (it does not condition on still being listed) and its own depth-2 value is 0.5684
-    # against the wired 0.5583. Only depths 3 and 4 are taken, per the charter, so the candidate row
-    # joins two conditionings at the depth-2/depth-3 boundary. Said here, not smoothed over.
-    O41_FADE_D_UNCOND={3:0.21432976349908311,4:0.10522475297738024}
+    # I2 (continued) — THE FADE ROW AT DEPTH >= 3: WITHDRAWN AT register v750, BY OWNER RULING.
+    # The earlier assembly draft replaced depths 3 and 4 with F4's UNCONDITIONAL population
+    # (0.2143 / 0.1052, monotone down, 154 rows at depth 4). THE OWNER RULED AGAINST IT and the
+    # measured wired row STAYS, rise and all — see the note at o31_fade_D. The constant that carried
+    # the swap is DELETED rather than left dial-able, so no future run can reach it by accident.
+    # What the swap would have cost is on the record and is not being hidden: it moved 28 of 95 day-0
+    # sitter prices by -1,876 board points, which is what forced the halt that produced this ruling.
     # I4 — THE MEASURED COST OF ABSENCE. FOLLOWUP_F3.json::dcurve — this seat's own re-measurement on
     # the house ruler, NOT a read-back of the wired schedule (which would be circular). Depth c = 2
     # means ONE unplayed season. The cost is a fraction of DELIVERED VALUE.

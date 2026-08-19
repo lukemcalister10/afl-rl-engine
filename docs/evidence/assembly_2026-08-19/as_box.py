@@ -26,6 +26,11 @@ IN_IT = [
     ('The SD level offset, 2.98 points a game',
      'small defenders were measured to be over-barred by that much, flat at every age, and the bar '
      'is lowered by exactly the measured amount. Nothing was moved to offset it.'),
+    ('The fourth-year sitter schedule is KEPT AS MEASURED',
+     'A player who has sat a fourth year and is STILL ON A LIST is priced slightly above one who has '
+     'sat three. That is not a glitch: clubs cut the two- and three-year sitters who are not up to '
+     'it, so surviving to a contracted fourth year is itself a signal. The cell is thin (eleven '
+     'players) and stays documented as thin.'),
     ('The absence package',
      'a short season now earns the credit it was measured to earn instead of a full pass at two '
      'games; a delivered season restores only part of the accrued sitting clock instead of wiping '
@@ -43,17 +48,21 @@ BROKEN = [
      'The supplementary-selection arm was already breaching before this board and ORDER P made it '
      'worse. IT IS NOT REPAIRED HERE. It is parked, named, and reported separately so it cannot be '
      'read as fixed.'),
-    ('THE TAIL IS NOT WHERE THE RECORD EXPECTED IT',
-     'The register expected the deep-underperformer cell to calibrate near 1.04. On this board it '
-     'reads 0.74. The cause is the cap FORM, not the slope: the smooth compression charges the deep '
-     'cell noticeably less than the hard ceiling it replaced. On the mean this board now UNDER-'
-     'charges the deep underperformer by about a quarter rather than over-charging him. The '
-     'direction is the one that was asked for; the size overshoots the calibration point.'),
+    ('THE TAIL CALIBRATION — READ THE BUILT NUMBER, NOT THE ESTIMATE',
+     'The charge on the worst underperformers is measured against what they actually went on to '
+     'deliver. The compression anchor was moved to the 15th percentile precisely to bring this back '
+     'toward 1.00 after the 20th-percentile version read 0.74. THE BUILT NUMBER FOR THIS BOARD IS '
+     'PRINTED IN THE PACKET AND IT RULES; no other dial was touched to chase it. What has NOT '
+     'changed is the shape of the evidence: the deep cell is option-shaped, about half of those '
+     'players deliver almost nothing and a few deliver a lot, so the typical one is charged more '
+     'generously than the average one.'),
     ('RUCK IS STILL MIS-BARRED AND NOTHING WAS DONE ABOUT IT',
      'Rucks measure 5.57 points a game over-barred, but the error SWINGS with age — heavily '
      'over-barred at 21, slightly under-barred at 23 — so it is not a level and a level offset '
      'would have been wrong at both ends. The misfiring object is the class-pooled age-development '
-     'delta, which rucks share with key forwards and key defenders. It is diagnosed, not repaired.'),
+     'delta, which rucks share with key forwards and key defenders. It is diagnosed, not repaired, '
+     'and THE REPAIR IS PARKED FOR AFTER THIS CANDIDATE by owner ruling. It rides the tables flagged, '
+     'exactly like the modern 1-10 red.'),
     ('SF WAS DELIBERATELY LEFT ALONE',
      'Small forwards measure UNDER-barred by 2.71, which would mean charging them more. It was not '
      'wired, because the measurement carries a survivor-bias caveat and it would penalise exactly '
