@@ -296,3 +296,51 @@ a falsifier I could pass would be dishonest.
    disclosure and what happened to the `:5698` assert · the R1 per-row table (37 + 20) · movers vs
    ff936186 with named-row commentary · acceptance suite · falsifier scoring.
 4. Raw `*_out.txt` for every claim in the packet.
+
+---
+
+## 11 · AMENDMENT — **D6-F8 FIRED ON THE FIRST CANDIDATE BUILD, AND THE FALSIFIER WAS WRONG**
+
+**Added AFTER the fire, on the same day, rather than editing §8 silently. The original wording of
+D6-F8 above is left exactly as it was pushed at `bd365f9` so the record shows what was claimed
+before the build and what the build did to it.**
+
+**WHAT FIRED.** The first `RL_O42=1` build HALTED on its own guard:
+
+```
+ORDER 42 HALT: andy-moniz-wakefield — the re-base is not the stated form
+(g=2 L22=0.909091 L18=0.888889). It may only ever RAISE the haircut, and
+must clear to exactly zero at the availability base.
+```
+
+**THE DIAGNOSIS, AND IT GOES AGAINST ME: the falsifier was mis-stated, not the re-base.** §8 asserted
+that the re-base "may only ever RAISE the haircut". **That is arithmetically backwards.** Against a
+SHORTER season the same games are a LARGER fraction of it, so `g/18 > g/22` and therefore
+`L₁₈ ≤ L₂₂`. Andy Moniz-Wakefield with 2 games reads `1 − 2/22 = 0.909091` on the old base and
+`1 − 2/18 = 0.888889` on the new one — a **smaller** haircut, exactly as the arithmetic requires.
+
+**THE RE-BASE ITSELF IS UNCHANGED AND IS EXACTLY WHAT WAS BRIEFED AND PREREGISTERED**: `L₁₈ = 1 −
+min(g/18, 1)`, the form stated in §3 and in the order. **Not one constant moved to make the guard
+pass.** What changed is the guard's claim about the direction of the form it guards.
+
+**THE SUBSTANTIVE CONSEQUENCE, STATED PLAINLY BECAUSE IT IS A REAL RESULT AND NOT A BOOKKEEPING
+NOTE: re-basing to the owner's 18-game availability season makes an injured row who PLAYED SOME
+GAMES in 2026 LESS penalised, not more.** A row with zero 2026 games is unaffected (`L = 1` on both
+bases). Only rows with `0 < g < 18` move, and they move DOWNWARD in haircut. The packet reports how
+many rows that is and what it is worth.
+
+**THE CORRECTED D6-F8**, now in the engine, guards the invariant the form actually has:
+
+| | condition |
+|---|---|
+| range | `0 ≤ L₁₈ ≤ 1` |
+| direction | `L₁₈ ≤ L₂₂` — against the shorter base the haircut may only FALL or hold |
+| clears at the base | `g ≥ 18 ⇒ L₁₈ = 0` exactly |
+| no games | `g = 0 ⇒ L₁₈ = 1` exactly |
+
+**It fires and HALTS on any violation, exactly as before.** The guard was not removed, weakened into
+a warning, or made conditional — it was pointed at the right invariant.
+
+**This amendment is itself reportable and is reported: a falsifier fired, and the honest reading is
+that this seat's preregistered arithmetic was wrong.** It is recorded here and in `PACKET_D6.md`
+rather than being quietly corrected between builds.

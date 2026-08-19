@@ -653,6 +653,43 @@ if _O41_ANY and not (_O38A or _O38B1 or _O38B2):
     raise SystemExit('ORDER 41 HALT: an RL_O41_* dial is set but no RL_O38* dial is live. The assembly '
                      'sits on the ORDER Q repairs; setting one without an RL_O38 dial would price a '
                      'stack the owner never ruled.')
+# ============ ORDER 42 (RL_O42) — THE INJURY CONSOLIDATION. register v760, owner-ruled: ==============
+# "The old LTI register can be redundant. A - run it."  PREREG_D6.md pushed at bd365f9 BEFORE this edit.
+#
+# THE OWNER'S ANNOTATION SHEET BECOMES THE ONLY INJURY TRUTH. Every LIVE consumption of the old
+# LTI_REGISTER.md is retired or re-keyed to docs/owner_annotations/SITTER_2026_v1.csv. The file
+# LTI_REGISTER.md stays in the tree and stays seeded by bootstrap.sh; what this dial retires is its
+# CONSUMPTION, not the artifact.
+#
+# ONE DIAL FOR THE WHOLE CONSOLIDATION. All FOUR live sites read exactly one object, _AVAIL_STATE, so
+# re-keying the state source moves all four together:
+#   1. _fe_p_one / _fEy  (:127-132)   the fE=1.0 LTI override — the site behind audit F2's one-season-out leak
+#   2. the KPF fork-v    (:1207-1208) the 2026-exclusion / nuked season
+#   3. the L1c clock     (:1414-1415) g += L*cp.SEASON
+#   4. _AVAIL_STATE population + the Part-2 return arm (the block near the foot of this file)
+#
+# THE STACK THIS SITS ON. The base is the owner-ruled D5-final dial line, whose break mode is
+# RL_O41_BREAK=unwind with RL_O41_UNWIND=7.
+#   *** U0 = 7 IS OWNER-RULED AND DATA-SUPPORTED (D5-final, 2026-08-19). ***
+# That label is carried here as a STANDING OBLIGATION so no later pass can re-gloss it: it is ruled by
+# the owner AND supported by the data, and it must be quoted with BOTH halves, never one.
+_O42=os.environ.get('RL_O42','0')!='0'
+_O42_AVAIL_BASE=18   # THE OWNER'S AVAILABILITY BASE — how much of a season a player is expected to be
+                     # available for. IT IS NOT THE SEASON-LENGTH CONSTANT AND IT IS NEVER ASSERTED
+                     # EQUAL TO ONE. cp.SEASON stays 22 and lti_register.G_FULL stays 22, so the
+                     # `G_FULL == cp.SEASON` assert in the availability block is UNTOUCHED and still
+                     # passes on every board, dial on and dial off. See PREREG_D6.md §3.
+if _O42:
+    if not _AVAIL_ON:
+        raise SystemExit('ORDER 42 HALT: RL_O42=1 re-keys the availability layer onto the owner\'s '
+                         'annotation sheet, but RL_AVAIL=0 disables that layer entirely. The '
+                         'consolidation would be a silent no-op, which is exactly the failure the '
+                         'dial exists to prevent.')
+    if _O42_AVAIL_BASE!=18 or _O42_AVAIL_BASE==cp.SEASON:
+        raise SystemExit('ORDER 42 HALT: the availability base reads %r against cp.SEASON %r. The 18 '
+                         'is the owner\'s AVAILABILITY base and is deliberately NOT the season '
+                         'constant; collapsing the two would silently re-gloss the re-base as a '
+                         'season-length change.'%(_O42_AVAIL_BASE,cp.SEASON))
 if _O41_SDOFF_RAW!='':
     try: _O41_SDOFF=float(_O41_SDOFF_RAW)
     except ValueError:
@@ -5687,14 +5724,123 @@ if MA._UNCOMP and MA.UNCOMP_S is not None:
 # the board is byte-identical off the register set (non-mover parity by construction). RL_AVAIL=0 skips it.
 import lti_register as LTIREG
 _AVAIL_REPORT=[]; _AVAIL_MOVERS=[]
+def _o42_state(_skeys,_allrecs):
+    """ORDER 42 — the availability state built from THE OWNER'S ANNOTATION SHEET, which is the only
+    injury truth under this dial. It returns the SAME state SHAPE the register consumer produced, so
+    all four consumption sites are re-keyed by construction and not one of them is edited.
+
+    MEMBERSHIP is the annotated-injured rows ONLY (injured=Y). The old register's 43 names have no
+    standing of their own: a register name the owner did not annotate is NOT injured, and a name the
+    owner annotated IS injured whether or not the register ever listed him.
+
+    L IS RE-BASED to the owner's 18-game availability season, L18 = 1 - min(g/18, 1), against the
+    register consumer's L22 = 1 - min(g/22, 1) at lti_register.py:115. g STAYS THE STORE'S 2026
+    GAMES: the register's own header rule (spec 3.3 — "the store stays the single source of
+    production") is not overturned here, and the sheet agrees with the store on every annotated row,
+    which is asserted below rather than assumed.
+
+    THE PART-2 RETURN ARM IS RETIRED, NOT RE-KEYED. It is gated on section=='A', and `section` is
+    register-only information with no analogue anywhere on the sheet. Defaulting every annotated row
+    to A would INVENT section membership for rows that were never on the register at all, so it is
+    not done: return_arm is False for every row and the Part-2 haircut ships zero. PREREG_D6.md §5."""
+    import csv as _c2, hashlib as _h2, re as _r2
+    _SHEET_MD5='b26798c35adcd9bda5cef50ff2c884da'; _SHEET_ROWS=219; _SHEET_Y=37
+    _sp=os.path.join(os.environ.get('RL_REPO','.'),'docs/owner_annotations/SITTER_2026_v1.csv')
+    if not os.path.exists(_sp):
+        raise SystemExit('ORDER 42 HALT: RL_O42=1 but the owner\'s annotation sheet is ABSENT at %s. '
+                         'The consolidation reads a PINNED OWNER INPUT, will not run without it, and '
+                         'will not fall back to the register it retires.'%_sp)
+    _sb=open(_sp,'rb').read(); _sm=_h2.md5(_sb).hexdigest()
+    if _sm!=_SHEET_MD5:
+        raise SystemExit('ORDER 42 HALT: SITTER_2026_v1.csv md5 %s != the pinned %s. The owner\'s '
+                         'annotation has moved; the build stops rather than make an input nobody '
+                         'ruled on the single source of injury truth.'%(_sm,_SHEET_MD5))
+    _sr=list(_c2.DictReader(_sb.decode('utf-8').splitlines()))
+    if len(_sr)!=_SHEET_ROWS:
+        raise SystemExit('ORDER 42 HALT: SITTER_2026_v1.csv holds %d rows, pinned %d.'%(len(_sr),_SHEET_ROWS))
+    _sy=[r for r in _sr if (r.get('injured') or '').strip().upper()=='Y']
+    if len(_sy)!=_SHEET_Y:
+        raise SystemExit('ORDER 42 HALT: SITTER_2026_v1.csv marks %d rows injured=Y, pinned %d.'
+                         %(len(_sy),_SHEET_Y))
+    def _n2(n): return _r2.sub(r'[^a-z0-9]+','-',str(n).strip().lower().replace('’',"'")).strip('-')
+    _wantg={_n2(r['player']):r for r in _sy}                  # normalised annotated name -> sheet row
+    if len(_wantg)!=_SHEET_Y:
+        raise SystemExit('ORDER 42 HALT: the %d annotated rows collapse to %d distinct names.'
+                         %(_SHEET_Y,len(_wantg)))
+    _hit={}                                                   # the engine's OWN existing name normaliser
+    for _p in _allrecs:
+        for _f in ('key','player'):
+            if _p.get(_f) and _n2(_p[_f]) in _wantg: _hit.setdefault(_n2(_p[_f]),set()).add(_p.get('key'))
+    _miss=sorted(set(_wantg)-set(_hit))
+    if _miss:
+        raise SystemExit('ORDER 42 HALT: %d of %d annotated-injured rows match no engine row: %s. A '
+                         'silent miss would quietly price an injured row as available.'
+                         %(len(_miss),_SHEET_Y,_miss[:8]))
+    _amb={_k:sorted(_v) for _k,_v in _hit.items() if len(_v)!=1}
+    if _amb:
+        raise SystemExit('ORDER 42 HALT: %d annotated rows resolve to more than one store key: %s. '
+                         'The sheet is keyed by NAME, and an ambiguous name cannot be the single '
+                         'source of injury truth.'%(len(_amb),_amb))
+    _keys={next(iter(_v)) for _v in _hit.values()}
+    if len(_keys)!=_SHEET_Y:
+        raise SystemExit('ORDER 42 HALT: %d annotated rows resolved to %d distinct store keys; the two '
+                         'must agree exactly.'%(_SHEET_Y,len(_keys)))
+    _drop=sorted(_keys-set(_skeys))
+    if _drop:
+        raise SystemExit('ORDER 42 HALT: %d annotated keys are carried by more than one engine record '
+                         'and were dropped from the single-record set: %s. The layer would silently '
+                         'skip an injured row.'%(len(_drop),_drop))
+    _out={}
+    for _k in sorted(_keys):
+        _p=_skeys[_k]
+        _g=next((x['games'] for x in (_p.get('scoring') or []) if x['year']==2026),0)
+        _row=None
+        for _f in ('key','player'):
+            if _p.get(_f) and _n2(_p[_f]) in _wantg: _row=_wantg[_n2(_p[_f])]; break
+        try: _gs=int(float((_row.get('games_2026') or '0').strip() or 0))
+        except (ValueError,AttributeError): _gs=None
+        if _gs is None or _gs!=int(_g):                       # D6-F7
+            raise SystemExit('ORDER 42 HALT: %s — the sheet reads games_2026=%r and the store reads %r. '
+                             'The store is the single source of production and the sheet is the single '
+                             'source of injury; a disagreement between them is an input defect, not '
+                             'something to average away.'%(_k,_gs,_g))
+        _L22=1.0-min(float(_g)/float(LTIREG.G_FULL),1.0)      # what the register consumer would have said
+        _L18=1.0-min(float(_g)/float(_O42_AVAIL_BASE),1.0)    # THE RE-BASE
+        # D6-F8, CORRECTED AFTER IT FIRED ON THE FIRST CANDIDATE BUILD. The fire is recorded in
+        # PACKET_D6.md and in PREREG_D6.md's amendment, and the diagnosis is that the FALSIFIER was
+        # mis-stated, not that the re-base was mis-built. The prereg asserted the re-base "may only
+        # ever RAISE the haircut"; that is arithmetically backwards. Against a SHORTER season the same
+        # games are a LARGER fraction of it, so g/18 > g/22 and L18 <= L22: re-basing to the owner's
+        # 18-game availability season LOWERS the haircut on a row that played some games, and leaves
+        # g=0 rows untouched at L=1. andy-moniz-wakefield (g=2) is the row that caught it:
+        # L22 = 1-2/22 = 0.909091, L18 = 1-2/18 = 0.888889. The FORM is exactly the one briefed and
+        # preregistered, 1 - min(g/18, 1); only the direction claimed about it was wrong.
+        if not (-1e-12<=_L18<=1.0+1e-12) or _L18>_L22+1e-12 \
+           or (_g>=_O42_AVAIL_BASE and _L18>1e-12) or (_g<=0 and abs(_L18-1.0)>1e-12):
+            raise SystemExit('ORDER 42 HALT: %s — the re-base is not the stated form (g=%r L22=%.6f '
+                             'L18=%.6f). Against the shorter availability base the haircut may only '
+                             'ever FALL or hold, must sit in [0,1], must clear to exactly zero at the '
+                             'base, and must be exactly 1 for a row with no games.'%(_k,_g,_L22,_L18))
+        _out[_k]={'out':True,'section':'S','L':max(0.0,_L18),'return_arm':False,'ret_year':2027,
+                  'repeat':False,'designations':['sheet_v1'],'g2026':_g,'L22':max(0.0,_L22)}
+    return _out
 if _AVAIL_ON:
     _sbk={}
     for _p in MA.data: _sbk.setdefault(_p.get('key'),[]).append(_p)
     _skeys={_k:_v[0] for _k,_v in _sbk.items() if len(_v)==1}
-    try:
-        _st=LTIREG.build_state(_skeys, report=_AVAIL_REPORT)          # HALT on unknown key / bad schema
-    except ValueError as _e:
-        raise SystemExit("\n==== LTI REGISTER HALT ====\n"+str(_e))
+    if _O42:
+        # ORDER 42: THE SHEET IS THE ONLY INJURY TRUTH. build_state() — the one live read of
+        # LTI_REGISTER.md — is NOT called, so the register has no live consumption on this lane.
+        _st=_o42_state(_skeys,MA.data)
+    else:
+        try:
+            _st=LTIREG.build_state(_skeys, report=_AVAIL_REPORT)      # HALT on unknown key / bad schema
+        except ValueError as _e:
+            raise SystemExit("\n==== LTI REGISTER HALT ====\n"+str(_e))
+    # UNTOUCHED, UNCONDITIONAL, AND STILL PASSING ON EVERY BOARD — dial on and dial off (PREREG_D6.md
+    # §3). The engine keeps exactly ONE season constant and it is still 22. ORDER 42's re-base to 18 is
+    # an AVAILABILITY base living in its own constant (_O42_AVAIL_BASE); nothing is asserted equal to
+    # it, G_FULL is not moved, and cp.SEASON is not moved.
     assert LTIREG.G_FULL==cp.SEASON, "LTI G_FULL %s != engine season-games cp.SEASON %s (one constant, spec §3.1)"%(LTIREG.G_FULL,cp.SEASON)
     _reg_recs={_p.get('key'):_p for _p in MA.data if _p.get('key') in _st}
     # Part-2 return-haircut surface (derived, net-of-aging; young<27 ships ZERO). HALT if RL_LTI_RETURN is on
@@ -5743,7 +5889,13 @@ if _AVAIL_ON:
             _p['_lti_ret_delta']=int(_vfull-_ev_p1[_k])           # Part-2 delta (return arm value)
             _AVAIL_MOVERS.append((_k,_p.get('player'),_ev_off[_k],_ev_p1[_k],_vfull,
                                   _p['_avail_nerf'],_p['_lti_ret_delta'],_p.get('_lti_return_hc',0.0)))
-    print("=== RL_AVAIL LAYER ON: %d register names (32 A + 11 B); RL_LTI_RETURN=%s; non-register byte-identical ==="%(len(_reg_recs),_LTI_RETURN_ON))
+    if _O42:
+        print("=== ORDER 42 CONSOLIDATION — THE OWNER'S ANNOTATION SHEET IS THE ONLY INJURY TRUTH: %d "
+              "annotated rows; avail_hc RE-BASED to 1-min(g/%d,1) (cp.SEASON untouched at %d); "
+              "LTI_REGISTER.md has NO live consumption on this lane; Part-2 return arm RETIRED (no "
+              "sheet analogue for section A/B) ==="%(len(_reg_recs),_O42_AVAIL_BASE,cp.SEASON))
+    else:
+        print("=== RL_AVAIL LAYER ON: %d register names (32 A + 11 B); RL_LTI_RETURN=%s; non-register byte-identical ==="%(len(_reg_recs),_LTI_RETURN_ON))
     if _KPF_LD_FALLBACK:
         print("    fork-v KPFFIX LD fell back to count-against (report-only): %s"%sorted(_KPF_LD_FALLBACK))
     if _AVAIL_REPORT:
