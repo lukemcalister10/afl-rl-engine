@@ -242,6 +242,21 @@ so before anyone can make it.**
    for the capped ones. Asserted at load (S-S5) against both the anchor clip AND ORDER P's own p5
    clip.
 
+**ONE READING NOTE ON THE ENGINE BANNER, so a number on it is not misread.** The banner prints "a row
+at the effective cap with 38 games is charged 86.86%" on a p20 compression board — the SAME figure a
+p20 hard clip prints. That is correct and it is the compression's ASYMPTOTE: `T' → C`, so the
+supremum charge equals the clip's charge at the same anchor. **No real row reaches it: the deepest
+charge actually observed on `SC20` is 81.59%** (§6.6). The ceiling is shared; the approach to it is
+what differs.
+
+**AND WHERE THE ASSERTS RUN, stated because it is easy to assume wrongly.** The ORDER S banner and
+its structural asserts sit at MODULE scope and execute on every load of `_merged_recover.py`,
+including inside every board build. **The banner TEXT does not appear in `export_stdout.txt` — the
+export path does not carry that stream — so the banner is shown in this packet from an in-process
+load on the identical dial line. The asserts themselves are plain statements and would have failed
+the build; the boards exist, so they passed.** The same is true of ORDER P's, Q's and R's asserts and
+was true before this order.
+
 **Requirements 1 and 3 — value AND slope matched at zero — fix the exponential's rate to `1/C`
 uniquely. The only quantity chosen is `C`, and `C` is the anchor percentile's own `TMAX`, the SAME
 object the hard clip used. THERE IS NO FREE PARAMETER BEYOND THE ANCHOR PERCENTILE.** A hard clip
