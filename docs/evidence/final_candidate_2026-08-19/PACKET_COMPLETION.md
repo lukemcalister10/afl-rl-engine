@@ -6,28 +6,44 @@ please."***
 
 > ## THE BOARD IS **PRICED, NOT ADOPTED.**
 > Nothing here is adopted, merged, tagged or promoted. **The tag and the `main` promote are
-> OWNER-ONLY acts.** Nothing is on `main`. **NO ENGINE EDIT was made anywhere in this pass.**
+> OWNER-ONLY acts.** Nothing is on `main`.
+
+> ## AMENDED BY **ORDER D7b** (register v775), from `origin/land/order-29` at `db1d11c`.
+> **THE THREE HALTED ITEMS ARE NOW DELIVERED.** D7b wired the third site of the parity law
+> (`o31_D`) under the same dial `RL_O43`, and the emit, the class mark and the no-arb page ran
+> unchanged on top of it. **The completion pass's own record below is NOT rewritten** — the halt,
+> its diagnosis and its reasoning stay exactly as they were filed. What is amended is the SCORE.
+> **THE COMPLETION PASS ITSELF MADE NO ENGINE EDIT; D7b MADE EXACTLY ONE**, prereged first at
+> `cfd4748` and delivered at `5c97056`. See **§3.1** and `../parity_2026-08-19/PREREG_D7B.md`.
 
 ---
 
 ## 0 · THE HEADLINE, INCLUDING THE PART THAT DID NOT WORK
 
-**Four of the six ordered items are delivered. Three are HALTED, together, for one measured reason.**
+**As filed by the completion pass: four of the six ordered items delivered, three HALTED together
+for one measured reason. AS AMENDED BY ORDER D7b: all seven delivered.**
 
-| # | item | outcome |
-|---|---|---|
-| **1** | the amended day-0 disclosure, pushed **before** the reference was touched | **DELIVERED** — `355152c` |
-| **2** | the day-0 reference regenerated on `a05fe951` | **DELIVERED — all nine assertions pass** |
-| **3** | the walk-forward matrix on `a05fe951` | ### **HALTED** |
-| **4** | the class mark on the candidate matrix | ### **HALTED** — blocked by item 3 |
-| **5** | the full no-arb page for `a05fe951` | ### **HALTED** — blocked by item 3 |
-| **6** | the regenerated document set on `a05fe951` | **DELIVERED** — tracker · levers · year-1 · players |
-| **7** | the TRUE acceptance count | **DELIVERED — 42 run / 38 green / 2 named-red / 2 FAIL / 2 not run** |
+| # | item | as filed | **AS AMENDED BY D7b** |
+|---|---|---|---|
+| **1** | the amended day-0 disclosure, pushed **before** the reference was touched | **DELIVERED** — `355152c` | unchanged |
+| **2** | the day-0 reference regenerated on `a05fe951` | **DELIVERED — all nine assertions pass** | unchanged — **and NOT edited by D7b** |
+| **3** | the walk-forward matrix on `a05fe951` | **HALTED** | ### **DELIVERED — the emit reads 89 of 89** |
+| **4** | the class mark on the candidate matrix | **HALTED** | ### **DELIVERED — W2 `1.0672`** |
+| **5** | the full no-arb page for `a05fe951` | **HALTED** | ### **DELIVERED — `D7B_NOARB.html`** |
+| **6** | the regenerated document set on `a05fe951` | **DELIVERED** — tracker · levers · year-1 · players | unchanged |
+| **7** | the TRUE acceptance count | **DELIVERED — 42 run / 38 green / 2 named-red / 2 FAIL / 2 not run** | ### **56 run / 53 green / 2 named-red / 1 FAIL / 0 not run** |
 
-**The halt is not a failure of the board.** `a05fe951` reproduces byte-exact, every dial-off identity
-holds, determinism holds, and its own printed-day-0 identity reads 89 of 89 at tolerance 0. The halt
-is an **instrument-versus-engine wiring gap**, found by a guard doing its job, and it needs a ruling
-this seat is not authorised to make. Full diagnosis: **`HALT_EMIT_CP.md`**.
+**The halt was never a failure of the board, and the amendment confirms that reading.** `a05fe951`
+reproduces byte-exact, every dial-off identity holds, determinism holds, and its own printed-day-0
+identity reads 89 of 89 at tolerance 0 — **before and after the D7b edit, on the same board md5.**
+The halt was an **instrument-versus-engine wiring gap**, found by a guard doing its job. D7b closed
+the gap **in the engine, where it was**, and the guard then passed on its own terms with **no
+reference edit and no emitter edit**. Full diagnosis as filed: **`HALT_EMIT_CP.md`**. The fix and its
+falsifiers: **`../parity_2026-08-19/PREREG_D7B.md`**.
+
+**THE ONE FAIL THAT REMAINS IS STILL A FAIL.** The R3-aware burn/birthday probe still reads 47 of 67
+on its own self-check. **It is a named instrument follow-up and was explicitly NOT in D7b's scope.**
+It is not re-scored, not worked around, and not quietly dropped.
 
 ---
 
@@ -37,7 +53,7 @@ this seat is not authorised to make. Full diagnosis: **`HALT_EMIT_CP.md`**.
 |---|---|
 | **THE PRICED BOARD** | **`a05fe951f78482c70520480e184c80ec`** |
 | total | **664,949** · rows **804** |
-| engine | `29376d5a73a3e8274fcebe5cd90ada0b` — **unchanged by this seat** |
+| engine | `29376d5a73a3e8274fcebe5cd90ada0b` — **unchanged by the completion-pass seat**. **AMENDED BY D7b to `5f434b9592ad8adb7dcd534da49df3c7`** (one site, §3.1). **THE BOARD MD5 IS THE SAME ON BOTH ENGINES** — that is falsifier F1, and it is the point. |
 | store / v0surf / sheet | `cb38ef11` / `5dd34ca8` / `b26798c35adcd9bda5cef50ff2c884da` |
 | vs live `88ce647f` | **−87,480** · vs ORDER K `f3101883` **−8,148** · vs R `7f88f509` **−1** |
 
@@ -186,10 +202,79 @@ proof — after which items 3-5 run unchanged.
 
 ---
 
+### 3.1 · **THE HALT IS RESOLVED — ORDER D7b (register v775)**
+
+**Everything above stands as filed.** The diagnosis was right, the refusal to work around it was
+right, and the follow-up it asked for is exactly the order that was given. **This section records
+the outcome; it does not rewrite the record.**
+
+**THE EDIT — ONE SITE.** `engine/rl_after/_merged_recover.py:6046-6103`, inside the existing
+`if _O43:` block. The parity `max` moves **down one level**, from the day-0 predicate to the fade the
+predicate is built from. **Same `max`, same ruling, same dial. No new dial, no new parameter, nothing
+fitted.** Engine `29376d5a` → `5f434b95`. Prereged at `cfd4748` **before** the engine was touched.
+
+**WHY IT REPLACES THE D7 SECOND SITE RATHER THAN STACKING ON IT — declared in the prereg, in advance.**
+Under `_O31` the day-0 predicate **is** the fade: `_entry30b_price` is `_d0*o31_D(p,Y)`
+(`:5109-5112`), resolving `o31_D` as a module global **at call time**. So the moment the fade is
+guarded, the predicate is **already** correct. Had D7's ratio wrapper also fired, the one ruling
+would have been applied **twice**:
+
+| `harley-barker` | value | |
+|---|---|---|
+| `_d0*_dl` — what the emitter formed before D7b | `481.44` → `481` | the halt |
+| `_d0*_dh` — the board's printed day-0 | `503.51` → **`504`** | **CORRECT** |
+| `_d0*_dh²/_dl` — **both sites firing** | `526.59` → `527` | **REFUSED BY DESIGN** |
+
+**The subsumption is ASSERTED IN THE ENGINE, not assumed.** If the live predicate is ever not the one
+built on `o31_D` (it is `_d0*fade30b_of` with `_O31` off, `:3371`), the build **HALTS** rather than
+silently regressing.
+
+**WHY THE BOARD COULD NOT MOVE — the honest measurement, not an argument.** Only **7 of the 23**
+guarded rows carry `_dh > _dl`; the other **16 sit at `_dl == _dh`** with nothing to lift. **All 6
+rows with 2026 games are in that untouched set**, so the fade wrapper cannot reach a row whose price
+is not identically `v0 × D`. The seven it does reach are exactly the seven that diverged. The prereg
+named this as a falsifier and **not** an assumption — had the board moved, the order was to HALT and
+report, not renormalise.
+
+**EVERY FALSIFIER PASSED** — `../parity_2026-08-19/BUILD_D7B_out.txt`, `D7B_PROBE_out.txt`,
+`EMIT_D7BCAND_out.txt`:
+
+| | falsifier | result |
+|---|---|---|
+| **F1** | dial ON, the board must not move | **`a05fe951f78482c70520480e184c80ec` BYTE-EXACT** |
+| **F2** | dial OFF reproduces the base | **`daa16812e50fb71241e627d89180412c` BYTE-EXACT** |
+| **F3** | the emit, zero reference edits | ### **89 of 89 at tolerance 0** |
+| **F4** | determinism ×2, board **and** matrix | board `a05fe951` ×2 · matrix `fd7dafad` ×2 |
+| **F5** | the printed-day-0 internal assert | **89 of 89**, tolerance 0, on every written board |
+| **F6** | the dial-off chain | `ff936186` · `374d4e44` · `f3101883` · `7f88f509` |
+| **F7** | `Y==2026` only — years 1..7 unmoved | **207 comparisons (23 rows × 9 years), ZERO mismatches** |
+| **F8** | the riser untouched | `ollie-murphy` carries no fade pair; emits **200** |
+
+**NOT TOUCHED BY D7b:** `emit_matrix_31f.py` (byte-carried by design, `d5f48806`), `DAY0_CP.json`
+(**the reference is correct**, `210510fe`), `DAY0_K.json`, and every engine file but
+`_merged_recover.py`.
+
+---
+
 ## 4 · THE ACCEPTANCE TABLE — EVERY ITEM GREEN OR NAMED
 
-**44 items enumerated · 42 RUN · 38 GREEN · 2 NAMED-RED · 2 FAIL · 2 NOT RUN (blocked).**
-**No headline is back-filled. The two fails and the two named-reds are named below.**
+**AS FILED BY THE COMPLETION PASS: 44 items enumerated · 42 RUN · 38 GREEN · 2 NAMED-RED · 2 FAIL ·
+2 NOT RUN (blocked).**
+
+**AS AMENDED BY ORDER D7b: 56 items enumerated · 56 RUN · 53 GREEN · 2 NAMED-RED · 1 FAIL · 0 NOT
+RUN.** The arithmetic, in full, so nothing is back-filled:
+
+| | as filed | what D7b changes | amended |
+|---|---|---|---|
+| enumerated | 44 | **+12** — D7b's own items, §4.9 | **56** |
+| RUN | 42 | +12 new, **+2** previously blocked now run | **56** |
+| **GREEN** | 38 | +12 new · **+1** the emit, re-scored from FAIL · **+2** the class mark and the no-arb page, re-scored from NOT RUN | **53** |
+| NAMED-RED | 2 | unchanged — tail `0.80`, Guard 5 | **2** |
+| **FAIL** | 2 | **−1** the emit. **THE R3 PROBE STAYS FAILED.** | **1** |
+| NOT RUN | 2 | −2, both now run | **0** |
+
+`53 + 2 + 1 = 56.` **No headline is back-filled. The one remaining fail and the two named-reds are
+named below and are NOT softened.**
 
 ### 4.1 · Identity and determinism — 8 of 8 GREEN
 
@@ -239,34 +324,94 @@ proof — after which items 3-5 run unchanged.
 | movers ledger | 801 rows | **GREEN** |
 | **tail calibration** | **0.8004** on the candidate's own charge form | **NAMED-RED — the ruled documented-red "tail 0.80". Reported at what it reads; no dial was touched to chase it.** |
 
-### 4.7 · THE TWO FAILS AND THE SECOND NAMED-RED
+### 4.7 · THE FAILS AND THE SECOND NAMED-RED — **ONE RE-SCORED, ONE STILL FAILED**
 
 | item | outcome |
 |---|---|
-| **the ORDER 31-F replication guard (the emit)** | ### **FAIL — 82 of 89.** §3 and `HALT_EMIT_CP.md`. Blocks the class mark and the no-arb page. |
-| **the R3-aware burn/birthday probe** | ### **FAIL — self-check 47 of 67.** It therefore says **NOTHING** about the birthday question, and is reported as a failure rather than worked around. **THE FAILURE IS PRE-EXISTING** — the FC seat's own run of this probe **also failed, 47 of 59**, on the superseded board, and its **12 disagreeing rows are byte-for-byte the same 12 here**. D7 adds **8** more, and **all 8 are D7-treated riser/tie rows** for which the probe predicts **exactly 0.0000** while the board moves — the probe models the direct R3 take and is **not `RL_O43`-aware**, the same class of instrument-versus-engine gap as the emit halt. |
+| **the ORDER 31-F replication guard (the emit)** | ~~**FAIL — 82 of 89**~~ → ### **GREEN — 89 of 89**, re-scored by ORDER D7b. As filed it was a genuine fail and is left visible above. The guard was **not** weakened, **not** re-pointed and **not** silenced; `DAY0_CP.json` carries **zero** edits and the emitter is byte-carried at `d5f48806`. The **engine** was corrected, at the site the guard was pointing at. §3.1 · `EMIT_D7BCAND_out.txt`. |
+| **the R3-aware burn/birthday probe** | ### **FAIL — self-check 47 of 67.** It therefore says **NOTHING** about the birthday question, and is reported as a failure rather than worked around. **THE FAILURE IS PRE-EXISTING** — the FC seat's own run of this probe **also failed, 47 of 59**, on the superseded board, and its **12 disagreeing rows are byte-for-byte the same 12 here**. D7 adds **8** more, and **all 8 are D7-treated riser/tie rows** for which the probe predicts **exactly 0.0000** while the board moves — the probe models the direct R3 take and is **not `RL_O43`-aware**, the same class of instrument-versus-engine gap as the emit halt. **ORDER D7b DOES NOT RE-SCORE THIS. IT STAYS FAILED.** It is a **named instrument follow-up** and was explicitly outside D7b's scope; D7b fixed the engine site the *emit* guard pointed at, which is a different site from the one this probe models. Re-running it against the D7b engine would not make it right — **the probe itself is what needs the work**, and that is an order this seat was not given. |
 | **Guard 5** | ### **NAMED-RED — C3.** Pre-existing six-pin `rl_model` staleness on this branch. Raw at `GUARD5_CP_out.txt`. **NOT claimed green anywhere. NOT re-pinned.** Its `v0surf` line independently confirms the register v767 footgun (`/home/claude/v0surf.pkl`, md5 `fbc5b393`, shadowing the pinned `5dd34ca8`) — which is exactly why every run in this pass bound `RL_V0SURF_PKL` explicitly. |
 
-### 4.8 · NOT RUN — 2, both blocked, neither guessed
+### 4.8 · ~~NOT RUN — 2, both blocked, neither guessed~~ → **BOTH NOW RUN AND GREEN (D7b)**
 
-| item | why |
-|---|---|
-| the class mark on the candidate matrix | no matrix exists (§3). **Not measured, not estimated.** |
-| the full no-arb page for `a05fe951` | no matrix exists (§3). **No owner page written.** |
+| item | as filed | **AS AMENDED** |
+|---|---|---|
+| the class mark on the candidate matrix | no matrix exists (§3). **Not measured, not estimated.** | ### **GREEN — W2 `1.0671912038`** (quote **1.0672**), cohort `1.0423757018`, max class `1.1738` at draft 2015. Instrument **VALIDATED** against ORDER K first: W2 `1.0513` vs `1.0513` (Δ `0.0000`), cohort `1.0324` vs `1.0324` (Δ `0.0000`). `CLASS_D7B_out.txt` |
+| the full no-arb page for `a05fe951` | no matrix exists (§3). **No owner page written.** | ### **GREEN — `D7B_NOARB.html`**, candidate-only, all 8 ND bands × 2 windows, all 9 pool arms × 2 windows, the path test on every breaching cell, the MSD yr1 exclusion printed with its reason, the four ruled documented-reds labelled, and a raw-file manifest. §4.10 |
+
+### 4.9 · **ORDER D7b's OWN ITEMS — 12 enumerated, 12 RUN, 12 GREEN**
+
+Counted separately from the completion pass's 44 so nothing is double-counted. The emit (F3), the
+class mark and the no-arb page are **re-scores of existing items** in §4.7/§4.8 and are **not**
+counted again here.
+
+| # | item | expected | got | |
+|---|---|---|---|---|
+| 1 | `D7B_IDENT_P` — all `O41+` dials off | `374d4e44` | `374d4e442665771801c5f1edd2a7e0e2` | **GREEN** |
+| 2 | `D7B_IDENT_K` — ORDER K's ruled line | `f3101883` | `f3101883a60b0a7b8cb50f9d8a5abfff` | **GREEN** |
+| 3 | `D7B_L0R` — R20A, the owner's reference | `7f88f509` | `7f88f5096ff5b781da4614b7142d332c` | **GREEN** |
+| 4 | `D7B_NOO42` — `RL_O42` unset | `ff936186` | `ff9361867357c085c8111ba957ce4f3b` | **GREEN** |
+| 5 | **`D7B_BASE` — the dial OFF (F2)** | `daa16812` | `daa16812e50fb71241e627d89180412c` | **GREEN** |
+| 6 | ### **`D7B_CAND` — the dial ON, THE BOARD MUST NOT MOVE (F1)** | `a05fe951` | `a05fe951f78482c70520480e184c80ec` | **GREEN** |
+| 7 | `D7B_CAND2` — board determinism (F4a) | equal | `a05fe951` — identical | **GREEN** |
+| 8 | printed-day-0 assert on every D7b board (F5) | 89 of 89 | **89 of 89**, tolerance 0 | **GREEN** |
+| 9 | **matrix determinism ×2 (F4b)** | equal | `fd7dafadbed2a78a89b5da3140498ebb` ×2 | **GREEN** |
+| 10 | **`Y==2026` only — years 1..7 unmoved (F7)** | 0 mismatches | **0 of 207** comparisons (23 rows × 9 years) | **GREEN** |
+| 11 | **the riser untouched (F8)** | no change | `ollie-murphy` carries no fade pair; emits **200** | **GREEN** |
+| 12 | the subsumption assert is **live in the engine**, not assumed | halts if violated | asserted at run; predicate confirmed built on `o31_D` | **GREEN** |
+
+### 4.10 · THE NO-ARB HEADLINES ON `a05fe951` — yr0→1, both windows
+
+**ND bands** (`BANDS_D7B_out.txt`). n = 1200 PRIMARY / 311 MODERN.
+
+| band | PRIMARY | | MODERN | |
+|---|---|---|---|---|
+| ALL picks 1-64 | **+6.63%** | fair | **+1.95%** | fair |
+| picks 1-20 | **+13.13%** | fair | **+15.04%** | **BUY-RED** — path FAILS (still rising at yr7) |
+| picks 21-64 | **−3.64%** | SELL-RED | **−19.18%** | SELL-RED |
+| picks 1-10 | **+13.30%** | fair | **+21.52%** | **BUY-RED** — path FAILS (still rising at yr7) |
+| picks 11-20 | **+12.80%** | fair | **+3.17%** | fair |
+| picks 21-30 | **+6.14%** | fair | **−15.88%** | SELL-RED |
+| picks 31-40 | **−11.04%** | SELL-RED | **−13.32%** | SELL-RED |
+| picks 41-64 | **−7.44%** | SELL-RED | **−27.68%** | SELL-RED |
+
+**Pool arms** (`STANDING_TABLES_D7B_out.txt`).
+
+| arm | PRIMARY | | MODERN | |
+|---|---|---|---|---|
+| RD | **−4.33%** (n=623) | SELL-RED | **−21.77%** (n=66) | SELL-RED |
+| MSD | **—** (n=55) | **yr1 EXCLUDED — pre-window** | **—** (n=55) | **yr1 EXCLUDED — pre-window** |
+| UNR | **−44.10%** (n=49) | SELL-RED | **−34.95%** (n=13) | SELL-RED |
+| IRE | **+10.47%** (n=47) | fair | **−54.98%** (n=12) | SELL-RED |
+| PDA | **−22.60%** (n=43) | SELL-RED | **−48.72%** (n=13) | SELL-RED |
+| PDN | **−42.52%** (n=33) | SELL-RED | **−38.23%** (n=25) | SELL-RED |
+| **SSP** | **+56.56%** (n=31) | **BUY-RED** — path FAILS (beats carry yr 2,3) | **+56.56%** (n=31) | **BUY-RED** — same |
+| PDS | **−26.15%** (n=21) | SELL-RED | **ABSENT** | no qualifying rows in the window — a POPULATION fact, printed not dropped |
+| ALLPOOL | **−5.99%** (n=1016) | SELL-RED | **−11.32%** (n=229) | SELL-RED |
+
+**FOUR breaching cells on the whole board, and all four are already-ruled documented-reds:** MODERN
+picks 1-10 and 1-20 (**ruled accepted**), and SSP in both windows (**inherited, parked**, register
+v744 C6). **The MSD year-1 exclusion is a cohort-clock fact, not a reading:** the clock keys an MSD
+row on the **draft year itself**, not draft + 1 as for everyone else, because a mid-season draftee's
+first season **is** his draft season — so at year 1 he falls **before** the first year his path
+covers, and those rows are counted pre-window and **excluded** rather than scored as zero.
 
 ---
 
 ## 5 · THE RED LEDGER — WHAT COULD AND COULD NOT BE MEASURED ON THIS BOARD
 
-| ruled documented-red | measured on `a05fe951`? |
-|---|---|
-| **tail 0.80 ruled** | **YES — 0.8004**, on the candidate's own charge form (`TAIL_CP_out.txt`) |
-| modern 1-10 and 1-20 buy-side reds — **ruled accepted** | **NO — not measurable.** The no-arb instruments read a matrix. Carried forward as ruled, **not re-measured and not re-asserted on this board.** |
-| late-band sell-reds — **population-risk ruled** | **NO — not measurable**, same reason |
-| **SSP inherited / parked** | **NO — not measurable**, same reason |
+| ruled documented-red | as filed | **AS AMENDED BY D7b — measured on `a05fe951`** |
+|---|---|---|
+| **tail 0.80 ruled** | **YES — 0.8004**, on the candidate's own charge form (`TAIL_CP_out.txt`) | unchanged — it never read a matrix and was never blocked |
+| modern 1-10 and 1-20 buy-side reds — **ruled accepted** | **NO — not measurable** | ### **YES** — 1-10 **+21.52%**, 1-20 **+15.04%**. Both breach; both **FAIL** the path test on limb (b), still rising at yr7. |
+| late-band sell-reds — **population-risk ruled** | **NO — not measurable** | ### **YES** — PRIMARY 31-40 **−11.04%**, 41-64 **−7.44%**, 21-64 **−3.64%**; MODERN 21-30 **−15.88%**, 31-40 **−13.32%**, 41-64 **−27.68%**, 21-64 **−19.18%** |
+| **SSP inherited / parked** | **NO — not measurable** | ### **YES — +56.56%** (n=31), both windows. **BUY-RED**, path FAILS on limb (a). **Better than ORDER P (+58.17%), worse than ORDER K (+52.71%). NOT repaired by this board and never meant to be** (register v744 C6). |
 
-**Three of the four red-ledger cells could NOT be measured on this board**, and this packet does not
-carry the base's readings forward as though they were the candidate's.
+**As filed, three of the four red-ledger cells could NOT be measured, and the completion pass
+correctly refused to carry the base's readings forward as though they were the candidate's.**
+**ALL FOUR ARE NOW MEASURED ON THE CANDIDATE'S OWN MATRIX.** Every one is reported at **what it
+actually reads**, in both directions. **No dial was touched to chase any of them** — D7b's single
+engine edit has no free parameter and moves no board.
 
 ---
 
@@ -305,13 +450,21 @@ Biggest down vs live: Harry Sheezel −1,331 · Archie Roberts −1,155 · Mitch
 ## 8 · WHAT THIS PASS DOES NOT CLAIM
 
 - **The candidate is not adopted.** **Priced, not adopted.** The tag and the `main` promote are
-  OWNER-ONLY.
-- **Guard 5 is not green.** It is RED, C3, pre-existing, recorded raw, not re-pinned.
-- **The class mark and the no-arb numbers are not known for this board** and are not guessed.
-- **The birthday question is not answered.** The probe failed its own self-check and therefore says
-  nothing.
-- **Three of four red-ledger cells are not measured on this board** and are not carried across.
+  OWNER-ONLY. **ORDER D7b changes NOTHING about this** — it delivered a wiring fix and three
+  measurements, not a promotion.
+- **Guard 5 is not green.** It is RED, C3, pre-existing, recorded raw, not re-pinned. **D7b did not
+  re-pin it and does not claim it green.**
+- ~~The class mark and the no-arb numbers are not known for this board~~ → **now measured** (§4.8,
+  §4.10). They are reported at what they read, in both directions, and **nothing was tuned to them.**
+- **The birthday question is STILL not answered.** The R3 probe still fails its own self-check
+  (47 of 67) and therefore still says nothing. **It is a named instrument follow-up, NOT fixed by
+  D7b and NOT re-scored.**
+- ~~Three of four red-ledger cells are not measured~~ → **all four now measured** (§5). Being
+  **ruled** is not the same as being **repaired**: every one is still a red, and each is labelled as
+  the ruled red it is.
 - **`D7-F8` FIRED** and stays reported as having fired.
+- **D7b's own falsifiers ALL PASSED, including the one that could have stopped it** — F1, the board
+  must not move. Had it moved, the order was to HALT and report, not renormalise. It did not move.
 - **U0 = 7 return games — OWNER-RULED, DATA-SUPPORTED**, both halves, wherever quoted.
 - **Depths are quoted as depths (clock values)**, never as "Nth year" prose.
 
@@ -342,5 +495,33 @@ docs/evidence/final_candidate_2026-08-19/
   GUARD5_CP_out.txt                 Guard 5 RED, recorded raw
   cp_tracker.py cp_pages.py cp_v0.py cp_legs.py cp_boards.py cp_r3age.py cp_tail.py
 ```
+
+**ADDED BY ORDER D7b:**
+
+```
+docs/evidence/parity_2026-08-19/          THE D7b BUILD
+  PREREG_D7B.md                     THE PREREG — PUSHED AT cfd4748, BEFORE THE ENGINE WAS TOUCHED
+  build_D7B.sh                      the seven-board identity chain (build_D7.sh, tags re-labelled)
+  BUILD_D7B_out.txt                 the raw chain — every identity, every printed-day-0 assert
+  d7b_probe.py / D7B_PROBE_out.txt  the read-only verification probe: F7 (207 comparisons), F8,
+                                    the single-application proof, and the 89-of-89 emitter arithmetic
+
+docs/evidence/final_candidate_2026-08-19/   THE COMPLETION ITEMS D7b UNBLOCKED
+  EMIT_D7BCAND_out.txt              THE EMIT — 89 of 89, tolerance 0, zero reference edits
+  EMIT_D7BCAND2_out.txt             the determinism repeat — matrix fd7dafad, identical
+  d7b_class.py                      fc_class.py carried, label + filenames only
+  CLASS_D7B.json / _out.txt / _run.txt      THE CLASS MARK — W2 1.0671912038, instrument VALIDATED
+  d7b_bands.py                      fc_bands.py carried, label + filenames only
+  BANDS_D7B.json / _out.txt / _run.txt      the ND bands, all 8, both windows
+  d7b_tables.py                     as_tables.py carried, label + filenames only
+  STANDING_TABLES_D7B.json / _out.txt / _run.txt   the pool arms, all 9, both windows
+  d7b_noarb.py                      the page builder (as_noarb.py's format and path test)
+  D7B_NOARB.html                    ### THE FULL NO-ARB PAGE FOR a05fe951
+  NOARB_D7B_run.txt                 the page build log with the breaching-cell roll-up
+```
+
+**NOT MODIFIED BY D7b, and each for a stated reason:** `docs/evidence/candidate_31f/emit_matrix_31f.py`
+(byte-carried by design, `d5f48806`) · `DAY0_CP.json` (**the reference is correct**, `210510fe`) ·
+`docs/evidence/order_k_2026-08-18/DAY0_K.json` (frozen) · every engine file but `_merged_recover.py`.
 
 **Priced, not adopted.**
