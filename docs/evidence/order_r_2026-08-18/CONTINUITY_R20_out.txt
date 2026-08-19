@@ -1,5 +1,3 @@
-#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
-#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
 ================================================================================================================
 ORDER R — CONTINUITY.  tag=R20  dials={'RL_O37': '1', 'RL_O38B1': '1', 'RL_O39_TMAXPCT': '20'}
   EFFECTIVE CONSTANTS THIS SWEEP USES: THETA_R 0.65743852  TMAX 11.894975  BETA_sat 0.11464630  LAMBDA 0.17438330
@@ -64,5 +62,3 @@ ORDER R — CONTINUITY.  tag=R20  dials={'RL_O37': '1', 'RL_O38B1': '1', 'RL_O39
    THE CHARGED PEDIGREE LEG across 5014 price steps x 30 (class, games, surplus) cells:
      cells where the leg FALLS with price: 24 of 30 ; total falling steps: 10655
      worst single fall: 5.658e-03 of the leg, TALL g=60 OUT=+8 at v0 2779
-
-wrote CONTINUITY_R20_out.txt

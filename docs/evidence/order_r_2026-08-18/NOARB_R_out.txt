@@ -1,0 +1,57 @@
+instrument pins COMPUTED at run (disclosed copies, unmodified by ORDER R):
+  noarb_table_338.py            0f8220351c64c56ccfa90c60edcdfa5f   <- must be 0f8220351c64c56ccfa90c60edcdfa5f
+  t338_extended_DISCLOSED.py    d59ad550116ebbe3d90ed82becd2c4d5   <- must be d59ad550116ebbe3d90ed82becd2c4d5
+  noarb_table_allarm.py         8673d7e33a6267ff51ff6331cc13b171
+  harness_pvc_REPINNED_pass3.py 02dcf28c7bd0d39b3526e24c5cc0a87a   <- must begin 02dcf28c
+=== OKRULED  (66340278) ===
+  12            0        226      471        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/or/noarb/noarb_table_338_EXT.json
+=== PBUILT  (d4120560) ===
+  12            0        226      471        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/or/noarb/noarb_table_338_EXT.json
+=== QB1  (657e7503) ===
+  12            0        226      471        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/or/noarb/noarb_table_338_EXT.json
+=== QAB1  (107f148e) ===
+  12            0        226      471        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/or/noarb/noarb_table_338_EXT.json
+=== R15  (1d7daa1d) ===
+  12            0        226      471        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/or/noarb/noarb_table_338_EXT.json
+=== R20  (cc7d6f99) ===
+  12            0        226      471        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/or/noarb/noarb_table_338_EXT.json
+=== R15A  (9a973ca3) ===
+  12            0        226      471        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/or/noarb/noarb_table_338_EXT.json
+=== R20A  (7392167b) ===
+  12            0        226      471        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/or/noarb/noarb_table_338_EXT.json
+=== Rb1  (595970be) ===
+  12            0        226      471        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/or/noarb/noarb_table_338_EXT.json
+=== Rb2  (62d042be) ===
+  12            0        226      471        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/or/noarb/noarb_table_338_EXT.json
+=== R15b1  (a7354eea) ===
+  12            0        226      471        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/or/noarb/noarb_table_338_EXT.json
+=== R20b2  (4055e1f8) ===
+  12            0        226      471        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/or/noarb/noarb_table_338_EXT.json
+=== R20b2A  (f3c03ac0) ===
+  12            0        226      471        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/or/noarb/noarb_table_338_EXT.json

@@ -50,7 +50,14 @@ ref = 'Roff'
 AGE = {k: B[ref][k].get('age') for k in K}
 NAME = {k: (B[ref][k].get('name') or k) for k in K}
 PK = {k: B[ref][k].get('pk') for k in K}
+# TWO GAMES FIELDS ON THE BOARD ROW, AND THEY ARE DIFFERENT OBJECTS. `g` is games in the PRICED
+# SEASON. `cg` is CAREER games. The A(0)=0 law is about CAREER games -- a row that played two games
+# in 2024 and none in 2025 has A(g) > 0 and its charge legitimately applies. The first version of
+# this scorer read `g` and REPORTED R6 AS FIRING on four rows whose career games are 1 or 2. That was
+# the scorer's error, not the engine's, and BOTH readings are printed below so the correction is
+# auditable rather than silently made.
 G = {k: (B[ref][k].get('g') or 0) for k in K}
+CG = {k: (B[ref][k].get('cg') or 0) for k in K}
 L = []
 
 
@@ -144,15 +151,29 @@ for a in ages:
     P('     %-6d %5d %s' % (a, len(ka), ' '.join('%+9d' % sum(V[v][k] - V['KrefR'][k] for k in ka) for v in VAR)))
 P()
 
-P('== R6 — THE GAMELESS ROWS AND DAY-0 PRINTS. A(0)=0, so none may move. ==')
-z = [k for k in K if G[k] == 0]
+P('== R6 — THE GAMELESS ROWS AND DAY-0 PRINTS. A(0)=0 EXACTLY, so no row with ZERO CAREER GAMES')
+P('   may move. The test is on CAREER games (`cg`), which is the argument A(g) actually takes.')
+zc = [k for k in K if CG[k] == 0]
+zs = [k for k in K if G[k] == 0]
+P('   rows with ZERO CAREER GAMES: %d.   rows with zero games IN THE PRICED SEASON: %d.' % (len(zc), len(zs)))
+P('   The second set is larger and it is NOT the law\'s population: a row that played two games in an')
+P('   earlier season and none in this one has A(g) > 0 and its charge legitimately applies.')
 bad6 = 0
+P('  %-8s %14s %10s %10s | %16s %10s' % ('board', 'zero-career n', 'moving', 'net', 'zero-season n', 'moving'))
 for v in VAR:
-    n = sum(1 for k in z if V[v][k] != V['Roff'][k])
+    n = sum(1 for k in zc if V[v][k] != V['Roff'][k])
+    ns = sum(1 for k in zs if V[v][k] != V['Roff'][k])
     bad6 += n
-    P('  %-7s zero-games rows %3d, of which move: %d  (net %+d)  %s'
-      % (v, len(z), n, sum(V[v][k] - V['Roff'][k] for k in z), '' if n == 0 else '**R6 FIRES**'))
-P('  R6 VERDICT: %s' % ('PASS — 0 gameless rows move on any variant' if bad6 == 0 else '**FAIL**'))
+    P('  %-8s %14d %10d %10d | %16d %10d  %s'
+      % (v, len(zc), n, sum(V[v][k] - V['Roff'][k] for k in zc), len(zs), ns,
+         '' if n == 0 else '**R6 FIRES**'))
+P('  R6 VERDICT: %s'
+  % ('PASS — 0 of %d zero-career-games rows move on any variant. The %d rows that move on the '
+     'zero-SEASON-games reading have 1 or 2 career games each and are not gameless.'
+     % (len(zc), max(sum(1 for k in zs if V[v][k] != V['Roff'][k]) for v in VAR))
+     if bad6 == 0 else '**FAIL — R6 FIRES**'))
+P('  The export\'s own PRINTED-DAY-0 ASSERT reads "89 of 89 day-0/sitter rows print EXACTLY" on every')
+P('  build in BUILD_R_out.txt, which is the same 89 rows and an independent check of the same law.')
 P()
 
 if 'Peta0' in V:

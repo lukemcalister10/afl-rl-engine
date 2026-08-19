@@ -1,8 +1,8 @@
 #P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
 #P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
 ================================================================================================================
-ORDER R — CONTINUITY.  tag=R20  dials={'RL_O37': '1', 'RL_O38B1': '1', 'RL_O39_TMAXPCT': '20'}
-  EFFECTIVE CONSTANTS THIS SWEEP USES: THETA_R 0.65743852  TMAX 11.894975  BETA_sat 0.11464630  LAMBDA 0.17438330
+ORDER R — CONTINUITY.  tag=R20b2  dials={'RL_O37': '1', 'RL_O38B1': '1', 'RL_O39_TMAXPCT': '20', 'RL_O39_BETASAT': '0.105'}
+  EFFECTIVE CONSTANTS THIS SWEEP USES: THETA_R 0.60212186  TMAX 10.978275  BETA_sat 0.10500000  LAMBDA 0.17438330
   (ORDER P's own: THETA_R 0.65743852  TMAX 21.123282  BETA_sat 0.11464630)
 ================================================================================================================
 
@@ -10,9 +10,9 @@ ORDER R — CONTINUITY.  tag=R20  dials={'RL_O37': '1', 'RL_O38B1': '1', 'RL_O39
    The charge factor at 20 career games, at four levels of pedigree surplus, ages 18 to 30.
    The factor is what MULTIPLIES the pedigree leg: 1.000 means no charge at all.
    s_P           18      19      20      21      22      23      24      25      26      27      28      29      30
-   -25.0     0.1653  0.1653  0.1653  0.1653  0.1653  0.1653  0.1653  0.1653  0.1653  0.1653  0.1653  0.1653  0.1653
-   -10.0     0.4057  0.4057  0.4057  0.4057  0.4057  0.4057  0.4057  0.4057  0.4057  0.4057  0.4057  0.4057  0.4057
-   -3.0      0.8140  0.8140  0.8140  0.8140  0.8140  0.8140  0.8140  0.8140  0.8140  0.8140  0.8140  0.8140  0.8140
+   -25.0     0.1899  0.1899  0.1899  0.1899  0.1899  0.1899  0.1899  0.1899  0.1899  0.1899  0.1899  0.1899  0.1899
+   -10.0     0.4322  0.4322  0.4322  0.4322  0.4322  0.4322  0.4322  0.4322  0.4322  0.4322  0.4322  0.4322  0.4322
+   -3.0      0.8178  0.8178  0.8178  0.8178  0.8178  0.8178  0.8178  0.8178  0.8178  0.8178  0.8178  0.8178  0.8178
    0.0       1.0000  1.0000  1.0000  1.0000  1.0000  1.0000  1.0000  1.0000  1.0000  1.0000  1.0000  1.0000  1.0000
    largest step in the charge factor between two consecutive ages: 0.0000
    NO STEP AT ANY AGE. The charge does not read current age at all.
@@ -52,17 +52,17 @@ ORDER R — CONTINUITY.  tag=R20  dials={'RL_O37': '1', 'RL_O38B1': '1', 'RL_O39
      Luke Jackson               age 25 -> 26   140g     9386 ->   9386   x1.000
 
 == GAMES — the charge factor, 0 to 400 at 0.01, at seven surplus levels ==
-   largest step 2.094e-03 ; the charge RISES with games at 0 of 280,000 steps (largest rise 0.000e+00)
+   largest step 1.933e-03 ; the charge RISES with games at 0 of 280,000 steps (largest rise 0.000e+00)
 
 == SURPLUS — the charge factor across 100 points of surplus at 0.01 ==
-   largest step 9.934e-04 ; a BETTER player is charged MORE at 0 of 10,000 steps
+   largest step 9.099e-04 ; a BETTER player is charged MORE at 0 of 10,000 steps
 
 == ENTRY PRICE — the premium, and THE CHARGED PEDIGREE LEG, across 40 to 6,000 ==
    FIX A's whole claim is that the LEG is non-decreasing in entry price. It is measured here on
    a dense sweep, through the engine's own o38/o37 objects, not argued.
    the premium FALLS with price at 0 of 10028 steps; largest one-step move 0.0570
    THE CHARGED PEDIGREE LEG across 5014 price steps x 30 (class, games, surplus) cells:
-     cells where the leg FALLS with price: 24 of 30 ; total falling steps: 10655
-     worst single fall: 5.658e-03 of the leg, TALL g=60 OUT=+8 at v0 2779
+     cells where the leg FALLS with price: 23 of 30 ; total falling steps: 10013
+     worst single fall: 5.097e-03 of the leg, TALL g=60 OUT=+8 at v0 2779
 
-wrote CONTINUITY_R20_out.txt
+wrote CONTINUITY_R20b2_out.txt

@@ -108,3 +108,31 @@ wrote CONTINUITY_RB1_out.txt
 wrote CONTINUITY_R15_out.txt
 
 ########## or_continuity.py  R20  RL_O37=1 RL_O38B1=1 RL_O39_TMAXPCT=20 ##########
+  rc=0
+     cells where the leg FALLS with price: 24 of 30 ; total falling steps: 10655
+     worst single fall: 5.658e-03 of the leg, TALL g=60 OUT=+8 at v0 2779
+
+wrote CONTINUITY_R20_out.txt
+
+########## or_continuity.py  Rb2  RL_O37=1 RL_O38B1=1 RL_O39_BETASAT=0.105 ##########
+  rc=0
+     cells where the leg FALLS with price: 29 of 30 ; total falling steps: 16536
+     worst single fall: 5.097e-03 of the leg, TALL g=60 OUT=+8 at v0 2779
+
+wrote CONTINUITY_Rb2_out.txt
+
+########## or_continuity.py  R20b2  RL_O37=1 RL_O38B1=1 RL_O39_TMAXPCT=20 RL_O39_BETASAT=0.105 ##########
+  rc=0
+     cells where the leg FALLS with price: 23 of 30 ; total falling steps: 10013
+     worst single fall: 5.097e-03 of the leg, TALL g=60 OUT=+8 at v0 2779
+
+wrote CONTINUITY_R20b2_out.txt
+
+########## or_continuity.py  R20b2A  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_TMAXPCT=20 RL_O39_BETASAT=0.105 ##########
+  rc=0
+     cells where the leg FALLS with price: 0 of 30 ; total falling steps: 0
+     worst single fall: NONE
+
+wrote CONTINUITY_R20b2A_out.txt
+
+=== MEASUREMENT SUITE DONE ===
