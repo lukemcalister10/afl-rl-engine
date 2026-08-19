@@ -6,6 +6,11 @@
 # were emitted from the IDENTICAL dial line by ORDER Q / ORDER P / ORDER R, and this order has
 # already proved byte-exact board identity on all four (BOARDS_S_out.txt). Re-emitting them would
 # burn nine minutes each reproducing a file byte for byte.
+# THE TWO LAMBDA FRONTIER ENDPOINTS (SL56, SL10) ARE NOT EMITTED AND THAT IS A DELIBERATE CHOICE,
+# DISCLOSED HERE. S3 HALTS: there is no solved level to price, the frontier is delivered offline on
+# ORDER P's own step-4 machinery over 61 rungs, and that machinery was first VALIDATED against
+# ORDER R's BUILT boards, which it reproduces exactly (R15 W2 1.0690, R20 1.0740, R20 PRIMARY 1-10
+# +10.12%). Their BOARDS are built and scored; only their walk-forward matrices are not emitted.
 set -uo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 K="RL_O31=1 RL_O32=1 RL_O36=1 RL_O36_LAM_S1=0.40 RL_O36_TALL=1 RL_O36_FLOORFIX=1 RL_O36_KAPPA=0.20 RL_O36_GAMMA=8.0 RL_O36_ETA=0.50 RL_O36_GAMMA_D=14.0 RL_O36_LAMBDA=1.08 RL_O37=1 RL_O38B1=1"
@@ -16,8 +21,6 @@ for spec in \
   "SC20A:RL_O38A=1 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=20" \
   "SM:RL_O40_PGMAT=1" \
   "SMA:RL_O38A=1 RL_O40_PGMAT=1" \
-  "SL56:RL_O40_LAMBDA=0.56" \
-  "SL10:RL_O40_LAMBDA=0.10" \
   "SALL:RL_O38A=1 RL_O40_RECW=0.47 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=20 RL_O40_PGMAT=1" ; do
   L=${spec%%:*}; D=${spec#*:}
   echo "=== EMIT $L  ($D) ==="

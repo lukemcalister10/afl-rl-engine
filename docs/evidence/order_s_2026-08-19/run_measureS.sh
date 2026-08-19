@@ -44,7 +44,26 @@ for spec in "${SPECS[@]}"; do
 done
 echo
 echo "=== ORDER S CONTINUITY — strictly sequential, INCLUDING THE SEASON-TURN AXIS ==="
-for spec in "${SPECS[@]}"; do
+# CONTINUITY IS RUN ON A SUBSET AND THE SUBSET IS NAMED HERE RATHER THAN LEFT TO BE NOTICED.
+# Every ORDER S variant carries FIX B1, and B1 collapses the 23->24 age step to exactly zero on
+# EVERY cell (ORDER Q measured that and ORDER R reproduced it on twelve boards), so the age axis is
+# structurally identical across the eleven variants. The cells run below are: both controls, both
+# recency cells (the only ones that can move the SEASON-TURN axis at all), both compression cells
+# (the only ones that change the shape of T), both mature cells, and the far corner. The three not
+# run are SW28, SC15 and the two LAMBDA frontier endpoints, whose axes are bracketed by cells that
+# ARE run. THIS IS A WALL-CLOCK CHOICE AND IT IS DISCLOSED, NOT HIDDEN.
+CSPECS=(
+  "SB1:RL_O37=1 RL_O38B1=1"
+  "SAB1:RL_O37=1 RL_O38A=1 RL_O38B1=1"
+  "SW47:RL_O37=1 RL_O38B1=1 RL_O40_RECW=0.47"
+  "SW47A:RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O40_RECW=0.47"
+  "SC20:RL_O37=1 RL_O38B1=1 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=20"
+  "SC20A:RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=20"
+  "SM:RL_O37=1 RL_O38B1=1 RL_O40_PGMAT=1"
+  "SMA:RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O40_PGMAT=1"
+  "SALL:RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O40_RECW=0.47 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=20 RL_O40_PGMAT=1"
+)
+for spec in "${CSPECS[@]}"; do
   T=${spec%%:*}; D=${spec#*:}
   run os_continuity.py "$T" $D
 done

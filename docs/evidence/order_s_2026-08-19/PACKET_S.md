@@ -173,6 +173,32 @@ calls is that every season is one year further back. Results in §6.4.
 **What this axis deliberately does NOT cover, said plainly:** the ARRIVAL of a new season at a turn
 moves the surplus, and it should — that is new evidence, not a weighting artefact.
 
+### 1.7 WHAT THE RECENCY FIX REACHES, AND WHAT IT CANNOT REACH
+
+**The parallel read-only seat's T2 audit (`docs/evidence/order_s_readonly_2026-08-19/PACKET_SRO.md`)
+maps THREE staleness failure modes. This seat's variant reaches ONE of them. That bound is stated
+here, in this seat's own packet, rather than left for someone to find.**
+
+| # | the failure mode, as that seat measured it | population | does S1's recency weighting reach it? |
+|---|---|---:|---|
+| **1** | **the charge weights three-year-old evidence at full weight.** `s_P` reads played seasons with no date at all; the median board row is charged against evidence **2.03 seasons old** at full weight | the whole charged population | **YES. This is exactly and only what `RL_O40_RECW` changes.** |
+| **2** | **staleness entirely unpriced by BOTH mechanisms.** A row one season out sits at `c_u ≤ 1` where the fade schedule is 1.000, AND the charge is silent — not because the season is under-weighted but because **it is ABSENT from `s_P` altogether** | **19 of 53 stale rows**, 10 of which move under one board point | **NO, AND IT NEVER CAN.** Reweighting the seasons a row DID play cannot make the charge read a season he did not play. There is no term to reweight. |
+| **3** | **the clock credit is a step, not a rate.** `o31_played_units` credits `min(1, games/2)`, so a two-game season buys the same full unit of sitter clock a twenty-two-game season buys | **217 board rows** have at least one 1-2 game season; 120 inside the last four | **NO.** That is the sitter machinery's own clock, and no dial in this order touches it. |
+
+**Said as plainly as it can be said: a recency weighting makes the charge read RECENT EVIDENCE more
+heavily. It does not make the charge read the ABSENCE of evidence at all.** The two most expensive
+stale rows on the whole board — 4,339 and 3,196 board points, neither having played in 2026 — are in
+mode 2, and **`RL_O40_RECW` moves neither of them for that reason**, because both have played
+seasons only and nothing to reweight toward a season that is not there.
+
+**THIS SEAT DOES NOT EXTEND ITS SCOPE TO MODE 2.** Whether the charge should read MISSING seasons is
+a rulings-level design question — it changes what the surplus IS, not how it is weighted — and it
+belongs to the owner, not to a tuning dial. **Mode 3 is likewise untouched and is the sitter
+machinery's, not the charge's.**
+
+**Any claim that this order's recency fix "prices non-selection" would be false, and this packet says
+so before anyone can make it.**
+
 ---
 
 ## 2 · S2 — THE OWNER'S COMPRESSED CAP
@@ -421,6 +447,46 @@ Refitted on career-games bands with ages pooled:
 **The premium rises with career stage at the cheap end and peaks in the middle at the expensive
 end.** So the age split priced here is a coarse read on a smoother object. **That is a limitation of
 what was priced, and it is stated rather than buried.**
+
+### 5.6 IS THE YOUNG/MATURE GAP REALLY AN AGE EFFECT? THE POSITION-COMPOSITION CROSS-CHECK
+
+**The parallel seat's T1 found the PG LEVEL by position is NOT a null** — SD over-barred by 2.978
+points a game `[−4.329, −1.661]`, RUCK by 5.57 `[−8.18, −2.90]`, SF UNDER-barred by 2.709
+`[+1.83, +3.67]`, with MID/KPD/KPF nulls and the offsets summing to zero within each class.
+
+**That creates a live confound for this section and it has to be ruled out rather than ignored.** If
+the mature population's POSITION mix differs from the young one, part of the young-to-mature premium
+gap measured above would be a composition effect wearing an age costume.
+
+**MEASURED. The mix does shift, and the shift is far too small to carry the gap:**
+
+| class | position | young games share | mature games share | shift |
+|---|---|---:|---:|---:|
+| TALL | KPD | 36.3% | 40.9% | +4.6 |
+| TALL | KPF | 50.6% | 38.8% | **−11.8** |
+| TALL | RUCK | 13.1% | 20.3% | +7.2 |
+| SMALL | MID | 37.5% | 36.7% | −0.8 |
+| SMALL | SD | 26.0% | 30.2% | +4.2 |
+| SMALL | SF | 36.6% | 33.1% | −3.4 |
+
+Weighting those shifts by **the parallel seat's OWN published level offsets** (KPD and KPF nulls
+carried as zero) gives the composition-implied change in each class's mean position level:
+
+- **TALL: −0.399 points a game.**
+- **SMALL: −0.214 points a game.**
+
+**Against measured young-to-mature premium gaps of +4.03 at `v0` 400 and −4.71 at `v0` 3,000, the
+composition effect is under a tenth of the signal and it has the WRONG SHAPE — it is a single
+constant offset, while the measured gap CHANGES SIGN across the price axis.** A level shift cannot
+produce a sign change. **The young/mature difference is an age/stage effect, not a position-mix
+artefact.**
+
+**THE TWO OBJECTS ARE KEPT DISTINCT AND NEITHER ABSORBS THE OTHER.** T1's finding is about the
+POSITION axis of the bar; S5's is about the AGE axis of the premium. `RL_O40_PGMAT` changes the
+premium surface read on mature seasons and **does not touch any position term** — the position bar
+`o32_gate_bar(pos, age)` is untouched by every dial in this order. **If a position-level repair is
+ever adopted it must be applied to the position bar, not folded into the premium, or the two would
+double-count.** This packet prices no position repair and recommends none.
 
 **S5-P1 was WRONG as written** (it asked for ≥ 2 points a game shallower at `v0` 3,000 on BOTH
 classes; TALL reads −1.97, just inside). **S5-P2 was WRONG** — the mature fit's effective sample at
