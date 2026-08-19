@@ -4547,7 +4547,15 @@ if _O30B_PREVIEW:
                 # s_P(v) = OUT - wT*PG(v,TALL) - wS*PG(v,SMALL) survives EXACTLY. Dial off => _ww IS
                 # _gg and these lines are ORDER Q's byte for byte.
                 _ww=(_gg*(O40_RECW**(int(Y)-int(_x['year']))) if _O40REC else _gg)
-                _num+=_ww*(float(_x['avg'])-_b); _den+=_ww
+                # ORDER 41 (RL_O41_SDOFF): THE SAME SD bar offset o37_surplus applies, applied HERE
+                # TOO. THIS SITE IS LOAD-BEARING AND IT IS NOT A DUPLICATE BY ACCIDENT: with FIX A
+                # live the charge does NOT read o37_surplus's return — o38_mono rebuilds the surplus
+                # from THIS decomposition as s_P(v) = OUT - wT*PG(v,TALL) - wS*PG(v,SMALL), so an
+                # offset applied only in o37_surplus reaches nothing on a FIX A board. (Measured, not
+                # reasoned: the first SD board built without this line was BYTE-IDENTICAL to the board
+                # without the dial. It is in the packet as a caught defect.) The offset is a CONSTANT
+                # addition to OUT and carries no v term, so the FIX A identity survives EXACTLY.
+                _num+=_ww*(float(_x['avg'])-_b+(_O41_SDOFF if _pos=='SD' else 0.0)); _den+=_ww
                 if _pos in O32_TALLPOS: _wt+=_ww
                 if _O40_PGMAT and (_x['year']-_by)>=O37_AGE_GATE:
                     if _pos in O32_TALLPOS: _wtm+=_ww
