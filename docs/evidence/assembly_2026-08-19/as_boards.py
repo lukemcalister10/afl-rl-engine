@@ -56,7 +56,7 @@ for t in ORDER:
     q = '%s/bb_%s/rl_after/rl_app_data.json' % (ASM, t)
     if os.path.exists(q):
         PATHS[t] = q
-_live = ROOT + '/engine/rl_after/rl_app_data.json'
+_live = SP + '/o29r/seal/rl_after/rl_app_data.json'
 if os.path.exists(_live):
     PATHS['live'] = _live
 MD5 = {t: hashlib.md5(open(q, 'rb').read()).hexdigest() for t, q in PATHS.items()}
@@ -73,11 +73,11 @@ PICK = {}
 CAT = {}
 for t in ('CAND', 'L0_R', 'IDENT_P', 'live'):
     for k, r in B.get(t, {}).items():
-        NAME.setdefault(k, r.get('player') or r.get('name') or k)
-        POS.setdefault(k, r.get('pos') or (r.get('fut') or [['?']])[0][0])
+        NAME.setdefault(k, r.get('name') or k)
+        POS.setdefault(k, r.get('grp') or (r.get('fut') or [['?']])[0][0])
         AGE.setdefault(k, r.get('age'))
         BAND.setdefault(k, r.get('band'))
-        PICK.setdefault(k, r.get('pick'))
+        PICK.setdefault(k, r.get('pk'))
         CAT.setdefault(k, r.get('cat'))
 
 KEYS = sorted(set().union(*[set(V[t]) for t in V]))
@@ -119,10 +119,13 @@ for t, want in REF_TOT.items():
             FAIL.append('%s total %d != %d' % (t, TOT[t], want))
         P('  %-9s total expected %s  got %s   %s'
           % (t, '{:,}'.format(want), '{:,}'.format(TOT[t]), 'OK' if ok else '*** FIRED ***'))
-P('  DETERMINISM (A-F4): CAND vs CAND_2  %s'
-  % ('IDENTICAL — %s' % MD5.get('CAND', '')[:8] if MD5.get('CAND') and MD5.get('CAND') == MD5.get('CAND_2')
-     else '*** FIRED *** %s vs %s' % (MD5.get('CAND', '')[:8], MD5.get('CAND_2', '')[:8])))
-if MD5.get('CAND') and MD5.get('CAND') != MD5.get('CAND_2'):
+if not MD5.get('CAND') or not MD5.get('CAND_2'):
+    P('  DETERMINISM (A-F4): NOT YET SCORABLE — one of the two repeat boards is missing.')
+    FAIL.append('determinism not scorable')
+elif MD5['CAND'] == MD5['CAND_2']:
+    P('  DETERMINISM (A-F4): IDENTICAL on the repeat — %s. Did not fire.' % MD5['CAND'][:8])
+else:
+    P('  DETERMINISM (A-F4): *** FIRED *** %s vs %s' % (MD5['CAND'][:8], MD5['CAND_2'][:8]))
     FAIL.append('determinism')
 P()
 if FAIL:

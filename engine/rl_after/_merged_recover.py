@@ -2793,7 +2793,13 @@ def ev(p,Y=2026):
     # would be charged the same fact twice. DISCLOSED: the mediocre-for-years branch is stashed on the
     # same channel; it is a production cap rather than a staleness cap, and folding it in is the
     # conservative direction (it can only make the take look LARGER and the R3 residual SMALLER).
-    if _O41_R3 and _o41_e_pre!=e:
+    # WRITTEN ON EVERY PASS, NOT ONLY WHEN A CAP FIRED. Writing conditionally left a STALE entry
+    # behind whenever the same row was priced twice at the same year through paths that differed in
+    # whether the cap fired — and the second price then read the first pass's pre-cap leg, which made
+    # the price depend on EVALUATION ORDER. The engine's own EXPORT<->ENGINE PARITY GATE caught it on
+    # exactly one row (shadeau-brain, board 77 vs engine 80). Always writing makes the stash a
+    # same-call hand-off rather than a cache, and the gate passes.
+    if _O41_R3:
         _O41_PRED8[(id(p),int(Y))]=float(_o41_e_pre)
     # ORDER 30B-P — THE BLEND SITE. `e` is now the FINISHED PRODUCTION LEG: pole deleted, ISO deleted, and
     # the RETAINED form machinery (ITEM H's ruled cuts, the ruck ceiling, the KPF compression, D8 graded
@@ -4702,6 +4708,40 @@ if _O30B_PREVIEW:
     # so F3's gap is an UPPER BOUND on the shortfall, not a point estimate. The take is therefore
     # CAPPED so the total can never EXCEED the measured cost's point estimate, and capped again at the
     # production leg itself so the factor stays inside [0, 1].
+    def o41_absence_depth(p,Y):
+        """THE NUMBER OF SEASONS THE ROW HAS GENUINELY NOT PLAYED, on F3's own clock: depth 1 is the
+        normaliser (nothing missed) and depth 2 is ONE unplayed season, exactly as FOLLOWUP_F3.json's
+        dcurve is indexed.
+
+        THIS IS DELIBERATELY *NOT* o31_cu, AND THE DIFFERENCE IS THE WHOLE POINT. o31_cu is the
+        SITTER clock: it is time-since-delivery MINUS a partial credit for each season played, and
+        under the F1 measured credit curve a season of 5 games now credits 0.25 instead of 1.00. That
+        is right for the pedigree fade — a five-game season really is weak evidence — but it is WRONG
+        as a count of seasons missed, because it accumulates for a player who never missed one.
+        MEASURED, NOT REASONED: the first candidate built on o31_cu faded the production leg of a ruck
+        with 187 career games who has played EVERY season since 2015 and has no unplayed season at
+        all. The absence collector must read absence, so it counts absence.
+        Injured-logged live absence is NOT counted — that is the two-channel law."""
+        _yd=None
+        for _x in (p.get('scoring') or []):
+            if _x['year']<=Y and _x.get('games') and o32_delivered(p,Y,_x):
+                _yd=_x['year'] if _yd is None else max(_yd,_x['year'])
+        _pl=set()
+        for _x in (p.get('scoring') or []):
+            if _x.get('games') and float(_x['games'] or 0.0)>0.0: _pl.add(int(_x['year']))
+        _st=(int(_yd) if _yd is not None else (int(p['year']) if p.get('year') else None))
+        if _st is None: return 1.0
+        _n=0.0
+        for _yy in range(_st+1,int(Y)+1):
+            if _yy in _pl: continue
+            if _yy==int(Y):
+                # the live, in-progress season counts only by the fraction elapsed, and not at all
+                # for a row the owner has logged injured.
+                if _O41_INJ and o41_injured(p): continue
+                _n+=float(_fEy(Y,p) or 0.0)
+            else:
+                _n+=1.0
+        return 1.0+_n
     def o41_r3_take(p,Y,g,e,ped):
         """Board points to remove from the production leg so the TOTAL absence collection lands at
         F3's measured cost. Returns 0.0 for every row the law does not reach."""
@@ -4709,7 +4749,7 @@ if _O30B_PREVIEW:
         # THE TWO-CHANNEL LAW: an injured-annotated row is EXEMPT. His absence is explained and the
         # engine does not charge him for it on any channel.
         if o41_injured(p): return 0.0
-        _cx=o31_cu(p,Y)
+        _cx=o41_absence_depth(p,Y)
         # ZERO BELOW DEPTH 2 BY CONSTRUCTION. F3 cannot speak about depth 1 — it is its own normaliser
         # — and the owner's words are "two seasons out". So day-0 rows and one-season-out rows are
         # untouched, which also keeps every printed day-0 price exactly where it was.

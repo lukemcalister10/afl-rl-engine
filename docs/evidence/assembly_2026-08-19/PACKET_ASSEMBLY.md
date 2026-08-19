@@ -27,6 +27,14 @@ number is 0.7378. Recorded as a miss, not reframed. §9.
 **(4) THE FIRST SD-OFFSET BOARD WAS BYTE-IDENTICAL TO THE BOARD WITHOUT THE DIAL** — my wiring was
 wrong and the comparison caught it. §8b.
 
+**(5) THE FIRST R3 BOARD FADED THE PRODUCTION LEG OF PLAYERS WHO HAD NEVER MISSED A SEASON** — a
+187-game ruck who has played every year since 2015 lost 66% of his price for "absence". My wiring
+read the wrong clock. Caught, diagnosed and repaired before the candidate was published. §8c.
+
+**(6) THE ENGINE'S OWN PARITY GATE THEN CAUGHT A THIRD DEFECT** — my R3 reference value was cached in
+a way that made one row's price depend on evaluation order. The gate failed the build rather than
+letting it through. §8d.
+
 ---
 
 ## 1 · WHAT WAS BUILT
@@ -279,6 +287,84 @@ non-SD row is **unchanged to twelve decimals**.
 per-lever stack builds every dial on its own and compares md5s. A single end-to-end candidate build
 would have shipped an SD offset that did nothing, and the packet would have claimed a lever that was
 not there. **The lever document is not just presentation — it is the test that caught this.**
+
+---
+
+## 8c · THE SECOND DEFECT IN MY OWN WIRING — THE R3 COLLECTOR READ THE WRONG CLOCK
+
+**What happened.** The first candidate board built with the R3 production fade live took **−37,701**
+board points off **246 rows**. Inspecting the largest movers showed the collector was firing on
+players with **no unexplained absence at all**:
+
+| row | seasons played | unplayed seasons | before | after | change |
+|---|---|---:|---:|---:|---:|
+| Toby Nankervis | **every season 2015-2026** (187 career games) | **0** | 1,910 | 654 | **−1,256** |
+| Mason Redman | every season but one (155 games) | 1 | 1,090 | 357 | −733 |
+| Ned Moyle | 2023, 2024, 2025, 2026 | **0** | 1,671 | 270 | **−1,401** |
+| Zach Reid | — | **0** | 846 | 150 | −696 |
+
+**243 of the 246 rows the collector hit had played games.** A ruck with 187 career games who has not
+missed a season since 2015 was losing two-thirds of his price for absence he never had.
+
+**The cause.** I sized R3 off `o31_cu`, the **sitter clock**. That clock is time-since-delivery
+**minus a partial credit for each season played** — and under the F1 measured credit curve a season
+of 5 games now credits **0.25** instead of **1.00**. That is exactly right for the pedigree fade (a
+five-game season really is weak evidence) but it is **wrong as a count of seasons missed**, because
+it accumulates for a player who never missed one. Nankervis's 2015 (5 games) and 2016 (7 games) alone
+left him carrying 1.37 of clock; the graded reset (I2) then stopped that clock being wiped, and R3
+read the total as "two seasons out".
+
+**This was an interaction between three of my own dials — I1 inflates the clock, I2 stops it being
+wiped, I4 misreads the result — and no single lever showed it. Only the built board did.**
+
+**The repair.** A new object, `o41_absence_depth`, counts **seasons with zero games** since the last
+delivered season, on **F3's own indexing** — depth 1 is the normaliser and depth 2 is one unplayed
+season, exactly as `FOLLOWUP_F3.json::dcurve` is built. The live in-progress season counts only by
+the fraction elapsed, and not at all for a row the owner has logged injured (the two-channel law).
+**The absence collector must read absence, so now it counts absence.**
+
+**Verified on the loaded engine before the rebuild:**
+
+| row | old `o31_cu` | new depth | R3 now applies? |
+|---|---:|---:|---|
+| Toby Nankervis | 2.734 | **1.000** | **no** |
+| Mason Redman | 2.775 | **1.000** | **no** |
+| Ned Moyle | 3.994 | **1.000** | **no** |
+| Zach Reid | 3.519 | **1.000** | **no** |
+| Noah Mraz | 2.701 | **2.000** | yes — he genuinely missed a season |
+
+**Why this is in the packet.** The charter said to halt and report rather than ship something the
+measurement does not support. A board that charged Nankervis for absence would have been exactly
+that, and the R3 number in a packet is worthless if the object underneath it is counting the wrong
+thing. **It was caught by looking at the rows, not at the total** — the total alone (−37,701) looked
+merely large, not wrong.
+
+---
+
+## 8d · THE THIRD DEFECT — CAUGHT BY THE ENGINE, NOT BY ME
+
+**What happened.** With the R3 clock repaired, the next candidate build **failed the engine's own
+export-versus-engine parity gate**:
+
+```
+EXPORT<->ENGINE PARITY GATE FAILED for 1/804 players (board v != engine gated ev, eps=0):
+  shadeau-brain: board=77 engine=80
+```
+
+**The cause.** The R3 sizing law needs the production leg **before** the D8 staleness cap, and that
+value is only visible upstream at the cap site. I handed it forward in a small dict keyed by row and
+year — and wrote it **only when a cap actually fired**. When the same row is priced twice at the same
+year through paths that differ in whether the cap fires (the M3 proportional-tenure blend does
+exactly this), the second pass read **the first pass's** pre-cap leg. **The price became dependent on
+evaluation order** — for one row, by three board points.
+
+**The repair.** The value is now written on **every** pass, which turns the dict from a cache into a
+same-call hand-off and removes the order dependence entirely.
+
+**Worth saying plainly: this one was not caught by my checks. It was caught by a gate the engine
+already had, doing exactly its job — failing the build instead of shipping a board whose prices
+depended on the order rows happened to be evaluated in.** Three points on one row would never have
+been visible in any total, any band table or any tracker column.
 
 ---
 

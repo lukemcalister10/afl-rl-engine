@@ -95,7 +95,7 @@ import hashlib
 COLS = [('live', 'live'), ('IDENT_K', 'K'), ('IDENT_P', 'P'), ('L0_R', 'R'), ('CAND', 'CANDIDATE')]
 PATHS = {}
 for t, _ in COLS:
-    q = (ROOT + '/engine/rl_after/rl_app_data.json') if t == 'live' \
+    q = (SP + '/o29r/seal/rl_after/rl_app_data.json') if t == 'live' \
         else '%s/bb_%s/rl_after/rl_app_data.json' % (ASM, t)
     if os.path.exists(q):
         PATHS[t] = q
@@ -138,11 +138,11 @@ for r in rows:
     k = r['key']
     h.append('<tr><td class="l">%s</td><td class="l">%s</td><td class="l">%s</td><td class="l">%s</td>'
              '<td data-v="%s">%s</td><td data-v="%s">%s</td>'
-             % (esc(r.get('player')), esc(r.get('pos') or (r.get('fut') or [['?']])[0][0]),
+             % (esc(r.get('name')), esc(r.get('grp') or (r.get('fut') or [['?']])[0][0]),
                 esc(r.get('club')), esc(r.get('cat')),
                 r.get('age', ''), r.get('age', ''),
-                r.get('pick') if r.get('pick') is not None else 999,
-                r.get('pick') if r.get('pick') is not None else '—'))
+                r.get('pk') if r.get('pk') is not None else 999,
+                r.get('pk') if r.get('pk') is not None else '—'))
     for t, lab in COLS:
         if t in V:
             v = V[t].get(k)
@@ -166,11 +166,11 @@ open(os.path.join(HERE, 'ASSEMBLY_PLAYERS.html'), 'w').write(page(
 
 # ---- 2 · the year-1 class in draft order -----------------------------------------------------------
 Y1 = [r for r in CAND.values() if (r.get('ep') == 0 or r.get('age') is not None)
-      and r.get('draft') and r.get('pick') is not None]
+      and r.get('draft') and r.get('pk') is not None]
 # the year-1 class = the most recent draft cohort on the board
 maxyr = max((r.get('year') or 0) for r in CAND.values())
 Y1 = sorted([r for r in CAND.values() if (r.get('year') or 0) == maxyr],
-            key=lambda r: (r.get('pick') if r.get('pick') is not None else 999))
+            key=lambda r: (r.get('pk') if r.get('pk') is not None else 999))
 h = ['<div class="sub k">Board totals: %s</div>' % HDR,
      '<h2>The year-1 class (%s draft), in draft order — %d rows</h2>' % (maxyr, len(Y1)),
      '<div class="sub">In pick order, with the entry price v0 beside the board columns so the '
@@ -183,12 +183,12 @@ for t, lab in COLS:
 h.append('<th>&Delta; R&rarr;cand</th></tr></thead><tbody>')
 for r in Y1:
     k = r['key']
-    pk = r.get('pick')
+    pk = r.get('pk')
     v0 = r.get('v0') or (LEGS.get(k, {}) or {}).get('v0')
     h.append('<tr><td data-v="%s">%s</td><td class="l">%s</td><td class="l">%s</td>'
              '<td class="l">%s</td><td class="l">%s</td><td data-v="%s">%s</td>'
              % (pk if pk is not None else 999, pk if pk is not None else '—',
-                esc(r.get('player')), esc(r.get('pos') or (r.get('fut') or [['?']])[0][0]),
+                esc(r.get('name')), esc(r.get('grp') or (r.get('fut') or [['?']])[0][0]),
                 esc(r.get('club')), esc(r.get('cat')),
                 v0 if v0 is not None else 0, num(v0) if v0 is not None else '—'))
     for t, lab in COLS:

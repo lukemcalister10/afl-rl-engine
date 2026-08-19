@@ -33,7 +33,7 @@ STACK = [('L0_R', 'R — the reference (A + B1 + p20 clip)'),
 
 PATHS = {}
 for t, _, _x in COLS:
-    q = (ROOT + '/engine/rl_after/rl_app_data.json') if t == 'live' \
+    q = (SP + '/o29r/seal/rl_after/rl_app_data.json') if t == 'live' \
         else '%s/bb_%s/rl_after/rl_app_data.json' % (ASM, t)
     if os.path.exists(q):
         PATHS[t] = q
@@ -52,9 +52,9 @@ META = {}
 for t in ('CAND', 'L0_R', 'IDENT_P', 'live'):
     for k, r in B.get(t, {}).items():
         if k not in META:
-            META[k] = dict(name=r.get('player') or k, pos=r.get('pos') or (r.get('fut') or [['?']])[0][0],
+            META[k] = dict(name=r.get('name') or k, pos=r.get('grp') or (r.get('fut') or [['?']])[0][0],
                            age=r.get('age'), club=r.get('club'), band=r.get('band'),
-                           pick=r.get('pick'), cat=r.get('cat'))
+                           pick=r.get('pk'), cat=r.get('cat'))
 KEYS = sorted(set().union(*[set(V[t]) for t in V]))
 
 # ---- the moved-row filter -------------------------------------------------------------------------
