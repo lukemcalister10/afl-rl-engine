@@ -501,6 +501,49 @@ if _O39_PCT not in (5,15,20):
     raise SystemExit('ORDER R HALT: RL_O39_TMAXPCT=%r. Only 5 (ORDER P\'s own), 15 and 20 are measured '
                      'percentiles of the young cohort surplus. Nothing else is priced and nothing else '
                      'may be invented at the dial.'%_O39_PCT_RAW)
+# ORDER S — FOUR MEASURED REPAIRS, PRICED AND NOT ADOPTED (RL_O40_RECW / RL_O40_CAPFORM +
+# RL_O40_CAPPCT / RL_O40_LAMBDA / RL_O40_PGMAT; PREREG_S.md pushed BEFORE this edit;
+# docs/evidence/order_s_2026-08-19 is the measurement). The owner's review round found four things
+# ORDERS P, Q and R all missed:
+#   S1  o37_surplus has NO RECENCY WEIGHTING — a 2024 season counts identically to a 2026 one.
+#       MEASURED walk-forward on the store's own history: the engine's flat weighting is the WORST
+#       point on the out-of-sample error curve. RL_O40_RECW sets the geometric retention.
+#   S2  the HARD CLIP at TMAX makes past badness FREE past the cap — three rows 27 points a game
+#       apart pay the identical charge, so GAMES become the differentiator instead of performance.
+#       RL_O40_CAPFORM=smooth replaces the clip with the owner's MONOTONE GAP-PRESERVING
+#       COMPRESSION, anchored at RL_O40_CAPPCT in {15, 20}. No free parameter beyond the anchor.
+#   S3  the TONNAGE was inherited from the charge ORDER P replaced, never validated. RL_O40_LAMBDA
+#       re-opens the LEVEL; THETA_R and TMAX are RECOMPUTED from it and never carried stale.
+#   S5  PG was fitted on the YOUNG cohort and FIX B1 applies it at 24+. RL_O40_PGMAT reads a
+#       MATURE-refitted premium on seasons at 24 and over.
+# Every dial defaults OFF and every one acts ONLY on the ORDER Q charge path, so with them unset
+# ORDER P's 374d4e44 and every ORDER Q/R board reproduce BYTE-EXACT.
+# NOTHING IS ADOPTED AND NOTHING LANDS.
+_O40_RECW_RAW=os.environ.get('RL_O40_RECW','')
+_O40_CAPFORM=os.environ.get('RL_O40_CAPFORM','')
+_O40_CAPPCT_RAW=os.environ.get('RL_O40_CAPPCT','')
+_O40_LAM_RAW=os.environ.get('RL_O40_LAMBDA','')
+_O40_PGMAT=os.environ.get('RL_O40_PGMAT','0')!='0'
+_O40=(_O40_RECW_RAW!='' or _O40_CAPFORM!='' or _O40_LAM_RAW!='' or _O40_PGMAT)
+if _O40 and not _O38:
+    raise SystemExit('ORDER S HALT: an RL_O40_* dial is set but no RL_O38* dial is live. The ORDER S '
+                     'repairs reach the ORDER Q charge path only. Setting one without an RL_O38 dial '
+                     'would silently do nothing and print a board labelled as though it had.')
+if _O40_CAPFORM not in ('','smooth'):
+    raise SystemExit('ORDER S HALT: RL_O40_CAPFORM=%r. The only priced form is "smooth" — the owner\'s '
+                     'monotone gap-preserving compression T\' = C*(1-exp(-T_raw/C)). Unset is ORDER P\'s '
+                     'hard clip. No other cap form is measured and none may be invented at the dial.'
+                     %_O40_CAPFORM)
+if _O40_CAPFORM=='smooth' and _O40_CAPPCT_RAW=='':
+    raise SystemExit('ORDER S HALT: RL_O40_CAPFORM=smooth with no RL_O40_CAPPCT. The compression\'s ONE '
+                     'constant is its anchor ceiling and it must be named, not defaulted.')
+if _O40_CAPFORM=='' and _O40_CAPPCT_RAW!='':
+    raise SystemExit('ORDER S HALT: RL_O40_CAPPCT is set but RL_O40_CAPFORM is not. The anchor would '
+                     'silently do nothing and print a board labelled as though it had.')
+_O40_CAPPCT=(int(_O40_CAPPCT_RAW) if _O40_CAPPCT_RAW!='' else None)
+if _O40_CAPPCT is not None and _O40_CAPPCT not in (15,20):
+    raise SystemExit('ORDER S HALT: RL_O40_CAPPCT=%r. The owner named the 15th and 20th percentiles of '
+                     'the young cohort\'s own surplus. Nothing else is priced.'%_O40_CAPPCT_RAW)
 _O35=_O35 or _O36                                           # ORDER I implies the pick-curve fade
 _O32=(os.environ.get('RL_O32','0')!='0') or _O34 or _O35    # ORDER A: CANDIDATE 32 (ORDERS C/D build ON it)
 _O32S=(int(os.environ.get('RL_O32_STAGE','6')) if _O32 else 0)
@@ -3909,6 +3952,77 @@ if _O30B_PREVIEW:
     if not _O39 and (O39_THETA_R!=O37_THETA_R or O39_TMAX!=O37_TMAX):
         raise SystemExit('ORDER R HALT (R1): with both ORDER R dials unset the effective constants are '
                          'not the ORDER P constants bit for bit. Dial-off would not be byte-exact.')
+    # ===== ORDER S (RL_O40_*) — THE FOUR MEASURED REPAIRS =========================================
+    # PREREG_S.md, pushed before this edit · docs/evidence/order_s_2026-08-19.
+    # THIS IS A MEASUREMENT + PRICING ORDER. NOTHING HERE IS ADOPTED AND NOTHING LANDS. Every dial
+    # off => the effective constants below are the ORDER R constants BIT FOR BIT (same float
+    # expressions, same operands, same order of operations), so ORDER P's 374d4e44 and every ORDER
+    # Q/R board reproduce BYTE-EXACT.
+    #
+    # THE LEVEL (S3). LAMBDA was SOLVED by an anchoring identity: bisection so the derived charge
+    # removes exactly the same total (101,402.7 points) from the year-1 class-mark population as the
+    # OLD BLIND CHARGE did. The old charge is the object ORDER P replaced BECAUSE it was defective.
+    # So the DISTRIBUTION was solved and the LEVEL was inherited. This dial re-opens the level. It is
+    # a measurement dial: docs/evidence/order_s_2026-08-19/LAMBDA_S_out.txt reports the frontier and
+    # this seat RECOMMENDS NOTHING.
+    O40_LAMBDA=(float(_O40_LAM_RAW) if _O40_LAM_RAW!='' else O37_LAMBDA)
+    if _O40_LAM_RAW!='' and not (1e-6<O40_LAMBDA<=20.0):
+        raise SystemExit('ORDER S HALT: RL_O40_LAMBDA=%r is outside the bracket the anchoring solve '
+                         'itself bisected on, (1e-6, 20]. Nothing outside it is priced.'%_O40_LAM_RAW)
+    # THETA_R FOLLOWS the slope and the level; TMAX FOLLOWS THETA_R and the ORDER R percentile.
+    # NEITHER IS FREE, and BOTH are RECOMPUTED from the EFFECTIVE level every time rather than
+    # carried from ORDER P or ORDER R. A stale cap HALTS (S-F2) and so does a loose tilt (S-F1).
+    O40_THETA_R=O39_BETA_SAT/O40_LAMBDA                        # NOT FREE
+    O40_TMAX=1.0-O40_THETA_R*(O39_S_PQ[_O39_PCT]-O37_S0)       # NOT FREE — recomputed, never stale
+    # THE CAP FORM (S2) — the owner's spec, verbatim intent: "what if P20 was just the floor, and
+    # everything scaled in between? So someone at P10 would still appear a little ahead of P5, but
+    # both would be at or above the old P20." That is a MONOTONE, GAP-PRESERVING compression:
+    #
+    #     T_raw(s) = max(1 - THETA_R*(s - s0), 0)          the charge with only the ZERO clip
+    #     C        = 1 - THETA_R*(s_pQ - s0)               the anchor ceiling, Q = RL_O40_CAPPCT
+    #     T'(s)    = C * (1 - exp(-T_raw(s)/C))
+    #
+    # WHY THIS FORM AND NO OTHER, and why it adds NO free parameter beyond the anchor percentile:
+    #   (1) T'(0) = 0 — a row at the cohort centre's crossing is untouched.
+    #   (2) dT'/dT_raw = exp(-T_raw/C) > 0 for every finite T_raw. THERE IS NO FLAT SEGMENT ANYWHERE.
+    #       Worse play ALWAYS costs strictly more. That is the owner's requirement, met exactly.
+    #   (3) dT'/dT_raw -> 1 as T_raw -> 0: the compression AGREES WITH THE UNCOMPRESSED CHARGE TO
+    #       FIRST ORDER at the shallow end, so it is not a rescaling of the whole line — it bends
+    #       only where the line was going to be clipped.
+    #   (4) T' < C everywhere and T' -> C. So EVERY row pays at most the hard-clip-at-Q charge:
+    #       "both would be at or above the old P20" holds for every row, not just for the capped.
+    #   Requirements (1) and (3) — value AND slope matched at zero — fix the exponential's rate to
+    #   1/C UNIQUELY. The only quantity chosen is C, and C is the anchor percentile's own TMAX, the
+    #   SAME object the hard clip used. A hard clip fails (2); a linear rescale fails (3); a power or
+    #   logistic form needs a second constant. THERE IS NO FREE PARAMETER BEYOND THE ANCHOR.
+    O40_CAPC=(1.0-O40_THETA_R*(O39_S_PQ[_O40_CAPPCT]-O37_S0)) if _O40_CAPPCT is not None else None
+    # THE RECENCY RETENTION (S1). w = 1 is the engine's own object: o37_surplus weights a played
+    # season by GAMES ONLY, so a 2024 season counts identically to a 2026 one. Measured walk-forward
+    # on the store's own history (RECENCY_S_out.txt), w = 1 is the WORST point on the out-of-sample
+    # error curve. A season's weight becomes  games * w^(Y - season year).
+    # THE SEASON-TURN AXIS: a pure geometric-in-years-back weight is EXACTLY invariant to the
+    # calendar turn, because at a turn every played season's exponent rises by one and the common
+    # factor w cancels in the normalisation. That is VERIFIED by sweep, not assumed (CONT_S).
+    O40_RECW=(float(_O40_RECW_RAW) if _O40_RECW_RAW!='' else 1.0)
+    if not (0.0<O40_RECW<=1.0):
+        raise SystemExit('ORDER S HALT: RL_O40_RECW=%r. The retention is a per-year-back weight and '
+                         'must lie in (0, 1]. 1 is the engine\'s own flat weighting.'%_O40_RECW_RAW)
+    _O40REC=(_O40_RECW_RAW!='')
+    # S-F1 / S-F2 / S-F0 — asserted at load on EVERY path including dial-off.
+    if abs(O40_LAMBDA*O40_THETA_R-O39_BETA_SAT)>1e-15:
+        raise SystemExit('ORDER S HALT (S-F1): LAMBDA*THETA_R = %.17g is not the effective BETA_sat = '
+                         '%.17g — the tilt has come loose from the measurement.'
+                         %(O40_LAMBDA*O40_THETA_R,O39_BETA_SAT))
+    if abs(O40_TMAX-(1.0-O40_THETA_R*(O39_S_PQ[_O39_PCT]-O37_S0)))>1e-12:
+        raise SystemExit('ORDER S HALT (S-F2): TMAX is not 1 - THETA_R*(s_pQ - s0) on the EFFECTIVE '
+                         'THETA_R. A stale cap is being carried.')
+    if not _O40 and (O40_THETA_R!=O39_THETA_R or O40_TMAX!=O39_TMAX or O40_RECW!=1.0
+                     or O40_CAPC is not None):
+        raise SystemExit('ORDER S HALT (S-F0): with every ORDER S dial unset the effective constants '
+                         'are not the ORDER R constants bit for bit. Dial-off would not be byte-exact.')
+    if O40_CAPC is not None and not (O40_CAPC>0.0):
+        raise SystemExit('ORDER S HALT: the compression ceiling C = %.17g is not positive. The form '
+                         'divides by C and is undefined there.'%O40_CAPC)
     # THE PEDIGREE PREMIUM SURFACE, in AFL Fantasy points per game, as a function of ln(v0).
     # Estimated by games-weighted LOCAL-LINEAR KERNEL REGRESSION on ln(v0), tricube kernel, bandwidth
     # 0.40 in log-v0 units — the SAME estimator family par_build.py used over log-pick at the same
@@ -3970,6 +4084,82 @@ if _O30B_PREVIEW:
          21.440141766150504,21.955229100286488,22.432987140706345,22.94209310608661,23.554904535865262,24.351188761151118,
          25.440230012706913)),
     }
+    # ===== ORDER S (RL_O40_PGMAT) — THE MATURE PEDIGREE PREMIUM ===================================
+    # The SAME estimator as O37_PG_GRID above — games-weighted local-linear kernel on ln(v0),
+    # tricube, bandwidth 0.40 in log-v0 units, isotonised, 121-point grid, seed 32 — refitted on
+    # seasons at AGE 24 AND OVER instead of 18-23. NOTHING about the estimator changes; only the
+    # population does. The young refit run with this same code reproduces O37_PG_GRID BIT FOR BIT
+    # (max |difference| 0.0 on all 242 nodes, docs/evidence/order_s_2026-08-19/MATURE_S_out.txt), so
+    # this is the SAME KIND OF OBJECT and not a lookalike.
+    # MEASURED: the mature premium is a FLATTER object. It is HIGHER than the young one at the cheap
+    # end (+4.03 pts a game at v0 400 SMALL, CI excludes zero) and LOWER at the expensive end
+    # (-4.71 at v0 3,000 SMALL, CI excludes zero); the average slope ratio is TALL 0.904, SMALL
+    # 0.747. So FIX B1, which reads the YOUNG premium at every age, sets too LOW a bar on cheap
+    # mature rows and too HIGH a bar on expensive ones.
+    O40_PGM_GRID={
+        'TALL': (4.4296256134731609,7.9885769057654086,
+        (-5.7168614613721367,-5.7168614613721367,-5.7168614613721367,-5.7168614613721367,-5.7168614613721367,
+         -5.6232805605946519,-5.2809357159352812,-4.8135196163656149,-4.2217803059476395,-3.4821714213704893,
+         -2.5533326051439671,-1.5581077570178237,-1.1807618121309136,-1.1807618121309136,-1.0768750631577608,
+         -0.62195922165405826,0.026811632696395422,0.75592753737246554,1.4366771525328785,1.9773137612360845,
+         2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,
+         2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,
+         2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,2.0017133993528589,
+         2.1908240055317574,2.6592046835123941,3.119218017946161,3.5653534016549417,3.9887121743218414,
+         4.3205596873354644,4.5774855633758991,4.8657107520380416,5.2680866403922231,5.8067256301935828,
+         6.4072435329532391,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
+         6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
+         6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
+         6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
+         6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
+         6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,6.8853868709460322,
+         6.8853868709460322,6.8958353061175295,7.3904694821563073,7.9303917512987709,8.4799871241271809,
+         9.0523121624079099,9.6121059684483861,10.159722127308756,10.758357771022034,11.444958030716455,
+         12.152392490908982,12.851660397040057,13.239357437433398,13.239357437433398,13.239357437433398,
+         13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,
+         13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,
+         13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,
+         13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,13.239357437433398,
+         13.239357437433398,13.239357437433398,13.239357437433398,13.241906944899288,14.302996336806453,
+         15.475907213691711,16.744368819708381,18.032043114169984,19.195051146630242,20.155136491538418,
+         20.954374277043737)),
+        'SMALL': (4.513054897080286,8.1444759697678766,
+        (-6.8097514604215306,-5.8541053733531072,-5.1932069237483223,-5.1932069237483223,-5.1932069237483223,
+         -5.1932069237483223,-5.1932069237483223,-5.1932069237483223,-5.1932069237483223,-5.1932069237483223,
+         -4.6899526812163632,-4.6587851532219711,-4.6587851532219711,-4.6587851532219711,-4.6587851532219711,
+         -4.6587851532219711,-4.6587851532219711,-4.6587851532219711,-4.6587851532219711,-4.6587851532219711,
+         -4.4984484453615128,-3.9560211778444945,-3.359325620818439,-2.7302391432848991,-2.0040352890746349,
+         -1.2291668907876403,-0.55076655315529399,0.011471152621557781,0.49113905087589171,0.9304334296447907,
+         1.366367002438128,1.810680204786677,2.2528047823866459,2.6807756031442658,2.7626294928937898,
+         2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,
+         2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,
+         2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,
+         2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7626294928937898,
+         2.7626294928937898,2.7626294928937898,2.7626294928937898,2.7716565120205132,3.0292401258172643,
+         3.2553721850251942,3.4753310385332665,3.716865709336453,4.0013703907702771,4.3806810472632929,
+         4.8669705175205289,5.4272167179242148,6.0052827033870662,6.5616392701716366,7.0737763745601621,
+         7.5198048876445611,7.9151082904002479,8.309313929910255,8.4586111085663287,8.4586111085663287,
+         8.4586111085663287,8.4586111085663287,8.4586111085663287,8.4586111085663287,8.4586111085663287,
+         8.4586111085663287,8.4586111085663287,8.4586111085663287,8.4586111085663287,8.4586111085663287,
+         8.4586111085663287,8.4586111085663287,8.4586111085663287,8.4827402394829718,8.6271074026877397,
+         8.891203850882853,9.6361022766501048,10.92943670868515,12.483873089752624,13.926348978173678,
+         15.074416039118409,15.965006774552032,16.640006016464852,17.094709573831405,17.343061537581139,
+         17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,
+         17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,
+         17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,
+         17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,17.458754020193279,
+         17.458754020193279)),
+    }
+    def o40_pg(v0,cls):
+        """PG_mature(ln v0, class). Same reader as o37_pg, on the mature grid."""
+        _lo,_hi,_y=O40_PGM_GRID[cls]
+        _x=_math.log(max(1e-9,float(v0)))
+        if _x<=_lo: return _y[0]
+        if _x>=_hi: return _y[-1]
+        _t=(_x-_lo)/(_hi-_lo)*(len(_y)-1)
+        _i=int(_t)
+        if _i>=len(_y)-1: return _y[-1]
+        return _y[_i]+(_t-_i)*(_y[_i+1]-_y[_i])
     def o37_pg(v0,cls):
         """PG(ln v0, class) in points per game. Linear on the fitted grid, held flat outside its
         support. Reproduces op_lib.Premium.at_v0 — proved node by node in the build packet."""
@@ -4005,8 +4195,15 @@ if _O30B_PREVIEW:
                 _pos=MA._fit_bar(p,_x['year'])
                 _b=o32_gate_bar(_pos,_x['year']-_by)
                 if _b is None or _x.get('avg') is None: _ok=False; break
-                _num+=_gg*(float(_x['avg'])-(_b+o37_pg(_v0,'TALL' if _pos in O32_TALLPOS else 'SMALL')))
-                _den+=_gg
+                # ORDER S (RL_O40_RECW): the season's weight becomes games * w^(Y - season year).
+                # Dial off => _wt IS _gg and the two lines below are ORDER P's byte for byte.
+                _wt=(_gg*(O40_RECW**(int(Y)-int(_x['year']))) if _O40REC else _gg)
+                _cls=('TALL' if _pos in O32_TALLPOS else 'SMALL')
+                # ORDER S (RL_O40_PGMAT): a season played at 24+ reads the MATURE premium.
+                _pgv=(o40_pg(_v0,_cls) if (_O40_PGMAT and (_x['year']-_by)>=O37_AGE_GATE)
+                      else o37_pg(_v0,_cls))
+                _num+=_wt*(float(_x['avg'])-(_b+_pgv))
+                _den+=_wt
             if _ok and _den>0.0: _r=_num/_den
         _O37_SCACHE[_ck]=_r
         return _r
@@ -4084,6 +4281,16 @@ if _O30B_PREVIEW:
         _i=int(_t)
         if _i>=len(_y)-1: return _y[-1]
         return _y[_i]+(_t-_i)*(_y[_i+1]-_y[_i])
+    def o40_pg_at(_x,cls):
+        """ORDER S: the MATURE premium read directly at ln(v0). Identical to o40_pg by
+        construction, exactly as o38_pg_at is to o37_pg."""
+        _lo,_hi,_y=O40_PGM_GRID[cls]
+        if _x<=_lo: return _y[0]
+        if _x>=_hi: return _y[-1]
+        _t=(_x-_lo)/(_hi-_lo)*(len(_y)-1)
+        _i=int(_t)
+        if _i>=len(_y)-1: return _y[-1]
+        return _y[_i]+(_t-_i)*(_y[_i+1]-_y[_i])
     _O38_PCACHE={}
     def o38_parts(p,Y):
         """(OUT, wTALL, wSMALL) on exactly o37_surplus's own rules and fallbacks.
@@ -4096,6 +4303,7 @@ if _O30B_PREVIEW:
         _r=None; _by=p.get('_by')
         if _by:
             _num=_den=_wt=0.0; _ok=True
+            _wtm=_wsm=0.0                                  # ORDER S: the MATURE sub-shares
             for _x in (p.get('scoring') or []):
                 if _x['year']>Y: continue
                 _gg=float(_x.get('games') or 0.0)
@@ -4103,15 +4311,29 @@ if _O30B_PREVIEW:
                 _pos=MA._fit_bar(p,_x['year'])
                 _b=o32_gate_bar(_pos,_x['year']-_by)
                 if _b is None or _x.get('avg') is None: _ok=False; break
-                _num+=_gg*(float(_x['avg'])-_b); _den+=_gg
-                if _pos in O32_TALLPOS: _wt+=_gg
-            if _ok and _den>0.0: _r=(_num/_den,_wt/_den,1.0-_wt/_den)
+                # ORDER S (RL_O40_RECW): the SAME weight o37_surplus uses, so the FIX A identity
+                # s_P(v) = OUT - wT*PG(v,TALL) - wS*PG(v,SMALL) survives EXACTLY. Dial off => _ww IS
+                # _gg and these lines are ORDER Q's byte for byte.
+                _ww=(_gg*(O40_RECW**(int(Y)-int(_x['year']))) if _O40REC else _gg)
+                _num+=_ww*(float(_x['avg'])-_b); _den+=_ww
+                if _pos in O32_TALLPOS: _wt+=_ww
+                if _O40_PGMAT and (_x['year']-_by)>=O37_AGE_GATE:
+                    if _pos in O32_TALLPOS: _wtm+=_ww
+                    else: _wsm+=_ww
+            if _ok and _den>0.0: _r=(_num/_den,_wt/_den,1.0-_wt/_den,_wtm/_den,_wsm/_den)
         _O38_PCACHE[_ck]=_r
         return _r
     def o38_T(_s):
         # ORDER R: the EFFECTIVE cap and slope. With both R dials unset these are O37_THETA_R and
         # O37_TMAX bit for bit (asserted above), so this line is byte-identical to ORDER Q's.
-        return min(max(1.0-O39_THETA_R*(_s-O37_S0),0.0),O39_TMAX)
+        # ORDER S: with every S dial unset O40_THETA_R and O40_TMAX are the ORDER R constants bit for
+        # bit (S-F0, asserted at load), so the clip branch below is byte-identical to ORDER R's.
+        if _O40_CAPFORM=='smooth':
+            # THE OWNER'S COMPRESSION. Strictly increasing in shortfall EVERYWHERE — no flat segment
+            # anywhere — and bounded by the anchor ceiling C, which it approaches but never reaches.
+            _raw=max(1.0-O40_THETA_R*(_s-O37_S0),0.0)
+            return O40_CAPC*(1.0-_math.exp(-_raw/O40_CAPC))
+        return min(max(1.0-O40_THETA_R*(_s-O37_S0),0.0),O40_TMAX)
     def o38_mono(p,Y,g,_s):
         """FIX A. The charge, capped wherever the pedigree leg would otherwise FALL as entry price
         RISES. Returns the multiplier the pedigree leg is charged by, in (0,1]."""
@@ -4119,13 +4341,19 @@ if _O30B_PREVIEW:
         _pr=o38_parts(p,Y)
         _v=day0_v0(p)
         if _pr is None or _v is None:
-            return _math.exp(-O37_LAMBDA*_A*o38_T(_s))
-        _OUT,_wT,_wS=_pr
+            return _math.exp(-O40_LAMBDA*_A*o38_T(_s))
+        _OUT,_wT,_wS,_wTm,_wSm=_pr
         _X=_math.log(round(float(_v)*_PL_F,1))
         def _sx(_x):
+            # ORDER S (RL_O40_PGMAT): the row's mature season-share reads the mature surface, so the
+            # identity s_P(v) = OUT - SUM(share * PG_that-surface(v)) stays EXACT. Dial off => the
+            # second branch runs and this is ORDER Q's expression byte for byte.
+            if _O40_PGMAT:
+                return _OUT-((_wT-_wTm)*o38_pg_at(_x,'TALL')+_wTm*o40_pg_at(_x,'TALL')
+                             +(_wS-_wSm)*o38_pg_at(_x,'SMALL')+_wSm*o40_pg_at(_x,'SMALL'))
             return _OUT-(_wT*o38_pg_at(_x,'TALL')+_wS*o38_pg_at(_x,'SMALL'))
         def _psi(_x):
-            return _x-O37_LAMBDA*_A*o38_T(_sx(_x))
+            return _x-O40_LAMBDA*_A*o38_T(_sx(_x))
         _cand=[]
         for _c,_wc in (('TALL',_wT),('SMALL',_wS)):
             if _wc<=0.0: continue
@@ -4133,6 +4361,13 @@ if _O30B_PREVIEW:
             for _i in range(_n):
                 _xi=_lo+(_hi-_lo)*_i/(_n-1.0)
                 if _xi<_X: _cand.append(_xi)
+            # ORDER S: under RL_O40_PGMAT the mature surface has its OWN nodes, and psi can only
+            # change slope at a node of a surface it actually reads. They are added, not substituted.
+            if _O40_PGMAT:
+                _lo,_hi,_y=O40_PGM_GRID[_c]; _n=len(_y)
+                for _i in range(_n):
+                    _xi=_lo+(_hi-_lo)*_i/(_n-1.0)
+                    if _xi<_X: _cand.append(_xi)
         _cand.append(_X)
         _cand=sorted(set(_cand))
         # the clip crossings: s is affine on each segment, so the pre-clip T is affine and its two
@@ -4142,8 +4377,13 @@ if _O30B_PREVIEW:
             _a,_b=_cand[_j],_cand[_j+1]
             _sa,_sb=_sx(_a),_sx(_b)
             if _sa==_sb: continue
-            for _tv in (0.0,O39_TMAX):                     # ORDER R: the EFFECTIVE clip boundaries
-                _st=O37_S0+(1.0-_tv)/O39_THETA_R
+            # ORDER R: the EFFECTIVE clip boundaries. ORDER S: under the COMPRESSION there is no
+            # upper clip at all — T' is smooth and approaches C without reaching it — so only the
+            # ZERO crossing is a kink. psi stays CONVEX on each segment either way (x is linear and
+            # +LAMBDA*A*C*exp(-affine/C) is convex), so the maximum on a segment is still at an
+            # endpoint and the running maximum over the nodes is still EXACT.
+            for _tv in ((0.0,) if _O40_CAPFORM=='smooth' else (0.0,O40_TMAX)):
+                _st=O37_S0+(1.0-_tv)/O40_THETA_R
                 if (_sa-_st)*(_sb-_st)<0.0:
                     _extra.append(_a+(_b-_a)*(_st-_sa)/(_sb-_sa))
         if _extra: _cand=sorted(set(_cand+_extra))
@@ -4171,7 +4411,7 @@ if _O30B_PREVIEW:
         if _w<=0.0: return _old
         _s=o37_surplus(p,Y)
         if _s is None: return _old
-        _f=o38_mono(p,Y,g,_s) if _O38A else _math.exp(-O37_LAMBDA*(1.0-_math.exp(-float(g)/O37_G0))*o38_T(_s))
+        _f=o38_mono(p,Y,g,_s) if _O38A else _math.exp(-O40_LAMBDA*(1.0-_math.exp(-float(g)/O37_G0))*o38_T(_s))
         if _w>=1.0: return _f
         if _f<=0.0 or _old<=0.0: return _f*_w+_old*(1.0-_w)
         return _math.exp(_w*_math.log(_f)+(1.0-_w)*_math.log(_old))
@@ -4648,6 +4888,84 @@ if _O30B_PREVIEW:
                      'That window sits ABOVE the cohort centre, so it lands on rows already producing '
                      'at or above what their entry price implies. IT IS REPORTED, NOT ARGUED AWAY.'
                      %(_rstiffs,_rstiffhi,_rstiffhi-_rstiffs,100.0*_rstiff))))
+            # ===== ORDER S — THE FOUR MEASURED REPAIRS, PRICED AND NOT ADOPTED ===================
+            # Every assert below runs on the EFFECTIVE form o38_T actually applies, not on ORDER P's
+            # or ORDER R's constants, so a dial that changed the shape could not slip past them.
+            #   S-S1  T is NON-INCREASING in surplus on the effective form.
+            #   S-S2  the factor is still in (0,1] everywhere, so NO ROW CAN PRICE ABOVE ITS OWN
+            #         UNCHARGED PRICE. This is the law, asserted, not a claim.
+            #   S-S3  A(0) = 0 EXACTLY, so no day-0 print and no gameless row can move.
+            #   S-S4  UNDER THE COMPRESSION, T IS STRICTLY INCREASING IN SHORTFALL — there is NO FLAT
+            #         SEGMENT ANYWHERE. This is the owner's whole requirement and it HALTS if it
+            #         fails. (The hard clip fails it by construction and is not asserted against it.)
+            #   S-S5  UNDER THE COMPRESSION, T' <= the hard clip at the SAME anchor AND <= ORDER P's
+            #         own p5 clip, at every surplus. So no row is charged more than it was — S2-F2.
+            _sprev=None; _sflat=0; _sflats=None
+            for _i in range(0,22001):
+                _ss=20.0-0.01*_i
+                _Ts=o38_T(_ss)
+                if _sprev is not None and _Ts<_sprev[1]-1e-12:
+                    raise SystemExit('ORDER S HALT (S-S1): T FALLS as surplus falls at s=%.2f'%_ss)
+                if _O40_CAPFORM=='smooth':
+                    _Traw=max(1.0-O40_THETA_R*(_ss-O37_S0),0.0)
+                    _Tclip=min(_Traw,O40_CAPC)
+                    _TP=min(max(1.0-O37_THETA_R*(_ss-O37_S0),0.0),O37_TMAX)
+                    if _Ts>_Tclip+1e-12 or _Ts>_TP+1e-12:
+                        raise SystemExit('ORDER S HALT (S-S5): the compression charges MORE than the '
+                                         'hard clip at s=%.4f (%.9f vs anchor clip %.9f, ORDER P clip '
+                                         '%.9f).'%(_ss,_Ts,_Tclip,_TP))
+                    if _sprev is not None and _Traw>1e-12 and _Ts<=_sprev[1]:
+                        _sflat+=1; _sflats=_ss if _sflats is None else _sflats
+                for _gq in (0.0,1.0,17.0,60.0,400.0):
+                    _fs=_math.exp(-O40_LAMBDA*(1.0-_math.exp(-_gq/O37_G0))*_Ts)
+                    if not (0.0<_fs<=1.0+1e-15):
+                        raise SystemExit('ORDER S HALT (S-S2): the factor left (0,1] at s=%.2f g=%.2f: '
+                                         '%.9g'%(_ss,_gq,_fs))
+                _sprev=(_ss,_Ts)
+            if _O40_CAPFORM=='smooth' and _sflat:
+                raise SystemExit('ORDER S HALT (S-S4): the compression has a FLAT SEGMENT — %d ties on '
+                                 'the dense sweep, first at s=%.4f. The owner\'s requirement is that '
+                                 'worse play ALWAYS costs at least slightly more. It does not hold.'
+                                 %(_sflat,_sflats))
+            if (1.0-_math.exp(-0.0/O37_G0))!=0.0:
+                raise SystemExit('ORDER S HALT (S-S3): A(0) is not 0 exactly')
+            _sA38=1.0-_math.exp(-38.0/O37_G0)
+            print('ORDER S %s — FOUR MEASURED REPAIRS, PRICED AND NOT ADOPTED. NOTHING IS GREENLIT AND '
+                  'NOTHING MERGES.\n'
+                  '  S1 RECENCY (RL_O40_RECW) %s — a season\'s weight in s_P is games * w^(years back). '
+                  'w=1 is the ENGINE\'s own flat weighting and it is the WORST point on this seat\'s '
+                  'walk-forward out-of-sample error curve. Implied 3-season weights at equal games: '
+                  '[%.3f, %.3f, %.3f].\n'
+                  '  S2 THE CAP FORM (RL_O40_CAPFORM) %s — T\' = C*(1-exp(-T_raw/C)), C = %s. Strictly '
+                  'increasing in shortfall EVERYWHERE, no flat segment, T\' < C always. ONE constant, '
+                  'and it is the anchor percentile\'s own TMAX. %s\n'
+                  '  S3 THE LEVEL (RL_O40_LAMBDA) %s — LAMBDA %.8f (ORDER P solved %.8f by an anchoring '
+                  'identity against the OLD BLIND CHARGE\'s tonnage of 101,402.7). THETA_R %.6f and '
+                  'TMAX %.4f are RECOMPUTED from it, never carried stale.\n'
+                  '  S4 THE MATURE PREMIUM (RL_O40_PGMAT) %s — seasons at %d+ read a premium refitted on '
+                  'MATURE seasons by the identical estimator. The young refit reproduces O37_PG_GRID '
+                  'BIT FOR BIT, so it is the same kind of object.\n'
+                  '  A row at the effective cap with 38 games is charged %.2f%% of his pedigree leg '
+                  '(ORDER P: %.2f%%). LAMBDA*THETA_R = %.8f = the effective BETA_sat.\n'
+                  '  NOTHING IS ADOPTED. NOTHING LANDS. NO VARIANT IS RECOMMENDED.'
+                  %('LIVE' if _O40 else 'off (dial-off: the ORDER R constants, bit for bit)',
+                    ('LIVE w=%.4f'%O40_RECW) if _O40REC else 'off (w=1, the engine\'s own)',
+                    1.0/(1.0+O40_RECW+O40_RECW*O40_RECW),
+                    O40_RECW/(1.0+O40_RECW+O40_RECW*O40_RECW),
+                    O40_RECW*O40_RECW/(1.0+O40_RECW+O40_RECW*O40_RECW),
+                    'LIVE (smooth)' if _O40_CAPFORM=='smooth' else 'off (ORDER P/R hard clip)',
+                    ('%.4f, the p%d anchor'%(O40_CAPC,_O40_CAPPCT)) if O40_CAPC is not None
+                    else 'n/a',
+                    ('Under the CLIP every row past the crossing pays the IDENTICAL rate, so GAMES '
+                     'become the differentiator instead of performance. Under the COMPRESSION they '
+                     'are strictly ordered.') if _O40_CAPFORM=='smooth' else '',
+                    ('LIVE' if _O40_LAM_RAW!='' else 'off (ORDER P\'s inherited level)'),
+                    O40_LAMBDA,O37_LAMBDA,O40_THETA_R,O40_TMAX,
+                    ('LIVE' if _O40_PGMAT else 'off (the young premium at every age)'),
+                    O37_AGE_GATE,
+                    100.0*(1.0-_math.exp(-O40_LAMBDA*_sA38*o38_T(-1e6))),
+                    100.0*(1.0-_math.exp(-O37_LAMBDA*_sA38*O37_TMAX)),
+                    O40_LAMBDA*O40_THETA_R))
         if _O35:
             print('ORDER D PICK-CURVE FADE LIVE (RL_O35=1) — THE LANDING CANDIDATE ON THE OWNER\'S WORD. '
                   'D_eff = D(c_u)^kappa(pick), kappa = clip((%.4f%+.4f·ln p)/%.4f, %.1f, %.1f): '
