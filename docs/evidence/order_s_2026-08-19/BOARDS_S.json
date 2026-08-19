@@ -1,0 +1,240 @@
+{
+ "md5": {
+  "SRoff": "374d4e442665771801c5f1edd2a7e0e2",
+  "SB1": "1b1817f389175aac2794dc95d39f9e23",
+  "SAB1": "cbbb94d4b5541bf9c4ea5db01bc3aa1e",
+  "SR20A": "7f88f5096ff5b781da4614b7142d332c",
+  "SW47": "e8278e5a76fc778bab476d0d0e22847c",
+  "SW28": "7240540c465883c9da7787bbcadd343d",
+  "SW47A": "5f93d8c213149228379c0c62052f4eea",
+  "SC15": "08e5f1a5fafba5c706597152ca30a67a",
+  "SC20": "fcca7db8f530cb5a5edec9c9a1fc5e66",
+  "SC20A": "eeb9b6504f846176d777cc4596014746",
+  "SL56": "2db7ef052fb70cbce1b8bb000cb82964",
+  "SL10": "e85a1c542b2f2e365b389b028aa44361",
+  "SM": "61ebbb60cf671627391f237bd3a551ec",
+  "SMA": "ee388c2ef49d54a5a855e47b5ad4e5cb",
+  "SALL": "5e2e36f18af40b0a338ca27bf004a906",
+  "SimpA": "fcca7db8f530cb5a5edec9c9a1fc5e66",
+  "SW47_2": "e8278e5a76fc778bab476d0d0e22847c",
+  "SW28_2": "7240540c465883c9da7787bbcadd343d",
+  "SW47A_2": "5f93d8c213149228379c0c62052f4eea",
+  "SC15_2": "08e5f1a5fafba5c706597152ca30a67a",
+  "SC20_2": "fcca7db8f530cb5a5edec9c9a1fc5e66",
+  "SC20A_2": "eeb9b6504f846176d777cc4596014746",
+  "SL56_2": "2db7ef052fb70cbce1b8bb000cb82964",
+  "SL10_2": "e85a1c542b2f2e365b389b028aa44361",
+  "SM_2": "61ebbb60cf671627391f237bd3a551ec",
+  "SMA_2": "ee388c2ef49d54a5a855e47b5ad4e5cb",
+  "SALL_2": "5e2e36f18af40b0a338ca27bf004a906",
+  "Peta0": "73bf961724e77f0bda996825125a07ad",
+  "KrefS": "f3101883a60b0a7b8cb50f9d8a5abfff"
+ },
+ "totals": {
+  "SRoff": 666434,
+  "SB1": 659867,
+  "SAB1": 662685,
+  "SR20A": 664950,
+  "SW47": 659361,
+  "SW28": 659049,
+  "SW47A": 662490,
+  "SC15": 666901,
+  "SC20": 668060,
+  "SC20A": 669506,
+  "SL56": 651204,
+  "SL10": 661569,
+  "SM": 659370,
+  "SMA": 662126,
+  "SALL": 668806,
+  "SimpA": 668060,
+  "SW47_2": 659361,
+  "SW28_2": 659049,
+  "SW47A_2": 662490,
+  "SC15_2": 666901,
+  "SC20_2": 668060,
+  "SC20A_2": 669506,
+  "SL56_2": 651204,
+  "SL10_2": 661569,
+  "SM_2": 659370,
+  "SMA_2": 662126,
+  "SALL_2": 668806,
+  "Peta0": 702734,
+  "KrefS": 673097
+ },
+ "nice": {
+  "SB1": "FIX B1 alone            = the control every variant sits on",
+  "SAB1": "FIX A + B1              = the control with FIX A",
+  "SR20A": "ORDER R p20 + A + B1    = the ORDER R control",
+  "SW47": "S1 recency w=0.47       the DIRECT out-of-sample optimum",
+  "SW28": "S1 recency w=0.28       the CALIBRATED out-of-sample optimum",
+  "SW47A": "S1 recency w=0.47 + A",
+  "SC15": "S2 compression p15      the owner's smooth cap",
+  "SC20": "S2 compression p20      the owner's smooth cap, far end",
+  "SC20A": "S2 compression p20 + A",
+  "SL56": "S3 LAMBDA 0.56          the STIFFEST the W2 class floor admits",
+  "SL10": "S3 LAMBDA 0.10          the softening direction",
+  "SM": "S5 mature premium at 24+",
+  "SMA": "S5 mature premium + A",
+  "SALL": "ALL FOUR + FIX A        the far corner. NOT A RECOMMENDATION."
+ },
+ "expect": {
+  "SRoff": "374d4e44",
+  "SB1": "1b1817f3",
+  "SAB1": "cbbb94d4",
+  "SR20A": "7f88f509"
+ },
+ "move": {
+  "SW47": {
+   "n": 352,
+   "up": 141,
+   "down": 211,
+   "net": -506
+  },
+  "SW28": {
+   "n": 372,
+   "up": 149,
+   "down": 223,
+   "net": -818
+  },
+  "SW47A": {
+   "n": 367,
+   "up": 177,
+   "down": 190,
+   "net": 2623
+  },
+  "SC15": {
+   "n": 360,
+   "up": 360,
+   "down": 0,
+   "net": 7034
+  },
+  "SC20": {
+   "n": 363,
+   "up": 363,
+   "down": 0,
+   "net": 8193
+  },
+  "SC20A": {
+   "n": 374,
+   "up": 374,
+   "down": 0,
+   "net": 9639
+  },
+  "SL56": {
+   "n": 472,
+   "up": 0,
+   "down": 472,
+   "net": -8663
+  },
+  "SL10": {
+   "n": 364,
+   "up": 364,
+   "down": 0,
+   "net": 1702
+  },
+  "SM": {
+   "n": 149,
+   "up": 17,
+   "down": 132,
+   "net": -497
+  },
+  "SMA": {
+   "n": 232,
+   "up": 128,
+   "down": 104,
+   "net": 2259
+  },
+  "SALL": {
+   "n": 452,
+   "up": 306,
+   "down": 146,
+   "net": 8939
+  }
+ },
+ "mature": {
+  "SB1": {
+   "n": 429,
+   "moving": 245,
+   "net_k": -6567,
+   "net_p": -6567
+  },
+  "SAB1": {
+   "n": 429,
+   "moving": 245,
+   "net_k": -6106,
+   "net_p": -6106
+  },
+  "SW47": {
+   "n": 429,
+   "moving": 274,
+   "net_k": -7646,
+   "net_p": -7646
+  },
+  "SW28": {
+   "n": 429,
+   "moving": 287,
+   "net_k": -8212,
+   "net_p": -8212
+  },
+  "SW47A": {
+   "n": 429,
+   "moving": 276,
+   "net_k": -7133,
+   "net_p": -7133
+  },
+  "SC15": {
+   "n": 429,
+   "moving": 247,
+   "net_k": -5134,
+   "net_p": -5134
+  },
+  "SC20": {
+   "n": 429,
+   "moving": 247,
+   "net_k": -4887,
+   "net_p": -4887
+  },
+  "SC20A": {
+   "n": 429,
+   "moving": 246,
+   "net_k": -4672,
+   "net_p": -4672
+  },
+  "SL56": {
+   "n": 429,
+   "moving": 278,
+   "net_k": -8744,
+   "net_p": -8744
+  },
+  "SL10": {
+   "n": 429,
+   "moving": 242,
+   "net_k": -6152,
+   "net_p": -6152
+  },
+  "SM": {
+   "n": 429,
+   "moving": 255,
+   "net_k": -7064,
+   "net_p": -7064
+  },
+  "SMA": {
+   "n": 429,
+   "moving": 253,
+   "net_k": -6665,
+   "net_p": -6665
+  },
+  "SALL": {
+   "n": 429,
+   "moving": 289,
+   "net_k": -6036,
+   "net_p": -6036
+  }
+ },
+ "identities": {
+  "controls": true,
+  "determinism": true,
+  "gameless": 0,
+  "uncharged": 0
+ }
+}

@@ -1,0 +1,29 @@
+########## os_census.py SRoff ##########
+  rc=0
+########## os_census.py SB1 ##########
+  rc=0
+########## os_census.py SAB1 ##########
+  rc=0
+########## os_census.py SR20A ##########
+  rc=0
+########## os_census.py SW47 ##########
+  rc=0
+########## os_census.py SW28 ##########
+  rc=0
+########## os_census.py SW47A ##########
+  rc=0
+########## os_census.py SC15 ##########
+  rc=0
+########## os_census.py SC20 ##########
+  rc=0
+########## os_census.py SC20A ##########
+  rc=0
+########## os_census.py SL56 ##########
+  rc=0
+########## os_census.py SL10 ##########
+  rc=0
+########## os_census.py SM ##########
+  rc=0
+########## os_census.py SMA ##########
+  rc=0
+  SALL already done

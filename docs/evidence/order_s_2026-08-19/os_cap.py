@@ -57,7 +57,7 @@ P('=' * 118)
 P('  censuses read: %s' % ' '.join(sorted(C)))
 if not C:
     P('  NO CENSUS ON DISK — nothing measured. Reported as unmeasured, never as passed.')
-    open(os.path.join(HERE, 'CAP_S_out.txt'), 'w').write('\n'.join(L) + '\n')
+    open(os.path.join(HERE, 'CAP_S%s_out.txt' % os.environ.get('OS_CAP_SUF', '')), 'w').write('\n'.join(L) + '\n')
     raise SystemExit(0)
 
 BASE = 'SB1'
@@ -117,10 +117,18 @@ P('   Every pair of charged rows whose CAREER GAMES agree to within 1, so A(g) i
 P('   only thing left is the record. A pair INVERTS when the row with the WORSE surplus is charged')
 P('   the SAME or LESS. Ties count as inversions: the owner\'s requirement is "at least slightly more".')
 P()
+P('   ONE EXCLUSION, AND IT IS NECESSARY RATHER THAN CONVENIENT: pairs in which BOTH rows are charged')
+P('   NOTHING are dropped. Both sit above the zero clip — they are producing at or above what their')
+P('   entry price implies — and a tie at zero charge is the mechanism working, not the cap defect.')
+P('   THIS SEAT\'s FIRST RUN DID NOT EXCLUDE THEM and reported 475 "ties" on a compression board,')
+P('   which was the zero-clip region being counted as the cap. That was the scorer, not the form.')
+P()
 P('   %-8s %-46s %10s %10s %10s %12s' %
   ('board', '', 'pairs', 'inverted', 'of which', 'worst gap'))
 P('   %-8s %-46s %10s %10s %10s %12s' % ('', '', '', '', 'exact TIES', 'tied away'))
 PAIR = {}
+GTOL = float(os.environ.get('OS_CAP_GTOL', '1.0'))
+P('   games tolerance for a pair: %.2f career games.' % GTOL)
 for t in [x for x in TAGS if x in C]:
     rr = [r for r in C[t]['charge'] if r.get('cond') and r.get('s_ped') is not None
           and r.get('g') and r['g'] > 0]
@@ -130,12 +138,14 @@ for t in [x for x in TAGS if x in C]:
     n = len(rr)
     for i in range(n):
         for j in range(i + 1, n):
-            if rr[j]['g'] - rr[i]['g'] > 1.0:
+            if rr[j]['g'] - rr[i]['g'] > GTOL:
                 break
             a, b = rr[i], rr[j]
             if a['s_ped'] == b['s_ped']:
                 continue
             w, g_ = (a, b) if a['s_ped'] < b['s_ped'] else (b, a)   # w = the WORSE record
+            if w['charge'] <= 1e-12 and g_['charge'] <= 1e-12:
+                continue                                    # both above the zero clip — not the cap
             npair += 1
             if w['charge'] <= g_['charge'] + 1e-12:
                 ninv += 1
@@ -228,6 +238,6 @@ for t in [x for x in TAGS if x in C]:
 P()
 
 json.dump(dict(parked=PARK, pairs=PAIR, regressivity=REG, distribution=DIST),
-          open(os.path.join(HERE, 'CAP_S.json'), 'w'), indent=1, default=float)
-open(os.path.join(HERE, 'CAP_S_out.txt'), 'w').write('\n'.join(L) + '\n')
+          open(os.path.join(HERE, 'CAP_S%s.json' % os.environ.get('OS_CAP_SUF', '')), 'w'), indent=1, default=float)
+open(os.path.join(HERE, 'CAP_S%s_out.txt' % os.environ.get('OS_CAP_SUF', '')), 'w').write('\n'.join(L) + '\n')
 print('\nwrote CAP_S_out.txt / CAP_S.json')

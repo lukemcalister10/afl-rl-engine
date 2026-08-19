@@ -209,9 +209,17 @@ for p in MA.players:
     except Exception:
         pr = None
     if pr is not None and v0r is not None:
-        s_age, wT, wS = pr
+        # ORDER S: o38_parts now returns FIVE values — the two MATURE sub-shares are appended so the
+        # RL_O40_PGMAT decomposition stays exact. ORDER R's scorer unpacked three and this seat's
+        # first run of it raised. The fix reads the mature shares and uses the mature surface on
+        # them, which is what the engine itself does at the same site.
+        s_age, wT, wS, wTm, wSm = pr
         x = math.log(round(float(v0r) * PLF, 1))
-        pg = wT * NS['o38_pg_at'](x, 'TALL') + wS * NS['o38_pg_at'](x, 'SMALL')
+        if NS.get('_O40_PGMAT'):
+            pg = ((wT - wTm) * NS['o38_pg_at'](x, 'TALL') + wTm * NS['o40_pg_at'](x, 'TALL')
+                  + (wS - wSm) * NS['o38_pg_at'](x, 'SMALL') + wSm * NS['o40_pg_at'](x, 'SMALL'))
+        else:
+            pg = wT * NS['o38_pg_at'](x, 'TALL') + wS * NS['o38_pg_at'](x, 'SMALL')
     CH.append(dict(key=k, name=p.get('player'), pick=p.get('pick'), pool=bool(p.get('_pool')),
                    band=band(p.get('pick'), p.get('_pool')),
                    age=(2026 - int(p['_by'])) if p.get('_by') else None, g=g,

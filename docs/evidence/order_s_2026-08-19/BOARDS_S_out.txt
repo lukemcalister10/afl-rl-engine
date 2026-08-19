@@ -1,0 +1,491 @@
+======================================================================================================================
+ORDER S — THE BOARDS. NOTHING IS ADOPTED AND NOTHING LANDS. NO VARIANT IS RECOMMENDED.
+======================================================================================================================
+  active priced rows: 804
+  boards on disk: KrefS=f3101883 Peta0=73bf9617 SAB1=cbbb94d4 SALL=5e2e36f1 SALL_2=5e2e36f1 SB1=1b1817f3 SC15=08e5f1a5 SC15_2=08e5f1a5 SC20=fcca7db8 SC20A=eeb9b650 SC20A_2=eeb9b650 SC20_2=fcca7db8 SL10=e85a1c54 SL10_2=e85a1c54 SL56=2db7ef05 SL56_2=2db7ef05 SM=61ebbb60 SMA=ee388c2e SMA_2=ee388c2e SM_2=61ebbb60 SR20A=7f88f509 SRoff=374d4e44 SW28=7240540c SW28_2=7240540c SW47=e8278e5a SW47A=5f93d8c2 SW47A_2=5f93d8c2 SW47_2=e8278e5a SimpA=fcca7db8
+  DECLARED REUSE: KrefS is ORDER R's own bb_KrefR board and Peta0 is ORDER P's own uncharged
+  ceiling board. Neither is rebuilt here. The ORDER S engine's dial-off identity is proved by
+  SRoff/SB1/SAB1/SR20A above, which is the stronger test.
+
+== THE BUILD-FAILING IDENTITIES ==
+  SAB1   must be cbbb94d4 : PASS                           (cbbb94d4)
+  SB1    must be 1b1817f3 : PASS                           (1b1817f3)
+  SR20A  must be 7f88f509 : PASS                           (7f88f509)
+  SRoff  must be 374d4e44 : PASS                           (374d4e44)
+  S-D1  RL_O38B1 + the S2 dials ALONE carry the O37/O36/O35/O32/O31 stack: PASS (fcca7db8 vs fcca7db8)
+  S-D2  determinism x2 SW47    : PASS                         (e8278e5a vs e8278e5a)
+  S-D2  determinism x2 SW28    : PASS                         (7240540c vs 7240540c)
+  S-D2  determinism x2 SW47A   : PASS                         (5f93d8c2 vs 5f93d8c2)
+  S-D2  determinism x2 SC15    : PASS                         (08e5f1a5 vs 08e5f1a5)
+  S-D2  determinism x2 SC20    : PASS                         (fcca7db8 vs fcca7db8)
+  S-D2  determinism x2 SC20A   : PASS                         (eeb9b650 vs eeb9b650)
+  S-D2  determinism x2 SL56    : PASS                         (2db7ef05 vs 2db7ef05)
+  S-D2  determinism x2 SL10    : PASS                         (e85a1c54 vs e85a1c54)
+  S-D2  determinism x2 SM      : PASS                         (61ebbb60 vs 61ebbb60)
+  S-D2  determinism x2 SMA     : PASS                         (ee388c2e vs ee388c2e)
+  S-D2  determinism x2 SALL    : PASS                         (5e2e36f1 vs 5e2e36f1)
+
+== BOARD TOTALS ==
+  board    md5               total     vs ORDER P     vs ORDER K      vs FIX B1  the dial line
+  KrefS    f3101883         673097         +6663            +0        +13230  
+  SRoff    374d4e44         666434            +0         -6663         +6567  
+  SB1      1b1817f3         659867         -6567        -13230            +0  FIX B1 alone            = the control every variant sits on
+  SAB1     cbbb94d4         662685         -3749        -10412         +2818  FIX A + B1              = the control with FIX A
+  SR20A    7f88f509         664950         -1484         -8147         +5083  ORDER R p20 + A + B1    = the ORDER R control
+  SW47     e8278e5a         659361         -7073        -13736          -506  S1 recency w=0.47       the DIRECT out-of-sample optimum
+  SW28     7240540c         659049         -7385        -14048          -818  S1 recency w=0.28       the CALIBRATED out-of-sample optimum
+  SW47A    5f93d8c2         662490         -3944        -10607         +2623  S1 recency w=0.47 + A
+  SC15     08e5f1a5         666901          +467         -6196         +7034  S2 compression p15      the owner's smooth cap
+  SC20     fcca7db8         668060         +1626         -5037         +8193  S2 compression p20      the owner's smooth cap, far end
+  SC20A    eeb9b650         669506         +3072         -3591         +9639  S2 compression p20 + A
+  SL56     2db7ef05         651204        -15230        -21893         -8663  S3 LAMBDA 0.56          the STIFFEST the W2 class floor admits
+  SL10     e85a1c54         661569         -4865        -11528         +1702  S3 LAMBDA 0.10          the softening direction
+  SM       61ebbb60         659370         -7064        -13727          -497  S5 mature premium at 24+
+  SMA      ee388c2e         662126         -4308        -10971         +2259  S5 mature premium + A
+  SALL     5e2e36f1         668806         +2372         -4291         +8939  ALL FOUR + FIX A        the far corner. NOT A RECOMMENDATION.
+  Peta0    73bf9617         702734        +36300        +29637        +42867  
+  (ORDER P 374d4e44 = 666,434 · ORDER K f3101883 = 673,097 · ORDER Q FIX B1 1b1817f3 = 659,867
+   · ORDER R R20A 7f88f509 = 664,950 · live 88ce647f = 752,429, NEVER TOUCHED)
+
+== EACH REPAIR ISOLATED, AGAINST FIX B1 (1b1817f3) ==
+  board    what changed against B1                         total        vs B1
+  SW47     S1 recency w=0.47                              659361         -506
+  SW28     S1 recency w=0.28                              659049         -818
+  SC15     S2 compression, p15 anchor                     666901        +7034
+  SC20     S2 compression, p20 anchor                     668060        +8193
+  SL56     S3 LAMBDA 0.1743833 -> 0.56                    651204        -8663
+  SL10     S3 LAMBDA 0.1743833 -> 0.10                    661569        +1702
+  SM       S5 mature premium at 24+                       659370         -497
+  SAB1     FIX A alone (ORDER Q, the reference lever)       662685        +2818
+  SR20A    ORDER R p20 clip + FIX A (the reference)       664950        +5083
+  SW47A    S1 w=0.47 AND FIX A                            662490        +2623
+  SC20A    S2 p20 AND FIX A                               669506        +9639
+  SMA      S5 mature AND FIX A                            662126        +2259
+  SALL     ALL FOUR AND FIX A                             668806        +8939
+
+  ADDITIVITY — are the repairs readable off each other?
+    SW47A    actual   662490   additive prediction   662179   gap   +311 (+0.047% of the board)  [B1 + SW47 + SAB1]
+    SC20A    actual   669506   additive prediction   670878   gap  -1372 (-0.205% of the board)  [B1 + SC20 + SAB1]
+    SMA      actual   662126   additive prediction   662188   gap    -62 (-0.009% of the board)  [B1 + SM + SAB1]
+    SALL     actual   668806   additive prediction   669875   gap  -1069 (-0.160% of the board)  [B1 + SW47 + SC20 + SM + SAB1]
+
+== WHERE THE MONEY MOVES ==
+  SW47    vs ORDER P : 399 rows move (117 up, 282 down)   net   -7073   S1 recency w=0.47       the DIRECT out-of-sample optimum
+  SW47    vs FIX B1  : 352 rows move (141 up, 211 down)   net    -506   
+  SW28    vs ORDER P : 418 rows move (120 up, 298 down)   net   -7385   S1 recency w=0.28       the CALIBRATED out-of-sample optimum
+  SW28    vs FIX B1  : 372 rows move (149 up, 223 down)   net    -818   
+  SW47A   vs ORDER P : 416 rows move (142 up, 274 down)   net   -3944   S1 recency w=0.47 + A
+  SW47A   vs FIX B1  : 367 rows move (177 up, 190 down)   net   +2623   
+  SC15    vs ORDER P : 443 rows move (244 up, 199 down)   net    +467   S2 compression p15      the owner's smooth cap
+  SC15    vs FIX B1  : 360 rows move (360 up,   0 down)   net   +7034   
+  SC20    vs ORDER P : 443 rows move (244 up, 199 down)   net   +1626   S2 compression p20      the owner's smooth cap, far end
+  SC20    vs FIX B1  : 363 rows move (363 up,   0 down)   net   +8193   
+  SC20A   vs ORDER P : 445 rows move (247 up, 198 down)   net   +3072   S2 compression p20 + A
+  SC20A   vs FIX B1  : 374 rows move (374 up,   0 down)   net   +9639   
+  SL56    vs ORDER P : 502 rows move ( 29 up, 473 down)   net  -15230   S3 LAMBDA 0.56          the STIFFEST the W2 class floor admits
+  SL56    vs FIX B1  : 472 rows move (  0 up, 472 down)   net   -8663   
+  SL10    vs ORDER P : 439 rows move (248 up, 191 down)   net   -4865   S3 LAMBDA 0.10          the softening direction
+  SL10    vs FIX B1  : 364 rows move (364 up,   0 down)   net   +1702   
+  SM      vs ORDER P : 255 rows move ( 40 up, 215 down)   net   -7064   S5 mature premium at 24+
+  SM      vs FIX B1  : 149 rows move ( 17 up, 132 down)   net    -497   
+  SMA     vs ORDER P : 330 rows move (119 up, 211 down)   net   -4308   S5 mature premium + A
+  SMA     vs FIX B1  : 232 rows move (128 up, 104 down)   net   +2259   
+  SALL    vs ORDER P : 497 rows move (228 up, 269 down)   net   +2372   ALL FOUR + FIX A        the far corner. NOT A RECOMMENDATION.
+  SALL    vs FIX B1  : 452 rows move (306 up, 146 down)   net   +8939   
+
+== MATURE-ROW MOVEMENT — rows aged 24 and over, against ORDER K ==
+   Under ORDER P these rows are byte-identical to ORDER K. FIX B1 breaks that (245 rows, -6,567).
+   S5 is the repair aimed straight at that break: the premium B1 reads on them was fitted on kids.
+  board                                              rows 24+    moving     net vs K     net vs P
+  SB1      FIX B1 alone            = the control ev       429       245        -6567        -6567
+  SAB1     FIX A + B1              = the control wi       429       245        -6106        -6106
+  SW47     S1 recency w=0.47       the DIRECT out-o       429       274        -7646        -7646
+  SW28     S1 recency w=0.28       the CALIBRATED o       429       287        -8212        -8212
+  SW47A    S1 recency w=0.47 + A                          429       276        -7133        -7133
+  SC15     S2 compression p15      the owner's smoo       429       247        -5134        -5134
+  SC20     S2 compression p20      the owner's smoo       429       247        -4887        -4887
+  SC20A    S2 compression p20 + A                         429       246        -4672        -4672
+  SL56     S3 LAMBDA 0.56          the STIFFEST the       429       278        -8744        -8744
+  SL10     S3 LAMBDA 0.10          the softening di       429       242        -6152        -6152
+  SM       S5 mature premium at 24+                       429       255        -7064        -7064
+  SMA      S5 mature premium + A                          429       253        -6665        -6665
+  SALL     ALL FOUR + FIX A        the far corner.        429       289        -6036        -6036
+
+== THE LAW: A(0)=0 EXACTLY, so NO ROW WITH ZERO CAREER GAMES MAY MOVE ==
+   rows with ZERO CAREER GAMES: 89.   rows with zero games IN THE PRICED SEASON: 95.
+   Only the FIRST is the law's population — ORDER R's §14 correction, carried.
+  board     zero-career n     moving        net |    zero-season n     moving
+  SW47                 89          0          0 |               95          0  
+  SW28                 89          0          0 |               95          0  
+  SW47A                89          0          0 |               95          0  
+  SC15                 89          0          0 |               95          4  
+  SC20                 89          0          0 |               95          4  
+  SC20A                89          0          0 |               95          4  
+  SL56                 89          0          0 |               95          4  
+  SL10                 89          0          0 |               95          4  
+  SM                   89          0          0 |               95          0  
+  SMA                  89          0          0 |               95          0  
+  SALL                 89          0          0 |               95          4  
+  VERDICT: PASS — 0 of 89 zero-career-games rows move on any variant.
+
+== THE LAW: NO ROW MAY PRICE ABOVE ITS OWN UNCHARGED PRICE (the eta-zero board 73bf9617) ==
+  SRoff   rows above their uncharged price: 0 of 804  
+  SB1     rows above their uncharged price: 0 of 804  
+  SW47    rows above their uncharged price: 0 of 804  
+  SW28    rows above their uncharged price: 0 of 804  
+  SW47A   rows above their uncharged price: 0 of 804  
+  SC15    rows above their uncharged price: 0 of 804  
+  SC20    rows above their uncharged price: 0 of 804  
+  SC20A   rows above their uncharged price: 0 of 804  
+  SL56    rows above their uncharged price: 0 of 804  
+  SL10    rows above their uncharged price: 0 of 804  
+  SM      rows above their uncharged price: 0 of 804  
+  SMA     rows above their uncharged price: 0 of 804  
+  SALL    rows above their uncharged price: 0 of 804  
+  VERDICT: PASS
+
+== FIX A MAY ONLY CAP A CHARGE — no row may price BELOW its A-off partner ==
+  SAB1    vs SB1     : 0 rows price LOWER  (PASS)
+  SW47A   vs SW47    : 0 rows price LOWER  (PASS)
+  SC20A   vs SC20    : 0 rows price LOWER  (PASS)
+  SMA     vs SM      : 0 rows price LOWER  (PASS)
+
+== S2-F2: THE COMPRESSION MAY NEVER CHARGE MORE THAN THE HARD CLIP IT REPLACES ==
+   T' < C = TMAX(anchor) <= TMAX(p5) pointwise, so every row must price AT OR ABOVE its
+   clip partner. Asserted in the engine at load (S-S5); measured on the board here.
+  SC15    vs SB1     : 0 rows price LOWER   (compression p15 vs ORDER P's p5 clip)  (PASS)
+  SC20    vs SB1     : 0 rows price LOWER   (compression p20 vs ORDER P's p5 clip)  (PASS)
+  SC20A   vs SAB1    : 0 rows price LOWER   (compression p20 + A vs ORDER P's p5 clip + A)  (PASS)
+  SC20A   vs SR20A   : 0 rows price LOWER   (compression p20 + A vs ORDER R's p20 CLIP + A)  (PASS)
+
+== MOVERS LEDGERS, against ORDER P. CONSEQUENCES, NEVER TARGETS. ==
+-- SW47 (S1 recency w=0.47       the DIRECT out-of-sample optimum) --
+  TOP 10 UP:
+    Sam Lalor                  1     age 20   20g     3060 ->   3217    +157
+    Leo Lombard                9     age 20   23g     1540 ->   1671    +131
+    Aaron Cadman               1     age 22   73g     1592 ->   1706    +114
+    Jedd Busslinger            13    age 22   14g      671 ->    782    +111
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+    Ned Moyle                  5     age 24   25g     1568 ->   1671    +103
+    Elijah Tsatas              5     age 22   22g      689 ->    783     +94
+    Koltyn Tholstrup           13    age 21   38g     1655 ->   1743     +88
+    Lachlan McAndrew           None  age 26   21g      841 ->    920     +79
+    Clay Hall                  38    age 21   16g      391 ->    451     +60
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    226    -308
+    Conor Stone                15    age 24   28g      218 ->     19    -199
+    Paddy Dow                  3     age 27   83g      206 ->      8    -198
+    Luke Pedlar                11    age 24   49g      217 ->     33    -184
+    Billy Cootee               42    age 24    5g      232 ->     62    -170
+    Nikolas Cox                8     age 24   61g      249 ->     80    -169
+    Nick Bryan                 37    age 25   33g      718 ->    549    -169
+    Dylan Stephens             5     age 25  100g      687 ->    520    -167
+    Josh Gibcus                9     age 23   22g      330 ->    186    -144
+    Colby McKercher            2     age 21   58g     4223 ->   4086    -137
+  by age band, net against ORDER P:
+    <=20     rows  158  net     +186  movers   32
+    21-23    rows  217  net     +387  movers   93
+    24-26    rows  164  net    -5065  movers  130
+    27-29    rows  143  net    -2048  movers   91
+    30+      rows  122  net     -533  movers   53
+
+-- SW28 (S1 recency w=0.28       the CALIBRATED out-of-sample optimum) --
+  TOP 10 UP:
+    Sam Lalor                  1     age 20   20g     3060 ->   3323    +263
+    Leo Lombard                9     age 20   23g     1540 ->   1740    +200
+    Elijah Tsatas              5     age 22   22g      689 ->    881    +192
+    Aaron Cadman               1     age 22   73g     1592 ->   1755    +163
+    Jedd Busslinger            13    age 22   14g      671 ->    799    +128
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+    Ned Moyle                  5     age 24   25g     1568 ->   1671    +103
+    Clay Hall                  38    age 21   16g      391 ->    480     +89
+    Koltyn Tholstrup           13    age 21   38g     1655 ->   1743     +88
+    Finn O'Sullivan            2     age 20   37g     2810 ->   2896     +86
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    191    -343
+    Colby McKercher            2     age 21   58g     4223 ->   3998    -225
+    Levi Ashcroft              5     age 20   46g     3471 ->   3263    -208
+    Paddy Dow                  3     age 27   83g      206 ->      8    -198
+    Conor Stone                15    age 24   28g      218 ->     20    -198
+    Luke Pedlar                11    age 24   49g      217 ->     31    -186
+    Nick Bryan                 37    age 25   33g      718 ->    543    -175
+    Josh Gibcus                9     age 23   22g      330 ->    155    -175
+    Nikolas Cox                8     age 24   61g      249 ->     76    -173
+    Billy Cootee               42    age 24    5g      232 ->     62    -170
+  by age band, net against ORDER P:
+    <=20     rows  158  net     +311  movers   34
+    21-23    rows  217  net     +516  movers   97
+    24-26    rows  164  net    -5292  movers  131
+    27-29    rows  143  net    -2273  movers   98
+    30+      rows  122  net     -647  movers   58
+
+-- SW47A (S1 recency w=0.47 + A) --
+  TOP 10 UP:
+    Sam Lalor                  1     age 20   20g     3060 ->   3613    +553
+    Willem Duursma             1     age 19   17g     3920 ->   4236    +316
+    Finn O'Sullivan            2     age 20   37g     2810 ->   3116    +306
+    Elijah Tsatas              5     age 22   22g      689 ->    901    +212
+    Aaron Cadman               1     age 22   73g     1592 ->   1785    +193
+    Sam Cumming                7     age 19   13g     2007 ->   2150    +143
+    Leo Lombard                9     age 20   23g     1540 ->   1671    +131
+    Xavier Lindsay             11    age 20   23g     1298 ->   1411    +113
+    Jedd Busslinger            13    age 22   14g      671 ->    782    +111
+    Taj Hotton                 12    age 20   13g     1722 ->   1830    +108
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    241    -293
+    Conor Stone                15    age 24   28g      218 ->     19    -199
+    Paddy Dow                  3     age 27   83g      206 ->      9    -197
+    Luke Pedlar                11    age 24   49g      217 ->     33    -184
+    Billy Cootee               42    age 24    5g      232 ->     62    -170
+    Nikolas Cox                8     age 24   61g      249 ->     80    -169
+    Nick Bryan                 37    age 25   33g      718 ->    549    -169
+    Dylan Stephens             5     age 25  100g      687 ->    530    -157
+    Josh Gibcus                9     age 23   22g      330 ->    186    -144
+    Nicholas Coffield          8     age 27   75g      161 ->     27    -134
+  by age band, net against ORDER P:
+    <=20     rows  158  net    +1888  movers   40
+    21-23    rows  217  net    +1301  movers  100
+    24-26    rows  164  net    -4847  movers  132
+    27-29    rows  143  net    -1807  movers   91
+    30+      rows  122  net     -479  movers   53
+
+-- SC15 (S2 compression p15      the owner's smooth cap) --
+  TOP 10 UP:
+    Dylan Patterson            5     age 19    4g      955 ->   1224    +269
+    Daniel Annable             6     age 19    1g     1115 ->   1372    +257
+    Sid Draper                 4     age 20   10g      623 ->    870    +247
+    Zeke Uwland                2     age 19   16g     1486 ->   1672    +186
+    Sam Lalor                  1     age 20   20g     3060 ->   3218    +158
+    Finn O'Sullivan            2     age 20   37g     2810 ->   2937    +127
+    Xavier Taylor              11    age 19    2g      950 ->   1076    +126
+    Elijah Tsatas              5     age 22   22g      689 ->    811    +122
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+    Ned Moyle                  5     age 24   25g     1568 ->   1671    +103
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    328    -206
+    Paddy Dow                  3     age 27   83g      206 ->     37    -169
+    Conor Stone                15    age 24   28g      218 ->     64    -154
+    Dylan Stephens             5     age 25  100g      687 ->    539    -148
+    Luke Pedlar                11    age 24   49g      217 ->     72    -145
+    Ryan Angwin                19    age 24   46g      487 ->    365    -122
+    Nikolas Cox                8     age 24   61g      249 ->    130    -119
+    Will Setterfield           5     age 28   91g      664 ->    546    -118
+    Nick Bryan                 37    age 25   33g      718 ->    605    -113
+    Tanner Bruhn               12    age 24   82g     2018 ->   1911    -107
+  by age band, net against ORDER P:
+    <=20     rows  158  net    +3159  movers   75
+    21-23    rows  217  net    +2442  movers  121
+    24-26    rows  164  net    -3629  movers  137
+    27-29    rows  143  net    -1260  movers   79
+    30+      rows  122  net     -245  movers   31
+
+-- SC20 (S2 compression p20      the owner's smooth cap, far end) --
+  TOP 10 UP:
+    Sid Draper                 4     age 20   10g      623 ->    932    +309
+    Dylan Patterson            5     age 19    4g      955 ->   1262    +307
+    Daniel Annable             6     age 19    1g     1115 ->   1403    +288
+    Zeke Uwland                2     age 19   16g     1486 ->   1703    +217
+    Sam Lalor                  1     age 20   20g     3060 ->   3244    +184
+    Finn O'Sullivan            2     age 20   37g     2810 ->   2958    +148
+    Elijah Tsatas              5     age 22   22g      689 ->    833    +144
+    Xavier Taylor              11    age 19    2g      950 ->   1092    +142
+    Harry Barnett              23    age 22    2g      557 ->    669    +112
+    Tobie Travaglia            8     age 20   16g      276 ->    386    +110
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    333    -201
+    Paddy Dow                  3     age 27   83g      206 ->     43    -163
+    Dylan Stephens             5     age 25  100g      687 ->    543    -144
+    Conor Stone                15    age 24   28g      218 ->     74    -144
+    Luke Pedlar                11    age 24   49g      217 ->     78    -139
+    Ryan Angwin                19    age 24   46g      487 ->    369    -118
+    Will Setterfield           5     age 28   91g      664 ->    549    -115
+    Nikolas Cox                8     age 24   61g      249 ->    134    -115
+    Nick Bryan                 37    age 25   33g      718 ->    610    -108
+    Tanner Bruhn               12    age 24   82g     2018 ->   1913    -105
+  by age band, net against ORDER P:
+    <=20     rows  158  net    +3664  movers   75
+    21-23    rows  217  net    +2849  movers  121
+    24-26    rows  164  net    -3430  movers  137
+    27-29    rows  143  net    -1216  movers   79
+    30+      rows  122  net     -241  movers   31
+
+-- SC20A (S2 compression p20 + A) --
+  TOP 10 UP:
+    Sam Lalor                  1     age 20   20g     3060 ->   3396    +336
+    Willem Duursma             1     age 19   17g     3920 ->   4236    +316
+    Sid Draper                 4     age 20   10g      623 ->    932    +309
+    Dylan Patterson            5     age 19    4g      955 ->   1262    +307
+    Daniel Annable             6     age 19    1g     1115 ->   1403    +288
+    Finn O'Sullivan            2     age 20   37g     2810 ->   3055    +245
+    Zeke Uwland                2     age 19   16g     1486 ->   1703    +217
+    Elijah Tsatas              5     age 22   22g      689 ->    833    +144
+    Sam Cumming                7     age 19   13g     2007 ->   2150    +143
+    Xavier Taylor              11    age 19    2g      950 ->   1092    +142
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    356    -178
+    Paddy Dow                  3     age 27   83g      206 ->     43    -163
+    Dylan Stephens             5     age 25  100g      687 ->    543    -144
+    Conor Stone                15    age 24   28g      218 ->     74    -144
+    Luke Pedlar                11    age 24   49g      217 ->     78    -139
+    Ryan Angwin                19    age 24   46g      487 ->    369    -118
+    Nikolas Cox                8     age 24   61g      249 ->    134    -115
+    Nick Bryan                 37    age 25   33g      718 ->    610    -108
+    Brayden Cook               26    age 24   48g      710 ->    611     -99
+    Nathan O'Driscoll          28    age 24   50g      562 ->    464     -98
+  by age band, net against ORDER P:
+    <=20     rows  158  net    +4489  movers   76
+    21-23    rows  217  net    +3255  movers  123
+    24-26    rows  164  net    -3319  movers  136
+    27-29    rows  143  net    -1123  movers   79
+    30+      rows  122  net     -230  movers   31
+
+-- SL56 (S3 LAMBDA 0.56          the STIFFEST the W2 class floor admits) --
+  TOP 10 UP:
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+    Ned Moyle                  5     age 24   25g     1568 ->   1661     +93
+    Lachlan McAndrew           None  age 26   21g      841 ->    920     +79
+    Tom McCarthy               1     age 26   28g     1211 ->   1259     +48
+    Milan Murdock              None  age 26   15g      156 ->    196     +40
+    Max Hall                   4     age 24   42g     2110 ->   2131     +21
+    Joe Richards               48    age 27   49g      745 ->    759     +14
+    James Borlase              None  age 24   30g      294 ->    307     +13
+    Shaun Mannagh              36    age 29   53g      609 ->    622     +13
+    Jordon Sweet               14    age 28   65g     2007 ->   2017     +10
+  TOP 10 DOWN:
+    Willem Duursma             1     age 19   17g     3920 ->   3585    -335
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    260    -274
+    Cooper Duff-Tytler         4     age 19   11g     1824 ->   1609    -215
+    Harley Reid                1     age 21   58g     3723 ->   3510    -213
+    Conor Stone                15    age 24   28g      218 ->     13    -205
+    Paddy Dow                  3     age 27   83g      206 ->      8    -198
+    Luke Pedlar                11    age 24   49g      217 ->     36    -181
+    Billy Cootee               42    age 24    5g      232 ->     51    -181
+    Dylan Stephens             5     age 25  100g      687 ->    513    -174
+    Sam Lalor                  1     age 20   20g     3060 ->   2888    -172
+  by age band, net against ORDER P:
+    <=20     rows  158  net    -3449  movers   83
+    21-23    rows  217  net    -3037  movers  141
+    24-26    rows  164  net    -6168  movers  141
+    27-29    rows  143  net    -2158  movers   98
+    30+      rows  122  net     -418  movers   39
+
+-- SL10 (S3 LAMBDA 0.10          the softening direction) --
+  TOP 10 UP:
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+    Ned Moyle                  5     age 24   25g     1568 ->   1671    +103
+    Lachlan McAndrew           None  age 26   21g      841 ->    920     +79
+    Willem Duursma             1     age 19   17g     3920 ->   3999     +79
+    Harley Reid                1     age 21   58g     3723 ->   3774     +51
+    Cooper Duff-Tytler         4     age 19   11g     1824 ->   1873     +49
+    Tom McCarthy               1     age 26   28g     1211 ->   1259     +48
+    Elijah Hollands            7     age 24   47g      708 ->    751     +43
+    Sam Lalor                  1     age 20   20g     3060 ->   3101     +41
+    Milan Murdock              None  age 26   15g      156 ->    196     +40
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    306    -228
+    Conor Stone                15    age 24   28g      218 ->     18    -200
+    Paddy Dow                  3     age 27   83g      206 ->     11    -195
+    Luke Pedlar                11    age 24   49g      217 ->     45    -172
+    Dylan Stephens             5     age 25  100g      687 ->    516    -171
+    Billy Cootee               42    age 24    5g      232 ->     64    -168
+    Ryan Angwin                19    age 24   46g      487 ->    342    -145
+    Nick Bryan                 37    age 25   33g      718 ->    580    -138
+    Nikolas Cox                8     age 24   61g      249 ->    112    -137
+    Will Setterfield           5     age 28   91g      664 ->    532    -132
+  by age band, net against ORDER P:
+    <=20     rows  158  net     +699  movers   76
+    21-23    rows  217  net     +588  movers  121
+    24-26    rows  164  net    -4490  movers  136
+    27-29    rows  143  net    -1417  movers   77
+    30+      rows  122  net     -245  movers   29
+
+-- SM (S5 mature premium at 24+) --
+  TOP 10 UP:
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+    Ned Moyle                  5     age 24   25g     1568 ->   1671    +103
+    Lachlan McAndrew           None  age 26   21g      841 ->    920     +79
+    Tom McCarthy               1     age 26   28g     1211 ->   1259     +48
+    Milan Murdock              None  age 26   15g      156 ->    196     +40
+    Max Hall                   4     age 24   42g     2110 ->   2131     +21
+    Daniel Turner              20    age 24   52g     1303 ->   1322     +19
+    Elijah Hollands            7     age 24   47g      708 ->    725     +17
+    Sandy Brock                None  age 24   19g      130 ->    147     +17
+    Joe Richards               48    age 27   49g      745 ->    759     +14
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    297    -237
+    Conor Stone                15    age 24   28g      218 ->     16    -202
+    Paddy Dow                  3     age 27   83g      206 ->     11    -195
+    Luke Pedlar                11    age 24   49g      217 ->     42    -175
+    Dylan Stephens             5     age 25  100g      687 ->    515    -172
+    Billy Cootee               42    age 24    5g      232 ->     62    -170
+    Nick Bryan                 37    age 25   33g      718 ->    562    -156
+    Ryan Angwin                19    age 24   46g      487 ->    337    -150
+    Nikolas Cox                8     age 24   61g      249 ->    108    -141
+    Will Setterfield           5     age 28   91g      664 ->    528    -136
+  by age band, net against ORDER P:
+    <=20     rows  158  net       +0  movers    0
+    21-23    rows  217  net       +0  movers    0
+    24-26    rows  164  net    -5108  movers  137
+    27-29    rows  143  net    -1657  movers   86
+    30+      rows  122  net     -299  movers   32
+
+-- SMA (S5 mature premium + A) --
+  TOP 10 UP:
+    Sam Lalor                  1     age 20   20g     3060 ->   3395    +335
+    Willem Duursma             1     age 19   17g     3920 ->   4236    +316
+    Finn O'Sullivan            2     age 20   37g     2810 ->   3055    +245
+    Sam Cumming                7     age 19   13g     2007 ->   2150    +143
+    Harvey Langford            6     age 20   41g     2422 ->   2536    +114
+    Taj Hotton                 12    age 20   13g     1722 ->   1829    +107
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+    Ned Moyle                  5     age 24   25g     1568 ->   1671    +103
+    Zeke Uwland                2     age 19   16g     1486 ->   1582     +96
+    Harley Reid                1     age 21   58g     3723 ->   3813     +90
+  TOP 10 DOWN:
+    Conor Stone                15    age 24   28g      218 ->     16    -202
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    333    -201
+    Paddy Dow                  3     age 27   83g      206 ->     19    -187
+    Luke Pedlar                11    age 24   49g      217 ->     42    -175
+    Billy Cootee               42    age 24    5g      232 ->     62    -170
+    Dylan Stephens             5     age 25  100g      687 ->    521    -166
+    Nick Bryan                 37    age 25   33g      718 ->    563    -155
+    Ryan Angwin                19    age 24   46g      487 ->    337    -150
+    Nikolas Cox                8     age 24   61g      249 ->    109    -140
+    Brayden Cook               26    age 24   48g      710 ->    586    -124
+  by age band, net against ORDER P:
+    <=20     rows  158  net    +1588  movers   20
+    21-23    rows  217  net     +769  movers   57
+    24-26    rows  164  net    -4883  movers  136
+    27-29    rows  143  net    -1493  movers   85
+    30+      rows  122  net     -289  movers   32
+
+-- SALL (ALL FOUR + FIX A        the far corner. NOT A RECOMMENDATION.) --
+  TOP 10 UP:
+    Sam Lalor                  1     age 20   20g     3060 ->   3615    +555
+    Willem Duursma             1     age 19   17g     3920 ->   4236    +316
+    Sid Draper                 4     age 20   10g      623 ->    932    +309
+    Dylan Patterson            5     age 19    4g      955 ->   1262    +307
+    Finn O'Sullivan            2     age 20   37g     2810 ->   3116    +306
+    Daniel Annable             6     age 19    1g     1115 ->   1403    +288
+    Elijah Tsatas              5     age 22   22g      689 ->    914    +225
+    Zeke Uwland                2     age 19   16g     1486 ->   1703    +217
+    Aaron Cadman               1     age 22   73g     1592 ->   1785    +193
+    Sam Cumming                7     age 19   13g     2007 ->   2150    +143
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    283    -251
+    Paddy Dow                  3     age 27   83g      206 ->     38    -168
+    Luke Pedlar                11    age 24   49g      217 ->     68    -149
+    Conor Stone                15    age 24   28g      218 ->     74    -144
+    Nikolas Cox                8     age 24   61g      249 ->    109    -140
+    Dylan Stephens             5     age 25  100g      687 ->    547    -140
+    Nick Bryan                 37    age 25   33g      718 ->    581    -137
+    Josh Gibcus                9     age 23   22g      330 ->    211    -119
+    Ryan Angwin                19    age 24   46g      487 ->    374    -113
+    Nicholas Coffield          8     age 27   75g      161 ->     49    -112
+  by age band, net against ORDER P:
+    <=20     rows  158  net    +4751  movers   77
+    21-23    rows  217  net    +3657  movers  131
+    24-26    rows  164  net    -3853  movers  134
+    27-29    rows  143  net    -1715  movers   96
+    30+      rows  122  net     -468  movers   59
+
