@@ -269,12 +269,12 @@ if 'FC_CAND' in V:
                       d_K_cand=(row['FC_CAND'] - row.get('IDENT_K')) if 'IDENT_K' in row else None,
                       levers={t: LEVER[t]['rows'].get(k) for t in LEVER if k in LEVER[t]['rows']})
     json.dump(dict(totals=TOT, md5={t: MD5[t] for t in MD5}, n_moved=len(led), rows=led),
-              open(os.path.join(HERE, 'MOVERS_LEDGER.json'), 'w'), indent=1, sort_keys=True)
-    P('MOVERS LEDGER: %d rows moved by the mechanism or the repairs -> MOVERS_LEDGER.json' % len(led))
+              open(os.path.join(HERE, 'MOVERS_LEDGER_CP.json'), 'w'), indent=1, sort_keys=True)
+    P('MOVERS LEDGER: %d rows moved by the mechanism or the repairs -> MOVERS_LEDGER_CP.json' % len(led))
 
 json.dump(dict(totals=TOT, md5=MD5, lever={t: {kk: vv for kk, vv in LEVER[t].items() if kk != 'rows'}
                                             for t in LEVER}, fail=FAIL),
           open(os.path.join(HERE, 'BOARDS_CP.json'), 'w'), indent=1, sort_keys=True)
 open(os.path.join(HERE, 'BOARDS_CP_out.txt'), 'w').write('\n'.join(L) + '\n')
 P()
-P('written: BOARDS_CP.json · BOARDS_CP_out.txt · MOVERS_LEDGER.json')
+P('written: BOARDS_CP.json · BOARDS_CP_out.txt · MOVERS_LEDGER_CP.json')

@@ -83,4 +83,4 @@ are live. Reported loudly either way.
 A-F7 — NO ROW ABOVE ITS UNCHARGED PRICE. The uncharged ceiling is ORDER P's own eta-zero board.
   (checked in as_accept.py against the built ceiling board; reported there)
 
-MOVERS LEDGER: 801 rows moved by the mechanism or the repairs -> MOVERS_LEDGER.json
+MOVERS LEDGER: 801 rows moved by the mechanism or the repairs -> MOVERS_LEDGER_CP.json

@@ -118,6 +118,23 @@ the **carried instrument**, not in the board. Full detail: `REBASE_DAY0_AMENDED.
 **None of the order's four halt conditions fired, on either run.** `A3`, `A4`, `A8` and `A9` passed
 **before** both fixes — the six-row finding never depended on the defects.
 
+**TWO FURTHER DEFECTS, IN THIS SEAT'S OWN BOOKKEEPING, CAUGHT ON FINAL VERIFICATION AND DISCLOSED**
+(`REBASE_DAY0_AMENDED.md` §8.5, §8.6):
+
+4. **The cited raw file held the wrong run.** A filename rename matched only the indented HALT-path
+   write and missed the unindented SUCCESS-path one, so for one commit
+   `REBASE_DAY0_AMENDED_out.txt` — **the file this packet cites as the passing run** — held the
+   **first, HALTED** run instead. **A supervisor opening it would have found a HALT where this packet
+   claimed nine passes.** Fixed: both paths now agree, the file holds the passing run, and the halted
+   first run is **kept** as `REBASE_DAY0_AMENDED_HALT1_out.txt` (the D7 seat's own convention). The
+   re-run rewrote `DAY0_CP.json` **byte-identically**, md5 `210510fe5d09` — an incidental determinism
+   check on the regeneration.
+5. **An overwrite of another seat's evidence, reverted.** `cp_boards.py` inherited the output name
+   `MOVERS_LEDGER.json` and overwrote the final-candidate seat's ledger for the superseded board.
+   **Restored byte-identical to `9b93fba`** (md5 `5098b1a8e6d4…`); this pass writes
+   `MOVERS_LEDGER_CP.json`. **No other pre-existing file in this directory was written to** — verified
+   by diffing the whole pass against `9b93fba`.
+
 ---
 
 ## 3 · THE HALT — ITEMS 3, 4 AND 5
@@ -306,7 +323,8 @@ Biggest down vs live: Harry Sheezel −1,331 · Archie Roberts −1,155 · Mitch
 docs/evidence/final_candidate_2026-08-19/
   PACKET_COMPLETION.md              this file
   REBASE_DAY0_AMENDED.md            the disclosure — PUSHED FIRST at 355152c; §8 appended after the run
-  REBASE_DAY0_AMENDED_out.txt       the raw regeneration, all nine assertions printed
+  REBASE_DAY0_AMENDED_out.txt       the raw PASSING regeneration, all nine assertions printed
+  REBASE_DAY0_AMENDED_HALT1_out.txt the FIRST run, HALTED on three assertions — kept as evidence
   cprb_day0.py                      the regenerator (fcrb_day0.py carried, re-keyed to six rows + A8/A9)
   DAY0_CP.json                      THE REGENERATED REFERENCE, board a05fe951
   HALT_EMIT_CP.md                   the halt report for items 3/4/5
@@ -319,7 +337,8 @@ docs/evidence/final_candidate_2026-08-19/
   PLAYERS_COMPLETION.html           804 rows
   BOARDS_CP.json / _out.txt         the identity chain and the lever decomposition
   V0_CP.json / _out.txt             804 of 804 v0 objects
-  LEGS_CP.json · TAIL_CP · R3_AGE_CP · MOVERS_LEDGER.json
+  LEGS_CP.json · TAIL_CP · R3_AGE_CP · MOVERS_LEDGER_CP.json
+  (MOVERS_LEDGER.json is the FC seat's, for the SUPERSEDED board — restored, not this pass's)
   GUARD5_CP_out.txt                 Guard 5 RED, recorded raw
   cp_tracker.py cp_pages.py cp_v0.py cp_legs.py cp_boards.py cp_r3age.py cp_tail.py
 ```

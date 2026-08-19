@@ -17,8 +17,7 @@ DAY-0 PRINT REFERENCE — REGENERATED ON THE PARITY BOARD a05fe951  (tag CP_CAND
 
 ASSERTIONS AGAINST THE OLD REFERENCE  docs/evidence/order_k_2026-08-18/DAY0_K.json  (board f3101883, 89 of 89 at tolerance 0)
 ----------------------------------------------------------------------------------------------------------------------
-  A7  printed-day-0 identity on the WRITTEN board a05fe951 : 82 of 89 at tolerance 0  (ND 46, pool 43)
-      MISMATCHES: [('harley-barker', 504, 481.43624902259006), ('blake-thredgold', 381, 372.1170674888818), ('sam-allen', 450, 428.1057247340796), ('max-king-syd', 138, 129.36271953094834), ('noah-chamberlain', 40, 36.92229346330362), ('liam-hetherton', 70, 66.43739889358613), ('kobe-mcdonald', 40, 37.08458349465988)]
+  A7  printed-day-0 identity on the WRITTEN board a05fe951 : 89 of 89 at tolerance 0  (ND 46, pool 43)
   A1  key set        : new 89 rows, old 89 rows, symmetric difference 0
   A2  derived_v0     : BIT-IDENTICAL on 89 of 89  — the matrix year-0 column does not move
   A3  printed movers : 6  ['blake-thredgold', 'harley-barker', 'liam-hetherton', 'max-king-syd', 'noah-chamberlain', 'ollie-murphy']
@@ -31,14 +30,10 @@ ASSERTIONS AGAINST THE OLD REFERENCE  docs/evidence/order_k_2026-08-18/DAY0_K.js
       max-king-syd              129        138        129        138        278.3691443496010   MATCHES THE D7 TABLE
       noah-chamberlain           37         40         37         40         86.6490308603825   MATCHES THE D7 TABLE
       ollie-murphy              196        200        196        200        398.3582851316144   MATCHES THE D7 TABLE
-  A5  sheet          : 219 rows, 37 annotated injured=Y; 10 of the 89 wired entrants are annotated
-      annotated wired entrants: ['blake-thredgold', 'harley-barker', 'kobe-mcdonald', 'liam-hetherton', 'nathan-wardius', 'noah-chamberlain', 'ollie-murphy', 'ricky-mentha', 'rob-monahan', 'sam-allen']
-      *** MOVED BUT NOT SHEET-ANNOTATED: ['max-king-syd'] ***
-  A6  non-movers     : 81 of 83 rows BYTE-IDENTICAL on every field ['key', 'ty', 'pos', 'pick', 'cell', 'printed', 'derived_v0', 'fade_D', 'day0_price']
-      kobe-mcdonald        fade_D       0.45620806997626484 -> 0.4261131728385568
-      kobe-mcdonald        day0_price   39.703739148149566 -> 37.08458349465988
-      sam-allen            fade_D       0.5679276087700744 -> 0.5406636275438534
-      sam-allen            day0_price   449.6937618191912 -> 428.1057247340796
+  A5  sheet          : 219 rows, 37 annotated injured=Y (engine-resolved to 37 store keys); 11 of the 89 wired entrants are annotated
+      annotated wired entrants: ['blake-thredgold', 'harley-barker', 'kobe-mcdonald', 'liam-hetherton', 'max-king-syd', 'nathan-wardius', 'noah-chamberlain', 'ollie-murphy', 'ricky-mentha', 'rob-monahan', 'sam-allen']
+      every moved row is annotated injured=Y. 5 annotated wired entrants did NOT move: ['kobe-mcdonald', 'nathan-wardius', 'ricky-mentha', 'rob-monahan', 'sam-allen']
+  A6  non-movers     : 83 of 83 rows BYTE-IDENTICAL on every field ['key', 'ty', 'pos', 'pick', 'cell', 'printed', 'derived_v0', 'fade_D', 'day0_price']
   A8  direction      : 6 of 6 movers move strictly UP  (RL_O43 is a max — it can only RAISE)
       blake-thredgold       372 -> 381     +9  UP
       harley-barker         481 -> 504     +23  UP
@@ -50,7 +45,7 @@ ASSERTIONS AGAINST THE OLD REFERENCE  docs/evidence/order_k_2026-08-18/DAY0_K.js
       kobe-mcdonald      frozen     40 | priced     40 | expected     40   RESTORES EXACTLY
       sam-allen          frozen    450 | priced    450 | expected    450   RESTORES EXACTLY
 ----------------------------------------------------------------------------------------------------------------------
-*** HALT — 3 ASSERTION(S) FAILED. NO REFERENCE IS WRITTEN. ***
-      A7 the identity does not hold on the written board
-      A5 a moved row is not annotated on the owner sheet: ['max-king-syd']
-      A6 4 non-mover field(s) moved
+ALL NINE ASSERTIONS PASS. 83 of 89 rows byte-identical to the ORDER K reference; exactly 6 move (blake-thredgold, harley-barker, liam-hetherton, max-king-syd, noah-chamberlain, ollie-murphy), every one sheet-annotated injured=Y, every one UP, each to the value the D7 parity harness itself published; sam-allen and kobe-mcdonald restore exactly.
+
+PRINTED DAY-0 IDENTITY: 89 of 89 at tolerance 0 (ND 46, pool 43) on board a05fe951f784
+DAY0_CP.json written  (md5 210510fe5d09)

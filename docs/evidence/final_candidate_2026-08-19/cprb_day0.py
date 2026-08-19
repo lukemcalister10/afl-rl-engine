@@ -368,4 +368,4 @@ json.dump(DOC, open(os.path.join(HERE, OUTNAME), 'w'), indent=1, sort_keys=True)
 P('PRINTED DAY-0 IDENTITY: %d of %d at tolerance 0 (ND %d, pool %d) on board %s'
   % (len(out) - len(mism), len(out), nND, nPOOL, BOARD_MD5[:12]))
 P('%s written  (md5 %s)' % (OUTNAME, hashlib.md5(open(os.path.join(HERE, OUTNAME), 'rb').read()).hexdigest()[:12]))
-open(os.path.join(HERE, 'REBASE_DAY0_out.txt'), 'w').write('\n'.join(OUT) + '\n')
+open(os.path.join(HERE, 'REBASE_DAY0_AMENDED_out.txt'), 'w').write('\n'.join(OUT) + '\n')

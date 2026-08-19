@@ -243,7 +243,8 @@ anything else, that is reported as a failure and no matrix is used.
 | `REBASE_DAY0_AMENDED.md` | this disclosure — **pushed before the reference is touched** |
 | `REBASE_DAY0.md` | the **superseded** three-row disclosure at `d5c37da` — kept, not deleted |
 | `cprb_day0.py` | the regenerator: `fcrb_day0.py` carried, plus the re-keyed assertion block |
-| `REBASE_DAY0_AMENDED_out.txt` | the raw run, all nine assertions printed pass or fail |
+| `REBASE_DAY0_AMENDED_out.txt` | the raw PASSING run, all nine assertions printed |
+| `REBASE_DAY0_AMENDED_HALT1_out.txt` | the FIRST run, HALTED on three assertions — kept, see §8 |
 | `DAY0_CP.json` | the regenerated reference, board `a05fe951` — written **only** if every assertion passes |
 | `docs/evidence/order_k_2026-08-18/DAY0_K.json` | the ORDER K reference — untouched, filed history |
 
@@ -324,3 +325,39 @@ never depended on the two defects. `DAY0_CP.json` was written only after all nin
 
 Both fixes are **SCRIPT changes to an evidence instrument**, of the same class as the `RL_O43`
 pass-through disclosed in §2a. **No engine file, no emitter file, and no guard was modified.**
+
+### 8.5 · A THIRD DEFECT, IN THIS SEAT'S OWN BOOKKEEPING — CAUGHT ON FINAL VERIFICATION
+
+When this seat renamed the generator's output file, the rename was applied with a whole-line match
+that carried a **four-space indent**. The generator writes its output on **two** paths — the HALT
+path (indented, inside `if HALT:`) and the SUCCESS path (unindented, at module level). **Only the
+indented one was renamed.** For one commit the result was that:
+
+- `REBASE_DAY0_AMENDED_out.txt` — **the file this document and `PACKET_COMPLETION.md` both cite as
+  the raw passing run** — actually held the output of the **first, HALTED** run, and
+- `REBASE_DAY0_out.txt` — a filename this pass never intended to create — held the passing run.
+
+**A supervisor opening the cited file would have found a HALT where the packet claimed nine passes.**
+That is a discrepancy between a claim and its raw evidence, which is the one thing this whole
+discipline exists to prevent, and it is recorded here rather than quietly corrected. The fix:
+
+| | |
+|---|---|
+| the generator | the SUCCESS path now writes `REBASE_DAY0_AMENDED_out.txt` — both paths agree |
+| `REBASE_DAY0_AMENDED_out.txt` | **re-run; now holds the PASSING run**, all nine assertions |
+| `REBASE_DAY0_AMENDED_HALT1_out.txt` | **the first, HALTED run, KEPT as evidence** under an honest name — the same convention the D7 seat used for `BUILD_D7_DAY0HALT_out.txt` |
+| `REBASE_DAY0_out.txt` | **removed** — a misleading name for a file that duplicated the corrected one |
+
+**The re-run rewrote `DAY0_CP.json` byte-identically** (md5 `210510fe5d09` before and after), which is
+an incidental but real determinism check on the regeneration itself.
+
+### 8.6 · AND A FOURTH — AN OVERWRITE OF ANOTHER SEAT'S EVIDENCE, REVERTED
+
+`cp_boards.py`, carried from `fc_boards.py`, inherited its output filename `MOVERS_LEDGER.json`.
+Running it **overwrote the final-candidate seat's own movers ledger** for the superseded board
+`daa16812` — prior evidence, committed at `9b93fba`, which this seat had no business changing.
+
+**Reverted.** `MOVERS_LEDGER.json` is restored **byte-identical to `9b93fba`** (md5
+`5098b1a8e6d4cdfec7f03b41b0b753fb`, verified against the committed blob), and this pass's ledger is
+written to **`MOVERS_LEDGER_CP.json`** instead. **No other file in this directory that predates this
+pass was written to** — checked by diffing the whole pass against `9b93fba`.
