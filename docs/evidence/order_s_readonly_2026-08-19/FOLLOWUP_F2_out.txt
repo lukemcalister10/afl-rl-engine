@@ -1,0 +1,106 @@
+======================================================================================================================
+ORDER S READ-ONLY — F2. THE GRADED RESET, AND THE 9-vs-10 GAMES CLIFF.
+======================================================================================================================
+NO BOARD IS BUILT. NO ENGINE FILE IS EDITED. NO DIAL IS ADDED. NOTHING IS ADOPTED. NO FIX IS
+PROPOSED. Named rows are exhibits and gate nothing.
+ruler : the house S4 delivered-value ruler, md5 241842f61ddd3c486f04f201a7efcce9
+
+======================================================================================================================
+PART A — THE REVERSAL CURVE ON HISTORY
+======================================================================================================================
+   population: 1068 ND entrants from 2005 to 2019 with at least three observed depths.
+
+   A RETURNER at depth N: zero games at depths N-1 AND N-2, then g > 0 at depth N.
+   A KEPT-SITTING row at depth N: zero at N-2, N-1 and N.
+   A NEVER-SAT row at depth N: no zero-game season at any depth up to N.
+   The OUTCOME in all three is the discounted house-ruler value from depth N+1 onward, over v0,
+   so the return season's own output is NOT inside the outcome it is being scored against.
+
+   group                      n rows mean outcome
+   RETURNERS                     134       0.2339
+   KEPT SITTING                  760       0.0279
+   NEVER SAT                    1704       0.9626
+
+   the two anchors: V_sat = 0.0279 (n 760), V_never = 0.9626 (n 1704). The scale between them is 0.9347.
+
+----------------------------------------------------------------------------------------------------------------------
+A1 · THE REVERSAL AGAINST THE GAMES LEG — IS THERE A STEP AT TEN?
+----------------------------------------------------------------------------------------------------------------------
+   return games       n     reversal 90% CI                      wired reset
+   1-2               38       0.1760 [  +0.0527,   +0.3332]            0.0
+   3-5               29       0.1690 [  +0.0296,   +0.3529]            0.0
+   6-9               27       0.0944 [  +0.0037,   +0.2143]            0.0
+   10-14             22       0.2125 [  +0.0543,   +0.4487]            1.0 THIN
+   15+               18       0.5959 [  +0.3209,   +0.8862]            1.0 THIN
+
+   The wired reset column is what the engine credits: a FULL wipe (1.0) at ten games or more with
+   the avg leg cleared, and NOTHING (0.0) below ten however the season went.
+
+   THE CELLS THAT STRADDLE THE THRESHOLD: 6-9 games [0.0037, 0.2143] against 10-14 games
+   [0.0543, 0.4487]. Separable? NO — the intervals overlap
+   F2-P1 / F2-P4 verdict: NOT separable. F2-P4 did NOT fire: the preregistered NULL is the result.
+
+----------------------------------------------------------------------------------------------------------------------
+A2 · THE REVERSAL AGAINST THE MARGIN LEG — DOES avg-vs-BAR MATTER?
+----------------------------------------------------------------------------------------------------------------------
+   margin m (ppg)         n     reversal 90% CI                  
+   below -10             70       0.1216 [  +0.0418,   +0.2178]
+   -10 to 0              32       0.3230 [  +0.1325,   +0.5288]
+   0 to +10              22       0.2741 [  +0.0671,   +0.4833] THIN
+   +10 and up            10       0.4656 [  +0.2232,   +0.6720] THIN
+
+   below the bar [0.0976, 0.2756] against at-or-above the bar [0.1770, 0.5098]: OVERLAP
+   F2-P3 verdict: the outcome is FLAT in m at this sample — F2-P3 FIRED
+
+----------------------------------------------------------------------------------------------------------------------
+A3 · THE WIRED THRESHOLD POINT ITSELF — IS A BARE DELIVERED SEASON WORTH A FULL WIPE?
+----------------------------------------------------------------------------------------------------------------------
+   returners at 10-14 games with a margin inside +/- 5 points a game of their own bar — the
+   closest measurable neighbourhood of the wired threshold (g = 10, m = 0):
+     n = 5   reversal = 0.1049   90% CI [0.0072, 0.2167]   the wired reset credits 1.0
+   F2-P2 verdict: the interval EXCLUDES 1.0 — F2-P2 did not fire
+
+======================================================================================================================
+PART B — THE 9-vs-10 GAMES CLIFF, COUNTED AND PRICED ON THE ACTUAL BOARD
+======================================================================================================================
+   board total (numeraire): 666434 over 804 rows — the ORDER P dial line.
+   the in-progress season fraction the 10-game leg is prorated by: fE = 0.9200, so the effective
+   threshold in the CURRENT season is 9.20 games, not 10.
+
+----------------------------------------------------------------------------------------------------------------------
+B1 · THE POPULATION WITHIN TWO GAMES OF THE THRESHOLD
+----------------------------------------------------------------------------------------------------------------------
+   cell                                                     rows
+   board rows with a season inside +/- 2 games of the bar      371
+     of those, the season DELIVERS today                     120
+     of those, it does NOT deliver today                     310
+   rows a MINUS-2-game move would flip OUT of delivered       83
+   rows a PLUS-2-game move would flip INTO delivered          69
+   rows on the wrong side ONLY because of the games leg       69
+
+   F2-P5 — does the +/- 2 game census hold at least 20 board rows? YES — F2-P5 did not fire (371)
+
+----------------------------------------------------------------------------------------------------------------------
+B2 · WHAT THE FLIP IS WORTH — THE ENGINE'S OWN o32_delivered, WRAPPED FOR ONE ROW AT A TIME
+----------------------------------------------------------------------------------------------------------------------
+   The wrapper returns the OPPOSITE verdict for the one row and the one season being tested and
+   the engine's own answer for everything else. At the identity setting it is inert and that is
+   asserted below. NO REPOSITORY FILE IS TOUCHED.
+
+   FALSIFIER F2-A1 did not fire: at the identity setting all 804 board rows reprice bit-identically.
+
+   rows tested: 132   ·   rows whose price MOVES when the delivered verdict flips: 6
+   total board points at stake across them: 201   ·   worst single row: 107
+
+   row                        year  games  thresh flip direction        board   flipped    delta
+   Billy Dowling              2024    9.0   10.00 gains delivered         162       269     +107
+   Callum Coleman-Jones       2021    8.0   10.00 gains delivered         120       169      +49
+   Jedd Busslinger            2026    8.0    9.20 gains delivered         671       687      +16
+   Jy Farrar                  2025    8.0   10.00 gains delivered          34        47      +13
+   Matt Carroll               2026   10.0   10.00 loses delivered         609       601       -8
+   Elliott Himmelberg         2020   11.0   10.00 loses delivered          61        53       -8
+
+   Rows that do not move are rows whose accumulated clock was already zero for another reason, or
+   whose fade was not reaching them anyway. The census counts the population at the cliff; this
+   table prices only the part of it the cliff actually touches.
+
