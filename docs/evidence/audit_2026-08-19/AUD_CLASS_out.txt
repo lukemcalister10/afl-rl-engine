@@ -1,0 +1,41 @@
+====================================================================================================
+INDEPENDENT AUDIT · A4 — THE YEAR-1 CLASS MARK RE-DERIVED
+====================================================================================================
+
+  matrices read (md5 / mtime):
+    ASMCAND   56f2033c3ec0  2026-08-19 09:57
+    OKRULED   66340278ea04  2026-08-18 00:23
+    PBUILT    d412056060bc  2026-08-18 09:00
+
+----------------------------------------------------------------------------------------------------
+INSTRUMENT VALIDATION — reproduce ORDER K's published marks off ORDER K's own matrix
+----------------------------------------------------------------------------------------------------
+  ORDER K  W2 1.0513   (published 1.0513, diff -0.00003)
+  ORDER K  cohort clock 1.0324   (published 1.0324, diff +0.00001)
+  -> VALIDATED — the instrument is the published one
+
+  control ORDER P  W2 1.0613  (published 1.0613, diff -0.00004)
+
+----------------------------------------------------------------------------------------------------
+THE CANDIDATE, ON THE REGISTERED W2 BASIS (DRAFT 2005-2015, ENTRY_FLOOR 2005)
+----------------------------------------------------------------------------------------------------
+  CANDIDATE  W2 mark        1.0671      (PUBLISHED 1.0671, diff +0.00002)
+  CANDIDATE  cohort clock   1.0423      (published 1.0423, diff +0.00001)
+  classes averaged: 11 of 11 in the window
+  acceptance gate [1.03, 1.14) : INSIDE — PASSES
+
+  PER-CLASS, and the breaches named:
+    cohort  candidate   ORDER K   over the 1.14 rail?
+    2006       0.8343    0.8562   
+    2007       1.0232    1.0579   
+    2008       1.0579    1.0713   
+    2009       1.0450    1.0063   
+    2010       1.0748    1.0432   
+    2011       1.1671    1.1359   BREACH
+    2012       1.1581    1.1363   BREACH
+    2013       1.0905    1.0673   
+    2014       1.0859    1.0535   
+    2015       1.0278    1.0300   
+    2016       1.1737    1.1060   BREACH
+
+  max class over ALL cohorts: 1.1737 at 2016
