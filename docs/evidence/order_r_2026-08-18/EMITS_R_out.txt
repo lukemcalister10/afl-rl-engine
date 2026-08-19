@@ -50,3 +50,23 @@ records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
   emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
   engine: ea5c5e5e11132479f0925a9e32e6f632
   emit starting 00:36:02  (RL_O37=1 A=unset B1=1 pct=15 beta=0.111)
+  emit exit=0  COST: 3m 13s
+  OK -> per_entrant_R15b1.json  (a7354eea)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+=== EMIT R20b2  (RL_O39_TMAXPCT=20 RL_O39_BETASAT=0.105) ===
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: ea5c5e5e11132479f0925a9e32e6f632
+  emit starting 00:39:15  (RL_O37=1 A=unset B1=1 pct=20 beta=0.105)
+  emit exit=0  COST: 3m 10s
+  OK -> per_entrant_R20b2.json  (4055e1f8)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+=== EMIT R20b2A  (RL_O38A=1 RL_O39_TMAXPCT=20 RL_O39_BETASAT=0.105) ===
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: ea5c5e5e11132479f0925a9e32e6f632
+  emit starting 00:42:25  (RL_O37=1 A=1 B1=1 pct=20 beta=0.105)
+  emit exit=0  COST: 3m 28s
+  OK -> per_entrant_R20b2A.json  (f3c03ac0)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201

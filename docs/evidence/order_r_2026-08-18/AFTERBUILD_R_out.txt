@@ -1,3 +1,24 @@
 === BOARD SUITE FINISHED 00:15:59 ===
 
 ### 1 · THE NINE WALK-FORWARD MATRICES ###
+  emits rc=0
+  emit exit=0  COST: 3m 20s
+  OK -> per_entrant_R15.json  (1d7daa1d)
+  emit exit=0  COST: 3m 20s
+  OK -> per_entrant_R20.json  (cc7d6f99)
+  emit exit=0  COST: 3m 24s
+  OK -> per_entrant_R15A.json  (9a973ca3)
+  emit exit=0  COST: 3m 24s
+  OK -> per_entrant_R20A.json  (7392167b)
+  emit exit=0  COST: 3m 15s
+  OK -> per_entrant_Rb1.json  (595970be)
+  emit exit=0  COST: 3m 20s
+  OK -> per_entrant_Rb2.json  (62d042be)
+  emit exit=0  COST: 3m 13s
+  OK -> per_entrant_R15b1.json  (a7354eea)
+  emit exit=0  COST: 3m 10s
+  OK -> per_entrant_R20b2.json  (4055e1f8)
+  emit exit=0  COST: 3m 28s
+  OK -> per_entrant_R20b2A.json  (f3c03ac0)
+
+### 2 · CENSUSES AND CONTINUITY ###
