@@ -1,0 +1,71 @@
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+======================================================================================================================
+ORDER S READ-ONLY — T1b. WHAT THE POSITION LEVEL OFFSET IS WORTH ON THE ACTUAL BOARD.
+======================================================================================================================
+NOTHING IS ADOPTED. NO BOARD IS BUILT. NO ENGINE FILE IS EDITED. NO DIAL IS ADDED. This is a
+counterfactual READ, in the engine's own currency, so the T1 offsets can be quoted in board points.
+board total (numeraire): 666434
+
+   the offsets carried in from LEVEL_SRO.json, pooled over price, in points a game:
+     KPD      +0.631   90% CI [ -0.332,  +1.717]
+     KPF      +0.789   90% CI [ -0.064,  +1.603]
+     RUCK     -5.569   90% CI [ -8.178,  -2.900]   CI EXCLUDES ZERO
+     MID      -0.348   90% CI [ -1.135,  +0.556]
+     SD       -2.978   90% CI [ -4.329,  -1.661]   CI EXCLUDES ZERO
+     SF       +2.709   90% CI [ +1.834,  +3.673]   CI EXCLUDES ZERO
+
+   the population the charge can reach: age under 24, career games > 0, an s_P the bar can read.
+   289 rows of 804 on the board.
+
+   FALSIFIER SRO-B1 did not fire: the charge factor recomputed here reproduces the engine's own
+   f on every row checked, to under 1e-9. At offset zero the counterfactual moves nothing.
+
+----------------------------------------------------------------------------------------------------------------------
+WHAT THE OFFSET IS WORTH, PER POSITION AND PER PRICE BAND — BOARD POINTS
+----------------------------------------------------------------------------------------------------------------------
+   POSITIVE = the row is currently charged TOO MUCH and would gain that many points if the bar
+   carried his own position's level. NEGATIVE = he is currently charged too little.
+
+   pos      rows      total     median  worst row | by price band (rows / points)     
+   KPD        24        -98       -1.6        -18 | B 14/-32  A 8/-66  T 2/+0         
+   KPF        42       -214       -2.8        -56 | B 21/-45  A 17/-92  T 4/-77       
+   RUCK       13        204        0.0         68 | B 8/+102  A 5/+102  T 0/+0        
+   MID        81        321        1.7         41 | B 14/+15  A 52/+182  T 15/+124    
+   SD         60        726        5.5         89 | B 39/+264  A 20/+397  T 1/+64     
+   SF         69       -684       -5.8        -72 | B 50/-393  A 18/-291  T 1/+0      
+   ALL       289        255
+
+   NOTE, and it matters: the six numbers do NOT net to zero on the board even though the
+   position offsets net to zero within each class on the FITTED population. The board is a
+   different population — one as-of year, one age window, one set of prices — and a row only
+   moves in proportion to his own pedigree leg and his own A(g).
+
+----------------------------------------------------------------------------------------------------------------------
+THE TEN ROWS THE OFFSET MOVES MOST, either way. CONSEQUENCES, NEVER TARGETS.
+----------------------------------------------------------------------------------------------------------------------
+   row                        pos  age     g      v0    f now     f cf     board     move
+   Koltyn Tholstrup            SD   21    40    1243    0.818    1.000      1655      +89
+   Leo Lombard                 SF   20    25    1005    0.560    0.421      1540      -72
+   Mitchell Edwards          RUCK   21    16    1060    0.189    0.315      1237      +68
+   Zeke Uwland                 SD   19    17    2454    0.153    0.203      1486      +64
+   Harry Kyle                  SD   19     7    1040    0.464    0.552       841      +60
+   Cooper Duff-Tytler         KPF   19    13    1765    0.789    0.739      1824      -56
+   Isaac Kako                  SF   20    36     891    0.587    0.434       784      -51
+   Joe Berry                   SF   20    33     634    0.632    0.468       982      -46
+   Oscar Steene              RUCK   23     8     281    0.625    0.891       334      +46
+   Xavier Taylor               SD   19     2    1287    0.637    0.678       950      +45
+
+   THE SHARE OF THE YOUNG CHARGED BOARD EACH POSITION CARRIES, because a large offset on a small
+   population is a small problem and the packet should not pretend otherwise:
+
+   pos        rows share of rows   board points share of pts
+   KPD          24         8.3%          20564         7.1%
+   KPF          42        14.5%          34543        11.9%
+   RUCK         13         4.5%           7879         2.7%
+   MID          81        28.0%         148265        51.1%
+   SD           60        20.8%          43594        15.0%
+   SF           69        23.9%          35503        12.2%
+
+
+wrote BIND_SRO.json and BIND_SRO_out.txt
