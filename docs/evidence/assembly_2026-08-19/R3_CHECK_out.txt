@@ -3,11 +3,11 @@ THE R3 FIX — BUILT vs EXPECTED, AND THE EXPLOIT-SAFETY VERIFICATION
 ==========================================================================================================================
   before R3 at all      1270991c  666,263
   R3 CUMULATIVE (old)   ca73176e  654,031
-  R3 CURRENT RUN (new)  fbf61d05  665,180
+  R3 CURRENT RUN (new)  81cf787b  665,238
 
   R3 marginal, OLD rule: -12,232 on 124 rows
-  R3 marginal, NEW rule: -1,083 on 12 rows
-  THE FIX GIVES BACK +11,149 board points.
+  R3 marginal, NEW rule: -1,025 on 9 rows
+  THE FIX GIVES BACK +11,207 board points.
 
 ==========================================================================================================================
 1 · BUILT vs EXPECTED — the two halves of the expectation, measured by name
@@ -32,13 +32,12 @@ EXPECTED: returned players largely RESTORED; currently-absent players STILL STRI
     Toby Conway                   0     1066       460       -606   2024
     Harry Barnett                 0      674       422       -252   2024
     Hugh Davies                   0      244       187        -57   2024
-    Jack Payne                    0      100        64        -36   2025
     Tew Jiath                     0      132        99        -33   2024
     Caleb Graham                  0       92        66        -26   2022
     Finlay Macrae                 0       75        51        -24   2024
-    Noah Long                     0       50        35        -15   2025
     Jakob Ryan                    0      163       149        -14   2023
     James Blanck                  0       25        15        -10   2023
+    Paddy Dow                     0       31        28         -3   2024
 
   ROWS STILL CHARGED BY R3 THAT ARE PLAYING THIS SEASON: 0
   (under the OLD rule this was 106 — the defect the fix removes; it must now be ZERO by construction)

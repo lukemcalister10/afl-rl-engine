@@ -1,0 +1,19 @@
+{
+ "engine": "6682e52b4aa01ebc6493741cf70c5929",
+ "board": "81cf787b",
+ "pre": "1270991c",
+ "charged": {
+  "harry-barnett": -252,
+  "toby-conway": -606,
+  "hugh-davies": -57,
+  "tew-jiath": -33,
+  "jakob-ryan": -14,
+  "paddy-dow": -3,
+  "finlay-macrae": -24,
+  "james-blanck": -10,
+  "caleb-graham": -26
+ },
+ "numeraire": 1.0524008455208498,
+ "selfcheck_ok": 9,
+ "selfcheck_bad": 0
+}

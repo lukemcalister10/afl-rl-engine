@@ -48,7 +48,7 @@ def board(tag):
 
 
 OLD, mOLD = board('V750_CAND')    # cumulative-since-delivery R3
-NEW, mNEW = board('V751_CAND')    # current-consecutive R3
+NEW, mNEW = board('V754_CAND')    # current-consecutive R3
 PRE, mPRE = board('V750_L5C')     # the board before R3 at all
 STORE = {x['key']: x for x in json.load(open(os.path.join(REPO, 'engine/rl_after/rl_model_data.json')))}
 

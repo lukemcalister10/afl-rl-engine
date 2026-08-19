@@ -11,8 +11,8 @@
   "V750_L5A": "e1e3d97dabdea5c815fd271688cf596a",
   "V750_L5B": "b74a2a0e57182d096a139c26b7a6677b",
   "V750_L5C": "1270991cdde819b22ac7bf5f42908f5a",
-  "V751_CAND": "fbf61d052d6cd77e73f9338e17113eb6",
-  "V751_CAND2": "fbf61d052d6cd77e73f9338e17113eb6",
+  "V754_CAND": "81cf787b0b18b89806d3a4cd1e33d9c0",
+  "V754_CAND2": "81cf787b0b18b89806d3a4cd1e33d9c0",
   "live": "88ce647f531030d8d2e094188b258191"
  },
  "n_moved": 801,
@@ -2029,7 +2029,7 @@
    "d_live_cand": 12,
    "levers": {
     "L1_REC": -1,
-    "V751_CAND": -26
+    "V754_CAND": -26
    },
    "live": 54,
    "name": "Caleb Graham",
@@ -4340,7 +4340,7 @@
    "levers": {
     "V750_L2C15": 17,
     "V750_L5A": 8,
-    "V751_CAND": -24
+    "V754_CAND": -24
    },
    "live": 322,
    "name": "Finlay Macrae",
@@ -4948,7 +4948,7 @@
    "levers": {
     "V750_L2C15": 13,
     "V750_L5A": 5,
-    "V751_CAND": -252
+    "V754_CAND": -252
    },
    "live": 553,
    "name": "Harry Barnett",
@@ -5590,7 +5590,7 @@
    "levers": {
     "V750_L2C15": 14,
     "V750_L5A": 3,
-    "V751_CAND": -57
+    "V754_CAND": -57
    },
    "live": 185,
    "name": "Hugh Davies",
@@ -6375,19 +6375,18 @@
    "R": 104,
    "age": 27,
    "band": 7,
-   "cand": 64,
+   "cand": 100,
    "cat": null,
    "d_K_P": 0,
-   "d_K_cand": -61,
+   "d_K_cand": -25,
    "d_P_R": -21,
-   "d_R_cand": -40,
+   "d_R_cand": -4,
    "d_live_K": 31,
-   "d_live_cand": -30,
+   "d_live_cand": 6,
    "levers": {
     "V750_L2C15": 3,
     "V750_L3MAT": -6,
-    "V750_L5B": -1,
-    "V751_CAND": -36
+    "V750_L5B": -1
    },
    "live": 94,
    "name": "Jack Payne",
@@ -7287,7 +7286,7 @@
    "levers": {
     "V750_L2C15": 1,
     "V750_L4SD": 1,
-    "V751_CAND": -14
+    "V754_CAND": -14
    },
    "live": 239,
    "name": "Jakob Ryan",
@@ -7356,7 +7355,7 @@
    "d_live_cand": -55,
    "levers": {
     "V750_L2C15": 6,
-    "V751_CAND": -10
+    "V754_CAND": -10
    },
    "live": 70,
    "name": "James Blanck",
@@ -11174,17 +11173,16 @@
    "R": 50,
    "age": 24,
    "band": 7,
-   "cand": 70,
+   "cand": 77,
    "cat": null,
    "d_K_P": 0,
-   "d_K_cand": -52,
+   "d_K_cand": -45,
    "d_P_R": -72,
-   "d_R_cand": 20,
+   "d_R_cand": 27,
    "d_live_K": -30,
-   "d_live_cand": -82,
+   "d_live_cand": -75,
    "levers": {
-    "V750_L2C15": 27,
-    "V751_CAND": -7
+    "V750_L2C15": 27
    },
    "live": 152,
    "name": "Mani Liddy",
@@ -13082,19 +13080,18 @@
    "R": 78,
    "age": 22,
    "band": 7,
-   "cand": 35,
+   "cand": 50,
    "cat": null,
    "d_K_P": 0,
-   "d_K_cand": -43,
+   "d_K_cand": -28,
    "d_P_R": 0,
-   "d_R_cand": -43,
+   "d_R_cand": -28,
    "d_live_K": -46,
-   "d_live_cand": -89,
+   "d_live_cand": -74,
    "levers": {
     "L1_REC": -26,
     "V750_L2C15": 4,
-    "V750_L5B": -6,
-    "V751_CAND": -15
+    "V750_L5B": -6
    },
    "live": 124,
    "name": "Noah Long",
@@ -13685,7 +13682,7 @@
     "V750_L3MAT": 2,
     "V750_L5A": -8,
     "V750_L5B": 2,
-    "V751_CAND": -3
+    "V754_CAND": -3
    },
    "live": 158,
    "name": "Paddy Dow",
@@ -15600,7 +15597,7 @@
     "V750_L2C15": 3,
     "V750_L4SD": 1,
     "V750_L5A": 11,
-    "V751_CAND": -33
+    "V754_CAND": -33
    },
    "live": 167,
    "name": "Tew Jiath",
@@ -15880,7 +15877,7 @@
    "d_live_K": 396,
    "d_live_cand": -43,
    "levers": {
-    "V751_CAND": -606
+    "V754_CAND": -606
    },
    "live": 503,
    "name": "Toby Conway",
@@ -17740,8 +17737,8 @@
   "V750_L5A": 666458,
   "V750_L5B": 666275,
   "V750_L5C": 666263,
-  "V751_CAND": 665180,
-  "V751_CAND2": 665180,
+  "V754_CAND": 665238,
+  "V754_CAND2": 665238,
   "live": 752429
  }
 }

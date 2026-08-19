@@ -349,10 +349,10 @@
    "name": "Noah Mraz",
    "age": 20,
    "g": 4.0,
-   "now": 1384,
+   "now": 2029,
    "nextyr": 2029,
-   "ratio": 1.4660404624277457,
-   "delta": 645
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "bailey-williams-wc",
@@ -1409,10 +1409,10 @@
    "name": "Nick Madden",
    "age": 22,
    "g": 10.0,
-   "now": 255,
+   "now": 1064,
    "nextyr": 1064,
-   "ratio": 4.172549019607843,
-   "delta": 809
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "koltyn-tholstrup",
@@ -1839,10 +1839,10 @@
    "name": "Taylor Goad",
    "age": 21,
    "g": 2.0,
-   "now": 437,
+   "now": 728,
    "nextyr": 728,
-   "ratio": 1.665903890160183,
-   "delta": 291
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "massimo-d-ambrosio",
@@ -1899,10 +1899,10 @@
    "name": "Will Green",
    "age": 21,
    "g": 1.0,
-   "now": 619,
+   "now": 708,
    "nextyr": 708,
-   "ratio": 1.1437802907915993,
-   "delta": 89
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "lachlan-carmichael",
@@ -2209,20 +2209,20 @@
    "name": "Harrison Oliver",
    "age": 20,
    "g": 5.0,
-   "now": 324,
+   "now": 352,
    "nextyr": 352,
-   "ratio": 1.0864197530864197,
-   "delta": 28
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jedd-busslinger",
    "name": "Jedd Busslinger",
    "age": 22,
    "g": 15.0,
-   "now": 403,
+   "now": 801,
    "nextyr": 801,
-   "ratio": 1.9875930521091811,
-   "delta": 398
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "wil-dawson",
@@ -2449,10 +2449,10 @@
    "name": "Jordan Croft",
    "age": 21,
    "g": 18.0,
-   "now": 299,
+   "now": 473,
    "nextyr": 473,
-   "ratio": 1.5819397993311037,
-   "delta": 174
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "thomas-matthews",
@@ -2479,10 +2479,10 @@
    "name": "Oliver Hannaford",
    "age": 20,
    "g": 5.0,
-   "now": 229,
+   "now": 262,
    "nextyr": 262,
-   "ratio": 1.1441048034934498,
-   "delta": 33
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "kai-lohmann",
@@ -2509,10 +2509,10 @@
    "name": "William McCabe",
    "age": 21,
    "g": 4.0,
-   "now": 229,
+   "now": 454,
    "nextyr": 454,
-   "ratio": 1.982532751091703,
-   "delta": 225
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "ty-gallop",
@@ -2699,10 +2699,10 @@
    "name": "Lachie Jaques",
    "age": 20,
    "g": 9.0,
-   "now": 384,
+   "now": 608,
    "nextyr": 608,
-   "ratio": 1.5833333333333333,
-   "delta": 224
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "kayle-gerreyn",
@@ -2799,10 +2799,10 @@
    "name": "Charlie Edwards",
    "age": 21,
    "g": 2.0,
-   "now": 284,
+   "now": 468,
    "nextyr": 468,
-   "ratio": 1.647887323943662,
-   "delta": 184
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "joshua-kelly",
@@ -2859,10 +2859,10 @@
    "name": "James Leake",
    "age": 21,
    "g": 8.0,
-   "now": 340,
+   "now": 375,
    "nextyr": 375,
-   "ratio": 1.1029411764705883,
-   "delta": 35
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "tobyn-murray",
@@ -3119,10 +3119,10 @@
    "name": "Archer Reid",
    "age": 21,
    "g": 20.0,
-   "now": 220,
+   "now": 347,
    "nextyr": 347,
-   "ratio": 1.5772727272727274,
-   "delta": 127
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jeremy-cameron",
@@ -3149,10 +3149,10 @@
    "name": "Mitchell Edwards",
    "age": 21,
    "g": 16.0,
-   "now": 317,
+   "now": 1326,
    "nextyr": 1326,
-   "ratio": 4.182965299684542,
-   "delta": 1009
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "max-kondogiannis",
@@ -3259,10 +3259,10 @@
    "name": "Oscar Ryan",
    "age": 21,
    "g": 2.0,
-   "now": 182,
+   "now": 419,
    "nextyr": 419,
-   "ratio": 2.302197802197802,
-   "delta": 237
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "tai-hayes",
@@ -3299,10 +3299,10 @@
    "name": "Elijah Hewett",
    "age": 22,
    "g": 40.0,
-   "now": 291,
+   "now": 458,
    "nextyr": 458,
-   "ratio": 1.5738831615120275,
-   "delta": 167
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "harry-demattia",
@@ -3319,30 +3319,30 @@
    "name": "Jed Adams",
    "age": 22,
    "g": 1.0,
-   "now": 190,
+   "now": 221,
    "nextyr": 221,
-   "ratio": 1.1631578947368422,
-   "delta": 31
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jack-ough",
    "name": "Jack Ough",
    "age": 20,
    "g": 5.0,
-   "now": 342,
+   "now": 381,
    "nextyr": 381,
-   "ratio": 1.1140350877192982,
-   "delta": 39
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "matthew-jefferson",
    "name": "Matthew Jefferson",
    "age": 22,
    "g": 21.0,
-   "now": 105,
+   "now": 213,
    "nextyr": 213,
-   "ratio": 2.0285714285714285,
-   "delta": 108
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "kane-mcauliffe",
@@ -3369,20 +3369,20 @@
    "name": "Jacob Konstanty",
    "age": 22,
    "g": 33.0,
-   "now": 45,
+   "now": 70,
    "nextyr": 70,
-   "ratio": 1.5555555555555556,
-   "delta": 25
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "max-gruzewski",
    "name": "Max Gruzewski",
    "age": 22,
    "g": 23.0,
-   "now": 243,
+   "now": 385,
    "nextyr": 385,
-   "ratio": 1.5843621399176955,
-   "delta": 142
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "josh-sinn",
@@ -3429,10 +3429,10 @@
    "name": "Edward Allan",
    "age": 22,
    "g": 31.0,
-   "now": 384,
+   "now": 583,
    "nextyr": 583,
-   "ratio": 1.5182291666666667,
-   "delta": 199
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jack-buckley",
@@ -3489,10 +3489,10 @@
    "name": "Will Brodie",
    "age": 28,
    "g": 55.0,
-   "now": 207,
+   "now": 767,
    "nextyr": 767,
-   "ratio": 3.7053140096618358,
-   "delta": 560
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "ashton-moir",
@@ -3549,10 +3549,10 @@
    "name": "Lachlan Smith",
    "age": 21,
    "g": 2.0,
-   "now": 148,
+   "now": 320,
    "nextyr": 320,
-   "ratio": 2.1621621621621623,
-   "delta": 172
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "francis-evans",
@@ -3699,10 +3699,10 @@
    "name": "Jamarra Ugle-Hagan",
    "age": 24,
    "g": 70.0,
-   "now": 181,
+   "now": 254,
    "nextyr": 254,
-   "ratio": 1.4033149171270718,
-   "delta": 73
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "charlie-west",
@@ -3719,10 +3719,10 @@
    "name": "Angus Sheldrick",
    "age": 23,
    "g": 46.0,
-   "now": 378,
+   "now": 579,
    "nextyr": 579,
-   "ratio": 1.5317460317460319,
-   "delta": 201
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "max-king-syd",
@@ -3819,10 +3819,10 @@
    "name": "Liam Fawcett",
    "age": 21,
    "g": 8.0,
-   "now": 170,
+   "now": 238,
    "nextyr": 238,
-   "ratio": 1.4,
-   "delta": 68
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "clay-hall",
@@ -3929,20 +3929,20 @@
    "name": "Tom Brown",
    "age": 23,
    "g": 58.0,
-   "now": 296,
+   "now": 447,
    "nextyr": 447,
-   "ratio": 1.510135135135135,
-   "delta": 151
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "harry-rowston",
    "name": "Harry Rowston",
    "age": 22,
    "g": 27.0,
-   "now": 292,
+   "now": 442,
    "nextyr": 442,
-   "ratio": 1.5136986301369864,
-   "delta": 150
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "adam-saad",
@@ -4049,10 +4049,10 @@
    "name": "Jay Polkinghorne",
    "age": 20,
    "g": 4.0,
-   "now": 231,
+   "now": 236,
    "nextyr": 236,
-   "ratio": 1.0216450216450217,
-   "delta": 5
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jacob-molier",
@@ -4119,10 +4119,10 @@
    "name": "Vigo Visentini",
    "age": 21,
    "g": 3.0,
-   "now": 261,
+   "now": 295,
    "nextyr": 295,
-   "ratio": 1.1302681992337165,
-   "delta": 34
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "isaiah-dudley",
@@ -4429,10 +4429,10 @@
    "name": "Leek Aleer",
    "age": 25,
    "g": 32.0,
-   "now": 130,
+   "now": 205,
    "nextyr": 205,
-   "ratio": 1.5769230769230769,
-   "delta": 75
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "patrick-snell",
@@ -4459,10 +4459,10 @@
    "name": "Elliot Yeo",
    "age": 33,
    "g": 231.0,
-   "now": 201,
+   "now": 318,
    "nextyr": 318,
-   "ratio": 1.5820895522388059,
-   "delta": 117
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "oliver-francou",
@@ -4579,10 +4579,10 @@
    "name": "Matt Hill",
    "age": 22,
    "g": 2.0,
-   "now": 53,
+   "now": 58,
    "nextyr": 58,
-   "ratio": 1.0943396226415094,
-   "delta": 5
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "brayden-fiorini",
@@ -4859,10 +4859,10 @@
    "name": "Josh Lai",
    "age": 21,
    "g": 16.0,
-   "now": 237,
+   "now": 364,
    "nextyr": 364,
-   "ratio": 1.5358649789029535,
-   "delta": 127
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "brayden-george",
@@ -4979,20 +4979,20 @@
    "name": "Luker Kentfield",
    "age": 21,
    "g": 3.0,
-   "now": 214,
+   "now": 291,
    "nextyr": 291,
-   "ratio": 1.3598130841121496,
-   "delta": 77
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "zane-zakostelsky",
    "name": "Zane Zakostelsky",
    "age": 21,
    "g": 3.0,
-   "now": 141,
+   "now": 282,
    "nextyr": 282,
-   "ratio": 2.0,
-   "delta": 141
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "harvey-gallagher",
@@ -5069,10 +5069,10 @@
    "name": "Bodie Ryan",
    "age": 21,
    "g": 4.0,
-   "now": 62,
+   "now": 140,
    "nextyr": 140,
-   "ratio": 2.2580645161290325,
-   "delta": 78
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "zak-johnson",
@@ -5109,10 +5109,10 @@
    "name": "Campbell Chesser",
    "age": 23,
    "g": 39.0,
-   "now": 151,
+   "now": 195,
    "nextyr": 195,
-   "ratio": 1.2913907284768211,
-   "delta": 44
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "braeden-campbell",
@@ -5149,10 +5149,10 @@
    "name": "Blake Howes",
    "age": 23,
    "g": 48.0,
-   "now": 55,
+   "now": 206,
    "nextyr": 206,
-   "ratio": 3.7454545454545456,
-   "delta": 151
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "lachlan-blakiston",
@@ -5269,10 +5269,10 @@
    "name": "Zac Taylor",
    "age": 23,
    "g": 45.0,
-   "now": 41,
+   "now": 149,
    "nextyr": 149,
-   "ratio": 3.6341463414634148,
-   "delta": 108
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "balyn-o-brien",
@@ -5389,10 +5389,10 @@
    "name": "Isaac Keeler",
    "age": 22,
    "g": 13.0,
-   "now": 80,
+   "now": 157,
    "nextyr": 157,
-   "ratio": 1.9625,
-   "delta": 77
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jeremy-howe",
@@ -5449,10 +5449,10 @@
    "name": "Harvey Johnston",
    "age": 21,
    "g": 14.0,
-   "now": 107,
+   "now": 147,
    "nextyr": 147,
-   "ratio": 1.3738317757009346,
-   "delta": 40
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "riley-hamilton",
@@ -5509,10 +5509,10 @@
    "name": "Tom Anastasopoulos",
    "age": 21,
    "g": 3.0,
-   "now": 84,
+   "now": 196,
    "nextyr": 196,
-   "ratio": 2.3333333333333335,
-   "delta": 112
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "rob-monahan",
@@ -5599,10 +5599,10 @@
    "name": "Corey Warner",
    "age": 23,
    "g": 28.0,
-   "now": 37,
+   "now": 43,
    "nextyr": 43,
-   "ratio": 1.162162162162162,
-   "delta": 6
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jasper-alger",
@@ -5619,10 +5619,10 @@
    "name": "George Stevens",
    "age": 21,
    "g": 4.0,
-   "now": 202,
+   "now": 214,
    "nextyr": 214,
-   "ratio": 1.0594059405940595,
-   "delta": 12
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "lachlan-gulbin",
@@ -5649,20 +5649,20 @@
    "name": "Mani Liddy",
    "age": 24,
    "g": 16.5,
-   "now": 70,
+   "now": 77,
    "nextyr": 77,
-   "ratio": 1.1,
-   "delta": 7
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "steely-green",
    "name": "Steely Green",
    "age": 22,
    "g": 43.0,
-   "now": 33,
+   "now": 38,
    "nextyr": 38,
-   "ratio": 1.1515151515151516,
-   "delta": 5
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "tom-edwards",
@@ -5679,10 +5679,10 @@
    "name": "Oliver Hayes-Brown",
    "age": 26,
    "g": 7.0,
-   "now": 26,
+   "now": 108,
    "nextyr": 108,
-   "ratio": 4.153846153846154,
-   "delta": 82
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "toby-bedford",
@@ -5739,10 +5739,10 @@
    "name": "Tom Doedee",
    "age": 29,
    "g": 83.0,
-   "now": 63,
+   "now": 211,
    "nextyr": 211,
-   "ratio": 3.3492063492063493,
-   "delta": 148
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "josaia-delana",
@@ -5759,10 +5759,10 @@
    "name": "Nikolas Cox",
    "age": 24,
    "g": 61.0,
-   "now": 69,
+   "now": 109,
    "nextyr": 109,
-   "ratio": 1.5797101449275361,
-   "delta": 40
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "tom-cochrane",
@@ -5799,10 +5799,10 @@
    "name": "Luke Kennedy",
    "age": 20,
    "g": 4.0,
-   "now": 162,
+   "now": 207,
    "nextyr": 207,
-   "ratio": 1.2777777777777777,
-   "delta": 45
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "flynn-young",
@@ -5819,20 +5819,20 @@
    "name": "Arthur Jones",
    "age": 23,
    "g": 34.0,
-   "now": 53,
+   "now": 66,
    "nextyr": 66,
-   "ratio": 1.2452830188679245,
-   "delta": 13
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "cooper-harvey",
    "name": "Cooper Harvey",
    "age": 22,
    "g": 17.0,
-   "now": 257,
+   "now": 341,
    "nextyr": 341,
-   "ratio": 1.3268482490272373,
-   "delta": 84
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jacob-newton",
@@ -5869,20 +5869,20 @@
    "name": "Liam Reidy",
    "age": 26,
    "g": 7.0,
-   "now": 182,
+   "now": 231,
    "nextyr": 231,
-   "ratio": 1.2692307692307692,
-   "delta": 49
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "liam-o-connell",
    "name": "Liam O'Connell",
    "age": 23,
    "g": 18.0,
-   "now": 23,
+   "now": 34,
    "nextyr": 34,
-   "ratio": 1.4782608695652173,
-   "delta": 11
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "saad-el-hawli",
@@ -6029,10 +6029,10 @@
    "name": "Hugh Bond",
    "age": 22,
    "g": 19.0,
-   "now": 55,
+   "now": 64,
    "nextyr": 64,
-   "ratio": 1.1636363636363636,
-   "delta": 9
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jack-henry",
@@ -6079,10 +6079,10 @@
    "name": "Kaleb Smith",
    "age": 22,
    "g": 12.0,
-   "now": 34,
+   "now": 50,
    "nextyr": 50,
-   "ratio": 1.4705882352941178,
-   "delta": 16
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "oliver-henry",
@@ -6109,20 +6109,20 @@
    "name": "Finnbar Maley",
    "age": 23,
    "g": 13.0,
-   "now": 110,
+   "now": 167,
    "nextyr": 167,
-   "ratio": 1.518181818181818,
-   "delta": 57
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "bailey-macdonald",
    "name": "Bailey Macdonald",
    "age": 22,
    "g": 18.0,
-   "now": 52,
+   "now": 63,
    "nextyr": 63,
-   "ratio": 1.2115384615384615,
-   "delta": 11
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "liam-duggan",
@@ -6159,10 +6159,10 @@
    "name": "Dante Visentini",
    "age": 23,
    "g": 27.0,
-   "now": 513,
+   "now": 807,
    "nextyr": 807,
-   "ratio": 1.5730994152046784,
-   "delta": 294
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "reef-mcinnes",
@@ -6209,20 +6209,20 @@
    "name": "Toby Murray",
    "age": 23,
    "g": 11.0,
-   "now": 127,
+   "now": 201,
    "nextyr": 201,
-   "ratio": 1.5826771653543308,
-   "delta": 74
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "ryan-angwin",
    "name": "Ryan Angwin",
    "age": 24,
    "g": 48.0,
-   "now": 240,
+   "now": 372,
    "nextyr": 372,
-   "ratio": 1.55,
-   "delta": 132
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "charlie-cameron",
@@ -6299,10 +6299,10 @@
    "name": "Oscar Steene",
    "age": 23,
    "g": 8.0,
-   "now": 137,
+   "now": 346,
    "nextyr": 346,
-   "ratio": 2.5255474452554743,
-   "delta": 209
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "ben-keays",
@@ -6359,50 +6359,50 @@
    "name": "Hudson O'Keeffe",
    "age": 22,
    "g": 8.0,
-   "now": 57,
+   "now": 223,
    "nextyr": 223,
-   "ratio": 3.912280701754386,
-   "delta": 166
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "will-edwards",
    "name": "Will Edwards",
    "age": 23,
    "g": 13.0,
-   "now": 80,
+   "now": 185,
    "nextyr": 185,
-   "ratio": 2.3125,
-   "delta": 105
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "shadeau-brain",
    "name": "Shadeau Brain",
    "age": 22,
    "g": 11.0,
-   "now": 71,
+   "now": 102,
    "nextyr": 102,
-   "ratio": 1.4366197183098592,
-   "delta": 31
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "noah-long",
    "name": "Noah Long",
    "age": 22,
    "g": 36.0,
-   "now": 35,
+   "now": 50,
    "nextyr": 50,
-   "ratio": 1.4285714285714286,
-   "delta": 15
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "nicholas-coffield",
    "name": "Nicholas Coffield",
    "age": 27,
    "g": 77.0,
-   "now": 35,
+   "now": 52,
    "nextyr": 52,
-   "ratio": 1.4857142857142858,
-   "delta": 17
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "ben-ainsworth",
@@ -6419,10 +6419,10 @@
    "name": "Nathan O'Driscoll",
    "age": 24,
    "g": 52.0,
-   "now": 293,
+   "now": 440,
    "nextyr": 440,
-   "ratio": 1.5017064846416381,
-   "delta": 147
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "taylor-walker",
@@ -6459,10 +6459,10 @@
    "name": "Harvey Harrison",
    "age": 23,
    "g": 25.0,
-   "now": 28,
+   "now": 42,
    "nextyr": 42,
-   "ratio": 1.5,
-   "delta": 14
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "lachlan-jones",
@@ -6489,20 +6489,20 @@
    "name": "Jack Buller",
    "age": 25,
    "g": 20.833333333333336,
-   "now": 29,
+   "now": 45,
    "nextyr": 45,
-   "ratio": 1.5517241379310345,
-   "delta": 16
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "tyrell-dewar",
    "name": "Tyrell Dewar",
    "age": 22,
    "g": 23.0,
-   "now": 19,
+   "now": 39,
    "nextyr": 39,
-   "ratio": 2.0526315789473686,
-   "delta": 20
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "robert-hansen",
@@ -6519,10 +6519,10 @@
    "name": "Oisin Mullin",
    "age": 26,
    "g": 64.0,
-   "now": 6,
+   "now": 8,
    "nextyr": 8,
-   "ratio": 1.3333333333333333,
-   "delta": 2
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jarrod-witts",
@@ -6569,10 +6569,10 @@
    "name": "Oscar Adams",
    "age": 23,
    "g": 21.0,
-   "now": 55,
+   "now": 79,
    "nextyr": 79,
-   "ratio": 1.4363636363636363,
-   "delta": 24
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "zach-guthrie",
@@ -6629,10 +6629,10 @@
    "name": "Wade Derksen",
    "age": 25,
    "g": 11.0,
-   "now": 102,
+   "now": 159,
    "nextyr": 159,
-   "ratio": 1.5588235294117647,
-   "delta": 57
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jai-culley",
@@ -6649,20 +6649,20 @@
    "name": "Jack Payne",
    "age": 27,
    "g": 81.0,
-   "now": 64,
+   "now": 100,
    "nextyr": 100,
-   "ratio": 1.5625,
-   "delta": 36
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "bailey-laurie",
    "name": "Bailey Laurie",
    "age": 24,
    "g": 26.0,
-   "now": 44,
+   "now": 55,
    "nextyr": 55,
-   "ratio": 1.25,
-   "delta": 11
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "harry-sharp",
@@ -6759,10 +6759,10 @@
    "name": "Samson Ryan",
    "age": 26,
    "g": 29.0,
-   "now": 55,
+   "now": 212,
    "nextyr": 212,
-   "ratio": 3.8545454545454545,
-   "delta": 157
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "harry-edwards",
@@ -6829,10 +6829,10 @@
    "name": "Jack Carroll",
    "age": 24,
    "g": 36.0,
-   "now": 40,
+   "now": 55,
    "nextyr": 55,
-   "ratio": 1.375,
-   "delta": 15
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jackson-macrae",
@@ -6879,10 +6879,10 @@
    "name": "Oscar McDonald",
    "age": 30,
    "g": 102.0,
-   "now": 46,
+   "now": 69,
    "nextyr": 69,
-   "ratio": 1.5,
-   "delta": 23
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "griffin-logue",
@@ -6899,10 +6899,10 @@
    "name": "Liam McMahon",
    "age": 24,
    "g": 7.0,
-   "now": 136,
+   "now": 188,
    "nextyr": 188,
-   "ratio": 1.3823529411764706,
-   "delta": 52
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "nick-haynes",
@@ -6919,20 +6919,20 @@
    "name": "Nick Bryan",
    "age": 25,
    "g": 34.0,
-   "now": 369,
+   "now": 583,
    "nextyr": 583,
-   "ratio": 1.5799457994579946,
-   "delta": 214
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jaxon-prior",
    "name": "Jaxon Prior",
    "age": 25,
    "g": 82.0,
-   "now": 167,
+   "now": 255,
    "nextyr": 255,
-   "ratio": 1.526946107784431,
-   "delta": 88
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "rhylee-west",
@@ -6969,10 +6969,10 @@
    "name": "Joel Amartey",
    "age": 27,
    "g": 76.0,
-   "now": 10,
+   "now": 37,
    "nextyr": 37,
-   "ratio": 3.7,
-   "delta": 27
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "harry-perryman",
@@ -7019,10 +7019,10 @@
    "name": "Tyler Brockman",
    "age": 24,
    "g": 56.0,
-   "now": 12,
+   "now": 30,
    "nextyr": 30,
-   "ratio": 2.5,
-   "delta": 18
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "ollie-lord",
@@ -7129,20 +7129,20 @@
    "name": "Max Heath",
    "age": 24,
    "g": 11.0,
-   "now": 88,
+   "now": 429,
    "nextyr": 429,
-   "ratio": 4.875,
-   "delta": 341
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "buku-khamis",
    "name": "Buku Khamis",
    "age": 26,
    "g": 62.0,
-   "now": 31,
+   "now": 129,
    "nextyr": 129,
-   "ratio": 4.161290322580645,
-   "delta": 98
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jacob-wehr",
@@ -7169,10 +7169,10 @@
    "name": "Billy Frampton",
    "age": 30,
    "g": 95.0,
-   "now": 9,
+   "now": 39,
    "nextyr": 39,
-   "ratio": 4.333333333333333,
-   "delta": 30
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "patrick-dangerfield",
@@ -7199,10 +7199,10 @@
    "name": "Cody Weightman",
    "age": 25,
    "g": 83.0,
-   "now": 92,
+   "now": 141,
    "nextyr": 141,
-   "ratio": 1.5326086956521738,
-   "delta": 49
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "xavier-duursma",
@@ -7219,20 +7219,20 @@
    "name": "Xavier O'Halloran",
    "age": 26,
    "g": 103.0,
-   "now": 35,
+   "now": 51,
    "nextyr": 51,
-   "ratio": 1.457142857142857,
-   "delta": 16
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "matt-cottrell",
    "name": "Matt Cottrell",
    "age": 26,
    "g": 84.0,
-   "now": 53,
+   "now": 81,
    "nextyr": 81,
-   "ratio": 1.528301886792453,
-   "delta": 28
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "lachlan-fogarty",
@@ -7259,10 +7259,10 @@
    "name": "Todd Marshall",
    "age": 28,
    "g": 129.0,
-   "now": 40,
+   "now": 63,
    "nextyr": 63,
-   "ratio": 1.575,
-   "delta": 23
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "eric-hipwood",
@@ -7289,10 +7289,10 @@
    "name": "Corey Wagner",
    "age": 29,
    "g": 70.0,
-   "now": 16,
+   "now": 32,
    "nextyr": 32,
-   "ratio": 2.0,
-   "delta": 16
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "riley-garcia",
@@ -7359,10 +7359,10 @@
    "name": "Jackson Mead",
    "age": 25,
    "g": 74.0,
-   "now": 11,
+   "now": 14,
    "nextyr": 14,
-   "ratio": 1.2727272727272727,
-   "delta": 3
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "brody-mihocek",
@@ -7409,20 +7409,20 @@
    "name": "Lewis Melican",
    "age": 30,
    "g": 111.0,
-   "now": 16,
+   "now": 25,
    "nextyr": 25,
-   "ratio": 1.5625,
-   "delta": 9
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "ned-reeves",
    "name": "Ned Reeves",
    "age": 28,
    "g": 58.0,
-   "now": 48,
+   "now": 202,
    "nextyr": 202,
-   "ratio": 4.208333333333333,
-   "delta": 154
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "brandon-zerk-thatcher",
@@ -7469,20 +7469,20 @@
    "name": "Jordon Butts",
    "age": 27,
    "g": 94.0,
-   "now": 8,
+   "now": 12,
    "nextyr": 12,
-   "ratio": 1.5,
-   "delta": 4
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "callum-brown-ire",
    "name": "Callum M. Brown",
    "age": 26,
    "g": 76.0,
-   "now": 7,
+   "now": 29,
    "nextyr": 29,
-   "ratio": 4.142857142857143,
-   "delta": 22
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "sam-switkowski",
@@ -7539,10 +7539,10 @@
    "name": "Lincoln McCarthy",
    "age": 33,
    "g": 159.0,
-   "now": 8,
+   "now": 11,
    "nextyr": 11,
-   "ratio": 1.375,
-   "delta": 3
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "liam-henry",
@@ -7579,10 +7579,10 @@
    "name": "Sam Wicks",
    "age": 27,
    "g": 103.0,
-   "now": 11,
+   "now": 17,
    "nextyr": 17,
-   "ratio": 1.5454545454545454,
-   "delta": 6
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "hunter-clark",
@@ -7609,10 +7609,10 @@
    "name": "Toby Pink",
    "age": 28,
    "g": 37.0,
-   "now": 25,
+   "now": 39,
    "nextyr": 39,
-   "ratio": 1.56,
-   "delta": 14
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "mark-o-connor",
@@ -7699,30 +7699,30 @@
    "name": "Hugo Ralphsmith",
    "age": 25,
    "g": 73.0,
-   "now": 28,
+   "now": 37,
    "nextyr": 37,
-   "ratio": 1.3214285714285714,
-   "delta": 9
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jy-farrar",
    "name": "Jy Farrar",
    "age": 30,
    "g": 45.0,
-   "now": 10,
+   "now": 12,
    "nextyr": 12,
-   "ratio": 1.2,
-   "delta": 2
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "malcolm-rosas",
    "name": "Malcolm Rosas",
    "age": 25,
    "g": 65.0,
-   "now": 13,
+   "now": 20,
    "nextyr": 20,
-   "ratio": 1.5384615384615385,
-   "delta": 7
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "laitham-vandermeer",
@@ -7759,10 +7759,10 @@
    "name": "Callum Coleman-Jones",
    "age": 27,
    "g": 37.0,
-   "now": 25,
+   "now": 27,
    "nextyr": 27,
-   "ratio": 1.08,
-   "delta": 2
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "charlie-spargo",
@@ -7779,10 +7779,10 @@
    "name": "Oskar Baker",
    "age": 28,
    "g": 57.0,
-   "now": 9,
+   "now": 14,
    "nextyr": 14,
-   "ratio": 1.5555555555555556,
-   "delta": 5
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "ben-long",
@@ -7809,20 +7809,20 @@
    "name": "Ryan Gardner",
    "age": 29,
    "g": 55.0,
-   "now": 7,
+   "now": 10,
    "nextyr": 10,
-   "ratio": 1.4285714285714286,
-   "delta": 3
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "conor-mckenna",
    "name": "Conor McKenna",
    "age": 30,
    "g": 143.0,
-   "now": 1,
+   "now": 3,
    "nextyr": 3,
-   "ratio": 3.0,
-   "delta": 2
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "darcy-gardiner",
@@ -7839,30 +7839,30 @@
    "name": "Jake Kolodjashnij",
    "age": 31,
    "g": 209.0,
-   "now": 3,
+   "now": 5,
    "nextyr": 5,
-   "ratio": 1.6666666666666667,
-   "delta": 2
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jeremy-sharp",
    "name": "Jeremy Sharp",
    "age": 25,
    "g": 62.0,
-   "now": 32,
+   "now": 41,
    "nextyr": 41,
-   "ratio": 1.28125,
-   "delta": 9
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "liam-stocker",
    "name": "Liam Stocker",
    "age": 26,
    "g": 100.0,
-   "now": 10,
+   "now": 13,
    "nextyr": 13,
-   "ratio": 1.3,
-   "delta": 3
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "bailey-scott",
@@ -7879,10 +7879,10 @@
    "name": "Noah Answerth",
    "age": 27,
    "g": 101.0,
-   "now": 6,
+   "now": 7,
    "nextyr": 7,
-   "ratio": 1.1666666666666667,
-   "delta": 1
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "matt-owies",
@@ -7939,10 +7939,10 @@
    "name": "Darragh Joyce",
    "age": 29,
    "g": 27.0,
-   "now": 6,
+   "now": 7,
    "nextyr": 7,
-   "ratio": 1.1666666666666667,
-   "delta": 1
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "daniel-butler",
@@ -7999,10 +7999,10 @@
    "name": "Joel Hamling",
    "age": 33,
    "g": 112.0,
-   "now": 5,
+   "now": 6,
    "nextyr": 6,
-   "ratio": 1.2,
-   "delta": 1
+   "ratio": 1.0,
+   "delta": 0
   },
   {
    "key": "jed-bews",

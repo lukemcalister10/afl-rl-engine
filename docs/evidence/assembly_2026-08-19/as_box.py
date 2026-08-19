@@ -16,9 +16,11 @@ IN_IT = [
      'the charge runs at every age on the same bar instead of switching off at a birthday.'),
     ('The mature refit',
      'each season is measured against the ruler for the age it was actually played at.'),
-    ('The compressed cap at the 20th percentile',
+    ('The compressed cap at the 15th percentile',
      'the old hard ceiling is replaced by a smooth one, so worse play always costs at least '
-     'slightly more and nobody sits on a flat segment.'),
+     'slightly more and nobody sits on a flat segment. THE ANCHOR IS THE 15th PERCENTILE, not the '
+     '20th: you moved it there yourself to pull the tail calibration back up, and this board is '
+     'built on p15 throughout.'),
     ('The softened slope 0.105',
      'the charge responds less steeply to shortfall, inside the measured interval.'),
     ('Recency 0.47',
@@ -43,23 +45,55 @@ IN_IT = [
 ]
 
 BROKEN = [
-    ('MODERN PICKS 1-10 — A DOCUMENTED STANDING RED',
-     'This cell fails the no-arb test even on the loosened reading, and NO LEVER IN THIS BOARD '
-     'REACHES IT. It was inherited from ORDER P, the level cannot fix it, and the recency dial '
-     'structurally cannot. THE OWNER HAS ACCEPTED IT AS A STANDING RED: it rides every table '
-     'flagged, it is not chased and it is not capped. It is printed on every page for that reason.'),
+    ('MODERN PICKS 1-10 *AND* 1-20 BOTH FAIL — A DOCUMENTED STANDING RED, AND IT IS WIDER THAN 1-10',
+     'On the modern window the top ten appreciate +21.52% in year one and the top TWENTY appreciate '
+     '+15.04%, both above the +14% carry line, so BOTH cells are buy-side reds. Earlier boxes named '
+     'only 1-10; the 1-20 cell fails as well and is named here. NO LEVER IN THIS BOARD REACHES '
+     'EITHER. It was inherited from ORDER P (which read +18.85% and +12.88%), the level cannot fix '
+     'it and the recency dial structurally cannot. YOU HAVE ACCEPTED IT AS A STANDING RED: it rides '
+     'every table flagged, it is not chased and it is not capped.'),
+    ('THE LATE BANDS SELL DEEPER ON THIS BOARD THAN ON ORDER P, AND THAT IS A COST OF THE PACKAGE',
+     'Picks 31-40 fall 11.04% in year one against ORDER P\'s 8.88%, and picks 41-64 fall 7.44% '
+     'against ORDER P\'s 5.03%. Both were already sell-side reds; this board makes both DEEPER. '
+     'That is a real cost of the levers in it and it is not dressed up as an improvement.'),
+    ('AN OPEN DEFECT IN THE ABSENCE FADE: ONE GAME CAN SHIELD A WHOLE SEASON',
+     'The production fade stops the moment a player appears in a single game, because a played '
+     'season breaks the absence run outright. Measured on this board that is worth +560 points to '
+     'one player off ONE 2026 game, and 63 rows have their run broken by a season of two games or '
+     'fewer. A graded alternative has been BUILT AND PRICED — it charges by how much of the season '
+     'was actually missed, using the same measured credit curve already in the board and no new '
+     'constant — and the two sit side by side in the packet for you to choose between. '
+     'NEITHER IS ADOPTED. The board in front of you uses the ONE-GAME-BREAKS-IT rule.'),
+    ('TWO INJURY REGISTERS EXIST AND THE FADE ONLY READS ONE — AN OPEN QUESTION FOR YOU',
+     'The exemption that spares an injured player reads your sitter annotation. The engine ALSO '
+     'carries its own long-term-injury register of 43 rows, and 21 of those are not marked injured '
+     'in the annotation. After the repair described below, ONE row on the engine\'s register is '
+     'still charged by the fade, for 606 points — the single largest charge on the board. '
+     'WHETHER THE ENGINE\'S OWN REGISTER SHOULD ALSO EXEMPT A ROW IS YOUR CALL AND THIS SEAT HAS '
+     'NOT MADE IT. Nothing was changed to answer it.'),
+    ('THE CONTINUITY INSTRUMENT CANNOT SEE THE ABSENCE FADE — MY DEFECT, NOW OPEN',
+     'The tool that checks nobody\'s price jumps on a birthday rebuilds each price from parts, and '
+     'it was written before the absence fade existed, so it rebuilds the price WITHOUT it. Run on '
+     'this board it therefore reported nine false birthday jumps that were really just the fade '
+     'itself. The board is fine — measured directly, the true birthday movement from the fade is '
+     'ZERO on every charged row — but THE INSTRUMENT IS BLIND and its age reading cannot be trusted '
+     'on any board carrying the fade until it is repaired. That is on this seat, it is not repaired, '
+     'and it is written down rather than quietly worked around.'),
     ('SSP — an inherited breach, worsened',
      'The supplementary-selection arm was already breaching before this board and ORDER P made it '
      'worse. IT IS NOT REPAIRED HERE. It is parked, named, and reported separately so it cannot be '
      'read as fixed.'),
-    ('THE TAIL CALIBRATION — READ THE BUILT NUMBER, NOT THE ESTIMATE',
+    ('THE TAIL CALIBRATION READS 0.8004 — BELOW THE ESTIMATE, AND THE BUILT NUMBER RULES',
      'The charge on the worst underperformers is measured against what they actually went on to '
-     'deliver. The compression anchor was moved to the 15th percentile precisely to bring this back '
-     'toward 1.00 after the 20th-percentile version read 0.74. THE BUILT NUMBER FOR THIS BOARD IS '
-     'PRINTED IN THE PACKET AND IT RULES; no other dial was touched to chase it. What has NOT '
-     'changed is the shape of the evidence: the deep cell is option-shaped, about half of those '
-     'players deliver almost nothing and a few deliver a lot, so the typical one is charged more '
-     'generously than the average one.'),
+     'deliver; 1.00 would mean charged exactly what they cost. THE BUILT NUMBER FOR THIS BOARD IS '
+     '0.8004. The estimate put in front of you beforehand was about 0.95 to 1.10, so the build came '
+     'in BELOW it by roughly 0.15 and the estimate was wrong. Moving the anchor from the 20th to the '
+     '15th percentile is what lifted it from 0.7378 to 0.8004; NO OTHER DIAL WAS TOUCHED TO CHASE '
+     'IT, and none will be without your word. Reading it plainly: the worst underperformers are '
+     'still charged about a fifth less than they turned out to cost. What has NOT changed is the '
+     'shape of the evidence: the deep cell is option-shaped, about half of those players deliver '
+     'almost nothing and a few deliver a lot, so the typical one is charged more generously than the '
+     'average one.'),
     ('RUCK IS STILL MIS-BARRED AND NOTHING WAS DONE ABOUT IT',
      'Rucks measure 5.57 points a game over-barred, but the error SWINGS with age — heavily '
      'over-barred at 21, slightly under-barred at 23 — so it is not a level and a level offset '

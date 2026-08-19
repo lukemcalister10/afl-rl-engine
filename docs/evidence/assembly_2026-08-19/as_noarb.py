@@ -39,11 +39,24 @@ BANDS = ['ALL picks 1-64', 'picks 1-20', 'picks 21-64',
          'picks 1-10', 'picks 11-20', 'picks 21-30', 'picks 31-40', 'picks 41-64']
 WIN = [('PRIMARY', 'PRIMARY — cohorts 2005-2023 (the whole ND population)'),
        ('MODERN', 'MODERN — cohorts 2019-2023')]
-LABS = [('ASMCAND', '*** THE ASSEMBLY CANDIDATE — THE BOARD UNDER REVIEW ***'),
-        ('R20A', 'R = R20A 7f88f509 — the owner\'s reference'),
-        ('PBUILT', 'ORDER P 374d4e44 — the assembly base'),
-        ('OKRULED', 'ORDER K f3101883'),
-        ('O35FINAL', 'the landing candidate 1f176444')]
+# PRESENTATION RULING (owner, standing — supersedes the five-board format ON THIS PAGE):
+#   "I only ever want to review the no-arb status of the candidate we are working on (and maybe a
+#    live board as a reference) unless otherwise stated — all of those historical progress boards
+#    are irrelevant to me."
+# So the page carries THE CANDIDATE and, as the one reference, THE LIVE BOARD. The historical
+# comparison boards (ORDER K, ORDER P, R, the landing candidate) are GONE FROM THE PAGE. They are
+# still built, still scored and still on the record in BANDS_ASM.json / BANDS_ASM_out.txt and in
+# STANDING_TABLES_ASM.json. Nothing was deleted; it is only off the owner's page.
+#
+# THE LIVE REFERENCE IS ABSENT AND THE REASON IS PRINTED ON THE PAGE, NOT BURIED HERE. The no-arb
+# test does not read a board — it reads a WALK-FORWARD MATRIX (per_entrant_<LABEL>.json), and no
+# matrix for the live board 88ce647f exists anywhere in this project's evidence. Every matrix on
+# record stamps an `engine_head`, none stamps a board id, so NOTHING ON DISK CAN BE SHOWN TO BE THE
+# LIVE BOARD'S, and picking the closest-looking one would be a guess presented to the owner as a
+# reference. Building one means building the LIVE ENGINE HEAD, a different commit from the one this
+# candidate stands on. That is a real job, not a rerun. It is offered, not faked.
+LIVE_ABSENT = True
+LABS = [('ASMCAND', '*** THE ASSEMBLY CANDIDATE — THE BOARD UNDER REVIEW ***')]
 VKEY = 'ALLCOH'
 
 
@@ -81,6 +94,24 @@ h.append('<div class="sub">The owner\'s standing format. A group is fairly price
          'cheaper, above +14% you could buy at draft day and beat the cost of carrying him. '
          '<b>Every breaching cell is scored on the owner\'s own path test</b>, and every raw year is '
          'printed so he can apply his own reading. <b>* thin cell · ** very thin.</b></div>')
+h.append('<div class="sub"><b>THIS PAGE SHOWS THE CANDIDATE ONLY.</b> On your standing instruction '
+         'the historical progress boards — ORDER K, ORDER P, R and the landing candidate — are off '
+         'this page. They are still built and still scored; they now live in the raw record '
+         '(<span class="k">BANDS_ASM.json</span>, <span class="k">BANDS_ASM_out.txt</span>, '
+         '<span class="k">STANDING_TABLES_ASM.json</span>) rather than in front of you.</div>')
+if LIVE_ABSENT:
+    h.append('<div class="sub" style="border-left:3px solid var(--dn);padding-left:10px">'
+             '<b>THE LIVE BOARD IS NOT ON THIS PAGE, AND HERE IS WHY.</b> You asked for the live '
+             'board <b>88ce647f</b> alongside the candidate as a reference. The no-arb test does not '
+             'read a board — it reads a <b>walk-forward matrix</b>, a separate multi-minute build. '
+             '<b>No matrix for the live board exists anywhere in this project\'s evidence.</b> The '
+             'matrices that are on disk each stamp the engine commit they came from and none stamps '
+             'a board, so not one of them can be SHOWN to be the live board\'s — and putting the '
+             'closest-looking one in front of you labelled &ldquo;live&rdquo; would be a guess '
+             'dressed as a reference. Building it properly means building the live engine commit, '
+             'which is a different commit from the one this candidate stands on. That is a real job '
+             'rather than a rerun, so it is offered rather than faked. <b>Say the word and it gets '
+             'built.</b></div>')
 
 for lab, nice in LABS:
     if lab not in BD:
@@ -148,7 +179,7 @@ if os.path.exists(ARMJ):
     ARMS = AJ['arms']
     ARM_ORDER = ['RD', 'MSD', 'UNR', 'IRE', 'PDA', 'PDN', 'SSP', 'PDS', 'ALLPOOL']
     h.append('<h1 style="margin-top:34px">THE POOL ARMS</h1>')
-    h.append('<div class="sub">Every pool pathway, both windows, all five boards — the same standing '
+    h.append('<div class="sub">Every pool pathway, both windows, the candidate — the same standing '
              'format as the ND bands above. <b>The cohort clock and the value semantics are the '
              'all-arm instrument\'s own</b> (<code>noarb_table_allarm.py</code>, md5 '
              '<code>8673d7e3…</code>, asserted at run). <b>THE MSD YEAR-1 EXCLUSION:</b> an MSD row '

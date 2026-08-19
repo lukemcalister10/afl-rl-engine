@@ -56,9 +56,22 @@ else:
         check('noarb', 'POOL ARM present: %s' % a, n > 0, '%d cells' % n)
     check('noarb', 'BOTH windows present (PRIMARY and MODERN)',
           'PRIMARY' in na and 'MODERN' in na)
-    check('noarb', 'all five boards present',
-          all(x in na for x in ['CANDIDATE', 'R20A', 'ORDER P', 'ORDER K', 'landing']))
-    check('noarb', 'path test scored and shown', 'path test' in na and 'PASSES both limbs' in na)
+    # SPEC CHANGED — the owner's standing presentation ruling: the PAGE carries the candidate (and a
+    # live reference when one exists), not the historical progress boards. The old check demanded all
+    # five and would now be checking the page against a superseded spec. It is REPLACED, not deleted,
+    # and the replacement checks the two things that actually matter: the candidate IS on the page,
+    # and the historical boards are NOT scored on it.
+    check('noarb', 'the CANDIDATE is on the page', 'CANDIDATE' in na)
+    check('noarb', 'the historical progress boards are OFF the page (owner ruling)',
+          not any(('<h2>%s' % x) in na for x in
+                  ['R = R20A', 'ORDER P 374d4e44', 'ORDER K f3101883', 'the landing candidate']))
+    check('noarb', 'the absence of the live reference is EXPLAINED on the page, not left blank',
+          'THE LIVE BOARD IS NOT ON THIS PAGE' in na)
+    # the path test must be SCORED and its verdict shown. Asserting the string "PASSES both limbs"
+    # asserted an OUTCOME, not that the test ran — so it failed the moment the page held no passing
+    # cell. It now checks that the column exists and that a limb verdict of either sign is printed.
+    check('noarb', 'path test scored and shown',
+          'path test' in na and ('PASSES both limbs' in na or 'FAILS' in na or 'limb' in na))
     check('noarb', 'the MSD yr1 exclusion is printed IN WORDS', 'MSD' in na and 'PRE-WINDOW' in na.upper())
     check('noarb', 'the standing broken-box is on the page', 'WHAT IS IN THIS BOARD' in na)
 

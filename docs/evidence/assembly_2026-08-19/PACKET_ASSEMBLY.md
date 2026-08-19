@@ -7,9 +7,82 @@
 > **THE CANDIDATE IS FOR OWNER REVIEW. NOTHING LANDS. NOTHING MERGES. NO PULL REQUEST. NOTHING ON
 > `main`. THE LIVE BOARD `88ce647f` WAS NEVER TOUCHED.**
 
+# THE CANDIDATE IS `81cf787b`. THE TOTAL IS **665,238**.
+
+*Superseding, in order: `ca73176e` / 654,031 (the R3 collector read the wrong population) → `fbf61d05`
+/ 665,180 (R3 charged rows whose only absence was the in-progress season) → **`81cf787b` / 665,238**.
+Every superseded board is named wherever its numbers appear, never quietly replaced.*
+
 ---
 
-## 0 · WHERE THIS PACKET STANDS
+## 0 · THE INDEPENDENT AUDIT, AND WHAT THIS PASS DID ABOUT IT
+
+An independent seat audited the previous candidate (`docs/evidence/audit_2026-08-19/AUDIT_PACKET.md`,
+`f76dbb0`). **It verified the board byte-exact and it found six things wrong with this packet and the
+engine behind it.** Its findings are the spec for this pass. Here is each one and what happened.
+
+### F1 (HIGH) — TWO FALSIFIERS WERE SCORED AS HELD WHEN THEY HAD FIRED
+
+**This is the worst documentation defect this project recognises and it was mine.**
+
+- **P3** predicted the candidate total in **630,000-660,000**, with my own written falsifier: *"a total
+  ABOVE R falsifies my understanding of the stack and I will say so."* The board is **665,238**;
+  R is **664,950**. **THE FALSIFIER FIRED.** The previous packet scored P3 **HELD** by quoting the
+  superseded 654,031 — a number that was no longer the candidate's. **P3 IS NOW SCORED FIRED.**
+- **P9** predicted the R3 fade would move more board points than I1+I2+I3 combined. It moves
+  **−1,025** against **−3,722**. **THE PREDICTION FIRED.** The previous packet scored it HELD by
+  quoting **−12,232**, the marginal of the *defective* cumulative collector that had already been
+  withdrawn. **P9 IS NOW SCORED FIRED.**
+
+**What actually went wrong, said plainly rather than excused:** the packet was written for
+`ca73176e`, the board was rebuilt twice under it, and §9's scoring table was never re-read against
+the board it was sitting on. **A falsifier is worth nothing if the scoring table is stale.** §9 is
+regenerated below against `81cf787b` and nothing in it is carried over unchecked.
+
+### F2 (HIGH) — R3 WAS CHARGING ROWS WHOSE ONLY ABSENCE IS THE IN-PROGRESS SEASON
+
+Fixed in the engine, **preregged first** (`PREREG_F2_FIX.md`, pushed at `74d9520` **before the
+edit**). Full account in **§6f**. Board `fbf61d05` → **`81cf787b`**, **3 rows**, **+58**.
+
+### F3 (HIGH) — TWO INJURY REGISTERS EXIST AND THE FADE ONLY READS ONE
+
+**DISCLOSED, NOT WIRED — it is an open question for the owner.** Re-measured after the F2 fix in
+**§6g**.
+
+### F4 — THE OWNER PAGES SAID "20th PERCENTILE" WHILE THE BOARD IS p15
+
+Fixed. All three pages now read **15th percentile**, which is what `RL_O40_CAPPCT=15` actually
+builds.
+
+### F5 — THE STANDING BOX WAS INCOMPLETE
+
+Fixed. The box now carries the **built tail calibration 0.8004**, the **modern 1-20 failure** beside
+1-10, the **late-band deepening**, the **one-game shield defect**, the **two-register question**, and
+a **new instrument defect this pass found** (§6h). **Nothing the owner knows about is absent from the
+box.**
+
+### F6 — THREE OF FOUR ENGINE-EDITING PASSES HAD NO PREREG
+
+**ACKNOWLEDGED AS A PROCESS BREACH, WITHOUT QUALIFICATION.** `PREREG_ASSEMBLY.md` was pushed before
+the first engine edit and that discipline then lapsed: the R3 rewrite, the parity repair and the
+run-break variant were all written without one. The rule from here is that **every engine edit gets a
+prereg pushed first, however small**, and this pass is the first to honour it — `PREREG_F2_FIX.md` at
+`74d9520`, before a line of the engine moved.
+
+**THE AUDIT'S CLEAN-PASS LIST IS NOT RESTATED HERE AND IT IS NOT BEING QUIETLY DROPPED:** the audit
+independently reproduced the board byte-exact and cleared the dial-chain identities, the day-0
+replication, determinism, the class mark and the no-arb chain. That list is in its own packet at
+`f76dbb0` and it stands on its own authority, not on this seat's summary of it.
+
+**ONE CORRECTION TO THE AUDIT'S PROSE, RECORDED RATHER THAN PASSED OVER, AND IT DOES NOT CHANGE ANY
+FINDING.** The audit states `SEASON_FE = 0.58`. **0.58 is the fallback literal in the source**;
+the live value read from `data/season_state.json::calendar_progress` is **0.92**, so an ordinary row
+sits at depth **1.92**, not 1.58. The finding is unaffected — 1.92 is still below the guard, and the
+LTI rows still land on exactly 2.00 — and the audit's F2 reproduces exactly as it described.
+
+---
+
+## 0z · WHERE THIS PACKET STANDS
 
 **BOTH HALTS THIS SEAT RAISED HAVE BEEN RULED ON BY THE OWNER (register v750), AND THE BOARD BELOW IS
 THE REBUILD THAT CARRIES HIS RULINGS.**
@@ -396,7 +469,9 @@ been visible in any total, any band table or any tracker column.
 
 ## 4 · THE CANDIDATE, AND THE LEVER STACK
 
-**THE CANDIDATE IS `fbf61d05`. THE TOTAL IS 665,180.** *(supersedes `ca73176e` / 654,031 — the R3 collector was reading the wrong population; see §6c.)*
+**THE CANDIDATE IS `81cf787b`. THE TOTAL IS 665,238.** *(supersedes `fbf61d05` / 665,180 — R3 was
+charging rows whose only unplayed season is the in-progress one, audit finding F2; see §6f. Which in
+turn superseded `ca73176e` / 654,031 — the R3 collector was reading the wrong population; see §6c.)*
 
 | board | md5 | total | vs live | vs K | vs R | the lever added |
 |---|---|---:|---:|---:|---:|---|
@@ -412,8 +487,15 @@ been visible in any total, any band table or any tracker column.
 | V750_L5A | `e1e3d97d` | 666,458 | −85,971 | −6,639 | +1,508 | + absence I1, the credit curve |
 | V750_L5B | `b74a2a0e` | 666,275 | −86,154 | −6,822 | +1,325 | + absence I2, the graded reset |
 | V750_L5C | `1270991c` | 666,263 | −86,166 | −6,834 | +1,313 | + absence I3, the injury stream |
-| **CANDIDATE** | **`ca73176e`** | **654,031** | **−98,398** | **−19,066** | **−10,919** | + absence I4, the R3 fade |
-| CAND repeat | `ca73176e` | 654,031 | — | — | — | **the determinism proof** |
+| **CANDIDATE** | **`81cf787b`** | **665,238** | **−87,191** | **−7,859** | **+288** | + absence I4, the R3 fade |
+| CAND repeat | `81cf787b` | 665,238 | — | — | — | **the determinism proof** |
+| CAND, break dial set explicitly to `binary` | `81cf787b` | 665,238 | — | — | — | proves unset == binary |
+
+**THE CANDIDATE NOW SITS +288 ABOVE R, NOT −10,919 BELOW IT.** That reversal is not a new lever: it
+is what two successive repairs to the R3 collector did to a number that was never real. The
+cumulative-clock version took −12,232 by charging players who were on the field; the corrected
+current-run version takes **−1,025** from nine genuinely absent rows. **The +288 is the honest
+reading and it is the reason preregistered prediction P3 fired — see §9.**
 
 **Each marginal, and how many rows carry it:**
 
@@ -426,9 +508,9 @@ been visible in any total, any band table or any tracker column.
 | + I1 the credit curve | −3,527 | 168 | 29 | 139 |
 | + I2 the graded reset | **−183** | 32 | 6 | 26 |
 | + I3 the injury stream | −12 | 2 | 1 | 1 |
-| + I4 the R3 production fade | **−12,232** | 124 | 0 | 124 |
-| **the absence package alone** | **−15,954** | | | |
-| **THE WHOLE ARC R → CANDIDATE** | **−10,919** | | | |
+| + I4 the R3 production fade | **−1,025** | 9 | 0 | 9 |
+| **the absence package alone** | **−4,747** | | | |
+| **THE WHOLE ARC R → CANDIDATE** | **+288** | | | |
 
 **THE ANCHOR MOVE, p20 → p15, AS ITS OWN STEP:** the compression lever is **+4,769** at p15 against
 **+5,792** at p20 — the tighter anchor gives back **1,023 board points**, i.e. it charges more, which
@@ -465,9 +547,26 @@ too and it is restated here rather than assumed.
 
 ## 6 · THE NO-ARB TABLES
 
-Built for **five boards** (candidate, R, ORDER P, ORDER K, the landing candidate), **both windows**,
-five bands plus ALL / 1-20 / 21-64, every board its own baseline, **with the owner's path test scored
-on every breaching cell**. `ASSEMBLY_NOARB.html`.
+**THE OWNER'S PAGE NOW SHOWS THE CANDIDATE ONLY — a standing presentation ruling.** His words:
+*"I only ever want to review the no-arb status of the candidate we are working on (and maybe a live
+board as a reference) unless otherwise stated — all of those historical progress boards are
+irrelevant to me."* So `ASSEMBLY_NOARB.html` carries **the candidate**, both windows, five bands plus
+ALL / 1-20 / 21-64, the pool arms, and the path test on every breaching cell. **ORDER K, ORDER P, R
+and the landing candidate are still built and still scored — they are simply off the page**, and
+live on in `BANDS_ASM.json`, `BANDS_ASM_out.txt` and `STANDING_TABLES_ASM.json`. The comparison table
+below is kept **in this packet** because a packet is a work record, not the owner's review page.
+
+### ⚠ THE LIVE BOARD IS NOT ON THE PAGE, AND THE REASON IS PRINTED ON THE PAGE ITSELF
+
+He asked for the live board `88ce647f` as the one reference. **It is not there and it is not silently
+missing.** The no-arb test does not read a board — it reads a **walk-forward matrix**
+(`per_entrant_<LABEL>.json`), a separate multi-minute build — and **no matrix for the live board
+exists anywhere in this project's evidence.** I checked: every matrix on disk stamps the **engine
+commit** it came from and **none stamps a board id**, so not one of them can be *shown* to be the
+live board's, and putting the closest-looking one in front of him labelled "live" would be a guess
+dressed as a reference. Building it properly means building the **live engine commit**, which is a
+different commit from the one this candidate stands on — a real job, not a rerun. **It is offered,
+not faked**, and the page says exactly this in plain words rather than leaving a blank column.
 
 **BREACHING CELLS AND THEIR PATH TEST:**
 
@@ -547,7 +646,9 @@ walks part of ORDER P's damage back and no more. **SSP is NOT repaired here and 
 
 ## 6c · THE FINISHING PASS — FIVE OWNER-CAUGHT ITEMS, AND WHAT EACH ONE FOUND
 
-**THE CANDIDATE IS NOW `fbf61d05`, TOTAL 665,180.**
+**THE CANDIDATE AT THE END OF THAT PASS WAS `fbf61d05`, TOTAL 665,180. IT HAS SINCE BEEN
+SUPERSEDED BY `81cf787b` / 665,238 — see §6f. The numbers in this section are the ones that pass
+measured and they are left as measured; where a figure moved afterwards it is marked.**
 
 ### (1) THE R3 COLLECTOR WAS CHARGING THE WRONG POPULATION — FIXED
 
@@ -574,7 +675,8 @@ backwards against a present-tense ruling.
 | Harry Barnett | 0 | 674 | 422 | **−252** | 2024 |
 
 **Rows still charged by R3 while playing this season: 0 — it was 106.** R3's marginal moves from
-−12,232 to **−1,083**. **Day-0 verified, not assumed: 89 gameless rows, 0 moved.**
+−12,232 to **−1,083** *(and to **−1,025** after the F2 fix in §6f)*. **Day-0 verified, not assumed:
+89 gameless rows, 0 moved.**
 
 ### ⚠ (2) THE EXPLOIT-SAFETY CHECK FAILED ITS OWN THRESHOLD — REPORTED, NOT WAVED THROUGH
 
@@ -667,11 +769,13 @@ player who has played no games is 88% participating, which is the defect inverte
 
 **BUILT AND PRICED, NOT ADOPTED — `RL_O41_RAMP`, default off:**
 
-- ramp board **`bc647219`**, total **665,191**, **+11 board points on 8 rows** (largest ±6).
+- ramp board **`db1ccef5`**, total **665,249**, **+11 board points on 8 rows** (largest ±6).
+  *(rebuilt on the F2-fixed engine; on the pre-fix engine it was `bc647219` / 665,191 — the same
+  +11, so the F2 fix changes nothing about the ramp's reading.)*
 - **DAY-0 STAYS 89/89** — 0 of 89 gameless rows move. A gameless row has no delivered season, so the
   fade-clock site never fires for him. **Measured, because the last time an absence-depth object moved
   it broke the day-0 law.**
-- dial off → **`fbf61d05`**, byte-identical to the candidate.
+- dial off → **`81cf787b`**, byte-identical to the candidate.
 - **It does NOT fix the Brodie hole** (Brodie 767 → 767): the ramp grades the fraction, not the binary
   run-break.
 
@@ -698,13 +802,17 @@ consumers, NO NEW CONSTANT.**
 | board | md5 | total | R3 marginal | rows |
 |---|---|---:|---:|---:|
 | before R3 | `1270991c` | 666,263 | — | — |
-| **R3, BINARY — THE CANDIDATE** | **`fbf61d05`** | **665,180** | **−1,083** | **12** |
-| R3, FRACTIONAL — the variant | `2eac9bc7` | 649,412 | **−16,851** | **121** |
+| **R3, BINARY — THE CANDIDATE** | **`81cf787b`** | **665,238** | **−1,025** | **9** |
+| R3, FRACTIONAL — the variant | `e0e7f71c` | 649,455 | **−16,808** | **119** |
 
-**FRACTIONAL vs BINARY: −15,768 board points, 110 rows, every one of them down.**
+**FRACTIONAL vs BINARY: −15,783 board points, 110 rows, every one of them down.**
+
+*(Both boards are rebuilt on the F2-fixed engine, so this comparison is one engine throughout. The
+pre-fix pair was `fbf61d05` / `2eac9bc7`; the fix moves the binary board by +58 on 3 rows and the
+fractional board by +43 on 2, and **changes nothing about the choice between them**.)*
 
 **Identities and laws — all hold on the variant:** every ORDER 41 dial off → `374d4e44`; the break
-dial unset → `fbf61d05` byte-identical; **determinism ×2 identical** (`2eac9bc7`); **day-0: 0 of 89
+dial unset → `81cf787b` byte-identical; **determinism ×2 identical** (`e0e7f71c`); **day-0: 0 of 89
 gameless rows move — 89/89 holds**; continuity identical on every axis (charge-vs-age step 0.0000,
 0 of 280,000 games steps, 0 of 10,000 surplus steps, FIX A leg falls with price 0 of 30 cells).
 **No acceptance law moves.**
@@ -755,12 +863,12 @@ was that the exploit is self-limiting; on these rows it is not.**
 | | rows | board points |
 |---|---:|---:|
 | the shield the fix targets (≤2-game breaks) | 63 | **−3,457** |
-| everything else the fix also does | 47 | **−12,311** |
-| **total** | **110** | **−15,768** |
+| everything else the fix also does | 47 | **−12,326** |
+| **total** | **110** | **−15,783** |
 
 > **78% of the fractional rule's effect lands OUTSIDE the shield population it was built to close.**
-> It converts R3 from a 12-row collector into a 121-row collector. The extra take falls on rows with
-> 3-10 game seasons — partial returns — which were never part of the exploit.
+> It converts R3 from a **9**-row collector into a **119**-row collector. The extra take falls on rows
+> with 3-10 game seasons — partial returns — which were never part of the exploit.
 
 **THE CHOICE, LAID OUT WITHOUT A RECOMMENDATION.** Neither rule is clean:
 
@@ -773,6 +881,168 @@ was that the exploit is self-limiting; on these rows it is not.**
 **A third shape neither of us has priced would be a break that saturates faster than the credit curve
 — full break well before 11 games — but that constant is not in any measurement this seat holds, so
 it is named as an option and NOT invented.** Both boards are built; the choice is the owner's.
+
+### THE DECISION, FRAMED — register v754. **NEITHER IS ADOPTED. THE CANDIDATE CARRIES BINARY.**
+
+| | **BINARY** — what the candidate is built on | **FRACTIONAL** — priced, not adopted |
+|---|---|---|
+| board | **`81cf787b`** · **665,238** | `e0e7f71c` · 649,455 |
+| R3 collects | **−1,025** from **9** rows | **−16,808** from **119** rows |
+| the rule in one line | any season with games > 0 ends the absence run | a season ends the run only if it fully credits (11+ games); otherwise it leaves (1 − credit) of itself standing |
+| the named rows the instruction asked about | Brodie, Conway, Barnett: Conway and Barnett charged, **Brodie shielded** by one game. Edwards, Mraz, Busslinger, Madden: **all restored** | Brodie **stripped** (−620) as intended — but Madden (−947) and Mraz (−1,251) are stripped **harder**, which the instruction did not expect |
+| what it gets wrong | under-collects at the boundary: 63 rows keep **+1,883** of shield, one of them **+560** off a single game | over-collects past it: **78%** of its effect lands outside the shield population, on partial returns |
+| new constants | none | **none** — it reuses the F1 guarded credit curve the board already carries |
+| acceptance | every law holds | **every law holds equally** — dial-off `374d4e44`, day-0 89/89, determinism ×2, class 1.0671, continuity clean |
+
+**NO ACCEPTANCE LAW SEPARATES THEM. The choice is not a test result, it is a judgement about which
+error you would rather carry**, and it is yours. This seat has deliberately not recommended one:
+the exploit-safety argument that would have justified fractional **was tested and failed on two of
+its four named rows** (§ above), and the argument that would justify binary — that a returning player
+has genuinely broken his absence — **is contradicted by Brodie's single game.** Both arguments are
+weaker than they looked, and that is the honest state of it.
+
+---
+
+## 6f · THE F2 FIX — R3 WAS CHARGING ROWS WHOSE ONLY ABSENCE IS THE IN-PROGRESS SEASON
+
+**PREREGGED FIRST.** `PREREG_F2_FIX.md`, pushed at `74d9520` **before a line of the engine moved**.
+This is the F6 discipline restarting.
+
+**THE PROMISE THAT WAS BROKEN.** `PREREG_ASSEMBLY.md` §4.4 and this packet both state: *"Zero below
+depth 2 by construction … day-0 and one-season-out rows are untouched."* They were not.
+
+**THE MECHANISM — the audit traced it, and I re-verified it on a loaded engine rather than take it on
+report.** `o41_absence_depth` returns `1 + n`, and the first thing it adds to `n` is the in-progress
+season's elapsed fraction from `_o41_fe`. `_fEy` returns the calendar fraction for an ordinary row —
+**0.92** today — but returns exactly **1.0** for a row the engine's own `LTI_REGISTER.md` marks out.
+So an ordinary one-season-out row sits at depth **1.92** and is safely below the guard, while an
+LTI-listed one sits at exactly **2.0000** and sails past it.
+
+**MY OWN MEASUREMENT, ON THE CANDIDATE'S DIAL LINE:** of **116** rows whose only unplayed season is
+2026, exactly **4** reach depth ≥ 2 — Mani Liddy, Noah Long, Jackson Archer, Jack Payne — and **all
+four have `fEy = 1.000` and sit on the LTI register.** **Not one non-LTI row reaches the threshold.**
+
+**THE FIX IS STRUCTURAL, NOT NUMERIC, AND THAT WAS THE POINT.** A new helper `o41_completed_absent`
+counts the **completed** unplayed seasons inside the same run `o41_absence_depth` walks — reusing that
+walk's own break rule, draft-year floor and structural guard, so the two objects cannot drift apart.
+`o41_r3_take` then gates on it **beside** the existing guard, which was not moved by a hair:
+
+```
+if _cx < 2.0 or o41_completed_absent(p, Y) < 1: return 0.0
+```
+
+**NO NEW CONSTANT. NO THRESHOLD MOVED. NO NEW DIAL.** Nudging the guard to 2.01 would have cleared
+these rows by arithmetic accident and re-broken the moment the season state, the register or `_fEy`
+moved. The property promised is about **completed seasons**, so the code now says completed seasons.
+
+**WHAT IT DID — BUILT AGAINST PREREGGED:**
+
+| # | preregistered | built | reading |
+|---|---|---|---|
+| **P-F2-1** | exactly the 4 named rows stop being charged, nothing else moves | **3 rows** — Jack Payne +36, Noah Long +15, Mani Liddy +7. Nothing else moved. | **the strict form FIRED, the hedge held.** Jackson Archer reaches depth 2 but was already taking **0**, so removing his eligibility changes nothing. The prereg said in as many words: *"one of which may already take 0 … if the built count is not 3 or 4, I have misunderstood the mechanism."* It is 3. |
+| **P-F2-2** | the board rises **+50 to +70** | **+58** | **HELD** |
+| **P-F2-3** | charged rows fall 12 → **8 or 9** | **12 → 9** | **HELD** |
+| **P-F2-4** | **day-0 stays 89/89 bit-identical** — *"the prediction most worth being wrong about"* | **89/89 on every board built this pass**, plus the walk-forward emit's independent replication guard at tolerance 0 | **HELD, and checked rather than assumed** |
+| **P-F2-5** | no acceptance law moves | dial-off `374d4e44` byte-exact · burn 0 · continuity clean on every axis · **class mark 1.0671**, unchanged | **HELD** |
+| **P-F2-6** | the fractional variant moves similarly and its comparison stands | **+43 on 2 rows**; the binary-vs-fractional reading is unchanged | **HELD** |
+
+**FALSIFIERS: NONE FIRED.** `F2-A1` dial-off `374d4e44` ✓ · `F2-A2` day-0 89/89 ✓ · `F2-A3`
+determinism ×2 identical ✓ · `F2-A4` no in-progress-only row is still charged ✓ · `F2-A5` no row with
+a completed unplayed season lost its charge ✓ · `F2-A6` class 1.0671 inside [1.03, 1.14) ✓ ·
+`F2-A7` burn 0 ✓.
+
+**A STRONGER CONTROL THAN THE PREREG ASKED FOR, BECAUSE IT WAS CHEAP.** The edit lives entirely
+inside `o41_r3_take`, which is unreachable unless `RL_O41_R3` is set — so **every** board in the lever
+stack up to and including `V750_L5C` must be untouched. That was not assumed: `L5C` was **rebuilt on
+the edited engine** and comes back **`1270991c`, byte-identical** to the board already on disk.
+
+---
+
+## 6g · TWO INJURY REGISTERS EXIST, AND THE FADE ONLY READS ONE — **DISCLOSED, NOT WIRED**
+
+**Audit finding F3.** The two-channel exemption that spares an injured row reads the owner's sitter
+annotation (`SITTER_2026_v1.csv`, md5 `b26798c3…`, 219 rows, **37** marked `injured=Y`). The engine
+**also** carries `LTI_REGISTER.md` — **43 distinct rows**, a pinned input it already consumes
+elsewhere — and **21 of those 43 are not marked `injured=Y` in the annotation.** The fade never
+consults it.
+
+**RE-MEASURED AFTER THE F2 FIX, AS THE AUDIT ASKED:**
+
+| | before the F2 fix | **after the F2 fix** |
+|---|---:|---:|
+| rows R3 charges | 12 | **9** |
+| of those, on `LTI_REGISTER.md` | 4 | **1** |
+| board points charged to LTI-listed rows | 65 | **606** |
+
+**The one remaining row is Toby Conway** — LTI designation `2025` / `may_return_2026`, **not**
+`injured=Y` in the annotation — and at **−606** he is **the single largest charge on the board**, 59%
+of R3's entire marginal. The F2 fix removed the *incidental* LTI rows (the ones that only qualified
+through the `fE = 1.0` quirk) and left the one row that genuinely has a completed unplayed season.
+
+**WHETHER LONG-TERM-INJURED ROWS SHOULD JOIN THE EXEMPTION IS AN OPEN OWNER QUESTION AND THIS SEAT
+HAS NOT ANSWERED IT.** No code was changed to answer it. Both readings are defensible — the register
+says his absence is explained, the annotation is the owner's own current ground truth and does not —
+and picking one is a ruling, not a repair.
+
+**A TRAP WORTH NAMING BECAUSE IT NEARLY CAUGHT ME.** The two registers key differently: `LTI_REGISTER.md`
+keys by **store key**, the annotation by **display name**. My first count of the divergence read 22,
+not the audit's 21, because the register writes **"Nic Martin"** where the annotation writes
+**"Nicholas Martin"** — the same player, `injured=Y`. **The audit's 21 is right and mine was wrong.**
+Any future work joining these two files must join on the key.
+
+---
+
+## 6h · A NEW DEFECT THIS PASS FOUND — IN MY OWN INSTRUMENT, NOT IN THE BOARD
+
+**RAISED BY:** the continuity harness, run on the fixed candidate, reporting **9 rows moving on the
+birthday alone, 3 of them by 50% or more, +1,025 net.** The acceptance law says that number is zero.
+**On its face the candidate breached an acceptance law.**
+
+**WHY I DID NOT TAKE IT AT FACE VALUE.** Two numbers were too round. The 9 moving rows are *exactly*
+the 9 rows R3 charges, and **+1,025 is *exactly* R3's whole marginal on the board.** A real age cliff
+does not reproduce a collector's total to the point.
+
+**THE CAUSE, READ OUT OF THE HARNESS'S OWN SOURCE.** `os_continuity.py:168` rebuilds the shifted-age
+price from the legs `os_lib.assemble` reconstructs. **`assemble` was written before ORDER 41 existed
+and rebuilds the ORDER 31 law only — `rho·e + pi·ped + age credit` — with no R3 term.** So the
+harness compares the engine's real price, which *carries* the collector, against a rebuilt price that
+*drops* it, and prints the collector itself as a birthday jump.
+
+**RE-MEASURED PROPERLY** (`as_r3age.py`, `R3_AGE_out.txt`). The take is re-formed from the engine's
+own objects **at the call site**, because a row reaches the blend twice under the M3 blend and the two
+calls carry different games, different production input and a different stashed pre-cap value.
+
+- **Self-check 1:** the re-formed take must equal the engine's own take at every call — **1,200 calls,
+  worst disagreement 0.000e+00, EXACT.**
+- **Self-check 2:** blended with M3's own weight it must reproduce the board's per-row R3 delta —
+  **9 of 9 at tolerance 0.**
+- **THE ANSWER: the true birthday step through R3 is +0 board points on every one of the 9 charged
+  rows, and 0 rows move 50% or more.** The reason is clean: `o32_age_credit` — the only channel by
+  which age reaches this collector — returns 0 for a row with no games, and every charged row is a
+  row with no games.
+
+**THE FIRST DRAFT OF THIS PROBE WAS WRONG AND ITS OWN SELF-CHECK CAUGHT IT.** It read the engine's
+objects *after* the run instead of at the call site, saw only the last M3 call's state, and
+reproduced **2 of 9** rows. It was designed to refuse to draw a conclusion in that case, and it
+refused. That is why the self-check is in it.
+
+**SO: THE BOARD IS FINE AND THE INSTRUMENT IS BROKEN.**
+
+- **The birthday acceptance law is NOT breached.**
+- **`os_continuity.py`'s age axis cannot be read on any board carrying R3 until `os_lib.assemble`
+  learns the collector.** That is an open instrument defect, **it is mine**, and it is not repaired in
+  this pass — repairing an instrument in the same pass as the board it is measuring is how a seat
+  talks itself into a number.
+- **It also means the birthday line in the previous packet was cleared by an instrument that could
+  not see the lever it was clearing.** It is re-measured here and it passes, but it was not properly
+  measured before, and saying so is the point.
+
+**ONE MORE GAP IN THE SAME FILE, NAMED WHILE I AM IN IT AND NOT FIXED:** `os_lib.load()`'s
+environment clear-list does not include `RL_O41_CREDITFORM`, `RL_O41_RAMP` or `RL_O41_BREAK`, so a
+stale value of any of those could leak into a harness run from the surrounding environment. Every run
+in this pass goes through a clean subprocess environment, so nothing here is affected — but the
+file's own docstring promises that no unset dial can leak, and for three dials that promise is not
+kept.
 
 ---
 
@@ -839,13 +1109,13 @@ current annotation set.
 |---|---|---|
 | **P1** | dial-chain identity holds | **HELD.** `374d4e44`, `f3101883`, `7f88f509` byte-exact |
 | **P2** | mature movement −5,000 to −10,000 | **HELD** vs ORDER P (−9,182); the refit lever alone is −521 |
-| **P3** | candidate total 630,000-660,000 | **HELD** — 654,031 |
+| **P3** | candidate total 630,000-660,000 | ### **FIRED.** 665,238 — **ABOVE** R's 664,950. My own written falsifier was *"a total ABOVE R falsifies my understanding of the stack and I will say so."* **I am saying so.** The previous packet scored this HELD by quoting the superseded 654,031; that was wrong and the audit caught it. **What I got wrong:** I expected the absence package to take thousands of points out of the board net of the levers that add them. It takes **−4,747**, and the compression and SD levers hand back more than that, so the candidate lands just **above** the reference instead of well below it. |
 | **P4** | tail calibration 0.90-1.25 | **FALSIFIED.** 0.8004 on the ruled p15 board. §7 |
 | **P5** | class mark in [1.03, 1.14) registered | **HELD** — 1.0671 |
-| **P6** | burn 0, birthday 0 | **HELD** — burn census ZERO, birthday 0 gain-50+, 0 movers |
+| **P6** | burn 0, birthday 0 | **HELD, AND THE BIRTHDAY HALF HAD TO BE RE-MEASURED WITH A DIFFERENT INSTRUMENT TO SAY SO.** Burn census ZERO. On the birthday the standing continuity harness reported 9 movers and 3 of them at 50%+ — **that reading is the harness's own defect, not the board's** (§6h). Measured directly against the engine, R3's birthday step is **0 board points on every charged row**, with both self-checks exact. |
 | **P7** | I1 moves more board points than I2 | **HELD on the ruled configuration** — I1 −3,527 against I2 −183. *(It read the other way on the withdrawn F4 build, where the swap — not the graded reset — carried the number. Both readings are on the record.)* |
 | **P8** | injury stream < 25 rows, all upward | **HALF FALSIFIED.** 2 rows, not 25 — but **one moved DOWN**, and the cause is the ruled fade inversion, not the wiring. §8 |
-| **P9** | R3 > I1+I2+I3 combined | **HELD** — R3 −12,232 against −3,722 for the other three |
+| **P9** | R3 > I1+I2+I3 combined | ### **FIRED.** R3 is **−1,025**; I1+I2+I3 are **−3,722**. R3 is the **SMALLEST** of the four, not the largest. The previous packet scored this HELD by quoting **−12,232** — the marginal of the defective cumulative collector, already withdrawn when that line was written. **What I got wrong:** I sized R3 by the number of rows I thought were multi-season absent, and after both repairs that population is **nine rows**, not 124. |
 | **P10** | modern 1-10 still fails | **HELD** — fails the path test on the candidate, exactly as accepted. §6 |
 
 ---
@@ -857,10 +1127,10 @@ current annotation set.
 | all assembly dials off → `374d4e44` byte-exact | **PASS** |
 | K/landing chain `f3101883` intact | **PASS** |
 | R `7f88f509` reproduces, 664,950 | **PASS** |
-| determinism ×2 | **PASS** — `ca73176e` both runs |
+| determinism ×2 | **PASS** — `81cf787b` on both runs, and a third build with `RL_O41_BREAK=binary` set explicitly returns the same board, proving unset == binary |
 | **day-0 ENTRY values bit-identical 89/89** | **PASS — verified TWO ways.** The engine's own assert reads 89 of 89 at tolerance 0 on every build; and the walk-forward emit's independent replication guard reads **"89 of 89 wired entrants reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)"** against the **frozen** reference. An independent check over the 89 truly gameless board rows finds **0 moved**. |
 | burn census 0 of all young rows | **PASS** — the census is ZERO, every band |
-| birthday census 0 at every age | **PASS** — 0 gain-50+, 0 movers, worst ratio 1.0000 |
+| birthday census 0 at every age | **PASS on the R3-off line** (0 gain-50+, 0 movers, worst ratio 1.0000) **and PASS on the candidate when measured with an instrument that can see R3** — 0 points of birthday step on all 9 charged rows, self-checks exact (§6h). **The standing continuity harness reads this WRONG on any board carrying R3 and that is an open instrument defect.** |
 | continuity — age 23/24 | **PASS** — largest charge step between consecutive ages **0.0000** |
 | continuity — season turn | **PASS** — exactly invariant, S1-F2 does not fire |
 | continuity — games axis | **PASS** — charge rises with games at **0 of 280,000** steps |
@@ -914,12 +1184,12 @@ run through the R3 term, so the interaction of entry price with the R3 collector
 | # | deliverable | file | status |
 |---|---|---|---|
 | 1 | **PREREG**, pushed before the first engine edit | `PREREG_ASSEMBLY.md` (`c1dbd3e`) | done |
-| 2 | **THE CANDIDATE** + this packet | board **`ca73176e`** · `PACKET_ASSEMBLY.md` | done |
+| 2 | **THE CANDIDATE** + this packet | board **`81cf787b`** · `PACKET_ASSEMBLY.md` | regenerated for the fixed board |
 | 3 | **THE TRACKER** (v741/v742) | `TRACKER_ASSEMBLY.html` (801 rows) + `.csv` | regenerated |
 | 4 | **THE PER-LEVER BREAKDOWN** | `LEVERS_ASSEMBLY.html` (9 levers, p20→p15 visible) | regenerated |
 | 5 | the 804-row player list | `ASSEMBLY_PLAYERS.html` | regenerated |
-| 5 | the year-1 class in draft order | `ASSEMBLY_YEAR1.html` (102 rows, the 2025 draft) | regenerated |
-| 5 | **the no-arb tables** | `ASSEMBLY_NOARB.html` (5 boards, both windows, path test) | **built** |
+| 5 | the year-1 class in draft order | `ASSEMBLY_YEAR1.html` (**105** rows incl. 18 MSD, two-way membership assertion printed on the page) | regenerated |
+| 5 | **the no-arb tables** | `ASSEMBLY_NOARB.html` — **THE CANDIDATE ONLY**, both windows, ND bands + pool arms + path test, per the owner's standing presentation ruling | **regenerated** |
 | 5 | the class mark + per-class table | `CLASS_ASM_out.txt` | **built** |
 | 6 | the movers ledger | `MOVERS_LEDGER.json` | regenerated |
 | — | the RUCK diagnosis | `RUCK_DIAG.json` / `_out.txt` | done |
@@ -948,14 +1218,23 @@ no-arb page was ND-only, the tracker HTML lost all three delta columns, and the 
 empty v0 column, a dead cat column and a wrong MSD cohort rule. **Every one of those is a
 column-level check that could have been mechanical. So it now is.**
 
-`as_verify.py` runs **77 checks over the BUILT ARTEFACTS on disk** — not over the code that claims to
+`as_verify.py` runs **79 checks over the BUILT ARTEFACTS on disk** — not over the code that claims to
 write them — and prints pass/fail for every item of the standing spec.
 
-**RESULT: 77 checks, 77 PASS, 0 FAIL.**
+**RESULT: 79 checks, 79 PASS, 0 FAIL.**
+
+**TWO CHECKS WERE REWRITTEN THIS PASS, AND NEITHER WAS DELETED TO MAKE A NUMBER GO GREEN.**
+The old *"all five boards present"* check encoded the superseded page format; under the owner's
+presentation ruling it would have been testing the page against a spec he replaced, so it is
+**replaced by three stricter ones** — the candidate is on the page, the historical boards are **off**
+it, and **the live reference's absence is explained on the page rather than left as a blank column**.
+Separately, *"path test scored and shown"* was asserting the literal string `PASSES both limbs` — an
+**outcome**, not that the test ran — so it failed the moment the page held no passing cell. **That was
+a defect in the checker, and it is the checker that changed, not the page.**
 
 | document | checked |
 |---|---|
-| no-arb | 8 ND bands present · **all 9 pool arms present** · both windows · all five boards · path test shown · MSD exclusion in words · broken-box present |
+| no-arb | 8 ND bands present · **all 9 pool arms present** · both windows · candidate on the page · **historical boards off it** · **live absence explained** · path test shown · MSD exclusion in words · broken-box present |
 | tracker | 5 board columns · **all 6 delta columns in the HTML** · sortable · totals in header · 11 CSV columns |
 | year-1 | 7 columns incl. v0 and cohort · **no bare em-dash cells** · membership assertion printed · assertion passes both ways · cohort rule in words · broken-box |
 | player list | 804 rows · mechanism-leg columns · delta columns · broken-box |

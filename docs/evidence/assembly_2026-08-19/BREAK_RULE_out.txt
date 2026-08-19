@@ -3,17 +3,17 @@ THE R3 RUN-BREAK — BINARY (wired) vs FRACTIONAL (the variant). PRICED, NOT ADO
 ==========================================================================================================================
 
   before R3 at all             1270991c    666,263
-  R3, BINARY break  (CANDIDATE) fbf61d05    665,180
-  R3, FRACTIONAL break         2eac9bc7    649,412
+  R3, BINARY break  (CANDIDATE) 81cf787b    665,238
+  R3, FRACTIONAL break         e0e7f71c    649,455
 
-  R3 marginal, BINARY    : -1,083 on 12 rows
-  R3 marginal, FRACTIONAL: -16,851 on 121 rows
-  *** FRACTIONAL vs BINARY: -15,768 board points, 110 rows differ ***
+  R3 marginal, BINARY    : -1,025 on 9 rows
+  R3 marginal, FRACTIONAL: -16,808 on 119 rows
+  *** FRACTIONAL vs BINARY: -15,783 board points, 110 rows differ ***
 
   IDENTITIES:
     every ORDER 41 dial OFF          -> 374d4e44  reproduces ORDER P 374d4e44
-    the break dial UNSET (binary)     -> fbf61d05  byte-identical to the candidate fbf61d05
-    determinism, fractional x2        -> IDENTICAL — 2eac9bc7
+    the break dial UNSET (binary)     -> 81cf787b  byte-identical to the candidate 81cf787b
+    determinism, fractional x2        -> IDENTICAL — e0e7f71c
 
   DAY-0: 89 truly gameless board rows, 0 moved by the break rule   <-- must be 0 for 89/89
 

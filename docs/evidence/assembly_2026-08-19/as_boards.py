@@ -26,7 +26,7 @@ SP = '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f
 ASM = SP + '/asm'
 
 ORDER = ['IDENT_P', 'IDENT_K', 'L0_R', 'L1_REC', 'L2_COMP', 'V750_L2C15', 'V750_L3MAT',
-         'V750_L4SD', 'V750_L5A', 'V750_L5B', 'V750_L5C', 'V751_CAND', 'V751_CAND2']
+         'V750_L4SD', 'V750_L5A', 'V750_L5B', 'V750_L5C', 'V754_CAND', 'V754_CAND2']
 NICE = {
     'IDENT_P':  'every assembly dial OFF          = ORDER P, the identity',
     'IDENT_K':  "ORDER K's ruled line             = the K/landing chain",
@@ -39,8 +39,8 @@ NICE = {
     'V750_L5A':   '+ absence I1  the measured credit curve',
     'V750_L5B':   '+ absence I2  the graded reset (the F4 row swap WITHDRAWN at v750)',
     'V750_L5C':   '+ absence I3  the injury stream (live board only)',
-    'V751_CAND':  '+ absence I4  the R3 production fade   = THE CANDIDATE',
-    'V751_CAND2': 'the determinism repeat of THE CANDIDATE',
+    'V754_CAND':  '+ absence I4  the R3 production fade   = THE CANDIDATE',
+    'V754_CAND2': 'the determinism repeat of THE CANDIDATE',
 }
 EXPECT = {'IDENT_P': '374d4e44', 'IDENT_K': 'f3101883', 'L0_R': '7f88f509'}
 REF_TOT = {'live': 752429, 'IDENT_K': 673097, 'IDENT_P': 666434, 'L0_R': 664950}
@@ -72,7 +72,7 @@ AGE = {}
 BAND = {}
 PICK = {}
 CAT = {}
-for t in ('V751_CAND', 'L0_R', 'IDENT_P', 'live'):
+for t in ('V754_CAND', 'L0_R', 'IDENT_P', 'live'):
     for k, r in B.get(t, {}).items():
         NAME.setdefault(k, r.get('name') or k)
         POS.setdefault(k, r.get('grp') or (r.get('fut') or [['?']])[0][0])
@@ -120,13 +120,13 @@ for t, want in REF_TOT.items():
             FAIL.append('%s total %d != %d' % (t, TOT[t], want))
         P('  %-9s total expected %s  got %s   %s'
           % (t, '{:,}'.format(want), '{:,}'.format(TOT[t]), 'OK' if ok else '*** FIRED ***'))
-if not MD5.get('V751_CAND') or not MD5.get('V751_CAND2'):
+if not MD5.get('V754_CAND') or not MD5.get('V754_CAND2'):
     P('  DETERMINISM (A-F4): NOT YET SCORABLE — one of the two repeat boards is missing.')
     FAIL.append('determinism not scorable')
-elif MD5['V751_CAND'] == MD5['V751_CAND2']:
-    P('  DETERMINISM (A-F4): IDENTICAL on the repeat — %s. Did not fire.' % MD5['V751_CAND'][:8])
+elif MD5['V754_CAND'] == MD5['V754_CAND2']:
+    P('  DETERMINISM (A-F4): IDENTICAL on the repeat — %s. Did not fire.' % MD5['V754_CAND'][:8])
 else:
-    P('  DETERMINISM (A-F4): *** FIRED *** %s vs %s' % (MD5['V751_CAND'][:8], MD5['V751_CAND2'][:8]))
+    P('  DETERMINISM (A-F4): *** FIRED *** %s vs %s' % (MD5['V754_CAND'][:8], MD5['V754_CAND2'][:8]))
     FAIL.append('determinism')
 P()
 if FAIL:
@@ -142,7 +142,7 @@ P('is a subtraction and not an argument (the owner\'s own ask, register v742).')
 P('=' * 122)
 P()
 STACK = ['L0_R', 'L1_REC', 'V750_L2C15', 'V750_L3MAT', 'V750_L4SD', 'V750_L5A', 'V750_L5B',
-         'V750_L5C', 'V751_CAND']
+         'V750_L5C', 'V754_CAND']
 P('  %-9s %10s %12s %8s %8s %8s %10s  %s'
   % ('board', 'total', 'marginal', 'moved', 'up', 'down', 'worst row', 'the lever added'))
 LEVER = {}
@@ -167,9 +167,9 @@ for i, t in enumerate(STACK):
       % (t, '{:,}'.format(TOT[t]), '{:+,}'.format(TOT[t] - TOT[prev]), len(mv), up, dn,
          ('{:+,}'.format(V[t][worst] - V[prev][worst]) if worst else '—'), NICE[t]))
 P()
-if 'V751_CAND' in TOT and 'L0_R' in TOT:
+if 'V754_CAND' in TOT and 'L0_R' in TOT:
     P('  THE WHOLE ARC R -> CANDIDATE: %s  (sum of the marginals: %s)'
-      % ('{:+,}'.format(TOT['V751_CAND'] - TOT['L0_R']),
+      % ('{:+,}'.format(TOT['V754_CAND'] - TOT['L0_R']),
          '{:+,}'.format(sum(LEVER[t]['marginal'] for t in STACK[1:] if t in LEVER))))
     P('  These agree by construction — the stack is a chain, not an attribution. Interactions are')
     P('  INSIDE each marginal (each lever is measured on top of the ones above it), which is the')
@@ -178,13 +178,13 @@ P()
 
 # ---- the absence package, isolated ----------------------------------------------------------------
 P('THE ABSENCE PACKAGE ON ITS OWN (L4_SD -> CANDIDATE), sub-part by sub-part:')
-if 'V750_L4SD' in TOT and 'V751_CAND' in TOT:
+if 'V750_L4SD' in TOT and 'V754_CAND' in TOT:
     P('  I1 the credit curve        %12s' % '{:+,}'.format(TOT.get('V750_L5A', 0) - TOT['V750_L4SD']))
     P('  I2 the graded reset + F4   %12s' % '{:+,}'.format(TOT.get('V750_L5B', 0) - TOT.get('V750_L5A', 0)))
     P('  I3 the injury stream       %12s' % '{:+,}'.format(TOT.get('V750_L5C', 0) - TOT.get('V750_L5B', 0)))
-    P('  I4 the R3 production fade  %12s' % '{:+,}'.format(TOT['V751_CAND'] - TOT.get('V750_L5C', 0)))
+    P('  I4 the R3 production fade  %12s' % '{:+,}'.format(TOT['V754_CAND'] - TOT.get('V750_L5C', 0)))
     P('  ' + '-' * 44)
-    P('  the package total          %12s' % '{:+,}'.format(TOT['V751_CAND'] - TOT['V750_L4SD']))
+    P('  the package total          %12s' % '{:+,}'.format(TOT['V754_CAND'] - TOT['V750_L4SD']))
 P()
 
 # ---- mature rows ----------------------------------------------------------------------------------
@@ -197,10 +197,10 @@ mat = [k for k in KEYS if (AGE.get(k) or 0) >= 24]
 yng = [k for k in KEYS if (AGE.get(k) or 0) < 24]
 P('  mature rows on the board (age >= 24): %d   young rows: %d' % (len(mat), len(yng)))
 for base in ('IDENT_P', 'L0_R'):
-    if base in V and 'V751_CAND' in V:
-        dm = sum(V['V751_CAND'][k] - V[base][k] for k in mat if k in V[base] and k in V['V751_CAND'])
-        dy = sum(V['V751_CAND'][k] - V[base][k] for k in yng if k in V[base] and k in V['V751_CAND'])
-        nm = sum(1 for k in mat if k in V[base] and k in V['V751_CAND'] and V['V751_CAND'][k] != V[base][k])
+    if base in V and 'V754_CAND' in V:
+        dm = sum(V['V754_CAND'][k] - V[base][k] for k in mat if k in V[base] and k in V['V754_CAND'])
+        dy = sum(V['V754_CAND'][k] - V[base][k] for k in yng if k in V[base] and k in V['V754_CAND'])
+        nm = sum(1 for k in mat if k in V[base] and k in V['V754_CAND'] and V['V754_CAND'][k] != V[base][k])
         P('  vs %-8s mature %12s on %4d moved rows   ·   young %12s'
           % (base, '{:+,}'.format(dm), nm, '{:+,}'.format(dy)))
 if 'V750_L2C15' in V and 'V750_L3MAT' in V:
@@ -218,28 +218,28 @@ P('  (checked in as_accept.py against the built ceiling board; reported there)')
 P()
 
 # ---- the movers ledger ----------------------------------------------------------------------------
-if 'V751_CAND' in V:
+if 'V754_CAND' in V:
     led = {}
     for k in KEYS:
         row = {}
-        for t in ('live', 'IDENT_K', 'IDENT_P', 'L0_R', 'V751_CAND'):
+        for t in ('live', 'IDENT_K', 'IDENT_P', 'L0_R', 'V754_CAND'):
             if t in V and k in V[t]:
                 row[t] = V[t][k]
-        if 'V751_CAND' not in row:
+        if 'V754_CAND' not in row:
             continue
-        moved = any(row.get(t) != row['V751_CAND'] for t in ('live', 'IDENT_K', 'IDENT_P', 'L0_R') if t in row)
+        moved = any(row.get(t) != row['V754_CAND'] for t in ('live', 'IDENT_K', 'IDENT_P', 'L0_R') if t in row)
         if not moved:
             continue
         led[k] = dict(name=NAME.get(k), pos=POS.get(k), age=AGE.get(k), band=BAND.get(k),
                       pick=PICK.get(k), cat=CAT.get(k),
                       live=row.get('live'), K=row.get('IDENT_K'), P=row.get('IDENT_P'),
-                      R=row.get('L0_R'), cand=row['V751_CAND'],
+                      R=row.get('L0_R'), cand=row['V754_CAND'],
                       d_live_K=(row.get('IDENT_K') - row['live']) if 'live' in row and 'IDENT_K' in row else None,
                       d_K_P=(row.get('IDENT_P') - row.get('IDENT_K')) if 'IDENT_K' in row and 'IDENT_P' in row else None,
                       d_P_R=(row.get('L0_R') - row.get('IDENT_P')) if 'IDENT_P' in row and 'L0_R' in row else None,
-                      d_R_cand=(row['V751_CAND'] - row.get('L0_R')) if 'L0_R' in row else None,
-                      d_live_cand=(row['V751_CAND'] - row['live']) if 'live' in row else None,
-                      d_K_cand=(row['V751_CAND'] - row.get('IDENT_K')) if 'IDENT_K' in row else None,
+                      d_R_cand=(row['V754_CAND'] - row.get('L0_R')) if 'L0_R' in row else None,
+                      d_live_cand=(row['V754_CAND'] - row['live']) if 'live' in row else None,
+                      d_K_cand=(row['V754_CAND'] - row.get('IDENT_K')) if 'IDENT_K' in row else None,
                       levers={t: LEVER[t]['rows'].get(k) for t in LEVER if k in LEVER[t]['rows']})
     json.dump(dict(totals=TOT, md5={t: MD5[t] for t in MD5}, n_moved=len(led), rows=led),
               open(os.path.join(HERE, 'MOVERS_LEDGER.json'), 'w'), indent=1, sort_keys=True)

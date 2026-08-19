@@ -13,17 +13,19 @@ Run over the BUILT ARTEFACTS on disk, not over the code that claims to write the
   PASS ND band present: picks 21-30                               
   PASS ND band present: picks 31-40                               
   PASS ND band present: picks 41-64                               
-  PASS POOL ARM present: RD                                       18 cells
-  PASS POOL ARM present: MSD                                      10 cells
-  PASS POOL ARM present: UNR                                      18 cells
-  PASS POOL ARM present: IRE                                      18 cells
-  PASS POOL ARM present: PDA                                      18 cells
-  PASS POOL ARM present: PDN                                      18 cells
-  PASS POOL ARM present: SSP                                      18 cells
-  PASS POOL ARM present: PDS                                      9 cells
-  PASS POOL ARM present: ALLPOOL                                  18 cells
+  PASS POOL ARM present: RD                                       10 cells
+  PASS POOL ARM present: MSD                                      2 cells
+  PASS POOL ARM present: UNR                                      10 cells
+  PASS POOL ARM present: IRE                                      10 cells
+  PASS POOL ARM present: PDA                                      10 cells
+  PASS POOL ARM present: PDN                                      10 cells
+  PASS POOL ARM present: SSP                                      10 cells
+  PASS POOL ARM present: PDS                                      5 cells
+  PASS POOL ARM present: ALLPOOL                                  10 cells
   PASS BOTH windows present (PRIMARY and MODERN)                  
-  PASS all five boards present                                    
+  PASS the CANDIDATE is on the page                               
+  PASS the historical progress boards are OFF the page (owner ruling) 
+  PASS the absence of the live reference is EXPLAINED on the page, not left blank 
   PASS path test scored and shown                                 
   PASS the MSD yr1 exclusion is printed IN WORDS                  
   PASS the standing broken-box is on the page                     
@@ -103,6 +105,6 @@ ITEMS THAT CANNOT BE CHECKED MECHANICALLY — named, not skipped:
   MANUAL  depths are quoted as depths and never glossed into years of prose
 
 ==========================================================================================================================
-DELIVERY VERIFICATION SUMMARY: 77 checks, 77 PASS, 0 FAIL
+DELIVERY VERIFICATION SUMMARY: 79 checks, 79 PASS, 0 FAIL
 EVERY MECHANICAL CHECK PASSES.
 ==========================================================================================================================

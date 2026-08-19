@@ -1,6 +1,6 @@
 {
- "n": 77,
- "passed": 77,
+ "n": 79,
+ "passed": 79,
  "failed": 0,
  "checks": [
   {
@@ -55,55 +55,55 @@
    "doc": "noarb",
    "item": "POOL ARM present: RD",
    "ok": true,
-   "detail": "18 cells"
+   "detail": "10 cells"
   },
   {
    "doc": "noarb",
    "item": "POOL ARM present: MSD",
    "ok": true,
-   "detail": "10 cells"
+   "detail": "2 cells"
   },
   {
    "doc": "noarb",
    "item": "POOL ARM present: UNR",
    "ok": true,
-   "detail": "18 cells"
+   "detail": "10 cells"
   },
   {
    "doc": "noarb",
    "item": "POOL ARM present: IRE",
    "ok": true,
-   "detail": "18 cells"
+   "detail": "10 cells"
   },
   {
    "doc": "noarb",
    "item": "POOL ARM present: PDA",
    "ok": true,
-   "detail": "18 cells"
+   "detail": "10 cells"
   },
   {
    "doc": "noarb",
    "item": "POOL ARM present: PDN",
    "ok": true,
-   "detail": "18 cells"
+   "detail": "10 cells"
   },
   {
    "doc": "noarb",
    "item": "POOL ARM present: SSP",
    "ok": true,
-   "detail": "18 cells"
+   "detail": "10 cells"
   },
   {
    "doc": "noarb",
    "item": "POOL ARM present: PDS",
    "ok": true,
-   "detail": "9 cells"
+   "detail": "5 cells"
   },
   {
    "doc": "noarb",
    "item": "POOL ARM present: ALLPOOL",
    "ok": true,
-   "detail": "18 cells"
+   "detail": "10 cells"
   },
   {
    "doc": "noarb",
@@ -113,7 +113,19 @@
   },
   {
    "doc": "noarb",
-   "item": "all five boards present",
+   "item": "the CANDIDATE is on the page",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "noarb",
+   "item": "the historical progress boards are OFF the page (owner ruling)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "noarb",
+   "item": "the absence of the live reference is EXPLAINED on the page, not left blank",
    "ok": true,
    "detail": ""
   },

@@ -4854,6 +4854,50 @@ if _O30B_PREVIEW:
             _yy-=1
             if _floor is None and _y-_yy>40: break     # structural guard on a missing draft year
         return 1.0+_n
+    def o41_completed_absent(p,Y):
+        """THE COUNT OF **COMPLETED** UNPLAYED SEASONS INSIDE THE CURRENT RUN — i.e. how many whole,
+        finished seasons of this absence are actually on the record. The in-progress season is NOT
+        counted, because it has not finished and is not yet evidence of anything.
+
+        register v754 / audit finding F2 — WHY THIS OBJECT EXISTS. `o41_absence_depth` returns
+        `1 + n`, and the FIRST thing it adds to `n` is the in-progress season's elapsed fraction
+        `_o41_fe`. `_fEy` returns the calendar fraction for an ordinary row, but returns exactly
+        **1.0** for a row the engine's own `LTI_REGISTER.md` marks out. So a row whose ONLY unplayed
+        season is the in-progress one lands on depth 1 + 1.0 = **2.0000** and sails straight past the
+        `< 2.0` guard — and R3 charges him for an absence of one part-season. MEASURED on the
+        candidate's own dial line: of 116 rows whose only unplayed season is 2026, exactly 4 reach
+        depth >= 2 (all 4 on the LTI register, all 4 with fE = 1.000); not one non-LTI row does.
+        That contradicts this seat's own written promise — "day-0 and one-season-out rows are
+        untouched" — so the promise is now enforced in code rather than left to arithmetic.
+
+        THE FIX IS STRUCTURAL, NOT NUMERIC, AND THAT IS DELIBERATE. Nudging the guard to 2.01 would
+        clear these four rows by arithmetic accident and would silently re-break the moment the
+        season state, the register, or `_fEy` moved. The property actually promised is about
+        COMPLETED seasons, so the code now says COMPLETED seasons. NO NEW CONSTANT IS INTRODUCED and
+        the `< 2.0` guard is not moved by a hair.
+
+        IT REUSES THE DEPTH WALK'S OWN RULES so the two objects cannot drift apart: the same break
+        rule for the active `RL_O41_BREAK` mode (games > 0 binary / full credit fractional), the same
+        draft-year floor, the same structural 40-year guard. Each backward step the depth walk takes
+        is one completed season of the run, so this is that walk's step count."""
+        _pg={}
+        for _x in (p.get('scoring') or []):
+            _gg=float(_x.get('games') or 0.0)
+            if _gg>0.0: _pg[int(_x['year'])]=_gg
+        _y=int(Y); _floor=(int(p['year']) if p.get('year') else None)
+        # a live season that BREAKS the run leaves no run at all, hence no completed season inside it.
+        if _O41_BREAK=='fractional':
+            if o41_credit(float(_pg.get(_y,0.0)))>=1.0: return 0
+        elif _y in _pg: return 0
+        _k=0; _yy=_y-1
+        while _floor is None or _yy>_floor:
+            if _O41_BREAK=='fractional':
+                if o41_credit(float(_pg.get(_yy,0.0)))>=1.0: break
+            elif _yy in _pg: break
+            _k+=1
+            _yy-=1
+            if _floor is None and _y-_yy>40: break
+        return _k
     def o41_r3_take(p,Y,g,e,ped):
         """Board points to remove from the production leg so the TOTAL absence collection lands at
         F3's measured cost. Returns 0.0 for every row the law does not reach."""
@@ -4865,7 +4909,13 @@ if _O30B_PREVIEW:
         # ZERO BELOW DEPTH 2 BY CONSTRUCTION. F3 cannot speak about depth 1 — it is its own normaliser
         # — and the owner's words are "two seasons out". So day-0 rows and one-season-out rows are
         # untouched, which also keeps every printed day-0 price exactly where it was.
-        if _cx<2.0: return 0.0
+        #
+        # register v754 / audit F2 — THE PROMISE IS NOW STRUCTURAL AS WELL AS NUMERIC. The depth
+        # guard alone did not deliver "one-season-out rows are untouched": an LTI-register row whose
+        # only unplayed season is the IN-PROGRESS one lands on exactly 2.0000 and passed it. R3 is
+        # therefore reachable only when the run contains AT LEAST ONE **COMPLETED** unplayed season.
+        # A row whose only unplayed season is the in-progress one is never charged, AT ANY fE.
+        if _cx<2.0 or o41_completed_absent(p,Y)<1: return 0.0
         _tgt=o41_cost(_cx)
         if _tgt<=0.0: return 0.0
         _ac=o32_age_credit(p,Y,g)

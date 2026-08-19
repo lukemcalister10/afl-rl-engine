@@ -1,18 +1,18 @@
 {
  "md5": {
   "pre": "1270991c",
-  "binary": "fbf61d05",
-  "frac": "2eac9bc7",
-  "frac2": "2eac9bc7",
+  "binary": "81cf787b",
+  "frac": "e0e7f71c",
+  "frac2": "e0e7f71c",
   "identp": "374d4e44",
-  "chk": "fbf61d05"
+  "chk": "81cf787b"
  },
  "totals": {
   "pre": 666263,
-  "binary": 665180,
-  "frac": 649412
+  "binary": 665238,
+  "frac": 649455
  },
- "frac_minus_bin": -15768,
+ "frac_minus_bin": -15783,
  "n_diff": 110,
  "day0_gameless": 89,
  "day0_moved": 0,

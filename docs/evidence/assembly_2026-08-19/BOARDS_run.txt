@@ -14,8 +14,8 @@ ASSEMBLY BUILD — THE BOARDS AND THE LEVER STACK. NOTHING IS ADOPTED. THE CANDI
   V750_L5A  e1e3d97d      666,458      -85,971       -6,639       +1,508  + absence I1  the measured credit curve
   V750_L5B  b74a2a0e      666,275      -86,154       -6,822       +1,325  + absence I2  the graded reset (the F4 row swap WITHDRAWN at v750)
   V750_L5C  1270991c      666,263      -86,166       -6,834       +1,313  + absence I3  the injury stream (live board only)
-  V750_CAND ca73176e      654,031      -98,398      -19,066      -10,919  + absence I4  the R3 production fade   = THE CANDIDATE
-  V750_CAND2 ca73176e      654,031      -98,398      -19,066      -10,919  the determinism repeat of THE CANDIDATE
+  V754_CAND 81cf787b      665,238      -87,191       -7,859         +288  + absence I4  the R3 production fade   = THE CANDIDATE
+  V754_CAND2 81cf787b      665,238      -87,191       -7,859         +288  the determinism repeat of THE CANDIDATE
   live      88ce647f      752,429           +0      +79,332      +87,479  
 
 THE DIAL-CHAIN IDENTITIES — A-F1 and A-F2. These decide whether anything else is believable.
@@ -26,7 +26,7 @@ THE DIAL-CHAIN IDENTITIES — A-F1 and A-F2. These decide whether anything else 
   IDENT_K   total expected 673,097  got 673,097   OK
   IDENT_P   total expected 666,434  got 666,434   OK
   L0_R      total expected 664,950  got 664,950   OK
-  DETERMINISM (A-F4): IDENTICAL on the repeat — ca73176e. Did not fire.
+  DETERMINISM (A-F4): IDENTICAL on the repeat — 81cf787b. Did not fire.
 
   Every identity holds. A-F1, A-F2 and A-F4 did not fire.
 
@@ -44,9 +44,9 @@ is a subtraction and not an argument (the owner's own ask, register v742).
   V750_L5A     666,458       -3,527      168       29      139       -199  + absence I1  the measured credit curve
   V750_L5B     666,275         -183       32        6       26        -47  + absence I2  the graded reset (the F4 row swap WITHDRAWN at v750)
   V750_L5C     666,263          -12        2        1        1        -15  + absence I3  the injury stream (live board only)
-  V750_CAND    654,031      -12,232      124        0      124     -1,009  + absence I4  the R3 production fade   = THE CANDIDATE
+  V754_CAND    665,238       -1,025        9        0        9       -606  + absence I4  the R3 production fade   = THE CANDIDATE
 
-  THE WHOLE ARC R -> CANDIDATE: -10,919  (sum of the marginals: -10,919)
+  THE WHOLE ARC R -> CANDIDATE: +288  (sum of the marginals: +288)
   These agree by construction — the stack is a chain, not an attribution. Interactions are
   INSIDE each marginal (each lever is measured on top of the ones above it), which is the
   honest reading and the one the owner asked for.
@@ -55,9 +55,9 @@ THE ABSENCE PACKAGE ON ITS OWN (L4_SD -> CANDIDATE), sub-part by sub-part:
   I1 the credit curve              -3,527
   I2 the graded reset + F4           -183
   I3 the injury stream                -12
-  I4 the R3 production fade       -12,232
+  I4 the R3 production fade        -1,025
   --------------------------------------------
-  the package total               -15,954
+  the package total                -4,747
 
 ==========================================================================================================================
 MATURE-ROW MOVEMENT — BUILT vs EXPECTED. The prereg predicted B1 + the mature refit at about
@@ -65,8 +65,8 @@ MATURE-ROW MOVEMENT — BUILT vs EXPECTED. The prereg predicted B1 + the mature 
 are live. Reported loudly either way.
 ==========================================================================================================================
   mature rows on the board (age >= 24): 429   young rows: 375
-  vs IDENT_P  mature       -9,292 on  292 moved rows   ·   young       -3,111
-  vs L0_R     mature       -3,515 on  252 moved rows   ·   young       -7,404
+  vs IDENT_P  mature       -6,266 on  291 moved rows   ·   young       +5,070
+  vs L0_R     mature         -489 on  249 moved rows   ·   young         +777
   THE MATURE REFIT LEVER ALONE (V750_L2C15 -> V750_L3MAT): -521 on 175 moved mature rows
   BUILT vs EXPECTED: the -7,064 estimate was for B1 + refit against a different base and
   WITHOUT the six other levers. The built refit-alone number above is the like-for-like one.

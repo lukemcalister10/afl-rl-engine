@@ -2,14 +2,14 @@
  "md5": {
   "pre": "1270991c",
   "old": "ca73176e",
-  "new": "fbf61d05"
+  "new": "81cf787b"
  },
  "totals": {
   "pre": 666263,
   "old": 654031,
-  "new": 665180
+  "new": 665238
  },
- "give_back": 11149,
+ "give_back": 11207,
  "n_playing_charged_new": 0,
  "day0_gameless": 89,
  "day0_moved": 0,
