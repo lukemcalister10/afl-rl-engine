@@ -25,7 +25,7 @@ ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce prin
   ASOF 2024 done
   ASOF 2025 done
   ASOF 2026 done
-exec OK. store=cb38ef11 engine=783cdbbc v0surf=4405cba2b42fb96f50496ec791cb806c frozen=True
+exec OK. store=cb38ef11 engine=2c263d22 v0surf=4405cba2b42fb96f50496ec791cb806c frozen=True
 records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
 #338 windows extended: 698 of 2648 records
 #338 band reading differs under the slid pick on 4 records: ['jack-lonie', 'jack-steele', 'jake-kolodjashnij', 'jarman-impey']

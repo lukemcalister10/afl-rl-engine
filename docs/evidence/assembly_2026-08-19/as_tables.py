@@ -35,7 +35,7 @@ YEARS = list(range(0, 8))
 ARM_TYPES = ['RD', 'MSD', 'UNR', 'IRE', 'PDA', 'PDN', 'SSP', 'PDS']
 CARRY = [1.140, 1.300, 1.482, 1.689, 1.925, 2.195, 2.502]
 
-LABELS = [('ASMCAND', '*** THE ASSEMBLY CANDIDATE ca73176e — THE BOARD UNDER REVIEW ***'),
+LABELS = [('ASMCAND', '*** THE ASSEMBLY CANDIDATE fbf61d05 — THE BOARD UNDER REVIEW ***'),
           ('R20A', 'R = R20A 7f88f509 — the owner\'s reference'),
           ('PBUILT', 'ORDER P 374d4e44 — the assembly base'),
           ('OKRULED', 'ORDER K f3101883 — the base, carrying the DEFECTIVE blind eta charge'),
