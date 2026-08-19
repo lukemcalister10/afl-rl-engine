@@ -1,0 +1,189 @@
+======================================================================================================================
+ORDER S READ-ONLY — F1. THE CREDIT CURVE: WHAT A LOW-GAMES SEASON ACTUALLY PREDICTS.
+======================================================================================================================
+NO BOARD IS BUILT. NO ENGINE FILE IS EDITED. NO DIAL IS ADDED. NOTHING IS ADOPTED. NO FIX IS
+PROPOSED. The injury-stream design is OUT OF SCOPE by instruction: every curve below is a
+function of the OBSERVABLE (games) with no absence-cause term in it, so a later injured/
+unexplained split can re-cut this same population by cause without re-deriving anything here.
+ruler : the house S4 delivered-value ruler, md5 241842f61ddd3c486f04f201a7efcce9
+
+----------------------------------------------------------------------------------------------------------------------
+1 · THE POPULATION, AND THE CENSORING RULE THAT WAS FIXED BEFORE THE RUN
+----------------------------------------------------------------------------------------------------------------------
+   ND entrants from 2005, positive v0, force-majeure keys excluded, on the #338 minimum-listing
+   basis the matrix is emitted on. CENSORING: the entry year must be 2019 or earlier so at least
+   FOUR seasons after depth 2 sit inside the observed window (to 2025). A six-season sensitivity at
+   entry year 2017 or earlier is run in section 6.
+
+   depth-2 rows: 1068 players.  Entry years 2005 to 2019.
+   games in season 1: min 0  median 2  max 26  ·  zero-game rows 463 (43.4%)
+
+----------------------------------------------------------------------------------------------------------------------
+2 · THE CONTROL — 30A-2's OWN BUCKETS, ON THIS SEAT'S RULER
+----------------------------------------------------------------------------------------------------------------------
+   30A-2 T4, listed-conditioned, depth 2, reports D(k,2) = 0.5684 / 0.9602 / 0.8479 / 1.4213 /
+   1.6242 over 0 / 1-2 / 3-5 / 6-10 / 11+, on n = 462 / 133 / 145 / 161 / 239, and its own reading
+   was that the sequence is NOT monotone. THE LEVELS WILL NOT MATCH — different ruler, different
+   normaliser, different censoring. Only the SHAPE is being checked.
+
+   games          n    R(g) here 30A-2 D(k,2)     c_hat here 90% CI of c_hat         
+   0            463       0.3290       0.5684         0.0000 [ +0.0000,  +0.0000]
+   1-2          123       0.5601       0.9602         0.3066 [ +0.0885,  +0.5770]
+   3-5          130       0.4241       0.8479         0.1262 [ -0.0732,  +0.3477]
+   6-10         143       0.7788       1.4213         0.5967 [ +0.3550,  +0.9200]
+   11+          209       1.0828       1.6242         1.0000 [ +1.0000,  +1.0000]
+
+   monotone increasing across the five buckets?   this seat: NO   ·   30A-2: NO
+   THE SHAPES AGREE ON THE THING THAT MATTERS: the 0 -> 1-2 step is large on both rulers, and
+   neither is monotone across all five buckets.
+
+----------------------------------------------------------------------------------------------------------------------
+3 · THE HEADLINE — THE MEASURED CREDIT CURVE AGAINST THE WIRED STEP, PER INTEGER GAME
+----------------------------------------------------------------------------------------------------------------------
+   c_hat = 0 means a season of g games predicts exactly like a season of NO games.
+   c_hat = 1 means it predicts exactly like a season of eleven or more.
+   c_wired is what the engine actually credits: min(1, g/2).
+
+   games         n        R(g)       c_hat 90% CI of c_hat            c_wired wired - meas
+   0           463      0.3290      0.0000 [ +0.0000,  +0.0000]        0.00      0.0000
+   1            59      0.4260      0.1287 [ -0.1225,  +0.4050]        0.50      0.3713
+   2            64      0.6837      0.4706 [ +0.1479,  +0.8766]        1.00      0.5294
+   3            52      0.3835      0.0724 [ -0.1674,  +0.3531]        1.00      0.9276
+   4            38      0.3849      0.0743 [ -0.2033,  +0.4100]        1.00      0.9257
+   5            40      0.5140      0.2455 [ -0.1331,  +0.7561]        1.00      0.7545
+   6            26      0.7595      0.5711 [ +0.1451,  +1.0858]        1.00      0.4289
+   7            30      0.4986      0.2250 [ -0.1060,  +0.6337]        1.00      0.7750
+   8            31      0.6696      0.4519 [ +0.0817,  +0.8878]        1.00      0.5481
+   9            25      1.1069      1.0320 [ +0.4388,  +1.7962]        1.00     -0.0320
+   10           31      0.9106      0.7716 [ +0.1858,  +1.5523]        1.00      0.2284
+   11+         209      1.0828      1.0000 [ +1.0000,  +1.0000]        1.00      0.0000
+
+   THE THREE PREREGISTERED QUESTIONS, SCORED ON THE g = 2 CELL:
+     c_hat(2) = 0.4706, 90% CI [0.1479, 0.8766], on n = 64.
+     F1-P1  the wired step says c(2) = 1.00. Is 1.0 inside the interval? NO — F1-P1 did not fire
+     F1-P3  is c_hat(2) above 0.5 (closer to a ten-game season than to a zero-game one)? NO — F1-P3 FIRED
+            and is 0.5 inside the interval? YES — the two readings cannot be separated
+
+     F1-P2  is the wired step ABOVE the measured curve everywhere over 3 <= g <= 10?
+            cells where the measured curve reaches or passes the wired step: 1 of 8 — F1-P2 FIRED
+     F1-P4  is the per-integer curve monotone? NO — F1-P4 did not fire, and that was predicted as NOISE
+
+----------------------------------------------------------------------------------------------------------------------
+3b · THE SAME CURVE, READABLE — COARSER CELLS, AND THE HOUSE MONOTONICITY GUARD
+----------------------------------------------------------------------------------------------------------------------
+   The per-integer cells hold 25 to 64 players each and bounce. Two summaries are printed. NEITHER
+   IS A PROPOSED SCHEDULE — they are ways of reading the point estimates above, nothing more.
+
+   games          n       c_hat 90% CI                      c_wired wired - meas
+   0            463      0.0000 [  +0.0000,   +0.0000]       0.00       0.0000
+   1             59      0.1287 [  -0.1225,   +0.4050]       0.50       0.3713
+   2             64      0.4706 [  +0.1479,   +0.8766]       1.00       0.5294
+   3-4           90      0.0732 [  -0.1215,   +0.2950]       1.00       0.9268
+   5-6           66      0.3738 [  +0.0746,   +0.7568]       1.00       0.6262
+   7-8           61      0.3403 [  +0.0780,   +0.6395]       1.00       0.6597
+   9-10          56      0.8879 [  +0.4413,   +1.4671]       1.00       0.1121
+   11+          209      1.0000 [  +1.0000,   +1.0000]       1.00       0.0000
+
+   THE HOUSE MONOTONICITY GUARD (pool-adjacent-violators, increasing — ORDER P's own instrument)
+   applied to the per-integer point estimates, with a 400-draw band. A NON-DECREASING reading is
+   imposed because a season of more games cannot sensibly predict less; the RAW points above are
+   the measurement and this is the reading.
+
+   games      c_hat iso 90% band                    c_wired  wired - iso
+   0             0.0000 [  -0.0174,   +0.0000]       0.00       0.0000
+   1             0.1287 [  -0.0174,   +0.3068]       0.50       0.3713
+   2             0.2383 [  +0.0296,   +0.4184]       1.00       0.7617
+   3             0.2383 [  +0.0327,   +0.4184]       1.00       0.7617
+   4             0.2383 [  +0.0451,   +0.4243]       1.00       0.7617
+   5             0.2455 [  +0.0816,   +0.5536]       1.00       0.7545
+   6             0.3857 [  +0.1915,   +0.6482]       1.00       0.6143
+   7             0.3857 [  +0.1945,   +0.6521]       1.00       0.6143
+   8             0.4519 [  +0.2300,   +0.8608]       1.00       0.5481
+   9             0.8879 [  +0.4645,   +1.1172]       1.00       0.1121
+   10            0.8879 [  +0.5182,   +1.1242]       1.00       0.1121
+   11+           1.0000 [  +1.0000,   +1.1242]       1.00       0.0000
+
+   Summed over g = 1 to 10 the wired step sits 5.41 credit-units above the guarded curve — an
+   average of 0.54 per games level, on a scale where 1.0 is the whole distance from a zero-game
+   season to an eleven-plus one.
+
+----------------------------------------------------------------------------------------------------------------------
+4 · THE CUTS — BY POSITION CLASS, BY ENTRY-AGE BAND, AND PER POSITION WHERE THE SAMPLE ALLOWS
+----------------------------------------------------------------------------------------------------------------------
+   Every cut re-anchors on its OWN zero-games and eleven-plus cells, so a group is compared
+   against itself and a level difference between groups cannot leak into the credit scale.
+
+   group                     n  g=0         g=1         g=2         g=3-5       g=6-10      g=11+      
+                                (c_hat / n in each cell)
+   ALL                    1068   0.000/463   0.129/59    0.471/64    0.126/130   0.597/143   1.000/209   | c_hat(2) 90% CI [+0.148, +0.877]
+   TALL                    299   0.000/159  -0.083/19    0.590/21   -0.199/30    0.478/45    1.000/25    | c_hat(2) 90% CI [+0.037, +1.649]
+   SMALL                   769   0.000/304   0.233/40    0.377/43    0.246/100   0.620/98    1.000/184   | c_hat(2) 90% CI [+0.013, +0.823]
+   entry age 18            933   0.000/421   0.222/54    0.351/57    0.212/112   0.676/120   1.000/169   | c_hat(2) 90% CI [-0.056, +0.807]
+   entry age 19             58   0.000/28   -0.600/1     2.038/4    -0.340/10    0.803/10    1.000/5     | c_hat(2) 90% CI [-3.862, +10.161]
+   entry age 20+            77   0.000/14   -0.119/4     0.936/3     0.025/8     0.442/13    1.000/35    | c_hat(2) 90% CI [+0.167, +2.229]
+   KPD                     118   0.000/54   -0.031/7     1.151/10   -0.094/14    0.803/19    1.000/14    | c_hat(2) 90% CI [+0.068, +3.734]
+   KPF                     121   0.000/65   -0.114/10    0.184/8    -0.103/11    0.231/17    1.000/10    | c_hat(2) 90% CI [-0.514, +1.526]
+   RUCK                     60  -0.000/40   -2.543/2    -1.664/3     2.057/5    -1.681/9     1.000/1     | c_hat(2) 90% CI [-17.156, +9.752]
+   MID                     316   0.000/124   0.137/20    0.048/20    0.114/36    0.722/39    1.000/77    | c_hat(2) 90% CI [-0.296, +0.327]
+   SD                      228   0.000/98    0.234/9     0.670/13    0.127/32    0.689/28    1.000/48    | c_hat(2) 90% CI [-0.025, +2.038]
+   SF                      225   0.000/82    0.493/11    0.645/10    0.664/32    0.296/31    1.000/59    | c_hat(2) 90% CI [-0.879, +2.675]
+
+   F1-P5  do any two groups' c_hat(2) intervals fail to overlap?
+     NO — F1-P5 did not fire. No pair of groups separates at g = 2. The credit a token season
+     buys is not measurably different by class, by entry age, or by position.
+
+----------------------------------------------------------------------------------------------------------------------
+5 · DEPTHS 3 AND 4 — SECONDARY, AND THE PRIOR GAMES ARE PRINTED SO NOTHING IS MISREAD
+----------------------------------------------------------------------------------------------------------------------
+   At depth 3 and 4 the season being scored is not the player's only prior season, so the cell is
+   a CUMULATIVE object, not a per-season one. The median prior games are printed for each cell.
+
+   -- depth 3, n = 1004 players, entry year 2018 or earlier
+   games          n        R(g)       c_hat    med prior g
+   0            289      0.1288      0.0000            0.0
+   1-2          101      0.3615      0.2161            0.0
+   3-5          119      0.5855      0.4241            2.0
+   6-10         159      0.6088      0.4458            3.0
+   11+          336      1.2056      1.0000            9.0
+
+   -- depth 4, n = 926 players, entry year 2017 or earlier
+   games          n        R(g)       c_hat    med prior g
+   0            255      0.1019      0.0000            0.0
+   1-2           84      0.2252      0.1063            6.0
+   3-5           79      0.8211      0.6201            8.0
+   6-10         142      0.5098      0.3517           10.0
+   11+          366      1.2617      1.0000           23.0
+
+----------------------------------------------------------------------------------------------------------------------
+6 · SENSITIVITIES — THE CENSORING CUTOFF, AND THE POOLED STATISTIC INSTEAD OF THE MEAN
+----------------------------------------------------------------------------------------------------------------------
+   F4 found that on a thin cell the MEAN and the POOLED aggregate can disagree. The same check is
+   run here rather than assumed away.
+
+   reading                              n       g=0       g=1       g=2     g=3-5     g=11+
+   primary (mean, entry <= 2019)     1068    0.0000    0.1287    0.4706    0.1262    1.0000
+   pooled aggregate, same rows       1068    0.0000    0.1142    0.6045    0.0937    1.0000
+   mean, entry <= 2017 (6 seasons)     926    0.0000    0.0807    0.4800    0.1046    1.0000
+   pooled, entry <= 2017              926    0.0000    0.0415    0.6623    0.0134    1.0000
+
+   the wired step at the same points:      0.00      0.50      1.00      1.00      1.00
+
+----------------------------------------------------------------------------------------------------------------------
+7 · THE RETENTION CURVE AT ZERO GAMES — RE-MEASURED HERE, FOR F3 TO CALIBRATE AGAINST
+----------------------------------------------------------------------------------------------------------------------
+   D_measured(c) = E[V_from_c / v0 | zero games in every season to depth c-1] / E[V_from_1 / v0]
+   over the whole cohort. This is the same washout evidence the wired fade was fitted on, but
+   re-measured on the house ruler with an interval, so F3 does not read the schedule back off
+   itself. THE LEVELS WILL NOT MATCH THE WIRED ROW — different ruler. Only the cost is used.
+
+   baseline R(1) over the whole cohort: 0.5199 on 1068 players
+
+   depth c        n         R_c    D_measured 90% CI                      cost 1 - D
+   2            463      0.3290        0.6328 [  +0.4874,   +0.7989]        0.3672
+   3            242      0.1233        0.2371 [  +0.1641,   +0.3197]        0.7629
+   4            161      0.0581        0.1117 [  +0.0530,   +0.1784]        0.8883
+   5            132      0.0285        0.0549 [  +0.0061,   +0.1284]        0.9451
+
+   THE WIRED ND ROW, for the shape comparison only: D(2) 0.5583  D(3) 0.2748  D(4) 0.3973.
+   F3 uses the COST column and its interval, never the wired row.
+

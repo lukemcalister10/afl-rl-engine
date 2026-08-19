@@ -1,0 +1,117 @@
+======================================================================================================================
+ORDER S READ-ONLY — F4. THE ND FADE SCHEDULE INVERSION. PROVENANCE AND SAMPLE, NOTHING ELSE.
+======================================================================================================================
+NO SMOOTHING IS PROPOSED. NO REPLACEMENT ROW IS DERIVED. NO ENGINE FILE IS EDITED. NOTHING IS
+ADOPTED. Every number below is READ out of a published artifact and is quoted as filed.
+
+----------------------------------------------------------------------------------------------------------------------
+1 · THE WIRED ROW, AND THAT IT IS THE ARTIFACT'S ROW
+----------------------------------------------------------------------------------------------------------------------
+   engine literal O31_FADE_D              {1: 1.0, 2: 0.558277524, 3: 0.2747857941, 4: 0.3972708511}
+   FADE_31F.json::wired                   {1: 1.0, 2: 0.558277524, 3: 0.2747857941, 4: 0.3972708511}
+   ASSERTED equal at every depth. Falsifier F4-A1 did not fire.
+
+   THE THREE VINTAGES OF THE SAME ROW, all published in FADE_31F.json:
+   vintage                                 D(1)      D(2)      D(3)      D(4) | depth 3 -> depth 4    
+   ORDER A / R1, the previously ruled row    1.0000    0.5502    0.2628    0.3460 | INVERTS (+0.0832)     
+   ORDER 31-F re-derived — LIVE / WIRED    1.0000    0.5583    0.2748    0.3973 | INVERTS (+0.1225)     
+   ORDER 30A-2 L-B as filed              1.0000    0.5684    0.3600    0.3073 | monotone down (-0.0527)
+
+----------------------------------------------------------------------------------------------------------------------
+2 · n PER DEPTH CELL — THE LIVE ROW'S OWN POPULATION (FADE_31F.json::cells)
+----------------------------------------------------------------------------------------------------------------------
+   depth         n   n_ever   n_zero       mean     median        p25        p75     POOLED tail share
+   1          1142     1021      121     0.9955     0.1411     0.0006     1.1954     1.0583     0.0999
+   2           464      343      121     0.5558     0.0028     0.0000     0.2993     0.5812     0.0807
+   3           100       67       33     0.2735     0.0013     0.0000     0.1293     0.2438     0.1019
+   4            11        9        2     0.3955     0.0807     0.0273     0.3588     0.2468     0.3262
+   5             2        2        0     0.6991     0.6991     0.4338     0.9644     0.7820     0.5458
+   6             1        1        0     1.4018     1.4018     1.4018     1.4018     1.4018     0.0923
+
+   THE WIRED VALUE IS THE MEAN, NORMALISED BY THE DEPTH-1 MEAN. Verified here rather than assumed:
+     depth 2 : cell mean 0.5557640033 / raw1 0.9954977219 = 0.5582775240   wired 0.5582775240   |diff| 0.00e+00
+     depth 3 : cell mean 0.2735486321 / raw1 0.9954977219 = 0.2747857941   wired 0.2747857941   |diff| 0.00e+00
+     depth 4 : cell mean 0.3954822272 / raw1 0.9954977219 = 0.3972708511   wired 0.3972708511   |diff| 0.00e+00
+
+   FALSIFIER F4-P1 — is the depth-4 cell thin (under 30 observations)?
+     depth 4 holds 11 observations, of which 9 ever delivered anything and 2 are exact zeros.
+     VERDICT: THIN — F4-P1 did NOT fire
+
+   FALSIFIER F4-P4 — does every published statistic on the depth-4 cell invert in the same direction?
+   statistic           depth 3      depth 4   difference direction               
+   mean                 0.2735       0.3955      +0.1219 INVERTS (4 above 3)     
+   median               0.0013       0.0807      +0.0794 INVERTS (4 above 3)     
+   p25                  0.0000       0.0273      +0.0273 INVERTS (4 above 3)     
+   p75                  0.1293       0.3588      +0.2295 INVERTS (4 above 3)     
+   pooled               0.2438       0.2468      +0.0030 INVERTS (4 above 3)     
+     the POOLED aggregate — the sum of delivered value over the sum of v0 on the same rows — reads
+     0.2438 at depth 3 and 0.2468 at depth 4, a difference of +0.0030. On that statistic the inversion is
+     2.5% of the mean-based inversion of +0.1219.
+     VERDICT: F4-P4 FIRED — every statistic inverts
+
+----------------------------------------------------------------------------------------------------------------------
+3 · THE COMPARISON NAMED IN ADVANCE — LISTED-CONDITIONED AGAINST UNCONDITIONAL, SAME DEPTHS
+----------------------------------------------------------------------------------------------------------------------
+   ORDER 30A-2 published all three readings on one population. The L-B floor is the one the live
+   engine row was re-derived on. n comes from 30A-2's own T4 zero-games cells.
+
+   reading                            D(1)     D(2)     D(3)     D(4) | depth 3 -> 4              
+   UNCONDITIONAL (ORDER 30A)        1.0000   0.5684   0.2143   0.1052 | monotone down (-0.1091)   
+   L-A reconstruction as filed      1.0000   0.5684   0.3435   0.4630 | INVERTS (+0.1195)         
+   L-B outcome-blind floor          1.0000   0.5684   0.3600   0.3073 | monotone down (-0.0527)   
+
+   n at each depth                          depth 2  depth 3  depth 4
+   UNCONDITIONAL (ORDER 30A)                    462      234      154
+   L-A reconstruction as filed                  462      146       35
+   L-B outcome-blind floor                      462      100       11
+
+   READ IT IN ONE LINE. The conditioning that creates the "still listed after four sat years"
+   population is the SAME operation that empties the cell: depth 4 goes from 154 rows unconditioned
+   to 35 under L-A and 11 under L-B. And the UNCONDITIONAL row is strictly monotone DOWN at every
+   depth — 1.0000, 0.5684, 0.2143, 0.1052 — with NO inversion anywhere.
+
+----------------------------------------------------------------------------------------------------------------------
+4 · THE SAME ELEVEN ROWS, TWO v0 BASES — THE DEPTH-4 NUMBER IS NOT STABLE
+----------------------------------------------------------------------------------------------------------------------
+   ORDER 31-F re-derived the fade on HEAD-FIXED v0. The population did not change materially:
+   the L-B depth-3 and depth-4 cells hold 100 and 11 rows in 30A-2 and 100 and 11 in 31-F.
+
+   v0 basis                                       D(3)       D(4) depth 3 -> depth 4        
+   30A-2, as filed                              0.3600     0.3073 monotone down (-0.0527)   
+   31-F, head-fixed v0 — THIS IS THE LIVE ROW     0.2748     0.3973 INVERTS (+0.1225)         
+
+   ON ESSENTIALLY THE SAME ELEVEN ROWS, changing the v0 basis moves D(4) by +29.3% and FLIPS the
+   ordering against depth 3. FADE_31F.json's own drift column records it: 0.0513 at depth 4 against
+   0.0120 at depth 3 and 0.0081 at depth 2 — the drift GROWS as the cell empties.
+
+   THE DEEPER CELLS, printed because they show where this ends: depth 5 holds 2 rows and depth 6
+   holds 1, and their re-derived values are 0.7023 and 1.4081 — ABOVE 1.0 at depth 6, i.e. a player
+   who sat six years is measured as delivering MORE than his entry price. The schedule is HELD FLAT
+   from depth 4 precisely so those two rows never price anything, and that is the engine's own
+   O31_FADE_FLAT_FROM = 4.
+
+----------------------------------------------------------------------------------------------------------------------
+5 · IS A CONFIDENCE INTERVAL RECOVERABLE FROM THE PUBLISHED ARTIFACTS? — NO, AND HERE IS WHAT IS
+----------------------------------------------------------------------------------------------------------------------
+   The per-observation ratios behind each depth cell are NOT published. FADE_31F.json files the
+   summary statistics only, and SITTER_DISCOUNT_TABLE_2.json's per-player block carries the
+   career aggregates but not the per-depth V_from_N share. So a bootstrap CI on the depth-4 cell
+   CANNOT be recomputed from the artifacts, and this seat is not inventing one.
+
+   WHAT IS RECOVERABLE, distribution-free, on the depth-4 cell as filed:
+     n = 11, of which 2 are exact zeros. The interquartile range is [0.0273, 0.3588] and the median
+     is 0.0807. The MEAN is 0.3955 — 4.9 times the median, so the cell is carried by its upper tail.
+     Its tail share is 0.3262 against 0.1019 at depth 3 and 0.0807 at depth 2, so the depth-4 estimate
+     also leans hardest of the three on PROJECTED value rather than observed value.
+
+     With eleven observations a 90%% interval on a mean has, at best, its limits set by single
+     observations. The published p25 and p75 are the 3rd and 9th of eleven ordered values.
+     Any interval this seat printed would be a statement about three data points.
+
+   ORDER 30A-2 SCORED THIS ITSELF, in its own prereg, and it is quoted rather than re-discovered:
+     Q5    HELD      n_LB(5) = 2 ; n_LB(6) = 1 (expected 0)
+     Q6    BREACHED  n_LB(3) = 100 ; n_LB(4) = 11 (30A unconditional 234 / 154)
+     Q10   HELD      extrapolated_L-B = True (deepest resolved depth 4)
+
+
+wrote FOLLOWUP_F4.json and FOLLOWUP_F4_out.txt
