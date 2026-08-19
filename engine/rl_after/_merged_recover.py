@@ -591,6 +591,23 @@ _O41_R3=os.environ.get('RL_O41_R3','0')!='0'
 # NOT applied to the I1 credit, which is a participation weight.
 _O41_RAMP=os.environ.get('RL_O41_RAMP','0')!='0'
 _O41_RAMP_P=1.5                                  # D12's own exponent. Not a new constant.
+# RL_O41_BREAK — HOW A PLAYED SEASON BREAKS THE R3 CURRENT-ABSENCE RUN.
+#   'binary'     (default) any season with games > 0 breaks the run outright.
+#   'fractional' a season contributes (1 - credit(games)) of its own season-weight to the run, and
+#                only a season that fully credits (credit = 1, i.e. 11+ games) stops the walk.
+# WHY THE VARIANT EXISTS. The binary break is too crude late in a season: measured on the built
+# board, ONE 2026 game was worth +560 board points of shielding on a single row, and 63 rows have
+# their run broken by a season of two games or fewer. The fractional break reuses THE SAME F1 GUARDED
+# CREDIT CURVE the engine already carries for I1 — one measured object, two consumers, NO NEW
+# CONSTANT — so a one-game season leaves about 87% of the run intact while a full season still
+# breaks it outright.
+_O41_BREAK=(os.environ.get('RL_O41_BREAK','binary').strip().lower() or 'binary')
+if _O41_BREAK not in ('binary','fractional'):
+    raise SystemExit('ORDER 41 HALT: RL_O41_BREAK=%r. Only "binary" (the wired rule) and '
+                     '"fractional" (the F1-credit-graded rule) are priced.'%_O41_BREAK)
+if _O41_BREAK=='fractional' and not _O41_R3:
+    raise SystemExit('ORDER 41 HALT: RL_O41_BREAK=fractional but RL_O41_R3 is unset. The break rule '
+                     'shapes a collector that is not switched on.')
 def _o41_fe(Y,p=None):
     """The in-progress season's contribution to an ABSENCE DEPTH clock. Dial off => the linear fE the
     engine has always used, byte for byte."""
@@ -4788,12 +4805,38 @@ if _O30B_PREVIEW:
         THE RULE NOW: walk BACK from Y. ANY season with games > 0 BREAKS THE RUN. A row playing this
         season has a run of zero and pays nothing, whatever his history. Nothing else about the R3
         sizing changes."""
-        _pl=set()
+        _pl=set(); _pg={}
         for _x in (p.get('scoring') or []):
-            if _x.get('games') and float(_x['games'] or 0.0)>0.0: _pl.add(int(_x['year']))
+            _gg=float(_x.get('games') or 0.0)
+            if _gg>0.0:
+                _pl.add(int(_x['year'])); _pg[int(_x['year'])]=_gg
         _y=int(Y)
         # A row cannot be absent before he was drafted: the walk stops at his draft year.
         _floor=(int(p['year']) if p.get('year') else None)
+        # ---- RL_O41_BREAK=fractional — THE GRADED RUN-BREAK ------------------------------------
+        # A season contributes (1 - credit(games)) of its OWN season-weight to the current run, and
+        # only a season that FULLY credits (credit = 1, i.e. 11+ games) stops the walk. The credit is
+        # o41_credit — THE SAME F1 GUARDED CURVE I1 already uses. ONE MEASURED OBJECT, TWO CONSUMERS,
+        # NO NEW CONSTANT. A one-game season credits 0.1287 and so leaves ~87% of that season's
+        # absence standing; a sixteen-game season credits 1.0 and breaks the run outright.
+        # WHY A GRADED BREAK IS THE RIGHT SHAPE HERE: the run is a DEPTH, and "how much of a season
+        # did he miss" is exactly what one minus the played-credit measures.
+        if _O41_BREAK=='fractional':
+            _n=0.0
+            _gl=float(_pg.get(_y,0.0))
+            if not (_O41_INJ and o41_injured(p)):
+                _n+=max(0.0,1.0-o41_credit(_gl))*float(_o41_fe(Y,p) or 0.0)
+            if o41_credit(_gl)>=1.0: return 1.0        # a full live season still breaks it outright
+            _yy=_y-1
+            while _floor is None or _yy>_floor:
+                _gy=float(_pg.get(_yy,0.0))
+                _c=o41_credit(_gy)
+                if _c>=1.0: break                      # a FULL season breaks the run outright
+                _n+=max(0.0,1.0-_c)                    # a partial season leaves the remainder standing
+                _yy-=1
+                if _floor is None and _y-_yy>40: break
+            return 1.0+_n
+        # ---- the wired binary rule ---------------------------------------------------------------
         # HE IS PLAYING NOW -> the current run is zero -> depth 1 -> no take. This one line is the fix.
         if _y in _pl: return 1.0
         _n=0.0

@@ -1,0 +1,84 @@
+==========================================================================================================================
+THE R3 RUN-BREAK — BINARY (wired) vs FRACTIONAL (the variant). PRICED, NOT ADOPTED.
+==========================================================================================================================
+
+  before R3 at all             1270991c    666,263
+  R3, BINARY break  (CANDIDATE) fbf61d05    665,180
+  R3, FRACTIONAL break         2eac9bc7    649,412
+
+  R3 marginal, BINARY    : -1,083 on 12 rows
+  R3 marginal, FRACTIONAL: -16,851 on 121 rows
+  *** FRACTIONAL vs BINARY: -15,768 board points, 110 rows differ ***
+
+  IDENTITIES:
+    every ORDER 41 dial OFF          -> 374d4e44  reproduces ORDER P 374d4e44
+    the break dial UNSET (binary)     -> fbf61d05  byte-identical to the candidate fbf61d05
+    determinism, fractional x2        -> IDENTICAL — 2eac9bc7
+
+  DAY-0: 89 truly gameless board rows, 0 moved by the break rule   <-- must be 0 for 89/89
+
+==========================================================================================================================
+THE NAMED ROWS — CONSEQUENCES, NEVER TARGETS
+==========================================================================================================================
+  player                g2026   credit    pre-R3    BINARY   FRACTNL  frac-bin  note
+  Will Brodie               1   0.1287       767       767       147      -620  the shield case — 1 game
+  Toby Conway               0   0.0000      1066       460       460        +0  genuinely absent
+  Harry Barnett             0   0.0000       674       422       422        +0  genuinely absent
+  Mitchell Edwards         16   1.0000      1326      1326      1326        +0  returned, 16 games
+  Noah Mraz                 4   0.2383      2029      2029       778     -1251  returned, 4 games
+  Jedd Busslinger           8   0.4519       801       801       403      -398  returned, 8 games
+  Nick Madden               7   0.3857      1064      1064       117      -947  INTERMEDIATE — 7 games, credit ~0.39
+  Taylor Goad               2   0.2383       728       728       437      -291  token games, small production leg
+  Dante Visentini          13   1.0000       807       807       807        +0  token-ish, 13 games
+
+  STRIPPED / RESTORED, read off the two boards (stripped = priced BELOW the pre-R3 board):
+  player                       BINARY     FRACTIONAL   changes?
+  Will Brodie                restored       STRIPPED   ***
+  Toby Conway                STRIPPED       STRIPPED   
+  Harry Barnett              STRIPPED       STRIPPED   
+  Mitchell Edwards           restored       restored   
+  Noah Mraz                  restored       STRIPPED   ***
+  Jedd Busslinger            restored       STRIPPED   ***
+  Nick Madden                restored       STRIPPED   ***
+  Taylor Goad                restored       STRIPPED   ***
+  Dante Visentini            restored       restored   
+
+==========================================================================================================================
+THE EXPLOIT-SAFETY LOGIC, VERIFIED ON THE ACTUAL TAKES
+==========================================================================================================================
+The claim is that a token-games row cannot shield much BECAUSE its production leg (rho x e) is
+small — R3's take is capped at the production leg, so a thin career has little to strip. The takes
+below are the actual board points R3 removes from each row under each rule.
+
+  player                g2026   take BIN  take FRAC   reading
+  Taylor Goad               2          0        291   take stays small — thin production leg
+  Dante Visentini          13          0          0   take stays small — thin production leg
+  Will Brodie               1          0        620   LARGE take
+  Nick Madden               7          0        947   LARGE take
+
+==========================================================================================================================
+THE SHIELD POPULATION — rows whose run is broken by a season of <= 2 games
+==========================================================================================================================
+  rows in the shield population: 63
+  R3 take on them, BINARY    : 356 board points
+  R3 take on them, FRACTIONAL: 3,813 board points
+  *** THE FRACTIONAL RULE RECOVERS 3,457 BOARD POINTS OF SHIELDED TAKE ON THIS POPULATION ***
+
+  the largest individual recoveries:
+  player                  g2026    pre-R3    BINARY   FRACTNL   recovered
+  Will Brodie                 1       767       767       147        -620
+  Peter Ladhams               2       438       438       139        -299
+  Taylor Goad                 2       728       728       437        -291
+  Oscar Ryan                  2       419       419       182        -237
+  Jesse Dattoli               1       484       484       285        -199
+  Charlie Edwards             2       468       468       284        -184
+  Tom Doedee                  0       211       211        32        -179
+  Lachlan Smith               2       320       320       148        -172
+  Tom Gross                   2       418       418       259        -159
+  George Stevens              2       214       214        65        -149
+  Max Ramsden                 2       199       199        53        -146
+  Vigo Visentini              1       295       295       188        -107
+
+WHOLE-BOARD: 110 rows differ, 110 down and 0 up under the fractional rule.
+Every mover is DOWN by construction unless a row's run shortens — the fractional rule can only
+lengthen a run relative to a binary break, never shorten it.

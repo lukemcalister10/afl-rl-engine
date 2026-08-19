@@ -684,6 +684,98 @@ is an output of the machinery the ramp feeds.
 
 ---
 
+## 6e · THE R3 RUN-BREAK — BINARY vs FRACTIONAL, PRICED SIDE BY SIDE
+
+**The defect being priced (§6c item 2):** under the wired **binary** rule any season with games > 0
+breaks the absence run outright, so **one 2026 game was worth +560 board points of shielding** and 63
+rows had their run broken by a season of two games or fewer.
+
+**The variant.** `RL_O41_BREAK=fractional`: a season contributes **(1 − credit(games))** of its own
+season-weight to the run, and only a season that **fully** credits (11+ games) stops the walk. The
+credit is `o41_credit` — **the same F1 guarded curve I1 already carries. One measured object, two
+consumers, NO NEW CONSTANT.**
+
+| board | md5 | total | R3 marginal | rows |
+|---|---|---:|---:|---:|
+| before R3 | `1270991c` | 666,263 | — | — |
+| **R3, BINARY — THE CANDIDATE** | **`fbf61d05`** | **665,180** | **−1,083** | **12** |
+| R3, FRACTIONAL — the variant | `2eac9bc7` | 649,412 | **−16,851** | **121** |
+
+**FRACTIONAL vs BINARY: −15,768 board points, 110 rows, every one of them down.**
+
+**Identities and laws — all hold on the variant:** every ORDER 41 dial off → `374d4e44`; the break
+dial unset → `fbf61d05` byte-identical; **determinism ×2 identical** (`2eac9bc7`); **day-0: 0 of 89
+gameless rows move — 89/89 holds**; continuity identical on every axis (charge-vs-age step 0.0000,
+0 of 280,000 games steps, 0 of 10,000 surplus steps, FIX A leg falls with price 0 of 30 cells).
+**No acceptance law moves.**
+
+### THE NAMED ROWS
+
+| player | g 2026 | credit | pre-R3 | BINARY | FRACTIONAL | frac−bin | verdict change |
+|---|---:|---:|---:|---:|---:|---:|---|
+| **Will Brodie** | 1 | 0.1287 | 767 | 767 | **147** | **−620** | **restored → STRIPPED** |
+| Toby Conway | 0 | 0.0000 | 1,066 | 460 | 460 | 0 | stripped → stripped |
+| Harry Barnett | 0 | 0.0000 | 674 | 422 | 422 | 0 | stripped → stripped |
+| Mitchell Edwards | 16 | 1.0000 | 1,326 | 1,326 | 1,326 | 0 | restored → restored |
+| Dante Visentini | 13 | 1.0000 | 807 | 807 | 807 | 0 | restored → restored |
+| **Noah Mraz** | 4 | 0.2383 | 2,029 | 2,029 | **778** | **−1,251** | **restored → STRIPPED** |
+| **Jedd Busslinger** | 8 | 0.4519 | 801 | 801 | **403** | **−398** | **restored → STRIPPED** |
+| **Nick Madden** | 7 | 0.3857 | 1,064 | 1,064 | **117** | **−947** | **restored → STRIPPED** |
+| **Taylor Goad** | 2 | 0.2383 | 728 | 728 | **437** | **−291** | **restored → STRIPPED** |
+
+**It does what it was designed to do on the case it was designed for: Brodie is stripped, Conway and
+Barnett are untouched, and the two rows with a full season's credit — Edwards and Visentini — are
+untouched.**
+
+### ⚠ BUT TWO THINGS THE INSTRUCTION EXPECTED DO NOT HOLD, AND THEY ARE THE POINT
+
+**(1) Mraz and Busslinger do NOT stay restored — nor does Madden.** The expectation was that they
+would. They do not, and the reason is structural rather than incidental: a 4-, 7- or 8-game season
+credits only 0.24-0.45, so it leaves **55-76% of that season's absence standing** and the walk
+continues into their earlier gaps. **Madden loses 947 and Mraz 1,251 — larger than Brodie's 620.**
+Under the fractional rule, **a partial return is treated as most of an absence.**
+
+**(2) THE EXPLOIT-SAFETY LOGIC IS CONTRADICTED ON TWO OF THE FOUR ROWS IT WAS TESTED ON.** The claim
+was that a token-games row cannot shield much *because* its production leg is small, so R3's take
+stays small. Measured takes:
+
+| player | g 2026 | take BINARY | take FRACTIONAL | does the logic hold? |
+|---|---:|---:|---:|---|
+| Dante Visentini | 13 | 0 | 0 | yes — full credit, no take |
+| Taylor Goad | 2 | 0 | 291 | **yes — thin production leg, take stays small** |
+| Will Brodie | 1 | 0 | **620** | **NO — the take is large** |
+| Nick Madden | 7 | 0 | **947** | **NO — the take is large** |
+
+**The "thin production leg" argument holds for Goad and fails for Brodie and Madden**, who have
+substantial production legs precisely because they are real players with real careers. **The argument
+was that the exploit is self-limiting; on these rows it is not.**
+
+### THE SIZE OF THE CURE AGAINST THE SIZE OF THE DISEASE
+
+| | rows | board points |
+|---|---:|---:|
+| the shield the fix targets (≤2-game breaks) | 63 | **−3,457** |
+| everything else the fix also does | 47 | **−12,311** |
+| **total** | **110** | **−15,768** |
+
+> **78% of the fractional rule's effect lands OUTSIDE the shield population it was built to close.**
+> It converts R3 from a 12-row collector into a 121-row collector. The extra take falls on rows with
+> 3-10 game seasons — partial returns — which were never part of the exploit.
+
+**THE CHOICE, LAID OUT WITHOUT A RECOMMENDATION.** Neither rule is clean:
+
+- **BINARY under-collects at the boundary.** One game fully restores a row; Brodie keeps 560 points
+  he arguably should not, and 62 other rows keep smaller amounts.
+- **FRACTIONAL over-collects past it.** It closes Brodie, but it also treats a 7-game return as
+  ~60% of an absence and takes 947 points off Madden, 1,251 off Mraz — and 78% of its effect is on
+  rows the defect never touched.
+
+**A third shape neither of us has priced would be a break that saturates faster than the credit curve
+— full break well before 11 games — but that constant is not in any measurement this seat holds, so
+it is named as an option and NOT invented.** Both boards are built; the choice is the owner's.
+
+---
+
 ## 7 · THE TAIL CALIBRATION ON THE p15 ANCHOR — THE BUILT NUMBER, AND IT MISSES
 
 **THE CANDIDATE READS 0.8004.** The supervisor's estimate for the p15 board was **~0.95-1.1**.

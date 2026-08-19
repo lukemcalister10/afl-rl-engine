@@ -1,0 +1,132 @@
+{
+ "md5": {
+  "pre": "1270991c",
+  "binary": "fbf61d05",
+  "frac": "2eac9bc7",
+  "frac2": "2eac9bc7",
+  "identp": "374d4e44",
+  "chk": "fbf61d05"
+ },
+ "totals": {
+  "pre": 666263,
+  "binary": 665180,
+  "frac": 649412
+ },
+ "frac_minus_bin": -15768,
+ "n_diff": 110,
+ "day0_gameless": 89,
+ "day0_moved": 0,
+ "named": [
+  {
+   "name": "Will Brodie",
+   "g": 1.0,
+   "credit": 0.1286875208353465,
+   "pre": 767,
+   "binary": 767,
+   "frac": 147,
+   "delta": -620,
+   "stripped_bin": false,
+   "stripped_frac": true,
+   "note": "the shield case \u2014 1 game"
+  },
+  {
+   "name": "Toby Conway",
+   "g": 0.0,
+   "credit": 0.0,
+   "pre": 1066,
+   "binary": 460,
+   "frac": 460,
+   "delta": 0,
+   "stripped_bin": true,
+   "stripped_frac": true,
+   "note": "genuinely absent"
+  },
+  {
+   "name": "Harry Barnett",
+   "g": 0.0,
+   "credit": 0.0,
+   "pre": 674,
+   "binary": 422,
+   "frac": 422,
+   "delta": 0,
+   "stripped_bin": true,
+   "stripped_frac": true,
+   "note": "genuinely absent"
+  },
+  {
+   "name": "Mitchell Edwards",
+   "g": 16.0,
+   "credit": 1.0,
+   "pre": 1326,
+   "binary": 1326,
+   "frac": 1326,
+   "delta": 0,
+   "stripped_bin": false,
+   "stripped_frac": false,
+   "note": "returned, 16 games"
+  },
+  {
+   "name": "Noah Mraz",
+   "g": 4.0,
+   "credit": 0.23834489196711883,
+   "pre": 2029,
+   "binary": 2029,
+   "frac": 778,
+   "delta": -1251,
+   "stripped_bin": false,
+   "stripped_frac": true,
+   "note": "returned, 4 games"
+  },
+  {
+   "name": "Jedd Busslinger",
+   "g": 8.0,
+   "credit": 0.45188866847720316,
+   "pre": 801,
+   "binary": 801,
+   "frac": 403,
+   "delta": -398,
+   "stripped_bin": false,
+   "stripped_frac": true,
+   "note": "returned, 8 games"
+  },
+  {
+   "name": "Nick Madden",
+   "g": 7.0,
+   "credit": 0.38568558243890977,
+   "pre": 1064,
+   "binary": 1064,
+   "frac": 117,
+   "delta": -947,
+   "stripped_bin": false,
+   "stripped_frac": true,
+   "note": "INTERMEDIATE \u2014 7 games, credit ~0.39"
+  },
+  {
+   "name": "Taylor Goad",
+   "g": 2.0,
+   "credit": 0.23834489196711883,
+   "pre": 728,
+   "binary": 728,
+   "frac": 437,
+   "delta": -291,
+   "stripped_bin": false,
+   "stripped_frac": true,
+   "note": "token games, small production leg"
+  },
+  {
+   "name": "Dante Visentini",
+   "g": 13.0,
+   "credit": 1.0,
+   "pre": 807,
+   "binary": 807,
+   "frac": 807,
+   "delta": 0,
+   "stripped_bin": false,
+   "stripped_frac": false,
+   "note": "token-ish, 13 games"
+  }
+ ],
+ "shield_n": 63,
+ "shield_take_bin": 356,
+ "shield_take_frac": 3813
+}
