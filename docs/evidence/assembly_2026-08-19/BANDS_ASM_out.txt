@@ -597,5 +597,3 @@ instrument pins, computed at run on unmodified copies:
     picks 21-30            50       50       50       50       50       40       30       20
     picks 31-40            50       50       50       50       50       40       30       20
     picks 41-64           111      111      111      111      111       93       69       48
-
-wrote BANDS_ASM.json / BANDS_ASM_out.txt

@@ -64,3 +64,5 @@ WHAT THIS DOES NOT SAY. It does not re-derive G0. v746's disposition holds: spee
 are not separable in this data, a G0 move breaks the anchoring identity LAMBDA was solved by, and
 the interval gap was a hairline. The named open finding — the charge convicts somewhat fast at low
 games — is carried forward, not closed.
+
+written: TAIL_ASM.json · TAIL_ASM_out.txt

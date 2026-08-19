@@ -26,11 +26,15 @@ IN_IT = [
     ('The SD level offset, 2.98 points a game',
      'small defenders were measured to be over-barred by that much, flat at every age, and the bar '
      'is lowered by exactly the measured amount. Nothing was moved to offset it.'),
-    ('The fourth-year sitter schedule is KEPT AS MEASURED',
-     'A player who has sat a fourth year and is STILL ON A LIST is priced slightly above one who has '
-     'sat three. That is not a glitch: clubs cut the two- and three-year sitters who are not up to '
-     'it, so surviving to a contracted fourth year is itself a signal. The cell is thin (eleven '
-     'players) and stays documented as thin.'),
+    ('The deep sitter schedule is KEPT AS MEASURED — the rise at depth 4 stays',
+     'The sitting clock is counted as a DEPTH. The measured schedule falls from depth 1 to depth 3 '
+     'and then RISES at depth 4, so a player standing at depth 4 who is still on a list is priced '
+     'slightly above one standing at depth 3. That is not a glitch: clubs cut the sitters at depths '
+     '2 and 3 who are not up to it, so a player still contracted at depth 4 has survived a cut that '
+     'others did not, and that survival is itself a signal. The depth-4 cell is thin — eleven '
+     'players — and stays documented as thin. ONE CONSEQUENCE, STATED PLAINLY: because the schedule '
+     'rises there, anything that pulls a player DOWN across that rise (an injury pause, a returning '
+     'season) can lower his price rather than raise it. One row on this board does exactly that.'),
     ('The absence package',
      'a short season now earns the credit it was measured to earn instead of a full pass at two '
      'games; a delivered season restores only part of the accrued sitting clock instead of wiping '

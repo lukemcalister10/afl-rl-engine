@@ -1,12 +1,5 @@
 {
  "lever": {
-  "CAND": {
-   "dn": 117,
-   "marg": -11322,
-   "moved": 117,
-   "prev": "L5C_INJ",
-   "up": 0
-  },
   "L1_REC": {
    "dn": 195,
    "marg": -180,
@@ -21,69 +14,85 @@
    "prev": "L1_REC",
    "up": 362
   },
-  "L3_MAT": {
-   "dn": 157,
-   "marg": -494,
-   "moved": 173,
-   "prev": "L2_COMP",
-   "up": 16
-  },
-  "L4_SD": {
-   "dn": 0,
-   "marg": 927,
-   "moved": 102,
-   "prev": "L3_MAT",
-   "up": 102
-  },
-  "L5A_CRED": {
-   "dn": 137,
-   "marg": -3612,
-   "moved": 167,
-   "prev": "L4_SD",
-   "up": 30
-  },
-  "L5B_RSET": {
-   "dn": 189,
-   "marg": -5665,
-   "moved": 189,
-   "prev": "L5A_CRED",
+  "V750_CAND": {
+   "dn": 124,
+   "marg": -12232,
+   "moved": 124,
+   "prev": "V750_L5C",
    "up": 0
   },
-  "L5C_INJ": {
+  "V750_L2C15": {
+   "dn": 258,
+   "marg": -1023,
+   "moved": 258,
+   "prev": "L2_COMP",
+   "up": 0
+  },
+  "V750_L3MAT": {
+   "dn": 160,
+   "marg": -521,
+   "moved": 175,
+   "prev": "V750_L2C15",
+   "up": 15
+  },
+  "V750_L4SD": {
    "dn": 0,
-   "marg": 43,
+   "marg": 967,
+   "moved": 104,
+   "prev": "V750_L3MAT",
+   "up": 104
+  },
+  "V750_L5A": {
+   "dn": 139,
+   "marg": -3527,
+   "moved": 168,
+   "prev": "V750_L4SD",
+   "up": 29
+  },
+  "V750_L5B": {
+   "dn": 26,
+   "marg": -183,
+   "moved": 32,
+   "prev": "V750_L5A",
+   "up": 6
+  },
+  "V750_L5C": {
+   "dn": 1,
+   "marg": -12,
    "moved": 2,
-   "prev": "L5B_RSET",
-   "up": 2
+   "prev": "V750_L5B",
+   "up": 1
   }
  },
  "md5": {
-  "CAND": "5949cf9b9e08e64ce5066d61210033d3",
   "IDENT_K": "f3101883a60b0a7b8cb50f9d8a5abfff",
   "IDENT_P": "374d4e442665771801c5f1edd2a7e0e2",
   "L0_R": "7f88f5096ff5b781da4614b7142d332c",
   "L1_REC": "b692d7099a8d39f59843e41b51e0cc39",
   "L2_COMP": "c3cb66862a54cba17b2efc7252d87fd9",
-  "L3_MAT": "ccdd395fdc8328fe2ae5f1a1b6724f6f",
-  "L4_SD": "7a9dbbe1d9575beb6156fbd6c96a8127",
-  "L5A_CRED": "b9666afce35433cd28ea7b09cc0253c6",
-  "L5B_RSET": "2978d9e7ee2f25e09f0837f9d6307cdc",
-  "L5C_INJ": "f33e1fc58f189b3e211d939494f28dda",
+  "V750_CAND": "ca73176e7668f92b085896b9539c3cf7",
+  "V750_L2C15": "3dca39b04fad63ffe1a8db478751a575",
+  "V750_L3MAT": "62507bdf320dce4f8c8ea832eae78560",
+  "V750_L4SD": "c3f7866784bf3b072666da3f1080d654",
+  "V750_L5A": "e1e3d97dabdea5c815fd271688cf596a",
+  "V750_L5B": "b74a2a0e57182d096a139c26b7a6677b",
+  "V750_L5C": "1270991cdde819b22ac7bf5f42908f5a",
   "live": "88ce647f531030d8d2e094188b258191"
  },
  "n_tracked": 801,
  "totals": {
-  "CAND": 650439,
   "IDENT_K": 673097,
   "IDENT_P": 666434,
   "L0_R": 664950,
   "L1_REC": 664770,
   "L2_COMP": 670562,
-  "L3_MAT": 670068,
-  "L4_SD": 670995,
-  "L5A_CRED": 667383,
-  "L5B_RSET": 661718,
-  "L5C_INJ": 661761,
+  "V750_CAND": 654031,
+  "V750_L2C15": 669539,
+  "V750_L3MAT": 669018,
+  "V750_L4SD": 669985,
+  "V750_L5A": 666458,
+  "V750_L5B": 666275,
+  "V750_L5C": 666263,
   "live": 752429
  }
 }
