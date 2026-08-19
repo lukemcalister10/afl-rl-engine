@@ -1,0 +1,23 @@
+THREAD PINS: OPENBLAS=1 OMP=1 MKL=1 NUMEXPR=1 VECLIB=1  PYTHONHASHSEED=0
+RL_V0SURF_PKL=/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-final/data/v0surf.pkl  (5dd34ca82735f5c8f021b1c7320df8f8)
+engine: 53fff6de156efa870da11edc5cbaa75a
+
+===== 1 · THE CANDIDATE LINE (R3 LIVE) — EXPECTED TO ASSERT =====
+exit=1
+board total (numeraire): 660578
+    assert abs(r0 - RAW[k]) < 1e-6, 'identity broke on %s: %.6f vs %.6f' % (k, r0, RAW[k])
+AssertionError: identity broke on noah-mraz: 2135.777679 vs 1112.505054
+
+===== 2 · THE R3-OFF LINE — THE SCORABLE BURN CENSUS =====
+exit=0
+board total (numeraire): 667847
+BURN CENSUS
+     TOTAL      264       0           0
+     TOTAL      289       0           0
+BIRTHDAY CENSUS — the price on the 24th birthday, with games and output UNCHANGED
+  rows that GAIN 50% or more from the birthday alone: 0
+  points handed back across all age-23 rows: NET +0   GAINS ONLY +0   (the two readings are
+  different objects and both are printed: the birthday RAISES some rows and LOWERS others)
+  worst ratio: 1.0000   rows moving at all: 0
+
+CENSUS RUN DONE

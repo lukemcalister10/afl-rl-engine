@@ -1,0 +1,7 @@
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: 53fff6de156efa870da11edc5cbaa75a
+  emit starting 13:26:32  (RL_O37=1 A=1 B1=1 pct=unset w=0.47 cap=smooth15 lam=unset pgm=1)
+  emit exit=0  COST: 2m 15s
+  OK -> per_entrant_FCBASE.json  (d5aa5eea)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
