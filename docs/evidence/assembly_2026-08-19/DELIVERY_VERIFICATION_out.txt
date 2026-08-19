@@ -32,11 +32,11 @@ Run over the BUILT ARTEFACTS on disk, not over the code that claims to write the
     DK->P · R · DP->R · CANDIDATE · DR->cand · Dlive->cand · DK->cand, every column sortable.
   PASS board column present: live                                 
   PASS board column present: K                                    
-  FAIL board column present: P                                    
+  PASS board column present: P                                    
   PASS board column present: R                                    
   PASS board column present: CANDIDATE                            
   PASS DELTA column present in the HTML: D live->K                
-  FAIL DELTA column present in the HTML: D K->P                   
+  PASS DELTA column present in the HTML: D K->P                   
   PASS DELTA column present in the HTML: D P->R                   
   PASS DELTA column present in the HTML: D R->cand                
   PASS DELTA column present in the HTML: D live->cand             
@@ -64,7 +64,7 @@ Run over the BUILT ARTEFACTS on disk, not over the code that claims to write the
   PASS column present: type                                       
   PASS column present: v0                                         
   PASS column present: cohort                                     
-  FAIL no bare em-dash cells in the body                          found 23
+  PASS no bare em-dash cells in the body                          
   PASS the MEMBERSHIP ASSERTION is printed on the page            
   PASS the membership assertion PASSES both ways                  2 PASS marks
   PASS the cohort rule is stated in words on the page             
@@ -103,9 +103,6 @@ ITEMS THAT CANNOT BE CHECKED MECHANICALLY — named, not skipped:
   MANUAL  depths are quoted as depths and never glossed into years of prose
 
 ==========================================================================================================================
-DELIVERY VERIFICATION SUMMARY: 77 checks, 74 PASS, 3 FAIL
-*** FAILING CHECKS ***
-   tracker    board column present: P  
-   tracker    DELTA column present in the HTML: D K->P  
-   year1      no bare em-dash cells in the body  found 23
+DELIVERY VERIFICATION SUMMARY: 77 checks, 77 PASS, 0 FAIL
+EVERY MECHANICAL CHECK PASSES.
 ==========================================================================================================================

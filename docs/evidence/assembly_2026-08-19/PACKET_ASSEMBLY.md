@@ -396,7 +396,7 @@ been visible in any total, any band table or any tracker column.
 
 ## 4 · THE CANDIDATE, AND THE LEVER STACK
 
-**THE CANDIDATE IS `ca73176e`. THE TOTAL IS 654,031.**
+**THE CANDIDATE IS `fbf61d05`. THE TOTAL IS 665,180.** *(supersedes `ca73176e` / 654,031 — the R3 collector was reading the wrong population; see §6c.)*
 
 | board | md5 | total | vs live | vs K | vs R | the lever added |
 |---|---|---:|---:|---:|---:|---|
@@ -542,6 +542,145 @@ against R.** But **the candidate is still +3.85 points WORSE than ORDER K** — 
 finding the register already carries (C6: an inherited breach *worsened by ORDER P*). The assembly
 walks part of ORDER P's damage back and no more. **SSP is NOT repaired here and was never in scope**
 — parked at v744 C6, on n = 31 rows, failing the path test on every board including ORDER K's.
+
+---
+
+## 6c · THE FINISHING PASS — FIVE OWNER-CAUGHT ITEMS, AND WHAT EACH ONE FOUND
+
+**THE CANDIDATE IS NOW `fbf61d05`, TOTAL 665,180.**
+
+### (1) THE R3 COLLECTOR WAS CHARGING THE WRONG POPULATION — FIXED
+
+`o41_absence_depth` counted every unplayed season since the last **delivered** one and charged it
+against **today's** production leg. Because "delivered" needs `games ≥ 10·f` **and** an average over
+the gate bar, a player can play every week and never deliver — so old gaps kept accruing while he was
+on the field. **The collector was landing hardest on the players who had come back**, which is
+backwards against a present-tense ruling.
+
+**NOW: the current consecutive run.** Walk back from Y; **any season with games > 0 breaks the run.**
+
+**BUILT vs EXPECTED — both halves measured, by name, as consequences:**
+
+| restored (they came back) | games 2026 | old R3 | new R3 | restored |
+|---|---:|---:|---:|---:|
+| Mitchell Edwards | 16 | 317 | 1,326 | **+1,009** |
+| Nick Madden | 7 | 255 | 1,064 | +809 |
+| Noah Mraz | 4 | 1,384 | 2,029 | +645 |
+| Jedd Busslinger | 8 | 403 | 801 | +398 |
+
+| still stripped (genuinely absent) | games 2026 | pre-R3 | new R3 | stripped | last played |
+|---|---:|---:|---:|---:|---|
+| Toby Conway | 0 | 1,066 | 460 | **−606** | 2024 |
+| Harry Barnett | 0 | 674 | 422 | **−252** | 2024 |
+
+**Rows still charged by R3 while playing this season: 0 — it was 106.** R3's marginal moves from
+−12,232 to **−1,083**. **Day-0 verified, not assumed: 89 gameless rows, 0 moved.**
+
+### ⚠ (2) THE EXPLOIT-SAFETY CHECK FAILED ITS OWN THRESHOLD — REPORTED, NOT WAVED THROUGH
+
+The argument was that a token-games season breaking the run cannot be exploited, because R3's base is
+the production leg and a token-games career has little production to shield. **Verified rather than
+assumed, and it does not hold on this board.**
+
+**63 rows have their run broken by a ≤2-game season. The largest shield is WILL BRODIE at +560 board
+points on ONE 2026 game** (207 → 767). Taylor Goad +291, Oscar Ryan +237, Charlie Edwards +184.
+
+**Brodie is one of the three rows the owner named as rated too highly.** Conway and Barnett are still
+stripped; **Brodie is not, because he has played one game.** A single game at `f = 0.92` now fully
+restores a row. **The binary run-break is too crude late in a season. This is an OPEN DEFECT, not a
+repair, and the in-season ramp does not fix it** (§6d) — the ramp grades the *fraction*, not the
+*break*.
+
+### (3) THE CREDIT CURVE, ADJUDICATED OUT OF SAMPLE — THE WIRED CHOICE WAS RIGHT
+
+Walk-forward by draft class, 13 folds, anchors re-estimated **inside every fold from training rows
+only**, paired bootstrap over folds (the arms score identical rows).
+
+| rule | OOS RMSE | MAE |
+|---|---:|---:|
+| **GUARDED isotonic (wired)** | **1.24185** | **0.69090** |
+| RAW cells | 1.24821 | 0.71943 |
+| the wired step `min(1, g/2)` | 1.28797 | 0.79921 |
+
+| comparison | diff | 90% CI | separates? |
+|---|---:|---|---|
+| RAW vs GUARDED | +0.00635 | [+0.00287, +0.01031] | **YES — guarded better** |
+| GUARDED vs STEP | −0.04611 | [−0.06275, −0.03176] | **YES — guarded much better** |
+
+**THE TEST SEPARATES AND THE GUARDED CURVE WINS, so the candidate keeps it — the seat call it was
+never asked to make turns out to have been the right one.** The margin over raw is small (0.5% of
+RMSE) but the interval excludes zero on a paired test; the margin over the **incumbent step** is
+seven times larger, which is the more important result: **both measured curves beat the rule the
+engine had, which is what vindicates I1 as a repair at all.**
+
+**The raw variant is built and priced anyway** so the owner sees both boards: **`8e6e9972`, +755
+board points, 139 rows differ (94 up, 45 down)**. On the rows he flagged: Xavier Taylor 914 → 969,
+Daniel Annable 1,218 → 1,269, Charlie Banfield 620 → 665. **The curves are NOT averaged — a middle
+value is a number no measurement supplies.**
+
+**THE MID-SEASON TIMING CENSUS** (a census of exposure, not a projection): **41 of the 168 I1-moved
+rows are in-progress first-years** — 14 at 1-2 games, 21 at 3-5, 6 at 6-8. **All sit below 11 games,
+so every one would gain credit if his season finished higher.** The curve was measured on completed
+seasons and is applied at `f = 0.92`; that is the exposure, stated as a count.
+
+### (4) THE TRACKER'S THREE DELTA COLUMNS WERE MISSING FROM THE HTML
+
+Renaming the candidate tag left two `elif t == 'CAND'` branches unmatched, so **Δ R→cand, Δ live→cand
+and Δ K→cand silently vanished from the page** while remaining correct in the CSV. Fixed and verified.
+
+### (5) THE YEAR-1 PAGE HAD THREE DEFECTS — INCLUDING A REPEAT COHORT ERROR
+
+- **v0 was entirely dashes** — now populated from the walk-forward matrix, and a row with no v0 object
+  would print **why**, never a bare dash.
+- **the `cat` column was dead** (99 of 804 populated) — replaced with **type / draft year / cohort**,
+  all populated. No dead columns.
+- **THE MSD COHORT RULE WAS WRONG.** cohort = **draft year for MSD**, draft+1 otherwise. The year-1
+  class is cohort 2026 = **the 2025-drafted non-MSDs PLUS the 2026-drafted MSDs**. The page carried
+  102 wrong rows; it now carries **105 correct rows, 18 of them MSD**.
+  **AND IT IS NOW ASSERTED, NOT TRUSTED:** the generator proves membership **both ways** — no
+  wrong-cohort row in, no cohort-2026 row missing — **fails the build if violated, and prints the
+  result on the page footer.** This error class recurs; the assertion is the point.
+
+---
+
+## 6d · THE IN-SEASON RAMP — THE SHAPE WAS ALREADY THERE
+
+Full audit in `SEASON_SHAPE_AUDIT.md`. Eight season-progress objects were found. **Seven are linear in
+season fraction or on the wrong axis. One is not:**
+
+**`f**1.5` — the D12 concave proration, engine line 2441, recorded in the code as *"Luke OPTION A"*,
+already active at two sites, already owner-ruled, penalty-path by its own comment.** Its rate
+`1.5·f^0.5` is small early and large late: **0.089 at f = 0.2 where linear gives 0.200; 0.882 at
+f = 0.92.** Less at the start, accelerating to the end — the ruling, met by an object already ruled on.
+**No new constant, no fit, no tuned exponent.**
+
+**APPLIED AT TWO SITES, REFUSED AT THE THIRD — on the engine's own written reasoning.** The comment at
+line 1534 records that a previous seat considered this exact reuse and rejected it for the
+participation role: *"depth and participation are different quantities, and `fe**1.5` would say a
+player who has played no games is 88% participating, which is the defect inverted."*
+
+| site | quantity | ramp |
+|---|---|---|
+| the sitter-fade clock's in-progress accrual | DEPTH | **applied** |
+| the R3 current-run fraction | DEPTH | **applied** |
+| the I1 credit's in-season fraction | **PARTICIPATION** | **REFUSED** |
+
+**BUILT AND PRICED, NOT ADOPTED — `RL_O41_RAMP`, default off:**
+
+- ramp board **`bc647219`**, total **665,191**, **+11 board points on 8 rows** (largest ±6).
+- **DAY-0 STAYS 89/89** — 0 of 89 gameless rows move. A gameless row has no delivered season, so the
+  fade-clock site never fires for him. **Measured, because the last time an absence-depth object moved
+  it broke the day-0 law.**
+- dial off → **`fbf61d05`**, byte-identical to the candidate.
+- **It does NOT fix the Brodie hole** (Brodie 767 → 767): the ramp grades the fraction, not the binary
+  run-break.
+
+**THE FALLBACK FIT WAS NEVER REACHED, AND COULD NOT HAVE BEEN.** A season row in the store is exactly
+`{year, avg, games, pos}` — no rounds, no dates, no within-season series. The only round-indexed data
+in the repo is `value_history.json`, which holds **board value and rank**, for **2026 rounds 14-22
+only**, with no completed-season outcome to fit against and no coverage of the early-season region
+where the shape would have to be determined — and fitting on it would be circular, since board value
+is an output of the machinery the ramp feeds.
 
 ---
 
@@ -706,3 +845,32 @@ Engine runs STRICTLY SEQUENTIAL throughout.**
 
 **NOTHING IS ADOPTED. NOTHING MERGED. NO PULL REQUEST. NOTHING ON `main`. THE LIVE BOARD `88ce647f`
 WAS NEVER TOUCHED. THE CANDIDATE IS FOR OWNER REVIEW.**
+
+
+---
+
+## 13 · DELIVERY VERIFICATION — THE CHECKLIST IS NOW PART OF THE DELIVERABLE
+
+The previous delivery shipped with **five defects the owner caught and this seat did not**: the
+no-arb page was ND-only, the tracker HTML lost all three delta columns, and the year-1 page had an
+empty v0 column, a dead cat column and a wrong MSD cohort rule. **Every one of those is a
+column-level check that could have been mechanical. So it now is.**
+
+`as_verify.py` runs **77 checks over the BUILT ARTEFACTS on disk** — not over the code that claims to
+write them — and prints pass/fail for every item of the standing spec.
+
+**RESULT: 77 checks, 77 PASS, 0 FAIL.**
+
+| document | checked |
+|---|---|
+| no-arb | 8 ND bands present · **all 9 pool arms present** · both windows · all five boards · path test shown · MSD exclusion in words · broken-box present |
+| tracker | 5 board columns · **all 6 delta columns in the HTML** · sortable · totals in header · 11 CSV columns |
+| year-1 | 7 columns incl. v0 and cohort · **no bare em-dash cells** · membership assertion printed · assertion passes both ways · cohort rule in words · broken-box |
+| player list | 804 rows · mechanism-leg columns · delta columns · broken-box |
+| levers | marginal · rows-moved · named movers · **the p20→p15 step visible** |
+| ledger | parses · all 8 fields per row |
+
+**It earned its place immediately: on its first run it caught three broken artifacts, including the
+tracker column loss.** Three items that cannot be checked mechanically are **named, not skipped**:
+the accuracy of the broken-box prose, the no-named-targets convention, and the depths-not-years
+convention.

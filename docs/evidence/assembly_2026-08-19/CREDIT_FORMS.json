@@ -4,7 +4,8 @@
   "+ I1 GUARDED  (V750_L5A)": 666458,
   "THE CANDIDATE (guarded, full stack)": 665180,
   "THE RAW VARIANT (full stack, I1 raw)": 665935,
-  "the raw variant, determinism repeat": 665935
+  "the raw variant, determinism repeat": 665935,
+  "ORDER P identity (every ORDER 41 dial OFF)": 666434
  },
  "guarded": [
   0.0,
@@ -38,7 +39,7 @@
   "cand": "fbf61d05",
   "raw": "8e6e9972",
   "raw2": "8e6e9972",
-  "identp": null,
+  "identp": "374d4e44",
   "l5a": "e1e3d97d",
   "l4sd": "c3f78667"
  },

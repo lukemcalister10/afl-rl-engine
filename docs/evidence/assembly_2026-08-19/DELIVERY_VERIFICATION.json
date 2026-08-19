@@ -1,7 +1,7 @@
 {
  "n": 77,
- "passed": 74,
- "failed": 3,
+ "passed": 77,
+ "failed": 0,
  "checks": [
   {
    "doc": "noarb",
@@ -150,7 +150,7 @@
   {
    "doc": "tracker",
    "item": "board column present: P",
-   "ok": false,
+   "ok": true,
    "detail": ""
   },
   {
@@ -174,7 +174,7 @@
   {
    "doc": "tracker",
    "item": "DELTA column present in the HTML: D K->P",
-   "ok": false,
+   "ok": true,
    "detail": ""
   },
   {
@@ -324,8 +324,8 @@
   {
    "doc": "year1",
    "item": "no bare em-dash cells in the body",
-   "ok": false,
-   "detail": "found 23"
+   "ok": true,
+   "detail": ""
   },
   {
    "doc": "year1",

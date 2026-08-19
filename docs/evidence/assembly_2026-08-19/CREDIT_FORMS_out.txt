@@ -39,8 +39,10 @@ THE BOARDS
   THE CANDIDATE (guarded, full stack)    fbf61d05    665,180
   THE RAW VARIANT (full stack, I1 raw)   8e6e9972    665,935
   the raw variant, determinism repeat    8e6e9972    665,935
-  ORDER P identity (every ORDER 41 dial OFF) NO BOARD
+  ORDER P identity (every ORDER 41 dial OFF) 374d4e44    666,434
 
+  DIAL-OFF IDENTITY: with every ORDER 41 dial off — the new RL_O41_CREDITFORM sub-dial included — the board is 374d4e44 and reproduces ORDER P 374d4e44 BYTE-EXACT. The raw form is inert when not selected.
+  The candidate and the raw variant differ by RL_O41_CREDITFORM ALONE — every other dial on the two lines is identical, so the delta below is the curve choice and nothing else.
   DETERMINISM (raw variant, x2): IDENTICAL — 8e6e9972
 
   *** BOARD TOTAL DELTA, RAW vs GUARDED: +755 board points ***

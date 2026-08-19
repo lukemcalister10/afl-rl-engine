@@ -3,7 +3,7 @@ ASSEMBLY BUILD — THE BOARDS AND THE LEVER STACK. NOTHING IS ADOPTED. THE CANDI
 ==========================================================================================================================
 
   board     md5             total      vs live         vs K         vs R  the lever added
-  IDENT_P   NO BOARD            —
+  IDENT_P   374d4e44      666,434      -85,995       -6,663       +1,484  every assembly dial OFF          = ORDER P, the identity
   IDENT_K   f3101883      673,097      -79,332           +0       +8,147  ORDER K's ruled line             = the K/landing chain
   L0_R      7f88f509      664,950      -87,479       -8,147           +0  R20A  A+B1+p20 clip              = R, the owner's reference
   L1_REC    b692d709      664,770      -87,659       -8,327         -180  + recency w=0.47
@@ -19,15 +19,16 @@ ASSEMBLY BUILD — THE BOARDS AND THE LEVER STACK. NOTHING IS ADOPTED. THE CANDI
   live      88ce647f      752,429           +0      +79,332      +87,479  
 
 THE DIAL-CHAIN IDENTITIES — A-F1 and A-F2. These decide whether anything else is believable.
-  IDENT_P   expected 374d4e44  got NO BOARD   *** FIRED ***
+  IDENT_P   expected 374d4e44  got 374d4e44   OK
   IDENT_K   expected f3101883  got f3101883   OK
   L0_R      expected 7f88f509  got 7f88f509   OK
   live      total expected 752,429  got 752,429   OK
   IDENT_K   total expected 673,097  got 673,097   OK
+  IDENT_P   total expected 666,434  got 666,434   OK
   L0_R      total expected 664,950  got 664,950   OK
   DETERMINISM (A-F4): IDENTICAL on the repeat — fbf61d05. Did not fire.
 
-*** FALSIFIERS FIRED: IDENT_P: NO BOARD != 374d4e44
+  Every identity holds. A-F1, A-F2 and A-F4 did not fire.
 
 ==========================================================================================================================
 THE PER-LEVER BREAKDOWN — each board is the one above it plus ONE lever, so every marginal effect
@@ -64,6 +65,7 @@ MATURE-ROW MOVEMENT — BUILT vs EXPECTED. The prereg predicted B1 + the mature 
 are live. Reported loudly either way.
 ==========================================================================================================================
   mature rows on the board (age >= 24): 429   young rows: 375
+  vs IDENT_P  mature       -6,309 on  291 moved rows   ·   young       +5,055
   vs L0_R     mature         -532 on  249 moved rows   ·   young         +762
   THE MATURE REFIT LEVER ALONE (V750_L2C15 -> V750_L3MAT): -521 on 175 moved mature rows
   BUILT vs EXPECTED: the -7,064 estimate was for B1 + refit against a different base and

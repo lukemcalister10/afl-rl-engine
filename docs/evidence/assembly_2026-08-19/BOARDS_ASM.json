@@ -1,7 +1,5 @@
 {
- "fail": [
-  "IDENT_P: NO BOARD != 374d4e44"
- ],
+ "fail": [],
  "lever": {
   "L1_REC": {
    "down": 195,
@@ -94,6 +92,7 @@
  },
  "md5": {
   "IDENT_K": "f3101883a60b0a7b8cb50f9d8a5abfff",
+  "IDENT_P": "374d4e442665771801c5f1edd2a7e0e2",
   "L0_R": "7f88f5096ff5b781da4614b7142d332c",
   "L1_REC": "b692d7099a8d39f59843e41b51e0cc39",
   "L2_COMP": "c3cb66862a54cba17b2efc7252d87fd9",
@@ -109,6 +108,7 @@
  },
  "totals": {
   "IDENT_K": 673097,
+  "IDENT_P": 666434,
   "L0_R": 664950,
   "L1_REC": 664770,
   "L2_COMP": 670562,
