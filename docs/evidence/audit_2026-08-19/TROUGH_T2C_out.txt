@@ -1,0 +1,40 @@
+========================================================================================================
+T2c — IS RETENTION A DISCOVERY OR A MECHANIC?
+========================================================================================================
+  A cut row's path ENDS, and the standing instrument scores an ended path as 0. So "retained
+  predicts value" is guaranteed in part by construction. The honest question: among rows that
+  ALL survived to year k, does year-1 retention still separate?
+
+  --- picks 31-64 ---
+    conditioning                          n   kept %   AUC(ret)       note
+    no conditioning (all rows)          568      80%      0.612   
+    survived to year 3                  408     100%      0.500   EVERYONE kept -> no contrast left
+    survived to year 4                  370     100%      0.500   EVERYONE kept -> no contrast left
+    survived to year 5                  319     100%      0.500   EVERYONE kept -> no contrast left
+
+  --- picks 1-20 ---
+    conditioning                          n   kept %   AUC(ret)       note
+    no conditioning (all rows)          340      99%      0.515   
+    survived to year 3                  335     100%      0.500   EVERYONE kept -> no contrast left
+    survived to year 4                  327     100%      0.500   EVERYONE kept -> no contrast left
+    survived to year 5                  317     100%      0.500   EVERYONE kept -> no contrast left
+
+  READ: once you condition on surviving a few years, the year-1 retention flag has no contrast
+  left — essentially every survivor was retained. THE SEPARATION IN T2 IS THE TERMINATION
+  MECHANIC, NOT AN INDEPENDENT EARLY SIGNAL. Reported as a NULL rather than banked.
+
+--------------------------------------------------------------------------------------------------------
+SO WHAT IS LEFT? — the production signals, and how much of the trough they could ever close
+--------------------------------------------------------------------------------------------------------
+  The year-1 mark is a PRICE, and the standing instrument compares mean(v_yr1)/mean(v_yr0).
+  The late-band trough is -11.0%% (31-40) and -7.4%% (41-64) on PRIMARY.
+
+  picks 1-20   n=340  successes=175 (51%)
+     mean yr1/v0  successes 1.567   non-successes 0.667
+     mean peak/v0 successes 3.377   non-successes 0.948
+     rows priced ZERO at year 1: 0 (0%)
+
+  picks 31-64  n=568  successes=54  (10%)
+     mean yr1/v0  successes 1.920   non-successes 0.818
+     mean peak/v0 successes 11.428   non-successes 1.634
+     rows priced ZERO at year 1: 0 (0%)

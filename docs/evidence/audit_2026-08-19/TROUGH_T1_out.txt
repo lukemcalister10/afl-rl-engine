@@ -1,0 +1,74 @@
+========================================================================================================
+T1 — WHO CARRIES THE LATE-BAND RECOVERY
+========================================================================================================
+  PRIMARY window 2005-2023. BALANCED PANEL: a row counts only if year 1 AND year 6 are both
+  observed (cohort year + 6 <= 2023), so censoring cannot manufacture the result.
+
+  BAND 1-10    n(balanced)=170  censored=20    ok
+     mean yr1/v0 = 1.118   mean yr6/v0 = 1.396   band gain = +27.8% of entry
+     rows that GAINED from yr1 to yr6: 84 of 170 (49%)
+     share of the TOTAL band gain carried by the top  5% of rows: 57%
+     share carried by the top 10%: 98%   top 20%: 150%
+
+  BAND 11-20   n(balanced)=170  censored=20    ok
+     mean yr1/v0 = 1.153   mean yr6/v0 = 1.563   band gain = +41.0% of entry
+     rows that GAINED from yr1 to yr6: 75 of 170 (44%)
+     share of the TOTAL band gain carried by the top  5% of rows: 68%
+     share carried by the top 10%: 118%   top 20%: 163%
+
+  BAND 21-30   n(balanced)=170  censored=20    ok
+     mean yr1/v0 = 1.084   mean yr6/v0 = 1.661   band gain = +57.7% of entry
+     rows that GAINED from yr1 to yr6: 58 of 170 (34%)
+     share of the TOTAL band gain carried by the top  5% of rows: 69%
+     share carried by the top 10%: 117%   top 20%: 163%
+
+  BAND 31-40   n(balanced)=170  censored=20    ok
+     mean yr1/v0 = 0.892   mean yr6/v0 = 1.273   band gain = +38.0% of entry
+     rows that GAINED from yr1 to yr6: 56 of 170 (33%)
+     share of the TOTAL band gain carried by the top  5% of rows: 84%
+     share carried by the top 10%: 141%   top 20%: 199%
+
+  BAND 41-64   n(balanced)=398  censored=42    ok
+     mean yr1/v0 = 0.948   mean yr6/v0 = 1.499   band gain = +55.1% of entry
+     rows that GAINED from yr1 to yr6: 92 of 398 (23%)
+     share of the TOTAL band gain carried by the top  5% of rows: 121%
+     share carried by the top 10%: 170%   top 20%: 201%
+
+--------------------------------------------------------------------------------------------------------
+CONCENTRATION, SIDE BY SIDE — is the late-band recovery broader or narrower than the early bands?
+--------------------------------------------------------------------------------------------------------
+  band         n  % rows up top5% share top10% share top20% share
+  1-10       170        49%        57%         98%        150%
+  11-20      170        44%        68%        118%        163%
+  21-30      170        34%        69%        117%        163%
+  31-40      170        33%        84%        141%        199%
+  41-64      398        23%       121%        170%        201%
+
+--------------------------------------------------------------------------------------------------------
+THE HISTORICAL EXEMPLARS — ILLUSTRATION ONLY, never a gate and never a target
+--------------------------------------------------------------------------------------------------------
+  band 31-40 — the ten largest yr1->yr6 gains:
+    player                     pick draft       v0      yr1      yr6    gain
+    Errol Gulden                 34  2020      668     2430     6779   +4349
+    Sean Darcy                   38  2016      944     2347     6528   +4181
+    Chad Warner                  38  2019      662      444     4238   +3795
+    Todd Goldstein               38  2006      944      626     4342   +3717
+    Max Gawn                     33  2009     1114      769     4455   +3686
+    Elliot Yeo                   36  2011      664     1180     4738   +3559
+    Scott Thompson               37  2007      457      812     4276   +3464
+    Kieren Briggs                34  2018     1113      762     3997   +3236
+    Thomas Stewart               40  2016      328      143     3235   +3092
+    Kurt Tippett                 33  2006      535      369     3457   +3088
+
+  band 41-64 — the ten largest yr1->yr6 gains:
+    player                     pick draft       v0      yr1      yr6    gain
+    Josh Kennedy                 41  2006      651      319     7566   +7248
+    Rory Sloane                  44  2008      568      377     7477   +7100
+    Luke Parker                  42  2010      292      490     7014   +6524
+    Andrew Swallow               43  2005      604      812     6891   +6079
+    Caleb Daniel                 45  2014      214      487     5470   +4983
+    Jack Steven                  42  2007      632      307     4778   +4471
+    Tom McDonald                 54  2010      392      842     4948   +4106
+    Lachlan Hunter               52  2012      313      646     4597   +3951
+    James Sicily                 51  2013      179       82     3958   +3876
+    Jordan Dawson                55  2015      262      118     3767   +3649

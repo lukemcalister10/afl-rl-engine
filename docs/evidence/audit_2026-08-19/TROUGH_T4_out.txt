@@ -1,0 +1,50 @@
+========================================================================================================
+T4 — THE DECISIVE DECOMPOSITION
+========================================================================================================
+
+--------------------------------------------------------------------------------------------------------
+(a) DOES THE YEAR-1 MARK MISS THE EVENTUAL WINNERS IN THE LATE BANDS?
+--------------------------------------------------------------------------------------------------------
+  band             n   succ %  yr1 mark: WIN yr1 mark: BUST ratio win/bust
+  picks 1-20     340      51%          1.567          0.667           2.35
+  picks 21-30    170      24%          1.839          0.845           2.18
+  picks 31-40    170      15%          1.533          0.782           1.96
+  picks 41-64    398       7%          2.007          0.865           2.32
+
+  READ: the year-1 mark marks the eventual late-band winners UP HARDER than the early-band
+  winners, and the win/bust ratio is WIDER late, not narrower. The mark is not blind to them.
+
+--------------------------------------------------------------------------------------------------------
+(b) THEN WHY IS THE BAND MEAN BELOW 1.0? — the mix decomposition
+--------------------------------------------------------------------------------------------------------
+  the band year-1 mark = (winners' value share) + (busts' value share), both over mean v0
+  band            winners add      busts add     = mark
+  picks 1-20            0.806          0.324      1.130
+  picks 31-40           0.225          0.667      0.892
+  picks 41-64           0.146          0.802      0.948
+
+--------------------------------------------------------------------------------------------------------
+(c) THE COUNTERFACTUAL THAT SEPARATES MIX FROM MISPRICING
+--------------------------------------------------------------------------------------------------------
+  If the late band had the EARLY band's success RATE but kept its own per-group year-1 marks,
+  what would its year-1 mark be?
+  picks 31-40  actual mark 0.892 (-10.8%)   at the 1-20 success rate of 51%: 1.169 (+16.9%)
+  picks 41-64  actual mark 0.948 (-5.2%)   at the 1-20 success rate of 51%: 1.452 (+45.2%)
+
+  THE WHOLE TROUGH IS MIX. Hold the per-group marks fixed and give the late band the early
+  band's hit rate, and the trough turns into a gain. Nothing about the PRICING of a late-band
+  row is wrong; there are simply far fewer winners among them.
+
+--------------------------------------------------------------------------------------------------------
+(d) THE SHAPE — why the mean recovers by year 6 anyway
+--------------------------------------------------------------------------------------------------------
+  band             n mean pk/v0     median        p90        p99        max
+  picks 1-20     340       2.31       1.89       4.35       8.93      11.27
+  picks 21-30    170       2.77       1.59       7.48      11.90      19.54
+  picks 31-40    170       2.32       1.29       5.25      11.28      12.87
+  picks 41-64    398       2.81       1.22       7.61      24.01      28.60
+
+  The late bands are OPTION-SHAPED: a median late-band row peaks near or below its entry price,
+  while the top percentile multiplies it many times over. The mean is a poor description of the
+  typical row — which is exactly the caveat the board already carries in its standing box for
+  the deep cell ("about half deliver almost nothing and a few deliver a lot").
