@@ -14,6 +14,8 @@ export PYTHONHASHSEED=0
 cd "$HERE"
 echo "########## 1 · BOARDS ##########"
 python3 os_boards.py > os_boards_run.txt 2>&1; echo "  rc=$?"; tail -3 os_boards_run.txt
+echo; echo "########## 1b · FALSIFIER S-F3, THE FIX A DECOMPOSITION IDENTITY ##########"
+bash run_identityS.sh > IDENTITY_S_out.txt 2>&1; echo "  rc=$?"; cat IDENTITY_S_out.txt
 echo; echo "########## 2 · CENSUS + CONTINUITY ##########"
 bash run_measureS.sh > MEASURE_S_out.txt 2>&1; echo "  rc=$?"; tail -3 MEASURE_S_out.txt
 echo; echo "########## 3 · EMITS ##########"

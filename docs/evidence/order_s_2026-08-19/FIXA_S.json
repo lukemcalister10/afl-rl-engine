@@ -1,0 +1,86 @@
+{
+ "clip|p5|young|node": {
+  "worst": 0.0,
+  "segments": 14510,
+  "form": "clip",
+  "pct": 5,
+  "pgmat": false,
+  "crossing": true,
+  "case": null
+ },
+ "clip|p5|PGMAT|node": {
+  "worst": 0.0,
+  "segments": 14495,
+  "form": "clip",
+  "pct": 5,
+  "pgmat": true,
+  "crossing": true,
+  "case": null
+ },
+ "smooth|p15|young|OMITTED": {
+  "worst": 0.013578027309827156,
+  "segments": 14430,
+  "form": "smooth",
+  "pct": 15,
+  "pgmat": false,
+  "crossing": false,
+  "case": [
+   "SMALL only",
+   -4.0,
+   20.0,
+   5.209077269345407,
+   5.239339111617804
+  ]
+ },
+ "smooth|p15|young|node": {
+  "worst": 0.0,
+  "segments": 14475,
+  "form": "smooth",
+  "pct": 15,
+  "pgmat": false,
+  "crossing": true,
+  "case": null
+ },
+ "smooth|p15|PGMAT|node": {
+  "worst": 0.0,
+  "segments": 14485,
+  "form": "smooth",
+  "pct": 15,
+  "pgmat": true,
+  "crossing": true,
+  "case": null
+ },
+ "smooth|p20|young|OMITTED": {
+  "worst": 0.013578027374634871,
+  "segments": 14430,
+  "form": "smooth",
+  "pct": 20,
+  "pgmat": false,
+  "crossing": false,
+  "case": [
+   "SMALL only",
+   -4.0,
+   20.0,
+   5.209077269345407,
+   5.239339111617804
+  ]
+ },
+ "smooth|p20|young|node": {
+  "worst": 0.0,
+  "segments": 14475,
+  "form": "smooth",
+  "pct": 20,
+  "pgmat": false,
+  "crossing": true,
+  "case": null
+ },
+ "smooth|p20|PGMAT|node": {
+  "worst": 0.0,
+  "segments": 14485,
+  "form": "smooth",
+  "pct": 20,
+  "pgmat": true,
+  "crossing": true,
+  "case": null
+ }
+}

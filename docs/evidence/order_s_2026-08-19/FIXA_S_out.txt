@@ -1,0 +1,25 @@
+======================================================================================================================
+ORDER S — FALSIFIER S-F4. IS FIX A's NODE MAXIMUM STILL EXACT UNDER THE ORDER S FORMS?
+======================================================================================================================
+  independent of the engine: the grids are read out of the engine SOURCE and the arithmetic is
+  done here. 60 interior probes per segment.
+
+  form         anchor   PGMAT  zero crossing    segments     worst miss   verdict
+  clip         p5       no     IN the set          14510      0.000e+00   exact
+  clip         p5       yes    IN the set          14495      0.000e+00   exact
+  smooth       p15      no     **OMITTED**         14430      1.358e-02   **S-F4 FIRES**
+  smooth       p15      no     IN the set          14475      0.000e+00   exact
+  smooth       p15      yes    IN the set          14485      0.000e+00   exact
+  smooth       p20      no     **OMITTED**         14430      1.358e-02   **S-F4 FIRES**
+  smooth       p20      no     IN the set          14475      0.000e+00   exact
+  smooth       p20      yes    IN the set          14485      0.000e+00   exact
+
+  THE ROW LABELLED "OMITTED" IS THIS SEAT'S OWN FIRST, WRONG CHECK, KEPT ON THE PAGE.
+  It leaves the zero crossing out of the candidate set. The miss is real and it is 1.06e-02 of
+  psi — so the crossing is NOT decorative, it is load-bearing, and the engine already carries it.
+
+  S-F4 VERDICT: DOES NOT FIRE. With the zero crossing in the candidate set — which is what the engine does — psi is convex on every segment and FIX A's node maximum is EXACT under the compression and under the mature premium alike.
+
+  WHAT THIS DOES NOT PROVE, said plainly: it proves the SEARCH is exact given the decomposition.
+  That the decomposition itself still reconstructs the engine's own surplus under the ORDER S
+  dials is a SEPARATE falsifier, S-F3, measured on every real row in IDENTITY_S_out.txt.
