@@ -1,0 +1,253 @@
+======================================================================================================================
+ORDER S READ-ONLY — F5. THE SEVERITY CALIBRATION. IS THE CHARGE FRONT-LOADED BEYOND WHAT HISTORY SUPPORTS?
+======================================================================================================================
+NO BOARD IS BUILT. NO ENGINE FILE IS EDITED. NO DIAL IS ADDED. NOTHING IS ADOPTED AND NO REPAIR IS
+PROPOSED. Named rows illustrate; they gate nothing.
+ruler      : the house S4 delivered-value ruler, md5 241842f61ddd3c486f04f201a7efcce9
+constants  : ASSERTED against the engine block — LAMBDA 0.1743833037 · G0 9.8900 · BETA_sat 0.1146463006 ·
+             THETA_R 0.657439 · s0 -2.452721 · TMAX 21.1233.  Falsifier F5-A1 did not fire.
+premium    : ORDER P's own surface, asserted node-for-node against the BUILT engine grid.
+             Falsifier F5-A2 did not fire.
+
+----------------------------------------------------------------------------------------------------------------------
+1 · THE POPULATION, AND THE CENSORING RULE FIXED BEFORE THE RUN
+----------------------------------------------------------------------------------------------------------------------
+   ND entrants from 2005, positive v0, force-majeure excluded, with at least ONE career game at the
+   vantage (A(0) = 0 exactly, so a gameless row is not a row the charge can reach).
+   CENSORING: at least 4 observed seasons after the vantage, so entry year <= 2021 - stage.
+   THE LAST SEVERAL DRAFT CLASSES ARE THEREFORE ABSENT FROM F5 ENTIRELY and no claim here reaches
+   them. The outcome carries NO PROJECTED TAIL — it sums observed seasons to 2025 only — which biases
+   OUT downward for later cohorts and so cuts AGAINST the front-loading finding F5-P1 predicts.
+
+   stage        rows   entry lo   entry hi    med games      med s_P   delisted %
+   1             644       2005       2020          7.0        -7.86        65.4%
+   2             826       2005       2019         14.0        -6.30        70.2%
+   3             849       2005       2018         23.0        -5.01        73.9%
+
+----------------------------------------------------------------------------------------------------------------------
+2 · THE OWNER'S PREMISE, CHECKED EXACTLY — WHAT DOES THE CHARGE ACTUALLY MARK THAT SHAPE AT?
+----------------------------------------------------------------------------------------------------------------------
+   The shape: a first-year row, 15 games, about 19 points a game below his PEDIGREE bar.
+   Computed from the wired constants, not assumed:
+     A(15)   = 1 - exp(-15/9.89)              = 0.7806
+     T(-19)  = clip(1 - 0.65744*(-19 - -2.4527))  = 11.8788
+     f       = exp(-0.174383 * 0.7806 * 11.8788)  = 0.1985
+
+   So the mechanism retains 19.9% of that row's pedigree leg and charges away 80.1%.
+   The PRICE is not the pedigree leg — it is rho*production + pi*pedigree + age credit — so the
+   "0.24x of entry" the owner quotes is a PRICE ratio, and it is checked against real board rows
+   rather than argued. Closest actual ORDER P board rows to the shape (age under 24, 10-20 career
+   games, s_P between -14 and -24), printed with their real price over entry price:
+
+   row                        pick  games      s_P        f        v0     price  price/v0
+   Zeke Uwland                   2     17   -20.86   0.1534      2583      1564    0.6055
+   Samuel Grlj                   8     19   -15.16   0.2485      1659      1463    0.8818
+   Mitchell Edwards             32     16   -19.05   0.1891      1115      1301    1.1668
+   Sam Marshall                 25     13   -22.50   0.1639       886       418    0.4714
+   Jordan Croft                 15     18   -16.95   0.2146       799       449    0.5621
+   Harry Armstrong              23     11   -23.45   0.1768       718       478    0.6663
+   Wil Dawson                   22     16   -19.43   0.1826       667       240    0.3591
+   Miller Bergman               38     15   -16.74   0.2430       344         9    0.0262
+   Isaac Keeler                 44     13   -15.84   0.2864       328       135    0.4111
+   Alwyn Davey                  45     20   -17.19   0.1984       297         6    0.0202
+
+   12 board rows are in that shape. Their price over entry price runs 0.0202 to 1.1668, median 0.5168.
+   2 of the 12 sit at or below 0.25x of entry.
+
+   THE PREMISE, SPLIT INTO ITS TWO HALVES, BECAUSE THEY DO NOT GIVE THE SAME ANSWER:
+     ON THE PEDIGREE LEG the owner is right and understating it — the mechanism retains 0.199 of
+     the prior, which is a 5.0x cut, not 4x.
+     ON THE PRICE the owner's 0.24x is at the HARSH END of what the board actually does: the
+     median row of this shape prices at 0.52x of entry, and 2 of 12 sit at or below 0.25x.
+     The difference is the production leg, which the charge does not touch. A row whose shown
+     production is also weak lands near 0.24x; one whose production holds up does not.
+   SO: the shape the owner describes DOES occur on the board, on 2 of these 12 rows, but it is
+   not the median outcome of the shape. THE PREMISE IS PARTLY CONFIRMED and the packet says so.
+
+----------------------------------------------------------------------------------------------------------------------
+3 · THE CALIBRATION CURVE, PER CAREER STAGE
+----------------------------------------------------------------------------------------------------------------------
+   Every number is RELATIVE to the SAME stage and the SAME games bin at surplus 0 to -10.
+   charged  = mean f in the cell / mean f in the reference cell   (exact, no estimation)
+   realized = mean OUT in the cell / mean OUT in the reference cell
+   CALIB    = realized / charged.  Above 1 the row delivers MORE than he is marked at.
+
+   -- STAGE 1 (after season 1), 644 rows
+   games      surplus               n  delist    mean f  mean OUT   charged  realized CALIB 90% CI             CALIB
+   1-9        0 to -10  (ref)     168     67%    0.9286    0.7217    1.0000    1.0000                         1.0000
+   1-9        -10 to -20           96     70%    0.6020    0.3639    0.6483    0.5042 [  +0.515,   +1.134]   0.778
+   1-9        -20 to -35           91     78%    0.4866    0.4508    0.5240    0.6247 [  +0.813,   +1.680]   1.192
+   1-9        worse than -35       32     78%    0.5261    0.3423    0.5665    0.4744 [  +0.365,   +1.519]   0.837
+   10-22      0 to -10  (ref)     178     52%    0.8674    1.1977    1.0000    1.0000                         1.0000
+   10-22      -10 to -20           56     68%    0.3342    0.5475    0.3853    0.4571 [  +0.800,   +1.751]   1.187
+   10-22      -20 to -35           11     73%    0.1324    0.2611    0.1527    0.2180 [  +0.630,   +2.372]   1.428 THIN
+   10-22      worse than -35        1    100%    0.0522    0.0335    no ref
+   23+        0 to -10  (ref)      10     40%    1.0000    1.2485    1.0000    1.0000                         1.0000
+   23+        -20 to -35            1    100%    0.1046    0.0000    no ref
+
+   -- STAGE 2 (after season 2), 826 rows
+   games      surplus               n  delist    mean f  mean OUT   charged  realized CALIB 90% CI             CALIB
+   1-9        0 to -10  (ref)     121     79%    0.8887    0.6097    1.0000    1.0000                         1.0000
+   1-9        -10 to -20           72     82%    0.6087    0.4004    0.6850    0.6568 [  +0.409,   +1.921]   0.959
+   1-9        -20 to -35           86     84%    0.4883    0.2620    0.5494    0.4298 [  +0.327,   +1.623]   0.782
+   1-9        worse than -35       28     89%    0.5205    0.3379    0.5857    0.5541 [  +0.314,   +2.013]   0.946
+   10-22      0 to -10  (ref)     164     68%    0.8555    0.8269    1.0000    1.0000                         1.0000
+   10-22      -10 to -20           71     73%    0.3346    0.3995    0.3912    0.4831 [  +0.806,   +1.825]   1.235
+   10-22      -20 to -35           27     93%    0.1412    0.3381    0.1651    0.4088 [  +1.286,   +4.113]   2.476
+   10-22      worse than -35        1    100%    0.0751    0.1207    no ref
+   23+        0 to -10  (ref)     224     51%    0.8674    1.3904    1.0000    1.0000                         1.0000
+   23+        -10 to -20           25     68%    0.2534    0.3857    0.2922    0.2774 [  +0.681,   +1.300]   0.949
+   23+        -20 to -35            7    100%    0.0963    0.1716    0.1111    0.1234 [  +0.029,   +2.659]   1.111 THIN
+
+   -- STAGE 3 (after season 3), 849 rows
+   games      surplus               n  delist    mean f  mean OUT   charged  realized CALIB 90% CI             CALIB
+   1-9        0 to -10  (ref)      76     86%    0.8724    0.3208    1.0000    1.0000                         1.0000
+   1-9        -10 to -20           52     90%    0.5566    0.2413    0.6381    0.7521 [  +0.475,   +3.328]   1.179
+   1-9        -20 to -35           63     92%    0.4974    0.1085    0.5702    0.3381 [  +0.193,   +1.759]   0.593
+   1-9        worse than -35       21     95%    0.5371    0.3856    0.6157    1.2019 [  +0.246,   +6.143]   1.952 THIN
+   10-22      0 to -10  (ref)     114     81%    0.8506    0.7975    1.0000    1.0000                         1.0000
+   10-22      -10 to -20           57     88%    0.3355    0.1299    0.3944    0.1629 [  +0.245,   +0.702]   0.413
+   10-22      -20 to -35           32     97%    0.1341    0.1955    0.1577    0.2452 [  +0.326,   +3.864]   1.555
+   10-22      worse than -35        1    100%    0.0844    0.0000    no ref
+   23+        0 to -10  (ref)     360     57%    0.8839    1.3185    1.0000    1.0000                         1.0000
+   23+        -10 to -20           59     80%    0.2650    0.3154    0.2998    0.2392 [  +0.542,   +1.109]   0.798
+   23+        -20 to -35           14     86%    0.0930    0.1523    0.1053    0.1155 [  +0.111,   +2.678]   1.097 THIN
+
+----------------------------------------------------------------------------------------------------------------------
+4 · VERDICT (1) — THE TAIL THE OWNER NAMED
+----------------------------------------------------------------------------------------------------------------------
+   Stage 1 and stage 2, games 10-22, surplus -20 to -35 and worse than -35. The four cells are
+   printed individually AND pooled, because pooling is where the sample is.
+
+   cell                                n  delist   charged  realized     CALIB 90% CI                 verdict       
+   stage 1, -20 to -35                11     73%    0.1527    0.2180    1.4280 [  +0.630,   +2.372] ON IT (CI covers 1)
+   stage 1, worse than -35             1   too few rows to score
+   stage 2, -20 to -35                27     93%    0.1651    0.4088    2.4761 [  +1.286,   +4.113] FRONT-LOADS   
+   stage 2, worse than -35             1   too few rows to score
+
+   POOLED stages 1+2, games 10-22, ALL rows below -20 against ALL rows at or above -10:
+     deep n = 40   reference n = 342
+     CALIBRATION = 1.9025, 90% CI [1.2058, 2.7921]   -->  FRONT-LOADS
+
+   F5-P1 predicted CALIBRATION > 1 (the charge front-loads). CONFIRMED on the pooled cell.
+
+----------------------------------------------------------------------------------------------------------------------
+4b · THE CAVEAT THAT MUST BE READ WITH VERDICT (1) — THE MEAN AND THE MEDIAN DISAGREE
+----------------------------------------------------------------------------------------------------------------------
+   The deep cell holds 40 rows. Their outcomes are option-shaped: 21 of 40 deliver essentially
+   nothing (under 0.05 of entry), and the cell mean is carried by 3 rows above 1.0.
+                                 deep cell  reference      ratio
+   mean                             0.3039     1.0199     0.2979
+   median                           0.0386     0.3938     0.0981
+   share above 0.5 of entry         0.3000     0.4444     0.6750
+
+   ON THE MEAN the charge front-loads (CALIB 1.90). ON THE MEDIAN it does not (CALIB 0.63).
+   BOTH ARE TRUE AND THEY ARE NOT IN CONFLICT: the typical deep underperformer really is worth
+   about what the charge says, and the AVERAGE one is worth about twice it, because a minority
+   recover hard. A multiplicative mark on a prior is a mean-like object — it is a price, and a
+   price is an expectation, not a median — so the MEAN is the like-for-like comparison and it is
+   the primary reading. THE MEDIAN IS PRINTED BECAUSE IT DISAGREES, NOT DESPITE IT.
+   The same statistic choice sits inside the wired mechanism already: ORDER P fitted BETA on cell
+   MEANS and the sitter fade is a cell MEAN normalised by the depth-1 MEAN (F4 section 2).
+
+----------------------------------------------------------------------------------------------------------------------
+5 · F5-P3 — DOES THE TAIL FLATTEN? (the empirical question TMAX exists to answer)
+----------------------------------------------------------------------------------------------------------------------
+   cell (stages 1+2 pooled)            n   mean OUT 90% CI of mean OUT      
+   -10 to -20                        320     0.4139 [   +0.3371,    +0.4914]
+   -20 to -35                        223     0.3442 [   +0.2632,    +0.4365]
+   worse than -35                     62     0.3318 [   +0.1843,    +0.5150]
+
+   separable? NO — the intervals overlap   ->  F5-P3 did not fire: the tail flattens, as TMAX assumes
+
+----------------------------------------------------------------------------------------------------------------------
+6 · F5-P4 — SURVIVAL. DELISTED ROWS ARE OUTCOMES, NOT EXCLUSIONS.
+----------------------------------------------------------------------------------------------------------------------
+   surplus band          n st1  delist% mean OUT OUT if kept
+   0 to -10                356      59%   0.9745   1.3857
+   -10 to -20              152      69%   0.4315   0.5421
+   -20 to -35              103      78%   0.4262   0.6938
+   worse than -35           33      79%   0.3330   1.0218
+
+   delisted share rises monotonically with depth of underperformance? YES  ->  F5-P4 did not fire
+   The "OUT if kept" column is printed ONLY to show what a survivor-only reading would have said.
+   IT IS NOT USED ANYWHERE. Dropping the delisted rows would flatter the charge and is the exact
+   bias this seat preregistered against.
+
+----------------------------------------------------------------------------------------------------------------------
+7 · VERDICT (2) — THE CONVICTION-SPEED ASSUMPTION, TESTED DIRECTLY
+----------------------------------------------------------------------------------------------------------------------
+   The mechanism implies  ln f(at-bar) - ln f(deep) = BETA_sat * A(g) * Delta_s.  Inverting it
+   recovers an EMPIRICAL A from outcomes alone:
+
+       A_hat(g) = -ln( OUT(deep,g) / OUT(at-bar,g) ) / ( BETA_sat * Delta_s(g) )
+
+   A_hat is NOT bounded to [0,1] by construction and is printed raw. Stages 1, 2 and 3 are pooled
+   because A(g) is a pure function of g in the mechanism; a stage-1-only run is printed after.
+
+   games     n deep   n ref   OUT deep    OUT ref   Delta_s       A_hat A(g) wired
+   1-4          240     166     0.3317     0.4751     31.94      0.0981     0.2016
+   5-9           81     199     0.2383     0.7062     27.27      0.3476     0.5005
+   10-14         43     188     0.1830     0.9890     26.14      0.5631     0.6993
+   15-19         23     165     0.2990     0.9394     27.22      0.3668     0.8196 THIN
+   20-24         13     165     0.2821     0.9630     24.99      0.4285     0.8908 THIN
+   25-34          8     193     0.3307     1.2863     25.11      0.4718     0.9481 THIN
+   35+            8     339     0.0855     1.4461     28.89      0.8540     0.9905 THIN
+
+   FITTED, weighted least squares over the scored bins:
+     A_hat(g) = 1 - exp(-g/G0)                 G0_hat = 21.526
+     A_hat(g) = C * (1 - exp(-g/G0))           G0_hat = 9.360   C = 0.6204
+     the wired G0 = 9.890, published 90% CI [7.60, 12.98]
+
+   400-draw player-clustered bootstrap:
+     G0_hat (amplitude pinned at 1, as the mechanism has it) = 21.526  90% CI [12.983, 28.993]
+     G0_hat (amplitude free)                                 = 9.360  90% CI [4.790, 400.000]
+     C      (the mechanism forces C = 1)                     = 0.6204  90% CI [0.4838, 11.6004]
+
+   F5-P2 predicted G0_hat ABOVE the published upper limit of 12.98 (conviction firms SLOWER).
+     point estimate ABOVE the published interval. F5-P2 did not fire
+     does the 90% CI on G0_hat overlap the published [7.60, 12.98]? NO — they are separable, and the gap is 0.0031
+     THAT SEPARATION IS A HAIRLINE AND IT IS REPORTED AS ONE: the fitted lower limit is 12.983
+     against a published upper limit of 12.98. Nobody should read a 0.003-wide gap as decisive.
+
+   THE RAWEST FORM OF THE SAME RESULT, before any curve is fitted: the empirical A sits BELOW the
+   wired A(g) in 7 of the 7 scored games bins.
+
+   TWO READINGS OF THE SAME DATA, AND THEY CANNOT BE SEPARATED:
+     (a) conviction firms about TWICE AS SLOWLY as assumed — G0 21.5 against 9.89, amplitude 1;
+     (b) conviction firms at ABOUT THE ASSUMED SPEED but only ever reaches 62% of the assumed
+         strength — G0 9.4, amplitude 0.62.
+   Reading (b)'s amplitude CI is [0.484, 11.600] and its G0 CI runs to the search bound, so the data
+   CANNOT tell speed from strength here. WHAT BOTH READINGS AGREE ON is that the charge convicts
+   HARDER than outcomes support at every games level measured. This seat states that and stops.
+
+
+   STAGE-1 ONLY, as a sensitivity: G0_hat = 20.895 on 4 scored bins.
+
+----------------------------------------------------------------------------------------------------------------------
+8 · SENSITIVITIES — THE STATISTIC, THE CENSORING, THE PATHWAY, AND THE ALREADY-PRICED SOFTENINGS
+----------------------------------------------------------------------------------------------------------------------
+   reading                                      n deep      CALIB  90% CI lo
+   primary (mean, ND, >=4 future seasons)           40     1.9025     1.1990
+   >= 6 future seasons                              36     1.8643     1.1903
+   every pathway, not ND only                       50     2.3207     1.1408
+
+   THE STATISTIC (F1 and F4 both found the mean and the pooled aggregate can disagree):
+     mean (primary)                       CALIB 1.9025
+     median                               CALIB 0.6263
+     pooled aggregate (v0-weighted)       CALIB 2.4559
+
+   THE ALREADY-PRICED SOFTENINGS, FOR REFERENCE ONLY. ORDER R priced TMAX at the 15th and 20th
+   percentile and BETA_sat at its CI floor. NONE IS RECOMMENDED HERE and no new constant is
+   derived; this is only so the owner can see whether anything already on the record lands where
+   the measurement points.
+
+   variant                            f at shape    charged      CALIB
+   ORDER P as wired                       0.1985     0.1566     1.9025
+   TMAX at p15                            0.1985     0.2014     1.4793
+   TMAX at p20                            0.1985     0.2539     1.1736
+   BETA_sat at the CI floor               0.2273     0.1837     1.6219
+   BETA_sat floor + TMAX p20              0.2273     0.2861     1.0413
+
+
+wrote F5_CALIB.json and F5_CALIB_out.txt
