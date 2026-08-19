@@ -175,6 +175,105 @@ moves the surplus, and it should — that is new evidence, not a weighting artef
 
 ---
 
+## 2 · S2 — THE OWNER'S COMPRESSED CAP
+
+### 2.1 The spec, and the form that meets it
+
+> "what if P20 was just the floor, and everything scaled in between? So someone at P10 would still
+> appear a little ahead of P5, but both would be at or above the old P20. Means everyone is lifted a
+> bit, but gaps between players still count."
+
+    T_raw(s) = max( 1 − THETA_R·(s − s0), 0 )        the charge with only the ZERO clip
+    C        = 1 − THETA_R·(s_pQ − s0)               the anchor ceiling, Q ∈ {15, 20}
+    T'(s)    = C · ( 1 − exp( −T_raw(s)/C ) )        THE COMPRESSION
+
+**WHY THIS FORM AND NO OTHER — the "say why" the order asked for:**
+
+1. `T'(0) = 0`. A row at the cohort centre's crossing is untouched; the zero end of the scale does
+   not move.
+2. `dT'/dT_raw = exp(−T_raw/C)`, **strictly positive for every finite `T_raw`. There is no flat
+   segment anywhere.** Worse play always costs strictly more. This is the owner's requirement met
+   exactly rather than approximately, and it is asserted in the engine at load on a dense sweep
+   (S-S4) on every board that carries the form.
+3. `dT'/dT_raw → 1` as `T_raw → 0`. **The compression agrees with the uncompressed charge TO FIRST
+   ORDER at the shallow end**, so it is not a rescaling of the whole line — it bends only where the
+   line was going to be clipped.
+4. `T' < C` everywhere, approaching `C` and never reaching it. So **every row pays at most the
+   hard-clip-at-Q charge**: "both would be at or above the old P20" holds for EVERY row, not only
+   for the capped ones. Asserted at load (S-S5) against both the anchor clip AND ORDER P's own p5
+   clip.
+
+**Requirements 1 and 3 — value AND slope matched at zero — fix the exponential's rate to `1/C`
+uniquely. The only quantity chosen is `C`, and `C` is the anchor percentile's own `TMAX`, the SAME
+object the hard clip used. THERE IS NO FREE PARAMETER BEYOND THE ANCHOR PERCENTILE.** A hard clip
+fails (2); a linear rescale `T'=T_raw·C/TMAX_p5` fails (3) and moves rows that were never near the
+cap; a power or logistic form needs a second constant.
+
+### 2.2 THE MEASUREMENT THAT MATTERS MOST, AND IT SHARPENS THE OWNER'S OWN DIAGNOSIS
+
+The charge at 38 games (`A = 0.9793`), as a share of the pedigree leg, by surplus:
+
+| cell | s = −5 | s = −15 | s = −25 | s = −33 | s = −45 | s = −60 |
+|---|---:|---:|---:|---:|---:|---:|
+| ORDER P — clip at p5 | 36.65% | 79.37% | 93.28% | **97.26%** | **97.28%** | **97.28%** |
+| ORDER R `R15` — clip at p15 | 36.65% | 79.37% | **90.75%** | **90.75%** | **90.75%** | **90.75%** |
+| ORDER R `R20` — clip at p20 | 36.65% | 79.37% | **86.86%** | **86.86%** | **86.86%** | **86.86%** |
+| **S2 — compression, p15 anchor** | 33.99% | 68.46% | 80.11% | **84.36%** | **87.53%** | **89.28%** |
+| **S2 — compression, p20 anchor** | 33.55% | 66.61% | 77.53% | **81.45%** | **84.31%** | **85.80%** |
+
+**Read the `R20` row across. Three players whose per-game records are 35 points a game apart pay the
+IDENTICAL rate.** Under the compression they are strictly ordered, and the ordering is monotone all
+the way down.
+
+**AND HERE IS THE FINDING THE OWNER WILL WANT, because it is about his own earlier instruction.**
+Lowering the cap RAISES the crossing, so it puts MORE rows into the tied region:
+
+| anchor | `TMAX` | cap crossing `s_cross` | charged rows PARKED at the cap | the span of records tied together |
+|---|---:|---:|---:|---:|
+| p5 (ORDER P) | 21.1233 | −33.06 | *see* `CAP_S_out.txt` | |
+| p15 (ORDER R) | 13.9490 | −22.15 | | |
+| **p20 (ORDER R, the owner's own earlier instruction)** | **11.8950** | **−19.02** | | |
+
+**LOWERING THE CAP MAKES THE DEFECT HE LATER NAMED WORSE, not better.** It buys relief for the
+deepest rows by *widening* the band inside which performance stops mattering at all. That is exactly
+why a compression and a lower cap are different instruments, and why he was right to ask for the
+second thing after having asked for the first. **Counts are in §6.5 and in `CAP_S_out.txt`.**
+
+### 2.3 The offline band and class read, at the inherited `LAMBDA`
+
+| cell | `C` | W2 mark | worst class | PRI 1-10 | PRI 11-20 | MOD 1-20 | PRI 31-40 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| ORDER P clip p5 | 21.1233 | 1.0611 | 1.2046 | +8.62% | +12.07% | +12.88% | −8.88% |
+| ORDER R clip p15 | 13.9490 | 1.0690 | 1.2054 | +9.52% | +13.27% | +13.58% | −8.25% |
+| ORDER R clip p20 | 11.8950 | 1.0740 | 1.2061 | +10.12% | +13.99% | **+14.06%** | −7.93% |
+| **S2 compression p15** | 13.9490 | 1.0913 | 1.2155 | +12.90% | **+16.05%** | **+16.46%** | −7.07% |
+| **S2 compression p20** | 11.8950 | 1.0960 | 1.2171 | +13.59% | **+16.65%** | **+17.03%** | −6.81% |
+
+**The compression is a MUCH larger softening than the cap lever at the same anchor** — because it
+reaches every row below the centre, not only the parked ones. **It buys the most sell-side relief of
+anything in this packet (PRIMARY 31-40 from −8.88% to −6.81%) and it pays for that with the biggest
+buy-side breaches.** These offline reads reproduce ORDER R's own BUILT numbers exactly where they
+overlap (`R15` W2 1.0690, `R20` 1.0740, `R20` PRI 1-10 +10.12%), so the instrument is calibrated
+against a known board before it is used on an unknown one. **The built boards are in §6 and they
+are the authority.**
+
+### 2.4 FIX A is still exact under the compression — and a falsifier fired on the way there
+
+`FIXA_S_out.txt`. FIX A searches only a finite candidate set, which is only correct if `psi` attains
+its segment maxima at endpoints. Under the hard clip `psi` is piecewise affine and that is trivial.
+**Under the compression it is not, so it had to be proved.**
+
+`psi` IS convex where `T_raw > 0` — linear plus a positive multiple of `exp` of an affine function.
+**But at the ZERO CROSSING `psi'` drops from 1 to `1 − LAMBDA·A·beta`, which is a CONCAVE kink, so
+the crossing must be in the candidate set.** The engine already adds it.
+
+**THIS SEAT'S OWN FIRST VERSION OF THE CHECK LEFT IT OUT AND THE FALSIFIER FIRED, at 1.358e-02 of
+`psi`.** The check was wrong, not the engine. With the crossing in the set the miss is **0.000e+00
+on all 14,475 segments**, and on the mature-premium node set too. **Both runs are printed in
+`FIXA_S_out.txt` so the correction is auditable rather than silently made.**
+
+---
+
 ## 3 · S3 — THE LEVEL. HALT AND REPORT.
 
 ### 3.1 The anchor is reproducible, so the finding rests on solid ground
@@ -327,3 +426,24 @@ what was priced, and it is stated rather than buried.**
 classes; TALL reads −1.97, just inside). **S5-P2 was WRONG** — the mature fit's effective sample at
 `v0` 3,000 is LOWER than the young fit's (TALL 36.1 vs 43.6, SMALL 203.9 vs 215.7), because mature
 seasons are concentrated at cheaper entry prices. Both are reported as wrong.
+
+---
+
+## 4 · S4 AND 6 · S6 — HANDED OFF MID-ORDER
+
+**S4 (PG level by position) and S6 (the selection handoff audit) were re-scoped away from this seat**
+on the owner's wall-clock parallelisation request, after this seat's prereg was written and pushed
+but before the first engine edit. **Their predictions stand on `PREREG_S.md` §4 and §6 exactly as
+written — they were written before any measurement and are not withdrawn — and they are scored by
+the parallel read-only seat.** Nothing in this packet measures them and nothing here should be read
+as an answer to them.
+
+**Their results live at `docs/evidence/order_s_readonly_2026-08-19/`.**
+
+One cross-reference this seat owes that seat, because it bears on S6 and was read in code here:
+`o37_surplus`'s loop skips unplayed seasons outright (`if _gg<=0.0: continue`) and `o31_stall_run`
+carries the comment *"A GAMELESS season is SKIPPED, never counted: unplayed time is D(c_u)'s channel
+and counting it in both would be exactly the double-discount the no-stacking constraint forbids."*
+**The no-stacking rule is explicit in the source. Whether it holds in the measured board population
+is that seat's question, not this one's, and this seat does not answer it.**
+
