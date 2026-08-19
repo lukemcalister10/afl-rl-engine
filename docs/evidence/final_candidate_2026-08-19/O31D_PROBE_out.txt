@@ -1,0 +1,28 @@
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+======================================================================================================================
+COMPLETION PASS — WHERE THE EMIT HALT COMES FROM (read-only probe)
+======================================================================================================================
+  RL_O43 live in the engine namespace : _O43 = True
+  _D7_DFADE entries (fade pairs)      : 23
+  _D7_FLOOR entries (lifted rows)     : 23
+
+  THE EMITTER multiplies by o31_D  -- emit_matrix_31f.py:143, o31_D read from G at :83
+  THE ENGINE  forms _entry30b_price -- the D7 SECOND WIRING SITE, which wraps THIS and not o31_D
+
+  key                  derived_v0       o31_D       d0*o31_D    _e30b_price  EMITTER    BOARD
+  harley-barker          843.1285    0.571012       481.4362       503.5089      481      504   <-- DIVERGES
+  blake-thredgold        503.3750    0.739244       372.1171       381.2208      372      381   <-- DIVERGES
+  max-king-syd           278.3691    0.464716       129.3627       137.5416      129      138   <-- DIVERGES
+  liam-hetherton         117.3045    0.566367        66.4374        69.5288       66       70   <-- DIVERGES
+  ollie-murphy           398.3583    0.503262       200.4784       200.4784      200      200
+  noah-chamberlain        86.6490    0.426113        36.9223        39.5300       37       40   <-- DIVERGES
+  sam-allen              791.8153    0.540664       428.1057       449.6938      428      450   <-- DIVERGES
+  kobe-mcdonald           87.0299    0.426113        37.0846        39.7037       37       40   <-- DIVERGES
+
+  READING: where the two columns differ, the BOARD carries the right-hand value (the guarded
+  price) and the EMITTER forms the left-hand one (the unguarded fade). The ORDER 31-F guard
+  compares the emitter's value against the reference, which describes the BOARD -- so it
+  fail-closes. THE GUARD IS BEHAVING CORRECTLY. Closing the gap needs o31_D wrapped under
+  _O43 (AN ENGINE CHANGE) or the guard re-pointed at _entry30b_price (A CHANGE TO THE
+  BYTE-CARRIED EMITTER). This seat is authorised to make NEITHER, so the item HALTS here.

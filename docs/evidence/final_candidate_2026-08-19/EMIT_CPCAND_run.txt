@@ -1,0 +1,9 @@
+=== COMPLETION PASS — EMIT on a05fe951 vs the REGENERATED reference DAY0_CP.json ===
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: 29376d5a73a3e8274fcebe5cd90ada0b
+  RL_O42=1 RL_O43=1   day0 ref: DAY0_CP.json (210510fe5d09)\n  emit starting 21:41:39  (RL_O37=1 A=1 B1=1 pct=unset w=0.47 cap=smooth15 lam=unset pgm=1)
+  emit exit=1  COST: 0m 52s
+  NO MATRIX -- see /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/cp/emit_CPCAND/emit.log
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+ORDER 31-F HALT (replication): 82 of 89 wired entrants reproduce the board's printed day-0 at tolerance 0. Mismatches: [('harley-barker', 504, 481, 843.128494491119), ('blake-thredgold', 381, 372, 503.37499764375303), ('sam-allen', 450, 428, 791.8152857422534), ('max-king-syd', 138, 129, 278.369144349601), ('noah-chamberlain', 40, 37, 86.64903086038251), ('liam-hetherton', 70, 66, 117.30450712681677), ('kobe-mcdonald', 40, 37, 87.02989219418069)]. The year-0 column is only the landed law if it reproduces the law's own published output EXACTLY; a partial match is a DIFFERENT law and must not be emitted as this one.
