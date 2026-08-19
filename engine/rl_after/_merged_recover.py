@@ -690,6 +690,58 @@ if _O42:
                          'is the owner\'s AVAILABILITY base and is deliberately NOT the season '
                          'constant; collapsing the two would silently re-gloss the re-base as a '
                          'season-length change.'%(_O42_AVAIL_BASE,cp.SEASON))
+# ============ ORDER D7 (RL_O43) — THE PARITY GUARD. register v771, owner-ruled, VERBATIM: ============
+# "Being marked as injured shouldn't all of a sudden enrol you to a mechanism that doesn't affect
+#  your peers. In other words, a first year sitter who is injured is punished harder for it. No
+#  thanks."
+# PREREG_D7.md pushed at 04ef467 BEFORE this edit (docs/evidence/parity_2026-08-19).
+#
+# THE PRINCIPLE. An annotated-injured row must NEVER price below its HEALTHY COUNTERPART. Injury
+# status may SHIELD — the KPF fork-v exclusion, the credited absence, the R3 injured-exemption — but
+# it may NEVER ADD NET CHARGE beyond what the healthy machinery would take from the same row.
+#
+# THE ENCODING, per row carrying injury treatment:
+#     final price = max( v under the injury regime , v under the healthy-counterpart regime )
+# THERE IS NO FREE PARAMETER IN THIS DIAL. `max` has no constant, no threshold, no curve and no
+# exponent, so this lever CANNOT be fitted to a target — that is a property of the encoding, not a
+# promise about conduct. It can only ever RAISE a row; a falling row is a build-failing halt below.
+#
+# MURPHY-TYPE RISERS STAND. A row whose injury regime already prices ABOVE its healthy counterpart
+# keeps the higher value: the shield is not a charge and the guard does not claw it back.
+#
+# THE HEALTHY COUNTERPART IS **NOT** `_ev_off`, AND THAT IS THE WHOLE DESIGN POINT. `_ev_off` (the
+# attribution baseline at the availability block) merely empties _AVAIL_STATE and zeroes _avail_hc.
+# It does NOT clear `o41_injured`, which is a SEPARATE read of the same owner sheet under
+# RL_O41_INJ, so a row measured that way still carries THREE SHIELDS — the R3 injured-exemption
+# (o41_r3_take -> 0.0), the sitter-clock pause (o31_cu) and the absence-depth in-progress exemption.
+# A counterpart carrying shields UNDERSTATES the healthy charge and would lift rows that deserve no
+# lift. The counterpart here is what the engine would say IF THE PLAYER HAD SIMPLY NEVER BEEN LOGGED
+# INJURED ANYWHERE: all SEVEN live injury sites off, and his absences charged by the normal
+# machinery (R3 production fade, sitting charges) exactly as a healthy peer's would be.
+#
+# THE SEVEN LIVE SITES, on two keying objects — the exhaustive list this guard neutralises:
+#   _AVAIL_STATE[key] :127-132 _fEy fE=1.0 season-complete override        CHARGE
+#                     :1244    the KPF fork-v 2026-exclusion / nuked season  shield
+#                     :1451    the L1c clock g += L*cp.SEASON (advance)    CHARGE
+#   p['_avail_hc']    :1339,1389 the Part-1 present haircut L_p            CHARGE
+#   p['_lti_ret_hc']  :1265    the Part-2 return haircut (retired under O42) CHARGE
+#   o41_injured(p)    :4139    o31_cu — the sitter clock PAUSES             shield
+#                     :4912/4926/4945, :5007 absence-depth term + R3 EXEMPT  shield
+#
+# SCOPE, DISCLOSED AS A SEAT CHOICE THE OWNER MAY OVERTURN (PREREG_D7.md §4). The guard applies to
+# the LIVE BOARD PRICE, Y=2026 — the price the owner reads. It is NOT applied to the vM2/vM1/vP1/vP2
+# display columns: the annotation is a 2026 log, the availability charge is a 2026-only object, and
+# guarding past seasons would rewrite history the owner did not rule on.
+_O43=os.environ.get('RL_O43','0')!='0'
+_D7_HEALTHY_KEYS=set()   # keys currently being evaluated as their HEALTHY counterpart (o41_injured -> False)
+_D7_FLOOR={}             # key -> the healthy-counterpart value; the floor the guard enforces at Y=2026
+_D7_DFADE={}             # key -> (D_live, D_healthy), the sitter fade either side of the guard
+if _O43 and not (_AVAIL_ON or _O41_INJ):
+    raise SystemExit('ORDER D7 HALT: RL_O43=1 but neither the availability layer (RL_AVAIL) nor the '
+                     'injury stream (RL_O41_INJ) is live, so NO row carries injury treatment and the '
+                     'parity guard would be a silent no-op — printing a board labelled as though an '
+                     'owner ruling had been enforced on it. That is exactly the failure this dial '
+                     'exists to prevent.')
 if _O41_SDOFF_RAW!='':
     try: _O41_SDOFF=float(_O41_SDOFF_RAW)
     except ValueError:
@@ -4090,7 +4142,14 @@ if _O30B_PREVIEW:
         _O41_INJSET=frozenset(_want)
     def o41_injured(p):
         """Is this row logged-injured by the owner for the live season? False whenever the dial is off,
-        so every non-live board and every dial-off board is untouched by construction."""
+        so every non-live board and every dial-off board is untouched by construction.
+
+        ORDER D7 (RL_O43): while a row is being evaluated AS ITS HEALTHY COUNTERPART it answers False
+        here, which is what clears the three SHIELDS `_ev_off` leaves standing — the R3
+        injured-exemption, the sitter-clock pause and the absence-depth in-progress exemption. The
+        set is empty except inside that one measurement, so with RL_O43 unset this line cannot fire
+        and the dial-off board is byte-identical by construction."""
+        if _D7_HEALTHY_KEYS and p.get('key') in _D7_HEALTHY_KEYS: return False
         if not _O41_INJ or not _O41_INJSET: return False
         for _f in ('key','player'):
             if p.get(_f):
@@ -5907,6 +5966,117 @@ if _AVAIL_ON:
 # B's ruling, rl_model.py:1269, applied to this lever). From here down S1 is live in full: the board
 # export, every ev() a harness calls, and every price the owner reads. Dial off => this is a no-op.
 MA._O36_SCOPE['armed']=True
+# ==== ORDER D7 (RL_O43) — THE PARITY GUARD, MEASURED AND INSTALLED. =========================
+# PLACED HERE ON PURPOSE, AND THE POSITION IS LOAD-BEARING. It sits AFTER the S1 arming above, so the
+# healthy counterpart is formed on THE SAME S1-ARMED BASIS the board price is formed on. The
+# availability block's own `_ev_off`/`_ev_p1`/`_vfull` are computed BEFORE the arming — they are
+# attribution, and comparing a floor measured there against a price measured here would be comparing
+# two different currencies. It also sits ABOVE the "AFTER (wired: ...)" banner line further down,
+# which rl_export.py uses as a STRING SENTINEL to truncate this source before exec'ing it — so the
+# wrapped ev() below IS the ev() rl_export binds, which is what makes the guard survive rl_export's
+# hard export<->engine parity gate (rl_export.py:650-660, tolerance 0). A post-hoc adjustment to the
+# WRITTEN board would fail that gate; this is not one.
+#
+# *** FOOTGUN, HIT BY THIS SEAT AND RECORDED SO THE NEXT ONE DOES NOT: that sentinel is matched as a
+# BARE SUBSTRING anywhere in the file, comments included. The first draft of this block quoted the
+# sentinel verbatim in the comment above, which truncated the exec HERE and silently made the whole
+# D7 block dead code — the dial was set, no banner printed, and the board came back byte-identical to
+# the base. It was caught only because a guard that must move rows moved none. DO NOT WRITE THAT
+# SENTINEL STRING VERBATIM ANYWHERE IN THIS FILE. ***
+if _O43:
+    _D7_TREATED=sorted(set(_AVAIL_STATE)|{_p.get('key') for _p in MA.data
+                                          if _p.get('key') and o41_injured(_p)})
+    _D7_BYKEY={}
+    for _p in MA.data:
+        if _p.get('key') in set(_D7_TREATED): _D7_BYKEY.setdefault(_p.get('key'),[]).append(_p)
+    _D7_ROWS=[]; _D7_BAD=[]
+    for _k in _D7_TREATED:
+        _rs=_D7_BYKEY.get(_k) or []
+        if len(_rs)!=1:
+            raise SystemExit('ORDER D7 HALT: treated key %r is carried by %d engine records. The '
+                             'guard is a PER-ROW max and cannot be applied to an ambiguous row.'
+                             %(_k,len(_rs)))
+        _p=_rs[0]
+        with contextlib.redirect_stdout(io.StringIO()):
+            _v_inj=ev(_p,2026)
+            _d_liv=float(o31_D(_p,2026))                    # the sitter fade at his LIVE (injury) depth
+        # ---- THE HEALTHY COUNTERPART: all seven live injury sites off for THIS ROW ONLY ----
+        _sv_state=_AVAIL_STATE.pop(_k,None)                 # sites 1,2,3
+        _sv_hc=_p.get('_avail_hc',0.0); _sv_ret=_p.get('_lti_ret_hc',0.0)
+        _p['_avail_hc']=0.0; _p['_lti_ret_hc']=0.0          # sites 4,5
+        _D7_HEALTHY_KEYS.add(_k)                            # sites 6,7 (via o41_injured)
+        try:
+            with contextlib.redirect_stdout(io.StringIO()):
+                _v_hth=ev(_p,2026)
+                _d_hth=float(o31_D(_p,2026))                # the same fade at his HEALTHY depth
+        finally:
+            _D7_HEALTHY_KEYS.discard(_k)
+            if _sv_state is not None: _AVAIL_STATE[_k]=_sv_state
+            _p['_avail_hc']=_sv_hc; _p['_lti_ret_hc']=_sv_ret
+        # D7-F6 — THE MEASUREMENT MUST BE NON-DESTRUCTIVE. If the row does not restore EXACTLY, the
+        # probe is corrupting the board and nothing it produced can be trusted. HALT, never warn.
+        with contextlib.redirect_stdout(io.StringIO()):
+            _v_back=ev(_p,2026)
+        if _v_back!=_v_inj:
+            _D7_BAD.append((_k,_v_inj,_v_back))
+        _g26=next((x['games'] for x in (_p.get('scoring') or []) if x['year']==2026),0)
+        _D7_ROWS.append({'key':_k,'player':_p.get('player'),'g2026':int(_g26 or 0),
+                         'v_injury':float(_v_inj),'v_healthy':float(_v_hth),
+                         'won':('healthy' if _v_hth>_v_inj else ('injury' if _v_inj>_v_hth else 'tie')),
+                         'delta':float(max(_v_inj,_v_hth)-_v_inj),
+                         'treated_avail':bool(_k in _AVAIL_STATE),'treated_inj':bool(o41_injured(_p))})
+        if _v_hth>_v_inj:
+            _D7_FLOOR[_k]=float(_v_hth)                     # the guard binds ONLY where it raises
+            _D7_DFADE[_k]=(_d_liv,_d_hth)                   # and the fade pair the day-0 predicate needs
+    if _D7_BAD:
+        raise SystemExit('ORDER D7 HALT (D7-F6): %d treated row(s) did not restore EXACTLY after the '
+                         'healthy-counterpart measurement: %s. The measurement is mutating the board '
+                         'it is measuring; no price it produced can be trusted.'%(len(_D7_BAD),_D7_BAD[:6]))
+    _ev_pre43=ev
+    def ev(p,Y=2026,__inner=_ev_pre43):
+        """ORDER D7 (RL_O43) — THE PARITY GUARD, at the one law. The row's LIVE price is lifted to its
+        healthy counterpart whenever the injury regime would have charged it more. max only: a row
+        whose injury regime already prices above its counterpart (a Murphy-type riser) is returned
+        UNTOUCHED, because the shield is not a charge. Dial off => this wrapper is never installed."""
+        _v=__inner(p,Y)
+        if int(Y)==2026:
+            _f=_D7_FLOOR.get(p.get('key'))
+            if _f is not None and _f>_v: return _f
+        return _v
+    # ---- THE SECOND WIRING SITE OF THIS ONE DIAL, AND WHY IT IS NEEDED. ---------------------------
+    # DISCLOSED LOUDLY: this is a SECOND SITE, not a second dial and not a second rule. It is the SAME
+    # max, on the SAME ruling, gated on the SAME _O43.
+    #
+    # WHAT FORCED IT, MEASURED NOT REASONED. The first candidate build HALTED and the halt was right:
+    #   PRINTED-DAY-0 HALT: 7 of 89 day-0/sitter rows do not print round(derived v0 x sitter fade
+    #   D(c)) x numeraire — ['Sam Allen printed 450 != 428.105725', ...]. Refusing to write the board.
+    # ORDER 29B/30B installs a PERMANENT boot-class identity: a day-0 row's PRINTED price must equal
+    # round(day0_v0(p) * o31_D(p,Y)). rl_export reads the left side off the WRITTEN board and the
+    # right side out of the engine's own `_entry30b_price`, precisely so the two cannot drift apart.
+    # The parity guard lifts a guarded day-0 row to his HEALTHY price, while `_entry30b_price` still
+    # recomputed `o31_D` at his LIVE (injury) depth — so the engine was contradicting itself about the
+    # same row, and the assert caught it. THE ASSERT IS NOT WEAKENED, NOT BYPASSED, AND NOT RE-POINTED;
+    # the frozen DAY0_K.json reference is NOT touched. The engine's own predicate is simply told the
+    # same thing the price was told.
+    #
+    # WHY THE FADE AND NOT THE VALUE: for a zero-games row the one law collapses to v = v0 * D(c_u)
+    # exactly (rho(0)=0 kills the production leg, o32_age_credit(...,0)=0), so a max on the VALUE is
+    # identically a max on the FADE. Substituting the fade ratio keeps this in the predicate's own
+    # units and needs NO numeraire conversion, so no currency can be got wrong here.
+    if _D7_DFADE and '_entry30b_price' in globals():
+        _d0_pre43=_entry30b_price
+        def _entry30b_price(p,Y=2026,__inner=_d0_pre43):
+            """ORDER D7: the engine's day-0 predicate, told the same thing the price was told."""
+            _v=__inner(p,Y)
+            if _v is None or int(Y)!=2026: return _v
+            _pr=_D7_DFADE.get(p.get('key'))
+            if not _pr: return _v
+            _dl,_dh=_pr
+            return _v*(_dh/_dl) if (_dl>0.0 and _dh>_dl) else _v
+    print("=== ORDER D7 PARITY GUARD LIVE (register v771) — %d rows carry injury treatment; %d are "
+          "LIFTED to their healthy counterpart, %d keep an injury-regime value at or above it. The "
+          "guard is a per-row max at Y=2026: it can only RAISE. NO FREE PARAMETER. ==="
+          %(len(_D7_ROWS),len(_D7_FLOOR),len(_D7_ROWS)-len(_D7_FLOOR)))
 print("=== AFTER (wired: delist + staleness + isotonic) — named players ===")
 print(f"{'player':22s}{'pos':8s}{'pk':>3s}{'g':>3s}{'ten':>4s}{'dlst':>5s}{'draft':>6s}{'BEFORE':>7s}{'AFTER':>7s}  reasoning")
 before={'Ronin O':526,'Will Martyn':554,'Sam Philp':714,'Oscar Ryan':570,'Tew Jiath':509,'Jakob Ryan':594,'Harrison Jones':528,'Keidean Coleman':723,'Dylan Stephens':761}
