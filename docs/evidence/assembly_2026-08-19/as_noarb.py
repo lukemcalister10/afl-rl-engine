@@ -141,6 +141,96 @@ for lab, nice in LABS:
 h.append('<div class="sub"><b>THE CARRY LINE the path test is scored against:</b> '
          + ' · '.join('yr%d %.3f' % (i + 1, c) for i, c in enumerate(CARRY)) + '</div>')
 
+# ================= THE POOL ARMS — same page, standing law: one document, both populations =========
+ARMJ = os.path.join(HERE, 'STANDING_TABLES_ASM.json')
+if os.path.exists(ARMJ):
+    AJ = json.load(open(ARMJ))
+    ARMS = AJ['arms']
+    ARM_ORDER = ['RD', 'MSD', 'UNR', 'IRE', 'PDA', 'PDN', 'SSP', 'PDS', 'ALLPOOL']
+    h.append('<h1 style="margin-top:34px">THE POOL ARMS</h1>')
+    h.append('<div class="sub">Every pool pathway, both windows, all five boards — the same standing '
+             'format as the ND bands above. <b>The cohort clock and the value semantics are the '
+             'all-arm instrument\'s own</b> (<code>noarb_table_allarm.py</code>, md5 '
+             '<code>8673d7e3…</code>, asserted at run). <b>THE MSD YEAR-1 EXCLUSION:</b> an MSD row '
+             'keys its cohort on the DRAFT YEAR ITSELF, not draft+1, because a mid-season draftee\'s '
+             'first season IS his draft season — so at year 1 he falls before the first year his path '
+             'covers, and those rows are counted PRE-WINDOW and EXCLUDED rather than scored as zero. '
+             'That is why MSD\'s yr1 cell reads &quot;—&quot;.</div>')
+    for lab, nice in LABS:
+        if lab not in ARMS:
+            continue
+        h.append('<h2>%s</h2>' % esc(nice))
+        for wkey, wnice in WIN:
+            rows = [(a, ARMS[lab]['%s|%s' % (wkey, a)]) for a in ARM_ORDER
+                    if '%s|%s' % (wkey, a) in ARMS[lab]]
+            if not rows:
+                continue
+            h.append('<h2 style="font-size:13px;color:var(--fg)">%s</h2>' % esc(wnice))
+            h.append('<div class="wrap"><table class="s"><thead><tr><th class="l">arm</th><th>n</th>'
+                     + ''.join('<th>yr%d</th>' % i for i in range(8))
+                     + '<th>yr0&rarr;1</th><th>margin</th><th>verdict</th><th>path test</th>'
+                       '</tr></thead><tbody>')
+            for a, d in rows:
+                a01 = d.get('apprec01'); mgn = d.get('margin')
+                v, cls = verdict_cell(a01)
+                pt = path_test(d.get('path') or [])
+                if pt is None or not pt.get('breaches'):
+                    ptxt, pcls = ('—', '')
+                elif pt['both']:
+                    ptxt, pcls = ('PASSES both limbs', '')
+                else:
+                    fails = []
+                    if not pt['limb_a']:
+                        fails.append('beats carry in yr %s' % ','.join(str(x) for x in pt['beat']))
+                    if not pt['limb_b']:
+                        fails.append('still rising at yr7')
+                    ptxt, pcls = ('FAILS — ' + '; '.join(fails), 'red')
+                cells = ''
+                for i in range(8):
+                    val = (d.get('path') or [None] * 8)[i] if i < len(d.get('path') or []) else None
+                    cells += ('<td data-v="%s">%s</td>'
+                              % (val if val is not None else -1,
+                                 ('%.3f' % val) if val is not None else '—'))
+                note = 'MSD yr1 excluded' if (a == 'MSD' and a01 is None) else v
+                h.append('<tr><td class="l">%s</td><td data-v="%d">%d</td>%s'
+                         '<td data-v="%s" class="%s">%s</td><td data-v="%s">%s</td>'
+                         '<td class="%s">%s</td><td class="%s">%s</td></tr>'
+                         % (esc(a), d.get('n', 0), d.get('n', 0), cells,
+                            a01 if a01 is not None else -9, cls,
+                            ('%+.2f%%' % (100 * a01)) if a01 is not None else '—',
+                            mgn if mgn is not None else -9,
+                            ('%+.2f%%' % (100 * mgn)) if mgn is not None else '—',
+                            cls, note, pcls, ptxt))
+            h.append('</tbody></table></div>')
+    # the arm-by-arm move, candidate vs every baseline
+    MOV = AJ.get('moves', {})
+    if MOV:
+        h.append('<h2>The arm-by-arm move — the candidate against every baseline</h2>')
+        h.append('<div class="sub">On the yr0&rarr;1 appreciation. A POSITIVE move means the candidate '
+                 'appreciates MORE over year one than the baseline does. <b>A verdict change is called '
+                 'out on its own line.</b></div>')
+        for key in sorted(MOV):
+            wkey, lab = key.split('|')
+            h.append('<h2 style="font-size:13px;color:var(--fg)">%s &nbsp;·&nbsp; candidate vs %s</h2>'
+                     % (esc(wkey), esc(lab)))
+            h.append('<div class="wrap"><table class="s"><thead><tr><th class="l">arm</th>'
+                     '<th>candidate</th><th>%s</th><th>move</th><th>verdict</th></tr></thead><tbody>'
+                     % esc(lab))
+            for a in ARM_ORDER:
+                m = MOV[key].get(a)
+                if not m:
+                    continue
+                chg = m.get('changed')
+                h.append('<tr%s><td class="l">%s</td><td data-v="%f">%+.2f%%</td>'
+                         '<td data-v="%f">%+.2f%%</td><td data-v="%f">%+.2f%%</td>'
+                         '<td class="%s">%s &rarr; %s%s</td></tr>'
+                         % (' class="red"' if chg else '', esc(a),
+                            m['cand'], 100 * m['cand'], m['base'], 100 * m['base'],
+                            m['move'], 100 * m['move'], 'flag' if chg else '',
+                            esc(m['v_cand']), esc(m['v_base']),
+                            ' &nbsp;<b>*** VERDICT CHANGES ***</b>' if chg else ''))
+            h.append('</tbody></table></div>')
+
 page = '\n'.join(['<title>Assembly No-Arb</title>', '<style>%s</style>' % CSS,
                   '<h1>THE NO-ARB TABLES — THE CANDIDATE</h1>',
                   '<div class="sub">Five ND bands plus ALL / 1-20 / 21-64, in BOTH windows, every '

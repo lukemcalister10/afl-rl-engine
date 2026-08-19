@@ -487,6 +487,64 @@ window.**
 
 ---
 
+## 6b · THE POOL ARMS — ADDENDUM, AND A DELIVERY GAP OWNED
+
+**THE GAP: the first no-arb delivery was ND-ONLY.** The standing format requires the pool arms in
+both windows against both baselines, and they were missing — the only "SSP" on the page was prose in
+the broken-box. **Caught by the owner, not by me.** They are now built and on the same page, which is
+the standing law: one document, both populations. Instrument `noarb_table_allarm.py` md5
+**`8673d7e3…`** computed at run and asserted, alongside `0f822035…` and `d59ad550…`.
+
+**THE MSD YEAR-1 EXCLUSION, in words:** an MSD row keys its cohort on the **draft year itself**, not
+draft+1, because a mid-season draftee's first season *is* his draft season. At year 1 he therefore
+falls before the first year his path covers; those rows are counted **pre-window and excluded** from
+the year-1 cell rather than scored as zero. That is why MSD's yr1 reads "—".
+
+**THE CANDIDATE, PRIMARY (cohorts 2005-2023):**
+
+| arm | n | yr0→1 | margin | verdict | path test |
+|---|---:|---:|---:|---|---|
+| RD | 623 | −4.33% | +18.33% | SELL-RED | — |
+| MSD | 55 | — | — | *yr1 excluded* | — |
+| UNR | 49 | −44.10% | +58.10% | SELL-RED | — |
+| **IRE** | 47 | **+10.47%** | +3.53% | **ok** | — |
+| PDA | 43 | −22.60% | +36.60% | SELL-RED | — |
+| PDN | 33 | −42.52% | +56.52% | SELL-RED | — |
+| **SSP** | 31 | **+56.56%** | −42.56% | **BUY-RED** | **FAILS — beats carry in yr 2,3** |
+| PDS | 21 | −26.15% | +40.15% | SELL-RED | — |
+| **ALLPOOL** | 1,016 | −5.99% | +19.99% | SELL-RED | — |
+
+MODERN (cohorts 2019-2023) reads RD −21.77%, UNR −34.95%, IRE −54.98%, PDA −48.72%, PDN −38.23%,
+**SSP +56.56% (BUY-RED, fails)**, ALLPOOL −11.32%. **SSP is the candidate's only breaching arm cell in
+either window.**
+
+### THE ONE VERDICT CHANGE — AND IT IS AN IMPROVEMENT
+
+> **IRE, PRIMARY: R = R20A reads +14.58% (BUY-RED). THE CANDIDATE READS +10.47% (ok).**
+> **The candidate CURES a buy-side red that the owner's reference board carries.**
+
+Worth reading with its history: IRE was already inside the rail on ORDER P (+13.62%) and ORDER K
+(+13.34%). **R's own p20 hard clip pushed IRE out through the +14% rail; the candidate pulls it back
+in.** No other arm changes verdict against any baseline, in either window.
+
+### SSP — THE INHERITED BREACH, READ ON THE CANDIDATE
+
+| board | SSP yr0→1 | verdict | path test |
+|---|---:|---|---|
+| the landing candidate | +50.52% | BUY-RED | FAILS |
+| **ORDER K** | **+52.71%** | BUY-RED | FAILS |
+| **THE CANDIDATE** | **+56.56%** | BUY-RED | FAILS |
+| R = R20A | +57.21% | BUY-RED | FAILS |
+| **ORDER P** | **+58.17%** | BUY-RED | FAILS |
+
+**The absence package did move it, and in the right direction: −1.61 points against ORDER P and −0.65
+against R.** But **the candidate is still +3.85 points WORSE than ORDER K** — which is the same
+finding the register already carries (C6: an inherited breach *worsened by ORDER P*). The assembly
+walks part of ORDER P's damage back and no more. **SSP is NOT repaired here and was never in scope**
+— parked at v744 C6, on n = 31 rows, failing the path test on every board including ORDER K's.
+
+---
+
 ## 7 · THE TAIL CALIBRATION ON THE p15 ANCHOR — THE BUILT NUMBER, AND IT MISSES
 
 **THE CANDIDATE READS 0.8004.** The supervisor's estimate for the p15 board was **~0.95-1.1**.
