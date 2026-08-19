@@ -1,0 +1,9 @@
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+avail state rows: 37
+INJSET size: 37
+records matched: 37
+andy-moniz-wakefield     v_inj=     39.68  v_healthy=     24.73  restore_ok=True
+blake-thredgold          v_inj=    391.62  v_healthy=    401.20  restore_ok=True
+brayden-fiorini          v_inj=    192.04  v_healthy=    367.42  restore_ok=True
+connor-rozee             v_inj=   2692.92  v_healthy=   3557.49  restore_ok=True
