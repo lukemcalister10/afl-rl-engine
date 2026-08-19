@@ -32,15 +32,23 @@ HISTORY, THE ENGINE'S FLAT GAMES-ONLY WEIGHTING IS THE WORST POINT ON THE OUT-OF
 the mean-reversion-calibrated criterion. **The 0.47 read reproduces ORDER 33 seat W4's independent
 optimum to three decimals — `[0.591, 0.278, 0.131]` against W4's `[0.588, 0.279, 0.133]` — on a
 different predictand, a different estimator and a different population.** The season-turn axis is
-**EXACTLY invariant**, by construction and by sweep. §1
+**EXACTLY invariant** — largest move in the charge factor **2.22e-16, one unit in the last place** —
+by construction and by sweep. **BUT THE PRICED VARIANT IS A STIFFENING, NOT A SOFTENING** (−506
+board points), **it does not move the year-1 rails AT ALL for a structural reason** (a year-1 row has
+one season and a weighted mean over one season is that season under every `w`), and **it reaches
+exactly ONE of the three staleness failure modes the parallel seat mapped.** §1, §1.7, §6.8
 
 **S2 — THE OWNER'S COMPRESSED CAP. IT WORKS, IT ADDS NO FREE PARAMETER, AND THE MEASUREMENT SHOWS
 THE OWNER'S DIAGNOSIS WAS SHARPER THAN THE FIX HE HAD ALREADY ORDERED.** Lowering the cap to p20 —
 his own earlier instruction, which ORDER R priced — **more than doubles the number of rows parked at
 the cap and therefore tied to each other**, so it makes the very defect he later named WORSE. The
-compression unties all of them: `T'(s) = C·(1 − exp(−T_raw/C))` is strictly increasing in shortfall
-everywhere, has no flat segment anywhere, and is bounded by the anchor ceiling it never reaches.
-§2
+compression unties all of them: **at exactly equal career games it has ZERO inversions and ZERO ties
+on all 1,067 pairs, where ORDER P's p5 clip has 9 and ORDER R's p20 clip has 120.** It is also **the
+largest single softening in the whole ORDER P/Q/R/S arc (+8,193 against FIX B1)**, it cuts the
+relief the deepest decile captures from 99% to 50%, and **it is the only instrument in this packet
+that closes a standing sell-red** — PRIMARY picks 21-64 crosses zero for the first time. It pays for
+that with buy-side breaches, all of which PASS the owner's loosened-rail path test in the PRIMARY
+window. §2, §6.5, §6.7, §6.8, §6.9
 
 **S3 — THE LEVEL. HALT AND REPORT. THERE IS NO SOLVE.** The late-band sell-reds are **monotone in
 `LAMBDA` across the entire sweep and never cross zero at any level**, so "solve `LAMBDA` to close
@@ -55,7 +63,10 @@ side.** §3
 seasons** — higher than the young surface at the cheap end (+4.03 points a game at `v0` 400 SMALL,
 CI excludes zero) and lower at the expensive end (−4.71 at 3,000, −7.98 at 4,000, CIs exclude zero);
 the average slope ratio is TALL 0.904 and **SMALL 0.747**. So FIX B1, which reads the YOUNG premium
-at every age, **sets too low a bar on cheap mature rows and too high a bar on expensive ones**. §5
+at every age, **sets too low a bar on cheap mature rows and too high a bar on expensive ones**.
+**BUT PRICING THE REPAIR MAKES FIX B1's MATURE-ROW COST WORSE, NOT BETTER — −6,567 to −7,064 — the
+opposite of what this seat predicted**, because most mature rows are CHEAP and the cheap end is
+where the young surface was too LOW. §5, §6.11
 
 **THE STANDING PROOFS.** Dial-off is **byte-exact to ORDER P `374d4e44`**, and the FIX B1 `1b1817f3`,
 FIX A+B1 `cbbb94d4` and ORDER R `7f88f509` boards all reproduce byte-exact on the edited engine too.
@@ -254,16 +265,16 @@ the way down.
 **AND HERE IS THE FINDING THE OWNER WILL WANT, because it is about his own earlier instruction.**
 Lowering the cap RAISES the crossing, so it puts MORE rows into the tied region:
 
-| anchor | `TMAX` | cap crossing `s_cross` | charged rows PARKED at the cap | the span of records tied together |
+| anchor | `TMAX` | cap crossing `s_cross` | **charged rows PARKED at the cap** | **the span of records tied together** |
 |---|---:|---:|---:|---:|
-| p5 (ORDER P) | 21.1233 | −33.06 | *see* `CAP_S_out.txt` | |
-| p15 (ORDER R) | 13.9490 | −22.15 | | |
-| **p20 (ORDER R, the owner's own earlier instruction)** | **11.8950** | **−19.02** | | |
+| p5 (ORDER P) | 21.1233 | −33.06 | **12** | 36.7 pts a game |
+| p15 (ORDER R) | 13.9490 | −22.15 | **64** | 47.9 |
+| **p20 (ORDER R, the owner's own earlier instruction)** | **11.8950** | **−19.02** | **97** | **51.0** |
 
 **LOWERING THE CAP MAKES THE DEFECT HE LATER NAMED WORSE, not better.** It buys relief for the
 deepest rows by *widening* the band inside which performance stops mattering at all. That is exactly
 why a compression and a lower cap are different instruments, and why he was right to ask for the
-second thing after having asked for the first. **Counts are in §6.5 and in `CAP_S_out.txt`.**
+second thing after having asked for the first. **Eight times the tied population, and 14.3 more points a game of record inside the tie. Full detail in §6.5 and `CAP_S_out.txt`.**
 
 ### 2.3 The offline band and class read, at the inherited `LAMBDA`
 
@@ -516,6 +527,370 @@ is that seat's question, not this one's, and this seat does not answer it.**
 
 ---
 
+## 6 · THE BOARDS. EVERY BUILD-LEVEL IDENTITY PASSES.
+
+**Twenty-seven boards. ONE engine md5 across all of them: `58510af5`. ONE store: `cb38ef11`.**
+
+### 6.1 The identities that would have failed the build
+
+| # | check | result |
+|---|---|---|
+| **S-F0** | every ORDER S dial unset does not rebuild ORDER P `374d4e44` byte-exact | **no — `374d4e44`** |
+| — | + `RL_O38B1` does not rebuild FIX B1 `1b1817f3` | **no — `1b1817f3`** |
+| — | + `RL_O38A RL_O38B1` does not rebuild FIX A+B1 `cbbb94d4` | **no — `cbbb94d4`** |
+| — | + `RL_O39_TMAXPCT=20` does not rebuild **ORDER R's own `R20A` `7f88f509`** | **no — `7f88f509`** |
+| **S-D1** | `RL_O38B1` + the S2 dials ALONE do not carry the O37/O36/O35/O32/O31 stack | **no — `fcca7db8` both ways** |
+| **S-D2** | determinism x2 fails on any variant | **no — all ELEVEN identical on a repeat** |
+| **S-F1** | `LAMBDA·THETA_R ≠ BETA_sat` at load | **no — asserted at 1e-15 on every board** |
+| **S-F2** | `TMAX` is stale rather than recomputed from the effective `THETA_R` | **no — asserted at 1e-12 on every board** |
+| **S-S1/2/3** | `T` rises with surplus · the factor leaves (0,1] · `A(0) ≠ 0` | **no — asserted on a dense sweep at load** |
+| **S-S4** | the compression has a FLAT SEGMENT | **no — 0 ties on 22,001 sweep points, every compression board** |
+| **S-S5** | the compression charges MORE than the clip it replaces, at any surplus | **no — asserted against the anchor clip AND ORDER P's p5 clip** |
+| **S-F3** | FIX A's decomposition stops reconstructing `o37_surplus` under the new dials | **no — worst 1.776e-14 on 715 rows, all EIGHT dial lines** |
+| **S-F4** | FIX A's node maximum is not exact under the compression | **no — 0.000e+00 on 14,475 segments** *(and see §2.4 — the first version of this check was wrong and fired)* |
+| **the law** | any row with ZERO CAREER GAMES moves | **no — 0 of 89 on every variant** |
+| **the law** | any row prices above its own uncharged price (`73bf9617`) | **no — 0 of 804 on every variant** |
+| — | FIX A lowers a price rather than only capping a charge | **no — 0 rows on every A-on pair** |
+| — | day-0 printed rows | **89 of 89 print EXACTLY, on all 27 builds** |
+
+### 6.2 THE BOARDS
+
+| board | cell | md5 | total | vs ORDER P | vs ORDER K | vs FIX B1 |
+|---|---|---|---:|---:|---:|---:|
+| ORDER K | — | `f3101883` | 673,097 | +6,663 | — | +13,230 |
+| **ORDER P** | dial-off | `374d4e44` | **666,434** | — | −6,663 | +6,567 |
+| SB1 | FIX B1, the control | `1b1817f3` | 659,867 | −6,567 | −13,230 | — |
+| SAB1 | FIX A+B1 | `cbbb94d4` | 662,685 | −3,749 | −10,412 | +2,818 |
+| SR20A | ORDER R p20 CLIP + A | `7f88f509` | 664,950 | −1,484 | −8,147 | +5,083 |
+| **SW47** | **S1 recency w = 0.47** | `e8278e5a` | **659,361** | −7,073 | −13,736 | **−506** |
+| **SW28** | S1 recency w = 0.28 | `7240540c` | 659,049 | −7,385 | −14,048 | **−818** |
+| SW47A | S1 w = 0.47 + A | `5f93d8c2` | 662,490 | −3,944 | −10,607 | +2,623 |
+| **SC15** | **S2 compression p15** | `08e5f1a5` | **666,901** | **+467** | −6,196 | **+7,034** |
+| **SC20** | **S2 compression p20** | `fcca7db8` | **668,060** | **+1,626** | −5,037 | **+8,193** |
+| **SC20A** | **S2 compression p20 + A** | `eeb9b650` | **669,506** | **+3,072** | −3,591 | **+9,639** |
+| SL56 | S3 `LAMBDA` 0.56 | `2db7ef05` | 651,204 | −15,230 | −21,893 | −8,663 |
+| SL10 | S3 `LAMBDA` 0.10 | `e85a1c54` | 661,569 | −4,865 | −11,528 | +1,702 |
+| **SM** | **S5 mature premium** | `61ebbb60` | **659,370** | −7,064 | −13,727 | **−497** |
+| SMA | S5 mature + A | `ee388c2e` | 662,126 | −4,308 | −10,971 | +2,259 |
+| **SALL** | all four + A, the far corner | `5e2e36f1` | **668,806** | **+2,372** | −4,291 | **+8,939** |
+| Peta0 | the UNCHARGED ceiling | `73bf9617` | 702,734 | +36,300 | +29,637 | +42,867 |
+
+**THE HEADLINE, AND IT IS NOT WHAT THE ORDER'S FRAMING ASSUMED: TWO OF THE FOUR REPAIRS ARE
+STIFFENINGS, NOT SOFTENINGS.**
+
+- **The recency weighting REMOVES points** — 506 at `w = 0.47`, 818 at `w = 0.28`. Weighting recent
+  seasons more heavily charges MORE in aggregate, because the population the charge reaches is
+  dominated by rows whose recent seasons are their worse ones. **S1-P4 predicted `|Δ| < 4,000` and
+  is RIGHT; the DIRECTION was not predicted and it is reported as unpredicted.**
+- **The mature premium also removes points** — 497. §6.6.
+- **The compression is by far the largest single softening in the whole ORDER P/Q/R/S arc: +8,193
+  against FIX B1, against FIX A's +2,818 and ORDER R's p20 clip at +5,083.**
+
+### 6.3 ADDITIVITY
+
+| combination | additive prediction | actual | gap | % of board |
+|---|---:|---:|---:|---:|
+| `SW47A` = SW47 + A | 662,179 | 662,490 | +311 | +0.047% |
+| `SMA` = SM + A | 662,188 | 662,126 | −62 | −0.009% |
+| `SC20A` = SC20 + A | 670,878 | 669,506 | **−1,372** | **−0.205%** |
+| `SALL` = SW47 + SC20 + SM + A | 669,875 | 668,806 | −1,069 | −0.160% |
+
+**The recency and mature repairs are additive with FIX A to within a twentieth of a percent. The
+COMPRESSION is not** — it gives FIX A 1,372 points less to work with, for the same reason ORDER R
+measured on its own cap lever: **softening and monotonising are partly the same job.**
+
+### 6.4 CONTINUITY — INCLUDING THE AXIS S1 HAD TO BE TESTED ON
+
+| axis | every ORDER S board |
+|---|---|
+| **THE SEASON TURN**, `o37_surplus` at Y and Y+1 on unchanged data | **largest move in the charge factor 2.220446e-16 — ONE UNIT IN THE LAST PLACE.** S1-F2 does not fire. **The turn is EXACTLY invariant, as the prereg claimed and as the cancellation requires.** |
+| AGE, the charge factor, 18-30 at 20 games | **0.0000 at every age** (every variant carries FIX B1) |
+| AGE, the price, every real row re-priced one year older | **0 rows move** |
+| GAMES, the charge across 0-400 at 0.01, seven surplus levels | the charge rises with games at **0 of 280,000** |
+| SURPLUS, across 100 points at 0.01 | a better player charged more at **0 of 10,000** |
+
+**S1-P3 IS RIGHT AND IT IS THE PREDICTION THIS SEAT MOST WANTED TO BE RIGHT ABOUT.** The geometric
+form cannot create a calendar cliff, because at a turn every exponent rises by one and the common
+factor cancels in the normalisation. Measured, not assumed: the residual is one ULP of a double.
+
+### 6.5 S2 ON REAL ROWS — THE PARKED POPULATION AND THE PAIRWISE TEST
+
+**How many charged rows are PARKED at the cap, and how far apart their records are:**
+
+| anchor | `TMAX` | crossing | **rows parked** | their `s_ped` range | **span tied away** |
+|---|---:|---:|---:|---|---:|
+| p5 — ORDER P | 21.1233 | −33.06 | **12** | −70.1 .. −33.3 | 36.7 pts a game |
+| p15 — ORDER R | 13.9489 | −22.15 | **64** | −70.1 .. −22.2 | 47.9 |
+| **p20 — ORDER R, the owner's own earlier instruction** | 11.8950 | −19.02 | **97** | −70.1 .. −19.1 | **51.0** |
+
+**Lowering the cap from p5 to p20 takes the tied population from 12 rows to 97 — EIGHT TIMES — and
+widens the band of records inside which performance stops mattering from 36.7 to 51.0 points a
+game.** The owner's earlier instruction and his later diagnosis point in opposite directions, and
+this is the number that shows it.
+
+**THE DECISIVE TEST. Every pair of charged rows at EXACTLY equal career games**, so `A(g)` is held
+fixed and the record is the only thing left. Pairs where both rows are charged nothing are dropped —
+both are producing above their bar and a tie at zero is the mechanism working, not the cap.
+
+| board | pairs | **inverted** | of which exact **TIES** | **worst gap tied away** |
+|---|---:|---:|---:|---:|
+| SB1 — ORDER P's p5 clip | 1,067 | 9 | 9 | 25.83 pts a game |
+| **SR20A — ORDER R's p20 CLIP + A** | 1,067 | **120** | **104** | **47.56** |
+| **SC15 — the compression, p15** | 1,067 | **0** | **0** | **0.00** |
+| **SC20 — the compression, p20** | 1,067 | **0** | **0** | **0.00** |
+| SC20A — the compression p20 + FIX A | 1,067 | 10 | **0** | **0.00** |
+| SALL | 1,117 | 7 | **0** | **0.00** |
+
+**S2-P3 IS CONFIRMED EXACTLY. On the compression with FIX A off, worse per-game play costs strictly
+more on ALL 1,067 equal-games pairs — zero inversions, zero ties.** ORDER R's p20 clip inverts 120
+of them and ties 104. **The ten residual inversions on `SC20A` carry ZERO ties: they are FIX A's own
+entry-price cap doing its job, not the surplus cap, and they are reported as what they are.**
+
+### 6.6 THE CHARGE DISTRIBUTION, AND WHICH REPAIRS SOFTEN
+
+| board | n | **max charge** | **>90%** | >75% | >50% |
+|---|---:|---:|---:|---:|---:|
+| SB1 — ORDER P's clip + B1 | 715 | 97.28% | **20** | 119 | 237 |
+| SAB1 | 715 | 95.73% | 19 | 106 | 221 |
+| SR20A — ORDER R p20 clip + A | 715 | 87.44% | **0** | 98 | 218 |
+| **SC15 — compression p15** | 715 | **84.50%** | **0** | **32** | 193 |
+| **SC20 — compression p20** | 715 | **81.59%** | **0** | **17** | 186 |
+| **SC20A — compression p20 + A** | 715 | **81.59%** | **0** | **16** | **178** |
+| **SW47 — recency 0.47** | 715 | **97.49%** | **31** | **142** | **272** |
+| SW47A | 715 | 97.26% | 27 | 129 | 258 |
+| **SM — mature premium** | 715 | **97.28%** | **28** | 123 | 250 |
+| SMA | 715 | 96.05% | 24 | 112 | 236 |
+| **SL56 — `LAMBDA` 0.56** | 715 | **98.13%** | **51** | 167 | 316 |
+| SL10 — `LAMBDA` 0.10 | 715 | 97.07% | 15 | 108 | 222 |
+| SALL | 715 | 83.61% | **0** | 37 | 236 |
+
+**The compression moves the WHOLE distribution, not just its tail — `>75%` falls from 119 rows to
+17, where ORDER R's cap lever only took it to 98.** That is the difference between an instrument that
+reaches rows parked at the cap and one that reaches every row below the cohort centre.
+
+**And the two stiffening repairs are visible here too: recency takes `>90%` from 20 rows to 31 and
+`>50%` from 237 to 272.** A recency-weighted surplus is a HARSHER charge on this board.
+
+### 6.7 RELIEF REGRESSIVITY — the owner's second F1 question, answered
+
+Relief against the ORDER P baseline, in points of the pedigree leg, by decile of `s_ped` on the
+baseline board. **D1 is the deepest tenth.**
+
+| lever | total relief | D1 | D2 | D3 | D4 | D5 | D6+ |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| **ORDER R's p20 CLIP + A** | 663.0 | **99%** | 1% | 0 | 0 | 0 | 0 |
+| **S2 COMPRESSION p20 + A** | **2,133.1** | **50%** | 19% | 18% | 6% | 6% | 1% |
+| S2 compression p15 | 2,199.3 | 42% | 17% | 20% | 9% | 10% | 1% |
+| S2 compression p20 | 2,540.5 | 42% | 17% | 20% | 9% | 11% | 1% |
+
+**S2-P4 IS RIGHT. The cap-lowering lever puts 99% of its relief in the single deepest decile. The
+compression puts 50% there and spreads the rest down the distribution — and it delivers more than
+three times as much relief in total.** That is the regressivity the owner named, measured, and
+reduced.
+
+### 6.8 THE RAILS, BOTH WINDOWS
+
+**PRIMARY window, cohorts 2005-2023.** Below 0% is a SELL-side red; above +14% is a BUY-side red.
+
+| board | ALL 1-64 | 1-20 | 21-64 | 1-10 | 11-20 | 21-30 | 31-40 | 41-64 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| ORDER K | +4.23% | +9.22% | −3.67% | +8.22% | +11.16% | +5.26% | −10.70% | −6.89% |
+| **ORDER P** | +5.33% | +9.79% | −1.73% | +8.62% | +12.07% | +7.37% | −8.88% | −5.03% |
+| QB1 / **SW47** | +5.34% | +9.79% | −1.69% | +8.62% | +12.07% | +7.54% | −8.88% | −5.08% |
+| QAB1 / **SW47A** | +6.45% | +11.59% | −1.66% | +11.18% | +12.38% | +7.57% | −8.88% | −5.03% |
+| SR20A | +7.81% | +13.14% | −0.62% | +12.56% | **+14.26% BUY** | +9.02% | −7.93% | −4.33% |
+| **SC20** | +9.26% | **+14.63% BUY** | **+0.77%** | +13.59% | **+16.65% BUY** | +10.90% | **−6.81%** | **−3.23%** |
+| **SC20A** | +9.67% | **+15.30% BUY** | **+0.78%** | **+14.58% BUY** | **+16.71% BUY** | +10.91% | −6.81% | −3.20% |
+| SM | +5.33% | +9.79% | −1.71% | +8.62% | +12.07% | +7.54% | −8.91% | −5.13% |
+| **SALL** | +9.67% | **+15.30% BUY** | **+0.76%** | **+14.58% BUY** | **+16.71% BUY** | +10.91% | −6.83% | −3.24% |
+
+**MODERN window, cohorts 2019-2023.**
+
+| board | ALL 1-64 | 1-20 | 1-10 | 11-20 | 21-30 | 31-40 | 41-64 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| **ORDER P** | +1.45% | +12.88% | **+18.85% BUY** | +1.94% | −13.84% | −11.73% | −24.88% |
+| QB1 / **SW47** | +1.40% | +12.88% | **+18.85%** | +1.94% | −13.84% | −11.73% | −25.23% |
+| QAB1 / **SW47A** | +2.36% | **+14.41% BUY** | **+20.83%** | +2.66% | −13.82% | −11.73% | −25.15% |
+| SR20A | +3.46% | **+15.53% BUY** | **+21.78%** | +4.08% | −12.36% | −10.63% | −24.53% |
+| **SC20** | +4.82% | **+17.03% BUY** | **+22.87%** | +6.34% | **−11.01%** | **−9.90%** | **−23.23%** |
+| **SC20A** | +5.23% | **+17.68% BUY** | **+23.78%** | +6.52% | −11.00% | −9.90% | −23.19% |
+| SM | +1.40% | +12.88% | +18.85% | +1.94% | −13.84% | −11.73% | −25.26% |
+| **SALL** | +5.23% | **+17.68% BUY** | **+23.78%** | +6.52% | −11.00% | −9.90% | −23.20% |
+
+**THREE THINGS HAVE TO BE SAID ABOUT THESE TABLES.**
+
+1. **THE RECENCY WEIGHTING DOES NOT MOVE THE RAILS AT ALL, AND THE REASON IS STRUCTURAL, NOT
+   NUMERICAL.** `SW47` reproduces `QB1` on every band in both windows to the last decimal, and
+   `SW47A` reproduces `QAB1`. **A year-1 cell reads a row that has played AT MOST ONE SEASON, and a
+   weighted mean over one season is that season under EVERY `w`.** The recency dial is INVISIBLE at
+   year 1 by construction. It moves prices only where a row has a history to re-weight, which the
+   year-1 rails never see. **That is a real and previously unstated property of the rail instrument
+   and it is reported here as a finding, not a convenience.**
+2. **THE COMPRESSION IS THE ONLY INSTRUMENT IN THIS PACKET THAT CLOSES A STANDING SELL-RED.** PRIMARY
+   picks 21-64 has been red on ORDER K (−3.67%), ORDER P (−1.73%) and every ORDER Q and R cell.
+   **`SC20` takes it to +0.77% and `SC20A` to +0.78% — it crosses zero.** Picks 31-40 improve from
+   −8.88% to −6.81% and 41-64 from −5.03% to −3.20%, both the best in the whole arc.
+3. **It pays for that on the buy side.** PRIMARY 1-20 and 11-20 breach, and MODERN 1-10 goes from
+   ORDER P's already-breaching +18.85% to +23.78%.
+
+### 6.9 THE OWNER'S PATH TEST ON EVERY BREACHING CELL
+
+Carry compounds at 14%: 1.140 / 1.300 / 1.482 / 1.689 / 1.925 / 2.195 / 2.502.
+**27 breaching ND cells across all twelve boards. 9 PASS. 18 FAIL.**
+
+**EVERY NEW BREACH THE COMPRESSION CREATES IN THE PRIMARY WINDOW PASSES THE OWNER'S LOOSENED RAIL:**
+
+| band | board | yr1 | yr2 | yr3 | yr4 | yr5 | yr6 | yr7 | limb (a) | limb (b) | verdict |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---|---|---|
+| PRIMARY 1-10 | **SC20A** | +14.58% | 1.230 | 1.384 | 1.524 | 1.493 | 1.402 | 1.231 | pass | pass | **PASSES** |
+| PRIMARY 1-10 | **SALL** | +14.58% | 1.235 | 1.390 | 1.531 | 1.493 | 1.397 | 1.227 | pass | pass | **PASSES** |
+| PRIMARY 1-20 | **SC20** | +14.63% | 1.238 | 1.377 | 1.527 | 1.537 | 1.456 | 1.300 | pass | pass | **PASSES** |
+| PRIMARY 1-20 | **SC20A** | +15.30% | 1.250 | 1.385 | 1.533 | 1.540 | 1.458 | 1.302 | pass | pass | **PASSES** |
+| PRIMARY 1-20 | **SALL** | +15.30% | 1.254 | 1.392 | 1.538 | 1.540 | 1.454 | 1.298 | pass | pass | **PASSES** |
+| PRIMARY 11-20 | **SC20** | +16.65% | 1.285 | 1.386 | 1.548 | 1.631 | 1.565 | 1.441 | pass | pass | **PASSES** |
+| PRIMARY 11-20 | **SC20A** | +16.71% | 1.287 | 1.389 | 1.550 | 1.632 | 1.566 | 1.442 | pass | pass | **PASSES** |
+| PRIMARY 11-20 | **SALL** | +16.71% | 1.292 | 1.394 | 1.552 | 1.633 | 1.563 | 1.438 | pass | pass | **PASSES** |
+| PRIMARY 11-20 | SR20A *(ORDER R's, reproduced)* | +14.26% | 1.268 | 1.371 | 1.536 | 1.623 | 1.559 | 1.438 | pass | pass | **PASSES** |
+
+**Every one of them breaches in year 1 and then behaves exactly as the owner said a breach must: it
+never beats carry again, and it ENDS FALLING and far under carry (1.23-1.44 against 2.502).**
+
+**THE CELLS THAT FAIL ARE THE MODERN ONES, AND THEY ARE INHERITED, NOT CREATED.**
+
+| cell | boards | limb (a) | limb (b) | the failure, in words |
+|---|---:|---|---|---|
+| MODERN picks 1-10 | 11, **including ORDER P itself** | pass | **FAIL** | still RISING at the end: yr6 1.40 → yr7 1.59 |
+| MODERN picks 1-20 | 7, including **ORDER Q's `QAB1`** | pass | **FAIL** | still RISING at the end: yr6 1.33 → yr7 1.54 |
+| SSP arm, both windows | every board including ORDER K | **FAIL(2)** | pass | beats carry in years 2 and 3 |
+
+**MODERN 1-10 fails on ORDER P itself and the SSP arm fails on ORDER K itself. `SW47A` and `SMA`
+breach MODERN 1-20 at exactly `QAB1`'s +14.41% — the same number, because the recency dial is
+invisible at year 1 — so they inherit ORDER Q's failure rather than creating one.** The compression
+makes the level of these inherited failures worse; it does not change the verdict.
+
+**THE WEAKNESS IN THE TEST, CARRIED FROM ORDER R AND NOT BURIED:** limb (b) reads years 6 and 7 on
+FEWER ROWS than year 1 — on MODERN picks 1-20 the counts run 100/100/100/100/100/80/60/40. **The limb
+that decides every one of these failures is read on 40 of the 100 rows that produced the breach.**
+
+### 6.10 THE CLASS MARKS
+
+| board | **W2 mark (the rail's basis)** | cohort clock | worst single class | at cohort |
+|---|---:|---:|---:|---:|
+| ORDER K | 1.0513 | 1.0324 | 1.1363 | 2012 |
+| **ORDER P** | **1.0613** | 1.0322 | **1.2047** | 2016 |
+| QB1 / **SW47** | 1.0611 | 1.0321 | 1.2046 | 2016 |
+| QAB1 / **SW47A** | 1.0696 | 1.0409 | 1.2083 | 2016 |
+| SR20A | 1.0820 | 1.0552 | 1.2098 | 2016 |
+| **SC20** | **1.0960** | 1.0696 | 1.2171 | 2016 |
+| **SC20A** | **1.0992** | 1.0729 | 1.2192 | 2016 |
+| **SM** | **1.0606** | 1.0316 | **1.2044** | 2016 |
+| SMA | 1.0692 | 1.0405 | 1.2080 | 2016 |
+| **SALL** | **1.0989** | 1.0726 | 1.2190 | 2016 |
+
+**EVERY VARIANT IS INSIDE THE OWNER'S LAW ON THE REGISTERED W2 BASIS: above the 1.03 floor and under
+the 1.14 rail.** The instrument was validated first — it reproduces ORDER P's own published mark
+`1.0613` to `−0.0000`. **S2-P5 is RIGHT.**
+
+**AND THE BAD HALF, REPORTED AS BADLY AS IT READS.** The three draft classes ORDER P put over 1.14
+(2010 1.1570, 2011 1.1595, 2015 1.2047) are **not repaired by anything in this order, and the
+compression makes all three worse** — the worst single class goes 1.2047 → 1.2192. **`SM`, the
+mature premium, is the ONLY cell in the whole packet that improves it, and only to 1.2044.** This
+remains an open ruling from ORDER P.
+
+### 6.11 MATURE-ROW MOVEMENT — AND S5's PREDICTION IS WRONG IN DIRECTION
+
+"Mature" is aged 24 and over: the 429 rows byte-identical to ORDER K under ORDER P.
+
+| board | rows 24+ | moving | **net vs ORDER K** |
+|---|---:|---:|---:|
+| **SB1 — FIX B1, the cost S5 was aimed at** | 429 | 245 | **−6,567** |
+| SAB1 | 429 | 245 | −6,106 |
+| **SM — the mature premium** | 429 | **255** | **−7,064** |
+| SMA | 429 | 253 | −6,665 |
+| SC20 — the compression | 429 | 247 | **−4,887** |
+| SC20A | 429 | 246 | **−4,672** |
+| SW47 — recency | 429 | 274 | −7,646 |
+| SW28 | 429 | 287 | −8,212 |
+| SALL | 429 | 289 | −6,036 |
+
+**S5-P3 IS WRONG, AND WRONG IN DIRECTION.** The prereg predicted the mature refit would cut B1's
+mature-row cost by more than 20%. **It makes it 7.6% WORSE: −6,567 → −7,064.**
+
+**Why, measured rather than excused.** The prediction looked at the EXPENSIVE end, where the mature
+premium is lower and the charge therefore falls. But the mature population's median entry price is
+**433**, and at the cheap end the mature premium is HIGHER than the young one (+4.03 points a game
+at `v0` 400 SMALL). **A higher premium is a higher bar, a lower surplus and a BIGGER charge. Most
+mature rows are cheap, so the cheap end wins the aggregate.** The domain defect is real and
+two-sided, and correcting it costs the veterans money rather than giving it back.
+
+**The instrument that actually shrinks B1's mature cost is the COMPRESSION** — −6,567 to −4,887 —
+and it was not aimed at that population at all.
+
+### 6.12 THE TWO ROW-LEVEL PREDICTIONS, SCORED
+
+**S1-P5 — the recency dial's row-level shape.** The prereg said rows whose bad seasons are OLD would
+gain and rows whose bad seasons are RECENT would lose, with a correlation above +0.8 between the
+price move and the surplus move.
+
+| | rows | net price |
+|---|---:|---:|
+| surplus RISES under recency (recent seasons better than old) | 291 | **+2,246** |
+| surplus FALLS under recency (recent seasons worse than old) | 321 | **−2,752** |
+| **net** | | **−506** |
+
+**The SIGN STRUCTURE is exactly as predicted. The CORRELATION is +0.3525, not +0.8, and the reason
+is measured rather than excused: the charge is FLAT above the cohort centre.** A row already
+producing above its bar pays nothing and cannot be made to pay less, however much its surplus rises;
+a row below the bar pays more the moment its recent seasons are its worse ones. **So a roughly
+symmetric change in the surplus (291 up, 321 down) produces a one-sided change in the board.** That
+asymmetry IS the answer to why a recency weighting stiffens rather than softens, and it was not
+foreseen on the prereg.
+
+**S5-P4 — the watched shape.** Rows aged 24+, ABOVE their age bar and BELOW their pedigree bar,
+under `SM` against `SB1`:
+
+| population | rows | movers | net points | per moving row |
+|---|---:|---:|---:|---:|
+| **the watched shape** | 61 | 45 | −153 | **−3.4** |
+| other 24+ | 365 | 104 | −344 | −3.3 |
+| **under 24** | **289** | **0** | **+0** | **0.0** |
+
+**The prediction is right by a whisker and this seat reports it as effectively a NULL:** −3.4 against
+−3.3 is not a distinction worth defending. **What IS worth stating is the third row: not one row
+under 24 moves under the mature dial, which is the structural confirmation that `RL_O40_PGMAT`
+touches only rows with a season at 24 or over — measured, not asserted.**
+
+**These are POPULATIONS, not players. No named row gated any number and no row's value is an
+acceptance criterion.**
+
+---
+
+## 7 · PREDICTIONS SCORED. NINETEEN WERE WRITTEN. SIX WERE WRONG.
+
+| # | prediction, written before the first measurement | outcome |
+|---|---|---|
+| **S1-P1** | the OOS-optimal `w` lies strictly inside (0.30, 0.85) | **WRONG on the calibrated read** — 0.28, just outside. **RIGHT on the direct read** — 0.47 |
+| S1-P2 | the per-year `w*` path is stable, spread ≤ 0.30 | **RIGHT** — 0.11 calibrated, 0.09 direct |
+| **S1-P3** | the season-turn sweep produces a step of EXACTLY 0.0000 | **RIGHT** — 2.22e-16, one ULP |
+| S1-P4 | recency moves rows both ways, `\|total − B1\| < 4,000` | **RIGHT** — −506 and −818. **The DIRECTION was not predicted: recency is a STIFFENING** |
+| **S1-P5** | rows with OLD bad seasons gain and rows with RECENT bad seasons lose; correlation > +0.8 | **WRONG on the number, RIGHT on the shape** — r = +0.3525. The sign structure is exactly as predicted; the correlation is weak for a measured reason, §6.12 |
+| S2-P1 | the compression is softer than the clip at the same anchor everywhere | **RIGHT** — +8,193 against +5,083, max charge 81.59% against 87.44%, and 0 rows lower on the board |
+| **S2-P2** | at p20 the max charge falls below 80% | **WRONG, narrowly** — 81.59%. Directionally right, the bar was too tight |
+| **S2-P3** | 0 inversions in shortfall on a dense pair sweep | **RIGHT, and exactly** — 0 of 1,067 equal-games pairs on both A-off compression boards |
+| **S2-P4** | the compression concentrates less relief in the deepest decile | **RIGHT** — 50% against the cap lever's 99% |
+| S2-P5 | the W2 mark rises and stays under 1.14 | **RIGHT** — 1.0992, with 0.0408 of room |
+| S3-P1 | the solved `LAMBDA` is below 0.17438, tonnage below 101,402.7 | **RIGHT in direction and USELESS in size** — the objective is monotone, so there is no solve |
+| S3-P2 | the aggregate W2 mark does not bind first | **RIGHT** — it admits 0.02 to 0.56 |
+| S3-P3 | the per-class reading binds immediately and is already breached | **RIGHT** — every per-class mark is over 1.14 at every `LAMBDA` |
+| **S3-P4** | the late-band sell-reds do not close at any admissible `LAMBDA` | **RIGHT, and more strongly than written** — they do not close at ANY `LAMBDA` at all, admissible or not |
+| S3-P5 | lowering `LAMBDA` is not a pure softening; `THETA_R` and `TMAX` rise | **RIGHT** — at `LAMBDA` 0.02 the cap is 176.5 against 21.12 |
+| **S5-P1** | the mature premium is ≥ 2 pts a game shallower at `v0` 3,000 on both classes | **WRONG** — SMALL −4.71, TALL −1.97 |
+| **S5-P2** | the mature fit's ESS at `v0` 3,000 exceeds the young fit's | **WRONG** — 36.1 against 43.6 (TALL), 203.9 against 215.7 (SMALL) |
+| **S5-P3** | pricing the mature refit cuts B1's mature-row cost by > 20% | **WRONG IN DIRECTION** — it makes it 7.6% worse, −6,567 → −7,064 |
+| **S5-P4** | the Setterfield-shaped population moves most under the mature refit | **RIGHT BY A WHISKER, AND REPORTED AS EFFECTIVELY A NULL** — −3.4 points per moving row against −3.3 for other mature rows, §6.12 |
+
+---
+
 ## 8 · EVERY DISCLOSURE, AND EVERYTHING THIS SEAT COULD NOT MEASURE
 
 - **NOTHING IS ADOPTED. NOTHING LANDS. NO VARIANT IS RECOMMENDED. NO PULL REQUEST WAS OPENED.
@@ -531,6 +906,34 @@ is that seat's question, not this one's, and this seat does not answer it.**
   object; `w = 0.28` is the optimum of the CALIBRATED criterion, which isolates the weighting from
   mean reversion. **Both are priced. The choice is a judgement about what the surplus is FOR, and
   that is the owner's.**
+- **TWO SCORER BUGS OF THIS SEAT'S OWN FIRED AND BOTH ARE REPORTED RATHER THAN QUIETLY FIXED.**
+  (a) `os_census.py` was ORDER R's scorer and unpacked `o38_parts` as a THREE-tuple; this order makes
+  it return FIVE (the two mature sub-shares are appended so the `RL_O40_PGMAT` decomposition stays
+  exact). **Fourteen of fifteen censuses raised on the first pass and were re-run after the fix** —
+  `rerun_censusS.sh`, and the raised runs are still on disk in `os_census_*_run.txt`.
+  (b) `os_cap.py`'s first pairwise run **did not exclude pairs where BOTH rows are charged nothing**,
+  and so counted the ZERO-CLIP region as if it were the cap: it reported 475 "ties" on a compression
+  board that has none. The exclusion is stated in the file. **Neither bug touched an engine, a board
+  or a dial — both were in this seat's own reading of boards already built.**
+- **S-F4 FIRED ON THIS SEAT'S OWN FIRST VERSION AND THE CHECK WAS WRONG, NOT THE ENGINE.** §2.4.
+- **THE RECENCY DIAL DOES NOT MOVE THE YEAR-1 RAILS AT ALL, AND THAT IS STRUCTURAL.** A year-1 cell
+  reads rows that have played at most one season, and a weighted mean over one season is that season
+  under every `w`. `SW47` reproduces `QB1` on every band in both windows to the last decimal.
+  **Anyone reading the rail tables should know the recency dial is INVISIBLE to that instrument by
+  construction, not because it does nothing.** §6.8
+- **CONTINUITY WAS RUN ON NINE CELLS, NOT FIFTEEN, AND THE NINE ARE NAMED IN `run_measureS.sh`.**
+  Both controls, both recency cells (the only ones that can move the season-turn axis), both
+  compression cells (the only ones that change the shape of `T`), both mature cells and the far
+  corner. `SW28`, `SC15` and the two `LAMBDA` endpoints were not swept. **Every ORDER S variant
+  carries FIX B1, which collapses the 23→24 age step to exactly zero on every cell, so the age axis
+  is structurally identical across all eleven. THIS IS A WALL-CLOCK CHOICE AND IT IS DISCLOSED.**
+- **SEVEN WALK-FORWARD MATRICES WERE EMITTED, NOT ELEVEN.** `SW28`, `SC15`, `SL56` and `SL10` have
+  BOARDS, CENSUSES and totals but **no standing no-arb tables of their own**. `SC15`'s bands are
+  bracketed by `SB1` and `SC20`; `SW28`'s by `SB1` and `SW47`, which are themselves identical to
+  `QB1` on the rails; and **S3 HALTS, so the two `LAMBDA` endpoints have no proposal to test rails
+  against — their frontier is delivered offline over 61 rungs on machinery first validated against
+  ORDER R's BUILT boards.** **This is a real gap in coverage and it is named rather than papered
+  over.**
 - **THE RECENCY FIT IS ON A DIFFERENT PREDICTAND FROM THE ONE THE CHARGE USES.** It predicts NEXT
   SEASON's per-game production. The charge reads the surplus as a statement about a player's whole
   record to date. **Those are related but not identical objects, and the weights transfer on the
