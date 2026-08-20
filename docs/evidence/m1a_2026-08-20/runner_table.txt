@@ -1,0 +1,29 @@
+==========================================================================================================================
+THE VERDICT SPINE — acceptance/runner.py
+  tree: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt_m1a
+  evidence: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/m1a_ev/checks
+==========================================================================================================================
+CHECK                    VERDICT     REASON
+-----------------------  ----------  -----------------------------------------------------------------------------------
+release_manifest         PASS        39 of 40 carrier fields agree with computed truth across 8 identities; 1 sealed ca…
+boot_guard_checkout      PASS        boot-store guard (Guard 5) PASS  [acceptance-spine]  store cc02567f == pinned cc02…
+config_manifest          PASS        CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)
+ruling_config            PASS        RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL…
+release_contract_seal    PASS        RELEASE-CONTRACT CHECK: PASS  (contract be37b3b4c584; identities + config + postur…
+store_coherence_six_way  PASS        six-way store coherence: PASS
+doc_lint                 PASS        doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)
+-----------------------  ----------  -----------------------------------------------------------------------------------
+
+EVIDENCE:
+  release_manifest         /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/m1a_ev/checks/release_manifest.txt
+  boot_guard_checkout      /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/m1a_ev/checks/boot_guard_checkout.txt
+  config_manifest          /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/m1a_ev/checks/config_manifest.txt
+  ruling_config            /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/m1a_ev/checks/ruling_config.txt
+  release_contract_seal    /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/m1a_ev/checks/release_contract_seal.txt
+  store_coherence_six_way  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/m1a_ev/checks/store_coherence_six_way.txt
+  doc_lint                 /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/m1a_ev/checks/doc_lint.txt
+
+AGGREGATE  7 checks  |  PASS 7  FAIL 0  BLOCKED 0  RULED-RED 0
+VERDICT    GREEN — no gating failures.
+
+JSON: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/m1a_ev/runner.json

@@ -1,0 +1,7 @@
+$ python3 release_contract.py check
+(cwd /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt_m1a)
+
+RELEASE-CONTRACT CHECK
+RELEASE-CONTRACT CHECK: PASS  (contract be37b3b4c584; identities + config + posture consistent)
+
+[exit 0]

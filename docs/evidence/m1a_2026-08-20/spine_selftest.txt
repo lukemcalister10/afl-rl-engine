@@ -1,0 +1,61 @@
+acceptance/selftest.py — prove the spine can actually fail.
+====================================================================================================
+
+PART A — force a failure in each registered check (7 checks)
+  PASS  the registry is non-empty (a spine with no checks certifies nothing)
+  PASS  forcing release_manifest         to FAIL reds the aggregate (exit 1)
+  PASS  forcing release_manifest         produces a FAIL row, not a swallowed one
+  PASS  forcing release_manifest         still yields exactly 7 rows (no check vanishes)
+  PASS  forcing boot_guard_checkout      to FAIL reds the aggregate (exit 1)
+  PASS  forcing boot_guard_checkout      produces a FAIL row, not a swallowed one
+  PASS  forcing boot_guard_checkout      still yields exactly 7 rows (no check vanishes)
+  PASS  forcing config_manifest          to FAIL reds the aggregate (exit 1)
+  PASS  forcing config_manifest          produces a FAIL row, not a swallowed one
+  PASS  forcing config_manifest          still yields exactly 7 rows (no check vanishes)
+  PASS  forcing ruling_config            to FAIL reds the aggregate (exit 1)
+  PASS  forcing ruling_config            produces a FAIL row, not a swallowed one
+  PASS  forcing ruling_config            still yields exactly 7 rows (no check vanishes)
+  PASS  forcing release_contract_seal    to FAIL reds the aggregate (exit 1)
+  PASS  forcing release_contract_seal    produces a FAIL row, not a swallowed one
+  PASS  forcing release_contract_seal    still yields exactly 7 rows (no check vanishes)
+  PASS  forcing store_coherence_six_way  to FAIL reds the aggregate (exit 1)
+  PASS  forcing store_coherence_six_way  produces a FAIL row, not a swallowed one
+  PASS  forcing store_coherence_six_way  still yields exactly 7 rows (no check vanishes)
+  PASS  forcing doc_lint                 to FAIL reds the aggregate (exit 1)
+  PASS  forcing doc_lint                 produces a FAIL row, not a swallowed one
+  PASS  forcing doc_lint                 still yields exactly 7 rows (no check vanishes)
+  PASS  CONTROL: the same harness with nothing forced exits 0 (the failures above are the forced ones, not the harness)
+
+PART B — the blocked-once law (register v787)
+  PASS  the check that finds the drift reports it (FAIL)
+  PASS  BOTH downstream checks are BLOCKED, not failed a second and third time
+  PASS  a BLOCKED row names the carrier AND the check that halted it
+  PASS  an INDEPENDENT failure still fails — blocking never hides an unrelated red
+  PASS  one halted carrier + one independent defect == 2 reds, not 4 (this is the thirty-failures antipattern, measured)
+  PASS  the carrier ledger names the halt exactly ONCE
+  PASS  RULED-RED upstream + BLOCKED downstream exits 0 (a presented fork is not this run's to clear)
+  PASS  and the rows say exactly that: RULED-RED, then BLOCKED
+  PASS  a RULED-RED row does NOT make the run green: an unrelated FAIL still reds it
+
+PART C — the verdict contract refuses to be abused
+  PASS  rejected: a verdict outside the four
+  PASS  rejected: a verdict with no reason
+  PASS  rejected: a PASS that claims to halt a carrier
+  PASS  a check that RAISES becomes a FAIL row, not a crashed run
+  PASS  a check returning a non-Verdict is a CONTRACT VIOLATION FAIL
+
+PART D — registry ordering is validated, not assumed
+  PASS  a registry where the reader runs BEFORE the halter is refused
+  PASS  the correct order (halter first) is accepted
+  PASS  THE SHIPPED REGISTRY is correctly ordered
+
+PART E — the RULED-RED ledger cannot go stale unnoticed
+  PASS  a covered carrier classifies as ruled
+  PASS  an UNCOVERED carrier alongside a covered one is still unruled (being mostly-known is not a defence)
+  PASS  an entry with one carrier still drifting is NOT stale
+  PASS  an entry whose carriers are all coherent again IS stale, and must be retired
+  PASS  every SHIPPED ledger entry names an id, its carriers, and where the fork was presented (a red nobody has presented is a FAIL, not a RULED-RED)
+
+====================================================================================================
+SPINE SELF-TEST: 45 PASS / 0 FAIL
+The spine can fail, fails for the right reasons, and reports each cause exactly once.

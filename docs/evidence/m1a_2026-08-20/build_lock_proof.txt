@@ -1,0 +1,69 @@
+BUILD LOCK — PROOF RUNS (tools/build_lock.sh)
+date: 2026-08-20T04:24:05Z
+flock: /usr/bin/flock
+===============================================================================
+
+[1] status when nothing holds it
+build-lock: no holder record at /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/p.lock
+
+[2] uncontended acquire / run / release
+build-lock: HELD by demo (pid 23101) since 2026-08-20T04:24:05Z — single writer for the shared workspace.
+      (work runs inside the lock)
+build-lock: released by demo
+
+[3] CONTENTION — the required message, with a named holder and a real time
+waiting for lock held by holder-seat since 2026-08-20T04:24:05Z
+  (lock /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/p.lock; waiting up to 30s; this build will not start until that act finishes — two engine acts through one workspace void both.)
+build-lock: HELD by waiter-seat (pid 23284) since 2026-08-20T04:24:10Z — single writer for the shared workspace.
+      (waiter proceeded ONLY after the holder finished)
+build-lock: released by waiter-seat
+
+[4] TIMEOUT is fail-closed — it halts, it never proceeds unlocked
+waiting for lock held by long-seat since 2026-08-20T04:24:10Z
+  (lock /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/p.lock; waiting up to 2s; this build will not start until that act finishes — two engine acts through one workspace void both.)
+BUILD-LOCK HALT: timed out after 2s waiting for lock held by long-seat since 2026-08-20T04:24:10Z
+  The lock is fail-closed by design: a build that cannot prove it is the single writer
+  does not start. (tools/build_lock.sh; AUDIT_CI.md gap G7.)
+      -> exit 1  (non-zero = halted rather than building unlocked, correct)
+
+[5] RL_BUILD_LOCK=0 escape hatch exists, and every skip is LOUD
+build-lock: SKIPPED by RL_BUILD_LOCK=0 (tag=skip-demo). This build is NOT interlocked; if another engine act is live against the shared workspace, both results are void.
+
+[6] reentrancy — a nested act does not deadlock against its own parent
+build-lock: already held by this process tree as 'outer-bake' (tag=inner-panel); reentrant, not re-acquiring.
+build-lock: released by outer-bake
+
+[7] the holder is SIGKILLed mid-act; status stays honest about the inherited fd
+      SIGKILL the acquiring script (pid 23538). No cleanup handler runs.
+/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/lockproof.sh: line 45: 23538 Killed                  setsid bash -c "RL_BUILD_LOCK_FILE=$RL_BUILD_LOCK_FILE '$L' run doomed-seat -- sleep 8" > /dev/null 2>&1
+build-lock: HELD by doomed-seat 23538 2026-08-20T04:24:21Z
+  NOTE: recorded pid 23538 is gone, but the lock is STILL HELD — an inherited fd, i.e. a child of the dead holder is still running against the workspace.
+  This is correct and the lock will free itself when that child exits. DO NOT DELETE THE LOCK FILE; there is never a reason to.
+      (now waiting for the orphaned child to exit on its own...)
+build-lock: FREE (last holder record: doomed-seat 23538 2026-08-20T04:24:21Z)
+      -> freed with no manual intervention and nothing to delete.
+
+===============================================================================
+All seven behaviours as designed.
+
+===============================================================================
+WIRING — the version-controlled board-build entry points
+===============================================================================
+
+$ bash -n on each edited file
+  tools/build_lock.sh    OK
+  run_panel.sh           OK
+  bootstrap.sh           OK
+
+$ grep -n build_lock run_panel.sh bootstrap.sh
+run_panel.sh:15:. "$HERE/tools/build_lock.sh"
+run_panel.sh:16:build_lock_acquire run_panel || exit 1
+bootstrap.sh:48:. "$HERE/tools/build_lock.sh"
+bootstrap.sh:49:build_lock_acquire bootstrap || exit 1
+
+EXCLUSION PROVEN BETWEEN THE TWO ENTRY POINTS:
+[1]+  Done                    setsid bash -c "RL_BUILD_LOCK_FILE=$RL_BUILD_LOCK_FILE '$WT/tools/build_lock.sh' run run_panel -- sleep 4" > /dev/null 2>&1
+waiting for lock held by run_panel since 2026-08-20T04:25:42Z
+  (lock /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wire2.lock; waiting up to 20s; this build will not start until that act finishes — two engine acts through one workspace void both.)
+build-lock: HELD by bootstrap (pid 25818) since 2026-08-20T04:25:46Z — single writer for the shared workspace.
+  -> bootstrap seeded only after run_panel released

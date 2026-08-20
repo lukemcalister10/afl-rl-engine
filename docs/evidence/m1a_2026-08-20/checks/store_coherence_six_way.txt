@@ -1,0 +1,12 @@
+$ python3 ui/tools/ownership_store_apply.py verify
+(cwd /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt_m1a)
+
+  store file                             cc02567f80bef39228f25854d121a766
+  expected_boot.store                    cc02567f80bef39228f25854d121a766
+  release_contract.identities.store      cc02567f80bef39228f25854d121a766
+  season_state.source_store_md5          cc02567f80bef39228f25854d121a766
+  rl_app_data.json.srcmd5.source_md5     cc02567f80bef39228f25854d121a766
+  board_view_working.stamp.store_md5     cc02567f80bef39228f25854d121a766
+  six-way store coherence: PASS
+
+[exit 0]

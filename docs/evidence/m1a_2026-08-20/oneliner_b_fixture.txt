@@ -1,0 +1,167 @@
+ONE-LINER (b) — scratch_fixture.py R14 config coherence. BEFORE / AFTER.
+Test: engine/rl_after/ingestion/test_weekly_updater.py (a step in TWO workflows:
+live-scoring.yml and final-integration.yml Track B).
+==================================================================================
+
+########## BEFORE (origin/main, unmodified) ##########
+weekly-updater fast tests:
+  test_snapshot_identity PASS
+  test_bridge_preserves_score_meaning PASS
+  test_gate_off_by_default PASS
+  test_prestaging_refusals PASS
+  test_repo_root_resolves_or_fails_loudly PASS
+  test_movers_zero_report_seed_reanchors_to_first_report PASS
+  test_movers_populated_bundle_never_reanchors PASS
+  test_finalized_status_clears_stale_failure PASS
+R14 disposable-fixture fail-closed tests + negative controls:
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt_m1a/engine/rl_after/ingestion/test_weekly_updater.py", line 311, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt_m1a/engine/rl_after/ingestion/test_weekly_updater.py", line 213, in main
+    test_r14_fixture.run_all()
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt_m1a/engine/rl_after/ingestion/test_r14_fixture.py", line 293, in run_all
+    t()
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt_m1a/engine/rl_after/ingestion/test_r14_fixture.py", line 80, in test_positive_r14_baseline
+    scr = _good_r14_scratch()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt_m1a/engine/rl_after/ingestion/test_r14_fixture.py", line 63, in _good_r14_scratch
+    return FI.make_scratch('r14test')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt_m1a/session_2026-07-20/weekly_updater_hardening/failure_injection_proof.py", line 90, in make_scratch
+    SF.materialize_r14(dst, REPO)                 # ITEM 408 item 6: reconstruct the accepted R14 baseline
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt_m1a/engine/rl_after/ingestion/scratch_fixture.py", line 373, in materialize_r14
+    _verify_r14(scratch_root)
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt_m1a/engine/rl_after/ingestion/scratch_fixture.py", line 323, in _verify_r14
+    raise FixtureError("R14 fixture verification FAILED (%d issue(s)):\n  - %s"
+scratch_fixture.FixtureError: R14 fixture verification FAILED (1 issue(s)):
+  - expected_boot config pin != scratch model_config vars hash (config drift)
+before rc=1
+
+########## AFTER ##########
+weekly-updater fast tests:
+  test_snapshot_identity PASS
+  test_bridge_preserves_score_meaning PASS
+  test_gate_off_by_default PASS
+  test_prestaging_refusals PASS
+  test_repo_root_resolves_or_fails_loudly PASS
+  test_movers_zero_report_seed_reanchors_to_first_report PASS
+  test_movers_populated_bundle_never_reanchors PASS
+  test_finalized_status_clears_stale_failure PASS
+R14 disposable-fixture fail-closed tests + negative controls:
+  [PASS] positive: fixture is the accepted R14 baseline (store/board/boot/season/ledger + contract seal)
+  [PASS] control 1: an unavailable R14 anchor halts (fail-closed)
+  [PASS] control 4: a non-ancestor anchor halts (fail-closed)
+  [PASS] control 2: a wrong R14 store md5 halts (fail-closed)
+  [PASS] control 3: a wrong R14 canonical-board md5 halts (fail-closed)
+  [PASS] control 5: R19 ledger state cannot leak into an R14 scratch (fail-closed)
+  [PASS] control 6: R19 finalization state cannot leak into an R14 scratch (fail-closed)
+  [PASS] control 7: R19 movers outputs cannot leak into an R14 scratch (fail-closed)
+  [PASS] control 15: missing sibling support trees fail closed (no partial advance)
+  [PASS] control 16: historical restore does NOT replace current implementation source
+  [PASS] control 17: current immutable model inputs remain current
+ALL R14 FIXTURE CONTROLS PASS
+movers provenance-transition tests:
+  [PASS] production ui/data/movers.js still carries the owner-authorised R15-R19 history
+  [PASS] production bundle has one report per round
+  [PASS] data/release_lineage.json declares release_transition
+  [PASS] transition is an owner-approved movers_release_transition
+  [PASS] release_lineage.json release_transition == ui/data/movers_transition.js (consistent)
+  [PASS] release_lineage.json release_transition_register == the mirror's register (era succession: ALL entries reach the reader)
+  [PASS] the mirror carries the transition keys plus the register and NOTHING else (zero authorship)
+  [PASS] the ITEM 408 record is preserved BYTE-VERBATIM as the mirror payload's prefix (never rewritten)
+  [PASS] the register carries at least one transition record  (5 of 8 entries)
+  [PASS] EVERY register record is owner-approved and names its ruling id
+  [PASS] the shipped bundle's model_changes == what the live tree derives (reader and bundle in step)
+  [PASS] more than one out-of-round boundary is carried end-to-end — the single-slot limit is gone  (6 boundaries)
+  [PASS] EVERY out-of-round boundary reaches the reader owner-approved, naming its ruling id
+  [PASS] NON-VACUITY: with the register removed the newest boundary LOSES its owner approval  (approved 1 of 6, vs 6 of 6 with it)
+  [PASS] transition source + destination carry every id field (fixed pins + board + store)
+  [PASS] transition applies_to R15-R19
+  [PASS] transition SOURCE == the R15-R19 reports terminal identity
+  [PASS] transition source round == 19
+  [PASS] every historical report carries the identical fixed release identity
+  [PASS] transition DESTINATION is the post-restructure board (the boundary the tab labels)
+  [PASS] transition DESTINATION store is the post-restructure store
+  [PASS] the manifest has legitimately advanced past the transition destination (round 20 applied)
+  [PASS] transition destination round is 19 — the round the restructure landed after (unchanging history)
+  [PASS] manifest as_of_round has advanced to 22
+  [PASS] exactly release_version/balanced_board_md5/engine_head/board/store move across the transition
+  [PASS] rl_model/fv/config/register are UNCHANGED across the transition (same R19 model pins)
+  [PASS] the transition self-declares the moved/unchanged field sets correctly
+  [PASS] recomputed R15-R19 content digest == the transition declared digest (sha256:6aea584536c6cd98c7949947620687d549b6f6f54fcc44acf3ca6fd71aaf8c4d)
+  [PASS] a modified player movement changes the content digest (tamper detected)
+  [PASS] a modified report identity changes the content digest (tamper detected)
+  [PASS] appending a future R23 report writes (no overwrite conflict)
+  [PASS] the bundle carries R15-R23 after the append
+  [PASS] every R15-R19 report is byte-for-byte preserved after the future append
+  [PASS] the R15-R19 content digest is UNCHANGED after the future append
+  [PASS] the appended future report carries the then-current governing identity (destination)
+  [PASS] a DIFFERENT R22 is refused as an overwrite conflict (never merged)
+  [PASS] the bundle is left BYTE-UNCHANGED by the refused conflicting write
+  [PASS] score_ingestor.APPLY_DEFAULT is False (code half OFF)
+  [PASS] score-write gate is OFF (no explicit apply token) — no score can be applied
+MOVERS TRANSITION TESTS: ALL 39 PASS
+ALL FAST TESTS PASS
+after rc=0
+
+########## THE DIFF ##########
+diff --git a/engine/rl_after/ingestion/scratch_fixture.py b/engine/rl_after/ingestion/scratch_fixture.py
+index 2f11e0d..eb26a48 100644
+--- a/engine/rl_after/ingestion/scratch_fixture.py
++++ b/engine/rl_after/ingestion/scratch_fixture.py
+@@ -34,9 +34,23 @@ def _md5(path):
+     return h.hexdigest()
+ 
+ 
++def _manifest_vars_hash(path):
++    """The config manifest's canonical hash: sha256 over 'k=v' lines, sorted by key.
++
++    This is the SAME formula _verify_r14 computes inline and config_manifest.canonical_hash owns
++    upstream. It is spelled here rather than imported because scratch_fixture must run against a
++    SCRATCH's manifest, from inside the ingestion package, with no repo-root resolution — the same
++    reason _md5 is local.
++    """
++    mvars = json.load(open(path)).get('vars', {})
++    return hashlib.sha256(
++        '\n'.join('%s=%s' % (k, mvars[k]) for k in sorted(mvars)).encode()).hexdigest()
++
++
+ def stamp_release_identities(scratch_root):
+     """Make a scratch fixture's data/expected_boot.json COHERENT with its own engine: move the
+-    `engine_head` and `rl_model` pins to the scratch's actual _merged_recover.py / rl_model.py md5s.
++    `engine_head` and `rl_model` pins to the scratch's actual _merged_recover.py / rl_model.py md5s,
++    and the `config` pin to the scratch's actual data/model_config.json vars hash.
+     Preserves the file's exact formatting (surgical regex, like the applier's store/board re-stamp) so
+     only the two pin values change. Returns {'engine_head':..., 'rl_model':...} — the coherent release
+     identities the fixture now supplies. Idempotent; raises if a pin is not present exactly once."""
+@@ -44,6 +58,14 @@ def stamp_release_identities(scratch_root):
+     pins = {
+         'engine_head': _md5(os.path.join(ra, '_merged_recover.py')),
+         'rl_model': _md5(os.path.join(ra, 'rl_model.py')),
++        # ADDED 2026-08-20 (M1a, AUDIT_CI.md repair 3, second half). `config` belongs in exactly the
++        # same class as engine_head/rl_model: the fixture runs the CURRENT manifest — control 17
++        # (test_current_immutable_inputs_stay_current) ASSERTS the scratch's data/model_config.json
++        # equals the checkout's — so the boot pin naming it must be the CURRENT vars hash. It used to
++        # be, for free, while R14 and HEAD carried byte-identical manifests. The manifest then moved
++        # (45b207c0 / 59 vars -> eed19a75 / 84 vars) and the restored R14 pin was left describing a
++        # manifest no scratch contains, which is what _verify_r14 has been failing on.
++        'config': _manifest_vars_hash(os.path.join(scratch_root, 'data', 'model_config.json')),
+     }
+     bootp = os.path.join(scratch_root, 'data', 'expected_boot.json')
+     with open(bootp) as f:
+@@ -219,6 +241,13 @@ def _restamp_contract_code_identity(scratch_root, pins):
+         raise FixtureError("restored R14 release_contract has no identities.engine_head/rl_model to bind")
+     ids['engine_head'] = pins['engine_head']
+     ids['rl_model'] = pins['rl_model']
++    # ADDED 2026-08-20 (M1a, AUDIT_CI.md repair 3). Same law as the two lines above, stated by this
++    # function's own docstring: "the engine-head stamp on expected_boot must be mirrored here or
++    # verify HALTS." release_contract.verify('gate') compares contract config_sha256 to the LIVE
++    # manifest hash, so once the boot `config` pin moves to the scratch's current manifest, the
++    # contract's copy must move with it — and if it does not, verify halts with
++    # "contract config_sha256 45b207c0 != live manifest hash eed19a75", which is exactly what it did.
++    c['config_sha256'] = pins['config']
+     c.pop('contract_sha256', None)
+     c['contract_sha256'] = _contract_seal(c)
+     _make_writable(cp)

@@ -1,0 +1,78 @@
+ONE-LINER (c) — one_source_selftest.py F1 lens/memo discipline. BEFORE / AFTER / NON-VACUITY.
+AUDIT_CI.md repair #4: 'Removes a false red from the estate's central guard.'
+Run in an ISOLATED workspace seeded from the checkout (scratchpad/ws_f1), never through the
+shared /home/claude/rl_workspace. Store cc02567f / engine 5ac6780f / board a05fe951, Guard 5 PASS.
+======================================================================================
+
+########## BEFORE ##########
+=== (2) EXPORT PARITY (F1): board v == independently recomputed engine gated ev(), key-for-key ===
+  PASS board active set == engine active set, key-for-key
+  FAIL every board v == round(engine gated ev / 1.0524) — numéraire display (F1); mismatches=96 [('harry-sheezel', 10433, 10850.09040343894), ('will-ashcroft', 6607, 6834.338162476675), ('nasiah-wanganeen-milera', 8644, 9043.261871346542), ('bodhi-uwland', 3568, 3717.6422143903533), ('jason-horne-francis', 5600, 5844.623812725198), ('finn-callaghan', 5516, 5757.286705591294), ('mac-andrew', 3750, 3887.583222023271), ('sam-darcy', 5076, 5278.68796454729)]
+
+  suite: PASS=123  FAIL=16
+
+  (byte-identical to the audit's own reproduction in ci_audit/raw/one_source_selftest.txt:)
+  FAIL every board v == round(engine gated ev / 1.0524) — numéraire display (F1); mismatches=96 [('harry-sheezel', 10433, 10850.09040343894), ('will-ashcroft', 6607, 6834.338162476675), ('nasiah-wa
+
+########## AFTER ##########
+=== (2) EXPORT PARITY (F1): board v == independently recomputed engine gated ev(), key-for-key ===
+  PASS board active set == engine active set, key-for-key
+  PASS every board v == round(engine gated ev / 1.0524) — numéraire display (F1); mismatches=0 []
+
+  suite: PASS=124  FAIL=15
+
+########## NON-VACUITY — the repaired check must still FIRE ##########
+  probe: perturb ONE board value by +1 (nick-daicos 9944 -> 9945), re-run.
+=== (2) EXPORT PARITY (F1): board v == independently recomputed engine gated ev(), key-for-key ===
+  PASS board active set == engine active set, key-for-key
+  FAIL every board v == round(engine gated ev / 1.0524) — numéraire display (F1); mismatches=1 [('nick-daicos', 9945, 10465.468862468942)]
+
+  -> the guard catches a 1-point discrepancy. The repair removed the FALSE red
+     without making the check vacuous. Board restored to a05fe951 afterwards.
+
+########## THE DIFF ##########
+diff --git a/engine/rl_after/one_source_selftest.py b/engine/rl_after/one_source_selftest.py
+index dfd782e..620dccd 100644
+--- a/engine/rl_after/one_source_selftest.py
++++ b/engine/rl_after/one_source_selftest.py
+@@ -126,10 +126,39 @@ else:
+     board={r['key']:r['v'] for r in json.load(open(board_path))['active']}
+     check(set(board)==set(active_keys), "board active set == engine active set, key-for-key")
+     gated={}
++    # ---- REPLICATE THE EXPORT'S AS-OF SEQUENCE — INCLUDING ITS LENS AND MEMO DISCIPLINE ----------
++    # This block used to call ev() at the five as-of years and nothing else, under the comment
++    # "replicate the export's as-of sequence". It did not replicate it. rl_export.py does three
++    # further things around the same five calls, and all three change what the NEXT row computes:
++    #
++    #   rl_export.py:113  g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()   <- before the loop
++    #   rl_export.py:197  g['_LENS_FORM'] = 2026    (LEG E forward lens, unless RL_LEGE=0)
++    #   rl_export.py:199  g['_LENS_FORM'] = None    <- closed again, per row
++    #
++    # Without the wrap, the LEG-E lens state and the LEG-F3 pedigree anchor leak across rows: each
++    # row's ev(p,2028) leaves the engine's clock at 2028 and its pedigree memo warm, and the NEXT
++    # row's ev(p,2026) — the value this check compares against the board — is computed in that
++    # state. Measured on this tree: 96 of 804 rows disagreed, every one of them HIGH, while
++    # rl_export.py's OWN eps=0 parity gate passed on the identical build minutes earlier.
++    #
++    # So this check was reporting a false red against a board that was correct — a live guard
++    # crying wolf, which AUDIT_CI.md calls "the worst kind". The engine was never wrong here; the
++    # independent recomputation had drifted from the thing it exists to independently recompute.
++    # (AUDIT_CI.md section 1.1, repair 4: "Removes a false red from the estate's central guard. A
++    # guard that cries wolf is worse than no guard.")
++    #
++    # The lens is read from RL_LEGE exactly as the exporter reads it, so RL_LEGE=0 still replicates
++    # the RL_LEGE=0 export byte-for-byte and this check does not quietly pin one branch of a
++    # declared kill-switch.
++    MA.BASE_REF = MA.AGE_REF = 2026; MA._pe_clear()          # == rl_export.py:113
+     with contextlib.redirect_stdout(io.StringIO()):
+         for p in MA.players:
+-            v=ev(p,2026); ev(p,2024); ev(p,2025); ev(p,2027); ev(p,2028)   # replicate the export's as-of sequence
++            v=ev(p,2026); ev(p,2024); ev(p,2025)             # present, then the REAL past re-values
++            if os.environ.get('RL_LEGE','1') != '0': MA._LENS_FORM = 2026   # == rl_export.py:197
++            ev(p,2027); ev(p,2028)                           # forward, under the LEG E lens
++            MA._LENS_FORM = None                             # == rl_export.py:199
+             gated[p['key']]=v
++    MA.BASE_REF = MA.AGE_REF = 2026; MA._pe_clear()          # == rl_export.py:222
+     mism=[(k,board[k],gated.get(k)) for k in board if board[k]!=_num(gated.get(k))]
+     check(not mism, "every board v == round(engine gated ev / %.4f) — numéraire display (F1); mismatches=%d %s"%(_F,len(mism),mism[:8]))
+ 

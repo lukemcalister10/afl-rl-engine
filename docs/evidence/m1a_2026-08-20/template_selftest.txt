@@ -1,0 +1,56 @@
+ui/templates/selftest.py — prove the slot validator actually refuses.
+================================================================================================
+
+PART A — the five skeletons exist, parse, and agree with the manifest
+  PASS  exactly the five owner-facing pages are declared: ['movers', 'noarb', 'players', 'tracker', 'year1']
+  PASS  movers   parses: 14 scalar slot(s), 1 row block(s)
+  PASS  noarb    parses: 11 scalar slot(s), 2 row block(s)
+  PASS  players  parses: 9 scalar slot(s), 1 row block(s)
+  PASS  tracker  parses: 9 scalar slot(s), 1 row block(s)
+  PASS  year1    parses: 9 scalar slot(s), 1 row block(s)
+
+PART B — manifest and markup cannot drift apart
+  PASS  movers   manifest declares exactly the slots the markup uses
+  PASS  noarb    manifest declares exactly the slots the markup uses
+  PASS  players  manifest declares exactly the slots the markup uses
+  PASS  tracker  manifest declares exactly the slots the markup uses
+  PASS  year1    manifest declares exactly the slots the markup uses
+
+PART C — a complete page renders
+  PASS  a fully-supplied tracker renders
+  PASS  the injected row value reaches the page
+  PASS  the identity stamp reaches the page
+  PASS  no unfilled slot markers survive into the output
+  PASS  the FROZEN layout survives — the seat did not supply it
+
+PART D — the one rule: a missing value is a loud failure, never a dash
+  PASS  refuses a row value of None
+  PASS  refuses a row value of an empty string
+  PASS  refuses a row value of a hyphen
+  PASS  refuses a row value of an em dash
+  PASS  refuses a row value of N/A
+  PASS  refuses a row value of whitespace only
+  PASS  refuses a row value of the string "null"
+  PASS  refuses a row value of nan
+  PASS  refuses a DASH IN THE IDENTITY STAMP (the worst place for one)
+
+PART E — absence must be DECLARED, never inferred
+  PASS  a nullable slot accepts the EXPLICIT slots.ABSENT marker
+  PASS  and renders as the declared empty-marker, not as a bare dash
+  PASS  a NON-nullable slot refuses slots.ABSENT — undeclared absence must not sneak through
+
+PART F — structural refusals
+  PASS  refuses a row missing a column entirely
+  PASS  refuses a page missing a scalar slot
+  PASS  refuses an EMPTY table (indistinguishable from a broken query)
+  PASS  refuses a row list that is not a list
+
+PART G — every problem is reported at once, not one per attempt
+  PASS  a page with three defects reports all three (got 3)
+
+PART H — a seat cannot inject layout
+  PASS  injected markup is ESCAPED — data is data, layout is the template's
+
+================================================================================================
+TEMPLATE SLOT SELF-TEST: 34 PASS / 0 FAIL
+A page that cannot be filled honestly is not produced. Seats inject data, never layout.
