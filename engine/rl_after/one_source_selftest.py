@@ -488,7 +488,17 @@ if _pvc2_on:
     # store, the per-entrant derivation, and the byte-frozen contract. Live-store divergence means
     # "re-derivation due" in the claims note/checklist; it is not curve corruption and must not re-alarm weekly.
     _curve_contract_path=(os.path.join(_repo,'ui','release_pick_curve.json') if _repo else None)
-    _contract_md5='bdc21f33eb70d49dd481f7e63a1b0398'   # RE-PINNED by #334 ORDER 25 (THE POOL
+    _contract_md5='a6a4c9d02fc5b0203ce44f9f228740a1'   # RE-PINNED by THE LANDING MOP-UP
+    # (register v786 ruling R2, owner word 2026-08-20: "yes, the pick curve should be updated";
+    # preregistered at docs/evidence/landing_tail_2026-08-20/PREREG_CURVE_MIRROR.md BEFORE the edit).
+    # ui/release_pick_curve.json was the last stale MIRROR of the curve THE LANDING adopted: the
+    # release-active artifact moved to file md5 78ad9842 / payload 9729f0c5 under ORDER 31-F, the
+    # landed board a05fe951 is built on that curve, and the contract still named f6f3027f / df766dff.
+    # Both contract fields move, so this pin moves in the same commit exactly as prior acts did.
+    # Unlike #326 the PAYLOAD identity moves too — the ladder itself was re-derived on the moved
+    # ruler — which is why this act was ruled by the owner rather than taken as a mechanical mirror.
+    # PREVIOUS PIN: bdc21f33eb70d49dd481f7e63a1b0398, which was
+    # RE-PINNED by #334 ORDER 25 (THE POOL
     # UPDATE v2: the re-trued pool levels move the artifact's bytes, so the contract's
     # mirror and its pick_curve_file_md5 move with them, and this pin moves in the same
     # commit exactly as prior acts did). PREVIOUS PIN: 2e745ae3851637a88f68a950c230e363, which was

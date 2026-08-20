@@ -1,0 +1,90 @@
+R2 — THE CURVE MIRROR RE-STAMP: RESULT AGAINST THE PREREGISTERED FALSIFIERS
+============================================================================
+Prereg: docs/evidence/landing_tail_2026-08-20/PREREG_CURVE_MIRROR.md, pushed to origin/main at
+338737c BEFORE any byte of ui/release_pick_curve.json or one_source_selftest.py was touched.
+
+THE EDIT (two files, exactly as preregistered)
+  ui/release_pick_curve.json
+      pick_curve_file_md5   f6f3027fc56615fc77cd455638a5fa79 -> 78ad9842525ae4f09875b95afc2e2b39
+      pick_curve_curve_md5  df766dff                         -> 9729f0c5
+      _doc                  one appended re-stamp note in the file's own established style
+      file md5              bdc21f33eb70d49dd481f7e63a1b0398 -> a6a4c9d02fc5b0203ce44f9f228740a1
+      keys changed, measured by whole-key JSON compare vs HEAD: ['_doc','pick_curve_curve_md5',
+      'pick_curve_file_md5'] — and NOTHING else. Round-trips at json indent=1 + trailing newline
+      before and after (asserted), so no reformat rode along.
+  engine/rl_after/one_source_selftest.py:491
+      _contract_md5  'bdc21f33eb70d49dd481f7e63a1b0398' -> 'a6a4c9d02fc5b0203ce44f9f228740a1'
+      + the history comment extended in the same form the four prior re-pins used.
+      SAME COMMIT as the mirror, which is the paired procedure the pin's own comment prescribes.
+
+F1 — THE PAYLOAD MUST MATCH EXACTLY.  PASS.
+      contract.pick_curve_file_md5  == md5(engine/rl_after/pvc_curve_v2.json)   True (full 32 chars)
+      contract.pick_curve_curve_md5 == artifact's own curve_md5                 True
+      artifact: 64-entry domain 1-64, ladder sum 47,315, pick1 3000 / pick2 2668 / pick64 179.
+
+F2 — THE SELFTEST MUST PASS.  REPORTED HONESTLY, AND IT IS A QUALIFIED PASS.
+      engine/rl_after/one_source_selftest.py cannot be run to a clean exit in this container: it
+      requires the BOOTSTRAPPED WORKSPACE (444-mode derived artifacts, the workspace's own
+      s4_matrix stamp, the vendored deps, the v0surf load path). The workspace re-seed is itself a
+      named open item — register v782 post-landing queue item (1), "the one remaining out-of-repo
+      red". Run in a bare git checkout it fails 17 checks BEFORE this act for environment reasons.
+      So the falsifier was answered the only way it can be answered honestly: A CONTROLLED
+      BEFORE/AFTER on two identical checkouts, same command, same env.
+
+        before (338737c, pre-edit)   SELF-TEST FAILED: 17 check(s)   122 PASS
+        after  (this tree)           SELF-TEST FAILED: 15 check(s)   124 PASS
+
+      DIFF OF EVERY VERDICT LINE, before vs after — exactly two lines moved, both FAIL -> PASS:
+          FROZEN-RULER curve bytes == contract file md5 78ad9842
+          FROZEN-RULER curve payload md5=9729f0c5 == contract
+      Nothing else changed in either direction. The pin itself reports green on the new value:
+          PASS FROZEN-RULER contract byte-untouched: md5=a6a4c9d02fc5b0203ce44f9f228740a1
+               (expected a6a4c9d02fc5b0203ce44f9f228740a1)
+          PASS FROZEN-RULER contract source store == f1e8c9fe
+          PASS FROZEN-RULER curve stamp store=f1e8c9fe == contract curve_source_store=f1e8c9fe
+          PASS FROZEN-RULER curve stamp per_entrant=999d24c8 == 999d24c8
+      Full logs: 22_selftest_BEFORE_mirror.txt / 23_selftest_AFTER_mirror.txt. The 15 residual
+      failures are IDENTICAL in both runs and are all workspace-environment artifacts (644 vs 444
+      modes, the workspace s4_matrix stamp, the numéraire parity checks that need the workspace's
+      own rebuilt book, the #326 entrant probes). NOT claimed as a clean pass; claimed as: this act
+      moved two checks from FAIL to PASS and moved nothing else.
+
+F3 — THE BOARD MUST BE BYTE-IDENTICAL.  PASS.
+      data/rl_build/rl_app_data.json  a05fe951f78482c70520480e184c80ec  before and after.
+
+F4 — NOTHING ELSE MOVES.  PASS. git diff at the moment of commit = exactly the two files above.
+
+F5 — STORE AND ROUND UNMOVED.  PASS. store cb38ef11 (still unwritten at this stage), round 22,
+      six-way coherence PASS.
+
+F6 — ui/tests/club_curve_provenance.test.py: PREDICTED 22/35 -> 35/35.  ***THE PREDICTION IS
+      FALSIFIED, AND THE CAUSE IS NOT THIS ACT.***  Measured on three checkouts, same command:
+          ec2e533   (prior seat's baseline, pre-R1)                        22/35
+          338737c   (R1 landed, R2 NOT yet applied)                         7/35
+          this tree (R1 + R2)                                               7/35
+      R2 MOVED IT NOT AT ALL. The drop happened at R1, and the mechanism is a TEST-HARNESS
+      ENVIRONMENT LEAK, not a production defect:
+        * ui/tools/ingest_inputs.py drives the real ownership_store_apply transaction on the REAL
+          repo root; the harness's fixture cases only redirect the RL_UI_* read/write paths.
+        * BEFORE R1 that transaction halted at T5 (the missing lineage entry). The suite's negative
+          controls assert "a halt fires", and they were satisfied by THAT halt — i.e. they were
+          passing on the wrong halt, vacuously. The prior seat named this exact effect for the four
+          fails it could see ("the live CURVE DRIFT halt pre-empts three negative controls' own
+          tamper halts").
+        * AFTER R1 the transaction runs on to T7, where it shells out to extract_board_view.py.
+          extract_board_view resolves its manifest as BOOT = os.environ.get("RL_UI_BOOT", <repo>),
+          and the harness sets RL_UI_BOOT to the REAL expected_boot — so the STAGED workspace's
+          store (cc02567f, the 112 moves applied) is ring-fenced against the LIVE pin (cb38ef11)
+          and refuses: "STORE RING-FENCE FAIL: rl_model_data.json md5 cc02567f != pinned store
+          cb38ef11". Every negative control then reports the same wrong halt and fails.
+      THIS IS A FIXTURE-PLUMBING GAP IN THE HARNESS, NOT A LIVE FAILURE. The transaction is atomic
+      and committed nothing: the live store is still cb38ef11 and the board still a05fe951 after
+      every one of these runs (verified). The production path sets no RL_UI_BOOT, so T7's ring-fence
+      reads the staged manifest T3 has already re-stamped — which is what the code's own comment at
+      the call site says ("the ring-fence now passes against the moved pin").
+      NOT REPAIRED HERE: fixing it means editing the harness or extract_board_view's resolver, and
+      neither is in this order. NAMED AND HANDED UP.
+
+F7 — THE INGEST'S CURVE GATE.  PASS — see 25_ingest_apply.txt: the two curve checks read
+      "release-active curve file md5 == contract" and "release-active curve curve_md5 == contract",
+      both OK, and the CURVE DRIFT halt no longer fires.
