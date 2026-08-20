@@ -236,19 +236,37 @@ with _ctx.redirect_stdout(_io.StringIO()):
                 if _p['_vP1'] < _fl: _p['_vP1'] = _fl
                 if _p['_vP2'] < _fl: _p['_vP2'] = _fl
         _p['_cvx'] = 1.0
-    # ==== H3 — WHAT IS *NOT* REPAIRED HERE, AND WHY. MEASURED, NOT ASSUMED. =========================
-    # The back-history rows below are board-visible (`back=[player_rec(p) ...]`, :359) and they carry a
-    # residue of their own: entering this loop the ambient clock is BASE_REF=2026 / **AGE_REF=2028** (the
-    # players loop's last forward call), and these rows evidently do not traverse the _b6_core/price6
-    # re-pin that would correct it. Inserting the same per-row re-pin here was PREREGGED, APPLIED, and
-    # MEASURED — and it MOVED 26 of the 198 `back` rows (e.g. charlie-dean 41 -> 39) and `lensConservation`
-    # with them, i.e. it moves THE CANONICAL BOARD OF RECORD. Falsifier F1 fired, exactly as it was written
-    # to. The active 804 were byte-identical throughout; the whole delta was here.
-    # So it is REVERTED and REPORTED rather than smuggled in: H3's ruling is about the BASE_REF residue on
-    # the ACTIVE value loop, the diagnosis measured AGE_REF residue inert *for those rows*, and nobody has
-    # ruled on the back-history basis. Curing it is a valuation act on the board of record and needs its own
-    # owner word. Logged for the modernisation programme with the in-ev() structural cure it belongs with.
+    # ==== THE BACK-ROWS REPAIR (2026-08-20; owner word, VERBATIM: "Let's fix it now please.") ========
+    # PREREG: docs/evidence/backrows_reseal_2026-08-20/01_PREREG_BACKROWS.md. THIS IS THE OWNER RULING
+    # THE H3 SEAT ASKED FOR, AND THE HISTORY IS KEPT HERE RATHER THAN ERASED.
+    #
+    # THE DEFECT, as H3 diagnosed it and as it stood until this act: the back-history rows below are
+    # board-visible (`back=[player_rec(p) ...]`, :391) and carried a clock residue of their own —
+    # entering this loop the ambient clock was BASE_REF=2026 / **AGE_REF=2028**, left standing by the
+    # players loop's last forward call ev(_p, 2028), and these rows do not traverse the _b6_core/price6
+    # re-pin that would correct it. So a retired row's recalled price depended on the fact that 804
+    # OTHER rows had just been priced forward to 2028 — a price on an accident, not on a basis.
+    #
+    # WHY IT SAT HERE UNREPAIRED FOR A CHAPTER, stated plainly because it matters: inserting this exact
+    # statement was PREREGGED, APPLIED and MEASURED at H3 time and it MOVED 26 of the 198 `back` rows
+    # (charlie-dean 41 -> 39, jacob-bauer 29 -> 27) and `lensConservation` with them — i.e. it moves THE
+    # CANONICAL BOARD OF RECORD. H3's falsifier F1 fired exactly as it was written to, so the H3 seat
+    # REVERTED and REPORTED rather than smuggling a valuation change into a parity repair. Curing it was
+    # a valuation act on the board of record needing its own owner word. That word was given on
+    # 2026-08-20 and this is the act that carries it.
+    #
+    # RE-MEASURED ON THE CURRENT BOARD BEFORE THE EDIT (docs/evidence/f5_and_sort_2026-08-20/
+    # 14_actc_ageref_probe.txt, one fixed-clock rebuild in a throwaway worktree): 0 of 804 ACTIVE rows
+    # move — no player price, club total, pick price or numéraire is touched — and EXACTLY 25 of 198
+    # back rows move, all DOWN, sum 772 -> 700, with lensConservation lens -1/-2 each -72. The repaired
+    # bare build reproduces that probe rebuild BYTE-EXACT (68be10c7...), which is this act's F1.
+    #
+    # STILL NOT DONE HERE, and still referred: the strictly larger structural cure — making
+    # _merged_recover.ev(p, Y) pin its own clock before ANY evaluation, so it stops being
+    # ambient-state-dependent at all (H3_DIAGNOSIS.md §6 q2/q3). This statement removes the EXPOSURE on
+    # this loop; the in-ev() sensitivity remains a modernisation item with its own prereg to write.
     for _p in g['back_extra']:
+        g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()   # THE BACK-ROWS REPAIR — price these rows on the declared present, not on the residue the players loop left standing
         _p['_v'] = _p['_vM2'] = _p['_vM1'] = _p['_vP1'] = _p['_vP2'] = _nb(_ev(_p, 2026))
         _p['_cvx'] = 1.0
 g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()  # the ev loop advanced the clock to the last as-of year; re-pin to the present so the DISPLAY layer (peak_est/level_now/track/...) reads 2026, as the prior 2-instance display did

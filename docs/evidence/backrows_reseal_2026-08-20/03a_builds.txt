@@ -1,0 +1,30 @@
+=== ACT A — BUILDS (all under tools/build_lock.sh, PYTHONHASHSEED=0, BLAS=1, staging outside the repo) ===
+
+{
+  "tag": "CONTROL",
+  "mode": "dev",
+  "overrides": {},
+  "rc": 0,
+  "board_md5": "c97a4d9f9fa42597f85517c7850d3943",
+  "elapsed_s": 100.5
+}
+{
+  "tag": "FIX_DEV",
+  "mode": "dev",
+  "overrides": {},
+  "rc": 0,
+  "board_md5": "68be10c79d0ee096455754e084bcf757",
+  "elapsed_s": 100.3
+}
+{
+  "tag": "FIX_CANON",
+  "mode": "canonical",
+  "overrides": {},
+  "rc": 0,
+  "board_md5": "68be10c79d0ee096455754e084bcf757",
+  "elapsed_s": 101.3
+}
+-- the live board on disk BEFORE the act: c97a4d9f9fa42597f85517c7850d3943
+-- CONTROL reproduces it EXACTLY -> P1/F2 MET; every later diff is attributable to the one statement.
+-- FIX_DEV == FIX_CANON == 68be10c79d0ee096455754e084bcf757 -> P3/F6 MET.
+-- F1 — THE BYTE-EXACT REPRODUCTION OF THE PROBE'S FIXED-CLOCK REBUILD 68be10c7: MET.

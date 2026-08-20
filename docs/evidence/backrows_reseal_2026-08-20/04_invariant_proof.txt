@@ -1,0 +1,47 @@
+=== FINAL BOARD INVARIANT + RECONCILIATION PROOF ===
+  PASS (10) reference vector is the accepted balanced/strict 5546f278 (active 804, sum_v 764021) -- board=5546f278 active=804 sum_v=764021
+  PASS (10) final active count == 804 -- 804
+  PASS (10) no added/removed active players vs the accepted reference vector -- added=0 removed=0
+  ADOPT-RED  (10) final Sigma present v == 764021 -- 692296
+  ADOPT-RED  (10) zero present-v movers vs the accepted reference vector (5546f278) -- 803 movers
+  ADOPT-RED  (10) zero present-rank movers vs the accepted reference vector -- 795 rank movers
+  ADOPT-RED  (10) zero present-order movers vs the accepted reference vector -- ORDER DIFFERS
+  PASS (11) forward vectors present + numeric for all 804 active (board of record; its md5 is emitted in this proof's identity footer) -- present=True active=804
+  PASS (11) exact active universe vs Board B (no missing/added rows) -- missing=0 added=0
+  DEFER (11) vP1/vP2 acceptance vs Board B — owner-DEFERRED (forward-lens not accepted) -- vP1 changed=800/804, vP2 changed=800/804 vs the SUPERSEDED R14 Board B 1f10220c (present-v also moved +802, the STOP-1 advance). No accepted R19 forward oracle exists; the forward-lens repair is owner-deferred. Deltas recorded, NOT asserted as a pass.
+  PASS (12) exactly 64 visible 2027 national-draft placeholders (+1) -- 64
+  PASS (12) exactly 64 visible 2028 national-draft placeholders (+2) -- 64
+  PASS (12) all visible labelYear correct (2027/2028)
+  PASS (12) zero visible future placeholders on the current player ladder
+  PASS (12) unique stable asset ids -- 128 ids 128 unique
+  PASS (12) labels distinguish year + pick number
+  PASS (12) no AFL club / no AFFL club on any visible pick
+  PASS (12) no accidental player identity (no key join; kind/asset == pick)
+  PASS (12) exact PVC equality for every visible pick (v == PVC[n])
+  PASS (12) release-active PVC monotone non-increasing over 1..64
+  PASS (12) visible picks sorted by value desc (both lenses)
+  PASS (12) lensPicks carries ONLY the 64 rankable visible picks per lens (no residual rows in the ranking)
+  PASS (13) lens +1: visible == Sigma PVC[1..64] == draftAssetTotals.visible_1_64 -- visible=47315 sumPVC=47315 declared=47315
+  PASS (13) lens +1: visible + residual_nd + residual_mech == the board's own F5 entrant layer (draftAssetTotals total == draft+mech == phantomTotals entrant layer) -- parts=56773 declared=56773 total=56773 draft+mech=56773 phantom=56773
+  PASS (13) lens +1: residual_nd == f5_draft_pvc - visible_1_64 -- residual_nd=2280 draft_pvc=49595 - visible=47315
+  PASS (13) lens +1: residual_mech == f5_mech_pvc == phantomTotals mech_pvc -- residual_mech=7178 f5_mech=7178 phantom_mech=7178
+  PASS (13) lens +1: draftAssetTotals reconciled_to_f5
+  ADOPT-RED  (13) lens +1: Sigma PVC[1..64] == 65925 (RELEASED curve) -- 47315
+  ADOPT-RED  (13) lens +1: F5 entrant layer == 77611 (RELEASED) -- 56773
+  ADOPT-RED  (13) lens +1: residual_nd == draft_pvc(68556) - 65925 == 2631 (RELEASED) -- 2280
+  ADOPT-RED  (13) lens +1: residual_mech == mech_pvc == 9055 (RELEASED) -- 7178
+  PASS (13) lens +2: visible == Sigma PVC[1..64] == draftAssetTotals.visible_1_64 -- visible=47315 sumPVC=47315 declared=47315
+  PASS (13) lens +2: visible + residual_nd + residual_mech == the board's own F5 entrant layer (draftAssetTotals total == draft+mech == phantomTotals entrant layer) -- parts=56773 declared=56773 total=56773 draft+mech=56773 phantom=56773
+  PASS (13) lens +2: residual_nd == f5_draft_pvc - visible_1_64 -- residual_nd=2280 draft_pvc=49595 - visible=47315
+  PASS (13) lens +2: residual_mech == f5_mech_pvc == phantomTotals mech_pvc -- residual_mech=7178 f5_mech=7178 phantom_mech=7178
+  PASS (13) lens +2: draftAssetTotals reconciled_to_f5
+  ADOPT-RED  (13) lens +2: Sigma PVC[1..64] == 65925 (RELEASED curve) -- 47315
+  ADOPT-RED  (13) lens +2: F5 entrant layer == 77611 (RELEASED) -- 56773
+  ADOPT-RED  (13) lens +2: residual_nd == draft_pvc(68556) - 65925 == 2631 (RELEASED) -- 2280
+  ADOPT-RED  (13) lens +2: residual_mech == mech_pvc == 9055 (RELEASED) -- 7178
+  PASS (13) Board B sealed entrant layer == 83538 (draft 69266 + mech 14272)
+  ADOPT-RED  (13) final board entrant layer == the RELEASED layer, and phantomPicks population matches Board B -- entrant_layer=56773 vs 77611; phantomPicks 130 vs Board B 164
+
+final board md5=68be10c79d0ee096455754e084bcf757 sha256=814a9278bc7d7f5b...
+MODE: per-push — the 13 adoption-lane checks above are RELEASE CONDITIONS, reported not gated (run --adoption at the adoption step)
+RESULT: 28/28 PASS  (adoption lane 0/13, non-gating)  -> session_2026-07-21/final_integration/evidence/invariant_proof.json

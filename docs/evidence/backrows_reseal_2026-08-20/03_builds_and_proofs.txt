@@ -1,0 +1,67 @@
+=== ACT A — THE BACK-ROWS REPAIR: PROOFS ===
+control  board md5 : c97a4d9f9fa42597f85517c7850d3943
+repaired board md5 : 68be10c79d0ee096455754e084bcf757
+repaired canonical : 68be10c79d0ee096455754e084bcf757
+
+COMPLETE RECURSIVE BOARD DIFF: 131 differing leaves
+   /back                    125
+   /lensConservation        6
+
+P4/F3  ACTIVE rows: 0 differing leaves across 804 rows  -> PASS (byte-identical)
+       active count 804 -> 804 ; sum v 692296 -> 692296
+
+P5/F4  BACK rows: 25 of 198 move; all DOWN = True
+       MOVERS aggregate   772 -> 700 (delta -72)   <-- this is the probe's "sum 772 -> 700"
+       ALL-198 back sum   3190 -> 3118 (delta -72)   <-- SAME delta; the prereg P5 named the wrong scope
+       DECLARED SCOPE CORRECTION (not absorbed): PREREG P5 read the probe's "aggregate: sum 772
+       -> 700" as the whole back section. It is the aggregate over the 25 MOVERS. Both figures
+       are printed above and the DELTA -72 — the quantity that was predicted — is met on both.
+       back-row FIELDS that move: {"v": 25, "vM1": 25, "vM2": 25, "vP1": 25, "vP2": 25}
+
+P6     probe movers parsed from 14_actc_ageref_probe.txt: 25
+       measured movers == probe movers (key, name, current, corrected): EXACT MATCH
+
+       key                          name                          now  corrected   delta
+       harrison-jones-haw           Harrison Jones                 44         38      -6
+       levi-casboult                Levi Casboult                  73         67      -6
+       sam-frost                    Sam Frost                      57         51      -6
+       jeremy-mcgovern              Jeremy McGovern                53         48      -5
+       matthew-taberner             Matthew Taberner               59         54      -5
+       chris-burgess                Chris Burgess                  42         38      -4
+       tom-fullarton                Tom Fullarton                  43         39      -4
+       dylan-grimes                 Dylan Grimes                   29         26      -3
+       james-harmes                 James Harmes                   22         19      -3
+       jason-johannisen             Jason Johannisen               28         25      -3
+       lachlan-keeffe               Lachlan Keeffe                 31         28      -3
+       luke-breust                  Luke Breust                    19         16      -3
+       zane-trew                    Zane Trew                      22         19      -3
+       charlie-dean                 Charlie Dean                   41         39      -2
+       darcy-macpherson             Darcy MacPherson               14         12      -2
+       jacob-bauer                  Jacob Bauer                    29         27      -2
+       jake-kelly                   Jake Kelly                     29         27      -2
+       jamaine-jones                Jamaine Jones                  13         11      -2
+       lachlan-murphy               Lachlan Murphy                 13         11      -2
+       ethan-hughes                 Ethan Hughes                   23         22      -1
+       jaiden-hunter                Jaiden Hunter                  22         21      -1
+       jye-menzie                   Jye Menzie                     14         13      -1
+       patrick-parnell              Patrick Parnell                18         17      -1
+       tyler-sellers                Tyler Sellers                  22         21      -1
+       zach-tuohy                   Zach Tuohy                     12         11      -1
+
+       NAMED CROSS-CHECKS: charlie-dean 41 -> 39 ; jacob-bauer 29 -> 27
+
+P7/F5  leaves OUTSIDE /back/: 6
+       /lensConservation/-1/players                             755307 -> 755235
+       /lensConservation/-1/total                               755307 -> 755235
+       /lensConservation/-2/players                             782108 -> 782036
+       /lensConservation/-2/total                               782108 -> 782036
+       /lensConservation/_meta/spread_vs_now/-1                 9.1 -> 9.09
+       /lensConservation/_meta/spread_vs_now/-2                 12.97 -> 12.96
+       all of them under /lensConservation: True
+
+       F5 layer / seal / lens-0 held:
+         phantomTotals._meta.entrant_layer_pvc          56773 == 56773  HELD
+         phantomTotals._meta.seal_sha256_8              ccc26a9e == ccc26a9e  HELD
+         phantomTotals.league['0'].withPhantom          692296 == 692296  HELD
+
+ALL ACT A PROOFS PASS. P1-P7 met; F1-F6 clear.
