@@ -1,0 +1,24 @@
+{
+  "_doc": "THE NO-OP REHEARSAL — the P2a acceptance run (PLAN_v6 2a.3). A DECLARED no-op lever landing against a scratch copy of the live tree: it predicts the board the tree already has, moves no identity, and must reproduce that board identity END TO END from a REAL build. It lands nothing: it runs in a git worktree, never the live tree, and the live tree's carriers are asserted byte-unmoved afterwards.",
+  "schema_version": 1,
+  "act_kind": "lever-landing",
+  "act": "P2a ACCEPTANCE — the no-op lever-landing rehearsal",
+  "date": "2026-08-20",
+  "owner_word": "REHEARSAL — no owner word is quoted or claimed; this spec lands nothing and runs only in a scratch worktree.",
+  "authority": "PLAN_v6 PACKAGE 2a acceptance; docs/evidence/p2a_lander_2026-08-20/",
+  "prereg": {
+    "path": "docs/evidence/p2a_lander_2026-08-20/FINAL_STATE.md (this rehearsal is its own prereg: the prediction is stated here, before the build runs)",
+    "board_before": "68be10c79d0ee096455754e084bcf757",
+    "board_after": "68be10c79d0ee096455754e084bcf757",
+    "reference_board": "68be10c79d0ee096455754e084bcf757",
+    "kill_switch": null
+  },
+  "identities": {"moves": [], "unmoved": ["board", "store", "engine_head", "rl_model", "fv", "config", "register"]},
+  "column": null,
+  "lineage": null,
+  "day0_rebase": {"state": "off"},
+  "evidence_dir": "docs/evidence/p2a_noop_rehearsal",
+  "claims_file": "NOOP_CLAIMS.json",
+  "gates": null,
+  "commit_message": "P2a ACCEPTANCE — the no-op rehearsal's own commit, in a scratch worktree only"
+}

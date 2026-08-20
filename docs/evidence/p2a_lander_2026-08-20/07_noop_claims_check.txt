@@ -1,0 +1,25 @@
+====================================================================================================
+CLAIMS CHECK — P2a ACCEPTANCE — the no-op lever-landing rehearsal
+  act type   : lever-landing
+  date       : 2026-08-20   base: 22c7be2308129a6ff1f525569535c1e764231b87
+  owner word : REHEARSAL — no owner word is quoted or claimed; this spec lands nothing and runs only in a scratch worktree.
+  tree       : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/noop_sandbox4
+====================================================================================================
+  ACTIVATION  day0_rebase                              off
+
+  OK   file_md5     the published board of record                  md5 68be10c79d0ee096455754e084bcf757 (claimed 68be10c79d0ee096455754e084bcf757)
+  OK   file_md5     the store                                      md5 b745002eb0a0fbb1c34fa44f1ef708d6 (claimed b745002eb0a0fbb1c34fa44f1ef708d6)
+  OK   json_field   expected_boot.board                            board = '68be10c79d0ee096455754e084bcf757' (claimed '68be10c79d0ee096455754e084bcf757')
+  OK   json_field   expected_boot.engine_head                      engine_head = '1867e953cf844d089ab1da68379b1742' (claimed '1867e953cf844d089ab1da68379b1742')
+  OK   json_field   the round, HELD by a lever landing             as_of_round = 23 (claimed 23)
+  OK   json_field   the release seal                               contract_sha256 = 'cde9f70a49b673933f368032393c3c0c8b61e83d51cfe920c8b5c64faf7cf8c7' (claimed 'cde9f70a49b673933f368032393c3c0c8b61e83d51cfe920c8b5c64faf7cf8c7')
+  OK   board_count  board rows                                     active.rows = 804 (claimed 804)
+  OK   gate         release_manifest_check                         exit 0 (expected PASS)
+  OK   gate         release_contract_check                         exit 0 (expected PASS)
+  OK   gate         acceptance_runner                              exit 0 (expected PASS)
+  OK   gate         movers_transition                              exit 0 (expected PASS)
+  OK   gate         movers_ui                                      exit 0 (expected PASS)
+  OK   unmoved      BYTE-UNMOVED by this lever landing             md5 b745002eb0a0fbb1c34fa44f1ef708d6 (claimed b745002eb0a0fbb1c34fa44f1ef708d6)
+
+CLAIMS: 13 of 13 verified against the tree; 0 shape problem(s)
+VERDICT: GREEN — every claim recomputed and held
