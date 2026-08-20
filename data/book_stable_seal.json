@@ -1,11 +1,11 @@
 {
-  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-07-17 at the LEG D ACT-2 PVC re-derivation candidate (RL_PVC2, the composed-pathway ev-channel _PVC0 swap, default ON). The book is engine-ev()-derived; the swap moves ev() for the young rows whose scaffold/cap/floor read draftval, so it is RE-BUILT on the candidate engine (G-BOOK) and re-stamped, not re-hashed. Store/config UNCHANGED. RL_PVC2=0 reproduces the L1b book. Owner tag/main owner-only.",
+  "_comment": "Walk-forward book freeze-stamp \u2014 RE-SEALED 2026-08-20 at THE BAKE (register v780, docs/evidence/bake_2026-08-20; PREREG_BAKE.md pushed at 907b2da before the engine was touched). The candidate's 18-dial stack is now the SHIPPED DEFAULT, wired DEFAULT-ON behind DECLARED KILL-SWITCHES with data/model_config.json 'vars' DELIBERATELY UNMOVED (the v2.9 RL_EVW/RL_CAPT/RL_ISOFADE/RL_PVC2 pattern), so under GATE MODE the manifest line and the candidate line are THE SAME BOARD again and this seal is taken on the candidate. That identity is what docs/evidence/landing_prep_2026-08-20/RESEAL_HALT.md found missing when it halted this act; the defaults flip restores it. The book is engine-ev()-derived and the O37..O43 stack moves ev(), so it is RE-BUILT on the candidate engine (G-BOOK) and re-stamped, NOT re-hashed. store cb38ef11 and config eed19a75 UNCHANGED. Each named kill-switch reproduces its historical board byte-exact. CANDIDATE \u2014 owner tag/main promote owner-only. NOT ADOPTED, OWNER WORD PENDING.",
   "generator": "engine/rl_after/s4_matrix_M1v7.py",
-  "head_md5": "40f43772",
-  "store_md5": "968de0c7",
-  "n_players": 2649,
-  "stable_sha256": "745e3462007aec2fbeca6473dd50f9be21226ace89509cdf0aeec15c09695eca",
-  "sealed_by": "LEG D ACT-2 re-seal 2026-07-17 (session_2026-07-17/legd_derivation; engine bea8fea8 -> 40f43772, the RL_PVC2 composed-pathway swap; store 968de0c7 UNCHANGED). stable_sha256 ef2fbf9c -> 745e3462 because the young rows the tail lift touches move in ev() and thus in the book. Candidate \u2014 owner tag/main owner-only.",
-  "sealed_date": "2026-07-17",
-  "config": "c2d233aec1041a2d24a66990a584f552d59b3902f97eddbf76867d724071b53b"
+  "head_md5": "5ac6780f",
+  "store_md5": "cb38ef11",
+  "n_players": 2650,
+  "stable_sha256": "86a82e6ebce668448ffb76b59d1d95583b276c210379e2b34ce3a263fc5b4322",
+  "sealed_by": "THE BAKE re-seal 2026-08-20 (docs/evidence/bake_2026-08-20/reseal_bake.py, a declared 3-change port of session_2026-07-17/legd_derivation/reseal_book.py; engine 40f43772 -> 5ac6780f, the defaults flip; store cb38ef11 UNCHANGED; config eed19a75 UNMOVED). stable_sha256 745e3462 -> 86a82e6e because the shipped default now prices the O37..O43 stack, which moves ev() and thus the book's present and walk-forward columns. n_players re-counted, not carried. Candidate \u2014 owner tag/main owner-only.",
+  "sealed_date": "2026-08-20",
+  "config": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1"
 }
