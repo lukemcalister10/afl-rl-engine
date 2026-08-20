@@ -120,3 +120,17 @@ C.register('oneliner_f1_lens', _m1a.oneliner_f1_lens,
 C.register('build_twice_determinism', _m1a.build_twice_determinism,
            reads=(),
            doc='two bare builds of this tree produce byte-identical boards')
+
+# --------------------------------------------------------------------------------------------------
+# PACKAGE 2a ADDITION (PLAN_v6, 2026-08-20). One row: the landing library's own self-test.
+# Registered rather than left as a landing-time script because it is fast (measured 10.5s) and runs
+# no build — the brief's own test. It halts no carrier, so it sits at the bottom of the registry.
+
+from acceptance.checks import landing as _landing                            # noqa: E402
+
+# 17. THE LANDER SELF-TEST (2a.3). Every step of the landing transaction broken once in a sandbox,
+#     every abort proved byte-exact, the claims negative control fired. PROFILE='full', so the
+#     per-push host-insensitive lane does not pay for a git worktree.
+C.register('lander_selftest', _landing.lander_selftest,
+           reads=(),
+           doc='the landing library\'s self-test: every step broken once, every abort byte-exact')
