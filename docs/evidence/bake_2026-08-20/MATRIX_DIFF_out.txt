@@ -1,0 +1,25 @@
+=== F6 — WHAT ACTUALLY MOVED IN THE MATRIX (register v780) ===
+
+run_emit_BAKE.sh reported the matrix md5 MOVED (c231fda2 -> 592e9040) and instructed this seat to
+re-run the class instrument and REPORT THE NEW MARK rather than restate 1.0672. That instruction is
+followed. This file is the precise account of WHAT moved, so the re-run is read correctly.
+
+top-level keys: LP=['meta', 'recs']  BK=['meta', 'recs']
+
+IDENTICAL top-level blocks : ['recs']
+DIFFERING top-level blocks : ['meta']
+
+  block 'meta' differs in EXACTLY these fields: ['emitter', 'engine_head']
+    emitter        LP = {'file': 'docs/evidence/landing_29_2026-08-13/noarb29c/emit_matrix_29c.py', 'copied_from': 'docs/evidence/noarb_338_2026-08-06/emit_matrix_338.py', 'copied_from_md5': 'bffde2f786be85037483e9f5f1563068', 'rule_source': 'engine/rl_after/s4_matrix_M1v7.py:53-70,81,113', 'rule_commit': '30996f8', 'workdir': '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-landing/engine/rl_after'}
+                   BK = {'file': 'docs/evidence/landing_29_2026-08-13/noarb29c/emit_matrix_29c.py', 'copied_from': 'docs/evidence/noarb_338_2026-08-06/emit_matrix_338.py', 'copied_from_md5': 'bffde2f786be85037483e9f5f1563068', 'rule_source': 'engine/rl_after/s4_matrix_M1v7.py:53-70,81,113', 'rule_commit': '30996f8', 'workdir': '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_wt/engine/rl_after'}
+    engine_head    LP = '5f434b95'
+                   BK = '5ac6780f'
+
+THE PRICED PAYLOAD:
+  recs       BYTE-IDENTICAL between the two emits   (n=2648, canonical md5 491560370c9f)
+
+READING: the two matrices differ ONLY in the PROVENANCE block —
+  * engine_head 5f434b95 -> 5ac6780f, which MUST move because the engine source moved at this bake;
+  * emitter.workdir, which is the absolute path of the worktree the emit ran in, not a priced value.
+Not one priced record differs. The class mark is therefore expected to be UNCHANGED, but it is
+MEASURED below rather than asserted — see CLASS_BAKE_out.txt.

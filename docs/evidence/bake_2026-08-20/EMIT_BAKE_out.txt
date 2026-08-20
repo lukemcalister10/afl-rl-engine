@@ -1,0 +1,17 @@
+=== THE EMIT, BARE — no RL_O* dial exported anywhere in this script ===
+  engine   : 5ac6780f3c4931edcaa527576bbdfb88
+  rl_model : 6fe7c4155866d80e8045bed2d3bf2802
+  day-0 ref: FROZEN docs/evidence/final_candidate_2026-08-19/DAY0_CP.json (NOT re-based)
+  set RL_O* in this shell: 0   <-- must be 0
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: 5ac6780f3c4931edcaa527576bbdfb88
+  RL_O42=unset RL_O43=unset   day0 ref: DAY0_CP.json (210510fe5d09)\n  emit starting 01:39:32  (RL_O37=unset A=unset B1=unset pct=unset w=unset cap=unset lam=unset pgm=unset)
+  emit exit=0  COST: 2m 32s
+  OK -> per_entrant_BK.json  (592e9040)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board a05fe951 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+
+=== F6 — MATRIX IDENTITY, BYTE-COMPARED AGAINST THE PRE-FLIP EMIT ===
+  post-flip BARE emit : 592e9040be2a96e6aebde9ff1320fb09
+  pre-flip  LP   emit : c231fda2b0c289f534fe5f736f5eb3ae   (registered c231fda2, dial line exported by hand)
+  VERDICT: THE MATRIX MOVED. Re-run the class instrument and REPORT THE NEW MARK. Do not restate 1.0672.
