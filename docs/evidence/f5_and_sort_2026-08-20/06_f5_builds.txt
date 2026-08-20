@@ -1,0 +1,15 @@
+=== ACT A — BUILDS ===
+
+-- A0 CONTROL BUILD (unmodified tree, before any F5 edit) --
+   recipe: the R23/D8 driver byte-carried (test_fv_provenance._run_build), PYTHONHASHSEED=0,
+           BLAS threads pinned to 1, staging outside the repo, under tools/build_lock.sh.
+{
+  "tag": "CONTROL_DEV",
+  "mode": "dev",
+  "overrides": {},
+  "rc": 0,
+  "board_md5": "7a3f4fe23207a29095e6d37408a4b727",
+  "elapsed_s": 96.4
+}
+   live board on disk : 7a3f4fe23207a29095e6d37408a4b727
+   CONTROL reproduces the live board EXACTLY -> every later diff is attributable to the F5 edits alone.
