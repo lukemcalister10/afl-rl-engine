@@ -1,6 +1,6 @@
 # FINAL STATE — THE R23 ROUND ADVANCE, 2026-08-20
 
-**Base:** `main` @ `280df39` · **Head:** *(this commit's parent — see §1)* · **UNPUSHED.**
+**Base:** `main` @ `280df39` · **Head:** this commit (8 of 8; §1 lists them all) · **UNPUSHED.**
 
 > ## ROUND 23 IS APPLIED.
 > **store `cc02567f` → `b745002e` · board `1d5c9f7a` → `7a3f4fe2` · `as_of_round` 22 → 23 ·
@@ -33,7 +33,7 @@ supervisor's pen and was **not touched**.
 | 4 | ACT 2 | `27458ada7538911492e7552a9fc81b9ab9c8b7bd` | **the scores + the one binding** — preflight CLEAN 411/411 | `scores/R23.csv`, `engine/rl_after/ingestion/catchup_identity_overrides.json`, `docs/evidence/r23_advance_2026-08-20/08_preflight_r23.txt` |
 | 5 | ACT 3/4 | `b7ec6270e6171d41f4463cb4a82c7058078f0bf4` | **the round is applied** + the weekly fixtures + both UI writers | `data/expected_boot.json`, `data/release_contract.json`, `data/season_state.json`, `data/rl_build/rl_app_data.json`(+`.srcmd5`), `engine/rl_after/rl_model_data.json`, `engine/rl_after/rl_app_data.json`(+`.srcmd5`), `engine/rl_after/ingestion/{applied_rounds_ledger,finalization_state,value_history,rank_history,pos_rank_history,sibling_repin_state}.json`, `.../finalization_journal.jsonl`, `.../movers/movers_R23.{json,csv}`, `.../.weekly_txn/txn_catchup_r23/{journal.jsonl,manifest.json}`, `.../test_movers_transition.py`, `ui/tests/movers.test.js`, `session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py` + `fixtures/forward_vector_7a3f4fe2.json` + `fixtures/reference_vector_3970156c.json` + `test_forward_lens_7a3f4fe2.py`, `ui/data/{board_view_public,board_view_working,movers}.js` |
 | 6 | ACT 5 | `01355d24b4df7f05deedb2360e06e3c1b3d6d662` | **the runbook errata** — five corrections, three of them would have halted the advance | `docs/runbooks/R23_RUNBOOK.md` |
-| 7 | ACT 7 | *(the evidence commit)* | the evidence packet | `docs/evidence/r23_advance_2026-08-20/*` |
+| 7 | ACT 7 | `11c7d63f0e9527c50d2e3fb605d4123a12cc5ed5` | the evidence packet | `docs/evidence/r23_advance_2026-08-20/*` |
 | 8 | ACT 7 | *(this commit)* | FINAL_STATE names commit 7's sha | `docs/evidence/r23_advance_2026-08-20/FINAL_STATE.md` |
 
 *(Commit 7's sha cannot exist inside the file it commits, so commit 8 fills it in — the only thing
