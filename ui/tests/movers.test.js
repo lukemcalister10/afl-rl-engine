@@ -163,9 +163,12 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
     release: rel,
   };
 
-  // POSITIVE — the populated production bundle carries exactly R15-R22
-  eq(prod.rounds, [15, 16, 17, 18, 19, 20, 21, 22], "production ui/data/movers.js carries R15-R22");
-  ok(prod.reports && Object.keys(prod.reports).length === 8, "production bundle carries eight reports (one per round)");
+  // POSITIVE — the populated production bundle carries exactly R15-R23
+  // WEEKLY ROUND PIN — bumped by each round advance and by nothing else. R15-R22 / eight reports ->
+  // R15-R23 / nine reports at the R23 advance (2026-08-20). Hand-pin: the advance transaction does
+  // not own this file, so the advance seat moves it in the advance's own commit and discloses it.
+  eq(prod.rounds, [15, 16, 17, 18, 19, 20, 21, 22, 23], "production ui/data/movers.js carries R15-R23");
+  ok(prod.reports && Object.keys(prod.reports).length === 9, "production bundle carries nine reports (one per round)");
   // the complete historical board/store chain (baseline R14 -> R15 -> ... -> R19) is exact + continuous
   var chainOk = true, prevB = prod.baseline.board, prevS = prod.baseline.store;
   [15, 16, 17, 18, 19].forEach(function (r) {
@@ -219,8 +222,23 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // still passes — which is why the state is `bridged` and not `mismatch`. Nothing is loosened: the two
   // non-vacuity assertions immediately below still prove `bridged` discriminates (a foreign board fails
   // closed, and the same bundle loaded at its own terminal identity still reads `ok`).
-  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "bridged"],
-     "bundle displays under the current app, bridged — history made under an earlier release, shown under the current one (the board moved outside a round)");
+  // RESTATED 2026-08-20 (THE R23 ADVANCE): back to `ok`, and this line has now swung both ways twice,
+  // which is the point — it tracks WHAT KIND OF ACT MOVED THE BOARD LAST, and is a WEEKLY PIN a round
+  // advance owns. `ok` is the DIRECT-lineage branch: it requires the latest ROUND REPORT's terminal
+  // board to equal the loaded board, and a round advance is precisely the act that makes that true —
+  // R23's report terminates on 7a3f4fe2, which is the board the app serves. `bridged` was the honest
+  // reading while the last move was out-of-round; `ok` is the honest reading now. NOTHING IS LOOSENED:
+  // the two non-vacuity assertions below still prove the state discriminates in both directions.
+  // MEASURED, and worth naming: immediately BEFORE this advance this assertion was RED with
+  // [false, "mismatch"] — a red the D8 adoption left behind. Its cause was not the D8 board move but
+  // out_of_round_column._register's ALPHABETICAL (after_round, id) sort, which left `the-landing-20-8`
+  // (a05fe951, the RETIRED pre-D8 board) as the NEWEST stored point instead of the D8 board the app
+  // was serving, so THE ONE ASSERT failed and lineage() fell to `mismatch`. The R23 advance's own
+  // round-23 column is now the newest point and carries the live board, so the red clears here on its
+  // own merits rather than being papered over. The sort defect itself is PRE-EXISTING and is NOT
+  // repaired by this act — repairing it is an engine change, out of scope for a round advance.
+  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "ok"],
+     "bundle displays under the current app, ok — the latest round report terminates on the loaded board (a round advance, not an out-of-round move, was the last act)");
   // NON-VACUITY for the restated assertion, both directions. `bridged` is a state this check can
   // FAIL to reach: a bundle on a foreign lineage does not get bridged, it fails closed as a mismatch.
   var appForeign = clone(curApp); appForeign.board = "ffffffffffffffffffffffffffffffff";
@@ -279,7 +297,17 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // 88ce647f -> a05fe951 and store d9a24282 -> cb38ef11, out of round at R22. Same growth, same
   // reason as the four bumps before it; the durable property below covers the new boundary, which is
   // anchored to the owner's v782 landing word (register entry THE_LANDING_2026-08-20_land_it).
-  ok(mc.length === 6, "six out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING)  (got " + mc.length + ")");
+  // BUMPED BY TWO 2026-08-20 (THE R23 ADVANCE), and the two are named separately rather than absorbed
+  // into one number. (a) `the-d8-adoption-20-8` — THE D8 ADOPTION, owner word "Yes. I'm adopting.",
+  // board a05fe951 -> 5ea978f7, out of round at R22. That act wrote its boundary and its owner-approved
+  // lineage record but did NOT bump this counter, so this line has been RED since it landed; the R23
+  // advance seat absorbs that increment here rather than leaving a red it can attribute. (b)
+  // `the-sheet-recut-20-8` — THE INJURY-SHEET RE-CUT, owner word "All good on the injury sheet. Fine by
+  // me.", board 5ea978f7 -> 1d5c9f7a, out of round at R22, the H2 remedy the R23 advance required.
+  // Same growth, same reason as the six bumps before them; the durable property below — EVERY boundary
+  // anchored to an owner-approved record — covers both new boundaries and is what actually guards this,
+  // this line only counts.
+  ok(mc.length === 8, "eight out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut)  (got " + mc.length + ")");
   ok(mc[0].between[0] === "19" && mc[0].between[1] === "post-r19-redesign-1" &&
      mc[0].owner_approved_record === true,
      "model change declared between R19 and the restructure point, anchored to the owner-approved record");

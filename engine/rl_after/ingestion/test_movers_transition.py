@@ -197,7 +197,11 @@ def run_all():
         'the manifest has legitimately advanced past the transition destination (round 20 applied)')
     _ck(dst.get('as_of_round') == 19,
         'transition destination round is 19 — the round the restructure landed after (unchanging history)')
-    _ck(eb.get('as_of_round') == 22, 'manifest as_of_round has advanced to 22')
+    # WEEKLY ROUND PIN — bumped by each round advance, and by nothing else. 22 -> 23 at the R23
+    # advance (2026-08-20). It is a hand-pin: the advance transaction does not own this file, so the
+    # advance seat moves it in the advance's own commit and discloses it (R22 bumped 21 -> 22 the
+    # same way).
+    _ck(eb.get('as_of_round') == 23, 'manifest as_of_round has advanced to 23')
 
     # ---- exactly the expected fields move; the rest are unchanged (same model pins) ----
     # OWNER-RULED SEMANTIC RESTATEMENT (owner rulings v467 + v469, 2026-07-26; ITEM 411 directive D1).
@@ -239,36 +243,37 @@ def run_all():
         'a modified report identity changes the content digest (tamper detected)')
 
     # ---- FUTURE APPEND preserves R15-R19 byte-for-byte (accumulate_bundle write path) ----
-    # The future round is 23: round 22 was APPLIED 2026-08-10 and is now real history in the bundle,
-    # so appending a fabricated R22 is correctly refused by the same-round conflict guard (which is
-    # itself asserted below). R23 is the first round that does not yet exist.
+    # WEEKLY ROUND PIN — the future round advances with the applied history. R23 was APPLIED
+    # 2026-08-20 and is now real history in the bundle, so appending a fabricated R23 would be
+    # (correctly) refused by the same-round conflict guard. R24 is the first round that does not yet
+    # exist. (R22 moved this fixture R22 -> R23 for exactly the same reason on 2026-08-10.)
     scr = tempfile.mkdtemp(prefix='movers_append_')
     try:
         bpath = os.path.join(scr, 'movers.js')
         shutil.copyfile(os.path.join(REPO, 'ui', 'data', 'movers.js'), bpath)
         before = {str(r): json.dumps(prod['reports'][str(r)], sort_keys=True) for r in ROUNDS}
-        live22 = prod['reports']['22']
-        r23 = _mk_future_report(23, live22['board_md5_after'], '23b0ard' + '0' * 25,
-                                live22['source_store_md5_after'], '23st0re' + '0' * 25, dst)
-        res = MV.accumulate_bundle(bpath, r23, repo_root=REPO)
+        live23 = prod['reports']['23']
+        r24 = _mk_future_report(24, live23['board_md5_after'], '24b0ard' + '0' * 25,
+                                live23['source_store_md5_after'], '24st0re' + '0' * 25, dst)
+        res = MV.accumulate_bundle(bpath, r24, repo_root=REPO)
         _ck(res.get('overwrite_conflict') is False and res.get('wrote') is True,
-            'appending a future R23 report writes (no overwrite conflict)')
+            'appending a future R24 report writes (no overwrite conflict)')
         after_bundle = MV.load_bundle(bpath)
-        _ck(after_bundle['rounds'] == prod['rounds'] + [23], 'the bundle carries R15-R23 after the append')
+        _ck(after_bundle['rounds'] == prod['rounds'] + [24], 'the bundle carries R15-R24 after the append')
         after = {str(r): json.dumps(after_bundle['reports'][str(r)], sort_keys=True) for r in ROUNDS}
         _ck(all(before[str(r)] == after[str(r)] for r in ROUNDS),
             'every R15-R19 report is byte-for-byte preserved after the future append')
         _ck(MV.canonical_reports_digest(after_bundle, ROUNDS) == ap['historical_reports_digest'],
             'the R15-R19 content digest is UNCHANGED after the future append')
-        _ck(after_bundle['reports']['23']['release_identity']['release_version'] == dst['release_version'],
+        _ck(after_bundle['reports']['24']['release_identity']['release_version'] == dst['release_version'],
             'the appended future report carries the then-current governing identity (destination)')
-        # SAME-ROUND CONFLICT GUARD still fail-closed: a DIFFERENT R22 must be refused, not merged.
-        fake22 = _mk_future_report(22, live22['board_md5_before'], 'fakeb0ard' + '0' * 23,
-                                   live22['source_store_md5_before'], 'fakest0re' + '0' * 23, dst)
+        # SAME-ROUND CONFLICT GUARD still fail-closed: a DIFFERENT R23 must be refused, not merged.
+        fake23 = _mk_future_report(23, live23['board_md5_before'], 'fakeb0ard' + '0' * 23,
+                                   live23['source_store_md5_before'], 'fakest0re' + '0' * 23, dst)
         bytes_before = open(bpath, 'rb').read()
-        res2 = MV.accumulate_bundle(bpath, fake22, repo_root=REPO)
+        res2 = MV.accumulate_bundle(bpath, fake23, repo_root=REPO)
         _ck(res2.get('overwrite_conflict') is True and res2.get('wrote') is False,
-            'a DIFFERENT R22 is refused as an overwrite conflict (never merged)')
+            'a DIFFERENT R23 is refused as an overwrite conflict (never merged)')
         _ck(open(bpath, 'rb').read() == bytes_before,
             'the bundle is left BYTE-UNCHANGED by the refused conflicting write')
     finally:
