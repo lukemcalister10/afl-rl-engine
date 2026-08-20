@@ -1,0 +1,28 @@
+=== ORDER D8 — BASE MEASUREMENT ON THE UNEDITED TREE (before the engine edit) ===
+base commit: 6bfda2ce01787df053d15720c5ab2ce5b4ded478
+
+build-lock: HELD by d8-base (pid 15917) since 2026-08-20T06:24:37Z — single writer for the shared workspace.
+D8 BASE_CANON mode=canonical rc=1 board_md5=None  (0.3s)
+  staging removed: /home/claude/fvprov__hof7gx6
+D8 BASE_DEV   mode=dev       rc=0 board_md5=a05fe951f78482c70520480e184c80ec  (104.6s)
+  staging removed: /home/claude/fvprov_iyaqfgwi
+build-lock: released by d8-base
+
+[exited with code 0]
+
+--- BASE_CANON stderr (the build-lock / config-manifest interaction, disclosed in PREREG_D8 §3) ---
+
+============ CONFIG MANIFEST (canonical mode) REJECTED — BUILD HALTED ============
+  - UNKNOWN model override RL_BUILD_LOCK_HELD='d8-base' is not in the manifest (data/model_config.json)
+  Bake/gate mode pins the model configuration to data/model_config.json. Unset the override(s) above (dev-shell experimentation runs OUTSIDE bake/gate mode), or amend the manifest at a bake in the same commit that re-stamps config_sha256 + expected_boot.json.
+==========================================================================
+
+--- BASE_DEV meta ---
+{
+  "tag": "BASE_DEV",
+  "mode": "dev",
+  "overrides": {},
+  "rc": 0,
+  "board_md5": "a05fe951f78482c70520480e184c80ec",
+  "elapsed_s": 104.6
+}
