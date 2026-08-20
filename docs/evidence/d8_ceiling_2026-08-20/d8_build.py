@@ -17,6 +17,12 @@ MODE = os.environ.get('D8MODE', 'dev')
 OVER = json.loads(os.environ.get('D8ENV', '{}'))
 OUT  = os.environ['D8OUT']
 
+# PREREG_D8 §3, disclosed: tools/build_lock.sh exports RL_BUILD_LOCK_HELD, and
+# config_manifest.enforce() rejects any unknown RL_-prefixed var as a model override, so a
+# canonical-mode build launched from inside the lock HALTS. Drop it from the CHILD build's
+# environment only; the lock itself is still held by the parent shell's fd.
+os.environ.pop('RL_BUILD_LOCK_HELD', None)
+
 spec = importlib.util.spec_from_file_location(
     'fvb_d8', os.path.join(REPO, 'session_2026-07-20', 'fv_provenance_remediation', 'test_fv_provenance.py'))
 m = importlib.util.module_from_spec(spec); sys.modules['fvb_d8'] = m; spec.loader.exec_module(m)

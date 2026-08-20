@@ -1,0 +1,18 @@
+==========================================================================================================================
+THE VERDICT SPINE — acceptance/runner.py
+  tree: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-d8
+  evidence: (none)
+==========================================================================================================================
+CHECK                    VERDICT     REASON
+-----------------------  ----------  -----------------------------------------------------------------------------------
+release_manifest         PASS        38 of 40 carrier fields agree with computed truth across 8 identities; 2 sealed ca…
+boot_guard_checkout      PASS        boot-store guard (Guard 5) PASS  [acceptance-spine]  store cc02567f == pinned cc02…
+config_manifest          PASS        CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)
+ruling_config            PASS        RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL…
+release_contract_seal    PASS        RELEASE-CONTRACT CHECK: PASS  (contract 88d298264cc5; identities + config + postur…
+store_coherence_six_way  PASS        six-way store coherence: PASS
+doc_lint                 PASS        doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)
+-----------------------  ----------  -----------------------------------------------------------------------------------
+
+AGGREGATE  7 checks  |  PASS 7  FAIL 0  BLOCKED 0  RULED-RED 0
+VERDICT    GREEN — no gating failures.

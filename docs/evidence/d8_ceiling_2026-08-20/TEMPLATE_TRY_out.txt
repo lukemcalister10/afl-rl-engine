@@ -1,0 +1,47 @@
+==============================================================================================================
+ORDER D8 — ui/templates/movers.html, FIRST LIVE USE. The fit test, and its verdict.
+==============================================================================================================
+
+declared slots (30): as_of_round, board_md5, board_md5_before, boundary_note, config, engine_head, from_label, generated_at, page_title, players, players[].club, players[].cur_pos_rank, players[].cur_rank, players[].cur_value, players[].name, players[].played, players[].pos, players[].pos_rank_change, players[].prev_pos_rank, players[].prev_rank, players[].prev_value, players[].rank_change, players[].score, players[].value_change, players[].value_change_pct, previous_round, store_md5, store_md5_before, subtitle, to_label
+declared nullable  : players[].score
+
+slots.validate("movers", <the honest D8 payload>) ->
+   row 0 of 'players' is missing column 'played'
+   (559 problems, 1 distinct)
+
+THE VERDICT — three findings, in the order they bite:
+
+ 1. THERE IS NO age SLOT. The template's row block is
+    name / pos / club / played / score / prev_value / cur_value / value_change /
+    value_change_pct / prev_rank / cur_rank / rank_change / prev_pos_rank / cur_pos_rank /
+    pos_rank_change. The owner's probation question is ABOUT AGE — "still boosting the younger
+    players" — and D8's order names age as a required column. A template that cannot carry the
+    deciding column does not fit, and the layout law forbids a seat adding one
+    ("a seat injects data; a seat never injects layout").
+
+ 2. played IS MANDATORY AND HAS NO HONEST VALUE HERE. It is not in the nullable list, so it
+    must be filled. In the WEEKLY report it means "did he play this round". In a LEVER
+    comparison both sides are the same round on the same store, and whether a player played is
+    not a fact of the comparison at all. Filling it would be exactly the dash-that-says-nothing
+    the template exists to forbid, wearing a different costume. It is left unsupplied above and
+    the validator is allowed to say so.
+
+ 3. previous_round / from_label / to_label ASSUME A ROUND BOUNDARY. Both D8 boards are round 22.
+    from_label/to_label are free text and were filled honestly; previous_round == as_of_round ==
+    22 renders as a round-to-round comparison that did not happen. Not fatal on its own, but it
+    is the same category error as (2): the schema is round-shaped, this comparison is dial-shaped.
+
+WHAT DID FIT, and is worth recording for the migration: score IS correctly declared nullable and
+slots.ABSENT was accepted for it; the identity stamp carries BOTH ends of the comparison, which is
+exactly right for a lever diff and is the one part of this schema a dial-movers page should keep;
+and all six rank columns are computable and meaningful across a lever (rank on the base board vs
+rank on the priced board), so a future dial-movers template should keep them.
+
+DELIVERED IN: the v757 / house movers format (MOVERS_D8.md), which carries age, carries the
+per-band attribution the order asks for, and does not have to pretend a round boundary exists.
+
+RECOMMENDATION (not this seat's to land): the movers schema wants a sibling — a LEVER-MOVERS
+template whose row block is name / age / pos / club / before / after / delta / pct / the six rank
+columns, whose header is from_label -> to_label with no previous_round, and which keeps the
+both-ends stamp verbatim. That is a template addition, not a template edit, and it belongs to
+whoever owns ui/templates.

@@ -1,0 +1,31 @@
+=== ORDER D8 BUILDS — PREREG_D8.md governs. PRICED, NOT ADOPTED. ===
+  engine  : 338a790b773cfbbff0e1283794c72efe  (base was 5ac6780f3c4931edcaa527576bbdfb88)
+  rl_model: 6fe7c4155866d80e8045bed2d3bf2802  (pin 6fe7c4155866d80e8045bed2d3bf2802, UNMOVED)
+  store   : cc02567f80bef39228f25854d121a766  (pin cc02567f80bef39228f25854d121a766)
+  q97m    : cfdc73216c099e5e8f1fda3968f31c00  (pin cfdc73216c099e5e8f1fda3968f31c00, FROZEN)
+
+build-lock: HELD by d8-price (pid 24707) since 2026-08-20T06:30:07Z — single writer for the shared workspace.
+D8 OFF_DEV_1  mode=dev       rc=0 board_md5=a05fe951f78482c70520480e184c80ec  (101.8s)
+  staging removed: /home/claude/fvprov_lcwvi18i
+D8 OFF_DEV_2  mode=dev       rc=0 board_md5=a05fe951f78482c70520480e184c80ec  (99.4s)
+  staging removed: /home/claude/fvprov_nmvyxfy5
+D8 OFF_CANON  mode=canonical rc=0 board_md5=a05fe951f78482c70520480e184c80ec  (102.0s)
+  staging removed: /home/claude/fvprov_w8g76td2
+D8 ON_DEV_1   mode=dev       rc=0 board_md5=5ea978f7b6a073abb2012f10cccbc3e3  (102.4s)
+  staging removed: /home/claude/fvprov_z0zo9wuw
+D8 ON_DEV_2   mode=dev       rc=0 board_md5=5ea978f7b6a073abb2012f10cccbc3e3  (103.8s)
+  staging removed: /home/claude/fvprov_ji248p7k
+build-lock: released by d8-price
+
+=== BOARD IDS ===
+OFF_DEV_1  a05fe951f78482c70520480e184c80ec
+OFF_DEV_2  a05fe951f78482c70520480e184c80ec
+OFF_CANON  a05fe951f78482c70520480e184c80ec
+ON_DEV_1   5ea978f7b6a073abb2012f10cccbc3e3
+ON_DEV_2   5ea978f7b6a073abb2012f10cccbc3e3
+
+=== EXPECTED (PREREG_D8 F1/F3) ===
+  OFF_DEV_1 == OFF_DEV_2 == OFF_CANON == a05fe951f78482c70520480e184c80ec   (F1 no-op, F3 determinism)
+  ON_DEV_1  == ON_DEV_2  == THE PRICED BOARD                                (F3 determinism)
+
+[exited with code 0]

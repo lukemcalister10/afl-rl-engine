@@ -1,0 +1,13 @@
+ORDER D8 — F5, the ORDER 29B/30B PRINTED-DAY-0 boot-class assert, read off each build's own stdout.
+PREREG_D8 F5: 89 of 89 at tolerance 0 on the priced build.
+
+OFF_DEV_1  rc=0 board=a05fe951f78482c70520480e184c80ec
+    PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+OFF_DEV_2  rc=0 board=a05fe951f78482c70520480e184c80ec
+    PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+OFF_CANON  rc=0 board=a05fe951f78482c70520480e184c80ec
+    PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+ON_DEV_1   rc=0 board=5ea978f7b6a073abb2012f10cccbc3e3
+    PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+ON_DEV_2   rc=0 board=5ea978f7b6a073abb2012f10cccbc3e3
+    PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)

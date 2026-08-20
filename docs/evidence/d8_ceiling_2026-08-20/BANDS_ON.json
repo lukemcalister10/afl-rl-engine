@@ -1,0 +1,29 @@
+{
+ "flags": {
+  "RL_O33_STAGE_env": null,
+  "RL_O33_TAPEROFF_env": "1",
+  "RL_O33_env": null,
+  "_O33": false,
+  "_O33S": 0,
+  "_O33_TAPEROFF": true
+ },
+ "frac_domain_divergences": [],
+ "frac_domain_rows": 161,
+ "frac_row_checks": 2220,
+ "frac_row_divergences": [],
+ "inversion_rows": [],
+ "inversions": 0,
+ "load_s": 51.8,
+ "n_rows": 804,
+ "rows_note": "per-row bands live in BANDS_ON_rows.csv",
+ "taper_dial": true,
+ "uncomp_cal": [
+  "=== RL_UNCOMP v1.1 LEG B: map ON (s=0.1000 Delta=6.0) | V_ref_b/RHO_DEN/C over 358 proven / scope-pop ===",
+  "    KPD      V_ref_b=   239.0 RHO_DEN=   8.88 C=1.10759",
+  "    KPF      V_ref_b=   544.0 RHO_DEN=   5.43 C=1.08086",
+  "    MID      V_ref_b=  1507.3 RHO_DEN=  17.48 C=1.08679",
+  "    RUCK     V_ref_b=  1701.9 RHO_DEN=  16.60 C=1.03625",
+  "    SD       V_ref_b=   523.6 RHO_DEN=  10.70 C=1.10189",
+  "    SF       V_ref_b=   163.6 RHO_DEN=   7.79 C=1.21176"
+ ]
+}

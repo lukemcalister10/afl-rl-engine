@@ -1,0 +1,3693 @@
+{
+ "flags": {
+  "RL_O33_STAGE_env": null,
+  "RL_O33_TAPEROFF_env": null,
+  "RL_O33_env": null,
+  "_O33": false,
+  "_O33S": 0,
+  "_O33_TAPEROFF": false
+ },
+ "frac_domain_divergences": [],
+ "frac_domain_rows": 161,
+ "frac_row_checks": 2220,
+ "frac_row_divergences": [],
+ "inversion_rows": [
+  {
+   "age": 26,
+   "b4": 87.89638515407579,
+   "b5": 72.75675431091265,
+   "key": "samson-ryan",
+   "name": "Samson Ryan",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 26,
+   "b4": 85.48341099874041,
+   "b5": 70.3866173874961,
+   "key": "oliver-hayes-brown",
+   "name": "Oliver Hayes-Brown",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 26,
+   "b4": 69.22740893834974,
+   "b5": 54.2630454643551,
+   "key": "jack-watkins",
+   "name": "Jack Watkins",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 26,
+   "b4": 88.20968853840905,
+   "b5": 73.28914306534244,
+   "key": "liam-reidy",
+   "name": "Liam Reidy",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 27,
+   "b4": 82.56043094840645,
+   "b5": 69.95285676546789,
+   "key": "harrison-coe",
+   "name": "Harrison Coe",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 37,
+   "b4": 82.16906842091161,
+   "b5": 69.89235871391074,
+   "key": "patrick-dangerfield",
+   "name": "Patrick Dangerfield",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 28,
+   "b4": 84.89231472396993,
+   "b5": 72.6888140685856,
+   "key": "peter-ladhams",
+   "name": "Peter Ladhams",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 36,
+   "b4": 84.42613637043324,
+   "b5": 73.54884306407774,
+   "key": "rhys-stanley",
+   "name": "Rhys Stanley",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 28,
+   "b4": 100.86264163124903,
+   "b5": 90.18912843466974,
+   "key": "andrew-mcgrath",
+   "name": "Andrew McGrath",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 27,
+   "b4": 70.7118501163687,
+   "b5": 60.53929891826331,
+   "key": "paddy-dow",
+   "name": "Paddy Dow",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 28,
+   "b4": 83.08600742891032,
+   "b5": 73.08932777416528,
+   "key": "will-brodie",
+   "name": "Will Brodie",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 26,
+   "b4": 61.47610168102674,
+   "b5": 51.62014310895259,
+   "key": "james-blanck",
+   "name": "James Blanck",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 29,
+   "b4": 85.58701392225801,
+   "b5": 76.095663838695,
+   "key": "shaun-mannagh",
+   "name": "Shaun Mannagh",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 35,
+   "b4": 87.85010965782332,
+   "b5": 79.1290994917396,
+   "key": "jack-gunston",
+   "name": "Jack Gunston",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 29,
+   "b4": 89.2617957780584,
+   "b5": 80.58533881253548,
+   "key": "lachlan-schultz",
+   "name": "Lachlan Schultz",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 25,
+   "b4": 68.19542939502624,
+   "b5": 59.75027837595729,
+   "key": "ben-jepson",
+   "name": "Ben Jepson",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 73.20006587339826,
+   "b5": 64.83529958837161,
+   "key": "mani-liddy",
+   "name": "Mani Liddy",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 26,
+   "b4": 67.4094310567214,
+   "b5": 59.2558085518161,
+   "key": "zak-evans",
+   "name": "Zak Evans",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 28,
+   "b4": 88.6478189195539,
+   "b5": 80.55616213139152,
+   "key": "mitchell-hinge",
+   "name": "Mitchell Hinge",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 33,
+   "b4": 62.07070035998696,
+   "b5": 54.099200138312405,
+   "key": "joel-hamling",
+   "name": "Joel Hamling",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 24,
+   "b4": 94.14984434917666,
+   "b5": 86.32966627984516,
+   "key": "nathan-o-driscoll",
+   "name": "Nathan O'Driscoll",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 27,
+   "b4": 61.45950918705616,
+   "b5": 53.65021607571365,
+   "key": "jack-henderson",
+   "name": "Jack Henderson",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 25,
+   "b4": 73.81390085844298,
+   "b5": 66.04406200245246,
+   "key": "roan-steele",
+   "name": "Roan Steele",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 26,
+   "b4": 84.43334497990544,
+   "b5": 76.7215663604489,
+   "key": "lachlan-sholl",
+   "name": "Lachlan Sholl",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 26,
+   "b4": 68.89685517275488,
+   "b5": 61.23015296548631,
+   "key": "bailey-scott",
+   "name": "Bailey Scott",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 26,
+   "b4": 64.69877269856575,
+   "b5": 57.058395881706986,
+   "key": "caleb-graham",
+   "name": "Caleb Graham",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 26,
+   "b4": 66.12160910054921,
+   "b5": 58.578685492322094,
+   "key": "tom-edwards",
+   "name": "Tom Edwards",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 29,
+   "b4": 85.9666119574524,
+   "b5": 78.4624388143407,
+   "key": "jacob-weitering",
+   "name": "Jacob Weitering",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 29,
+   "b4": 84.52099987705604,
+   "b5": 77.09661564507789,
+   "key": "jacob-hopper",
+   "name": "Jacob Hopper",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 66.77785447829054,
+   "b5": 59.39091275003409,
+   "key": "luke-pedlar",
+   "name": "Luke Pedlar",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 28,
+   "b4": 91.27125801800057,
+   "b5": 83.98856557412661,
+   "key": "will-setterfield",
+   "name": "Will Setterfield",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 27,
+   "b4": 104.69595148810421,
+   "b5": 97.43114210326313,
+   "key": "tom-de-koning",
+   "name": "Tom De Koning",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 28,
+   "b4": 87.03861019708678,
+   "b5": 79.90648783973771,
+   "key": "ned-reeves",
+   "name": "Ned Reeves",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 28,
+   "b4": 89.69416000767383,
+   "b5": 82.57804467691417,
+   "key": "sean-darcy",
+   "name": "Sean Darcy",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 25,
+   "b4": 94.27430176238168,
+   "b5": 87.31274751481855,
+   "key": "nick-bryan",
+   "name": "Nick Bryan",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 25,
+   "b4": 73.01301953740641,
+   "b5": 66.12474944352323,
+   "key": "jack-hutchinson",
+   "name": "Jack Hutchinson",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 34,
+   "b4": 71.34300763261172,
+   "b5": 64.71483400232565,
+   "key": "jack-darling",
+   "name": "Jack Darling",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 29,
+   "b4": 91.27564353207075,
+   "b5": 84.68164090422707,
+   "key": "darcy-parish",
+   "name": "Darcy Parish",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 27,
+   "b4": 69.09166879673008,
+   "b5": 62.51637367497794,
+   "key": "nicholas-coffield",
+   "name": "Nicholas Coffield",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 28,
+   "b4": 66.29515136988998,
+   "b5": 59.76998598927333,
+   "key": "mykelti-lefau",
+   "name": "Mykelti Lefau",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 28,
+   "b4": 64.90468757038427,
+   "b5": 58.43686815365189,
+   "key": "toby-pink",
+   "name": "Toby Pink",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 26,
+   "b4": 73.65525448817097,
+   "b5": 67.32091817916827,
+   "key": "max-king-stk",
+   "name": "Max King",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 27,
+   "b4": 64.71572446341513,
+   "b5": 58.40903635445951,
+   "key": "will-lewis",
+   "name": "Will Lewis",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 28,
+   "b4": 91.62076101873022,
+   "b5": 85.31851890366615,
+   "key": "sam-draper",
+   "name": "Sam Draper",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 28,
+   "b4": 78.3700589305917,
+   "b5": 72.11481949482737,
+   "key": "ben-ainsworth",
+   "name": "Ben Ainsworth",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 28,
+   "b4": 80.64290719116666,
+   "b5": 74.47494671531892,
+   "key": "jack-bowes",
+   "name": "Jack Bowes",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 73.24795303202403,
+   "b5": 67.18258337910544,
+   "key": "finlay-macrae",
+   "name": "Finlay Macrae",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 25,
+   "b4": 69.90340643236418,
+   "b5": 63.85561154584751,
+   "key": "saad-el-hawli",
+   "name": "Saad El-Hawli",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 28,
+   "b4": 86.30087483258117,
+   "b5": 80.25769412341924,
+   "key": "jordan-ridley",
+   "name": "Jordan Ridley",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 25,
+   "b4": 64.78126413661177,
+   "b5": 58.74172066495926,
+   "key": "malcolm-rosas",
+   "name": "Malcolm Rosas",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 26,
+   "b4": 65.63353607323567,
+   "b5": 59.60111718691057,
+   "key": "aidan-johnson",
+   "name": "Aidan Johnson",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 28,
+   "b4": 66.80468243569022,
+   "b5": 60.82922270585411,
+   "key": "todd-marshall",
+   "name": "Todd Marshall",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 28,
+   "b4": 88.93979966672217,
+   "b5": 82.98089339115849,
+   "key": "conor-nash",
+   "name": "Conor Nash",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 31,
+   "b4": 91.4655803803014,
+   "b5": 85.51055139969037,
+   "key": "karl-amon",
+   "name": "Karl Amon",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 24,
+   "b4": 67.72776083092005,
+   "b5": 61.799916969452354,
+   "key": "nikolas-cox",
+   "name": "Nikolas Cox",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 28,
+   "b4": 86.13950991569021,
+   "b5": 80.21305545999948,
+   "key": "patrick-lipinski",
+   "name": "Patrick Lipinski",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 26,
+   "b4": 92.4621745673068,
+   "b5": 86.53704712189239,
+   "key": "keidean-coleman",
+   "name": "Keidean Coleman",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 27,
+   "b4": 65.19463360739017,
+   "b5": 59.3209499491815,
+   "key": "mitch-podhajski",
+   "name": "Mitch Podhajski",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 23,
+   "b4": 99.73330717873192,
+   "b5": 93.86211785186136,
+   "key": "neil-erasmus",
+   "name": "Neil Erasmus",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 35,
+   "b4": 62.481606109465375,
+   "b5": 56.61541168569933,
+   "key": "jake-melksham",
+   "name": "Jake Melksham",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 26,
+   "b4": 84.68696639059614,
+   "b5": 78.93370648037994,
+   "key": "xavier-duursma",
+   "name": "Xavier Duursma",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 30,
+   "b4": 64.39997266222561,
+   "b5": 58.654224085477466,
+   "key": "lewis-melican",
+   "name": "Lewis Melican",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 25,
+   "b4": 70.38649788730969,
+   "b5": 64.67366420703337,
+   "key": "luke-beecken",
+   "name": "Luke Beecken",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 30,
+   "b4": 63.58556127074851,
+   "b5": 57.93507815188087,
+   "key": "conor-mckenna",
+   "name": "Conor McKenna",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 23,
+   "b4": 92.91003333982896,
+   "b5": 87.2707900568953,
+   "key": "tyler-sonsie",
+   "name": "Tyler Sonsie",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 26,
+   "b4": 69.37680964621579,
+   "b5": 63.75654620210345,
+   "key": "rhyan-mansell",
+   "name": "Rhyan Mansell",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 28,
+   "b4": 65.66472023478012,
+   "b5": 60.0564819078321,
+   "key": "bailey-banfield",
+   "name": "Bailey Banfield",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 34,
+   "b4": 72.6172470993615,
+   "b5": 67.01907940114869,
+   "key": "jamie-elliott",
+   "name": "Jamie Elliott",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 29,
+   "b4": 56.078030638317536,
+   "b5": 50.49661964810379,
+   "key": "darragh-joyce",
+   "name": "Darragh Joyce",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 27,
+   "b4": 90.63354644604043,
+   "b5": 85.08253305134951,
+   "key": "james-worpel",
+   "name": "James Worpel",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 36,
+   "b4": 76.14427641826603,
+   "b5": 70.67226369014264,
+   "key": "steele-sidebottom",
+   "name": "Steele Sidebottom",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 71.82786986383879,
+   "b5": 66.36528383013851,
+   "key": "jamarra-ugle-hagan",
+   "name": "Jamarra Ugle-Hagan",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 25,
+   "b4": 72.84132180943318,
+   "b5": 67.38559576834281,
+   "key": "cody-weightman",
+   "name": "Cody Weightman",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 30,
+   "b4": 75.92641901356298,
+   "b5": 70.49184604934584,
+   "key": "jake-lever",
+   "name": "Jake Lever",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 26,
+   "b4": 69.43119249672652,
+   "b5": 64.01532804490498,
+   "key": "buku-khamis",
+   "name": "Buku Khamis",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 26,
+   "b4": 68.77456582484827,
+   "b5": 63.3680454667926,
+   "key": "harry-edwards",
+   "name": "Harry Edwards",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 26,
+   "b4": 75.42536370784383,
+   "b5": 70.024315383531,
+   "key": "matt-cottrell",
+   "name": "Matt Cottrell",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 90.83275993226884,
+   "b5": 85.45968502115856,
+   "key": "brayden-cook",
+   "name": "Brayden Cook",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 65.24303789054822,
+   "b5": 59.87558565487055,
+   "key": "billy-cootee",
+   "name": "Billy Cootee",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 28,
+   "b4": 88.1704534896637,
+   "b5": 82.82659669381668,
+   "key": "liam-baker",
+   "name": "Liam Baker",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 24,
+   "b4": 100.42531513343826,
+   "b5": 95.1147783617923,
+   "key": "joel-jeffrey",
+   "name": "Joel Jeffrey",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 28,
+   "b4": 66.01847458664223,
+   "b5": 60.71039183553098,
+   "key": "griffin-logue",
+   "name": "Griffin Logue",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 23,
+   "b4": 85.77641830471863,
+   "b5": 80.53804207453152,
+   "key": "campbell-chesser",
+   "name": "Campbell Chesser",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 28,
+   "b4": 62.49998349779444,
+   "b5": 57.299171467731576,
+   "key": "elliot-himmelberg",
+   "name": "Elliott Himmelberg",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 27,
+   "b4": 97.55220474020341,
+   "b5": 92.38254083367123,
+   "key": "adam-cerra",
+   "name": "Adam Cerra",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 34,
+   "b4": 104.77056602039887,
+   "b5": 99.63563040193526,
+   "key": "luke-parker",
+   "name": "Luke Parker",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 34,
+   "b4": 62.59845344770392,
+   "b5": 57.482738158886086,
+   "key": "tom-lynch-1",
+   "name": "Tom Lynch",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 35,
+   "b4": 57.69311549477279,
+   "b5": 52.60663697494015,
+   "key": "mason-cox",
+   "name": "Mason Cox",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 24,
+   "b4": 87.7166731049927,
+   "b5": 82.63799766890953,
+   "key": "sam-clohesy",
+   "name": "Sam Clohesy",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 29,
+   "b4": 54.3956638706859,
+   "b5": 49.31992721202154,
+   "key": "matt-owies",
+   "name": "Matt Owies",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 28,
+   "b4": 85.77538975710993,
+   "b5": 80.74028708947861,
+   "key": "jarrod-berry",
+   "name": "Jarrod Berry",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 29,
+   "b4": 92.73094658984007,
+   "b5": 87.71034590938886,
+   "key": "daniel-rioli",
+   "name": "Daniel Rioli",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 28,
+   "b4": 66.69870947409902,
+   "b5": 61.85330944738541,
+   "key": "bradley-close",
+   "name": "Bradley Close",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 25,
+   "b4": 74.58810838855753,
+   "b5": 69.74283415293776,
+   "key": "jeremy-sharp",
+   "name": "Jeremy Sharp",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 26,
+   "b4": 68.4496174932476,
+   "b5": 63.64628544079212,
+   "key": "oisin-mullin",
+   "name": "Oisin Mullin",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 25,
+   "b4": 63.474090843416825,
+   "b5": 58.69001752473282,
+   "key": "jack-buller",
+   "name": "Jack Buller",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 33,
+   "b4": 86.44622567862709,
+   "b5": 81.66705616623646,
+   "key": "adam-treloar",
+   "name": "Adam Treloar",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 30,
+   "b4": 75.73325906899474,
+   "b5": 70.95609605348956,
+   "key": "lachlan-weller",
+   "name": "Lachlan Weller",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 23,
+   "b4": 102.58366651156311,
+   "b5": 97.81080165892027,
+   "key": "lawson-humphries",
+   "name": "Lawson Humphries",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 26,
+   "b4": 67.05207463922788,
+   "b5": 62.28359173932443,
+   "key": "callum-brown-ire",
+   "name": "Callum M. Brown",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 26,
+   "b4": 76.27433691822849,
+   "b5": 71.55504593590226,
+   "key": "jack-lukosius",
+   "name": "Jack Lukosius",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 33,
+   "b4": 81.14528678608643,
+   "b5": 76.4317812485801,
+   "key": "mason-wood",
+   "name": "Mason Wood",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 28,
+   "b4": 99.22776765265705,
+   "b5": 94.54341795637293,
+   "key": "lloyd-meek",
+   "name": "Lloyd Meek",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 28,
+   "b4": 72.59796781338615,
+   "b5": 67.91878828012406,
+   "key": "zac-fisher",
+   "name": "Zac Fisher",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 28,
+   "b4": 78.66030835730847,
+   "b5": 74.00052652571569,
+   "key": "harry-morrison",
+   "name": "Harry Morrison",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 27,
+   "b4": 67.38123187054298,
+   "b5": 62.72182398168437,
+   "key": "oscar-allen",
+   "name": "Oscar Allen",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 25,
+   "b4": 69.42803637305052,
+   "b5": 64.7746541293261,
+   "key": "flynn-perez",
+   "name": "Flynn Perez",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 23,
+   "b4": 100.00104934473138,
+   "b5": 95.39049354581927,
+   "key": "matt-johnson-1",
+   "name": "Matt Johnson",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 79.06997491943854,
+   "b5": 74.46419913255447,
+   "key": "lachlan-jones",
+   "name": "Lachlan Jones",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 24,
+   "b4": 87.2680238764825,
+   "b5": 82.66424248467641,
+   "key": "heath-chapman",
+   "name": "Heath Chapman",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 25,
+   "b4": 101.50395604672332,
+   "b5": 96.94887254203746,
+   "key": "hayden-young",
+   "name": "Hayden Young",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 25,
+   "b4": 65.54020305840454,
+   "b5": 60.99934274721956,
+   "key": "harry-schoenberg",
+   "name": "Harry Schoenberg",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 34,
+   "b4": 76.81824098833084,
+   "b5": 72.28411360464537,
+   "key": "ryan-lester",
+   "name": "Ryan Lester",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 24,
+   "b4": 90.1465096121298,
+   "b5": 85.64908770719599,
+   "key": "ryan-angwin",
+   "name": "Ryan Angwin",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 36,
+   "b4": 82.90831099003519,
+   "b5": 78.44794320368071,
+   "key": "jeremy-howe",
+   "name": "Jeremy Howe",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 28,
+   "b4": 63.113486547150465,
+   "b5": 58.66124952542849,
+   "key": "lachlan-blakiston",
+   "name": "Lachlan Blakiston",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 28,
+   "b4": 62.78069262029018,
+   "b5": 58.3717357356915,
+   "key": "oskar-baker",
+   "name": "Oskar Baker",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 29,
+   "b4": 108.60711937071444,
+   "b5": 104.24967671737636,
+   "key": "john-noble",
+   "name": "John Noble",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 33,
+   "b4": 75.29180982898099,
+   "b5": 70.94650347126678,
+   "key": "stephen-coniglio",
+   "name": "Stephen Coniglio",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 26,
+   "b4": 62.83297846347855,
+   "b5": 58.532248134125105,
+   "key": "chayce-jones",
+   "name": "Chayce Jones",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 27,
+   "b4": 83.69937756683055,
+   "b5": 79.41267433003797,
+   "key": "joe-richards",
+   "name": "Joe Richards",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 31,
+   "b4": 92.62978788447711,
+   "b5": 88.35636805678487,
+   "key": "jarman-impey",
+   "name": "Jarman Impey",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 28,
+   "b4": 74.38579899864645,
+   "b5": 70.11896542177948,
+   "key": "tyson-stengle",
+   "name": "Tyson Stengle",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 29,
+   "b4": 75.87251529842759,
+   "b5": 71.65438672348837,
+   "key": "jack-buckley",
+   "name": "Jack Buckley",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 24,
+   "b4": 66.40335556692234,
+   "b5": 62.20285923375733,
+   "key": "ollie-lord",
+   "name": "Ollie Lord",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 27,
+   "b4": 69.22736123342195,
+   "b5": 65.03561933283227,
+   "key": "noah-answerth",
+   "name": "Noah Answerth",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 25,
+   "b4": 76.84170164277505,
+   "b5": 72.65853971050234,
+   "key": "bruce-reville",
+   "name": "Bruce Reville",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 87.5074781007785,
+   "b5": 83.35764812450364,
+   "key": "daniel-turner",
+   "name": "Daniel Turner",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 30,
+   "b4": 89.45340357485428,
+   "b5": 85.30614399957794,
+   "key": "jordan-de-goey",
+   "name": "Jordan De Goey",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 26,
+   "b4": 96.58415173090758,
+   "b5": 92.4444049370313,
+   "key": "tom-mccarthy",
+   "name": "Tom McCarthy",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 31,
+   "b4": 103.55852117500562,
+   "b5": 99.42933016026633,
+   "key": "patrick-cripps",
+   "name": "Patrick Cripps",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 28,
+   "b4": 74.60595151732458,
+   "b5": 70.51270251109331,
+   "key": "tylar-young",
+   "name": "Tylar Young",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 29,
+   "b4": 86.68361137587463,
+   "b5": 82.64547091000914,
+   "key": "harry-mckay",
+   "name": "Harry McKay",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 28,
+   "b4": 66.66221888495501,
+   "b5": 62.63543307268598,
+   "key": "jordan-boyd",
+   "name": "Jordan Boyd",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 28,
+   "b4": 65.31165499841579,
+   "b5": 61.286785272031324,
+   "key": "brandon-zerk-thatcher",
+   "name": "Brandon Zerk-Thatcher",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 27,
+   "b4": 97.5942884263323,
+   "b5": 93.58005900408509,
+   "key": "kane-farrell",
+   "name": "Kane Farrell",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 30,
+   "b4": 95.60297029781759,
+   "b5": 91.60147078464311,
+   "key": "jayden-short",
+   "name": "Jayden Short",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 24,
+   "b4": 70.36457319462038,
+   "b5": 66.37425604335834,
+   "key": "wil-parker",
+   "name": "Wil Parker",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 33,
+   "b4": 74.10971740037301,
+   "b5": 70.13032533896768,
+   "key": "rory-lobb",
+   "name": "Rory Lobb",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 30,
+   "b4": 71.36448787039366,
+   "b5": 67.4024838782421,
+   "key": "darcy-moore",
+   "name": "Darcy Moore",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 24,
+   "b4": 108.29695319677577,
+   "b5": 104.34442630525533,
+   "key": "ned-moyle",
+   "name": "Ned Moyle",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 24,
+   "b4": 88.23569066222281,
+   "b5": 84.29697298338682,
+   "key": "alex-davies",
+   "name": "Alex Davies",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 72.23125675028506,
+   "b5": 68.32805921180753,
+   "key": "harry-sharp",
+   "name": "Harry Sharp",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 23,
+   "b4": 83.98924426917615,
+   "b5": 80.09950832688799,
+   "key": "anthony-caminiti",
+   "name": "Anthony Caminiti",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 28,
+   "b4": 93.07081812011951,
+   "b5": 89.23542619549495,
+   "key": "willem-drew",
+   "name": "Willem Drew",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 23,
+   "b4": 97.8781979315056,
+   "b5": 94.04407180050241,
+   "key": "ned-long",
+   "name": "Ned Long",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 25,
+   "b4": 100.44659118679476,
+   "b5": 96.616112408957,
+   "key": "trent-rivers",
+   "name": "Trent Rivers",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 30,
+   "b4": 61.65980184954248,
+   "b5": 57.842351002044566,
+   "key": "daniel-butler",
+   "name": "Daniel Butler",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 25,
+   "b4": 83.15125304781064,
+   "b5": 79.33439722442486,
+   "key": "deven-robertson",
+   "name": "Deven Robertson",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 26,
+   "b4": 81.38072561943018,
+   "b5": 77.63365321896151,
+   "key": "riley-bice",
+   "name": "Riley Bice",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 25,
+   "b4": 68.67150339282851,
+   "b5": 64.94216124333322,
+   "key": "sam-davidson",
+   "name": "Sam Davidson",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 27,
+   "b4": 94.41578116117408,
+   "b5": 90.6879541401212,
+   "key": "gryan-miers",
+   "name": "Gryan Miers",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 32,
+   "b4": 72.54258250863406,
+   "b5": 68.81790033328795,
+   "key": "zachary-williams",
+   "name": "Zachary Williams",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 30,
+   "b4": 86.39652236174075,
+   "b5": 82.68299587910425,
+   "key": "ed-langdon",
+   "name": "Ed Langdon",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 29,
+   "b4": 83.2420837206074,
+   "b5": 79.53074786846379,
+   "key": "charlie-curnow",
+   "name": "Charlie Curnow",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 26,
+   "b4": 94.74036467915857,
+   "b5": 91.03310512905102,
+   "key": "lachlan-mcandrew",
+   "name": "Lachlan McAndrew",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 28,
+   "b4": 75.46757944968685,
+   "b5": 71.78609455512074,
+   "key": "mitchell-lewis",
+   "name": "Mitchell Lewis",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 24,
+   "b4": 71.94485850263287,
+   "b5": 68.28425266792857,
+   "key": "luke-cleary",
+   "name": "Luke Cleary",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 24,
+   "b4": 104.4399168791753,
+   "b5": 100.81478541348521,
+   "key": "riley-thilthorpe",
+   "name": "Riley Thilthorpe",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 25,
+   "b4": 79.32092617700845,
+   "b5": 75.7066775346315,
+   "key": "francis-evans",
+   "name": "Francis Evans",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 26,
+   "b4": 98.5059172996133,
+   "b5": 94.89211031940395,
+   "key": "james-peatling",
+   "name": "James Peatling",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 30,
+   "b4": 82.23160151746364,
+   "b5": 78.63314456709779,
+   "key": "alex-neal-bullen",
+   "name": "Alex Neal-Bullen",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 31,
+   "b4": 81.49526532934138,
+   "b5": 77.90885491252897,
+   "key": "blake-acres",
+   "name": "Blake Acres",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 31,
+   "b4": 83.56417697058659,
+   "b5": 79.99511362648316,
+   "key": "christian-salem",
+   "name": "Christian Salem",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 26,
+   "b4": 96.00093067569199,
+   "b5": 92.44313533191806,
+   "key": "jye-caldwell",
+   "name": "Jye Caldwell",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 27,
+   "b4": 70.9080802031008,
+   "b5": 67.3543242073019,
+   "key": "sam-wicks",
+   "name": "Sam Wicks",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 27,
+   "b4": 87.82203648424908,
+   "b5": 84.26878291346151,
+   "key": "dylan-moore",
+   "name": "Dylan Moore",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 28,
+   "b4": 77.68812076331507,
+   "b5": 74.14607426866385,
+   "key": "harry-perryman",
+   "name": "Harry Perryman",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 30,
+   "b4": 86.63453865148992,
+   "b5": 83.10918942845531,
+   "key": "liam-duggan",
+   "name": "Liam Duggan",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 32,
+   "b4": 83.35369767854502,
+   "b5": 79.82886740609887,
+   "key": "aliir-aliir",
+   "name": "Aliir Aliir",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 26,
+   "b4": 75.15751894043332,
+   "b5": 71.68153241346616,
+   "key": "james-jordon",
+   "name": "James Jordon",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 28,
+   "b4": 83.66315862905206,
+   "b5": 80.2058821173036,
+   "key": "zach-guthrie",
+   "name": "Zach Guthrie",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 33,
+   "b4": 93.33708874069755,
+   "b5": 89.90488887302838,
+   "key": "nic-newman",
+   "name": "Nic Newman",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 23,
+   "b4": 94.05819635003466,
+   "b5": 90.64770929944288,
+   "key": "jai-serong",
+   "name": "Jai Serong",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 25,
+   "b4": 60.15314517565421,
+   "b5": 56.74988880087953,
+   "key": "lachlan-mcneil",
+   "name": "Lachlan McNeil",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 23,
+   "b4": 95.34873994361546,
+   "b5": 91.96804216996054,
+   "key": "angus-sheldrick",
+   "name": "Angus Sheldrick",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 27,
+   "b4": 103.39168967986379,
+   "b5": 100.01139289671053,
+   "key": "kieren-briggs",
+   "name": "Kieren Briggs",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 31,
+   "b4": 73.99780194720346,
+   "b5": 70.6258348525247,
+   "key": "luke-mcdonald",
+   "name": "Luke McDonald",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 26,
+   "b4": 71.60779966741235,
+   "b5": 68.24539572701724,
+   "key": "ben-king",
+   "name": "Ben King",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 34,
+   "b4": 77.0580717741884,
+   "b5": 73.71602922209176,
+   "key": "dion-prestia",
+   "name": "Dion Prestia",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 30,
+   "b4": 100.05802983255101,
+   "b5": 96.7399807521362,
+   "key": "caleb-daniel",
+   "name": "Caleb Daniel",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 23,
+   "b4": 76.51412451251063,
+   "b5": 73.19714658286587,
+   "key": "angus-anderson",
+   "name": "Angus Anderson",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 79.34874227699267,
+   "b5": 76.0362159743078,
+   "key": "braeden-campbell",
+   "name": "Braeden Campbell",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 30,
+   "b4": 64.82558670109292,
+   "b5": 61.5140599914143,
+   "key": "oscar-mcdonald",
+   "name": "Oscar McDonald",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 29,
+   "b4": 95.6099463475917,
+   "b5": 92.30550067153183,
+   "key": "dan-houston",
+   "name": "Dan Houston",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 37,
+   "b4": 72.12470396666815,
+   "b5": 68.82388078689067,
+   "key": "taylor-walker",
+   "name": "Taylor Walker",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 28,
+   "b4": 89.29334395360581,
+   "b5": 85.99617728639268,
+   "key": "jack-graham",
+   "name": "Jack Graham",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 29,
+   "b4": 105.71182663371776,
+   "b5": 102.45126639915206,
+   "key": "callum-mills",
+   "name": "Callum Mills",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 28,
+   "b4": 72.26540494725997,
+   "b5": 69.00489749188152,
+   "key": "sam-powell-pepper",
+   "name": "Sam Powell-Pepper",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 27,
+   "b4": 102.10404120820688,
+   "b5": 98.84537836770052,
+   "key": "zac-bailey",
+   "name": "Zac Bailey",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 23,
+   "b4": 76.2692411046741,
+   "b5": 73.03820552551792,
+   "key": "isaiah-dudley",
+   "name": "Isaiah Dudley",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 27,
+   "b4": 88.53698431522184,
+   "b5": 85.32985254085725,
+   "key": "tom-mccartin",
+   "name": "Tom McCartin",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 25,
+   "b4": 84.03318014009857,
+   "b5": 80.83261056407132,
+   "key": "jaxon-prior",
+   "name": "Jaxon Prior",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 27,
+   "b4": 63.16235296953662,
+   "b5": 59.9735788862429,
+   "key": "brandon-starcevich",
+   "name": "Brandon Starcevich",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 27,
+   "b4": 63.57176820552467,
+   "b5": 60.41951344446828,
+   "key": "joel-amartey",
+   "name": "Joel Amartey",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 27,
+   "b4": 112.28569929207761,
+   "b5": 109.16299826269506,
+   "key": "andrew-brayshaw",
+   "name": "Andrew Brayshaw",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 27,
+   "b4": 71.09938141923372,
+   "b5": 68.01903156420262,
+   "key": "changkuoth-jiath",
+   "name": "Changkuoth Jiath",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 33,
+   "b4": 78.68772878992628,
+   "b5": 75.64768758745225,
+   "key": "elliot-yeo",
+   "name": "Elliot Yeo",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 90.4892529422623,
+   "b5": 87.45309741280784,
+   "key": "max-heath",
+   "name": "Max Heath",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 29,
+   "b4": 59.681573960381655,
+   "b5": 56.64723551258533,
+   "key": "eric-hipwood",
+   "name": "Eric Hipwood",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 29,
+   "b4": 56.33832064583233,
+   "b5": 53.30752846707868,
+   "key": "ryan-gardner",
+   "name": "Ryan Gardner",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 27,
+   "b4": 55.53654920086055,
+   "b5": 52.5245926489154,
+   "key": "callum-coleman-jones",
+   "name": "Callum Coleman-Jones",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 27,
+   "b4": 58.56089422101497,
+   "b5": 55.5490151434236,
+   "key": "jordon-butts",
+   "name": "Jordon Butts",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 29,
+   "b4": 87.82444025521406,
+   "b5": 84.82616449852661,
+   "key": "matthew-flynn",
+   "name": "Matthew Flynn",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 27,
+   "b4": 69.66499649354317,
+   "b5": 66.66738479206863,
+   "key": "hunter-clark",
+   "name": "Hunter Clark",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 26,
+   "b4": 102.09613274016814,
+   "b5": 99.10156647985755,
+   "key": "connor-idun",
+   "name": "Connor Idun",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 28,
+   "b4": 60.324425519040666,
+   "b5": 57.34378814919164,
+   "key": "jacob-wehr",
+   "name": "Jacob Wehr",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 32,
+   "b4": 85.805491356969,
+   "b5": 82.84195375608556,
+   "key": "adam-saad",
+   "name": "Adam Saad",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 24,
+   "b4": 81.66177369803724,
+   "b5": 78.7180128779863,
+   "key": "logan-mcdonald",
+   "name": "Logan McDonald",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 25,
+   "b4": 71.05652739860265,
+   "b5": 68.12654631303644,
+   "key": "leek-aleer",
+   "name": "Leek Aleer",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 30,
+   "b4": 105.56119481688634,
+   "b5": 102.64550912221296,
+   "key": "touk-miller",
+   "name": "Touk Miller",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 26,
+   "b4": 67.398742221684,
+   "b5": 64.48460530676837,
+   "key": "liam-stocker",
+   "name": "Liam Stocker",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 24,
+   "b4": 63.339753277246,
+   "b5": 60.436380965360655,
+   "key": "reef-mcinnes",
+   "name": "Reef McInnes",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 30,
+   "b4": 86.05820461013924,
+   "b5": 83.1785564737475,
+   "key": "peter-wright",
+   "name": "Peter Wright",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 26,
+   "b4": 75.11662767964829,
+   "b5": 72.24434480616674,
+   "key": "cooper-sharman",
+   "name": "Cooper Sharman",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 26,
+   "b4": 74.75213816419621,
+   "b5": 71.88252504141106,
+   "key": "toby-bedford",
+   "name": "Toby Bedford",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 24,
+   "b4": 78.28401605608444,
+   "b5": 75.43158306343966,
+   "key": "james-o-donnell",
+   "name": "James O'Donnell",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 31,
+   "b4": 73.62306239877968,
+   "b5": 70.77945161307802,
+   "key": "daniel-mcstay",
+   "name": "Daniel McStay",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 24,
+   "b4": 76.85860713655255,
+   "b5": 74.02698265005448,
+   "key": "jack-carroll",
+   "name": "Jack Carroll",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 26,
+   "b4": 92.38073718530309,
+   "b5": 89.55884874316726,
+   "key": "james-rowbottom",
+   "name": "James Rowbottom",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 74.22856687191153,
+   "b5": 71.43841201168415,
+   "key": "brandon-walker",
+   "name": "Brandon Walker",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 29,
+   "b4": 55.527924768129104,
+   "b5": 52.753845370895114,
+   "key": "lachie-sullivan",
+   "name": "Lachie Sullivan",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 29,
+   "b4": 87.74821792919559,
+   "b5": 84.9779132109748,
+   "key": "brayden-fiorini",
+   "name": "Brayden Fiorini",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 112.00422779615997,
+   "b5": 109.23589544874963,
+   "key": "josh-treacy",
+   "name": "Josh Treacy",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 31,
+   "b4": 58.587982250110706,
+   "b5": 55.83130839188793,
+   "key": "darcy-gardiner",
+   "name": "Darcy Gardiner",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 29,
+   "b4": 55.994651666107934,
+   "b5": 53.25537644708352,
+   "key": "matt-guelfi",
+   "name": "Matt Guelfi",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 23,
+   "b4": 107.11867709294998,
+   "b5": 104.38633424124953,
+   "key": "jase-burgoyne",
+   "name": "Jase Burgoyne",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 28,
+   "b4": 72.90546831892766,
+   "b5": 70.17567369417525,
+   "key": "cameron-zurhaar",
+   "name": "Cameron Zurhaar",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 26,
+   "b4": 72.63159833658254,
+   "b5": 69.92200029006717,
+   "key": "nick-murray",
+   "name": "Nick Murray",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 33,
+   "b4": 79.15896887567037,
+   "b5": 76.45099940179432,
+   "key": "darcy-fort",
+   "name": "Darcy Fort",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 24,
+   "b4": 117.4343702111508,
+   "b5": 114.72955923565692,
+   "key": "sam-berry",
+   "name": "Sam Berry",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 32,
+   "b4": 70.29174849351861,
+   "b5": 67.61087246067677,
+   "key": "charlie-cameron",
+   "name": "Charlie Cameron",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 32,
+   "b4": 64.75200718403451,
+   "b5": 62.076770850310545,
+   "key": "tim-membrey",
+   "name": "Tim Membrey",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 23,
+   "b4": 78.57241319989144,
+   "b5": 75.90699781861557,
+   "key": "joel-fitzgerald",
+   "name": "Joel Fitzgerald",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 25,
+   "b4": 76.37734318400702,
+   "b5": 73.72659759446658,
+   "key": "hugo-ralphsmith",
+   "name": "Hugo Ralphsmith",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 31,
+   "b4": 110.21799723699557,
+   "b5": 107.6042106815784,
+   "key": "george-hewett",
+   "name": "George Hewett",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 79.45692194006823,
+   "b5": 76.85656266836307,
+   "key": "james-trezise",
+   "name": "James Trezise",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 29,
+   "b4": 60.52823672667271,
+   "b5": 57.930600669508756,
+   "key": "jade-gresham",
+   "name": "Jade Gresham",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 33,
+   "b4": 88.56765932174038,
+   "b5": 85.97787375492969,
+   "key": "bradley-hill",
+   "name": "Bradley Hill",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 29,
+   "b4": 113.00066818235307,
+   "b5": 110.43649164590323,
+   "key": "timothy-english",
+   "name": "Timothy English",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 27,
+   "b4": 87.20928594773476,
+   "b5": 84.64970165382012,
+   "key": "brent-daniels",
+   "name": "Brent Daniels",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 25,
+   "b4": 68.04549734113259,
+   "b5": 65.53848427801184,
+   "key": "harrison-jones",
+   "name": "Harrison Jones",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 28,
+   "b4": 69.899996024843,
+   "b5": 67.40897053730599,
+   "key": "jack-henry",
+   "name": "Jack Henry",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 26,
+   "b4": 64.49596294024057,
+   "b5": 62.00674501114863,
+   "key": "bobby-hill",
+   "name": "Bobby Hill",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 31,
+   "b4": 128.0861458505305,
+   "b5": 125.60078470449875,
+   "key": "marcus-bontempelli",
+   "name": "Marcus Bontempelli",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 27,
+   "b4": 67.96467433028106,
+   "b5": 65.49205853288723,
+   "key": "jack-payne",
+   "name": "Jack Payne",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 32,
+   "b4": 61.815623391754684,
+   "b5": 59.357038584975435,
+   "key": "jack-martin",
+   "name": "Jack Martin",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 24,
+   "b4": 73.76116117055132,
+   "b5": 71.34306216484137,
+   "key": "archie-perkins",
+   "name": "Archie Perkins",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 32,
+   "b4": 74.47653010595907,
+   "b5": 72.07318623087212,
+   "key": "jesse-hogan",
+   "name": "Jesse Hogan",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 28,
+   "b4": 102.59477136442295,
+   "b5": 100.20920217036411,
+   "key": "hugh-mccluggage",
+   "name": "Hugh McCluggage",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 29,
+   "b4": 77.58153146456583,
+   "b5": 75.21146444609161,
+   "key": "jack-silvagni",
+   "name": "Jack Silvagni",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 24,
+   "b4": 81.26000725991783,
+   "b5": 78.91012947320856,
+   "key": "elijah-hollands",
+   "name": "Elijah Hollands",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 26,
+   "b4": 71.12961838700095,
+   "b5": 68.79295552732873,
+   "key": "milan-murdock",
+   "name": "Milan Murdock",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 30,
+   "b4": 89.84818150031265,
+   "b5": 87.53446275473436,
+   "key": "marc-pittonet",
+   "name": "Marc Pittonet",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 23,
+   "b4": 84.00578460387761,
+   "b5": 81.69494398984166,
+   "key": "jai-culley",
+   "name": "Jai Culley",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 32,
+   "b4": 81.97667386210215,
+   "b5": 79.67059848841376,
+   "key": "jackson-macrae",
+   "name": "Jackson Macrae",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 27,
+   "b4": 66.21865537530756,
+   "b5": 63.93818270420972,
+   "key": "lachlan-fogarty",
+   "name": "Lachlan Fogarty",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 27,
+   "b4": 79.66473934949802,
+   "b5": 77.38571958238052,
+   "key": "aaron-naughton",
+   "name": "Aaron Naughton",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 30,
+   "b4": 101.17960937954815,
+   "b5": 98.9034805080266,
+   "key": "christian-petracca",
+   "name": "Christian Petracca",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 27,
+   "b4": 77.34876576513246,
+   "b5": 75.07748868903565,
+   "key": "darcy-fogarty",
+   "name": "Darcy Fogarty",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 23,
+   "b4": 72.92651150849896,
+   "b5": 70.66217010549144,
+   "key": "finnbar-maley",
+   "name": "Finnbar Maley",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 27,
+   "b4": 69.71155728286037,
+   "b5": 67.46133235232067,
+   "key": "hayden-mclean",
+   "name": "Hayden McLean",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 33,
+   "b4": 67.00589721119538,
+   "b5": 64.78058359096923,
+   "key": "jaeger-o-meara",
+   "name": "Jaeger O'Meara",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 30,
+   "b4": 74.81375521365145,
+   "b5": 72.62113837124848,
+   "key": "tom-papley",
+   "name": "Tom Papley",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 30,
+   "b4": 85.20499374751394,
+   "b5": 83.01290283302153,
+   "key": "brayden-maynard",
+   "name": "Brayden Maynard",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 28,
+   "b4": 96.159362117441,
+   "b5": 94.03176249022863,
+   "key": "shai-bolton",
+   "name": "Shai Bolton",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 28,
+   "b4": 74.91912467883014,
+   "b5": 72.80795534021749,
+   "key": "nick-larkey",
+   "name": "Nick Larkey",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 25,
+   "b4": 123.67766697420436,
+   "b5": 121.5711472770975,
+   "key": "lachlan-ash",
+   "name": "Lachlan Ash",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 27,
+   "b4": 70.54298989077485,
+   "b5": 68.43734777594791,
+   "key": "jake-riccardi",
+   "name": "Jake Riccardi",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 25,
+   "b4": 118.83487680367128,
+   "b5": 116.7695020540708,
+   "key": "noah-anderson",
+   "name": "Noah Anderson",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 29,
+   "b4": 72.4630887095655,
+   "b5": 70.41584841976936,
+   "key": "corey-wagner",
+   "name": "Corey Wagner",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 33,
+   "b4": 57.36196316447518,
+   "b5": 55.33617334019985,
+   "key": "jed-bews",
+   "name": "Jed Bews",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 23,
+   "b4": 93.73235055203547,
+   "b5": 91.73090550076122,
+   "key": "sam-banks",
+   "name": "Sam Banks",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 30,
+   "b4": 55.62696370356364,
+   "b5": 53.63100549110708,
+   "key": "jy-farrar",
+   "name": "Jy Farrar",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 27,
+   "b4": 80.85895948392742,
+   "b5": 78.87659556139639,
+   "key": "sam-taylor",
+   "name": "Sam Taylor",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 31,
+   "b4": 99.2265330659549,
+   "b5": 97.25348998066298,
+   "key": "james-sicily",
+   "name": "James Sicily",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 30,
+   "b4": 71.96312568834104,
+   "b5": 69.99136571260485,
+   "key": "kyle-langford",
+   "name": "Kyle Langford",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 24,
+   "b4": 85.30600892126719,
+   "b5": 83.35487155704236,
+   "key": "marcus-herbert",
+   "name": "Marcus Herbert",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 32,
+   "b4": 80.07999172562286,
+   "b5": 78.13030842790556,
+   "key": "samuel-collins",
+   "name": "Samuel Collins",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 33,
+   "b4": 82.60112202328344,
+   "b5": 80.66704484735195,
+   "key": "toby-greene",
+   "name": "Toby Greene",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 29,
+   "b4": 75.40003560753104,
+   "b5": 73.46757977125806,
+   "key": "ben-keays",
+   "name": "Ben Keays",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 24,
+   "b4": 69.96287107962861,
+   "b5": 68.04450095695269,
+   "key": "sandy-brock",
+   "name": "Sandy Brock",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 32,
+   "b4": 69.90585364663492,
+   "b5": 67.99485347230387,
+   "key": "jake-stringer",
+   "name": "Jake Stringer",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 34,
+   "b4": 69.38724710629656,
+   "b5": 67.48249385415359,
+   "key": "tom-mcdonald",
+   "name": "Tom McDonald",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 24,
+   "b4": 60.50032237259905,
+   "b5": 58.62242735419131,
+   "key": "flynn-young",
+   "name": "Flynn Young",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 27,
+   "b4": 89.63970284289549,
+   "b5": 87.7725480302204,
+   "key": "wil-powell",
+   "name": "Wil Powell",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 32,
+   "b4": 82.9431416025224,
+   "b5": 81.08938937678398,
+   "key": "nick-vlastuin",
+   "name": "Nick Vlastuin",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 34,
+   "b4": 60.26276680760688,
+   "b5": 58.424993602658205,
+   "key": "jamie-cripps",
+   "name": "Jamie Cripps",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 24,
+   "b4": 77.87818324010637,
+   "b5": 76.05283693585868,
+   "key": "zach-reid",
+   "name": "Zach Reid",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 32,
+   "b4": 61.41831293439045,
+   "b5": 59.59359425646392,
+   "key": "aidan-corr",
+   "name": "Aidan Corr",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 26,
+   "b4": 67.56880384344306,
+   "b5": 65.74689476007367,
+   "key": "xavier-o-halloran",
+   "name": "Xavier O'Halloran",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 33,
+   "b4": 58.031719468832314,
+   "b5": 56.22045898665534,
+   "key": "lincoln-mccarthy",
+   "name": "Lincoln McCarthy",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 25,
+   "b4": 111.55644728649987,
+   "b5": 109.75635751351442,
+   "key": "josh-worrell",
+   "name": "Josh Worrell",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 25,
+   "b4": 76.4844360386772,
+   "b5": 74.71051266940667,
+   "key": "connor-budarick",
+   "name": "Connor Budarick",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 31,
+   "b4": 104.96476137980319,
+   "b5": 103.19566305633302,
+   "key": "darcy-cameron",
+   "name": "Darcy Cameron",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 31,
+   "b4": 58.98966991924032,
+   "b5": 57.24622527416662,
+   "key": "jake-kolodjashnij",
+   "name": "Jake Kolodjashnij",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 28,
+   "b4": 74.27112056105814,
+   "b5": 72.53701766225956,
+   "key": "isaac-cumming",
+   "name": "Isaac Cumming",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 25,
+   "b4": 91.01570980763894,
+   "b5": 89.28590561761115,
+   "key": "dylan-stephens",
+   "name": "Dylan Stephens",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 28,
+   "b4": 76.31816763360261,
+   "b5": 74.59433632898711,
+   "key": "jack-scrimshaw",
+   "name": "Jack Scrimshaw",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 24,
+   "b4": 103.78118344211748,
+   "b5": 102.07687585239671,
+   "key": "tanner-bruhn",
+   "name": "Tanner Bruhn",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 75.44740772350507,
+   "b5": 73.74767280386534,
+   "key": "james-borlase",
+   "name": "James Borlase",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 29,
+   "b4": 97.69045172028243,
+   "b5": 96.00054612490514,
+   "key": "mason-redman",
+   "name": "Mason Redman",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 30,
+   "b4": 63.261939739143294,
+   "b5": 61.600291921065846,
+   "key": "sam-switkowski",
+   "name": "Sam Switkowski",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 29,
+   "b4": 68.88119723982298,
+   "b5": 67.23947915977209,
+   "key": "tom-doedee",
+   "name": "Tom Doedee",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 28,
+   "b4": 64.69037365234111,
+   "b5": 63.05091252120986,
+   "key": "lewis-young",
+   "name": "Lewis Young",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 30,
+   "b4": 69.63070699313495,
+   "b5": 67.99150081842251,
+   "key": "jayden-laverde",
+   "name": "Jayden Laverde",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 25,
+   "b4": 79.37168364407661,
+   "b5": 77.7617774778009,
+   "key": "sam-de-koning",
+   "name": "Sam De Koning",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 26,
+   "b4": 82.12712411037226,
+   "b5": 80.51908659456393,
+   "key": "kade-chandler",
+   "name": "Kade Chandler",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 23,
+   "b4": 119.7568727768451,
+   "b5": 118.20861520989024,
+   "key": "finn-callaghan",
+   "name": "Finn Callaghan",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 30,
+   "b4": 71.03427968369704,
+   "b5": 69.53893832126579,
+   "key": "bayley-fritsch",
+   "name": "Bayley Fritsch",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 23,
+   "b4": 73.81362053635586,
+   "b5": 72.31995475953818,
+   "key": "zac-taylor",
+   "name": "Zac Taylor",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 23,
+   "b4": 87.88347019516603,
+   "b5": 86.40729720691442,
+   "key": "paul-curtis",
+   "name": "Paul Curtis",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 30,
+   "b4": 105.97852137251077,
+   "b5": 104.52537410648898,
+   "key": "callum-wilkie",
+   "name": "Callum Wilkie",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 24,
+   "b4": 69.62789107839326,
+   "b5": 68.2157448164567,
+   "key": "oliver-henry",
+   "name": "Oliver Henry",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 29,
+   "b4": 60.35861095524246,
+   "b5": 58.94936824505868,
+   "key": "ben-long",
+   "name": "Ben Long",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 25,
+   "b4": 58.41004413759915,
+   "b5": 57.003302513956896,
+   "key": "liam-henry",
+   "name": "Liam Henry",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 25,
+   "b4": 114.84824848323241,
+   "b5": 113.44432718633975,
+   "key": "matt-rowell",
+   "name": "Matt Rowell",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 31,
+   "b4": 88.70917170877229,
+   "b5": 87.31170607320158,
+   "key": "joshua-kelly",
+   "name": "Joshua Kelly",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 28,
+   "b4": 81.05038149137265,
+   "b5": 79.65971287407218,
+   "key": "jake-waterman",
+   "name": "Jake Waterman",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 31,
+   "b4": 64.15188895703383,
+   "b5": 62.766558389815586,
+   "key": "tom-barrass",
+   "name": "Tom Barrass",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 28,
+   "b4": 92.62684863890871,
+   "b5": 91.2519881420521,
+   "key": "jy-simpkin",
+   "name": "Jy Simpkin",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 28,
+   "b4": 67.54824617600705,
+   "b5": 66.17646179881234,
+   "key": "esava-ratugolea",
+   "name": "Esava Ratugolea",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 29,
+   "b4": 64.90852091686669,
+   "b5": 63.54698080072197,
+   "key": "callum-ah-chee",
+   "name": "Callum Ah Chee",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 25,
+   "b4": 83.40789032065153,
+   "b5": 82.05508346575728,
+   "key": "mitch-georgiades",
+   "name": "Mitch Georgiades",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 32,
+   "b4": 107.65883002491725,
+   "b5": 106.31869956075569,
+   "key": "toby-nankervis",
+   "name": "Toby Nankervis",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 28,
+   "b4": 71.89666189658583,
+   "b5": 70.58500082759392,
+   "key": "lachlan-bramble",
+   "name": "Lachlan Bramble",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 29,
+   "b4": 91.80726208508166,
+   "b5": 90.50578706618862,
+   "key": "matthew-kennedy-1",
+   "name": "Matthew Kennedy",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 22,
+   "b4": 93.97624329338866,
+   "b5": 92.6769346009856,
+   "key": "jhye-clark",
+   "name": "Jhye Clark",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 22,
+   "b4": 87.4271776388038,
+   "b5": 86.1280190316132,
+   "key": "aaron-cadman",
+   "name": "Aaron Cadman",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 27,
+   "b4": 67.76395184653039,
+   "b5": 66.49660082447586,
+   "key": "harrison-petty",
+   "name": "Harrison Petty",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 26,
+   "b4": 85.73110989667167,
+   "b5": 84.46563265323415,
+   "key": "mark-keane",
+   "name": "Mark Keane",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 31,
+   "b4": 59.99281926373622,
+   "b5": 58.73840225710286,
+   "key": "alex-pearce",
+   "name": "Alex Pearce",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 32,
+   "b4": 128.0182141469155,
+   "b5": 126.77249825692569,
+   "key": "brodie-grundy",
+   "name": "Brodie Grundy",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 28,
+   "b4": 89.6559722047706,
+   "b5": 88.41619195758716,
+   "key": "josh-battle",
+   "name": "Josh Battle",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 28,
+   "b4": 73.59155220762058,
+   "b5": 72.36439978399294,
+   "key": "will-hayward",
+   "name": "Will Hayward",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 26,
+   "b4": 96.24081062407586,
+   "b5": 95.02564088125338,
+   "key": "tom-sparrow",
+   "name": "Tom Sparrow",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 29,
+   "b4": 88.4937844901949,
+   "b5": 87.28670354097952,
+   "key": "bailey-williams-wb",
+   "name": "Bailey Williams",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 29,
+   "b4": 57.483760552668336,
+   "b5": 56.28024067936868,
+   "key": "ben-mckay",
+   "name": "Ben McKay",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 27,
+   "b4": 72.33110392864587,
+   "b5": 71.13638977311916,
+   "key": "noah-balta",
+   "name": "Noah Balta",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 24,
+   "b4": 64.58991750272504,
+   "b5": 63.4004581529999,
+   "key": "tyler-brockman",
+   "name": "Tyler Brockman",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 30,
+   "b4": 60.428454112426984,
+   "b5": 59.262367745962734,
+   "key": "liam-ryan",
+   "name": "Liam Ryan",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 24,
+   "b4": 95.77910687321125,
+   "b5": 94.62819289339508,
+   "key": "karl-worner",
+   "name": "Karl Worner",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 26,
+   "b4": 102.83931548460959,
+   "b5": 101.71734940304006,
+   "key": "justin-mcinerney",
+   "name": "Justin McInerney",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 29,
+   "b4": 70.40891015800358,
+   "b5": 69.30972943852356,
+   "key": "mark-o-connor",
+   "name": "Mark O'Connor",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 22,
+   "b4": 102.23972913826402,
+   "b5": 101.14299522603375,
+   "key": "mattaes-phillipou",
+   "name": "Mattaes Phillipou",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 31,
+   "b4": 50.86166996068231,
+   "b5": 49.77016615577831,
+   "key": "nicholas-holman",
+   "name": "Nicholas Holman",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 37,
+   "b4": 105.42868368238244,
+   "b5": 104.35778540199999,
+   "key": "dayne-zorko",
+   "name": "Dayne Zorko",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 30,
+   "b4": 62.187526501246786,
+   "b5": 61.134959359103895,
+   "key": "dougal-howard",
+   "name": "Dougal Howard",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 27,
+   "b4": 61.49225955201518,
+   "b5": 60.47394700734915,
+   "key": "charlie-ballard",
+   "name": "Charlie Ballard",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 28,
+   "b4": 70.64003013417467,
+   "b5": 69.62925912802004,
+   "key": "brennan-cox",
+   "name": "Brennan Cox",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 25,
+   "b4": 75.08808795632909,
+   "b5": 74.08423829254734,
+   "key": "ryan-byrnes",
+   "name": "Ryan Byrnes",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 24,
+   "b4": 99.35910499103609,
+   "b5": 98.35755942962979,
+   "key": "max-hall",
+   "name": "Max Hall",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 23,
+   "b4": 108.2139569426283,
+   "b5": 107.21598085575081,
+   "key": "darcy-wilmot",
+   "name": "Darcy Wilmot",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 23,
+   "b4": 86.41340098095468,
+   "b5": 85.43800341765889,
+   "key": "patrick-voss",
+   "name": "Patrick Voss",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 24,
+   "b4": 66.94539476744468,
+   "b5": 65.97610216284886,
+   "key": "conor-stone",
+   "name": "Conor Stone",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 24,
+   "b4": 67.1839935613501,
+   "b5": 66.21922542653115,
+   "key": "henry-smith",
+   "name": "Henry Smith",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 23,
+   "b4": 75.04145036799075,
+   "b5": 74.09701205683967,
+   "key": "jack-williams",
+   "name": "Jack Williams",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 24,
+   "b4": 67.20622454425926,
+   "b5": 66.26190375454937,
+   "key": "liam-mcmahon",
+   "name": "Liam McMahon",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 27,
+   "b4": 77.43225387053242,
+   "b5": 76.49776979654833,
+   "key": "cameron-rayner",
+   "name": "Cameron Rayner",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 33,
+   "b4": 69.7482733570178,
+   "b5": 68.82581466253103,
+   "key": "nathan-broad",
+   "name": "Nathan Broad",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 31,
+   "b4": 80.54193948032916,
+   "b5": 79.63591508294193,
+   "key": "darcy-byrne-jones",
+   "name": "Darcy Byrne-Jones",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 23,
+   "b4": 77.90952179322518,
+   "b5": 77.00704365208432,
+   "key": "mitchell-knevitt",
+   "name": "Mitchell Knevitt",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 95.32475731360213,
+   "b5": 94.42796320386446,
+   "key": "jack-ginnivan",
+   "name": "Jack Ginnivan",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 22,
+   "b4": 90.18927906632199,
+   "b5": 89.30033408499307,
+   "key": "elijah-hewett",
+   "name": "Elijah Hewett",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 25,
+   "b4": 91.12099072759524,
+   "b5": 90.31284352940072,
+   "key": "miles-bergman",
+   "name": "Miles Bergman",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 24,
+   "b4": 79.41203522497811,
+   "b5": 78.61394303458113,
+   "key": "tom-blamires",
+   "name": "Tom Blamires",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 29,
+   "b4": 110.78638475386022,
+   "b5": 109.99133017396991,
+   "key": "clayton-oliver",
+   "name": "Clayton Oliver",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 23,
+   "b4": 115.14573900913659,
+   "b5": 114.35989073152464,
+   "key": "jason-horne-francis",
+   "name": "Jason Horne-Francis",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 23,
+   "b4": 87.26402754306748,
+   "b5": 86.52874327491965,
+   "key": "luke-nankervis",
+   "name": "Luke Nankervis",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 35,
+   "b4": 127.85750835499412,
+   "b5": 127.13493309587767,
+   "key": "max-gawn",
+   "name": "Max Gawn",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 25,
+   "b4": 108.31090378259617,
+   "b5": 107.5919613454758,
+   "key": "will-day",
+   "name": "Will Day",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 26,
+   "b4": 85.27916878499599,
+   "b5": 84.56628169083122,
+   "key": "isaac-quaynor",
+   "name": "Isaac Quaynor",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 34,
+   "b4": 87.87801561771437,
+   "b5": 87.18930154228578,
+   "key": "jarrod-witts",
+   "name": "Jarrod Witts",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 27,
+   "b4": 79.33349113871405,
+   "b5": 78.65460341229577,
+   "key": "ben-miller",
+   "name": "Ben Miller",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 22,
+   "b4": 121.92499894950092,
+   "b5": 121.25760899781592,
+   "key": "will-ashcroft",
+   "name": "Will Ashcroft",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 25,
+   "b4": 108.12059712307729,
+   "b5": 107.47539068477832,
+   "key": "sam-flanders",
+   "name": "Sam Flanders",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 24,
+   "b4": 75.21180326069042,
+   "b5": 74.58331933798996,
+   "key": "oscar-berry",
+   "name": "Oscar Berry",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 26,
+   "b4": 56.101803194205836,
+   "b5": 55.478117232245324,
+   "key": "sam-sturt",
+   "name": "Sam Sturt",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 29,
+   "b4": 69.22897356649601,
+   "b5": 68.6466100633371,
+   "key": "mabior-chol",
+   "name": "Mabior Chol",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 33,
+   "b4": 63.59103631687831,
+   "b5": 63.029095306001736,
+   "key": "brody-mihocek",
+   "name": "Brody Mihocek",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 28,
+   "b4": 89.25536364353233,
+   "b5": 88.71071365654291,
+   "key": "oliver-florent",
+   "name": "Oliver Florent",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 26,
+   "b4": 107.76356979992346,
+   "b5": 107.23229373831025,
+   "key": "jordan-clark",
+   "name": "Jordan Clark",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 25,
+   "b4": 77.20889145015083,
+   "b5": 76.68168348056865,
+   "key": "charlie-comben",
+   "name": "Charlie Comben",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 23,
+   "b4": 71.66917756883534,
+   "b5": 71.16537096633346,
+   "key": "liam-puncher",
+   "name": "Liam Puncher",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 25,
+   "b4": 128.40168107737716,
+   "b5": 127.92208952561704,
+   "key": "luke-jackson",
+   "name": "Luke Jackson",
+   "nb": 6,
+   "pos": "RUCK"
+  },
+  {
+   "age": 22,
+   "b4": 92.77099704558755,
+   "b5": 92.370015746718,
+   "key": "harry-rowston",
+   "name": "Harry Rowston",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 30,
+   "b4": 107.23781525629477,
+   "b5": 106.87874943108379,
+   "key": "bailey-dale",
+   "name": "Bailey Dale",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 23,
+   "b4": 73.69971218233515,
+   "b5": 73.35099989857417,
+   "key": "max-ramsden",
+   "name": "Max Ramsden",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 33,
+   "b4": 60.20291974538585,
+   "b5": 59.85441278987975,
+   "key": "harry-cunningham",
+   "name": "Harry Cunningham",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 32,
+   "b4": 70.36551045102205,
+   "b5": 70.0222932968579,
+   "key": "mitch-mcgovern",
+   "name": "Mitch McGovern",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 24,
+   "b4": 89.5510994073973,
+   "b5": 89.25081789351687,
+   "key": "shannon-neale",
+   "name": "Shannon Neale",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 26,
+   "b4": 66.70760658609233,
+   "b5": 66.42225084966203,
+   "key": "michael-frederick",
+   "name": "Michael Frederick",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 23,
+   "b4": 83.89146460560481,
+   "b5": 83.66670091757638,
+   "key": "brady-hough",
+   "name": "Brady Hough",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 33,
+   "b4": 97.45598556407406,
+   "b5": 97.23662943930054,
+   "key": "rory-laird",
+   "name": "Rory Laird",
+   "nb": 6,
+   "pos": "SD"
+  },
+  {
+   "age": 30,
+   "b4": 62.36770218161491,
+   "b5": 62.17310489417023,
+   "key": "billy-frampton",
+   "name": "Billy Frampton",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 23,
+   "b4": 87.40947701171955,
+   "b5": 87.21727809131932,
+   "key": "mitchito-owens",
+   "name": "Mitchito Owens",
+   "nb": 6,
+   "pos": "KPF"
+  },
+  {
+   "age": 26,
+   "b4": 106.87442686147139,
+   "b5": 106.68248216557471,
+   "key": "sam-walsh",
+   "name": "Sam Walsh",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 25,
+   "b4": 109.29223217449443,
+   "b5": 109.11330954519505,
+   "key": "kysaiah-pickett",
+   "name": "Kysaiah Pickett",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 23,
+   "b4": 102.44850664985994,
+   "b5": 102.2700660314899,
+   "key": "mac-andrew",
+   "name": "Mac Andrew",
+   "nb": 6,
+   "pos": "KPD"
+  },
+  {
+   "age": 25,
+   "b4": 105.70092064777394,
+   "b5": 105.53004400779655,
+   "key": "sam-durham",
+   "name": "Sam Durham",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 23,
+   "b4": 70.76459859966143,
+   "b5": 70.60810636720973,
+   "key": "ewan-mackinlay",
+   "name": "Ewan Mackinlay",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 27,
+   "b4": 65.62943664308771,
+   "b5": 65.52271329251121,
+   "key": "jack-higgins",
+   "name": "Jack Higgins",
+   "nb": 6,
+   "pos": "SF"
+  },
+  {
+   "age": 32,
+   "b4": 86.30474569090954,
+   "b5": 86.20236675957882,
+   "key": "oliver-wines",
+   "name": "Oliver Wines",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 27,
+   "b4": 116.58247168199821,
+   "b5": 116.50088106460387,
+   "key": "ed-richards",
+   "name": "Ed Richards",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 22,
+   "b4": 96.02320253039672,
+   "b5": 95.96727809355016,
+   "key": "edward-allan",
+   "name": "Edward Allan",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 23,
+   "b4": 76.50014695202488,
+   "b5": 76.46803933600731,
+   "key": "james-tunstill",
+   "name": "James Tunstill",
+   "nb": 6,
+   "pos": "MID"
+  },
+  {
+   "age": 23,
+   "b4": 99.02447995069987,
+   "b5": 99.00901977916318,
+   "key": "dante-visentini",
+   "name": "Dante Visentini",
+   "nb": 6,
+   "pos": "RUCK"
+  }
+ ],
+ "inversions": 407,
+ "load_s": 51.4,
+ "n_rows": 804,
+ "rows_note": "per-row bands live in BANDS_OFF_rows.csv",
+ "taper_dial": false,
+ "uncomp_cal": [
+  "=== RL_UNCOMP v1.1 LEG B: map ON (s=0.1000 Delta=6.0) | V_ref_b/RHO_DEN/C over 354 proven / scope-pop ===",
+  "    KPD      V_ref_b=   189.7 RHO_DEN=   8.88 C=1.11646",
+  "    KPF      V_ref_b=   504.5 RHO_DEN=   5.43 C=1.08684",
+  "    MID      V_ref_b=  1388.6 RHO_DEN=  17.48 C=1.09358",
+  "    RUCK     V_ref_b=  1686.8 RHO_DEN=  16.60 C=1.03492",
+  "    SD       V_ref_b=   462.3 RHO_DEN=  10.70 C=1.11110",
+  "    SF       V_ref_b=   128.0 RHO_DEN=   7.79 C=1.23523"
+ ]
+}

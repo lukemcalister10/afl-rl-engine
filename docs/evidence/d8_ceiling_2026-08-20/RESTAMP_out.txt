@@ -1,0 +1,12 @@
+computed engine_head truth : 338a790b773cfbbff0e1283794c72efe   (engine/rl_after/_merged_recover.py)
+expected_boot.engine_head  : 5ac6780f3c4931edcaa527576bbdfb88
+  unmoved board     a05fe951f78482c70520480e184c80ec  (asserted equal, not written)
+  unmoved register  652d83e87780e415a01a2de6d8b3cc57  (asserted equal, not written)
+  unmoved rl_model  6fe7c4155866d80e8045bed2d3bf2802  (asserted equal, not written)
+  unmoved store     cc02567f80bef39228f25854d121a766  (asserted equal, not written)
+expected_boot.engine_head  : 5ac6780f3c4931edcaa527576bbdfb88 -> 338a790b773cfbbff0e1283794c72efe
+release_contract.identities.engine_head : 5ac6780f3c4931edcaa527576bbdfb88 -> 338a790b773cfbbff0e1283794c72efe
+release_contract.contract_sha256        : -> 88d298264cc5c75e108599c0a44ef3c97b0058428ed9fab2789b21e05c363989
+board_view_working.js      : fa20f2fc4c7e65c6c050868a11c9139f -> 4743500a347270b113e502b7a4028b3b
+  stamp.release.engine_head: 338a790b773cfbbff0e1283794c72efe
+  RELEASE MANIFEST COHERENCE: PASS

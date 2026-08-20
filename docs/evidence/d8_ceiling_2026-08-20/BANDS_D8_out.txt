@@ -1,0 +1,25 @@
+build-lock: HELD by d8-bands (pid 7163) since 2026-08-20T06:38:56Z — single writer for the shared workspace.
+=== ORDER D8 — F2 (ladder unreachable) + F4 (ceiling v-inversions). READ-ONLY. ===
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+D8 BANDS taper=False rows=804 inversions=407 frac_domain_div=0 frac_row_div=0 (51s)
+   === RL_UNCOMP v1.1 LEG B: map ON (s=0.1000 Delta=6.0) | V_ref_b/RHO_DEN/C over 354 proven / scope-pop ===
+       KPD      V_ref_b=   189.7 RHO_DEN=   8.88 C=1.11646
+       KPF      V_ref_b=   504.5 RHO_DEN=   5.43 C=1.08684
+       MID      V_ref_b=  1388.6 RHO_DEN=  17.48 C=1.09358
+       RUCK     V_ref_b=  1686.8 RHO_DEN=  16.60 C=1.03492
+       SD       V_ref_b=   462.3 RHO_DEN=  10.70 C=1.11110
+       SF       V_ref_b=   128.0 RHO_DEN=   7.79 C=1.23523
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+D8 BANDS taper=True rows=804 inversions=0 frac_domain_div=0 frac_row_div=0 (52s)
+   === RL_UNCOMP v1.1 LEG B: map ON (s=0.1000 Delta=6.0) | V_ref_b/RHO_DEN/C over 358 proven / scope-pop ===
+       KPD      V_ref_b=   239.0 RHO_DEN=   8.88 C=1.10759
+       KPF      V_ref_b=   544.0 RHO_DEN=   5.43 C=1.08086
+       MID      V_ref_b=  1507.3 RHO_DEN=  17.48 C=1.08679
+       RUCK     V_ref_b=  1701.9 RHO_DEN=  16.60 C=1.03625
+       SD       V_ref_b=   523.6 RHO_DEN=  10.70 C=1.10189
+       SF       V_ref_b=   163.6 RHO_DEN=   7.79 C=1.21176
+build-lock: released by d8-bands
+
+[exited with code 0]

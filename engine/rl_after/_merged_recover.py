@@ -1115,9 +1115,37 @@ def _v7(bb,p,Y):
 # _REAL/_isreal are now DEFINED ABOVE (hoisted to just before the ISO-table build; seg-5 map-ON load-order
 # fix, owner-authorized). Original definition site was HERE; this block documents their keying, retained in place.
 _b6_pre_v7=b6
+# ==== ORDER D8 — THE CEILING-ONLY DIAL (RL_O33_TAPEROFF; DECLARED KILL-SWITCH, DEFAULT OFF) ================
+# WHY THIS EXISTS. ORDER B's B-3 (taper retirement) is on OWNER PROBATION (register v772: "happy to look at
+# still boosting the younger players pending a look at the movers list") and v793 sequenced it to land BEFORE
+# the R23 ingestion. Pricing it required running it ALONE — and until this line there was no configuration
+# that could. RL_O33's stage dial gates B-1 (the tall post-peak ladder + the s* renorm) at _O33S>=1 and B-3
+# at _O33S>=2, and 2 >= 1, so every stage that reaches the ceiling fix also raises the ladder. The ladder is
+# OWNER-KILLED (v772) and must not fire. That is the entanglement; this dial is the cut.
+#
+# WHAT IT GATES, AND WHAT IT PROVABLY CANNOT REACH. It gates ONE expression: the taper suppression on the
+# next line. Both B-1 expressions — rl_model.frac()'s O33_TALL_LADDER branch and the O33_SSTAR renorm at the
+# projection site below — are guarded by `MA._O33`, which is read from RL_O33 and from nothing else
+# (rl_model.py, the _O33 assignment). RL_O33_TAPEROFF is a distinct name and setting it does not set RL_O33,
+# so with RL_O33 unset both ladder `and`-chains short-circuit on their FIRST term at every call and neither
+# O33_TALL_LADDER nor O33_SSTAR is read by any reachable expression. Dead by construction — and PREREG_D8's
+# F2 TESTS that rather than asserting it (frac() == DELTAS on every post-peak KPD/KPF row; no tall veteran
+# moves down on the priced board).
+#
+# NO NEW PARAMETER. asc == 1 is not a number this seat chose: it is ORDER B's own quantile re-fit answer, the
+# boundary solution asc*=1 in EVERY band the taper bites (RESULTS_B_TAPER.json; PACKET_B_DERIVATION.md §4).
+# The dial is a boolean; there is nothing here to target-fit. q97m stays FROZEN (bake-time refit per R-W6).
+#
+# NOT A MANIFEST DIAL, ON PURPOSE (the RL_CAPT / RL_ISOFADE / RL_EVW / RL_UNCOMP / RL_ONEMACH kill-switch
+# family; config_sha256 UNMOVED). It is absent from data/model_config.json, so config_manifest.enforce()
+# REJECTS it as an unknown model override in bake/gate/canonical mode and no certifying build can carry it.
+# Unset => this expression is inert => board a05fe951f78482c70520480e184c80ec BYTE-EXACT (PREREG_D8 F1).
+# ADOPTION IS A LATER ACT, on the owner's word, through the lane the bake used (flip the default + stamp the
+# manifest). Evidence: docs/evidence/d8_ceiling_2026-08-20/.
+_O33_TAPEROFF=os.environ.get('RL_O33_TAPEROFF','0')!='0'     # ORDER D8: B-3 ALONE (default OFF; PRICED, NOT ADOPTED)
 def b6(p,Y=2026):
     bb=_b6_pre_v7(p,Y)
-    if MA._O33 and MA._O33S>=2: return bb                 # ORDER B B-3 TAPER RETIREMENT (stage 2 after the B-A1 re-map; was 3) (dial-gated): asc == 1, band[5] stays max(q97m, q90) exactly as _b6_core emits it — the derivation's boundary solution in every band; kills all 341 v-inversions by construction; q97m itself untouched (bake-time refit per R-W6). Dial off => the v7 taper applies byte-exact below.
+    if (MA._O33 and MA._O33S>=2) or _O33_TAPEROFF: return bb   # ORDER B B-3 TAPER RETIREMENT (stage 2 after the B-A1 re-map; was 3), reachable EITHER through ORDER B's stage dial (unchanged) OR through ORDER D8's ceiling-only dial above: asc == 1, band[5] stays max(q97m, q90) exactly as _b6_core emits it — the derivation's boundary solution in every band; kills all 341 v-inversions by construction; q97m itself untouched (bake-time refit per R-W6). Both dials off => the v7 taper applies byte-exact below.
     if _isreal(p):
         try: return _v7(bb,p,Y)
         except Exception: return bb
