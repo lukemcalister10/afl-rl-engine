@@ -126,10 +126,39 @@ else:
     board={r['key']:r['v'] for r in json.load(open(board_path))['active']}
     check(set(board)==set(active_keys), "board active set == engine active set, key-for-key")
     gated={}
+    # ---- REPLICATE THE EXPORT'S AS-OF SEQUENCE — INCLUDING ITS LENS AND MEMO DISCIPLINE ----------
+    # This block used to call ev() at the five as-of years and nothing else, under the comment
+    # "replicate the export's as-of sequence". It did not replicate it. rl_export.py does three
+    # further things around the same five calls, and all three change what the NEXT row computes:
+    #
+    #   rl_export.py:113  g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()   <- before the loop
+    #   rl_export.py:197  g['_LENS_FORM'] = 2026    (LEG E forward lens, unless RL_LEGE=0)
+    #   rl_export.py:199  g['_LENS_FORM'] = None    <- closed again, per row
+    #
+    # Without the wrap, the LEG-E lens state and the LEG-F3 pedigree anchor leak across rows: each
+    # row's ev(p,2028) leaves the engine's clock at 2028 and its pedigree memo warm, and the NEXT
+    # row's ev(p,2026) — the value this check compares against the board — is computed in that
+    # state. Measured on this tree: 96 of 804 rows disagreed, every one of them HIGH, while
+    # rl_export.py's OWN eps=0 parity gate passed on the identical build minutes earlier.
+    #
+    # So this check was reporting a false red against a board that was correct — a live guard
+    # crying wolf, which AUDIT_CI.md calls "the worst kind". The engine was never wrong here; the
+    # independent recomputation had drifted from the thing it exists to independently recompute.
+    # (AUDIT_CI.md section 1.1, repair 4: "Removes a false red from the estate's central guard. A
+    # guard that cries wolf is worse than no guard.")
+    #
+    # The lens is read from RL_LEGE exactly as the exporter reads it, so RL_LEGE=0 still replicates
+    # the RL_LEGE=0 export byte-for-byte and this check does not quietly pin one branch of a
+    # declared kill-switch.
+    MA.BASE_REF = MA.AGE_REF = 2026; MA._pe_clear()          # == rl_export.py:113
     with contextlib.redirect_stdout(io.StringIO()):
         for p in MA.players:
-            v=ev(p,2026); ev(p,2024); ev(p,2025); ev(p,2027); ev(p,2028)   # replicate the export's as-of sequence
+            v=ev(p,2026); ev(p,2024); ev(p,2025)             # present, then the REAL past re-values
+            if os.environ.get('RL_LEGE','1') != '0': MA._LENS_FORM = 2026   # == rl_export.py:197
+            ev(p,2027); ev(p,2028)                           # forward, under the LEG E lens
+            MA._LENS_FORM = None                             # == rl_export.py:199
             gated[p['key']]=v
+    MA.BASE_REF = MA.AGE_REF = 2026; MA._pe_clear()          # == rl_export.py:222
     mism=[(k,board[k],gated.get(k)) for k in board if board[k]!=_num(gated.get(k))]
     check(not mism, "every board v == round(engine gated ev / %.4f) — numéraire display (F1); mismatches=%d %s"%(_F,len(mism),mism[:8]))
 
