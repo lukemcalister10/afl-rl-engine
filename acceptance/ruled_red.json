@@ -1,0 +1,24 @@
+{
+  "_doc": "THE MACHINE-READABLE KNOWN-RED LEDGER. AUDIT_CI.md §5/RETIRE asked for exactly this instrument, by name: 'If declared known-reds must be carried, carry them as a machine-readable list keyed by assertion name — the tree already has the instrument (release_contract.json.held_checks), and it is currently empty.' This file is that list, living beside the runner that reads it rather than inside a contract another seat owns. An entry here does NOT excuse a red: it records that the red is MEASURED, KNOWN, and already before the owner or supervisor as a presented fork, and that no seat may clear it unilaterally. The runner reports such a row as RULED-RED (non-gating) and blocks everything downstream of the carrier, so one presented fork produces one row instead of thirty.",
+
+  "_self_expiry": "EVERY ENTRY IS SELF-EXPIRING AND THE RUNNER ENFORCES IT. An entry applies only while the drift it describes is still measurable. The moment the carrier becomes coherent, the entry stops matching and the runner FAILS on the stale entry itself ('stale RULED-RED — retire this entry'). That is deliberate. A known-red list that has quietly stopped matching reality is the panel-10/10 failure mode all over again — the estate has retired four instruments for exactly that (the panel 10/10, the movers 'exactly two known-reds', the R14 fixture config pin, BOARD_MD5_GOOD). This ledger is built so it cannot become the fifth.",
+
+  "_how_to_add": "An entry may be added ONLY when the fork is already presented in writing to the owner or supervisor, and `presented` must name the document that presents it. A red that is merely inconvenient, or that a seat believes is fine, is a FAIL. RULED-RED is not a snooze button.",
+
+  "entries": [
+    {
+      "id": "R2-release-contract-code-identities",
+      "carriers": [
+        "release_contract:engine_head",
+        "release_contract:rl_model",
+        "release_contract:fv",
+        "release_contract:config"
+      ],
+      "reason": "data/release_contract.json carries the PRE-BAKE engine_head/rl_model/fv and a stale config_sha256; THE BAKE moved them and no committed tool re-stamps them (AUDIT_CI.md gap G2: restamp_dynamic preserves these byte-for-byte BY DESIGN).",
+      "presented": "docs/evidence/landing_tail_2026-08-20/08_release_contract_residual_HALT.txt",
+      "register": "v786 (fork presented) · AUDIT_CI.md §0 root cause R2, §3 gap G2, §4 'Not on this list, deliberately'",
+      "why_no_seat_may_clear_it": "AUDIT_CI.md §4: 'Not on this list, deliberately: R1 (lineage register) and R2 (release contract). Both are owner / supervisor rulings already presented... no seat should touch them ahead of the ruling.' The repair is a bake-time contract re-stamper that does not exist yet (G2), not an edit.",
+      "cleared_when": "A ruling issues and a writer of record re-stamps data/release_contract.json at a bake. On that day this entry stops matching and the runner will demand its retirement."
+    }
+  ]
+}
