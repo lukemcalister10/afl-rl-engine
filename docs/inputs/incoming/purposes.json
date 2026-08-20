@@ -1,0 +1,7 @@
+{
+  "_doc": "THE ONE FIELD NO HASH CAN DERIVE. tools/inbox_manifest.py computes every other column on the page — md5, sha256, size, arrival date, and which canonical copy the file became. WHY a file arrived is a fact about the world, so it is declared here, one entry per archived file, and the manifest generator reads it. An archived file with no entry here is reported as a PROBLEM by `tools/inbox_manifest.py check`, never silently blanked.",
+  "R23.csv": {
+    "purpose": "Round 23 player scores — the owner's couriered round file, the input of record for the R23 advance (docs/runbooks/R23_RUNBOOK.md; round_entry catchup --file 23=scores/R23.csv). One row per player who played R23.",
+    "delivered_by": "owner, 2026-08-20"
+  }
+}

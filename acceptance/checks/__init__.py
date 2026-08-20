@@ -87,3 +87,8 @@ C.register('rulebook_lint', _standing.rulebook_lint,
 C.register('ruled_red_ledger', _ledger.check,
            reads=(),
            doc='every step-keyed RULED-RED entry still fails the way its ruling records')
+
+# 10. THE OWNER-INPUTS PROVENANCE ARCHIVE (1d), generated and asserted current.
+C.register('inbox_manifest', _standing.inbox_manifest,
+           reads=(),
+           doc='docs/inputs/incoming/MANIFEST.md is current, and every input names its canonical copy')

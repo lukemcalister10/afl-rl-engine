@@ -146,3 +146,19 @@ release_contract_seal.PROFILE = 'host-insensitive'
 store_coherence_six_way.PROFILE = 'host-insensitive'
 doc_lint.PROFILE = 'host-insensitive'
 rulebook_lint.PROFILE = 'host-insensitive'
+
+
+def inbox_manifest(ctx):
+    """tools/inbox_manifest.py check — the owner-inputs provenance archive is current (1d).
+
+    Registered rather than left as a command somebody remembers to run, because a provenance
+    manifest that has stopped describing the inbox is worse than none: it reads as a record and is
+    a guess. The check fails on a stale generated file, on an archived input with no canonical copy,
+    and on an archived input with no declared purpose.
+    """
+    rc, out, ev = _run(ctx, 'inbox_manifest', ['python3', 'tools/inbox_manifest.py', 'check'])
+    return C.Verdict('inbox_manifest', C.PASS if rc == 0 else C.FAIL, ev, _last_meaningful(out))
+
+
+inbox_manifest.HALTS = ()
+inbox_manifest.PROFILE = 'host-insensitive'

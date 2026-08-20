@@ -1,0 +1,24 @@
+{
+  "archive_dir": "docs/inputs/incoming",
+  "archive_is_secondary": true,
+  "canonical_ingest_dirs": [
+    "scores",
+    "docs/owner_annotations"
+  ],
+  "files": [
+    {
+      "arrived": "2026-08-20",
+      "bytes": 7279,
+      "canonical_copies_all": [
+        "scores/R23.csv"
+      ],
+      "canonical_copy": "scores/R23.csv",
+      "delivered_by": "owner, 2026-08-20",
+      "file": "R23.csv",
+      "md5": "f4849bc4933801e80228bfc0e29e0c65",
+      "purpose": "Round 23 player scores \u2014 the owner's couriered round file, the input of record for the R23 advance (docs/runbooks/R23_RUNBOOK.md; round_entry catchup --file 23=scores/R23.csv). One row per player who played R23.",
+      "sha256": "e3d5410e0e57a9251cf94a9cf2d20daa63f1255f6551ba497e3cd89a5ce77c40"
+    }
+  ],
+  "problems": []
+}
