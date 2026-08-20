@@ -1,0 +1,37 @@
+=== (a) v_at_peak legs at the two "predicted move, actually bit-identical" breakpoints ===
+  MA.prod_floor(Dolan) = 0.000
+  the avg 46.921 breakpoint (bb[1] +0.116)
+     band before 44.120 52.076 57.407 62.286 76.143 83.106
+     band after  44.120 52.192 57.407 62.286 76.143 83.106
+     leg 0  v_at_peak raw     0.000 ->     0.000   prod_floor     0.000   floor binds: False -> False
+     leg 1  v_at_peak raw     0.000 ->     0.000   prod_floor     0.000   floor binds: False -> False
+     leg 2  v_at_peak raw     2.000 ->     2.000   prod_floor     0.000   floor binds: False -> False
+     leg 3  v_at_peak raw     9.000 ->     9.000   prod_floor     0.000   floor binds: False -> False
+     leg 4  v_at_peak raw   413.000 ->   413.000   prod_floor     0.000   floor binds: False -> False
+     leg 5  v_at_peak raw  1178.000 ->  1178.000   prod_floor     0.000   floor binds: False -> False
+     price6 291.820000 -> 291.820000
+
+=== (b) the transmission coefficient: price = rho31(g)*e + o31_pi(...)*ped + age_credit ===
+rows=804
+  rho31 by career-games band:
+    pv_games   0-  0 n=  87  median rho31 0.0000  median production share 0.000
+    pv_games   1-  5 n=  57  median rho31 0.2683  median production share 0.469
+    pv_games   6- 12 n=  59  median rho31 0.4387  median production share 0.616
+    pv_games  13- 25 n=  86  median rho31 0.5581  median production share 0.677
+    pv_games  26- 50 n=  96  median rho31 0.7019  median production share 0.785
+    pv_games  51-100 n= 151  median rho31 0.8865  median production share 0.904
+    pv_games 101-400 n= 266  median rho31 0.9832  median production share 0.952
+
+  the anchored/probe rows:
+    Billy Cootee         pv_games=  8.00  rho31=0.4387  production share=0.029  L= 49.18  v=   144.4  true sweep max-drop=1.8%
+    Josh Dolan           pv_games= 21.00  rho31=0.5840  production share=0.547  L= 48.78  v=   247.2  true sweep max-drop=21.8%
+    Max Kondogiannis     pv_games= 10.00  rho31=0.4728  production share=0.517  L= 48.36  v=   358.9  true sweep max-drop=21.3%
+    Will Hayes           pv_games= 10.00  rho31=0.4728  production share=0.547  L= 49.15  v=   180.0  true sweep max-drop=28.1%
+    Charlie West         pv_games=  8.00  rho31=0.4387  production share=0.740  L= 45.82  v=   380.6  true sweep max-drop=28.5%
+    Marcus Herbert       pv_games= 16.50  rho31=0.5447  production share=0.731  L= 75.18  v=   747.6  true sweep max-drop=0.0%
+    Sam Lalor            pv_games= 23.00  rho31=0.6008  production share=0.701  L= 72.79  v=  3583.8  true sweep max-drop=0.7%
+    Will Day             pv_games= 86.00  rho31=0.9072  production share=0.920  L= 87.97  v=  2070.9  true sweep max-drop=0.6%
+    Mark Keane           pv_games= 64.00  rho31=0.8470  production share=0.961  L= 74.34  v=  1365.3  true sweep max-drop=2.9%
+
+  corr(production share, true score->price max-drop) over the 86 = -0.116
+  production share <0.5: n=7 median drop 1.8%   >=0.5: n=79 median drop 3.4%

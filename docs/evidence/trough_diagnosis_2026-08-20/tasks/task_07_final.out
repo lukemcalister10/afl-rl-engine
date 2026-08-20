@@ -1,0 +1,54 @@
+=== (a) the ITEM A anchor share — why a band jump does or does not reach the price ===
+  Billy Cootee        prod-leg e=    10.1   anchor=   336.8   anchor share s=0.0000   blend=    10.1   ev=   151.9   -> a 10% band move shifts the price by 10.00%
+  Will Hayes          prod-leg e=   218.1   anchor=    80.6   anchor share s=0.0000   blend=   218.1   ev=   189.4   -> a 10% band move shifts the price by 10.00%
+  Charlie West        prod-leg e=   676.8   anchor=    89.9   anchor share s=0.0000   blend=   676.8   ev=   400.5   -> a 10% band move shifts the price by 10.00%
+  Max Kondogiannis    prod-leg e=   413.0   anchor=   293.4   anchor share s=0.0000   blend=   413.0   ev=   377.6   -> a 10% band move shifts the price by 10.00%
+  Josh Dolan          prod-leg e=   243.1   anchor=   209.5   anchor share s=0.0000   blend=   243.1   ev=   260.1   -> a 10% band move shifts the price by 10.00%
+  Marcus Herbert      prod-leg e=  1053.1   anchor=   761.5   anchor share s=0.0000   blend=  1053.1   ev=   786.7   -> a 10% band move shifts the price by 10.00%
+  Sam Lalor           prod-leg e=  4401.4   anchor=  1677.7   anchor share s=0.0000   blend=  4401.4   ev=  3771.4   -> a 10% band move shifts the price by 10.00%
+
+=== (b) the exact feature-9 tree thresholds under the anchored kinks ===
+  Dolan  score 38->40 (bb[5] 82.84->80.52)   nearest thresholds below L=48.440:
+       q0.1    48.251448   (gap 0.1886)
+       q0.3    48.052219   (gap 0.3878)
+       q0.5    48.380051   (gap 0.0599)
+       q0.7    48.401541   (gap 0.0385)
+       q0.9    48.389675   (gap 0.0503)
+       q97m    48.439266   (gap 0.0007)
+  Dolan  score 40->42 (bb[2],bb[4] fall)   nearest thresholds below L=48.510:
+       q0.1    48.498602   (gap 0.0114)
+       q0.3    48.052219   (gap 0.4578)
+       q0.5    48.490429   (gap 0.0196)
+       q0.7    48.401541   (gap 0.1085)
+       q0.9    48.502563   (gap 0.0074)
+       q97m    48.443670   (gap 0.0663)
+  Kondo  score 74->75 (bb[4] 85.93->81.43)   nearest thresholds below L=48.550:
+       q0.1    48.498602   (gap 0.0514)
+       q0.3    48.052219   (gap 0.4978)
+       q0.5    48.511209   (gap 0.0388)
+       q0.7    48.540794   (gap 0.0092)
+       q0.9    48.511209   (gap 0.0388)
+       q97m    48.443670   (gap 0.1063)
+  Kondo  score 52->53 (bb[3],bb[4] fall)   nearest thresholds below L=47.480:
+       q0.1    47.193169   (gap 0.2868)
+       q0.3    47.282131   (gap 0.1979)
+       q0.5    47.050337   (gap 0.4297)
+       q0.7    47.449574   (gap 0.0304)
+       q0.9    47.472116   (gap 0.0079)
+       q97m    47.150030   (gap 0.3300)
+
+=== (c) the band is NOT monotone in the level: magnitude at fixed everything-else ===
+  Max Kondogiannis (other features frozen):
+     q=0.1   worst fall below its own running max over L in [44,56]:  2.06 pts (at L=45.58, running max set at L=44.98)
+     q=0.3   worst fall below its own running max over L in [44,56]:  5.24 pts (at L=55.92, running max set at L=55.56)
+     q=0.5   worst fall below its own running max over L in [44,56]:  2.81 pts (at L=54.48, running max set at L=52.80)
+     q=0.7   worst fall below its own running max over L in [44,56]:  1.49 pts (at L=54.82, running max set at L=52.10)
+     q=0.9   worst fall below its own running max over L in [44,56]:  6.68 pts (at L=48.52, running max set at L=46.22)
+     q97m   worst fall: 4.83 pts (at L=48.46)
+  Josh Dolan (other features frozen):
+     q=0.1   worst fall below its own running max over L in [44,56]:  2.23 pts (at L=45.58, running max set at L=44.00)
+     q=0.3   worst fall below its own running max over L in [44,56]:  11.47 pts (at L=55.92, running max set at L=55.56)
+     q=0.5   worst fall below its own running max over L in [44,56]:  2.78 pts (at L=55.00, running max set at L=54.92)
+     q=0.7   worst fall below its own running max over L in [44,56]:  1.33 pts (at L=50.28, running max set at L=49.78)
+     q=0.9   worst fall below its own running max over L in [44,56]:  4.31 pts (at L=48.52, running max set at L=46.34)
+     q97m   worst fall: 2.59 pts (at L=48.46)

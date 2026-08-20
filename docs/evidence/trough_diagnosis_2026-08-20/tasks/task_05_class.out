@@ -1,0 +1,117 @@
+=== (a) TERM CENSUS at the shipped row ===
+Billy Cootee         ev=   151.9 prefloor=   151.9 click=   151.6 prod=    10.1 raw=    10.5 price6=     8.6  floor=   249.1 (BINDS) v0=  553.6 anchor=  553.6 ten=1 ns=1 stale=none  pfbinds=[False, False, False, False, False, False]
+Charlie West         ev=   400.5 prefloor=   400.5 click=   401.5 prod=   676.8 raw=   676.8 price6=   577.5  floor=    72.3 (inert) v0=  206.5 anchor=  206.5 ten=2 ns=1 stale=none  pfbinds=[False, False, False, False, False, False]
+Will Hayes           ev=   189.4 prefloor=   189.4 click=   188.4 prod=   218.1 raw=   218.1 price6=   205.3  floor=    68.1 (inert) v0=  194.5 anchor=  194.5 ten=2 ns=1 stale=none  pfbinds=[False, False, False, False, False, False]
+Max Kondogiannis     ev=   377.6 prefloor=   377.6 click=   377.8 prod=   413.0 raw=   432.6 price6=   364.0  floor=   200.3 (inert) v0=  445.2 anchor=  445.2 ten=1 ns=1 stale=none  pfbinds=[False, False, False, False, False, False]
+Josh Dolan           ev=   260.1 prefloor=   260.1 click=   259.7 prod=   243.1 raw=   243.1 price6=   215.4  floor=   160.1 (inert) v0=  457.4 anchor=  457.4 ten=2 ns=2 stale=none  pfbinds=[False, False, False, False, False, False]
+Harvey Harrison      ev=    73.0 prefloor=    73.0 click=    72.8 prod=    71.0 raw=    71.0 price6=    75.3  floor=    28.2 (inert) v0=  217.2 anchor=  217.2 ten=5 ns=2 stale=MEDIOCRE  pfbinds=[False, False, False, False, False, False]
+Conor Stone          ev=   123.3 prefloor=   123.3 click=   123.0 prod=    76.1 raw=    76.1 price6=    73.2  floor=    64.0 (inert) v0=  711.0 anchor=  711.0 ten=6 ns=2 stale=MEDIOCRE  pfbinds=[False, False, False, False, False, False]
+Marcus Herbert       ev=   786.7 prefloor=   786.7 click=   785.2 prod=  1053.1 raw=  1049.9 price6=  1045.1  floor=    17.7 (inert) v0=  166.9 anchor=  354.7 ten=1 ns=1 stale=none  pfbinds=[False, False, False, False, False, False]
+
+=== (b) TRUE ev() sweep, all 86 ===
+player                     g prioravg   r23    lvl        v  MAXDROP from->to floor/stale
+Charlie West               7   32.33   150  45.82    380.6    28.5%   60->110  none
+Will Hayes                 8   36.97   150  49.15    180.0    28.1%    4->36   none
+Jake Rogers                8   47.29   150  46.38    271.3    24.3%   50->68   none
+Josh Dolan                10   50.09   150  48.78    247.2    21.8%   12->42   none
+Max Kondogiannis          10   36.60   150  48.36    358.9    21.3%   40->84   none
+Harvey Harrison           10   46.77   150  51.11     69.4    19.9%    0->4    MEDIOCRE
+Angus Hastie               6   45.60   150  45.60    170.1    19.8%   96->118  none
+Toby McMullin              7   35.70   150  44.57     81.0    18.9%  114->122  FLOORED none
+Wil Dawson                 9   33.53   150  45.22    297.7    18.1%   98->122  none
+Jack Williams             11   52.41   150  52.06    411.3    14.4%   40->50   none
+Hugo Ralphsmith           12   58.00   150  60.51     98.9    14.3%   86->96   MEDIOCRE
+Oscar McDonald             9   68.62   150  64.76    124.5    12.2%    0->2    MEDIOCRE
+Lachlan Gulbin            10   45.00   150  53.92    234.3    12.2%   10->20   none
+Harry Morrison            12   66.27   150  69.41     71.3    12.0%   12->20   MEDIOCRE
+Josaia Delana              8   48.00   150  53.61    206.8    10.4%   14->24   none
+Charlie Ballard           10   43.78   150  53.87     74.5    10.1%  122->128  MEDIOCRE
+Cody Weightman             8   53.14   150  57.11    189.6     9.9%   56->68   MEDIOCRE
+Harrison Jones             6   46.00   150  49.87    116.7     8.9%   60->62   MEDIOCRE
+Bailey Macdonald          11   54.50   150  53.70    106.1     8.8%   16->18   none
+Braeden Campbell           5   75.25   150  60.23    428.3     8.3%    0->4    MEDIOCRE
+Matt Cottrell             11   62.70   150  63.68    134.3     8.2%   10->12   MEDIOCRE
+Max Gruzewski             13   53.31   150  54.48    474.3     8.0%   10->14   none
+Liam O'Connell            12   48.55   150  53.61     73.7     7.9%   12->14   none
+Riley Hardeman             6   39.20   150  53.26    342.5     7.5%   34->40   none
+Nick Bryan                12   66.11   150  69.59    767.7     7.2%    6->54   MEDIOCRE
+Conor Stone                9   52.25   150  51.46    117.1     7.0%   14->18   MEDIOCRE
+Alix Tauru                 9   41.90   150  51.09    875.5     7.0%   54->68   none
+Callum Ah Chee             7   58.37   150  62.76     23.4     6.8%   30->34   FLOORED MEDIOCRE
+Louis Emmett               7   29.67   150  41.86    567.6     6.8%  114->150  none
+Tobie Travaglia            6   45.40   150  51.09    438.2     6.5%   80->84   none
+Rhett Bazzo               13   61.59   150  59.37    514.0     6.2%   34->38   none
+Sam Clohesy               11   66.90   150  67.19    338.6     5.9%   72->74   none
+Darcy Gardiner            11   50.11   150  52.28      9.3     5.9%   18->20   FLOORED MEDIOCRE
+Luke Trainor              10   55.09   150  55.27    932.5     5.0%   24->26   none
+Oscar Allen               10   51.98   150  58.92    143.2     4.7%  116->118  MEDIOCRE
+Harry Rowston             11   61.52   150  62.79    524.1     4.6%   14->48   none
+Liam Puncher               7   37.17   150  57.63    178.7     4.4%   48->58   none
+Harrison Ramm              5   28.75   150  59.10    394.3     3.9%   80->94   none
+Sam Taylor                11   62.50   150  73.28   1166.9     3.8%   58->62   MEDIOCRE
+Jhye Clark                 8   70.15   150  62.02    821.3     3.5%    6->8    none
+Brandon Starcevich        10   51.23   150  53.15     10.8     3.4%   36->38   FLOORED MEDIOCRE
+Samuel Swadling            7   57.17   150  56.22    953.8     3.3%   34->70   none
+Beau Addinsall             8   59.14   150  57.28   1171.7     3.3%   26->46   none
+Riley Hamilton             7   35.67   150  52.70    222.5     3.2%   42->60   none
+Lachie Jaques             10   58.93   150  56.21    569.4     3.1%   50->74   none
+Xavier Bamert              9   42.75   150  53.81    444.7     3.0%   24->26   none
+James Worpel              11   77.01   150  76.05    444.7     3.0%  106->108  MEDIOCRE
+Zac Banch                  7   43.83   150  53.60     66.2     2.9%   48->50   FLOORED none
+Mark Keane                 8   68.43   150  74.34   1365.3     2.9%   34->50   none
+Hayden Young              12   82.00   150  83.18   1760.5     2.9%   66->80   MEDIOCRE
+Eric Hipwood               9   47.25   150  55.94     48.6     2.8%   38->42   MEDIOCRE
+Cooper Lord                8   79.44   150  68.94   1080.9     2.7%   26->28   none
+Campbell Lake              8   56.57   150  59.07    247.0     2.6%   26->42   none
+Balyn O'Brien              5   26.75   150  59.29    333.0     2.6%   38->60   none
+Joel Fitzgerald            9   69.37   150  63.52    302.9     2.5%   10->22   none
+Hugh Boxshall              9   54.88   150  59.09    755.4     2.5%   70->80   none
+Luke Kennedy               5   37.25   150  54.11    136.7     2.5%   14->30   none
+Joel Hamling               8   51.70   150  55.16      9.2     2.3%    4->6    FLOORED MEDIOCRE
+Wade Derksen              12   59.18   150  62.79    215.8     2.1%   22->28   D8
+Chris Scerri               8   47.60   150  55.86    341.7     2.0%   94->102  none
+Will Setterfield          10   80.78   150  85.14    792.2     2.0%  108->110  MEDIOCRE
+Toby Murray               12   48.15   150  54.41    265.0     2.0%    2->16   none
+Jack Graham               12   76.64   150  80.91    893.0     1.9%    2->4    MEDIOCRE
+Billy Cootee               8   47.71   150  49.18    144.4     1.8%    0->24   FLOORED none
+Mitch Zadow                8   38.86   150  51.22     97.2     1.6%   38->40   FLOORED none
+Taj Hotton                 9   60.88   150  60.92   1750.5     1.5%   68->72   none
+Errol Gulden              10  112.56   150 113.08   7075.0     1.3%   58->60   MEDIOCRE
+Harry Kyle                 8   47.63   150  54.98    842.3     1.2%   10->20   none
+Jaxon Artemis              5   54.25   150  64.02    389.6     1.2%    0->4    none
+Darcy Fogarty             13   73.48   150  66.80    783.0     1.1%   56->58   MEDIOCRE
+Jay Polkinghorne           5   44.50   150  55.68    227.6     1.1%    8->16   none
+Sam Lalor                 12   73.74   150  72.79   3583.8     0.7%   72->76   none
+Will Day                  10   89.45   150  87.97   2070.9     0.6%   78->80   MEDIOCRE
+Hugo Hall-Kahan           10   73.00   150  69.53    464.4     0.5%    8->10   none
+Christian Salem            8   63.86   150  78.54     97.6     0.4%  130->132  MEDIOCRE
+Kye Annand                10   59.78   150  64.20    410.8     0.4%   12->14   none
+Nick Madden                8   78.43   150  72.55   1125.1     0.3%    6->8    D8
+Jacob Weitering           11   77.50   150  78.12   1114.0     0.3%  134->136  MEDIOCRE
+Marcus Herbert             9   88.87   150  75.18    747.6     0.0%    0->0    none
+Daniel Butler              9   32.72   150  57.95      3.0     0.0%    0->0    FLOORED MEDIOCRE
+Blake Acres                9   75.50   150  78.51    181.6     0.0%    0->0    MEDIOCRE
+Toby Nankervis            11  103.60   150 100.86   1809.1     0.0%    0->0    MEDIOCRE
+Jackson Macrae            11   70.06   150  84.24    191.2     0.0%    0->0    MEDIOCRE
+Thomas Liberatore         11   92.68   150 102.01   1109.7     0.0%    0->0    MEDIOCRE
+Tom McDonald               9   58.75   150  69.54     72.3     0.0%    0->0    MEDIOCRE
+Dayne Zorko               12  102.90   150 104.47   1011.5     0.0%    0->0    MEDIOCRE
+rt all True: True
+  rows with a >5% true score->price drop: 33 of 86 (38.4%)
+  rows with a >10% true score->price drop: 16 of 86 (18.6%)
+  rows with a >20% true score->price drop: 5 of 86 (5.8%)
+  rows with a >30% true score->price drop: 0 of 86 (0.0%)
+  median max-drop 3.2%
+
+=== (c) drivers ===
+  corr(drop, games         ) = -0.079
+  corr(drop, log games     ) = -0.066
+  corr(drop, prior avg     ) = -0.433
+  corr(drop, log prior avg ) = -0.430
+  corr(drop, level feature ) = -0.521
+  corr(drop, log level feature) = -0.569
+  corr(drop, board value   ) = -0.256
+  corr(drop, log board value) = -0.197
+  floored rows: n=9  median drop 2.9%
+  unfloored   : n=77  median drop 3.3%
+WROTE /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/trough_diagnosis/tasks/task_05_class.json

@@ -1,0 +1,26 @@
+{"event": "STAGE_BEGIN", "players": 318, "round": 15, "season": 2026}
+{"event": "STORE_STAGED", "players_merged": 318, "staged_store_md5": "692d63024ea7a2d990ce4edc86c88572"}
+{"as_of_round": 15, "calendar_progress": 0.63, "eligible_durable": 305, "event": "SEASON_STATE_STAGED", "exposure_pace": 0.591, "median_current_games": 13, "source_store_md5": "692d63024ea7a2d990ce4edc86c88572"}
+{"config_hash": "45b207c03a8cf2e449d831d54c19f848ace1b7c87dd699305048dccbe05d2140", "event": "BOARD_STAGED", "fv_distribution_pricing_md5": "dd19a2349a5b5a361b6eead0aab83ff3", "fv_rl_fv": "/tmp/wkupd_ws_tm22mvqp/engine/forward_valuation", "staged_board_md5": "2fe266756da3b7fb98eef38f4602c3b5"}
+{"as_of_round": 15, "event": "MANIFEST_STAGED"}
+{"as_of_round": 15, "board": "2fe26675", "contract_sha256": "b8ff829735af", "event": "CONTRACT_STAGED", "store": "692d6302"}
+{"added": 318, "event": "LEDGER_STAGED", "total": 318}
+{"event": "HISTORY_STAGED", "players": 804, "pos_rank_history_md5": "af217892b834326498349fc303540ae1", "prev_round": 14, "rank_history_md5": "b098cbaa1be05208fb38e4a0b3afc481", "round": 15, "rounds_after": [14, 15], "rounds_before": [], "season": 2026, "value_history_md5": "98869bd74a7616d97ba65accc380b7de"}
+{"event": "STATUS", "status": "VALIDATED"}
+{"event": "VALIDATE_OK", "guard5_green": true}
+{"event": "STAGED_COLLECTED", "targets": ["board", "ledger", "manifest", "pos_rank_history", "rank_history", "release_contract", "season_state", "sidecar", "store", "value_history"]}
+{"event": "ORIGINALS_BACKED_UP"}
+{"event": "STATUS", "status": "COMMITTING"}
+{"event": "COMMIT_BEGIN", "order": ["store", "board", "sidecar", "manifest", "season_state", "release_contract", "ledger", "value_history", "rank_history", "pos_rank_history"]}
+{"event": "REPLACED", "target": "store"}
+{"event": "REPLACED", "target": "board"}
+{"event": "REPLACED", "target": "sidecar"}
+{"event": "REPLACED", "target": "manifest"}
+{"event": "REPLACED", "target": "season_state"}
+{"event": "REPLACED", "target": "release_contract"}
+{"event": "REPLACED", "target": "ledger"}
+{"event": "REPLACED", "target": "value_history"}
+{"event": "REPLACED", "target": "rank_history"}
+{"event": "REPLACED", "target": "pos_rank_history"}
+{"event": "STATUS", "status": "COMMITTED"}
+{"event": "COMMIT_OK"}

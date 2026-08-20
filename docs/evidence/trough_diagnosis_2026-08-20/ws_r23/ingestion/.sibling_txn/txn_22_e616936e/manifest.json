@@ -1,0 +1,18 @@
+{
+  "new_balanced_board_md5": "e616936ef9be3fe55b37d4c5497093ac",
+  "old_balanced_board_md5": "a49c155fa20f7084bcaa0d3dceca6cb1",
+  "round": 22,
+  "status": "COMMITTED",
+  "targets": {
+    "board_view_public": "ui/data/board_view_public.js",
+    "board_view_working": "ui/data/board_view_working.js",
+    "forward_oracle": "session_2026-07-20/fv_provenance_remediation/test_forward_lens_1d5c9f7a.py",
+    "forward_vector": "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_1d5c9f7a.json",
+    "fv_test": "session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py",
+    "manifest": "data/expected_boot.json",
+    "reference_vector": "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_e616936e.json",
+    "release_contract": "data/release_contract.json",
+    "sidecar": "engine/rl_after/ingestion/sibling_repin_state.json"
+  },
+  "txn_id": "txn_22_e616936e"
+}

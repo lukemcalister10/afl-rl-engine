@@ -1,0 +1,61 @@
+{"board_md5_after": "2fe266756da3b7fb98eef38f4602c3b5", "event": "CORE_COMMITTED", "reconciled": false, "round": 15, "txn_id": "txn_catchup_r15"}
+{"event": "STATUS", "round": 15, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 15}
+{"event": "STATUS", "round": 15, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R15.json", "round": 15}
+{"board_md5_after": "8ad4170820ced82f50963bb0795e2fc9", "event": "CORE_COMMITTED", "reconciled": false, "round": 16, "txn_id": "txn_catchup_r16"}
+{"event": "STATUS", "round": 16, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 16}
+{"event": "STATUS", "round": 16, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R16.json", "round": 16}
+{"board_md5_after": "0308202fbec7ea8dfa76705a108e8e45", "event": "CORE_COMMITTED", "reconciled": false, "round": 17, "txn_id": "txn_catchup_r17"}
+{"event": "STATUS", "round": 17, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 17}
+{"event": "STATUS", "round": 17, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R17.json", "round": 17}
+{"board_md5_after": "4323c448d7fd3df3518391adaea2cdd3", "event": "CORE_COMMITTED", "reconciled": false, "round": 18, "txn_id": "txn_catchup_r18"}
+{"event": "STATUS", "round": 18, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 18}
+{"event": "STATUS", "round": 18, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R18.json", "round": 18}
+{"board_md5_after": "92a8f3a0528e5668029ca8056a841821", "event": "CORE_COMMITTED", "reconciled": false, "round": 19, "txn_id": "txn_catchup_r19"}
+{"event": "STATUS", "round": 19, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 19}
+{"event": "STATUS", "round": 19, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R19.json", "round": 19}
+{"board_md5_after": "8a38cca44f53152090cb3df3f78bd47e", "event": "CORE_COMMITTED", "reconciled": false, "round": 20, "txn_id": "txn_catchup_r20"}
+{"event": "STATUS", "round": 20, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 20}
+{"event": "STATUS", "round": 20, "status": "FINALIZATION_INCOMPLETE"}
+{"event": "FINALIZATION_INCOMPLETE", "round": 20, "why": "validation failed: movers bundle board-identity chain broken"}
+{"event": "STATUS", "round": 20, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": true, "historical": false, "round": 20}
+{"event": "STATUS", "round": 20, "status": "FINALIZATION_INCOMPLETE"}
+{"event": "FINALIZATION_INCOMPLETE", "round": 20, "why": "validation failed: movers bundle board-identity chain broken"}
+{"event": "STATUS", "round": 20, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": true, "historical": false, "round": 20}
+{"event": "STATUS", "round": 20, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R20.json", "round": 20}
+{"event": "STATUS", "round": 20, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": true, "historical": false, "round": 20}
+{"event": "STATUS", "round": 20, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R20.json", "round": 20}
+{"event": "STATUS", "round": 20, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": true, "historical": false, "round": 20}
+{"event": "STATUS", "round": 20, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R20.json", "round": 20}
+{"board_md5_after": "113b36f898a32363c49c2a62fb809f4b", "event": "CORE_COMMITTED", "reconciled": false, "round": 21, "txn_id": "txn_catchup_r21"}
+{"event": "STATUS", "round": 21, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 21}
+{"event": "STATUS", "round": 21, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R21.json", "round": 21}
+{"board_md5_after": "6e724cca2bb2fb118ff7ad6ed1f8a4b6", "event": "CORE_COMMITTED", "reconciled": false, "round": 22, "txn_id": "txn_catchup_r22"}
+{"event": "STATUS", "round": 22, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 22}
+{"event": "STATUS", "round": 22, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R22.json", "round": 22}
+{"board_md5_after": "7a3f4fe23207a29095e6d37408a4b727", "event": "CORE_COMMITTED", "reconciled": false, "round": 23, "txn_id": "txn_catchup_r23"}
+{"event": "STATUS", "round": 23, "status": "FINALIZING"}
+{"event": "FINALIZE_BEGIN", "force": false, "historical": false, "round": 23}
+{"event": "STATUS", "round": 23, "status": "FINALIZED"}
+{"event": "FINALIZED", "historical": false, "injected": 804, "movers_json": "movers_R23.json", "round": 23}

@@ -1,0 +1,72 @@
+board rows=67  keys=0
+population priced here: n=804
+measured n=801  errors=3
+price6 change under FIX B (isotonic-in-level band):
+  median +0.00%   mean +0.61%   p90 +2.81%   p99 +20.00%   max +84.85%
+  rows moving > 0.5%:  215 of 801 (26.8%)
+  rows moving > 1.0%:  168 of 801 (21.0%)
+  rows moving > 2.0%:  104 of 801 (13.0%)
+  rows moving > 5.0%:   39 of 801 (4.9%)
+  rows moving >10.0%:   25 of 801 (3.1%)
+  rows moving >20.0%:    8 of 801 (1.0%)
+  rows unmoved (<0.05%): 466
+
+  by 2026 games:
+    g  0- 0 n= 139  median  +0.14%  p90   +2.96%  max  +31.56%
+    g  1- 4 n=  94  median  +0.00%  p90   +3.64%  max  +26.32%
+    g  5-13 n= 205  median  +0.00%  p90   +5.44%  max  +84.85%
+    g 14-21 n= 261  median  +0.00%  p90   +1.12%  max  +20.00%
+    g 22-40 n= 102  median  +0.00%  p90   +0.50%  max   +3.41%
+  by level feature:
+    L  40- 50 n=  58  median  +0.52%  p90  +23.32%  max  +84.85%
+    L  50- 60 n= 261  median  +0.00%  p90   +3.79%  max  +13.16%
+    L  60- 70 n= 225  median  +0.02%  p90   +2.05%  max   +5.54%
+    L  70- 80 n= 115  median  +0.00%  p90   +0.22%  max   +4.35%
+    L  80- 95 n=  88  median  +0.00%  p90   +0.37%  max   +0.62%
+    L  95-120 n=  54  median  +0.00%  p90   +0.41%  max   +1.01%
+
+  top 25 movers:
+    Billy Cootee               g26=8   L= 49.18 v=   144.4  price6      8.6 ->     15.9  +84.85%
+    Will Hayes                 g26=8   L= 49.15 v=   180.0  price6    204.2 ->    295.6  +44.79%
+    Hussien El Achkar          g26=9   L= 48.78 v=   364.0  price6    315.0 ->    443.7  +40.86%
+    Liam Fawcett               g26=7   L= 49.24 v=   267.0  price6    334.0 ->    456.0  +36.51%
+    Mitchell Marsh             g26=0   L= 48.82 v=   545.5  price6    519.7 ->    683.8  +31.56%
+    Matt Owies                 g26=3   L= 47.98 v=     3.0  price6      0.4 ->      0.5  +26.32%
+    Josh Dolan                 g26=10  L= 48.78 v=   247.2  price6    215.8 ->    263.3  +22.03%
+    Jackson Archer             g26=0   L= 48.85 v=    20.6  price6     36.7 ->     44.0  +20.02%
+    Charlie Spargo             g26=18  L= 49.59 v=     4.3  price6      1.0 ->      1.2  +20.00%
+    Corey Warner               g26=5   L= 49.39 v=    59.4  price6     37.5 ->     45.0  +19.99%
+    Jack Buller                g26=10  L= 49.28 v=    80.7  price6    102.2 ->    122.5  +19.93%
+    Oscar Adams                g26=13  L= 48.93 v=   111.9  price6     88.2 ->    103.2  +16.96%
+    Max Kondogiannis           g26=10  L= 48.36 v=   358.9  price6    318.1 ->    370.8  +16.55%
+    Isaac Keeler               g26=2   L= 49.98 v=   176.5  price6    265.5 ->    308.0  +16.01%
+    Harvey Gallagher           g26=3   L= 47.47 v=    33.4  price6     31.8 ->     36.8  +15.79%
+    Maurice Rioli              g26=9   L= 48.90 v=    22.5  price6     12.8 ->     14.8  +15.78%
+    Harry Schoenberg           g26=5   L= 48.93 v=    31.6  price6     59.3 ->     68.2  +15.08%
+    Archer Reid                g26=6   L= 48.82 v=   373.2  price6    414.7 ->    475.8  +14.73%
+    Finn Maginness             g26=6   L= 48.83 v=    15.8  price6      6.3 ->      7.2  +13.88%
+    Lachlan Gulbin             g26=10  L= 53.92 v=   234.3  price6    347.4 ->    393.1  +13.16%
+    Jacob Newton               g26=3   L= 54.66 v=   186.0  price6    286.5 ->    316.7  +10.56%
+    Tom Cochrane               g26=3   L= 54.69 v=   136.7  price6    286.3 ->    316.3  +10.50%
+    Lachy Dovaston             g26=6   L= 50.64 v=   544.2  price6    440.6 ->    486.1  +10.34%
+    Josaia Delana              g26=8   L= 53.61 v=   206.8  price6    304.8 ->    335.7  +10.16%
+    Malakai Champion           g26=8   L= 50.42 v=   164.9  price6    271.0 ->    298.1  +10.03%
+
+=== DOES FIX B REMOVE THE TROUGH? (band-only sweep, raw vs isotonic) ===
+  Max Kondogiannis   raw maxdrop  40.2%   isotonic maxdrop   0.0%   (shipped-score price6 383.3 -> 364.5)
+     score        0      15      30      45      60      75      90     105     120     135     150
+     raw      383.3   417.3   442.4   427.8   401.9   318.1   272.8   304.9   335.0   452.9   449.5
+     iso      364.5   370.6   370.6   370.6   370.8   370.8   373.5   373.5   377.1   453.2   456.4
+  Josh Dolan         raw maxdrop  27.2%   isotonic maxdrop   0.0%   (shipped-score price6 281.8 -> 261.2)
+     score        0      15      30      45      60      75      90     105     120     135     150
+     raw      281.8   291.8   296.3   237.9   227.0   278.0   316.3   404.6   426.5   425.0   456.8
+     iso      261.2   261.2   263.0   263.3   266.2   294.5   316.3   395.4   426.3   430.2   458.9
+  Charlie West       raw maxdrop  34.1%   isotonic maxdrop   0.0%   (shipped-score price6 475.0 -> 469.2)
+     score        0      15      30      45      60      75      90     105     120     135     150
+     raw      475.0   477.7   552.4   573.1   621.3   604.3   588.3   496.7   409.2   421.8   526.4
+     iso      469.2   470.8   533.5   539.0   539.0   539.0   539.0   539.4   539.4   541.2   551.4
+  Will Hayes         raw maxdrop  39.8%   isotonic maxdrop   0.0%   (shipped-score price6 339.3 -> 295.6)
+     score        0      15      30      45      60      75      90     105     120     135     150
+     raw      339.3   327.3   254.6   204.2   207.6   278.5   311.4   324.7   343.9   344.3   347.1
+     iso      295.6   295.6   295.6   295.6   295.8   301.0   305.1   327.9   337.6   346.8   348.0
+WROTE /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/trough_diagnosis/tasks/task_06_blastradius.json

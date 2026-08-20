@@ -1,0 +1,805 @@
+key,name,club,affl_team,pos,previous_round,current_round,played,score,prev_value,cur_value,value_change,value_change_pct,prev_rank,cur_rank,rank_change,prev_pos_rank,cur_pos_rank,pos_rank_change
+aaron-cadman,Aaron Cadman,GWS,Richmond Tigers,Key Fwd,redesign-adoption-6-8,21,PLAYED,65.0,1905,1802,-103,-5.41,127,135,-8,10,12,-2
+aaron-naughton,Aaron Naughton,Western Bulldogs,Sydney Swans,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,1314,1309,-5,-0.38,187,188,-1,23,24,-1
+adam-cerra,Adam Cerra,Carlton,Adelaide Crows,Mid,redesign-adoption-6-8,21,PLAYED,91.0,948,980,32,3.38,236,225,11,56,56,0
+adam-saad,Adam Saad,Carlton,Geelong Cats,Def,redesign-adoption-6-8,21,DNP,DNP,462,446,-16,-3.46,362,363,-1,88,88,0
+adam-sweid,Adam Sweid,Fremantle,Sydney Swans,Mid,redesign-adoption-6-8,21,DNP,DNP,421,408,-13,-3.09,380,385,-5,86,88,-2
+adam-treloar,Adam Treloar,Western Bulldogs,West Coast Eagles,Fwd,redesign-adoption-6-8,21,DNP,DNP,947,935,-12,-1.27,237,240,-3,58,56,2
+aidan-corr,Aidan Corr,North Melbourne,Geelong Cats,Key Def,redesign-adoption-6-8,21,PLAYED,52.0,38,38,0,0.0,742,743,-1,70,70,0
+aidan-johnson,Aidan Johnson,Melbourne,Free agents,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,75,72,-3,-4.0,666,670,-4,111,111,0
+aidan-schubert,Aidan Schubert,Hawthorn,Fremantle Dockers,Key Fwd,redesign-adoption-6-8,21,PLAYED,24.0,506,521,15,2.96,344,340,4,51,50,1
+aiden-riddle,Aiden Riddle,Fremantle,Fremantle Dockers,Ruck,redesign-adoption-6-8,21,DNP,DNP,181,177,-4,-2.21,517,521,-4,38,38,0
+alex-davies,Alex Davies,Gold Coast,Western Bulldogs,Mid,redesign-adoption-6-8,21,DNP,DNP,423,412,-11,-2.6,378,383,-5,84,87,-3
+alex-dodson,Alex Dodson,St Kilda,Hawthorn Hawks,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,284,278,-6,-2.11,435,437,-2,65,66,-1
+alex-neal-bullen,Alex Neal-Bullen,Adelaide,West Coast Eagles,Fwd,redesign-adoption-6-8,21,PLAYED,77.0,298,313,15,5.03,424,417,7,103,99,4
+alex-pearce,Alex Pearce,Fremantle,Geelong Cats,Key Def,redesign-adoption-6-8,21,PLAYED,31.0,23,23,0,0.0,767,767,0,75,76,-1
+alex-van-wyk,Alex Van Wyk,Port Adelaide,Adelaide Crows,Ruck,redesign-adoption-6-8,21,DNP,DNP,239,235,-4,-1.67,469,473,-4,32,32,0
+aliir-aliir,Aliir Aliir,Port Adelaide,North Melbourne Kangaroos,Key Def,redesign-adoption-6-8,21,PLAYED,122.0,792,874,82,10.35,263,252,11,20,18,2
+alix-tauru,Alix Tauru,St Kilda,Western Bulldogs,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,1624,1628,4,0.25,151,148,3,16,16,0
+andrew-brayshaw,Andrew Brayshaw,Fremantle,St Kilda Saints,Mid,redesign-adoption-6-8,21,PLAYED,95.0,3145,3113,-32,-1.02,60,59,1,24,24,0
+andrew-mcgrath,Andrew McGrath,Essendon,Geelong Cats,Def,redesign-adoption-6-8,21,PLAYED,83.0,997,945,-52,-5.22,222,238,-16,56,59,-3
+andy-moniz-wakefield,Andy Moniz-Wakefield,Melbourne,West Coast Eagles,Def,redesign-adoption-6-8,21,DNP,DNP,30,28,-2,-6.67,753,757,-4,163,164,-1
+angus-anderson,Angus Anderson,Collingwood,North Melbourne Kangaroos,Fwd,redesign-adoption-6-8,21,PLAYED,42.0,158,161,3,1.9,547,542,5,138,136,2
+angus-clarke,Angus Clarke,Essendon,Carlton Blues,Def,redesign-adoption-6-8,21,DNP,DNP,751,746,-5,-0.67,274,276,-2,66,66,0
+angus-hastie,Angus Hastie,St Kilda,Richmond Tigers,Def,redesign-adoption-6-8,21,DNP,DNP,289,191,-98,-33.91,431,507,-76,99,115,-16
+angus-sheldrick,Angus Sheldrick,Sydney,Western Bulldogs,Mid,redesign-adoption-6-8,21,DNP,DNP,756,756,0,0.0,272,273,-1,64,64,0
+anthony-caminiti,Anthony Caminiti,St Kilda,Collingwood Magpies,Key Fwd,redesign-adoption-6-8,21,PLAYED,25.0,1058,974,-84,-7.94,216,228,-12,29,31,-2
+archer-day-wicks,Archer Day-Wicks,Essendon,Adelaide Crows,Fwd,redesign-adoption-6-8,21,PLAYED,63.0,607,636,29,4.78,307,299,8,75,74,1
+archer-reid,Archer Reid,West Coast,Melbourne Demons,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,703,697,-6,-0.85,282,286,-4,39,40,-1
+archie-ludowyke,Archie Ludowyke,Adelaide,Fremantle Dockers,Key Fwd,redesign-adoption-6-8,21,PLAYED,57.0,181,215,34,18.78,518,492,26,81,77,4
+archie-may,Archie May,Essendon,Western Bulldogs,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,429,429,0,0.0,371,373,-2,58,58,0
+archie-perkins,Archie Perkins,Essendon,Melbourne Demons,Fwd,redesign-adoption-6-8,21,DNP,DNP,234,234,0,0.0,481,477,4,114,116,-2
+archie-roberts,Archie Roberts,Essendon,St Kilda Saints,Def,redesign-adoption-6-8,21,PLAYED,94.0,4965,4941,-24,-0.48,18,19,-1,3,3,0
+arthur-jones,Arthur Jones,Western Bulldogs,Adelaide Crows,Fwd,redesign-adoption-6-8,21,PLAYED,58.0,89,92,3,3.37,634,635,-1,164,165,-1
+asher-eastham,Asher Eastham,Gold Coast,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,99,96,-3,-3.03,628,630,-2,162,163,-1
+ashton-moir,Ashton Moir,Carlton,St Kilda Saints,Fwd,redesign-adoption-6-8,21,DNP,DNP,274,258,-16,-5.84,441,452,-11,106,110,-4
+avery-thomas,Avery Thomas,Gold Coast,Melbourne Demons,Def,redesign-adoption-6-8,21,DNP,DNP,419,406,-13,-3.1,381,386,-5,92,92,0
+bailey-banfield,Bailey Banfield,Fremantle,St Kilda Saints,Def,redesign-adoption-6-8,21,DNP,DNP,11,11,0,0.0,789,789,0,173,172,1
+bailey-dale,Bailey Dale,Western Bulldogs,Geelong Cats,Def,redesign-adoption-6-8,21,DNP,DNP,2293,2287,-6,-0.26,95,97,-2,20,22,-2
+bailey-humphrey,Bailey Humphrey,Gold Coast,Western Bulldogs,Fwd,redesign-adoption-6-8,21,PLAYED,97.0,2349,2422,73,3.11,92,85,7,24,21,3
+bailey-laurie,Bailey Laurie,Melbourne,Free agents,Fwd,redesign-adoption-6-8,21,PLAYED,56.0,56,56,0,0.0,701,695,6,189,189,0
+bailey-macdonald,Bailey Macdonald,Hawthorn,Western Bulldogs,Def,redesign-adoption-6-8,21,PLAYED,63.0,145,142,-3,-2.07,567,571,-4,124,125,-1
+bailey-scott,Bailey Scott,North Melbourne,Free agents,Mid,redesign-adoption-6-8,21,PLAYED,33.0,23,23,0,0.0,768,768,0,148,147,1
+bailey-smith,Bailey Smith,Geelong,Geelong Cats,Mid,redesign-adoption-6-8,21,PLAYED,79.0,6691,6689,-2,-0.03,10,11,-1,5,6,-1
+bailey-williams-wb,Bailey Williams,Western Bulldogs,Collingwood Magpies,Def,redesign-adoption-6-8,21,PLAYED,79.0,623,598,-25,-4.01,305,313,-8,76,78,-2
+bailey-williams-wc,Bailey J. Williams,West Coast,Sydney Swans,Key Fwd,redesign-adoption-6-8,21,PLAYED,91.0,2411,2437,26,1.08,88,82,6,5,5,0
+balyn-o-brien,Balyn O'Brien,Port Adelaide,Free agents,Def,redesign-adoption-6-8,21,PLAYED,52.0,287,282,-5,-1.74,433,435,-2,100,101,-1
+bayley-fritsch,Bayley Fritsch,Melbourne,Geelong Cats,Fwd,redesign-adoption-6-8,21,PLAYED,69.0,159,156,-3,-1.89,545,549,-4,137,139,-2
+beau-addinsall,Beau Addinsall,Gold Coast,Fremantle Dockers,Mid,redesign-adoption-6-8,21,PLAYED,69.0,1444,1517,73,5.06,167,160,7,43,42,1
+beau-mccreery,Beau McCreery,Collingwood,Sydney Swans,Fwd,redesign-adoption-6-8,21,PLAYED,67.0,130,130,0,0.0,583,579,4,149,147,2
+ben-ainsworth,Ben Ainsworth,Carlton,Brisbane Lions,Fwd,redesign-adoption-6-8,21,PLAYED,59.0,214,197,-17,-7.94,490,500,-10,116,124,-8
+ben-camporeale,Ben Camporeale,Carlton,Fremantle Dockers,Mid,redesign-adoption-6-8,21,DNP,DNP,262,255,-7,-2.67,454,454,0,106,106,0
+ben-jepson,Ben Jepson,Gold Coast,Free agents,Mid,redesign-adoption-6-8,21,DNP,DNP,88,88,0,0.0,638,637,1,134,133,1
+ben-keays,Ben Keays,Adelaide,Adelaide Crows,Fwd,redesign-adoption-6-8,21,PLAYED,60.0,319,263,-56,-17.55,418,448,-30,100,108,-8
+ben-king,Ben King,Gold Coast,Sydney Swans,Key Fwd,redesign-adoption-6-8,21,PLAYED,48.0,248,238,-10,-4.03,463,470,-7,71,71,0
+ben-long,Ben Long,Gold Coast,Richmond Tigers,Fwd,redesign-adoption-6-8,21,PLAYED,65.0,28,28,0,0.0,758,758,0,209,209,0
+ben-mckay,Ben McKay,Essendon,West Coast Eagles,Key Def,redesign-adoption-6-8,21,DNP,DNP,35,35,0,0.0,747,747,0,71,71,0
+ben-miller,Ben Miller,Richmond,Sydney Swans,Key Def,redesign-adoption-6-8,21,PLAYED,74.0,988,958,-30,-3.04,225,231,-6,14,15,-1
+ben-murphy,Ben Murphy,Brisbane,North Melbourne Kangaroos,Def,redesign-adoption-6-8,21,DNP,DNP,87,84,-3,-3.45,640,643,-3,137,138,-1
+benny-barrett,Benny Barrett,Port Adelaide,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,52,51,-1,-1.92,708,707,1,193,193,0
+billy-cootee,Billy Cootee,Sydney,Essendon Bombers,Mid,redesign-adoption-6-8,21,PLAYED,79.0,264,264,0,0.0,451,446,5,105,104,1
+billy-dowling,Billy Dowling,Adelaide,Essendon Bombers,Fwd,redesign-adoption-6-8,21,PLAYED,101.0,143,219,76,53.15,571,487,84,144,120,24
+billy-frampton,Billy Frampton,Collingwood,Brisbane Lions,Key Def,redesign-adoption-6-8,21,PLAYED,66.0,33,34,1,3.03,749,749,0,72,72,0
+billy-wilson,Billy Wilson,Carlton,Western Bulldogs,Def,redesign-adoption-6-8,21,PLAYED,78.0,811,923,112,13.81,260,243,17,62,62,0
+blake-acres,Blake Acres,Carlton,Brisbane Lions,Mid,redesign-adoption-6-8,21,PLAYED,44.0,159,81,-78,-49.06,546,653,-107,119,135,-16
+blake-hardwick,Blake Hardwick,Hawthorn,Port Adelaide Power,Def,redesign-adoption-6-8,21,PLAYED,95.0,532,491,-41,-7.71,339,352,-13,82,86,-4
+blake-howes,Blake Howes,Melbourne,Essendon Bombers,Def,redesign-adoption-6-8,21,PLAYED,40.0,265,276,11,4.15,450,441,9,105,103,2
+blake-thredgold,Blake Thredgold,North Melbourne,Fremantle Dockers,Key Def,redesign-adoption-6-8,21,DNP,DNP,373,373,0,0.0,398,398,0,31,31,0
+bo-allan,Bo Allan,West Coast,Melbourne Demons,Def,redesign-adoption-6-8,21,PLAYED,37.0,1152,1121,-31,-2.69,206,213,-7,51,52,-1
+bobby-hill,Bobby Hill,Collingwood,West Coast Eagles,Fwd,redesign-adoption-6-8,21,DNP,DNP,31,29,-2,-6.45,752,753,-1,208,208,0
+bodhi-uwland,Bodhi Uwland,Gold Coast,Port Adelaide Power,Def,redesign-adoption-6-8,21,PLAYED,101.0,4017,4137,120,2.99,35,34,1,7,7,0
+bodie-ryan,Bodie Ryan,Hawthorn,Collingwood Magpies,Def,redesign-adoption-6-8,21,DNP,DNP,268,252,-16,-5.97,449,459,-10,104,106,-2
+bradley-close,Bradley Close,Geelong,Geelong Cats,Fwd,redesign-adoption-6-8,21,PLAYED,17.0,18,16,-2,-11.11,776,778,-2,219,219,0
+bradley-hill,Bradley Hill,St Kilda,Port Adelaide Power,Fwd,redesign-adoption-6-8,21,PLAYED,96.0,1168,1169,1,0.09,205,207,-2,51,52,-1
+brady-hough,Brady Hough,West Coast,Essendon Bombers,Def,redesign-adoption-6-8,21,PLAYED,56.0,290,290,0,0.0,430,430,0,98,100,-2
+braeden-campbell,Braeden Campbell,Sydney,Essendon Bombers,Fwd,redesign-adoption-6-8,21,PLAYED,67.0,315,345,30,9.52,419,406,13,101,97,4
+brandon-starcevich,Brandon Starcevich,Brisbane,Melbourne Demons,Def,redesign-adoption-6-8,21,PLAYED,55.0,41,41,0,0.0,733,734,-1,158,158,0
+brandon-walker,Brandon Walker,Fremantle,Port Adelaide Power,Def,redesign-adoption-6-8,21,DNP,DNP,66,62,-4,-6.06,682,693,-11,146,147,-1
+brandon-zerk-thatcher,Brandon Zerk-Thatcher,Essendon,Free agents,Key Def,redesign-adoption-6-8,21,DNP,DNP,51,48,-3,-5.88,710,717,-7,65,65,0
+brayden-cook,Brayden Cook,Adelaide,North Melbourne Kangaroos,Fwd,redesign-adoption-6-8,21,PLAYED,36.0,994,766,-228,-22.94,223,268,-45,55,64,-9
+brayden-fiorini,Brayden Fiorini,Essendon,Brisbane Lions,Mid,redesign-adoption-6-8,21,DNP,DNP,184,177,-7,-3.8,514,522,-8,115,115,0
+brayden-george,Brayden George,North Melbourne,Richmond Tigers,Fwd,redesign-adoption-6-8,21,DNP,DNP,235,234,-1,-0.43,480,478,2,113,117,-4
+brayden-maynard,Brayden Maynard,Collingwood,North Melbourne Kangaroos,Def,redesign-adoption-6-8,21,DNP,DNP,500,498,-2,-0.4,348,347,1,83,84,-1
+brennan-cox,Brennan Cox,Fremantle,West Coast Eagles,Key Def,redesign-adoption-6-8,21,DNP,DNP,264,264,0,0.0,452,447,5,35,35,0
+brent-daniels,Brent Daniels,GWS,Essendon Bombers,Fwd,redesign-adoption-6-8,21,DNP,DNP,1231,1212,-19,-1.54,197,201,-4,46,50,-4
+brodie-grundy,Brodie Grundy,Sydney,St Kilda Saints,Ruck,redesign-adoption-6-8,21,PLAYED,102.0,4647,4559,-88,-1.89,22,24,-2,3,3,0
+brodie-kemp,Brodie Kemp,Carlton,Geelong Cats,Key Fwd,redesign-adoption-6-8,21,PLAYED,101.0,591,768,177,29.95,312,267,45,42,39,3
+brody-mihocek,Brody Mihocek,Melbourne,Brisbane Lions,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,10,10,0,0.0,791,791,0,120,120,0
+bruce-reville,Bruce Reville,Brisbane,North Melbourne Kangaroos,Mid,redesign-adoption-6-8,21,PLAYED,49.0,54,54,0,0.0,704,703,1,140,141,-1
+buku-khamis,Buku Khamis,Western Bulldogs,Brisbane Lions,Key Fwd,redesign-adoption-6-8,21,PLAYED,71.0,148,149,1,0.68,564,559,5,91,89,2
+caiden-cleary,Caiden Cleary,Sydney,Richmond Tigers,Fwd,redesign-adoption-6-8,21,DNP,DNP,452,450,-2,-0.44,366,361,5,87,87,0
+caleb-daniel,Caleb Daniel,North Melbourne,Port Adelaide Power,Def,redesign-adoption-6-8,21,PLAYED,84.0,1357,1346,-11,-0.81,181,179,2,47,47,0
+caleb-graham,Caleb Graham,Gold Coast,Free agents,Key Def,redesign-adoption-6-8,21,DNP,DNP,42,40,-2,-4.76,731,736,-5,69,69,0
+caleb-lewis,Caleb Lewis,Gold Coast,Free agents,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,158,146,-12,-7.59,548,564,-16,84,92,-8
+caleb-may,Caleb May,Western Bulldogs,Melbourne Demons,Ruck,redesign-adoption-6-8,21,DNP,DNP,239,235,-4,-1.67,470,474,-4,33,33,0
+caleb-serong,Caleb Serong,Fremantle,Western Bulldogs,Mid,redesign-adoption-6-8,21,PLAYED,102.0,5118,5132,14,0.27,17,17,0,9,9,0
+caleb-windsor,Caleb Windsor,Melbourne,Western Bulldogs,Def,redesign-adoption-6-8,21,PLAYED,76.0,1515,1647,132,8.71,161,146,15,40,36,4
+callum-ah-chee,Callum Ah Chee,Adelaide,Geelong Cats,Fwd,redesign-adoption-6-8,21,PLAYED,91.0,66,66,0,0.0,683,683,0,183,183,0
+callum-brown-ire,Callum M. Brown,GWS,St Kilda Saints,Fwd,redesign-adoption-6-8,21,PLAYED,37.0,38,35,-3,-7.89,743,748,-5,206,207,-1
+callum-coleman-jones,Callum Coleman-Jones,North Melbourne,Free agents,Ruck,redesign-adoption-6-8,21,DNP,DNP,39,39,0,0.0,739,739,0,46,46,0
+callum-mills,Callum Mills,Sydney,Collingwood Magpies,Def,redesign-adoption-6-8,21,PLAYED,68.0,2117,2032,-85,-4.02,109,122,-13,24,27,-3
+callum-wilkie,Callum Wilkie,St Kilda,North Melbourne Kangaroos,Key Def,redesign-adoption-6-8,21,PLAYED,121.0,3655,3826,171,4.68,46,42,4,3,3,0
+calsher-dear,Calsher Dear,Hawthorn,Collingwood Magpies,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,957,956,-1,-0.1,234,234,0,34,33,1
+cameron-mackenzie,Cameron Mackenzie,Hawthorn,Western Bulldogs,Mid,redesign-adoption-6-8,21,PLAYED,97.0,1982,2094,112,5.65,122,112,10,36,36,0
+cameron-nairn,Cameron Nairn,Hawthorn,Hawthorn Hawks,Fwd,redesign-adoption-6-8,21,DNP,DNP,640,634,-6,-0.94,298,302,-4,74,76,-2
+cameron-rayner,Cameron Rayner,Brisbane,Geelong Cats,Fwd,redesign-adoption-6-8,21,PLAYED,61.0,716,687,-29,-4.05,279,288,-9,68,69,-1
+cameron-zurhaar,Cameron Zurhaar,North Melbourne,Richmond Tigers,Fwd,redesign-adoption-6-8,21,PLAYED,69.0,95,94,-1,-1.05,632,632,0,163,164,-1
+campbell-chesser,Campbell Chesser,Carlton,Essendon Bombers,Mid,redesign-adoption-6-8,21,DNP,DNP,294,277,-17,-5.78,427,439,-12,101,103,-2
+campbell-gray,Campbell Gray,Richmond,Carlton Blues,Key Def,redesign-adoption-6-8,21,DNP,DNP,183,180,-3,-1.64,515,516,-1,41,41,0
+campbell-lake,Campbell Lake,St Kilda,Richmond Tigers,Fwd,redesign-adoption-6-8,21,PLAYED,61.0,144,153,9,6.25,570,553,17,143,140,3
+chad-warner,Chad Warner,Sydney,North Melbourne Kangaroos,Fwd,redesign-adoption-6-8,21,PLAYED,116.0,3701,4038,337,9.11,44,36,8,9,8,1
+changkuoth-jiath,Changkuoth Jiath,Melbourne,Western Bulldogs,Def,redesign-adoption-6-8,21,PLAYED,36.0,14,10,-4,-28.57,781,792,-11,168,173,-5
+charlie-ballard,Charlie Ballard,Gold Coast,Carlton Blues,Key Def,redesign-adoption-6-8,21,PLAYED,35.0,46,42,-4,-8.7,728,731,-3,68,68,0
+charlie-banfield,Charlie Banfield,St Kilda,Melbourne Demons,Fwd,redesign-adoption-6-8,21,DNP,DNP,645,639,-6,-0.93,295,297,-2,73,73,0
+charlie-cameron,Charlie Cameron,Brisbane,Sydney Swans,Fwd,redesign-adoption-6-8,21,PLAYED,55.0,191,164,-27,-14.14,508,537,-29,124,133,-9
+charlie-comben,Charlie Comben,North Melbourne,St Kilda Saints,Key Def,redesign-adoption-6-8,21,PLAYED,55.0,847,804,-43,-5.08,253,263,-10,19,20,-1
+charlie-curnow,Charlie Curnow,Carlton,Adelaide Crows,Key Fwd,redesign-adoption-6-8,21,PLAYED,61.0,1449,1389,-60,-4.14,166,171,-5,20,22,-2
+charlie-edwards,Charlie Edwards,Adelaide,Hawthorn Hawks,Def,redesign-adoption-6-8,21,DNP,DNP,732,725,-7,-0.96,276,281,-5,67,68,-1
+charlie-nicholls,Charlie Nicholls,Fremantle,Hawthorn Hawks,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,210,203,-7,-3.33,493,498,-5,76,78,-2
+charlie-spargo,Charlie Spargo,Melbourne,Port Adelaide Power,Fwd,redesign-adoption-6-8,21,PLAYED,46.0,26,26,0,0.0,764,763,1,212,212,0
+charlie-west,Charlie West,Collingwood,Western Bulldogs,Key Fwd,redesign-adoption-6-8,21,PLAYED,33.0,381,446,65,17.06,393,364,29,61,56,5
+chayce-jones,Chayce Jones,Adelaide,Free agents,Def,redesign-adoption-6-8,21,DNP,DNP,48,48,0,0.0,718,718,0,154,153,1
+chris-scerri,Chris Scerri,Fremantle,Richmond Tigers,Fwd,redesign-adoption-6-8,21,DNP,DNP,306,302,-4,-1.31,420,423,-3,102,101,1
+christian-moraes,Christian Moraes,Port Adelaide,Richmond Tigers,Fwd,redesign-adoption-6-8,21,PLAYED,4.0,926,921,-5,-0.54,243,246,-3,60,59,1
+christian-petracca,Christian Petracca,Gold Coast,West Coast Eagles,Fwd,redesign-adoption-6-8,21,PLAYED,53.0,2593,2324,-269,-10.37,78,93,-15,19,23,-4
+christian-salem,Christian Salem,Melbourne,Port Adelaide Power,Def,redesign-adoption-6-8,21,PLAYED,31.0,426,232,-194,-45.54,374,479,-105,91,112,-21
+cillian-bourke,Cillian Bourke,Essendon,Free agents,Def,redesign-adoption-6-8,21,DNP,DNP,87,84,-3,-3.45,641,644,-3,138,139,-1
+cillian-burke,Cillian Burke,Geelong,Port Adelaide Power,Def,redesign-adoption-6-8,21,DNP,DNP,57,55,-2,-3.51,697,697,0,150,148,2
+clay-hall,Clay Hall,West Coast,Collingwood Magpies,Mid,redesign-adoption-6-8,21,DNP,DNP,335,286,-49,-14.63,413,432,-19,98,101,-3
+clayton-oliver,Clayton Oliver,GWS,North Melbourne Kangaroos,Mid,redesign-adoption-6-8,21,PLAYED,76.0,2510,2398,-112,-4.46,80,89,-9,30,33,-3
+cody-anderson,Cody Anderson,Hawthorn,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,65,63,-2,-3.08,685,690,-5,184,186,-2
+cody-angove,Cody Angove,GWS,Hawthorn Hawks,Fwd,redesign-adoption-6-8,21,DNP,DNP,510,495,-15,-2.94,343,348,-5,83,84,-1
+cody-curtin,Cody Curtin,Brisbane,St Kilda Saints,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,581,548,-33,-5.68,314,328,-14,43,45,-2
+cody-weightman,Cody Weightman,Western Bulldogs,Collingwood Magpies,Fwd,redesign-adoption-6-8,21,DNP,DNP,157,151,-6,-3.82,550,557,-7,139,141,-2
+colby-mckercher,Colby McKercher,North Melbourne,Richmond Tigers,Def,redesign-adoption-6-8,21,PLAYED,62.0,4358,4434,76,1.74,26,26,0,4,4,0
+connor-budarick,Connor Budarick,Western Bulldogs,Brisbane Lions,Fwd,redesign-adoption-6-8,21,DNP,DNP,284,284,0,0.0,436,434,2,104,105,-1
+connor-idun,Connor Idun,GWS,North Melbourne Kangaroos,Def,redesign-adoption-6-8,21,PLAYED,80.0,2397,2283,-114,-4.76,90,98,-8,18,23,-5
+connor-macdonald,Connor MacDonald,Hawthorn,Richmond Tigers,Fwd,redesign-adoption-6-8,21,PLAYED,91.0,2828,2849,21,0.74,69,67,2,16,16,0
+connor-o-sullivan,Connor O'Sullivan,Geelong,Western Bulldogs,Key Def,redesign-adoption-6-8,21,PLAYED,85.0,2941,2947,6,0.2,66,63,3,4,4,0
+connor-rozee,Connor Rozee,Port Adelaide,Adelaide Crows,Def,redesign-adoption-6-8,21,DNP,DNP,2879,2830,-49,-1.7,68,68,0,13,13,0
+conor-mckenna,Conor McKenna,Brisbane,St Kilda Saints,Fwd,redesign-adoption-6-8,21,PLAYED,34.0,7,7,0,0.0,800,800,0,226,226,0
+conor-nash,Conor Nash,Hawthorn,Sydney Swans,Mid,redesign-adoption-6-8,21,DNP,DNP,240,239,-1,-0.42,467,467,0,109,109,0
+conor-stone,Conor Stone,GWS,Brisbane Lions,Def,redesign-adoption-6-8,21,DNP,DNP,76,76,0,0.0,663,666,-3,143,143,0
+cooper-bell,Cooper Bell,Gold Coast,Free agents,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,162,157,-5,-3.09,539,548,-9,83,86,-3
+cooper-duff-tytler,Cooper Duff-Tytler,West Coast,Fremantle Dockers,Key Fwd,redesign-adoption-6-8,21,PLAYED,53.0,1479,1514,35,2.37,163,161,2,19,17,2
+cooper-harvey,Cooper Harvey,North Melbourne,Richmond Tigers,Fwd,redesign-adoption-6-8,21,DNP,DNP,551,544,-7,-1.27,327,330,-3,80,80,0
+cooper-hynes,Cooper Hynes,Western Bulldogs,Fremantle Dockers,Fwd,redesign-adoption-6-8,21,PLAYED,92.0,1367,1382,15,1.1,178,173,5,43,41,2
+cooper-lord,Cooper Lord,Carlton,Western Bulldogs,Mid,redesign-adoption-6-8,21,PLAYED,80.0,1103,1150,47,4.26,212,208,4,52,53,-1
+cooper-sharman,Cooper Sharman,St Kilda,Adelaide Crows,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,542,542,0,0.0,335,333,2,47,46,1
+cooper-simpson,Cooper Simpson,Fremantle,Richmond Tigers,Def,redesign-adoption-6-8,21,DNP,DNP,180,180,0,0.0,522,517,5,118,116,2
+cooper-trembath,Cooper Trembath,North Melbourne,Richmond Tigers,Key Fwd,redesign-adoption-6-8,21,PLAYED,84.0,2034,2053,19,0.93,119,120,-1,8,9,-1
+corey-durdin,Corey Durdin,Carlton,Port Adelaide Power,Fwd,redesign-adoption-6-8,21,PLAYED,43.0,48,48,0,0.0,719,719,0,200,199,1
+corey-wagner,Corey Wagner,Fremantle,Sydney Swans,Def,redesign-adoption-6-8,21,DNP,DNP,20,20,0,0.0,771,773,-2,166,166,0
+corey-warner,Corey Warner,Sydney,Melbourne Demons,Fwd,redesign-adoption-6-8,21,DNP,DNP,50,49,-1,-2.0,712,714,-2,196,197,-1
+dan-houston,Dan Houston,Collingwood,St Kilda Saints,Def,redesign-adoption-6-8,21,PLAYED,73.0,1173,1127,-46,-3.92,204,212,-8,50,51,-1
+dane-rampe,Dane Rampe,Sydney,Brisbane Lions,Def,redesign-adoption-6-8,21,PLAYED,70.0,12,12,0,0.0,786,786,0,170,169,1
+daniel-annable,Daniel Annable,Brisbane,Fremantle Dockers,Mid,redesign-adoption-6-8,21,DNP,DNP,1420,1364,-56,-3.94,170,175,-5,44,43,1
+daniel-butler,Daniel Butler,St Kilda,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,10,10,0,0.0,792,793,-1,222,223,-1
+daniel-curtin,Daniel Curtin,Adelaide,Melbourne Demons,Mid,redesign-adoption-6-8,21,PLAYED,90.0,2467,2487,20,0.81,84,80,4,32,30,2
+daniel-mcstay,Daniel McStay,Collingwood,Brisbane Lions,Key Fwd,redesign-adoption-6-8,21,PLAYED,110.0,149,216,67,44.97,561,491,70,89,76,13
+daniel-rioli,Daniel Rioli,Gold Coast,Collingwood Magpies,Def,redesign-adoption-6-8,21,PLAYED,78.0,642,620,-22,-3.43,296,310,-14,74,77,-3
+daniel-turner,Daniel Turner,Melbourne,Sydney Swans,Key Def,redesign-adoption-6-8,21,DNP,DNP,1610,1607,-3,-0.19,153,149,4,10,9,1
+dante-visentini,Dante Visentini,Port Adelaide,Adelaide Crows,Key Fwd,redesign-adoption-6-8,21,PLAYED,69.0,1264,1262,-2,-0.16,191,192,-1,24,25,-1
+darcy-byrne-jones,Darcy Byrne-Jones,Port Adelaide,Port Adelaide Power,Fwd,redesign-adoption-6-8,21,PLAYED,97.0,660,703,43,6.52,291,285,6,71,68,3
+darcy-cameron,Darcy Cameron,Collingwood,West Coast Eagles,Ruck,redesign-adoption-6-8,21,PLAYED,121.0,1395,1586,191,13.69,174,152,22,13,13,0
+darcy-fogarty,Darcy Fogarty,Adelaide,Port Adelaide Power,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,875,868,-7,-0.8,250,254,-4,36,36,0
+darcy-fort,Darcy Fort,Geelong,Collingwood Magpies,Ruck,redesign-adoption-6-8,21,PLAYED,48.0,27,21,-6,-22.22,762,770,-8,48,48,0
+darcy-gardiner,Darcy Gardiner,Brisbane,Geelong Cats,Key Def,redesign-adoption-6-8,21,DNP,DNP,33,33,0,0.0,750,750,0,73,73,0
+darcy-jones,Darcy Jones,GWS,Essendon Bombers,Fwd,redesign-adoption-6-8,21,DNP,DNP,1361,1321,-40,-2.94,179,185,-6,44,45,-1
+darcy-moore,Darcy Moore,Collingwood,Essendon Bombers,Key Def,redesign-adoption-6-8,21,DNP,DNP,151,146,-5,-3.31,557,565,-8,47,48,-1
+darcy-parish,Darcy Parish,Essendon,Collingwood Magpies,Mid,redesign-adoption-6-8,21,DNP,DNP,568,569,1,0.18,319,318,1,75,73,2
+darcy-wilmot,Darcy Wilmot,Brisbane,Hawthorn Hawks,Def,redesign-adoption-6-8,21,PLAYED,43.0,3856,3379,-477,-12.37,40,53,-13,10,11,-1
+darcy-wilson,Darcy Wilson,St Kilda,Western Bulldogs,Fwd,redesign-adoption-6-8,21,PLAYED,65.0,3456,3293,-163,-4.72,53,57,-4,11,12,-1
+darragh-joyce,Darragh Joyce,Brisbane,Free agents,Key Def,redesign-adoption-6-8,21,DNP,DNP,7,7,0,0.0,801,801,0,82,82,0
+dayne-zorko,Dayne Zorko,Brisbane,Port Adelaide Power,Def,redesign-adoption-6-8,21,DNP,DNP,1042,1040,-2,-0.19,218,218,0,55,54,1
+deven-robertson,Deven Robertson,West Coast,Melbourne Demons,Fwd,redesign-adoption-6-8,21,DNP,DNP,181,170,-11,-6.08,519,530,-11,128,132,-4
+dion-prestia,Dion Prestia,Richmond,Sydney Swans,Fwd,redesign-adoption-6-8,21,PLAYED,53.0,357,296,-61,-17.09,404,425,-21,97,102,-5
+dougal-howard,Dougal Howard,St Kilda,Port Adelaide Power,Key Def,redesign-adoption-6-8,21,DNP,DNP,48,47,-1,-2.08,720,726,-6,66,66,0
+dylan-moore,Dylan Moore,Hawthorn,Hawthorn Hawks,Fwd,redesign-adoption-6-8,21,PLAYED,49.0,1216,1174,-42,-3.45,199,205,-6,48,51,-3
+dylan-patterson,Dylan Patterson,Gold Coast,Melbourne Demons,Def,redesign-adoption-6-8,21,PLAYED,28.0,1707,1719,12,0.7,143,141,2,36,35,1
+dylan-stephens,Dylan Stephens,North Melbourne,Essendon Bombers,Mid,redesign-adoption-6-8,21,PLAYED,72.0,411,423,12,2.92,384,380,4,87,86,1
+dyson-sharp,Dyson Sharp,Essendon,Fremantle Dockers,Fwd,redesign-adoption-6-8,21,PLAYED,101.0,2641,2794,153,5.79,75,69,6,18,17,1
+eamonn-armstrong,Eamonn Armstrong,St Kilda,Hawthorn Hawks,Def,redesign-adoption-6-8,21,DNP,DNP,57,55,-2,-3.51,698,698,0,151,149,2
+ed-langdon,Ed Langdon,Melbourne,West Coast Eagles,Fwd,redesign-adoption-6-8,21,PLAYED,90.0,893,903,10,1.12,248,248,0,61,61,0
+ed-richards,Ed Richards,Western Bulldogs,St Kilda Saints,Mid,redesign-adoption-6-8,21,PLAYED,117.0,3917,3949,32,0.82,37,38,-1,15,15,0
+edward-allan,Edward Allan,Collingwood,Richmond Tigers,Mid,redesign-adoption-6-8,21,PLAYED,55.0,801,815,14,1.75,262,261,1,62,63,-1
+elijah-hewett,Elijah Hewett,West Coast,Melbourne Demons,Mid,redesign-adoption-6-8,21,DNP,DNP,767,753,-14,-1.83,267,275,-8,63,65,-2
+elijah-hollands,Elijah Hollands,Carlton,Essendon Bombers,Fwd,redesign-adoption-6-8,21,DNP,DNP,727,716,-11,-1.51,277,283,-6,67,67,0
+elijah-tsatas,Elijah Tsatas,Essendon,Melbourne Demons,Mid,redesign-adoption-6-8,21,DNP,DNP,1299,1272,-27,-2.08,189,190,-1,48,49,-1
+elliot-himmelberg,Elliott Himmelberg,Adelaide,Free agents,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,47,44,-3,-6.38,727,729,-2,116,116,0
+elliot-yeo,Elliot Yeo,West Coast,North Melbourne Kangaroos,Fwd,redesign-adoption-6-8,21,PLAYED,114.0,208,294,86,41.35,495,428,67,118,104,14
+eric-hipwood,Eric Hipwood,Brisbane,Brisbane Lions,Key Fwd,redesign-adoption-6-8,21,PLAYED,49.0,42,42,0,0.0,732,732,0,117,117,0
+errol-gulden,Errol Gulden,Sydney,Carlton Blues,Mid,redesign-adoption-6-8,21,PLAYED,144.0,6007,6891,884,14.72,14,10,4,7,5,2
+esava-ratugolea,Esava Ratugolea,Port Adelaide,Adelaide Crows,Key Def,redesign-adoption-6-8,21,DNP,DNP,67,66,-1,-1.49,676,684,-8,58,61,-3
+ethan-read,Ethan Read,Gold Coast,St Kilda Saints,Key Fwd,redesign-adoption-6-8,21,PLAYED,47.0,974,957,-17,-1.75,229,232,-3,32,32,0
+ewan-mackinlay,Ewan Mackinlay,Port Adelaide,Richmond Tigers,Fwd,redesign-adoption-6-8,21,DNP,DNP,128,128,0,0.0,586,581,5,150,148,2
+finlay-macrae,Finlay Macrae,West Coast,Geelong Cats,Fwd,redesign-adoption-6-8,21,DNP,DNP,110,110,0,0.0,612,612,0,158,157,1
+finn-callaghan,Finn Callaghan,GWS,Melbourne Demons,Mid,redesign-adoption-6-8,21,DNP,DNP,6132,6140,8,0.13,12,13,-1,6,7,-1
+finn-maginness,Finn Maginness,Hawthorn,Free agents,Fwd,redesign-adoption-6-8,21,PLAYED,30.0,26,26,0,0.0,765,764,1,213,213,0
+finn-o-sullivan,Finn O'Sullivan,North Melbourne,Collingwood Magpies,Def,redesign-adoption-6-8,21,PLAYED,74.0,3664,3642,-22,-0.6,45,46,-1,11,9,2
+finnbar-maley,Finnbar Maley,Adelaide,Geelong Cats,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,264,254,-10,-3.79,453,456,-3,69,68,1
+finnegan-davis,Finnegan Davis,GWS,Carlton Blues,Def,redesign-adoption-6-8,21,DNP,DNP,181,172,-9,-4.97,520,527,-7,117,117,0
+flynn-perez,Flynn Perez,Hawthorn,Brisbane Lions,Def,redesign-adoption-6-8,21,DNP,DNP,113,113,0,0.0,603,604,-1,129,129,0
+flynn-riley,Flynn Riley,Carlton,Adelaide Crows,Ruck,redesign-adoption-6-8,21,DNP,DNP,288,276,-12,-4.17,432,442,-10,30,30,0
+flynn-young,Flynn Young,Carlton,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,128,128,0,0.0,587,582,5,151,149,2
+francis-evans,Francis Evans,Carlton,St Kilda Saints,Fwd,redesign-adoption-6-8,21,PLAYED,46.0,358,254,-104,-29.05,403,457,-54,96,113,-17
+fred-rodriguez,Fred Rodriguez,West Coast,Carlton Blues,Fwd,redesign-adoption-6-8,21,DNP,DNP,194,184,-10,-5.15,502,510,-8,121,125,-4
+george-hewett,George Hewett,Carlton,Port Adelaide Power,Mid,redesign-adoption-6-8,21,PLAYED,147.0,1747,2002,255,14.6,138,123,15,38,37,1
+george-stevens,George Stevens,Geelong,St Kilda Saints,Mid,redesign-adoption-6-8,21,DNP,DNP,333,326,-7,-2.1,414,414,0,99,98,1
+george-wardlaw,George Wardlaw,North Melbourne,Richmond Tigers,Mid,redesign-adoption-6-8,21,DNP,DNP,3310,3308,-2,-0.06,56,56,0,22,22,0
+griffin-logue,Griffin Logue,North Melbourne,Richmond Tigers,Key Def,redesign-adoption-6-8,21,PLAYED,64.0,74,76,2,2.7,668,667,1,57,58,-1
+gryan-miers,Gryan Miers,Geelong,Brisbane Lions,Fwd,redesign-adoption-6-8,21,PLAYED,72.0,1809,1689,-120,-6.63,133,143,-10,35,36,-1
+hamish-davis,Hamish Davis,West Coast,Collingwood Magpies,Mid,redesign-adoption-6-8,21,DNP,DNP,898,898,0,0.0,247,249,-2,59,60,-1
+harley-barker,Harley Barker,Geelong,Fremantle Dockers,Mid,redesign-adoption-6-8,21,DNP,DNP,677,677,0,0.0,288,291,-3,66,69,-3
+harley-reid,Harley Reid,West Coast,Melbourne Demons,Mid,redesign-adoption-6-8,21,PLAYED,133.0,3624,3811,187,5.16,49,43,6,18,17,1
+harris-andrews,Harris Andrews,Brisbane,Collingwood Magpies,Key Def,redesign-adoption-6-8,21,PLAYED,63.0,1750,1643,-107,-6.11,137,147,-10,8,8,0
+harrison-coe,Harrison Coe,Collingwood,Port Adelaide Power,Ruck,redesign-adoption-6-8,21,DNP,DNP,239,235,-4,-1.67,471,475,-4,34,34,0
+harrison-himmelberg,Harrison Himmelberg,GWS,Sydney Swans,Def,redesign-adoption-6-8,21,PLAYED,59.0,237,149,-88,-37.13,477,560,-83,113,122,-9
+harrison-jones,Harrison Jones,Essendon,Free agents,Key Fwd,redesign-adoption-6-8,21,PLAYED,67.0,154,174,20,12.99,554,525,29,87,84,3
+harrison-oliver,Harrison Oliver,GWS,Hawthorn Hawks,Def,redesign-adoption-6-8,21,DNP,DNP,603,588,-15,-2.49,309,314,-5,77,79,-2
+harrison-petty,Harrison Petty,Melbourne,Geelong Cats,Key Fwd,redesign-adoption-6-8,21,PLAYED,112.0,143,181,38,26.57,572,514,58,92,82,10
+harrison-ramm,Harrison Ramm,Port Adelaide,Adelaide Crows,Key Def,redesign-adoption-6-8,21,PLAYED,36.0,324,338,14,4.32,417,409,8,33,32,1
+harry-armstrong,Harry Armstrong,Richmond,Hawthorn Hawks,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,804,804,0,0.0,261,264,-3,38,38,0
+harry-barnett,Harry Barnett,West Coast,Free agents,Ruck,redesign-adoption-6-8,21,DNP,DNP,557,555,-2,-0.36,324,326,-2,23,23,0
+harry-charleson,Harry Charleson,Carlton,North Melbourne Kangaroos,Def,redesign-adoption-6-8,21,DNP,DNP,105,103,-2,-1.9,619,620,-1,132,132,0
+harry-cunningham,Harry Cunningham,Sydney,Free agents,Def,redesign-adoption-6-8,21,DNP,DNP,10,10,0,0.0,793,794,-1,174,174,0
+harry-dean,Harry Dean,Carlton,Hawthorn Hawks,Key Def,redesign-adoption-6-8,21,PLAYED,60.0,2621,2660,39,1.49,77,76,1,5,5,0
+harry-demattia,Harry DeMattia,Collingwood,Carlton Blues,Mid,redesign-adoption-6-8,21,DNP,DNP,431,430,-1,-0.23,370,372,-2,82,83,-1
+harry-edwards,Harry Edwards,West Coast,St Kilda Saints,Key Def,redesign-adoption-6-8,21,DNP,DNP,108,103,-5,-4.63,614,621,-7,54,55,-1
+harry-kyle,Harry Kyle,Sydney,Fremantle Dockers,Def,redesign-adoption-6-8,21,PLAYED,32.0,1214,1149,-65,-5.35,200,209,-9,49,50,-1
+harry-mckay,Harry McKay,Carlton,St Kilda Saints,Key Fwd,redesign-adoption-6-8,21,PLAYED,108.0,1700,1859,159,9.35,144,128,16,15,11,4
+harry-morrison,Harry Morrison,Hawthorn,St Kilda Saints,Mid,redesign-adoption-6-8,21,PLAYED,35.0,29,21,-8,-27.59,754,771,-17,146,148,-2
+harry-o-farrell,Harry O'Farrell,Carlton,Sydney Swans,Key Def,redesign-adoption-6-8,21,DNP,DNP,962,957,-5,-0.52,232,233,-1,15,16,-1
+harry-perryman,Harry Perryman,Collingwood,Brisbane Lions,Def,redesign-adoption-6-8,21,DNP,DNP,69,69,0,0.0,674,676,-2,144,144,0
+harry-rowston,Harry Rowston,GWS,Carlton Blues,Mid,redesign-adoption-6-8,21,PLAYED,73.0,639,727,88,13.77,299,280,19,70,67,3
+harry-schoenberg,Harry Schoenberg,Adelaide,Adelaide Crows,Fwd,redesign-adoption-6-8,21,DNP,DNP,50,50,0,0.0,713,711,2,197,196,1
+harry-sharp,Harry Sharp,Brisbane,Brisbane Lions,Fwd,redesign-adoption-6-8,21,PLAYED,62.0,49,54,5,10.2,715,704,11,198,191,7
+harry-sheezel,Harry Sheezel,North Melbourne,Carlton Blues,Fwd,redesign-adoption-6-8,21,PLAYED,123.0,12081,12124,43,0.36,1,1,0,1,1,0
+harvey-gallagher,Harvey Gallagher,Western Bulldogs,Richmond Tigers,Def,redesign-adoption-6-8,21,DNP,DNP,87,87,0,0.0,642,639,3,139,136,3
+harvey-harrison,Harvey Harrison,Collingwood,West Coast Eagles,Fwd,redesign-adoption-6-8,21,PLAYED,53.0,40,48,8,20.0,735,720,15,202,200,2
+harvey-johnston,Harvey Johnston,West Coast,Melbourne Demons,Def,redesign-adoption-6-8,21,PLAYED,42.0,213,296,83,38.97,491,426,65,116,98,18
+harvey-langford,Harvey Langford,Melbourne,Fremantle Dockers,Mid,redesign-adoption-6-8,21,PLAYED,52.0,2503,2409,-94,-3.76,81,87,-6,31,32,-1
+harvey-thomas,Harvey Thomas,GWS,Brisbane Lions,Fwd,redesign-adoption-6-8,21,PLAYED,82.0,2127,2171,44,2.07,108,102,6,30,27,3
+hayden-mclean,Hayden McLean,Sydney,Richmond Tigers,Key Fwd,redesign-adoption-6-8,21,PLAYED,31.0,274,245,-29,-10.58,442,463,-21,68,69,-1
+hayden-young,Hayden Young,Fremantle,Essendon Bombers,Mid,redesign-adoption-6-8,21,PLAYED,72.0,1973,1815,-158,-8.01,123,134,-11,37,38,-1
+heath-chapman,Heath Chapman,Fremantle,Sydney Swans,Def,redesign-adoption-6-8,21,PLAYED,71.0,396,402,6,1.52,389,387,2,94,93,1
+henry-hustwaite,Henry Hustwaite,Hawthorn,Richmond Tigers,Mid,redesign-adoption-6-8,21,DNP,DNP,253,246,-7,-2.77,456,462,-6,108,107,1
+henry-smith,Henry Smith,Brisbane,Hawthorn Hawks,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,82,82,0,0.0,648,649,-1,108,108,0
+hudson-o-keeffe,Hudson O'Keeffe,Carlton,Western Bulldogs,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,236,229,-7,-2.97,478,481,-3,73,73,0
+hugh-bond,Hugh Bond,Adelaide,Fremantle Dockers,Def,redesign-adoption-6-8,21,DNP,DNP,161,154,-7,-4.35,541,552,-11,121,121,0
+hugh-boxshall,Hugh Boxshall,St Kilda,Melbourne Demons,Mid,redesign-adoption-6-8,21,PLAYED,34.0,917,929,12,1.31,244,242,2,57,59,-2
+hugh-davies,Hugh Davies,Fremantle,Hawthorn Hawks,Key Def,redesign-adoption-6-8,21,DNP,DNP,187,186,-1,-0.53,512,509,3,40,40,0
+hugh-mccluggage,Hugh McCluggage,Brisbane,Western Bulldogs,Mid,redesign-adoption-6-8,21,PLAYED,66.0,1613,1563,-50,-3.1,152,156,-4,40,39,1
+hugo-garcia,Hugo Garcia,St Kilda,West Coast Eagles,Mid,redesign-adoption-6-8,21,PLAYED,83.0,3085,3113,28,0.91,61,60,1,25,25,0
+hugo-hall-kahan,Hugo Hall-Kahan,Adelaide,Collingwood Magpies,Def,redesign-adoption-6-8,21,PLAYED,78.0,153,171,18,11.76,555,528,27,122,118,4
+hugo-mikunda,Hugo Mikunda,North Melbourne,Richmond Tigers,Fwd,redesign-adoption-6-8,21,DNP,DNP,193,184,-9,-4.66,507,511,-4,123,126,-3
+hugo-ralphsmith,Hugo Ralphsmith,Richmond,Port Adelaide Power,Mid,redesign-adoption-6-8,21,PLAYED,115.0,35,51,16,45.71,748,708,40,145,142,3
+hunter-clark,Hunter Clark,St Kilda,Hawthorn Hawks,Mid,redesign-adoption-6-8,21,PLAYED,74.0,48,48,0,0.0,721,721,0,141,143,-2
+hunter-holmes,Hunter Holmes,Geelong,Fremantle Dockers,Mid,redesign-adoption-6-8,21,DNP,DNP,553,533,-20,-3.62,325,339,-14,76,77,-1
+hussien-el-achkar,Hussien El Achkar,Essendon,Western Bulldogs,Fwd,redesign-adoption-6-8,21,PLAYED,78.0,355,444,89,25.07,405,365,40,98,88,10
+iliro-smit,Iliro Smit,Collingwood,Carlton Blues,Ruck,redesign-adoption-6-8,21,DNP,DNP,170,170,0,0.0,528,531,-3,40,40,0
+indy-cotton,Indy Cotton,Adelaide,Hawthorn Hawks,Fwd,redesign-adoption-6-8,21,DNP,DNP,67,65,-2,-2.99,677,686,-9,181,184,-3
+isaac-cumming,Isaac Cumming,Adelaide,North Melbourne Kangaroos,Mid,redesign-adoption-6-8,21,PLAYED,55.0,40,40,0,0.0,736,737,-1,144,145,-1
+isaac-heeney,Isaac Heeney,Sydney,West Coast Eagles,Mid,redesign-adoption-6-8,21,PLAYED,114.0,3644,3652,8,0.22,47,45,2,17,18,-1
+isaac-kako,Isaac Kako,Essendon,Western Bulldogs,Fwd,redesign-adoption-6-8,21,PLAYED,27.0,1347,1337,-10,-0.74,182,180,2,45,44,1
+isaac-keeler,Isaac Keeler,St Kilda,Hawthorn Hawks,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,207,192,-15,-7.25,496,505,-9,77,81,-4
+isaac-quaynor,Isaac Quaynor,Collingwood,Brisbane Lions,Def,redesign-adoption-6-8,21,PLAYED,97.0,457,634,177,38.73,363,303,60,89,75,14
+isaiah-dudley,Isaiah Dudley,Fremantle,Carlton Blues,Fwd,redesign-adoption-6-8,21,PLAYED,50.0,150,142,-8,-5.33,558,572,-14,141,145,-4
+izak-rankine,Izak Rankine,Adelaide,Geelong Cats,Fwd,redesign-adoption-6-8,21,PLAYED,158.0,3012,3558,546,18.13,63,50,13,14,11,3
+jack-bowes,Jack Bowes,Geelong,Brisbane Lions,Mid,redesign-adoption-6-8,21,DNP,DNP,97,97,0,0.0,629,629,0,132,131,1
+jack-buckley,Jack Buckley,GWS,Collingwood Magpies,Key Def,redesign-adoption-6-8,21,DNP,DNP,566,563,-3,-0.53,320,321,-1,25,25,0
+jack-buller,Jack Buller,Collingwood,Fremantle Dockers,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,80,80,0,0.0,657,655,2,109,109,0
+jack-carroll,Jack Carroll,St Kilda,Adelaide Crows,Def,redesign-adoption-6-8,21,DNP,DNP,84,84,0,0.0,646,645,1,141,140,1
+jack-crisp,Jack Crisp,Collingwood,North Melbourne Kangaroos,Mid,redesign-adoption-6-8,21,PLAYED,91.0,443,453,10,2.26,367,360,7,81,81,0
+jack-dalton,Jack Dalton,Hawthorn,Fremantle Dockers,Mid,redesign-adoption-6-8,21,DNP,DNP,525,502,-23,-4.38,341,345,-4,78,78,0
+jack-darling,Jack Darling,North Melbourne,North Melbourne Kangaroos,Key Fwd,redesign-adoption-6-8,21,PLAYED,78.0,124,138,14,11.29,595,575,20,96,93,3
+jack-ginnivan,Jack Ginnivan,Collingwood,North Melbourne Kangaroos,Fwd,redesign-adoption-6-8,21,PLAYED,62.0,2419,2330,-89,-3.68,87,92,-5,22,22,0
+jack-graham,Jack Graham,West Coast,Port Adelaide Power,Fwd,redesign-adoption-6-8,21,PLAYED,109.0,559,662,103,18.43,323,292,31,78,70,8
+jack-gunston,Jack Gunston,Hawthorn,St Kilda Saints,Key Fwd,redesign-adoption-6-8,21,PLAYED,62.0,982,896,-86,-8.76,228,250,-22,31,35,-4
+jack-henderson,Jack Henderson,Melbourne,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,107,105,-2,-1.87,615,618,-3,159,161,-2
+jack-henry,Jack Henry,Geelong,Geelong Cats,Key Fwd,redesign-adoption-6-8,21,PLAYED,61.0,203,193,-10,-4.93,498,503,-5,78,79,-1
+jack-higgins,Jack Higgins,St Kilda,Geelong Cats,Fwd,redesign-adoption-6-8,21,PLAYED,42.0,76,55,-21,-27.63,664,699,-35,176,190,-14
+jack-hutchinson,Jack Hutchinson,West Coast,Melbourne Demons,Mid,redesign-adoption-6-8,21,DNP,DNP,100,100,0,0.0,626,626,0,131,130,1
+jack-ison,Jack Ison,Carlton,Fremantle Dockers,Mid,redesign-adoption-6-8,21,DNP,DNP,542,544,2,0.37,336,331,5,77,76,1
+jack-lukosius,Jack Lukosius,Port Adelaide,Essendon Bombers,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,476,472,-4,-0.84,357,354,3,54,53,1
+jack-martin,Jack Martin,Geelong,Brisbane Lions,Fwd,redesign-adoption-6-8,21,PLAYED,42.0,107,107,0,0.0,616,614,2,160,158,2
+jack-ough,Jack Ough,GWS,Western Bulldogs,Mid,redesign-adoption-6-8,21,PLAYED,20.0,673,678,5,0.74,289,290,-1,67,68,-1
+jack-payne,Jack Payne,Brisbane,Brisbane Lions,Key Def,redesign-adoption-6-8,21,DNP,DNP,106,100,-6,-5.66,617,627,-10,55,56,-1
+jack-ross,Jack Ross,Richmond,Collingwood Magpies,Fwd,redesign-adoption-6-8,21,PLAYED,132.0,2514,2727,213,8.47,79,72,7,20,19,1
+jack-scrimshaw,Jack Scrimshaw,Hawthorn,Essendon Bombers,Def,redesign-adoption-6-8,21,DNP,DNP,96,93,-3,-3.12,630,633,-3,134,134,0
+jack-silvagni,Jack Silvagni,St Kilda,Collingwood Magpies,Key Def,redesign-adoption-6-8,21,PLAYED,90.0,725,792,67,9.24,278,265,13,21,21,0
+jack-sinclair,Jack Sinclair,St Kilda,Western Bulldogs,Def,redesign-adoption-6-8,21,DNP,DNP,3376,3368,-8,-0.24,55,54,1,12,12,0
+jack-steele,Jack Steele,Melbourne,Port Adelaide Power,Mid,redesign-adoption-6-8,21,PLAYED,47.0,1495,1275,-220,-14.72,162,189,-27,42,48,-6
+jack-viney,Jack Viney,Melbourne,North Melbourne Kangaroos,Mid,redesign-adoption-6-8,21,DNP,DNP,256,242,-14,-5.47,455,464,-9,107,108,-1
+jack-watkins,Jack Watkins,Port Adelaide,Adelaide Crows,Fwd,redesign-adoption-6-8,21,PLAYED,45.0,132,132,0,0.0,580,578,2,147,146,1
+jack-whitlock,Jack Whitlock,Port Adelaide,Fremantle Dockers,Key Fwd,redesign-adoption-6-8,21,PLAYED,20.0,1212,1233,21,1.73,201,196,5,26,26,0
+jack-williams,Jack Williams,West Coast,Melbourne Demons,Key Fwd,redesign-adoption-6-8,21,PLAYED,45.0,465,398,-67,-14.41,361,388,-27,56,61,-5
+jackson-archer,Jackson Archer,North Melbourne,Free agents,Def,redesign-adoption-6-8,21,DNP,DNP,27,27,0,0.0,763,762,1,165,165,0
+jackson-macrae,Jackson Macrae,St Kilda,St Kilda Saints,Mid,redesign-adoption-6-8,21,DNP,DNP,104,104,0,0.0,621,619,2,128,127,1
+jackson-mead,Jackson Mead,Port Adelaide,North Melbourne Kangaroos,Mid,redesign-adoption-6-8,21,DNP,DNP,29,29,0,0.0,755,754,1,147,146,1
+jacob-farrow,Jacob Farrow,Essendon,Fremantle Dockers,Def,redesign-adoption-6-8,21,PLAYED,52.0,2733,2651,-82,-3.0,71,78,-7,14,16,-2
+jacob-hopper,Jacob Hopper,Richmond,Sydney Swans,Mid,redesign-adoption-6-8,21,DNP,DNP,102,102,0,0.0,624,623,1,129,128,1
+jacob-konstanty,Jacob Konstanty,North Melbourne,Collingwood Magpies,Fwd,redesign-adoption-6-8,21,DNP,DNP,160,159,-1,-0.62,543,544,-1,136,137,-1
+jacob-molier,Jacob Molier,Geelong,St Kilda Saints,Ruck,redesign-adoption-6-8,21,DNP,DNP,294,288,-6,-2.04,428,431,-3,29,29,0
+jacob-moss,Jacob Moss,Port Adelaide,Fremantle Dockers,Key Def,redesign-adoption-6-8,21,DNP,DNP,48,47,-1,-2.08,722,727,-5,67,67,0
+jacob-newton,Jacob Newton,West Coast,Melbourne Demons,Fwd,redesign-adoption-6-8,21,DNP,DNP,206,208,2,0.97,497,493,4,119,121,-2
+jacob-van-rooyen,Jacob Van Rooyen,Melbourne,Essendon Bombers,Key Fwd,redesign-adoption-6-8,21,PLAYED,114.0,1833,1977,144,7.86,130,125,5,11,10,1
+jacob-wehr,Jacob Wehr,Port Adelaide,Geelong Cats,Def,redesign-adoption-6-8,21,DNP,DNP,14,14,0,0.0,782,782,0,169,168,1
+jacob-weitering,Jacob Weitering,Carlton,St Kilda Saints,Key Def,redesign-adoption-6-8,21,DNP,DNP,1034,1031,-3,-0.29,220,220,0,13,13,0
+jade-gresham,Jade Gresham,Essendon,Geelong Cats,Fwd,redesign-adoption-6-8,21,DNP,DNP,39,39,0,0.0,740,740,0,204,204,0
+jaeger-o-meara,Jaeger O'Meara,Fremantle,Brisbane Lions,Mid,redesign-adoption-6-8,21,DNP,DNP,165,165,0,0.0,534,536,-2,117,116,1
+jagga-smith,Jagga Smith,Carlton,Fremantle Dockers,Fwd,redesign-adoption-6-8,21,PLAYED,126.0,4930,5086,156,3.16,20,18,2,3,3,0
+jai-culley,Jai Culley,Melbourne,Western Bulldogs,Mid,redesign-adoption-6-8,21,DNP,DNP,194,189,-5,-2.58,503,508,-5,113,113,0
+jai-murray,Jai Murray,Gold Coast,Fremantle Dockers,Mid,redesign-adoption-6-8,21,PLAYED,25.0,1294,1189,-105,-8.11,190,204,-14,49,51,-2
+jai-newcombe,Jai Newcombe,Hawthorn,Sydney Swans,Mid,redesign-adoption-6-8,21,PLAYED,154.0,4494,4922,428,9.52,23,20,3,12,10,2
+jai-saxena,Jai Saxena,Collingwood,West Coast Eagles,Fwd,redesign-adoption-6-8,21,DNP,DNP,81,77,-4,-4.94,650,659,-9,167,171,-4
+jai-serong,Jai Serong,Sydney,North Melbourne Kangaroos,Key Def,redesign-adoption-6-8,21,PLAYED,77.0,957,981,24,2.51,235,224,11,16,14,2
+jaime-uhr-henry,Jaime Uhr-Henry,Hawthorn,Free agents,Ruck,redesign-adoption-6-8,21,DNP,DNP,66,65,-1,-1.52,684,687,-3,45,45,0
+jake-bowey,Jake Bowey,Melbourne,West Coast Eagles,Def,redesign-adoption-6-8,21,PLAYED,121.0,4196,4386,190,4.53,30,27,3,6,5,1
+jake-kolodjashnij,Jake Kolodjashnij,Geelong,Port Adelaide Power,Key Def,redesign-adoption-6-8,21,DNP,DNP,22,22,0,0.0,769,769,0,76,77,-1
+jake-lever,Jake Lever,Melbourne,Collingwood Magpies,Def,redesign-adoption-6-8,21,PLAYED,59.0,238,192,-46,-19.33,476,506,-30,112,114,-2
+jake-lloyd,Jake Lloyd,Sydney,Geelong Cats,Fwd,redesign-adoption-6-8,21,PLAYED,76.0,115,124,9,7.83,602,593,9,153,152,1
+jake-melksham,Jake Melksham,Melbourne,Free agents,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,49,49,0,0.0,716,715,1,115,115,0
+jake-riccardi,Jake Riccardi,GWS,Western Bulldogs,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,280,278,-2,-0.71,438,438,0,66,67,-1
+jake-rogers,Jake Rogers,Gold Coast,Melbourne Demons,Fwd,redesign-adoption-6-8,21,PLAYED,39.0,544,539,-5,-0.92,334,335,-1,82,82,0
+jake-soligo,Jake Soligo,Adelaide,Carlton Blues,Fwd,redesign-adoption-6-8,21,PLAYED,69.0,2052,2075,23,1.12,117,116,1,33,32,1
+jake-stringer,Jake Stringer,GWS,Brisbane Lions,Fwd,redesign-adoption-6-8,21,PLAYED,97.0,81,107,26,32.1,651,615,36,168,159,9
+jake-waterman,Jake Waterman,West Coast,West Coast Eagles,Key Fwd,redesign-adoption-6-8,21,PLAYED,64.0,1243,1191,-52,-4.18,193,203,-10,25,27,-2
+jakob-ryan,Jakob Ryan,Collingwood,West Coast Eagles,Def,redesign-adoption-6-8,21,DNP,DNP,239,239,0,0.0,472,468,4,111,108,3
+jamarra-ugle-hagan,Jamarra Ugle-Hagan,Gold Coast,Brisbane Lions,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,296,285,-11,-3.72,425,433,-8,64,65,-1
+james-barrat,James Barrat,St Kilda,North Melbourne Kangaroos,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,239,231,-8,-3.35,473,480,-7,72,72,0
+james-blanck,James Blanck,Hawthorn,Free agents,Key Def,redesign-adoption-6-8,21,DNP,DNP,60,60,0,0.0,694,694,0,61,62,-1
+james-borlase,James Borlase,Adelaide,Fremantle Dockers,Key Def,redesign-adoption-6-8,21,PLAYED,51.0,438,438,0,0.0,369,367,2,29,28,1
+james-jordon,James Jordon,Sydney,Adelaide Crows,Fwd,redesign-adoption-6-8,21,PLAYED,77.0,164,145,-19,-11.59,537,566,-29,133,143,-10
+james-leake,James Leake,GWS,Hawthorn Hawks,Fwd,redesign-adoption-6-8,21,DNP,DNP,494,482,-12,-2.43,352,353,-1,86,86,0
+james-o-donnell,James O'Donnell,Western Bulldogs,Richmond Tigers,Key Def,redesign-adoption-6-8,21,PLAYED,75.0,542,572,30,5.54,337,316,21,26,24,2
+james-peatling,James Peatling,Adelaide,Collingwood Magpies,Mid,redesign-adoption-6-8,21,DNP,DNP,1319,1318,-1,-0.08,185,186,-1,47,47,0
+james-rowbottom,James Rowbottom,Sydney,Sydney Swans,Fwd,redesign-adoption-6-8,21,DNP,DNP,1223,1223,0,0.0,198,198,0,47,48,-1
+james-sicily,James Sicily,Hawthorn,Geelong Cats,Def,redesign-adoption-6-8,21,PLAYED,73.0,1728,1568,-160,-9.26,140,155,-15,34,39,-5
+james-trezise,James Trezise,Richmond,Western Bulldogs,Def,redesign-adoption-6-8,21,DNP,DNP,119,119,0,0.0,599,598,1,128,128,0
+james-tunstill,James Tunstill,Brisbane,Free agents,Mid,redesign-adoption-6-8,21,DNP,DNP,82,82,0,0.0,649,650,-1,135,134,1
+james-worpel,James Worpel,Geelong,Port Adelaide Power,Mid,redesign-adoption-6-8,21,PLAYED,95.0,367,429,62,16.89,400,374,26,92,84,8
+jamie-cripps,Jamie Cripps,West Coast,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,28,28,0,0.0,759,759,0,210,210,0
+jamie-elliott,Jamie Elliott,Collingwood,Brisbane Lions,Fwd,redesign-adoption-6-8,21,DNP,DNP,19,19,0,0.0,775,775,0,218,218,0
+jaren-carr,Jaren Carr,Fremantle,Port Adelaide Power,Fwd,redesign-adoption-6-8,21,DNP,DNP,68,67,-1,-1.47,675,677,-2,180,180,0
+jarman-impey,Jarman Impey,Hawthorn,Collingwood Magpies,Def,redesign-adoption-6-8,21,PLAYED,104.0,945,987,42,4.44,239,222,17,58,55,3
+jarrod-berry,Jarrod Berry,Brisbane,Sydney Swans,Mid,redesign-adoption-6-8,21,PLAYED,65.0,225,196,-29,-12.89,482,501,-19,111,112,-1
+jarrod-witts,Jarrod Witts,Gold Coast,Port Adelaide Power,Ruck,redesign-adoption-6-8,21,DNP,DNP,142,142,0,0.0,573,573,0,42,42,0
+jase-burgoyne,Jase Burgoyne,Port Adelaide,Essendon Bombers,Def,redesign-adoption-6-8,21,PLAYED,101.0,2204,2403,199,9.03,99,88,11,21,18,3
+jason-horne-francis,Jason Horne-Francis,Port Adelaide,Geelong Cats,Fwd,redesign-adoption-6-8,21,PLAYED,92.0,6059,6200,141,2.33,13,12,1,2,2,0
+jaspa-fletcher,Jaspa Fletcher,Brisbane,Adelaide Crows,Def,redesign-adoption-6-8,21,PLAYED,90.0,2641,2652,11,0.42,76,77,-1,16,15,1
+jasper-alger,Jasper Alger,Richmond,Carlton Blues,Fwd,redesign-adoption-6-8,21,DNP,DNP,442,444,2,0.45,368,366,2,88,89,-1
+jaxon-artemis,Jaxon Artemis,Essendon,Hawthorn Hawks,Def,redesign-adoption-6-8,21,PLAYED,85.0,281,305,24,8.54,437,421,16,102,96,6
+jaxon-prior,Jaxon Prior,Brisbane,Fremantle Dockers,Def,redesign-adoption-6-8,21,PLAYED,53.0,299,293,-6,-2.01,423,429,-6,97,99,-2
+jay-polkinghorne,Jay Polkinghorne,Geelong,Fremantle Dockers,Key Fwd,redesign-adoption-6-8,21,PLAYED,59.0,407,431,24,5.9,385,371,14,60,57,3
+jayden-laverde,Jayden Laverde,Essendon,Sydney Swans,Key Def,redesign-adoption-6-8,21,PLAYED,69.0,194,196,2,1.03,504,502,2,39,39,0
+jayden-nguyen,Jayden Nguyen,GWS,Free agents,Def,redesign-adoption-6-8,21,DNP,DNP,466,438,-28,-6.01,360,368,-8,87,89,-2
+jayden-short,Jayden Short,Richmond,Port Adelaide Power,Def,redesign-adoption-6-8,21,PLAYED,47.0,1113,962,-151,-13.57,210,230,-20,52,57,-5
+jed-adams,Jed Adams,Melbourne,Melbourne Demons,Key Def,redesign-adoption-6-8,21,DNP,DNP,157,155,-2,-1.27,551,550,1,46,46,0
+jed-bews,Jed Bews,Geelong,Free agents,Def,redesign-adoption-6-8,21,DNP,DNP,10,10,0,0.0,794,795,-1,175,175,0
+jed-walter,Jed Walter,Gold Coast,Melbourne Demons,Key Fwd,redesign-adoption-6-8,21,PLAYED,81.0,1140,1315,175,15.35,208,187,21,27,23,4
+jedd-busslinger,Jedd Busslinger,Western Bulldogs,Essendon Bombers,Key Def,redesign-adoption-6-8,21,PLAYED,62.0,907,888,-19,-2.09,246,251,-5,17,17,0
+jeremy-cameron,Jeremy Cameron,Geelong,North Melbourne Kangaroos,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,826,827,1,0.12,256,259,-3,37,37,0
+jeremy-howe,Jeremy Howe,Collingwood,Port Adelaide Power,Def,redesign-adoption-6-8,21,PLAYED,71.0,251,229,-22,-8.76,460,482,-22,107,113,-6
+jeremy-sharp,Jeremy Sharp,Fremantle,Collingwood Magpies,Mid,redesign-adoption-6-8,21,DNP,DNP,62,56,-6,-9.68,691,696,-5,139,140,-1
+jesse-dattoli,Jesse Dattoli,Sydney,Collingwood Magpies,Fwd,redesign-adoption-6-8,21,DNP,DNP,336,326,-10,-2.98,412,415,-3,99,98,1
+jesse-hogan,Jesse Hogan,GWS,Port Adelaide Power,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,219,218,-1,-0.46,486,489,-3,74,75,-1
+jesse-mellor,Jesse Mellor,Geelong,Geelong Cats,Fwd,redesign-adoption-6-8,21,DNP,DNP,81,77,-4,-4.94,652,660,-8,169,172,-3
+jesse-motlop,Jesse Motlop,Carlton,Adelaide Crows,Fwd,redesign-adoption-6-8,21,DNP,DNP,89,82,-7,-7.87,635,651,-16,165,167,-2
+jevan-phillipou,Jevan Phillipou,Sydney,Fremantle Dockers,Mid,redesign-adoption-6-8,21,DNP,DNP,293,282,-11,-3.75,429,436,-7,102,102,0
+jhye-clark,Jhye Clark,Geelong,Geelong Cats,Fwd,redesign-adoption-6-8,21,PLAYED,76.0,781,834,53,6.79,264,258,6,64,63,1
+jobe-shanahan,Jobe Shanahan,West Coast,Western Bulldogs,Key Fwd,redesign-adoption-6-8,21,PLAYED,76.0,1746,1769,23,1.32,139,139,0,13,15,-2
+joe-berry,Joe Berry,Port Adelaide,Adelaide Crows,Fwd,redesign-adoption-6-8,21,PLAYED,85.0,1093,1102,9,0.82,213,214,-1,53,54,-1
+joe-pike,Joe Pike,Geelong,North Melbourne Kangaroos,Ruck,redesign-adoption-6-8,21,DNP,DNP,181,177,-4,-2.21,521,523,-2,39,39,0
+joe-richards,Joe Richards,Port Adelaide,Adelaide Crows,Fwd,redesign-adoption-6-8,21,DNP,DNP,931,922,-9,-0.97,242,245,-3,59,58,1
+joel-amartey,Joel Amartey,Sydney,Collingwood Magpies,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,32,32,0,0.0,751,751,0,118,118,0
+joel-cochran,Joel Cochran,Collingwood,Hawthorn Hawks,Def,redesign-adoption-6-8,21,DNP,DNP,172,166,-6,-3.49,527,535,-8,119,120,-1
+joel-fitzgerald,Joel Fitzgerald,Melbourne,Sydney Swans,Mid,redesign-adoption-6-8,21,PLAYED,117.0,48,67,19,39.58,723,678,45,142,139,3
+joel-freijah,Joel Freijah,Western Bulldogs,Western Bulldogs,Fwd,redesign-adoption-6-8,21,PLAYED,90.0,2896,2917,21,0.73,67,65,2,15,15,0
+joel-hamling,Joel Hamling,Sydney,Free agents,Key Def,redesign-adoption-6-8,21,DNP,DNP,18,18,0,0.0,777,776,1,78,78,0
+joel-jeffrey,Joel Jeffrey,Gold Coast,North Melbourne Kangaroos,Def,redesign-adoption-6-8,21,PLAYED,36.0,1924,1587,-337,-17.52,126,151,-25,30,37,-7
+john-noble,John Noble,Gold Coast,Sydney Swans,Def,redesign-adoption-6-8,21,PLAYED,134.0,2043,2313,270,13.22,118,95,23,28,21,7
+jonty-faull,Jonty Faull,Richmond,Carlton Blues,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,947,948,1,0.11,238,237,1,35,34,1
+jordan-boyd,Jordan Boyd,Carlton,Free agents,Def,redesign-adoption-6-8,21,DNP,DNP,37,37,0,0.0,745,744,1,161,161,0
+jordan-clark,Jordan Clark,Fremantle,West Coast Eagles,Def,redesign-adoption-6-8,21,PLAYED,85.0,3865,3591,-274,-7.09,39,48,-9,9,10,-1
+jordan-croft,Jordan Croft,Western Bulldogs,Hawthorn Hawks,Key Fwd,redesign-adoption-6-8,21,PLAYED,25.0,966,975,9,0.93,230,227,3,33,30,3
+jordan-dawson,Jordan Dawson,Adelaide,West Coast Eagles,Mid,redesign-adoption-6-8,21,PLAYED,110.0,3492,3492,0,0.0,52,51,1,21,20,1
+jordan-de-goey,Jordan De Goey,Collingwood,North Melbourne Kangaroos,Fwd,redesign-adoption-6-8,21,PLAYED,74.0,1527,1447,-80,-5.24,160,165,-5,40,40,0
+jordan-ridley,Jordan Ridley,Essendon,Adelaide Crows,Def,redesign-adoption-6-8,21,DNP,DNP,716,709,-7,-0.98,280,284,-4,68,70,-2
+jordon-butts,Jordon Butts,Adelaide,Fremantle Dockers,Key Def,redesign-adoption-6-8,21,DNP,DNP,15,15,0,0.0,779,779,0,79,79,0
+jordon-sweet,Jordon Sweet,Port Adelaide,St Kilda Saints,Ruck,redesign-adoption-6-8,21,PLAYED,85.0,2471,2435,-36,-1.46,83,83,0,7,6,1
+josaia-delana,Josaia Delana,GWS,St Kilda Saints,Fwd,redesign-adoption-6-8,21,PLAYED,64.0,278,296,18,6.47,439,427,12,105,103,2
+joseph-fonti,Joseph Fonti,GWS,St Kilda Saints,Def,redesign-adoption-6-8,21,PLAYED,47.0,711,636,-75,-10.55,281,300,-19,69,74,-5
+josh-battle,Josh Battle,St Kilda,West Coast Eagles,Key Def,redesign-adoption-6-8,21,PLAYED,90.0,2093,2122,29,1.39,110,111,-1,6,6,0
+josh-daicos,Josh Daicos,Collingwood,Brisbane Lions,Def,redesign-adoption-6-8,21,PLAYED,104.0,2130,2134,4,0.19,107,109,-2,23,25,-2
+josh-dolan,Josh Dolan,Western Bulldogs,Hawthorn Hawks,Fwd,redesign-adoption-6-8,21,PLAYED,59.0,497,505,8,1.61,350,343,7,85,83,2
+josh-draper,Josh Draper,Fremantle,Essendon Bombers,Key Def,redesign-adoption-6-8,21,DNP,DNP,481,460,-21,-4.37,355,359,-4,28,27,1
+josh-dunkley,Josh Dunkley,Brisbane,Geelong Cats,Mid,redesign-adoption-6-8,21,PLAYED,98.0,1234,1173,-61,-4.94,194,206,-12,50,52,-2
+josh-gibcus,Josh Gibcus,Richmond,Carlton Blues,Key Def,redesign-adoption-6-8,21,DNP,DNP,145,136,-9,-6.21,568,577,-9,49,50,-1
+josh-goater,Josh Goater,North Melbourne,Hawthorn Hawks,Def,redesign-adoption-6-8,21,PLAYED,72.0,93,93,0,0.0,633,634,-1,135,135,0
+josh-lai,Josh Lai,Port Adelaide,Fremantle Dockers,Def,redesign-adoption-6-8,21,PLAYED,77.0,476,513,37,7.77,358,342,16,86,82,4
+josh-lindsay,Josh Lindsay,West Coast,St Kilda Saints,Def,redesign-adoption-6-8,21,DNP,DNP,2452,2452,0,0.0,85,81,4,17,17,0
+josh-rachele,Josh Rachele,Adelaide,Fremantle Dockers,Fwd,redesign-adoption-6-8,21,PLAYED,60.0,2054,1990,-64,-3.12,116,124,-8,32,33,-1
+josh-sinn,Josh Sinn,Port Adelaide,Essendon Bombers,Def,redesign-adoption-6-8,21,DNP,DNP,146,144,-2,-1.37,566,570,-4,123,124,-1
+josh-smillie,Josh Smillie,Richmond,Carlton Blues,Mid,redesign-adoption-6-8,21,DNP,DNP,998,978,-20,-2.0,221,226,-5,53,57,-4
+josh-treacy,Josh Treacy,Fremantle,West Coast Eagles,Key Fwd,redesign-adoption-6-8,21,PLAYED,116.0,6774,7018,244,3.6,9,9,0,1,1,0
+josh-ward,Josh Ward,Hawthorn,Essendon Bombers,Mid,redesign-adoption-6-8,21,PLAYED,62.0,2782,2873,91,3.27,70,66,4,28,26,2
+josh-worrell,Josh Worrell,Adelaide,West Coast Eagles,Def,redesign-adoption-6-8,21,PLAYED,62.0,3886,3663,-223,-5.74,38,44,-6,8,8,0
+joshua-kelly,Joshua Kelly,GWS,Adelaide Crows,Mid,redesign-adoption-6-8,21,DNP,DNP,405,389,-16,-3.95,386,392,-6,88,90,-2
+joshua-weddle,Joshua Weddle,Hawthorn,Richmond Tigers,Def,redesign-adoption-6-8,21,PLAYED,52.0,1563,1578,15,0.96,157,153,4,38,38,0
+judd-mcvee,Judd McVee,Fremantle,Richmond Tigers,Def,redesign-adoption-6-8,21,PLAYED,55.0,306,309,3,0.98,421,420,1,96,95,1
+judson-clarke,Judson Clarke,Richmond,Collingwood Magpies,Fwd,redesign-adoption-6-8,21,DNP,DNP,64,64,0,0.0,687,688,-1,185,185,0
+justin-mcinerney,Justin McInerney,Sydney,Carlton Blues,Fwd,redesign-adoption-6-8,21,DNP,DNP,2166,2170,4,0.18,103,104,-1,29,28,1
+jy-farrar,Jy Farrar,Gold Coast,Free agents,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,11,11,0,0.0,790,790,0,119,119,0
+jy-simpkin,Jy Simpkin,North Melbourne,Collingwood Magpies,Fwd,redesign-adoption-6-8,21,PLAYED,87.0,1212,1220,8,0.66,202,200,2,49,49,0
+jye-amiss,Jye Amiss,Fremantle,Collingwood Magpies,Key Fwd,redesign-adoption-6-8,21,PLAYED,34.0,1601,1456,-145,-9.06,154,164,-10,17,20,-3
+jye-caldwell,Jye Caldwell,Essendon,Brisbane Lions,Mid,redesign-adoption-6-8,21,DNP,DNP,994,993,-1,-0.1,224,221,3,54,55,-1
+kade-chandler,Kade Chandler,Melbourne,Western Bulldogs,Fwd,redesign-adoption-6-8,21,DNP,DNP,960,950,-10,-1.04,233,235,-2,57,55,2
+kai-lohmann,Kai Lohmann,Brisbane,Collingwood Magpies,Fwd,redesign-adoption-6-8,21,PLAYED,74.0,665,661,-4,-0.6,290,293,-3,70,71,-1
+kalani-white,Kalani White,Melbourne,Essendon Bombers,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,89,86,-3,-3.37,636,640,-4,105,106,-1
+kaleb-smith,Kaleb Smith,Richmond,Free agents,Def,redesign-adoption-6-8,21,DNP,DNP,67,67,0,0.0,678,679,-1,145,145,0
+kane-farrell,Kane Farrell,Port Adelaide,Essendon Bombers,Def,redesign-adoption-6-8,21,DNP,DNP,1327,1324,-3,-0.23,184,183,1,48,48,0
+kane-mcauliffe,Kane McAuliffe,Richmond,Carlton Blues,Mid,redesign-adoption-6-8,21,DNP,DNP,1334,1328,-6,-0.45,183,182,1,46,45,1
+karl-amon,Karl Amon,Hawthorn,St Kilda Saints,Def,redesign-adoption-6-8,21,DNP,DNP,417,416,-1,-0.24,382,381,1,93,91,2
+karl-worner,Karl Worner,Fremantle,North Melbourne Kangaroos,Def,redesign-adoption-6-8,21,PLAYED,123.0,932,1246,314,33.69,241,195,46,60,49,11
+kayle-gerreyn,Kayle Gerreyn,Essendon,Fremantle Dockers,Ruck,redesign-adoption-6-8,21,DNP,DNP,187,181,-6,-3.21,513,515,-2,37,37,0
+keidean-coleman,Keidean Coleman,Brisbane,Melbourne Demons,Def,redesign-adoption-6-8,21,DNP,DNP,764,764,0,0.0,270,270,0,65,64,1
+keighton-matofai-forbes,Keighton Matofai-Forbes,Geelong,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,79,77,-2,-2.53,659,661,-2,173,173,0
+kieren-briggs,Kieren Briggs,GWS,Adelaide Crows,Ruck,redesign-adoption-6-8,21,PLAYED,59.0,2476,2140,-336,-13.57,82,108,-26,6,9,-3
+kobe-mcdonald,Kobe McDonald,St Kilda,Hawthorn Hawks,Def,redesign-adoption-6-8,21,DNP,DNP,87,84,-3,-3.45,643,646,-3,140,141,-1
+koby-coulson,Koby Coulson,Gold Coast,Carlton Blues,Mid,redesign-adoption-6-8,21,DNP,DNP,345,330,-15,-4.35,411,410,1,97,97,0
+koby-evans,Koby Evans,Brisbane,Free agents,Mid,redesign-adoption-6-8,21,DNP,DNP,274,263,-11,-4.01,443,449,-6,103,105,-2
+koltyn-tholstrup,Koltyn Tholstrup,Melbourne,Collingwood Magpies,Fwd,redesign-adoption-6-8,21,PLAYED,75.0,1581,1603,22,1.39,155,150,5,39,39,0
+kye-annand,Kye Annand,Richmond,Carlton Blues,Key Def,redesign-adoption-6-8,21,PLAYED,70.0,160,161,1,0.62,544,543,1,45,44,1
+kye-fincher,Kye Fincher,St Kilda,Hawthorn Hawks,Def,redesign-adoption-6-8,21,DNP,DNP,273,259,-14,-5.13,445,451,-6,103,105,-2
+kyle-langford,Kyle Langford,Essendon,St Kilda Saints,Key Fwd,redesign-adoption-6-8,21,PLAYED,72.0,560,554,-6,-1.07,322,327,-5,44,44,0
+kysaiah-pickett,Kysaiah Pickett,Melbourne,Richmond Tigers,Fwd,redesign-adoption-6-8,21,PLAYED,100.0,4053,4064,11,0.27,34,35,-1,6,7,-1
+lachie-jaques,Lachie Jaques,Western Bulldogs,Melbourne Demons,Def,redesign-adoption-6-8,21,DNP,DNP,813,809,-4,-0.49,259,262,-3,61,63,-2
+lachie-neale,Lachie Neale,Brisbane,West Coast Eagles,Mid,redesign-adoption-6-8,21,PLAYED,105.0,2188,2171,-17,-0.78,101,103,-2,34,35,-1
+lachie-sullivan,Lachie Sullivan,Collingwood,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,70,70,0,0.0,672,672,0,179,177,2
+lachie-whitfield,Lachie Whitfield,GWS,North Melbourne Kangaroos,Def,redesign-adoption-6-8,21,PLAYED,139.0,2060,2235,175,8.5,115,100,15,27,24,3
+lachlan-ash,Lachlan Ash,GWS,Melbourne Demons,Def,redesign-adoption-6-8,21,PLAYED,82.0,6239,6130,-109,-1.75,11,14,-3,2,2,0
+lachlan-blakiston,Lachlan Blakiston,Essendon,West Coast Eagles,Key Def,redesign-adoption-6-8,21,DNP,DNP,128,128,0,0.0,588,583,5,50,51,-1
+lachlan-bramble,Lachlan Bramble,Western Bulldogs,Collingwood Magpies,Fwd,redesign-adoption-6-8,21,PLAYED,99.0,51,73,22,43.14,711,669,42,195,176,19
+lachlan-carmichael,Lachlan Carmichael,Western Bulldogs,Hawthorn Hawks,Def,redesign-adoption-6-8,21,DNP,DNP,580,563,-17,-2.93,315,322,-7,79,80,-1
+lachlan-cowan,Lachlan Cowan,Carlton,Essendon Bombers,Def,redesign-adoption-6-8,21,PLAYED,63.0,701,722,21,3.0,283,282,1,70,69,1
+lachlan-fogarty,Lachlan Fogarty,Carlton,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,38,36,-2,-5.26,744,746,-2,207,206,1
+lachlan-gulbin,Lachlan Gulbin,Gold Coast,West Coast Eagles,Fwd,redesign-adoption-6-8,21,DNP,DNP,383,382,-1,-0.26,392,394,-2,92,93,-1
+lachlan-jones,Lachlan Jones,Port Adelaide,Adelaide Crows,Def,redesign-adoption-6-8,21,PLAYED,86.0,112,123,11,9.82,608,597,11,131,127,4
+lachlan-mcandrew,Lachlan McAndrew,Adelaide,Brisbane Lions,Ruck,redesign-adoption-6-8,21,PLAYED,75.0,1257,1254,-3,-0.24,192,194,-2,15,15,0
+lachlan-mcneil,Lachlan McNeil,Western Bulldogs,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,21,21,0,0.0,770,772,-2,215,216,-1
+lachlan-schultz,Lachlan Schultz,Fremantle,Adelaide Crows,Fwd,redesign-adoption-6-8,21,PLAYED,66.0,678,649,-29,-4.28,286,294,-8,69,72,-3
+lachlan-sholl,Lachlan Sholl,Adelaide,Free agents,Mid,redesign-adoption-6-8,21,DNP,DNP,165,153,-12,-7.27,535,554,-19,118,119,-1
+lachlan-smith,Lachlan Smith,Western Bulldogs,Collingwood Magpies,Ruck,redesign-adoption-6-8,21,DNP,DNP,631,627,-4,-0.63,302,308,-6,21,21,0
+lachlan-weller,Lachlan Weller,Gold Coast,Brisbane Lions,Mid,redesign-adoption-6-8,21,DNP,DNP,74,74,0,0.0,669,668,1,138,138,0
+lachy-dovaston,Lachy Dovaston,North Melbourne,Fremantle Dockers,Fwd,redesign-adoption-6-8,21,DNP,DNP,602,601,-1,-0.17,310,312,-2,76,77,-1
+laitham-vandermeer,Laitham Vandermeer,Western Bulldogs,Free agents,Fwd,redesign-adoption-6-8,21,PLAYED,19.0,20,20,0,0.0,772,774,-2,216,217,-1
+lance-collard,Lance Collard,St Kilda,Hawthorn Hawks,Fwd,redesign-adoption-6-8,21,DNP,DNP,188,171,-17,-9.04,509,529,-20,125,131,-6
+latrelle-pickett,Latrelle Pickett,Melbourne,Collingwood Magpies,Fwd,redesign-adoption-6-8,21,DNP,DNP,548,548,0,0.0,332,329,3,81,79,2
+lawson-humphries,Lawson Humphries,Geelong,Geelong Cats,Def,redesign-adoption-6-8,21,PLAYED,61.0,1866,1849,-17,-0.91,128,129,-1,31,30,1
+leek-aleer,Leek Aleer,GWS,Port Adelaide Power,Key Def,redesign-adoption-6-8,21,DNP,DNP,215,208,-7,-3.26,489,494,-5,37,37,0
+lennox-hoffman,Lennox Hoffman,Geelong,St Kilda Saints,Def,redesign-adoption-6-8,21,DNP,DNP,79,77,-2,-2.53,660,662,-2,142,142,0
+leo-lombard,Leo Lombard,Gold Coast,Fremantle Dockers,Fwd,redesign-adoption-6-8,21,PLAYED,69.0,1644,1677,33,2.01,148,144,4,37,37,0
+leon-kickett,Leon Kickett,Fremantle,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,152,145,-7,-4.61,556,567,-11,140,144,-4
+levi-ashcroft,Levi Ashcroft,Brisbane,Essendon Bombers,Mid,redesign-adoption-6-8,21,PLAYED,31.0,3558,3350,-208,-5.85,51,55,-4,20,21,-1
+lewis-hayes,Lewis Hayes,Essendon,Western Bulldogs,Def,redesign-adoption-6-8,21,DNP,DNP,250,250,0,0.0,461,460,1,108,107,1
+lewis-melican,Lewis Melican,Sydney,Brisbane Lions,Key Def,redesign-adoption-6-8,21,DNP,DNP,29,29,0,0.0,756,755,1,74,75,-1
+lewis-young,Lewis Young,Carlton,Carlton Blues,Key Fwd,redesign-adoption-6-8,21,PLAYED,67.0,149,130,-19,-12.75,562,580,-18,90,94,-4
+liam-baker,Liam Baker,West Coast,Carlton Blues,Def,redesign-adoption-6-8,21,DNP,DNP,427,427,0,0.0,373,375,-2,90,90,0
+liam-duggan,Liam Duggan,West Coast,Adelaide Crows,Def,redesign-adoption-6-8,21,PLAYED,80.0,248,277,29,11.69,464,440,24,109,102,7
+liam-fawcett,Liam Fawcett,Richmond,Carlton Blues,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,468,461,-7,-1.5,359,358,1,55,54,1
+liam-henry,Liam Henry,St Kilda,Essendon Bombers,Fwd,redesign-adoption-6-8,21,DNP,DNP,63,63,0,0.0,688,691,-3,186,187,-1
+liam-hetherton,Liam Hetherton,Sydney,St Kilda Saints,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,124,124,0,0.0,596,594,2,97,97,0
+liam-mcmahon,Liam McMahon,Essendon,Free agents,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,150,149,-1,-0.67,559,561,-2,88,90,-2
+liam-o-connell,Liam O'Connell,St Kilda,West Coast Eagles,Def,redesign-adoption-6-8,21,PLAYED,51.0,37,37,0,0.0,746,745,1,162,162,0
+liam-puncher,Liam Puncher,Collingwood,North Melbourne Kangaroos,Key Def,redesign-adoption-6-8,21,PLAYED,36.0,128,116,-12,-9.38,589,600,-11,51,54,-3
+liam-reidy,Liam Reidy,Carlton,Port Adelaide Power,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,352,328,-24,-6.82,407,413,-6,62,64,-2
+liam-ryan,Liam Ryan,St Kilda,Melbourne Demons,Fwd,redesign-adoption-6-8,21,PLAYED,25.0,24,24,0,0.0,766,766,0,214,215,-1
+liam-stocker,Liam Stocker,St Kilda,Free Agents,Def,redesign-adoption-6-8,21,PLAYED,94.0,41,41,0,0.0,734,735,-1,159,159,0
+lincoln-mccarthy,Lincoln McCarthy,Brisbane,Essendon Bombers,Fwd,redesign-adoption-6-8,21,DNP,DNP,10,10,0,0.0,795,796,-1,223,224,-1
+lloyd-meek,Lloyd Meek,Hawthorn,Carlton Blues,Ruck,redesign-adoption-6-8,21,PLAYED,112.0,1316,1329,13,0.99,186,181,5,14,14,0
+logan-evans,Logan Evans,Port Adelaide,Sydney Swans,Def,redesign-adoption-6-8,21,DNP,DNP,1390,1390,0,0.0,175,170,5,46,44,2
+logan-mcdonald,Logan McDonald,Sydney,Essendon Bombers,Key Fwd,redesign-adoption-6-8,21,PLAYED,90.0,615,683,68,11.06,306,289,17,41,41,0
+logan-morris,Logan Morris,Brisbane,Sydney Swans,Key Fwd,redesign-adoption-6-8,21,PLAYED,26.0,3206,3085,-121,-3.77,58,61,-3,4,4,0
+logan-smith,Logan Smith,GWS,Fremantle Dockers,Ruck,redesign-adoption-6-8,21,DNP,DNP,119,116,-3,-2.52,600,601,-1,43,43,0
+louis-emmett,Louis Emmett,Western Bulldogs,Adelaide Crows,Ruck,redesign-adoption-6-8,21,PLAYED,14.0,817,773,-44,-5.39,257,266,-9,18,18,0
+lucas-camporeale,Lucas Camporeale,Carlton,Fremantle Dockers,Mid,redesign-adoption-6-8,21,DNP,DNP,166,162,-4,-2.41,533,540,-7,116,117,-1
+lucca-grego,Lucca Grego,West Coast,Melbourne Demons,Def,redesign-adoption-6-8,21,DNP,DNP,130,126,-4,-3.08,584,591,-7,126,126,0
+lukas-cooke,Lukas Cooke,Melbourne,Adelaide Crows,Key Def,redesign-adoption-6-8,21,DNP,DNP,162,152,-10,-6.17,540,555,-15,44,47,-3
+luke-beecken,Luke Beecken,Brisbane,Port Adelaide Power,Mid,redesign-adoption-6-8,21,DNP,DNP,102,101,-1,-0.98,625,624,1,130,129,1
+luke-cleary,Luke Cleary,Western Bulldogs,Sydney Swans,Def,redesign-adoption-6-8,21,DNP,DNP,40,39,-1,-2.5,737,741,-4,160,160,0
+luke-davies-uniacke,Luke Davies-Uniacke,North Melbourne,Richmond Tigers,Mid,redesign-adoption-6-8,21,PLAYED,107.0,3577,3580,3,0.08,50,49,1,19,19,0
+luke-jackson,Luke Jackson,Fremantle,St Kilda Saints,Ruck,redesign-adoption-6-8,21,PLAYED,77.0,10242,9860,-382,-3.73,3,3,0,1,1,0
+luke-kennedy,Luke Kennedy,Western Bulldogs,North Melbourne Kangaroos,Mid,redesign-adoption-6-8,21,DNP,DNP,422,392,-30,-7.11,379,390,-11,85,89,-4
+luke-lloyd,Luke Lloyd,Brisbane,Free agents,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,165,164,-1,-0.61,536,538,-2,82,85,-3
+luke-mcdonald,Luke McDonald,North Melbourne,Geelong Cats,Def,redesign-adoption-6-8,21,DNP,DNP,48,48,0,0.0,724,722,2,155,154,1
+luke-nankervis,Luke Nankervis,Adelaide,Western Bulldogs,Mid,redesign-adoption-6-8,21,PLAYED,59.0,370,372,2,0.54,399,399,0,91,93,-2
+luke-parker,Luke Parker,North Melbourne,North Melbourne Kangaroos,Def,redesign-adoption-6-8,21,PLAYED,74.0,1472,1384,-88,-5.98,164,172,-8,41,45,-4
+luke-pedlar,Luke Pedlar,Adelaide,Essendon Bombers,Fwd,redesign-adoption-6-8,21,DNP,DNP,112,112,0,0.0,609,610,-1,156,155,1
+luke-ryan,Luke Ryan,Fremantle,West Coast Eagles,Def,redesign-adoption-6-8,21,PLAYED,96.0,1417,1412,-5,-0.35,171,167,4,45,42,3
+luke-trainor,Luke Trainor,Richmond,Carlton Blues,Def,redesign-adoption-6-8,21,PLAYED,46.0,1550,1525,-25,-1.61,159,159,0,39,40,-1
+luke-urquhart,Luke Urquhart,North Melbourne,Melbourne Demons,Mid,redesign-adoption-6-8,21,DNP,DNP,149,145,-4,-2.68,563,568,-5,121,120,1
+luker-kentfield,Luker Kentfield,Melbourne,Carlton Blues,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,333,330,-3,-0.9,415,411,4,63,63,0
+mabior-chol,Mabior Chol,Hawthorn,Collingwood Magpies,Key Fwd,redesign-adoption-6-8,21,PLAYED,92.0,275,367,92,33.45,440,400,40,67,62,5
+mac-andrew,Mac Andrew,Gold Coast,Western Bulldogs,Key Def,redesign-adoption-6-8,21,PLAYED,90.0,4144,4223,79,1.91,33,31,2,2,1,1
+malakai-champion,Malakai Champion,West Coast,Melbourne Demons,Fwd,redesign-adoption-6-8,21,DNP,DNP,393,393,0,0.0,390,389,1,90,91,-1
+malcolm-rosas,Malcolm Rosas,Sydney,Melbourne Demons,Fwd,redesign-adoption-6-8,21,PLAYED,33.0,20,26,6,30.0,773,765,8,217,214,3
+mani-liddy,Mani Liddy,Port Adelaide,North Melbourne Kangaroos,Mid,redesign-adoption-6-8,21,DNP,DNP,128,128,0,0.0,590,584,6,125,123,2
+marc-pittonet,Marc Pittonet,Carlton,Sydney Swans,Ruck,redesign-adoption-6-8,21,PLAYED,73.0,425,425,0,0.0,375,377,-2,26,26,0
+marcus-bontempelli,Marcus Bontempelli,Western Bulldogs,West Coast Eagles,Mid,redesign-adoption-6-8,21,PLAYED,61.0,4389,3974,-415,-9.46,25,37,-12,13,14,-1
+marcus-herbert,Marcus Herbert,West Coast,Essendon Bombers,Mid,redesign-adoption-6-8,21,PLAYED,132.0,659,1223,564,85.58,293,199,94,68,50,18
+marcus-windhager,Marcus Windhager,St Kilda,Port Adelaide Power,Def,redesign-adoption-6-8,21,PLAYED,36.0,2090,1844,-246,-11.77,111,130,-19,25,31,-6
+mark-blicavs,Mark Blicavs,Geelong,Geelong Cats,Ruck,redesign-adoption-6-8,21,PLAYED,54.0,5,5,0,0.0,802,802,0,49,49,0
+mark-keane,Mark Keane,Adelaide,Adelaide Crows,Key Def,redesign-adoption-6-8,21,PLAYED,43.0,1656,1569,-87,-5.25,147,154,-7,9,10,-1
+mark-o-connor,Mark O'Connor,Geelong,Brisbane Lions,Def,redesign-adoption-6-8,21,PLAYED,77.0,8,10,2,25.0,799,797,2,177,176,1
+mason-cox,Mason Cox,Fremantle,Geelong Cats,Key Fwd,redesign-adoption-6-8,21,PLAYED,36.0,5,5,0,0.0,803,803,0,121,121,0
+mason-redman,Mason Redman,Essendon,Collingwood Magpies,Def,redesign-adoption-6-8,21,PLAYED,70.0,1453,1352,-101,-6.95,165,177,-12,42,46,-4
+mason-wood,Mason Wood,St Kilda,Port Adelaide Power,Fwd,redesign-adoption-6-8,21,PLAYED,82.0,381,387,6,1.57,394,393,1,93,92,1
+massimo-d-ambrosio,Massimo D'Ambrosio,Hawthorn,Geelong Cats,Mid,redesign-adoption-6-8,21,PLAYED,73.0,1555,1550,-5,-0.32,158,157,1,41,40,1
+matt-carroll,Matt Carroll,Carlton,Western Bulldogs,Def,redesign-adoption-6-8,21,DNP,DNP,942,941,-1,-0.11,240,239,1,59,60,-1
+matt-cottrell,Matt Cottrell,Carlton,Adelaide Crows,Fwd,redesign-adoption-6-8,21,PLAYED,68.0,72,70,-2,-2.78,671,673,-2,178,178,0
+matt-duffy,Matt Duffy,Carlton,North Melbourne Kangaroos,Key Def,redesign-adoption-6-8,21,DNP,DNP,57,55,-2,-3.51,699,700,-1,63,63,0
+matt-guelfi,Matt Guelfi,Essendon,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,10,10,0,0.0,796,798,-2,224,225,-1
+matt-hill,Matt Hill,Hawthorn,Free agents,Def,redesign-adoption-6-8,21,DNP,DNP,60,55,-5,-8.33,695,701,-6,149,150,-1
+matt-johnson-1,Matt Johnson,Fremantle,Carlton Blues,Mid,redesign-adoption-6-8,21,PLAYED,65.0,985,969,-16,-1.62,226,229,-3,55,58,-3
+matt-owies,Matt Owies,Carlton,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,5,5,0,0.0,804,804,0,227,227,0
+matt-rowell,Matt Rowell,Gold Coast,Collingwood Magpies,Mid,redesign-adoption-6-8,21,PLAYED,118.0,4165,4259,94,2.26,32,30,2,14,13,1
+matt-whitlock,Matt Whitlock,North Melbourne,Adelaide Crows,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,455,448,-7,-1.54,364,362,2,57,55,2
+mattaes-phillipou,Mattaes Phillipou,St Kilda,Brisbane Lions,Fwd,redesign-adoption-6-8,21,PLAYED,36.0,2404,2298,-106,-4.41,89,96,-7,23,24,-1
+matthew-flynn,Matthew Flynn,West Coast,Sydney Swans,Ruck,redesign-adoption-6-8,21,DNP,DNP,549,538,-11,-2.0,330,336,-6,24,24,0
+matthew-jefferson,Matthew Jefferson,Melbourne,Carlton Blues,Key Fwd,redesign-adoption-6-8,21,PLAYED,30.0,502,426,-76,-15.14,346,376,-30,52,59,-7
+matthew-kennedy-1,Matthew Kennedy,Western Bulldogs,St Kilda Saints,Mid,redesign-adoption-6-8,21,PLAYED,42.0,606,469,-137,-22.61,308,356,-48,72,80,-8
+matthew-leray,Matthew LeRay,Hawthorn,Hawthorn Hawks,Mid,redesign-adoption-6-8,21,DNP,DNP,239,228,-11,-4.6,474,483,-9,110,110,0
+matthew-roberts,Matthew Roberts,Sydney,Carlton Blues,Def,redesign-adoption-6-8,21,PLAYED,69.0,1926,1904,-22,-1.14,125,126,-1,29,28,1
+maurice-rioli-1,Maurice Rioli,Richmond,Sydney Swans,Fwd,redesign-adoption-6-8,21,DNP,DNP,28,28,0,0.0,760,760,0,211,211,0
+max-beattie,Max Beattie,Hawthorn,Carlton Blues,Fwd,redesign-adoption-6-8,21,DNP,DNP,188,180,-8,-4.26,510,518,-8,126,128,-2
+max-gawn,Max Gawn,Melbourne,North Melbourne Kangaroos,Ruck,redesign-adoption-6-8,21,PLAYED,148.0,3379,3482,103,3.05,54,52,2,5,5,0
+max-gruzewski,Max Gruzewski,GWS,Essendon Bombers,Key Fwd,redesign-adoption-6-8,21,PLAYED,52.0,519,571,52,10.02,342,317,25,50,43,7
+max-hall,Max Hall,St Kilda,Western Bulldogs,Fwd,redesign-adoption-6-8,21,PLAYED,139.0,2433,2738,305,12.54,86,71,15,21,18,3
+max-heath,Max Heath,Melbourne,Sydney Swans,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,635,632,-3,-0.47,301,306,-5,40,42,-2
+max-holmes,Max Holmes,Geelong,Geelong Cats,Mid,redesign-adoption-6-8,21,DNP,DNP,8505,8517,12,0.14,5,5,0,2,2,0
+max-king-stk,Max King,St Kilda,Hawthorn Hawks,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,252,242,-10,-3.97,458,465,-7,70,70,0
+max-king-syd,Maxwell King,Sydney,Richmond Tigers,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,155,155,0,0.0,553,551,2,86,87,-1
+max-knobel,Max Knobel,Gold Coast,Fremantle Dockers,Ruck,redesign-adoption-6-8,21,DNP,DNP,412,412,0,0.0,383,384,-1,27,27,0
+max-kondogiannis,Max Kondogiannis,Essendon,Hawthorn Hawks,Def,redesign-adoption-6-8,21,PLAYED,20.0,549,464,-85,-15.48,331,357,-26,81,87,-6
+max-mapley,Max Mapley,Melbourne,Sydney Swans,Ruck,redesign-adoption-6-8,21,DNP,DNP,239,235,-4,-1.67,475,476,-1,35,35,0
+max-michalanney,Max Michalanney,Adelaide,Carlton Blues,Def,redesign-adoption-6-8,21,PLAYED,67.0,487,499,12,2.46,353,346,7,84,83,1
+max-ramsden,Max Ramsden,Hawthorn,Hawthorn Hawks,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,183,178,-5,-2.73,516,520,-4,80,83,-3
+michael-frederick,Michael Frederick,Fremantle,Port Adelaide Power,Fwd,redesign-adoption-6-8,21,PLAYED,77.0,63,70,7,11.11,689,674,15,187,179,8
+michael-sellwood,Michael Sellwood,Western Bulldogs,Brisbane Lions,Def,redesign-adoption-6-8,21,PLAYED,49.0,138,148,10,7.25,577,562,15,125,123,2
+milan-murdock,Milan Murdock,West Coast,Richmond Tigers,Fwd,redesign-adoption-6-8,21,PLAYED,86.0,236,346,110,46.61,479,405,74,112,96,16
+miles-bergman,Miles Bergman,Port Adelaide,Brisbane Lions,Def,redesign-adoption-6-8,21,PLAYED,105.0,701,931,230,32.81,284,241,43,71,61,10
+mitch-georgiades,Mitch Georgiades,Port Adelaide,North Melbourne Kangaroos,Key Fwd,redesign-adoption-6-8,21,PLAYED,87.0,1358,1464,106,7.81,180,163,17,22,19,3
+mitch-mcgovern,Mitch McGovern,Carlton,Geelong Cats,Fwd,redesign-adoption-6-8,21,PLAYED,61.0,44,42,-2,-4.55,729,733,-4,201,202,-1
+mitch-podhajski,Mitch Podhajski,Collingwood,Hawthorn Hawks,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,105,103,-2,-1.9,620,622,-2,103,104,-1
+mitch-zadow,Mitch Zadow,Port Adelaide,Port Adelaide Power,Fwd,redesign-adoption-6-8,21,PLAYED,50.0,113,113,0,0.0,604,605,-1,154,153,1
+mitchell-edwards,Mitchell Edwards,Geelong,Western Bulldogs,Ruck,redesign-adoption-6-8,21,PLAYED,77.0,2063,2164,101,4.9,114,105,9,9,7,2
+mitchell-hinge,Mitchell Hinge,Adelaide,Collingwood Magpies,Def,redesign-adoption-6-8,21,DNP,DNP,364,349,-15,-4.12,401,402,-1,95,94,1
+mitchell-knevitt,Mitchell Knevitt,Geelong,Richmond Tigers,Mid,redesign-adoption-6-8,21,DNP,DNP,127,127,0,0.0,594,590,4,127,125,2
+mitchell-lewis,Mitchell Lewis,Hawthorn,North Melbourne Kangaroos,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,546,540,-6,-1.1,333,334,-1,46,47,-1
+mitchell-marsh,Mitchell Marsh,Adelaide,Hawthorn Hawks,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,534,518,-16,-3.0,338,341,-3,48,51,-3
+mitchito-owens,Mitchito Owens,St Kilda,Western Bulldogs,Key Fwd,redesign-adoption-6-8,21,PLAYED,79.0,1954,2071,117,5.99,124,117,7,9,7,2
+murphy-reid,Murphy Reid,Fremantle,Fremantle Dockers,Fwd,redesign-adoption-6-8,21,PLAYED,86.0,4465,4441,-24,-0.54,24,25,-1,4,5,-1
+mykelti-lefau,Mykelti Lefau,Richmond,Carlton Blues,Key Fwd,redesign-adoption-6-8,21,PLAYED,42.0,70,70,0,0.0,673,675,-2,112,112,0
+nasiah-wanganeen-milera,Nasiah Wanganeen-Milera,St Kilda,Brisbane Lions,Def,redesign-adoption-6-8,21,PLAYED,117.0,9738,9816,78,0.8,4,4,0,1,1,0
+nate-caddy,Nate Caddy,Essendon,Essendon Bombers,Key Fwd,redesign-adoption-6-8,21,PLAYED,29.0,1771,1800,29,1.64,135,136,-1,12,13,-1
+nathan-broad,Nathan Broad,Richmond,Richmond Tigers,Def,redesign-adoption-6-8,21,PLAYED,65.0,10,10,0,0.0,797,799,-2,176,177,-1
+nathan-o-driscoll,Nathan O'Driscoll,Fremantle,Essendon Bombers,Mid,redesign-adoption-6-8,21,PLAYED,59.0,630,622,-8,-1.27,303,309,-6,71,71,0
+nathan-wardius,Nathan Wardius,GWS,Western Bulldogs,Fwd,redesign-adoption-6-8,21,DNP,DNP,67,67,0,0.0,679,680,-1,182,181,1
+ned-bowman,Ned Bowman,Sydney,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,272,263,-9,-3.31,446,450,-4,108,109,-1
+ned-long,Ned Long,Collingwood,Brisbane Lions,Fwd,redesign-adoption-6-8,21,PLAYED,59.0,1381,1349,-32,-2.32,177,178,-1,42,43,-1
+ned-moyle,Ned Moyle,Gold Coast,St Kilda Saints,Ruck,redesign-adoption-6-8,21,PLAYED,45.0,2204,2053,-151,-6.85,100,121,-21,8,12,-4
+ned-reeves,Ned Reeves,Hawthorn,Richmond Tigers,Ruck,redesign-adoption-6-8,21,DNP,DNP,249,249,0,0.0,462,461,1,31,31,0
+neil-erasmus,Neil Erasmus,Fremantle,Essendon Bombers,Mid,redesign-adoption-6-8,21,PLAYED,83.0,912,1082,170,18.64,245,216,29,58,54,4
+nic-newman,Nic Newman,Carlton,West Coast Eagles,Def,redesign-adoption-6-8,21,DNP,DNP,639,638,-1,-0.16,300,298,2,75,73,2
+nicholas-coffield,Nicholas Coffield,Western Bulldogs,West Coast Eagles,Def,redesign-adoption-6-8,21,PLAYED,59.0,48,48,0,0.0,725,723,2,156,155,1
+nicholas-holman,Nicholas Holman,Gold Coast,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,14,14,0,0.0,783,783,0,220,221,-1
+nicholas-martin,Nicholas Martin,Essendon,Melbourne Demons,Fwd,redesign-adoption-6-8,21,DNP,DNP,3639,3598,-41,-1.13,48,47,1,10,10,0
+nick-blakey,Nick Blakey,Sydney,Collingwood Magpies,Def,redesign-adoption-6-8,21,PLAYED,113.0,4240,4358,118,2.78,28,28,0,5,6,-1
+nick-bryan,Nick Bryan,Essendon,Western Bulldogs,Ruck,redesign-adoption-6-8,21,PLAYED,54.0,774,756,-18,-2.33,266,274,-8,19,20,-1
+nick-daicos,Nick Daicos,Collingwood,North Melbourne Kangaroos,Mid,redesign-adoption-6-8,21,PLAYED,125.0,10885,10971,86,0.79,2,2,0,1,1,0
+nick-driscoll,Nick Driscoll,Geelong,Port Adelaide Power,Fwd,redesign-adoption-6-8,21,DNP,DNP,194,184,-10,-5.15,505,512,-7,122,127,-5
+nick-haynes,Nick Haynes,Carlton,West Coast Eagles,Def,redesign-adoption-6-8,21,PLAYED,55.0,55,50,-5,-9.09,702,712,-10,153,152,1
+nick-larkey,Nick Larkey,North Melbourne,Brisbane Lions,Key Fwd,redesign-adoption-6-8,21,PLAYED,74.0,528,537,9,1.7,340,338,2,49,49,0
+nick-madden,Nick Madden,GWS,Hawthorn Hawks,Ruck,redesign-adoption-6-8,21,PLAYED,99.0,1860,2142,282,15.16,129,107,22,12,8,4
+nick-murray,Nick Murray,Adelaide,Fremantle Dockers,Key Def,redesign-adoption-6-8,21,DNP,DNP,329,329,0,0.0,416,412,4,32,33,-1
+nick-vlastuin,Nick Vlastuin,Richmond,St Kilda Saints,Def,redesign-adoption-6-8,21,PLAYED,59.0,61,55,-6,-9.84,693,702,-9,148,151,-3
+nick-watson,Nick Watson,Hawthorn,West Coast Eagles,Fwd,redesign-adoption-6-8,21,PLAYED,115.0,3952,4212,260,6.58,36,33,3,7,6,1
+nikolas-cox,Nikolas Cox,Essendon,Essendon Bombers,Mid,redesign-adoption-6-8,21,DNP,DNP,139,137,-2,-1.44,575,576,-1,123,122,1
+noah-anderson,Noah Anderson,Gold Coast,Richmond Tigers,Mid,redesign-adoption-6-8,21,PLAYED,105.0,5668,5776,108,1.91,15,15,0,8,8,0
+noah-answerth,Noah Answerth,Brisbane,St Kilda Saints,Def,redesign-adoption-6-8,21,PLAYED,41.0,12,12,0,0.0,787,787,0,171,170,1
+noah-balta,Noah Balta,Richmond,Adelaide Crows,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,425,425,0,0.0,376,378,-2,59,60,-1
+noah-chamberlain,Noah Chamberlain,Sydney,St Kilda Saints,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,106,106,0,0.0,618,617,1,102,103,-1
+noah-howes,Noah Howes,Collingwood,Essendon Bombers,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,133,128,-5,-3.76,579,585,-6,94,95,-1
+noah-long,Noah Long,West Coast,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,180,163,-17,-9.44,523,539,-16,129,134,-5
+noah-mraz,Noah Mraz,Hawthorn,Melbourne Demons,Key Def,redesign-adoption-6-8,21,DNP,DNP,4204,3847,-357,-8.49,29,40,-11,1,2,-1
+noah-roberts-thomson,Noah Roberts-Thomson,Richmond,Carlton Blues,Mid,redesign-adoption-6-8,21,DNP,DNP,346,345,-1,-0.29,410,407,3,96,95,1
+oisin-mullin,Oisin Mullin,Geelong,Geelong Cats,Def,redesign-adoption-6-8,21,PLAYED,73.0,17,17,0,0.0,778,777,1,167,167,0
+oliver-florent,Oliver Florent,Carlton,Sydney Swans,Def,redesign-adoption-6-8,21,PLAYED,119.0,601,633,32,5.32,311,304,7,78,76,2
+oliver-francou,Oliver Francou,West Coast,Fremantle Dockers,Mid,redesign-adoption-6-8,21,DNP,DNP,455,425,-30,-6.59,365,379,-14,80,85,-5
+oliver-griffin,Oliver Griffin,North Melbourne,Essendon Bombers,Fwd,redesign-adoption-6-8,21,DNP,DNP,188,180,-8,-4.26,511,519,-8,127,129,-2
+oliver-hannaford,Oliver Hannaford,GWS,Melbourne Demons,Mid,redesign-adoption-6-8,21,DNP,DNP,377,378,1,0.27,397,395,2,90,91,-1
+oliver-hayes-brown,Oliver Hayes-Brown,Richmond,Brisbane Lions,Ruck,redesign-adoption-6-8,21,DNP,DNP,221,218,-3,-1.36,483,490,-7,36,36,0
+oliver-henry,Oliver Henry,Geelong,Brisbane Lions,Key Fwd,redesign-adoption-6-8,21,PLAYED,103.0,76,147,71,93.42,665,563,102,110,91,19
+oliver-hollands,Oliver Hollands,Carlton,Sydney Swans,Def,redesign-adoption-6-8,21,DNP,DNP,1728,1728,0,0.0,141,140,1,35,34,1
+oliver-wiltshire,Oliver Wiltshire,Geelong,Port Adelaide Power,Fwd,redesign-adoption-6-8,21,PLAYED,50.0,49,49,0,0.0,717,716,1,199,198,1
+oliver-wines,Oliver Wines,Port Adelaide,St Kilda Saints,Mid,redesign-adoption-6-8,21,PLAYED,99.0,272,321,49,18.01,447,416,31,104,99,5
+ollie-dempsey,Ollie Dempsey,Geelong,Geelong Cats,Mid,redesign-adoption-6-8,21,PLAYED,127.0,2143,2432,289,13.49,105,84,21,35,31,4
+ollie-greeves,Ollie Greeves,Hawthorn,Hawthorn Hawks,Mid,redesign-adoption-6-8,21,PLAYED,17.0,501,568,67,13.37,347,320,27,79,74,5
+ollie-lord,Ollie Lord,Port Adelaide,West Coast Eagles,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,122,117,-5,-4.1,598,599,-1,98,98,0
+ollie-murphy,Ollie Murphy,Fremantle,St Kilda Saints,Key Def,redesign-adoption-6-8,21,DNP,DNP,170,169,-1,-0.59,529,532,-3,43,43,0
+oscar-adams,Oscar Adams,Gold Coast,Melbourne Demons,Key Def,redesign-adoption-6-8,21,DNP,DNP,67,67,0,0.0,680,681,-1,59,60,-1
+oscar-allen,Oscar Allen,West Coast,Carlton Blues,Key Fwd,redesign-adoption-6-8,21,PLAYED,54.0,103,115,12,11.65,622,603,19,104,100,4
+oscar-berry,Oscar Berry,Melbourne,Free agents,Key Def,redesign-adoption-6-8,21,DNP,DNP,75,72,-3,-4.0,667,671,-4,56,59,-3
+oscar-mcdonald,Oscar McDonald,Fremantle,Free agents,Key Def,redesign-adoption-6-8,21,PLAYED,142.0,20,158,138,690.0,774,545,229,77,45,32
+oscar-ryan,Oscar Ryan,Adelaide,Adelaide Crows,Def,redesign-adoption-6-8,21,PLAYED,96.0,252,304,52,20.63,459,422,37,106,97,9
+oscar-steene,Oscar Steene,Collingwood,Adelaide Crows,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,496,492,-4,-0.81,351,350,1,53,52,1
+oskar-baker,Oskar Baker,Western Bulldogs,Brisbane Lions,Fwd,redesign-adoption-6-8,21,DNP,DNP,14,14,0,0.0,784,784,0,221,222,-1
+oskar-taylor,Oskar Taylor,GWS,Hawthorn Hawks,Def,redesign-adoption-6-8,21,DNP,DNP,660,643,-17,-2.58,292,296,-4,73,72,1
+paddy-cross,Paddy Cross,Melbourne,Richmond Tigers,Fwd,redesign-adoption-6-8,21,PLAYED,28.0,113,113,0,0.0,605,606,-1,155,154,1
+paddy-dow,Paddy Dow,St Kilda,Brisbane Lions,Mid,redesign-adoption-6-8,21,DNP,DNP,158,158,0,0.0,549,546,3,120,118,2
+patrick-carr,Patrick Carr,Richmond,Free agents,Ruck,redesign-adoption-6-8,21,DNP,DNP,86,85,-1,-1.16,644,642,2,44,44,0
+patrick-cripps,Patrick Cripps,Carlton,Port Adelaide Power,Mid,redesign-adoption-6-8,21,PLAYED,66.0,1694,1550,-144,-8.5,145,158,-13,39,41,-2
+patrick-dangerfield,Patrick Dangerfield,Geelong,Port Adelaide Power,Fwd,redesign-adoption-6-8,21,DNP,DNP,63,63,0,0.0,690,692,-2,188,188,0
+patrick-lipinski,Patrick Lipinski,Collingwood,Collingwood Magpies,Fwd,redesign-adoption-6-8,21,PLAYED,75.0,755,743,-12,-1.59,273,277,-4,66,66,0
+patrick-retschko,Patrick Retschko,Geelong,Carlton Blues,Mid,redesign-adoption-6-8,21,PLAYED,92.0,1232,1353,121,9.82,196,176,20,51,44,7
+patrick-said,Patrick Said,St Kilda,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,84,82,-2,-2.38,647,652,-5,166,168,-2
+patrick-snell,Patrick Snell,Sydney,Hawthorn Hawks,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,117,116,-1,-0.85,601,602,-1,99,99,0
+patrick-voss,Patrick Voss,Fremantle,Fremantle Dockers,Key Fwd,redesign-adoption-6-8,21,PLAYED,41.0,1723,1493,-230,-13.35,142,162,-20,14,18,-4
+paul-curtis,Paul Curtis,North Melbourne,Richmond Tigers,Fwd,redesign-adoption-6-8,21,PLAYED,81.0,1388,1382,-6,-0.43,176,174,2,41,42,-1
+peter-ladhams,Peter Ladhams,Sydney,St Kilda Saints,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,550,538,-12,-2.18,328,337,-9,45,48,-3
+peter-wright,Peter Wright,Essendon,Port Adelaide Power,Key Fwd,redesign-adoption-6-8,21,PLAYED,118.0,1574,1788,214,13.6,156,137,19,18,14,4
+phoenix-gothard,Phoenix Gothard,GWS,Hawthorn Hawks,Fwd,redesign-adoption-6-8,21,DNP,DNP,1821,1821,0,0.0,132,133,-1,34,34,0
+reece-torrent,Reece Torrent,Brisbane,Free agents,Mid,redesign-adoption-6-8,21,DNP,DNP,81,80,-1,-1.23,653,656,-3,136,136,0
+reef-mcinnes,Reef McInnes,Collingwood,North Melbourne Kangaroos,Key Def,redesign-adoption-6-8,21,DNP,DNP,54,54,0,0.0,705,705,0,64,64,0
+reilly-o-brien,Reilly O'Brien,Adelaide,Geelong Cats,Ruck,redesign-adoption-6-8,21,DNP,DNP,893,870,-23,-2.58,249,253,-4,17,17,0
+reuben-ginbey,Reuben Ginbey,West Coast,Melbourne Demons,Def,redesign-adoption-6-8,21,DNP,DNP,2360,2359,-1,-0.04,91,90,1,19,19,0
+rhett-bazzo,Rhett Bazzo,West Coast,Carlton Blues,Key Def,redesign-adoption-6-8,21,PLAYED,21.0,482,415,-67,-13.9,354,382,-28,27,29,-2
+rhyan-mansell,Rhyan Mansell,Richmond,St Kilda Saints,Fwd,redesign-adoption-6-8,21,DNP,DNP,54,51,-3,-5.56,706,709,-3,191,194,-3
+rhylee-west,Rhylee West,Western Bulldogs,North Melbourne Kangaroos,Fwd,redesign-adoption-6-8,21,PLAYED,32.0,142,101,-41,-28.87,574,625,-51,145,162,-17
+rhys-stanley,Rhys Stanley,Geelong,Geelong Cats,Ruck,redesign-adoption-6-8,21,DNP,DNP,28,28,0,0.0,761,761,0,47,47,0
+rhys-unwin,Rhys Unwin,Essendon,Free agents,Fwd,redesign-adoption-6-8,21,PLAYED,37.0,79,112,33,41.77,661,611,50,174,156,18
+riak-andrew,Riak Andrew,Sydney,Port Adelaide Power,Key Def,redesign-adoption-6-8,21,DNP,DNP,147,142,-5,-3.4,565,574,-9,48,49,-1
+ricky-mentha,Ricky Mentha,Melbourne,Western Bulldogs,Fwd,redesign-adoption-6-8,21,DNP,DNP,52,51,-1,-1.92,709,710,-1,194,195,-1
+riley-bice,Riley Bice,Sydney,Collingwood Magpies,Def,redesign-adoption-6-8,21,PLAYED,89.0,217,237,20,9.22,488,471,17,115,110,5
+riley-garcia,Riley Garcia,Western Bulldogs,Essendon Bombers,Fwd,redesign-adoption-6-8,21,DNP,DNP,74,67,-7,-9.46,670,682,-12,177,182,-5
+riley-hamilton,Riley Hamilton,GWS,Free agents,Fwd,redesign-adoption-6-8,21,PLAYED,38.0,240,255,15,6.25,468,455,13,111,112,-1
+riley-hardeman,Riley Hardeman,North Melbourne,Sydney Swans,Def,redesign-adoption-6-8,21,DNP,DNP,287,274,-13,-4.53,434,444,-10,101,104,-3
+riley-onley,Riley Onley,Melbourne,Geelong Cats,Mid,redesign-adoption-6-8,21,DNP,DNP,194,184,-10,-5.15,506,513,-7,114,114,0
+riley-thilthorpe,Riley Thilthorpe,Adelaide,Melbourne Demons,Key Fwd,redesign-adoption-6-8,21,PLAYED,147.0,4348,4840,492,11.32,27,22,5,3,3,0
+river-stevens,River Stevens,North Melbourne,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,79,77,-2,-2.53,662,663,-1,175,174,1
+roan-steele,Roan Steele,Collingwood,North Melbourne Kangaroos,Mid,redesign-adoption-6-8,21,DNP,DNP,128,128,0,0.0,591,586,5,126,124,2
+rob-monahan,Rob Monahan,Carlton,Free agents,Def,redesign-adoption-6-8,21,DNP,DNP,48,47,-1,-2.08,726,728,-2,157,157,0
+robert-hansen,Robert Hansen,North Melbourne,West Coast Eagles,Fwd,redesign-adoption-6-8,21,DNP,DNP,103,91,-12,-11.65,623,636,-13,161,166,-5
+rory-laird,Rory Laird,Adelaide,North Melbourne Kangaroos,Def,redesign-adoption-6-8,21,DNP,DNP,766,764,-2,-0.26,268,271,-3,64,65,-1
+rory-lobb,Rory Lobb,Western Bulldogs,Port Adelaide Power,Key Def,redesign-adoption-6-8,21,PLAYED,73.0,301,302,1,0.33,422,424,-2,34,34,0
+rowan-marshall,Rowan Marshall,St Kilda,Port Adelaide Power,Key Fwd,redesign-adoption-6-8,21,PLAYED,84.0,2144,2070,-74,-3.45,104,118,-14,7,8,-1
+ryan-angwin,Ryan Angwin,GWS,Hawthorn Hawks,Mid,redesign-adoption-6-8,21,PLAYED,81.0,424,471,47,11.08,377,355,22,83,79,4
+ryan-byrnes,Ryan Byrnes,St Kilda,Adelaide Crows,Def,redesign-adoption-6-8,21,PLAYED,78.0,62,64,2,3.23,692,689,3,147,146,1
+ryan-gardner,Ryan Gardner,Western Bulldogs,Free agents,Key Def,redesign-adoption-6-8,21,DNP,DNP,13,13,0,0.0,785,785,0,81,81,0
+ryan-lester,Ryan Lester,Brisbane,Sydney Swans,Def,redesign-adoption-6-8,21,PLAYED,64.0,57,48,-9,-15.79,700,724,-24,152,156,-4
+ryan-maric,Ryan Maric,West Coast,St Kilda Saints,Def,redesign-adoption-6-8,21,PLAYED,67.0,1425,1397,-28,-1.96,169,168,1,44,43,1
+ryda-luke,Ryda Luke,Fremantle,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,81,77,-4,-4.94,654,664,-10,170,175,-5
+ryley-sanders,Ryley Sanders,Western Bulldogs,Sydney Swans,Fwd,redesign-adoption-6-8,21,PLAYED,92.0,3846,3934,88,2.29,41,39,2,8,9,-1
+saad-el-hawli,Saad El-Hawli,Essendon,North Melbourne Kangaroos,Def,redesign-adoption-6-8,21,DNP,DNP,100,100,0,0.0,627,628,-1,133,133,0
+sam-allen,Sam Allen,West Coast,Sydney Swans,Fwd,redesign-adoption-6-8,21,DNP,DNP,657,636,-21,-3.2,294,301,-7,72,75,-3
+sam-banks,Sam Banks,Richmond,Carlton Blues,Def,redesign-adoption-6-8,21,PLAYED,63.0,1108,983,-125,-11.28,211,223,-12,53,56,-3
+sam-berry,Sam Berry,Adelaide,Sydney Swans,Mid,redesign-adoption-6-8,21,DNP,DNP,3837,3843,6,0.16,43,41,2,16,16,0
+sam-butler-1,Sam Butler,Hawthorn,Carlton Blues,Fwd,redesign-adoption-6-8,21,DNP,DNP,81,81,0,0.0,655,654,1,171,169,2
+sam-clohesy,Sam Clohesy,Gold Coast,Sydney Swans,Mid,redesign-adoption-6-8,21,DNP,DNP,211,207,-4,-1.9,492,496,-4,112,111,1
+sam-cumming,Sam Cumming,Richmond,Carlton Blues,Mid,redesign-adoption-6-8,21,PLAYED,20.0,2977,2315,-662,-22.24,64,94,-30,26,34,-8
+sam-darcy,Sam Darcy,Western Bulldogs,Adelaide Crows,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,5378,5356,-22,-0.41,16,16,0,2,2,0
+sam-davidson,Sam Davidson,Western Bulldogs,Brisbane Lions,Fwd,redesign-adoption-6-8,21,PLAYED,45.0,80,80,0,0.0,658,657,1,172,170,2
+sam-de-koning,Sam De Koning,Geelong,Geelong Cats,Key Def,redesign-adoption-6-8,21,DNP,DNP,867,867,0,0.0,251,255,-4,18,19,-1
+sam-draper,Sam Draper,Brisbane,North Melbourne Kangaroos,Key Fwd,redesign-adoption-6-8,21,PLAYED,93.0,1116,1139,23,2.06,209,211,-2,28,28,0
+sam-durham,Sam Durham,Essendon,West Coast Eagles,Fwd,redesign-adoption-6-8,21,PLAYED,87.0,2665,2667,2,0.08,74,75,-1,17,20,-3
+sam-flanders,Sam Flanders,St Kilda,Adelaide Crows,Fwd,redesign-adoption-6-8,21,DNP,DNP,2089,2091,2,0.1,112,113,-1,31,30,1
+sam-lalor,Sam Lalor,Richmond,Carlton Blues,Fwd,redesign-adoption-6-8,21,PLAYED,109.0,4172,4638,466,11.17,31,23,8,5,4,1
+sam-marshall,Sam Marshall,Brisbane,Western Bulldogs,Mid,redesign-adoption-6-8,21,DNP,DNP,816,821,5,0.61,258,260,-2,61,62,-1
+sam-powell-pepper,Sam Powell-Pepper,Port Adelaide,Adelaide Crows,Fwd,redesign-adoption-6-8,21,DNP,DNP,180,174,-6,-3.33,524,526,-2,130,130,0
+sam-sturt,Sam Sturt,Fremantle,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,40,40,0,0.0,738,738,0,203,203,0
+sam-switkowski,Sam Switkowski,Fremantle,Sydney Swans,Fwd,redesign-adoption-6-8,21,PLAYED,87.0,10,15,5,50.0,798,780,18,225,220,5
+sam-taylor,Sam Taylor,GWS,North Melbourne Kangaroos,Key Def,redesign-adoption-6-8,21,PLAYED,81.0,1301,1272,-29,-2.23,188,191,-3,11,11,0
+sam-walsh,Sam Walsh,Carlton,Brisbane Lions,Mid,redesign-adoption-6-8,21,PLAYED,77.0,3275,3201,-74,-2.26,57,58,-1,23,23,0
+sam-wicks,Sam Wicks,Sydney,Collingwood Magpies,Def,redesign-adoption-6-8,21,DNP,DNP,12,12,0,0.0,788,788,0,172,171,1
+samson-ryan,Samson Ryan,Richmond,West Coast Eagles,Ruck,redesign-adoption-6-8,21,PLAYED,34.0,402,349,-53,-13.18,387,403,-16,28,28,0
+samuel-collins,Samuel Collins,Gold Coast,St Kilda Saints,Key Def,redesign-adoption-6-8,21,DNP,DNP,630,629,-1,-0.16,304,307,-3,23,23,0
+samuel-grlj,Samuel Grlj,Richmond,Collingwood Magpies,Def,redesign-adoption-6-8,21,PLAYED,56.0,1804,1869,65,3.6,134,127,7,33,29,4
+samuel-swadling,Samuel Swadling,Collingwood,Essendon Bombers,Mid,redesign-adoption-6-8,21,DNP,DNP,747,732,-15,-2.01,275,279,-4,65,66,-1
+sandy-brock,Sandy Brock,West Coast,Sydney Swans,Key Def,redesign-adoption-6-8,21,PLAYED,34.0,173,176,3,1.73,526,524,2,42,42,0
+scott-pendlebury,Scott Pendlebury,Collingwood,North Melbourne Kangaroos,Mid,redesign-adoption-6-8,21,PLAYED,92.0,348,359,11,3.16,409,401,8,95,94,1
+sean-darcy,Sean Darcy,Fremantle,Collingwood Magpies,Ruck,redesign-adoption-6-8,21,DNP,DNP,763,757,-6,-0.79,271,272,-1,20,19,1
+seth-campbell,Seth Campbell,Richmond,St Kilda Saints,Fwd,redesign-adoption-6-8,21,PLAYED,43.0,983,918,-65,-6.61,227,247,-20,56,60,-4
+shadeau-brain,Shadeau Brain,Brisbane,Essendon Bombers,Def,redesign-adoption-6-8,21,DNP,DNP,89,86,-3,-3.37,637,641,-4,136,137,-1
+shai-bolton,Shai Bolton,Fremantle,St Kilda Saints,Fwd,redesign-adoption-6-8,21,PLAYED,78.0,2299,2211,-88,-3.83,94,101,-7,25,26,-1
+shannon-neale,Shannon Neale,Geelong,Geelong Cats,Key Fwd,redesign-adoption-6-8,21,PLAYED,85.0,2260,2413,153,6.77,96,86,10,6,6,0
+shaun-mannagh,Shaun Mannagh,Geelong,Sydney Swans,Fwd,redesign-adoption-6-8,21,PLAYED,68.0,552,543,-9,-1.63,326,332,-6,79,81,-2
+sid-draper,Sid Draper,Adelaide,Melbourne Demons,Fwd,redesign-adoption-6-8,21,DNP,DNP,1151,1144,-7,-0.61,207,210,-3,52,53,-1
+steele-sidebottom,Steele Sidebottom,Collingwood,West Coast Eagles,Mid,redesign-adoption-6-8,21,PLAYED,28.0,96,96,0,0.0,631,631,0,133,132,1
+steely-green,Steely Green,Richmond,Sydney Swans,Fwd,redesign-adoption-6-8,21,DNP,DNP,150,150,0,0.0,560,558,2,142,142,0
+stephen-coniglio,Stephen Coniglio,GWS,Port Adelaide Power,Fwd,redesign-adoption-6-8,21,PLAYED,105.0,161,220,59,36.65,542,486,56,135,119,16
+sullivan-robey,Sullivan Robey,Essendon,Fremantle Dockers,Fwd,redesign-adoption-6-8,21,DNP,DNP,3071,3070,-1,-0.03,62,62,0,13,13,0
+tai-hayes,Tai Hayes,Brisbane,Hawthorn Hawks,Fwd,redesign-adoption-6-8,21,DNP,DNP,210,201,-9,-4.29,494,499,-5,117,123,-6
+taj-hotton,Taj Hotton,Richmond,Hawthorn Hawks,Fwd,redesign-adoption-6-8,21,PLAYED,63.0,2219,2263,44,1.98,97,99,-2,26,25,1
+talor-byrne,Talor Byrne,Carlton,Western Bulldogs,Fwd,redesign-adoption-6-8,21,PLAYED,73.0,835,923,88,10.54,255,244,11,63,57,6
+tanner-bruhn,Tanner Bruhn,Geelong,Brisbane Lions,Def,redesign-adoption-6-8,21,PLAYED,86.0,2139,2357,218,10.19,106,91,15,22,20,2
+taylor-goad,Taylor Goad,North Melbourne,Richmond Tigers,Ruck,redesign-adoption-6-8,21,DNP,DNP,1051,1044,-7,-0.67,217,217,0,16,16,0
+taylor-walker,Taylor Walker,Adelaide,Geelong Cats,Key Fwd,redesign-adoption-6-8,21,PLAYED,62.0,137,128,-9,-6.57,578,587,-9,93,96,-3
+tew-jiath,Tew Jiath,Collingwood,Hawthorn Hawks,Def,redesign-adoption-6-8,21,DNP,DNP,169,168,-1,-0.59,530,533,-3,120,119,1
+thomas-anastasopoulos,Tom Anastasopoulos,Port Adelaide,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,274,269,-5,-1.82,444,445,-1,107,107,0
+thomas-burton,Thomas Burton,Richmond,Carlton Blues,Mid,redesign-adoption-6-8,21,DNP,DNP,354,344,-10,-2.82,406,408,-2,93,96,-3
+thomas-liberatore,Thomas Liberatore,Western Bulldogs,West Coast Eagles,Mid,redesign-adoption-6-8,21,PLAYED,95.0,1403,1324,-79,-5.63,172,184,-12,45,46,-1
+thomas-matthews,Thomas Matthews,Melbourne,Melbourne Demons,Fwd,redesign-adoption-6-8,21,DNP,DNP,359,347,-12,-3.34,402,404,-2,95,95,0
+thomas-sims,Thomas Sims,Richmond,Hawthorn Hawks,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,1038,1040,2,0.19,219,219,0,30,29,1
+thomas-stewart,Thomas Stewart,Geelong,Port Adelaide Power,Def,redesign-adoption-6-8,21,PLAYED,98.0,1073,1085,12,1.12,215,215,0,54,53,1
+tim-kelly,Tim Kelly,West Coast,St Kilda Saints,Fwd,redesign-adoption-6-8,21,PLAYED,98.0,1194,1228,34,2.85,203,197,6,50,47,3
+tim-membrey,Tim Membrey,St Kilda,Port Adelaide Power,Key Fwd,redesign-adoption-6-8,21,PLAYED,28.0,129,78,-51,-39.53,585,658,-73,95,110,-15
+tim-taranto,Tim Taranto,Richmond,West Coast Eagles,Mid,redesign-adoption-6-8,21,PLAYED,159.0,2324,2596,272,11.7,93,79,14,33,29,4
+timothy-english,Timothy English,Western Bulldogs,Adelaide Crows,Ruck,redesign-adoption-6-8,21,PLAYED,131.0,3840,4220,380,9.9,42,32,10,4,4,0
+tobie-travaglia,Tobie Travaglia,St Kilda,Melbourne Demons,Def,redesign-adoption-6-8,21,PLAYED,51.0,684,736,52,7.6,285,278,7,72,67,5
+toby-bedford,Toby Bedford,GWS,Brisbane Lions,Fwd,redesign-adoption-6-8,21,PLAYED,103.0,177,276,99,55.93,525,443,82,131,106,25
+toby-conway,Toby Conway,Geelong,Essendon Bombers,Ruck,redesign-adoption-6-8,21,DNP,DNP,503,503,0,0.0,345,344,1,25,25,0
+toby-greene,Toby Greene,GWS,North Melbourne Kangaroos,Fwd,redesign-adoption-6-8,21,DNP,DNP,849,839,-10,-1.18,252,256,-4,62,62,0
+toby-mcmullin,Toby McMullin,GWS,Melbourne Demons,Mid,redesign-adoption-6-8,21,DNP,DNP,131,124,-7,-5.34,581,595,-14,124,126,-2
+toby-murray,Toby Murray,Adelaide,Adelaide Crows,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,219,219,0,0.0,487,488,-1,75,74,1
+toby-nankervis,Toby Nankervis,Richmond,West Coast Eagles,Ruck,redesign-adoption-6-8,21,PLAYED,122.0,2030,2123,93,4.58,120,110,10,10,10,0
+toby-pink,Toby Pink,North Melbourne,Free agents,Key Def,redesign-adoption-6-8,21,DNP,DNP,15,15,0,0.0,780,781,-1,80,80,0
+toby-whan,Toby Whan,Fremantle,Richmond Tigers,Mid,redesign-adoption-6-8,21,DNP,DNP,81,77,-4,-4.94,656,665,-9,137,137,0
+tobyn-murray,Tobyn Murray,Fremantle,West Coast Eagles,Fwd,redesign-adoption-6-8,21,DNP,DNP,253,242,-11,-4.35,457,466,-9,110,115,-5
+todd-marshall,Todd Marshall,Port Adelaide,Adelaide Crows,Key Fwd,redesign-adoption-6-8,21,PLAYED,37.0,67,66,-1,-1.49,681,685,-4,113,113,0
+tom-atkins,Tom Atkins,Geelong,Port Adelaide Power,Mid,redesign-adoption-6-8,21,PLAYED,88.0,296,311,15,5.07,426,419,7,100,100,0
+tom-barrass,Tom Barrass,Hawthorn,Brisbane Lions,Key Def,redesign-adoption-6-8,21,PLAYED,36.0,65,32,-33,-50.77,686,752,-66,60,74,-14
+tom-blamires,Tom Blamires,North Melbourne,Richmond Tigers,Def,redesign-adoption-6-8,21,PLAYED,41.0,113,113,0,0.0,606,607,-1,130,130,0
+tom-brown,Tom Brown,Richmond,Carlton Blues,Def,redesign-adoption-6-8,21,PLAYED,64.0,480,492,12,2.5,356,351,5,85,85,0
+tom-cochrane,Tom Cochrane,Port Adelaide,Essendon Bombers,Fwd,redesign-adoption-6-8,21,DNP,DNP,220,221,1,0.45,484,484,0,115,118,-3
+tom-cole,Tom Cole,West Coast,Port Adelaide Power,Fwd,redesign-adoption-6-8,21,PLAYED,45.0,54,48,-6,-11.11,707,725,-18,192,201,-9
+tom-de-koning,Tom De Koning,St Kilda,Essendon Bombers,Ruck,redesign-adoption-6-8,21,PLAYED,59.0,1991,2090,99,4.97,121,114,7,11,11,0
+tom-doedee,Tom Doedee,Brisbane,Free agents,Def,redesign-adoption-6-8,21,DNP,DNP,243,236,-7,-2.88,465,472,-7,110,111,-1
+tom-edwards,Tom Edwards,Essendon,Free agents,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,88,88,0,0.0,639,638,1,106,105,1
+tom-green,Tom Green,GWS,Essendon Bombers,Mid,redesign-adoption-6-8,21,DNP,DNP,4956,4883,-73,-1.47,19,21,-2,10,11,-1
+tom-gross,Tom Gross,West Coast,Melbourne Demons,Fwd,redesign-adoption-6-8,21,DNP,DNP,566,569,3,0.53,321,319,2,77,78,-1
+tom-hanily,Tom Hanily,Sydney,Richmond Tigers,Fwd,redesign-adoption-6-8,21,DNP,DNP,168,162,-6,-3.57,531,541,-10,132,135,-3
+tom-lynch-1,Tom Lynch,Richmond,Adelaide Crows,Key Fwd,redesign-adoption-6-8,21,PLAYED,87.0,50,50,0,0.0,714,713,1,114,114,0
+tom-mccarthy,Tom McCarthy,West Coast,Melbourne Demons,Def,redesign-adoption-6-8,21,PLAYED,87.0,1441,1437,-4,-0.28,168,166,2,43,41,2
+tom-mccartin,Tom McCartin,Sydney,West Coast Eagles,Key Def,redesign-adoption-6-8,21,PLAYED,82.0,1754,1771,17,0.97,136,138,-2,7,7,0
+tom-mcdonald,Tom McDonald,Melbourne,Geelong Cats,Key Def,redesign-adoption-6-8,21,PLAYED,84.0,112,124,12,10.71,610,596,14,53,53,0
+tom-papley,Tom Papley,Sydney,Geelong Cats,Fwd,redesign-adoption-6-8,21,PLAYED,51.0,385,313,-72,-18.7,391,418,-27,91,100,-9
+tom-powell,Tom Powell,North Melbourne,Carlton Blues,Fwd,redesign-adoption-6-8,21,DNP,DNP,2176,2160,-16,-0.74,102,106,-4,28,29,-1
+tom-sparrow,Tom Sparrow,Melbourne,West Coast Eagles,Fwd,redesign-adoption-6-8,21,PLAYED,107.0,1627,1652,25,1.54,149,145,4,38,38,0
+touk-miller,Touk Miller,Gold Coast,Geelong Cats,Fwd,redesign-adoption-6-8,21,PLAYED,76.0,2207,2089,-118,-5.35,98,115,-17,27,31,-4
+trent-rivers,Trent Rivers,Melbourne,Western Bulldogs,Def,redesign-adoption-6-8,21,PLAYED,115.0,1626,1841,215,13.22,150,131,19,37,32,5
+tristan-xerri,Tristan Xerri,North Melbourne,Sydney Swans,Ruck,redesign-adoption-6-8,21,PLAYED,109.0,8472,8109,-363,-4.28,6,6,0,2,2,0
+ty-gallop,Ty Gallop,Brisbane,Adelaide Crows,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,1396,1396,0,0.0,173,169,4,21,21,0
+tyan-prindable,Tyan Prindable,Collingwood,Fremantle Dockers,Mid,redesign-adoption-6-8,21,DNP,DNP,580,560,-20,-3.45,316,323,-7,73,75,-2
+tylah-williams,Tylah Williams,West Coast,Melbourne Demons,Fwd,redesign-adoption-6-8,21,DNP,DNP,269,258,-11,-4.09,448,453,-5,109,111,-2
+tylar-young,Tylar Young,West Coast,Richmond Tigers,Key Def,redesign-adoption-6-8,21,PLAYED,25.0,243,221,-22,-9.05,466,485,-19,36,36,0
+tyler-brockman,Tyler Brockman,West Coast,Free Agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,55,52,-3,-5.45,703,706,-3,190,192,-2
+tyler-sonsie,Tyler Sonsie,Richmond,Essendon Bombers,Fwd,redesign-adoption-6-8,21,PLAYED,100.0,1085,1262,177,16.31,214,193,21,54,46,8
+tyler-welsh,Tyler Welsh,Adelaide,Melbourne Demons,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,86,83,-3,-3.49,645,648,-3,107,107,0
+tyrell-dewar,Tyrell Dewar,West Coast,Melbourne Demons,Def,redesign-adoption-6-8,21,DNP,DNP,124,113,-11,-8.87,597,608,-11,127,131,-4
+tyson-stengle,Tyson Stengle,Richmond,St Kilda Saints,Fwd,redesign-adoption-6-8,21,DNP,DNP,164,158,-6,-3.66,538,547,-9,134,138,-4
+vigo-visentini,Vigo Visentini,Essendon,Carlton Blues,Ruck,redesign-adoption-6-8,21,DNP,DNP,167,167,0,0.0,532,534,-2,41,41,0
+wade-derksen,Wade Derksen,Carlton,Port Adelaide Power,Key Def,redesign-adoption-6-8,21,PLAYED,84.0,60,84,24,40.0,696,647,49,62,57,5
+wayne-milera,Wayne Milera,Adelaide,Sydney Swans,Def,redesign-adoption-6-8,21,DNP,DNP,1829,1825,-4,-0.22,131,132,-1,32,33,-1
+wil-dawson,Wil Dawson,North Melbourne,Collingwood Magpies,Key Def,redesign-adoption-6-8,21,PLAYED,37.0,579,559,-20,-3.45,317,324,-7,24,26,-2
+wil-parker,Wil Parker,Collingwood,Western Bulldogs,Def,redesign-adoption-6-8,21,DNP,DNP,29,29,0,0.0,757,756,1,164,163,1
+wil-powell,Wil Powell,Gold Coast,Adelaide Crows,Def,redesign-adoption-6-8,21,PLAYED,68.0,775,694,-81,-10.45,265,287,-22,63,71,-8
+will-ashcroft,Will Ashcroft,Brisbane,Carlton Blues,Mid,redesign-adoption-6-8,21,PLAYED,121.0,7150,7310,160,2.24,8,7,1,4,3,1
+will-brodie,Will Brodie,Port Adelaide,Brisbane Lions,Mid,redesign-adoption-6-8,21,DNP,DNP,840,836,-4,-0.48,254,257,-3,60,61,-1
+will-darcy,Will Darcy,Western Bulldogs,Fremantle Dockers,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,200,193,-7,-3.5,499,504,-5,79,80,-1
+will-day,Will Day,Hawthorn,Richmond Tigers,Mid,redesign-adoption-6-8,21,PLAYED,87.0,2949,2777,-172,-5.83,65,70,-5,27,27,0
+will-edwards,Will Edwards,Sydney,Essendon Bombers,Key Def,redesign-adoption-6-8,21,PLAYED,33.0,196,208,12,6.12,501,495,6,38,38,0
+will-graham,Will Graham,Gold Coast,Hawthorn Hawks,Fwd,redesign-adoption-6-8,21,DNP,DNP,1694,1694,0,0.0,146,142,4,36,35,1
+will-green,Will Green,Sydney,Essendon Bombers,Ruck,redesign-adoption-6-8,21,DNP,DNP,587,587,0,0.0,313,315,-2,22,22,0
+will-hayes-b,Will Hayes,Collingwood,West Coast Eagles,Fwd,redesign-adoption-6-8,21,DNP,DNP,429,432,3,0.7,372,370,2,89,90,-1
+will-hayward,Will Hayward,Carlton,Adelaide Crows,Fwd,redesign-adoption-6-8,21,PLAYED,116.0,139,206,67,48.2,576,497,79,146,122,24
+will-lewis,Will Lewis,Western Bulldogs,Sydney Swans,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,113,113,0,0.0,607,609,-2,100,101,-1
+will-lorenz,Will Lorenz,Port Adelaide,Richmond Tigers,Mid,redesign-adoption-6-8,21,PLAYED,83.0,380,438,58,15.26,395,369,26,89,82,7
+will-mclachlan,Will McLachlan,Brisbane,Free agents,Fwd,redesign-adoption-6-8,21,DNP,DNP,131,125,-6,-4.58,582,592,-10,148,151,-3
+will-setterfield,Will Setterfield,Essendon,Brisbane Lions,Mid,redesign-adoption-6-8,21,PLAYED,77.0,641,633,-8,-1.25,297,305,-8,69,70,-1
+willem-drew,Willem Drew,Port Adelaide,Adelaide Crows,Mid,redesign-adoption-6-8,21,PLAYED,95.0,575,620,45,7.83,318,311,7,74,72,2
+willem-duursma,Willem Duursma,West Coast,Fremantle Dockers,Mid,redesign-adoption-6-8,21,PLAYED,35.0,4774,4338,-436,-9.13,21,29,-8,11,12,-1
+william-mccabe,William McCabe,Hawthorn,Hawthorn Hawks,Key Def,redesign-adoption-6-8,21,DNP,DNP,678,647,-31,-4.57,287,295,-8,22,22,0
+xavier-bamert,Xavier Bamert,Port Adelaide,Richmond Tigers,Mid,redesign-adoption-6-8,21,PLAYED,55.0,352,375,23,6.53,408,396,12,94,92,2
+xavier-duursma,Xavier Duursma,Essendon,North Melbourne Kangaroos,Mid,redesign-adoption-6-8,21,DNP,DNP,145,145,0,0.0,569,569,0,122,121,1
+xavier-lindsay,Xavier Lindsay,Melbourne,Western Bulldogs,Def,redesign-adoption-6-8,21,DNP,DNP,2064,2059,-5,-0.24,113,119,-6,26,26,0
+xavier-o-halloran,Xavier O'Halloran,GWS,Sydney Swans,Fwd,redesign-adoption-6-8,21,PLAYED,72.0,39,39,0,0.0,741,742,-1,205,205,0
+xavier-taylor,Xavier Taylor,Melbourne,Richmond Tigers,Def,redesign-adoption-6-8,21,DNP,DNP,965,950,-15,-1.55,231,236,-5,57,58,-1
+xavier-walsh,Xavier Walsh,Port Adelaide,Free agents,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,109,108,-1,-0.92,613,613,0,101,102,-1
+zac-bailey,Zac Bailey,Brisbane,North Melbourne Kangaroos,Fwd,redesign-adoption-6-8,21,PLAYED,62.0,3157,2930,-227,-7.19,59,64,-5,12,14,-2
+zac-banch,Zac Banch,North Melbourne,Free agents,Fwd,redesign-adoption-6-8,21,PLAYED,45.0,128,128,0,0.0,592,588,4,152,150,2
+zac-fisher,Zac Fisher,North Melbourne,Port Adelaide Power,Fwd,redesign-adoption-6-8,21,DNP,DNP,111,107,-4,-3.6,611,616,-5,157,160,-3
+zac-mccarthy,Zac McCarthy,Collingwood,West Coast Eagles,Key Fwd,redesign-adoption-6-8,21,DNP,DNP,157,152,-5,-3.18,552,556,-4,85,88,-3
+zac-taylor,Zac Taylor,Adelaide,Western Bulldogs,Fwd,redesign-adoption-6-8,21,PLAYED,69.0,200,254,54,27.0,500,458,42,120,114,6
+zac-walker,Zac Walker,Western Bulldogs,Free agents,Key Def,redesign-adoption-6-8,21,DNP,DNP,128,128,0,0.0,593,589,4,52,52,0
+zach-guthrie,Zach Guthrie,Geelong,Geelong Cats,Def,redesign-adoption-6-8,21,PLAYED,60.0,220,239,19,8.64,485,469,16,114,109,5
+zach-reid,Zach Reid,Essendon,Hawthorn Hawks,Key Def,redesign-adoption-6-8,21,PLAYED,63.0,1234,1212,-22,-1.78,195,202,-7,12,12,0
+zachary-merrett,Zachary Merrett,Essendon,West Coast Eagles,Mid,redesign-adoption-6-8,21,PLAYED,109.0,2710,2713,3,0.11,72,73,-1,29,28,1
+zachary-williams,Zachary Williams,Carlton,St Kilda Saints,Fwd,redesign-adoption-6-8,21,DNP,DNP,380,374,-6,-1.58,396,397,-1,94,94,0
+zak-butters,Zak Butters,Port Adelaide,Geelong Cats,Mid,redesign-adoption-6-8,21,DNP,DNP,7175,7185,10,0.14,7,8,-1,3,4,-1
+zak-evans,Zak Evans,Gold Coast,Free agents,Mid,redesign-adoption-6-8,21,DNP,DNP,44,43,-1,-2.27,730,730,0,143,144,-1
+zak-johnson,Zak Johnson,Essendon,Richmond Tigers,Def,redesign-adoption-6-8,21,PLAYED,52.0,550,556,6,1.09,329,325,4,80,81,-1
+zane-duursma,Zane Duursma,North Melbourne,Richmond Tigers,Fwd,redesign-adoption-6-8,21,DNP,DNP,765,765,0,0.0,269,269,0,65,65,0
+zane-peucker,Zane Peucker,Richmond,Carlton Blues,Fwd,redesign-adoption-6-8,21,DNP,DNP,499,493,-6,-1.2,349,349,0,84,85,-1
+zane-zakostelsky,Zane Zakostelsky,Brisbane,Fremantle Dockers,Key Def,redesign-adoption-6-8,21,DNP,DNP,398,391,-7,-1.76,388,391,-3,30,30,0
+zeke-uwland,Zeke Uwland,Gold Coast,Fremantle Dockers,Def,redesign-adoption-6-8,21,DNP,DNP,2704,2687,-17,-0.63,73,74,-1,15,14,1

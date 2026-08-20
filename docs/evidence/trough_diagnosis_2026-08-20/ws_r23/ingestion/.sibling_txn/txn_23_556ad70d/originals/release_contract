@@ -1,0 +1,93 @@
+{
+  "_doc": "AUTHORITATIVE RELEASE-STATE CONTRACT (final integration 2026-07-21, integration/v2.11-final-rc). Binds the config identity together with the release identities, the owner-approved switch posture, the PVC provenance and the must-be-unset override hooks. Loaded + fail-closed in a canonical build (release_contract.verify). PROVISIONAL final-RC; no tag/deploy/canonical-score authorised.",
+  "_held_candidates_doc": "#251 part A, owner ruling 2026-07-29. A DECLARED held candidate is a field where the TREE deliberately runs ahead of what is RELEASED. Each entry pins BOTH sides, so only that exact pair is excused; move either side and the gate HALTs again. An UNDECLARED mismatch HALTs exactly as before. These declarations live inside the contract, so contract_sha256 covers them - one cannot be added without re-stamping. AT ADOPTION: re-stamp identities.<field> to the candidate value and DELETE that entry in the same commit. Removal is self-enforcing, not a convention: once the two sides agree, a surviving declaration excuses nothing and is itself a rejection naming the field.",
+  "_retired_checks": [
+    {
+      "check_family": "G-Y0",
+      "measured_at_retirement": {
+        "gy0_pct": 0.033,
+        "hard_bar_pct": 2.0,
+        "n_guard": 1326
+      },
+      "reason": "The year-zero redesign converged; the national-curve G-Y0 measures 0.033% <= the 2.000% HARD bar on the adopted curve 01f27f02 / surface ebc3d330. The dated exception (ceiling 3.5%, #271 Addendum 12) is no longer load-bearing: the gate passes on its own hard assertion. Retired, not waived.",
+      "retired_at": "#306 L7, 2026-08-05"
+    }
+  ],
+  "adopted": {
+    "baseline_column": "30/7 rederivation",
+    "column_id": "rederivation-30-7",
+    "issue": "#271",
+    "owner_word": "2026-07-30 \u2014 \"30/7 rederivation for the label. Adopt.\""
+  },
+  "as_of_round": 23,
+  "config_sha256": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+  "f5_entrant_reconciliation": {
+    "canonical_build": "rl_export.py RL_LEGF=1 (Option A: engine emits the ladder)",
+    "entrant_layer_pvc": 77611,
+    "reconciled": true,
+    "residual_mech": 9055,
+    "residual_nd_tail": 2631,
+    "seal": "a17aafed",
+    "visible_1_64": 65925
+  },
+  "held_checks": [],
+  "identities": {
+    "balanced_board_md5": "3970156c8658fc9ecea8089e8b3ecdf1",
+    "band": "34faa8659cc8f19794f5cb9584fa19b2",
+    "board": "68be10c79d0ee096455754e084bcf757",
+    "engine_head": "1867e953cf844d089ab1da68379b1742",
+    "fv": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+    "store": "b745002eb0a0fbb1c34fa44f1ef708d6"
+  },
+  "must_be_unset": [
+    "RL_UNCOMP_S",
+    "RL_LSYM_TAB",
+    "RL_V0SURF_REFIT"
+  ],
+  "present_lens_baseline": {
+    "active": 804,
+    "balanced_board_md5": "3970156c8658fc9ecea8089e8b3ecdf1",
+    "note": "ITEM 411 D1 (LANDED 2026-07-27 on the owner landing word \u2014 the second word): balanced/strict reference 3970156c; present_value_total 764021 is the LANDED present-v sum (build-and-compare = data/rl_build/rl_app_data.json md5 fa172ac1, 804 active). D1 applied the owner's ITEM 411 change manifest to the store (f37d9716 -> c120cfd5) and deterministically regenerated the board, so board of record 6f07f7cb is REPLACED by fa172ac1 \u2014 it is no longer frozen. Forward-lens repair remains deferred. SUPERSEDES, truth preserved as history: the ITEM 408 STOP-1 statement of this baseline (owner-approved 2026-07-22) recorded balanced/strict advanced 06d8af60->1373e824, present_value_total 760253 as the R19 candidate present-v sum (build-and-compare = board of record 6f07f7cb, 0 movers) and board of record 6f07f7cb NOT replaced; it also corrected a prior 757608 (that value added the +5181 D8 present-board delta to the FV present-lens baseline 752427 instead of the correction's present baseline 755072; the present_board_correction/summary.json present_total_after is 760253).",
+    "present_value_total": 692296
+  },
+  "pvc_provenance": {
+    "_note": "#328 re-closure (owner word 2026-08-05, OPTION A): the corrected-store derived ladder installed as the adopted ruled curve from surface e4215093 on store f1e8c9fe. Adoption remains the owner's separate click.",
+    "adopted_pathway": "RL_PVC2",
+    "curve_file": "pvc_curve_v2.json",
+    "curve_payload_md5": "df766dff",
+    "numeraire_pin1": 3000
+  },
+  "release_version": "v2.11-final-rc1-PROVISIONAL",
+  "season_metadata": {
+    "as_of_round": 23,
+    "as_of_round_source": "DYNAMIC weekly stamp (expected_boot + this contract + board-view stamp); advanced by the Track B updater; feeds NO valuation math",
+    "calendar_progress": 0.96,
+    "calendar_progress_derivation": "round_half_up(100*as_of_round/season_total_rounds)/100 in season_state.py (policy immutable, hashed by derivation_policy_id). Consumed everywhere the engine formerly read the frozen SEASON_PROG literal + RL_M3_FE (both removed). DERIVED + advances weekly; FEEDS the valuation.",
+    "class": "A (live valuation semantics): calendar_progress + exposure_pace are DERIVED dynamic release state that FEED the valuation, stamped via rl_model+board md5 + the season_state derivation; as_of_round is the dynamic round stamp; RL_SEASON_ROUNDS is class-B ingestion infra (never a valuation input).",
+    "coherence": "season_prog 0.58 agrees with as_of_round/season_total = 14/24 = 0.583 by convention at the release",
+    "coupling_finding": "as_of_round (dynamic weekly) and the valuation season fraction are now COUPLED: the weekly updater DERIVES + ADVANCES calendar_progress and exposure_pace from the staged store each accepted round and commits them atomically with the store/board/expected_boot/contract. Round progression drives valuation progression; there is no frozen SEASON_PROG and nothing is deferred.",
+    "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
+    "exposure_pace": 0.864,
+    "exposure_pace_derivation": "round(median(current games of the durable population, prior>=18)/22, 3), cap 1.0; per-player scope s=clip(1-g/11,0,1). Freshly DERIVED from the staged store each round; replaces RL_EXPO_F.",
+    "note": "calendar_progress + exposure_pace are DERIVED (season_state.json); RL_M3_FE/RL_EXPO_F removed from config; derivation policy immutable (derivation_policy_id).",
+    "rl_season_rounds_role": "RL_SEASON_ROUNDS / DEFAULT_SEASON_ROUNDS=24 = ingestion round-bound SANITY guard ONLY (round_apply.py:52,290-295); NOT a valuation input; class B (infra); lives in the gated-OFF store-write path",
+    "season_prog": 0.96,
+    "season_prog_config_twins": {
+      "RL_EXPO_F": "0.545",
+      "RL_EXPO_INPROG_Y": "2026",
+      "RL_M3_FE": "0.58",
+      "RL_M3_INPROG_Y": "2026"
+    },
+    "season_total_rounds": 24,
+    "season_year": 2026
+  },
+  "season_state_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
+  "switch_posture": {
+    "RL_LEGE": "1",
+    "RL_LEGF": "1",
+    "RL_PVC2": "1"
+  },
+  "contract_sha256": "7d51c3efa9bea102f194f219406652ebe926475fbcc7c2b2776b7378a8830792"
+}
