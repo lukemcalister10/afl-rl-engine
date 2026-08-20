@@ -1,0 +1,497 @@
+{
+ "fE": 0.96,
+ "FADE30B_D": {
+  "1": 1.0,
+  "2": 0.5501935857356868,
+  "3": 0.26278629823610156,
+  "4": 0.3460004697526451
+ },
+ "numeraire": null,
+ "Nicholas Martin": {
+  "fade30b_clock": 6.0,
+  "o31_played_units": 4.0,
+  "o31_cu": 0.4040707016121773,
+  "o31_D": 1.0,
+  "o41_injured": "ERR:o41_injured() takes 1 positional argument but 2 were given",
+  "_o41_fe": 1.0,
+  "o32_delivered": "ERR:o32_delivered() missing 1 required positional argument: 'x'",
+  "o35_kappa": 1.153311931087099,
+  "o36_kappa": 1.4469025419362704,
+  "HEALTHY_o31_cu": 1.3446747628409175,
+  "HEALTHY_o31_D": 1.0,
+  "HEALTHY_ev": 4273.591960384747,
+  "HEALTHY_o41_injured": false,
+  "D7_floor": 4273.591960384747,
+  "D7_row": {
+   "key": "nicholas-martin",
+   "player": "Nicholas Martin",
+   "g2026": 0,
+   "v_injury": 3268.2426183874363,
+   "v_healthy": 4273.591960384747,
+   "won": "healthy",
+   "delta": 1005.3493419973106,
+   "treated_avail": true,
+   "treated_inj": true
+  },
+  "ev": 4273.591960384747,
+  "ev_pre43": 3268.2426183874363,
+  "floor_binds": true,
+  "fade_at_cu": 0.813883510087804,
+  "last_delivered_year": 2025,
+  "delivered_games": 16,
+  "o41_reversal(r)": 0.5959292983878227,
+  "c_pre": 1.0
+ },
+ "Tom Green": {
+  "fade30b_clock": 8.0,
+  "o31_played_units": 5.38568558243891,
+  "o31_cu": 0.652297159326563,
+  "o31_D": 1.0,
+  "o41_injured": "ERR:o41_injured() takes 1 positional argument but 2 were given",
+  "_o41_fe": 1.0,
+  "o32_delivered": "ERR:o32_delivered() missing 1 required positional argument: 'x'",
+  "o35_kappa": 0.6713946459058848,
+  "o36_kappa": 0.6713946459058848,
+  "HEALTHY_o31_cu": 1.5929012205553033,
+  "HEALTHY_o31_D": 1.0,
+  "HEALTHY_ev": 5866.730971113317,
+  "HEALTHY_o41_injured": false,
+  "D7_floor": 5866.730971113317,
+  "D7_row": {
+   "key": "tom-green",
+   "player": "Tom Green",
+   "g2026": 0,
+   "v_injury": 4576.362777178269,
+   "v_healthy": 5866.730971113317,
+   "won": "healthy",
+   "delta": 1290.3681939350472,
+   "treated_avail": true,
+   "treated_inj": true
+  },
+  "ev": 5866.730971113317,
+  "ev_pre43": 4576.362777178269,
+  "floor_binds": true,
+  "fade_at_cu": 0.7016997743459824,
+  "last_delivered_year": 2025,
+  "delivered_games": 23,
+  "o41_reversal(r)": 0.5959292983878227,
+  "c_pre": 1.61431441756109
+ },
+ "Darcy Jones": {
+  "fade30b_clock": 5.0,
+  "o31_played_units": 2.0,
+  "o31_cu": 0.8081414032243546,
+  "o31_D": 1.0,
+  "o41_injured": "ERR:o41_injured() takes 1 positional argument but 2 were given",
+  "_o41_fe": 1.0,
+  "o32_delivered": "ERR:o32_delivered() missing 1 required positional argument: 'x'",
+  "o35_kappa": 0.8640105043522515,
+  "o36_kappa": 0.8951985084419279,
+  "HEALTHY_o31_cu": 1.7487454644530949,
+  "HEALTHY_o31_D": 1.0,
+  "HEALTHY_ev": 1347.2380364087621,
+  "HEALTHY_o41_injured": false,
+  "D7_floor": 1347.2380364087621,
+  "D7_row": {
+   "key": "darcy-jones",
+   "player": "Darcy Jones",
+   "g2026": 0,
+   "v_injury": 1182.8738350702686,
+   "v_healthy": 1347.2380364087621,
+   "won": "healthy",
+   "delta": 164.36420133849356,
+   "treated_avail": true,
+   "treated_inj": true
+  },
+  "ev": 1347.2380364087621,
+  "ev_pre43": 1182.8738350702686,
+  "floor_binds": true,
+  "fade_at_cu": 0.639310996711501,
+  "last_delivered_year": 2025,
+  "delivered_games": 23,
+  "o41_reversal(r)": 0.5959292983878227,
+  "c_pre": 2.0
+ },
+ "Joshua Kelly": {
+  "fade30b_clock": 14.0,
+  "o31_played_units": 12.0,
+  "o31_cu": 0.4040707016121773,
+  "o31_D": 1.0,
+  "o41_injured": "ERR:o41_injured() takes 1 positional argument but 2 were given",
+  "_o41_fe": 1.0,
+  "o32_delivered": "ERR:o32_delivered() missing 1 required positional argument: 'x'",
+  "o35_kappa": 0.5,
+  "o36_kappa": 0.5,
+  "HEALTHY_o31_cu": 1.3446747628409175,
+  "HEALTHY_o31_D": 1.0,
+  "HEALTHY_ev": 799.076232909955,
+  "HEALTHY_o41_injured": false,
+  "D7_floor": 799.076232909955,
+  "D7_row": {
+   "key": "joshua-kelly",
+   "player": "Joshua Kelly",
+   "g2026": 0,
+   "v_injury": 442.7660401415342,
+   "v_healthy": 799.076232909955,
+   "won": "healthy",
+   "delta": 356.31019276842085,
+   "treated_avail": true,
+   "treated_inj": true
+  },
+  "ev": 799.076232909955,
+  "ev_pre43": 442.7660401415342,
+  "floor_binds": true,
+  "fade_at_cu": 0.813883510087804,
+  "last_delivered_year": 2025,
+  "delivered_games": 15,
+  "o41_reversal(r)": 0.5959292983878227,
+  "c_pre": 1.0
+ },
+ "Jack Viney": {
+  "fade30b_clock": 15.0,
+  "o31_played_units": 12.887851476596424,
+  "o31_cu": 0.4493866341486299,
+  "o31_D": 1.0,
+  "o41_injured": "ERR:o41_injured() takes 1 positional argument but 2 were given",
+  "_o41_fe": 1.0,
+  "o32_delivered": "ERR:o32_delivered() missing 1 required positional argument: 'x'",
+  "o35_kappa": 0.7395075645843324,
+  "o36_kappa": 0.7395075645843324,
+  "HEALTHY_o31_cu": 1.3899906953773702,
+  "HEALTHY_o31_D": 1.0,
+  "HEALTHY_ev": 574.2990748447655,
+  "HEALTHY_o41_injured": false,
+  "D7_floor": 574.2990748447655,
+  "D7_row": {
+   "key": "jack-viney",
+   "player": "Jack Viney",
+   "g2026": 0,
+   "v_injury": 256.8782493811049,
+   "v_healthy": 574.2990748447655,
+   "won": "healthy",
+   "delta": 317.4208254636606,
+   "treated_avail": true,
+   "treated_inj": true
+  },
+  "ev": 574.2990748447655,
+  "ev_pre43": 256.8782493811049,
+  "floor_binds": true,
+  "fade_at_cu": 0.7921427803563504,
+  "last_delivered_year": 2025,
+  "delivered_games": 18,
+  "o41_reversal(r)": 0.5959292983878227,
+  "c_pre": 1.112148523403576
+ },
+ "Max Kondogiannis": {
+  "fade30b_clock": 1.96,
+  "o31_played_units": 0.8523374175325682,
+  "o31_cu": 1.1076625824674318,
+  "o31_D": 1.0,
+  "o41_injured": "ERR:o41_injured() takes 1 positional argument but 2 were given",
+  "_o41_fe": 1.0,
+  "o32_delivered": "ERR:o32_delivered() missing 1 required positional argument: 'x'",
+  "o35_kappa": 1.003940478797846,
+  "o36_kappa": 1.1620479746879087,
+  "HEALTHY_o31_cu": 1.1076625824674318,
+  "HEALTHY_o31_D": 1.0,
+  "HEALTHY_ev": 377.6464346747294,
+  "HEALTHY_o41_injured": false,
+  "D7_floor": null,
+  "D7_row": null,
+  "ev": 377.6464346747294,
+  "ev_pre43": 377.6464346747294,
+  "floor_binds": false,
+  "fade_at_cu": 0.9376985211826698,
+  "last_delivered_year": null
+ },
+ "Josh Dolan": {
+  "fade30b_clock": 2.96,
+  "o31_played_units": 1.8523374175325682,
+  "o31_cu": 1.1076625824674318,
+  "o31_D": 1.0,
+  "o41_injured": "ERR:o41_injured() takes 1 positional argument but 2 were given",
+  "_o41_fe": 1.0,
+  "o32_delivered": "ERR:o32_delivered() missing 1 required positional argument: 'x'",
+  "o35_kappa": 0.9651202421452533,
+  "o36_kappa": 1.088016949731817,
+  "HEALTHY_o31_cu": 1.1076625824674318,
+  "HEALTHY_o31_D": 1.0,
+  "HEALTHY_ev": 260.1198853648289,
+  "HEALTHY_o41_injured": false,
+  "D7_floor": null,
+  "D7_row": null,
+  "ev": 260.1198853648289,
+  "ev_pre43": 260.1198853648289,
+  "floor_binds": false,
+  "fade_at_cu": 0.9376985211826698,
+  "last_delivered_year": null
+ },
+ "William McCabe": {
+  "fade30b_clock": 3.96,
+  "o31_played_units": 0.22881109628843407,
+  "o31_cu": 3.731188903711566,
+  "o31_D": 0.599827040937705,
+  "o41_injured": "ERR:o41_injured() takes 1 positional argument but 2 were given",
+  "_o41_fe": 1.0,
+  "o32_delivered": "ERR:o32_delivered() missing 1 required positional argument: 'x'",
+  "o35_kappa": 0.838027634743139,
+  "o36_kappa": 0.5,
+  "HEALTHY_o31_cu": 3.731188903711566,
+  "HEALTHY_o31_D": 0.599827040937705,
+  "HEALTHY_ev": 241.78997962157342,
+  "HEALTHY_o41_injured": false,
+  "D7_floor": null,
+  "D7_row": null,
+  "ev": 241.78997962157342,
+  "ev_pre43": 241.78997962157342,
+  "floor_binds": false,
+  "fade_at_cu": 0.32133701808803755,
+  "last_delivered_year": null
+ },
+ "Lachie Jaques": {
+  "fade30b_clock": 2.96,
+  "o31_played_units": 0.8523374175325682,
+  "o31_cu": 2.107662582467432,
+  "o31_D": 1.0,
+  "o41_injured": "ERR:o41_injured() takes 1 positional argument but 2 were given",
+  "_o41_fe": 1.0,
+  "o32_delivered": "ERR:o32_delivered() missing 1 required positional argument: 'x'",
+  "o35_kappa": 0.9478063591856141,
+  "o36_kappa": 1.054999003114372,
+  "HEALTHY_o31_cu": 2.107662582467432,
+  "HEALTHY_o31_D": 1.0,
+  "HEALTHY_ev": 599.1702396380723,
+  "HEALTHY_o41_injured": false,
+  "D7_floor": null,
+  "D7_row": null,
+  "ev": 599.1702396380723,
+  "ev_pre43": 599.1702396380723,
+  "floor_binds": false,
+  "fade_at_cu": 0.50811875064024,
+  "last_delivered_year": null
+ },
+ "Lachlan Gulbin": {
+  "fade30b_clock": 2.96,
+  "o31_played_units": 0.9810249383679147,
+  "o31_cu": 1.9789750616320854,
+  "o31_D": 0.9023551680445263,
+  "o41_injured": "ERR:o41_injured() takes 1 positional argument but 2 were given",
+  "_o41_fe": 1.0,
+  "o32_delivered": "ERR:o32_delivered() missing 1 required positional argument: 'x'",
+  "o35_kappa": 1.153311931087099,
+  "o36_kappa": 1.4469025419362704,
+  "HEALTHY_o31_cu": 1.9789750616320854,
+  "HEALTHY_o31_D": 0.9023551680445263,
+  "HEALTHY_ev": 246.52821989399644,
+  "HEALTHY_o41_injured": false,
+  "D7_floor": null,
+  "D7_row": null,
+  "ev": 246.52821989399644,
+  "ev_pre43": 246.52821989399644,
+  "floor_binds": false,
+  "fade_at_cu": 0.5571487598044026,
+  "last_delivered_year": null
+ },
+ "Luke Trainor": {
+  "fade30b_clock": 2.96,
+  "o31_played_units": 1.8523374175325682,
+  "o31_cu": 0.8722703922482702,
+  "o31_D": 1.0,
+  "o41_injured": "ERR:o41_injured() takes 1 positional argument but 2 were given",
+  "_o41_fe": 1.0,
+  "o32_delivered": "ERR:o32_delivered() missing 1 required positional argument: 'x'",
+  "o35_kappa": 0.8640105043522515,
+  "o36_kappa": 0.5,
+  "HEALTHY_o31_cu": 0.8722703922482702,
+  "HEALTHY_o31_D": 1.0,
+  "HEALTHY_ev": 981.3059986599283,
+  "HEALTHY_o41_injured": false,
+  "D7_floor": null,
+  "D7_row": null,
+  "ev": 981.3059986599283,
+  "ev_pre43": 981.3059986599283,
+  "floor_binds": false,
+  "fade_at_cu": 1.0,
+  "last_delivered_year": 2026,
+  "delivered_games": 10,
+  "o41_reversal(r)": 0.21251254122424307,
+  "c_pre": 1.1076625824674318
+ },
+ "Clay Hall": {
+  "fade30b_clock": 3.96,
+  "o31_played_units": 1.238344891967119,
+  "o31_cu": 2.3278853654928855,
+  "o31_D": 0.7890671901357904,
+  "o41_injured": "ERR:o41_injured() takes 1 positional argument but 2 were given",
+  "_o41_fe": 1.0,
+  "o32_delivered": "ERR:o32_delivered() missing 1 required positional argument: 'x'",
+  "o35_kappa": 1.0179769797406346,
+  "o36_kappa": 1.1888158834178615,
+  "HEALTHY_o31_cu": 2.3278853654928855,
+  "HEALTHY_o31_D": 0.7890671901357904,
+  "HEALTHY_ev": 404.28621274872705,
+  "HEALTHY_o41_injured": false,
+  "D7_floor": null,
+  "D7_row": null,
+  "ev": 404.28621274872705,
+  "ev_pre43": 404.28621274872705,
+  "floor_binds": false,
+  "fade_at_cu": 0.4318102135018273,
+  "last_delivered_year": 2025,
+  "delivered_games": 13,
+  "o41_reversal(r)": 0.21251254122424307,
+  "c_pre": 1.761655108032881
+ },
+ "Sid Draper": {
+  "fade30b_clock": 2.96,
+  "o31_played_units": 0.8878514765964253,
+  "o31_cu": 2.0721485234035746,
+  "o31_D": 1.0,
+  "o41_injured": "ERR:o41_injured() takes 1 positional argument but 2 were given",
+  "_o41_fe": 1.0,
+  "o32_delivered": "ERR:o32_delivered() missing 1 required positional argument: 'x'",
+  "o35_kappa": 0.5,
+  "o36_kappa": 0.5,
+  "HEALTHY_o31_cu": 2.0721485234035746,
+  "HEALTHY_o31_D": 1.0,
+  "HEALTHY_ev": 953.1446601971193,
+  "HEALTHY_o41_injured": false,
+  "D7_floor": null,
+  "D7_row": null,
+  "ev": 953.1446601971193,
+  "ev_pre43": 953.1446601971193,
+  "floor_binds": false,
+  "fade_at_cu": 0.5216294923158922,
+  "last_delivered_year": null
+ },
+ "SWEEP": {
+  "Max Kondogiannis": {
+   "no_r23_game": {
+    "games": 9,
+    "avg": 36.6,
+    "ev": 390.9448583218744
+   },
+   "score_0": {
+    "avg": 32.94,
+    "ev": 404.89700986391165
+   },
+   "score_20": {
+    "avg": 34.94,
+    "ev": 409.4933027282526
+   },
+   "score_30": {
+    "avg": 35.94,
+    "ev": 416.879572347235
+   },
+   "score_40": {
+    "avg": 36.94,
+    "ev": 419.84483458133644
+   },
+   "score_48": {
+    "avg": 37.74,
+    "ev": 407.04672971755787
+   },
+   "score_55": {
+    "avg": 38.44,
+    "ev": 380.89660215463476
+   },
+   "score_60": {
+    "avg": 38.94,
+    "ev": 384.8854966499523
+   },
+   "score_71": {
+    "avg": 40.04,
+    "ev": 377.6464346747294
+   },
+   "score_80": {
+    "avg": 40.94,
+    "ev": 353.50558691130107
+   },
+   "score_90": {
+    "avg": 41.94,
+    "ev": 341.2921573246927
+   },
+   "score_100": {
+    "avg": 42.94,
+    "ev": 348.1177757418057
+   },
+   "score_110": {
+    "avg": 43.94,
+    "ev": 377.36159391826374
+   },
+   "score_120": {
+    "avg": 44.94,
+    "ev": 400.32102567475636
+   },
+   "score_140": {
+    "avg": 46.94,
+    "ev": 451.1063066134882
+   },
+   "restored_ok": true
+  },
+  "Josh Dolan": {
+   "no_r23_game": {
+    "games": 9,
+    "avg": 50.09,
+    "ev": 295.36251660242084
+   },
+   "score_0": {
+    "avg": 45.08,
+    "ev": 312.5012616189811
+   },
+   "score_20": {
+    "avg": 47.08,
+    "ev": 310.22990612048375
+   },
+   "score_30": {
+    "avg": 48.08,
+    "ev": 313.14989269235673
+   },
+   "score_40": {
+    "avg": 49.08,
+    "ev": 274.8594658780216
+   },
+   "score_48": {
+    "avg": 49.88,
+    "ev": 260.1198853648289
+   },
+   "score_55": {
+    "avg": 50.58,
+    "ev": 260.30327909026346
+   },
+   "score_60": {
+    "avg": 51.08,
+    "ev": 263.9610028114641
+   },
+   "score_71": {
+    "avg": 52.18,
+    "ev": 268.2275189505384
+   },
+   "score_80": {
+    "avg": 53.08,
+    "ev": 301.2371153713234
+   },
+   "score_90": {
+    "avg": 54.08,
+    "ev": 345.65430837302927
+   },
+   "score_100": {
+    "avg": 55.08,
+    "ev": 393.53633745456574
+   },
+   "score_110": {
+    "avg": 56.08,
+    "ev": 425.55362007242076
+   },
+   "score_120": {
+    "avg": 57.08,
+    "ev": 427.3035903524295
+   },
+   "score_140": {
+    "avg": 59.08,
+    "ev": 412.4308179163645
+   },
+   "restored_ok": true
+  }
+ }
+}

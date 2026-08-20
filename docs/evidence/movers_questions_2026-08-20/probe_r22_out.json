@@ -1,0 +1,1091 @@
+{
+ "Nicholas Martin": {
+  "key": "nicholas-martin",
+  "pick": null,
+  "draft_year": 2021,
+  "type": "SSP",
+  "pos_drafted": "MID",
+  "pos_now": "MID",
+  "pos_fut": "MID",
+  "career_games": 83,
+  "scoring_r23": [
+   {
+    "year": 2022,
+    "avg": 79.2,
+    "games": 21,
+    "pos": "SF/MID"
+   },
+   {
+    "year": 2023,
+    "avg": 88.2,
+    "games": 23,
+    "pos": "SF/MID"
+   },
+   {
+    "year": 2024,
+    "avg": 105.0,
+    "games": 23,
+    "pos": "SD/MID"
+   },
+   {
+    "year": 2025,
+    "avg": 97.8,
+    "games": 16,
+    "pos": "SF/SD"
+   },
+   {
+    "year": 2026,
+    "avg": 0.0,
+    "games": 0,
+    "pos": "MID"
+   }
+  ],
+  "R23_row": {
+   "ev": 4512.235925133945,
+   "ev_fE_0.92": 4512.235925133945,
+   "ev_fE_0.96": 4512.235925133945,
+   "ev_fE_1.00": 4512.235925133945,
+   "click_pre43": 3397.8676011920165,
+   "pin_pre43": 4252.500777057174,
+   "s": 1.0,
+   "games2026": 0,
+   "avg2026": [
+    0.0
+   ],
+   "Eq": 3.98934690088734,
+   "ev_rec(Eq)": 0.9813471819861043,
+   "ev_est(Eq)": 0.5764168016893613,
+   "ev_pw(Eq)": 0.1311844383189135,
+   "_lvlcurr": 98.82058634150451,
+   "_par_prior": 75.80358585906552,
+   "bestlvl": 105.0,
+   "v0_start": 615.2,
+   "draftval": 237.0,
+   "nseas_pro": 4
+  },
+  "scoring_r22": [
+   {
+    "year": 2022,
+    "avg": 79.2,
+    "games": 21,
+    "pos": "SF/MID"
+   },
+   {
+    "year": 2023,
+    "avg": 88.2,
+    "games": 23,
+    "pos": "SF/MID"
+   },
+   {
+    "year": 2024,
+    "avg": 105.0,
+    "games": 23,
+    "pos": "SD/MID"
+   },
+   {
+    "year": 2025,
+    "avg": 97.8,
+    "games": 16,
+    "pos": "SF/SD"
+   },
+   {
+    "year": 2026,
+    "avg": 0.0,
+    "games": 0,
+    "pos": "MID"
+   }
+  ],
+  "R22_row": null,
+  "store_row_identical": true,
+  "roundtrip_ok": true
+ },
+ "Max Kondogiannis": {
+  "key": "max-kondogiannis",
+  "pick": 36,
+  "draft_year": 2025,
+  "type": "ND",
+  "pos_drafted": "SD",
+  "pos_now": "SD",
+  "pos_fut": "SD",
+  "career_games": 7,
+  "scoring_r23": [
+   {
+    "year": 2026,
+    "avg": 36.6,
+    "games": 9,
+    "pos": "SD"
+   }
+  ],
+  "R23_row": {
+   "ev": 375.3585886704925,
+   "ev_fE_0.92": 375.3585886704925,
+   "ev_fE_0.96": 375.5914309250896,
+   "ev_fE_1.00": 375.82427317968666,
+   "click_pre43": 375.82427317968666,
+   "pin_pre43": 343.8084631725903,
+   "s": 0.18181818181818177,
+   "games2026": 9,
+   "avg2026": [
+    36.6
+   ],
+   "Eq": 0.1396521834167601,
+   "ev_rec(Eq)": 0.06056697777612476,
+   "ev_est(Eq)": 5.837277453845938e-05,
+   "ev_pw(Eq)": 0.05414003667644628,
+   "_lvlcurr": 36.6,
+   "_par_prior": 55.85797569437614,
+   "bestlvl": 36.6,
+   "v0_start": 445.2103290212898,
+   "draftval": 530.0,
+   "nseas_pro": 1
+  },
+  "scoring_r22": [
+   {
+    "year": 2026,
+    "avg": 40.04,
+    "games": 10,
+    "pos": "SD"
+   }
+  ],
+  "R22_row": {
+   "ev": 362.14929553887725,
+   "ev_fE_0.92": 362.14929553887725,
+   "ev_fE_0.96": 362.2654898983501,
+   "ev_fE_1.00": 362.38168425782294,
+   "click_pre43": 362.38168425782294,
+   "pin_pre43": 330.42823540279244,
+   "s": 0.09090909090909094,
+   "games2026": 10,
+   "avg2026": [
+    40.04
+   ],
+   "Eq": 0.2871859013825026,
+   "ev_rec(Eq)": 0.21423620494762294,
+   "ev_est(Eq)": 0.00050741280394951,
+   "ev_pw(Eq)": 0.1704241478803057,
+   "_lvlcurr": 40.04,
+   "_par_prior": 55.85797569437614,
+   "bestlvl": 40.04,
+   "v0_start": 445.2103290212898,
+   "draftval": 530.0,
+   "nseas_pro": 1
+  },
+  "roundtrip_ok": true
+ },
+ "William McCabe": {
+  "key": "william-mccabe",
+  "pick": 19,
+  "draft_year": 2023,
+  "type": "ND",
+  "pos_drafted": "KPD",
+  "pos_now": "KPF",
+  "pos_fut": "KPF",
+  "career_games": 4,
+  "scoring_r23": [
+   {
+    "year": 2026,
+    "avg": 31.75,
+    "games": 4,
+    "pos": "KPD"
+   }
+  ],
+  "R23_row": {
+   "ev": 240.77843945550006,
+   "ev_fE_0.92": 240.77843945550006,
+   "ev_fE_0.96": 240.77843945550006,
+   "ev_fE_1.00": 240.77843945550006,
+   "click_pre43": 240.77843945550006,
+   "pin_pre43": 240.7784394555,
+   "s": 0.6363636363636364,
+   "games2026": 4,
+   "avg2026": [
+    31.75
+   ],
+   "Eq": 0.0017201255952192596,
+   "ev_rec(Eq)": 9.781167347097019e-06,
+   "ev_est(Eq)": 1.0908699338844755e-10,
+   "ev_pw(Eq)": 9.767565162979e-06,
+   "_lvlcurr": 31.75,
+   "_par_prior": 60.41064752686724,
+   "bestlvl": 0.0,
+   "v0_start": 653.817742253534,
+   "draftval": 811.0,
+   "nseas_pro": 0
+  },
+  "scoring_r22": [
+   {
+    "year": 2026,
+    "avg": 31.75,
+    "games": 4,
+    "pos": "KPD"
+   }
+  ],
+  "R22_row": null,
+  "store_row_identical": true,
+  "roundtrip_ok": true
+ },
+ "Josh Dolan": {
+  "key": "josh-dolan",
+  "pick": 31,
+  "draft_year": 2024,
+  "type": "ND",
+  "pos_drafted": "SF",
+  "pos_now": "SF",
+  "pos_fut": "SF",
+  "career_games": 18,
+  "scoring_r23": [
+   {
+    "year": 2025,
+    "avg": 27.4,
+    "games": 11,
+    "pos": "SF"
+   },
+   {
+    "year": 2026,
+    "avg": 50.09,
+    "games": 9,
+    "pos": "SF"
+   }
+  ],
+  "R23_row": {
+   "ev": 294.4237521942169,
+   "ev_fE_0.92": 294.4237521942169,
+   "ev_fE_0.96": 293.995772750176,
+   "ev_fE_1.00": 293.5677933061352,
+   "click_pre43": 293.5677933061352,
+   "pin_pre43": 352.41496686175344,
+   "s": 0.18181818181818177,
+   "games2026": 9,
+   "avg2026": [
+    50.09
+   ],
+   "Eq": 0.6396521834167601,
+   "ev_rec(Eq)": 0.5749344333815586,
+   "ev_est(Eq)": 0.0055782091045538966,
+   "ev_pw(Eq)": 0.3493081156425505,
+   "_lvlcurr": 42.9347467774882,
+   "_par_prior": 58.06524713044926,
+   "bestlvl": 50.09,
+   "v0_start": 457.44045585730566,
+   "draftval": 589.0,
+   "nseas_pro": 2
+  },
+  "scoring_r22": [
+   {
+    "year": 2025,
+    "avg": 27.4,
+    "games": 11,
+    "pos": "SF"
+   },
+   {
+    "year": 2026,
+    "avg": 49.88,
+    "games": 10,
+    "pos": "SF"
+   }
+  ],
+  "R22_row": {
+   "ev": 246.54663546916308,
+   "ev_fE_0.92": 246.54663546916308,
+   "ev_fE_0.96": 246.0982169992378,
+   "ev_fE_1.00": 245.64979852931248,
+   "click_pre43": 245.64979852931248,
+   "pin_pre43": 368.96487775877176,
+   "s": 0.09090909090909094,
+   "games2026": 10,
+   "avg2026": [
+    49.88
+   ],
+   "Eq": 0.7871859013825027,
+   "ev_rec(Eq)": 0.6719664039529097,
+   "ev_est(Eq)": 0.010346832966692313,
+   "ev_pw(Eq)": 0.3662953267484115,
+   "_lvlcurr": 43.47676033254864,
+   "_par_prior": 58.06524713044926,
+   "bestlvl": 49.88,
+   "v0_start": 457.44045585730566,
+   "draftval": 589.0,
+   "nseas_pro": 2
+  },
+  "roundtrip_ok": true
+ },
+ "Tom Green": {
+  "key": "tom-green",
+  "pick": 10,
+  "draft_year": 2019,
+  "type": "ND",
+  "pos_drafted": "MID",
+  "pos_now": "MID",
+  "pos_fut": "MID",
+  "career_games": 115,
+  "scoring_r23": [
+   {
+    "year": 2020,
+    "avg": 72.7,
+    "games": 6,
+    "pos": "MID"
+   },
+   {
+    "year": 2021,
+    "avg": 77.2,
+    "games": 18,
+    "pos": "MID"
+   },
+   {
+    "year": 2022,
+    "avg": 97.1,
+    "games": 21,
+    "pos": "MID"
+   },
+   {
+    "year": 2023,
+    "avg": 111.6,
+    "games": 22,
+    "pos": "MID"
+   },
+   {
+    "year": 2024,
+    "avg": 106.0,
+    "games": 25,
+    "pos": "MID"
+   },
+   {
+    "year": 2025,
+    "avg": 110.7,
+    "games": 23,
+    "pos": "MID"
+   },
+   {
+    "year": 2026,
+    "avg": 0.0,
+    "games": 0,
+    "pos": "MID"
+   }
+  ],
+  "R23_row": {
+   "ev": 5932.323302952391,
+   "ev_fE_0.92": 5932.323302952391,
+   "ev_fE_0.96": 5932.323302952391,
+   "ev_fE_1.00": 5932.323302952391,
+   "click_pre43": 4521.19218599489,
+   "pin_pre43": 5992.129510101471,
+   "s": 1.0,
+   "games2026": 0,
+   "avg2026": [
+    0.0
+   ],
+   "Eq": 5.008604388279029,
+   "ev_rec(Eq)": 0.9880852120043092,
+   "ev_est(Eq)": 0.7292203179400154,
+   "ev_pw(Eq)": 0.11795172898870414,
+   "_lvlcurr": 109.6828916873078,
+   "_par_prior": 84.59370190438827,
+   "bestlvl": 111.6,
+   "v0_start": 1821.2759858378529,
+   "draftval": 1318.0,
+   "nseas_pro": 6
+  },
+  "scoring_r22": [
+   {
+    "year": 2020,
+    "avg": 72.7,
+    "games": 6,
+    "pos": "MID"
+   },
+   {
+    "year": 2021,
+    "avg": 77.2,
+    "games": 18,
+    "pos": "MID"
+   },
+   {
+    "year": 2022,
+    "avg": 97.1,
+    "games": 21,
+    "pos": "MID"
+   },
+   {
+    "year": 2023,
+    "avg": 111.6,
+    "games": 22,
+    "pos": "MID"
+   },
+   {
+    "year": 2024,
+    "avg": 106.0,
+    "games": 25,
+    "pos": "MID"
+   },
+   {
+    "year": 2025,
+    "avg": 110.7,
+    "games": 23,
+    "pos": "MID"
+   },
+   {
+    "year": 2026,
+    "avg": 0.0,
+    "games": 0,
+    "pos": "MID"
+   }
+  ],
+  "R22_row": null,
+  "store_row_identical": true,
+  "roundtrip_ok": true
+ },
+ "Darcy Jones": {
+  "key": "darcy-jones",
+  "pick": 21,
+  "draft_year": 2022,
+  "type": "ND",
+  "pos_drafted": "SF",
+  "pos_now": "SF",
+  "pos_fut": "SF",
+  "career_games": 37,
+  "scoring_r23": [
+   {
+    "year": 2024,
+    "avg": 64.1,
+    "games": 14,
+    "pos": "SF"
+   },
+   {
+    "year": 2025,
+    "avg": 71.9,
+    "games": 23,
+    "pos": "SF"
+   },
+   {
+    "year": 2026,
+    "avg": 0.0,
+    "games": 0,
+    "pos": "SF"
+   }
+  ],
+  "R23_row": {
+   "ev": 1371.7356568798527,
+   "ev_fE_0.92": 1371.7356568798527,
+   "ev_fE_0.96": 1371.7356568798527,
+   "ev_fE_1.00": 1371.7356568798527,
+   "click_pre43": 1164.4121766068329,
+   "pin_pre43": 1689.2449196266768,
+   "s": 1.0,
+   "games2026": 0,
+   "avg2026": [
+    0.0
+   ],
+   "Eq": 1.9385986017387702,
+   "ev_rec(Eq)": 0.9255048041718902,
+   "ev_est(Eq)": 0.13506414773297187,
+   "ev_pw(Eq)": 0.2431843748986285,
+   "_lvlcurr": 70.66221264783276,
+   "_par_prior": 66.02148048467964,
+   "bestlvl": 71.9,
+   "v0_start": 638.1942596433992,
+   "draftval": 809.0,
+   "nseas_pro": 2
+  },
+  "scoring_r22": [
+   {
+    "year": 2024,
+    "avg": 64.1,
+    "games": 14,
+    "pos": "SF"
+   },
+   {
+    "year": 2025,
+    "avg": 71.9,
+    "games": 23,
+    "pos": "SF"
+   },
+   {
+    "year": 2026,
+    "avg": 0.0,
+    "games": 0,
+    "pos": "SF"
+   }
+  ],
+  "R22_row": null,
+  "store_row_identical": true,
+  "roundtrip_ok": true
+ },
+ "Joshua Kelly": {
+  "key": "joshua-kelly",
+  "pick": 2,
+  "draft_year": 2013,
+  "type": "ND",
+  "pos_drafted": "MID",
+  "pos_now": "MID",
+  "pos_fut": "MID",
+  "career_games": 230,
+  "scoring_r23": [
+   {
+    "year": 2014,
+    "avg": 68.1,
+    "games": 18,
+    "pos": "MID"
+   },
+   {
+    "year": 2015,
+    "avg": 70.6,
+    "games": 18,
+    "pos": "SF/MID"
+   },
+   {
+    "year": 2016,
+    "avg": 87.0,
+    "games": 24,
+    "pos": "MID"
+   },
+   {
+    "year": 2017,
+    "avg": 113.7,
+    "games": 24,
+    "pos": "MID"
+   },
+   {
+    "year": 2018,
+    "avg": 107.8,
+    "games": 16,
+    "pos": "MID"
+   },
+   {
+    "year": 2019,
+    "avg": 113.6,
+    "games": 18,
+    "pos": "MID"
+   },
+   {
+    "year": 2020,
+    "avg": 114.6,
+    "games": 14,
+    "pos": "MID"
+   },
+   {
+    "year": 2021,
+    "avg": 107.3,
+    "games": 23,
+    "pos": "MID"
+   },
+   {
+    "year": 2022,
+    "avg": 105.8,
+    "games": 21,
+    "pos": "MID"
+   },
+   {
+    "year": 2023,
+    "avg": 102.2,
+    "games": 22,
+    "pos": "MID"
+   },
+   {
+    "year": 2024,
+    "avg": 96.5,
+    "games": 17,
+    "pos": "MID"
+   },
+   {
+    "year": 2025,
+    "avg": 87.7,
+    "games": 15,
+    "pos": "MID"
+   },
+   {
+    "year": 2026,
+    "avg": 0.0,
+    "games": 0,
+    "pos": "MID"
+   }
+  ],
+  "R23_row": {
+   "ev": 820.3145500695465,
+   "ev_fE_0.92": 820.3145500695465,
+   "ev_fE_0.96": 820.3145500695465,
+   "ev_fE_1.00": 820.3145500695465,
+   "click_pre43": 430.4792848451101,
+   "pin_pre43": 767.922024694446,
+   "s": 1.0,
+   "games2026": 0,
+   "avg2026": [
+    0.0
+   ],
+   "Eq": 11.89283137770541,
+   "ev_rec(Eq)": 0.9978658398220929,
+   "ev_est(Eq)": 0.973012047565882,
+   "ev_pw(Eq)": 0.10978314908880434,
+   "_lvlcurr": 90.56633085779221,
+   "_par_prior": 93.73960685576839,
+   "bestlvl": 114.6,
+   "v0_start": 3064.648282191441,
+   "draftval": 2668.0,
+   "nseas_pro": 12
+  },
+  "scoring_r22": [
+   {
+    "year": 2014,
+    "avg": 68.1,
+    "games": 18,
+    "pos": "MID"
+   },
+   {
+    "year": 2015,
+    "avg": 70.6,
+    "games": 18,
+    "pos": "SF/MID"
+   },
+   {
+    "year": 2016,
+    "avg": 87.0,
+    "games": 24,
+    "pos": "MID"
+   },
+   {
+    "year": 2017,
+    "avg": 113.7,
+    "games": 24,
+    "pos": "MID"
+   },
+   {
+    "year": 2018,
+    "avg": 107.8,
+    "games": 16,
+    "pos": "MID"
+   },
+   {
+    "year": 2019,
+    "avg": 113.6,
+    "games": 18,
+    "pos": "MID"
+   },
+   {
+    "year": 2020,
+    "avg": 114.6,
+    "games": 14,
+    "pos": "MID"
+   },
+   {
+    "year": 2021,
+    "avg": 107.3,
+    "games": 23,
+    "pos": "MID"
+   },
+   {
+    "year": 2022,
+    "avg": 105.8,
+    "games": 21,
+    "pos": "MID"
+   },
+   {
+    "year": 2023,
+    "avg": 102.2,
+    "games": 22,
+    "pos": "MID"
+   },
+   {
+    "year": 2024,
+    "avg": 96.5,
+    "games": 17,
+    "pos": "MID"
+   },
+   {
+    "year": 2025,
+    "avg": 87.7,
+    "games": 15,
+    "pos": "MID"
+   },
+   {
+    "year": 2026,
+    "avg": 0.0,
+    "games": 0,
+    "pos": "MID"
+   }
+  ],
+  "R22_row": null,
+  "store_row_identical": true,
+  "roundtrip_ok": true
+ },
+ "Lachie Jaques": {
+  "key": "lachie-jaques",
+  "pick": 29,
+  "draft_year": 2024,
+  "type": "ND",
+  "pos_drafted": "SD",
+  "pos_now": "SD",
+  "pos_fut": "SD",
+  "career_games": 8,
+  "scoring_r23": [
+   {
+    "year": 2026,
+    "avg": 58.93,
+    "games": 9,
+    "pos": "SD"
+   }
+  ],
+  "R23_row": {
+   "ev": 639.3882812538852,
+   "ev_fE_0.92": 639.3882812538852,
+   "ev_fE_0.96": 638.1908735269806,
+   "ev_fE_1.00": 636.9934658000759,
+   "click_pre43": 636.9934658000759,
+   "pin_pre43": 801.6370282494652,
+   "s": 0.18181818181818177,
+   "games2026": 9,
+   "avg2026": [
+    58.93
+   ],
+   "Eq": 0.1396521834167601,
+   "ev_rec(Eq)": 0.06056697777612476,
+   "ev_est(Eq)": 5.837277453845938e-05,
+   "ev_pw(Eq)": 0.05414003667644628,
+   "_lvlcurr": 58.93000000000001,
+   "_par_prior": 56.19198062730559,
+   "bestlvl": 58.93,
+   "v0_start": 530.1238420577108,
+   "draftval": 623.0,
+   "nseas_pro": 1
+  },
+  "scoring_r22": [
+   {
+    "year": 2026,
+    "avg": 56.24,
+    "games": 10,
+    "pos": "SD"
+   }
+  ],
+  "R22_row": {
+   "ev": 619.8331521770949,
+   "ev_fE_0.92": 619.8331521770949,
+   "ev_fE_0.96": 619.4338017672458,
+   "ev_fE_1.00": 619.0344513573967,
+   "click_pre43": 619.0344513573967,
+   "pin_pre43": 728.8558140658986,
+   "s": 0.09090909090909094,
+   "games2026": 10,
+   "avg2026": [
+    56.24
+   ],
+   "Eq": 0.2871859013825026,
+   "ev_rec(Eq)": 0.21423620494762294,
+   "ev_est(Eq)": 0.00050741280394951,
+   "ev_pw(Eq)": 0.1704241478803057,
+   "_lvlcurr": 56.24000000000001,
+   "_par_prior": 56.19198062730559,
+   "bestlvl": 56.24,
+   "v0_start": 530.1238420577108,
+   "draftval": 623.0,
+   "nseas_pro": 1
+  },
+  "roundtrip_ok": true
+ },
+ "Luke Trainor": {
+  "key": "luke-trainor",
+  "pick": 21,
+  "draft_year": 2024,
+  "type": "ND",
+  "pos_drafted": "KPD",
+  "pos_now": "KPD",
+  "pos_fut": "KPD",
+  "career_games": 29,
+  "scoring_r23": [
+   {
+    "year": 2025,
+    "avg": 52.7,
+    "games": 21,
+    "pos": "KPD"
+   },
+   {
+    "year": 2026,
+    "avg": 55.09,
+    "games": 9,
+    "pos": "KPD"
+   }
+  ],
+  "R23_row": {
+   "ev": 1060.2958432024836,
+   "ev_fE_0.92": 1060.2958432024836,
+   "ev_fE_0.96": 1060.6454769458135,
+   "ev_fE_1.00": 1060.995110689143,
+   "click_pre43": 1060.995110689143,
+   "pin_pre43": 1012.9204709813177,
+   "s": 0.18181818181818177,
+   "games2026": 9,
+   "avg2026": [
+    55.09
+   ],
+   "Eq": 1.1395395105328616,
+   "ev_rec(Eq)": 0.8110615258350201,
+   "ev_est(Eq)": 0.030741172375732633,
+   "ev_pw(Eq)": 0.34539286552394377,
+   "_lvlcurr": 53.78505496160218,
+   "_par_prior": 60.380404449837805,
+   "bestlvl": 55.09,
+   "v0_start": 635.067823865104,
+   "draftval": 809.0,
+   "nseas_pro": 2
+  },
+  "scoring_r22": [
+   {
+    "year": 2025,
+    "avg": 52.7,
+    "games": 21,
+    "pos": "KPD"
+   },
+   {
+    "year": 2026,
+    "avg": 52.88,
+    "games": 10,
+    "pos": "KPD"
+   }
+  ],
+  "R22_row": {
+   "ev": 1010.3405744552553,
+   "ev_fE_0.92": 1010.3405744552553,
+   "ev_fE_0.96": 1010.178156935253,
+   "ev_fE_1.00": 1010.0157394152508,
+   "click_pre43": 1010.0157394152508,
+   "pin_pre43": 1054.6805574158636,
+   "s": 0.09090909090909094,
+   "games2026": 10,
+   "avg2026": [
+    52.88
+   ],
+   "Eq": 1.2870732284986042,
+   "ev_rec(Eq)": 0.8455890137517159,
+   "ev_est(Eq)": 0.0437014421918767,
+   "ev_pw(Eq)": 0.326573402111819,
+   "_lvlcurr": 52.78823658525879,
+   "_par_prior": 60.380404449837805,
+   "bestlvl": 52.88,
+   "v0_start": 635.067823865104,
+   "draftval": 809.0,
+   "nseas_pro": 2
+  },
+  "roundtrip_ok": true
+ },
+ "Lachlan Gulbin": {
+  "key": "lachlan-gulbin",
+  "pick": null,
+  "draft_year": 2024,
+  "type": "PDA",
+  "pos_drafted": "SF",
+  "pos_now": "SF",
+  "pos_fut": "SF",
+  "career_games": 9,
+  "scoring_r23": [
+   {
+    "year": 2025,
+    "avg": 49.0,
+    "games": 1,
+    "pos": "SF"
+   },
+   {
+    "year": 2026,
+    "avg": 45.0,
+    "games": 9,
+    "pos": "SF"
+   }
+  ],
+  "R23_row": {
+   "ev": 222.38063597717994,
+   "ev_fE_0.92": 222.38063597717994,
+   "ev_fE_0.96": 221.3941292687776,
+   "ev_fE_1.00": 220.40762256037522,
+   "click_pre43": 220.40762256037522,
+   "pin_pre43": 356.05229496569945,
+   "s": 0.18181818181818177,
+   "games2026": 9,
+   "avg2026": [
+    45.0
+   ],
+   "Eq": 0.13976485630065857,
+   "ev_rec(Eq)": 0.06065881867025133,
+   "ev_est(Eq)": 5.851416763462446e-05,
+   "ev_pw(Eq)": 0.05421726180431022,
+   "_lvlcurr": 45.037267527608904,
+   "_par_prior": 61.74895459619687,
+   "bestlvl": 45.0,
+   "v0_start": 623.2400000000001,
+   "draftval": 237.0,
+   "nseas_pro": 1
+  },
+  "scoring_r22": [
+   {
+    "year": 2025,
+    "avg": 49.0,
+    "games": 1,
+    "pos": "SF"
+   },
+   {
+    "year": 2026,
+    "avg": 45.8,
+    "games": 10,
+    "pos": "SF"
+   }
+  ],
+  "R22_row": {
+   "ev": 246.6515956944724,
+   "ev_fE_0.92": 246.6515956944724,
+   "ev_fE_0.96": 246.18896869391656,
+   "ev_fE_1.00": 245.7263416933607,
+   "click_pre43": 245.7263416933607,
+   "pin_pre43": 372.94876684622017,
+   "s": 0.09090909090909094,
+   "games2026": 10,
+   "avg2026": [
+    45.8
+   ],
+   "Eq": 0.2872985742664011,
+   "ev_rec(Eq)": 0.21436829902389923,
+   "ev_est(Eq)": 0.0005080099611411482,
+   "ev_pw(Eq)": 0.17051417708305533,
+   "_lvlcurr": 45.825813604072756,
+   "_par_prior": 61.74895459619687,
+   "bestlvl": 45.8,
+   "v0_start": 623.2400000000001,
+   "draftval": 237.0,
+   "nseas_pro": 1
+  },
+  "roundtrip_ok": true
+ },
+ "Sid Draper": {
+  "key": "sid-draper",
+  "pick": 4,
+  "draft_year": 2024,
+  "type": "ND",
+  "pos_drafted": "MID",
+  "pos_now": "MID",
+  "pos_fut": "MID",
+  "career_games": 10,
+  "scoring_r23": [
+   {
+    "year": 2025,
+    "avg": 23.3,
+    "games": 10,
+    "pos": "SF/MID"
+   },
+   {
+    "year": 2026,
+    "avg": 0.0,
+    "games": 0,
+    "pos": "MID"
+   }
+  ],
+  "R23_row": {
+   "ev": 962.1761034426263,
+   "ev_fE_0.92": 962.1761034426263,
+   "ev_fE_0.96": 957.3655294320644,
+   "ev_fE_1.00": 952.5549554215024,
+   "click_pre43": 952.5549554215024,
+   "pin_pre43": 1072.8193056855503,
+   "s": 1.0,
+   "games2026": 0,
+   "avg2026": [
+    0.0
+   ],
+   "Eq": 0.2871859013825026,
+   "ev_rec(Eq)": 0.21423620494762294,
+   "ev_est(Eq)": 0.00050741280394951,
+   "ev_pw(Eq)": 0.1704241478803057,
+   "_lvlcurr": 23.299999999999997,
+   "_par_prior": 70.93032322926095,
+   "bestlvl": 23.3,
+   "v0_start": 2640.144401542552,
+   "draftval": 2239.0,
+   "nseas_pro": 1
+  },
+  "scoring_r22": [
+   {
+    "year": 2025,
+    "avg": 23.3,
+    "games": 10,
+    "pos": "SF/MID"
+   },
+   {
+    "year": 2026,
+    "avg": 0.0,
+    "games": 0,
+    "pos": "MID"
+   }
+  ],
+  "R22_row": null,
+  "store_row_identical": true,
+  "roundtrip_ok": true
+ },
+ "Clay Hall": {
+  "key": "clay-hall",
+  "pick": 38,
+  "draft_year": 2023,
+  "type": "ND",
+  "pos_drafted": "MID",
+  "pos_now": "MID",
+  "pos_fut": "MID",
+  "career_games": 16,
+  "scoring_r23": [
+   {
+    "year": 2024,
+    "avg": 34.3,
+    "games": 3,
+    "pos": "MID"
+   },
+   {
+    "year": 2025,
+    "avg": 66.8,
+    "games": 13,
+    "pos": "MID"
+   },
+   {
+    "year": 2026,
+    "avg": 0.0,
+    "games": 0,
+    "pos": "MID"
+   }
+  ],
+  "R23_row": {
+   "ev": 436.9138469512937,
+   "ev_fE_0.92": 436.9138469512937,
+   "ev_fE_0.96": 414.2964709946071,
+   "ev_fE_1.00": 391.67909503792043,
+   "click_pre43": 391.67909503792043,
+   "pin_pre43": 957.1134939550866,
+   "s": 1.0,
+   "games2026": 0,
+   "avg2026": [
+    0.0
+   ],
+   "Eq": 0.8610415510745901,
+   "ev_rec(Eq)": 0.7102192182286622,
+   "ev_est(Eq)": 0.013497796805396296,
+   "ev_pw(Eq)": 0.3670802268061223,
+   "_lvlcurr": 65.98881575065398,
+   "_par_prior": 64.34255281289484,
+   "bestlvl": 66.8,
+   "v0_start": 672.0482917326218,
+   "draftval": 509.0,
+   "nseas_pro": 1
+  },
+  "scoring_r22": [
+   {
+    "year": 2024,
+    "avg": 34.3,
+    "games": 3,
+    "pos": "MID"
+   },
+   {
+    "year": 2025,
+    "avg": 66.8,
+    "games": 13,
+    "pos": "MID"
+   },
+   {
+    "year": 2026,
+    "avg": 0.0,
+    "games": 0,
+    "pos": "MID"
+   }
+  ],
+  "R22_row": null,
+  "store_row_identical": true,
+  "roundtrip_ok": true
+ }
+}
