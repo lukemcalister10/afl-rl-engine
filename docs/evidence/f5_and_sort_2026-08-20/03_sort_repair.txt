@@ -1,0 +1,42 @@
+=== ACT B — REPAIR VERIFICATION — 2026-08-20T10:56:10Z ===
+
+P1 after_round=22 chronological order ....... PASS
+       dob-courier-10-8
+       g1-never-rises-10-8
+       the-landing-20-8
+       the-d8-adoption-20-8
+       the-sheet-recut-20-8
+P2 previous_point(23) == the-sheet-recut-20-8 PASS  (UNCHANGED — R23 movers baseline held)
+P3 newest stored point == round 23 .......... PASS
+P4 model_changes count == 8 ................. PASS
+P5 all boundaries owner_approved ............ PASS
+
+   The two REPAIRED boundaries now reproduce release_lineage.json exactly:
+      boundary ['the-landing-20-8', 'the-d8-adoption-20-8']         -> 5ea978f7  == register entry 8 (src a05fe951 -> dst 5ea978f7)
+      boundary ['the-d8-adoption-20-8', 'the-sheet-recut-20-8']     -> 1d5c9f7a  == register entry 9 (src 5ea978f7 -> dst 1d5c9f7a)
+
+P7 fresh registration ordered by seq, not alphabet: PASS ['zzz-earlier', 'aaa-later'] [('zzz-earlier', 0), ('aaa-later', 1)]
+
+F6 per-round reports byte-verbatim .......... PASS
+F7 `values` block identical (no value moved)  PASS
+   movers.js blocks changed: ['model_changes', 'points']
+
+=== SUITES ===
+MOVERS TRANSITION TESTS: ALL 39 PASS
+MOVERS TESTS: ALL 66 PASS
+
+=== F3 BYTE-UNMOVED (value-bearing set) ===
+data/rl_build/rl_app_data.json: OK
+engine/rl_after/rl_model_data.json: OK
+engine/rl_after/ingestion/value_history.json: OK
+engine/rl_after/ingestion/rank_history.json: OK
+engine/rl_after/ingestion/pos_rank_history.json: OK
+data/expected_boot.json: OK
+data/release_contract.json: OK
+data/release_lineage.json: OK
+
+=== files this act touches ===
+ M engine/rl_after/ingestion/out_of_round_column.py
+ M ui/data/movers.js
+?? docs/evidence/f5_and_sort_2026-08-20/03_sort_repair.txt
+?? docs/evidence/f5_and_sort_2026-08-20/04_sort_gates.txt
