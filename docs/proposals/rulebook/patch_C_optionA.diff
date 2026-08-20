@@ -1,0 +1,15 @@
+diff --git a/docs/RULEBOOK.md b/docs/RULEBOOK.md
+index 8a4875d..5f9b4d5 100644
+--- a/docs/RULEBOOK.md
++++ b/docs/RULEBOOK.md
+@@ -3,7 +3,9 @@
+ ### scoped to the national pick curve, picks 1–64. Pool selections past 64 are valued by
+ ### position and are not on the curve, so no ordering applies to them. No other law changed.
+ ### Replaces CONSTRAINTS v1.19 + acceptance v1.21 as the single governing document.
+-### Twin: docs/acceptance_v2_0.json. Predecessors archived at the 2026-07-22 seam.
++### Twin: docs/acceptance_v2_0.json — GENERATED from this file by tools/rulebook_twin.py and
++### CI-linted equal to it by tools/rulebook_lint.py. THIS DOCUMENT WINS; the twin is never
++### hand-edited. Predecessors archived at the 2026-07-22 seam.
+ 
+ ## PART 1 — TIMELESS LAWS (never expire; asserted at every release)
+ 1. **ONE SOURCE.** Exactly one authored data source: `engine/rl_after/rl_model_data.json`.

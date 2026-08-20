@@ -1,0 +1,14 @@
+diff --git a/docs/RULEBOOK.md b/docs/RULEBOOK.md
+index 8a4875d..c9ef992 100644
+--- a/docs/RULEBOOK.md
++++ b/docs/RULEBOOK.md
+@@ -3,7 +3,8 @@
+ ### scoped to the national pick curve, picks 1–64. Pool selections past 64 are valued by
+ ### position and are not on the curve, so no ordering applies to them. No other law changed.
+ ### Replaces CONSTRAINTS v1.19 + acceptance v1.21 as the single governing document.
+-### Twin: docs/acceptance_v2_0.json. Predecessors archived at the 2026-07-22 seam.
++### No twin: the derived laws view is retired (PLAN_v6 1b). Predecessors archived at the
++### 2026-07-22 seam.
+ 
+ ## PART 1 — TIMELESS LAWS (never expire; asserted at every release)
+ 1. **ONE SOURCE.** Exactly one authored data source: `engine/rl_after/rl_model_data.json`.

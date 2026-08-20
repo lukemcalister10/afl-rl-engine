@@ -1,0 +1,17 @@
+diff --git a/docs/RULEBOOK.md b/docs/RULEBOOK.md
+index 8a4875d..80e2214 100644
+--- a/docs/RULEBOOK.md
++++ b/docs/RULEBOOK.md
+@@ -33,6 +33,12 @@
+ 11. **THE SEAM PATTERN.** Every release ships a numbered claims note and receives one
+     blind independent review before the owner's word. The register stays the single
+     durable list.
++12. **YEAR-0 CLOSURE (G-Y0).** The pooled absolute percentage gap at the year-0 lens
++    stays within 2.0% — present-lens prices close against the store they are priced
++    from, or the lens is reported broken.
++13. **COHORT CURVE (G-COHORT).** The walk-forward book ratio stays at or under 1.3.
++    UNMEASURED at R19 and since: it needs the walk-forward book, and PART 3 reports it
++    UNMEASURED rather than assuming it passes.
+ 
+ ## PART 2 — DATED READS — **ALL RETIRED (owner, 2026-07-22: "they've done their job")**
+ The pre-seam reads (A-BONT · A-GAWN · A-CAM · A-DARCY · A-DUUR · A-PAIRS · A-PEAK · english_briggs)
