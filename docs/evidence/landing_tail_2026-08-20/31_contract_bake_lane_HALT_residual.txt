@@ -1,0 +1,69 @@
+THE CONTRACT'S BAKE-LANE PINS — WALKED, AND THE HALF THAT IS HALTED
+====================================================================
+Order item 4: "Trace the contract's own bake-lane writer ... and walk them to the landed values
+through it. If the lane demands a bake-class act beyond a re-stamp, HALT that item with the fork."
+
+THE TRACE — RE-DONE INDEPENDENTLY, AND THE PRIOR SEAT'S FINDING STANDS
+  Every module in the tree that touches `contract_sha256` was enumerated:
+      ui/tools/ownership_store_apply.py            -> calls release_contract.restamp_dynamic
+      engine/rl_after/ingestion/staged_apply.py    -> calls release_contract.restamp_dynamic (:542)
+      engine/rl_after/ingestion/sibling_repin.py   -> writes ONLY identities.balanced_board_md5 +
+                                                      present_lens_baseline, off a freshly BUILT sibling
+      engine/rl_after/ingestion/scratch_fixture.py -> fixtures
+      engine/rl_after/one_source_selftest.py       -> reads/asserts, never writes
+      release_contract.py                          -> restamp_dynamic, the one scripted writer
+  restamp_dynamic's own docstring: "EVERYTHING ELSE is preserved byte-for-byte: release_version,
+  config_sha256, switch_posture, pvc_provenance, must_be_unset, present_lens_baseline, the f5
+  reconciliation, the descriptive season notes, and the immutable engine/rl_model/fv/register/band
+  identities." THERE IS NO BAKE-LANE WRITER. The lane is named in the gate's remedy text, not
+  implemented anywhere: "re-stamp the contract at a bake in the same commit that moves the
+  manifest/board identity."
+
+WALKED — AND IT IS A RE-STAMP, NOT A BAKE-CLASS ACT
+  All four stale pins are FILE IDENTITIES of files already in the tree and already carried by the
+  accepted manifest data/expected_boot.json. Nothing is built, fitted, derived or compared to move
+  them: each was re-hashed from the checkout by the tree's own definitions in boot_guard.py and
+  asserted equal to the manifest BEFORE anything was written. The commit the gate's remedy describes
+  is already in history — the manifest moved at THE LANDING (463e53d) — so this act is the re-stamp
+  that commit owed and did not make. Done through a per-act script in the #328 step-6b pattern
+  (docs/evidence/store_328_jujn3g/repin_board_identity.py), the exact precedent 77bca28 used for
+  identities.board, re-sealing through the contract's OWN hasher:
+
+      config_sha256              cef06fd6250b -> eed19a75f775
+      identities.engine_head     c0a7e969fdd9 -> 5ac6780f3c49
+      identities.rl_model        33f940735281 -> 6fe7c4155866
+      identities.fv              d920557ef21d -> 6e9a370e5970
+      contract_sha256            80895def24eb -> be37b3b4c584   (recomputed, not typed)
+
+  15 frozen fields asserted unmoved by the script before it wrote, 0 moved. Verdict:
+      python3 release_contract.py check   FAILED (4 rejects)  ->  PASS (contract be37b3b4c584)
+
+HALTED — THE BUILD-AND-COMPARE HALF, WITH ITS FORK
+  NOT walked, deliberately:
+      identities.balanced_board_md5                     234c3414
+      present_lens_baseline.balanced_board_md5          234c3414
+      present_lens_baseline.active / .present_value_total   761574
+  present_value_total 761574 is the OLD release's present-v sum; the landed board a05fe951 sums
+  664,949 (measured on the board file, not quoted). These are not typeable. Their writer of record is
+  engine/rl_after/ingestion/sibling_repin.py and it moves them ONLY from a freshly BUILT
+  balanced/strict sibling board — `python3 engine/rl_after/ingestion/sibling_repin.py reconcile
+  --round 22`, a full sibling engine build which ALSO moves data/expected_boot.json's
+  balanced_board_md5, a landed pin.
+
+  THAT IS A BAKE-CLASS ACT, so it is HALTED here per the order. THE FORK:
+    A. RUN THE SIBLING RECONCILE. It is the writer of record and it is what the whole sibling layer
+       is waiting on — `sibling_repin.py verify` still reports 7 fails, every one of them a sibling
+       artifact (reference vector, forward vector, forward oracle, the provenance sidecar). It needs
+       its own order because it is a BUILD and it moves a landed manifest pin.
+    B. DECLARE A HOLD. Add held_candidates entries per release_contract.py's HELD_REQUIRED schema
+       (field / release / candidate / reason) for balanced_board_md5, which is the tree's own
+       instrument for "the tree deliberately runs ahead of what is RELEASED".
+  Nothing here guesses between them. The contract's gate does not currently reject on these fields,
+  so the halt costs nothing operationally — it is a stale value that is now the ONLY stale value left
+  in the contract, and it is named.
+
+MOVEMENT TO REPORT, HONESTLY: `sibling_repin.py verify` went 8 fails -> 7. The order said to expect
+the 8 UNCHANGED. One of the eight was literally "release_contract check failed" — the gate this item
+was ordered to fix — so it cleared as a direct consequence of the ordered act. The other SEVEN are
+byte-for-byte the same seven, and none was repaired. Reported because the count moved, not hidden
+because it moved the right way.
