@@ -21,10 +21,22 @@ THREE PROPERTIES, EACH FOR A REASON THE RECORD ALREADY PAID FOR.
 
 3. THE SNAPSHOT LIVES OUTSIDE THE REPO. A snapshot written inside the tree is a dirty working tree
    at the exact moment the tree's cleanliness is the thing being asserted, and it would be caught by
-   its own scope check. Default location is a mkdtemp; `RL_LANDING_SNAPSHOT_DIR` overrides it.
-   (Named without an `RL_`-prefixed *tool flag* on purpose: the twice-burned rule is about FLAGS the
-   config manifest's reject scan sees, not about a snapshot directory. This is an env var read by
-   this module only, and it is never exported into a build's environment.)
+   its own scope check. Default location is a mkdtemp; `LANDING_SNAPSHOT_DIR` overrides it.
+
+   THAT NAME HAS NO `RL_` PREFIX, AND THE FIRST DRAFT'S DID. `RL_LANDING_SNAPSHOT_DIR` cost this
+   package a whole acceptance run: `config_manifest.enforce()` rejects any unknown RL_-prefixed
+   variable as a divergent model override, the variable was inherited by every probe child the gate
+   step spawned, and the r15 ladder proof therefore died a DIFFERENT way than its ruling records —
+   which `acceptance/checks/ledger.py` correctly reported as `R15-ladder-proof-GFWD is DRIFTED` and
+   red the landing. Reproduced in one line, in both directions:
+
+       RL_LANDING_SNAPSHOT_DIR=/tmp python3 -m acceptance.runner --only ruled_red_ledger   -> FAIL
+                               (unset) python3 -m acceptance.runner --only ruled_red_ledger -> PASS
+
+   That module's own header had already written the rule down after the same burn: "A TOOL'S OWN
+   FLAGS ARE NEVER RL_*." It is not a rule about flags-as-opposed-to-env-vars; it is a rule about
+   THE PREFIX, in any variable this estate's tooling sets. Third occurrence, caught by the instrument
+   P1 built for exactly it.
 
 THE STORE IS IN THE SET AND A LEVER LANDING NEVER WRITES IT. That is deliberate. Capturing
 `rl_model_data.json` costs one hash and turns "the store did not move" from a claim into a measured
@@ -204,7 +216,7 @@ class Snapshot(object):
         self.entries = {}
         self._owned = store_dir is None
         self.store_dir = store_dir or tempfile.mkdtemp(
-            prefix='rl_landing_snap_', dir=os.environ.get('RL_LANDING_SNAPSHOT_DIR') or None)
+            prefix='rl_landing_snap_', dir=os.environ.get('LANDING_SNAPSHOT_DIR') or None)
         if os.path.abspath(self.store_dir).startswith(self.root + os.sep):
             raise CarrierError(
                 'the snapshot store %s is INSIDE the tree being landed. A restore-point that dirties '

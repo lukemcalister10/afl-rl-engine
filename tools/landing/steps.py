@@ -133,6 +133,15 @@ def preflight(ctx):
         raise StepError('cannot read HEAD in %s' % ctx.root)
     base_commit = head.strip()
 
+    # THE RL_-PREFIXED ENVIRONMENT, PRINTED. Every one of these is inherited by every probe and gate
+    # child this landing spawns, and `config_manifest.enforce()` treats an unknown one as a divergent
+    # model override — which does not always halt loudly; it can instead make an unrelated probe fail
+    # a DIFFERENT way, which is how this package's own `RL_LANDING_SNAPSHOT_DIR` red a landing at the
+    # ruled-red ledger. It is printed rather than halted on, because RL_REPO and RL_VENV are
+    # legitimately present; a seat reading an unexplained gate red should see this line first.
+    rl_env = sorted(k for k in os.environ if k.startswith('RL_') or k.startswith('PAR_'))
+    ctx.log('RL_/PAR_ environment  %s' % (', '.join(rl_env) or '(none)'))
+
     ctx.acquire_lock()
 
     snap = ctx.capture_restore_point()

@@ -213,7 +213,7 @@ class Sandbox(object):
 # -------------------------------------------------------------------------------------- the cases
 def main(root=None, keep=False, only=None, evidence_dir=None):
     root = os.path.abspath(root or _REPO)
-    work = os.path.join(os.environ.get('RL_LANDING_SNAPSHOT_DIR') or '/tmp',
+    work = os.path.join(os.environ.get('LANDING_SNAPSHOT_DIR') or '/tmp',
                         'landing_selftest_%d' % os.getpid())
     ev = evidence_dir or os.path.join(work, 'transcripts')
     os.makedirs(ev, exist_ok=True)

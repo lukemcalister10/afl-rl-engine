@@ -215,7 +215,7 @@ class Ctx(object):
         self._lock_fd = None
         self.lander_dir = os.path.dirname(os.path.abspath(__file__))
         self.work_dir = work_dir or os.path.join(
-            os.environ.get('RL_LANDING_SNAPSHOT_DIR') or '/tmp', 'landing_work_%d' % os.getpid())
+            os.environ.get('LANDING_SNAPSHOT_DIR') or '/tmp', 'landing_work_%d' % os.getpid())
         os.makedirs(self.work_dir, exist_ok=True)
         self.evidence_dir = evidence_dir or os.path.join(self.root, spec.get('evidence_dir') or
                                                          'docs/evidence/landing_%s' % spec.get('date', 'undated'))
