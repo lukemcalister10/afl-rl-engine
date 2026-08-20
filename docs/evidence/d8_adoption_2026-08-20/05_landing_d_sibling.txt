@@ -1,0 +1,116 @@
+=== THE D8 ADOPTION, LANDING STEP D — THE SIBLING REPIN ===
+WRITER OF RECORD: engine/rl_after/ingestion/sibling_repin.py (BUILD-AND-COMPARE only: the pin is
+moved to a value that was just BUILT and derived from the built artifact, never to an expectation).
+Run under tools/build_lock.sh, single writer. RL_BUILD_LOCK_HELD cleared for the child (the lock
+exports it and config_manifest.enforce() rejects unknown RL_ names); the lock stays held by the shell.
+
+--- verify BEFORE (captured by the LANDING TAIL seat at 09_sibling_repin_verify.txt) ---
+{
+  "balanced_board_md5": "234c3414fa001bd9538deb6668e169f0",
+  "fails": [
+    "forward reference vector for 234c3414 missing",
+    "forward oracle test_forward_lens_a05fe951.py missing",
+    "sidecar source_store_md5 != current store",
+    "sidecar contract_sha256 != live contract seal",
+    "sidecar forward_board_md5 != the canonical board of record",
+    "sidecar forward_vector filename != regenerated forward vector",
+    "sidecar forward_oracle filename != regenerated forward oracle",
+    "release_contract check failed"
+  ],
+  "ok": false
+}
+
+--- plan (the build) ---
+{"balanced_board_md5": "a49c155fa20f7084bcaa0d3dceca6cb1", "live_balanced_board_md5": "72fe3a176953fce36239d7b81c3cd492",
+ "changed": true, "active": 804, "sum_v": 693753, "sheezel": 10453,
+ "forward": {"board_md5": "5ea978f7b6a073abb2012f10cccbc3e3", "oracle": "test_forward_lens_5ea978f7.py",
+             "vector": "forward_vector_5ea978f7.json",
+             "vector_sha256": "d2680c56a059fac735fda9bd309c0d53e9095d6ce84663aa5e3dcba48ce29f16",
+             "p1_sum": 631533, "p1_sheezel": 10882, "p2_sum": 201453, "p2_sheezel": 2617}}
+
+--- reconcile (the transaction) ---
+{"ok": true, "no_op": false, "changed": true, "recovered": [],
+ "old_balanced_board_md5": "72fe3a176953fce36239d7b81c3cd492",
+ "balanced_board_md5":     "a49c155fa20f7084bcaa0d3dceca6cb1",
+ "active": 804, "sum_v": 693753, "sheezel": 10453,
+ "committed_targets": ["board_view_public","board_view_working","forward_oracle","forward_vector",
+                       "fv_test","manifest","reference_vector","release_contract","sidecar"],
+ "validation": {"release_contract_check": ["RELEASE-CONTRACT CHECK: PASS (contract 7dc087563cda)"]},
+ "txn_dir": "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f"}
+
+--- verify AFTER ---
+{
+  "balanced_board_md5": "a49c155fa20f7084bcaa0d3dceca6cb1",
+  "fails": [],
+  "ok": true
+}
+
+THE EIGHT FAILS ARE GONE. That backlog was the named open item the landing tail could not close
+(30_contract_bake_pins.txt: 'sibling_repin.py verify already reports its 8 fails as a named future
+order'). This adoption had to move the balanced sibling anyway, so the order is discharged HERE, by
+the writer of record, on a freshly BUILT sibling — not waived.
+
+--- WHAT MOVED, derived from the build (never typed) ---
+  expected_boot.balanced_board_md5                72fe3a176953fce36239d7b81c3cd492 -> a49c155fa20f7084bcaa0d3dceca6cb1
+  release_contract.identities.balanced_board_md5  72fe3a176953fce36239d7b81c3cd492 -> a49c155fa20f7084bcaa0d3dceca6cb1
+  release_contract.present_lens_baseline.balanced 72fe3a176953fce36239d7b81c3cd492 -> a49c155fa20f7084bcaa0d3dceca6cb1
+  release_contract.present_lens_baseline.active   804 -> 804
+  release_contract.present_lens_baseline.total    664949 -> 693753
+  release_contract.contract_sha256                2f20b114dcb4... -> 7dc087563cda3c17a7a273830729076a97f1edcd81e767bba8f0c6fac6d0599d
+
+  ASSERTED UNMOVED THROUGH THE SIBLING REPIN (its own fences + PREREG F4):
+    expected_boot.board          5ea978f7b6a073abb2012f10cccbc3e3  OK
+    expected_boot.store          cc02567f80bef39228f25854d121a766  OK
+    expected_boot.engine_head    3cfc4325aa323b7f26594cb2a202a976  OK
+    expected_boot.rl_model       6fe7c4155866d80e8045bed2d3bf2802  OK
+    expected_boot.config         eed19a75f775aeafe4ee5ea4b3990667  OK
+    expected_boot.fv             6e9a370e5970c5aefa859858070f4c34  OK
+    expected_boot.band           34faa8659cc8f19794f5cb9584fa19b2  OK
+    expected_boot.register       652d83e87780e415a01a2de6d8b3cc57  OK
+    expected_boot.q97m           cfdc73216c099e5e8f1fda3968f31c00  OK
+    expected_boot.v0surf         5dd34ca82735f5c8f021b1c7320df8f8  OK
+    as_of_round 22   store file cc02567f80bef39228f25854d121a766
+    board file  5ea978f7b6a073abb2012f10cccbc3e3
+
+--- NEW SIBLING ARTIFACTS (append-only; every prior vector/oracle preserved) ---
+   M session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py
+  ?? session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_5ea978f7.json
+  ?? session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a49c155f.json
+  ?? session_2026-07-20/fv_provenance_remediation/test_forward_lens_5ea978f7.py
+
+--- test_fv_provenance.py diff (BOARD_MD5_GOOD + aggregates, its own writer) ---
+  diff --git a/session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py b/session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py
+  index d6e341f..e70b337 100644
+  --- a/session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py
+  +++ b/session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py
+  @@ -50,7 +50,7 @@ FIX = os.path.join(REPO, 'session_2026-07-20', 'fv_provenance_remediation', 'fix
+   CLAUDE = '/home/claude'
+   AMBIENT_FV = os.path.join(CLAUDE, 'rl_workspace', 'forward_valuation')   # the FORMER RL_FV default (the hole)
+   RL_AFTER_LINK = os.path.join(CLAUDE, 'rl_after')                        # the FORMER hardcoded rl_model path
+  -BOARD_MD5_GOOD = '72fe3a176953fce36239d7b81c3cd492'   # ITEM 411 D1 (owner rulings v467/v469): accepted R19 balanced/strict board (advanced from 1373e824, the ITEM 408 STOP-1 board)
+  +BOARD_MD5_GOOD = 'a49c155fa20f7084bcaa0d3dceca6cb1'   # ITEM 411 D1 (owner rulings v467/v469): accepted R19 balanced/strict board (advanced from 1373e824, the ITEM 408 STOP-1 board)
+   BAD_PREFIX = 'd7a95e8d'
+   STALE_DP = os.path.join(FIX, 'distribution_pricing.stale_21d530bf.py')
+   
+  @@ -249,10 +249,10 @@ def board_oracle():
+       r = _run_build({}, rl_fv=os.path.join(REPO, 'engine', 'forward_valuation'))
+       ok = (r['rc'] == 0 and r['board_md5'] == BOARD_MD5_GOOD)
+       facts = _board_facts(r['board_path']) if r['board_path'] else {}
+  -    ok = ok and facts.get('active') == 804 and facts.get('sum_v') == 664949 and facts.get('sheezel') == 10433
+  +    ok = ok and facts.get('active') == 804 and facts.get('sum_v') == 693753 and facts.get('sheezel') == 10453
+       # C5: compare the COMPLETE active-player value vector against the accepted reference — require ZERO movers.
+       movers = None
+  -    ref_path = os.path.join(FIX, 'reference_vector_72fe3a17.json')
+  +    ref_path = os.path.join(FIX, 'reference_vector_a49c155f.json')
+       if r['board_path'] and os.path.exists(ref_path):
+           ref = json.load(open(ref_path))['vector']
+           built = {p['key']: p['v'] for p in json.loads(open(r['board_path'], 'rb').read())['active']}
+  @@ -266,7 +266,7 @@ def board_oracle():
+           ok = False
+           movers = None
+       record('ORACLE_accepted_board_zero_movers', ok,
+  -           "rc=%s md5=%s active=%s sumv=%s sheezel=%s vector_movers=%s ref_present=%s (expect 72fe3a17/804/664949/10433/0)"
+  +           "rc=%s md5=%s active=%s sumv=%s sheezel=%s vector_movers=%s ref_present=%s (expect a49c155f/804/693753/10453/0)"
+              % (r['rc'], r['board_md5'], facts.get('active'), facts.get('sum_v'), facts.get('sheezel'),
+                 (len(movers) if movers is not None else '?'), os.path.exists(ref_path)))
+       shutil.rmtree(r['base'], ignore_errors=True)

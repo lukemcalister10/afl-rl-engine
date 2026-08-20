@@ -1,0 +1,97 @@
+=== FINAL VERIFICATION — run on the committed tree at 5dcfe71 ===
+
+--- file identities ---
+5ea978f7b6a073abb2012f10cccbc3e3  data/rl_build/rl_app_data.json
+cc02567f80bef39228f25854d121a766  engine/rl_after/rl_model_data.json
+3cfc4325aa323b7f26594cb2a202a976  engine/rl_after/_merged_recover.py
+6fe7c4155866d80e8045bed2d3bf2802  engine/rl_after/rl_model.py
+cfdc73216c099e5e8f1fda3968f31c00  data/q97m.pkl
+5dd34ca82735f5c8f021b1c7320df8f8  data/v0surf.pkl
+652d83e87780e415a01a2de6d8b3cc57  LTI_REGISTER.md
+210510fe5d09bbbd16909bb63f4a118d  docs/evidence/final_candidate_2026-08-19/DAY0_CP.json
+
+--- board totals ---
+  active rows: 804   total v: 693753
+
+--- git status (must be clean but for untracked evidence/scratch) ---
+?? docs/evidence/d8_adoption_2026-08-20/01_proofs_builds.txt
+?? docs/evidence/d8_adoption_2026-08-20/02_proofs_assertions.txt
+?? docs/evidence/d8_adoption_2026-08-20/03_landing_a_pins.txt
+?? docs/evidence/d8_adoption_2026-08-20/04_landing_c_contract.txt
+?? docs/evidence/d8_adoption_2026-08-20/05_landing_d_sibling.txt
+?? docs/evidence/d8_adoption_2026-08-20/06_landing_e_ui.txt
+?? docs/evidence/d8_adoption_2026-08-20/07_lineage_identities.txt
+?? docs/evidence/d8_adoption_2026-08-20/08_landing_b_lineage.txt
+?? docs/evidence/d8_adoption_2026-08-20/09_gates.txt
+?? docs/evidence/d8_adoption_2026-08-20/10_history_append_only.txt
+?? docs/evidence/d8_adoption_2026-08-20/11_final_verification.txt
+?? docs/evidence/d8_adoption_2026-08-20/append_d8_adoption_transition.py
+?? docs/evidence/d8_adoption_2026-08-20/d8_build.py
+?? docs/evidence/d8_adoption_2026-08-20/land_a_pins.py
+?? docs/evidence/d8_adoption_2026-08-20/land_c_contract.py
+?? docs/evidence/d8_adoption_2026-08-20/land_e_ui.py
+?? docs/evidence/d8_adoption_2026-08-20/lineage_measured.json
+?? docs/evidence/d8_adoption_2026-08-20/register_d8_column.py
+?? docs/evidence/d8_adoption_2026-08-20/run_proofs.sh
+?? engine/rl_after/ingestion/.sibling_txn/
+
+--- release_manifest_check.py ---
+
+  40 carrier fields across 8 identities and 7 files: 38 coherent, 0 incoherent, 2 sealed-lag
+
+  SEALED-LAG — a freeze-stamp naming the state it was SEALED against, not the
+  state the tree is in. Legitimate between seals; reported, never gating:
+    book_stable_seal.store_md5                   sealed against cb38ef11, tree is now cc02567f
+    book_stable_seal.head_md5                    sealed against 5ac6780f, tree is now 3cfc4325
+    (i.e. the artifact these stamps belong to has not been re-sealed since the
+     tree last moved. That is information, not a defect — but a gate that
+     consumes the seal as a baseline is comparing against the older state.)
+
+  RELEASE MANIFEST COHERENCE: PASS
+  exit=0
+
+--- release_contract.py check ---
+RELEASE-CONTRACT CHECK
+RELEASE-CONTRACT CHECK: PASS  (contract 7dc087563cda; identities + config + posture consistent)
+  exit=0
+
+--- acceptance.runner ---
+  tree: /home/user/afl-rl-engine
+  evidence: (none)
+==========================================================================================================================
+CHECK                    VERDICT     REASON
+-----------------------  ----------  -----------------------------------------------------------------------------------
+release_manifest         PASS        38 of 40 carrier fields agree with computed truth across 8 identities; 2 sealed ca…
+boot_guard_checkout      PASS        boot-store guard (Guard 5) PASS  [acceptance-spine]  store cc02567f == pinned cc02…
+config_manifest          PASS        CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)
+ruling_config            PASS        RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL…
+release_contract_seal    PASS        RELEASE-CONTRACT CHECK: PASS  (contract 7dc087563cda; identities + config + postur…
+store_coherence_six_way  PASS        six-way store coherence: PASS
+doc_lint                 PASS        doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)
+-----------------------  ----------  -----------------------------------------------------------------------------------
+
+AGGREGATE  7 checks  |  PASS 7  FAIL 0  BLOCKED 0  RULED-RED 0
+VERDICT    GREEN — no gating failures.
+
+--- sibling_repin verify ---
+{
+  "balanced_board_md5": "a49c155fa20f7084bcaa0d3dceca6cb1",
+  "fails": [],
+  "ok": true
+}
+
+--- six-way store coherence ---
+  store file                             cc02567f80bef39228f25854d121a766
+  expected_boot.store                    cc02567f80bef39228f25854d121a766
+  release_contract.identities.store      cc02567f80bef39228f25854d121a766
+  season_state.source_store_md5          cc02567f80bef39228f25854d121a766
+  rl_app_data.json.srcmd5.source_md5     cc02567f80bef39228f25854d121a766
+  board_view_working.stamp.store_md5     cc02567f80bef39228f25854d121a766
+  six-way store coherence: PASS
+
+--- UNPUSHED: main vs origin ---
+5dcfe71 THE D8 ADOPTION — THE LANDING TRANSACTION. THE LIVE BOARD IS NOW 5ea978f7 / 693,753 / 804.
+d928bca THE D8 ADOPTION — THE ENGINE EDIT. RL_O33_TAPEROFF IS NOW THE SHIPPED DEFAULT.
+16ec23b PREREG — THE D8 ADOPTION. Committed BEFORE the engine is touched (law F6).
+5dcfe719fd971cdbc0045561af7da42bd850b265
+028eb4d8bb8174bdf8a3e5fb8858e0cccb612ab9

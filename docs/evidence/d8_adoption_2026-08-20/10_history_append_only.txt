@@ -1,0 +1,22 @@
+=== THE THREE HISTORIES — APPEND-ONLY, PROVEN PER PLAYER PER POINT ===
+
+value_history.json       players  804 ->  804 | prior points changed 0 | dropped 0 | new "the-d8-adoption-20-8" points 804
+                         columns 6 -> 7 | 6 prior rows all present, byte-identical, relative order intact
+                         new row inserted at index 5 (sorted by (after_round,id) — the writer of record's law):
+                           {"after_round": 22, "board": "5ea978f7b6a073abb2012f10cccbc3e3", "id": "the-d8-adoption-20-8", "kind": "out_of_round", "label": "20/8 D8 ADOPTION \u2014 ceiling-only dial shipped default-on"}
+                         VERDICT: APPEND-ONLY OK
+
+rank_history.json        players  804 ->  804 | prior points changed 0 | dropped 0 | new "the-d8-adoption-20-8" points 804
+                         columns 6 -> 7 | 6 prior rows all present, byte-identical, relative order intact
+                         new row inserted at index 5 (sorted by (after_round,id) — the writer of record's law):
+                           {"after_round": 22, "board": "5ea978f7b6a073abb2012f10cccbc3e3", "id": "the-d8-adoption-20-8", "kind": "out_of_round", "label": "20/8 D8 ADOPTION \u2014 ceiling-only dial shipped default-on"}
+                         VERDICT: APPEND-ONLY OK
+
+pos_rank_history.json    players  804 ->  804 | prior points changed 0 | dropped 0 | new "the-d8-adoption-20-8" points 804
+                         columns 6 -> 7 | 6 prior rows all present, byte-identical, relative order intact
+                         new row inserted at index 5 (sorted by (after_round,id) — the writer of record's law):
+                           {"after_round": 22, "board": "5ea978f7b6a073abb2012f10cccbc3e3", "id": "the-d8-adoption-20-8", "kind": "out_of_round", "label": "20/8 D8 ADOPTION \u2014 ceiling-only dial shipped default-on"}
+                         VERDICT: APPEND-ONLY OK
+
+Every prior point and every prior column row survives byte-verbatim; the sole addition is the
+the-d8-adoption-20-8 column (804 points per history) and its one registration row.

@@ -1,0 +1,24 @@
+=== THE D8 ADOPTION — THE PROOFS. PREREG_ADOPTION.md governs (16ec23b). ===
+  commit  : d928bca  (d928bca554c2fdbb0419fc5818ec6b4460ae29a0)
+  engine  : 3cfc4325aa323b7f26594cb2a202a976  (was 338a790b773cfbbff0e1283794c72efe pre-edit)
+  rl_model: 6fe7c4155866d80e8045bed2d3bf2802  (pin 6fe7c4155866d80e8045bed2d3bf2802, must be UNMOVED)
+  store   : cc02567f80bef39228f25854d121a766  (pin cc02567f80bef39228f25854d121a766, must be UNMOVED)
+  q97m    : cfdc73216c099e5e8f1fda3968f31c00  (pin cfdc73216c099e5e8f1fda3968f31c00, FROZEN)
+  v0surf  : 5dd34ca82735f5c8f021b1c7320df8f8  (pin 5dd34ca82735f5c8f021b1c7320df8f8)
+
+  P1 BARE       expects 5ea978f7b6a073abb2012f10cccbc3e3  total 693753  n=804
+  P2 KILLSWITCH expects a05fe951f78482c70520480e184c80ec  total 664949  n=804
+
+build-lock: HELD by d8-adopt (pid 29233) since 2026-08-20T08:53:50Z — single writer for the shared workspace.
+D8 BARE_DEV   mode=dev       rc=0 board_md5=5ea978f7b6a073abb2012f10cccbc3e3  (104.0s)
+  staging removed: /home/claude/fvprov_7smpv37o
+D8 BARE_CANON mode=canonical rc=0 board_md5=5ea978f7b6a073abb2012f10cccbc3e3  (96.7s)
+  staging removed: /home/claude/fvprov_d1frpone
+D8 KILL_DEV   mode=dev       rc=0 board_md5=a05fe951f78482c70520480e184c80ec  (103.8s)
+  staging removed: /home/claude/fvprov_qsuve9wi
+build-lock: released by d8-adopt
+
+=== BOARD IDS ===
+  BARE_DEV    5ea978f7b6a073abb2012f10cccbc3e3
+  BARE_CANON  5ea978f7b6a073abb2012f10cccbc3e3
+  KILL_DEV    a05fe951f78482c70520480e184c80ec

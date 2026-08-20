@@ -1,0 +1,35 @@
+=== THE D8 ADOPTION — F1 / F2 ADJUDICATION (PREREG_ADOPTION.md §3) ===
+
+BARE_DEV    md5=5ea978f7b6a073abb2012f10cccbc3e3  total=693753  n=804   expected 5ea978f7b6a073abb2012f10cccbc3e3 / 693753 / 804   OK
+BARE_CANON  md5=5ea978f7b6a073abb2012f10cccbc3e3  total=693753  n=804   expected 5ea978f7b6a073abb2012f10cccbc3e3 / 693753 / 804   OK
+KILL_DEV    md5=a05fe951f78482c70520480e184c80ec  total=664949  n=804   expected a05fe951f78482c70520480e184c80ec / 664949 / 804   OK
+
+--- F1  THE BARE BUILD (RL_O33_TAPEROFF unset, no model-semantics RL_* set at all) ---
+  F1: PASS — DID NOT FIRE  (dev AND canonical both reproduce 5ea978f7; canonical mode ACCEPTED the shipped default,
+       which is the whole point of the lane: the manifest is unmoved and the build carries no RL_ name.)
+--- F2  THE KILL-SWITCH (RL_O33_TAPEROFF=0) ---
+  F2: PASS — DID NOT FIRE
+
+--- BYTE-EXACT, NOT MERELY EQUAL-BY-HASH ---
+  KILL_DEV board vs the LIVE board of record data/rl_build/rl_app_data.json:
+     1223707 bytes vs 1223707 bytes   identical=True
+
+  BARE_DEV board vs BARE_CANON board (determinism across posture):
+     1223960 bytes vs 1223960 bytes   identical=True
+
+  BARE_DEV board vs THE PRICED CANDIDATE: no board ARTIFACT for the priced candidate is preserved
+  in docs/evidence/d8_ceiling_2026-08-20/ (d8_build.py copied it to a scratchpad that has since been
+  reaped, and the pricing seat committed the movers/bands/packet, not the board file). The byte-exact
+  claim therefore rests on md5 identity, which IS a byte-exact claim, against a value recorded THREE
+  times independently by two different seats:
+     run_price.sh   ON_DEV_1  5ea978f7b6a073abb2012f10cccbc3e3   (BUILD_D8_out.txt)
+     run_price.sh   ON_DEV_2  5ea978f7b6a073abb2012f10cccbc3e3   (BUILD_D8_out.txt)
+     run_repro_D8M  M_ON_DEV  5ea978f7b6a073abb2012f10cccbc3e3   (REPRO_D8M_out.txt, measurement seat)
+  and on the row-total 693753 / n=804 which MOVERS_D8_out.txt records independently of the md5.
+  Stated rather than papered over; nothing here asserts a diff that was not run.
+
+--- THE SIDECAR THE BUILD ITSELF WROTE (installed at the landing, not hand-composed) ---
+  BARE_DEV    {"derived": "rl_app_data.json", "own_md5": "5ea978f7b6a073abb2012f10cccbc3e3", "source": "rl_model_data.json", "source_md5": "cc02567f80bef39228f25854d121a766", "tier": 1}
+  KILL_DEV    {"derived": "rl_app_data.json", "own_md5": "a05fe951f78482c70520480e184c80ec", "source": "rl_model_data.json", "source_md5": "cc02567f80bef39228f25854d121a766", "tier": 1}
+
+=== VERDICT: F1 PASS, F2 PASS — NEITHER FALSIFIER FIRED. The landing may proceed. ===

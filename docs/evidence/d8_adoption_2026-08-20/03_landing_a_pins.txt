@@ -1,0 +1,22 @@
+====================================================================================================
+LANDING STEP A — board artifact + the two pins that move   (APPLY)
+====================================================================================================
+source board (this seat BUILT it, bare, F1 PASS): 5ea978f7b6a073abb2012f10cccbc3e3
+source sidecar (the build wrote it)             : {"derived": "rl_app_data.json", "own_md5": "5ea978f7b6a073abb2012f10cccbc3e3", "source": "rl_model_data.json", "source_md5": "cc02567f80bef39228f25854d121a766", "tier": 1}
+
+  data/rl_build/rl_app_data.json             a05fe951f784 -> 5ea978f7b6a0   [PUBLISHED board (Guard 5 0c asserts this copy)]
+  data/rl_build/rl_app_data.json.srcmd5      6b83deb683e9 -> add06681647e   [published sidecar]
+  engine/rl_after/rl_app_data.json           a05fe951f784 -> 5ea978f7b6a0   [GENERATOR output (THE BAKE 48ec96f moved it too)]
+  engine/rl_after/rl_app_data.json.srcmd5    f5fa2fd07605 -> add06681647e   [generator sidecar]
+
+COMPUTED from the tree (never typed):
+  board       = md5(data/rl_build/rl_app_data.json)      = 5ea978f7b6a073abb2012f10cccbc3e3
+  engine_head = md5(engine/rl_after/_merged_recover.py)  = 3cfc4325aa323b7f26594cb2a202a976
+  expected_boot board        a05fe951f784 -> 5ea978f7b6a0   (old value occurs 1 time(s) in the file)
+  expected_boot engine_head  338a790b773c -> 3cfc4325aa32   (old value occurs 1 time(s) in the file)
+
+  fields that moved in expected_boot.json: ['board', 'engine_head']
+  PREREG F4 must-not-move list: 14 checked, 0 moved
+  byte check: the ONLY bytes that differ are the two declared pin values.
+
+WRITTEN and re-read. expected_boot.board=5ea978f7b6a073abb2012f10cccbc3e3  engine_head=3cfc4325aa323b7f26594cb2a202a976

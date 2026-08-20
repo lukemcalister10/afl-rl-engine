@@ -1,0 +1,47 @@
+=== THE D8 ADOPTION, LANDING STEP B — LINEAGE + THE OUT-OF-ROUND COLUMN + THE UI MIRRORS ===
+The landing tail's R1 sequence, carried (20_r1_lineage_entry_run.txt): column, append, mirror, derived.
+
+--- STEP 1: out-of-round history column (writer of record: out_of_round_column.add_column) ---
+{
+  "after_round": 22,
+  "board": "5ea978f7b6a073abb2012f10cccbc3e3",
+  "column_id": "the-d8-adoption-20-8",
+  "dry_run": false,
+  "label": "20/8 D8 ADOPTION \u2014 ceiling-only dial shipped default-on",
+  "players_on_board": 804,
+  "values_already_present": {
+    "pos_rank": 0,
+    "rank": 0,
+    "value": 0
+  },
+  "values_written": {
+    "pos_rank": 804,
+    "rank": 804,
+    "value": 804
+  }
+}
+
+--- STEP 2: release_transition_register append ---
+chain OK: register tail destination.store cc02567f80bef39228f25854d121a766 == this entry's source.store
+boundary ['22', 'the-d8-adoption-20-8'] is NEW; destination.board 5ea978f7b6a073abb2012f10cccbc3e3 is declared by no existing record.
+append-only OK: 8 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
+re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
+appended entry 9; 35150 -> 42622 bytes
+  source      board a05fe951f78482c70520480e184c80ec  store cc02567f80bef39228f25854d121a766  engine_head 338a790b773cfbbff0e1283794c72efe  balanced 72fe3a176953fce36239d7b81c3cd492
+  destination board 5ea978f7b6a073abb2012f10cccbc3e3  store cc02567f80bef39228f25854d121a766  engine_head 3cfc4325aa323b7f26594cb2a202a976  balanced a49c155fa20f7084bcaa0d3dceca6cb1
+  moved     : ['balanced_board_md5', 'board', 'engine_head']
+  unchanged : ['config', 'fv', 'register', 'rl_model', 'store', 'v0surf']
+
+--- STEP 3: UI mirror regeneration (ui/tools/generate_movers_transition.py) ---
+wrote: ui/data/movers_transition.js (37272 bytes)
+register entries mirrored: 9
+mirror OK — committed == projected (37272 bytes, 9 register entries)
+mirror --check exit=0
+
+--- STEP 4: movers bundle derived blocks (ui/tools/rebuild_movers_derived.py) ---
+f0dc28ad79b4bbc7c86df5dd0e24eba0  ui/data/movers.js
+wrote: ui/data/movers.js (3218999 -> 3266183 bytes, latest report R22)
+derived blocks changed: points, values, model_changes
+derived blocks OK — committed == rebuilt (3266183 bytes, latest report R22)
+derived --check exit=0
+8b79493c049093f18a8a2c61e16dc559  ui/data/movers.js
