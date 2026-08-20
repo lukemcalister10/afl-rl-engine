@@ -1,0 +1,41 @@
+=== R1 STEP 1: out-of-round history column (writer of record: out_of_round_column.add_column) ===
+{
+  "after_round": 22,
+  "board": "a05fe951f78482c70520480e184c80ec",
+  "column_id": "the-landing-20-8",
+  "dry_run": false,
+  "label": "20/8 THE LANDING \u2014 campaign board adopted",
+  "players_on_board": 804,
+  "values_already_present": {
+    "pos_rank": 0,
+    "rank": 0,
+    "value": 0
+  },
+  "values_written": {
+    "pos_rank": 804,
+    "rank": 804,
+    "value": 804
+  }
+}
+
+=== R1 STEP 2: release_transition_register append ===
+appended entry 7; 27055 -> 33131 bytes
+
+=== R1 STEP 3: UI mirror regeneration (ui/tools/generate_movers_transition.py) ===
+wrote: ui/data/movers_transition.js (28352 bytes)
+register entries mirrored: 7
+mirror OK — committed == projected (28352 bytes, 7 register entries)
+mirror --check exit=0
+=== R1 STEP 4: movers bundle derived blocks (ui/tools/rebuild_movers_derived.py) ===
+d3e459221ee5838b6ba7ebe6728f8c1d  ui/data/movers.js
+wrote: ui/data/movers.js (3175212 -> 3219089 bytes, latest report R22)
+derived blocks changed: points, values, model_changes
+derived blocks OK — committed == rebuilt (3219089 bytes, latest report R22)
+derived --check exit=0
+92c7c28a4821ba3d6b4d99c34b597734  ui/data/movers.js
+
+=== reports byte-verbatim? (per-round report digest) ===
+rounds [15, 16, 17, 18, 19, 20, 21, 22]
+reports digest 156228623e804da88b52047a
+derived keys present: ['points', 'values', 'model_changes']
+n points 15

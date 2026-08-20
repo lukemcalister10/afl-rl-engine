@@ -274,7 +274,12 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // re-cut through the declared refit lane, board a672ed3a -> 4b448a82. Same growth, same day, same
   // reason; nothing here is weakened, and the new boundary is anchored to the owner's ruling-1.1/1.2
   // record exactly as the four before it (the assertion below covers it).
-  ok(mc.length === 5, "five out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore)  (got " + mc.length + ")");
+  // BUMPED AGAIN 2026-08-20 (THE LANDING, owner word "Land it."): a sixth boundary,
+  // `the-landing-20-8` — the campaign candidate line replaces the live release, board
+  // 88ce647f -> a05fe951 and store d9a24282 -> cb38ef11, out of round at R22. Same growth, same
+  // reason as the four bumps before it; the durable property below covers the new boundary, which is
+  // anchored to the owner's v782 landing word (register entry THE_LANDING_2026-08-20_land_it).
+  ok(mc.length === 6, "six out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING)  (got " + mc.length + ")");
   ok(mc[0].between[0] === "19" && mc[0].between[1] === "post-r19-redesign-1" &&
      mc[0].owner_approved_record === true,
      "model change declared between R19 and the restructure point, anchored to the owner-approved record");

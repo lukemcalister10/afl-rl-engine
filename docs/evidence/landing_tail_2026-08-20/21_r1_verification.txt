@@ -1,0 +1,16 @@
+=== after R1 ===
+-- movers.test.js --
+  [PASS] scratch reports represent DNP players
+  ------------------------------------------------------------
+MOVERS TESTS: 1 FAIL / 66
+-- ownership_store_apply verify --
+  store file                             cb38ef1171dcf20aae66ebf12682be0d
+  expected_boot.store                    cb38ef1171dcf20aae66ebf12682be0d
+  release_contract.identities.store      cb38ef1171dcf20aae66ebf12682be0d
+  season_state.source_store_md5          cb38ef1171dcf20aae66ebf12682be0d
+  rl_app_data.json.srcmd5.source_md5     cb38ef1171dcf20aae66ebf12682be0d
+  board_view_working.stamp.store_md5     cb38ef1171dcf20aae66ebf12682be0d
+  six-way store coherence: PASS
+-- board / store --
+a05fe951f78482c70520480e184c80ec  data/rl_build/rl_app_data.json
+cb38ef1171dcf20aae66ebf12682be0d  engine/rl_after/rl_model_data.json
