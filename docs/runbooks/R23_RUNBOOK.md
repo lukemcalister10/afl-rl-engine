@@ -1,5 +1,38 @@
 # R23 RUNBOOK — the round-23 advance, rehearsed
 
+> ## ERRATA — applied 2026-08-20 BY THE SEAT THAT EXECUTED THE ADVANCE, after the fact
+>
+> **R23 LANDED on 2026-08-20** (`docs/evidence/r23_advance_2026-08-20/`): store
+> `cc02567f` → `b745002e`, board `1d5c9f7a` → `7a3f4fe2`, `as_of_round` 22 → 23, ledger 3,086 → 3,497,
+> 411 played / 393 DNP.
+>
+> **This runbook was right about the shape of the week and wrong in five specific, load-bearing
+> places.** Each is corrected in place below and marked **`ERRATUM`**. Three of the five would have
+> HALTED the advance if followed literally; a read-only preflight against the owner's REAL file
+> (`r23_preflight/PREFLIGHT_REPORT.md`) caught all three before anything was armed. They are recorded
+> here so the R24 seat inherits the correction rather than the defect.
+>
+> | # | where | what was wrong | consequence if followed |
+> |---|---|---|---|
+> | **E1** | §3 expected verdicts, §4 H2 | **`enc=utf-8` is wrong; the file is `cp1252`**, and §4 H2's own check snippet decodes `utf-8` with `errors="replace"`, **mangling 16 names** | a seat checks the verdict against the runbook, sees a mismatch, and mistakes a correct parse for a fault; the snippet's name-matching is unreliable |
+> | **E2** | §3 step 2 | **the Bailey remediation recipe does not work.** The override table is keyed by the EXACT display string; this export writes `Bailey Williams WBD` | **HALT** — the `Bailey Williams` rule is never consulted |
+> | **E3** | (register v797, carried into the brief) | `Callum Brown -> callum-m-brown` — **`callum-m-brown` is not a key in the store** | **HALT** — override-target-invalid, and it overwrites the standing rule that already works |
+> | **E4** | §4 H2 | the sheet's pins are **SIX literals in TWO blocks**, not three in one; the ORDER 41 block **halts first** | **HALT** at ORDER 41 with the ORDER 42 pins already moved |
+> | **E5** | §3 artifact list | `ui/data/club_valuation.js` and `ui/data/ownership.js` are **not** advance artifacts in this era | a seat hunts for a mover that is skipped by design |
+>
+> **Hazard status at the landing:** **H1 REPAIRED** in tree (`staged_apply.py` now copies
+> `docs/owner_annotations` + `docs/evidence/exec_306_zlaarm` into the workspace, commit `6f2d58c`).
+> **H3 REPAIRED** in tree (`rl_export.py:210`, commit `e19833e`; parity gate 96 → 0). **H2 BIT, exactly
+> as feared** — the real R23 listed both `harry-armstrong` and `judson-clarke` — and was cleared by the
+> owner-ruled re-cut (ACT 1, commits `b86bc9e` / `024b458` / `2305743`). **H4 self-cleared** in the
+> sibling repin, as it said it would; the sidecar was never hand-edited. **H5 did not re-engage** — this
+> export writes the two Baileys apart. **H6 is still open** and is still noise, not advance damage.
+>
+> **The dry-run base named below (`189c34e`, store `cb38ef11`, board `a05fe951`) is STALE.** The advance
+> ran on `27458ad`, store `cc02567f`, board `1d5c9f7a`. Two board moves landed at round 22 between the
+> rehearsal and the advance — THE D8 ADOPTION and the injury-sheet re-cut — and both sit on the R22 side
+> of the R22→R23 movers boundary by rule M0.
+
 Recon seat, read-only. Dry-run base: `origin/main` @ `189c34e` (store `cb38ef11`, board `a05fe951`,
 `as_of_round=22`). Rehearsed in `scratchpad/r23_recon/` with SYNTHETIC scores; the real repo was never
 touched.
@@ -60,6 +93,17 @@ Hand this section to the owner verbatim.
 >   to which club. Save yourself the round-trip: tell us up front, e.g. *"97 = West Coast, 89 = Bulldogs"*.
 > - **Callum Brown.** Your export writes `Callum Brown`; the database says `Callum M. Brown`. This is
 >   already handled by a standing rule — no action needed.
+>
+> **`ERRATUM E3` (2026-08-20) — and this one is a trap, so it is spelled out.** The paragraph above is
+> CORRECT and the correct action is *nothing*. Register **v797** nevertheless specified a second
+> binding, `Callum Brown -> callum-m-brown`, and the R23 seat brief carried it. **`callum-m-brown` is
+> not a key in the store.** The store holds `callum-brown-ire` (`Callum M. Brown`, GWS, **active**) and
+> a **retired** bare `callum-brown`. A standing **unscoped** `map_all` override already binds the name
+> to `callum-brown-ire` and fires correctly. `IdentityOverrides._by_name` is
+> `{o['name']: o for o in overrides}` — a **second entry named `Callum Brown` silently overwrites the
+> first** — and `_resolve_round` looks the target up with `by_key.get(okey)`, so a missing key yields
+> `override-target-invalid` and **HALTS**. Simulated by the preflight: `PREFLIGHT HALT — 1 unresolved:
+> ['Callum Brown']`. **TOUCH NOTHING.** Owner word 2026-08-20: *"Callum M brown is fine."*
 >
 > **One more thing that is new this week:** if any player who is marked **injured** on your
 > `SITTER_2026_v1` sheet actually **played** round 23, tell us. The board cross-checks that sheet
@@ -193,11 +237,30 @@ python3 tools/round_entry/round_entry.py catchup --file 23=scores/R23.csv
 #            identity override: Callum M. Brown -> callum-brown-ire (map_all)
 #    Then it stops at "NOT APPROVED — nothing applied." That is correct.
 
-# 2. If the preflight HALTS on Bailey Williams, get the owner's word and record it as a
-#    ROUND-23-SCOPED (round, score) mapping in catchup_identity_overrides.json:
-#      add 23 to overrides[Bailey Williams].applies_to_rounds
-#      add  "23|<score>": "bailey-williams-wc" / "bailey-williams-wb" to its map
-#    DO NOT EDIT scores/R23.csv. Re-run step 1 until CLEAN.
+# 2. If the preflight HALTS on a Bailey Williams name, get the owner's word and record it in
+#    catchup_identity_overrides.json. DO NOT EDIT scores/R23.csv. Re-run step 1 until CLEAN.
+#
+#    ERRATUM E2 (2026-08-20): THE RECIPE THAT USED TO BE HERE DOES NOT WORK, AND WAS SIMULATED
+#    FAILING. It said: add 23 to overrides["Bailey Williams"].applies_to_rounds and a
+#    "23|<score>": "bailey-williams-wb" line to its map. IdentityOverrides._by_name is keyed by the
+#    EXACT display string and resolve() looks it up on the RAW name (round_catchup.py:71,85), so a
+#    "Bailey Williams" rule is NEVER CONSULTED for a row the export writes as something else.
+#    The R23 export wrote "Bailey Williams WBD" (69) alongside "Bailey J. Williams" (125). Applying
+#    the old recipe still halted: 1 unresolved, ['Bailey Williams WBD'].
+#
+#    WHICH RECIPE TO USE DEPENDS ON THE SHAPE OF THE EXPORT. LOOK AT THE FILE FIRST.
+#      (a) BOTH players under ONE bare display name (the R22 regression) -> the by_round_score rule
+#          on that exact name, scoped to the round: "<round>|<score>" -> the right stable key.
+#      (b) The two players written APART but one carrying a name the store does not have (R23:
+#          "Bailey Williams WBD") -> a NEW ENTRY keyed by that EXACT string:
+#              {"name": "Bailey Williams WBD", "rule": "map_all",
+#               "stable_key": "bailey-williams-wb", "applies_to_rounds": [23],
+#               "reason": "<owner citation verbatim>"}
+#          NOT an extension of the existing "Bailey Williams" rule. This also HONOURS H5 rather than
+#          violating it: the R20 retirement of the bare-name rule stands, because the export is not
+#          collapsing the two names — it is decorating one of them.
+#      (c) The two players written apart with store-exact names -> nothing to do; both resolve.
+#    Round-scope whatever you add, so it carries no standing weekly cost.
 
 # 3. APPLY — arm both halves of the gate for this run only (no code edit).
 INGEST_SCORE_APPLY_ARMED=1 INGEST_SCORE_APPLY=<owner-worded-token> \
@@ -220,8 +283,20 @@ relies on the ledger to skip them. Explicit is safer.
 | step | expected |
 |---|---|
 | preflight | `PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.` |
-| preflight counts | `listed/played=N resolved=N listed-zero=0 absent/DNP=804-N`, `enc=utf-8` |
-| overrides fired | `Callum M. Brown -> callum-brown-ire (map_all)` — and Bailey only if R23 collapses the names |
+| preflight counts | `listed/played=N resolved=N listed-zero=0 absent/DNP=804-N`, `enc=` **whatever the file is** |
+| overrides fired | `Callum M. Brown -> callum-brown-ire (map_all)` — and Bailey only if the export needs it |
+
+> **`ERRATUM E1` (2026-08-20) — `enc=utf-8` WAS WRONG AND IS NOT A FAULT WHEN IT DIFFERS.** The
+> owner's real R23 file is **`cp1252`**: 16 raw `0xA0` (NBSP) bytes, each trailing a player name, and a
+> strict UTF-8 decode fails at byte 43. That is **within spec** — `footywire_parser.decode_bytes`
+> tries BOM→`utf-8-sig`, then `utf-8`, then `cp1252` — and the R23 preflight and apply both reported
+> `enc=cp1252` and resolved 411 of 411. **Do not "fix" the file and do not treat the encoding line as a
+> verdict.** The actual R23 verdict line was:
+> `R23 enc=cp1252 listed/played=411 resolved=411 listed-zero=0 absent/DNP=393 sha256 e3d5410e0e57`.
+>
+> A related precision: the 16 trailing-`\xa0` names are absorbed by **`str.strip()` inside the parser**,
+> *before* the normaliser is consulted — 409 exact matches plus 16 post-strip exact matches. The
+> normaliser absorbs case/spacing drift, but it was not what saved these.
 | apply line | `R23  store <8>-><8>  board <8>-><8>  players=N  guard5=True  hist=[14…23]  final=FINALIZED  movers->UI=804` |
 | ledger | 3,086 → 3,086+N triples |
 | journal | five lines: `CORE_COMMITTED` → `FINALIZING` → `FINALIZE_BEGIN force:false` → `FINALIZED` → `FINALIZED injected:804 movers_json:movers_R23.json` |
@@ -235,12 +310,29 @@ relies on the ledger to skip them. Explicit is safer.
 `engine/rl_after/ingestion/{applied_rounds_ledger,value_history,rank_history,pos_rank_history,sibling_repin_state,finalization_state}.json` ·
 `engine/rl_after/ingestion/finalization_journal.jsonl` ·
 `engine/rl_after/ingestion/movers/movers_R23.{json,csv}` ·
-`ui/data/{board_view_public,board_view_working,club_valuation,movers,ownership}.js` ·
+`ui/data/{board_view_public,board_view_working,movers}.js` ·
 `session_2026-07-20/fv_provenance_remediation/fixtures/{reference_vector_*,forward_vector_*}.json` ·
 `session_2026-07-20/fv_provenance_remediation/test_forward_lens_*.py` · `test_fv_provenance.py` ·
-plus the round-advance expectations in `engine/rl_after/ingestion/test_movers_transition.py` and
-`ui/tests/movers.test.js` (bumped every week; R22 bumped 21→22 and moved the future-append fixture
-R22→R23 — this week they move 22→23 and R23→R24).
+`engine/rl_after/ingestion/.weekly_txn/txn_catchup_R<N>/{journal.jsonl,manifest.json}` (tracked — R15…R23
+all are) · plus the round-advance expectations in `engine/rl_after/ingestion/test_movers_transition.py`
+and `ui/tests/movers.test.js` (bumped every week; R22 bumped 21→22 and moved the future-append fixture
+R22→R23; R23 moved 22→23 and R23→R24).
+
+> **`ERRATUM E5` (2026-08-20) — TWO NAMED "MOVERS" DO NOT MOVE, AND ONE MORE DOES.**
+> * **`ui/data/club_valuation.js` is SKIPPED BY DESIGN**, and the code says so:
+>   `round_finalize.py:340` emits `'club_valuation': 'SKIPPED (Track A owns the club-valuation curve)'`.
+>   Do not hunt for it.
+> * **`ui/data/ownership.js` is not an advance artifact** either — its writer of record is
+>   `ui/tools/ingest_inputs.py`, driven by `docs/inputs/` changes.
+> * **`engine/rl_after/rl_app_data.json` (+ `.srcmd5`) is the GENERATOR-side copy and the transaction
+>   does NOT publish to it** — `round_apply.py:139-141` publishes only to `data/rl_build/`. R22 left it
+>   stale with every gate green. R23 synced it by hand **and disclosed the sync**, because THE BAKE and
+>   THE D8 ADOPTION both moved the pair in lockstep and the same seat had just moved it in ACT 1.
+>   Either choice is defensible; the one thing that is not is moving it silently.
+> * **A ROUND ADVANCE EARNS NO `data/release_lineage.json` ENTRY.** The lineage register records
+>   OUT-OF-ROUND board moves. R23's register tail correctly remains the ACT 1 re-cut boundary at round
+>   22. (`generate_movers_transition.py --check` and `rebuild_movers_derived.py --check` must still both
+>   exit 0 afterwards.)
 
 ---
 
@@ -301,30 +393,90 @@ round advance **increments `games` for every listed player**, so the first R23 f
 the 37 injured-marked players desynchronises the sheet and halts the board regen *inside the
 transaction*.
 
-The sheet is also **triple-pinned** — md5 `b26798c35adcd9bda5cef50ff2c884da`, 219 rows, 37 `injured=Y`
-(`_merged_recover.py:4163-4165` and `5861`) — so it **cannot be quietly re-cut**: updating `games_2026`
-moves the md5 and trips a different halt in the same file. Any fix must move the sheet **and** the three
-pinned literals in `_merged_recover.py` in **one commit**.
+The sheet is also pinned — md5, row count and `injured=Y` count — so it **cannot be quietly re-cut**:
+changing it moves the md5 and trips a different halt in the same file. Any fix must move the sheet
+**and** the pinned literals in `_merged_recover.py` in **one commit**.
+
+> **`ERRATUM E4` (2026-08-20) — IT IS SIX LITERALS IN TWO BLOCKS, NOT THREE IN ONE, AND THE BLOCK THIS
+> SECTION NAMES IS THE ONE THAT HALTS *SECOND*.** Register v790 and this section both named only the
+> ORDER 42 trio. There is an **earlier ORDER 41 block** asserting the same three facts, and it halts
+> **first** — so a re-cut that moves only the ORDER 42 pins dies at ORDER 41 with the sheet already
+> changed.
+>
+> | block | literals | assertion sites |
+> |---|---|---|
+> | **ORDER 41** (halts FIRST) | `O41_INJ_MD5` · `O41_INJ_ROWS` · `O41_INJ_Y` | md5, rows, Y-count, then a 35-of-35 name match |
+> | **ORDER 42** | `_SHEET_MD5` · `_SHEET_ROWS` · `_SHEET_Y` (one line, `;`-separated) | md5, rows, Y-count, name match, ambiguity, key count, then the `games_2026` compare |
+>
+> **GREP THE PIN NAMES. DO NOT TRUST LINE NUMBERS** — `_merged_recover.py` is edited by other acts
+> (the D8 adoption moved it the same week) and every line number in this runbook and in the preflight
+> is pre-adoption.
+>
+> **What the R23 re-cut actually did** (`docs/evidence/r23_advance_2026-08-20/`, prereg `b86bc9e`,
+> edit `024b458`): `harry-armstrong` and `judson-clarke` flipped `injured` `Y`→`N`, **two bytes**, size
+> 15,948 and rows 219 both unchanged, CRLF preserved; md5 `b26798c3…` → `21361291f26d35108b88f92f885c5063`;
+> `injured=Y` **37 → 35**; all six literals moved in the same commit as the sheet. **Neither guard was
+> weakened** — option (b) below, loosening the compare to `store_games >= sheet_games`, was **NOT**
+> taken, because the owner ruled the re-cut: *"All good on the injury sheet. Fine by me."*
+>
+> **The re-cut moves the board, so it owes an out-of-round column and a lineage entry.** Standing owner
+> rule 2026-07-28. It is also what rule **M0** needs: `round_finalize` builds the round-N movers against
+> `round_movers.previous_point(repo, N)` — the stored point IMMEDIATELY BEFORE round N — so the
+> post-re-cut round-22 board must exist as a stored point, or the round's movers silently report the
+> re-cut as the round's own work. **Watch the ordering:** `out_of_round_column._register` sorts columns
+> by `(after_round, id)` — **alphabetically**, not chronologically — so a new round-22 column only lands
+> last if its id sorts last. **Assert `previous_point` after writing the column; do not trust the
+> alphabet.** (The R23 seat's column `the-sheet-recut-20-8` does sort last, and the assertion is in
+> `register_recut_column.py`.)
 
 **Blast radius is data-dependent and small:** of the 37 injured-marked players, **0** appeared in
 `R21.csv` and **1** (`judson-clarke`) appeared in `R22.csv`. So R23 may well pass untouched — but it is
 a coin flip on the owner's file, not a guarantee.
 
-**Check this before you apply** (read-only, seconds):
+**Check this before you apply** (read-only, seconds).
+
+> **`ERRATUM E1b` (2026-08-20) — THE SNIPPET THAT USED TO BE HERE IS DELETED. DO NOT RESURRECT IT.**
+> It decoded the score file with `.decode("utf-8", errors="replace")`. The real R23 file is `cp1252`
+> with 16 `0xA0` bytes, so that line turned **all 16** of those names into `�` and the set
+> intersection below it was unreliable on exactly the file it was written to check. A check that
+> silently mis-reads 16 of 411 rows is worse than no check.
+>
+> **USE THE REAL PARSER.** It is the same code the apply uses, it handles the encoding by spec, and it
+> is free:
 
 ```bash
 python3 - <<'PY'
-import json,csv,re
-R="/home/user/afl-rl-engine"
-n=lambda s: re.sub(r'[^a-z0-9]+','-',str(s).strip().lower().replace('’',"'")).strip('-')
-inj={n(r['player']) for r in csv.DictReader(open(R+"/docs/owner_annotations/SITTER_2026_v1.csv"))
-     if (r.get('injured') or '').strip().upper()=='Y'}
-b=open(R+"/scores/R23.csv","rb").read().decode("utf-8",errors="replace")
-hit=sorted({n(l.rsplit(",",1)[0]) for l in b.splitlines()[1:] if l.strip()} & inj)
-print("injured=Y players listed in R23:", len(hit), hit)
-print("-> if non-empty, ORDER 42 WILL HALT the advance. Escalate before applying.")
+import csv, os, re, sys
+R = "/home/user/afl-rl-engine"; RN = 23
+sys.path.insert(0, os.path.join(R, "engine", "rl_after", "ingestion"))
+import footywire_parser as FP                       # THE PARSER OF RECORD — decode_bytes handles
+                                                    # BOM/utf-8/cp1252 and strips each name itself
+n = lambda s: re.sub(r'[^a-z0-9]+', '-', str(s).strip().lower().replace('’', "'")).strip('-')
+inj = {n(r['player']) for r in csv.DictReader(
+           open(os.path.join(R, "docs/owner_annotations/SITTER_2026_v1.csv")))
+       if (r.get('injured') or '').strip().upper() == 'Y'}
+parsed = FP.parse_round_file(os.path.join(R, "scores/R%d.csv" % RN))
+rows = parsed['rows'] if isinstance(parsed, dict) else parsed
+hit = sorted({n(name) for name, _score in rows} & inj)
+print("injured=Y players listed in R%d: %d %s" % (RN, len(hit), hit))
+print("-> if non-empty, ORDER 42 WILL HALT the advance. The remedy is the re-cut below.")
 PY
 ```
+
+*(If `parse_round_file`'s return shape has moved, read it rather than guessing — the point of this
+erratum is that the parser is the authority on what the file says, not a hand-rolled decode.)*
+
+**What it said for the real R23, against the PRE-re-cut sheet:**
+`injured=Y players listed in R23: 2 ['harry-armstrong', 'judson-clarke']` — exactly the two the v790
+re-cut was written for. H2 was not a coin flip; it landed.
+
+**Re-run today it says `0 []`, and that is the check working, not the check broken:** the two rows are
+now `injured=N`, so no listed player is injury-annotated and ORDER 42 has nothing to disagree about.
+Zero is the state a round is safe to apply in.
+
+**Measured, for anyone tempted to restore the old snippet:** run on this same file it mangles exactly
+**16** names — `Isaac Heeney�`, `Chad Warner�`, `Nick Haynes�`, `Nick Blakey�`, … — none of which can
+match the sheet. It would have reported `0 []` for the wrong reason on a file where the answer was 2.
 
 **Proposed fix (owner-worded, not a seat decision):** ORDER 42's cross-check is not round-aware. Either
 (a) re-cut the sheet's `games_2026` from the store and move the md5/rows/Y pins in the same commit as
