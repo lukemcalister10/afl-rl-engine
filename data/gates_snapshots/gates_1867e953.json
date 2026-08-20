@@ -45,8 +45,8 @@
   },
   "A9": {
    "dc": false,
-   "status": "FAIL",
-   "detail": "Ginnivan>Ward: 2198 vs 2837"
+   "status": "STRUCK",
+   "detail": "Luke 2026-08-20 \u2014 player-ordering assertion RETIRED, verbatim: \"Those player ordering assertions were retired and are outdated. Since they occurred, Ward has hit an excellent run of form.\" Prior patte"
   },
   "A10": {
    "dc": true,
@@ -80,13 +80,13 @@
   },
   "B1": {
    "dc": false,
-   "status": "HALT",
-   "detail": "JULY-8 construction (owner-ruled 2026-07-13, register v52 \u2014 CONFORMED; raw class-year sums of Vpath averaged UNWEIGHTED across 17 classes 2004-2020 incurve ND+RD; CANDIDATE regenerated this run \u2014 engi"
+   "status": "STRUCK",
+   "detail": "[STRUCK \u2014 Luke 2026-08-20, verbatim: \"That cohort rail again was retired. Weeks ago.\" The JULY-8 CONSTRUCTION is SUPERSEDED by the modern class-discipline law: G-COHORT as carried by the owner-signed "
   },
   "B2": {
    "dc": false,
    "status": "PASS",
-   "detail": "leave-cohort-out sensitivity (2014-2018 ND held out): median |IS-WF| leakage=0.000 %-pts (FULL precision; tol 0.5 UNCHANGED, SET 02/07/2026); worst cells RUCK|GOOD|T4:3.78, SD|GOOD|T4:2.41, SD|GOOD|T2"
+   "detail": "leave-cohort-out sensitivity (2014-2018 ND held out): median |IS-WF| leakage=0.000 %-pts (FULL precision; tol 0.5 UNCHANGED, SET 02/07/2026); worst cells SD|GOOD|T2:4.36, RUCK|GOOD|T4:3.78, SD|GOOD|T4"
   },
   "B3": {
    "dc": false,

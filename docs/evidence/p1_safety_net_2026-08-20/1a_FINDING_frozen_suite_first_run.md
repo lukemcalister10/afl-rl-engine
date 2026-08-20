@@ -65,3 +65,43 @@ red, and it did not execute one gate.
   the first for `1867e953` — under its own binding reporting rules (Luke, D10). It is committed as
   the record of the run. The out-of-fence report write to `/tmp` was **refused** by the rev143
   fence, exactly as designed.
+
+---
+
+# RESOLVED — 2026-08-20. BOTH REDS RULED BY THE OWNER. BOTH RETIRED. BOTH STRUCK.
+
+**Same day. The presentation above did its job: it went to the owner, and he ruled on both.**
+
+> **A9 — RULED. OWNER, VERBATIM:** *"Those player ordering assertions were retired and are outdated.
+> Since they occurred, Ward has hit an excellent run of form."*
+
+> **B1 — RULED. OWNER, VERBATIM:** *"That cohort rail again was retired. Weeks ago."*
+
+**Neither was a new red, and the document above is wrong about that in one specific way worth
+correcting rather than quietly fixing.** The heading "TWO REDS THAT ARE NEW AT THE CURRENT HEAD" was
+true of the *snapshots* and false of the *law*: both legs had already been retired by the owner —
+A9 into the register's scored-never-flagged pattern and then wholesale by `RULEBOOK.md` v2.1 PART 2
+(owner, 2026-07-22: *"they've done their job"*); B1's July-8 rail superseded by the modern G-COHORT
+class-discipline law that the RULEBOOK carries and reports UNMEASURED. The retirements were never
+written into `ship_gates_check.py`, **because it could not run**, so its first run after the
+unbricking presented settled questions as fresh forks. The finding underneath the finding has a
+second floor: **an instrument that cannot run still needs its retirements recorded, or reviving it
+resurrects repealed law.**
+
+Both are now **STRUCK**, by the mechanism the suite already carried for A15 (Luke, 02/07/2026) —
+recorded in `ship_gates_check.py`, in `SHIP_GATES.md`, and rendering `STRUCK` on the board. Each
+strike carries the owner's words verbatim, the register's prior pattern, and the zombie-mechanism
+note. Neither leg was deleted: both still run, still score, and still print their numbers, including
+every year that *would have* breached B1's retired 1.30 bar. A strike removes the alarm, never the
+measurement.
+
+**The three reds that are not new — A2, A3, A12 — are untouched and still FAIL**, exactly as
+`RULEBOOK.md` PART 3 carries them. This was a ruling on two named legs, not a sweep, and the
+before/after diff of all 27 gates is committed to prove it.
+
+**Full record:** `docs/evidence/gate_strikes_2026-08-20/` — `STRIKES.md` (the rulings, the mechanism,
+what is preserved), `BEFORE_AFTER.txt` (all 27 gates diffed; exactly two verdicts moved),
+`STRIKES_CLAIMS.json` (G1: every value-bearing artifact byte-unmoved), `verify_strikes.py`.
+**Proposed process law born from this episode:** P11 in
+`docs/proposals/rulebook/AMENDMENT_1b_2026-08-20.md` — *a retirement is recorded in the instrument
+that carries the gate, in the same act as the ruling.*

@@ -6,16 +6,33 @@ name: Live Scoring Updater
 # throwaway SCRATCH repo whose expected_boot.json is stamped coherent with its own engine.
 #
 # #251 part B (owner ruling 2026-07-29): the six full weekly-update REHEARSALS that used to run here on
-# every push moved to .github/workflows/live-scoring-proofs.yml, on a manual trigger. They are kept and
-# startable by hand, one at a time or all six — not deleted, and not otherwise changed. They all HALT in
-# ~30 seconds on the v0surf frozen signature and cannot pass as wired, so on every push they were six
-# permanently-red jobs hiding real reds. This workflow keeps the every-push signal: `live-scoring-light`.
-# Points 2, 2b, 3, 3b, 3c, 4 and 5 of the bar below now live in that manual workflow.
+# every push moved to .github/workflows/live-scoring-proofs.yml, on a manual trigger — kept and startable
+# by hand, one at a time or all six. They all HALT in ~30 seconds on the v0surf frozen signature and
+# cannot pass as wired, so on every push they were six permanently-red jobs hiding real reds. This
+# workflow keeps the every-push signal: `live-scoring-light`.
+#
+# SCRAPPED 2026-08-20 (owner ruling). `.github/workflows/live-scoring-proofs.yml` is DELETED. OWNER,
+# VERBATIM: "The six shelved tests seem cumbersome and adding time and bloat, I'd be happy to scrap them
+# unless you disagree?" — the supervisor concurred on the coverage-successor condition, and his earlier
+# words on the same tests stand with it: "That sounds like more and more process and clunky cumbersome."
+# The de-scope's own recorded cause had gone false, which is why the plan queued this as an owner
+# RE-ADJUDICATION rather than a silent repair or a silent retirement (PLAN_v6 1a).
+#
+# THE COVERAGE IS TRACKED, NOT LOST. NAMED SUCCESSOR: the PLAN_v6 PACKAGE 2a LANDER SELF-TEST (2a.3) —
+# purpose-built crash-injection and abort-path coverage that "deliberately breaks each step in a sandbox
+# and asserts the failure is caught", with the abort path tested by killing a landing at each step and
+# asserting every carrier restores byte-exact. That is a forward commitment on the record, deliverable by
+# package 2a; the rehearsals' crash/finalization-injection ground is its scope. Full retirement record:
+# docs/evidence/gate_strikes_2026-08-20/RETIREMENTS.md.
+#
+# Points 2, 2b, 3, 3b, 3c, 4 and 5 of the bar below were that workflow's; they are RETIRED with it and
+# are listed here as the record of what the rehearsals covered.
 #
 # Bar (all must pass, halt-not-warn):
 #   0  GATE OFF shipped        — the apply switch constants ship OFF (APPLY_DEFAULT=False, env unset)
 #   1  fast unit tests         — snapshot identity + every pre-staging refusal (no board build)
-#  [MANUAL, live-scoring-proofs.yml]
+#  [RETIRED 2026-08-20 — the six rehearsals are SCRAPPED (owner ruling above); successor is the
+#   PLAN_v6 2a.3 lander self-test. Kept below as the record of what they covered.]
 #   2  two-round proof         — R15 -> R16 sequential: preview/apply/board/value+rank history/restart/
 #                                dedup/stale/tamper/universe-residue/failure-injection/crash-recovery/
 #                                UI-refresh/no-production-touch (the 17-point live-scoring proof)

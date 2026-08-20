@@ -297,7 +297,44 @@ try:
          f'Berry={b:.0f} Tsatas={t:.0f} ratio={b/max(t,1e-9):.2f}x (need >=2.00x) [display de-ambiguated D4 02/07]')
 except LookupError as ex:
     gate('A8', True, 'ERROR', str(ex))
-cmp_gate('A9', False, [('Ginnivan>Ward', 'Jack Ginnivan', 'Josh Ward')], '{}: {:.0f} vs {:.0f}')
+# ==================================================================================================
+# A9 — STRUCK (Luke, 2026-08-20). Same mechanism as A15: the leg is deliberately removed by the owner,
+# reports a verdict, and is not counted against shipping.
+#
+# THE OWNER'S RULING, VERBATIM (2026-08-20, in chat):
+#   "Those player ordering assertions were retired and are outdated. Since they occurred, Ward has hit
+#    an excellent run of form."
+#
+# THE REGISTER'S PRIOR PATTERN — this strike is not new law, it is law finally recorded in the
+# instrument. A9 had ALREADY been converted to the SCORED-NEVER-FLAGGED pair pattern (register item
+# 265, where A9 is named as the precedent for pair-2 handling): "EXPECTED-FAIL-BY-LAW ... (A9
+# Ginnivan/Ward precedent — the pair stays his law, the auditor scores it, never flags it; revisit on
+# form/reads)". Item 272's per-gate verdicts carry the same wiring by name. RULEBOOK v2.1 PART 2 then
+# retired the dated reads wholesale (owner, 2026-07-22: "they've done their job"). The strike below IS
+# scored-never-flagged made structural: the numbers still print on every board run, the leg can no
+# longer red the build, and the revisit trigger the register named — form — is exactly what the owner
+# cited on 2026-08-20.
+#
+# ZOMBIE-MECHANISM NOTE (why this leg came back from the dead). The retirement PREDATES this red. A9
+# reported FAIL only because the frozen suite was BRICKED — the :49 hardcode above — through the whole
+# period in which the ruling landed, and its FIRST full run since being unbricked resurrected a leg the
+# owner had already retired (docs/evidence/p1_safety_net_2026-08-20/1a_FINDING_frozen_suite_first_run.md
+# — "TWO REDS THAT ARE NEW AT THE CURRENT HEAD"; they were not new, they were unrecorded). A retirement
+# that is not written into the instrument that carries the gate is not a retirement; it is a delay. The
+# proposed process law is in docs/proposals/rulebook/AMENDMENT_1b_2026-08-20.md.
+# ==================================================================================================
+_A9_CITE = ('Luke 2026-08-20 — player-ordering assertion RETIRED, verbatim: "Those player ordering '
+            'assertions were retired and are outdated. Since they occurred, Ward has hit an excellent run '
+            'of form." Prior pattern: scored-never-flagged (register A9/pair-2 precedent); dated reads '
+            'retired wholesale RULEBOOK v2.1 PART 2 (owner 2026-07-22). Zombie note: retired while this '
+            'suite was bricked at :49; surfaced FAIL only on the first run after the unbricking.')
+try:                                   # SCORED, NEVER FLAGGED — the numbers stay visible, the alarm does not
+    _gin, _wrd = E('Jack Ginnivan'), E('Josh Ward')
+    gate('A9', False, 'STRUCK', f'{_A9_CITE} SCORED (never flagged): Ginnivan={_gin:.0f} vs Ward={_wrd:.0f} '
+         f'(retired assertion was Ginnivan>Ward; ratio={_gin/max(_wrd,1e-9):.3f})')
+except LookupError as ex:              # a STRUCK gate reports; it cannot red the build, and it cannot go silent
+    gate('A9', False, 'STRUCK', f'{_A9_CITE} SCORED: unavailable this run ({ex}) — a struck gate still emits '
+         'a verdict (SILENCE IS A RED) but can no longer fail the build.')
 cmp_gate('A11', True, [('Farrow>Patterson', 'Jacob Farrow', 'Dylan Patterson'), ('Cumming>Annable', 'Sam Cumming', 'Dan Annable')], '{}: {:.0f} vs {:.0f}')
 cmp_gate('A12', True, [('Travaglia>Moraes', 'Tobie Travaglia', 'Christian Moraes'), ('Smillie>Retschko', 'Josh Smillie', 'Patrick Retschko')], '{}: {:.0f} vs {:.0f}')
 # A13/A14 — PVC-coupled: staged PENDING (advisory numbers vs the CURRENT stand-in PVC, not the future curve)
@@ -417,14 +454,53 @@ def _b1_rows(mpath):
 # 116.1 is the indexed row, NOT the gated number). SILENT-GATE RULE (item-38 fix): a missing/unreadable
 # matrix, a raised exception, or a None/absent figure is a HALT (RED) — never a skip, never a silent pass.
 # Computed on the CANDIDATE regenerated this run.
+# ==================================================================================================
+# B1 — STRUCK (Luke, 2026-08-20). Same mechanism as A15/A9: the leg is deliberately removed by the
+# owner, reports a verdict, and is not counted against shipping. EVERY B1 path below now renders
+# STRUCK — including the old HALT paths (skip / missing matrix / exception). A retired gate that can
+# still red the build on a bad input has not been retired; it has been made unfalsifiable instead.
+#
+# THE OWNER'S RULING, VERBATIM (2026-08-20, in chat):
+#   "That cohort rail again was retired. Weeks ago."
+#
+# THE REGISTER'S PRIOR PATTERN — SUPERSESSION, not repeal. The JULY-8 CONSTRUCTION in this file (raw
+# class-year sums, den=min(y1,y2), each of y4/y5/y6 vs a hard 1.30) is the 2026-07-13 instrument. The
+# modern class-discipline law is G-COHORT as carried by the owner-signed RULEBOOK v2.1 and its twin
+# docs/acceptance_v2_0.json ("check": "walk-forward book ratio", "max": 1.3, "note": "UNMEASURED at R19
+# until harness migration rebuilds the book"), reported UNMEASURED under RULEBOOK PART 3 — "never
+# assumed passing, never silently waived". The register carries the same direction of travel: item 51
+# ("THE G-COHORT FEAR IS RETIRED, AND THE REASON MATTERS"), item 60 (a gate inherited from a superseded
+# line is retired with an obituary, not re-ruled), and the two-sided G-COHORT band folded at item 266.
+# So the LAW survives, in the governing document, awaiting its measurement; the JULY-8 CONSTRUCTION —
+# this specific rail, with this specific denominator and this specific hard bar — does not.
+#
+# NOTHING IS SUPPRESSED. This is the B5 disposition, not a mute: the whole July-8 computation still
+# runs on the CANDIDATE regenerated this run, every figure and every would-have-breached year still
+# prints in the verdict line, and the per-class table + the demoted indexed SHAPE row still print on
+# every board run. The signal is relocated to a visible printed surface; only the alarm is removed.
+#
+# ZOMBIE-MECHANISM NOTE. The retirement PREDATES this red — "weeks ago", against a suite that had not
+# executed one gate in weeks. B1 reported HALT only because the frozen suite was BRICKED (the :49
+# hardcode above) while the ruling landed, and its FIRST full run since being unbricked resurrected a
+# rail the owner had already retired (docs/evidence/p1_safety_net_2026-08-20/
+# 1a_FINDING_frozen_suite_first_run.md — filed as "NEW AT THE CURRENT HEAD"; it was not new, it was
+# unrecorded). Proposed process law: docs/proposals/rulebook/AMENDMENT_1b_2026-08-20.md.
+# ==================================================================================================
+_B1_CITE = ('[STRUCK — Luke 2026-08-20, verbatim: "That cohort rail again was retired. Weeks ago." The '
+            'JULY-8 CONSTRUCTION is SUPERSEDED by the modern class-discipline law: G-COHORT as carried by '
+            'the owner-signed RULEBOOK v2.1 + docs/acceptance_v2_0.json (walk-forward book ratio, max 1.3), '
+            'reported UNMEASURED at R19 under RULEBOOK PART 3 — never assumed passing, never silently '
+            'waived. Zombie note: retired while this suite was bricked at :49; surfaced HALT only on the '
+            'first run after the unbricking. SCORED, NEVER FLAGGED — every figure below still prints; only '
+            'the alarm is removed] ')
 B1_TABLE = None
 try:
     if 'B1' in SKIP:
-        gate('B1', False, 'HALT', 'SGC_SKIP=B1 — B1 is a BINDING gate (G-COHORT) and MUST NOT be skipped '
-             'silently; an absent result is a FAILURE, not a pass (item-38 rule). Treated as HALT.')
+        gate('B1', False, 'STRUCK', _B1_CITE + 'SGC_SKIP=B1 — the July-8 rail is struck, so a skip is no '
+             'longer a silent pass to guard against; nothing was computed this run.')
     elif CAND_MATRIX is None:
-        gate('B1', False, 'HALT', f'candidate matrix unavailable — B1 produced NO result and HALTS rather '
-             f'than pass silently (the v2.5 comparator is NOT substituted): {CAND_MATRIX_ERR}')
+        gate('B1', False, 'STRUCK', _B1_CITE + f'candidate matrix unavailable, so the struck rail scored '
+             f'nothing this run (the v2.5 comparator is NOT substituted): {CAND_MATRIX_ERR}')
     else:
         SUM, cohorts = _b1_july8(CAND_MATRIX)
         for _rq in (1, 2, 4, 5, 6):
@@ -437,18 +513,22 @@ try:
         ok = not breaches
         def _guide(r):                                       # advisory band 1.20-1.25 — NEVER gates
             return 'in-guide' if 1.20 <= r <= 1.25 else ('above-guide' if r > 1.25 else 'below-guide')
-        # FAIL-CLOSE: a clean, non-breaching INJECTED matrix is stamped INJECTED (never a bare PASS) — it is
-        # a proof, not a certification. A breach still HALTs (HALT wins). See SHIP_GATES.md §RED-PATH TEST SEAM.
-        _b1_status = ('INJECTED' if INJECT_RUN else 'PASS') if ok else 'HALT'
+        # FAIL-CLOSE, UNWEAKENED BY THE STRIKE: an INJECTED matrix is still stamped INJECTED (never a bare
+        # PASS, and now never a bare STRUCK) — it is a proof, not a certification — and an injected run still
+        # exits NON-ZERO regardless of any gate's status. See SHIP_GATES.md §RED-PATH TEST SEAM. Off the seam
+        # the rail renders STRUCK whether or not the old 1.30 bar would have been breached; the breach itself
+        # is still named in the detail line, because a struck gate reports what it measured.
+        _b1_status = 'INJECTED' if INJECT_RUN else 'STRUCK'
         gate('B1', False, _b1_status,
-             ('[INJECTED MATRIX — NOT A CERTIFICATION; run exits non-zero] ' if INJECT_RUN else '') +
+             ('[INJECTED MATRIX — NOT A CERTIFICATION; run exits non-zero] ' if INJECT_RUN else '') + _B1_CITE +
              f'JULY-8 construction (owner-ruled 2026-07-13, register v52 — CONFORMED; raw class-year sums of '
              f'Vpath averaged UNWEIGHTED across {len(cohorts)} classes 2004-2020 incurve ND+RD; CANDIDATE '
              f'regenerated this run — engine {HEAD} store {STORE} config {(CONFIG_HASH or "-")[:12]}): '
              + ' '.join(f'y{N}={SUM[N]:.1f}' for N in sorted(SUM)) +
              f'; den=min(y1,y2)={den_src}={den:.1f}; ratios ' +
              ' '.join(f'y{N}={ratios[N]:.4f}({_guide(ratios[N])})' for N in (4, 5, 6)) +
-             '; hard<=1.30 -> ' + ('PASS x3' if ok else f'BREACH at y{breaches} (HALT)') +
+             '; RETIRED hard<=1.30 bar -> ' + ('would have PASSED x3' if ok else
+                                               f'would have BREACHED at y{breaches} — SCORED, NOT FLAGGED (struck)') +
              '; guide 1.20-1.25 ADVISORY (margin reported, never gates)')
         # ---- SHAPE DIAGNOSTIC (DEMOTED indexed reading — NOT the gate; structurally cannot fail the build) --
         # Computed in its own guarded block that NEVER calls gate() and NEVER affects the exit code. It reports
@@ -466,11 +546,12 @@ try:
                     _t.append(f'| {C} | {pk} | ' + ' | '.join((f'{R[C][N]:.0f}' if N in R[C] else '—') for N in range(1, 8)) + ' |')
             _t.append(f'| _indexed AVG (SHAPE DIAGNOSTIC — DEMOTED 2026-07-13, NOT the gate)_ | _{ppk}_ | ' +
                       ' | '.join((f'_{AVG[N]:.0f}_' if N in AVG else '—') for N in range(1, 8)) + ' |')
-            _t.append(f'| **July-8 raw-sum AVG (THE GATED ROW)** | **—** | ' +
+            _t.append(f'| **July-8 raw-sum AVG (the STRUCK rail, scored but never flagged — Luke 2026-08-20)** | **—** | ' +
                       ' | '.join((f'**{SUM[N]:.0f}**' if N in SUM else '—') for N in range(1, 8)) + ' |')
             B1_TABLE = '\n'.join(_t)
             NOTES.append(
-                'B1 — THE GATE is the July-8 raw-class-sum construction (bold row); the indexed yr1=100 row is a '
+                'B1 — STRUCK (Luke 2026-08-20, "That cohort rail again was retired. Weeks ago."). The bold row is the '
+                'RETIRED July-8 raw-class-sum construction, still SCORED and still printed; the indexed yr1=100 row is a '
                 'NON-GATING SHAPE diagnostic (peak position + pre-peak dip), DEMOTED 2026-07-13 — its historic '
                 f'headline 126.8/125.2/116.1 is NOT the gate.\n  SHAPE read (indexed, advisory): peak at yr{ppk}, '
                 f'pre-peak low {predip:.1f} (index yr1=100).\n' + B1_TABLE)
@@ -478,8 +559,11 @@ try:
             NOTES.append(f'B1 SHAPE diagnostic (indexed, non-gating) unavailable: {type(_dex).__name__}: {_dex} '
                          '(diagnostic only — does NOT affect the B1 verdict or the build)')
 except Exception as ex:
-    gate('B1', False, 'HALT', f'B1 EXCEPTION — an errored/absent result is a FAILURE, never a pass '
-         f'(item-38 rule): {type(ex).__name__}: {ex}')
+    # STRUCK, not HALT: the rail is retired, so an errored input can no longer red the build through it.
+    # The exception is still NAMED and still printed — item-38's real requirement was never "HALT", it was
+    # "never silent". A struck gate that swallowed its own exception would be the item-38 defect again.
+    gate('B1', False, 'STRUCK', _B1_CITE + f'B1 EXCEPTION, named not swallowed (the struck rail scored '
+         f'nothing this run): {type(ex).__name__}: {ex}')
 # B2 — GATE-1 leakage + separation. RE-WIRED (gate-integrity b, 2026-07-09): B2 INVOKES the producer
 # (_gate1_wf.py) itself and reads its STRUCTURED JSON certificate — UNROUNDED observations + code/store/config
 # hashes — instead of parsing an unauthenticated, integer-rounded text file at a fixed path (the old
@@ -846,7 +930,8 @@ try:
 except Exception:
     pass
 if B1_TABLE:      # the July-8 GATED row (bold) + the DEMOTED indexed SHAPE diagnostic print on every board run
-    print('\nB1 — July-8 raw-sum GATE (bold row) + indexed SHAPE diagnostic (DEMOTED 2026-07-13, NOT the gate):\n' + B1_TABLE)
+    print('\nB1 — July-8 raw-sum rail, STRUCK 2026-08-20 but still SCORED (bold row) + indexed SHAPE '
+          'diagnostic (DEMOTED 2026-07-13, never the gate):\n' + B1_TABLE)
 if B5_TABLE:      # Luke's ruling (02/07/2026, committed D7): the FLOOR-SAVES table prints on EVERY board run
     print('\nB5 FLOOR-SAVES (the new alarm surface — mispricings stay visible, never silently clamped):\n' + B5_TABLE)
 _rep_dir = os.environ.get('SGC_REPORT_DIR', 'session_2026-07-02')

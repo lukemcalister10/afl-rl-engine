@@ -1,0 +1,35 @@
+gates parsed: BEFORE 27, AFTER 27
+
+gate   BEFORE     AFTER      
+A1     PASS       PASS      
+A2     FAIL       FAIL      
+A3     FAIL       FAIL      
+A4     PASS       PASS      
+A5     PASS       PASS      
+A6     PASS       PASS      
+A7     PASS       PASS      
+A8     PASS       PASS      
+A9     FAIL       STRUCK       <- CHANGED
+A10    PASS       PASS      
+A11    PASS       PASS      
+A12    FAIL       FAIL      
+A13    PENDING    PENDING   
+A14    PENDING    PENDING   
+A15    STRUCK     STRUCK    
+B1     HALT       STRUCK       <- CHANGED
+B2     PASS       PASS      
+B3     PASS       PASS      
+B4     PASS       PASS      
+B5     FEATURE    FEATURE   
+B6     PASS       PASS      
+C1     PENDING    PENDING   
+C2     PENDING    PENDING   
+D14a   PASS       PASS      
+D14b   PASS       PASS      
+D14c   PASS       PASS      
+D14d   PASS       PASS      
+
+changed: exactly A9 FAIL->STRUCK, B1 HALT->STRUCK — and nothing else
+standing fails A2/A3/A12 still FAIL, exactly as recorded (not swept)
+
+before_after: PASS

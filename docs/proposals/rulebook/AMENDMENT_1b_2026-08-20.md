@@ -291,3 +291,77 @@ twin is byte-identical to its regeneration (13 laws)
 Signing this closes the count flag, lands the process laws, disposes of the twin, and expires
 ruled-red `RB1` in the same act — the ledger probe (`python3 tools/rulebook_lint.py`, exit 0) then
 FAILS the runner until the entry is retired, which is the ledger doing its job.
+
+---
+
+# APPENDED 2026-08-20 — A PROPOSED ELEVENTH PROCESS LAW, P11
+
+**Still PROPOSED. Still NOT APPLIED.** This file is an unsigned draft and appending a proposed law
+to it is a drafting act, not a ruling. `docs/RULEBOOK.md` is untouched; `docs/acceptance_v2_0.json`
+is untouched. RULEBOOK law 10(a) still owns the signature.
+
+Section B above lands ten process laws, each naming the incident that created it. **An eleventh
+incident happened after that section was drafted, on the same day, and it is the cleanest example
+the estate has produced of a failure mode none of P1–P10 covers.**
+
+## P11 — RECORD THE RETIREMENT IN THE INSTRUMENT, IN THE SAME ACT
+
+> **P11. THE RETIREMENT IS RECORDED WHERE THE GATE LIVES.** When a ruling retires or supersedes a
+> gate, the retirement is written into the instrument that carries that gate **in the same act as
+> the ruling**. An instrument that cannot run still gets its strike recorded — being unrunnable is
+> the reason to record it, not an excuse to defer — so a revived instrument can never resurrect
+> retired law.
+> *Incident: A9 and B1, 2026-08-20. Both were retired by the owner — A9 as a player-ordering
+> assertion, B1's July-8 cohort rail "weeks ago" — while `ship_gates_check.py` was bricked and
+> executing no gate. Neither retirement was written into the suite, because the suite could not
+> run. When 1a unbricked it, its first full run presented both as fresh reds at the current head,
+> and they were filed as "TWO REDS THAT ARE NEW AT THE CURRENT HEAD". They were not new. They were
+> unrecorded. Two rulings had to be re-obtained from the owner to un-say what he had already said.*
+
+## WHY P1–P10 DO NOT ALREADY COVER IT
+
+P5 ("a gate's name is not coverage") is the closest and it is the wrong direction. **P5 governs
+what a dormant instrument may be CLAIMED to prove; P11 governs what a dormant instrument must be
+TOLD.** P5 protects against believing a silent gate is green. P11 protects against believing a
+revived gate is current. The A9/B1 episode tripped both halves of the same brick, in sequence:
+
+| | P5, already drafted | P11, proposed here |
+|---|---|---|
+| the failure | the suite is cited as the bar while executing nothing | the suite is revived still carrying law the owner has repealed |
+| what is lost | coverage that was never there | rulings that were genuinely given |
+| the tell | a ceremony names a gate with no recent verdict | a first run since a repair produces "new" reds that predate it |
+| the cost | undetected regressions | the owner re-adjudicating settled questions |
+
+P7 ("ruled-red is not a snooze button") is adjacent and also does not reach: it disciplines how a
+**live** red is carried. A9 and B1 were never carried — they were **retired**, and the retirement
+evaporated because it was recorded only in conversation and in the register, never in the file that
+does the asserting.
+
+## THE FALSIFIER, so the law is testable rather than admirable
+
+**A repaired or revived instrument's first run produces no verdict the owner has already ruled on.**
+If it does, P11 was breached at the time of the ruling — the breach is dated to the ruling, not to
+the revival. The 2026-08-20 first run fails this test twice, which is what makes it the incident.
+
+## WHAT IT WOULD HAVE COST, MEASURED
+
+Two lines. `gate('A9', ..., 'STRUCK', ...)` and B1's status, written on the day of each ruling
+against a file that could not then execute them — the same two edits made today, weeks late, plus
+the two re-obtained rulings and the finding document that had to be written to ask for them.
+
+## PRECEDENT: THE MECHANISM ALREADY EXISTED
+
+This law asks for nothing new to be built. `ship_gates_check.py` has carried the STRIKE mechanism
+since **A15, struck by the owner on 02/07/2026** — recorded in the code, recorded in `SHIP_GATES.md`
+with its reason, rendering `STRUCK` on every board run since, counted against nothing. A15 is what
+compliance with P11 looks like, and it has looked like that for seven weeks. **A9 and B1 are now
+recorded the same way, by the same mechanism, in this act** (`docs/evidence/gate_strikes_2026-08-20/`).
+The proposed law is the generalization of a practice this instrument already had.
+
+## IF SIGNED
+
+`patch_B.diff` gains one entry, P11, after P10; the "PROCESS LAWS counted" line in
+`tools/rulebook_lint.py`'s output becomes 11; nothing in Section A or Section C changes; Question 1
+and Question 3 are untouched and still need their own answers. The patch file in this directory has
+**not** been regenerated — it still carries P1–P10 — because regenerating it would present an
+unsigned proposal as though it were part of the checked diff.

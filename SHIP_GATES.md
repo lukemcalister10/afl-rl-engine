@@ -23,7 +23,14 @@
 ###   Not a red; not counted against shipping.
 ### - NOT-RUN — the gate needs a prerequisite harness run this session that has not happened yet
 ###   (e.g. B2 needs _gate1_wf.py). Re-run the prerequisite; not a verdict.
-### - STRUCK — the gate was deliberately removed by Luke (A15). Not counted.
+### - STRUCK — the gate was deliberately removed by Luke. Not counted. Three gates carry it:
+###   **A15** (02/07/2026), **A9** and **B1** (both 20/08/2026). A STRUCK gate still EMITS a
+###   verdict every run (SILENCE IS A RED applies to struck gates too) and, where it has a
+###   number, still SCORES and prints it — struck removes the alarm, never the measurement.
+###   THE RECORDING RULE (born from A9/B1, 20/08/2026): when a ruling retires or supersedes a
+###   gate, the strike is written into THIS instrument in the same act as the ruling — even
+###   when the instrument cannot run — so a revived instrument can never resurrect retired law.
+###   Proposed as rulebook process law in docs/proposals/rulebook/AMENDMENT_1b_2026-08-20.md.
 ### - FEATURE — the gate is NO LONGER a pass/fail alarm: it was AMENDED into a PRICING FEATURE by
 ###   Luke. Exactly ONE gate carries this status: **B5** (the signed year-schedule floor). Luke's
 ###   D7 ruling retired B5-as-alarm and made the floor a pricing feature at the ev() boundary; the
@@ -118,7 +125,21 @@ A8.  [DC] Sam Berry > Elijah Tsatas by at least 2x.
      (Luke, 02/07/2026: fair on the data available today; explicitly expected to be
       re-ruled if Tsatas's evidence base materially changes — the engine SHOULD
       respond to new data. The exemplar data-conditional gate.)
-A9.  Jack Ginnivan > Josh Ward.
+A9.  STRUCK (Luke, 20/08/2026): Jack Ginnivan > Josh Ward. OWNER, VERBATIM: "Those
+     player ordering assertions were retired and are outdated. Since they occurred,
+     Ward has hit an excellent run of form." PRIOR PATTERN (the register): A9 was
+     already the SCORED-NEVER-FLAGGED precedent — item 265 cites it by name, "the pair
+     stays his law, the auditor scores it, never flags it; revisit on form/reads" — and
+     RULEBOOK v2.1 PART 2 then superseded the dated reads wholesale, the owner's word
+     being "they've done their job" (22/07/2026). [supersede — quoted, not a status]
+     This strike is that pattern made structural: the pair is still
+     SCORED and printed on every board run; it can no longer red the build. The revisit
+     trigger the register named was form, and form is what the owner cited.
+     ZOMBIE NOTE: the retirement PREDATES the red. A9 reported FAIL only because this
+     suite was BRICKED at ship_gates_check.py:49 through the period in which the ruling
+     landed, and its FIRST full run after the unbricking resurrected an already-retired
+     leg (docs/evidence/p1_safety_net_2026-08-20/1a_FINDING_frozen_suite_first_run.md,
+     filed as "NEW AT THE CURRENT HEAD" — it was not new, it was unrecorded).
 A10. [DC] Charlie Curnow: 2026 value >= 70% of 2025.
 A11. [DC] Playing beats sitting — named pairs: Jacob Farrow > Dylan Patterson;
      Sam Cumming > Dan Annable.
@@ -142,7 +163,31 @@ N1. Mid-career (years 3-5) Parish valuation — decider: the matched same-player
 N2. The years-4-6 peak LEVEL — not a gate until the matched cut runs.
 
 ## SECTION B — STRUCTURAL GATES
-B1. Cohort growth law — CODE-CONFORMED to the JULY-8 CONSTRUCTION (owner-ruled
+B1. STRUCK (Luke, 20/08/2026). OWNER, VERBATIM: "That cohort rail again was retired.
+    Weeks ago." SUPERSESSION, NOT REPEAL — what is struck is the JULY-8 CONSTRUCTION
+    below (raw class-year sums, den = min(y1,y2), each of y4/y5/y6 against a hard 1.30).
+    The modern class-discipline law survives in the owner-signed governing document:
+    G-COHORT, RULEBOOK v2.1 + its twin docs/acceptance_v2_0.json ("walk-forward book
+    ratio", max 1.3), which RULEBOOK PART 3 reports UNMEASURED at R19 — "never assumed
+    passing, never silently waived". The register carries the same travel: item 51 ("THE
+    G-COHORT FEAR IS RETIRED, AND THE REASON MATTERS"), item 60 (a gate inherited from a
+    superseded line is retired with an obituary, not re-ruled), the two-sided band at
+    item 266.
+    NOTHING IS SUPPRESSED — this is the B5 disposition, not a mute. The whole July-8
+    computation still runs on the candidate regenerated each run; every figure, and every
+    year that WOULD have breached the retired bar, still prints in the verdict line; the
+    per-class table and the demoted indexed SHAPE row still print on every board run. The
+    signal is relocated to a visible surface; only the alarm is removed. Every B1 path —
+    including the old skip / missing-matrix / exception HALTs — now renders STRUCK: a
+    retired gate that can still red the build on a bad input has not been retired.
+    ZOMBIE NOTE: "weeks ago", against a suite that had not executed one gate in weeks. B1
+    reported HALT only because this suite was BRICKED at ship_gates_check.py:49 while the
+    ruling landed; its FIRST full run after the unbricking resurrected an already-retired
+    rail (docs/evidence/p1_safety_net_2026-08-20/1a_FINDING_frozen_suite_first_run.md).
+    The struck construction is recorded below, unaltered, as the historical record.
+
+B1-RETIRED (the struck construction, kept verbatim as the record of what was struck).
+    Cohort growth law — CODE-CONFORMED to the JULY-8 CONSTRUCTION (owner-ruled
     2026-07-13, register v52; CONSTRAINTS v1.8 G-COHORT; amendment logged in
     CHANGELOG). THE GATE: population = incurve (type ∈ {ND,RD}) AND draft class
     2004-2020. For each class, the RAW class-year SUM of Vpath at each career year
