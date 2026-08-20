@@ -65,16 +65,27 @@ def check(ctx):
     # on an otherwise perfectly coherent tree, which is exactly when it most needs to be noticed.
     gone = known_red.stale(halted.keys(), entries)
     if gone:
+        # One line must carry the whole truth, including the part that is good news. Reporting the
+        # stale entry without also saying whether the tree is otherwise coherent would send a
+        # reader hunting for a drift that may not exist.
+        rest = ('; %d other carrier field(s) still drift' % sum(len(v) for v in halted.values())
+                if halted else '; the tree is otherwise coherent')
         return C.Verdict(
             'release_manifest', C.FAIL, evidence,
-            'STALE RULED-RED ledger entry %s — its carriers are coherent again; retire the entry '
-            'from acceptance/ruled_red.json' % ', '.join(e['id'] for e in gone),
+            'STALE RULED-RED ledger entry %s — its carriers are coherent again, retire it from '
+            'acceptance/ruled_red.json%s'
+            % (', '.join(e['id'] for e in gone), rest),
             halted_carriers=tuple(halted))
 
     if ok:
-        return C.Verdict('release_manifest', C.PASS, evidence,
-                         'all %d carrier fields agree with computed truth across %d identities'
-                         % (ncarriers, len(_IDENTS)))
+        # Sealed carriers that lag are counted separately and named, never folded into "all agree".
+        # A one-line reason that rounds a lag away is how a table stops being worth reading.
+        nlag = sum(1 for r in rows if r[5] == 'SEALED-LAG')
+        return C.Verdict(
+            'release_manifest', C.PASS, evidence,
+            '%d of %d carrier fields agree with computed truth across %d identities%s'
+            % (ncarriers - nlag, ncarriers, len(_IDENTS),
+               '; %d sealed carrier(s) lagging (reported, non-gating)' % nlag if nlag else ''))
 
     ruled, unruled = known_red.classify(halted.keys(), entries)
     nbad = sum(len(v) for v in halted.values())

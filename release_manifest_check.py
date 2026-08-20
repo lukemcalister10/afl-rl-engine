@@ -164,7 +164,11 @@ def compute_truth(root):
 def read_carriers(root):
     """Enumerate every carrier field, per identity.
 
-    Returns {identity: [(carrier_group, label, value, width), ...]}.
+    Returns {identity: [(carrier_group, label, value, width, kind), ...]} where `kind` is:
+
+      'live'    the carrier states what the tree IS. It must equal computed truth, now.
+      'sealed'  the carrier states what the tree WAS when an artifact was last sealed against it.
+                It legitimately lags between seals, and is reported as SEALED-LAG, never as drift.
     """
     p = lambda rel: os.path.join(root, rel)
     boot = _json(p(BOOT_REL))
@@ -187,60 +191,60 @@ def read_carriers(root):
 
     return {
         'store': [
-            (G_BOOT, 'expected_boot.store', s(boot.get('store')), MD5),
-            (G_RC, 'release_contract.identities.store', s(rcid.get('store')), MD5),
-            (G_SEASON, 'season_state.source_store_md5', s(season.get('source_store_md5')), MD5),
-            (G_SIDE, 'rl_app_data.srcmd5.source_md5', s(sidecar.get('source_md5')), MD5),
-            (G_STAMP, 'board_view_working.stamp.store_md5', s(stamp.get('store_md5')), MD5),
-            (G_STAMP, 'board_view_working.stamp.store', s(stamp.get('store')), 8),
-            (G_REL, 'board_view_working.stamp.release.store', s(rel.get('store')), MD5),
-            (G_BOOK, 'book_stable_seal.store_md5', s(book.get('store_md5')), 8),
+            (G_BOOT, 'expected_boot.store', s(boot.get('store')), MD5, 'live'),
+            (G_RC, 'release_contract.identities.store', s(rcid.get('store')), MD5, 'live'),
+            (G_SEASON, 'season_state.source_store_md5', s(season.get('source_store_md5')), MD5, 'live'),
+            (G_SIDE, 'rl_app_data.srcmd5.source_md5', s(sidecar.get('source_md5')), MD5, 'live'),
+            (G_STAMP, 'board_view_working.stamp.store_md5', s(stamp.get('store_md5')), MD5, 'live'),
+            (G_STAMP, 'board_view_working.stamp.store', s(stamp.get('store')), 8, 'live'),
+            (G_REL, 'board_view_working.stamp.release.store', s(rel.get('store')), MD5, 'live'),
+            (G_BOOK, 'book_stable_seal.store_md5', s(book.get('store_md5')), 8, 'sealed'),
         ],
         'board': [
-            (G_BOOT, 'expected_boot.board', s(boot.get('board')), MD5),
-            (G_RC, 'release_contract.identities.board', s(rcid.get('board')), MD5),
-            (G_SIDE, 'rl_app_data.srcmd5.own_md5', s(sidecar.get('own_md5')), MD5),
-            (G_STAMP, 'board_view_working.stamp.board_md5', s(stamp.get('board_md5')), MD5),
-            (G_STAMP, 'board_view_working.stamp.board', s(stamp.get('board')), MD5),
-            (G_STAMP, 'board_view_working.stamp.srcmd5', s(stamp.get('srcmd5')), MD5),
-            (G_REL, 'board_view_working.stamp.release.board', s(rel.get('board')), MD5),
+            (G_BOOT, 'expected_boot.board', s(boot.get('board')), MD5, 'live'),
+            (G_RC, 'release_contract.identities.board', s(rcid.get('board')), MD5, 'live'),
+            (G_SIDE, 'rl_app_data.srcmd5.own_md5', s(sidecar.get('own_md5')), MD5, 'live'),
+            (G_STAMP, 'board_view_working.stamp.board_md5', s(stamp.get('board_md5')), MD5, 'live'),
+            (G_STAMP, 'board_view_working.stamp.board', s(stamp.get('board')), MD5, 'live'),
+            (G_STAMP, 'board_view_working.stamp.srcmd5', s(stamp.get('srcmd5')), MD5, 'live'),
+            (G_REL, 'board_view_working.stamp.release.board', s(rel.get('board')), MD5, 'live'),
         ],
         'engine_head': [
-            (G_BOOT, 'expected_boot.engine_head', s(boot.get('engine_head')), MD5),
-            (G_RC, 'release_contract.identities.engine_head', s(rcid.get('engine_head')), MD5),
-            (G_STAMP, 'board_view_working.stamp.engine', s(stamp.get('engine')), 8),
-            (G_REL, 'board_view_working.stamp.release.engine_head', s(rel.get('engine_head')), MD5),
-            (G_BOOK, 'book_stable_seal.head_md5', s(book.get('head_md5')), 8),
+            (G_BOOT, 'expected_boot.engine_head', s(boot.get('engine_head')), MD5, 'live'),
+            (G_RC, 'release_contract.identities.engine_head', s(rcid.get('engine_head')), MD5, 'live'),
+            (G_STAMP, 'board_view_working.stamp.engine', s(stamp.get('engine')), 8, 'live'),
+            (G_REL, 'board_view_working.stamp.release.engine_head', s(rel.get('engine_head')), MD5, 'live'),
+            (G_BOOK, 'book_stable_seal.head_md5', s(book.get('head_md5')), 8, 'sealed'),
         ],
         'rl_model': [
-            (G_BOOT, 'expected_boot.rl_model', s(boot.get('rl_model')), MD5),
-            (G_RC, 'release_contract.identities.rl_model', s(rcid.get('rl_model')), MD5),
-            (G_REL, 'board_view_working.stamp.release.rl_model', s(rel.get('rl_model')), MD5),
+            (G_BOOT, 'expected_boot.rl_model', s(boot.get('rl_model')), MD5, 'live'),
+            (G_RC, 'release_contract.identities.rl_model', s(rcid.get('rl_model')), MD5, 'live'),
+            (G_REL, 'board_view_working.stamp.release.rl_model', s(rel.get('rl_model')), MD5, 'live'),
         ],
         'fv': [
-            (G_BOOT, 'expected_boot.fv', s(boot.get('fv')), SHA),
-            (G_RC, 'release_contract.identities.fv', s(rcid.get('fv')), SHA),
-            (G_REL, 'board_view_working.stamp.release.fv', s(rel.get('fv')), SHA),
+            (G_BOOT, 'expected_boot.fv', s(boot.get('fv')), SHA, 'live'),
+            (G_RC, 'release_contract.identities.fv', s(rcid.get('fv')), SHA, 'live'),
+            (G_REL, 'board_view_working.stamp.release.fv', s(rel.get('fv')), SHA, 'live'),
         ],
         'config': [
-            (G_BOOT, 'expected_boot.config', s(boot.get('config')), SHA),
-            (G_RC, 'release_contract.config_sha256', s(rc.get('config_sha256')), SHA),
-            (G_STAMP, 'board_view_working.stamp.config', s(stamp.get('config')), 12),
-            (G_REL, 'board_view_working.stamp.release.config', s(rel.get('config')), SHA),
-            (G_BOOK, 'book_stable_seal.config', s(book.get('config')), SHA),
+            (G_BOOT, 'expected_boot.config', s(boot.get('config')), SHA, 'live'),
+            (G_RC, 'release_contract.config_sha256', s(rc.get('config_sha256')), SHA, 'live'),
+            (G_STAMP, 'board_view_working.stamp.config', s(stamp.get('config')), 12, 'live'),
+            (G_REL, 'board_view_working.stamp.release.config', s(rel.get('config')), SHA, 'live'),
+            (G_BOOK, 'book_stable_seal.config', s(book.get('config')), SHA, 'sealed'),
         ],
         'register': [
-            (G_BOOT, 'expected_boot.register', s(boot.get('register')), MD5),
-            (G_RC, 'release_contract.identities.register', s(rcid.get('register')), MD5),
-            (G_STAMP, 'board_view_working.stamp.register', s(stamp.get('register')), 8),
-            (G_REL, 'board_view_working.stamp.release.register', s(rel.get('register')), MD5),
+            (G_BOOT, 'expected_boot.register', s(boot.get('register')), MD5, 'live'),
+            (G_RC, 'release_contract.identities.register', s(rcid.get('register')), MD5, 'live'),
+            (G_STAMP, 'board_view_working.stamp.register', s(stamp.get('register')), 8, 'live'),
+            (G_REL, 'board_view_working.stamp.release.register', s(rel.get('register')), MD5, 'live'),
         ],
         'as_of_round': [
-            (G_BOOT, 'expected_boot.as_of_round', s(boot.get('as_of_round')), None),
-            (G_RC, 'release_contract.as_of_round', s(rc.get('as_of_round')), None),
-            (G_SEASON, 'season_state.as_of_round', s(season.get('as_of_round')), None),
-            (G_STAMP, 'board_view_working.stamp.asOfRound', s(stamp.get('asOfRound')), None),
-            (G_REL, 'board_view_working.stamp.release.as_of_round', s(rel.get('as_of_round')), None),
+            (G_BOOT, 'expected_boot.as_of_round', s(boot.get('as_of_round')), None, 'live'),
+            (G_RC, 'release_contract.as_of_round', s(rc.get('as_of_round')), None, 'live'),
+            (G_SEASON, 'season_state.as_of_round', s(season.get('as_of_round')), None, 'live'),
+            (G_STAMP, 'board_view_working.stamp.asOfRound', s(stamp.get('asOfRound')), None, 'live'),
+            (G_REL, 'board_view_working.stamp.release.as_of_round', s(rel.get('as_of_round')), None, 'live'),
         ],
     }
 
@@ -249,8 +253,35 @@ def read_carriers(root):
 def evaluate(root):
     """Compare every carrier to computed truth. Returns (rows, halted_groups, ok).
 
-    rows: [(identity, carrier_group, label, value, expected, status)] with status in
-          OK / DRIFT / WIDTH / MISSING.
+    rows: [(identity, carrier_group, label, value, expected, status, how)] with status in
+          OK / DRIFT / WIDTH / MISSING / SEALED-LAG.
+
+    ------------------------------------------------------------------------------------------
+    SEALED-LAG, and why it exists — a correction made BEFORE this gate landed, by measurement.
+
+    The first draft of this file asserted all 40 carriers must equal computed truth, full stop.
+    Run against the tree the moment the apply seat moved the store cb38ef11 -> cc02567f, it
+    reported `book_stable_seal.store_md5` as DRIFT. That looked like a find. It was not.
+
+    `data/book_stable_seal.json` is a walk-forward book FREEZE-STAMP: it records the identities
+    the sealed book was built against, and it is re-stamped when the BOOK is re-sealed (at a
+    bake), not when the store moves. Measured across its own history:
+
+        2e49963      seal.store 968de0c7   expected_boot.store 968de0c7   coherent
+        f27482f~1    seal.store 968de0c7   expected_boot.store cb38ef11   LAGGING
+        f27482f      seal.store cb38ef11   expected_boot.store cb38ef11   coherent  (re-sealed)
+
+    i.e. the tree has been in exactly today's shape before, legitimately, and the lag closed at
+    the next bake. Asserting equality here would red this gate on every ordinary store write
+    until someone re-sealed a book to silence it — which is precisely the failure mode this file
+    was written to end (the panel 10/10, the movers known-red count, the R14 config pin,
+    BOARD_MD5_GOOD: each true when written, each a false red the day the tree legitimately moved).
+
+    So sealed carriers get their own status. A lag is REPORTED — loudly, with both values, because
+    "ship_gates B3's baseline predates the current store" is real and useful information — but it
+    does not halt a carrier and it does not red a run. What a sealed carrier IS still asserted on
+    is form: MISSING and WIDTH remain failures, so a seal that loses a field or silently truncates
+    one is still caught.
     """
     truth = compute_truth(root)
     carriers = read_carriers(root)
@@ -258,18 +289,18 @@ def evaluate(root):
 
     for ident in IDENTITIES:
         tval, how = truth[ident]
-        for group, label, value, width in carriers[ident]:
+        for group, label, value, width, kind in carriers[ident]:
             expected = tval if width is None else tval[:width]
             if not value:
                 status = 'MISSING'
             elif width is not None and len(value) != width:
                 status = 'WIDTH'
             elif value != expected:
-                status = 'DRIFT'
+                status = 'DRIFT' if kind == 'live' else 'SEALED-LAG'
             else:
                 status = 'OK'
             rows.append((ident, group, label, value, expected, status, how))
-            if status != 'OK':
+            if status not in ('OK', 'SEALED-LAG'):
                 # Carriers are halted at <file-group>:<identity> granularity, NOT at whole-file
                 # granularity. That precision is the difference between honest blocking and
                 # collateral damage: `release_contract.identities.engine_head` being stale must not
@@ -293,20 +324,34 @@ def render(rows, halted, truth_by_ident, root):
     for ident in IDENTITIES:
         mine = [r for r in rows if r[0] == ident]
         tval, how = truth_by_ident[ident]
-        bad = [r for r in mine if r[5] != 'OK']
+        bad = [r for r in mine if r[5] not in ('OK', 'SEALED-LAG')]
+        lag = [r for r in mine if r[5] == 'SEALED-LAG']
         out.append('  %s  [%s]' % (ident.upper(), how))
         out.append('    %-*s %-64s %s' % (label_w, '(truth)', tval, ''))
         for _i, _g, label, value, expected, status, _h in mine:
             mark = '' if status == 'OK' else '  <<< %s (expected %s)' % (status, expected)
             out.append('    %-*s %-64s %s%s' % (label_w, label, value or '(empty)', status, mark))
-        out.append('    -> %d carriers, %s' % (len(mine), 'COHERENT' if not bad else
-                                               'INCOHERENT (%d)' % len(bad)))
+        verdict = 'COHERENT' if not bad else 'INCOHERENT (%d)' % len(bad)
+        if lag and not bad:
+            verdict = 'COHERENT (%d sealed carrier lagging — see below)' % len(lag)
+        out.append('    -> %d carriers, %s' % (len(mine), verdict))
         out.append('')
 
     total = len(rows)
-    nbad = sum(1 for r in rows if r[5] != 'OK')
-    out.append('  %d carrier fields across %d identities and %d files: %d coherent, %d incoherent'
-               % (total, len(IDENTITIES), 7, total - nbad, nbad))
+    nbad = sum(1 for r in rows if r[5] not in ('OK', 'SEALED-LAG'))
+    nlag = sum(1 for r in rows if r[5] == 'SEALED-LAG')
+    out.append('  %d carrier fields across %d identities and %d files: %d coherent, %d incoherent, '
+               '%d sealed-lag' % (total, len(IDENTITIES), 7, total - nbad - nlag, nbad, nlag))
+    if nlag:
+        out.append('')
+        out.append('  SEALED-LAG — a freeze-stamp naming the state it was SEALED against, not the')
+        out.append('  state the tree is in. Legitimate between seals; reported, never gating:')
+        for _i, _g, label, value, expected, status, _h in rows:
+            if status == 'SEALED-LAG':
+                out.append('    %-44s sealed against %s, tree is now %s' % (label, value, expected))
+        out.append('    (i.e. the artifact these stamps belong to has not been re-sealed since the')
+        out.append('     tree last moved. That is information, not a defect — but a gate that')
+        out.append('     consumes the seal as a baseline is comparing against the older state.)')
     if halted:
         out.append('')
         out.append('  HALTED CARRIERS — the blocked-once law reports each of these ONCE, and every')
