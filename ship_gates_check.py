@@ -61,7 +61,17 @@ sys.path.insert(0, ROOT)
 import boot_guard as _bg
 _bg.assert_boot('ship_gates_check', store_path=os.path.join(RA, 'rl_model_data.json'),
                 engine_head_path=os.path.join(RA, '_merged_recover.py'))
-os.environ.update(PYTHONHASHSEED='0', RL_GAMMA='0.85', RL_PICK1='3000', RL_RUCK_TAX='0.25',
+# RL_GAMMA '0.85' -> '1.0' (M1a, 2026-08-20; AUDIT_CI.md repair 1, the highest-ratio repair in the
+# estate). The five other vars on this line all equal the manifest; RL_GAMMA alone diverged, and
+# enforce('gate') three lines below REJECTS a divergent override. The suite therefore killed itself
+# on its own line, on any box, stale workspace or not — the entire frozen A/B gate family (burn,
+# birthday, class, no-arb, tail, floors, cohort curves, the A-series identities) has been
+# unexecutable since the manifest pinned RL_GAMMA=1.0. run_panel.sh, this file's sibling, has
+# exported RL_GAMMA=1.0 all along; the two disagreed about the same dial and only one of them ran.
+# 1.0 is also the engine's own default (rl_model.py) and what all eight engine/forward_valuation
+# modules os.environ.setdefault, so this sets the value every real build already used. No gate
+# assertion, threshold or verdict is touched; the frozen suite 764a0d91 is unamended.
+os.environ.update(PYTHONHASHSEED='0', RL_GAMMA='1.0', RL_PICK1='3000', RL_RUCK_TAX='0.25',
                   RL_RECENCY_DECAY='0.72', RL_PRIOR_TREES='400', PAR_RAMPS='22')
 # GATE-INTEGRITY (e): the frozen suite is a GATE — pin the model configuration to the versioned manifest
 # (data/model_config.json) BEFORE the engine loads. enforce('gate') clears the ambient model env, REJECTS any
