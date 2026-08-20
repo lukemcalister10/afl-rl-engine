@@ -193,8 +193,12 @@ FAULTS = {
 class Ctx(object):
     """Everything a step is allowed to know. A step never reaches for global state."""
 
+    #: Seconds to wait for a contended build lock. A real landing waits (the shared workspace is
+    #: routinely busy); the self-test sets 0 so its lock case halts at once instead of for an hour.
+    DEFAULT_LOCK_TIMEOUT = 3600
+
     def __init__(self, root, spec, opts, evidence_dir=None, builder=None, fault=None,
-                 carriers=CA.LEVER_CARRIERS, work_dir=None, lock_tag=None):
+                 carriers=CA.LEVER_CARRIERS, work_dir=None, lock_tag=None, lock_timeout=None):
         self.root = os.path.abspath(root)
         self.spec = spec
         self.opts = opts
@@ -206,6 +210,8 @@ class Ctx(object):
         self.timings = []                        # [(step, seconds, verdict)]
         self.lines = []
         self.lock_tag = lock_tag or ('land-lever-%d' % os.getpid())
+        self.lock_timeout = (0 if lock_timeout is None and opts.selftest
+                             else (self.DEFAULT_LOCK_TIMEOUT if lock_timeout is None else lock_timeout))
         self._lock_fd = None
         self.lander_dir = os.path.dirname(os.path.abspath(__file__))
         self.work_dir = work_dir or os.path.join(
@@ -295,17 +301,39 @@ class Ctx(object):
         except OSError as e:
             raise ST.StepError('BUILD-LOCK HALT: cannot open %s (%s). A build that cannot prove it '
                                'is the single writer does not start.' % (path, e))
-        try:
-            fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        except OSError:
-            holder = ''
+        # THE PROTOCOL IS build_lock.sh's, because the two must be interchangeable: try once without
+        # blocking so the uncontended case prints nothing but the grant, and on contention print THE
+        # REQUIRED LINE — a named holder and a named time, never "resource temporarily unavailable"
+        # — then wait. A landing that refused the instant another seat held the lock would send the
+        # seat to retry by hand, which is how a lock stops being taken at all.
+        deadline = time.time() + self.lock_timeout
+        announced = False
+        while True:
             try:
-                holder = open(path, encoding='utf-8').readline().strip()
+                fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                break
             except OSError:
-                pass
-            os.close(fd)
-            raise ST.StepError('waiting for lock held by %s — refusing to start a second writer '
-                               'against the shared workspace.' % (holder or '<unknown>'))
+                holder = ''
+                try:
+                    holder = open(path, encoding='utf-8').readline().strip().replace('\t', ' ')
+                except OSError:
+                    pass
+                if not announced:
+                    parts = (holder or '').split()
+                    self.log('waiting for lock held by %s since %s'
+                             % (parts[0] if parts else '<unknown>',
+                                parts[2] if len(parts) > 2 else '<unknown>'))
+                    self.log('  (lock %s; waiting up to %ds; this landing will not start until that '
+                             'act finishes — two engine acts through one workspace void both.)'
+                             % (path, self.lock_timeout))
+                    announced = True
+                if time.time() >= deadline:
+                    os.close(fd)
+                    raise ST.StepError(
+                        'BUILD-LOCK HALT: timed out after %ds waiting for lock held by %s. Refusing '
+                        'to become a second writer against the shared workspace.'
+                        % (self.lock_timeout, holder or '<unknown>'))
+                time.sleep(1.0)
         os.ftruncate(fd, 0)
         os.write(fd, ('%s\t%d\t%s\t%s\t%s\n' % (
             self.lock_tag, os.getpid(), time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
