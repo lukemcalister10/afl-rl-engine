@@ -1,0 +1,85 @@
+PRE-DIFF — docs/inputs/AFFL_Pick_Locations.xlsx (owner's exact bytes, md5 6ba04646)
+
+  sheets OLD: ['Dashboard', 'Picks', 'Ladder', 'Pick Values']
+  sheets NEW: ['Dashboard', 'Picks', 'Ladder', 'Pick Values']  IDENTICAL
+
+  --- sheet Dashboard    rows 30 -> 30 | max width 8 -> 8
+      (reference-only tab — never read by the ingest; not diffed in detail)
+
+  --- sheet Picks        rows 162 -> 162 | max width 10 -> 10
+      header (row 2): ('ID', 'Year', 'Round', 'Origin Team', 'Owner', 'Pick (low)', 'Pick (high)', 'Band', 'Raw Value', 'Value (counted)')
+      row1 (banner) : ('Draft Pick Ledger — change ONLY the Owner column when a pick is traded', None, None, None, None, None, None, None, None, None)
+      header identical: True
+      data rows: 160 -> 160 | ID sets identical: True
+      PER-COLUMN CHANGE COUNTS:
+        ID               0
+        Year             0
+        Round            0
+        Origin Team      0
+        Owner            23
+        Pick (low)       70
+        Pick (high)      70
+        Band             120
+        Raw Value        158
+        Value (counted)  158
+
+      THE 23 OWNER CHANGES:
+        ID 1    2026 R1  Adelaide                    Sydney                       -> Collingwood
+        ID 17   2027 R2  Brisbane                    Sydney                       -> Adelaide
+        ID 24   2026 R4  Carlton                     Carlton                      -> St Kilda
+        ID 26   2027 R1  Carlton                     Geelong                      -> Adelaide
+        ID 27   2027 R2  Carlton                     St Kilda                     -> Adelaide
+        ID 29   2027 R4  Carlton                     Carlton                      -> Collingwood
+        ID 43   2026 R3  Essendon                    Western Bulldogs             -> Adelaide
+        ID 45   2026 R5  Essendon                    St Kilda                     -> Carlton
+        ID 54   2026 R4  Fremantle                   Collingwood                  -> Western Bulldogs
+        ID 56   2027 R1  Fremantle                   Hawthorn                     -> Adelaide
+        ID 62   2026 R2  Geelong                     Sydney                       -> Carlton
+        ID 69   2027 R4  Geelong                     Collingwood                  -> Carlton
+        ID 83   2026 R3  Melbourne                   Hawthorn                     -> Adelaide
+        ID 92   2026 R2  North Melbourne             North Melbourne              -> St Kilda
+        ID 96   2027 R1  North Melbourne             North Melbourne              -> Richmond
+        ID 97   2027 R2  North Melbourne             North Melbourne              -> Richmond
+        ID 114  2026 R4  Richmond                    Collingwood                  -> Western Bulldogs
+        ID 121  2026 R1  St Kilda                    Hawthorn                     -> Adelaide
+        ID 126  2027 R1  St Kilda                    St Kilda                     -> Adelaide
+        ID 132  2026 R2  Sydney                      Sydney                       -> Carlton
+        ID 136  2027 R1  Sydney                      Geelong                      -> Adelaide
+        ID 137  2027 R2  Sydney                      Sydney                       -> Adelaide
+        ID 158  2027 R3  Western Bulldogs            Western Bulldogs             -> Collingwood
+      IDENTITY COLUMN ID             changes: 0 OK
+      IDENTITY COLUMN Year           changes: 0 OK
+      IDENTITY COLUMN Round          changes: 0 OK
+      IDENTITY COLUMN Origin Team    changes: 0 OK
+
+  --- sheet Ladder       rows 29 -> 29 | max width 10 -> 10
+      row 5   ('Adelaide', 9, 11, 9, 11, None, None, 'Position', '2026', '2027')
+              -> ('Adelaide', 10, 10, 10, 10, None, None, 'Position', '2026', '2027')
+      row 6   ('Brisbane', 9, 11, 9, 11, None, None, 1, 1, 1)
+              -> ('Brisbane', 9, 9, 9, 9, None, None, 1, 1, 1)
+      row 8   ('Collingwood', 6, 7, 6, 7, None, None, 3, 1, 1)
+              -> ('Collingwood', 7, 7, 7, 7, None, None, 3, 1, 1)
+      row 9   ('Essendon', 3, 4, 3, 4, None, None, 4, 1, 1)
+              -> ('Essendon', 4, 4, 4, 4, None, None, 4, 1, 1)
+      row 11  ('Geelong', 12, 14, 12, 14, None, None, 6, 1, 1)
+              -> ('Geelong', 13, 13, 13, 13, None, None, 6, 1, 1)
+      row 13  ('Melbourne', 3, 4, 3, 4, None, None, 8, 1, 1)
+              -> ('Melbourne', 3, 3, 3, 3, None, None, 8, 1, 1)
+      row 14  ('North Melbourne', 15, 16, 15, 16, None, None, 9, 1, 1)
+              -> ('North Melbourne', 15, 15, 15, 15, None, None, 9, 1, 1)
+      row 15  ('Port Adelaide', 9, 11, 9, 11, None, None, 10, 1, 1)
+              -> ('Port Adelaide', 11, 11, 11, 11, None, None, 10, 1, 1)
+      row 16  ('Richmond', 6, 7, 6, 7, None, None, 11, 1, 1)
+              -> ('Richmond', 6, 6, 6, 6, None, None, 11, 1, 1)
+      row 17  ('St Kilda', 12, 14, 12, 14, None, None, 12, 1, 1)
+              -> ('St Kilda', 12, 12, 12, 12, None, None, 12, 1, 1)
+      row 18  ('Sydney', 12, 14, 12, 14, None, None, 13, 1, 1)
+              -> ('Sydney', 14, 14, 14, 14, None, None, 13, 1, 1)
+      row 19  ('West Coast', 15, 16, 15, 16, None, None, 14, 1, 1)
+              -> ('West Coast', 16, 16, 16, 16, None, None, 14, 1, 1)
+      row 29  (None, None, None, None, None, None, None, 'Board value each year (fixed):', None, 54333)
+              -> (None, None, None, None, None, None, None, 'Board value each year (fixed):', None, 47315)
+      Ladder rows differing: 13
+
+  --- sheet Pick Values  rows 81 -> 81 | max width 4 -> 3
+      (reference-only tab — never read by the ingest; not diffed in detail)

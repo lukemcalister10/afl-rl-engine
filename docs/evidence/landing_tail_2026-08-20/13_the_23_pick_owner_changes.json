@@ -1,0 +1,117 @@
+[
+ {
+  "id": "1",
+  "from": "Sydney",
+  "to": "Collingwood"
+ },
+ {
+  "id": "17",
+  "from": "Sydney",
+  "to": "Adelaide"
+ },
+ {
+  "id": "24",
+  "from": "Carlton",
+  "to": "St Kilda"
+ },
+ {
+  "id": "26",
+  "from": "Geelong",
+  "to": "Adelaide"
+ },
+ {
+  "id": "27",
+  "from": "St Kilda",
+  "to": "Adelaide"
+ },
+ {
+  "id": "29",
+  "from": "Carlton",
+  "to": "Collingwood"
+ },
+ {
+  "id": "43",
+  "from": "Western Bulldogs",
+  "to": "Adelaide"
+ },
+ {
+  "id": "45",
+  "from": "St Kilda",
+  "to": "Carlton"
+ },
+ {
+  "id": "54",
+  "from": "Collingwood",
+  "to": "Western Bulldogs"
+ },
+ {
+  "id": "56",
+  "from": "Hawthorn",
+  "to": "Adelaide"
+ },
+ {
+  "id": "62",
+  "from": "Sydney",
+  "to": "Carlton"
+ },
+ {
+  "id": "69",
+  "from": "Collingwood",
+  "to": "Carlton"
+ },
+ {
+  "id": "83",
+  "from": "Hawthorn",
+  "to": "Adelaide"
+ },
+ {
+  "id": "92",
+  "from": "North Melbourne",
+  "to": "St Kilda"
+ },
+ {
+  "id": "96",
+  "from": "North Melbourne",
+  "to": "Richmond"
+ },
+ {
+  "id": "97",
+  "from": "North Melbourne",
+  "to": "Richmond"
+ },
+ {
+  "id": "114",
+  "from": "Collingwood",
+  "to": "Western Bulldogs"
+ },
+ {
+  "id": "121",
+  "from": "Hawthorn",
+  "to": "Adelaide"
+ },
+ {
+  "id": "126",
+  "from": "St Kilda",
+  "to": "Adelaide"
+ },
+ {
+  "id": "132",
+  "from": "Sydney",
+  "to": "Carlton"
+ },
+ {
+  "id": "136",
+  "from": "Geelong",
+  "to": "Adelaide"
+ },
+ {
+  "id": "137",
+  "from": "Sydney",
+  "to": "Adelaide"
+ },
+ {
+  "id": "158",
+  "from": "Western Bulldogs",
+  "to": "Collingwood"
+ }
+]

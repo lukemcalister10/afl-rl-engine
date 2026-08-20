@@ -1,0 +1,127 @@
+PRE-DIFF — docs/inputs/AFFL_Player_Locations.csv (owner's exact bytes, md5 e3839800)
+  header old: ['Player Name', 'AFFL Team', 'Position/s', 'AFL Club']
+  header new: ['Player Name', 'AFFL Team', 'Position/s', 'AFL Club']  IDENTICAL
+  data rows: old 804  new 804
+  name sets identical: True | added: [] | removed: []
+
+  PER-COLUMN CHANGE COUNTS:
+    Player Name        0
+    AFFL Team          112
+    Position/s         0
+    AFL Club           0
+
+  THE 112 AFFL-TEAM MOVES (the only changes in the file):
+    Aaron Naughton               Sydney Swans                   -> Brisbane Lions
+    Alix Tauru                   Western Bulldogs               -> Hawthorn Hawks
+    Andrew Brayshaw              St Kilda Saints                -> Geelong Cats
+    Angus Anderson               North Melbourne Kangaroos      -> St Kilda Saints
+    Bailey Banfield              St Kilda Saints                -> Free agents
+    Bailey Dale                  Geelong Cats                   -> Western Bulldogs
+    Ben Keays                    Adelaide Crows                 -> Western Bulldogs
+    Ben King                     Sydney Swans                   -> Brisbane Lions
+    Bobby Hill                   West Coast Eagles              -> Free agents
+    Bradley Hill                 Port Adelaide Power            -> West Coast Eagles
+    Brayden Cook                 North Melbourne Kangaroos      -> Port Adelaide Power
+    Brayden Maynard              North Melbourne Kangaroos      -> Port Adelaide Power
+    Brodie Grundy                St Kilda Saints                -> North Melbourne Kangaroos
+    Caleb Serong                 Western Bulldogs               -> Geelong Cats
+    Caleb Windsor                Western Bulldogs               -> Brisbane Lions
+    Callum Mills                 Collingwood Magpies            -> Sydney Swans
+    Cameron Mackenzie            Western Bulldogs               -> Port Adelaide Power
+    Charlie Curnow               Adelaide Crows                 -> Geelong Cats
+    Charlie West                 Western Bulldogs               -> West Coast Eagles
+    Christian Moraes             Richmond Tigers                -> St Kilda Saints
+    Christian Petracca           West Coast Eagles              -> St Kilda Saints
+    Clayton Oliver               North Melbourne Kangaroos      -> Richmond Tigers
+    Connor Rozee                 Adelaide Crows                 -> Western Bulldogs
+    Cooper Harvey                Richmond Tigers                -> Brisbane Lions
+    Dan Houston                  St Kilda Saints                -> North Melbourne Kangaroos
+    Daniel McStay                Brisbane Lions                 -> Sydney Swans
+    Dayne Zorko                  Port Adelaide Power            -> North Melbourne Kangaroos
+    Dion Prestia                 Sydney Swans                   -> Free agents
+    Dougal Howard                Port Adelaide Power            -> Free agents
+    Ed Langdon                   West Coast Eagles              -> Port Adelaide Power
+    Ed Richards                  St Kilda Saints                -> West Coast Eagles
+    Ethan Read                   St Kilda Saints                -> Carlton Blues
+    Finnegan Davis               Carlton Blues                  -> Free agents
+    Gryan Miers                  Brisbane Lions                 -> Western Bulldogs
+    Harry Rowston                Carlton Blues                  -> Brisbane Lions
+    Harvey Thomas                Brisbane Lions                 -> Carlton Blues
+    Isaac Cumming                North Melbourne Kangaroos      -> Port Adelaide Power
+    Isaac Kako                   Western Bulldogs               -> Hawthorn Hawks
+    Jack Ginnivan                North Melbourne Kangaroos      -> St Kilda Saints
+    Jack Gunston                 St Kilda Saints                -> West Coast Eagles
+    Jack Ross                    Collingwood Magpies            -> Sydney Swans
+    Jacob Hopper                 Sydney Swans                   -> Carlton Blues
+    Jake Lloyd                   Geelong Cats                   -> North Melbourne Kangaroos
+    Jake Waterman                West Coast Eagles              -> Western Bulldogs
+    Jamarra Ugle-Hagan           Brisbane Lions                 -> Carlton Blues
+    James Rowbottom              Sydney Swans                   -> Collingwood Magpies
+    James Sicily                 Geelong Cats                   -> West Coast Eagles
+    Jeremy Cameron               North Melbourne Kangaroos      -> Richmond Tigers
+    Jeremy Howe                  Port Adelaide Power            -> West Coast Eagles
+    Jhye Clark                   Geelong Cats                   -> Port Adelaide Power
+    Jobe Shanahan                Western Bulldogs               -> Adelaide Crows
+    Joel Jeffrey                 North Melbourne Kangaroos      -> St Kilda Saints
+    Joseph Fonti                 St Kilda Saints                -> Richmond Tigers
+    Josh Daicos                  Brisbane Lions                 -> Sydney Swans
+    Josh Dunkley                 Geelong Cats                   -> West Coast Eagles
+    Josh Lindsay                 St Kilda Saints                -> Richmond Tigers
+    Josh Worrell                 West Coast Eagles              -> St Kilda Saints
+    Justin McInerney             Carlton Blues                  -> Brisbane Lions
+    Kye Annand                   Carlton Blues                  -> Sydney Swans
+    Kysaiah Pickett              Richmond Tigers                -> Brisbane Lions
+    Lachlan Bramble              Collingwood Magpies            -> Sydney Swans
+    Lewis Young                  Carlton Blues                  -> Port Adelaide Power
+    Lloyd Meek                   Carlton Blues                  -> West Coast Eagles
+    Luke Ryan                    West Coast Eagles              -> Port Adelaide Power
+    Marcus Bontempelli           West Coast Eagles              -> St Kilda Saints
+    Matt Duffy                   North Melbourne Kangaroos      -> Free agents
+    Matt Johnson                 Carlton Blues                  -> Adelaide Crows
+    Matthew Jefferson            Carlton Blues                  -> Adelaide Crows
+    Maurice Rioli                Sydney Swans                   -> Free agents
+    Michael Sellwood             Brisbane Lions                 -> Carlton Blues
+    Miles Bergman                Brisbane Lions                 -> Richmond Tigers
+    Mitchell Edwards             Western Bulldogs               -> Port Adelaide Power
+    Mitchell Hinge               Collingwood Magpies            -> Sydney Swans
+    Mitchito Owens               Western Bulldogs               -> St Kilda Saints
+    Nathan Broad                 Richmond Tigers                -> Free agents
+    Nic Newman                   West Coast Eagles              -> St Kilda Saints
+    Noah Balta                   Adelaide Crows                 -> Carlton Blues
+    Oisin Mullin                 Geelong Cats                   -> Adelaide Crows
+    Oliver Hollands              Sydney Swans                   -> Western Bulldogs
+    Oliver Wines                 St Kilda Saints                -> West Coast Eagles
+    Patrick Cripps               Port Adelaide Power            -> Geelong Cats
+    Patrick Retschko             Carlton Blues                  -> Collingwood Magpies
+    Riak Andrew                  Port Adelaide Power            -> Carlton Blues
+    Riley Onley                  Geelong Cats                   -> Western Bulldogs
+    Rory Laird                   North Melbourne Kangaroos      -> Port Adelaide Power
+    Rowan Marshall               Port Adelaide Power            -> Western Bulldogs
+    Sam De Koning                Geelong Cats                   -> Port Adelaide Power
+    Sam Durham                   West Coast Eagles              -> St Kilda Saints
+    Sam Taylor                   North Melbourne Kangaroos      -> Port Adelaide Power
+    Sam Walsh                    Brisbane Lions                 -> St Kilda Saints
+    Sandy Brock                  Sydney Swans                   -> Free agents
+    Steele Sidebottom            West Coast Eagles              -> Free agents
+    Taylor Walker                Geelong Cats                   -> Free agents
+    Thomas Sims                  Hawthorn Hawks                 -> Carlton Blues
+    Thomas Stewart               Port Adelaide Power            -> North Melbourne Kangaroos
+    Tim Kelly                    St Kilda Saints                -> West Coast Eagles
+    Timothy English              Adelaide Crows                 -> Western Bulldogs
+    Toby Bedford                 Brisbane Lions                 -> Western Bulldogs
+    Tobyn Murray                 West Coast Eagles              -> St Kilda Saints
+    Tom McDonald                 Geelong Cats                   -> Free agents
+    Touk Miller                  Geelong Cats                   -> North Melbourne Kangaroos
+    Trent Rivers                 Western Bulldogs               -> Brisbane Lions
+    Tyson Stengle                St Kilda Saints                -> Free agents
+    Wayne Milera                 Sydney Swans                   -> Collingwood Magpies
+    Wil Dawson                   Collingwood Magpies            -> Carlton Blues
+    Will Lorenz                  Richmond Tigers                -> St Kilda Saints
+    Will Setterfield             Brisbane Lions                 -> Sydney Swans
+    Willem Drew                  Adelaide Crows                 -> Sydney Swans
+    Xavier Duursma               North Melbourne Kangaroos      -> Port Adelaide Power
+    Xavier Lindsay               Western Bulldogs               -> Hawthorn Hawks
+    Zac Fisher                   Port Adelaide Power            -> Free agents
+    Zac Taylor                   Western Bulldogs               -> Adelaide Crows
+
+  free-agent spelling split ('Free agents','Free Agents'):  old (73, 2)  new (87, 2)  (tolerated by design; owner bytes preserved)

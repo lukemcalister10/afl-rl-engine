@@ -1,0 +1,53 @@
+HALTED CARRIER — data/release_lineage.json .release_transition_register (the SIXTH carrier)
+Reached only after the six store carriers were reconciled AND the 112-row store write staged clean.
+
+  register entries: 6
+   [0] None                                        store None -> None | board None -> None
+   [1] ['ITEM_271_Addendum_17']                    store e3aaba77 -> 6b9d00a7 | board 8a38cca4 -> f2df6e0a
+   [2] ['OWNERSHIP_SINGLE_SOURCE_2026-07-30']      store 6b9d00a7 -> 81d24704 | board None -> None
+   [3] ['ADOPTION_2026-08-06_review_era']          store 6b9d00a7 -> f1e7f20c | board f2df6e0a -> 827fb1fd
+   [4] ['DOB_COURIER_2026-08-10_refit_authorised'  store 0dd6b4a0 -> d9a24282 | board 6e724cca -> a672ed3a
+   [5] ['G1_NEVER_RISES_2026-08-10_restore_and_ga  store d9a24282 -> d9a24282 | board a672ed3a -> 4b448a82
+
+  TAIL destination.store = d9a24282357cf3083b1640466e3ecd83
+  LIVE store             = cb38ef1171dcf20aae66ebf12682be0d
+  ownership_store_apply.append_transition() halts because the register's tail does not name the
+  store it is about to supersede — the append-only chain is BROKEN AT THE LANDING.
+
+WHAT IS MISSING. THE LANDING (463e53d, owner word "Land it.", 2026-08-20) moved the board
+4b448a82 -> a05fe951 AND the store d9a24282 -> cb38ef11 (the store at 0a4780d, ORDER 29 STEP 1)
+OUTSIDE a round. data/release_lineage.json's own _doc says an APPENDED release_transition_register
+entry "is the shape the validator's own law prescribes for a future out-of-round board move", and
+the standing owner rule of 2026-07-28 (quoted in 5babe71) says "whenever the board moves OUTSIDE a
+round, write a column at that point". Neither was done. So the lineage chain still ends at the
+pre-landing store, and every out-of-round writer that appends to it fails closed — correctly.
+
+WRITER OF RECORD: there is no general tool. The tree's precedent is a PER-ACT script committed with
+its own act — docs/evidence/g1_never_rises_2026-08-10/append_transition.py (ONE appended entry,
+quoting the owner's ruling VERBATIM, every prior entry preserved byte-verbatim, append-only asserted
+by the script itself) plus register_column.py (the out-of-round column: 804 value/rank/pos-rank
+points written into engine/rl_after/ingestion/{value,rank,pos_rank}_history.json) plus
+ui/tools/generate_movers_transition.py to mirror the result into ui/data/movers_transition.js.
+
+WHY I HALT RATHER THAN WRITE IT. The entry is an OWNER-APPROVAL RECORD, not a mechanical pin. Its
+required fields are owner_approved / owner_ruling_id / owner_ruling (VERBATIM) / authority, and the
+5babe71 precedent is explicit about what the seat may and may not do: "It RECORDS an approval that
+already exists in his words; it does not create one." Authoring the landing's lineage entry requires
+decisions not in my record:
+  - the boundary label and out-of-round column id for THE LANDING (5babe71's was
+    ["22","g1-never-rises-10-8"] / "10/8 never-rises restore (R12)"); nothing names the landing's;
+  - which owner word it quotes and its citation (register v782 carries "Land it." verbatim,
+    2026-08-20, but the register is the supervisor's pen, not the ruling's own home);
+  - whether THE LANDING declares a board boundary (it moved the board, unlike #283 which did not),
+    which decides whether round_movers.model_changes() re-labels an existing boundary — a
+    misdeclaration silently overwrites another record's owner_ruling_id (the exact hazard
+    ownership_store_apply's own staged validation guards);
+  - whether the out-of-round column's 804 value/rank/pos-rank points are written at the landing
+    point, which is a history write, not a publication re-stamp.
+
+THE FORK: (A) the landing's lineage entry + out-of-round column are written now by a per-act script
+in the 5babe71 pattern, on a stated owner citation and a supervisor-chosen column id; or (B) they
+are ruled part of the landing's own record and written by whoever holds the landing's pen. Either
+way the owner's ownership apply is BLOCKED until one of them lands — the transaction fails closed
+before it commits, which it did here with the live tree byte-unchanged (verified).
+

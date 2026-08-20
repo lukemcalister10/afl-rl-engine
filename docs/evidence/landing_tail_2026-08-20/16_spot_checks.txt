@@ -1,0 +1,23 @@
+SPOT-CHECKS — 5 of the 112 moved players
+The store was NOT written: the transaction fail-closed at T5 (lineage register tail) AFTER
+staging the write clean, so nothing to spot-check IN the store yet. What is checked here is
+the resolved JOIN and the still-old store value, i.e. exactly what the apply will move.
+
+  CSV name               store key (by board) store affl_team NOW          CSV authored -> target      
+  Matt Johnson           matt-johnson-1       Carlton Blues                Adelaide Crows                <- MOVE
+  Maurice Rioli          maurice-rioli-1      Sydney Swans                 Free agents                   <- MOVE
+  Marcus Bontempelli     marcus-bontempelli   West Coast Eagles            St Kilda Saints               <- MOVE
+  Nick Daicos            nick-daicos          North Melbourne Kangaroos    North Melbourne Kangaroos     (unchanged)
+  Sam Walsh              sam-walsh            Brisbane Lions               St Kilda Saints               <- MOVE
+  Taylor Walker          taylor-walker        Geelong Cats                 Free agents                   <- MOVE
+  Aaron Naughton         aaron-naughton       Sydney Swans                 Brisbane Lions                <- MOVE
+
+  NOTE ON THE NAME-TWIN HAZARD, demonstrated live: 'Matt Johnson' resolved to key matt-johnson-1 and
+  'Maurice Rioli' to maurice-rioli-1 — both are keys the #283 design names as name-twin hazards
+  (a name->store join taking [0] would be a coin-flip). The ingest's join is
+  CSV name -> BOARD player -> key -> store row BY KEY, and the [P5] verdict reported
+  "0 unmatched, 0 board keys missing from the store, 804 resolved".
+
+  live store md5 (UNWRITTEN): cb38ef1171dcf20aae66ebf12682be0d
+  staged store md5 the apply computed: cc02567f...  (T1/T2: affl_team only, exactly 112 planned keys)
+  live board md5: a05fe951f78482c70520480e184c80ec (T4: board unmoved, byte-identical, no engine build)

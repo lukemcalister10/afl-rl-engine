@@ -1,0 +1,562 @@
+[
+ {
+  "player": "Aaron Naughton",
+  "from": "Sydney Swans",
+  "to": "Brisbane Lions"
+ },
+ {
+  "player": "Alix Tauru",
+  "from": "Western Bulldogs",
+  "to": "Hawthorn Hawks"
+ },
+ {
+  "player": "Andrew Brayshaw",
+  "from": "St Kilda Saints",
+  "to": "Geelong Cats"
+ },
+ {
+  "player": "Angus Anderson",
+  "from": "North Melbourne Kangaroos",
+  "to": "St Kilda Saints"
+ },
+ {
+  "player": "Bailey Banfield",
+  "from": "St Kilda Saints",
+  "to": "Free agents"
+ },
+ {
+  "player": "Bailey Dale",
+  "from": "Geelong Cats",
+  "to": "Western Bulldogs"
+ },
+ {
+  "player": "Ben Keays",
+  "from": "Adelaide Crows",
+  "to": "Western Bulldogs"
+ },
+ {
+  "player": "Ben King",
+  "from": "Sydney Swans",
+  "to": "Brisbane Lions"
+ },
+ {
+  "player": "Bobby Hill",
+  "from": "West Coast Eagles",
+  "to": "Free agents"
+ },
+ {
+  "player": "Bradley Hill",
+  "from": "Port Adelaide Power",
+  "to": "West Coast Eagles"
+ },
+ {
+  "player": "Brayden Cook",
+  "from": "North Melbourne Kangaroos",
+  "to": "Port Adelaide Power"
+ },
+ {
+  "player": "Brayden Maynard",
+  "from": "North Melbourne Kangaroos",
+  "to": "Port Adelaide Power"
+ },
+ {
+  "player": "Brodie Grundy",
+  "from": "St Kilda Saints",
+  "to": "North Melbourne Kangaroos"
+ },
+ {
+  "player": "Caleb Serong",
+  "from": "Western Bulldogs",
+  "to": "Geelong Cats"
+ },
+ {
+  "player": "Caleb Windsor",
+  "from": "Western Bulldogs",
+  "to": "Brisbane Lions"
+ },
+ {
+  "player": "Callum Mills",
+  "from": "Collingwood Magpies",
+  "to": "Sydney Swans"
+ },
+ {
+  "player": "Cameron Mackenzie",
+  "from": "Western Bulldogs",
+  "to": "Port Adelaide Power"
+ },
+ {
+  "player": "Charlie Curnow",
+  "from": "Adelaide Crows",
+  "to": "Geelong Cats"
+ },
+ {
+  "player": "Charlie West",
+  "from": "Western Bulldogs",
+  "to": "West Coast Eagles"
+ },
+ {
+  "player": "Christian Moraes",
+  "from": "Richmond Tigers",
+  "to": "St Kilda Saints"
+ },
+ {
+  "player": "Christian Petracca",
+  "from": "West Coast Eagles",
+  "to": "St Kilda Saints"
+ },
+ {
+  "player": "Clayton Oliver",
+  "from": "North Melbourne Kangaroos",
+  "to": "Richmond Tigers"
+ },
+ {
+  "player": "Connor Rozee",
+  "from": "Adelaide Crows",
+  "to": "Western Bulldogs"
+ },
+ {
+  "player": "Cooper Harvey",
+  "from": "Richmond Tigers",
+  "to": "Brisbane Lions"
+ },
+ {
+  "player": "Dan Houston",
+  "from": "St Kilda Saints",
+  "to": "North Melbourne Kangaroos"
+ },
+ {
+  "player": "Daniel McStay",
+  "from": "Brisbane Lions",
+  "to": "Sydney Swans"
+ },
+ {
+  "player": "Dayne Zorko",
+  "from": "Port Adelaide Power",
+  "to": "North Melbourne Kangaroos"
+ },
+ {
+  "player": "Dion Prestia",
+  "from": "Sydney Swans",
+  "to": "Free agents"
+ },
+ {
+  "player": "Dougal Howard",
+  "from": "Port Adelaide Power",
+  "to": "Free agents"
+ },
+ {
+  "player": "Ed Langdon",
+  "from": "West Coast Eagles",
+  "to": "Port Adelaide Power"
+ },
+ {
+  "player": "Ed Richards",
+  "from": "St Kilda Saints",
+  "to": "West Coast Eagles"
+ },
+ {
+  "player": "Ethan Read",
+  "from": "St Kilda Saints",
+  "to": "Carlton Blues"
+ },
+ {
+  "player": "Finnegan Davis",
+  "from": "Carlton Blues",
+  "to": "Free agents"
+ },
+ {
+  "player": "Gryan Miers",
+  "from": "Brisbane Lions",
+  "to": "Western Bulldogs"
+ },
+ {
+  "player": "Harry Rowston",
+  "from": "Carlton Blues",
+  "to": "Brisbane Lions"
+ },
+ {
+  "player": "Harvey Thomas",
+  "from": "Brisbane Lions",
+  "to": "Carlton Blues"
+ },
+ {
+  "player": "Isaac Cumming",
+  "from": "North Melbourne Kangaroos",
+  "to": "Port Adelaide Power"
+ },
+ {
+  "player": "Isaac Kako",
+  "from": "Western Bulldogs",
+  "to": "Hawthorn Hawks"
+ },
+ {
+  "player": "Jack Ginnivan",
+  "from": "North Melbourne Kangaroos",
+  "to": "St Kilda Saints"
+ },
+ {
+  "player": "Jack Gunston",
+  "from": "St Kilda Saints",
+  "to": "West Coast Eagles"
+ },
+ {
+  "player": "Jack Ross",
+  "from": "Collingwood Magpies",
+  "to": "Sydney Swans"
+ },
+ {
+  "player": "Jacob Hopper",
+  "from": "Sydney Swans",
+  "to": "Carlton Blues"
+ },
+ {
+  "player": "Jake Lloyd",
+  "from": "Geelong Cats",
+  "to": "North Melbourne Kangaroos"
+ },
+ {
+  "player": "Jake Waterman",
+  "from": "West Coast Eagles",
+  "to": "Western Bulldogs"
+ },
+ {
+  "player": "Jamarra Ugle-Hagan",
+  "from": "Brisbane Lions",
+  "to": "Carlton Blues"
+ },
+ {
+  "player": "James Rowbottom",
+  "from": "Sydney Swans",
+  "to": "Collingwood Magpies"
+ },
+ {
+  "player": "James Sicily",
+  "from": "Geelong Cats",
+  "to": "West Coast Eagles"
+ },
+ {
+  "player": "Jeremy Cameron",
+  "from": "North Melbourne Kangaroos",
+  "to": "Richmond Tigers"
+ },
+ {
+  "player": "Jeremy Howe",
+  "from": "Port Adelaide Power",
+  "to": "West Coast Eagles"
+ },
+ {
+  "player": "Jhye Clark",
+  "from": "Geelong Cats",
+  "to": "Port Adelaide Power"
+ },
+ {
+  "player": "Jobe Shanahan",
+  "from": "Western Bulldogs",
+  "to": "Adelaide Crows"
+ },
+ {
+  "player": "Joel Jeffrey",
+  "from": "North Melbourne Kangaroos",
+  "to": "St Kilda Saints"
+ },
+ {
+  "player": "Joseph Fonti",
+  "from": "St Kilda Saints",
+  "to": "Richmond Tigers"
+ },
+ {
+  "player": "Josh Daicos",
+  "from": "Brisbane Lions",
+  "to": "Sydney Swans"
+ },
+ {
+  "player": "Josh Dunkley",
+  "from": "Geelong Cats",
+  "to": "West Coast Eagles"
+ },
+ {
+  "player": "Josh Lindsay",
+  "from": "St Kilda Saints",
+  "to": "Richmond Tigers"
+ },
+ {
+  "player": "Josh Worrell",
+  "from": "West Coast Eagles",
+  "to": "St Kilda Saints"
+ },
+ {
+  "player": "Justin McInerney",
+  "from": "Carlton Blues",
+  "to": "Brisbane Lions"
+ },
+ {
+  "player": "Kye Annand",
+  "from": "Carlton Blues",
+  "to": "Sydney Swans"
+ },
+ {
+  "player": "Kysaiah Pickett",
+  "from": "Richmond Tigers",
+  "to": "Brisbane Lions"
+ },
+ {
+  "player": "Lachlan Bramble",
+  "from": "Collingwood Magpies",
+  "to": "Sydney Swans"
+ },
+ {
+  "player": "Lewis Young",
+  "from": "Carlton Blues",
+  "to": "Port Adelaide Power"
+ },
+ {
+  "player": "Lloyd Meek",
+  "from": "Carlton Blues",
+  "to": "West Coast Eagles"
+ },
+ {
+  "player": "Luke Ryan",
+  "from": "West Coast Eagles",
+  "to": "Port Adelaide Power"
+ },
+ {
+  "player": "Marcus Bontempelli",
+  "from": "West Coast Eagles",
+  "to": "St Kilda Saints"
+ },
+ {
+  "player": "Matt Duffy",
+  "from": "North Melbourne Kangaroos",
+  "to": "Free agents"
+ },
+ {
+  "player": "Matt Johnson",
+  "from": "Carlton Blues",
+  "to": "Adelaide Crows"
+ },
+ {
+  "player": "Matthew Jefferson",
+  "from": "Carlton Blues",
+  "to": "Adelaide Crows"
+ },
+ {
+  "player": "Maurice Rioli",
+  "from": "Sydney Swans",
+  "to": "Free agents"
+ },
+ {
+  "player": "Michael Sellwood",
+  "from": "Brisbane Lions",
+  "to": "Carlton Blues"
+ },
+ {
+  "player": "Miles Bergman",
+  "from": "Brisbane Lions",
+  "to": "Richmond Tigers"
+ },
+ {
+  "player": "Mitchell Edwards",
+  "from": "Western Bulldogs",
+  "to": "Port Adelaide Power"
+ },
+ {
+  "player": "Mitchell Hinge",
+  "from": "Collingwood Magpies",
+  "to": "Sydney Swans"
+ },
+ {
+  "player": "Mitchito Owens",
+  "from": "Western Bulldogs",
+  "to": "St Kilda Saints"
+ },
+ {
+  "player": "Nathan Broad",
+  "from": "Richmond Tigers",
+  "to": "Free agents"
+ },
+ {
+  "player": "Nic Newman",
+  "from": "West Coast Eagles",
+  "to": "St Kilda Saints"
+ },
+ {
+  "player": "Noah Balta",
+  "from": "Adelaide Crows",
+  "to": "Carlton Blues"
+ },
+ {
+  "player": "Oisin Mullin",
+  "from": "Geelong Cats",
+  "to": "Adelaide Crows"
+ },
+ {
+  "player": "Oliver Hollands",
+  "from": "Sydney Swans",
+  "to": "Western Bulldogs"
+ },
+ {
+  "player": "Oliver Wines",
+  "from": "St Kilda Saints",
+  "to": "West Coast Eagles"
+ },
+ {
+  "player": "Patrick Cripps",
+  "from": "Port Adelaide Power",
+  "to": "Geelong Cats"
+ },
+ {
+  "player": "Patrick Retschko",
+  "from": "Carlton Blues",
+  "to": "Collingwood Magpies"
+ },
+ {
+  "player": "Riak Andrew",
+  "from": "Port Adelaide Power",
+  "to": "Carlton Blues"
+ },
+ {
+  "player": "Riley Onley",
+  "from": "Geelong Cats",
+  "to": "Western Bulldogs"
+ },
+ {
+  "player": "Rory Laird",
+  "from": "North Melbourne Kangaroos",
+  "to": "Port Adelaide Power"
+ },
+ {
+  "player": "Rowan Marshall",
+  "from": "Port Adelaide Power",
+  "to": "Western Bulldogs"
+ },
+ {
+  "player": "Sam De Koning",
+  "from": "Geelong Cats",
+  "to": "Port Adelaide Power"
+ },
+ {
+  "player": "Sam Durham",
+  "from": "West Coast Eagles",
+  "to": "St Kilda Saints"
+ },
+ {
+  "player": "Sam Taylor",
+  "from": "North Melbourne Kangaroos",
+  "to": "Port Adelaide Power"
+ },
+ {
+  "player": "Sam Walsh",
+  "from": "Brisbane Lions",
+  "to": "St Kilda Saints"
+ },
+ {
+  "player": "Sandy Brock",
+  "from": "Sydney Swans",
+  "to": "Free agents"
+ },
+ {
+  "player": "Steele Sidebottom",
+  "from": "West Coast Eagles",
+  "to": "Free agents"
+ },
+ {
+  "player": "Taylor Walker",
+  "from": "Geelong Cats",
+  "to": "Free agents"
+ },
+ {
+  "player": "Thomas Sims",
+  "from": "Hawthorn Hawks",
+  "to": "Carlton Blues"
+ },
+ {
+  "player": "Thomas Stewart",
+  "from": "Port Adelaide Power",
+  "to": "North Melbourne Kangaroos"
+ },
+ {
+  "player": "Tim Kelly",
+  "from": "St Kilda Saints",
+  "to": "West Coast Eagles"
+ },
+ {
+  "player": "Timothy English",
+  "from": "Adelaide Crows",
+  "to": "Western Bulldogs"
+ },
+ {
+  "player": "Toby Bedford",
+  "from": "Brisbane Lions",
+  "to": "Western Bulldogs"
+ },
+ {
+  "player": "Tobyn Murray",
+  "from": "West Coast Eagles",
+  "to": "St Kilda Saints"
+ },
+ {
+  "player": "Tom McDonald",
+  "from": "Geelong Cats",
+  "to": "Free agents"
+ },
+ {
+  "player": "Touk Miller",
+  "from": "Geelong Cats",
+  "to": "North Melbourne Kangaroos"
+ },
+ {
+  "player": "Trent Rivers",
+  "from": "Western Bulldogs",
+  "to": "Brisbane Lions"
+ },
+ {
+  "player": "Tyson Stengle",
+  "from": "St Kilda Saints",
+  "to": "Free agents"
+ },
+ {
+  "player": "Wayne Milera",
+  "from": "Sydney Swans",
+  "to": "Collingwood Magpies"
+ },
+ {
+  "player": "Wil Dawson",
+  "from": "Collingwood Magpies",
+  "to": "Carlton Blues"
+ },
+ {
+  "player": "Will Lorenz",
+  "from": "Richmond Tigers",
+  "to": "St Kilda Saints"
+ },
+ {
+  "player": "Will Setterfield",
+  "from": "Brisbane Lions",
+  "to": "Sydney Swans"
+ },
+ {
+  "player": "Willem Drew",
+  "from": "Adelaide Crows",
+  "to": "Sydney Swans"
+ },
+ {
+  "player": "Xavier Duursma",
+  "from": "North Melbourne Kangaroos",
+  "to": "Port Adelaide Power"
+ },
+ {
+  "player": "Xavier Lindsay",
+  "from": "Western Bulldogs",
+  "to": "Hawthorn Hawks"
+ },
+ {
+  "player": "Zac Fisher",
+  "from": "Port Adelaide Power",
+  "to": "Free agents"
+ },
+ {
+  "player": "Zac Taylor",
+  "from": "Western Bulldogs",
+  "to": "Adelaide Crows"
+ }
+]
