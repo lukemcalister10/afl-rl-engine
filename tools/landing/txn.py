@@ -239,11 +239,38 @@ class Ctx(object):
         return p
 
     def child_env(self):
-        """The environment a child gets: RL_REPO set to THIS tree, the lock's own var dropped."""
+        """The environment a child gets: RL_REPO set to THIS tree, and the lock declared REENTRANT.
+
+        RL_BUILD_LOCK_HELD IS EXPORTED HERE, AND THE BUILD CHILD DROPS IT AGAIN. That split is not
+        fussiness — it is a deadlock this seat MEASURED rather than reasoned about, in the middle of
+        the acceptance landing:
+
+            the lander holds the flock; step 7 runs `python3 -m acceptance.runner`; the runner's
+            build_twice_determinism check shells out to `tools/build_lock.sh run acceptance-determinism
+            -- ...`; build_lock.sh tries to take the lock the lander is holding and blocks. The landing
+            stops dead at its own gate.
+
+        build_lock.sh already solves this — `RL_BUILD_LOCK_HELD` is exactly how it detects a
+        reentrant grant and declines to re-acquire — and `tools/build_twice_determinism.py:78`
+        REFUSES TO RUN unless it can see that variable. So the gate children need it set.
+
+        The engine BUILD children must not have it: `config_manifest.enforce()` rejects any unknown
+        RL_-prefixed variable as a model override, so a canonical build carrying it HALTS. They drop
+        it themselves (`_build_child.py`, and `with_child_env()` for the in-process sibling repin),
+        which is the same split the day's three build drivers made and wrote down.
+
+        MEASURED before adopting: the five canonical-mode-sensitive spine checks (release_manifest,
+        boot_guard_checkout, config_manifest, ruling_config, release_contract_seal) were run with
+        RL_BUILD_LOCK_HELD set and all five are PASS. The variable is safe for gate children on this
+        tree; it is not safe for builds, and the code says which is which.
+        """
         env = dict(os.environ)
-        env.pop('RL_BUILD_LOCK_HELD', None)
         env['RL_REPO'] = self.root
         env['PYTHONHASHSEED'] = env.get('PYTHONHASHSEED', '0')
+        if self._lock_fd is not None:
+            env['RL_BUILD_LOCK_HELD'] = self.lock_tag
+        else:
+            env.pop('RL_BUILD_LOCK_HELD', None)
         return env
 
     def run(self, argv, timeout=1800):
