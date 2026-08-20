@@ -1,0 +1,77 @@
+=== 1c DEMONSTRATION ON THE DAY'S REAL ACT ===
+
+--- (1) THE CLAIMS FILE AS WRITTEN, against the live tree ---
+====================================================================================================
+CLAIMS CHECK — THE BACK-ROWS AGE_REF REPAIR + THE BOOK RE-SEAL (register v803)
+  act type   : lever-landing
+  date       : 2026-08-20   base: 78ebc08
+  owner word : "Let's fix it now please." (ACT A) and "And I'll re seal once that is done." (ACT B)
+  tree       : /home/user/afl-rl-engine
+====================================================================================================
+  ACTIVATION  back_rows_age_ref_repair                 on  (by: owner word 2026-08-20, VERBATIM: "Let's fix it now please." — the repair is unconditional in rl_export.py by design; there is no switch to leave off)
+
+  OK   file_md5     the board this act produced                    md5 68be10c79d0ee096455754e084bcf757 (claimed 68be10c79d0ee096455754e084bcf757)
+  OK   file_md5     the store — UNMOVED by both acts               md5 b745002eb0a0fbb1c34fa44f1ef708d6 (claimed b745002eb0a0fbb1c34fa44f1ef708d6)
+  OK   file_md5     engine_head — UNMOVED (the act edited the EXPO md5 1867e953cf844d089ab1da68379b1742 (claimed 1867e953cf844d089ab1da68379b1742)
+  OK   file_md5     rl_model — UNMOVED                             md5 6fe7c4155866d80e8045bed2d3bf2802 (claimed 6fe7c4155866d80e8045bed2d3bf2802)
+  OK   json_field   boot pin: board                                board = '68be10c79d0ee096455754e084bcf757' (claimed '68be10c79d0ee096455754e084bcf757')
+  OK   json_field   boot pin: store                                store = 'b745002eb0a0fbb1c34fa44f1ef708d6' (claimed 'b745002eb0a0fbb1c34fa44f1ef708d6')
+  OK   json_field   boot pin: balanced_board_md5 (sibling repin)   balanced_board_md5 = '556ad70d295923455982ae33e4b8bfd3' (claimed '556ad70d295923455982ae33e4b8bfd3')
+  OK   json_field   boot pin: engine_head                          engine_head = '1867e953cf844d089ab1da68379b1742' (claimed '1867e953cf844d089ab1da68379b1742')
+  OK   json_field   boot pin: as_of_round (held at 23)             as_of_round = 23 (claimed 23)
+  OK   json_field   contract_sha256 (restamped by ACT A)           contract_sha256 = 'cde9f70a49b673933f368032393c3c0c8b61e83d51cfe920c8b5c64faf7cf8c7' (claimed 'cde9f70a49b673933f368032393c3c0c8b61e83d51cfe920c8b5c64faf7cf8c7')
+  OK   json_field   book seal stable_sha256 (ACT B)                stable_sha256 = '9f46aba3ba8b056d0835928239dd6feeeb1708257837e4168fdbb6efd1755598' (claimed '9f46aba3ba8b056d0835928239dd6feeeb1708257837e4168fdbb6efd1755598')
+  OK   json_field   book seal head_md5 — SEALED-LAG closed 2 -> 0  head_md5 = '1867e953' (claimed '1867e953')
+  OK   json_field   book seal store_md5 — SEALED-LAG closed 2 -> 0 store_md5 = 'b745002e' (claimed 'b745002e')
+  OK   board_count  active rows                                    active.rows = 804 (claimed 804)
+  OK   board_count  active total value (692,296)                   active.value = 692296 (claimed 692296)
+  OK   board_count  back rows                                      back.rows = 198 (claimed 198)
+  OK   board_count  back total value — THE THING THE ACT MOVED (3, back.value = 3118 (claimed 3118)
+  OK   gate         release_manifest_check — 40/40 COHERENT        exit 0 (expected PASS)
+  OK   gate         release_contract.py check — the stamped seal   exit 0 (expected PASS)
+  OK   gate         the acceptance runner, host-insensitive profil exit 0 (expected GREEN)
+  OK   gate         six-way store coherence                        exit 0 (expected PASS)
+
+CLAIMS: 21 of 21 verified against the tree; 0 shape problem(s)
+VERDICT: GREEN — every claim recomputed and held
+exit=0
+
+
+--- (2) THE FORCED RED: ONE HEX DIGIT of the board hash flipped, 68be10c79d0ee096455754e084bcf757 -> 78be10c79d0ee096455754e084bcf757 ---
+====================================================================================================
+CLAIMS CHECK — THE BACK-ROWS AGE_REF REPAIR + THE BOOK RE-SEAL (register v803)
+  act type   : lever-landing
+  date       : 2026-08-20   base: 78ebc08
+  owner word : "Let's fix it now please." (ACT A) and "And I'll re seal once that is done." (ACT B)
+  tree       : /home/user/afl-rl-engine
+====================================================================================================
+  ACTIVATION  back_rows_age_ref_repair                 on  (by: owner word 2026-08-20, VERBATIM: "Let's fix it now please." — the repair is unconditional in rl_export.py by design; there is no switch to leave off)
+
+  FAIL file_md5     the board this act produced                    md5 68be10c79d0ee096455754e084bcf757 (claimed 78be10c79d0ee096455754e084bcf757)
+  OK   file_md5     the store — UNMOVED by both acts               md5 b745002eb0a0fbb1c34fa44f1ef708d6 (claimed b745002eb0a0fbb1c34fa44f1ef708d6)
+  OK   file_md5     engine_head — UNMOVED (the act edited the EXPO md5 1867e953cf844d089ab1da68379b1742 (claimed 1867e953cf844d089ab1da68379b1742)
+  OK   file_md5     rl_model — UNMOVED                             md5 6fe7c4155866d80e8045bed2d3bf2802 (claimed 6fe7c4155866d80e8045bed2d3bf2802)
+  OK   json_field   boot pin: board                                board = '68be10c79d0ee096455754e084bcf757' (claimed '68be10c79d0ee096455754e084bcf757')
+  OK   json_field   boot pin: store                                store = 'b745002eb0a0fbb1c34fa44f1ef708d6' (claimed 'b745002eb0a0fbb1c34fa44f1ef708d6')
+  OK   json_field   boot pin: balanced_board_md5 (sibling repin)   balanced_board_md5 = '556ad70d295923455982ae33e4b8bfd3' (claimed '556ad70d295923455982ae33e4b8bfd3')
+  OK   json_field   boot pin: engine_head                          engine_head = '1867e953cf844d089ab1da68379b1742' (claimed '1867e953cf844d089ab1da68379b1742')
+  OK   json_field   boot pin: as_of_round (held at 23)             as_of_round = 23 (claimed 23)
+  OK   json_field   contract_sha256 (restamped by ACT A)           contract_sha256 = 'cde9f70a49b673933f368032393c3c0c8b61e83d51cfe920c8b5c64faf7cf8c7' (claimed 'cde9f70a49b673933f368032393c3c0c8b61e83d51cfe920c8b5c64faf7cf8c7')
+  OK   json_field   book seal stable_sha256 (ACT B)                stable_sha256 = '9f46aba3ba8b056d0835928239dd6feeeb1708257837e4168fdbb6efd1755598' (claimed '9f46aba3ba8b056d0835928239dd6feeeb1708257837e4168fdbb6efd1755598')
+  OK   json_field   book seal head_md5 — SEALED-LAG closed 2 -> 0  head_md5 = '1867e953' (claimed '1867e953')
+  OK   json_field   book seal store_md5 — SEALED-LAG closed 2 -> 0 store_md5 = 'b745002e' (claimed 'b745002e')
+  OK   board_count  active rows                                    active.rows = 804 (claimed 804)
+  OK   board_count  active total value (692,296)                   active.value = 692296 (claimed 692296)
+  OK   board_count  back rows                                      back.rows = 198 (claimed 198)
+  OK   board_count  back total value — THE THING THE ACT MOVED (3, back.value = 3118 (claimed 3118)
+  OK   gate         release_manifest_check — 40/40 COHERENT        exit 0 (expected PASS)
+  OK   gate         release_contract.py check — the stamped seal   exit 0 (expected PASS)
+  OK   gate         the acceptance runner, host-insensitive profil exit 0 (expected GREEN)
+  OK   gate         six-way store coherence                        exit 0 (expected PASS)
+
+CLAIMS: 20 of 21 verified against the tree; 0 shape problem(s)
+VERDICT: RED — the deliverable does not carry its own proof
+exit=1
+
+The checker recomputes; it does not read the claim back. One flipped digit is one FAIL row
+and a RED verdict, and nothing else in the file changed.

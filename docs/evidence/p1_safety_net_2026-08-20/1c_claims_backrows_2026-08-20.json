@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "act_type": "lever-landing",
+  "act": "THE BACK-ROWS AGE_REF REPAIR + THE BOOK RE-SEAL (register v803)",
+  "date": "2026-08-20",
+  "base_commit": "78ebc08",
+  "head_commit": "c0c920a",
+  "seat": "the back-rows repair seat",
+  "owner_word": "\"Let's fix it now please.\" (ACT A) and \"And I'll re seal once that is done.\" (ACT B)",
+  "_note": "WRITTEN FROM docs/evidence/backrows_reseal_2026-08-20/FINAL_STATE.md AND ITS EVIDENCE, NOT FROM THE LIVE TREE. That is the point of the demonstration: every value below was transcribed out of the act's own final-state document, and the checker then recomputed each one against the tree the act produced. A claims file copied out of the tree it is about would prove only that copying works.",
+
+  "activation": {
+    "_doc": "Day-0 activation state. The back-rows act introduced no switch: the repair is one unconditional statement in the exporter's back_extra loop, deliberately NOT env-gated (an env-gated repair would have made the corrected back rows optional, which is the opposite of what the owner asked for).",
+    "back_rows_age_ref_repair": {
+      "state": "on",
+      "activated_by": "owner word 2026-08-20, VERBATIM: \"Let's fix it now please.\" — the repair is unconditional in rl_export.py by design; there is no switch to leave off"
+    }
+  },
+
+  "claims": [
+    {"kind": "file_md5", "label": "the board this act produced", "path": "data/rl_build/rl_app_data.json", "value": "68be10c79d0ee096455754e084bcf757"},
+    {"kind": "file_md5", "label": "the store — UNMOVED by both acts", "path": "engine/rl_after/rl_model_data.json", "value": "b745002eb0a0fbb1c34fa44f1ef708d6"},
+    {"kind": "file_md5", "label": "engine_head — UNMOVED (the act edited the EXPORTER, not the engine)", "path": "engine/rl_after/_merged_recover.py", "value": "1867e953cf844d089ab1da68379b1742"},
+    {"kind": "file_md5", "label": "rl_model — UNMOVED", "path": "engine/rl_after/rl_model.py", "value": "6fe7c4155866d80e8045bed2d3bf2802"},
+
+    {"kind": "json_field", "label": "boot pin: board", "path": "data/expected_boot.json", "field": "board", "value": "68be10c79d0ee096455754e084bcf757"},
+    {"kind": "json_field", "label": "boot pin: store", "path": "data/expected_boot.json", "field": "store", "value": "b745002eb0a0fbb1c34fa44f1ef708d6"},
+    {"kind": "json_field", "label": "boot pin: balanced_board_md5 (sibling repin)", "path": "data/expected_boot.json", "field": "balanced_board_md5", "value": "556ad70d295923455982ae33e4b8bfd3"},
+    {"kind": "json_field", "label": "boot pin: engine_head", "path": "data/expected_boot.json", "field": "engine_head", "value": "1867e953cf844d089ab1da68379b1742"},
+    {"kind": "json_field", "label": "boot pin: as_of_round (held at 23)", "path": "data/expected_boot.json", "field": "as_of_round", "value": 23},
+    {"kind": "json_field", "label": "contract_sha256 (restamped by ACT A)", "path": "data/release_contract.json", "field": "contract_sha256", "value": "cde9f70a49b673933f368032393c3c0c8b61e83d51cfe920c8b5c64faf7cf8c7"},
+    {"kind": "json_field", "label": "book seal stable_sha256 (ACT B)", "path": "data/book_stable_seal.json", "field": "stable_sha256", "value": "9f46aba3ba8b056d0835928239dd6feeeb1708257837e4168fdbb6efd1755598"},
+    {"kind": "json_field", "label": "book seal head_md5 — SEALED-LAG closed 2 -> 0", "path": "data/book_stable_seal.json", "field": "head_md5", "value": "1867e953"},
+    {"kind": "json_field", "label": "book seal store_md5 — SEALED-LAG closed 2 -> 0", "path": "data/book_stable_seal.json", "field": "store_md5", "value": "b745002e"},
+
+    {"kind": "board_count", "label": "active rows", "section": "active", "metric": "rows", "value": 804},
+    {"kind": "board_count", "label": "active total value (692,296)", "section": "active", "metric": "value", "value": 692296},
+    {"kind": "board_count", "label": "back rows", "section": "back", "metric": "rows", "value": 198},
+    {"kind": "board_count", "label": "back total value — THE THING THE ACT MOVED (3,190 -> 3,118)", "section": "back", "metric": "value", "value": 3118},
+
+    {"kind": "gate", "label": "release_manifest_check — 40/40 COHERENT", "name": "release_manifest_check", "argv": ["python3", "release_manifest_check.py"], "expect": "PASS"},
+    {"kind": "gate", "label": "release_contract.py check — the stamped seal", "name": "release_contract", "argv": ["python3", "release_contract.py", "check"], "expect": "PASS"},
+    {"kind": "gate", "label": "the acceptance runner, host-insensitive profile", "name": "acceptance.runner", "argv": ["python3", "-m", "acceptance.runner", "--profile", "host-insensitive"], "expect": "GREEN", "match": "VERDICT    GREEN"},
+    {"kind": "gate", "label": "six-way store coherence", "name": "store_coherence", "argv": ["python3", "ui/tools/ownership_store_apply.py", "verify"], "expect": "PASS"}
+  ]
+}
