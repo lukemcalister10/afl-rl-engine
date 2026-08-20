@@ -25,6 +25,15 @@ signable section applied and measured in an isolated worktree before presentatio
 Value-bearing artifacts: **none moved.** `g1_BEFORE.txt` vs `g1_AFTER.txt`, 26 identities,
 byte-identical; the only differing lines are in the block the script labels DELIBERATE MOVES.
 
+**A CONCURRENT SEAT MOVED HEAD MID-ACT, and it is named rather than smoothed.** The briefed base
+was 68a3a50; while this act ran, the score-trough diagnosis seat landed three commits (163dba9,
+4b4a05b, 455d593 — 50 files, `docs/evidence/` plus one `docs/OPEN_ITEMS_REGISTER.md` header line),
+so this act's commits sit on top of 455d593. `git diff --name-only 68a3a50 455d593` intersects
+**none** of this act's paths, and every claim in `V3_CLAIMS.json` was recomputed against the tree
+*after* those commits landed and held — 35 of 35. This is the gap the build lock does not cover:
+the lock serialises engine acts through the shared workspace, and a docs commit neither takes it
+nor needs to.
+
 ---
 
 ## THE FIVE RULINGS THIS ACT CARRIES OUT

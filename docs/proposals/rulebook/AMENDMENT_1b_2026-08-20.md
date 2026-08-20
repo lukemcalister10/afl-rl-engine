@@ -1,4 +1,11 @@
-# RULEBOOK AMENDMENT — PLAN_v6 ITEM 1b. **PROPOSED. NOT APPLIED. AWAITING THE OWNER'S SIGNATURE.**
+# RULEBOOK AMENDMENT — PLAN_v6 ITEM 1b. **APPLIED 2026-08-20 — see the STATUS block at the foot of this file.**
+
+> **THE BODY OF THIS FILE IS THE DRAFT AS IT WAS PRESENTED, AND IT IS LEFT THAT WAY DELIBERATELY.**
+> It still reads "PROPOSED / NOT APPLIED / AWAITING THE OWNER'S SIGNATURE" throughout, still puts
+> three questions, and still offers options the owner has since chosen between. Rewriting it to
+> match what was signed would destroy the record of what he was actually asked. **The applied form
+> differs from these drafts in four named places** — the STATUS block at the foot lists them, and
+> `docs/evidence/rulebook_v3_2026-08-20/APPLIED.md` argues each one. Read the STATUS block first.
 
 `docs/RULEBOOK.md` is the owner-signed single governing document and RULEBOOK law 10(a) makes any
 change to it an owner-word act. So this file is the DIFF, drafted, checked, and left unapplied.
@@ -365,3 +372,52 @@ The proposed law is the generalization of a practice this instrument already had
 and Question 3 are untouched and still need their own answers. The patch file in this directory has
 **not** been regenerated — it still carries P1–P10 — because regenerating it would present an
 unsigned proposal as though it were part of the checked diff.
+
+---
+
+# STATUS — **APPLIED** · 2026-08-20 · commit `427985e`
+
+**THE OWNER'S WORD, VERBATIM (in chat, 2026-08-20):** *"Okay agree to the laws updated."*
+Given against the supervisor's presented final form, following his earlier direction *"we can keep
+the rulebook minus the redundant ones etc"*. RULEBOOK law 10(a) is satisfied by that sentence.
+
+Applied to `main` at base `68a3a50`; the amendment act is commit **`427985e`**, this STATUS line
+is the commit after it. Act record and evidence: `docs/evidence/rulebook_v3_2026-08-20/`.
+
+**WHERE THE APPLIED FORM DIFFERS FROM THE DRAFTS ABOVE.** The drafts predate the owner's rulings;
+the final form overrides them. Four divergences, all deliberate:
+
+1. **Question 1 answered NEITHER 1A NOR 1B cleanly — it split.** `G-Y0` became **law 12**, in
+   Section A's wording, verbatim. `G-COHORT` did **not** become law 13: its payload is the 1.30
+   cohort rail the owner retired in the same session (*"That cohort rail again was retired. Weeks
+   ago."*), already STRUCK as `ship_gates_check.py` gate B1. PART 3's G-COHORT mention moved from
+   **UNMEASURED** to **RETIRED**, carrying the owner's words, the retired 1.3 payload and the B1
+   cross-reference. **PART 1 numbers TWELVE laws.** The count flag closes at 12, not 11 or 13.
+2. **Law 11 was amended, which no section above proposed.** The numbered claims note stays
+   universal and is now named as machine-generated (`tools/claims.py`); the blind independent
+   review is scoped to releases that **move player values**. The register sentence is unchanged.
+3. **PART 4 landed as P1–P11, not P1–P10.** Section B's ten, verbatim, plus the P11 appended
+   above. P10 gained one sentence recording that its own incident — the twin — died in this act.
+4. **Question 3 answered OPTION B, and Option B's reader table was incomplete by the time it was
+   used.** It reads *"any code: **none exists**; measured, not assumed"*. Re-measured at `68a3a50`,
+   two live code readers cite the twin: `ship_gates_check.py`'s B1 obituary and `SHIP_GATES.md` §B,
+   both naming it as the live carrier of G-COHORT. That was **true when the enumeration was written
+   and stopped being true hours later, when B1 was struck**. Both were repointed to RULEBOOK PART 3
+   in the amendment act — comment and citation text only, no gate, threshold, verdict or dial
+   touched. The frozen-history readers (`F3_REVIEW_v0_3.md`, `ITEM_408_COLD_REVIEW_partial.md`, and
+   `REFEREE_PROTOCOL.md:658`, which is the same shape) were left alone exactly as the table ruled.
+
+**THE UNSIGNED HALF, reconciled in the same act.** `tools/rulebook_twin.py` was built so the owner
+could rule on a thing that existed rather than on a promise. He ruled it out of existence, so the
+tool was **removed** rather than tombstoned — with no twin, its three modes have no subject.
+`tools/rulebook_lint.py` R5/R6 **reversed polarity**: they asserted parity with the twin, and now
+assert its **absence**, because rules left pointing at a deliberately deleted file would red forever
+— P7's failure mode with the sign flipped. A second laws file reappearing is the new red, which is
+P10's teeth. `acceptance/ruled_red.json` **RB1 retired**, expired by its own probe exactly as this
+file predicted it would be: *"whose own expiry probe retires it the moment this signature lands."*
+
+**GATES AT APPLICATION.** `python3 -m acceptance.runner` **GREEN**, 16/16 PASS, **0 ruled-red**
+(was 15 PASS + 1) · `python3 tools/rulebook_lint.py` **0 FAIL**, 12 laws + P1–P11 ·
+`release_manifest_check.py` **PASS** 40/40, untouched · `verify_v3.py` **PASS** V1–V6 including the
+negative control (a replanted twin reds both rules) · `tools/claims.py check` **GREEN**, 35 of 35 ·
+**G1: no value-bearing artifact moved** — 26 identities byte-identical before and after.
