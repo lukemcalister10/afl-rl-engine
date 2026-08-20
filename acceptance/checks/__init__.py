@@ -20,15 +20,16 @@ the natural second tranche, and they will arrive already wired to carriers, whic
 
 from acceptance import contract as C
 
+from acceptance.checks import manifest as _manifest
 from acceptance.checks import standing as _standing
 
 
-# NOTE (this commit): the TRUNK check — the widened release-manifest coherence gate — lands in the
-# NEXT commit and registers itself at position 1, ahead of everything below. The carriers named in
-# the `reads=` clauses here are therefore inert for one commit: nothing halts them yet, so nothing
-# is BLOCKED yet. They are declared now rather than retrofitted later because a `reads=` clause
-# added after the fact is a clause somebody has to remember, and the audit's estate is full of
-# instruments that were never wired because wiring them was a separate job.
+# 1. THE TRUNK. The widened coherence gate — the furthest-upstream check in the estate, and the one
+#    that can halt carriers everything else reads. AUDIT_CI.md §5/BUILD FRESH item 1: "the widened
+#    coherence gate above. First build, everything else hangs off it."
+C.register('release_manifest', _manifest.check,
+           reads=(),
+           doc='All 8 identities agree across all 40 carrier fields in 7 files')
 
 # 2. Guard 5 checkout legs. The audit calls this "the strongest thing in the estate" and
 #    "COVERED — non-vacuous on every leg I probed". It anchors on expected_boot, so it reads those
