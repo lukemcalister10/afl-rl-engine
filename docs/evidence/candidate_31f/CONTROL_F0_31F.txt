@@ -1,0 +1,11 @@
+ORDER 31-F  --  F0 ENTRY CONTROL.  Run on the UNTOUCHED tree at land/order-29 tip b495431,
+in a staged workspace on the pinned venv under five-var thread pinning, RL_V0SURF_PKL set,
+strictly sequential.  CLOSED BEFORE PREREG_31F.md was committed and before any 31-F quantity existed.
+
+  rl_model.py            14000af2a46f7a3c4cdfde303f5a1aff
+  rl_model_data.json     cb38ef1171dcf20aae66ebf12682be0d
+
+  RL_O31=1  (the ORDER-31 candidate)   rl_app_data.json  d9a57cc8770802b83c1264a08356fb60   REPRODUCED
+  RL_O31 unset (Step-2 committed)      rl_app_data.json  9298203135202a0c707bb0977ba38c31   REPRODUCED
+
+BOTH F0 CONTROLS PASS (prereg F33).

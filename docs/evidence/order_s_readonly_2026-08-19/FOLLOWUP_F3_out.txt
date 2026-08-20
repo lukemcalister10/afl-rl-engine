@@ -1,0 +1,155 @@
+======================================================================================================================
+ORDER S READ-ONLY — F3. THE COMBINED-TAKE CALIBRATION, ON THE OWNER'S REFRAME.
+======================================================================================================================
+THE OWNER'S WORDS, RECORDED AS HIS: split collection across mechanisms is NOT a defect; the
+defect is an uncalibrated TOTAL. THAT SUPERSEDES PACKET_SRO.md sections 16 and 18, which treated
+the double-pricing as a defect in itself. This seat records the supersession rather than quietly
+applying it.
+
+NO BOARD IS BUILT. NO ENGINE FILE IS EDITED. NO DIAL IS ADDED. NOTHING IS ADOPTED. NO FIX IS
+PROPOSED. board total (numeraire): 666434 over 804 rows.
+
+----------------------------------------------------------------------------------------------------------------------
+1 · THE TWO POPULATIONS, RECOVERED FROM THE ENGINE RATHER THAN CARRIED IN AS NUMBERS
+----------------------------------------------------------------------------------------------------------------------
+   A · the D8 cap BINDS (the counterfactual moves the row) AND the sitter fade is below 1: 8 rows
+   B · career games > 0, zero games in 2026, and the sitter fade is exactly 1.000: 19 rows
+   PACKET_SRO.md reported 8 and 19. Recovered here: 8 and 19.
+
+----------------------------------------------------------------------------------------------------------------------
+2 · THE MEASURED COST OF THE ABSENCE FACT — F1 SECTION 7, NOT THE WIRED SCHEDULE
+----------------------------------------------------------------------------------------------------------------------
+   D_measured(c) = E[value from depth c onward / v0 | zero games in every season to depth c-1]
+   over E[value from depth 1 onward / v0] on the whole cohort, house S4 ruler, entry year 2019 or
+   earlier, 2000-draw bootstrap. Depth c = 2 means ONE unplayed season.
+
+   depth c           n   D_measured     cost 1 - D 90% CI of the cost        
+   2               463       0.6328         0.3672 [   +0.2011,    +0.5126]
+   3               242       0.2371         0.7629 [   +0.6803,    +0.8359]
+   4               161       0.1117         0.8883 [   +0.8216,    +0.9470]
+   5               132       0.0549         0.9451 [   +0.8716,    +0.9939]
+
+   FALSIFIER F3-P4 — is the measured cost materially above zero from depth 2 on, and
+   indistinguishable from zero at depth 1 or below?
+     at depth 2 (one unplayed season) the cost is 0.3672 with a 90% CI of [0.2011, 0.5126].
+     zero is OUTSIDE that interval.
+     At depth 1 the cost is ZERO BY CONSTRUCTION — depth 1 is the normaliser. The measurement
+     cannot speak about depth 1 and this seat does not pretend it can. What it CAN say is that
+     the FIRST unplayed season already costs 36.7% of delivered value.
+     F3-P4 verdict: the first-season cost is separable from zero — the prediction HOLDS
+
+----------------------------------------------------------------------------------------------------------------------
+3 · POPULATION A — THE DOUBLE-PRICED ROWS, ROW BY ROW
+----------------------------------------------------------------------------------------------------------------------
+   absence_take is (fade + D8 cap) over the row's absence-free price. It is compared against the
+   measured cost at that row's OWN unplayed depth. The charge column is printed but is NOT in the
+   numerator, because it prices production against a bar and not absence.
+
+   row                         g    c_u    fade      D8  charge    board  abs take measured cost 90% CI       verdict      
+   Liam McMahon                7   5.92    35.6       3   112.6      213    0.1533 [   +0.8716,    +0.9939] UNDERSHOOTS  
+   Billy Dowling              13   2.50   107.1     225     0.0      162    0.6722 [   +0.4947,    +0.7172] APPROXIMATES 
+   Tom Hanily                 12   2.00    10.3       3    49.7      131    0.0923 [   +0.2011,    +0.5126] UNDERSHOOTS  
+   Isaac Keeler               13   3.00    10.5      10    87.5      128    0.1379 [   +0.6803,    +0.8359] UNDERSHOOTS  
+   Will McLachlan              7   2.46    11.5       6    51.9      114    0.1334 [   +0.4758,    +0.7046] UNDERSHOOTS  
+   Shadeau Brain              11   3.00    66.7       5    31.5       99    0.4200 [   +0.6803,    +0.8359] UNDERSHOOTS  
+   Kaleb Smith                12   2.92     8.7       6    27.0       37    0.2846 [   +0.6560,    +0.8209] UNDERSHOOTS  
+   Harvey Gallagher           28   2.00    10.9       1    49.6       21    0.3626 [   +0.2011,    +0.5126] APPROXIMATES 
+
+   POPULATION A VERDICT: UNDERSHOOTS 6, APPROXIMATES 2
+   F3-P2 — predicted APPROXIMATE or UNDERSHOOT rather than OVERSHOOT. the population does NOT overshoot on balance — F3-P2 did not fire
+   F3-P3 — the one row where both legs are large, reported individually as preregistered:
+     Billy Dowling          fade 107.1 + D8 225 = 332.1 board points on an absence-free price of 494;
+     absence take 0.6722 against a measured cost of 0.6126 [0.4947, 0.7172] at c_u 2.50 — APPROXIMATES.
+
+----------------------------------------------------------------------------------------------------------------------
+4 · POPULATION B — THE ZERO-PRICED ROWS
+----------------------------------------------------------------------------------------------------------------------
+   These rows have played NO games this season and carry a sitter fade of exactly 1.000, so the
+   absence take is zero by construction. The question is what the missed season is measured to be
+   worth. TWO yardsticks are printed because they answer two different questions and merging them
+   would be dishonest:
+
+     (i)  the cost at the row's OWN unplayed depth c_u. For every one of these rows c_u <= 1, so
+          the measured curve says ZERO — the same answer the wired schedule gives. On its own
+          clock the row is NOT being under-charged.
+     (ii) the cost of ONE unplayed season, 0.3672 [0.2011, 0.5126] from section 2. That is what the
+          missed season would cost IF THE CLOCK COUNTED IT. It does not, because the row's earlier
+          played seasons and his last delivered season have already reset and credited it away.
+
+   row                           g    c_u    fade    board  abs take   cost (ii) verdict on (ii)
+   Tom Green                   115   1.00     0.0     4339    0.0000      0.3672 UNDERSHOOTS  
+   Nicholas Martin              83   1.00     0.0     3196    0.0000      0.3672 UNDERSHOOTS  
+   Darcy Jones                  37   1.00     0.0     1095    0.0000      0.3672 UNDERSHOOTS  
+   Thomas Sims                  11   1.92     0.0      702    0.0000      0.3672 UNDERSHOOTS  
+   Sid Draper                   10   1.92     0.0      623    0.0000      0.3672 UNDERSHOOTS  
+   Joshua Kelly                230   1.00     0.0      427    0.0000      0.3672 UNDERSHOOTS  
+   Clay Hall                    16   0.92     0.0      391    0.4842      0.3672 APPROXIMATES 
+   Josh Draper                  31   0.92     0.0      264    0.0000      0.3672 UNDERSHOOTS  
+   Jack Viney                  237   1.00     0.0      254    0.0000      0.3672 UNDERSHOOTS  
+   Tyson Stengle               109   0.92     0.0      181    0.0000      0.3672 UNDERSHOOTS  
+   Sam Powell-Pepper           158   0.92     0.0      180    0.0000      0.3672 UNDERSHOOTS  
+   Lachlan Sholl                79   0.92     0.0      128    0.0000      0.3672 UNDERSHOOTS  
+   Jack Payne                   81   1.00     0.0      125    0.0000      0.3672 UNDERSHOOTS  
+   Lance Collard                15   1.92     0.0      115    0.1085      0.3672 UNDERSHOOTS  
+   Noah Long                    36   1.00     0.0       78    0.0000      0.3672 UNDERSHOOTS  
+   Josh Sinn                    30   2.50     0.0       73    0.0000      0.3672 UNDERSHOOTS  
+   Jesse Motlop                 63   2.00     0.0       63    0.0000      0.3672 UNDERSHOOTS  
+   Bobby Hill                   97   1.92     0.0       49    0.0000      0.3672 UNDERSHOOTS  
+   Bailey Banfield             118   0.92     0.0       17    0.0000      0.3672 UNDERSHOOTS  
+
+   POPULATION B VERDICT against yardstick (ii): UNDERSHOOTS 18, APPROXIMATES 1
+   F3-P1 — predicted the 19 rows UNDERSHOOT by essentially the whole measured cost. NOT confirmed — F3-P1 FIRED
+
+   THE SIZE OF THE GAP, on yardstick (ii). If the missed season were charged at the measured cost
+   of one unplayed season, these 19 rows would carry about 7139 board points less between them,
+   against a board of 666434. THAT IS AN ARITHMETIC CONSEQUENCE OF THE MEASUREMENT AND NOT A PROPOSAL:
+   this seat is not saying the clock should count that season. It is saying what the number is.
+
+----------------------------------------------------------------------------------------------------------------------
+5 · THE SAME CALIBRATION ON EVERY ROW THE FADE ACTUALLY REACHES
+----------------------------------------------------------------------------------------------------------------------
+   The two populations above are the edge cases. This is the middle: every board row whose sitter
+   fade is below 1, so the absence take is not trivially zero.
+
+   c_u band       rows    med take    measured 90% CI                     verdict on median
+   1-2              18      0.1674      0.6126 [   +0.4947,    +0.7172] UNDERSHOOTS   
+   2-3              59      0.1111      0.6126 [   +0.4947,    +0.7172] UNDERSHOOTS   
+   3-4              39      0.2764      0.8373 [   +0.7612,    +0.9067] UNDERSHOOTS   
+   4-9              15      0.3192      0.9217 [   +0.8486,    +0.9820] UNDERSHOOTS   
+
+   THIS IS THE ANSWER TO THE OWNER'S QUESTION IN ONE TABLE. Where the fade reaches a row at all,
+   the combined take is compared against the measured total cost of the absence at that depth.
+
+----------------------------------------------------------------------------------------------------------------------
+6 · THE DENOMINATOR PROBLEM, AND THE STRUCTURAL CEILING — READ THIS BEFORE READING SECTION 5
+----------------------------------------------------------------------------------------------------------------------
+   THE TWO NUMBERS COMPARED ABOVE HAVE DIFFERENT DENOMINATORS AND THAT MUST BE SAID PLAINLY.
+   The measured cost is a fraction of DELIVERED VALUE. The absence take is a fraction of BOARD
+   PRICE. A row's price already carries a production leg that is low for its own reasons, so the
+   two are not the same base and the section 5 gap is NOT simply "the dial is set too low".
+
+   THE QUESTION THAT MAKES IT MEANINGFUL: what is the MOST the absence mechanisms could take on
+   this row, at any setting, given where they sit in the price identity? The sitter fade multiplies
+   only the (1 - rho) share of the pedigree leg. Drive D to zero and that whole share goes; nothing
+   more can. Add the D8 cap at its measured size and that is the ceiling.
+
+   c_u band       rows     med take  med CEILING     measured 90% CI of measured      
+   1-2              18       0.1674       0.5449       0.6126 [   +0.4947,    +0.7172]
+   2-3              59       0.1111       0.4220       0.6126 [   +0.4947,    +0.7172]
+   3-4              39       0.2764       0.5415       0.8373 [   +0.7612,    +0.9067]
+   4-9              15       0.3192       0.7043       0.9217 [   +0.8486,    +0.9820]
+
+   BANDS WHERE EVEN THE CEILING SITS BELOW THE MEASURED COST: 2-3, 3-4, 4-99
+
+   THAT IS A STRUCTURAL FINDING, NOT A DIAL FINDING. In those bands no setting of the sitter
+   fade and no size of the D8 cap can collect the measured cost of the absence, because the
+   collectors act on a share of the price that is smaller than the cost is. Scaling the split,
+   which is the remedy the owner's reframe points at when the total overshoots, cannot close a
+   gap of this kind. THIS SEAT PROPOSES NOTHING; it reports that the lever and the gap are
+   different sizes.
+
+   AND THE LIMITATION THAT CUTS THE OTHER WAY, stated as plainly: a row whose absence has already
+   depressed his PRODUCTION leg has paid for the absence somewhere the attributions above do not
+   count, because rho and the production estimate are not absence mechanisms and were not read as
+   such. The section 5 gap is therefore an UPPER bound on the shortfall, not a point estimate.
+

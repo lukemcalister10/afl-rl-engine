@@ -1,0 +1,41 @@
+ORDER Q — CONTINUITY, ALL SIX BOARDS, ONE PAGE. Detail per board is in CONTINUITY_<TAG>_out.txt.
+
+THE AXIS ORDER P DID NOT TEST — THE CHARGE ACROSS AGE
+   ORDER P's op_continuity.py has an AGE axis, but it sweeps MA.o36_bar(pos, age), the S1 age BAR,
+   and its own header says of that axis "UNCHANGED by this order; re-asserted". It never sweeps
+   o37_factor across age and it never sweeps a price across age. The age-24 handover ORDER P
+   introduced was NOT tested by ORDER P's suite. CONFIRMED.
+
+   largest step in the charge factor between two consecutive ages (20 career games):
+     ORDER P   0.4653   one step, at 23 -> 24
+     FIX A     0.4653   unchanged — A repairs the price axis, not the age axis
+     FIX B1    0.0000   NO STEP AT ANY AGE. The charge does not read current age at all.
+     FIX B2    0.2381   three steps at 23->24, 24->25, 25->26, the largest about half ORDER P's
+     A + B1    0.0000
+     A + B2    0.2381
+
+THE PRICE ACROSS AGE, ON EVERY REAL ROW (charge channel isolated; everything else held fixed)
+   board     rows moving on ANY birthday   gaining 50%+   worst jump   net points
+   ORDER P              70                      12          4.890x       +1533
+   FIX A                70                      12          4.697x       +1388
+   FIX B1                0                       0          1.000x          +0
+   FIX B2              148                      16          2.368x       +1738
+   A + B1                0                       0          1.000x          +0
+   A + B2              147                      16          2.368x       +1632
+   B2 moves the 50%-gain birthdays from 23->24 to 24->25 and 25->26. It does not remove them.
+
+THE ENTRY-PRICE AXIS — DEFECT 1, SWEPT AT 0.1% OF PRICE FROM 40 TO 6,000, 30 CELLS
+   board     cells where the LEG FALLS   falling steps   worst single fall
+   ORDER P            30 of 30              17,381       5.658e-03 of the leg (TALL g=60 v0 2,779)
+   FIX A               0 of 30                   0       NONE
+   FIX B1             30 of 30              17,381       5.658e-03
+   FIX B2             30 of 30              17,381       5.658e-03
+   A + B1              0 of 30                   0       NONE
+   A + B2              0 of 30                   0       NONE
+
+THE AXES ORDER P DID TEST — IDENTICAL ON ALL SIX BOARDS
+   GAMES        largest step 3.709e-03; the charge RISES with games at 0 of 280,000 steps
+   SURPLUS      largest step 9.934e-04; a better player is charged more at 0 of 10,000 steps
+   PREMIUM      falls with price at 0 of 10,028 steps; largest one-node move 0.0570
+
+NO REPAIR IN THIS ORDER CREATES A CLIFF ON ANY AXIS, AND FIX A REMOVES ONE.

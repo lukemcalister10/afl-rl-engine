@@ -1,0 +1,138 @@
+=== ORDER R CENSUSES — 13 boards, strictly sequential ===
+
+########## or_census.py  RP  RL_O37=1 ##########
+  rc=0
+  Willem Duursma            1    19     19       3920    35.80%       3273
+  Sam Lalor                 1    20     22       3060    66.67%       3273
+
+wrote CENSUS_RP.json
+
+########## or_census.py  RB1  RL_O37=1 RL_O38B1=1 ##########
+  rc=0
+  Willem Duursma            1    19     19       3920    35.80%       3273
+  Sam Lalor                 1    20     22       3060    66.67%       3273
+
+wrote CENSUS_RB1.json
+
+########## or_census.py  RAB1  RL_O37=1 RL_O38A=1 RL_O38B1=1 ##########
+  rc=0
+  Willem Duursma            1    19     19       4236    18.85%       3273
+  Sam Lalor                 1    20     22       3395    47.80%       3273
+
+wrote CENSUS_RAB1.json
+
+########## or_census.py  R15  RL_O37=1 RL_O38B1=1 RL_O39_TMAXPCT=15 ##########
+  rc=0
+  Willem Duursma            1    19     19       3920    35.80%       3273
+  Sam Lalor                 1    20     22       3060    66.67%       3273
+
+wrote CENSUS_R15.json
+
+########## or_census.py  R20  RL_O37=1 RL_O38B1=1 RL_O39_TMAXPCT=20 ##########
+  rc=0
+  Willem Duursma            1    19     19       3920    35.80%       3273
+  Sam Lalor                 1    20     22       3060    66.67%       3273
+
+wrote CENSUS_R20.json
+
+########## or_census.py  R15A  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_TMAXPCT=15 ##########
+  rc=0
+  Willem Duursma            1    19     19       4236    18.85%       3273
+  Sam Lalor                 1    20     22       3395    47.80%       3273
+
+wrote CENSUS_R15A.json
+
+########## or_census.py  R20A  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_TMAXPCT=20 ##########
+  rc=0
+  Willem Duursma            1    19     19       4236    18.85%       3273
+  Sam Lalor                 1    20     22       3395    47.80%       3273
+
+wrote CENSUS_R20A.json
+
+########## or_census.py  Rb1  RL_O37=1 RL_O38B1=1 RL_O39_BETASAT=0.111 ##########
+  rc=0
+  Willem Duursma            1    19     19       3932    35.19%       3273
+  Sam Lalor                 1    20     22       3078    65.65%       3273
+
+wrote CENSUS_Rb1.json
+
+########## or_census.py  Rb2  RL_O37=1 RL_O38B1=1 RL_O39_BETASAT=0.105 ##########
+  rc=0
+  Willem Duursma            1    19     19       3950    34.19%       3273
+  Sam Lalor                 1    20     22       3109    63.92%       3273
+
+wrote CENSUS_Rb2.json
+
+########## or_census.py  R15b1  RL_O37=1 RL_O38B1=1 RL_O39_TMAXPCT=15 RL_O39_BETASAT=0.111 ##########
+  rc=0
+  Willem Duursma            1    19     19       3932    35.19%       3273
+  Sam Lalor                 1    20     22       3078    65.65%       3273
+
+wrote CENSUS_R15b1.json
+
+########## or_census.py  R20b2  RL_O37=1 RL_O38B1=1 RL_O39_TMAXPCT=20 RL_O39_BETASAT=0.105 ##########
+  rc=0
+  Willem Duursma            1    19     19       3950    34.19%       3273
+  Sam Lalor                 1    20     22       3109    63.92%       3273
+
+wrote CENSUS_R20b2.json
+
+########## or_census.py  R20b2A  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_TMAXPCT=20 RL_O39_BETASAT=0.105 ##########
+  rc=0
+  Willem Duursma            1    19     19       4225    19.41%       3273
+  Sam Lalor                 1    20     22       3385    48.39%       3273
+
+wrote CENSUS_R20b2A.json
+
+=== ORDER R CONTINUITY — the base, the two levers and both corners ===
+
+########## or_continuity.py  RP  RL_O37=1 ##########
+  rc=0
+     cells where the leg FALLS with price: 30 of 30 ; total falling steps: 17381
+     worst single fall: 5.658e-03 of the leg, TALL g=60 OUT=-4 at v0 2779
+
+wrote CONTINUITY_RP_out.txt
+
+########## or_continuity.py  RB1  RL_O37=1 RL_O38B1=1 ##########
+  rc=0
+     cells where the leg FALLS with price: 30 of 30 ; total falling steps: 17381
+     worst single fall: 5.658e-03 of the leg, TALL g=60 OUT=-4 at v0 2779
+
+wrote CONTINUITY_RB1_out.txt
+
+########## or_continuity.py  R15  RL_O37=1 RL_O38B1=1 RL_O39_TMAXPCT=15 ##########
+  rc=0
+     cells where the leg FALLS with price: 24 of 30 ; total falling steps: 12210
+     worst single fall: 5.658e-03 of the leg, TALL g=60 OUT=+8 at v0 2779
+
+wrote CONTINUITY_R15_out.txt
+
+########## or_continuity.py  R20  RL_O37=1 RL_O38B1=1 RL_O39_TMAXPCT=20 ##########
+  rc=0
+     cells where the leg FALLS with price: 24 of 30 ; total falling steps: 10655
+     worst single fall: 5.658e-03 of the leg, TALL g=60 OUT=+8 at v0 2779
+
+wrote CONTINUITY_R20_out.txt
+
+########## or_continuity.py  Rb2  RL_O37=1 RL_O38B1=1 RL_O39_BETASAT=0.105 ##########
+  rc=0
+     cells where the leg FALLS with price: 29 of 30 ; total falling steps: 16536
+     worst single fall: 5.097e-03 of the leg, TALL g=60 OUT=+8 at v0 2779
+
+wrote CONTINUITY_Rb2_out.txt
+
+########## or_continuity.py  R20b2  RL_O37=1 RL_O38B1=1 RL_O39_TMAXPCT=20 RL_O39_BETASAT=0.105 ##########
+  rc=0
+     cells where the leg FALLS with price: 23 of 30 ; total falling steps: 10013
+     worst single fall: 5.097e-03 of the leg, TALL g=60 OUT=+8 at v0 2779
+
+wrote CONTINUITY_R20b2_out.txt
+
+########## or_continuity.py  R20b2A  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_TMAXPCT=20 RL_O39_BETASAT=0.105 ##########
+  rc=0
+     cells where the leg FALLS with price: 0 of 30 ; total falling steps: 0
+     worst single fall: NONE
+
+wrote CONTINUITY_R20b2A_out.txt
+
+=== MEASUREMENT SUITE DONE ===

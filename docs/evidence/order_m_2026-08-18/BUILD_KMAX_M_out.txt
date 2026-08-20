@@ -1,0 +1,17 @@
+=== ORDER M — THE MAXIMUM-KAPPA TEST ===
+
+--- KMAX (dose 0.0, kappa 0.60, gamma_u 16, eta 0) ---
+6c5675648d1be84c9e4673ad9b862c52  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_KMAX/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_KMAX/rl_after/rl_model_data.json
+5d7fb89ae2aada54ca159f2ec10bdeab  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_KMAX/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- KMX4 (dose 0.40, kappa 0.60, gamma_u 16, eta 0) ---
+6c5675648d1be84c9e4673ad9b862c52  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_KMX4/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_KMX4/rl_after/rl_model_data.json
+4d60b14a1cb8844d824605f2d65e13a7  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_KMX4/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+=== MD5s ===
+  KMAX  5d7fb89ae2aada54ca159f2ec10bdeab
+  KMX4  4d60b14a1cb8844d824605f2d65e13a7

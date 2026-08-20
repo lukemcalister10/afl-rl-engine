@@ -1,0 +1,47 @@
+==========================================================================================================================
+B-WEIGHTED — the same test, with the realised measures weighted by year-0 price, the same weight
+    the class mark itself uses. n = 11 classes, CIs over 20,000 bootstrap resamples of classes.
+==========================================================================================================================
+
+  the weighted measures themselves:
+  class       w games w production    w surplus     w played     mark K     mark P
+  2005           4.41        236.3         +3.5        57.7%     0.8562     0.8230
+  2006           5.11        277.5         +5.7        63.5%     1.0579     1.0155
+  2007           6.40        391.3        +38.8        64.3%     1.0713     1.0378
+  2008           5.88        365.2        +45.2        56.2%     1.0063     1.0263
+  2009           8.21        525.2        +58.3        61.7%     1.0432     1.0680
+  2010           7.78        485.5        +58.3        68.8%     1.1359     1.1570
+  2011           5.62        338.5        +26.2        64.5%     1.1363     1.1595
+  2012           6.25        379.3        +28.8        67.1%     1.0673     1.0901
+  2013           7.69        465.8        +48.0        66.2%     1.0535     1.0760
+  2014           5.70        314.2         -0.4        60.2%     1.0300     1.0158
+  2015           7.52        479.2        +83.8        69.7%     1.1060     1.2047
+
+  ---- price-weighted year-1 production ----
+  ORDER K        Spearman +0.391   Pearson +0.554
+  ORDER P        Spearman +0.655   Pearson +0.685
+  landing cand   Spearman +0.518   Pearson +0.580
+  P minus K   Spearman +0.264 [-0.055, +0.718] P>K 91%   Pearson +0.130 [+0.012, +0.467] P>K 99%
+  with the 2015 class DROPPED (n=10): K +0.345  P +0.624  d +0.279 (Spearman)
+
+  ---- price-weighted year-1 surplus ----
+  ORDER K        Spearman +0.336   Pearson +0.493
+  ORDER P        Spearman +0.645   Pearson +0.692
+  landing cand   Spearman +0.436   Pearson +0.517
+  P minus K   Spearman +0.309 [-0.027, +0.700] P>K 94%   Pearson +0.199 [+0.029, +0.495] P>K 99%
+  with the 2015 class DROPPED (n=10): K +0.224  P +0.527  d +0.303 (Spearman)
+
+  ---- price-weighted year-1 games ----
+  ORDER K        Spearman +0.282   Pearson +0.547
+  ORDER P        Spearman +0.555   Pearson +0.661
+  landing cand   Spearman +0.418   Pearson +0.571
+  P minus K   Spearman +0.273 [-0.082, +0.745] P>K 91%   Pearson +0.114 [+0.001, +0.456] P>K 98%
+  with the 2015 class DROPPED (n=10): K +0.261  P +0.539  d +0.279 (Spearman)
+
+  ---- price-weighted share who played ----
+  ORDER K        Spearman +0.818   Pearson +0.748
+  ORDER P        Spearman +0.836   Pearson +0.767
+  landing cand   Spearman +0.864   Pearson +0.741
+  P minus K   Spearman +0.018 [-0.409, +0.400] P>K 53%   Pearson +0.018 [-0.201, +0.186] P>K 54%
+  with the 2015 class DROPPED (n=10): K +0.818  P +0.782  d -0.036 (Spearman)
+

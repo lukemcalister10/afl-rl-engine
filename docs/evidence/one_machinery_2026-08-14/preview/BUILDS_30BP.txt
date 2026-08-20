@@ -1,0 +1,36 @@
+ORDER 30B-P — EVERY BOARD BUILT BY THIS SEAT, IN ORDER, WITH ITS md5.
+Build script: bb30bp.sh == the committed bb30b.sh with ROOT re-pointed to this seat's worktree and
+pass-throughs added for RL_O30B_PREVIEW / RL_O30B_NOPOLE / RL_O30B_NOISO. NOTHING ELSE CHANGED:
+same staging, same five-var thread pinning, same RL_V0SURF_PKL override. ENGINE RUNS ARE SEQUENTIAL.
+
+pinned every build:
+  rl_model.py            14000af2a46f7a3c4cdfde303f5a1aff
+  rl_model_data.json     cb38ef1171dcf20aae66ebf12682be0d   (the store -- UNMOVED)
+  pvc_curve_v2.json      06146b00daf2043487f58a8b9f842a1e   (the artifact -- UNMOVED)
+  env  RL_GAMMA=1.0 RL_PICK1=3000 RL_RUCK_TAX=0.25 RL_RECENCY_DECAY=0.72 RL_PRIOR_TREES=400 PAR_RAMPS=22
+       PYTHONHASHSEED=0 + OPENBLAS/OMP/MKL/NUMEXPR/VECLIB _NUM_THREADS=1
+
+tag         dial                        rl_app_data.json md5                 note
+--------------------------------------------------------------------------------------------------
+bb_base     (none)                      9298203135202a0c707bb0977ba38c31     the committed Step-2 board,
+                                                                             reproduced from THIS worktree
+                                                                             before any code was written
+bb_dialoff  present, unset              9298203135202a0c707bb0977ba38c31     P1 -- byte-exact with the
+                                                                             preview lane in the file
+bb_prevA    RL_O30B_PREVIEW=1           6a392bca7ad0dee04a6b4f037c758f65     THE PREVIEW BOARD
+bb_prevB    RL_O30B_PREVIEW=1           6a392bca7ad0dee04a6b4f037c758f65     P3 -- determinism
+bb_dialoff2 present, unset              9298203135202a0c707bb0977ba38c31     re-verified after a
+                                                                             comment-only cleanup
+bb_prevC    RL_O30B_PREVIEW=1           6a392bca7ad0dee04a6b4f037c758f65     re-verified after the same
+                                                                             cleanup; third identical build
+
+OPS DISCLOSURE, stated rather than left in a log: bb_prevB was FIRST attempted as a detached background
+run and was killed mid-export. It wrote no board (its rl_app_data.json was still the staged copy of the
+committed entry board 36d5dfc7, i.e. the export never ran to completion) and it is NOT the scored build.
+It was re-run in the foreground and that run is the one recorded above. Every scored build in this order
+is a foreground, sequential engine run.
+
+BOARDS READ, NOT BUILT:
+  88ce647f531030d8d2e094188b258191   the LIVE board, extracted from origin/main:engine/rl_after/rl_app_data.json
+  7b17962a...                        ablation B (pole+ISO deleted, no blend) -- read from the committed
+                                     ABL_NOPOLE_NOISO.json mover rows, not rebuilt

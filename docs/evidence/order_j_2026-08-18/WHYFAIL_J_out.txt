@@ -1,0 +1,162 @@
+ORDER J — the anatomy of the J-TOL failures.  board points throughout.
+
+THE GATE (PREREG_J §2.2): per row |d| <= min(25, max(1, 0.005*v)) · churn <= 1001.87 · net <= 667.91
+
+=== 1 · THE SMALLEST KNOB STEPS: WHO ACTUALLY BREAKS, AND BY HOW MUCH OF HIS OWN VALUE ===
+
+-- eta 0.41 -> 0.42 :  426 rows move, 12 over their cap --
+   row                       age      value      move     as %  its cap  clause that binds
+   billy-cootee               24      256.6    -3.184  -1.241%    1.283  the 0.5%% cap
+   mani-liddy                 24      153.0    -2.387  -1.560%    1.000  the 1.0-pt floor (row < 200)
+   conor-stone                24      224.2    -2.334  -1.041%    1.121  the 0.5%% cap
+   wade-derksen               25      174.3    -1.842  -1.057%    1.000  the 1.0-pt floor (row < 200)
+   liam-mcmahon               24      190.2    -1.695  -0.891%    1.000  the 1.0-pt floor (row < 200)
+   saad-el-hawli              25       89.0    -1.391  -1.562%    1.000  the 1.0-pt floor (row < 200)
+   roan-steele                25      122.0    -1.390  -1.139%    1.000  the 1.0-pt floor (row < 200)
+   finlay-macrae              24      121.1    -1.386  -1.145%    1.000  the 1.0-pt floor (row < 200)
+   jack-watkins               26       80.7    -1.202  -1.490%    1.000  the 1.0-pt floor (row < 200)
+   ben-jepson                 25      122.0    -1.139  -0.934%    1.000  the 1.0-pt floor (row < 200)
+   of the 12 over-cap rows: 10 are held by the 1.0-point FLOOR (value < 200 bp), 2 by the 0.5% CAP
+   worst row moves 1.241% of its own value; the gate allows 0.5%
+
+-- kappa 0.24 -> 0.22 :  422 rows move, 17 over their cap --
+   row                       age      value      move     as %  its cap  clause that binds
+   billy-cootee               24      256.6    +4.331  +1.688%    1.283  the 0.5%% cap
+   liam-reidy                 26      234.7    -3.385  -1.442%    1.174  the 0.5%% cap
+   marcus-herbert             24      745.5   -10.118  -1.357%    3.728  the 0.5%% cap
+   max-heath                  24      468.5    -6.225  -1.329%    2.343  the 0.5%% cap
+   oliver-hayes-brown         26      115.2    -2.261  -1.963%    1.000  the 1.0-pt floor (row < 200)
+   conor-stone                24      224.2    +2.509  +1.119%    1.121  the 0.5%% cap
+   ben-jepson                 25      122.0    +2.137  +1.752%    1.000  the 1.0-pt floor (row < 200)
+   mani-liddy                 24      153.0    +1.928  +1.260%    1.000  the 1.0-pt floor (row < 200)
+   saad-el-hawli              25       89.0    +1.804  +2.027%    1.000  the 1.0-pt floor (row < 200)
+   lachlan-mcandrew           26      897.3    -7.575  -0.844%    4.486  the 0.5%% cap
+   of the 17 over-cap rows: 10 are held by the 1.0-point FLOOR (value < 200 bp), 7 by the 0.5% CAP
+   worst row moves 1.688% of its own value; the gate allows 0.5%
+
+-- kappa 0.24 -> 0.26 :  423 rows move, 17 over their cap --
+   row                       age      value      move     as %  its cap  clause that binds
+   billy-cootee               24      256.6    -4.331  -1.688%    1.283  the 0.5%% cap
+   liam-reidy                 26      234.7    +3.385  +1.442%    1.174  the 0.5%% cap
+   marcus-herbert             24      745.5   +10.118  +1.357%    3.728  the 0.5%% cap
+   max-heath                  24      468.5    +6.225  +1.329%    2.343  the 0.5%% cap
+   oliver-hayes-brown         26      115.2    +2.261  +1.963%    1.000  the 1.0-pt floor (row < 200)
+   conor-stone                24      224.2    -2.509  -1.119%    1.121  the 0.5%% cap
+   ben-jepson                 25      122.0    -2.137  -1.752%    1.000  the 1.0-pt floor (row < 200)
+   mani-liddy                 24      153.0    -1.928  -1.260%    1.000  the 1.0-pt floor (row < 200)
+   saad-el-hawli              25       89.0    -1.804  -2.027%    1.000  the 1.0-pt floor (row < 200)
+   lachlan-mcandrew           26      897.3    +7.575  +0.844%    4.486  the 0.5%% cap
+   of the 17 over-cap rows: 10 are held by the 1.0-point FLOOR (value < 200 bp), 7 by the 0.5% CAP
+   worst row moves 1.688% of its own value; the gate allows 0.5%
+
+-- lambda_rel 1.08 -> 1.00 :  19 rows move, 10 over their cap --
+   row                       age      value      move     as %  its cap  clause that binds
+   mani-liddy                 24      153.0    -3.845  -2.512%    1.000  the 1.0-pt floor (row < 200)
+   bailey-laurie              24      104.5    -3.327  -3.185%    1.000  the 1.0-pt floor (row < 200)
+   saad-el-hawli              25       89.0    -2.855  -3.208%    1.000  the 1.0-pt floor (row < 200)
+   ryan-angwin                24      491.4    -6.419  -1.306%    2.457  the 0.5%% cap
+   liam-mcmahon               24      190.2    -2.469  -1.298%    1.000  the 1.0-pt floor (row < 200)
+   nick-bryan                 25      692.9    -6.636  -0.958%    3.465  the 0.5%% cap
+   jack-carroll               24       87.0    -1.701  -1.956%    1.000  the 1.0-pt floor (row < 200)
+   jackson-mead               25       36.7    -1.240  -3.378%    1.000  the 1.0-pt floor (row < 200)
+   ollie-lord                 24       86.9    -1.211  -1.394%    1.000  the 1.0-pt floor (row < 200)
+   max-heath                  24      468.5    -2.740  -0.585%    2.343  the 0.5%% cap
+   of the 10 over-cap rows: 7 are held by the 1.0-point FLOOR (value < 200 bp), 3 by the 0.5% CAP
+   worst row moves 2.512% of its own value; the gate allows 0.5%
+
+-- gamma_u 11 -> 12 :  425 rows move, 16 over their cap --
+   row                       age      value      move     as %  its cap  clause that binds
+   conor-stone                24      224.2    -4.012  -1.789%    1.121  the 0.5%% cap
+   roan-steele                25      122.0    -2.074  -1.700%    1.000  the 1.0-pt floor (row < 200)
+   jack-hutchinson            25      119.3    -1.925  -1.614%    1.000  the 1.0-pt floor (row < 200)
+   luke-pedlar                24      218.4    -1.994  -0.913%    1.092  the 0.5%% cap
+   lachlan-mcandrew           26      897.3    +7.537  +0.840%    4.486  the 0.5%% cap
+   ned-moyle                  24     1645.3   +13.528  +0.822%    8.227  the 0.5%% cap
+   bailey-laurie              24      104.5    -1.521  -1.456%    1.000  the 1.0-pt floor (row < 200)
+   billy-cootee               24      256.6    +1.736  +0.677%    1.283  the 0.5%% cap
+   james-borlase              24      304.0    +1.996  +0.656%    1.520  the 0.5%% cap
+   callum-coleman-jones       27       91.6    -1.297  -1.416%    1.000  the 1.0-pt floor (row < 200)
+   of the 16 over-cap rows: 8 are held by the 1.0-point FLOOR (value < 200 bp), 8 by the 0.5% CAP
+   worst row moves 1.789% of its own value; the gate allows 0.5%
+
+-- gamma_d 14 -> 13 :  426 rows move, 54 over their cap --
+   row                       age      value      move     as %  its cap  clause that binds
+   conor-stone                24      224.2    +7.336  +3.271%    1.121  the 0.5%% cap
+   luke-pedlar                24      218.4    +4.685  +2.145%    1.092  the 0.5%% cap
+   jack-hutchinson            25      119.3    +3.705  +3.107%    1.000  the 1.0-pt floor (row < 200)
+   billy-cootee               24      256.6    -4.738  -1.846%    1.283  the 0.5%% cap
+   leek-aleer                 25      292.0    +5.304  +1.817%    1.460  the 0.5%% cap
+   roan-steele                25      122.0    +3.542  +2.903%    1.000  the 1.0-pt floor (row < 200)
+   bailey-laurie              24      104.5    +2.958  +2.832%    1.000  the 1.0-pt floor (row < 200)
+   callum-coleman-jones       27       91.6    +2.880  +3.143%    1.000  the 1.0-pt floor (row < 200)
+   deven-robertson            25      241.5    +3.093  +1.281%    1.207  the 0.5%% cap
+   sam-sturt                  26       76.9    +2.551  +3.318%    1.000  the 1.0-pt floor (row < 200)
+   of the 54 over-cap rows: 33 are held by the 1.0-point FLOOR (value < 200 bp), 21 by the 0.5% CAP
+   worst row moves 3.271% of its own value; the gate allows 0.5%
+
+=== 2 · THE EXCHANGE RATE — the per-row tolerance each candidate setting would need ===
+   "needs p%" = the smallest flat per-row percentage-of-value cap (with the same 1.0-point
+   floor and 25-point ceiling) under which that setting would pass clause (a).
+
+   setting                                     needs % worst bp     churn       net  b/c ok
+   #1  d0.15 k0.24 gu11 e0.45 gd14 r1.08         6.25%    12.74     253.7    -253.7      ok
+   #10  d0.25 k0.22 gu8 e0.50 gd14 r1.08        11.51%    72.49     675.3    -675.3      no
+   #11  d0.10 k0.28 gu8 e0.50 gd12 r1.08        20.21%    51.87     619.8    -177.5      ok
+   #12  d0.20 k0.24 gu8 e0.50 gd14 r1.08        12.66%    67.49     659.4    -659.4      ok
+   #13  d0.15 k0.24 gu8 e0.50 gd14 r1.08        12.66%    67.49     659.4    -659.4      ok
+   #14  d0.15 k0.26 gu8 e0.50 gd14 r1.08        14.28%    62.49     646.8    -643.5      ok
+   #15  d0.00 k0.30 gu8 e0.50 gd12 r1.08        21.75%    55.81     604.8    -161.9      ok
+   #16  d0.10 k0.26 gu8 e0.50 gd14 r1.08        14.28%    62.49     646.8    -643.5      ok
+   #2  d0.45 k0.18 gu8 e0.50 gd14 r1.08          9.27%    82.49     707.1    -707.1      no
+   #3  d0.25 k0.22 gu8 e0.45 gd12 r1.08         10.87%    47.99     654.6     +58.9      ok
+   #4  d0.40 k0.20 gu8 e0.50 gd14 r1.08         10.39%    77.49     691.2    -691.2      no
+   #5  d0.25 k0.24 gu8 e0.50 gd12 r1.08         17.14%    51.72     669.7    -208.7      ok
+   #6  d0.35 k0.20 gu8 e0.50 gd14 r1.08         10.39%    77.49     691.2    -691.2      no
+   #7  d0.30 k0.20 gu8 e0.45 gd14 r1.08          6.07%    67.19     439.5    -360.1      ok
+   #8  d0.30 k0.22 gu8 e0.50 gd14 r1.08         11.51%    72.49     675.3    -675.3      no
+   #9  d0.15 k0.24 gu8 e0.45 gd12 r1.08         10.99%    43.05     618.7     +71.7      ok
+
+   eta 0.41 -> 0.00                             64.06%   130.56    2600.7   +2600.7      no
+   eta 0.41 -> 0.10                             48.43%    98.71    1966.4   +1966.4      no
+   eta 0.41 -> 0.20                             32.81%    66.87    1332.1   +1332.1      no
+   eta 0.41 -> 0.30                             17.19%    35.03     697.8    +697.8      no
+   eta 0.41 -> 0.42                              1.56%     3.18      63.4     -63.4      ok
+   eta 0.41 -> 0.45                              6.25%    12.74     253.7    -253.7      ok
+   eta 0.41 -> 0.50                             14.06%    28.66     570.9    -570.9      ok
+   gamma_d 14 -> 10                             15.86%    35.50     884.8    +717.3      no
+   gamma_d 14 -> 12                              7.00%    15.70     443.7    +356.9      ok
+   gamma_d 14 -> 13                              3.32%     7.46     221.3    +177.9      ok
+   gamma_d 14 -> 4                              53.29%    93.46    2032.0   +1828.9      no
+   gamma_d 14 -> 6                              38.17%    80.20    1720.9   +1444.0      no
+   gamma_d 14 -> 8                              26.84%    58.34    1313.5   +1079.2      no
+   gamma_u 11 -> 10                              1.98%    15.12     114.5     -22.1      ok
+   gamma_u 11 -> 12                              1.79%    13.53     113.1     +20.3      ok
+   gamma_u 11 -> 14                              4.92%    35.74     335.7     +56.9      ok
+   gamma_u 11 -> 16                              7.10%    52.11     551.4     +90.4      ok
+   gamma_u 11 -> 8                               7.01%    49.06     347.1     -73.5      ok
+   kappa 0.24 -> 0.15                            9.12%    45.53     393.6     -76.3      ok
+   kappa 0.24 -> 0.18                            6.08%    30.35     262.4     -50.8      ok
+   kappa 0.24 -> 0.20                            4.05%    20.24     174.9     -33.9      ok
+   kappa 0.24 -> 0.22                            2.03%    10.12      87.5     -16.9      ok
+   kappa 0.24 -> 0.26                            2.03%    10.12      87.5     +16.9      ok
+   kappa 0.24 -> 0.28                            4.05%    20.24     174.9     +33.9      ok
+   kappa 0.24 -> 0.30                            6.08%    30.35     262.4     +50.8      ok
+   kappa 0.24 -> 0.35                           11.15%    55.65     481.0     +93.2      ok
+   kappa 0.24 -> 0.40                           16.22%    80.95     699.7    +135.6      ok
+   kappa 0.24 -> 0.50                           26.35%   131.54    1137.0    +220.3      no
+   kappa 0.24 -> 0.60                           36.49%   182.13    1574.3    +305.1      no
+   lambda_rel 1.08 -> 0.80                      11.95%    23.23     178.3    -178.3      ok
+   lambda_rel 1.08 -> 0.90                       7.60%    14.93     103.1    -103.1      ok
+   lambda_rel 1.08 -> 1.00                       3.38%     6.64      38.1     -38.1      ok
+   lambda_rel 1.08 -> 1.20                       5.07%     9.95      56.7     +56.7      ok
+   lambda_rel 1.08 -> 1.30                       9.39%    18.25      89.4     +89.4      ok
+
+=== 3 · THE FREE PLAY — how far each knob may move before J-TOL bites ===
+   read off the ladder by linearity: mature movement is very nearly proportional to the
+   distance from the repair point, so the admissible step is (step tested) x (cap / worst ratio)
+   eta         tested step  +0.010 -> worst row sits at   2.48x its cap -> free play about  +0.0040
+   kappa       tested step  +0.020 -> worst row sits at   3.38x its cap -> free play about  +0.0059
+   kappa       tested step  -0.020 -> worst row sits at   3.38x its cap -> free play about  -0.0059
+   gamma_u     tested step  +1.000 -> worst row sits at   3.58x its cap -> free play about  +0.2794
+   gamma_d     tested step  -1.000 -> worst row sits at   6.54x its cap -> free play about  -0.1528
+   lambda_rel  tested step  -0.080 -> worst row sits at   3.84x its cap -> free play about  -0.0208

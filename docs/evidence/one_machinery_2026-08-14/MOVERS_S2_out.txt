@@ -1,0 +1,56 @@
+MOVERS STEP2 the ruled sitter fade, vs the STEP-1 board
+  old rl_app_data.json  total 718019
+  new rl_app_data.json  total 706672  (delta -11347, -1.5803%)
+  movers 46 of 804   sum delta -11347
+  by career-games class:
+     cg 0      movers   46   sum    -11347
+  by entry type: ND 46(-11347)
+  LARGEST 60 MOVES
+  key                             old      new     delta    cg    yr    ty   pk
+  josh-smillie                   1689      471     -1218     0  2024    ND    7
+  harry-demattia                  891      301      -590     0  2023    ND   25
+  max-knobel                      831      287      -544     0  2022    ND   42
+  ben-camporeale                  614      171      -443     0  2024    ND   43
+  harley-barker                   892      491      -401     0  2025    ND   24
+  oskar-taylor                    946      546      -400     0  2025    ND   15
+  sam-allen                       836      483      -353     0  2025    ND   29
+  charlie-nicholls                453      126      -327     0  2024    ND   34
+  lachlan-carmichael              762      440      -322     0  2025    ND   21
+  james-barrat                    423      118      -305     0  2024    ND   32
+  joel-cochran                    408      114      -294     0  2024    ND   47
+  mitchell-marsh                  695      401      -294     0  2025    ND   22
+  cooper-bell                     406      113      -293     0  2024    ND   49
+  tyan-prindable                  690      398      -292     0  2025    ND   32
+  riak-andrew                     400      112      -288     0  2024    ND   55
+  kayle-gerreyn                   392      109      -283     0  2024    ND   37
+  hunter-holmes                   658      380      -278     0  2025    ND   33
+  ollie-murphy                    414      140      -274     0  2023    ND   41
+  luke-lloyd                      413      140      -273     0  2023    ND   42
+  patrick-snell                   402      136      -266     0  2023    ND   53
+  ned-bowman                      344       96      -248     0  2024    ND   26
+  brayden-george                  344      119      -225     0  2022    ND   26
+  koby-coulson                    492      284      -208     0  2025    ND   46
+  blake-thredgold                 440      242      -198     0  2025    ND   26
+  jacob-molier                    250       70      -180     0  2024    ND   52
+  will-darcy                      397      229      -168     0  2025    ND   58
+  avery-thomas                    394      228      -166     0  2025    ND   28
+  luke-urquhart                   216       60      -156     0  2024    ND   57
+  tyler-welsh                     210       59      -151     0  2024    ND   59
+  adam-sweid                      345      199      -146     0  2025    ND   25
+  thomas-matthews                 340      196      -144     0  2025    ND   30
+  jevan-phillipou                 335      193      -142     0  2025    ND   35
+  koby-evans                      332      192      -140     0  2025    ND   38
+  tobyn-murray                    330      190      -140     0  2025    ND   40
+  tylah-williams                  331      191      -140     0  2025    ND   39
+  kye-fincher                     306      177      -129     0  2025    ND   52
+  max-king-syd                    273      150      -123     0  2025    ND   49
+  tai-hayes                       278      161      -117     0  2025    ND   44
+  hugo-mikunda                    274      158      -116     0  2025    ND   48
+  patrick-said                    148       41      -107     0  2024    ND   60
+  matthew-leray                   235      135      -100     0  2025    ND   56
+  zac-mccarthy                    214      124       -90     0  2025    ND   55
+  jaren-carr                      101       28       -73     0  2024    ND   63
+  cody-anderson                   100       28       -72     0  2024    ND   64
+  reece-torrent                   100       34       -66     0  2023    ND   64
+  finnegan-davis                  151       87       -64     0  2025    ND   51
+  wrote /home/user/afl-rl-engine/.claude/worktrees/agent-a65ed71c2045dbc94/docs/evidence/one_machinery_2026-08-14/MOVERS_S2.json

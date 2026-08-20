@@ -1,0 +1,55 @@
+==========================================================================================================================
+THE R3 BIRTHDAY QUESTION — IS THE CONTINUITY HARNESS READING A BOARD DEFECT OR ITS OWN GAP?
+==========================================================================================================================
+  board before R3   5cc1fca4    666,274
+  THE CANDIDATE     db1ccef5    665,249
+  R3-charged rows   9   total marginal -1025
+
+  engine md5  e886222f
+
+SELF-CHECK 1 — the re-formed take must equal the ENGINE's own take at every call, exactly.
+  calls checked 1200   worst absolute disagreement 0.000e+00   EXACT
+
+SELF-CHECK 2 — the blended take must reproduce the board's own per-row R3 delta, tolerance 0.
+  numeraire read off Toby Conway: 1.0524008455
+  row                        calls  board delta    re-formed    agree
+  Toby Conway                    2         -606     637.7549      yes
+  Harry Barnett                  2         -252     265.3831      yes
+  Hugh Davies                    2          -57      59.6474      yes
+  Tew Jiath                      2          -33      34.4369      yes
+  Caleb Graham                   2          -26      27.3108      yes
+  Finlay Macrae                  2          -24      25.2134      yes
+  Jakob Ryan                     2          -14      14.4677      yes
+  James Blanck                   2          -10      10.9808      yes
+  Paddy Dow                      2           -3       3.0109      yes
+  agree 9 of 9
+
+THE ISOLATED AGE STEP — R3's take at the real age vs at exactly one year older, with games,
+output, pedigree and clock all held fixed. This is the isolation the age axis intends.
+  row                         age    take now   take +1yr   step pts  price now
+  Toby Conway                  23    637.7549    637.7549         +0        460
+  Harry Barnett                22    265.3831    265.3831         +0        422
+  Hugh Davies                  22     59.6474     59.6474         +0        187
+  Tew Jiath                    21     34.4369     34.4369         +0         99
+  Caleb Graham                 26     27.3108     27.3108         +0         66
+  Finlay Macrae                24     25.2134     25.2134         +0         51
+  Jakob Ryan                   22     14.4677     14.4677         +0        149
+  James Blanck                 26     10.9808     10.9808         +0         15
+  Paddy Dow                    27      3.0109      3.0109         +0         28
+
+  BOARD POINTS THAT GENUINELY MOVE ACROSS THE BIRTHDAY THROUGH R3 : +0
+  ROWS MOVING 50% OR MORE THROUGH R3 ACROSS THE BIRTHDAY          : 0
+
+THE CONTINUITY HARNESS REPORTED, ON THIS SAME BOARD: 9 rows moving, 3 of them by 50%% or more,
++1,025 net. THAT +1,025 IS R3'S ENTIRE MARGINAL (-1025, measured above) AND THOSE 9 ROWS ARE
+EXACTLY THE 9 ROWS R3 CHARGES. The harness is not measuring an age step at all: os_lib.assemble
+rebuilds the ORDER 31 law — rho*e + pi*ped + age_credit — WITH NO R3 TERM, so os_continuity.py
+compares a price that CARRIES the collector against a rebuilt price that DROPS it, and prints
+the collector itself as a birthday jump.
+
+CONSEQUENCE, STATED PLAINLY AND NOT SOFTENED:
+  · The board's birthday acceptance law is NOT breached — the true step is the number above.
+  · The CONTINUITY HARNESS IS BLIND TO R3 and its age axis cannot be read on any board that
+    carries the collector. That is an INSTRUMENT DEFECT, it is mine, and it is open.
+  · The same blindness means the birthday line in the previous packet was measured with an
+    instrument that could not see the lever it was clearing. It is re-measured here.

@@ -1,0 +1,49 @@
+ORDER K — G1, THE YEAR-1 CLASS COHORT MARK, on the BUILT walk-forward matrices
+  the mark averages the per-class cohort ratio (mean yr1 / mean yr0) over classes 2005-2015
+
+label       board                                                      mark  max class   year  min class
+O35FINAL    the landing candidate 1f176444                           1.0232     1.1311   2012     0.8599
+O31FFINAL   candidate 31 fe6be9d6                                    1.0360     1.1410   2011     0.9011
+OKRULED     ORDER K f3101883 — the ruled setting, fixed fade floor     1.0324     1.1363   2012     0.8562
+
+PER-CLASS, side by side:
+  class     landing    cand 31    ORDER K
+  2005       0.8880    0.9251    0.8985   <- in the mark window
+  2006       0.8599    0.9011    0.8562   <- in the mark window
+  2007       1.0351    1.0313    1.0579   <- in the mark window
+  2008       1.0480    1.0626    1.0713   <- in the mark window
+  2009       1.0007    1.0084    1.0063   <- in the mark window
+  2010       1.0391    1.0574    1.0432   <- in the mark window
+  2011       1.1308    1.1410    1.1359   <- in the mark window
+  2012       1.1311    1.1197    1.1363   <- in the mark window
+  2013       1.0536    1.0606    1.0673   <- in the mark window
+  2014       1.0461    1.0720    1.0535   <- in the mark window
+  2015       1.0230    1.0167    1.0300   <- in the mark window
+  2016       1.0955    1.1069    1.1060
+  2017       1.0145    1.0429    1.0289
+  2018       1.0518    1.0883    1.0562
+  2019       1.0086    1.0140    1.0147
+  2020       0.9735    1.0024    0.9810
+  2021       0.9159    0.9767    0.9170
+
+THE SAME MARK ON THREE READINGS OF THE SAME BOARDS — so the instrument gap is separated from
+the build, and no number is quoted as if it were another:
+  reading                                                 landing    cand 31    ORDER K
+  built matrix, every eligible row                         1.0232     1.0360     1.0324
+  built matrix, the calibrator's own 1,986 rows            1.0367     1.0471     1.0458
+  ANALYTIC CALIBRATOR (G1's number of record, I and J)     1.0421        n/a     1.0515
+  the three readings move by +0.0092 / +0.0090 / +0.0094 — the SAME direction and very nearly the same
+  size. The level differs because (i) the built matrix scores every eligible row, not the
+  calibrator's teaching population, and (ii) the calibrator's year-1 price is analytic where the
+  matrix's is the engine's own walk-forward value.
+
+== G1 SCORED ==
+  the landing candidate reads          1.0232
+  ORDER K reads                        1.0324   (+0.0092)
+  GROWS vs the landing candidate       PASS
+  floor 1.03                           PASS
+  strictly under the 1.14 buy rail     PASS
+  the owner's ~1.08 ideal              NOT REACHED — short by 0.0476. Reported, never chased.
+  worst single class vs the ruled 1.139 line: 1.1363  inside
+
+wrote CLASS_K.json

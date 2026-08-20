@@ -195,6 +195,51 @@ def age(p): return _age_at(p,AGE_REF)
 def debut(p): return p['year'] if p['type']=='MSD' else p['year']+1   # ONLY MSD (mid-season) debuts in its draft_year; ND/RD/SSP AND post-draft signings (PDA/PDN/PDS/IRE/UNR) are off-season -> debut year+1 (fixes 2025 post-draft first-years leaking onto the -1 backward board)
 def seasons(p): return max(1,AGE_REF-debut(p))
 # ============================================================================================================
+# GRACE-A — the entry-age grace on the future-discount ladder.  ORDER 28, owner ruling #334 comment
+# 5276077959: "the diminishing seasons only counts from the second season (i.e. age 20 onwards). Same
+# implementation as on the curve. And grace A applies for the pool, for the pathways. For everything."
+#
+# THE RULE: a normal-age entrant (entry age <= 19) carries seasons 1 AND 2 at FULL weight; his THIRD
+# season is the first diminished.  An entrant at 20+ gets no grace and is on today's ladder unchanged.
+#
+# WHY G=1 HERE AND G_O=2 ON THE CURVE.  Two clocks, one rule (PREREG_ORDER28.md §1.1):
+#   curve side  k_c = season_year - entry_year, k_c=1 is the FIRST played season and already discounts;
+#               exponent max(0, k_c - 2)  =>  seasons 1,2 free.
+#   engine side k_e = seasons AHEAD of the pricing year, and k_e=0 is ALWAYS 1.0 (the standing engine
+#               convention in disc_factor: the present season is never discounted).  So the engine only
+#               needs ONE extra free step, and only for a player whose present season IS his first:
+#               exponent max(0, k_e - remaining), remaining = max(0, G - seasons_elapsed), G = 1.
+# Checked season by season in the prereg; the consequence is that a 2nd-year-and-later row is
+# byte-unchanged even with the dial ON, which is the rule, not an approximation of it.
+#
+# ENTRY AGE is taken with the SAME arithmetic Layer 1 used (o26b_layer1.py:121, entry_year - _by, with
+# the same 18 fallback) so the curve side and the board side select the IDENTICAL population.
+# NOT _age_at(): that carries an `18 + (ref - cycle_year)` floor which would shift every off-season
+# entrant by a year and silently change who gets grace.  Named here so it cannot be walked into.
+#
+# DIAL: RL_GRACE, DEFAULT '1' (ON) — ORDER 29, the landing.  Owner ruling #334 comment 5276077959,
+# "I think we can lock grace A in ... And also apply it at board level too ... For everything.",
+# carried into register v715 and landed here.
+#
+# IT REMAINS A REAL DIAL; ONLY ITS DEFAULT INVERTS.  RL_GRACE=0 still reproduces the dial-off board
+# byte-for-byte on an otherwise-unchanged tree — proven at the landing, not asserted (P4, and the
+# control is recorded in docs/evidence/landing_29_2026-08-13/GRACE_DEFAULT.md).  Off => grace_years()
+# returns 0 on its first line => disc_factor's exponent is max(0, k - 0) == k => the pre-order power
+# form, bit-for-bit.  The grace-A law itself is UNCHANGED from ORDER 28.
+#
+# RL_GRACE is now carried in data/model_config.json (the pinned manifest).  It has to be:
+# config_manifest.enforce() in bake/gate mode clears the ambient model environment and REJECTS
+# unknown RL_* overrides, so a canonical landing build would have refused the dial otherwise —
+# named in advance as ORDER 28 packet §9.8 and closed here.
+RL_GRACE=os.environ.get('RL_GRACE','1')!='0'
+GRACE_G=1                              # grace-A: ONE extra free future season for a normal-age entrant
+GRACE_MAX_ENTRY_AGE=19                 # entrants at 20+ get no grace (ruled)
+def grace_years(p):
+    """Remaining grace seasons for player p at the current AGE_REF. 0 when the dial is off."""
+    if not RL_GRACE or p is None: return 0
+    if (p['year']-by(p))>GRACE_MAX_ENTRY_AGE: return 0
+    return max(0,GRACE_G-max(0,AGE_REF-debut(p)))
+# ============================================================================================================
 # THE PRICING SPLIT — owner ruling, and RULEBOOK v2.1 law 4 (G-MONO) as amended 2026-07-28.
 #
 #   The national pick curve covers picks 1-64 and descends across that domain; pick 1 = 3000.
@@ -778,7 +823,52 @@ def best2(p):
     d=debut(p); s=sorted([r['avg'] for r in p['scoring'] if r['games']>=7 and r['year']>=d],reverse=True)[:2]; return float(np.mean(s)) if s else 0
 REPL={'MID':80.1,'SD':78.3,'RUCK':78.5,'KPD':68.4,'SF':70.9,'KPF':66.8}  # v3.3 derived (rl_replacement_derive.py): Rule-1 pool, kfru 0.5, SD/MID 50/50 @4.16/5.20, KPD@2.0, SF@4.0, KPF@2.0, RUCK@1.64  [BAKE 2026-07-04: KPF REPL-1, 67.8->66.8, owner dial]
 DELTAS={-8:.58,-7:.62,-6:.68,-5:.74,-4:.80,-3:.86,-2:.92,-1:.97,0:1.0,1:.99,2:.98,3:.96,4:.94,5:.91,6:.88,7:.84,8:.79,9:.73,10:.66,11:.58,12:.50,13:.42,14:.34}
-def frac(a,pa): return DELTAS[max(-8,min(14,int(round(a-pa))))]
+# ==== ORDER B — THE VETERAN FIXES (RL_O33, DEFAULT OFF; #334 c.5312733761 commission, c.5314553763 the
+# owner's B rulings, derivation packet docs/evidence/order_b_derivation_2026-08-17/). NOTHING IS GREENLIT:
+# RL_O33 unset => every expression below is inert => the board is BYTE-EXACT to the pre-order tree, and
+# this build LANDS ONLY AFTER the repaired Candidate 32 lands (two packets, two reviews — the ruling's
+# sequencing). Stage sub-dial RL_O33_STAGE (declared, default 3 = the full candidate):
+#   1 = B-1 the ANCHORED TALL LADDER: KPD/KPF post-peak decline rho_j = 0.030 + 0.025*(j-1) (the
+#       derivation's fitted family, ADOPTED by ruling B-1 — f(1..5) = .970/.917/.843/.755/.657 at ages
+#       28-32), consumed by frac() below only when the caller passes g in {KPD,KPF} and only past peak;
+#       pre-peak DELTAS and PEAK_AGE (27/27) untouched; RUCK keeps the current curve (derivation: KEEP).
+#       Plus the ANCHOR-PRESERVING renorm s* on the tall projection stream (the naive wiring cut
+#       prime/young talls 17-30% and was REJECTED by the prime-anchor evidence) — derived at build time
+#       as the fixed point conserving the aggregate board value of KPD/KPF rows aged 23-26, then PINNED
+#       below. RL_O33_SSTAR is the derivation-shell override ONLY (the s* fixed-point iteration runs
+#       with it at 1.0); it is never set on a shipping board.
+#   2 = B-3 TAPER RETIREMENT (the candidate, default): the v7 ascending age-taper on the q97 ceiling
+#       band is not applied (asc == 1 => band[5] = max(q97m, q90) exactly as _b6_core emits it) — the
+#       derivation's quantile re-fit found asc*=1 the boundary solution in EVERY band the taper bites;
+#       kills every ceiling v-inversion by construction. Wired at the b6 wrapper in _merged_recover.py;
+#       the frozen q97m is NOT touched (its censoring-aware refit is bake-time per R-W6).
+# ── OBITUARY — the B-2 TERMINAL FADE (deleted 2026-08-17 by owner ruling #334 c.5316404479; SSI/CORE
+#    rule 7, delete-don't-disable). What stood here for one build: the ruled FALLBACK hazard knots
+#    (28,0.14)(29,0.211)(30,0.232)(31,0.246) added to the balanced-lens per-annum discount at 29+,
+#    wired as old stage 2 after the OUTPUT-CONDITIONAL fade failed identification twice
+#    (RESULTS_B_FADE_FIT.json: A CI [0.00,0.60] spans 0; RESULTS_B_FADE_FIT2.json: A identified but
+#    G(star) CI [0.12,0.77] — the family cannot separate itself from flat on these samples, and flat
+#    breaks the star gate). The owner DROPPED the flat fade — it cut validated stars (bontempelli −238
+#    class), the exact behaviour his B-2 question rejected — and the quality-conditional fade waits for
+#    the exit-hazard order. Resurrection ref: git show 6a61029:engine/rl_after/rl_model.py (o33_fade +
+#    O33_FADE_KNOTS + the four call sites). ──
+# Prereg: docs/evidence/order_b_build_2026-08-17/PREREG_B_BUILD.md + PREREG_B_A1.md (each pushed
+# before the engine edits they govern).
+_O33=os.environ.get('RL_O33','0')!='0'                       # ORDER B: the veteran fixes (default OFF)
+_O33S=(int(os.environ.get('RL_O33_STAGE','2')) if _O33 else 0)
+def _o33_ladder(rho0=0.03625,g=0.011125,n=14):                   # B-1 family, the derivation's own construction (b2_fit.ladder_of). R-VETLEAN RE-TUNE (#334 c.5316404479; PREREG_B_A1 + B-A2, every step prereg'd-then-run): the owner's lean-over-not-under preference ruling moves the point INSIDE the fitted CI box (rho0 CI [0,.08], g CI [.010,.045]). The offline replica transfer proved unstable across s* re-derivations, so the final point is the B-A2 MEASURED-BRACKET midpoint t=.55 between the two BUILT endpoints — iter-1 (.050,.0125): calls all dead, 28/29/31 under floor (.902/.868/.907); iter-2 (.025,.010): floor cleared, full-30 call RESURRECTED (1.335*) — giving (.03625,.011125), predicted cells 27:1.04 28:0.99 29:0.96 30:1.19(full 1.26) 31:0.98. Verified on the built board by the W5 harness (the ruled binding check); hard revert-to-iter-1 rule on failure. Frontier + both endpoints published (VETLEAN_*.json).
+    f,out=1.0,{}
+    for j in range(1,n+1):
+        f*=(1.0-min(0.60,max(0.0,rho0+g*(j-1)))); out[j]=f
+    return out
+O33_TALL_LADDER=_o33_ladder()                                # f(1..5)=.9637/.9181/.8644/.8042/.7393 (ages 28-32; the fit optimum was .970/.9167/.8433/.7548/.6566 — the re-tune keeps the fitted head and softens the slope inside the CI box); tail = the family continued (W5 measures nothing past 31 — extrapolation-by-rule, bounded by the frac<0.42 projection stop)
+O33_SSTAR_PIN=1.2678                                          # s* PINNED for the B-A2 midpoint ladder (fixed point on the frozen pre-anchor basis: conserves the 55 tall-anchor rows 23-26 to -0.09%, inside the prereg'd 0.2% tolerance; log SSTAR_A3_out.txt. Retired with their ladders: 1.2988 (fit optimum), 1.3451 (iter-1), 1.1909 (iter-2).)
+_o33sstar=os.environ.get('RL_O33_SSTAR')                     # derivation-shell override (the s* fixed point itself); never set on a shipping board
+O33_SSTAR=(float(_o33sstar) if _o33sstar not in (None,'') else O33_SSTAR_PIN)
+def frac(a,pa,g=None):
+    j=max(-8,min(14,int(round(a-pa))))
+    if _O33 and _O33S>=1 and j>0 and g in ('KPD','KPF'): return O33_TALL_LADDER[j]   # B-1: tall post-peak ladder (two-arg callers and dial-off take the shared DELTAS verbatim)
+    return DELTAS[j]
 KAPPA=0.10;SCONV=30.0;LOWBASE=54.0;GAMMA=float(__import__('os').environ.get('RL_GAMMA','1.0'))  # 0.85=SCAR(concave); 1.0=VOR(linear) via RL_GAMMA env (for the SCAR-vs-VOR dual-column build)
 S_SH=3.0
 def comp(v): return v   # no compression (v2.0)
@@ -903,15 +993,25 @@ def age_disc(a,d,lens='bal'):
     if a<=21.0: return AGE_DISC_LO
     if a>=26.0: return AGE_DISC_HI
     return AGE_DISC_LO+(AGE_DISC_HI-AGE_DISC_LO)*(a-21.0)/5.0
-def disc_factor(a,d,k,lens='bal'):
+def disc_factor(a,d,k,lens='bal',grace=0):
     """THE DISCOUNT FACTOR for future season k, for a player priced at current age a.
     Modes 0/1/2/3: the existing power form (1+r)**k with r fixed at pricing time.
     Mode 9 (seat-proposed): the PATH PRODUCT prod_{j=1..k} (1+r(a+j)) — the rate for each season is the rate for the
-    age he will be in it. k=0 is 1.0 in every mode, so the present season is never discounted."""
+    age he will be in it. k=0 is 1.0 in every mode, so the present season is never discounted.
+
+    ORDER 28 GRACE-A (dial-gated, default OFF — see grace_years above). `grace` is the number of
+    FUTURE seasons that carry full weight before the ladder engages: the exponent handed to the power
+    form becomes max(0, k - grace).  grace=0 gives max(0,k)==k for k>0, i.e. the pre-order form
+    BIT-FOR-BIT — the dial-off path is identity by construction, not by tolerance.
+    Mode 9 coherence (inactive on the live config, flat 14%): grace drops the EARLIEST factors from
+    the path product, j running grace+1..k, so the same seasons go free under either mode."""
     if k<=0: return 1.0
+    if grace:
+        k=max(0,int(k)-int(grace))
+        if k<=0: return 1.0
     if AGE_DISC and lens in ('bal','balanced') and a is not None and age_disc_mode()==9:
         f=1.0; a=float(a)
-        for j in range(1,int(k)+1): f*=(1.0+_pw_interp(a+j,_V9_KNOTS))
+        for j in range(int(grace)+1,int(grace)+int(k)+1): f*=(1.0+_pw_interp(a+j,_V9_KNOTS))
         return f
     return (1.0+age_disc(a,d,lens))**k
 LENS={'now':0.34,'bal':(0.14 if os.environ.get('RL_DIAL14','1')!='0' else 0.15),'fut':0.05}   # v2.9 L2: dial 14 (owner-ruled D5, "14 for now"); gate RL_DIAL14 (default ON; =0 ⇒ 0.15 ⇒ base). bont 3676 gawn 2501.
@@ -960,24 +1060,113 @@ def survival(b,delta,games):
     # tracking *below* his own bar (mult>1) -- an at-par or above-par player gets no extra bust tax.
     bp=BUST_BAND.get(b,0.15); mult=clamp(1.0-delta/20.0,0.4,1.6); fade=max(0.0,1-games/40.0)
     return 1-bp*max(0.0,mult-1.0)*fade
-def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0):
+# ==== ORDER I — S1, THE AGE-REFERENCED BAR INSIDE THE PROJECTION CORE (RL_O36, DEFAULT OFF) =========
+# ISSUE #334 comment 5317842435 / PREREG_I.md, pushed before this edit. ORDER E located and priced the
+# defect (docs/evidence/order_e_diag_2026-08-17/PACKET_E.md §1): the projection loop and the
+# demonstrated-production floor subtract the MATURE replacement bar from a YOUNG player's output, so a
+# 19-year-old key defender averaging 59.7 is priced BELOW replacement against 65.4 when his own age's
+# bar is 44.8. Cost, measured and controlled: harry-dean 843 board points, cooper-duff-tytler 448,
+# milan-murdock (26) EXACTLY 0.00.
+#
+# THE CORRECTION, AT THESE FOUR SITES ONLY (proj_from_peak k==0 and k>=1; prod_floor k==0 both halves
+# and k>=1) AND THE PARALLEL COPIES IN _merged_recover.py:
+#     bar(pos, age) = REPL[pos] - LAM_S1 * DELTA(class, clamp(int(age),18,23)),  DELTA = 0 from age 24
+# DELTA is the engine's OWN S1 C3 development surface (docs/evidence/order32_s1_2026-08-17/
+# CONSTRUCTIONS_S1.json::C3, already transcribed as _merged_recover.O32_GATE_DELTA and asserted
+# byte-equal to this copy at load). It has NO PICK AXIS, it is CAPPED at the flat bar (DELTA >= 0), and
+# it is FLAT FROM AGE 24 — which is why every mature row is byte-identical store-wide and murdock
+# cannot move. `age` is the age AT THAT PROJECTION HORIZON, not the age today.
+# LAM_S1 IS NOT HAND-PICKED: it is a grid axis in the ONE joint calibration with the re-mix and relief
+# knobs (PREREG_I.md §3; ORDER E's dose warning binds — full S1 overshoots).
+# RL_O36 unset  =>  o36_bar IS REPL[pos]  =>  the landing candidate 1f176444 reproduces BYTE-EXACT.
+# ORDER P (RL_O37) — THE PEDIGREE-CONDITIONAL CHARGE. The new dial IMPLIES the O36 stack (and so
+# O35/O32/O31) and, where the ORDER K constants are not passed explicitly, defaults them to ORDER K's
+# RULED values — the dose 0.40 below, and kappa 0.20 / gamma_u 8.0 / eta 0.50 in _merged_recover.py.
+# RL_O37 unset => this line is byte-identical and the whole ORDER P block is inert.
+# ORDER Q (RL_O38A / RL_O38B1 / RL_O38B2) — the two defect repairs. Each IMPLIES RL_O37, and so
+# the whole O36/O35/O32/O31 stack and ORDER K's ruled defaults, exactly as RL_O37 itself does.
+# All three unset => this line is byte-identical and the whole ORDER Q block is inert.
+# BAKE 2026-08-20 (register v780): RL_O37 IS NOW DEFAULT-ON — the shipped default, a DECLARED
+# KILL-SWITCH in the v2.9 pattern (RL_EVW/RL_CAPT/RL_ISOFADE/RL_PVC2), NOT a manifest dial:
+# data/model_config.json is deliberately UNMOVED, so config_sha256 and the expected_boot 'config'
+# pin do not move. KILL-SWITCH: RL_O37=0 RL_O38A=0 RL_O38B1=0 (all three — _O37 is an OR, so
+# RL_O37=0 alone does nothing). With _O37 live, O36_LAM_S1/O36_KAPPA/O36_GAMMA/O36_ETA take their
+# ORDER K ruled values and _O36/_O35/_O32/_O31 all follow, so the whole KLINE is implied, not set.
+# NOT ADOPTED, OWNER WORD PENDING.
+_O37=(os.environ.get('RL_O37','1')!='0'
+      or os.environ.get('RL_O38A','1')!='0' or os.environ.get('RL_O38B1','1')!='0'
+      or os.environ.get('RL_O38B2','0')!='0')
+_O36=(os.environ.get('RL_O36','0')!='0') or _O37
+# THE DOSE. NOT hand-picked and NOT chosen by looking at harry-dean. The joint calibration
+# (docs/evidence/order_i_2026-08-18/o36_calibrate.py) swept it against the counterweight and the
+# relief; the owner's own mature-row law then PINNED the counterweight (0 of 11 knob moves and 4 of 5
+# relief values move mature rows, MATURE_GATE_36.json), leaving the dose as the single free axis.
+# NO DOSE IS FEASIBLE ON ALL OF THE OWNER'S LAWS AT ONCE — the seat HALTS AND REPORTS that, with the
+# ladder printed (PACKET_I.md §5). 0.25 is carried because it is the point at which the year-1 class
+# cohort lands on G1's stated IDEAL of ~1.08 (mean_0515 = 1.0788, against 1.0421 today). It is
+# CARRIED FOR THE OWNER TO LOOK AT. IT IS NOT A RECOMMENDATION AND NOTHING LANDS ON THIS SEAT'S WORD.
+# ORDER P: under RL_O37 the default is ORDER K's RULED dose 0.40 (register v735), not 0.25. An explicit
+# RL_O36_LAM_S1 still wins, so the ORDER K build line and the ORDER P build line agree number for number.
+O36_LAM_S1=float(os.environ.get('RL_O36_LAM_S1','0.40' if _O37 else '0.25'))
+O36_TALLPOS=frozenset(('KPD','KPF','RUCK'))
+O36_GATE_DELTA={'TALL':{18:22.334475609756097,19:20.55500752464971,20:16.306362402208926,
+                        21:11.588672690048071,22:7.826894964594814,23:6.439783302063788},
+                'SMALL':{18:20.080511089352214,19:20.080511089352214,20:14.306977484301457,
+                         21:11.265167414136857,22:6.761247284555768,23:4.584052475875439}}
+# THE SCOPE GATE — declared, and it is a SCOPE DECISION, not a convenience. S1 corrects how a REAL
+# PLAYER'S OWN OUTPUT is judged. It must NOT reach the synthetic band-node and baseline-draftee
+# projections (rl_model:base_prod / v_at_peak / the pick-value curve, all of which evaluate
+# proj_from_peak at a literal age 19), because those objects build the PEDIGREE machinery — the PVC,
+# the V0 surface and the entry anchors. Letting S1 into them would move day-0 prints and re-price
+# mature rows through the rebuilt tables, which is exactly what ORDER E's isolation control proved S1
+# does NOT do (ISOLATE_E: v0, the day-0 pedigree leg, the entry anchor, rho31, pi and the age credit
+# all move by 0.0000000000). This flag is set by _merged_recover's raw_ev wrapper — the engine's own
+# "real players only; synths delegate clean" boundary — and by nothing else.
+# THE SECOND HALF OF THE SCOPE GATE — 'armed'. THE BOARD'S DENOMINATORS ARE FROZEN ON THE DIAL-OFF
+# BASIS. This is ORDER B's ruling applied to this lever (see the RL_O33 pre-anchor block at :1269
+# below, verbatim: "The ruled mechanisms reprice VETERANS; they must not re-denominate the board").
+# _merged_recover derives cross-player reference objects at LOAD by pricing the whole store — medians,
+# proven-population references and conservation renormalisers. If S1 were live during that derivation
+# it would move those shared denominators, and a shared denominator moves EVERY row, including the
+# mature ones the cap law says cannot move. MEASURED, not assumed: with S1 live at load, sam-taylor
+# (27) moved -5.92, tom-green (25) +4.59, toby-greene (33) +1.53 and taylor-walker (36) +0.08 while
+# S1 was never once evaluated inside their own pricing (251,850 load-time evaluations, 8 sites — the
+# leak diagnostic is in the packet). Armed at the end of the module load; the board and every price
+# read afterwards carry S1 in full.
+_O36_SCOPE={'on':False,'armed':False}
+def o36_bar(pos,age):
+    """THE ONE EXPRESSION. Returns REPL[pos] byte-exact with the dial off, outside the real-player
+    scope, at a missing/unknown age, or from age 24 up. Never returns a bar ABOVE the flat bar (the
+    cap law is structural: DELTA >= 0)."""
+    _b=REPL.get(pos)
+    if (_b is None or not _O36 or not _O36_SCOPE['armed'] or not _O36_SCOPE['on']
+            or O36_LAM_S1<=0.0 or age is None): return _b
+    try: _a=int(age)
+    except Exception: return _b
+    if _a>=24: return _b
+    return _b-O36_LAM_S1*O36_GATE_DELTA['TALL' if pos in O36_TALLPOS else 'SMALL'][max(18,min(23,_a))]
+def proj_from_peak(g,lp,a,cur,lens,g0=None,fut=None,pre_hc=0.0,grace=0):
+    # ORDER 28: `grace` is threaded from the CALLER (which holds the player record) because this
+    # function takes a scalar age, not a record — see PREREG_ORDER28.md §1.2. Synthetic/pick-level
+    # callers omit it: a band node is not a person and has no entry age. grace=0 => byte-exact.
     # g = SETTLED (future) position: drives PEAK_AGE, level trajectory, key-premium, runway.
     # g0 = year-0 (present) position for REPL; fut = years-1+ REPL blend [(pos,wt)]. Defaults reproduce single-position behaviour.
-    pa=PEAK_AGE[g]; d=age_disc(a,LENS[lens],lens); cl=cur if cur else lp*frac(a,pa); prod=0.0
+    pa=PEAK_AGE[g]; d=age_disc(a,LENS[lens],lens); cl=cur if cur else lp*frac(a,pa,g); prod=0.0   # ORDER B: frac carries g (B-1 ladder, dial-off identical); the B-2 fade call site DELETED (owner ruling — see the obituary at the RL_O33 block)
     if g0 is None: g0=g
     if fut is None: fut=[(g,1.0)]
     for k in range(18):
         ag=a+k
-        if ag>38 or frac(ag,pa)<0.42: break
-        lev=lp*frac(ag,pa)
+        if ag>38 or frac(ag,pa,g)<0.42: break
+        lev=lp*frac(ag,pa,g)
         if ag<=pa: lev=max(lev,cl)
         if k==0: lev=max(lev,cl)
         if k==0 and pre_hc>0 and BASE_REF==2026 and AGE_REF==2026: lev*=(1-pre_hc)  # B2 present-unavailability haircut (Now board only)
         base=lev+capt_prem(lev)
-        _df=disc_factor(a,d,k,lens)
-        if k==0: prod+=posval(base-REPL[g0])*21/_df
-        else: prod+=sum(w*posval(base-REPL[gg]) for gg,w in fut)*21/_df
+        _df=disc_factor(a,d,k,lens,grace)
+        if k==0: prod+=posval(base-o36_bar(g0,ag))*21/_df        # ORDER I S1 site 1 (dial off => REPL[g0])
+        else: prod+=sum(w*posval(base-o36_bar(gg,ag)) for gg,w in fut)*21/_df   # ORDER I S1 site 2 (dial off => REPL[gg])
     if g in('KPF','KPD'): prod*=1.05
+    if _O33 and _O33S>=1 and g in('KPF','KPD'): prod*=O33_SSTAR   # ORDER B B-1: anchor-preserving renorm on the tall PROJECTION stream only (the floor is a current-level object and is NOT renormed — disclosed in the packet)
     runway=clamp((25-a)/6.0,0,1); elite=clamp((lp/PEAK[g]-0.97)/0.30,0,1); prod*=(1+runway*elite*PMAX)
     return prod
 def prod_floor(p,lens='bal'):
@@ -995,18 +1184,19 @@ def prod_floor(p,lens='bal'):
     # loop for PROVEN players on the shipped board (run_panel.sh -> ev()). It carries the SAME §1b k==0 split —
     # edit BOTH or neither. Queued hygiene (NOT this build): collapse the copy via option-3 delegation.
     lowbar=y0dpp_bar(p) if (AGE_REF==BASE_REF) else None
-    d=age_disc(a,LENS[lens],lens); H=clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0
+    _gr=grace_years(p)                                    # ORDER 28 grace-A (dial-gated; 0 => byte-exact)
+    d=age_disc(a,LENS[lens],lens); H=clamp((40-a)/3.0,1.0,3.0); prod=0.0; k=0   # (the ORDER B B-2 fade call site DELETED — owner ruling, see the RL_O33 obituary)
     while k<H:
         ag=a+k; wt=min(1.0,H-k)
-        lev=cur*min(1.0, frac(ag,pa_)/max(frac(a,pa_),1e-6))
+        lev=cur*min(1.0, frac(ag,pa_,g)/max(frac(a,pa_,g),1e-6))   # ORDER B B-1: the ladder reaches the floor's decline RATIO (dial-off identical)
         if k==0 and p.get('_avail_hc',0)>0 and BASE_REF==2026 and AGE_REF==2026: lev*=(1-p['_avail_hc'])
         base=lev+capt_prem(lev)
         if k==0 and lowbar is not None:
             sp=SEASON_PROG                                    # banked (sp) vs present bar; remaining (1-sp) vs low bar
-            pv=sp*posval(base-REPL[g])+(1.0-sp)*posval(base-REPL[lowbar])
+            pv=sp*posval(base-o36_bar(g,ag))+(1.0-sp)*posval(base-o36_bar(lowbar,ag))   # ORDER I S1 site 3
         else:
-            pv=posval(base-REPL[g])
-        prod+=wt*pv*21/disc_factor(a,d,k,lens); k+=1
+            pv=posval(base-o36_bar(g,ag))                                               # ORDER I S1 site 4
+        prod+=wt*pv*21/disc_factor(a,d,k,lens,_gr); k+=1
     return val(prod)
 # ===== cont.20: v4 LEARNED FORWARD-PROJECTION (peak_est spine) =====
 # Replaces old blended cohort+demoPeak. Model = forward-realised best-3 (>=Y, completeness-weighted), bust-inclusive.
@@ -1090,7 +1280,7 @@ def peak_est(p):                       # cont.20: learned v4 forward-projection 
     return pe
 def player_raw(p,lens='bal'):
     g0 = bnow(p) if AGE_REF==BASE_REF else gfut(p)   # A2 (PARKED 4): on forward boards (AGE_REF>BASE_REF) the year-0 present has rolled to the future position, so its replacement bar uses gfut, not the present bucket
-    return proj_from_peak(gfut(p),peak_est(p),age(p),level_now(p),lens,g0=g0,fut=futblend(p),pre_hc=p.get('_avail_hc',0.0))
+    return proj_from_peak(gfut(p),peak_est(p),age(p),level_now(p),lens,g0=g0,fut=futblend(p),pre_hc=p.get('_avail_hc',0.0),grace=grace_years(p))   # ORDER 28 grace-A (dial-gated; 0 => byte-exact)
 def pa(g): return PEAK_AGE[g]
 # unplayed prospects: recent national/rookie draftees not yet debuted (valued on pedigree alone, like the old engine)
 extra=[]
@@ -1115,6 +1305,15 @@ for p in players:
 players=[_best[k] for k in _order]
 played=[p for p in players if not p.get('_unplayed')]
 STBL=True
+# ==== ORDER B (RL_O33): THE PRE-ANCHOR BASIS SECTION RUNS ON THE DIAL-OFF BASIS. ======================
+# The ruled mechanisms reprice VETERANS; they must not re-denominate the board. Two anchors in this
+# module are computed FROM player/pick streams at load: the P99 `ref` (line below) and the v3.4
+# pre-anchor PVC head that BOARD_FACTOR divides by (:~1447). With the dial live during load, the tall
+# ladder moves that basis and SCALE lifts EVERY row (+6.4% measured — the leg-1 diagnosis,
+# docs/evidence/order_b_build_2026-08-17/QUICKLOOK_out.txt pre-fix). So the stage is forced to 0 from
+# here until just after BOARD_FACTOR, then restored: dial-on and dial-off boards share ONE currency, and
+# the numeraire s (pick_redenomination.json) is untouched either way. Dial off => nothing happens here.
+if _O33 and _O33S>=1: _o33_bas=_O33S; _O33S=0
 ref=np.percentile([player_raw(p,'bal') for p in played],99); SCALE=7000/ref**GAMMA   # anchor on stable basis
 STBL=False
 for p in played: p['_pr']=player_raw(p,'bal')
@@ -1323,6 +1522,7 @@ _P1=float(__import__('os').environ.get('RL_PICK1','3000'))
 _NUM=_load_numeraire(_P1)                                    # LOUD-HALTs on a missing block or an incoherent s
 BOARD_FACTOR=(_P1/PVC[1])*_NUM['s']; SCALE=SCALE*BOARD_FACTOR   # SCALE reassigned → val() (late-binding) scales players too
 PVC={k:int(round(v*BOARD_FACTOR)) for k,v in PVC.items()}    # pre-swap basis only; the shipped curve comes from the artifact
+if _O33 and '_o33_bas' in globals(): _O33S=_o33_bas; del _o33_bas   # ORDER B: end of the dial-off BASIS section (see the block above the P99 ref) — the stage returns live for every runtime consumer
 # --- de-plateau (Luke): the monotone pass pools noisy mid-curve bands to a flat run; ramp each interior flat run
 #     linearly through its real endpoints so picks decline smoothly, leaving the genuine DEEP-TAIL floor flat
 #     (runs starting at pick>=46 are the floor and stay flat). Mid-curve only; pure shape, anchor (pick1) untouched.
@@ -1478,6 +1678,147 @@ _pool_slot_mismatch=[p.get('player') for p in data if (effpk(p)>=POOL_PICK)!=boo
 assert not _pool_slot_mismatch, ('#326 HALT: %d row(s) sit at the pool slot without the pool flag or the '
                                  'reverse (%s) — the per-division lookup and the ladder would disagree about '
                                  'who is a pool entrant.'%(len(_pool_slot_mismatch),_pool_slot_mismatch[:6]))
+# ===== ORDER 29 STEP 5 / PREREG P9 — THE UNSIGNED POOL v0 CELLS, AND THE LOUD BOOT ASSERT ==================
+# The printed pool day-0 object (pvc_curve_v2.json::pool_v0) carries one cell per pathway x position. TWO
+# cells have ZERO fit rows behind them — PDN|KPF and PDS|KPF — and are published as null, UNSIGNED. The
+# derivation DID produce a fully-shrunk number for each (92.4 and 84.0, recorded in the artifact's
+# `declined_unsigned`); those numbers were DECLINED, because a cell with no observations should not be given
+# the appearance of a measurement just because the shrinkage machinery is willing to emit one.
+#
+# WHY THIS ASSERT EXISTS AT BOOT rather than at a pricing site: today NO pricing leg reads pool_v0 (the
+# consumption rewire is deferred by owner ruling — the entry anchors the engine actually consumes are the
+# #326 signed `pool_levels` above). So this assert is the guard that makes the deferral SAFE: the moment a
+# real entrant lands in an unsigned cell, the build HALTS AND ASKS, instead of a future wiring silently
+# reaching for a null or, worse, back-filling it with the declined number.
+#
+# THE POSITION KEY IS DECLARED, NOT ASSUMED. The cells were FIT on the derivation's day-0 position_group;
+# this assert maps live entrants by the ENGINE's own settled future position gfut(p), which is the same field
+# #326 requires for the rookie-draft positional key. The two conventions are verified to agree for the whole
+# current pool population below (zero entrants map to an unsigned cell under EITHER), so the choice changes
+# nothing today and is stated so a later seat can see which key was used and why.
+#
+# WHAT THE MEASUREMENT ACTUALLY FOUND, AND WHY THIS GUARD IS SHAPED THE WAY IT IS. PREREG P9 predicted
+# "zero current entrants map to either cell, so the assert is silent on this board". THAT PREDICTION IS
+# BREACHED, and it is breached by a LIVE PRICED ROW: `kalani-white` (type PDN, 2025, future position KPF,
+# 0 career games) sits on the ACTIVE board at the pool slot and maps to PDN|KPF. Two further store rows map
+# there too — `conrad-williams` (PDN|KPF, on the inactive `back` list) and `scott-reed` (PDS|KPF, on neither
+# list). Under the derivation's own day-0 position key kalani-white STILL maps there, so this is not an
+# artefact of which position field the mapping uses.
+#
+# THE GUARD IS THEREFORE SPLIT IN TWO, and neither half is weakened to let the build pass:
+#   (1) THE HALT guards the HARM — being PRICED from an unsigned cell. Today no pricing leg reads pool_v0
+#       at all (the consumption rewire is deferred by owner ruling; pool entrants are priced from the #326
+#       signed `pool_levels`, where PDN and PDS are both SIGNED). So no price on this board comes from a
+#       null, and the halt is stated as ARMED rather than as a gate that passed: it goes live in the same
+#       commit that wires pool_v0 to a pricing site, and it names the wiring as its trigger.
+#   (2) THE DISCLOSURE guards the FORGETTING. Every build prints the named list of rows standing in an
+#       unsigned cell, loudly, so the condition cannot decay into a footnote between here and the rewire.
+# HALTING THE WHOLE LANDING ON (2) WAS CONSIDERED AND REJECTED as a seat decision: it would block a curve
+# the owner has ruled, over a condition that moves no price on this board. It is reported to the owner as
+# an OWED DECISION instead — kalani-white needs either a priced answer or a signed PDN|KPF before pool_v0
+# is ever consumed.
+#
+# ===== ORDER 29B — THE OWED DECISION ARRIVED, AND THIS GUARD IS REPLACED RATHER THAN REMOVED ===============
+# OWNER RULING (#334 comment 5280881134), OPTION A: the two empty cells are SIGNED as BORROWED — the
+# K-shrink limiting case, 100% borrow (pathway level x pool-wide KPF positional relativity). The values are
+# PDN|KPF 92.35874340265629 and PDS|KPF 83.97715038537063, carried in the artifact with a per-cell
+# `borrowed` disclosure and a `cell_signature` map, and they reproduce ORDER 29's own `declined_unsigned`
+# 92.4 / 84.0 exactly — the ruling signed the arithmetic the derivation had already run and declined.
+#
+# WHY THE SHAPE OF THE GUARD CHANGES, STATED PLAINLY. Under ORDER 29 nothing read pool_v0, so declining a
+# number cost nothing and the halt was ARMED-but-never-fired. ORDER 29B WIRES pool_v0 TO THE DAY-0 PRINT,
+# so the trigger the old comment named ("it goes live in the same commit that wires pool_v0 to a pricing
+# site") has arrived. An unsigned cell is now a MISSING PRICE, not a deferred question.
+#   * THE UNSIGNED-CELL HALT RETIRES FOR CELLS SIGNED THIS WAY — there are no unsigned cells left, so a
+#     halt keyed on `unsigned_cells` would be a guard that can never fire, which is worse than no guard.
+#   * IT IS REPLACED BY A COVERAGE ASSERT, which is the thing that actually matters once the object is
+#     consumed: EVERY pathway x position cell an entrant maps to must carry a SIGNED value — borrowed or
+#     fitted. Stated over the WHOLE store pool population, not merely the active board, so a row that is
+#     not priced today but is listed tomorrow cannot arrive at a null.
+#   * `pool_v0_of()` REMAINS THE ONE ACCESSOR AND STILL RAISES on a null or a missing key, so the
+#     fail-closed behaviour is intact for any cell a future derivation leaves unsigned. Its non-vacuity is
+#     still PROVEN on a real row every build (below) rather than assumed — the proof now temporarily nulls
+#     a populated cell and requires the raise, because with nothing unsigned there is no natural specimen.
+_PV0=json.load(open('pvc_curve_v2.json')).get('pool_v0')
+if _PV0:
+    _PV0_UNSIGNED=set(_PV0.get('unsigned_cells') or [])
+    _PV0_CELLS=_PV0.get('cells') or {}
+    _PV0_SIG=_PV0.get('cell_signature') or {}
+    _PV0_BORROWED=sorted(_PV0.get('borrowed_cells') or {})
+    def _pool_v0_cell(p):
+        """The printed pool day-0 cell an entrant maps to: '<pathway>|<position>'."""
+        _d=pool_division(p)
+        _path='ND>64' if _d=='ND65+' else _d.split(':')[0]
+        return '%s|%s'%(_path,gfut(p))
+    # ---- (1) THE HALT: no price may ever be READ from an unsigned cell. LIVE — pool_v0 is now CONSUMED.
+    def pool_v0_of(p):
+        """The printed pool day-0 v0 for an entrant, in BOARD currency (the numeraire s is already inside
+        via the artifact's anchor_factor). ORDER 29B: this IS the pool entrant's printed day-0 price, read
+        through this ONE accessor so the halt below cannot be bypassed by reading `cells` directly."""
+        _c=_pool_v0_cell(p)
+        _v=_PV0_CELLS.get(_c,'MISSING')
+        if _v is None or _v=='MISSING':
+            raise SystemExit(
+                'ORDER 29 P9 HALT: %s maps to pool v0 cell %r, which is UNSIGNED (published null) or absent. '
+                'ORDER 29B wires pool_v0 to the DAY-0 PRINT, so this is now a MISSING PRICE and not a '
+                'deferred question. An entrant standing here must be priced by an OWNER DECISION — never by '
+                'back-filling a declined number, never by silently taking the pathway level. HALT AND ASK.'
+                %(p.get('player'),_c))
+        return float(_v)
+    # ---- (2) THE COVERAGE ASSERT, which is what replaces the unsigned-cell halt now the object is consumed.
+    #      EVERY cell any pool row maps to must be signed. Wider than "active entrant" deliberately.
+    _pv0_rows=[p for p in data if p.get('_pool')]
+    # ACTIVE = membership of the shipped `players` list built at :1166-1174, which IS the board's own
+    # population. (ORDER 29's disclosure keyed on p['_active']/p['active'], fields the store does not
+    # carry, so it printed 0 active while kalani-white demonstrably stood on the 804-row board. Corrected
+    # here rather than carried forward: a disclosure that under-reports is worse than none.)
+    _pv0_players=set(map(id,players))
+    _pv0_active=[p for p in _pv0_rows if id(p) in _pv0_players]
+    _pv0_missing=[(p.get('player'),_pool_v0_cell(p)) for p in _pv0_rows
+                  if _PV0_CELLS.get(_pool_v0_cell(p),None) is None]
+    assert not _pv0_missing, (
+        'ORDER 29B HALT (pool v0 coverage): %d pool row(s) map to a cell carrying no signed value — %s. '
+        'pool_v0 is CONSUMED by the day-0 print, so an unsigned cell is a missing price. Sign it by owner '
+        'ruling or halt; do not default it.'%(len(_pv0_missing),_pv0_missing[:6]))
+    assert not _PV0_UNSIGNED, (
+        'ORDER 29B HALT: the artifact still declares unsigned_cells %s while pool_v0 is CONSUMED by the '
+        'day-0 print. Every cell must be signed (borrowed or fitted) before this object prices anyone.'
+        %sorted(_PV0_UNSIGNED))
+    # ---- (3) THE DISCLOSURE: named, loud, every build. The BORROW is never allowed to go quiet.
+    _pv0_on_borrowed=[(p.get('player'),_pool_v0_cell(p),'ACTIVE' if id(p) in _pv0_players else 'inactive')
+                      for p in _pv0_rows if _PV0_SIG.get(_pool_v0_cell(p))=='borrowed']
+    # STDERR, deliberately: rl_export.py execs the engine under contextlib.redirect_stdout, so a stdout
+    # print here is SWALLOWED and a "loud" guard would be silent in every build log. Measured, not assumed.
+    __import__('sys').stderr.write(
+          '#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: %d of %d pool rows map to a SIGNED cell '
+          '(%d of them on the shipped board). BORROWED CELLS %s — owner OPTION A, K-shrink limiting case; '
+          '%d row(s) stand on a borrowed cell: %s. The halt in pool_v0_of() is LIVE, not armed.\n'
+          %(len(_pv0_rows),len(_pv0_rows),len(_pv0_active),_PV0_BORROWED,len(_pv0_on_borrowed),
+            (' · '.join('%s [%s, %s]'%t for t in _pv0_on_borrowed[:6]) or 'none')))
+    # ---- NON-VACUITY, proven rather than asserted: the accessor must RETURN for a populated cell and must
+    #      RAISE for an unsigned one. With nothing unsigned there is no natural specimen, so the raise is
+    #      proven by TEMPORARILY nulling a real, heavily populated cell on the real code path and restoring
+    #      it immediately. The guard is never trusted on silence.
+    _p9_probe=[p for p in data if p.get('_pool') and _pool_v0_cell(p)=='RD|MID']
+    assert _p9_probe and pool_v0_of(_p9_probe[0])>0, (
+        'ORDER 29 P9 HALT: the pool v0 accessor did not return a value for the heavily populated RD|MID '
+        'cell, so its behaviour on an unsigned cell proves nothing. The mapping is broken.')
+    _p9_keep=_PV0_CELLS['RD|MID']
+    try:
+        _PV0_CELLS['RD|MID']=None
+        try:
+            pool_v0_of(_p9_probe[0]); _p9_fired=False
+        except SystemExit:
+            _p9_fired=True
+    finally:
+        _PV0_CELLS['RD|MID']=_p9_keep
+    assert _p9_fired and pool_v0_of(_p9_probe[0])==float(_p9_keep), (
+        'ORDER 29B HALT: the unsigned-cell guard did NOT fire on a deliberately nulled cell, or the cell '
+        'was not restored. The guard is vacuous.')
+    __import__('sys').stderr.write(
+          '#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns %.1f for RD|MID (n=%d rows) and '
+          'RAISES the moment that same cell is null. The guard is live, not silent.\n'
+          %(pool_v0_of(_p9_probe[0]),len(_p9_probe)))
 _MSD_CAVEAT=_PL_DOC['msd_completion_optimism_caveat']
 print('#326 POOL LEVELS (N43 signed, read verbatim, LADDER currency; ND65+ = %.1f DERIVED, the cap against curve[%d]=%d REMOVED by owner ruling 2026-08-12 -> %d): %s'
       %(float(_PL_DOC['signed_nd65_plus']['measured_k15']),ND_CURVE_LAST,_PVC2M[ND_CURVE_LAST],_POOL_LEVELS['ND65+'],

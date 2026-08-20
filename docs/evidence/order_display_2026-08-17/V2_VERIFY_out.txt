@@ -1,0 +1,87 @@
+WROTE /home/user/afl-rl-engine/.claude/worktrees/agent-aaa34d4cf2d6eca31/docs/evidence/order_display_2026-08-17/LOTTERY_DIAL_V2.html  (0721d3532c3ce4477e1e3fc444b01f8e, 280.7 KB)
+  inputs: S6_FAN_EMIT.json c4338a9b  CELLFANS_S7.json a95615c3
+  rows 804  total 666,913  bound-q97 cells 361  pooled-fallback 5  pick>64 28
+  nick-madden: price-if-ceiling-lands 1,388 | his ceiling as career value 3,883 | measured 1,543 (PDA · post-draft academy (all positions), n=38)
+page script loaded: 804 rows
+
+V1  lambda=0 identity badge
+  ok    badge is green (class ok)   badge ok
+  ok    badge text asserts the identity   "λ=0 ≡ board (max dev 1.8e-12)"
+  ok    max |dot(WQ6, scenario prices) - printed price| is float-exact (< 5e-4, the page's own bound)   worst=1.819e-12 (~2 ulp, the renormalising multiply)
+
+V2  the board at lambda = 0
+  ok    board total reads 666,913   666,913
+  ok    0 rows move rank   0 of 804
+  ok    all rows rendered   804 rows
+  ok    weights are WQ6 (18/18/18/18/18/10)   18.0% / 18.0% / 18.0% / 18.0% / 18.0% / 10.0%
+
+V3  every header sorts, both directions
+  ok    sort rk     (#)   both directions
+  ok    sort nm     (Player)   both directions
+  ok    sort pa     (Path)   both directions
+  ok    sort po     (Pos)   both directions
+  ok    sort g      (G)   both directions
+  ok    sort rho    ()   both directions
+  ok    sort cand   (Board)   both directions
+  ok    sort px     (Price())   both directions
+  ok    sort d      (&Delta;)   both directions
+  ok    sort rm     (Rank &Delta;)   both directions
+  ok    sort s0     (S1 floor)   both directions
+  ok    sort s1     (S2)   both directions
+  ok    sort s2     (S3)   both directions
+  ok    sort s3     (S4)   both directions
+  ok    sort s4     (S5)   both directions
+  ok    sort s5     (Price if ceiling lands)   both directions
+  ok    sort cvv    (His ceiling, career value)   both directions
+  ok    sort mc     (Measured ceiling  top 3% like him)   both directions
+  ok    sort ratio  (S6/S1)   both directions
+  ok    sort span   (Span)   both directions
+  ok    sort tsh    (Top %)   both directions
+  ok    sort cv     (CV %)   both directions
+
+V4  the new columns sort numerically
+  ok    mc descends numerically over all 804 rows   top: Jordan Clark 8298 | Darcy Wilmot 8298 | Jaspa Fletcher 8298
+  ok    mc top value is the true maximum
+  ok    cvv descends numerically over all 804 rows   top: Harry Sheezel 11370 | Nick Daicos 11231 | Nasiah Wanganeen-Milera 10154
+  ok    cvv top value is the true maximum
+
+V5  nick-madden shows the corrected pairing
+  ok    nick-madden is on the board
+  ok    "price if ceiling lands" cell = 1,388   "1,388"
+  ok    "his ceiling, career value" cell = 3,883   "3,883"
+  ok    "measured ceiling" cell carries value + n   "1,543 n 38"
+  ok    measured cell names his PDA cell in the tooltip
+  ok    the three numbers are distinct (price != career != measured)
+  ok    his cell is resolved, so no bound marker
+
+V6  no NaN / undefined / null printed, on any row, in any sort
+  ok    table body is clean under every sort
+  ok    every measured cell prints its n   804/804
+  ok    bound cells print the >= marker   361 bound cells (44.9% of rows)
+  ok    no row is left without a cell   0
+
+V7  the relabel, and the inversion markers
+  ok    sixth scenario header reads "price if ceiling lands"   Price if ceiling lands
+  ok    header no longer says "q97"   Price if ceiling lands
+  ok    its tooltip says it is a price, not a career   today's price re-weighted onto the top scenario -- a PRICE, not a career
+  ok    career-value header present   His ceiling, career value
+  ok    measured header is plain-language   Measured ceiling &middot; top 3% like him
+  ok    markers sit on exactly the tapered-inversion rows   341 marked, 0 mismatches
+  ok    that count is the emit's 341   341
+
+V8  the dial still moves, and reset returns to the board
+  ok    lambda=+1.2 total is the S6 README's 947,934   947,934
+  ok    lambda=-1.2 total is the S6 README's 458,634   458,634
+  ok    reset returns the board total exactly   666,913
+  ok    reset returns 0 rank moves   0 of 804
+  ok    the dial actually moved rows at +1.2   781 of 804
+  ok    name filter works
+  ok    pathway filter works   15 PDA rows
+  ok    filters clear back to all rows
+
+V9  self-contained
+  ok    no external src/href
+  ok    no url() asset reference
+  ok    no fetch / XHR / import
+
+ALL 62 CHECKS PASSED

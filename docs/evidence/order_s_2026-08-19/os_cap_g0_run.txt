@@ -1,0 +1,105 @@
+======================================================================================================================
+ORDER S — S2 SCORED ON REAL ROWS. NOTHING IS ADOPTED. NO ROW IS A TARGET.
+======================================================================================================================
+  censuses read: SAB1 SALL SB1 SC15 SC20 SC20A SL10 SL56 SM SMA SR20A SW47 SW47A
+  ORDER P constants read off the census: LAMBDA 0.17438330  THETA_R 0.657439  TMAX(p5) 21.1233  s0 -2.4527
+
+----------------------------------------------------------------------------------------------------------------------
+1 · HOW MANY ROWS ARE PARKED AT THE CAP, AND HOW FAR APART THEIR RECORDS ARE
+----------------------------------------------------------------------------------------------------------------------
+   A row is PARKED when its surplus is at or below the cap crossing, s_cross = s0 - (TMAX-1)/THETA_R.
+   Parked rows are TIED in T under a hard clip: their per-game records no longer separate them at
+   all, and only games do. THAT IS THE DEFECT THE OWNER NAMED.
+
+   anchor         TMAX    s_cross   parked n    their s_ped spread tied away
+   p5          21.1233    -33.061         12   -70.1..-33.3  36.7 pts a game
+   p15         13.9489    -22.149         64   -70.1..-22.2  47.9 pts a game
+   p20         11.8950    -19.025         97   -70.1..-19.1  51.0 pts a game
+
+   READ THE p20 ROW. At the anchor the OWNER HIMSELF ASKED FOR, 97 charged rows are parked and
+   their per-game records span 51.0 points a game. Under the hard clip every one of them pays the
+   IDENTICAL rate. LOWERING THE CAP MAKES THE DEFECT HE NAMED WORSE, not better — 97 rows tied at
+   p20 against 12 at ORDER P's p5. THAT IS WHY HE ASKED FOR A COMPRESSION INSTEAD OF A LOWER CAP,
+   and it is the single strongest argument in this section. UNDER THE COMPRESSION NO ROW IS TIED:
+   T'(s) is strictly increasing in shortfall everywhere and that is asserted in the engine at load
+   (S-S4), on a dense sweep, on every board that carries the form.
+
+----------------------------------------------------------------------------------------------------------------------
+2 · PAIRWISE, AT EQUAL GAMES — DOES WORSE PLAY ALWAYS COST MORE?
+----------------------------------------------------------------------------------------------------------------------
+   Every pair of charged rows whose CAREER GAMES agree to within 1, so A(g) is held fixed and the
+   only thing left is the record. A pair INVERTS when the row with the WORSE surplus is charged
+   the SAME or LESS. Ties count as inversions: the owner's requirement is "at least slightly more".
+
+   ONE EXCLUSION, AND IT IS NECESSARY RATHER THAN CONVENIENT: pairs in which BOTH rows are charged
+   NOTHING are dropped. Both sit above the zero clip — they are producing at or above what their
+   entry price implies — and a tie at zero charge is the mechanism working, not the cap defect.
+   THIS SEAT's FIRST RUN DID NOT EXCLUDE THEM and reported 475 "ties" on a compression board,
+   which was the zero-clip region being counted as the cap. That was the scorer, not the form.
+
+   board                                                        pairs   inverted   of which    worst gap
+                                                                                 exact TIES    tied away
+   games tolerance for a pair: 0.00 career games.
+   SB1      FIX B1 — ORDER P's p5 HARD CLIP (the control)        1067          9          9        25.83
+   SAB1     FIX A+B1 — ORDER P's p5 HARD CLIP with FIX A         1067         24          7        25.83
+   SR20A    ORDER R p20 HARD CLIP + FIX A                        1067        120        104        47.56
+   SC15     ORDER S COMPRESSION, p15 anchor                      1067          0          0         0.00
+   SC20     ORDER S COMPRESSION, p20 anchor                      1067          0          0         0.00
+   SC20A    ORDER S COMPRESSION, p20 anchor + FIX A              1067         10          0         0.00
+   SW47     ORDER S recency w=0.47                               1095          9          9        25.83
+   SW47A    ORDER S recency w=0.47 + FIX A                       1095         20          7        25.83
+   SM       ORDER S mature premium                               1084          9          9        26.80
+   SMA      ORDER S mature premium + FIX A                       1084         22          7        26.80
+   SL56     ORDER S LAMBDA 0.56                                  1132          9          9        25.83
+   SL10     ORDER S LAMBDA 0.10                                  1054          9          9        25.83
+   SALL     ORDER S all four + FIX A                             1117          7          0         0.00
+
+   "worst gap tied away" is the largest distance in points a game between two players who pay
+   EXACTLY the same rate at the same games. On a hard-clip board it is the whole width of the
+   parked region. On a compression board it must be 0.00 — no two distinct records can tie.
+
+----------------------------------------------------------------------------------------------------------------------
+3 · RELIEF REGRESSIVITY — WHO GETS PAID BY EACH REPAIR?
+----------------------------------------------------------------------------------------------------------------------
+   Relief is measured as the FALL IN THE CHARGE against the ORDER P baseline on the same dial
+   line, in points of the pedigree leg (charge share x leg). Rows are put in deciles of s_ped on
+   the BASELINE board, so the decile a row sits in cannot move with the variant.
+   D1 is the DEEPEST tenth — the rows the owner said were paid first.
+
+   lever                          total relief | D1  D2  D3  D4  D5  D6  D7  D8  D9  D10
+                                  (leg points) | shr%  shr%  shr%  shr%  shr%  shr%  shr%  shr%  shr%  shr%
+   S2 COMPRESSION p15   vs ORDER       2199.3 |   42    17    20     9    10     1     0     0     0     0
+   S2 COMPRESSION p20   vs ORDER       2540.5 |   42    17    20     9    11     1     0     0     0     0
+   S2 COMPRESSION p20+A vs ORDER       2133.1 |   50    19    18     6     6     1     0     0     0     0
+   ORDER R p20 CLIP  +A vs ORDER        663.0 |   99     1     0     0     0     0     0     0     0     0
+   S1 recency w=0.47                   -993.3 |   -2    -4    -6    -3    -1    51    44    17     2     2
+   S5 mature premium                   -338.1 |    1     3     3    13    16    58     5    -0    -0    -0
+   S3 LAMBDA 0.10                      1009.5 |    4     4     9    11    39    33     0     0     0     0
+   ALL FOUR + A                        1194.3 |   92    36    40    13     8   -43   -29   -13    -3    -1
+
+   THE HEADLINE COMPARISON, and it answers the owner's regressivity question directly:
+     the CAP-LOWERING lever (SR20A) puts 99% of its relief in the deepest decile D1
+     the COMPRESSION      (SC20A) puts 50% of its relief in the deepest decile D1
+     deepest THREE deciles: cap-lowering 100% · compression 86%
+     S2-P4 said the compression would concentrate LESS relief in the deepest decile: RIGHT
+
+----------------------------------------------------------------------------------------------------------------------
+4 · THE CHARGE DISTRIBUTION, BOARD BY BOARD
+----------------------------------------------------------------------------------------------------------------------
+   board                                                        n   max chg   >90%   >75%   >50%
+   SB1      FIX B1 — ORDER P's p5 HARD CLIP (the control)     715    97.28%     20    119    237
+   SAB1     FIX A+B1 — ORDER P's p5 HARD CLIP with FIX A      715    95.73%     19    106    221
+   SR20A    ORDER R p20 HARD CLIP + FIX A                     715    87.44%      0     98    218
+   SC15     ORDER S COMPRESSION, p15 anchor                   715    84.50%      0     32    193
+   SC20     ORDER S COMPRESSION, p20 anchor                   715    81.59%      0     17    186
+   SC20A    ORDER S COMPRESSION, p20 anchor + FIX A           715    81.59%      0     16    178
+   SW47     ORDER S recency w=0.47                            715    97.49%     31    142    272
+   SW47A    ORDER S recency w=0.47 + FIX A                    715    97.26%     27    129    258
+   SM       ORDER S mature premium                            715    97.28%     28    123    250
+   SMA      ORDER S mature premium + FIX A                    715    96.05%     24    112    236
+   SL56     ORDER S LAMBDA 0.56                               715    98.13%     51    167    316
+   SL10     ORDER S LAMBDA 0.10                               715    97.07%     15    108    222
+   SALL     ORDER S all four + FIX A                          715    83.61%      0     37    236
+
+
+wrote CAP_S_out.txt / CAP_S.json

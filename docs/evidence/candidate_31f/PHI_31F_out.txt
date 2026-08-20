@@ -1,0 +1,31 @@
+ORDER 31-F  F1(d) -- THE 30B-C STALL COEFFICIENTS, RE-DERIVED ON THE HEAD-FIXED v0 SURFACE
+  instrument     docs/evidence/one_machinery_2026-08-14/circularity/o30bc_circ.py
+  committed md5  838af6a5b2b210c629a4f4a2efca745f
+  as-run md5     a947fd3292b9ce03a22eeff66927b580
+    SUB  SRC = open(MEASURE).read()                           ->  SRC = open(MEASURE).read().replace("V0P = os.path.join(ROOT, 'docs', 'evidence', 'one_machinery_2026-08-14', '
+    SUB  OUT_JSON = os.path.join(HERE, 'CIRCULARITY.json')    ->  OUT_JSON = os.path.join(ROOT, 'docs', 'evidence', 'candidate_31f', 'CIRCULARITY_31F.json')
+    SUB  OUT_TXT = os.path.join(HERE, 'CIRC_out.txt')         ->  OUT_TXT = os.path.join(ROOT, 'docs', 'evidence', 'candidate_31f', 'CIRC_31F_out.txt')
+    SUB  PTABLEP = os.path.join(ROOT, 'docs', 'evidence', 'pe ->  PTABLEP = os.path.join(ROOT, 'docs', 'evidence', 'candidate_31f', 'PERSISTENCE_31F.json')
+
+  harness ran clean; full console CIRC_31F_console.txt (360 lines)
+
+THE STALL COHORT'S OWN COEFFICIENT ON v0, BAND BY BAND
+  band        mid      COMMITTED  31-F HEAD-FIX        drift
+  0-5         2.5      0.1731903      0.1667718   -0.0064185
+  6-15       10.5      0.0854932      0.0858614   +0.0003682
+  16-35      25.5      0.0795900      0.0815933   +0.0020033
+  36-70      53.0     -0.0062271     -0.0053595   +0.0008676
+  71+        85.5     -0.0127645     -0.0113171   +0.0014474
+
+PhiStall = beta_stall / beta_mono, ZERO-FLOORED THEN MADE NON-INCREASING (o31_fit.py's own rule)
+     mid beta_mono 31-F beta_stall 31-F  PhiStall 31-F    COMMITTED
+     2.5      0.2878886      0.1667718      0.5792927    0.5834703
+    10.5      0.2878886      0.0858614      0.2982452    0.2880229
+    25.5      0.2177288      0.0815933      0.2982452    0.2880229
+    53.0      0.1415515      0.0000000      0.0000000    0.0000000
+    85.5      0.0238490      0.0000000      0.0000000    0.0000000
+
+  THE RATIO-INVARIANCE ARGUMENT, TESTED RATHER THAN ASSUMED:
+    max |PhiStall_31F - PhiStall_committed| = 0.0102223
+    the ratio moved by MORE than the coefficients themselves did (max |beta_stall| drift 0.0064185)
+

@@ -1,0 +1,691 @@
+{
+ "head_pre": 3917,
+ "head_post": 3966,
+ "head_pct": 1.2509573653306072,
+ "board_factor_pre": 0.7613436927302808,
+ "board_factor_post": 0.7519372779688628,
+ "board_factor_ratio": 0.9876449823499748,
+ "board_factor_pct": -1.2355017650025224,
+ "curve_pre": {
+  "1": 3917,
+  "2": 3279,
+  "3": 2955,
+  "4": 2745,
+  "5": 2593,
+  "6": 2474,
+  "7": 2370,
+  "8": 2252,
+  "9": 2116,
+  "10": 1968,
+  "11": 1822,
+  "12": 1666,
+  "13": 1573,
+  "14": 1485,
+  "15": 1398,
+  "16": 1304,
+  "17": 1221,
+  "18": 1140,
+  "19": 1065,
+  "20": 997,
+  "21": 940,
+  "22": 894,
+  "23": 854,
+  "24": 826,
+  "25": 809,
+  "26": 809,
+  "27": 803,
+  "28": 802,
+  "29": 802,
+  "30": 802,
+  "31": 800,
+  "32": 790,
+  "33": 775,
+  "34": 759,
+  "35": 741,
+  "36": 724,
+  "37": 710,
+  "38": 693,
+  "39": 677,
+  "40": 662,
+  "41": 648,
+  "42": 632,
+  "43": 613,
+  "44": 593,
+  "45": 574,
+  "46": 557,
+  "47": 540,
+  "48": 525,
+  "49": 510,
+  "50": 497,
+  "51": 484,
+  "52": 471,
+  "53": 456,
+  "54": 439,
+  "55": 420,
+  "56": 399,
+  "57": 372,
+  "58": 348,
+  "59": 325,
+  "60": 307,
+  "61": 307,
+  "62": 307,
+  "63": 307,
+  "64": 307
+ },
+ "curve_post": {
+  "1": 3966,
+  "2": 3301,
+  "3": 2965,
+  "4": 2748,
+  "5": 2590,
+  "6": 2468,
+  "7": 2363,
+  "8": 2248,
+  "9": 2116,
+  "10": 1971,
+  "11": 1827,
+  "12": 1678,
+  "13": 1589,
+  "14": 1509,
+  "15": 1431,
+  "16": 1347,
+  "17": 1269,
+  "18": 1191,
+  "19": 1118,
+  "20": 1050,
+  "21": 990,
+  "22": 937,
+  "23": 889,
+  "24": 852,
+  "25": 826,
+  "26": 816,
+  "27": 802,
+  "28": 794,
+  "29": 790,
+  "30": 786,
+  "31": 780,
+  "32": 772,
+  "33": 760,
+  "34": 747,
+  "35": 733,
+  "36": 721,
+  "37": 712,
+  "38": 700,
+  "39": 688,
+  "40": 676,
+  "41": 663,
+  "42": 647,
+  "43": 628,
+  "44": 607,
+  "45": 587,
+  "46": 568,
+  "47": 550,
+  "48": 533,
+  "49": 518,
+  "50": 504,
+  "51": 490,
+  "52": 475,
+  "53": 460,
+  "54": 442,
+  "55": 421,
+  "56": 399,
+  "57": 372,
+  "58": 346,
+  "59": 322,
+  "60": 300,
+  "61": 283,
+  "62": 283,
+  "63": 283,
+  "64": 283
+ },
+ "picks_moved": 61,
+ "slid_rows": [
+  {
+   "key": "dylan-shiel",
+   "pick": 4,
+   "epk_pre": 4,
+   "epk_post": 4,
+   "shift": 0
+  },
+  {
+   "key": "dom-tyson",
+   "pick": 5,
+   "epk_pre": 4,
+   "epk_post": 5,
+   "shift": 1
+  },
+  {
+   "key": "will-hoskin-elliott",
+   "pick": 6,
+   "epk_pre": 5,
+   "epk_post": 6,
+   "shift": 1
+  },
+  {
+   "key": "matthew-buntine",
+   "pick": 7,
+   "epk_pre": 6,
+   "epk_post": 7,
+   "shift": 1
+  },
+  {
+   "key": "chad-wingard",
+   "pick": 8,
+   "epk_pre": 7,
+   "epk_post": 8,
+   "shift": 1
+  },
+  {
+   "key": "brad-crouch",
+   "pick": 9,
+   "epk_pre": 8,
+   "epk_post": 9,
+   "shift": 1
+  },
+  {
+   "key": "nick-haynes",
+   "pick": 10,
+   "epk_pre": 9,
+   "epk_post": 10,
+   "shift": 1
+  },
+  {
+   "key": "billy-longer",
+   "pick": 11,
+   "epk_pre": 10,
+   "epk_post": 11,
+   "shift": 1
+  },
+  {
+   "key": "jeremy-cameron",
+   "pick": 12,
+   "epk_pre": 12,
+   "epk_post": 12,
+   "shift": 0
+  },
+  {
+   "key": "tom-mitchell",
+   "pick": 13,
+   "epk_pre": 11,
+   "epk_post": 13,
+   "shift": 2
+  },
+  {
+   "key": "adam-treloar",
+   "pick": 14,
+   "epk_pre": 14,
+   "epk_post": 14,
+   "shift": 0
+  },
+  {
+   "key": "adam-tomlinson",
+   "pick": 15,
+   "epk_pre": 12,
+   "epk_post": 15,
+   "shift": 3
+  },
+  {
+   "key": "liam-sumner",
+   "pick": 16,
+   "epk_pre": 13,
+   "epk_post": 16,
+   "shift": 3
+  },
+  {
+   "key": "toby-greene",
+   "pick": 17,
+   "epk_pre": 14,
+   "epk_post": 17,
+   "shift": 3
+  },
+  {
+   "key": "sam-docherty",
+   "pick": 18,
+   "epk_pre": 15,
+   "epk_post": 18,
+   "shift": 3
+  },
+  {
+   "key": "taylor-adams",
+   "pick": 19,
+   "epk_pre": 16,
+   "epk_post": 19,
+   "shift": 3
+  },
+  {
+   "key": "devon-smith",
+   "pick": 20,
+   "epk_pre": 17,
+   "epk_post": 20,
+   "shift": 3
+  },
+  {
+   "key": "brandon-ellis",
+   "pick": 21,
+   "epk_pre": 18,
+   "epk_post": 21,
+   "shift": 3
+  },
+  {
+   "key": "thomas-sheridan",
+   "pick": 22,
+   "epk_pre": 19,
+   "epk_post": 22,
+   "shift": 3
+  },
+  {
+   "key": "clay-smith",
+   "pick": 23,
+   "epk_pre": 20,
+   "epk_post": 23,
+   "shift": 3
+  },
+  {
+   "key": "bradley-mckenzie",
+   "pick": 24,
+   "epk_pre": 21,
+   "epk_post": 24,
+   "shift": 3
+  },
+  {
+   "key": "elliott-kavanagh",
+   "pick": 25,
+   "epk_pre": 22,
+   "epk_post": 25,
+   "shift": 3
+  },
+  {
+   "key": "hayden-crozier",
+   "pick": 26,
+   "epk_pre": 23,
+   "epk_post": 26,
+   "shift": 3
+  },
+  {
+   "key": "josh-bootsma",
+   "pick": 27,
+   "epk_pre": 24,
+   "epk_post": 27,
+   "shift": 3
+  },
+  {
+   "key": "murray-newman",
+   "pick": 28,
+   "epk_pre": 25,
+   "epk_post": 28,
+   "shift": 3
+  },
+  {
+   "key": "henry-schade",
+   "pick": 29,
+   "epk_pre": 26,
+   "epk_post": 29,
+   "shift": 3
+  },
+  {
+   "key": "sebastian-ross",
+   "pick": 30,
+   "epk_pre": 27,
+   "epk_post": 30,
+   "shift": 3
+  },
+  {
+   "key": "todd-elton",
+   "pick": 31,
+   "epk_pre": 28,
+   "epk_post": 31,
+   "shift": 3
+  },
+  {
+   "key": "sam-kerridge",
+   "pick": 32,
+   "epk_pre": 29,
+   "epk_post": 32,
+   "shift": 3
+  },
+  {
+   "key": "luke-brown",
+   "pick": 33,
+   "epk_pre": 30,
+   "epk_post": 33,
+   "shift": 3
+  },
+  {
+   "key": "fraser-mcinnes",
+   "pick": 34,
+   "epk_pre": 31,
+   "epk_post": 34,
+   "shift": 3
+  },
+  {
+   "key": "alex-forster",
+   "pick": 35,
+   "epk_pre": 32,
+   "epk_post": 35,
+   "shift": 3
+  },
+  {
+   "key": "elliot-yeo",
+   "pick": 36,
+   "epk_pre": 33,
+   "epk_post": 36,
+   "shift": 3
+  },
+  {
+   "key": "jackson-merrett",
+   "pick": 37,
+   "epk_pre": 34,
+   "epk_post": 37,
+   "shift": 3
+  },
+  {
+   "key": "dayne-zorko",
+   "pick": 38,
+   "epk_pre": 35,
+   "epk_post": 38,
+   "shift": 3
+  },
+  {
+   "key": "jamie-elliott",
+   "pick": 39,
+   "epk_pre": 36,
+   "epk_post": 39,
+   "shift": 3
+  },
+  {
+   "key": "ahmed-saad",
+   "pick": 40,
+   "epk_pre": 37,
+   "epk_post": 40,
+   "shift": 3
+  },
+  {
+   "key": "joel-hamling",
+   "pick": 41,
+   "epk_pre": 38,
+   "epk_post": 41,
+   "shift": 3
+  },
+  {
+   "key": "bradley-hill",
+   "pick": 42,
+   "epk_pre": 39,
+   "epk_post": 42,
+   "shift": 3
+  },
+  {
+   "key": "shane-kersten",
+   "pick": 43,
+   "epk_pre": 40,
+   "epk_post": 43,
+   "shift": 3
+  },
+  {
+   "key": "daniel-markworth",
+   "pick": 44,
+   "epk_pre": 41,
+   "epk_post": 44,
+   "shift": 3
+  },
+  {
+   "key": "rory-taggert",
+   "pick": 45,
+   "epk_pre": 42,
+   "epk_post": 45,
+   "shift": 3
+  },
+  {
+   "key": "jack-newnes",
+   "pick": 46,
+   "epk_pre": 43,
+   "epk_post": 46,
+   "shift": 3
+  },
+  {
+   "key": "jordan-kelly",
+   "pick": 47,
+   "epk_pre": 44,
+   "epk_post": 47,
+   "shift": 3
+  },
+  {
+   "key": "michael-talia",
+   "pick": 48,
+   "epk_pre": 45,
+   "epk_post": 48,
+   "shift": 3
+  },
+  {
+   "key": "tom-curran",
+   "pick": 49,
+   "epk_pre": 46,
+   "epk_post": 49,
+   "shift": 3
+  },
+  {
+   "key": "mitchell-grigg",
+   "pick": 50,
+   "epk_pre": 47,
+   "epk_post": 50,
+   "shift": 3
+  },
+  {
+   "key": "jimmy-webster",
+   "pick": 51,
+   "epk_pre": 48,
+   "epk_post": 51,
+   "shift": 3
+  },
+  {
+   "key": "jordan-lockyer",
+   "pick": 52,
+   "epk_pre": 49,
+   "epk_post": 52,
+   "shift": 3
+  },
+  {
+   "key": "steven-morris",
+   "pick": 53,
+   "epk_pre": 50,
+   "epk_post": 53,
+   "shift": 3
+  },
+  {
+   "key": "brendon-ah-chee",
+   "pick": 54,
+   "epk_pre": 51,
+   "epk_post": 54,
+   "shift": 3
+  },
+  {
+   "key": "nick-joyce",
+   "pick": 55,
+   "epk_pre": 52,
+   "epk_post": 55,
+   "shift": 3
+  },
+  {
+   "key": "patrick-wearden",
+   "pick": 56,
+   "epk_pre": 53,
+   "epk_post": 56,
+   "shift": 3
+  },
+  {
+   "key": "jordan-murdoch",
+   "pick": 57,
+   "epk_pre": 54,
+   "epk_post": 57,
+   "shift": 3
+  },
+  {
+   "key": "daniel-pearce",
+   "pick": 58,
+   "epk_pre": 55,
+   "epk_post": 58,
+   "shift": 3
+  },
+  {
+   "key": "jackson-paine",
+   "pick": 59,
+   "epk_pre": 56,
+   "epk_post": 59,
+   "shift": 3
+  },
+  {
+   "key": "nathan-blee",
+   "pick": 60,
+   "epk_pre": 57,
+   "epk_post": 60,
+   "shift": 3
+  },
+  {
+   "key": "josh-tynan",
+   "pick": 61,
+   "epk_pre": 58,
+   "epk_post": 61,
+   "shift": 3
+  },
+  {
+   "key": "alex-woodward",
+   "pick": 62,
+   "epk_pre": 59,
+   "epk_post": 62,
+   "shift": 3
+  },
+  {
+   "key": "matthew-arnot",
+   "pick": 63,
+   "epk_pre": 60,
+   "epk_post": 63,
+   "shift": 3
+  },
+  {
+   "key": "tom-downie",
+   "pick": 64,
+   "epk_pre": 61,
+   "epk_post": 64,
+   "shift": 3
+  },
+  {
+   "key": "tory-dickson",
+   "pick": 65,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  },
+  {
+   "key": "lachie-neale",
+   "pick": 66,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  },
+  {
+   "key": "nicholas-o-brien",
+   "pick": 67,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  },
+  {
+   "key": "jay-lever",
+   "pick": 68,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  },
+  {
+   "key": "alex-brown",
+   "pick": 69,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  },
+  {
+   "key": "dylan-buckley",
+   "pick": 70,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  },
+  {
+   "key": "cameron-ellis-yolmen",
+   "pick": 71,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  },
+  {
+   "key": "corey-gault",
+   "pick": 72,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  },
+  {
+   "key": "lincoln-mccarthy",
+   "pick": 73,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  },
+  {
+   "key": "jarrod-witts",
+   "pick": 74,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  },
+  {
+   "key": "cameron-sutcliffe",
+   "pick": 75,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  },
+  {
+   "key": "orren-stephenson",
+   "pick": 76,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  },
+  {
+   "key": "jed-bews",
+   "pick": 77,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  },
+  {
+   "key": "james-mcdonald",
+   "pick": 78,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  },
+  {
+   "key": "alex-sexton",
+   "pick": 79,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  },
+  {
+   "key": "jackson-allen",
+   "pick": 80,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  },
+  {
+   "key": "tim-mohr",
+   "pick": 81,
+   "epk_pre": 62,
+   "epk_post": 65,
+   "shift": 3
+  }
+ ],
+ "sample_changed_picks": 64
+}

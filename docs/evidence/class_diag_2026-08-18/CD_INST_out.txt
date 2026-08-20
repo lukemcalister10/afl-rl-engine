@@ -1,0 +1,41 @@
+====================================================================================================================
+E4 — IS ANY ROW COUNTED, DROPPED OR DIVIDED DIFFERENTLY FOR 2015?
+====================================================================================================================
+  year-1 cell is not the first vpath cell          29 rows   by draft class: {2018: 9, 2020: 20}
+  no vpath at all                                   0 rows   by draft class: none
+  year grid differs between the two boards          0 rows   by draft class: none
+  year-0 price differs between the two boards       0 rows   by draft class: none
+  row excluded by the pre-window rule              29 rows   by draft class: {2018: 9, 2020: 20}
+
+  the 2015 class carries 110 rows, every one of them scored in both sums, none excluded, none
+  zeroed, and its year-0 denominator is bit-identical on the two boards. The instrument treats
+  it exactly as it treats the other ten.
+
+====================================================================================================================
+E5 — THE MARK IS A RATIO OF SUMS, SO A FEW EXPENSIVE ROWS CARRY IT. THAT IS TRUE OF EVERY CLASS.
+====================================================================================================================
+  class    top-5 v0 share top-10 v0 share     Gini of v0
+  2005              21.7%          33.9%          0.455
+  2006              19.5%          31.4%          0.439
+  2007              21.2%          32.4%          0.463
+  2008              19.7%          30.4%          0.468
+  2009              22.8%          34.5%          0.502
+  2010              19.7%          31.3%          0.478
+  2011              19.8%          30.4%          0.460
+  2012              20.9%          34.3%          0.463
+  2013              21.2%          34.6%          0.473
+  2014              21.4%          32.7%          0.462
+  2015              21.4%          33.4%          0.468
+
+====================================================================================================================
+E6 — THE CHARGE IS ONE FACTOR IN THE PRICE, NOT THE PRICE. Stated so nobody reads the charge
+     column in C2 as a price multiplier.
+====================================================================================================================
+  2015 draft class, 52 rows carrying the new charge:
+  charge ratio (ORDER P / ORDER K) spans 0.731 to 2.000, median 1.382
+  price  ratio (ORDER P / ORDER K) spans 0.833 to 1.248, median 1.093
+  Spearman between the two: +0.784    Pearson: +0.789
+  Over ALL 844 rows on the whole matrix that carry the new charge, the charge and the price
+  move in the same direction on every one: 0 sign disagreements.
+  But NOT proportionally: the rest of the pricing stack damps it. Read the charge as the input and
+  the price move as the output.

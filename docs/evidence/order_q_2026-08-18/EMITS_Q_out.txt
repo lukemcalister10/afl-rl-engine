@@ -1,0 +1,40 @@
+=== EMIT QA  (RL_O38A=1) ===
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: b29a049e687b336a1fcec5d86cf006a4
+  emit starting 14:25:10  (RL_O37=1 A=1 B1=unset B2=unset)
+  emit exit=0  COST: 4m 57s
+  OK -> per_entrant_QA.json  (81cb88cb)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+=== EMIT QB1  (RL_O38B1=1) ===
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: b29a049e687b336a1fcec5d86cf006a4
+  emit starting 14:30:07  (RL_O37=1 A=unset B1=1 B2=unset)
+  emit exit=0  COST: 4m 36s
+  OK -> per_entrant_QB1.json  (657e7503)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+=== EMIT QB2  (RL_O38B2=1) ===
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: b29a049e687b336a1fcec5d86cf006a4
+  emit starting 14:34:43  (RL_O37=1 A=unset B1=unset B2=1)
+  emit exit=0  COST: 4m 22s
+  OK -> per_entrant_QB2.json  (0a158ff5)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+=== EMIT QAB1  (RL_O38A=1 RL_O38B1=1) ===
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: b29a049e687b336a1fcec5d86cf006a4
+  emit starting 14:39:05  (RL_O37=1 A=1 B1=1 B2=unset)
+  emit exit=0  COST: 4m 16s
+  OK -> per_entrant_QAB1.json  (107f148e)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+=== EMIT QAB2  (RL_O38A=1 RL_O38B2=1) ===
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: b29a049e687b336a1fcec5d86cf006a4
+  emit starting 14:43:21  (RL_O37=1 A=1 B1=unset B2=1)
+  emit exit=0  COST: 4m 8s
+  OK -> per_entrant_QAB2.json  (84c8cf57)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201

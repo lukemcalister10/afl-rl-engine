@@ -1,0 +1,19 @@
+{
+ "n_records": 2648,
+ "schema_identical": true,
+ "fields_differing": {
+  "v0": 2648
+ },
+ "non_v0_fields_differing": {},
+ "v0_moved": 2648,
+ "meta_keys_differing": [
+  "basis_29c",
+  "emitter"
+ ],
+ "pins": {
+  "store_29B": "cb38ef11",
+  "store_29C": "cb38ef11",
+  "v0surf_29B": "4405cba2b42fb96f50496ec791cb806c",
+  "v0surf_29C": "4405cba2b42fb96f50496ec791cb806c"
+ }
+}

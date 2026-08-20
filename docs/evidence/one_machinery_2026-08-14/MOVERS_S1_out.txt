@@ -1,0 +1,30 @@
+MOVERS STEP 1 (v0 re-fit) vs ENTRY 36d5dfc7
+  old rl_app_data.json  total 717527
+  new rl_app_data.json  total 718019  (delta +492, +0.0686%)
+  movers 43 of 804   sum delta +492
+  by career-games class:
+     cg 0      movers   43   sum      +492
+  by entry type: ND 43(+492)
+  LARGEST 20 MOVES
+  key                             old      new     delta    cg    yr    ty   pk
+  cody-anderson                    18      100       +82     0  2024    ND   64
+  josh-smillie                   1617     1689       +72     0  2024    ND    7
+  finnegan-davis                   89      151       +62     0  2025    ND   51
+  ollie-murphy                    359      414       +55     0  2023    ND   41
+  brayden-george                  293      344       +51     0  2022    ND   26
+  luke-lloyd                      362      413       +51     0  2023    ND   42
+  ned-bowman                      293      344       +51     0  2024    ND   26
+  reece-torrent                    57      100       +43     0  2023    ND   64
+  tylah-williams                  372      331       -41     0  2025    ND   39
+  adam-sweid                      306      345       +39     0  2025    ND   25
+  koby-evans                      369      332       -37     0  2025    ND   38
+  jaren-carr                       70      101       +31     0  2024    ND   63
+  jevan-phillipou                 361      335       -26     0  2025    ND   35
+  zac-mccarthy                    190      214       +24     0  2025    ND   55
+  tobyn-murray                    351      330       -21     0  2025    ND   40
+  patrick-snell                   421      402       -19     0  2023    ND   53
+  tyler-welsh                     192      210       +18     0  2024    ND   59
+  joel-cochran                    392      408       +16     0  2024    ND   47
+  riak-andrew                     415      400       -15     0  2024    ND   55
+  blake-thredgold                 426      440       +14     0  2025    ND   26
+  wrote docs/evidence/one_machinery_2026-08-14/MOVERS_S1.json

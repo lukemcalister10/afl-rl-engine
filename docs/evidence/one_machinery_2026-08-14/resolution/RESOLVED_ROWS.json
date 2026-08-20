@@ -1,0 +1,322 @@
+{
+ "book": {
+  "ADDITIVE reading, v0, no join": {
+   "lanes": {
+    "bridge": {
+     "n": 0,
+     "total": 0.0
+    },
+    "deep": {
+     "n": 715,
+     "total": 738221.2581641882
+    },
+    "sitter": {
+     "n": 89,
+     "total": 17243.102054981213
+    },
+    "thin": {
+     "n": 0,
+     "total": 0.0
+    }
+   },
+   "total": 755464.3602191694
+  },
+  "PREVIEW as built (weight, v0, no join)": {
+   "lanes": {
+    "bridge": {
+     "n": 0,
+     "total": 0.0
+    },
+    "deep": {
+     "n": 715,
+     "total": 662631.0
+    },
+    "sitter": {
+     "n": 89,
+     "total": 17243.102054981213
+    },
+    "thin": {
+     "n": 0,
+     "total": 0.0
+    }
+   },
+   "total": 679874.1020549812
+  },
+  "RESOLVED: additive, ANCHOR, JOINED": {
+   "lanes": {
+    "bridge": {
+     "n": 44,
+     "total": 29602.82790931166
+    },
+    "deep": {
+     "n": 572,
+     "total": 632816.3241280104
+    },
+    "sitter": {
+     "n": 89,
+     "total": 17221.722056854036
+    },
+    "thin": {
+     "n": 99,
+     "total": 35736.18201867761
+    }
+   },
+   "total": 715377.0561128542
+  },
+  "RESOLVED: additive, v0, JOINED": {
+   "lanes": {
+    "bridge": {
+     "n": 44,
+     "total": 29577.972157769513
+    },
+    "deep": {
+     "n": 572,
+     "total": 632937.2442346992
+    },
+    "sitter": {
+     "n": 89,
+     "total": 17243.102054981213
+    },
+    "thin": {
+     "n": 99,
+     "total": 35470.31404412982
+    }
+   },
+   "total": 715228.6324915802
+  },
+  "weight reading, v0, JOINED": {
+   "lanes": {
+    "bridge": {
+     "n": 44,
+     "total": 24063.56109524095
+    },
+    "deep": {
+     "n": 572,
+     "total": 590483.0
+    },
+    "sitter": {
+     "n": 89,
+     "total": 17243.102054981213
+    },
+    "thin": {
+     "n": 99,
+     "total": 35470.31404412982
+    }
+   },
+   "total": 667259.9771943521
+  }
+ },
+ "derived_not_built": true,
+ "greenlit": false,
+ "order": "30B-R",
+ "preview_total": 679875,
+ "rows": {
+  "chris-scerri": {
+   "beta": null,
+   "entry_anchor": 325.1916,
+   "fade_D": 1.0,
+   "fade_clock": 1.92,
+   "games": 7.0,
+   "lane": "thin",
+   "live": 459,
+   "name": "Chris Scerri",
+   "note": "backbone lane: production does NOT enter -- see the T3 conflict ; POOL FADE NOT DERIVED (D forced to 1.0) -- Step 4",
+   "pathway": "SSP",
+   "pick": null,
+   "pool": true,
+   "pos": "SF",
+   "preview": 242,
+   "production": 491.6158268912002,
+   "resolved_anchor": 430.53074422425374,
+   "resolved_v0": 164.6627696764632,
+   "resolved_weight_reading": 164.6627696764632,
+   "sigma": null,
+   "step2": 467,
+   "v0": 124.3742758208904
+  },
+  "cooper-trembath": {
+   "beta": 0.21891233770636154,
+   "entry_anchor": 354.6588,
+   "fade_D": 1.0,
+   "fade_clock": 2.92,
+   "games": 26.5,
+   "lane": "deep",
+   "live": 2201,
+   "name": "Cooper Trembath",
+   "note": "POOL -- v0 cell provisional, Step 4",
+   "pathway": "MSD",
+   "pick": 9,
+   "pool": true,
+   "pos": "KPF",
+   "preview": 1652,
+   "production": 2346.753457438748,
+   "resolved_anchor": 2424.392644434881,
+   "resolved_v0": 2394.3570681900756,
+   "resolved_weight_reading": 1652.0,
+   "sigma": 0.3262828173638796,
+   "step2": 2055,
+   "v0": 217.45512952851865
+  },
+  "dyson-sharp": {
+   "beta": null,
+   "entry_anchor": 1597.7173097216953,
+   "fade_D": 0.5771308385869873,
+   "fade_clock": 1.92,
+   "games": 13.0,
+   "lane": "bridge",
+   "live": 3091,
+   "name": "Dyson Sharp",
+   "note": "DECLARED BRIDGE -- not a measurement",
+   "pathway": "ND",
+   "pick": 13,
+   "pool": false,
+   "pos": "MID",
+   "preview": 2347,
+   "production": 3247.1401479365045,
+   "resolved_anchor": null,
+   "resolved_v0": 2811.1023100167,
+   "resolved_weight_reading": 2030.7943682589168,
+   "sigma": null,
+   "step2": 3269,
+   "v0": 1551.037908259901
+  },
+  "harry-demattia": {
+   "beta": null,
+   "entry_anchor": 911.6144999304319,
+   "fade_D": 0.33846890057829065,
+   "fade_clock": 3.92,
+   "games": 0.0,
+   "lane": "sitter",
+   "live": 430,
+   "name": "Harry DeMattia",
+   "note": "gameless -- the sitter law is untouched by every task in this order",
+   "pathway": "ND",
+   "pick": 25,
+   "pool": false,
+   "pos": "MID",
+   "preview": 301,
+   "production": null,
+   "resolved_anchor": 308.5531575426815,
+   "resolved_v0": 301.4389785214701,
+   "resolved_weight_reading": 301.4389785214701,
+   "sigma": null,
+   "step2": 301,
+   "v0": 890.5957918333025
+  },
+  "isaac-kako": {
+   "beta": 0.18693476660389088,
+   "entry_anchor": 1069.0255627585673,
+   "fade_D": 0.27878906907202605,
+   "fade_clock": 2.92,
+   "games": 36.0,
+   "lane": "deep",
+   "live": 1413,
+   "name": "Isaac Kako",
+   "note": "",
+   "pathway": "ND",
+   "pick": 13,
+   "pool": false,
+   "pos": "SF",
+   "preview": 748,
+   "production": 744.3020698553702,
+   "resolved_anchor": 944.1401139232361,
+   "resolved_v0": 886.3297016527115,
+   "resolved_weight_reading": 748.0,
+   "sigma": 0.23905390117260836,
+   "step2": 1320,
+   "v0": 759.7710922243454
+  },
+  "jacob-farrow": {
+   "beta": 0.27000370184566524,
+   "entry_anchor": 941.9870394290604,
+   "fade_D": 0.5771308385869873,
+   "fade_clock": 1.92,
+   "games": 18.0,
+   "lane": "deep",
+   "live": 2601,
+   "name": "Jacob Farrow",
+   "note": "",
+   "pathway": "ND",
+   "pick": 10,
+   "pool": false,
+   "pos": "SD",
+   "preview": 2089,
+   "production": 2720.045254325478,
+   "resolved_anchor": 2974.385242061963,
+   "resolved_v0": 3066.861418882117,
+   "resolved_weight_reading": 2089.0,
+   "sigma": 0.4395816899120422,
+   "step2": 2765,
+   "v0": 1284.4867021670693
+  },
+  "josh-smillie": {
+   "beta": null,
+   "entry_anchor": 1821.2759858378529,
+   "fade_D": 0.27878906907202605,
+   "fade_clock": 2.92,
+   "games": 0.0,
+   "lane": "sitter",
+   "live": 953,
+   "name": "Josh Smillie",
+   "note": "gameless -- the sitter law is untouched by every task in this order",
+   "pathway": "ND",
+   "pick": 7,
+   "pool": false,
+   "pos": "MID",
+   "preview": 471,
+   "production": null,
+   "resolved_anchor": 507.7518366149715,
+   "resolved_v0": 470.82146964514783,
+   "resolved_weight_reading": 470.82146964514783,
+   "sigma": null,
+   "step2": 471,
+   "v0": 1688.8089307529829
+  },
+  "max-knobel": {
+   "beta": null,
+   "entry_anchor": 641.4505094833688,
+   "fade_D": 0.3460004697526451,
+   "fade_clock": 4.92,
+   "games": 0.0,
+   "lane": "sitter",
+   "live": 411,
+   "name": "Max Knobel",
+   "note": "gameless -- the sitter law is untouched by every task in this order",
+   "pathway": "ND",
+   "pick": 42,
+   "pool": false,
+   "pos": "RUCK",
+   "preview": 287,
+   "production": null,
+   "resolved_anchor": 221.94217760431914,
+   "resolved_v0": 287.36672172253395,
+   "resolved_weight_reading": 287.36672172253395,
+   "sigma": null,
+   "step2": 287,
+   "v0": 830.538530563186
+  },
+  "willem-duursma": {
+   "beta": 0.26215916764152586,
+   "entry_anchor": 3435.7132668707613,
+   "fade_D": 0.5771308385869873,
+   "fade_clock": 1.92,
+   "games": 19.0,
+   "lane": "deep",
+   "live": 3977,
+   "name": "Willem Duursma",
+   "note": "",
+   "pathway": "ND",
+   "pick": 1,
+   "pool": false,
+   "pos": "MID",
+   "preview": 4063,
+   "production": 4198.168057656493,
+   "resolved_anchor": 5098.871787954279,
+   "resolved_v0": 5215.161706338221,
+   "resolved_weight_reading": 4063.0,
+   "sigma": 0.42389756796428607,
+   "step2": 4223,
+   "v0": 3879.2984347293773
+  }
+ }
+}

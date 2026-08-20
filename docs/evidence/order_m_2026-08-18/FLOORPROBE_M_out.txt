@@ -1,0 +1,43 @@
+==============================================================================================================
+ORDER M — THE ABSOLUTE FLOOR PROBE. OUTSIDE THE DECLARED GRID, ON PURPOSE, AS A BOUND.
+==============================================================================================================
+  the question: is a legal eta = 0 board hiding just past the edges of the declared grid?
+  the rails: no ND band above +14.00%  ·  worst single class <= 1.139  ·  class mark under 1.14
+
+  setting                                            class    maxcls      1-10     11-20
+  dose 0, kappa 0.00, gamma_u 8, eta 0, rel 1.08  <- kappa OFF    1.0501    1.1285   +18.30%   +16.09%
+  dose 0, kappa 0.05, gamma_u 8, eta 0, rel 1.08    1.0737    1.1550   +19.67%   +18.36%
+  dose 0, kappa 0.10, gamma_u 8, eta 0, rel 1.08    1.0973    1.1815   +21.03%   +20.63%
+  dose 0, kappa 0.15, gamma_u 8, eta 0, rel 1.08    1.1209    1.2081   +22.40%   +22.90%
+  dose 0, kappa 0.00, gamma_u 16, eta 0, rel 1.08  <- kappa OFF    1.0501    1.1285   +18.30%   +16.09%
+  dose 0, kappa 0.05, gamma_u 16, eta 0, rel 1.08    1.0721    1.1546   +19.93%   +18.33%
+  dose 0, kappa 0.10, gamma_u 16, eta 0, rel 1.08    1.0942    1.1806   +21.55%   +20.58%
+  dose 0, kappa 0.15, gamma_u 16, eta 0, rel 1.08    1.1162    1.2067   +23.18%   +22.82%
+  dose 0, kappa 0.00, gamma_u 8, eta 0, rel 0.80  <- kappa OFF    1.0501    1.1285   +18.30%   +16.09%
+  dose 0, kappa 0.05, gamma_u 8, eta 0, rel 0.80    1.0737    1.1550   +19.67%   +18.36%
+  dose 0, kappa 0.10, gamma_u 8, eta 0, rel 0.80    1.0973    1.1815   +21.03%   +20.63%
+  dose 0, kappa 0.15, gamma_u 8, eta 0, rel 0.80    1.1209    1.2081   +22.40%   +22.90%
+  dose 0, kappa 0.00, gamma_u 16, eta 0, rel 0.80  <- kappa OFF    1.0501    1.1285   +18.30%   +16.09%
+  dose 0, kappa 0.05, gamma_u 16, eta 0, rel 0.80    1.0721    1.1546   +19.93%   +18.33%
+  dose 0, kappa 0.10, gamma_u 16, eta 0, rel 0.80    1.0942    1.1806   +21.55%   +20.58%
+  dose 0, kappa 0.15, gamma_u 16, eta 0, rel 0.80    1.1162    1.2067   +23.18%   +22.82%
+
+  THE COOLEST PICKS 1-10 REACHABLE ANYWHERE, inside the grid or outside it: +18.30%
+  the rail is +14.00%. It is over by 4.30 points.
+  the worst single class there is 1.1285 against a 1.139 line — inside it by 0.0105.
+
+  SO THE TWO RAILS PART COMPANY AT THE VERY BOTTOM, and the packet says so rather than rounding it:
+    with the counterweight switched OFF ENTIRELY (kappa = 0) and the age bar OFF (dose 0), the
+    1.139 no-arb class line IS satisfied at 1.1285. The +14% BAND rail is NOT: picks 1-10 read
+    +18.30%. So the binding law, at the very floor of everything, is G3 — YOUR band rail.
+    And kappa = 0 is not a setting anyone has ruled: it deletes the counterweight the owner kept.
+
+  WHY THE EDGES CANNOT SAVE IT, in one line each:
+    lambda_rel  moves the worst class by less than 0.0001 across its whole range. It is not a lever
+                on this question at all.
+    kappa       LOWER kappa makes the board cooler, and kappa is already at its floor here — zero,
+                which means no counterweight at all. Even there picks 1-10 miss the +14 per cent
+                rail by 4.3 points, and kappa = 0 is not a setting anyone has ruled.
+    gamma_u     spans less than 0.01 on the worst class across 8 to 16.
+    dose        every step UP makes it worse, monotonically. Dose 0 is already the coolest.
+  There is no direction left to travel.

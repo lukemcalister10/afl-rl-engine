@@ -1,0 +1,41 @@
+==============================================================================================================
+ORDER 29  --  STEP 1, THE UNFLAG-THREE   (--apply)
+==============================================================================================================
+  store            /home/user/afl-rl-engine/.claude/worktrees/agent-adf5ad9255e01ffb7/engine/rl_after/rl_model_data.json
+  md5 at entry     d9a24282357cf3083b1640466e3ecd83   MATCHES LIVE d9a24282
+  bytes at entry   1978176
+
+  PRE-STATE
+    rows in store                 2650
+    rows carrying _pvc_exclude    3
+      dylan-shiel      ND 2011  pick 4    _pvc_exclude=True
+      jeremy-cameron   ND 2011  pick 12   _pvc_exclude=True
+      adam-treloar     ND 2011  pick 14   _pvc_exclude=True
+    byte occurrences of '"_pvc_exclude": true, ': 3
+
+  THE EDIT
+    bytes removed    66   (= 3 x 22, the needle exactly)
+
+  PREREG P2 ASSERTS
+    P2.a  store carries ZERO _pvc_exclude rows            3 -> 0    PASS
+    P2.b  ND-2011 cohort rows                              81       PASS
+          ND-2011 duplicate picks                          {}        PASS
+          ND-2011 pick set == 1..81 contiguous             True      PASS
+    P2.c  the three are curve-contributing (_in_pvc true) at their stored picks:
+            dylan-shiel      pick 4    _in_pvc=True   PASS
+            jeremy-cameron   pick 12   _in_pvc=True   PASS
+            adam-treloar     pick 14   _in_pvc=True   PASS
+    P2.d  the diff against the live store, computed row by row:
+            rows                                           2650 -> 2650
+            KEYS DELETED                                   3
+               row 1533  dylan-shiel       -_pvc_exclude
+               row 1541  jeremy-cameron    -_pvc_exclude
+               row 1543  adam-treloar      -_pvc_exclude
+            KEYS ADDED                                     0
+            VALUES CHANGED                                 0
+            VERDICT: exactly three deleted keys, no value / pick / position / birth-year /
+                     games field moved on any row          PASS
+            key ORDER within every row preserved            PASS
+
+  RESULT md5 cb38ef1171dcf20aae66ebf12682be0d   bytes 1978110
+  WRITTEN.  store md5 d9a24282357cf3083b1640466e3ecd83 -> cb38ef1171dcf20aae66ebf12682be0d

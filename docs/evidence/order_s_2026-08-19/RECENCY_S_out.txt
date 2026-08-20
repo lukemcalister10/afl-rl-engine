@@ -1,0 +1,117 @@
+======================================================================================================================
+ORDER S — S1. THE RECENCY MEASUREMENT. READ-ONLY; NO BOARD IS BUILT.
+======================================================================================================================
+store   : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad
+bar     : on_lib.bar == the engine o32_gate_bar (asserted against the engine literal, falsifier N2)
+ruler   : 241842f61ddd3c486f04f201a7efcce9
+panel   : 7152 states / 1441 players / target years 2006..2025
+predictand d = season avg - o32_gate_bar(pos, age), AFL Fantasy points per game — the SAME units
+           and the SAME bar the surplus is built on.
+NOTE      : years-back k is measured from the TARGET season T, so k=1 is the season immediately
+           before the target. The engine reads seasons up to Y = T-1, so k >= 1 always.
+
+----------------------------------------------------------------------------------------------------------------------
+3 · WALK-FORWARD OUT-OF-SAMPLE FIT. w IS CHOSEN ON TARGET YEARS < T AND SCORED ONLY AT T.
+----------------------------------------------------------------------------------------------------------------------
+   Two scorings are reported and neither is dropped:
+     CALIBRATED — OLS of d_{T} on [1, L_w] fitted on the training years, applied at T. This is the
+                  W4-style benchmark: it absorbs mean reversion so the question left is the
+                  WEIGHTING alone.
+     DIRECT     — prediction = L_w itself, no intercept, no slope. This is what the engine
+                  actually does with the object: it uses the weighted mean AS a level.
+   Errors are weighted by the TARGET season games, because that is how the surplus weights.
+
+   T         n_tr    n_te |  w*_cal   RMS_cal   RMS_w=1    gain% |  w*_dir   RMS_dir   RMS_w=1    gain%
+   2010       607     273 |    0.31   12.1971   12.5650   +2.928 |    0.56   13.3490   13.6654   +2.316
+   2011       880     315 |    0.26   14.2892   14.8528   +3.794 |    0.53   15.0028   15.5389   +3.450
+   2012      1195     369 |    0.20   13.3369   14.0384   +4.997 |    0.47   13.7612   14.2419   +3.375
+   2013      1564     392 |    0.21   12.4161   13.3516   +7.007 |    0.48   13.1760   13.8407   +4.802
+   2014      1956     423 |    0.21   12.6425   13.1078   +3.550 |    0.48   12.6666   12.9657   +2.307
+   2015      2379     408 |    0.26   12.4298   13.1335   +5.358 |    0.52   12.8733   13.3326   +3.445
+   2016      2787     399 |    0.28   11.4093   12.1308   +5.948 |    0.53   12.1942   12.6046   +3.256
+   2017      3186     443 |    0.28   11.0251   11.5443   +4.497 |    0.53   11.5637   11.8636   +2.528
+   2018      3629     433 |    0.29   11.7782   12.5009   +5.781 |    0.53   12.2282   12.8578   +4.897
+   2019      4062     471 |    0.29   11.2072   12.1929   +8.085 |    0.52   11.6837   12.5890   +7.191
+   2020      4533     469 |    0.28   12.9677   13.8108   +6.104 |    0.50   13.1340   13.9000   +5.511
+   2021      5002     483 |    0.29   14.5365   15.2469   +4.660 |    0.50   14.7452   15.3401   +3.878
+   2022      5485     418 |    0.30   13.1035   14.2639   +8.135 |    0.51   13.0350   13.9824   +6.775
+   2023      5903     409 |    0.31   12.3616   13.5838   +8.997 |    0.50   13.3056   14.0896   +5.565
+   2024      6312     435 |    0.30   12.5422   14.1091  +11.105 |    0.49   12.9699   14.2925   +9.254
+   2025      6747     405 |    0.28   12.3617   13.5647   +8.869 |    0.48   12.9459   13.8624   +6.612
+
+   POOLED OUT-OF-SAMPLE, all scored years together:
+     CALIBRATED : RMS 12.5460 at the walk-forward w, against 13.4074 at the engine w=1 -> +6.425%
+     DIRECT     : RMS 13.0203 at the walk-forward w, against 13.6859 at the engine w=1 -> +4.864%
+     w* path CALIBRATED: min 0.20  median 0.28  max 0.31  SPREAD 0.11  (S1-P2 bar: <= 0.30)
+     w* path DIRECT    : min 0.47  median 0.51  max 0.56  SPREAD 0.09
+
+----------------------------------------------------------------------------------------------------------------------
+4 · THE POOLED OUT-OF-SAMPLE ERROR CURVE. EVERY w SCORED THE SAME WALK-FORWARD WAY.
+----------------------------------------------------------------------------------------------------------------------
+   For each w on the grid: for every target year T, the OLS calibration is fitted on years < T and
+   scored at T, then summed. NO year ever scores on its own data. The engine is w = 1.00.
+
+   w         OOS RMS cal  OOS RMS dir
+   0.20         12.55439     13.23942
+   0.20         12.55439     13.23942
+   0.20         12.55439     13.23942
+   0.20         12.55439     13.23942
+   0.25         12.54376     13.15894
+   0.30         12.54337     13.09878
+   0.35         12.55236     13.05600
+   0.40         12.57034     13.02885
+   0.45         12.59718     13.01629
+   0.50         12.63288     13.01775
+   0.55         12.67751     13.03294
+   0.60         12.73114     13.06171
+   0.65         12.79374     13.10398
+   0.70         12.86507     13.15948
+   0.75         12.94451     13.22752
+   0.80         13.03091     13.30673
+   0.85         13.12257     13.39498
+   0.90         13.21732     13.48947
+   0.95         13.31290     13.58725
+   1.00         13.40743     13.68594  <== THE ENGINE
+
+   OOS-OPTIMAL w, CALIBRATED : 0.28
+   OOS-OPTIMAL w, DIRECT     : 0.47
+
+   IN-SAMPLE optimal w (printed ONLY so it can be told apart from the walk-forward number): 0.28
+   S1-F3 gap |OOS - in-sample| = 0.00  (falsifier bar: > 0.20 means the fit is unstable)
+
+----------------------------------------------------------------------------------------------------------------------
+5 · THE IMPLIED SEASON WEIGHTS, AT EQUAL GAMES, AGAINST THE PRIOR ART
+----------------------------------------------------------------------------------------------------------------------
+   THIS ORDER, walk-forward (calibrated)    w=0.280 -> [0.736, 0.206, 0.058]
+   THIS ORDER, walk-forward (direct)        w=0.470 -> [0.591, 0.278, 0.131]
+   W4 (prior art, NOT used)                 w=0.475 -> [0.588, 0.279, 0.133]
+   THE ENGINE, o37_surplus                  w=1.000 -> [0.333, 0.333, 0.333]
+
+   W4 measured 0.45-0.50 on a DIFFERENT predictand (its own level column on board points) and is
+   quoted for comparison only. The weights this order prices come from the fit above.
+
+----------------------------------------------------------------------------------------------------------------------
+6 · DOES THE DECAY DIFFER BY HISTORY DEPTH, AGE OR CLASS? (each split re-fitted walk-forward)
+----------------------------------------------------------------------------------------------------------------------
+   history 1-2 seasons          n=2612    w*=0.20  OOS RMS 13.7300   weights [0.806, 0.161, 0.032]
+   history 3-5 seasons          n=2449    w*=0.41  OOS RMS 11.9737   weights [0.634, 0.260, 0.107]
+   history 6+ seasons           n=2091    w*=0.39  OOS RMS 11.3236   weights [0.648, 0.253, 0.099]
+   target age <= 21             n=1277    w*=0.20  OOS RMS 13.5618   weights [0.806, 0.161, 0.032]
+   target age 22-25             n=3073    w*=0.30  OOS RMS 12.6744   weights [0.719, 0.216, 0.065]
+   target age 26+               n=2802    w*=0.37  OOS RMS 11.6399   weights [0.664, 0.246, 0.091]
+   TALL                         n=2287    w*=0.31  OOS RMS 11.7849   weights [0.711, 0.220, 0.068]
+   SMALL                        n=4865    w*=0.26  OOS RMS 12.8822   weights [0.753, 0.196, 0.051]
+   entrants 2005+ (board pop)   n=6393    w*=0.28  OOS RMS 12.6165   weights [0.736, 0.206, 0.058]
+   ND entrants                  n=5485    w*=0.29  OOS RMS 12.4744   weights [0.728, 0.211, 0.061]
+
+   UNWEIGHTED scoring (every state counts once, not by target games):
+     w* path min 0.20 median 0.24 max 0.49 ; pooled OOS RMS 14.7713 vs engine 15.6717 -> +5.746%
+
+----------------------------------------------------------------------------------------------------------------------
+7 · THE PREREG SCORED
+----------------------------------------------------------------------------------------------------------------------
+   S1-P1  OOS-optimal w strictly inside (0.30, 0.85)        : w* = 0.28  -> WRONG
+   S1-P2  per-year w* spread <= 0.30                        : spread 0.11 -> RIGHT
+   S1-F1  w* >= 0.95 would mean recency is UNSUPPORTED      : does not fire
+   S1-F3  |OOS - in-sample| > 0.20 would mean UNSTABLE      : does not fire
+

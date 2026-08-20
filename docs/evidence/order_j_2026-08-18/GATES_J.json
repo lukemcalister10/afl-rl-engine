@@ -1,0 +1,323 @@
+{
+ "boards": {
+  "cand": "1f17644445f074d11e631b5cbae98a9a",
+  "ref": "73bb064c9c5409a83e658216b8082dc4",
+  "s1": "69bf858e37aae27855a3e854c6c7fd13",
+  "tall": "d1058fe02cbf59f70441dd3a1b4001ff",
+  "tall2": "d1058fe02cbf59f70441dd3a1b4001ff"
+ },
+ "extra": {
+  "connor-o-sullivan": {
+   "landing": 2376,
+   "ref": 2417,
+   "ruled": 2376
+  },
+  "finn-o-sullivan": {
+   "landing": 3317,
+   "ref": 3357,
+   "ruled": 3317
+  },
+  "harry-morrison": {
+   "landing": 33,
+   "ref": 33,
+   "ruled": 33
+  },
+  "keidean-coleman": {
+   "landing": 673,
+   "ref": 673,
+   "ruled": 673
+  },
+  "levi-ashcroft": {
+   "landing": 3173,
+   "ref": 3219,
+   "ruled": 3173
+  },
+  "logan-morris": {
+   "landing": 2682,
+   "ref": 2733,
+   "ruled": 2682
+  },
+  "sam-taylor": {
+   "landing": 1119,
+   "ref": 1119,
+   "ruled": 1119
+  },
+  "taylor-goad": {
+   "landing": 580,
+   "ref": 727,
+   "ruled": 722
+  },
+  "taylor-walker": {
+   "landing": 129,
+   "ref": 129,
+   "ruled": 129
+  },
+  "toby-greene": {
+   "landing": 805,
+   "ref": 805,
+   "ruled": 805
+  },
+  "tom-green": {
+   "landing": 4339,
+   "ref": 4339,
+   "ruled": 4339
+  },
+  "will-ashcroft": {
+   "landing": 6487,
+   "ref": 6514,
+   "ruled": 6487
+  },
+  "zac-taylor": {
+   "landing": 160,
+   "ref": 154,
+   "ruled": 152
+  }
+ },
+ "f3_dial_off": true,
+ "f9_determinism": true,
+ "g4": {
+  "cooper-duff-tytler": {
+   "c31": 1832,
+   "landing": 1572,
+   "ref": 1569,
+   "ruled": 1572,
+   "target": 1800
+  },
+  "harry-dean": {
+   "c31": 2670,
+   "landing": 2400,
+   "ref": 2412,
+   "ruled": 2400,
+   "target": 2600
+  }
+ },
+ "g5": {
+  "daniel-annable": {
+   "landing": 1530,
+   "ref": 1536,
+   "ruled": 1530
+  },
+  "dylan-patterson": {
+   "landing": 1467,
+   "ref": 1469,
+   "ruled": 1467
+  },
+  "xavier-taylor": {
+   "landing": 1176,
+   "ref": 1175,
+   "ruled": 1176
+  }
+ },
+ "order": "ORDER J \u2014 the board gates",
+ "scorecard": [
+  {
+   "actual": "UP",
+   "d_ref": 12,
+   "d_ruled": 0,
+   "hit": true,
+   "key": "harry-dean",
+   "landing": 2400,
+   "pred": "UP",
+   "ref": 2412,
+   "ruled": 2400,
+   "why": "S1: 14.9 a game clear of his own age bar"
+  },
+  {
+   "actual": "DOWN",
+   "d_ref": -3,
+   "d_ruled": 0,
+   "hit": false,
+   "key": "cooper-duff-tytler",
+   "landing": 1572,
+   "pred": "UP",
+   "ref": 1569,
+   "ruled": 1572,
+   "why": "S1: 7.1 a game clear of his own age bar"
+  },
+  {
+   "actual": "DOWN",
+   "d_ref": -1,
+   "d_ruled": 0,
+   "hit": true,
+   "key": "xavier-taylor",
+   "landing": 1176,
+   "pred": "DOWN",
+   "ref": 1175,
+   "ruled": 1176,
+   "why": "sub-expectation WITH games (42.0 vs an age bar of 55.2)"
+  },
+  {
+   "actual": "UP",
+   "d_ref": 6,
+   "d_ruled": 0,
+   "hit": false,
+   "key": "daniel-annable",
+   "landing": 1530,
+   "pred": "DOWN",
+   "ref": 1536,
+   "ruled": 1530,
+   "why": "sub-expectation WITH games (38.0 vs 57.0)"
+  },
+  {
+   "actual": "UP",
+   "d_ref": 2,
+   "d_ruled": 0,
+   "hit": false,
+   "key": "dylan-patterson",
+   "landing": 1467,
+   "pred": "DOWN",
+   "ref": 1469,
+   "ruled": 1467,
+   "why": "sub-expectation WITH games (35.6 vs 55.2)"
+  },
+  {
+   "actual": "UP",
+   "d_ref": 15,
+   "d_ruled": 15,
+   "hit": true,
+   "key": "oskar-taylor",
+   "landing": 596,
+   "pred": "UP",
+   "ref": 611,
+   "ruled": 611,
+   "why": "zero games \u2014 only the ruled fade can reach him"
+  },
+  {
+   "actual": "UP",
+   "d_ref": 79,
+   "d_ruled": 79,
+   "hit": true,
+   "key": "josh-smillie",
+   "landing": 772,
+   "pred": "UP",
+   "ref": 851,
+   "ruled": 851,
+   "why": "the ruled factor's 0.5 clip at small picks 1-9"
+  },
+  {
+   "actual": "UP",
+   "d_ref": 6,
+   "d_ruled": 0,
+   "hit": true,
+   "key": "chris-scerri",
+   "landing": 313,
+   "pred": "UP",
+   "ref": 319,
+   "ruled": 313,
+   "why": "pool row \u2014 production dominates a small pedigree"
+  },
+  {
+   "actual": "UP",
+   "d_ref": 7,
+   "d_ruled": 0,
+   "hit": true,
+   "key": "thomas-burton",
+   "landing": 309,
+   "pred": "UP",
+   "ref": 316,
+   "ruled": 309,
+   "why": "same channel, weaker"
+  },
+  {
+   "actual": "DOWN",
+   "d_ref": -2,
+   "d_ruled": 0,
+   "hit": true,
+   "key": "milan-murdock",
+   "landing": 170,
+   "pred": "MOVES-INSIDE-JTOL",
+   "ref": 168,
+   "ruled": 170,
+   "why": "age 26 with 17 games \u2014 inside the re-mix's active zone"
+  },
+  {
+   "actual": "UP",
+   "d_ref": 141,
+   "d_ruled": 141,
+   "hit": true,
+   "key": "will-green",
+   "landing": 483,
+   "pred": "UP",
+   "ref": 624,
+   "ruled": 624,
+   "why": "the ruled factor at pick 16"
+  },
+  {
+   "actual": "UP",
+   "d_ref": 85,
+   "d_ruled": 86,
+   "hit": true,
+   "key": "toby-conway",
+   "landing": 855,
+   "pred": "UP",
+   "ref": 940,
+   "ruled": 941,
+   "why": "the ruled factor at pick 24"
+  },
+  {
+   "actual": "DOWN",
+   "d_ref": -4,
+   "d_ruled": -4,
+   "hit": true,
+   "key": "steely-green",
+   "landing": 80,
+   "pred": "DOWN",
+   "ref": 76,
+   "ruled": 76,
+   "why": "a late small pays for the talls' relief"
+  },
+  {
+   "actual": "UP",
+   "d_ref": 11,
+   "d_ruled": 0,
+   "hit": true,
+   "key": "isaac-kako",
+   "landing": 788,
+   "pred": "UP",
+   "ref": 799,
+   "ruled": 788,
+   "why": "S1 on a high-rho row"
+  },
+  {
+   "actual": "DOWN",
+   "d_ref": -2,
+   "d_ruled": 0,
+   "hit": false,
+   "key": "alix-tauru",
+   "landing": 920,
+   "pred": "UP",
+   "ref": 918,
+   "ruled": 920,
+   "why": "S1; tall age gaps are the largest"
+  },
+  {
+   "actual": "UP",
+   "d_ref": 52,
+   "d_ruled": 53,
+   "hit": true,
+   "key": "jedd-busslinger",
+   "landing": 579,
+   "pred": "UP",
+   "ref": 631,
+   "ruled": 632,
+   "why": "S1 + the ruled fade on an above-age-bar season"
+  }
+ ],
+ "smillie": {
+  "landing": 772,
+  "ref": 851,
+  "ruled": 851
+ },
+ "year1": {
+  "ref": {
+   "board": 58257,
+   "landing": 58060,
+   "n": 120
+  },
+  "ruled": {
+   "board": 57897,
+   "landing": 58060,
+   "n": 120
+  }
+ }
+}

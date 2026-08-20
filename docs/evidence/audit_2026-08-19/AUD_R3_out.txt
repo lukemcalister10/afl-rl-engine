@@ -1,0 +1,57 @@
+========================================================================================================
+INDEPENDENT AUDIT · B1 — THE R3 PRODUCTION FADE AS RULED vs AS WIRED
+========================================================================================================
+  board before R3 : 1270991c   after R3 : fbf61d05
+  SITTER_2026_v1.csv md5 read here: b26798c35adcd9bda5cef50ff2c884da
+  annotation rows: 219   injured=Y: 37
+
+  rows the R3 lever moved: 12   (all downward: True)
+
+--------------------------------------------------------------------------------------------------------
+B1 TEST 1 — NO ROW THAT PLAYED IN 2026 MAY BE CHARGED (the v752 ruling; the Edwards defect)
+--------------------------------------------------------------------------------------------------------
+  rows charged that PLAYED in 2026 : 0      PASS
+
+--------------------------------------------------------------------------------------------------------
+B1 TEST 2 — EVERY CHARGED ROW MUST HAVE A CURRENT CONSECUTIVE RUN GIVING DEPTH >= 2
+--------------------------------------------------------------------------------------------------------
+  charged rows with NO consecutive absent season: 3   *** FAIL ***
+    mani-liddy, noah-long, jack-payne
+
+--------------------------------------------------------------------------------------------------------
+B1 TEST 3 — NO INJURED-ANNOTATED ROW MAY BE CHARGED (the two-channel law)
+--------------------------------------------------------------------------------------------------------
+  injured-annotated rows charged: 0   PASS
+
+--------------------------------------------------------------------------------------------------------
+B1 TEST 4 — NAMED ROWS FROM THE STORE (no targets; these are the rows the ruling names as exhibits)
+--------------------------------------------------------------------------------------------------------
+  key                    run      2026 scoring line            pre  cand  R3 take
+  mitchell-edwards       0        16 games @ 53.3             1326  1326       +0
+  toby-conway            1        0 games @ 0.0               1066   460     -606
+  harry-barnett          1        0 games @ 0.0                674   422     -252
+  will-brodie            0        1 games @ 67.0               767   767       +0
+  sam-madden             NOT IN STORE
+  tom-nankervis          NOT IN STORE
+  jedd-busslinger        0        8 games @ 70.4               801   801       +0
+  oscar-mraz             NOT IN STORE
+
+--------------------------------------------------------------------------------------------------------
+B1 TEST 5 — CONTINUOUS PLAYERS (played every season since draft) MUST BE UNCHARGED
+--------------------------------------------------------------------------------------------------------
+  continuous-since-draft rows: 409   of which charged: 0   PASS
+
+--------------------------------------------------------------------------------------------------------
+B1 TEST 6 — THE SHIELD, MEASURED INDEPENDENTLY (the open defect v753 reports)
+--------------------------------------------------------------------------------------------------------
+  rows whose 2026 season is 1-2 games (run broken, R3 take forced to 0): 52
+    connor-rozee             2 game(s)   candidate price  2559
+    daniel-annable           2 game(s)   candidate price  1218
+    reilly-o-brien           2 game(s)   candidate price   977
+    xavier-taylor            2 game(s)   candidate price   914
+    will-brodie              1 game(s)   candidate price   767
+    taylor-goad              2 game(s)   candidate price   728
+    will-green               1 game(s)   candidate price   708
+    aidan-schubert           1 game(s)   candidate price   560
+    sam-marshall             2 game(s)   candidate price   489
+    jesse-dattoli            1 game(s)   candidate price   484

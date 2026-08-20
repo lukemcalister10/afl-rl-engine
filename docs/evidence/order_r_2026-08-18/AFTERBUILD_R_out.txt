@@ -1,0 +1,131 @@
+=== BOARD SUITE FINISHED 00:15:59 ===
+
+### 1 · THE NINE WALK-FORWARD MATRICES ###
+  emits rc=0
+  emit exit=0  COST: 3m 20s
+  OK -> per_entrant_R15.json  (1d7daa1d)
+  emit exit=0  COST: 3m 20s
+  OK -> per_entrant_R20.json  (cc7d6f99)
+  emit exit=0  COST: 3m 24s
+  OK -> per_entrant_R15A.json  (9a973ca3)
+  emit exit=0  COST: 3m 24s
+  OK -> per_entrant_R20A.json  (7392167b)
+  emit exit=0  COST: 3m 15s
+  OK -> per_entrant_Rb1.json  (595970be)
+  emit exit=0  COST: 3m 20s
+  OK -> per_entrant_Rb2.json  (62d042be)
+  emit exit=0  COST: 3m 13s
+  OK -> per_entrant_R15b1.json  (a7354eea)
+  emit exit=0  COST: 3m 10s
+  OK -> per_entrant_R20b2.json  (4055e1f8)
+  emit exit=0  COST: 3m 28s
+  OK -> per_entrant_R20b2A.json  (f3c03ac0)
+
+### 2 · CENSUSES AND CONTINUITY ###
+  measure rc=0
+  rc=0
+wrote CENSUS_RAB1.json
+########## or_census.py  R15  RL_O37=1 RL_O38B1=1 RL_O39_TMAXPCT=15 ##########
+  rc=0
+wrote CENSUS_R15.json
+########## or_census.py  R20  RL_O37=1 RL_O38B1=1 RL_O39_TMAXPCT=20 ##########
+  rc=0
+wrote CENSUS_R20.json
+########## or_census.py  R15A  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_TMAXPCT=15 ##########
+  rc=0
+wrote CENSUS_R15A.json
+########## or_census.py  R20A  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_TMAXPCT=20 ##########
+  rc=0
+wrote CENSUS_R20A.json
+########## or_census.py  Rb1  RL_O37=1 RL_O38B1=1 RL_O39_BETASAT=0.111 ##########
+  rc=0
+wrote CENSUS_Rb1.json
+########## or_census.py  Rb2  RL_O37=1 RL_O38B1=1 RL_O39_BETASAT=0.105 ##########
+  rc=0
+wrote CENSUS_Rb2.json
+########## or_census.py  R15b1  RL_O37=1 RL_O38B1=1 RL_O39_TMAXPCT=15 RL_O39_BETASAT=0.111 ##########
+  rc=0
+wrote CENSUS_R15b1.json
+########## or_census.py  R20b2  RL_O37=1 RL_O38B1=1 RL_O39_TMAXPCT=20 RL_O39_BETASAT=0.105 ##########
+  rc=0
+wrote CENSUS_R20b2.json
+########## or_census.py  R20b2A  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_TMAXPCT=20 RL_O39_BETASAT=0.105 ##########
+  rc=0
+wrote CENSUS_R20b2A.json
+########## or_continuity.py  RP  RL_O37=1 ##########
+  rc=0
+wrote CONTINUITY_RP_out.txt
+########## or_continuity.py  RB1  RL_O37=1 RL_O38B1=1 ##########
+  rc=0
+wrote CONTINUITY_RB1_out.txt
+########## or_continuity.py  R15  RL_O37=1 RL_O38B1=1 RL_O39_TMAXPCT=15 ##########
+  rc=0
+wrote CONTINUITY_R15_out.txt
+########## or_continuity.py  R20  RL_O37=1 RL_O38B1=1 RL_O39_TMAXPCT=20 ##########
+  rc=0
+wrote CONTINUITY_R20_out.txt
+########## or_continuity.py  Rb2  RL_O37=1 RL_O38B1=1 RL_O39_BETASAT=0.105 ##########
+  rc=0
+wrote CONTINUITY_Rb2_out.txt
+########## or_continuity.py  R20b2  RL_O37=1 RL_O38B1=1 RL_O39_TMAXPCT=20 RL_O39_BETASAT=0.105 ##########
+  rc=0
+wrote CONTINUITY_R20b2_out.txt
+########## or_continuity.py  R20b2A  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_TMAXPCT=20 RL_O39_BETASAT=0.105 ##########
+  rc=0
+wrote CONTINUITY_R20b2A_out.txt
+
+### 3 · THE DISCLOSED NO-ARB INSTRUMENTS ###
+  noarb rc=0
+  noarb_table_338.py            0f8220351c64c56ccfa90c60edcdfa5f   <- must be 0f8220351c64c56ccfa90c60edcdfa5f
+  t338_extended_DISCLOSED.py    d59ad550116ebbe3d90ed82becd2c4d5   <- must be d59ad550116ebbe3d90ed82becd2c4d5
+  harness_pvc_REPINNED_pass3.py 02dcf28c7bd0d39b3526e24c5cc0a87a   <- must begin 02dcf28c
+=== OKRULED  (66340278) ===
+=== PBUILT  (d4120560) ===
+=== QB1  (657e7503) ===
+=== QAB1  (107f148e) ===
+=== R15  (1d7daa1d) ===
+=== R20  (cc7d6f99) ===
+=== R15A  (9a973ca3) ===
+=== R20A  (7392167b) ===
+=== Rb1  (595970be) ===
+=== Rb2  (62d042be) ===
+=== R15b1  (a7354eea) ===
+=== R20b2  (4055e1f8) ===
+=== R20b2A  (f3c03ac0) ===
+
+### 4 · THE TABLES ###
+--- or_bands.py ---
+  rc=0
+    picks 41-64           111      111      111      111      111       93       69       48
+
+wrote BANDS_R.json / BANDS_R_out.txt
+--- or_tables.py ---
+  rc=0
+ENTRY-YEAR CONTROL: PASS — every yr0 cell inside +-0.1%
+
+wrote STANDING_TABLES_R.json / STANDING_TABLES_R_out.txt
+--- or_class.py ---
+  rc=0
+  R20b2A        1.0866      +0.0566      -0.0534  inside the law
+
+wrote CLASS_R.json and CLASS_R_out.txt
+--- or_boards.py ---
+  rc=0
+
+
+wrote BOARDS_R_out.txt / BOARDS_R.json
+--- or_pathtest.py ---
+  rc=0
+  the tables were read. Nothing was moved to change a verdict.
+
+wrote PATHTEST_R.json / PATHTEST_R_out.txt
+--- or_arc.py ---
+  rc=0
+wrote ARC_R.csv, ARC_R.json, ARC_R.html   (804 rows, 14 boards, spanning variant R20b2A)
+  ORDER K -> ORDER P (the mechanism introduced)        up 125  down 155  flat 524  null  0  net    -6663
+  ORDER P -> R20b2A (the softening)                    up 241  down 203  flat 360  null  0  net     -378
+  ORDER K -> R20b2A (THE WHOLE ARC)                    up 180  down 344  flat 280  null  0  net    -7041
+--- or_digest.py ---
+  rc=0
+
+=== ORDER R MEASUREMENT COMPLETE 01:14:37 ===

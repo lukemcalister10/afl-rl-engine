@@ -1,0 +1,165 @@
+======================================================================================================================
+THE FINAL ACCEPTANCE TABLE — re-printed on the RE-KEYED land/order-29
+  candidate board a05fe951 / 664,949 / 804   ·   engine 5f434b95   ·   store cb38ef11
+  dial line: docs/evidence/parity_2026-08-19/build_D7B.sh (D5-final stack + RL_O42=1 RL_O43=1, U0=7)
+  NOT ADOPTED · NOTHING TAGGED · NOTHING PROMOTED TO MAIN · THE LIVE BOARD IS UNTOUCHED
+  tag and main promote are OWNER-ONLY and the owner has not given the landing word.
+======================================================================================================================
+
+  19 items  ·  15 GREEN  ·  1 RULED  ·  2 RED (named, reported)  ·  1 HALTED  ·  0 NOT-READ
+
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     identity D7B_IDENT_P dial-off identity — every RL_O38*/O39/O40/O41/O42/O43 UNSET
+  EXPECT   374d4e44
+  READ     374d4e44
+  VERDICT  GREEN
+  HOW      RE-MEASURED this seat
+  SOURCE   docs/evidence/landing_prep_2026-08-20/IDENTITY_CHAIN_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     identity D7B_IDENT_K ORDER K's ruled line, ORDER P dial off
+  EXPECT   f3101883
+  READ     f3101883
+  VERDICT  GREEN
+  HOW      RE-MEASURED this seat
+  SOURCE   docs/evidence/landing_prep_2026-08-20/IDENTITY_CHAIN_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     identity D7B_L0R     A + B1 + TMAXPCT=20, the owner's reference
+  EXPECT   7f88f509
+  READ     7f88f509
+  VERDICT  GREEN
+  HOW      RE-MEASURED this seat
+  SOURCE   docs/evidence/landing_prep_2026-08-20/IDENTITY_CHAIN_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     identity D7B_NOO42   the D5-final dial stack, RL_O42 UNSET
+  EXPECT   ff936186
+  READ     ff936186
+  VERDICT  GREEN
+  HOW      RE-MEASURED this seat
+  SOURCE   docs/evidence/landing_prep_2026-08-20/IDENTITY_CHAIN_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     identity D7B_BASE    THE BASE, RL_O43 UNSET
+  EXPECT   daa16812
+  READ     daa16812
+  VERDICT  GREEN
+  HOW      RE-MEASURED this seat
+  SOURCE   docs/evidence/landing_prep_2026-08-20/IDENTITY_CHAIN_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     identity D7B_CAND    THE CANDIDATE
+  EXPECT   a05fe951
+  READ     a05fe951
+  VERDICT  GREEN
+  HOW      RE-MEASURED this seat
+  SOURCE   docs/evidence/landing_prep_2026-08-20/IDENTITY_CHAIN_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     identity D7B_CAND2   determinism repeat of D7B_CAND
+  EXPECT   a05fe951
+  READ     a05fe951
+  VERDICT  GREEN
+  HOW      RE-MEASURED this seat
+  SOURCE   docs/evidence/landing_prep_2026-08-20/IDENTITY_CHAIN_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     determinism  D7B_CAND == D7B_CAND2 (x2)
+  EXPECT   equal
+  READ     equal
+  VERDICT  GREEN
+  HOW      RE-MEASURED this seat
+  SOURCE   docs/evidence/landing_prep_2026-08-20/IDENTITY_CHAIN_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     day-0 89/89 — INTERNAL board assert (printed == round(derived_v0 x D(c)) x numeraire, tol 0)
+  EXPECT   89 of 89 on every build
+  READ     89 of 89 on 7 of 7 builds
+  VERDICT  GREEN
+  HOW      RE-MEASURED this seat
+  SOURCE   docs/evidence/landing_prep_2026-08-20/IDENTITY_CHAIN_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     day-0 89/89 — EMIT ORDER 31-F replication guard vs the FROZEN DAY0_CP.json (tol 0)
+  EXPECT   89 of 89 on a05fe951
+  READ     89 of 89 on a05fe951
+  VERDICT  GREEN
+  HOW      RE-MEASURED this seat
+  SOURCE   docs/evidence/landing_prep_2026-08-20/EMIT_LP_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     day-0 89/89 — emit second leg (both legs asserted)
+  EXPECT   89 of 89
+  READ     89 of 89
+  VERDICT  GREEN
+  HOW      CARRIED (v776 raw, md5 40065251)
+  SOURCE   docs/evidence/final_candidate_2026-08-19/EMIT_D7BCAND2_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     class W2 draft-class mark — inside the law (floor / rail margins); instrument self-validated on ORDER K 1.0513 before any candidate number is quoted
+  EXPECT   1.0672 inside the law
+  READ     1.0672  floor +0.0372  rail -0.0728  inside the law  [ORDER K self-check PASS]
+  VERDICT  GREEN
+  HOW      RE-MEASURED this seat
+  SOURCE   docs/evidence/landing_prep_2026-08-20/CLASS_LP_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     tail calibration on the candidate's own charge form — RULED (built number stands, no dial chased)
+  EXPECT   0.8004 (ruled red)
+  READ     0.8004
+  VERDICT  RULED
+  HOW      CARRIED (v776 raw, md5 54423b82)
+  SOURCE   docs/evidence/final_candidate_2026-08-19/TAIL_CP_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     burn census — every band, BOTH populations, on the FULLY-LIVE line (R3+O42+O43)
+  EXPECT   0 burned / 0 points
+  READ     2 populations, all bands 0 burned 0 pts; guard 289 of 289 exact
+  VERDICT  GREEN
+  HOW      CARRIED (v777 probe-repair seat, md5 a202ebe1)
+  SOURCE   docs/evidence/landing_prep_2026-08-20/carried/PR_BURN_CAND_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     acceptance birthday axis (o38_w age-24 handover, through R3 and the parity max)
+  EXPECT   +0 on 804 of 804
+  READ     +0 net, 0 movers of 804 tested; guard 804 of 804 exact
+  VERDICT  GREEN
+  HOW      CARRIED (v777 probe-repair seat, md5 c7a5bf1c)
+  SOURCE   docs/evidence/landing_prep_2026-08-20/carried/PR_AGEGATE_CAND_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     GUARD 5 — the boot form against the branch tree, RL_V0SURF_PKL bound (store · register · config · board · rl_model · fitted-artifact checkout + load-path · fv BOTH HALVES)
+  EXPECT   PASS, every leg
+  READ     PASS
+  VERDICT  GREEN
+  HOW      RE-MEASURED this seat
+  SOURCE   docs/evidence/landing_prep_2026-08-20/GUARD5_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     GUARD 5 — the SAME form with RL_V0SURF_PKL UNBOUND (the boot-workspace footgun probe)
+  EXPECT   PASS (footgun dead)
+  READ     FAIL — v0surf LOAD-PATH MISMATCH, one leg, out-of-repo cause
+  VERDICT  RED — REPORTED, NOT WORKED AROUND
+  HOW      RE-MEASURED this seat
+  SOURCE   docs/evidence/landing_prep_2026-08-20/GUARD5_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     unbound-surface CANDIDATE BUILD (no RL_V0SURF_PKL anywhere)
+  EXPECT   a05fe951 byte-exact
+  READ     NO BOARD — engine v0surf FROZEN-SIGNATURE HALT (fail-closed)
+  VERDICT  RED — FAIL-CLOSED, no wrong board can be produced
+  HOW      RE-MEASURED this seat
+  SOURCE   docs/evidence/landing_prep_2026-08-20/BUILD_UNBOUND_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     THE BOOK RE-SEAL (data/book_stable_seal.json)
+  EXPECT   re-sealed for the candidate
+  READ     HALTED — procedure ambiguous, decision not in the record
+  VERDICT  HALTED — REPORTED, NOT GUESSED
+  HOW      RE-MEASURED this seat
+  SOURCE   docs/evidence/landing_prep_2026-08-20/RESEAL_PROBE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+
+THE TWO ITEMS THAT ARE NOT GREEN, STATED PLAINLY:
+
+  1. THE UNBOUND-SURFACE FOOTGUN IS NOT DEAD. /home/claude/v0surf.pkl (fbc5b393) sits AHEAD of the
+     branch's own data/v0surf.pkl (5dd34ca8) in the engine's OWN precedence, hard-coded at
+     engine/rl_after/_merged_recover.py:1947 (_load_v0surf) and mirrored by boot_guard (0e). A pin
+     re-key cannot move a precedence that lives in engine code, and the C3 pin is ALREADY CORRECT
+     (it matches the branch file exactly), so there was no stale pin to fix here. Killing the footgun
+     needs EITHER an engine edit (out of scope — the order says halt and report) OR deleting/replacing
+     an out-of-repo file (the order forbids it). NOTE: bootstrap.sh does NOT seed /home/claude/v0surf.pkl
+     (it seeds only cm_400.pkl and q97m.pkl), so the guard's own remedy line "Re-run bootstrap.sh"
+     is WRONG for this artifact — reported as a finding.
+     WHAT SAVES IT: the failure is FAIL-CLOSED at TWO independent layers. Guard 5 (0e) names it before
+     the build, and the engine's own v0surf frozen-signature check HALTS the build at load time. The
+     measured unbound build produced NO BOARD. A wrong board cannot be produced silently.
+
+  2. THE BOOK RE-SEAL IS HALTED, NOT GUESSED. See RESEAL_HALT.md for the full statement.
+
+======================================================================================================================
+NOT ADOPTED. OWNER WORD PENDING.
+======================================================================================================================

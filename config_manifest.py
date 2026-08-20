@@ -36,8 +36,19 @@ _PREFIX = re.compile(r'^(RL_|PAR_)')
 # gate/bake mode it must be REJECTED (halt), never silently allowed — the reject-scan below treats it as an
 # unknown model override, so a gate/bake cannot disable the standing owner rulings. Dev-shell (no
 # RL_CONFIG_MODE) is unaffected: the exclusion test still sets it to build the OFF board for comparison.
+# BAKE 2026-08-20 (register v780): RL_V0SURF_PKL JOINS THE INFRASTRUCTURE SET. It is a PATH var by this
+# file's own definition (it names WHICH frozen pickle to load; it carries no model semantics and is not a
+# manifest value), and its absence here was blocker (B) of docs/evidence/landing_prep_2026-08-20/RESEAL_HALT.md:
+# under gate mode it was rejected as an unknown model override, so the re-seal could not legally point the
+# engine at the branch's own frozen surface. WHAT STILL GUARDS THE SURFACE, UNWEAKENED: Guard 5's
+# fitted-artifact LOADED-PATH leg compares the md5 of the file actually loaded against the pin
+# (data/expected_boot.json 'v0surf'), and the engine's frozen-SIGNATURE check halts on any surface whose
+# signature is not in the frozen set. Allowing the var to be SET is not allowing it to be WRONG — pointing
+# it at an unpinned surface still HALTS at two independent layers (proved: FROZENSIG_out.txt).
+# As of this commit the engine's precedence is $RL_V0SURF_PKL -> <repo>/data/v0surf.pkl, so the var is no
+# longer needed to reach the in-repo surface; it is admitted for a legitimate re-point, not as a crutch.
 INFRA_ALLOW = {'RL_REPO', 'RL_APP_DATA', 'RL_FV',
-               'RL_ALLOW_PVCFIT_BOARD', 'RL_CONFIG_MODE', 'RL_VENV'}
+               'RL_ALLOW_PVCFIT_BOARD', 'RL_CONFIG_MODE', 'RL_VENV', 'RL_V0SURF_PKL'}
 
 
 def repo_root():

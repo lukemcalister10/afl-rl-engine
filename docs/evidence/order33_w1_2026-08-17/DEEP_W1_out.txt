@@ -1,0 +1,64 @@
+ORDER 33 W1 -- DEEP-END beta RE-MEASUREMENT (estimators fixed in PREREG_W1.md s3)
+  instrument     docs/evidence/pedigree_persistence_2026-08-14/o30bm_measure.py
+  committed md5  e910fe6482ab7b05a92f18c173667073
+  as-run md5     0a65ef166dccb67840b44d9597de60fc (truncated at 'TAU, BETA = 11.650213, 0.937162' after the head-fix SUBs of w1_control.py)
+
+harness namespace lifted: panel ROWS n=4033 over 767 careers (H=6, ND 1-64, entry>=2005, Y<=2019)
+
+--- E1: fine bands, H=6 primary panel (band_fit verbatim) ---
+  band         mid       n    clust    beta_v0        se       t  wired@mid           sigma [90% CI]
+  0-5          2.5     382      332     0.2879    0.0786    3.66     0.2879       67.9% [ 40.8%, 98.7%]
+  6-15        10.5     591      467     0.3561    0.0640    5.56     0.2879       64.8% [ 45.4%, 83.0%]
+  16-35       25.5     834      571     0.2177    0.0531    4.10     0.2177       32.1% [ 18.6%, 44.3%]
+  36-50       43.0     446      370     0.1671    0.0741    2.26     0.1601       19.1% [  5.5%, 35.2%]
+  51-70       60.5     441      355     0.1041    0.0785    1.33     0.0865       10.4% [ -2.4%, 26.1%]
+  71-90       80.5     351      284     0.0152    0.0815    0.19     0.0298        1.6% [-14.1%, 16.7%]
+  91-120     105.5     357      231    -0.0235    0.0659   -0.36     0.0238       -2.2% [-12.0%,  9.8%]
+  121+       164.8     631      172     0.0723    0.0637    1.14     0.0238        8.5% [ -3.7%, 21.1%]
+
+E2 panel: H=4 -> 4969 states over 889 careers (state years 2006-2021)
+
+--- E2: fine bands, H=4 pooled-power panel ---
+  band         mid       n    clust    beta_v0        se       t  wired@mid           sigma [90% CI]
+  0-5          2.5     456      396     0.1879    0.0480    3.91     0.2879       73.8% [ 47.2%,107.0%]
+  6-15        10.5     685      545     0.2380    0.0399    5.97     0.2879       68.6% [ 49.3%, 86.5%]
+  16-35       25.5     953      651     0.1780    0.0392    4.54     0.2177       36.7% [ 21.5%, 49.7%]
+  36-50       43.0     524      431     0.1346    0.0507    2.66     0.1601       20.8% [  6.2%, 35.1%]
+  51-70       60.5     536      422     0.0683    0.0533    1.28     0.0865        9.0% [ -2.3%, 20.4%]
+  71-90       80.5     424      336     0.0252    0.0674    0.37     0.0298        3.3% [-13.1%, 17.8%]
+  91-120     105.5     468      293    -0.0048    0.0440   -0.11     0.0238       -0.6% [ -8.5%,  8.6%]
+  121+       172.3     923      210     0.0463    0.0402    1.15     0.0238        6.8% [ -2.9%, 16.5%]
+
+--- E2: the 31-F deep bands, H=4 pooled-power panel ---
+  band         mid       n    clust    beta_v0        se       t  wired@mid           sigma [90% CI]
+  36-70       53.0    1060      504     0.1074    0.0446    2.41     0.1416       15.2% [  4.7%, 26.5%]
+  71+        133.4    1815      350     0.0313    0.0302    1.04     0.0238        4.2% [ -2.1%, 12.3%]
+
+--- E3 (PRIMARY): joint fit, v0 x log-g hat basis at the wired knots, H=6 panel ---
+  n=4033  clusters=767  bootstrap B=400 ok=400 seed=33
+  knot g    beta_hat    CR0 se       t              boot 90% CI   CI excl 0?      wired     monotone
+  2.5         0.1843    0.0854    2.16    [  0.0366,   0.3245]          YES     0.2879       0.2441
+  10.5        0.2541    0.0650    3.91    [  0.1562,   0.3652]          YES     0.2879       0.2441
+  25.5        0.2940    0.0594    4.95    [  0.2015,   0.4064]          YES     0.2177       0.2441
+  53          0.2439    0.0705    3.46    [  0.1333,   0.3560]          YES     0.1416       0.2439
+  85.5        0.0152    0.0474    0.32    [ -0.0495,   0.1110]           no     0.0238       0.0152
+
+--- E4: deep-local level+slope, g>=36, H=6 primary panel ---
+  n=2226 clusters=436
+  beta at g=53 :   0.1753  se  0.0629  t   2.79   (wired 0.1416)
+  dlog-slope   :  -0.1889  se  0.0676  t  -2.80   (wired 53->85.5 log-slope -0.2461)
+  implied beta : 53->0.1753  70->0.1227  85.5->0.0849  100->0.0553  120->0.0209
+
+--- E4: deep-local level+slope, g>=36, H=4 pooled-power panel (robustness) ---
+  n=2875 clusters=504
+  beta at g=53 :   0.1436  se  0.0415  t   3.46   (wired 0.1416)
+  dlog-slope   :  -0.1379  se  0.0397  t  -3.47   (wired 53->85.5 log-slope -0.2461)
+  implied beta : 53->0.1436  70->0.1052  85.5->0.0776  100->0.0560  120->0.0309
+
+--- THE PROPOSED CURVE (PREREG s4: shallow wired, deep from E3, monotone cap+floor) ---
+  knot g       wired   proposed    identified?
+  2.5         0.2879     0.2879 shallow: wired kept
+  10.5        0.2879     0.2879 shallow: wired kept
+  25.5        0.2177     0.2177 shallow: wired kept
+  53          0.1416     0.2177            YES
+  85.5        0.0238     0.0152             NO

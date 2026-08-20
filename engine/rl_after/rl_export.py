@@ -220,6 +220,49 @@ with _ctx.redirect_stdout(_io.StringIO()):
         _p['_v'] = _p['_vM2'] = _p['_vM1'] = _p['_vP1'] = _p['_vP2'] = _nb(_ev(_p, 2026))
         _p['_cvx'] = 1.0
 g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()  # the ev loop advanced the clock to the last as-of year; re-pin to the present so the DISPLAY layer (peak_est/level_now/track/...) reads 2026, as the prior 2-instance display did
+# ==== ORDER 29B — THE PRINTED-DAY-0 ASSERT. A PERMANENT BOOT-CLASS CHECK, NOT A ONE-ACT MEASUREMENT ======
+# THE LAW THIS INSTALLS: from this act on, a day-0 entrant's PRINTED price IS his derived v0 x numeraire.
+# ORDER 29's PREREG P12 predicted that identity and MEASURED it false — 0 of 46 fresh entrants, printed at
+# mean 0.5274x the entry anchor — because the day-0 objects were landed but nothing consumed them. ORDER 29B
+# wires the consumption; this is the check that keeps it true.
+#
+# WHY IT LIVES HERE AND NOT IN THE ENGINE. The engine can only assert about its own return value. This runs
+# on THE NUMBER THAT IS ACTUALLY WRITTEN TO THE BOARD — after ÷_F, after int(round(...)), after the whole
+# display re-base — so it cannot be satisfied by a function that is right while the board is wrong. It is
+# stated as an EQUALITY on integers, so it is exact rather than tolerance-bounded, and it HALTS: a build
+# whose day-0 prints have drifted off the ladder does not get written.
+# NON-VACUITY: the check counts the rows it covered and HALTS if that count is zero, so a predicate that
+# quietly stops matching anybody is a failure, not a silent pass.
+# It rides the same declared kill-switch as the wiring — RL_ENTRY29B=0 leaves _entry29b_derived None and
+# this block is skipped, which is what makes the byte-exact kill-switch proof possible.
+#
+# ORDER 30B RESTATEMENT (PREREG_30B P25). The 29B identity `printed == round(v0)` was the FADE == 1 special
+# case of the law that now holds: `printed == round(v0 x D(c))`, the sitter fade at his continuous depth.
+# It is SUPERSEDED, NOT DROPPED — the same rows, the same tolerance 0, the same halt, one factor wider. The
+# predicate is read from the engine (`_entry30b_price`), so the board and the engine cannot drift apart; when
+# the 30B block is killed (RL_ONEMACH=0) that name is None and the check falls back to the 29B predicate,
+# which is what keeps the kill-switch chain byte-exact in both directions.
+_d0_of = _ens.get('_entry30b_price') or _ens.get('_entry29b_derived')
+_d0_law = 'round(derived v0 x sitter fade D(c))' if _ens.get('_entry30b_price') else 'round(derived v0)'
+if _d0_of is not None:
+    _d0_n = 0; _d0_bad = []
+    with _ctx.redirect_stdout(_io.StringIO()):
+        for _p in players:
+            _d = _d0_of(_p, 2026)
+            if _d is None: continue
+            _d0_n += 1
+            if _p['_v'] != int(round(_d)): _d0_bad.append((_p.get('player'), _p['_v'], _d))
+    if _d0_bad:
+        raise SystemExit(
+            'PRINTED-DAY-0 HALT: %d of %d day-0/sitter rows do not print %s x numeraire '
+            '— %s. Refusing to write the board.'
+            % (len(_d0_bad), _d0_n, _d0_law, ['%s printed %d != %.6f' % t for t in _d0_bad[:6]]))
+    if _d0_n == 0:
+        raise SystemExit('PRINTED-DAY-0 HALT: the day-0 predicate matched ZERO rows, so the assert '
+                         'is vacuous. A board with no entrants at all is not a board this check can pass.')
+    print('PRINTED-DAY-0 ASSERT: %d of %d day-0/sitter rows print EXACTLY %s x '
+          'numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)'
+          % (_d0_n, _d0_n, _d0_law))
 # ==== (g2) L7 RE-BASE VERIFICATION — order preserved + anchor-pair ratios (register v30, l7_rebase.py) =====
 # A uniform ÷F with round() is monotone (never a STRICT inversion) but can TIE two formerly-distinct values
 # (a rounding artifact, reported not failed). Assert: along the pre-rebase order (desc), the rebased values
@@ -652,7 +695,7 @@ _OV.assert_presence(active)
 # §2.viii (owner item 359): the phantom layer carries the FULL expected annual intake (~103 slots) — the real
 # draft pick structure at v2-curve PVC per EFFECTIVE pick, plus mechanisms at their measured pick-equivalents
 # (MSD 90, all others 92 — item 341). The slot structure is measured from recorded store intake history and
-# SEALED before this render (session_2026-07-18/legf5/sealed_entrant_structure.json, seal c9e7491b (#306 L7: re-measured on the live store f1e8c9fe at the adopted curve df766dff) — NOT
+# SEALED before this render (session_2026-07-18/legf5/sealed_entrant_structure.json, seal cbb7c431 (ORDER 29: re-measured at the ruled curve 9729f0c5; the OCCUPANCY COUNTS are byte-identical to seal c9e7491b — only the PRICING moved, so this is a re-price of a frozen measurement, never a re-count) — NOT
 # tuned against the §2.x gate (the LAW: sealed from history first). phantom=true; never at k=0; never gates/bakes.
 #
 # OBITUARY — F1's §2.i/§2.ii sizing is SUPERSEDED (delete, don't disable; CORE rule 7). The F1 phantom intake
@@ -670,9 +713,9 @@ if os.environ.get('RL_LEGF', '1') != '0':
     _lf_struct = json.load(open(_lf_seal_path))
     _lf_chk = {_kk: _vv for _kk, _vv in _lf_struct.items() if _kk != 'seal_sha256_8'}
     _lf_seal = _hl.sha256(json.dumps(_lf_chk, sort_keys=True, separators=(',', ':')).encode()).hexdigest()[:8]
-    if not (_lf_seal == _lf_struct.get('seal_sha256_8') == 'c9e7491b'):
+    if not (_lf_seal == _lf_struct.get('seal_sha256_8') == 'cbb7c431'):
         raise SystemExit('LEG F5 HALT (§2.viii): sealed entrant structure seal drift — recomputed %s vs stored '
-                         '%s vs pinned c9e7491b. Re-seal from intake history before rendering.'
+                         '%s vs pinned cbb7c431. Re-seal from intake history before rendering.'
                          % (_lf_seal, _lf_struct.get('seal_sha256_8')))
     _PVCMAX = max(PVC)
     def _lf_pvc(_e): return PVC.get(min(int(_e), _PVCMAX), PVC[_PVCMAX])   # v2-curve PVC of an effective pick

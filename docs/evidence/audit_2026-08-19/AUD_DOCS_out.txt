@@ -1,0 +1,103 @@
+====================================================================================================
+INDEPENDENT AUDIT · C1 THE TRACKER and C2 THE PER-LEVER PAGE — re-derived from the board JSONs
+====================================================================================================
+
+Board md5s as read by THIS seat (not copied from any document):
+  IDENT_P      374d4e442665771801c5f1edd2a7e0e2  total 666,434
+  IDENT_K      f3101883a60b0a7b8cb50f9d8a5abfff  total 673,097
+  L0_R         7f88f5096ff5b781da4614b7142d332c  total 664,950
+  L1_REC       b692d7099a8d39f59843e41b51e0cc39  total 664,770
+  L2_COMP      c3cb66862a54cba17b2efc7252d87fd9  total 670,562
+  V750_L2C15   3dca39b04fad63ffe1a8db478751a575  total 669,539
+  V750_L3MAT   62507bdf320dce4f8c8ea832eae78560  total 669,018
+  V750_L4SD    c3f7866784bf3b072666da3f1080d654  total 669,985
+  V750_L5A     e1e3d97dabdea5c815fd271688cf596a  total 666,458
+  V750_L5B     b74a2a0e57182d096a139c26b7a6677b  total 666,275
+  V750_L5C     1270991cdde819b22ac7bf5f42908f5a  total 666,263
+  V751_CAND    fbf61d052d6cd77e73f9338e17113eb6  total 665,180
+  V751_CAND2   fbf61d052d6cd77e73f9338e17113eb6  total 665,180
+  live         88ce647f531030d8d2e094188b258191  total 752,429
+
+----------------------------------------------------------------------------------------------------
+C2 · DOES THE LEVER STACK TELESCOPE?  R + sum(marginals) must EQUAL the candidate total exactly.
+----------------------------------------------------------------------------------------------------
+  L1_REC       marginal     -180   moved  316   up  121   down  195
+  L2_COMP      marginal    +5792   moved  393   up  362   down   31
+  V750_L2C15   marginal    -1023   moved  258   up    0   down  258
+  V750_L3MAT   marginal     -521   moved  175   up   15   down  160
+  V750_L4SD    marginal     +967   moved  104   up  104   down    0
+  V750_L5A     marginal    -3527   moved  168   up   29   down  139
+  V750_L5B     marginal     -183   moved   32   up    6   down   26
+  V750_L5C     marginal      -12   moved    2   up    1   down    1
+  V751_CAND    marginal    -1083   moved   12   up    0   down   12
+
+  R (L0_R)            = 664,950
+  sum of marginals    = +230
+  R + sum             = 665,180
+  candidate V751_CAND = 665,180
+  TELESCOPES EXACTLY: True
+
+----------------------------------------------------------------------------------------------------
+C2 · THE PER-LEVER PAGE vs THESE RE-DERIVED NUMBERS
+----------------------------------------------------------------------------------------------------
+  L0_R         page_total 664,950   mine 664,950   OK
+  L1_REC       page_total 664,770   mine 664,770   OK
+  L2_COMP      page_total 670,562   mine 670,562   OK
+  V750_L2C15   page_total 669,539   mine 669,539   OK
+  V750_L3MAT   page_total 669,018   mine 669,018   OK
+  V750_L4SD    page_total 669,985   mine 669,985   OK
+  V750_L5A     page_total 666,458   mine 666,458   OK
+  V750_L5B     page_total 666,275   mine 666,275   OK
+  V750_L5C     page_total 666,263   mine 666,263   OK
+  V751_CAND    page_total 665,180   mine 665,180   OK
+  PER-LEVER PAGE MISMATCHES: 0
+
+----------------------------------------------------------------------------------------------------
+C2 · NAMED MOVERS RE-DERIVED for TWO levers (read from the lever boards, nothing rebuilt)
+----------------------------------------------------------------------------------------------------
+  LEVER: the SD level offset  (V750_L4SD vs V750_L3MAT)
+     finn-o-sullivan              Finn O'Sullivan            3111 ->   3186  +75
+     colby-mckercher              Colby McKercher            4150 ->   4223  +73
+     samuel-grlj                  Samuel Grlj                1516 ->   1584  +68
+     zeke-uwland                  Zeke Uwland                1710 ->   1758  +48
+     harry-kyle                   Harry Kyle                  926 ->    965  +39
+     jaxon-artemis                Jaxon Artemis               476 ->    505  +29
+     tanner-bruhn                 Tanner Bruhn               1970 ->   1997  +27
+     riley-bice                   Riley Bice                  277 ->    304  +27
+     oliver-hollands              Oliver Hollands            1472 ->   1498  +26
+     luke-trainor                 Luke Trainor                983 ->   1008  +25
+
+  LEVER: the R3 production fade  (V751_CAND vs V750_L5C)
+     toby-conway                  Toby Conway                1066 ->    460  -606
+     harry-barnett                Harry Barnett               674 ->    422  -252
+     hugh-davies                  Hugh Davies                 244 ->    187  -57
+     jack-payne                   Jack Payne                  100 ->     64  -36
+     tew-jiath                    Tew Jiath                   132 ->     99  -33
+     caleb-graham                 Caleb Graham                 92 ->     66  -26
+     finlay-macrae                Finlay Macrae                75 ->     51  -24
+     noah-long                    Noah Long                    50 ->     35  -15
+     jakob-ryan                   Jakob Ryan                  163 ->    149  -14
+     james-blanck                 James Blanck                 25 ->     15  -10
+
+----------------------------------------------------------------------------------------------------
+C1 · THE TRACKER — CSV and HTML re-verified against the board JSONs
+----------------------------------------------------------------------------------------------------
+  CSV rows: 801
+  CSV columns: player, pos, club, cat, age, band, pick, live, K, d_live_K, P, d_K_P, R, d_P_R, candidate, d_R_cand, d_live_cand, d_K_cand
+
+  Verifying EVERY CSV row (values in all five board columns + ALL SIX delta columns):
+    rows checked 801   (unmatched player names: 0)
+    VALUE cell mismatches : 0
+    DELTA cell mismatches : 0
+
+  TRACKER HTML header cells: ['player', 'pos', 'club', 'cat', 'age', 'live', 'K', 'Δ live→K', 'P', 'Δ K→P', 'R', 'Δ P→R', 'CANDIDATE', 'Δ R→cand', 'Δ live→cand', 'Δ K→cand']
+
+  TRACKER HTML data rows: 801  (CSV rows: 801)
+  HTML first data row cells (16): ['Toby Conway', 'RUCK', 'Geelong', '', '23', '503', '899', '+396', '1,066', '+167', '1,066', '0', '460', '-606', '-43', '-439']
+
+  Board totals quoted in the HTML header, vs my own sums:
+    live   752,429   present in HTML: True
+    K      673,097   present in HTML: True
+    P      666,434   present in HTML: True
+    R      664,950   present in HTML: True
+    cand   665,180   present in HTML: True

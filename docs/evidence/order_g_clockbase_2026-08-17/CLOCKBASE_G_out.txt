@@ -1,0 +1,511 @@
+==========================================================================================================================
+ORDER G -- THE CLOCK RE-BASE INSTRUMENT SEAT.  READ-ONLY.  Rule fixed in PREREG_G.md (pushed first).
+==========================================================================================================================
+  THIS SEAT CHANGES REPORTING, NOT PRICES.  No board number moves; no price is proposed. The two exploit rails keep their standing definitions.
+
+  sources, md5-stamped:
+    engine/rl_after/rl_model.py                                    3702e824d72cedc4994c27e20b5006aa
+    docs/evidence/order32_s4_2026-08-17/s4_shootout.py             241842f61ddd3c486f04f201a7efcce9
+    docs/evidence/candidate_31f/ext_2026-08-17/t338_extended_DISCLOSED.py d59ad550116ebbe3d90ed82becd2c4d5
+    docs/evidence/landing_29_2026-08-13/noarb/harness_pvc_REPINNED_pass3.py 02dcf28c7bd0d39b3526e24c5cc0a87a
+    per_entrant_O35FINAL.json  [D]                                 e029bc9f646ed0a360a3043df18eba08
+    per_entrant_O32RFINAL.json  [C32R]                             f43003083af56e4d5074e0f38c2bb605
+    per_entrant_O31FFINAL.json  [C31]                              d97f1aee4161ebcf785cd635ed095038
+
+  board D     1f176444  store cb38ef11  head 5189e4ae  n=2648   THE LANDING CANDIDATE (Order D wire)
+  board C32R  7802ee97  store cb38ef11  head bf63592c  n=2648   the repaired C32 (dial-off identity)
+  board C31   fe6be9d6  store cb38ef11  head 71d9949a  n=2648   Candidate 31 (the 31-F head fix)
+  ALL THREE ASSERTED.  Same store, so the delivered-value stream is common to all three boards;
+  only v0, the year-1 price, and hence the mark and the v0-weighted age mix move between columns.
+
+==========================================================================================================================
+PART 1 -- THE TICK VERDICT.  OWNER CORRECTION G-1, RESOLVED ON THE CODE.
+==========================================================================================================================
+
+  THE OWNER'S CANONICAL RULING: "Each player's present season is 100%, and the next season is 86%,
+  bar first year young players who have one extra at 100%."  Fair entry->year-1 accretion under it:
+  1.00 for entry age <=19, 1.14 for >=20.  ORDER F measured 1.2996 for the mature entrant.
+  Question: does the ENGINE deviate from the ruling (a DEFECT), or did ORDER F misread the ladder?
+
+  disc_factor lifted BY SOURCE TEXT out of engine/rl_after/rl_model.py and exec'd VERBATIM.
+    lifted-text md5 93a198a86f7c832dba79e41de5146d8c  -- ASSERTED equal to Order F's (93a198a8...).  PASS
+    control: disc_factor(18, 0.14, 3, grace=0) == 1.14^3 -> 1.4815440000  PASS
+
+  DECIDING LINE 1 -- the engine convention.  disc_factor, engine/rl_after/rl_model.py:
+      996 | def disc_factor(a,d,k,lens='bal',grace=0):
+      997 |     """THE DISCOUNT FACTOR for future season k, for a player priced at current age a.
+      998 |     Modes 0/1/2/3: the existing power form (1+r)**k with r fixed at pricing time.
+      999 |     Mode 9 (seat-proposed): the PATH PRODUCT prod_{j=1..k} (1+r(a+j)) — the rate for each season is the rate for the
+     1000 |     age he will be in it. k=0 is 1.0 in every mode, so the present season is never discounted.
+     1001 | 
+     1009 |     if grace:
+     1010 |         k=max(0,int(k)-int(grace))
+     1011 |         if k<=0: return 1.0
+     1012 |     if AGE_DISC and lens in ('bal','balanced') and a is not None and age_disc_mode()==9:
+  -> k <= 0 returns 1.0.  THE PRESENT SEASON IS NEVER DISCOUNTED.  That IS the owner's "100%".
+
+  DECIDING LINE 2 -- the grace dial, and the two-clock reconciliation the law itself states:
+      208 | #   engine side k_e = seasons AHEAD of the pricing year, and k_e=0 is ALWAYS 1.0 (the standing engine
+      209 | #               convention in disc_factor: the present season is never discounted).  So the engine only
+      210 | #               needs ONE extra free step, and only for a player whose present season IS his first:
+      211 | #               exponent max(0, k_e - remaining), remaining = max(0, G - seasons_elapsed), G = 1.
+      212 | # Checked season by season in the prereg; the consequence is that a 2nd-year-and-later row is
+      213 | # byte-unchanged even with the dial ON, which is the rule, not an approximation of it.
+      214 | #
+      215 | # ENTRY AGE is taken with the SAME arithmetic Layer 1 used (o26b_layer1.py:121, entry_year - _by, with
+      236 | GRACE_MAX_ENTRY_AGE=19                 # entrants at 20+ get no grace (ruled)
+      237 | def grace_years(p):
+      238 |     """Remaining grace seasons for player p at the current AGE_REF. 0 when the dial is off."""
+      239 |     if not RL_GRACE or p is None: return 0
+      240 |     if (p['year']-by(p))>GRACE_MAX_ENTRY_AGE: return 0
+      241 |     return max(0,GRACE_G-max(0,AGE_REF-debut(p)))
+  -> GRACE_G = 1 on the engine, G_O = 2 on the curve, and the law says WHY: the engine's k_e = 0 is
+     already free, so it needs ONE FEWER free step than the curve to describe the SAME free set.
+
+  DECIDING LINE 3 -- the curve clock, o26b_layer2.py (the entry / day-0 print):
+      389 |         k = (s['year'] - ey) if ey is not None else 0
+      390 |         if k < 0: ctr['season_before_entry'] += 1
+      391 |         w = wfn(s['games'])
+      392 |         if s['games'] < 10: ctr['season_part_weighted'] += 1
+      393 |         raw = season_raw(s['avg'], pos)
+      394 |         if raw <= 0: ctr['season_below_bar_zero'] += 1
+      395 |         pts = MA.SCALE * raw * w / D.f(ea, k)
+      396 |         tot += pts
+  -> k = season_year - entry_year, so a mature entrant's FIRST played season (k=1) carries 1.14^-1.
+     The curve prices from the DRAFT-YEAR vantage: the draft-year season is k=0, and his first
+     played season is NEXT season.  That is the owner's "next season is 86%".
+
+  DECIDING LINE 4 -- WHICH VANTAGE THE YEAR-1 MARK IS ACTUALLY TAKEN AT.  This is the line that
+  settles it, and it is in the emitter, not in the model:
+      326 |         p['_retired'] = False
+      327 |         p['_last_listed'] = eff_last if (eff_last is not None and eff_last < Y) else None
+      328 |     MA.BASE_REF = Y; MA.AGE_REF = Y; MA._pe_clear()
+      329 |     for p in players:
+      330 |         if (p.get('year') or 9999) > Y: continue
+      331 |         try:
+      332 |             with contextlib.redirect_stdout(io.StringIO()): ASOF[(id(p), Y)] = ev(p, Y)
+      376 |     yrs = list(range(C + 1, yend + 1)) if yend >= C + 1 else [C + 1]
+      377 |     Vpath = [ASOF.get((id(p), y)) for y in yrs]
+      378 |     anchor = ASOF.get((id(p), C + 1))
+  -> MA.AGE_REF = Y, and vpath[0] = ASOF[(p, C+1)].  THE YEAR-1 BOARD IS PRICED AT AGE_REF = C+1,
+     the entrant's DEBUT year.  His first season is the PRESENT season there, k_e = 0, weight 1.0;
+     and grace_years = max(0, 1 - max(0, AGE_REF - debut)) = max(0, 1 - 0) = 1 for a <=19 entrant.
+
+  DECIDING LINE 5 -- what ORDER F assumed instead (o_f_wedge.py):
+      142 | P('  ENTRY (the curve clock, k_c = j, exponent max(0, k_c - G_O), G_O = 2 for entry age <= 19)')
+      143 | P('  YEAR 1 (the engine clock; the yr1 board prices forward from his SECOND season, so k_e = j - 2,')
+      144 | P('          and grace_years = max(0, 1 - max(0, AGE_REF - debut)) = 0 at that vantage)')
+      153 |     f0 = [1.0 / disc_factor(a, 0.14, j, 'bal', GO[lab]) for j in range(1, 8)]
+      154 |     f1 = [(0.0 if j == 1 else 1.0 / disc_factor(a, 0.14, j - 2, 'bal', GE[lab])) for j in range(1, 8)]
+  -> F used k_e = j - 2 AND engine grace 0.  Both of those hold only at AGE_REF = C+2.  F placed the
+     year-1 board ONE YEAR TOO FAR FORWARD.
+
+  THE TWO LADDERS, SIDE BY SIDE (entry year e = 0, debut = 1, year-1 board AGE_REF = 1):
+
+  entry age<=19   curve G_O = 2 ; engine grace at the yr-1 board = 1
+    season j                     1         2         3         4         5         6
+    ENTRY weight           1.00000   1.00000   0.87719   0.76947   0.67497   0.59208
+    YR-1 weight  CORRECT delivered   1.00000   0.87719   0.76947   0.67497   0.59208
+    YR-1 weight  ORDER F delivered   1.00000   0.87719   0.76947   0.67497   0.59208
+    ACCRETION    CORRECT       n/a   1.00000   1.00000   1.00000   1.00000   1.00000
+    ACCRETION    ORDER F       n/a   1.00000   1.00000   1.00000   1.00000   1.00000
+
+  entry age>=20   curve G_O = 0 ; engine grace at the yr-1 board = 0
+    season j                     1         2         3         4         5         6
+    ENTRY weight           0.87719   0.76947   0.67497   0.59208   0.51937   0.45559
+    YR-1 weight  CORRECT delivered   0.87719   0.76947   0.67497   0.59208   0.51937
+    YR-1 weight  ORDER F delivered   1.00000   0.87719   0.76947   0.67497   0.59208
+    ACCRETION    CORRECT       n/a   1.14000   1.14000   1.14000   1.14000   1.14000
+    ACCRETION    ORDER F       n/a   1.29960   1.29960   1.29960   1.29960   1.29960
+
+  ASSERTED (PREREG addendum G-1): ACC[age<=19] == 1.00000 and ACC[age>=20] == 1.14000, both exact.
+  These are EXACTLY the owner's ruled accretions, read off the engine's own disc_factor.
+
+  *** THE TICK VERDICT: (b).  ORDER F'S MEASUREMENT MISREAD THE LADDER.  NO ENGINE DEFECT. ***
+
+  The misread is a VANTAGE MISALIGNMENT, and it is one line: o_f_wedge.py:154 indexes the year-1
+  board at k_e = j - 2 with grace 0.  Both of those are true only at AGE_REF = C+2.  The year-1
+  mark is taken at AGE_REF = C+1 (emit_matrix_29c.py:328 + 376-378).  F put the year-1 board one
+  year too far forward, which hands every surviving season one extra 1.14.
+
+  WHY IT WENT UNSEEN: at the CORRECT vantage a young entrant still has grace_years = 1, and that
+  one remaining free step absorbs the index shift EXACTLY -- so F's ladder and the correct ladder
+  are IDENTICAL for entry age <=19 (both give 1.00000, see the table above).  96% of the drafted
+  population is <=19.  The error is invisible everywhere except on mature entrants.
+
+  CORROBORATION FROM ORDER F'S OWN CONSOLE.  Its Part 2 prose contradicts its own computed number:
+      172 | P('  For a mature-age entrant (>= 20) there is no grace on either clock, the step accretes by %.2f,' % ACC['age>=20'])
+      173 | P('  and Order C\'s fair_C = 1.14 x (1 - s1) is exactly right for him.')
+  printed as: "the step accretes by 1.30, and Order C's fair_C = 1.14 x (1 - s1) is exactly right
+  for him."  The prose says 1.14 is right for the mature entrant.  The number said 1.30.  The prose
+  was right.
+
+  NO DEFECT IS REPORTED.  A mature entrant's day-0 print does NOT discount his present season: at
+  the draft-year vantage his first played season is NEXT season, and 86% is what the ruling orders.
+  A second, independent confirmation that the code is right: if the entry print were "corrected" to
+  free a mature entrant's first season, his entry->year-1 accretion would become 1.00, not 1.14 --
+  which would CONTRADICT the owner's own ruled 1.14.  The ruled 1.14 is producible only by the code
+  exactly as it stands.  No counterfactual "corrected mature entry print" column is emitted,
+  because branch (a) of addendum G-1 did not fire.
+
+  WHAT THIS RETRACTS: the "mature-entrant ~+30%" implication carried to the owner with PACKET_F is
+  WITHDRAWN.  The correct figure is +14%, which is Order C's original flat benchmark.  For a mature
+  entrant Order C was right all along; the re-base bites on YOUNG entrants only.
+  ORDER F's CENTRAL FINDING SURVIVES UNCHANGED: a young entrant earns NO carry over the entry->
+  year-1 step (accretion 1.00), so the flat-1.14 benchmark was wrong for the 96% who are young.
+
+  Order F's superseded mature accretion (1.29960) is carried in every table below as a diagnostic
+  column, so the move against the numbers first shown to the owner is visible, not silent.
+
+==========================================================================================================================
+PART 2 -- THE HOUSE DELIVERED-VALUE RULER (S4), LIFTED BY SOURCE TEXT; AND s1
+==========================================================================================================================
+
+  S4 ruler lifted text md5 ce730ab0c5fa62da8f920c2c9ec8672c -- ASSERTED equal to Order F's (ce730ab0...).  PASS
+  BARS {'KPD': 65.4, 'KPF': 63.8, 'MID': 77.1, 'RUCK': 75.5, 'SD': 75.3, 'SF': 67.9} ; LAST_REAL_SEASON 2025 ; force-majeure ['paddy-mccartin', 'thomas-boyd']
+  SV assembly lifted verbatim (md5 27255cd17480f7801a34c07b2f4f6ef2); 2648 players carry a season map.
+  ASSERTED: the delivered-value stream is BYTE-IDENTICAL across D / C32R / C31 (same store).
+  So s1 is the SAME number in every board column; only the mark and the v0-weighted age mix move.
+
+  entry-age field: age_draft.  Nulls on each board: 0 / 0 / 0.  ASSERTED complete.
+  Boundary: age_draft <= 19 -> accretion 1.00000 ; age_draft >= 20 -> accretion 1.14000.
+  This is the RULED grace-A boundary (Order 28, reading O), not a fitted cut.
+
+==========================================================================================================================
+PART 3 -- THE MARKS.  THE STANDING INSTRUMENTS, RE-RUN UNCHANGED.
+==========================================================================================================================
+
+  extended-338 five-band instrument md5 d59ad550116ebbe3d90ed82becd2c4d5 (the owner's disclosed copy)
+  harness md5 02dcf28c7bd0d39b3526e24c5cc0a87a (must begin 02dcf28c)
+  THE ONE EDIT to the disclosed copy: output filename tagged per matrix (identical to Order D's
+  handling, o35_noarb.py:46-51); as-run md5 0dbe5fa24816509066742f1ddc81044d
+  three extended-338 runs completed, sequentially, thread-pinned.
+  CONTROL 1: the re-run reproduces NOARB_D.json's own five-band yr0->1 numbers for BOTH the
+             Order-D and the C32R columns -- EXACT (0 deviations)
+  CONTROL 2: the C31 re-run reproduces NOARB_32R.json's committed C31 five-band numbers -- EXACT (0 deviations)
+
+  ND benchmark population = the extended-338 instrument's OWN year-1 included set
+    (harness filter: teaches_curve & pick 1..64 & year 2004..2022 ; then draft_year + 1 <= 2026).
+  Benchmark and mark therefore stand on ONE population -- no cell is judged against a benchmark
+  built on a different set of players.
+
+  Pool-arm benchmark population = the all-arm reader's OWN year-1 cell, per window, with the
+  n_pre rows excluded exactly as the standing instrument excludes them (never zeroed, always
+  counted).  MSD has no year-1 cell in either window and therefore receives no benchmark.
+
+==========================================================================================================================
+PART 4 -- T1: THE RE-BASED FIVE-BAND STANDING TABLE.  THREE READINGS PER CELL.
+==========================================================================================================================
+
+  THIS SEAT CHANGES REPORTING, NOT PRICES.  No board number moves; no price is proposed. The two exploit rails keep their standing definitions.
+
+  fair_G = (v0-weighted entry-age accretion mix) x (1 - s1), with the OWNER-RULED accretions:
+    entry age <=19 -> 1.0000   (his present season plus one extra at 100%; the step earns NO carry)
+    entry age >=20 -> 1.1400   (ONE tick; his clock runs like everyone else's)
+  So fair_G always sits BETWEEN 1.00 and 1.14 x (1 - s1): a cell's benchmark is just the blend of
+  those two, by how much of its entry value was bought young.
+  fair_C = 1.14 x (1 - s1) is the OLD flat ruler.  fair_F is ORDER F's SUPERSEDED reading
+  (mature accretion 1.2996), carried so the move against the first-shown numbers is visible.
+  The two RAIL columns are the ABSOLUTE exploit tests and are UNCHANGED by the re-base.
+
+--------------------------------------------------------------------------------------------------------------------------
+BOARD D  [1f176444]  -- THE LANDING CANDIDATE (Order D wire)
+--------------------------------------------------------------------------------------------------------------------------
+  cell                n      mark |  sh<=19  acc_mix |   fair_G    gap_G |   fair_C    gap_C | fair_F(sup) |   SELL    BUY
+  ALL picks 1-64   1200    +2.98% |   0.974   1.0036 |   0.9800  +0.0498 |   1.1131  -0.0833 |      0.9840 |     ok     ok
+  picks 1-20        380    +8.36% |   0.993   1.0010 |   0.9785  +0.1051 |   1.1144  -0.0308 |      0.9797 |     ok     ok
+  picks 21-64       820    -5.54% |   0.945   1.0077 |   0.9823  -0.0377 |   1.1112  -0.1666 |      0.9909 |    RED     ok
+  picks 1-10        190    +7.93% |   1.000   1.0000 |   0.9788  +0.1005 |   1.1158  -0.0365 |      0.9788 |     ok     ok
+  picks 11-20       190    +9.20% |   0.979   1.0030 |   0.9781  +0.1139 |   1.1117  -0.0197 |      0.9815 |     ok     ok
+  picks 21-30       190    +2.76% |   0.977   1.0032 |   0.9898  +0.0378 |   1.1248  -0.0972 |      0.9933 |     ok     ok
+  picks 31-40       190   -12.84% |   0.958   1.0059 |   0.9745  -0.1029 |   1.1044  -0.2328 |      0.9810 |    RED     ok
+  picks 41-64       440    -7.88% |   0.900   1.0140 |   0.9807  -0.0595 |   1.1026  -0.1814 |      0.9961 |    RED     ok
+
+--------------------------------------------------------------------------------------------------------------------------
+BOARD C32R  [7802ee97]  -- the repaired C32 (dial-off identity)
+--------------------------------------------------------------------------------------------------------------------------
+  cell                n      mark |  sh<=19  acc_mix |   fair_G    gap_G |   fair_C    gap_C | fair_F(sup) |   SELL    BUY
+  ALL picks 1-64   1200    +1.95% |   0.974   1.0036 |   0.9800  +0.0395 |   1.1131  -0.0936 |      0.9840 |     ok     ok
+  picks 1-20        380    +6.56% |   0.993   1.0010 |   0.9785  +0.0871 |   1.1144  -0.0488 |      0.9797 |     ok     ok
+  picks 21-64       820    -5.34% |   0.945   1.0077 |   0.9823  -0.0357 |   1.1112  -0.1646 |      0.9909 |    RED     ok
+  picks 1-10        190    +6.13% |   1.000   1.0000 |   0.9788  +0.0825 |   1.1158  -0.0545 |      0.9788 |     ok     ok
+  picks 11-20       190    +7.40% |   0.979   1.0030 |   0.9781  +0.0959 |   1.1117  -0.0377 |      0.9815 |     ok     ok
+  picks 21-30       190    +1.62% |   0.977   1.0032 |   0.9898  +0.0264 |   1.1248  -0.1086 |      0.9933 |     ok     ok
+  picks 31-40       190   -12.88% |   0.958   1.0059 |   0.9745  -0.1033 |   1.1044  -0.2332 |      0.9810 |    RED     ok
+  picks 41-64       440    -6.14% |   0.900   1.0140 |   0.9807  -0.0421 |   1.1026  -0.1640 |      0.9961 |    RED     ok
+
+--------------------------------------------------------------------------------------------------------------------------
+BOARD C31  [fe6be9d6]  -- Candidate 31 (the 31-F head fix)
+--------------------------------------------------------------------------------------------------------------------------
+  cell                n      mark |  sh<=19  acc_mix |   fair_G    gap_G |   fair_C    gap_C | fair_F(sup) |   SELL    BUY
+  ALL picks 1-64   1200    +6.62% |   0.974   1.0036 |   0.9800  +0.0862 |   1.1131  -0.0469 |      0.9840 |     ok     ok
+  picks 1-20        380   +14.78% |   0.993   1.0010 |   0.9785  +0.1693 |   1.1144  +0.0334 |      0.9797 |     ok    RED
+  picks 21-64       820    -6.28% |   0.945   1.0077 |   0.9823  -0.0451 |   1.1112  -0.1740 |      0.9909 |    RED     ok
+  picks 1-10        190   +16.19% |   1.000   1.0000 |   0.9788  +0.1831 |   1.1158  +0.0461 |      0.9788 |     ok    RED
+  picks 11-20       190   +12.04% |   0.979   1.0030 |   0.9781  +0.1423 |   1.1117  +0.0087 |      0.9815 |     ok     ok
+  picks 21-30       190    +3.68% |   0.977   1.0032 |   0.9898  +0.0470 |   1.1248  -0.0880 |      0.9933 |     ok     ok
+  picks 31-40       190   -12.38% |   0.958   1.0059 |   0.9745  -0.0983 |   1.1044  -0.2282 |      0.9810 |    RED     ok
+  picks 41-64       440   -11.36% |   0.900   1.0140 |   0.9807  -0.0943 |   1.1026  -0.2162 |      0.9961 |    RED     ok
+
+  READING: gap_G is the CLOCK-FAIR GAP -- mark minus the board's own ruled benchmark.  It is a
+  FAIRNESS reading and carries no RED of its own.  SELL/BUY are the absolute exploit rails.
+
+  CONTROLS on the benchmark (Order-D column):
+    cell             s1(prim) s1(F wdw)  fairG(F)     exact acc(head)
+    ALL picks 1-64     0.0236    0.0217    0.9820    0.9856    1.0081
+    picks 1-20         0.0225    0.0194    0.9816    0.9816    1.0018
+    picks 21-64        0.0253    0.0249    0.9828    0.9919    1.0109
+    picks 1-10         0.0212    0.0155    0.9845    0.9813    1.0000
+    picks 11-20        0.0248    0.0260    0.9771    0.9821    1.0037
+    picks 21-30        0.0134    0.0142    0.9898    0.9945    1.0037
+    picks 31-40        0.0312    0.0339    0.9726    0.9998    1.0074
+    picks 41-64        0.0328    0.0292    0.9835    0.9835    1.0156
+    s1(F wdw) = Order F's own entry window 2005-2019.  Later classes are right-censored on the
+    delivered ruler, which OVERSTATES s1 and so UNDERSTATES fair_G; both columns printed.
+    exact = the exactly-clock-consistent ratio of PREREG_G S2.5 (delivered-value weighted).
+
+==========================================================================================================================
+PART 5 -- T2: THE RE-BASED POOL-ARM TABLES.  BOTH WINDOWS, THREE BOARDS.
+==========================================================================================================================
+
+  THIS SEAT CHANGES REPORTING, NOT PRICES.  No board number moves; no price is proposed. The two exploit rails keep their standing definitions.
+  MSD caption, carried unchanged: a mid-season draftee debuts in the SAME year he is drafted, but
+  the matrix stores his seasons starting the year after; his true first-season cell cannot be read
+  from this matrix, so those rows are EXCLUDED from that one year and COUNTED (n_pre) -- never
+  scored zero, never printed blank.  Mid-year entrants keep age_draft as stored (Order F's
+  construction); this is a disclosed choice point.
+  Any arm with n < 15 in the window is printed THIN and carries NO clock-fair verdict; the two
+  exploit rails still print, as they always have.
+
+--------------------------------------------------------------------------------------------------------------------------
+BOARD D [1f176444]  --  PRIMARY 2005-2023
+  arm            n      mark  n_pre |  sh<=19  acc_mix |   fair_G    gap_G |   fair_C    gap_C | fair_F(sup) |   SELL    BUY  thin?
+  RD           623    -2.21%      0 |   0.737   1.0369 |   0.9763  +0.0016 |   1.0734  -0.0955 |      1.0158 |    RED     ok       
+  MSD           55 | (window has no year-1 cell -- every row is n_pre)
+  SSP           31   +50.52%      0 |   0.424   1.0806 |   0.8807  +0.6245 |   0.9290  +0.5761 |      0.9556 |     ok    RED       
+  UNR           49   -42.06%      0 |   0.274   1.1016 |   1.0919  -0.5125 |   1.1300  -0.5505 |      1.2067 |    RED     ok       
+  IRE           47   +13.51%      0 |   0.571   1.0601 |   1.0511  +0.0841 |   1.1303  +0.0048 |      1.1190 |     ok     ok       
+  PDA           43   -18.33%      0 |   0.933   1.0094 |   1.0068  -0.1901 |   1.1371  -0.3203 |      1.0175 |    RED     ok       
+  PDN           33   -37.81%      0 |   0.870   1.0183 |   1.0182  -0.3963 |   1.1399  -0.5180 |      1.0390 |    RED     ok       
+  PDS           21   -25.47%      0 |   1.000   1.0000 |   0.9995  -0.2541 |   1.1394  -0.3941 |      0.9995 |    RED     ok       
+  ALLPOOL      961    -3.91%     55 |   0.734   1.0373 |   0.9809  -0.0199 |   1.0780  -0.1171 |      1.0211 |    RED     ok       
+
+--------------------------------------------------------------------------------------------------------------------------
+BOARD D [1f176444]  --  MODERN 2019-2023
+  arm            n      mark  n_pre |  sh<=19  acc_mix |   fair_G    gap_G |   fair_C    gap_C | fair_F(sup) |   SELL    BUY  thin?
+  RD            66   -18.65%      0 |   0.722   1.0389 |   1.0099  -0.1963 |   1.1082  -0.2946 |      1.0529 |    RED     ok       
+  MSD           55 | (window has no year-1 cell -- every row is n_pre)
+  SSP           31   +50.52%      0 |   0.424   1.0806 |   0.8807  +0.6245 |   0.9290  +0.5761 |      0.9556 |     ok    RED       
+  UNR           13   -32.81%      0 |   0.286   1.1000 |   1.0991  -0.4272 |   1.1391  -0.4671 |      1.2131 |    RED     ok   THIN
+  IRE           12   -49.34%      0 |   0.467   1.0746 |   1.0746  -0.5680 |   1.1400  -0.6334 |      1.1596 |    RED     ok   THIN
+  PDA           13   -41.15%      0 |   1.000   1.0000 |   1.0000  -0.4115 |   1.1400  -0.5515 |      1.0000 |    RED     ok   THIN
+  PDN           25   -34.93%      0 |   1.000   1.0000 |   1.0000  -0.3493 |   1.1400  -0.4893 |      1.0000 |    RED     ok       
+  PDS            0 | (window has no year-1 cell -- every row is n_pre)
+  ALLPOOL      174    -9.15%     55 |   0.683   1.0444 |   0.9551  -0.0466 |   1.0426  -0.1341 |      1.0014 |    RED     ok       
+
+--------------------------------------------------------------------------------------------------------------------------
+BOARD C32R [7802ee97]  --  PRIMARY 2005-2023
+  arm            n      mark  n_pre |  sh<=19  acc_mix |   fair_G    gap_G |   fair_C    gap_C | fair_F(sup) |   SELL    BUY  thin?
+  RD           623    +1.16%      0 |   0.737   1.0369 |   0.9763  +0.0354 |   1.0734  -0.0618 |      1.0158 |     ok     ok       
+  MSD           55 | (window has no year-1 cell -- every row is n_pre)
+  SSP           31   +53.17%      0 |   0.424   1.0806 |   0.8807  +0.6510 |   0.9290  +0.6026 |      0.9556 |     ok    RED       
+  UNR           49   -37.76%      0 |   0.274   1.1016 |   1.0919  -0.4695 |   1.1300  -0.5075 |      1.2067 |    RED     ok       
+  IRE           47   +17.44%      0 |   0.571   1.0601 |   1.0511  +0.1233 |   1.1303  +0.0440 |      1.1190 |     ok    RED       
+  PDA           43   -14.34%      0 |   0.933   1.0094 |   1.0068  -0.1503 |   1.1371  -0.2805 |      1.0175 |    RED     ok       
+  PDN           33   -33.37%      0 |   0.870   1.0183 |   1.0182  -0.3519 |   1.1399  -0.4737 |      1.0390 |    RED     ok       
+  PDS           21   -20.93%      0 |   1.000   1.0000 |   0.9995  -0.2087 |   1.1394  -0.3487 |      0.9995 |    RED     ok       
+  ALLPOOL      961    -0.46%     55 |   0.734   1.0373 |   0.9809  +0.0145 |   1.0780  -0.0826 |      1.0211 |    RED     ok       
+
+--------------------------------------------------------------------------------------------------------------------------
+BOARD C32R [7802ee97]  --  MODERN 2019-2023
+  arm            n      mark  n_pre |  sh<=19  acc_mix |   fair_G    gap_G |   fair_C    gap_C | fair_F(sup) |   SELL    BUY  thin?
+  RD            66   -14.92%      0 |   0.722   1.0389 |   1.0099  -0.1590 |   1.1082  -0.2574 |      1.0529 |    RED     ok       
+  MSD           55 | (window has no year-1 cell -- every row is n_pre)
+  SSP           31   +53.17%      0 |   0.424   1.0806 |   0.8807  +0.6510 |   0.9290  +0.6026 |      0.9556 |     ok    RED       
+  UNR           13   -28.34%      0 |   0.286   1.1000 |   1.0991  -0.3825 |   1.1391  -0.4225 |      1.2131 |    RED     ok   THIN
+  IRE           12   -44.53%      0 |   0.467   1.0746 |   1.0746  -0.5199 |   1.1400  -0.5853 |      1.1596 |    RED     ok   THIN
+  PDA           13   -36.88%      0 |   1.000   1.0000 |   1.0000  -0.3688 |   1.1400  -0.5088 |      1.0000 |    RED     ok   THIN
+  PDN           25   -30.41%      0 |   1.000   1.0000 |   1.0000  -0.3041 |   1.1400  -0.4441 |      1.0000 |    RED     ok       
+  PDS            0 | (window has no year-1 cell -- every row is n_pre)
+  ALLPOOL      174    -5.52%     55 |   0.683   1.0444 |   0.9551  -0.0103 |   1.0426  -0.0977 |      1.0014 |    RED     ok       
+
+--------------------------------------------------------------------------------------------------------------------------
+BOARD C31 [fe6be9d6]  --  PRIMARY 2005-2023
+  arm            n      mark  n_pre |  sh<=19  acc_mix |   fair_G    gap_G |   fair_C    gap_C | fair_F(sup) |   SELL    BUY  thin?
+  RD           623    -6.99%      0 |   0.737   1.0369 |   0.9763  -0.0462 |   1.0734  -0.1433 |      1.0158 |    RED     ok       
+  MSD           55 | (window has no year-1 cell -- every row is n_pre)
+  SSP           31   +38.17%      0 |   0.424   1.0806 |   0.8807  +0.5011 |   0.9290  +0.4527 |      0.9556 |     ok    RED       
+  UNR           49   -36.58%      0 |   0.274   1.1016 |   1.0919  -0.4577 |   1.1300  -0.4957 |      1.2067 |    RED     ok       
+  IRE           47    -5.29%      0 |   0.571   1.0601 |   1.0511  -0.1040 |   1.1303  -0.1832 |      1.1190 |    RED     ok       
+  PDA           43   -22.77%      0 |   0.933   1.0094 |   1.0068  -0.2345 |   1.1371  -0.3648 |      1.0175 |    RED     ok       
+  PDN           33   -37.16%      0 |   0.870   1.0183 |   1.0182  -0.3898 |   1.1399  -0.5115 |      1.0390 |    RED     ok       
+  PDS           21   -28.84%      0 |   1.000   1.0000 |   0.9995  -0.2879 |   1.1394  -0.4278 |      0.9995 |    RED     ok       
+  ALLPOOL      961    -8.53%     55 |   0.734   1.0373 |   0.9809  -0.0662 |   1.0780  -0.1633 |      1.0211 |    RED     ok       
+
+--------------------------------------------------------------------------------------------------------------------------
+BOARD C31 [fe6be9d6]  --  MODERN 2019-2023
+  arm            n      mark  n_pre |  sh<=19  acc_mix |   fair_G    gap_G |   fair_C    gap_C | fair_F(sup) |   SELL    BUY  thin?
+  RD            66   -18.53%      0 |   0.722   1.0389 |   1.0099  -0.1951 |   1.1082  -0.2934 |      1.0529 |    RED     ok       
+  MSD           55 | (window has no year-1 cell -- every row is n_pre)
+  SSP           31   +38.17%      0 |   0.424   1.0806 |   0.8807  +0.5011 |   0.9290  +0.4527 |      0.9556 |     ok    RED       
+  UNR           13   -32.57%      0 |   0.286   1.1000 |   1.0991  -0.4249 |   1.1391  -0.4648 |      1.2131 |    RED     ok   THIN
+  IRE           12   -44.53%      0 |   0.467   1.0746 |   1.0746  -0.5199 |   1.1400  -0.5853 |      1.1596 |    RED     ok   THIN
+  PDA           13   -38.06%      0 |   1.000   1.0000 |   1.0000  -0.3806 |   1.1400  -0.5206 |      1.0000 |    RED     ok   THIN
+  PDN           25   -36.18%      0 |   1.000   1.0000 |   1.0000  -0.3618 |   1.1400  -0.5018 |      1.0000 |    RED     ok       
+  PDS            0 | (window has no year-1 cell -- every row is n_pre)
+  ALLPOOL      174   -11.61%     55 |   0.683   1.0444 |   0.9551  -0.0713 |   1.0426  -0.1587 |      1.0014 |    RED     ok       
+
+  THE TWO ALL-ARM WINDOWS are the ALLPOOL rows above -- PRIMARY 2005-2023 and MODERN 2019-2023.
+
+==========================================================================================================================
+PART 6 -- T3: THE VANTAGE MATRIX, REFRESHED.  T4: THE RE-BASED LEG ATTRIBUTION.
+==========================================================================================================================
+
+  DIAGNOSTIC ONLY (standing amendment A2: nothing was calibrated toward this).
+  The carry columns 1.14^k are UNCHANGED: from the year-1 vantage the grace is exhausted and the
+  two clocks agree (PACKET_F S5, P4), so those legs were already benchmarked correctly.
+  Only the yr-1 CAPTION is re-based.
+
+  picks 1-10   (mark 1.079 | clock-fair 0.979, gap +0.101 | OLD flat-1.14 fair 1.116, gap -0.036)
+    vantage           k=1        k=2        k=3        k=4 | carry: 1.14 1.30 1.48 1.69
+    yr 0           1.079      1.179      1.360      1.521 
+    yr 1           1.093      1.260      1.409      1.392 
+    yr 2           1.153      1.290      1.274      1.208 
+
+  picks 11-20   (mark 1.092 | clock-fair 0.978, gap +0.114 | OLD flat-1.14 fair 1.112, gap -0.020)
+    vantage           k=1        k=2        k=3        k=4 | carry: 1.14 1.30 1.48 1.69
+    yr 0           1.092      1.203      1.345      1.538 
+    yr 1           1.101      1.232      1.409      1.504 
+    yr 2           1.118      1.279      1.365      1.324 
+
+  picks 21-30   (mark 1.028 | clock-fair 0.990, gap +0.038 | OLD flat-1.14 fair 1.125, gap -0.097)
+    vantage           k=1        k=2        k=3        k=4 | carry: 1.14 1.30 1.48 1.69
+    yr 0           1.028      1.182      1.418      1.599 
+    yr 1           1.150      1.380      1.556      1.567 
+    yr 2           1.200      1.352      1.362      1.428 
+
+  picks 31-40   (mark 0.872 | clock-fair 0.975, gap -0.103 | OLD flat-1.14 fair 1.104, gap -0.233)
+    vantage           k=1        k=2        k=3        k=4 | carry: 1.14 1.30 1.48 1.69
+    yr 0           0.872*     0.941*     1.255      1.249 
+    yr 1           1.080      1.440*     1.433      1.600 
+    yr 2           1.333*     1.327      1.482      1.379 
+
+  picks 41-64   (mark 0.921 | clock-fair 0.981, gap -0.060 | OLD flat-1.14 fair 1.103, gap -0.181)
+    vantage           k=1        k=2        k=3        k=4 | carry: 1.14 1.30 1.48 1.69
+    yr 0           0.921*     1.073      1.152      1.256 
+    yr 1           1.164      1.251      1.363      1.493 
+    yr 2           1.074      1.171      1.282      1.415 
+
+  band-vs-band spread of forward growth (max band minus min band):
+    vantage       k=1      k=2      k=3      k=4
+    yr 0        0.220    0.262    0.266    0.350
+    yr 1        0.085    0.208    0.192    0.207
+    yr 2        0.259    0.182    0.207    0.220
+
+  T4 -- WHERE EACH BAND'S INCONSISTENCY LIVES, RE-BASED (yr-1 leg vs the CLOCK-fair mark):
+    picks 1-10     yr1 leg +0.101 (was -0.036 on the flat ruler) . later-years leg (yr1->5 growth 1.392 vs carry 1.689) -0.297
+    picks 11-20    yr1 leg +0.114 (was -0.020 on the flat ruler) . later-years leg (yr1->5 growth 1.504 vs carry 1.689) -0.185
+    picks 21-30    yr1 leg +0.038 (was -0.097 on the flat ruler) . later-years leg (yr1->5 growth 1.567 vs carry 1.689) -0.122
+    picks 31-40    yr1 leg -0.103 (was -0.233 on the flat ruler) . later-years leg (yr1->5 growth 1.600 vs carry 1.689) -0.089
+    picks 41-64    yr1 leg -0.060 (was -0.181 on the flat ruler) . later-years leg (yr1->5 growth 1.493 vs carry 1.689) -0.196
+
+  The later-years leg is UNTOUCHED by this seat -- it never depended on the entry clock.
+
+==========================================================================================================================
+PART 6B -- THE ENTRY-AGE NATURAL EXPERIMENT, RE-RUN ON THE OWNER-RULED ACCRETIONS
+==========================================================================================================================
+
+  grace-A cuts at entry age <= 19, a RULED discrete boundary.  Order C's own window (2005-2021),
+  so the rows are comparable with its published age table.  The mature rows are where the tick
+  verdict bites, so they are printed with their rails.
+
+  age         n     mark       s1   fair_G     gap_G   fair_C     gap_C fair_F(sup)     gap_F |   SELL    BUY
+  17-        93    0.900   0.0055   0.9945   -0.0942   1.1338   -0.2334      0.9945   -0.0942 |    RED     ok
+  18       1401    1.026   0.0161   0.9839   +0.0422   1.1217   -0.0956      0.9839   +0.0422 |     ok     ok
+  19        167    0.945   0.0095   0.9905   -0.0453   1.1292   -0.1840      0.9905   -0.0453 |    RED     ok
+  20         80    1.273   0.0577   1.0742   +0.1990   1.0742   +0.1990      1.2246   +0.0486 |     ok    RED
+  21+       245    1.100   0.1311   0.9906   +0.1096   0.9906   +0.1096      1.1293   -0.0291 |     ok     ok
+
+  mean |gap| across the five buckets: flat-1.14 0.1643 | OWNER-RULED clock 0.0981 | Order F (sup) 0.0519
+
+  THE FINDING ON THE MATURE ROWS, STATED PLAINLY AND NOT SMOOTHED: under the owner-ruled 1.14 the
+  age-20 and age-21+ buckets sit ABOVE their benchmark (gap_G +0.199 and +0.110), and the age-20
+  bucket also breaches the BUY-SIDE exploit rail at mark 1.273 > 1.14.
+  Order F's superseded 1.2996 fitted those two rows better (+0.049, -0.029).  That is a fit, not a
+  law, and this seat does not choose the benchmark by which one fits: the code and the owner's
+  ruling both say 1.14, so 1.14 governs and the excess is REPORTED as a live finding rather than
+  absorbed into the ruler.  What it says in plain words: mature-age entrants appear to be marked
+  CHEAP AT ENTRY relative to what the board pays them a year later.  That is an entry-side,
+  AGE-TARGETED question for the owner -- it is not something this seat prices.
+
+==========================================================================================================================
+PART 7 -- THE W2 CLASS TARGET, RE-DERIVED UNDER THE CLOCK
+==========================================================================================================================
+
+  THIS SEAT CHANGES REPORTING, NOT PRICES.  No board number moves; no price is proposed. The two exploit rails keep their standing definitions.
+
+  The band [1.100, 1.117] was built on the FLAT identity  R* = 1.14 x (1 - SV1sh).
+  Under the clock the identity becomes  R* = acc_mix x (1 - SV1sh), acc_mix the v0-weighted
+  entry-age accretion mix of the class, on the OWNER-RULED accretions (1.00 young / 1.14 mature).
+  Object, class set, population and ruler are W2's own; the ONLY thing that changes is the
+  benchmark.  W2's population is ALL-ARM, so its age mix is much older than the draft's.
+
+  population: 1986 players, classes 2005-2021, all-arm (W2's own filter).
+
+  class      n    R_cand    R*flat     SV1sh   sh<=19   acc_mix   R*CLOCK     exact  R*F(sup)
+  2005     109    0.9011    1.1161    0.0210    0.946    1.0076    0.9865    1.0053    0.9949
+  2006     122    1.0313    1.1198    0.0177    0.969    1.0043    0.9865    0.9934    0.9913
+  2007     122    1.0626    1.1086    0.0276    0.952    1.0068    0.9790    1.0007    0.9865
+  2008     134    1.0084    1.1020    0.0333    0.935    1.0091    0.9755    0.9799    0.9855
+  2009     126    1.0574    1.0692    0.0621    0.881    1.0167    0.9535    0.9696    0.9713
+  2010     138    1.1410    1.0998    0.0353    0.918    1.0114    0.9757    0.9847    0.9883
+  2011     145    1.1197    1.0978    0.0370    0.884    1.0163    0.9786    0.9837    0.9965
+  2012     108    1.0606    1.1165    0.0206    0.896    1.0146    0.9936    0.9931    1.0099
+  2013     100    1.0720    1.1329    0.0063    0.950    1.0071    1.0008    1.0033    1.0088
+  2014     121    1.0167    1.1288    0.0098    0.912    1.0123    1.0024    1.0023    1.0163
+  2015     110    1.1069    1.1038    0.0317    0.910    1.0126    0.9805    0.9834    0.9944
+  2016     125    1.0429    1.1130    0.0237    0.905    1.0132    0.9892    1.0107    1.0039
+  2017     106    1.0883    1.1014    0.0339    0.937    1.0089    0.9747    0.9880    0.9845
+  2018     124    1.0140    1.1012    0.0341    0.903    1.0136    0.9791    0.9919    0.9941
+  2019     100    0.9821    1.0968    0.0379    0.928    1.0101    0.9719    0.9716    0.9830
+  2020      88    0.9767    1.1214    0.0163    0.957    1.0060    0.9896    0.9868    0.9963
+  2021     108    1.0168    1.0532    0.0761    0.870    1.0182    0.9407    0.9611    0.9599
+
+  CONTROL 3: R*flat reproduces PACKET_W2's published per-class R*full column -- EXACT on all 17 classes
+  CONTROL 4: the flat identity 1.14 x (1 - SV1sh) reproduces R*flat to 2.22e-16
+
+  THE 2005-2015 CLASS MEAN (W2's own estimator; class bootstrap B=2000, seed 33):
+    OLD, flat-1.14 ruler               mean 1.1087  median 1.1086  range [1.0692, 1.1329]  90% CI [1.1001, 1.1167]
+    NEW, CLOCK ruler (PRIMARY)         mean 0.9830  median 0.9805  range [0.9535, 1.0024]  90% CI [0.9761, 0.9892]
+    control: exact clock ratio         mean 0.9909  median 0.9931  range [0.9696, 1.0053]  90% CI [0.9854, 0.9964]
+    control: head-count age mix        mean 0.9936  median 0.9929  range [0.9734, 1.0131]  90% CI [0.9875, 1.0002]
+    SUPERSEDED: Order F mature 1.2996  mean 0.9949  median 0.9944  range [0.9713, 1.0163]  90% CI [0.9886, 1.0009]
+
+    candidate class marks R_cand 2005-2015: mean 1.0525  median 1.0606  range [0.9011, 1.1410]
+    candidate class marks R_cand all 17   : mean 1.0411  median 1.0429  range [0.9011, 1.1410]
+
+    landing candidate (D) class marks 2005-2015, recomputed here: mean 1.0421  range [0.8599, 1.1311]
+    the number of record, from the Order-D wire's own W2 scorecard (mean_0515): 1.0421
+
+  THE CORRECTED CLASS TARGET BAND: [0.9761, 0.9892]   (was [1.100, 1.117])
+  The landing candidate's class number 1.042 sits ABOVE it.  Distance to the near edge: +0.0528
+  Under the OLD flat ruler it was SHORT of the band by 0.0580 ("the missing 6 points").
+  Under the OWNER-RULED clock it is ABOVE the band by 0.0528.  The sign REVERSES.
+  It is still well inside the buy-side exploit rail (1.042 < 1.14), so no arbitrage is created.
+
+  acc_mix sensitivity across the three boards (2005-2015 class mean of acc_mix):
+    D      [1f176444]  acc_mix mean 1.0108  ->  target mean 0.9830
+    C32R   [7802ee97]  acc_mix mean 1.0108  ->  target mean 0.9830
+    C31    [fe6be9d6]  acc_mix mean 1.0108  ->  target mean 0.9830
+
+==========================================================================================================================
+SUMMARY OF THE RE-BASE
+==========================================================================================================================
+
+  cells whose |gap| improves under the clock ruler: 10 of 14
+  cells that flip from SHORT (under the old flat ruler) to AT-OR-OVER (under the clock): picks 1-10, picks 11-20, picks 21-30, RD (primary)
+  cells that get WORSE under the correction: picks 1-10, picks 11-20, SSP (primary), IRE (primary)
+  cells RED on a rail AND still short of the clock-fair benchmark (n >= 15): picks 31-40, picks 41-64, UNR (primary), PDA (primary), PDN (primary), PDS (primary), ALLPOOL (primary), ALLPOOL (modern)
+
+  THIS SEAT CHANGES REPORTING, NOT PRICES.  No board number moves; no price is proposed. The two exploit rails keep their standing definitions.
+

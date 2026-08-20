@@ -1,0 +1,106 @@
+{
+ "blend_refitted_to_measured_sigma": {
+  "beta": 0.8000000000000005,
+  "grid": "tau 2..400 step 0.5, beta 0.20..2.00 step 0.01, n-weighted least squares on the five measured sigma points",
+  "sse": 13.531509279189624,
+  "tau": 23.0
+ },
+ "blend_ruled": {
+  "beta": 0.937162,
+  "sse": 98.86112581690598,
+  "tau": 11.650213
+ },
+ "entry_ruler_R6_over_v0": {
+  "A 1-6": 0.3852655164445092,
+  "B 7-12": 0.42951381837076474,
+  "C 13-20": 0.44100151338248,
+  "D 21-40": 0.42141229123251356,
+  "E 41-64": 0.4005039761381032
+ },
+ "named_rows_pedigree": [
+  {
+   "blend_implied": 74.20235321860027,
+   "board": 1320,
+   "games": 36.0,
+   "key": "isaac-kako",
+   "measured_form_implied": 315.55114954784295,
+   "measured_form_share": 0.2390539011726083,
+   "old_machinery_implied": 528.0,
+   "ped_component": 123.34511599273878,
+   "ped_share_of_pred": 0.27469137115458186,
+   "pick": 13,
+   "pred_L": 449.0316367576273,
+   "v0": 759.7710922243454
+  },
+  {
+   "blend_implied": 868.5211370403104,
+   "board": 4223,
+   "games": 19.0,
+   "key": "willem-duursma",
+   "measured_form_implied": 1790.1194295131804,
+   "measured_form_share": 0.4238975679642861,
+   "old_machinery_implied": 1689.2,
+   "ped_component": 846.8354728250787,
+   "ped_share_of_pred": 0.4212123027003758,
+   "pick": 1,
+   "pred_L": 2010.471839013365,
+   "v0": 3879.2984347293773
+  },
+  {
+   "blend_implied": 1079.2701284296063,
+   "board": 3269,
+   "games": 13.0,
+   "key": "dyson-sharp",
+   "measured_form_implied": 1734.8943210908633,
+   "measured_form_share": 0.5307110189938401,
+   "old_machinery_implied": 1307.6000000000001,
+   "ped_component": 388.9002758431994,
+   "ped_share_of_pred": 0.3108811582436897,
+   "pick": 13,
+   "pred_L": 1250.9612291728306,
+   "v0": 1551.037908259901
+  },
+  {
+   "blend_implied": 614.8787568344515,
+   "board": 2765,
+   "games": 18.0,
+   "key": "jacob-farrow",
+   "measured_form_implied": 1215.4433726067969,
+   "measured_form_share": 0.4395816899120423,
+   "old_machinery_implied": 1106.0,
+   "ped_component": 286.39062582319735,
+   "ped_share_of_pred": 0.2568098455233408,
+   "pick": 10,
+   "pred_L": 1115.1855383097766,
+   "v0": 1284.4867021670693
+  }
+ ],
+ "sigma_points": [
+  {
+   "games": 2.5,
+   "n": 382,
+   "sigma": 0.7010653917366313
+  },
+  {
+   "games": 10.5,
+   "n": 591,
+   "sigma": 0.6640758369974633
+  },
+  {
+   "games": 25.5,
+   "n": 834,
+   "sigma": 0.3312537241905247
+  },
+  {
+   "games": 53.0,
+   "n": 887,
+   "sigma": 0.16450889613460615
+  },
+  {
+   "games": 85.5,
+   "n": 1339,
+   "sigma": 0.022148079808309653
+  }
+ ],
+ "status": "POST-MEASUREMENT DERIVATION. Arithmetic on PERSISTENCE_TABLE.json. Re-decides nothing. NOTHING WIRES."
+}

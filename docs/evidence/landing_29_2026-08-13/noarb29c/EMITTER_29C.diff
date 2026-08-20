@@ -1,0 +1,237 @@
+--- docs/evidence/noarb_338_2026-08-06/emit_matrix_338.py	2026-08-14 03:39:32.153060365 +0000
++++ docs/evidence/landing_29_2026-08-13/noarb29c/emit_matrix_29c.py	2026-08-14 03:57:22.529154855 +0000
+@@ -1,4 +1,77 @@
+-"""ITEM 271 STAGE B EMITTER, RE-ISSUED ON THE #338 CORRECTED TENURE BASIS (owner word 2026-08-06).
++"""ORDER 29C — THE STANDING #338 EMITTER, COPIED, WITH EXACTLY ONE DECLARED CHANGE: THE YEAR-0 COLUMN.
++
++  Source        : docs/evidence/noarb_338_2026-08-06/emit_matrix_338.py, md5 bffde2f786be85037483e9f5f1563068,
++                  COPIED BYTE-FOR-BYTE and then edited ONLY at the sites listed under THE 29C DELTA.
++                  The standing emitter is FILED HISTORY and is NOT touched by this act; its md5 is
++                  re-computed at run and asserted below, so a reader can check the claim rather than
++                  take it.
++  Brief         : issue #334 comment 5289123976 (ORDER 29C, the re-based no-arb reading).
++  Preregistration: docs/evidence/landing_29_2026-08-13/noarb29c/PREREG_29C.md, committed BEFORE this
++                  file existed, never edited.
++
++THE DEFECT THIS CURES, owner-caught. The cohort no-arb instruments take their year-0 value from
++`rec['v0']`, and the standing emitter writes `v0 = round(v0_start(p), 1)` — the FROZEN FITTED SURFACE
++— while years 1…7 are `ev(p, Y)`. ORDER 29B wired `ev()` to the landed entry law and measured the
++consequence (`NOARB_MARGINS_29.md` §B3): **0 of 2648 year-0 cells moved**, so the entire published
++reading is MIXED-BASIS — a landed-law numerator over a pre-landing denominator. Concretely, the
++matrix's RD mean year-0 reads ~772 while the rederived RD cells sit at 206–369, and the 89 currently
++wired entrants' actual printed day-0 matches neither. This file produces the LANDED-LAW basis so the
++owner's merge decision rests on one ruler instead of two.
++
++THE 29C DELTA — ONE VALUE SITE, PLUS DISCLOSURE THAT WRITES NO RECORD FIELD
++
++  SITE 1 — the emitted record's year-0 value (was emit_matrix_338.py:252):
++      -  v0=round(v0_start(p), 1),
++      +  v0=round(_landed_v0_engine(p), 1),
++    `_landed_v0_engine` is the ORDER 29B entry law, replicated below from the ARTIFACT and proven
++    against the board before a single record is written. NOTHING ELSE ON THE RECORD MOVES: `vpath`,
++    `yrs`, `anchor`, `cur`, `peak`, `eq`, `pw`, `games_by`, `seasons`, every predicate and every #338
++    disclosure are produced by code carried verbatim, so the ONLY difference between this matrix and
++    ORDER 29B's is the `v0` column. That is asserted by diffing the two matrices, not asserted by
++    this comment.
++
++  The added block below (`THE LANDED ENTRY LAW`) computes the law, PROVES it, and prints a census.
++  It adds keys to `meta` — never to a record — because `meta` is the emitter's own identity block and
++  is expected to differ between emitters, while a record field differing would break the claim above.
++
++THE LAW, QUOTED FROM THE ENGINE RATHER THAN PARAPHRASED (`_merged_recover.py`, commit 13cbebb):
++
++      day0_v0(p):  p['_pool']                    -> float(MA.pool_v0_of(p))       # '<pathway>|<gfut>'
++                   type ND and 1 <= pick <= 64   -> float(nd_v0.posv[MA.gfut(p)][pick])
++                   otherwise                     -> None
++      ev(day-0 entrant, Y) = day0_v0(p) * _PL_F                       # BOARD -> ENGINE currency
++      printed              = int(round(ev / _F)),  _F == _PL_F        # same pick_redenomination.json
++
++  The numéraire `s` is ALREADY INSIDE both published objects — `posv` is `relat_g(p) × curve(p)` on the
++  SHIPPED ladder (raw × s), and the pool cells carry `× anchor_factor == s`. So `_PL_F` is the only
++  conversion and it is applied exactly once; double-counting the numéraire is the failure mode this
++  paragraph exists to prevent. The two owner-Option-A borrowed cells (`PDN|KPF` 92.35874340265629,
++  `PDS|KPF` 83.97715038537063) are consumed through `MA.pool_v0_of`, the ONE accessor, exactly as the
++  board consumes them — never by reading `cells` directly, so the accessor's halt cannot be bypassed.
++
++WHY A HISTORICAL ENTRANT NEEDS NO RECONSTRUCTED DAY-0 POSITION. The law's position key is `MA.gfut(p)`,
++which reads `p['_futpos']`, else `GRP[p['_pos_now']]`, else `GRP[p['pos']]` — ALL STORE COLUMNS, none
++scoring-derived. The walk-forward truncates `p['scoring']`; it does not touch those columns, so the key
++is invariant across as-of years and a 2004 entrant is keyed from the same field as a 2025 one. The
++brief authorised falling back to the store's recorded day-0/drafted position (the delivered-value
++lane's `layer1`/LEDGER precedent) if a field were missing; **that fallback is never reached, and the
++census printed below is the evidence rather than the assurance.** Any row the law cannot map is
++EXCLUDED and COUNTED LOUDLY — never silently defaulted to the position-blind ladder.
++
++THE ROUNDING IS NOT CHANGED. `round(·, 1)` is the standing emitter's convention and it stays, because
++the declared change is the VALUE, not the schema. Measured cost, disclosed rather than repaired:
++`int(round(matrix_v0 / _PL_F))` reproduces the board's printed day-0 on 87 of 89 rows (`hunter-holmes`
++and `cooper-bell` land one point low from the 1-dp cell). The replication proof below is stated on the
++law's own UNROUNDED arithmetic, where it is 89 of 89 at tolerance 0.
++
++READ-ONLY on the engine and on the store, exactly as the standing emitter is. Nothing here fits,
++decides, or writes a store. The board is not opened.
++
++================================================================================================
++EVERYTHING BELOW THIS LINE IS THE STANDING EMITTER'S OWN HEADER, CARRIED VERBATIM.
++================================================================================================
++
++ITEM 271 STAGE B EMITTER, RE-ISSUED ON THE #338 CORRECTED TENURE BASIS (owner word 2026-08-06).
+ 
+ PROVENANCE OF THIS FILE
+   Source          : session_2026-07-29/item271/emit_matrix_271.py   (COPIED, byte-for-byte, then edited
+@@ -79,6 +152,72 @@
+ STORE_MD5 = hashlib.md5(open('rl_model_data.json', 'rb').read()).hexdigest()[:8]
+ ENGINE_HEAD = hashlib.md5(open('_merged_recover.py', 'rb').read()).hexdigest()[:8]
+ 
++# ==== ORDER 29C — THE LANDED ENTRY LAW (the ONE declared change; see this file's header) ==========
++from collections import Counter as Counter0      # aliased: the file's own `Counter` import stays put
++# This block computes the year-0 column, PROVES it against the board's own printed day-0 numbers
++# BEFORE any record is written, and HALTS if the proof fails. It writes no record field.
++_PL_F = G['_PL_F']
++_V2J = G['_V2J']
++_POSV = {_g: {int(_k): float(_v) for _k, _v in _d.items()} for _g, _d in _V2J['nd_v0']['posv'].items()}
++
++_STANDING_EMITTER = os.environ.get(
++    'RL_STANDING_EMITTER', os.path.join(REPO, 'docs/evidence/noarb_338_2026-08-06/emit_matrix_338.py'))
++_STANDING_MD5 = hashlib.md5(open(_STANDING_EMITTER, 'rb').read()).hexdigest()
++if _STANDING_MD5 != 'bffde2f786be85037483e9f5f1563068':
++    raise SystemExit("ORDER 29C HALT: the STANDING emitter is not the file this copy was taken from "
++                     "(md5 %s). The 'one declared change' claim is only checkable against the original; "
++                     "it is not asserted over a moved target." % _STANDING_MD5)
++
++
++def _landed_v0_board(p):
++    """The row's OWN derived day-0 v0 in BOARD currency, by the ORDER 29B law. Returns None when the
++    row is not an entrant object under the law — the caller COUNTS that, never defaults it."""
++    if p.get('_pool'):
++        return float(MA.pool_v0_of(p))           # the ONE accessor; halts on an unsigned cell
++    _pk = p.get('pick')
++    if p.get('type') == 'ND' and _pk and 1 <= int(_pk) <= MA.ND_CURVE_LAST:
++        _row = _POSV.get(MA.gfut(p))
++        if _row is None:
++            return None                          # a position the artifact does not publish
++        return float(_row[int(_pk)])
++    return None
++
++
++def _landed_v0_engine(p):
++    """ENGINE currency, which is the currency `vpath` is already in — so the ratio the instruments
++    form at yr0->yr1 is finally a ratio of two prices on the SAME ruler. This is the whole act."""
++    _b = _landed_v0_board(p)
++    return None if _b is None else _b * _PL_F
++
++
++# ---- THE REPLICATION PROOF, run before a record is written. FAIL-CLOSED. -------------------------
++# For the 89 currently wired entrants the board itself published the answer (DAY0_29B_FINAL.json,
++# board 36d5dfc7). If this file's arithmetic is not THE SAME ARITHMETIC, every historical year-0 it
++# computes is worthless, so the emit refuses to proceed rather than produce a plausible matrix.
++_DAY0 = os.environ.get('RL_DAY0_FINAL',
++                       os.path.join(REPO, 'docs/evidence/landing_29_2026-08-13/DAY0_29B_FINAL.json'))
++_d0 = json.load(open(_DAY0))
++_bykey = {q.get('key'): q for q in MA.data}
++_rep_ok = 0
++_rep_mis = []
++for _row in _d0['rows']:
++    _q = _bykey.get(_row['key'])
++    _mb = None if _q is None else _landed_v0_board(_q)
++    if _mb is not None and int(round(_mb)) == _row['printed'] and abs(_mb - _row['derived_v0']) == 0.0:
++        _rep_ok += 1
++    else:
++        _rep_mis.append((_row['key'], _row['printed'], _mb))
++if _rep_ok != len(_d0['rows']) or _rep_mis:
++    raise SystemExit(
++        "ORDER 29C HALT (replication): %d of %d wired entrants reproduce the board's printed day-0 at "
++        "tolerance 0. Mismatches: %s. The year-0 column is only the landed law if it reproduces the "
++        "law's own published output EXACTLY; a partial match is a DIFFERENT law and must not be "
++        "emitted as this one." % (_rep_ok, len(_d0['rows']), _rep_mis[:10]))
++print("ORDER 29C REPLICATION: %d of %d wired entrants on board %s reproduce printed day-0 EXACTLY "
++      "(tolerance 0, on the printed integer AND the unrounded derived_v0)"
++      % (_rep_ok, len(_d0['rows']), _d0['board_md5'][:8]))
++# ==== END OF THE ORDER 29C BLOCK =================================================================
++
+ # ---- 1. THE SLIDE, applied before anything reads a population (VERBATIM from #271) ---------------
+ FORCE_MAJEURE = {'thomas-boyd': 2013, 'paddy-mccartin': 2014}
+ _fm_rows = {}
+@@ -206,9 +345,20 @@
+ 
+ recs = []
+ n_extended = 0
++# ORDER 29C: the day-0 position key's SOURCE, censused rather than assumed (see the header).
++_gfut_src = Counter0('_futpos' if p.get('_futpos') else ('_pos_now' if p.get('_pos_now') else 'pos')
++                     for p in players)
++# ORDER 29C: rows the landed law cannot map are EXCLUDED and COUNTED. They are never defaulted to the
++# position-blind ladder and never carried at a stale surface value, because either would put a row in
++# the matrix on a basis this act does not claim.
++_unmappable = [dict(key=p.get('key'), player=p.get('player'), type=p.get('type'), pick=p.get('pick'),
++                    pickless=bool(p.get('_pickless')), pool=bool(p.get('_pool')), pos=MA.gfut(p))
++               for p in players if p.get('year') is not None and _landed_v0_engine(p) is None]
++_unmappable_keys = {u['key'] for u in _unmappable}
+ for p in players:
+     C = p.get('year')
+     if C is None: continue
++    if p.get('key') in _unmappable_keys: continue        # ORDER 29C: excluded, and counted above
+     eff_slid, pool_slid = slid_membership(p)
+     played = {x['year']: (x['games'], x['avg']) for x in p['scoring'] if x['games'] >= 1}
+     last_active = max(played) if played else None
+@@ -249,7 +399,12 @@
+         pickless=bool(p.get('_pickless')), cat=p.get('_cat'),
+         band=band_of(eff_slid) if eff_slid else None, pos=MA.gfut(p),
+         anchor=(round(anchor, 1) if anchor else None),
+-        v0=round(v0_start(p), 1),
++        # ORDER 29C SITE 1 — THE ONE DECLARED CHANGE. Was `round(v0_start(p), 1)`, the FROZEN FITTED
++        # SURFACE, which made this column a pre-landing object while `vpath` beside it is the landed
++        # `ev()` — the mixed basis the brief exists to cure. It is now the LANDED ENTRY LAW's own
++        # day-0 price, in the same engine currency as `vpath`, proven against the board's 89 printed
++        # day-0 numbers above. The `round(·, 1)` convention is CARRIED, not changed.
++        v0=round(_landed_v0_engine(p), 1),
+         cur=(round(ASOF.get((id(p), 2026)), 1) if ASOF.get((id(p), 2026)) else None),
+         peak=(round(max([v for v in Vpath if v is not None]), 1) if any(v is not None for v in Vpath) else None),
+         vpath=[round(v, 1) if v is not None else None for v in Vpath], yrs=yrs,
+@@ -285,12 +440,29 @@
+                           n_records_window_extended=n_extended,
+                           n_records_band_differs_under_slid_reading=len(_band_reading_diff),
+                           keys_band_differs_under_slid_reading=sorted(x for x in _band_reading_diff if x)),
+-            emitter=dict(file='docs/evidence/noarb_338_2026-08-06/emit_matrix_338.py',
+-                         copied_from='session_2026-07-29/item271/emit_matrix_271.py',
++            emitter=dict(file='docs/evidence/landing_29_2026-08-13/noarb29c/emit_matrix_29c.py',
++                         copied_from='docs/evidence/noarb_338_2026-08-06/emit_matrix_338.py',
++                         copied_from_md5=_STANDING_MD5,
+                          rule_source='engine/rl_after/s4_matrix_M1v7.py:53-70,81,113',
+                          rule_commit='30996f8',
+-                         workdir=WORKDIR))
+-_outpath = os.path.join(OUT, 'per_entrant_338_confirmation.json')
++                         workdir=WORKDIR),
++            # ---- ORDER 29C: the one declared change, and everything a reader needs to check it ----
++            basis_29c=dict(
++                declared_change='the v0 column is the LANDED ENTRY LAW day-0 price, not v0_start(p)',
++                law='ND in-curve -> nd_v0.posv[gfut][pick]; pool -> pool_v0_of(p) cell; x _PL_F',
++                law_source='engine/rl_after/_merged_recover.py, ORDER 29B block, commit 13cbebb',
++                currency='ENGINE (board currency x _PL_F); the numeraire s is already inside both objects',
++                PL_F=_PL_F,
++                anchor_factor=float(_V2J['pool_v0']['anchor_factor']),
++                borrowed_cells=sorted(_V2J['pool_v0'].get('borrowed_cells') or {}),
++                replication_board=_d0['board_md5'],
++                replication_ok=_rep_ok, replication_n=len(_d0['rows']), replication_tolerance=0,
++                gfut_source_census=dict(_gfut_src),
++                n_unmappable=len(_unmappable), unmappable=_unmappable,
++                years_1_to_7_untouched=True,
++                rounding='round(.,1) CARRIED from the standing emitter; the VALUE changed, not the schema',
++                brief='#334 comment 5289123976', prereg='noarb29c/PREREG_29C.md'))
++_outpath = os.path.join(OUT, 'per_entrant_338_confirmation.json')   # name CARRIED: the runner renames
+ json.dump(dict(meta=meta, recs=recs), open(_outpath, 'w'), indent=0)
+ 
+ nd64 = [r for r in recs if r['teaches_curve']]
+@@ -306,4 +478,13 @@
+ print("boundary crossers (pool -> ND fit via the slide): %s" % [r['player'] for r in crossers])
+ from collections import Counter
+ print("pool by type:", Counter(r['type'] for r in pool).most_common())
++print("ORDER 29C year-0 basis: LANDED ENTRY LAW (was v0_start, the frozen fitted surface)")
++print("ORDER 29C gfut source census (all STORE columns, so the key is as-of invariant): %s"
++      % dict(_gfut_src))
++print("ORDER 29C unmappable rows EXCLUDED AND COUNTED: %d%s"
++      % (len(_unmappable),
++         ("" if not _unmappable else "  -> %s" % [(u['key'], u['type'], u['pick']) for u in _unmappable])))
++_z = [r for r in recs if r['v0'] == 0]
++print("ORDER 29C year-0 == 0 rows (the artifact's own declared ruck_floor_63_64): %d %s"
++      % (len(_z), [(r['key'], r['pos'], r['raw_pick']) for r in _z]))
+ print("wrote %s" % _outpath)

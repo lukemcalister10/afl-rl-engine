@@ -1,0 +1,276 @@
+====================================================================================================
+ORDER 30B-R -- T3 THE JOIN: closing the first-game cliff
+====================================================================================================
+pins: {"persistence_table": "c7b201c5fe9fcb7f3b7b3e939ae89532", "preview_movers": "5b605c7380211721d6dc6a86c58e0d68", "sitter_packet_2": "cf786bde23e0139e7ffb59a189120529"}
+
+THE CUMULATIVE BACKBONE, transcribed from SITTER_FADE_PACKET_2.md section 6.4 and ASSERTED
+against that file (every knot string-matched in the committed packet):
+  depth   <=games           B     lift b
+  2       0            0.5684    1.00000
+  2       2            0.6560    1.15412
+  2       5            0.6936    1.22027
+  2       10           0.8236    1.44898
+  3       0            0.3600    1.00000
+  3       2            0.5933    1.64806
+  3       5            0.6807    1.89083
+  3       10           0.6930    1.92500
+
+  The lift b is the object the join uses: the backbone AS A RELATIVE LIFT ON THE SITTER PRICE,
+  so the g = 0 end is the wired sitter law v0 x D(c) EXACTLY and nothing is re-levelled.
+
+====================================================================================================
+T3.1 -- THE PRODUCTION LEG, INVERTED FROM THE COMMITTED PREVIEW CONTINUITY CURVES
+====================================================================================================
+
+  dyson-sharp      ND   pick 13   MID     v0   1551.0   D(c=1.92) 0.5771   sitter price    895.2   depth lane 2
+     preview 0-game print 895  vs  v0 x D = 895.2   (agreement 1.00)
+     g       preview   sigma(g)  prod P(g)  inv amp +/-
+     1          1581     0.9218     1934.3         6.40
+     2          1626     0.8679     2118.3         3.78
+     3          1679     0.8220     2269.9         2.81
+     4          1734     0.7813     2387.8         2.29
+     5          1784     0.7445     2463.0         1.96
+     6          1851     0.7108     2588.4         1.73
+     7          1913     0.6797     2681.1         1.56
+     8          1953     0.6508     2702.0         1.43
+     9          2019     0.6237     2794.6         1.33
+     10         2123     0.5983     2975.0         1.24
+     11         2233     0.5745     3153.7         1.18
+     12         2303     0.5520     3229.5         1.12
+     13         2347     0.5307     3247.1         1.07
+     14         2418     0.5106     3322.4         1.02
+     15         2538     0.4915     3491.8         0.98
+
+  harry-demattia   ND   pick 25   MID     v0    890.6   D(c=3.92) 0.3385   sitter price    301.4   depth lane 3
+     preview 0-game print 301  vs  v0 x D = 301.4   (agreement 1.00)
+     g       preview   sigma(g)  prod P(g)  inv amp +/-
+     1           878     0.9218      729.5         6.40
+     2           868     0.8679      719.6         3.78
+     3           860     0.8220      718.7         2.81
+     4           860     0.7813      750.7         2.29
+     5           858     0.7445      763.0         1.96
+     6           857     0.7108      774.4         1.73
+     7           852     0.6797      770.1         1.56
+     8           828     0.6508      711.4         1.43
+     9           801     0.6237      652.5         1.33
+     10          787     0.5983      632.7         1.24
+     11          794     0.5745      663.6         1.18
+     12          801     0.5520      690.6         1.12
+     13          790     0.5307      676.2         1.07
+     14          785     0.5106      674.8         1.02
+     15          790     0.4915      692.8         0.98
+
+  isaac-kako       ND   pick 13   SF      v0    759.8   D(c=2.92) 0.2788   sitter price    211.8   depth lane 3
+     g       preview   sigma(g)  prod P(g)  inv amp +/-
+     23         1089     0.3679     1280.6         0.79
+     24         1115     0.3554     1310.8         0.78
+     25         1116     0.3434     1302.3         0.76
+     26         1075     0.3319     1231.6         0.75
+     27         1015     0.3208     1135.6         0.74
+     28          926     0.3102     1000.8         0.72
+     29          848     0.3001      885.8         0.71
+     30          825     0.2903      851.7         0.70
+     31          821     0.2809      844.9         0.70
+     32          811     0.2719      830.1         0.69
+     33          779     0.2632      785.9         0.68
+     34          760     0.2548      760.1         0.67
+     35          767     0.2468      769.4         0.66
+     36          748     0.2391      744.3         0.66
+     37          733     0.2316      724.9         0.65
+     38          697     0.2244      678.8         0.64
+
+  josh-smillie     ND   pick 7    MID     v0   1688.8   D(c=2.92) 0.2788   sitter price    470.8   depth lane 3
+     preview 0-game print 471  vs  v0 x D = 470.8   (agreement 1.00)
+     g       preview   sigma(g)  prod P(g)  inv amp +/-
+     1          1671     0.9218     1461.0         6.40
+     2          1659     0.8679     1463.2         3.78
+     3          1640     0.8220     1414.6         2.81
+     4          1621     0.7813     1378.7         2.29
+     5          1598     0.7445     1333.3         1.96
+     6          1591     0.7108     1350.6         1.73
+     7          1582     0.6797     1355.3         1.56
+     8          1562     0.6508     1325.7         1.43
+     9          1545     0.6237     1306.6         1.33
+     10         1545     0.5983     1330.8         1.24
+     11         1547     0.5745     1355.5         1.18
+     12         1561     0.5520     1403.5         1.12
+     13         1564     0.5307     1422.9         1.07
+     14         1585     0.5106     1476.7         1.02
+     15         1607     0.4915     1527.9         0.98
+
+  max-knobel       ND   pick 42   RUCK    v0    830.5   D(c=4.92) 0.3460   sitter price    287.4   depth lane 3
+     preview 0-game print 287  vs  v0 x D = 287.4   (agreement 1.00)
+     g       preview   sigma(g)  prod P(g)  inv amp +/-
+     1           823     0.9218      734.1         6.40
+     2           823     0.8679      773.5         3.78
+     3           827     0.8220      810.7         2.81
+     4           839     0.7813      869.2         2.29
+     5           846     0.7445      891.1         1.96
+     6           850     0.7108      897.8         1.73
+     7           848     0.6797      885.1         1.56
+     8           839     0.6508      854.8         1.43
+     9           830     0.6237      829.1         1.33
+     10          853     0.5983      886.5         1.24
+     11          886     0.5745      960.9         1.18
+     12          925     0.5520     1041.4         1.12
+     13          927     0.5307     1036.1         1.07
+     14          940     0.5106     1054.2         1.02
+     15          959     0.4915     1083.1         0.98
+
+  The "inv amp" column is the rounding amplification 0.5/(1-sigma): the published prices are
+  integers, so P(g) inherits that band.  At g = 1 it is +/- 6.4 board points.  Disclosed.
+
+====================================================================================================
+T3.2 -- THE JOINED CURVE, PRICE vs GAMES 0 -> 16 AT FIXED OUTPUT
+====================================================================================================
+  thin lane 0-10 : v0 x D(c) x b(g; c)          -- the backbone IS the whole price law there
+  deep lane 16+  : W (1-sigma)P + sigma v0  and  A  P + beta(g) v0   -- BOTH readings shown
+  bridge 11-15   : linear in log1p(g) between the thin lane at 10 and the deep lane at 16
+                   DECLARED A BRIDGE.  It is not a measurement and it is not called one.
+
+
+  dyson-sharp       v0   1551.0  D 0.5771  c 1.92  depth 2   P(16) 3583.5
+     g         PREVIEW     JOIN (W)     JOIN (A)           lane
+     0             895        895.2        895.2         sitter
+     1            1581        979.9        979.9       backbone
+     2            1626       1033.1       1033.1       backbone
+     3            1679       1057.3       1057.3       backbone
+     4            1734       1076.4       1076.4       backbone
+     5            1784       1092.3       1092.3       backbone
+     6            1851       1141.1       1141.1       backbone
+     7            1913       1185.1       1185.1       backbone
+     8            1953       1225.3       1225.3       backbone
+     9            2019       1262.5       1262.5       backbone
+     10           2123       1297.1       1297.1       backbone
+     11           2233       1561.8       1843.3         BRIDGE
+     12           2303       1805.3       2345.8         BRIDGE
+     13           2347       2030.8       2811.1         BRIDGE
+     14           2418       2240.7       3244.2         BRIDGE
+     15           2538       2437.1       3649.4         BRIDGE
+     16              -       2621.5       4030.0           deep
+     FIRST-GAME STEP:  preview +76.6%   ->   JOIN +9.5%
+     MONOTONE 0->16:   preview(0-15) YES   JOIN(W) YES   JOIN(A) YES
+     implied pedigree weight in the thin lane, lambda(g) = [price_join(g) - P(g)] / v0:
+       g1 -0.615  g2 -0.700  g3 -0.782  g4 -0.845  g5 -0.884  g6 -0.933  g7 -0.965  g8 -0.952  g9 -0.988  g10 -1.082
+
+  harry-demattia    v0    890.6  D 0.3385  c 3.92  depth 3   P(16) 703.0
+     g         PREVIEW     JOIN (W)     JOIN (A)           lane
+     0             301        301.4        301.4         sitter
+     1             878        413.1        413.1       backbone
+     2             868        496.8        496.8       backbone
+     3             860        525.9        525.9       backbone
+     4             860        549.7        549.7       backbone
+     5             858        570.0        570.0       backbone
+     6             857        572.6        572.6       backbone
+     7             852        574.8        574.8       backbone
+     8             828        576.8        576.8       backbone
+     9             801        578.6        578.6       backbone
+     10            787        580.3        580.3       backbone
+     11            794        622.6        656.1         BRIDGE
+     12            801        661.4        725.8         BRIDGE
+     13            790        697.5        790.3         BRIDGE
+     14            785        731.0        850.4         BRIDGE
+     15            790        762.3        906.6         BRIDGE
+     16              -        791.8        959.4           deep
+     FIRST-GAME STEP:  preview +191.7%   ->   JOIN +37.1%
+     MONOTONE 0->16:   preview(0-15) NO   JOIN(W) YES   JOIN(A) YES
+     implied pedigree weight in the thin lane, lambda(g) = [price_join(g) - P(g)] / v0:
+       g1 -0.355  g2 -0.250  g3 -0.216  g4 -0.226  g5 -0.217  g6 -0.227  g7 -0.219  g8 -0.151  g9 -0.083  g10 -0.059
+
+  josh-smillie      v0   1688.8  D 0.2788  c 2.92  depth 3   P(16) 1562.5
+     g         PREVIEW     JOIN (W)     JOIN (A)           lane
+     0             471        470.8        470.8         sitter
+     1            1671        645.3        645.3       backbone
+     2            1659        775.9        775.9       backbone
+     3            1640        821.5        821.5       backbone
+     4            1621        858.6        858.6       backbone
+     5            1598        890.2        890.2       backbone
+     6            1591        894.3        894.3       backbone
+     7            1582        897.8        897.8       backbone
+     8            1562        901.0        901.0       backbone
+     9            1545        903.8        903.8       backbone
+     10           1545        906.3        906.3       backbone
+     11           1547       1049.4       1134.7         BRIDGE
+     12           1561       1181.1       1344.7         BRIDGE
+     13           1564       1303.0       1539.2         BRIDGE
+     14           1585       1416.4       1720.3         BRIDGE
+     15           1607       1522.6       1889.6         BRIDGE
+     16              -       1622.3       2048.7           deep
+     FIRST-GAME STEP:  preview +254.8%   ->   JOIN +37.1%
+     MONOTONE 0->16:   preview(0-15) NO   JOIN(W) YES   JOIN(A) YES
+     implied pedigree weight in the thin lane, lambda(g) = [price_join(g) - P(g)] / v0:
+       g1 -0.483  g2 -0.407  g3 -0.351  g4 -0.308  g5 -0.262  g6 -0.270  g7 -0.271  g8 -0.252  g9 -0.239  g10 -0.251
+
+  max-knobel        v0    830.5  D 0.3460  c 4.92  depth 3   P(16) 1118.8
+     g         PREVIEW     JOIN (W)     JOIN (A)           lane
+     0             287        287.4        287.4         sitter
+     1             823        393.8        393.8       backbone
+     2             823        473.6        473.6       backbone
+     3             827        501.4        501.4       backbone
+     4             839        524.1        524.1       backbone
+     5             846        543.4        543.4       backbone
+     6             850        545.8        545.8       backbone
+     7             848        548.0        548.0       backbone
+     8             839        549.9        549.9       backbone
+     9             830        551.6        551.6       backbone
+     10            853        553.2        553.2       backbone
+     11            886        639.0        714.0         BRIDGE
+     12            925        717.9        862.0         BRIDGE
+     13            927        791.0        999.0         BRIDGE
+     14            940        859.0       1126.6         BRIDGE
+     15            959        922.6       1245.9         BRIDGE
+     16              -        982.4       1358.0           deep
+     FIRST-GAME STEP:  preview +186.8%   ->   JOIN +37.1%
+     MONOTONE 0->16:   preview(0-15) NO   JOIN(W) YES   JOIN(A) YES
+     implied pedigree weight in the thin lane, lambda(g) = [price_join(g) - P(g)] / v0:
+       g1 -0.410  g2 -0.361  g3 -0.372  g4 -0.416  g5 -0.419  g6 -0.424  g7 -0.406  g8 -0.367  g9 -0.334  g10 -0.401
+
+====================================================================================================
+T3.3 -- THE 11-15 OVERLAP: DO THE TWO MEASURED CURVES AGREE?  (shown, never averaged)
+====================================================================================================
+  thin-lane EXTRAPOLATION: the backbone lift carried past its last knot (<=10) on the
+    <=5 -> <=10 slope in log1p(g).  deep-lane EXTRAPOLATION: the sigma blend carried down
+    below 16, which is exactly the preview's own printed curve.  Both are extrapolations of
+    a measured object outside where it was measured, and both are labelled as such.
+
+
+  dyson-sharp      (depth lane 2)
+     g     thin extrap       deep W       deep A     W/thin     A/thin
+     11         1329.4       2233.0       3701.5     1.680x     2.784x
+     12         1359.9       2303.0       3751.9     1.693x     2.759x
+     13         1388.8       2347.0       3747.2     1.690x     2.698x
+     14         1416.2       2418.0       3802.7     1.707x     2.685x
+     15         1442.4       2538.0       3954.4     1.760x     2.742x
+     AT g = 13: deep(W) is +69.0% above the thin extrapolation; deep(A) is +169.8%.
+
+  harry-demattia   (depth lane 3)
+     g     thin extrap       deep W       deep A     W/thin     A/thin
+     11          581.8        794.0        978.1     1.365x     1.681x
+     12          583.1        801.0        990.6     1.374x     1.699x
+     13          584.4        790.0        963.4     1.352x     1.648x
+     14          585.6        785.0        950.6     1.340x     1.623x
+     15          586.7        790.0        958.4     1.346x     1.633x
+     AT g = 13: deep(W) is +35.2% above the thin extrapolation; deep(A) is +64.8%.
+
+  josh-smillie     (depth lane 3)
+     g     thin extrap       deep W       deep A     W/thin     A/thin
+     11          908.7       1547.0       1952.0     1.702x     2.148x
+     12          910.8       1561.0       1972.4     1.714x     2.165x
+     13          912.8       1564.0       1967.4     1.713x     2.155x
+     14          914.7       1585.0       1999.7     1.733x     2.186x
+     15          916.4       1607.0       2031.6     1.754x     2.217x
+     AT g = 13: deep(W) is +71.3% above the thin extrapolation; deep(A) is +115.5%.
+
+  max-knobel       (depth lane 3)
+     g     thin extrap       deep W       deep A     W/thin     A/thin
+     11          554.6        886.0       1254.2     1.598x     2.261x
+     12          555.9        925.0       1321.1     1.664x     2.376x
+     13          557.1        927.0       1303.9     1.664x     2.340x
+     14          558.3        940.0       1311.4     1.684x     2.349x
+     15          559.3        959.0       1330.8     1.715x     2.379x
+     AT g = 13: deep(W) is +66.4% above the thin extrapolation; deep(A) is +134.0%.
+
+  READ THIS PLAINLY: the two curves are measurements of DIFFERENT OBJECTS on DIFFERENT
+  POPULATIONS and they do not meet.  The join does not make them meet; it declares a bridge
+  across the gap and prints the size of the gap.  Averaging them would have hidden exactly this.
+

@@ -1,0 +1,51 @@
+====================================================================================================
+INDEPENDENT AUDIT · C4 — THE NO-ARB TABLES
+====================================================================================================
+  carry charge read from the raw output: 0.14/yr
+  carry rail recomputed 1.14^k, k=1..7: 1.140 1.300 1.482 1.689 1.925 2.195 2.502
+  rail as wired in as_tables.py           : 1.140 1.300 1.482 1.689 1.925 2.195 2.502
+  rail matches compounding 14%: True
+
+  boards in the arm tables: ['ASMCAND', 'R20A', 'PBUILT', 'OKRULED', 'O35FINAL']  (5 — spec: five)
+
+----------------------------------------------------------------------------------------------------
+C4 · PATH-TEST VERDICTS RECOMPUTED FROM THE YEAR PATHS AND THE CARRY RAIL
+----------------------------------------------------------------------------------------------------
+  ASMCAND   MODERN|SSP       published a=False b=True  both=False beat=[2, 3]   | mine a=False b=True  both=False beat=[2, 3]   OK
+  ASMCAND   PRIMARY|SSP      published a=False b=True  both=False beat=[2, 3]   | mine a=False b=True  both=False beat=[2, 3]   OK
+  R20A      MODERN|SSP       published a=False b=True  both=False beat=[2, 3]   | mine a=False b=True  both=False beat=[2, 3]   OK
+  R20A      PRIMARY|IRE      published a=False b=False both=False beat=[2]      | mine a=False b=False both=False beat=[2]      OK
+  R20A      PRIMARY|SSP      published a=False b=True  both=False beat=[2, 3]   | mine a=False b=True  both=False beat=[2, 3]   OK
+  PBUILT    MODERN|SSP       published a=False b=True  both=False beat=[2, 3]   | mine a=False b=True  both=False beat=[2, 3]   OK
+  PBUILT    PRIMARY|SSP      published a=False b=True  both=False beat=[2, 3]   | mine a=False b=True  both=False beat=[2, 3]   OK
+  OKRULED   MODERN|SSP       published a=False b=True  both=False beat=[2, 3]   | mine a=False b=True  both=False beat=[2, 3]   OK
+  OKRULED   PRIMARY|SSP      published a=False b=True  both=False beat=[2, 3]   | mine a=False b=True  both=False beat=[2, 3]   OK
+  O35FINAL  MODERN|SSP       published a=False b=True  both=False beat=[2, 3]   | mine a=False b=True  both=False beat=[2, 3]   OK
+  O35FINAL  PRIMARY|SSP      published a=False b=True  both=False beat=[2, 3]   | mine a=False b=True  both=False beat=[2, 3]   OK
+  verdicts recomputed: 11   mismatches: 0
+
+----------------------------------------------------------------------------------------------------
+C4 · IS EVERY BREACHING ARM CELL SCORED? (a breach with no path-test line is a gap)
+----------------------------------------------------------------------------------------------------
+  ASMCAND   BUY-RED cells 2    scored 2    unscored: none
+  R20A      BUY-RED cells 3    scored 3    unscored: none
+  PBUILT    BUY-RED cells 2    scored 2    unscored: none
+  OKRULED   BUY-RED cells 2    scored 2    unscored: none
+  O35FINAL  BUY-RED cells 2    scored 2    unscored: none
+  unscored breaching cells: 0
+
+----------------------------------------------------------------------------------------------------
+C4 · THE PAGE (ASSEMBLY_NOARB.html) vs THESE RAW NUMBERS
+----------------------------------------------------------------------------------------------------
+  page table rows: 253
+  board label ASMCAND   appears on the page: False
+  board label R20A      appears on the page: True
+  board label PBUILT    appears on the page: True
+  board label OKRULED   appears on the page: True
+  board label O35FINAL  appears on the page: True
+  window PRIMARY  appears on the page: True
+  window MODERN   appears on the page: True
+  MSD exclusion note present: True
+    NOTE: THE MSD YEAR-1 EXCLUSION:
+  arm/pool types in the raw output: ['ALLPOOL', 'IRE', 'MSD', 'PDA', 'PDN', 'PDS', 'RD', 'SSP', 'UNR']
+  arm types NOT found anywhere on the page: none

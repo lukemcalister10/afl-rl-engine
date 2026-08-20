@@ -1,0 +1,177 @@
+{
+ "fail": [],
+ "lever": {
+  "CP_CAND": {
+   "down": 0,
+   "marginal": 4371,
+   "moved": 23,
+   "prev": "FC_CAND",
+   "up": 23,
+   "worst": [
+    "Tom Green",
+    1212
+   ]
+  },
+  "FC_BASE": {
+   "down": 50,
+   "marginal": -6027,
+   "moved": 50,
+   "prev": "V755_CAND",
+   "up": 0,
+   "worst": [
+    "Noah Mraz",
+    -972
+   ]
+  },
+  "FC_CAND": {
+   "down": 11,
+   "marginal": 1356,
+   "moved": 31,
+   "prev": "FC_BASE",
+   "up": 20,
+   "worst": [
+    "Sam Flanders",
+    708
+   ]
+  },
+  "L1_REC": {
+   "down": 195,
+   "marginal": -180,
+   "moved": 316,
+   "prev": "L0_R",
+   "up": 121,
+   "worst": [
+    "Sam Lalor",
+    218
+   ]
+  },
+  "V750_L2C15": {
+   "down": 33,
+   "marginal": 4769,
+   "moved": 385,
+   "prev": "L1_REC",
+   "up": 352,
+   "worst": [
+    "Zeke Uwland",
+    128
+   ]
+  },
+  "V750_L3MAT": {
+   "down": 160,
+   "marginal": -521,
+   "moved": 175,
+   "prev": "V750_L2C15",
+   "up": 15,
+   "worst": [
+    "Riley Bice",
+    -27
+   ]
+  },
+  "V750_L4SD": {
+   "down": 0,
+   "marginal": 967,
+   "moved": 104,
+   "prev": "V750_L3MAT",
+   "up": 104,
+   "worst": [
+    "Finn O'Sullivan",
+    75
+   ]
+  },
+  "V750_L5A": {
+   "down": 139,
+   "marginal": -3527,
+   "moved": 168,
+   "prev": "V750_L4SD",
+   "up": 29,
+   "worst": [
+    "Xavier Taylor",
+    -199
+   ]
+  },
+  "V750_L5B": {
+   "down": 26,
+   "marginal": -183,
+   "moved": 32,
+   "prev": "V750_L5A",
+   "up": 6,
+   "worst": [
+    "Clay Hall",
+    -47
+   ]
+  },
+  "V750_L5C": {
+   "down": 1,
+   "marginal": -12,
+   "moved": 2,
+   "prev": "V750_L5B",
+   "up": 1,
+   "worst": [
+    "Josh Gibcus",
+    -15
+   ]
+  },
+  "V755_CAND": {
+   "down": 9,
+   "marginal": -1025,
+   "moved": 9,
+   "prev": "V755_L5CR",
+   "up": 0,
+   "worst": [
+    "Toby Conway",
+    -606
+   ]
+  },
+  "V755_L5CR": {
+   "down": 2,
+   "marginal": 11,
+   "moved": 8,
+   "prev": "V750_L5C",
+   "up": 6,
+   "worst": [
+    "Clay Hall",
+    6
+   ]
+  }
+ },
+ "md5": {
+  "CP_CAND": "a05fe951f78482c70520480e184c80ec",
+  "D7_CAND2": "a05fe951f78482c70520480e184c80ec",
+  "FC_BASE": "ff9361867357c085c8111ba957ce4f3b",
+  "FC_CAND": "daa16812e50fb71241e627d89180412c",
+  "IDENT_K": "f3101883a60b0a7b8cb50f9d8a5abfff",
+  "IDENT_P": "374d4e442665771801c5f1edd2a7e0e2",
+  "L0_R": "7f88f5096ff5b781da4614b7142d332c",
+  "L1_REC": "b692d7099a8d39f59843e41b51e0cc39",
+  "L2_COMP": "c3cb66862a54cba17b2efc7252d87fd9",
+  "V750_L2C15": "3dca39b04fad63ffe1a8db478751a575",
+  "V750_L3MAT": "62507bdf320dce4f8c8ea832eae78560",
+  "V750_L4SD": "c3f7866784bf3b072666da3f1080d654",
+  "V750_L5A": "e1e3d97dabdea5c815fd271688cf596a",
+  "V750_L5B": "b74a2a0e57182d096a139c26b7a6677b",
+  "V750_L5C": "1270991cdde819b22ac7bf5f42908f5a",
+  "V755_CAND": "db1ccef59cc2df69e86a1705fa7fe85c",
+  "V755_L5CR": "5cc1fca4bb1cab3861dde2cad4138e75",
+  "live": "88ce647f531030d8d2e094188b258191"
+ },
+ "totals": {
+  "CP_CAND": 664949,
+  "D7_CAND2": 664949,
+  "FC_BASE": 659222,
+  "FC_CAND": 660578,
+  "IDENT_K": 673097,
+  "IDENT_P": 666434,
+  "L0_R": 664950,
+  "L1_REC": 664770,
+  "L2_COMP": 670562,
+  "V750_L2C15": 669539,
+  "V750_L3MAT": 669018,
+  "V750_L4SD": 669985,
+  "V750_L5A": 666458,
+  "V750_L5B": 666275,
+  "V750_L5C": 666263,
+  "V755_CAND": 665249,
+  "V755_L5CR": 666274,
+  "live": 752429
+ }
+}

@@ -1,0 +1,128 @@
+======================================================================================================================
+ORDER 29B  --  STEP 4 / P12 RE-POINTED: THE PRINTED-DAY-0 ASSERT      [FINAL]
+======================================================================================================================
+
+  board            rl_app_data.json   md5 36d5dfc73e2b508ece530bc7dfae2090
+  artifact         curve_md5 9729f0c5   unsigned_cells []
+  numeraire        s 0.9400914291048137   head 3191.1789716631   pin 3000.0
+
+  POPULATION (P12's own definition, o29_day0.py:36-37, unchanged):
+     fresh ND entrants (cg==0, ty ND, pick 1..64)   46
+     pool entrants     (cg==0, everything else)     43
+     wired population                               89
+
+  READING 1 -- THE IDENTITY THIS ACT DELIVERS:  printed == round(derived v0 x numeraire)
+  row                          pos     pick    printed     derived v0       diff
+  josh-smillie                 MID        7       1617      1616.9742          0 
+  oskar-taylor                 SD        15        946       945.9575          0 
+  lachlan-carmichael           SD        21        761       761.1092          0 
+  mitchell-marsh               KPF       22        698       698.4790          0 
+  harley-barker                MID       24        886       885.6074          0 
+  adam-sweid                   SF        25        306       305.9716          0 
+  harry-demattia               MID       25        892       891.8219          0 
+  blake-thredgold              KPD       26        426       426.3936          0 
+  ned-bowman                   SF        26        293       292.8857          0 
+  brayden-george               SF        26        293       292.8857          0 
+  avery-thomas                 SD        28        392       391.8979          0 
+  sam-allen                    MID       29        840       839.5851          0 
+  thomas-matthews              SF        30        331       331.0648          0 
+  tyan-prindable               MID       32        692       692.3732          0 
+  james-barrat                 KPD       32        410       409.7834          0 
+  hunter-holmes                MID       33        661       660.5022          0 
+  charlie-nicholls             KPF       34        448       447.7587          0 
+  jevan-phillipou              SF        35        361       361.4385          0 
+  kayle-gerreyn                KPF       37        386       386.2625          0 
+  koby-evans                   SF        38        369       368.9550          0 
+  tylah-williams               SF        39        372       371.7697          0 
+  tobyn-murray                 SF        40        351       350.6906          0 
+  ollie-murphy                 KPD       41        359       359.4927          0 
+  luke-lloyd                   KPD       42        362       361.5357          0 
+  max-knobel                   RUCK      42        834       833.8370          0 
+  ben-camporeale               MID       43        616       616.2721          0 
+  tai-hayes                    SF        44        265       265.3389          0 
+  koby-coulson                 MID       46        494       494.1803          0 
+  joel-cochran                 KPD       47        392       392.3816          0 
+  hugo-mikunda                 SF        48        262       261.8594          0 
+  max-king-syd                 SF        49        271       270.5047          0 
+  cooper-bell                  KPD       49        409       408.5165          0 
+  finnegan-davis               SD        51         89        89.0282          0 
+  kye-fincher                  MID       52        307       306.9571          0 
+  jacob-molier                 RUCK      52        251       250.7009          0 
+  patrick-snell                KPD       53        421       421.0013          0 
+  zac-mccarthy                 KPF       55        190       190.3722          0 
+  riak-andrew                  KPD       55        415       414.5735          0 
+  matthew-leray                MID       56        235       235.3369          0 
+  luke-urquhart                MID       57        217       216.8080          0 
+  will-darcy                   KPD       58        398       398.1989          0 
+  tyler-welsh                  KPF       59        192       191.6059          0 
+  patrick-said                 SF        60        148       148.2362          0 
+  jaren-carr                   SF        63         70        70.1355          0 
+  cody-anderson                SF        64         18        17.9916          0 
+  reece-torrent                MID       64         57        56.6572          0 
+
+  row                          pathway    pos    printed     derived v0       diff
+  ben-murphy                   IRE|SD   SD           87        87.0299          0 
+  cillian-bourke               IRE|SD   SD           87        87.0299          0 
+  cillian-burke                IRE|SD   SD           87        87.0299          0 
+  eamonn-armstrong             IRE|SD   SD           87        87.0299          0 
+  kobe-mcdonald                IRE|SD   SD           87        87.0299          0 
+  matt-duffy                   IRE|SD   SD           87        87.0299          0 
+  rob-monahan                  IRE|SD   SD           87        87.0299          0 
+  caleb-may                    MSD|RUCK RUCK        448       448.2134          0 
+  harrison-coe                 MSD|RUCK RUCK        448       448.2134          0 
+  iliro-smit                   MSD|RUCK RUCK        448       448.2134          0 
+  max-mapley                   MSD|RUCK RUCK        448       448.2134          0 
+  zac-walker                   MSD|SD   SD          359       358.5353          0 
+  max-beattie                  MSD|SF   SF          208       207.6824          0 
+  oliver-griffin               MSD|SF   SF          208       207.6824          0 
+  logan-smith                  ND>64|RUCK RUCK        566       566.0434          0 
+  keighton-matofai-forbes      ND>64|SD SD          260       260.2909          0 
+  lennox-hoffman               ND>64|SD SD          260       260.2909          0 
+  river-stevens                ND>64|SF SF          103       103.0215          0 
+  liam-hetherton               PDA|KPF  KPF         117       117.3045          0 
+  nathan-wardius               PDA|SF   SF           87        86.6490          0 
+  noah-chamberlain             PDA|SF   SF           87        86.6490          0 
+  kalani-white                 PDN|KPF  KPF          92        92.3587          0 [BORROWED] 
+  jesse-mellor                 PDN|MID  MID         113       112.7249          0 
+  benny-barrett                PDN|SF   SF           55        54.6781          0 
+  jai-saxena                   PDN|SF   SF           55        54.6781          0 
+  ricky-mentha                 PDN|SF   SF           55        54.6781          0 
+  ryda-luke                    PDN|SF   SF           55        54.6781          0 
+  toby-whan                    PDN|SF   SF           55        54.6781          0 
+  xavier-walsh                 RD|KPD   KPD         204       204.3741          0 
+  fred-rodriguez               RD|MID   MID         212       212.3999          0 
+  nick-driscoll                RD|MID   MID         212       212.3999          0 
+  riley-onley                  RD|MID   MID         212       212.3999          0 
+  aiden-riddle                 RD|RUCK  RUCK        372       372.0760          0 
+  joe-pike                     RD|RUCK  RUCK        372       372.0760          0 
+  harry-charleson              RD|SD    SD          255       254.6587          0 
+  asher-eastham                RD|SF    SF          201       200.7793          0 
+  leon-kickett                 RD|SF    SF          201       200.7793          0 
+  oscar-berry                  UNR|KPD  KPD          95        95.3980          0 
+  jacob-moss                   UNR|KPF  KPF          91        91.4029          0 
+  zak-evans                    UNR|MID  MID         265       264.7460          0 
+  jaime-uhr-henry              UNR|RUCK RUCK         80        79.6869          0 
+  patrick-carr                 UNR|RUCK RUCK         80        79.6869          0 
+  indy-cotton                  UNR|SD   SD          108       107.6964          0 
+
+  ============================================================================================================
+  IDENTITY, ND FRESH ENTRANTS (the P12 population)      46 of 46
+  IDENTITY, POOL ENTRANTS                               43 of 43
+  IDENTITY, WIRED POPULATION                            89 of 89
+  TOLERANCE 0 -- an exact integer equality, not a band. Mismatches: 0
+  ============================================================================================================
+
+  READING 2 -- THE LEGACY POSITION-BLIND READING, KEPT VISIBLE (PREREG_29B P29B-3).
+  ORDER 29's harness compared printed to curve[pick]. That comparison is NOT the identity this act
+  delivers and is NOT expected to hold; it is printed so the declared re-point is auditable.
+     printed == curve[pick] exactly:  0 of 46
+     ratio printed/all-in ladder:     min 0.1006   max 1.9415   mean 0.9532
+     (ORDER 29 measured on the ENTRY board: 0 of 46, min 0.3166 max 0.9037 mean 0.5274)
+
+     WHY THE TWO READINGS CANNOT BOTH BE 46 of 46: posv/curve = relat_g(pick), measured over these
+     46 rows at min 0.1005  max 1.9424  mean 0.9531. It is 1.0 on 0 of 46 rows.
+
+  E6 COHERENCE, re-asserted on the artifact the board was built from (o29_day0.py:79-84 verbatim):
+     published_pin / pooled_head_pre_scale = 0.9400914291048137
+     published s                           = 0.9400914291048137
+     |difference|                          = 0.000e+00   (_load_numeraire HALTs above 1e-9)

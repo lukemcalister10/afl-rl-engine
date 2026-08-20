@@ -1,0 +1,9 @@
+=== ORDER R CENSUS  tag=FCCAND  dials={'RL_O37': '1', 'RL_O38A': '1', 'RL_O38B1': '1', 'RL_O39_BETASAT': '0.105', 'RL_O40_CAPFORM': 'smooth', 'RL_O40_CAPPCT': '15', 'RL_O40_RECW': '0.47', 'RL_O40_PGMAT': '1', 'RL_O41_SDOFF': '2.98', 'RL_O41_CREDIT': '1', 'RL_O41_RESET': '1', 'RL_O41_INJ': '1', 'RL_O41_R3': '1', 'RL_O41_RAMP': '1', 'RL_O41_BREAK': 'unwind', 'RL_O41_UNWIND': '7', 'RL_O42': '1'} ===
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+board total (numeraire): 660578
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-final/docs/evidence/final_candidate_2026-08-19/os_census.py", line 87, in <module>
+    assert abs(r0 - RAW[k]) < 1e-6, 'identity broke on %s: %.6f vs %.6f' % (k, r0, RAW[k])
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: identity broke on noah-mraz: 2135.777679 vs 1112.505054

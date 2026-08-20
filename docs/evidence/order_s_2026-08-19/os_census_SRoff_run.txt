@@ -1,0 +1,98 @@
+=== ORDER R CENSUS  tag=SRoff  dials={'RL_O37': '1'} ===
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+board total (numeraire): 666434
+
+BURN CENSUS
+  -- the supervisor's population (|fK-fP|>=0.02), n=268
+     band         n  burned  pts(board)
+     1-10        43      24        1820
+     11-20       44      13         292
+     21-30       35      11          38
+     31-40       28       4          28
+     41+         51      13          60
+     pool        67      12          70
+     TOTAL      268      77        2308
+  -- all young rows, n=289
+     band         n  burned  pts(board)
+     1-10        49      24        1820
+     11-20       47      13         292
+     21-30       36      11          38
+     31-40       32       4          28
+     41+         54      13          60
+     pool        71      12          70
+     TOTAL      289      77        2308
+  worst five (all young rows):
+     Sam Lalor                1     age 20   22g  v0   3273 ->   1715     3060 ->   3395  (+335)
+     Willem Duursma           1     age 19   19g  v0   3273 ->   2674     3920 ->   4226  (+306)
+     Finn O'Sullivan          2     age 20   39g  v0   2869 ->   1180     2810 ->   3054  (+244)
+     Sam Cumming              7     age 19   14g  v0   1578 ->   1142     2007 ->   2149  (+142)
+     Harvey Langford          6     age 20   43g  v0   1579 ->   1370     2422 ->   2535  (+113)
+
+BIRTHDAY CENSUS — the price on the 24th birthday, with games and output UNCHANGED
+  age-23 rows with a pedigree leg: 81
+  rows that GAIN 50% or more from the birthday alone: 12
+  points handed back across all age-23 rows: NET +1533   GAINS ONLY +2271   (the two readings are
+  different objects and both are printed: the birthday RAISES some rows and LOWERS others)
+  worst ratio: 4.8904   rows moving at all: 70
+  band         n  gain50+   movers     net points     gains only
+  1-10        10        0        9           +157           +345
+  11-20        8        2        6           +657           +663
+  21-30       10        2        9           +319           +488
+  31-40        9        2        7           +188           +194
+  41+         13        4       12           +250           +303
+  pool        31        2       27            -38           +278
+  the five largest ratios:
+     Josh Sinn                12      30g       73 ->    357   x4.890
+     James Tunstill           41      23g       42 ->    176   x4.190
+     Mitchell Knevitt         25      23g       75 ->    245   x3.267
+     Corey Warner             40      28g       33 ->    104   x3.152
+     Oscar Adams              51      21g       50 ->    115   x2.300
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1146463006   (ORDER P point estimate 0.1146463006)
+  ORDER S EFFECTIVE: LAMBDA 0.1743833037 (ORDER P 0.1743833037) · THETA_R 0.6574385174 · TMAX 21.123282
+  CAP FORM hard clip · RECENCY w 1.0000  (the engine's own flat weighting) · MATURE PREMIUM off
+  THETA_R   0.6574385174   (ORDER P 0.6574385174)
+  TMAX      21.1232815488   (ORDER P 21.1232815488)   percentile p5, s_pQ -33.0613344987
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+
+DIAGNOSTIC IDENTITY  s_ped == s_age - pg : 0 of 715 rows disagree by more than 1e-9
+
+CHARGE DISTRIBUTION — the share of the pedigree leg removed
+  population                      n max charge      >90%      >75%      >50%    pts removed
+  all rows with a leg           715     97.28%         9        54       109          36300
+  carrying the new charge       289     97.28%         9        54       109          32924
+  the ten most heavily charged rows (CONSEQUENCES, NEVER TARGETS):
+     Zane Duursma             4     age 21    38g  v0   1975   charged  97.28%
+     Jhye Clark               8     age 22    33g  v0   1577   charged  96.16%
+     Campbell Chesser         14    age 23    39g  v0   1174   charged  95.35%
+     Josh Sinn                12    age 23    30g  v0   1286   charged  95.23%
+     James Tunstill           41    age 23    23g  v0    619   charged  95.03%
+     Mitchell Knevitt         25    age 23    23g  v0    842   charged  91.46%
+     Neil Erasmus             10    age 23    60g  v0   1575   charged  91.16%
+     Sid Draper               4     age 20    10g  v0   2479   charged  90.40%
+     Angus Hastie             33    age 21    19g  v0    367   charged  90.17%
+     Matthew Jefferson        15    age 22    21g  v0    759   charged  89.90%
+  by band:
+  band          n max charge      >90%      >75%      >50%
+  1-10        121     97.28%         4        12        17
+  11-20       112     95.35%         2        14        24
+  21-30        89     91.46%         1         9        19
+  31-40        64     90.17%         1         6        12
+  41+         129     95.03%         1         7        18
+  pool        200     87.43%         0         6        19
+
+THE NAMED ROWS — CONSEQUENCES, NEVER TARGETS
+  row                    pick   age  games      price     charge         v0
+  Zane Duursma              4    21     38        194    97.28%       1975
+  Josh Sinn                12    23     30         73    95.23%       1286
+  Campbell Chesser         14    23     39        167    95.35%       1174
+  Finn O'Sullivan           2    20     39       2810    80.16%       2869
+  Zeke Uwland               2    19     17       1486    84.66%       2454
+  Harley Reid               1    21     60       3723    15.89%       3273
+  Sam Darcy                 2    23     51       4450     0.00%       2180
+  Willem Duursma            1    19     19       3920    35.80%       3273
+  Sam Lalor                 1    20     22       3060    66.67%       3273
+
+wrote CENSUS_SRoff.json

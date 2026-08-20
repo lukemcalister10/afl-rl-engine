@@ -1,0 +1,77 @@
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+========================================================================================================================
+ORDER D7b — VERIFICATION OF THE THIRD WIRING SITE (read-only probe)
+========================================================================================================================
+  RL_O43 live in the engine namespace : _O43 = True
+  _D7_DFADE entries (fade pairs)      : 23
+  _D7_FLOOR entries (lifted rows)     : 23
+
+  o31_D is the D7b wrapper            : True   (inner fade recovered: True)
+  o31_D docstring is D7b              : True
+  _entry30b_price is NOT ratio-wrapped: True   (its code reads o31_D directly: True)
+
+------------------------------------------------------------------------------------------------------------------------
+D7B-F7 — Y==2026 ONLY. For every guarded row, wrapper(Y) must EQUAL inner(Y) at every Y != 2026.
+------------------------------------------------------------------------------------------------------------------------
+  guarded rows checked : 23   years per row : 9   TOTAL COMPARISONS : 207
+  MISMATCHES AT Y != 2026 : 0   PASS
+
+------------------------------------------------------------------------------------------------------------------------
+THE LIFT AT Y=2026 — a max, so it can only RAISE. (_dl = live/injury fade, _dh = healthy fade)
+------------------------------------------------------------------------------------------------------------------------
+  key                           _dl        _dh  inner(2026)  o31_D(2026)  raises?
+  blake-thredgold          0.739244   0.757330     0.739244     0.757330      yes
+  brayden-fiorini          1.000000   1.000000     1.000000     1.000000       no
+  connor-rozee             1.000000   1.000000     1.000000     1.000000       no
+  darcy-jones              1.000000   1.000000     1.000000     1.000000       no
+  harley-barker            0.571012   0.597191     0.571012     0.597191      yes
+  harry-armstrong          1.000000   1.000000     1.000000     1.000000       no
+  harry-edwards            1.000000   1.000000     1.000000     1.000000       no
+  jack-viney               1.000000   1.000000     1.000000     1.000000       no
+  jesse-motlop             0.736403   0.780238     0.736403     0.780238      yes
+  josh-sinn                1.000000   1.000000     1.000000     1.000000       no
+  joshua-kelly             1.000000   1.000000     1.000000     1.000000       no
+  kobe-mcdonald            0.426113   0.456208     0.426113     0.456208      yes
+  liam-hetherton           0.566367   0.592721     0.566367     0.592721      yes
+  max-king-syd             0.464716   0.494098     0.464716     0.494098      yes
+  mitchell-hinge           0.886315   0.886315     0.886315     0.886315       no
+  nicholas-martin          1.000000   1.000000     1.000000     1.000000       no
+  noah-chamberlain         0.426113   0.456208     0.426113     0.456208      yes
+  ollie-lord               0.947407   0.947407     0.947407     0.947407       no
+  riley-garcia             0.443000   0.443000     0.443000     0.443000       no
+  sam-allen                0.540664   0.567928     0.540664     0.567928      yes
+  sam-powell-pepper        1.000000   1.000000     1.000000     1.000000       no
+  thomas-sims              1.000000   1.000000     1.000000     1.000000       no
+  tom-green                1.000000   1.000000     1.000000     1.000000       no
+  ROWS WHERE THE WRAPPER LOWERED THE FADE : 0   PASS (a max can only raise)
+
+------------------------------------------------------------------------------------------------------------------------
+D7B-F8 — THE RISER IS UNTOUCHED. A row whose injury regime already prices at or above its
+healthy counterpart carries NO fade pair, so the max cannot reach him. The shield is not a charge.
+------------------------------------------------------------------------------------------------------------------------
+  ollie-murphy       in _D7_DFADE = False   in _D7_FLOOR = False   o31_D=0.503262  inner=0.503262  IDENTICAL=True
+  ollie-murphy       emitted year-0 = int(round(derived_v0 * o31_D)) = 200
+
+------------------------------------------------------------------------------------------------------------------------
+THE SEVEN ROWS THAT PREVIOUSLY DIVERGED — the emitter arithmetic against DAY0_CP.json (UNTOUCHED).
+  EMITTER = int(round(derived_v0 * o31_D))  [emit_matrix_31f.py:143]
+  PREDICT = _entry30b_price  [the engine's day-0 predicate, :5109-5112, built on the SAME o31_D]
+  DOUBLE  = what BOTH D7 sites firing would have produced: _d0*_dh^2/_dl  -- REFUSED BY DESIGN
+------------------------------------------------------------------------------------------------------------------------
+  key                    derived_v0      o31_D    PREDICT     DOUBLE  EMITTER      REF       ok
+  harley-barker            843.1285   0.597191   503.5089     526.59      504      504       OK
+  blake-thredgold          503.3750   0.757330   381.2208     390.55      381      381       OK
+  sam-allen                791.8153   0.567928   449.6938     472.37      450      450       OK
+  max-king-syd             278.3691   0.494098   137.5416     146.24      138      138       OK
+  noah-chamberlain          86.6490   0.456208    39.5300      42.32       40       40       OK
+  liam-hetherton           117.3045   0.592721    69.5288      72.76       70       70       OK
+  kobe-mcdonald             87.0299   0.456208    39.7037      42.51       40       40       OK
+  ollie-murphy             398.3583   0.503262   200.4784          -      200      200       OK
+
+  EMITTER vs REFERENCE mismatches on these rows : 0   PASS
+
+========================================================================================================================
+  THE EMITTER ARITHMETIC OVER ALL WIRED ENTRANTS : 89 of 89 reproduce DAY0_CP.json EXACTLY  PASS
+========================================================================================================================
+  THE REFERENCE IS NOT TOUCHED. THE EMITTER IS NOT TOUCHED. PRICED, NOT ADOPTED.

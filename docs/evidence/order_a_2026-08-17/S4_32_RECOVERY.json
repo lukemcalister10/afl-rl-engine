@@ -1,0 +1,246 @@
+{
+ "c32_matrix_md5": "f43003083af56e4d5074e0f38c2bb605",
+ "early_wins_retained": [
+  4,
+  4
+ ],
+ "instrument": "order32_s4_2026-08-17/s4_shootout.py",
+ "instrument_md5": "241842f61ddd3c486f04f201a7efcce9",
+ "median_recovery_oldlaw_cells": 0.5307635285396556,
+ "oldlaw_cells_flipped": [
+  [
+   6,
+   "dv1",
+   "tie"
+  ]
+ ],
+ "order": "ORDER A / Candidate 32 \u2014 S4 mid-career rescore (A6, report-only)",
+ "primary_cells": [
+  {
+   "N": 1,
+   "c32_ci": [
+    0.0702,
+    0.1061
+   ],
+   "c32_delta": 0.087,
+   "c32_verdict": "candidate",
+   "hz": "dv1",
+   "m2_c32": "tie",
+   "m2_s4": "tie",
+   "n": 1201,
+   "recovery": -0.024734982332155375,
+   "rho_c31": 0.5698,
+   "rho_c32": 0.5719,
+   "rho_old": 0.4849,
+   "s4_verdict": "candidate"
+  },
+  {
+   "N": 1,
+   "c32_ci": [
+    0.0317,
+    0.0663
+   ],
+   "c32_delta": 0.0489,
+   "c32_verdict": "candidate",
+   "hz": "dvrest",
+   "m2_c32": "tie",
+   "m2_s4": "tie",
+   "n": 1201,
+   "recovery": -0.010330578512395557,
+   "rho_c31": 0.5763,
+   "rho_c32": 0.5768,
+   "rho_old": 0.5279,
+   "s4_verdict": "candidate"
+  },
+  {
+   "N": 2,
+   "c32_ci": [
+    0.0272,
+    0.0638
+   ],
+   "c32_delta": 0.0453,
+   "c32_verdict": "candidate",
+   "hz": "dv1",
+   "m2_c32": "candidate",
+   "m2_s4": "candidate",
+   "n": 1137,
+   "recovery": -0.06823529411764741,
+   "rho_c31": 0.6681,
+   "rho_c32": 0.671,
+   "rho_old": 0.6256,
+   "s4_verdict": "candidate"
+  },
+  {
+   "N": 2,
+   "c32_ci": [
+    0.0205,
+    0.0571
+   ],
+   "c32_delta": 0.0388,
+   "c32_verdict": "candidate",
+   "hz": "dvrest",
+   "m2_c32": "candidate",
+   "m2_s4": "candidate",
+   "n": 1137,
+   "recovery": -0.1513353115726998,
+   "rho_c31": 0.6772,
+   "rho_c32": 0.6823,
+   "rho_old": 0.6435,
+   "s4_verdict": "candidate"
+  },
+  {
+   "N": 3,
+   "c32_ci": [
+    0.0072,
+    0.0313
+   ],
+   "c32_delta": 0.0192,
+   "c32_verdict": "candidate",
+   "hz": "dv1",
+   "m2_c32": "candidate",
+   "m2_s4": "candidate",
+   "n": 955,
+   "recovery": -0.6695652173913105,
+   "rho_c31": 0.6767,
+   "rho_c32": 0.6844,
+   "rho_old": 0.6652,
+   "s4_verdict": "tie"
+  },
+  {
+   "N": 3,
+   "c32_ci": [
+    0.0002,
+    0.0256
+   ],
+   "c32_delta": 0.0127,
+   "c32_verdict": "candidate",
+   "hz": "dvrest",
+   "m2_c32": "candidate",
+   "m2_s4": "candidate",
+   "n": 955,
+   "recovery": 5.884615384615314,
+   "rho_c31": 0.689,
+   "rho_c32": 0.7043,
+   "rho_old": 0.6916,
+   "s4_verdict": "tie"
+  },
+  {
+   "N": 4,
+   "c32_ci": [
+    -0.0153,
+    -0.0002
+   ],
+   "c32_delta": -0.0076,
+   "c32_verdict": "oldlaw",
+   "hz": "dv1",
+   "m2_c32": "tie",
+   "m2_s4": "tie",
+   "n": 807,
+   "recovery": 0.6180904522613045,
+   "rho_c31": 0.6814,
+   "rho_c32": 0.6937,
+   "rho_old": 0.7013,
+   "s4_verdict": "oldlaw"
+  },
+  {
+   "N": 4,
+   "c32_ci": [
+    -0.0154,
+    -0.0003
+   ],
+   "c32_delta": -0.0077,
+   "c32_verdict": "oldlaw",
+   "hz": "dvrest",
+   "m2_c32": "tie",
+   "m2_s4": "oldlaw",
+   "n": 807,
+   "recovery": 0.6652173913043495,
+   "rho_c31": 0.7285,
+   "rho_c32": 0.7438,
+   "rho_old": 0.7515,
+   "s4_verdict": "oldlaw"
+  },
+  {
+   "N": 5,
+   "c32_ci": [
+    -0.0129,
+    -0.0006
+   ],
+   "c32_delta": -0.0066,
+   "c32_verdict": "oldlaw",
+   "hz": "dv1",
+   "m2_c32": "tie",
+   "m2_s4": "tie",
+   "n": 680,
+   "recovery": 0.53521126760563,
+   "rho_c31": 0.7035,
+   "rho_c32": 0.7111,
+   "rho_old": 0.7177,
+   "s4_verdict": "oldlaw"
+  },
+  {
+   "N": 5,
+   "c32_ci": [
+    -0.0143,
+    -0.0021
+   ],
+   "c32_delta": -0.008,
+   "c32_verdict": "oldlaw",
+   "hz": "dvrest",
+   "m2_c32": "oldlaw",
+   "m2_s4": "oldlaw",
+   "n": 680,
+   "recovery": 0.5238095238095244,
+   "rho_c31": 0.7483,
+   "rho_c32": 0.7571,
+   "rho_old": 0.7651,
+   "s4_verdict": "oldlaw"
+  },
+  {
+   "N": 6,
+   "c32_ci": [
+    -0.009,
+    0.0017
+   ],
+   "c32_delta": -0.0036,
+   "c32_verdict": "tie",
+   "hz": "dv1",
+   "m2_c32": "tie",
+   "m2_s4": "tie",
+   "n": 574,
+   "recovery": 0.5263157894736812,
+   "rho_c31": 0.7258,
+   "rho_c32": 0.7298,
+   "rho_old": 0.7334,
+   "s4_verdict": "oldlaw"
+  },
+  {
+   "N": 6,
+   "c32_ci": [
+    -0.0111,
+    -0.0014
+   ],
+   "c32_delta": -0.0062,
+   "c32_verdict": "oldlaw",
+   "hz": "dvrest",
+   "m2_c32": "tie",
+   "m2_s4": "tie",
+   "n": 574,
+   "recovery": 0.3980582524271847,
+   "rho_c31": 0.7909,
+   "rho_c32": 0.795,
+   "rho_old": 0.8012,
+   "s4_verdict": "oldlaw"
+  }
+ ],
+ "substitutions": [
+  {
+   "from": "CAND_P = SP + '/per_entrant_O31FFINAL.json'",
+   "to": "CAND_P = SP + '/per_entrant_O32RFINAL.json'"
+  },
+  {
+   "from": "with open(os.path.join(HERE, 'RESULTS_S4.json'), 'w') as f:",
+   "to": "with open('/home/user/afl-rl-engine/.claude/worktrees/agent-a9b412b92decdb5b8/docs/evidence/order_a_2026-08-17/RESULTS_S4_32.json', 'w') as f:"
+  }
+ ]
+}

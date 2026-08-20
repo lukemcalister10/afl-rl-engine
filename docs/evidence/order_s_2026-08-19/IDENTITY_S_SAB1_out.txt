@@ -1,0 +1,10 @@
+======================================================================================================================
+ORDER S — FALSIFIER S-F3. THE FIX A DECOMPOSITION IDENTITY UNDER EVERY ORDER S DIAL.
+======================================================================================================================
+  For every real row: does o38_parts' reconstruction of the surplus at the row's OWN entry price
+  equal the engine's own o37_surplus, to 1e-9? If it does not, FIX A is monotonising the wrong
+  object and every A-on board in this packet is wrong.
+
+  dial line     rows   worst |diff|        verdict   dials
+  SAB1          715      1.421e-14           PASS   RL_O37=1 RL_O38A=1 RL_O38B1=1
+

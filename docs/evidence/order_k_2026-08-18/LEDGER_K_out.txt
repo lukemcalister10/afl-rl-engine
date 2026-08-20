@@ -1,0 +1,83 @@
+boards: {'cand': '1f176444', 'tallJ': 'd1058fe0', 'tallK': 'eb4b8f04', 's1': '0423c8b2', 'cw': 'a7d149d1', 'K': 'f3101883'}
+ledger rows: 804 of 804 C31 rows
+totals: {'live': 752429, 'cand31': 666913, 'landing': 667916, 'orderk': 673097, 'leg_tall': 1255, 'leg_s1': 12857, 'leg_cw': -8875, 'leg_floor': -60, 'residual': -56}
+
+ORDER K vs the landing candidate: 493 of 804 rows move, 124 of them aged 24+
+the FADE FLOOR FIX alone moves 72 rows (-60 board points net)
+
+row                     age  pick    g     live      C31  landing   ORDER K | leg TALL   leg S1   leg CW  leg FLR  resid
+Harry Dean               19     3   17     2577     2670     2400      2403 |       +0     +221     -218       +0     +0
+Cooper Duff-Tytler       19     4   13     1561     1832     1572      1505 |       +0      +85     -152       +0     +0
+Xavier Taylor            19    11    2      802     1288     1176      1162 |       +0      +15      -29       +0     +0
+Daniel Annable           19     6    2     1395     1633     1530      1537 |       +0      +40      -33       +0     +0
+Dylan Patterson          19     5    5     1628     1675     1467      1440 |       +0      +48      -75       +0     +0
+Oskar Taylor             19    15    0      629      529      596       596 |       +0       +0       +0      -15     +0
+Josh Smillie             20     7    0      953      459      772       772 |       +0       +0       +0      -79     +0
+Will Brodie              28     9   55      773      702      791       788 |       +0       +0       -3      -21     +0
+Campbell Chesser         23    14   39      330      352      332       333 |       +0       +7       -6       -6     +0
+James Leake              21    17    8      563      501      457       438 |       +0      +16      -35       -2     +0
+Tom Brown                23    17   58      493      445      507       515 |       +0      +10       -2       -2     +0
+Sam Sturt                26    17   31       50      104       77        75 |       +0       +0       -2       -1     +0
+Chris Scerri             20  None    7      459      232      313       321 |       +0      +26      -18       +0     +0
+Thomas Burton            19  None    5      439      213      309       323 |       +0      +24      -10       +0     +0
+Milan Murdock            26  None   17      208      187      170       156 |       +0       +0      -14       +0     +0
+Will Green               21    16    1      604      338      483       621 |     +141       +3       -2       +0     -4
+Toby Conway              23    24    6      503      729      855       899 |      +86       +2      -37       +0     -7
+William McCabe           21    19    4      599      316      410       474 |      +70      +10      -11       +0     -5
+Alex Dodson              20    53    1      274      175      171       198 |      +16       +6       +4       +0     +1
+Steely Green             22    55   43      150       60       80        76 |       -4       +2       -2       +0     +0
+Isaac Kako               20    13   36     1413      806      788       832 |       +0      +68      -24       +0     +0
+Alix Tauru               20    10   18     1684     1005      920       881 |       +0      +40      -79       +0     +0
+Jedd Busslinger          22    13   15      916      469      579       605 |      +53      +26      -49       +0     -4
+Noah Mraz                20    35    4     1769     1147     1795      2019 |      +28     +208      -10       +0     -2
+Murphy Reid              20    17   45     4141     3139     3147      3383 |       +0     +277      -41       +0     +0
+Taylor Goad              21    20    2      730      439      580       728 |     +142      +13       +0       +0     -7
+
+TOP 20 UP — ORDER K vs the landing candidate:
+  Murphy Reid                SF     20   17  45g    3147 ->   3383   +236   [tall +0 · S1 +277 · CW -41]
+  Noah Mraz                  KPD    20   35   4g    1795 ->   2019   +224   [tall +28 · S1 +208 · CW -10]
+  Logan Morris               KPF    21   31  65g    2682 ->   2889   +207   [tall +0 · S1 +213 · CW -6]
+  Levi Ashcroft              MID    20    5  48g    3173 ->   3365   +192   [tall +0 · S1 +226 · CW -34]
+  Colby McKercher            MID    21    2  60g    3977 ->   4167   +190   [tall +0 · S1 +204 · CW -14]
+  Darcy Wilson               SF     21   18  61g    2649 ->   2818   +169   [tall +0 · S1 +177 · CW -8]
+  Joel Freijah               MID    21   45  57g    2336 ->   2500   +164   [tall +0 · S1 +174 · CW -10]
+  Connor O'Sullivan          KPD    21   11  47g    2376 ->   2539   +163   [tall +0 · S1 +189 · CW -26]
+  Harvey Thomas              MID    21   59  60g    1791 ->   1954   +163   [tall +0 · S1 +169 · CW -6]
+  Nick Watson                SF     21    5  61g    3345 ->   3507   +162   [tall +0 · S1 +173 · CW -11]
+  Harley Reid                MID    21    1  60g    3634 ->   3786   +152   [tall +0 · S1 +165 · CW -13]
+  Taylor Goad                RUCK   21   20   2g     580 ->    728   +148   [tall +142 · S1 +13 · CW +0]
+  Finn O'Sullivan            MID    20    2  39g    3317 ->   3462   +145   [tall +0 · S1 +219 · CW -74]
+  Ryley Sanders              MID    21    6  54g    3364 ->   3508   +144   [tall +0 · S1 +164 · CW -20]
+  Harry Barnett              RUCK   22   23   2g     601 ->    740   +139   [tall +142 · S1 +8 · CW -5]
+  Harvey Langford            MID    20    6  43g    2362 ->   2500   +138   [tall +0 · S1 +176 · CW -38]
+  Will Green                 RUCK   21   16   1g     483 ->    621   +138   [tall +141 · S1 +3 · CW -2]
+  Hugo Garcia                MID    21   50  47g    2322 ->   2444   +122   [tall +0 · S1 +146 · CW -24]
+  Harry Sheezel              MID    22    3  88g   10307 ->  10428   +121   [tall +0 · S1 +123 · CW -2]
+  Archie Roberts             SD     21   54  46g    3441 ->   3561   +120   [tall +0 · S1 +157 · CW -37]
+
+TOP 20 DOWN — ORDER K vs the landing candidate:
+  Ned Moyle                  RUCK   24    5  27g    1645 ->   1568    -77   [tall +0 · S1 +0 · CW -77]
+  Sid Draper                 MID    20    4  10g    1339 ->   1267    -72   [tall +0 · S1 +55 · CW -127]
+  Zeke Uwland                SD     19    2  17g    2017 ->   1949    -68   [tall +0 · S1 +104 · CW -172]
+  Cooper Duff-Tytler         KPF    19    4  13g    1572 ->   1505    -67   [tall +0 · S1 +85 · CW -152]
+  Lachlan McAndrew           RUCK   26 None  22g     897 ->    841    -56   [tall +0 · S1 +0 · CW -56]
+  Marcus Herbert             SD     24   13  15g     746 ->    690    -56   [tall +0 · S1 +0 · CW -56]
+  Jagga Smith                MID    20    3  20g    3689 ->   3637    -52   [tall +0 · S1 +225 · CW -277]
+  Alix Tauru                 KPD    20   10  18g     920 ->    881    -39   [tall +0 · S1 +40 · CW -79]
+  Tobie Travaglia            SD     20    8  17g     560 ->    521    -39   [tall +0 · S1 +11 · CW -50]
+  Clay Hall                  MID    21   38  16g     372 ->    336    -36   [tall +0 · S1 +5 · CW -41]
+  Luke Beecken               MID    25   16   1g     211 ->    176    -35   [tall -31 · S1 +0 · CW -4]
+  Ben Camporeale             MID    20   43   0g     157 ->    123    -34   [tall -34 · S1 +0 · CW +0]
+  Latrelle Pickett           SF     21   12  15g     478 ->    446    -32   [tall +0 · S1 +17 · CW -49]
+  Harry Kyle                 SD     19   14   7g     957 ->    925    -32   [tall +0 · S1 +34 · CW -66]
+  Mani Liddy                 MID    24   15  16g     153 ->    122    -31   [tall -18 · S1 +0 · CW -15]
+  Jordan Croft               KPF    21   15  18g     563 ->    533    -30   [tall +0 · S1 +16 · CW -46]
+  Harry Armstrong            KPF    20   23  11g     607 ->    577    -30   [tall +0 · S1 +23 · CW -53]
+  Elijah Tsatas              MID    22    5  22g    1107 ->   1078    -29   [tall +0 · S1 +36 · CW -65]
+  Zac Walker                 SD     20   11   0g     182 ->    153    -29   [tall -29 · S1 +0 · CW +0]
+  Thomas Sims                KPF    20   28  11g     745 ->    717    -28   [tall +0 · S1 +37 · CW -65]
+
+age profile of the rows that move: {19: 70, 20: 85, 21: 74, 22: 60, 23: 80, 24: 45, 25: 26, 26: 20, 27: 8, 28: 16, 29: 6, 30: 1, 33: 2}
+pathway profile: {'ND': 329, 'PDA': 12, 'RD': 35, 'MSD': 58, 'SSP': 25, 'PDN': 13, 'UNR': 11, 'IRE': 10}
+
+wrote docs/ledgers/ORDER_K_MOVERS.json

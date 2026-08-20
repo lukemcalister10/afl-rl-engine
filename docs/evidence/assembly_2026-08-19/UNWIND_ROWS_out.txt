@@ -1,0 +1,73 @@
+==========================================================================================================================
+D4 + D5 — THE RAMP FOLDED IN, AND THE THREE RUN-BREAK RULES SIDE BY SIDE
+==========================================================================================================================
+
+  board                                                 md5       total   R3 marginal    rows
+  before R3 at all                                 1270991c     666,263             —       0
+  binary, NO ramp — the PREVIOUS candidate         81cf787b     665,238        -1,025       9
+  *** binary + RAMP FOLDED IN = THE CANDIDATE ***   db1ccef5     665,249        -1,014      17
+  fractional + ramp (priced v754)                  d0efbbce     649,988       -16,275     122
+  unwind U0=5 + ramp (priced v755, THE OWNER'S SHAPE)   a411487e     660,681        -5,582      52
+
+  IDENTITIES:
+    every ORDER 41 dial OFF            -> 374d4e44  reproduces ORDER P 374d4e44 (D-A1 did not fire)
+    the last pre-R3 lever board        -> 1270991c  byte-identical to 1270991c — the edit cannot reach it (D-A7 did not fire)
+
+==========================================================================================================================
+D4 — WHAT FOLDING THE RAMP IN COST, MEASURED RATHER THAN ASSUMED
+==========================================================================================================================
+  the ramp moves 8 rows, +11 board points in total.
+  row                               delta     before      after
+  Clay Hall                            +6        409        415
+  Elijah Hollands                      +3        630        633
+  Max King                             +1        247        248
+  Jamarra Ugle-Hagan                   +1        254        255
+  Matthew Flynn                        -1        505        504
+  Nikolas Cox                          -1        109        108
+  Cody Weightman                       +1        141        142
+  Lachlan Fogarty                      +1         47         48
+
+  The ramp is a DEPTH convention: it prorates the in-progress season's contribution to an absence
+  clock concavely (f**1.5) instead of linearly, so early-season absence counts for less and
+  late-season absence for more. It is the engine's OWN already-ruled shape, used at two existing
+  sites for exactly this question. It is deliberately NOT applied to the I1 credit, which is a
+  participation weight — the engine's own comment at the D12 site gives that reason and it stands.
+
+==========================================================================================================================
+THE NAMED ROWS — BINARY (the candidate) vs UNWIND (the owner's shape). ILLUSTRATIONS, NOT TARGETS.
+==========================================================================================================================
+  u(g) = min(1, g/5). A row with 5+ games this season is FULLY unwound and pays nothing.
+
+  row                  g 2026    u(g)    pre-R3    BINARY    UNWIND   what the unwind does
+  Will Brodie               1   0.200       767       767       147   *** STRIPPED — binary shielded him, unwind charges 620 ***
+  Toby Conway               0   0.000      1066       460       460   identical under both
+  Harry Barnett             0   0.000       674       422       422   identical under both
+  Charlie Edwards           2   0.400       468       468       284   *** STRIPPED — binary shielded him, unwind charges 184 ***
+  Nick Madden               7   1.000      1064      1064      1064   untouched by either rule
+  Noah Mraz                 4   0.800      2029      2029      1232   *** STRIPPED — binary shielded him, unwind charges 797 ***
+  Jedd Busslinger           8   1.000       801       801       801   untouched by either rule
+  Taylor Goad               2   0.400       728       728       437   *** STRIPPED — binary shielded him, unwind charges 291 ***
+  Dante Visentini          13   1.000       807       807       807   untouched by either rule
+  Vigo Visentini            1   0.200       295       295       188   *** STRIPPED — binary shielded him, unwind charges 107 ***
+
+==========================================================================================================================
+THE WHOLE-BOARD READ — the three rules against each other
+==========================================================================================================================
+  BINARY      -> UNWIND          -4568 board points on   36 rows  (36 down, 0 up)
+  UNWIND      -> FRACTIONAL     -10693 board points on   92 rows  (92 down, 0 up)
+  BINARY      -> FRACTIONAL     -15261 board points on  109 rows  (109 down, 0 up)
+
+  MEASURED AGAINST THE RAMP-ON, R3-OFF BASELINE 5cc1fca4 (666,274) — so these are R3 ALONE, with the
+  ramp's own 8 rows held out of the count rather than silently attributed to the collector.
+  rows R3 charges under binary     :    9   total -1025
+  rows R3 charges under unwind     :   45   total -5593
+  rows R3 charges under fractional :  118   total -16286
+
+  THE ORDERING, AS PREREGGED (P-D-3): unwind saturates at 5 games where the F1 credit curve
+  saturates at 11, so MORE rows break their run under unwind and it should collect LESS than
+  fractional and MORE than binary. Built ordering above.
+
+  THE SHIELD POPULATION — rows whose run is broken by a season of <= 2 games: 52
+    R3 take on them, BINARY : +0
+    R3 take on them, UNWIND : -2172
+    R3 take on them, FRACTNL: -3105

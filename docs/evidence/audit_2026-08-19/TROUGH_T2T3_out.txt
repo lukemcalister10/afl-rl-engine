@@ -1,0 +1,57 @@
+========================================================================================================
+T2 / T3 — THE EARLY-SIGNAL AUDIT
+========================================================================================================
+  balanced rows (>= 6 observed years, PRIMARY): 1078
+  SUCCESS bar = top quartile of realized peak over ALL of them = 2439 board points (absolute,
+  band-independent). 270 of 1078 rows clear it.
+
+--------------------------------------------------------------------------------------------------------
+SEPARATION AT YEAR 1, BY BAND GROUP (AUC; 0.50 = the observable says nothing)
+--------------------------------------------------------------------------------------------------------
+  picks 1-20         n=340  successes=175 (51%)   ok
+     games in year 1              AUC 0.752  90% CI [0.709, 0.796]   INFORMATIVE
+     average when played, yr 1    AUC 0.780  90% CI [0.735, 0.825]   INFORMATIVE
+     total output yr1 (g x avg)   AUC 0.774  90% CI [0.734, 0.817]   INFORMATIVE
+     entry age (younger=better)   AUC 0.509  90% CI [0.479, 0.538]   none
+     RETAINED into year 2         AUC 0.515  90% CI [0.506, 0.527]   INFORMATIVE
+
+  picks 21-30        n=170  successes=41  (24%)   ok
+     games in year 1              AUC 0.757  90% CI [0.680, 0.825]   INFORMATIVE
+     average when played, yr 1    AUC 0.749  90% CI [0.663, 0.824]   INFORMATIVE
+     total output yr1 (g x avg)   AUC 0.770  90% CI [0.694, 0.835]   INFORMATIVE
+     entry age (younger=better)   AUC 0.496  90% CI [0.442, 0.548]   none
+     RETAINED into year 2         AUC 0.554  90% CI [0.532, 0.576]   INFORMATIVE
+
+  picks 31-64        n=568  successes=54  (10%)   ok
+     games in year 1              AUC 0.687  90% CI [0.630, 0.747]   INFORMATIVE
+     average when played, yr 1    AUC 0.669  90% CI [0.589, 0.747]   INFORMATIVE
+     total output yr1 (g x avg)   AUC 0.699  90% CI [0.639, 0.760]   INFORMATIVE
+     entry age (younger=better)   AUC 0.461  90% CI [0.403, 0.520]   none
+     RETAINED into year 2         AUC 0.612  90% CI [0.597, 0.626]   INFORMATIVE
+
+    of which 31-40   n=170  successes=25  (15%)   THIN
+     games in year 1              AUC 0.676  90% CI [0.581, 0.768]   INFORMATIVE
+     average when played, yr 1    AUC 0.688  90% CI [0.559, 0.811]   INFORMATIVE
+     total output yr1 (g x avg)   AUC 0.686  90% CI [0.587, 0.780]   INFORMATIVE
+     entry age (younger=better)   AUC 0.314  90% CI [0.229, 0.402]   INVERSE
+     RETAINED into year 2         AUC 0.586  90% CI [0.560, 0.612]   INFORMATIVE
+
+    of which 41-64   n=398  successes=29  (7%)   THIN
+     games in year 1              AUC 0.695  90% CI [0.616, 0.769]   INFORMATIVE
+     average when played, yr 1    AUC 0.650  90% CI [0.548, 0.747]   INFORMATIVE
+     total output yr1 (g x avg)   AUC 0.704  90% CI [0.625, 0.780]   INFORMATIVE
+     entry age (younger=better)   AUC 0.567  90% CI [0.504, 0.630]   INFORMATIVE
+     RETAINED into year 2         AUC 0.622  90% CI [0.605, 0.641]   INFORMATIVE
+
+--------------------------------------------------------------------------------------------------------
+T3 — THE TEST OF THE OWNER'S CLAIM: is the early-signal deficit LARGER for late picks?
+--------------------------------------------------------------------------------------------------------
+  signal                           picks 1-20    picks 21-30    picks 31-64
+  games in year 1                       0.752          0.757          0.687
+  average when played, yr 1             0.780          0.749          0.669
+  total output yr1 (g x avg)            0.774          0.770          0.699
+  entry age (younger=better)            0.509          0.496          0.461
+  RETAINED into year 2                  0.515          0.554          0.612
+
+  (AUC closer to 0.50 = the year-1 observable carries LESS information about who becomes
+  valuable. The owner predicts the late-pick column sits closer to 0.50.)

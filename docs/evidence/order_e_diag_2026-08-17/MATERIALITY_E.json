@@ -1,0 +1,660 @@
+{
+ "lane": "RL_O32=1",
+ "PLF": 1.0524,
+ "base": {
+  "harry-dean": 2400.49409271952,
+  "cooper-duff-tytler": 1571.566095344371,
+  "milan-murdock": 169.84903875478332,
+  "levi-ashcroft": 3173.2089533692965,
+  "connor-o-sullivan": 2375.8358462524993,
+  "logan-morris": 2681.5960772990097
+ },
+ "base_phat": {
+  "harry-dean": 2686.1217702866343,
+  "cooper-duff-tytler": 1622.2713657338095,
+  "milan-murdock": 208.57088559483088,
+  "levi-ashcroft": 3278.5822881033832,
+  "connor-o-sullivan": 2705.086269491576,
+  "logan-morris": 3022.416673565587
+ },
+ "results": [
+  {
+   "site": "S1-IDENT",
+   "desc": "S1 loops re-implemented with Delta==0 (must be all-zero)",
+   "note": "",
+   "after": {
+    "harry-dean": 2400.49409271952,
+    "cooper-duff-tytler": 1571.566095344371,
+    "milan-murdock": 169.84903875478332,
+    "levi-ashcroft": 3173.2089533692965,
+    "connor-o-sullivan": 2375.8358462524993,
+    "logan-morris": 2681.5960772990097
+   },
+   "dboard": {
+    "harry-dean": 0.0,
+    "cooper-duff-tytler": 0.0,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 0.0,
+    "logan-morris": 0.0
+   },
+   "dphat": {
+    "harry-dean": 0.0,
+    "cooper-duff-tytler": 0.0,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 0.0,
+    "logan-morris": 0.0
+   }
+  },
+  {
+   "site": "S1",
+   "desc": "projection replacement bar -> age-referenced",
+   "note": "",
+   "after": {
+    "harry-dean": 3243.9460260822875,
+    "cooper-duff-tytler": 2019.9693619712255,
+    "milan-murdock": 169.84903875478332,
+    "levi-ashcroft": 3811.1831763708187,
+    "connor-o-sullivan": 2870.5345932833234,
+    "logan-morris": 3220.457802806197
+   },
+   "dboard": {
+    "harry-dean": 843.4519333627677,
+    "cooper-duff-tytler": 448.4032666268545,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 637.9742230015222,
+    "connor-o-sullivan": 494.69874703082405,
+    "logan-morris": 538.8617255071872
+   },
+   "dphat": {
+    "harry-dean": 1430.862166661278,
+    "cooper-duff-tytler": 819.2051116346902,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 815.0703154694033,
+    "connor-o-sullivan": 635.9864032951009,
+    "logan-morris": 632.5292434880043
+   }
+  },
+  {
+   "site": "S2-V5",
+   "desc": "flat future discount -> owner V5 age ladder",
+   "note": "",
+   "after": {
+    "harry-dean": 2557.6749931151217,
+    "cooper-duff-tytler": 1661.540019050903,
+    "milan-murdock": 169.08727447109933,
+    "levi-ashcroft": 3298.1887715431594,
+    "connor-o-sullivan": 2428.1756038072253,
+    "logan-morris": 2740.318908691988
+   },
+   "dboard": {
+    "harry-dean": 157.18090039560184,
+    "cooper-duff-tytler": 89.9739237065321,
+    "milan-murdock": -0.7617642836839877,
+    "levi-ashcroft": 124.9798181738629,
+    "connor-o-sullivan": 52.33975755472602,
+    "logan-morris": 58.72283139297815
+   },
+   "dphat": {
+    "harry-dean": 266.64732725331305,
+    "cooper-duff-tytler": 164.37680922507025,
+    "milan-murdock": -1.2922843025465625,
+    "levi-ashcroft": 159.6731280881795,
+    "connor-o-sullivan": 67.2881715515914,
+    "logan-morris": 68.9303143241682
+   }
+  },
+  {
+   "site": "S2-V3",
+   "desc": "flat future discount -> owner V3 age ladder",
+   "note": "",
+   "after": {
+    "harry-dean": 2869.9779450974756,
+    "cooper-duff-tytler": 1840.4995808137644,
+    "milan-murdock": 171.070102091865,
+    "levi-ashcroft": 3733.0001337236135,
+    "connor-o-sullivan": 2721.9501135340392,
+    "logan-morris": 3069.7503610311333
+   },
+   "dboard": {
+    "harry-dean": 469.4838523779558,
+    "cooper-duff-tytler": 268.9334854693934,
+    "milan-murdock": 1.221063337081688,
+    "levi-ashcroft": 559.791180354317,
+    "connor-o-sullivan": 346.1142672815399,
+    "logan-morris": 388.15428373212353
+   },
+   "dphat": {
+    "harry-dean": 796.4492766620756,
+    "cooper-duff-tytler": 491.32489074749856,
+    "milan-murdock": 2.071455720258456,
+    "levi-ashcroft": 715.1843405549225,
+    "connor-o-sullivan": 444.96568729694036,
+    "logan-morris": 455.6251146147388
+   }
+  },
+  {
+   "site": "S3",
+   "desc": "v7 tail-relax gate lcr>4 -> age-referenced",
+   "note": "",
+   "after": {
+    "harry-dean": 2400.49409271952,
+    "cooper-duff-tytler": 1571.566095344371,
+    "milan-murdock": 169.84903875478332,
+    "levi-ashcroft": 3173.2089533692965,
+    "connor-o-sullivan": 2379.7707322151655,
+    "logan-morris": 2688.7414407260967
+   },
+   "dboard": {
+    "harry-dean": 0.0,
+    "cooper-duff-tytler": 0.0,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 3.934885962666158,
+    "logan-morris": 7.145363427086977
+   },
+   "dphat": {
+    "harry-dean": 0.0,
+    "cooper-duff-tytler": 0.0,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 5.05870286875097,
+    "logan-morris": 8.387404614287789
+   }
+  },
+  {
+   "site": "S4",
+   "desc": "un-compress rho margin -> age-referenced",
+   "note": "",
+   "after": {
+    "harry-dean": 2356.070992721053,
+    "cooper-duff-tytler": 1602.244180545077,
+    "milan-murdock": 169.84903875478332,
+    "levi-ashcroft": 3046.9640199726755,
+    "connor-o-sullivan": 2343.501720442947,
+    "logan-morris": 2871.909549745552
+   },
+   "dboard": {
+    "harry-dean": -44.42309999846702,
+    "cooper-duff-tytler": 30.678085200705937,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": -126.24493339662104,
+    "connor-o-sullivan": -32.33412580955246,
+    "logan-morris": 190.31347244654216
+   },
+   "dphat": {
+    "harry-dean": -75.36094304769176,
+    "cooper-duff-tytler": 56.04696950724133,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": -161.2894282873749,
+    "connor-o-sullivan": -41.56886287004818,
+    "logan-morris": 223.39466889930554
+   }
+  },
+  {
+   "site": "S5",
+   "desc": "_lvl_eff exposure shrink neutralized",
+   "note": "",
+   "after": {
+    "harry-dean": 2559.4273334937243,
+    "cooper-duff-tytler": 1584.5863085416763,
+    "milan-murdock": 210.5735548227128,
+    "levi-ashcroft": 3266.7132543739267,
+    "connor-o-sullivan": 2381.798066416135,
+    "logan-morris": 2469.936846447701
+   },
+   "dboard": {
+    "harry-dean": 158.93324077420448,
+    "cooper-duff-tytler": 13.020213197305338,
+    "milan-murdock": 40.72451606792947,
+    "levi-ashcroft": 93.50430100463018,
+    "connor-o-sullivan": 5.96222016363572,
+    "logan-morris": -211.65923085130862
+   },
+   "dphat": {
+    "harry-dean": 269.6200604366477,
+    "cooper-duff-tytler": 23.78712645437099,
+    "milan-murdock": 69.08653237045485,
+    "levi-ashcroft": 119.4602812618773,
+    "connor-o-sullivan": 7.665050660189991,
+    "logan-morris": -248.45084894760384
+   }
+  },
+  {
+   "site": "S6",
+   "desc": "_inferM1 upside-fade bar -> age-referenced",
+   "note": "",
+   "after": {
+    "harry-dean": 2400.49409271952,
+    "cooper-duff-tytler": 1571.566095344371,
+    "milan-murdock": 169.84903875478332,
+    "levi-ashcroft": 3173.2089533692965,
+    "connor-o-sullivan": 2415.7959240769183,
+    "logan-morris": 2681.5960772990097
+   },
+   "dboard": {
+    "harry-dean": 0.0,
+    "cooper-duff-tytler": 0.0,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 39.96007782441893,
+    "logan-morris": 0.0
+   },
+   "dphat": {
+    "harry-dean": 0.0,
+    "cooper-duff-tytler": 0.0,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 51.37281289568455,
+    "logan-morris": 0.0
+   }
+  },
+  {
+   "site": "S7",
+   "desc": "_est decliner-shed bar -> age-referenced",
+   "note": "",
+   "after": {
+    "harry-dean": 2400.49409271952,
+    "cooper-duff-tytler": 1571.566095344371,
+    "milan-murdock": 169.84903875478332,
+    "levi-ashcroft": 3173.2089533692965,
+    "connor-o-sullivan": 2375.8358462524993,
+    "logan-morris": 2681.5960772990097
+   },
+   "dboard": {
+    "harry-dean": 0.0,
+    "cooper-duff-tytler": 0.0,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 0.0,
+    "logan-morris": 0.0
+   },
+   "dphat": {
+    "harry-dean": 0.0,
+    "cooper-duff-tytler": 0.0,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 0.0,
+    "logan-morris": 0.0
+   }
+  },
+  {
+   "site": "S18",
+   "desc": "D8 staleness qv denominator -> age-referenced",
+   "note": "",
+   "after": {
+    "harry-dean": 2400.49409271952,
+    "cooper-duff-tytler": 1571.566095344371,
+    "milan-murdock": 169.84903875478332,
+    "levi-ashcroft": 3173.2089533692965,
+    "connor-o-sullivan": 2375.8358462524993,
+    "logan-morris": 2681.5960772990097
+   },
+   "dboard": {
+    "harry-dean": 0.0,
+    "cooper-duff-tytler": 0.0,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 0.0,
+    "logan-morris": 0.0
+   },
+   "dphat": {
+    "harry-dean": 0.0,
+    "cooper-duff-tytler": 0.0,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 0.0,
+    "logan-morris": 0.0
+   }
+  },
+  {
+   "site": "S19",
+   "desc": "decay-gate par -> age-referenced (ORDER C site 2)",
+   "note": "",
+   "after": {
+    "harry-dean": 2400.49409271952,
+    "cooper-duff-tytler": 1571.566095344371,
+    "milan-murdock": 169.84903875478332,
+    "levi-ashcroft": 3173.2089533692965,
+    "connor-o-sullivan": 2375.8358462524993,
+    "logan-morris": 2681.5960772990097
+   },
+   "dboard": {
+    "harry-dean": 0.0,
+    "cooper-duff-tytler": 0.0,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 0.0,
+    "logan-morris": 0.0
+   },
+   "dphat": {
+    "harry-dean": 0.0,
+    "cooper-duff-tytler": 0.0,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 0.0,
+    "logan-morris": 0.0
+   }
+  },
+  {
+   "site": "S20",
+   "desc": "ITEM C Q denominator -> age-referenced (ORDER C site 1)",
+   "note": "",
+   "after": {
+    "harry-dean": 2400.49409271952,
+    "cooper-duff-tytler": 1571.566095344371,
+    "milan-murdock": 169.84903875478332,
+    "levi-ashcroft": 3173.2089533692965,
+    "connor-o-sullivan": 2375.8358462524993,
+    "logan-morris": 2681.5960772990097
+   },
+   "dboard": {
+    "harry-dean": 0.0,
+    "cooper-duff-tytler": 0.0,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 0.0,
+    "logan-morris": 0.0
+   },
+   "dphat": {
+    "harry-dean": 0.0,
+    "cooper-duff-tytler": 0.0,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 0.0,
+    "logan-morris": 0.0
+   }
+  },
+  {
+   "site": "S22-off",
+   "desc": "L1c young credit neutralized (sizes what is paid)",
+   "note": "",
+   "after": {
+    "harry-dean": 2273.1742193939835,
+    "cooper-duff-tytler": 1456.508182175319,
+    "milan-murdock": 169.84903875478332,
+    "levi-ashcroft": 3173.2089533692965,
+    "connor-o-sullivan": 2375.8358462524993,
+    "logan-morris": 2681.5960772990097
+   },
+   "dboard": {
+    "harry-dean": -127.31987332553626,
+    "cooper-duff-tytler": -115.05791316905197,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 0.0,
+    "logan-morris": 0.0
+   },
+   "dphat": {
+    "harry-dean": -215.99000796558994,
+    "cooper-duff-tytler": -210.20371084973476,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 0.0,
+    "logan-morris": 0.0
+   }
+  },
+  {
+   "site": "S22-full",
+   "desc": "L1c young credit age-keyed (phi=1 under 24)",
+   "note": "",
+   "after": {
+    "harry-dean": 2593.4516741419807,
+    "cooper-duff-tytler": 1680.114905069695,
+    "milan-murdock": 169.84903875478332,
+    "levi-ashcroft": 3472.302072087053,
+    "connor-o-sullivan": 2891.3074307659567,
+    "logan-morris": 3425.4409456142916
+   },
+   "dboard": {
+    "harry-dean": 192.95758142246086,
+    "cooper-duff-tytler": 108.54880972532396,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 299.0931187177566,
+    "connor-o-sullivan": 515.4715845134574,
+    "logan-morris": 743.8448683152819
+   },
+   "dphat": {
+    "harry-dean": 327.340174474547,
+    "cooper-duff-tytler": 198.31198032472366,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 382.1187656784491,
+    "connor-o-sullivan": 662.6920343000461,
+    "logan-morris": 873.1435348930236
+   }
+  },
+  {
+   "site": "S25-eta0",
+   "desc": "BOUND ONLY: re-mix g-keyed pedigree de-rate eta=0",
+   "note": "",
+   "after": {
+    "harry-dean": 2918.3484179637107,
+    "cooper-duff-tytler": 2004.5858305187928,
+    "milan-murdock": 201.35645145302803,
+    "levi-ashcroft": 3258.744645198485,
+    "connor-o-sullivan": 2416.2425410315454,
+    "logan-morris": 2687.1754974030655
+   },
+   "dboard": {
+    "harry-dean": 517.8543252441909,
+    "cooper-duff-tytler": 433.01973517442184,
+    "milan-murdock": 31.507412698244707,
+    "levi-ashcroft": 85.53569182918864,
+    "connor-o-sullivan": 40.40669477904612,
+    "logan-morris": 5.579420104055771
+   },
+   "dphat": {
+    "harry-dean": 0.0,
+    "cooper-duff-tytler": 0.0,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 0.0,
+    "logan-morris": 0.0
+   }
+  },
+  {
+   "site": "S25-rho1",
+   "desc": "CEILING ONLY (double-counts): rho31 -> 1",
+   "note": "",
+   "after": {
+    "harry-dean": 3075.1005676158925,
+    "cooper-duff-tytler": 1960.7344962736927,
+    "milan-murdock": 236.32523822669097,
+    "levi-ashcroft": 3551.9745201688775,
+    "connor-o-sullivan": 2827.5257467601054,
+    "logan-morris": 3057.2206588881268
+   },
+   "dboard": {
+    "harry-dean": 674.6064748963727,
+    "cooper-duff-tytler": 389.1684009293217,
+    "milan-murdock": 66.47619947190765,
+    "levi-ashcroft": 378.76556679958094,
+    "connor-o-sullivan": 451.6899005076061,
+    "logan-morris": 375.62458158911704
+   },
+   "dphat": {
+    "harry-dean": 0.0,
+    "cooper-duff-tytler": 0.0,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 0.0,
+    "connor-o-sullivan": 0.0,
+    "logan-morris": 0.0
+   }
+  },
+  {
+   "site": "J-PHAT-B",
+   "desc": "ALL class-(b) sites inside Phat: S1+S3+S4+S5+S6+S7",
+   "note": "",
+   "after": {
+    "harry-dean": 3116.6827084669303,
+    "cooper-duff-tytler": 2046.023710844624,
+    "milan-murdock": 169.84903875478332,
+    "levi-ashcroft": 3596.0986525993662,
+    "connor-o-sullivan": 2849.240344779313,
+    "logan-morris": 3438.7657509046603
+   },
+   "dboard": {
+    "harry-dean": 716.1886157474105,
+    "cooper-duff-tytler": 474.45761550025304,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 422.8896992300697,
+    "connor-o-sullivan": 473.40449852681377,
+    "logan-morris": 757.1696736056506
+   },
+   "dphat": {
+    "harry-dean": 1214.968101834595,
+    "cooper-duff-tytler": 866.8048000534704,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 540.280199627111,
+    "connor-o-sullivan": 608.6104444954844,
+    "logan-morris": 888.7845214596773
+   }
+  },
+  {
+   "site": "J-S1+S4",
+   "desc": "S1 + S4",
+   "note": "",
+   "after": {
+    "harry-dean": 3116.6827084669303,
+    "cooper-duff-tytler": 2046.023710844624,
+    "milan-murdock": 169.84903875478332,
+    "levi-ashcroft": 3596.0986525993662,
+    "connor-o-sullivan": 2808.300426508128,
+    "logan-morris": 3431.392016904112
+   },
+   "dboard": {
+    "harry-dean": 716.1886157474105,
+    "cooper-duff-tytler": 474.45761550025304,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 422.8896992300697,
+    "connor-o-sullivan": 432.4645802556288,
+    "logan-morris": 749.7959396051024
+   },
+   "dphat": {
+    "harry-dean": 1214.968101834595,
+    "cooper-duff-tytler": 866.8048000534704,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 540.280199627111,
+    "connor-o-sullivan": 555.9779453659412,
+    "logan-morris": 880.1290498084695
+   }
+  },
+  {
+   "site": "J-S1+S2",
+   "desc": "S1 + S2(V5)",
+   "note": "",
+   "after": {
+    "harry-dean": 3408.229343412552,
+    "cooper-duff-tytler": 2113.8632339616465,
+    "milan-murdock": 169.08727447109933,
+    "levi-ashcroft": 3941.041997206074,
+    "connor-o-sullivan": 2923.810694531394,
+    "logan-morris": 3280.0790541901943
+   },
+   "dboard": {
+    "harry-dean": 1007.7352506930324,
+    "cooper-duff-tytler": 542.2971386172756,
+    "milan-murdock": -0.7617642836839877,
+    "levi-ashcroft": 767.8330438367775,
+    "connor-o-sullivan": 547.9748482788946,
+    "logan-morris": 598.4829768911845
+   },
+   "dphat": {
+    "harry-dean": 1709.5582892065122,
+    "cooper-duff-tytler": 990.7434246009398,
+    "milan-murdock": -1.2922843025465625,
+    "levi-ashcroft": 980.9768148992775,
+    "connor-o-sullivan": 704.4783415053976,
+    "logan-morris": 702.5141454556338
+   }
+  },
+  {
+   "site": "J-S1+S22",
+   "desc": "S1 + S22-full",
+   "note": "",
+   "after": {
+    "harry-dean": 3539.6517563573243,
+    "cooper-duff-tytler": 2183.3044229711795,
+    "milan-murdock": 169.84903875478332,
+    "levi-ashcroft": 4184.632190779403,
+    "connor-o-sullivan": 3507.1974768443915,
+    "logan-morris": 4119.97400391387
+   },
+   "dboard": {
+    "harry-dean": 1139.1576636378045,
+    "cooper-duff-tytler": 611.7383276268085,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 1011.4232374101061,
+    "connor-o-sullivan": 1131.3616305918922,
+    "logan-morris": 1438.37792661486
+   },
+   "dphat": {
+    "harry-dean": 1932.507992794578,
+    "cooper-duff-tytler": 1117.6081939469204,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 1292.1855264158116,
+    "connor-o-sullivan": 1454.482386674381,
+    "logan-morris": 1688.4036455088835
+   }
+  },
+  {
+   "site": "J-S1+S4+S2",
+   "desc": "S1 + S4 + S2(V5)",
+   "note": "",
+   "after": {
+    "harry-dean": 3262.799090024309,
+    "cooper-duff-tytler": 2138.1974598557413,
+    "milan-murdock": 169.08727447109933,
+    "levi-ashcroft": 3707.37471816642,
+    "connor-o-sullivan": 2858.124386886804,
+    "logan-morris": 3493.1045012863406
+   },
+   "dboard": {
+    "harry-dean": 862.3049973047891,
+    "cooper-duff-tytler": 566.6313645113703,
+    "milan-murdock": -0.7617642836839877,
+    "levi-ashcroft": 534.1657647971233,
+    "connor-o-sullivan": 482.2885406343048,
+    "logan-morris": 811.5084239873308
+   },
+   "dphat": {
+    "harry-dean": 1462.8451817605892,
+    "cooper-duff-tytler": 1035.2005544298008,
+    "milan-murdock": -1.2922843025465625,
+    "levi-ashcroft": 682.4455326388747,
+    "connor-o-sullivan": 620.0317994525726,
+    "logan-morris": 952.5686928788991
+   }
+  },
+  {
+   "site": "J-ALLB",
+   "desc": "every class-(b) site: Phat-B + S18 + S19 + S20 + S22-full",
+   "note": "",
+   "after": {
+    "harry-dean": 3396.8722664738693,
+    "cooper-duff-tytler": 2212.4915415778237,
+    "milan-murdock": 169.84903875478332,
+    "levi-ashcroft": 3944.4795657623863,
+    "connor-o-sullivan": 3480.6865633418684,
+    "logan-morris": 4401.348760492141
+   },
+   "dboard": {
+    "harry-dean": 996.3781737543495,
+    "cooper-duff-tytler": 640.9254462334527,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 771.2706123930898,
+    "connor-o-sullivan": 1104.850717089369,
+    "logan-morris": 1719.7526831931314
+   },
+   "dphat": {
+    "harry-dean": 1690.2917358053792,
+    "cooper-duff-tytler": 1170.9312594462367,
+    "milan-murdock": 0.0,
+    "levi-ashcroft": 985.3686225720999,
+    "connor-o-sullivan": 1420.3998654880343,
+    "logan-morris": 2018.68830572957
+   }
+  }
+ ]
+}

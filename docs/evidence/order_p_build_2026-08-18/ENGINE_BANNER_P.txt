@@ -1,0 +1,78 @@
+#326 POOL LEVELS (N43 signed, read verbatim, LADDER currency; ND65+ = 297.0 DERIVED, the cap against curve[64]=179 REMOVED by owner ruling 2026-08-12 -> 297): IRE 106 · MSD 337 [MSD completion optimism +4.7-8.4% (travels with the MSD level, printed beside it wherever it is shown)] · ND65+ 297 · PDA 192 · PDN 96 · PDS 56 · RD:KPD 369 · RD:KPF 206 · RD:MID 290 · RD:RUCK 257 · RD:SD 245 · RD:SF 218 · SSP 309 · UNR 65
+#326 POOL POPULATION (engine classification, re-derived at build time): IRE 57 · MSD 106 · ND65+ 122 · PDA 51 · PDN 43 · PDS 21 · RD:KPD 72 · RD:KPF 65 · RD:MID 176 · RD:RUCK 71 · RD:SD 158 · RD:SF 149 · SSP 52 · UNR 59
+PICKLESS MECHANISMS -> POOL (index 65); pooled values: {'Ireland': 2, 'Mid-Season': 2, 'Post-draft Academy': 2, 'Post-draft Next-Gen': 1, 'Post-draft Scholarship': 1, 'SSP / pre-season supp.': 2, 'Unregistered': 2}
+Phase-2 CONVEXITY into present value: pool +2.9%  median premium +0.0%  max +25% (cap 25%)  | vP0==v by construction
+Phase-2 backward board: on-board -1=774, -2=777 (active 804 + retired-recalled 198)
+  _vM1 conservation factor x0.2305 (raw board was x4.338)
+  _vM2 conservation factor x0.2521 (raw board was x3.966)
+PVC: {1: 3000, 3: 2569, 5: 1804, 10: 1318, 15: 815, 20: 810, 30: 607, 45: 362}
+TOP 15:
+   1. Nick Daicos            MID     val9894 ~pk1+
+   2. Harry Sheezel          SF      val9653 ~pk1+
+   3. Will Ashcroft          MID     val7066 ~pk1+
+   4. Nasiah Wanganeen-Miler SD      val6958 ~pk1+
+   5. Luke Jackson           RUCK    val6935 ~pk1+
+   6. Max Holmes             MID     val5648 ~pk1+
+   7. Bailey Smith           MID     val5476 ~pk1+
+   8. Zak Butters            MID     val5281 ~pk1+
+   9. Josh Treacy            KPF     val5156 ~pk1+
+  10. Bodhi Uwland           SD      val4967 ~pk1+
+  11. Jason Horne-Francis    MID     val4844 ~pk1+
+  12. Archie Roberts         SD      val4799 ~pk1+
+  13. Noah Anderson          MID     val4667 ~pk1+
+  14. Errol Gulden           MID     val4657 ~pk1+
+  15. Riley Thilthorpe       KPF     val4449 ~pk1+
+--- recent draftees (should be ~>= their pick if producing; played>unplayed) ---
+  Sullivan Robey       #127 val1109 ~pk14  MID     pk 9 ND 
+  Sam Cumming          #129 val1094 ~pk14  MID     pk 7 ND 
+  Jacob Farrow         #93  val1606 ~pk6   SD      pk10 ND 
+  Cooper Duff-Tytler   #56  val2270 ~pk4   KPF     pk 4 ND 
+  Harry Dean           #26  val3370 ~pk1+  KPD     pk 3 ND 
+  Zeke Uwland          #65  val2013 ~pk5   SD      pk 2 ND 
+  Dylan Patterson      #81  val1721 ~pk6   SD      pk 5 ND 
+  Harry Kyle           #177 val 758 ~pk23  SD      pk14 ND 
+  Connor O'Sullivan    #67  val2006 ~pk5   KPD     pk11 ND 
+--- KPD check (established vs young) + anchors ---
+  Josh Worrell         #72  val1916 ~pk5   KPD     pk28 ND 
+  Sam Collins          NF
+  Willem Duursma       #25  val3502 ~pk1+  MID     pk 1 ND 
+  Nick Daicos          #1   val9894 ~pk1+  MID     pk 4 ND 
+  Dayne Zorko          #198 val 677 ~pk25  MID     pk38 ND 
+  Finn Callaghan       #17  val4166 ~pk1+  MID     pk 3 ND 
+  Harry Sheezel        #2   val9653 ~pk1+  SF      pk 3 ND 
+#334 ITEM B WIRED: pool year-0 age gradient live on 1202 entrants (K=1.0000000000); pool Sigma v0 held at 308809.9416 (C5 level-preserving, asserted).
+#326 ENTRY ANCHOR WIRED: 1202 pool entrants anchor on their signed division level — ruck cap in ladder currency, floor and thin-record blend at x1.0524 (board factor). Frozen year-zero surface LOADED, not refitted (sig 4405cba2).
+ORDER 29B ENTRY WIRING LIVE: 1 day-0 entrants at Y=2005 (1 national in-curve on nd_v0.posv, 0 pool on pool_v0.cells) print derived v0 x numeraire EXACTLY; every row with evidence keeps the legacy legs byte-for-byte.
+ORDER 30B STEP 2 — SITTER FADE LIVE: D(2)=0.5502 D(3)=0.2628 D(4+)=0.3460 FLAT (as measured; the depth-4 kink is SELECTION, kept and disclosed). Continuous clock c=(Y-entry)+fE, log-linear. 1 sitters at Y=2005, 0 of them carry a discount (1 at D=1: entry-year or pool). los_decay is off the live path.
+ORDER I LIVE (RL_O36=1) — THE COORDINATED BUILD. NOTHING IS GREENLIT AND NOTHING MERGES.
+  LEVER 1  S1, the age-referenced projection bar: lambda_S1=0.400 applied to the C3 gap at the four projection/floor sites. NO pick axis, capped at the flat bar, FLAT FROM AGE 24 (every mature row byte-identical, store-wide).
+  LEVER 2  the counterweight, re-derived JOINTLY on the corrected age-fair surface: kappa=0.20 gamma_u=8.0 / eta=0.50 gamma_d=14.0 / relief lambda=1.08 (was 0.24/11.0/0.41/14.0/1.08).
+  LEVER 3  the tall/small sitter factor: h_TALL=-0.6921, s_norm=1.4340996146, clip [0.5, 2.0]; kappa(16) small 0.793 / tall 0.500, kappa(64) small 1.447 / tall 0.964; m_TALL=0.645. DECLARED: the pinned identity means LATE SMALL SITTERS PAY for the talls' relief.
+  ORDER K FADE FLOOR: LIVE (RL_O36_FLOORFIX=1, the default). A SMALL's floor is HIS OWN PRE-FACTOR (Order D pooled) exponent, so no small can be made lighter by a talls-only relief; talls keep the [0.5, 2.0] clip. h_TALL UNCHANGED; the normaliser re-solved WITH the re-sited floor inside the constraint set (1.4284052407 -> 1.4340996146). Redistribution identity residual -1.110e-16 against the ruled depth-2 fade 0.5582775. The floor still binds: talls picks 1-25 on 0.5; smalls picks 1-18 on their own pooled exponent (of those, picks 1-5 also on 0.5 because the pooled curve is itself clipped there).
+  804 active rows sit at a developing age and can be reached by S1; 0 have no birth year and keep the flat bar.
+ORDER P LIVE (RL_O37=1) — THE PEDIGREE-CONDITIONAL CHARGE. NOTHING IS GREENLIT AND NOTHING MERGES.
+  THE BLIND ETA CHARGE IS GONE. It read games and nothing else, peaked at 14 games and then FELL AWAY, so a 36-game row kept more unearned pedigree than a 17-game row however either of them played.
+  IN ITS PLACE: pi *= exp(-LAMBDA*A(g)*T(s_P)) below age 24; the old charge at 24 and above. A(g)=1-exp(-g/9.89) · T=clip(1-0.65744*(s+2.4527), 0, 21.1233) · LAMBDA=0.17438.
+  s_P is production against the S1 AGE BAR PLUS the MEASURED PEDIGREE PREMIUM PG(ln v0, class), pooled over age, fitted on 5,041 season rows by local-linear kernel regression on ln(v0) (tricube, h=0.40), monotone guarded, held flat outside support.
+  PG spans -7.04 to +25.44 points a game for SMALLS (v0 91 to 3444) and -5.45 to +22.92 for TALLS (v0 96 to 2947). Largest one-node step 1.6276 — no cliff.
+  LAMBDA*THETA_R = 0.11465 = BETA_sat, the measured saturated slope. NO FREE PARAMETER.
+  0 active rows are inside the age gate AND carry a readable pedigree surplus; every other row keeps the ORDER K charge byte for byte, and A(0)=0 means no day-0 print moves.
+ORDER D PICK-CURVE FADE LIVE (RL_O35=1) — THE LANDING CANDIDATE ON THE OWNER'S WORD. D_eff = D(c_u)^kappa(pick), kappa = clip((0.1286+0.4536·ln p)/1.7472, 0.5, 2.0): kappa(1)=0.500 kappa(20)=0.851 kappa(64)=1.153. Smooth in ln(pick), never a band; pooled fade pinned at the ruled row by the redistribution identity.
+ORDER A CANDIDATE 32 LIVE (RL_O32=1, stage 6 of 6) — NOTHING IS GREENLIT AND NOTHING MERGES. bars(age) gate-only · credit f·min(1,g/2) · delivered reset · Phi_32 row · relief min(1, D·(1+1.08·σ_sel)) · re-mix κ=0.20 γu=8.0 / η=0.50 γd=14.0. 0 rows carry a stall run; 0 carry c_u>1; 0 carry relief.
+ORDER 31 THE ONE LAW LIVE (RL_O31=1) — NOTHING IS GREENLIT AND NOTHING MERGES. price = rho(g)*Phat + [D(c_u)*(1-rho(g)) + Phi(g,s)*beta(g)*rho(g)]*v0, ONE FORMULA FOR EVERY ROW: no sitter branch, no thin lane, no bridge, no deep lane. rho = 1-exp(-(g/29.1943)^0.8015) calibrated on the R1 backbone, rho(0)=0 exactly · beta MONOTONE-PROJECTED (the brief's "pi decays in g"; the measured 2.5->10.5 rise is deleted and disclosed) · D on the UNPLAYED clock c_u only · Phi = the 30B-C stall conditioning on the current stall run, Phi(g,0)=1 exactly. 804 rows priced; 0 carry a stall conditioning; 0 carry an unplayed-clock discount.
+ORDER 30B-P STEP-3 PREVIEW LIVE (RL_O30B_PREVIEW=1) — NOTHING IS GREENLIT, THE BOUNDARY IS STILL UNRULED, AND THIS BOARD IS PRE-NUMERAIRE. pole DELETED + ISO DELETED (via the two existing ablation lines) · blend sigma(g)=exp(-(g/23)^0.8) on the measured 30B-M curve · pedigree leg = STEP-1 positional v0 x 1.0524 · Q and the decay gate RETAINED with their denominators re-referenced to the effective positional bars (KPD 65.4 KPF 63.8 MID 77.1 RUCK 75.5 SD 75.3 SF 67.9) · _a_blend, sitout_ev's ns==0 arm and the year-zero floor REPLACED, not wrapped. 804 rows carry the blend; 1 zero-evidence rows keep the Step-2 fade untouched.
+=== RL_UNCOMP v1.1 LEG B: map ON (s=0.1000 Delta=6.0) | V_ref_b/RHO_DEN/C over 354 proven / scope-pop ===
+    KPD      V_ref_b=   189.7 RHO_DEN=   8.88 C=1.11646
+    KPF      V_ref_b=   504.5 RHO_DEN=   5.43 C=1.08684
+    MID      V_ref_b=  1388.6 RHO_DEN=  17.48 C=1.09358
+    RUCK     V_ref_b=  1686.8 RHO_DEN=  16.60 C=1.03492
+    SD       V_ref_b=   462.3 RHO_DEN=  10.70 C=1.11110
+    SF       V_ref_b=   128.0 RHO_DEN=   7.79 C=1.23523
+=== RL_AVAIL LAYER ON: 43 register names (32 A + 11 B); RL_LTI_RETURN=True; non-register byte-identical ===
+    fork-v KPFFIX LD fell back to count-against (report-only): ['jonty-faull']
+    register store-vs-designation anomalies (REPORT-ONLY, register governs, engine never re-diagnoses):
+      - reef-mcinnes designated '2026' but store shows 0 2026 games (register governs; report-only)
+      - lewis-hayes designated '2026' but store shows 0 2026 games (register governs; report-only)
+      - tom-green designated '2026' but store shows 0 2026 games (register governs; report-only)
+      - judson-clarke designated '2025' (0 g so far) but store carries 1 2026 games (register governs)
+      - mani-liddy designated '2026' but store shows 0 2026 games (register governs; report-only)

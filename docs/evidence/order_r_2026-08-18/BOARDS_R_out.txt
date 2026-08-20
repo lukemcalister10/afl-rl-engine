@@ -1,0 +1,473 @@
+======================================================================================================================
+ORDER R — THE BOARDS. NOTHING IS ADOPTED AND NOTHING LANDS. NO VARIANT IS RECOMMENDED.
+======================================================================================================================
+  active priced rows: 804
+  boards on disk: KrefR=f3101883 Peta0=73bf9617 R15=902ef88e R15A=dcb68e73 R15A_2=dcb68e73 R15_2=902ef88e R15b1=c3798c8d R15b1_2=c3798c8d R20=aa5e70cc R20A=7f88f509 R20A_2=7f88f509 R20_2=aa5e70cc R20b2=fd958019 R20b2A=aaab992e R20b2A_2=aaab992e R20b2_2=fd958019 RAB1=cbbb94d4 RB1=1b1817f3 Rb1=d9c74574 Rb1_2=d9c74574 Rb2=f69ca077 Rb2_2=f69ca077 RimpA=aa5e70cc Roff=374d4e44 candR=1f176444
+
+== THE BUILD-FAILING IDENTITIES — R1, R2, R3, R4, R8 ==
+  candR  must be 1f176444 : PASS                         (1f176444)
+  KrefR  must be f3101883 : PASS                         (f3101883)
+  Roff   must be 374d4e44 : PASS                         (374d4e44)
+  RB1    must be 1b1817f3 : PASS                         (1b1817f3)
+  RAB1   must be cbbb94d4 : PASS                         (cbbb94d4)
+  R8  RL_O38B1+RL_O39_TMAXPCT=20 alone carries the O37/O36/O35/O32/O31 stack: PASS (aa5e70cc vs aa5e70cc)
+  R4  determinism x2 R15     : PASS                         (902ef88e vs 902ef88e)
+  R4  determinism x2 R20     : PASS                         (aa5e70cc vs aa5e70cc)
+  R4  determinism x2 R15A    : PASS                         (dcb68e73 vs dcb68e73)
+  R4  determinism x2 R20A    : PASS                         (7f88f509 vs 7f88f509)
+  R4  determinism x2 Rb1     : PASS                         (d9c74574 vs d9c74574)
+  R4  determinism x2 Rb2     : PASS                         (f69ca077 vs f69ca077)
+  R4  determinism x2 R15b1   : PASS                         (c3798c8d vs c3798c8d)
+  R4  determinism x2 R20b2   : PASS                         (fd958019 vs fd958019)
+  R4  determinism x2 R20b2A  : PASS                         (aaab992e vs aaab992e)
+
+== BOARD TOTALS ==
+  board    md5               total     vs ORDER P     vs ORDER K      vs FIX B1  the dial line
+  candR    1f176444         667916         +1482         -5181         +8049  
+  KrefR    f3101883         673097         +6663            +0        +13230  
+  Roff     374d4e44         666434            +0         -6663         +6567  
+  RB1      1b1817f3         659867         -6567        -13230            +0  p5  b0     A off   = ORDER Q FIX B1 (the control)
+  RAB1     cbbb94d4         662685         -3749        -10412         +2818  p5  b0     A ON    = ORDER Q FIX A+B1 (the control)
+  R15      902ef88e         661216         -5218        -11881         +1349  p15 b0     A off   the TMAX lever alone
+  R20      aa5e70cc         662302         -4132        -10795         +2435  p20 b0     A off   the TMAX lever alone, far end
+  R15A     dcb68e73         663969         -2465         -9128         +4102  p15 b0     A ON    the TMAX lever with FIX A
+  R20A     7f88f509         664950         -1484         -8147         +5083  p20 b0     A ON    the TMAX lever with FIX A, far end
+  Rb1      d9c74574         660419         -6015        -12678          +552  p5  0.111  A off   the BETA lever alone
+  Rb2      f69ca077         661356         -5078        -11741         +1489  p5  0.105  A off   the BETA lever alone, near the CI floor
+  R15b1    c3798c8d         661783         -4651        -11314         +1916  p15 0.111  A off   both levers, middle
+  R20b2    fd958019         663845         -2589         -9252         +3978  p20 0.105  A off   both levers, SOFTEST
+  R20b2A   aaab992e         666056          -378         -7041         +6189  p20 0.105  A ON    both levers, softest, with FIX A
+  Peta0    73bf9617         702734        +36300        +29637        +42867  
+  (ORDER P 374d4e44 = 666,434 · ORDER K f3101883 = 673,097 · live 88ce647f = 752,429, NEVER TOUCHED)
+
+== THE TWO LEVERS, ISOLATED ==
+  Each row is one board minus FIX B1 (1b1817f3, 659,867), which is p5/b0/A-off.
+  board    what changed against B1                   total        vs B1
+  R15      TMAX p5 -> p15                           661216        +1349
+  R20      TMAX p5 -> p20                           662302        +2435
+  Rb1      BETA_sat 0.11465 -> 0.111                660419         +552
+  Rb2      BETA_sat 0.11465 -> 0.105                661356        +1489
+  R15b1    p15 AND 0.111                            661783        +1916
+  R20b2    p20 AND 0.105                            663845        +3978
+  RAB1     FIX A on                                 662685        +2818
+  R15A     p15 AND FIX A                            663969        +4102
+  R20A     p20 AND FIX A                            664950        +5083
+  R20b2A   p20 AND 0.105 AND FIX A                  666056        +6189
+
+  ADDITIVITY — R15, is the grid interpolable? (falsifier R15 in the prereg)
+    R15b1    actual   661783   additive prediction   661768   gap    +15 (+0.002% of the board)  [B1 + (R15-B1) + (Rb1-B1)]
+    R20b2    actual   663845   additive prediction   663791   gap    +54 (+0.008% of the board)  [B1 + (R20-B1) + (Rb2-B1)]
+    R20b2A   actual   666056   additive prediction   666663   gap   -607 (-0.091% of the board)  [R20b2 + (A increment at p5)]
+
+== WHERE THE MONEY MOVES ==
+  R15     vs ORDER P : 288 rows move ( 89 up, 199 down)   net   -5218   p15 b0     A off   the TMAX lever alone
+  R15     vs FIX B1  :  61 rows move ( 61 up,   0 down)   net   +1349   
+  R20     vs ORDER P : 303 rows move (104 up, 199 down)   net   -4132   p20 b0     A off   the TMAX lever alone, far end
+  R20     vs FIX B1  :  93 rows move ( 93 up,   0 down)   net   +2435   
+  R15A    vs ORDER P : 356 rows move (158 up, 198 down)   net   -2465   p15 b0     A ON    the TMAX lever with FIX A
+  R15A    vs FIX B1  : 214 rows move (214 up,   0 down)   net   +4102   
+  R20A    vs ORDER P : 364 rows move (166 up, 198 down)   net   -1484   p20 b0     A ON    the TMAX lever with FIX A, far end
+  R20A    vs FIX B1  : 230 rows move (230 up,   0 down)   net   +5083   
+  Rb1     vs ORDER P : 413 rows move (212 up, 201 down)   net   -6015   p5  0.111  A off   the BETA lever alone
+  Rb1     vs FIX B1  : 261 rows move (256 up,   5 down)   net    +552   
+  Rb2     vs ORDER P : 440 rows move (235 up, 205 down)   net   -5078   p5  0.105  A off   the BETA lever alone, near the CI floor
+  Rb2     vs FIX B1  : 336 rows move (323 up,  13 down)   net   +1489   
+  R15b1   vs ORDER P : 415 rows move (214 up, 201 down)   net   -4651   p15 0.111  A off   both levers, middle
+  R15b1   vs FIX B1  : 266 rows move (261 up,   5 down)   net   +1916   
+  R20b2   vs ORDER P : 442 rows move (237 up, 205 down)   net   -2589   p20 0.105  A off   both levers, SOFTEST
+  R20b2   vs FIX B1  : 338 rows move (325 up,  13 down)   net   +3978   
+  R20b2A  vs ORDER P : 444 rows move (241 up, 203 down)   net    -378   p20 0.105  A ON    both levers, softest, with FIX A
+  R20b2A  vs FIX B1  : 358 rows move (349 up,   9 down)   net   +6189   
+
+== MATURE-ROW MOVEMENT — rows aged 24 and over, against ORDER K ==
+   Under ORDER P these rows are byte-identical to ORDER K. B1 breaks that; the softening should
+   shrink the break, because the veterans B1 reaches are exactly the ones parked at the cap.
+  board                                        rows 24+    moving     net vs K     net vs P
+  RB1      p5  b0     A off   = ORDER Q FIX B       429       245        -6567        -6567
+  RAB1     p5  b0     A ON    = ORDER Q FIX A       429       245        -6106        -6106
+  R15      p15 b0     A off   the TMAX lever        429       245        -6381        -6381
+  R20      p20 b0     A off   the TMAX lever        429       245        -6200        -6200
+  R15A     p15 b0     A ON    the TMAX lever        429       245        -5945        -5945
+  R20A     p20 b0     A ON    the TMAX lever        429       245        -5777        -5777
+  Rb1      p5  0.111  A off   the BETA lever        429       248        -6456        -6456
+  Rb2      p5  0.105  A off   the BETA lever        429       249        -6266        -6266
+  R15b1    p15 0.111  A off   both levers, mi       429       248        -6264        -6264
+  R20b2    p20 0.105  A off   both levers, SO       429       249        -5883        -5883
+  R20b2A   p20 0.105  A ON    both levers, so       429       249        -5536        -5536
+  by exact age, net points against ORDER K:
+     age        n       R15       R20      R15A      R20A       Rb1       Rb2     R15b1     R20b2    R20b2A
+     19        71     +1434     +1689     +2072     +2290     +1129     +1332     +1553     +2000     +2504
+     20        87     -1562     -1304      -620      -362     -1756     -1528     -1420      -919      -126
+     21        75     -1344     -1192     -1119      -970     -1442     -1322     -1275      -996      -802
+     22        61     -2579     -2428     -2203     -2092     -2671     -2558     -2513     -2244     -1956
+     23        81     -1449     -1360     -1313     -1236     -1482     -1399     -1395     -1210     -1125
+     24        58     -2327     -2233     -2200     -2110     -2376     -2297     -2279     -2096     -1996
+     25        51     -1602     -1559     -1563     -1523     -1641     -1594     -1574     -1483     -1461
+     26        55      -682      -651      -617      -590      -686      -657      -669      -608      -560
+     27        46      -759      -749      -719      -710      -759      -741      -748      -721      -689
+     28        57      -589      -587      -488      -486      -576      -570      -576      -568      -482
+     29        40      -146      -146      -108      -108      -145      -143      -145      -143      -106
+     30        33       -84       -84       -76       -76       -84       -80       -84       -80       -73
+     31        24       -38       -38       -38       -38       -38       -37       -38       -37       -37
+     32        19       -31       -31       -24       -24       -30       -30       -30       -30       -24
+     33        22      -112      -111      -103      -103      -110      -106      -110      -106       -99
+     34        11        -8        -8        -6        -6        -8        -8        -8        -8        -6
+     35         5        -3        -3        -3        -3        -3        -3        -3        -3        -3
+     36         4        +0        +0        +0        +0        +0        +0        +0        +0        +0
+     37         3        +0        +0        +0        +0        +0        +0        +0        +0        +0
+     39         1        +0        +0        +0        +0        +0        +0        +0        +0        +0
+
+== R6 — THE GAMELESS ROWS AND DAY-0 PRINTS. A(0)=0 EXACTLY, so no row with ZERO CAREER GAMES
+   may move. The test is on CAREER games (`cg`), which is the argument A(g) actually takes.
+   rows with ZERO CAREER GAMES: 89.   rows with zero games IN THE PRICED SEASON: 95.
+   The second set is larger and it is NOT the law's population: a row that played two games in an
+   earlier season and none in this one has A(g) > 0 and its charge legitimately applies.
+  board     zero-career n     moving        net |    zero-season n     moving
+  R15                  89          0          0 |               95          1  
+  R20                  89          0          0 |               95          2  
+  R15A                 89          0          0 |               95          1  
+  R20A                 89          0          0 |               95          2  
+  Rb1                  89          0          0 |               95          2  
+  Rb2                  89          0          0 |               95          4  
+  R15b1                89          0          0 |               95          2  
+  R20b2                89          0          0 |               95          4  
+  R20b2A               89          0          0 |               95          4  
+  R6 VERDICT: PASS — 0 of 89 zero-career-games rows move on any variant. The 4 rows that move on the zero-SEASON-games reading have 1 or 2 career games each and are not gameless.
+  The export's own PRINTED-DAY-0 ASSERT reads "89 of 89 day-0/sitter rows print EXACTLY" on every
+  build in BUILD_R_out.txt, which is the same 89 rows and an independent check of the same law.
+
+== R5 — NO ROW MAY PRICE ABOVE ITS OWN UNCHARGED PRICE (the eta-zero board 73bf9617) ==
+  KrefR   rows above their uncharged price: 0 of 804  
+  Roff    rows above their uncharged price: 0 of 804  
+  RB1     rows above their uncharged price: 0 of 804  
+  R15     rows above their uncharged price: 0 of 804  
+  R20     rows above their uncharged price: 0 of 804  
+  R15A    rows above their uncharged price: 0 of 804  
+  R20A    rows above their uncharged price: 0 of 804  
+  Rb1     rows above their uncharged price: 0 of 804  
+  Rb2     rows above their uncharged price: 0 of 804  
+  R15b1   rows above their uncharged price: 0 of 804  
+  R20b2   rows above their uncharged price: 0 of 804  
+  R20b2A  rows above their uncharged price: 0 of 804  
+  R5 VERDICT: PASS
+
+== FIX A MAY ONLY CAP A CHARGE — no row may price BELOW its A-off partner ==
+  RAB1    vs RB1     : 0 rows price LOWER  (PASS)
+  R15A    vs R15     : 0 rows price LOWER  (PASS)
+  R20A    vs R20     : 0 rows price LOWER  (PASS)
+  R20b2A  vs R20b2   : 0 rows price LOWER  (PASS)
+
+== THE SOFTENING MAY ONLY RAISE A PRICE — no row may fall against its stiffer partner ==
+   Lowering the cap or the slope removes LESS charge, so every price must move UP or stay.
+  R15     vs RB1     : 0 rows price LOWER  (PASS)
+  R20     vs R15     : 0 rows price LOWER  (PASS)
+  Rb1     vs RB1     : 5 rows price LOWER  WORST Adam Cerra 1025 -> 1024
+  Rb2     vs Rb1     : 12 rows price LOWER  WORST Elijah Hollands 731 -> 730
+  R15b1   vs R15     : 5 rows price LOWER  WORST Adam Cerra 1025 -> 1024
+  R20b2   vs R20     : 13 rows price LOWER  WORST Adam Cerra 1025 -> 1024
+  R15A    vs RAB1    : 0 rows price LOWER  (PASS)
+  R20A    vs R15A    : 0 rows price LOWER  (PASS)
+  R20b2A  vs R20A    : 43 rows price LOWER  WORST Adam Cerra 1025 -> 1024
+
+== THE NAMED ROWS. CONSEQUENCES, NEVER TARGETS. ==
+   Not one constant in this order was chosen with any of these rows in view, and no row's value
+   is an acceptance criterion. That is a standing prohibition in this project after a real error.
+  row                     age  pick     g  ORDER K  ORDER P      R15      R20     R15A     R20A      Rb1      Rb2    R15b1    R20b2   R20b2A
+  Sam Lalor                20     1    20     3456     3060     3060     3060     3395     3395     3078     3109     3078     3109     3385
+  Willem Duursma           19     1    17     3703     3920     3920     3920     4236     4236     3932     3950     3932     3950     4225
+  Zane Duursma             21     4    38      629      194      233      257      233      257      196      200      237      270      270
+  Finn O'Sullivan          20     2    37     3462     2810     2810     2810     3055     3055     2821     2839     2821     2839     3051
+  Harley Reid              21     1    58     3786     3723     3723     3723     3813     3813     3723     3723     3723     3723     3809
+  Zeke Uwland              19     2    16     1949     1486     1486     1523     1582     1582     1497     1517     1497     1557     1595
+  Josh Sinn                23    12    30      357       73       97      115       97      115       75       79      100      126      126
+  Campbell Chesser         23    14    39      333      167      178      186      178      186      168      170      179      192      192
+  Sam Darcy                23     2    51     4373     4450     4450     4450     4450     4450     4450     4450     4450     4450     4450
+
+== MOVERS LEDGER — R15 (p15 b0     A off   the TMAX lever alone), against ORDER P ==
+  TOP 10 UP:
+    Sid Draper                 4     age 20   10g      623 ->    798    +175
+    Dylan Patterson            5     age 19    4g      955 ->   1123    +168
+    Daniel Annable             6     age 19    1g     1115 ->   1282    +167
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+    Ned Moyle                  5     age 24   25g     1568 ->   1671    +103
+    Lachlan McAndrew           None  age 26   21g      841 ->    920     +79
+    Harry Barnett              23    age 22    2g      557 ->    631     +74
+    Louis Emmett               27    age 19    5g      454 ->    509     +55
+    Tom McCarthy               1     age 26   28g     1211 ->   1259     +48
+    Oliver Hannaford           18    age 20    5g      229 ->    274     +45
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    297    -237
+    Paddy Dow                  3     age 27   83g      206 ->     21    -185
+    Conor Stone                15    age 24   28g      218 ->     37    -181
+    Luke Pedlar                11    age 24   49g      217 ->     43    -174
+    Dylan Stephens             5     age 25  100g      687 ->    523    -164
+    Ryan Angwin                19    age 24   46g      487 ->    340    -147
+    Nick Bryan                 37    age 25   33g      718 ->    574    -144
+    Nikolas Cox                8     age 24   61g      249 ->    109    -140
+    Will Setterfield           5     age 28   91g      664 ->    528    -136
+    Tanner Bruhn               12    age 24   82g     2018 ->   1896    -122
+  games profile (net against ORDER P):
+    0        rows   95  net      +20  per row     +0.2
+    1-4      rows   48  net     +532  per row    +11.1
+    5-9      rows   53  net     -168  per row     -3.2
+    10-15    rows   48  net      +91  per row     +1.9
+    16-29    rows   79  net     -554  per row     -7.0
+    30-59    rows   99  net    -1502  per row    -15.2
+    60+      rows  382  net    -3637  per row     -9.5
+
+== MOVERS LEDGER — R20 (p20 b0     A off   the TMAX lever alone, far end), against ORDER P ==
+  TOP 10 UP:
+    Sid Draper                 4     age 20   10g      623 ->    880    +257
+    Dylan Patterson            5     age 19    4g      955 ->   1189    +234
+    Daniel Annable             6     age 19    1g     1115 ->   1340    +225
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+    Ned Moyle                  5     age 24   25g     1568 ->   1671    +103
+    Harry Barnett              23    age 22    2g      557 ->    656     +99
+    Lachlan McAndrew           None  age 26   21g      841 ->    920     +79
+    Louis Emmett               27    age 19    5g      454 ->    533     +79
+    Taylor Goad                20    age 21    2g      590 ->    655     +65
+    Zane Duursma               4     age 21   38g      194 ->    257     +63
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    297    -237
+    Paddy Dow                  3     age 27   83g      206 ->     29    -177
+    Luke Pedlar                11    age 24   49g      217 ->     50    -167
+    Conor Stone                15    age 24   28g      218 ->     51    -167
+    Dylan Stephens             5     age 25  100g      687 ->    530    -157
+    Ryan Angwin                19    age 24   46g      487 ->    340    -147
+    Nick Bryan                 37    age 25   33g      718 ->    574    -144
+    Nikolas Cox                8     age 24   61g      249 ->    109    -140
+    Will Setterfield           5     age 28   91g      664 ->    528    -136
+    Tanner Bruhn               12    age 24   82g     2018 ->   1896    -122
+  games profile (net against ORDER P):
+    0        rows   95  net      +39  per row     +0.4
+    1-4      rows   48  net     +870  per row    +18.1
+    5-9      rows   53  net       +9  per row     +0.2
+    10-15    rows   48  net     +282  per row     +5.9
+    16-29    rows   79  net     -312  per row     -3.9
+    30-59    rows   99  net    -1409  per row    -14.2
+    60+      rows  382  net    -3611  per row     -9.5
+
+== MOVERS LEDGER — R15A (p15 b0     A ON    the TMAX lever with FIX A), against ORDER P ==
+  TOP 10 UP:
+    Sam Lalor                  1     age 20   20g     3060 ->   3395    +335
+    Willem Duursma             1     age 19   17g     3920 ->   4236    +316
+    Finn O'Sullivan            2     age 20   37g     2810 ->   3055    +245
+    Sid Draper                 4     age 20   10g      623 ->    798    +175
+    Dylan Patterson            5     age 19    4g      955 ->   1123    +168
+    Daniel Annable             6     age 19    1g     1115 ->   1282    +167
+    Sam Cumming                7     age 19   13g     2007 ->   2150    +143
+    Harvey Langford            6     age 20   41g     2422 ->   2536    +114
+    Taj Hotton                 12    age 20   13g     1722 ->   1829    +107
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    335    -199
+    Paddy Dow                  3     age 27   83g      206 ->     21    -185
+    Conor Stone                15    age 24   28g      218 ->     37    -181
+    Luke Pedlar                11    age 24   49g      217 ->     43    -174
+    Dylan Stephens             5     age 25  100g      687 ->    523    -164
+    Ryan Angwin                19    age 24   46g      487 ->    341    -146
+    Nick Bryan                 37    age 25   33g      718 ->    574    -144
+    Nikolas Cox                8     age 24   61g      249 ->    110    -139
+    Brayden Cook               26    age 24   48g      710 ->    594    -116
+    Billy Cootee               42    age 24    5g      232 ->    116    -116
+  games profile (net against ORDER P):
+    0        rows   95  net      +20  per row     +0.2
+    1-4      rows   48  net     +532  per row    +11.1
+    5-9      rows   53  net     -134  per row     -2.5
+    10-15    rows   48  net     +389  per row     +8.1
+    16-29    rows   79  net     +507  per row     +6.4
+    30-59    rows   99  net     -779  per row     -7.9
+    60+      rows  382  net    -3000  per row     -7.9
+
+== MOVERS LEDGER — R20A (p20 b0     A ON    the TMAX lever with FIX A, far end), against ORDER P ==
+  TOP 10 UP:
+    Sam Lalor                  1     age 20   20g     3060 ->   3395    +335
+    Willem Duursma             1     age 19   17g     3920 ->   4236    +316
+    Sid Draper                 4     age 20   10g      623 ->    880    +257
+    Finn O'Sullivan            2     age 20   37g     2810 ->   3055    +245
+    Dylan Patterson            5     age 19    4g      955 ->   1189    +234
+    Daniel Annable             6     age 19    1g     1115 ->   1340    +225
+    Sam Cumming                7     age 19   13g     2007 ->   2150    +143
+    Harvey Langford            6     age 20   41g     2422 ->   2536    +114
+    Taj Hotton                 12    age 20   13g     1722 ->   1829    +107
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    335    -199
+    Paddy Dow                  3     age 27   83g      206 ->     29    -177
+    Luke Pedlar                11    age 24   49g      217 ->     50    -167
+    Conor Stone                15    age 24   28g      218 ->     51    -167
+    Dylan Stephens             5     age 25  100g      687 ->    530    -157
+    Ryan Angwin                19    age 24   46g      487 ->    341    -146
+    Nick Bryan                 37    age 25   33g      718 ->    574    -144
+    Nikolas Cox                8     age 24   61g      249 ->    110    -139
+    Brayden Cook               26    age 24   48g      710 ->    594    -116
+    Nathan O'Driscoll          28    age 24   50g      562 ->    447    -115
+  games profile (net against ORDER P):
+    0        rows   95  net      +39  per row     +0.4
+    1-4      rows   48  net     +870  per row    +18.1
+    5-9      rows   53  net      +41  per row     +0.8
+    10-15    rows   48  net     +577  per row    +12.0
+    16-29    rows   79  net     +670  per row     +8.5
+    30-59    rows   99  net     -699  per row     -7.1
+    60+      rows  382  net    -2982  per row     -7.8
+
+== MOVERS LEDGER — Rb1 (p5  0.111  A off   the BETA lever alone), against ORDER P ==
+  TOP 10 UP:
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+    Ned Moyle                  5     age 24   25g     1568 ->   1671    +103
+    Lachlan McAndrew           None  age 26   21g      841 ->    920     +79
+    Tom McCarthy               1     age 26   28g     1211 ->   1259     +48
+    Milan Murdock              None  age 26   15g      156 ->    196     +40
+    Elijah Hollands            7     age 24   47g      708 ->    731     +23
+    Sandy Brock                None  age 24   19g      130 ->    153     +23
+    Max Hall                   4     age 24   42g     2110 ->   2131     +21
+    Daniel Turner              20    age 24   52g     1303 ->   1322     +19
+    Will Brodie                9     age 28   55g      788 ->    807     +19
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    301    -233
+    Conor Stone                15    age 24   28g      218 ->     18    -200
+    Paddy Dow                  3     age 27   83g      206 ->     11    -195
+    Luke Pedlar                11    age 24   49g      217 ->     45    -172
+    Dylan Stephens             5     age 25  100g      687 ->    516    -171
+    Billy Cootee               42    age 24    5g      232 ->     65    -167
+    Ryan Angwin                19    age 24   46g      487 ->    342    -145
+    Nick Bryan                 37    age 25   33g      718 ->    577    -141
+    Nikolas Cox                8     age 24   61g      249 ->    111    -138
+    Will Setterfield           5     age 28   91g      664 ->    530    -134
+  games profile (net against ORDER P):
+    0        rows   95  net       +4  per row     +0.0
+    1-4      rows   48  net      +23  per row     +0.5
+    5-9      rows   53  net     -360  per row     -6.8
+    10-15    rows   48  net      -59  per row     -1.2
+    16-29    rows   79  net     -516  per row     -6.5
+    30-59    rows   99  net    -1510  per row    -15.3
+    60+      rows  382  net    -3597  per row     -9.4
+
+== MOVERS LEDGER — Rb2 (p5  0.105  A off   the BETA lever alone, near the CI floor), against ORDER P ==
+  TOP 10 UP:
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+    Ned Moyle                  5     age 24   25g     1568 ->   1671    +103
+    Lachlan McAndrew           None  age 26   21g      841 ->    920     +79
+    Sam Lalor                  1     age 20   20g     3060 ->   3109     +49
+    Tom McCarthy               1     age 26   28g     1211 ->   1259     +48
+    Milan Murdock              None  age 26   15g      156 ->    196     +40
+    Daniel Annable             6     age 19    1g     1115 ->   1152     +37
+    Dylan Patterson            5     age 19    4g      955 ->    987     +32
+    Zeke Uwland                2     age 19   16g     1486 ->   1517     +31
+    Sid Draper                 4     age 20   10g      623 ->    653     +30
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    307    -227
+    Conor Stone                15    age 24   28g      218 ->     21    -197
+    Paddy Dow                  3     age 27   83g      206 ->     13    -193
+    Luke Pedlar                11    age 24   49g      217 ->     47    -170
+    Dylan Stephens             5     age 25  100g      687 ->    518    -169
+    Billy Cootee               42    age 24    5g      232 ->     71    -161
+    Ryan Angwin                19    age 24   46g      487 ->    345    -142
+    Nick Bryan                 37    age 25   33g      718 ->    582    -136
+    Nikolas Cox                8     age 24   61g      249 ->    114    -135
+    Will Setterfield           5     age 28   91g      664 ->    533    -131
+  games profile (net against ORDER P):
+    0        rows   95  net      +13  per row     +0.1
+    1-4      rows   48  net     +178  per row     +3.7
+    5-9      rows   53  net     -223  per row     -4.2
+    10-15    rows   48  net      +73  per row     +1.5
+    16-29    rows   79  net     -261  per row     -3.3
+    30-59    rows   99  net    -1363  per row    -13.8
+    60+      rows  382  net    -3495  per row     -9.1
+
+== MOVERS LEDGER — R15b1 (p15 0.111  A off   both levers, middle), against ORDER P ==
+  TOP 10 UP:
+    Sid Draper                 4     age 20   10g      623 ->    813    +190
+    Dylan Patterson            5     age 19    4g      955 ->   1136    +181
+    Daniel Annable             6     age 19    1g     1115 ->   1294    +179
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+    Ned Moyle                  5     age 24   25g     1568 ->   1671    +103
+    Harry Barnett              23    age 22    2g      557 ->    636     +79
+    Lachlan McAndrew           None  age 26   21g      841 ->    920     +79
+    Louis Emmett               27    age 19    5g      454 ->    513     +59
+    Oliver Hannaford           18    age 20    5g      229 ->    277     +48
+    Tom McCarthy               1     age 26   28g     1211 ->   1259     +48
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    301    -233
+    Paddy Dow                  3     age 27   83g      206 ->     22    -184
+    Conor Stone                15    age 24   28g      218 ->     40    -178
+    Luke Pedlar                11    age 24   49g      217 ->     45    -172
+    Dylan Stephens             5     age 25  100g      687 ->    525    -162
+    Ryan Angwin                19    age 24   46g      487 ->    342    -145
+    Nick Bryan                 37    age 25   33g      718 ->    577    -141
+    Nikolas Cox                8     age 24   61g      249 ->    111    -138
+    Will Setterfield           5     age 28   91g      664 ->    530    -134
+    Tanner Bruhn               12    age 24   82g     2018 ->   1897    -121
+  games profile (net against ORDER P):
+    0        rows   95  net      +24  per row     +0.3
+    1-4      rows   48  net     +618  per row    +12.9
+    5-9      rows   53  net      -88  per row     -1.7
+    10-15    rows   48  net     +175  per row     +3.6
+    16-29    rows   79  net     -404  per row     -5.1
+    30-59    rows   99  net    -1400  per row    -14.1
+    60+      rows  382  net    -3576  per row     -9.4
+
+== MOVERS LEDGER — R20b2 (p20 0.105  A off   both levers, SOFTEST), against ORDER P ==
+  TOP 10 UP:
+    Sid Draper                 4     age 20   10g      623 ->    923    +300
+    Dylan Patterson            5     age 19    4g      955 ->   1222    +267
+    Daniel Annable             6     age 19    1g     1115 ->   1367    +252
+    Harry Barnett              23    age 22    2g      557 ->    668    +111
+    Marcus Herbert             13    age 24    6g      690 ->    793    +103
+    Ned Moyle                  5     age 24   25g     1568 ->   1671    +103
+    Louis Emmett               27    age 19    5g      454 ->    545     +91
+    Lachlan McAndrew           None  age 26   21g      841 ->    920     +79
+    Zane Duursma               4     age 21   38g      194 ->    270     +76
+    Taylor Goad                20    age 21    2g      590 ->    665     +75
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    307    -227
+    Paddy Dow                  3     age 27   83g      206 ->     33    -173
+    Luke Pedlar                11    age 24   49g      217 ->     55    -162
+    Conor Stone                15    age 24   28g      218 ->     59    -159
+    Dylan Stephens             5     age 25  100g      687 ->    534    -153
+    Ryan Angwin                19    age 24   46g      487 ->    345    -142
+    Nick Bryan                 37    age 25   33g      718 ->    582    -136
+    Nikolas Cox                8     age 24   61g      249 ->    114    -135
+    Will Setterfield           5     age 28   91g      664 ->    533    -131
+    Tanner Bruhn               12    age 24   82g     2018 ->   1901    -117
+  games profile (net against ORDER P):
+    0        rows   95  net      +49  per row     +0.5
+    1-4      rows   48  net    +1089  per row    +22.7
+    5-9      rows   53  net     +231  per row     +4.4
+    10-15    rows   48  net     +513  per row    +10.7
+    16-29    rows   79  net     +120  per row     +1.5
+    30-59    rows   99  net    -1143  per row    -11.5
+    60+      rows  382  net    -3448  per row     -9.0
+
+== MOVERS LEDGER — R20b2A (p20 0.105  A ON    both levers, softest, with FIX A), against ORDER P ==
+  TOP 10 UP:
+    Sam Lalor                  1     age 20   20g     3060 ->   3385    +325
+    Willem Duursma             1     age 19   17g     3920 ->   4225    +305
+    Sid Draper                 4     age 20   10g      623 ->    923    +300
+    Dylan Patterson            5     age 19    4g      955 ->   1222    +267
+    Daniel Annable             6     age 19    1g     1115 ->   1367    +252
+    Finn O'Sullivan            2     age 20   37g     2810 ->   3051    +241
+    Sam Cumming                7     age 19   13g     2007 ->   2146    +139
+    Harry Barnett              23    age 22    2g      557 ->    668    +111
+    Harvey Langford            6     age 20   41g     2422 ->   2532    +110
+    Zeke Uwland                2     age 19   16g     1486 ->   1595    +109
+  TOP 10 DOWN:
+    Jamarra Ugle-Hagan         1     age 24   70g      534 ->    343    -191
+    Paddy Dow                  3     age 27   83g      206 ->     33    -173
+    Luke Pedlar                11    age 24   49g      217 ->     55    -162
+    Conor Stone                15    age 24   28g      218 ->     59    -159
+    Dylan Stephens             5     age 25  100g      687 ->    534    -153
+    Ryan Angwin                19    age 24   46g      487 ->    345    -142
+    Nick Bryan                 37    age 25   33g      718 ->    582    -136
+    Nikolas Cox                8     age 24   61g      249 ->    115    -134
+    Brayden Cook               26    age 24   48g      710 ->    596    -114
+    Nathan O'Driscoll          28    age 24   50g      562 ->    449    -113
+  games profile (net against ORDER P):
+    0        rows   95  net      +49  per row     +0.5
+    1-4      rows   48  net    +1089  per row    +22.7
+    5-9      rows   53  net     +253  per row     +4.8
+    10-15    rows   48  net     +755  per row    +15.7
+    16-29    rows   79  net     +923  per row    +11.7
+    30-59    rows   99  net     -542  per row     -5.5
+    60+      rows  382  net    -2905  per row     -7.6
+

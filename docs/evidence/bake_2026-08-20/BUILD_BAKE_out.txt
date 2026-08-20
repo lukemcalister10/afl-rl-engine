@@ -1,0 +1,69 @@
+=== THE BAKE — BOARD ARMS (register v780) ===
+  engine : 5ac6780f3c4931edcaa527576bbdfb88  (pre-flip was 5f434b95)
+  rl_model: 6fe7c4155866d80e8045bed2d3bf2802  (pre-flip was 98f16794)
+  store  : cb38ef1171dcf20aae66ebf12682be0d  (pin cb38ef11)
+  v0surf : 5dd34ca82735f5c8f021b1c7320df8f8  (pin 5dd34ca8, IN-REPO)
+  out-of-repo /home/claude/v0surf.pkl : fbc5b39387b2b135284a2e157f46c810  — NOT TOUCHED, and no longer in the precedence
+  U0     : 7 return games — OWNER-RULED, DATA-SUPPORTED (D5-final, 2026-08-19). RULED, NOT MEASURED.
+  EVERY ARM RUNS UNBOUND: RL_V0SURF_PKL is set NOWHERE.
+
+--- BAKE_CAND : BAKE_BARE=1 ---
+6fe7c4155866d80e8045bed2d3bf2802  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_CAND/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_CAND/rl_after/rl_model_data.json
+  BAKE_BARE=1 : no model-semantics RL_* exported (F1 bare build)
+a05fe951f78482c70520480e184c80ec  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_CAND/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- BAKE_CAND2 : BAKE_BARE=1 ---
+6fe7c4155866d80e8045bed2d3bf2802  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_CAND2/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_CAND2/rl_after/rl_model_data.json
+  BAKE_BARE=1 : no model-semantics RL_* exported (F1 bare build)
+a05fe951f78482c70520480e184c80ec  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_CAND2/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- BAKE_BASE : RL_O43=0 ---
+6fe7c4155866d80e8045bed2d3bf2802  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_BASE/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_BASE/rl_after/rl_model_data.json
+daa16812e50fb71241e627d89180412c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_BASE/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- BAKE_NOO42 : RL_O42=0 RL_O43=0 ---
+6fe7c4155866d80e8045bed2d3bf2802  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_NOO42/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_NOO42/rl_after/rl_model_data.json
+ff9361867357c085c8111ba957ce4f3b  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_NOO42/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- BAKE_IDENT_P : RL_O38A=0 RL_O38B1=0 RL_O39_BETASAT= RL_O40_CAPFORM= RL_O40_CAPPCT= RL_O40_RECW= RL_O40_PGMAT=0 RL_O41_SDOFF= RL_O41_CREDIT=0 RL_O41_RESET=0 RL_O41_INJ=0 RL_O41_R3=0 RL_O41_RAMP=0 RL_O41_BREAK=binary RL_O41_UNWIND=5 RL_O42=0 RL_O43=0 ---
+6fe7c4155866d80e8045bed2d3bf2802  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_IDENT_P/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_IDENT_P/rl_after/rl_model_data.json
+374d4e442665771801c5f1edd2a7e0e2  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_IDENT_P/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- BAKE_IDENT_K : RL_O37=0 RL_O38A=0 RL_O38B1=0 RL_O39_BETASAT= RL_O40_CAPFORM= RL_O40_CAPPCT= RL_O40_RECW= RL_O40_PGMAT=0 RL_O41_SDOFF= RL_O41_CREDIT=0 RL_O41_RESET=0 RL_O41_INJ=0 RL_O41_R3=0 RL_O41_RAMP=0 RL_O41_BREAK=binary RL_O41_UNWIND=5 RL_O42=0 RL_O43=0 RL_O31=1 RL_O32=1 RL_O36=1 RL_O36_LAM_S1=0.40 RL_O36_TALL=1 RL_O36_FLOORFIX=1 RL_O36_KAPPA=0.20 RL_O36_GAMMA=8.0 RL_O36_ETA=0.50 RL_O36_GAMMA_D=14.0 RL_O36_LAMBDA=1.08 ---
+6fe7c4155866d80e8045bed2d3bf2802  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_IDENT_K/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_IDENT_K/rl_after/rl_model_data.json
+f3101883a60b0a7b8cb50f9d8a5abfff  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_IDENT_K/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- BAKE_L0R : RL_O38A=0 RL_O38B1=0 RL_O39_BETASAT= RL_O40_CAPFORM= RL_O40_CAPPCT= RL_O40_RECW= RL_O40_PGMAT=0 RL_O41_SDOFF= RL_O41_CREDIT=0 RL_O41_RESET=0 RL_O41_INJ=0 RL_O41_R3=0 RL_O41_RAMP=0 RL_O41_BREAK=binary RL_O41_UNWIND=5 RL_O42=0 RL_O43=0 RL_O38A=1 RL_O38B1=1 RL_O39_TMAXPCT=20 ---
+6fe7c4155866d80e8045bed2d3bf2802  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_L0R/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_L0R/rl_after/rl_model_data.json
+7f88f5096ff5b781da4614b7142d332c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bake_arms/bb_BAKE_L0R/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+=== BOARD IDS ===
+BAKE_CAND      a05fe951f78482c70520480e184c80ec
+BAKE_CAND2     a05fe951f78482c70520480e184c80ec
+BAKE_BASE      daa16812e50fb71241e627d89180412c
+BAKE_NOO42     ff9361867357c085c8111ba957ce4f3b
+BAKE_IDENT_P   374d4e442665771801c5f1edd2a7e0e2
+BAKE_IDENT_K   f3101883a60b0a7b8cb50f9d8a5abfff
+BAKE_L0R       7f88f5096ff5b781da4614b7142d332c
+
+=== EXPECTED ===
+  BAKE_CAND    a05fe951 (F1: the BARE build — nothing set — must produce the candidate BYTE-EXACT)
+  BAKE_CAND2   == BAKE_CAND (F3 determinism)
+  BAKE_BASE    daa16812 | BAKE_NOO42 ff936186 | BAKE_IDENT_P 374d4e44
+  BAKE_IDENT_K f3101883 | BAKE_L0R    7f88f509        (F2: every kill-switch restores its history)
+
+  IF ANY ARM MOVES: HALT AND REPORT IT AS FIRED. Do not add dials until the number matches.

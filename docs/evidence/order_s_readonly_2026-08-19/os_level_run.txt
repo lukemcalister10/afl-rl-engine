@@ -1,0 +1,250 @@
+======================================================================================================================
+ORDER S READ-ONLY — T1. THE PG *LEVEL* BY POSITION. THE COMPANION TO ORDER R's SLOPE TEST.
+======================================================================================================================
+NO BOARD IS BUILT. NO ENGINE FILE IS EDITED. NO DIAL IS ADDED. This file measures and reports.
+ruler     : the house S4 delivered-value ruler, md5 241842f61ddd3c486f04f201a7efcce9
+estimator : ORDER P's own op_lib.Premium — games-weighted local-linear kernel, tricube, h=0.40 in
+            log-v0 units, isotonised, fitted PER CLASS. Refitted inside every bootstrap draw.
+population: 5041 season rows · 1575 players · 58488 games
+            ASSERTED equal to PREMIUM_SURFACE.json::n_rows/n_players/n_games — the SAME population
+            the premium was fitted on. Falsifier SRO-P1 did not fire.
+
+1 · THE FIT IS THE ENGINE'S OWN. Falsifier SRO-P2 did not fire: the replicated per-class surface
+    reproduces op_lib.Premium node for node (max |diff| < 1e-12) AND the BUILT engine surface in
+    PREMIUM_SURFACE.json (max |diff| < 1e-9). Nothing new is fitted in this file.
+
+----------------------------------------------------------------------------------------------------------------------
+2 · THE SAMPLE, PER POSITION AND PER PRICE CELL
+----------------------------------------------------------------------------------------------------------------------
+   price cuts are the row's OWN CLASS percentiles of v0, fixed before any residual was computed:
+     TALL   median v0     512   p90 v0    1356
+     SMALL  median v0     449   p90 v0    1659
+
+   group    rows  players     games |    ALL n  BELOW n  ABOVE n   TAIL n |    med v0
+   KPD       462      191      4903 |      462      277      185       19 |       428
+   KPF       628      257      6841 |      628      277      351       84 |       596
+   RUCK      206       96      1778 |      206       96      110       18 |       596
+   MID      1380      583     16841 |     1380      529      851      212 |       664
+   SD        977      420     11687 |      977      580      397       50 |       367
+   SF       1388      602     16438 |     1388      783      605       99 |       441
+   TALL     1296      442     13522 |     1296      650      646      121 |       512
+   SMALL    3745     1146     44966 |     3745     1892     1853      361 |       449
+
+   THIN-CELL RULE, stated before the numbers: a cell with fewer than 30 games-weighted effective
+   rows, or fewer than 40 players, is printed THIN and is not read as a result.
+
+   THE ESTIMATOR'S OWN EFFECTIVE SAMPLE at the two cut prices, read straight off the BUILT
+   surface's per-node ESS (PREMIUM_SURFACE.json). ORDER P's ESS_THIN is 30.
+     TALL   ESS at the class median v0   262.5 · at the class p90   156.0 · min over the grid   18.5
+     SMALL  ESS at the class median v0   454.4 · at the class p90   341.5 · min over the grid   96.9
+
+----------------------------------------------------------------------------------------------------------------------
+3 · PLAYER-LEVEL CLUSTER BOOTSTRAP — 2000 DRAWS, SEED 32, THE PREMIUM REFITTED IN EVERY DRAW
+----------------------------------------------------------------------------------------------------------------------
+   Players are the cluster: one player contributes up to six correlated season rows. Each draw
+   resamples PLAYERS with replacement, REFITS both class surfaces on the resampled rows over the
+   SAME support grid, and recomputes every games-weighted mean residual. So the interval carries
+   both the sampling noise in the residual AND the estimation noise in the premium itself.
+
+   2000 draws completed in 61.9s.
+
+----------------------------------------------------------------------------------------------------------------------
+4 · THE STRUCTURAL CONTROL (prereg SRO-1) — THE CLASS-LEVEL MEAN RESIDUAL MUST BE ~ZERO
+----------------------------------------------------------------------------------------------------------------------
+   The pooled surface is fitted on exactly these rows, so the games-weighted mean residual over a
+   whole class has to sit on zero. If it does not, this seat has misread the estimator and says so.
+
+   class        mean resid 90% CI                     verdict     
+   TALL            -0.1045 [   -0.2627,   +0.1118] PASS — |mean| < 0.5
+   SMALL           +0.0857 [   -0.0227,   +0.2914] PASS — |mean| < 0.5
+
+   SRO-1b, the zero-sum note, stated in the prereg: because the class mean is pinned at zero, a
+   position-level offset inside a class is a REDISTRIBUTION between that class's three positions.
+   If one is over-barred another must be under-barred. "Everyone is over-barred" is not a result
+   this estimator can produce, and nobody should read it out of the table below.
+
+----------------------------------------------------------------------------------------------------------------------
+5 · THE LEVEL, PER POSITION — GAMES-WEIGHTED MEAN RESIDUAL AGAINST THE POOLED BAR
+----------------------------------------------------------------------------------------------------------------------
+   POSITIVE = the position produces ABOVE the pooled bar = UNDER-barred = charged too little.
+   NEGATIVE = the position produces BELOW the pooled bar = OVER-barred = charged too much.
+   Every number is in AFL Fantasy points a game. Intervals are the bootstrap of section 3.
+
+   -- POOLED OVER PRICE
+   pos      rows     games    mean resid 90% CI                       CI width excl 0?   
+   KPD       462      4903        +0.631 [    -0.332,    +1.717]      2.049 no        
+   KPF       628      6841        +0.789 [    -0.064,    +1.603]      1.666 no        
+   RUCK      206      1778        -5.569 [    -8.178,    -2.900]      5.278 YES -     
+   MID      1380     16841        -0.348 [    -1.135,    +0.556]      1.691 no        
+   SD        977     11687        -2.978 [    -4.329,    -1.661]      2.667 YES -     
+   SF       1388     16438        +2.709 [    +1.834,    +3.673]      1.839 YES +     
+
+   -- BELOW the class median v0
+   pos      rows     games    mean resid 90% CI                       CI width excl 0?   
+   KPD       277      2748        +1.123 [    -0.146,    +2.461]      2.608 no        
+   KPF       277      2503        +0.518 [    -0.782,    +1.827]      2.609 no        
+   RUCK       96       632        -8.237 [   -11.232,    -5.500]      5.732 YES -     
+   MID       529      5145        -0.896 [    -2.484,    +0.796]      3.280 no        
+   SD        580      6019        -2.760 [    -4.853,    -0.925]      3.928 YES -     
+   SF        783      8295        +3.252 [    +1.948,    +4.704]      2.756 YES +     
+
+   -- ABOVE the class median v0
+   pos      rows     games    mean resid 90% CI                       CI width excl 0?   
+   KPD       185      2155        +0.003 [    -1.651,    +1.801]      3.452 no        
+   KPF       351      4338        +0.945 [    -0.251,    +2.014]      2.264 no        
+   RUCK      110      1146        -4.098 [    -7.705,    -0.398]      7.308 YES -     
+   MID       851     11696        -0.108 [    -1.049,    +0.908]      1.957 no        
+   SD        397      5668        -3.210 [    -4.968,    -1.519]      3.449 YES -     
+   SF        605      8143        +2.156 [    +0.966,    +3.370]      2.403 YES +     
+
+   -- THE EXPENSIVE TAIL (v0 > class p90)
+   pos      rows     games    mean resid 90% CI                       CI width excl 0?   
+   KPD        19       304        -0.910 [    -6.247,    +5.481]     11.728 no         THIN
+   KPF        84      1300        +0.363 [    -1.697,    +2.173]      3.870 no        
+   RUCK       18       284        -1.814 [    -6.911,    +3.761]     10.671 no         THIN
+   MID       212      3554        -1.113 [    -2.764,    +0.641]      3.405 no        
+   SD         50       935        -1.486 [    -7.160,    +4.400]     11.559 no        
+   SF         99      1745        +0.213 [    -2.650,    +2.994]      5.643 no        
+
+----------------------------------------------------------------------------------------------------------------------
+5b · WHERE THE OFFSET COMES FROM — THE AGE BAR ALONE, AND WHETHER IT IS FLAT IN AGE
+----------------------------------------------------------------------------------------------------------------------
+   Column 1 is the games-weighted mean of (avg - o32_gate_bar(pos, age)) with NO premium at all —
+   ORDER N's own surplus. Column 2 is the same after the pooled premium is subtracted. The
+   DIFFERENCE between them is exactly the games-weighted mean premium the position's own price
+   distribution earns it. This separates "the position's own bar is wrong" from "the pooled
+   premium puts this position in the wrong place".
+
+   pos        vs AGE bar mean PG earned  vs POOLED bar
+   KPD            +5.878         +5.248         +0.631
+   KPF            +7.739         +6.950         +0.789
+   RUCK           +2.448         +8.017         -5.569
+   MID            +6.846         +7.195         -0.348
+   SD             -0.027         +2.952         -2.978
+   SF             +6.142         +3.433         +2.709
+
+   THE AGE PROFILE. If the offset is flat in age it is a LEVEL problem — the position's flat bar
+   or the pooled premium. If it grows with age it is the CLASS-POOLED age development delta, which
+   is a different object (the S1 C3 surface) and not PG's to answer for. Point estimates only;
+   cells under 40 rows are printed THIN and are not read.
+
+   pos            age 18         age 19         age 20         age 21         age 22         age 23
+   KPD           -21.42*          +0.87          +2.34          +0.32          +0.55          +0.26
+   KPF           -12.66*          -3.18          -0.18          +0.63          +1.99          +2.34
+   RUCK                -        -15.18*        -17.60*          -8.96          -5.42          +3.84
+   MID            -8.59*          -6.86          -3.35          -0.15          +2.41          +3.87
+   SD             +1.35*          -2.99          -5.57          -2.14          -3.48          -1.53
+   SF             -0.81*          +0.07          +2.05          +3.13          +4.62          +2.38
+   n                  39            808           1040           1102           1072            980
+   (* = fewer than 40 rows in that position-age cell — THIN, not read.)
+
+----------------------------------------------------------------------------------------------------------------------
+6 · PAIRWISE, INSIDE EACH CLASS — IS ONE POSITION SEPARABLE FROM ANOTHER ON LEVEL?
+----------------------------------------------------------------------------------------------------------------------
+   The difference is bootstrapped as a DIFFERENCE inside each draw, which is the right object:
+   the two positions share the same fitted surface in a draw, so their errors are correlated and
+   differencing the two CIs separately would overstate the spread.
+
+   -- ALL
+   pair                     A           B         A-B 90% CI of A-B              separable?    
+   MID vs SD           -0.348      -2.978      +2.630 [    +0.753,    +4.596] SEPARABLE     
+   MID vs SF           -0.348      +2.709      -3.058 [    -4.489,    -1.625] SEPARABLE     
+   SD vs SF            -2.978      +2.709      -5.688 [    -7.678,    -3.804] SEPARABLE     
+   KPD vs KPF          +0.631      +0.789      -0.158 [    -1.789,    +1.615] no — CI covers 0
+   KPD vs RUCK         +0.631      -5.569      +6.200 [    +3.241,    +9.325] SEPARABLE     
+   KPF vs RUCK         +0.789      -5.569      +6.358 [    +3.120,    +9.328] SEPARABLE     
+
+   -- BELOW
+   pair                     A           B         A-B 90% CI of A-B              separable?    
+   MID vs SD           -0.896      -2.760      +1.865 [    -1.062,    +5.254] no — CI covers 0
+   MID vs SF           -0.896      +3.252      -4.148 [    -6.246,    -2.069] SEPARABLE     
+   SD vs SF            -2.760      +3.252      -6.012 [    -9.338,    -3.148] SEPARABLE     
+   KPD vs KPF          +1.123      +0.518      +0.605 [    -1.795,    +2.958] no — CI covers 0
+   KPD vs RUCK         +1.123      -8.237      +9.360 [    +6.100,   +12.981] SEPARABLE     
+   KPF vs RUCK         +0.518      -8.237      +8.755 [    +5.610,   +11.978] SEPARABLE     
+
+   -- ABOVE
+   pair                     A           B         A-B 90% CI of A-B              separable?    
+   MID vs SD           -0.108      -3.210      +3.102 [    +0.807,    +5.489] SEPARABLE     
+   MID vs SF           -0.108      +2.156      -2.264 [    -4.098,    -0.315] SEPARABLE     
+   SD vs SF            -3.210      +2.156      -5.366 [    -7.731,    -2.981] SEPARABLE     
+   KPD vs KPF          +0.003      +0.945      -0.942 [    -3.365,    +1.679] no — CI covers 0
+   KPD vs RUCK         +0.003      -4.098      +4.101 [    -0.301,    +8.549] no — CI covers 0
+   KPF vs RUCK         +0.945      -4.098      +5.043 [    +0.551,    +9.269] SEPARABLE     
+
+   -- TAIL
+   pair                     A           B         A-B 90% CI of A-B              separable?    
+   MID vs SD           -1.113      -1.486      +0.373 [    -6.381,    +6.894] no — CI covers 0
+   MID vs SF           -1.113      +0.213      -1.326 [    -5.131,    +2.566] no — CI covers 0
+   SD vs SF            -1.486      +0.213      -1.699 [    -8.203,    +5.085] no — CI covers 0
+   KPD vs KPF          -0.910      +0.363      -1.273 [    -7.403,    +6.210] no — CI covers 0
+   KPD vs RUCK         -0.910      -1.814      +0.904 [    -5.277,    +8.609] no — CI covers 0
+   KPF vs RUCK         +0.363      -1.814      +2.177 [    -4.837,    +8.241] no — CI covers 0
+
+----------------------------------------------------------------------------------------------------------------------
+7 · WHAT A LEVEL OFFSET IS WORTH — THE TRANSLATION WRITTEN DOWN IN THE PREREG
+----------------------------------------------------------------------------------------------------------------------
+   In the unclipped region  d ln(retained pedigree)/ds = LAMBDA*A(g)*THETA_R = BETA_sat*A(g).
+   So a level offset of x points a game moves the RETAINED pedigree leg by exp(BETA_sat*A(g)*x)-1.
+   BETA_sat = 0.114646. A(g) = 1 - exp(-g/9.890).
+
+   games g      A(g) | change in the RETAINED pedigree leg, per level offset
+                     |   -3.0 ppg   -2.0 ppg   -1.0 ppg   +1.0 ppg   +2.0 ppg
+   2          0.1831 |     -6.10%     -4.11%     -2.08%     +2.12%     +4.29%
+   5          0.3968 |    -12.76%     -8.70%     -4.45%     +4.65%     +9.53%
+   10         0.6362 |    -19.65%    -13.57%     -7.03%     +7.57%    +15.70%
+   17         0.8207 |    -24.59%    -17.15%     -8.98%     +9.87%    +20.71%
+   25         0.9202 |    -27.13%    -19.02%    -10.01%    +11.13%    +23.49%
+   40         0.9825 |    -28.67%    -20.17%    -10.65%    +11.92%    +25.27%
+   60         0.9977 |    -29.05%    -20.45%    -10.81%    +12.12%    +25.70%
+
+   Read it as: a position over-barred by 2 points a game has its retained pedigree leg cut by
+   17.2% at 17 games and by 4.1% at 2 games, for no reason connected to how he played.
+
+----------------------------------------------------------------------------------------------------------------------
+8 · THE OWNER'S SENTENCE, CHECKED ARITHMETICALLY — "priced 18% below, barred only 2-7% lower"
+----------------------------------------------------------------------------------------------------------------------
+   This is NOT the residual test. It is the separate question of how much the bar moves when the
+   price moves, and it is printed because the residual table only answers half of what was asked.
+
+   The bar has two position-carrying parts: the position's OWN o32_gate_bar, and PG at the
+   position's OWN entry price. A cheaper position gets a lower bar through BOTH.
+
+   THE SAME-PICK COMPARISON, on the engine's own positional day-0 curve (pvc_curve_v2.json::
+   nd_v0.posv) in engine currency (x 1.0524), at age 19.
+
+   pick   | KPD                KPF                RUCK               MID                SD                 SF              
+          |       v0   bar19         v0   bar19         v0   bar19         v0   bar19         v0   bar19         v0   bar19
+   1      |     2870   66.26       2496   57.29       2949   77.87       3444   82.46       2839   76.43       2709   68.08
+   3      |     2438   57.79       2142   54.05       2947   77.87       2872   78.46       2400   73.00       2453   65.97
+   5      |     1527   55.65       1565   54.05       2182   65.75       2170   74.31       1679   68.95       1666   61.41
+   10     |      960   52.78       1169   52.22       1283   65.68       1657   70.50       1356   64.46       1034   54.35
+   15     |      685   51.93        799   50.87       1133   63.54       1029   63.55        951   61.75        667   52.51
+   20     |      678   51.88        764   50.79       1128   63.49        972   63.55        825   61.05        575   51.11
+   30     |      512   50.51        594   49.57       1117   63.40        794   62.67        433   54.38        445   47.44
+   40     |      428   49.32        397   47.16        798   62.57        660   61.61        328   53.96        411   46.56
+   50     |      396   48.73        250   45.56        313   57.87        357   55.76        181   51.66        292   46.56
+   60     |      385   48.55        220   45.41        142   52.69        177   52.97        171   50.42        167   42.53
+
+   THE OWNER'S TWO NUMBERS, READ OFF THAT TABLE. For each pick: how far BELOW MID is each
+   position PRICED, and how far below MID is it BARRED?
+
+   pick   | KPD                KPF                RUCK               SD                 SF               
+          |    price      bar     price      bar     price      bar     price      bar     price      bar
+   1      |   -16.7%   -19.7%    -27.5%   -30.5%    -14.4%    -5.6%    -17.6%    -7.3%    -21.3%   -17.4%
+   3      |   -15.1%   -26.3%    -25.4%   -31.1%      2.6%    -0.8%    -16.4%    -7.0%    -14.6%   -15.9%
+   5      |   -29.6%   -25.1%    -27.9%   -27.3%      0.6%   -11.5%    -22.6%    -7.2%    -23.2%   -17.4%
+   10     |   -42.1%   -25.1%    -29.4%   -25.9%    -22.6%    -6.8%    -18.2%    -8.6%    -37.6%   -22.9%
+   15     |   -33.4%   -18.3%    -22.4%   -19.9%     10.1%    -0.0%     -7.6%    -2.8%    -35.2%   -17.4%
+   20     |   -30.2%   -18.4%    -21.4%   -20.1%     16.0%    -0.1%    -15.1%    -3.9%    -40.9%   -19.6%
+   30     |   -35.5%   -19.4%    -25.2%   -20.9%     40.7%     1.2%    -45.5%   -13.2%    -44.0%   -24.3%
+   40     |   -35.1%   -20.0%    -39.8%   -23.5%     20.9%     1.6%    -50.4%   -12.4%    -37.8%   -24.4%
+   50     |    11.0%   -12.6%    -29.8%   -18.3%    -12.2%     3.8%    -49.2%    -7.4%    -18.1%   -16.5%
+   60     |   117.5%    -8.3%     24.3%   -14.3%    -19.9%    -0.5%     -3.6%    -4.8%     -5.8%   -19.7%
+
+   The step in the premium's own axis: an 18% lower entry price is ln(0.82) = -0.1985 log-units.
+   At the SMALL average slope ORDER R measured (8.9432 points a game per log-unit) that is -1.77
+   points a game of BAR — before the position's own gate bar moves at all.
+
+
+wrote LEVEL_SRO.json and LEVEL_SRO_out.txt

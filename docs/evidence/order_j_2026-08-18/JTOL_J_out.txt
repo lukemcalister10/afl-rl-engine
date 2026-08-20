@@ -1,0 +1,80 @@
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+J-TOL caps from PREREG_J §2.2 — board total 667913.3 bp · churn cap 1001.87 · net cap 667.91
+active rows under the store-wide gate, aged 24+: 429
+baseline priced in 3s
+harness repeatability: PASS on all 429 rows · identity vs BASELINE_J: EXACT on 429 of 429
+per-row caps: min 1.00 · median 1.29 · max 25.00 board points
+
+=== 1 · S1 ALONE — THE ZERO-TOLERANCE TEST (PREREG_J §2.1), COUNTERWEIGHT AT THE REPAIR POINT ===
+point                                       moved      worst  verdict
+lambda_S1 = 0.10                                0     0.0000  PASS — zero
+lambda_S1 = 0.15                                0     0.0000  PASS — zero
+lambda_S1 = 0.25                                0     0.0000  PASS — zero
+lambda_S1 = 0.35                                0     0.0000  PASS — zero
+lambda_S1 = 0.45                                0     0.0000  PASS — zero
+lambda_S1 = 0.70                                0     0.0000  PASS — zero
+lambda_S1 = 1.00                                0     0.0000  PASS — zero
+S1 zero-tolerance verdict: 7 of 7 doses leave every mature row byte-identical  -> PASS
+
+=== 2 · THE COUNTERWEIGHT KNOB LADDER UNDER J-TOL (dose 0.35, Order I's own comparison dose) ===
+point                                     moved   over     worst   its cap      churn       net  (a)  (b)  (c)   J-TOL
+kappa 0.24 -> 0.15                          423     47    45.532     3.728      393.6     -76.3  FAIL ok   ok    FAIL
+kappa 0.24 -> 0.18                          423     43    30.354     3.728      262.4     -50.8  FAIL ok   ok    FAIL
+kappa 0.24 -> 0.20                          423     32    20.236     3.728      174.9     -33.9  FAIL ok   ok    FAIL
+kappa 0.24 -> 0.22                          422     17    10.118     3.728       87.5     -16.9  FAIL ok   ok    FAIL
+kappa 0.24 -> 0.26                          423     17    10.118     3.728       87.5     +16.9  FAIL ok   ok    FAIL
+kappa 0.24 -> 0.28                          423     32    20.236     3.728      174.9     +33.9  FAIL ok   ok    FAIL
+kappa 0.24 -> 0.30                          422     43    30.354     3.728      262.4     +50.8  FAIL ok   ok    FAIL
+kappa 0.24 -> 0.35                          423     51    55.650     3.728      481.0     +93.2  FAIL ok   ok    FAIL
+kappa 0.24 -> 0.40                          423     57    80.945     3.728      699.7    +135.6  FAIL ok   ok    FAIL
+kappa 0.24 -> 0.50                          423     67   131.536     3.728     1137.0    +220.3  FAIL FAIL ok    FAIL
+kappa 0.24 -> 0.60                          423     75   182.126     3.728     1574.3    +305.1  FAIL FAIL ok    FAIL
+eta 0.41 -> 0.00                            426    107   130.557     1.283     2600.7   +2600.7  FAIL FAIL FAIL  FAIL
+eta 0.41 -> 0.10                            426    100    98.714     1.283     1966.4   +1966.4  FAIL FAIL FAIL  FAIL
+eta 0.41 -> 0.20                            426     95    66.871     1.283     1332.1   +1332.1  FAIL FAIL FAIL  FAIL
+eta 0.41 -> 0.30                            426     75    35.028     1.283      697.8    +697.8  FAIL ok   FAIL  FAIL
+eta 0.41 -> 0.42                            426     12     3.184     1.283       63.4     -63.4  FAIL ok   ok    FAIL
+eta 0.41 -> 0.45                            426     55    12.737     1.283      253.7    -253.7  FAIL ok   ok    FAIL
+eta 0.41 -> 0.50                            426     71    28.659     1.283      570.9    -570.9  FAIL ok   ok    FAIL
+gamma_u 11 -> 8                             423     50    49.058     8.227      347.1     -73.5  FAIL ok   ok    FAIL
+gamma_u 11 -> 10                            423     20    15.122     8.227      114.5     -22.1  FAIL ok   ok    FAIL
+gamma_u 11 -> 12                            425     16    13.528     8.227      113.1     +20.3  FAIL ok   ok    FAIL
+gamma_u 11 -> 14                            426     58    35.741     8.227      335.7     +56.9  FAIL ok   ok    FAIL
+gamma_u 11 -> 16                            426     76    52.114     8.227      551.4     +90.4  FAIL ok   ok    FAIL
+gamma_d 14 -> 4                             426    103    93.457     1.121     2032.0   +1828.9  FAIL FAIL FAIL  FAIL
+gamma_d 14 -> 6                             426    106    80.196     1.121     1720.9   +1444.0  FAIL FAIL FAIL  FAIL
+gamma_d 14 -> 8                             426    103    58.340     1.121     1313.5   +1079.2  FAIL FAIL FAIL  FAIL
+gamma_d 14 -> 10                            426     98    35.504     1.121      884.8    +717.3  FAIL ok   FAIL  FAIL
+gamma_d 14 -> 12                            426     82    15.702     1.121      443.7    +356.9  FAIL ok   ok    FAIL
+gamma_d 14 -> 13                            426     54     7.458     4.864      221.3    +177.9  FAIL ok   ok    FAIL
+lambda_rel 1.08 -> 0.80                      40     33    23.226     3.465      178.3    -178.3  FAIL ok   ok    FAIL
+lambda_rel 1.08 -> 0.90                      38     22    14.931     3.465      103.1    -103.1  FAIL ok   ok    FAIL
+lambda_rel 1.08 -> 1.00                      19     10     6.636     3.465       38.1     -38.1  FAIL ok   ok    FAIL
+lambda_rel 1.08 -> 1.20                      19     14     9.954     3.465       56.7     +56.7  FAIL ok   ok    FAIL
+lambda_rel 1.08 -> 1.30                      19     17    18.249     3.465       89.4     +89.4  FAIL ok   ok    FAIL
+
+=== 3 · THE SEARCH SHORTLIST — THE JOINT SETTINGS, IN SELECTION ORDER ===
+point                                     moved   over     worst   its cap      churn       net  (a)  (b)  (c)   J-TOL
+#1  d0.15 k0.24 gu11 e0.45 gd14 r1.08       426     55    12.737     1.283      253.7    -253.7  FAIL ok   ok    FAIL
+#2  d0.45 k0.18 gu8 e0.50 gd14 r1.08        426     61    82.486     8.227      707.1    -707.1  FAIL ok   FAIL  FAIL
+#3  d0.25 k0.22 gu8 e0.45 gd12 r1.08        426     86    47.989     8.227      654.6     +58.9  FAIL ok   ok    FAIL
+#4  d0.40 k0.20 gu8 e0.50 gd14 r1.08        426     63    77.488     8.227      691.2    -691.2  FAIL ok   FAIL  FAIL
+#5  d0.25 k0.24 gu8 e0.50 gd12 r1.08        426     81    51.717     8.227      669.7    -208.7  FAIL ok   ok    FAIL
+#6  d0.35 k0.20 gu8 e0.50 gd14 r1.08        426     63    77.488     8.227      691.2    -691.2  FAIL ok   FAIL  FAIL
+#7  d0.30 k0.20 gu8 e0.45 gd14 r1.08        426     46    67.194     8.227      439.5    -360.1  FAIL ok   ok    FAIL
+#8  d0.30 k0.22 gu8 e0.50 gd14 r1.08        426     66    72.489     8.227      675.3    -675.3  FAIL ok   FAIL  FAIL
+#9  d0.15 k0.24 gu8 e0.45 gd12 r1.08        426     84    43.054     8.227      618.7     +71.7  FAIL ok   ok    FAIL
+#10  d0.25 k0.22 gu8 e0.50 gd14 r1.08       426     66    72.489     8.227      675.3    -675.3  FAIL ok   FAIL  FAIL
+#11  d0.10 k0.28 gu8 e0.50 gd12 r1.08       426     79    51.869     1.283      619.8    -177.5  FAIL ok   ok    FAIL
+#12  d0.20 k0.24 gu8 e0.50 gd14 r1.08       426     65    67.491     8.227      659.4    -659.4  FAIL ok   ok    FAIL
+#13  d0.15 k0.24 gu8 e0.50 gd14 r1.08       426     65    67.491     8.227      659.4    -659.4  FAIL ok   ok    FAIL
+#14  d0.15 k0.26 gu8 e0.50 gd14 r1.08       426     65    62.493     8.227      646.8    -643.5  FAIL ok   ok    FAIL
+#15  d0.00 k0.30 gu8 e0.50 gd12 r1.08       426     78    55.815     1.283      604.8    -161.9  FAIL ok   ok    FAIL
+#16  d0.10 k0.26 gu8 e0.50 gd14 r1.08       426     65    62.493     8.227      646.8    -643.5  FAIL ok   ok    FAIL
+
+J-TOL VERDICT ON THE SHORTLIST: 0 of 16 joint settings PASS the corrected mature gate
+
+knob ladder: 0 of 34 single-axis moves pass J-TOL (Order I's zero-tolerance test passed 0 of 11)
+
+written: JTOL_J.json + JTOL_RAW.json  (168s total)

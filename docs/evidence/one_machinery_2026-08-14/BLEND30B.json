@@ -1,0 +1,72 @@
+{
+ "D2": 0.5501935857356868,
+ "abscissa": "cumulative cell \"<= k games\" placed at its UPPER EDGE k (declared)",
+ "backbone": {
+  "0": 0.5501935857356869,
+  "10": 0.8222840996343734,
+  "2": 0.6484751571249028,
+  "5": 0.6886678472502901
+ },
+ "beta": 0.9371623929925685,
+ "crossover_games": 7.879279976250102,
+ "fitted_rows": [
+  {
+   "B_fitted": 0.5501935857356868,
+   "B_target": 0.5501935857356869,
+   "g": 0,
+   "resid": -1.1102230246251565e-16,
+   "w_fitted": 0.0,
+   "w_target": 2.468224083556026e-16
+  },
+  {
+   "B_fitted": 0.6286871567002539,
+   "B_target": 0.6484751571249028,
+   "g": 2,
+   "resid": -0.0197880004246489,
+   "w_fitted": 0.17450522819455172,
+   "w_target": 0.2184974875246315
+  },
+  {
+   "B_fitted": 0.7139372466686289,
+   "B_target": 0.6886678472502901,
+   "g": 5,
+   "resid": 0.025269399418338834,
+   "w_fitted": 0.36403140493395425,
+   "w_target": 0.307853016594009
+  },
+  {
+   "B_fitted": 0.8109170210470202,
+   "B_target": 0.8222840996343734,
+   "g": 10,
+   "resid": -0.011367078587353197,
+   "w_fitted": 0.5796347651861813,
+   "w_target": 0.6049058111892599
+  }
+ ],
+ "form": "w(g) = 1 - exp(-(g/tau)^beta)",
+ "law": "price = w(g)*production + (1-w(g))*v0*fade(clock)",
+ "prereg": {
+  "P13": "form declared before fit",
+  "P14": "RMS <= 0.05 D units",
+  "P15": "crossover 6-10"
+ },
+ "rms_D_units": 0.019658060122847928,
+ "scale": "backbone is RAW(1)-normalised; production leg reads 1.0, faded-v0 leg reads D(2)",
+ "source": "FADE30B_DRIFT.json::backbone_r1 (R1 re-derived); owner ruling 4 + the Step-2 ruling",
+ "sse": 0.0011593179833805116,
+ "targets": [
+  {
+   "B": 0.6484751571249028,
+   "g": 2
+  },
+  {
+   "B": 0.6886678472502901,
+   "g": 5
+  },
+  {
+   "B": 0.8222840996343734,
+   "g": 10
+  }
+ ],
+ "tau": 11.650213170153966
+}

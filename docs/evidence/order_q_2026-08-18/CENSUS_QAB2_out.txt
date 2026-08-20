@@ -1,0 +1,46 @@
+=== ORDER Q CENSUS  tag=QAB2  dials={'RL_O37': '1', 'RL_O38A': '1', 'RL_O38B2': '1'} ===
+board total (numeraire): 666093
+
+BURN CENSUS
+  -- the supervisor's population (|fK-fP|>=0.02), n=268
+     band         n  burned  pts(board)
+     1-10        43       0           0
+     11-20       44       0           0
+     21-30       35       0           0
+     31-40       28       0           0
+     41+         51       0           0
+     pool        67       0           0
+     TOTAL      268       0           0
+  -- all young rows, n=289
+     band         n  burned  pts(board)
+     1-10        49       0           0
+     11-20       47       0           0
+     21-30       36       0           0
+     31-40       32       0           0
+     41+         54       0           0
+     pool        71       0           0
+     TOTAL      289       0           0
+  worst five (all young rows):
+     (none — the census is ZERO)
+
+BIRTHDAY CENSUS — the price on the 24th birthday, with games and output UNCHANGED
+  age-23 rows with a pedigree leg: 81
+  rows that GAIN 50% or more from the birthday alone: 0
+  points handed back across all age-23 rows: NET +125   GAINS ONLY +419   (the two readings are
+  different objects and both are printed: the birthday RAISES some rows and LOWERS others)
+  worst ratio: 1.4342   rows moving at all: 66
+  band         n  gain50+   movers     net points     gains only
+  1-10        10        0        9            -14            +55
+  11-20        8        0        6            +97            +99
+  21-30       10        0        9            +34           +101
+  31-40        9        0        6            +42            +44
+  41+         13        0       11            +31            +52
+  pool        31        0       25            -65            +68
+  the five largest ratios:
+     Josh Sinn                12      30g       76 ->    109   x1.434
+     Corey Warner             40      28g       33 ->     47   x1.424
+     James Tunstill           41      23g       44 ->     61   x1.386
+     Mitchell Knevitt         25      23g       76 ->    103   x1.355
+     Harvey Gallagher         39      28g       21 ->     27   x1.286
+
+wrote CENSUS_QAB2.json

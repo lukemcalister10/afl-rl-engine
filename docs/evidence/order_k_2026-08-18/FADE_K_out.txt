@@ -1,0 +1,61 @@
+================================================================================================================
+THE ENGINE'S OWN DISCLOSURE, RL_O36_FLOORFIX=1 (the default, the lane the decision board is built on)
+================================================================================================================
+  ORDER I LIVE (RL_O36=1) — THE COORDINATED BUILD. NOTHING IS GREENLIT AND NOTHING MERGES.
+    LEVER 1  S1, the age-referenced projection bar: lambda_S1=0.400 applied to the C3 gap at the four projection/floor sites. NO pick axis, capped at the flat bar, FLAT FROM AGE 24 (every mature row byte-identical, store-wide).
+    LEVER 2  the counterweight, re-derived JOINTLY on the corrected age-fair surface: kappa=0.20 gamma_u=8.0 / eta=0.50 gamma_d=14.0 / relief lambda=1.08 (was 0.24/11.0/0.41/14.0/1.08).
+    LEVER 3  the tall/small sitter factor: h_TALL=-0.6921, s_norm=1.4340996146, clip [0.5, 2.0]; kappa(16) small 0.793 / tall 0.500, kappa(64) small 1.447 / tall 0.964; m_TALL=0.645. DECLARED: the pinned identity means LATE SMALL SITTERS PAY for the talls' relief.
+    ORDER K FADE FLOOR: LIVE (RL_O36_FLOORFIX=1, the default). A SMALL's floor is HIS OWN PRE-FACTOR (Order D pooled) exponent, so no small can be made lighter by a talls-only relief; talls keep the [0.5, 2.0] clip. h_TALL UNCHANGED; the normaliser re-solved WITH the re-sited floor inside the constraint set (1.4284052407 -> 1.4340996146). Redistribution identity residual -1.110e-16 against the ruled depth-2 fade 0.5582775. The floor still binds: talls picks 1-25 on 0.5; smalls picks 1-18 on their own pooled exponent (of those, picks 1-5 also on 0.5 because the pooled curve is itself clipped there).
+    804 active rows sit at a developing age and can be reached by S1; 0 have no birth year and keep the flat bar.
+
+================================================================================================================
+THE FADE EXPONENT AND THE FADE, PICK BY PICK.  fade = D2^kappa at the ruled depth-2 cell 0.5582775.
+THE BASE IS BELOW 1, SO A LOWER EXPONENT IS A LIGHTER FADE (a smaller discount, a higher price).
+================================================================================================================
+pick |   pooled |  small J  small K |   tall J   tall K | smlJ vs pre smlK vs pre | tallJ vs pre tallK vs pre
+   1 |   0.5000 |   0.5000   0.5000 |   0.5000   0.5000 |     +0.00%     +0.00% |     +0.00%     +0.00%
+   2 |   0.5000 |   0.5000   0.5000 |   0.5000   0.5000 |     +0.00%     +0.00% |     +0.00%     +0.00%
+   3 |   0.5000 |   0.5000   0.5000 |   0.5000   0.5000 |     +0.00%     +0.00% |     +0.00%     +0.00%
+   4 |   0.5000 |   0.5000   0.5000 |   0.5000   0.5000 |     +0.00%     +0.00% |     +0.00%     +0.00%
+   5 |   0.5000 |   0.5000   0.5000 |   0.5000   0.5000 |     +0.00%     +0.00% |     +0.00%     +0.00%
+   6 |   0.5388 |   0.5000   0.5388 |   0.5000   0.5000 |     +2.29%     +0.00% |     +2.29%     +2.29%
+   7 |   0.5788 |   0.5000   0.5788 |   0.5000   0.5000 |     +4.70%     +0.00% |     +4.70%     +4.70%
+   8 |   0.6135 |   0.5000   0.6135 |   0.5000   0.5000 |     +6.84%     +0.00% |     +6.84%     +6.84%
+   9 |   0.6440 |   0.5000   0.6440 |   0.5000   0.5000 |     +8.76%     +0.00% |     +8.76%     +8.76%
+  10 |   0.6714 |   0.5300   0.6714 |   0.5000   0.5000 |     +8.59%     +0.00% |    +10.51%    +10.51%
+  11 |   0.6961 |   0.5774   0.6961 |   0.5000   0.5000 |     +7.17%     +0.00% |    +12.11%    +12.11%
+  12 |   0.7187 |   0.6206   0.7187 |   0.5000   0.5000 |     +5.89%     +0.00% |    +13.60%    +13.60%
+  13 |   0.7395 |   0.6604   0.7395 |   0.5000   0.5000 |     +4.72%     +0.00% |    +14.98%    +14.98%
+  14 |   0.7587 |   0.6972   0.7587 |   0.5000   0.5000 |     +3.65%     +0.00% |    +16.28%    +16.28%
+  15 |   0.7767 |   0.7315   0.7767 |   0.5000   0.5000 |     +2.67%     +0.00% |    +17.50%    +17.50%
+  16 |   0.7934 |   0.7636   0.7934 |   0.5000   0.5000 |     +1.75%     +0.00% |    +18.65%    +18.65%
+  17 |   0.8092 |   0.7937   0.8092 |   0.5000   0.5000 |     +0.90%     +0.00% |    +19.75%    +19.75%
+  18 |   0.8240 |   0.8221   0.8240 |   0.5000   0.5000 |     +0.11%     +0.00% |    +20.79%    +20.79%
+  19 |   0.8380 |   0.8490   0.8456 |   0.5000   0.5000 |     -0.64%     -0.44% |    +21.78%    +21.78%
+  20 |   0.8513 |   0.8745   0.8710 |   0.5000   0.5000 |     -1.34%     -1.14% |    +22.73%    +22.73%
+  21 |   0.8640 |   0.8988   0.8952 |   0.5000   0.5000 |     -2.01%     -1.80% |    +23.64%    +23.64%
+  22 |   0.8761 |   0.9219   0.9182 |   0.5000   0.5000 |     -2.63%     -2.43% |    +24.51%    +24.51%
+  23 |   0.8876 |   0.9440   0.9402 |   0.5000   0.5000 |     -3.23%     -3.02% |    +25.35%    +25.35%
+  24 |   0.8987 |   0.9651   0.9613 |   0.5000   0.5000 |     -3.80%     -3.58% |    +26.16%    +26.16%
+  25 |   0.9093 |   0.9854   0.9815 |   0.5009   0.5000 |     -4.34%     -4.12% |    +26.88%    +26.94%
+  30 |   0.9566 |   1.0761   1.0718 |   0.5915   0.5892 |     -6.73%     -6.49% |    +23.72%    +23.88%
+  40 |   1.0313 |   1.2191   1.2142 |   0.7345   0.7316 |    -10.37%    -10.11% |    +18.89%    +19.09%
+  50 |   1.0892 |   1.3300   1.3247 |   0.8454   0.8421 |    -13.09%    -12.82% |    +15.27%    +15.50%
+  53 |   1.1044 |   1.3589   1.3535 |   0.8744   0.8709 |    -13.79%    -13.52% |    +14.34%    +14.58%
+  64 |   1.1533 |   1.4527   1.4469 |   0.9681   0.9643 |    -16.01%    -15.73% |    +11.40%    +11.65%
+
+K-FLOOR (a) — SMALLS MADE LIGHTER (the picks where a small pays LESS than his pre-factor value):
+  ORDER J, the wired floor : picks [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]   <- THE DEFECT
+  ORDER K, the re-sited floor: NONE — at no pick, for any row
+K-FLOOR (d) — TALLS MADE HEAVIER (the ruled relief reversing):
+  ORDER J: none   ORDER K: none
+
+WHERE THE FLOOR STILL BINDS, AND FOR WHOM:
+  ORDER J  TALL on 0.5 : picks 1-24 (24)   SMALL on 0.5 : picks 1-9 (9)
+  ORDER K  TALL on 0.5 : picks 1-25 (25)
+  ORDER K  SMALL on the re-sited floor (his own pooled exponent): picks 1-18 (18)
+           ...of which also on the 0.5 hard floor, because the pooled curve is itself clipped there: picks 1-5 (5)
+
+s_norm            ORDER J 1.4284052406915069   ORDER K 1.4340996145830727
+identity residual ORDER K -1.110e-16   (build-failing above 1e-9)
+h_TALL            -0.6921227120657417  — UNCHANGED from the owner-ruled value

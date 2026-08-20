@@ -1,0 +1,84 @@
+=== ORDER E MATERIALITY SWEEP ===  lane RL_O32=1  (board points = ev/1.0524)
+row                           board       Phat
+harry-dean                   2400.5     2686.1   [EXHIBIT]
+cooper-duff-tytler           1571.6     1622.3   [EXHIBIT]
+milan-murdock                 169.8      208.6   [CONTROL mature 26]
+levi-ashcroft                3173.2     3278.6   [CONTROL young mid 48g]
+connor-o-sullivan            2375.8     2705.1   [CONTROL young tall 21/47g]
+logan-morris                 2681.6     3022.4   [CONTROL young tall 21/65g]
+
+BASELINE IDENTITY CONTROL vs PACKET_C §5 repaired-C32 column: dean 2400 (expect 2400) · duff-tytler 1572 (expect 1572) · murdock 170 (expect 170)
+BASELINE IDENTITY: PASS
+
+S1-IDENT       S1 loops re-implemented with Delta==0 (must be all-zero)
+     harry     +0.0  cooper     +0.0  milan     +0.0  levi     +0.0  connor     +0.0  logan     +0.0
+     S1 loop-copy identity: max |delta| = 0.0000000000 board points  -> PASS (byte-exact re-implementation)
+
+S1             projection replacement bar -> age-referenced  
+     harry   +843.5  cooper   +448.4  milan     +0.0  levi   +638.0  connor   +494.7  logan   +538.9
+S2-V5          flat future discount -> owner V5 age ladder   
+     harry   +157.2  cooper    +90.0  milan     -0.8  levi   +125.0  connor    +52.3  logan    +58.7
+S2-V3          flat future discount -> owner V3 age ladder   
+     harry   +469.5  cooper   +268.9  milan     +1.2  levi   +559.8  connor   +346.1  logan   +388.2
+S3             v7 tail-relax gate lcr>4 -> age-referenced    
+     harry     +0.0  cooper     +0.0  milan     +0.0  levi     +0.0  connor     +3.9  logan     +7.1
+S4             un-compress rho margin -> age-referenced      
+     harry    -44.4  cooper    +30.7  milan     +0.0  levi   -126.2  connor    -32.3  logan   +190.3
+S5             _lvl_eff exposure shrink neutralized          
+     harry   +158.9  cooper    +13.0  milan    +40.7  levi    +93.5  connor     +6.0  logan   -211.7
+S6             _inferM1 upside-fade bar -> age-referenced    
+     harry     +0.0  cooper     +0.0  milan     +0.0  levi     +0.0  connor    +40.0  logan     +0.0
+S7             _est decliner-shed bar -> age-referenced      
+     harry     +0.0  cooper     +0.0  milan     +0.0  levi     +0.0  connor     +0.0  logan     +0.0
+S18            D8 staleness qv denominator -> age-referenced 
+     harry     +0.0  cooper     +0.0  milan     +0.0  levi     +0.0  connor     +0.0  logan     +0.0
+S19            decay-gate par -> age-referenced (ORDER C site 2)
+     harry     +0.0  cooper     +0.0  milan     +0.0  levi     +0.0  connor     +0.0  logan     +0.0
+S20            ITEM C Q denominator -> age-referenced (ORDER C site 1)
+     harry     +0.0  cooper     +0.0  milan     +0.0  levi     +0.0  connor     +0.0  logan     +0.0
+S22-off        L1c young credit neutralized (sizes what is paid)
+     harry   -127.3  cooper   -115.1  milan     +0.0  levi     +0.0  connor     +0.0  logan     +0.0
+S22-full       L1c young credit age-keyed (phi=1 under 24)   
+     harry   +193.0  cooper   +108.5  milan     +0.0  levi   +299.1  connor   +515.5  logan   +743.8
+S25-eta0       BOUND ONLY: re-mix g-keyed pedigree de-rate eta=0
+     harry   +517.9  cooper   +433.0  milan    +31.5  levi    +85.5  connor    +40.4  logan     +5.6
+S25-rho1       CEILING ONLY (double-counts): rho31 -> 1      
+     harry   +674.6  cooper   +389.2  milan    +66.5  levi   +378.8  connor   +451.7  logan   +375.6
+
+J-PHAT-B       ALL class-(b) sites inside Phat: S1+S3+S4+S5+S6+S7
+     harry   +716.2  cooper   +474.5  milan     +0.0  levi   +422.9  connor   +473.4  logan   +757.2
+J-S1+S4        S1 + S4                                       
+     harry   +716.2  cooper   +474.5  milan     +0.0  levi   +422.9  connor   +432.5  logan   +749.8
+J-S1+S2        S1 + S2(V5)                                   
+     harry  +1007.7  cooper   +542.3  milan     -0.8  levi   +767.8  connor   +548.0  logan   +598.5
+J-S1+S22       S1 + S22-full                                 
+     harry  +1139.2  cooper   +611.7  milan     +0.0  levi  +1011.4  connor  +1131.4  logan  +1438.4
+J-S1+S4+S2     S1 + S4 + S2(V5)                              
+     harry   +862.3  cooper   +566.6  milan     -0.8  levi   +534.2  connor   +482.3  logan   +811.5
+J-ALLB         every class-(b) site: Phat-B + S18 + S19 + S20 + S22-full
+     harry   +996.4  cooper   +640.9  milan     +0.0  levi   +771.3  connor  +1104.9  logan  +1719.8
+
+=== RANKED BY |dean| + |CDT| (board points) ===
+site                dean       CDT    sum|.| |   murdock  ashcroft   osulliv    morris
+J-S1+S22         +1139.2    +611.7    1750.9 |      +0.0   +1011.4   +1131.4   +1438.4
+J-ALLB            +996.4    +640.9    1637.3 |      +0.0    +771.3   +1104.9   +1719.8
+J-S1+S2          +1007.7    +542.3    1550.0 |      -0.8    +767.8    +548.0    +598.5
+J-S1+S4+S2        +862.3    +566.6    1428.9 |      -0.8    +534.2    +482.3    +811.5
+S1                +843.5    +448.4    1291.9 |      +0.0    +638.0    +494.7    +538.9
+J-PHAT-B          +716.2    +474.5    1190.6 |      +0.0    +422.9    +473.4    +757.2
+J-S1+S4           +716.2    +474.5    1190.6 |      +0.0    +422.9    +432.5    +749.8
+S25-rho1          +674.6    +389.2    1063.8 |     +66.5    +378.8    +451.7    +375.6
+S25-eta0          +517.9    +433.0     950.9 |     +31.5     +85.5     +40.4      +5.6
+S2-V3             +469.5    +268.9     738.4 |      +1.2    +559.8    +346.1    +388.2
+S22-full          +193.0    +108.5     301.5 |      +0.0    +299.1    +515.5    +743.8
+S2-V5             +157.2     +90.0     247.2 |      -0.8    +125.0     +52.3     +58.7
+S22-off           -127.3    -115.1     242.4 |      +0.0      +0.0      +0.0      +0.0
+S5                +158.9     +13.0     172.0 |     +40.7     +93.5      +6.0    -211.7
+S4                 -44.4     +30.7      75.1 |      +0.0    -126.2     -32.3    +190.3
+S1-IDENT            +0.0      +0.0       0.0 |      +0.0      +0.0      +0.0      +0.0
+S3                  +0.0      +0.0       0.0 |      +0.0      +0.0      +3.9      +7.1
+S6                  +0.0      +0.0       0.0 |      +0.0      +0.0     +40.0      +0.0
+S7                  +0.0      +0.0       0.0 |      +0.0      +0.0      +0.0      +0.0
+S18                 +0.0      +0.0       0.0 |      +0.0      +0.0      +0.0      +0.0
+S19                 +0.0      +0.0       0.0 |      +0.0      +0.0      +0.0      +0.0
+S20                 +0.0      +0.0       0.0 |      +0.0      +0.0      +0.0      +0.0

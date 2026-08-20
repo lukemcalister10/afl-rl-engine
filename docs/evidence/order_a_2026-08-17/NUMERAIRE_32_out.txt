@@ -1,0 +1,11 @@
+ORDER A / CANDIDATE 32 — NUMERAIRE (A12)
+  artifact pvc_curve_v2.json md5 ......... 78ad9842525ae4f09875b95afc2e2b39
+  Candidate 31 artifact md5 .............. 78ad9842525ae4f09875b95afc2e2b39
+  BYTE-IDENTICAL ......................... YES
+  numeraire block: H=3191.178971663  pin=3000.0  s=0.940091429105
+  s == pin/H to 1e-9 ..................... YES (|diff| 0.00e+00)
+
+  VERDICT: s DOES NOT MOVE. Candidate 32 writes no artifact and re-derives no ladder; the v0
+  column of its walk-forward matrix is record-for-record identical to Candidate 31's (the S4
+  rescore control). No re-pin is triggered; the composed-ledger discipline is not invoked; the
+  candidate is PRE-NUMERAIRE exactly as Candidate 31 was.

@@ -1,0 +1,135 @@
+====================================================================================================================
+ORDER 29  --  STEPS 4, 5, 6:  POSITIONAL ND v0s / POOL v0s / THE NUMERAIRE RE-PIN
+====================================================================================================================
+  input artifact   curve_md5 9729f0c5   (the TIEBROKEN, shipped curve)
+
+STEP 4 -- POSITIONAL ND v0s AT EVERY PICK 1..64  (PREREG P7)
+--------------------------------------------------------------------------------------------------------------------
+
+  THE DECLARATION P7 REQUIRES, MADE BEFORE THE NUMBERS: what are the positional v0s v0s OF?
+
+    The ORDER-28 lane derived, per pick, a positional RELATIVITY relat_g(p) and a population
+    SHARE share_g(p), with  SUM_g share_g(p) = 1  and  SUM_g share_g(p)*relat_g(p) = 1, so that
+    posv_g(p) = relat_g(p) * allin(p) reconciles to the all-in curve BY CONSTRUCTION.
+
+    The tiebreak moved the all-in curve. The relativities are a POSITIONAL structure and the
+    tiebreak is an ORDERING convention on the all-in LEVEL -- it carries no positional content,
+    so it does not touch relat_g. THIS BUILD THEREFORE RE-BASES THE POSITIONAL v0s ONTO THE
+    TIEBROKEN SHIPPED CURVE:
+
+            posv_g(p) = relat_g(p) * curve_SHIPPED(p)          <-- and NOT * allin_pre_tiebreak(p)
+
+    RECONCILIATION IS AGAINST WHAT SHIPS. Had the v0s been left on the pre-tiebreak curve they
+    would reconcile to a ladder no consumer can read, and the reconciliation assert would be
+    measuring an object that is not on disk. The cost is disclosed rather than hidden: inside the
+    two tiebroken blocks a positional v0 moves by the same +-3 points, scaled by its relativity.
+
+  RECONCILIATION  SUM_g share_g(p)*posv_g(p) == curve_shipped(p)  for every pick 1..64
+     max |ratio - 1|   2.220e-16   at pick 1        P7 bound 1e-12   HELD
+     max |SUM_g share_g(p) - 1|   1.110e-16
+     continuity: published at EVERY pick 1..64, six positions, no band steps   True
+
+  PER-POSITION MONOTONICITY IS NOT ENFORCED (owner lean). Ascents are DISCLOSED as data:
+     KPD   ascents 24  [1, 11, 15, 16, 17, 20, 29, 41, 42, 43, 44, 45, 46, 47] ...
+     KPF   ascents 14  [1, 10, 11, 15, 16, 20, 21, 57, 58, 59, 60, 61, 62, 63]
+     MID   ascents 14  [7, 8, 9, 10, 11, 18, 19, 24, 25, 35, 36, 37, 38, 39]
+     RUCK  ascents 15  [1, 2, 10, 11, 15, 16, 17, 18, 19, 20, 21, 22, 26, 27] ...
+     SD    ascents 19  [1, 2, 6, 7, 9, 10, 11, 52, 53, 54, 55, 56, 57, 58] ...
+     SF    ascents 21  [1, 2, 11, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 38] ...
+
+  THE RUCK RELATIVITY FLOOR AT PICKS 63-64 (ORDER 28 SS9.4) -- RE-DECLARED, not rediscovered.
+  THE FLOOR VALUE IS ZERO, and that is stated plainly rather than left to be discovered in a table:
+  the per-position local-linear fit goes NEGATIVE in the thinnest part of the tail and is floored at
+  0 by the estimator's own `floored` flag -- never silently clipped. So the printed RUCK day-0 v0 at
+  picks 63 and 64 is 0.0 board points. It is a THIN-CELL ARTEFACT of the last two picks; it does not
+  touch the all-in curve, and reconciliation still holds (max |ratio-1| above).
+     pick 61  RUCK relat 0.3917  posv     72.1   (all-in 184)
+     pick 62  RUCK relat 0.1690  posv     30.9   (all-in 183)
+     pick 63  RUCK relat 0.0000  posv      0.0   (all-in 182)
+     pick 64  RUCK relat 0.0000  posv      0.0   (all-in 179)
+     relat_RUCK(63) == relat_RUCK(64)  True   and both are ZERO  True
+     -- the artefact PERSISTS through the tiebreak, exactly as P7 said it would. The tiebreak
+        touches picks 6-12 and 15-21 only, so it cannot reach picks 63-64 and does not.
+
+  POSITIONAL v0s AT SELECTED PICKS (board points)
+  pick          KPD       KPF       MID      RUCK        SD        SF
+  1          2277.4    1367.1    3896.4    1967.7    1643.5     810.9
+  2          2307.6    1693.3    3050.0    4221.0    1649.4    1820.3
+  5          1174.5    1323.2    2205.7    2906.2    1444.0    1431.5
+  6           871.0    1075.9    1663.5    1945.4    1215.1    1073.4
+  9           741.8    1029.0    1708.8    1176.6    1254.7     872.0
+  12          725.4    1039.9    1748.1    1138.2    1363.8     830.9
+  15          529.9     723.4    1046.2     893.6     946.0     550.3
+  18          584.2     731.7     942.4    1190.1     881.9     489.6
+  21          564.4     697.3     965.3    1478.4     761.1     418.7
+  30          415.8     540.7     792.1    1557.3     324.3     331.1
+  40          364.6     334.6     663.2    1026.6     240.0     350.7
+  50          417.2     220.3     354.7     317.8      93.8     280.6
+  64          643.5     291.1      56.7       0.0     312.0      18.0
+
+STEP 5 -- POOL v0s, MSD WAY A BASIS, K-SHRUNK TOWARD THE PATHWAY  (PREREG P8 / P9)
+--------------------------------------------------------------------------------------------------------------------
+  CELL FIT COUNTS n, MEASURED from LAYER2::fit_pool_keys x Layer-1 position_group (954 rows):
+  path         KPD     KPF     MID    RUCK      SD      SF   total
+  RD            83      61     180      58     108     121     611
+  SSP            2       6       6       2       4       4      24
+  MSD            2       6      10       6       3       2      29
+  IRE            7       4       3       2      29       2      47
+  PDA            2       5      11       5       7       8      38
+  PDN            5       0       2       1       9       7      24
+  PDS            5       0       6       1       6       3      21
+  UNR            7       3       5      26       3       2      46
+  ND>64         15      14      30      10      16      29     114
+
+  n=0 CELLS MEASURED: ['PDN|KPF', 'PDS|KPF']      P9 predicted exactly PDN|KPF and PDS|KPF   HELD
+
+  THE PATHWAY LEVELS (anchored board points), and P8's predictions:
+  path        n         raw      shrunk    ANCHORED   P8 pred  verdict    nd eq
+  MSD        29       422.3       355.9     334.604     334.6     HELD       47
+  ND>64     114       287.8       280.8     263.949     263.9     HELD       52
+  RD        611       245.7       245.3     230.603     230.6     HELD       56
+  SSP        24       231.4       229.9     216.131     216.1     HELD       57
+  PDA        38       189.0       199.9     187.931     187.9     HELD       61
+  UNR        46       101.7       132.6     124.675     124.7     HELD      >64
+  PDN        24        49.7       118.1     111.031     111.0     HELD      >64
+  PDS        21        21.6       107.4     100.955     101.0     HELD      >64
+  IRE        47        60.0       100.5      94.520      94.5     HELD      >64
+  P8 pathway levels: ALL NINE HELD
+
+  THE CELLS (anchored board points = raw cell x anchor_factor 0.940091429105)
+  path           KPD       KPF       MID      RUCK        SD        SF
+  RD             204       192       212       372       255       201
+  SSP            168       160       360       281       192       124
+  MSD            325       217       479       448       359       208
+  IRE             53        62       105       119        87        61
+  PDA            143       117       179       204       366        87
+  PDN            109  UNSIGNED       113       148        84        55
+  PDS             78  UNSIGNED        89       135        75        59
+  UNR             95        91       265        80       108        78
+  ND>64          175       279       320       566       260       103
+
+  P9 -- THE TWO EMPTY CELLS STAY UNSIGNED, published as null and NOT as their numbers.
+     The derivation DID produce a number for each, and it is recorded here so it is provable
+     that a number existed and was DECLINED rather than never computed:
+       PDN|KPF    fully-shrunk anchored value   92.4   -> PUBLISHED AS null (UNSIGNED)
+       PDS|KPF    fully-shrunk anchored value   84.0   -> PUBLISHED AS null (UNSIGNED)
+     P9 predicted 92.4 and 84.0    MEASURED [92.4, 84.0]   HELD
+
+STEP 6 -- THE NUMERAIRE RE-PIN, THROUGH THE BLOCK _load_numeraire READS  (P10 / P11)
+--------------------------------------------------------------------------------------------------------------------
+  pooled_head_pre_scale  3017.9232000000 -> 3191.1789716631
+  published_pin          3000.0 -> 3000.0   (unmoved: the standing law pins pick 1 = 3000)
+  s = published_pin / H  0.9940610814748366 -> 0.9400914291048137
+  P10 predicted new s    0.9400914291048137   MEASURED 0.9400914291048137   HELD
+  player re-denomination s_new/s_old = 0.945707911339
+  P11 predicted x0.945715            MEASURED x0.945707911339   diff -7.089e-06 (rel -7.50e-06)
+  P11's QUOTED CONSTANT IS BREACHED IN ITS 6th DECIMAL, and the breach is P11's OWN ARITHMETIC:
+     P11's ratio is inconsistent with P10's s, which P10 predicted EXACTLY right. Carrying P11's
+     0.945715 through the same s_old would imply s_new = 0.9400984757, not the 0.9400914291 that P10 named and
+     this build measured. So the prediction that failed is the DERIVED ratio, not the numeraire:
+     the substantive P11 claim -- both sides re-denominate together, by ~x0.9457, no one-sided
+     scaling -- HOLDS. Owned by number rather than rounded into agreement.
+  E6 coherence |pin/H - s| = 0.000e+00   (_load_numeraire HALTs above 1e-9)
+  the anchor identity: H * anchor_factor = 3000.000000  == the published pin 3000.0   HELD
+
+  written: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/curve_V0S.json

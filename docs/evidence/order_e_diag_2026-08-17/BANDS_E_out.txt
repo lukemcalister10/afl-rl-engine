@@ -1,0 +1,45 @@
+=== ORDER E · FIVE-BAND YEAR-1 ECONOMICS, AS-OF READ ===
+Semantics carried from the committed instrument: for a class drafted in year C the year-1 value is
+ev(p, C+1) with the record TRUNCATED to seasons <= C+1 and BASE_REF/AGE_REF pinned to C+1; the
+year-0 value is v0_start(p). Classes [2021, 2022, 2023, 2024, 2025]. n = 272 rows (2021:49 / 2022:42 / 2023:59 / 2024:64 / 2025:58).
+
+TWO DISCLOSED DEPARTURES FROM THE STANDING 338 TABLE, registered before measurement (PREREG_E §5):
+  1. the standing table is the WALK-FORWARD per-entrant matrix over the 2004-2022 classes; this is
+     a single-store as-of read over 2021-2025. Different population, different window.
+  2. this read is SURVIVOR-ONLY — a row already delisted/retired is excluded, whereas the standing
+     instrument keeps busts in the denominator at 0. That biases these levels UP.
+THEREFORE: read the MOVEMENT between baseline and counterfactual on the IDENTICAL population.
+The absolute levels here are NOT the standing instrument's numbers and are never quoted as such.
+
+bands left to right: 1-10 · 11-20 · 21-30 · 31-40 · 41-64.   "!" = buy-side RED past +14%%.
+
+  BASELINE C32R         yr1 class mean    801.7  |  +13.51%     -0.30%-   -10.50%-    -7.99%-    +0.52% 
+        band 1-10   n  50   mean yr0   1883.3   mean yr1   2137.7
+        band 11-20  n  49   mean yr0    892.5   mean yr1    889.9
+        band 21-30  n  47   mean yr0    619.9   mean yr1    554.8
+        band 31-40  n  42   mean yr0    478.4   mean yr1    440.2
+        band 41-64  n  84   mean yr0    272.6   mean yr1    274.0
+
+  S1 lam=0.20           yr1 class mean    824.7  |  +17.40%!    +2.56%     -9.08%-    -6.49%-    +3.17% 
+  S1 lam=0.30           yr1 class mean    838.2  |  +19.61%!    +4.29%     -8.19%-    -5.49%-    +4.78% 
+  S1 lam=0.40           yr1 class mean    853.2  |  +22.01%!    +6.25%     -7.14%-    -4.26%-    +6.60% 
+  S1 lam=0.72           yr1 class mean    912.8  |  +31.00%!   +13.99%     -2.35%-    +1.84%    +14.19%!
+  S1 lam=1.00           yr1 class mean    979.5  |  +40.31%!   +22.63%!    +3.82%    +10.34%    +23.42%!
+  S2 V5 ladder          yr1 class mean    833.3  |  +18.81%!    +3.41%     -7.86%-    -5.06%-    +3.26% 
+  S2 V3 ladder          yr1 class mean    895.2  |  +29.12%!   +10.66%     -2.71%-    +0.73%     +8.85% 
+  S22 age-keyed         yr1 class mean    836.4  |  +19.29%!    +3.93%     -7.79%-    -4.69%-    +3.50% 
+  S1 .20 + S2 V5        yr1 class mean    856.5  |  +22.74%!    +6.30%     -6.42%-    -3.53%-    +5.95% 
+
+RESTORE CONTROL: baseline re-read after every scenario, max |delta| = 0.0000000000 board points -> PASS
+
+=== MOVEMENT vs baseline, in percentage POINTS of yr0->1 appreciation ===
+scenario                 1-10    11-20    21-30    31-40    41-64
+S1 lam=0.20             +3.90    +2.85    +1.42    +1.50    +2.66
+S1 lam=0.30             +6.11    +4.59    +2.31    +2.50    +4.27
+S1 lam=0.40             +8.51    +6.55    +3.36    +3.73    +6.09
+S1 lam=0.72            +17.49   +14.29    +8.15    +9.83   +13.68
+S1 lam=1.00            +26.80   +22.93   +14.32   +18.33   +22.91
+S2 V5 ladder            +5.30    +3.71    +2.64    +2.93    +2.75
+S2 V3 ladder           +15.61   +10.96    +7.80    +8.72    +8.34
+S22 age-keyed           +5.78    +4.23    +2.71    +3.31    +2.98
+S1 .20 + S2 V5          +9.23    +6.60    +4.08    +4.46    +5.44

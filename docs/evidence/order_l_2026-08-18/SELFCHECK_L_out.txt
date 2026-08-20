@@ -1,0 +1,23 @@
+ORDER L — REGISTERED SELF-CHECKS
+
+L-SC1a  the LITERAL registered check: PRIMARY / every-cohort ND cells vs STANDING_TABLES_K.json
+        at tolerance 1e-9.
+        cells compared     216
+        cells outside 1e-9 192
+        worst difference   4.8849e-05   (Order K publishes the ratio to 4 decimal places, so half a
+                                        published digit is 5.0e-5 — every difference is under it)
+        L-SC1a FAILS — ON ROUNDING ONLY. See L-SC1b, which is the check that decides.
+
+L-SC1b  the DECIDING check: Order L's unrounded values put through Order K's own rounding,
+        compared for EXACT equality against the stored record.
+        comparisons 816 over 3 boards x 8 bands (cohort n, 8 ratios, 8x n_incl/n_zero/notreach,
+                      8x mean_yrN, 8x mean_yr0, and the yr0->1 appreciation)
+        mismatches  0
+        L-SC1b PASS — the PRIMARY tables ARE Order K's tables, digit for digit
+
+L-SC3  the 2005/06 exclusion must move nothing in the MODERN window
+        worst absolute difference 0.000e+00
+        L-SC3 PASS — the modern window is untouched by the exclusion, exactly as registered
+
+L-SC2  the draft clock and the cohort clock agree on every ND row: asserted inside ol_bands.py
+       (cohort + N - 1 == year + N for every ND row; the run HALTS otherwise). PASS.

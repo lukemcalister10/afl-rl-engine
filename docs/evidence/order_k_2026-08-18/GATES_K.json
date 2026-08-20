@@ -1,0 +1,909 @@
+{
+ "boards": {
+  "K": "f3101883a60b0a7b8cb50f9d8a5abfff",
+  "K2": "f3101883a60b0a7b8cb50f9d8a5abfff",
+  "cand": "1f17644445f074d11e631b5cbae98a9a",
+  "cw": "a7d149d1d7b0a4ffbcc0b754a6f247f6",
+  "s1": "0423c8b20c0571fab0e5dd5ebc01c394",
+  "tallJ": "d1058fe02cbf59f70441dd3a1b4001ff",
+  "tallK": "eb4b8f04b20c1b3d6a36db1033825ddf"
+ },
+ "chain_tallJ_is_d1058fe0": true,
+ "g10": {
+  "cooper-duff-tytler": {
+   "c31": 1832,
+   "landing": 1572,
+   "orderK": 1505,
+   "short_of_c31": 327,
+   "short_of_target": 295,
+   "target": 1800
+  },
+  "harry-dean": {
+   "c31": 2670,
+   "landing": 2400,
+   "orderK": 2403,
+   "short_of_c31": 267,
+   "short_of_target": 197,
+   "target": 2600
+  }
+ },
+ "g5": {
+  "daniel-annable": {
+   "d": 7,
+   "landing": 1530,
+   "orderK": 1537,
+   "s1": 1570
+  },
+  "dylan-patterson": {
+   "d": -27,
+   "landing": 1467,
+   "orderK": 1440,
+   "s1": 1515
+  },
+  "xavier-taylor": {
+   "d": -14,
+   "landing": 1176,
+   "orderK": 1162,
+   "s1": 1191
+  }
+ },
+ "jtol": {
+  "K": {
+   "churn": 947,
+   "n_move": 124,
+   "net": -601,
+   "per_row_breaches": 79,
+   "worst": -77,
+   "worst_row": "Ned Moyle"
+  },
+  "cw": {
+   "churn": 695,
+   "n_move": 104,
+   "net": -695,
+   "per_row_breaches": 59,
+   "worst": -77,
+   "worst_row": "Ned Moyle"
+  },
+  "s1": {
+   "churn": 0,
+   "n_move": 0,
+   "net": 0,
+   "per_row_breaches": 0,
+   "worst": 0,
+   "worst_row": null
+  },
+  "tallK": {
+   "churn": 428,
+   "n_move": 48,
+   "net": 102,
+   "per_row_breaches": 39,
+   "worst": 42,
+   "worst_row": "Liam McMahon"
+  }
+ },
+ "k5_dial_off": true,
+ "k7_determinism": true,
+ "kfloor": {
+  "floor_binding": {
+   "small rows sitting on the re-sited floor": 241,
+   "tall rows sitting on the 0.5 floor": 117
+  },
+  "identity_residual": -1.1102230246251565e-16,
+  "lighter_J_picks": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18
+  ],
+  "lighter_K_picks": [],
+  "s_norm_J": 1.4284052406915069,
+  "s_norm_K": 1.4340996145830727,
+  "smalls_heavier_K": [
+   [
+    "ben-camporeale",
+    -34
+   ],
+   [
+    "luke-beecken",
+    -31
+   ],
+   [
+    "zac-walker",
+    -29
+   ],
+   [
+    "koby-coulson",
+    -28
+   ],
+   [
+    "hunter-holmes",
+    -27
+   ],
+   [
+    "tyan-prindable",
+    -27
+   ],
+   [
+    "sam-allen",
+    -26
+   ],
+   [
+    "harry-demattia",
+    -23
+   ],
+   [
+    "tylah-williams",
+    -22
+   ],
+   [
+    "keighton-matofai-forbes",
+    -21
+   ],
+   [
+    "koby-evans",
+    -21
+   ],
+   [
+    "lennox-hoffman",
+    -21
+   ],
+   [
+    "tobyn-murray",
+    -21
+   ],
+   [
+    "zak-evans",
+    -21
+   ],
+   [
+    "harry-charleson",
+    -20
+   ],
+   [
+    "kye-fincher",
+    -20
+   ],
+   [
+    "jevan-phillipou",
+    -19
+   ],
+   [
+    "max-king-syd",
+    -19
+   ],
+   [
+    "harley-barker",
+    -18
+   ],
+   [
+    "hugo-mikunda",
+    -18
+   ],
+   [
+    "mani-liddy",
+    -18
+   ],
+   [
+    "tai-hayes",
+    -18
+   ],
+   [
+    "fred-rodriguez",
+    -17
+   ],
+   [
+    "matthew-leray",
+    -17
+   ],
+   [
+    "nick-driscoll",
+    -17
+   ],
+   [
+    "riley-onley",
+    -17
+   ],
+   [
+    "asher-eastham",
+    -16
+   ],
+   [
+    "jack-ough",
+    -16
+   ],
+   [
+    "max-beattie",
+    -16
+   ],
+   [
+    "oliver-griffin",
+    -16
+   ],
+   [
+    "avery-thomas",
+    -15
+   ],
+   [
+    "leon-kickett",
+    -15
+   ],
+   [
+    "luke-urquhart",
+    -15
+   ],
+   [
+    "tew-jiath",
+    -15
+   ],
+   [
+    "thomas-matthews",
+    -15
+   ],
+   [
+    "brayden-george",
+    -14
+   ],
+   [
+    "jakob-ryan",
+    -14
+   ],
+   [
+    "ned-bowman",
+    -13
+   ],
+   [
+    "saad-el-hawli",
+    -13
+   ],
+   [
+    "oscar-ryan",
+    -12
+   ],
+   [
+    "finnegan-davis",
+    -11
+   ],
+   [
+    "lucas-camporeale",
+    -11
+   ],
+   [
+    "patrick-said",
+    -11
+   ],
+   [
+    "adam-sweid",
+    -10
+   ],
+   [
+    "ben-jepson",
+    -10
+   ],
+   [
+    "lucca-grego",
+    -10
+   ],
+   [
+    "thomas-anastasopoulos",
+    -10
+   ],
+   [
+    "arthur-jones",
+    -9
+   ],
+   [
+    "cody-angove",
+    -9
+   ],
+   [
+    "harvey-harrison",
+    -9
+   ],
+   [
+    "indy-cotton",
+    -9
+   ],
+   [
+    "jay-polkinghorne",
+    -9
+   ],
+   [
+    "jesse-mellor",
+    -9
+   ],
+   [
+    "michael-sellwood",
+    -9
+   ],
+   [
+    "shadeau-brain",
+    -9
+   ],
+   [
+    "charlie-edwards",
+    -8
+   ],
+   [
+    "george-stevens",
+    -8
+   ],
+   [
+    "jack-carroll",
+    -8
+   ],
+   [
+    "lachlan-carmichael",
+    -8
+   ],
+   [
+    "reece-torrent",
+    -8
+   ],
+   [
+    "river-stevens",
+    -8
+   ],
+   [
+    "tom-hanily",
+    -8
+   ],
+   [
+    "ben-murphy",
+    -7
+   ],
+   [
+    "blake-howes",
+    -7
+   ],
+   [
+    "cillian-bourke",
+    -7
+   ],
+   [
+    "cillian-burke",
+    -7
+   ],
+   [
+    "cody-anderson",
+    -7
+   ],
+   [
+    "cooper-harvey",
+    -7
+   ],
+   [
+    "cooper-simpson",
+    -7
+   ],
+   [
+    "eamonn-armstrong",
+    -7
+   ],
+   [
+    "jaren-carr",
+    -7
+   ],
+   [
+    "kobe-mcdonald",
+    -7
+   ],
+   [
+    "matt-duffy",
+    -7
+   ],
+   [
+    "nathan-wardius",
+    -7
+   ],
+   [
+    "noah-chamberlain",
+    -7
+   ],
+   [
+    "rob-monahan",
+    -7
+   ],
+   [
+    "will-mclachlan",
+    -7
+   ],
+   [
+    "zac-taylor",
+    -7
+   ],
+   [
+    "bodie-ryan",
+    -6
+   ],
+   [
+    "henry-hustwaite",
+    -6
+   ],
+   [
+    "jordan-boyd",
+    -6
+   ],
+   [
+    "kaleb-smith",
+    -6
+   ],
+   [
+    "luke-kennedy",
+    -6
+   ],
+   [
+    "oskar-baker",
+    -6
+   ],
+   [
+    "tyler-brockman",
+    -6
+   ],
+   [
+    "benny-barrett",
+    -5
+   ],
+   [
+    "billy-dowling",
+    -5
+   ],
+   [
+    "harvey-johnston",
+    -5
+   ],
+   [
+    "hugh-bond",
+    -5
+   ],
+   [
+    "josh-lai",
+    -5
+   ],
+   [
+    "matt-hill",
+    -5
+   ],
+   [
+    "ricky-mentha",
+    -5
+   ],
+   [
+    "bailey-laurie",
+    -4
+   ],
+   [
+    "corey-wagner",
+    -4
+   ],
+   [
+    "harvey-gallagher",
+    -4
+   ],
+   [
+    "jack-henderson",
+    -4
+   ],
+   [
+    "jai-saxena",
+    -4
+   ],
+   [
+    "judson-clarke",
+    -4
+   ],
+   [
+    "matt-cottrell",
+    -4
+   ],
+   [
+    "riley-garcia",
+    -4
+   ],
+   [
+    "ryda-luke",
+    -4
+   ],
+   [
+    "steely-green",
+    -4
+   ],
+   [
+    "toby-whan",
+    -4
+   ],
+   [
+    "andy-moniz-wakefield",
+    -3
+   ],
+   [
+    "jackson-archer",
+    -3
+   ],
+   [
+    "jackson-mead",
+    -3
+   ],
+   [
+    "josh-goater",
+    -3
+   ],
+   [
+    "malcolm-rosas",
+    -3
+   ],
+   [
+    "oliver-wiltshire",
+    -3
+   ],
+   [
+    "sam-wicks",
+    -3
+   ],
+   [
+    "bailey-macdonald",
+    -2
+   ],
+   [
+    "finlay-macrae",
+    -2
+   ],
+   [
+    "harrison-oliver",
+    -2
+   ],
+   [
+    "jacob-konstanty",
+    -2
+   ],
+   [
+    "jacob-wehr",
+    -2
+   ],
+   [
+    "jesse-dattoli",
+    -2
+   ],
+   [
+    "liam-o-connell",
+    -2
+   ],
+   [
+    "robert-hansen",
+    -2
+   ],
+   [
+    "tyrell-dewar",
+    -2
+   ],
+   [
+    "brandon-walker",
+    -1
+   ],
+   [
+    "callum-brown-ire",
+    -1
+   ],
+   [
+    "deven-robertson",
+    -1
+   ],
+   [
+    "hugo-ralphsmith",
+    -1
+   ],
+   [
+    "jaxon-prior",
+    -1
+   ],
+   [
+    "matt-owies",
+    -1
+   ],
+   [
+    "oisin-mullin",
+    -1
+   ],
+   [
+    "ryan-angwin",
+    -1
+   ]
+  ],
+  "smalls_lighter_J": [
+   [
+    "josh-smillie",
+    79
+   ],
+   [
+    "will-brodie",
+    21
+   ],
+   [
+    "oskar-taylor",
+    15
+   ],
+   [
+    "campbell-chesser",
+    6
+   ],
+   [
+    "james-leake",
+    2
+   ],
+   [
+    "tom-brown",
+    2
+   ],
+   [
+    "sam-sturt",
+    1
+   ]
+  ],
+  "smalls_lighter_K": [],
+  "smillie": {
+   "decision": 772,
+   "factor_alone_K": 772,
+   "landing": 772,
+   "orderJ": 851
+  },
+  "talls": {
+   "alex-dodson": {
+    "decision": 198,
+    "landing": 171,
+    "legJ": 16,
+    "legK": 16,
+    "orderJ": 187,
+    "orderK": 187
+   },
+   "toby-conway": {
+    "decision": 899,
+    "landing": 855,
+    "legJ": 86,
+    "legK": 86,
+    "orderJ": 941,
+    "orderK": 941
+   },
+   "will-green": {
+    "decision": 621,
+    "landing": 483,
+    "legJ": 141,
+    "legK": 141,
+    "orderJ": 624,
+    "orderK": 624
+   },
+   "william-mccabe": {
+    "decision": 474,
+    "landing": 410,
+    "legJ": 70,
+    "legK": 70,
+    "orderJ": 480,
+    "orderK": 480
+   }
+  }
+ },
+ "order": "ORDER K \u2014 the board gates",
+ "scorecard": [
+  {
+   "actual": "UP",
+   "d": 3,
+   "hit": true,
+   "key": "harry-dean",
+   "landing": 2400,
+   "orderK": 2403,
+   "pred": "UP",
+   "why": "S1: 14.9 a game clear of his own age bar"
+  },
+  {
+   "actual": "DOWN",
+   "d": -67,
+   "hit": false,
+   "key": "cooper-duff-tytler",
+   "landing": 1572,
+   "orderK": 1505,
+   "pred": "UP",
+   "why": "S1: 7.1 a game clear of his own age bar"
+  },
+  {
+   "actual": "DOWN",
+   "d": -14,
+   "hit": true,
+   "key": "xavier-taylor",
+   "landing": 1176,
+   "orderK": 1162,
+   "pred": "DOWN",
+   "why": "sub-expectation WITH games (42.0 vs an age bar of 55.2)"
+  },
+  {
+   "actual": "UP",
+   "d": 7,
+   "hit": false,
+   "key": "daniel-annable",
+   "landing": 1530,
+   "orderK": 1537,
+   "pred": "DOWN",
+   "why": "sub-expectation WITH games (38.0 vs 57.0)"
+  },
+  {
+   "actual": "DOWN",
+   "d": -27,
+   "hit": true,
+   "key": "dylan-patterson",
+   "landing": 1467,
+   "orderK": 1440,
+   "pred": "DOWN",
+   "why": "sub-expectation WITH games (35.6 vs 55.2)"
+  },
+  {
+   "actual": "FLAT",
+   "d": 0,
+   "hit": true,
+   "key": "oskar-taylor",
+   "landing": 596,
+   "orderK": 596,
+   "pred": "FLAT",
+   "why": "the re-sited floor returns him to his landing value exactly"
+  },
+  {
+   "actual": "FLAT",
+   "d": 0,
+   "hit": true,
+   "key": "josh-smillie",
+   "landing": 772,
+   "orderK": 772,
+   "pred": "FLAT",
+   "why": "the re-sited floor returns him to his landing value exactly"
+  },
+  {
+   "actual": "DOWN",
+   "d": -3,
+   "hit": false,
+   "key": "will-brodie",
+   "landing": 791,
+   "orderK": 788,
+   "pred": "FLAT",
+   "why": "same channel"
+  },
+  {
+   "actual": "UP",
+   "d": 1,
+   "hit": false,
+   "key": "campbell-chesser",
+   "landing": 332,
+   "orderK": 333,
+   "pred": "FLAT",
+   "why": "same channel"
+  },
+  {
+   "actual": "UP",
+   "d": 8,
+   "hit": true,
+   "key": "chris-scerri",
+   "landing": 313,
+   "orderK": 321,
+   "pred": "UP",
+   "why": "pool row \u2014 production dominates a small pedigree"
+  },
+  {
+   "actual": "UP",
+   "d": 14,
+   "hit": true,
+   "key": "thomas-burton",
+   "landing": 309,
+   "orderK": 323,
+   "pred": "UP",
+   "why": "same channel, weaker"
+  },
+  {
+   "actual": "DOWN",
+   "d": -14,
+   "hit": true,
+   "key": "milan-murdock",
+   "landing": 170,
+   "orderK": 156,
+   "pred": "MOVES",
+   "why": "age 26 with 17 games \u2014 inside the re-mix's active zone"
+  },
+  {
+   "actual": "UP",
+   "d": 138,
+   "hit": true,
+   "key": "will-green",
+   "landing": 483,
+   "orderK": 621,
+   "pred": "UP",
+   "why": "the ruled factor at pick 16"
+  },
+  {
+   "actual": "UP",
+   "d": 44,
+   "hit": true,
+   "key": "toby-conway",
+   "landing": 855,
+   "orderK": 899,
+   "pred": "UP",
+   "why": "the ruled factor at pick 24"
+  },
+  {
+   "actual": "UP",
+   "d": 64,
+   "hit": true,
+   "key": "william-mccabe",
+   "landing": 410,
+   "orderK": 474,
+   "pred": "UP",
+   "why": "the ruled factor at pick 19"
+  },
+  {
+   "actual": "UP",
+   "d": 27,
+   "hit": true,
+   "key": "alex-dodson",
+   "landing": 171,
+   "orderK": 198,
+   "pred": "UP",
+   "why": "the ruled factor at pick 53"
+  },
+  {
+   "actual": "DOWN",
+   "d": -4,
+   "hit": true,
+   "key": "steely-green",
+   "landing": 80,
+   "orderK": 76,
+   "pred": "DOWN",
+   "why": "a late small pays for the talls' relief"
+  },
+  {
+   "actual": "UP",
+   "d": 44,
+   "hit": true,
+   "key": "isaac-kako",
+   "landing": 788,
+   "orderK": 832,
+   "pred": "UP",
+   "why": "S1 on a high-rho row"
+  },
+  {
+   "actual": "DOWN",
+   "d": -39,
+   "hit": false,
+   "key": "alix-tauru",
+   "landing": 920,
+   "orderK": 881,
+   "pred": "UP",
+   "why": "S1; tall age gaps are the largest"
+  },
+  {
+   "actual": "UP",
+   "d": 26,
+   "hit": true,
+   "key": "jedd-busslinger",
+   "landing": 579,
+   "orderK": 605,
+   "pred": "UP",
+   "why": "S1 + the ruled fade on an above-age-bar season"
+  }
+ ],
+ "totals": {
+  "K": 673097,
+  "K2": 673097,
+  "cand": 667916,
+  "cw": 671898,
+  "s1": 680773,
+  "tallJ": 669231,
+  "tallK": 669171
+ },
+ "year1": {
+  "landing": 58060,
+  "n": 120,
+  "orderK": 57823
+ }
+}

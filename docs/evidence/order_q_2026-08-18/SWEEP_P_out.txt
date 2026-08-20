@@ -1,0 +1,50 @@
+=== ORDER Q SWEEP  tag=P  dials={'RL_O37': '1'} ===
+engine 7df6a923  store cb38ef11  players 804
+WRAPPER INERTNESS at scale 1.0: 0 of 804 rows differ (must be 0)
+young ND+pool rows, age<24, games>0: 289
+  ... 40/289  77s
+  ... 80/289  166s
+  ... 120/289  269s
+  ... 160/289  364s
+  ... 200/289  448s
+  ... 240/289  545s
+  ... 280/289  609s
+sweep done in 620s
+
+IS THE NON-PEDIGREE PART OF THE PRICE INDEPENDENT OF ENTRY PRICE?
+  worst spread of (production leg + age credit) across a row's whole entry-price sweep: 0.0000e+00
+  rows where it moves at all (>1e-9): 0 of 289
+
+BURN CENSUS — THE SUPERVISOR'S POPULATION (|fK-fP| >= 0.02)   n=268
+  band         n  burned pts(board)   pts(raw)
+  1-10        43      24       1820       1913
+  11-20       44      13        292        306
+  21-30       35      11         38         39
+  31-40       28       4         28         28
+  41+         51      13         60         62
+  pool        67      12         70         74
+  TOTAL      268      77       2308       2423
+  WORST FIVE:
+    Sam Lalor                1     age 20   22g  v0   3273 ->   1715     3060 ->   3395  (+335)
+    Willem Duursma           1     age 19   19g  v0   3273 ->   2674     3920 ->   4226  (+306)
+    Finn O'Sullivan          2     age 20   39g  v0   2869 ->   1180     2810 ->   3054  (+244)
+    Sam Cumming              7     age 19   14g  v0   1578 ->   1142     2007 ->   2149  (+142)
+    Harvey Langford          6     age 20   43g  v0   1579 ->   1370     2422 ->   2535  (+113)
+
+BURN CENSUS — ALL YOUNG ROWS   n=289
+  band         n  burned pts(board)   pts(raw)
+  1-10        49      24       1820       1913
+  11-20       47      13        292        306
+  21-30       36      11         38         39
+  31-40       32       4         28         28
+  41+         54      13         60         62
+  pool        71      12         70         74
+  TOTAL      289      77       2308       2423
+  WORST FIVE:
+    Sam Lalor                1     age 20   22g  v0   3273 ->   1715     3060 ->   3395  (+335)
+    Willem Duursma           1     age 19   19g  v0   3273 ->   2674     3920 ->   4226  (+306)
+    Finn O'Sullivan          2     age 20   39g  v0   2869 ->   1180     2810 ->   3054  (+244)
+    Sam Cumming              7     age 19   14g  v0   1578 ->   1142     2007 ->   2149  (+142)
+    Harvey Langford          6     age 20   43g  v0   1579 ->   1370     2422 ->   2535  (+113)
+
+wrote SWEEP_P.json

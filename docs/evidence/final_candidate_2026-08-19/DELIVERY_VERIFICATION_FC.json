@@ -1,0 +1,343 @@
+{
+ "n": 56,
+ "passed": 55,
+ "failed": 1,
+ "checks": [
+  {
+   "doc": "noarb",
+   "item": "the page exists",
+   "ok": false,
+   "detail": "MISSING"
+  },
+  {
+   "doc": "tracker",
+   "item": "board column present: live",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "board column present: K",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "board column present: P",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "board column present: R",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "board column present: CANDIDATE",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "DELTA column present in the HTML: D live->K",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "DELTA column present in the HTML: D K->P",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "DELTA column present in the HTML: D P->R",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "DELTA column present in the HTML: D R->cand",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "DELTA column present in the HTML: D live->cand",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "DELTA column present in the HTML: D K->cand",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "columns are sortable (sort script present)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "board totals in the header",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "CSV column present: live",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "CSV column present: K",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "CSV column present: d_live_K",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "CSV column present: P",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "CSV column present: d_K_P",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "CSV column present: R",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "CSV column present: d_P_R",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "CSV column present: candidate",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "CSV column present: d_R_cand",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "CSV column present: d_live_cand",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "tracker",
+   "item": "CSV column present: d_K_cand",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "year1",
+   "item": "column present: pick",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "year1",
+   "item": "column present: player",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "year1",
+   "item": "column present: pos",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "year1",
+   "item": "column present: club",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "year1",
+   "item": "column present: type",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "year1",
+   "item": "column present: v0",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "year1",
+   "item": "column present: cohort",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "year1",
+   "item": "no bare em-dash cells in the body",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "year1",
+   "item": "the MEMBERSHIP ASSERTION is printed on the page",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "year1",
+   "item": "the membership assertion PASSES both ways",
+   "ok": true,
+   "detail": "2 PASS marks"
+  },
+  {
+   "doc": "year1",
+   "item": "the cohort rule is stated in words on the page",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "year1",
+   "item": "the standing broken-box is on the page",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "players",
+   "item": "all 804 board rows present",
+   "ok": true,
+   "detail": "804 rows"
+  },
+  {
+   "doc": "players",
+   "item": "mechanism leg column present: charge",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "players",
+   "item": "mechanism leg column present: fade D",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "players",
+   "item": "mechanism leg column present: unplayed clock",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "players",
+   "item": "delta columns present",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "players",
+   "item": "the standing broken-box is on the page",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "levers",
+   "item": "marginal column present",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "levers",
+   "item": "rows-moved column present",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "levers",
+   "item": "per-lever named movers present",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "levers",
+   "item": "the p20 -> p15 anchor move is visible as its own step",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "ledger",
+   "item": "the ledger exists and parses",
+   "ok": true,
+   "detail": "801 rows"
+  },
+  {
+   "doc": "ledger",
+   "item": "ledger field present: live",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "ledger",
+   "item": "ledger field present: K",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "ledger",
+   "item": "ledger field present: P",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "ledger",
+   "item": "ledger field present: R",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "ledger",
+   "item": "ledger field present: cand",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "ledger",
+   "item": "ledger field present: d_R_cand",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "ledger",
+   "item": "ledger field present: d_live_cand",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "doc": "ledger",
+   "item": "ledger field present: d_K_cand",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

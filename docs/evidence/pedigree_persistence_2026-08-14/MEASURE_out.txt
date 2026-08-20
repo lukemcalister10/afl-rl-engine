@@ -1,0 +1,237 @@
+====================================================================================================
+ORDER 30B-M -- PEDIGREE PERSISTENCE MEASUREMENT
+====================================================================================================
+pins: {
+ "layer1": "ad1229ea6f443538479447132382b21c",
+ "v0_artifact": "dc324ad924370d0eb6c012d5a3a93371",
+ "board": "36d5dfc73e2b508ece530bc7dfae2090",
+ "store": "cb38ef1171dcf20aae66ebf12682be0d",
+ "rl_model": "14000af2a46f7a3c4cdfde303f5a1aff",
+ "merged_recover": "3c7e383a370a50426ed6c91570536fde",
+ "pvc_curve_v2": "06146b00daf2043487f58a8b9f842a1e"
+}
+bars (engine-read, Ruling 1 asserted): {"KPD": 65.4, "KPF": 63.8, "MID": 77.1, "RUCK": 75.5, "SD": 75.3, "SF": 67.9}
+SCALE 1.344828954963  GAMMA 1.0  disc 0.14  AGE_REF 2026
+blend artifact keys: ['D2', 'abscissa', 'backbone', 'beta', 'crossover_games', 'fitted_rows', 'form', 'law', 'prereg', 'rms_D_units', 'scale', 'source']
+
+states built (all entries, all played seasons): 11473 over 2029 careers
+PRIMARY PANEL (ND 1-64, entry>=2005, Y<=2019, H=6): 4033 states over 767 careers
+  state-year range 2006-2019 ; entry-year range 2005-2018
+POOL comparison band (descriptive only): 1706 states over 442 careers
+
+--- SKEW / DISPERSION OF REMAINING VALUE BY GAMES BAND (P2) ---
+games         n       mean        p25     median        p75    zero%
+0-5         382      254.1        0.0       14.9      311.9    15.4%
+6-15        591      398.4        0.3       51.3      559.9    10.2%
+16-35       834      571.2        2.2      161.6      827.1    10.3%
+36-70       887      857.0       26.7      349.5     1284.5     6.2%
+71+        1339     1018.2       39.4      593.1     1644.5     6.3%
+
+--- ENTRY ANCHOR (states at g=0, entry year; no output information) ---
+pickband      n    mean R6        p25     median        p75    zero%    mean v0
+A 1-6        88      883.0      171.8      663.6     1374.5     0.0%     2291.8
+B 7-12       90      568.9       57.6      321.4      763.4     1.1%     1324.6
+C 13-20     120      394.8        6.4      154.6      537.2     0.8%      895.3
+D 21-40     300      255.0        0.4       18.3      255.6     7.3%      605.1
+E 41-64     355      112.5        0.0        1.0       81.0    20.8%      280.8
+
+====================================================================================================
+Q1 -- PERSISTENCE: does pick still predict remaining value, and how does the share decay?
+====================================================================================================
+games         n    clust    beta_v0        t     sigma         sigma 90% CI      blend    old~40%
+0-5         382      332    0.29683     3.76     70.1%      42.9%..99.6    %      78.9%      40.0%
+6-15        591      467    0.36226     5.95     66.4%      47.7%..83.0    %      40.4%      40.0%
+16-35       834      571    0.22330     4.25     33.1%      20.8%..45.6    %      12.4%      40.0%
+36-70       887      436    0.15315     2.39     16.5%       5.9%..28.0    %       1.6%      40.0%
+71+        1339      297    0.02007     0.49      2.2%      -4.6%..10.5    %       0.2%      40.0%
+
+--- MATCHED PICK CONTRAST (stratum = pos x age band x output quintile; min cell n=8) ---
+games      strata  matched delta      raw hi-lo       n hi       n lo
+0-5             2          159.5          168.1         37        293
+6-15            1           90.5          420.5        109        404
+16-35           0            n/a          455.4        196        499
+36-70           3           -4.2          662.3        238        498
+71+            13          239.6          517.6        479        629
+
+--- SAME CONTRAST AFTER THE PREREGISTERED THIN-CELL COLLAPSE (quintile -> TERCILE, PREREG s3) ---
+games      strata  matched delta     weight
+0-5             2          159.5         23
+6-15            2          848.7         19
+16-35           7          272.6         63
+36-70           8          127.1         79
+71+            17          200.6        212
+  quintile-lens cells collapsed out: 486 ; tercile-lens cells collapsed out: 311
+
+--- RESIDUAL CONTRAST (pick-blind model fitted within each games band; mean residual by pick band) ---
+games    n hi(1-12)    mean hi n lo(21-64)    mean lo          gap             gap 90% CI
+0-5              37      133.0        293      -28.2        161.2       30.2 .. 313.9     
+6-15            109      129.3        404      -57.2        186.5       54.9 .. 324.1     
+16-35           196       44.9        499      -22.9         67.8      -51.8 .. 199.0     
+36-70           238       52.0        498      -16.1         68.1      -80.7 .. 237.4     
+71+             479       27.7        629       -0.8         28.5      -90.9 .. 146.1     
+
+PEDIGREE SHARE AT g = 36 (isaac-kako's exact games count), log-linear interpolation between the
+measured band midpoints 25.5 and 53.0 -- AN INTERPOLATION, LABELLED AS ONE:
+   measured  ~23.8%      blend 1-w(36) = 5.62%      old anchor carry ~40%
+
+full state cells: 1378 ; cells with n>=8 (reported): 94 ; thin cells collapsed out: 1284
+
+--- POOL BAND vs ND BANDS (P9; descriptive, never fitted) ---
+games      n pool  mean pool        n A     mean A        n E     mean E
+0-5           279      142.3         12      272.1        145      212.9
+6-15          305      235.8         43     1084.3        206      253.4
+16-35         368      362.3         95     1086.3        230      329.2
+36-70         323      589.6        128     1457.2        219      558.6
+71+           431      599.0        263     1311.0        253      710.9
+
+====================================================================================================
+Q2 -- FORM: LEVEL (blend shape) vs TRAJECTORY (pick-conditional development)
+====================================================================================================
+P   k= 16  n= 4033  heldout RMS     715.76  MAE    478.29  spearman 0.7166
+L   k= 18  n= 4033  heldout RMS     709.42  MAE    471.74  spearman 0.7277
+T   k= 30  n= 4033  heldout RMS     709.53  MAE    473.27  spearman 0.7175
+
+P -> L : RMS 715.76 -> 709.42 (0.89% reduction), folds won 5/5 -> ADOPT L: False
+L -> T : RMS 709.42 -> 709.53 (-0.02% reduction), folds won 2/5 -> ADOPT T: False
+time-block hold-out (fit Y<=2012, test Y>=2013):
+  P  n_tr 1219 n_te 2814 RMS     725.33 MAE    489.49 spearman 0.7159
+  L  n_tr 1219 n_te 2814 RMS     718.92 MAE    477.41 spearman 0.7321
+  T  n_tr 1219 n_te 2814 RMS     724.94 MAE    486.54 spearman 0.7213
+
+form L, pick terms on the full panel (cluster-robust on player):
+  v0       beta     0.490757  se     0.100950  t    4.86
+  v0_lg    beta    -0.090950  se     0.023405  t   -3.89
+form T, pick-class interaction terms (reference class = picks 13-30):
+  age_x_hi       beta  -425.514695  se   243.582561  t   -1.75
+  age2_x_hi      beta     7.658097  se     4.818026  t    1.59
+  o_x_hi         beta   -11.027667  se     4.756538  t   -2.32
+  cur_x_hi       beta     0.692486  se     0.223219  t    3.10
+  lg_x_hi        beta   360.458629  se    93.578571  t    3.85
+  d_hi           beta  4795.887339  se  2833.598198  t    1.69
+  age_x_lo       beta   309.598387  se   162.250467  t    1.91
+  age2_x_lo      beta    -5.722404  se     3.219523  t   -1.78
+  o_x_lo         beta    -9.676233  se     3.501803  t   -2.76
+  cur_x_lo       beta     1.026106  se     0.257335  t    3.99
+  lg_x_lo        beta   -59.239734  se    63.751206  t   -0.93
+  d_lo           beta -3298.792931  se  1903.034074  t   -1.73
+
+--- HELD-OUT RMS BY CELL (same 5-fold predictions, sliced; no refit, no re-decision) ---
+  games_band:
+    cell                n      RMS P      RMS L      RMS T   best
+    0-5               382      526.7      512.9      514.7   L
+    16-35             834      730.7      720.4      720.8   L
+    36-70             887      797.1      791.9      791.3   T
+    6-15              591      620.9      595.8      594.2   T
+    71+              1339      735.1      738.6      739.3   P
+  pick_class:
+    cell                n      RMS P      RMS L      RMS T   best
+    hi               1059      848.0      844.5      848.6   L
+    lo               1646      632.2      622.2      619.8   T
+    mid              1328      697.9      692.8      691.7   T
+  young_thin:
+    cell                n      RMS P      RMS L      RMS T   best
+    g<=40 & age<=21   1437      708.6      689.6      691.1   L
+    other            2596      719.7      720.2      719.5   T
+
+Q2 VERDICT (preregistered rule, 2.0% RMS + 4/5 folds): PRODUCTION-ONLY
+
+====================================================================================================
+Q3 -- POSITION CLOCKS: one development table vs one per position group
+====================================================================================================
+P1 (one table)      k= 16 heldout RMS     715.76 MAE    478.29 spearman 0.7166
+P6 (per-position)   k= 66 heldout RMS     719.68 MAE    479.47 spearman 0.7110
+P1 -> P6 : -0.55% RMS reduction, folds won 0/5 -> ADOPT per-position clocks: False
+
+fitted development peak age, per position group (at that group's own median state):
+  KPD   n   471  peak age 18
+  KPF   n   545  peak age 18
+  MID   n  1208  peak age 18
+  RUCK  n   213  peak age 18
+  SD    n   661  peak age 18
+  SF    n   935  peak age 18
+  mean tall peak 18.00  mean small/mid peak 18.00  gap 0.00 years
+
+--- SUPPLEMENTARY (POST-HOC, NON-DECIDING): RAW OUTPUT GROWTH BY POSITION x AGE ---
+    median next-season change in season average, players with >=5 games in both seasons
+    pos       18     19     20     21     22     23     24     25     26     27     28
+    KPD        .    4.0    1.4    3.2   -1.5    1.3    3.1   -1.5    1.9   -4.2   -1.5
+    KPF        .    8.1    2.9    3.1    0.8    2.5    0.7    0.4    1.1   -3.3    2.4
+    MID      7.3    8.1    5.5    3.8    1.7    1.7   -2.0    1.1   -2.6    0.4   -3.9
+    RUCK       .      .    9.4    4.9    5.5    4.6   -2.2   -5.1   -2.4    3.7   -3.4
+    SD         .    5.4    3.6    3.2    1.8    2.5    1.1    1.1   -2.6   -1.1   -3.6
+    SF         .    8.1    3.0    4.3   -0.6    0.8    0.7   -0.1   -1.9   -1.4   -4.0
+    n          9    373    564    669    688    652    598    536    462    391    335
+    last age with a POSITIVE median growth step, per group: {'KPD': 26, 'KPF': 28, 'MID': 27, 'RUCK': 27, 'SD': 25, 'SF': 24}
+    tall mean 27.00  small/mid mean 25.33  gap 1.67 years
+Q3 VERDICT (same rule): ONE TABLE
+
+====================================================================================================
+NAMED ROWS AND HISTORICAL VALIDATION COHORTS
+====================================================================================================
+player             pk  pos games  age  output  board v         v0     pred P     pred L     pred T
+isaac-kako         13   SF    36   20    50.7     1320      759.8      483.0      449.0      481.2
+willem-duursma      1  MID    19   19    77.0     4223     3879.3     1475.7     2010.5     2171.1
+dyson-sharp        13   SF    13   19    68.2     3269     1551.0     1102.0     1251.0     1442.4
+jacob-farrow       10   SD    18   19    71.7     2765     1284.5     1072.6     1115.2     1060.9
+
+--- HISTORICAL VALIDATION COHORT: 30-40 games, output BELOW the position median ---
+picks_1_10: n 26  mean R6 691.5  p25 3.4  median 102.4  p75 1155.5  zero 12%
+    andrew-brayshaw          pk  2 MID  2019  age 20  g  39  out  66.1  R6    3751.8  career games 191
+    nicholas-naitanui        pk  2 RUCK 2010  age 20  g  32  out  66.9  R6    3040.0  career games 213
+    dion-prestia             pk  9 MID  2012  age 20  g  31  out  69.0  R6    2086.7  career games 253
+    ben-mcevoy               pk  9 RUCK 2010  age 21  g  31  out  53.0  R6    1954.3  career games 252
+    travis-boak              pk  6 MID  2008  age 20  g  31  out  72.5  R6    1832.5  career games 387
+    paddy-ryder              pk  7 KPD  2007  age 19  g  30  out  57.3  R6    1672.1  career games 277
+    ben-cunnington           pk  5 MID  2011  age 20  g  34  out  53.2  R6    1302.5  career games 238
+    tom-scully               pk  1 MID  2011  age 20  g  31  out  73.3  R6     714.4  career games 182
+    ... (18 more, all in PERSISTENCE_TABLE.json)
+picks_40_plus: n 49  mean R6 407.8  p25 7.7  median 29.2  p75 304.1  zero 12%
+    andrew-swallow           pk 43 MID  2008  age 21  g  37  out  70.5  R6    3006.7  career games 213
+    luke-parker              pk 42 MID  2012  age 20  g  32  out  56.7  R6    2821.9  career games 336
+    jarryd-lyons             pk 61 SF   2015  age 23  g  35  out  50.7  R6    2585.6  career games 194
+    andrew-swallow           pk 43 MID  2007  age 20  g  34  out  68.1  R6    2456.7  career games 213
+    taylor-walker            pk 64 KPF  2010  age 20  g  32  out  56.0  R6    1651.2  career games 316
+    bailey-dale              pk 45 MID  2018  age 22  g  40  out  63.6  R6    1442.2  career games 195
+    rhys-stanley             pk 47 KPF  2013  age 23  g  39  out  59.6  R6    1143.3  career games 230
+    jack-graham              pk 53 MID  2019  age 21  g  39  out  68.6  R6     770.6  career games 160
+    ... (41 more, all in PERSISTENCE_TABLE.json)
+
+====================================================================================================
+DECLARED SENSITIVITIES (PREREG s7) -- reported as agreement/disagreement; they never re-decide
+====================================================================================================
+primary (H=6, 14%, sqrt)     panel  4033  P->L   0.89% (5/5)  L->T  -0.02% (2/5)  verdict PRODUCTION-ONLY  sigma(36-70) 16.5%
+H=4                          panel  4969  P->L   0.72% (4/5)  L->T   0.23% (3/5)  verdict PRODUCTION-ONLY  sigma(36-70) 16.8%
+H=10                         panel  2294  P->L   0.88% (4/5)  L->T   0.31% (2/5)  verdict PRODUCTION-ONLY  sigma(36-70) 8.5%
+discount 0%                  panel  4033  P->L   0.97% (5/5)  L->T   0.03% (2/5)  verdict PRODUCTION-ONLY  sigma(36-70) 16.4%
+grace 2 seasons              panel  4033  P->L   0.90% (5/5)  L->T  -0.01% (2/5)  verdict PRODUCTION-ONLY  sigma(36-70) 16.4%
+games weight linear          panel  4033  P->L   0.87% (5/5)  L->T   0.02% (2/5)  verdict PRODUCTION-ONLY  sigma(36-70) 16.5%
+core window entry<=2014      panel  3593  P->L   0.53% (4/5)  L->T   0.52% (4/5)  verdict PRODUCTION-ONLY  sigma(36-70) 12.3%
+output = state season only   panel  4033  P->L   1.01% (5/5)  L->T   0.01% (2/5)  verdict PRODUCTION-ONLY  sigma(36-70) 17.6%
+
+====================================================================================================
+PREREG SCORED BY NUMBER
+====================================================================================================
+P1   HELD   4033 states, 767 careers
+       claim: panel 2,500-6,000 states over 700-1,050 careers
+P2   BREACH median/mean 0.283 ; zero share 0.113
+       claim: median R6 < 25% of mean in 16-35 band; >=30% zeros in <=35-game bands
+P3   HELD   matched delta quintile lens None (0 usable strata -> the preregistered collapse applies); tercile lens 272.6 over 7 strata; residual contrast gap 67.8 (90% CI [-51.776875152270065, 199.00198856634177]); beta_v0(16-35) 0.22329587551741345 (cluster t 4.251750729187223); beta_v0 full panel 0.49075691269015215
+       claim: pick still predicts at 16-35 games: matched delta > 0 and v0 coefficient > 0
+P4   HELD   0.165
+       claim: pedigree share at 36-70 games strictly between 5.6% and 40%, specifically 8-25%
+P5   HELD   sequence [0.7011, 0.6641, 0.3313, 0.1645, 0.0221] ; up-steps 0 ; worst up-step 0.0000
+       claim: pedigree share non-increasing across games bands (one blip <=2pp allowed)
+P6   HELD   RMS reduction -0.0002, folds 2/5, adopt=False
+       claim: TRAJECTORY does not clear the 2.0%/4-of-5 bar over LEVEL (seat predicts against the owner)
+P7   BREACH adopt=False (-0.55% RMS, 0/5 folds) ; preregistered peak-age lens DEGENERATE (pins to the age-18 boundary in all six groups: the target is REMAINING value, which declines with age for horizon reasons) -> NO SIGNAL on that lens ; supplementary raw growth clock (post-hoc, non-deciding): last positive-growth age tall 27.00 vs small/mid 25.33, gap 1.67
+       claim: per-position clocks clear the bar AND tall peak age >= small peak age + 1.0y
+P8   HELD   P 483.0 L 449.0 T 481.2 ; board 1320
+       claim: kako: every form predicts remaining 6-season value below his board price 1320; L and T differ by <2x
+P9   HELD   pool means [142.3, 235.8, 362.3, 589.6, 599.0] vs band A means [272.1, 1084.3, 1086.3, 1457.2, 1311.0]
+       claim: pool band mean R6 below band A at comparable states
+P10  HELD   single execution of this harness; no quantity re-fitted after being read
+       claim: one pass, nothing tuned after a reading, breaches owned by number
+
+wrote /home/user/afl-rl-engine/.claude/worktrees/agent-a7e3777a745ef850f/docs/evidence/pedigree_persistence_2026-08-14/PERSISTENCE_TABLE.json
+wrote /home/user/afl-rl-engine/.claude/worktrees/agent-a7e3777a745ef850f/docs/evidence/pedigree_persistence_2026-08-14/MEASURE_out.txt
+layer1 pin re-asserted at exit: OK

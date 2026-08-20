@@ -1,0 +1,521 @@
+=== ORDER S CENSUSES — strictly sequential ===
+
+########## os_census.py  SRoff  RL_O37=1 ##########
+  rc=1
+  1-10        10        0        9           +157           +345
+  11-20        8        2        6           +657           +663
+  21-30       10        2        9           +319           +488
+  31-40        9        2        7           +188           +194
+  41+         13        4       12           +250           +303
+  pool        31        2       27            -38           +278
+  the five largest ratios:
+     Josh Sinn                12      30g       73 ->    357   x4.890
+     James Tunstill           41      23g       42 ->    176   x4.190
+     Mitchell Knevitt         25      23g       75 ->    245   x3.267
+     Corey Warner             40      28g       33 ->    104   x3.152
+     Oscar Adams              51      21g       50 ->    115   x2.300
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1146463006   (ORDER P point estimate 0.1146463006)
+  ORDER S EFFECTIVE: LAMBDA 0.1743833037 (ORDER P 0.1743833037) · THETA_R 0.6574385174 · TMAX 21.123282
+  CAP FORM hard clip · RECENCY w 1.0000  (the engine's own flat weighting) · MATURE PREMIUM off
+  THETA_R   0.6574385174   (ORDER P 0.6574385174)
+  TMAX      21.1232815488   (ORDER P 21.1232815488)   percentile p5, s_pQ -33.0613344987
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+
+########## os_census.py  SB1  RL_O37=1 RL_O38B1=1 ##########
+  rc=1
+  1-10        10        0        0             +0             +0
+  11-20        8        0        0             +0             +0
+  21-30       10        0        0             +0             +0
+  31-40        9        0        0             +0             +0
+  41+         13        0        0             +0             +0
+  pool        31        0        0             +0             +0
+  the five largest ratios:
+     Nick Daicos              4      115g     9944 ->   9944   x1.000
+     Nasiah Wanganeen-Milera  11     102g     8644 ->   8644   x1.000
+     Bodhi Uwland             pool    70g     3568 ->   3568   x1.000
+     Jason Horne-Francis      1      100g     5600 ->   5600   x1.000
+     Finn Callaghan           3       90g     5516 ->   5516   x1.000
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1146463006   (ORDER P point estimate 0.1146463006)
+  ORDER S EFFECTIVE: LAMBDA 0.1743833037 (ORDER P 0.1743833037) · THETA_R 0.6574385174 · TMAX 21.123282
+  CAP FORM hard clip · RECENCY w 1.0000  (the engine's own flat weighting) · MATURE PREMIUM off
+  THETA_R   0.6574385174   (ORDER P 0.6574385174)
+  TMAX      21.1232815488   (ORDER P 21.1232815488)   percentile p5, s_pQ -33.0613344987
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+
+########## os_census.py  SAB1  RL_O37=1 RL_O38A=1 RL_O38B1=1 ##########
+  rc=1
+  1-10        10        0        0             +0             +0
+  11-20        8        0        0             +0             +0
+  21-30       10        0        0             +0             +0
+  31-40        9        0        0             +0             +0
+  41+         13        0        0             +0             +0
+  pool        31        0        0             +0             +0
+  the five largest ratios:
+     Nick Daicos              4      115g     9944 ->   9944   x1.000
+     Nasiah Wanganeen-Milera  11     102g     8644 ->   8644   x1.000
+     Bodhi Uwland             pool    70g     3568 ->   3568   x1.000
+     Jason Horne-Francis      1      100g     5600 ->   5600   x1.000
+     Finn Callaghan           3       90g     5516 ->   5516   x1.000
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1146463006   (ORDER P point estimate 0.1146463006)
+  ORDER S EFFECTIVE: LAMBDA 0.1743833037 (ORDER P 0.1743833037) · THETA_R 0.6574385174 · TMAX 21.123282
+  CAP FORM hard clip · RECENCY w 1.0000  (the engine's own flat weighting) · MATURE PREMIUM off
+  THETA_R   0.6574385174   (ORDER P 0.6574385174)
+  TMAX      21.1232815488   (ORDER P 21.1232815488)   percentile p5, s_pQ -33.0613344987
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+
+########## os_census.py  SR20A  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_TMAXPCT=20 ##########
+  rc=1
+  1-10        10        0        0             +0             +0
+  11-20        8        0        0             +0             +0
+  21-30       10        0        0             +0             +0
+  31-40        9        0        0             +0             +0
+  41+         13        0        0             +0             +0
+  pool        31        0        0             +0             +0
+  the five largest ratios:
+     Nick Daicos              4      115g     9944 ->   9944   x1.000
+     Nasiah Wanganeen-Milera  11     102g     8644 ->   8644   x1.000
+     Bodhi Uwland             pool    70g     3568 ->   3568   x1.000
+     Jason Horne-Francis      1      100g     5600 ->   5600   x1.000
+     Finn Callaghan           3       90g     5516 ->   5516   x1.000
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1146463006   (ORDER P point estimate 0.1146463006)
+  ORDER S EFFECTIVE: LAMBDA 0.1743833037 (ORDER P 0.1743833037) · THETA_R 0.6574385174 · TMAX 11.894975
+  CAP FORM hard clip · RECENCY w 1.0000  (the engine's own flat weighting) · MATURE PREMIUM off
+  THETA_R   0.6574385174   (ORDER P 0.6574385174)
+  TMAX      11.8949745947   (ORDER P 21.1232815488)   percentile p20, s_pQ -19.0245740865
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+
+########## os_census.py  SW47  RL_O37=1 RL_O38B1=1 RL_O40_RECW=0.47 ##########
+  rc=1
+  1-10        10        0        0             +0             +0
+  11-20        8        0        0             +0             +0
+  21-30       10        0        0             +0             +0
+  31-40        9        0        0             +0             +0
+  41+         13        0        0             +0             +0
+  pool        31        0        0             +0             +0
+  the five largest ratios:
+     Nick Daicos              4      115g     9944 ->   9944   x1.000
+     Nasiah Wanganeen-Milera  11     102g     8644 ->   8644   x1.000
+     Bodhi Uwland             pool    70g     3568 ->   3568   x1.000
+     Jason Horne-Francis      1      100g     5600 ->   5600   x1.000
+     Finn Callaghan           3       90g     5516 ->   5516   x1.000
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1146463006   (ORDER P point estimate 0.1146463006)
+  ORDER S EFFECTIVE: LAMBDA 0.1743833037 (ORDER P 0.1743833037) · THETA_R 0.6574385174 · TMAX 21.123282
+  CAP FORM hard clip · RECENCY w 0.4700 · MATURE PREMIUM off
+  THETA_R   0.6574385174   (ORDER P 0.6574385174)
+  TMAX      21.1232815488   (ORDER P 21.1232815488)   percentile p5, s_pQ -33.0613344987
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+
+########## os_census.py  SW28  RL_O37=1 RL_O38B1=1 RL_O40_RECW=0.28 ##########
+  rc=1
+  1-10        10        0        0             +0             +0
+  11-20        8        0        0             +0             +0
+  21-30       10        0        0             +0             +0
+  31-40        9        0        0             +0             +0
+  41+         13        0        0             +0             +0
+  pool        31        0        0             +0             +0
+  the five largest ratios:
+     Nick Daicos              4      115g     9944 ->   9944   x1.000
+     Nasiah Wanganeen-Milera  11     102g     8644 ->   8644   x1.000
+     Bodhi Uwland             pool    70g     3568 ->   3568   x1.000
+     Jason Horne-Francis      1      100g     5600 ->   5600   x1.000
+     Finn Callaghan           3       90g     5516 ->   5516   x1.000
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1146463006   (ORDER P point estimate 0.1146463006)
+  ORDER S EFFECTIVE: LAMBDA 0.1743833037 (ORDER P 0.1743833037) · THETA_R 0.6574385174 · TMAX 21.123282
+  CAP FORM hard clip · RECENCY w 0.2800 · MATURE PREMIUM off
+  THETA_R   0.6574385174   (ORDER P 0.6574385174)
+  TMAX      21.1232815488   (ORDER P 21.1232815488)   percentile p5, s_pQ -33.0613344987
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+
+########## os_census.py  SW47A  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O40_RECW=0.47 ##########
+  rc=1
+  1-10        10        0        0             +0             +0
+  11-20        8        0        0             +0             +0
+  21-30       10        0        0             +0             +0
+  31-40        9        0        0             +0             +0
+  41+         13        0        0             +0             +0
+  pool        31        0        0             +0             +0
+  the five largest ratios:
+     Nick Daicos              4      115g     9944 ->   9944   x1.000
+     Nasiah Wanganeen-Milera  11     102g     8644 ->   8644   x1.000
+     Bodhi Uwland             pool    70g     3568 ->   3568   x1.000
+     Jason Horne-Francis      1      100g     5600 ->   5600   x1.000
+     Finn Callaghan           3       90g     5516 ->   5516   x1.000
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1146463006   (ORDER P point estimate 0.1146463006)
+  ORDER S EFFECTIVE: LAMBDA 0.1743833037 (ORDER P 0.1743833037) · THETA_R 0.6574385174 · TMAX 21.123282
+  CAP FORM hard clip · RECENCY w 0.4700 · MATURE PREMIUM off
+  THETA_R   0.6574385174   (ORDER P 0.6574385174)
+  TMAX      21.1232815488   (ORDER P 21.1232815488)   percentile p5, s_pQ -33.0613344987
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+
+########## os_census.py  SC15  RL_O37=1 RL_O38B1=1 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=15 ##########
+  rc=1
+  1-10        10        0        0             +0             +0
+  11-20        8        0        0             +0             +0
+  21-30       10        0        0             +0             +0
+  31-40        9        0        0             +0             +0
+  41+         13        0        0             +0             +0
+  pool        31        0        0             +0             +0
+  the five largest ratios:
+     Nick Daicos              4      115g     9944 ->   9944   x1.000
+     Nasiah Wanganeen-Milera  11     102g     8644 ->   8644   x1.000
+     Bodhi Uwland             pool    70g     3568 ->   3568   x1.000
+     Jason Horne-Francis      1      100g     5600 ->   5600   x1.000
+     Finn Callaghan           3       90g     5516 ->   5516   x1.000
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1146463006   (ORDER P point estimate 0.1146463006)
+  ORDER S EFFECTIVE: LAMBDA 0.1743833037 (ORDER P 0.1743833037) · THETA_R 0.6574385174 · TMAX 21.123282
+  CAP FORM SMOOTH COMPRESSION  C = 13.948958 (p15 anchor) · RECENCY w 1.0000  (the engine's own flat weighting) · MATURE PREMIUM off
+  THETA_R   0.6574385174   (ORDER P 0.6574385174)
+  TMAX      21.1232815488   (ORDER P 21.1232815488)   percentile p5, s_pQ -33.0613344987
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+
+########## os_census.py  SC20  RL_O37=1 RL_O38B1=1 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=20 ##########
+  rc=1
+  1-10        10        0        0             +0             +0
+  11-20        8        0        0             +0             +0
+  21-30       10        0        0             +0             +0
+  31-40        9        0        0             +0             +0
+  41+         13        0        0             +0             +0
+  pool        31        0        0             +0             +0
+  the five largest ratios:
+     Nick Daicos              4      115g     9944 ->   9944   x1.000
+     Nasiah Wanganeen-Milera  11     102g     8644 ->   8644   x1.000
+     Bodhi Uwland             pool    70g     3568 ->   3568   x1.000
+     Jason Horne-Francis      1      100g     5600 ->   5600   x1.000
+     Finn Callaghan           3       90g     5516 ->   5516   x1.000
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1146463006   (ORDER P point estimate 0.1146463006)
+  ORDER S EFFECTIVE: LAMBDA 0.1743833037 (ORDER P 0.1743833037) · THETA_R 0.6574385174 · TMAX 21.123282
+  CAP FORM SMOOTH COMPRESSION  C = 11.894975 (p20 anchor) · RECENCY w 1.0000  (the engine's own flat weighting) · MATURE PREMIUM off
+  THETA_R   0.6574385174   (ORDER P 0.6574385174)
+  TMAX      21.1232815488   (ORDER P 21.1232815488)   percentile p5, s_pQ -33.0613344987
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+
+########## os_census.py  SC20A  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=20 ##########
+  rc=1
+  1-10        10        0        0             +0             +0
+  11-20        8        0        0             +0             +0
+  21-30       10        0        0             +0             +0
+  31-40        9        0        0             +0             +0
+  41+         13        0        0             +0             +0
+  pool        31        0        0             +0             +0
+  the five largest ratios:
+     Nick Daicos              4      115g     9944 ->   9944   x1.000
+     Nasiah Wanganeen-Milera  11     102g     8644 ->   8644   x1.000
+     Bodhi Uwland             pool    70g     3568 ->   3568   x1.000
+     Jason Horne-Francis      1      100g     5600 ->   5600   x1.000
+     Finn Callaghan           3       90g     5516 ->   5516   x1.000
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1146463006   (ORDER P point estimate 0.1146463006)
+  ORDER S EFFECTIVE: LAMBDA 0.1743833037 (ORDER P 0.1743833037) · THETA_R 0.6574385174 · TMAX 21.123282
+  CAP FORM SMOOTH COMPRESSION  C = 11.894975 (p20 anchor) · RECENCY w 1.0000  (the engine's own flat weighting) · MATURE PREMIUM off
+  THETA_R   0.6574385174   (ORDER P 0.6574385174)
+  TMAX      21.1232815488   (ORDER P 21.1232815488)   percentile p5, s_pQ -33.0613344987
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+
+########## os_census.py  SL56  RL_O37=1 RL_O38B1=1 RL_O40_LAMBDA=0.56 ##########
+  rc=1
+  1-10        10        0        0             +0             +0
+  11-20        8        0        0             +0             +0
+  21-30       10        0        0             +0             +0
+  31-40        9        0        0             +0             +0
+  41+         13        0        0             +0             +0
+  pool        31        0        0             +0             +0
+  the five largest ratios:
+     Nick Daicos              4      115g     9944 ->   9944   x1.000
+     Nasiah Wanganeen-Milera  11     102g     8644 ->   8644   x1.000
+     Bodhi Uwland             pool    70g     3568 ->   3568   x1.000
+     Jason Horne-Francis      1      100g     5600 ->   5600   x1.000
+     Finn Callaghan           3       90g     5434 ->   5434   x1.000
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1146463006   (ORDER P point estimate 0.1146463006)
+  ORDER S EFFECTIVE: LAMBDA 0.5600000000 (ORDER P 0.1743833037) · THETA_R 0.2047255368 · TMAX 7.266365
+  CAP FORM hard clip · RECENCY w 1.0000  (the engine's own flat weighting) · MATURE PREMIUM off
+  THETA_R   0.6574385174   (ORDER P 0.6574385174)
+  TMAX      21.1232815488   (ORDER P 21.1232815488)   percentile p5, s_pQ -33.0613344987
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+
+########## os_census.py  SL10  RL_O37=1 RL_O38B1=1 RL_O40_LAMBDA=0.10 ##########
+  rc=1
+  1-10        10        0        0             +0             +0
+  11-20        8        0        0             +0             +0
+  21-30       10        0        0             +0             +0
+  31-40        9        0        0             +0             +0
+  41+         13        0        0             +0             +0
+  pool        31        0        0             +0             +0
+  the five largest ratios:
+     Nick Daicos              4      115g     9944 ->   9944   x1.000
+     Nasiah Wanganeen-Milera  11     102g     8644 ->   8644   x1.000
+     Bodhi Uwland             pool    70g     3568 ->   3568   x1.000
+     Jason Horne-Francis      1      100g     5600 ->   5600   x1.000
+     Finn Callaghan           3       90g     5516 ->   5516   x1.000
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1146463006   (ORDER P point estimate 0.1146463006)
+  ORDER S EFFECTIVE: LAMBDA 0.1000000000 (ORDER P 0.1743833037) · THETA_R 1.1464630061 · TMAX 36.091643
+  CAP FORM hard clip · RECENCY w 1.0000  (the engine's own flat weighting) · MATURE PREMIUM off
+  THETA_R   0.6574385174   (ORDER P 0.6574385174)
+  TMAX      21.1232815488   (ORDER P 21.1232815488)   percentile p5, s_pQ -33.0613344987
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+
+########## os_census.py  SM  RL_O37=1 RL_O38B1=1 RL_O40_PGMAT=1 ##########
+  rc=1
+  1-10        10        0        0             +0             +0
+  11-20        8        0        0             +0             +0
+  21-30       10        0        0             +0             +0
+  31-40        9        0        0             +0             +0
+  41+         13        0        0             +0             +0
+  pool        31        0        0             +0             +0
+  the five largest ratios:
+     Nick Daicos              4      115g     9944 ->   9944   x1.000
+     Nasiah Wanganeen-Milera  11     102g     8644 ->   8644   x1.000
+     Bodhi Uwland             pool    70g     3568 ->   3568   x1.000
+     Jason Horne-Francis      1      100g     5600 ->   5600   x1.000
+     Finn Callaghan           3       90g     5516 ->   5516   x1.000
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1146463006   (ORDER P point estimate 0.1146463006)
+  ORDER S EFFECTIVE: LAMBDA 0.1743833037 (ORDER P 0.1743833037) · THETA_R 0.6574385174 · TMAX 21.123282
+  CAP FORM hard clip · RECENCY w 1.0000  (the engine's own flat weighting) · MATURE PREMIUM ON at 24+
+  THETA_R   0.6574385174   (ORDER P 0.6574385174)
+  TMAX      21.1232815488   (ORDER P 21.1232815488)   percentile p5, s_pQ -33.0613344987
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    s_age, wT, wS = pr
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+
+########## os_census.py  SMA  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O40_PGMAT=1 ##########
+  rc=1
+  1-10        10        0        0             +0             +0
+  11-20        8        0        0             +0             +0
+  21-30       10        0        0             +0             +0
+  31-40        9        0        0             +0             +0
+  41+         13        0        0             +0             +0
+  pool        31        0        0             +0             +0
+  the five largest ratios:
+     Nick Daicos              4      115g     9944 ->   9944   x1.000
+     Nasiah Wanganeen-Milera  11     102g     8644 ->   8644   x1.000
+     Bodhi Uwland             pool    70g     3568 ->   3568   x1.000
+     Jason Horne-Francis      1      100g     5600 ->   5600   x1.000
+     Finn Callaghan           3       90g     5516 ->   5516   x1.000
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1146463006   (ORDER P point estimate 0.1146463006)
+  ORDER S EFFECTIVE: LAMBDA 0.1743833037 (ORDER P 0.1743833037) · THETA_R 0.6574385174 · TMAX 21.123282
+  CAP FORM hard clip · RECENCY w 1.0000  (the engine's own flat weighting) · MATURE PREMIUM ON at 24+
+  THETA_R   0.6574385174   (ORDER P 0.6574385174)
+  TMAX      21.1232815488   (ORDER P 21.1232815488)   percentile p5, s_pQ -33.0613344987
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    # ORDER S: o38_parts now returns FIVE values — the two MATURE sub-shares are appended so the
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-s/docs/evidence/order_s_2026-08-19/os_census.py", line 212, in <module>
+    # ORDER S: o38_parts now returns FIVE values — the two MATURE sub-shares are appended so the
+    ^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 3)
+
+########## os_census.py  SALL  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O40_RECW=0.47 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=20 RL_O40_PGMAT=1 ##########
+  rc=0
+  Willem Duursma            1    19     19       4236    18.85%       3273
+  Sam Lalor                 1    20     22       3615    35.44%       3273
+
+wrote CENSUS_SALL.json
+
+=== ORDER S CONTINUITY — strictly sequential, INCLUDING THE SEASON-TURN AXIS ===
+
+########## os_continuity.py  SB1  RL_O37=1 RL_O38B1=1 ##########
+  rc=0
+   surplus, and it should — that is new evidence, not a weighting artefact. This axis holds the
+   data fixed on purpose so the WEIGHTING is the only thing that can move.
+
+wrote CONTINUITY_SB1_out.txt
+
+########## os_continuity.py  SAB1  RL_O37=1 RL_O38A=1 RL_O38B1=1 ##########
+  rc=0
+   surplus, and it should — that is new evidence, not a weighting artefact. This axis holds the
+   data fixed on purpose so the WEIGHTING is the only thing that can move.
+
+wrote CONTINUITY_SAB1_out.txt
+
+########## os_continuity.py  SW47  RL_O37=1 RL_O38B1=1 RL_O40_RECW=0.47 ##########
+  rc=0
+   surplus, and it should — that is new evidence, not a weighting artefact. This axis holds the
+   data fixed on purpose so the WEIGHTING is the only thing that can move.
+
+wrote CONTINUITY_SW47_out.txt
+
+########## os_continuity.py  SW47A  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O40_RECW=0.47 ##########
+  rc=0
+   surplus, and it should — that is new evidence, not a weighting artefact. This axis holds the
+   data fixed on purpose so the WEIGHTING is the only thing that can move.
+
+wrote CONTINUITY_SW47A_out.txt
+
+########## os_continuity.py  SC20  RL_O37=1 RL_O38B1=1 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=20 ##########
+  rc=0
+   surplus, and it should — that is new evidence, not a weighting artefact. This axis holds the
+   data fixed on purpose so the WEIGHTING is the only thing that can move.
+
+wrote CONTINUITY_SC20_out.txt
+
+########## os_continuity.py  SC20A  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=20 ##########
+  rc=0
+   surplus, and it should — that is new evidence, not a weighting artefact. This axis holds the
+   data fixed on purpose so the WEIGHTING is the only thing that can move.
+
+wrote CONTINUITY_SC20A_out.txt
+
+########## os_continuity.py  SM  RL_O37=1 RL_O38B1=1 RL_O40_PGMAT=1 ##########
+  rc=0
+   surplus, and it should — that is new evidence, not a weighting artefact. This axis holds the
+   data fixed on purpose so the WEIGHTING is the only thing that can move.
+
+wrote CONTINUITY_SM_out.txt
+
+########## os_continuity.py  SMA  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O40_PGMAT=1 ##########
+  rc=0
+   surplus, and it should — that is new evidence, not a weighting artefact. This axis holds the
+   data fixed on purpose so the WEIGHTING is the only thing that can move.
+
+wrote CONTINUITY_SMA_out.txt
+
+########## os_continuity.py  SALL  RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O40_RECW=0.47 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=20 RL_O40_PGMAT=1 ##########
+  rc=0
+   surplus, and it should — that is new evidence, not a weighting artefact. This axis holds the
+   data fixed on purpose so the WEIGHTING is the only thing that can move.
+
+wrote CONTINUITY_SALL_out.txt

@@ -1,0 +1,102 @@
+instrument pins COMPUTED at run (ORDER 29's disclosed copies, unmodified by 29B):
+  noarb_table_338.py      0f8220351c64c56ccfa90c60edcdfa5f   <- must be 0f8220351c64c56ccfa90c60edcdfa5f
+  noarb_table_allarm.py   8673d7e33a6267ff51ff6331cc13b171
+  harness_pvc_REPINNED_pass3.py 02dcf28c7bd0d39b3526e24c5cc0a87a
+=== O29LANDED  (814df691) ===
+  6             0        687      391        0
+  7             0        587      430        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o22/noarb/noarb_table_338.json
+=== O29BFINAL  (ca24a49a) ===
+  6             0        687      391        0
+  7             0        587      430        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o22/noarb/noarb_table_338.json
+
+=== PHASE 2: LIVE-BASIS CONTROL on the PRE-RE-POINT copies (composition_2026-08-10/noarb) ===
+instrument pin COMPUTED at run: noarb_table_338.py 0f8220351c64c56ccfa90c60edcdfa5f
+                                noarb_table_allarm.py 3f9124de638d5ed30792dbdffef591b8
+=== O29BLIVE  (3c6ffcde) ===
+  7             0        584      430        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o22/noarb/noarb_table_338.json
+__pycache__
+allarm_FINAL.json
+allarm_FINAL.txt
+allarm_FINAL23.json
+allarm_FINAL23.txt
+allarm_FINALO1.json
+allarm_FINALO1.txt
+allarm_O21STAGED.json
+allarm_O21STAGED.txt
+allarm_O25FINAL.json
+allarm_O25FINAL.txt
+allarm_O25R1.json
+allarm_O25R1.txt
+allarm_O29BFINAL.json
+allarm_O29BFINAL.txt
+allarm_O29BLIVE.json
+allarm_O29BLIVE.txt
+allarm_O29FINAL.json
+allarm_O29FINAL.txt
+allarm_O29LANDED.json
+allarm_O29LANDED.txt
+allarm_O29LIVE.json
+allarm_O29LIVE.txt
+allarm_SHIP.json
+allarm_SHIP.txt
+harness_pvc_REPINNED_pass3.py
+noarb_table_338.py
+noarb_table_allarm.py
+t338_FINAL.txt
+t338_FINAL23.txt
+t338_FINALO1.txt
+t338_O21STAGED.txt
+t338_O25FINAL.txt
+t338_O25R1.txt
+t338_O29BFINAL.txt
+t338_O29BLIVE.txt
+t338_O29FINAL.txt
+t338_O29LANDED.txt
+t338_O29LIVE.txt
+t338_SHIP.txt
+table_FINAL.json
+table_FINAL23.json
+table_FINALO1.json
+table_O21STAGED.json
+table_O25FINAL.json
+table_O25R1.json
+table_O29BFINAL.json
+table_O29BLIVE.json
+table_O29FINAL.json
+table_O29LANDED.json
+table_O29LIVE.json
+table_SHIP.json
+
+====================================================================================================================
+BOTH COHORT INSTRUMENTS -- margins against the 14% annual charge. A NEGATIVE MARGIN IS AN ARBITRAGE.
+====================================================================================================================
+
+ALL-ARM DECIDING INSTRUMENT  (noarb_table_allarm.py)
+  window       variant         yr0      yr1      yr2      yr3      yr4      yr5 | apprec 0-1  margin v14%  verdict
+  PRIMARY  cohorts 2005-2023 n=2212 O29BLIVE     1.0000   0.8077   0.9737   1.0703   1.1291   1.1096 |    -19.23%       33.23%   no arb
+  MODERN   cohorts 2019-2023 n=540 O29BLIVE     1.0000   0.8225   0.9256   0.9794   0.9772   1.0345 |    -17.75%       31.75%   no arb
+  PRIMARY  cohorts 2005-2023 n=2215 O29LANDED    1.0000   0.8529   0.9607   1.0587   1.1188   1.0991 |    -14.71%       28.71%   no arb
+  MODERN   cohorts 2019-2023 n=540 O29LANDED    1.0000   0.8734   0.9204   0.9754   0.9732   1.0289 |    -12.66%       26.66%   no arb
+  PRIMARY  cohorts 2005-2023 n=2215 O29BFINAL    1.0000   0.9325   1.0381   1.0742   1.1228   1.1006 |     -6.75%       20.75%   no arb
+  MODERN   cohorts 2019-2023 n=540 O29BFINAL    1.0000   0.9589   0.9986   0.9923   0.9768   1.0289 |     -4.11%       18.11%   no arb
+
+LEGACY RETAINED INSTRUMENT  (noarb_table_338.py, UNMODIFIED)
+  group          variant         yr1 apprec 0-1  margin v14%  verdict
+  ALL picks 1-64 O29BLIVE     1.0730      7.30%        6.70%   no arb
+  picks 1-20     O29BLIVE     1.1218     12.18%        1.82%   no arb
+  picks 21-64    O29BLIVE     0.9996     -0.04%       14.04%   no arb
+  ALL picks 1-64 O29LANDED    1.2173     21.73%       -7.73%      ARB
+  picks 1-20     O29LANDED    1.2992     29.92%      -15.92%      ARB
+  picks 21-64    O29LANDED    1.0924      9.24%        4.76%   no arb
+  ALL picks 1-64 O29BFINAL    1.3201     32.01%      -18.01%      ARB
+  picks 1-20     O29BFINAL    1.3493     34.93%      -20.93%      ARB
+  picks 21-64    O29BFINAL    1.2756     27.56%      -13.56%      ARB
+
+  ARBITRAGES OPENED: 5 of 15 readings.
+  wrote /home/user/afl-rl-engine/.claude/worktrees/agent-a37dad81e950d907f/docs/evidence/landing_29_2026-08-13/noarb29b/MARGINS_O29B.json

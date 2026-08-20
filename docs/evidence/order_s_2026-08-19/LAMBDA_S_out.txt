@@ -1,0 +1,167 @@
+======================================================================================================================
+ORDER S — S3. THE LAMBDA LEVEL RE-SOLVED, AND S2's COMPRESSED CAP ON THE SAME FRONTIER.
+======================================================================================================================
+OFFLINE ESTIMATE PENDING A BUILD — ORDER P step 4's own method and machinery, reused.
+ruler 241842f61ddd3c486f04f201a7efcce9 · LAMBDA_P 0.1743833037 · BETA_sat 0.1146463006 · s0 -2.4527
+
+----------------------------------------------------------------------------------------------------------------------
+1 · FALSIFIER S3-F4 — IS THE INHERITED ANCHOR REPRODUCIBLE ON THIS SEAT'S OWN CODE?
+----------------------------------------------------------------------------------------------------------------------
+   anchor population : 603 year-1 rows, cohort classes 2005-2015
+   THE INHERITED TONNAGE, recomputed here : 101402.7   (ORDER P published 101,402.7)
+   re-solved LAMBDA on the SAME identity   : 0.1743833037   (ORDER P published 0.1743833037)
+   S3-F4 (anchor not reproducible to 0.1 points): does not fire — the anchor reproduces
+   the tonnage the ORDER P LAMBDA actually removes: 101402.7
+
+   WHAT THE ANCHOR MEANS, said plainly: the LEVEL of the charge was set to whatever total the OLD
+   BLIND CHARGE happened to remove. The old charge is the object ORDER P replaced BECAUSE it was
+   defective — it was a pure function of games, blind to how the player played. The tonnage it
+   removed was never itself validated against anything. That is the finding F4 the owner made,
+   and this file takes it as the premise of the sweep rather than re-arguing it.
+
+----------------------------------------------------------------------------------------------------------------------
+2 · THE FRONTIER. LAMBDA SWEPT ON THE FIX B1 BASIS (the age-24 gate DELETED — the register's
+    end-state carries B1). The ORDER P gated basis is printed beside it so the two can be told
+    apart on sight.
+----------------------------------------------------------------------------------------------------------------------
+    READING RULE: below 0%% is a SELL-SIDE RED; above +14%% is a BUY-SIDE RED.
+    THE CLASS LAW: the W2 mark must stay in [1.03, 1.14).
+
+   LAMBDA    THETA_R     TMAX |  W2 mark  max cls |  PRI31-40  PRI41-64   PRI1-10 |  MOD21-30  MOD31-40   MOD1-10
+   0.0200     5.7323  176.458 |   1.0731   1.2214 |    -8.24%    -4.47%   +10.57% |   -13.04%   -11.29%   +20.53%
+   0.0400     2.8662   88.729 |   1.0715   1.2195 |    -8.32%    -4.55%   +10.32% |   -13.14%   -11.35%   +20.32%
+   0.0600     1.9108   59.486 |   1.0699   1.2172 |    -8.40%    -4.62%   +10.06% |   -13.24%   -11.41%   +20.10%
+   0.0800     1.4331   44.865 |   1.0684   1.2149 |    -8.48%    -4.70%    +9.80% |   -13.35%   -11.46%   +19.88%
+   0.1000     1.1465   36.092 |   1.0668   1.2127 |    -8.56%    -4.78%    +9.55% |   -13.45%   -11.52%   +19.66%
+   0.1200     0.9554   30.243 |   1.0653   1.2105 |    -8.64%    -4.86%    +9.30% |   -13.55%   -11.58%   +19.44%
+   0.1400     0.8189   26.065 |   1.0638   1.2083 |    -8.73%    -4.94%    +9.05% |   -13.64%   -11.63%   +19.22%
+   0.1600     0.7165   22.932 |   1.0622   1.2062 |    -8.82%    -5.03%    +8.80% |   -13.76%   -11.69%   +19.01%
+   0.1744     0.6574   21.123 |   1.0611   1.2046 |    -8.88%    -5.08%    +8.62% |   -13.84%   -11.73%   +18.85%
+   0.1800     0.6369   20.495 |   1.0607   1.2040 |    -8.90%    -5.11%    +8.55% |   -13.88%   -11.74%   +18.78%
+   0.2000     0.5732   18.546 |   1.0591   1.2019 |    -8.99%    -5.19%    +8.29% |   -14.00%   -11.80%   +18.55%
+   0.2200     0.5211   16.951 |   1.0576   1.1999 |    -9.08%    -5.27%    +8.03% |   -14.11%   -11.85%   +18.31%
+   0.2400     0.4777   15.622 |   1.0560   1.1978 |    -9.17%    -5.35%    +7.77% |   -14.23%   -11.91%   +18.07%
+   0.2600     0.4409   14.497 |   1.0544   1.1958 |    -9.26%    -5.44%    +7.51% |   -14.35%   -11.96%   +17.84%
+   0.2800     0.4095   13.533 |   1.0528   1.1935 |    -9.35%    -5.52%    +7.24% |   -14.46%   -12.01%   +17.61%
+   0.3000     0.3822   12.697 |   1.0512   1.1911 |    -9.44%    -5.60%    +6.98% |   -14.58%   -12.06%   +17.38%
+   0.3200     0.3583   11.966 |   1.0496   1.1886 |    -9.53%    -5.68%    +6.72% |   -14.69%   -12.12%   +17.16%
+   0.3400     0.3372   11.321 |   1.0480   1.1861 |    -9.62%    -5.76%    +6.47% |   -14.80%   -12.17%   +16.93%
+   0.3600     0.3185   10.748 |   1.0465   1.1836 |    -9.70%    -5.84%    +6.22% |   -14.92%   -12.22%   +16.70%
+   0.3800     0.3017   10.235 |   1.0449   1.1812 |    -9.79%    -5.92%    +5.96% |   -15.05%   -12.28%   +16.47%
+   0.4000     0.2866    9.773 |   1.0433   1.1787 |    -9.87%    -6.00%    +5.71% |   -15.17%   -12.33%   +16.24%
+   0.4200     0.2730    9.355 |   1.0418   1.1762 |    -9.96%    -6.07%    +5.47% |   -15.29%   -12.39%   +16.00%
+   0.4400     0.2606    8.975 |   1.0403   1.1738 |   -10.04%    -6.15%    +5.22% |   -15.41%   -12.44%   +15.78%
+   0.4600     0.2492    8.629 |   1.0387   1.1711 |   -10.13%    -6.23%    +4.97% |   -15.52%   -12.50%   +15.55%
+   0.4800     0.2388    8.311 |   1.0371   1.1682 |   -10.22%    -6.31%    +4.73% |   -15.64%   -12.58%   +15.33%
+   0.5000     0.2293    8.018 |   1.0356   1.1654 |   -10.31%    -6.39%    +4.48% |   -15.76%   -12.66%   +15.10%
+   0.5200     0.2205    7.748 |   1.0340   1.1625 |   -10.40%    -6.47%    +4.24% |   -15.87%   -12.73%   +14.87%
+   0.5400     0.2123    7.498 |   1.0325   1.1598 |   -10.49%    -6.56%    +3.98% |   -15.98%   -12.81%   +14.64%
+   0.5600     0.2047    7.266 |   1.0309   1.1570 |   -10.58%    -6.64%    +3.72% |   -16.10%   -12.88%   +14.41%
+   0.5800     0.1977    7.050 |   1.0294   1.1543 |   -10.67%    -6.72%    +3.47% |   -16.23%   -12.95%   +14.18%
+   0.6000     0.1911    6.849 |   1.0278   1.1516 |   -10.76%    -6.81%    +3.21% |   -16.36%   -13.03%   +13.96%
+   0.6200     0.1849    6.660 |   1.0263   1.1490 |   -10.85%    -6.89%    +2.96% |   -16.49%   -13.10%   +13.74%
+   0.6400     0.1791    6.483 |   1.0248   1.1464 |   -10.94%    -6.97%    +2.72% |   -16.62%   -13.17%   +13.52%
+   0.6600     0.1737    6.317 |   1.0233   1.1438 |   -11.03%    -7.06%    +2.47% |   -16.75%   -13.24%   +13.30%
+   0.6800     0.1686    6.161 |   1.0218   1.1413 |   -11.12%    -7.14%    +2.23% |   -16.88%   -13.32%   +13.09%
+   0.7000     0.1638    6.013 |   1.0203   1.1388 |   -11.21%    -7.22%    +1.99% |   -17.00%   -13.40%   +12.88%
+   0.7200     0.1592    5.874 |   1.0187   1.1363 |   -11.30%    -7.31%    +1.75% |   -17.13%   -13.48%   +12.67%
+   0.7400     0.1549    5.742 |   1.0172   1.1338 |   -11.39%    -7.39%    +1.51% |   -17.25%   -13.56%   +12.46%
+   0.7600     0.1509    5.617 |   1.0157   1.1314 |   -11.48%    -7.48%    +1.28% |   -17.37%   -13.64%   +12.26%
+   0.7800     0.1470    5.499 |   1.0142   1.1289 |   -11.57%    -7.56%    +1.05% |   -17.49%   -13.72%   +12.06%
+   0.8000     0.1433    5.386 |   1.0127   1.1265 |   -11.66%    -7.66%    +0.81% |   -17.61%   -13.80%   +11.85%
+   0.8200     0.1398    5.279 |   1.0112   1.1241 |   -11.74%    -7.74%    +0.58% |   -17.73%   -13.89%   +11.62%
+   0.8400     0.1365    5.178 |   1.0097   1.1218 |   -11.83%    -7.83%    +0.34% |   -17.85%   -13.97%   +11.39%
+   0.8600     0.1333    5.080 |   1.0082   1.1194 |   -11.92%    -7.93%    +0.11% |   -17.97%   -14.05%   +11.17%
+   0.8800     0.1303    4.988 |   1.0067   1.1171 |   -12.01%    -8.02%    -0.12% |   -18.08%   -14.13%   +10.93%
+   0.9000     0.1274    4.899 |   1.0052   1.1148 |   -12.10%    -8.11%    -0.36% |   -18.20%   -14.21%   +10.67%
+   0.9200     0.1246    4.814 |   1.0037   1.1124 |   -12.19%    -8.20%    -0.60% |   -18.31%   -14.29%   +10.41%
+   0.9400     0.1220    4.733 |   1.0022   1.1100 |   -12.28%    -8.29%    -0.84% |   -18.42%   -14.37%   +10.15%
+   0.9600     0.1194    4.655 |   1.0008   1.1076 |   -12.37%    -8.38%    -1.07% |   -18.53%   -14.45%    +9.90%
+   0.9800     0.1170    4.581 |   0.9993   1.1053 |   -12.46%    -8.47%    -1.30% |   -18.64%   -14.53%    +9.65%
+   1.0000     0.1146    4.509 |   0.9979   1.1030 |   -12.54%    -8.56%    -1.52% |   -18.75%   -14.60%    +9.41%
+   1.0200     0.1124    4.440 |   0.9964   1.1008 |   -12.63%    -8.65%    -1.75% |   -18.86%   -14.68%    +9.15%
+   1.0400     0.1102    4.374 |   0.9950   1.0985 |   -12.72%    -8.74%    -1.98% |   -18.97%   -14.75%    +8.89%
+   1.0600     0.1082    4.311 |   0.9936   1.0962 |   -12.82%    -8.83%    -2.20% |   -19.07%   -14.84%    +8.64%
+   1.0800     0.1062    4.249 |   0.9922   1.0939 |   -12.91%    -8.92%    -2.42% |   -19.18%   -14.94%    +8.38%
+   1.1000     0.1042    4.190 |   0.9908   1.0917 |   -13.01%    -9.01%    -2.64% |   -19.28%   -15.05%    +8.13%
+   1.1200     0.1024    4.133 |   0.9894   1.0895 |   -13.11%    -9.10%    -2.86% |   -19.39%   -15.16%    +7.89%
+   1.1400     0.1006    4.078 |   0.9880   1.0873 |   -13.20%    -9.18%    -3.08% |   -19.49%   -15.26%    +7.65%
+   1.1600     0.0988    4.025 |   0.9866   1.0852 |   -13.30%    -9.27%    -3.30% |   -19.59%   -15.37%    +7.41%
+   1.1800     0.0972    3.974 |   0.9852   1.0831 |   -13.40%    -9.36%    -3.51% |   -19.70%   -15.47%    +7.17%
+   1.2000     0.0955    3.924 |   0.9838   1.0810 |   -13.49%    -9.45%    -3.72% |   -19.80%   -15.58%    +6.94%
+
+   NOTE ON DIRECTION, MEASURED NOT ASSUMED: LAMBDA down => THETA_R = BETA_sat/LAMBDA UP => TMAX UP.
+   Lowering the level is NOT a pure softening: the exponent multiplier falls but the T line
+   STEEPENS about s0 and the cap RISES. The net on the bands is what the table shows.
+
+----------------------------------------------------------------------------------------------------------------------
+3 · WHERE THE CONSTRAINTS BIND
+----------------------------------------------------------------------------------------------------------------------
+   admissible on the AGGREGATE W2 mark in [1.03, 1.14) : 29 of 61 rungs  (LAMBDA 0.0200 .. 0.5600)
+   admissible on EVERY PER-CLASS mark under 1.14        : 26 of 61 rungs  (LAMBDA 0.7000 .. 1.2000)
+
+   THE OBJECTIVE, and the first thing that has to be said about it: THE LATE-BAND SELL-REDS ARE
+   MONOTONE IN LAMBDA OVER THE WHOLE SWEEP. Every one of them improves as LAMBDA FALLS and
+   worsens as it rises. THERE IS NO INTERIOR SOLVE. "Solve LAMBDA to close the sell-reds" drives
+   LAMBDA to zero — i.e. to DELETING the charge — and even there they do not close.
+
+                                                   PRI31-40  PRI41-64  MOD41-64
+   LAMBDA 0.0200 — the charge almost switched off    -8.24%    -4.47%   -24.64%
+   LAMBDA 0.17438 — ORDER P, the inherited level     -8.88%    -5.08%   -25.23%
+   LAMBDA 1.2000 — the stiffest rung swept          -13.49%    -9.45%   -29.38%
+
+   THE WHOLE RANGE OF MOVEMENT AVAILABLE ON PRIMARY 31-40 ACROSS THE ENTIRE SWEEP IS 5.25
+   PERCENTAGE POINTS, and the band never crosses zero at any LAMBDA. THE LATE-BAND SELL-REDS ARE
+   NOT A TONNAGE FACT.
+
+   AND THE TWO RAILS PULL AGAINST EACH OTHER. Lowering LAMBDA to help the SELL side pushes the
+   BUY side further through its rail:
+                                                    MOD1-10   PRI1-10
+   LAMBDA 0.0200                                    +20.53%   +10.57%
+   LAMBDA 0.17438 — ORDER P                         +18.85%    +8.62%
+   LAMBDA 1.2000                                     +6.94%    -3.72%
+
+   MODERN picks 1-10 comes back inside the +14% buy rail only at LAMBDA >= 0.6000 — that is
+   3.4 times the inherited level, and at that point the W2 class mark reads 1.0278.
+   THE CLASS FLOOR IS 1.03. IT IS BREACHED THERE.
+   THE W2 CLASS FLOOR 1.03 IS BREACHED FROM LAMBDA >= 0.5800 UPWARD.
+
+   *** HALT AND REPORT — THE FRONTIER, NOT A CHOICE ***
+   Three constraints and they do not admit a common point:
+     (a) the SELL side wants LAMBDA DOWN and is barely responsive to it;
+     (b) the MODERN 1-10 BUY rail wants LAMBDA UP, by a factor of several;
+     (c) the W2 class FLOOR 1.03 caps how far up LAMBDA may go;
+     (d) EVERY PER-CLASS mark is over 1.14 at EVERY LAMBDA on this sweep, so on the per-class
+         reading of the class law there is no admissible level AT ALL.
+   THIS SEAT DOES NOT PICK A SIDE. The frontier is the deliverable.
+
+----------------------------------------------------------------------------------------------------------------------
+4 · S2 — THE COMPRESSED CAP, OFFLINE, AT THE INHERITED LAMBDA
+----------------------------------------------------------------------------------------------------------------------
+    T'(s) = C * (1 - exp(-T_raw(s)/C)),  C = the p15/p20 anchor ceiling. Strictly increasing in
+    shortfall everywhere; no flat segment; T' < C pointwise so EVERY row pays at most the
+    hard-clip-at-Q charge. Compared here against the hard clip at the same anchor.
+
+   cell                        C |  W2 mark  max cls |   PRI1-10  PRI11-20   MOD1-20  PRI31-40
+   ORDER P  clip p5      21.1233 |   1.0611   1.2046 |    +8.62%   +12.07%   +12.88%    -8.88%
+   R15      clip p15     13.9490 |   1.0690   1.2054 |    +9.52%   +13.27%   +13.58%    -8.25%
+   R20      clip p20     11.8950 |   1.0740   1.2061 |   +10.12%   +13.99%   +14.06%    -7.93%
+   S2       smooth p15   13.9490 |   1.0913   1.2155 |   +12.90%   +16.05%   +16.46%    -7.07%
+   S2       smooth p20   11.8950 |   1.0960   1.2171 |   +13.59%   +16.65%   +17.03%    -6.81%
+
+   THE CHARGE AT 38 GAMES (A=0.9793), share of the pedigree leg removed, by surplus:
+   cell                      s=-5     s=-15     s=-25     s=-33     s=-45     s=-60
+   ORDER P  clip p5        36.65%    79.37%    93.28%    97.26%    97.28%    97.28%
+   R15      clip p15       36.65%    79.37%    90.75%    90.75%    90.75%    90.75%
+   R20      clip p20       36.65%    79.37%    86.86%    86.86%    86.86%    86.86%
+   S2       smooth p15     33.99%    68.46%    80.11%    84.36%    87.53%    89.28%
+   S2       smooth p20     33.55%    66.61%    77.53%    81.45%    84.31%    85.80%
+
+   READ THE p20 ROWS AGAINST EACH OTHER. Under the CLIP the charge is IDENTICAL at s=-33, -45
+   and -60 — three players a further 27 points a game apart pay the same. Under the COMPRESSION
+   they are strictly ordered. That is the owner's "gaps between players still count", and it is
+   the whole of what S2 changes.
+
+   S2-F1 — dT'/ds < 0 STRICTLY, on a dense sweep of s from +20 down to -200 at 0.01:
+     strict-increase failures in shortfall, both anchors: 0  -> S2-F1 does not fire
+

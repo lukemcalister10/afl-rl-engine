@@ -1,0 +1,14 @@
+{
+ "SC20A": {
+  "rows": 715,
+  "worst": 1.4210854715202004e-14,
+  "pass_": true,
+  "dials": {
+   "RL_O37": "1",
+   "RL_O38A": "1",
+   "RL_O38B1": "1",
+   "RL_O40_CAPFORM": "smooth",
+   "RL_O40_CAPPCT": "20"
+  }
+ }
+}

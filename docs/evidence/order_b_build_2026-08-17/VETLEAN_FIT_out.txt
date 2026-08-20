@@ -1,0 +1,6 @@
+rebuilt primary rows 3218 (W5: 3218)
+rows with no trailing-2 L (ratio held 1.0, disclosed): 387
+offline B at the original fit point: 27:0.996 28:0.966 29:0.948 30:1.152 31:1.052
+admissible points: 0 of 255
+ADMISSIBLE SET EMPTY — trade-off frontier head: rho0=0.050 g=0.0150 min-cell 0.925 cells 27:0.962 28:0.958 29:0.925 30:1.148 31:0.948
+wrote VETLEAN_FIT.json

@@ -1,0 +1,55 @@
+==============================================================================================================
+ORDER P BUILD — B11: THE WIRED PREMIUM SURFACE AGAINST ORDER P'S OWN
+==============================================================================================================
+the engine literal is read out of engine/rl_after/_merged_recover.py
+
+--------------------------------------------------------------------------------------------------------------
+1 · THE CONSTANTS, AGAINST ORDER P'S OWN FILES
+--------------------------------------------------------------------------------------------------------------
+   constant          wired in the engine        ORDER P published      match
+   O37_G0             9.8900000000000077       9.8900000000000077        yes   MECH_P.json::G0
+   O37_BETA_SAT      0.11464630061141393      0.11464630061141393        yes   MECH_P.json::BETA_sat
+   O37_LAMBDA        0.17438330365754029      0.17438330365754029        yes   STEP4_P.json::LAMBDA
+   O37_S0            -2.4527208914690739      -2.4527208914690739        yes   MECH_P.json::s0
+   O37_S_P5          -33.061334498746881      -33.061334498746881        yes   MECH_P.json::s_p5
+   O37_THETA_R       0.65743851737411818      0.65743851737411818        yes   BETA_sat / LAMBDA
+   O37_TMAX           21.123281548845981       21.123281548845981        yes   1 - THETA_R*(s_p5 - s0)
+
+   THE IDENTITY THE TILT RESTS ON: LAMBDA * THETA_R - BETA_sat = 0.000e+00   -> HOLDS
+   A(0) = 1 - exp(-0/G0) = 0   -> EXACTLY ZERO
+
+--------------------------------------------------------------------------------------------------------------
+2 · THE SURFACE, NODE BY NODE AND THEN DENSELY
+--------------------------------------------------------------------------------------------------------------
+   ORDER P's surface is re-fitted here from scratch: 5041 season rows, 1575 players, 58488 games.
+   worst node-for-node difference over 242 nodes            : 0.000e+00
+   worst difference over 8,002 dense points, support +/- 1 log unit: 4.974e-14
+   -> B11 DID NOT FIRE
+
+   THE PREMIUM, IN POINTS A GAME, READ OFF THE WIRED GRID (PACKET_P section 3 reproduced):
+     entry v0        SMALL         TALL
+          100        -7.04        -5.45
+          200        -1.57        +1.59
+          300        -1.26        +2.65
+          450        -0.18        +4.82
+          600        +3.68        +6.39
+          900        +6.46        +7.72
+         1200        +7.15        +9.41
+         1700       +13.95       +10.81
+         2400       +17.77       +12.26
+         3200       +23.29       +22.92
+
+   MONOTONE IN PRICE (a dearer player is never expected to produce less), and the biggest step
+   between neighbouring nodes — the largest jump the surface can make anywhere:
+     TALL   min step +0.000000 (must be >= 0)   max step +1.627594   support v0 [96.2, 2946.9]
+     SMALL  min step +0.000000 (must be >= 0)   max step +1.089041   support v0 [91.2, 3444.3]
+
+--------------------------------------------------------------------------------------------------------------
+3 · THE SURPLUS s_P — THE WIRED ARITHMETIC AGAINST op_lib.perf_surplus_P
+--------------------------------------------------------------------------------------------------------------
+   The engine walks p['scoring'] and takes each season's own bar from MA._fit_bar, its age from
+   the season year minus the birth year, and its premium from the grid above. The matrix carries
+   exactly those objects (`bar` per season, `age_draft`), so the same walk is reproduced here.
+   vantages compared 13859   worst difference 2.842e-14 points a game   None/not-None disagreements 0
+   -> the wired surplus IS ORDER P's surplus
+

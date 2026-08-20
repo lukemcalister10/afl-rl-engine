@@ -1,0 +1,38 @@
+ORDER 33 W1 -- counterfactual controls
+  W1CF matrix   per_entrant_W1CF.json md5 c5c7719a
+  base matrix   per_entrant_O31FFINAL.json md5 d97f1aee (must be d97f1aee, the S4 candidate input)
+  CONTROL day-0 v0 identical .......... PASS (2648/2648)
+  CONTROL pool rows identical ......... PASS (1201 pool rows)
+  CONTROL g<=25 careers identical ..... PASS (597 such ND rows)
+  CONTROL yrs/seasons identical ....... PASS
+  movement (non-pool vpath entries): 4516 of 9566 changed, mean delta +0.6, max |delta| 198.7
+
+S4 scorer exec (prereg-bound rules carried whole): committed md5 241842f61ddd3c486f04f201a7efcce9 as-run md5 ef2cd6ed99b4e9d2cd511432f065d48c
+    SUB  CAND_P = SP + '/per_entrant_O31FFINAL.json'                  ->  CAND_P = SP + '/per_entrant_W1CF.json'
+    SUB  with open(os.path.join(HERE, 'RESULTS_S4.json'), 'w') as f:  ->  with open('/home/user/afl-rl-engine/.claude/worktrees/agent-acd0bcffe74349508/do
+  scorer ran clean; console SCORE_W1CF_console.txt
+
+  CONTROL rho_old unchanged in every scored cell ... PASS
+  CONTROL pool-cell candidate skill unchanged ...... PASS
+
+=== PRIMARY ND CELLS: the wired candidate vs the W1 counterfactual vs the old law (M1 Spearman) ===
+  N   hz         n  rho_old rho_cand   rho_W1      S4 delta [90% CI]    S4 verd      W1 delta [90% CI]    W1 verd  recovery
+  1   dv1     1201    0.485    0.570    0.570    0.085 [ 0.067, 0.105]  candidate    0.085 [ 0.067, 0.105]  candidate      -0%
+  1   dvrest  1201    0.528    0.576    0.576    0.048 [ 0.030, 0.067]  candidate    0.048 [ 0.030, 0.067]  candidate      -0%
+  2   dv1     1137    0.626    0.668    0.668    0.043 [ 0.023, 0.063]  candidate    0.043 [ 0.023, 0.063]  candidate      -0%
+  2   dvrest  1137    0.643    0.677    0.677    0.034 [ 0.014, 0.053]  candidate    0.034 [ 0.015, 0.053]  candidate      -0%
+  3   dv1      955    0.665    0.677    0.677    0.011 [-0.003, 0.025]        tie    0.012 [-0.003, 0.025]        tie      -3%
+  3   dvrest   955    0.692    0.689    0.689   -0.003 [-0.017, 0.012]        tie   -0.003 [-0.017, 0.012]        tie      +4%
+  4   dv1      807    0.701    0.681    0.681   -0.020 [-0.031,-0.009]     oldlaw   -0.020 [-0.031,-0.009]     oldlaw      -1%
+  4   dvrest   807    0.751    0.729    0.728   -0.023 [-0.034,-0.012]     oldlaw   -0.023 [-0.034,-0.012]     oldlaw      -0%
+  5   dv1      680    0.718    0.704    0.703   -0.014 [-0.022,-0.006]     oldlaw   -0.015 [-0.022,-0.007]     oldlaw      -3%
+  5   dvrest   680    0.765    0.748    0.748   -0.017 [-0.025,-0.009]     oldlaw   -0.017 [-0.025,-0.009]     oldlaw      -1%
+  6   dv1      574    0.733    0.726    0.726   -0.008 [-0.014,-0.001]     oldlaw   -0.007 [-0.014,-0.001]     oldlaw      +3%
+  6   dvrest   574    0.801    0.791    0.791   -0.010 [-0.016,-0.005]     oldlaw   -0.010 [-0.016,-0.005]     oldlaw      +0%
+
+  P3 READING: 6 S4 old-law-won primary M1 cells; median recovery -0%; per-cell ['N4 dv1 -1%', 'N4 dvrest -0%', 'N5 dv1 -3%', 'N5 dvrest -1%', 'N6 dv1 +3%', 'N6 dvrest +0%']
+  years 1-3 candidate wins retained: 4 of 4 (all)
+  old-law cells no longer old-law wins: 0 of 6 -> []
+
+  all-scored-cell verdict tally  S4: {'candidate': 72, 'tie': 173, 'oldlaw': 35}   W1CF: {'candidate': 72, 'tie': 173, 'oldlaw': 35}
+  ND-primary tally               S4: {'candidate': 8, 'tie': 8, 'oldlaw': 8}   W1CF: {'candidate': 8, 'tie': 8, 'oldlaw': 8}

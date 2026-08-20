@@ -1,0 +1,1551 @@
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Order K · The Year-1 Class</title>
+<style>
+:root{--pitch:#0a0c10;--card:#12151c;--card-2:#181c25;--edge:#232936;--edge-2:#2f3747;
+--text:#f2f5f9;--dim:#8b95a6;--faint:#525c6d;--volt:#c8f04a;--volt-soft:rgba(200,240,74,.12);
+--up:#4ade80;--dn:#f0655e;--warn:#f5b445;
+--cond:"Arial Narrow","Helvetica Neue Condensed","Roboto Condensed",Arial,sans-serif;
+--sans:"Helvetica Neue",Arial,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--pitch);color:var(--text);font-family:var(--sans);font-size:13px;line-height:1.45}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.banner{background:var(--volt-soft);border-bottom:1px solid var(--volt);color:var(--volt);
+font-family:var(--cond);font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-align:center;
+padding:7px 12px;font-weight:700}
+.app{max-width:1500px;margin:0 auto;padding:0 18px 80px}
+header{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;padding:22px 0 14px}
+.brand{font-family:var(--cond);font-weight:900;font-size:38px;letter-spacing:.01em;text-transform:uppercase;line-height:.92}
+.brand b{color:var(--volt)}
+.brand .sub{display:block;font-size:10.5px;letter-spacing:.28em;color:var(--dim);font-weight:700;margin-top:6px}
+.spacer{flex:1}
+.stamp{font-family:var(--mono);font-size:10.5px;color:var(--dim);text-align:right;line-height:1.75}
+.stamp b{color:var(--text)}
+h2{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);margin:0 0 10px}
+.box{background:var(--card);border:1px solid var(--edge);padding:16px 18px;margin:12px 0}
+.box.warn{border-color:var(--warn);border-left:4px solid var(--warn)}
+.box.warn h2{color:var(--warn)}
+table{border-collapse:collapse;width:100%;font-size:12px}
+th{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+color:var(--dim);text-align:right;padding:6px 8px;border-bottom:1px solid var(--edge-2);cursor:pointer;
+position:sticky;top:0;background:var(--card);white-space:nowrap;user-select:none}
+th.l,td.l{text-align:left}
+th:hover{color:var(--volt)}
+th.sorted{color:var(--volt)}
+td{padding:4px 8px;border-bottom:1px solid var(--edge);text-align:right}
+tr:hover td{background:var(--card-2)}
+td.up{color:var(--up)}td.dn{color:var(--dn)}
+.k{color:var(--dim)}
+.sec{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--volt);padding-top:16px}
+.note{color:var(--dim);font-size:11.5px;margin-top:8px}
+
+.brk{background:var(--card-2);border:1px solid var(--warn);border-left:4px solid var(--warn);padding:16px 18px;margin:14px 0}
+.brk h2{color:var(--warn);margin-bottom:12px}
+.brk h3{font-family:var(--cond);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--text);margin:14px 0 6px}
+.brk ul{margin:0 0 4px;padding-left:20px}
+.brk li{margin:5px 0;color:var(--text)}
+.brk li b{color:var(--warn)}
+.ok{color:var(--up)}
+.defs{background:var(--card-2);border:1px solid var(--edge-2);padding:14px 18px;margin:12px 0;color:var(--dim)}
+.defs b{color:var(--text)}
+.defs p{margin:7px 0}
+details{background:var(--card);border:1px solid var(--edge);padding:12px 18px;margin:12px 0}
+summary{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);cursor:pointer}
+summary:hover{color:var(--volt)}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 7px;border:1px solid var(--edge-2);color:var(--dim);margin-right:6px}
+.pill.red{border-color:var(--dn);color:var(--dn)}
+.pill.grn{border-color:var(--up);color:var(--up)}
+.pill.amb{border-color:var(--warn);color:var(--warn)}
+td.sell{color:var(--dn)}
+td.buy{color:var(--warn)}
+</style>
+<div class="banner">NOTHING LANDS ON THIS SEAT'S WORD &mdash; ORDER K IS THE OWNER'S RULED SETTING BUILT FOR REVIEW, WITH ONE DEFECT FIXED. IT IS NOT ADOPTED.</div>
+<div class="app">
+<header><div class="brand">ORDER <b>K</b><span class="sub">THE 2025 INTAKE IN DRAFT ORDER · WITH v0</span></div><div class="spacer"></div><div class="stamp">live <b>88ce647f</b> 752,429 &middot; candidate 31 <b>fe6be9d6</b> 666,913<br>landing candidate <b>1f176444</b> 667,916 &middot; <b>ORDER K f3101883</b> <b>673,097</b><br>dose 0.40 &middot; kappa 0.20 &middot; eta 0.50 &middot; gamma_u 8 &middot; gamma_d 14 &middot; relief 1.08 &middot; PRE-NUMERAIRE</div></header>
+
+<div class="brk"><h2>What is in this board, and what is still broken</h2><p>Read this before you read a single price. It is the same box on all three pages.</p><h3>What is wired into this board</h3><ul><li><b>The setting you chose.</b> The age-referenced projection bar at dose 0.40, the counterweight at kappa 0.20 / gamma_u 8 / eta 0.50 / gamma_d 14, and the selection relief at 1.08. Nothing here was re-searched or re-tuned.</li><li><b>Your tall/small sitter factor.</b> Key-position defenders, key-position forwards and rucks sit out more often than smalls do, so a year on the sidelines costs them less. That is live.</li><li><b>One defect fixed: the fade floor.</b> The fade curve had a hard floor at 0.5. After the tall factor was applied, small players drafted between picks 6 and 18 fell through that floor and came out <i>lighter</i> than before &mdash; they were being PAID by a relief meant only for talls. Seven real players gained 126 points that way, Josh Smillie most of all at +79. The floor is now sited at each small player's own pre-factor value, so no small can ever be made lighter by the tall factor again. Smillie is back at <b>772</b>. The four talls you named keep their relief in full: Will Green +141, Toby Conway +86, William McCabe +70, Alex Dodson +16.</li><li><b>Everything the landing candidate already had.</b> Turn the dial off and this engine rebuilds the landing candidate 1f176444 byte for byte.</li></ul><h3>What is still broken &mdash; open defects, none of them fixed here</h3><ul><li><b>Late picks still lose money in year one.</b> Picks 31-40 read <b>-10.70%</b> and picks 41-64 read <b>-6.89%</b>. Both improved (by 2.14 and 0.99 points), and both are still negative. A player drafted there is still worth less a year later. This is a known limitation of this build, not a failure of it &mdash; no setting inside your rules reaches zero on either band.</li><li><b>Harry Dean and Cooper Duff-Tytler are still below their candidate-31 levels.</b> Dean reads <b>2,403</b> against 2,670 on candidate 31 (267 short). Duff-Tytler reads <b>1,505</b> against 1,832 (327 short) &mdash; and he is also <b>below</b> the landing candidate's 1,572. The age bar lifts them both, and this setting's counterweight takes most of it back: Dean +221 then -218, Duff-Tytler +85 then -152.</li><li><b>Supplemental selection (SSP) players still appreciate about 50% in their first year.</b> +52.71% on this board, +50.52% on the landing candidate. They enter outside the 1-64 pick curve, so nothing in this order reaches them. It is a known, separate problem.</li><li><b>The development arms still lose money.</b> Next-generation academy -20.70%, next-generation northern -40.32%, southern -27.70%, unrestricted free agents -42.91%, all in year one.</li><li><b>Veteran key-position talls aged 28-30 are over-priced by roughly 30%, because the veteran board is parked.</b> Nothing in this order touches them. If you are reading a 28-year-old key forward or key defender, read him about a third lighter than the number shown.</li><li><b>The engine leans too hard on the most recent season.</b> A player who broke out once is probably too expensive here &mdash; <b>Xerri, Callaghan, Ash, Thilthorpe</b>. A good player who had one bad year is probably too cheap &mdash; <b>Coniglio, De Goey, Langford</b>. Treat those names with your own judgement, not the number.</li><li><b>The ceiling column on the dial page is wrong for anyone 22 or older.</b> It prints roughly the 87th percentile outcome where it should print the 97th. It reads too low for those players.</li></ul><h3>Two gates this build BREACHES, reported and not traded away</h3><ul><li><b>Daniel Annable rises when he should not.</b> Your law says a player who is below expectation but has played games must not go up. He goes from 1,530 to <b>1,537</b>, up 7 points. The other two hold: Xavier Taylor -14, Dylan Patterson -27. The cause is that the age bar lifts him +40 and this setting's counterweight only charges him -33 back. It is a small number and it is still a breach.</li><li><b>The veteran-movement cap is breached on the net measure.</b> Order J's preregistered rule allowed the young-player levers to move the veteran pool by at most 668 board points net. The two gated levers move it <b>-695</b>. The churn measure is inside its cap (695 against 1,002) and the age bar alone moves <b>zero</b> mature rows, which is its own law and it holds exactly. The breach is entirely the counterweight, which keys on games played rather than age.</li></ul><h3>One thing to know about the numbers you were shown before</h3><p>The frontier values quoted when you chose this setting (class 1.0519, picks 1-10 +7.58%, 11-20 +13.82%, 31-40 -8.54%, 41-64 -6.50%) were computed on the fast navigation instrument AND on the fade curve with the defective floor still in it. They are not what the real board reads. The real board, on the standing instrument, reads <b>1-10 +8.22% &middot; 11-20 +11.16% &middot; 21-30 +5.26% &middot; 31-40 -10.70% &middot; 41-64 -6.89%</b>. Every one of those is better than the landing candidate. They are not the predicted numbers and this page does not pretend they are.</p></div>
+<div class="defs"><h2>How to read this page</h2><p>These are the players who entered the league in the most recent intake &mdash; the class whose first-year appreciation your growth rule is written about. They are listed in draft order: national draft by pick number first, then the rookie draft, then the academy and father-son pathways, then supplemental selection, then the mid-season draft.</p><p><b>v0</b> is the entry value &mdash; what the engine says the pick itself was worth on draft day, before the player had done anything. <b>Entry values do not move in this order.</b> All 89 wired entrants carry a bit-identical v0. What moves is the printed price of a player who has since sat out, because that price is his entry value multiplied by a sitting discount, and the sitting discount is exactly what the tall/small factor changes.</p><p>The four price columns and the legs mean the same as on the player list.</p></div>
+<div class="box"><h2>120 rows in the year-1 class &middot; 58,060 &rarr; 57,823 board points (-0.41%) &middot; 43 up, 76 down</h2><div class="defs"><p><b>This class's prices go slightly DOWN on today's board, and that does not contradict the class growth rule below.</b> They are two different questions. The growth rule asks a historical question: across the intake classes of 2005 to 2015, how much did a class appreciate between draft day and a year later? That number goes UP. This table is the CURRENT class priced on today's board. The 2025 intake is mostly high picks with very few games behind them, and that is exactly the shape this setting's counterweight charges hardest &mdash; so today's rookies are marked down a little even while the historical growth rate improves. Both are true and both are printed.</p></div>
+<table id="t2"><thead><tr>
+<th class="" onclick="sortTable('t2',0,true)">#</th>
+<th class="l" onclick="sortTable('t2',1,false)">player</th>
+<th class="l" onclick="sortTable('t2',2,false)">pathway</th>
+<th class="" onclick="sortTable('t2',3,true)">pick</th>
+<th class="l" onclick="sortTable('t2',4,false)">pos</th>
+<th class="" onclick="sortTable('t2',5,true)">age</th>
+<th class="" onclick="sortTable('t2',6,true)">games</th>
+<th class="" onclick="sortTable('t2',7,true)">v0 (entry value)</th>
+<th class="" onclick="sortTable('t2',8,true)">live 88ce647f</th>
+<th class="" onclick="sortTable('t2',9,true)">cand 31 fe6be9d6</th>
+<th class="" onclick="sortTable('t2',10,true)">landing 1f176444</th>
+<th class="" onclick="sortTable('t2',11,true)">ORDER K</th>
+<th class="" onclick="sortTable('t2',12,true)">&Delta; vs landing</th>
+<th class="" onclick="sortTable('t2',13,true)">&Delta; vs c31</th>
+<th class="" onclick="sortTable('t2',14,true)">leg tall</th>
+<th class="" onclick="sortTable('t2',15,true)">leg age-bar</th>
+<th class="" onclick="sortTable('t2',16,true)">leg counterweight</th>
+<th class="" onclick="sortTable('t2',17,true)">leg floor fix</th>
+</tr></thead><tbody>
+<tr><td class="num k" data-v="1">1</td><td class="l">Willem Duursma</td><td class="l k">ND</td><td class="num k" data-v="1">1</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="19">19</td><td class="num k" data-v="3272.8">3,273</td>
+<td class="num " data-v="3977">3,977</td>
+<td class="num " data-v="4000">4,000</td>
+<td class="num " data-v="3661">3,661</td>
+<td class="num volt" data-v="3703">3,703</td>
+<td class="num up" data-v="42">+42</td>
+<td class="num dn" data-v="-297">-297</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="345">+345</td>
+<td class="num dn" data-v="-303">-303</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="2">2</td><td class="l">Zeke Uwland</td><td class="l k">ND</td><td class="num k" data-v="2">2</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="17">17</td><td class="num k" data-v="2454.2">2,454</td>
+<td class="num " data-v="2633">2,633</td>
+<td class="num " data-v="2480">2,480</td>
+<td class="num " data-v="2017">2,017</td>
+<td class="num volt" data-v="1949">1,949</td>
+<td class="num dn" data-v="-68">-68</td>
+<td class="num dn" data-v="-531">-531</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="104">+104</td>
+<td class="num dn" data-v="-172">-172</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="3">3</td><td class="l">Harry Dean</td><td class="l k">ND</td><td class="num k" data-v="3">3</td><td class="l k">KPD</td><td class="num" data-v="19">19</td><td class="num" data-v="17">17</td><td class="num k" data-v="2316.4">2,316</td>
+<td class="num " data-v="2577">2,577</td>
+<td class="num " data-v="2670">2,670</td>
+<td class="num " data-v="2400">2,400</td>
+<td class="num volt" data-v="2403">2,403</td>
+<td class="num up" data-v="3">+3</td>
+<td class="num dn" data-v="-267">-267</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="221">+221</td>
+<td class="num dn" data-v="-218">-218</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="4">4</td><td class="l">Cooper Duff-Tytler</td><td class="l k">ND</td><td class="num k" data-v="4">4</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="13">13</td><td class="num k" data-v="1765.1">1,765</td>
+<td class="num " data-v="1561">1,561</td>
+<td class="num " data-v="1832">1,832</td>
+<td class="num " data-v="1572">1,572</td>
+<td class="num volt" data-v="1505">1,505</td>
+<td class="num dn" data-v="-67">-67</td>
+<td class="num dn" data-v="-327">-327</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="85">+85</td>
+<td class="num dn" data-v="-152">-152</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="5">5</td><td class="l">Dylan Patterson</td><td class="l k">ND</td><td class="num k" data-v="5">5</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="5">5</td><td class="num k" data-v="1595.0">1,595</td>
+<td class="num " data-v="1628">1,628</td>
+<td class="num " data-v="1675">1,675</td>
+<td class="num " data-v="1467">1,467</td>
+<td class="num volt" data-v="1440">1,440</td>
+<td class="num dn" data-v="-27">-27</td>
+<td class="num dn" data-v="-235">-235</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="48">+48</td>
+<td class="num dn" data-v="-75">-75</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="6">6</td><td class="l">Daniel Annable</td><td class="l k">ND</td><td class="num k" data-v="6">6</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="2">2</td><td class="num k" data-v="1578.6">1,579</td>
+<td class="num " data-v="1395">1,395</td>
+<td class="num " data-v="1633">1,633</td>
+<td class="num " data-v="1530">1,530</td>
+<td class="num volt" data-v="1537">1,537</td>
+<td class="num up" data-v="7">+7</td>
+<td class="num dn" data-v="-96">-96</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="40">+40</td>
+<td class="num dn" data-v="-33">-33</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="7">7</td><td class="l">Sam Cumming</td><td class="l k">ND</td><td class="num k" data-v="7">7</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="14">14</td><td class="num k" data-v="1577.6">1,578</td>
+<td class="num " data-v="2288">2,288</td>
+<td class="num " data-v="2050">2,050</td>
+<td class="num " data-v="1953">1,953</td>
+<td class="num volt" data-v="1932">1,932</td>
+<td class="num dn" data-v="-21">-21</td>
+<td class="num dn" data-v="-118">-118</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="160">+160</td>
+<td class="num dn" data-v="-181">-181</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="8">8</td><td class="l">Samuel Grlj</td><td class="l k">ND</td><td class="num k" data-v="8">8</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="19">19</td><td class="num k" data-v="1576.7">1,577</td>
+<td class="num " data-v="1735">1,735</td>
+<td class="num " data-v="1831">1,831</td>
+<td class="num " data-v="1610">1,610</td>
+<td class="num volt" data-v="1613">1,613</td>
+<td class="num up" data-v="3">+3</td>
+<td class="num dn" data-v="-218">-218</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="136">+136</td>
+<td class="num dn" data-v="-133">-133</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="9">9</td><td class="l">Sullivan Robey</td><td class="l k">ND</td><td class="num k" data-v="9">9</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="14">14</td><td class="num k" data-v="1575.7">1,576</td>
+<td class="num " data-v="2981">2,981</td>
+<td class="num " data-v="2355">2,355</td>
+<td class="num " data-v="2355">2,355</td>
+<td class="num volt" data-v="2379">2,379</td>
+<td class="num up" data-v="24">+24</td>
+<td class="num up" data-v="24">+24</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="238">+238</td>
+<td class="num dn" data-v="-214">-214</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="10">10</td><td class="l">Jacob Farrow</td><td class="l k">ND</td><td class="num k" data-v="10">10</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="18">18</td><td class="num k" data-v="1288.1">1,288</td>
+<td class="num " data-v="2601">2,601</td>
+<td class="num " data-v="2093">2,093</td>
+<td class="num " data-v="2094">2,094</td>
+<td class="num volt" data-v="2155">2,155</td>
+<td class="num up" data-v="61">+61</td>
+<td class="num up" data-v="62">+62</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="244">+244</td>
+<td class="num dn" data-v="-183">-183</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="11">11</td><td class="l">Xavier Taylor</td><td class="l k">ND</td><td class="num k" data-v="11">11</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="2">2</td><td class="num k" data-v="1287.1">1,287</td>
+<td class="num " data-v="802">802</td>
+<td class="num " data-v="1288">1,288</td>
+<td class="num " data-v="1176">1,176</td>
+<td class="num volt" data-v="1162">1,162</td>
+<td class="num dn" data-v="-14">-14</td>
+<td class="num dn" data-v="-126">-126</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="15">+15</td>
+<td class="num dn" data-v="-29">-29</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="12">12</td><td class="l">Latrelle Pickett</td><td class="l k">ND</td><td class="num k" data-v="12">12</td><td class="l k">SF</td><td class="num" data-v="21">21</td><td class="num" data-v="15">15</td><td class="num k" data-v="975.5">976</td>
+<td class="num " data-v="548">548</td>
+<td class="num " data-v="734">734</td>
+<td class="num " data-v="478">478</td>
+<td class="num volt" data-v="446">446</td>
+<td class="num dn" data-v="-32">-32</td>
+<td class="num dn" data-v="-288">-288</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="17">+17</td>
+<td class="num dn" data-v="-49">-49</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="13">13</td><td class="l">Dyson Sharp</td><td class="l k">ND</td><td class="num k" data-v="13">13</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="13">13</td><td class="num k" data-v="1444.8">1,445</td>
+<td class="num " data-v="3091">3,091</td>
+<td class="num " data-v="2281">2,281</td>
+<td class="num " data-v="2346">2,346</td>
+<td class="num volt" data-v="2427">2,427</td>
+<td class="num up" data-v="81">+81</td>
+<td class="num up" data-v="146">+146</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="294">+294</td>
+<td class="num dn" data-v="-213">-213</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="14">14</td><td class="l">Harry Kyle</td><td class="l k">ND</td><td class="num k" data-v="14">14</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="7">7</td><td class="num k" data-v="1040.2">1,040</td>
+<td class="num " data-v="1158">1,158</td>
+<td class="num " data-v="1096">1,096</td>
+<td class="num " data-v="957">957</td>
+<td class="num volt" data-v="925">925</td>
+<td class="num dn" data-v="-32">-32</td>
+<td class="num dn" data-v="-171">-171</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="34">+34</td>
+<td class="num dn" data-v="-66">-66</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="15">15</td><td class="l">Oskar Taylor</td><td class="l k">ND</td><td class="num k" data-v="15">15</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="903.8">904</td>
+<td class="num " data-v="629">629</td>
+<td class="num " data-v="529">529</td>
+<td class="num " data-v="596">596</td>
+<td class="num volt" data-v="596">596</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="67">+67</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-15">-15</td>
+</tr>
+<tr><td class="num k" data-v="16">16</td><td class="l">Lachy Dovaston</td><td class="l k">ND</td><td class="num k" data-v="16">16</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="6">6</td><td class="num k" data-v="626.5">626</td>
+<td class="num " data-v="512">512</td>
+<td class="num " data-v="628">628</td>
+<td class="num " data-v="556">556</td>
+<td class="num volt" data-v="550">550</td>
+<td class="num dn" data-v="-6">-6</td>
+<td class="num dn" data-v="-78">-78</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="29">+29</td>
+<td class="num dn" data-v="-35">-35</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="17">17</td><td class="l">Jai Murray</td><td class="l k">ND</td><td class="num k" data-v="17">17</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="8">8</td><td class="num k" data-v="926.7">927</td>
+<td class="num " data-v="1138">1,138</td>
+<td class="num " data-v="1039">1,039</td>
+<td class="num " data-v="948">948</td>
+<td class="num volt" data-v="940">940</td>
+<td class="num dn" data-v="-8">-8</td>
+<td class="num dn" data-v="-99">-99</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="63">+63</td>
+<td class="num dn" data-v="-71">-71</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="18">18</td><td class="l">Beau Addinsall</td><td class="l k">ND</td><td class="num k" data-v="18">18</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="7">7</td><td class="num k" data-v="925.7">926</td>
+<td class="num " data-v="1521">1,521</td>
+<td class="num " data-v="1158">1,158</td>
+<td class="num " data-v="1148">1,148</td>
+<td class="num volt" data-v="1158">1,158</td>
+<td class="num up" data-v="10">+10</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="81">+81</td>
+<td class="num dn" data-v="-71">-71</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="19">19</td><td class="l">Josh Lindsay</td><td class="l k">ND</td><td class="num k" data-v="19">19</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="13">13</td><td class="num k" data-v="813.2">813</td>
+<td class="num " data-v="2335">2,335</td>
+<td class="num " data-v="1530">1,530</td>
+<td class="num " data-v="1676">1,676</td>
+<td class="num volt" data-v="1796">1,796</td>
+<td class="num up" data-v="120">+120</td>
+<td class="num up" data-v="266">+266</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="277">+277</td>
+<td class="num dn" data-v="-157">-157</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="20">20</td><td class="l">Cameron Nairn</td><td class="l k">ND</td><td class="num k" data-v="20">20</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="3">3</td><td class="num k" data-v="546.3">546</td>
+<td class="num " data-v="606">606</td>
+<td class="num " data-v="588">588</td>
+<td class="num " data-v="583">583</td>
+<td class="num volt" data-v="596">596</td>
+<td class="num up" data-v="13">+13</td>
+<td class="num up" data-v="8">+8</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="28">+28</td>
+<td class="num dn" data-v="-15">-15</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="21">21</td><td class="l">Lachlan Carmichael</td><td class="l k">ND</td><td class="num k" data-v="21">21</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="774.6">775</td>
+<td class="num " data-v="548">548</td>
+<td class="num " data-v="453">453</td>
+<td class="num " data-v="487">487</td>
+<td class="num volt" data-v="479">479</td>
+<td class="num dn" data-v="-8">-8</td>
+<td class="num up" data-v="26">+26</td>
+<td class="num dn" data-v="-8">-8</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="22">22</td><td class="l">Mitchell Marsh</td><td class="l k">ND</td><td class="num k" data-v="22">22</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="721.6">722</td>
+<td class="num " data-v="506">506</td>
+<td class="num " data-v="422">422</td>
+<td class="num " data-v="451">451</td>
+<td class="num volt" data-v="552">552</td>
+<td class="num up" data-v="101">+101</td>
+<td class="num up" data-v="130">+130</td>
+<td class="num up" data-v="101">+101</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="23">23</td><td class="l">Aidan Schubert</td><td class="l k">ND</td><td class="num k" data-v="23">23</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="1">1</td><td class="num k" data-v="682.0">682</td>
+<td class="num " data-v="481">481</td>
+<td class="num " data-v="704">704</td>
+<td class="num " data-v="578">578</td>
+<td class="num volt" data-v="630">630</td>
+<td class="num up" data-v="52">+52</td>
+<td class="num dn" data-v="-74">-74</td>
+<td class="num up" data-v="48">+48</td>
+<td class="num up" data-v="8">+8</td>
+<td class="num dn" data-v="-3">-3</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="24">24</td><td class="l">Harley Barker</td><td class="l k">ND</td><td class="num k" data-v="24">24</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="843.1">843</td>
+<td class="num " data-v="677">677</td>
+<td class="num " data-v="471">471</td>
+<td class="num " data-v="499">499</td>
+<td class="num volt" data-v="481">481</td>
+<td class="num dn" data-v="-18">-18</td>
+<td class="num up" data-v="10">+10</td>
+<td class="num dn" data-v="-18">-18</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="25">25</td><td class="l">Adam Sweid</td><td class="l k">ND</td><td class="num k" data-v="25">25</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="427.7">428</td>
+<td class="num " data-v="397">397</td>
+<td class="num " data-v="250">250</td>
+<td class="num " data-v="263">263</td>
+<td class="num volt" data-v="253">253</td>
+<td class="num dn" data-v="-10">-10</td>
+<td class="num up" data-v="3">+3</td>
+<td class="num dn" data-v="-10">-10</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="26">26</td><td class="l">Blake Thredgold</td><td class="l k">ND</td><td class="num k" data-v="26">26</td><td class="l k">KPD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="503.4">503</td>
+<td class="num " data-v="373">373</td>
+<td class="num " data-v="281">281</td>
+<td class="num " data-v="295">295</td>
+<td class="num volt" data-v="372">372</td>
+<td class="num up" data-v="77">+77</td>
+<td class="num up" data-v="91">+91</td>
+<td class="num up" data-v="77">+77</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="27">27</td><td class="l">Louis Emmett</td><td class="l k">ND</td><td class="num k" data-v="27">27</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="6">6</td><td class="num k" data-v="601.0">601</td>
+<td class="num " data-v="749">749</td>
+<td class="num " data-v="668">668</td>
+<td class="num " data-v="644">644</td>
+<td class="num volt" data-v="627">627</td>
+<td class="num dn" data-v="-17">-17</td>
+<td class="num dn" data-v="-41">-41</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="20">+20</td>
+<td class="num dn" data-v="-37">-37</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="28">28</td><td class="l">Avery Thomas</td><td class="l k">ND</td><td class="num k" data-v="28">28</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="464.3">464</td>
+<td class="num " data-v="394">394</td>
+<td class="num " data-v="272">272</td>
+<td class="num " data-v="281">281</td>
+<td class="num volt" data-v="266">266</td>
+<td class="num dn" data-v="-15">-15</td>
+<td class="num dn" data-v="-6">-6</td>
+<td class="num dn" data-v="-15">-15</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="29">29</td><td class="l">Sam Allen</td><td class="l k">ND</td><td class="num k" data-v="29">29</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="791.8">792</td>
+<td class="num " data-v="618">618</td>
+<td class="num " data-v="463">463</td>
+<td class="num " data-v="476">476</td>
+<td class="num volt" data-v="450">450</td>
+<td class="num dn" data-v="-26">-26</td>
+<td class="num dn" data-v="-13">-13</td>
+<td class="num dn" data-v="-26">-26</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="30">30</td><td class="l">Thomas Matthews</td><td class="l k">ND</td><td class="num k" data-v="30">30</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="422.8">423</td>
+<td class="num " data-v="337">337</td>
+<td class="num " data-v="247">247</td>
+<td class="num " data-v="253">253</td>
+<td class="num volt" data-v="238">238</td>
+<td class="num dn" data-v="-15">-15</td>
+<td class="num dn" data-v="-9">-9</td>
+<td class="num dn" data-v="-15">-15</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="31">31</td><td class="l">Zane Peucker</td><td class="l k">ND</td><td class="num k" data-v="31">31</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="2">2</td><td class="num k" data-v="421.8">422</td>
+<td class="num " data-v="384">384</td>
+<td class="num " data-v="458">458</td>
+<td class="num " data-v="473">473</td>
+<td class="num volt" data-v="487">487</td>
+<td class="num up" data-v="14">+14</td>
+<td class="num up" data-v="29">+29</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="20">+20</td>
+<td class="num dn" data-v="-6">-6</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="32">32</td><td class="l">Tyan Prindable</td><td class="l k">ND</td><td class="num k" data-v="32">32</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="678.0">678</td>
+<td class="num " data-v="543">543</td>
+<td class="num " data-v="397">397</td>
+<td class="num " data-v="402">402</td>
+<td class="num volt" data-v="375">375</td>
+<td class="num dn" data-v="-27">-27</td>
+<td class="num dn" data-v="-22">-22</td>
+<td class="num dn" data-v="-27">-27</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="33">33</td><td class="l">Hunter Holmes</td><td class="l k">ND</td><td class="num k" data-v="33">33</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="649.7">650</td>
+<td class="num " data-v="517">517</td>
+<td class="num " data-v="380">380</td>
+<td class="num " data-v="384">384</td>
+<td class="num volt" data-v="357">357</td>
+<td class="num dn" data-v="-27">-27</td>
+<td class="num dn" data-v="-23">-23</td>
+<td class="num dn" data-v="-27">-27</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="34">34</td><td class="l">Jack Dalton</td><td class="l k">ND</td><td class="num k" data-v="34">34</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="4">4</td><td class="num k" data-v="418.8">419</td>
+<td class="num " data-v="437">437</td>
+<td class="num " data-v="467">467</td>
+<td class="num " data-v="480">480</td>
+<td class="num volt" data-v="489">489</td>
+<td class="num up" data-v="9">+9</td>
+<td class="num up" data-v="22">+22</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="25">+25</td>
+<td class="num dn" data-v="-16">-16</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="35">35</td><td class="l">Jevan Phillipou</td><td class="l k">ND</td><td class="num k" data-v="35">35</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="417.8">418</td>
+<td class="num " data-v="273">273</td>
+<td class="num " data-v="244">244</td>
+<td class="num " data-v="245">245</td>
+<td class="num volt" data-v="226">226</td>
+<td class="num dn" data-v="-19">-19</td>
+<td class="num dn" data-v="-18">-18</td>
+<td class="num dn" data-v="-19">-19</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="36">36</td><td class="l">Max Kondogiannis</td><td class="l k">ND</td><td class="num k" data-v="36">36</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="9">9</td><td class="num k" data-v="346.0">346</td>
+<td class="num " data-v="435">435</td>
+<td class="num " data-v="381">381</td>
+<td class="num " data-v="380">380</td>
+<td class="num volt" data-v="358">358</td>
+<td class="num dn" data-v="-22">-22</td>
+<td class="num dn" data-v="-23">-23</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="12">+12</td>
+<td class="num dn" data-v="-34">-34</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="37">37</td><td class="l">Samuel Swadling</td><td class="l k">ND</td><td class="num k" data-v="37">37</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="6">6</td><td class="num k" data-v="630.2">630</td>
+<td class="num " data-v="776">776</td>
+<td class="num " data-v="706">706</td>
+<td class="num " data-v="681">681</td>
+<td class="num volt" data-v="682">682</td>
+<td class="num up" data-v="1">+1</td>
+<td class="num dn" data-v="-24">-24</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="41">+41</td>
+<td class="num dn" data-v="-40">-40</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="38">38</td><td class="l">Koby Evans</td><td class="l k">ND</td><td class="num k" data-v="38">38</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="414.8">415</td>
+<td class="num " data-v="254">254</td>
+<td class="num " data-v="243">243</td>
+<td class="num " data-v="240">240</td>
+<td class="num volt" data-v="219">219</td>
+<td class="num dn" data-v="-21">-21</td>
+<td class="num dn" data-v="-24">-24</td>
+<td class="num dn" data-v="-21">-21</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="39">39</td><td class="l">Tylah Williams</td><td class="l k">ND</td><td class="num k" data-v="39">39</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="413.9">414</td>
+<td class="num " data-v="249">249</td>
+<td class="num " data-v="242">242</td>
+<td class="num " data-v="239">239</td>
+<td class="num volt" data-v="217">217</td>
+<td class="num dn" data-v="-22">-22</td>
+<td class="num dn" data-v="-25">-25</td>
+<td class="num dn" data-v="-22">-22</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="40">40</td><td class="l">Tobyn Murray</td><td class="l k">ND</td><td class="num k" data-v="40">40</td><td class="l k">SF</td><td class="num" data-v="21">21</td><td class="num" data-v="0">0</td><td class="num k" data-v="390.4">390</td>
+<td class="num " data-v="234">234</td>
+<td class="num " data-v="228">228</td>
+<td class="num " data-v="225">225</td>
+<td class="num volt" data-v="204">204</td>
+<td class="num dn" data-v="-21">-21</td>
+<td class="num dn" data-v="-24">-24</td>
+<td class="num dn" data-v="-21">-21</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="41">41</td><td class="l">Charlie Banfield</td><td class="l k">ND</td><td class="num k" data-v="41">41</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="3">3</td><td class="num k" data-v="618.9">619</td>
+<td class="num " data-v="536">536</td>
+<td class="num " data-v="670">670</td>
+<td class="num " data-v="661">661</td>
+<td class="num volt" data-v="683">683</td>
+<td class="num up" data-v="22">+22</td>
+<td class="num up" data-v="13">+13</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="39">+39</td>
+<td class="num dn" data-v="-17">-17</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="42">42</td><td class="l">Billy Cootee</td><td class="l k">ND</td><td class="num k" data-v="42">42</td><td class="l k">MID</td><td class="num" data-v="24">24</td><td class="num" data-v="7">7</td><td class="num k" data-v="600.0">600</td>
+<td class="num " data-v="264">264</td>
+<td class="num " data-v="469">469</td>
+<td class="num " data-v="257">257</td>
+<td class="num volt" data-v="232">232</td>
+<td class="num dn" data-v="-25">-25</td>
+<td class="num dn" data-v="-237">-237</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-25">-25</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="43">43</td><td class="l">Cody Curtin</td><td class="l k">ND</td><td class="num k" data-v="43">43</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="4">4</td><td class="num k" data-v="328.3">328</td>
+<td class="num " data-v="427">427</td>
+<td class="num " data-v="394">394</td>
+<td class="num " data-v="438">438</td>
+<td class="num volt" data-v="440">440</td>
+<td class="num up" data-v="2">+2</td>
+<td class="num up" data-v="46">+46</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="15">+15</td>
+<td class="num dn" data-v="-13">-13</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="44">44</td><td class="l">Tai Hayes</td><td class="l k">ND</td><td class="num k" data-v="44">44</td><td class="l k">SF</td><td class="num" data-v="22">22</td><td class="num" data-v="0">0</td><td class="num k" data-v="297.5">298</td>
+<td class="num " data-v="194">194</td>
+<td class="num " data-v="174">174</td>
+<td class="num " data-v="169">169</td>
+<td class="num volt" data-v="151">151</td>
+<td class="num dn" data-v="-18">-18</td>
+<td class="num dn" data-v="-23">-23</td>
+<td class="num dn" data-v="-18">-18</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="45">45</td><td class="l">Talor Byrne</td><td class="l k">ND</td><td class="num k" data-v="45">45</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="15">15</td><td class="num k" data-v="282.4">282</td>
+<td class="num " data-v="857">857</td>
+<td class="num " data-v="578">578</td>
+<td class="num " data-v="662">662</td>
+<td class="num volt" data-v="687">687</td>
+<td class="num up" data-v="25">+25</td>
+<td class="num up" data-v="109">+109</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="94">+94</td>
+<td class="num dn" data-v="-69">-69</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="46">46</td><td class="l">Koby Coulson</td><td class="l k">ND</td><td class="num k" data-v="46">46</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="461.2">461</td>
+<td class="num " data-v="316">316</td>
+<td class="num " data-v="270">270</td>
+<td class="num " data-v="260">260</td>
+<td class="num volt" data-v="232">232</td>
+<td class="num dn" data-v="-28">-28</td>
+<td class="num dn" data-v="-38">-38</td>
+<td class="num dn" data-v="-28">-28</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="47">47</td><td class="l">Jack Ison</td><td class="l k">ND</td><td class="num k" data-v="47">47</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="7">7</td><td class="num k" data-v="280.4">280</td>
+<td class="num " data-v="512">512</td>
+<td class="num " data-v="364">364</td>
+<td class="num " data-v="414">414</td>
+<td class="num volt" data-v="417">417</td>
+<td class="num up" data-v="3">+3</td>
+<td class="num up" data-v="53">+53</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="29">+29</td>
+<td class="num dn" data-v="-26">-26</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="48">48</td><td class="l">Hugo Mikunda</td><td class="l k">ND</td><td class="num k" data-v="48">48</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="279.4">279</td>
+<td class="num " data-v="177">177</td>
+<td class="num " data-v="163">163</td>
+<td class="num " data-v="157">157</td>
+<td class="num volt" data-v="139">139</td>
+<td class="num dn" data-v="-18">-18</td>
+<td class="num dn" data-v="-24">-24</td>
+<td class="num dn" data-v="-18">-18</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="49">49</td><td class="l">Maxwell King</td><td class="l k">ND</td><td class="num k" data-v="49">49</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="278.4">278</td>
+<td class="num " data-v="156">156</td>
+<td class="num " data-v="155">155</td>
+<td class="num " data-v="148">148</td>
+<td class="num volt" data-v="129">129</td>
+<td class="num dn" data-v="-19">-19</td>
+<td class="num dn" data-v="-26">-26</td>
+<td class="num dn" data-v="-19">-19</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="50">50</td><td class="l">Archie Ludowyke</td><td class="l k">ND</td><td class="num k" data-v="50">50</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="2">2</td><td class="num k" data-v="237.8">238</td>
+<td class="num " data-v="206">206</td>
+<td class="num " data-v="278">278</td>
+<td class="num " data-v="320">320</td>
+<td class="num volt" data-v="327">327</td>
+<td class="num up" data-v="7">+7</td>
+<td class="num up" data-v="49">+49</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="8">+8</td>
+<td class="num dn" data-v="-1">-1</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="51">51</td><td class="l">Finnegan Davis</td><td class="l k">ND</td><td class="num k" data-v="51">51</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="171.2">171</td>
+<td class="num " data-v="165">165</td>
+<td class="num " data-v="100">100</td>
+<td class="num " data-v="95">95</td>
+<td class="num volt" data-v="84">84</td>
+<td class="num dn" data-v="-11">-11</td>
+<td class="num dn" data-v="-16">-16</td>
+<td class="num dn" data-v="-11">-11</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="52">52</td><td class="l">Kye Fincher</td><td class="l k">ND</td><td class="num k" data-v="52">52</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="297.3">297</td>
+<td class="num " data-v="249">249</td>
+<td class="num " data-v="174">174</td>
+<td class="num " data-v="165">165</td>
+<td class="num volt" data-v="145">145</td>
+<td class="num dn" data-v="-20">-20</td>
+<td class="num dn" data-v="-29">-29</td>
+<td class="num dn" data-v="-20">-20</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="53">53</td><td class="l">Hussien El Achkar</td><td class="l k">ND</td><td class="num k" data-v="53">53</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="9">9</td><td class="num k" data-v="274.4">274</td>
+<td class="num " data-v="353">353</td>
+<td class="num " data-v="305">305</td>
+<td class="num " data-v="320">320</td>
+<td class="num volt" data-v="313">313</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num up" data-v="8">+8</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="22">+22</td>
+<td class="num dn" data-v="-29">-29</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="54">54</td><td class="l">Noah Roberts-Thomson</td><td class="l k">ND</td><td class="num k" data-v="54">54</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="3">3</td><td class="num k" data-v="273.4">273</td>
+<td class="num " data-v="213">213</td>
+<td class="num " data-v="295">295</td>
+<td class="num " data-v="316">316</td>
+<td class="num volt" data-v="322">322</td>
+<td class="num up" data-v="6">+6</td>
+<td class="num up" data-v="27">+27</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="12">+12</td>
+<td class="num dn" data-v="-6">-6</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="55">55</td><td class="l">Zac McCarthy</td><td class="l k">ND</td><td class="num k" data-v="55">55</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="214.2">214</td>
+<td class="num " data-v="147">147</td>
+<td class="num " data-v="125">125</td>
+<td class="num " data-v="118">118</td>
+<td class="num volt" data-v="133">133</td>
+<td class="num up" data-v="15">+15</td>
+<td class="num up" data-v="8">+8</td>
+<td class="num up" data-v="15">+15</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="56">56</td><td class="l">Matthew LeRay</td><td class="l k">ND</td><td class="num k" data-v="56">56</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="233.6">234</td>
+<td class="num " data-v="219">219</td>
+<td class="num " data-v="137">137</td>
+<td class="num " data-v="128">128</td>
+<td class="num volt" data-v="111">111</td>
+<td class="num dn" data-v="-17">-17</td>
+<td class="num dn" data-v="-26">-26</td>
+<td class="num dn" data-v="-17">-17</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="57">57</td><td class="l">Angus Anderson</td><td class="l k">ND</td><td class="num k" data-v="57">57</td><td class="l k">MID</td><td class="num" data-v="23">23</td><td class="num" data-v="13">13</td><td class="num k" data-v="216.3">216</td>
+<td class="num " data-v="165">165</td>
+<td class="num " data-v="203">203</td>
+<td class="num " data-v="161">161</td>
+<td class="num volt" data-v="151">151</td>
+<td class="num dn" data-v="-10">-10</td>
+<td class="num dn" data-v="-52">-52</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="6">+6</td>
+<td class="num dn" data-v="-16">-16</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="58">58</td><td class="l">Will Darcy</td><td class="l k">ND</td><td class="num k" data-v="58">58</td><td class="l k">KPD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="368.0">368</td>
+<td class="num " data-v="187">187</td>
+<td class="num " data-v="215">215</td>
+<td class="num " data-v="201">201</td>
+<td class="num volt" data-v="225">225</td>
+<td class="num up" data-v="24">+24</td>
+<td class="num up" data-v="10">+10</td>
+<td class="num up" data-v="24">+24</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="59">59</td><td class="l">Fred Rodriguez</td><td class="l k">RD</td><td class="num k" data-v="1">1</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="212.4">212</td>
+<td class="num " data-v="201">201</td>
+<td class="num " data-v="123">123</td>
+<td class="num " data-v="114">114</td>
+<td class="num volt" data-v="97">97</td>
+<td class="num dn" data-v="-17">-17</td>
+<td class="num dn" data-v="-26">-26</td>
+<td class="num dn" data-v="-17">-17</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="60">60</td><td class="l">Riley Onley</td><td class="l k">RD</td><td class="num k" data-v="2">2</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="212.4">212</td>
+<td class="num " data-v="201">201</td>
+<td class="num " data-v="123">123</td>
+<td class="num " data-v="114">114</td>
+<td class="num volt" data-v="97">97</td>
+<td class="num dn" data-v="-17">-17</td>
+<td class="num dn" data-v="-26">-26</td>
+<td class="num dn" data-v="-17">-17</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="61">61</td><td class="l">Jack Watkins</td><td class="l k">RD</td><td class="num k" data-v="3">3</td><td class="l k">MID</td><td class="num" data-v="26">26</td><td class="num" data-v="11">11</td><td class="num k" data-v="212.4">212</td>
+<td class="num " data-v="130">130</td>
+<td class="num " data-v="154">154</td>
+<td class="num " data-v="81">81</td>
+<td class="num volt" data-v="72">72</td>
+<td class="num dn" data-v="-9">-9</td>
+<td class="num dn" data-v="-82">-82</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-9">-9</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="62">62</td><td class="l">Leon Kickett</td><td class="l k">RD</td><td class="num k" data-v="4">4</td><td class="l k">SF</td><td class="num" data-v="20">20</td><td class="num" data-v="0">0</td><td class="num k" data-v="200.8">201</td>
+<td class="num " data-v="151">151</td>
+<td class="num " data-v="117">117</td>
+<td class="num " data-v="107">107</td>
+<td class="num volt" data-v="92">92</td>
+<td class="num dn" data-v="-15">-15</td>
+<td class="num dn" data-v="-25">-25</td>
+<td class="num dn" data-v="-15">-15</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="63">63</td><td class="l">Ollie Greeves</td><td class="l k">RD</td><td class="num k" data-v="5">5</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="4">4</td><td class="num k" data-v="212.4">212</td>
+<td class="num " data-v="583">583</td>
+<td class="num " data-v="365">365</td>
+<td class="num " data-v="492">492</td>
+<td class="num volt" data-v="519">519</td>
+<td class="num up" data-v="27">+27</td>
+<td class="num up" data-v="154">+154</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="36">+36</td>
+<td class="num dn" data-v="-9">-9</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="64">64</td><td class="l">Nick Driscoll</td><td class="l k">RD</td><td class="num k" data-v="6">6</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="212.4">212</td>
+<td class="num " data-v="201">201</td>
+<td class="num " data-v="123">123</td>
+<td class="num " data-v="114">114</td>
+<td class="num volt" data-v="97">97</td>
+<td class="num dn" data-v="-17">-17</td>
+<td class="num dn" data-v="-26">-26</td>
+<td class="num dn" data-v="-17">-17</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="65">65</td><td class="l">Riley Hamilton</td><td class="l k">PDA</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="20">20</td><td class="num" data-v="6">6</td><td class="num k" data-v="86.6">87</td>
+<td class="num " data-v="305">305</td>
+<td class="num " data-v="143">143</td>
+<td class="num " data-v="205">205</td>
+<td class="num volt" data-v="210">210</td>
+<td class="num up" data-v="5">+5</td>
+<td class="num up" data-v="67">+67</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="15">+15</td>
+<td class="num dn" data-v="-10">-10</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="66">66</td><td class="l">Liam Hetherton</td><td class="l k">PDA</td><td class="num k" data-v="999">&mdash;</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="117.3">117</td>
+<td class="num " data-v="168">168</td>
+<td class="num " data-v="65">65</td>
+<td class="num " data-v="59">59</td>
+<td class="num volt" data-v="66">66</td>
+<td class="num up" data-v="7">+7</td>
+<td class="num up" data-v="1">+1</td>
+<td class="num up" data-v="7">+7</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="67">67</td><td class="l">Noah Chamberlain</td><td class="l k">PDA</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="86.6">87</td>
+<td class="num " data-v="86">86</td>
+<td class="num " data-v="48">48</td>
+<td class="num " data-v="44">44</td>
+<td class="num volt" data-v="37">37</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num dn" data-v="-11">-11</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="68">68</td><td class="l">Kalani White</td><td class="l k">PDN</td><td class="num k" data-v="999">&mdash;</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="92.4">92</td>
+<td class="num " data-v="84">84</td>
+<td class="num " data-v="54">54</td>
+<td class="num " data-v="49">49</td>
+<td class="num volt" data-v="55">55</td>
+<td class="num up" data-v="6">+6</td>
+<td class="num up" data-v="1">+1</td>
+<td class="num up" data-v="6">+6</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="69">69</td><td class="l">Jesse Mellor</td><td class="l k">PDN</td><td class="num k" data-v="999">&mdash;</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="112.7">113</td>
+<td class="num " data-v="84">84</td>
+<td class="num " data-v="66">66</td>
+<td class="num " data-v="60">60</td>
+<td class="num volt" data-v="51">51</td>
+<td class="num dn" data-v="-9">-9</td>
+<td class="num dn" data-v="-15">-15</td>
+<td class="num dn" data-v="-9">-9</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="70">70</td><td class="l">Jai Saxena</td><td class="l k">PDN</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="54.7">55</td>
+<td class="num " data-v="84">84</td>
+<td class="num " data-v="32">32</td>
+<td class="num " data-v="29">29</td>
+<td class="num volt" data-v="25">25</td>
+<td class="num dn" data-v="-4">-4</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num dn" data-v="-4">-4</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="71">71</td><td class="l">Ryda Luke</td><td class="l k">PDN</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="54.7">55</td>
+<td class="num " data-v="84">84</td>
+<td class="num " data-v="32">32</td>
+<td class="num " data-v="29">29</td>
+<td class="num volt" data-v="25">25</td>
+<td class="num dn" data-v="-4">-4</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num dn" data-v="-4">-4</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="72">72</td><td class="l">Toby Whan</td><td class="l k">PDN</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="54.7">55</td>
+<td class="num " data-v="84">84</td>
+<td class="num " data-v="32">32</td>
+<td class="num " data-v="29">29</td>
+<td class="num volt" data-v="25">25</td>
+<td class="num dn" data-v="-4">-4</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num dn" data-v="-4">-4</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="73">73</td><td class="l">Ben Murphy</td><td class="l k">IRE</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="87.0">87</td>
+<td class="num " data-v="85">85</td>
+<td class="num " data-v="51">51</td>
+<td class="num " data-v="47">47</td>
+<td class="num volt" data-v="40">40</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num dn" data-v="-11">-11</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="74">74</td><td class="l">Kobe McDonald</td><td class="l k">IRE</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="87.0">87</td>
+<td class="num " data-v="85">85</td>
+<td class="num " data-v="51">51</td>
+<td class="num " data-v="47">47</td>
+<td class="num volt" data-v="40">40</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num dn" data-v="-11">-11</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="75">75</td><td class="l">Cillian Bourke</td><td class="l k">IRE</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SD</td><td class="num" data-v="20">20</td><td class="num" data-v="0">0</td><td class="num k" data-v="87.0">87</td>
+<td class="num " data-v="85">85</td>
+<td class="num " data-v="51">51</td>
+<td class="num " data-v="47">47</td>
+<td class="num volt" data-v="40">40</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num dn" data-v="-11">-11</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="76">76</td><td class="l">Oscar Berry</td><td class="l k">UNR</td><td class="num k" data-v="999">&mdash;</td><td class="l k">KPD</td><td class="num" data-v="24">24</td><td class="num" data-v="0">0</td><td class="num k" data-v="95.4">95</td>
+<td class="num " data-v="53">53</td>
+<td class="num " data-v="55">55</td>
+<td class="num " data-v="51">51</td>
+<td class="num volt" data-v="57">57</td>
+<td class="num up" data-v="6">+6</td>
+<td class="num up" data-v="2">+2</td>
+<td class="num up" data-v="6">+6</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="77">77</td><td class="l">Indy Cotton</td><td class="l k">UNR</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="107.7">108</td>
+<td class="num " data-v="48">48</td>
+<td class="num " data-v="63">63</td>
+<td class="num " data-v="58">58</td>
+<td class="num volt" data-v="49">49</td>
+<td class="num dn" data-v="-9">-9</td>
+<td class="num dn" data-v="-14">-14</td>
+<td class="num dn" data-v="-9">-9</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="78">78</td><td class="l">Patrick Carr</td><td class="l k">UNR</td><td class="num k" data-v="999">&mdash;</td><td class="l k">RUCK</td><td class="num" data-v="21">21</td><td class="num" data-v="0">0</td><td class="num k" data-v="79.7">80</td>
+<td class="num " data-v="31">31</td>
+<td class="num " data-v="46">46</td>
+<td class="num " data-v="43">43</td>
+<td class="num volt" data-v="47">47</td>
+<td class="num up" data-v="4">+4</td>
+<td class="num up" data-v="1">+1</td>
+<td class="num up" data-v="4">+4</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="79">79</td><td class="l">Balyn O&#x27;Brien</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="4">4</td><td class="num k" data-v="192.1">192</td>
+<td class="num " data-v="383">383</td>
+<td class="num " data-v="266">266</td>
+<td class="num " data-v="340">340</td>
+<td class="num volt" data-v="346">346</td>
+<td class="num up" data-v="6">+6</td>
+<td class="num up" data-v="80">+80</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="13">+13</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="80">80</td><td class="l">Thomas Burton</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="5">5</td><td class="num k" data-v="124.4">124</td>
+<td class="num " data-v="439">439</td>
+<td class="num " data-v="213">213</td>
+<td class="num " data-v="309">309</td>
+<td class="num volt" data-v="323">323</td>
+<td class="num up" data-v="14">+14</td>
+<td class="num up" data-v="110">+110</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="24">+24</td>
+<td class="num dn" data-v="-10">-10</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="81">81</td><td class="l">Chris Scerri</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="20">20</td><td class="num" data-v="7">7</td><td class="num k" data-v="124.4">124</td>
+<td class="num " data-v="459">459</td>
+<td class="num " data-v="232">232</td>
+<td class="num " data-v="313">313</td>
+<td class="num volt" data-v="321">321</td>
+<td class="num up" data-v="8">+8</td>
+<td class="num up" data-v="89">+89</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="26">+26</td>
+<td class="num dn" data-v="-18">-18</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="82">82</td><td class="l">Milan Murdock</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="26">26</td><td class="num" data-v="17">17</td><td class="num k" data-v="124.4">124</td>
+<td class="num " data-v="208">208</td>
+<td class="num " data-v="187">187</td>
+<td class="num " data-v="170">170</td>
+<td class="num volt" data-v="156">156</td>
+<td class="num dn" data-v="-14">-14</td>
+<td class="num dn" data-v="-31">-31</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-14">-14</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="83">83</td><td class="l">Tom Blamires</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SD</td><td class="num" data-v="24">24</td><td class="num" data-v="15">15</td><td class="num k" data-v="192.1">192</td>
+<td class="num " data-v="139">139</td>
+<td class="num " data-v="170">170</td>
+<td class="num " data-v="122">122</td>
+<td class="num volt" data-v="111">111</td>
+<td class="num dn" data-v="-11">-11</td>
+<td class="num dn" data-v="-59">-59</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-11">-11</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="84">84</td><td class="l">Mitch Zadow</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="22">22</td><td class="num" data-v="7">7</td><td class="num k" data-v="124.4">124</td>
+<td class="num " data-v="139">139</td>
+<td class="num " data-v="109">109</td>
+<td class="num " data-v="94">94</td>
+<td class="num volt" data-v="87">87</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num dn" data-v="-22">-22</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+<td class="num dn" data-v="-8">-8</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="85">85</td><td class="l">Will Lewis</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">KPF</td><td class="num" data-v="27">27</td><td class="num" data-v="11">11</td><td class="num k" data-v="159.9">160</td>
+<td class="num " data-v="139">139</td>
+<td class="num " data-v="126">126</td>
+<td class="num " data-v="75">75</td>
+<td class="num volt" data-v="67">67</td>
+<td class="num dn" data-v="-8">-8</td>
+<td class="num dn" data-v="-59">-59</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-8">-8</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="86">86</td><td class="l">Paddy Cross</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="23">23</td><td class="num" data-v="10">10</td><td class="num k" data-v="124.4">124</td>
+<td class="num " data-v="139">139</td>
+<td class="num " data-v="94">94</td>
+<td class="num " data-v="66">66</td>
+<td class="num volt" data-v="59">59</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num dn" data-v="-35">-35</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+<td class="num dn" data-v="-8">-8</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="87">87</td><td class="l">Flynn Perez</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SD</td><td class="num" data-v="25">25</td><td class="num" data-v="31">31</td><td class="num k" data-v="192.1">192</td>
+<td class="num " data-v="139">139</td>
+<td class="num " data-v="73">73</td>
+<td class="num " data-v="50">50</td>
+<td class="num volt" data-v="49">49</td>
+<td class="num dn" data-v="-1">-1</td>
+<td class="num dn" data-v="-24">-24</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-1">-1</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="88">88</td><td class="l">Tom McCarthy</td><td class="l k">MSD</td><td class="num k" data-v="1">1</td><td class="l k">SD</td><td class="num" data-v="26">26</td><td class="num" data-v="38">38</td><td class="num k" data-v="358.5">359</td>
+<td class="num " data-v="1457">1,457</td>
+<td class="num " data-v="1251">1,251</td>
+<td class="num " data-v="1238">1,238</td>
+<td class="num volt" data-v="1211">1,211</td>
+<td class="num dn" data-v="-27">-27</td>
+<td class="num dn" data-v="-40">-40</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-27">-27</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="89">89</td><td class="l">Jaxon Artemis</td><td class="l k">MSD</td><td class="num k" data-v="1">1</td><td class="l k">SD</td><td class="num" data-v="20">20</td><td class="num" data-v="7">7</td><td class="num k" data-v="358.5">359</td>
+<td class="num " data-v="520">520</td>
+<td class="num " data-v="431">431</td>
+<td class="num " data-v="438">438</td>
+<td class="num volt" data-v="425">425</td>
+<td class="num dn" data-v="-13">-13</td>
+<td class="num dn" data-v="-6">-6</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="17">+17</td>
+<td class="num dn" data-v="-30">-30</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="90">90</td><td class="l">Kye Annand</td><td class="l k">MSD</td><td class="num k" data-v="2">2</td><td class="l k">KPD</td><td class="num" data-v="23">23</td><td class="num" data-v="16">16</td><td class="num k" data-v="325.4">325</td>
+<td class="num " data-v="239">239</td>
+<td class="num " data-v="334">334</td>
+<td class="num " data-v="282">282</td>
+<td class="num volt" data-v="263">263</td>
+<td class="num dn" data-v="-19">-19</td>
+<td class="num dn" data-v="-71">-71</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="8">+8</td>
+<td class="num dn" data-v="-27">-27</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="91">91</td><td class="l">Zac Banch</td><td class="l k">MSD</td><td class="num k" data-v="2">2</td><td class="l k">SF</td><td class="num" data-v="23">23</td><td class="num" data-v="13">13</td><td class="num k" data-v="207.7">208</td>
+<td class="num " data-v="152">152</td>
+<td class="num " data-v="130">130</td>
+<td class="num " data-v="77">77</td>
+<td class="num volt" data-v="69">69</td>
+<td class="num dn" data-v="-8">-8</td>
+<td class="num dn" data-v="-61">-61</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+<td class="num dn" data-v="-9">-9</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="92">92</td><td class="l">Oliver Francou</td><td class="l k">MSD</td><td class="num k" data-v="3">3</td><td class="l k">MID</td><td class="num" data-v="20">20</td><td class="num" data-v="7">7</td><td class="num k" data-v="479.5">479</td>
+<td class="num " data-v="576">576</td>
+<td class="num " data-v="539">539</td>
+<td class="num " data-v="512">512</td>
+<td class="num volt" data-v="528">528</td>
+<td class="num up" data-v="16">+16</td>
+<td class="num dn" data-v="-11">-11</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="53">+53</td>
+<td class="num dn" data-v="-37">-37</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="93">93</td><td class="l">Harrison Ramm</td><td class="l k">MSD</td><td class="num k" data-v="3">3</td><td class="l k">KPD</td><td class="num" data-v="20">20</td><td class="num" data-v="5">5</td><td class="num k" data-v="325.4">325</td>
+<td class="num " data-v="545">545</td>
+<td class="num " data-v="421">421</td>
+<td class="num " data-v="432">432</td>
+<td class="num volt" data-v="438">438</td>
+<td class="num up" data-v="6">+6</td>
+<td class="num up" data-v="17">+17</td>
+<td class="num up" data-v="6">+6</td>
+<td class="num up" data-v="19">+19</td>
+<td class="num dn" data-v="-19">-19</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="94">94</td><td class="l">Flynn Riley</td><td class="l k">MSD</td><td class="num k" data-v="4">4</td><td class="l k">RUCK</td><td class="num" data-v="22">22</td><td class="num" data-v="1">1</td><td class="num k" data-v="448.2">448</td>
+<td class="num " data-v="391">391</td>
+<td class="num " data-v="464">464</td>
+<td class="num " data-v="354">354</td>
+<td class="num volt" data-v="361">361</td>
+<td class="num up" data-v="7">+7</td>
+<td class="num dn" data-v="-103">-103</td>
+<td class="num up" data-v="12">+12</td>
+<td class="num up" data-v="1">+1</td>
+<td class="num dn" data-v="-5">-5</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="95">95</td><td class="l">Flynn Young</td><td class="l k">MSD</td><td class="num k" data-v="4">4</td><td class="l k">SF</td><td class="num" data-v="24">24</td><td class="num" data-v="17">17</td><td class="num k" data-v="207.7">208</td>
+<td class="num " data-v="168">168</td>
+<td class="num " data-v="111">111</td>
+<td class="num " data-v="55">55</td>
+<td class="num volt" data-v="52">52</td>
+<td class="num dn" data-v="-3">-3</td>
+<td class="num dn" data-v="-59">-59</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-3">-3</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="96">96</td><td class="l">Xavier Bamert</td><td class="l k">MSD</td><td class="num k" data-v="5">5</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="14">14</td><td class="num k" data-v="207.7">208</td>
+<td class="num " data-v="509">509</td>
+<td class="num " data-v="369">369</td>
+<td class="num " data-v="421">421</td>
+<td class="num volt" data-v="414">414</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num up" data-v="45">+45</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="40">+40</td>
+<td class="num dn" data-v="-47">-47</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="97">97</td><td class="l">Michael Sellwood</td><td class="l k">MSD</td><td class="num k" data-v="5">5</td><td class="l k">SD</td><td class="num" data-v="23">23</td><td class="num" data-v="20">20</td><td class="num k" data-v="358.5">359</td>
+<td class="num " data-v="168">168</td>
+<td class="num " data-v="210">210</td>
+<td class="num " data-v="213">213</td>
+<td class="num volt" data-v="187">187</td>
+<td class="num dn" data-v="-26">-26</td>
+<td class="num dn" data-v="-23">-23</td>
+<td class="num dn" data-v="-9">-9</td>
+<td class="num up" data-v="2">+2</td>
+<td class="num dn" data-v="-19">-19</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="98">98</td><td class="l">Archie May</td><td class="l k">MSD</td><td class="num k" data-v="6">6</td><td class="l k">KPF</td><td class="num" data-v="22">22</td><td class="num" data-v="22">22</td><td class="num k" data-v="217.5">217</td>
+<td class="num " data-v="476">476</td>
+<td class="num " data-v="351">351</td>
+<td class="num " data-v="352">352</td>
+<td class="num volt" data-v="336">336</td>
+<td class="num dn" data-v="-16">-16</td>
+<td class="num dn" data-v="-15">-15</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="8">+8</td>
+<td class="num dn" data-v="-24">-24</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="99">99</td><td class="l">Oliver Griffin</td><td class="l k">MSD</td><td class="num k" data-v="6">6</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="207.7">208</td>
+<td class="num " data-v="181">181</td>
+<td class="num " data-v="121">121</td>
+<td class="num " data-v="111">111</td>
+<td class="num volt" data-v="95">95</td>
+<td class="num dn" data-v="-16">-16</td>
+<td class="num dn" data-v="-26">-26</td>
+<td class="num dn" data-v="-16">-16</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="100">100</td><td class="l">Campbell Lake</td><td class="l k">MSD</td><td class="num k" data-v="7">7</td><td class="l k">SF</td><td class="num" data-v="22">22</td><td class="num" data-v="12">12</td><td class="num k" data-v="207.7">208</td>
+<td class="num " data-v="161">161</td>
+<td class="num " data-v="204">204</td>
+<td class="num " data-v="174">174</td>
+<td class="num volt" data-v="164">164</td>
+<td class="num dn" data-v="-10">-10</td>
+<td class="num dn" data-v="-40">-40</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="8">+8</td>
+<td class="num dn" data-v="-18">-18</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="101">101</td><td class="l">Roan Steele</td><td class="l k">MSD</td><td class="num k" data-v="7">7</td><td class="l k">MID</td><td class="num" data-v="25">25</td><td class="num" data-v="25">25</td><td class="num k" data-v="479.5">479</td>
+<td class="num " data-v="152">152</td>
+<td class="num " data-v="208">208</td>
+<td class="num " data-v="122">122</td>
+<td class="num volt" data-v="118">118</td>
+<td class="num dn" data-v="-4">-4</td>
+<td class="num dn" data-v="-90">-90</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-4">-4</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="102">102</td><td class="l">Harrison Coe</td><td class="l k">MSD</td><td class="num k" data-v="8">8</td><td class="l k">RUCK</td><td class="num" data-v="27">27</td><td class="num" data-v="0">0</td><td class="num k" data-v="448.2">448</td>
+<td class="num " data-v="322">322</td>
+<td class="num " data-v="261">261</td>
+<td class="num " data-v="240">240</td>
+<td class="num volt" data-v="266">266</td>
+<td class="num up" data-v="26">+26</td>
+<td class="num up" data-v="5">+5</td>
+<td class="num up" data-v="26">+26</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="103">103</td><td class="l">Jacob Newton</td><td class="l k">MSD</td><td class="num k" data-v="8">8</td><td class="l k">SF</td><td class="num" data-v="20">20</td><td class="num" data-v="6">6</td><td class="num k" data-v="207.7">208</td>
+<td class="num " data-v="299">299</td>
+<td class="num " data-v="222">222</td>
+<td class="num " data-v="236">236</td>
+<td class="num volt" data-v="232">232</td>
+<td class="num dn" data-v="-4">-4</td>
+<td class="num up" data-v="10">+10</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="11">+11</td>
+<td class="num dn" data-v="-15">-15</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="104">104</td><td class="l">Cooper Trembath</td><td class="l k">MSD</td><td class="num k" data-v="9">9</td><td class="l k">KPF</td><td class="num" data-v="21">21</td><td class="num" data-v="26">26</td><td class="num k" data-v="217.5">217</td>
+<td class="num " data-v="2201">2,201</td>
+<td class="num " data-v="1552">1,552</td>
+<td class="num " data-v="1648">1,648</td>
+<td class="num volt" data-v="1728">1,728</td>
+<td class="num up" data-v="80">+80</td>
+<td class="num up" data-v="176">+176</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="171">+171</td>
+<td class="num dn" data-v="-91">-91</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="105">105</td><td class="l">Caleb May</td><td class="l k">MSD</td><td class="num k" data-v="9">9</td><td class="l k">RUCK</td><td class="num" data-v="21">21</td><td class="num" data-v="0">0</td><td class="num k" data-v="448.2">448</td>
+<td class="num " data-v="322">322</td>
+<td class="num " data-v="261">261</td>
+<td class="num " data-v="240">240</td>
+<td class="num volt" data-v="266">266</td>
+<td class="num up" data-v="26">+26</td>
+<td class="num up" data-v="5">+5</td>
+<td class="num up" data-v="26">+26</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="106">106</td><td class="l">Hugo Hall-Kahan</td><td class="l k">MSD</td><td class="num k" data-v="10">10</td><td class="l k">SD</td><td class="num" data-v="23">23</td><td class="num" data-v="16">16</td><td class="num k" data-v="358.5">359</td>
+<td class="num " data-v="215">215</td>
+<td class="num " data-v="338">338</td>
+<td class="num " data-v="268">268</td>
+<td class="num volt" data-v="253">253</td>
+<td class="num dn" data-v="-15">-15</td>
+<td class="num dn" data-v="-85">-85</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="10">+10</td>
+<td class="num dn" data-v="-25">-25</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="107">107</td><td class="l">Ewan Mackinlay</td><td class="l k">MSD</td><td class="num k" data-v="10">10</td><td class="l k">SF</td><td class="num" data-v="23">23</td><td class="num" data-v="15">15</td><td class="num k" data-v="207.7">208</td>
+<td class="num " data-v="152">152</td>
+<td class="num " data-v="150">150</td>
+<td class="num " data-v="110">110</td>
+<td class="num volt" data-v="99">99</td>
+<td class="num dn" data-v="-11">-11</td>
+<td class="num dn" data-v="-51">-51</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-11">-11</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="108">108</td><td class="l">Lukas Cooke</td><td class="l k">MSD</td><td class="num k" data-v="11">11</td><td class="l k">KPD</td><td class="num" data-v="23">23</td><td class="num" data-v="3">3</td><td class="num k" data-v="325.4">325</td>
+<td class="num " data-v="364">364</td>
+<td class="num " data-v="338">338</td>
+<td class="num " data-v="307">307</td>
+<td class="num volt" data-v="298">298</td>
+<td class="num dn" data-v="-9">-9</td>
+<td class="num dn" data-v="-40">-40</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="2">+2</td>
+<td class="num dn" data-v="-11">-11</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="109">109</td><td class="l">Zac Walker</td><td class="l k">MSD</td><td class="num k" data-v="11">11</td><td class="l k">SD</td><td class="num" data-v="20">20</td><td class="num" data-v="0">0</td><td class="num k" data-v="358.5">359</td>
+<td class="num " data-v="152">152</td>
+<td class="num " data-v="199">199</td>
+<td class="num " data-v="182">182</td>
+<td class="num volt" data-v="153">153</td>
+<td class="num dn" data-v="-29">-29</td>
+<td class="num dn" data-v="-46">-46</td>
+<td class="num dn" data-v="-29">-29</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="110">110</td><td class="l">Max Beattie</td><td class="l k">MSD</td><td class="num k" data-v="12">12</td><td class="l k">SF</td><td class="num" data-v="23">23</td><td class="num" data-v="0">0</td><td class="num k" data-v="207.7">208</td>
+<td class="num " data-v="181">181</td>
+<td class="num " data-v="121">121</td>
+<td class="num " data-v="111">111</td>
+<td class="num volt" data-v="95">95</td>
+<td class="num dn" data-v="-16">-16</td>
+<td class="num dn" data-v="-26">-26</td>
+<td class="num dn" data-v="-16">-16</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+<tr><td class="num k" data-v="111">111</td><td class="l">Lachlan Blakiston</td><td class="l k">MSD</td><td class="num k" data-v="12">12</td><td class="l k">KPD</td><td class="num" data-v="28">28</td><td class="num" data-v="37">37</td><td class="num k" data-v="325.4">325</td>
+<td class="num " data-v="152">152</td>
+<td class="num " data-v="114">114</td>
+<td class="num " data-v="88">88</td>
+<td class="num volt" data-v="87">87</td>
+<td class="num dn" data-v="-1">-1</td>
+<td class="num dn" data-v="-27">-27</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-1">-1</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="112">112</td><td class="l">Marcus Herbert</td><td class="l k">MSD</td><td class="num k" data-v="13">13</td><td class="l k">SD</td><td class="num" data-v="24">24</td><td class="num" data-v="14">14</td><td class="num k" data-v="358.5">359</td>
+<td class="num " data-v="906">906</td>
+<td class="num " data-v="719">719</td>
+<td class="num " data-v="746">746</td>
+<td class="num volt" data-v="690">690</td>
+<td class="num dn" data-v="-56">-56</td>
+<td class="num dn" data-v="-29">-29</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-56">-56</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="113">113</td><td class="l">Caleb Lewis</td><td class="l k">MSD</td><td class="num k" data-v="13">13</td><td class="l k">KPF</td><td class="num" data-v="23">23</td><td class="num" data-v="2">2</td><td class="num k" data-v="217.5">217</td>
+<td class="num " data-v="233">233</td>
+<td class="num " data-v="141">141</td>
+<td class="num " data-v="146">146</td>
+<td class="num volt" data-v="155">155</td>
+<td class="num up" data-v="9">+9</td>
+<td class="num up" data-v="14">+14</td>
+<td class="num up" data-v="9">+9</td>
+<td class="num up" data-v="1">+1</td>
+<td class="num dn" data-v="-1">-1</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="114">114</td><td class="l">Alex Van Wyk</td><td class="l k">MSD</td><td class="num k" data-v="14">14</td><td class="l k">RUCK</td><td class="num" data-v="22">22</td><td class="num" data-v="1">1</td><td class="num k" data-v="448.2">448</td>
+<td class="num " data-v="391">391</td>
+<td class="num " data-v="463">463</td>
+<td class="num " data-v="353">353</td>
+<td class="num volt" data-v="360">360</td>
+<td class="num up" data-v="7">+7</td>
+<td class="num dn" data-v="-103">-103</td>
+<td class="num up" data-v="12">+12</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-5">-5</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="115">115</td><td class="l">Noah Howes</td><td class="l k">MSD</td><td class="num k" data-v="14">14</td><td class="l k">KPF</td><td class="num" data-v="21">21</td><td class="num" data-v="1">1</td><td class="num k" data-v="217.5">217</td>
+<td class="num " data-v="229">229</td>
+<td class="num " data-v="169">169</td>
+<td class="num " data-v="201">201</td>
+<td class="num volt" data-v="221">221</td>
+<td class="num up" data-v="20">+20</td>
+<td class="num up" data-v="52">+52</td>
+<td class="num up" data-v="11">+11</td>
+<td class="num up" data-v="6">+6</td>
+<td class="num up" data-v="4">+4</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="116">116</td><td class="l">Liam Puncher</td><td class="l k">MSD</td><td class="num k" data-v="15">15</td><td class="l k">KPD</td><td class="num" data-v="23">23</td><td class="num" data-v="11">11</td><td class="num k" data-v="325.4">325</td>
+<td class="num " data-v="124">124</td>
+<td class="num " data-v="285">285</td>
+<td class="num " data-v="213">213</td>
+<td class="num volt" data-v="193">193</td>
+<td class="num dn" data-v="-20">-20</td>
+<td class="num dn" data-v="-92">-92</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+<td class="num dn" data-v="-21">-21</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="117">117</td><td class="l">Mani Liddy</td><td class="l k">MSD</td><td class="num k" data-v="15">15</td><td class="l k">MID</td><td class="num" data-v="24">24</td><td class="num" data-v="16">16</td><td class="num k" data-v="479.5">479</td>
+<td class="num " data-v="152">152</td>
+<td class="num " data-v="192">192</td>
+<td class="num " data-v="153">153</td>
+<td class="num volt" data-v="122">122</td>
+<td class="num dn" data-v="-31">-31</td>
+<td class="num dn" data-v="-70">-70</td>
+<td class="num dn" data-v="-18">-18</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-15">-15</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="118">118</td><td class="l">Joel Fitzgerald</td><td class="l k">MSD</td><td class="num k" data-v="16">16</td><td class="l k">MID</td><td class="num" data-v="23">23</td><td class="num" data-v="14">14</td><td class="num k" data-v="479.5">479</td>
+<td class="num " data-v="72">72</td>
+<td class="num " data-v="339">339</td>
+<td class="num " data-v="203">203</td>
+<td class="num volt" data-v="184">184</td>
+<td class="num dn" data-v="-19">-19</td>
+<td class="num dn" data-v="-155">-155</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="4">+4</td>
+<td class="num dn" data-v="-23">-23</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="119">119</td><td class="l">Mitch Podhajski</td><td class="l k">MSD</td><td class="num k" data-v="17">17</td><td class="l k">KPF</td><td class="num" data-v="27">27</td><td class="num" data-v="3">3</td><td class="num k" data-v="217.5">217</td>
+<td class="num " data-v="399">399</td>
+<td class="num " data-v="198">198</td>
+<td class="num " data-v="147">147</td>
+<td class="num volt" data-v="139">139</td>
+<td class="num dn" data-v="-8">-8</td>
+<td class="num dn" data-v="-59">-59</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-8">-8</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="120">120</td><td class="l">Max Mapley</td><td class="l k">MSD</td><td class="num k" data-v="18">18</td><td class="l k">RUCK</td><td class="num" data-v="21">21</td><td class="num" data-v="0">0</td><td class="num k" data-v="448.2">448</td>
+<td class="num " data-v="322">322</td>
+<td class="num " data-v="261">261</td>
+<td class="num " data-v="240">240</td>
+<td class="num volt" data-v="266">266</td>
+<td class="num up" data-v="26">+26</td>
+<td class="num up" data-v="5">+5</td>
+<td class="num up" data-v="26">+26</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="1">+1</td>
+</tr>
+</tbody></table></div>
+<div class="box"><h2>The class growth rule &middot; how the whole class prices a year on</h2><div class="defs"><p>Your rule: the year-1 class cohort must GROW, must clear a floor of 1.03, and must stay strictly under the 1.14 buy rail. Your stated ideal of about 1.08 is known to be out of reach at any setting inside your other rules; the number is reported and never chased. Below are three readings of the same object on the same boards, so the instrument is separated from the build.</p></div><table><thead><tr><th class="l">reading</th><th>landing candidate</th><th>candidate 31</th><th>ORDER K</th><th>move</th></tr></thead><tbody>
+<tr><td class="l">built walk-forward matrix, every eligible row</td><td class="num">1.0232</td><td class="num">1.0360</td><td class="num volt">1.0324</td><td class="num up">+0.0092</td></tr>
+<tr><td class="l">built matrix, the calibrator's own 1,986 teaching rows</td><td class="num">1.0367</td><td class="num">1.0471</td><td class="num volt">1.0458</td><td class="num up">+0.0090</td></tr>
+<tr><td class="l">the fast navigation instrument (the number quoted when you chose)</td><td class="num">1.0421</td><td class="num k">&mdash;</td><td class="num volt">1.0515</td><td class="num up">+0.0094</td></tr>
+</tbody></table><div class="defs"><p>All three readings move the same way and by very nearly the same amount. The levels differ because they are different objects: the built matrix scores every eligible row using the engine's own walk-forward value, while the navigation instrument scores a teaching subset using an analytic year-1 price. <b>1.0519 was predicted for this setting; 1.0515 is what the same instrument reads once the fade floor is fixed.</b> The floor fix costs almost nothing on the class mark.</p><p>Worst single class on this board: <b>1.1363</b> (2012), against the ruled 1.139 line &mdash; inside it.</p></div></div>
+<script>
+function sortTable(tid, col, numeric){
+  var tb=document.getElementById(tid).tBodies[0];
+  var rows=Array.prototype.slice.call(tb.rows).filter(function(r){return !r.classList.contains('sechead')});
+  var th=document.getElementById(tid).tHead.rows[0].cells[col];
+  var dir=th.dataset.dir==='asc'?'desc':'asc';
+  var ths=document.getElementById(tid).tHead.rows[0].cells;
+  for(var i=0;i<ths.length;i++){ths[i].classList.remove('sorted');ths[i].dataset.dir='';}
+  th.classList.add('sorted');th.dataset.dir=dir;
+  rows.sort(function(a,b){
+    var x=a.cells[col].dataset.v!==undefined?a.cells[col].dataset.v:a.cells[col].textContent;
+    var y=b.cells[col].dataset.v!==undefined?b.cells[col].dataset.v:b.cells[col].textContent;
+    if(numeric){x=parseFloat(x)||-1e18;y=parseFloat(y)||-1e18;return dir==='asc'?x-y:y-x;}
+    return dir==='asc'?String(x).localeCompare(String(y)):String(y).localeCompare(String(x));
+  });
+  rows.forEach(function(r){tb.appendChild(r);});
+}
+</script></div>

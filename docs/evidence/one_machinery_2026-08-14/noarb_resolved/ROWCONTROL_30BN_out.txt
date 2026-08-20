@@ -1,0 +1,57 @@
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+================================================================================================================
+ORDER 30B-N -- ROW CONTROL: THE WIRED LAW vs THE DERIVED RESOLVED BOARD
+================================================================================================================
+  built board : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o30bn/bb_resA/rl_after/rl_app_data.json
+  derived     : resolution/RESOLVED_ALLROWS.json  (control_total 715228.6)
+  compared    : 804 rows
+  DIAL PRINT  : ORDER 30B-N RESOLVED CANDIDATE LIVE (RL_O30B_RESOLVED=1) — NOTHING IS GREENLIT, T4 (the OBJECT) IS STILL OPEN, AND THIS BOARD IS PRE-NUMERAIRE. The pr
+  DIAL PRINT  : ORDER 30B-P STEP-3 PREVIEW LIVE (RL_O30B_PREVIEW=1) — NOTHING IS GREENLIT, THE BOUNDARY IS STILL UNRULED, AND THIS BOARD IS PRE-NUMERAIRE. pole DELETE
+
+A. THE CONTROL -- UNROUNDED ev()/_PL_F vs the derived board (no print rounding in this comparison)
+  lane         n      derived        wired      delta     max|d|  worst row
+  sitter      89      17242.8      17243.1      +0.30    0.04903  nathan-wardius
+  thin        99      35470.3      35472.3      +1.95    0.50973  will-green
+  bridge      44      29578.0      29572.4      -5.59    1.56823  ewan-mackinlay
+  deep       572     632938.2     632931.4      -6.81    2.49320  elijah-hewett
+  TOTAL      804     715229.3     715219.2     -10.14
+
+  max |delta| any row      : 2.49320  (elijah-hewett, lane deep, g=40.0)
+  rows with |delta| > 1.5  : 12   ['dante-visentini', 'elijah-hewett', 'ewan-mackinlay', 'harry-dean', 'hugh-boxshall', 'jacob-farrow', 'jake-rogers', 'matt-carroll']
+  sitter/thin rows moved   : 95   [('aidan-johnson', 0.0664), ('aidan-schubert', 0.3426), ('alex-dodson', 0.469), ('alex-van-wyk', -0.2871), ('andy-moniz-wakefield', -0.1649), ('archie-ludowyke', 0.0832)]
+  book total wired         : 715219.2
+  book total derived       : 715229.3
+  total delta              : -10.14  (-0.00142%)
+
+B. DISCLOSURE -- the PRINTED integer board vs the derived board (print rounding, NOT scored)
+  printed total 715218.0   derived 715229.3   delta -11.3   max|d| 2.60
+  Every row can differ by up to 0.5 here for print precision alone; that is why A is the control.
+
+C. THE DECOMPOSITION -- WHERE DOES delta ACTUALLY COME FROM? (the question P3 exists to answer)
+   d_law     = engine ev()  MINUS the resolution arithmetic fed the ENGINE'S OWN production leg.
+               This is the WIRING TEST. It is bounded by the blend site's own round() in ENGINE
+               currency, 0.5/_PL_F = 0.4751 board pts, which the preview lane has always carried.
+   d_prodcol = that same arithmetic MINUS the derived board. This is the DERIVED BOARD'S OWN
+               production-column artifact and has nothing to do with this seat's wiring.
+
+  lane         n   max|d_law|  max|d_prod|    sum d_law   sum d_prod
+  sitter      89      0.00000      0.04903        +0.00        +0.30
+  thin        99      0.47373      0.04998        +1.94        +0.01
+  bridge      44      0.99566      0.79365        -3.65        -1.94
+  deep       572      2.05560      0.89461        +0.16        -6.96
+  ALL        804      2.05560      0.89461        -1.55        -8.59
+
+  rows where |d_law| EXCEEDS the blend-site round bound: 199   [('adam-treloar', -0.5732), ('alex-davies', -0.8453), ('alex-pearce', -0.5154), ('andrew-mcgrath', 0.6753), ('angus-hastie', 0.802), ('archer-reid', -1.12)]
+  -> THAT count is the real wiring test. 0 means the wired law IS the resolution arithmetic,
+     evaluated on the engine's own production leg, to the last representable digit.
+
+  P3a_sitter_thin_exact    BREACHED
+  P3b_max_delta_le_1p2     BREACHED
+  P3c_no_row_over_1p5      BREACHED
+  P3d_total_within_150     HELD
+  P3e_715229_class         HELD
+  P3f_law_within_blendsite_round BREACHED
+
+  P3 VERDICT: BREACHED
+  wrote /home/user/afl-rl-engine/.claude/worktrees/agent-a14698ead2bf8585d/docs/evidence/one_machinery_2026-08-14/noarb_resolved/ROWCONTROL_30BN.json

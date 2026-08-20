@@ -1,0 +1,300 @@
+store md5 cb38ef11 ; engine bf63592c ; board 7802ee977cd5e8972010b09f1bb1bee6
+population: 1015 ND entrants 2005-2020, picks 1-64 (D's exact population)
+
+== SECTION 0. BASE RATES — is early sitting really more common for talls? (H3) ==
+group       n    sat_yr1     rate  sat_yr1+2     rate played1+
+SMALL     736        267    0.363        131    0.178      469
+KPP       226        106    0.469         56    0.248      120
+RUCK       53         35    0.660         19    0.358       18
+
+pick-controlled odds of SAT1  (0 games year 1), vs SMALL at the same pick:
+  KPP   log-odds +0.529 -> odds ratio  1.70x   90% CI [1.28, 2.25]
+  RUCK  log-odds +1.266 -> odds ratio  3.55x   90% CI [2.18, 5.91]
+
+pick-controlled odds of SAT12 (0 games years 1+2), vs SMALL at the same pick:
+  KPP   log-odds +0.493 -> odds ratio  1.64x   90% CI [1.17, 2.22]
+  RUCK  log-odds +0.877 -> odds ratio  2.40x   90% CI [1.38, 4.11]
+
+== SECTION 1. THE INTERACTION — does a sit mean something different for a ruck? ==
+
+-- SAT1, vs all played (PRIMARY), 3-group  (sitters 408, controls 607)
+   cells: SMALL sat=267 ctl=469  KPP sat=106 ctl=120  RUCK sat=35 ctl=18
+   a               -2.2051   90% CI [-2.790, -1.704]
+   b_lnpick        +0.6507   90% CI [+0.494, +0.827]
+   c_KPP           -0.0613   90% CI [-0.422, +0.316]
+   c_RUCK          -0.2446   90% CI [-1.303, +0.615]
+   g0_SAT          -0.9126   90% CI [-2.607, +0.464]
+   g1_SATxlnpick   +0.7203   90% CI [+0.326, +1.211]
+   h_KPP           -0.6758   90% CI [-1.275, -0.030] <== interaction
+   h_RUCK          -0.6536   90% CI [-1.751, +0.796] <== interaction
+   share of 1000 bootstrap draws with h_KPP < 0 (the owner's direction): 95.6%
+   share of 1000 bootstrap draws with h_RUCK < 0 (the owner's direction): 77.2%
+
+-- SAT1, vs all played (PRIMARY), TALL-pooled  (sitters 408, controls 607)
+   cells: SMALL sat=267 ctl=469  KPP sat=106 ctl=120  RUCK sat=35 ctl=18
+   a               -2.2093   90% CI [-2.792, -1.709]
+   b_lnpick        +0.6521   90% CI [+0.497, +0.827]
+   c_TALL          -0.0835   90% CI [-0.440, +0.274]
+   g0_SAT          -0.8778   90% CI [-2.522, +0.488]
+   g1_SATxlnpick   +0.7100   90% CI [+0.307, +1.181]
+   h_TALL          -0.6921   90% CI [-1.239, -0.080] <== interaction
+   share of 1000 bootstrap draws with h_TALL < 0 (the owner's direction): 96.8%
+
+-- SAT1, vs played 11+ (D primary; secondary here), 3-group  (sitters 408, controls 213)
+   cells: SMALL sat=267 ctl=188  KPP sat=106 ctl=24  RUCK sat=35 ctl=1
+   a               -3.4331   90% CI [-4.869, -2.615]
+   b_lnpick        +0.9000   90% CI [+0.629, +1.366]
+   c_KPP           -0.5734   90% CI [-2.134, +0.392]
+   c_RUCK         -13.9912   90% CI [-15.330, -0.219]
+   g0_SAT          +0.3155   90% CI [-1.396, +2.118]
+   g1_SATxlnpick   +0.4711   90% CI [-0.065, +0.982]
+   h_KPP           -0.1636   90% CI [-1.258, +1.463] <== interaction
+   h_RUCK         +13.0929   90% CI [-0.683, +14.599] <== interaction
+   share of 1000 bootstrap draws with h_KPP < 0 (the owner's direction): 60.7%
+   share of 1000 bootstrap draws with h_RUCK < 0 (the owner's direction): 32.7%
+
+-- SAT1, vs played 11+ (D primary; secondary here), TALL-pooled  (sitters 408, controls 213)
+   cells: SMALL sat=267 ctl=188  KPP sat=106 ctl=24  RUCK sat=35 ctl=1
+   a               -3.4395   90% CI [-4.879, -2.634]
+   b_lnpick        +0.9020   90% CI [+0.632, +1.366]
+   c_TALL          -0.5786   90% CI [-2.144, +0.381]
+   g0_SAT          +0.3523   90% CI [-1.358, +2.167]
+   g1_SATxlnpick   +0.4601   90% CI [-0.085, +0.968]
+   h_TALL          -0.1970   90% CI [-1.289, +1.443] <== interaction
+   share of 1000 bootstrap draws with h_TALL < 0 (the owner's direction): 62.8%
+
+-- SAT12, vs all played (PRIMARY), 3-group  (sitters 206, controls 809)
+   cells: SMALL sat=131 ctl=605  KPP sat=56 ctl=170  RUCK sat=19 ctl=34
+   a               -2.4854   90% CI [-3.040, -1.988]
+   b_lnpick        +0.8069   90% CI [+0.655, +0.987]
+   c_KPP           -0.2525   90% CI [-0.572, +0.056]
+   c_RUCK          -0.2138   90% CI [-0.876, +0.386]
+   g0_SAT          +0.5267   90% CI [-2.432, +3.312]
+   g1_SATxlnpick   +0.5104   90% CI [-0.277, +1.415]
+   h_KPP           -0.2998   90% CI [-1.415, +0.899] <== interaction
+   h_RUCK          -0.9619   90% CI [-2.372, +1.242] <== interaction
+   share of 1000 bootstrap draws with h_KPP < 0 (the owner's direction): 66.2%
+   share of 1000 bootstrap draws with h_RUCK < 0 (the owner's direction): 82.7%
+
+-- SAT12, vs all played (PRIMARY), TALL-pooled  (sitters 206, controls 809)
+   cells: SMALL sat=131 ctl=605  KPP sat=56 ctl=170  RUCK sat=19 ctl=34
+   a               -2.4863   90% CI [-3.037, -1.991]
+   b_lnpick        +0.8072   90% CI [+0.654, +0.987]
+   c_TALL          -0.2461   90% CI [-0.544, +0.031]
+   g0_SAT          +0.6105   90% CI [-2.236, +3.298]
+   g1_SATxlnpick   +0.4858   90% CI [-0.275, +1.361]
+   h_TALL          -0.4822   90% CI [-1.563, +0.499] <== interaction
+   share of 1000 bootstrap draws with h_TALL < 0 (the owner's direction): 81.4%
+
+-- SAT12, vs played 11+ (D primary; secondary here), 3-group  (sitters 206, controls 504)
+   cells: SMALL sat=131 ctl=407  KPP sat=56 ctl=87  RUCK sat=19 ctl=10
+   a               -2.4240   90% CI [-3.092, -1.860]
+   b_lnpick        +0.6363   90% CI [+0.456, +0.848]
+   c_KPP           -0.4988   90% CI [-1.007, -0.034]
+   c_RUCK          -0.4589   90% CI [-18.264, +0.711]
+   g0_SAT          +0.4653   90% CI [-2.567, +3.412]
+   g1_SATxlnpick   +0.6810   90% CI [-0.153, +1.562]
+   h_KPP           -0.0535   90% CI [-1.152, +1.215] <== interaction
+   h_RUCK          -0.7168   90% CI [-2.384, +17.733] <== interaction
+   share of 1000 bootstrap draws with h_KPP < 0 (the owner's direction): 51.9%
+   share of 1000 bootstrap draws with h_RUCK < 0 (the owner's direction): 67.9%
+
+-- SAT12, vs played 11+ (D primary; secondary here), TALL-pooled  (sitters 206, controls 504)
+   cells: SMALL sat=131 ctl=407  KPP sat=56 ctl=87  RUCK sat=19 ctl=10
+   a               -2.4229   90% CI [-3.089, -1.874]
+   b_lnpick        +0.6360   90% CI [+0.459, +0.845]
+   c_TALL          -0.4954   90% CI [-0.979, -0.039]
+   g0_SAT          +0.5471   90% CI [-2.474, +3.452]
+   g1_SATxlnpick   +0.6570   90% CI [-0.155, +1.523]
+   h_TALL          -0.2329   90% CI [-1.311, +0.794] <== interaction
+   share of 1000 bootstrap draws with h_TALL < 0 (the owner's direction): 64.1%
+
+== SECTION 2. VALUE RETENTION — D's 0.535 / 0.128 object, split by position ==
+
+All picks 1-64, sitters vs all who played (the primary control):
+group   n_sat  n_ctl    ret_sat    ret_ctl         F            90% CI on F
+SMALL     267    469      0.276      0.635     0.435       [0.314, 0.572]
+KPP       106    120      0.285      0.517     0.551       [0.348, 0.811]
+RUCK       35     18      0.611      0.768     0.795       [0.375, 1.487]
+
+Pick-controlled the honest way — the same pick window for every group.
+  picks 1-30:
+  group   n_sat  n_ctl    ret_sat    ret_ctl         F            90% CI on F
+  SMALL      70    286      0.295      0.603     0.489       [0.303, 0.698]
+  KPP        31     77      0.276      0.449     0.616       [0.339, 1.006]
+  RUCK        3     13      0.159      0.766     0.208       [0.001, 0.593]
+  picks 31-64:
+  group   n_sat  n_ctl    ret_sat    ret_ctl         F            90% CI on F
+  SMALL     197    183      0.257      0.829     0.309       [0.179, 0.501]
+  KPP        75     43      0.292      0.848     0.345       [0.186, 0.632]
+  RUCK       32      5      0.695      0.786     0.885       [0.397, 2.341]
+
+Plain washout rates (share of the cell that delivered nothing above bar in 5 years):
+group                 sat yr1             played yr1
+SMALL    0.835 (n=267)          0.441 (n=469)     gap +0.394
+KPP      0.708 (n=106)          0.417 (n=120)     gap +0.291
+RUCK     0.743 (n= 35)          0.333 (n= 18)     gap +0.410
+
+Same rates inside picks 31-64 only — the window the ruck sitters actually occupy:
+SMALL    0.893 (n=197)          0.601 (n=183)     gap +0.292
+KPP      0.787 (n= 75)          0.465 (n= 43)     gap +0.322
+RUCK     0.750 (n= 32)          0.400 (n=  5)     gap +0.350
+
+== SECTION 2c. THE THIN CELLS, NAMED ==
+
+RUCK sitters, picks 1-30 (the cell that reverses)  — n=3
+   Ayce Cordy               pick 14  yr1 games 0    washed out: yes
+   Matthew Lobbe            pick 16  yr1 games 0    washed out: no
+   Brent Renouf             pick 25  yr1 games 0    washed out: yes
+
+RUCK controls, picks 31-64 (the denominator of F_RUCK there)  — n=5
+   Scott Lycett             pick 31  yr1 games 1    washed out: no
+   Zachary Clarke           pick 37  yr1 games 5    washed out: no
+   Sean Darcy               pick 38  yr1 games 8    washed out: no
+   Justin Bollenhagen       pick 51  yr1 games 3    washed out: yes
+   Brayden Crossley         pick 52  yr1 games 10   washed out: yes
+
+RUCK controls, all picks (the whole primary ruck control group)  — n=18
+   Matthew Kreuzer          pick 1   yr1 games 20   washed out: no
+   Nicholas Naitanui        pick 2   yr1 games 10   washed out: no
+   Luke Jackson             pick 3   yr1 games 6    washed out: no
+   Matthew Leuenberger      pick 5   yr1 games 9    washed out: no
+   Paddy Ryder              pick 7   yr1 games 9    washed out: no
+   Ben McEvoy               pick 9   yr1 games 1    washed out: no
+   Daniel Gorringe          pick 10  yr1 games 7    washed out: yes
+   Billy Longer             pick 11  yr1 games 5    washed out: yes
+   Shaun Hampson            pick 18  yr1 games 2    washed out: yes
+   Max Bailey               pick 18  yr1 games 4    washed out: yes
+   Timothy English          pick 19  yr1 games 2    washed out: no
+   Brodie Grundy            pick 22  yr1 games 7    washed out: no
+   Tom De Koning            pick 30  yr1 games 2    washed out: no
+   Scott Lycett             pick 31  yr1 games 1    washed out: no
+   Zachary Clarke           pick 37  yr1 games 5    washed out: no
+   Sean Darcy               pick 38  yr1 games 8    washed out: no
+   Justin Bollenhagen       pick 51  yr1 games 3    washed out: yes
+   Brayden Crossley         pick 52  yr1 games 10   washed out: yes
+
+RUCK controls at D's 11+ threshold (why D's primary spec cannot be used here)  — n=1
+   Matthew Kreuzer          pick 1   yr1 games 20   washed out: no
+
+== SECTION 3. THE ADJUSTMENT ARITHMETIC (published whether or not it is recommended) ==
+re-solved redistribution constant s_norm' = 1.439532 (D's was 1.747207); residual 0.00e+00
+
+pick   SMALL     KPP       RUCK       D pooled kappa
+1      0.5000    0.5000    0.5000     0.5000
+5      0.5000    0.5000    0.5000     0.5000
+10     0.5183    0.5000    0.5000     0.6714
+16     0.7534    0.5000    0.5000     0.7934
+20     0.8651    0.5000    0.5000     0.8513
+24     0.9563    0.5000    0.5023     0.8987
+30     1.0680    0.5986    0.6139     0.9566
+40     1.2119    0.7425    0.7579     1.0313
+50     1.3236    0.8542    0.8696     1.0892
+53     1.3528    0.8833    0.8987     1.1044
+64     1.4471    0.9777    0.9931     1.1533
+
+implied multiplicative position factor on kappa, vs SMALL (mean over picks 1-64):
+  m_SMALL  = 1.0000
+  m_KPP    = 0.6855
+  m_RUCK   = 0.6933
+what that does to the depth-2 price multiplier at a few picks (D2^kappa):
+  pick 16: SMALL 0.6446   KPP 0.7472   RUCK 0.7472   (D pooled 0.6297)
+  pick 24: SMALL 0.5727   KPP 0.7472   RUCK 0.7462   (D pooled 0.5922)
+  pick 53: SMALL 0.4545   KPP 0.5976   RUCK 0.5922   (D pooled 0.5253)
+
+-- 3b. the single TALL factor (the reading whose 90%% interval excluded zero) --
+h_TALL = -0.6921  90% CI [-1.239, -0.080]
+re-solved s_norm' (TALL form) = 1.428405 ; identity residual -1.11e-16 ; D's was 1.747207
+
+pick   kap SMALL kap TALL  D pooled  D2^SMALL  D2^TALL   D2^Dpooled  [clip?]
+1      0.5000    0.5000    0.5000    0.7472    0.7472    0.7472     CLIP SMALL+TALL
+5      0.5000    0.5000    0.5000    0.7472    0.7472    0.7472     CLIP SMALL+TALL
+10     0.5300    0.5000    0.6714    0.7342    0.7472    0.6761     CLIP TALL
+16     0.7636    0.5000    0.7934    0.6408    0.7472    0.6297     CLIP TALL
+20     0.8745    0.5000    0.8513    0.6006    0.7472    0.6088     CLIP TALL
+24     0.9651    0.5000    0.8987    0.5697    0.7472    0.5922     CLIP TALL
+30     1.0761    0.5915    0.9566    0.5341    0.7084    0.5726     
+40     1.2191    0.7345    1.0313    0.4914    0.6517    0.5482     
+50     1.3300    0.8454    1.0892    0.4606    0.6109    0.5300     
+53     1.3589    0.8744    1.1044    0.4529    0.6007    0.5253     
+64     1.4527    0.9681    1.1533    0.4288    0.5687    0.5106     
+
+implied single multiplicative factor  m_TALL = 0.6770  (mean over picks 1-64 of kap_TALL/kap_SMALL)
+picks where the TALL curve is PINNED ON D's 0.5 CLIP FLOOR (the clip, not the fit, is setting the price):
+   picks 1-24  (24 of 64 picks)
+   same for SMALL: picks 1-9 (9)
+
+side effect the owner must see: re-solving the constant MOVES THE SMALL CURVE TOO.
+   pick 10  SMALL kappa 0.5300 vs D pooled 0.6714  ->  depth-2 multiplier 0.7342 vs 0.6761
+   pick 30  SMALL kappa 1.0761 vs D pooled 0.9566  ->  depth-2 multiplier 0.5341 vs 0.5726
+   pick 64  SMALL kappa 1.4527 vs D pooled 1.1533  ->  depth-2 multiplier 0.4288 vs 0.5106
+
+== SECTION 4. NAMED ROWS ==
+key              player               route pos    year  pick g1   g1+2
+will-green       Will Green           ND    RUCK   2023  16   0    0
+alex-dodson      Alex Dodson          ND    RUCK   2024  53   1    1
+toby-conway      Toby Conway          ND    RUCK   2021  24   0    1
+ned-moyle        Ned Moyle            MSD   RUCK   2021  65   0    2
+nick-madden      Nick Madden          PDA   RUCK   2022  65   0    0
+steely-green     Steely Green         ND    SF     2022  55   0    6
+
+the contrast rows — small/mid sitters at or beside the same picks, same classes:
+  Phoenix Gothard        SF    2023 pick 12  g1=0 g1+2=0
+  Campbell Chesser       MID   2021 pick 14  g1=0 g1+2=14
+  Oskar Taylor           SD    2025 pick 15  g1=0 g1+2=0
+  James Leake            SD    2023 pick 17  g1=0 g1+2=3
+  Tom Brown              SD    2021 pick 17  g1=0 g1+2=1
+  Oliver Hannaford       SF    2024 pick 18  g1=0 g1+2=5
+  Harrison Oliver        SD    2024 pick 19  g1=0 g1+2=5
+  Edward Allan           MID   2022 pick 19  g1=0 g1+2=2
+  Jacob Konstanty        SF    2022 pick 20  g1=0 g1+2=0
+  Lachlan Carmichael     SD    2025 pick 21  g1=0 g1+2=0
+  Charlie Edwards        MID   2023 pick 21  g1=0 g1+2=0
+  Darcy Jones            SF    2022 pick 21  g1=0 g1+2=14
+  Matt Johnson           MID   2021 pick 21  g1=0 g1+2=18
+  Harley Barker          MID   2025 pick 24  g1=0 g1+2=0
+  Charlie Clarke         SF    2022 pick 24  g1=0 g1+2=0
+  Adam Sweid             SF    2025 pick 25  g1=0 g1+2=0
+  Harry DeMattia         MID   2023 pick 25  g1=0 g1+2=0
+  Ned Bowman             SF    2024 pick 26  g1=0 g1+2=0
+  Brayden George         SF    2022 pick 26  g1=0 g1+2=0
+  Oscar Ryan             SD    2023 pick 27  g1=0 g1+2=0
+  Cooper Vickery         SD    2022 pick 27  g1=0 g1+2=0
+  Avery Thomas           SD    2025 pick 28  g1=0 g1+2=0
+  Hugo Mikunda           SF    2025 pick 48  g1=0 g1+2=0
+  Tom Anastasopoulos     SF    2023 pick 48  g1=0 g1+2=0
+  Joe Richards           SF    2022 pick 48  g1=0 g1+2=9
+  Flynn Kroeger          MID   2021 pick 48  g1=0 g1+2=0
+  Maxwell King           SF    2025 pick 49  g1=0 g1+2=0
+  Kaleb Smith            SD    2022 pick 49  g1=0 g1+2=4
+  Cooper Murley          MID   2021 pick 49  g1=0 g1+2=0
+  Hugh Bond              SD    2022 pick 50  g1=0 g1+2=7
+  Garrett McDonagh       SD    2021 pick 50  g1=0 g1+2=0
+  Finnegan Davis         SD    2025 pick 51  g1=0 g1+2=0
+  Kye Fincher            MID   2025 pick 52  g1=0 g1+2=0
+  Lachlan Charleson      SF    2023 pick 52  g1=0 g1+2=0
+  Harvey Harrison        SF    2021 pick 52  g1=0 g1+2=4
+  Jayden Davey           SF    2022 pick 54  g1=0 g1+2=0
+  Aiden O'Driscoll       SD    2023 pick 55  g1=0 g1+2=0
+  Steely Green           SF    2022 pick 55  g1=0 g1+2=6
+  Hugh Jackson           MID   2021 pick 55  g1=0 g1+2=0
+  Matthew LeRay          MID   2025 pick 56  g1=0 g1+2=0
+  Luke Urquhart          MID   2024 pick 57  g1=0 g1+2=0
+  George Stevens         MID   2023 pick 58  g1=0 g1+2=2
+  Lachie Rankin          SF    2021 pick 58  g1=0 g1+2=0
+
+what the TALL adjustment would do to the depth-2 fade multiplier on each named row:
+player               pos    pick  D pooled   H TALL     change     note
+Will Green           RUCK   16    0.6297     0.7472         +18.7% sat yr1
+Alex Dodson          RUCK   53    0.5253     0.6007         +14.3% played 1 games yr1 - not a sitter
+Toby Conway          RUCK   24    0.5922     0.7472         +26.2% sat yr1
+Ned Moyle            RUCK   65    --         --         --         pool route (MSD) - a pick-keyed curve does not reach him
+Nick Madden          RUCK   65    --         --         --         pool route (PDA) - a pick-keyed curve does not reach him
+Steely Green         SF     55    0.5224     0.4480         -14.2% sat yr1
+
+the same picks, if the player were a small instead (the owner's comparison):
+  pick 16  small sitter 0.6408   tall sitter 0.7472   (D pooled treats both as 0.6297)
+  pick 24  small sitter 0.5697   tall sitter 0.7472   (D pooled treats both as 0.5922)
+  pick 53  small sitter 0.4529   tall sitter 0.6007   (D pooled treats both as 0.5253)
+
+written: H_RESULTS.json  md5 d117a5e0

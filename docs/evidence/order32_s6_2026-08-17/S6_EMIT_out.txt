@@ -1,0 +1,57 @@
+HEAD ARTEFACTS
+  pvc_curve_v2.json    78ad9842525ae4f09875b95afc2e2b39
+  rl_model.py          14000af2a46f7a3c4cdfde303f5a1aff
+  rl_model_data.json   cb38ef1171dcf20aae66ebf12682be0d
+CANDIDATE BOARD       fe6be9d6ac76ebc34d26ebc11d796505  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o31f/bb_f2on/rl_after/rl_app_data.json
+  board active rows     804   total 666913
+  movers-ledger rows    804   (d4e80349392e52f704d1284e2cbc0298)
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+  engine loaded in 67.3s
+  RL_O31 LIVE  BASE_REF 2026  _PL_F 1.0524  SCALE_DIST 1.0
+  WQ6 ['0.180000', '0.180000', '0.180000', '0.180000', '0.180000', '0.100000']   (sum 1.000000000000)
+  RL_UNCOMP True  UNCOMP_S 0.1  (the LEG-B map is part of the disclosed downstream factor m)
+  804 rows in 4.3s
+
+VALIDATION
+  dot(WQ6, six_raw)  vs price6()      max dev  0.000e+00   (the engine's own order-fixed dot)
+  dot(WQ6, six_phat) vs Phat          max dev  1.819e-12  (rel 4.043e-16)   <-- THE P-HAT VALIDATION
+  price(lambda=0)    vs printed price max dev  0.000e+00   (the page's anchor, 804 rows)
+  rho*Phat + ped     vs printed price max dev  4.547e-13   (the law's own reconstruction)
+  ledger production_pts vs cand-ped   max gap  4.784e-01   (the ledger floors at 0; this emit does not)
+  downstream factor m: min 0.2978  p05 0.8335  median 0.9706  p95 1.2436  max 3.4856
+  rows whose fan cannot carry the price (rho==0 / price6==0 / prod<=0): 96  ['adam-sweid', 'aiden-riddle', 'asher-eastham', 'avery-thomas', 'ben-camporeale', 'ben-murphy', 'benny-barrett', 'blake-thredgold']
+  rows with rho < 0.3 (spread GREYED on the page -- pedigree-dominated): 175 of 804
+  FAN SHAPE: 80 perfectly flat  |  383 non-decreasing  |  341 with the q97 ceiling BELOW band 5 (337 of them carry a production leg)
+  VERDICT: PASS
+
+WROTE /home/user/afl-rl-engine/.claude/worktrees/agent-ad6a214fb5da8a5b6/docs/evidence/order32_s6_2026-08-17/S6_FAN_EMIT.json  (c4338a9bea3bbc4eaceed816b7153006, 1033.1 KB)
+
+WIDEST FANS (rho >= 0.3, by band6/band1)
+  name                     path pos       g   price    b6/b1 (b6-b1)/b3    top%
+  Mitchell Edwards         ND   RUCK     16    1148   6780.0     11.49   35.6%
+  Samuel Grlj              ND   MID      19    1831   6122.0     20.82   33.8%
+  Cooper Hynes             ND   MID      27     992   4335.0     58.57   43.9%
+  Hugh Boxshall            ND   MID      19     657   3940.0    656.50   51.2%
+  Jordan Croft             ND   KPF      18     526   2270.0     42.81   42.6%
+  Zeke Uwland              ND   SD       17    2480   2110.5      3.35   22.8%
+  Clay Hall                ND   MID      16     327   1771.5    272.38   47.1%
+  Archer Reid              ND   KPF      20     377   1745.0     60.14   47.8%
+  Harry Rowston            ND   MID      27     553   1722.0    172.10   33.8%
+  Caiden Cleary            ND   SF       25     331   1688.0    168.70   73.8%
+  Xavier Lindsay           ND   MID      23    1728   1639.0      5.82   28.9%
+  Lachie Jaques            ND   SD        9     388   1498.5    599.00   57.3%
+
+FLATTEST FANS (rho >= 0.3, by band6/band1)
+  Adam Saad                RD   SD      219     446    1.000      0.00   10.0%
+  Adam Treloar             ND   SF      263     850    1.000      0.00   10.0%
+  Aidan Corr               ND   KPD     185      14    1.000      0.00    9.7%
+  Alex Neal-Bullen         ND   SF      221     356    1.000      0.00    9.4%
+  Aliir Aliir              ND   KPD     199     726    1.000      0.00    9.9%
+  Bayley Fritsch           ND   SF      190     198    1.000      0.00   10.0%
+  Ben Long                 ND   SF      154      13    1.000      0.00    9.4%
+  Billy Frampton           ND   KPD      95      39    1.000      0.00   10.0%
+  Blake Acres              ND   MID     195      89    1.000      0.00   10.0%
+  Bradley Hill             ND   SF      298    1151    1.000      0.00   10.0%
+  Brayden Fiorini          ND   MID     125     198    1.000      0.00    9.9%
+  Brayden Maynard          ND   SD      246     467    1.000      0.00    9.8%

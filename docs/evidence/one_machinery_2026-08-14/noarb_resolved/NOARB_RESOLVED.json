@@ -1,0 +1,318 @@
+{
+ "arbitrage_counts": {
+  "LIVE": "0 of 5",
+  "RESOLVED": "not readable",
+  "SITALL": "3 of 5"
+ },
+ "brief": "#334 comment 5310246218",
+ "caveats": [
+  "PRE-NUMERAIRE: Step 6 re-pin has not run; read the MOVEMENT not the level",
+  "POOL beta PROVISIONAL: pool v0 cells are Step 4; pool sitter fade forced to D=1.0 (NOT derived)",
+  "RUCK-HEAD DEFECT OPEN",
+  "T4 (the OBJECT) OPEN: these tables price the v0 object, not entry_anchor",
+  "the 11-15 bridge lane is a DECLARED BRIDGE, not a measurement",
+  "beta(g) is NOT monotone: it rises 2.5->10.5 games before falling; carried, not patched"
+ ],
+ "controls": {
+  "P1_dial_off": "9298203135202a0c707bb0977ba38c31",
+  "P2_preview_lane": "6a392bca7ad0dee04a6b4f037c758f65",
+  "P4_resolved_board_twice": "d3c65bc46cebb656914cacb34a693b77",
+  "row_control": {
+   "by_lane": {
+    "bridge": {
+     "maxabs": 1.5682250095021004,
+     "n": 44
+    },
+    "deep": {
+     "maxabs": 2.493196503230706,
+     "n": 572
+    },
+    "sitter": {
+     "maxabs": 0.049030860382515584,
+     "n": 89
+    },
+    "thin": {
+     "maxabs": 0.5097301406309498,
+     "n": 99
+    }
+   },
+   "derived_total": 715229.3,
+   "max_abs_delta": 2.493196503230706,
+   "verdicts": {
+    "P3a_sitter_thin_exact": false,
+    "P3b_max_delta_le_1p2": false,
+    "P3c_no_row_over_1p5": false,
+    "P3d_total_within_150": true,
+    "P3e_715229_class": true,
+    "P3f_law_within_blendsite_round": false
+   },
+   "wired_total": 715219.1567870222
+  },
+  "wiring_proof": {
+   "checks": {
+    "beta_exact": 0.0,
+    "blift_exact": 0.0,
+    "lane_rule_exact": 1.8189894035458565e-12
+   },
+   "held": true,
+   "reference_selfcheck_max_delta": 0.0
+  }
+ },
+ "current_board_levels": {
+  "RESOLVED_additive_anchor_joined": 715377,
+  "RESOLVED_additive_v0_joined": 715229,
+  "additive_v0_nojoin": 755464,
+  "lanes": {
+   "bridge": [
+    44,
+    29578
+   ],
+   "deep": [
+    572,
+    632937
+   ],
+   "sitter": [
+    89,
+    17243
+   ],
+   "thin": [
+    99,
+    35470
+   ]
+  },
+  "note": "LEVEL reading, pre-numeraire; NOT a no-arb reading",
+  "preview_weight_v0_nojoin": 679874,
+  "weight_v0_joined": 667260,
+  "wired_board_total": 715219.1567870222
+ },
+ "discipline": "No instrument modified. No literal re-pointed. No margin tuned. The refusal was reproduced with the dial OFF before it was reported.",
+ "greenlit": false,
+ "halt": {
+  "cause": "ORDER 30B Step-1 positional v0 re-fit, commit 860d370, moved pvc_curve_v2.json after DAY0_29B_FINAL.json was published on board 36d5dfc7",
+  "caused_by_this_order": false,
+  "dial_off_result": "HALT exit=1, identical mismatch list",
+  "dial_on_result": "HALT exit=1",
+  "emit_population": {
+   "mean_v0_new": 519.0,
+   "mean_v0_old": 518.18,
+   "median_pct": 0.0,
+   "p05_pct": -5.92,
+   "p95_pct": 13.51,
+   "pooled_denominator_move_pct": 0.158,
+   "rows": 2643,
+   "rows_moved": 1441,
+   "rows_moved_pct": 54.5
+  },
+  "of": 89,
+  "options": [
+   "A: keep year-0 on the frozen 29C landed entry law (preserves the common denominator; reintroduces the MIXED-BASIS defect 29C closed)",
+   "B: move year-0 to the current re-fitted v0 (internally coherent; the denominator moves for 54.5% of rows so the RESOLVED column is no longer the same measurement as LIVE and SITALL; requires re-pointing RL_DAY0_FINAL, the guard that is currently refusing)"
+  ],
+  "population_move": {
+   "max_pct": 455.815,
+   "mean_abs_move_pct": 17.941,
+   "median_pct": 0.34,
+   "min_pct": -10.975,
+   "wired_entrants_moved": 46,
+   "wired_entrants_total": 89
+  },
+  "reproduce_exactly": 43,
+  "where": "Step 3, emit_matrix_29c.py replication proof"
+ },
+ "headline": "RESOLVED COLUMN HALTED \u2014 the year-0 basis is an owner word, not a seat choice.",
+ "order": "30B-N",
+ "pre_numeraire": true,
+ "prereg": "PREREG_30BN.md",
+ "provenance": {
+  "emit_matrix_29c": "0c3efa545832dd1131bd2b403588af29 (byte-unmodified; it refused)",
+  "matrix_historical_print": "per_entrant_O29B.json ca24a49a",
+  "matrix_landed_law": "per_entrant_O29CFINAL.json 6db06e40",
+  "matrix_live": "per_entrant_O25R4.json 3c6ffcde",
+  "noarb_table_338": "0f8220351c64c56ccfa90c60edcdfa5f (byte-unmodified)",
+  "pvc_curve_v2": "06146b00daf2043487f58a8b9f842a1e (MOVED at 860d370 - the cause)",
+  "rl_model": "14000af2a46f7a3c4cdfde303f5a1aff",
+  "standing_emitter": "bffde2f786be85037483e9f5f1563068",
+  "store": "cb38ef1171dcf20aae66ebf12682be0d",
+  "v0surf": "5dd34ca82735f5c8f021b1c7320df8f8"
+ },
+ "readings": [
+  {
+   "LIVE_88ce647f": {
+    "apprec_0_1": -0.1923,
+    "margin_v14": 0.3323,
+    "verdict": "no arb",
+    "year_paths_pct_of_entry": {
+     "0": 100.0,
+     "1": 80.8,
+     "2": 97.4,
+     "3": 107.0,
+     "4": 112.9,
+     "5": 111.0
+    }
+   },
+   "RESOLVED_CANDIDATE": {
+    "reason": "ORDER 29C emitter replication proof refuses the year-0 column on this branch (43 of 89). PRE-EXISTING: reproduced with the 30B-N dial OFF. See STOP_STEP3_YEAR0_BASIS.md.",
+    "status": "HALTED"
+   },
+   "SITTER_LAW_PREVIEW_SITALL": {
+    "apprec_0_1": 0.18389999999999995,
+    "margin_v14": -0.04389999999999994,
+    "verdict": "ARB",
+    "year_paths_pct_of_entry": {
+     "0": 100.0,
+     "1": 118.4,
+     "2": 135.5,
+     "3": 150.4,
+     "4": 159.4,
+     "5": 157.7,
+     "6": 151.0,
+     "7": 132.7
+    }
+   },
+   "basis": "year-0 = landed entry law (29C convention)",
+   "charge": 0.14,
+   "instrument": "allarm",
+   "window": "PRIMARY  cohorts 2005-2023"
+  },
+  {
+   "LIVE_88ce647f": {
+    "apprec_0_1": -0.1775,
+    "margin_v14": 0.3175,
+    "verdict": "no arb",
+    "year_paths_pct_of_entry": {
+     "0": 100.0,
+     "1": 82.2,
+     "2": 92.6,
+     "3": 97.9,
+     "4": 97.7,
+     "5": 103.5
+    }
+   },
+   "RESOLVED_CANDIDATE": {
+    "reason": "ORDER 29C emitter replication proof refuses the year-0 column on this branch (43 of 89). PRE-EXISTING: reproduced with the 30B-N dial OFF. See STOP_STEP3_YEAR0_BASIS.md.",
+    "status": "HALTED"
+   },
+   "SITTER_LAW_PREVIEW_SITALL": {
+    "apprec_0_1": 0.11870000000000003,
+    "margin_v14": 0.021299999999999986,
+    "verdict": "no arb",
+    "year_paths_pct_of_entry": {
+     "0": 100.0,
+     "1": 111.9,
+     "2": 120.9,
+     "3": 128.6,
+     "4": 128.9,
+     "5": 137.8,
+     "6": 123.2,
+     "7": 108.4
+    }
+   },
+   "basis": "year-0 = landed entry law (29C convention)",
+   "charge": 0.14,
+   "instrument": "allarm",
+   "window": "MODERN   cohorts 2019-2023"
+  },
+  {
+   "LIVE_88ce647f": {
+    "apprec_0_1": 0.073,
+    "margin_v14": 0.067,
+    "verdict": "no arb",
+    "year_paths_pct_of_entry": {
+     "0": 100.0,
+     "1": 107.3
+    }
+   },
+   "RESOLVED_CANDIDATE": {
+    "reason": "ORDER 29C emitter replication proof refuses the year-0 column on this branch (43 of 89). PRE-EXISTING: reproduced with the 30B-N dial OFF. See STOP_STEP3_YEAR0_BASIS.md.",
+    "status": "HALTED"
+   },
+   "SITTER_LAW_PREVIEW_SITALL": {
+    "apprec_0_1": 0.1876,
+    "margin_v14": -0.047599999999999976,
+    "verdict": "ARB",
+    "year_paths_pct_of_entry": {
+     "0": 100.0,
+     "1": 118.8,
+     "2": 138.0,
+     "3": 156.4,
+     "4": 165.2,
+     "5": 163.4,
+     "6": 157.5,
+     "7": 136.4
+    }
+   },
+   "basis": "year-0 = landed entry law (29C convention)",
+   "charge": 0.14,
+   "instrument": "legacy338",
+   "window": "ALL picks 1-64"
+  },
+  {
+   "LIVE_88ce647f": {
+    "apprec_0_1": 0.1218,
+    "margin_v14": 0.0182,
+    "verdict": "no arb",
+    "year_paths_pct_of_entry": {
+     "0": 100.0,
+     "1": 112.2
+    }
+   },
+   "RESOLVED_CANDIDATE": {
+    "reason": "ORDER 29C emitter replication proof refuses the year-0 column on this branch (43 of 89). PRE-EXISTING: reproduced with the 30B-N dial OFF. See STOP_STEP3_YEAR0_BASIS.md.",
+    "status": "HALTED"
+   },
+   "SITTER_LAW_PREVIEW_SITALL": {
+    "apprec_0_1": 0.2527999999999999,
+    "margin_v14": -0.1127999999999999,
+    "verdict": "ARB",
+    "year_paths_pct_of_entry": {
+     "0": 100.0,
+     "1": 125.3,
+     "2": 139.4,
+     "3": 153.6,
+     "4": 165.4,
+     "5": 162.3,
+     "6": 152.7,
+     "7": 133.2
+    }
+   },
+   "basis": "year-0 = landed entry law (29C convention)",
+   "charge": 0.14,
+   "instrument": "legacy338",
+   "window": "picks 1-20"
+  },
+  {
+   "LIVE_88ce647f": {
+    "apprec_0_1": -0.0004,
+    "margin_v14": 0.1404,
+    "verdict": "no arb",
+    "year_paths_pct_of_entry": {
+     "0": 100.0,
+     "1": 100.0
+    }
+   },
+   "RESOLVED_CANDIDATE": {
+    "reason": "ORDER 29C emitter replication proof refuses the year-0 column on this branch (43 of 89). PRE-EXISTING: reproduced with the 30B-N dial OFF. See STOP_STEP3_YEAR0_BASIS.md.",
+    "status": "HALTED"
+   },
+   "SITTER_LAW_PREVIEW_SITALL": {
+    "apprec_0_1": 0.08329999999999993,
+    "margin_v14": 0.056700000000000084,
+    "verdict": "no arb",
+    "year_paths_pct_of_entry": {
+     "0": 100.0,
+     "1": 108.3,
+     "2": 135.8,
+     "3": 160.8,
+     "4": 164.9,
+     "5": 165.0,
+     "6": 165.1,
+     "7": 141.4
+    }
+   },
+   "basis": "year-0 = landed entry law (29C convention)",
+   "charge": 0.14,
+   "instrument": "legacy338",
+   "window": "picks 21-64"
+  }
+ ]
+}

@@ -1,0 +1,189 @@
+====================================================================================================
+WHOLE-COHORT ENGINE VALUE BY YEAR AFTER DRAFT  --  year 0..7
+====================================================================================================
+  Values are the ENGINE'S OWN as-of valuations ev(p,Y) (walk-forward), NOT raw scores or raw output.
+  Early-career years lean heavily on the year-zero estimate -- the engine has little evidence yet.
+  Denomination: VOR board points (pick-1 pinned at 3000).
+  BASIS: the #338 CORRECTED minimum listing tenure (owner word 2026-08-06; rule commit 30996f8).
+    A retired player's window runs to his LISTED-THROUGH year, not his last PLAYED year: tenure
+    years after the last game are LISTED sitting-out years and are priced by the existing sit-out
+    machinery. 4/3/2 listed seasons by band (ND 1-20 / ND 21-40 / ND 41+ and every pool route);
+    own data extends the minimum; an explicit _last_listed is a known fact and stands.
+  CAVEAT (standing): these outcomes are under the CORRECTED #338 rule. The shipped curve they are
+    compared against was derived on the PRE-CORRECTION basis and re-derives at #334 stage B after
+    the #336 ruling. Do not read a gap here as a curve error until that re-derivation lands.
+  Busts stay in the denominator at 0. Players whose careers have not yet reached year N are
+    EXCLUDED from year N and reported separately as 'not yet reached'.
+----------------------------------------------------------------------------------------------------
+  matrix          : per_entrant_O35FINAL.json
+  matrix identity : store=cb38ef11  v0surf=4405cba2b42f  n_records=2648
+  population      : harness load_matrix ND filter -- teaches_curve & pick 1..64 & year 2004..2022
+  cohort size     : 1200 entrants
+  draft classes   : 2004..2022 (19 distinct classes)
+  observed window : as-of years end at 2026 (last year ANY record carries a real as-of value)
+                    (max yrs label in the matrix is 2027, but it is a placeholder row with vpath=[None])
+  inclusion at N  : draft_year + N <= 2026
+  value field     : year 0 = rec['v0'] (v0_start); year N>=1 = rec['vpath'][N-1] = ev(p, draft_year+N)
+----------------------------------------------------------------------------------------------------
+
+### ALL picks 1-64   (cohort n=1200)
+  yrN   n_incl  n_zero notreach   mean_yrN    med_yrN  mean_yr0*   med_yr0*    ratio
+  ----------------------------------------------------------------------------------
+  0       1200       0        0      762.5      534.8      762.5      534.8    1.000
+  1       1200       0        0      785.2      485.7      762.5      534.8    1.030
+  2       1200       0        0      871.5      491.5      762.5      534.8    1.143
+  3       1200     141        0     1010.0      516.8      762.5      534.8    1.325
+  4       1200     257        0     1119.7      417.1      762.5      534.8    1.468
+  5       1142     333       58     1152.5      350.2      759.8      534.8    1.517
+  6       1078     391      122     1135.3      201.6      760.0      546.3    1.494
+  7       1017     430      183     1004.4      108.8      760.5      534.8    1.321
+  8        953     452      247      841.4       36.6      758.7      534.8    1.109
+  9        889     457      311      657.9        0.0      756.6      525.9    0.869
+  10       825     460      375      522.5        0.0      757.0      534.8    0.690
+  11       761     462      439      378.3        0.0      755.8      534.8    0.501
+  12       697     471      503      301.2        0.0      757.4      534.8    0.398
+  * mean_yr0 / med_yr0 are computed over the SAME included set as that row (apples-to-apples).
+
+### picks 1-20   (cohort n=380)
+  yrN   n_incl  n_zero notreach   mean_yrN    med_yrN  mean_yr0*   med_yr0*    ratio
+  ----------------------------------------------------------------------------------
+  0        380       0        0     1474.7     1221.5     1474.7     1221.5    1.000
+  1        380       0        0     1598.0     1231.3     1474.7     1221.5    1.084
+  2        380       0        0     1750.8     1310.0     1474.7     1221.5    1.187
+  3        380       0        0     1997.6     1507.8     1474.7     1221.5    1.355
+  4        380       0        0     2251.6     1585.5     1474.7     1221.5    1.527
+  5        360      25       20     2279.1     1460.7     1470.2     1215.5    1.550
+  6        340      42       40     2175.0     1260.2     1468.1     1209.5    1.481
+  7        320      57       60     1942.0     1201.0     1474.2     1221.5    1.317
+  8        300      70       80     1583.8      740.7     1469.3     1221.5    1.078
+  9        280      73      100     1213.7      533.3     1466.9     1209.5    0.827
+  10       260      79      120      941.3      397.9     1465.0     1208.6    0.643
+  11       240      93      140      682.9       88.7     1458.9     1196.2    0.468
+  12       220     106      160      597.7       18.4     1460.7     1209.5    0.409
+  * mean_yr0 / med_yr0 are computed over the SAME included set as that row (apples-to-apples).
+
+### picks 21-64   (cohort n=820)
+  yrN   n_incl  n_zero notreach   mean_yrN    med_yrN  mean_yr0*   med_yr0*    ratio
+  ----------------------------------------------------------------------------------
+  0        820       0        0      432.5      396.2      432.5      396.2    1.000
+  1        820       0        0      408.5      314.9      432.5      396.2    0.945
+  2        820       0        0      464.1      307.6      432.5      396.2    1.073
+  3        820     141        0      552.4      285.2      432.5      396.2    1.277
+  4        820     257        0      595.1      184.8      432.5      396.2    1.376
+  5        782     308       38      633.8      120.5      432.7      396.2    1.465
+  6        738     349       82      656.3       50.4      433.7      396.8    1.513
+  7        697     373      123      573.9        0.0      432.8      395.7    1.326
+  8        653     382      167      500.4        0.0      432.3      395.7    1.158
+  9        609     384      211      402.3        0.0      430.1      394.7    0.935
+  10       565     381      255      329.9        0.0      431.1      394.7    0.765
+  11       521     369      299      238.0        0.0      431.9      392.6    0.551
+  12       477     365      343      164.5        0.0      433.0      394.7    0.380
+  * mean_yr0 / med_yr0 are computed over the SAME included set as that row (apples-to-apples).
+
+### picks 1-10   (cohort n=190)
+  yrN   n_incl  n_zero notreach   mean_yrN    med_yrN  mean_yr0*   med_yr0*    ratio
+  ----------------------------------------------------------------------------------
+  0        190       0        0     1946.8     1660.3     1946.8     1660.3    1.000
+  1        190       0        0     2101.2     1850.9     1946.8     1660.3    1.079
+  2        190       0        0     2295.7     1851.1     1946.8     1660.3    1.179
+  3        190       0        0     2646.7     2370.4     1946.8     1660.3    1.360
+  4        190       0        0     2960.8     2392.7     1946.8     1660.3    1.521
+  5        180       8       10     2914.7     2339.5     1939.5     1660.3    1.503
+  6        170      14       20     2761.9     2116.7     1939.2     1660.3    1.424
+  7        160      19       30     2438.8     1857.3     1956.2     1660.3    1.247
+  8        150      26       40     1989.4     1460.8     1948.3     1660.3    1.021
+  9        140      25       50     1540.5      945.7     1950.6     1660.3    0.790
+  10       130      30       60     1207.4      620.0     1945.7     1660.3    0.621
+  11       120      37       70      900.1      189.9     1938.4     1659.8    0.464
+  12       110      43       80      819.1       66.2     1946.0     1659.3    0.421
+  * mean_yr0 / med_yr0 are computed over the SAME included set as that row (apples-to-apples).
+
+### picks 11-20   (cohort n=190)
+  yrN   n_incl  n_zero notreach   mean_yrN    med_yrN  mean_yr0*   med_yr0*    ratio
+  ----------------------------------------------------------------------------------
+  0        190       0        0     1002.5      972.1     1002.5      972.1    1.000
+  1        190       0        0     1094.8      933.7     1002.5      972.1    1.092
+  2        190       0        0     1205.8      931.1     1002.5      972.1    1.203
+  3        190       0        0     1348.5     1028.2     1002.5      972.1    1.345
+  4        190       0        0     1542.4      988.5     1002.5      972.1    1.539
+  5        180      17       10     1643.5      936.0     1000.9      972.1    1.642
+  6        170      28       20     1588.2      797.9      997.1      972.1    1.593
+  7        160      38       30     1445.2      699.1      992.3      972.1    1.456
+  8        150      44       40     1178.2      572.1      990.3      972.1    1.190
+  9        140      48       50      887.0      237.6      983.1      972.1    0.902
+  10       130      49       60      675.1      114.0      984.3      972.1    0.686
+  11       120      56       70      465.6       25.1      979.4      972.1    0.475
+  12       110      63       80      376.3        0.0      975.4      972.1    0.386
+  * mean_yr0 / med_yr0 are computed over the SAME included set as that row (apples-to-apples).
+
+### picks 21-30   (cohort n=190)
+  yrN   n_incl  n_zero notreach   mean_yrN    med_yrN  mean_yr0*   med_yr0*    ratio
+  ----------------------------------------------------------------------------------
+  0        190       0        0      666.9      615.9      666.9      615.9    1.000
+  1        190       0        0      685.3      556.0      666.9      615.9    1.028
+  2        190       0        0      788.3      625.0      666.9      615.9    1.182
+  3        190       0        0      945.6      517.8      666.9      615.9    1.418
+  4        190      34        0     1066.0      429.0      666.9      615.9    1.598
+  5        180      45       10     1081.5      394.4      671.7      626.8    1.610
+  6        170      56       20     1131.3      217.9      670.4      626.8    1.687
+  7        160      63       30      976.2      134.2      669.0      621.3    1.459
+  8        150      62       40      795.5       76.6      667.4      621.3    1.192
+  9        140      67       50      582.6       18.1      667.0      621.3    0.873
+  10       130      75       60      476.4        0.0      669.7      626.8    0.711
+  11       120      78       70      333.0        0.0      674.4      634.0    0.494
+  12       110      77       80      226.9        0.0      674.9      634.0    0.336
+  * mean_yr0 / med_yr0 are computed over the SAME included set as that row (apples-to-apples).
+
+### picks 31-40   (cohort n=190)
+  yrN   n_incl  n_zero notreach   mean_yrN    med_yrN  mean_yr0*   med_yr0*    ratio
+  ----------------------------------------------------------------------------------
+  0        190       0        0      548.2      473.2      548.2      473.2    1.000
+  1        190       0        0      477.8      394.8      548.2      473.2    0.872
+  2        190       0        0      515.9      398.2      548.2      473.2    0.941
+  3        190       0        0      687.9      388.9      548.2      473.2    1.255
+  4        190      47        0      684.5      269.9      548.2      473.2    1.249
+  5        180      57       10      767.5      243.6      550.4      473.2    1.394
+  6        170      69       20      720.6      124.7      555.2      477.8    1.298
+  7        160      76       30      644.2       41.1      554.6      473.2    1.162
+  8        150      86       40      476.2        0.0      556.4      475.5    0.856
+  9        140      86       50      455.2        0.0      547.7      473.2    0.831
+  10       130      84       60      405.3        0.0      550.4      473.2    0.736
+  11       120      80       70      267.7        0.0      551.5      473.2    0.485
+  12       110      81       80      200.7        0.0      552.2      469.5    0.364
+  * mean_yr0 / med_yr0 are computed over the SAME included set as that row (apples-to-apples).
+
+### picks 41-64   (cohort n=440)
+  yrN   n_incl  n_zero notreach   mean_yrN    med_yrN  mean_yr0*   med_yr0*    ratio
+  ----------------------------------------------------------------------------------
+  0        440       0        0      281.2      261.0      281.2      261.0    1.000
+  1        440       0        0      259.1      188.9      281.2      261.0    0.921
+  2        440       0        0      301.7      187.8      281.2      261.0    1.073
+  3        440     141        0      324.1      164.7      281.2      261.0    1.152
+  4        440     176        0      353.2       92.6      281.2      261.0    1.256
+  5        422     206       18      385.8       34.2      280.5      255.5    1.375
+  6        398     224       42      426.0        0.0      280.7      259.9    1.518
+  7        377     234       63      373.4        0.0      280.9      259.9    1.329
+  8        353     234       87      385.2        0.0      279.6      259.9    1.378
+  9        329     231      111      303.1        0.0      279.3      259.9    1.085
+  10       305     222      135      235.3        0.0      278.6      251.2    0.844
+  11       281     211      159      184.8        0.0      277.3      251.2    0.666
+  12       257     207      183      122.3        0.0      278.5      259.9    0.439
+  * mean_yr0 / med_yr0 are computed over the SAME included set as that row (apples-to-apples).
+
+### zero-source breakdown, ALL picks 1-64  (how each included row got its number)
+  yrN     from_v0  from_path    ended     null
+  0          1200          0        0        0
+  1             0       1200        0        0
+  2             0       1200        0        0
+  3             0       1059      141        0
+  4             0        943      257        0
+  5             0        809      333        0
+  6             0        687      391        0
+  7             0        587      430        0
+  8             0        501      452        0
+  9             0        432      457        0
+  10            0        365      460        0
+  11            0        299      462        0
+  12            0        226      471        0
+
+json -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o36/noarb/noarb_table_338_EXT.json

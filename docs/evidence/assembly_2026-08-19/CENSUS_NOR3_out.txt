@@ -1,0 +1,94 @@
+=== ORDER R CENSUS  tag=L5C_INJ  dials={'RL_O37': '1', 'RL_O38A': '1', 'RL_O38B1': '1', 'RL_O39_BETASAT': '0.105', 'RL_O40_CAPFORM': 'smooth', 'RL_O40_CAPPCT': '20', 'RL_O40_RECW': '0.47', 'RL_O40_PGMAT': '1', 'RL_O41_SDOFF': '2.98', 'RL_O41_CREDIT': '1', 'RL_O41_RESET': '1', 'RL_O41_INJ': '1'} ===
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+board total (numeraire): 661761
+
+BURN CENSUS
+  -- the supervisor's population (|fK-fP|>=0.02), n=264
+     band         n  burned  pts(board)
+     1-10        42       0           0
+     11-20       44       0           0
+     21-30       34       0           0
+     31-40       28       0           0
+     41+         52       0           0
+     pool        64       0           0
+     TOTAL      264       0           0
+  -- all young rows, n=289
+     band         n  burned  pts(board)
+     1-10        49       0           0
+     11-20       47       0           0
+     21-30       36       0           0
+     31-40       32       0           0
+     41+         54       0           0
+     pool        71       0           0
+     TOTAL      289       0           0
+  worst five (all young rows):
+     (none — the census is ZERO)
+
+BIRTHDAY CENSUS — the price on the 24th birthday, with games and output UNCHANGED
+  age-23 rows with a pedigree leg: 81
+  rows that GAIN 50% or more from the birthday alone: 0
+  points handed back across all age-23 rows: NET +0   GAINS ONLY +0   (the two readings are
+  different objects and both are printed: the birthday RAISES some rows and LOWERS others)
+  worst ratio: 1.0000   rows moving at all: 0
+  band         n  gain50+   movers     net points     gains only
+  1-10        10        0        0             +0             +0
+  11-20        8        0        0             +0             +0
+  21-30       10        0        0             +0             +0
+  31-40        9        0        0             +0             +0
+  41+         13        0        0             +0             +0
+  pool        31        0        0             +0             +0
+  the five largest ratios:
+     Nick Daicos              4      115g     9944 ->   9944   x1.000
+     Nasiah Wanganeen-Milera  11     102g     8644 ->   8644   x1.000
+     Bodhi Uwland             pool    70g     3568 ->   3568   x1.000
+     Jason Horne-Francis      1      100g     5600 ->   5600   x1.000
+     Finn Callaghan           3       90g     5516 ->   5516   x1.000
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1050000000   (ORDER P point estimate 0.1146463006)
+  ORDER S EFFECTIVE: LAMBDA 0.1743833037 (ORDER P 0.1743833037) · THETA_R 0.6021218649 · TMAX 19.430116
+  CAP FORM SMOOTH COMPRESSION  C = 10.978275 (p20 anchor) · RECENCY w 0.4700 · MATURE PREMIUM ON at 24+
+  THETA_R   0.6021218649   (ORDER P 0.6574385174)
+  TMAX      19.4301155062   (ORDER P 21.1232815488)   percentile p5, s_pQ -33.0613344987
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+
+DIAGNOSTIC IDENTITY  s_ped == s_age - pg : 0 of 715 rows disagree by more than 1e-9
+
+CHARGE DISTRIBUTION — the share of the pedigree leg removed
+  population                      n max charge      >90%      >75%      >50%    pts removed
+  all rows with a leg           715     81.12%         0        17       207          25867
+  carrying the new charge       715     81.12%         0        17       207          25867
+  the ten most heavily charged rows (CONSEQUENCES, NEVER TARGETS):
+     Callum Coleman-Jones     20    age 27    37g  v0    726   charged  81.12%
+     Paddy Dow                3     age 27    83g  v0   2729   charged  80.56%
+     Zane Duursma             4     age 21    38g  v0   1975   charged  79.25%
+     Chayce Jones             9     age 26   100g  v0   1289   charged  78.64%
+     Nikolas Cox              8     age 24    61g  v0   1126   charged  77.56%
+     Samson Ryan              42    age 26    29g  v0    637   charged  76.85%
+     Ryan Gardner             58    age 29    55g  v0    368   charged  76.83%
+     Luke Pedlar              11    age 24    49g  v0    977   charged  76.68%
+     Brandon Starcevich       18    age 27   141g  v0    862   charged  76.50%
+     Jaeger O'Meara           1     age 32   206g  v0   3273   charged  76.37%
+  by band:
+  band          n max charge      >90%      >75%      >50%
+  1-10        121     80.56%         0         8        38
+  11-20       112     81.12%         0         5        40
+  21-30        89     75.91%         0         2        30
+  31-40        64     74.82%         0         0        12
+  41+         129     76.85%         0         2        37
+  pool        200     74.48%         0         0        50
+
+THE NAMED ROWS — CONSEQUENCES, NEVER TARGETS
+  row                    pick   age  games      price     charge         v0
+  Zane Duursma              4    21     38        302    79.25%       1975
+  Josh Sinn                12    23     30        104    74.10%       1286
+  Campbell Chesser         14    23     39        183    73.61%       1174
+  Finn O'Sullivan           2    20     39       3186    47.37%       2869
+  Zeke Uwland               2    19     17       1786    61.55%       2454
+  Harley Reid               1    21     60       3819     3.82%       3273
+  Sam Darcy                 2    23     51       4450     0.00%       2180
+  Willem Duursma            1    19     19       4225    19.41%       3273
+  Sam Lalor                 1    20     22       3608    35.85%       3273
+
+wrote CENSUS_L5C_INJ.json

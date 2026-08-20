@@ -1,0 +1,82 @@
+============================================================================================================================
+ORDER 29  --  THE FULL COMPOSED MOVERS LEDGER  (vs live 88ce647f, all four levers)
+============================================================================================================================
+
+  stages, each an actual built board -- never a modelled step:
+    LIVE   88ce647f531030d8d2e094188b258191   the untouched tree, dial OFF
+    B_U    71cbb13b3414d031135771dd7e564b3c   + the unflag-three
+    B_G    0017657e0469addda9260964938bad78   + the grace dial ON
+    L3     5c0de646bd71c2e4e371bc83ccf476ef   + the ruled curve, v0surf re-bake, book re-seal
+    FINAL  86c8d5d9ba5b95e2cba05c78fbc31f78   + the numeraire re-pin
+
+  population   prev-ledger rows 804 · L3 804 · FINAL 804 · missing 0 · new 0
+
+  LEVER RECONCILIATION (per row, exact): rows failing 0   max |residual| 0
+
+  PER-LEVER SUMS (board points), and they add to the total exactly
+  lever                                 movers    sum delta      share
+  lever 1 — THE UNFLAG-THREE               543        -8695      18.7%
+  lever 2 — THE GRACE DIAL                  39         4671     -10.1%
+  lever 3 — THE CURVE + v0 REPRINT         200        -4372       9.4%
+  lever 4 — THE NUMERAIRE SCALAR           580       -38015      81.9%
+  ---------------------------------- --------- ------------
+  TOTAL (live -> final)                    714       -46411     100.0%
+  sum of the four lever sums                -46411   == total -46411   EXACT
+
+  BOARD TOTALS, live -> landed
+  stage    board md5                                   total  delta vs LIVE          pct
+  LIVE     88ce647f531030d8d2e094188b258191           752429              0      0.0000%
+  B_U      71cbb13b3414d031135771dd7e564b3c           743734          -8695     -1.1556%
+  B_G      0017657e0469addda9260964938bad78           748405          -4024     -0.5348%
+  L3       5c0de646bd71c2e4e371bc83ccf476ef           744033          -8396     -1.1159%
+  FINAL    86c8d5d9ba5b95e2cba05c78fbc31f78           706018         -46411     -6.1682%
+
+  NATIONAL vs POOL (national = effective pick 1..64; pool = the pool slot)
+  population                 n         LIVE        FINAL          delta        pct
+  national (ND 1-64)       561       620877       582031         -38846   -6.2566%
+  pool (past 64)           243       131552       123987          -7565   -5.7506%
+
+  MOVERS  714 of 804 rows  (88.8%)
+  unmoved 90
+  rising 32 · falling 682
+
+  THE NAMED ROWS (P14), live -> landed, with the full per-lever split
+  row                pos    pick     LIVE  L1 unfl L2 grace L3 curve   L4 num    FINAL    delta      pct
+  harrison-ramm      KPD       3      545       -4        0        0      -18      523      -22   -4.04%
+  luker-kentfield    KPF      11      419       -2        0        0       -9      408      -11   -2.63%
+  mani-liddy         MID      15      152        0        0        0        0      152        0    0.00%
+  robert-hansen      SF        2      132        0        0        0       -2      130       -2   -1.52%
+  dante-visentini    KPF      56     1274      -16        0        0      -68     1190      -84   -6.59%
+  vigo-visentini     RUCK      5      182        0        0        0        0      182        0    0.00%
+  nicholas-martin    SF       65     3513      -44        0        0     -188     3281     -232   -6.60%
+  marcus-herbert     MID      13      906      -12        0        0      -48      846      -60   -6.62%
+  jai-newcombe       MID       2     4883      -61        0        0     -261     4561     -322   -6.59%
+  willem-duursma     MID       1     3977      -50      538        0     -242     4223      246    6.19%
+  harry-sheezel      SF        3    11764     -146        0        0     -631    10987     -777   -6.60%
+
+  named rows that RISE: ['willem-duursma']
+
+  THE TWENTY LARGEST ABSOLUTE MOVERS
+  row                      pos       ep      LIVE        L1        L2        L3        L4     delta
+  harry-sheezel            SF         3     11764      -146         0         0      -631      -777
+  nick-daicos              MID        4     10945      -136         0         0      -587      -723
+  luke-jackson             RUCK       3     10203      -125         0         0      -547      -672
+  nasiah-wanganeen-milera  SD        11      9688      -119         0         0      -520      -639
+  max-holmes               MID       21      8406      -103         0         0      -451      -554
+  tristan-xerri            RUCK      65      7800       -97         0         0      -418      -515
+  will-ashcroft            MID        2      7330       -90         0         0      -394      -484
+  errol-gulden             MID       34      7239       -91         0         0      -386      -477
+  zak-butters              MID       12      7092       -87         0         0      -381      -468
+  josh-treacy              KPF       65      6921       -85         0         0      -372      -457
+  bailey-smith             MID        7      6683       -83         0         0      -358      -441
+  finn-callaghan           MID        3      6062       -75         0         0      -325      -400
+  jason-horne-francis      SF         1      6042       -74         0         0      -324      -398
+  lachlan-ash              SD         4      5728       -71         0         0      -307      -378
+  noah-anderson            MID        2      5256       -65         0         0      -282      -347
+  sam-darcy                KPF        2      5250       -66         0         0      -281      -347
+  caleb-serong             MID        8      5027       -62         0         0      -269      -331
+  jagga-smith              SF         3      4855       -61         0         0      -261      -322
+  jai-newcombe             MID       65      4883       -61         0         0      -261      -322
+  matt-rowell              MID        1      4770       -59         0         0      -255      -314
+
+  written: docs/ledgers/LANDING_29_MOVERS_2026-08-13.json

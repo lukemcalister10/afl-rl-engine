@@ -1,0 +1,13 @@
+s* fixed-point derivation (frozen basis; base=off_o32 board 557dbefe at cf443a6)
+tall anchor rows 23-26: n base 55 / new 55
+sum V base 43227.0  new 34657.0  new/base-1 = -19.8256%
+next s* iterate = 1.247280
+tall anchor rows 23-26: n base 55 / new 55
+sum V base 43227.0  new 41740.0  new/base-1 = -3.4400%
+next s* iterate = 1.291715
+tall anchor rows 23-26: n base 55 / new 55
+sum V base 43227.0  new 42992.0  new/base-1 = -0.5436%
+next s* iterate = 1.298776
+tall anchor rows 23-26: n base 55 / new 55
+sum V base 43227.0  new 43200.0  new/base-1 = -0.0625%
+next s* iterate = 1.299588

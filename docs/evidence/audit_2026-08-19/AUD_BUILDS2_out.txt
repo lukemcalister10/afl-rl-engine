@@ -1,0 +1,25 @@
+===== POST-BREAK-COMMIT · candidate must STILL be fbf61d05 (break dial unset) =====
+exit=0
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/audbb/bb_AUD_C3/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/audbb/bb_AUD_C3/rl_after/rl_model_data.json
+fbf61d052d6cd77e73f9338e17113eb6  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/audbb/bb_AUD_C3/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+===== FRACTIONAL VARIANT (target 2eac9bc7) =====
+exit=0
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/audbb/bb_AUD_FR1/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/audbb/bb_AUD_FR1/rl_after/rl_model_data.json
+2eac9bc79b27c5c184151b9aa0d9bdfc  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/audbb/bb_AUD_FR1/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+===== FRACTIONAL determinism repeat =====
+exit=0
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/audbb/bb_AUD_FR2/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/audbb/bb_AUD_FR2/rl_after/rl_model_data.json
+2eac9bc79b27c5c184151b9aa0d9bdfc  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/audbb/bb_AUD_FR2/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+===== DIAL-OFF must STILL be 374d4e44 =====
+exit=0
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/audbb/bb_AUD_P2/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/audbb/bb_AUD_P2/rl_after/rl_model_data.json
+374d4e442665771801c5f1edd2a7e0e2  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/audbb/bb_AUD_P2/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+ALL DONE 2

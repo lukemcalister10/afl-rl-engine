@@ -1,0 +1,63 @@
+ORDER M sweep — ORDER I legs, 1986 rows x 15 doses (leg identity: PASS)
+grid: dose 15 x kappa 14 x gamma_u 6 x lam_rel 6 = 7560 points   (eta pinned 0, gamma_d inert)
+
+CONTROL 1 (M6) — corrected age-fair surface vs REMIX_32R.json: W 0.4126838584 vs 0.4126838584 (dev 0.00e+00) · cells 0.00e+00 · terciles 0.00e+00  -> EXACT
+
+CONTROL 2 (M6) — THE LANDING CANDIDATE on this instrument (dose 0, repair knobs, POOLED fade):
+   class mark 1.0421  (the W2 number of record: 1.0421) · max class 1.1311 · bands 1-10 +7.20% 11-20 +11.52% 21-30 +5.92% 31-40 -10.46% 41-64 -7.30%
+
+CONTROL 3 — ORDER K's RULED SETTING on this instrument (dose .40 k .20 gu 8 eta .50 gd 14 rel 1.08):
+   class 1.0519 · max class 1.1385 on 2010 · slope 0.976 · W 0.327 · bands 1-10 +7.58% 11-20 +13.82% 21-30 +8.26% 31-40 -8.54% 41-64 -6.50%
+   (ORDER K published 1.0519 / 1.1385 here; the built board reads class 1.0513 on the registered
+    W2 basis and picks 1-10 +8.22%. The calibrator runs hot on the young bands — ORDER J said so
+    in advance and ORDER K measured it. NOTHING below is a decision.)
+
+CONTROL 4 — ORDER K's SETTING WITH ETA SET TO ZERO AND NOTHING ELSE CHANGED:
+   class 1.2052 (+0.1533) · max class 1.3087 (+0.1702) · bands 1-10 +30.94% 11-20 +32.33% 21-30 +23.60% 31-40 +1.13% 41-64 +2.19%
+
+ruled at-bar continuity object: 8 at-bar rows per dose
+rho32 monotonicity: 73 of 84 (kappa, gamma_u) pairs pass
+  dose 0.00 done (0s)
+  dose 0.10 done (0s)
+  dose 0.15 done (1s)
+  dose 0.20 done (1s)
+  dose 0.25 done (1s)
+  dose 0.30 done (1s)
+  dose 0.35 done (1s)
+  dose 0.40 done (1s)
+  dose 0.45 done (2s)
+  dose 0.50 done (2s)
+  dose 0.55 done (2s)
+  dose 0.60 done (2s)
+  dose 0.70 done (2s)
+  dose 0.85 done (3s)
+  dose 1.00 done (3s)
+
+swept 7560 points in 3s
+
+RULED-CONSTRAINT failure counts over the whole eta=0 grid (7560 points): {'maxclass-1.139': 7560, 'W-band': 3654, 'at-bar-continuity': 3276, 'rho32-mono': 990, 'slope-band': 12}
+OWNER-LAW      failure counts over the whole eta=0 grid (7560 points): {'G3-band': 7560, 'G1-rail': 7410, 'G2-4164-vsK': 24}
+
+points feasible on the INHERITED RULED CONSTRAINTS : 0 of 7560
+points feasible on the OWNER'S LAWS                : 0 of 7560
+points feasible on BOTH                            : 0 of 7560
+
+-- WHAT BREAKS FIRST, AS THE DOSE RISES (best point at each dose) --
+   dose |  ruled  lawok   both      n |  bestcls minmaxcl | first breach seen at this dose
+   0.00 |      0      0      0    504 |   1.3357   1.2067 | maxclass-1.139 504, G3-band 504, G1-rail 426, W-band 366
+   0.10 |      0      0      0    504 |   1.3538   1.2213 | maxclass-1.139 504, G3-band 504, G1-rail 468, W-band 342
+   0.15 |      0      0      0    504 |   1.3637   1.2292 | maxclass-1.139 504, G3-band 504, G1-rail 468, W-band 330
+   0.20 |      0      0      0    504 |   1.3741   1.2375 | maxclass-1.139 504, G1-rail 504, G3-band 504, W-band 330
+   0.25 |      0      0      0    504 |   1.3864   1.2462 | maxclass-1.139 504, G1-rail 504, G3-band 504, W-band 312
+   0.30 |      0      0      0    504 |   1.3982   1.2553 | maxclass-1.139 504, G1-rail 504, G3-band 504, W-band 294
+   0.35 |      0      0      0    504 |   1.4110   1.2668 | maxclass-1.139 504, G1-rail 504, G3-band 504, W-band 294
+   0.40 |      0      0      0    504 |   1.4241   1.2769 | maxclass-1.139 504, G1-rail 504, G3-band 504, W-band 282
+   0.45 |      0      0      0    504 |   1.4379   1.2874 | maxclass-1.139 504, G1-rail 504, G3-band 504, W-band 258
+   0.50 |      0      0      0    504 |   1.4524   1.2984 | maxclass-1.139 504, G1-rail 504, G3-band 504, W-band 234
+   0.55 |      0      0      0    504 |   1.4677   1.3099 | maxclass-1.139 504, G1-rail 504, G3-band 504, at-bar-continuity 216
+   0.60 |      0      0      0    504 |   1.4836   1.3219 | maxclass-1.139 504, G1-rail 504, G3-band 504, at-bar-continuity 216
+   0.70 |      0      0      0    504 |   1.5207   1.3473 | maxclass-1.139 504, G1-rail 504, G3-band 504, at-bar-continuity 216
+   0.85 |      0      0      0    504 |   1.5786   1.3893 | maxclass-1.139 504, G1-rail 504, G3-band 504, at-bar-continuity 216
+   1.00 |      0      0      0    504 |   1.6423   1.4357 | maxclass-1.139 504, G1-rail 504, G3-band 504, at-bar-continuity 216
+
+-- NO POINT IN THE DECLARED GRID IS LEGAL ON BOTH SETS. --

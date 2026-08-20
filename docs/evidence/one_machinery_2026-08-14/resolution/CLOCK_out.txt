@@ -1,0 +1,161 @@
+====================================================================================================
+ORDER 30B-R -- T2 THE CLOCK: recency-weighted evidence u vs raw career games g
+====================================================================================================
+pins: {"layer1": "ad1229ea6f443538479447132382b21c", "merged_recover": "95caabf76193b9f8d562a5cda1d38cdc", "store": "cb38ef1171dcf20aae66ebf12682be0d", "v0_artifact": "dc324ad924370d0eb6c012d5a3a93371"}
+recency constant d = 0.25 per year back (THE ENGINE'S OWN RULED CONSTANT -- not fitted here)
+panel: 4033 states, 767 players.  Target R = discounted remaining 6-season delivered value.
+CONTROL -- 30B-M reported 4,033 states on this population; this rebuild has 4033.
+
+u band edges, set by the RAW bands' own population fractions (no edge chosen after a reading):
+   raw edge   <=5 -> population frac 0.0947 -> u edge    3.718
+   raw edge  <=15 -> population frac 0.2413 -> u edge    8.312
+   raw edge  <=35 -> population frac 0.4481 -> u edge   15.750
+   raw edge  <=70 -> population frac 0.6680 -> u edge   23.000
+
+band populations:  g {'0-5': 382, '6-15': 591, '16-35': 834, '36-70': 887, '71+': 1339}
+                   u {'U1': 382, 'U2': 592, 'U3': 836, 'U4': 896, 'U5': 1327}
+
+====================================================================================================
+T2.1 -- THE PERSISTENCE CURVE ON EACH CLOCK (same states, same target, same design)
+====================================================================================================
+
+  clock = RAW g
+  band          n   clust    beta_v0        t     sigma         sigma 90% CI    mean v0     mean R
+  0-5         382     332    0.29683     3.76     70.1%      42.9%..99.6    %      600.2      254.1
+           g median clock 3.00  (range 1.00 .. 5.00)
+  6-15        591     467    0.36226     5.95     66.4%      47.7%..83.0    %      730.4      398.4
+           g median clock 10.00  (range 6.00 .. 15.00)
+  16-35       834     571    0.22330     4.25     33.1%      20.8%..45.6    %      847.4      571.2
+           g median clock 23.00  (range 16.00 .. 35.00)
+  36-70       887     436    0.15315     2.39     16.5%       5.9%..28.0    %      920.5      857.0
+           g median clock 50.00  (range 36.00 .. 70.00)
+  71+        1339     297    0.02007     0.49      2.2%      -4.6%..10.5    %     1123.8     1018.2
+           g median clock 117.00  (range 71.00 .. 295.00)
+
+  clock = RECENCY u
+  band          n   clust    beta_v0        t     sigma         sigma 90% CI    mean v0     mean R
+  U1          382     305    0.16666     2.91     49.6%      26.3%..84.2    %      632.4      212.3
+           u median clock 2.00  (range 1.00 .. 3.69)
+  U2          592     399    0.13837     3.33     42.6%      21.8%..64.9    %      726.0      235.6
+           u median clock 6.00  (range 3.72 .. 8.31)
+  U3          836     462    0.24420     4.96     47.2%      33.0%..63.0    %      790.9      409.1
+           u median clock 11.72  (range 8.34 .. 15.75)
+  U4          896     427    0.07525     1.55     10.3%       0.1%..22.3    %      964.3      706.8
+           u median clock 19.81  (range 15.80 .. 23.00)
+  U5         1327     343    0.08085     1.52      6.9%      -0.4%..14.1    %     1124.6     1308.6
+           u median clock 27.30  (range 23.03 .. 33.69)
+
+====================================================================================================
+T2.2 -- HELD-OUT: 5-fold cluster CV, folds by md5(key) mod 5, pooled OOF RMSE.  LOWER WINS.
+====================================================================================================
+  fold sizes (states): {0: 903, 1: 834, 2: 809, 3: 749, 4: 738}
+  fold sizes (players): {0: 156, 1: 155, 2: 153, 3: 152, 4: 151}
+
+  clock            OOF RMSE      OOF MAE     OOF R2  fallbacks
+  RAW g             715.152      485.776    0.53271          0
+  RECENCY u         722.868      491.370    0.52257          0
+
+  RMSE improvement of u over g: -1.0789%   -->  WINNER: RAW g
+  paired cluster bootstrap (1000 draws) on RMSE(g) - RMSE(u):
+     median -7.517   90% interval [-16.439 , +1.779]   share of draws favouring u 0.097
+
+  OOF RMSE by RAW games class, both PREREGISTERED clocks (the same rows scored twice):
+  cg            n       RMSE g       RMSE u  u better?
+  0-5         382      494.481      481.135        YES
+  6-15        591      585.790      586.659         no
+  16-35       834      724.883      723.658        YES
+  36-70       887      793.814      810.751         no
+  71+        1339      757.970      770.912         no
+
+  ---- POST-HOC, NOT PREREGISTERED, LABELLED AS SUCH -------------------------------------------
+  The band table above points straight at a hybrid: the recency clock wins where evidence is thin
+  and loses where careers are long.  A third arm is therefore scored and reported.  It did NOT
+  exist in the prereg, it is NOT eligible to win the criterion, and it is published so the owner
+  can see it rather than have it discovered later.
+     HYBRID: bands assigned by RAW g; the log1p(clock) term reads u in 0-5 / 6-15 / 16-35 and
+             g in 36-70 / 71+.
+     OOF RMSE 715.355   MAE 486.148   R2 0.53244   (raw g 715.152, recency u 722.868)
+     improvement over raw g: -0.0284%
+     paired cluster bootstrap on RMSE(g) - RMSE(hybrid): median -0.229  90% [-0.748 , +0.325]
+     share of draws favouring the hybrid: 0.253
+  ----------------------------------------------------------------------------------------------
+
+  CLOCK SATURATION, the mechanism behind the deep-band loss:
+     raw g  spans 1 .. 295  (ratio 295.0x)
+     u      spans 1.00 .. 33.69  (ratio 33.7x)
+     with d = 0.25 a full-season player converges to 20/(1-0.25) = 26.67, so the recency clock
+     CANNOT separate a 71-game player from a 295-game one.  The 71+ band (n 1339) spans u 2.89..33.69.
+
+====================================================================================================
+T2.3 -- THE AGE LENS UNDER EACH CLOCK (matched pick contrast, pos x age-group x output quintile)
+====================================================================================================
+
+  NOTE ON CELL MINIMA, stated before the numbers: the preview AGE_LENS pooled the COMMITTED cell
+  table (pos|age|games band|output quintile|pick band, min cell 8).  This harness re-cuts the PANEL,
+  so the 24+ x 16-35 subgroup is thin at min-cell 8 and empties.  Both minima are published; the
+  verdict is stated so that it does not depend on which is read.
+
+  --- stratum cell minimum = 8 ---
+  clock RAW g       band 16-35  (n 834 states; <=20 n 324, 24+ n 82)
+     <=20 : matched contrast    +462.4  n  102 over 3 strata
+     24+  : EMPTY at this minimum
+  clock RECENCY u   band U3     (n 836 states; <=20 n 270, 24+ n 223)
+     <=20 : matched contrast    +742.8  n   81 over 3 strata
+     24+  : EMPTY at this minimum
+     GAP SHRINKAGE: NOT COMPUTABLE at this minimum -- one cell is empty.
+
+  --- stratum cell minimum = 3 ---
+  clock RAW g       band 16-35  (n 834 states; <=20 n 324, 24+ n 82)
+     <=20 : matched contrast    +394.0  n  199 over 10 strata
+     24+  : EMPTY at this minimum
+  clock RECENCY u   band U3     (n 836 states; <=20 n 270, 24+ n 223)
+     <=20 : matched contrast    +512.1  n  148 over 8 strata
+     24+  : matched contrast    -170.0  n    8 over 1 strata
+     GAP  :    +682.2
+     cluster bootstrap of the gap: median +498.4  90% [+78.1 , +887.9]  z +1.83  (595 draws)
+     GAP SHRINKAGE: NOT COMPUTABLE at this minimum -- one cell is empty.
+
+====================================================================================================
+T2.4 -- THE KAKO YEAR-3 SCENARIO, PRICED UNDER BOTH CLOCKS
+====================================================================================================
+  stipulated: SF, effective pick 13, age 20 at the end of year 3, Step-1 v0 = 759.8
+  path A: 18 games in each of years 1 and 2 (36 total) at a MODEST avg, then 20 games @ 75 in yr 3
+  path B: no games in years 1 and 2, then the IDENTICAL year-3 season
+  "modest" is not a number, so the whole grid [55.0, 60.0, 65.0, 70.0] is published; the SF bar is 67.9.
+
+  path A: raw g  56.00   recency u  25.62
+  path B: raw g  20.00   recency u  20.00   output window o 75.00   cur    208.1
+
+  LENS 1 -- the MEASUREMENT's currency: predicted remaining 6-season delivered value R-hat
+            from the band model each clock selects.  Full-panel fits (not held-out).
+  modest clock         band A   band B      R-hat A      R-hat B   B over A
+  55     RAW g          36-70    16-35       1110.2       1187.8     +6.99%
+  55     RECENCY u         U5       U4       1448.4       1303.4    -10.01%
+  60     RAW g          36-70    16-35       1152.1       1187.8     +3.10%
+  60     RECENCY u         U5       U4       1489.5       1303.4    -12.50%
+  65     RAW g          36-70    16-35       1211.4       1187.8     -1.95%
+  65     RECENCY u         U5       U4       1541.9       1303.4    -15.47%
+  70     RAW g          36-70    16-35       1307.9       1187.8     -9.18%
+  70     RECENCY u         U5       U4       1624.9       1303.4    -19.79%
+
+  LENS 2 -- the BOARD's currency: the blend arithmetic with the PRODUCTION LEG HELD IDENTICAL
+            between the two paths, so the ONLY difference priced is the evidence clock.
+            sigma is the 30B-P wired curve exp(-(x/23)^0.80) evaluated on each clock's axis,
+            and re-fitted to THIS order's own u-curve for the recency row.  Both shown.
+
+     refit of the ruled family to THIS order's band medians:
+        raw g   : tau   22.50  beta  0.76  n-weighted SSE   89563.56   (30B-P wired: tau 23.00 beta 0.80)
+        recency u: tau    8.00  beta  0.59  n-weighted SSE  472091.99
+
+     production leg held at 744.3 (kako's own measured preview leg), v0 = 759.8
+     clock / curve               sigma A  sigma B    price A    price B  B over A
+     raw g, 30B-P wired curve     0.1303   0.4089      746.3      750.6    +0.58%
+     raw g, this order refit      0.1354   0.4008      746.4      750.5    +0.55%
+     recency u, this order refit   0.1370   0.1796      746.4      747.1    +0.09%
+
+     SENSITIVITY -- the same three rows with the production leg swept, since B/A depends on P vs v0:
+     clock / curve                   P=300      P=600      P=900     P=1500     P=2500
+     raw g, 30B-P wired curve       35.59%      7.17%     -4.43%    -14.69%    -21.33%
+     raw g, this order refit        33.68%      6.82%     -4.22%    -14.03%    -20.40%
+     recency u, this order refit      5.39%      1.09%     -0.68%     -2.25%     -3.27%
+

@@ -1,0 +1,42 @@
+{
+ "picks 41-64": {
+  "control": 263.98068181818184,
+  "stage1": 265.7902272727273,
+  "full": 268.8575,
+  "rel_stage2": 0.00685,
+  "rel_full": 0.01847,
+  "attribution": "TAPER LEG (B-3 ruled ceiling repair)"
+ },
+ "arm RD": {
+  "control": 1.0116167276698358,
+  "stage1": 1.013525199403292,
+  "full": 1.0405429412671419,
+  "rel_stage2": 0.00189,
+  "rel_full": 0.02859,
+  "attribution": "TAPER LEG (B-3 ruled ceiling repair)"
+ },
+ "arm UNR": {
+  "control": 0.622425266715961,
+  "stage1": 0.6199781697827543,
+  "full": 0.6542903418893704,
+  "rel_stage2": -0.00393,
+  "rel_full": 0.0512,
+  "attribution": "TAPER LEG (B-3 ruled ceiling repair)"
+ },
+ "arm SSP": {
+  "control": 1.5316633483045485,
+  "stage1": 1.5315861770924974,
+  "full": 1.597382352487228,
+  "rel_stage2": -5e-05,
+  "rel_full": 0.04291,
+  "attribution": "TAPER LEG (B-3 ruled ceiling repair)"
+ },
+ "arm ALLPOOL": {
+  "control": 0.9954111119564719,
+  "stage1": 0.9970487593423882,
+  "full": 1.0232670854009407,
+  "rel_stage2": 0.00165,
+  "rel_full": 0.02798,
+  "attribution": "TAPER LEG (B-3 ruled ceiling repair)"
+ }
+}

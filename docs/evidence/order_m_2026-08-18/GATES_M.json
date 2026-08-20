@@ -1,0 +1,839 @@
+{
+ "boards": {
+  "K": "f3101883a60b0a7b8cb50f9d8a5abfff",
+  "M0": "73bf961724e77f0bda996825125a07ad",
+  "M0R": "73bf961724e77f0bda996825125a07ad",
+  "MLO": "ba97fb732cedcc653bb93cae493eccd3",
+  "MMIN": "d0fa4ab799abd681516f6346bf8c9f62",
+  "cand": "1f17644445f074d11e631b5cbae98a9a",
+  "s1": "0423c8b20c0571fab0e5dd5ebc01c394"
+ },
+ "by_games": {
+  "0": [
+   89,
+   0
+  ],
+  "1-4": [
+   48,
+   2569
+  ],
+  "10-15": [
+   48,
+   6554
+  ],
+  "16-29": [
+   80,
+   11084
+  ],
+  "30-59": [
+   100,
+   4002
+  ],
+  "5-9": [
+   51,
+   4875
+  ],
+  "60+": [
+   388,
+   553
+  ]
+ },
+ "g5": {
+  "cooper-duff-tytler": {
+   "K": 1505,
+   "M0": 2057,
+   "M0R": 2057,
+   "M0_minus_K": 552,
+   "M0_minus_landing": 485,
+   "M0_short_of_target": -257,
+   "MLO": 1965,
+   "MMIN": 1635,
+   "c31": 1832,
+   "cand": 1572,
+   "s1": 1657,
+   "target": 1800
+  },
+  "harry-dean": {
+   "K": 2403,
+   "M0": 3069,
+   "M0R": 3069,
+   "M0_minus_K": 666,
+   "M0_minus_landing": 669,
+   "M0_short_of_target": -469,
+   "MLO": 2872,
+   "MMIN": 2451,
+   "c31": 2670,
+   "cand": 2400,
+   "s1": 2621,
+   "target": 2600
+  }
+ },
+ "g6": {
+  "daniel-annable": {
+   "K": 1537,
+   "M0": 1761,
+   "M0R": 1761,
+   "MLO": 1671,
+   "MMIN": 1582,
+   "cand": 1530,
+   "d_K_vs_landing": 7,
+   "d_M0_vs_landing": 231,
+   "s1": 1570
+  },
+  "dylan-patterson": {
+   "K": 1440,
+   "M0": 1824,
+   "M0R": 1824,
+   "MLO": 1724,
+   "MMIN": 1538,
+   "cand": 1467,
+   "d_K_vs_landing": -27,
+   "d_M0_vs_landing": 357,
+   "s1": 1515
+  },
+  "xavier-taylor": {
+   "K": 1162,
+   "M0": 1345,
+   "M0R": 1345,
+   "MLO": 1307,
+   "MMIN": 1216,
+   "cand": 1176,
+   "d_K_vs_landing": -14,
+   "d_M0_vs_landing": 169,
+   "s1": 1191
+  }
+ },
+ "jtol": {
+  "K": {
+   "churn": 947,
+   "n_move": 124,
+   "net": -601,
+   "per_row_breaches": 79,
+   "worst": -77,
+   "worst_row": "Ned Moyle"
+  },
+  "M0": {
+   "churn": 2923,
+   "n_move": 163,
+   "net": 2781,
+   "per_row_breaches": 105,
+   "worst": 138,
+   "worst_row": "Billy Cootee"
+  },
+  "MLO": {
+   "churn": 2962,
+   "n_move": 164,
+   "net": 2832,
+   "per_row_breaches": 109,
+   "worst": 168,
+   "worst_row": "Billy Cootee"
+  },
+  "MMIN": {
+   "churn": 1118,
+   "n_move": 128,
+   "net": 688,
+   "per_row_breaches": 90,
+   "worst": 65,
+   "worst_row": "Liam McMahon"
+  },
+  "s1": {
+   "churn": 0,
+   "n_move": 0,
+   "net": 0,
+   "per_row_breaches": 0,
+   "worst": 0,
+   "worst_row": null
+  }
+ },
+ "m1_dial_off": true,
+ "m2_orderK_reproduces": true,
+ "m3_determinism": true,
+ "movers_M0_vs_K": {
+  "down": [
+   [
+    "zak-evans",
+    0
+   ],
+   [
+    "zak-butters",
+    0
+   ],
+   [
+    "zachary-williams",
+    0
+   ],
+   [
+    "zachary-merrett",
+    0
+   ],
+   [
+    "zac-walker",
+    0
+   ],
+   [
+    "zac-mccarthy",
+    0
+   ],
+   [
+    "zac-fisher",
+    0
+   ],
+   [
+    "zac-bailey",
+    0
+   ],
+   [
+    "xavier-walsh",
+    0
+   ],
+   [
+    "xavier-o-halloran",
+    0
+   ],
+   [
+    "xavier-duursma",
+    0
+   ],
+   [
+    "willem-drew",
+    0
+   ],
+   [
+    "will-hayward",
+    0
+   ],
+   [
+    "will-darcy",
+    0
+   ],
+   [
+    "wil-powell",
+    0
+   ],
+   [
+    "wayne-milera",
+    0
+   ],
+   [
+    "tyler-welsh",
+    0
+   ],
+   [
+    "tylah-williams",
+    0
+   ],
+   [
+    "tyan-prindable",
+    0
+   ],
+   [
+    "trent-rivers",
+    0
+   ],
+   [
+    "touk-miller",
+    0
+   ],
+   [
+    "tom-sparrow",
+    0
+   ],
+   [
+    "tom-papley",
+    0
+   ],
+   [
+    "tom-mcdonald",
+    0
+   ],
+   [
+    "tom-mccartin",
+    0
+   ],
+   [
+    "tom-lynch-1",
+    0
+   ],
+   [
+    "tom-green",
+    0
+   ],
+   [
+    "tom-de-koning",
+    0
+   ],
+   [
+    "tom-cole",
+    0
+   ],
+   [
+    "tom-barrass",
+    0
+   ],
+   [
+    "tom-atkins",
+    0
+   ],
+   [
+    "todd-marshall",
+    0
+   ],
+   [
+    "tobyn-murray",
+    0
+   ],
+   [
+    "toby-whan",
+    0
+   ],
+   [
+    "toby-nankervis",
+    0
+   ],
+   [
+    "toby-greene",
+    0
+   ],
+   [
+    "toby-bedford",
+    0
+   ],
+   [
+    "timothy-english",
+    0
+   ],
+   [
+    "tim-taranto",
+    0
+   ],
+   [
+    "tim-membrey",
+    0
+   ]
+  ],
+  "up": [
+   [
+    "willem-duursma",
+    883
+   ],
+   [
+    "sam-lalor",
+    788
+   ],
+   [
+    "sid-draper",
+    714
+   ],
+   [
+    "jagga-smith",
+    711
+   ],
+   [
+    "harry-dean",
+    666
+   ],
+   [
+    "zeke-uwland",
+    636
+   ],
+   [
+    "cooper-duff-tytler",
+    552
+   ],
+   [
+    "sam-cumming",
+    486
+   ],
+   [
+    "sullivan-robey",
+    485
+   ],
+   [
+    "dyson-sharp",
+    452
+   ],
+   [
+    "elijah-tsatas",
+    391
+   ],
+   [
+    "dylan-patterson",
+    384
+   ],
+   [
+    "taj-hotton",
+    384
+   ],
+   [
+    "samuel-grlj",
+    382
+   ],
+   [
+    "jacob-farrow",
+    360
+   ],
+   [
+    "tobie-travaglia",
+    298
+   ],
+   [
+    "phoenix-gothard",
+    295
+   ],
+   [
+    "xavier-lindsay",
+    285
+   ],
+   [
+    "harry-kyle",
+    282
+   ],
+   [
+    "finn-o-sullivan",
+    268
+   ],
+   [
+    "latrelle-pickett",
+    266
+   ],
+   [
+    "mitchell-edwards",
+    266
+   ],
+   [
+    "jai-murray",
+    259
+   ],
+   [
+    "josh-lindsay",
+    254
+   ],
+   [
+    "beau-addinsall",
+    250
+   ],
+   [
+    "alix-tauru",
+    229
+   ],
+   [
+    "daniel-annable",
+    224
+   ],
+   [
+    "sam-marshall",
+    214
+   ],
+   [
+    "leo-lombard",
+    212
+   ],
+   [
+    "jedd-busslinger",
+    194
+   ],
+   [
+    "clay-hall",
+    186
+   ],
+   [
+    "xavier-taylor",
+    183
+   ],
+   [
+    "harry-armstrong",
+    177
+   ],
+   [
+    "thomas-sims",
+    171
+   ],
+   [
+    "jordan-croft",
+    169
+   ],
+   [
+    "toby-conway",
+    167
+   ],
+   [
+    "billy-cootee",
+    163
+   ],
+   [
+    "samuel-swadling",
+    163
+   ],
+   [
+    "jhye-clark",
+    162
+   ],
+   [
+    "lachy-dovaston",
+    161
+   ]
+  ]
+ },
+ "named": {
+  "alex-dodson": {
+   "K": 198,
+   "M0": 207,
+   "M0R": 207,
+   "MLO": 169,
+   "MMIN": 194,
+   "c31": 175,
+   "cand": 171,
+   "s1": 177
+  },
+  "alix-tauru": {
+   "K": 881,
+   "M0": 1110,
+   "M0R": 1110,
+   "MLO": 1079,
+   "MMIN": 931,
+   "c31": 1005,
+   "cand": 920,
+   "s1": 960
+  },
+  "campbell-chesser": {
+   "K": 333,
+   "M0": 387,
+   "M0R": 387,
+   "MLO": 372,
+   "MMIN": 347,
+   "c31": 352,
+   "cand": 332,
+   "s1": 339
+  },
+  "chris-scerri": {
+   "K": 321,
+   "M0": 355,
+   "M0R": 355,
+   "MLO": 289,
+   "MMIN": 309,
+   "c31": 232,
+   "cand": 313,
+   "s1": 339
+  },
+  "colby-mckercher": {
+   "K": 4167,
+   "M0": 4223,
+   "M0R": 4223,
+   "MLO": 4028,
+   "MMIN": 3985,
+   "c31": 4018,
+   "cand": 3977,
+   "s1": 4181
+  },
+  "cooper-duff-tytler": {
+   "K": 1505,
+   "M0": 2057,
+   "M0R": 2057,
+   "MLO": 1965,
+   "MMIN": 1635,
+   "c31": 1832,
+   "cand": 1572,
+   "s1": 1657
+  },
+  "daniel-annable": {
+   "K": 1537,
+   "M0": 1761,
+   "M0R": 1761,
+   "MLO": 1671,
+   "MMIN": 1582,
+   "c31": 1633,
+   "cand": 1530,
+   "s1": 1570
+  },
+  "dylan-patterson": {
+   "K": 1440,
+   "M0": 1824,
+   "M0R": 1824,
+   "MLO": 1724,
+   "MMIN": 1538,
+   "c31": 1675,
+   "cand": 1467,
+   "s1": 1515
+  },
+  "harry-dean": {
+   "K": 2403,
+   "M0": 3069,
+   "M0R": 3069,
+   "MLO": 2872,
+   "MMIN": 2451,
+   "c31": 2670,
+   "cand": 2400,
+   "s1": 2621
+  },
+  "isaac-kako": {
+   "K": 832,
+   "M0": 920,
+   "M0R": 920,
+   "MLO": 859,
+   "MMIN": 799,
+   "c31": 806,
+   "cand": 788,
+   "s1": 856
+  },
+  "james-leake": {
+   "K": 438,
+   "M0": 597,
+   "M0R": 597,
+   "MLO": 576,
+   "MMIN": 482,
+   "c31": 501,
+   "cand": 457,
+   "s1": 473
+  },
+  "jedd-busslinger": {
+   "K": 605,
+   "M0": 799,
+   "M0R": 799,
+   "MLO": 774,
+   "MMIN": 655,
+   "c31": 469,
+   "cand": 579,
+   "s1": 605
+  },
+  "josh-smillie": {
+   "K": 772,
+   "M0": 772,
+   "M0R": 772,
+   "MLO": 772,
+   "MMIN": 772,
+   "c31": 459,
+   "cand": 772,
+   "s1": 772
+  },
+  "levi-ashcroft": {
+   "K": 3365,
+   "M0": 3471,
+   "M0R": 3471,
+   "MLO": 3269,
+   "MMIN": 3182,
+   "c31": 3014,
+   "cand": 3173,
+   "s1": 3399
+  },
+  "logan-morris": {
+   "K": 2889,
+   "M0": 2896,
+   "M0R": 2896,
+   "MLO": 2695,
+   "MMIN": 2679,
+   "c31": 2683,
+   "cand": 2682,
+   "s1": 2895
+  },
+  "milan-murdock": {
+   "K": 156,
+   "M0": 196,
+   "M0R": 196,
+   "MLO": 197,
+   "MMIN": 171,
+   "c31": 187,
+   "cand": 170,
+   "s1": 170
+  },
+  "murphy-reid": {
+   "K": 3383,
+   "M0": 3422,
+   "M0R": 3422,
+   "MLO": 3199,
+   "MMIN": 3124,
+   "c31": 3139,
+   "cand": 3147,
+   "s1": 3424
+  },
+  "noah-mraz": {
+   "K": 2019,
+   "M0": 2089,
+   "M0R": 2089,
+   "MLO": 1523,
+   "MMIN": 1837,
+   "c31": 1147,
+   "cand": 1795,
+   "s1": 2003
+  },
+  "oskar-taylor": {
+   "K": 596,
+   "M0": 596,
+   "M0R": 596,
+   "MLO": 596,
+   "MMIN": 596,
+   "c31": 529,
+   "cand": 596,
+   "s1": 596
+  },
+  "sam-sturt": {
+   "K": 75,
+   "M0": 111,
+   "M0R": 111,
+   "MLO": 104,
+   "MMIN": 89,
+   "c31": 104,
+   "cand": 77,
+   "s1": 77
+  },
+  "sam-taylor": {
+   "K": 1119,
+   "M0": 1119,
+   "M0R": 1119,
+   "MLO": 1119,
+   "MMIN": 1119,
+   "c31": 1119,
+   "cand": 1119,
+   "s1": 1119
+  },
+  "steely-green": {
+   "K": 76,
+   "M0": 89,
+   "M0R": 89,
+   "MLO": 86,
+   "MMIN": 79,
+   "c31": 60,
+   "cand": 80,
+   "s1": 82
+  },
+  "taylor-walker": {
+   "K": 129,
+   "M0": 129,
+   "M0R": 129,
+   "MLO": 129,
+   "MMIN": 129,
+   "c31": 129,
+   "cand": 129,
+   "s1": 129
+  },
+  "thomas-burton": {
+   "K": 323,
+   "M0": 353,
+   "M0R": 353,
+   "MLO": 273,
+   "MMIN": 311,
+   "c31": 213,
+   "cand": 309,
+   "s1": 333
+  },
+  "toby-conway": {
+   "K": 899,
+   "M0": 1066,
+   "M0R": 1066,
+   "MLO": 994,
+   "MMIN": 961,
+   "c31": 729,
+   "cand": 855,
+   "s1": 857
+  },
+  "toby-greene": {
+   "K": 805,
+   "M0": 805,
+   "M0R": 805,
+   "MLO": 805,
+   "MMIN": 805,
+   "c31": 805,
+   "cand": 805,
+   "s1": 805
+  },
+  "tom-brown": {
+   "K": 515,
+   "M0": 530,
+   "M0R": 530,
+   "MLO": 517,
+   "MMIN": 510,
+   "c31": 445,
+   "cand": 507,
+   "s1": 517
+  },
+  "tom-green": {
+   "K": 4339,
+   "M0": 4339,
+   "M0R": 4339,
+   "MLO": 4340,
+   "MMIN": 4339,
+   "c31": 4305,
+   "cand": 4339,
+   "s1": 4339
+  },
+  "will-ashcroft": {
+   "K": 6597,
+   "M0": 6607,
+   "M0R": 6607,
+   "MLO": 6501,
+   "MMIN": 6487,
+   "c31": 6494,
+   "cand": 6487,
+   "s1": 6600
+  },
+  "will-brodie": {
+   "K": 788,
+   "M0": 807,
+   "M0R": 807,
+   "MLO": 807,
+   "MMIN": 795,
+   "c31": 702,
+   "cand": 791,
+   "s1": 791
+  },
+  "will-green": {
+   "K": 621,
+   "M0": 673,
+   "M0R": 673,
+   "MLO": 650,
+   "MMIN": 638,
+   "c31": 338,
+   "cand": 483,
+   "s1": 486
+  },
+  "william-mccabe": {
+   "K": 474,
+   "M0": 564,
+   "M0R": 564,
+   "MLO": 507,
+   "MMIN": 498,
+   "c31": 316,
+   "cand": 410,
+   "s1": 420
+  },
+  "xavier-taylor": {
+   "K": 1162,
+   "M0": 1345,
+   "M0R": 1345,
+   "MLO": 1307,
+   "MMIN": 1216,
+   "c31": 1288,
+   "cand": 1176,
+   "s1": 1191
+  }
+ },
+ "order": "ORDER M \u2014 the board gates",
+ "smillie": {
+  "K": 772,
+  "M0": 772,
+  "M0R": 772,
+  "MLO": 772,
+  "MMIN": 772,
+  "cand": 772,
+  "s1": 772
+ },
+ "totals": {
+  "K": 673097,
+  "M0": 702734,
+  "M0R": 702734,
+  "MLO": 687838,
+  "MMIN": 671887,
+  "cand": 667916,
+  "s1": 680773
+ },
+ "year1": {
+  "K": 57823,
+  "M0": 68708,
+  "M0R": 68708,
+  "MLO": 64314,
+  "MMIN": 58849,
+  "cand": 58060,
+  "landing": 58060,
+  "n": 120,
+  "s1": 61349
+ }
+}

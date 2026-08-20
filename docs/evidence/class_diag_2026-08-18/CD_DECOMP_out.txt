@@ -1,0 +1,70 @@
+======================================================================================================================
+C1 — CONCENTRATION. How much of each class's move comes from its biggest movers?
+======================================================================================================================
+  move = sum of row year-1 price moves / the class year-0 denominator (shared, bit-identical).
+  shares are of the NET move. movers = rows whose year-1 price moved by more than 0.05 points.
+
+  class      move   rows  movers     top1     top3     top5    top10 grosspos
+  2005    -0.0332    109      45    25.1%    26.3%    60.4%    70.4%  +0.0346
+  2006    -0.0424    122      57    29.1%    31.6%    70.6%    82.3%  +0.0403
+  2007    -0.0335    122      53    27.8%    32.4%    66.4%    55.3%  +0.0384
+  2008    +0.0200    134      47   -63.3%   -65.6%    11.7%    25.4%  +0.0576
+  2009    +0.0248    126      48    46.8%   -18.4%   -20.4%    -2.9%  +0.0651
+  2010    +0.0211    138      57    37.0%    39.4%    93.4%    62.2%  +0.0645
+  2011    +0.0232    145      66    50.6%   115.2%    78.8%   114.1%  +0.0625
+  2012    +0.0228    108      52   -37.8%    27.3%    27.9%   127.0%  +0.0584
+  2013    +0.0226    100      41    63.4%    68.1%    63.0%    86.1%  +0.0740
+  2014    -0.0142    121      54    54.2%   138.2%   136.0%   159.1%  +0.0409
+  2015    +0.0987    110      52    13.2%    31.0%    44.3%    56.2%  +0.1085
+
+======================================================================================================================
+C2 — THE ROWS THAT DRIVE EACH BREACH CLASS, AND THE 2013 CONTROL. Top 8 movers by |price move|.
+======================================================================================================================
+
+  DRAFT CLASS 2015 (cohort 2016)  ORDER K 1.1060 -> ORDER P 1.2047  move +0.0987   denominator 57565.5
+  player                   type pick   pos      v0   g1  ppg1    age surpAGE surpPED v1 ORDER K v1 ORDER P     move     shr   chgK   chgP
+  Jacob Weitering          ND      1   KPD  2869.9   20  67.7     19  +22.86   +1.44    3762.3    4509.8   +747.5   13.2%  0.535  1.000
+  Callum Mills             ND      3    SD  2400.5   22  74.7     19  +17.68   -0.10    3438.8    4016.9   +578.1   10.2%  0.556  1.000
+  Josh Schache             ND      2   KPF  2294.3   17  51.3     19   +8.06   -2.86    1936.2    2372.5   +436.3    7.7%  0.510  0.834
+  Darcy Parish             ND      5   MID  2170.0   20  72.2     19  +15.18   -2.11    3639.2    4070.6   +431.4    7.6%  0.535  0.890
+  Callum Ah Chee           ND      8    SF  1101.9   16  59.7     19  +11.88   +5.35    1780.3    2105.6   +325.3    5.7%  0.505  1.000
+  Josh Dunkley             ND     25   MID   886.3   17  74.3     19  +17.28  +10.93    2331.5    2586.3   +254.8    4.5%  0.510  1.000
+  Matthew Kennedy          ND     13   MID  1520.5    3  48.0     19   -9.02  -20.30    1485.7    1238.3   -247.4   -4.4%  0.765  0.559
+  Clayton Oliver           ND      4   MID  2609.3   13  70.3     19  +13.28   -6.16    3483.9    3719.2   +235.3    4.1%  0.501  0.645
+  ... the other 102 rows contribute +2918.5 points in total = 51.4% of the move
+
+  DRAFT CLASS 2011 (cohort 2012)  ORDER K 1.1363 -> ORDER P 1.1595  move +0.0232   denominator 67717.3
+  player                   type pick   pos      v0   g1  ppg1    age surpAGE surpPED v1 ORDER K v1 ORDER P     move     shr   chgK   chgP
+  Dylan Shiel              ND      4   MID  2609.3   12  75.3     19  +18.28   -1.16    3721.2    4514.9   +793.7   50.6%  0.506  0.982
+  Stephen Coniglio         ND      3   MID  2872.0   12  75.8     19  +18.78   -2.66    4246.6    4915.4   +668.8   42.6%  0.506  0.870
+  Jeremy Cameron           ND     12   KPF  1167.3   16  62.4     19  +19.16  +10.21    2188.5    2533.2   +344.7   22.0%  0.505  1.000
+  Dom Tyson                ND      5   MID  2170.0   10  55.8     19   -1.22  -18.51    1984.7    1659.7   -325.0  -20.7%  0.525  0.278
+  Nick Haynes              ND     10    SD  1355.6    8  37.1     20  -10.39  -21.20     796.2     549.5   -246.7  -15.7%  0.561  0.276
+  Adam Treloar             ND     14    SF   774.3   18  83.2     19  +35.38  +29.82    3604.6    3820.6   +216.0   13.8%  0.517  1.000
+  Taylor Adams             ND     19    SF   592.3   15  74.9     19  +27.08  +23.52    2531.7    2710.7   +179.0   11.4%  0.501  1.000
+  Bradley McKenzie         ND     24    SD   644.2    2   9.0     19  -48.02  -52.38     593.3     418.0   -175.3  -11.2%  0.832  0.509
+  ... the other 137 rows contribute +113.1 points in total = 7.2% of the move
+
+  DRAFT CLASS 2010 (cohort 2011)  ORDER K 1.1359 -> ORDER P 1.1570  move +0.0211   denominator 65583.9
+  player                   type pick   pos      v0   g1  ppg1    age surpAGE surpPED v1 ORDER K v1 ORDER P     move     shr   chgK   chgP
+  David Swallow            ND      1   MID  3444.3   21  79.5     18  +22.48   -2.96    4076.3    4588.5   +512.2   37.0%  0.545  0.815
+  Dion Prestia             ND      9   MID  1658.2   17  60.8     19  +12.98   -0.51    2259.2    2735.9   +476.7   34.4%  0.510  1.000
+  Jared Polec              ND      5   MID  2170.0    3  50.7     19   -6.32  -23.61    2087.8    1644.3   -443.5  -32.0%  0.765  0.507
+  Dyson Heppell            ND      8   MID  1659.3   23  82.2     19  +26.98  +13.47    3984.9    4367.8   +382.9   27.7%  0.568  1.000
+  Tom Lynch                ND     11   KPF  1168.4   13  52.6     19   +9.36   +0.39    1328.6    1693.9   +365.3   26.4%  0.501  1.000
+  Sam Day                  ND      3   KPF  2142.0    7  34.3     19   -8.94  -19.75    1505.0    1149.0   -356.0  -25.7%  0.588  0.335
+  Daniel Gorringe          ND     10  RUCK  1283.0    7  35.4     19  -19.54  -30.28     961.7     619.4   -342.3  -24.7%  0.588  0.181
+  Isaac Smith              ND     20   MID   972.1   16  78.1     22  +16.96  +10.43    1201.8    1488.8   +287.0   20.7%  0.505  1.000
+  ... the other 130 rows contribute +502.4 points in total = 36.3% of the move
+
+  DRAFT CLASS 2013 (cohort 2014)  ORDER K 1.0535 -> ORDER P 1.0760  move +0.0226   denominator 53896.3
+  player                   type pick   pos      v0   g1  ppg1    age surpAGE surpPED v1 ORDER K v1 ORDER P     move     shr   chgK   chgP
+  Marcus Bontempelli       ND      3   MID  2609.3   16  78.6     19  +21.58   +2.14    4501.8    5272.2   +770.4   63.4%  0.505  1.000
+  Kade Kolodjashnij        ND      4    SD  1678.6   18  68.4     19  +13.18   -0.55    2713.5    3181.8   +468.3   38.5%  0.517  1.000
+  Dominic Sheed            ND     10   MID  1656.1   10  39.9     19  -17.12  -30.59    1107.5     696.4   -411.1  -33.8%  0.525  0.115
+  Patrick Cripps           ND     12   MID  1520.5    3  39.3     19  -17.72  -29.00    1446.9    1045.1   -401.8  -33.0%  0.765  0.431
+  James Aish               ND      6    SD  1358.8   21  71.3     18  +14.28   +5.02    2041.4    2382.1   +340.7   28.0%  0.545  1.000
+  Christian Salem          ND      8    SD  1356.7   12  34.4     19  -22.62  -31.87     765.3     432.5   -332.8  -27.4%  0.506  0.083
+  Luke McDonald            ND      7    SD  1357.7   23  65.6     19  +10.38   +1.13    1767.6    2080.9   +313.3   25.8%  0.568  1.000
+  Luke Dunstan             ND     17   MID   974.2   16  74.4     19  +17.38  +10.85    2563.0    2850.7   +287.7   23.7%  0.505  1.000
+  ... the other 92 rows contribute +181.2 points in total = 14.9% of the move

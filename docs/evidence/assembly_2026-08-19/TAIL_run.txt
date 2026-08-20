@@ -1,0 +1,68 @@
+======================================================================================================================
+ASSEMBLY BUILD — THE TAIL CALIBRATION, ON THE CANDIDATE'S OWN CHARGE FORM
+======================================================================================================================
+NO BOARD IS BUILT HERE. The population and the charge algebra are os_f5.py's, imported and not
+re-implemented. The ONE thing this file changes is the charge function f.
+
+population : stages 1+2 pooled — deep cell n = 40 (10-22 games, surplus < -20)
+             at-bar reference n = 342 (10-22 games, surplus >= -10)
+reading    : > 1 the charge FRONT-LOADS (the deep cell delivers more than it was charged for)
+             < 1 the charge is GENEROUS to the deep cell
+basis      : the MEAN, which the owner accepted at v747 ("a lot of this engine prices on mean")
+
+  charge form                                                         CALIB charged ratio
+  ORDER P as wired (BETA_sat 0.11465, hard clip p5)                  1.9025       0.1566
+  F5's convergence point (BETA_sat CI FLOOR 0.10416, hard clip p20)     1.0413       0.2861
+  *** THE CANDIDATE (BETA_sat 0.105, SMOOTH compression p15) ***     0.8004       0.3722
+    the slope 0.105 alone (hard clip p5)                             1.6427       0.1814
+    the compression p15 alone (BETA_sat as ORDER P)                  0.8740       0.3409
+    [the anchor it replaced: SMOOTH p20 at the ruled slope]          0.7378       0.4038
+
+  realized ratio (deep / at-bar), the same on every row above: 0.2979
+
+THE ANSWER TO THE ACCEPTANCE ITEM, IN ONE LINE:
+  F5 published ~1.04 for the FLOOR + CLIP combination. THE CANDIDATE READS 0.8004.
+  BUILT vs EXPECTED: -0.2396 against F5's ~1.04.
+
+WHY THEY DIFFER — AND IT IS NOT THE SLOPE. THE CAP FORM IS DOING ALL OF IT.
+
+  BETA_sat                            CLIP p5     CLIP p20   SMOOTH p20   SMOOTH p15
+  ORDER P  0.11465                     1.9025       1.1736       0.7997       0.8740
+  CI floor 0.10416                     1.6219       1.0413       0.7327       0.7943
+  RULED    0.105                       1.6427       1.0512       0.7378       0.8004
+
+READ ACROSS. The slope barely moves the answer; THE CAP FORM AND ITS ANCHOR MOVE IT. At every
+slope the hard clip at p20 lands near 1.04-1.17, the SMOOTH compression at p20 near 0.73-0.80,
+and the SMOOTH compression at p15 — THE RULED ANCHOR — lands where the table shows.
+
+*** THIS CORRECTS A STATEMENT ON THE REGISTER, AND THE CORRECTION STANDS. ***
+v746 recorded: "the compression at the same anchor behaves ~identically at the parked tail; the
+assembly build verifies on real boards." IT DOES NOT. The compression sits STRICTLY BELOW the clip
+ceiling everywhere (T' < C by construction — the very property that makes it monotone and
+gap-preserving) and the deep cell is exactly where the clip was binding. The ~1.04 on the register
+belongs to the CLIP.
+
+THE RULED ANCHOR MOVE, p20 -> p15, AND WHAT IT BOUGHT:
+  SMOOTH p20 at the ruled slope   0.7378   (the anchor the previous candidate carried)
+  SMOOTH p15 at the ruled slope   0.8004   *** THE CANDIDATE ***
+  the move is worth +0.0625 of calibration.
+
+AGAINST THE SUPERVISOR'S ESTIMATE OF ~0.95-1.1 FOR THE p15 BOARD:
+  *** THE BUILT NUMBER IS 0.8004 — OUTSIDE the estimated band [0.95, 1.10]. ***
+  The estimate MISSED by -0.1496. The BUILT NUMBER RULES and no other dial is touched to chase it
+  — that is the instruction and it is followed exactly.
+
+THE MEDIAN READING, PRINTED BECAUSE F5 PRINTED IT AND BURYING IT WOULD BE DISHONEST:
+  On the MEDIAN the candidate's deep cell calibrates at 0.2635.
+  F5's caveat stands unchanged and is repeated here rather than left behind: the deep cell is
+  OPTION-SHAPED. 21 of 40 deep rows deliver under 0.05 of entry and 3 rows above 1.0 carry the
+  mean. The mean is primary because a multiplicative mark on a prior is a price and a price is an
+  expectation — the owner ruled on that at v747 — but on the typical deep row the charge is
+  GENEROUS, not harsh, and that is the reading his Pickett objection was about.
+
+WHAT THIS DOES NOT SAY. It does not re-derive G0. v746's disposition holds: speed and strength
+are not separable in this data, a G0 move breaks the anchoring identity LAMBDA was solved by, and
+the interval gap was a hairline. The named open finding — the charge convicts somewhat fast at low
+games — is carried forward, not closed.
+
+written: TAIL_ASM.json · TAIL_ASM_out.txt

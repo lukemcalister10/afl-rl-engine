@@ -270,9 +270,10 @@ def v_at_peak(p,L,lens='bal'):
     # RL_FLEX-gated inside y0dpp_bar (=None ⇒ single call ⇒ byte-exact). Now-board only (the remaining season is
     # a present concept). NO Leg-B dial/constant touched — this is a pure Leg-C site at the production hook.
     lowbar=MA.y0dpp_bar(p) if (MA.AGE_REF==MA.BASE_REF) else None
-    raw=MA.proj_from_peak(g,L,a,cur,lens,g0=g0,fut=fb,pre_hc=hc)
+    gr=MA.grace_years(p)      # ORDER 28 grace-A (dial-gated; 0 => byte-exact). BOTH §1b legs carry it — one player, one ladder.
+    raw=MA.proj_from_peak(g,L,a,cur,lens,g0=g0,fut=fb,pre_hc=hc,grace=gr)
     if lowbar is not None:
-        raw_low=MA.proj_from_peak(g,L,a,cur,lens,g0=lowbar,fut=fb,pre_hc=hc)
+        raw_low=MA.proj_from_peak(g,L,a,cur,lens,g0=lowbar,fut=fb,pre_hc=hc,grace=gr)
         sp=MA.SEASON_PROG
         raw=sp*raw+(1.0-sp)*raw_low
     prod=MA.val(raw)

@@ -1,0 +1,84 @@
+boards: {'candP': '1f176444', 'Kref': 'f3101883', 'P': '374d4e44'}
+ledger rows: 804
+totals: {'live': 752429, 'cand31': 666913, 'landing': 667916, 'orderk': 673097, 'orderp': 666434, 'leg_tall': 1255, 'leg_s1': 12857, 'leg_cw': -8875, 'leg_floor': -60, 'residual': -56, 'leg_p': -6663}
+
+ORDER P vs ORDER K: 280 of 804 rows move (125 up, 155 down); aged 24+: 0 rows, +0 points
+board total: ORDER K 673097 -> ORDER P 666434  (-0.99%)
+
+row                     age  pick     g      v0  premium s vs age s vs ped |   chg K   chg P    legP | landing ORDER K ORDER P
+Harry Dean               19     3    17    2438    12.95    14.86     1.91 |   49.0%    0.0%    +666 |    2400    2403    3069
+Cooper Duff-Tytler       19     4    13    1858    10.81     7.06    -3.75 |   49.9%   21.1%    +319 |    1572    1505    1824
+Xavier Taylor            19    11     2    1355     9.23   -13.22   -22.45 |   16.8%   36.3%    -212 |    1176    1162     950
+Daniel Annable           19     6     2    1661    13.54   -19.02   -32.56 |   16.8%   48.5%    -422 |    1530    1537    1115
+Dylan Patterson          19     5     5    1679    13.73   -19.62   -33.35 |   34.0%   76.8%    -485 |    1467    1440     955
+Isaac Kako               20    13    36     938     6.53     0.84    -5.70 |   26.7%   41.3%     -48 |     788     832     784
+Josh Smillie             20     7     0    1660        -        -        - |    0.0%    0.0%      +0 |     772     772     772
+Milan Murdock            26  None    17     131    -7.04     2.17     9.21 |   49.0%   49.0%      +0 |     170     156     156
+Zeke Uwland              19     2    17    2583    19.22    -1.64   -20.86 |   49.0%   84.7%    -463 |    2017    1949    1486
+Cooper Harvey            22    56    17     265    -1.26    -1.80    -0.54 |   49.0%    0.0%     +42 |     333     331     373
+Jhye Clark               22     8    33    1659    13.51   -16.90   -30.41 |   30.3%   96.2%    -352 |     907     921     569
+Arthur Jones             23    43    34     334    -1.26   -17.06   -15.80 |   29.1%   80.8%     -36 |     101      90      54
+Samuel Grlj              19     8    19    1659    13.51    -1.65   -15.16 |   47.5%   75.1%    -223 |    1610    1613    1390
+Will Green               21    16     1    1132     8.58    12.09     3.51 |    9.0%    0.0%     +52 |     483     621     673
+Taylor Goad              21    20     2    1128     8.54   -20.41   -28.96 |   16.8%   44.5%    -138 |     580     728     590
+Murphy Reid              20    17    45     648     4.42    27.16    22.74 |   17.6%    0.0%     +39 |    3147    3383    3422
+
+TOP 20 UP — ORDER P vs ORDER K:
+  Jagga Smith                MID    20    3   20g  v0   2872  s_P  +11.82  chgK  46.5% -> chgP   0.0%    3637 ->   4348   +711
+  Harry Dean                 KPD    19    3   17g  v0   2438  s_P   +1.91  chgK  49.0% -> chgP   0.0%    2403 ->   3069   +666
+  Sullivan Robey             MID    19    9   14g  v0   1658  s_P   +0.42  chgK  50.0% -> chgP   0.0%    2379 ->   2864   +485
+  Dyson Sharp                MID    19   13   13g  v0   1520  s_P   +9.11  chgK  49.9% -> chgP   0.0%    2427 ->   2879   +452
+  Jacob Farrow               SD     19   10   18g  v0   1356  s_P   +7.21  chgK  48.3% -> chgP   0.0%    2155 ->   2515   +360
+  Cooper Duff-Tytler         KPF    19    4   13g  v0   1858  s_P   -3.75  chgK  49.9% -> chgP  21.1%    1505 ->   1824   +319
+  Phoenix Gothard            SF     21   12   15g  v0   1027  s_P   +5.61  chgK  49.9% -> chgP   0.0%    1319 ->   1614   +295
+  Josh Lindsay               SD     19   19   13g  v0    856  s_P  +12.45  chgK  49.9% -> chgP   0.0%    1796 ->   2050   +254
+  Willem Duursma             MID    19    1   19g  v0   3444  s_P   -5.46  chgK  47.5% -> chgP  35.8%    3703 ->   3920   +217
+  Toby Conway                RUCK   23   24    6g  v0   1124  s_P   +2.37  chgK  37.9% -> chgP   0.0%     899 ->   1066   +167
+  Beau Addinsall             MID    19   18    7g  v0    974  s_P   -4.41  chgK  41.2% -> chgP  18.3%    1158 ->   1297   +139
+  Oliver Francou             MID    20    3    4g  v0    505  s_P   +6.92  chgK  29.2% -> chgP   0.0%     528 ->    661   +133
+  Charlie Banfield           MID    19   41    3g  v0    651  s_P   +2.01  chgK  23.5% -> chgP   0.0%     683 ->    798   +115
+  Levi Ashcroft              MID    20    5   48g  v0   2170  s_P   +0.71  chgK  15.1% -> chgP   0.0%    3365 ->   3471   +106
+  Billy Wilson               SD     21   34   17g  v0    377  s_P   +6.13  chgK  49.0% -> chgP   0.0%     664 ->    767   +103
+  Lachie Jaques              SD     20   29    9g  v0    461  s_P   -2.34  chgK  45.9% -> chgP   9.2%     483 ->    583   +100
+  Hugo Hall-Kahan            SD     23   10    9g  v0    377  s_P   +3.55  chgK  45.9% -> chgP   0.0%     253 ->    352    +99
+  Josh Gibcus                KPD    23    9   22g  v0    976  s_P   -2.11  chgK  44.4% -> chgP  11.3%     231 ->    330    +99
+  Taj Hotton                 MID    20   12   15g  v0   1655  s_P   -6.22  chgK  49.9% -> chgP  37.7%    1628 ->   1722    +94
+  Daniel Curtin              MID    21    8   46g  v0   1659  s_P   +1.05  chgK  16.7% -> chgP   0.0%    2242 ->   2335    +93
+
+TOP 20 DOWN — ORDER P vs ORDER K:
+  Finn O'Sullivan            MID    20    2   39g  v0   3020  s_P  -15.32  chgK  23.4% -> chgP  80.2%    3462 ->   2810   -652
+  Sid Draper                 MID    20    4   10g  v0   2609  s_P  -43.96  chgK  47.5% -> chgP  90.4%    1267 ->    623   -644
+  Dylan Patterson            SD     19    5    5g  v0   1679  s_P  -33.35  chgK  34.0% -> chgP  76.8%    1440 ->    955   -485
+  Zeke Uwland                SD     19    2   17g  v0   2583  s_P  -20.86  chgK  49.0% -> chgP  84.7%    1949 ->   1486   -463
+  Zane Duursma               SF     21    4   38g  v0   2078  s_P  -33.38  chgK  24.4% -> chgP  97.3%     629 ->    194   -435
+  Daniel Annable             MID    19    6    2g  v0   1661  s_P  -32.56  chgK  16.8% -> chgP  48.5%    1537 ->   1115   -422
+  Sam Lalor                  MID    20    1   22g  v0   3444  s_P  -11.68  chgK  44.4% -> chgP  66.7%    3456 ->   3060   -396
+  Elijah Tsatas              MID    22    5   22g  v0   2170  s_P  -22.09  chgK  44.4% -> chgP  88.5%    1078 ->    689   -389
+  Jhye Clark                 MID    22    8   33g  v0   1659  s_P  -30.41  chgK  30.3% -> chgP  96.2%     921 ->    569   -352
+  Jed Walter                 KPF    21    3   46g  v0   2142  s_P  -14.17  chgK  16.7% -> chgP  77.7%    1170 ->    857   -313
+  Josh Sinn                  SD     23   12   30g  v0   1354  s_P  -28.81  chgK  34.2% -> chgP  95.2%     357 ->     73   -284
+  Tobie Travaglia            SD     20    8   17g  v0   1358  s_P  -24.80  chgK  49.0% -> chgP  89.4%     521 ->    276   -245
+  Xavier Lindsay             MID    20   11   23g  v0   1656  s_P  -16.40  chgK  43.2% -> chgP  79.8%    1539 ->   1298   -241
+  Neil Erasmus               MID    23   10   60g  v0   1657  s_P  -22.14  chgK   8.0% -> chgP  91.2%    1010 ->    779   -231
+  Samuel Grlj                MID    19    8   19g  v0   1659  s_P  -15.16  chgK  47.5% -> chgP  75.1%    1613 ->   1390   -223
+  Aaron Cadman               KPF    22    1   75g  v0   2496  s_P   -9.99  chgK   3.4% -> chgP  64.6%    1814 ->   1592   -222
+  Caleb Windsor              MID    21    7   54g  v0   1660  s_P  -13.41  chgK  11.1% -> chgP  75.9%    1307 ->   1093   -214
+  Xavier Taylor              SD     19   11    2g  v0   1355  s_P  -22.45  chgK  16.8% -> chgP  36.3%    1162 ->    950   -212
+  Latrelle Pickett           SF     21   12   15g  v0   1027  s_P  -25.45  chgK  49.9% -> chgP  88.9%     446 ->    238   -208
+  Harry Rowston              MID    22   16   27g  v0   1006  s_P  -21.82  chgK  38.1% -> chgP  89.3%     575 ->    386   -189
+
+age profile of the rows that move: {19: 35, 20: 62, 21: 61, 22: 52, 23: 70}
+games profile:
+  0        rows   89  total      +0  per row    +0.0
+  1-4      rows   48  total    -918  per row   -19.1
+  5-9      rows   51  total    -865  per row   -17.0
+  10-15    rows   48  total    +860  per row   +17.9
+  16-29    rows   80  total   -1570  per row   -19.6
+  30-59    rows  100  total   -3043  per row   -30.4
+  60+      rows  388  total   -1127  per row    -2.9
+age bands:
+  20 and under   rows  158  total    -885
+  21-23          rows  217  total   -5778
+  24 and over    rows  429  total      +0
+
+wrote docs/ledgers/ORDER_P_MOVERS.json

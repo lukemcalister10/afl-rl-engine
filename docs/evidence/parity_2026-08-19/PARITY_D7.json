@@ -1,0 +1,628 @@
+{
+ "F": 1.0524,
+ "fired": [
+  "D7-F8 5 day-0 entrants other than ollie-murphy move"
+ ],
+ "floor": {
+  "blake-thredgold": 401.19673801137856,
+  "brayden-fiorini": 367.4178398500596,
+  "connor-rozee": 3557.4910298917584,
+  "darcy-jones": 1309.264224457518,
+  "harley-barker": 529.8928073823902,
+  "harry-armstrong": 544.7468375830999,
+  "harry-edwards": 112.19076507588738,
+  "jack-viney": 588.7363077299624,
+  "jesse-motlop": 61.94702430474622,
+  "josh-sinn": 169.9864333971223,
+  "joshua-kelly": 809.8068554204929,
+  "kobe-mcdonald": 41.784215079512606,
+  "liam-hetherton": 73.1721180919887,
+  "max-king-syd": 144.74878698898897,
+  "mitchell-hinge": 318.5120142845399,
+  "nicholas-martin": 4386.865886602896,
+  "noah-chamberlain": 41.601358459957275,
+  "ollie-lord": 79.78103347651673,
+  "riley-garcia": 52.99873985308733,
+  "sam-allen": 473.2577149385168,
+  "sam-powell-pepper": 182.06658558204543,
+  "thomas-sims": 775.9930243521267,
+  "tom-green": 5842.153957387727
+ },
+ "md5": {
+  "D7_BASE": "daa16812e50fb71241e627d89180412c",
+  "D7_CAND": "a05fe951f78482c70520480e184c80ec",
+  "D7_CAND2": "a05fe951f78482c70520480e184c80ec",
+  "D7_IDENT_K": "f3101883a60b0a7b8cb50f9d8a5abfff",
+  "D7_IDENT_P": "374d4e442665771801c5f1edd2a7e0e2",
+  "D7_L0R": "7f88f5096ff5b781da4614b7142d332c",
+  "D7_NOO42": "ff9361867357c085c8111ba957ce4f3b"
+ },
+ "movers": [
+  [
+   "blake-thredgold",
+   372,
+   381
+  ],
+  [
+   "brayden-fiorini",
+   182,
+   349
+  ],
+  [
+   "connor-rozee",
+   2559,
+   3380
+  ],
+  [
+   "darcy-jones",
+   1095,
+   1244
+  ],
+  [
+   "harley-barker",
+   481,
+   504
+  ],
+  [
+   "harry-armstrong",
+   475,
+   518
+  ],
+  [
+   "harry-edwards",
+   89,
+   107
+  ],
+  [
+   "jack-viney",
+   254,
+   559
+  ],
+  [
+   "jesse-motlop",
+   54,
+   59
+  ],
+  [
+   "josh-sinn",
+   159,
+   162
+  ],
+  [
+   "joshua-kelly",
+   427,
+   769
+  ],
+  [
+   "kobe-mcdonald",
+   37,
+   40
+  ],
+  [
+   "liam-hetherton",
+   66,
+   70
+  ],
+  [
+   "max-king-syd",
+   129,
+   138
+  ],
+  [
+   "mitchell-hinge",
+   194,
+   303
+  ],
+  [
+   "nicholas-martin",
+   3199,
+   4168
+  ],
+  [
+   "noah-chamberlain",
+   37,
+   40
+  ],
+  [
+   "ollie-lord",
+   74,
+   76
+  ],
+  [
+   "riley-garcia",
+   40,
+   50
+  ],
+  [
+   "sam-allen",
+   428,
+   450
+  ],
+  [
+   "sam-powell-pepper",
+   97,
+   173
+  ],
+  [
+   "thomas-sims",
+   670,
+   737
+  ],
+  [
+   "tom-green",
+   4339,
+   5551
+  ]
+ ],
+ "regonly": [
+  "archie-may",
+  "brody-mihocek",
+  "deven-robertson",
+  "esava-ratugolea",
+  "ewan-mackinlay",
+  "jack-payne",
+  "jackson-archer",
+  "jacob-newton",
+  "jai-culley",
+  "jamie-elliott",
+  "joel-amartey",
+  "jonty-faull",
+  "mani-liddy",
+  "matt-carroll",
+  "noah-long",
+  "oscar-steene",
+  "sam-darcy",
+  "sam-flanders",
+  "toby-conway",
+  "toby-pink"
+ ],
+ "rows": [
+  {
+   "delta": 0.0,
+   "g2026": 2,
+   "key": "andy-moniz-wakefield",
+   "player": "Andy Moniz-Wakefield",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 24.726647744149165,
+   "v_injury": 39.682113040315045,
+   "won": "injury"
+  },
+  {
+   "delta": 9.580736186079378,
+   "g2026": 0,
+   "key": "blake-thredgold",
+   "player": "Blake Thredgold",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 401.19673801137856,
+   "v_injury": 391.6160018252992,
+   "won": "healthy"
+  },
+  {
+   "delta": 175.3739580923487,
+   "g2026": 2,
+   "key": "brayden-fiorini",
+   "player": "Brayden Fiorini",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 367.4178398500596,
+   "v_injury": 192.0438817577109,
+   "won": "healthy"
+  },
+  {
+   "delta": 864.571703213443,
+   "g2026": 2,
+   "key": "connor-rozee",
+   "player": "Connor Rozee",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 3557.4910298917584,
+   "v_injury": 2692.9193266783154,
+   "won": "healthy"
+  },
+  {
+   "delta": 156.41064647886947,
+   "g2026": 0,
+   "key": "darcy-jones",
+   "player": "Darcy Jones",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 1309.264224457518,
+   "v_injury": 1152.8535779786484,
+   "won": "healthy"
+  },
+  {
+   "delta": 0.0,
+   "g2026": 0,
+   "key": "elliot-himmelberg",
+   "player": "Elliott Himmelberg",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 16.509299927932243,
+   "v_injury": 32.17476869984895,
+   "won": "injury"
+  },
+  {
+   "delta": 23.22929891101643,
+   "g2026": 0,
+   "key": "harley-barker",
+   "player": "Harley Barker",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 529.8928073823902,
+   "v_injury": 506.66350847137375,
+   "won": "healthy"
+  },
+  {
+   "delta": 44.50282452606211,
+   "g2026": 3,
+   "key": "harry-armstrong",
+   "player": "Harry Armstrong",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 544.7468375830999,
+   "v_injury": 500.2440130570378,
+   "won": "healthy"
+  },
+  {
+   "delta": 18.32559290199245,
+   "g2026": 2,
+   "key": "harry-edwards",
+   "player": "Harry Edwards",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 112.19076507588738,
+   "v_injury": 93.86517217389493,
+   "won": "healthy"
+  },
+  {
+   "delta": 0.0,
+   "g2026": 0,
+   "key": "harry-o-farrell",
+   "player": "Harry O'Farrell",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 483.9726028443067,
+   "v_injury": 565.5702878499252,
+   "won": "injury"
+  },
+  {
+   "delta": 0.0,
+   "g2026": 0,
+   "key": "henry-smith",
+   "player": "Henry Smith",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 45.23190760123314,
+   "v_injury": 89.88330304070375,
+   "won": "injury"
+  },
+  {
+   "delta": 321.03148015375234,
+   "g2026": 0,
+   "key": "jack-viney",
+   "player": "Jack Viney",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 588.7363077299624,
+   "v_injury": 267.70482757621005,
+   "won": "healthy"
+  },
+  {
+   "delta": 5.044607137650033,
+   "g2026": 0,
+   "key": "jesse-motlop",
+   "player": "Jesse Motlop",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 61.94702430474622,
+   "v_injury": 56.90241716709619,
+   "won": "healthy"
+  },
+  {
+   "delta": 0.0,
+   "g2026": 1,
+   "key": "josh-gibcus",
+   "player": "Josh Gibcus",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 137.78482177902237,
+   "v_injury": 185.537434536859,
+   "won": "injury"
+  },
+  {
+   "delta": 3.0870364519760187,
+   "g2026": 0,
+   "key": "josh-sinn",
+   "player": "Josh Sinn",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 169.9864333971223,
+   "v_injury": 166.8993969451463,
+   "won": "healthy"
+  },
+  {
+   "delta": 360.13325823663774,
+   "g2026": 0,
+   "key": "joshua-kelly",
+   "player": "Joshua Kelly",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 809.8068554204929,
+   "v_injury": 449.6735971838551,
+   "won": "healthy"
+  },
+  {
+   "delta": 0.0,
+   "g2026": 1,
+   "key": "judson-clarke",
+   "player": "Judson Clarke",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 51.47460467523726,
+   "v_injury": 57.774151796005015,
+   "won": "injury"
+  },
+  {
+   "delta": 2.756399409732552,
+   "g2026": 0,
+   "key": "kobe-mcdonald",
+   "player": "Kobe McDonald",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 41.784215079512606,
+   "v_injury": 39.027815669780054,
+   "won": "healthy"
+  },
+  {
+   "delta": 0.0,
+   "g2026": 0,
+   "key": "lewis-hayes",
+   "player": "Lewis Hayes",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 327.60273661796435,
+   "v_injury": 356.0821404134821,
+   "won": "injury"
+  },
+  {
+   "delta": 3.2533994963786483,
+   "g2026": 0,
+   "key": "liam-hetherton",
+   "player": "Liam Hetherton",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 73.1721180919887,
+   "v_injury": 69.91871859561004,
+   "won": "healthy"
+  },
+  {
+   "delta": 0.0,
+   "g2026": 0,
+   "key": "max-king-stk",
+   "player": "Max King",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 82.21965208945224,
+   "v_injury": 219.9057476225426,
+   "won": "injury"
+  },
+  {
+   "delta": 8.607460954618915,
+   "g2026": 0,
+   "key": "max-king-syd",
+   "player": "Maxwell King",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 144.74878698898897,
+   "v_injury": 136.14132603437005,
+   "won": "healthy"
+  },
+  {
+   "delta": 114.26091452057702,
+   "g2026": 1,
+   "key": "mitchell-hinge",
+   "player": "Mitchell Hinge",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 318.5120142845399,
+   "v_injury": 204.25109976396286,
+   "won": "healthy"
+  },
+  {
+   "delta": 0.0,
+   "g2026": 0,
+   "key": "nathan-wardius",
+   "player": "Nathan Wardius",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 38.85702164078073,
+   "v_injury": 38.85702164078073,
+   "won": "tie"
+  },
+  {
+   "delta": 1020.1181139769546,
+   "g2026": 0,
+   "key": "nicholas-martin",
+   "player": "Nicholas Martin",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 4386.865886602896,
+   "v_injury": 3366.7477726259417,
+   "won": "healthy"
+  },
+  {
+   "delta": 2.744336819176546,
+   "g2026": 0,
+   "key": "noah-chamberlain",
+   "player": "Noah Chamberlain",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 41.601358459957275,
+   "v_injury": 38.85702164078073,
+   "won": "healthy"
+  },
+  {
+   "delta": 1.763723095021959,
+   "g2026": 1,
+   "key": "ollie-lord",
+   "player": "Ollie Lord",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 79.78103347651673,
+   "v_injury": 78.01731038149477,
+   "won": "healthy"
+  },
+  {
+   "delta": 0.0,
+   "g2026": 0,
+   "key": "ollie-murphy",
+   "player": "Ollie Murphy",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 206.40592379122,
+   "v_injury": 210.98351147579967,
+   "won": "injury"
+  },
+  {
+   "delta": 0.0,
+   "g2026": 0,
+   "key": "reef-mcinnes",
+   "player": "Reef McInnes",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 37.81931781763252,
+   "v_injury": 52.6461125200791,
+   "won": "injury"
+  },
+  {
+   "delta": 0.0,
+   "g2026": 0,
+   "key": "ricky-mentha",
+   "player": "Ricky Mentha",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 24.51991385813066,
+   "v_injury": 24.51991385813066,
+   "won": "tie"
+  },
+  {
+   "delta": 11.069565667157832,
+   "g2026": 0,
+   "key": "riley-garcia",
+   "player": "Riley Garcia",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 52.99873985308733,
+   "v_injury": 41.9291741859295,
+   "won": "healthy"
+  },
+  {
+   "delta": 0.0,
+   "g2026": 0,
+   "key": "rob-monahan",
+   "player": "Rob Monahan",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 39.027815669780054,
+   "v_injury": 39.027815669780054,
+   "won": "tie"
+  },
+  {
+   "delta": 22.719250228371436,
+   "g2026": 0,
+   "key": "sam-allen",
+   "player": "Sam Allen",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 473.2577149385168,
+   "v_injury": 450.5384647101454,
+   "won": "healthy"
+  },
+  {
+   "delta": 80.0186601938211,
+   "g2026": 0,
+   "key": "sam-powell-pepper",
+   "player": "Sam Powell-Pepper",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 182.06658558204543,
+   "v_injury": 102.04792538822433,
+   "won": "healthy"
+  },
+  {
+   "delta": 0.0,
+   "g2026": 0,
+   "key": "sam-sturt",
+   "player": "Sam Sturt",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 31.37932833150375,
+   "v_injury": 32.086485609632824,
+   "won": "injury"
+  },
+  {
+   "delta": 70.65648723174525,
+   "g2026": 0,
+   "key": "thomas-sims",
+   "player": "Thomas Sims",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 775.9930243521267,
+   "v_injury": 705.3365371203814,
+   "won": "healthy"
+  },
+  {
+   "delta": 1275.5996921252708,
+   "g2026": 0,
+   "key": "tom-green",
+   "player": "Tom Green",
+   "treated_avail": true,
+   "treated_inj": true,
+   "v_healthy": 5842.153957387727,
+   "v_injury": 4566.554265262456,
+   "won": "healthy"
+  }
+ ],
+ "sheet_md5": "b26798c35adcd9bda5cef50ff2c884da",
+ "treated": [
+  "andy-moniz-wakefield",
+  "blake-thredgold",
+  "brayden-fiorini",
+  "connor-rozee",
+  "darcy-jones",
+  "elliot-himmelberg",
+  "harley-barker",
+  "harry-armstrong",
+  "harry-edwards",
+  "harry-o-farrell",
+  "henry-smith",
+  "jack-viney",
+  "jesse-motlop",
+  "josh-gibcus",
+  "josh-sinn",
+  "joshua-kelly",
+  "judson-clarke",
+  "kobe-mcdonald",
+  "lewis-hayes",
+  "liam-hetherton",
+  "max-king-stk",
+  "max-king-syd",
+  "mitchell-hinge",
+  "nathan-wardius",
+  "nicholas-martin",
+  "noah-chamberlain",
+  "ollie-lord",
+  "ollie-murphy",
+  "reef-mcinnes",
+  "ricky-mentha",
+  "riley-garcia",
+  "rob-monahan",
+  "sam-allen",
+  "sam-powell-pepper",
+  "sam-sturt",
+  "thomas-sims",
+  "tom-green"
+ ]
+}

@@ -1,0 +1,14 @@
+records: 29B 2648   29C 2648
+schema: identical=True   only_29B=[]   only_29C=[]
+fields that differ anywhere: {'v0': 2648}
+ASSERT HELD: every field except `v0` is byte-identical on all 2648 records.
+v0 cells moved: 2648 of 2648
+meta keys that differ: ['basis_29c', 'emitter']
+  store_md5      29B cb38ef11               29C cb38ef11
+  engine_head    29B a353a9d3               29C a353a9d3
+  v0surf_sig     29B 4405cba2b42fb96f50496ec791cb806c 29C 4405cba2b42fb96f50496ec791cb806c
+  v0surf_frozen  29B True                   29C True
+  n_records      29B 2648                   29C 2648
+  nd_curve_last  29B 64                     29C 64
+  pool_pick      29B 65                     29C 65
+wrote MATRIXDIFF_29C.json

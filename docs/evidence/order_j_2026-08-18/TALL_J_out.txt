@@ -1,0 +1,140 @@
+ORDER J — THE RULED TALL/SMALL SITTER FACTOR, DISCLOSED
+
+== 1 · THE WIRED CONSTANTS, AGAINST ORDER H'S OWN FILE ==
+  g0        wired -0.8778138796894399
+  g1        wired 0.7100022285392401
+  h_TALL    wired -0.6921227120657417   H_RESULTS -0.6921227120657417   dev 0.0e+00
+  s_norm'   wired 1.4284052406915069   H_RESULTS 1.4284052406915069   dev 0.0e+00
+  the ruled depth-2 fade wired as 0.5582775 (H's full-precision value 0.5582775239783688)
+
+== 2 · THE TRANSCRIBED CURVE vs H_RESULTS.json, AT EVERY PICK H PUBLISHED ==
+   pick  SMALL wired      SMALL H   TALL wired       TALL H    max dev
+      1  0.500000000  0.500000000  0.500000000  0.500000000    0.0e+00
+      5  0.500000000  0.500000000  0.500000000  0.500000000    0.0e+00
+     10  0.529980321  0.529980321  0.500000000  0.500000000    0.0e+00
+     16  0.763600035  0.763600035  0.500000000  0.500000000    0.0e+00
+     20  0.874515631  0.874515631  0.500000000  0.500000000    0.0e+00
+     24  0.965140272  0.965140272  0.500000000  0.500000000    0.0e+00
+     30  1.076055868  1.076055868  0.591513602  0.591513602    0.0e+00
+     40  1.219050942  1.219050942  0.734508676  0.734508676    0.0e+00
+     50  1.329966538  1.329966538  0.845424272  0.845424272    0.0e+00
+     53  1.358929645  1.358929645  0.874387379  0.874387379    0.0e+00
+     64  1.452670656  1.452670656  0.968128390  0.968128390    0.0e+00
+  worst deviation over all 11 published picks: 0.0e+00  -> EXACT
+
+== 3 · m_TALL, THE MULTIPLICATIVE TRANSLATION ==
+  m_TALL over picks 1-64 on the wire        : 0.645169
+  m_TALL as H publishes it (H's own averaging): 0.676991
+  the order names ~0.677 — H's figure. Both are printed; they differ only in how the average
+  is taken over the clipped range, and neither is a constant the engine uses.
+
+== 4 · THE REDISTRIBUTION IDENTITY, REBUILT FROM ORDER H'S OWN FITTED SITTERS ==
+  Order H's fitted sitter population rebuilt: 408 rows (ND 2005-2020, picks 1-64, zero year-1 games)
+  n_sat printed by H for the fitted spec SAT1|ctl1|TALL-pooled: 408
+  IDENTITY RESIDUAL  mean(D2^kappa) - D2 = -1.110e-16   (H published -1.11e-16)
+  -> PASS at 1e-9  the total fade the board charges is UNCHANGED; this factor only moves fade between
+     talls and smalls.
+
+== 5 · THE EXPONENT, SMALL vs TALL, AT THE PICKS THE OWNER ASKED ABOUT ==
+  pick 1    small 0.5000   tall 0.5000   both on the 0.5 clip
+  pick 7    small 0.5000   tall 0.5000   both on the 0.5 clip
+  pick 10   small 0.5300   tall 0.5000   tall on the 0.5 clip
+  pick 16   small 0.7636   tall 0.5000   tall on the 0.5 clip
+  pick 24   small 0.9651   tall 0.5000   tall on the 0.5 clip
+  pick 25   small 0.9854   tall 0.5009   
+  pick 30   small 1.0761   tall 0.5915   
+  pick 40   small 1.2191   tall 0.7345   
+  pick 55   small 1.3773   tall 0.8928   
+  pick 64   small 1.4527   tall 0.9681   
+  DECLARED SIDE EFFECT (i): the 0.5 clip binds for TALLS over picks 1-24 and for SMALLS over
+      picks 1-9. Over that range the clip, not the fit, sets the price — a flat spot that ends
+      abruptly at pick 25. Inherited from Order D's clip.
+  DECLARED SIDE EFFECT (ii): the identity is pinned, so LATE SMALL SITTERS PAY for the talls'
+      relief — a small at pick 64 goes from Order D's wired pooled exponent 1.1533 to 1.4527
+      (D_pooled is H_RESULTS.json's own column for Order D's curve, not a re-derivation here).
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+
+== 6 · THE FULL MOVED-ROW LIST FOR EVERY ACTIVE ROW AGED 24+ (board points) ==
+  dial-off baseline vs BASELINE_J: worst deviation 0.0e+00 over 804 rows -> EXACT
+  rows aged 24+ that move : 54 of 429
+  total ABSOLUTE movement : 453.6 board points  (0.0679% of the board, 0.1251% of the mature pool)
+  total NET movement      : +110.8 board points (0.0166% of the board)
+  23 up, 31 down · largest up +41.5 (Nick Bryan) · largest down -32.2 (Luke Beecken)
+
+  row                         age  pick    pos    landing with factor      move     as %
+  Nick Bryan                   25    37   RUCK      692.9      734.4    +41.45   +5.98%
+  Liam McMahon                 24    33    KPF      190.2      231.3    +41.09  +21.60%
+  Luke Beecken                 25    65    MID      211.3      179.1    -32.19  -15.24%
+  Callum Coleman-Jones         27    20    KPF       91.6      121.8    +30.21  +32.98%
+  Reef McInnes                 24    24    KPD       63.9       91.1    +27.20  +42.54%
+  Harrison Coe                 27    65   RUCK      239.8      265.1    +25.34  +10.57%
+  Zak Evans                    26     -    MID      134.1      112.4    -21.70  -16.18%
+  Will Brodie                  28     9    MID      791.1      812.0    +20.83   +2.63%
+  Samson Ryan                  26    42   RUCK      242.8      261.3    +18.52   +7.63%
+  Mani Liddy                   24    65    MID      153.0      134.9    -18.12  -11.84%
+  Saad El-Hawli                25    65     SD       89.0       75.5    -13.45  -15.12%
+  Max Heath                    24    65   RUCK      468.5      480.3    +11.84   +2.53%
+  Ben Jepson                   25     -    MID      122.0      112.0     -9.95   -8.16%
+  Ollie Lord                   24    51    KPF       86.9       96.4     +9.54  +10.98%
+  Henry Smith                  24    50    KPF       89.5       98.6     +9.06  +10.13%
+  Liam Reidy                   26    65   RUCK      234.7      242.9     +8.17   +3.48%
+  Jack Carroll                 24    43     SD       87.0       79.3     -7.73   -8.89%
+  Tyler Brockman               24    48     SF       48.0       41.6     -6.35  -13.24%
+  Jordan Boyd                  28    65     SD       42.8       36.6     -6.22  -14.53%
+  Oskar Baker                  28    48     SF       30.2       24.3     -5.96  -19.70%
+  Oscar Berry                  24     -    KPD       51.0       56.4     +5.39  +10.57%
+  Bailey Laurie                24    23     SF      104.5       99.2     -5.23   -5.01%
+  Jy Farrar                    30    59    KPF       29.2       34.2     +5.03  +17.24%
+  Joel Hamling                 33    41    KPF       11.7       16.5     +4.75  +40.49%
+  Ryan Gardner                 29    58    KPD       29.8       34.5     +4.68  +15.73%
+  Jack Henderson               27     -     SF       38.1       33.6     -4.58  -12.01%
+  Corey Wagner                 29    43     SD       42.9       38.4     -4.48  -10.44%
+  Aidan Johnson                26    65    KPF      114.1      118.5     +4.33   +3.79%
+  James Blanck                 26    65    KPD       50.5       54.8     +4.32   +8.56%
+  Matt Cottrell                26     -    MID       99.1       95.1     -4.00   -4.04%
+  Riley Garcia                 25    61     SF       45.6       42.1     -3.45   -7.58%
+  Malcolm Rosas                25    65     SF       41.5       38.2     -3.30   -7.95%
+  Oliver Wiltshire             24    61     SF       39.1       35.9     -3.26   -8.32%
+  Elliott Himmelberg           28    51    KPF       58.0       61.2     +3.22   +5.55%
+  Jackson Mead                 25    25     SF       36.7       33.7     -3.02   -8.23%
+  Oliver Hayes-Brown           26     -   RUCK      115.2      118.0     +2.74   +2.37%
+  Sam Wicks                    27     -     SD       36.1       33.4     -2.72   -7.55%
+  Jacob Wehr                   28    61     SD       30.2       27.6     -2.66   -8.81%
+  Caleb Graham                 26    65    KPD       83.2       85.4     +2.23   +2.68%
+  Finlay Macrae                24    20    MID      121.1      118.9     -2.16   -1.79%
+  Ryan Angwin                  24    19    MID      491.4      489.7     -1.71   -0.35%
+  Deven Robertson              25    22    MID      241.5      239.8     -1.67   -0.69%
+  Oisin Mullin                 26     -     SD       17.0       15.5     -1.46   -8.59%
+  Jaxon Prior                  25    58     SD      264.4      263.1     -1.34   -0.51%
+  Brandon Walker               24    52     SD       46.6       45.5     -1.11   -2.38%
+  Sam Sturt                    26    17     SF       76.9       77.8     +0.95   +1.24%
+  Callum M. Brown              26     -     SF       30.8       30.0     -0.80   -2.59%
+  Noah Answerth                27    55     SD       16.3       15.5     -0.76   -4.65%
+  Matt Owies                   29     -     SF        7.5        6.8     -0.74   -9.88%
+  Hugo Ralphsmith              25    45    MID       87.6       86.8     -0.73   -0.84%
+  Darragh Joyce                29     -    KPD        7.9        8.6     +0.72   +9.12%
+  Tom Doedee                   29    17     SD      232.8      233.3     +0.58   +0.25%
+  Jed Bews                     33    65     SD        5.5        5.1     -0.32   -5.85%
+  Conor McKenna                30     -     SF        4.9        4.7     -0.20   -4.10%
+
+  age profile of the mature rows that move: {24: 14, 25: 10, 26: 11, 27: 5, 28: 5, 29: 5, 30: 2, 33: 2}
+  FOR COMPARISON ONLY — J-TOL would have allowed each of these rows min(25, max(1, 0.5%%)):
+  44 of the 54 moved rows exceed that cap. THE FACTOR IS EXEMPT AND IS NOT GATED BY IT — this
+  line exists so the owner can see the ruled change and the gated one on the same ruler.
+
+== 7 · THE DAY-0 DISCLOSURE (the ruled fade regenerates the printed sitter reference) ==
+  wired day-0 entrants: 89
+  derived_v0 (the raw ENTRY object the walk-forward matrix writes as year-0):
+     BIT-IDENTICAL on 89 of 89 at tolerance 0  -> PASS
+  the PRINTED day-0 price (= entry value x the sitting discount):
+     moves on 89 of 89 rows — 32 up, 57 down
+     largest up   Mitchell Marsh           429 -> 524 (+96)
+     largest down Ben Camporeale           149 -> 116 (-33)
+  IN PLAIN WORDS: a day-0 price for a man who has never played IS his entry value multiplied by
+  the sitting discount. This factor changes the discount for talls. So the printed price of an
+  already-sitting player moves BY CONSTRUCTION, while his entry value does not move at all.
+  That is the intended effect the owner ruled in, and it is the same regeneration Order D's own
+  pick-curve fade required when it landed. DISCLOSED, not gated.
+
+written: TALL_J.json

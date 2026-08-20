@@ -1,0 +1,47 @@
+rebuilt primary rows 3218 (W5: 3218)
+rows with no trailing-2 L (ratio held 1.0, disclosed): 387
+pairs total 786, replica-able 702 (dropped rows lack a trailing-2 level; disclosed)
+cells in the loss (n>=20): ['star|27(n=107)', 'star|28(n=86)', 'star|29(n=66)', 'star|30(n=45)', 'mid|27(n=93)', 'mid|28(n=67)', 'mid|29(n=57)', 'mid|30(n=33)', 'role|27(n=42)', 'role|28(n=53)', 'role|29(n=30)', 'role|30(n=23)']
+  target star|27->28: realized 0.7612 sd 0.0231
+  target star|28->29: realized 0.7210 sd 0.0299
+  target star|29->30: realized 0.6775 sd 0.0356
+  target star|30->31: realized 0.6571 sd 0.0452
+  target mid|27->28: realized 0.6548 sd 0.0422
+  target mid|28->29: realized 0.6402 sd 0.0769
+  target mid|29->30: realized 0.6145 sd 0.1029
+  target mid|30->31: realized 0.5673 sd 0.1157
+  target role|27->28: realized 0.7103 sd 0.0974
+  target role|28->29: realized 0.4719 sd 0.0924
+  target role|29->30: realized 0.1462 sd 0.0711
+  target role|30->31: realized 0.4160 sd 0.1483
+building level-floor MARKS grid (fit1 machinery)...
+
+FIT2 (rate instrument): CONSTRAINED A=0.16 s0=50.0 loss=548.82  (unconstrained A=0.60 s0=64.0 loss=483.98, feasible=False; 308/465 grid feasible)
+  mean star surplus (28-31) 17.04 -> G(star)=0.711 at fit;  r(31, star)=0.254  r(31, s=0)=0.300
+  star|27->28: engine 0.7808 -> new 0.7566 (realized 0.7612)
+  star|28->29: engine 0.7374 -> new 0.7210 (realized 0.7210)
+  star|29->30: engine 0.7317 -> new 0.7205 (realized 0.6775)
+  star|30->31: engine 0.7242 -> new 0.7204 (realized 0.6571)
+  mid|27->28: engine 0.9635 -> new 0.9393 (realized 0.6548)
+  mid|28->29: engine 0.7840 -> new 0.7695 (realized 0.6402)
+  mid|29->30: engine 0.9276 -> new 0.9090 (realized 0.6145)
+  mid|30->31: engine 0.9809 -> new 0.9724 (realized 0.5673)
+  role|27->28: engine 1.2744 -> new 1.2474 (realized 0.7103)
+  role|28->29: engine 1.0241 -> new 1.0061 (realized 0.4719)
+  role|29->30: engine 1.0880 -> new 1.0858 (realized 0.1462)
+  role|30->31: engine 2.7998 -> new 2.7043 (realized 0.4160)
+  boot (393 draws): A CI [0.14,0.60]  s0 CI [8.0,64.0]  G(star) CI [0.119,0.766]
+  IDENTIFICATION: A-CI excludes 0: True;  G(star) CI < 0.5: False  ==> FAILED -> FALLBACK (flat hazard knots)
+  STAR GATE (level instrument): FAIL  27:0.950(meas 0.950) 28:0.931(meas 0.960) 29:0.980(meas 1.030) 30:1.042(meas 1.111) 31:0.956(meas 1.028)
+  star|surv B with fade: 27:0.95 28:0.93 29:0.98 30:1.04 31:0.96
+  mid|surv B with fade: 27:0.91 28:1.05 29:0.75 30:0.84 31:1.12
+  role|surv B with fade: 27:1.28 28:1.54 29:2.00 30:0.55 31:0.90
+  effective rate r(a,s):
+   age 27: s=0:0.140  s=2:0.140  s=5:0.140  s=10:0.140  s=15:0.140  s=20:0.140  s=30:0.140
+   age 28: s=0:0.180  s=2:0.178  s=5:0.176  s=10:0.173  s=15:0.170  s=20:0.167  s=30:0.162
+   age 29: s=0:0.220  s=2:0.217  s=5:0.212  s=10:0.205  s=15:0.199  s=20:0.194  s=30:0.184
+   age 30: s=0:0.260  s=2:0.255  s=5:0.249  s=10:0.238  s=15:0.229  s=20:0.220  s=30:0.206
+   age 31: s=0:0.300  s=2:0.294  s=5:0.285  s=10:0.271  s=15:0.259  s=20:0.247  s=30:0.228
+   age 32: s=0:0.300  s=2:0.294  s=5:0.285  s=10:0.271  s=15:0.259  s=20:0.247  s=30:0.228
+
+wrote RESULTS_B_FADE_FIT2.json

@@ -1,0 +1,5 @@
+ASSEMBLY_PLAYERS.html  804 rows
+ASSEMBLY_YEAR1.html    105 rows
+(ASSEMBLY_NOARB.html is written by as_noarb.py, which needs the extended-338 run)
+ASSEMBLY_NOARB.html written — 1 boards
+  ASMCAND   MODERN   breaching cells -> picks 1-20:FAIL · picks 1-10:FAIL

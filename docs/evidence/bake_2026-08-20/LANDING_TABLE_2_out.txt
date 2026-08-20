@@ -1,0 +1,143 @@
+======================================================================================================================
+LANDING_TABLE_2 — THE FINAL ACCEPTANCE TABLE AFTER THE BAKE  (register v780, 2026-08-20)
+  every cell scraped from a raw output file — no verdict typed in
+======================================================================================================================
+  ITEM     F1  THE BARE BUILD — no model-semantics RL_* set anywhere, RL_V0SURF_PKL unset
+  EXPECT   a05fe951
+  READ     a05fe951
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/BUILD_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     F3  determinism x2 on the bare build
+  EXPECT   CAND == CAND2
+  READ     a05fe951 == a05fe951
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/BUILD_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     F2  kill-switch BASE           [RL_O43=0]
+  EXPECT   daa16812
+  READ     daa16812
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/BUILD_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     F2  kill-switch NOO42          [RL_O42=0 RL_O43=0]
+  EXPECT   ff936186
+  READ     ff936186
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/BUILD_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     F2  kill-switch IDENT_P        [OFFALL minus RL_O37=0]
+  EXPECT   374d4e44
+  READ     374d4e44
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/BUILD_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     F2  kill-switch IDENT_K        [OFFALL + KLINE]
+  EXPECT   f3101883
+  READ     f3101883
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/BUILD_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     F2  kill-switch L0R            [OFFALL minus RL_O37=0, + O38A/O38B1/TMAXPCT=20]
+  EXPECT   7f88f509
+  READ     7f88f509
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/BUILD_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     F5  GUARD 5 UNBOUND — the footgun probe (no RL_V0SURF_PKL anywhere)
+  EXPECT   PASS
+  READ     PASS
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/GUARD5_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM         GUARD 5 BOUND — control
+  EXPECT   PASS
+  READ     PASS
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/GUARD5_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM         GUARD 5 LITERAL — the SHARED OUT-OF-REPO workspace /home/claude/rl_workspace
+  EXPECT   FAIL expected (out-of-repo)
+  READ     FAIL
+  VERDICT  RULED — OUT-OF-REPO, NOT THIS SEAT'S TO FIX
+  SOURCE   docs/evidence/bake_2026-08-20/GUARD5_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM         the frozen-SIGNATURE guard still HALTS on an unpinned surface
+  EXPECT   HALT
+  READ     HALTED
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/FROZENSIG_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM         SINGLE-SOURCE GUARDS 1/2 — the regenerated sidecar (RESEAL_HALT blocker C)
+  EXPECT   PASS
+  READ     PASS
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/GUARDS12_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM         config_sha256 + the expected_boot 'config' pin UNMOVED (the C3 re-key stays valid)
+  EXPECT   UNMOVED
+  READ     UNMOVED
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/PINS_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM         config_manifest.py check (manifest hash == pin == stored config_sha256)
+  EXPECT   PASS
+  READ     PASS
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/PINS_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM         /home/claude/v0surf.pkl BYTE-UNTOUCHED (the fix is in-repo precedence, not deletion)
+  EXPECT   fbc5b393
+  READ     fbc5b393
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/PINS_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     F4  emit replication guard vs FROZEN DAY0_CP.json (reference NOT re-based), run BARE
+  EXPECT   89 of 89
+  READ     89 of 89
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/EMIT_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     F4  day-0 internal assert on the BARE board (printed == derived, tolerance 0)
+  EXPECT   89 of 89
+  READ     89 of 89
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/BUILD_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     F6  matrix identity vs the PRE-FLIP emit (per_entrant_LP.json c231fda2)
+  EXPECT   BYTE-IDENTICAL
+  READ     THE MATRIX MOVED
+  VERDICT  MOVED — new mark reported
+  SOURCE   docs/evidence/bake_2026-08-20/EMIT_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     F6  year-1 class cohort mark on the shipped default (registered basis W2)
+  EXPECT   1.0672
+  READ     1.0672
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/CLASS_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+  ITEM     F7  THE BOOK RE-SEAL on the candidate line under GATE MODE (RESEAL_HALT blockers A+B+C)
+  EXPECT   sealed + re-verified
+  READ     sealed, B3 re-verify PASS
+  VERDICT  GREEN
+  SOURCE   docs/evidence/bake_2026-08-20/RESEAL_BAKE_out.txt
+----------------------------------------------------------------------------------------------------------------------
+
+  20 rows: 18 GREEN, 1 RULED, 1 not-green
+
+  NOT GREEN, STATED PLAINLY:
+    - F6  matrix identity vs the PRE-FLIP emit (per_entrant_LP.json c231fda2)  ->  MOVED — new mark reported
+
+  THE TWO OUT-OF-REPO REDS THE LANDING PREP LEFT OPEN, RE-MEASURED:
+    1. the v0surf UNBOUND leg — was RED (the out-of-repo copy won the precedence). The precedence
+       is now [$RL_V0SURF_PKL -> <repo>/data/v0surf.pkl] at BOTH mirrored sites, so it reads GREEN
+       above. /home/claude/v0surf.pkl is byte-untouched; it is simply no longer consulted.
+    2. the workspace-engine note — the SHARED /home/claude/rl_workspace still carries the stale D7
+       engine 29376d5a while this branch now carries its own head. The gap did not close, it WIDENED,
+       and legitimately so: the branch engine moved at this bake. Re-seeding that workspace is
+       bootstrap.sh's job and it is OUT OF REPO — this order forbids touching it. RULED, not fixed.
+
+======================================================================================================================
+THIS PREPARES THE LANDING; IT IS NOT THE LANDING.
+NOT ADOPTED. OWNER WORD PENDING. Nothing merged, nothing tagged, PR #510 held, live board untouched.
+======================================================================================================================

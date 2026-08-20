@@ -1,0 +1,33 @@
+ORDER 30B-P — THE AGE-WITHIN-GAMES LENS
+source: PERSISTENCE_TABLE.json cells_all_states (1378 cells, 4033 states, 767 careers)
+instrument: the packet's own CELL-MATCHED PICK CONTRAST (HI = picks 1-12, LO = picks 21-64),
+            matched within position x output-quintile strata. sigma itself is NOT re-fitted.
+
+=== GAMES BAND 16-35   (published sigma 0.3313, 90% CI 0.2079..0.4562, n 834 states, 571 clusters)
+  ALL AGES pooled: matched pick contrast    +306.0 pts  over 26 strata  (weight 190, SD 415, SE 112)
+  age      cells       n     meanR6   medianR6        IQR    zero%   strata      matchedD        SE   sigma^    ratio
+  <=20       133     324      873.4      778.8      573.3     0.3%       20        +362.7       119    0.393     1.19
+  21          83     203      505.3      415.8      406.9     5.4%       17         -88.7       111   -0.096    -0.29
+  22-23       83     225      349.2      267.2      273.1    19.1%       15        -261.6       228   -0.283    -0.86
+  24+         50      82      149.6      144.4       15.5    37.8%        4        -170.2       175   -0.184    -0.56
+
+=== GAMES BAND 36-70   (published sigma 0.1645, 90% CI 0.0590..0.2804, n 887 states, 436 clusters)
+  ALL AGES pooled: matched pick contrast    +379.5 pts  over 27 strata  (weight 226, SD 521, SE 135)
+  age      cells       n     meanR6   medianR6        IQR    zero%   strata      matchedD        SE   sigma^    ratio
+  <=20        51      84     1567.9     1564.4      617.7     0.0%       10         +98.5       404    0.043     0.26
+  21          83     189     1320.8     1255.3      836.7     0.5%       18        +235.8       229    0.102     0.62
+  22-23      111     387      737.8      658.2      518.8     3.6%       23         +51.2       147    0.022     0.13
+  24+        103     227      410.8      354.4      319.5    17.6%       12        -187.7       269   -0.081    -0.49
+
+=== THE DECIDING COMPARISONS (does age-at-state move the share at FIXED games?)
+  band 16-35   <=20 matched   +362.7 (SE   119, n 324)   24+ matched   -170.2 (SE   175, n 82)
+                DIFFERENCE   +532.9   90% interval [+184.2, +881.7]   z +2.51   SEPARATED FROM ZERO: YES
+                share-scaled: sigma^(<=20) 0.393 vs sigma^(24+) -0.184  (published band sigma 0.331)
+  band 36-70   <=20 matched    +98.5 (SE   404, n 84)   24+ matched   -187.7 (SE   269, n 227)
+                DIFFERENCE   +286.2   90% interval [-512.7, +1085.0]   z +0.59   SEPARATED FROM ZERO: NO
+                share-scaled: sigma^(<=20) 0.043 vs sigma^(24+) -0.081  (published band sigma 0.165)
+
+=== VERDICT: AGE-AT-STATE MOVES THE MATCHED PICK GAP AT FIXED GAMES (at least one band separates)
+    Nothing is applied either way: if the split carries signal it is an OWED OWNER WORD, not a wiring act.
+
+wrote /home/user/afl-rl-engine/.claude/worktrees/agent-af5b512e41e41b194/docs/evidence/one_machinery_2026-08-14/preview/AGE_LENS.json

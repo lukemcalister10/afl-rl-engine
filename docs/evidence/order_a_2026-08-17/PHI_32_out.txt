@@ -1,0 +1,43 @@
+ORDER A / CANDIDATE 32 — Phi RE-DERIVED UNDER THE AGE-REFERENCED GATE BARS
+  instrument     docs/evidence/one_machinery_2026-08-14/circularity/o30bc_circ.py
+  committed md5  838af6a5b2b210c629a4f4a2efca745f
+
+C3 transcription verified against CONSTRUCTIONS_S1.json: all 36 cells to 1e-6
+ORDER A / CANDIDATE 32 — Phi RE-DERIVED UNDER THE AGE-REFERENCED GATE BARS
+  instrument     docs/evidence/one_machinery_2026-08-14/circularity/o30bc_circ.py
+  committed md5  838af6a5b2b210c629a4f4a2efca745f
+RUN CONTROL Δ≡0  (as-run md5 5c2fec38874284e65ffaee952059ea8e)
+    SUB  SRC = open(MEASURE).read()                                 ->  SRC = open(MEASURE).read().replace("V0P = os.path.join(ROOT, 'docs', 'evidence', 'one_machinery_2026-08-14', 'V0REFIT30B
+    SUB  OUT_JSON = os.path.join(HERE, 'CIRCULARITY.json')          ->  OUT_JSON = '/home/user/afl-rl-engine/.claude/worktrees/agent-a9b412b92decdb5b8/docs/evidence/order_a_2026-08-17/CIRCULAR
+    SUB  OUT_TXT = os.path.join(HERE, 'CIRC_out.txt')               ->  OUT_TXT = '/home/user/afl-rl-engine/.claude/worktrees/agent-a9b412b92decdb5b8/docs/evidence/order_a_2026-08-17/CIRC_32_C
+    SUB  PTABLEP = os.path.join(ROOT, 'docs', 'evidence', 'pedigree ->  PTABLEP = os.path.join(ROOT, 'docs', 'evidence', 'candidate_31f', 'PERSISTENCE_31F.json')
+    SUB  DELIVERED[(k, s['year'])] = bool(float(s['games']) >= 10.0 ->  DELIVERED[(k, s['year'])] = bool(float(s['games']) >= 10.0 and float(s['avg']) >= O32_AGEBAR(pos, s['year'] - e['birth_y
+  harness ran clean; console CIRC_32_CTRL_console.txt (360 lines)
+
+C3 transcription verified against CONSTRUCTIONS_S1.json: all 36 cells to 1e-6
+ORDER A / CANDIDATE 32 — Phi RE-DERIVED UNDER THE AGE-REFERENCED GATE BARS
+  instrument     docs/evidence/one_machinery_2026-08-14/circularity/o30bc_circ.py
+  committed md5  838af6a5b2b210c629a4f4a2efca745f
+RUN REAL C3 offsets  (as-run md5 9ffb0b4a93443fb0417e31ccac7664c3)
+    SUB  SRC = open(MEASURE).read()                                 ->  SRC = open(MEASURE).read().replace("V0P = os.path.join(ROOT, 'docs', 'evidence', 'one_machinery_2026-08-14', 'V0REFIT30B
+    SUB  OUT_JSON = os.path.join(HERE, 'CIRCULARITY.json')          ->  OUT_JSON = '/home/user/afl-rl-engine/.claude/worktrees/agent-a9b412b92decdb5b8/docs/evidence/order_a_2026-08-17/CIRCULAR
+    SUB  OUT_TXT = os.path.join(HERE, 'CIRC_out.txt')               ->  OUT_TXT = '/home/user/afl-rl-engine/.claude/worktrees/agent-a9b412b92decdb5b8/docs/evidence/order_a_2026-08-17/CIRC_32_o
+    SUB  PTABLEP = os.path.join(ROOT, 'docs', 'evidence', 'pedigree ->  PTABLEP = os.path.join(ROOT, 'docs', 'evidence', 'candidate_31f', 'PERSISTENCE_31F.json')
+    SUB  DELIVERED[(k, s['year'])] = bool(float(s['games']) >= 10.0 ->  DELIVERED[(k, s['year'])] = bool(float(s['games']) >= 10.0 and float(s['avg']) >= O32_AGEBAR(pos, s['year'] - e['birth_y
+  harness ran clean; console CIRC_32_console.txt (360 lines)
+
+CONTROL — the Δ≡0 run against CIRCULARITY_31F.json (deviation must be 0.0):
+  0-5    ctrl 0.1667717754120163 31F 0.1667717754120163 dev 0.0
+  6-15   ctrl 0.0858614087734944 31F 0.0858614087734944 dev 0.0
+  16-35  ctrl 0.08159325465565312 31F 0.08159325465565312 dev 0.0
+  36-70  ctrl -0.0053594644594759195 31F -0.0053594644594759195 dev 0.0
+  71+    ctrl -0.011317082799413533 31F -0.011317082799413533 dev 0.0
+  CONTROL PASS: deviation 0.0 at every band.
+
+PhiStall UNDER THE AGE-REFERENCED BARS (zero-floored, monotone, ratio to the UNCHANGED 31-F beta):
+     mid    beta_stall_32      PhiStall_32     PhiStall_31F          drift
+     2.5        0.1857538        0.6452281        0.5792927     +0.0659354
+    10.5        0.0425594        0.1478327        0.2982452     -0.1504125
+    25.5        0.0425594        0.1478327        0.2982452     -0.1504125
+    53.0        0.0362269        0.1478327        0.0000000     +0.1478327
+    85.5        0.0000000        0.0000000        0.0000000     +0.0000000

@@ -1,0 +1,51 @@
+ORDER 31-F  F4 -- THE NUMERAIRE RE-PIN (original Step 5)
+  artifact  engine/rl_after/pvc_curve_v2.json  md5 78ad9842525ae4f09875b95afc2e2b39  (HEAD-FIXED)
+
+1 -- THE ALL-IN LADDER, PROVED UNMOVED (not asserted)
+  curve_md5 in the artifact ............ 9729f0c5
+  sum(curve[1..64]) now ................ 47315.000000000
+  sum(curve[1..64]) the head fix read .. 47315.000000000   |diff| 0.000e+00
+  curve[1] .............................. 3000.000000000   (the published pin is 3000.0)
+  THE HEAD FIX TOUCHED nd_v0.posv ONLY. Its two structural guarantees, re-read from HEADFIX_31F.json:
+    (i)  per-pick renormalisation restored sum_g share_g(p)*relat_g(p) == 1 EXACTLY at every pick
+    (ii) one conservation scalar lambda = 0.996095068756 made the share-weighted grand total EQUAL the curve
+         total: achieved 47315.000000000   target 47315.000000000   |drift| 0.000e+00
+  So the object the numeraire measures -- the ALL-IN ladder's own pre-anchor head -- cannot have moved.
+
+2 -- THE RE-PIN, THROUGH THE BLOCK _load_numeraire READS
+  pooled_head_pre_scale   3191.1789716631069  ->  3191.1789716631069     |diff| 0.000e+00
+  published_pin           3000.0  ->  3000.0          (the standing law pins pick 1 = 3000)
+  s = published_pin / H   0.9400914291048137  ->  0.9400914291048137
+  THE EXACT s            0.9400914291048137
+  s_new / s_old - 1       +0.000e+00
+  |s_new - s_old|         0.000e+00
+
+  PREREG F22 PREDICTED THIS, AND WHY, BEFORE IT WAS MEASURED: "s_new = s_old = 0.9400914291048137
+  EXACTLY ... Fails on any movement in the 16th decimal -- and a movement would mean the head fix
+  leaked into the all-in ladder, which is itself the failure."
+  VERDICT: HELD -- s is EXACTLY unmoved
+
+3 -- THE E6 ASSERTS, RUN THROUGH rl_model.py::_load_numeraire ITSELF (not re-implemented)
+  _load_numeraire(3000.0, the head-fixed artifact) returned WITHOUT HALTING:
+    H 3191.1789716631069   s 0.9400914291048137   published_pin 3000.0
+  E6 COHERENCE  |published_pin/H - s| = 0.000e+00      (it HALTS above 1e-9)
+  RL_PICK1 vs the published pin |3000 - 3000.0| = 0.000e+00   (it HALTS above 1e-9)
+  PICKS AND PLAYERS TOGETHER: BOARD_FACTOR = (RL_PICK1 / PVC[1]) * s = 0.7111130326057592
+    the LIVE build's BOARD_FACTOR, read off the engine as loaded: 0.7111130326057592
+    the pick side carries the SAME s inside the installed ladder -- one measured head, one factor,
+    both sides. A one-sided scaling is what E6 exists to make impossible, and it did not happen.
+
+4 -- THE GUARD IS LIVE, NOT ARMED (proved by making it fire)
+  a doctored s (x1.0001) HALTS: E6 numeraire COHERENCE HALT: the artifact's published s and its own head disagree.
+  E6 coherence guard fires on an incoherent block: YES
+  a disagreeing RL_PICK1 (3500) HALTS: E6 numeraire COHERENCE HALT: RL_PICK1 disagrees with the artifact's published pin.
+  RL_PICK1 guard fires on a disagreeing pin: YES
+
+THE VERDICT
+  the exact s ................ 0.9400914291048137
+  old -> new ................. 0.9400914291048137 -> 0.9400914291048137   (|diff| 0.000e+00)
+  the board carries NO numeraire scaling from this act: every level in this candidate is on the SAME
+  measuring stick as live 88ce647f and Step-2 92982031, so the movers ledger reads MOVEMENT and not
+  a change of units. THE CANDIDATE IS NOT "PRE-NUMERAIRE": the numeraire has been re-pinned, and the
+  re-pin is the identity.
+  E6 asserts hold; both guards proved LIVE by firing them.

@@ -1,0 +1,128 @@
+======================================================================================================================
+ORDER N — STEP 3. THE DERIVED CHARGE
+======================================================================================================================
+input: STEP2_N.json — the outcome measurement. No board price enters this file.
+
+----------------------------------------------------------------------------------------------------------------------
+1 · A(g) — THE EVIDENCE CURVE, FITTED TO THE MEASURED PAYOFF TO PERFORMANCE
+----------------------------------------------------------------------------------------------------------------------
+   Step 2 measured BETA(g): the proportional payoff to one point per game of surplus, at fixed
+   pedigree. It rises with games and then flattens. That is an evidence-accumulation curve and it
+   is measured, not assumed. Fit:
+
+       BETA(g) = BETA_sat * ( 1 - exp(-g/G0) )
+
+   A(g) = 1 - exp(-g/G0) is then the SHARE OF THE MATURE PERFORMANCE SIGNAL that g games have
+   revealed. A(0) = 0 exactly, which is prereg property N-S1, and A is increasing, which is N-S2.
+
+   bin        mean g     n |       BETA 90% CI                 implied sd
+   1-3          1.91   776 |   +0.01764 [+0.00716,+0.02814]    0.00638
+   4-7          5.38   613 |   +0.04518 [+0.03129,+0.05841]    0.00824
+   8-12         9.86   629 |   +0.06962 [+0.05316,+0.08652]    0.01014
+   13-17       15.00   465 |   +0.10419 [+0.08573,+0.12182]    0.01097
+   18-24       20.84   517 |   +0.10414 [+0.08866,+0.11947]    0.00937
+   25-39       31.60   625 |   +0.11146 [+0.09595,+0.12687]    0.00940
+   40-60       48.63   518 |   +0.10817 [+0.09136,+0.12467]    0.01013
+
+   FITTED, weighted by the inverse variance of each bin, grid 0.01 on G0:
+       G0        = 9.72 games      90% CI [7.39, 12.84]
+       BETA_sat  = 0.11521            90% CI [0.10434, 0.12828]
+       weighted SSE 2.559 over 7 bins, 2 free parameters
+   CIs are a parametric bootstrap: each bin's BETA redrawn 4000 times from a normal with the sd its
+   own cluster bootstrap implied, then the curve refitted. Seed 32.
+
+   FIT QUALITY, bin by bin:
+   bin        mean g |   BETA obs   BETA fit       A(g)
+   1-3          1.91 |   +0.01764   +0.02059     0.1787
+   4-7          5.38 |   +0.04518   +0.04897     0.4251
+   8-12         9.86 |   +0.06962   +0.07341     0.6372
+   13-17       15.00 |   +0.10419   +0.09059     0.7863
+   18-24       20.84 |   +0.10414   +0.10171     0.8828
+   25-39       31.60 |   +0.11146   +0.11075     0.9613
+   40-60       48.63 |   +0.10817   +0.11444     0.9933
+
+   A(g) AT THE ORDER'S OWN ANCHORS:
+   games          A(g) vs current m_d(g)
+   0            0.0000         0.0000
+   2            0.1860         0.3366
+   5            0.4021         0.6793
+   10           0.6426         0.9505
+   14           0.7632         1.0000
+   15           0.7863         0.9976
+   20           0.8722         0.9306
+   30           0.9543         0.6834
+   40           0.9837         0.4461
+   60           0.9979         0.1603
+   100          1.0000         0.0153
+   200          1.0000         0.0000
+
+   READ THE TWO COLUMNS. The current shape m_d peaks at 14 games and then FALLS: a 36-game player
+   keeps more of his unearned pedigree than a 17-game player. A(g) never falls. That is the whole
+   of requirement (c), and the measurement above is what justifies it — the payoff to performance
+   does not fall after 14 games either, it flattens and stays flat.
+
+----------------------------------------------------------------------------------------------------------------------
+2 · THE TILT, AND TWO DEVIATIONS FROM THE PREREGISTERED FORM
+----------------------------------------------------------------------------------------------------------------------
+   PREREG_N.md section 5 declared:   pi *= max(0, 1 - ETA_N * A(g) * exp(-THETA*(s - s0)) )
+   What is derived here instead is:  pi *= exp( -LAMBDA * A(g) * T(s) ),  T(s) = clip(1 - THETA_R*(s - s0), 0, TMAX)
+
+   TWO CHANGES. Both are disclosed, both were forced by the measurement, and neither is cosmetic.
+
+   DEVIATION D1 — exp(-X) in place of (1 - X).
+   exp(-X) lies in (0, 1] for every X >= 0. The multiplier can therefore never go negative and the
+   max(0, .) clamp the current mechanism needs disappears from the law. Structural property N-S4
+   stops being a thing to check and becomes a thing that cannot fail.
+
+   DEVIATION D2 — the tilt is LINEAR in surplus inside the exponent, not exponential.
+   This one matters and here is the number that forced it. With the preregistered exponential tilt
+   at the measured THETA, the multiplier exp(-THETA*(s - s0)) spans the cohort from 0.031 to 175.8 —
+   four orders of magnitude. Worse, it makes the DELIVERED slope depend on where a row sits: the
+   charge would lean 350 times harder on a row at the bottom of the spread than on one at the top,
+   which is not what Step 2 measured. Step 2 measured ONE slope, BETA(g), the same at every s.
+
+   With the linear-in-s tilt the delivered slope is exactly constant:
+
+       d ln(retained pedigree) / ds  =  LAMBDA * A(g) * THETA_R
+
+   So setting  LAMBDA * THETA_R = BETA_sat  makes the pedigree leg respond to performance surplus
+   at exactly the rate the outcome data says it should, at every level of s, and the response
+   scales with A(g) — which reproduces the measured BETA(g) = BETA_sat * A(g) exactly.
+
+       LAMBDA * THETA_R = BETA_sat = 0.11521      90% CI [0.10434, 0.12828]
+
+   That is ONE equation. LAMBDA is fixed by the anchoring identity in Step 4, and THETA_R follows
+   as BETA_sat / LAMBDA. There is no free parameter left and nothing to tune.
+
+----------------------------------------------------------------------------------------------------------------------
+3 · s0 AND THE CAP
+----------------------------------------------------------------------------------------------------------------------
+   s0 = the GAMES-WEIGHTED mean performance surplus of the young cohort = +2.3163 points per game.
+   Weighting by games is deliberate: a two-game season must not set the centre of the scale.
+   Unweighted mean -4.4476, median -3.8795, p5 -31.72, p95 +19.19.
+   T(s0) = 1 by construction: a row producing exactly at the cohort centre pays the base charge.
+
+   THE CAP. T is clipped below at 0 and above at TMAX. TMAX is set at the value T takes for a row
+   at the cohort's own 5th percentile of surplus (-31.72 points per game), so the worst-producing
+   5%% of the cohort all pay the same top rate rather than an unbounded one. That bound is the
+   data's own spread; no number here was picked by hand. TMAX is computed in Step 4, where
+   THETA_R becomes known.
+
+   THE LOWER CLIP AT ZERO IS THE HEADLINE OF THE WHOLE MECHANISM, so it is stated plainly:
+   a young player far enough above his age bar pays NO charge on his pedigree leg at all. He keeps
+   the whole prior. The surplus at which that happens is s0 + 1/THETA_R and it is reported in Step 4.
+
+----------------------------------------------------------------------------------------------------------------------
+4 · THE PREREGISTERED STRUCTURAL PROPERTIES, CHECKED
+----------------------------------------------------------------------------------------------------------------------
+   N-S1  A(0) = 0 exactly, so pi(0) = D and no day-0 print can move                                     PASS
+   N-S2  A is non-decreasing in g on [0, 400]                                                           PASS
+   N-S3  T is non-increasing in s -- structural: T is a clipped decreasing linear function              PASS
+   N-S4  exp(-LAMBDA*A*T) is in (0, 1] for every non-negative LAMBDA, A, T -- STRUCTURAL                PASS
+
+   N-S5 (rows with no age-bar content) is settled as follows and stated plainly: the age bar is
+   FLAT from age 24, so for a row at 24 or older the surplus s is his distance from the mature bar.
+   That needs no special case, and it is the right reading: an old row far below the mature bar
+   SHOULD lose more of his pedigree prior, and one above it should keep more. The C3 offsets go to
+   zero on their own, which is the engine's own cap law.
+

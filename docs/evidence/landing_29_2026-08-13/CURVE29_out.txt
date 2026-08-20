@@ -1,0 +1,40 @@
+====================================================================================================================
+ORDER 29  --  STEP 3, THE MONOTONE HYBRID CURVE  (P5 / P6)
+====================================================================================================================
+
+P5 -- THE CURVE, RE-CHECKED RATHER THAN ASSUMED
+--------------------------------------------------------------------------------------------------------------------
+  pre-anchor head        3191.1789716631
+  anchor factor          0.940091429105
+  head x factor          3000.000000   (== the published pin 3000)
+  domain                 1..64  (64 entries)
+  P5 spot values (int)   {1: 3000, 2: 2668, 3: 2569, 5: 1804, 7: 1319, 10: 1319, 15: 812, 20: 812, 30: 607, 40: 479, 50: 274, 64: 179}
+  P5 predicted           {1: 3000, 2: 2668, 3: 2569, 5: 1804, 7: 1319, 10: 1319, 15: 812, 20: 812, 30: 607, 40: 479, 50: 274, 64: 179}
+  spot verdict           ALL 12 MATCH -- HELD
+  seam pick (last pure-loclin)  56      P5 predicted 56    HELD
+  tail zone                     57-64    P5 predicted 57-64 HELD
+  pick 64                       179      P5 predicted the 179-class  HELD
+
+  NON-INCREASING (no ascent)          PASS   ascents: none
+  STRICTLY DECREASING (no plateau)    FAIL   plateau steps: 12 at picks [6, 7, 8, 9, 10, 11, 15, 16, 17, 18, 19, 20]
+  the artifact's live self-declaration r104_9_strict_descent = True
+
+  ** THE CURVE IS NON-INCREASING BUT NOT STRICTLY DECREASING. **
+  PAVA (Ruling C) replaces each violating block by its weighted mean, so a pooled block IS a
+  plateau BY CONSTRUCTION.  picks 6-11 pool to 1319 and picks 15-20 pool to 812.
+
+P6 -- THE CONSERVATION LEDGER
+--------------------------------------------------------------------------------------------------------------------
+  quantity                                                    pre             post          drift
+  weighted  sum n_p * v_p  (PAVA step)                849881.2910      849881.2910      0.000e+00
+  plain     sum v_p       (PAVA step)                  47316.3530       47316.3530        0.0000%
+  plain sum, float -> int (artifact schema)            47316.3530            47315       -0.0029%
+  anchor (pick 1)                                       3000.0000        3000.0000        unmoved
+
+  P6 predicted: weighted conserved to 0.000e+00        MEASURED 0.000e+00   HELD
+  P6 predicted: plain conserved to 0.0000%             MEASURED +0.0000%   HELD
+  P6 predicted: int-rounding drift < 0.05%, PRINTED    MEASURED -0.0029%   HELD
+  P6 predicted: anchor untouched by boundary+monotone  HELD
+  The int drift is PRINTED, NOT ABSORBED: no compensating adjustment is applied anywhere.
+
+  written: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o29/pvc_candidate.json   curve_md5 48046e2b

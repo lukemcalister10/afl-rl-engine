@@ -1,0 +1,230 @@
+==========================================================================================================================
+ORDER 28  --  THE IDENTITY GATE, RE-RUN UNDER THE DIALED ENGINE
+==========================================================================================================================
+  DIAL: RL_GRACE=1  (MA.RL_GRACE=True, GRACE_G=1, GRACE_MAX_ENTRY_AGE=19)
+  pins ASSERTED (unmoved by this order): store=d9a24282  live board=88ce647f
+  engine files RECORDED (they carry the dial; dial-off byte-identity is the proof they are inert):
+     distpx   33e07a9e  engine/forward_valuation/distribution_pricing.py
+     engine   e5109864  engine/rl_after/_merged_recover.py   (pre-28 3f1468e5)
+     model    5d1e7b7a  engine/rl_after/rl_model.py   (pre-28 e5eb5e44)
+     netting  48ea1bfe  engine/forward_valuation/dist_redesign.py   (pre-28 48ea1bfe)
+  variant (dial-ON) board present: True  md5 0ce52771
+
+  season_points(X,P) = SCALE * posval( X + capt_prem(X) - (MA.REPL[P] - rd.REPL_DROP[P]) ) * 21
+  SCALE 1.4398232006949683   posval S_SH=3.0   capt_prem CAPT_THRESH=107.4   REPL_DROP 3.0
+  disc  rl_model::disc_factor  LENS[bal]=0.14  RL_AGE_DISC=False  GAMMA=1.0
+  effective bars: {'KPD': 65.4, 'KPF': 63.8, 'MID': 77.1, 'RUCK': 75.5, 'SD': 75.3, 'SF': 67.9}
+
+--------------------------------------------------------------------------------------------------------------------------
+PER-PLAYER: the six scored careers, the WQ6 blend, and BOTH board readings
+--------------------------------------------------------------------------------------------------------------------------
+
+Willem Duursma  [willem-duursma]   pos MID (day-0 MID)  age 19  ND pick 1  entry 2025 (age 18)  grace=1  qual 1  pool=False
+      q10     79.77         477.00   w=0.180
+      q30     99.86        2856.00   w=0.180
+      q50    107.65        4543.00   w=0.180
+      q70    113.31        6177.00   w=0.180
+      q90    115.39        6927.00   w=0.180
+      q97    119.10        8286.00   w=0.100
+    prod_floor                 177.00
+    WQ6 BLEND (mine)          4605.00
+    engine price6             4605.00    gap +0.000000%   <-- THE PRICE-FUNCTION IDENTITY (dial on both sides)
+    LIVE board (dial-off)        3977    gap  +15.7908%
+    VARIANT board (dial-on)      4521    gap   +1.8580%   <-- the like-for-like Ruling-9 read
+
+Nick Daicos  [nick-daicos]   pos MID (day-0 MID)  age 23  ND pick 4  entry 2021 (age 18)  grace=0  qual 5  pool=False
+      q10    115.84        8545.00   w=0.180
+      q30    118.74        9091.00   w=0.180
+      q50    125.24       10690.00   w=0.180
+      q70    128.44       11705.00   w=0.180
+      q90    129.13       11927.00   w=0.180
+      q97    129.43       12024.00   w=0.100
+    prod_floor                4315.00
+    WQ6 BLEND (mine)         10554.84
+    engine price6            10554.84    gap +0.000000%   <-- THE PRICE-FUNCTION IDENTITY (dial on both sides)
+    LIVE board (dial-off)       10945    gap   -3.5647%
+    VARIANT board (dial-on)     10945    gap   -3.5647%   <-- the like-for-like Ruling-9 read
+
+Harry Sheezel  [harry-sheezel]   pos MID (day-0 SF)  age 22  ND pick 3  entry 2022 (age 18)  grace=0  qual 4  pool=False
+      q10    117.34       10474.00   w=0.180
+      q30    120.48       11010.00   w=0.180
+      q50    123.12       11559.00   w=0.180
+      q70    124.29       11828.00   w=0.180
+      q90    124.53       11884.00   w=0.180
+      q97    125.69       12174.00   w=0.100
+    prod_floor                5250.00
+    WQ6 BLEND (mine)         11433.30
+    engine price6            11433.30    gap +0.000000%   <-- THE PRICE-FUNCTION IDENTITY (dial on both sides)
+    LIVE board (dial-off)       11764    gap   -2.8111%
+    VARIANT board (dial-on)     11764    gap   -2.8111%   <-- the like-for-like Ruling-9 read
+
+Marcus Bontempelli  [marcus-bontempelli]   pos MID (day-0 MID)  age 31  ND pick 4  entry 2013 (age 18)  grace=0  qual 13  pool=False
+      q10     97.14        3133.00   w=0.180
+      q30    105.54        3133.00   w=0.180
+      q50    113.39        3133.00   w=0.180
+      q70    123.85        3207.00   w=0.180
+      q90    128.09        3512.00   w=0.180
+      q97    125.60        3328.00   w=0.100
+    prod_floor                3133.00
+    WQ6 BLEND (mine)          3234.04
+    engine price6             3234.04    gap +0.000000%   <-- THE PRICE-FUNCTION IDENTITY (dial on both sides)
+    LIVE board (dial-off)        3876    gap  -16.5624%
+    VARIANT board (dial-on)      3876    gap  -16.5624%   <-- the like-for-like Ruling-9 read
+
+Max Gawn  [max-gawn]   pos RUCK (day-0 RUCK)  age 35  ND pick 33  entry 2009 (age 18)  grace=0  qual 14  pool=False
+      q10    102.26        2763.00   w=0.180
+      q30    113.09        2763.00   w=0.180
+      q50    124.85        2763.00   w=0.180
+      q70    125.83        2763.00   w=0.180
+      q90    127.86        2763.00   w=0.180
+      q97    127.13        2763.00   w=0.100
+    prod_floor                2763.00
+    WQ6 BLEND (mine)          2763.00
+    engine price6             2763.00    gap +0.000000%   <-- THE PRICE-FUNCTION IDENTITY (dial on both sides)
+    LIVE board (dial-off)        3336    gap  -17.1763%
+    VARIANT board (dial-on)      3336    gap  -17.1763%   <-- the like-for-like Ruling-9 read
+
+Harley Reid  [harley-reid]   pos MID (day-0 MID)  age 21  ND pick 1  entry 2023 (age 18)  grace=0  qual 3  pool=False
+      q10     89.84        2038.00   w=0.180
+      q30    100.33        3426.00   w=0.180
+      q50    103.94        4045.00   w=0.180
+      q70    106.79        4620.00   w=0.180
+      q90    112.37        5976.00   w=0.180
+      q97    114.07        6504.00   w=0.100
+    prod_floor                 943.00
+    WQ6 BLEND (mine)          4269.30
+    engine price6             4269.30    gap +0.000000%   <-- THE PRICE-FUNCTION IDENTITY (dial on both sides)
+    LIVE board (dial-off)        3820    gap  +11.7618%
+    VARIANT board (dial-on)      3820    gap  +11.7618%   <-- the like-for-like Ruling-9 read
+
+Jai Newcombe  [jai-newcombe]   pos MID (day-0 MID)  age 25  MSD pick 65  entry 2021 (age 20)  grace=0  qual 6  pool=True
+      q10     99.51        2955.00   w=0.180
+      q30    105.05        3756.00   w=0.180
+      q50    108.73        4400.00   w=0.180
+      q70    113.76        5496.00   w=0.180
+      q90    118.12        6656.00   w=0.180
+      q97    120.22        7258.00   w=0.100
+    prod_floor                1947.00
+    WQ6 BLEND (mine)          4913.14
+    engine price6             4913.14    gap +0.000000%   <-- THE PRICE-FUNCTION IDENTITY (dial on both sides)
+    LIVE board (dial-off)        4883    gap   +0.6172%
+    VARIANT board (dial-on)      4883    gap   +0.6172%   <-- the like-for-like Ruling-9 read
+
+Harrison Ramm  [harrison-ramm]   pos KPD (day-0 KPD)  age 20  MSD pick 65  entry 2025 (age 19)  grace=0  qual 0  pool=True
+      q10     44.35           0.00   w=0.180
+      q30     53.93           3.00   w=0.180
+      q50     60.44          27.00   w=0.180
+      q70     69.72         297.00   w=0.180
+      q90     84.70        2036.00   w=0.180
+      q97     93.94        3695.00   w=0.100
+    prod_floor                   0.00
+    WQ6 BLEND (mine)           794.84
+    engine price6              794.84    gap +0.000000%   <-- THE PRICE-FUNCTION IDENTITY (dial on both sides)
+    LIVE board (dial-off)         545    gap  +45.8422%
+    VARIANT board (dial-on)       545    gap  +45.8422%   <-- the like-for-like Ruling-9 read
+
+Vigo Visentini  [vigo-visentini]   pos RUCK (day-0 RUCK)  age 21  RD pick 65  entry 2023 (age 18)  grace=0  qual 0  pool=True
+      q10     43.46           0.00   w=0.180
+      q30     65.32           5.00   w=0.180
+      q50     68.96          16.00   w=0.180
+      q70     78.01         200.00   w=0.180
+      q90     96.17        2022.00   w=0.180
+      q97    106.66        3881.00   w=0.100
+    prod_floor                   0.00
+    WQ6 BLEND (mine)           791.84
+    engine price6              791.84    gap +0.000000%   <-- THE PRICE-FUNCTION IDENTITY (dial on both sides)
+    LIVE board (dial-off)         182    gap +335.0769%
+    VARIANT board (dial-on)       182    gap +335.0769%   <-- the like-for-like Ruling-9 read
+
+Josh Treacy  [josh-treacy]   pos KPF (day-0 KPF)  age 24  RD pick 65  entry 2020 (age 18)  grace=0  qual 5  pool=True
+      q10     90.32        5495.00   w=0.180
+      q30     97.41        6288.00   w=0.180
+      q50    100.74        6787.00   w=0.180
+      q70    105.78        7633.00   w=0.180
+      q90    112.00        8955.00   w=0.180
+      q97    109.24        8293.00   w=0.100
+    prod_floor                2467.00
+    WQ6 BLEND (mine)          7157.74
+    engine price6             7157.74    gap +0.000000%   <-- THE PRICE-FUNCTION IDENTITY (dial on both sides)
+    LIVE board (dial-off)        6921    gap   +3.4206%
+    VARIANT board (dial-on)      6921    gap   +3.4206%   <-- the like-for-like Ruling-9 read
+
+Izak Rankine  [izak-rankine]   pos SF (day-0 SF)  age 26  ND pick 3  entry 2018 (age 18)  grace=0  qual 7  pool=False
+      q10     91.45        3084.00   w=0.180
+      q30     97.19        3787.00   w=0.180
+      q50    102.25        4439.00   w=0.180
+      q70    106.07        5049.00   w=0.180
+      q90    108.83        5513.00   w=0.180
+      q97    110.12        5745.00   w=0.100
+    prod_floor                2545.00
+    WQ6 BLEND (mine)          4511.46
+    engine price6             4511.46    gap +0.000000%   <-- THE PRICE-FUNCTION IDENTITY (dial on both sides)
+    LIVE board (dial-off)        4685    gap   -3.7042%
+    VARIANT board (dial-on)      4685    gap   -3.7042%   <-- the like-for-like Ruling-9 read
+
+Lachlan Ash  [lachlan-ash]   pos SD (day-0 SD)  age 25  ND pick 4  entry 2019 (age 18)  grace=0  qual 7  pool=False
+      q10    100.70        3716.00   w=0.180
+      q30    106.91        4707.00   w=0.180
+      q50    108.66        5041.00   w=0.180
+      q70    114.37        6381.00   w=0.180
+      q90    123.68        9232.00   w=0.180
+      q97    121.57        8551.00   w=0.100
+    prod_floor                2027.00
+    WQ6 BLEND (mine)          6088.96
+    engine price6             6088.96    gap +0.000000%   <-- THE PRICE-FUNCTION IDENTITY (dial on both sides)
+    LIVE board (dial-off)        5728    gap   +6.3017%
+    VARIANT board (dial-on)      5728    gap   +6.3017%   <-- the like-for-like Ruling-9 read
+
+==========================================================================================================================
+GATE VERDICT TABLE
+==========================================================================================================================
+key                      pos  age   pick grace        mine      price6     vs p6 %   vs LIVE%    vs VAR%  R9(var)
+willem-duursma           MID   19      1     1     4605.00     4605.00  +0.000000%   +15.791%    +1.858%  PASS
+nick-daicos              MID   23      4     0    10554.84    10554.84  +0.000000%    -3.565%    -3.565%  FAIL
+harry-sheezel            MID   22      3     0    11433.30    11433.30  +0.000000%    -2.811%    -2.811%  FAIL
+marcus-bontempelli       MID   31      4     0     3234.04     3234.04  +0.000000%   -16.562%   -16.562%  FAIL
+max-gawn                RUCK   35     33     0     2763.00     2763.00  +0.000000%   -17.176%   -17.176%  FAIL
+harley-reid              MID   21      1     0     4269.30     4269.30  +0.000000%   +11.762%   +11.762%  FAIL
+jai-newcombe             MID   25     65     0     4913.14     4913.14  +0.000000%    +0.617%    +0.617%  PASS
+harrison-ramm            KPD   20     65     0      794.84      794.84  +0.000000%   +45.842%   +45.842%  FAIL
+vigo-visentini          RUCK   21     65     0      791.84      791.84  +0.000000%  +335.077%  +335.077%  FAIL
+josh-treacy              KPF   24     65     0     7157.74     7157.74  +0.000000%    +3.421%    +3.421%  FAIL
+izak-rankine              SF   26      3     0     4511.46     4511.46  +0.000000%    -3.704%    -3.704%  FAIL
+lachlan-ash               SD   25      4     0     6088.96     6088.96  +0.000000%    +6.302%    +6.302%  FAIL
+
+  PRICE-FUNCTION IDENTITY (|mine/price6 - 1| <= 1e-6):   12 of 12 PASS   <-- THE ORDER-28 GATE
+  RULING 9 +/-2% vs the LIVE (dial-OFF) board:            1 of 12  [expected to DEGRADE -- the scorer moved and that board did not]
+  RULING 9 +/-2% vs the VARIANT (dial-ON) board:          2 of 12  [the like-for-like read]
+  max |mine/price6 - 1| over the panel: 0.000e+00
+
+==========================================================================================================================
+ATTRIBUTION -- the multiplicative legs between the scored band careers and the LIVE board price
+==========================================================================================================================
+key                      mine/p6    uncomp     pole+    ev/raw numeraire     product  measured    residual
+willem-duursma            1.0000    1.0000    1.0175    1.0154    1.1964      1.1579    1.1579   -2.22e-16
+nick-daicos               1.0000    0.9981    1.0931    1.0002    1.0524      0.9644    0.9644   -2.22e-16
+harry-sheezel             1.0000    0.9918    1.0914    1.0004    1.0524      0.9719    0.9719    0.00e+00
+marcus-bontempelli        1.0000    1.0986    1.1481    1.0000    1.0524      0.8344    0.8344    2.22e-16
+max-gawn                  1.0000    1.1004    1.1549    0.9999    1.0525      0.8282    0.8282    1.11e-16
+harley-reid               1.0000    0.9171    1.0258    1.0010    1.0524      1.1176    1.1176   -2.22e-16
+jai-newcombe              1.0000    0.9974    1.0499    0.9988    1.0524      1.0062    1.0062   -2.22e-16
+harrison-ramm             1.0000    1.0000    1.2437    0.5806    1.0532      1.4584    1.4584   -2.22e-16
+vigo-visentini            1.0000    1.0000    1.1298    0.2146    1.0549      4.3508    4.3508   -8.88e-16
+josh-treacy               1.0000    0.9787    1.1524    0.9023    1.0524      1.0342    1.0342   -2.22e-16
+izak-rankine              1.0000    0.9956    1.0975    1.0001    1.0523      0.9630    0.9630    0.00e+00
+lachlan-ash               1.0000    0.9467    1.0456    1.0001    1.0524      1.0630    1.0630   -2.22e-16
+   max |residual| over the panel: 8.882e-16
+
+==========================================================================================================================
+BOARD-WIDE CONTROL -- the same checks over all 804 active rows
+==========================================================================================================================
+  rows measured: 804   (of which grace>0: 75)
+  PRICE-FUNCTION IDENTITY |mine/price6 - 1| :  max 0.000e+00   within 1e-6: 800 of 800 (100.0%)
+  vs LIVE board   mine/v :  min 0.0000  p05 0.0904  med 1.0083  p95 4.4313  max 26.1981   within 2%: 72 of 804 (9.0%)
+  vs VARIANT board mine/v:  min 0.0000  p05 0.0904  med 1.0054  p95 4.4313  max 26.1981   within 2%: 72 of 804 (9.0%)
+    ND, >=4 qualifying seasons   n= 305  vs LIVE med  0.9870 within2%  12.5%   |  vs VAR med  0.9870 within2%  12.5%
+    ND, <4 qualifying seasons    n= 256  vs LIVE med  1.0070 within2%   7.8%   |  vs VAR med  0.9930 within2%   7.8%
+    pool, >=4 qualifying seasons n=  89  vs LIVE med  1.0079 within2%  13.5%   |  vs VAR med  1.0079 within2%  13.5%
+    pool, <4 qualifying seasons  n= 154  vs LIVE med  1.1725 within2%   1.3%   |  vs VAR med  1.1688 within2%   1.3%
+    GRACED rows (grace>0)        n=  75  vs LIVE med  1.6170 within2%   4.0%   |  vs VAR med  1.5701 within2%   4.0%
+    UN-graced rows (grace==0)    n= 729  vs LIVE med  0.9962 within2%   9.5%   |  vs VAR med  0.9962 within2%   9.5%

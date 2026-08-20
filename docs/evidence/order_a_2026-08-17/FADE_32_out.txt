@@ -1,0 +1,16 @@
+ORDER A / CANDIDATE 32 — THE SITTER FADE, RE-RUN WHOLE (30A-2 lineage) UNDER THE NEW DEFINITIONS
+  instrument      docs/evidence/sitter_fade_2026-08-14/o30a2_recut.py
+  committed md5   fe6f436ab23056d717f693091946309a
+  as-run md5      50009fe970cd96547e096d2af8737996
+  THE ONLY EDIT   'OUTD = HERE' -> "OUTD = '/home/user/afl-rl-engine/.claude/worktrees/agent-a9b412b92decdb5b8/docs/evidence/order_a_2026-08-17'"    (output directory only; no estimator touched)
+  artifact        engine/rl_after/pvc_curve_v2.json md5 78ad9842525ae4f09875b95afc2e2b39 (head-fixed, the Candidate 31/32 surface)
+
+  instrument ran clean; console RECUT30A2_32_console.txt (419 lines)
+
+THE ROW, AGAINST THE CANDIDATE-31 (31-F) WIRED ROW:
+  D(2) = 0.5582775239783688    31-F 0.5582775239783688    dev 0.000e+00   (n=464)
+  D(3) = 0.2747857941376827    31-F 0.2747857941376827    dev 0.000e+00   (n=100)
+  D(4) = 0.3972708510774922    31-F 0.3972708510774922    dev 0.000e+00   (n=11)
+  RAW(1) normaliser  31-F 0.995498 -> 0.995498
+
+PREREG_32 P-D0 verdict: HELD — the row reproduces at deviation 0.0; the D row does NOT move and every printed day-0 price is therefore unmoved by construction (max deviation 0.000e+00)

@@ -1,0 +1,96 @@
+=== ORDER R CENSUS  tag=R20b2  dials={'RL_O37': '1', 'RL_O38B1': '1', 'RL_O39_TMAXPCT': '20', 'RL_O39_BETASAT': '0.105'} ===
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+board total (numeraire): 663845
+
+BURN CENSUS
+  -- the supervisor's population (|fK-fP|>=0.02), n=268
+     band         n  burned  pts(board)
+     1-10        43      20        1451
+     11-20       44       7         241
+     21-30       35       8          26
+     31-40       28       3          14
+     41+         51       9          38
+     pool        67       7          50
+     TOTAL      268      54        1820
+  -- all young rows, n=289
+     band         n  burned  pts(board)
+     1-10        49      20        1451
+     11-20       47       7         241
+     21-30       36       8          26
+     31-40       32       3          14
+     41+         54       9          38
+     pool        71       7          50
+     TOTAL      289      54        1820
+  worst five (all young rows):
+     Sam Lalor                1     age 20   22g  v0   3273 ->   2275     3109 ->   3385  (+276)
+     Willem Duursma           1     age 19   19g  v0   3273 ->   2621     3950 ->   4216  (+266)
+     Finn O'Sullivan          2     age 20   39g  v0   2869 ->   1180     2839 ->   3048  (+209)
+     Sam Cumming              7     age 19   14g  v0   1578 ->   1142     2027 ->   2143  (+116)
+     Harvey Langford          6     age 20   43g  v0   1579 ->   1370     2429 ->   2528  (+99)
+
+BIRTHDAY CENSUS — the price on the 24th birthday, with games and output UNCHANGED
+  age-23 rows with a pedigree leg: 81
+  rows that GAIN 50% or more from the birthday alone: 0
+  points handed back across all age-23 rows: NET +0   GAINS ONLY +0   (the two readings are
+  different objects and both are printed: the birthday RAISES some rows and LOWERS others)
+  worst ratio: 1.0000   rows moving at all: 0
+  band         n  gain50+   movers     net points     gains only
+  1-10        10        0        0             +0             +0
+  11-20        8        0        0             +0             +0
+  21-30       10        0        0             +0             +0
+  31-40        9        0        0             +0             +0
+  41+         13        0        0             +0             +0
+  pool        31        0        0             +0             +0
+  the five largest ratios:
+     Nick Daicos              4      115g     9944 ->   9944   x1.000
+     Nasiah Wanganeen-Milera  11     102g     8644 ->   8644   x1.000
+     Bodhi Uwland             pool    70g     3568 ->   3568   x1.000
+     Jason Horne-Francis      1      100g     5600 ->   5600   x1.000
+     Finn Callaghan           3       90g     5516 ->   5516   x1.000
+
+THE EFFECTIVE CONSTANTS THIS BOARD WAS BUILT ON
+  BETA_sat  0.1050000000   (ORDER P point estimate 0.1146463006)
+  THETA_R   0.6021218649   (ORDER P 0.6574385174)
+  TMAX      10.9782751501   (ORDER P 21.1232815488)   percentile p20, s_pQ -19.0245740865
+  LAMBDA    0.1743833037   HELD FIXED, NOT RE-SOLVED (disclosed on PREREG_R.md)
+
+DIAGNOSTIC IDENTITY  s_ped == s_age - pg : 0 of 715 rows disagree by more than 1e-9
+
+CHARGE DISTRIBUTION — the share of the pedigree leg removed
+  population                      n max charge      >90%      >75%      >50%    pts removed
+  all rows with a leg           715     85.26%         0        93       225          38902
+  carrying the new charge       715     85.26%         0        93       225          38902
+  the ten most heavily charged rows (CONSEQUENCES, NEVER TARGETS):
+     Jed Bews                 pool  age 33   175g  v0    260   charged  85.26%
+     Brandon Starcevich       18    age 27   141g  v0    862   charged  85.26%
+     Dylan Stephens           5     age 25   102g  v0   2062   charged  85.26%
+     Chayce Jones             9     age 26   100g  v0   1289   charged  85.26%
+     Liam Stocker             19    age 26   100g  v0    813   charged  85.26%
+     Braeden Campbell         5     age 24    98g  v0   1595   charged  85.26%
+     Paddy Dow                3     age 27    83g  v0   2729   charged  85.25%
+     Oisin Mullin             pool  age 26    64g  v0     87   charged  85.21%
+     Jeremy Sharp             27    age 25    62g  v0    840   charged  85.20%
+     Neil Erasmus             10    age 23    60g  v0   1575   charged  85.19%
+  by band:
+  band          n max charge      >90%      >75%      >50%
+  1-10        121     85.26%         0        19        37
+  11-20       112     85.26%         0        22        39
+  21-30        89     85.20%         0        13        33
+  31-40        64     82.21%         0         6        21
+  41+         129     85.17%         0        13        39
+  pool        200     85.26%         0        20        56
+
+THE NAMED ROWS — CONSEQUENCES, NEVER TARGETS
+  row                    pick   age  games      price     charge         v0
+  Zane Duursma              4    21     38        270    84.64%       1975
+  Josh Sinn                12    23     30        126    83.83%       1286
+  Campbell Chesser         14    23     39        192    84.70%       1174
+  Finn O'Sullivan           2    20     39       2839    77.59%       2869
+  Zeke Uwland               2    19     17       1557    79.22%       2454
+  Harley Reid               1    21     60       3723    15.90%       3273
+  Sam Darcy                 2    23     51       4450     0.00%       2180
+  Willem Duursma            1    19     19       3950    34.19%       3273
+  Sam Lalor                 1    20     22       3109    63.92%       3273
+
+wrote CENSUS_R20b2.json

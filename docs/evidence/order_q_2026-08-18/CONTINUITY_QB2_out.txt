@@ -1,0 +1,68 @@
+================================================================================================================
+ORDER Q — CONTINUITY.  tag=QB2  dials={'RL_O37': '1', 'RL_O38B2': '1'}
+================================================================================================================
+
+== NEW AXIS — THE CHARGE ACROSS AGE. This is the axis ORDER P's suite did not test. ==
+   The charge factor at 20 career games, at four levels of pedigree surplus, ages 18 to 30.
+   The factor is what MULTIPLIES the pedigree leg: 1.000 means no charge at all.
+   s_P           18      19      20      21      22      23      24      25      26      27      28      29      30
+   -25.0     0.0913  0.0913  0.0913  0.0913  0.0913  0.0913  0.1645  0.2966  0.5347  0.5347  0.5347  0.5347  0.5347
+   -10.0     0.4057  0.4057  0.4057  0.4057  0.4057  0.4057  0.4448  0.4877  0.5347  0.5347  0.5347  0.5347  0.5347
+   -3.0      0.8140  0.8140  0.8140  0.8140  0.8140  0.8140  0.7076  0.6151  0.5347  0.5347  0.5347  0.5347  0.5347
+   0.0       1.0000  1.0000  1.0000  1.0000  1.0000  1.0000  0.8116  0.6588  0.5347  0.5347  0.5347  0.5347  0.5347
+   largest step in the charge factor between two consecutive ages: 0.2381
+   the steps, biggest first (surplus, from age, to age, factor before, factor after, step):
+     s_P  -25.0   age 25 -> 26   0.2966 -> 0.5347   step 0.2381
+     s_P   +0.0   age 23 -> 24   1.0000 -> 0.8116   step 0.1884
+     s_P   +0.0   age 24 -> 25   0.8116 -> 0.6588   step 0.1529
+     s_P  -25.0   age 24 -> 25   0.1645 -> 0.2966   step 0.1321
+     s_P   +0.0   age 25 -> 26   0.6588 -> 0.5347   step 0.1241
+     s_P   -3.0   age 23 -> 24   0.8140 -> 0.7076   step 0.1064
+
+== NEW AXIS — THE PRICE ACROSS AGE, ON EVERY REAL ROW ==
+   Each row is re-priced with ONLY the charge evaluated one year older. Games, output, bar,
+   fade, everything else is held EXACTLY fixed. This isolates the age channel of the charge.
+   rows tested: 804   rows whose price moves on the birthday alone: 148
+   largest single jump: 2.3684x (Conor Stone, age 24 -> 25, 38 -> 90)
+   net points handed across the birthday, all rows: +1738
+   age        n   movers  gain 50%+   net points
+   19        71        0          0           +0
+   20        87        0          0           +0
+   21        75        0          0           +0
+   22        61        0          0           +0
+   23        81       67          0         +150
+   24        58       47          7         +735
+   25        51       34          9         +853
+   26        55        0          0           +0
+   27        46        0          0           +0
+   28        57        0          0           +0
+   29        40        0          0           +0
+   30        33        0          0           +0
+   31        26        0          0           +0
+   32        18        0          0           +0
+   33        21        0          0           +0
+   34        11        0          0           +0
+   35         6        0          0           +0
+   36         5        0          0           +0
+   37         1        0          0           +0
+   38         1        0          0           +0
+   the five largest jumps:
+     Conor Stone                age 24 -> 25    28g       38 ->     90   x2.368
+     Roan Steele                age 25 -> 26    25g       56 ->    118   x2.107
+     Finn Maginness             age 25 -> 26    64g       35 ->     64   x1.829
+     Jeremy Sharp               age 25 -> 26    62g       84 ->    149   x1.774
+     Luke Pedlar                age 24 -> 25    49g       67 ->    116   x1.731
+
+== GAMES — the charge factor, 0 to 400 at 0.01, at seven surplus levels ==
+   largest step 3.709e-03 ; the charge RISES with games at 0 of 280,000 steps (largest rise 0.000e+00)
+
+== SURPLUS — the charge factor across 100 points of surplus at 0.01 ==
+   largest step 9.934e-04 ; a BETTER player is charged MORE at 0 of 10,000 steps
+
+== ENTRY PRICE — the premium, and THE CHARGED PEDIGREE LEG, across 40 to 6,000 ==
+   FIX A's whole claim is that the LEG is non-decreasing in entry price. It is measured here on
+   a dense sweep, through the engine's own o38/o37 objects, not argued.
+   the premium FALLS with price at 0 of 10028 steps; largest one-step move 0.0570
+   THE CHARGED PEDIGREE LEG across 5014 price steps x 30 (class, games, surplus) cells:
+     cells where the leg FALLS with price: 30 of 30 ; total falling steps: 17381
+     worst single fall: 5.658e-03 of the leg, TALL g=60 OUT=-4 at v0 2779

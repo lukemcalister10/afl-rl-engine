@@ -1,0 +1,92 @@
+========================================================================================================
+THE SEASON-CONSTANT CENSUS — MEASUREMENT HALF
+========================================================================================================
+  constants read straight out of the source:
+    conditional_prior.SEASON      = None   (the season-length constant itself)
+    lti_register.G_FULL           = 22   (asserted == cp.SEASON at wire time)
+    POLE_RAMP                     = 22.0   (_merged_recover.py:103)
+    LEVEL_RAMP (RL_LEVEL_RAMP)    = 14.0   (conditional_prior.py:108)
+    RECENCY_DECAY                 = 0.72
+    SEASON_FE / calendar_progress = 0.58   (the in-progress fraction at this cut)
+    EXPO_F / EXPO_DEN             = 0.545 / 11.0
+    MEASURED: rho31 tau/beta      = 29.194254 / 0.801542
+    MEASURED: A(g) G0             = 9.8900  -> half-conviction at 6.86 games
+    MEASURED: remix kappa/gamma   = 0.24 / 11.0
+
+--------------------------------------------------------------------------------------------------------
+1 · WHAT THE MEASURED LAYERS ALREADY SAY ABOUT A 14-18 GAME SEASON
+--------------------------------------------------------------------------------------------------------
+   (these carry NO season norm — they are functions of RAW GAMES)
+
+   games  credit(g)       A(g)   rho31(g)   share of the 22-game reading
+       1     0.1287     0.0962     0.1154   credit  12.9%  A  10.8%  rho  18.3%
+       2     0.2383     0.1831     0.1981   credit  23.8%  A  20.5%  rho  31.5%
+       5     0.2455     0.3968     0.3634   credit  24.6%  A  44.5%  rho  57.8%
+       8     0.4519     0.5547     0.4592   credit  45.2%  A  62.2%  rho  73.0%
+      10     0.8879     0.6362     0.5018   credit  88.8%  A  71.3%  rho  79.8%
+      11     1.0000     0.6712     0.5189   credit 100.0%  A  75.3%  rho  82.5%
+      12     1.0000     0.7028     0.5340   credit 100.0%  A  78.8%  rho  84.9%
+      14     1.0000     0.7572     0.5594   credit 100.0%  A  84.9%  rho  88.9%
+      15     1.0000     0.7806     0.5702   credit 100.0%  A  87.5%  rho  90.7%
+      16     1.0000     0.8017     0.5802   credit 100.0%  A  89.9%  rho  92.3%
+      18     1.0000     0.8380     0.5981   credit 100.0%  A  94.0%  rho  95.1%
+      20     1.0000     0.8676     0.6142   credit 100.0%  A  97.3%  rho  97.7%
+      22     1.0000     0.8919     0.6289   credit 100.0%  A 100.0%  rho 100.0%
+      23     1.0000     0.9023     0.6360   credit 100.0%  A 101.2%  rho 101.1%
+
+   READ: the F1 credit curve is at FULL presence (1.0) from 11 games — a 14, 15 or 18-game
+   season already counts as a WHOLE season of presence, not 64%/68%/82%. A(g) is at 87.5% of its
+   22-game value by 15 games. rho31 is the only one still climbing, and it is a MEASURED
+   reliability curve fitted on raw games with no season length in it at all.
+
+--------------------------------------------------------------------------------------------------------
+2 · THE CANCELLATION TEST — is cp.SEASON actually load-bearing where it appears?
+--------------------------------------------------------------------------------------------------------
+   _playable(p,Y)      = cp.SEASON * (seasons_elapsed + fE)          [_merged_recover.py:135]
+   _playable_fse(p,Y)  = SEASON    * (seasons_elapsed + fE)          [conditional_prior.py:111]
+   Both are consumed ONLY as  _playable(p,Y) / cp.SEASON  :
+       _merged_recover.py:302   POLE_RAMP * min(1, _playable(p,Y)/cp.SEASON)
+       conditional_prior.py:117 LEVEL_RAMP * min(1, _playable_fse(p,Y)/SEASON)
+
+   with SEASON=18  ->  playable/SEASON at (0,1,2,5) seasons elapsed = ['0.5800', '1.5800', '3.0000', '6.0000']
+   with SEASON=22  ->  playable/SEASON at (0,1,2,5) seasons elapsed = ['0.5800', '1.5800', '3.0000', '6.0000']
+   with SEASON=23  ->  playable/SEASON at (0,1,2,5) seasons elapsed = ['0.5800', '1.5800', '3.0000', '6.0000']
+   with SEASON=26  ->  playable/SEASON at (0,1,2,5) seasons elapsed = ['0.5800', '1.5800', '3.0000', '6.0000']
+
+   VERDICT: the ratio is IDENTICALLY (seasons_elapsed + fE) for every value of SEASON.
+   cp.SEASON CANCELS EXACTLY at both sites. Changing 22 -> 18 there changes NOTHING.
+   The live bars at those two sites are POLE_RAMP=22.0 and LEVEL_RAMP=14.0, which are GAMES bars,
+   not season-length constants — and LEVEL_RAMP is ALREADY 14.
+
+--------------------------------------------------------------------------------------------------------
+3 · IS THE POLE_RAMP=22 BAR A "FULL SEASON" BAR? (it is fed by CAREER recency-weighted games)
+--------------------------------------------------------------------------------------------------------
+   A steady N-games-a-year player, recency decay 0.72, exposure after k seasons:
+     N/yr   after 1   after 2   after 3   after 4   reaches the 22 bar at
+       10      10.0      17.2      22.4      26.1   season 3
+       12      12.0      20.6      26.9      31.3   season 3
+       14      14.0      24.1      31.3      36.6   season 2
+       15      15.0      25.8      33.6      39.2   season 2
+       16      16.0      27.5      35.8      41.8   season 2
+       18      18.0      31.0      40.3      47.0   season 2
+       20      20.0      34.4      44.8      52.2   season 2
+       22      22.0      37.8      49.2      57.5   season 1
+
+   READ: the 22 bar is on RECENCY-WEIGHTED CAREER games, not one season. A 15-game-a-year
+   player clears it in season 2. It is not a "did he play a full season" test.
+
+--------------------------------------------------------------------------------------------------------
+4 · WHO IS IN THE OWNER'S 14-18 BAND, on the last COMPLETED season (2025)
+--------------------------------------------------------------------------------------------------------
+   store rows with a 2025 season: 668
+   in the 14-18 band: 104 (15.6%)
+   19+ games        : 285 (42.7%)
+   11-13 games      : 51
+   1-10 games       : 228
+
+   what those 14-18 rows are worth under each layer, vs a 22-game season:
+     14 games: credit 1.000 (100% of 22)  A 0.757 (85%)  rho31 0.559 (89%)
+     15 games: credit 1.000 (100% of 22)  A 0.781 (88%)  rho31 0.570 (91%)
+     16 games: credit 1.000 (100% of 22)  A 0.802 (90%)  rho31 0.580 (92%)
+     17 games: credit 1.000 (100% of 22)  A 0.821 (92%)  rho31 0.589 (94%)
+     18 games: credit 1.000 (100% of 22)  A 0.838 (94%)  rho31 0.598 (95%)

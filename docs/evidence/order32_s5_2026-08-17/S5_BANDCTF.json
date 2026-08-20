@@ -1,0 +1,5463 @@
+{
+ "LAM": 0.999694221210738,
+ "band_pooling": [
+  [
+   "RUCK",
+   [
+    "11-20",
+    "21-30"
+   ]
+  ]
+ ],
+ "board_moves": [
+  {
+   "delta": -122.3654416518848,
+   "key": "will-green",
+   "name": "Will Green",
+   "pick": 16,
+   "pos": "RUCK",
+   "v0_ctf": 953.4249589349938,
+   "v0_now": 1075.7904005868786
+  },
+  {
+   "delta": 89.11657970107808,
+   "key": "luke-jackson",
+   "name": "Luke Jackson",
+   "pick": 3,
+   "pos": "RUCK",
+   "v0_ctf": 2889.2532174561725,
+   "v0_now": 2800.1366377550944
+  },
+  {
+   "delta": 84.79866474499576,
+   "key": "lawson-humphries",
+   "name": "Lawson Humphries",
+   "pick": 63,
+   "pos": "SD",
+   "v0_ctf": 244.08991696697407,
+   "v0_now": 159.2912522219783
+  },
+  {
+   "delta": 60.54447260811571,
+   "key": "brodie-grundy",
+   "name": "Brodie Grundy",
+   "pick": 22,
+   "pos": "RUCK",
+   "v0_ctf": 1130.3583027824582,
+   "v0_now": 1069.8138301743425
+  },
+  {
+   "delta": 59.973578887146004,
+   "key": "josh-sinn",
+   "name": "Josh Sinn",
+   "pick": 12,
+   "pos": "SD",
+   "v0_ctf": 1346.0954316479967,
+   "v0_now": 1286.1218527608507
+  },
+  {
+   "delta": 59.973578887146004,
+   "key": "jaspa-fletcher",
+   "name": "Jaspa Fletcher",
+   "pick": 12,
+   "pos": "SD",
+   "v0_ctf": 1346.0954316479967,
+   "v0_now": 1286.1218527608507
+  },
+  {
+   "delta": 59.973578887146004,
+   "key": "liam-duggan",
+   "name": "Liam Duggan",
+   "pick": 12,
+   "pos": "SD",
+   "v0_ctf": 1346.0954316479967,
+   "v0_now": 1286.1218527608507
+  },
+  {
+   "delta": 59.973578887146004,
+   "key": "nick-vlastuin",
+   "name": "Nick Vlastuin",
+   "pick": 12,
+   "pos": "SD",
+   "v0_ctf": 1346.0954316479967,
+   "v0_now": 1286.1218527608507
+  },
+  {
+   "delta": 59.30209726195426,
+   "key": "taylor-goad",
+   "name": "Taylor Goad",
+   "pick": 20,
+   "pos": "RUCK",
+   "v0_ctf": 1131.1081175738086,
+   "v0_now": 1071.8060203118544
+  },
+  {
+   "delta": -54.20168468061229,
+   "key": "caleb-windsor",
+   "name": "Caleb Windsor",
+   "pick": 7,
+   "pos": "MID",
+   "v0_ctf": 1523.447663638666,
+   "v0_now": 1577.6493483192783
+  },
+  {
+   "delta": -54.20168468061229,
+   "key": "sam-cumming",
+   "name": "Sam Cumming",
+   "pick": 7,
+   "pos": "MID",
+   "v0_ctf": 1523.447663638666,
+   "v0_now": 1577.6493483192783
+  },
+  {
+   "delta": -54.20168468061229,
+   "key": "cameron-mackenzie",
+   "name": "Cameron Mackenzie",
+   "pick": 7,
+   "pos": "MID",
+   "v0_ctf": 1523.447663638666,
+   "v0_now": 1577.6493483192783
+  },
+  {
+   "delta": -54.20168468061229,
+   "key": "bailey-smith",
+   "name": "Bailey Smith",
+   "pick": 7,
+   "pos": "MID",
+   "v0_ctf": 1523.447663638666,
+   "v0_now": 1577.6493483192783
+  },
+  {
+   "delta": -54.20168468061229,
+   "key": "josh-ward",
+   "name": "Josh Ward",
+   "pick": 7,
+   "pos": "MID",
+   "v0_ctf": 1523.447663638666,
+   "v0_now": 1577.6493483192783
+  },
+  {
+   "delta": -54.20168468061229,
+   "key": "josh-smillie",
+   "name": "Josh Smillie",
+   "pick": 7,
+   "pos": "MID",
+   "v0_ctf": 1523.447663638666,
+   "v0_now": 1577.6493483192783
+  },
+  {
+   "delta": -54.20168468061229,
+   "key": "hayden-young",
+   "name": "Hayden Young",
+   "pick": 7,
+   "pos": "MID",
+   "v0_ctf": 1523.447663638666,
+   "v0_now": 1577.6493483192783
+  },
+  {
+   "delta": -54.20168468061229,
+   "key": "jacob-hopper",
+   "name": "Jacob Hopper",
+   "pick": 7,
+   "pos": "MID",
+   "v0_ctf": 1523.447663638666,
+   "v0_now": 1577.6493483192783
+  },
+  {
+   "delta": 51.59681777840319,
+   "key": "taylor-walker",
+   "name": "Taylor Walker",
+   "pick": 64,
+   "pos": "KPF",
+   "v0_ctf": 256.8359257943443,
+   "v0_now": 205.2391080159411
+  },
+  {
+   "delta": 48.10275944063142,
+   "key": "taj-hotton",
+   "name": "Taj Hotton",
+   "pick": 12,
+   "pos": "MID",
+   "v0_ctf": 1620.7716324161295,
+   "v0_now": 1572.668872975498
+  },
+  {
+   "delta": 48.10275944063142,
+   "key": "tanner-bruhn",
+   "name": "Tanner Bruhn",
+   "pick": 12,
+   "pos": "MID",
+   "v0_ctf": 1620.7716324161295,
+   "v0_now": 1572.668872975498
+  },
+  {
+   "delta": 48.10275944063142,
+   "key": "zak-butters",
+   "name": "Zak Butters",
+   "pick": 12,
+   "pos": "MID",
+   "v0_ctf": 1620.7716324161295,
+   "v0_now": 1572.668872975498
+  },
+  {
+   "delta": 48.10275944063142,
+   "key": "jy-simpkin",
+   "name": "Jy Simpkin",
+   "pick": 12,
+   "pos": "MID",
+   "v0_ctf": 1620.7716324161295,
+   "v0_now": 1572.668872975498
+  },
+  {
+   "delta": 43.60890118913312,
+   "key": "nasiah-wanganeen-milera",
+   "name": "Nasiah Wanganeen-Milera",
+   "pick": 11,
+   "pos": "MID",
+   "v0_ctf": 1617.2738692333874,
+   "v0_now": 1573.6649680442542
+  },
+  {
+   "delta": 43.60890118913312,
+   "key": "xavier-lindsay",
+   "name": "Xavier Lindsay",
+   "pick": 11,
+   "pos": "MID",
+   "v0_ctf": 1617.2738692333874,
+   "v0_now": 1573.6649680442542
+  },
+  {
+   "delta": 43.60890118913312,
+   "key": "oliver-hollands",
+   "name": "Oliver Hollands",
+   "pick": 11,
+   "pos": "MID",
+   "v0_ctf": 1617.2738692333874,
+   "v0_now": 1573.6649680442542
+  },
+  {
+   "delta": 43.60890118913312,
+   "key": "steele-sidebottom",
+   "name": "Steele Sidebottom",
+   "pick": 11,
+   "pos": "MID",
+   "v0_ctf": 1617.2738692333874,
+   "v0_now": 1573.6649680442542
+  },
+  {
+   "delta": 43.60890118913312,
+   "key": "jye-caldwell",
+   "name": "Jye Caldwell",
+   "pick": 11,
+   "pos": "MID",
+   "v0_ctf": 1617.2738692333874,
+   "v0_now": 1573.6649680442542
+  },
+  {
+   "delta": 43.60890118913312,
+   "key": "sam-flanders",
+   "name": "Sam Flanders",
+   "pick": 11,
+   "pos": "MID",
+   "v0_ctf": 1617.2738692333874,
+   "v0_now": 1573.6649680442542
+  },
+  {
+   "delta": 42.38528566001668,
+   "key": "ben-miller",
+   "name": "Ben Miller",
+   "pick": 62,
+   "pos": "KPD",
+   "v0_ctf": 406.44035456095435,
+   "v0_now": 364.05506890093767
+  },
+  {
+   "delta": -42.326691920263016,
+   "key": "james-sicily",
+   "name": "James Sicily",
+   "pick": 52,
+   "pos": "SD",
+   "v0_ctf": 127.92160605803147,
+   "v0_now": 170.2482979782945
+  },
+  {
+   "delta": -42.326691920263016,
+   "key": "brandon-walker",
+   "name": "Brandon Walker",
+   "pick": 52,
+   "pos": "SD",
+   "v0_ctf": 127.92160605803147,
+   "v0_now": 170.2482979782945
+  },
+  {
+   "delta": -40.754147278289736,
+   "key": "jai-serong",
+   "name": "Jai Serong",
+   "pick": 53,
+   "pos": "SD",
+   "v0_ctf": 128.49805563124872,
+   "v0_now": 169.25220290953845
+  },
+  {
+   "delta": -40.4622203335733,
+   "key": "bailey-macdonald",
+   "name": "Bailey Macdonald",
+   "pick": 51,
+   "pos": "SD",
+   "v0_ctf": 130.7821727134772,
+   "v0_now": 171.2443930470505
+  },
+  {
+   "delta": -40.4622203335733,
+   "key": "kane-farrell",
+   "name": "Kane Farrell",
+   "pick": 51,
+   "pos": "SD",
+   "v0_ctf": 130.7821727134772,
+   "v0_now": 171.2443930470505
+  },
+  {
+   "delta": -40.4622203335733,
+   "key": "finnegan-davis",
+   "name": "Finnegan Davis",
+   "pick": 51,
+   "pos": "SD",
+   "v0_ctf": 130.7821727134772,
+   "v0_now": 171.2443930470505
+  },
+  {
+   "delta": -40.4622203335733,
+   "key": "ryan-byrnes",
+   "name": "Ryan Byrnes",
+   "pick": 51,
+   "pos": "SD",
+   "v0_ctf": 130.7821727134772,
+   "v0_now": 171.2443930470505
+  },
+  {
+   "delta": 39.150419290614536,
+   "key": "harry-barnett",
+   "name": "Harry Barnett",
+   "pick": 23,
+   "pos": "RUCK",
+   "v0_ctf": 1107.968154396201,
+   "v0_now": 1068.8177351055865
+  },
+  {
+   "delta": 36.58179159257082,
+   "key": "connor-idun",
+   "name": "Connor Idun",
+   "pick": 61,
+   "pos": "SD",
+   "v0_ctf": 197.86523395206115,
+   "v0_now": 161.28344235949032
+  },
+  {
+   "delta": 36.58179159257082,
+   "key": "luke-cleary",
+   "name": "Luke Cleary",
+   "pick": 61,
+   "pos": "SD",
+   "v0_ctf": 197.86523395206115,
+   "v0_now": 161.28344235949032
+  },
+  {
+   "delta": 36.58179159257082,
+   "key": "jacob-wehr",
+   "name": "Jacob Wehr",
+   "pick": 61,
+   "pos": "SD",
+   "v0_ctf": 197.86523395206115,
+   "v0_now": 161.28344235949032
+  },
+  {
+   "delta": -36.5573065313917,
+   "key": "archie-roberts",
+   "name": "Archie Roberts",
+   "pick": 54,
+   "pos": "SD",
+   "v0_ctf": 131.69880130939072,
+   "v0_now": 168.25610784078242
+  },
+  {
+   "delta": -36.5573065313917,
+   "key": "ed-langdon",
+   "name": "Ed Langdon",
+   "pick": 54,
+   "pos": "SD",
+   "v0_ctf": 131.69880130939072,
+   "v0_now": 168.25610784078242
+  },
+  {
+   "delta": -34.83694056354176,
+   "key": "hugh-bond",
+   "name": "Hugh Bond",
+   "pick": 50,
+   "pos": "SD",
+   "v0_ctf": 137.40354755226474,
+   "v0_now": 172.2404881158065
+  },
+  {
+   "delta": -34.83694056354176,
+   "key": "darcy-byrne-jones",
+   "name": "Darcy Byrne-Jones",
+   "pick": 50,
+   "pos": "SD",
+   "v0_ctf": 137.40354755226474,
+   "v0_now": 172.2404881158065
+  },
+  {
+   "delta": -31.9060259668895,
+   "key": "leek-aleer",
+   "name": "Leek Aleer",
+   "pick": 15,
+   "pos": "KPD",
+   "v0_ctf": 619.1708012699457,
+   "v0_now": 651.0768272368352
+  },
+  {
+   "delta": -31.9060259668895,
+   "key": "jake-lever",
+   "name": "Jake Lever",
+   "pick": 15,
+   "pos": "KPD",
+   "v0_ctf": 619.1708012699457,
+   "v0_now": 651.0768272368352
+  },
+  {
+   "delta": -30.709717316212846,
+   "key": "noah-answerth",
+   "name": "Noah Answerth",
+   "pick": 55,
+   "pos": "SD",
+   "v0_ctf": 136.55029545581357,
+   "v0_now": 167.2600127720264
+  },
+  {
+   "delta": -29.3173820293502,
+   "key": "connor-macdonald",
+   "name": "Connor MacDonald",
+   "pick": 26,
+   "pos": "SF",
+   "v0_ctf": 397.43509276881036,
+   "v0_now": 426.75247479816056
+  },
+  {
+   "delta": -29.3173820293502,
+   "key": "brayden-george",
+   "name": "Brayden George",
+   "pick": 26,
+   "pos": "SF",
+   "v0_ctf": 397.43509276881036,
+   "v0_now": 426.75247479816056
+  },
+  {
+   "delta": -29.3173820293502,
+   "key": "ned-bowman",
+   "name": "Ned Bowman",
+   "pick": 26,
+   "pos": "SF",
+   "v0_ctf": 397.43509276881036,
+   "v0_now": 426.75247479816056
+  },
+  {
+   "delta": -29.3173820293502,
+   "key": "rhylee-west",
+   "name": "Rhylee West",
+   "pick": 26,
+   "pos": "SF",
+   "v0_ctf": 397.43509276881036,
+   "v0_now": 426.75247479816056
+  },
+  {
+   "delta": -29.3173820293502,
+   "key": "jamie-cripps",
+   "name": "Jamie Cripps",
+   "pick": 26,
+   "pos": "SF",
+   "v0_ctf": 397.43509276881036,
+   "v0_now": 426.75247479816056
+  },
+  {
+   "delta": -29.3173820293502,
+   "key": "liam-ryan",
+   "name": "Liam Ryan",
+   "pick": 26,
+   "pos": "SF",
+   "v0_ctf": 397.43509276881036,
+   "v0_now": 426.75247479816056
+  },
+  {
+   "delta": -28.886304569316167,
+   "key": "ryan-gardner",
+   "name": "Ryan Gardner",
+   "pick": 58,
+   "pos": "KPD",
+   "v0_ctf": 339.1531446066456,
+   "v0_now": 368.03944917596175
+  },
+  {
+   "delta": -28.886304569316167,
+   "key": "will-darcy",
+   "name": "Will Darcy",
+   "pick": 58,
+   "pos": "KPD",
+   "v0_ctf": 339.1531446066456,
+   "v0_now": 368.03944917596175
+  },
+  {
+   "delta": -28.682203357800006,
+   "key": "brent-daniels",
+   "name": "Brent Daniels",
+   "pick": 27,
+   "pos": "SF",
+   "v0_ctf": 397.07417637160455,
+   "v0_now": 425.75637972940456
+  },
+  {
+   "delta": -28.682203357800006,
+   "key": "jesse-motlop",
+   "name": "Jesse Motlop",
+   "pick": 27,
+   "pos": "SF",
+   "v0_ctf": 397.07417637160455,
+   "v0_now": 425.75637972940456
+  },
+  {
+   "delta": -28.682203357800006,
+   "key": "zac-fisher",
+   "name": "Zac Fisher",
+   "pick": 27,
+   "pos": "SF",
+   "v0_ctf": 397.07417637160455,
+   "v0_now": 425.75637972940456
+  },
+  {
+   "delta": -27.676921654985108,
+   "key": "daniel-annable",
+   "name": "Daniel Annable",
+   "pick": 6,
+   "pos": "MID",
+   "v0_ctf": 1550.968521733049,
+   "v0_now": 1578.6454433880342
+  },
+  {
+   "delta": -27.676921654985108,
+   "key": "ryley-sanders",
+   "name": "Ryley Sanders",
+   "pick": 6,
+   "pos": "MID",
+   "v0_ctf": 1550.968521733049,
+   "v0_now": 1578.6454433880342
+  },
+  {
+   "delta": -27.676921654985108,
+   "key": "harvey-langford",
+   "name": "Harvey Langford",
+   "pick": 6,
+   "pos": "MID",
+   "v0_ctf": 1550.968521733049,
+   "v0_now": 1578.6454433880342
+  },
+  {
+   "delta": -27.676921654985108,
+   "key": "bailey-humphrey",
+   "name": "Bailey Humphrey",
+   "pick": 6,
+   "pos": "MID",
+   "v0_ctf": 1550.968521733049,
+   "v0_now": 1578.6454433880342
+  },
+  {
+   "delta": 25.69198887501102,
+   "key": "max-gawn",
+   "name": "Max Gawn",
+   "pick": 33,
+   "pos": "RUCK",
+   "v0_ctf": 1084.5487732930374,
+   "v0_now": 1058.8567844180263
+  },
+  {
+   "delta": -24.983361938228853,
+   "key": "harvey-johnston",
+   "name": "Harvey Johnston",
+   "pick": 49,
+   "pos": "SD",
+   "v0_ctf": 148.25322124633365,
+   "v0_now": 173.2365831845625
+  },
+  {
+   "delta": -24.983361938228853,
+   "key": "kaleb-smith",
+   "name": "Kaleb Smith",
+   "pick": 49,
+   "pos": "SD",
+   "v0_ctf": 148.25322124633365,
+   "v0_now": 173.2365831845625
+  },
+  {
+   "delta": 24.099582892578383,
+   "key": "xavier-taylor",
+   "name": "Xavier Taylor",
+   "pick": 11,
+   "pos": "SD",
+   "v0_ctf": 1311.217530722185,
+   "v0_now": 1287.1179478296067
+  },
+  {
+   "delta": 24.099582892578383,
+   "key": "oliver-florent",
+   "name": "Oliver Florent",
+   "pick": 11,
+   "pos": "SD",
+   "v0_ctf": 1311.217530722185,
+   "v0_now": 1287.1179478296067
+  },
+  {
+   "delta": 24.099582892578383,
+   "key": "wayne-milera",
+   "name": "Wayne Milera",
+   "pick": 11,
+   "pos": "SD",
+   "v0_ctf": 1311.217530722185,
+   "v0_now": 1287.1179478296067
+  },
+  {
+   "delta": -20.849747865725703,
+   "key": "chayce-jones",
+   "name": "Chayce Jones",
+   "pick": 9,
+   "pos": "SD",
+   "v0_ctf": 1268.260390101393,
+   "v0_now": 1289.1101379671188
+  },
+  {
+   "delta": -20.849747865725703,
+   "key": "christian-salem",
+   "name": "Christian Salem",
+   "pick": 9,
+   "pos": "SD",
+   "v0_ctf": 1268.260390101393,
+   "v0_now": 1289.1101379671188
+  },
+  {
+   "delta": -20.139196449576957,
+   "key": "adam-sweid",
+   "name": "Adam Sweid",
+   "pick": 25,
+   "pos": "SF",
+   "v0_ctf": 407.6093734173396,
+   "v0_now": 427.74856986691657
+  },
+  {
+   "delta": -20.139196449576957,
+   "key": "ben-long",
+   "name": "Ben Long",
+   "pick": 25,
+   "pos": "SF",
+   "v0_ctf": 407.6093734173396,
+   "v0_now": 427.74856986691657
+  },
+  {
+   "delta": -20.139196449576957,
+   "key": "jackson-mead",
+   "name": "Jackson Mead",
+   "pick": 25,
+   "pos": "SF",
+   "v0_ctf": 407.6093734173396,
+   "v0_now": 427.74856986691657
+  },
+  {
+   "delta": -19.914432340883877,
+   "key": "dougal-howard",
+   "name": "Dougal Howard",
+   "pick": 56,
+   "pos": "KPD",
+   "v0_ctf": 350.11720697258994,
+   "v0_now": 370.0316393134738
+  },
+  {
+   "delta": 19.830892794353986,
+   "key": "mattaes-phillipou",
+   "name": "Mattaes Phillipou",
+   "pick": 10,
+   "pos": "MID",
+   "v0_ctf": 1594.4919559073642,
+   "v0_now": 1574.6610631130102
+  },
+  {
+   "delta": 19.830892794353986,
+   "key": "tom-green",
+   "name": "Tom Green",
+   "pick": 10,
+   "pos": "MID",
+   "v0_ctf": 1594.4919559073642,
+   "v0_now": 1574.6610631130102
+  },
+  {
+   "delta": 19.830892794353986,
+   "key": "neil-erasmus",
+   "name": "Neil Erasmus",
+   "pick": 10,
+   "pos": "MID",
+   "v0_ctf": 1594.4919559073642,
+   "v0_now": 1574.6610631130102
+  },
+  {
+   "delta": 19.830892794353986,
+   "key": "oliver-wines",
+   "name": "Oliver Wines",
+   "pick": 10,
+   "pos": "MID",
+   "v0_ctf": 1594.4919559073642,
+   "v0_now": 1574.6610631130102
+  },
+  {
+   "delta": 19.830892794353986,
+   "key": "jack-bowes",
+   "name": "Jack Bowes",
+   "pick": 10,
+   "pos": "MID",
+   "v0_ctf": 1594.4919559073642,
+   "v0_now": 1574.6610631130102
+  },
+  {
+   "delta": 19.592285650173835,
+   "key": "kieren-briggs",
+   "name": "Kieren Briggs",
+   "pick": 34,
+   "pos": "RUCK",
+   "v0_ctf": 1077.452974999444,
+   "v0_now": 1057.8606893492702
+  },
+  {
+   "delta": -18.154948470322324,
+   "key": "harris-andrews",
+   "name": "Harris Andrews",
+   "pick": 60,
+   "pos": "KPD",
+   "v0_ctf": 347.8923105681274,
+   "v0_now": 366.04725903844974
+  },
+  {
+   "delta": 17.177075334771303,
+   "key": "jase-burgoyne",
+   "name": "Jase Burgoyne",
+   "pick": 60,
+   "pos": "SD",
+   "v0_ctf": 179.45661276301763,
+   "v0_now": 162.27953742824633
+  },
+  {
+   "delta": -17.071472578705084,
+   "key": "jy-farrar",
+   "name": "Jy Farrar",
+   "pick": 59,
+   "pos": "KPF",
+   "v0_ctf": 193.14811078101607,
+   "v0_now": 210.21958335972116
+  },
+  {
+   "delta": -17.071472578705084,
+   "key": "tyler-welsh",
+   "name": "Tyler Welsh",
+   "pick": 59,
+   "pos": "KPF",
+   "v0_ctf": 193.14811078101607,
+   "v0_now": 210.21958335972116
+  },
+  {
+   "delta": -16.859233230333643,
+   "key": "lance-collard",
+   "name": "Lance Collard",
+   "pick": 28,
+   "pos": "SF",
+   "v0_ctf": 407.9010514303149,
+   "v0_now": 424.76028466064855
+  },
+  {
+   "delta": -16.859233230333643,
+   "key": "patrick-lipinski",
+   "name": "Patrick Lipinski",
+   "pick": 28,
+   "pos": "SF",
+   "v0_ctf": 407.9010514303149,
+   "v0_now": 424.76028466064855
+  },
+  {
+   "delta": -16.692586757533206,
+   "key": "jack-williams",
+   "name": "Jack Williams",
+   "pick": 57,
+   "pos": "KPF",
+   "v0_ctf": 195.5191867397,
+   "v0_now": 212.2117734972332
+  },
+  {
+   "delta": -16.575451008032218,
+   "key": "josh-daicos",
+   "name": "Josh Daicos",
+   "pick": 57,
+   "pos": "SD",
+   "v0_ctf": 148.69237162648218,
+   "v0_now": 165.2678226345144
+  },
+  {
+   "delta": -16.553496768547802,
+   "key": "jack-scrimshaw",
+   "name": "Jack Scrimshaw",
+   "pick": 7,
+   "pos": "SD",
+   "v0_ctf": 1274.5488313360831,
+   "v0_now": 1291.102328104631
+  },
+  {
+   "delta": -16.553496768547802,
+   "key": "hunter-clark",
+   "name": "Hunter Clark",
+   "pick": 7,
+   "pos": "SD",
+   "v0_ctf": 1274.5488313360831,
+   "v0_now": 1291.102328104631
+  },
+  {
+   "delta": -16.251021582699764,
+   "key": "beau-addinsall",
+   "name": "Beau Addinsall",
+   "pick": 18,
+   "pos": "MID",
+   "v0_ctf": 909.4226645167319,
+   "v0_now": 925.6736860994316
+  },
+  {
+   "delta": -16.251021582699764,
+   "key": "angus-sheldrick",
+   "name": "Angus Sheldrick",
+   "pick": 18,
+   "pos": "MID",
+   "v0_ctf": 909.4226645167319,
+   "v0_now": 925.6736860994316
+  },
+  {
+   "delta": -16.251021582699764,
+   "key": "xavier-duursma",
+   "name": "Xavier Duursma",
+   "pick": 18,
+   "pos": "MID",
+   "v0_ctf": 909.4226645167319,
+   "v0_now": 925.6736860994316
+  },
+  {
+   "delta": -16.00779902108502,
+   "key": "daniel-curtin",
+   "name": "Daniel Curtin",
+   "pick": 8,
+   "pos": "MID",
+   "v0_ctf": 1560.6454542294373,
+   "v0_now": 1576.6532532505223
+  },
+  {
+   "delta": -16.00779902108502,
+   "key": "jhye-clark",
+   "name": "Jhye Clark",
+   "pick": 8,
+   "pos": "MID",
+   "v0_ctf": 1560.6454542294373,
+   "v0_now": 1576.6532532505223
+  },
+  {
+   "delta": -16.00779902108502,
+   "key": "caleb-serong",
+   "name": "Caleb Serong",
+   "pick": 8,
+   "pos": "MID",
+   "v0_ctf": 1560.6454542294373,
+   "v0_now": 1576.6532532505223
+  },
+  {
+   "delta": -16.00779902108502,
+   "key": "samuel-grlj",
+   "name": "Samuel Grlj",
+   "pick": 8,
+   "pos": "MID",
+   "v0_ctf": 1560.6454542294373,
+   "v0_now": 1576.6532532505223
+  },
+  {
+   "delta": -16.00779902108502,
+   "key": "jackson-macrae",
+   "name": "Jackson Macrae",
+   "pick": 8,
+   "pos": "MID",
+   "v0_ctf": 1560.6454542294373,
+   "v0_now": 1576.6532532505223
+  },
+  {
+   "delta": -15.2943959100769,
+   "key": "tobie-travaglia",
+   "name": "Tobie Travaglia",
+   "pick": 8,
+   "pos": "SD",
+   "v0_ctf": 1274.8118371257979,
+   "v0_now": 1290.1062330358748
+  },
+  {
+   "delta": -15.2943959100769,
+   "key": "luke-mcdonald",
+   "name": "Luke McDonald",
+   "pick": 8,
+   "pos": "SD",
+   "v0_ctf": 1274.8118371257979,
+   "v0_now": 1290.1062330358748
+  },
+  {
+   "delta": -15.2943959100769,
+   "key": "nicholas-coffield",
+   "name": "Nicholas Coffield",
+   "pick": 8,
+   "pos": "SD",
+   "v0_ctf": 1274.8118371257979,
+   "v0_now": 1290.1062330358748
+  },
+  {
+   "delta": 15.223065212035408,
+   "key": "mitchell-edwards",
+   "name": "Mitchell Edwards",
+   "pick": 32,
+   "pos": "RUCK",
+   "v0_ctf": 1075.0759446988177,
+   "v0_now": 1059.8528794867823
+  },
+  {
+   "delta": 14.145639022141495,
+   "key": "sullivan-robey",
+   "name": "Sullivan Robey",
+   "pick": 9,
+   "pos": "MID",
+   "v0_ctf": 1589.8027972039076,
+   "v0_now": 1575.6571581817661
+  },
+  {
+   "delta": 14.145639022141495,
+   "key": "dion-prestia",
+   "name": "Dion Prestia",
+   "pick": 9,
+   "pos": "MID",
+   "v0_ctf": 1589.8027972039076,
+   "v0_now": 1575.6571581817661
+  },
+  {
+   "delta": 14.145639022141495,
+   "key": "will-brodie",
+   "name": "Will Brodie",
+   "pick": 9,
+   "pos": "MID",
+   "v0_ctf": 1589.8027972039076,
+   "v0_now": 1575.6571581817661
+  },
+  {
+   "delta": -12.815153411766005,
+   "key": "calsher-dear",
+   "name": "Calsher Dear",
+   "pick": 56,
+   "pos": "KPF",
+   "v0_ctf": 200.3927151542232,
+   "v0_now": 213.2078685659892
+  },
+  {
+   "delta": -12.466776311163812,
+   "key": "riak-andrew",
+   "name": "Riak Andrew",
+   "pick": 55,
+   "pos": "KPD",
+   "v0_ctf": 358.560958071066,
+   "v0_now": 371.0277343822298
+  },
+  {
+   "delta": 11.98218495251183,
+   "key": "cooper-hynes",
+   "name": "Cooper Hynes",
+   "pick": 20,
+   "pos": "MID",
+   "v0_ctf": 935.6636809144314,
+   "v0_now": 923.6814959619196
+  },
+  {
+   "delta": 11.98218495251183,
+   "key": "finlay-macrae",
+   "name": "Finlay Macrae",
+   "pick": 20,
+   "pos": "MID",
+   "v0_ctf": 935.6636809144314,
+   "v0_now": 923.6814959619196
+  },
+  {
+   "delta": 11.98218495251183,
+   "key": "brayden-fiorini",
+   "name": "Brayden Fiorini",
+   "pick": 20,
+   "pos": "MID",
+   "v0_ctf": 935.6636809144314,
+   "v0_now": 923.6814959619196
+  },
+  {
+   "delta": 11.975664187703387,
+   "key": "aidan-corr",
+   "name": "Aidan Corr",
+   "pick": 18,
+   "pos": "KPD",
+   "v0_ctf": 660.0642062182706,
+   "v0_now": 648.0885420305672
+  },
+  {
+   "delta": -11.905260811459584,
+   "key": "ashton-moir",
+   "name": "Ashton Moir",
+   "pick": 29,
+   "pos": "SF",
+   "v0_ctf": 411.85892878043296,
+   "v0_now": 423.76418959189255
+  },
+  {
+   "delta": -11.905260811459584,
+   "key": "finn-maginness",
+   "name": "Finn Maginness",
+   "pick": 29,
+   "pos": "SF",
+   "v0_ctf": 411.85892878043296,
+   "v0_now": 423.76418959189255
+  },
+  {
+   "delta": -11.905260811459584,
+   "key": "shai-bolton",
+   "name": "Shai Bolton",
+   "pick": 29,
+   "pos": "SF",
+   "v0_ctf": 411.85892878043296,
+   "v0_now": 423.76418959189255
+  },
+  {
+   "delta": -11.905260811459584,
+   "key": "charlie-spargo",
+   "name": "Charlie Spargo",
+   "pick": 29,
+   "pos": "SF",
+   "v0_ctf": 411.85892878043296,
+   "v0_now": 423.76418959189255
+  },
+  {
+   "delta": -11.905260811459584,
+   "key": "touk-miller",
+   "name": "Touk Miller",
+   "pick": 29,
+   "pos": "SF",
+   "v0_ctf": 411.85892878043296,
+   "v0_now": 423.76418959189255
+  },
+  {
+   "delta": 11.700614129008272,
+   "key": "timothy-english",
+   "name": "Timothy English",
+   "pick": 19,
+   "pos": "RUCK",
+   "v0_ctf": 1084.5027295096188,
+   "v0_now": 1072.8021153806105
+  },
+  {
+   "delta": -11.206118452580426,
+   "key": "jack-ison",
+   "name": "Jack Ison",
+   "pick": 47,
+   "pos": "SF",
+   "v0_ctf": 269.1552160345326,
+   "v0_now": 280.361334487113
+  },
+  {
+   "delta": 11.003703162806858,
+   "key": "shaun-mannagh",
+   "name": "Shaun Mannagh",
+   "pick": 36,
+   "pos": "SF",
+   "v0_ctf": 427.79522727340725,
+   "v0_now": 416.7915241106004
+  },
+  {
+   "delta": 10.740536101430678,
+   "key": "harvey-harrison",
+   "name": "Harvey Harrison",
+   "pick": 52,
+   "pos": "SF",
+   "v0_ctf": 286.1213952447636,
+   "v0_now": 275.38085914333294
+  },
+  {
+   "delta": 10.41884534312885,
+   "key": "hussien-el-achkar",
+   "name": "Hussien El Achkar",
+   "pick": 53,
+   "pos": "SF",
+   "v0_ctf": 284.8036094177058,
+   "v0_now": 274.38476407457694
+  },
+  {
+   "delta": 10.41884534312885,
+   "key": "maurice-rioli-1",
+   "name": "Maurice Rioli",
+   "pick": 53,
+   "pos": "SF",
+   "v0_ctf": 284.8036094177058,
+   "v0_now": 274.38476407457694
+  },
+  {
+   "delta": -10.364828920663854,
+   "key": "zac-mccarthy",
+   "name": "Zac McCarthy",
+   "pick": 55,
+   "pos": "KPF",
+   "v0_ctf": 203.83913471408135,
+   "v0_now": 214.2039636347452
+  },
+  {
+   "delta": -10.289534185570261,
+   "key": "lucca-grego",
+   "name": "Lucca Grego",
+   "pick": 48,
+   "pos": "SD",
+   "v0_ctf": 163.94314406774828,
+   "v0_now": 174.23267825331854
+  },
+  {
+   "delta": -10.289534185570261,
+   "key": "bailey-williams-wb",
+   "name": "Bailey Williams",
+   "pick": 48,
+   "pos": "SD",
+   "v0_ctf": 163.94314406774828,
+   "v0_now": 174.23267825331854
+  },
+  {
+   "delta": -9.502229948656804,
+   "key": "jacob-farrow",
+   "name": "Jacob Farrow",
+   "pick": 10,
+   "pos": "SD",
+   "v0_ctf": 1278.611812949706,
+   "v0_now": 1288.1140428983629
+  },
+  {
+   "delta": -9.502229948656804,
+   "key": "nick-haynes",
+   "name": "Nick Haynes",
+   "pick": 10,
+   "pos": "SD",
+   "v0_ctf": 1278.611812949706,
+   "v0_now": 1288.1140428983629
+  },
+  {
+   "delta": -9.502229948656804,
+   "key": "nick-blakey",
+   "name": "Nick Blakey",
+   "pick": 10,
+   "pos": "SD",
+   "v0_ctf": 1278.611812949706,
+   "v0_now": 1288.1140428983629
+  },
+  {
+   "delta": 9.3845619491467,
+   "key": "andrew-mcgrath",
+   "name": "Andrew McGrath",
+   "pick": 1,
+   "pos": "SD",
+   "v0_ctf": 2706.6393316701883,
+   "v0_now": 2697.2547697210416
+  },
+  {
+   "delta": 9.3845619491467,
+   "key": "lachie-whitfield",
+   "name": "Lachie Whitfield",
+   "pick": 1,
+   "pos": "SD",
+   "v0_ctf": 2706.6393316701883,
+   "v0_now": 2697.2547697210416
+  },
+  {
+   "delta": 9.133731234623156,
+   "key": "willem-duursma",
+   "name": "Willem Duursma",
+   "pick": 1,
+   "pos": "MID",
+   "v0_ctf": 3281.916503660667,
+   "v0_now": 3272.7827724260437
+  },
+  {
+   "delta": 9.133731234623156,
+   "key": "jaeger-o-meara",
+   "name": "Jaeger O'Meara",
+   "pick": 1,
+   "pos": "MID",
+   "v0_ctf": 3281.916503660667,
+   "v0_now": 3272.7827724260437
+  },
+  {
+   "delta": 9.133731234623156,
+   "key": "sam-lalor",
+   "name": "Sam Lalor",
+   "pick": 1,
+   "pos": "MID",
+   "v0_ctf": 3281.916503660667,
+   "v0_now": 3272.7827724260437
+  },
+  {
+   "delta": 9.133731234623156,
+   "key": "harley-reid",
+   "name": "Harley Reid",
+   "pick": 1,
+   "pos": "MID",
+   "v0_ctf": 3281.916503660667,
+   "v0_now": 3272.7827724260437
+  },
+  {
+   "delta": 9.133731234623156,
+   "key": "jason-horne-francis",
+   "name": "Jason Horne-Francis",
+   "pick": 1,
+   "pos": "MID",
+   "v0_ctf": 3281.916503660667,
+   "v0_now": 3272.7827724260437
+  },
+  {
+   "delta": 9.133731234623156,
+   "key": "sam-walsh",
+   "name": "Sam Walsh",
+   "pick": 1,
+   "pos": "MID",
+   "v0_ctf": 3281.916503660667,
+   "v0_now": 3272.7827724260437
+  },
+  {
+   "delta": 9.133731234623156,
+   "key": "matt-rowell",
+   "name": "Matt Rowell",
+   "pick": 1,
+   "pos": "MID",
+   "v0_ctf": 3281.916503660667,
+   "v0_now": 3272.7827724260437
+  },
+  {
+   "delta": -9.122857291733396,
+   "key": "beau-mccreery",
+   "name": "Beau McCreery",
+   "pick": 46,
+   "pos": "SF",
+   "v0_ctf": 272.23457226413564,
+   "v0_now": 281.35742955586903
+  },
+  {
+   "delta": -9.113107319694734,
+   "key": "joel-cochran",
+   "name": "Joel Cochran",
+   "pick": 47,
+   "pos": "KPD",
+   "v0_ctf": 369.8833876125832,
+   "v0_now": 378.9964949322779
+  },
+  {
+   "delta": -8.988797553096106,
+   "key": "jayden-laverde",
+   "name": "Jayden Laverde",
+   "pick": 20,
+   "pos": "KPD",
+   "v0_ctf": 635.320795591926,
+   "v0_now": 644.3095931450221
+  },
+  {
+   "delta": -8.774695836949377,
+   "key": "jordan-croft",
+   "name": "Jordan Croft",
+   "pick": 15,
+   "pos": "KPF",
+   "v0_ctf": 750.6881102904518,
+   "v0_now": 759.4628061274012
+  },
+  {
+   "delta": -8.774695836949377,
+   "key": "matthew-jefferson",
+   "name": "Matthew Jefferson",
+   "pick": 15,
+   "pos": "KPF",
+   "v0_ctf": 750.6881102904518,
+   "v0_now": 759.4628061274012
+  },
+  {
+   "delta": 8.506188118851242,
+   "key": "zeke-uwland",
+   "name": "Zeke Uwland",
+   "pick": 2,
+   "pos": "SD",
+   "v0_ctf": 2462.6637698524005,
+   "v0_now": 2454.1575817335493
+  },
+  {
+   "delta": 8.253212264223293,
+   "key": "darcy-fogarty",
+   "name": "Darcy Fogarty",
+   "pick": 12,
+   "pos": "KPF",
+   "v0_ctf": 1117.468323810639,
+   "v0_now": 1109.2151115464158
+  },
+  {
+   "delta": 8.253212264223293,
+   "key": "jeremy-cameron",
+   "name": "Jeremy Cameron",
+   "pick": 12,
+   "pos": "KPF",
+   "v0_ctf": 1117.468323810639,
+   "v0_now": 1109.2151115464158
+  },
+  {
+   "delta": 8.253212264223293,
+   "key": "charlie-curnow",
+   "name": "Charlie Curnow",
+   "pick": 12,
+   "pos": "KPF",
+   "v0_ctf": 1117.468323810639,
+   "v0_now": 1109.2151115464158
+  },
+  {
+   "delta": -8.143322352209339,
+   "key": "caiden-cleary",
+   "name": "Caiden Cleary",
+   "pick": 24,
+   "pos": "SF",
+   "v0_ctf": 432.90857505151706,
+   "v0_now": 441.0518974037264
+  },
+  {
+   "delta": -8.143322352209339,
+   "key": "ben-keays",
+   "name": "Ben Keays",
+   "pick": 24,
+   "pos": "SF",
+   "v0_ctf": 432.90857505151706,
+   "v0_now": 441.0518974037264
+  },
+  {
+   "delta": -8.143322352209339,
+   "key": "bobby-hill",
+   "name": "Bobby Hill",
+   "pick": 24,
+   "pos": "SF",
+   "v0_ctf": 432.90857505151706,
+   "v0_now": 441.0518974037264
+  },
+  {
+   "delta": -8.06893460681016,
+   "key": "joe-richards",
+   "name": "Joe Richards",
+   "pick": 48,
+   "pos": "SF",
+   "v0_ctf": 271.29630481154686,
+   "v0_now": 279.365239418357
+  },
+  {
+   "delta": -8.06893460681016,
+   "key": "thomas-anastasopoulos",
+   "name": "Tom Anastasopoulos",
+   "pick": 48,
+   "pos": "SF",
+   "v0_ctf": 271.29630481154686,
+   "v0_now": 279.365239418357
+  },
+  {
+   "delta": -8.06893460681016,
+   "key": "tyler-brockman",
+   "name": "Tyler Brockman",
+   "pick": 48,
+   "pos": "SF",
+   "v0_ctf": 271.29630481154686,
+   "v0_now": 279.365239418357
+  },
+  {
+   "delta": -8.06893460681016,
+   "key": "oskar-baker",
+   "name": "Oskar Baker",
+   "pick": 48,
+   "pos": "SF",
+   "v0_ctf": 271.29630481154686,
+   "v0_now": 279.365239418357
+  },
+  {
+   "delta": -8.06893460681016,
+   "key": "hugo-mikunda",
+   "name": "Hugo Mikunda",
+   "pick": 48,
+   "pos": "SF",
+   "v0_ctf": 271.29630481154686,
+   "v0_now": 279.365239418357
+  },
+  {
+   "delta": 8.016759949179573,
+   "key": "sam-davidson",
+   "name": "Sam Davidson",
+   "pick": 51,
+   "pos": "SF",
+   "v0_ctf": 284.3937141612686,
+   "v0_now": 276.376954212089
+  },
+  {
+   "delta": -8.010718799062602,
+   "key": "sam-butler-1",
+   "name": "Sam Butler",
+   "pick": 23,
+   "pos": "SF",
+   "v0_ctf": 469.7403034821561,
+   "v0_now": 477.7510222812187
+  },
+  {
+   "delta": -8.010718799062602,
+   "key": "bailey-laurie",
+   "name": "Bailey Laurie",
+   "pick": 23,
+   "pos": "SF",
+   "v0_ctf": 469.7403034821561,
+   "v0_now": 477.7510222812187
+  },
+  {
+   "delta": 7.88040785892008,
+   "key": "callum-mills",
+   "name": "Callum Mills",
+   "pick": 3,
+   "pos": "SD",
+   "v0_ctf": 2288.848151461288,
+   "v0_now": 2280.967743602368
+  },
+  {
+   "delta": -7.8558440866581805,
+   "key": "jesse-dattoli",
+   "name": "Jesse Dattoli",
+   "pick": 22,
+   "pos": "SF",
+   "v0_ctf": 512.7580297247296,
+   "v0_now": 520.6138738113877
+  },
+  {
+   "delta": -7.8558440866581805,
+   "key": "lachlan-fogarty",
+   "name": "Lachlan Fogarty",
+   "pick": 22,
+   "pos": "SF",
+   "v0_ctf": 512.7580297247296,
+   "v0_now": 520.6138738113877
+  },
+  {
+   "delta": -7.8558440866581805,
+   "key": "xavier-o-halloran",
+   "name": "Xavier O'Halloran",
+   "pick": 22,
+   "pos": "SF",
+   "v0_ctf": 512.7580297247296,
+   "v0_now": 520.6138738113877
+  },
+  {
+   "delta": -7.812082111692689,
+   "key": "jai-murray",
+   "name": "Jai Murray",
+   "pick": 17,
+   "pos": "MID",
+   "v0_ctf": 918.8576990564949,
+   "v0_now": 926.6697811681876
+  },
+  {
+   "delta": -7.812082111692689,
+   "key": "alex-davies",
+   "name": "Alex Davies",
+   "pick": 17,
+   "pos": "MID",
+   "v0_ctf": 918.8576990564949,
+   "v0_now": 926.6697811681876
+  },
+  {
+   "delta": -7.812082111692689,
+   "key": "jarrod-berry",
+   "name": "Jarrod Berry",
+   "pick": 17,
+   "pos": "MID",
+   "v0_ctf": 918.8576990564949,
+   "v0_now": 926.6697811681876
+  },
+  {
+   "delta": -7.800236052159562,
+   "key": "tom-de-koning",
+   "name": "Tom De Koning",
+   "pick": 30,
+   "pos": "RUCK",
+   "v0_ctf": 1054.0448335721348,
+   "v0_now": 1061.8450696242944
+  },
+  {
+   "delta": -7.7912950571949295,
+   "key": "darcy-jones",
+   "name": "Darcy Jones",
+   "pick": 21,
+   "pos": "SF",
+   "v0_ctf": 530.6870540022157,
+   "v0_now": 538.4783490594107
+  },
+  {
+   "delta": -7.7912950571949295,
+   "key": "will-hayward",
+   "name": "Will Hayward",
+   "pick": 21,
+   "pos": "SF",
+   "v0_ctf": 530.6870540022157,
+   "v0_now": 538.4783490594107
+  },
+  {
+   "delta": -7.7630950347413545,
+   "key": "jacob-konstanty",
+   "name": "Jacob Konstanty",
+   "pick": 20,
+   "pos": "SF",
+   "v0_ctf": 538.5198423710087,
+   "v0_now": 546.2829374057501
+  },
+  {
+   "delta": -7.7630950347413545,
+   "key": "cameron-nairn",
+   "name": "Cameron Nairn",
+   "pick": 20,
+   "pos": "SF",
+   "v0_ctf": 538.5198423710087,
+   "v0_now": 546.2829374057501
+  },
+  {
+   "delta": -7.7630950347413545,
+   "key": "kai-lohmann",
+   "name": "Kai Lohmann",
+   "pick": 20,
+   "pos": "SF",
+   "v0_ctf": 538.5198423710087,
+   "v0_now": 546.2829374057501
+  },
+  {
+   "delta": -7.751364074520438,
+   "key": "luke-pedlar",
+   "name": "Luke Pedlar",
+   "pick": 11,
+   "pos": "SF",
+   "v0_ctf": 968.7824778892067,
+   "v0_now": 976.5338419637271
+  },
+  {
+   "delta": 7.743237586052828,
+   "key": "brodie-kemp",
+   "name": "Brodie Kemp",
+   "pick": 17,
+   "pos": "KPF",
+   "v0_ctf": 765.213853575942,
+   "v0_now": 757.4706159898892
+  },
+  {
+   "delta": 7.675361608046387,
+   "key": "will-ashcroft",
+   "name": "Will Ashcroft",
+   "pick": 2,
+   "pos": "MID",
+   "v0_ctf": 2876.8423351115066,
+   "v0_now": 2869.16697350346
+  },
+  {
+   "delta": 7.675361608046387,
+   "key": "finn-o-sullivan",
+   "name": "Finn O'Sullivan",
+   "pick": 2,
+   "pos": "MID",
+   "v0_ctf": 2876.8423351115066,
+   "v0_now": 2869.16697350346
+  },
+  {
+   "delta": 7.675361608046387,
+   "key": "joshua-kelly",
+   "name": "Joshua Kelly",
+   "pick": 2,
+   "pos": "MID",
+   "v0_ctf": 2876.8423351115066,
+   "v0_now": 2869.16697350346
+  },
+  {
+   "delta": 7.675361608046387,
+   "key": "tim-taranto",
+   "name": "Tim Taranto",
+   "pick": 2,
+   "pos": "MID",
+   "v0_ctf": 2876.8423351115066,
+   "v0_now": 2869.16697350346
+  },
+  {
+   "delta": 7.675361608046387,
+   "key": "andrew-brayshaw",
+   "name": "Andrew Brayshaw",
+   "pick": 2,
+   "pos": "MID",
+   "v0_ctf": 2876.8423351115066,
+   "v0_now": 2869.16697350346
+  },
+  {
+   "delta": 7.675361608046387,
+   "key": "christian-petracca",
+   "name": "Christian Petracca",
+   "pick": 2,
+   "pos": "MID",
+   "v0_ctf": 2876.8423351115066,
+   "v0_now": 2869.16697350346
+  },
+  {
+   "delta": 7.675361608046387,
+   "key": "colby-mckercher",
+   "name": "Colby McKercher",
+   "pick": 2,
+   "pos": "MID",
+   "v0_ctf": 2876.8423351115066,
+   "v0_now": 2869.16697350346
+  },
+  {
+   "delta": 7.675361608046387,
+   "key": "noah-anderson",
+   "name": "Noah Anderson",
+   "pick": 2,
+   "pos": "MID",
+   "v0_ctf": 2876.8423351115066,
+   "v0_now": 2869.16697350346
+  },
+  {
+   "delta": -7.58638801063239,
+   "key": "darcy-wilson",
+   "name": "Darcy Wilson",
+   "pick": 18,
+   "pos": "SF",
+   "v0_ctf": 587.6016729051041,
+   "v0_now": 595.1880609157365
+  },
+  {
+   "delta": -7.58638801063239,
+   "key": "jade-gresham",
+   "name": "Jade Gresham",
+   "pick": 18,
+   "pos": "SF",
+   "v0_ctf": 587.6016729051041,
+   "v0_now": 595.1880609157365
+  },
+  {
+   "delta": -7.58638801063239,
+   "key": "sam-powell-pepper",
+   "name": "Sam Powell-Pepper",
+   "pick": 18,
+   "pos": "SF",
+   "v0_ctf": 587.6016729051041,
+   "v0_now": 595.1880609157365
+  },
+  {
+   "delta": -7.58638801063239,
+   "key": "oliver-hannaford",
+   "name": "Oliver Hannaford",
+   "pick": 18,
+   "pos": "SF",
+   "v0_ctf": 587.6016729051041,
+   "v0_now": 595.1880609157365
+  },
+  {
+   "delta": -7.58638801063239,
+   "key": "oliver-henry",
+   "name": "Oliver Henry",
+   "pick": 18,
+   "pos": "SF",
+   "v0_ctf": 587.6016729051041,
+   "v0_now": 595.1880609157365
+  },
+  {
+   "delta": -7.511366892672527,
+   "key": "murphy-reid",
+   "name": "Murphy Reid",
+   "pick": 17,
+   "pos": "SF",
+   "v0_ctf": 608.4394059649455,
+   "v0_now": 615.9507728576181
+  },
+  {
+   "delta": -7.511366892672527,
+   "key": "sam-sturt",
+   "name": "Sam Sturt",
+   "pick": 17,
+   "pos": "SF",
+   "v0_ctf": 608.4394059649455,
+   "v0_now": 615.9507728576181
+  },
+  {
+   "delta": -7.511366892672527,
+   "key": "toby-greene",
+   "name": "Toby Greene",
+   "pick": 17,
+   "pos": "SF",
+   "v0_ctf": 608.4394059649455,
+   "v0_now": 615.9507728576181
+  },
+  {
+   "delta": -7.511366892672527,
+   "key": "jack-higgins",
+   "name": "Jack Higgins",
+   "pick": 17,
+   "pos": "SF",
+   "v0_ctf": 608.4394059649455,
+   "v0_now": 615.9507728576181
+  },
+  {
+   "delta": -7.509784529397251,
+   "key": "jaxon-prior",
+   "name": "Jaxon Prior",
+   "pick": 58,
+   "pos": "SD",
+   "v0_ctf": 156.76194303636112,
+   "v0_now": 164.27172756575837
+  },
+  {
+   "delta": -7.473423938602878,
+   "key": "lachy-dovaston",
+   "name": "Lachy Dovaston",
+   "pick": 16,
+   "pos": "SF",
+   "v0_ctf": 618.9783737903948,
+   "v0_now": 626.4517977289977
+  },
+  {
+   "delta": -7.446617145136429,
+   "key": "joe-berry",
+   "name": "Joe Berry",
+   "pick": 15,
+   "pos": "SF",
+   "v0_ctf": 626.4241813394486,
+   "v0_now": 633.8707984845851
+  },
+  {
+   "delta": -7.446617145136429,
+   "key": "zac-bailey",
+   "name": "Zac Bailey",
+   "pick": 15,
+   "pos": "SF",
+   "v0_ctf": 626.4241813394486,
+   "v0_now": 633.8707984845851
+  },
+  {
+   "delta": -7.446617145136429,
+   "key": "cody-weightman",
+   "name": "Cody Weightman",
+   "pick": 15,
+   "pos": "SF",
+   "v0_ctf": 626.4241813394486,
+   "v0_now": 633.8707984845851
+  },
+  {
+   "delta": 7.173422137591558,
+   "key": "laitham-vandermeer",
+   "name": "Laitham Vandermeer",
+   "pick": 37,
+   "pos": "SF",
+   "v0_ctf": 422.96885117943594,
+   "v0_now": 415.7954290418444
+  },
+  {
+   "delta": 7.168850300671693,
+   "key": "jagga-smith",
+   "name": "Jagga Smith",
+   "pick": 3,
+   "pos": "MID",
+   "v0_ctf": 2736.1546500716663,
+   "v0_now": 2728.9857997709946
+  },
+  {
+   "delta": 7.168850300671693,
+   "key": "harry-sheezel",
+   "name": "Harry Sheezel",
+   "pick": 3,
+   "pos": "MID",
+   "v0_ctf": 2736.1546500716663,
+   "v0_now": 2728.9857997709946
+  },
+  {
+   "delta": 7.168850300671693,
+   "key": "finn-callaghan",
+   "name": "Finn Callaghan",
+   "pick": 3,
+   "pos": "MID",
+   "v0_ctf": 2736.1546500716663,
+   "v0_now": 2728.9857997709946
+  },
+  {
+   "delta": 7.168850300671693,
+   "key": "paddy-dow",
+   "name": "Paddy Dow",
+   "pick": 3,
+   "pos": "MID",
+   "v0_ctf": 2736.1546500716663,
+   "v0_now": 2728.9857997709946
+  },
+  {
+   "delta": 7.168850300671693,
+   "key": "hugh-mccluggage",
+   "name": "Hugh McCluggage",
+   "pick": 3,
+   "pos": "MID",
+   "v0_ctf": 2736.1546500716663,
+   "v0_now": 2728.9857997709946
+  },
+  {
+   "delta": 7.168850300671693,
+   "key": "stephen-coniglio",
+   "name": "Stephen Coniglio",
+   "pick": 3,
+   "pos": "MID",
+   "v0_ctf": 2736.1546500716663,
+   "v0_now": 2728.9857997709946
+  },
+  {
+   "delta": 7.122600760061005,
+   "key": "christian-moraes",
+   "name": "Christian Moraes",
+   "pick": 38,
+   "pos": "MID",
+   "v0_ctf": 636.3653433790384,
+   "v0_now": 629.2427426189774
+  },
+  {
+   "delta": 7.122600760061005,
+   "key": "clay-hall",
+   "name": "Clay Hall",
+   "pick": 38,
+   "pos": "MID",
+   "v0_ctf": 636.3653433790384,
+   "v0_now": 629.2427426189774
+  },
+  {
+   "delta": 7.122600760061005,
+   "key": "chad-warner",
+   "name": "Chad Warner",
+   "pick": 38,
+   "pos": "MID",
+   "v0_ctf": 636.3653433790384,
+   "v0_now": 629.2427426189774
+  },
+  {
+   "delta": -7.118212029487324,
+   "key": "lewis-young",
+   "name": "Lewis Young",
+   "pick": 49,
+   "pos": "KPD",
+   "v0_ctf": 369.8860927652786,
+   "v0_now": 377.0043047947659
+  },
+  {
+   "delta": -7.118212029487324,
+   "key": "cooper-bell",
+   "name": "Cooper Bell",
+   "pick": 49,
+   "pos": "KPD",
+   "v0_ctf": 369.8860927652786,
+   "v0_now": 377.0043047947659
+  },
+  {
+   "delta": 7.106497318506854,
+   "key": "oscar-allen",
+   "name": "Oscar Allen",
+   "pick": 21,
+   "pos": "KPF",
+   "v0_ctf": 731.8910136621187,
+   "v0_now": 724.7845163436118
+  },
+  {
+   "delta": -7.078412239863724,
+   "key": "jake-rogers",
+   "name": "Jake Rogers",
+   "pick": 14,
+   "pos": "SF",
+   "v0_ctf": 728.6961247075599,
+   "v0_now": 735.7745369474236
+  },
+  {
+   "delta": -7.078412239863724,
+   "key": "adam-treloar",
+   "name": "Adam Treloar",
+   "pick": 14,
+   "pos": "SF",
+   "v0_ctf": 728.6961247075599,
+   "v0_now": 735.7745369474236
+  },
+  {
+   "delta": 7.0391613796687125,
+   "key": "toby-conway",
+   "name": "Toby Conway",
+   "pick": 24,
+   "pos": "RUCK",
+   "v0_ctf": 1074.8608014164993,
+   "v0_now": 1067.8216400368306
+  },
+  {
+   "delta": -6.920130312532535,
+   "key": "judson-clarke",
+   "name": "Judson Clarke",
+   "pick": 30,
+   "pos": "SF",
+   "v0_ctf": 415.84796421060395,
+   "v0_now": 422.7680945231365
+  },
+  {
+   "delta": -6.920130312532535,
+   "key": "thomas-matthews",
+   "name": "Thomas Matthews",
+   "pick": 30,
+   "pos": "SF",
+   "v0_ctf": 415.84796421060395,
+   "v0_now": 422.7680945231365
+  },
+  {
+   "delta": -6.787579231657162,
+   "key": "jack-payne",
+   "name": "Jack Payne",
+   "pick": 54,
+   "pos": "KPD",
+   "v0_ctf": 365.23625021932867,
+   "v0_now": 372.02382945098583
+  },
+  {
+   "delta": -6.787579231657162,
+   "key": "tom-mcdonald",
+   "name": "Tom McDonald",
+   "pick": 54,
+   "pos": "KPD",
+   "v0_ctf": 365.23625021932867,
+   "v0_now": 372.02382945098583
+  },
+  {
+   "delta": -6.787579231657162,
+   "key": "samuel-collins",
+   "name": "Samuel Collins",
+   "pick": 54,
+   "pos": "KPD",
+   "v0_ctf": 365.23625021932867,
+   "v0_now": 372.02382945098583
+  },
+  {
+   "delta": 6.58560979102208,
+   "key": "lachlan-ash",
+   "name": "Lachlan Ash",
+   "pick": 4,
+   "pos": "SD",
+   "v0_ctf": 1929.2073297967622,
+   "v0_now": 1922.6217200057401
+  },
+  {
+   "delta": -6.517010210964941,
+   "key": "isaac-kako",
+   "name": "Isaac Kako",
+   "pick": 13,
+   "pos": "SF",
+   "v0_ctf": 884.6301594911613,
+   "v0_now": 891.1471697021262
+  },
+  {
+   "delta": 6.391984921615176,
+   "key": "max-holmes",
+   "name": "Max Holmes",
+   "pick": 21,
+   "pos": "MID",
+   "v0_ctf": 929.0773858147787,
+   "v0_now": 922.6854008931635
+  },
+  {
+   "delta": 6.391984921615176,
+   "key": "charlie-edwards",
+   "name": "Charlie Edwards",
+   "pick": 21,
+   "pos": "MID",
+   "v0_ctf": 929.0773858147787,
+   "v0_now": 922.6854008931635
+  },
+  {
+   "delta": 6.391984921615176,
+   "key": "matt-johnson-1",
+   "name": "Matt Johnson",
+   "pick": 21,
+   "pos": "MID",
+   "v0_ctf": 929.0773858147787,
+   "v0_now": 922.6854008931635
+  },
+  {
+   "delta": 6.391984921615176,
+   "key": "jack-steele",
+   "name": "Jack Steele",
+   "pick": 21,
+   "pos": "MID",
+   "v0_ctf": 929.0773858147787,
+   "v0_now": 922.6854008931635
+  },
+  {
+   "delta": 6.266841685129748,
+   "key": "nick-daicos",
+   "name": "Nick Daicos",
+   "pick": 4,
+   "pos": "MID",
+   "v0_ctf": 2485.6143320986253,
+   "v0_now": 2479.3474904134955
+  },
+  {
+   "delta": 6.266841685129748,
+   "key": "sid-draper",
+   "name": "Sid Draper",
+   "pick": 4,
+   "pos": "MID",
+   "v0_ctf": 2485.6143320986253,
+   "v0_now": 2479.3474904134955
+  },
+  {
+   "delta": 6.266841685129748,
+   "key": "george-wardlaw",
+   "name": "George Wardlaw",
+   "pick": 4,
+   "pos": "MID",
+   "v0_ctf": 2485.6143320986253,
+   "v0_now": 2479.3474904134955
+  },
+  {
+   "delta": 6.266841685129748,
+   "key": "clayton-oliver",
+   "name": "Clayton Oliver",
+   "pick": 4,
+   "pos": "MID",
+   "v0_ctf": 2485.6143320986253,
+   "v0_now": 2479.3474904134955
+  },
+  {
+   "delta": 6.266841685129748,
+   "key": "marcus-bontempelli",
+   "name": "Marcus Bontempelli",
+   "pick": 4,
+   "pos": "MID",
+   "v0_ctf": 2485.6143320986253,
+   "v0_now": 2479.3474904134955
+  },
+  {
+   "delta": 6.266841685129748,
+   "key": "isaac-heeney",
+   "name": "Isaac Heeney",
+   "pick": 4,
+   "pos": "MID",
+   "v0_ctf": 2485.6143320986253,
+   "v0_now": 2479.3474904134955
+  },
+  {
+   "delta": 6.266841685129748,
+   "key": "luke-davies-uniacke",
+   "name": "Luke Davies-Uniacke",
+   "pick": 4,
+   "pos": "MID",
+   "v0_ctf": 2485.6143320986253,
+   "v0_now": 2479.3474904134955
+  },
+  {
+   "delta": -6.185409189884581,
+   "key": "patrick-dangerfield",
+   "name": "Patrick Dangerfield",
+   "pick": 10,
+   "pos": "SF",
+   "v0_ctf": 976.7350727150206,
+   "v0_now": 982.9204819049052
+  },
+  {
+   "delta": -6.107366505040545,
+   "key": "leo-lombard",
+   "name": "Leo Lombard",
+   "pick": 9,
+   "pos": "SF",
+   "v0_ctf": 998.4120708494069,
+   "v0_now": 1004.5194373544474
+  },
+  {
+   "delta": -6.107366505040545,
+   "key": "liam-henry",
+   "name": "Liam Henry",
+   "pick": 9,
+   "pos": "SF",
+   "v0_ctf": 998.4120708494069,
+   "v0_now": 1004.5194373544474
+  },
+  {
+   "delta": -6.107366505040545,
+   "key": "archie-perkins",
+   "name": "Archie Perkins",
+   "pick": 9,
+   "pos": "SF",
+   "v0_ctf": 998.4120708494069,
+   "v0_now": 1004.5194373544474
+  },
+  {
+   "delta": -6.046713233880723,
+   "key": "jack-ough",
+   "name": "Jack Ough",
+   "pick": 36,
+   "pos": "MID",
+   "v0_ctf": 625.1882195226087,
+   "v0_now": 631.2349327564895
+  },
+  {
+   "delta": -6.046713233880723,
+   "key": "jake-soligo",
+   "name": "Jake Soligo",
+   "pick": 36,
+   "pos": "MID",
+   "v0_ctf": 625.1882195226087,
+   "v0_now": 631.2349327564895
+  },
+  {
+   "delta": -6.046713233880723,
+   "key": "elliot-yeo",
+   "name": "Elliot Yeo",
+   "pick": 36,
+   "pos": "MID",
+   "v0_ctf": 625.1882195226087,
+   "v0_now": 631.2349327564895
+  },
+  {
+   "delta": -5.953603601696841,
+   "key": "callum-ah-chee",
+   "name": "Callum Ah Chee",
+   "pick": 8,
+   "pos": "SF",
+   "v0_ctf": 1041.120982973251,
+   "v0_now": 1047.074586574948
+  },
+  {
+   "delta": -5.863121332844457,
+   "key": "rory-lobb",
+   "name": "Rory Lobb",
+   "pick": 29,
+   "pos": "KPD",
+   "v0_ctf": 481.58551757955263,
+   "v0_now": 487.4486389123971
+  },
+  {
+   "delta": -5.732572867649196,
+   "key": "elijah-hollands",
+   "name": "Elijah Hollands",
+   "pick": 7,
+   "pos": "SF",
+   "v0_ctf": 1102.5140887995703,
+   "v0_now": 1108.2466616672195
+  },
+  {
+   "delta": -5.732572867649196,
+   "key": "jake-stringer",
+   "name": "Jake Stringer",
+   "pick": 7,
+   "pos": "SF",
+   "v0_ctf": 1102.5140887995703,
+   "v0_now": 1108.2466616672195
+  },
+  {
+   "delta": 5.709561009292429,
+   "key": "noah-roberts-thomson",
+   "name": "Noah Roberts-Thomson",
+   "pick": 54,
+   "pos": "SF",
+   "v0_ctf": 279.09823001511336,
+   "v0_now": 273.38866900582093
+  },
+  {
+   "delta": -5.672698073869583,
+   "key": "aliir-aliir",
+   "name": "Aliir Aliir",
+   "pick": 44,
+   "pos": "KPD",
+   "v0_ctf": 376.3120820646764,
+   "v0_now": 381.984780138546
+  },
+  {
+   "delta": -5.6563740223134005,
+   "key": "esava-ratugolea",
+   "name": "Esava Ratugolea",
+   "pick": 43,
+   "pos": "KPD",
+   "v0_ctf": 380.84622175803867,
+   "v0_now": 386.50259578035207
+  },
+  {
+   "delta": -5.6563740223134005,
+   "key": "tom-barrass",
+   "name": "Tom Barrass",
+   "pick": 43,
+   "pos": "KPD",
+   "v0_ctf": 380.84622175803867,
+   "v0_now": 386.50259578035207
+  },
+  {
+   "delta": -5.638718806820123,
+   "key": "luke-lloyd",
+   "name": "Luke Lloyd",
+   "pick": 42,
+   "pos": "KPD",
+   "v0_ctf": 385.7501031925943,
+   "v0_now": 391.3888219994144
+  },
+  {
+   "delta": -5.638718806820123,
+   "key": "charlie-ballard",
+   "name": "Charlie Ballard",
+   "pick": 42,
+   "pos": "KPD",
+   "v0_ctf": 385.7501031925943,
+   "v0_now": 391.3888219994144
+  },
+  {
+   "delta": -5.627356770588676,
+   "key": "nate-caddy",
+   "name": "Nate Caddy",
+   "pick": 10,
+   "pos": "KPF",
+   "v0_ctf": 1105.579944913339,
+   "v0_now": 1111.2073016839277
+  },
+  {
+   "delta": -5.627356770588676,
+   "key": "jake-melksham",
+   "name": "Jake Melksham",
+   "pick": 10,
+   "pos": "KPF",
+   "v0_ctf": 1105.579944913339,
+   "v0_now": 1111.2073016839277
+  },
+  {
+   "delta": -5.627356770588676,
+   "key": "peter-wright",
+   "name": "Peter Wright",
+   "pick": 10,
+   "pos": "KPF",
+   "v0_ctf": 1105.579944913339,
+   "v0_now": 1111.2073016839277
+  },
+  {
+   "delta": -5.627356770588676,
+   "key": "harry-mckay",
+   "name": "Harry McKay",
+   "pick": 10,
+   "pos": "KPF",
+   "v0_ctf": 1105.579944913339,
+   "v0_now": 1111.2073016839277
+  },
+  {
+   "delta": -5.613536310563347,
+   "key": "ollie-murphy",
+   "name": "Ollie Murphy",
+   "pick": 41,
+   "pos": "KPD",
+   "v0_ctf": 392.744748821051,
+   "v0_now": 398.35828513161437
+  },
+  {
+   "delta": -5.613536310563347,
+   "key": "brennan-cox",
+   "name": "Brennan Cox",
+   "pick": 41,
+   "pos": "KPD",
+   "v0_ctf": 392.744748821051,
+   "v0_now": 398.35828513161437
+  },
+  {
+   "delta": -5.613536310563347,
+   "key": "jake-kolodjashnij",
+   "name": "Jake Kolodjashnij",
+   "pick": 41,
+   "pos": "KPD",
+   "v0_ctf": 392.744748821051,
+   "v0_now": 398.35828513161437
+  },
+  {
+   "delta": -5.582815266447085,
+   "key": "harry-o-farrell",
+   "name": "Harry O'Farrell",
+   "pick": 40,
+   "pos": "KPD",
+   "v0_ctf": 401.27777170879403,
+   "v0_now": 406.8605869752411
+  },
+  {
+   "delta": -5.550757383181292,
+   "key": "josh-battle",
+   "name": "Josh Battle",
+   "pick": 39,
+   "pos": "KPD",
+   "v0_ctf": 410.18211267468837,
+   "v0_now": 415.73287005786966
+  },
+  {
+   "delta": -5.543109300897868,
+   "key": "josh-rachele",
+   "name": "Josh Rachele",
+   "pick": 6,
+   "pos": "SF",
+   "v0_ctf": 1155.1391540597647,
+   "v0_now": 1160.6822633606625
+  },
+  {
+   "delta": -5.543109300897868,
+   "key": "jordan-de-goey",
+   "name": "Jordan De Goey",
+   "pick": 6,
+   "pos": "SF",
+   "v0_ctf": 1155.1391540597647,
+   "v0_now": 1160.6822633606625
+  },
+  {
+   "delta": -5.511666161534038,
+   "key": "jed-adams",
+   "name": "Jed Adams",
+   "pick": 38,
+   "pos": "KPD",
+   "v0_ctf": 421.04002127189966,
+   "v0_now": 426.5516874334337
+  },
+  {
+   "delta": -5.483069100900764,
+   "key": "rhett-bazzo",
+   "name": "Rhett Bazzo",
+   "pick": 37,
+   "pos": "KPD",
+   "v0_ctf": 428.9830902633759,
+   "v0_now": 434.4661593642767
+  },
+  {
+   "delta": -5.483069100900764,
+   "key": "harrison-petty",
+   "name": "Harrison Petty",
+   "pick": 37,
+   "pos": "KPD",
+   "v0_ctf": 428.9830902633759,
+   "v0_now": 434.4661593642767
+  },
+  {
+   "delta": -5.483069100900764,
+   "key": "alex-pearce",
+   "name": "Alex Pearce",
+   "pick": 37,
+   "pos": "KPD",
+   "v0_ctf": 428.9830902633759,
+   "v0_now": 434.4661593642767
+  },
+  {
+   "delta": -5.432456908172071,
+   "key": "connor-o-sullivan",
+   "name": "Connor O'Sullivan",
+   "pick": 11,
+   "pos": "KPD",
+   "v0_ctf": 905.5216561106199,
+   "v0_now": 910.954113018792
+  },
+  {
+   "delta": -5.41251083773534,
+   "key": "noah-mraz",
+   "name": "Noah Mraz",
+   "pick": 35,
+   "pos": "KPD",
+   "v0_ctf": 448.58122866747465,
+   "v0_now": 453.99373950521
+  },
+  {
+   "delta": 5.401769551192274,
+   "key": "braeden-campbell",
+   "name": "Braeden Campbell",
+   "pick": 5,
+   "pos": "SD",
+   "v0_ctf": 1600.3859582425134,
+   "v0_now": 1594.9841886913212
+  },
+  {
+   "delta": 5.401769551192274,
+   "key": "dylan-patterson",
+   "name": "Dylan Patterson",
+   "pick": 5,
+   "pos": "SD",
+   "v0_ctf": 1600.3859582425134,
+   "v0_now": 1594.9841886913212
+  },
+  {
+   "delta": -5.350342080226142,
+   "key": "hugh-davies",
+   "name": "Hugh Davies",
+   "pick": 33,
+   "pos": "KPD",
+   "v0_ctf": 465.8491128162412,
+   "v0_now": 471.19945489646733
+  },
+  {
+   "delta": -5.350342080226142,
+   "key": "tom-mccartin",
+   "name": "Tom McCartin",
+   "pick": 33,
+   "pos": "KPD",
+   "v0_ctf": 465.8491128162412,
+   "v0_now": 471.19945489646733
+  },
+  {
+   "delta": -5.33905467752345,
+   "key": "james-barrat",
+   "name": "James Barrat",
+   "pick": 32,
+   "pos": "KPD",
+   "v0_ctf": 468.98428183068944,
+   "v0_now": 474.3233365082129
+  },
+  {
+   "delta": -5.317590399534765,
+   "key": "charlie-comben",
+   "name": "Charlie Comben",
+   "pick": 31,
+   "pos": "KPD",
+   "v0_ctf": 474.9461617281525,
+   "v0_now": 480.26375212768727
+  },
+  {
+   "delta": -5.27144060206723,
+   "key": "sam-taylor",
+   "name": "Sam Taylor",
+   "pick": 28,
+   "pos": "KPD",
+   "v0_ctf": 487.7646478630831,
+   "v0_now": 493.0360884651503
+  },
+  {
+   "delta": -5.234083414468898,
+   "key": "blake-thredgold",
+   "name": "Blake Thredgold",
+   "pick": 26,
+   "pos": "KPD",
+   "v0_ctf": 498.14091422928414,
+   "v0_now": 503.37499764375303
+  },
+  {
+   "delta": -5.1772570620767056,
+   "key": "lewis-hayes",
+   "name": "Lewis Hayes",
+   "pick": 25,
+   "pos": "KPD",
+   "v0_ctf": 513.9249013800281,
+   "v0_now": 519.1021584421048
+  },
+  {
+   "delta": -5.0715022604232445,
+   "key": "reef-mcinnes",
+   "name": "Reef McInnes",
+   "pick": 24,
+   "pos": "KPD",
+   "v0_ctf": 543.299168074292,
+   "v0_now": 548.3706703347152
+  },
+  {
+   "delta": -4.914884074630777,
+   "key": "alix-tauru",
+   "name": "Alix Tauru",
+   "pick": 10,
+   "pos": "KPD",
+   "v0_ctf": 907.0353240129173,
+   "v0_now": 911.950208087548
+  },
+  {
+   "delta": -4.914884074630777,
+   "key": "zach-reid",
+   "name": "Zach Reid",
+   "pick": 10,
+   "pos": "KPD",
+   "v0_ctf": 907.0353240129173,
+   "v0_now": 911.950208087548
+  },
+  {
+   "delta": -4.85931043803464,
+   "key": "reuben-ginbey",
+   "name": "Reuben Ginbey",
+   "pick": 9,
+   "pos": "KPD",
+   "v0_ctf": 922.4713590394331,
+   "v0_now": 927.3306694774677
+  },
+  {
+   "delta": -4.85931043803464,
+   "key": "josh-gibcus",
+   "name": "Josh Gibcus",
+   "pick": 9,
+   "pos": "KPD",
+   "v0_ctf": 922.4713590394331,
+   "v0_now": 927.3306694774677
+  },
+  {
+   "delta": -4.835747532985238,
+   "key": "callum-coleman-jones",
+   "name": "Callum Coleman-Jones",
+   "pick": 20,
+   "pos": "KPF",
+   "v0_ctf": 720.9448638793826,
+   "v0_now": 725.7806114123679
+  },
+  {
+   "delta": -4.763222509301272,
+   "key": "darcy-gardiner",
+   "name": "Darcy Gardiner",
+   "pick": 22,
+   "pos": "KPD",
+   "v0_ctf": 628.9264065949967,
+   "v0_now": 633.689629104298
+  },
+  {
+   "delta": -4.763222509301272,
+   "key": "wil-dawson",
+   "name": "Wil Dawson",
+   "pick": 22,
+   "pos": "KPD",
+   "v0_ctf": 628.9264065949967,
+   "v0_now": 633.689629104298
+  },
+  {
+   "delta": 4.7586314626000785,
+   "key": "elijah-tsatas",
+   "name": "Elijah Tsatas",
+   "pick": 5,
+   "pos": "MID",
+   "v0_ctf": 2066.696527754024,
+   "v0_now": 2061.937896291424
+  },
+  {
+   "delta": 4.7586314626000785,
+   "key": "levi-ashcroft",
+   "name": "Levi Ashcroft",
+   "pick": 5,
+   "pos": "MID",
+   "v0_ctf": 2066.696527754024,
+   "v0_now": 2061.937896291424
+  },
+  {
+   "delta": 4.7586314626000785,
+   "key": "dylan-stephens",
+   "name": "Dylan Stephens",
+   "pick": 5,
+   "pos": "MID",
+   "v0_ctf": 2066.696527754024,
+   "v0_now": 2061.937896291424
+  },
+  {
+   "delta": 4.7586314626000785,
+   "key": "will-setterfield",
+   "name": "Will Setterfield",
+   "pick": 5,
+   "pos": "MID",
+   "v0_ctf": 2066.696527754024,
+   "v0_now": 2061.937896291424
+  },
+  {
+   "delta": 4.7586314626000785,
+   "key": "darcy-parish",
+   "name": "Darcy Parish",
+   "pick": 5,
+   "pos": "MID",
+   "v0_ctf": 2066.696527754024,
+   "v0_now": 2061.937896291424
+  },
+  {
+   "delta": 4.7586314626000785,
+   "key": "adam-cerra",
+   "name": "Adam Cerra",
+   "pick": 5,
+   "pos": "MID",
+   "v0_ctf": 2066.696527754024,
+   "v0_now": 2061.937896291424
+  },
+  {
+   "delta": 4.7586314626000785,
+   "key": "scott-pendlebury",
+   "name": "Scott Pendlebury",
+   "pick": 5,
+   "pos": "MID",
+   "v0_ctf": 2066.696527754024,
+   "v0_now": 2061.937896291424
+  },
+  {
+   "delta": 4.7586314626000785,
+   "key": "connor-rozee",
+   "name": "Connor Rozee",
+   "pick": 5,
+   "pos": "MID",
+   "v0_ctf": 2066.696527754024,
+   "v0_now": 2061.937896291424
+  },
+  {
+   "delta": 4.737704129062081,
+   "key": "edward-allan",
+   "name": "Edward Allan",
+   "pick": 19,
+   "pos": "MID",
+   "v0_ctf": 929.4152951597376,
+   "v0_now": 924.6775910306756
+  },
+  {
+   "delta": 4.737704129062081,
+   "key": "ryan-angwin",
+   "name": "Ryan Angwin",
+   "pick": 19,
+   "pos": "MID",
+   "v0_ctf": 929.4152951597376,
+   "v0_now": 924.6775910306756
+  },
+  {
+   "delta": 4.737704129062081,
+   "key": "blake-acres",
+   "name": "Blake Acres",
+   "pick": 19,
+   "pos": "MID",
+   "v0_ctf": 929.4152951597376,
+   "v0_now": 924.6775910306756
+  },
+  {
+   "delta": -4.728947110564832,
+   "key": "griffin-logue",
+   "name": "Griffin Logue",
+   "pick": 8,
+   "pos": "KPD",
+   "v0_ctf": 958.6808463475719,
+   "v0_now": 963.4097934581367
+  },
+  {
+   "delta": -4.728947110564832,
+   "key": "darcy-moore",
+   "name": "Darcy Moore",
+   "pick": 8,
+   "pos": "KPD",
+   "v0_ctf": 958.6808463475719,
+   "v0_now": 963.4097934581367
+  },
+  {
+   "delta": -4.706081969412253,
+   "key": "phoenix-gothard",
+   "name": "Phoenix Gothard",
+   "pick": 12,
+   "pos": "SF",
+   "v0_ctf": 970.8316649255588,
+   "v0_now": 975.5377468949711
+  },
+  {
+   "delta": -4.706081969412253,
+   "key": "latrelle-pickett",
+   "name": "Latrelle Pickett",
+   "pick": 12,
+   "pos": "SF",
+   "v0_ctf": 970.8316649255588,
+   "v0_now": 975.5377468949711
+  },
+  {
+   "delta": -4.706081969412253,
+   "key": "kysaiah-pickett",
+   "name": "Kysaiah Pickett",
+   "pick": 12,
+   "pos": "SF",
+   "v0_ctf": 970.8316649255588,
+   "v0_now": 975.5377468949711
+  },
+  {
+   "delta": 4.12869150104234,
+   "key": "will-graham",
+   "name": "Will Graham",
+   "pick": 26,
+   "pos": "MID",
+   "v0_ctf": 845.2649958546493,
+   "v0_now": 841.136304353607
+  },
+  {
+   "delta": 4.12869150104234,
+   "key": "zachary-merrett",
+   "name": "Zachary Merrett",
+   "pick": 26,
+   "pos": "MID",
+   "v0_ctf": 845.2649958546493,
+   "v0_now": 841.136304353607
+  },
+  {
+   "delta": 4.12869150104234,
+   "key": "brayden-cook",
+   "name": "Brayden Cook",
+   "pick": 26,
+   "pos": "MID",
+   "v0_ctf": 845.2649958546493,
+   "v0_now": 841.136304353607
+  },
+  {
+   "delta": 4.128669550284258,
+   "key": "koltyn-tholstrup",
+   "name": "Koltyn Tholstrup",
+   "pick": 13,
+   "pos": "SD",
+   "v0_ctf": 1246.7719532949438,
+   "v0_now": 1242.6432837446596
+  },
+  {
+   "delta": 4.128669550284258,
+   "key": "isaac-quaynor",
+   "name": "Isaac Quaynor",
+   "pick": 13,
+   "pos": "SD",
+   "v0_ctf": 1246.7719532949438,
+   "v0_now": 1242.6432837446596
+  },
+  {
+   "delta": -4.025398214882671,
+   "key": "jedd-busslinger",
+   "name": "Jedd Busslinger",
+   "pick": 13,
+   "pos": "KPD",
+   "v0_ctf": 833.8631778705335,
+   "v0_now": 837.8885760854162
+  },
+  {
+   "delta": -4.018603729425422,
+   "key": "nick-watson",
+   "name": "Nick Watson",
+   "pick": 5,
+   "pos": "SF",
+   "v0_ctf": 1578.5831257106654,
+   "v0_now": 1582.6017294400908
+  },
+  {
+   "delta": -3.781525000659144,
+   "key": "nicholas-holman",
+   "name": "Nicholas Holman",
+   "pick": 49,
+   "pos": "SF",
+   "v0_ctf": 274.58761934894187,
+   "v0_now": 278.369144349601
+  },
+  {
+   "delta": -3.781525000659144,
+   "key": "max-king-syd",
+   "name": "Maxwell King",
+   "pick": 49,
+   "pos": "SF",
+   "v0_ctf": 274.58761934894187,
+   "v0_now": 278.369144349601
+  },
+  {
+   "delta": -3.5538643214647436,
+   "key": "josh-dolan",
+   "name": "Josh Dolan",
+   "pick": 31,
+   "pos": "SF",
+   "v0_ctf": 418.21813513291573,
+   "v0_now": 421.7719994543805
+  },
+  {
+   "delta": -3.5538643214647436,
+   "key": "zane-peucker",
+   "name": "Zane Peucker",
+   "pick": 31,
+   "pos": "SF",
+   "v0_ctf": 418.21813513291573,
+   "v0_now": 421.7719994543805
+  },
+  {
+   "delta": -3.5538643214647436,
+   "key": "bayley-fritsch",
+   "name": "Bayley Fritsch",
+   "pick": 31,
+   "pos": "SF",
+   "v0_ctf": 418.21813513291573,
+   "v0_now": 421.7719994543805
+  },
+  {
+   "delta": 3.457402472278318,
+   "key": "bailey-williams-wc",
+   "name": "Bailey J. Williams",
+   "pick": 35,
+   "pos": "RUCK",
+   "v0_ctf": 1060.3219967527925,
+   "v0_now": 1056.8645942805142
+  },
+  {
+   "delta": 3.457402472278318,
+   "key": "toby-nankervis",
+   "name": "Toby Nankervis",
+   "pick": 35,
+   "pos": "RUCK",
+   "v0_ctf": 1060.3219967527925,
+   "v0_now": 1056.8645942805142
+  },
+  {
+   "delta": 3.3970584834708006,
+   "key": "harry-kyle",
+   "name": "Harry Kyle",
+   "pick": 14,
+   "pos": "SD",
+   "v0_ctf": 1043.5609571317375,
+   "v0_now": 1040.1638986482667
+  },
+  {
+   "delta": 3.3970584834708006,
+   "key": "heath-chapman",
+   "name": "Heath Chapman",
+   "pick": 14,
+   "pos": "SD",
+   "v0_ctf": 1043.5609571317375,
+   "v0_now": 1040.1638986482667
+  },
+  {
+   "delta": 3.3970584834708006,
+   "key": "harry-perryman",
+   "name": "Harry Perryman",
+   "pick": 14,
+   "pos": "SD",
+   "v0_ctf": 1043.5609571317375,
+   "v0_now": 1040.1638986482667
+  },
+  {
+   "delta": 3.3970584834708006,
+   "key": "miles-bergman",
+   "name": "Miles Bergman",
+   "pick": 14,
+   "pos": "SD",
+   "v0_ctf": 1043.5609571317375,
+   "v0_now": 1040.1638986482667
+  },
+  {
+   "delta": -3.3938176245293334,
+   "key": "oscar-mcdonald",
+   "name": "Oscar McDonald",
+   "pick": 53,
+   "pos": "KPD",
+   "v0_ctf": 369.6261068952125,
+   "v0_now": 373.01992451974183
+  },
+  {
+   "delta": -3.3938176245293334,
+   "key": "patrick-snell",
+   "name": "Patrick Snell",
+   "pick": 53,
+   "pos": "KPD",
+   "v0_ctf": 369.6261068952125,
+   "v0_now": 373.01992451974183
+  },
+  {
+   "delta": -3.3938176245293334,
+   "key": "jack-silvagni",
+   "name": "Jack Silvagni",
+   "pick": 53,
+   "pos": "KPD",
+   "v0_ctf": 369.6261068952125,
+   "v0_now": 373.01992451974183
+  },
+  {
+   "delta": 3.2595991227772174,
+   "key": "jamarra-ugle-hagan",
+   "name": "Jamarra Ugle-Hagan",
+   "pick": 1,
+   "pos": "KPF",
+   "v0_ctf": 2375.4003991544723,
+   "v0_now": 2372.140800031695
+  },
+  {
+   "delta": 3.2595991227772174,
+   "key": "aaron-cadman",
+   "name": "Aaron Cadman",
+   "pick": 1,
+   "pos": "KPF",
+   "v0_ctf": 2375.4003991544723,
+   "v0_now": 2372.140800031695
+  },
+  {
+   "delta": 3.0994367216302408,
+   "key": "nick-bryan",
+   "name": "Nick Bryan",
+   "pick": 37,
+   "pos": "RUCK",
+   "v0_ctf": 960.894062866628,
+   "v0_now": 957.7946261449978
+  },
+  {
+   "delta": -2.966755886481451,
+   "key": "mac-andrew",
+   "name": "Mac Andrew",
+   "pick": 5,
+   "pos": "KPD",
+   "v0_ctf": 1448.143964552824,
+   "v0_now": 1451.1107204393054
+  },
+  {
+   "delta": 2.904345152482051,
+   "key": "conor-stone",
+   "name": "Conor Stone",
+   "pick": 15,
+   "pos": "SD",
+   "v0_ctf": 906.7057736129909,
+   "v0_now": 903.8014284605089
+  },
+  {
+   "delta": 2.904345152482051,
+   "key": "jordan-clark",
+   "name": "Jordan Clark",
+   "pick": 15,
+   "pos": "SD",
+   "v0_ctf": 906.7057736129909,
+   "v0_now": 903.8014284605089
+  },
+  {
+   "delta": 2.904345152482051,
+   "key": "daniel-rioli",
+   "name": "Daniel Rioli",
+   "pick": 15,
+   "pos": "SD",
+   "v0_ctf": 906.7057736129909,
+   "v0_now": 903.8014284605089
+  },
+  {
+   "delta": 2.904345152482051,
+   "key": "oskar-taylor",
+   "name": "Oskar Taylor",
+   "pick": 15,
+   "pos": "SD",
+   "v0_ctf": 906.7057736129909,
+   "v0_now": 903.8014284605089
+  },
+  {
+   "delta": 2.8881754559678257,
+   "key": "bo-allan",
+   "name": "Bo Allan",
+   "pick": 16,
+   "pos": "SD",
+   "v0_ctf": 902.2145073031438,
+   "v0_now": 899.326331847176
+  },
+  {
+   "delta": 2.8881754559678257,
+   "key": "darcy-wilmot",
+   "name": "Darcy Wilmot",
+   "pick": 16,
+   "pos": "SD",
+   "v0_ctf": 902.2145073031438,
+   "v0_now": 899.326331847176
+  },
+  {
+   "delta": 2.8881754559678257,
+   "key": "lachlan-jones",
+   "name": "Lachlan Jones",
+   "pick": 16,
+   "pos": "SD",
+   "v0_ctf": 902.2145073031438,
+   "v0_now": 899.326331847176
+  },
+  {
+   "delta": 2.8881754559678257,
+   "key": "harrison-himmelberg",
+   "name": "Harrison Himmelberg",
+   "pick": 16,
+   "pos": "SD",
+   "v0_ctf": 902.2145073031438,
+   "v0_now": 899.326331847176
+  },
+  {
+   "delta": 2.8807569458857643,
+   "key": "sean-darcy",
+   "name": "Sean Darcy",
+   "pick": 38,
+   "pos": "RUCK",
+   "v0_ctf": 900.1539550613775,
+   "v0_now": 897.2731981154917
+  },
+  {
+   "delta": 2.8500039512485955,
+   "key": "max-michalanney",
+   "name": "Max Michalanney",
+   "pick": 17,
+   "pos": "SD",
+   "v0_ctf": 891.6120576534419,
+   "v0_now": 888.7620537021933
+  },
+  {
+   "delta": 2.8500039512485955,
+   "key": "james-leake",
+   "name": "James Leake",
+   "pick": 17,
+   "pos": "SD",
+   "v0_ctf": 891.6120576534419,
+   "v0_now": 888.7620537021933
+  },
+  {
+   "delta": 2.8500039512485955,
+   "key": "tom-brown",
+   "name": "Tom Brown",
+   "pick": 17,
+   "pos": "SD",
+   "v0_ctf": 891.6120576534419,
+   "v0_now": 888.7620537021933
+  },
+  {
+   "delta": 2.8500039512485955,
+   "key": "tom-doedee",
+   "name": "Tom Doedee",
+   "pick": 17,
+   "pos": "SD",
+   "v0_ctf": 891.6120576534419,
+   "v0_now": 888.7620537021933
+  },
+  {
+   "delta": 2.842384668907215,
+   "key": "jackson-archer",
+   "name": "Jackson Archer",
+   "pick": 59,
+   "pos": "SD",
+   "v0_ctf": 166.11801716590958,
+   "v0_now": 163.27563249700236
+  },
+  {
+   "delta": 2.842384668907215,
+   "key": "karl-amon",
+   "name": "Karl Amon",
+   "pick": 59,
+   "pos": "SD",
+   "v0_ctf": 166.11801716590958,
+   "v0_now": 163.27563249700236
+  },
+  {
+   "delta": 2.752610470459217,
+   "key": "joshua-weddle",
+   "name": "Joshua Weddle",
+   "pick": 18,
+   "pos": "SD",
+   "v0_ctf": 864.5602166565461,
+   "v0_now": 861.8076061860869
+  },
+  {
+   "delta": 2.752610470459217,
+   "key": "brandon-starcevich",
+   "name": "Brandon Starcevich",
+   "pick": 18,
+   "pos": "SD",
+   "v0_ctf": 864.5602166565461,
+   "v0_now": 861.8076061860869
+  },
+  {
+   "delta": -2.601004170027636,
+   "key": "ben-ainsworth",
+   "name": "Ben Ainsworth",
+   "pick": 4,
+   "pos": "SF",
+   "v0_ctf": 1972.3330724964424,
+   "v0_now": 1974.93407666647
+  },
+  {
+   "delta": -2.601004170027636,
+   "key": "zane-duursma",
+   "name": "Zane Duursma",
+   "pick": 4,
+   "pos": "SF",
+   "v0_ctf": 1972.3330724964424,
+   "v0_now": 1974.93407666647
+  },
+  {
+   "delta": 2.5768713525062594,
+   "key": "josh-lindsay",
+   "name": "Josh Lindsay",
+   "pick": 19,
+   "pos": "SD",
+   "v0_ctf": 815.7472300247197,
+   "v0_now": 813.1703586722134
+  },
+  {
+   "delta": 2.5768713525062594,
+   "key": "wil-powell",
+   "name": "Wil Powell",
+   "pick": 19,
+   "pos": "SD",
+   "v0_ctf": 815.7472300247197,
+   "v0_now": 813.1703586722134
+  },
+  {
+   "delta": 2.5768713525062594,
+   "key": "harrison-oliver",
+   "name": "Harrison Oliver",
+   "pick": 19,
+   "pos": "SD",
+   "v0_ctf": 815.7472300247197,
+   "v0_now": 813.1703586722134
+  },
+  {
+   "delta": 2.5768713525062594,
+   "key": "liam-stocker",
+   "name": "Liam Stocker",
+   "pick": 19,
+   "pos": "SD",
+   "v0_ctf": 815.7472300247197,
+   "v0_now": 813.1703586722134
+  },
+  {
+   "delta": 2.5654855892476007,
+   "key": "sam-darcy",
+   "name": "Sam Darcy",
+   "pick": 2,
+   "pos": "KPF",
+   "v0_ctf": 2182.6046515270045,
+   "v0_now": 2180.039165937757
+  },
+  {
+   "delta": 2.5654855892476007,
+   "key": "riley-thilthorpe",
+   "name": "Riley Thilthorpe",
+   "pick": 2,
+   "pos": "KPF",
+   "v0_ctf": 2182.6046515270045,
+   "v0_now": 2180.039165937757
+  },
+  {
+   "delta": 2.5286628848209602,
+   "key": "dyson-sharp",
+   "name": "Dyson Sharp",
+   "pick": 13,
+   "pos": "MID",
+   "v0_ctf": 1447.304398986893,
+   "v0_now": 1444.775736102072
+  },
+  {
+   "delta": 2.5286628848209602,
+   "key": "will-day",
+   "name": "Will Day",
+   "pick": 13,
+   "pos": "MID",
+   "v0_ctf": 1447.304398986893,
+   "v0_now": 1444.775736102072
+  },
+  {
+   "delta": 2.5286628848209602,
+   "key": "tom-powell",
+   "name": "Tom Powell",
+   "pick": 13,
+   "pos": "MID",
+   "v0_ctf": 1447.304398986893,
+   "v0_now": 1444.775736102072
+  },
+  {
+   "delta": 2.5286628848209602,
+   "key": "matthew-kennedy-1",
+   "name": "Matthew Kennedy",
+   "pick": 13,
+   "pos": "MID",
+   "v0_ctf": 1447.304398986893,
+   "v0_now": 1444.775736102072
+  },
+  {
+   "delta": 2.5286628848209602,
+   "key": "jack-viney",
+   "name": "Jack Viney",
+   "pick": 13,
+   "pos": "MID",
+   "v0_ctf": 1447.304398986893,
+   "v0_now": 1444.775736102072
+  },
+  {
+   "delta": 2.5286628848209602,
+   "key": "patrick-cripps",
+   "name": "Patrick Cripps",
+   "pick": 13,
+   "pos": "MID",
+   "v0_ctf": 1447.304398986893,
+   "v0_now": 1444.775736102072
+  },
+  {
+   "delta": 2.4705875008372686,
+   "key": "isaac-cumming",
+   "name": "Isaac Cumming",
+   "pick": 20,
+   "pos": "SD",
+   "v0_ctf": 786.2260153337068,
+   "v0_now": 783.7554278328695
+  },
+  {
+   "delta": 2.4376018456603106,
+   "key": "jarman-impey",
+   "name": "Jarman Impey",
+   "pick": 21,
+   "pos": "SD",
+   "v0_ctf": 777.0639780824155,
+   "v0_now": 774.6263762367552
+  },
+  {
+   "delta": 2.4376018456603106,
+   "key": "lachlan-carmichael",
+   "name": "Lachlan Carmichael",
+   "pick": 21,
+   "pos": "SD",
+   "v0_ctf": 777.0639780824155,
+   "v0_now": 774.6263762367552
+  },
+  {
+   "delta": 2.3210991202630566,
+   "key": "jake-bowey",
+   "name": "Jake Bowey",
+   "pick": 22,
+   "pos": "SD",
+   "v0_ctf": 744.704387095358,
+   "v0_now": 742.383287975095
+  },
+  {
+   "delta": 2.3210991202630566,
+   "key": "josh-goater",
+   "name": "Josh Goater",
+   "pick": 22,
+   "pos": "SD",
+   "v0_ctf": 744.704387095358,
+   "v0_now": 742.383287975095
+  },
+  {
+   "delta": 2.3210991202630566,
+   "key": "jordan-ridley",
+   "name": "Jordan Ridley",
+   "pick": 22,
+   "pos": "SD",
+   "v0_ctf": 744.704387095358,
+   "v0_now": 742.383287975095
+  },
+  {
+   "delta": 2.2326676625776827,
+   "key": "toby-mcmullin",
+   "name": "Toby McMullin",
+   "pick": 34,
+   "pos": "SF",
+   "v0_ctf": 421.01638191069014,
+   "v0_now": 418.78371424811246
+  },
+  {
+   "delta": 2.2326676625776827,
+   "key": "jack-dalton",
+   "name": "Jack Dalton",
+   "pick": 34,
+   "pos": "SF",
+   "v0_ctf": 421.01638191069014,
+   "v0_now": 418.78371424811246
+  },
+  {
+   "delta": 2.1552043914016394,
+   "key": "matthew-flynn",
+   "name": "Matthew Flynn",
+   "pick": 41,
+   "pos": "RUCK",
+   "v0_ctf": 698.625760569136,
+   "v0_now": 696.4705561777344
+  },
+  {
+   "delta": 2.086084727394791,
+   "key": "riley-hardeman",
+   "name": "Riley Hardeman",
+   "pick": 23,
+   "pos": "SD",
+   "v0_ctf": 679.4272049233288,
+   "v0_now": 677.341120195934
+  },
+  {
+   "delta": 2.0427363401179264,
+   "key": "jed-walter",
+   "name": "Jed Walter",
+   "pick": 3,
+   "pos": "KPF",
+   "v0_ctf": 2037.4067444998443,
+   "v0_now": 2035.3640081597264
+  },
+  {
+   "delta": -1.9529104280351248,
+   "key": "cody-angove",
+   "name": "Cody Angove",
+   "pick": 24,
+   "pos": "MID",
+   "v0_ctf": 841.1755840630839,
+   "v0_now": 843.128494491119
+  },
+  {
+   "delta": -1.9529104280351248,
+   "key": "harry-schoenberg",
+   "name": "Harry Schoenberg",
+   "pick": 24,
+   "pos": "MID",
+   "v0_ctf": 841.1755840630839,
+   "v0_now": 843.128494491119
+  },
+  {
+   "delta": -1.9529104280351248,
+   "key": "harley-barker",
+   "name": "Harley Barker",
+   "pick": 24,
+   "pos": "MID",
+   "v0_ctf": 841.1755840630839,
+   "v0_now": 843.128494491119
+  },
+  {
+   "delta": -1.9529104280351248,
+   "key": "thomas-liberatore",
+   "name": "Thomas Liberatore",
+   "pick": 24,
+   "pos": "MID",
+   "v0_ctf": 841.1755840630839,
+   "v0_now": 843.128494491119
+  },
+  {
+   "delta": -1.9529104280351248,
+   "key": "tim-kelly",
+   "name": "Tim Kelly",
+   "pick": 24,
+   "pos": "MID",
+   "v0_ctf": 841.1755840630839,
+   "v0_now": 843.128494491119
+  },
+  {
+   "delta": 1.9387815824482004,
+   "key": "max-knobel",
+   "name": "Max Knobel",
+   "pick": 42,
+   "pos": "RUCK",
+   "v0_ctf": 638.512543868569,
+   "v0_now": 636.5737622861208
+  },
+  {
+   "delta": 1.9387815824482004,
+   "key": "samson-ryan",
+   "name": "Samson Ryan",
+   "pick": 42,
+   "pos": "RUCK",
+   "v0_ctf": 638.512543868569,
+   "v0_now": 636.5737622861208
+  },
+  {
+   "delta": 1.9050943827953688,
+   "key": "kane-mcauliffe",
+   "name": "Kane McAuliffe",
+   "pick": 40,
+   "pos": "MID",
+   "v0_ctf": 629.1556468642608,
+   "v0_now": 627.2505524814654
+  },
+  {
+   "delta": 1.8747466990799921,
+   "key": "james-tunstill",
+   "name": "James Tunstill",
+   "pick": 41,
+   "pos": "MID",
+   "v0_ctf": 620.7263279012349,
+   "v0_now": 618.8515812021549
+  },
+  {
+   "delta": 1.8747466990799921,
+   "key": "charlie-banfield",
+   "name": "Charlie Banfield",
+   "pick": 41,
+   "pos": "MID",
+   "v0_ctf": 620.7263279012349,
+   "v0_now": 618.8515812021549
+  },
+  {
+   "delta": 1.8067671619025987,
+   "key": "billy-cootee",
+   "name": "Billy Cootee",
+   "pick": 42,
+   "pos": "MID",
+   "v0_ctf": 601.8444518673991,
+   "v0_now": 600.0376847054965
+  },
+  {
+   "delta": 1.7131732663275443,
+   "key": "jack-ross",
+   "name": "Jack Ross",
+   "pick": 43,
+   "pos": "MID",
+   "v0_ctf": 575.8479769406141,
+   "v0_now": 574.1348036742866
+  },
+  {
+   "delta": 1.7131732663275443,
+   "key": "ben-camporeale",
+   "name": "Ben Camporeale",
+   "pick": 43,
+   "pos": "MID",
+   "v0_ctf": 575.8479769406141,
+   "v0_now": 574.1348036742866
+  },
+  {
+   "delta": 1.643249736470807,
+   "key": "jacob-weitering",
+   "name": "Jacob Weitering",
+   "pick": 1,
+   "pos": "KPD",
+   "v0_ctf": 2728.6109742143835,
+   "v0_now": 2726.9677244779127
+  },
+  {
+   "delta": -1.6142935857706675,
+   "key": "talor-byrne",
+   "name": "Talor Byrne",
+   "pick": 45,
+   "pos": "SF",
+   "v0_ctf": 280.73923103885437,
+   "v0_now": 282.35352462462504
+  },
+  {
+   "delta": -1.6142935857706675,
+   "key": "harry-sharp",
+   "name": "Harry Sharp",
+   "pick": 45,
+   "pos": "SF",
+   "v0_ctf": 280.73923103885437,
+   "v0_now": 282.35352462462504
+  },
+  {
+   "delta": 1.5890682890191101,
+   "key": "justin-mcinerney",
+   "name": "Justin McInerney",
+   "pick": 44,
+   "pos": "MID",
+   "v0_ctf": 541.3767979062651,
+   "v0_now": 539.787729617246
+  },
+  {
+   "delta": -1.5595584049382296,
+   "key": "jay-polkinghorne",
+   "name": "Jay Polkinghorne",
+   "pick": 44,
+   "pos": "SF",
+   "v0_ctf": 295.9423780751458,
+   "v0_now": 297.50193648008405
+  },
+  {
+   "delta": -1.5595584049382296,
+   "key": "zac-taylor",
+   "name": "Zac Taylor",
+   "pick": 44,
+   "pos": "SF",
+   "v0_ctf": 295.9423780751458,
+   "v0_now": 297.50193648008405
+  },
+  {
+   "delta": -1.5595584049382296,
+   "key": "tai-hayes",
+   "name": "Tai Hayes",
+   "pick": 44,
+   "pos": "SF",
+   "v0_ctf": 295.9423780751458,
+   "v0_now": 297.50193648008405
+  },
+  {
+   "delta": -1.5595584049382296,
+   "key": "mason-wood",
+   "name": "Mason Wood",
+   "pick": 44,
+   "pos": "SF",
+   "v0_ctf": 295.9423780751458,
+   "v0_now": 297.50193648008405
+  },
+  {
+   "delta": 1.549950123750932,
+   "key": "elijah-hewett",
+   "name": "Elijah Hewett",
+   "pick": 14,
+   "pos": "MID",
+   "v0_ctf": 1175.4588731928613,
+   "v0_now": 1173.9089230691104
+  },
+  {
+   "delta": 1.549950123750932,
+   "key": "campbell-chesser",
+   "name": "Campbell Chesser",
+   "pick": 14,
+   "pos": "MID",
+   "v0_ctf": 1175.4588731928613,
+   "v0_now": 1173.9089230691104
+  },
+  {
+   "delta": 1.549950123750932,
+   "key": "lachlan-weller",
+   "name": "Lachlan Weller",
+   "pick": 14,
+   "pos": "MID",
+   "v0_ctf": 1175.4588731928613,
+   "v0_now": 1173.9089230691104
+  },
+  {
+   "delta": -1.4890165604082881,
+   "key": "billy-dowling",
+   "name": "Billy Dowling",
+   "pick": 43,
+   "pos": "SF",
+   "v0_ctf": 315.53595606808074,
+   "v0_now": 317.024972628489
+  },
+  {
+   "delta": -1.4890165604082881,
+   "key": "arthur-jones",
+   "name": "Arthur Jones",
+   "pick": 43,
+   "pos": "SF",
+   "v0_ctf": 315.53595606808074,
+   "v0_now": 317.024972628489
+  },
+  {
+   "delta": 1.444397890076516,
+   "key": "joel-freijah",
+   "name": "Joel Freijah",
+   "pick": 45,
+   "pos": "MID",
+   "v0_ctf": 501.1934037259311,
+   "v0_now": 499.7490058358546
+  },
+  {
+   "delta": 1.444397890076516,
+   "key": "hugh-boxshall",
+   "name": "Hugh Boxshall",
+   "pick": 45,
+   "pos": "MID",
+   "v0_ctf": 501.1934037259311,
+   "v0_now": 499.7490058358546
+  },
+  {
+   "delta": 1.444397890076516,
+   "key": "hugo-ralphsmith",
+   "name": "Hugo Ralphsmith",
+   "pick": 45,
+   "pos": "MID",
+   "v0_ctf": 501.1934037259311,
+   "v0_now": 499.7490058358546
+  },
+  {
+   "delta": 1.444397890076516,
+   "key": "james-worpel",
+   "name": "James Worpel",
+   "pick": 45,
+   "pos": "MID",
+   "v0_ctf": 501.1934037259311,
+   "v0_now": 499.7490058358546
+  },
+  {
+   "delta": 1.4247181232431103,
+   "key": "oscar-ryan",
+   "name": "Oscar Ryan",
+   "pick": 27,
+   "pos": "SD",
+   "v0_ctf": 495.7271864912821,
+   "v0_now": 494.302468368039
+  },
+  {
+   "delta": -1.4067108864489342,
+   "key": "bradley-hill",
+   "name": "Bradley Hill",
+   "pick": 42,
+   "pos": "SF",
+   "v0_ctf": 338.39703452061997,
+   "v0_now": 339.8037454070689
+  },
+  {
+   "delta": 1.362164891506609,
+   "key": "jeremy-sharp",
+   "name": "Jeremy Sharp",
+   "pick": 27,
+   "pos": "MID",
+   "v0_ctf": 841.5023741763575,
+   "v0_now": 840.1402092848509
+  },
+  {
+   "delta": 1.362164891506609,
+   "key": "tom-sparrow",
+   "name": "Tom Sparrow",
+   "pick": 27,
+   "pos": "MID",
+   "v0_ctf": 841.5023741763575,
+   "v0_now": 840.1402092848509
+  },
+  {
+   "delta": 1.3162088126687195,
+   "key": "josh-worrell",
+   "name": "Josh Worrell",
+   "pick": 28,
+   "pos": "SD",
+   "v0_ctf": 465.5878322701249,
+   "v0_now": 464.2716234574562
+  },
+  {
+   "delta": 1.3162088126687195,
+   "key": "avery-thomas",
+   "name": "Avery Thomas",
+   "pick": 28,
+   "pos": "SD",
+   "v0_ctf": 465.5878322701249,
+   "v0_now": 464.2716234574562
+  },
+  {
+   "delta": 1.3162088126687195,
+   "key": "jakob-ryan",
+   "name": "Jakob Ryan",
+   "pick": 28,
+   "pos": "SD",
+   "v0_ctf": 465.5878322701249,
+   "v0_now": 464.2716234574562
+  },
+  {
+   "delta": -1.3132665576445106,
+   "key": "izak-rankine",
+   "name": "Izak Rankine",
+   "pick": 3,
+   "pos": "SF",
+   "v0_ctf": 2330.012794522566,
+   "v0_now": 2331.3260610802104
+  },
+  {
+   "delta": -1.3132665576445106,
+   "key": "jack-martin",
+   "name": "Jack Martin",
+   "pick": 3,
+   "pos": "SF",
+   "v0_ctf": 2330.012794522566,
+   "v0_now": 2331.3260610802104
+  },
+  {
+   "delta": 1.304992740682792,
+   "key": "tom-gross",
+   "name": "Tom Gross",
+   "pick": 46,
+   "pos": "MID",
+   "v0_ctf": 462.4724759494232,
+   "v0_now": 461.1674832087404
+  },
+  {
+   "delta": 1.304992740682792,
+   "key": "koby-coulson",
+   "name": "Koby Coulson",
+   "pick": 46,
+   "pos": "MID",
+   "v0_ctf": 462.4724759494232,
+   "v0_now": 461.1674832087404
+  },
+  {
+   "delta": 1.3035530056529296,
+   "key": "tyler-sonsie",
+   "name": "Tyler Sonsie",
+   "pick": 28,
+   "pos": "MID",
+   "v0_ctf": 825.2224404087996,
+   "v0_now": 823.9188874031466
+  },
+  {
+   "delta": 1.3035530056529296,
+   "key": "nathan-o-driscoll",
+   "name": "Nathan O'Driscoll",
+   "pick": 28,
+   "pos": "MID",
+   "v0_ctf": 825.2224404087996,
+   "v0_now": 823.9188874031466
+  },
+  {
+   "delta": -1.2928848117846883,
+   "key": "ethan-read",
+   "name": "Ethan Read",
+   "pick": 9,
+   "pos": "KPF",
+   "v0_ctf": 1110.9105119408991,
+   "v0_now": 1112.2033967526838
+  },
+  {
+   "delta": -1.2928848117846883,
+   "key": "aaron-naughton",
+   "name": "Aaron Naughton",
+   "pick": 9,
+   "pos": "KPF",
+   "v0_ctf": 1110.9105119408991,
+   "v0_now": 1112.2033967526838
+  },
+  {
+   "delta": -1.2778630142515794,
+   "key": "tom-lynch-1",
+   "name": "Tom Lynch",
+   "pick": 11,
+   "pos": "KPF",
+   "v0_ctf": 1108.9333436009201,
+   "v0_now": 1110.2112066151717
+  },
+  {
+   "delta": -1.2442133987929083,
+   "key": "nikolas-cox",
+   "name": "Nikolas Cox",
+   "pick": 8,
+   "pos": "KPF",
+   "v0_ctf": 1124.429397544625,
+   "v0_now": 1125.673610943418
+  },
+  {
+   "delta": -1.2442133987929083,
+   "key": "jye-amiss",
+   "name": "Jye Amiss",
+   "pick": 8,
+   "pos": "KPF",
+   "v0_ctf": 1124.429397544625,
+   "v0_now": 1125.673610943418
+  },
+  {
+   "delta": -1.224050494143512,
+   "key": "corey-warner",
+   "name": "Corey Warner",
+   "pick": 40,
+   "pos": "SF",
+   "v0_ctf": 389.132462077259,
+   "v0_now": 390.3565125714025
+  },
+  {
+   "delta": -1.224050494143512,
+   "key": "tobyn-murray",
+   "name": "Tobyn Murray",
+   "pick": 40,
+   "pos": "SF",
+   "v0_ctf": 389.132462077259,
+   "v0_now": 390.3565125714025
+  },
+  {
+   "delta": -1.224050494143512,
+   "key": "francis-evans",
+   "name": "Francis Evans",
+   "pick": 40,
+   "pos": "SF",
+   "v0_ctf": 389.132462077259,
+   "v0_now": 390.3565125714025
+  },
+  {
+   "delta": -1.224050494143512,
+   "key": "alex-neal-bullen",
+   "name": "Alex Neal-Bullen",
+   "pick": 40,
+   "pos": "SF",
+   "v0_ctf": 389.132462077259,
+   "v0_now": 390.3565125714025
+  },
+  {
+   "delta": 1.2216265194379048,
+   "key": "lachie-jaques",
+   "name": "Lachie Jaques",
+   "pick": 29,
+   "pos": "SD",
+   "v0_ctf": 439.3168217582893,
+   "v0_now": 438.0951952388514
+  },
+  {
+   "delta": 1.2216265194379048,
+   "key": "sam-banks",
+   "name": "Sam Banks",
+   "pick": 29,
+   "pos": "SD",
+   "v0_ctf": 439.3168217582893,
+   "v0_now": 438.0951952388514
+  },
+  {
+   "delta": 1.1875542818889926,
+   "key": "sam-berry",
+   "name": "Sam Berry",
+   "pick": 29,
+   "pos": "MID",
+   "v0_ctf": 793.0028400241424,
+   "v0_now": 791.8152857422534
+  },
+  {
+   "delta": 1.1875542818889926,
+   "key": "sam-allen",
+   "name": "Sam Allen",
+   "pick": 29,
+   "pos": "MID",
+   "v0_ctf": 793.0028400241424,
+   "v0_now": 791.8152857422534
+  },
+  {
+   "delta": 1.1735810160282085,
+   "key": "marcus-windhager",
+   "name": "Marcus Windhager",
+   "pick": 47,
+   "pos": "MID",
+   "v0_ctf": 425.97178769317316,
+   "v0_now": 424.79820667714495
+  },
+  {
+   "delta": -1.159057997951777,
+   "key": "ben-king",
+   "name": "Ben King",
+   "pick": 6,
+   "pos": "KPF",
+   "v0_ctf": 1148.082011096472,
+   "v0_now": 1149.2410690944237
+  },
+  {
+   "delta": -1.1389635171855161,
+   "key": "tylah-williams",
+   "name": "Tylah Williams",
+   "pick": 39,
+   "pos": "SF",
+   "v0_ctf": 412.7660703323297,
+   "v0_now": 413.90503384951523
+  },
+  {
+   "delta": -1.1389635171855161,
+   "key": "corey-durdin",
+   "name": "Corey Durdin",
+   "pick": 39,
+   "pos": "SF",
+   "v0_ctf": 412.7660703323297,
+   "v0_now": 413.90503384951523
+  },
+  {
+   "delta": -1.1389635171855161,
+   "key": "jamie-elliott",
+   "name": "Jamie Elliott",
+   "pick": 39,
+   "pos": "SF",
+   "v0_ctf": 412.7660703323297,
+   "v0_now": 413.90503384951523
+  },
+  {
+   "delta": -1.1357321765374309,
+   "key": "koby-evans",
+   "name": "Koby Evans",
+   "pick": 38,
+   "pos": "SF",
+   "v0_ctf": 413.66360179655095,
+   "v0_now": 414.7993339730884
+  },
+  {
+   "delta": 1.124785479177092,
+   "key": "joel-jeffrey",
+   "name": "Joel Jeffrey",
+   "pick": 30,
+   "pos": "SD",
+   "v0_ctf": 412.4184256656822,
+   "v0_now": 411.2936401865051
+  },
+  {
+   "delta": 1.124785479177092,
+   "key": "lachlan-cowan",
+   "name": "Lachlan Cowan",
+   "pick": 30,
+   "pos": "SD",
+   "v0_ctf": 412.4184256656822,
+   "v0_now": 411.2936401865051
+  },
+  {
+   "delta": 1.124785479177092,
+   "key": "brayden-maynard",
+   "name": "Brayden Maynard",
+   "pick": 30,
+   "pos": "SD",
+   "v0_ctf": 412.4184256656822,
+   "v0_now": 411.2936401865051
+  },
+  {
+   "delta": 1.124785479177092,
+   "key": "mason-redman",
+   "name": "Mason Redman",
+   "pick": 30,
+   "pos": "SD",
+   "v0_ctf": 412.4184256656822,
+   "v0_now": 411.2936401865051
+  },
+  {
+   "delta": 1.124785479177092,
+   "key": "ryan-lester",
+   "name": "Ryan Lester",
+   "pick": 30,
+   "pos": "SD",
+   "v0_ctf": 412.4184256656822,
+   "v0_now": 411.2936401865051
+  },
+  {
+   "delta": 1.1043636640046088,
+   "key": "paul-curtis",
+   "name": "Paul Curtis",
+   "pick": 35,
+   "pos": "SF",
+   "v0_ctf": 418.891982843361,
+   "v0_now": 417.7876191793564
+  },
+  {
+   "delta": 1.1043636640046088,
+   "key": "jevan-phillipou",
+   "name": "Jevan Phillipou",
+   "pick": 35,
+   "pos": "SF",
+   "v0_ctf": 418.891982843361,
+   "v0_now": 417.7876191793564
+  },
+  {
+   "delta": 1.0660382130106427,
+   "key": "cooper-duff-tytler",
+   "name": "Cooper Duff-Tytler",
+   "pick": 4,
+   "pos": "KPF",
+   "v0_ctf": 1766.1207998726009,
+   "v0_now": 1765.0547616595902
+  },
+  {
+   "delta": 1.0660382130106427,
+   "key": "max-king-stk",
+   "name": "Max King",
+   "pick": 4,
+   "pos": "KPF",
+   "v0_ctf": 1766.1207998726009,
+   "v0_now": 1765.0547616595902
+  },
+  {
+   "delta": 1.0660382130106427,
+   "key": "logan-mcdonald",
+   "name": "Logan McDonald",
+   "pick": 4,
+   "pos": "KPF",
+   "v0_ctf": 1766.1207998726009,
+   "v0_now": 1765.0547616595902
+  },
+  {
+   "delta": 1.0616203550174532,
+   "key": "lachlan-smith",
+   "name": "Lachlan Smith",
+   "pick": 47,
+   "pos": "RUCK",
+   "v0_ctf": 394.87379247807144,
+   "v0_now": 393.812172123054
+  },
+  {
+   "delta": 1.0616203550174532,
+   "key": "rhys-stanley",
+   "name": "Rhys Stanley",
+   "pick": 47,
+   "pos": "RUCK",
+   "v0_ctf": 394.87379247807144,
+   "v0_now": 393.812172123054
+  },
+  {
+   "delta": 1.0565156619613276,
+   "key": "brady-hough",
+   "name": "Brady Hough",
+   "pick": 31,
+   "pos": "SD",
+   "v0_ctf": 393.4559219617457,
+   "v0_now": 392.39940629978435
+  },
+  {
+   "delta": 1.0031205839849804,
+   "key": "trent-rivers",
+   "name": "Trent Rivers",
+   "pick": 32,
+   "pos": "SD",
+   "v0_ctf": 378.6249995249932,
+   "v0_now": 377.6218789410082
+  },
+  {
+   "delta": -0.9906004448521344,
+   "key": "jack-lukosius",
+   "name": "Jack Lukosius",
+   "pick": 2,
+   "pos": "SF",
+   "v0_ctf": 2419.6359634206733,
+   "v0_now": 2420.6265638655254
+  },
+  {
+   "delta": 0.9755142393754568,
+   "key": "mitch-georgiades",
+   "name": "Mitch Georgiades",
+   "pick": 18,
+   "pos": "KPF",
+   "v0_ctf": 757.4500351605086,
+   "v0_now": 756.4745209211331
+  },
+  {
+   "delta": 0.9755142393754568,
+   "key": "kyle-langford",
+   "name": "Kyle Langford",
+   "pick": 18,
+   "pos": "KPF",
+   "v0_ctf": 757.4500351605086,
+   "v0_now": 756.4745209211331
+  },
+  {
+   "delta": 0.9653390086458558,
+   "key": "angus-hastie",
+   "name": "Angus Hastie",
+   "pick": 33,
+   "pos": "SD",
+   "v0_ctf": 368.1308559703849,
+   "v0_now": 367.16551696173906
+  },
+  {
+   "delta": 0.9520528742872898,
+   "key": "bailey-scott",
+   "name": "Bailey Scott",
+   "pick": 49,
+   "pos": "MID",
+   "v0_ctf": 364.440522785683,
+   "v0_now": 363.4884699113957
+  },
+  {
+   "delta": 0.9330590984911851,
+   "key": "darcy-cameron",
+   "name": "Darcy Cameron",
+   "pick": 48,
+   "pos": "RUCK",
+   "v0_ctf": 359.1648452084751,
+   "v0_now": 358.23178610998394
+  },
+  {
+   "delta": 0.9321774348466079,
+   "key": "billy-wilson",
+   "name": "Billy Wilson",
+   "pick": 34,
+   "pos": "SD",
+   "v0_ctf": 358.9199558736491,
+   "v0_now": 357.9877784388025
+  },
+  {
+   "delta": 0.9321774348466079,
+   "key": "matthew-roberts",
+   "name": "Matthew Roberts",
+   "pick": 34,
+   "pos": "SD",
+   "v0_ctf": 358.9199558736491,
+   "v0_now": 357.9877784388025
+  },
+  {
+   "delta": -0.9290428131277224,
+   "key": "ollie-lord",
+   "name": "Ollie Lord",
+   "pick": 51,
+   "pos": "KPF",
+   "v0_ctf": 228.4436362080234,
+   "v0_now": 229.37267902115113
+  },
+  {
+   "delta": -0.9290428131277224,
+   "key": "elliot-himmelberg",
+   "name": "Elliott Himmelberg",
+   "pick": 51,
+   "pos": "KPF",
+   "v0_ctf": 228.4436362080234,
+   "v0_now": 229.37267902115113
+  },
+  {
+   "delta": -0.8985507001762869,
+   "key": "charlie-west",
+   "name": "Charlie West",
+   "pick": 50,
+   "pos": "KPF",
+   "v0_ctf": 236.91307158024725,
+   "v0_now": 237.81162228042353
+  },
+  {
+   "delta": -0.8985507001762869,
+   "key": "archie-ludowyke",
+   "name": "Archie Ludowyke",
+   "pick": 50,
+   "pos": "KPF",
+   "v0_ctf": 236.91307158024725,
+   "v0_now": 237.81162228042353
+  },
+  {
+   "delta": -0.8985507001762869,
+   "key": "henry-smith",
+   "name": "Henry Smith",
+   "pick": 50,
+   "pos": "KPF",
+   "v0_ctf": 236.91307158024725,
+   "v0_now": 237.81162228042353
+  },
+  {
+   "delta": -0.8985507001762869,
+   "key": "jake-riccardi",
+   "name": "Jake Riccardi",
+   "pick": 50,
+   "pos": "KPF",
+   "v0_ctf": 236.91307158024725,
+   "v0_now": 237.81162228042353
+  },
+  {
+   "delta": 0.897428771902355,
+   "key": "cooper-simpson",
+   "name": "Cooper Simpson",
+   "pick": 35,
+   "pos": "SD",
+   "v0_ctf": 349.26822870254864,
+   "v0_now": 348.3707999306463
+  },
+  {
+   "delta": 0.897428771902355,
+   "key": "jeremy-howe",
+   "name": "Jeremy Howe",
+   "pick": 35,
+   "pos": "SD",
+   "v0_ctf": 349.26822870254864,
+   "v0_now": 348.3707999306463
+  },
+  {
+   "delta": 0.8888775867112599,
+   "key": "max-kondogiannis",
+   "name": "Max Kondogiannis",
+   "pick": 36,
+   "pos": "SD",
+   "v0_ctf": 346.8930666254827,
+   "v0_now": 346.0041890387714
+  },
+  {
+   "delta": 0.8888775867112599,
+   "key": "keidean-coleman",
+   "name": "Keidean Coleman",
+   "pick": 36,
+   "pos": "SD",
+   "v0_ctf": 346.8930666254827,
+   "v0_now": 346.0041890387714
+  },
+  {
+   "delta": 0.8888775867112599,
+   "key": "tom-cole",
+   "name": "Tom Cole",
+   "pick": 36,
+   "pos": "SD",
+   "v0_ctf": 346.8930666254827,
+   "v0_now": 346.0041890387714
+  },
+  {
+   "delta": 0.8787941768677001,
+   "key": "william-mccabe",
+   "name": "William McCabe",
+   "pick": 19,
+   "pos": "KPF",
+   "v0_ctf": 730.5852416346861,
+   "v0_now": 729.7064474578184
+  },
+  {
+   "delta": 0.8787941768677001,
+   "key": "jacob-van-rooyen",
+   "name": "Jacob Van Rooyen",
+   "pick": 19,
+   "pos": "KPF",
+   "v0_ctf": 730.5852416346861,
+   "v0_now": 729.7064474578184
+  },
+  {
+   "delta": -0.8655633337698987,
+   "key": "tim-membrey",
+   "name": "Tim Membrey",
+   "pick": 49,
+   "pos": "KPF",
+   "v0_ctf": 246.07558413960425,
+   "v0_now": 246.94114747337414
+  },
+  {
+   "delta": 0.8626853309501712,
+   "key": "hugo-garcia",
+   "name": "Hugo Garcia",
+   "pick": 50,
+   "pos": "MID",
+   "v0_ctf": 339.6179519827389,
+   "v0_now": 338.7552666517887
+  },
+  {
+   "delta": 0.8571772419633135,
+   "key": "tew-jiath",
+   "name": "Tew Jiath",
+   "pick": 37,
+   "pos": "SD",
+   "v0_ctf": 338.08803492604943,
+   "v0_now": 337.2308576840861
+  },
+  {
+   "delta": 0.8495675631365884,
+   "key": "max-gruzewski",
+   "name": "Max Gruzewski",
+   "pick": 22,
+   "pos": "KPF",
+   "v0_ctf": 722.4673090880497,
+   "v0_now": 721.6177415249131
+  },
+  {
+   "delta": 0.8495675631365884,
+   "key": "mitchell-marsh",
+   "name": "Mitchell Marsh",
+   "pick": 22,
+   "pos": "KPF",
+   "v0_ctf": 722.4673090880497,
+   "v0_now": 721.6177415249131
+  },
+  {
+   "delta": -0.8369097846524483,
+   "key": "oscar-adams",
+   "name": "Oscar Adams",
+   "pick": 51,
+   "pos": "KPD",
+   "v0_ctf": 374.1752048726014,
+   "v0_now": 375.01211465725385
+  },
+  {
+   "delta": -0.8369097846524483,
+   "key": "zane-zakostelsky",
+   "name": "Zane Zakostelsky",
+   "pick": 51,
+   "pos": "KPD",
+   "v0_ctf": 374.1752048726014,
+   "v0_now": 375.01211465725385
+  },
+  {
+   "delta": 0.8192044139057657,
+   "key": "dayne-zorko",
+   "name": "Dayne Zorko",
+   "pick": 38,
+   "pos": "SD",
+   "v0_ctf": 327.54076935458954,
+   "v0_now": 326.7215649406838
+  },
+  {
+   "delta": -0.811871164061472,
+   "key": "mitchell-knevitt",
+   "name": "Mitchell Knevitt",
+   "pick": 25,
+   "pos": "MID",
+   "v0_ctf": 841.3205282583015,
+   "v0_now": 842.1323994223629
+  },
+  {
+   "delta": -0.811871164061472,
+   "key": "sam-marshall",
+   "name": "Sam Marshall",
+   "pick": 25,
+   "pos": "MID",
+   "v0_ctf": 841.3205282583015,
+   "v0_now": 842.1323994223629
+  },
+  {
+   "delta": -0.811871164061472,
+   "key": "harry-demattia",
+   "name": "Harry DeMattia",
+   "pick": 25,
+   "pos": "MID",
+   "v0_ctf": 841.3205282583015,
+   "v0_now": 842.1323994223629
+  },
+  {
+   "delta": -0.811871164061472,
+   "key": "josh-dunkley",
+   "name": "Josh Dunkley",
+   "pick": 25,
+   "pos": "MID",
+   "v0_ctf": 841.3205282583015,
+   "v0_now": 842.1323994223629
+  },
+  {
+   "delta": -0.811871164061472,
+   "key": "james-rowbottom",
+   "name": "James Rowbottom",
+   "pick": 25,
+   "pos": "MID",
+   "v0_ctf": 841.3205282583015,
+   "v0_now": 842.1323994223629
+  },
+  {
+   "delta": 0.7979319738520871,
+   "key": "todd-marshall",
+   "name": "Todd Marshall",
+   "pick": 16,
+   "pos": "KPF",
+   "v0_ctf": 759.2646430324974,
+   "v0_now": 758.4667110586453
+  },
+  {
+   "delta": 0.7763643682515067,
+   "key": "george-hewett",
+   "name": "George Hewett",
+   "pick": 32,
+   "pos": "MID",
+   "v0_ctf": 678.7914567457728,
+   "v0_now": 678.0150923775213
+  },
+  {
+   "delta": 0.7763643682515067,
+   "key": "tyan-prindable",
+   "name": "Tyan Prindable",
+   "pick": 32,
+   "pos": "MID",
+   "v0_ctf": 678.7914567457728,
+   "v0_now": 678.0150923775213
+  },
+  {
+   "delta": 0.7662181413615485,
+   "key": "angus-clarke",
+   "name": "Angus Clarke",
+   "pick": 39,
+   "pos": "SD",
+   "v0_ctf": 312.82339599175594,
+   "v0_now": 312.0571778503944
+  },
+  {
+   "delta": 0.7662181413615485,
+   "key": "blake-howes",
+   "name": "Blake Howes",
+   "pick": 39,
+   "pos": "SD",
+   "v0_ctf": 312.82339599175594,
+   "v0_now": 312.0571778503944
+  },
+  {
+   "delta": 0.7662181413615485,
+   "key": "harvey-gallagher",
+   "name": "Harvey Gallagher",
+   "pick": 39,
+   "pos": "SD",
+   "v0_ctf": 312.82339599175594,
+   "v0_now": 312.0571778503944
+  },
+  {
+   "delta": 0.7638315710781285,
+   "key": "thomas-stewart",
+   "name": "Thomas Stewart",
+   "pick": 40,
+   "pos": "SD",
+   "v0_ctf": 312.16050645015633,
+   "v0_now": 311.3966748790782
+  },
+  {
+   "delta": 0.761679963817528,
+   "key": "harry-rowston",
+   "name": "Harry Rowston",
+   "pick": 16,
+   "pos": "MID",
+   "v0_ctf": 956.510347518591,
+   "v0_now": 955.7486675547734
+  },
+  {
+   "delta": 0.761679963817528,
+   "key": "ed-richards",
+   "name": "Ed Richards",
+   "pick": 16,
+   "pos": "MID",
+   "v0_ctf": 956.510347518591,
+   "v0_now": 955.7486675547734
+  },
+  {
+   "delta": 0.7134290938951722,
+   "key": "marc-pittonet",
+   "name": "Marc Pittonet",
+   "pick": 50,
+   "pos": "RUCK",
+   "v0_ctf": 298.16080351775537,
+   "v0_now": 297.4473744238602
+  },
+  {
+   "delta": 0.7129641273646712,
+   "key": "kye-fincher",
+   "name": "Kye Fincher",
+   "pick": 52,
+   "pos": "MID",
+   "v0_ctf": 298.0316552364809,
+   "v0_now": 297.31869110911623
+  },
+  {
+   "delta": 0.7072443174531031,
+   "key": "riley-bice",
+   "name": "Riley Bice",
+   "pick": 41,
+   "pos": "SD",
+   "v0_ctf": 296.4429309501351,
+   "v0_now": 295.735686632682
+  },
+  {
+   "delta": 0.7065753168301399,
+   "key": "aidan-schubert",
+   "name": "Aidan Schubert",
+   "pick": 23,
+   "pos": "KPF",
+   "v0_ctf": 682.7500356163453,
+   "v0_now": 682.0434602995151
+  },
+  {
+   "delta": 0.7065753168301399,
+   "key": "harry-armstrong",
+   "name": "Harry Armstrong",
+   "pick": 23,
+   "pos": "KPF",
+   "v0_ctf": 682.7500356163453,
+   "v0_now": 682.0434602995151
+  },
+  {
+   "delta": 0.6742074063099608,
+   "key": "willem-drew",
+   "name": "Willem Drew",
+   "pick": 33,
+   "pos": "MID",
+   "v0_ctf": 650.4165196476439,
+   "v0_now": 649.7423122413339
+  },
+  {
+   "delta": 0.6742074063099608,
+   "key": "james-jordon",
+   "name": "James Jordon",
+   "pick": 33,
+   "pos": "MID",
+   "v0_ctf": 650.4165196476439,
+   "v0_now": 649.7423122413339
+  },
+  {
+   "delta": 0.6742074063099608,
+   "key": "hunter-holmes",
+   "name": "Hunter Holmes",
+   "pick": 33,
+   "pos": "MID",
+   "v0_ctf": 650.4165196476439,
+   "v0_now": 649.7423122413339
+  },
+  {
+   "delta": 0.6513417118058555,
+   "key": "jack-graham",
+   "name": "Jack Graham",
+   "pick": 53,
+   "pos": "MID",
+   "v0_ctf": 280.9155220617234,
+   "v0_now": 280.2641803499175
+  },
+  {
+   "delta": 0.6414924176953605,
+   "key": "luke-parker",
+   "name": "Luke Parker",
+   "pick": 42,
+   "pos": "SD",
+   "v0_ctf": 278.17979954674604,
+   "v0_now": 277.5383071290507
+  },
+  {
+   "delta": -0.6303021888138574,
+   "key": "isaac-keeler",
+   "name": "Isaac Keeler",
+   "pick": 44,
+   "pos": "KPF",
+   "v0_ctf": 311.4213037351701,
+   "v0_now": 312.05160592398397
+  },
+  {
+   "delta": 0.6182215292578803,
+   "key": "errol-gulden",
+   "name": "Errol Gulden",
+   "pick": 34,
+   "pos": "MID",
+   "v0_ctf": 634.8659814410709,
+   "v0_now": 634.247759911813
+  },
+  {
+   "delta": 0.6053645859085464,
+   "key": "steely-green",
+   "name": "Steely Green",
+   "pick": 55,
+   "pos": "SF",
+   "v0_ctf": 268.14499687679574,
+   "v0_now": 267.5396322908872
+  },
+  {
+   "delta": 0.5946614636408185,
+   "key": "lucas-camporeale",
+   "name": "Lucas Camporeale",
+   "pick": 54,
+   "pos": "MID",
+   "v0_ctf": 265.17211656275344,
+   "v0_now": 264.5774550991126
+  },
+  {
+   "delta": 0.573698651602399,
+   "key": "jack-carroll",
+   "name": "Jack Carroll",
+   "pick": 43,
+   "pos": "SD",
+   "v0_ctf": 259.34952296084833,
+   "v0_now": 258.77582430924593
+  },
+  {
+   "delta": 0.573698651602399,
+   "key": "corey-wagner",
+   "name": "Corey Wagner",
+   "pick": 43,
+   "pos": "SD",
+   "v0_ctf": 259.34952296084833,
+   "v0_now": 258.77582430924593
+  },
+  {
+   "delta": 0.573698651602399,
+   "key": "mitch-mcgovern",
+   "name": "Mitch McGovern",
+   "pick": 43,
+   "pos": "SD",
+   "v0_ctf": 259.34952296084833,
+   "v0_now": 258.77582430924593
+  },
+  {
+   "delta": -0.5717505836998384,
+   "key": "liam-fawcett",
+   "name": "Liam Fawcett",
+   "pick": 43,
+   "pos": "KPF",
+   "v0_ctf": 327.6844940310786,
+   "v0_now": 328.25624461477844
+  },
+  {
+   "delta": -0.5717505836998384,
+   "key": "cody-curtin",
+   "name": "Cody Curtin",
+   "pick": 43,
+   "pos": "KPF",
+   "v0_ctf": 327.6844940310786,
+   "v0_now": 328.25624461477844
+  },
+  {
+   "delta": -0.5708908516807014,
+   "key": "sam-de-koning",
+   "name": "Sam De Koning",
+   "pick": 19,
+   "pos": "KPD",
+   "v0_ctf": 646.5215561101305,
+   "v0_now": 647.0924469618112
+  },
+  {
+   "delta": 0.5560769111794457,
+   "key": "jacob-molier",
+   "name": "Jacob Molier",
+   "pick": 52,
+   "pos": "RUCK",
+   "v0_ctf": 254.45493950262332,
+   "v0_now": 253.89886259144387
+  },
+  {
+   "delta": 0.5481382550925105,
+   "key": "cooper-harvey",
+   "name": "Cooper Harvey",
+   "pick": 56,
+   "pos": "SF",
+   "v0_ctf": 252.24991242635284,
+   "v0_now": 251.70177417126033
+  },
+  {
+   "delta": 0.5481382550925105,
+   "key": "will-hayes-b",
+   "name": "Will Hayes",
+   "pick": 56,
+   "pos": "SF",
+   "v0_ctf": 252.24991242635284,
+   "v0_now": 251.70177417126033
+  },
+  {
+   "delta": 0.5446188276373505,
+   "key": "deven-robertson",
+   "name": "Deven Robertson",
+   "pick": 22,
+   "pos": "MID",
+   "v0_ctf": 896.2198301763519,
+   "v0_now": 895.6752113487146
+  },
+  {
+   "delta": 0.5389582014812788,
+   "key": "jordan-dawson",
+   "name": "Jordan Dawson",
+   "pick": 55,
+   "pos": "MID",
+   "v0_ctf": 249.70007696897494,
+   "v0_now": 249.16111876749366
+  },
+  {
+   "delta": -0.5133444012877817,
+   "key": "ty-gallop",
+   "name": "Ty Gallop",
+   "pick": 42,
+   "pos": "KPF",
+   "v0_ctf": 343.9072919744127,
+   "v0_now": 344.4206363757005
+  },
+  {
+   "delta": 0.5011882530666014,
+   "key": "joseph-fonti",
+   "name": "Joseph Fonti",
+   "pick": 44,
+   "pos": "SD",
+   "v0_ctf": 239.2091628883488,
+   "v0_now": 238.7079746352822
+  },
+  {
+   "delta": 0.5011882530666014,
+   "key": "blake-hardwick",
+   "name": "Blake Hardwick",
+   "pick": 44,
+   "pos": "SD",
+   "v0_ctf": 239.2091628883488,
+   "v0_now": 238.7079746352822
+  },
+  {
+   "delta": 0.4957342461165979,
+   "key": "alex-dodson",
+   "name": "Alex Dodson",
+   "pick": 53,
+   "pos": "RUCK",
+   "v0_ctf": 237.69426756258162,
+   "v0_now": 237.19853331646502
+  },
+  {
+   "delta": 0.4826687679428119,
+   "key": "matthew-leray",
+   "name": "Matthew LeRay",
+   "pick": 56,
+   "pos": "MID",
+   "v0_ctf": 234.06522344955945,
+   "v0_now": 233.58255468161664
+  },
+  {
+   "delta": 0.4710990626272462,
+   "key": "noah-long",
+   "name": "Noah Long",
+   "pick": 57,
+   "pos": "SF",
+   "v0_ctf": 230.85164256056132,
+   "v0_now": 230.38054349793407
+  },
+  {
+   "delta": 0.4710990626272462,
+   "key": "gryan-miers",
+   "name": "Gryan Miers",
+   "pick": 57,
+   "pos": "SF",
+   "v0_ctf": 230.85164256056132,
+   "v0_now": 230.38054349793407
+  },
+  {
+   "delta": 0.4710990626272462,
+   "key": "lachlan-schultz",
+   "name": "Lachlan Schultz",
+   "pick": 57,
+   "pos": "SF",
+   "v0_ctf": 230.85164256056132,
+   "v0_now": 230.38054349793407
+  },
+  {
+   "delta": 0.46132279334415216,
+   "key": "daniel-mcstay",
+   "name": "Daniel McStay",
+   "pick": 25,
+   "pos": "KPF",
+   "v0_ctf": 614.6291283887175,
+   "v0_now": 614.1678055953734
+  },
+  {
+   "delta": 0.46132279334415216,
+   "key": "noah-balta",
+   "name": "Noah Balta",
+   "pick": 25,
+   "pos": "KPF",
+   "v0_ctf": 614.6291283887175,
+   "v0_now": 614.1678055953734
+  },
+  {
+   "delta": 0.4586992698146446,
+   "key": "bailey-dale",
+   "name": "Bailey Dale",
+   "pick": 45,
+   "pos": "SD",
+   "v0_ctf": 227.40749803628358,
+   "v0_now": 226.94879876646894
+  },
+  {
+   "delta": -0.44969181206323583,
+   "key": "joel-hamling",
+   "name": "Joel Hamling",
+   "pick": 41,
+   "pos": "KPF",
+   "v0_ctf": 361.5873225964752,
+   "v0_now": 362.0370144085384
+  },
+  {
+   "delta": -0.43602381285973024,
+   "key": "cameron-rayner",
+   "name": "Cameron Rayner",
+   "pick": 1,
+   "pos": "SF",
+   "v0_ctf": 2573.67418802936,
+   "v0_now": 2574.1102118422195
+  },
+  {
+   "delta": 0.42029836184491387,
+   "key": "angus-anderson",
+   "name": "Angus Anderson",
+   "pick": 57,
+   "pos": "MID",
+   "v0_ctf": 216.74132974540345,
+   "v0_now": 216.32103138355853
+  },
+  {
+   "delta": 0.42029836184491387,
+   "key": "will-lorenz",
+   "name": "Will Lorenz",
+   "pick": 57,
+   "pos": "MID",
+   "v0_ctf": 216.74132974540345,
+   "v0_now": 216.32103138355853
+  },
+  {
+   "delta": 0.42029836184491387,
+   "key": "luke-urquhart",
+   "name": "Luke Urquhart",
+   "pick": 57,
+   "pos": "MID",
+   "v0_ctf": 216.74132974540345,
+   "v0_now": 216.32103138355853
+  },
+  {
+   "delta": 0.4135906769695339,
+   "key": "matt-whitlock",
+   "name": "Matt Whitlock",
+   "pick": 27,
+   "pos": "KPF",
+   "v0_ctf": 601.3711401522753,
+   "v0_now": 600.9575494753058
+  },
+  {
+   "delta": 0.4135906769695339,
+   "key": "louis-emmett",
+   "name": "Louis Emmett",
+   "pick": 27,
+   "pos": "KPF",
+   "v0_ctf": 601.3711401522753,
+   "v0_now": 600.9575494753058
+  },
+  {
+   "delta": 0.3887788695810457,
+   "key": "jasper-alger",
+   "name": "Jasper Alger",
+   "pick": 58,
+   "pos": "SF",
+   "v0_ctf": 207.98653131213842,
+   "v0_now": 207.59775244255738
+  },
+  {
+   "delta": 0.3752150725682668,
+   "key": "thomas-sims",
+   "name": "Thomas Sims",
+   "pick": 28,
+   "pos": "KPF",
+   "v0_ctf": 590.7120001358224,
+   "v0_now": 590.3367850632542
+  },
+  {
+   "delta": 0.3752150725682668,
+   "key": "jack-darling",
+   "name": "Jack Darling",
+   "pick": 28,
+   "pos": "KPF",
+   "v0_ctf": 590.7120001358224,
+   "v0_now": 590.3367850632542
+  },
+  {
+   "delta": 0.37457097170405973,
+   "key": "bodie-ryan",
+   "name": "Bodie Ryan",
+   "pick": 46,
+   "pos": "SD",
+   "v0_ctf": 204.0401707225649,
+   "v0_now": 203.66559975086085
+  },
+  {
+   "delta": 0.37457097170405973,
+   "key": "caleb-daniel",
+   "name": "Caleb Daniel",
+   "pick": 46,
+   "pos": "SD",
+   "v0_ctf": 204.0401707225649,
+   "v0_now": 203.66559975086085
+  },
+  {
+   "delta": -0.3732310290378109,
+   "key": "luke-trainor",
+   "name": "Luke Trainor",
+   "pick": 21,
+   "pos": "KPD",
+   "v0_ctf": 642.9402670472283,
+   "v0_now": 643.3134980762661
+  },
+  {
+   "delta": -0.3732310290378109,
+   "key": "ben-mckay",
+   "name": "Ben McKay",
+   "pick": 21,
+   "pos": "KPD",
+   "v0_ctf": 642.9402670472283,
+   "v0_now": 643.3134980762661
+  },
+  {
+   "delta": 0.3615554077994716,
+   "key": "george-stevens",
+   "name": "George Stevens",
+   "pick": 58,
+   "pos": "MID",
+   "v0_ctf": 200.4249907086874,
+   "v0_now": 200.06343530088793
+  },
+  {
+   "delta": 0.3450445326215288,
+   "key": "dante-visentini",
+   "name": "Dante Visentini",
+   "pick": 56,
+   "pos": "RUCK",
+   "v0_ctf": 195.8389592165147,
+   "v0_now": 195.49391468389317
+  },
+  {
+   "delta": 0.3412617891183345,
+   "key": "jack-gunston",
+   "name": "Jack Gunston",
+   "pick": 29,
+   "pos": "KPF",
+   "v0_ctf": 581.2811961665434,
+   "v0_now": 580.9399343774251
+  },
+  {
+   "delta": -0.3138873523679422,
+   "key": "jonty-faull",
+   "name": "Jonty Faull",
+   "pick": 14,
+   "pos": "KPF",
+   "v0_ctf": 856.0358154663749,
+   "v0_now": 856.3497028187428
+  },
+  {
+   "delta": -0.3138873523679422,
+   "key": "eric-hipwood",
+   "name": "Eric Hipwood",
+   "pick": 14,
+   "pos": "KPF",
+   "v0_ctf": 856.0358154663749,
+   "v0_now": 856.3497028187428
+  },
+  {
+   "delta": 0.3010062259261588,
+   "key": "harvey-thomas",
+   "name": "Harvey Thomas",
+   "pick": 59,
+   "pos": "MID",
+   "v0_ctf": 183.6069570245656,
+   "v0_now": 183.30595079863943
+  },
+  {
+   "delta": 0.2811315048381857,
+   "key": "jobe-shanahan",
+   "name": "Jobe Shanahan",
+   "pick": 30,
+   "pos": "KPF",
+   "v0_ctf": 564.5795147371152,
+   "v0_now": 564.298383232277
+  },
+  {
+   "delta": 0.2811315048381857,
+   "key": "archer-reid",
+   "name": "Archer Reid",
+   "pick": 30,
+   "pos": "KPF",
+   "v0_ctf": 564.5795147371152,
+   "v0_now": 564.298383232277
+  },
+  {
+   "delta": 0.2811315048381857,
+   "key": "harrison-jones",
+   "name": "Harrison Jones",
+   "pick": 30,
+   "pos": "KPF",
+   "v0_ctf": 564.5795147371152,
+   "v0_now": 564.298383232277
+  },
+  {
+   "delta": 0.22072831228956602,
+   "key": "logan-morris",
+   "name": "Logan Morris",
+   "pick": 31,
+   "pos": "KPF",
+   "v0_ctf": 547.8020307896772,
+   "v0_now": 547.5813024773877
+  },
+  {
+   "delta": 0.2113025630789025,
+   "key": "patrick-said",
+   "name": "Patrick Said",
+   "pick": 60,
+   "pos": "SF",
+   "v0_ctf": 158.69102626087874,
+   "v0_now": 158.47972369779984
+  },
+  {
+   "delta": 0.2113025630789025,
+   "key": "michael-frederick",
+   "name": "Michael Frederick",
+   "pick": 60,
+   "pos": "SF",
+   "v0_ctf": 158.69102626087874,
+   "v0_now": 158.47972369779984
+  },
+  {
+   "delta": -0.19274395656634624,
+   "key": "kayle-gerreyn",
+   "name": "Kayle Gerreyn",
+   "pick": 37,
+   "pos": "KPF",
+   "v0_ctf": 432.95670456188145,
+   "v0_now": 433.1494485184478
+  },
+  {
+   "delta": 0.16363337662562571,
+   "key": "henry-hustwaite",
+   "name": "Henry Hustwaite",
+   "pick": 37,
+   "pos": "MID",
+   "v0_ctf": 630.4024710643591,
+   "v0_now": 630.2388376877335
+  },
+  {
+   "delta": 0.16363337662562571,
+   "key": "samuel-swadling",
+   "name": "Samuel Swadling",
+   "pick": 37,
+   "pos": "MID",
+   "v0_ctf": 630.4024710643591,
+   "v0_now": 630.2388376877335
+  },
+  {
+   "delta": 0.1598870069624354,
+   "key": "harry-dean",
+   "name": "Harry Dean",
+   "pick": 3,
+   "pos": "KPD",
+   "v0_ctf": 2316.5947655918644,
+   "v0_now": 2316.434878584902
+  },
+  {
+   "delta": 0.14380053259753822,
+   "key": "luke-kennedy",
+   "name": "Luke Kennedy",
+   "pick": 62,
+   "pos": "MID",
+   "v0_ctf": 139.94178164255277,
+   "v0_now": 139.79798110995523
+  },
+  {
+   "delta": 0.12314479988100402,
+   "key": "rhys-unwin",
+   "name": "Rhys Unwin",
+   "pick": 61,
+   "pos": "SF",
+   "v0_ctf": 134.20448185007353,
+   "v0_now": 134.08133705019253
+  },
+  {
+   "delta": 0.12314479988100402,
+   "key": "oliver-wiltshire",
+   "name": "Oliver Wiltshire",
+   "pick": 61,
+   "pos": "SF",
+   "v0_ctf": 134.20448185007353,
+   "v0_now": 134.08133705019253
+  },
+  {
+   "delta": 0.12314479988100402,
+   "key": "riley-garcia",
+   "name": "Riley Garcia",
+   "pick": 61,
+   "pos": "SF",
+   "v0_ctf": 134.20448185007353,
+   "v0_now": 134.08133705019253
+  },
+  {
+   "delta": 0.07833697625790137,
+   "key": "jack-whitlock",
+   "name": "Jack Whitlock",
+   "pick": 33,
+   "pos": "KPF",
+   "v0_ctf": 508.25166509327585,
+   "v0_now": 508.17332811701795
+  },
+  {
+   "delta": 0.07833697625790137,
+   "key": "mitchito-owens",
+   "name": "Mitchito Owens",
+   "pick": 33,
+   "pos": "KPF",
+   "v0_ctf": 508.25166509327585,
+   "v0_now": 508.17332811701795
+  },
+  {
+   "delta": 0.07833697625790137,
+   "key": "liam-mcmahon",
+   "name": "Liam McMahon",
+   "pick": 33,
+   "pos": "KPF",
+   "v0_ctf": 508.25166509327585,
+   "v0_now": 508.17332811701795
+  },
+  {
+   "delta": 0.061336487200605916,
+   "key": "jesse-hogan",
+   "name": "Jesse Hogan",
+   "pick": 5,
+   "pos": "KPF",
+   "v0_ctf": 1487.056625190326,
+   "v0_now": 1486.9952887031254
+  },
+  {
+   "delta": -0.057440110760239804,
+   "key": "shannon-neale",
+   "name": "Shannon Neale",
+   "pick": 35,
+   "pos": "KPF",
+   "v0_ctf": 470.5384615064905,
+   "v0_now": 470.5959016172507
+  },
+  {
+   "delta": 0.010424718310446224,
+   "key": "charlie-nicholls",
+   "name": "Charlie Nicholls",
+   "pick": 34,
+   "pos": "KPF",
+   "v0_ctf": 489.3884764194023,
+   "v0_now": 489.37805170109186
+  },
+  {
+   "delta": 0.0037253497083753473,
+   "key": "jaren-carr",
+   "name": "Jaren Carr",
+   "pick": 63,
+   "pos": "SF",
+   "v0_ctf": 101.03474654722041,
+   "v0_now": 101.03102119751203
+  },
+  {
+   "delta": 0.0,
+   "key": "lachlan-sholl",
+   "name": "Lachlan Sholl",
+   "pick": 64,
+   "pos": "MID",
+   "v0_ctf": 100.0,
+   "v0_now": 100.0
+  },
+  {
+   "delta": 0.0,
+   "key": "reece-torrent",
+   "name": "Reece Torrent",
+   "pick": 64,
+   "pos": "MID",
+   "v0_ctf": 100.0,
+   "v0_now": 100.0
+  },
+  {
+   "delta": 0.0,
+   "key": "cody-anderson",
+   "name": "Cody Anderson",
+   "pick": 64,
+   "pos": "SF",
+   "v0_ctf": 100.0,
+   "v0_now": 100.0
+  }
+ ],
+ "board_rows_affected": 561,
+ "ctf_surface": {
+  "KPD": {
+   "1": 2728.6109742143835,
+   "10": 907.0353240129173,
+   "11": 905.5216561106199,
+   "12": 908.0982251791893,
+   "13": 833.8631778705335,
+   "14": 700.1517367494562,
+   "15": 619.1708012699457,
+   "16": 634.9216653662935,
+   "17": 656.7508074952616,
+   "18": 660.0642062182706,
+   "19": 646.5215561101305,
+   "2": 2531.5666282664706,
+   "20": 635.320795591926,
+   "21": 642.9402670472283,
+   "22": 628.9264065949967,
+   "23": 584.5784213382889,
+   "24": 543.299168074292,
+   "25": 513.9249013800281,
+   "26": 498.14091422928414,
+   "27": 490.31459863680493,
+   "28": 487.7646478630831,
+   "29": 481.58551757955263,
+   "3": 2316.5947655918644,
+   "30": 481.71905396422096,
+   "31": 474.9461617281525,
+   "32": 468.98428183068944,
+   "33": 465.8491128162412,
+   "34": 457.63363925915274,
+   "35": 448.58122866747465,
+   "36": 437.2545181458976,
+   "37": 428.9830902633759,
+   "38": 421.04002127189966,
+   "39": 410.18211267468837,
+   "4": 1864.3007851546192,
+   "40": 401.27777170879403,
+   "41": 392.744748821051,
+   "42": 385.7501031925943,
+   "43": 380.84622175803867,
+   "44": 376.3120820646764,
+   "45": 371.9594422144585,
+   "46": 370.24252594996847,
+   "47": 369.8833876125832,
+   "48": 368.66845503888317,
+   "49": 369.8860927652786,
+   "5": 1448.143964552824,
+   "50": 372.58074504239113,
+   "51": 374.1752048726014,
+   "52": 373.5461396775919,
+   "53": 369.6261068952125,
+   "54": 365.23625021932867,
+   "55": 358.560958071066,
+   "56": 350.11720697258994,
+   "57": 341.582408675402,
+   "58": 339.1531446066456,
+   "59": 335.70824732356834,
+   "6": 1046.0503464337135,
+   "60": 347.8923105681274,
+   "61": 363.5481955976,
+   "62": 406.44035456095435,
+   "63": 441.27815612914145,
+   "64": 498.47873125504174,
+   "7": 1004.3627475135519,
+   "8": 958.6808463475719,
+   "9": 922.4713590394331
+  },
+  "KPF": {
+   "1": 2375.4003991544723,
+   "10": 1105.579944913339,
+   "11": 1108.9333436009201,
+   "12": 1117.468323810639,
+   "13": 1021.9166015974336,
+   "14": 856.0358154663749,
+   "15": 750.6881102904518,
+   "16": 759.2646430324974,
+   "17": 765.213853575942,
+   "18": 757.4500351605086,
+   "19": 730.5852416346861,
+   "2": 2182.6046515270045,
+   "20": 720.9448638793826,
+   "21": 731.8910136621187,
+   "22": 722.4673090880497,
+   "23": 682.7500356163453,
+   "24": 645.2036202057933,
+   "25": 614.6291283887175,
+   "26": 604.2429176958938,
+   "27": 601.3711401522753,
+   "28": 590.7120001358224,
+   "29": 581.2811961665434,
+   "3": 2037.4067444998443,
+   "30": 564.5795147371152,
+   "31": 547.8020307896772,
+   "32": 528.8420073596424,
+   "33": 508.25166509327585,
+   "34": 489.3884764194023,
+   "35": 470.5384615064905,
+   "36": 449.5293300022956,
+   "37": 432.95670456188145,
+   "38": 416.18665377690604,
+   "39": 395.8777365660876,
+   "4": 1766.1207998726009,
+   "40": 377.0792532502822,
+   "41": 361.5873225964752,
+   "42": 343.9072919744127,
+   "43": 327.6844940310786,
+   "44": 311.4213037351701,
+   "45": 295.1604548856336,
+   "46": 280.9631470793872,
+   "47": 268.0335976491018,
+   "48": 257.2237591615576,
+   "49": 246.07558413960425,
+   "5": 1487.056625190326,
+   "50": 236.91307158024725,
+   "51": 228.4436362080234,
+   "52": 220.38972588870894,
+   "53": 215.21950072122974,
+   "54": 209.27063854190538,
+   "55": 203.83913471408135,
+   "56": 200.3927151542232,
+   "57": 195.5191867397,
+   "58": 193.27972306423396,
+   "59": 193.14811078101607,
+   "6": 1148.082011096472,
+   "60": 196.4420553416756,
+   "61": 207.67075811956386,
+   "62": 223.86830949428804,
+   "63": 233.50021542836342,
+   "64": 256.8359257943443,
+   "7": 1146.3997822195954,
+   "8": 1124.429397544625,
+   "9": 1110.9105119408991
+  },
+  "MID": {
+   "1": 3281.916503660667,
+   "10": 1594.4919559073642,
+   "11": 1617.2738692333874,
+   "12": 1620.7716324161295,
+   "13": 1447.304398986893,
+   "14": 1175.4588731928613,
+   "15": 979.0255993021202,
+   "16": 956.510347518591,
+   "17": 918.8576990564949,
+   "18": 909.4226645167319,
+   "19": 929.4152951597376,
+   "2": 2876.8423351115066,
+   "20": 935.6636809144314,
+   "21": 929.0773858147787,
+   "22": 896.2198301763519,
+   "23": 855.8747102049068,
+   "24": 841.1755840630839,
+   "25": 841.3205282583015,
+   "26": 845.2649958546493,
+   "27": 841.5023741763575,
+   "28": 825.2224404087996,
+   "29": 793.0028400241424,
+   "3": 2736.1546500716663,
+   "30": 755.5602352925927,
+   "31": 714.1801102923988,
+   "32": 678.7914567457728,
+   "33": 650.4165196476439,
+   "34": 634.8659814410709,
+   "35": 628.7556119894737,
+   "36": 625.1882195226087,
+   "37": 630.4024710643591,
+   "38": 636.3653433790384,
+   "39": 633.7831881594842,
+   "4": 2485.6143320986253,
+   "40": 629.1556468642608,
+   "41": 620.7263279012349,
+   "42": 601.8444518673991,
+   "43": 575.8479769406141,
+   "44": 541.3767979062651,
+   "45": 501.1934037259311,
+   "46": 462.4724759494232,
+   "47": 425.97178769317316,
+   "48": 394.4225916949856,
+   "49": 364.440522785683,
+   "5": 2066.696527754024,
+   "50": 339.6179519827389,
+   "51": 317.7394971952442,
+   "52": 298.0316552364809,
+   "53": 280.9155220617234,
+   "54": 265.17211656275344,
+   "55": 249.70007696897494,
+   "56": 234.06522344955945,
+   "57": 216.74132974540345,
+   "58": 200.4249907086874,
+   "59": 183.6069570245656,
+   "6": 1550.968521733049,
+   "60": 168.51349094056258,
+   "61": 154.23291414391247,
+   "62": 139.94178164255277,
+   "63": 116.49053317535056,
+   "64": 100.0,
+   "7": 1523.447663638666,
+   "8": 1560.6454542294373,
+   "9": 1589.8027972039076
+  },
+  "RUCK": {
+   "1": 2700.3935552196012,
+   "10": 1218.5907382312046,
+   "11": 1278.4743770504817,
+   "12": 1284.1711608620535,
+   "13": 1173.25144632216,
+   "14": 996.2207349225555,
+   "15": 898.3309671487648,
+   "16": 953.4249589349938,
+   "17": 1014.8435044678553,
+   "18": 1056.6525794307686,
+   "19": 1084.5027295096188,
+   "2": 2853.1422294512126,
+   "20": 1131.1081175738086,
+   "21": 1091.8546801925181,
+   "22": 1130.3583027824582,
+   "23": 1107.968154396201,
+   "24": 1074.8608014164993,
+   "25": 1052.7317250289714,
+   "26": 1055.359044311298,
+   "27": 1059.7977537203622,
+   "28": 1059.572722312832,
+   "29": 1067.8433444750012,
+   "3": 2889.2532174561725,
+   "30": 1054.0448335721348,
+   "31": 1086.693307667981,
+   "32": 1075.0759446988177,
+   "33": 1084.5487732930374,
+   "34": 1077.452974999444,
+   "35": 1060.3219967527925,
+   "36": 1018.7213160562002,
+   "37": 960.894062866628,
+   "38": 900.1539550613775,
+   "39": 828.1796450154487,
+   "4": 2546.053264868094,
+   "40": 760.4138755267453,
+   "41": 698.625760569136,
+   "42": 638.512543868569,
+   "43": 583.8510780119022,
+   "44": 531.4061320558757,
+   "45": 481.03431388567685,
+   "46": 435.97350128649424,
+   "47": 394.87379247807144,
+   "48": 359.1648452084751,
+   "49": 325.7663078797858,
+   "5": 2075.930967004257,
+   "50": 298.16080351775537,
+   "51": 274.6078004906576,
+   "52": 254.45493950262332,
+   "53": 237.69426756258162,
+   "54": 223.44526320839012,
+   "55": 209.6052281932506,
+   "56": 195.8389592165147,
+   "57": 182.10328086543353,
+   "58": 164.47417508805307,
+   "59": 153.54087002754977,
+   "6": 1500.7720374855792,
+   "60": 134.83146496284323,
+   "61": 128.5506909255471,
+   "62": 105.66282250079281,
+   "63": 100.0,
+   "64": 100.0,
+   "7": 1414.3041249212113,
+   "8": 1320.9638870556046,
+   "9": 1252.6668859486
+  },
+  "SD": {
+   "1": 2706.6393316701883,
+   "10": 1278.611812949706,
+   "11": 1311.217530722185,
+   "12": 1346.0954316479967,
+   "13": 1246.7719532949438,
+   "14": 1043.5609571317375,
+   "15": 906.7057736129909,
+   "16": 902.2145073031438,
+   "17": 891.6120576534419,
+   "18": 864.5602166565461,
+   "19": 815.7472300247197,
+   "2": 2462.6637698524005,
+   "20": 786.2260153337068,
+   "21": 777.0639780824155,
+   "22": 744.704387095358,
+   "23": 679.4272049233288,
+   "24": 614.0082165432864,
+   "25": 562.7696521908474,
+   "26": 525.0616550336027,
+   "27": 495.7271864912821,
+   "28": 465.5878322701249,
+   "29": 439.3168217582893,
+   "3": 2288.848151461288,
+   "30": 412.4184256656822,
+   "31": 393.4559219617457,
+   "32": 378.6249995249932,
+   "33": 368.1308559703849,
+   "34": 358.9199558736491,
+   "35": 349.26822870254864,
+   "36": 346.8930666254827,
+   "37": 338.08803492604943,
+   "38": 327.54076935458954,
+   "39": 312.82339599175594,
+   "4": 1929.2073297967622,
+   "40": 312.16050645015633,
+   "41": 296.4429309501351,
+   "42": 278.17979954674604,
+   "43": 259.34952296084833,
+   "44": 239.2091628883488,
+   "45": 227.40749803628358,
+   "46": 204.0401707225649,
+   "47": 182.34899248646136,
+   "48": 163.94314406774828,
+   "49": 148.25322124633365,
+   "5": 1600.3859582425134,
+   "50": 137.40354755226474,
+   "51": 130.7821727134772,
+   "52": 127.92160605803147,
+   "53": 128.49805563124872,
+   "54": 131.69880130939072,
+   "55": 136.55029545581357,
+   "56": 142.5895701470614,
+   "57": 148.69237162648218,
+   "58": 156.76194303636112,
+   "59": 166.11801716590958,
+   "6": 1246.9079842568472,
+   "60": 179.45661276301763,
+   "61": 197.86523395206115,
+   "62": 221.53606620841333,
+   "63": 244.08991696697407,
+   "64": 273.5573481295693,
+   "7": 1274.5488313360831,
+   "8": 1274.8118371257979,
+   "9": 1268.260390101393
+  },
+  "SF": {
+   "1": 2573.67418802936,
+   "10": 976.7350727150206,
+   "11": 968.7824778892067,
+   "12": 970.8316649255588,
+   "13": 884.6301594911613,
+   "14": 728.6961247075599,
+   "15": 626.4241813394486,
+   "16": 618.9783737903948,
+   "17": 608.4394059649455,
+   "18": 587.6016729051041,
+   "19": 555.0911638892187,
+   "2": 2419.6359634206733,
+   "20": 538.5198423710087,
+   "21": 530.6870540022157,
+   "22": 512.7580297247296,
+   "23": 469.7403034821561,
+   "24": 432.90857505151706,
+   "25": 407.6093734173396,
+   "26": 397.43509276881036,
+   "27": 397.07417637160455,
+   "28": 407.9010514303149,
+   "29": 411.85892878043296,
+   "3": 2330.012794522566,
+   "30": 415.84796421060395,
+   "31": 418.21813513291573,
+   "32": 420.80230686206676,
+   "33": 420.84893695279703,
+   "34": 421.01638191069014,
+   "35": 418.891982843361,
+   "36": 427.79522727340725,
+   "37": 422.96885117943594,
+   "38": 413.66360179655095,
+   "39": 412.7660703323297,
+   "4": 1972.3330724964424,
+   "40": 389.132462077259,
+   "41": 364.3260187734824,
+   "42": 338.39703452061997,
+   "43": 315.53595606808074,
+   "44": 295.9423780751458,
+   "45": 280.73923103885437,
+   "46": 272.23457226413564,
+   "47": 269.1552160345326,
+   "48": 271.29630481154686,
+   "49": 274.58761934894187,
+   "5": 1578.5831257106654,
+   "50": 279.94166469944383,
+   "51": 284.3937141612686,
+   "52": 286.1213952447636,
+   "53": 284.8036094177058,
+   "54": 279.09823001511336,
+   "55": 268.14499687679574,
+   "56": 252.24991242635284,
+   "57": 230.85164256056132,
+   "58": 207.98653131213842,
+   "59": 183.0091811220478,
+   "6": 1155.1391540597647,
+   "60": 158.69102626087874,
+   "61": 134.20448185007353,
+   "62": 108.09690540830773,
+   "63": 101.03474654722041,
+   "64": 100.0,
+   "7": 1102.5140887995703,
+   "8": 1041.120982973251,
+   "9": 998.4120708494069
+  }
+ },
+ "order": "ORDER 32 S5 STEP 5 -- band-monotone counterfactual"
+}

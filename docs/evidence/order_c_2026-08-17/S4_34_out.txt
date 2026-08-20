@@ -1,0 +1,30 @@
+ORDER C — S4 rescore controls
+  Order C matrix md5 0889c6ac
+  base matrix    md5 d97f1aee (d97f1aee = the committed S4 candidate input)
+  CONTROL v0 column identical on all 2648 ......... PASS
+  CONTROL yrs/seasons identical on all 2648 ....... PASS
+
+S4 SCORER RUN WHOLE — committed md5 241842f61ddd3c486f04f201a7efcce9, as-run md5 653c5ec51091775c089ee5678f0a441f
+  SUB  CAND_P = SP + '/per_entrant_O31FFINAL.json'                  -> CAND_P = SP + '/per_entrant_O34FINAL.json'
+  SUB  with open(os.path.join(HERE, 'RESULTS_S4.json'), 'w') as f:  -> with open('/home/user/afl-rl-engine/.claude/worktrees/agent-abd8af3ce56ecb9e3/do
+  scorer ran clean; console S4_34_console.txt (12 lines)
+
+  CONTROL rho_old unchanged in every scored cell ... PASS
+
+=== PRIMARY ND CELLS: Order C vs repaired C32 vs Candidate 31 vs the old law (M1 Spearman) ===
+  N   hz         n  rho_old  rho_c31  rho_c32    rho_C     C verd   rec_C32     rec_C
+  1   dv1     1201    0.485    0.570    0.572    0.570  candidate      -2%      -0%
+  1   dvrest  1201    0.528    0.576    0.577    0.577  candidate      -1%      -1%
+  2   dv1     1137    0.626    0.668    0.671    0.671  candidate      -7%      -8%
+  2   dvrest  1137    0.643    0.677    0.682    0.683  candidate     -15%     -17%
+  3   dv1      955    0.665    0.677    0.684    0.685  candidate     -67%     -70%
+  3   dvrest   955    0.692    0.689    0.704    0.705  candidate    +588%    +608%
+  4   dv1      807    0.701    0.681    0.694    0.694        tie     +62%     +64%
+  4   dvrest   807    0.751    0.729    0.744    0.744        tie     +67%     +68%
+  5   dv1      680    0.718    0.704    0.711    0.711     oldlaw     +54%     +55%
+  5   dvrest   680    0.765    0.748    0.757    0.757     oldlaw     +52%     +54%
+  6   dv1      574    0.733    0.726    0.730    0.730        tie     +53%     +54%
+  6   dvrest   574    0.801    0.791    0.795    0.795     oldlaw     +40%     +41%
+
+  READING: 6 S4 old-law-won primary M1 cells (years 4-6); MEDIAN RECOVERY +54% under ORDER C (repaired C32 was +53%); per-cell ['N4 dv1 +64%', 'N4 dvrest +68%', 'N5 dv1 +55%', 'N5 dvrest +54%', 'N6 dv1 +54%', 'N6 dvrest +41%']
+  years 1-3 candidate wins retained: 4 of 4 (all)

@@ -1,0 +1,243 @@
+======================================================================================================================
+ORDER 30A  --  THE ND SITTER DISCOUNT, DERIVED FROM EVIDENCE
+======================================================================================================================
+READ-ONLY.  Nothing wires.  The old los_decay schedule stands as the DECLARED FALLBACK.
+Prereg: PREREG_30A.md, committed before this file existed in runnable form.
+
+INPUTS
+  layer1                 ad1229ea6f44  (origin/build/delivered-value:data/delivered_value/layer1_player_seasons.json)
+  LAYER2 (grace-A)       1eed6f94f67c  (origin/build/delivered-value:docs/evidence/delivered_value_2026-08-12/LAYER2.json)
+  curve                  911774bc92de  (engine/rl_after/pvc_curve_v2.json)
+  day0_29b               2c5c06684a73  (docs/evidence/landing_29_2026-08-13/DAY0_29B_FINAL.json)
+  rl_model               14000af2a46f  (engine/rl_after/rl_model.py)
+  store                  cb38ef1171dc  (engine/rl_after/rl_model_data.json)
+  STORE DRIFT DISCLOSED: DV scores built on d9a24282; this branch carries cb38ef11. Layer 1 identical.
+
+POPULATION  (ND, attributed mechanism "ND 1-64", priceable on the landed entry law)
+  total ND 1-64 rows carried             1447
+  FITTED window  2004-2021               1142   (core <=2014 697 + augmented 2015-2021 445)
+  SENSITIVITY    2022+   (EXCLUDED)       244
+  pre-2004       (EXCLUDED, DV floor)      61
+  v0 == 0 rows in fitted window             2   (the RUCK pick 63/64 floor -- dropped from ratios)
+
+======================================================================================================================
+THE ALL-PICK ROW  --  PRIMARY BASIS (grace-A, re-anchored to the valuation moment), FITTED WINDOW
+======================================================================================================================
+  depth      n   n=0   ever  RAW mean   median      p25      p75   pooled  tailshr   D(N)=RAW/RAW(1)   old los_decay
+  1       1140   121   1019    1.0286   0.1510   0.0007   1.1704   1.0568   0.1001          1.0000      1.000 / 1.000
+  2        462   121    341    0.5846   0.0028   0.0000   0.3042   0.5763   0.0811          0.5684      0.852 / 1.000
+  3        234   121    113    0.2205   0.0000   0.0000   0.0333   0.1800   0.0435          0.2143      0.568 / 0.956
+  4        154   121     33    0.1082   0.0000   0.0000   0.0000   0.0611   0.0233          0.1052      0.307 / 0.716
+  5        130   121      9    0.0764   0.0000   0.0000   0.0000   0.0371   0.0084          0.0742      0.136 / 0.428
+  6        117   113      4    0.0931   0.0000   0.0000   0.0000   0.0445   0.0008          0.0905      0.050 / 0.209
+  (old los_decay column: non-KPP grace 1.0 / KPP+RUCK grace 2.5)
+
+ROBUSTNESS W  --  THE SAME ROW, PER-PLAYER RATIO WINSORISED AT 2.0 (ORDER 21's own guard)
+  NOT prestated; published BESIDE the primary, which is unchanged and remains the recommendation.
+  It bites 192 of the 1,140 depth-1 rows and cuts RAW(1) by 40%: the tail it truncates is REAL
+  (dawson pk55, stewart pk40, gulden pk34, andrews pk59), not an artefact -- so it is not adopted.
+  WHAT IT PROVES: the NORMALISED D(N) moves by less than 0.04 at every depth. The derived surface
+  does not depend on the right tail at all.
+  depth      n  n_wins   RAW mean   median      p25      p75   D_w(N)   old(nonKPP/KPP)
+  1       1140    192     0.6207   0.1510   0.0007   1.1704   1.0000   1.000 / 1.000
+  2        462     37     0.3300   0.0028   0.0000   0.3042   0.5317   0.852 / 1.000
+  3        234      6     0.1415   0.0000   0.0000   0.0333   0.2279   0.568 / 0.956
+  4        154      2     0.0723   0.0000   0.0000   0.0000   0.1165   0.307 / 0.716
+  5        130      1     0.0396   0.0000   0.0000   0.0000   0.0638   0.136 / 0.428
+  6        117      1     0.0441   0.0000   0.0000   0.0000   0.0711   0.050 / 0.209
+
+ANOMALY A1  --  the right tail is REAL. Rows with per-player ratio > 2.0 at depth 1: 192 of 1140.
+  key                      pos    pick  landed v0    delivered    ratio
+  jordan-dawson            MID      55      252.7       3767.5    14.91
+  jarryd-lyons             MID      61      144.9       2009.2    13.87
+  jase-burgoyne            SD       60      175.6       2418.3    13.77
+  thomas-stewart           SD       40      240.0       3149.8    13.12
+  robert-gray              SF       55      277.0       3545.4    12.80
+  james-sicily             SF       51      288.8       3633.8    12.58
+  errol-gulden             MID      34      639.4       7003.9    10.95
+  daniel-butler            SF       64       18.0        177.9     9.89
+  bachar-houli             SD       42      217.1       2121.5     9.77
+  elliot-yeo               SD       36      262.2       2125.1     8.10
+  dayne-zorko              MID      38      656.9       5250.5     7.99
+  harris-andrews           KPD      59      400.0       3187.5     7.97
+  These are late-pick stars, not artefacts. The distribution of ND outcomes is a spike at zero plus
+  a very long right tail; both belong in an expectation, which is why the MEAN is the right
+  statistic for a price and the median (0.15 at depth 1) is not.
+
+ANOMALY A2  --  the positional entry law goes to ~0 in its own deep tail, so ANY delivery there
+  reads as a huge ratio. Landed nd_v0.posv at the last picks:
+    KPD   pk50=417  pk55=415  pk60=419  pk62=510  pk63=558  pk64=643
+    KPF   pk50=220  pk55=190  pk60=199  pk62=240  pk63=253  pk64=291
+    MID   pk50=355  pk55=253  pk60=163  pk62=127  pk63=94  pk64=57
+    RUCK  pk50=318  pk55=186  pk60=84  pk62=31  pk63=0  pk64=0
+    SD    pk50=94  pk55=106  pk60=176  pk62=236  pk63=269  pk64=312
+    SF    pk50=281  pk55=277  pk60=148  pk62=78  pk63=70  pk64=18
+  The ORDER-29 artifact declares this about itself (nd_v0.ruck_floor_63_64: "THE FLOOR VALUE IS
+  ZERO ... a thin-cell artefact of the last two picks"). CONSEQUENCE FOR THIS ACT: the RUCK
+  position cells at depth 5-6 read D_raw 1.20 and 1.56 -- a six-year sitter apparently worth MORE
+  than a fresh entrant. That is the denominator, not the evidence, and it is the single clearest
+  demonstration that the POSITION LENS carries no usable signal at depth.
+
+CENSUS  --  depth-cell membership by entry class (fitted window). Deep cells are OLD classes.
+  depth   n    entry-year span    median entry year   %% from core (<=2014)
+  1      1140   2004-2021          2012               61%
+  2       462   2004-2021          2012               62%
+  3       234   2004-2021          2012               63%
+  4       154   2004-2021          2012               62%
+  5       130   2004-2021          2013               60%
+  6       117   2004-2020          2012               64%
+
+SENSITIVITIES  --  D(N) on each alternative basis (all-pick row, fitted window)
+  basis                                      D(2)     D(3)     D(4)     D(5)     D(6)
+  PRIMARY grace-A re-anchored              0.5684   0.2143   0.1052   0.0742   0.0905
+  S1 day-0 anchored (no re-anchor)         0.5665   0.2142   0.0923   0.0571   0.0611
+  S2 flat-14 basis (DV operative)          0.6350   0.2720   0.1335   0.0942   0.1148
+  S3 observed leg only (no tail)           0.5755   0.2319   0.1126   0.0839   0.1041
+  S4 core window only (<=2014)             0.6233   0.2762   0.1362   0.1061   0.1237
+  S5 EVER-PLAYED bound (generous)          0.6883   0.3967   0.4389   0.9585   2.3662
+
+======================================================================================================================
+LENS 2  --  DRAFT PICK.  raw cell, then K-shrunk toward the all-pick row at the SAME depth (K=15)
+======================================================================================================================
+  depth  band        n   RAW mean   median      p25      p75   D_raw   D_shrunk  | D_w_raw D_w_shrunk  borrow%   old
+  1      1-20      360    1.0620   0.6143   0.1018   1.5082  1.0325     1.0312  |  1.3383     1.3248    4.0%  1.000
+  1      21-40     360    1.0440   0.1112   0.0009   1.0641  1.0150     1.0144  |  0.9738     0.9748    4.0%  1.000
+  1      41-64     420    0.9868   0.0112   0.0000   0.6413  0.9593     0.9607  |  0.7325     0.7417    3.4%  1.000
+  2      1-20       61    0.6944   0.2306   0.0053   1.0198  0.6750     0.6540  |  0.9292     0.8507   19.7%  0.852
+  2      21-40     152    0.4368   0.0077   0.0000   0.3211  0.4246     0.4375  |  0.4941     0.4975    9.0%  0.852
+  2      41-64     249    0.6480   0.0001   0.0000   0.1079  0.6300     0.6265  |  0.4573     0.4615    5.7%  0.852
+  3      1-20       20    0.2411   0.0057   0.0001   0.1519  0.2344     0.2258  |  0.3884     0.3196   42.9%  0.568
+  3      21-40      67    0.1315   0.0000   0.0000   0.0329  0.1278     0.1436  |  0.2000     0.2052   18.3%  0.568
+  3      41-64     147    0.2582   0.0000   0.0000   0.0257  0.2510     0.2476  |  0.2188     0.2197    9.3%  0.568
+  4      1-20        4    0.0129   0.0028   0.0000   0.0157  0.0125     0.0857  |  0.0208     0.0963   78.9%  0.307
+  4      21-40      40    0.0108   0.0000   0.0000   0.0000  0.0105     0.0363  |  0.0174     0.0444   27.3%  0.307
+  4      41-64     110    0.1471   0.0000   0.0000   0.0000  0.1430     0.1385  |  0.1560     0.1513   12.0%  0.307
+  5      1-20        3    0.0021   0.0000   0.0000   0.0032  0.0021     0.0622  |  0.0034     0.0537   83.3%  0.136
+  5      21-40      32    0.0057   0.0000   0.0000   0.0000  0.0055     0.0274  |  0.0091     0.0266   31.9%  0.136
+  5      41-64      95    0.1025   0.0000   0.0000   0.0000  0.0997     0.0962  |  0.0841     0.0813   13.6%  0.136
+  6      1-20        2    0.0000   0.0000   0.0000   0.0000  0.0000     0.0799  |  0.0000     0.0627   88.2%  0.050
+  6      21-40      30    0.0000   0.0000   0.0000   0.0000  0.0000     0.0302  |  0.0000     0.0237   33.3%  0.050
+  6      41-64      85    0.1281   0.0000   0.0000   0.0000  0.1246     0.1195  |  0.0978     0.0938   15.0%  0.050
+
+======================================================================================================================
+LENS 3  --  POSITION (acquisition slot).  six groups, then the ruled collapse
+======================================================================================================================
+  depth  pos        n   RAW mean   median   D_raw   D_shrunk  | D_w_raw D_w_shrunk  borrow%   old
+  1      KPD         125    1.0381   0.3897  1.0092     1.0082  |  1.0310     1.0277   10.7%  1.000
+  1      KPF         143    1.0182   0.2119  0.9899     0.9908  |  1.0828     1.0750    9.5%  1.000
+  1      MID         422    1.0398   0.1445  1.0108     1.0105  |  1.0281     1.0271    3.4%  1.000
+  1      RUCK         58    1.0519   0.3325  1.0227     1.0180  |  1.1964     1.1561   20.5%  1.000
+  1      SD          180    0.9571   0.0653  0.9305     0.9359  |  0.8267     0.8400    7.7%  1.000
+  1      SF          212    1.0621   0.0739  1.0326     1.0304  |  0.9633     0.9657    6.6%  1.000
+  1      KPP+RUCK    326    1.0318   0.3156  1.0031     1.0030  |  1.0832     1.0795    4.4%  1.000
+  1      nonKPP      814    1.0273   0.1112  0.9987     0.9988  |  0.9667     0.9673    1.8%  1.000
+  2      KPD          56    0.5951   0.0211  0.5785     0.5764  |  0.5876     0.5758   21.1%  1.000
+  2      KPF          74    0.6848   0.0059  0.6657     0.6493  |  0.6976     0.6697   16.9%  1.000
+  2      MID         145    0.4957   0.0006  0.4820     0.4901  |  0.3715     0.3865    9.4%  0.852
+  2      RUCK         37    1.0923   0.2832  1.0620     0.9196  |  1.1675     0.9841   28.8%  1.000
+  2      SD           79    0.3488   0.0001  0.3391     0.3757  |  0.4097     0.4292   16.0%  0.852
+  2      SF           71    0.6513   0.0003  0.6332     0.6219  |  0.4463     0.4612   17.4%  0.852
+  2      KPP+RUCK    167    0.7450   0.0587  0.7243     0.7114  |  0.7648     0.7456    8.2%  1.000
+  2      nonKPP      295    0.4939   0.0004  0.4801     0.4844  |  0.3998     0.4061    4.8%  0.852
+  3      KPD          35    0.2331   0.0000  0.2267     0.2230  |  0.2929     0.2734   30.0%  0.956
+  3      KPF          40    0.1333   0.0000  0.1296     0.1527  |  0.2147     0.2183   27.3%  0.956
+  3      MID          65    0.1248   0.0000  0.1213     0.1388  |  0.1606     0.1732   18.8%  0.568
+  3      RUCK         19    0.5495   0.0624  0.5342     0.3931  |  0.6125     0.4428   44.1%  0.956
+  3      SD           41    0.2258   0.0000  0.2195     0.2181  |  0.2089     0.2140   26.8%  0.568
+  3      SF           34    0.3025   0.0000  0.2941     0.2697  |  0.1135     0.1485   30.6%  0.568
+  3      KPP+RUCK     94    0.2546   0.0000  0.2475     0.2429  |  0.3242     0.3110   13.8%  0.956
+  3      nonKPP      140    0.1975   0.0000  0.1921     0.1942  |  0.1633     0.1696    9.7%  0.568
+  4      KPD          23    0.1048   0.0000  0.1019     0.1032  |  0.1688     0.1482   39.5%  0.716
+  4      KPF          28    0.0101   0.0000  0.0098     0.0431  |  0.0162     0.0512   34.9%  0.716
+  4      MID          41    0.0937   0.0000  0.0911     0.0949  |  0.0887     0.0962   26.8%  0.307
+  4      RUCK         11    0.7929   0.0636  0.7709     0.3868  |  0.6991     0.3630   57.7%  0.716
+  4      SD           27    0.0404   0.0000  0.0393     0.0628  |  0.0651     0.0835   35.7%  0.307
+  4      SF           24    0.0133   0.0000  0.0129     0.0484  |  0.0214     0.0580   38.5%  0.307
+  4      KPP+RUCK     62    0.1841   0.0000  0.1790     0.1646  |  0.1940     0.1789   19.5%  0.716
+  4      nonKPP       92    0.0571   0.0000  0.0555     0.0625  |  0.0642     0.0716   14.0%  0.307
+  5      KPD          16    0.0000   0.0000  0.0000     0.0359  |  0.0000     0.0309   48.4%  0.428
+  5      KPF          27    0.0118   0.0000  0.0115     0.0339  |  0.0191     0.0350   35.7%  0.428
+  5      MID          34    0.0002   0.0000  0.0002     0.0229  |  0.0003     0.0197   30.6%  0.136
+  5      RUCK          8    1.2001   0.1370  1.1667     0.4542  |  0.9705     0.3792   65.2%  0.428
+  5      SD           23    0.0000   0.0000  0.0000     0.0293  |  0.0000     0.0252   39.5%  0.136
+  5      SF           22    0.0000   0.0000  0.0000     0.0301  |  0.0000     0.0259   40.5%  0.136
+  5      KPP+RUCK     51    0.1945   0.0000  0.1891     0.1630  |  0.1623     0.1399   22.7%  0.428
+  5      nonKPP       79    0.0001   0.0000  0.0001     0.0119  |  0.0001     0.0103   16.0%  0.136
+  6      KPD          15    0.0000   0.0000  0.0000     0.0453  |  0.0000     0.0355   50.0%  0.209
+  6      KPF          24    0.0000   0.0000  0.0000     0.0348  |  0.0000     0.0273   38.5%  0.209
+  6      MID          29    0.0000   0.0000  0.0000     0.0309  |  0.0000     0.0242   34.1%  0.050
+  6      RUCK          7    1.5560   0.2594  1.5127     0.5430  |  1.1878     0.4264   68.2%  0.209
+  6      SD           20    0.0000   0.0000  0.0000     0.0388  |  0.0000     0.0305   42.9%  0.050
+  6      SF           22    0.0000   0.0000  0.0000     0.0367  |  0.0000     0.0288   40.5%  0.050
+  6      KPP+RUCK     46    0.2368   0.0000  0.2302     0.1958  |  0.1808     0.1538   24.6%  0.209
+  6      nonKPP       71    0.0000   0.0000  0.0000     0.0158  |  0.0000     0.0124   17.4%  0.050
+
+======================================================================================================================
+SENSITIVITY PANEL  --  entry_year >= 2022.  EXCLUDED FROM EVERY FITTED NUMBER (CENSOR-1).
+======================================================================================================================
+  depth      n   RAW mean   tailshr   usable?
+  1        244    1.7669    0.8778   NO -- mean tail share > 0.50 (CENSOR-3): this is the engine projecting the very players in question
+  2         82    1.3005    0.7560   NO -- mean tail share > 0.50 (CENSOR-3): this is the engine projecting the very players in question
+  3         39    0.6982    0.5978   NO -- mean tail share > 0.50 (CENSOR-3): this is the engine projecting the very players in question
+  4         14    0.0934    0.1429   marginal
+
+THE 29B REINFLATED ROWS  (0-career-game rows the flat-v0 keying returned to full v0)
+  wired rows on the 29B day-0 print     : 89  (fresh ND 46 + pool 43)
+  year-2+ sitters across ALL wired rows  : 42   (of which ND 1-64 22, pool 20)
+  of those, in the 2022+ sensitivity tier: 42  (contribute NOTHING to any fitted number)
+  ND 1-64 year-2+ sitters in 2022+ tier  : 22 of 22
+
+======================================================================================================================
+SECONDARY  --  THE POOL-SYMMETRIC (ORDER-21 / psi) READING, OBSERVED LEG, LIVE STORE
+======================================================================================================================
+  pool construction: R(cls,d) = E[winsor(O/entry_anchor,2)| sit-out] / norm(cls,d),
+                     norm(cls,d) = E[winsor(O/entry_anchor,2)] over ALL cells at that depth.
+  ND analogue here : Rn(N) = E[obs_from_N / v0 | sitting at N] / E[obs_from_N / v0 | ALL entrants]
+  winsor 2.0 on the ratio, exactly as ORDER 21. Observed leg only, so both legs are like for like.
+
+  depth   n_sit  n_all   E[sit]   norm    Rn(N)   D(N) primary   old los_decay(nonKPP)
+  1         695    695   0.6057  0.6057   1.0000         1.0000   1.000
+  2         286    695   0.3723  0.6309   0.5900         0.5684   0.852
+  3         148    695   0.1858  0.6445   0.2883         0.2143   0.568
+  4          95    695   0.0951  0.6412   0.1483         0.1052   0.307
+  5          78    695   0.0564  0.6091   0.0926         0.0742   0.136
+  6          75    695   0.0571  0.5722   0.0999         0.0905   0.050
+
+  ORDER-21 pool retention surface, for the side-by-side (whole_pool, depth 1..6):
+    nonKPP  0.624  0.380  0.380  0.380  0.380  0.380
+    KPP     0.817  0.500  0.467  0.359  0.359  0.336
+    RUCK    1.000  0.522  0.522  0.488  0.354  0.344
+
+THE RECOMMENDED SURFACE (prestated primary, all-pick, running-min monotone enforcement)
+  depth   D(N) raw   D_rec(N)   D_w(N) robustness   |D-D_w|   monotone repair?
+  1         1.0000     1.0000           1.0000    0.0000   -
+  2         0.5684     0.5684           0.5317    0.0367   -
+  3         0.2143     0.2143           0.2279    0.0136   -
+  4         0.1052     0.1052           0.1165    0.0113   -
+  5         0.0742     0.0742           0.0638    0.0105   -
+  6         0.0905     0.0742           0.0711    0.0194   YES
+
+OPTIONAL  --  THE OLD FUNCTIONAL FORM RE-FITTED (offered, NOT recommended over the table)
+  form kept: los_decay = exp(-C * max(0, s - GRACE)**P), GRACE = 1.0 for EVERY position
+  shipped   C = 0.1600   P = 1.8200   GRACE = KPF/KPD/RUCK 2.5, others 1.0
+  RE-FITTED C = 0.6573   P = 0.9780   GRACE = 1.0 everywhere
+  depth   D_rec(N)   refit    residual
+  2        0.5684   0.5182    -0.0501
+  3        0.2143   0.2740     0.0597
+  4        0.1052   0.1459     0.0407
+  5        0.0742   0.0781     0.0038
+  6        0.0742   0.0419    -0.0323
+  The re-fit is offered for continuity of form only. It misses the table by up to 0.05 in the
+  middle of the range; the five-row table IS the measurement and is what the seat recommends.
+
+======================================================================================================================
+NAMED TEST ROWS  --  what each law says TODAY.  NOTHING IS WIRED; this is arithmetic on a packet.
+======================================================================================================================
+  player             pos   pick  depth  29B flat    old los    DERIVED D_pickband      basis
+  josh-smillie       MID   7     2          1617 0.852/1378  0.568/919       1058    grace-A
+  harry-demattia     MID   25    3           892  0.568/507  0.214/191        128    grace-A
+  max-knobel         RUCK  42    4           834  0.716/597   0.105/88        116    grace-A
+  harrison-ramm      KPD   3     1            --      1.000       POOL         --        n/a
+  mani-liddy         MID   15    1            --      1.000       POOL         --        n/a
+  vigo-visentini     RUCK  5     3            --      0.956       POOL         --        n/a
+

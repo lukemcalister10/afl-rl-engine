@@ -1,0 +1,90 @@
+================================================================================================================================
+ORDER M — THE TRADE-OFF LADDER, IN BOARD POINTS
+================================================================================================================================
+  landing candidate 1f176444 is the base every column is compared to.
+  harry-dean lands there at 2400; the owner wants ~2,600.  cooper-duff-tytler 1572; the owner wants ~1,800.
+  the three G6 rows land at xavier-taylor 1176, daniel-annable 1530, dylan-patterson 1467, and the law is
+  that none of them may go UP.
+
+================================================================================================================================
+LADDER A — ETA WALKED AT THE RULED DOSE 0.40 (every other knob held)
+================================================================================================================================
+  the navigation instrument says the smallest LEGAL eta at dose 0.40 is 0.50 — the row at the bottom.
+
+  tag   dose   eta |     dean      CDT |   x-tayl  annable  patters | nav class nav 1-10 |  vet net
+                   |    ~2600    ~1800 |  no rise  no rise  no rise |     <1.14   <=+14% |    <=668
+  --------------------------------------------------------------------------------------------------------------------------
+  base     -     - |     2400     1572 |     1176     1530     1467 |    1.0421   +7.20% |        0
+  M0    0.40  0.00 |     3069     2057 |     1345     1761     1824 |    1.2052  +30.94% |    +2781   G6: 3 of 3 rise
+  E10   0.40  0.10 |     2936     1947 |     1308     1716     1747 |    1.1745  +26.27% |    +2104   G6: 3 of 3 rise
+  E20   0.40  0.20 |     2803     1836 |     1271     1672     1670 |    1.1439  +21.60% |    +1433   G6: 3 of 3 rise
+  E30   0.40  0.30 |     2670     1726 |     1235     1627     1593 |    1.1132  +16.92% |     +756   G6: 3 of 3 rise
+  E40   0.40  0.40 |     2536     1616 |     1198     1582     1517 |    1.0825  +12.25% |      +80   G6: 3 of 3 rise
+  K     0.40  0.50 |     2403     1505 |     1162     1537     1440 |    1.0519   +7.58% |     -601   G6: 1 of 3 rise
+
+================================================================================================================================
+LADDER B — THE LEGAL FRONTIER: the SMALLEST eta each dose can carry
+================================================================================================================================
+  every row except the first is the CHEAPEST legal eta at that dose. the first row is dose 0 with NO eta at all, and it is illegal — it is there as the far end of the curve.
+
+  tag   dose   eta |     dean      CDT |   x-tayl  annable  patters | nav class nav 1-10 |  vet net
+                   |    ~2600    ~1800 |  no rise  no rise  no rise |     <1.14   <=+14% |    <=668
+  --------------------------------------------------------------------------------------------------------------------------
+  base     -     - |     2400     1572 |     1176     1530     1467 |    1.0421   +7.20% |        0
+  MLO   0.00  0.00 |     2872     1965 |     1307     1671     1724 |         -        - |    +2832   G6: 3 of 3 rise
+  MMIN  0.00  0.31 |     2451     1635 |     1216     1582     1538 |    1.0494   +9.27% |     +688   G6: 3 of 3 rise
+  F20   0.20  0.39 |     2424     1578 |     1193     1564     1497 |    1.0513   +8.68% |     +144   G6: 3 of 3 rise
+  K     0.40  0.50 |     2403     1505 |     1162     1537     1440 |    1.0519   +7.58% |     -601   G6: 1 of 3 rise
+  F60   0.60  0.64 |     2388     1428 |     1123     1501     1370 |    1.0493   +5.58% |    -1542   G6 holds
+  F70   0.70  0.72 |     2378     1392 |     1101     1480     1331 |    1.0497   +4.70% |    -2082   G6 holds
+
+================================================================================================================================
+WHAT THE LADDER SAYS, IN ONE PLACE
+================================================================================================================================
+  At the RULED DOSE 0.40, every knob but eta held. Crossings are interpolated between built boards.
+
+    harry-dean reaches ~2,600           at eta = 0.35   -> he needs eta AT OR BELOW this
+    cooper-duff-tytler reaches ~1,800   at eta = 0.23   -> he needs eta AT OR BELOW this
+    xavier-taylor stops rising          at eta = 0.46   -> G6 needs eta AT OR ABOVE this
+    daniel-annable stops rising         at eta = NOT REACHED even at eta 0.50 — this is ORDER K's own +7 breach   -> G6 needs eta AT OR ABOVE this
+    dylan-patterson stops rising        at eta = 0.46   -> G6 needs eta AT OR ABOVE this
+    the BOARD IS LEGAL                  at eta = 0.50 and above  (TRADEOFF_M.json Q1, dose 0.40)
+
+    THE TWO WINDOWS:
+      to satisfy G5 (the owner's two rows) eta must be at or below   0.23
+      to satisfy G6 and the board's own rails eta must be at least   0.50
+      -> THEY DO NOT OVERLAP. The gap is 0.27 of eta. There is no setting of eta at the ruled
+         dose that gives the owner both. This is the finding, and it is not a near miss.
+
+  Over the whole LEGAL FRONTIER (ladder B, every row a cheapest-legal-eta point):
+    the best harry-dean available is 2451, at dose 0.00 / eta 0.31  (tag MMIN)
+    the owner wants ~2,600. The frontier is short of it by 149 points.
+    the best cooper-duff-tytler available is 1635, against ~1,800 — short by 165.
+    the ILLEGAL far end (dose 0, no eta at all) buys dean 2872 and CDT 1965.
+    That gap is the trade the owner is being asked to make, and it is priced here rather than argued.
+
+================================================================================================================================
+THE MAXIMUM-KAPPA CONTROL — can kappa charge the sub-expectation rows once eta is gone?
+================================================================================================================================
+  kappa 0.60 with gamma_u 16 is the HARDEST kappa the ruled rho32-monotonicity constraint admits
+  anywhere on the declared grid. It is three times ORDER K's 0.20. eta is at zero on both rows.
+
+  tag     dose  kappa   eta |   x-tayl  annable  patters |     dean      CDT
+  base       -      -     - |     1176     1530     1467 |     2400     1572
+  KMAX    0.00   0.60  0.00 |     1358     1781     1889 |     3190     2160   G6: 3 of 3 STILL RISE
+  KMX4    0.40   0.60  0.00 |     1377     1835     1956 |     3485     2278   G6: 3 of 3 STILL RISE
+
+  THE SAME TWO BOARDS AT THE GENTLEST kappa, so the DIRECTION of the kappa axis is visible:
+  tag     dose  kappa |   x-tayl  annable  patters
+  MLO     0.00   0.15 |     1307     1671     1724   (the coolest eta=0 point in the grid)
+  KMAX    0.00   0.60 |     1358     1781     1889   (the HARDEST kappa the ruled constraints allow)
+  move                |      +51     +110     +165   <- what turning kappa UP four times over does to them
+
+  -> KAPPA CANNOT CHARGE THEM. At the hardest kappa the ruled constraints allow, with eta at
+     zero, all three sub-expectation rows still sit ABOVE their landing values.
+     AND IT IS WORSE THAN THAT, so the packet says it in the strong form: turning kappa UP
+     does not charge them at all — it RAISES them further. Kappa is not a weak substitute
+     for eta. It pushes the wrong way on exactly these rows.
+     The reason is structural. Kappa moves weight BETWEEN two legs — off pedigree, onto shown
+     production — and it carries its own age credit alongside. Eta charged one leg DOWN. Those are
+     different operations. Kappa can tilt the balance; only eta could subtract from the row.

@@ -1,0 +1,51 @@
+=== GUARD 5 — run_panel.sh, on this seat's own worktree at 51707fd ===
+engine: 53fff6de156efa870da11edc5cbaa75a
+
+
+==================== STALE-BOOT GUARD (Guard 5) FAILED — BUILD HALTED ====================
+  - checkout rl_model 98f16794 != pinned rl_model 14000af2 (data/expected_boot.json 'rl_model', full-hash compare) — the rl_model source (engine/rl_after/rl_model.py) and its pin are out of sync (re-pin at a bake, or the pin drifted; never boot on an unverified rl_model)
+  - v0surf LOAD-PATH MISMATCH: the engine will LOAD
+        /home/claude/v0surf.pkl
+        md5 fbc5b393  !=  pinned 5dd34ca8 (data/expected_boot.json 'v0surf', full-hash compare).
+        The engine's own precedence ($RL_V0SURF_PKL -> /home/claude/v0surf.pkl -> <repo>/data/v0surf.pkl) resolved to a file that is NOT the pinned frozen artifact — an env var or a stale workspace copy is shadowing the frozen source. Re-run bootstrap.sh (or unset the override); never boot on an unverified LOADED artifact.
+  - run_panel about to read ENGINE _merged_recover.py
+        at /home/claude/rl_workspace/rl_after/_merged_recover.py
+        md5 e886222f  !=  expected a353a9d3 (pinned; repo checkout )
+        STALE BOOT: this is not the checked-out store. Re-run bootstrap.sh to re-seed the workspace from the checked-out source; never boot on an unverified store.
+  - fv CHECKOUT DRIFT: checked-out forward_valuation identity
+        /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-final/engine/forward_valuation
+        6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346  !=  pinned 2621b56a32805f15b5084a45f851e882d1a0c6cf9c4fc2512550d394760f7dc6 (data/expected_boot.json 'fv')
+        An engine/forward_valuation source changed without re-stamping the pin (or the pin drifted). Re-pin at a bake in the same commit that moves the source; never boot on an unverified forward_valuation.
+  - fv LOADED-PATH DRIFT: the engine will IMPORT forward-valuation from
+        RL_FV=/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-final/engine/forward_valuation
+        resolved dir /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-final/engine/forward_valuation
+        identity 6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346  !=  pinned 2621b56a32805f15b5084a45f851e882d1a0c6cf9c4fc2512550d394760f7dc6 (data/expected_boot.json 'fv')
+        An explicit RL_FV (or a stale workspace copy) points at a forward_valuation tree that is NOT the pinned source — the exact stale-import hole Guard 5 exists to close. Point RL_FV at the checked-out engine/forward_valuation (or unset it so the checkout is used); never boot on an unverified loaded forward_valuation.
+=========================================================================================
+run_panel exit=1
+
+=== GUARD 5 — its own named remedy, bootstrap.sh ===
+  ENV PIN        : numpy 2.4.4 + bundled OpenBLAS 05c9f9eb (byte-exact to the pin; item 392)
+
+==================== STALE-BOOT GUARD (Guard 5) FAILED — BUILD HALTED ====================
+  - checkout rl_model 98f16794 != pinned rl_model 14000af2 (data/expected_boot.json 'rl_model', full-hash compare) — the rl_model source (engine/rl_after/rl_model.py) and its pin are out of sync (re-pin at a bake, or the pin drifted; never boot on an unverified rl_model)
+  - v0surf LOAD-PATH MISMATCH: the engine will LOAD
+        /home/claude/v0surf.pkl
+        md5 fbc5b393  !=  pinned 5dd34ca8 (data/expected_boot.json 'v0surf', full-hash compare).
+        The engine's own precedence ($RL_V0SURF_PKL -> /home/claude/v0surf.pkl -> <repo>/data/v0surf.pkl) resolved to a file that is NOT the pinned frozen artifact — an env var or a stale workspace copy is shadowing the frozen source. Re-run bootstrap.sh (or unset the override); never boot on an unverified LOADED artifact.
+  - bootstrap about to read ENGINE _merged_recover.py
+        at /home/claude/rl_workspace/rl_after/_merged_recover.py
+        md5 53fff6de  !=  expected a353a9d3 (pinned; repo checkout )
+        STALE BOOT: this is not the checked-out store. Re-run bootstrap.sh to re-seed the workspace from the checked-out source; never boot on an unverified store.
+  - fv CHECKOUT DRIFT: checked-out forward_valuation identity
+        /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-final/engine/forward_valuation
+        6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346  !=  pinned 2621b56a32805f15b5084a45f851e882d1a0c6cf9c4fc2512550d394760f7dc6 (data/expected_boot.json 'fv')
+        An engine/forward_valuation source changed without re-stamping the pin (or the pin drifted). Re-pin at a bake in the same commit that moves the source; never boot on an unverified forward_valuation.
+  - fv LOADED-PATH DRIFT: the engine will IMPORT forward-valuation from
+        RL_FV=None
+        resolved dir /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-final/engine/forward_valuation
+        identity 6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346  !=  pinned 2621b56a32805f15b5084a45f851e882d1a0c6cf9c4fc2512550d394760f7dc6 (data/expected_boot.json 'fv')
+        An explicit RL_FV (or a stale workspace copy) points at a forward_valuation tree that is NOT the pinned source — the exact stale-import hole Guard 5 exists to close. Point RL_FV at the checked-out engine/forward_valuation (or unset it so the checkout is used); never boot on an unverified loaded forward_valuation.
+=========================================================================================
+bootstrap FAILED: seeded workspace does not match the pinned store/register (see above)
+bootstrap exit=1

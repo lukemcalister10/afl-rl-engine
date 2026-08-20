@@ -1,0 +1,44 @@
+ORDER 33 W4 STEP 1 -- PANEL BUILD.  store cb38ef11 (2650 players)  inprog=2026
+bars asserted against Ruling 1: {"KPD": 65.4, "KPF": 63.8, "MID": 77.1, "RUCK": 75.5, "SD": 75.3, "SF": 67.9}
+players with a scoreable played series: 1942   (played but no bar group at all: 0)
+consecutive played pairs (both seasons played, later season <= 2025): 8479
+
+PANEL: 8479 states, 1513 players
+  target (a) next-season Y1 (Y+1<=2025):   n=7924, players=1445
+  target (b) 3yr forward R3 (Y+3<=2025):   n=6796
+  target (c) 6yr forward R6 (Y<=2019):     n=5159  [the ORIGINAL target window]
+  s3 ND 1-64 entry>=2005 subpanel on (c): n=3144   (original 30B-M panel had n=4033 on ND states)
+
+POWER COMPARISON (prereg section: the original L->T test ran on n=4033 ND-only 6yr-window states;
+target (a) here pools 7924 states / 1513 players, all entry types, 1 df)
+
+STATES (target a) BY AGE BAND x POSITION
+age         KPD    KPF    MID   RUCK     SD     SF     ALL
+<=19          5      4     17      1      2     14      43
+20-21       116    187    460     46    296    472    1577
+22-23       198    224    510     82    373    464    1851
+24-25       199    210    375     93    328    366    1571
+26-28       226    210    432    107    342    354    1671
+29+         193    154    301    108    221    234    1211
+ALL         937    989   2095    437   1562   1904    7924
+
+THE AGE CURVE d(age) -- population expected one-season change in season points (pairs, 2026 out)
+age           n      mean dP   per-position (shrunk, k=50), n in parens
+18            1         +4.1   SF +4(1)
+19           42        +44.1   KPD +42(5)  KPF +44(4)  MID +47(17)  RUCK +43(1)  SD +47(2)  SF +41(13)
+20          711        +47.7   KPD +35(50)  KPF +44(79)  MID +48(207)  RUCK +38(15)  SD +30(123)  SF +66(237)
+21          935        +42.1   KPD +43(69)  KPF +44(116)  MID +47(266)  RUCK +43(31)  SD +20(193)  SF +53(260)
+22          997        +54.9   KPD +32(94)  KPF +62(117)  MID +50(271)  RUCK +50(40)  SD +35(212)  SF +85(263)
+23          954        +26.2   KPD +23(109)  KPF +26(122)  MID +8(258)  RUCK +58(44)  SD +19(188)  SF +44(233)
+24          882        +43.6   KPD +43(109)  KPF +69(115)  MID +40(203)  RUCK +31(50)  SD +32(186)  SF +46(219)
+25          779         +4.3   KPD +16(98)  KPF +8(107)  MID -38(193)  RUCK +31(45)  SD +8(158)  SF +25(178)
+26          703         +4.3   KPD -10(89)  KPF +34(89)  MID -7(173)  RUCK -21(47)  SD +0(146)  SF +22(159)
+27          611        -18.3   KPD +3(81)  KPF -1(84)  MID -66(155)  RUCK -35(40)  SD -15(124)  SF +13(127)
+28          497        -20.3   KPD -29(74)  KPF -4(62)  MID -53(124)  RUCK -18(29)  SD -18(102)  SF +8(106)
+29          426        -27.1   KPD -20(73)  KPF +4(43)  MID -51(104)  RUCK -47(32)  SD -34(94)  SF -9(80)
+30          333        -54.3   KPD -49(49)  KPF -48(40)  MID -109(87)  RUCK -52(30)  SD -29(58)  SF -24(69)
+31          246        -71.8   KPD -65(35)  KPF -73(29)  MID -125(62)  RUCK -85(24)  SD -41(43)  SF -37(53)
+32          174        -51.7   KPD -26(28)  KPF -32(24)  MID -105(42)  RUCK -53(14)  SD -75(33)  SF -10(33)
+33           96        -89.3   KPD -101(20)  KPF -94(14)  MID -86(18)  RUCK -92(8)  SD -93(20)  SF -70(16)
+34+          92        -67.6   KPD -65(13)  KPF -72(20)  MID -85(17)  RUCK -73(14)  SD -71(12)  SF -40(16)
+overall mean pair delta: +12.7 points

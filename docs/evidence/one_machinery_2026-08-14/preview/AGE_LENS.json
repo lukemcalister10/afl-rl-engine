@@ -1,0 +1,290 @@
+{
+ "age_bins_note": "the committed table pools 22 and 23, so the brief's <=20 / 21-22 / 23+ split cannot be cut exactly; the table's own granularity is used",
+ "applied": false,
+ "bands": {
+  "16-35": {
+   "all_ages": {
+    "delta": 305.9591597095569,
+    "n_strata": 26,
+    "sd": 415.01331539161237,
+    "se": 112.01761048661743,
+    "w": 190.0
+   },
+   "cells": {
+    "21": {
+     "matched": {
+      "delta": -88.71192645608012,
+      "n_eff": 13.444444444444445,
+      "n_strata": 17,
+      "sd": 408.42531531690236,
+      "se": 111.38872235915518,
+      "w": 33.0
+     },
+     "pool": {
+      "iqr": 406.85913627860117,
+      "mean": 505.2711808778852,
+      "median": 415.8314628518706,
+      "n": 203,
+      "n_cells": 83,
+      "p25": 259.60377868578126,
+      "p75": 666.4629149643824,
+      "zero_share": 0.054187192118226604
+     },
+     "sigma_hat": -0.09604600838421826,
+     "sigma_hat_se": 0.12059756324772643
+    },
+    "22-23": {
+     "matched": {
+      "delta": -261.6288028569596,
+      "n_eff": 11.655172413793103,
+      "n_strata": 15,
+      "sd": 778.0866726791401,
+      "se": 227.91275214695878,
+      "w": 26.0
+     },
+     "pool": {
+      "iqr": 273.12247987817034,
+      "mean": 349.15285624533965,
+      "median": 267.2328552109144,
+      "n": 225,
+      "n_cells": 83,
+      "p25": 177.84541704387058,
+      "p75": 450.9678969220409,
+      "zero_share": 0.19111111111111112
+     },
+     "sigma_hat": -0.2832584433299755,
+     "sigma_hat_se": 0.24675498524332587
+    },
+    "24+": {
+     "matched": {
+      "delta": -170.1793064671752,
+      "n_eff": 3.5714285714285716,
+      "n_strata": 4,
+      "sd": 331.5056225942672,
+      "se": 175.41628712081317,
+      "w": 5.0
+     },
+     "pool": {
+      "iqr": 15.505260017758332,
+      "mean": 149.60774460065696,
+      "median": 144.43188581470207,
+      "n": 82,
+      "n_cells": 50,
+      "p25": 137.4205286051665,
+      "p75": 152.92578862292484,
+      "zero_share": 0.3780487804878049
+     },
+     "sigma_hat": -0.18424854186724185,
+     "sigma_hat_se": 0.1899184794715878
+    },
+    "<=20": {
+     "matched": {
+      "delta": 362.7387423079199,
+      "n_eff": 9.926470588235293,
+      "n_strata": 20,
+      "sd": 375.149689006275,
+      "se": 119.07131795681873,
+      "w": 90.0
+     },
+     "pool": {
+      "iqr": 573.2781448348785,
+      "mean": 873.4487695157087,
+      "median": 778.8472455752126,
+      "n": 324,
+      "n_cells": 133,
+      "p25": 541.2368083156514,
+      "p75": 1114.51495315053,
+      "zero_share": 0.0030864197530864196
+     },
+     "sigma_hat": 0.3927274457537093,
+     "sigma_hat_se": 0.12891530214330849
+    }
+   },
+   "published_ci": [
+    0.20785637080305955,
+    0.4561725431846156
+   ],
+   "published_sigma": 0.3312537241905247
+  },
+  "36-70": {
+   "all_ages": {
+    "delta": 379.51277773685587,
+    "n_strata": 27,
+    "sd": 521.4490620462078,
+    "se": 134.65601978472864,
+    "w": 226.0
+   },
+   "cells": {
+    "21": {
+     "matched": {
+      "delta": 235.76718337169515,
+      "n_eff": 10.48471615720524,
+      "n_strata": 18,
+      "sd": 742.1371567947396,
+      "se": 229.1953684518972,
+      "w": 49.0
+     },
+     "pool": {
+      "iqr": 836.659532247904,
+      "mean": 1320.8120043108615,
+      "median": 1255.337754329654,
+      "n": 189,
+      "n_cells": 83,
+      "p25": 878.1093953319769,
+      "p75": 1714.768927579881,
+      "zero_share": 0.005291005291005291
+     },
+     "sigma_hat": 0.10219892809020488,
+     "sigma_hat_se": 0.09935021763438323
+    },
+    "22-23": {
+     "matched": {
+      "delta": 51.20278371240582,
+      "n_eff": 15.229607250755286,
+      "n_strata": 23,
+      "sd": 572.0440305132765,
+      "se": 146.58350638044527,
+      "w": 71.0
+     },
+     "pool": {
+      "iqr": 518.790574404937,
+      "mean": 737.7896677667218,
+      "median": 658.1885033252092,
+      "n": 387,
+      "n_cells": 111,
+      "p25": 418.6041496681173,
+      "p75": 937.3947240730544,
+      "zero_share": 0.03617571059431524
+     },
+     "sigma_hat": 0.02219507200199561,
+     "sigma_hat_se": 0.06354012892526971
+    },
+    "24+": {
+     "matched": {
+      "delta": -187.6684651672606,
+      "n_eff": 9.523809523809524,
+      "n_strata": 12,
+      "sd": 829.8992577031721,
+      "se": 268.918094748771,
+      "w": 20.0
+     },
+     "pool": {
+      "iqr": 319.5380646887445,
+      "mean": 410.82215895110903,
+      "median": 354.3884795309471,
+      "n": 227,
+      "n_cells": 103,
+      "p25": 235.69447999812962,
+      "p75": 555.2325446868741,
+      "zero_share": 0.1762114537444934
+     },
+     "sigma_hat": -0.08134938757015565,
+     "sigma_hat_se": 0.11656898400510822
+    },
+    "<=20": {
+     "matched": {
+      "delta": 98.49471328543075,
+      "n_eff": 6.4222222222222225,
+      "n_strata": 10,
+      "sd": 1024.7716764979334,
+      "se": 404.37514059984755,
+      "w": 17.0
+     },
+     "pool": {
+      "iqr": 617.7289109204976,
+      "mean": 1567.8648261493533,
+      "median": 1564.3529241064202,
+      "n": 84,
+      "n_cells": 51,
+      "p25": 1244.9867776982228,
+      "p75": 1862.7156886187204,
+      "zero_share": 0.0
+     },
+     "sigma_hat": 0.04269489068142957,
+     "sigma_hat_se": 0.1752860823318117
+    }
+   },
+   "published_ci": [
+    0.05904257996923356,
+    0.2803984450783745
+   ],
+   "published_sigma": 0.16450889613460615
+  }
+ },
+ "instrument": "cell-matched pick contrast (HI 1-12 vs LO 21-64) within position x output-quintile strata",
+ "lens": "age-within-games",
+ "order": "30B-P",
+ "pre_numeraire": true,
+ "share_scaling": "sigma_hat(band,age) = sigma_published(band) x Delta(band,age) / Delta(band,all ages) -- DECLARED ASSUMPTION: sigma proportional to the matched pick gap within a band",
+ "signal": true,
+ "source": "PERSISTENCE_TABLE.json",
+ "source_meta": {
+  "bars": {
+   "KPD": 65.4,
+   "KPF": 63.8,
+   "MID": 77.1,
+   "RUCK": 75.5,
+   "SD": 75.3,
+   "SF": 67.9
+  },
+  "censor_left": "entry years 2003-2004 excluded: store season rows begin 2005",
+  "censor_right": "2026 in progress: contributes no future value, supplies no fitting state",
+  "date": "2026-08-14",
+  "disc": 0.14,
+  "force_majeure": [
+   "paddy-mccartin",
+   "thomas-boyd"
+  ],
+  "horizon_primary": 6,
+  "n_careers": 767,
+  "n_pool_states": 1706,
+  "n_states": 4033,
+  "now": 2026,
+  "order": "30B-M",
+  "pins": {
+   "board": "36d5dfc73e2b508ece530bc7dfae2090",
+   "layer1": "ad1229ea6f443538479447132382b21c",
+   "merged_recover": "3c7e383a370a50426ed6c91570536fde",
+   "pvc_curve_v2": "06146b00daf2043487f58a8b9f842a1e",
+   "rl_model": "14000af2a46f7a3c4cdfde303f5a1aff",
+   "store": "cb38ef1171dcf20aae66ebf12682be0d",
+   "v0_artifact": "dc324ad924370d0eb6c012d5a3a93371"
+  },
+  "population": "ND effective_pick 1-64, entry_year>=2005, state year <= 2019 (H=6 fully observed)",
+  "scale": 1.3448289549632555,
+  "scorer": "26B Layer 2 pricing core (Ruling 1 bars, Ruling 3 season callable, sqrt games weight, no era normalisation), discount re-anchored at the state year",
+  "survivorship": "zeros stay in; a season with no row contributes 0"
+ },
+ "verdict": {
+  "16-35": {
+   "ci90": [
+    184.1592227733642,
+    881.6768747768258
+   ],
+   "delta_old": -170.1793064671752,
+   "delta_young": 362.7387423079199,
+   "diff": 532.918048775095,
+   "se_old": 175.41628712081317,
+   "se_young": 119.07131795681873,
+   "separated": true,
+   "sigma_hat_old": -0.18424854186724185,
+   "sigma_hat_young": 0.3927274457537093,
+   "z": 2.513628688011126
+  },
+  "36-70": {
+   "ci90": [
+    -512.6976619512185,
+    1085.0240188566013
+   ],
+   "delta_old": -187.6684651672606,
+   "delta_young": 98.49471328543075,
+   "diff": 286.16317845269134,
+   "se_old": 268.918094748771,
+   "se_young": 404.37514059984755,
+   "separated": false,
+   "sigma_hat_old": -0.08134938757015565,
+   "sigma_hat_young": 0.04269489068142957,
+   "z": 0.589262115184753
+  }
+ }
+}

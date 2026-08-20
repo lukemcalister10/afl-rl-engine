@@ -1,0 +1,23 @@
+{
+ "instrument": "docs/evidence/sitter_fade_2026-08-14/o30a2_recut.py",
+ "instrument_md5": "fe6f436ab23056d717f693091946309a",
+ "max_deviation": 0.0,
+ "only_edit": {
+  "from": "OUTD = HERE",
+  "to": "OUTD = '/home/user/afl-rl-engine/.claude/worktrees/agent-a9b412b92decdb5b8/docs/evidence/order_a_2026-08-17'"
+ },
+ "order": "ORDER A / Candidate 32 \u2014 fade row re-run whole under the new definitions",
+ "p_d0_held": true,
+ "population_note": "depth-N cells condition on gameless histories; the new credit/reset/bar definitions coincide with the old on that population",
+ "rederived_32": {
+  "2": 0.5582775239783688,
+  "3": 0.2747857941376827,
+  "4": 0.39727085107749216
+ },
+ "wired_31f": {
+  "1": 1.0,
+  "2": 0.5582775239783688,
+  "3": 0.2747857941376827,
+  "4": 0.39727085107749216
+ }
+}

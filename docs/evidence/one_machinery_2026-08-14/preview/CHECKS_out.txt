@@ -1,0 +1,43 @@
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+=== (1) THE TWO READINGS OF "THE PEDIGREE SHARE", BOTH REPORTED
+  WEIGHT share  = sigma(g)                      -- EXACT BY CONSTRUCTION for every blended row.
+  VALUE  share  = sigma(g) x v0 / printed price -- what fraction of the PRINTED number the
+                  pedigree leg actually is. They coincide only where v0 == the price.
+  cg 1-5    n  60   sigma(weight) med 0.8220 [0.6698..0.9218]   VALUE share med 0.7867 [0.2303..1.0000]
+  cg 6-15   n  87   sigma(weight) med 0.5745 [0.4450..0.7108]   VALUE share med 0.6272 [0.1411..1.0005]
+  cg 16-35  n 104   sigma(weight) med 0.3434 [0.2221..0.4733]   VALUE share med 0.4893 [0.0429..0.9959]
+  cg 36-70  n 111   sigma(weight) med 0.1382 [0.0843..0.2391]   VALUE share med 0.1668 [0.0071..0.9900]
+  cg 71+    n 353   sigma(weight) med 0.0122 [0.0000..0.0805]   VALUE share med 0.0168 [0.0000..1.0230]
+  whole blended book: total pedigree points 88942 of 662631 printed = 0.1342
+
+=== (2) P10 — THE DECAY GATE UNDER THE TWO DENOMINATORS
+  the gate: el >= onset+2 AND ns >= 1 AND pr = bestlvl/par < 0.55  ->  e = min(e, v0 x frac)
+  key                  pos    bestlvl par@pick      bar  pr(par)   pr(bar) v0 x frac   prod leg  gate cut?
+  campbell-chesser     MID      44.40    82.27    77.10   0.5397    0.5759     486.6      216.2         no
+                         under the PAR denominator the gate FIRES (pr 0.5397 < 0.55); under the BAR denominator it does NOT (pr 0.5759). Step-2 302 -> PREVIEW 434.
+                         the SAME preview configuration with the par denominator retained would print 434 (+0 vs the preview's 434).
+  finlay-macrae        MID      44.10    82.96    77.10   0.5316    0.5720     362.7       43.1         no
+                         under the PAR denominator the gate FIRES (pr 0.5316 < 0.55); under the BAR denominator it does NOT (pr 0.5720). Step-2 266 -> PREVIEW 403.
+                         the SAME preview configuration with the par denominator retained would print 403 (+0 vs the preview's 403).
+
+=== (3) P8 SECOND LEG — THE PREVIEW AGAINST ABLATION B (pole+ISO deleted, NO blend)
+  cg           n       sum ablB sum PREVIEW-ablB   mean/row
+  1-5         60          23048          +7350     +122.5
+  6-15        87          45603          -2926      -33.6
+  16-35      104          69959          -3188      -30.7
+  36-70      111         116002          -5364      -48.3
+  71+        353         417909          -5762      -16.3
+
+=== (4) P9 — THE AT-BAR / TREMBATH CLASS vs THE STAR CLASS (|delta %| vs Step-2)
+  AT-BAR (cg 16-70, career avg within 10%% of its positional bar) n  40  median |delta%|  10.12  mean  12.38
+  STAR   (cg 100+, top-decile Step-2 price)                      n  36  median |delta%|   0.83  mean   1.07
+
+=== (5) THE DECLARED ALTERNATIVE sigma (raw log-linear between band midpoints), NOT WIRED
+  key                   games sigma fit sigma raw    PREVIEW  raw-sigma     delta
+  isaac-kako             36.0    0.2391    0.2537        748        748        +0
+  willem-duursma         19.0    0.4239    0.4476       4063       4055        -8
+  dyson-sharp            13.0    0.5307    0.5913       2347       2244      -103
+  jacob-farrow           18.0    0.4396    0.4688       2089       2047       -42
+  cooper-trembath        26.5    0.3263    0.3227       1652       1660        +8
+  chris-scerri            7.0    0.6797    0.6799        242        242        +0

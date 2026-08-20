@@ -1,0 +1,197 @@
+====================================================================================================================
+ORDER M — THE BOARD GATES. Board points, the currency the owner reads.
+====================================================================================================================
+  cand  1f176444  the landing candidate 1f176444 (dial off)
+  K     f3101883  ORDER K f3101883 — dose .40 k .20 gu 8 eta .50 gd 14 rel 1.08
+  s1    0423c8b2  the age bar ALONE at dose 0.40 (tall factor removed)
+  M0    73bf9617  ORDER M0 — ORDER K's knobs with ETA := 0
+  M0R   73bf9617  the determinism repeat of M0
+  MLO   ba97fb73  the COOLEST eta=0 point in the grid (dose 0.00 k 0.15 gu 16)
+  MMIN  d0fa4ab7  the SMALLEST LEGAL ETA anywhere (dose 0.00 k .20 gu 8 eta 0.31)
+  active priced rows: 804
+
+== THE BUILD-FAILING IDENTITIES ==
+  M1  dial-off reproduces the landing candidate 1f176444 : PASS  (1f17644445f074d11e631b5cbae98a9a)
+  M2  ORDER K's own setting rebuilds to f3101883         : PASS  (f3101883a60b0a7b8cb50f9d8a5abfff)
+  M3  determinism x2 on the M0 board                     : PASS  (73bf9617 vs 73bf9617)
+
+====================================================================================================================
+G5 — THE POINT OF THIS ORDER. harry-dean ~2,600 and cooper-duff-tytler ~1,800.
+====================================================================================================================
+
+  harry-dean  (age 19, pick 3, 17 career games, KPD)
+    owner's reference ~2600   ·   candidate 31 2670
+    landing candidate          2400
+    ORDER K (eta 0.50)         2403   (+3 vs landing)
+    ORDER M0 (ETA = 0)         3069   (+666 vs ORDER K, +669 vs landing)
+    MMIN (dose 0, eta 0.31)    2451
+    MLO  (dose 0, eta 0)       2872
+    -> at eta = 0 he is ABOVE the owner's ~2600 by 469 points.
+
+  cooper-duff-tytler  (age 19, pick 4, 13 career games, KPF)
+    owner's reference ~1800   ·   candidate 31 1832
+    landing candidate          1572
+    ORDER K (eta 0.50)         1505   (-67 vs landing)
+    ORDER M0 (ETA = 0)         2057   (+552 vs ORDER K, +485 vs landing)
+    MMIN (dose 0, eta 0.31)    1635
+    MLO  (dose 0, eta 0)       1965
+    -> at eta = 0 he is ABOVE the owner's ~1800 by 257 points.
+
+====================================================================================================================
+G6 — SUB-EXPECTATION-WITH-GAMES ROWS MUST NOT RISE. (against the landing candidate)
+====================================================================================================================
+  row                    age  pick games |  landing  ORDER K ORDER M0      MLO     MMIN
+  xavier-taylor           19    11     2 |     1176     1162     1345     1307     1216
+  daniel-annable          19     6     2 |     1530     1537     1761     1671     1582
+  dylan-patterson         19     5     5 |     1467     1440     1824     1724     1538
+
+  row                            ORDER K vs landing    M0 vs K M0 vs landing
+  xavier-taylor                                 -14       +183       +169   -> RISES — G6 BREACHED
+  daniel-annable                                 +7       +224       +231   -> RISES — G6 BREACHED
+  dylan-patterson                               -27       +384       +357   -> RISES — G6 BREACHED
+  -> G6 on ORDER M0: 3 of 3 rows RISE. BREACH
+  and on the coolest eta=0 point MLO (age bar OFF entirely):
+    xavier-taylor        landing  1176 -> MLO  1307  (+131)  RISES
+    daniel-annable       landing  1530 -> MLO  1671  (+141)  RISES
+    dylan-patterson      landing  1467 -> MLO  1724  (+257)  RISES
+
+====================================================================================================================
+THE NAMED ROWS, ACROSS EVERY BOARD (board points)
+====================================================================================================================
+  row                     age  pick  games |      C31  landing  ORDER K M0 eta=0     MMIN |    M0 - K
+  harry-dean               19     3     17 |     2670     2400     2403     3069     2451 |      +666
+  cooper-duff-tytler       19     4     13 |     1832     1572     1505     2057     1635 |      +552
+  isaac-kako               20    13     36 |      806      788      832      920      799 |       +88
+  alix-tauru               20    10     18 |     1005      920      881     1110      931 |      +229
+  jedd-busslinger          22    13     15 |      469      579      605      799      655 |      +194
+  xavier-taylor            19    11      2 |     1288     1176     1162     1345     1216 |      +183
+  daniel-annable           19     6      2 |     1633     1530     1537     1761     1582 |      +224
+  dylan-patterson          19     5      5 |     1675     1467     1440     1824     1538 |      +384
+  josh-smillie             20     7      0 |      459      772      772      772      772 |        +0
+  oskar-taylor             19    15      0 |      529      596      596      596      596 |        +0
+  will-brodie              28     9     55 |      702      791      788      807      795 |       +19
+  campbell-chesser         23    14     39 |      352      332      333      387      347 |       +54
+  james-leake              21    17      8 |      501      457      438      597      482 |      +159
+  tom-brown                23    17     58 |      445      507      515      530      510 |       +15
+  sam-sturt                26    17     31 |      104       77       75      111       89 |       +36
+  will-green               21    16      1 |      338      483      621      673      638 |       +52
+  toby-conway              23    24      6 |      729      855      899     1066      961 |      +167
+  william-mccabe           21    19      4 |      316      410      474      564      498 |       +90
+  alex-dodson              20    53      1 |      175      171      198      207      194 |        +9
+  steely-green             22    55     43 |       60       80       76       89       79 |       +13
+  milan-murdock            26  None     17 |      187      170      156      196      171 |       +40
+  chris-scerri             20  None      7 |      232      313      321      355      309 |       +34
+  thomas-burton            19  None      5 |      213      309      323      353      311 |       +30
+  murphy-reid              20    17     45 |     3139     3147     3383     3422     3124 |       +39
+  noah-mraz                20    35      4 |     1147     1795     2019     2089     1837 |       +70
+  logan-morris             21    31     65 |     2683     2682     2889     2896     2679 |        +7
+  levi-ashcroft            20     5     48 |     3014     3173     3365     3471     3182 |      +106
+  colby-mckercher          21     2     60 |     4018     3977     4167     4223     3985 |       +56
+  sam-taylor               27    28    141 |     1119     1119     1119     1119     1119 |        +0
+  tom-green                25    10    115 |     4305     4339     4339     4339     4339 |        +0
+  toby-greene              33    17    279 |      805      805      805      805      805 |        +0
+  taylor-walker            37    64    316 |      129      129      129      129      129 |        +0
+  will-ashcroft            22     2     79 |     6494     6487     6597     6607     6487 |       +10
+
+====================================================================================================================
+G7 — JOSH SMILLIE HOLDS HIS RULED ~700s
+====================================================================================================================
+  landing 772 · ORDER K 772 · ORDER M0 772 · MLO 772 · MMIN 772
+  -> PASS — inside the ruled ~700s on M0
+
+====================================================================================================================
+G8 — S1's ZERO-TOLERANCE MATURE LAW, and J-TOL on the veteran pool
+====================================================================================================================
+  board total (landing candidate, integer prices) = 667916;  mature rows aged 24+ = 429
+  the AGE BAR ALONE at dose 0.40 (ZERO TOLERANCE — the owner's law)   0 move · churn      0 · net     +0 · worst    +0 (-)
+  ORDER K in full                                                124 move · churn    947 · net   -601 · worst   -77 (Ned Moyle)
+  ORDER M0 — ORDER K with ETA := 0                               163 move · churn   2923 · net  +2781 · worst  +138 (Billy Cootee)
+  MLO — the coolest eta=0 point                                  164 move · churn   2962 · net  +2832 · worst  +168 (Billy Cootee)
+  MMIN — dose 0, eta 0.31                                        128 move · churn   1118 · net   +688 · worst   +65 (Liam McMahon)
+  J-TOL rails: per row min(25, max(1, 0.5% of his own price)) · churn <= 1001.87 (0.15% of the board) · net <= 667.92 (0.10%)
+  s1     per-row breaches   0 · churn      0 vs  1001.87 OK     · net      +0 vs   667.92 OK
+  K      per-row breaches  79 · churn    947 vs  1001.87 OK     · net    -601 vs   667.92 OK
+  M0     per-row breaches 105 · churn   2923 vs  1001.87 BREACH · net   +2781 vs   667.92 BREACH
+  MLO    per-row breaches 109 · churn   2962 vs  1001.87 BREACH · net   +2832 vs   667.92 BREACH
+  MMIN   per-row breaches  90 · churn   1118 vs  1001.87 BREACH · net    +688 vs   667.92 BREACH
+  -> G8 (the age bar alone moves ZERO mature rows): PASS — 0 of 429
+
+====================================================================================================================
+THE YEAR-1 CLASS ON THE 2026 BOARD (board points — a DIFFERENT object from the historical mark)
+====================================================================================================================
+  K     120 rows, 58060 -> 57823 (-0.41%);  43 up, 76 down, 1 unchanged
+  M0    120 rows, 58060 -> 68708 (+18.34%);  84 up, 35 down, 1 unchanged
+  MLO   120 rows, 58060 -> 64314 (+10.77%);  76 up, 43 down, 1 unchanged
+  MMIN  120 rows, 58060 -> 58849 (+1.36%);  72 up, 47 down, 1 unchanged
+
+====================================================================================================================
+BOARD TOTALS
+====================================================================================================================
+  cand  1f176444  total   667916  (+0 vs the landing candidate)
+  K     f3101883  total   673097  (+5181 vs the landing candidate)
+  s1    0423c8b2  total   680773  (+12857 vs the landing candidate)
+  M0    73bf9617  total   702734  (+34818 vs the landing candidate)
+  M0R   73bf9617  total   702734  (+34818 vs the landing candidate)
+  MLO   ba97fb73  total   687838  (+19922 vs the landing candidate)
+  MMIN  d0fa4ab7  total   671887  (+3971 vs the landing candidate)
+
+====================================================================================================================
+WHERE THE MONEY GOES WHEN ETA IS SET TO ZERO (ORDER M0 minus ORDER K)
+====================================================================================================================
+  444 of 804 rows move.  total +29637 board points.
+
+  THE TWENTY LARGEST RISES
+    Willem Duursma             MID   age 19    19 games    3703 ->   4586   +883
+    Sam Lalor                  MID   age 20    22 games    3456 ->   4244   +788
+    Sid Draper                 MID   age 20    10 games    1267 ->   1981   +714
+    Jagga Smith                MID   age 20    20 games    3637 ->   4348   +711
+    Harry Dean                 KPD   age 19    17 games    2403 ->   3069   +666
+    Zeke Uwland                SD    age 19    17 games    1949 ->   2585   +636
+    Cooper Duff-Tytler         KPF   age 19    13 games    1505 ->   2057   +552
+    Sam Cumming                MID   age 19    14 games    1932 ->   2418   +486
+    Sullivan Robey             MID   age 19    14 games    2379 ->   2864   +485
+    Dyson Sharp                MID   age 19    13 games    2427 ->   2879   +452
+    Elijah Tsatas              MID   age 22    22 games    1078 ->   1469   +391
+    Dylan Patterson            SD    age 19     5 games    1440 ->   1824   +384
+    Taj Hotton                 MID   age 20    15 games    1628 ->   2012   +384
+    Samuel Grlj                MID   age 19    19 games    1613 ->   1995   +382
+    Jacob Farrow               SD    age 19    18 games    2155 ->   2515   +360
+    Tobie Travaglia            SD    age 20    17 games     521 ->    819   +298
+    Phoenix Gothard            SF    age 21    15 games    1319 ->   1614   +295
+    Xavier Lindsay             MID   age 20    23 games    1539 ->   1824   +285
+    Harry Kyle                 SD    age 19     7 games     925 ->   1207   +282
+    Finn O'Sullivan            MID   age 20    39 games    3462 ->   3730   +268
+
+  THE TWENTY LARGEST FALLS
+    Zak Evans                  MID   age 26     0 games     113 ->    113     +0
+    Zak Butters                MID   age 26   156 games    6551 ->   6551     +0
+    Zachary Williams           SF    age 32   183 games     357 ->    357     +0
+    Zachary Merrett            MID   age 31   272 games    2542 ->   2542     +0
+    Zac Walker                 SD    age 20     0 games     153 ->    153     +0
+    Zac McCarthy               KPF   age 19     0 games     133 ->    133     +0
+    Zac Fisher                 SF    age 28   133 games     116 ->    116     +0
+    Zac Bailey                 SF    age 27   186 games    2712 ->   2712     +0
+    Xavier Walsh               KPD   age 21     0 games     116 ->    116     +0
+    Xavier O'Halloran          SF    age 26   103 games      74 ->     74     +0
+    Xavier Duursma             MID   age 26   128 games     175 ->    175     +0
+    Willem Drew                MID   age 28   151 games     585 ->    585     +0
+    Will Hayward               SF    age 28   204 games     229 ->    229     +0
+    Will Darcy                 KPD   age 19     0 games     225 ->    225     +0
+    Wil Powell                 SD    age 27   149 games     746 ->    746     +0
+    Wayne Milera               SD    age 29   140 games    1698 ->   1698     +0
+    Tyler Welsh                KPF   age 20     0 games      67 ->     67     +0
+    Tylah Williams             SF    age 19     0 games     217 ->    217     +0
+    Tyan Prindable             MID   age 19     0 games     375 ->    375     +0
+    Trent Rivers               SD    age 25   137 games    1695 ->   1695     +0
+
+  BY CAREER GAMES — this is the shape of the charge eta was levying:
+    games      rows  total pts    per row
+    0            89         +0        0.0
+    1-4          48      +2569       53.5
+    5-9          51      +4875       95.6
+    10-15        48      +6554      136.5
+    16-29        80     +11084      138.6
+    30-59       100      +4002       40.0
+    60+         388       +553        1.4
+    Read the 10-15 row. That is where GAMMA_D = 14 puts the peak of the bump. It is a pure
+    function of games played, so it lands on every row in that band whatever he is producing.

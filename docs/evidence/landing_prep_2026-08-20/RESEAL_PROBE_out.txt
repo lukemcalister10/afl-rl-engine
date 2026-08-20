@@ -1,0 +1,54 @@
+==============================================================================
+ARM A — the CANDIDATE dial line, under gate mode (the procedure as written)
+==============================================================================
+
+============ CONFIG MANIFEST (gate mode) REJECTED — BUILD HALTED ============
+  - UNKNOWN model override RL_V0SURF_PKL='/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-landing/data/v0surf.pkl' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O31='1' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O32='1' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O36='1' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O36_LAM_S1='0.40' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O36_TALL='1' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O36_FLOORFIX='1' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O36_KAPPA='0.20' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O36_GAMMA='8.0' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O36_ETA='0.50' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O36_GAMMA_D='14.0' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O36_LAMBDA='1.08' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O37='1' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O38A='1' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O38B1='1' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O39_BETASAT='0.105' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O40_CAPFORM='smooth' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O40_CAPPCT='15' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O40_RECW='0.47' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O40_PGMAT='1' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O41_SDOFF='2.98' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O41_CREDIT='1' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O41_RESET='1' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O41_INJ='1' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O41_R3='1' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O41_RAMP='1' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O41_BREAK='unwind' is not in the manifest (data/model_config.json)
+  - UNKNOWN model override RL_O41_UNWIND='7' is not in the manifest (data/model_config.json)
+ARM A matrix produced: NO
+
+==============================================================================
+ARM B — the PINNED-MANIFEST line, no candidate dials (what every prior re-seal ran)
+==============================================================================
+
+============ CONFIG MANIFEST (gate mode) REJECTED — BUILD HALTED ============
+  - UNKNOWN model override RL_V0SURF_PKL='/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-landing/data/v0surf.pkl' is not in the manifest (data/model_config.json)
+  Bake/gate mode pins the model configuration to data/model_config.json. Unset the override(s) above (dev-shell experimentation runs OUTSIDE bake/gate mode), or amend the manifest at a bake in the same commit that re-stamps config_sha256 + expected_boot.json.
+==========================================================================
+ARM B matrix produced: NO
+==============================================================================
+ARM B2 — the PINNED-MANIFEST line, RL_V0SURF_PKL NOT bound (exactly as the
+         committed reseal_book.py instruments run it: neither sets that var,
+         and gate mode REJECTS it as an unknown override, so it CANNOT be set)
+==============================================================================
+config manifest (gate mode) LOADED  hash eed19a75f775  (84 model vars pinned; ambient cleared)
+SINGLE-SOURCE STARTUP GUARD FAILED (build HALTED):
+  - GUARD 2 (source-hash assertion): rl_app_data.json stamped d9a24282357cf3083b1640466e3ecd83 != current source md5 cb38ef1171dcf20aae66ebf12682be0d (stale/hand-edited derived artifact)
+  - GUARD 1 (content-integrity): rl_app_data.json content md5 36d5dfc73e2b508ece530bc7dfae2090 != stamped own_md5 88ce647f531030d8d2e094188b258191 (derived artifact hand-edited)
+ARM B2 matrix produced: NO

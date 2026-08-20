@@ -1,0 +1,25 @@
+loading the engine on THE CANDIDATE dial line:
+   RL_O37=1
+   RL_O38A=1
+   RL_O38B1=1
+   RL_O39_BETASAT=0.105
+   RL_O40_CAPFORM=smooth
+   RL_O40_CAPPCT=20
+   RL_O40_PGMAT=1
+   RL_O40_RECW=0.47
+   RL_O41_CREDIT=1
+   RL_O41_INJ=1
+   RL_O41_R3=1
+   RL_O41_RESET=1
+   RL_O41_SDOFF=2.98
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+evaluated year Y = 2026
+
+S-S5 LIMB 2 (the disclosed window, vs ORDER P's own p5 clip):
+  window s in [-2.0100, -0.8000], 1.2100 points a game wide; worst excess in T 0.083317597,
+  i.e. AT MOST 1.4117% of the pedigree leg at 38 games. The cohort centre s0 is -2.4527, so the
+  window sits ABOVE it — on rows already producing at or above what their price implies.
+
+rows with legs: 2650   (production leg captured on 0)
+written: LEGS_CAND.json

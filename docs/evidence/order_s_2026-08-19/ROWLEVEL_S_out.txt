@@ -1,0 +1,31 @@
+======================================================================================================================
+ORDER S — THE TWO ROW-LEVEL PREDICTIONS. CONSEQUENCES, NEVER TARGETS.
+======================================================================================================================
+
+S1-P5 — DOES THE PRICE MOVE TRACK THE SURPLUS MOVE UNDER THE RECENCY DIAL?
+  rows with a charge and a surplus on both boards : 715
+  rows whose PRICE moves                          : 352  (141 up, 211 down)
+  rows whose SURPLUS RISES under recency (recent seasons BETTER than old): 291
+  rows whose SURPLUS FALLS under recency (recent seasons WORSE  than old): 321
+  PEARSON r between the surplus move and the price move: +0.3525
+  S1-P5 bar was r > +0.80: WRONG
+
+  THE ASYMMETRY THAT EXPLAINS THE BOARD FALLING. The surplus moves BOTH ways in almost equal
+  numbers, but the charge is CONVEX in the surplus below the centre and FLAT above it — a row
+  already producing above its bar pays nothing and cannot pay less, while a row below it pays
+  more when its recent seasons are its worse ones. So a symmetric change in the surplus produces
+  an ASYMMETRIC change in the board, and the board falls. MEASURED:
+    rows whose surplus ROSE : 291, net price +2246 points, of which 141 moved at all
+    rows whose surplus FELL : 321, net price -2752 points, of which 211 moved at all
+
+S5-P4 — THE WATCHED SHAPE UNDER THE MATURE PREMIUM (24+, ABOVE the age bar, BELOW the pedigree bar)
+  population                rows    movers   net points      per mover
+  the watched shape           61        45         -153           -3.4
+  other 24+                  365       104         -344           -3.3
+  under 24                   289         0           +0            0.0
+
+  S5-P4 said the watched shape would move MOST. Per MOVING row: watched -3.4, other 24+ -3.3.
+  S5-P4: RIGHT — it moves most per row
+
+  THESE ARE POPULATIONS, NOT PLAYERS. No row named in the order gated any number in this file and
+  no row's value is an acceptance criterion.

@@ -1,0 +1,149 @@
+==================================================================================================================================
+ORDER D7 — THE PARITY GUARD — THE PARITY TABLE
+==================================================================================================================================
+
+  RULING (register v771, owner, VERBATIM):
+    "Being marked as injured shouldn't all of a sudden enrol you to a mechanism that doesn't
+     affect your peers. In other words, a first year sitter who is injured is punished harder
+     for it. No thanks."
+
+  THE ENCODING: per row carrying injury treatment, final = max(v_injury_regime, v_healthy_counterpart).
+  NO FREE PARAMETER — max has no constant to fit. It can only RAISE a row, never lower one.
+
+  engine   29376d5a73a3e8274fcebe5cd90ada0b
+  sheet    b26798c35adcd9bda5cef50ff2c884da  (pin b26798c35adcd9bd..., ASSERTED)
+  numeraire factor F = 1.052400   (board v == round(engine ev / F))
+  GUARD 5: RED, PRE-EXISTING on this branch. NOT claimed green. NOT re-pinned.
+
+==================================================================================================================================
+ACCEPTANCE IDENTITIES
+==================================================================================================================================
+  D7_IDENT_P   expect 374d4e44   got 374d4e442665771801c5f1edd2a7e0e2   PASS
+  D7_IDENT_K   expect f3101883   got f3101883a60b0a7b8cb50f9d8a5abfff   PASS
+  D7_L0R       expect 7f88f509   got 7f88f5096ff5b781da4614b7142d332c   PASS
+  D7_NOO42     expect ff936186   got ff9361867357c085c8111ba957ce4f3b   PASS
+  D7_BASE      expect daa16812   got daa16812e50fb71241e627d89180412c   PASS
+  D7_CAND      D7-F7 determinism x2: PASS  (a05fe951 / a05fe951)
+
+  THE PRICED BOARD  a05fe951f78482c70520480e184c80ec
+  rows 804   total 664,949
+  THE BASE          daa16812e50fb71241e627d89180412c   rows 804   total 660,578
+
+==================================================================================================================================
+MOVERS — THE PRICED BOARD AGAINST THE BASE daa16812
+==================================================================================================================================
+  rows on the board   804
+  MOVERS              23
+  total               660,578 -> 664,949   (+4371)
+
+  D7-F1  NO ROW FALLS (the guard is a max; a single falling row is a HALT): did not fire — every mover moves UP
+  D7-F9  every mover lies INSIDE the 37 treated (annotated) rows: did not fire
+
+==================================================================================================================================
+THE PARITY TABLE — EVERY ANNOTATED ROW
+==================================================================================================================================
+  v_injury  = the row priced under the injury regime (the base daa16812 price)
+  v_healthy = the SAME row with ALL SEVEN live injury sites off and its absences charged by
+              the normal machinery, exactly as a healthy peer would be charged
+  WON       = which side the max took.  delta = what the guard added (0 for a riser).
+  Values in BOARD CURRENCY (round(ev/F)); raw engine ev in the last two columns.
+
+  player                   key                     g26   v_injury   v_health WON         delta    board_v   ev_injury   ev_health
+  ------------------------------------------------------------------------------------------------------------------------------
+  Tom Green                tom-green                 0       4339       5551 HEALTHY     +1212       5551      4566.6      5842.2
+  Nicholas Martin          nicholas-martin           0       3199       4168 HEALTHY      +969       4168      3366.7      4386.9
+  Connor Rozee             connor-rozee              2       2559       3380 HEALTHY      +821       3380      2692.9      3557.5
+  Joshua Kelly             joshua-kelly              0        427        769 HEALTHY      +342        769       449.7       809.8
+  Jack Viney               jack-viney                0        254        559 HEALTHY      +305        559       267.7       588.7
+  Brayden Fiorini          brayden-fiorini           2        182        349 HEALTHY      +167        349       192.0       367.4
+  Darcy Jones              darcy-jones               0       1095       1244 HEALTHY      +149       1244      1152.9      1309.3
+  Mitchell Hinge           mitchell-hinge            1        194        303 HEALTHY      +109        303       204.3       318.5
+  Sam Powell-Pepper        sam-powell-pepper         0         97        173 HEALTHY       +76        173       102.0       182.1
+  Thomas Sims              thomas-sims               0        670        737 HEALTHY       +67        737       705.3       776.0
+  Harry Armstrong          harry-armstrong           3        475        518 HEALTHY       +43        518       500.2       544.7
+  Harley Barker            harley-barker             0        481        504 HEALTHY       +23        504       506.7       529.9
+  Sam Allen                sam-allen                 0        428        450 HEALTHY       +22        450       450.5       473.3
+  Harry Edwards            harry-edwards             2         89        107 HEALTHY       +18        107        93.9       112.2
+  Riley Garcia             riley-garcia              0         40         50 HEALTHY       +10         50        41.9        53.0
+  Blake Thredgold          blake-thredgold           0        372        381 HEALTHY        +9        381       391.6       401.2
+  Maxwell King             max-king-syd              0        129        138 HEALTHY        +9        138       136.1       144.7
+  Jesse Motlop             jesse-motlop              0         54         59 HEALTHY        +5         59        56.9        61.9
+  Liam Hetherton           liam-hetherton            0         66         70 HEALTHY        +4         70        69.9        73.2
+  Josh Sinn                josh-sinn                 0        159        162 HEALTHY        +3        162       166.9       170.0
+  Kobe McDonald            kobe-mcdonald             0         37         40 HEALTHY        +3         40        39.0        41.8
+  Noah Chamberlain         noah-chamberlain          0         37         40 HEALTHY        +3         40        38.9        41.6
+  Ollie Lord               ollie-lord                1         74         76 HEALTHY        +2         76        78.0        79.8
+  Andy Moniz-Wakefield     andy-moniz-wakefield      2         38         23 injury          .         38        39.7        24.7
+  Elliott Himmelberg       elliot-himmelberg         0         31         16 injury          .         31        32.2        16.5
+  Harry O'Farrell          harry-o-farrell           0        537        460 injury          .        537       565.6       484.0
+  Henry Smith              henry-smith               0         85         43 injury          .         85        89.9        45.2
+  Josh Gibcus              josh-gibcus               1        176        131 injury          .        176       185.5       137.8
+  Judson Clarke            judson-clarke             1         55         49 injury          .         55        57.8        51.5
+  Lewis Hayes              lewis-hayes               0        338        311 injury          .        338       356.1       327.6
+  Max King                 max-king-stk              0        209         78 injury          .        209       219.9        82.2
+  Nathan Wardius           nathan-wardius            0         37         37 tie             .         37        38.9        38.9
+  Ollie Murphy             ollie-murphy              0        200        196 injury          .        200       211.0       206.4
+  Reef McInnes             reef-mcinnes              0         50         36 injury          .         50        52.6        37.8
+  Ricky Mentha             ricky-mentha              0         23         23 tie             .         23        24.5        24.5
+  Rob Monahan              rob-monahan               0         37         37 tie             .         37        39.0        39.0
+  Sam Sturt                sam-sturt                 0         30         30 injury          .         30        32.1        31.4
+  ------------------------------------------------------------------------------------------------------------------------------
+  37 annotated rows | LIFTED 23 | riser/tie (kept the injury-regime value) 14 | total lift +4371 board pts
+
+  THE NAMED ROWS — THEY ILLUSTRATE, THEY DO NOT GATE:
+  player                    g26   v_injury   v_health WON         delta
+  Sam Allen                   0        428        450 HEALTHY       +22
+  Kobe McDonald               0         37         40 HEALTHY        +3
+  Ollie Murphy                0        200        196 injury          .
+  Tom Green                   0       4339       5551 HEALTHY     +1212
+  Nicholas Martin             0       3199       4168 HEALTHY      +969
+  Mitchell Hinge              1        194        303 HEALTHY      +109
+  Sam Powell-Pepper           0         97        173 HEALTHY       +76
+
+==================================================================================================================================
+THE REGISTER-ONLY ROWS — D7-F5 (EXPECTED: none carries injury treatment after D6. ASSERTED.)
+==================================================================================================================================
+  MEMBERSHIP IS THE ENGINE'S OWN name->key resolution, NOT a sheet-name join (see header note).
+  LTI_REGISTER.md keys 43 | annotated injured=Y 37 | treated keys 37 | register-only (untreated) 20
+  register-only keys found carrying ANY injury treatment: 0   D7-F5 did not fire
+  ASSERTED: under RL_O42=1 the register has NO live consumption; all 20 register-only rows
+            carry no treatment, no floor, and appear nowhere in the movers. The guard does
+            not reach them. (D6 consolidation claim CONFIRMED on this board.)
+  the 20 register-only keys: archie-may, brody-mihocek, deven-robertson, esava-ratugolea, ewan-mackinlay, jack-payne, jackson-archer, jacob-newton, jai-culley, jamie-elliott, joel-amartey, jonty-faull, mani-liddy, matt-carroll, noah-long, oscar-steene, sam-darcy, sam-flanders, toby-conway, toby-pink
+
+  MEMBERSHIP: _AVAIL_STATE 37 keys | _O41_INJSET 37 names | treated set 37 | annotated Y 37
+    the engine resolved the 37 annotated sheet names to 37 distinct store keys and the ORDER 42
+    builder ASSERTS that 37->37 correspondence (it halts on a miss, a duplicate or an ambiguity).
+
+==================================================================================================================================
+DAY-0 — THE WIRED ENTRANTS AGAINST THE FROZEN REFERENCE (D7-F8)
+==================================================================================================================================
+  frozen reference : docs/evidence/order_k_2026-08-18/DAY0_K.json  (board f3101883)
+  THE FROZEN REFERENCE IS NOT TOUCHED BY THIS SEAT. It is read, never rewritten.
+  EXPECTED: only ollie-murphy moves. VERIFIED BELOW, NOT ASSUMED.
+
+  wired entrants on the frozen reference: 89
+  MOVERS vs the frozen prints: 6
+  key                          frozen     priced    delta  annotated injured=Y
+  harley-barker                   481        504      +23  Y
+  blake-thredgold                 372        381       +9  Y
+  max-king-syd                    129        138       +9  Y
+  liam-hetherton                   66         70       +4  Y
+  ollie-murphy                    196        200       +4  Y
+  noah-chamberlain                 37         40       +3  Y
+
+  D7-F8  only ollie-murphy moves: *** FIRED *** 5 other entrant(s) move
+
+  D7-F3  allen -> 450 and mcdonald -> 40 (EXPECTED if their healthy counterparts charge zero;
+         VERIFIED, NOT ASSUMED; REPORTED, NOT GATED — these rows illustrate, they do not gate):
+         sam-allen        frozen  450 | base 428 | PRICED 450 | RESTORES
+         kobe-mcdonald    frozen   40 | base 37 | PRICED 40 | RESTORES
+
+  D7-F4  murphy keeps his riser (his guarded value must EQUAL his base value):
+         ollie-murphy  base 200 | PRICED 200 | UNTOUCHED — the shield stands
+
+==================================================================================================================================
+*** FALSIFIERS / DEVIATIONS FIRED: D7-F8 5 day-0 entrants other than ollie-murphy move
+==================================================================================================================================
+PRICED, NOT ADOPTED. Nothing is adopted, merged, tagged or promoted. Nothing is on main.
+Guard 5 remains RED (pre-existing) and is NOT claimed green.

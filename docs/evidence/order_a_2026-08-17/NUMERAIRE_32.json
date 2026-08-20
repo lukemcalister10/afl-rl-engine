@@ -1,0 +1,9 @@
+{
+ "H": 3191.178971663107,
+ "artifact_md5": "78ad9842525ae4f09875b95afc2e2b39",
+ "identical_to_c31": true,
+ "pin": 3000.0,
+ "s": 0.9400914291048137,
+ "s_repin_triggered": false,
+ "verdict": "s unmoved; pre-numeraire, as Candidate 31"
+}

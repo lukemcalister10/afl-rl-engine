@@ -1,0 +1,180 @@
+{
+ "c34_matrix_md5": "0889c6ace2d191a33a9858cb996fb1a7",
+ "early_wins_retained": [
+  4,
+  4
+ ],
+ "instrument": "order32_s4_2026-08-17/s4_shootout.py",
+ "instrument_md5": "241842f61ddd3c486f04f201a7efcce9",
+ "median_recovery_oldlaw_cells": 0.5443847294292057,
+ "median_recovery_oldlaw_cells_c32r": 0.5307635285396556,
+ "order": "ORDER C \u2014 S4 mid-career rescore (report-only)",
+ "primary_cells": [
+  {
+   "N": 1,
+   "c_verdict": "candidate",
+   "hz": "dv1",
+   "n": 1201,
+   "recovery": -0.0,
+   "recovery_c32": -0.024734982332155375,
+   "rho_c": 0.5698,
+   "rho_c31": 0.5698,
+   "rho_c32": 0.5719,
+   "rho_old": 0.4849,
+   "s4_verdict": "candidate"
+  },
+  {
+   "N": 1,
+   "c_verdict": "candidate",
+   "hz": "dvrest",
+   "n": 1201,
+   "recovery": -0.006198347107437334,
+   "recovery_c32": -0.010330578512395557,
+   "rho_c": 0.5766,
+   "rho_c31": 0.5763,
+   "rho_c32": 0.5768,
+   "rho_old": 0.5279,
+   "s4_verdict": "candidate"
+  },
+  {
+   "N": 2,
+   "c_verdict": "candidate",
+   "hz": "dv1",
+   "n": 1137,
+   "recovery": -0.0752941176470584,
+   "recovery_c32": -0.06823529411764741,
+   "rho_c": 0.6713,
+   "rho_c31": 0.6681,
+   "rho_c32": 0.671,
+   "rho_old": 0.6256,
+   "s4_verdict": "candidate"
+  },
+  {
+   "N": 2,
+   "c_verdict": "candidate",
+   "hz": "dvrest",
+   "n": 1137,
+   "recovery": -0.16913946587536843,
+   "recovery_c32": -0.1513353115726998,
+   "rho_c": 0.6829,
+   "rho_c31": 0.6772,
+   "rho_c32": 0.6823,
+   "rho_old": 0.6435,
+   "s4_verdict": "candidate"
+  },
+  {
+   "N": 3,
+   "c_verdict": "candidate",
+   "hz": "dv1",
+   "n": 955,
+   "recovery": -0.6956521739130468,
+   "recovery_c32": -0.6695652173913105,
+   "rho_c": 0.6847,
+   "rho_c31": 0.6767,
+   "rho_c32": 0.6844,
+   "rho_old": 0.6652,
+   "s4_verdict": "tie"
+  },
+  {
+   "N": 3,
+   "c_verdict": "candidate",
+   "hz": "dvrest",
+   "n": 955,
+   "recovery": 6.076923076922982,
+   "recovery_c32": 5.884615384615314,
+   "rho_c": 0.7048,
+   "rho_c31": 0.689,
+   "rho_c32": 0.7043,
+   "rho_old": 0.6916,
+   "s4_verdict": "tie"
+  },
+  {
+   "N": 4,
+   "c_verdict": "tie",
+   "hz": "dv1",
+   "n": 807,
+   "recovery": 0.6381909547738707,
+   "recovery_c32": 0.6180904522613045,
+   "rho_c": 0.6941,
+   "rho_c31": 0.6814,
+   "rho_c32": 0.6937,
+   "rho_old": 0.7013,
+   "s4_verdict": "oldlaw"
+  },
+  {
+   "N": 4,
+   "c_verdict": "tie",
+   "hz": "dvrest",
+   "n": 807,
+   "recovery": 0.6826086956521739,
+   "recovery_c32": 0.6652173913043495,
+   "rho_c": 0.7442,
+   "rho_c31": 0.7285,
+   "rho_c32": 0.7438,
+   "rho_old": 0.7515,
+   "s4_verdict": "oldlaw"
+  },
+  {
+   "N": 5,
+   "c_verdict": "oldlaw",
+   "hz": "dv1",
+   "n": 680,
+   "recovery": 0.5492957746478897,
+   "recovery_c32": 0.53521126760563,
+   "rho_c": 0.7113,
+   "rho_c31": 0.7035,
+   "rho_c32": 0.7111,
+   "rho_old": 0.7177,
+   "s4_verdict": "oldlaw"
+  },
+  {
+   "N": 5,
+   "c_verdict": "oldlaw",
+   "hz": "dvrest",
+   "n": 680,
+   "recovery": 0.535714285714285,
+   "recovery_c32": 0.5238095238095244,
+   "rho_c": 0.7573,
+   "rho_c31": 0.7483,
+   "rho_c32": 0.7571,
+   "rho_old": 0.7651,
+   "s4_verdict": "oldlaw"
+  },
+  {
+   "N": 6,
+   "c_verdict": "tie",
+   "hz": "dv1",
+   "n": 574,
+   "recovery": 0.5394736842105217,
+   "recovery_c32": 0.5263157894736812,
+   "rho_c": 0.7299,
+   "rho_c31": 0.7258,
+   "rho_c32": 0.7298,
+   "rho_old": 0.7334,
+   "s4_verdict": "oldlaw"
+  },
+  {
+   "N": 6,
+   "c_verdict": "oldlaw",
+   "hz": "dvrest",
+   "n": 574,
+   "recovery": 0.4077669902912613,
+   "recovery_c32": 0.3980582524271847,
+   "rho_c": 0.7951,
+   "rho_c31": 0.7909,
+   "rho_c32": 0.795,
+   "rho_old": 0.8012,
+   "s4_verdict": "oldlaw"
+  }
+ ],
+ "substitutions": [
+  {
+   "from": "CAND_P = SP + '/per_entrant_O31FFINAL.json'",
+   "to": "CAND_P = SP + '/per_entrant_O34FINAL.json'"
+  },
+  {
+   "from": "with open(os.path.join(HERE, 'RESULTS_S4.json'), 'w') as f:",
+   "to": "with open('/home/user/afl-rl-engine/.claude/worktrees/agent-abd8af3ce56ecb9e3/docs/evidence/order_c_2026-08-17/RESULTS_S4_34.json', 'w') as f:"
+  }
+ ]
+}

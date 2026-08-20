@@ -1,0 +1,57 @@
+==========================================================================================================================
+ADJUDICATING THE I1 CREDIT RULE OUT OF SAMPLE — walk-forward by draft class. NOTHING IS ADOPTED.
+==========================================================================================================================
+population : F1's own depth-2 rows, built by its own rows_at_depth(2) — 1068 entrants
+estimand   : F1's own — the DISC-discounted house-ruler value from depth 2 on, over entry price
+rules      : RAW cells · GUARDED isotonic · the wired step min(1, g/2)
+folds      : train on draft classes < T, score on class T, walk T forward
+anchors    : R0 and R11 re-estimated INSIDE every fold from TRAINING ROWS ONLY
+
+draft classes present: 2005 to 2019
+usable folds: 13  (a fold needs >=60 training rows, >=8 held-out rows, and >=8 rows at each anchor)
+
+held-out rows scored, pooled over folds: 929
+
+THE FOLD PATH — RMSE on the held-out class, per rule
+  class T     n_tr    n_te    R0_hat   R11_hat          RAW    GUARDED       STEP
+  2007         139      64    0.2654    1.2696       1.2132     1.2085     1.2642
+  2008         203      75    0.3458    1.1658       0.9432     0.9503     0.9290
+  2009         278      67    0.3179    1.0644       0.9572     0.9541     0.9791
+  2010         345      78    0.3089    0.9542       1.6013     1.6018     1.6178
+  2011         423      81    0.3134    1.0731       1.6856     1.6749     1.7265
+  2012         504      69    0.3158    1.3393       0.8839     0.8669     0.9828
+  2013         573      60    0.3042    1.2469       1.7740     1.7727     1.7980
+  2014         633      75    0.3695    1.2216       1.3513     1.3553     1.3814
+  2015         708      67    0.3594    1.2107       1.0376     1.0189     1.1142
+  2016         775      76    0.3599    1.1905       1.3783     1.3767     1.4065
+  2017         851      75    0.3586    1.2024       1.4296     1.4191     1.4683
+  2018         926      78    0.3780    1.1269       0.6019     0.5723     0.6947
+  2019        1004      64    0.3457    1.0955       0.5188     0.4809     0.6575
+
+POOLED OUT-OF-SAMPLE ERROR
+  rule                                   RMSE          MAE
+  RAW cells                           1.24821      0.71943
+  GUARDED isotonic                    1.24185      0.69090
+  the wired step min(1,g/2)           1.28797      0.79921
+
+PAIRWISE DIFFERENCES, PAIRED BOOTSTRAP OVER FOLDS (B=2000, seed 32).
+The arms are scored on IDENTICAL rows, so the bootstrap resamples FOLDS and keeps the arms paired
+inside each fold. A negative difference means the FIRST rule has the LOWER error, i.e. is better.
+
+  comparison                                      diff RMSE                   90% CI separates?
+  RAW cells  vs  GUARDED isotonic                   0.00635   [+0.00287, +0.01031]   YES
+  RAW cells  vs  the wired step min(1,g/2)         -0.03976   [-0.05430, -0.02939]   YES
+  GUARDED isotonic  vs  the wired step min(1,g/2)   -0.04611   [-0.06275, -0.03176]   YES
+
+==========================================================================================================================
+THE VERDICT
+==========================================================================================================================
+*** THE TEST SEPARATES AT LEAST ONE PAIR. Lowest out-of-sample RMSE: GUARDED isotonic ***
+    separating pair: RAW cells vs GUARDED isotonic  (diff +0.00635, CI [+0.00287, +0.01031])
+    separating pair: RAW cells vs the wired step min(1,g/2)  (diff -0.03976, CI [-0.05430, -0.02939])
+    separating pair: GUARDED isotonic vs the wired step min(1,g/2)  (diff -0.04611, CI [-0.06275, -0.03176])
+    Where a pair does NOT separate, the test is silent on that pair and says so.
+
+WHAT THIS TEST IS NOT. It scores how well each rule predicts the F1 estimand out of sample. It does
+NOT score board realism, and it cannot: the board is not an out-of-sample observable. A rule that
+wins here would still be a rule about credit for a short season, adopted on that basis alone.

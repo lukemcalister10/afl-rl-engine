@@ -1,0 +1,65 @@
+ORDER J — THE BOARD GATES.  board points (the currency the owner reads).
+  boards: {'cand': '1f176444', 'tall': 'd1058fe0', 'tall2': 'd1058fe0', 's1': '69bf858e', 'ref': '73bb064c'}
+
+== THE BUILD-FAILING IDENTITIES ==
+  F3  dial-off reproduces the landing candidate 1f176444 : PASS  (1f17644445f074d11e631b5cbae98a9a)
+  F9  determinism x2 (two identical builds of the ruled board): PASS  (d1058fe0 vs d1058fe0)
+
+== THE MATURE-ROW LAW, ON THE WRITTEN BOARDS (integer board points) ==
+  ORDER J RULED (exempt — R-TALLFACTOR is adopted)      50 of 429 move · abs   446 · net  +110 · worst  +41 (liam-mcmahon)
+  ORDER J REFERENCE (gated — fails J-TOL)               90 of 429 move · abs   524 · net    +2 · worst  +39 (nick-bryan)
+  S1 alone at the reference dose (zero-tolerance test)   0 of 429 move · abs     0 · net    +0 · worst   +0 (-)
+
+== THE NAMED ROWS (board points) ==
+row                     age   landing   J RULED     J REF |   d ruled     d ref | predicted  actual   hit?
+harry-dean               19      2400      2400      2412 |        +0       +12 | UP         UP       HIT
+cooper-duff-tytler       19      1572      1572      1569 |        +0        -3 | UP         DOWN     MISS
+xavier-taylor            19      1176      1176      1175 |        +0        -1 | DOWN       DOWN     HIT
+daniel-annable           19      1530      1530      1536 |        +0        +6 | DOWN       UP       MISS
+dylan-patterson          19      1467      1467      1469 |        +0        +2 | DOWN       UP       MISS
+oskar-taylor             19       596       611       611 |       +15       +15 | UP         UP       HIT
+josh-smillie             20       772       851       851 |       +79       +79 | UP         UP       HIT
+chris-scerri             20       313       313       319 |        +0        +6 | UP         UP       HIT
+thomas-burton            19       309       309       316 |        +0        +7 | UP         UP       HIT
+milan-murdock            26       170       170       168 |        +0        -2 | MOVES-INSIDE-JTOL DOWN     HIT
+will-green               21       483       624       624 |      +141      +141 | UP         UP       HIT
+toby-conway              23       855       941       940 |       +86       +85 | UP         UP       HIT
+steely-green             22        80        76        76 |        -4        -4 | DOWN       DOWN     HIT
+isaac-kako               20       788       788       799 |        +0       +11 | UP         UP       HIT
+alix-tauru               20       920       920       918 |        +0        -2 | UP         DOWN     MISS
+jedd-busslinger          22       579       632       631 |       +53       +52 | UP         UP       HIT
+
+prereg scorecard (scored on the REFERENCE board, the only one with all three levers live): 12 of 16 named-row directions correct
+
+== G4 — THE OWNER'S TWO REFERENCE LEVELS (board points) ==
+  harry-dean           target ~2600 (C31 2670) · landing 2400 · J RULED 2400 (short 200) · J REF 2412 (short 188)  -> BOTH FAIL
+  cooper-duff-tytler   target ~1800 (C31 1832) · landing 1572 · J RULED 1572 (short 228) · J REF 1569 (short 231)  -> BOTH FAIL
+
+== G5 — SUB-EXPECTATION-WITH-GAMES ROWS MUST NOT RISE (board points) ==
+  xavier-taylor        landing  1176 · J RULED  1176 (+0) · J REF  1175 (-1)  -> FELL — G5 holds
+  daniel-annable       landing  1530 · J RULED  1530 (+0) · J REF  1536 (+6)  -> ROSE — G5 FAIL on the reference
+  dylan-patterson      landing  1467 · J RULED  1467 (+0) · J REF  1469 (+2)  -> ROSE — G5 FAIL on the reference
+
+== SIDE — josh-smillie's ruled ~700s range (board points) ==
+  landing 772 · J RULED 851 · J REF 851  -> LEAVES the 700s — and the whole move is the OWNER-RULED factor, disclosed not gated
+
+== CONTROLS AND OTHER ROWS OF RECORD (board points) ==
+  levi-ashcroft          landing   3173 · J RULED   3173 (   +0) · J REF   3219 (  +46)
+  connor-o-sullivan      landing   2376 · J RULED   2376 (   +0) · J REF   2417 (  +41)
+  logan-morris           landing   2682 · J RULED   2682 (   +0) · J REF   2733 (  +51)
+  finn-o-sullivan        landing   3317 · J RULED   3317 (   +0) · J REF   3357 (  +40)
+  sam-taylor             landing   1119 · J RULED   1119 (   +0) · J REF   1119 (   +0)
+  tom-green              landing   4339 · J RULED   4339 (   +0) · J REF   4339 (   +0)
+  toby-greene            landing    805 · J RULED    805 (   +0) · J REF    805 (   +0)
+  will-ashcroft          landing   6487 · J RULED   6487 (   +0) · J REF   6514 (  +27)
+  taylor-walker          landing    129 · J RULED    129 (   +0) · J REF    129 (   +0)
+  keidean-coleman        landing    673 · J RULED    673 (   +0) · J REF    673 (   +0)
+  harry-morrison         landing     33 · J RULED     33 (   +0) · J REF     33 (   +0)
+  taylor-goad            landing    580 · J RULED    722 ( +142) · J REF    727 ( +147)
+  zac-taylor             landing    160 · J RULED    152 (   -8) · J REF    154 (   -6)
+
+== THE YEAR-1 CLASS ON THE 2026 BOARD (board points) ==
+  J RULED  120 rows, 58060 -> 57897 (-0.28%);  18 up, 37 down, 65 unchanged
+  J REF    120 rows, 58060 -> 58257 (+0.34%);  55 up, 60 down, 5 unchanged
+
+written: GATES_J.json

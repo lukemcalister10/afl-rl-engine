@@ -1,0 +1,88 @@
+====================================================================================================
+S3 RESULTS — selection (season games) as a predictor of subsequent delivered value, at fixed output
+====================================================================================================
+PRIMARY SAMPLE k=1 (rookie season), Y5 observable: n=863 | games mean 8.4 sd 6.4 terciles(4,10)
+Y5 (next-5yr delivered board pts, undiscounted): mean 679 sd 1094 med 149 q25 2 q75 912  P(Y5=0)=0.072
+
+--- H1: pooled spec (spec 2) — Y ~ games + surplus + age + band + cohort + pos ---
+  k=1, next-1yr                          n= 967  games b=    4.57  se=  0.88  t=  5.17  95%CI [    2.84,     6.30]  R2=0.178
+  k=1, next-5yr                          n= 863  games b=   21.45  se=  6.34  t=  3.38  95%CI [    9.03,    33.87]  R2=0.276
+  k=1, next-5yr disc-to-focal            n= 863  games b=   14.68  se=  4.08  t=  3.60  95%CI [    6.68,    22.68]  R2=0.278
+  k=1, rest-of-career RETIRED ONLY       n= 666  games b=   36.64  se= 14.98  t=  2.45  95%CI [    7.29,    66.00]  R2=0.287
+
+--- H1: cell spec (spec 1) — within entry_year x band x pos cells, demeaned ---
+  k=1 next-1yr           n= 533 cells=141 (dropped n<3: 434)  games b=    2.56 se=  1.35 t=  1.90 CI [   -0.09,     5.21]
+  k=1 next-5yr           n= 473 cells=123 (dropped n<3: 390)  games b=   10.02 se=  9.54 t=  1.05 CI [   -8.67,    28.72]
+
+--- H1 replication: pooled k=1..3, cluster-by-player; prior_games control added ---
+  k=1..3 Y5: n=2877  games b=19.55 se=3.26 t=5.99 CI [13.16, 25.95] | prior_games b=12.54 (se 2.02)  R2=0.330
+
+--- H2: SHAPE (k=1, Y5) ---
+  linear  R2=0.2761  games b=21.45 (se 6.34)
+  sqrt    R2=0.2730  sqrt_games b=100.20 (se 34.09)
+  spline R2=0.2857  g_0_5 b=-84.5 (se 27.9)  g_5_10 b=71.7 (se 23.7)  g_10_15 b=25.8 (se 31.9)  g_15p b=11.3 (se 30.9)
+  raw tercile means: T1(n=327) Y5=342  T2(n=254) Y5=587  T3(n=282) Y5=1152
+
+--- H5: THE NEW-CHANNEL TEST — games slope within BELOW-BAR output stratum ---
+  interaction spec: games b=66.36 (se 18.00) | games x below b=-53.14 (se 19.39) -> below-bar slope 13.22
+  below-bar-only refit (n=780): games b=15.32 se=6.68 t=2.29 CI [2.22, 28.42]
+
+--- H4: CHANNEL DECOMPOSITION (k=1) ---
+  future GAMES (sum yrs +1..+5):    games b=1.497 se=0.211 t=7.10  (selection persists)
+  future AVG-SURPLUS (games-wtd, played only n=801): games b=0.3259 se=0.0978 t=3.33
+
+--- H3: BUST TAIL ---
+  P(Y5=0) by games tercile x surplus band x pedigree group   [tercile cuts: <=4 | <=10 | >10]
+    ND1-10   S<0       T1 n=20  P0=0.00 med=   456  T2 n=39  P0=0.03 med=   876  T3 n=69  P0=0.00 med=  1331
+    ND1-10   0<=S<10   T1 n=0   P0= --  med=   --   T2 n=0   P0= --  med=   --   T3 n=11  P0=0.00 med=  3944
+    ND11-20  S<0       T1 n=40  P0=0.05 med=   121  T2 n=39  P0=0.00 med=   199  T3 n=30  P0=0.00 med=   928
+    ND11-20  0<=S<10   T1 n=1   P0=0.00 med=   918  T2 n=1   P0=0.00 med=    59  T3 n=7   P0=0.00 med=  2554
+    ND21-30  S<0       T1 n=45  P0=0.09 med=    44  T2 n=34  P0=0.00 med=   313  T3 n=27  P0=0.00 med=   470
+    ND31-40  S<0       T1 n=34  P0=0.12 med=    13  T2 n=17  P0=0.00 med=   104  T3 n=16  P0=0.00 med=   235
+    ND41-64  S<0       T1 n=63  P0=0.06 med=    14  T2 n=42  P0=0.10 med=    55  T3 n=36  P0=0.00 med=    56
+    ND>64    S<0       T1 n=16  P0=0.25 med=     6  T2 n=7   P0=0.14 med=     6  T3 n=5   P0=0.20 med=     1
+    ND>64    0<=S<10   T1 n=2   P0=0.00 med=   333  T2 n=0   P0= --  med=   --   T3 n=6   P0=0.00 med=   670
+    POOL     S<0       T1 n=97  P0=0.28 med=     2  T2 n=62  P0=0.10 med=    16  T3 n=42  P0=0.07 med=    51
+    POOL     0<=S<10   T1 n=2   P0=0.00 med=    33  T2 n=2   P0=0.00 med=   173  T3 n=10  P0=0.00 med=   475
+    POOL     S>=10     T1 n=1   P0=0.00 med=     2  T2 n=0   P0= --  med=   --   T3 n=8   P0=0.12 med=  1069
+  ALL pedigree pooled:
+    ALL      S<0       T1 n=315 P0=0.14 med=    23  T2 n=240 P0=0.05 med=   140  T3 n=225 P0=0.02 med=   473
+    ALL      0<=S<10   T1 n=7   P0=0.00 med=   279  T2 n=8   P0=0.00 med=   232  T3 n=41  P0=0.00 med=  1240
+    ALL      S>=10     T1 n=5   P0=0.00 med=     2  T2 n=6   P0=0.00 med=  1037  T3 n=16  P0=0.06 med=  1503
+  logistic bust ~ games + controls: games b=-0.1646 se=0.0453  (odds ratio per game 0.848, per 7 games 0.316) conv=True
+  logistic (Y5<100 pts) ~ games + controls: games b=-0.0478 se=0.0158 conv=True
+
+--- H3b: QUANTILE EFFECTS (k=1, Y5) — pairs bootstrap B=150, seed 320317 ---
+  q25  games b=2.06  boot-se=1.59  CI [0.47, 6.63]  (B ok=150)
+  q50  games b=15.78  boot-se=4.94  CI [5.26, 23.77]  (B ok=150)
+  q75  games b=32.56  boot-se=9.18  CI [16.53, 50.81]  (B ok=150)
+
+--- STABILITY (k=1, Y5, pooled spec games coefficient) ---
+  band ND1-10      n= 142  b=   -6.58  se= 22.34  t= -0.29
+  band ND11-20     n= 122  b=   42.32  se= 21.71  t=  1.95
+  band ND21-30     n= 109  b=   16.12  se= 22.08  t=  0.73
+  band ND31-40     n=  75  b=   -1.29  se= 18.45  t= -0.07
+  band ND41-64     n= 154  b=   -2.24  se= 10.30  t= -0.22
+  band ND>64       n<40 — reported, not fitted
+  POOL pathways    n= 224  b=   10.10  se=  9.42  t=  1.07
+  era 2004-2012    n= 501  b=   27.09  se=  8.74  t=  3.10
+  era 2013-2021    n= 362  b=   16.98  se=  9.76  t=  1.74
+  pos MID          n= 307  b=   26.31  se= 11.96  t=  2.20
+  pos SD           n= 148  b=   19.47  se= 11.97  t=  1.63
+  pos SF           n= 202  b=   21.37  se= 15.52  t=  1.38
+  pos KPD          n=  65  b=   28.14  se= 27.24  t=  1.03
+  pos KPF          n= 103  b=   33.33  se= 24.35  t=  1.37
+  pos RUCK         n<40 — reported, not fitted
+
+--- OPPORTUNITY CONFOUNDER: draft_club x focal_year FE (approx team-season; movers misattributed, undisclosed by store) ---
+  with club x year FE:    n=863  games b=22.28  se=7.11  t=3.13  CI [8.35, 36.21]
+  without (from above):   b=21.45  se=6.34
+
+--- NAMED ROWS (read through the historical cells; their 2026 seasons are IN PROGRESS and teach nothing) ---
+  kye-annand           g= 9 surplus   -5.6 (S<0) band MSD     tercile T2 | cell n=201 P(Y5=0)=0.18 med=14 | same-tercile n=62 med=16
+  lukas-cooke          g= 2 surplus  -21.9 (S<0) band MSD     tercile T1 | cell n=201 P(Y5=0)=0.18 med=14 | same-tercile n=97 med=2
+  cooper-duff-tytler   g=13 surplus  -13.5 (S<0) band ND1-10  tercile T3 | cell n=128 P(Y5=0)=0.01 med=942 | same-tercile n=69 med=1331
+  harry-dean           g=17 surplus   -5.7 (S<0) band ND1-10  tercile T3 | cell n=128 P(Y5=0)=0.01 med=942 | same-tercile n=69 med=1331
+  milan-murdock        g=17 surplus   +2.2 (0<=S<10) band SSP     tercile T3 | cell n=14 P(Y5=0)=0.00 med=319 | same-tercile n=10 med=475
+  model-implied pair gaps (below-bar slope 15.32 pts/game; full-sample 21.45 pts/game):
+    annand(9g) vs cooke(2g), same cell, both below bar: 7 games x 15.32 = +107 Y5 pts

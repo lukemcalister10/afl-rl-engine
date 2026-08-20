@@ -1,0 +1,78 @@
+ruled-feasible 216 · owner-law-ok 96 (G1 floor+rail, G2 both improve, G3 <=+14%)
+
+BASELINES on this instrument:
+  landing candidate 1f176444 : class 1.0421  bands  +7.20% +11.52%  +5.92% -10.46%  -7.30%
+  ruled tall factor alone    : class 1.0420  bands  +7.40% +12.62%  +6.75%  -8.90%  -8.23%
+
+-- WHICH AXES ACTUALLY MOVE THE INSTRUMENT --
+  dose      values present in the law-ok set: [0.0, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45]
+  kappa     values present in the law-ok set: [0.18, 0.2, 0.22, 0.24, 0.26, 0.28, 0.3]
+  gamma_u   values present in the law-ok set: [8.0, 11.0]
+  eta       values present in the law-ok set: [0.45, 0.5]
+  gamma_d   values present in the law-ok set: [12.0, 14.0]
+  lam_rel   values present in the law-ok set: [0.8, 0.9, 1.0, 1.08, 1.2, 1.3]
+  lam_rel: 16 distinct (dose,kappa,gu,eta,gd) cells; class mark distinct values per cell: [1]
+
+-- THE EXTREMES OF THE REGION --
+  highest class mark                 dose 0.40 kappa 0.20 gu 8 eta 0.50 gd 14 rel 0.80 | class 1.0519 maxcls 1.1385 |  +7.58% +13.82%  +8.26%  -8.54%  -6.50%
+  best picks 31-40                   dose 0.00 kappa 0.30 gu 8 eta 0.50 gd 12 rel 0.80 | class 1.0447 maxcls 1.1376 |  +4.61% +11.73%  +7.18%  -8.07%  -5.31%
+  best picks 41-64                   dose 0.00 kappa 0.30 gu 8 eta 0.50 gd 12 rel 0.80 | class 1.0447 maxcls 1.1376 |  +4.61% +11.73%  +7.18%  -8.07%  -5.31%
+  best 31-40 + 41-64 together        dose 0.00 kappa 0.30 gu 8 eta 0.50 gd 12 rel 0.80 | class 1.0447 maxcls 1.1376 |  +4.61% +11.73%  +7.18%  -8.07%  -5.31%
+  lowest SSE (the selection law)     dose 0.15 kappa 0.24 gu 11 eta 0.45 gd 14 rel 0.80 | class 1.0503 maxcls 1.1388 |  +8.04% +13.64%  +7.69%  -8.45%  -7.30%
+  lowest picks 11-20 (G3 headroom)   dose 0.15 kappa 0.24 gu 8 eta 0.50 gd 14 rel 0.80 | class 1.0340 maxcls 1.1237 |  +4.41% +11.41%  +6.34%  -9.16%  -7.16%
+
+-- THE TRADE-OFF CURVE: the best year-1 class mark reachable at each late-band level --
+   (late-band level = the WORSE of picks 31-40 and 41-64, yr0->1, on the calibrator)
+   late-band >=      n pts best cls    31-40    41-64   the point
+   -13.00%              96   1.0519   -8.54%   -6.50%   dose 0.40 k 0.20 gu 8 eta 0.50 gd 14
+   -10.00%              96   1.0519   -8.54%   -6.50%   dose 0.40 k 0.20 gu 8 eta 0.50 gd 14
+   -9.00%               78   1.0519   -8.54%   -6.50%   dose 0.40 k 0.20 gu 8 eta 0.50 gd 14
+   -8.50%               24   1.0503   -8.45%   -7.30%   dose 0.15 k 0.24 gu 11 eta 0.45 gd 14
+   -8.00%                0   —
+   -7.50%                0   —
+   -7.00%                0   —
+   -6.50%                0   —
+   -6.00%                0   —
+   -5.00%                0   —
+   +0.00%                0   —
+
+-- THE MIRROR CURVE: the best late-band level reachable at each class-mark floor --
+   class >=          n pts worst-late     31-40     41-64   the point
+   1.030                96    -8.07%    -8.07%    -5.31%   dose 0.00 k 0.30 gu 8 eta 0.50 gd 12
+   1.040                78    -8.07%    -8.07%    -5.31%   dose 0.00 k 0.30 gu 8 eta 0.50 gd 12
+   1.045                60    -8.18%    -8.18%    -5.52%   dose 0.10 k 0.28 gu 8 eta 0.50 gd 12
+   1.050                18    -8.45%    -8.45%    -7.30%   dose 0.15 k 0.24 gu 11 eta 0.45 gd 14
+   1.055                 0   — unreachable inside the ruled constraints
+   1.060                 0   — unreachable inside the ruled constraints
+   1.070                 0   — unreachable inside the ruled constraints
+   1.080                 0   — unreachable inside the ruled constraints
+
+-- WHY THE ASPIRATION (no sell-red) IS OUT OF REACH: what it would take --
+   ruled-feasible points with 31-40 >= 0%: 0
+   ruled-feasible points with 41-64 >= 0%: 0
+   best 41-64 anywhere inside the RULED constraints: -5.31% (dose 0.00 k 0.30 gu 8 eta 0.50 gd 12) — still 5.31 points of appreciation short of zero
+   best 31-40 anywhere inside the RULED constraints: -8.07% — 8.07 points short of zero
+
+-- THE CANDIDATE SHORTLIST FOR THE BOARD GATES (J-TOL, G4, G5) --
+   The selection law is min corrected-surface SSE. lam_rel is INERT on this instrument (it
+   reaches 5 of 1,986 walk-forward rows), so it is carried at the wired 1.08 here and decided
+   on the board. The distinct (dose, kappa, gu, eta, gd) points, in selection order:
+     #  dose  kappa    gu   eta    gd |    class   maxcls      SSE | five bands yr0->1
+     1  0.15   0.24    11  0.45    14 |   1.0503   1.1388    29.31 |  +8.04% +13.64%  +7.69%  -8.45%  -7.30%
+     2  0.45   0.18     8  0.50    14 |   1.0483   1.1352    31.67 |  +7.69% +13.60%  +7.94%  -8.96%  -7.16%
+     3  0.25   0.22     8  0.45    12 |   1.0502   1.1359    33.60 |  +7.91% +13.17%  +7.60%  -8.67%  -6.83%
+     4  0.40   0.20     8  0.50    14 |   1.0519   1.1385    33.77 |  +7.58% +13.82%  +8.26%  -8.54%  -6.50%
+     5  0.25   0.24     8  0.50    12 |   1.0469   1.1351    34.82 |  +6.51% +12.53%  +7.32%  -8.69%  -6.34%
+     6  0.35   0.20     8  0.50    14 |   1.0429   1.1287    35.39 |  +6.54% +12.76%  +7.25%  -9.11%  -7.26%
+     7  0.30   0.20     8  0.45    14 |   1.0495   1.1350    35.91 |  +7.90% +13.59%  +7.84%  -8.68%  -7.11%
+     8  0.30   0.22     8  0.50    14 |   1.0465   1.1347    37.69 |  +6.47% +13.01%  +7.63%  -8.66%  -6.57%
+     9  0.15   0.24     8  0.45    12 |   1.0458   1.1337    38.11 |  +6.78% +12.54%  +7.20%  -8.65%  -6.74%
+    10  0.25   0.22     8  0.50    14 |   1.0383   1.1258    39.53 |  +5.52% +12.03%  +6.72%  -9.18%  -7.26%
+    11  0.10   0.28     8  0.50    12 |   1.0468   1.1390    42.39 |  +5.38% +12.21%  +7.38%  -8.18%  -5.52%
+    12  0.20   0.24     8  0.50    14 |   1.0415   1.1320    42.83 |  +5.29% +12.31%  +7.15%  -8.70%  -6.54%
+    13  0.15   0.24     8  0.50    14 |   1.0340   1.1237    44.81 |  +4.41% +11.41%  +6.34%  -9.16%  -7.16%
+    14  0.15   0.26     8  0.50    14 |   1.0457   1.1381    45.87 |  +5.27% +12.61%  +7.59%  -8.21%  -5.81%
+    15  0.00   0.30     8  0.50    12 |   1.0447   1.1376    47.25 |  +4.61% +11.73%  +7.18%  -8.07%  -5.31%
+    16  0.10   0.26     8  0.50    14 |   1.0385   1.1301    47.88 |  +4.43% +11.74%  +6.82%  -8.65%  -6.40%
+
+written: REGION_J.json  (16 shortlist points)

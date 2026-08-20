@@ -1,0 +1,9714 @@
+{
+ "meta": {
+  "prereg": "PREREG_S4.md (pushed before any comparison number: commit bf39901)",
+  "cand": {
+   "path": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/per_entrant_O35FINAL.json",
+   "md5": "e029bc9f646ed0a360a3043df18eba08"
+  },
+  "old": {
+   "path": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/per_entrant_O29CFINAL.json",
+   "md5": "6db06e404e7b4ea02e5b47b4020d687f"
+  },
+  "B_boot": 2000,
+  "seed": 32,
+  "bars": {
+   "KPD": 65.4,
+   "KPF": 63.8,
+   "MID": 77.1,
+   "RUCK": 75.5,
+   "SD": 75.3,
+   "SF": 67.9
+  },
+  "exclusions": {
+   "N0:future_unobservable": 121,
+   "N0:left_censor": 216,
+   "N1:future_unobservable": 239,
+   "N1:left_censor": 216,
+   "N2:future_unobservable": 337,
+   "N2:left_censor": 216,
+   "N2:window_closed_before_N": 21,
+   "N3:future_unobservable": 446,
+   "N3:left_censor": 216,
+   "N3:window_closed_before_N": 606,
+   "N4:future_unobservable": 554,
+   "N4:left_censor": 216,
+   "N4:window_closed_before_N": 726,
+   "N5:future_unobservable": 642,
+   "N5:left_censor": 216,
+   "N5:window_closed_before_N": 829,
+   "N6:future_unobservable": 742,
+   "N6:left_censor": 216,
+   "N6:window_closed_before_N": 872
+  }
+ },
+ "cells": [
+  {
+   "pop": "ND",
+   "N": 1,
+   "horizon": "dv1",
+   "n": 1201,
+   "label": "PRIMARY ND",
+   "status": "scored",
+   "zero_target_share": 0.26894254787676936,
+   "M1": {
+    "rho_cand": 0.5683,
+    "rho_old": 0.4849,
+    "rho_cand_ci": [
+     0.5323,
+     0.6023
+    ],
+    "rho_old_ci": [
+     0.4434,
+     0.5248
+    ],
+    "delta": 0.0835,
+    "delta_ci": [
+     0.0668,
+     0.1021
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.3124,
+    "nmae_old": 1.308,
+    "nmae_cand_ci": [
+     1.2624,
+     1.3604
+    ],
+    "nmae_old_ci": [
+     1.2553,
+     1.3583
+    ],
+    "delta": -0.0044,
+    "delta_ci": [
+     -0.0149,
+     0.0063
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.3974,
+     "ci": [
+      0.3539,
+      0.4393
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3849,
+     "ci": [
+      0.3411,
+      0.4271
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3657,
+     "ci": [
+      0.321,
+      0.4084
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 1-10",
+   "N": 1,
+   "horizon": "dv1",
+   "n": 190,
+   "label": "band 1-10",
+   "status": "scored",
+   "zero_target_share": 0.06842105263157895,
+   "M1": {
+    "rho_cand": 0.4969,
+    "rho_old": 0.5407,
+    "rho_cand_ci": [
+     0.3955,
+     0.5822
+    ],
+    "rho_old_ci": [
+     0.4477,
+     0.6172
+    ],
+    "delta": -0.0438,
+    "delta_ci": [
+     -0.0825,
+     -0.0054
+    ],
+    "verdict": "oldlaw"
+   },
+   "M2": {
+    "nmae_cand": 1.1369,
+    "nmae_old": 1.104,
+    "nmae_cand_ci": [
+     1.0521,
+     1.22
+    ],
+    "nmae_old_ci": [
+     1.0207,
+     1.1884
+    ],
+    "delta": -0.033,
+    "delta_ci": [
+     -0.0488,
+     -0.0172
+    ],
+    "verdict": "oldlaw"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2364,
+     "ci": [
+      0.1246,
+      0.3391
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3104,
+     "ci": [
+      0.1985,
+      0.4072
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3102,
+     "ci": [
+      0.2009,
+      0.4081
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 11-20",
+   "N": 1,
+   "horizon": "dv1",
+   "n": 190,
+   "label": "band 11-20",
+   "status": "scored",
+   "zero_target_share": 0.16842105263157894,
+   "M1": {
+    "rho_cand": 0.5385,
+    "rho_old": 0.4143,
+    "rho_cand_ci": [
+     0.4454,
+     0.6193
+    ],
+    "rho_old_ci": [
+     0.3059,
+     0.521
+    ],
+    "delta": 0.1242,
+    "delta_ci": [
+     0.0512,
+     0.1972
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.3339,
+    "nmae_old": 1.32,
+    "nmae_cand_ci": [
+     1.2358,
+     1.4177
+    ],
+    "nmae_old_ci": [
+     1.2124,
+     1.411
+    ],
+    "delta": -0.0139,
+    "delta_ci": [
+     -0.0395,
+     0.0081
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.1704,
+     "ci": [
+      0.0525,
+      0.2891
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.1147,
+     "ci": [
+      -0.0079,
+      0.235
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0978,
+     "ci": [
+      -0.0264,
+      0.219
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 21-30",
+   "N": 1,
+   "horizon": "dv1",
+   "n": 190,
+   "label": "band 21-30",
+   "status": "scored",
+   "zero_target_share": 0.19473684210526315,
+   "M1": {
+    "rho_cand": 0.4348,
+    "rho_old": 0.351,
+    "rho_cand_ci": [
+     0.3189,
+     0.537
+    ],
+    "rho_old_ci": [
+     0.2343,
+     0.4573
+    ],
+    "delta": 0.0838,
+    "delta_ci": [
+     0.0158,
+     0.1498
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.4384,
+    "nmae_old": 1.4187,
+    "nmae_cand_ci": [
+     1.3229,
+     1.5432
+    ],
+    "nmae_old_ci": [
+     1.286,
+     1.5388
+    ],
+    "delta": -0.0197,
+    "delta_ci": [
+     -0.0519,
+     0.0101
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0591,
+     "ci": [
+      -0.0625,
+      0.1799
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.0756,
+     "ci": [
+      -0.0534,
+      0.2032
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0549,
+     "ci": [
+      -0.0687,
+      0.1759
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 31-40",
+   "N": 1,
+   "horizon": "dv1",
+   "n": 190,
+   "label": "band 31-40",
+   "status": "scored",
+   "zero_target_share": 0.3157894736842105,
+   "M1": {
+    "rho_cand": 0.3402,
+    "rho_old": 0.1469,
+    "rho_cand_ci": [
+     0.2201,
+     0.4457
+    ],
+    "rho_old_ci": [
+     0.0198,
+     0.2731
+    ],
+    "delta": 0.1933,
+    "delta_ci": [
+     0.106,
+     0.2759
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.5432,
+    "nmae_old": 1.5522,
+    "nmae_cand_ci": [
+     1.4295,
+     1.6529
+    ],
+    "nmae_old_ci": [
+     1.4182,
+     1.6763
+    ],
+    "delta": 0.009,
+    "delta_ci": [
+     -0.027,
+     0.0418
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": -0.0973,
+     "ci": [
+      -0.2182,
+      0.0153
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": -0.1118,
+     "ci": [
+      -0.2298,
+      0.006
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": -0.1131,
+     "ci": [
+      -0.2319,
+      0.0027
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 41-64",
+   "N": 1,
+   "horizon": "dv1",
+   "n": 441,
+   "label": "band 41-64",
+   "status": "scored",
+   "zero_target_share": 0.41043083900226757,
+   "M1": {
+    "rho_cand": 0.4387,
+    "rho_old": 0.1984,
+    "rho_cand_ci": [
+     0.3696,
+     0.505
+    ],
+    "rho_old_ci": [
+     0.1181,
+     0.2773
+    ],
+    "delta": 0.2403,
+    "delta_ci": [
+     0.1872,
+     0.296
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.5587,
+    "nmae_old": 1.6072,
+    "nmae_cand_ci": [
+     1.4737,
+     1.6341
+    ],
+    "nmae_old_ci": [
+     1.519,
+     1.685
+    ],
+    "delta": 0.0485,
+    "delta_ci": [
+     0.0226,
+     0.0795
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0847,
+     "ci": [
+      0.0087,
+      0.1596
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.112,
+     "ci": [
+      0.0304,
+      0.1905
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.0977,
+     "ci": [
+      0.0183,
+      0.1797
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2005-2014",
+   "N": 1,
+   "horizon": "dv1",
+   "n": 634,
+   "label": "era 2005-2014",
+   "status": "scored",
+   "zero_target_share": 0.2555205047318612,
+   "M1": {
+    "rho_cand": 0.5758,
+    "rho_old": 0.4838,
+    "rho_cand_ci": [
+     0.5268,
+     0.6212
+    ],
+    "rho_old_ci": [
+     0.4274,
+     0.5379
+    ],
+    "delta": 0.092,
+    "delta_ci": [
+     0.0674,
+     0.1176
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.2872,
+    "nmae_old": 1.285,
+    "nmae_cand_ci": [
+     1.2194,
+     1.3565
+    ],
+    "nmae_old_ci": [
+     1.2129,
+     1.358
+    ],
+    "delta": -0.0022,
+    "delta_ci": [
+     -0.018,
+     0.0128
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.3998,
+     "ci": [
+      0.3423,
+      0.4572
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3848,
+     "ci": [
+      0.3256,
+      0.4428
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3644,
+     "ci": [
+      0.3028,
+      0.4219
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2015+",
+   "N": 1,
+   "horizon": "dv1",
+   "n": 567,
+   "label": "era 2015+",
+   "status": "scored",
+   "zero_target_share": 0.2839506172839506,
+   "M1": {
+    "rho_cand": 0.5561,
+    "rho_old": 0.4826,
+    "rho_cand_ci": [
+     0.5044,
+     0.6045
+    ],
+    "rho_old_ci": [
+     0.4255,
+     0.5346
+    ],
+    "delta": 0.0735,
+    "delta_ci": [
+     0.0501,
+     0.0986
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.3374,
+    "nmae_old": 1.3304,
+    "nmae_cand_ci": [
+     1.2675,
+     1.4093
+    ],
+    "nmae_old_ci": [
+     1.2574,
+     1.4039
+    ],
+    "delta": -0.007,
+    "delta_ci": [
+     -0.0215,
+     0.0062
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.3955,
+     "ci": [
+      0.3364,
+      0.4528
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3858,
+     "ci": [
+      0.3241,
+      0.44
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3656,
+     "ci": [
+      0.3026,
+      0.4201
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "RD",
+   "N": 1,
+   "horizon": "dv1",
+   "n": 586,
+   "label": "arm RD",
+   "status": "scored",
+   "zero_target_share": 0.6160409556313993,
+   "M1": {
+    "rho_cand": 0.3887,
+    "rho_old": 0.2323,
+    "rho_cand_ci": [
+     0.3263,
+     0.4506
+    ],
+    "rho_old_ci": [
+     0.1574,
+     0.3084
+    ],
+    "delta": 0.1564,
+    "delta_ci": [
+     0.0999,
+     0.2151
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.5489,
+    "nmae_old": 1.5875,
+    "nmae_cand_ci": [
+     1.4538,
+     1.6438
+    ],
+    "nmae_old_ci": [
+     1.4924,
+     1.6765
+    ],
+    "delta": 0.0386,
+    "delta_ci": [
+     0.0206,
+     0.0532
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.0222,
+     "ci": [
+      -0.0422,
+      0.0887
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0222,
+     "ci": [
+      -0.0422,
+      0.0887
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "MSD",
+   "N": 1,
+   "horizon": "dv1",
+   "n": 55,
+   "label": "arm MSD",
+   "status": "scored",
+   "zero_target_share": 0.5636363636363636,
+   "M1": {
+    "rho_cand": 0.2693,
+    "rho_old": -0.0355,
+    "rho_cand_ci": [
+     0.0135,
+     0.4956
+    ],
+    "rho_old_ci": [
+     -0.2941,
+     0.2168
+    ],
+    "delta": 0.3048,
+    "delta_ci": [
+     0.1388,
+     0.4822
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.5838,
+    "nmae_old": 1.6136,
+    "nmae_cand_ci": [
+     1.2534,
+     1.832
+    ],
+    "nmae_old_ci": [
+     1.3271,
+     1.8237
+    ],
+    "delta": 0.0298,
+    "delta_ci": [
+     -0.0404,
+     0.0978
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.016,
+     "ci": [
+      -0.2129,
+      0.2444
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.016,
+     "ci": [
+      -0.2129,
+      0.2444
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "OTHERPOOL",
+   "N": 1,
+   "horizon": "dv1",
+   "n": 351,
+   "label": "arm OTHERPOOL",
+   "status": "scored",
+   "zero_target_share": 0.6068376068376068,
+   "M1": {
+    "rho_cand": 0.3897,
+    "rho_old": 0.3038,
+    "rho_cand_ci": [
+     0.3049,
+     0.4696
+    ],
+    "rho_old_ci": [
+     0.2207,
+     0.3857
+    ],
+    "delta": 0.0859,
+    "delta_ci": [
+     0.048,
+     0.1255
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.6828,
+    "nmae_old": 1.7133,
+    "nmae_cand_ci": [
+     1.5763,
+     1.7765
+    ],
+    "nmae_old_ci": [
+     1.6158,
+     1.797
+    ],
+    "delta": 0.0305,
+    "delta_ci": [
+     0.0077,
+     0.0546
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1665,
+     "ci": [
+      0.0851,
+      0.2524
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1665,
+     "ci": [
+      0.0851,
+      0.2524
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "POOL-ALL",
+   "N": 1,
+   "horizon": "dv1",
+   "n": 992,
+   "label": "POOL-ALL",
+   "status": "scored",
+   "zero_target_share": 0.6098790322580645,
+   "M1": {
+    "rho_cand": 0.3745,
+    "rho_old": 0.2406,
+    "rho_cand_ci": [
+     0.3259,
+     0.4211
+    ],
+    "rho_old_ci": [
+     0.1851,
+     0.294
+    ],
+    "delta": 0.1339,
+    "delta_ci": [
+     0.0993,
+     0.1696
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.5882,
+    "nmae_old": 1.6245,
+    "nmae_cand_ci": [
+     1.5124,
+     1.6551
+    ],
+    "nmae_old_ci": [
+     1.5496,
+     1.689
+    ],
+    "delta": 0.0363,
+    "delta_ci": [
+     0.0216,
+     0.0495
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.0651,
+     "ci": [
+      0.0142,
+      0.1149
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.0651,
+     "ci": [
+      0.0142,
+      0.1149
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND",
+   "N": 1,
+   "horizon": "dvrest",
+   "n": 1201,
+   "label": "PRIMARY ND",
+   "status": "scored",
+   "zero_target_share": 0.13821815154038303,
+   "M1": {
+    "rho_cand": 0.5762,
+    "rho_old": 0.5279,
+    "rho_cand_ci": [
+     0.5414,
+     0.6079
+    ],
+    "rho_old_ci": [
+     0.49,
+     0.5616
+    ],
+    "delta": 0.0483,
+    "delta_ci": [
+     0.0313,
+     0.0653
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 0.9873,
+    "nmae_old": 0.9989,
+    "nmae_cand_ci": [
+     0.9422,
+     1.0349
+    ],
+    "nmae_old_ci": [
+     0.9542,
+     1.045
+    ],
+    "delta": 0.0117,
+    "delta_ci": [
+     -0.0017,
+     0.0233
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.4494,
+     "ci": [
+      0.4115,
+      0.4885
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.4571,
+     "ci": [
+      0.418,
+      0.4947
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.4445,
+     "ci": [
+      0.4037,
+      0.4812
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 1-10",
+   "N": 1,
+   "horizon": "dvrest",
+   "n": 190,
+   "label": "band 1-10",
+   "status": "scored",
+   "zero_target_share": 0.005263157894736842,
+   "M1": {
+    "rho_cand": 0.4666,
+    "rho_old": 0.4645,
+    "rho_cand_ci": [
+     0.369,
+     0.556
+    ],
+    "rho_old_ci": [
+     0.3656,
+     0.5549
+    ],
+    "delta": 0.0021,
+    "delta_ci": [
+     -0.0375,
+     0.0403
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.7768,
+    "nmae_old": 0.7667,
+    "nmae_cand_ci": [
+     0.6991,
+     0.8566
+    ],
+    "nmae_old_ci": [
+     0.6893,
+     0.8446
+    ],
+    "delta": -0.0101,
+    "delta_ci": [
+     -0.0316,
+     0.0111
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2661,
+     "ci": [
+      0.1529,
+      0.3761
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3607,
+     "ci": [
+      0.2539,
+      0.4622
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3755,
+     "ci": [
+      0.2653,
+      0.4774
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 11-20",
+   "N": 1,
+   "horizon": "dvrest",
+   "n": 190,
+   "label": "band 11-20",
+   "status": "scored",
+   "zero_target_share": 0.042105263157894736,
+   "M1": {
+    "rho_cand": 0.4508,
+    "rho_old": 0.3709,
+    "rho_cand_ci": [
+     0.3462,
+     0.5406
+    ],
+    "rho_old_ci": [
+     0.2692,
+     0.4622
+    ],
+    "delta": 0.0799,
+    "delta_ci": [
+     0.0081,
+     0.1549
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 0.947,
+    "nmae_old": 0.9524,
+    "nmae_cand_ci": [
+     0.8586,
+     1.0393
+    ],
+    "nmae_old_ci": [
+     0.8597,
+     1.0467
+    ],
+    "delta": 0.0055,
+    "delta_ci": [
+     -0.0232,
+     0.031
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0855,
+     "ci": [
+      -0.0376,
+      0.2128
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.0918,
+     "ci": [
+      -0.0328,
+      0.2116
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.097,
+     "ci": [
+      -0.0286,
+      0.2164
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 21-30",
+   "N": 1,
+   "horizon": "dvrest",
+   "n": 190,
+   "label": "band 21-30",
+   "status": "scored",
+   "zero_target_share": 0.10526315789473684,
+   "M1": {
+    "rho_cand": 0.3964,
+    "rho_old": 0.34,
+    "rho_cand_ci": [
+     0.2796,
+     0.4995
+    ],
+    "rho_old_ci": [
+     0.2163,
+     0.4462
+    ],
+    "delta": 0.0565,
+    "delta_ci": [
+     -0.0148,
+     0.1251
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 1.1253,
+    "nmae_old": 1.1224,
+    "nmae_cand_ci": [
+     1.0239,
+     1.2314
+    ],
+    "nmae_old_ci": [
+     1.0103,
+     1.2341
+    ],
+    "delta": -0.0029,
+    "delta_ci": [
+     -0.0345,
+     0.0291
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": -0.0143,
+     "ci": [
+      -0.1353,
+      0.0989
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.1046,
+     "ci": [
+      -0.0225,
+      0.2194
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0913,
+     "ci": [
+      -0.0356,
+      0.2071
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 31-40",
+   "N": 1,
+   "horizon": "dvrest",
+   "n": 190,
+   "label": "band 31-40",
+   "status": "scored",
+   "zero_target_share": 0.14736842105263157,
+   "M1": {
+    "rho_cand": 0.3672,
+    "rho_old": 0.2954,
+    "rho_cand_ci": [
+     0.2575,
+     0.4722
+    ],
+    "rho_old_ci": [
+     0.1711,
+     0.4033
+    ],
+    "delta": 0.0718,
+    "delta_ci": [
+     -0.0107,
+     0.1596
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 1.2245,
+    "nmae_old": 1.2107,
+    "nmae_cand_ci": [
+     1.1196,
+     1.3345
+    ],
+    "nmae_old_ci": [
+     1.0986,
+     1.3317
+    ],
+    "delta": -0.0139,
+    "delta_ci": [
+     -0.0542,
+     0.03
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0102,
+     "ci": [
+      -0.1026,
+      0.1232
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.0938,
+     "ci": [
+      -0.038,
+      0.2178
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0824,
+     "ci": [
+      -0.0514,
+      0.2046
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 41-64",
+   "N": 1,
+   "horizon": "dvrest",
+   "n": 441,
+   "label": "band 41-64",
+   "status": "scored",
+   "zero_target_share": 0.2471655328798186,
+   "M1": {
+    "rho_cand": 0.3789,
+    "rho_old": 0.2064,
+    "rho_cand_ci": [
+     0.3077,
+     0.4455
+    ],
+    "rho_old_ci": [
+     0.13,
+     0.2861
+    ],
+    "delta": 0.1725,
+    "delta_ci": [
+     0.122,
+     0.2277
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.3786,
+    "nmae_old": 1.419,
+    "nmae_cand_ci": [
+     1.3056,
+     1.4458
+    ],
+    "nmae_old_ci": [
+     1.3446,
+     1.4914
+    ],
+    "delta": 0.0404,
+    "delta_ci": [
+     0.0126,
+     0.0713
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.1232,
+     "ci": [
+      0.0443,
+      0.1989
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.1518,
+     "ci": [
+      0.0714,
+      0.2296
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1292,
+     "ci": [
+      0.0506,
+      0.2089
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2005-2014",
+   "N": 1,
+   "horizon": "dvrest",
+   "n": 634,
+   "label": "era 2005-2014",
+   "status": "scored",
+   "zero_target_share": 0.11041009463722397,
+   "M1": {
+    "rho_cand": 0.5831,
+    "rho_old": 0.5341,
+    "rho_cand_ci": [
+     0.5363,
+     0.6272
+    ],
+    "rho_old_ci": [
+     0.4836,
+     0.5812
+    ],
+    "delta": 0.049,
+    "delta_ci": [
+     0.0252,
+     0.0742
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 0.905,
+    "nmae_old": 0.917,
+    "nmae_cand_ci": [
+     0.8512,
+     0.9638
+    ],
+    "nmae_old_ci": [
+     0.8592,
+     0.9779
+    ],
+    "delta": 0.012,
+    "delta_ci": [
+     -0.0068,
+     0.0308
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.4617,
+     "ci": [
+      0.4099,
+      0.5103
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.477,
+     "ci": [
+      0.4256,
+      0.5271
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.4635,
+     "ci": [
+      0.4091,
+      0.5146
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2015+",
+   "N": 1,
+   "horizon": "dvrest",
+   "n": 567,
+   "label": "era 2015+",
+   "status": "scored",
+   "zero_target_share": 0.1693121693121693,
+   "M1": {
+    "rho_cand": 0.5867,
+    "rho_old": 0.5416,
+    "rho_cand_ci": [
+     0.5331,
+     0.6329
+    ],
+    "rho_old_ci": [
+     0.4861,
+     0.5918
+    ],
+    "delta": 0.0451,
+    "delta_ci": [
+     0.0224,
+     0.0677
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.0347,
+    "nmae_old": 1.0452,
+    "nmae_cand_ci": [
+     0.9676,
+     1.105
+    ],
+    "nmae_old_ci": [
+     0.977,
+     1.1163
+    ],
+    "delta": 0.0105,
+    "delta_ci": [
+     -0.0067,
+     0.0273
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.4534,
+     "ci": [
+      0.3948,
+      0.506
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.4539,
+     "ci": [
+      0.3951,
+      0.5052
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.4403,
+     "ci": [
+      0.3798,
+      0.4934
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "RD",
+   "N": 1,
+   "horizon": "dvrest",
+   "n": 586,
+   "label": "arm RD",
+   "status": "scored",
+   "zero_target_share": 0.48464163822525597,
+   "M1": {
+    "rho_cand": 0.3771,
+    "rho_old": 0.2306,
+    "rho_cand_ci": [
+     0.3206,
+     0.4352
+    ],
+    "rho_old_ci": [
+     0.1581,
+     0.2985
+    ],
+    "delta": 0.1465,
+    "delta_ci": [
+     0.0964,
+     0.2008
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.3804,
+    "nmae_old": 1.4094,
+    "nmae_cand_ci": [
+     1.2942,
+     1.4616
+    ],
+    "nmae_old_ci": [
+     1.3216,
+     1.4903
+    ],
+    "delta": 0.029,
+    "delta_ci": [
+     0.009,
+     0.047
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.0466,
+     "ci": [
+      -0.0196,
+      0.1135
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0466,
+     "ci": [
+      -0.0196,
+      0.1135
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "MSD",
+   "N": 1,
+   "horizon": "dvrest",
+   "n": 55,
+   "label": "arm MSD",
+   "status": "scored",
+   "zero_target_share": 0.5454545454545454,
+   "M1": {
+    "rho_cand": 0.3796,
+    "rho_old": 0.0745,
+    "rho_cand_ci": [
+     0.1338,
+     0.5847
+    ],
+    "rho_old_ci": [
+     -0.1893,
+     0.3258
+    ],
+    "delta": 0.3052,
+    "delta_ci": [
+     0.13,
+     0.4745
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.2428,
+    "nmae_old": 1.3351,
+    "nmae_cand_ci": [
+     0.9519,
+     1.5645
+    ],
+    "nmae_old_ci": [
+     1.0586,
+     1.6129
+    ],
+    "delta": 0.0923,
+    "delta_ci": [
+     0.0099,
+     0.1561
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.0954,
+     "ci": [
+      -0.1357,
+      0.3244
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0954,
+     "ci": [
+      -0.1357,
+      0.3244
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "OTHERPOOL",
+   "N": 1,
+   "horizon": "dvrest",
+   "n": 351,
+   "label": "arm OTHERPOOL",
+   "status": "scored",
+   "zero_target_share": 0.4586894586894587,
+   "M1": {
+    "rho_cand": 0.4161,
+    "rho_old": 0.3629,
+    "rho_cand_ci": [
+     0.3386,
+     0.4902
+    ],
+    "rho_old_ci": [
+     0.2818,
+     0.4403
+    ],
+    "delta": 0.0532,
+    "delta_ci": [
+     0.0212,
+     0.0877
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.4224,
+    "nmae_old": 1.444,
+    "nmae_cand_ci": [
+     1.3064,
+     1.5248
+    ],
+    "nmae_old_ci": [
+     1.3302,
+     1.5465
+    ],
+    "delta": 0.0216,
+    "delta_ci": [
+     -0.0061,
+     0.0567
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.2589,
+     "ci": [
+      0.1738,
+      0.3404
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2589,
+     "ci": [
+      0.1738,
+      0.3404
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "POOL-ALL",
+   "N": 1,
+   "horizon": "dvrest",
+   "n": 992,
+   "label": "POOL-ALL",
+   "status": "scored",
+   "zero_target_share": 0.4788306451612903,
+   "M1": {
+    "rho_cand": 0.3768,
+    "rho_old": 0.2651,
+    "rho_cand_ci": [
+     0.3311,
+     0.4202
+    ],
+    "rho_old_ci": [
+     0.214,
+     0.3136
+    ],
+    "delta": 0.1118,
+    "delta_ci": [
+     0.0832,
+     0.141
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.3786,
+    "nmae_old": 1.4064,
+    "nmae_cand_ci": [
+     1.3073,
+     1.4477
+    ],
+    "nmae_old_ci": [
+     1.334,
+     1.4771
+    ],
+    "delta": 0.0277,
+    "delta_ci": [
+     0.0127,
+     0.0445
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1084,
+     "ci": [
+      0.058,
+      0.1574
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1084,
+     "ci": [
+      0.058,
+      0.1574
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND",
+   "N": 2,
+   "horizon": "dv1",
+   "n": 1137,
+   "label": "PRIMARY ND",
+   "status": "scored",
+   "zero_target_share": 0.2497801231310466,
+   "M1": {
+    "rho_cand": 0.6701,
+    "rho_old": 0.6256,
+    "rho_cand_ci": [
+     0.6386,
+     0.6996
+    ],
+    "rho_old_ci": [
+     0.5918,
+     0.6575
+    ],
+    "delta": 0.0445,
+    "delta_ci": [
+     0.0268,
+     0.0625
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.0616,
+    "nmae_old": 1.0943,
+    "nmae_cand_ci": [
+     1.0049,
+     1.1202
+    ],
+    "nmae_old_ci": [
+     1.0405,
+     1.1502
+    ],
+    "delta": 0.0326,
+    "delta_ci": [
+     0.021,
+     0.0452
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.4604,
+     "ci": [
+      0.42,
+      0.5009
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.4445,
+     "ci": [
+      0.4032,
+      0.4852
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.4167,
+     "ci": [
+      0.3745,
+      0.4573
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 1-10",
+   "N": 2,
+   "horizon": "dv1",
+   "n": 180,
+   "label": "band 1-10",
+   "status": "scored",
+   "zero_target_share": 0.044444444444444446,
+   "M1": {
+    "rho_cand": 0.6664,
+    "rho_old": 0.6125,
+    "rho_cand_ci": [
+     0.5816,
+     0.7351
+    ],
+    "rho_old_ci": [
+     0.5247,
+     0.6892
+    ],
+    "delta": 0.0538,
+    "delta_ci": [
+     0.0211,
+     0.0916
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 0.8056,
+    "nmae_old": 0.8153,
+    "nmae_cand_ci": [
+     0.7171,
+     0.8953
+    ],
+    "nmae_old_ci": [
+     0.7281,
+     0.9097
+    ],
+    "delta": 0.0097,
+    "delta_ci": [
+     -0.0055,
+     0.0288
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.3412,
+     "ci": [
+      0.2298,
+      0.4439
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.4103,
+     "ci": [
+      0.3009,
+      0.5034
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3846,
+     "ci": [
+      0.2678,
+      0.4848
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 11-20",
+   "N": 2,
+   "horizon": "dv1",
+   "n": 180,
+   "label": "band 11-20",
+   "status": "scored",
+   "zero_target_share": 0.05555555555555555,
+   "M1": {
+    "rho_cand": 0.5072,
+    "rho_old": 0.4761,
+    "rho_cand_ci": [
+     0.4037,
+     0.6009
+    ],
+    "rho_old_ci": [
+     0.3684,
+     0.5742
+    ],
+    "delta": 0.031,
+    "delta_ci": [
+     -0.0129,
+     0.0781
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 1.1541,
+    "nmae_old": 1.1603,
+    "nmae_cand_ci": [
+     1.0381,
+     1.2715
+    ],
+    "nmae_old_ci": [
+     1.0465,
+     1.2803
+    ],
+    "delta": 0.0062,
+    "delta_ci": [
+     -0.0129,
+     0.0283
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0348,
+     "ci": [
+      -0.0977,
+      0.1605
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.0112,
+     "ci": [
+      -0.1151,
+      0.1381
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0172,
+     "ci": [
+      -0.1163,
+      0.1428
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 21-30",
+   "N": 2,
+   "horizon": "dv1",
+   "n": 180,
+   "label": "band 21-30",
+   "status": "scored",
+   "zero_target_share": 0.18333333333333332,
+   "M1": {
+    "rho_cand": 0.5768,
+    "rho_old": 0.5422,
+    "rho_cand_ci": [
+     0.474,
+     0.6649
+    ],
+    "rho_old_ci": [
+     0.4318,
+     0.638
+    ],
+    "delta": 0.0346,
+    "delta_ci": [
+     -0.024,
+     0.0928
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 1.2224,
+    "nmae_old": 1.2312,
+    "nmae_cand_ci": [
+     1.0972,
+     1.3459
+    ],
+    "nmae_old_ci": [
+     1.1072,
+     1.3554
+    ],
+    "delta": 0.0089,
+    "delta_ci": [
+     -0.0105,
+     0.0266
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0363,
+     "ci": [
+      -0.0837,
+      0.163
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.0658,
+     "ci": [
+      -0.0616,
+      0.1937
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0516,
+     "ci": [
+      -0.0749,
+      0.1795
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 31-40",
+   "N": 2,
+   "horizon": "dv1",
+   "n": 180,
+   "label": "band 31-40",
+   "status": "scored",
+   "zero_target_share": 0.3,
+   "M1": {
+    "rho_cand": 0.5237,
+    "rho_old": 0.4774,
+    "rho_cand_ci": [
+     0.4144,
+     0.6176
+    ],
+    "rho_old_ci": [
+     0.3675,
+     0.5793
+    ],
+    "delta": 0.0463,
+    "delta_ci": [
+     -0.0523,
+     0.1414
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 1.3565,
+    "nmae_old": 1.371,
+    "nmae_cand_ci": [
+     1.2386,
+     1.4733
+    ],
+    "nmae_old_ci": [
+     1.2515,
+     1.4907
+    ],
+    "delta": 0.0145,
+    "delta_ci": [
+     -0.0229,
+     0.0527
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": -0.003,
+     "ci": [
+      -0.1288,
+      0.1236
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": -0.0358,
+     "ci": [
+      -0.1586,
+      0.0906
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": -0.0573,
+     "ci": [
+      -0.1748,
+      0.068
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 41-64",
+   "N": 2,
+   "horizon": "dv1",
+   "n": 417,
+   "label": "band 41-64",
+   "status": "scored",
+   "zero_target_share": 0.4292565947242206,
+   "M1": {
+    "rho_cand": 0.5583,
+    "rho_old": 0.3986,
+    "rho_cand_ci": [
+     0.4924,
+     0.6185
+    ],
+    "rho_old_ci": [
+     0.3174,
+     0.4759
+    ],
+    "delta": 0.1597,
+    "delta_ci": [
+     0.1044,
+     0.218
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.3517,
+    "nmae_old": 1.3908,
+    "nmae_cand_ci": [
+     1.2419,
+     1.4601
+    ],
+    "nmae_old_ci": [
+     1.2803,
+     1.4947
+    ],
+    "delta": 0.0391,
+    "delta_ci": [
+     0.0168,
+     0.0621
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.1637,
+     "ci": [
+      0.0818,
+      0.2396
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.1566,
+     "ci": [
+      0.0773,
+      0.2334
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1043,
+     "ci": [
+      0.0272,
+      0.1811
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2005-2014",
+   "N": 2,
+   "horizon": "dv1",
+   "n": 634,
+   "label": "era 2005-2014",
+   "status": "scored",
+   "zero_target_share": 0.2444794952681388,
+   "M1": {
+    "rho_cand": 0.6695,
+    "rho_old": 0.6327,
+    "rho_cand_ci": [
+     0.6254,
+     0.7095
+    ],
+    "rho_old_ci": [
+     0.5854,
+     0.6761
+    ],
+    "delta": 0.0368,
+    "delta_ci": [
+     0.0122,
+     0.0611
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.0299,
+    "nmae_old": 1.0624,
+    "nmae_cand_ci": [
+     0.9578,
+     1.1028
+    ],
+    "nmae_old_ci": [
+     0.9919,
+     1.1359
+    ],
+    "delta": 0.0325,
+    "delta_ci": [
+     0.0166,
+     0.0504
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.427,
+     "ci": [
+      0.3695,
+      0.4828
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.4209,
+     "ci": [
+      0.3627,
+      0.4758
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3975,
+     "ci": [
+      0.3394,
+      0.4525
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2015+",
+   "N": 2,
+   "horizon": "dv1",
+   "n": 503,
+   "label": "era 2015+",
+   "status": "scored",
+   "zero_target_share": 0.25646123260437376,
+   "M1": {
+    "rho_cand": 0.6654,
+    "rho_old": 0.6095,
+    "rho_cand_ci": [
+     0.616,
+     0.7105
+    ],
+    "rho_old_ci": [
+     0.5556,
+     0.6584
+    ],
+    "delta": 0.0559,
+    "delta_ci": [
+     0.0264,
+     0.0881
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.1087,
+    "nmae_old": 1.1405,
+    "nmae_cand_ci": [
+     1.0154,
+     1.2029
+    ],
+    "nmae_old_ci": [
+     1.0496,
+     1.2294
+    ],
+    "delta": 0.0318,
+    "delta_ci": [
+     0.0147,
+     0.0481
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.5052,
+     "ci": [
+      0.4479,
+      0.5595
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.4776,
+     "ci": [
+      0.4165,
+      0.5329
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.4421,
+     "ci": [
+      0.3803,
+      0.501
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "RD",
+   "N": 2,
+   "horizon": "dv1",
+   "n": 577,
+   "label": "arm RD",
+   "status": "scored",
+   "zero_target_share": 0.6013864818024264,
+   "M1": {
+    "rho_cand": 0.5659,
+    "rho_old": 0.4139,
+    "rho_cand_ci": [
+     0.5061,
+     0.6205
+    ],
+    "rho_old_ci": [
+     0.3425,
+     0.4839
+    ],
+    "delta": 0.152,
+    "delta_ci": [
+     0.1017,
+     0.2046
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.4128,
+    "nmae_old": 1.4375,
+    "nmae_cand_ci": [
+     1.3173,
+     1.5076
+    ],
+    "nmae_old_ci": [
+     1.3427,
+     1.5336
+    ],
+    "delta": 0.0248,
+    "delta_ci": [
+     0.0071,
+     0.0409
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.0014,
+     "ci": [
+      -0.0654,
+      0.0685
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0014,
+     "ci": [
+      -0.0654,
+      0.0685
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "MSD",
+   "N": 2,
+   "horizon": "dv1",
+   "n": 23,
+   "label": "arm MSD",
+   "status": "scored",
+   "zero_target_share": 0.17391304347826086,
+   "M1": {
+    "rho_cand": 0.5899,
+    "rho_old": 0.5323,
+    "rho_cand_ci": [
+     0.3106,
+     0.7588
+    ],
+    "rho_old_ci": [
+     0.2269,
+     0.759
+    ],
+    "delta": 0.0575,
+    "delta_ci": [
+     -0.1427,
+     0.2509
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8664,
+    "nmae_old": 0.9077,
+    "nmae_cand_ci": [
+     0.4345,
+     1.4717
+    ],
+    "nmae_old_ci": [
+     0.479,
+     1.4859
+    ],
+    "delta": 0.0413,
+    "delta_ci": [
+     -0.0068,
+     0.1015
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.3599,
+     "ci": [
+      -0.0141,
+      0.6531
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.3599,
+     "ci": [
+      -0.0141,
+      0.6531
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "OTHERPOOL",
+   "N": 2,
+   "horizon": "dv1",
+   "n": 337,
+   "label": "arm OTHERPOOL",
+   "status": "scored",
+   "zero_target_share": 0.5934718100890207,
+   "M1": {
+    "rho_cand": 0.4415,
+    "rho_old": 0.3707,
+    "rho_cand_ci": [
+     0.3617,
+     0.5142
+    ],
+    "rho_old_ci": [
+     0.2834,
+     0.4531
+    ],
+    "delta": 0.0708,
+    "delta_ci": [
+     0.02,
+     0.1203
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.4649,
+    "nmae_old": 1.5062,
+    "nmae_cand_ci": [
+     1.3294,
+     1.5894
+    ],
+    "nmae_old_ci": [
+     1.3793,
+     1.6224
+    ],
+    "delta": 0.0413,
+    "delta_ci": [
+     0.0126,
+     0.0695
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1685,
+     "ci": [
+      0.0842,
+      0.2502
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1685,
+     "ci": [
+      0.0842,
+      0.2502
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "POOL-ALL",
+   "N": 2,
+   "horizon": "dv1",
+   "n": 937,
+   "label": "POOL-ALL",
+   "status": "scored",
+   "zero_target_share": 0.5880469583778015,
+   "M1": {
+    "rho_cand": 0.5104,
+    "rho_old": 0.392,
+    "rho_cand_ci": [
+     0.4633,
+     0.5545
+    ],
+    "rho_old_ci": [
+     0.3396,
+     0.4451
+    ],
+    "delta": 0.1184,
+    "delta_ci": [
+     0.0852,
+     0.1518
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.4022,
+    "nmae_old": 1.4363,
+    "nmae_cand_ci": [
+     1.3157,
+     1.4846
+    ],
+    "nmae_old_ci": [
+     1.3539,
+     1.513
+    ],
+    "delta": 0.0341,
+    "delta_ci": [
+     0.0197,
+     0.0503
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.0808,
+     "ci": [
+      0.028,
+      0.1308
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.0808,
+     "ci": [
+      0.028,
+      0.1308
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND",
+   "N": 2,
+   "horizon": "dvrest",
+   "n": 1137,
+   "label": "PRIMARY ND",
+   "status": "scored",
+   "zero_target_share": 0.17678100263852242,
+   "M1": {
+    "rho_cand": 0.6825,
+    "rho_old": 0.6435,
+    "rho_cand_ci": [
+     0.653,
+     0.7099
+    ],
+    "rho_old_ci": [
+     0.6115,
+     0.674
+    ],
+    "delta": 0.039,
+    "delta_ci": [
+     0.0216,
+     0.0568
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 0.874,
+    "nmae_old": 0.9004,
+    "nmae_cand_ci": [
+     0.83,
+     0.9214
+    ],
+    "nmae_old_ci": [
+     0.857,
+     0.9467
+    ],
+    "delta": 0.0263,
+    "delta_ci": [
+     0.0138,
+     0.0382
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.4657,
+     "ci": [
+      0.4262,
+      0.503
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.4711,
+     "ci": [
+      0.4317,
+      0.5085
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.457,
+     "ci": [
+      0.4165,
+      0.4949
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 1-10",
+   "N": 2,
+   "horizon": "dvrest",
+   "n": 180,
+   "label": "band 1-10",
+   "status": "scored",
+   "zero_target_share": 0.005555555555555556,
+   "M1": {
+    "rho_cand": 0.6401,
+    "rho_old": 0.6197,
+    "rho_cand_ci": [
+     0.5559,
+     0.7151
+    ],
+    "rho_old_ci": [
+     0.5357,
+     0.6946
+    ],
+    "delta": 0.0203,
+    "delta_ci": [
+     -0.0109,
+     0.0535
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6616,
+    "nmae_old": 0.6692,
+    "nmae_cand_ci": [
+     0.5852,
+     0.7344
+    ],
+    "nmae_old_ci": [
+     0.5934,
+     0.7457
+    ],
+    "delta": 0.0075,
+    "delta_ci": [
+     -0.0075,
+     0.0257
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2658,
+     "ci": [
+      0.1437,
+      0.3812
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3713,
+     "ci": [
+      0.2636,
+      0.4752
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3792,
+     "ci": [
+      0.2685,
+      0.4866
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 11-20",
+   "N": 2,
+   "horizon": "dvrest",
+   "n": 180,
+   "label": "band 11-20",
+   "status": "scored",
+   "zero_target_share": 0.022222222222222223,
+   "M1": {
+    "rho_cand": 0.5486,
+    "rho_old": 0.5243,
+    "rho_cand_ci": [
+     0.456,
+     0.6315
+    ],
+    "rho_old_ci": [
+     0.428,
+     0.6125
+    ],
+    "delta": 0.0243,
+    "delta_ci": [
+     -0.0219,
+     0.0725
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8379,
+    "nmae_old": 0.8438,
+    "nmae_cand_ci": [
+     0.7496,
+     0.9295
+    ],
+    "nmae_old_ci": [
+     0.7558,
+     0.9324
+    ],
+    "delta": 0.0059,
+    "delta_ci": [
+     -0.0164,
+     0.0279
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0761,
+     "ci": [
+      -0.0552,
+      0.2063
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.086,
+     "ci": [
+      -0.0401,
+      0.2135
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0857,
+     "ci": [
+      -0.0404,
+      0.2125
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 21-30",
+   "N": 2,
+   "horizon": "dvrest",
+   "n": 180,
+   "label": "band 21-30",
+   "status": "scored",
+   "zero_target_share": 0.1388888888888889,
+   "M1": {
+    "rho_cand": 0.5883,
+    "rho_old": 0.5189,
+    "rho_cand_ci": [
+     0.4911,
+     0.6737
+    ],
+    "rho_old_ci": [
+     0.4113,
+     0.6203
+    ],
+    "delta": 0.0694,
+    "delta_ci": [
+     0.0145,
+     0.1261
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.006,
+    "nmae_old": 1.0171,
+    "nmae_cand_ci": [
+     0.9054,
+     1.1047
+    ],
+    "nmae_old_ci": [
+     0.9199,
+     1.1176
+    ],
+    "delta": 0.0111,
+    "delta_ci": [
+     -0.0063,
+     0.0342
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": -0.008,
+     "ci": [
+      -0.1357,
+      0.1128
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.096,
+     "ci": [
+      -0.0356,
+      0.2247
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0845,
+     "ci": [
+      -0.0468,
+      0.2118
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 31-40",
+   "N": 2,
+   "horizon": "dvrest",
+   "n": 180,
+   "label": "band 31-40",
+   "status": "scored",
+   "zero_target_share": 0.2111111111111111,
+   "M1": {
+    "rho_cand": 0.551,
+    "rho_old": 0.5224,
+    "rho_cand_ci": [
+     0.4461,
+     0.6379
+    ],
+    "rho_old_ci": [
+     0.4243,
+     0.6106
+    ],
+    "delta": 0.0286,
+    "delta_ci": [
+     -0.0676,
+     0.1252
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 1.1328,
+    "nmae_old": 1.1609,
+    "nmae_cand_ci": [
+     1.0127,
+     1.2498
+    ],
+    "nmae_old_ci": [
+     1.0398,
+     1.2791
+    ],
+    "delta": 0.0281,
+    "delta_ci": [
+     -0.0167,
+     0.0682
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0485,
+     "ci": [
+      -0.0763,
+      0.1706
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.0922,
+     "ci": [
+      -0.0345,
+      0.2162
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0723,
+     "ci": [
+      -0.0572,
+      0.1999
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 41-64",
+   "N": 2,
+   "horizon": "dvrest",
+   "n": 417,
+   "label": "band 41-64",
+   "status": "scored",
+   "zero_target_share": 0.31894484412470026,
+   "M1": {
+    "rho_cand": 0.549,
+    "rho_old": 0.4297,
+    "rho_cand_ci": [
+     0.4863,
+     0.6108
+    ],
+    "rho_old_ci": [
+     0.3544,
+     0.5007
+    ],
+    "delta": 0.1192,
+    "delta_ci": [
+     0.0575,
+     0.1783
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.2251,
+    "nmae_old": 1.2664,
+    "nmae_cand_ci": [
+     1.1337,
+     1.3072
+    ],
+    "nmae_old_ci": [
+     1.1755,
+     1.3532
+    ],
+    "delta": 0.0413,
+    "delta_ci": [
+     0.017,
+     0.0673
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.146,
+     "ci": [
+      0.069,
+      0.2229
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.1723,
+     "ci": [
+      0.0945,
+      0.2511
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.138,
+     "ci": [
+      0.0566,
+      0.2183
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2005-2014",
+   "N": 2,
+   "horizon": "dvrest",
+   "n": 634,
+   "label": "era 2005-2014",
+   "status": "scored",
+   "zero_target_share": 0.1608832807570978,
+   "M1": {
+    "rho_cand": 0.6948,
+    "rho_old": 0.6616,
+    "rho_cand_ci": [
+     0.6562,
+     0.7299
+    ],
+    "rho_old_ci": [
+     0.6208,
+     0.7006
+    ],
+    "delta": 0.0332,
+    "delta_ci": [
+     0.0121,
+     0.0548
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 0.7894,
+    "nmae_old": 0.8172,
+    "nmae_cand_ci": [
+     0.7335,
+     0.847
+    ],
+    "nmae_old_ci": [
+     0.7601,
+     0.8759
+    ],
+    "delta": 0.0278,
+    "delta_ci": [
+     0.0106,
+     0.044
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.4607,
+     "ci": [
+      0.4059,
+      0.5143
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.4767,
+     "ci": [
+      0.4249,
+      0.5302
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.4637,
+     "ci": [
+      0.4115,
+      0.5173
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2015+",
+   "N": 2,
+   "horizon": "dvrest",
+   "n": 503,
+   "label": "era 2015+",
+   "status": "scored",
+   "zero_target_share": 0.19681908548707752,
+   "M1": {
+    "rho_cand": 0.6759,
+    "rho_old": 0.6195,
+    "rho_cand_ci": [
+     0.6315,
+     0.719
+    ],
+    "rho_old_ci": [
+     0.5688,
+     0.6662
+    ],
+    "delta": 0.0564,
+    "delta_ci": [
+     0.0259,
+     0.0882
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 0.9424,
+    "nmae_old": 0.9731,
+    "nmae_cand_ci": [
+     0.87,
+     1.0173
+    ],
+    "nmae_old_ci": [
+     0.9031,
+     1.0474
+    ],
+    "delta": 0.0307,
+    "delta_ci": [
+     0.0134,
+     0.0485
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.4897,
+     "ci": [
+      0.4326,
+      0.541
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.4831,
+     "ci": [
+      0.426,
+      0.5356
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.4656,
+     "ci": [
+      0.4069,
+      0.5199
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "RD",
+   "N": 2,
+   "horizon": "dvrest",
+   "n": 577,
+   "label": "arm RD",
+   "status": "scored",
+   "zero_target_share": 0.5355285961871751,
+   "M1": {
+    "rho_cand": 0.5733,
+    "rho_old": 0.4131,
+    "rho_cand_ci": [
+     0.5184,
+     0.6238
+    ],
+    "rho_old_ci": [
+     0.345,
+     0.4807
+    ],
+    "delta": 0.1601,
+    "delta_ci": [
+     0.1101,
+     0.2132
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.273,
+    "nmae_old": 1.2896,
+    "nmae_cand_ci": [
+     1.1982,
+     1.3525
+    ],
+    "nmae_old_ci": [
+     1.2093,
+     1.3716
+    ],
+    "delta": 0.0166,
+    "delta_ci": [
+     -0.0026,
+     0.0334
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.0471,
+     "ci": [
+      -0.0199,
+      0.1165
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0471,
+     "ci": [
+      -0.0199,
+      0.1165
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "MSD",
+   "N": 2,
+   "horizon": "dvrest",
+   "n": 23,
+   "label": "arm MSD",
+   "status": "scored",
+   "zero_target_share": 0.13043478260869565,
+   "M1": {
+    "rho_cand": 0.6726,
+    "rho_old": 0.6518,
+    "rho_cand_ci": [
+     0.414,
+     0.809
+    ],
+    "rho_old_ci": [
+     0.4009,
+     0.8099
+    ],
+    "delta": 0.0208,
+    "delta_ci": [
+     -0.1598,
+     0.1882
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8274,
+    "nmae_old": 0.8561,
+    "nmae_cand_ci": [
+     0.4757,
+     1.4463
+    ],
+    "nmae_old_ci": [
+     0.4985,
+     1.4761
+    ],
+    "delta": 0.0287,
+    "delta_ci": [
+     -0.0005,
+     0.1141
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.3641,
+     "ci": [
+      0.0025,
+      0.638
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3641,
+     "ci": [
+      0.0025,
+      0.638
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "OTHERPOOL",
+   "N": 2,
+   "horizon": "dvrest",
+   "n": 337,
+   "label": "arm OTHERPOOL",
+   "status": "scored",
+   "zero_target_share": 0.5341246290801187,
+   "M1": {
+    "rho_cand": 0.476,
+    "rho_old": 0.4097,
+    "rho_cand_ci": [
+     0.4017,
+     0.5438
+    ],
+    "rho_old_ci": [
+     0.3294,
+     0.4875
+    ],
+    "delta": 0.0663,
+    "delta_ci": [
+     0.019,
+     0.1128
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.362,
+    "nmae_old": 1.3954,
+    "nmae_cand_ci": [
+     1.2479,
+     1.4712
+    ],
+    "nmae_old_ci": [
+     1.2866,
+     1.496
+    ],
+    "delta": 0.0334,
+    "delta_ci": [
+     0.0061,
+     0.0608
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.2114,
+     "ci": [
+      0.125,
+      0.2975
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2114,
+     "ci": [
+      0.125,
+      0.2975
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "POOL-ALL",
+   "N": 2,
+   "horizon": "dvrest",
+   "n": 937,
+   "label": "POOL-ALL",
+   "status": "scored",
+   "zero_target_share": 0.5250800426894343,
+   "M1": {
+    "rho_cand": 0.5344,
+    "rho_old": 0.4152,
+    "rho_cand_ci": [
+     0.4907,
+     0.5753
+    ],
+    "rho_old_ci": [
+     0.3638,
+     0.4622
+    ],
+    "delta": 0.1192,
+    "delta_ci": [
+     0.0885,
+     0.1512
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.2934,
+    "nmae_old": 1.3134,
+    "nmae_cand_ci": [
+     1.2311,
+     1.3566
+    ],
+    "nmae_old_ci": [
+     1.2487,
+     1.3761
+    ],
+    "delta": 0.02,
+    "delta_ci": [
+     0.0056,
+     0.0344
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1217,
+     "ci": [
+      0.0717,
+      0.1741
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1217,
+     "ci": [
+      0.0717,
+      0.1741
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND",
+   "N": 3,
+   "horizon": "dv1",
+   "n": 955,
+   "label": "PRIMARY ND",
+   "status": "scored",
+   "zero_target_share": 0.16858638743455498,
+   "M1": {
+    "rho_cand": 0.6809,
+    "rho_old": 0.6652,
+    "rho_cand_ci": [
+     0.6499,
+     0.7104
+    ],
+    "rho_old_ci": [
+     0.6304,
+     0.6974
+    ],
+    "delta": 0.0157,
+    "delta_ci": [
+     0.004,
+     0.0277
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 0.8548,
+    "nmae_old": 0.883,
+    "nmae_cand_ci": [
+     0.8028,
+     0.9112
+    ],
+    "nmae_old_ci": [
+     0.8307,
+     0.9377
+    ],
+    "delta": 0.0282,
+    "delta_ci": [
+     0.0195,
+     0.0365
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.3327,
+     "ci": [
+      0.2834,
+      0.3807
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3297,
+     "ci": [
+      0.2816,
+      0.3776
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3216,
+     "ci": [
+      0.2732,
+      0.3719
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 1-10",
+   "N": 3,
+   "horizon": "dv1",
+   "n": 170,
+   "label": "band 1-10",
+   "status": "scored",
+   "zero_target_share": 0.052941176470588235,
+   "M1": {
+    "rho_cand": 0.6628,
+    "rho_old": 0.656,
+    "rho_cand_ci": [
+     0.5775,
+     0.7432
+    ],
+    "rho_old_ci": [
+     0.5701,
+     0.7341
+    ],
+    "delta": 0.0068,
+    "delta_ci": [
+     -0.0128,
+     0.0262
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6616,
+    "nmae_old": 0.6699,
+    "nmae_cand_ci": [
+     0.5836,
+     0.7447
+    ],
+    "nmae_old_ci": [
+     0.5928,
+     0.7502
+    ],
+    "delta": 0.0084,
+    "delta_ci": [
+     -0.0027,
+     0.0193
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2427,
+     "ci": [
+      0.1152,
+      0.3635
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3608,
+     "ci": [
+      0.2394,
+      0.4764
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3756,
+     "ci": [
+      0.2563,
+      0.49
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 11-20",
+   "N": 3,
+   "horizon": "dv1",
+   "n": 170,
+   "label": "band 11-20",
+   "status": "scored",
+   "zero_target_share": 0.10588235294117647,
+   "M1": {
+    "rho_cand": 0.6798,
+    "rho_old": 0.6452,
+    "rho_cand_ci": [
+     0.6001,
+     0.7451
+    ],
+    "rho_old_ci": [
+     0.5588,
+     0.718
+    ],
+    "delta": 0.0345,
+    "delta_ci": [
+     0.0058,
+     0.0653
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 0.9132,
+    "nmae_old": 0.9292,
+    "nmae_cand_ci": [
+     0.8075,
+     1.0252
+    ],
+    "nmae_old_ci": [
+     0.8231,
+     1.0418
+    ],
+    "delta": 0.0159,
+    "delta_ci": [
+     0.0014,
+     0.0304
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0617,
+     "ci": [
+      -0.0693,
+      0.193
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.0691,
+     "ci": [
+      -0.0662,
+      0.1973
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0653,
+     "ci": [
+      -0.0647,
+      0.1909
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 21-30",
+   "N": 3,
+   "horizon": "dv1",
+   "n": 170,
+   "label": "band 21-30",
+   "status": "scored",
+   "zero_target_share": 0.18823529411764706,
+   "M1": {
+    "rho_cand": 0.6516,
+    "rho_old": 0.6266,
+    "rho_cand_ci": [
+     0.5617,
+     0.7291
+    ],
+    "rho_old_ci": [
+     0.531,
+     0.7074
+    ],
+    "delta": 0.025,
+    "delta_ci": [
+     -0.0082,
+     0.0623
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8996,
+    "nmae_old": 0.9373,
+    "nmae_cand_ci": [
+     0.7756,
+     1.0402
+    ],
+    "nmae_old_ci": [
+     0.8063,
+     1.0813
+    ],
+    "delta": 0.0377,
+    "delta_ci": [
+     0.0177,
+     0.0563
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0186,
+     "ci": [
+      -0.1134,
+      0.1433
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.07,
+     "ci": [
+      -0.0635,
+      0.199
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0609,
+     "ci": [
+      -0.0742,
+      0.1868
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 31-40",
+   "N": 3,
+   "horizon": "dv1",
+   "n": 170,
+   "label": "band 31-40",
+   "status": "scored",
+   "zero_target_share": 0.25882352941176473,
+   "M1": {
+    "rho_cand": 0.7122,
+    "rho_old": 0.6424,
+    "rho_cand_ci": [
+     0.6364,
+     0.7713
+    ],
+    "rho_old_ci": [
+     0.5607,
+     0.71
+    ],
+    "delta": 0.0698,
+    "delta_ci": [
+     0.0259,
+     0.1145
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.0706,
+    "nmae_old": 1.1139,
+    "nmae_cand_ci": [
+     0.921,
+     1.233
+    ],
+    "nmae_old_ci": [
+     0.9695,
+     1.2655
+    ],
+    "delta": 0.0434,
+    "delta_ci": [
+     0.0186,
+     0.0623
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": -0.0262,
+     "ci": [
+      -0.1421,
+      0.0892
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": -0.023,
+     "ci": [
+      -0.1512,
+      0.105
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": -0.0444,
+     "ci": [
+      -0.1717,
+      0.0837
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 41-64",
+   "N": 3,
+   "horizon": "dv1",
+   "n": 275,
+   "label": "band 41-64",
+   "status": "scored",
+   "zero_target_share": 0.2109090909090909,
+   "M1": {
+    "rho_cand": 0.5262,
+    "rho_old": 0.551,
+    "rho_cand_ci": [
+     0.443,
+     0.5978
+    ],
+    "rho_old_ci": [
+     0.4686,
+     0.6234
+    ],
+    "delta": -0.0248,
+    "delta_ci": [
+     -0.0698,
+     0.0187
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 1.1293,
+    "nmae_old": 1.1527,
+    "nmae_cand_ci": [
+     1.0271,
+     1.2325
+    ],
+    "nmae_old_ci": [
+     1.054,
+     1.2567
+    ],
+    "delta": 0.0234,
+    "delta_ci": [
+     0.0019,
+     0.0443
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.1215,
+     "ci": [
+      0.0262,
+      0.2162
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.1323,
+     "ci": [
+      0.0316,
+      0.2333
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1178,
+     "ci": [
+      0.0175,
+      0.2198
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2005-2014",
+   "N": 3,
+   "horizon": "dv1",
+   "n": 566,
+   "label": "era 2005-2014",
+   "status": "scored",
+   "zero_target_share": 0.16431095406360424,
+   "M1": {
+    "rho_cand": 0.6685,
+    "rho_old": 0.6555,
+    "rho_cand_ci": [
+     0.6253,
+     0.7096
+    ],
+    "rho_old_ci": [
+     0.6098,
+     0.6996
+    ],
+    "delta": 0.0129,
+    "delta_ci": [
+     -0.0039,
+     0.0291
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8457,
+    "nmae_old": 0.8666,
+    "nmae_cand_ci": [
+     0.7825,
+     0.9129
+    ],
+    "nmae_old_ci": [
+     0.8042,
+     0.9315
+    ],
+    "delta": 0.0209,
+    "delta_ci": [
+     0.0099,
+     0.0311
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2849,
+     "ci": [
+      0.2213,
+      0.3501
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.2967,
+     "ci": [
+      0.2335,
+      0.3618
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2905,
+     "ci": [
+      0.2262,
+      0.3546
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2015+",
+   "N": 3,
+   "horizon": "dv1",
+   "n": 389,
+   "label": "era 2015+",
+   "status": "scored",
+   "zero_target_share": 0.17480719794344474,
+   "M1": {
+    "rho_cand": 0.6958,
+    "rho_old": 0.6759,
+    "rho_cand_ci": [
+     0.647,
+     0.738
+    ],
+    "rho_old_ci": [
+     0.6217,
+     0.7223
+    ],
+    "delta": 0.0199,
+    "delta_ci": [
+     0.0015,
+     0.0389
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 0.8771,
+    "nmae_old": 0.9176,
+    "nmae_cand_ci": [
+     0.7861,
+     0.9748
+    ],
+    "nmae_old_ci": [
+     0.8283,
+     1.017
+    ],
+    "delta": 0.0405,
+    "delta_ci": [
+     0.0273,
+     0.0534
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.408,
+     "ci": [
+      0.3344,
+      0.4733
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.384,
+     "ci": [
+      0.3058,
+      0.4521
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3726,
+     "ci": [
+      0.2947,
+      0.4432
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "RD",
+   "N": 3,
+   "horizon": "dv1",
+   "n": 265,
+   "label": "arm RD",
+   "status": "scored",
+   "zero_target_share": 0.2188679245283019,
+   "M1": {
+    "rho_cand": 0.5017,
+    "rho_old": 0.5052,
+    "rho_cand_ci": [
+     0.4168,
+     0.5825
+    ],
+    "rho_old_ci": [
+     0.4232,
+     0.5839
+    ],
+    "delta": -0.0035,
+    "delta_ci": [
+     -0.0411,
+     0.0331
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 1.091,
+    "nmae_old": 1.1024,
+    "nmae_cand_ci": [
+     0.9892,
+     1.1944
+    ],
+    "nmae_old_ci": [
+     0.9986,
+     1.2064
+    ],
+    "delta": 0.0114,
+    "delta_ci": [
+     -0.0072,
+     0.0291
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.0484,
+     "ci": [
+      -0.0574,
+      0.1547
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0484,
+     "ci": [
+      -0.0574,
+      0.1547
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "MSD",
+   "N": 3,
+   "horizon": "dv1",
+   "n": 13,
+   "label": "arm MSD",
+   "status": "n<20 unscored"
+  },
+  {
+   "pop": "OTHERPOOL",
+   "N": 3,
+   "horizon": "dv1",
+   "n": 147,
+   "label": "arm OTHERPOOL",
+   "status": "scored",
+   "zero_target_share": 0.272108843537415,
+   "M1": {
+    "rho_cand": 0.3594,
+    "rho_old": 0.3304,
+    "rho_cand_ci": [
+     0.2325,
+     0.4817
+    ],
+    "rho_old_ci": [
+     0.203,
+     0.4555
+    ],
+    "delta": 0.0289,
+    "delta_ci": [
+     -0.0314,
+     0.0859
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 1.1774,
+    "nmae_old": 1.236,
+    "nmae_cand_ci": [
+     0.9691,
+     1.4071
+    ],
+    "nmae_old_ci": [
+     1.032,
+     1.4486
+    ],
+    "delta": 0.0587,
+    "delta_ci": [
+     0.0217,
+     0.0887
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1882,
+     "ci": [
+      0.0565,
+      0.3191
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1882,
+     "ci": [
+      0.0565,
+      0.3191
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "POOL-ALL",
+   "N": 3,
+   "horizon": "dv1",
+   "n": 425,
+   "label": "POOL-ALL",
+   "status": "scored",
+   "zero_target_share": 0.23529411764705882,
+   "M1": {
+    "rho_cand": 0.4766,
+    "rho_old": 0.4632,
+    "rho_cand_ci": [
+     0.4104,
+     0.5416
+    ],
+    "rho_old_ci": [
+     0.3972,
+     0.5256
+    ],
+    "delta": 0.0135,
+    "delta_ci": [
+     -0.0171,
+     0.0444
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 1.0872,
+    "nmae_old": 1.1137,
+    "nmae_cand_ci": [
+     0.9982,
+     1.1852
+    ],
+    "nmae_old_ci": [
+     1.0201,
+     1.2117
+    ],
+    "delta": 0.0265,
+    "delta_ci": [
+     0.0088,
+     0.0427
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1596,
+     "ci": [
+      0.0822,
+      0.2404
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1596,
+     "ci": [
+      0.0822,
+      0.2404
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND",
+   "N": 3,
+   "horizon": "dvrest",
+   "n": 955,
+   "label": "PRIMARY ND",
+   "status": "scored",
+   "zero_target_share": 0.1193717277486911,
+   "M1": {
+    "rho_cand": 0.7011,
+    "rho_old": 0.6916,
+    "rho_cand_ci": [
+     0.6732,
+     0.7283
+    ],
+    "rho_old_ci": [
+     0.6607,
+     0.7204
+    ],
+    "delta": 0.0095,
+    "delta_ci": [
+     -0.0035,
+     0.0223
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.7867,
+    "nmae_old": 0.8085,
+    "nmae_cand_ci": [
+     0.7433,
+     0.8309
+    ],
+    "nmae_old_ci": [
+     0.7654,
+     0.8514
+    ],
+    "delta": 0.0218,
+    "delta_ci": [
+     0.013,
+     0.0303
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.3472,
+     "ci": [
+      0.2992,
+      0.395
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3667,
+     "ci": [
+      0.3184,
+      0.4121
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3675,
+     "ci": [
+      0.3188,
+      0.4149
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 1-10",
+   "N": 3,
+   "horizon": "dvrest",
+   "n": 170,
+   "label": "band 1-10",
+   "status": "scored",
+   "zero_target_share": 0.01764705882352941,
+   "M1": {
+    "rho_cand": 0.6978,
+    "rho_old": 0.694,
+    "rho_cand_ci": [
+     0.6235,
+     0.7601
+    ],
+    "rho_old_ci": [
+     0.6197,
+     0.7545
+    ],
+    "delta": 0.0039,
+    "delta_ci": [
+     -0.0125,
+     0.0205
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6209,
+    "nmae_old": 0.6323,
+    "nmae_cand_ci": [
+     0.5482,
+     0.6974
+    ],
+    "nmae_old_ci": [
+     0.5585,
+     0.7076
+    ],
+    "delta": 0.0115,
+    "delta_ci": [
+     0.0,
+     0.0215
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2452,
+     "ci": [
+      0.1277,
+      0.3708
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3772,
+     "ci": [
+      0.2622,
+      0.491
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3882,
+     "ci": [
+      0.2729,
+      0.5028
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 11-20",
+   "N": 3,
+   "horizon": "dvrest",
+   "n": 170,
+   "label": "band 11-20",
+   "status": "scored",
+   "zero_target_share": 0.058823529411764705,
+   "M1": {
+    "rho_cand": 0.6659,
+    "rho_old": 0.6388,
+    "rho_cand_ci": [
+     0.59,
+     0.7322
+    ],
+    "rho_old_ci": [
+     0.5562,
+     0.7092
+    ],
+    "delta": 0.027,
+    "delta_ci": [
+     -0.0012,
+     0.0577
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.7588,
+    "nmae_old": 0.7799,
+    "nmae_cand_ci": [
+     0.6702,
+     0.8495
+    ],
+    "nmae_old_ci": [
+     0.6889,
+     0.8725
+    ],
+    "delta": 0.0211,
+    "delta_ci": [
+     0.0042,
+     0.0359
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0729,
+     "ci": [
+      -0.0589,
+      0.2028
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.0954,
+     "ci": [
+      -0.0312,
+      0.2212
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0979,
+     "ci": [
+      -0.0324,
+      0.2259
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 21-30",
+   "N": 3,
+   "horizon": "dvrest",
+   "n": 170,
+   "label": "band 21-30",
+   "status": "scored",
+   "zero_target_share": 0.17058823529411765,
+   "M1": {
+    "rho_cand": 0.6851,
+    "rho_old": 0.6629,
+    "rho_cand_ci": [
+     0.6077,
+     0.7486
+    ],
+    "rho_old_ci": [
+     0.5776,
+     0.7377
+    ],
+    "delta": 0.0222,
+    "delta_ci": [
+     -0.0145,
+     0.0564
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8066,
+    "nmae_old": 0.8278,
+    "nmae_cand_ci": [
+     0.7085,
+     0.919
+    ],
+    "nmae_old_ci": [
+     0.7301,
+     0.9405
+    ],
+    "delta": 0.0212,
+    "delta_ci": [
+     0.0053,
+     0.04
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": -0.0421,
+     "ci": [
+      -0.1706,
+      0.0847
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.0727,
+     "ci": [
+      -0.0548,
+      0.199
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0674,
+     "ci": [
+      -0.059,
+      0.1943
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 31-40",
+   "N": 3,
+   "horizon": "dvrest",
+   "n": 170,
+   "label": "band 31-40",
+   "status": "scored",
+   "zero_target_share": 0.2235294117647059,
+   "M1": {
+    "rho_cand": 0.7526,
+    "rho_old": 0.6823,
+    "rho_cand_ci": [
+     0.6911,
+     0.8025
+    ],
+    "rho_old_ci": [
+     0.6041,
+     0.7467
+    ],
+    "delta": 0.0704,
+    "delta_ci": [
+     0.0238,
+     0.1216
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.0275,
+    "nmae_old": 1.0514,
+    "nmae_cand_ci": [
+     0.9121,
+     1.137
+    ],
+    "nmae_old_ci": [
+     0.9314,
+     1.1647
+    ],
+    "delta": 0.0238,
+    "delta_ci": [
+     -0.0017,
+     0.0488
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0619,
+     "ci": [
+      -0.0605,
+      0.1861
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.1319,
+     "ci": [
+      -0.0014,
+      0.2648
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.1127,
+     "ci": [
+      -0.0203,
+      0.2462
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 41-64",
+   "N": 3,
+   "horizon": "dvrest",
+   "n": 275,
+   "label": "band 41-64",
+   "status": "scored",
+   "zero_target_share": 0.12363636363636364,
+   "M1": {
+    "rho_cand": 0.5136,
+    "rho_old": 0.5748,
+    "rho_cand_ci": [
+     0.4385,
+     0.581
+    ],
+    "rho_old_ci": [
+     0.5018,
+     0.6373
+    ],
+    "delta": -0.0612,
+    "delta_ci": [
+     -0.108,
+     -0.0155
+    ],
+    "verdict": "oldlaw"
+   },
+   "M2": {
+    "nmae_cand": 1.0803,
+    "nmae_old": 1.0792,
+    "nmae_cand_ci": [
+     0.9874,
+     1.1708
+    ],
+    "nmae_old_ci": [
+     0.9838,
+     1.1699
+    ],
+    "delta": -0.0011,
+    "delta_ci": [
+     -0.0237,
+     0.0226
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.1395,
+     "ci": [
+      0.0371,
+      0.24
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.1782,
+     "ci": [
+      0.0767,
+      0.2712
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1758,
+     "ci": [
+      0.0743,
+      0.2685
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2005-2014",
+   "N": 3,
+   "horizon": "dvrest",
+   "n": 566,
+   "label": "era 2005-2014",
+   "status": "scored",
+   "zero_target_share": 0.11484098939929328,
+   "M1": {
+    "rho_cand": 0.7196,
+    "rho_old": 0.7087,
+    "rho_cand_ci": [
+     0.6838,
+     0.7503
+    ],
+    "rho_old_ci": [
+     0.6705,
+     0.7435
+    ],
+    "delta": 0.0109,
+    "delta_ci": [
+     -0.0063,
+     0.0285
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.7108,
+    "nmae_old": 0.7301,
+    "nmae_cand_ci": [
+     0.6594,
+     0.7645
+    ],
+    "nmae_old_ci": [
+     0.6792,
+     0.7838
+    ],
+    "delta": 0.0193,
+    "delta_ci": [
+     0.0085,
+     0.0313
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.3414,
+     "ci": [
+      0.2771,
+      0.3986
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3726,
+     "ci": [
+      0.3106,
+      0.4294
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3727,
+     "ci": [
+      0.3092,
+      0.4309
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2015+",
+   "N": 3,
+   "horizon": "dvrest",
+   "n": 389,
+   "label": "era 2015+",
+   "status": "scored",
+   "zero_target_share": 0.12596401028277635,
+   "M1": {
+    "rho_cand": 0.6818,
+    "rho_old": 0.6743,
+    "rho_cand_ci": [
+     0.6343,
+     0.7246
+    ],
+    "rho_old_ci": [
+     0.6215,
+     0.7212
+    ],
+    "delta": 0.0074,
+    "delta_ci": [
+     -0.0141,
+     0.0285
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8628,
+    "nmae_old": 0.8869,
+    "nmae_cand_ci": [
+     0.7928,
+     0.9368
+    ],
+    "nmae_old_ci": [
+     0.8193,
+     0.9553
+    ],
+    "delta": 0.0242,
+    "delta_ci": [
+     0.0098,
+     0.0377
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.3756,
+     "ci": [
+      0.3019,
+      0.4444
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3818,
+     "ci": [
+      0.3074,
+      0.4519
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3833,
+     "ci": [
+      0.3066,
+      0.456
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "RD",
+   "N": 3,
+   "horizon": "dvrest",
+   "n": 265,
+   "label": "arm RD",
+   "status": "scored",
+   "zero_target_share": 0.13584905660377358,
+   "M1": {
+    "rho_cand": 0.4283,
+    "rho_old": 0.441,
+    "rho_cand_ci": [
+     0.3383,
+     0.5122
+    ],
+    "rho_old_ci": [
+     0.3502,
+     0.5257
+    ],
+    "delta": -0.0127,
+    "delta_ci": [
+     -0.0522,
+     0.0246
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 1.0043,
+    "nmae_old": 1.0036,
+    "nmae_cand_ci": [
+     0.8916,
+     1.1176
+    ],
+    "nmae_old_ci": [
+     0.8938,
+     1.1189
+    ],
+    "delta": -0.0007,
+    "delta_ci": [
+     -0.016,
+     0.0204
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1701,
+     "ci": [
+      0.0672,
+      0.268
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1701,
+     "ci": [
+      0.0672,
+      0.268
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "MSD",
+   "N": 3,
+   "horizon": "dvrest",
+   "n": 13,
+   "label": "arm MSD",
+   "status": "n<20 unscored"
+  },
+  {
+   "pop": "OTHERPOOL",
+   "N": 3,
+   "horizon": "dvrest",
+   "n": 147,
+   "label": "arm OTHERPOOL",
+   "status": "scored",
+   "zero_target_share": 0.1564625850340136,
+   "M1": {
+    "rho_cand": 0.4046,
+    "rho_old": 0.3916,
+    "rho_cand_ci": [
+     0.2743,
+     0.5238
+    ],
+    "rho_old_ci": [
+     0.2671,
+     0.5036
+    ],
+    "delta": 0.013,
+    "delta_ci": [
+     -0.0449,
+     0.0684
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 1.175,
+    "nmae_old": 1.2056,
+    "nmae_cand_ci": [
+     1.033,
+     1.2928
+    ],
+    "nmae_old_ci": [
+     1.0703,
+     1.3201
+    ],
+    "delta": 0.0306,
+    "delta_ci": [
+     -0.0027,
+     0.0597
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.2135,
+     "ci": [
+      0.072,
+      0.3448
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2135,
+     "ci": [
+      0.072,
+      0.3448
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "POOL-ALL",
+   "N": 3,
+   "horizon": "dvrest",
+   "n": 425,
+   "label": "POOL-ALL",
+   "status": "scored",
+   "zero_target_share": 0.14352941176470588,
+   "M1": {
+    "rho_cand": 0.448,
+    "rho_old": 0.4506,
+    "rho_cand_ci": [
+     0.3783,
+     0.5128
+    ],
+    "rho_old_ci": [
+     0.3833,
+     0.5118
+    ],
+    "delta": -0.0026,
+    "delta_ci": [
+     -0.0314,
+     0.0263
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 1.0635,
+    "nmae_old": 1.071,
+    "nmae_cand_ci": [
+     0.9778,
+     1.1478
+    ],
+    "nmae_old_ci": [
+     0.9851,
+     1.1558
+    ],
+    "delta": 0.0075,
+    "delta_ci": [
+     -0.0071,
+     0.0244
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.2199,
+     "ci": [
+      0.1439,
+      0.2939
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2199,
+     "ci": [
+      0.1439,
+      0.2939
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND",
+   "N": 4,
+   "horizon": "dv1",
+   "n": 807,
+   "label": "PRIMARY ND",
+   "status": "scored",
+   "zero_target_share": 0.15489467162329615,
+   "M1": {
+    "rho_cand": 0.6902,
+    "rho_old": 0.7013,
+    "rho_cand_ci": [
+     0.6547,
+     0.7244
+    ],
+    "rho_old_ci": [
+     0.6671,
+     0.7347
+    ],
+    "delta": -0.0111,
+    "delta_ci": [
+     -0.0192,
+     -0.0035
+    ],
+    "verdict": "oldlaw"
+   },
+   "M2": {
+    "nmae_cand": 0.7452,
+    "nmae_old": 0.7473,
+    "nmae_cand_ci": [
+     0.6942,
+     0.7984
+    ],
+    "nmae_old_ci": [
+     0.6959,
+     0.8002
+    ],
+    "delta": 0.0021,
+    "delta_ci": [
+     -0.0044,
+     0.0081
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.311,
+     "ci": [
+      0.2565,
+      0.3623
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3245,
+     "ci": [
+      0.2715,
+      0.3779
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3225,
+     "ci": [
+      0.2683,
+      0.3766
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 1-10",
+   "N": 4,
+   "horizon": "dv1",
+   "n": 160,
+   "label": "band 1-10",
+   "status": "scored",
+   "zero_target_share": 0.09375,
+   "M1": {
+    "rho_cand": 0.7731,
+    "rho_old": 0.7764,
+    "rho_cand_ci": [
+     0.7003,
+     0.8255
+    ],
+    "rho_old_ci": [
+     0.7044,
+     0.8267
+    ],
+    "delta": -0.0033,
+    "delta_ci": [
+     -0.0126,
+     0.0065
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.5818,
+    "nmae_old": 0.5783,
+    "nmae_cand_ci": [
+     0.5092,
+     0.6612
+    ],
+    "nmae_old_ci": [
+     0.506,
+     0.6595
+    ],
+    "delta": -0.0036,
+    "delta_ci": [
+     -0.0108,
+     0.0044
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2001,
+     "ci": [
+      0.0679,
+      0.3258
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.342,
+     "ci": [
+      0.218,
+      0.4554
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3698,
+     "ci": [
+      0.2475,
+      0.4828
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 11-20",
+   "N": 4,
+   "horizon": "dv1",
+   "n": 160,
+   "label": "band 11-20",
+   "status": "scored",
+   "zero_target_share": 0.1375,
+   "M1": {
+    "rho_cand": 0.6853,
+    "rho_old": 0.6927,
+    "rho_cand_ci": [
+     0.59,
+     0.7619
+    ],
+    "rho_old_ci": [
+     0.5985,
+     0.767
+    ],
+    "delta": -0.0074,
+    "delta_ci": [
+     -0.0275,
+     0.0126
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.7316,
+    "nmae_old": 0.7291,
+    "nmae_cand_ci": [
+     0.6411,
+     0.8265
+    ],
+    "nmae_old_ci": [
+     0.6369,
+     0.8234
+    ],
+    "delta": -0.0025,
+    "delta_ci": [
+     -0.0129,
+     0.0069
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0505,
+     "ci": [
+      -0.093,
+      0.1939
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.0379,
+     "ci": [
+      -0.0989,
+      0.1778
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0423,
+     "ci": [
+      -0.0924,
+      0.1751
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 21-30",
+   "N": 4,
+   "horizon": "dv1",
+   "n": 134,
+   "label": "band 21-30",
+   "status": "scored",
+   "zero_target_share": 0.1417910447761194,
+   "M1": {
+    "rho_cand": 0.6267,
+    "rho_old": 0.6311,
+    "rho_cand_ci": [
+     0.5063,
+     0.722
+    ],
+    "rho_old_ci": [
+     0.508,
+     0.726
+    ],
+    "delta": -0.0044,
+    "delta_ci": [
+     -0.0243,
+     0.0166
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.7827,
+    "nmae_old": 0.7678,
+    "nmae_cand_ci": [
+     0.6562,
+     0.9351
+    ],
+    "nmae_old_ci": [
+     0.642,
+     0.9239
+    ],
+    "delta": -0.0149,
+    "delta_ci": [
+     -0.0302,
+     0.0012
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": -0.1139,
+     "ci": [
+      -0.2636,
+      0.0309
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.0951,
+     "ci": [
+      -0.055,
+      0.2457
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.1109,
+     "ci": [
+      -0.0375,
+      0.2568
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 31-40",
+   "N": 4,
+   "horizon": "dv1",
+   "n": 124,
+   "label": "band 31-40",
+   "status": "scored",
+   "zero_target_share": 0.14516129032258066,
+   "M1": {
+    "rho_cand": 0.6234,
+    "rho_old": 0.6283,
+    "rho_cand_ci": [
+     0.5102,
+     0.7139
+    ],
+    "rho_old_ci": [
+     0.5171,
+     0.7175
+    ],
+    "delta": -0.005,
+    "delta_ci": [
+     -0.0387,
+     0.0277
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.98,
+    "nmae_old": 0.9891,
+    "nmae_cand_ci": [
+     0.8282,
+     1.1377
+    ],
+    "nmae_old_ci": [
+     0.8347,
+     1.1495
+    ],
+    "delta": 0.0091,
+    "delta_ci": [
+     -0.0058,
+     0.0265
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0637,
+     "ci": [
+      -0.0851,
+      0.2162
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.0929,
+     "ci": [
+      -0.0695,
+      0.2497
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0958,
+     "ci": [
+      -0.0706,
+      0.253
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 41-64",
+   "N": 4,
+   "horizon": "dv1",
+   "n": 229,
+   "label": "band 41-64",
+   "status": "scored",
+   "zero_target_share": 0.22270742358078602,
+   "M1": {
+    "rho_cand": 0.6194,
+    "rho_old": 0.6231,
+    "rho_cand_ci": [
+     0.5414,
+     0.6823
+    ],
+    "rho_old_ci": [
+     0.5417,
+     0.6891
+    ],
+    "delta": -0.0037,
+    "delta_ci": [
+     -0.0321,
+     0.0244
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 1.0091,
+    "nmae_old": 1.0073,
+    "nmae_cand_ci": [
+     0.8847,
+     1.1445
+    ],
+    "nmae_old_ci": [
+     0.883,
+     1.146
+    ],
+    "delta": -0.0017,
+    "delta_ci": [
+     -0.0177,
+     0.0191
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.1178,
+     "ci": [
+      0.0086,
+      0.2267
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.1721,
+     "ci": [
+      0.068,
+      0.276
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1707,
+     "ci": [
+      0.0662,
+      0.2794
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2005-2014",
+   "N": 4,
+   "horizon": "dv1",
+   "n": 507,
+   "label": "era 2005-2014",
+   "status": "scored",
+   "zero_target_share": 0.15779092702169625,
+   "M1": {
+    "rho_cand": 0.7207,
+    "rho_old": 0.7293,
+    "rho_cand_ci": [
+     0.6796,
+     0.7596
+    ],
+    "rho_old_ci": [
+     0.6896,
+     0.7669
+    ],
+    "delta": -0.0087,
+    "delta_ci": [
+     -0.0179,
+     0.0003
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.7314,
+    "nmae_old": 0.732,
+    "nmae_cand_ci": [
+     0.6714,
+     0.7905
+    ],
+    "nmae_old_ci": [
+     0.6731,
+     0.7909
+    ],
+    "delta": 0.0006,
+    "delta_ci": [
+     -0.0068,
+     0.0087
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.3,
+     "ci": [
+      0.2299,
+      0.372
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3089,
+     "ci": [
+      0.2375,
+      0.3826
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2991,
+     "ci": [
+      0.2251,
+      0.3736
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2015+",
+   "N": 4,
+   "horizon": "dv1",
+   "n": 300,
+   "label": "era 2015+",
+   "status": "scored",
+   "zero_target_share": 0.15,
+   "M1": {
+    "rho_cand": 0.6354,
+    "rho_old": 0.6484,
+    "rho_cand_ci": [
+     0.566,
+     0.6963
+    ],
+    "rho_old_ci": [
+     0.5794,
+     0.7082
+    ],
+    "delta": -0.013,
+    "delta_ci": [
+     -0.0288,
+     0.0019
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.7723,
+    "nmae_old": 0.7748,
+    "nmae_cand_ci": [
+     0.6861,
+     0.8726
+    ],
+    "nmae_old_ci": [
+     0.6891,
+     0.8758
+    ],
+    "delta": 0.0025,
+    "delta_ci": [
+     -0.0088,
+     0.0149
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.3307,
+     "ci": [
+      0.2377,
+      0.4182
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3555,
+     "ci": [
+      0.2623,
+      0.4437
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3672,
+     "ci": [
+      0.2744,
+      0.4549
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "RD",
+   "N": 4,
+   "horizon": "dv1",
+   "n": 223,
+   "label": "arm RD",
+   "status": "scored",
+   "zero_target_share": 0.24663677130044842,
+   "M1": {
+    "rho_cand": 0.6457,
+    "rho_old": 0.6191,
+    "rho_cand_ci": [
+     0.5684,
+     0.7163
+    ],
+    "rho_old_ci": [
+     0.5338,
+     0.6916
+    ],
+    "delta": 0.0266,
+    "delta_ci": [
+     -0.0022,
+     0.0572
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8594,
+    "nmae_old": 0.8781,
+    "nmae_cand_ci": [
+     0.7556,
+     0.9716
+    ],
+    "nmae_old_ci": [
+     0.7711,
+     0.9922
+    ],
+    "delta": 0.0187,
+    "delta_ci": [
+     0.0008,
+     0.0332
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1078,
+     "ci": [
+      0.0025,
+      0.2207
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1078,
+     "ci": [
+      0.0025,
+      0.2207
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "MSD",
+   "N": 4,
+   "horizon": "dv1",
+   "n": 2,
+   "label": "arm MSD",
+   "status": "n<20 unscored"
+  },
+  {
+   "pop": "OTHERPOOL",
+   "N": 4,
+   "horizon": "dv1",
+   "n": 120,
+   "label": "arm OTHERPOOL",
+   "status": "scored",
+   "zero_target_share": 0.25833333333333336,
+   "M1": {
+    "rho_cand": 0.52,
+    "rho_old": 0.4841,
+    "rho_cand_ci": [
+     0.3826,
+     0.6397
+    ],
+    "rho_old_ci": [
+     0.3489,
+     0.6083
+    ],
+    "delta": 0.0359,
+    "delta_ci": [
+     -0.0019,
+     0.0732
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8988,
+    "nmae_old": 0.9155,
+    "nmae_cand_ci": [
+     0.7105,
+     1.1286
+    ],
+    "nmae_old_ci": [
+     0.7347,
+     1.1471
+    ],
+    "delta": 0.0168,
+    "delta_ci": [
+     -0.0036,
+     0.0465
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1196,
+     "ci": [
+      -0.0338,
+      0.2648
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.1196,
+     "ci": [
+      -0.0338,
+      0.2648
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "POOL-ALL",
+   "N": 4,
+   "horizon": "dv1",
+   "n": 345,
+   "label": "POOL-ALL",
+   "status": "scored",
+   "zero_target_share": 0.2492753623188406,
+   "M1": {
+    "rho_cand": 0.611,
+    "rho_old": 0.5823,
+    "rho_cand_ci": [
+     0.5419,
+     0.6679
+    ],
+    "rho_old_ci": [
+     0.5093,
+     0.6436
+    ],
+    "delta": 0.0287,
+    "delta_ci": [
+     0.0068,
+     0.0516
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 0.8688,
+    "nmae_old": 0.8866,
+    "nmae_cand_ci": [
+     0.7798,
+     0.9695
+    ],
+    "nmae_old_ci": [
+     0.7961,
+     0.9913
+    ],
+    "delta": 0.0178,
+    "delta_ci": [
+     0.0036,
+     0.0306
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1551,
+     "ci": [
+      0.0639,
+      0.2342
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1551,
+     "ci": [
+      0.0639,
+      0.2342
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND",
+   "N": 4,
+   "horizon": "dvrest",
+   "n": 807,
+   "label": "PRIMARY ND",
+   "status": "scored",
+   "zero_target_share": 0.11028500619578686,
+   "M1": {
+    "rho_cand": 0.7406,
+    "rho_old": 0.7515,
+    "rho_cand_ci": [
+     0.7114,
+     0.766
+    ],
+    "rho_old_ci": [
+     0.7228,
+     0.7771
+    ],
+    "delta": -0.0109,
+    "delta_ci": [
+     -0.0187,
+     -0.0034
+    ],
+    "verdict": "oldlaw"
+   },
+   "M2": {
+    "nmae_cand": 0.6803,
+    "nmae_old": 0.6752,
+    "nmae_cand_ci": [
+     0.6404,
+     0.72
+    ],
+    "nmae_old_ci": [
+     0.636,
+     0.7145
+    ],
+    "delta": -0.005,
+    "delta_ci": [
+     -0.0115,
+     0.0013
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.3064,
+     "ci": [
+      0.2513,
+      0.3608
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3333,
+     "ci": [
+      0.2778,
+      0.3869
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3363,
+     "ci": [
+      0.2801,
+      0.3897
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 1-10",
+   "N": 4,
+   "horizon": "dvrest",
+   "n": 160,
+   "label": "band 1-10",
+   "status": "scored",
+   "zero_target_share": 0.0625,
+   "M1": {
+    "rho_cand": 0.7966,
+    "rho_old": 0.796,
+    "rho_cand_ci": [
+     0.7476,
+     0.8354
+    ],
+    "rho_old_ci": [
+     0.7461,
+     0.834
+    ],
+    "delta": 0.0006,
+    "delta_ci": [
+     -0.0082,
+     0.0097
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.5821,
+    "nmae_old": 0.5815,
+    "nmae_cand_ci": [
+     0.5205,
+     0.6461
+    ],
+    "nmae_old_ci": [
+     0.5191,
+     0.645
+    ],
+    "delta": -0.0006,
+    "delta_ci": [
+     -0.0077,
+     0.0058
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2202,
+     "ci": [
+      0.0947,
+      0.3393
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3598,
+     "ci": [
+      0.2408,
+      0.4705
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3837,
+     "ci": [
+      0.2642,
+      0.4935
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 11-20",
+   "N": 4,
+   "horizon": "dvrest",
+   "n": 160,
+   "label": "band 11-20",
+   "status": "scored",
+   "zero_target_share": 0.1,
+   "M1": {
+    "rho_cand": 0.7221,
+    "rho_old": 0.728,
+    "rho_cand_ci": [
+     0.6346,
+     0.7893
+    ],
+    "rho_old_ci": [
+     0.6459,
+     0.7897
+    ],
+    "delta": -0.0059,
+    "delta_ci": [
+     -0.029,
+     0.0153
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6095,
+    "nmae_old": 0.601,
+    "nmae_cand_ci": [
+     0.533,
+     0.6956
+    ],
+    "nmae_old_ci": [
+     0.5239,
+     0.6925
+    ],
+    "delta": -0.0086,
+    "delta_ci": [
+     -0.0185,
+     0.0017
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0727,
+     "ci": [
+      -0.0619,
+      0.2117
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.097,
+     "ci": [
+      -0.0354,
+      0.2259
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0975,
+     "ci": [
+      -0.0338,
+      0.2338
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 21-30",
+   "N": 4,
+   "horizon": "dvrest",
+   "n": 134,
+   "label": "band 21-30",
+   "status": "scored",
+   "zero_target_share": 0.09701492537313433,
+   "M1": {
+    "rho_cand": 0.7458,
+    "rho_old": 0.75,
+    "rho_cand_ci": [
+     0.6696,
+     0.8014
+    ],
+    "rho_old_ci": [
+     0.6737,
+     0.8055
+    ],
+    "delta": -0.0042,
+    "delta_ci": [
+     -0.0209,
+     0.0118
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6805,
+    "nmae_old": 0.6664,
+    "nmae_cand_ci": [
+     0.5817,
+     0.7831
+    ],
+    "nmae_old_ci": [
+     0.5656,
+     0.7728
+    ],
+    "delta": -0.0141,
+    "delta_ci": [
+     -0.0268,
+     0.0019
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": -0.1007,
+     "ci": [
+      -0.2411,
+      0.0376
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.072,
+     "ci": [
+      -0.0776,
+      0.2176
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0826,
+     "ci": [
+      -0.0662,
+      0.2199
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 31-40",
+   "N": 4,
+   "horizon": "dvrest",
+   "n": 124,
+   "label": "band 31-40",
+   "status": "scored",
+   "zero_target_share": 0.11290322580645161,
+   "M1": {
+    "rho_cand": 0.7473,
+    "rho_old": 0.7358,
+    "rho_cand_ci": [
+     0.6706,
+     0.8065
+    ],
+    "rho_old_ci": [
+     0.6513,
+     0.802
+    ],
+    "delta": 0.0115,
+    "delta_ci": [
+     -0.0191,
+     0.0444
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8788,
+    "nmae_old": 0.8785,
+    "nmae_cand_ci": [
+     0.7433,
+     1.0062
+    ],
+    "nmae_old_ci": [
+     0.7486,
+     1.0013
+    ],
+    "delta": -0.0003,
+    "delta_ci": [
+     -0.0183,
+     0.0173
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.024,
+     "ci": [
+      -0.1266,
+      0.1848
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.1525,
+     "ci": [
+      -0.0043,
+      0.309
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.165,
+     "ci": [
+      0.0047,
+      0.319
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 41-64",
+   "N": 4,
+   "horizon": "dvrest",
+   "n": 229,
+   "label": "band 41-64",
+   "status": "scored",
+   "zero_target_share": 0.1572052401746725,
+   "M1": {
+    "rho_cand": 0.6416,
+    "rho_old": 0.6555,
+    "rho_cand_ci": [
+     0.5681,
+     0.7019
+    ],
+    "rho_old_ci": [
+     0.5825,
+     0.7173
+    ],
+    "delta": -0.0139,
+    "delta_ci": [
+     -0.0382,
+     0.0093
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8513,
+    "nmae_old": 0.8495,
+    "nmae_cand_ci": [
+     0.7437,
+     0.9638
+    ],
+    "nmae_old_ci": [
+     0.7475,
+     0.9594
+    ],
+    "delta": -0.0019,
+    "delta_ci": [
+     -0.0213,
+     0.0207
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.1288,
+     "ci": [
+      0.0181,
+      0.2443
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.1627,
+     "ci": [
+      0.0521,
+      0.2722
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1649,
+     "ci": [
+      0.0541,
+      0.2728
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2005-2014",
+   "N": 4,
+   "horizon": "dvrest",
+   "n": 507,
+   "label": "era 2005-2014",
+   "status": "scored",
+   "zero_target_share": 0.11045364891518737,
+   "M1": {
+    "rho_cand": 0.7613,
+    "rho_old": 0.7685,
+    "rho_cand_ci": [
+     0.7272,
+     0.7917
+    ],
+    "rho_old_ci": [
+     0.7354,
+     0.7988
+    ],
+    "delta": -0.0072,
+    "delta_ci": [
+     -0.0166,
+     0.002
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.624,
+    "nmae_old": 0.6255,
+    "nmae_cand_ci": [
+     0.5753,
+     0.6755
+    ],
+    "nmae_old_ci": [
+     0.577,
+     0.6753
+    ],
+    "delta": 0.0015,
+    "delta_ci": [
+     -0.0072,
+     0.0086
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.309,
+     "ci": [
+      0.2396,
+      0.3813
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3435,
+     "ci": [
+      0.2766,
+      0.4155
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3435,
+     "ci": [
+      0.2768,
+      0.4148
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2015+",
+   "N": 4,
+   "horizon": "dvrest",
+   "n": 300,
+   "label": "era 2015+",
+   "status": "scored",
+   "zero_target_share": 0.11,
+   "M1": {
+    "rho_cand": 0.7033,
+    "rho_old": 0.7174,
+    "rho_cand_ci": [
+     0.6505,
+     0.7531
+    ],
+    "rho_old_ci": [
+     0.6645,
+     0.7662
+    ],
+    "delta": -0.0141,
+    "delta_ci": [
+     -0.0283,
+     -0.0004
+    ],
+    "verdict": "oldlaw"
+   },
+   "M2": {
+    "nmae_cand": 0.7319,
+    "nmae_old": 0.7215,
+    "nmae_cand_ci": [
+     0.661,
+     0.8018
+    ],
+    "nmae_old_ci": [
+     0.652,
+     0.7917
+    ],
+    "delta": -0.0103,
+    "delta_ci": [
+     -0.0226,
+     0.0018
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.313,
+     "ci": [
+      0.2173,
+      0.404
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3323,
+     "ci": [
+      0.2382,
+      0.4219
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3431,
+     "ci": [
+      0.2501,
+      0.4337
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "RD",
+   "N": 4,
+   "horizon": "dvrest",
+   "n": 223,
+   "label": "arm RD",
+   "status": "scored",
+   "zero_target_share": 0.15695067264573992,
+   "M1": {
+    "rho_cand": 0.6046,
+    "rho_old": 0.6012,
+    "rho_cand_ci": [
+     0.5259,
+     0.6794
+    ],
+    "rho_old_ci": [
+     0.5209,
+     0.6733
+    ],
+    "delta": 0.0034,
+    "delta_ci": [
+     -0.0293,
+     0.0362
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8125,
+    "nmae_old": 0.8197,
+    "nmae_cand_ci": [
+     0.7125,
+     0.9181
+    ],
+    "nmae_old_ci": [
+     0.7165,
+     0.9289
+    ],
+    "delta": 0.0072,
+    "delta_ci": [
+     -0.009,
+     0.0266
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.2187,
+     "ci": [
+      0.1067,
+      0.3191
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2187,
+     "ci": [
+      0.1067,
+      0.3191
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "MSD",
+   "N": 4,
+   "horizon": "dvrest",
+   "n": 2,
+   "label": "arm MSD",
+   "status": "n<20 unscored"
+  },
+  {
+   "pop": "OTHERPOOL",
+   "N": 4,
+   "horizon": "dvrest",
+   "n": 120,
+   "label": "arm OTHERPOOL",
+   "status": "scored",
+   "zero_target_share": 0.19166666666666668,
+   "M1": {
+    "rho_cand": 0.5876,
+    "rho_old": 0.5608,
+    "rho_cand_ci": [
+     0.4645,
+     0.6943
+    ],
+    "rho_old_ci": [
+     0.4383,
+     0.6697
+    ],
+    "delta": 0.0268,
+    "delta_ci": [
+     -0.0073,
+     0.0618
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8489,
+    "nmae_old": 0.869,
+    "nmae_cand_ci": [
+     0.6894,
+     1.066
+    ],
+    "nmae_old_ci": [
+     0.7125,
+     1.0814
+    ],
+    "delta": 0.0201,
+    "delta_ci": [
+     -0.0036,
+     0.0457
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1966,
+     "ci": [
+      0.0524,
+      0.3418
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1966,
+     "ci": [
+      0.0524,
+      0.3418
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "POOL-ALL",
+   "N": 4,
+   "horizon": "dvrest",
+   "n": 345,
+   "label": "POOL-ALL",
+   "status": "scored",
+   "zero_target_share": 0.1681159420289855,
+   "M1": {
+    "rho_cand": 0.6101,
+    "rho_old": 0.6056,
+    "rho_cand_ci": [
+     0.5489,
+     0.6689
+    ],
+    "rho_old_ci": [
+     0.5416,
+     0.6658
+    ],
+    "delta": 0.0045,
+    "delta_ci": [
+     -0.0198,
+     0.028
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8207,
+    "nmae_old": 0.8306,
+    "nmae_cand_ci": [
+     0.7323,
+     0.914
+    ],
+    "nmae_old_ci": [
+     0.7416,
+     0.925
+    ],
+    "delta": 0.0099,
+    "delta_ci": [
+     -0.004,
+     0.0252
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.2569,
+     "ci": [
+      0.1729,
+      0.3403
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2569,
+     "ci": [
+      0.1729,
+      0.3403
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND",
+   "N": 5,
+   "horizon": "dv1",
+   "n": 680,
+   "label": "PRIMARY ND",
+   "status": "scored",
+   "zero_target_share": 0.1411764705882353,
+   "M1": {
+    "rho_cand": 0.7098,
+    "rho_old": 0.7177,
+    "rho_cand_ci": [
+     0.6686,
+     0.7456
+    ],
+    "rho_old_ci": [
+     0.6781,
+     0.7525
+    ],
+    "delta": -0.0079,
+    "delta_ci": [
+     -0.0141,
+     -0.0019
+    ],
+    "verdict": "oldlaw"
+   },
+   "M2": {
+    "nmae_cand": 0.6415,
+    "nmae_old": 0.6372,
+    "nmae_cand_ci": [
+     0.5933,
+     0.6918
+    ],
+    "nmae_old_ci": [
+     0.5897,
+     0.6868
+    ],
+    "delta": -0.0042,
+    "delta_ci": [
+     -0.0098,
+     0.0012
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2622,
+     "ci": [
+      0.2004,
+      0.3216
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3003,
+     "ci": [
+      0.2397,
+      0.3596
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.306,
+     "ci": [
+      0.2436,
+      0.3672
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 1-10",
+   "N": 5,
+   "horizon": "dv1",
+   "n": 144,
+   "label": "band 1-10",
+   "status": "scored",
+   "zero_target_share": 0.09027777777777778,
+   "M1": {
+    "rho_cand": 0.6692,
+    "rho_old": 0.6629,
+    "rho_cand_ci": [
+     0.5608,
+     0.7569
+    ],
+    "rho_old_ci": [
+     0.556,
+     0.75
+    ],
+    "delta": 0.0063,
+    "delta_ci": [
+     -0.0018,
+     0.0144
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6057,
+    "nmae_old": 0.6049,
+    "nmae_cand_ci": [
+     0.5265,
+     0.6922
+    ],
+    "nmae_old_ci": [
+     0.5246,
+     0.6919
+    ],
+    "delta": -0.0007,
+    "delta_ci": [
+     -0.0083,
+     0.0046
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2708,
+     "ci": [
+      0.1365,
+      0.4027
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.356,
+     "ci": [
+      0.2258,
+      0.4797
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3574,
+     "ci": [
+      0.2215,
+      0.4824
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 11-20",
+   "N": 5,
+   "horizon": "dv1",
+   "n": 136,
+   "label": "band 11-20",
+   "status": "scored",
+   "zero_target_share": 0.11764705882352941,
+   "M1": {
+    "rho_cand": 0.7717,
+    "rho_old": 0.7764,
+    "rho_cand_ci": [
+     0.7018,
+     0.8266
+    ],
+    "rho_old_ci": [
+     0.7076,
+     0.8317
+    ],
+    "delta": -0.0047,
+    "delta_ci": [
+     -0.017,
+     0.0068
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.5904,
+    "nmae_old": 0.5725,
+    "nmae_cand_ci": [
+     0.4937,
+     0.6919
+    ],
+    "nmae_old_ci": [
+     0.4759,
+     0.6756
+    ],
+    "delta": -0.0179,
+    "delta_ci": [
+     -0.0265,
+     -0.0094
+    ],
+    "verdict": "oldlaw"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0359,
+     "ci": [
+      -0.1113,
+      0.1859
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.1945,
+     "ci": [
+      0.0493,
+      0.3377
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2152,
+     "ci": [
+      0.0726,
+      0.357
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 21-30",
+   "N": 5,
+   "horizon": "dv1",
+   "n": 113,
+   "label": "band 21-30",
+   "status": "scored",
+   "zero_target_share": 0.11504424778761062,
+   "M1": {
+    "rho_cand": 0.715,
+    "rho_old": 0.7249,
+    "rho_cand_ci": [
+     0.6201,
+     0.7863
+    ],
+    "rho_old_ci": [
+     0.6316,
+     0.7945
+    ],
+    "delta": -0.0099,
+    "delta_ci": [
+     -0.0222,
+     0.0002
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6084,
+    "nmae_old": 0.5895,
+    "nmae_cand_ci": [
+     0.5042,
+     0.7431
+    ],
+    "nmae_old_ci": [
+     0.4851,
+     0.7278
+    ],
+    "delta": -0.0189,
+    "delta_ci": [
+     -0.0279,
+     -0.0051
+    ],
+    "verdict": "oldlaw"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": -0.0992,
+     "ci": [
+      -0.2543,
+      0.0493
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.0426,
+     "ci": [
+      -0.1178,
+      0.1934
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0512,
+     "ci": [
+      -0.0995,
+      0.1977
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 31-40",
+   "N": 5,
+   "horizon": "dv1",
+   "n": 104,
+   "label": "band 31-40",
+   "status": "scored",
+   "zero_target_share": 0.15384615384615385,
+   "M1": {
+    "rho_cand": 0.6536,
+    "rho_old": 0.6471,
+    "rho_cand_ci": [
+     0.546,
+     0.7343
+    ],
+    "rho_old_ci": [
+     0.5379,
+     0.7307
+    ],
+    "delta": 0.0065,
+    "delta_ci": [
+     -0.0169,
+     0.0269
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8115,
+    "nmae_old": 0.8248,
+    "nmae_cand_ci": [
+     0.6794,
+     0.9423
+    ],
+    "nmae_old_ci": [
+     0.6915,
+     0.9468
+    ],
+    "delta": 0.0133,
+    "delta_ci": [
+     -0.0088,
+     0.0262
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": -0.0827,
+     "ci": [
+      -0.2429,
+      0.0814
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.0587,
+     "ci": [
+      -0.1206,
+      0.2335
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0798,
+     "ci": [
+      -0.0987,
+      0.2578
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 41-64",
+   "N": 5,
+   "horizon": "dv1",
+   "n": 183,
+   "label": "band 41-64",
+   "status": "scored",
+   "zero_target_share": 0.20765027322404372,
+   "M1": {
+    "rho_cand": 0.6631,
+    "rho_old": 0.6711,
+    "rho_cand_ci": [
+     0.5741,
+     0.7308
+    ],
+    "rho_old_ci": [
+     0.5874,
+     0.738
+    ],
+    "delta": -0.0081,
+    "delta_ci": [
+     -0.0293,
+     0.0121
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.723,
+    "nmae_old": 0.7273,
+    "nmae_cand_ci": [
+     0.613,
+     0.8542
+    ],
+    "nmae_old_ci": [
+     0.6151,
+     0.8601
+    ],
+    "delta": 0.0043,
+    "delta_ci": [
+     -0.0145,
+     0.0229
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.1623,
+     "ci": [
+      0.0317,
+      0.2883
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.2366,
+     "ci": [
+      0.1113,
+      0.3559
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2342,
+     "ci": [
+      0.117,
+      0.3496
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2005-2014",
+   "N": 5,
+   "horizon": "dv1",
+   "n": 451,
+   "label": "era 2005-2014",
+   "status": "scored",
+   "zero_target_share": 0.15077605321507762,
+   "M1": {
+    "rho_cand": 0.7227,
+    "rho_old": 0.7283,
+    "rho_cand_ci": [
+     0.6753,
+     0.7654
+    ],
+    "rho_old_ci": [
+     0.6824,
+     0.7697
+    ],
+    "delta": -0.0056,
+    "delta_ci": [
+     -0.0126,
+     0.0016
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6347,
+    "nmae_old": 0.6321,
+    "nmae_cand_ci": [
+     0.5784,
+     0.6896
+    ],
+    "nmae_old_ci": [
+     0.5754,
+     0.6877
+    ],
+    "delta": -0.0026,
+    "delta_ci": [
+     -0.0086,
+     0.0034
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2378,
+     "ci": [
+      0.16,
+      0.3117
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.2896,
+     "ci": [
+      0.2149,
+      0.3635
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2996,
+     "ci": [
+      0.2276,
+      0.3738
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2015+",
+   "N": 5,
+   "horizon": "dv1",
+   "n": 229,
+   "label": "era 2015+",
+   "status": "scored",
+   "zero_target_share": 0.1222707423580786,
+   "M1": {
+    "rho_cand": 0.6798,
+    "rho_old": 0.6944,
+    "rho_cand_ci": [
+     0.6078,
+     0.7396
+    ],
+    "rho_old_ci": [
+     0.6245,
+     0.7506
+    ],
+    "delta": -0.0146,
+    "delta_ci": [
+     -0.0283,
+     -0.0025
+    ],
+    "verdict": "oldlaw"
+   },
+   "M2": {
+    "nmae_cand": 0.6556,
+    "nmae_old": 0.6484,
+    "nmae_cand_ci": [
+     0.5744,
+     0.7545
+    ],
+    "nmae_old_ci": [
+     0.5702,
+     0.7444
+    ],
+    "delta": -0.0071,
+    "delta_ci": [
+     -0.0189,
+     0.0042
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.3103,
+     "ci": [
+      0.2054,
+      0.4128
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3227,
+     "ci": [
+      0.2165,
+      0.4252
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3158,
+     "ci": [
+      0.2094,
+      0.424
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "RD",
+   "N": 5,
+   "horizon": "dv1",
+   "n": 186,
+   "label": "arm RD",
+   "status": "scored",
+   "zero_target_share": 0.15591397849462366,
+   "M1": {
+    "rho_cand": 0.6273,
+    "rho_old": 0.6032,
+    "rho_cand_ci": [
+     0.5318,
+     0.7078
+    ],
+    "rho_old_ci": [
+     0.5052,
+     0.6883
+    ],
+    "delta": 0.0241,
+    "delta_ci": [
+     -0.0014,
+     0.0489
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.7222,
+    "nmae_old": 0.7119,
+    "nmae_cand_ci": [
+     0.6226,
+     0.8266
+    ],
+    "nmae_old_ci": [
+     0.6133,
+     0.824
+    ],
+    "delta": -0.0103,
+    "delta_ci": [
+     -0.0265,
+     0.0072
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1271,
+     "ci": [
+      0.0052,
+      0.2359
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1271,
+     "ci": [
+      0.0052,
+      0.2359
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "MSD",
+   "N": 5,
+   "horizon": "dv1",
+   "n": 2,
+   "label": "arm MSD",
+   "status": "n<20 unscored"
+  },
+  {
+   "pop": "OTHERPOOL",
+   "N": 5,
+   "horizon": "dv1",
+   "n": 93,
+   "label": "arm OTHERPOOL",
+   "status": "scored",
+   "zero_target_share": 0.20430107526881722,
+   "M1": {
+    "rho_cand": 0.6989,
+    "rho_old": 0.6878,
+    "rho_cand_ci": [
+     0.5927,
+     0.7834
+    ],
+    "rho_old_ci": [
+     0.5852,
+     0.7758
+    ],
+    "delta": 0.0111,
+    "delta_ci": [
+     -0.0189,
+     0.0414
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8082,
+    "nmae_old": 0.8292,
+    "nmae_cand_ci": [
+     0.6075,
+     1.0477
+    ],
+    "nmae_old_ci": [
+     0.6203,
+     1.0617
+    ],
+    "delta": 0.0211,
+    "delta_ci": [
+     -0.0066,
+     0.0361
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.088,
+     "ci": [
+      -0.0802,
+      0.2571
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.088,
+     "ci": [
+      -0.0802,
+      0.2571
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "POOL-ALL",
+   "N": 5,
+   "horizon": "dv1",
+   "n": 281,
+   "label": "POOL-ALL",
+   "status": "scored",
+   "zero_target_share": 0.17437722419928825,
+   "M1": {
+    "rho_cand": 0.6578,
+    "rho_old": 0.6321,
+    "rho_cand_ci": [
+     0.5837,
+     0.7174
+    ],
+    "rho_old_ci": [
+     0.5545,
+     0.6941
+    ],
+    "delta": 0.0257,
+    "delta_ci": [
+     0.0076,
+     0.0445
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 0.7483,
+    "nmae_old": 0.744,
+    "nmae_cand_ci": [
+     0.6637,
+     0.8482
+    ],
+    "nmae_old_ci": [
+     0.6578,
+     0.8525
+    ],
+    "delta": -0.0043,
+    "delta_ci": [
+     -0.0171,
+     0.0096
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1599,
+     "ci": [
+      0.0591,
+      0.2514
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1599,
+     "ci": [
+      0.0591,
+      0.2514
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND",
+   "N": 5,
+   "horizon": "dvrest",
+   "n": 680,
+   "label": "PRIMARY ND",
+   "status": "scored",
+   "zero_target_share": 0.1,
+   "M1": {
+    "rho_cand": 0.7558,
+    "rho_old": 0.7651,
+    "rho_cand_ci": [
+     0.7237,
+     0.7846
+    ],
+    "rho_old_ci": [
+     0.7341,
+     0.7931
+    ],
+    "delta": -0.0093,
+    "delta_ci": [
+     -0.0157,
+     -0.0035
+    ],
+    "verdict": "oldlaw"
+   },
+   "M2": {
+    "nmae_cand": 0.614,
+    "nmae_old": 0.6062,
+    "nmae_cand_ci": [
+     0.5693,
+     0.6562
+    ],
+    "nmae_old_ci": [
+     0.563,
+     0.6489
+    ],
+    "delta": -0.0077,
+    "delta_ci": [
+     -0.0128,
+     -0.0024
+    ],
+    "verdict": "oldlaw"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2971,
+     "ci": [
+      0.2373,
+      0.3543
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.333,
+     "ci": [
+      0.2736,
+      0.3896
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3391,
+     "ci": [
+      0.2808,
+      0.3964
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 1-10",
+   "N": 5,
+   "horizon": "dvrest",
+   "n": 144,
+   "label": "band 1-10",
+   "status": "scored",
+   "zero_target_share": 0.027777777777777776,
+   "M1": {
+    "rho_cand": 0.7631,
+    "rho_old": 0.7566,
+    "rho_cand_ci": [
+     0.6904,
+     0.8244
+    ],
+    "rho_old_ci": [
+     0.6828,
+     0.8193
+    ],
+    "delta": 0.0065,
+    "delta_ci": [
+     -0.0004,
+     0.0146
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.5393,
+    "nmae_old": 0.5388,
+    "nmae_cand_ci": [
+     0.4727,
+     0.6029
+    ],
+    "nmae_old_ci": [
+     0.4714,
+     0.6022
+    ],
+    "delta": -0.0005,
+    "delta_ci": [
+     -0.0075,
+     0.0056
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2244,
+     "ci": [
+      0.0932,
+      0.3487
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3275,
+     "ci": [
+      0.201,
+      0.442
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3362,
+     "ci": [
+      0.2113,
+      0.4537
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 11-20",
+   "N": 5,
+   "horizon": "dvrest",
+   "n": 136,
+   "label": "band 11-20",
+   "status": "scored",
+   "zero_target_share": 0.09558823529411764,
+   "M1": {
+    "rho_cand": 0.7753,
+    "rho_old": 0.7808,
+    "rho_cand_ci": [
+     0.6986,
+     0.8343
+    ],
+    "rho_old_ci": [
+     0.7087,
+     0.838
+    ],
+    "delta": -0.0055,
+    "delta_ci": [
+     -0.02,
+     0.0073
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.5495,
+    "nmae_old": 0.5426,
+    "nmae_cand_ci": [
+     0.465,
+     0.6409
+    ],
+    "nmae_old_ci": [
+     0.4582,
+     0.6328
+    ],
+    "delta": -0.0069,
+    "delta_ci": [
+     -0.0159,
+     0.0006
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0576,
+     "ci": [
+      -0.0873,
+      0.2037
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.1984,
+     "ci": [
+      0.0521,
+      0.3389
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.214,
+     "ci": [
+      0.0743,
+      0.3465
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 21-30",
+   "N": 5,
+   "horizon": "dvrest",
+   "n": 113,
+   "label": "band 21-30",
+   "status": "scored",
+   "zero_target_share": 0.09734513274336283,
+   "M1": {
+    "rho_cand": 0.7421,
+    "rho_old": 0.7531,
+    "rho_cand_ci": [
+     0.6592,
+     0.8069
+    ],
+    "rho_old_ci": [
+     0.6733,
+     0.8153
+    ],
+    "delta": -0.011,
+    "delta_ci": [
+     -0.0218,
+     -0.0013
+    ],
+    "verdict": "oldlaw"
+   },
+   "M2": {
+    "nmae_cand": 0.5835,
+    "nmae_old": 0.5779,
+    "nmae_cand_ci": [
+     0.4882,
+     0.6931
+    ],
+    "nmae_old_ci": [
+     0.4822,
+     0.6861
+    ],
+    "delta": -0.0056,
+    "delta_ci": [
+     -0.0169,
+     0.0044
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": -0.1269,
+     "ci": [
+      -0.2816,
+      0.024
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.0728,
+     "ci": [
+      -0.0868,
+      0.2375
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.1021,
+     "ci": [
+      -0.0538,
+      0.2568
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 31-40",
+   "N": 5,
+   "horizon": "dvrest",
+   "n": 104,
+   "label": "band 31-40",
+   "status": "scored",
+   "zero_target_share": 0.11538461538461539,
+   "M1": {
+    "rho_cand": 0.6935,
+    "rho_old": 0.6842,
+    "rho_cand_ci": [
+     0.5961,
+     0.7635
+    ],
+    "rho_old_ci": [
+     0.5836,
+     0.7539
+    ],
+    "delta": 0.0093,
+    "delta_ci": [
+     -0.0114,
+     0.029
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8491,
+    "nmae_old": 0.8533,
+    "nmae_cand_ci": [
+     0.7052,
+     1.0041
+    ],
+    "nmae_old_ci": [
+     0.7104,
+     1.0037
+    ],
+    "delta": 0.0042,
+    "delta_ci": [
+     -0.0126,
+     0.0225
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": -0.0789,
+     "ci": [
+      -0.2368,
+      0.0836
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.0772,
+     "ci": [
+      -0.1035,
+      0.2573
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0986,
+     "ci": [
+      -0.0786,
+      0.2757
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 41-64",
+   "N": 5,
+   "horizon": "dvrest",
+   "n": 183,
+   "label": "band 41-64",
+   "status": "scored",
+   "zero_target_share": 0.15300546448087432,
+   "M1": {
+    "rho_cand": 0.6694,
+    "rho_old": 0.69,
+    "rho_cand_ci": [
+     0.5877,
+     0.7407
+    ],
+    "rho_old_ci": [
+     0.6119,
+     0.7565
+    ],
+    "delta": -0.0206,
+    "delta_ci": [
+     -0.04,
+     -0.0013
+    ],
+    "verdict": "oldlaw"
+   },
+   "M2": {
+    "nmae_cand": 0.6917,
+    "nmae_old": 0.6758,
+    "nmae_cand_ci": [
+     0.5849,
+     0.8027
+    ],
+    "nmae_old_ci": [
+     0.5707,
+     0.786
+    ],
+    "delta": -0.0159,
+    "delta_ci": [
+     -0.0339,
+     0.0003
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.1689,
+     "ci": [
+      0.0404,
+      0.2965
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.2131,
+     "ci": [
+      0.0935,
+      0.3362
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.207,
+     "ci": [
+      0.0894,
+      0.3222
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2005-2014",
+   "N": 5,
+   "horizon": "dvrest",
+   "n": 451,
+   "label": "era 2005-2014",
+   "status": "scored",
+   "zero_target_share": 0.10199556541019955,
+   "M1": {
+    "rho_cand": 0.7783,
+    "rho_old": 0.7864,
+    "rho_cand_ci": [
+     0.7389,
+     0.8114
+    ],
+    "rho_old_ci": [
+     0.7481,
+     0.8186
+    ],
+    "delta": -0.008,
+    "delta_ci": [
+     -0.015,
+     -0.0013
+    ],
+    "verdict": "oldlaw"
+   },
+   "M2": {
+    "nmae_cand": 0.5521,
+    "nmae_old": 0.5423,
+    "nmae_cand_ci": [
+     0.5072,
+     0.5963
+    ],
+    "nmae_old_ci": [
+     0.4979,
+     0.5862
+    ],
+    "delta": -0.0099,
+    "delta_ci": [
+     -0.0158,
+     -0.0039
+    ],
+    "verdict": "oldlaw"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2871,
+     "ci": [
+      0.2123,
+      0.3552
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3356,
+     "ci": [
+      0.2632,
+      0.4029
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3447,
+     "ci": [
+      0.2712,
+      0.4133
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2015+",
+   "N": 5,
+   "horizon": "dvrest",
+   "n": 229,
+   "label": "era 2015+",
+   "status": "scored",
+   "zero_target_share": 0.09606986899563319,
+   "M1": {
+    "rho_cand": 0.711,
+    "rho_old": 0.7231,
+    "rho_cand_ci": [
+     0.6445,
+     0.763
+    ],
+    "rho_old_ci": [
+     0.6602,
+     0.773
+    ],
+    "delta": -0.0121,
+    "delta_ci": [
+     -0.0274,
+     0.0
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.7213,
+    "nmae_old": 0.7187,
+    "nmae_cand_ci": [
+     0.6424,
+     0.8048
+    ],
+    "nmae_old_ci": [
+     0.6396,
+     0.8
+    ],
+    "delta": -0.0026,
+    "delta_ci": [
+     -0.0158,
+     0.0076
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.3336,
+     "ci": [
+      0.2263,
+      0.427
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3505,
+     "ci": [
+      0.2479,
+      0.443
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.35,
+     "ci": [
+      0.2481,
+      0.4433
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "RD",
+   "N": 5,
+   "horizon": "dvrest",
+   "n": 186,
+   "label": "arm RD",
+   "status": "scored",
+   "zero_target_share": 0.10752688172043011,
+   "M1": {
+    "rho_cand": 0.7017,
+    "rho_old": 0.689,
+    "rho_cand_ci": [
+     0.6266,
+     0.7661
+    ],
+    "rho_old_ci": [
+     0.6093,
+     0.7561
+    ],
+    "delta": 0.0127,
+    "delta_ci": [
+     -0.0095,
+     0.0359
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6822,
+    "nmae_old": 0.6758,
+    "nmae_cand_ci": [
+     0.5968,
+     0.7749
+    ],
+    "nmae_old_ci": [
+     0.5878,
+     0.7715
+    ],
+    "delta": -0.0064,
+    "delta_ci": [
+     -0.0223,
+     0.0095
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.204,
+     "ci": [
+      0.0909,
+      0.3115
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.204,
+     "ci": [
+      0.0909,
+      0.3115
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "MSD",
+   "N": 5,
+   "horizon": "dvrest",
+   "n": 2,
+   "label": "arm MSD",
+   "status": "n<20 unscored"
+  },
+  {
+   "pop": "OTHERPOOL",
+   "N": 5,
+   "horizon": "dvrest",
+   "n": 93,
+   "label": "arm OTHERPOOL",
+   "status": "scored",
+   "zero_target_share": 0.13978494623655913,
+   "M1": {
+    "rho_cand": 0.7168,
+    "rho_old": 0.7118,
+    "rho_cand_ci": [
+     0.6095,
+     0.7925
+    ],
+    "rho_old_ci": [
+     0.6074,
+     0.7879
+    ],
+    "delta": 0.005,
+    "delta_ci": [
+     -0.0245,
+     0.0326
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.744,
+    "nmae_old": 0.7649,
+    "nmae_cand_ci": [
+     0.5776,
+     0.9538
+    ],
+    "nmae_old_ci": [
+     0.6013,
+     0.9643
+    ],
+    "delta": 0.0209,
+    "delta_ci": [
+     -0.0041,
+     0.0376
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.2052,
+     "ci": [
+      0.0364,
+      0.3686
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2052,
+     "ci": [
+      0.0364,
+      0.3686
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "POOL-ALL",
+   "N": 5,
+   "horizon": "dvrest",
+   "n": 281,
+   "label": "POOL-ALL",
+   "status": "scored",
+   "zero_target_share": 0.12099644128113879,
+   "M1": {
+    "rho_cand": 0.7099,
+    "rho_old": 0.6979,
+    "rho_cand_ci": [
+     0.6518,
+     0.7613
+    ],
+    "rho_old_ci": [
+     0.6395,
+     0.7497
+    ],
+    "delta": 0.0119,
+    "delta_ci": [
+     -0.0052,
+     0.0295
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.697,
+    "nmae_old": 0.6984,
+    "nmae_cand_ci": [
+     0.6181,
+     0.7861
+    ],
+    "nmae_old_ci": [
+     0.6188,
+     0.7897
+    ],
+    "delta": 0.0014,
+    "delta_ci": [
+     -0.0119,
+     0.0139
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.2538,
+     "ci": [
+      0.1547,
+      0.3451
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2538,
+     "ci": [
+      0.1547,
+      0.3451
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND",
+   "N": 6,
+   "horizon": "dv1",
+   "n": 574,
+   "label": "PRIMARY ND",
+   "status": "scored",
+   "zero_target_share": 0.14982578397212543,
+   "M1": {
+    "rho_cand": 0.7292,
+    "rho_old": 0.7334,
+    "rho_cand_ci": [
+     0.6902,
+     0.7627
+    ],
+    "rho_old_ci": [
+     0.6955,
+     0.7665
+    ],
+    "delta": -0.0042,
+    "delta_ci": [
+     -0.0098,
+     0.0013
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6311,
+    "nmae_old": 0.6269,
+    "nmae_cand_ci": [
+     0.5817,
+     0.6818
+    ],
+    "nmae_old_ci": [
+     0.5777,
+     0.6775
+    ],
+    "delta": -0.0041,
+    "delta_ci": [
+     -0.0089,
+     0.0
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2521,
+     "ci": [
+      0.1889,
+      0.3155
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3023,
+     "ci": [
+      0.2384,
+      0.3632
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3207,
+     "ci": [
+      0.2558,
+      0.3821
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 1-10",
+   "N": 6,
+   "horizon": "dv1",
+   "n": 131,
+   "label": "band 1-10",
+   "status": "scored",
+   "zero_target_share": 0.08396946564885496,
+   "M1": {
+    "rho_cand": 0.7173,
+    "rho_old": 0.7133,
+    "rho_cand_ci": [
+     0.6226,
+     0.7958
+    ],
+    "rho_old_ci": [
+     0.6175,
+     0.7907
+    ],
+    "delta": 0.0041,
+    "delta_ci": [
+     -0.006,
+     0.0146
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.52,
+    "nmae_old": 0.5158,
+    "nmae_cand_ci": [
+     0.4351,
+     0.615
+    ],
+    "nmae_old_ci": [
+     0.4316,
+     0.6114
+    ],
+    "delta": -0.0042,
+    "delta_ci": [
+     -0.0102,
+     0.0024
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2034,
+     "ci": [
+      0.0572,
+      0.3386
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.2992,
+     "ci": [
+      0.1598,
+      0.4199
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3211,
+     "ci": [
+      0.1807,
+      0.4404
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 11-20",
+   "N": 6,
+   "horizon": "dv1",
+   "n": 116,
+   "label": "band 11-20",
+   "status": "scored",
+   "zero_target_share": 0.11206896551724138,
+   "M1": {
+    "rho_cand": 0.7018,
+    "rho_old": 0.7059,
+    "rho_cand_ci": [
+     0.5942,
+     0.7885
+    ],
+    "rho_old_ci": [
+     0.5987,
+     0.792
+    ],
+    "delta": -0.0041,
+    "delta_ci": [
+     -0.0163,
+     0.0064
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6747,
+    "nmae_old": 0.6667,
+    "nmae_cand_ci": [
+     0.5839,
+     0.7674
+    ],
+    "nmae_old_ci": [
+     0.5741,
+     0.7603
+    ],
+    "delta": -0.008,
+    "delta_ci": [
+     -0.0149,
+     -0.0011
+    ],
+    "verdict": "oldlaw"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0223,
+     "ci": [
+      -0.1417,
+      0.1844
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.1775,
+     "ci": [
+      0.0177,
+      0.3302
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2057,
+     "ci": [
+      0.0528,
+      0.3541
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 21-30",
+   "N": 6,
+   "horizon": "dv1",
+   "n": 93,
+   "label": "band 21-30",
+   "status": "scored",
+   "zero_target_share": 0.16129032258064516,
+   "M1": {
+    "rho_cand": 0.6843,
+    "rho_old": 0.6908,
+    "rho_cand_ci": [
+     0.5671,
+     0.7705
+    ],
+    "rho_old_ci": [
+     0.5773,
+     0.7755
+    ],
+    "delta": -0.0066,
+    "delta_ci": [
+     -0.0162,
+     0.0027
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6789,
+    "nmae_old": 0.6714,
+    "nmae_cand_ci": [
+     0.5502,
+     0.8246
+    ],
+    "nmae_old_ci": [
+     0.5425,
+     0.8158
+    ],
+    "delta": -0.0074,
+    "delta_ci": [
+     -0.0156,
+     0.0007
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": -0.0507,
+     "ci": [
+      -0.23,
+      0.1345
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.2135,
+     "ci": [
+      0.0369,
+      0.3867
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.255,
+     "ci": [
+      0.0861,
+      0.412
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 31-40",
+   "N": 6,
+   "horizon": "dv1",
+   "n": 86,
+   "label": "band 31-40",
+   "status": "scored",
+   "zero_target_share": 0.23255813953488372,
+   "M1": {
+    "rho_cand": 0.7514,
+    "rho_old": 0.7582,
+    "rho_cand_ci": [
+     0.6586,
+     0.8155
+    ],
+    "rho_old_ci": [
+     0.67,
+     0.8182
+    ],
+    "delta": -0.0068,
+    "delta_ci": [
+     -0.0311,
+     0.0169
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.7492,
+    "nmae_old": 0.7432,
+    "nmae_cand_ci": [
+     0.6189,
+     0.9053
+    ],
+    "nmae_old_ci": [
+     0.6113,
+     0.9046
+    ],
+    "delta": -0.006,
+    "delta_ci": [
+     -0.0284,
+     0.016
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0387,
+     "ci": [
+      -0.1303,
+      0.2238
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.1633,
+     "ci": [
+      -0.0214,
+      0.3445
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.1711,
+     "ci": [
+      -0.0115,
+      0.3469
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 41-64",
+   "N": 6,
+   "horizon": "dv1",
+   "n": 148,
+   "label": "band 41-64",
+   "status": "scored",
+   "zero_target_share": 0.18243243243243243,
+   "M1": {
+    "rho_cand": 0.6838,
+    "rho_old": 0.6885,
+    "rho_cand_ci": [
+     0.5944,
+     0.76
+    ],
+    "rho_old_ci": [
+     0.5994,
+     0.7608
+    ],
+    "delta": -0.0047,
+    "delta_ci": [
+     -0.0221,
+     0.0127
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.704,
+    "nmae_old": 0.6919,
+    "nmae_cand_ci": [
+     0.5985,
+     0.8183
+    ],
+    "nmae_old_ci": [
+     0.5862,
+     0.8064
+    ],
+    "delta": -0.0121,
+    "delta_ci": [
+     -0.0231,
+     -0.0022
+    ],
+    "verdict": "oldlaw"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.1052,
+     "ci": [
+      -0.0319,
+      0.2398
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.2024,
+     "ci": [
+      0.0667,
+      0.3356
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2273,
+     "ci": [
+      0.0916,
+      0.3603
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2005-2014",
+   "N": 6,
+   "horizon": "dv1",
+   "n": 405,
+   "label": "era 2005-2014",
+   "status": "scored",
+   "zero_target_share": 0.16296296296296298,
+   "M1": {
+    "rho_cand": 0.7226,
+    "rho_old": 0.7259,
+    "rho_cand_ci": [
+     0.6727,
+     0.7666
+    ],
+    "rho_old_ci": [
+     0.6777,
+     0.7686
+    ],
+    "delta": -0.0032,
+    "delta_ci": [
+     -0.0099,
+     0.003
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6046,
+    "nmae_old": 0.5989,
+    "nmae_cand_ci": [
+     0.5515,
+     0.659
+    ],
+    "nmae_old_ci": [
+     0.546,
+     0.6532
+    ],
+    "delta": -0.0057,
+    "delta_ci": [
+     -0.0109,
+     -0.0
+    ],
+    "verdict": "oldlaw"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2548,
+     "ci": [
+      0.1763,
+      0.33
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3049,
+     "ci": [
+      0.2288,
+      0.3791
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3219,
+     "ci": [
+      0.2436,
+      0.3951
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2015+",
+   "N": 6,
+   "horizon": "dv1",
+   "n": 169,
+   "label": "era 2015+",
+   "status": "scored",
+   "zero_target_share": 0.11834319526627218,
+   "M1": {
+    "rho_cand": 0.76,
+    "rho_old": 0.7631,
+    "rho_cand_ci": [
+     0.6979,
+     0.808
+    ],
+    "rho_old_ci": [
+     0.7004,
+     0.8108
+    ],
+    "delta": -0.003,
+    "delta_ci": [
+     -0.0147,
+     0.0084
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6948,
+    "nmae_old": 0.6939,
+    "nmae_cand_ci": [
+     0.5965,
+     0.7966
+    ],
+    "nmae_old_ci": [
+     0.5959,
+     0.796
+    ],
+    "delta": -0.0009,
+    "delta_ci": [
+     -0.0108,
+     0.009
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2504,
+     "ci": [
+      0.1202,
+      0.3677
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3082,
+     "ci": [
+      0.1783,
+      0.4251
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3266,
+     "ci": [
+      0.2001,
+      0.4429
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "RD",
+   "N": 6,
+   "horizon": "dv1",
+   "n": 164,
+   "label": "arm RD",
+   "status": "scored",
+   "zero_target_share": 0.18292682926829268,
+   "M1": {
+    "rho_cand": 0.6096,
+    "rho_old": 0.6007,
+    "rho_cand_ci": [
+     0.5156,
+     0.6857
+    ],
+    "rho_old_ci": [
+     0.5048,
+     0.6757
+    ],
+    "delta": 0.0089,
+    "delta_ci": [
+     -0.0105,
+     0.0284
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8033,
+    "nmae_old": 0.8102,
+    "nmae_cand_ci": [
+     0.6941,
+     0.925
+    ],
+    "nmae_old_ci": [
+     0.7008,
+     0.933
+    ],
+    "delta": 0.007,
+    "delta_ci": [
+     -0.0078,
+     0.0215
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.0535,
+     "ci": [
+      -0.0793,
+      0.1787
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.0535,
+     "ci": [
+      -0.0793,
+      0.1787
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "MSD",
+   "N": 6,
+   "horizon": "dv1",
+   "n": 0,
+   "label": "arm MSD",
+   "status": "n<20 unscored"
+  },
+  {
+   "pop": "OTHERPOOL",
+   "N": 6,
+   "horizon": "dv1",
+   "n": 80,
+   "label": "arm OTHERPOOL",
+   "status": "scored",
+   "zero_target_share": 0.15,
+   "M1": {
+    "rho_cand": 0.6482,
+    "rho_old": 0.6286,
+    "rho_cand_ci": [
+     0.5019,
+     0.7623
+    ],
+    "rho_old_ci": [
+     0.4804,
+     0.7495
+    ],
+    "delta": 0.0196,
+    "delta_ci": [
+     -0.0051,
+     0.0486
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.7737,
+    "nmae_old": 0.7844,
+    "nmae_cand_ci": [
+     0.5967,
+     0.9925
+    ],
+    "nmae_old_ci": [
+     0.6019,
+     1.0086
+    ],
+    "delta": 0.0107,
+    "delta_ci": [
+     -0.007,
+     0.032
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.2717,
+     "ci": [
+      0.0867,
+      0.4407
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2717,
+     "ci": [
+      0.0867,
+      0.4407
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "POOL-ALL",
+   "N": 6,
+   "horizon": "dv1",
+   "n": 244,
+   "label": "POOL-ALL",
+   "status": "scored",
+   "zero_target_share": 0.1721311475409836,
+   "M1": {
+    "rho_cand": 0.6246,
+    "rho_old": 0.6136,
+    "rho_cand_ci": [
+     0.5493,
+     0.6911
+    ],
+    "rho_old_ci": [
+     0.5373,
+     0.6842
+    ],
+    "delta": 0.011,
+    "delta_ci": [
+     -0.0047,
+     0.0276
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.8014,
+    "nmae_old": 0.8076,
+    "nmae_cand_ci": [
+     0.7009,
+     0.9055
+    ],
+    "nmae_old_ci": [
+     0.7083,
+     0.913
+    ],
+    "delta": 0.0063,
+    "delta_ci": [
+     -0.0044,
+     0.019
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1472,
+     "ci": [
+      0.0417,
+      0.2532
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1472,
+     "ci": [
+      0.0417,
+      0.2532
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND",
+   "N": 6,
+   "horizon": "dvrest",
+   "n": 574,
+   "label": "PRIMARY ND",
+   "status": "scored",
+   "zero_target_share": 0.09581881533101046,
+   "M1": {
+    "rho_cand": 0.7944,
+    "rho_old": 0.8012,
+    "rho_cand_ci": [
+     0.7657,
+     0.8195
+    ],
+    "rho_old_ci": [
+     0.7727,
+     0.8259
+    ],
+    "delta": -0.0067,
+    "delta_ci": [
+     -0.0119,
+     -0.0018
+    ],
+    "verdict": "oldlaw"
+   },
+   "M2": {
+    "nmae_cand": 0.5811,
+    "nmae_old": 0.5774,
+    "nmae_cand_ci": [
+     0.5413,
+     0.6223
+    ],
+    "nmae_old_ci": [
+     0.5371,
+     0.6182
+    ],
+    "delta": -0.0037,
+    "delta_ci": [
+     -0.0083,
+     0.0004
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2745,
+     "ci": [
+      0.2055,
+      0.3377
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3197,
+     "ci": [
+      0.2548,
+      0.3833
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3341,
+     "ci": [
+      0.2694,
+      0.3961
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 1-10",
+   "N": 6,
+   "horizon": "dvrest",
+   "n": 131,
+   "label": "band 1-10",
+   "status": "scored",
+   "zero_target_share": 0.05343511450381679,
+   "M1": {
+    "rho_cand": 0.7813,
+    "rho_old": 0.7754,
+    "rho_cand_ci": [
+     0.7072,
+     0.8378
+    ],
+    "rho_old_ci": [
+     0.6969,
+     0.8361
+    ],
+    "delta": 0.006,
+    "delta_ci": [
+     -0.0035,
+     0.0162
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.5302,
+    "nmae_old": 0.5266,
+    "nmae_cand_ci": [
+     0.4649,
+     0.5956
+    ],
+    "nmae_old_ci": [
+     0.4612,
+     0.5931
+    ],
+    "delta": -0.0036,
+    "delta_ci": [
+     -0.0092,
+     0.0028
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.1669,
+     "ci": [
+      0.0267,
+      0.3085
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.2815,
+     "ci": [
+      0.1571,
+      0.4069
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2994,
+     "ci": [
+      0.1713,
+      0.4247
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 11-20",
+   "N": 6,
+   "horizon": "dvrest",
+   "n": 116,
+   "label": "band 11-20",
+   "status": "scored",
+   "zero_target_share": 0.06896551724137931,
+   "M1": {
+    "rho_cand": 0.7706,
+    "rho_old": 0.7787,
+    "rho_cand_ci": [
+     0.6893,
+     0.8309
+    ],
+    "rho_old_ci": [
+     0.6962,
+     0.8388
+    ],
+    "delta": -0.0081,
+    "delta_ci": [
+     -0.022,
+     0.0032
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.5398,
+    "nmae_old": 0.5344,
+    "nmae_cand_ci": [
+     0.4538,
+     0.6223
+    ],
+    "nmae_old_ci": [
+     0.4456,
+     0.6199
+    ],
+    "delta": -0.0055,
+    "delta_ci": [
+     -0.0129,
+     0.0019
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0732,
+     "ci": [
+      -0.096,
+      0.2367
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.2167,
+     "ci": [
+      0.0606,
+      0.3639
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2423,
+     "ci": [
+      0.0902,
+      0.3827
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 21-30",
+   "N": 6,
+   "horizon": "dvrest",
+   "n": 93,
+   "label": "band 21-30",
+   "status": "scored",
+   "zero_target_share": 0.07526881720430108,
+   "M1": {
+    "rho_cand": 0.7777,
+    "rho_old": 0.7799,
+    "rho_cand_ci": [
+     0.6901,
+     0.8409
+    ],
+    "rho_old_ci": [
+     0.6925,
+     0.8444
+    ],
+    "delta": -0.0022,
+    "delta_ci": [
+     -0.0111,
+     0.006
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.5888,
+    "nmae_old": 0.5859,
+    "nmae_cand_ci": [
+     0.4822,
+     0.7059
+    ],
+    "nmae_old_ci": [
+     0.4796,
+     0.7036
+    ],
+    "delta": -0.0029,
+    "delta_ci": [
+     -0.0089,
+     0.0046
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": -0.0422,
+     "ci": [
+      -0.2082,
+      0.1281
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.2449,
+     "ci": [
+      0.0702,
+      0.4235
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2729,
+     "ci": [
+      0.1075,
+      0.4434
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND band 31-40",
+   "N": 6,
+   "horizon": "dvrest",
+   "n": 86,
+   "label": "band 31-40",
+   "status": "scored",
+   "zero_target_share": 0.1511627906976744,
+   "M1": {
+    "rho_cand": 0.8057,
+    "rho_old": 0.8042,
+    "rho_cand_ci": [
+     0.7335,
+     0.8547
+    ],
+    "rho_old_ci": [
+     0.7366,
+     0.8515
+    ],
+    "delta": 0.0014,
+    "delta_ci": [
+     -0.017,
+     0.0183
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.7208,
+    "nmae_old": 0.719,
+    "nmae_cand_ci": [
+     0.6,
+     0.8546
+    ],
+    "nmae_old_ci": [
+     0.5957,
+     0.8498
+    ],
+    "delta": -0.0018,
+    "delta_ci": [
+     -0.0263,
+     0.0162
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.0203,
+     "ci": [
+      -0.1529,
+      0.2051
+     ],
+     "effective": false
+    },
+    "v0_cand": {
+     "rho": 0.1364,
+     "ci": [
+      -0.0712,
+      0.3225
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.1498,
+     "ci": [
+      -0.053,
+      0.3348
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "ND band 41-64",
+   "N": 6,
+   "horizon": "dvrest",
+   "n": 148,
+   "label": "band 41-64",
+   "status": "scored",
+   "zero_target_share": 0.13513513513513514,
+   "M1": {
+    "rho_cand": 0.7223,
+    "rho_old": 0.7378,
+    "rho_cand_ci": [
+     0.6341,
+     0.7865
+    ],
+    "rho_old_ci": [
+     0.6542,
+     0.8004
+    ],
+    "delta": -0.0155,
+    "delta_ci": [
+     -0.0314,
+     -0.0017
+    ],
+    "verdict": "oldlaw"
+   },
+   "M2": {
+    "nmae_cand": 0.6425,
+    "nmae_old": 0.6351,
+    "nmae_cand_ci": [
+     0.5426,
+     0.7557
+    ],
+    "nmae_old_ci": [
+     0.5351,
+     0.7458
+    ],
+    "delta": -0.0074,
+    "delta_ci": [
+     -0.0186,
+     0.0033
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.1351,
+     "ci": [
+      0.0033,
+      0.2776
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.1956,
+     "ci": [
+      0.0637,
+      0.3271
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.2148,
+     "ci": [
+      0.0839,
+      0.3401
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2005-2014",
+   "N": 6,
+   "horizon": "dvrest",
+   "n": 405,
+   "label": "era 2005-2014",
+   "status": "scored",
+   "zero_target_share": 0.09382716049382717,
+   "M1": {
+    "rho_cand": 0.8095,
+    "rho_old": 0.8162,
+    "rho_cand_ci": [
+     0.7738,
+     0.8385
+    ],
+    "rho_old_ci": [
+     0.7813,
+     0.8441
+    ],
+    "delta": -0.0067,
+    "delta_ci": [
+     -0.0124,
+     -0.0012
+    ],
+    "verdict": "oldlaw"
+   },
+   "M2": {
+    "nmae_cand": 0.5116,
+    "nmae_old": 0.509,
+    "nmae_cand_ci": [
+     0.4669,
+     0.5604
+    ],
+    "nmae_old_ci": [
+     0.4648,
+     0.5566
+    ],
+    "delta": -0.0026,
+    "delta_ci": [
+     -0.0078,
+     0.0022
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2874,
+     "ci": [
+      0.2072,
+      0.3631
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3387,
+     "ci": [
+      0.2576,
+      0.4154
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3535,
+     "ci": [
+      0.2727,
+      0.4298
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND era 2015+",
+   "N": 6,
+   "horizon": "dvrest",
+   "n": 169,
+   "label": "era 2015+",
+   "status": "scored",
+   "zero_target_share": 0.10059171597633136,
+   "M1": {
+    "rho_cand": 0.7776,
+    "rho_old": 0.7816,
+    "rho_cand_ci": [
+     0.7219,
+     0.8218
+    ],
+    "rho_old_ci": [
+     0.7244,
+     0.8265
+    ],
+    "delta": -0.0041,
+    "delta_ci": [
+     -0.0167,
+     0.0084
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6793,
+    "nmae_old": 0.6746,
+    "nmae_cand_ci": [
+     0.5974,
+     0.7646
+    ],
+    "nmae_old_ci": [
+     0.5917,
+     0.7612
+    ],
+    "delta": -0.0047,
+    "delta_ci": [
+     -0.0135,
+     0.0041
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.2534,
+     "ci": [
+      0.128,
+      0.3752
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.2961,
+     "ci": [
+      0.1709,
+      0.4139
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3133,
+     "ci": [
+      0.1888,
+      0.4273
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "RD",
+   "N": 6,
+   "horizon": "dvrest",
+   "n": 164,
+   "label": "arm RD",
+   "status": "scored",
+   "zero_target_share": 0.10975609756097561,
+   "M1": {
+    "rho_cand": 0.7011,
+    "rho_old": 0.7054,
+    "rho_cand_ci": [
+     0.6222,
+     0.7672
+    ],
+    "rho_old_ci": [
+     0.6251,
+     0.7731
+    ],
+    "delta": -0.0044,
+    "delta_ci": [
+     -0.0218,
+     0.0117
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6812,
+    "nmae_old": 0.6858,
+    "nmae_cand_ci": [
+     0.5786,
+     0.7908
+    ],
+    "nmae_old_ci": [
+     0.5864,
+     0.7933
+    ],
+    "delta": 0.0046,
+    "delta_ci": [
+     -0.01,
+     0.0179
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1408,
+     "ci": [
+      0.0122,
+      0.2711
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1408,
+     "ci": [
+      0.0122,
+      0.2711
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "MSD",
+   "N": 6,
+   "horizon": "dvrest",
+   "n": 0,
+   "label": "arm MSD",
+   "status": "n<20 unscored"
+  },
+  {
+   "pop": "OTHERPOOL",
+   "N": 6,
+   "horizon": "dvrest",
+   "n": 80,
+   "label": "arm OTHERPOOL",
+   "status": "scored",
+   "zero_target_share": 0.1,
+   "M1": {
+    "rho_cand": 0.6849,
+    "rho_old": 0.6875,
+    "rho_cand_ci": [
+     0.569,
+     0.7735
+    ],
+    "rho_old_ci": [
+     0.5736,
+     0.7732
+    ],
+    "delta": -0.0026,
+    "delta_ci": [
+     -0.0363,
+     0.0283
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.7355,
+    "nmae_old": 0.7582,
+    "nmae_cand_ci": [
+     0.5681,
+     0.9169
+    ],
+    "nmae_old_ci": [
+     0.5939,
+     0.9379
+    ],
+    "delta": 0.0227,
+    "delta_ci": [
+     0.0034,
+     0.0411
+    ],
+    "verdict": "candidate"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1816,
+     "ci": [
+      -0.0232,
+      0.3663
+     ],
+     "effective": false
+    },
+    "v0_old": {
+     "rho": 0.1816,
+     "ci": [
+      -0.0232,
+      0.3663
+     ],
+     "effective": false
+    }
+   }
+  },
+  {
+   "pop": "POOL-ALL",
+   "N": 6,
+   "horizon": "dvrest",
+   "n": 244,
+   "label": "POOL-ALL",
+   "status": "scored",
+   "zero_target_share": 0.10655737704918032,
+   "M1": {
+    "rho_cand": 0.6977,
+    "rho_old": 0.6998,
+    "rho_cand_ci": [
+     0.6334,
+     0.7505
+    ],
+    "rho_old_ci": [
+     0.6333,
+     0.7526
+    ],
+    "delta": -0.0021,
+    "delta_ci": [
+     -0.0173,
+     0.0121
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 0.6966,
+    "nmae_old": 0.7075,
+    "nmae_cand_ci": [
+     0.6136,
+     0.7928
+    ],
+    "nmae_old_ci": [
+     0.6258,
+     0.8007
+    ],
+    "delta": 0.0109,
+    "delta_ci": [
+     -0.0023,
+     0.021
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.1911,
+     "ci": [
+      0.0831,
+      0.2905
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.1911,
+     "ci": [
+      0.0831,
+      0.2905
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND day0",
+   "N": 0,
+   "horizon": "dv1",
+   "n": 1265,
+   "label": "DAY0 ND",
+   "status": "scored",
+   "zero_target_share": 0.40869565217391307,
+   "M1": {
+    "rho_cand": 0.3633,
+    "rho_old": 0.3346,
+    "rho_cand_ci": [
+     0.3213,
+     0.4053
+    ],
+    "rho_old_ci": [
+     0.2928,
+     0.377
+    ],
+    "delta": 0.0287,
+    "delta_ci": [
+     0.02,
+     0.0377
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.6924,
+    "nmae_old": 1.6844,
+    "nmae_cand_ci": [
+     1.6545,
+     1.7282
+    ],
+    "nmae_old_ci": [
+     1.6441,
+     1.7241
+    ],
+    "delta": -0.008,
+    "delta_ci": [
+     -0.0141,
+     -0.0017
+    ],
+    "verdict": "oldlaw"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.3972,
+     "ci": [
+      0.3563,
+      0.4381
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.3633,
+     "ci": [
+      0.3213,
+      0.4053
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.3346,
+     "ci": [
+      0.2928,
+      0.377
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "POOL-ALL day0",
+   "N": 0,
+   "horizon": "dv1",
+   "n": 1046,
+   "label": "DAY0 POOL-ALL",
+   "status": "scored",
+   "zero_target_share": 0.6787762906309751,
+   "M1": {
+    "rho_cand": 0.0724,
+    "rho_old": 0.0724,
+    "rho_cand_ci": [
+     0.023,
+     0.1189
+    ],
+    "rho_old_ci": [
+     0.023,
+     0.1189
+    ],
+    "delta": 0.0,
+    "delta_ci": [
+     0.0,
+     0.0
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 1.8383,
+    "nmae_old": 1.8383,
+    "nmae_cand_ci": [
+     1.8128,
+     1.8605
+    ],
+    "nmae_old_ci": [
+     1.8128,
+     1.8605
+    ],
+    "delta": 0.0,
+    "delta_ci": [
+     0.0,
+     0.0
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.0724,
+     "ci": [
+      0.023,
+      0.1189
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.0724,
+     "ci": [
+      0.023,
+      0.1189
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "ND day0",
+   "N": 0,
+   "horizon": "dvrest",
+   "n": 1265,
+   "label": "DAY0 ND",
+   "status": "scored",
+   "zero_target_share": 0.13201581027667983,
+   "M1": {
+    "rho_cand": 0.4375,
+    "rho_old": 0.4253,
+    "rho_cand_ci": [
+     0.399,
+     0.4742
+    ],
+    "rho_old_ci": [
+     0.3854,
+     0.4624
+    ],
+    "delta": 0.0122,
+    "delta_ci": [
+     0.0037,
+     0.0207
+    ],
+    "verdict": "candidate"
+   },
+   "M2": {
+    "nmae_cand": 1.1268,
+    "nmae_old": 1.1115,
+    "nmae_cand_ci": [
+     1.0837,
+     1.1701
+    ],
+    "nmae_old_ci": [
+     1.0674,
+     1.1568
+    ],
+    "delta": -0.0153,
+    "delta_ci": [
+     -0.0252,
+     -0.005
+    ],
+    "verdict": "oldlaw"
+   },
+   "pedigree": {
+    "pick": {
+     "rho": 0.4322,
+     "ci": [
+      0.3944,
+      0.4679
+     ],
+     "effective": true
+    },
+    "v0_cand": {
+     "rho": 0.4375,
+     "ci": [
+      0.399,
+      0.4742
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.4253,
+     "ci": [
+      0.3854,
+      0.4624
+     ],
+     "effective": true
+    }
+   }
+  },
+  {
+   "pop": "POOL-ALL day0",
+   "N": 0,
+   "horizon": "dvrest",
+   "n": 1046,
+   "label": "DAY0 POOL-ALL",
+   "status": "scored",
+   "zero_target_share": 0.4292543021032505,
+   "M1": {
+    "rho_cand": 0.122,
+    "rho_old": 0.122,
+    "rho_cand_ci": [
+     0.0711,
+     0.1714
+    ],
+    "rho_old_ci": [
+     0.0711,
+     0.1714
+    ],
+    "delta": 0.0,
+    "delta_ci": [
+     0.0,
+     0.0
+    ],
+    "verdict": "tie"
+   },
+   "M2": {
+    "nmae_cand": 1.541,
+    "nmae_old": 1.541,
+    "nmae_cand_ci": [
+     1.5044,
+     1.5784
+    ],
+    "nmae_old_ci": [
+     1.5044,
+     1.5784
+    ],
+    "delta": 0.0,
+    "delta_ci": [
+     0.0,
+     0.0
+    ],
+    "verdict": "tie"
+   },
+   "pedigree": {
+    "v0_cand": {
+     "rho": 0.122,
+     "ci": [
+      0.0711,
+      0.1714
+     ],
+     "effective": true
+    },
+    "v0_old": {
+     "rho": 0.122,
+     "ci": [
+      0.0711,
+      0.1714
+     ],
+     "effective": true
+    }
+   }
+  }
+ ]
+}

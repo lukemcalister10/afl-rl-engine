@@ -1,0 +1,56 @@
+=== EMIT SW47  (RL_O40_RECW=0.47) ===
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: 58510af5924cafc86b0ebae5a17ae6ff
+  emit starting 05:01:16  (RL_O37=1 A=unset B1=1 pct=unset w=0.47 cap=unset lam=unset pgm=unset)
+  emit exit=0  COST: 3m 31s
+  OK -> per_entrant_SW47.json  (2dae38d9)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+=== EMIT SW47A  (RL_O38A=1 RL_O40_RECW=0.47) ===
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: 58510af5924cafc86b0ebae5a17ae6ff
+  emit starting 05:04:47  (RL_O37=1 A=1 B1=1 pct=unset w=0.47 cap=unset lam=unset pgm=unset)
+  emit exit=0  COST: 3m 46s
+  OK -> per_entrant_SW47A.json  (0dfe6918)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+=== EMIT SC20  (RL_O40_CAPFORM=smooth RL_O40_CAPPCT=20) ===
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: 58510af5924cafc86b0ebae5a17ae6ff
+  emit starting 05:08:33  (RL_O37=1 A=unset B1=1 pct=unset w=unset cap=smooth20 lam=unset pgm=unset)
+  emit exit=0  COST: 3m 52s
+  OK -> per_entrant_SC20.json  (4e6e313a)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+=== EMIT SC20A  (RL_O38A=1 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=20) ===
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: 58510af5924cafc86b0ebae5a17ae6ff
+  emit starting 05:12:25  (RL_O37=1 A=1 B1=1 pct=unset w=unset cap=smooth20 lam=unset pgm=unset)
+  emit exit=0  COST: 3m 58s
+  OK -> per_entrant_SC20A.json  (0e51d59d)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+=== EMIT SM  (RL_O40_PGMAT=1) ===
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: 58510af5924cafc86b0ebae5a17ae6ff
+  emit starting 05:16:23  (RL_O37=1 A=unset B1=1 pct=unset w=unset cap=unset lam=unset pgm=1)
+  emit exit=0  COST: 3m 41s
+  OK -> per_entrant_SM.json  (b8b1aa78)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+=== EMIT SMA  (RL_O38A=1 RL_O40_PGMAT=1) ===
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: 58510af5924cafc86b0ebae5a17ae6ff
+  emit starting 05:20:04  (RL_O37=1 A=1 B1=1 pct=unset w=unset cap=unset lam=unset pgm=1)
+  emit exit=0  COST: 3m 50s
+  OK -> per_entrant_SMA.json  (16ae3c6f)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+=== EMIT SALL  (RL_O38A=1 RL_O40_RECW=0.47 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=20 RL_O40_PGMAT=1) ===
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: 58510af5924cafc86b0ebae5a17ae6ff
+  emit starting 05:23:54  (RL_O37=1 A=1 B1=1 pct=unset w=0.47 cap=smooth20 lam=unset pgm=1)
+  emit exit=0  COST: 3m 36s
+  OK -> per_entrant_SALL.json  (b4ad020e)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board f3101883 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201

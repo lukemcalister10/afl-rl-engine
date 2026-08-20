@@ -1,0 +1,71 @@
+========================================================================================================
+THE SEASON-CONSTANT CENSUS — SIZING THE TWO GENUINELY LIVE SITES
+========================================================================================================
+
+--------------------------------------------------------------------------------------------------------
+SITE A · pv_games MSD ENTRY-SEASON SCALER   _merged_recover.py:3359    _k = cp.SEASON/12
+--------------------------------------------------------------------------------------------------------
+   What it computes: the GAMES AXIS that sigma30bp (pedigree share) and rho31 (production
+   reliability) both read. Ruling 5 makes an MSD entry season "at most 12 games" and scales it
+   to a full-season equivalent. k = 22/12 = 1.8333 today; k = 18/12 = 1.5000 on an 18-rebase.
+
+   MSD rows ON THE BOARD: 63 of 804
+   MSD rows whose games axis would MOVE on an 18-rebase: 39
+
+   key                         g@22    g@18     sig@22   sig@18     rho@22   rho@18   price
+   jai-newcombe              128.83  126.50     0.0189   0.0200     0.9626   0.9608    4586
+   sam-durham                116.83  114.50     0.0255   0.0270     0.9521   0.9497    2444
+   john-noble                162.17  160.50     0.0085   0.0088     0.9808   0.9802    2116
+   cooper-trembath            26.50   25.50     0.3263   0.3375     0.6596   0.6530    1779
+   massimo-d-ambrosio         93.67   91.00     0.0462   0.0495     0.9217   0.9170    1566
+   logan-evans                52.83   48.50     0.1430   0.1626     0.8050   0.7851    1339
+   ryan-maric                 71.33   68.00     0.0843   0.0925     0.8716   0.8616    1289
+   tom-mccarthy               38.33   35.00     0.2221   0.2468     0.7318   0.7125    1259
+   james-peatling             91.33   90.00     0.0491   0.0509     0.9176   0.9152    1147
+   cooper-lord                31.67   31.00     0.2749   0.2809     0.6924   0.6883    1052
+   marcus-herbert             14.67   12.00     0.4977   0.5520     0.5667   0.5340     793
+   oliver-francou              7.33    6.00     0.6698   0.7108     0.4418   0.4009     537
+   jaxon-artemis               7.33    6.00     0.6698   0.7108     0.4418   0.4009     420
+   cooper-sharman             93.17   91.50     0.0468   0.0489     0.9208   0.9179     418
+
+   MEAN EFFECT of an 18-rebase on the 39 moved MSD rows:
+     pedigree share sigma  +0.0245  (18 gives FEWER effective games -> MORE pedigree weight)
+     production rho        -0.0187  (FEWER effective games -> LESS production weight)
+   DIRECTION: an 18-rebase moves MSD rows TOWARD their draft pedigree and away from what
+   they have shown. That is the OPPOSITE of the owner's intent (he wants a short season to
+   count as MORE complete, not less). The scaler grosses UP, so a smaller season length
+   grosses up LESS.
+
+--------------------------------------------------------------------------------------------------------
+SITE B · THE LTI CLOCK ADVANCE   _merged_recover.py:1380    g += L * cp.SEASON
+--------------------------------------------------------------------------------------------------------
+   What it computes: for a row the availability register marks OUT, the young-credit clock is
+   AGED by the games he is expected to have LOST, so his young credit fades as if he had played.
+   Owner-ruled 2026-07-10 (advance, not pause).
+
+   rows on LTI_REGISTER.md with an L value: 43
+   L values present: {1.0: 41, 2.0: 2}
+   phantom games added per row:  L*22 vs L*18
+     L=1.00  ->  22.00 games @22   18.00 games @18   difference -4.00 games
+     L=2.00  ->  44.00 games @22   36.00 games @18   difference -8.00 games
+   of those, ON THE BOARD: 43
+
+   The clock this feeds is _ycred_games, whose credit is COMPLETE at G0=46 games. So the site
+   only bites for rows still under 46 career+phantom games. Rows over it read 1.0 either way.
+   LTI rows still UNDER the G0=46 completion bar on either basis: 21
+   key                        raw g    g+L*22    g+L*18   price
+   matt-carroll                27.0      49.0      45.0     619
+   jonty-faull                 26.0      48.0      44.0     550
+   harry-o-farrell              6.0      28.0      24.0     537
+   harley-barker                0.0      22.0      18.0     481
+   toby-conway                  6.0      28.0      24.0     460
+   blake-thredgold              0.0      22.0      18.0     372
+   oscar-steene                 8.0      30.0      26.0     346
+   lewis-hayes                  1.0      45.0      37.0     338
+   archie-may                  17.0      39.0      35.0     337
+   jacob-newton                 5.0      27.0      23.0     183
+   josh-gibcus                 22.0      44.0      40.0     176
+   jai-culley                  23.0      45.0      41.0     157
+
+   DIRECTION: an 18-rebase adds FEWER phantom games, so the young credit fades LESS, so these
+   rows price HIGHER. Size is bounded by the young-credit multiplier on rows under 46 games.

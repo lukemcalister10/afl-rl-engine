@@ -1,0 +1,115 @@
+==========================================================================================================================
+D6 — THE BREAK-SPEED ADJUDICATION. Which unwind curve predicts a returner's realised reversal?
+==========================================================================================================================
+population : F2's own returner set, rebuilt with F2's own harness (on_lib) and matrix (OKRULED)
+estimand   : reversal = (outcome - V_sat) / (V_never - V_sat), outcome from depth N+1 onward
+folds      : train on entry years < T, score entry year T, walking T forward
+anchors    : V_sat and V_never re-estimated INSIDE every fold from TRAINING ROWS ONLY
+U0 = 5 IS THE OWNER'S RULED CONSTANT AND IS NOT MEASURED BY ANYTHING HERE. This file only asks
+whether the data can distinguish it from 3, 7 or 11.
+
+   RETURNERS 134   KEPT SITTING 760   NEVER SAT 1704
+   (F2 published 134 / 760 / 1704 — this rebuild must match or the reuse is not a reuse.)
+   REBUILD MATCHES F2: YES
+
+usable folds: 8  (a fold needs >=40 training returners, >=5 held out, >=6 rows at each anchor)
+   year T    n train   n test      V_sat    V_never
+   2010           46        8     0.0566     1.0856  THIN
+   2011           54       12     0.0464     1.1271
+   2012           66       11     0.0406     1.1732
+   2013           77        9     0.0366     1.1290  THIN
+   2014           86       11     0.0348     1.0827
+   2015           97        8     0.0316     1.1121  THIN
+   2017          109       15     0.0301     1.0647
+   2019          128        6     0.0285     0.9844  THIN
+
+held-out rows scored, pooled over folds: 80
+spread of the truth being predicted: sd 0.5747  (the arms differ by far less than this)
+
+OUT-OF-SAMPLE ERROR, POOLED OVER FOLDS. Lower is better.
+   arm                                                RMSE        MAE
+   U0 = 3                                           0.8957     0.8381
+   U0 = 5  (THE OWNER'S RULING)                     0.8471     0.7656
+   U0 = 7                                           0.8051     0.7024
+   U0 = 11                                          0.7177     0.5881
+   F1 credit curve (what `fractional` uses)         0.6904     0.5428
+   F2 MEASURED reversal curve                       0.5534     0.3381
+   CONSTANT — training-fold mean (the control)      0.5806     0.3306
+
+PAIRWISE DIFFERENCES IN RMSE, PAIRED BOOTSTRAP OVER FOLDS (B=2000, seed 32).
+The arms score IDENTICAL rows, so the bootstrap resamples FOLDS and keeps the arms paired.
+A NEGATIVE difference means the FIRST arm has the LOWER error. A CI straddling zero means
+THE TEST IS SILENT ON THAT PAIR — it is not evidence of equality, it is absence of evidence.
+
+   arm A                                        arm B                                diff 90% CI                   separates
+   U0 = 3                                       U0 = 5  (THE OWNER'S RULING)      +0.0486 [+0.0276, +0.0779]      YES
+   U0 = 3                                       U0 = 7                            +0.0906 [+0.0568, +0.1374]      YES
+   U0 = 3                                       U0 = 11                           +0.1781 [+0.1361, +0.2404]      YES
+   U0 = 3                                       F1 credit curve (what `fractio    +0.2053 [+0.1569, +0.2694]      YES
+   U0 = 3                                       F2 MEASURED reversal curve        +0.3423 [+0.2279, +0.5095]      YES
+   U0 = 3                                       CONSTANT — training-fold mean     +0.3151 [+0.1720, +0.5068]      YES
+   U0 = 5  (THE OWNER'S RULING)                 U0 = 7                            +0.0419 [+0.0276, +0.0610]      YES
+   U0 = 5  (THE OWNER'S RULING)                 U0 = 11                           +0.1294 [+0.1030, +0.1638]      YES
+   U0 = 5  (THE OWNER'S RULING)                 F1 credit curve (what `fractio    +0.1566 [+0.1212, +0.2011]      YES
+   U0 = 5  (THE OWNER'S RULING)                 F2 MEASURED reversal curve        +0.2937 [+0.1826, +0.4404]      YES
+   U0 = 5  (THE OWNER'S RULING)                 CONSTANT — training-fold mean     +0.2664 [+0.1323, +0.4381]      YES
+   U0 = 7                                       U0 = 11                           +0.0875 [+0.0695, +0.1113]      YES
+   U0 = 7                                       F1 credit curve (what `fractio    +0.1147 [+0.0815, +0.1512]      YES
+   U0 = 7                                       F2 MEASURED reversal curve        +0.2517 [+0.1483, +0.3913]      YES
+   U0 = 7                                       CONSTANT — training-fold mean     +0.2245 [+0.0748, +0.3915]      YES
+   U0 = 11                                      F1 credit curve (what `fractio    +0.0272 [+0.0106, +0.0442]      YES
+   U0 = 11                                      F2 MEASURED reversal curve        +0.1643 [+0.0651, +0.2896]      YES
+   U0 = 11                                      CONSTANT — training-fold mean     +0.1370 [-0.0046, +0.2927]   silent
+   F1 credit curve (what `fractional` uses)     F2 MEASURED reversal curve        +0.1371 [+0.0447, +0.2579]      YES
+   F1 credit curve (what `fractional` uses)     CONSTANT — training-fold mean     +0.1098 [-0.0415, +0.2642]   silent
+   F2 MEASURED reversal curve                   CONSTANT — training-fold mean     -0.0273 [-0.0746, +0.0221]   silent
+
+==========================================================================================================================
+THE VERDICT
+==========================================================================================================================
+   lowest out-of-sample RMSE: F2 MEASURED reversal curve
+   arms beating the CONSTANT control at all: F2 MEASURED reversal curve
+   arms SEPARATING from the CONSTANT control: U0 = 3 vs CONSTANT — training-fold mean (the control), U0 = 5  (THE OWNER'S RULING) vs CONSTANT — training-fold mean (the control), U0 = 7 vs CONSTANT — training-fold mean (the control)
+
+   *** THE TEST SEPARATES AT LEAST ONE PAIR. Lowest RMSE: F2 MEASURED reversal curve ***
+       U0 = 3 vs U0 = 5  (THE OWNER'S RULING)  diff +0.0486  CI [+0.0276, +0.0779]
+       U0 = 3 vs U0 = 7  diff +0.0906  CI [+0.0568, +0.1374]
+       U0 = 3 vs U0 = 11  diff +0.1781  CI [+0.1361, +0.2404]
+       U0 = 3 vs F1 credit curve (what `fractional` uses)  diff +0.2053  CI [+0.1569, +0.2694]
+       U0 = 3 vs F2 MEASURED reversal curve  diff +0.3423  CI [+0.2279, +0.5095]
+       U0 = 3 vs CONSTANT — training-fold mean (the control)  diff +0.3151  CI [+0.1720, +0.5068]
+       U0 = 5  (THE OWNER'S RULING) vs U0 = 7  diff +0.0419  CI [+0.0276, +0.0610]
+       U0 = 5  (THE OWNER'S RULING) vs U0 = 11  diff +0.1294  CI [+0.1030, +0.1638]
+       U0 = 5  (THE OWNER'S RULING) vs F1 credit curve (what `fractional` uses)  diff +0.1566  CI [+0.1212, +0.2011]
+       U0 = 5  (THE OWNER'S RULING) vs F2 MEASURED reversal curve  diff +0.2937  CI [+0.1826, +0.4404]
+       U0 = 5  (THE OWNER'S RULING) vs CONSTANT — training-fold mean (the control)  diff +0.2664  CI [+0.1323, +0.4381]
+       U0 = 7 vs U0 = 11  diff +0.0875  CI [+0.0695, +0.1113]
+       U0 = 7 vs F1 credit curve (what `fractional` uses)  diff +0.1147  CI [+0.0815, +0.1512]
+       U0 = 7 vs F2 MEASURED reversal curve  diff +0.2517  CI [+0.1483, +0.3913]
+       U0 = 7 vs CONSTANT — training-fold mean (the control)  diff +0.2245  CI [+0.0748, +0.3915]
+       U0 = 11 vs F1 credit curve (what `fractional` uses)  diff +0.0272  CI [+0.0106, +0.0442]
+       U0 = 11 vs F2 MEASURED reversal curve  diff +0.1643  CI [+0.0651, +0.2896]
+       F1 credit curve (what `fractional` uses) vs F2 MEASURED reversal curve  diff +0.1371  CI [+0.0447, +0.2579]
+
+==========================================================================================================================
+THE OWNER'S CURVE AGAINST THE MEASURED ONE, CELL BY CELL — the interpretable read
+==========================================================================================================================
+   return games        n  F2 measured F2 90% CI                      U0=3       U0=5       U0=7      U0=11
+   1-2                38       0.1760 [+0.053, +0.333]           0.500      0.300      0.214      0.136
+   3-5                29       0.1690 [+0.030, +0.353]           1.000      0.800      0.571      0.364
+   6-9                27       0.0944 [+0.004, +0.214]           1.000      1.000      1.000      0.682
+   10-14              22       0.2125 [+0.054, +0.449]           1.000      1.000      1.000      1.000
+   15+                18       0.5959 [+0.321, +0.886]           1.000      1.000      1.000      1.000
+
+   cells where the curve falls OUTSIDE F2's own 90%% interval (out of 5):
+     U0 = 3   5 of 5
+     U0 = 5   4 of 5   <- THE OWNER'S RULING
+     U0 = 7   4 of 5
+     U0 = 11  4 of 5
+
+   READ THIS PLAINLY. F2's measured reversal is roughly FLAT at 0.09-0.21 from one game all the
+   way to fourteen, and only reaches 0.60 at fifteen or more. Every linear unwind asserts a rise
+   that the measurement does not show, and the faster the unwind the further outside the intervals
+   it sits. THIS IS EVIDENCE ABOUT THE SHAPE, NOT A VETO ON THE RULING: F2 also published
+   `step_separable: false` on these same cells, so the measurement is not confident enough to
+   overturn an owner constant. Both facts are reported and neither is suppressed.

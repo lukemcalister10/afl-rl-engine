@@ -1,0 +1,184 @@
+======================================================================================================================
+ORDER P — STEP 4. THE PEDIGREE-CONDITIONAL CHARGE, PRICED OFFLINE.
+EVERY NUMBER BELOW IS AN ESTIMATE PENDING A BUILD.
+======================================================================================================================
+mechanism: pi *= exp( -LAMBDA * A(g) * T(s_P) )   below age 24;  the current charge at 24 and above
+  A(g)   = 1 - exp(-g/9.8900)
+  T(s)   = clip( 1 - THETA_R*(s +2.4527), 0, TMAX ),  THETA_R = 0.11465 / LAMBDA
+  s_P    = games-weighted mean of ( season avg - [ age bar + pedigree premium PG(ln v0, class) ] )
+
+----------------------------------------------------------------------------------------------------------------------
+0 · FALSIFIER P1 — THE OFFLINE PRICING IDENTITY, RE-ASSERTED ON THIS TREE
+----------------------------------------------------------------------------------------------------------------------
+   round trip: rebuild ORDER K from the eta-zero board through the identity at eta 0.50.
+   vantages checked 9746   worst relative error 1.88e-16   -> P1 DID NOT FIRE
+   charge bases with the wrong sign (the charge must only ever subtract): 0
+
+----------------------------------------------------------------------------------------------------------------------
+1 · THE ANCHORING SOLVE — LAMBDA IS NOT TUNED, IT IS SOLVED
+----------------------------------------------------------------------------------------------------------------------
+   The LEVEL of the charge is a no-arbitrage calibration, not an outcome question (ORDER M proved
+   the charge is load-bearing for the whole board's year-1 anchoring). So LAMBDA is solved so the
+   derived charge removes THE SAME TOTAL POINTS from the year-1 class-mark population as the
+   current charge does. The tilt then redistributes those points. It does not add any.
+
+   anchor population 603 year-1 rows, cohort classes 2005-2015. Current charge removes 101402.7 points.
+   SOLVED:  LAMBDA = 0.17438   THETA_R = 0.65744   TMAX = 21.1233   zero point s_P = -0.93 points/game
+            (ORDER N, on the age-only surplus: LAMBDA 0.82131, THETA_R 0.14028, zero at +9.44.)
+   removes 101402.7 points against the target 101402.7.
+
+----------------------------------------------------------------------------------------------------------------------
+2 · THE CHARGE, SIDE BY SIDE. Percentage of the pedigree leg removed.
+----------------------------------------------------------------------------------------------------------------------
+   games  | CURRENT      | ORDER P, by pedigree-conditional surplus s_P  
+          | blind        |    s_P=-25    s_P=-10      s_P=0    s_P=+10
+   1      |         9.0% |      23.3%       9.5%       0.0%       0.0%
+   2      |        16.8% |      39.7%      17.3%       0.0%       0.0%
+   3      |        23.5% |      51.4%      23.8%       0.0%       0.0%
+   5      |        34.0% |      66.5%      33.8%       0.0%       0.0%
+   8      |        43.9% |      78.4%      43.8%       0.0%       0.0%
+   10     |        47.5% |      82.7%      48.4%       0.0%       0.0%
+   14     |        50.0% |      87.6%      54.5%       0.0%       0.0%
+   17     |        49.0% |      89.6%      57.4%       0.0%       0.0%
+   20     |        46.5% |      90.9%      59.4%       0.0%       0.0%
+   25     |        40.7% |      92.1%      61.6%       0.0%       0.0%
+   30     |        34.2% |      92.8%      62.8%       0.0%       0.0%
+   36     |        26.7% |      93.2%      63.7%       0.0%       0.0%
+   50     |        13.6% |      93.6%      64.4%       0.0%       0.0%
+
+   THE ZERO POINT. T hits zero at s_P = -0.93. A young player producing more than -0.93 points a
+   game above his PEDIGREE-CONDITIONAL bar pays nothing on his pedigree leg.
+   Share of the young cohort at or past it: 32.0%   (ORDER N, on its own zero point: 18.5%)
+
+----------------------------------------------------------------------------------------------------------------------
+3 · THE OWNER'S PREDICTION, TESTED. Does relief still flow to the top of the draft?
+----------------------------------------------------------------------------------------------------------------------
+   pick band    rows |    med s_N    med s_P | share full N share full P
+   1-10          584 |      +6.12      -7.34 |        41.3%        28.8%
+   11-20         572 |      +0.63      -6.79 |        26.4%        31.8%
+   21-40        1015 |      -4.78      -7.73 |        15.7%        30.5%
+   41+/pool     1077 |      -8.01      -6.19 |        12.6%        33.2%
+   Spearman(pick, surplus):  ORDER N -0.3303   ORDER P +0.0249
+
+   FALSIFIER P10 — does the RELIEF itself still flow to the top? Relief is what the row keeps that
+   the current charge would have taken, as a share of its own entry price.
+   Spearman(pick, relief / v0):  ORDER N -0.1928   ORDER P +0.1617   over 3076 ND vantages
+   P10 threshold was |rho| > 0.20 under the derived charge  ->  P10 did not fire
+   pick band    rows |  mean relief N  mean relief P
+   1-10          583 |       +0.0137       -0.0202
+   11-20         572 |       -0.0372       -0.0007
+   21-40         977 |       -0.0675       +0.0090
+   41+/pool      944 |       -0.0740       +0.0431
+
+----------------------------------------------------------------------------------------------------------------------
+4 · THE LADDER. LAMBDA is SOLVED at 0.174; the ladder shows what the rails do around it.
+----------------------------------------------------------------------------------------------------------------------
+   LAMBDA   THETA_R   zero s | coh mark  W2 mark p1-10 PRI p1-10 MOD   ALL PRI   ALL MOD | vetchurn vet net
+   0.174    0.65745    -0.93 |   1.0322   1.0613    +8.62%   +18.85%    +5.33%    +1.45% |     951    -595  <- the anchoring solve
+   0.300    0.38215    +0.16 |   1.0232   1.0516    +6.98%   +17.38%    +4.19%    +0.40% |     951    -595
+   0.400    0.28662    +1.04 |   1.0163   1.0439    +5.71%   +16.24%    +3.29%    -0.45% |     951    -595
+   0.500    0.22929    +1.91 |   1.0094   1.0364    +4.48%   +15.10%    +2.40%    -1.30% |     951    -595
+   0.600    0.19108    +2.78 |   1.0024   1.0288    +3.21%   +13.96%    +1.50%    -2.15% |     951    -595
+   0.700    0.16378    +3.65 |   0.9954   1.0214    +1.99%   +12.88%    +0.62%    -2.97% |     951    -595
+   0.800    0.14331    +4.53 |   0.9884   1.0140    +0.81%   +11.85%    -0.25%    -3.76% |     951    -595
+   0.900    0.12738    +5.40 |   0.9814   1.0067    -0.36%   +10.67%    -1.12%    -4.61% |     951    -595
+   1.000    0.11465    +6.27 |   0.9746   0.9995    -1.52%    +9.41%    -1.98%    -5.50% |     951    -595
+   1.100    0.10422    +7.14 |   0.9680   0.9926    -2.64%    +8.13%    -2.82%    -6.38% |     951    -595
+   1.200    0.09554    +8.01 |   0.9614   0.9858    -3.72%    +6.94%    -3.64%    -7.23% |     951    -595
+   1.300    0.08819    +8.89 |   0.9550   0.9792    -4.74%    +5.83%    -4.44%    -8.05% |     951    -595
+   1.400    0.08189    +9.76 |   0.9489   0.9728    -5.69%    +4.79%    -5.20%    -8.82% |     951    -595
+   1.500    0.07643   +10.63 |   0.9430   0.9666    -6.58%    +3.79%    -5.93%    -9.56% |     951    -595
+   1.600    0.07165   +11.50 |   0.9370   0.9603    -7.43%    +2.79%    -6.65%   -10.30% |     951    -595
+   1.700    0.06744   +12.38 |   0.9313   0.9542    -8.22%    +1.85%    -7.35%   -10.99% |     951    -595
+   1.800    0.06369   +13.25 |   0.9257   0.9484    -8.98%    +0.89%    -8.02%   -11.70% |     951    -595
+   1.900    0.06034   +14.12 |   0.9204   0.9427    -9.71%    -0.03%    -8.66%   -12.37% |     951    -595
+   2.000    0.05732   +14.99 |   0.9153   0.9374   -10.40%    -0.88%    -9.28%   -13.01% |     951    -595
+
+   RAILS: picks 1-10 under +14.00% in BOTH windows · W2 class mark >= 1.03 · veteran churn <= 1002
+          · |veteran net| <= 668
+   ORDER K: cohort mark 1.0324 · W2 1.0513 · picks 1-10 +8.22%% / +13.65%% · churn 947 · net -601
+   ORDER N: cohort mark 1.0324 · W2 1.0604 · picks 1-10 +16.13%% / +23.90%% · churn 951 · net -595
+
+     picks 1-10 under +14% in BOTH windows  : LAMBDA >= 0.60
+     the G1 floor, W2 mark >= 1.03          : LAMBDA <= 0.50
+     the veteran caps                       : hold at 19 of 19 rungs
+     rungs legal on all three               : 0
+
+----------------------------------------------------------------------------------------------------------------------
+5 · THE RE-PRICED MATRIX AND THE STRUCTURAL ASSERTS
+----------------------------------------------------------------------------------------------------------------------
+   wrote per_entrant_PDERIV.json
+   P-S5, asserted row by row: vantages priced ABOVE their own uncharged (eta-zero) price: 0
+   P-S1, gameless rows: A(0)=0, so every row with 0 career games at a vantage is bit-identical.
+
+----------------------------------------------------------------------------------------------------------------------
+6 · WHERE THE MONEY MOVES, IN BOARD POINTS, ACROSS THE WHOLE 804-ROW BOARD
+----------------------------------------------------------------------------------------------------------------------
+   board total: ORDER K 673097  ·  ORDER N 663917 (-1.36%)  ·  ORDER P 666450 (-0.99%)
+   rows that move against ORDER K: 288 of 804 (up 133, down 155)
+
+   career games   rows total points    per row
+   0                89           -7       -0.1
+   1-4              46        -1108      -24.1
+   5-9              45         -862      -19.2
+   10-15            51         +867      +17.0
+   16-29            81        -1385      -17.1
+   30-59           103        -3035      -29.5
+   60+             388        -1124       -2.9
+
+   age in 2026      rows total points
+   20 and under      158         -887
+   21-23             217        -5759
+   24 and over       429           -1
+
+   VETERAN POOL (age 24+): 130 move · churn 951 (rail 1002) · net -595 (rail 668) · INSIDE BOTH
+   (ORDER K 947 / -601 · ORDER N 951 / -595)
+
+   the ten largest rises and the ten largest falls against ORDER K:
+         +711  Jagga Smith                age 20  g    20  pick 3      K  3637 -> P  4348   (N  4348)
+         +666  Harry Dean                 age 19  g    17  pick 3      K  2403 -> P  3069   (N  3069)
+         +485  Sullivan Robey             age 19  g    14  pick 9      K  2379 -> P  2864   (N  2864)
+         +452  Dyson Sharp                age 19  g    13  pick 13     K  2427 -> P  2879   (N  2879)
+         +360  Jacob Farrow               age 19  g    18  pick 10     K  2155 -> P  2515   (N  2515)
+         +319  Cooper Duff-Tytler         age 19  g    13  pick 4      K  1505 -> P  1824   (N  1854)
+         +295  Phoenix Gothard            age 21  g    15  pick 12     K  1319 -> P  1614   (N  1614)
+         +254  Josh Lindsay               age 19  g    13  pick 19     K  1796 -> P  2050   (N  2050)
+         +217  Willem Duursma             age 19  g    19  pick 1      K  3703 -> P  3920   (N  4586)
+         +167  Toby Conway                age 23  g     6  pick 24     K   899 -> P  1066   (N  1066)
+     ...
+         -313  Jed Walter                 age 21  g    46  pick 3      K  1170 -> P   857   (N   862)
+         -352  Jhye Clark                 age 22  g    33  pick 8      K   921 -> P   569   (N   577)
+         -389  Elijah Tsatas              age 22  g    22  pick 5      K  1078 -> P   689   (N   790)
+         -396  Sam Lalor                  age 20  g    22  pick 1      K  3456 -> P  3060   (N  4244)
+         -422  Daniel Annable             age 19  g     2  pick 6      K  1537 -> P  1115   (N  1153)
+         -435  Zane Duursma               age 21  g    38  pick 4      K   629 -> P   194   (N   210)
+         -463  Zeke Uwland                age 19  g    17  pick 2      K  1949 -> P  1486   (N  1739)
+         -485  Dylan Patterson            age 19  g     5  pick 5      K  1440 -> P   955   (N   987)
+         -644  Sid Draper                 age 20  g    10  pick 4      K  1267 -> P   623   (N   600)
+         -652  Finn O'Sullivan            age 20  g    39  pick 2      K  3462 -> P  2810   (N  3447)
+
+----------------------------------------------------------------------------------------------------------------------
+7 · THE YEAR-1 CLASS MARK
+----------------------------------------------------------------------------------------------------------------------
+   ORDER P : W2 registered basis 1.0613   ·   cohort clock 1.0322
+   ORDER N : W2 1.0604 · cohort 1.0324    ORDER K : W2 1.0513 · cohort 1.0324
+   the 1.03 floor: +0.0313    the 1.14 buy rail: -0.0787  PASS
+
+----------------------------------------------------------------------------------------------------------------------
+8 · THE PROPERTY TEST, RE-RUN ON THE ESTIMATED PRICES
+----------------------------------------------------------------------------------------------------------------------
+   Rank correlation with surplus, within games bins. ORDER K reads its own age surplus; ORDER P
+   reads its own pedigree-conditional surplus. Both are the surplus that order actually uses.
+   games bin      n |    rho R  K    rho R  P |   rho chg K   rho chg P
+   1-4           42 |     +0.1351     +0.4587 |     +0.0987     -0.8395
+   5-9           33 |     +0.2610     +0.6768 |     +0.4416     -0.9708
+   10-15         33 |     +0.4345     +0.6497 |     +0.2264     -0.9893
+   16-24         36 |     +0.7073     +0.9001 |     +0.1202     -0.9899
+   25-39         29 |     +0.7872     +0.8709 |     -0.1560     -0.9916
+   40-60         22 |     +0.5381     +0.8905 |     -0.4359     -0.9358
+
+   Charge paid, by PEDIGREE-CONDITIONAL surplus tercile, over the young window:
+   below expectation    n=65   mean s_P  -24.65  mean g  11.2 | CURRENT  34.5%  ORDER P  67.5%
+   middle               n=65   mean s_P   -9.81  mean g  17.6 | CURRENT  37.8%  ORDER P  47.1%
+   above expectation    n=65   mean s_P   +4.78  mean g  23.7 | CURRENT  31.5%  ORDER P   4.4%
+

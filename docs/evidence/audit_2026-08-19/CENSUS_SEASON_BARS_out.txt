@@ -1,0 +1,39 @@
+========================================================================================================
+THE GAMES BARS — 6 (qualifies) / 10 (delivered) / 14 (level counts fully) / 22 (pole gate)
+========================================================================================================
+   NONE of these is a games/SEASON ratio. They are ABSOLUTE games bars, prorated only by the
+   CALENDAR fraction fE=0.58 for the in-progress season. Season LENGTH does not enter any of them.
+
+   bar       what it asks                                   does a 14-18 game season clear it?
+   6         is the season readable at all (nseas_pro/bestlvl) YES, comfortably
+   10        is the season DELIVERED (o32_delivered)        YES, comfortably
+   14        does the demonstrated level count FULLY (LEVEL_RAMP) YES, comfortably
+   22        does the pole/recovery gate open fully (POLE_RAMP) on CAREER recency-weighted games — by season 2
+
+--------------------------------------------------------------------------------------------------------
+COMPLETED-SEASON CHECK: every 2025 season row, against the absolute bars
+--------------------------------------------------------------------------------------------------------
+   2025 season rows: 668      in the 14-18 band: 104
+   of the 14-18 band:
+     clear the 6-game readable bar   : 104 of 104
+     clear the 10-game delivered bar : 104 of 104  (games leg; the avg-vs-bar leg is separate)
+     clear the 14-game level ramp    : 104 of 104
+   ALL of them clear every absolute bar. Not one 14-18 game row is treated as a partial
+   participant by any bar in the engine.
+
+--------------------------------------------------------------------------------------------------------
+THE ONE PLACE A 14-18 GAME SEASON IS STILL DISCOUNTED — and it is MEASURED, not a norm
+--------------------------------------------------------------------------------------------------------
+   rho31(g), the production-reliability weight, is still climbing at 15-18 games (it reaches
+   ~91-95%% of its 22-game value). But rho31 is FITTED ON RAW GAMES with no season length in it:
+     rho31(g) = 1 - exp(-(g/29.19)^0.8015)   + the measured re-mix bump
+   Its tau is 29.19 GAMES — larger than any season length. It is a career-evidence curve, not a
+   season-completeness ratio. Rebasing "a season" to 18 would not touch it; only a refit would,
+   and the refit would have to be justified by out-of-sample error, not by a convention.
+
+--------------------------------------------------------------------------------------------------------
+POPULATIONS THE TWO LIVE 22-SITES REACH
+--------------------------------------------------------------------------------------------------------
+   SITE A  pv_games MSD entry scaler (22/12): 63 MSD rows on the board, 39 with a moving axis
+   SITE B  LTI clock advance (L*22)         : 43 register rows, 21 still under the G0=46 bar
+   SITE C  debut_factor (22-cg)/22          : reaches PICKLESS-unplayed rows only; pickless on board: 86

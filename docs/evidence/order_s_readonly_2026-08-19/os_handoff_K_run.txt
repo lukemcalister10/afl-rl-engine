@@ -1,0 +1,345 @@
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+======================================================================================================================
+ORDER S READ-ONLY — T2. THE SELECTION HANDOFF AUDIT. IS NON-SELECTION PRICED ONCE, TWICE, OR NOT AT ALL?
+======================================================================================================================
+NO BOARD IS BUILT. NO ENGINE FILE IS EDITED. NO DIAL IS ADDED. NOTHING IS ADOPTED.
+dial line : {'RL_O36': '1'}  (plus ORDER K's ruled RL_O36_* setting, register v735)
+as-of year: 2026   ·   board redenomination factor 1.0524
+board total (numeraire): 673097 over 804 rows
+
+----------------------------------------------------------------------------------------------------------------------
+0 · THE DECOMPOSITION IS THE ENGINE'S OWN, AND IT IS ASSERTED
+----------------------------------------------------------------------------------------------------------------------
+   price = rho31(g)*e + pi*ped + o32_age_credit,  pi = pi_base * f,
+   pi_base = D_final*(1-rho) + Phi(g,s)*beta(g)*rho,  D_final = min(1, D_raw**kappa * (1+1.08*sigma)).
+
+   reassembled price vs the engine's own ev(): worst error 4.55e-13 over 804 rows with a pedigree leg
+   the recomputed fade chain vs the engine's own o31_D(): worst error 0
+   Falsifiers SRO-T1 and SRO-T2 did not fire. Tolerances were declared in the prereg at 1e-6.
+
+----------------------------------------------------------------------------------------------------------------------
+1 · (a) THE BOARD POPULATION BY STALENESS
+----------------------------------------------------------------------------------------------------------------------
+   Priced rows carrying a pedigree leg at 2026: 804.
+   A row is STALE(k) when he has career games but ZERO games in the last k seasons counting back
+   from 2026 inclusive. "Almost none" is 2 or fewer games in the window, reported separately and
+   never merged with the zero cell.
+
+   last 1 season(s): career games > 0 and ZERO in window:   53 rows   ·   1-2 games in window:   52 rows
+   last 2 season(s): career games > 0 and ZERO in window:   12 rows   ·   1-2 games in window:   30 rows
+   last 3 season(s): career games > 0 and ZERO in window:    3 rows   ·   1-2 games in window:   29 rows
+   career games == 0 (never played at all): 89 rows — NOT this task's population, listed for completeness.
+
+   THE STALE(1) POPULATION — zero games in 2026 — BY AGE BAND AND CLASS:
+   age band       TALL    SMALL      total med career g  med board
+   <=20              3        4          7        4.0        505
+   21-23             6       13         19       15.0        204
+   24-26             6       10         16       34.2        102
+   27+               2        9         11      109.0        180
+
+   THE SAME, BY CAREER GAMES — because the charge reads career games and nothing else:
+   career games     stale1   stale2   stale3 | A(g) at the band midpoint               
+   1-3                   9        4        1 | A = 0.141
+   3-10                  8        1        0 | A = 0.482
+   10-25                10        1        0 | A = 0.830
+   25-60                11        4        2 | A = 0.986
+   60-150               11        2        0 | A = 1.000
+   150+                  4        0        0 | A = 1.000
+
+----------------------------------------------------------------------------------------------------------------------
+2 · (b) THE LEGS, READ OUT OF THE ENGINE — HOW MUCH OF EACH ROW'S PRICE EACH MECHANISM MOVED
+----------------------------------------------------------------------------------------------------------------------
+   All figures in BOARD POINTS (engine currency / 1.0524). Positive = the mechanism REMOVED that many
+   points from the row; negative = it gave points back.
+
+   group                          n   med g med c_u   med D   med f med rho |    CHARGE      FADE |  med chg med fade
+                                                                            |  total board points |   per row, median
+   FRESH (played in 2026)       662    76.0    0.00   1.000   0.968   0.884 |     26973      4968 |      2.8      0.0
+   STALE(1) zero in window       53    23.0    2.00   0.633   0.766   0.601 |      2673      2774 |     16.6     22.8
+   STALE(2) zero in window       12    26.0    3.92   0.566   0.832   0.625 |       487      1357 |     19.9    102.3
+   STALE(3) zero in window        3    31.5    3.92   0.566   0.744   0.669 |        55       277 |     19.2     31.7
+     stale(1), age <=20           7     4.0    1.92   0.597   0.708   0.318 |      1125       469 |     85.6     76.8
+     stale(1), age 21-23         19    15.0    2.50   0.630   0.671   0.531 |      1035      1426 |     27.3     20.7
+     stale(1), age 24-26         16    34.2    2.96   0.566   0.755   0.689 |       485       727 |     18.3     29.4
+     stale(1), age 27+           11   109.0    1.00   1.000   0.996   0.944 |        27       153 |      0.2      0.0
+     stale(1), TALL              17     7.0    3.92   0.630   0.744   0.417 |       874      1256 |     27.3     40.3
+     stale(1), SMALL             36    30.5    1.92   0.840   0.833   0.661 |      1799      1518 |     10.2      2.3
+
+   READ THE CHARGE COLUMN AGAINST THE FADE COLUMN. The charge is the ORDER P pedigree charge; the
+   fade is the sitter machinery. A mechanism that prices staleness has to show a DIFFERENCE between
+   the fresh row and the stale row.
+
+----------------------------------------------------------------------------------------------------------------------
+3 · IS THE CHARGE READING STALENESS AT ALL? (prereg SRO-5)
+----------------------------------------------------------------------------------------------------------------------
+   The charge is exp(-LAMBDA*A(g)*T(s_P)). A(g) reads CAREER games. s_P is the games-weighted mean
+   over PLAYED seasons. Neither carries a date. So the prediction is: at the same career games and
+   the same age, a stale row and a fresh row pay the SAME charge unless their production differed.
+
+   career games   n frsh    med f    med A  med s_P | n stale    med f    med A  med s_P
+   1-3                15   0.8317      nan   -22.45 |      9   0.9096      nan   -29.96
+   3-10               59   0.6205      nan   -16.82 |      8   0.6405      nan   -15.97
+   10-25              97   0.5133      nan    -9.85 |     10   0.5190      nan   -23.27
+   25-60             118   0.7717      nan   -10.50 |     11   0.7329      nan    -3.68
+   60-150            207   0.9908      nan    -1.00 |     11   0.9785      nan    -2.83
+   150+              166   1.0000      nan     6.16 |      4   1.0000      nan     3.04
+
+   HOW OLD IS THE EVIDENCE THE CHARGE READS? The games-weighted mean age, in seasons, of the
+   seasons that enter s_P. The charge weights every one of them exactly the same, whatever its age.
+
+   group                               n   med evidence   p90 evidence
+                                           age, seasons   age, seasons
+   FRESH (played in 2026)            662           2.03           5.35
+   STALE(1)                           53           2.25           5.23
+   STALE(2)                           12           3.19           4.92
+   STALE(3)                            3           3.38           4.63
+   stale(1), career games <= 25       27           1.19           2.54
+
+----------------------------------------------------------------------------------------------------------------------
+3b · EVERY STALE(1) ROW, LEG BY LEG. THE WHOLE POPULATION, NOT A SELECTION.
+----------------------------------------------------------------------------------------------------------------------
+   c_u is the unplayed clock. D is the fade the pedigree leg carries. f is the ORDER P charge
+   factor. Every attribution is in board points: CHARGE and FADE are points REMOVED, EVID and
+   TALL are points KEPT ON the row by the evidence weight and by the tall/small sitter factor.
+
+   row                     pos age      g  pick evage    c_u      D      f     s_P |  CHARGE    FADE   EVID   TALL   board
+   Tom Green               MID  25  115.0    10  3.03   1.00  1.000  0.997    17.2 |     0.3     0.0    0.0    0.0    4339
+   Nicholas Martin         MID  25   83.0  pool  2.59   1.00  1.000  0.979    29.7 |     3.4     0.0    0.0    0.0    3196
+   Sid Draper              MID  20   10.0     4  1.00   1.92  1.000  0.525   -44.0 |   713.8     0.0    0.0    0.0    1267
+   Darcy Jones              SF  22   37.0    21  1.38   1.00  1.000  0.744    10.3 |    57.1     0.0    0.0    0.0    1038
+   Toby Conway            RUCK  23    6.0    24  2.17   4.50  0.630  0.621     2.4 |   167.6   149.3    0.0   78.4     899
+   Harry Barnett          RUCK  22    2.0    23  2.50   3.92  0.621  0.832   -44.7 |    95.7   268.0    0.0  135.6     740
+   Thomas Sims             KPF  20   11.0    28  1.00   1.92  1.000  0.513   -10.8 |   170.3     0.0    0.0    0.0     717
+   Cody Angove             MID  20    4.0    24  1.00   1.92  0.597  0.708   -17.2 |   115.9   163.9    0.0   -8.3     689
+   Harry O'Farrell         KPD  20    6.0    40  1.00   2.00  0.794  0.621     6.5 |    85.6    31.7    0.0   19.6     505
+   Joshua Kelly            MID  31  230.0     2  6.62   1.00  1.000  1.000     4.4 |     0.0     0.0    0.0    0.0     427
+   Josh Sinn                SD  23   30.0    12  1.50   2.50  1.000  0.658   -28.8 |   159.0     0.0    0.0    0.0     357
+   Max King                KPF  26   83.0     4  4.25   1.92  0.765  0.979    -2.8 |     3.3    40.3    0.0    0.0     346
+   Clay Hall               MID  21   16.0    38  1.19   0.92  1.000  0.505    -5.6 |   185.8     0.0    0.0    0.0     336
+   Lewis Hayes             KPD  22    1.0    25  1.00   4.50  0.630  0.910     4.3 |    27.3   153.5    0.0   82.3     311
+   Lucas Camporeale        MID  20    3.0    54  1.00   1.92  0.482  0.765   -14.8 |    25.6    76.8    0.0  -10.4     283
+   Hugh Davies             KPD  22    2.0    33  2.00   3.92  0.545  0.832   -27.6 |    38.3   141.8    0.0   47.6     260
+   Jack Viney              MID  32  237.0    13  6.66   1.00  1.000  1.000     4.8 |     0.0     0.0    0.0    0.0     254
+   Josh Draper             KPD  22   31.0  pool  1.65   0.92  1.000  0.671     3.4 |    16.6     0.0    0.0    0.0     247
+   Tom Doedee               SD  29   83.0    17  5.30   2.42  0.490  0.979     0.9 |     0.9    44.0    0.0    0.0     233
+   Jed Adams               KPD  22    1.0    38  1.00   4.42  0.521  0.910   -22.6 |    18.8   163.4    0.0   44.5     229
+   Liam McMahon            KPF  24    7.0    33  1.00   5.92  0.796  0.588   -21.1 |   112.6    35.6    0.0   37.8     213
+   Paddy Dow               MID  27   83.0     3  5.57   1.92  0.765  0.979   -29.9 |     4.5    62.3    0.0    0.0     206
+   Cooper Simpson           SD  21    5.0    35  1.40   1.92  0.540  0.660   -10.4 |    44.9    67.9    0.0   -6.7     204
+   Alex Dodson            RUCK  20    1.0    53  1.00   2.42  0.464  0.910   -44.3 |     9.4   101.6    0.0   16.4     198
+   Lance Collard            SF  21   15.0    28  1.20   1.92  1.000  0.501   -26.2 |   103.7     0.0    0.0    0.0     197
+   Tyson Stengle            SF  28  109.0  pool  3.07   0.92  1.000  0.996     1.7 |     0.2     0.0    0.0    0.0     181
+   Sam Powell-Pepper        SF  28  158.0    18  5.30   0.92  1.000  1.000     1.6 |     0.0     0.0    0.0    0.0     180
+   Luke Beecken            MID  25    1.0  pool  1.00   3.42  0.426  0.910   -70.1 |    17.4   220.1    0.0  -30.9     176
+   Jakob Ryan               SD  22    1.0    28  3.00   4.42  0.384  0.910   -44.5 |    15.4   228.8    0.0  -13.6     176
+   Lachlan Sholl           MID  26   79.0    64  3.54   0.92  1.000  0.973     5.0 |     0.3     0.0    0.0    0.0     128
+   Tew Jiath                SD  21    1.0    37  2.00   3.42  0.263  0.910   -30.0 |     7.9   198.8    0.0  -14.6     125
+   Jack Payne              KPD  27   81.0    54  3.04   1.00  1.000  0.976    -6.4 |     1.2     0.0    0.0    0.0     125
+   Mani Liddy              MID  24   16.5  pool  1.00   2.00  0.794  0.507   -23.2 |   110.4    22.8    0.0  -16.6     122
+   Finlay Macrae           MID  24   21.0    20  3.52   3.42  0.371  0.545   -23.3 |    73.3   131.7    0.0   -1.8     112
+   Lucca Grego              SD  20    1.0    48  1.00   2.42  0.317  0.910     5.3 |     4.8    95.2    0.0   -9.7     110
+   Jesse Motlop             SF  23   63.0    27  2.35   2.00  1.000  0.932    -7.1 |     4.7     0.0    0.0    0.0      94
+   Henry Smith             KPF  24    6.0    50  1.67   4.92  0.460  0.621   -17.6 |    27.9    48.6    0.0    8.4      93
+   Reef McInnes            KPD  24   23.0    24  2.61   3.00  0.524  0.568   -29.9 |    54.3    59.2    0.0   26.2      87
+   Caleb Graham            KPD  26   37.0  pool  4.95   3.92  0.566  0.744    -2.6 |    19.2    16.4    0.0    2.3      82
+   Noah Long                SF  22   36.0    57  2.25   1.00  1.000  0.733    -3.6 |    19.5     0.0    0.0    0.0      78
+   Sam Sturt                SF  26   31.0    17  2.94   5.42  0.474  0.671   -19.3 |    36.0    72.9    0.0    0.0      75
+   Robert Hansen            SF  22   21.7  pool  1.50   1.92  0.949  0.552   -21.3 |    36.9     2.4    0.0   -2.4      72
+   Elliott Himmelberg      KPF  28   50.0    51  4.68   1.92  0.633  0.864    -3.5 |     4.8    15.5    0.0    3.3      61
+   James Blanck            KPD  26   31.5  pool  3.38   3.92  0.566  0.678   -24.3 |    20.6    31.7    0.0    4.4      54
+   Bobby Hill               SF  26   97.0    24  3.36   1.92  1.000  0.991    -7.3 |     0.3     0.0    0.0    0.0      49
+   Kaleb Smith              SD  22   12.0    49  1.33   2.92  0.325  0.506   -24.6 |    15.7    29.6    0.0   -4.7      48
+   Tyler Brockman           SF  24   56.0    48  2.50   2.92  0.415  0.900    -7.6 |     2.5    27.2    0.0   -6.2      42
+   Riley Garcia             SF  25   39.0    61  2.92   2.92  0.284  0.766    -3.7 |     3.0    20.4    0.0   -3.4      41
+   Tyrell Dewar             SF  22   23.0  pool  1.30   2.92  0.886  0.568    -7.3 |     8.5     1.4    0.0   -1.4      38
+   Jack Henderson           SF  27    5.0  pool  1.00   1.92  0.456  0.660   -17.9 |    15.4    28.7    0.0   -4.1      31
+   Jackson Archer           SD  23   26.0    59  2.31   2.00  0.440  0.606   -16.0 |    11.9    20.7    0.0   -2.8      24
+   Bailey Banfield          SF  28  118.0  pool  3.97   0.92  1.000  0.997   -10.3 |     0.0     0.0    0.0    0.0      17
+   Jed Bews                 SD  33  175.0  pool  6.62   3.92  0.426  1.000   -21.6 |     0.0     2.2    0.0   -0.3       5
+
+----------------------------------------------------------------------------------------------------------------------
+4 · (c) MATCHED PAIRS — A STALE ROW AGAINST A FRESH ROW AT THE SAME GAMES, AGE, CLASS AND PATHWAY
+----------------------------------------------------------------------------------------------------------------------
+   The match rule was written in the prereg before it was run: same class, |career games| <= 3
+   apart, |age| <= 1 apart, same pathway (ND / pool). Where several fresh rows match, the closest
+   on games then on age is taken. NO named row gates anything; the pairs are whatever the rule finds.
+
+   matched pairs found: 38 of 53 stale(1) rows
+   DECLARED ADDITION, not in the prereg: the loose rule does NOT match on entry price, so a stale
+   row can be paired with a fresh row ten times his price and the retention comparison is then
+   about the price, not the staleness. A SECOND, PRICE-MATCHED set is therefore also run — same
+   rule plus |ln(v0 ratio)| <= 0.35 (within about 35% on price). It found 28 pairs. BOTH are
+   printed and the prereg rule stays the primary one.
+
+   MEDIAN DIFFERENCE, stale MINUS fresh — the prereg rule (no price match), n = 38:
+     charge factor f                       +0.0000
+     fade D_final                          +0.0000
+     unplayed clock c_u                    +0.9400
+     rho31(g)                              +0.0000
+     sigma_sel (selection relief)          +0.0000
+     charge attribution, board points        -11.5
+     fade attribution, board points           +0.0
+     price / entry price (retention)       -0.0909
+
+   MEDIAN DIFFERENCE, stale MINUS fresh — price-matched, within 35%, n = 28:
+     charge factor f                       +0.0000
+     fade D_final                          +0.0000
+     unplayed clock c_u                    +0.9200
+     rho31(g)                              -0.0000
+     sigma_sel (selection relief)          +0.0000
+     charge attribution, board points         -0.4
+     fade attribution, board points           +0.0
+     price / entry price (retention)       -0.2523
+
+   THE TEN LARGEST PRICE-MATCHED PAIRS BY THE STALE ROW'S BOARD PRICE:
+   STALE row             age     g     v0      f      D    c_u  board | FRESH match           age     g     v0      f      D    c_u  board
+   Nicholas Martin        25    83    360  0.979  1.000   1.00   3196 | Matt Cottrell          26    84    360  0.980  0.886   2.00     95
+   Darcy Jones            22    37    538  0.744  1.000   1.00   1038 | Toby McMullin          22    34    419  0.709  1.000   1.00    118
+   Harry Barnett          22     2   1069  0.832  0.621   3.92    740 | Taylor Goad            21     2   1072  0.832  0.524   3.00    728
+   Thomas Sims            20    11    590  0.513  1.000   1.92    717 | Harry Armstrong        20    11    682  0.513  1.000   1.00    577
+   Cody Angove            20     4    843  0.708  0.597   1.92    689 | Harrison Oliver        20     5    813  0.660  0.668   2.00    463
+   Harry O'Farrell        20     6    407  0.621  0.794   2.00    505 | Noah Mraz              20     4    454  0.708  0.678   2.00   2019
+   Joshua Kelly           31   230   2869  1.000  1.000   1.00    427 | Christian Petracca     30   231   2869  1.000  1.000   0.00   1977
+   Josh Sinn              23    30   1286  0.658  1.000   2.50    357 | Edward Allan           22    31    925  0.671  1.000   2.00    700
+   Clay Hall              21    16    629  0.505  1.000   0.92    336 | Hugh Boxshall          20    19    500  0.525  1.000   0.00    636
+   Lewis Hayes            22     1    519  0.910  0.630   4.50    311 | Lachlan Smith          21     2    394  0.832  0.351   3.00    301
+
+----------------------------------------------------------------------------------------------------------------------
+5 · (d) THE TALL/SMALL INTERACTION — THE EVIDENCE WEIGHT AGAINST THE GENTLER TALL SITTER FADE
+----------------------------------------------------------------------------------------------------------------------
+   Two separate things keep value on a stale TALL row with almost no games:
+     (i)  the EVIDENCE WEIGHT A(g) = 1 - exp(-g/9.89). At 2 games A = 0.1831, so at most 18.3% of the
+          charge the same surplus would carry at full evidence can reach him.
+     (ii) the OWNER-RULED TALL/SMALL sitter factor, which fades a tall's sitting years more gently
+          than a small's at the same pick. Counterfactual: the same row on ORDER D's POOLED
+          exponent, which is exactly what RL_O36_TALL=0 falls back to.
+
+   group                        n     med g     med A    EVIDENCE TALL FACTOR which is bigger
+                                                         kept, bp    kept, bp            
+   stale(1) TALL, g <= 5        5       1.0       nan         0.0        47.6 TALL FACTOR
+   stale(1) TALL, g 6-20        5       6.0       nan         0.0        19.6 TALL FACTOR
+   stale(1) TALL, all          17       7.0       nan         0.0        16.4 TALL FACTOR
+   stale(1) SMALL, g <= 5       8       2.0       nan         0.0       -10.1 TALL FACTOR
+   stale(1) SMALL, all         36      30.5       nan         0.0         0.0 TALL FACTOR
+
+   BOTH COLUMNS ARE "BOARD POINTS KEPT ON THE ROW". EVIDENCE is what A(g) < 1 kept against the
+   same surplus at full evidence. TALL FACTOR is what the tall/small exponent kept relative to
+   ORDER D's pooled exponent. A NEGATIVE tall-factor number means the factor COST that group
+   value, which is ORDER I's own disclosed side effect: the identity is pinned, so late small
+   sitters pay for the talls' relief.
+
+   THE ROW THE ORDER USED TO ILLUSTRATE THE SHAPE, printed wherever the mechanism puts it:
+     Harry Barnett      RUCK  age 22    2 games  s_P  -44.7  charge factor 0.832  fade D 0.621
+       the charge REMOVED                 95.7 board points
+       the sitter fade REMOVED           268.0 board points
+       the evidence weight A(g) KEPT       0.0 board points
+       the tall/small factor KEPT        135.6 board points
+       board price                         740 board points
+       the evidence weight is 0.0 times the tall factor on this row.
+     Toby Conway        RUCK  age 23    6 games  s_P    2.4  charge factor 0.621  fade D 0.630
+       the charge REMOVED                167.6 board points
+       the sitter fade REMOVED           149.3 board points
+       the evidence weight A(g) KEPT       0.0 board points
+       the tall/small factor KEPT         78.4 board points
+       board price                         899 board points
+       the evidence weight is 0.0 times the tall factor on this row.
+
+----------------------------------------------------------------------------------------------------------------------
+6 · THE STALENESS CHANNELS OUTSIDE THE FOUR NAMED LEGS (prereg SRO-9)
+----------------------------------------------------------------------------------------------------------------------
+   Reading ev() finds three more objects that react to a season not played. They are not part of
+   the charge and not part of the fade, and they sit on the PRODUCTION leg or on the whole row.
+
+     A. THE D8 GRADED STALENESS CAP.  el >= onset and ns <= 1  =>  e capped at v0_start*frac, with
+        a graded release. onset is 4 for KPD/KPF/RUCK and 3 otherwise.
+     B. THE MEDIOCRE-FOR-YEARS DECAY GATE.  el >= onset+2 and bestlvl/par < 0.55  =>  e capped at
+        v0_start*frac. No grading — a hard min.
+     C. THE ITEM H SITTER CUTS.  a POOL row with no games this year takes H_POOLSIT, and the named
+        union subset takes H_UNION on top. This one reads "did not play this year" DIRECTLY.
+
+   channel                                            rows
+   A · D8 graded staleness predicate TRUE               32
+   B · mediocre-for-years predicate TRUE                 0
+   C · ITEM H sitter cut < 1.0                           0
+   the ns==0 sit-out arm (a different price path)      160
+   ANY of A/B/C *and* the sitter fade D < 1             18
+
+   ITEM H is LIVE on this dial line (H_ON = True), which is why column C reads as it does.
+
+   A PREDICATE BEING TRUE IS NOT THE SAME AS A CAP BINDING. The counterfactual below settles it.
+   The 18 figure above is the predicate; the binding count is measured next and it is smaller.
+
+   THE DEFINITION OF DOUBLE-PRICING, fixed in the prereg: ONE fact — a season not played —
+   reducing TWO legs that are ADDED TOGETHER in the price identity.
+
+   THE D8 ARM, PRICED BY A COUNTERFACTUAL THAT IS EXACTLY INERT WHEN IT DOES NOT BIND.
+   The arm is  e = min(e, cap + gr*max(0, e - cap)).  At gr = 1 that is min(e, e) = e, identically.
+   So wrapping the engine's own _staleness_grade to return 1.0 removes the arm and nothing else.
+   The wrapper lives in the loaded namespace. NO REPOSITORY FILE IS TOUCHED.
+
+   rows the D8 arm moves: 16   ·   board points it REMOVES in total: 811   ·   worst single row: 368
+   the five it costs most:
+     Clay Hall                38    age 21    16g  c_u  0.92  fade D 1.000  board   336  with the D8 arm removed   704  (it costs him 368)
+     Billy Dowling            43    age 22    13g  c_u  2.50  fade D 0.310  board   135  with the D8 arm removed   360  (it costs him 225)
+     Will Lorenz              57    age 21    11g  c_u  1.00  fade D 1.000  board   251  with the D8 arm removed   329  (it costs him 78)
+     Riley Hardeman           23    age 21    25g  c_u  1.00  fade D 1.000  board   287  with the D8 arm removed   339  (it costs him 52)
+     Ashton Moir              29    age 21    13g  c_u  1.00  fade D 1.000  board   226  with the D8 arm removed   258  (it costs him 32)
+
+   OF THOSE 16 ROWS, HOW MANY ALSO CARRY A SITTER FADE BELOW 1? — that is the double-price count
+   9 of 16. Their names and both legs:
+     Liam McMahon             g    7  c_u  5.92  fade D 0.796 (removes   35.6 bp)  D8 cap (removes    3 bp)  board   213
+     Isaac Keeler             g   13  c_u  3.00  fade D 0.761 (removes   18.3 bp)  D8 cap (removes    9 bp)  board   155
+     Tom Hanily               g   12  c_u  2.00  fade D 0.702 (removes   15.7 bp)  D8 cap (removes    3 bp)  board   144
+     Will McLachlan           g    7  c_u  2.46  fade D 0.518 (removes   34.3 bp)  D8 cap (removes    6 bp)  board   140
+     Billy Dowling            g   13  c_u  2.50  fade D 0.310 (removes   53.7 bp)  D8 cap (removes  225 bp)  board   135
+     Shadeau Brain            g   11  c_u  3.00  fade D 0.426 (removes   55.3 bp)  D8 cap (removes    5 bp)  board    90
+     Josh Goater              g   17  c_u  3.00  fade D 0.334 (removes  113.6 bp)  D8 cap (removes    1 bp)  board    87
+     Harvey Gallagher         g   28  c_u  2.00  fade D 0.496 (removes   35.6 bp)  D8 cap (removes    1 bp)  board    48
+
+----------------------------------------------------------------------------------------------------------------------
+7 · WHERE STALENESS GOES UNPRICED (prereg SRO-6 and SRO-7)
+----------------------------------------------------------------------------------------------------------------------
+   SRO-6 — the fade schedule is 1.0 at every unplayed depth c_u <= 1. A row who played last season
+   and nothing this one sits at c_u under 1 and carries NO fade, while the charge is silent on the
+   unplayed season because s_P reads played seasons only. For that row the missing season costs
+   nothing anywhere in the price.
+
+   stale(1) rows carrying D_final == 1 (no fade at all): 19 of 53
+   row                        age      g     c_u   clock   units    board
+   Tom Green                   25    115    1.00    8.00    6.00     4339
+   Nicholas Martin             25     83    1.00    6.00    4.00     3196
+   Sid Draper                  20     10    1.92    2.92    1.00     1267
+   Darcy Jones                 22     37    1.00    5.00    2.00     1038
+   Thomas Sims                 20     11    1.92    2.92    1.00      717
+   Joshua Kelly                31    230    1.00   14.00   12.00      427
+   Josh Sinn                   23     30    2.50    6.00    3.50      357
+   Clay Hall                   21     16    0.92    3.92    2.00      336
+   Jack Viney                  32    237    1.00   15.00   13.00      254
+   Josh Draper                 22     31    0.92    4.92    2.00      247
+
+   SRO-7 — o31_played_units credits min(1, games/2) per season, so a TWO-GAME season cancels a FULL
+   season of sitter clock. The credit a season buys is capped at 1 and reached at 2 games.
+
+   board rows with at least one season of 1-2 games: 217  (a 2-game season buys the full 1.00 unit;
+   a 1-game season buys 0.50, because the credit is min(1, g/2))
+   of those, rows whose token season falls inside the last four seasons — where the credit is
+   still holding the sitter clock down: 120
+   of THOSE, stale(1): 15
+   the eight with the most unplayed time behind them:
+   row                     token  year   clock   units     c_u      D   board
+   Ryan Gardner              1.0  2026   11.92    5.96    5.96  0.429      34
+   Tom Doedee                1.0  2025   11.92    6.00    2.42  0.490     233
+   Henry Smith               2.0  2025    6.92    2.00    4.92  0.460      93
+   Lewis Hayes               1.0  2025    5.00    0.50    4.50  0.630     311
+   Toby Conway               1.0  2023    6.00    1.50    4.50  0.630     899
+   Mitchell Hinge            1.0  2026   10.92    6.46    0.46  1.000     305
+   Jed Adams                 1.0  2025    4.92    0.50    4.42  0.521     229
+   Jakob Ryan                1.0  2023    4.92    0.50    4.42  0.384     176
+
+   Read the units column against the clock. A season of two games advances "played units" by a
+   full 1.00, the same credit a twenty-two game season buys, and c_u is clock minus units. So two
+   games and a full season are the same object to the sitter fade.
+
+
+wrote HANDOFF_K.json and HANDOFF_K_out.txt

@@ -1,0 +1,23 @@
+========================================================================================================
+STEP 0 — REPRODUCING THE LATE-BAND YEAR-1 TROUGH ON THE CANDIDATE (before explaining anything)
+========================================================================================================
+  matrix: per_entrant_ASMCAND.json   store cb38ef11   v0surf 4405cba2b42f   ND teaching rows 1200
+
+  --- PRIMARY window, cohorts 2005-2023 ---
+  band         n      yr0      yr1      yr2      yr3      yr4      yr6     peak   yr0->1
+  1-10       190    1.000    1.133    1.230    1.388    1.531    1.396    1.531   +13.3%
+  11-20      190    1.000    1.128    1.273    1.388    1.549    1.563    1.632   +12.8%
+  21-30      190    1.000    1.061    1.236    1.452    1.601    1.661    1.661   +6.1%
+  31-40      190    1.000    0.890    0.960    1.298    1.260    1.273    1.389   -11.0%
+  41-64      440    1.000    0.926    1.093    1.185    1.272    1.499    1.499   -7.4%
+
+  --- MODERN window, cohorts 2019-2023 ---
+  band         n      yr0      yr1      yr2      yr3      yr4      yr6     peak   yr0->1
+  1-10        50    1.000    1.215    1.290    1.420    1.589    1.400    1.648   +21.5%
+  11-20       50    1.000    1.032    1.076    1.101    1.185    1.198    1.431   +3.2%
+  21-30       50    1.000    0.841    1.003    0.875    0.746    1.306    1.306   -15.9%
+  31-40       50    1.000    0.867    0.893    1.257    1.235    1.326    1.526   -13.3%
+  41-64      111    1.000    0.723    0.660    0.612    0.517    0.458    0.723   -27.7%
+
+  READ: the owner's two facts reproduce. The late bands dip hardest at year 1 and reach
+  peaks at or above the early bands. Entries and peaks are consistent; year 1 is the outlier.

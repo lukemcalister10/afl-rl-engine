@@ -1,0 +1,68 @@
+======================================================================================================================
+ORDER N — THE RETAINED-PRIOR DIAGNOSTIC AND THE LAMBDA LADDER. ESTIMATES PENDING A BUILD.
+======================================================================================================================
+
+----------------------------------------------------------------------------------------------------------------------
+1 · IS THE RETAINED PRIOR ALREADY MONOTONE? — the question requirement (c) really asks
+----------------------------------------------------------------------------------------------------------------------
+   pi_pre(g) is the pedigree-leg coefficient BEFORE any charge, on the engine's own constants at
+   D = 1 and Phi = 1. It already falls with games, because weight moves to the production leg.
+   The retained prior is pi_pre(g) x the charge factor. Both are printed.
+
+   games   |    pi_pre |   chg NOW retained NOW | chg ORD N  retained N |      A(g)
+   0       |    1.0000 |      0.0%      1.0000 |      0.0%      1.0000 |    0.0000
+   1       |    0.9140 |      9.0%      0.8314 |      7.4%      0.8465 |    0.0978
+   2       |    0.8545 |     16.8%      0.7107 |     13.6%      0.7385 |    0.1860
+   5       |    0.7448 |     34.0%      0.4918 |     27.1%      0.5433 |    0.4021
+   8       |    0.6876 |     43.9%      0.3860 |     35.6%      0.4428 |    0.5609
+   10      |    0.6633 |     47.5%      0.3481 |     39.6%      0.4007 |    0.6426
+   14      |    0.6162 |     50.0%      0.3081 |     45.0%      0.3386 |    0.7632
+   17      |    0.5867 |     49.0%      0.2992 |     47.7%      0.3069 |    0.8260
+   20      |    0.5598 |     46.5%      0.2993 |     49.6%      0.2824 |    0.8722
+   25      |    0.5179 |     40.7%      0.3071 |     51.5%      0.2509 |    0.9236
+   30      |    0.4727 |     34.2%      0.3112 |     52.7%      0.2236 |    0.9543
+   36      |    0.4228 |     26.7%      0.3099 |     53.5%      0.1967 |    0.9754
+   50      |    0.3284 |     13.6%      0.2836 |     54.2%      0.1506 |    0.9942
+   60      |    0.2422 |      8.0%      0.2228 |     54.3%      0.1107 |    0.9979
+   80      |    0.1334 |      2.6%      0.1300 |     54.4%      0.0609 |    0.9997
+   100     |    0.0906 |      0.8%      0.0899 |     54.4%      0.0413 |    1.0000
+   141     |    0.0524 |      0.1%      0.0523 |     54.4%      0.0239 |    1.0000
+   200     |    0.0329 |      0.0%      0.0329 |     54.4%      0.0150 |    1.0000
+   300     |    0.0254 |      0.0%      0.0254 |     54.4%      0.0116 |    1.0000
+
+   RISES IN THE RETAINED PRIOR as games increase, over g = 0..300 at the grid above:
+       CURRENT mechanism : 14 rises  <- NOT MONOTONE
+       ORDER N mechanism : 0 rises  MONOTONE
+
+   THIS IS THE ANSWER TO REQUIREMENT (c), AND IT IS NOT THE ONE THE ORDER ASSUMED.
+   The retained prior under the CURRENT mechanism is NOT monotone: it recovers as games rise.
+
+   That does NOT make the current mechanism fine. It makes the complaint precise. A 36-game player
+   does not end up holding more prior than a 17-game player. What he does is pay a SMALLER SHARE of
+   it, at exactly the point where the evidence about him is strongest. That is the defect.
+
+----------------------------------------------------------------------------------------------------------------------
+2 · THE FAST BAND INSTRUMENT, CHECKED AGAINST THE COMMITTED ONE BEFORE USE
+----------------------------------------------------------------------------------------------------------------------
+   worst disagreement with BANDS_N.json over 32 cells on two boards: 0.00e+00
+   MATCHES — the fast instrument may be used for the ladder.
+
+----------------------------------------------------------------------------------------------------------------------
+3 · THE LAMBDA LADDER — level against tilt. THETA_R = BETA_sat/LAMBDA, so they move opposite ways.
+----------------------------------------------------------------------------------------------------------------------
+   LAMBDA   THETA_R zero at s | coh mark p1-10 PRI p1-10 MOD | vet churn  vet net |   dean    cdt    xav    ann    pat   kako
+   0.300    0.38405     +4.92 |   1.0626   +20.99%   +28.92% |     7724    -5864 |   3069   2057    995   1227   1055    799
+   0.450    0.25603     +6.22 |   1.0532   +19.71%   +27.74% |     8320    -6584 |   3069   2057    975   1205   1034    771
+   0.600    0.19202     +7.52 |   1.0437   +18.31%   +26.36% |     8949    -7281 |   3069   2014    955   1183   1014    746
+   0.784    0.14687     +9.13 |   1.0324   +16.50%   +24.35% |     9688    -8158 |   3069   1879    931   1158    991    721 <- anchoring solve
+   0.950    0.12128    +10.56 |   1.0222   +14.85%   +22.38% |    10356    -8936 |   3069   1772    911   1136    972    701
+   1.200    0.09601    +12.73 |   1.0056   +12.15%   +19.48% |    11287    -9985 |   3069   1634    881   1104    945    677
+   1.600    0.07201    +16.20 |   0.9764    +7.05%   +15.37% |    12773   -11601 |   2905   1459    837   1055    908    649
+   2.200    0.05237    +21.41 |   0.9346    -0.24%    +8.91% |    14488   -13454 |   2438   1277    776    989    861    624
+   3.000    0.03840    +28.35 |   0.8888    -8.01%    +1.98% |    16216   -15240 |   2086   1131    704    912    815    606
+
+   rails for the last four column groups: cohort mark under ~1.05 keeps the W2 basis under 1.14;
+   picks 1-10 must stay under +14.00% in BOTH windows; veteran churn <= 1002 and |net| <= 668.
+   ORDER K reads: cohort mark 1.0324, picks 1-10 +8.22%% / +13.65%%, vet churn 947, vet net -601,
+   dean 2403, cdt 1505, xavier 1162, annable 1537, patterson 1440, kako 832.
+

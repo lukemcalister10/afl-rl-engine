@@ -1,0 +1,1811 @@
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Order P · The Year-1 Class</title>
+<style>
+:root{--pitch:#0a0c10;--card:#12151c;--card-2:#181c25;--edge:#232936;--edge-2:#2f3747;
+--text:#f2f5f9;--dim:#8b95a6;--faint:#525c6d;--volt:#c8f04a;--volt-soft:rgba(200,240,74,.12);
+--up:#4ade80;--dn:#f0655e;--warn:#f5b445;
+--cond:"Arial Narrow","Helvetica Neue Condensed","Roboto Condensed",Arial,sans-serif;
+--sans:"Helvetica Neue",Arial,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--pitch);color:var(--text);font-family:var(--sans);font-size:13px;line-height:1.45}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.banner{background:var(--volt-soft);border-bottom:1px solid var(--volt);color:var(--volt);
+font-family:var(--cond);font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-align:center;
+padding:7px 12px;font-weight:700}
+.app{max-width:1500px;margin:0 auto;padding:0 18px 80px}
+header{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;padding:22px 0 14px}
+.brand{font-family:var(--cond);font-weight:900;font-size:38px;letter-spacing:.01em;text-transform:uppercase;line-height:.92}
+.brand b{color:var(--volt)}
+.brand .sub{display:block;font-size:10.5px;letter-spacing:.28em;color:var(--dim);font-weight:700;margin-top:6px}
+.spacer{flex:1}
+.stamp{font-family:var(--mono);font-size:10.5px;color:var(--dim);text-align:right;line-height:1.75}
+.stamp b{color:var(--text)}
+h2{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);margin:0 0 10px}
+.box{background:var(--card);border:1px solid var(--edge);padding:16px 18px;margin:12px 0}
+.box.warn{border-color:var(--warn);border-left:4px solid var(--warn)}
+.box.warn h2{color:var(--warn)}
+table{border-collapse:collapse;width:100%;font-size:12px}
+th{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+color:var(--dim);text-align:right;padding:6px 8px;border-bottom:1px solid var(--edge-2);cursor:pointer;
+position:sticky;top:0;background:var(--card);white-space:nowrap;user-select:none}
+th.l,td.l{text-align:left}
+th:hover{color:var(--volt)}
+th.sorted{color:var(--volt)}
+td{padding:4px 8px;border-bottom:1px solid var(--edge);text-align:right}
+tr:hover td{background:var(--card-2)}
+td.up{color:var(--up)}td.dn{color:var(--dn)}
+.k{color:var(--dim)}
+.sec{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--volt);padding-top:16px}
+.note{color:var(--dim);font-size:11.5px;margin-top:8px}
+
+.brk{background:var(--card-2);border:1px solid var(--warn);border-left:4px solid var(--warn);padding:16px 18px;margin:14px 0}
+.brk h2{color:var(--warn);margin-bottom:12px}
+.brk h3{font-family:var(--cond);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--text);margin:14px 0 6px}
+.brk ul{margin:0 0 4px;padding-left:20px}
+.brk li{margin:5px 0;color:var(--text)}
+.brk li b{color:var(--warn)}
+.ok{color:var(--up)}
+.defs{background:var(--card-2);border:1px solid var(--edge-2);padding:14px 18px;margin:12px 0;color:var(--dim)}
+.defs b{color:var(--text)}
+.defs p{margin:7px 0}
+details{background:var(--card);border:1px solid var(--edge);padding:12px 18px;margin:12px 0}
+summary{font-family:var(--cond);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);cursor:pointer}
+summary:hover{color:var(--volt)}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 7px;border:1px solid var(--edge-2);color:var(--dim);margin-right:6px}
+.pill.red{border-color:var(--dn);color:var(--dn)}
+.pill.grn{border-color:var(--up);color:var(--up)}
+.pill.amb{border-color:var(--warn);color:var(--warn)}
+td.sell{color:var(--dn)}
+td.buy{color:var(--warn)}
+</style>
+<div class="banner">NOTHING LANDS ON THIS SEAT'S WORD &mdash; ORDER P IS BUILT FOR YOUR REVIEW AND IS NOT ADOPTED. ONE CELL IS EXPECTED TO BREACH AND IT IS NAMED ON EVERY PAGE.</div>
+<div class="app">
+<header><div class="brand">ORDER <b>P</b><span class="sub">THE 2025 INTAKE IN DRAFT ORDER · WITH v0</span></div><div class="spacer"></div><div class="stamp">live <b>88ce647f</b> 752,429 &middot; candidate 31 <b>fe6be9d6</b> 666,913<br>landing <b>1f176444</b> 667,916 &middot; ORDER K <b>f3101883</b> 673,097 &middot; <b>ORDER P 374d4e44</b> <b>666,434</b><br>the charge: pi &times;= exp(&minus;0.17438 &middot; A(g) &middot; T(s_P)) below age 24 &middot; A(g)=1&minus;e^(&minus;g/9.89) &middot; PRE-NUMERAIRE</div></header>
+
+<div class="brk"><h2>What is in this board, and what is still broken</h2><p>Read this before you read a single price. It is the same box on all three pages, and it is written in plain words on purpose.</p><h3>The one thing this board changes</h3><p>Order K charged a young player's draft pedigree down as he played games, and the charge <b>read nothing except how many games he had played</b>. It peaked at exactly 14 games and then fell away again, so a player with 36 games kept MORE of his unearned entry price than a player with 17 games &mdash; however well or badly either of them had actually played. Two real players, Zeke Uwland and Cooper Harvey, both had 17 games and both sat about 1.7 points a game below what is normal for their age, and Order K charged them the identical 49.0%, to the last decimal.</p><p><b>On this board the charge reads performance, and it reads it against the bar the player's own entry price implies.</b> Uwland was pick 2 and cost 2,583; a player at that price normally produces 19.2 points a game clear of his age bar, so against what is priced into him he is 20.9 short. Harvey was pick 56 and cost 265; a player at that price normally produces 1.3 points a game BELOW the age bar, so he is half a point short. Same production for their age, same games, opposite verdicts &mdash; because they were priced differently to begin with. That is your own sentence, on two real rows.</p><p>The bar a young player is measured against is now his age bar plus a <b>measured</b> pedigree premium: how far above the age bar a player who entered at his price actually produces, estimated on 5,041 real seasons over 1,575 players. Nothing in it was chosen. The level of the charge was SOLVED so it removes exactly the same total number of points from the year-1 class as the old charge did, and the steepness follows from the measurement. There is no free parameter and no player's value was targeted.</p><h3>What is unchanged from Order K</h3><ul><li>The age-referenced projection bar at dose 0.40, the counterweight at kappa 0.20 / gamma_u 8, the selection relief at 1.08.</li><li>Your tall/small sitter factor, with the Order K fade-floor fix.</li><li>The measured pick-curve fade.</li><li><b>Entry values.</b> A player who has never played cannot move on this board at all: the charge is exactly zero at zero games, by construction. All 89 wired entrants print bit-identical day-0 prices, and the emit's own replication proof was run against Order K's own reference file rather than a regenerated one, so that is a test and not a claim.</li><li>Turn the new dial off and this engine rebuilds Order K's board <b>f3101883</b> byte for byte.</li></ul><h3>What is still broken &mdash; open defects, none of them fixed here</h3><ul><li><b>MODERN picks 1-10 is over your buy rail at +18.85%.</b> On the recent-era window only (2019-2023, fifty rows) the top ten picks appreciate more than 14% in their first year. Order K reads +13.65% there, so that cell had about a third of a point of room before this order touched anything. <b>This was predicted before the build and it is the branch you already agreed to rule on.</b> No cap has been bolted on to hide it and no constant was moved to chase it. In the full-history window the same band reads +8.62% against Order K's +8.22%, which is inside the rail.</li><li><b>Late picks still lose money in year one.</b> Picks 31-40 read <b>-8.88%</b> and picks 41-64 read <b>-5.03%</b>. Both are better than Order K (-10.70% and -6.89%), and both are still negative: a player drafted there is still worth less a year later.</li><li><b>Supplemental selection (SSP) still appreciates about half again in year one.</b> +58.17% on this board against +52.71% on Order K. SSP players enter outside the 1-64 pick curve, their entry prices are low, so their pedigree bar is low and they clear it easily &mdash; which means this order pushes the arm FURTHER into the red. <b>It was already over the rail before this order and it is reported on its own line, never folded into a pass.</b></li><li><b>Three individual draft classes go over the 1.14 line on this board, and Order K has none.</b> The class rule you read is the AVERAGE over draft classes 2005-2015, and that average is fine (1.0613, well under 1.14). But class by class, the 2010, 2011 and 2015 draft classes appreciate <b>1.1570, 1.1595 and 1.2047</b> in their first year. Order K's worst single class is 1.1363. Two of those three were already sitting just under the line on Order K (1.1359 and 1.1363) and this board pushes them through it; the 2015 class moves much further, from 1.1060 to 1.2047. <b>This is a real breach of a line the engine's own earlier calibrations were held to, it is new to this board, and it was not printed in the Order P offline packet even though that packet's own files contain the same number.</b> It is reported here rather than left for you to find.</li><li><b>The peaks are not restored.</b> A charge that grows with evidence cannot fall back in the years where the peaks sit. Growing with evidence is exactly the defect you asked to have removed, so the two cannot both be had from this shape. The trade is priced on the no-arb page, not hidden.</li><li><b>The pedigree premium is measured on players who play.</b> A cheap player has to be good to get a game; an expensive one plays anyway. So the measured premium is a lower bound on the real gap, and the bar is if anything LESS demanding of expensive players than the truth. Not repaired here.</li><li><b>The premium is thin at both ends for talls</b> (effective sample 19 at the cheap end, 47 at the dear end). Outside the fitted range it is held flat, never extrapolated.</li><li><b>Veteran key-position talls aged 28-30 are over-priced by roughly 30%</b>, because the veteran board is parked. Nothing in this order touches them.</li><li><b>The engine leans too hard on the most recent season.</b> A player who broke out once is probably too expensive here &mdash; <b>Xerri, Callaghan, Ash, Thilthorpe</b>. A good player who had one bad year is probably too cheap &mdash; <b>Coniglio, De Goey, Langford</b>.</li><li><b>The ceiling column on the dial page is wrong for anyone 22 or older.</b> It prints roughly the 87th percentile where it should print the 97th.</li></ul><h3>The year-1 class</h3><p>Your growth rule is written on draft classes 2005 to 2015. On that basis this board reads <b>1.0613</b> against Order K's <b>1.0513</b>: the class grows more, it clears your 1.03 floor, and it stays under the 1.14 buy rail. That basis is <b>draft</b> classes 2005-2015, which on the cohort clock is cohort years 2006-2016 &mdash; not the same window as the cohort-clock number printed beside it, and the two are shown together on the year-1 page so they cannot be confused.</p></div>
+<div class="defs"><h2>How to read this page</h2><p>These are the players who entered the league in the most recent intake &mdash; the class whose first-year appreciation your growth rule is written about. They are listed in draft order: national draft by pick number first, then the rookie draft, then the academy and father-son pathways, then supplemental selection, then the mid-season draft.</p><p><b>v0</b> is the entry value &mdash; what the engine says the pick itself was worth on draft day, before the player had done anything. <b>Entry values do not move in this order and cannot.</b> The charge is exactly zero at zero games, so a player who has not played is bit-identical to Order K.</p><p><b>v0 is also the axis the pedigree premium is read on.</b> Two players of the same age and position with different entry prices now face different bars, and the size of the difference is the <b>pedigree premium</b> column.</p></div>
+<div class="box"><h2>120 rows in the year-1 class &middot; 57,823 &rarr; 58,935 board points (+1.92%) &middot; 31 up, 28 down</h2><div class="defs"><p><b>This class's prices on today's board and the historical class growth rate are two different questions, and they can move in different directions.</b> The growth rule asks: across the intake classes of 2005 to 2015, how much did a class appreciate between draft day and a year later? That number goes UP on this board. This table is the CURRENT class priced today. The 2025 intake is mostly high picks with very few games behind them, and a high pick with few games is exactly who this charge is hardest on &mdash; because his price says a great deal is expected of him and he has not yet shown it. Both are true and both are printed.</p></div>
+<table id="t2"><thead><tr>
+<th class="" onclick="sortTable('t2',0,true)">#</th>
+<th class="l" onclick="sortTable('t2',1,false)">player</th>
+<th class="l" onclick="sortTable('t2',2,false)">pathway</th>
+<th class="" onclick="sortTable('t2',3,true)">pick</th>
+<th class="l" onclick="sortTable('t2',4,false)">pos</th>
+<th class="" onclick="sortTable('t2',5,true)">age</th>
+<th class="" onclick="sortTable('t2',6,true)">games</th>
+<th class="" onclick="sortTable('t2',7,true)">v0 (entry value)</th>
+<th class="" onclick="sortTable('t2',8,true)">pedigree premium</th>
+<th class="" onclick="sortTable('t2',9,true)">surplus vs AGE bar</th>
+<th class="" onclick="sortTable('t2',10,true)">surplus vs PEDIGREE bar</th>
+<th class="" onclick="sortTable('t2',11,true)">charge ORDER K</th>
+<th class="" onclick="sortTable('t2',12,true)">charge ORDER P</th>
+<th class="" onclick="sortTable('t2',13,true)">live 88ce647f</th>
+<th class="" onclick="sortTable('t2',14,true)">cand 31 fe6be9d6</th>
+<th class="" onclick="sortTable('t2',15,true)">landing 1f176444</th>
+<th class="" onclick="sortTable('t2',16,true)">ORDER K f3101883</th>
+<th class="" onclick="sortTable('t2',17,true)">ORDER P</th>
+<th class="" onclick="sortTable('t2',18,true)">&Delta; vs ORDER K</th>
+<th class="" onclick="sortTable('t2',19,true)">&Delta; vs landing</th>
+</tr></thead><tbody>
+<tr><td class="num k" data-v="1">1</td><td class="l">Willem Duursma</td><td class="l k">ND</td><td class="num k" data-v="1">1</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="19">19</td><td class="num k" data-v="3272.8">3,273</td>
+<td class="num" data-v="25.440230">25.44</td>
+<td class="num" data-v="19.980511">19.98</td>
+<td class="num" data-v="-5.459719">-5.46</td>
+<td class="num" data-v="47.477779">47.5%</td>
+<td class="num" data-v="35.795917">35.8%</td>
+<td class="num " data-v="3977">3,977</td>
+<td class="num " data-v="4000">4,000</td>
+<td class="num " data-v="3661">3,661</td>
+<td class="num " data-v="3703">3,703</td>
+<td class="num volt" data-v="3920">3,920</td>
+<td class="num up" data-v="217">+217</td>
+<td class="num up" data-v="259">+259</td>
+</tr>
+<tr><td class="num k" data-v="2">2</td><td class="l">Zeke Uwland</td><td class="l k">ND</td><td class="num k" data-v="2">2</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="17">17</td><td class="num k" data-v="2454.2">2,454</td>
+<td class="num" data-v="19.219115">19.22</td>
+<td class="num" data-v="-1.639489">-1.64</td>
+<td class="num" data-v="-20.858604">-20.86</td>
+<td class="num" data-v="49.003577">49.0%</td>
+<td class="num" data-v="84.664767">84.7%</td>
+<td class="num " data-v="2633">2,633</td>
+<td class="num " data-v="2480">2,480</td>
+<td class="num " data-v="2017">2,017</td>
+<td class="num " data-v="1949">1,949</td>
+<td class="num volt" data-v="1486">1,486</td>
+<td class="num dn" data-v="-463">-463</td>
+<td class="num dn" data-v="-531">-531</td>
+</tr>
+<tr><td class="num k" data-v="3">3</td><td class="l">Harry Dean</td><td class="l k">ND</td><td class="num k" data-v="3">3</td><td class="l k">KPD</td><td class="num" data-v="19">19</td><td class="num" data-v="17">17</td><td class="num k" data-v="2316.4">2,316</td>
+<td class="num" data-v="12.947111">12.95</td>
+<td class="num" data-v="14.855008">14.86</td>
+<td class="num" data-v="1.907896">1.91</td>
+<td class="num" data-v="49.003577">49.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="2577">2,577</td>
+<td class="num " data-v="2670">2,670</td>
+<td class="num " data-v="2400">2,400</td>
+<td class="num " data-v="2403">2,403</td>
+<td class="num volt" data-v="3069">3,069</td>
+<td class="num up" data-v="666">+666</td>
+<td class="num up" data-v="669">+669</td>
+</tr>
+<tr><td class="num k" data-v="4">4</td><td class="l">Cooper Duff-Tytler</td><td class="l k">ND</td><td class="num k" data-v="4">4</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="13">13</td><td class="num k" data-v="1765.1">1,765</td>
+<td class="num" data-v="10.806543">10.81</td>
+<td class="num" data-v="7.055008">7.06</td>
+<td class="num" data-v="-3.751536">-3.75</td>
+<td class="num" data-v="49.866209">49.9%</td>
+<td class="num" data-v="21.057166">21.1%</td>
+<td class="num " data-v="1561">1,561</td>
+<td class="num " data-v="1832">1,832</td>
+<td class="num " data-v="1572">1,572</td>
+<td class="num " data-v="1505">1,505</td>
+<td class="num volt" data-v="1824">1,824</td>
+<td class="num up" data-v="319">+319</td>
+<td class="num up" data-v="252">+252</td>
+</tr>
+<tr><td class="num k" data-v="5">5</td><td class="l">Dylan Patterson</td><td class="l k">ND</td><td class="num k" data-v="5">5</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="5">5</td><td class="num k" data-v="1595.0">1,595</td>
+<td class="num" data-v="13.728454">13.73</td>
+<td class="num" data-v="-19.619489">-19.62</td>
+<td class="num" data-v="-33.347943">-33.35</td>
+<td class="num" data-v="33.962628">34.0%</td>
+<td class="num" data-v="76.817054">76.8%</td>
+<td class="num " data-v="1628">1,628</td>
+<td class="num " data-v="1675">1,675</td>
+<td class="num " data-v="1467">1,467</td>
+<td class="num " data-v="1440">1,440</td>
+<td class="num volt" data-v="955">955</td>
+<td class="num dn" data-v="-485">-485</td>
+<td class="num dn" data-v="-512">-512</td>
+</tr>
+<tr><td class="num k" data-v="6">6</td><td class="l">Daniel Annable</td><td class="l k">ND</td><td class="num k" data-v="6">6</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="2">2</td><td class="num k" data-v="1578.6">1,579</td>
+<td class="num" data-v="13.536211">13.54</td>
+<td class="num" data-v="-19.019489">-19.02</td>
+<td class="num" data-v="-32.555700">-32.56</td>
+<td class="num" data-v="16.831560">16.8%</td>
+<td class="num" data-v="48.510980">48.5%</td>
+<td class="num " data-v="1395">1,395</td>
+<td class="num " data-v="1633">1,633</td>
+<td class="num " data-v="1530">1,530</td>
+<td class="num " data-v="1537">1,537</td>
+<td class="num volt" data-v="1115">1,115</td>
+<td class="num dn" data-v="-422">-422</td>
+<td class="num dn" data-v="-415">-415</td>
+</tr>
+<tr><td class="num k" data-v="7">7</td><td class="l">Sam Cumming</td><td class="l k">ND</td><td class="num k" data-v="7">7</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="14">14</td><td class="num k" data-v="1577.6">1,578</td>
+<td class="num" data-v="13.521719">13.52</td>
+<td class="num" data-v="6.270511">6.27</td>
+<td class="num" data-v="-7.251208">-7.25</td>
+<td class="num" data-v="50.000000">50.0%</td>
+<td class="num" data-v="42.224771">42.2%</td>
+<td class="num " data-v="2288">2,288</td>
+<td class="num " data-v="2050">2,050</td>
+<td class="num " data-v="1953">1,953</td>
+<td class="num " data-v="1932">1,932</td>
+<td class="num volt" data-v="2007">2,007</td>
+<td class="num up" data-v="75">+75</td>
+<td class="num up" data-v="54">+54</td>
+</tr>
+<tr><td class="num k" data-v="8">8</td><td class="l">Samuel Grlj</td><td class="l k">ND</td><td class="num k" data-v="8">8</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="19">19</td><td class="num k" data-v="1576.7">1,577</td>
+<td class="num" data-v="13.508536">13.51</td>
+<td class="num" data-v="-1.649489">-1.65</td>
+<td class="num" data-v="-15.158025">-15.16</td>
+<td class="num" data-v="47.477779">47.5%</td>
+<td class="num" data-v="75.146067">75.1%</td>
+<td class="num " data-v="1735">1,735</td>
+<td class="num " data-v="1831">1,831</td>
+<td class="num " data-v="1610">1,610</td>
+<td class="num " data-v="1613">1,613</td>
+<td class="num volt" data-v="1390">1,390</td>
+<td class="num dn" data-v="-223">-223</td>
+<td class="num dn" data-v="-220">-220</td>
+</tr>
+<tr><td class="num k" data-v="9">9</td><td class="l">Sullivan Robey</td><td class="l k">ND</td><td class="num k" data-v="9">9</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="14">14</td><td class="num k" data-v="1575.7">1,576</td>
+<td class="num" data-v="13.494026">13.49</td>
+<td class="num" data-v="13.910511">13.91</td>
+<td class="num" data-v="0.416486">0.42</td>
+<td class="num" data-v="50.000000">50.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="2981">2,981</td>
+<td class="num " data-v="2355">2,355</td>
+<td class="num " data-v="2355">2,355</td>
+<td class="num " data-v="2379">2,379</td>
+<td class="num volt" data-v="2864">2,864</td>
+<td class="num up" data-v="485">+485</td>
+<td class="num up" data-v="509">+509</td>
+</tr>
+<tr><td class="num k" data-v="10">10</td><td class="l">Jacob Farrow</td><td class="l k">ND</td><td class="num k" data-v="10">10</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="18">18</td><td class="num k" data-v="1288.1">1,288</td>
+<td class="num" data-v="9.236999">9.24</td>
+<td class="num" data-v="16.450511">16.45</td>
+<td class="num" data-v="7.213512">7.21</td>
+<td class="num" data-v="48.309255">48.3%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="2601">2,601</td>
+<td class="num " data-v="2093">2,093</td>
+<td class="num " data-v="2094">2,094</td>
+<td class="num " data-v="2155">2,155</td>
+<td class="num volt" data-v="2515">2,515</td>
+<td class="num up" data-v="360">+360</td>
+<td class="num up" data-v="421">+421</td>
+</tr>
+<tr><td class="num k" data-v="11">11</td><td class="l">Xavier Taylor</td><td class="l k">ND</td><td class="num k" data-v="11">11</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="2">2</td><td class="num k" data-v="1287.1">1,287</td>
+<td class="num" data-v="9.228809">9.23</td>
+<td class="num" data-v="-13.219489">-13.22</td>
+<td class="num" data-v="-22.448298">-22.45</td>
+<td class="num" data-v="16.831560">16.8%</td>
+<td class="num" data-v="36.341864">36.3%</td>
+<td class="num " data-v="802">802</td>
+<td class="num " data-v="1288">1,288</td>
+<td class="num " data-v="1176">1,176</td>
+<td class="num " data-v="1162">1,162</td>
+<td class="num volt" data-v="950">950</td>
+<td class="num dn" data-v="-212">-212</td>
+<td class="num dn" data-v="-226">-226</td>
+</tr>
+<tr><td class="num k" data-v="12">12</td><td class="l">Latrelle Pickett</td><td class="l k">ND</td><td class="num k" data-v="12">12</td><td class="l k">SF</td><td class="num" data-v="21">21</td><td class="num" data-v="15">15</td><td class="num k" data-v="975.5">976</td>
+<td class="num" data-v="6.532047">6.53</td>
+<td class="num" data-v="-18.914833">-18.91</td>
+<td class="num" data-v="-25.446880">-25.45</td>
+<td class="num" data-v="49.878363">49.9%</td>
+<td class="num" data-v="88.851103">88.9%</td>
+<td class="num " data-v="548">548</td>
+<td class="num " data-v="734">734</td>
+<td class="num " data-v="478">478</td>
+<td class="num " data-v="446">446</td>
+<td class="num volt" data-v="238">238</td>
+<td class="num dn" data-v="-208">-208</td>
+<td class="num dn" data-v="-240">-240</td>
+</tr>
+<tr><td class="num k" data-v="13">13</td><td class="l">Dyson Sharp</td><td class="l k">ND</td><td class="num k" data-v="13">13</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="13">13</td><td class="num k" data-v="1444.8">1,445</td>
+<td class="num" data-v="11.283826">11.28</td>
+<td class="num" data-v="20.390511">20.39</td>
+<td class="num" data-v="9.106685">9.11</td>
+<td class="num" data-v="49.866209">49.9%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="3091">3,091</td>
+<td class="num " data-v="2281">2,281</td>
+<td class="num " data-v="2346">2,346</td>
+<td class="num " data-v="2427">2,427</td>
+<td class="num volt" data-v="2879">2,879</td>
+<td class="num up" data-v="452">+452</td>
+<td class="num up" data-v="533">+533</td>
+</tr>
+<tr><td class="num k" data-v="14">14</td><td class="l">Harry Kyle</td><td class="l k">ND</td><td class="num k" data-v="14">14</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="7">7</td><td class="num k" data-v="1040.2">1,040</td>
+<td class="num" data-v="6.532047">6.53</td>
+<td class="num" data-v="-7.589489">-7.59</td>
+<td class="num" data-v="-14.121536">-14.12</td>
+<td class="num" data-v="41.218032">41.2%</td>
+<td class="num" data-v="53.562934">53.6%</td>
+<td class="num " data-v="1158">1,158</td>
+<td class="num " data-v="1096">1,096</td>
+<td class="num " data-v="957">957</td>
+<td class="num " data-v="925">925</td>
+<td class="num volt" data-v="841">841</td>
+<td class="num dn" data-v="-84">-84</td>
+<td class="num dn" data-v="-116">-116</td>
+</tr>
+<tr><td class="num k" data-v="15">15</td><td class="l">Oskar Taylor</td><td class="l k">ND</td><td class="num k" data-v="15">15</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="903.8">904</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="629">629</td>
+<td class="num " data-v="529">529</td>
+<td class="num " data-v="596">596</td>
+<td class="num " data-v="596">596</td>
+<td class="num volt" data-v="596">596</td>
+<td class="num " data-v="0">+0</td>
+<td class="num " data-v="0">+0</td>
+</tr>
+<tr><td class="num k" data-v="16">16</td><td class="l">Lachy Dovaston</td><td class="l k">ND</td><td class="num k" data-v="16">16</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="6">6</td><td class="num k" data-v="626.5">626</td>
+<td class="num" data-v="4.583320">4.58</td>
+<td class="num" data-v="-9.319489">-9.32</td>
+<td class="num" data-v="-13.902808">-13.90</td>
+<td class="num" data-v="37.945606">37.9%</td>
+<td class="num" data-v="49.154956">49.2%</td>
+<td class="num " data-v="512">512</td>
+<td class="num " data-v="628">628</td>
+<td class="num " data-v="556">556</td>
+<td class="num " data-v="550">550</td>
+<td class="num volt" data-v="502">502</td>
+<td class="num dn" data-v="-48">-48</td>
+<td class="num dn" data-v="-54">-54</td>
+</tr>
+<tr><td class="num k" data-v="17">17</td><td class="l">Jai Murray</td><td class="l k">ND</td><td class="num k" data-v="17">17</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="8">8</td><td class="num k" data-v="926.7">927</td>
+<td class="num" data-v="6.532047">6.53</td>
+<td class="num" data-v="-6.769489">-6.77</td>
+<td class="num" data-v="-13.301536">-13.30</td>
+<td class="num" data-v="43.858943">43.9%</td>
+<td class="num" data-v="54.460236">54.5%</td>
+<td class="num " data-v="1138">1,138</td>
+<td class="num " data-v="1039">1,039</td>
+<td class="num " data-v="948">948</td>
+<td class="num " data-v="940">940</td>
+<td class="num volt" data-v="877">877</td>
+<td class="num dn" data-v="-63">-63</td>
+<td class="num dn" data-v="-71">-71</td>
+</tr>
+<tr><td class="num k" data-v="18">18</td><td class="l">Beau Addinsall</td><td class="l k">ND</td><td class="num k" data-v="18">18</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="7">7</td><td class="num k" data-v="925.7">926</td>
+<td class="num" data-v="6.532047">6.53</td>
+<td class="num" data-v="2.120511">2.12</td>
+<td class="num" data-v="-4.411536">-4.41</td>
+<td class="num" data-v="41.218032">41.2%</td>
+<td class="num" data-v="18.321215">18.3%</td>
+<td class="num " data-v="1521">1,521</td>
+<td class="num " data-v="1158">1,158</td>
+<td class="num " data-v="1148">1,148</td>
+<td class="num " data-v="1158">1,158</td>
+<td class="num volt" data-v="1297">1,297</td>
+<td class="num up" data-v="139">+139</td>
+<td class="num up" data-v="149">+149</td>
+</tr>
+<tr><td class="num k" data-v="19">19</td><td class="l">Josh Lindsay</td><td class="l k">ND</td><td class="num k" data-v="19">19</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="13">13</td><td class="num k" data-v="813.2">813</td>
+<td class="num" data-v="6.074942">6.07</td>
+<td class="num" data-v="18.520511">18.52</td>
+<td class="num" data-v="12.445569">12.45</td>
+<td class="num" data-v="49.866209">49.9%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="2335">2,335</td>
+<td class="num " data-v="1530">1,530</td>
+<td class="num " data-v="1676">1,676</td>
+<td class="num " data-v="1796">1,796</td>
+<td class="num volt" data-v="2050">2,050</td>
+<td class="num up" data-v="254">+254</td>
+<td class="num up" data-v="374">+374</td>
+</tr>
+<tr><td class="num k" data-v="20">20</td><td class="l">Cameron Nairn</td><td class="l k">ND</td><td class="num k" data-v="20">20</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="3">3</td><td class="num k" data-v="546.3">546</td>
+<td class="num" data-v="3.293108">3.29</td>
+<td class="num" data-v="-5.019489">-5.02</td>
+<td class="num" data-v="-8.312597">-8.31</td>
+<td class="num" data-v="23.506859">23.5%</td>
+<td class="num" data-v="19.860948">19.9%</td>
+<td class="num " data-v="606">606</td>
+<td class="num " data-v="588">588</td>
+<td class="num " data-v="583">583</td>
+<td class="num " data-v="596">596</td>
+<td class="num volt" data-v="612">612</td>
+<td class="num up" data-v="16">+16</td>
+<td class="num up" data-v="29">+29</td>
+</tr>
+<tr><td class="num k" data-v="21">21</td><td class="l">Lachlan Carmichael</td><td class="l k">ND</td><td class="num k" data-v="21">21</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="774.6">775</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="548">548</td>
+<td class="num " data-v="453">453</td>
+<td class="num " data-v="487">487</td>
+<td class="num " data-v="479">479</td>
+<td class="num volt" data-v="479">479</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-8">-8</td>
+</tr>
+<tr><td class="num k" data-v="22">22</td><td class="l">Mitchell Marsh</td><td class="l k">ND</td><td class="num k" data-v="22">22</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="721.6">722</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="506">506</td>
+<td class="num " data-v="422">422</td>
+<td class="num " data-v="451">451</td>
+<td class="num " data-v="552">552</td>
+<td class="num volt" data-v="552">552</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="101">+101</td>
+</tr>
+<tr><td class="num k" data-v="23">23</td><td class="l">Aidan Schubert</td><td class="l k">ND</td><td class="num k" data-v="23">23</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="1">1</td><td class="num k" data-v="682.0">682</td>
+<td class="num" data-v="7.289285">7.29</td>
+<td class="num" data-v="-19.244992">-19.24</td>
+<td class="num" data-v="-26.534277">-26.53</td>
+<td class="num" data-v="9.038897">9.0%</td>
+<td class="num" data-v="24.593584">24.6%</td>
+<td class="num " data-v="481">481</td>
+<td class="num " data-v="704">704</td>
+<td class="num " data-v="578">578</td>
+<td class="num " data-v="630">630</td>
+<td class="num volt" data-v="546">546</td>
+<td class="num dn" data-v="-84">-84</td>
+<td class="num dn" data-v="-32">-32</td>
+</tr>
+<tr><td class="num k" data-v="24">24</td><td class="l">Harley Barker</td><td class="l k">ND</td><td class="num k" data-v="24">24</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="843.1">843</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="677">677</td>
+<td class="num " data-v="471">471</td>
+<td class="num " data-v="499">499</td>
+<td class="num " data-v="481">481</td>
+<td class="num volt" data-v="481">481</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-18">-18</td>
+</tr>
+<tr><td class="num k" data-v="25">25</td><td class="l">Adam Sweid</td><td class="l k">ND</td><td class="num k" data-v="25">25</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="427.7">428</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="397">397</td>
+<td class="num " data-v="250">250</td>
+<td class="num " data-v="263">263</td>
+<td class="num " data-v="253">253</td>
+<td class="num volt" data-v="253">253</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-10">-10</td>
+</tr>
+<tr><td class="num k" data-v="26">26</td><td class="l">Blake Thredgold</td><td class="l k">ND</td><td class="num k" data-v="26">26</td><td class="l k">KPD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="503.4">503</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="373">373</td>
+<td class="num " data-v="281">281</td>
+<td class="num " data-v="295">295</td>
+<td class="num " data-v="372">372</td>
+<td class="num volt" data-v="372">372</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="77">+77</td>
+</tr>
+<tr><td class="num k" data-v="27">27</td><td class="l">Louis Emmett</td><td class="l k">ND</td><td class="num k" data-v="27">27</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="6">6</td><td class="num k" data-v="601.0">601</td>
+<td class="num" data-v="6.714541">6.71</td>
+<td class="num" data-v="-25.274992">-25.27</td>
+<td class="num" data-v="-31.989533">-31.99</td>
+<td class="num" data-v="37.945606">37.9%</td>
+<td class="num" data-v="80.200827">80.2%</td>
+<td class="num " data-v="749">749</td>
+<td class="num " data-v="668">668</td>
+<td class="num " data-v="644">644</td>
+<td class="num " data-v="627">627</td>
+<td class="num volt" data-v="454">454</td>
+<td class="num dn" data-v="-173">-173</td>
+<td class="num dn" data-v="-190">-190</td>
+</tr>
+<tr><td class="num k" data-v="28">28</td><td class="l">Avery Thomas</td><td class="l k">ND</td><td class="num k" data-v="28">28</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="464.3">464</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="394">394</td>
+<td class="num " data-v="272">272</td>
+<td class="num " data-v="281">281</td>
+<td class="num " data-v="266">266</td>
+<td class="num volt" data-v="266">266</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-15">-15</td>
+</tr>
+<tr><td class="num k" data-v="29">29</td><td class="l">Sam Allen</td><td class="l k">ND</td><td class="num k" data-v="29">29</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="791.8">792</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="618">618</td>
+<td class="num " data-v="463">463</td>
+<td class="num " data-v="476">476</td>
+<td class="num " data-v="450">450</td>
+<td class="num volt" data-v="450">450</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-26">-26</td>
+</tr>
+<tr><td class="num k" data-v="30">30</td><td class="l">Thomas Matthews</td><td class="l k">ND</td><td class="num k" data-v="30">30</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="422.8">423</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="337">337</td>
+<td class="num " data-v="247">247</td>
+<td class="num " data-v="253">253</td>
+<td class="num " data-v="238">238</td>
+<td class="num volt" data-v="238">238</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-15">-15</td>
+</tr>
+<tr><td class="num k" data-v="31">31</td><td class="l">Zane Peucker</td><td class="l k">ND</td><td class="num k" data-v="31">31</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="2">2</td><td class="num k" data-v="421.8">422</td>
+<td class="num" data-v="-0.424300">-0.42</td>
+<td class="num" data-v="-7.319489">-7.32</td>
+<td class="num" data-v="-6.895189">-6.90</td>
+<td class="num" data-v="16.831560">16.8%</td>
+<td class="num" data-v="11.765913">11.8%</td>
+<td class="num " data-v="384">384</td>
+<td class="num " data-v="458">458</td>
+<td class="num " data-v="473">473</td>
+<td class="num " data-v="487">487</td>
+<td class="num volt" data-v="505">505</td>
+<td class="num up" data-v="18">+18</td>
+<td class="num up" data-v="32">+32</td>
+</tr>
+<tr><td class="num k" data-v="32">32</td><td class="l">Tyan Prindable</td><td class="l k">ND</td><td class="num k" data-v="32">32</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="678.0">678</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="543">543</td>
+<td class="num " data-v="397">397</td>
+<td class="num " data-v="402">402</td>
+<td class="num " data-v="375">375</td>
+<td class="num volt" data-v="375">375</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-27">-27</td>
+</tr>
+<tr><td class="num k" data-v="33">33</td><td class="l">Hunter Holmes</td><td class="l k">ND</td><td class="num k" data-v="33">33</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="649.7">650</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="517">517</td>
+<td class="num " data-v="380">380</td>
+<td class="num " data-v="384">384</td>
+<td class="num " data-v="357">357</td>
+<td class="num volt" data-v="357">357</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-27">-27</td>
+</tr>
+<tr><td class="num k" data-v="34">34</td><td class="l">Jack Dalton</td><td class="l k">ND</td><td class="num k" data-v="34">34</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="4">4</td><td class="num k" data-v="418.8">419</td>
+<td class="num" data-v="-0.556210">-0.56</td>
+<td class="num" data-v="-3.519489">-3.52</td>
+<td class="num" data-v="-2.963279">-2.96</td>
+<td class="num" data-v="29.181815">29.2%</td>
+<td class="num" data-v="7.455549">7.5%</td>
+<td class="num " data-v="437">437</td>
+<td class="num " data-v="467">467</td>
+<td class="num " data-v="480">480</td>
+<td class="num " data-v="489">489</td>
+<td class="num volt" data-v="557">557</td>
+<td class="num up" data-v="68">+68</td>
+<td class="num up" data-v="77">+77</td>
+</tr>
+<tr><td class="num k" data-v="35">35</td><td class="l">Jevan Phillipou</td><td class="l k">ND</td><td class="num k" data-v="35">35</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="417.8">418</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="273">273</td>
+<td class="num " data-v="244">244</td>
+<td class="num " data-v="245">245</td>
+<td class="num " data-v="226">226</td>
+<td class="num volt" data-v="226">226</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-19">-19</td>
+</tr>
+<tr><td class="num k" data-v="36">36</td><td class="l">Max Kondogiannis</td><td class="l k">ND</td><td class="num k" data-v="36">36</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="9">9</td><td class="num k" data-v="346.0">346</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="-18.619489">-18.62</td>
+<td class="num" data-v="-17.357175">-17.36</td>
+<td class="num" data-v="45.939858">45.9%</td>
+<td class="num" data-v="67.538926">67.5%</td>
+<td class="num " data-v="435">435</td>
+<td class="num " data-v="381">381</td>
+<td class="num " data-v="380">380</td>
+<td class="num " data-v="358">358</td>
+<td class="num volt" data-v="312">312</td>
+<td class="num dn" data-v="-46">-46</td>
+<td class="num dn" data-v="-68">-68</td>
+</tr>
+<tr><td class="num k" data-v="37">37</td><td class="l">Samuel Swadling</td><td class="l k">ND</td><td class="num k" data-v="37">37</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="6">6</td><td class="num k" data-v="630.2">630</td>
+<td class="num" data-v="4.640097">4.64</td>
+<td class="num" data-v="0.150511">0.15</td>
+<td class="num" data-v="-4.489586">-4.49</td>
+<td class="num" data-v="37.945606">37.9%</td>
+<td class="num" data-v="16.933585">16.9%</td>
+<td class="num " data-v="776">776</td>
+<td class="num " data-v="706">706</td>
+<td class="num " data-v="681">681</td>
+<td class="num " data-v="682">682</td>
+<td class="num volt" data-v="773">773</td>
+<td class="num up" data-v="91">+91</td>
+<td class="num up" data-v="92">+92</td>
+</tr>
+<tr><td class="num k" data-v="38">38</td><td class="l">Koby Evans</td><td class="l k">ND</td><td class="num k" data-v="38">38</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="414.8">415</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="254">254</td>
+<td class="num " data-v="243">243</td>
+<td class="num " data-v="240">240</td>
+<td class="num " data-v="219">219</td>
+<td class="num volt" data-v="219">219</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-21">-21</td>
+</tr>
+<tr><td class="num k" data-v="39">39</td><td class="l">Tylah Williams</td><td class="l k">ND</td><td class="num k" data-v="39">39</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="413.9">414</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="249">249</td>
+<td class="num " data-v="242">242</td>
+<td class="num " data-v="239">239</td>
+<td class="num " data-v="217">217</td>
+<td class="num volt" data-v="217">217</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-22">-22</td>
+</tr>
+<tr><td class="num k" data-v="40">40</td><td class="l">Tobyn Murray</td><td class="l k">ND</td><td class="num k" data-v="40">40</td><td class="l k">SF</td><td class="num" data-v="21">21</td><td class="num" data-v="0">0</td><td class="num k" data-v="390.4">390</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="234">234</td>
+<td class="num " data-v="228">228</td>
+<td class="num " data-v="225">225</td>
+<td class="num " data-v="204">204</td>
+<td class="num volt" data-v="204">204</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-21">-21</td>
+</tr>
+<tr><td class="num k" data-v="41">41</td><td class="l">Charlie Banfield</td><td class="l k">ND</td><td class="num k" data-v="41">41</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="3">3</td><td class="num k" data-v="618.9">619</td>
+<td class="num" data-v="4.468035">4.47</td>
+<td class="num" data-v="6.480511">6.48</td>
+<td class="num" data-v="2.012477">2.01</td>
+<td class="num" data-v="23.506859">23.5%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="536">536</td>
+<td class="num " data-v="670">670</td>
+<td class="num " data-v="661">661</td>
+<td class="num " data-v="683">683</td>
+<td class="num volt" data-v="798">798</td>
+<td class="num up" data-v="115">+115</td>
+<td class="num up" data-v="137">+137</td>
+</tr>
+<tr><td class="num k" data-v="42">42</td><td class="l">Billy Cootee</td><td class="l k">ND</td><td class="num k" data-v="42">42</td><td class="l k">MID</td><td class="num" data-v="24">24</td><td class="num" data-v="7">7</td><td class="num k" data-v="600.0">600</td>
+<td class="num" data-v="4.159453">4.16</td>
+<td class="num" data-v="-29.390000">-29.39</td>
+<td class="num" data-v="-33.549453">-33.55</td>
+<td class="num" data-v="41.218032">41.2%</td>
+<td class="num" data-v="41.218032">41.2%</td>
+<td class="num " data-v="264">264</td>
+<td class="num " data-v="469">469</td>
+<td class="num " data-v="257">257</td>
+<td class="num " data-v="232">232</td>
+<td class="num volt" data-v="232">232</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-25">-25</td>
+</tr>
+<tr><td class="num k" data-v="43">43</td><td class="l">Cody Curtin</td><td class="l k">ND</td><td class="num k" data-v="43">43</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="4">4</td><td class="num k" data-v="328.3">328</td>
+<td class="num" data-v="3.375580">3.38</td>
+<td class="num" data-v="-13.444992">-13.44</td>
+<td class="num" data-v="-16.820572">-16.82</td>
+<td class="num" data-v="29.181815">29.2%</td>
+<td class="num" data-v="45.445324">45.4%</td>
+<td class="num " data-v="427">427</td>
+<td class="num " data-v="394">394</td>
+<td class="num " data-v="438">438</td>
+<td class="num " data-v="440">440</td>
+<td class="num volt" data-v="400">400</td>
+<td class="num dn" data-v="-40">-40</td>
+<td class="num dn" data-v="-38">-38</td>
+</tr>
+<tr><td class="num k" data-v="44">44</td><td class="l">Tai Hayes</td><td class="l k">ND</td><td class="num k" data-v="44">44</td><td class="l k">SF</td><td class="num" data-v="22">22</td><td class="num" data-v="0">0</td><td class="num k" data-v="297.5">298</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="194">194</td>
+<td class="num " data-v="174">174</td>
+<td class="num " data-v="169">169</td>
+<td class="num " data-v="151">151</td>
+<td class="num volt" data-v="151">151</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-18">-18</td>
+</tr>
+<tr><td class="num k" data-v="45">45</td><td class="l">Talor Byrne</td><td class="l k">ND</td><td class="num k" data-v="45">45</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="15">15</td><td class="num k" data-v="282.4">282</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="10.220511">10.22</td>
+<td class="num" data-v="11.482825">11.48</td>
+<td class="num" data-v="49.878363">49.9%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="857">857</td>
+<td class="num " data-v="578">578</td>
+<td class="num " data-v="662">662</td>
+<td class="num " data-v="687">687</td>
+<td class="num volt" data-v="773">773</td>
+<td class="num up" data-v="86">+86</td>
+<td class="num up" data-v="111">+111</td>
+</tr>
+<tr><td class="num k" data-v="46">46</td><td class="l">Koby Coulson</td><td class="l k">ND</td><td class="num k" data-v="46">46</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="461.2">461</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="316">316</td>
+<td class="num " data-v="270">270</td>
+<td class="num " data-v="260">260</td>
+<td class="num " data-v="232">232</td>
+<td class="num volt" data-v="232">232</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-28">-28</td>
+</tr>
+<tr><td class="num k" data-v="47">47</td><td class="l">Jack Ison</td><td class="l k">ND</td><td class="num k" data-v="47">47</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="7">7</td><td class="num k" data-v="280.4">280</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="-6.369489">-6.37</td>
+<td class="num" data-v="-5.107175">-5.11</td>
+<td class="num" data-v="41.218032">41.2%</td>
+<td class="num" data-v="21.559638">21.6%</td>
+<td class="num " data-v="512">512</td>
+<td class="num " data-v="364">364</td>
+<td class="num " data-v="414">414</td>
+<td class="num " data-v="417">417</td>
+<td class="num volt" data-v="453">453</td>
+<td class="num up" data-v="36">+36</td>
+<td class="num up" data-v="39">+39</td>
+</tr>
+<tr><td class="num k" data-v="48">48</td><td class="l">Hugo Mikunda</td><td class="l k">ND</td><td class="num k" data-v="48">48</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="279.4">279</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="177">177</td>
+<td class="num " data-v="163">163</td>
+<td class="num " data-v="157">157</td>
+<td class="num " data-v="139">139</td>
+<td class="num volt" data-v="139">139</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-18">-18</td>
+</tr>
+<tr><td class="num k" data-v="49">49</td><td class="l">Maxwell King</td><td class="l k">ND</td><td class="num k" data-v="49">49</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="278.4">278</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="156">156</td>
+<td class="num " data-v="155">155</td>
+<td class="num " data-v="148">148</td>
+<td class="num " data-v="129">129</td>
+<td class="num volt" data-v="129">129</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-19">-19</td>
+</tr>
+<tr><td class="num k" data-v="50">50</td><td class="l">Archie Ludowyke</td><td class="l k">ND</td><td class="num k" data-v="50">50</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="2">2</td><td class="num k" data-v="237.8">238</td>
+<td class="num" data-v="2.319948">2.32</td>
+<td class="num" data-v="-3.244992">-3.24</td>
+<td class="num" data-v="-5.564940">-5.56</td>
+<td class="num" data-v="16.831560">16.8%</td>
+<td class="num" data-v="9.267480">9.3%</td>
+<td class="num " data-v="206">206</td>
+<td class="num " data-v="278">278</td>
+<td class="num " data-v="320">320</td>
+<td class="num " data-v="327">327</td>
+<td class="num volt" data-v="343">343</td>
+<td class="num up" data-v="16">+16</td>
+<td class="num up" data-v="23">+23</td>
+</tr>
+<tr><td class="num k" data-v="51">51</td><td class="l">Finnegan Davis</td><td class="l k">ND</td><td class="num k" data-v="51">51</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="171.2">171</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="165">165</td>
+<td class="num " data-v="100">100</td>
+<td class="num " data-v="95">95</td>
+<td class="num " data-v="84">84</td>
+<td class="num volt" data-v="84">84</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-11">-11</td>
+</tr>
+<tr><td class="num k" data-v="52">52</td><td class="l">Kye Fincher</td><td class="l k">ND</td><td class="num k" data-v="52">52</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="297.3">297</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="249">249</td>
+<td class="num " data-v="174">174</td>
+<td class="num " data-v="165">165</td>
+<td class="num " data-v="145">145</td>
+<td class="num volt" data-v="145">145</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-20">-20</td>
+</tr>
+<tr><td class="num k" data-v="53">53</td><td class="l">Hussien El Achkar</td><td class="l k">ND</td><td class="num k" data-v="53">53</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="9">9</td><td class="num k" data-v="274.4">274</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="-4.949489">-4.95</td>
+<td class="num" data-v="-3.687175">-3.69</td>
+<td class="num" data-v="45.939858">45.9%</td>
+<td class="num" data-v="17.200586">17.2%</td>
+<td class="num " data-v="353">353</td>
+<td class="num " data-v="305">305</td>
+<td class="num " data-v="320">320</td>
+<td class="num " data-v="313">313</td>
+<td class="num volt" data-v="361">361</td>
+<td class="num up" data-v="48">+48</td>
+<td class="num up" data-v="41">+41</td>
+</tr>
+<tr><td class="num k" data-v="54">54</td><td class="l">Noah Roberts-Thomson</td><td class="l k">ND</td><td class="num k" data-v="54">54</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="3">3</td><td class="num k" data-v="273.4">273</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="-18.319489">-18.32</td>
+<td class="num" data-v="-17.057175">-17.06</td>
+<td class="num" data-v="23.506859">23.5%</td>
+<td class="num" data-v="38.351381">38.4%</td>
+<td class="num " data-v="213">213</td>
+<td class="num " data-v="295">295</td>
+<td class="num " data-v="316">316</td>
+<td class="num " data-v="322">322</td>
+<td class="num volt" data-v="290">290</td>
+<td class="num dn" data-v="-32">-32</td>
+<td class="num dn" data-v="-26">-26</td>
+</tr>
+<tr><td class="num k" data-v="55">55</td><td class="l">Zac McCarthy</td><td class="l k">ND</td><td class="num k" data-v="55">55</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="214.2">214</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="147">147</td>
+<td class="num " data-v="125">125</td>
+<td class="num " data-v="118">118</td>
+<td class="num " data-v="133">133</td>
+<td class="num volt" data-v="133">133</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="15">+15</td>
+</tr>
+<tr><td class="num k" data-v="56">56</td><td class="l">Matthew LeRay</td><td class="l k">ND</td><td class="num k" data-v="56">56</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="233.6">234</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="219">219</td>
+<td class="num " data-v="137">137</td>
+<td class="num " data-v="128">128</td>
+<td class="num " data-v="111">111</td>
+<td class="num volt" data-v="111">111</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-17">-17</td>
+</tr>
+<tr><td class="num k" data-v="57">57</td><td class="l">Angus Anderson</td><td class="l k">ND</td><td class="num k" data-v="57">57</td><td class="l k">MID</td><td class="num" data-v="23">23</td><td class="num" data-v="13">13</td><td class="num k" data-v="216.3">216</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="-7.035948">-7.04</td>
+<td class="num" data-v="-5.773634">-5.77</td>
+<td class="num" data-v="49.866209">49.9%</td>
+<td class="num" data-v="33.368933">33.4%</td>
+<td class="num " data-v="165">165</td>
+<td class="num " data-v="203">203</td>
+<td class="num " data-v="161">161</td>
+<td class="num " data-v="151">151</td>
+<td class="num volt" data-v="171">171</td>
+<td class="num up" data-v="20">+20</td>
+<td class="num up" data-v="10">+10</td>
+</tr>
+<tr><td class="num k" data-v="58">58</td><td class="l">Will Darcy</td><td class="l k">ND</td><td class="num k" data-v="58">58</td><td class="l k">KPD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="368.0">368</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="187">187</td>
+<td class="num " data-v="215">215</td>
+<td class="num " data-v="201">201</td>
+<td class="num " data-v="225">225</td>
+<td class="num volt" data-v="225">225</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="24">+24</td>
+</tr>
+<tr><td class="num k" data-v="59">59</td><td class="l">Fred Rodriguez</td><td class="l k">RD</td><td class="num k" data-v="1">1</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="212.4">212</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="201">201</td>
+<td class="num " data-v="123">123</td>
+<td class="num " data-v="114">114</td>
+<td class="num " data-v="97">97</td>
+<td class="num volt" data-v="97">97</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-17">-17</td>
+</tr>
+<tr><td class="num k" data-v="60">60</td><td class="l">Riley Onley</td><td class="l k">RD</td><td class="num k" data-v="2">2</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="212.4">212</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="201">201</td>
+<td class="num " data-v="123">123</td>
+<td class="num " data-v="114">114</td>
+<td class="num " data-v="97">97</td>
+<td class="num volt" data-v="97">97</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-17">-17</td>
+</tr>
+<tr><td class="num k" data-v="61">61</td><td class="l">Jack Watkins</td><td class="l k">RD</td><td class="num k" data-v="3">3</td><td class="l k">MID</td><td class="num" data-v="26">26</td><td class="num" data-v="11">11</td><td class="num k" data-v="212.4">212</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="-23.770000">-23.77</td>
+<td class="num" data-v="-22.507686">-22.51</td>
+<td class="num" data-v="48.674081">48.7%</td>
+<td class="num" data-v="48.674081">48.7%</td>
+<td class="num " data-v="130">130</td>
+<td class="num " data-v="154">154</td>
+<td class="num " data-v="81">81</td>
+<td class="num " data-v="72">72</td>
+<td class="num volt" data-v="72">72</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-9">-9</td>
+</tr>
+<tr><td class="num k" data-v="62">62</td><td class="l">Leon Kickett</td><td class="l k">RD</td><td class="num k" data-v="4">4</td><td class="l k">SF</td><td class="num" data-v="20">20</td><td class="num" data-v="0">0</td><td class="num k" data-v="200.8">201</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="151">151</td>
+<td class="num " data-v="117">117</td>
+<td class="num " data-v="107">107</td>
+<td class="num " data-v="92">92</td>
+<td class="num volt" data-v="92">92</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-15">-15</td>
+</tr>
+<tr><td class="num k" data-v="63">63</td><td class="l">Ollie Greeves</td><td class="l k">RD</td><td class="num k" data-v="5">5</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="4">4</td><td class="num k" data-v="212.4">212</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="-13.019489">-13.02</td>
+<td class="num" data-v="-11.757175">-11.76</td>
+<td class="num" data-v="29.181815">29.2%</td>
+<td class="num" data-v="33.824528">33.8%</td>
+<td class="num " data-v="583">583</td>
+<td class="num " data-v="365">365</td>
+<td class="num " data-v="492">492</td>
+<td class="num " data-v="519">519</td>
+<td class="num volt" data-v="512">512</td>
+<td class="num dn" data-v="-7">-7</td>
+<td class="num up" data-v="20">+20</td>
+</tr>
+<tr><td class="num k" data-v="64">64</td><td class="l">Nick Driscoll</td><td class="l k">RD</td><td class="num k" data-v="6">6</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="212.4">212</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="201">201</td>
+<td class="num " data-v="123">123</td>
+<td class="num " data-v="114">114</td>
+<td class="num " data-v="97">97</td>
+<td class="num volt" data-v="97">97</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-17">-17</td>
+</tr>
+<tr><td class="num k" data-v="65">65</td><td class="l">Riley Hamilton</td><td class="l k">PDA</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="20">20</td><td class="num" data-v="6">6</td><td class="num k" data-v="86.6">87</td>
+<td class="num" data-v="-7.036412">-7.04</td>
+<td class="num" data-v="-17.923023">-17.92</td>
+<td class="num" data-v="-10.886611">-10.89</td>
+<td class="num" data-v="37.945606">37.9%</td>
+<td class="num" data-v="40.494784">40.5%</td>
+<td class="num " data-v="305">305</td>
+<td class="num " data-v="143">143</td>
+<td class="num " data-v="205">205</td>
+<td class="num " data-v="210">210</td>
+<td class="num volt" data-v="208">208</td>
+<td class="num dn" data-v="-2">-2</td>
+<td class="num up" data-v="3">+3</td>
+</tr>
+<tr><td class="num k" data-v="66">66</td><td class="l">Liam Hetherton</td><td class="l k">PDA</td><td class="num k" data-v="999">&mdash;</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="117.3">117</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="168">168</td>
+<td class="num " data-v="65">65</td>
+<td class="num " data-v="59">59</td>
+<td class="num " data-v="66">66</td>
+<td class="num volt" data-v="66">66</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="7">+7</td>
+</tr>
+<tr><td class="num k" data-v="67">67</td><td class="l">Noah Chamberlain</td><td class="l k">PDA</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="86.6">87</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="86">86</td>
+<td class="num " data-v="48">48</td>
+<td class="num " data-v="44">44</td>
+<td class="num " data-v="37">37</td>
+<td class="num volt" data-v="37">37</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-7">-7</td>
+</tr>
+<tr><td class="num k" data-v="68">68</td><td class="l">Kalani White</td><td class="l k">PDN</td><td class="num k" data-v="999">&mdash;</td><td class="l k">KPF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="92.4">92</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="84">84</td>
+<td class="num " data-v="54">54</td>
+<td class="num " data-v="49">49</td>
+<td class="num " data-v="55">55</td>
+<td class="num volt" data-v="55">55</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="6">+6</td>
+</tr>
+<tr><td class="num k" data-v="69">69</td><td class="l">Jesse Mellor</td><td class="l k">PDN</td><td class="num k" data-v="999">&mdash;</td><td class="l k">MID</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="112.7">113</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="84">84</td>
+<td class="num " data-v="66">66</td>
+<td class="num " data-v="60">60</td>
+<td class="num " data-v="51">51</td>
+<td class="num volt" data-v="51">51</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-9">-9</td>
+</tr>
+<tr><td class="num k" data-v="70">70</td><td class="l">Jai Saxena</td><td class="l k">PDN</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="54.7">55</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="84">84</td>
+<td class="num " data-v="32">32</td>
+<td class="num " data-v="29">29</td>
+<td class="num " data-v="25">25</td>
+<td class="num volt" data-v="25">25</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-4">-4</td>
+</tr>
+<tr><td class="num k" data-v="71">71</td><td class="l">Ryda Luke</td><td class="l k">PDN</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="54.7">55</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="84">84</td>
+<td class="num " data-v="32">32</td>
+<td class="num " data-v="29">29</td>
+<td class="num " data-v="25">25</td>
+<td class="num volt" data-v="25">25</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-4">-4</td>
+</tr>
+<tr><td class="num k" data-v="72">72</td><td class="l">Toby Whan</td><td class="l k">PDN</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="54.7">55</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="84">84</td>
+<td class="num " data-v="32">32</td>
+<td class="num " data-v="29">29</td>
+<td class="num " data-v="25">25</td>
+<td class="num volt" data-v="25">25</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-4">-4</td>
+</tr>
+<tr><td class="num k" data-v="73">73</td><td class="l">Ben Murphy</td><td class="l k">IRE</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="87.0">87</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="85">85</td>
+<td class="num " data-v="51">51</td>
+<td class="num " data-v="47">47</td>
+<td class="num " data-v="40">40</td>
+<td class="num volt" data-v="40">40</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-7">-7</td>
+</tr>
+<tr><td class="num k" data-v="74">74</td><td class="l">Kobe McDonald</td><td class="l k">IRE</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="87.0">87</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="85">85</td>
+<td class="num " data-v="51">51</td>
+<td class="num " data-v="47">47</td>
+<td class="num " data-v="40">40</td>
+<td class="num volt" data-v="40">40</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-7">-7</td>
+</tr>
+<tr><td class="num k" data-v="75">75</td><td class="l">Cillian Bourke</td><td class="l k">IRE</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SD</td><td class="num" data-v="20">20</td><td class="num" data-v="0">0</td><td class="num k" data-v="87.0">87</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="85">85</td>
+<td class="num " data-v="51">51</td>
+<td class="num " data-v="47">47</td>
+<td class="num " data-v="40">40</td>
+<td class="num volt" data-v="40">40</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-7">-7</td>
+</tr>
+<tr><td class="num k" data-v="76">76</td><td class="l">Oscar Berry</td><td class="l k">UNR</td><td class="num k" data-v="999">&mdash;</td><td class="l k">KPD</td><td class="num" data-v="24">24</td><td class="num" data-v="0">0</td><td class="num k" data-v="95.4">95</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="53">53</td>
+<td class="num " data-v="55">55</td>
+<td class="num " data-v="51">51</td>
+<td class="num " data-v="57">57</td>
+<td class="num volt" data-v="57">57</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="6">+6</td>
+</tr>
+<tr><td class="num k" data-v="77">77</td><td class="l">Indy Cotton</td><td class="l k">UNR</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="107.7">108</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="48">48</td>
+<td class="num " data-v="63">63</td>
+<td class="num " data-v="58">58</td>
+<td class="num " data-v="49">49</td>
+<td class="num volt" data-v="49">49</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-9">-9</td>
+</tr>
+<tr><td class="num k" data-v="78">78</td><td class="l">Patrick Carr</td><td class="l k">UNR</td><td class="num k" data-v="999">&mdash;</td><td class="l k">RUCK</td><td class="num" data-v="21">21</td><td class="num" data-v="0">0</td><td class="num k" data-v="79.7">80</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="31">31</td>
+<td class="num " data-v="46">46</td>
+<td class="num " data-v="43">43</td>
+<td class="num " data-v="47">47</td>
+<td class="num volt" data-v="47">47</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="4">+4</td>
+</tr>
+<tr><td class="num k" data-v="79">79</td><td class="l">Chris Scerri</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="20">20</td><td class="num" data-v="7">7</td><td class="num k" data-v="124.4">124</td>
+<td class="num" data-v="-7.036412">-7.04</td>
+<td class="num" data-v="-5.993023">-5.99</td>
+<td class="num" data-v="1.043389">1.04</td>
+<td class="num" data-v="41.218032">41.2%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="459">459</td>
+<td class="num " data-v="232">232</td>
+<td class="num " data-v="313">313</td>
+<td class="num " data-v="321">321</td>
+<td class="num volt" data-v="355">355</td>
+<td class="num up" data-v="34">+34</td>
+<td class="num up" data-v="42">+42</td>
+</tr>
+<tr><td class="num k" data-v="80">80</td><td class="l">Thomas Burton</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="5">5</td><td class="num k" data-v="124.4">124</td>
+<td class="num" data-v="-7.036412">-7.04</td>
+<td class="num" data-v="-17.619489">-17.62</td>
+<td class="num" data-v="-10.583077">-10.58</td>
+<td class="num" data-v="33.962628">34.0%</td>
+<td class="num" data-v="35.538056">35.5%</td>
+<td class="num " data-v="439">439</td>
+<td class="num " data-v="213">213</td>
+<td class="num " data-v="309">309</td>
+<td class="num " data-v="323">323</td>
+<td class="num volt" data-v="321">321</td>
+<td class="num dn" data-v="-2">-2</td>
+<td class="num up" data-v="12">+12</td>
+</tr>
+<tr><td class="num k" data-v="81">81</td><td class="l">Balyn O&#x27;Brien</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SD</td><td class="num" data-v="19">19</td><td class="num" data-v="4">4</td><td class="num k" data-v="192.1">192</td>
+<td class="num" data-v="-1.462356">-1.46</td>
+<td class="num" data-v="-28.469489">-28.47</td>
+<td class="num" data-v="-27.007133">-27.01</td>
+<td class="num" data-v="29.181815">29.2%</td>
+<td class="num" data-v="63.007650">63.0%</td>
+<td class="num " data-v="383">383</td>
+<td class="num " data-v="266">266</td>
+<td class="num " data-v="340">340</td>
+<td class="num " data-v="346">346</td>
+<td class="num volt" data-v="297">297</td>
+<td class="num dn" data-v="-49">-49</td>
+<td class="num dn" data-v="-43">-43</td>
+</tr>
+<tr><td class="num k" data-v="82">82</td><td class="l">Milan Murdock</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="26">26</td><td class="num" data-v="17">17</td><td class="num k" data-v="124.4">124</td>
+<td class="num" data-v="-7.036412">-7.04</td>
+<td class="num" data-v="2.170000">2.17</td>
+<td class="num" data-v="9.206412">9.21</td>
+<td class="num" data-v="49.003577">49.0%</td>
+<td class="num" data-v="49.003577">49.0%</td>
+<td class="num " data-v="208">208</td>
+<td class="num " data-v="187">187</td>
+<td class="num " data-v="170">170</td>
+<td class="num " data-v="156">156</td>
+<td class="num volt" data-v="156">156</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-14">-14</td>
+</tr>
+<tr><td class="num k" data-v="83">83</td><td class="l">Tom Blamires</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SD</td><td class="num" data-v="24">24</td><td class="num" data-v="15">15</td><td class="num k" data-v="192.1">192</td>
+<td class="num" data-v="-1.462356">-1.46</td>
+<td class="num" data-v="-10.110000">-10.11</td>
+<td class="num" data-v="-8.647644">-8.65</td>
+<td class="num" data-v="49.878363">49.9%</td>
+<td class="num" data-v="49.878363">49.9%</td>
+<td class="num " data-v="139">139</td>
+<td class="num " data-v="170">170</td>
+<td class="num " data-v="122">122</td>
+<td class="num " data-v="111">111</td>
+<td class="num volt" data-v="111">111</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-11">-11</td>
+</tr>
+<tr><td class="num k" data-v="84">84</td><td class="l">Mitch Zadow</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="22">22</td><td class="num" data-v="7">7</td><td class="num k" data-v="124.4">124</td>
+<td class="num" data-v="-7.036412">-7.04</td>
+<td class="num" data-v="-22.278753">-22.28</td>
+<td class="num" data-v="-15.242341">-15.24</td>
+<td class="num" data-v="41.218032">41.2%</td>
+<td class="num" data-v="56.493242">56.5%</td>
+<td class="num " data-v="139">139</td>
+<td class="num " data-v="109">109</td>
+<td class="num " data-v="94">94</td>
+<td class="num " data-v="87">87</td>
+<td class="num volt" data-v="75">75</td>
+<td class="num dn" data-v="-12">-12</td>
+<td class="num dn" data-v="-19">-19</td>
+</tr>
+<tr><td class="num k" data-v="85">85</td><td class="l">Will Lewis</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">KPF</td><td class="num" data-v="27">27</td><td class="num" data-v="11">11</td><td class="num k" data-v="159.9">160</td>
+<td class="num" data-v="0.050792">0.05</td>
+<td class="num" data-v="-16.870000">-16.87</td>
+<td class="num" data-v="-16.920792">-16.92</td>
+<td class="num" data-v="48.674081">48.7%</td>
+<td class="num" data-v="48.674081">48.7%</td>
+<td class="num " data-v="139">139</td>
+<td class="num " data-v="126">126</td>
+<td class="num " data-v="75">75</td>
+<td class="num " data-v="67">67</td>
+<td class="num volt" data-v="67">67</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-8">-8</td>
+</tr>
+<tr><td class="num k" data-v="86">86</td><td class="l">Paddy Cross</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SF</td><td class="num" data-v="23">23</td><td class="num" data-v="10">10</td><td class="num k" data-v="124.4">124</td>
+<td class="num" data-v="-7.036412">-7.04</td>
+<td class="num" data-v="-16.885948">-16.89</td>
+<td class="num" data-v="-9.849536">-9.85</td>
+<td class="num" data-v="47.525436">47.5%</td>
+<td class="num" data-v="47.818424">47.8%</td>
+<td class="num " data-v="139">139</td>
+<td class="num " data-v="94">94</td>
+<td class="num " data-v="66">66</td>
+<td class="num " data-v="59">59</td>
+<td class="num volt" data-v="59">59</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-7">-7</td>
+</tr>
+<tr><td class="num k" data-v="87">87</td><td class="l">Flynn Perez</td><td class="l k">SSP</td><td class="num k" data-v="999">&mdash;</td><td class="l k">SD</td><td class="num" data-v="25">25</td><td class="num" data-v="31">31</td><td class="num k" data-v="192.1">192</td>
+<td class="num" data-v="-1.462356">-1.46</td>
+<td class="num" data-v="-21.413857">-21.41</td>
+<td class="num" data-v="-19.951501">-19.95</td>
+<td class="num" data-v="32.873510">32.9%</td>
+<td class="num" data-v="32.873510">32.9%</td>
+<td class="num " data-v="139">139</td>
+<td class="num " data-v="73">73</td>
+<td class="num " data-v="50">50</td>
+<td class="num " data-v="49">49</td>
+<td class="num volt" data-v="49">49</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-1">-1</td>
+</tr>
+<tr><td class="num k" data-v="88">88</td><td class="l">Tom McCarthy</td><td class="l k">MSD</td><td class="num k" data-v="1">1</td><td class="l k">SD</td><td class="num" data-v="26">26</td><td class="num" data-v="38">38</td><td class="num k" data-v="358.5">359</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="17.193333">17.19</td>
+<td class="num" data-v="18.455647">18.46</td>
+<td class="num" data-v="34.168560">34.2%</td>
+<td class="num" data-v="34.168560">34.2%</td>
+<td class="num " data-v="1457">1,457</td>
+<td class="num " data-v="1251">1,251</td>
+<td class="num " data-v="1238">1,238</td>
+<td class="num " data-v="1211">1,211</td>
+<td class="num volt" data-v="1211">1,211</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-27">-27</td>
+</tr>
+<tr><td class="num k" data-v="89">89</td><td class="l">Jaxon Artemis</td><td class="l k">MSD</td><td class="num k" data-v="1">1</td><td class="l k">SD</td><td class="num" data-v="20">20</td><td class="num" data-v="7">7</td><td class="num k" data-v="358.5">359</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="-6.743023">-6.74</td>
+<td class="num" data-v="-5.480709">-5.48</td>
+<td class="num" data-v="29.181815">29.2%</td>
+<td class="num" data-v="15.927456">15.9%</td>
+<td class="num " data-v="520">520</td>
+<td class="num " data-v="431">431</td>
+<td class="num " data-v="438">438</td>
+<td class="num " data-v="425">425</td>
+<td class="num volt" data-v="469">469</td>
+<td class="num up" data-v="44">+44</td>
+<td class="num up" data-v="31">+31</td>
+</tr>
+<tr><td class="num k" data-v="90">90</td><td class="l">Kye Annand</td><td class="l k">MSD</td><td class="num k" data-v="2">2</td><td class="l k">KPD</td><td class="num" data-v="23">23</td><td class="num" data-v="16">16</td><td class="num k" data-v="325.4">325</td>
+<td class="num" data-v="3.356848">3.36</td>
+<td class="num" data-v="0.819783">0.82</td>
+<td class="num" data-v="-2.537064">-2.54</td>
+<td class="num" data-v="45.939858">45.9%</td>
+<td class="num" data-v="10.413715">10.4%</td>
+<td class="num " data-v="239">239</td>
+<td class="num " data-v="334">334</td>
+<td class="num " data-v="282">282</td>
+<td class="num " data-v="263">263</td>
+<td class="num volt" data-v="328">328</td>
+<td class="num up" data-v="65">+65</td>
+<td class="num up" data-v="46">+46</td>
+</tr>
+<tr><td class="num k" data-v="91">91</td><td class="l">Zac Banch</td><td class="l k">MSD</td><td class="num k" data-v="2">2</td><td class="l k">SF</td><td class="num" data-v="23">23</td><td class="num" data-v="13">13</td><td class="num k" data-v="207.7">208</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="-24.547070">-24.55</td>
+<td class="num" data-v="-23.284756">-23.28</td>
+<td class="num" data-v="47.525436">47.5%</td>
+<td class="num" data-v="80.414142">80.4%</td>
+<td class="num " data-v="152">152</td>
+<td class="num " data-v="130">130</td>
+<td class="num " data-v="77">77</td>
+<td class="num " data-v="69">69</td>
+<td class="num volt" data-v="33">33</td>
+<td class="num dn" data-v="-36">-36</td>
+<td class="num dn" data-v="-44">-44</td>
+</tr>
+<tr><td class="num k" data-v="92">92</td><td class="l">Oliver Francou</td><td class="l k">MSD</td><td class="num k" data-v="3">3</td><td class="l k">MID</td><td class="num" data-v="20">20</td><td class="num" data-v="7">7</td><td class="num k" data-v="479.5">479</td>
+<td class="num" data-v="1.790520">1.79</td>
+<td class="num" data-v="8.706977">8.71</td>
+<td class="num" data-v="6.916458">6.92</td>
+<td class="num" data-v="29.181815">29.2%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="576">576</td>
+<td class="num " data-v="539">539</td>
+<td class="num " data-v="512">512</td>
+<td class="num " data-v="528">528</td>
+<td class="num volt" data-v="661">661</td>
+<td class="num up" data-v="133">+133</td>
+<td class="num up" data-v="149">+149</td>
+</tr>
+<tr><td class="num k" data-v="93">93</td><td class="l">Harrison Ramm</td><td class="l k">MSD</td><td class="num k" data-v="3">3</td><td class="l k">KPD</td><td class="num" data-v="20">20</td><td class="num" data-v="5">5</td><td class="num k" data-v="325.4">325</td>
+<td class="num" data-v="3.356848">3.36</td>
+<td class="num" data-v="-19.643909">-19.64</td>
+<td class="num" data-v="-23.000756">-23.00</td>
+<td class="num" data-v="33.962628">34.0%</td>
+<td class="num" data-v="63.360485">63.4%</td>
+<td class="num " data-v="545">545</td>
+<td class="num " data-v="421">421</td>
+<td class="num " data-v="432">432</td>
+<td class="num " data-v="438">438</td>
+<td class="num volt" data-v="391">391</td>
+<td class="num dn" data-v="-47">-47</td>
+<td class="num dn" data-v="-41">-41</td>
+</tr>
+<tr><td class="num k" data-v="94">94</td><td class="l">Flynn Riley</td><td class="l k">MSD</td><td class="num k" data-v="4">4</td><td class="l k">RUCK</td><td class="num" data-v="22">22</td><td class="num" data-v="1">1</td><td class="num k" data-v="448.2">448</td>
+<td class="num" data-v="5.189017">5.19</td>
+<td class="num" data-v="12.326895">12.33</td>
+<td class="num" data-v="7.137878">7.14</td>
+<td class="num" data-v="9.038897">9.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="391">391</td>
+<td class="num " data-v="464">464</td>
+<td class="num " data-v="354">354</td>
+<td class="num " data-v="361">361</td>
+<td class="num volt" data-v="408">408</td>
+<td class="num up" data-v="47">+47</td>
+<td class="num up" data-v="54">+54</td>
+</tr>
+<tr><td class="num k" data-v="95">95</td><td class="l">Flynn Young</td><td class="l k">MSD</td><td class="num k" data-v="4">4</td><td class="l k">SF</td><td class="num" data-v="24">24</td><td class="num" data-v="17">17</td><td class="num k" data-v="207.7">208</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="-24.347962">-24.35</td>
+<td class="num" data-v="-23.085648">-23.09</td>
+<td class="num" data-v="48.674081">48.7%</td>
+<td class="num" data-v="48.674081">48.7%</td>
+<td class="num " data-v="168">168</td>
+<td class="num " data-v="111">111</td>
+<td class="num " data-v="55">55</td>
+<td class="num " data-v="52">52</td>
+<td class="num volt" data-v="52">52</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-3">-3</td>
+</tr>
+<tr><td class="num k" data-v="96">96</td><td class="l">Xavier Bamert</td><td class="l k">MSD</td><td class="num k" data-v="5">5</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="14">14</td><td class="num k" data-v="207.7">208</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="-14.269489">-14.27</td>
+<td class="num" data-v="-13.007175">-13.01</td>
+<td class="num" data-v="43.858943">43.9%</td>
+<td class="num" data-v="53.599792">53.6%</td>
+<td class="num " data-v="509">509</td>
+<td class="num " data-v="369">369</td>
+<td class="num " data-v="421">421</td>
+<td class="num " data-v="414">414</td>
+<td class="num volt" data-v="395">395</td>
+<td class="num dn" data-v="-19">-19</td>
+<td class="num dn" data-v="-26">-26</td>
+</tr>
+<tr><td class="num k" data-v="97">97</td><td class="l">Michael Sellwood</td><td class="l k">MSD</td><td class="num k" data-v="5">5</td><td class="l k">SD</td><td class="num" data-v="23">23</td><td class="num" data-v="20">20</td><td class="num k" data-v="358.5">359</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="-9.925948">-9.93</td>
+<td class="num" data-v="-8.663634">-8.66</td>
+<td class="num" data-v="46.531361">46.5%</td>
+<td class="num" data-v="53.657644">53.7%</td>
+<td class="num " data-v="168">168</td>
+<td class="num " data-v="210">210</td>
+<td class="num " data-v="213">213</td>
+<td class="num " data-v="187">187</td>
+<td class="num volt" data-v="175">175</td>
+<td class="num dn" data-v="-12">-12</td>
+<td class="num dn" data-v="-38">-38</td>
+</tr>
+<tr><td class="num k" data-v="98">98</td><td class="l">Archie May</td><td class="l k">MSD</td><td class="num k" data-v="6">6</td><td class="l k">KPF</td><td class="num" data-v="22">22</td><td class="num" data-v="22">22</td><td class="num k" data-v="217.5">217</td>
+<td class="num" data-v="2.319948">2.32</td>
+<td class="num" data-v="-3.412373">-3.41</td>
+<td class="num" data-v="-5.732321">-5.73</td>
+<td class="num" data-v="49.003577">49.0%</td>
+<td class="num" data-v="36.346487">36.3%</td>
+<td class="num " data-v="476">476</td>
+<td class="num " data-v="351">351</td>
+<td class="num " data-v="352">352</td>
+<td class="num " data-v="336">336</td>
+<td class="num volt" data-v="340">340</td>
+<td class="num up" data-v="4">+4</td>
+<td class="num dn" data-v="-12">-12</td>
+</tr>
+<tr><td class="num k" data-v="99">99</td><td class="l">Oliver Griffin</td><td class="l k">MSD</td><td class="num k" data-v="6">6</td><td class="l k">SF</td><td class="num" data-v="19">19</td><td class="num" data-v="0">0</td><td class="num k" data-v="207.7">208</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="181">181</td>
+<td class="num " data-v="121">121</td>
+<td class="num " data-v="111">111</td>
+<td class="num " data-v="95">95</td>
+<td class="num volt" data-v="95">95</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-16">-16</td>
+</tr>
+<tr><td class="num k" data-v="100">100</td><td class="l">Campbell Lake</td><td class="l k">MSD</td><td class="num k" data-v="7">7</td><td class="l k">SF</td><td class="num" data-v="22">22</td><td class="num" data-v="12">12</td><td class="num k" data-v="207.7">208</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="-4.568753">-4.57</td>
+<td class="num" data-v="-3.306439">-3.31</td>
+<td class="num" data-v="41.218032">41.2%</td>
+<td class="num" data-v="12.899509">12.9%</td>
+<td class="num " data-v="161">161</td>
+<td class="num " data-v="204">204</td>
+<td class="num " data-v="174">174</td>
+<td class="num " data-v="164">164</td>
+<td class="num volt" data-v="203">203</td>
+<td class="num up" data-v="39">+39</td>
+<td class="num up" data-v="29">+29</td>
+</tr>
+<tr><td class="num k" data-v="101">101</td><td class="l">Roan Steele</td><td class="l k">MSD</td><td class="num k" data-v="7">7</td><td class="l k">MID</td><td class="num" data-v="25">25</td><td class="num" data-v="25">25</td><td class="num k" data-v="479.5">479</td>
+<td class="num" data-v="1.790520">1.79</td>
+<td class="num" data-v="-27.221905">-27.22</td>
+<td class="num" data-v="-29.012425">-29.01</td>
+<td class="num" data-v="45.489799">45.5%</td>
+<td class="num" data-v="45.489799">45.5%</td>
+<td class="num " data-v="152">152</td>
+<td class="num " data-v="208">208</td>
+<td class="num " data-v="122">122</td>
+<td class="num " data-v="118">118</td>
+<td class="num volt" data-v="118">118</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-4">-4</td>
+</tr>
+<tr><td class="num k" data-v="102">102</td><td class="l">Harrison Coe</td><td class="l k">MSD</td><td class="num k" data-v="8">8</td><td class="l k">RUCK</td><td class="num" data-v="27">27</td><td class="num" data-v="0">0</td><td class="num k" data-v="448.2">448</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="322">322</td>
+<td class="num " data-v="261">261</td>
+<td class="num " data-v="240">240</td>
+<td class="num " data-v="266">266</td>
+<td class="num volt" data-v="266">266</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="26">+26</td>
+</tr>
+<tr><td class="num k" data-v="103">103</td><td class="l">Jacob Newton</td><td class="l k">MSD</td><td class="num k" data-v="8">8</td><td class="l k">SF</td><td class="num" data-v="20">20</td><td class="num" data-v="6">6</td><td class="num k" data-v="207.7">208</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="-24.463609">-24.46</td>
+<td class="num" data-v="-23.201295">-23.20</td>
+<td class="num" data-v="33.962628">34.0%</td>
+<td class="num" data-v="63.693248">63.7%</td>
+<td class="num " data-v="299">299</td>
+<td class="num " data-v="222">222</td>
+<td class="num " data-v="236">236</td>
+<td class="num " data-v="232">232</td>
+<td class="num volt" data-v="193">193</td>
+<td class="num dn" data-v="-39">-39</td>
+<td class="num dn" data-v="-43">-43</td>
+</tr>
+<tr><td class="num k" data-v="104">104</td><td class="l">Cooper Trembath</td><td class="l k">MSD</td><td class="num k" data-v="9">9</td><td class="l k">KPF</td><td class="num" data-v="21">21</td><td class="num" data-v="26">26</td><td class="num k" data-v="217.5">217</td>
+<td class="num" data-v="2.319948">2.32</td>
+<td class="num" data-v="12.992134">12.99</td>
+<td class="num" data-v="10.672186">10.67</td>
+<td class="num" data-v="41.960714">42.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="2201">2,201</td>
+<td class="num " data-v="1552">1,552</td>
+<td class="num " data-v="1648">1,648</td>
+<td class="num " data-v="1728">1,728</td>
+<td class="num volt" data-v="1779">1,779</td>
+<td class="num up" data-v="51">+51</td>
+<td class="num up" data-v="131">+131</td>
+</tr>
+<tr><td class="num k" data-v="105">105</td><td class="l">Caleb May</td><td class="l k">MSD</td><td class="num k" data-v="9">9</td><td class="l k">RUCK</td><td class="num" data-v="21">21</td><td class="num" data-v="0">0</td><td class="num k" data-v="448.2">448</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="322">322</td>
+<td class="num " data-v="261">261</td>
+<td class="num " data-v="240">240</td>
+<td class="num " data-v="266">266</td>
+<td class="num volt" data-v="266">266</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="26">+26</td>
+</tr>
+<tr><td class="num k" data-v="106">106</td><td class="l">Hugo Hall-Kahan</td><td class="l k">MSD</td><td class="num k" data-v="10">10</td><td class="l k">SD</td><td class="num" data-v="23">23</td><td class="num" data-v="16">16</td><td class="num k" data-v="358.5">359</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="2.284052">2.28</td>
+<td class="num" data-v="3.546366">3.55</td>
+<td class="num" data-v="45.939858">45.9%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="215">215</td>
+<td class="num " data-v="338">338</td>
+<td class="num " data-v="268">268</td>
+<td class="num " data-v="253">253</td>
+<td class="num volt" data-v="352">352</td>
+<td class="num up" data-v="99">+99</td>
+<td class="num up" data-v="84">+84</td>
+</tr>
+<tr><td class="num k" data-v="107">107</td><td class="l">Ewan Mackinlay</td><td class="l k">MSD</td><td class="num k" data-v="10">10</td><td class="l k">SF</td><td class="num" data-v="23">23</td><td class="num" data-v="15">15</td><td class="num k" data-v="207.7">208</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="-8.380135">-8.38</td>
+<td class="num" data-v="-7.117821">-7.12</td>
+<td class="num" data-v="49.878363">49.9%</td>
+<td class="num" data-v="42.511753">42.5%</td>
+<td class="num " data-v="152">152</td>
+<td class="num " data-v="150">150</td>
+<td class="num " data-v="110">110</td>
+<td class="num " data-v="99">99</td>
+<td class="num volt" data-v="105">105</td>
+<td class="num up" data-v="6">+6</td>
+<td class="num dn" data-v="-5">-5</td>
+</tr>
+<tr><td class="num k" data-v="108">108</td><td class="l">Lukas Cooke</td><td class="l k">MSD</td><td class="num k" data-v="11">11</td><td class="l k">KPD</td><td class="num" data-v="23">23</td><td class="num" data-v="3">3</td><td class="num k" data-v="325.4">325</td>
+<td class="num" data-v="3.356848">3.36</td>
+<td class="num" data-v="-15.460217">-15.46</td>
+<td class="num" data-v="-18.817064">-18.82</td>
+<td class="num" data-v="16.831560">16.8%</td>
+<td class="num" data-v="31.300065">31.3%</td>
+<td class="num " data-v="364">364</td>
+<td class="num " data-v="338">338</td>
+<td class="num " data-v="307">307</td>
+<td class="num " data-v="298">298</td>
+<td class="num volt" data-v="249">249</td>
+<td class="num dn" data-v="-49">-49</td>
+<td class="num dn" data-v="-58">-58</td>
+</tr>
+<tr><td class="num k" data-v="109">109</td><td class="l">Zac Walker</td><td class="l k">MSD</td><td class="num k" data-v="11">11</td><td class="l k">SD</td><td class="num" data-v="20">20</td><td class="num" data-v="0">0</td><td class="num k" data-v="358.5">359</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="152">152</td>
+<td class="num " data-v="199">199</td>
+<td class="num " data-v="182">182</td>
+<td class="num " data-v="153">153</td>
+<td class="num volt" data-v="153">153</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-29">-29</td>
+</tr>
+<tr><td class="num k" data-v="110">110</td><td class="l">Max Beattie</td><td class="l k">MSD</td><td class="num k" data-v="12">12</td><td class="l k">SF</td><td class="num" data-v="23">23</td><td class="num" data-v="0">0</td><td class="num k" data-v="207.7">208</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="181">181</td>
+<td class="num " data-v="121">121</td>
+<td class="num " data-v="111">111</td>
+<td class="num " data-v="95">95</td>
+<td class="num volt" data-v="95">95</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-16">-16</td>
+</tr>
+<tr><td class="num k" data-v="111">111</td><td class="l">Lachlan Blakiston</td><td class="l k">MSD</td><td class="num k" data-v="12">12</td><td class="l k">KPD</td><td class="num" data-v="28">28</td><td class="num" data-v="37">37</td><td class="num k" data-v="325.4">325</td>
+<td class="num" data-v="3.356848">3.36</td>
+<td class="num" data-v="-17.471429">-17.47</td>
+<td class="num" data-v="-20.828276">-20.83</td>
+<td class="num" data-v="36.787944">36.8%</td>
+<td class="num" data-v="36.787944">36.8%</td>
+<td class="num " data-v="152">152</td>
+<td class="num " data-v="114">114</td>
+<td class="num " data-v="88">88</td>
+<td class="num " data-v="87">87</td>
+<td class="num volt" data-v="87">87</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-1">-1</td>
+</tr>
+<tr><td class="num k" data-v="112">112</td><td class="l">Marcus Herbert</td><td class="l k">MSD</td><td class="num k" data-v="13">13</td><td class="l k">SD</td><td class="num" data-v="24">24</td><td class="num" data-v="14">14</td><td class="num k" data-v="358.5">359</td>
+<td class="num" data-v="-1.262314">-1.26</td>
+<td class="num" data-v="11.770000">11.77</td>
+<td class="num" data-v="13.032314">13.03</td>
+<td class="num" data-v="43.858943">43.9%</td>
+<td class="num" data-v="43.858943">43.9%</td>
+<td class="num " data-v="906">906</td>
+<td class="num " data-v="719">719</td>
+<td class="num " data-v="746">746</td>
+<td class="num " data-v="690">690</td>
+<td class="num volt" data-v="690">690</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-56">-56</td>
+</tr>
+<tr><td class="num k" data-v="113">113</td><td class="l">Caleb Lewis</td><td class="l k">MSD</td><td class="num k" data-v="13">13</td><td class="l k">KPF</td><td class="num" data-v="23">23</td><td class="num" data-v="2">2</td><td class="num k" data-v="217.5">217</td>
+<td class="num" data-v="2.319948">2.32</td>
+<td class="num" data-v="-44.860217">-44.86</td>
+<td class="num" data-v="-47.180164">-47.18</td>
+<td class="num" data-v="16.831560">16.8%</td>
+<td class="num" data-v="49.054567">49.1%</td>
+<td class="num " data-v="233">233</td>
+<td class="num " data-v="141">141</td>
+<td class="num " data-v="146">146</td>
+<td class="num " data-v="155">155</td>
+<td class="num volt" data-v="120">120</td>
+<td class="num dn" data-v="-35">-35</td>
+<td class="num dn" data-v="-26">-26</td>
+</tr>
+<tr><td class="num k" data-v="114">114</td><td class="l">Alex Van Wyk</td><td class="l k">MSD</td><td class="num k" data-v="14">14</td><td class="l k">RUCK</td><td class="num" data-v="22">22</td><td class="num" data-v="1">1</td><td class="num k" data-v="448.2">448</td>
+<td class="num" data-v="5.189017">5.19</td>
+<td class="num" data-v="1.326895">1.33</td>
+<td class="num" data-v="-3.862122">-3.86</td>
+<td class="num" data-v="9.038897">9.0%</td>
+<td class="num" data-v="3.179294">3.2%</td>
+<td class="num " data-v="391">391</td>
+<td class="num " data-v="463">463</td>
+<td class="num " data-v="353">353</td>
+<td class="num " data-v="360">360</td>
+<td class="num volt" data-v="390">390</td>
+<td class="num up" data-v="30">+30</td>
+<td class="num up" data-v="37">+37</td>
+</tr>
+<tr><td class="num k" data-v="115">115</td><td class="l">Noah Howes</td><td class="l k">MSD</td><td class="num k" data-v="14">14</td><td class="l k">KPF</td><td class="num" data-v="21">21</td><td class="num" data-v="1">1</td><td class="num k" data-v="217.5">217</td>
+<td class="num" data-v="2.319948">2.32</td>
+<td class="num" data-v="-20.211327">-20.21</td>
+<td class="num" data-v="-22.531275">-22.53</td>
+<td class="num" data-v="9.038897">9.0%</td>
+<td class="num" data-v="21.191026">21.2%</td>
+<td class="num " data-v="229">229</td>
+<td class="num " data-v="169">169</td>
+<td class="num " data-v="201">201</td>
+<td class="num " data-v="221">221</td>
+<td class="num volt" data-v="207">207</td>
+<td class="num dn" data-v="-14">-14</td>
+<td class="num up" data-v="6">+6</td>
+</tr>
+<tr><td class="num k" data-v="116">116</td><td class="l">Liam Puncher</td><td class="l k">MSD</td><td class="num k" data-v="15">15</td><td class="l k">KPD</td><td class="num" data-v="23">23</td><td class="num" data-v="11">11</td><td class="num k" data-v="325.4">325</td>
+<td class="num" data-v="3.356848">3.36</td>
+<td class="num" data-v="-21.790217">-21.79</td>
+<td class="num" data-v="-25.147064">-25.15</td>
+<td class="num" data-v="37.945606">37.9%</td>
+<td class="num" data-v="71.711805">71.7%</td>
+<td class="num " data-v="124">124</td>
+<td class="num " data-v="285">285</td>
+<td class="num " data-v="213">213</td>
+<td class="num " data-v="193">193</td>
+<td class="num volt" data-v="122">122</td>
+<td class="num dn" data-v="-71">-71</td>
+<td class="num dn" data-v="-91">-91</td>
+</tr>
+<tr><td class="num k" data-v="117">117</td><td class="l">Mani Liddy</td><td class="l k">MSD</td><td class="num k" data-v="15">15</td><td class="l k">MID</td><td class="num" data-v="24">24</td><td class="num" data-v="16">16</td><td class="num k" data-v="479.5">479</td>
+<td class="num" data-v="1.790520">1.79</td>
+<td class="num" data-v="-21.415948">-21.42</td>
+<td class="num" data-v="-23.206467">-23.21</td>
+<td class="num" data-v="45.939858">45.9%</td>
+<td class="num" data-v="45.939858">45.9%</td>
+<td class="num " data-v="152">152</td>
+<td class="num " data-v="192">192</td>
+<td class="num " data-v="153">153</td>
+<td class="num " data-v="122">122</td>
+<td class="num volt" data-v="122">122</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-31">-31</td>
+</tr>
+<tr><td class="num k" data-v="118">118</td><td class="l">Joel Fitzgerald</td><td class="l k">MSD</td><td class="num k" data-v="16">16</td><td class="l k">MID</td><td class="num" data-v="23">23</td><td class="num" data-v="14">14</td><td class="num k" data-v="479.5">479</td>
+<td class="num" data-v="1.790520">1.79</td>
+<td class="num" data-v="-3.145948">-3.15</td>
+<td class="num" data-v="-4.936467">-4.94</td>
+<td class="num" data-v="43.858943">43.9%</td>
+<td class="num" data-v="22.482015">22.5%</td>
+<td class="num " data-v="72">72</td>
+<td class="num " data-v="339">339</td>
+<td class="num " data-v="203">203</td>
+<td class="num " data-v="184">184</td>
+<td class="num volt" data-v="240">240</td>
+<td class="num up" data-v="56">+56</td>
+<td class="num up" data-v="37">+37</td>
+</tr>
+<tr><td class="num k" data-v="119">119</td><td class="l">Mitch Podhajski</td><td class="l k">MSD</td><td class="num k" data-v="17">17</td><td class="l k">KPF</td><td class="num" data-v="27">27</td><td class="num" data-v="3">3</td><td class="num k" data-v="217.5">217</td>
+<td class="num" data-v="2.319948">2.32</td>
+<td class="num" data-v="-15.300000">-15.30</td>
+<td class="num" data-v="-17.619948">-17.62</td>
+<td class="num" data-v="16.831560">16.8%</td>
+<td class="num" data-v="16.831560">16.8%</td>
+<td class="num " data-v="399">399</td>
+<td class="num " data-v="198">198</td>
+<td class="num " data-v="147">147</td>
+<td class="num " data-v="139">139</td>
+<td class="num volt" data-v="139">139</td>
+<td class="num " data-v="0">+0</td>
+<td class="num dn" data-v="-8">-8</td>
+</tr>
+<tr><td class="num k" data-v="120">120</td><td class="l">Max Mapley</td><td class="l k">MSD</td><td class="num k" data-v="18">18</td><td class="l k">RUCK</td><td class="num" data-v="21">21</td><td class="num" data-v="0">0</td><td class="num k" data-v="448.2">448</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num k" data-v="-1e18">&mdash;</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num" data-v="0.000000">0.0%</td>
+<td class="num " data-v="322">322</td>
+<td class="num " data-v="261">261</td>
+<td class="num " data-v="240">240</td>
+<td class="num " data-v="266">266</td>
+<td class="num volt" data-v="266">266</td>
+<td class="num " data-v="0">+0</td>
+<td class="num up" data-v="26">+26</td>
+</tr>
+</tbody></table></div>
+<div class="box"><h2>The class growth rule &middot; how a whole intake prices a year on</h2><div class="defs"><p>Your rule: the year-1 class cohort must GROW, must clear a floor of 1.03, and must stay strictly under the 1.14 buy rail. <b>The rule is written on DRAFT classes 2005 to 2015.</b> On the cohort clock those are cohort years 2006 to 2016, because a draft class is priced in the year after it is drafted. The second row below is the same object on a DIFFERENT window &mdash; cohort years 2005 to 2015, i.e. draft classes 2004 to 2014. It is printed only so the two cannot be mistaken for each other.</p></div><table><thead><tr><th class="l">reading</th><th>landing candidate</th><th>ORDER K</th><th>ORDER P</th><th>move vs ORDER K</th><th>floor 1.03</th><th>rail 1.14</th></tr></thead><tbody>
+<tr><td class="l">THE REGISTERED BASIS &mdash; draft classes 2005-2015</td><td class="num">1.0421</td><td class="num">1.0513</td><td class="num volt">1.0613</td><td class="num up">+0.0100</td><td class="num up">+0.0313</td><td class="num up">-0.0787</td></tr>
+<tr><td class="l">the cohort clock &mdash; draft classes 2004-2014 (NOT the rail)</td><td class="num">1.0232</td><td class="num">1.0324</td><td class="num volt">1.0322</td><td class="num dn">-0.0002</td><td class="num up">+0.0022</td><td class="num up">-0.1078</td></tr>
+</tbody></table><div class="defs"><p>Worst single class on this board: <b>1.2047</b> (cohort 2016), against the ruled 1.139 line.</p></div></div>
+<div class="box"><h2>Every class, ORDER K against ORDER P</h2><table id="t3"><thead><tr><th class="l">cohort year</th><th class="l">draft class</th><th>ORDER K</th><th>ORDER P</th><th>move</th></tr></thead><tbody>
+<tr><td class="l">2005</td><td class="l k">2004</td><td class="num">0.8985</td><td class="num volt">0.8854</td><td class="num dn">-0.0131</td></tr>
+<tr><td class="l">2006</td><td class="l k">2005</td><td class="num">0.8562</td><td class="num volt">0.8230</td><td class="num dn">-0.0332</td></tr>
+<tr><td class="l">2007</td><td class="l k">2006</td><td class="num">1.0579</td><td class="num volt">1.0155</td><td class="num dn">-0.0424</td></tr>
+<tr><td class="l">2008</td><td class="l k">2007</td><td class="num">1.0713</td><td class="num volt">1.0378</td><td class="num dn">-0.0335</td></tr>
+<tr><td class="l">2009</td><td class="l k">2008</td><td class="num">1.0063</td><td class="num volt">1.0263</td><td class="num up">+0.0200</td></tr>
+<tr><td class="l">2010</td><td class="l k">2009</td><td class="num">1.0432</td><td class="num volt">1.0680</td><td class="num up">+0.0248</td></tr>
+<tr><td class="l">2011</td><td class="l k">2010</td><td class="num">1.1359</td><td class="num volt">1.1570</td><td class="num up">+0.0211</td></tr>
+<tr><td class="l">2012</td><td class="l k">2011</td><td class="num">1.1363</td><td class="num volt">1.1595</td><td class="num up">+0.0232</td></tr>
+<tr><td class="l">2013</td><td class="l k">2012</td><td class="num">1.0673</td><td class="num volt">1.0901</td><td class="num up">+0.0228</td></tr>
+<tr><td class="l">2014</td><td class="l k">2013</td><td class="num">1.0535</td><td class="num volt">1.0760</td><td class="num up">+0.0226</td></tr>
+<tr><td class="l">2015</td><td class="l k">2014</td><td class="num">1.0300</td><td class="num volt">1.0158</td><td class="num dn">-0.0142</td></tr>
+<tr><td class="l">2016</td><td class="l k">2015</td><td class="num">1.1060</td><td class="num volt">1.2047</td><td class="num up">+0.0987</td></tr>
+<tr><td class="l">2017</td><td class="l k">2016</td><td class="num">1.0289</td><td class="num volt">1.0486</td><td class="num up">+0.0198</td></tr>
+<tr><td class="l">2018</td><td class="l k">2017</td><td class="num">1.0562</td><td class="num volt">1.0501</td><td class="num dn">-0.0061</td></tr>
+<tr><td class="l">2019</td><td class="l k">2018</td><td class="num">1.0147</td><td class="num volt">1.0712</td><td class="num up">+0.0565</td></tr>
+<tr><td class="l">2020</td><td class="l k">2019</td><td class="num">0.9810</td><td class="num volt">1.0030</td><td class="num up">+0.0219</td></tr>
+<tr><td class="l">2021</td><td class="l k">2020</td><td class="num">0.9170</td><td class="num volt">0.9295</td><td class="num up">+0.0126</td></tr>
+</tbody></table></div>
+<script>
+function sortTable(tid, col, numeric){
+  var tb=document.getElementById(tid).tBodies[0];
+  var rows=Array.prototype.slice.call(tb.rows).filter(function(r){return !r.classList.contains('sechead')});
+  var th=document.getElementById(tid).tHead.rows[0].cells[col];
+  var dir=th.dataset.dir==='asc'?'desc':'asc';
+  var ths=document.getElementById(tid).tHead.rows[0].cells;
+  for(var i=0;i<ths.length;i++){ths[i].classList.remove('sorted');ths[i].dataset.dir='';}
+  th.classList.add('sorted');th.dataset.dir=dir;
+  rows.sort(function(a,b){
+    var x=a.cells[col].dataset.v!==undefined?a.cells[col].dataset.v:a.cells[col].textContent;
+    var y=b.cells[col].dataset.v!==undefined?b.cells[col].dataset.v:b.cells[col].textContent;
+    if(numeric){x=parseFloat(x)||-1e18;y=parseFloat(y)||-1e18;return dir==='asc'?x-y:y-x;}
+    return dir==='asc'?String(x).localeCompare(String(y)):String(y).localeCompare(String(x));
+  });
+  rows.forEach(function(r){tb.appendChild(r);});
+}
+</script></div>

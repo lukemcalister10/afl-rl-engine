@@ -1,0 +1,37 @@
+ORDER 31-F  F1(c) -- THE PERSISTENCE beta, RE-DERIVED ON THE HEAD-FIXED v0 SURFACE
+  instrument     docs/evidence/pedigree_persistence_2026-08-14/o30bm_measure.py
+  committed md5  e910fe6482ab7b05a92f18c173667073
+  as-run md5     b07cb36ac0a1eb78d2b81d8455b86917
+    SUB  V0P = os.path.join(ROOT, 'docs', 'evidence', 'one_machinery_2026-08-14', 'V0RE ->  V0P = os.path.join(ROOT, 'docs', 'evidence', 'candidate_31f', 'HEADFIX_31F.json')
+    SUB  POSV = V0ART['posv_out']                                                       ->  POSV = V0ART['posv_headfixed']
+    SUB  OUT_JSON = os.path.join(HERE, 'PERSISTENCE_TABLE.json')                        ->  OUT_JSON = os.path.join(ROOT, 'docs', 'evidence', 'candidate_31f', 'PERSISTENCE_31F.json')
+    SUB  OUT_TXT = os.path.join(HERE, 'MEASURE_out.txt')                                ->  OUT_TXT = os.path.join(ROOT, 'docs', 'evidence', 'candidate_31f', 'MEASURE_31F_out.txt')
+    SUB  SP = '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f5369 ->  SP = '/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/o31
+
+  harness ran clean; full console MEASURE_31F_console.txt (237 lines)
+
+THE PANEL COEFFICIENT ON v0, BAND BY BAND  (beta_v0; the object the one law wires as beta)
+  band        mid        n      COMMITTED  31-F HEAD-FIX        drift     t old     t new
+  0-5         2.5      382      0.2968279      0.2878886   -0.0089393      3.76      3.66
+  6-15       10.5      591      0.3622593      0.3561228   -0.0061365      5.95      5.56
+  16-35      25.5      834      0.2232959      0.2177288   -0.0055671      4.25      4.10
+  36-70      53.0      887      0.1531486      0.1415515   -0.0115971      2.39      2.13
+  71+        85.5     1339      0.0200680      0.0238490   +0.0037810      0.49      0.50
+
+  the wired points are the SAME OBJECT the committed READING.json carries, re-measured:
+    committed  0.2968 0.3623 0.2233 0.1531 0.0201
+    31-F       0.2879 0.3561 0.2177 0.1416 0.0238
+    max |drift| 0.0115971
+
+THE DEEP-beta CAVEAT, RE-READ (the owed word: the 71+ coefficient's interval spans zero)
+  71+ : beta_v0 0.023849   se 0.047447   t 0.503   n 1339   clusters 297
+  sigma 2.5602   90% CI None
+
+THE MONOTONE NON-INCREASING PROJECTION (the brief's "pi decays in g" -- unchanged rule)
+    measured  0.2879 0.3561 0.2177 0.1416 0.0238
+    monotone  0.2879 0.2879 0.2177 0.1416 0.0238
+    DELETED BY THE PROJECTION: g=10.5  0.3561 -> 0.2879
+
+THE RULED PROPERTIES
+  beta non-negative at every knot ............ PASS
+  the monotone projection is non-increasing .. PASS

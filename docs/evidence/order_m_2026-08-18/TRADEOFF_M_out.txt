@@ -1,0 +1,85 @@
+================================================================================================================
+ORDER M — THE TRADE-OFF CURVE: HOW MUCH ETA DOES THE BOARD NEED?
+================================================================================================================
+IDENTITY CHECK — this file reproduces SWEEP_M.json on 25 sampled points: worst deviation 0.000e+00 -> EXACT
+
+THE TWO RAILS BEING TESTED, both the owner's own:
+  G3          no ND band above +14.00%% year 0->1
+  no-arb line max single class mark <= 1.139 (the 1.14 buy rail, per class)
+  G1 rail     the year-1 class cohort mark strictly under 1.14
+
+Q1 — THE SMALLEST ETA THAT KEEPS THE BOARD LEGAL, dose by dose.
+     kappa, gamma_u, gamma_d and lambda_rel are held at ORDER K's ruled values (0.20 / 8 / 14 / 1.08)
+     so that eta is the ONLY thing moving. eta is walked from 0.00 to 0.75 in steps of 0.01.
+
+   dose |   eta min   eta min   eta min |  class at maxcls at   1-10 at
+        |   G3 band  maxclass      BOTH |   eta min   eta min   eta min
+   0.00 |      0.31      0.29      0.31 |    1.0494    1.1315    +9.27%
+   0.10 |      0.35      0.34      0.35 |    1.0496    1.1334    +8.90%
+   0.15 |      0.37      0.36      0.37 |    1.0503    1.1348    +8.77%
+   0.20 |      0.39      0.39      0.39 |    1.0513    1.1365    +8.68%
+   0.25 |      0.42      0.41      0.42 |    1.0507    1.1356    +8.37%
+   0.30 |      0.44      0.44      0.44 |    1.0526    1.1381    +8.37%
+   0.35 |      0.47      0.47      0.47 |    1.0521    1.1381    +7.94%
+   0.40 |      0.50      0.50      0.50 |    1.0519    1.1385    +7.58%
+   0.45 |      0.53      0.54      0.54 |    1.0490    1.1360    +6.78%
+   0.50 |      0.56      0.57      0.57 |    1.0497    1.1373    +6.49%
+   0.55 |      0.59      0.61      0.61 |    1.0477    1.1358    +5.78%
+   0.60 |      0.63      0.64      0.64 |    1.0493    1.1383    +5.58%
+   0.70 |      0.70      0.72      0.72 |    1.0497    1.1381    +4.70%
+   0.85 |      none      none      none |         -         -         -
+   1.00 |      none      none      none |         -         -         -
+
+  READ THIS ROW BY ROW. At EVERY dose, including dose 0.00 — the age bar switched off entirely —
+  the board needs a STRICTLY POSITIVE eta to stay inside the owner's own +14%% band rail.
+
+Q3 — THE ETA WALK AT THE RULED DOSE 0.40 (kappa 0.20, gamma_u 8, gamma_d 14, lambda_rel 1.08).
+     eta |    class   maxcls | five ND bands, year 0 -> 1
+    0.00 |   1.2052   1.3087 |  +30.94%  +32.33%  +23.60%   +1.13%   +2.19% <- G3 BREACHED <- no-arb line BREACHED <- G1 buy rail BREACHED
+    0.05 |   1.1899   1.2917 |  +28.61%  +30.48%  +22.07%   +0.17%   +1.33% <- G3 BREACHED <- no-arb line BREACHED <- G1 buy rail BREACHED
+    0.10 |   1.1745   1.2747 |  +26.27%  +28.63%  +20.54%   -0.80%   +0.46% <- G3 BREACHED <- no-arb line BREACHED <- G1 buy rail BREACHED
+    0.15 |   1.1592   1.2576 |  +23.93%  +26.78%  +19.00%   -1.77%   -0.41% <- G3 BREACHED <- no-arb line BREACHED <- G1 buy rail BREACHED
+    0.20 |   1.1439   1.2406 |  +21.60%  +24.93%  +17.47%   -2.74%   -1.28% <- G3 BREACHED <- no-arb line BREACHED <- G1 buy rail BREACHED
+    0.25 |   1.1285   1.2236 |  +19.26%  +23.08%  +15.93%   -3.70%   -2.15% <- G3 BREACHED <- no-arb line BREACHED
+    0.30 |   1.1132   1.2066 |  +16.92%  +21.22%  +14.40%   -4.67%   -3.02% <- G3 BREACHED <- no-arb line BREACHED
+    0.35 |   1.0979   1.1896 |  +14.59%  +19.37%  +12.86%   -5.64%   -3.89% <- G3 BREACHED <- no-arb line BREACHED
+    0.40 |   1.0825   1.1725 |  +12.25%  +17.52%  +11.33%   -6.60%   -4.76% <- G3 BREACHED <- no-arb line BREACHED
+    0.41 |   1.0795   1.1691 |  +11.78%  +17.15%  +11.02%   -6.80%   -4.93% <- G3 BREACHED <- no-arb line BREACHED
+    0.45 |   1.0672   1.1555 |   +9.91%  +15.67%   +9.80%   -7.57%   -5.63% <- G3 BREACHED <- no-arb line BREACHED
+    0.50 |   1.0519   1.1385 |   +7.58%  +13.82%   +8.26%   -8.54%   -6.50%
+    0.55 |   1.0365   1.1227 |   +5.24%  +11.97%   +6.73%   -9.51%   -7.37%
+    0.60 |   1.0212   1.1074 |   +2.90%  +10.12%   +5.19%  -10.47%   -8.24%
+
+  AND AT DOSE 0.00 (no age bar at all), the same walk:
+     eta |    class   maxcls | five ND bands, year 0 -> 1
+    0.00 |   1.1445   1.2346 |  +23.76%  +25.17%  +17.13%   -2.53%   -2.73% <- G3 BREACHED <- no-arb line BREACHED
+    0.05 |   1.1292   1.2176 |  +21.43%  +23.32%  +15.59%   -3.50%   -3.60% <- G3 BREACHED <- no-arb line BREACHED
+    0.10 |   1.1138   1.2006 |  +19.09%  +21.46%  +14.06%   -4.47%   -4.47% <- G3 BREACHED <- no-arb line BREACHED
+    0.15 |   1.0985   1.1835 |  +16.75%  +19.61%  +12.53%   -5.44%   -5.34% <- G3 BREACHED <- no-arb line BREACHED
+    0.20 |   1.0832   1.1665 |  +14.42%  +17.76%  +10.99%   -6.40%   -6.21% <- G3 BREACHED <- no-arb line BREACHED
+    0.25 |   1.0678   1.1500 |  +12.08%  +15.91%   +9.46%   -7.37%   -7.08% <- G3 BREACHED <- no-arb line BREACHED
+    0.30 |   1.0525   1.1346 |   +9.74%  +14.06%   +7.92%   -8.34%   -7.95% <- G3 BREACHED
+    0.35 |   1.0372   1.1192 |   +7.41%  +12.21%   +6.39%   -9.31%   -8.82%
+    0.40 |   1.0218   1.1039 |   +5.07%  +10.36%   +4.86%  -10.27%   -9.68%
+    0.41 |   1.0188   1.1008 |   +4.60%   +9.99%   +4.55%  -10.47%   -9.86%
+    0.45 |   1.0065   1.0885 |   +2.73%   +8.51%   +3.32%  -11.24%  -10.55%
+    0.50 |   0.9912   1.0731 |   +0.40%   +6.66%   +1.79%  -12.21%  -11.42%
+
+Q2 — WHAT THE SMALLEST LEGAL ETA CHARGES A ROW, AS A FRACTION OF ITS PEDIGREE LEG.
+  The charge is  1 - eta*(g/14)*exp(1-g/14).  It is a pure function of games played.
+   games |  eta=0.10  eta=0.20  eta=0.30  eta=0.41  eta=0.50
+       2 |     -3.4%     -6.7%    -10.1%    -13.8%    -16.8%
+       5 |     -6.8%    -13.6%    -20.4%    -27.8%    -34.0%
+       8 |     -8.8%    -17.5%    -26.3%    -36.0%    -43.9%
+      10 |     -9.5%    -19.0%    -28.5%    -39.0%    -47.5%
+      14 |    -10.0%    -20.0%    -30.0%    -41.0%    -50.0%
+      20 |     -9.3%    -18.6%    -27.9%    -38.2%    -46.5%
+      25 |     -8.1%    -16.3%    -24.4%    -33.4%    -40.7%
+      30 |     -6.8%    -13.7%    -20.5%    -28.0%    -34.2%
+      36 |     -5.3%    -10.7%    -16.0%    -21.9%    -26.7%
+      50 |     -2.7%     -5.5%     -8.2%    -11.2%    -13.6%
+      80 |     -0.5%     -1.0%     -1.5%     -2.1%     -2.6%
+     141 |     -0.0%     -0.0%     -0.0%     -0.0%     -0.1%
+  harry-dean and cooper-duff-tytler are both 19, both key-position talls, both high picks with few
+  games. That is the shape the peak at 14 games charges hardest. isaac-kako at 36 games is already
+  most of the way down the far side of the bump, which is why he is charged only a quarter as much.

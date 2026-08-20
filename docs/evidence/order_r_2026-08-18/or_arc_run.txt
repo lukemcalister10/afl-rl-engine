@@ -1,0 +1,4 @@
+wrote ARC_R.csv, ARC_R.json, ARC_R.html   (804 rows, 14 boards, spanning variant R20b2A)
+  ORDER K -> ORDER P (the mechanism introduced)        up 125  down 155  flat 524  null  0  net    -6663
+  ORDER P -> R20b2A (the softening)                    up 241  down 203  flat 360  null  0  net     -378
+  ORDER K -> R20b2A (THE WHOLE ARC)                    up 180  down 344  flat 280  null  0  net    -7041

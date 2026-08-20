@@ -1,0 +1,76 @@
+================================================================================================================
+ALL-ARM COHORT PROGRESSION — O29C
+================================================================================================================
+  OWNER RULING: a cohort is every player drafted through mechanisms eligible to debut in the SAME
+  YEAR. ND + RD + SSP of year Y sit with MSD of year Y+1. This is that instrument.
+  matrix        : per_entrant_O29CFINAL.json
+  store         : cb38ef11   v0surf 4405cba2b42f   window end 2026
+  canonical file: noarb_table_338.py UNMODIFIED, md5 0f8220351c64c56ccfa90c60edcdfa5f (asserted at run)
+  excluded      : 5 rows of 2648 (no draft year, or v0 <= 0)
+  aggregation   : pooled book ratio, mean(value at cohort year N) / mean(v0) over the SAME set
+  year 0        : each entrant's OWN v0 under this engine variant (v0 moves with the pool arm's
+                  own year-zero repair, so the denominator is arm-appropriate by measurement)
+
+----------------------------------------------------------------------------------------------------------------
+### PRIMARY  cohorts 2005-2023   n = 2211
+----------------------------------------------------------------------------------------------------------------
+  arms: ND 1309  RD 623  MSD 55  UNR 49  IRE 47  PDA 43  PDN 33  SSP 31  PDS 21
+  yrN   n_incl  n_zero n_notyet    n_pre    mean_yrN    mean_yr0     ratio
+  ------------------------------------------------------------------------
+  0       2211       0        0        0       512.9       512.9    1.0000
+  1       2156       0        0       55       687.6       516.6    1.3310
+  2       2211       0        0        0       759.7       512.9    1.4810
+  3       2211     682        0        0       785.7       512.9    1.5318
+  4       2211     862        0        0       821.4       512.9    1.6013
+  5       2106     972      105        0       807.4       511.2    1.5795
+  6       2003    1038      208        0       768.2       508.5    1.5108
+  7       1895    1072      316        0       674.2       507.9    1.3273
+  n_pre = rows whose cohort year N precedes the emitted window (the disclosed MSD debut-year
+          gap). They are EXCLUDED from that year, never scored zero.
+
+  BY ARM (pooled ratio within the arm, same construction):
+    arm         n       yr1       yr4 yr1 mean_v0
+    ND       1309    1.3068    1.6484     711.1
+    RD        623    1.4461    1.4407     245.8
+    MSD        55       nan    0.8567       nan
+    UNR        49    1.0490    1.3492     115.9
+    IRE        47    1.5547    1.3997      86.4
+    PDA        43    1.2628    1.4523     207.8
+    PDN        33    1.0361    1.1764      87.9
+    SSP        31    2.4081    1.8783     209.0
+    PDS        21    1.3689    0.9806      85.3
+
+----------------------------------------------------------------------------------------------------------------
+### MODERN   cohorts 2019-2023   n = 540
+----------------------------------------------------------------------------------------------------------------
+  arms: ND 325  RD 66  MSD 55  SSP 31  PDN 25  UNR 13  PDA 13  IRE 12
+  yrN   n_incl  n_zero n_notyet    n_pre    mean_yrN    mean_yr0     ratio
+  ------------------------------------------------------------------------
+  0        540       0        0        0       544.2       544.2    1.0000
+  1        485       0        0       55       713.5       564.1    1.2648
+  2        540       0        0        0       720.6       544.2    1.3240
+  3        540     167        0        0       716.0       544.2    1.3156
+  4        540     211        0        0       704.9       544.2    1.2951
+  5        435     198      105        0       748.7       543.3    1.3782
+  6        332     176      208        0       661.6       536.9    1.2321
+  7        224     135      316        0       591.8       546.0    1.0841
+  n_pre = rows whose cohort year N precedes the emitted window (the disclosed MSD debut-year
+          gap). They are EXCLUDED from that year, never scored zero.
+
+  BY ARM (pooled ratio within the arm, same construction):
+    arm         n       yr1       yr4 yr1 mean_v0
+    ND        325    1.2386    1.3324     747.1
+    RD         66    1.3157    1.2869     243.3
+    MSD        55       nan    0.8567       nan
+    SSP        31    2.4081    1.8783     209.0
+    PDN        25    1.0339    0.6523      86.8
+    UNR        13    1.3188    0.7046     115.7
+    PDA        13    0.9344    1.1664     278.2
+    IRE        12    1.0000    0.1959      80.4
+
+----------------------------------------------------------------------------------------------------------------
+### SELF-CHECK (P7.1) — the CANONICAL population, read by THIS reader
+----------------------------------------------------------------------------------------------------------------
+  n = 1195  (the canonical instrument's own population is 1197)
+  yr0 1.0000  yr1 1.3074  yr2 1.4561  yr3 1.5910  yr4 1.6573  yr5 1.6347
+  These must match noarb_table_338.py's own ratios for the same variant, or nothing above is readable.

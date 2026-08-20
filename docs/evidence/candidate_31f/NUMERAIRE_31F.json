@@ -1,0 +1,21 @@
+{
+ "artifact_md5": "78ad9842525ae4f09875b95afc2e2b39",
+ "board_factor": 0.7111130326057592,
+ "conservation_drift": 0.0,
+ "conservation_lambda": 0.9960950687560159,
+ "curve_total": 47315.0,
+ "curve_total_unmoved": true,
+ "e6_coherence": 0.0,
+ "exact_s": "0.9400914291048137",
+ "guard_coherence_fires": true,
+ "guard_pin_fires": true,
+ "order": "ORDER 31-F F4 -- the numeraire re-pin",
+ "pooled_head_pre_scale_new": 3191.178971663107,
+ "pooled_head_pre_scale_old": 3191.178971663107,
+ "published_pin": 3000.0,
+ "s_abs_move": 0.0,
+ "s_new": 0.9400914291048137,
+ "s_old": 0.9400914291048137,
+ "s_ratio": 1.0,
+ "verdict": "s EXACTLY UNMOVED -- the head fix is a re-split of the all-in ladder under an exact renormalisation and an exact conservation scalar, so the ladder, its pre-anchor head H, and therefore s, cannot move. Predicted in PREREG_31F F22."
+}

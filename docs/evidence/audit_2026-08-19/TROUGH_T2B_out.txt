@@ -1,0 +1,59 @@
+========================================================================================================
+T2b — RETENTION: BASE RATES, AND WHETHER IT ADDS ANYTHING THE ENGINE DOES NOT ALREADY READ
+========================================================================================================
+
+--------------------------------------------------------------------------------------------------------
+WHY RETENTION IS SILENT EARLY AND LOUD LATE — the base rates
+--------------------------------------------------------------------------------------------------------
+  band               n   retained % P(success|ret) P(success|cut)
+  picks 1-20       340          99%           52%             0%
+  picks 21-30      170          92%           26%             0%
+  picks 31-40      170          85%           17%             0%
+  picks 41-64      398          77%            9%             0%
+
+  READ: near-universal retention for picks 1-20 leaves nothing to discriminate. Late, roughly
+  a third are cut after year 1, and being kept is a real fork.
+
+--------------------------------------------------------------------------------------------------------
+IS RETENTION INCREMENTAL? — stratified by year-1 games, so the engine's own production read is held
+--------------------------------------------------------------------------------------------------------
+  picks 31-64 only. Within each year-1 games stratum, success rate kept vs cut.
+  yr1 games             n  kept: n / success   cut: n / success        gap
+  0 games             323      222 / 6%           101 / 0%           +6 pp   ok
+  1-5                 125      115 / 15%           10 / 0%          +15 pp   THIN
+  6-11                 69       65 / 22%            4 / 0%          +22 pp   NONE
+  12-17                32       32 / 16%            0 / -                -   NONE
+  18+                  19       19 / 21%            0 / -                -   NONE
+
+  Retention separates INSIDE strata, i.e. after year-1 games is held fixed. It is not just a
+  proxy for having played.
+
+--------------------------------------------------------------------------------------------------------
+CLUB — the one candidate signal the engine genuinely does not read anywhere in valuation
+--------------------------------------------------------------------------------------------------------
+  (grep over _merged_recover.py, rl_model.py and forward_valuation/*.py for afl_club/_draft_club
+   in valuation code returned NOTHING.)
+  picks 31-64, n=568, base success rate 10%. Per drafting club:
+  club                           n  success     rate  vs base
+  Sydney                        28        7      25%  +15 pp   THIN
+  Fremantle                     33        7      21%  +12 pp   ok
+  Hawthorn                      29        5      17%  +8 pp   THIN
+  North Melbourne               29        4      14%  +4 pp   THIN
+  Melbourne                     34        4      12%  +2 pp   ok
+  Western Bulldogs              26        3      12%  +2 pp   THIN
+  Adelaide                      29        3      10%  +1 pp   THIN
+  Gold Coast                    10        1      10%  +0 pp   THIN
+  ?                             66        6       9%  -0 pp   ok
+  Brisbane                      36        3       8%  -1 pp   ok
+  GWS                           12        1       8%  -1 pp   THIN
+  St Kilda                      28        2       7%  -2 pp   THIN
+  Geelong                       33        2       6%  -3 pp   ok
+  Carlton                       24        1       4%  -5 pp   THIN
+  Essendon                      27        1       4%  -6 pp   THIN
+  West Coast                    27        1       4%  -6 pp   THIN
+  Port Adelaide                 29        1       3%  -6 pp   THIN
+  Collingwood                   33        1       3%  -6 pp   ok
+  Richmond                      35        1       3%  -7 pp   ok
+
+  spread of club success rates (sd) = 0.0609 ; under random reassignment the 90th pct is 0.0678
+  VERDICT: the club spread is INSIDE what reshuffling produces — NULL, no club signal

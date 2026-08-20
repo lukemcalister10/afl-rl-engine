@@ -1,0 +1,29 @@
+MOVERS ABLATION B: PEDIGREE POLE + par-built ISO deleted (vs the Step-2 board)
+  old rl_app_data.json  total 706672
+  new rl_app_data.json  total 689765  (delta -16907, -2.3925%)
+  movers 401 of 804   sum delta -16907
+  by career-games class:
+     cg 1-2    movers   11   sum        -3
+     cg 3-5    movers   27   sum      -296
+     cg 6-10   movers   38   sum      -625
+     cg 11-15  movers   32   sum      -938
+     cg 16+    movers  293   sum    -15045
+  by entry type: IRE 2(-6), MSD 42(+1273), ND 290(-17590), PDA 8(-2), PDN 8(-260), RD 30(-341), SSP 17(+90), UNR 4(-71)
+  LARGEST 15 MOVES
+  key                             old      new     delta    cg    yr    ty   pk
+  isaac-kako                     1320      744      -576    36  2024    ND   13
+  alix-tauru                     1572     1034      -538    18  2024    ND   10
+  caleb-windsor                  1666     1165      -501    54  2023    ND    7
+  ethan-read                      957      497      -460    38  2023    ND    9
+  cooper-hynes                   1441      982      -459    27  2024    ND   20
+  bo-allan                       1054      611      -443    24  2024    ND   16
+  jed-walter                     1345      917      -428    46  2023    ND    3
+  jordan-croft                    979      577      -402    18  2023    ND   15
+  zeke-uwland                    2509     2114      -395    17  2025    ND    2
+  archer-day-wicks                716      377      -339    24  2024    RD    1
+  archer-reid                     712      393      -319    20  2023    ND   30
+  jake-rogers                     548      229      -319    25  2023    ND   14
+  luke-trainor                   1448     1137      -311    30  2024    ND   21
+  tobie-travaglia                 638      335      -303    17  2024    ND    8
+  mitchell-edwards               2279     1978      -301    16  2023    ND   32
+  wrote /home/user/afl-rl-engine/.claude/worktrees/agent-a65ed71c2045dbc94/docs/evidence/one_machinery_2026-08-14/ABL_NOPOLE_NOISO.json

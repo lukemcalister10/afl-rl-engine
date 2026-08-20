@@ -1,0 +1,120 @@
+--- docs/evidence/landing_29_2026-08-13/o29_instruments.py
++++ docs/evidence/landing_29_2026-08-13/o29b_instruments.py
+@@ -1,48 +1,33 @@
+ #!/usr/bin/env python3
+-"""ORDER 29 -- BOTH COMMITTED INSTRUMENTS, RE-READ ON THE **FINAL LANDED BOARD** (P15, T3).
+-
+-THIS FILE IS `docs/evidence/grace_adoption_2026-08-13/o28_instruments.py`
+-(md5 cb55c8b62769aaea4469a9d792600057) COPIED, WITH TWO BASIS SUBSTITUTIONS AND NOTHING ELSE.
+-ORDER 28's committed artifact is left untouched. The full diff is committed beside this file as
+-INSTRUMENTS29_REBASIS.diff.
++"""ORDER 29B -- BOTH COMMITTED INSTRUMENTS, RE-READ ON THE ENTRY-WIRED BOARD (P29B-27).
++
++THIS FILE IS docs/evidence/landing_29_2026-08-13/o29_instruments.py
++(md5 83e2fadb1fbc45dda22c37c5964d5f49) COPIED, WITH EXACTLY ONE BASIS SUBSTITUTION AND NOTHING ELSE.
++ORDER 29's committed artifact is left untouched. The full diff is committed beside this file as
++INSTRUMENTS29B_REBASIS.diff.
+ 
+ The two instruments are the ones fixed in INSTRUMENTS_PRESTATEMENT.md (ORDER 28 inputs/):
+   (1) THE MARK-PATH PROGRESSION TEST   m_allin(d) = sum(marks at depth d) / sum(derived day-0)
+   (2) THE REVERSE NO-ARB TEST          a pathway FAILS iff m_allin(d) < 1 for EVERY d = 1..6 AND the
+                                        upper end of a 95% bootstrap on max_{d>=1} m_allin(d) is < 1.
+ Every convention -- the depth axis, the dead-zeroed-and-kept semantics, the bootstrap B/seed/pct, the
+-thin-sample rule, the MSD debut-year gap and its repaired reading -- is carried verbatim from that
+-pre-statement. NOTHING is re-specified here. NO predicate, tolerance, bootstrap parameter or
+-population rule is touched: the two substitutions below are both BASIS, never TEST.
+-
+-SUBSTITUTION 1 -- THE DENOMINATOR IS NOW WHAT SHIPS, NOT WHAT WAS PROPOSED
+-  ORDER 28 read its ND ladder from DERIVE28.json's `candidate.allin` -- the PROPOSED all-in ladder,
+-  carried at full float precision and BEFORE owner ruling C. ORDER 29 reads the ND ladder from
+-  `engine/rl_after/pvc_curve_v2.json` -- THE ARTIFACT THAT SHIPS on the landed board (52aa1125,
+-  curve_md5 9729f0c5). The two differ exactly where the record says they must: integer rounding
+-  everywhere, plus the ruling-C -1-point-per-pick tiebreak inside the two pooled blocks (picks 6-12
+-  and 15-21). That difference is ASSERTED here, not assumed -- see the CURVE PROVENANCE block below,
+-  which halts if any pick outside those blocks moves by more than rounding.
+-
+-  The POOL half of the denominator is unchanged and is READ FROM DERIVE28.json's candidate cells,
+-  because the landing did not move it: ruling C tiebroke the ND ladder only. That is verified rather
+-  than asserted -- `cell x anchor_factor` reproduces the published landed cell table in
+-  V0S29_out.txt (RD|MID 212, IRE|KPD 53, ...) and `anchor_factor` is bit-equal to the landed
+-  numeraire s = 0.9400914291048137 (V0S29.json s_new).
+-
+-SUBSTITUTION 2 -- THE NUMERATOR CLOSES ORDER 28's OWN DECLARED BREACH
+-  ORDER 28 read its marks from per_entrant_O25R4.json, emitted OFF-DIAL, and said so in this file's
+-  header: "THIS IS A DECLARED BREACH ... with the dial-ON matrix re-emit named as the follow-up."
+-  ORDER 29 RUNS THAT FOLLOW-UP. The marks here come from per_entrant_O29FINAL.json, emitted by
+-  emit_variant_o29.sh against the LANDED tree: store cb38ef11, engine head e5109864, v0surf 4405cba2,
+-  ruled curve installed, grace-A at its landed CODE DEFAULT (RL_GRACE='1', pinned manifest). The
+-  matrix is checked for that identity at load and HALTS on a mismatch.
+-
+-  ORDER 28 predicted the direction of the effect it could not measure: dial-ON marks HIGHER at the
+-  shallow depths, unchanged deeper, so its progressions "UNDERSTATE the rise". That prediction is now
+-  measurable, and the deltas are printed beside every arm rather than described.
+-
+-  usage:  python3 o29_instruments.py   ->  INSTRUMENTS29.json / INSTRUMENTS29_out.txt
++thin-sample rule, the MSD debut-year gap and its repaired reading -- is carried verbatim. NO predicate,
++tolerance, bootstrap parameter or population rule is touched.
++
++THE ONE SUBSTITUTION -- THE NUMERATOR IS THE ENTRY-WIRED MATRIX
++  ORDER 29 read its marks from per_entrant_O29FINAL.json (board 86c8d5d9). ORDER 29B reads them from
++  per_entrant_O29B.json, emitted by the SAME unmodified emitter against the entry-wired tree: store
++  cb38ef11 (UNMOVED), engine head a353a9d3, artifact 911774bc, board 36d5dfc7, v0surf 4405cba2
++  (UNMOVED), grace-A at its landed code default. The matrix basis assert is UNCHANGED and still HALTS
++  on a store/surface mismatch -- and it passes, because 29B moves neither.
++
++  THE DENOMINATOR IS NOT SUBSTITUTED AND MUST NOT BE. It is the DERIVED day-0 -- the shipped ladder
++  for ND, the DERIVE28 cells x anchor_factor for pool -- which is exactly the object ORDER 29B has
++  now wired to the PRINT. So this act does not move the denominator of these two instruments; it
++  makes the engine agree with it. The curve-provenance halt below is left in place and still fires if
++  any pick outside the two ruled blocks moves by more than rounding.
++
++  usage:  python3 o29b_instruments.py  ->  INSTRUMENTS29B.json / INSTRUMENTS29B_out.txt
+ """
+ import os, sys, json, math, collections
+ import numpy as np
+@@ -61,7 +46,7 @@
+ ATTR = L2['attribution']
+ 
+ # --------------------------------------------------------------- SUBSTITUTION 2: the landed matrix
+-MPATH = os.path.join(SP, 'per_entrant_O29FINAL.json')
++MPATH = os.path.join(SP, 'per_entrant_O29B.json')
+ M = json.load(open(MPATH)); R = M['recs']
+ _meta = M['meta']
+ if _meta.get('store_md5') != 'cb38ef11' or _meta.get('v0surf_sig', '')[:8] != '4405cba2':
+@@ -192,13 +177,13 @@
+ 
+ 
+ P("=" * 126)
+-P("ORDER 29  --  BOTH COMMITTED INSTRUMENTS, RE-READ ON THE FINAL LANDED BOARD 86c8d5d9.")
++P("ORDER 29B --  BOTH COMMITTED INSTRUMENTS, RE-READ ON THE ENTRY-WIRED BOARD 36d5dfc7.")
+ P("=" * 126)
+ P("  denominator: the LANDED derived day-0 -- the SHIPPED ladder pvc_curve_v2.json (curve_md5 %s,"
+   % _ART.get('curve_md5', '?')[:8])
+ P("               ruling-C tiebroken, integer) for ND 1-64, and the landed pool cells x anchor_factor")
+ P("               %.15f for every pool arm. NOT the pre-ruling proposal." % AF)
+-P("  numerator:   marks from per_entrant_O29FINAL.json -- RE-EMITTED under the LANDED engine")
++P("  numerator:   marks from per_entrant_O29B.json -- RE-EMITTED under the LANDED engine")
+ P("               (store %s, engine head %s, v0surf %s, grace-A at its landed code default)."
+   % (_meta['store_md5'], _meta.get('engine_head'), _meta['v0surf_sig'][:8]))
+ P("  ORDER 28's DECLARED BREACH IS CLOSED HERE: it read OFF-DIAL marks and named this re-emit as the")
+@@ -349,8 +334,8 @@
+   % ('CONFIRMED' if (sum(_shallow) / len(_shallow)) > abs(sum(_deep) / len(_deep))
+      else 'NOT CONFIRMED: the deep move is not smaller than the shallow one'))
+ 
+-json.dump(dict(basis='ORDER 29 FINAL LANDED BOARD 86c8d5d9 (shipped ruling-C ladder + landed cells)',
+-               breach='CLOSED -- marks re-emitted under the landed engine (per_entrant_O29FINAL)',
++json.dump(dict(basis='ORDER 29B ENTRY-WIRED BOARD 36d5dfc7 (shipped ruling-C ladder + landed cells; denominator UNMOVED)',
++               breach='CLOSED -- marks re-emitted under the landed engine (per_entrant_O29B)',
+                matrix=dict(path=MPATH, store=_meta['store_md5'], v0surf=_meta['v0surf_sig'],
+                            engine_head=_meta.get('engine_head'), n_records=_meta.get('n_records')),
+                curve=dict(artifact_curve_md5=_ART.get('curve_md5'),
+@@ -362,6 +347,6 @@
+                                     ok=PROG[a]['ok']) for a in PROG},
+                dial_delta=DELTA,
+                noarb=NOARB, noarb_any_fail=ANYFAIL),
+-          open(os.path.join(HERE, 'INSTRUMENTS29.json'), 'w'), indent=1, sort_keys=True, default=float)
+-open(os.path.join(HERE, 'INSTRUMENTS29_out.txt'), 'w').write("\n".join(LOG) + "\n")
+-print("\nwrote INSTRUMENTS29.json / INSTRUMENTS29_out.txt")
++          open(os.path.join(HERE, 'INSTRUMENTS29B.json'), 'w'), indent=1, sort_keys=True, default=float)
++open(os.path.join(HERE, 'INSTRUMENTS29B_out.txt'), 'w').write("\n".join(LOG) + "\n")
++print("\nwrote INSTRUMENTS29B.json / INSTRUMENTS29B_out.txt")

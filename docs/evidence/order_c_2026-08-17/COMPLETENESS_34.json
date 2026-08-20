@@ -1,0 +1,20 @@
+{
+ "completeness": {
+  "O34_ALPHA": 0.75,
+  "a_blend_replaced": true,
+  "cell_coverage_pct": 100.0,
+  "floor_replaced": true,
+  "iso_deleted_dial": true,
+  "iso_returns_unity": true,
+  "o30bp_bars_never_edited": true,
+  "o34_exactly_two_sites": true,
+  "pole_deleted_dial": true,
+  "preview_lane_on": true,
+  "raw_ev_returns_before_pole": true,
+  "rows_priced": 804,
+  "rows_without_a_v0_object": [],
+  "rows_without_birth_year": 0,
+  "stall_gate_keeps_its_own_bars": true
+ },
+ "failures": []
+}

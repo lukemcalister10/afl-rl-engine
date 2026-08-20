@@ -1,0 +1,90 @@
+==========================================================================================================================
+DELIVERY VERIFICATION — every owner document checked COLUMN BY COLUMN against the standing spec.
+Run over the BUILT ARTEFACTS on disk, not over the code that claims to write them.
+==========================================================================================================================
+
+1 · THE NO-ARB TABLES  (NOARB_FINAL.html)  — spec: five bands + ALL/1-20/21-64, PLUS the POOL
+    ARMS, BOTH windows, both baselines, path test on every breaching cell.
+  FAIL the page exists                                            MISSING
+
+2 · THE TRACKER  (TRACKER_ASSEMBLY.html + .csv)  — spec v741/v742: live · K · Dlive->K · P ·
+    DK->P · R · DP->R · CANDIDATE · DR->cand · Dlive->cand · DK->cand, every column sortable.
+  PASS board column present: live                                 
+  PASS board column present: K                                    
+  PASS board column present: P                                    
+  PASS board column present: R                                    
+  PASS board column present: CANDIDATE                            
+  PASS DELTA column present in the HTML: D live->K                
+  PASS DELTA column present in the HTML: D K->P                   
+  PASS DELTA column present in the HTML: D P->R                   
+  PASS DELTA column present in the HTML: D R->cand                
+  PASS DELTA column present in the HTML: D live->cand             
+  PASS DELTA column present in the HTML: D K->cand                
+  PASS columns are sortable (sort script present)                 
+  PASS board totals in the header                                 
+  PASS CSV column present: live                                   
+  PASS CSV column present: K                                      
+  PASS CSV column present: d_live_K                               
+  PASS CSV column present: P                                      
+  PASS CSV column present: d_K_P                                  
+  PASS CSV column present: R                                      
+  PASS CSV column present: d_P_R                                  
+  PASS CSV column present: candidate                              
+  PASS CSV column present: d_R_cand                               
+  PASS CSV column present: d_live_cand                            
+  PASS CSV column present: d_K_cand                               
+
+3 · THE YEAR-1 CLASS  (ASSEMBLY_YEAR1.html)  — spec: pick / player / pos / club / type / v0 /
+    all five boards / delta, on the ENGINE COHORT CLOCK (MSD = draft year, else draft+1).
+  PASS column present: pick                                       
+  PASS column present: player                                     
+  PASS column present: pos                                        
+  PASS column present: club                                       
+  PASS column present: type                                       
+  PASS column present: v0                                         
+  PASS column present: cohort                                     
+  PASS no bare em-dash cells in the body                          
+  PASS the MEMBERSHIP ASSERTION is printed on the page            
+  PASS the membership assertion PASSES both ways                  2 PASS marks
+  PASS the cohort rule is stated in words on the page             
+  PASS the standing broken-box is on the page                     
+
+4 · THE PLAYER LIST  (ASSEMBLY_PLAYERS.html)  — spec: all board rows, five board columns,
+    deltas, and the MECHANISM LEGS.
+  PASS all 804 board rows present                                 804 rows
+  PASS mechanism leg column present: charge                       
+  PASS mechanism leg column present: fade D                       
+  PASS mechanism leg column present: unplayed clock               
+  PASS delta columns present                                      
+  PASS the standing broken-box is on the page                     
+
+5 · THE PER-LEVER BREAKDOWN  (LEVERS_ASSEMBLY.html)  — spec v742: R -> candidate one lever at a
+    time, marginal board and named-row effect per lever.
+  PASS marginal column present                                    
+  PASS rows-moved column present                                  
+  PASS per-lever named movers present                             
+  PASS the p20 -> p15 anchor move is visible as its own step      
+
+6 · THE MOVERS LEDGER  (MOVERS_LEDGER.json)
+  PASS the ledger exists and parses                               801 rows
+  PASS ledger field present: live                                 
+  PASS ledger field present: K                                    
+  PASS ledger field present: P                                    
+  PASS ledger field present: R                                    
+  PASS ledger field present: cand                                 
+  PASS ledger field present: d_R_cand                             
+  PASS ledger field present: d_live_cand                          
+  PASS ledger field present: d_K_cand                             
+
+ITEMS THAT CANNOT BE CHECKED MECHANICALLY — named, not skipped:
+  MANUAL  the prose in every "what is still broken" box is accurate and current
+  MANUAL  no named player is used as a TARGET anywhere (only as a consequence)
+  MANUAL  depths are quoted as depths and never glossed into years of prose
+
+==========================================================================================================================
+DELIVERY VERIFICATION SUMMARY: 56 checks, 55 PASS, 1 FAIL
+*** FAILING CHECKS ***
+   noarb      the page exists  MISSING
+==========================================================================================================================
+
+written: DELIVERY_VERIFICATION_FC.json · DELIVERY_VERIFICATION_FC_out.txt

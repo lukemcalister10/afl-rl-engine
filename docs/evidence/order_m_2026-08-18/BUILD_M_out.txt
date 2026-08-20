@@ -1,0 +1,57 @@
+=== ORDER M BOARD SUITE ===
+  ORDER K's ruled setting: dose 0.40 kappa 0.20 gamma_u 8.0 eta 0.50 gamma_d 14.0 rel 1.08
+  ORDER M applies the owner's ruling: ETA := 0
+
+--- cand (RL_O36 unset; must be 1f176444) ---
+6c5675648d1be84c9e4673ad9b862c52  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_cand/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_cand/rl_after/rl_model_data.json
+1f17644445f074d11e631b5cbae98a9a  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_cand/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- K (ORDER K's ruled setting; must be f3101883) ---
+6c5675648d1be84c9e4673ad9b862c52  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_K/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_K/rl_after/rl_model_data.json
+f3101883a60b0a7b8cb50f9d8a5abfff  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_K/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- s1 (the age bar alone at dose 0.40, tall factor removed) ---
+6c5675648d1be84c9e4673ad9b862c52  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_s1/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_s1/rl_after/rl_model_data.json
+0423c8b20c0571fab0e5dd5ebc01c394  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_s1/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- M0 (ORDER K's knobs with ETA := 0) ---
+6c5675648d1be84c9e4673ad9b862c52  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_M0/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_M0/rl_after/rl_model_data.json
+73bf961724e77f0bda996825125a07ad  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_M0/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- M0R (determinism repeat of M0) ---
+6c5675648d1be84c9e4673ad9b862c52  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_M0R/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_M0R/rl_after/rl_model_data.json
+73bf961724e77f0bda996825125a07ad  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_M0R/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- MLO (the coolest eta=0 point in the grid: dose 0.00 kappa 0.15 gamma_u 16) ---
+6c5675648d1be84c9e4673ad9b862c52  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_MLO/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_MLO/rl_after/rl_model_data.json
+ba97fb732cedcc653bb93cae493eccd3  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_MLO/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+--- MMIN (the smallest legal eta anywhere: dose 0.00 kappa 0.20 gamma_u 8 eta 0.31) ---
+6c5675648d1be84c9e4673ad9b862c52  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_MMIN/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_MMIN/rl_after/rl_model_data.json
+d0fa4ab799abd681516f6346bf8c9f62  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/om/bb_MMIN/rl_after/rl_app_data.json
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+
+=== BOARD MD5s ===
+  cand   1f17644445f074d11e631b5cbae98a9a
+  K      f3101883a60b0a7b8cb50f9d8a5abfff
+  s1     0423c8b20c0571fab0e5dd5ebc01c394
+  M0     73bf961724e77f0bda996825125a07ad
+  M0R    73bf961724e77f0bda996825125a07ad
+  MLO    ba97fb732cedcc653bb93cae493eccd3
+  MMIN   d0fa4ab799abd681516f6346bf8c9f62
+  M1 DIAL-OFF = 1f176444    : PASS
+  M2 ORDER K = f3101883     : PASS
+  M3 DETERMINISM x2         : PASS

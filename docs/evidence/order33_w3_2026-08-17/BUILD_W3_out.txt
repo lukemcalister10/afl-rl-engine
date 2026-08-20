@@ -1,0 +1,8 @@
+ORDER 33 W3 BUILD — store cb38ef11, 2650 players, 11340 played season rows
+base sample (Y 2005-2025, games>=6u, age 18-30): 7823 rows, 1516 players
+conditional sample (next season games>=6u): 6373 rows (81.5%)
+exit1 (no Y+1 played season at all): 617 (7.9%); thin next season (played but <6u): 833
+season-index (X2, 5=5+) over base: {1: 967, 2: 1139, 3: 1034, 4: 953, 5: 3730}
+ages of first/second-season rows (27=27+): {18: 27, 19: 470, 20: 706, 21: 363, 22: 207, 23: 135, 24: 81, 25: 52, 26: 31, 27: 34}
+KEY CELL raw: age>=23 & first/second played season: n=333 rows, 243 players; exit1 12.9%
+  entry types in key cell: {'RD': 145, 'ND': 123, 'MSD': 19, 'SSP': 16, 'UNR': 14, 'IRE': 6, 'PDA': 4, 'PDS': 4, 'PDN': 2}

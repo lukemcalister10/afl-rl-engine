@@ -1,0 +1,15 @@
+=== FINAL-CANDIDATE — THE R3-OFF COMPANION ===
+  engine : 53fff6de156efa870da11edc5cbaa75a
+
+--- FC_NOR3 : RL_O37=1 RL_O38A=1 RL_O38B1=1 RL_O39_BETASAT=0.105 RL_O40_CAPFORM=smooth RL_O40_CAPPCT=15 RL_O40_RECW=0.47 RL_O40_PGMAT=1 RL_O41_SDOFF=2.98 RL_O41_CREDIT=1 RL_O41_RESET=1 RL_O41_INJ=1 RL_O41_RAMP=1 RL_O41_BREAK=unwind RL_O41_UNWIND=7 RL_O42=1 ---
+98f16794ba4ce7ca4747320d4ebc510c  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fc/bb_FC_NOR3/rl_after/rl_model.py
+cb38ef1171dcf20aae66ebf12682be0d  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fc/bb_FC_NOR3/rl_after/rl_model_data.json
+EXPORT FAILED
+PROVENANCE {"RL_FV_env": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fc/bb_FC_NOR3/forward_valuation", "config_manifest_identity": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1", "config_manifest_path": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-final/data/model_config.json", "distribution_pricing_md5": "33e07a9ee66a29e9d8ef3dc45cca52f6", "fv_identity": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346", "fv_identity_expected": "2621b56a32805f15b5084a45f851e882d1a0c6cf9c4fc2512550d394760f7dc6", "resolved_fv_dir": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fc/bb_FC_NOR3/forward_valuation", "rl_model_md5": "98f16794ba4ce7ca4747320d4ebc510c", "rl_model_path": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fc/bb_FC_NOR3/rl_after/rl_model.py"}
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+ORDER 41 HALT: RL_O41_BREAK=unwind but RL_O41_R3 is unset. The break rule shapes a collector that is not switched on.
+
+=== BOARD IDS ===
+FC_CAND      daa16812e50fb71241e627d89180412c
+FC_NOR3      NO BOARD

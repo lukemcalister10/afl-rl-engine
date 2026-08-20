@@ -1,0 +1,131 @@
+ORDER 30B STEP 1 -- THE POSITIONAL v0 RE-FIT
+  artifact engine/rl_after/pvc_curve_v2.json  md5 911774bc92de0630199a4cc0c6bfac42
+  PIN HELD (911774bc92de0630199a4cc0c6bfac42)
+
+ENTRY STATE (what the re-fit is fixing)
+  all-in curve  pick1 3000.0  pick64 179.0  sum(1..64) 47315.0
+  pos           p1       p32       p63       p64  ascents       min
+  KPD      2277.45    409.78    557.69    643.47       24    359.49
+  KPF      1367.12    496.46    253.50    291.12       14    187.07
+  MID      3896.36    692.37     94.17     56.66       14     56.66
+  RUCK     1967.72   1527.55      0.00      0.00       15      0.00
+  SD       1643.48    293.53    268.59    311.98       19     88.43
+  SF        810.86    347.64     70.14     17.99       21     17.99
+  TOTAL ASCENTS 107
+  share-weighted total 47315.000000  (curve total 47315.000000)   per-pick max|ratio-1| 2.220e-16
+  A2 cells: RUCK63 0.00  RUCK64 0.00  SF64 17.99  MID64 56.66
+
+STAGE 1 -- WEIGHTED PAVA (non-increasing, weights = share_g(p))
+  pos           p1       p32       p64   blocks   pooled
+  KPD      2291.66    409.78    408.60        6       45
+  KPF      1565.45    496.46    211.79        5       27
+  MID      3896.36    692.37     56.66        4       25
+  RUCK     3491.28   1373.47      0.00        2       33
+  SD       1661.59    293.53    147.18        3       28
+  SF       1600.29    339.09     17.99        4       35
+  share-weighted total after PAVA 47315.000000   drift vs curve total 0.000e+00 (PAVA conserves by construction)
+
+STAGE 2 -- FLOOR 100 AT PICK 64 PER POSITION (ruling 3), applied as the lower bound max(.,100)
+  pos    n_lifted first_pick weighted_lift
+  KPD           0          -       0.0000
+  KPF           0          -       0.0000
+  MID           2         63      14.9926
+  RUCK          5         60      15.8757
+  SD            0          -       0.0000
+  SF            3         62      30.8346
+  TOTAL weighted lift 61.7029 board points (share-weighted)
+
+STAGE 3 -- THE -1-PER-PICK ORDERING TIEBREAK (the same law as the all-in curve)
+  pos       runs floorruns joinshifts weighted_drift
+  KPD          6       0          2    52.389394
+  KPF          5       0          1    45.956669
+  MID          5       1          0     0.303608
+  RUCK         3       1          0     0.500016
+  SD           3       0          1    23.190769
+  SF           5       1          0     0.694168
+  share-weighted total after tiebreak 47499.737515  (floor+tiebreak lift 184.7375 over curve total)
+
+STAGE 4 -- CONSERVATION (one published scalar, NO SLASH)
+  lambda = 0.995505141235   (applied to the ABOVE-FLOOR part only: v' = 100 + lambda*(v-100))
+  share-weighted grand total 47315.000000000   target 47315.000000000   |drift| 0.000e+00
+  monotone + floor re-asserted AFTER conservation on all six positions: PASS
+
+THE PER-PICK RECONCILIATION RESIDUAL -- DISCLOSED, NOT HIDDEN
+  The POPULATION identity (sum over picks) is EXACT by construction (lambda). The PER-PICK identity
+  sum_g share_g(p)*posv_g(p) == curve(p) is NOT preserved -- monotonicity and the floor are
+  constraints the raw relativities did not satisfy. The whole residual vector is published.
+  max |ratio-1| = 0.1853 at pick 63 (mix 148.27 vs curve 182.00)
+   pick        mix      curve    ratio   |   pick        mix      curve    ratio
+      1    3151.12    3000.00   1.0504   |     33     546.39     560.00   0.9757
+      2    2580.62    2668.00   0.9672   |     34     539.05     549.00   0.9819
+      3    2493.85    2569.00   0.9707   |     35     533.26     539.00   0.9894
+      4    2214.86    2239.00   0.9892   |     36     526.90     530.00   0.9941
+      5    1800.06    1804.00   0.9978   |     37     519.53     520.00   0.9991
+      6    1340.89    1322.00   1.0143   |     38     504.79     509.00   0.9917
+      7    1359.69    1321.00   1.0293   |     39     488.59     495.00   0.9871
+      8    1337.11    1320.00   1.0130   |     40     475.56     479.00   0.9928
+      9    1324.71    1319.00   1.0043   |     41     461.90     460.00   1.0041
+     10    1320.92    1318.00   1.0022   |     42     443.07     437.00   1.0139
+     11    1297.75    1317.00   0.9854   |     43     418.54     413.00   1.0134
+     12    1280.33    1316.00   0.9729   |     44     395.07     387.00   1.0209
+     13    1186.77    1182.00   1.0040   |     45     371.46     362.00   1.0261
+     14     970.65     960.00   1.0111   |     46     347.20     338.00   1.0272
+     15     836.63     815.00   1.0265   |     47     328.06     317.00   1.0349
+     16     831.80     814.00   1.0219   |     48     311.41     300.00   1.0380
+     17     828.46     813.00   1.0190   |     49     296.06     285.00   1.0388
+     18     830.03     812.00   1.0222   |     50     283.36     274.00   1.0342
+     19     815.98     811.00   1.0061   |     51     272.33     265.00   1.0277
+     20     806.66     810.00   0.9959   |     52     263.34     257.00   1.0247
+     21     801.18     809.00   0.9903   |     53     255.83     250.00   1.0233
+     22     774.18     782.00   0.9900   |     54     248.90     243.00   1.0243
+     23     728.59     733.00   0.9940   |     55     242.28     235.00   1.0310
+     24     698.74     696.00   1.0039   |     56     233.63     226.00   1.0337
+     25     675.07     671.00   1.0061   |     57     221.19     215.00   1.0288
+     26     658.10     657.00   1.0017   |     58     207.96     205.00   1.0144
+     27     647.55     647.00   1.0009   |     59     193.90     195.00   0.9944
+     28     635.89     637.00   0.9983   |     60     180.51     188.00   0.9602
+     29     618.52     623.00   0.9928   |     61     166.61     184.00   0.9055
+     30     598.73     607.00   0.9864   |     62     157.13     183.00   0.8586
+     31     579.31     589.00   0.9835   |     63     148.27     182.00   0.8147
+     32     561.32     573.00   0.9796   |     64     146.82     179.00   0.8202
+  max|ratio-1| by band:  1-20 0.0504   21-40 0.0243   41-54 0.0388   55-64 0.1853
+
+THE RE-FIT, POSITION BY POSITION
+  pos           p1       p32       p63       p64  ascents       min  max_move
+  KPD      2298.67    423.00    392.14    391.14        0    391.14    252.33
+  KPF      1566.74    501.58    206.41    205.41        0    205.41    199.62
+  MID      3879.30    689.71    101.00    100.00        0    100.00     71.83
+  RUCK     3477.24   1359.53    101.00    100.00        0    100.00   1509.52
+  SD       1659.17    296.29    139.54    138.54        0    138.54    173.44
+  SF       1595.12    337.94    101.00    100.00        0    100.00    784.26
+
+  TWENTY LARGEST CELL MOVES
+  pos     pick         old         new       delta
+  RUCK       1     1967.72     3477.24    +1509.52
+  RUCK       3     4422.75     3475.25     -947.50
+  SF         1      810.86     1595.12     +784.26
+  RUCK       2     4221.01     3476.25     -744.76
+  RUCK      15      893.63     1376.46     +482.82
+  RUCK      14      941.32     1377.45     +436.13
+  SF         3     1980.43     1593.13     -387.29
+  RUCK      16      997.11     1375.46     +378.35
+  RUCK      13     1060.04     1378.45     +318.40
+  RUCK       4     3790.29     3474.26     -316.04
+  RUCK      17     1105.83     1374.46     +268.64
+  RUCK      10     1113.74     1381.43     +267.69
+  RUCK      11     1122.39     1380.44     +258.05
+  KPD       64      643.47      391.14     -252.33
+  RUCK      12     1138.16     1379.44     +241.28
+  SF         2     1820.33     1594.13     -226.20
+  RUCK      28     1578.27     1363.51     -214.76
+  RUCK       9     1176.56     1382.43     +205.87
+  RUCK      29     1565.21     1362.52     -202.69
+  RUCK      23     1568.43     1368.49     -199.93
+
+  THE A2 CELLS, CURED
+    RUCK  63       0.00  ->    101.00
+    RUCK  64       0.00  ->    100.00
+    SF    64      17.99  ->    100.00
+    MID   64      56.66  ->    100.00
+
+WROTE /home/user/afl-rl-engine/.claude/worktrees/agent-ac6abd0494353e85f/engine/rl_after/pvc_curve_v2.json  new md5 06146b00daf2043487f58a8b9f842a1e

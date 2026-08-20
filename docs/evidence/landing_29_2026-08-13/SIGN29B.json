@@ -1,0 +1,19 @@
+{
+ "borrowed": {
+  "PDN|KPF": 92.35874340265629,
+  "PDS|KPF": 83.97715038537063
+ },
+ "lens_KPF": 0.8318314538303738,
+ "pathway_shrunk": {
+  "PDN": 118.10616940030866,
+  "PDS": 107.38798714410103
+ },
+ "pathway_anchored": {
+  "PDN": 111.03059757763138,
+  "PDS": 100.9545263029873
+ },
+ "anchor_factor": 0.9400914291048137,
+ "K": 15,
+ "rederivation_max_abs_err_vs_DERIVE28": 0.0,
+ "artifact_md5": "911774bc92de0630199a4cc0c6bfac42"
+}

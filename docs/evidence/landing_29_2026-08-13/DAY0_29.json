@@ -1,0 +1,606 @@
+{
+ "n_fresh": 46,
+ "n_collapse_exact": 0,
+ "noncollapsing": [
+  {
+   "key": "josh-smillie",
+   "pick": 7,
+   "printed": 818,
+   "ladder": 1321
+  },
+  {
+   "key": "oskar-taylor",
+   "pick": 15,
+   "printed": 501,
+   "ladder": 815
+  },
+  {
+   "key": "lachlan-carmichael",
+   "pick": 21,
+   "printed": 472,
+   "ladder": 809
+  },
+  {
+   "key": "mitchell-marsh",
+   "pick": 22,
+   "printed": 443,
+   "ladder": 782
+  },
+  {
+   "key": "harley-barker",
+   "pick": 24,
+   "printed": 596,
+   "ladder": 696
+  },
+  {
+   "key": "adam-sweid",
+   "pick": 25,
+   "printed": 350,
+   "ladder": 671
+  },
+  {
+   "key": "blake-thredgold",
+   "pick": 26,
+   "printed": 332,
+   "ladder": 657
+  },
+  {
+   "key": "avery-thomas",
+   "pick": 28,
+   "printed": 358,
+   "ladder": 637
+  },
+  {
+   "key": "sam-allen",
+   "pick": 29,
+   "printed": 563,
+   "ladder": 623
+  },
+  {
+   "key": "thomas-matthews",
+   "pick": 30,
+   "printed": 310,
+   "ladder": 607
+  },
+  {
+   "key": "tyan-prindable",
+   "pick": 32,
+   "printed": 503,
+   "ladder": 573
+  },
+  {
+   "key": "james-barrat",
+   "pick": 32,
+   "printed": 208,
+   "ladder": 573
+  },
+  {
+   "key": "hunter-holmes",
+   "pick": 33,
+   "printed": 485,
+   "ladder": 560
+  },
+  {
+   "key": "ned-bowman",
+   "pick": 26,
+   "printed": 229,
+   "ladder": 657
+  },
+  {
+   "key": "charlie-nicholls",
+   "pick": 34,
+   "printed": 189,
+   "ladder": 549
+  },
+  {
+   "key": "jevan-phillipou",
+   "pick": 35,
+   "printed": 263,
+   "ladder": 539
+  },
+  {
+   "key": "kayle-gerreyn",
+   "pick": 37,
+   "printed": 170,
+   "ladder": 520
+  },
+  {
+   "key": "koby-evans",
+   "pick": 38,
+   "printed": 244,
+   "ladder": 509
+  },
+  {
+   "key": "tylah-williams",
+   "pick": 39,
+   "printed": 237,
+   "ladder": 495
+  },
+  {
+   "key": "tobyn-murray",
+   "pick": 40,
+   "printed": 219,
+   "ladder": 479
+  },
+  {
+   "key": "ollie-murphy",
+   "pick": 41,
+   "printed": 154,
+   "ladder": 460
+  },
+  {
+   "key": "luke-lloyd",
+   "pick": 42,
+   "printed": 146,
+   "ladder": 437
+  },
+  {
+   "key": "tai-hayes",
+   "pick": 44,
+   "printed": 167,
+   "ladder": 387
+  },
+  {
+   "key": "harry-demattia",
+   "pick": 25,
+   "printed": 379,
+   "ladder": 671
+  },
+  {
+   "key": "ben-camporeale",
+   "pick": 43,
+   "printed": 217,
+   "ladder": 413
+  },
+  {
+   "key": "koby-coulson",
+   "pick": 46,
+   "printed": 259,
+   "ladder": 338
+  },
+  {
+   "key": "joel-cochran",
+   "pick": 47,
+   "printed": 130,
+   "ladder": 317
+  },
+  {
+   "key": "max-knobel",
+   "pick": 42,
+   "printed": 365,
+   "ladder": 437
+  },
+  {
+   "key": "hugo-mikunda",
+   "pick": 48,
+   "printed": 143,
+   "ladder": 300
+  },
+  {
+   "key": "max-king-syd",
+   "pick": 49,
+   "printed": 124,
+   "ladder": 285
+  },
+  {
+   "key": "cooper-bell",
+   "pick": 49,
+   "printed": 121,
+   "ladder": 285
+  },
+  {
+   "key": "finnegan-davis",
+   "pick": 51,
+   "printed": 132,
+   "ladder": 265
+  },
+  {
+   "key": "kye-fincher",
+   "pick": 52,
+   "printed": 194,
+   "ladder": 257
+  },
+  {
+   "key": "jacob-molier",
+   "pick": 52,
+   "printed": 219,
+   "ladder": 257
+  },
+  {
+   "key": "patrick-snell",
+   "pick": 53,
+   "printed": 90,
+   "ladder": 250
+  },
+  {
+   "key": "zac-mccarthy",
+   "pick": 55,
+   "printed": 117,
+   "ladder": 235
+  },
+  {
+   "key": "riak-andrew",
+   "pick": 55,
+   "printed": 108,
+   "ladder": 235
+  },
+  {
+   "key": "matthew-leray",
+   "pick": 56,
+   "printed": 170,
+   "ladder": 226
+  },
+  {
+   "key": "will-darcy",
+   "pick": 58,
+   "printed": 145,
+   "ladder": 205
+  },
+  {
+   "key": "brayden-george",
+   "pick": 26,
+   "printed": 208,
+   "ladder": 657
+  },
+  {
+   "key": "tyler-welsh",
+   "pick": 59,
+   "printed": 62,
+   "ladder": 195
+  },
+  {
+   "key": "luke-urquhart",
+   "pick": 57,
+   "printed": 109,
+   "ladder": 215
+  },
+  {
+   "key": "patrick-said",
+   "pick": 60,
+   "printed": 63,
+   "ladder": 188
+  },
+  {
+   "key": "jaren-carr",
+   "pick": 63,
+   "printed": 60,
+   "ladder": 182
+  },
+  {
+   "key": "cody-anderson",
+   "pick": 64,
+   "printed": 60,
+   "ladder": 179
+  },
+  {
+   "key": "reece-torrent",
+   "pick": 64,
+   "printed": 76,
+   "ladder": 179
+  }
+ ],
+ "rows": [
+  {
+   "key": "josh-smillie",
+   "pick": 7,
+   "printed": 818,
+   "ladder": 1321,
+   "diff": -503
+  },
+  {
+   "key": "oskar-taylor",
+   "pick": 15,
+   "printed": 501,
+   "ladder": 815,
+   "diff": -314
+  },
+  {
+   "key": "lachlan-carmichael",
+   "pick": 21,
+   "printed": 472,
+   "ladder": 809,
+   "diff": -337
+  },
+  {
+   "key": "mitchell-marsh",
+   "pick": 22,
+   "printed": 443,
+   "ladder": 782,
+   "diff": -339
+  },
+  {
+   "key": "harley-barker",
+   "pick": 24,
+   "printed": 596,
+   "ladder": 696,
+   "diff": -100
+  },
+  {
+   "key": "adam-sweid",
+   "pick": 25,
+   "printed": 350,
+   "ladder": 671,
+   "diff": -321
+  },
+  {
+   "key": "blake-thredgold",
+   "pick": 26,
+   "printed": 332,
+   "ladder": 657,
+   "diff": -325
+  },
+  {
+   "key": "avery-thomas",
+   "pick": 28,
+   "printed": 358,
+   "ladder": 637,
+   "diff": -279
+  },
+  {
+   "key": "sam-allen",
+   "pick": 29,
+   "printed": 563,
+   "ladder": 623,
+   "diff": -60
+  },
+  {
+   "key": "thomas-matthews",
+   "pick": 30,
+   "printed": 310,
+   "ladder": 607,
+   "diff": -297
+  },
+  {
+   "key": "tyan-prindable",
+   "pick": 32,
+   "printed": 503,
+   "ladder": 573,
+   "diff": -70
+  },
+  {
+   "key": "james-barrat",
+   "pick": 32,
+   "printed": 208,
+   "ladder": 573,
+   "diff": -365
+  },
+  {
+   "key": "hunter-holmes",
+   "pick": 33,
+   "printed": 485,
+   "ladder": 560,
+   "diff": -75
+  },
+  {
+   "key": "ned-bowman",
+   "pick": 26,
+   "printed": 229,
+   "ladder": 657,
+   "diff": -428
+  },
+  {
+   "key": "charlie-nicholls",
+   "pick": 34,
+   "printed": 189,
+   "ladder": 549,
+   "diff": -360
+  },
+  {
+   "key": "jevan-phillipou",
+   "pick": 35,
+   "printed": 263,
+   "ladder": 539,
+   "diff": -276
+  },
+  {
+   "key": "kayle-gerreyn",
+   "pick": 37,
+   "printed": 170,
+   "ladder": 520,
+   "diff": -350
+  },
+  {
+   "key": "koby-evans",
+   "pick": 38,
+   "printed": 244,
+   "ladder": 509,
+   "diff": -265
+  },
+  {
+   "key": "tylah-williams",
+   "pick": 39,
+   "printed": 237,
+   "ladder": 495,
+   "diff": -258
+  },
+  {
+   "key": "tobyn-murray",
+   "pick": 40,
+   "printed": 219,
+   "ladder": 479,
+   "diff": -260
+  },
+  {
+   "key": "ollie-murphy",
+   "pick": 41,
+   "printed": 154,
+   "ladder": 460,
+   "diff": -306
+  },
+  {
+   "key": "luke-lloyd",
+   "pick": 42,
+   "printed": 146,
+   "ladder": 437,
+   "diff": -291
+  },
+  {
+   "key": "tai-hayes",
+   "pick": 44,
+   "printed": 167,
+   "ladder": 387,
+   "diff": -220
+  },
+  {
+   "key": "harry-demattia",
+   "pick": 25,
+   "printed": 379,
+   "ladder": 671,
+   "diff": -292
+  },
+  {
+   "key": "ben-camporeale",
+   "pick": 43,
+   "printed": 217,
+   "ladder": 413,
+   "diff": -196
+  },
+  {
+   "key": "koby-coulson",
+   "pick": 46,
+   "printed": 259,
+   "ladder": 338,
+   "diff": -79
+  },
+  {
+   "key": "joel-cochran",
+   "pick": 47,
+   "printed": 130,
+   "ladder": 317,
+   "diff": -187
+  },
+  {
+   "key": "max-knobel",
+   "pick": 42,
+   "printed": 365,
+   "ladder": 437,
+   "diff": -72
+  },
+  {
+   "key": "hugo-mikunda",
+   "pick": 48,
+   "printed": 143,
+   "ladder": 300,
+   "diff": -157
+  },
+  {
+   "key": "max-king-syd",
+   "pick": 49,
+   "printed": 124,
+   "ladder": 285,
+   "diff": -161
+  },
+  {
+   "key": "cooper-bell",
+   "pick": 49,
+   "printed": 121,
+   "ladder": 285,
+   "diff": -164
+  },
+  {
+   "key": "finnegan-davis",
+   "pick": 51,
+   "printed": 132,
+   "ladder": 265,
+   "diff": -133
+  },
+  {
+   "key": "kye-fincher",
+   "pick": 52,
+   "printed": 194,
+   "ladder": 257,
+   "diff": -63
+  },
+  {
+   "key": "jacob-molier",
+   "pick": 52,
+   "printed": 219,
+   "ladder": 257,
+   "diff": -38
+  },
+  {
+   "key": "patrick-snell",
+   "pick": 53,
+   "printed": 90,
+   "ladder": 250,
+   "diff": -160
+  },
+  {
+   "key": "zac-mccarthy",
+   "pick": 55,
+   "printed": 117,
+   "ladder": 235,
+   "diff": -118
+  },
+  {
+   "key": "riak-andrew",
+   "pick": 55,
+   "printed": 108,
+   "ladder": 235,
+   "diff": -127
+  },
+  {
+   "key": "matthew-leray",
+   "pick": 56,
+   "printed": 170,
+   "ladder": 226,
+   "diff": -56
+  },
+  {
+   "key": "will-darcy",
+   "pick": 58,
+   "printed": 145,
+   "ladder": 205,
+   "diff": -60
+  },
+  {
+   "key": "brayden-george",
+   "pick": 26,
+   "printed": 208,
+   "ladder": 657,
+   "diff": -449
+  },
+  {
+   "key": "tyler-welsh",
+   "pick": 59,
+   "printed": 62,
+   "ladder": 195,
+   "diff": -133
+  },
+  {
+   "key": "luke-urquhart",
+   "pick": 57,
+   "printed": 109,
+   "ladder": 215,
+   "diff": -106
+  },
+  {
+   "key": "patrick-said",
+   "pick": 60,
+   "printed": 63,
+   "ladder": 188,
+   "diff": -125
+  },
+  {
+   "key": "jaren-carr",
+   "pick": 63,
+   "printed": 60,
+   "ladder": 182,
+   "diff": -122
+  },
+  {
+   "key": "cody-anderson",
+   "pick": 64,
+   "printed": 60,
+   "ladder": 179,
+   "diff": -119
+  },
+  {
+   "key": "reece-torrent",
+   "pick": 64,
+   "printed": 76,
+   "ladder": 179,
+   "diff": -103
+  }
+ ]
+}

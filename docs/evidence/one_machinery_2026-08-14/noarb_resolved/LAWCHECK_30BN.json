@@ -1,0 +1,9 @@
+{
+ "checks": {
+  "beta_exact": 0.0,
+  "blift_exact": 0.0,
+  "lane_rule_exact": 1.8189894035458565e-12
+ },
+ "held": true,
+ "reference_selfcheck_max_delta": 0.0
+}

@@ -1,0 +1,94 @@
+======================================================================================================================
+ORDER P — THE BAR, THE ILLUSTRATIONS AND THE AGE SENSITIVITY. ESTIMATES PENDING A BUILD.
+======================================================================================================================
+
+----------------------------------------------------------------------------------------------------------------------
+1 · THE BAR ITSELF. What a player at this entry price is expected to produce at this age.
+----------------------------------------------------------------------------------------------------------------------
+   BAR_P(v0, pos, age) = age bar(pos, age) + pedigree premium PG(ln v0, class)
+
+   MID   (SMALL)   age bar 18..23: 57.0 57.0 62.8 65.8 70.3 72.5
+   SF    (SMALL)   age bar 18..23: 47.8 47.8 53.6 56.6 61.1 63.3
+   KPD   (TALL)   age bar 18..23: 43.1 44.8 49.1 53.8 57.6 59.0
+   KPF   (TALL)   age bar 18..23: 41.5 43.2 47.5 52.2 56.0 57.4
+   RUCK  (TALL)   age bar 18..23: 53.2 54.9 59.2 63.9 67.7 69.1
+   SD    (SMALL)   age bar 18..23: 55.2 55.2 61.0 64.0 68.5 70.7
+
+   the premium added on top, by entry price:
+           v0 |      SMALL       TALL
+          100 |      -7.04      -5.45
+          200 |      -1.57      +1.59
+          300 |      -1.26      +2.65
+          500 |      +1.65      +5.56
+          800 |      +5.68      +7.63
+         1200 |      +7.15      +9.41
+         1700 |     +13.95     +10.81
+         2400 |     +17.77     +12.26
+         3200 |     +23.29     +22.92
+
+   WORKED. A 19-year-old midfielder taken at pick 6 has an entry price near 1660.
+     age bar 57.0  +  premium +13.52  =  bar 70.5 points a game.
+   A 19-year-old midfielder taken at pick 50 has an entry price near 285.
+     age bar 57.0  +  premium -1.26  =  bar 55.7 points a game.
+   Same age, same position, same league. The expensive one has to produce 14.8 more points a game
+   to be judged as being ON TRACK. That is the owner's sentence, written as a number.
+
+----------------------------------------------------------------------------------------------------------------------
+2 · THE ILLUSTRATION ROWS. CONSEQUENCES, NEVER TARGETS.
+----------------------------------------------------------------------------------------------------------------------
+   row                  age  pick     g     v0 |     s_N   prem     s_P |  chg K  chg N  chg P |      K      N      P
+   Harry Dean            19     3    17   2438 |  +14.86 +12.95   +1.91 |  49.0%   0.0%   0.0% |   2403   3069   3069
+   Cooper Duff-Tytler    19     4    13   1858 |   +7.06 +10.81   -3.75 |  49.9%  18.4%  21.1% |   1505   1854   1824
+   Xavier Taylor         19    11     2   1355 |  -13.22  +9.23  -22.45 |  16.8%  38.5%  36.3% |   1162    927    950
+   Daniel Annable        19     6     2   1661 |  -19.02 +13.54  -32.56 |  16.8%  45.7%  48.5% |   1537   1153   1115
+   Dylan Patterson       19     5     5   1679 |  -19.62 +13.73  -33.35 |  34.0%  74.0%  76.8% |   1440    987    955
+   Isaac Kako            20    13    36    938 |   +0.84  +6.53   -5.70 |  26.7%  62.0%  41.3% |    832    716    784
+   Josh Smillie          20     7     0   1660 |     n/a    n/a     n/a |   0.0%   0.0%   0.0% |    772    772    772
+   Milan Murdock         26  None    17    131 |   +2.17  -7.04   +9.21 |  49.0%  49.0%  49.0% |    156    156    156
+
+----------------------------------------------------------------------------------------------------------------------
+3 · THE MATCHED PAIR — the owner's point, made visible on two real rows
+----------------------------------------------------------------------------------------------------------------------
+   A top-10 pick and a pick 41-64 (or pool) row, produced to within 1.5 points a game of each other
+   against the SAME age bar, and within 4 career games of each other. Chosen only on those two
+   conditions, nothing else. The point of the pair is what the PEDIGREE bar does to them.
+
+   row                    age  pick     g     v0 |     s_N premium     s_P |  chg K  chg P | ORDER K ORDER P
+   Zeke Uwland             19     2    17   2583 |   -1.64  +19.22  -20.86 |  49.0%  84.7% |   1949   1486
+   Cooper Harvey           22    56    17    265 |   -1.80   -1.26   -0.54 |  49.0%   0.0% |    331    373
+   ------------------------------------------------------------------------------------------------------------
+   Jhye Clark              22     8    33   1659 |  -16.90  +13.51  -30.41 |  30.3%  96.2% |    921    569
+   Arthur Jones            23    43    34    334 |  -17.06   -1.26  -15.80 |  29.1%  80.8% |     90     54
+   ------------------------------------------------------------------------------------------------------------
+   Samuel Grlj             19     8    19   1659 |   -1.65  +13.51  -15.16 |  47.5%  75.1% |   1613   1390
+   Cooper Harvey           22    56    17    265 |   -1.80   -1.26   -0.54 |  49.0%   0.0% |    331    373
+   ------------------------------------------------------------------------------------------------------------
+
+   Read one pair. The two produced the same amount above their AGE bar. Under ORDER K they pay
+   almost the same charge, because the charge only reads games. Under ORDER P the expensive one
+   is measured against a higher bar, so the same production is a WORSE result for him, and he
+   pays more. That is the owner's sentence, on two real rows.
+
+----------------------------------------------------------------------------------------------------------------------
+4 · THE DECLARED AGE SENSITIVITY. The premium is NOT age-flat, and this prices what that costs.
+----------------------------------------------------------------------------------------------------------------------
+   Step 2 measured the premium spread PG(p90)-PG(p10) at every age: 19 +8.83 · 20 +14.27 ·
+   21 +16.44 · 22 +17.29 · 23 +19.60. The primary bar POOLS ages, as preregistered, because the
+   ages 18-19 TALL cells hold 8 and 169 rows. The pooled spread is +16.7 SMALL / +9.8 TALL.
+   So the pooled bar is MORE demanding of a 19-year-old high pick than his own age slice says, and
+   LESS demanding of a 23-year-old one. This variant carries the age axis and re-solves LAMBDA.
+
+   age-carrying surplus: games-weighted mean -1.0701 (pooled bar -2.4527), p5 -31.40
+   SOLVED under the age-carrying bar: LAMBDA = 0.52339 (pooled bar: 0.17438)
+
+                      | pooled bar   age-carrying | ORDER K     
+   picks 1-10 PRI     |       +8.62%      +11.36% |       +8.22%
+   picks 1-10 MOD     |      +18.85%      +21.51% |      +13.65%
+   picks 31-40 PRI    |       -8.88%      -10.33% |      -10.70%
+   picks 41-64 PRI    |       -5.03%       -6.25% |       -6.89%
+   W2 class mark      |      1.0613      1.0617 |      1.0513
+
+   The age-carrying bar is a SENSITIVITY, not the proposal. It is printed so the owner can see
+   what the pooling costs, and it is not adopted here because the prereg fixed the pooled bar as
+   primary before any of these numbers existed.
+
