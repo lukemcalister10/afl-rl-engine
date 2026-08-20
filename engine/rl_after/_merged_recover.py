@@ -470,8 +470,11 @@ _O37=MA._O37                                                # ORDER P: read in r
 # age-24 gate. RL_O38B2 ramps the charge out across ages 23-26 with an INVENTED endpoint. Each implies
 # RL_O37 (and so the whole O36/O35/O32/O31 stack) in rl_model and nowhere else. All three unset =>
 # ORDER P's board 374d4e44 reproduces BYTE-EXACT. NOTHING IS ADOPTED AND NOTHING LANDS.
-_O38A=os.environ.get('RL_O38A','0')!='0'
-_O38B1=os.environ.get('RL_O38B1','0')!='0'
+# BAKE 2026-08-20 (register v780): RL_O38A / RL_O38B1 ARE NOW DEFAULT-ON. RL_O38B2 stays OFF (the
+# candidate never sets it, and B1/B2 are ALTERNATIVES — the both-set halt below is unchanged).
+# KILL-SWITCH: RL_O38A=0 / RL_O38B1=0. NOT ADOPTED, OWNER WORD PENDING.
+_O38A=os.environ.get('RL_O38A','1')!='0'
+_O38B1=os.environ.get('RL_O38B1','1')!='0'
 _O38B2=os.environ.get('RL_O38B2','0')!='0'
 _O38=_O38A or _O38B1 or _O38B2
 if _O38B1 and _O38B2:
@@ -489,8 +492,12 @@ if _O38 and not _O37:
 # lower BETA_sat, but ONLY inside its published 90% CI. Both dials default OFF and both act ONLY on the
 # ORDER Q charge path, so with them unset every ORDER P and ORDER Q board reproduces BYTE-EXACT.
 # NOTHING IS ADOPTED AND NOTHING LANDS.
+# BAKE 2026-08-20 (register v780): RL_O39_BETASAT IS NOW DEFAULT '0.105' (inside its published 90%
+# CI, the owner's softening). RL_O39_TMAXPCT stays UNSET — the candidate does not carry it.
+# KILL-SWITCH: RL_O39_BETASAT= (the empty string, read identically to unset).
+# NOT ADOPTED, OWNER WORD PENDING.
 _O39_PCT_RAW=os.environ.get('RL_O39_TMAXPCT','')
-_O39_BSAT_RAW=os.environ.get('RL_O39_BETASAT','')
+_O39_BSAT_RAW=os.environ.get('RL_O39_BETASAT','0.105')
 _O39=(_O39_PCT_RAW!='' or _O39_BSAT_RAW!='')
 if _O39 and not _O38:
     raise SystemExit('ORDER R HALT: an RL_O39_* dial is set but no RL_O38* dial is live. The ORDER R '
@@ -519,11 +526,17 @@ if _O39_PCT not in (5,15,20):
 # Every dial defaults OFF and every one acts ONLY on the ORDER Q charge path, so with them unset
 # ORDER P's 374d4e44 and every ORDER Q/R board reproduce BYTE-EXACT.
 # NOTHING IS ADOPTED AND NOTHING LANDS.
-_O40_RECW_RAW=os.environ.get('RL_O40_RECW','')
-_O40_CAPFORM=os.environ.get('RL_O40_CAPFORM','')
-_O40_CAPPCT_RAW=os.environ.get('RL_O40_CAPPCT','')
+# BAKE 2026-08-20 (register v780): THE ORDER S DIALS ARE NOW THE SHIPPED DEFAULTS — RECW 0.47,
+# CAPFORM 'smooth', CAPPCT 15, PGMAT on. RL_O40_LAMBDA stays UNSET (not on the candidate line).
+# KILL-SWITCH: RL_O40_RECW= / RL_O40_PGMAT=0, and CAPFORM+CAPPCT AS A PAIR — RL_O40_CAPFORM=
+# RL_O40_CAPPCT= together, because the two coherence halts below (smooth-without-anchor, and
+# anchor-without-form) are DELIBERATELY NOT WEAKENED and either alone would halt.
+# NOT ADOPTED, OWNER WORD PENDING.
+_O40_RECW_RAW=os.environ.get('RL_O40_RECW','0.47')
+_O40_CAPFORM=os.environ.get('RL_O40_CAPFORM','smooth')
+_O40_CAPPCT_RAW=os.environ.get('RL_O40_CAPPCT','15')
 _O40_LAM_RAW=os.environ.get('RL_O40_LAMBDA','')
-_O40_PGMAT=os.environ.get('RL_O40_PGMAT','0')!='0'
+_O40_PGMAT=os.environ.get('RL_O40_PGMAT','1')!='0'
 _O40=(_O40_RECW_RAW!='' or _O40_CAPFORM!='' or _O40_LAM_RAW!='' or _O40_PGMAT)
 if _O40 and not _O38:
     raise SystemExit('ORDER S HALT: an RL_O40_* dial is set but no RL_O38* dial is live. The ORDER S '
@@ -561,8 +574,12 @@ if _O40_CAPPCT is not None and _O40_CAPPCT not in (15,20):
 #   RL_O41_R3      I4 the production leg fades with MULTI-SEASON UNEXPLAINED absence, sized by the
 #                     owner's R1 combined-take law to F3's measured cost. No free parameter.
 # All five unset => not one byte of the ORDER 41 blocks executes and ORDER P's 374d4e44 reproduces.
-_O41_SDOFF_RAW=os.environ.get('RL_O41_SDOFF','')
-_O41_CREDIT=os.environ.get('RL_O41_CREDIT','0')!='0'
+# BAKE 2026-08-20 (register v780): RL_O41_SDOFF IS NOW DEFAULT '2.98' and RL_O41_CREDIT DEFAULT-ON.
+# KILL-SWITCH: RL_O41_SDOFF= / RL_O41_CREDIT=0. RL_O41_CREDITFORM is UNCHANGED at 'guarded' — the
+# candidate never sets it, and the raw-without-credit halt below is unchanged.
+# NOT ADOPTED, OWNER WORD PENDING.
+_O41_SDOFF_RAW=os.environ.get('RL_O41_SDOFF','2.98')
+_O41_CREDIT=os.environ.get('RL_O41_CREDIT','1')!='0'
 # RL_O41_CREDITFORM — WHICH F1 READING THE CREDIT CURVE USES. 'guarded' (default) is F1's guarded
 # isotonic curve; 'raw' is F1's RAW per-games cells. F1 PUBLISHED BOTH, their CIs overlap heavily,
 # and the choice between them was a SEAT CALL that was never owner-ruled — so it is a DIAL, not a
@@ -575,9 +592,13 @@ if _O41_CREDITFORM not in ('guarded','raw'):
 if _O41_CREDITFORM=='raw' and not _O41_CREDIT:
     raise SystemExit('ORDER 41 HALT: RL_O41_CREDITFORM=raw but RL_O41_CREDIT is unset. The form '
                      'selects between two readings of a curve that is not switched on.')
-_O41_RESET=os.environ.get('RL_O41_RESET','0')!='0'
-_O41_INJ=os.environ.get('RL_O41_INJ','0')!='0'
-_O41_R3=os.environ.get('RL_O41_R3','0')!='0'
+# BAKE 2026-08-20 (register v780): RL_O41_RESET / RL_O41_INJ / RL_O41_R3 ARE NOW DEFAULT-ON.
+# KILL-SWITCH: RL_O41_RESET=0 / RL_O41_INJ=0 / RL_O41_R3=0 — but RL_O41_R3=0 must be paired with
+# RL_O41_BREAK=binary, since the break rule may not shape a collector that is switched off (that
+# halt is unchanged). NOT ADOPTED, OWNER WORD PENDING.
+_O41_RESET=os.environ.get('RL_O41_RESET','1')!='0'
+_O41_INJ=os.environ.get('RL_O41_INJ','1')!='0'
+_O41_R3=os.environ.get('RL_O41_R3','1')!='0'
 # RL_O41_RAMP — THE IN-SEASON RAMP FOR ABSENCE DEPTH. Owner's ruling: the mid-season effect must not
 # be linear in rounds — "less at the start and more at the end". THE SHAPE IS NOT INVENTED AND IT IS
 # NOT FITTED: it is the engine's OWN, already active and already owner-ruled — the D12 concave
@@ -589,7 +610,10 @@ _O41_R3=os.environ.get('RL_O41_R3','0')!='0'
 # That reasoning is correct and it decides the scope here: the ramp goes on the two DEPTH quantities
 # (the sitter-fade clock's in-progress accrual and the R3 current-run fraction) and is DELIBERATELY
 # NOT applied to the I1 credit, which is a participation weight.
-_O41_RAMP=os.environ.get('RL_O41_RAMP','0')!='0'
+# BAKE 2026-08-20 (register v780): RL_O41_RAMP IS NOW DEFAULT-ON. KILL-SWITCH: RL_O41_RAMP=0.
+# The scope decision above is UNCHANGED: the ramp stays on the two DEPTH quantities and is still
+# REFUSED as a participation weight. NOT ADOPTED, OWNER WORD PENDING.
+_O41_RAMP=os.environ.get('RL_O41_RAMP','1')!='0'
 _O41_RAMP_P=1.5                                  # D12's own exponent. Not a new constant.
 # RL_O41_BREAK — HOW A PLAYED SEASON BREAKS THE R3 CURRENT-ABSENCE RUN.
 #   'binary'     (default) any season with games > 0 breaks the run outright.
@@ -605,7 +629,10 @@ _O41_RAMP_P=1.5                                  # D12's own exponent. Not a new
 #                unwinds LINEARLY over the first U0 return games — his words, "their first 5 games on
 #                return each knock 20% off the sitter penalty" — so u(g)=min(1, g/U0) with U0=5, and a
 #                season that fully unwinds (g >= U0) stops the walk.
-_O41_BREAK=(os.environ.get('RL_O41_BREAK','binary').strip().lower() or 'binary')
+# BAKE 2026-08-20 (register v780): RL_O41_BREAK IS NOW DEFAULT 'unwind' — the owner's own shape.
+# KILL-SWITCH: RL_O41_BREAK=binary (the empty string also falls back to 'binary' via the `or`).
+# Must be paired with RL_O41_R3=0 only when killing R3 itself. NOT ADOPTED, OWNER WORD PENDING.
+_O41_BREAK=(os.environ.get('RL_O41_BREAK','unwind').strip().lower() or 'binary')
 if _O41_BREAK not in ('binary','fractional','unwind'):
     raise SystemExit('ORDER 41 HALT: RL_O41_BREAK=%r. Only "binary" (the wired rule), "fractional" '
                      '(the F1-credit-graded rule) and "unwind" (the owner\'s linear U0-game unwind) '
@@ -620,7 +647,13 @@ if _O41_BREAK!='binary' and not _O41_R3:
 # is lawful and has precedent in this engine (G*=2, dose 0.40, eta 0.50), but the distinction is not
 # allowed to blur: NO DOCUMENT MAY DESCRIBE U0 AS MEASURED. It is exposed as a dial so the break-speed
 # adjudication (D6) can sweep 3/5/7/11 against F2's measured reversal curve rather than assert one.
-_O41_UNWIND_RAW=os.environ.get('RL_O41_UNWIND','5').strip()
+# BAKE 2026-08-20 (register v780): U0 IS NOW DEFAULT 7 — OWNER-RULED, DATA-SUPPORTED (D5-final,
+# 2026-08-19). THE LABEL TRAVELS WITH THE NUMBER INTO THE DEFAULT AND THE RULE ABOVE STILL BINDS:
+# U0 IS RULED, NOT MEASURED, AND NO DOCUMENT MAY DESCRIBE U0 AS MEASURED. The D6 break-speed sweep
+# (3/5/7/11) SUPPORTS the owner's word; it does not derive it. KILL-SWITCH: RL_O41_UNWIND=5 (the
+# empty string is NOT a kill-switch here — it is not a number and halts by design).
+# NOT ADOPTED, OWNER WORD PENDING.
+_O41_UNWIND_RAW=os.environ.get('RL_O41_UNWIND','7').strip()
 try:
     _O41_UNWIND=float(_O41_UNWIND_RAW)
 except Exception:
@@ -673,7 +706,9 @@ if _O41_ANY and not (_O38A or _O38B1 or _O38B2):
 #   *** U0 = 7 IS OWNER-RULED AND DATA-SUPPORTED (D5-final, 2026-08-19). ***
 # That label is carried here as a STANDING OBLIGATION so no later pass can re-gloss it: it is ruled by
 # the owner AND supported by the data, and it must be quoted with BOTH halves, never one.
-_O42=os.environ.get('RL_O42','0')!='0'
+# BAKE 2026-08-20 (register v780): RL_O42 IS NOW DEFAULT-ON. KILL-SWITCH: RL_O42=0, which with
+# RL_O43=0 reproduces ff936186 byte-exact. NOT ADOPTED, OWNER WORD PENDING.
+_O42=os.environ.get('RL_O42','1')!='0'
 _O42_AVAIL_BASE=18   # THE OWNER'S AVAILABILITY BASE — how much of a season a player is expected to be
                      # available for. IT IS NOT THE SEASON-LENGTH CONSTANT AND IT IS NEVER ASSERTED
                      # EQUAL TO ONE. cp.SEASON stays 22 and lti_register.G_FULL stays 22, so the
@@ -732,7 +767,10 @@ if _O42:
 # the LIVE BOARD PRICE, Y=2026 — the price the owner reads. It is NOT applied to the vM2/vM1/vP1/vP2
 # display columns: the annotation is a 2026 log, the availability charge is a 2026-only object, and
 # guarding past seasons would rewrite history the owner did not rule on.
-_O43=os.environ.get('RL_O43','0')!='0'
+# BAKE 2026-08-20 (register v780): RL_O43 — THE PARITY GUARD — IS NOW DEFAULT-ON. It is a per-row
+# max and cannot lower a row. KILL-SWITCH: RL_O43=0, which reproduces daa16812 byte-exact.
+# NOT ADOPTED, OWNER WORD PENDING.
+_O43=os.environ.get('RL_O43','1')!='0'
 _D7_HEALTHY_KEYS=set()   # keys currently being evaluated as their HEALTHY counterpart (o41_injured -> False)
 _D7_FLOOR={}             # key -> the healthy-counterpart value; the floor the guard enforces at Y=2026
 _D7_DFADE={}             # key -> (D_live, D_healthy), the sitter fade either side of the guard
@@ -1944,15 +1982,32 @@ def _ageR(p): return int(round(cp._age_asof(p, p.get('year') or (cp.debutyr(p)-1
 #      point (RL_V0SURF_REFIT=1 forces a fit + re-pin; a silent refit is the exact defect being frozen out).
 def _load_v0surf():
     if os.environ.get('RL_V0SURF_REFIT')=='1': return {}     # the ONE refit entry point: fit from scratch, ignore any stale pickle
-    _cands=[os.environ.get('RL_V0SURF_PKL'), '/home/claude/v0surf.pkl',
+    # BAKE 2026-08-20 (register v780) — THE SURFACE-LOADER FOOTGUN, KILLED AT THE ROOT.
+    # WAS: [$RL_V0SURF_PKL, '/home/claude/v0surf.pkl', <repo>/data/v0surf.pkl]. The OUT-OF-REPO copy sat
+    # AHEAD of the branch's own pinned surface, so with the env unset the engine loaded a file this branch
+    # does not own (measured: /home/claude/v0surf.pkl fbc5b393 vs the pinned data/v0surf.pkl 5dd34ca8;
+    # docs/evidence/landing_prep_2026-08-20/GUARD5_out.txt). A pin re-key cannot move a precedence that
+    # lives in engine code, so the precedence itself is the fix.
+    # NOW: the IN-REPO PINNED SURFACE IS THE DEFAULT LOAD PATH. '/home/claude/v0surf.pkl' is REMOVED from
+    # the precedence outright, not demoted — demotion would leave it reachable whenever the repo file is
+    # missing, and it must no longer be consulted when the env is unset. THE OUT-OF-REPO FILE IS NOT
+    # TOUCHED; the fix is in-repo precedence, never out-of-repo deletion.
+    # boot_guard._resolve_v0surf_load() mirrors this list byte-for-byte and is edited in the same commit.
+    # STILL LIVE, UNWEAKENED: Guard 5's fitted-artifact LOADED-PATH leg (md5 of the loaded file vs the pin)
+    # and the frozen-signature check below — an unpinned or unfrozen surface still HALTS.
+    # NOT ADOPTED, OWNER WORD PENDING.
+    _cands=[os.environ.get('RL_V0SURF_PKL'),
             os.path.join(os.environ.get('RL_REPO') or os.environ.get('CLAUDE_PROJECT_DIR') or '','data','v0surf.pkl')]
     for _c in _cands:
         if _c and os.path.exists(_c):
             with open(_c,'rb') as _fh: return pickle.load(_fh)
     raise SystemExit("v0surf FROZEN-LOAD HALT: no frozen v0surf pickle found (looked at RL_V0SURF_PKL, "
-                     "/home/claude/v0surf.pkl, <repo>/data/v0surf.pkl). Re-run bootstrap.sh to seed the workspace "
-                     "copy, or regenerate via session_2026-07-18/legf6/scripts/refit_v0surf.py at a bake. The "
-                     "engine NEVER fits the shipped V0 surface at build time (the exact defect the freeze removed).")
+                     "<repo>/data/v0surf.pkl). Regenerate via session_2026-07-18/legf6/scripts/refit_v0surf.py "
+                     "at a bake, or point RL_V0SURF_PKL at the pinned artifact. (The superseded remedy line here "
+                     "said 'Re-run bootstrap.sh to seed the workspace copy'; bootstrap.sh does NOT seed this "
+                     "artifact — it seeds cm_400.pkl and q97m.pkl only — so that instruction was wrong and is "
+                     "removed rather than carried.) The engine NEVER fits the shipped V0 surface at build time "
+                     "(the exact defect the freeze removed).")
 _V0SURF=_load_v0surf()
 # Value-gate defaults, byte-for-byte the code defaults, so a build that SETS a gate to its default (gate mode's
 # config_manifest) signs identically to a build that leaves it UNSET (dev shell). LENS gates (RL_LEGF/RL_LEGE)

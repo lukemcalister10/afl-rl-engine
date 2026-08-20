@@ -1,0 +1,31 @@
+=== SINGLE-SOURCE GUARDS 1/2 — the regenerated sidecar (order item 4) ===
+
+THE WRITER OF RECORD WAS USED, NOT A HAND-WRITTEN STAMP:
+  engine/rl_after/rl_export.py:898  ->  single_source.stamp_derived('rl_app_data.json', tier=1)
+  own_md5    = md5 of the derived file's own content
+  source_md5 = md5 of the store rl_model_data.json
+The board+sidecar PAIR was lifted together out of the BARE build's staging dir
+(bb_BAKE_CAND/rl_after/), i.e. produced by the generator in one act, so Guards 1/2 pass BY CONSTRUCTION.
+
+--- BEFORE (pre-existing at ba37032, blocker C of RESEAL_HALT.md) ---
+  engine/rl_after/rl_app_data.json          content 36d5dfc7
+  engine/rl_after/rl_app_data.json.srcmd5   own_md5 88ce647f  source_md5 d9a24282
+  data/rl_build/rl_app_data.json            content a05fe951
+  data/rl_build/rl_app_data.json.srcmd5     own_md5 4b448a82  source_md5 cb38ef11
+
+--- AFTER ---
+  engine/rl_after/rl_app_data.json  content a05fe951
+  data/rl_build/rl_app_data.json  content a05fe951
+  engine/rl_after/rl_app_data.json.srcmd5
+    {"derived": "rl_app_data.json", "own_md5": "a05fe951f78482c70520480e184c80ec", "source": "rl_model_data.json", "source_md5": "cb38ef1171dcf20aae66ebf12682be0d", "tier": 1}
+  data/rl_build/rl_app_data.json.srcmd5
+    {"derived": "rl_app_data.json", "own_md5": "a05fe951f78482c70520480e184c80ec", "source": "rl_model_data.json", "source_md5": "cb38ef1171dcf20aae66ebf12682be0d", "tier": 1}
+
+--- store, for reference ---
+  engine/rl_after/rl_model_data.json  cb38ef11
+
+=== GUARD RESULT ===
+  PASS  GUARD 1 (content-integrity): rl_app_data.json content md5 a05fe951f78482c70520480e184c80ec != stamped own_md5 a05fe951f78482c70520480e184c80ec (derived artifact hand-edited)
+  PASS  GUARD 2 (source-hash): stamped cb38ef1171dc vs current store cb38ef1171dc
+
+GUARDS 1/2: PASS

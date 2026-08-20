@@ -1,0 +1,24 @@
+=== THE PINS, BEFORE AND AFTER THE FLIP (order item 2 / the v2.9 kill-switch property) ===
+
+THE CLAIM UNDER TEST: because the 18 dials are DECLARED KILL-SWITCHES wired default-ON and NOT
+manifest dials, data/model_config.json 'vars' is UNMOVED, so config_sha256 and the expected_boot
+'config' pin DO NOT MOVE and the C3 six-pin re-key at 9c9d9f3 stays valid.
+
+  FIELD          BEFORE                             AFTER                              VERDICT
+  board          a05fe951f78482c70520480e184c80ec   a05fe951f78482c70520480e184c80ec   UNMOVED — as required
+  store          cb38ef1171dcf20aae66ebf12682be0d   cb38ef1171dcf20aae66ebf12682be0d   UNMOVED — as required
+  config         eed19a75f775aeafe4ee5ea4b3990667   eed19a75f775aeafe4ee5ea4b3990667   UNMOVED — as required
+  v0surf         5dd34ca82735f5c8f021b1c7320df8f8   5dd34ca82735f5c8f021b1c7320df8f8   UNMOVED — as required
+  engine_head    5f434b9592ad8adb7dcd534da49df3c7   5ac6780f3c4931edcaa527576bbdfb88   MOVED — REQUIRED (the engine source changed; re-pinned in the SAME commit)
+  rl_model       98f16794ba4ce7ca4747320d4ebc510c   6fe7c4155866d80e8045bed2d3bf2802   MOVED — REQUIRED (the engine source changed; re-pinned in the SAME commit)
+
+  model_config.json config_sha256 : eed19a75f775aeafe4ee5ea4b3990667
+  model_config.json n vars        : 84
+  candidate dials present in vars : 0  (must be 0 — they are kill-switches, not manifest dials)
+
+=== config_manifest.py check ===
+CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)
+
+=== THE OUT-OF-REPO FILE — NOT TOUCHED ===
+  /home/claude/v0surf.pkl  fbc5b39387b2b135284a2e157f46c810   (was fbc5b393 — byte-identical, untouched)
+  it is simply no longer in the engine's load precedence.

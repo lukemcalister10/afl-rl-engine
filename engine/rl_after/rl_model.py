@@ -1086,8 +1086,15 @@ def survival(b,delta,games):
 # ORDER Q (RL_O38A / RL_O38B1 / RL_O38B2) — the two defect repairs. Each IMPLIES RL_O37, and so
 # the whole O36/O35/O32/O31 stack and ORDER K's ruled defaults, exactly as RL_O37 itself does.
 # All three unset => this line is byte-identical and the whole ORDER Q block is inert.
-_O37=(os.environ.get('RL_O37','0')!='0'
-      or os.environ.get('RL_O38A','0')!='0' or os.environ.get('RL_O38B1','0')!='0'
+# BAKE 2026-08-20 (register v780): RL_O37 IS NOW DEFAULT-ON — the shipped default, a DECLARED
+# KILL-SWITCH in the v2.9 pattern (RL_EVW/RL_CAPT/RL_ISOFADE/RL_PVC2), NOT a manifest dial:
+# data/model_config.json is deliberately UNMOVED, so config_sha256 and the expected_boot 'config'
+# pin do not move. KILL-SWITCH: RL_O37=0 RL_O38A=0 RL_O38B1=0 (all three — _O37 is an OR, so
+# RL_O37=0 alone does nothing). With _O37 live, O36_LAM_S1/O36_KAPPA/O36_GAMMA/O36_ETA take their
+# ORDER K ruled values and _O36/_O35/_O32/_O31 all follow, so the whole KLINE is implied, not set.
+# NOT ADOPTED, OWNER WORD PENDING.
+_O37=(os.environ.get('RL_O37','1')!='0'
+      or os.environ.get('RL_O38A','1')!='0' or os.environ.get('RL_O38B1','1')!='0'
       or os.environ.get('RL_O38B2','0')!='0')
 _O36=(os.environ.get('RL_O36','0')!='0') or _O37
 # THE DOSE. NOT hand-picked and NOT chosen by looking at harry-dean. The joint calibration
