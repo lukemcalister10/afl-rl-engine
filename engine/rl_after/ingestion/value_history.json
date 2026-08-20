@@ -37,6 +37,13 @@
     },
     {
       "after_round": 22,
+      "board": "5ea978f7b6a073abb2012f10cccbc3e3",
+      "id": "the-d8-adoption-20-8",
+      "kind": "out_of_round",
+      "label": "20/8 D8 ADOPTION \u2014 ceiling-only dial shipped default-on"
+    },
+    {
+      "after_round": 22,
       "board": "a05fe951f78482c70520480e184c80ec",
       "id": "the-landing-20-8",
       "kind": "out_of_round",
@@ -61,6 +68,7 @@
         "post-r19-redesign-1": 2198,
         "rederivation-30-7": 1876,
         "redesign-adoption-6-8": 1905,
+        "the-d8-adoption-20-8": 1839,
         "the-landing-20-8": 1781
       },
       "name": "Aaron Cadman",
@@ -82,6 +90,7 @@
         "post-r19-redesign-1": 1422,
         "rederivation-30-7": 1482,
         "redesign-adoption-6-8": 1314,
+        "the-d8-adoption-20-8": 1172,
         "the-landing-20-8": 1107
       },
       "name": "Aaron Naughton",
@@ -103,6 +112,7 @@
         "post-r19-redesign-1": 1206,
         "rederivation-30-7": 1125,
         "redesign-adoption-6-8": 948,
+        "the-d8-adoption-20-8": 1133,
         "the-landing-20-8": 1005
       },
       "name": "Adam Cerra",
@@ -124,6 +134,7 @@
         "post-r19-redesign-1": 620,
         "rederivation-30-7": 615,
         "redesign-adoption-6-8": 462,
+        "the-d8-adoption-20-8": 446,
         "the-landing-20-8": 446
       },
       "name": "Adam Saad",
@@ -145,6 +156,7 @@
         "post-r19-redesign-1": 567,
         "rederivation-30-7": 598,
         "redesign-adoption-6-8": 421,
+        "the-d8-adoption-20-8": 253,
         "the-landing-20-8": 253
       },
       "name": "Adam Sweid",
@@ -166,6 +178,7 @@
         "post-r19-redesign-1": 633,
         "rederivation-30-7": 1149,
         "redesign-adoption-6-8": 947,
+        "the-d8-adoption-20-8": 850,
         "the-landing-20-8": 850
       },
       "name": "Adam Treloar",
@@ -187,6 +200,7 @@
         "post-r19-redesign-1": 51,
         "rederivation-30-7": 52,
         "redesign-adoption-6-8": 38,
+        "the-d8-adoption-20-8": 18,
         "the-landing-20-8": 9
       },
       "name": "Aidan Corr",
@@ -208,6 +222,7 @@
         "post-r19-redesign-1": 69,
         "rederivation-30-7": 91,
         "redesign-adoption-6-8": 75,
+        "the-d8-adoption-20-8": 85,
         "the-landing-20-8": 65
       },
       "name": "Aidan Johnson",
@@ -229,6 +244,7 @@
         "post-r19-redesign-1": 584,
         "rederivation-30-7": 696,
         "redesign-adoption-6-8": 506,
+        "the-d8-adoption-20-8": 560,
         "the-landing-20-8": 560
       },
       "name": "Aidan Schubert",
@@ -250,6 +266,7 @@
         "post-r19-redesign-1": 446,
         "rederivation-30-7": 255,
         "redesign-adoption-6-8": 181,
+        "the-d8-adoption-20-8": 211,
         "the-landing-20-8": 211
       },
       "name": "Aiden Riddle",
@@ -271,6 +288,7 @@
         "post-r19-redesign-1": 485,
         "rederivation-30-7": 489,
         "redesign-adoption-6-8": 423,
+        "the-d8-adoption-20-8": 436,
         "the-landing-20-8": 317
       },
       "name": "Alex Davies",
@@ -292,6 +310,7 @@
         "post-r19-redesign-1": 461,
         "rederivation-30-7": 499,
         "redesign-adoption-6-8": 284,
+        "the-d8-adoption-20-8": 96,
         "the-landing-20-8": 96
       },
       "name": "Alex Dodson",
@@ -313,6 +332,7 @@
         "post-r19-redesign-1": 446,
         "rederivation-30-7": 426,
         "redesign-adoption-6-8": 298,
+        "the-d8-adoption-20-8": 370,
         "the-landing-20-8": 356
       },
       "name": "Alex Neal-Bullen",
@@ -334,6 +354,7 @@
         "post-r19-redesign-1": 39,
         "rederivation-30-7": 39,
         "redesign-adoption-6-8": 23,
+        "the-d8-adoption-20-8": 14,
         "the-landing-20-8": 7
       },
       "name": "Alex Pearce",
@@ -355,6 +376,7 @@
         "post-r19-redesign-1": 581,
         "rederivation-30-7": 332,
         "redesign-adoption-6-8": 239,
+        "the-d8-adoption-20-8": 345,
         "the-landing-20-8": 345
       },
       "name": "Alex Van Wyk",
@@ -376,6 +398,7 @@
         "post-r19-redesign-1": 1014,
         "rederivation-30-7": 993,
         "redesign-adoption-6-8": 792,
+        "the-d8-adoption-20-8": 758,
         "the-landing-20-8": 728
       },
       "name": "Aliir Aliir",
@@ -397,6 +420,7 @@
         "post-r19-redesign-1": 1551,
         "rederivation-30-7": 1571,
         "redesign-adoption-6-8": 1624,
+        "the-d8-adoption-20-8": 907,
         "the-landing-20-8": 907
       },
       "name": "Alix Tauru",
@@ -418,6 +442,7 @@
         "post-r19-redesign-1": 3030,
         "rederivation-30-7": 3187,
         "redesign-adoption-6-8": 3145,
+        "the-d8-adoption-20-8": 3052,
         "the-landing-20-8": 2998
       },
       "name": "Andrew Brayshaw",
@@ -439,6 +464,7 @@
         "post-r19-redesign-1": 1130,
         "rederivation-30-7": 1160,
         "redesign-adoption-6-8": 997,
+        "the-d8-adoption-20-8": 1130,
         "the-landing-20-8": 1003
       },
       "name": "Andrew McGrath",
@@ -460,6 +486,7 @@
         "post-r19-redesign-1": 47,
         "rederivation-30-7": 44,
         "redesign-adoption-6-8": 30,
+        "the-d8-adoption-20-8": 68,
         "the-landing-20-8": 38
       },
       "name": "Andy Moniz-Wakefield",
@@ -481,6 +508,7 @@
         "post-r19-redesign-1": 188,
         "rederivation-30-7": 240,
         "redesign-adoption-6-8": 158,
+        "the-d8-adoption-20-8": 264,
         "the-landing-20-8": 177
       },
       "name": "Angus Anderson",
@@ -502,6 +530,7 @@
         "post-r19-redesign-1": 792,
         "rederivation-30-7": 807,
         "redesign-adoption-6-8": 751,
+        "the-d8-adoption-20-8": 532,
         "the-landing-20-8": 532
       },
       "name": "Angus Clarke",
@@ -523,6 +552,7 @@
         "post-r19-redesign-1": 337,
         "rederivation-30-7": 339,
         "redesign-adoption-6-8": 289,
+        "the-d8-adoption-20-8": 130,
         "the-landing-20-8": 119
       },
       "name": "Angus Hastie",
@@ -544,6 +574,7 @@
         "post-r19-redesign-1": 807,
         "rederivation-30-7": 838,
         "redesign-adoption-6-8": 756,
+        "the-d8-adoption-20-8": 694,
         "the-landing-20-8": 579
       },
       "name": "Angus Sheldrick",
@@ -565,6 +596,7 @@
         "post-r19-redesign-1": 1086,
         "rederivation-30-7": 1155,
         "redesign-adoption-6-8": 1058,
+        "the-d8-adoption-20-8": 963,
         "the-landing-20-8": 855
       },
       "name": "Anthony Caminiti",
@@ -586,6 +618,7 @@
         "post-r19-redesign-1": 384,
         "rederivation-30-7": 541,
         "redesign-adoption-6-8": 607,
+        "the-d8-adoption-20-8": 330,
         "the-landing-20-8": 330
       },
       "name": "Archer Day-Wicks",
@@ -607,6 +640,7 @@
         "post-r19-redesign-1": 858,
         "rederivation-30-7": 872,
         "redesign-adoption-6-8": 703,
+        "the-d8-adoption-20-8": 378,
         "the-landing-20-8": 347
       },
       "name": "Archer Reid",
@@ -628,6 +662,7 @@
         "post-r19-redesign-1": 317,
         "rederivation-30-7": 434,
         "redesign-adoption-6-8": 181,
+        "the-d8-adoption-20-8": 295,
         "the-landing-20-8": 295
       },
       "name": "Archie Ludowyke",
@@ -649,6 +684,7 @@
         "post-r19-redesign-1": 519,
         "rederivation-30-7": 478,
         "redesign-adoption-6-8": 429,
+        "the-d8-adoption-20-8": 421,
         "the-landing-20-8": 346
       },
       "name": "Archie May",
@@ -670,6 +706,7 @@
         "post-r19-redesign-1": 302,
         "rederivation-30-7": 309,
         "redesign-adoption-6-8": 234,
+        "the-d8-adoption-20-8": 278,
         "the-landing-20-8": 192
       },
       "name": "Archie Perkins",
@@ -691,6 +728,7 @@
         "post-r19-redesign-1": 5053,
         "rederivation-30-7": 4675,
         "redesign-adoption-6-8": 4965,
+        "the-d8-adoption-20-8": 3596,
         "the-landing-20-8": 3571
       },
       "name": "Archie Roberts",
@@ -712,6 +750,7 @@
         "post-r19-redesign-1": 127,
         "rederivation-30-7": 129,
         "redesign-adoption-6-8": 89,
+        "the-d8-adoption-20-8": 109,
         "the-landing-20-8": 66
       },
       "name": "Arthur Jones",
@@ -733,6 +772,7 @@
         "post-r19-redesign-1": 187,
         "rederivation-30-7": 222,
         "redesign-adoption-6-8": 99,
+        "the-d8-adoption-20-8": 86,
         "the-landing-20-8": 86
       },
       "name": "Asher Eastham",
@@ -754,6 +794,7 @@
         "post-r19-redesign-1": 300,
         "rederivation-30-7": 305,
         "redesign-adoption-6-8": 274,
+        "the-d8-adoption-20-8": 217,
         "the-landing-20-8": 202
       },
       "name": "Ashton Moir",
@@ -775,6 +816,7 @@
         "post-r19-redesign-1": 494,
         "rederivation-30-7": 494,
         "redesign-adoption-6-8": 419,
+        "the-d8-adoption-20-8": 266,
         "the-landing-20-8": 266
       },
       "name": "Avery Thomas",
@@ -796,6 +838,7 @@
         "post-r19-redesign-1": 45,
         "rederivation-30-7": 13,
         "redesign-adoption-6-8": 11,
+        "the-d8-adoption-20-8": 14,
         "the-landing-20-8": 10
       },
       "name": "Bailey Banfield",
@@ -817,6 +860,7 @@
         "post-r19-redesign-1": 2399,
         "rederivation-30-7": 2439,
         "redesign-adoption-6-8": 2293,
+        "the-d8-adoption-20-8": 2155,
         "the-landing-20-8": 2092
       },
       "name": "Bailey Dale",
@@ -838,6 +882,7 @@
         "post-r19-redesign-1": 2141,
         "rederivation-30-7": 2394,
         "redesign-adoption-6-8": 2349,
+        "the-d8-adoption-20-8": 2401,
         "the-landing-20-8": 2303
       },
       "name": "Bailey Humphrey",
@@ -859,6 +904,7 @@
         "post-r19-redesign-1": 70,
         "rederivation-30-7": 76,
         "redesign-adoption-6-8": 56,
+        "the-d8-adoption-20-8": 79,
         "the-landing-20-8": 55
       },
       "name": "Bailey Laurie",
@@ -880,6 +926,7 @@
         "post-r19-redesign-1": 164,
         "rederivation-30-7": 185,
         "redesign-adoption-6-8": 145,
+        "the-d8-adoption-20-8": 108,
         "the-landing-20-8": 63
       },
       "name": "Bailey Macdonald",
@@ -901,6 +948,7 @@
         "post-r19-redesign-1": 33,
         "rederivation-30-7": 31,
         "redesign-adoption-6-8": 23,
+        "the-d8-adoption-20-8": 17,
         "the-landing-20-8": 8
       },
       "name": "Bailey Scott",
@@ -922,6 +970,7 @@
         "post-r19-redesign-1": 5938,
         "rederivation-30-7": 6092,
         "redesign-adoption-6-8": 6691,
+        "the-d8-adoption-20-8": 6214,
         "the-landing-20-8": 6155
       },
       "name": "Bailey Smith",
@@ -943,6 +992,7 @@
         "post-r19-redesign-1": 773,
         "rederivation-30-7": 791,
         "redesign-adoption-6-8": 623,
+        "the-d8-adoption-20-8": 641,
         "the-landing-20-8": 571
       },
       "name": "Bailey Williams",
@@ -964,6 +1014,7 @@
         "post-r19-redesign-1": 2056,
         "rederivation-30-7": 2493,
         "redesign-adoption-6-8": 2411,
+        "the-d8-adoption-20-8": 2316,
         "the-landing-20-8": 2243
       },
       "name": "Bailey J. Williams",
@@ -985,6 +1036,7 @@
         "post-r19-redesign-1": 280,
         "rederivation-30-7": 349,
         "redesign-adoption-6-8": 287,
+        "the-d8-adoption-20-8": 296,
         "the-landing-20-8": 296
       },
       "name": "Balyn O'Brien",
@@ -1006,6 +1058,7 @@
         "post-r19-redesign-1": 190,
         "rederivation-30-7": 252,
         "redesign-adoption-6-8": 159,
+        "the-d8-adoption-20-8": 197,
         "the-landing-20-8": 196
       },
       "name": "Bayley Fritsch",
@@ -1027,6 +1080,7 @@
         "post-r19-redesign-1": 1257,
         "rederivation-30-7": 1321,
         "redesign-adoption-6-8": 1444,
+        "the-d8-adoption-20-8": 1310,
         "the-landing-20-8": 1310
       },
       "name": "Beau Addinsall",
@@ -1048,6 +1102,7 @@
         "post-r19-redesign-1": 195,
         "rederivation-30-7": 199,
         "redesign-adoption-6-8": 130,
+        "the-d8-adoption-20-8": 162,
         "the-landing-20-8": 116
       },
       "name": "Beau McCreery",
@@ -1069,6 +1124,7 @@
         "post-r19-redesign-1": 302,
         "rederivation-30-7": 319,
         "redesign-adoption-6-8": 214,
+        "the-d8-adoption-20-8": 267,
         "the-landing-20-8": 210
       },
       "name": "Ben Ainsworth",
@@ -1090,6 +1146,7 @@
         "post-r19-redesign-1": 296,
         "rederivation-30-7": 297,
         "redesign-adoption-6-8": 262,
+        "the-d8-adoption-20-8": 123,
         "the-landing-20-8": 123
       },
       "name": "Ben Camporeale",
@@ -1111,6 +1168,7 @@
         "post-r19-redesign-1": 11,
         "rederivation-30-7": 10,
         "redesign-adoption-6-8": 88,
+        "the-d8-adoption-20-8": 58,
         "the-landing-20-8": 51
       },
       "name": "Ben Jepson",
@@ -1132,6 +1190,7 @@
         "post-r19-redesign-1": 457,
         "rederivation-30-7": 449,
         "redesign-adoption-6-8": 319,
+        "the-d8-adoption-20-8": 221,
         "the-landing-20-8": 196
       },
       "name": "Ben Keays",
@@ -1153,6 +1212,7 @@
         "post-r19-redesign-1": 334,
         "rederivation-30-7": 349,
         "redesign-adoption-6-8": 248,
+        "the-d8-adoption-20-8": 256,
         "the-landing-20-8": 212
       },
       "name": "Ben King",
@@ -1174,6 +1234,7 @@
         "post-r19-redesign-1": 31,
         "rederivation-30-7": 33,
         "redesign-adoption-6-8": 28,
+        "the-d8-adoption-20-8": 10,
         "the-landing-20-8": 7
       },
       "name": "Ben Long",
@@ -1195,6 +1256,7 @@
         "post-r19-redesign-1": 48,
         "rederivation-30-7": 48,
         "redesign-adoption-6-8": 35,
+        "the-d8-adoption-20-8": 27,
         "the-landing-20-8": 14
       },
       "name": "Ben McKay",
@@ -1216,6 +1278,7 @@
         "post-r19-redesign-1": 1155,
         "rederivation-30-7": 1171,
         "redesign-adoption-6-8": 988,
+        "the-d8-adoption-20-8": 979,
         "the-landing-20-8": 927
       },
       "name": "Ben Miller",
@@ -1237,6 +1300,7 @@
         "post-r19-redesign-1": 240,
         "rederivation-30-7": 286,
         "redesign-adoption-6-8": 87,
+        "the-d8-adoption-20-8": 40,
         "the-landing-20-8": 40
       },
       "name": "Ben Murphy",
@@ -1258,6 +1322,7 @@
         "post-r19-redesign-1": 126,
         "rederivation-30-7": 176,
         "redesign-adoption-6-8": 52,
+        "the-d8-adoption-20-8": 23,
         "the-landing-20-8": 23
       },
       "name": "Benny Barrett",
@@ -1279,6 +1344,7 @@
         "post-r19-redesign-1": 73,
         "rederivation-30-7": 105,
         "redesign-adoption-6-8": 264,
+        "the-d8-adoption-20-8": 174,
         "the-landing-20-8": 162
       },
       "name": "Billy Cootee",
@@ -1300,6 +1366,7 @@
         "post-r19-redesign-1": 195,
         "rederivation-30-7": 205,
         "redesign-adoption-6-8": 143,
+        "the-d8-adoption-20-8": 166,
         "the-landing-20-8": 157
       },
       "name": "Billy Dowling",
@@ -1321,6 +1388,7 @@
         "post-r19-redesign-1": 105,
         "rederivation-30-7": 67,
         "redesign-adoption-6-8": 33,
+        "the-d8-adoption-20-8": 58,
         "the-landing-20-8": 39
       },
       "name": "Billy Frampton",
@@ -1342,6 +1410,7 @@
         "post-r19-redesign-1": 858,
         "rederivation-30-7": 984,
         "redesign-adoption-6-8": 811,
+        "the-d8-adoption-20-8": 793,
         "the-landing-20-8": 756
       },
       "name": "Billy Wilson",
@@ -1363,6 +1432,7 @@
         "post-r19-redesign-1": 216,
         "rederivation-30-7": 251,
         "redesign-adoption-6-8": 159,
+        "the-d8-adoption-20-8": 102,
         "the-landing-20-8": 85
       },
       "name": "Blake Acres",
@@ -1384,6 +1454,7 @@
         "post-r19-redesign-1": 639,
         "rederivation-30-7": 692,
         "redesign-adoption-6-8": 532,
+        "the-d8-adoption-20-8": 562,
         "the-landing-20-8": 493
       },
       "name": "Blake Hardwick",
@@ -1405,6 +1476,7 @@
         "post-r19-redesign-1": 337,
         "rederivation-30-7": 340,
         "redesign-adoption-6-8": 265,
+        "the-d8-adoption-20-8": 283,
         "the-landing-20-8": 206
       },
       "name": "Blake Howes",
@@ -1426,6 +1498,7 @@
         "post-r19-redesign-1": 561,
         "rederivation-30-7": 571,
         "redesign-adoption-6-8": 373,
+        "the-d8-adoption-20-8": 381,
         "the-landing-20-8": 381
       },
       "name": "Blake Thredgold",
@@ -1447,6 +1520,7 @@
         "post-r19-redesign-1": 1189,
         "rederivation-30-7": 1224,
         "redesign-adoption-6-8": 1152,
+        "the-d8-adoption-20-8": 563,
         "the-landing-20-8": 563
       },
       "name": "Bo Allan",
@@ -1468,6 +1542,7 @@
         "post-r19-redesign-1": 58,
         "rederivation-30-7": 47,
         "redesign-adoption-6-8": 31,
+        "the-d8-adoption-20-8": 45,
         "the-landing-20-8": 26
       },
       "name": "Bobby Hill",
@@ -1489,6 +1564,7 @@
         "post-r19-redesign-1": 3848,
         "rederivation-30-7": 3883,
         "redesign-adoption-6-8": 4017,
+        "the-d8-adoption-20-8": 3668,
         "the-landing-20-8": 3568
       },
       "name": "Bodhi Uwland",
@@ -1510,6 +1586,7 @@
         "post-r19-redesign-1": 332,
         "rederivation-30-7": 342,
         "redesign-adoption-6-8": 268,
+        "the-d8-adoption-20-8": 62,
         "the-landing-20-8": 62
       },
       "name": "Bodie Ryan",
@@ -1531,6 +1608,7 @@
         "post-r19-redesign-1": 29,
         "rederivation-30-7": 39,
         "redesign-adoption-6-8": 18,
+        "the-d8-adoption-20-8": 26,
         "the-landing-20-8": 18
       },
       "name": "Bradley Close",
@@ -1552,6 +1630,7 @@
         "post-r19-redesign-1": 773,
         "rederivation-30-7": 1371,
         "redesign-adoption-6-8": 1168,
+        "the-d8-adoption-20-8": 1157,
         "the-landing-20-8": 1151
       },
       "name": "Bradley Hill",
@@ -1573,6 +1652,7 @@
         "post-r19-redesign-1": 334,
         "rederivation-30-7": 371,
         "redesign-adoption-6-8": 290,
+        "the-d8-adoption-20-8": 341,
         "the-landing-20-8": 259
       },
       "name": "Brady Hough",
@@ -1594,6 +1674,7 @@
         "post-r19-redesign-1": 376,
         "rederivation-30-7": 377,
         "redesign-adoption-6-8": 315,
+        "the-d8-adoption-20-8": 405,
         "the-landing-20-8": 341
       },
       "name": "Braeden Campbell",
@@ -1615,6 +1696,7 @@
         "post-r19-redesign-1": 43,
         "rederivation-30-7": 43,
         "redesign-adoption-6-8": 41,
+        "the-d8-adoption-20-8": 11,
         "the-landing-20-8": 5
       },
       "name": "Brandon Starcevich",
@@ -1636,6 +1718,7 @@
         "post-r19-redesign-1": 94,
         "rederivation-30-7": 93,
         "redesign-adoption-6-8": 66,
+        "the-d8-adoption-20-8": 37,
         "the-landing-20-8": 19
       },
       "name": "Brandon Walker",
@@ -1657,6 +1740,7 @@
         "post-r19-redesign-1": 119,
         "rederivation-30-7": 89,
         "redesign-adoption-6-8": 51,
+        "the-d8-adoption-20-8": 69,
         "the-landing-20-8": 46
       },
       "name": "Brandon Zerk-Thatcher",
@@ -1678,6 +1762,7 @@
         "post-r19-redesign-1": 906,
         "rederivation-30-7": 1128,
         "redesign-adoption-6-8": 994,
+        "the-d8-adoption-20-8": 740,
         "the-landing-20-8": 626
       },
       "name": "Brayden Cook",
@@ -1699,6 +1784,7 @@
         "post-r19-redesign-1": 285,
         "rederivation-30-7": 285,
         "redesign-adoption-6-8": 184,
+        "the-d8-adoption-20-8": 436,
         "the-landing-20-8": 349
       },
       "name": "Brayden Fiorini",
@@ -1720,6 +1806,7 @@
         "post-r19-redesign-1": 314,
         "rederivation-30-7": 337,
         "redesign-adoption-6-8": 235,
+        "the-d8-adoption-20-8": 169,
         "the-landing-20-8": 169
       },
       "name": "Brayden George",
@@ -1741,6 +1828,7 @@
         "post-r19-redesign-1": 790,
         "rederivation-30-7": 657,
         "redesign-adoption-6-8": 500,
+        "the-d8-adoption-20-8": 523,
         "the-landing-20-8": 467
       },
       "name": "Brayden Maynard",
@@ -1762,6 +1850,7 @@
         "post-r19-redesign-1": 376,
         "rederivation-30-7": 385,
         "redesign-adoption-6-8": 264,
+        "the-d8-adoption-20-8": 310,
         "the-landing-20-8": 247
       },
       "name": "Brennan Cox",
@@ -1783,6 +1872,7 @@
         "post-r19-redesign-1": 1389,
         "rederivation-30-7": 1418,
         "redesign-adoption-6-8": 1231,
+        "the-d8-adoption-20-8": 1206,
         "the-landing-20-8": 1089
       },
       "name": "Brent Daniels",
@@ -1804,6 +1894,7 @@
         "post-r19-redesign-1": 4335,
         "rederivation-30-7": 4481,
         "redesign-adoption-6-8": 4647,
+        "the-d8-adoption-20-8": 4232,
         "the-landing-20-8": 4210
       },
       "name": "Brodie Grundy",
@@ -1825,6 +1916,7 @@
         "post-r19-redesign-1": 728,
         "rederivation-30-7": 753,
         "redesign-adoption-6-8": 591,
+        "the-d8-adoption-20-8": 709,
         "the-landing-20-8": 619
       },
       "name": "Brodie Kemp",
@@ -1846,6 +1938,7 @@
         "post-r19-redesign-1": 11,
         "rederivation-30-7": 11,
         "redesign-adoption-6-8": 10,
+        "the-d8-adoption-20-8": 43,
         "the-landing-20-8": 38
       },
       "name": "Brody Mihocek",
@@ -1867,6 +1960,7 @@
         "post-r19-redesign-1": 73,
         "rederivation-30-7": 74,
         "redesign-adoption-6-8": 54,
+        "the-d8-adoption-20-8": 87,
         "the-landing-20-8": 38
       },
       "name": "Bruce Reville",
@@ -1888,6 +1982,7 @@
         "post-r19-redesign-1": 86,
         "rederivation-30-7": 217,
         "redesign-adoption-6-8": 148,
+        "the-d8-adoption-20-8": 168,
         "the-landing-20-8": 129
       },
       "name": "Buku Khamis",
@@ -1909,6 +2004,7 @@
         "post-r19-redesign-1": 495,
         "rederivation-30-7": 534,
         "redesign-adoption-6-8": 452,
+        "the-d8-adoption-20-8": 292,
         "the-landing-20-8": 257
       },
       "name": "Caiden Cleary",
@@ -1930,6 +2026,7 @@
         "post-r19-redesign-1": 1563,
         "rederivation-30-7": 1551,
         "redesign-adoption-6-8": 1357,
+        "the-d8-adoption-20-8": 1313,
         "the-landing-20-8": 1249
       },
       "name": "Caleb Daniel",
@@ -1951,6 +2048,7 @@
         "post-r19-redesign-1": 63,
         "rederivation-30-7": 72,
         "redesign-adoption-6-8": 42,
+        "the-d8-adoption-20-8": 66,
         "the-landing-20-8": 66
       },
       "name": "Caleb Graham",
@@ -1972,6 +2070,7 @@
         "post-r19-redesign-1": 190,
         "rederivation-30-7": 219,
         "redesign-adoption-6-8": 158,
+        "the-d8-adoption-20-8": 167,
         "the-landing-20-8": 140
       },
       "name": "Caleb Lewis",
@@ -1993,6 +2092,7 @@
         "post-r19-redesign-1": 581,
         "rederivation-30-7": 332,
         "redesign-adoption-6-8": 239,
+        "the-d8-adoption-20-8": 266,
         "the-landing-20-8": 266
       },
       "name": "Caleb May",
@@ -2014,6 +2114,7 @@
         "post-r19-redesign-1": 4624,
         "rederivation-30-7": 4811,
         "redesign-adoption-6-8": 5118,
+        "the-d8-adoption-20-8": 4742,
         "the-landing-20-8": 4648
       },
       "name": "Caleb Serong",
@@ -2035,6 +2136,7 @@
         "post-r19-redesign-1": 1550,
         "rederivation-30-7": 1765,
         "redesign-adoption-6-8": 1515,
+        "the-d8-adoption-20-8": 1198,
         "the-landing-20-8": 1145
       },
       "name": "Caleb Windsor",
@@ -2056,6 +2158,7 @@
         "post-r19-redesign-1": 85,
         "rederivation-30-7": 92,
         "redesign-adoption-6-8": 66,
+        "the-d8-adoption-20-8": 28,
         "the-landing-20-8": 20
       },
       "name": "Callum Ah Chee",
@@ -2077,6 +2180,7 @@
         "post-r19-redesign-1": 57,
         "rederivation-30-7": 67,
         "redesign-adoption-6-8": 38,
+        "the-d8-adoption-20-8": 43,
         "the-landing-20-8": 29
       },
       "name": "Callum M. Brown",
@@ -2098,6 +2202,7 @@
         "post-r19-redesign-1": 39,
         "rederivation-30-7": 48,
         "redesign-adoption-6-8": 39,
+        "the-d8-adoption-20-8": 25,
         "the-landing-20-8": 25
       },
       "name": "Callum Coleman-Jones",
@@ -2119,6 +2224,7 @@
         "post-r19-redesign-1": 2322,
         "rederivation-30-7": 2272,
         "redesign-adoption-6-8": 2117,
+        "the-d8-adoption-20-8": 1997,
         "the-landing-20-8": 1921
       },
       "name": "Callum Mills",
@@ -2140,6 +2246,7 @@
         "post-r19-redesign-1": 3670,
         "rederivation-30-7": 3699,
         "redesign-adoption-6-8": 3655,
+        "the-d8-adoption-20-8": 3498,
         "the-landing-20-8": 3422
       },
       "name": "Callum Wilkie",
@@ -2161,6 +2268,7 @@
         "post-r19-redesign-1": 978,
         "rederivation-30-7": 1016,
         "redesign-adoption-6-8": 957,
+        "the-d8-adoption-20-8": 647,
         "the-landing-20-8": 592
       },
       "name": "Calsher Dear",
@@ -2182,6 +2290,7 @@
         "post-r19-redesign-1": 1632,
         "rederivation-30-7": 2064,
         "redesign-adoption-6-8": 1982,
+        "the-d8-adoption-20-8": 2063,
         "the-landing-20-8": 1942
       },
       "name": "Cameron Mackenzie",
@@ -2203,6 +2312,7 @@
         "post-r19-redesign-1": 740,
         "rederivation-30-7": 784,
         "redesign-adoption-6-8": 640,
+        "the-d8-adoption-20-8": 528,
         "the-landing-20-8": 528
       },
       "name": "Cameron Nairn",
@@ -2224,6 +2334,7 @@
         "post-r19-redesign-1": 745,
         "rederivation-30-7": 882,
         "redesign-adoption-6-8": 716,
+        "the-d8-adoption-20-8": 523,
         "the-landing-20-8": 456
       },
       "name": "Cameron Rayner",
@@ -2245,6 +2356,7 @@
         "post-r19-redesign-1": 147,
         "rederivation-30-7": 162,
         "redesign-adoption-6-8": 95,
+        "the-d8-adoption-20-8": 150,
         "the-landing-20-8": 121
       },
       "name": "Cameron Zurhaar",
@@ -2266,6 +2378,7 @@
         "post-r19-redesign-1": 345,
         "rederivation-30-7": 357,
         "redesign-adoption-6-8": 294,
+        "the-d8-adoption-20-8": 292,
         "the-landing-20-8": 195
       },
       "name": "Campbell Chesser",
@@ -2287,6 +2400,7 @@
         "post-r19-redesign-1": 263,
         "rederivation-30-7": 271,
         "redesign-adoption-6-8": 183,
+        "the-d8-adoption-20-8": 257,
         "the-landing-20-8": 207
       },
       "name": "Campbell Gray",
@@ -2308,6 +2422,7 @@
         "post-r19-redesign-1": 180,
         "rederivation-30-7": 220,
         "redesign-adoption-6-8": 144,
+        "the-d8-adoption-20-8": 246,
         "the-landing-20-8": 201
       },
       "name": "Campbell Lake",
@@ -2329,6 +2444,7 @@
         "post-r19-redesign-1": 3213,
         "rederivation-30-7": 3624,
         "redesign-adoption-6-8": 3701,
+        "the-d8-adoption-20-8": 4120,
         "the-landing-20-8": 4004
       },
       "name": "Chad Warner",
@@ -2350,6 +2466,7 @@
         "post-r19-redesign-1": 29,
         "rederivation-30-7": 31,
         "redesign-adoption-6-8": 14,
+        "the-d8-adoption-20-8": 32,
         "the-landing-20-8": 17
       },
       "name": "Changkuoth Jiath",
@@ -2371,6 +2488,7 @@
         "post-r19-redesign-1": 164,
         "rederivation-30-7": 86,
         "redesign-adoption-6-8": 46,
+        "the-d8-adoption-20-8": 74,
         "the-landing-20-8": 44
       },
       "name": "Charlie Ballard",
@@ -2392,6 +2510,7 @@
         "post-r19-redesign-1": 672,
         "rederivation-30-7": 694,
         "redesign-adoption-6-8": 645,
+        "the-d8-adoption-20-8": 620,
         "the-landing-20-8": 620
       },
       "name": "Charlie Banfield",
@@ -2413,6 +2532,7 @@
         "post-r19-redesign-1": 297,
         "rederivation-30-7": 295,
         "redesign-adoption-6-8": 191,
+        "the-d8-adoption-20-8": 212,
         "the-landing-20-8": 212
       },
       "name": "Charlie Cameron",
@@ -2434,6 +2554,7 @@
         "post-r19-redesign-1": 1050,
         "rederivation-30-7": 1023,
         "redesign-adoption-6-8": 847,
+        "the-d8-adoption-20-8": 760,
         "the-landing-20-8": 699
       },
       "name": "Charlie Comben",
@@ -2455,6 +2576,7 @@
         "post-r19-redesign-1": 1589,
         "rederivation-30-7": 1626,
         "redesign-adoption-6-8": 1449,
+        "the-d8-adoption-20-8": 1358,
         "the-landing-20-8": 1294
       },
       "name": "Charlie Curnow",
@@ -2476,6 +2598,7 @@
         "post-r19-redesign-1": 746,
         "rederivation-30-7": 747,
         "redesign-adoption-6-8": 732,
+        "the-d8-adoption-20-8": 284,
         "the-landing-20-8": 284
       },
       "name": "Charlie Edwards",
@@ -2497,6 +2620,7 @@
         "post-r19-redesign-1": 292,
         "rederivation-30-7": 373,
         "redesign-adoption-6-8": 210,
+        "the-d8-adoption-20-8": 219,
         "the-landing-20-8": 219
       },
       "name": "Charlie Nicholls",
@@ -2518,6 +2642,7 @@
         "post-r19-redesign-1": 35,
         "rederivation-30-7": 38,
         "redesign-adoption-6-8": 26,
+        "the-d8-adoption-20-8": 4,
         "the-landing-20-8": 4
       },
       "name": "Charlie Spargo",
@@ -2539,6 +2664,7 @@
         "post-r19-redesign-1": 466,
         "rederivation-30-7": 612,
         "redesign-adoption-6-8": 381,
+        "the-d8-adoption-20-8": 342,
         "the-landing-20-8": 342
       },
       "name": "Charlie West",
@@ -2560,6 +2686,7 @@
         "post-r19-redesign-1": 106,
         "rederivation-30-7": 53,
         "redesign-adoption-6-8": 48,
+        "the-d8-adoption-20-8": 18,
         "the-landing-20-8": 12
       },
       "name": "Chayce Jones",
@@ -2581,6 +2708,7 @@
         "post-r19-redesign-1": 318,
         "rederivation-30-7": 407,
         "redesign-adoption-6-8": 306,
+        "the-d8-adoption-20-8": 353,
         "the-landing-20-8": 353
       },
       "name": "Chris Scerri",
@@ -2602,6 +2730,7 @@
         "post-r19-redesign-1": 941,
         "rederivation-30-7": 984,
         "redesign-adoption-6-8": 926,
+        "the-d8-adoption-20-8": 543,
         "the-landing-20-8": 543
       },
       "name": "Christian Moraes",
@@ -2623,6 +2752,7 @@
         "post-r19-redesign-1": 2160,
         "rederivation-30-7": 2702,
         "redesign-adoption-6-8": 2593,
+        "the-d8-adoption-20-8": 2026,
         "the-landing-20-8": 1977
       },
       "name": "Christian Petracca",
@@ -2644,6 +2774,7 @@
         "post-r19-redesign-1": 554,
         "rederivation-30-7": 569,
         "redesign-adoption-6-8": 426,
+        "the-d8-adoption-20-8": 155,
         "the-landing-20-8": 111
       },
       "name": "Christian Salem",
@@ -2665,6 +2796,7 @@
         "post-r19-redesign-1": 330,
         "rederivation-30-7": 325,
         "redesign-adoption-6-8": 87,
+        "the-d8-adoption-20-8": 40,
         "the-landing-20-8": 40
       },
       "name": "Cillian Bourke",
@@ -2686,6 +2818,7 @@
         "post-r19-redesign-1": 109,
         "rederivation-30-7": 91,
         "redesign-adoption-6-8": 57,
+        "the-d8-adoption-20-8": 37,
         "the-landing-20-8": 37
       },
       "name": "Cillian Burke",
@@ -2707,6 +2840,7 @@
         "post-r19-redesign-1": 390,
         "rederivation-30-7": 354,
         "redesign-adoption-6-8": 335,
+        "the-d8-adoption-20-8": 415,
         "the-landing-20-8": 415
       },
       "name": "Clay Hall",
@@ -2728,6 +2862,7 @@
         "post-r19-redesign-1": 2558,
         "rederivation-30-7": 2636,
         "redesign-adoption-6-8": 2510,
+        "the-d8-adoption-20-8": 2312,
         "the-landing-20-8": 2240
       },
       "name": "Clayton Oliver",
@@ -2749,6 +2884,7 @@
         "post-r19-redesign-1": 180,
         "rederivation-30-7": 200,
         "redesign-adoption-6-8": 65,
+        "the-d8-adoption-20-8": 17,
         "the-landing-20-8": 17
       },
       "name": "Cody Anderson",
@@ -2770,6 +2906,7 @@
         "post-r19-redesign-1": 576,
         "rederivation-30-7": 563,
         "redesign-adoption-6-8": 510,
+        "the-d8-adoption-20-8": 423,
         "the-landing-20-8": 423
       },
       "name": "Cody Angove",
@@ -2791,6 +2928,7 @@
         "post-r19-redesign-1": 676,
         "rederivation-30-7": 703,
         "redesign-adoption-6-8": 581,
+        "the-d8-adoption-20-8": 391,
         "the-landing-20-8": 391
       },
       "name": "Cody Curtin",
@@ -2812,6 +2950,7 @@
         "post-r19-redesign-1": 229,
         "rederivation-30-7": 219,
         "redesign-adoption-6-8": 157,
+        "the-d8-adoption-20-8": 189,
         "the-landing-20-8": 142
       },
       "name": "Cody Weightman",
@@ -2833,6 +2972,7 @@
         "post-r19-redesign-1": 3986,
         "rederivation-30-7": 4073,
         "redesign-adoption-6-8": 4358,
+        "the-d8-adoption-20-8": 4252,
         "the-landing-20-8": 4223
       },
       "name": "Colby McKercher",
@@ -2854,6 +2994,7 @@
         "post-r19-redesign-1": 188,
         "rederivation-30-7": 409,
         "redesign-adoption-6-8": 284,
+        "the-d8-adoption-20-8": 295,
         "the-landing-20-8": 236
       },
       "name": "Connor Budarick",
@@ -2875,6 +3016,7 @@
         "post-r19-redesign-1": 2320,
         "rederivation-30-7": 2490,
         "redesign-adoption-6-8": 2397,
+        "the-d8-adoption-20-8": 2063,
         "the-landing-20-8": 2021
       },
       "name": "Connor Idun",
@@ -2896,6 +3038,7 @@
         "post-r19-redesign-1": 2736,
         "rederivation-30-7": 2869,
         "redesign-adoption-6-8": 2828,
+        "the-d8-adoption-20-8": 2585,
         "the-landing-20-8": 2495
       },
       "name": "Connor MacDonald",
@@ -2917,6 +3060,7 @@
         "post-r19-redesign-1": 2923,
         "rederivation-30-7": 2974,
         "redesign-adoption-6-8": 2941,
+        "the-d8-adoption-20-8": 2611,
         "the-landing-20-8": 2589
       },
       "name": "Connor O'Sullivan",
@@ -2938,6 +3082,7 @@
         "post-r19-redesign-1": 2885,
         "rederivation-30-7": 2930,
         "redesign-adoption-6-8": 2879,
+        "the-d8-adoption-20-8": 3465,
         "the-landing-20-8": 3380
       },
       "name": "Connor Rozee",
@@ -2959,6 +3104,7 @@
         "post-r19-redesign-1": 2,
         "rederivation-30-7": 9,
         "redesign-adoption-6-8": 7,
+        "the-d8-adoption-20-8": 5,
         "the-landing-20-8": 3
       },
       "name": "Conor McKenna",
@@ -2980,6 +3126,7 @@
         "post-r19-redesign-1": 343,
         "rederivation-30-7": 348,
         "redesign-adoption-6-8": 240,
+        "the-d8-adoption-20-8": 344,
         "the-landing-20-8": 252
       },
       "name": "Conor Nash",
@@ -3001,6 +3148,7 @@
         "post-r19-redesign-1": 86,
         "rederivation-30-7": 87,
         "redesign-adoption-6-8": 76,
+        "the-d8-adoption-20-8": 85,
         "the-landing-20-8": 68
       },
       "name": "Conor Stone",
@@ -3022,6 +3170,7 @@
         "post-r19-redesign-1": 332,
         "rederivation-30-7": 329,
         "redesign-adoption-6-8": 162,
+        "the-d8-adoption-20-8": 135,
         "the-landing-20-8": 135
       },
       "name": "Cooper Bell",
@@ -3043,6 +3192,7 @@
         "post-r19-redesign-1": 1566,
         "rederivation-30-7": 1638,
         "redesign-adoption-6-8": 1479,
+        "the-d8-adoption-20-8": 1845,
         "the-landing-20-8": 1845
       },
       "name": "Cooper Duff-Tytler",
@@ -3064,6 +3214,7 @@
         "post-r19-redesign-1": 612,
         "rederivation-30-7": 663,
         "redesign-adoption-6-8": 551,
+        "the-d8-adoption-20-8": 405,
         "the-landing-20-8": 341
       },
       "name": "Cooper Harvey",
@@ -3085,6 +3236,7 @@
         "post-r19-redesign-1": 1265,
         "rederivation-30-7": 1306,
         "redesign-adoption-6-8": 1367,
+        "the-d8-adoption-20-8": 840,
         "the-landing-20-8": 840
       },
       "name": "Cooper Hynes",
@@ -3106,6 +3258,7 @@
         "post-r19-redesign-1": 726,
         "rederivation-30-7": 1169,
         "redesign-adoption-6-8": 1103,
+        "the-d8-adoption-20-8": 1104,
         "the-landing-20-8": 1052
       },
       "name": "Cooper Lord",
@@ -3127,6 +3280,7 @@
         "post-r19-redesign-1": 651,
         "rederivation-30-7": 689,
         "redesign-adoption-6-8": 542,
+        "the-d8-adoption-20-8": 451,
         "the-landing-20-8": 418
       },
       "name": "Cooper Sharman",
@@ -3148,6 +3302,7 @@
         "post-r19-redesign-1": 247,
         "rederivation-30-7": 251,
         "redesign-adoption-6-8": 180,
+        "the-d8-adoption-20-8": 84,
         "the-landing-20-8": 84
       },
       "name": "Cooper Simpson",
@@ -3169,6 +3324,7 @@
         "post-r19-redesign-1": 2087,
         "rederivation-30-7": 2140,
         "redesign-adoption-6-8": 2034,
+        "the-d8-adoption-20-8": 1816,
         "the-landing-20-8": 1779
       },
       "name": "Cooper Trembath",
@@ -3190,6 +3346,7 @@
         "post-r19-redesign-1": 58,
         "rederivation-30-7": 68,
         "redesign-adoption-6-8": 48,
+        "the-d8-adoption-20-8": 54,
         "the-landing-20-8": 33
       },
       "name": "Corey Durdin",
@@ -3211,6 +3368,7 @@
         "post-r19-redesign-1": 42,
         "rederivation-30-7": 43,
         "redesign-adoption-6-8": 20,
+        "the-d8-adoption-20-8": 55,
         "the-landing-20-8": 32
       },
       "name": "Corey Wagner",
@@ -3232,6 +3390,7 @@
         "post-r19-redesign-1": 76,
         "rederivation-30-7": 82,
         "redesign-adoption-6-8": 50,
+        "the-d8-adoption-20-8": 60,
         "the-landing-20-8": 43
       },
       "name": "Corey Warner",
@@ -3253,6 +3412,7 @@
         "post-r19-redesign-1": 1341,
         "rederivation-30-7": 1357,
         "redesign-adoption-6-8": 1173,
+        "the-d8-adoption-20-8": 1171,
         "the-landing-20-8": 1111
       },
       "name": "Dan Houston",
@@ -3274,6 +3434,7 @@
         "post-r19-redesign-1": 57,
         "rederivation-30-7": 2,
         "redesign-adoption-6-8": 12,
+        "the-d8-adoption-20-8": 3,
         "the-landing-20-8": 3
       },
       "name": "Dane Rampe",
@@ -3295,6 +3456,7 @@
         "post-r19-redesign-1": 1748,
         "rederivation-30-7": 1890,
         "redesign-adoption-6-8": 1420,
+        "the-d8-adoption-20-8": 1218,
         "the-landing-20-8": 1218
       },
       "name": "Daniel Annable",
@@ -3316,6 +3478,7 @@
         "post-r19-redesign-1": 21,
         "rederivation-30-7": 21,
         "redesign-adoption-6-8": 10,
+        "the-d8-adoption-20-8": 3,
         "the-landing-20-8": 1
       },
       "name": "Daniel Butler",
@@ -3337,6 +3500,7 @@
         "post-r19-redesign-1": 2406,
         "rederivation-30-7": 2609,
         "redesign-adoption-6-8": 2467,
+        "the-d8-adoption-20-8": 2397,
         "the-landing-20-8": 2335
       },
       "name": "Daniel Curtin",
@@ -3358,6 +3522,7 @@
         "post-r19-redesign-1": 112,
         "rederivation-30-7": 239,
         "redesign-adoption-6-8": 149,
+        "the-d8-adoption-20-8": 360,
         "the-landing-20-8": 328
       },
       "name": "Daniel McStay",
@@ -3379,6 +3544,7 @@
         "post-r19-redesign-1": 768,
         "rederivation-30-7": 808,
         "redesign-adoption-6-8": 642,
+        "the-d8-adoption-20-8": 695,
         "the-landing-20-8": 622
       },
       "name": "Daniel Rioli",
@@ -3400,6 +3566,7 @@
         "post-r19-redesign-1": 1753,
         "rederivation-30-7": 1767,
         "redesign-adoption-6-8": 1610,
+        "the-d8-adoption-20-8": 1395,
         "the-landing-20-8": 1322
       },
       "name": "Daniel Turner",
@@ -3421,6 +3588,7 @@
         "post-r19-redesign-1": 1002,
         "rederivation-30-7": 1227,
         "redesign-adoption-6-8": 1264,
+        "the-d8-adoption-20-8": 971,
         "the-landing-20-8": 807
       },
       "name": "Dante Visentini",
@@ -3442,6 +3610,7 @@
         "post-r19-redesign-1": 468,
         "rederivation-30-7": 846,
         "redesign-adoption-6-8": 660,
+        "the-d8-adoption-20-8": 623,
         "the-landing-20-8": 623
       },
       "name": "Darcy Byrne-Jones",
@@ -3463,6 +3632,7 @@
         "post-r19-redesign-1": 1288,
         "rederivation-30-7": 1588,
         "redesign-adoption-6-8": 1395,
+        "the-d8-adoption-20-8": 1572,
         "the-landing-20-8": 1532
       },
       "name": "Darcy Cameron",
@@ -3484,6 +3654,7 @@
         "post-r19-redesign-1": 1017,
         "rederivation-30-7": 1051,
         "redesign-adoption-6-8": 875,
+        "the-d8-adoption-20-8": 842,
         "the-landing-20-8": 804
       },
       "name": "Darcy Fogarty",
@@ -3505,6 +3676,7 @@
         "post-r19-redesign-1": 60,
         "rederivation-30-7": 55,
         "redesign-adoption-6-8": 27,
+        "the-d8-adoption-20-8": 120,
         "the-landing-20-8": 88
       },
       "name": "Darcy Fort",
@@ -3526,6 +3698,7 @@
         "post-r19-redesign-1": 47,
         "rederivation-30-7": 48,
         "redesign-adoption-6-8": 33,
+        "the-d8-adoption-20-8": 11,
         "the-landing-20-8": 5
       },
       "name": "Darcy Gardiner",
@@ -3547,6 +3720,7 @@
         "post-r19-redesign-1": 1466,
         "rederivation-30-7": 1494,
         "redesign-adoption-6-8": 1361,
+        "the-d8-adoption-20-8": 1303,
         "the-landing-20-8": 1244
       },
       "name": "Darcy Jones",
@@ -3568,6 +3742,7 @@
         "post-r19-redesign-1": 236,
         "rederivation-30-7": 237,
         "redesign-adoption-6-8": 151,
+        "the-d8-adoption-20-8": 190,
         "the-landing-20-8": 140
       },
       "name": "Darcy Moore",
@@ -3589,6 +3764,7 @@
         "post-r19-redesign-1": 714,
         "rederivation-30-7": 731,
         "redesign-adoption-6-8": 568,
+        "the-d8-adoption-20-8": 651,
         "the-landing-20-8": 571
       },
       "name": "Darcy Parish",
@@ -3610,6 +3786,7 @@
         "post-r19-redesign-1": 3839,
         "rederivation-30-7": 3739,
         "redesign-adoption-6-8": 3856,
+        "the-d8-adoption-20-8": 3077,
         "the-landing-20-8": 3013
       },
       "name": "Darcy Wilmot",
@@ -3631,6 +3808,7 @@
         "post-r19-redesign-1": 2987,
         "rederivation-30-7": 3407,
         "redesign-adoption-6-8": 3456,
+        "the-d8-adoption-20-8": 2869,
         "the-landing-20-8": 2829
       },
       "name": "Darcy Wilson",
@@ -3652,6 +3830,7 @@
         "post-r19-redesign-1": 11,
         "rederivation-30-7": 13,
         "redesign-adoption-6-8": 7,
+        "the-d8-adoption-20-8": 6,
         "the-landing-20-8": 6
       },
       "name": "Darragh Joyce",
@@ -3673,6 +3852,7 @@
         "post-r19-redesign-1": 1108,
         "rederivation-30-7": 1250,
         "redesign-adoption-6-8": 1042,
+        "the-d8-adoption-20-8": 942,
         "the-landing-20-8": 938
       },
       "name": "Dayne Zorko",
@@ -3694,6 +3874,7 @@
         "post-r19-redesign-1": 205,
         "rederivation-30-7": 247,
         "redesign-adoption-6-8": 181,
+        "the-d8-adoption-20-8": 166,
         "the-landing-20-8": 113
       },
       "name": "Deven Robertson",
@@ -3715,6 +3896,7 @@
         "post-r19-redesign-1": 166,
         "rederivation-30-7": 502,
         "redesign-adoption-6-8": 357,
+        "the-d8-adoption-20-8": 250,
         "the-landing-20-8": 250
       },
       "name": "Dion Prestia",
@@ -3736,6 +3918,7 @@
         "post-r19-redesign-1": 87,
         "rederivation-30-7": 89,
         "redesign-adoption-6-8": 48,
+        "the-d8-adoption-20-8": 59,
         "the-landing-20-8": 43
       },
       "name": "Dougal Howard",
@@ -3757,6 +3940,7 @@
         "post-r19-redesign-1": 1411,
         "rederivation-30-7": 1396,
         "redesign-adoption-6-8": 1216,
+        "the-d8-adoption-20-8": 1191,
         "the-landing-20-8": 1116
       },
       "name": "Dylan Moore",
@@ -3778,6 +3962,7 @@
         "post-r19-redesign-1": 1091,
         "rederivation-30-7": 1137,
         "redesign-adoption-6-8": 1707,
+        "the-d8-adoption-20-8": 1217,
         "the-landing-20-8": 1217
       },
       "name": "Dylan Patterson",
@@ -3799,6 +3984,7 @@
         "post-r19-redesign-1": 465,
         "rederivation-30-7": 505,
         "redesign-adoption-6-8": 411,
+        "the-d8-adoption-20-8": 664,
         "the-landing-20-8": 548
       },
       "name": "Dylan Stephens",
@@ -3820,6 +4006,7 @@
         "post-r19-redesign-1": 1993,
         "rederivation-30-7": 2621,
         "redesign-adoption-6-8": 2641,
+        "the-d8-adoption-20-8": 2879,
         "the-landing-20-8": 2879
       },
       "name": "Dyson Sharp",
@@ -3841,6 +4028,7 @@
         "post-r19-redesign-1": 153,
         "rederivation-30-7": 185,
         "redesign-adoption-6-8": 57,
+        "the-d8-adoption-20-8": 37,
         "the-landing-20-8": 37
       },
       "name": "Eamonn Armstrong",
@@ -3862,6 +4050,7 @@
         "post-r19-redesign-1": 439,
         "rederivation-30-7": 1080,
         "redesign-adoption-6-8": 893,
+        "the-d8-adoption-20-8": 743,
         "the-landing-20-8": 744
       },
       "name": "Ed Langdon",
@@ -3883,6 +4072,7 @@
         "post-r19-redesign-1": 3545,
         "rederivation-30-7": 3845,
         "redesign-adoption-6-8": 3917,
+        "the-d8-adoption-20-8": 3720,
         "the-landing-20-8": 3641
       },
       "name": "Ed Richards",
@@ -3904,6 +4094,7 @@
         "post-r19-redesign-1": 859,
         "rederivation-30-7": 849,
         "redesign-adoption-6-8": 801,
+        "the-d8-adoption-20-8": 667,
         "the-landing-20-8": 583
       },
       "name": "Edward Allan",
@@ -3925,6 +4116,7 @@
         "post-r19-redesign-1": 791,
         "rederivation-30-7": 782,
         "redesign-adoption-6-8": 767,
+        "the-d8-adoption-20-8": 549,
         "the-landing-20-8": 458
       },
       "name": "Elijah Hewett",
@@ -3946,6 +4138,7 @@
         "post-r19-redesign-1": 850,
         "rederivation-30-7": 864,
         "redesign-adoption-6-8": 727,
+        "the-d8-adoption-20-8": 725,
         "the-landing-20-8": 633
       },
       "name": "Elijah Hollands",
@@ -3967,6 +4160,7 @@
         "post-r19-redesign-1": 1343,
         "rederivation-30-7": 1362,
         "redesign-adoption-6-8": 1299,
+        "the-d8-adoption-20-8": 945,
         "the-landing-20-8": 853
       },
       "name": "Elijah Tsatas",
@@ -3988,6 +4182,7 @@
         "post-r19-redesign-1": 93,
         "rederivation-30-7": 91,
         "redesign-adoption-6-8": 47,
+        "the-d8-adoption-20-8": 58,
         "the-landing-20-8": 31
       },
       "name": "Elliott Himmelberg",
@@ -4009,6 +4204,7 @@
         "post-r19-redesign-1": 113,
         "rederivation-30-7": 316,
         "redesign-adoption-6-8": 208,
+        "the-d8-adoption-20-8": 318,
         "the-landing-20-8": 318
       },
       "name": "Elliot Yeo",
@@ -4030,6 +4226,7 @@
         "post-r19-redesign-1": 62,
         "rederivation-30-7": 51,
         "redesign-adoption-6-8": 42,
+        "the-d8-adoption-20-8": 46,
         "the-landing-20-8": 18
       },
       "name": "Eric Hipwood",
@@ -4051,6 +4248,7 @@
         "post-r19-redesign-1": 5145,
         "rederivation-30-7": 5511,
         "redesign-adoption-6-8": 6007,
+        "the-d8-adoption-20-8": 6506,
         "the-landing-20-8": 6442
       },
       "name": "Errol Gulden",
@@ -4072,6 +4270,7 @@
         "post-r19-redesign-1": 128,
         "rederivation-30-7": 120,
         "redesign-adoption-6-8": 67,
+        "the-d8-adoption-20-8": 169,
         "the-landing-20-8": 127
       },
       "name": "Esava Ratugolea",
@@ -4093,6 +4292,7 @@
         "post-r19-redesign-1": 1000,
         "rederivation-30-7": 1024,
         "redesign-adoption-6-8": 974,
+        "the-d8-adoption-20-8": 528,
         "the-landing-20-8": 496
       },
       "name": "Ethan Read",
@@ -4114,6 +4314,7 @@
         "post-r19-redesign-1": 46,
         "rederivation-30-7": 47,
         "redesign-adoption-6-8": 128,
+        "the-d8-adoption-20-8": 159,
         "the-landing-20-8": 115
       },
       "name": "Ewan Mackinlay",
@@ -4135,6 +4336,7 @@
         "post-r19-redesign-1": 111,
         "rederivation-30-7": 110,
         "redesign-adoption-6-8": 110,
+        "the-d8-adoption-20-8": 53,
         "the-landing-20-8": 51
       },
       "name": "Finlay Macrae",
@@ -4156,6 +4358,7 @@
         "post-r19-redesign-1": 5403,
         "rederivation-30-7": 5592,
         "redesign-adoption-6-8": 6132,
+        "the-d8-adoption-20-8": 5568,
         "the-landing-20-8": 5516
       },
       "name": "Finn Callaghan",
@@ -4177,6 +4380,7 @@
         "post-r19-redesign-1": 35,
         "rederivation-30-7": 38,
         "redesign-adoption-6-8": 26,
+        "the-d8-adoption-20-8": 16,
         "the-landing-20-8": 11
       },
       "name": "Finn Maginness",
@@ -4198,6 +4402,7 @@
         "post-r19-redesign-1": 3361,
         "rederivation-30-7": 3449,
         "redesign-adoption-6-8": 3664,
+        "the-d8-adoption-20-8": 3186,
         "the-landing-20-8": 3186
       },
       "name": "Finn O'Sullivan",
@@ -4219,6 +4424,7 @@
         "post-r19-redesign-1": 181,
         "rederivation-30-7": 312,
         "redesign-adoption-6-8": 264,
+        "the-d8-adoption-20-8": 237,
         "the-landing-20-8": 167
       },
       "name": "Finnbar Maley",
@@ -4240,6 +4446,7 @@
         "post-r19-redesign-1": 400,
         "rederivation-30-7": 382,
         "redesign-adoption-6-8": 181,
+        "the-d8-adoption-20-8": 84,
         "the-landing-20-8": 84
       },
       "name": "Finnegan Davis",
@@ -4261,6 +4468,7 @@
         "post-r19-redesign-1": 11,
         "rederivation-30-7": 10,
         "redesign-adoption-6-8": 113,
+        "the-d8-adoption-20-8": 38,
         "the-landing-20-8": 22
       },
       "name": "Flynn Perez",
@@ -4282,6 +4490,7 @@
         "post-r19-redesign-1": 613,
         "rederivation-30-7": 364,
         "redesign-adoption-6-8": 288,
+        "the-d8-adoption-20-8": 359,
         "the-landing-20-8": 359
       },
       "name": "Flynn Riley",
@@ -4303,6 +4512,7 @@
         "post-r19-redesign-1": 10,
         "rederivation-30-7": 11,
         "redesign-adoption-6-8": 128,
+        "the-d8-adoption-20-8": 34,
         "the-landing-20-8": 23
       },
       "name": "Flynn Young",
@@ -4324,6 +4534,7 @@
         "post-r19-redesign-1": 292,
         "rederivation-30-7": 480,
         "redesign-adoption-6-8": 358,
+        "the-d8-adoption-20-8": 521,
         "the-landing-20-8": 447
       },
       "name": "Francis Evans",
@@ -4345,6 +4556,7 @@
         "post-r19-redesign-1": 385,
         "rederivation-30-7": 429,
         "redesign-adoption-6-8": 194,
+        "the-d8-adoption-20-8": 97,
         "the-landing-20-8": 97
       },
       "name": "Fred Rodriguez",
@@ -4366,6 +4578,7 @@
         "post-r19-redesign-1": 1845,
         "rederivation-30-7": 1937,
         "redesign-adoption-6-8": 1747,
+        "the-d8-adoption-20-8": 1932,
         "the-landing-20-8": 1928
       },
       "name": "George Hewett",
@@ -4387,6 +4600,7 @@
         "post-r19-redesign-1": 410,
         "rederivation-30-7": 410,
         "redesign-adoption-6-8": 333,
+        "the-d8-adoption-20-8": 69,
         "the-landing-20-8": 65
       },
       "name": "George Stevens",
@@ -4408,6 +4622,7 @@
         "post-r19-redesign-1": 3153,
         "rederivation-30-7": 3215,
         "redesign-adoption-6-8": 3310,
+        "the-d8-adoption-20-8": 3072,
         "the-landing-20-8": 2954
       },
       "name": "George Wardlaw",
@@ -4429,6 +4644,7 @@
         "post-r19-redesign-1": 133,
         "rederivation-30-7": 130,
         "redesign-adoption-6-8": 74,
+        "the-d8-adoption-20-8": 120,
         "the-landing-20-8": 85
       },
       "name": "Griffin Logue",
@@ -4450,6 +4666,7 @@
         "post-r19-redesign-1": 1980,
         "rederivation-30-7": 1964,
         "redesign-adoption-6-8": 1809,
+        "the-d8-adoption-20-8": 1602,
         "the-landing-20-8": 1524
       },
       "name": "Gryan Miers",
@@ -4471,6 +4688,7 @@
         "post-r19-redesign-1": 947,
         "rederivation-30-7": 974,
         "redesign-adoption-6-8": 898,
+        "the-d8-adoption-20-8": 632,
         "the-landing-20-8": 632
       },
       "name": "Hamish Davis",
@@ -4492,6 +4710,7 @@
         "post-r19-redesign-1": 747,
         "rederivation-30-7": 749,
         "redesign-adoption-6-8": 677,
+        "the-d8-adoption-20-8": 504,
         "the-landing-20-8": 504
       },
       "name": "Harley Barker",
@@ -4513,6 +4732,7 @@
         "post-r19-redesign-1": 3563,
         "rederivation-30-7": 3663,
         "redesign-adoption-6-8": 3624,
+        "the-d8-adoption-20-8": 3850,
         "the-landing-20-8": 3819
       },
       "name": "Harley Reid",
@@ -4534,6 +4754,7 @@
         "post-r19-redesign-1": 1889,
         "rederivation-30-7": 1961,
         "redesign-adoption-6-8": 1750,
+        "the-d8-adoption-20-8": 1559,
         "the-landing-20-8": 1521
       },
       "name": "Harris Andrews",
@@ -4555,6 +4776,7 @@
         "post-r19-redesign-1": 241,
         "rederivation-30-7": 167,
         "redesign-adoption-6-8": 239,
+        "the-d8-adoption-20-8": 266,
         "the-landing-20-8": 266
       },
       "name": "Harrison Coe",
@@ -4576,6 +4798,7 @@
         "post-r19-redesign-1": 554,
         "rederivation-30-7": 344,
         "redesign-adoption-6-8": 237,
+        "the-d8-adoption-20-8": 200,
         "the-landing-20-8": 145
       },
       "name": "Harrison Himmelberg",
@@ -4597,6 +4820,7 @@
         "post-r19-redesign-1": 206,
         "rederivation-30-7": 209,
         "redesign-adoption-6-8": 154,
+        "the-d8-adoption-20-8": 230,
         "the-landing-20-8": 137
       },
       "name": "Harrison Jones",
@@ -4618,6 +4842,7 @@
         "post-r19-redesign-1": 663,
         "rederivation-30-7": 683,
         "redesign-adoption-6-8": 603,
+        "the-d8-adoption-20-8": 273,
         "the-landing-20-8": 273
       },
       "name": "Harrison Oliver",
@@ -4639,6 +4864,7 @@
         "post-r19-redesign-1": 147,
         "rederivation-30-7": 226,
         "redesign-adoption-6-8": 143,
+        "the-d8-adoption-20-8": 246,
         "the-landing-20-8": 200
       },
       "name": "Harrison Petty",
@@ -4660,6 +4886,7 @@
         "post-r19-redesign-1": 340,
         "rederivation-30-7": 394,
         "redesign-adoption-6-8": 324,
+        "the-d8-adoption-20-8": 402,
         "the-landing-20-8": 402
       },
       "name": "Harrison Ramm",
@@ -4681,6 +4908,7 @@
         "post-r19-redesign-1": 989,
         "rederivation-30-7": 1031,
         "redesign-adoption-6-8": 804,
+        "the-d8-adoption-20-8": 518,
         "the-landing-20-8": 518
       },
       "name": "Harry Armstrong",
@@ -4702,6 +4930,7 @@
         "post-r19-redesign-1": 618,
         "rederivation-30-7": 629,
         "redesign-adoption-6-8": 557,
+        "the-d8-adoption-20-8": 422,
         "the-landing-20-8": 422
       },
       "name": "Harry Barnett",
@@ -4723,6 +4952,7 @@
         "post-r19-redesign-1": 248,
         "rederivation-30-7": 284,
         "redesign-adoption-6-8": 105,
+        "the-d8-adoption-20-8": 109,
         "the-landing-20-8": 109
       },
       "name": "Harry Charleson",
@@ -4744,6 +4974,7 @@
         "post-r19-redesign-1": 1,
         "rederivation-30-7": 1,
         "redesign-adoption-6-8": 10,
+        "the-d8-adoption-20-8": 2,
         "the-landing-20-8": 2
       },
       "name": "Harry Cunningham",
@@ -4765,6 +4996,7 @@
         "post-r19-redesign-1": 2494,
         "rederivation-30-7": 2567,
         "redesign-adoption-6-8": 2621,
+        "the-d8-adoption-20-8": 3069,
         "the-landing-20-8": 3069
       },
       "name": "Harry Dean",
@@ -4786,6 +5018,7 @@
         "post-r19-redesign-1": 477,
         "rederivation-30-7": 479,
         "redesign-adoption-6-8": 431,
+        "the-d8-adoption-20-8": 331,
         "the-landing-20-8": 331
       },
       "name": "Harry DeMattia",
@@ -4807,6 +5040,7 @@
         "post-r19-redesign-1": 148,
         "rederivation-30-7": 161,
         "redesign-adoption-6-8": 108,
+        "the-d8-adoption-20-8": 149,
         "the-landing-20-8": 107
       },
       "name": "Harry Edwards",
@@ -4828,6 +5062,7 @@
         "post-r19-redesign-1": 1008,
         "rederivation-30-7": 1110,
         "redesign-adoption-6-8": 1214,
+        "the-d8-adoption-20-8": 965,
         "the-landing-20-8": 965
       },
       "name": "Harry Kyle",
@@ -4849,6 +5084,7 @@
         "post-r19-redesign-1": 1833,
         "rederivation-30-7": 1872,
         "redesign-adoption-6-8": 1700,
+        "the-d8-adoption-20-8": 1696,
         "the-landing-20-8": 1636
       },
       "name": "Harry McKay",
@@ -4870,6 +5106,7 @@
         "post-r19-redesign-1": 46,
         "rederivation-30-7": 55,
         "redesign-adoption-6-8": 29,
+        "the-d8-adoption-20-8": 63,
         "the-landing-20-8": 24
       },
       "name": "Harry Morrison",
@@ -4891,6 +5128,7 @@
         "post-r19-redesign-1": 919,
         "rederivation-30-7": 932,
         "redesign-adoption-6-8": 962,
+        "the-d8-adoption-20-8": 537,
         "the-landing-20-8": 537
       },
       "name": "Harry O'Farrell",
@@ -4912,6 +5150,7 @@
         "post-r19-redesign-1": 131,
         "rederivation-30-7": 123,
         "redesign-adoption-6-8": 69,
+        "the-d8-adoption-20-8": 123,
         "the-landing-20-8": 71
       },
       "name": "Harry Perryman",
@@ -4933,6 +5172,7 @@
         "post-r19-redesign-1": 594,
         "rederivation-30-7": 644,
         "redesign-adoption-6-8": 639,
+        "the-d8-adoption-20-8": 527,
         "the-landing-20-8": 442
       },
       "name": "Harry Rowston",
@@ -4954,6 +5194,7 @@
         "post-r19-redesign-1": 56,
         "rederivation-30-7": 56,
         "redesign-adoption-6-8": 50,
+        "the-d8-adoption-20-8": 33,
         "the-landing-20-8": 15
       },
       "name": "Harry Schoenberg",
@@ -4975,6 +5216,7 @@
         "post-r19-redesign-1": 69,
         "rederivation-30-7": 75,
         "redesign-adoption-6-8": 49,
+        "the-d8-adoption-20-8": 150,
         "the-landing-20-8": 113
       },
       "name": "Harry Sharp",
@@ -4996,6 +5238,7 @@
         "post-r19-redesign-1": 9631,
         "rederivation-30-7": 10079,
         "redesign-adoption-6-8": 12081,
+        "the-d8-adoption-20-8": 10453,
         "the-landing-20-8": 10433
       },
       "name": "Harry Sheezel",
@@ -5017,6 +5260,7 @@
         "post-r19-redesign-1": 132,
         "rederivation-30-7": 142,
         "redesign-adoption-6-8": 87,
+        "the-d8-adoption-20-8": 35,
         "the-landing-20-8": 19
       },
       "name": "Harvey Gallagher",
@@ -5038,6 +5282,7 @@
         "post-r19-redesign-1": 61,
         "rederivation-30-7": 67,
         "redesign-adoption-6-8": 40,
+        "the-d8-adoption-20-8": 73,
         "the-landing-20-8": 42
       },
       "name": "Harvey Harrison",
@@ -5059,6 +5304,7 @@
         "post-r19-redesign-1": 269,
         "rederivation-30-7": 257,
         "redesign-adoption-6-8": 213,
+        "the-d8-adoption-20-8": 186,
         "the-landing-20-8": 147
       },
       "name": "Harvey Johnston",
@@ -5080,6 +5326,7 @@
         "post-r19-redesign-1": 2473,
         "rederivation-30-7": 2470,
         "redesign-adoption-6-8": 2503,
+        "the-d8-adoption-20-8": 2470,
         "the-landing-20-8": 2470
       },
       "name": "Harvey Langford",
@@ -5101,6 +5348,7 @@
         "post-r19-redesign-1": 2227,
         "rederivation-30-7": 2217,
         "redesign-adoption-6-8": 2127,
+        "the-d8-adoption-20-8": 2022,
         "the-landing-20-8": 1958
       },
       "name": "Harvey Thomas",
@@ -5122,6 +5370,7 @@
         "post-r19-redesign-1": 389,
         "rederivation-30-7": 387,
         "redesign-adoption-6-8": 274,
+        "the-d8-adoption-20-8": 248,
         "the-landing-20-8": 197
       },
       "name": "Hayden McLean",
@@ -5143,6 +5392,7 @@
         "post-r19-redesign-1": 2076,
         "rederivation-30-7": 2073,
         "redesign-adoption-6-8": 1973,
+        "the-d8-adoption-20-8": 1761,
         "the-landing-20-8": 1649
       },
       "name": "Hayden Young",
@@ -5164,6 +5414,7 @@
         "post-r19-redesign-1": 551,
         "rederivation-30-7": 493,
         "redesign-adoption-6-8": 396,
+        "the-d8-adoption-20-8": 489,
         "the-landing-20-8": 408
       },
       "name": "Heath Chapman",
@@ -5185,6 +5436,7 @@
         "post-r19-redesign-1": 279,
         "rederivation-30-7": 279,
         "redesign-adoption-6-8": 253,
+        "the-d8-adoption-20-8": 62,
         "the-landing-20-8": 62
       },
       "name": "Henry Hustwaite",
@@ -5206,6 +5458,7 @@
         "post-r19-redesign-1": 140,
         "rederivation-30-7": 197,
         "redesign-adoption-6-8": 82,
+        "the-d8-adoption-20-8": 126,
         "the-landing-20-8": 85
       },
       "name": "Henry Smith",
@@ -5227,6 +5480,7 @@
         "post-r19-redesign-1": 249,
         "rederivation-30-7": 301,
         "redesign-adoption-6-8": 236,
+        "the-d8-adoption-20-8": 46,
         "the-landing-20-8": 46
       },
       "name": "Hudson O'Keeffe",
@@ -5248,6 +5502,7 @@
         "post-r19-redesign-1": 200,
         "rederivation-30-7": 198,
         "redesign-adoption-6-8": 161,
+        "the-d8-adoption-20-8": 111,
         "the-landing-20-8": 64
       },
       "name": "Hugh Bond",
@@ -5269,6 +5524,7 @@
         "post-r19-redesign-1": 917,
         "rederivation-30-7": 1019,
         "redesign-adoption-6-8": 917,
+        "the-d8-adoption-20-8": 670,
         "the-landing-20-8": 670
       },
       "name": "Hugh Boxshall",
@@ -5290,6 +5546,7 @@
         "post-r19-redesign-1": 311,
         "rederivation-30-7": 314,
         "redesign-adoption-6-8": 187,
+        "the-d8-adoption-20-8": 187,
         "the-landing-20-8": 187
       },
       "name": "Hugh Davies",
@@ -5311,6 +5568,7 @@
         "post-r19-redesign-1": 1590,
         "rederivation-30-7": 1791,
         "redesign-adoption-6-8": 1613,
+        "the-d8-adoption-20-8": 1585,
         "the-landing-20-8": 1482
       },
       "name": "Hugh McCluggage",
@@ -5332,6 +5590,7 @@
         "post-r19-redesign-1": 2980,
         "rederivation-30-7": 3038,
         "redesign-adoption-6-8": 3085,
+        "the-d8-adoption-20-8": 2510,
         "the-landing-20-8": 2462
       },
       "name": "Hugo Garcia",
@@ -5353,6 +5612,7 @@
         "post-r19-redesign-1": 392,
         "rederivation-30-7": 234,
         "redesign-adoption-6-8": 153,
+        "the-d8-adoption-20-8": 421,
         "the-landing-20-8": 352
       },
       "name": "Hugo Hall-Kahan",
@@ -5374,6 +5634,7 @@
         "post-r19-redesign-1": 342,
         "rederivation-30-7": 362,
         "redesign-adoption-6-8": 193,
+        "the-d8-adoption-20-8": 139,
         "the-landing-20-8": 139
       },
       "name": "Hugo Mikunda",
@@ -5395,6 +5656,7 @@
         "post-r19-redesign-1": 60,
         "rederivation-30-7": 45,
         "redesign-adoption-6-8": 35,
+        "the-d8-adoption-20-8": 88,
         "the-landing-20-8": 37
       },
       "name": "Hugo Ralphsmith",
@@ -5416,6 +5678,7 @@
         "post-r19-redesign-1": 56,
         "rederivation-30-7": 57,
         "redesign-adoption-6-8": 48,
+        "the-d8-adoption-20-8": 36,
         "the-landing-20-8": 21
       },
       "name": "Hunter Clark",
@@ -5437,6 +5700,7 @@
         "post-r19-redesign-1": 590,
         "rederivation-30-7": 584,
         "redesign-adoption-6-8": 553,
+        "the-d8-adoption-20-8": 357,
         "the-landing-20-8": 357
       },
       "name": "Hunter Holmes",
@@ -5458,6 +5722,7 @@
         "post-r19-redesign-1": 398,
         "rederivation-30-7": 492,
         "redesign-adoption-6-8": 355,
+        "the-d8-adoption-20-8": 364,
         "the-landing-20-8": 364
       },
       "name": "Hussien El Achkar",
@@ -5479,6 +5744,7 @@
         "post-r19-redesign-1": 312,
         "rederivation-30-7": 237,
         "redesign-adoption-6-8": 170,
+        "the-d8-adoption-20-8": 254,
         "the-landing-20-8": 254
       },
       "name": "Iliro Smit",
@@ -5500,6 +5766,7 @@
         "post-r19-redesign-1": 240,
         "rederivation-30-7": 287,
         "redesign-adoption-6-8": 67,
+        "the-d8-adoption-20-8": 49,
         "the-landing-20-8": 49
       },
       "name": "Indy Cotton",
@@ -5521,6 +5788,7 @@
         "post-r19-redesign-1": 61,
         "rederivation-30-7": 44,
         "redesign-adoption-6-8": 40,
+        "the-d8-adoption-20-8": 59,
         "the-landing-20-8": 30
       },
       "name": "Isaac Cumming",
@@ -5542,6 +5810,7 @@
         "post-r19-redesign-1": 3818,
         "rederivation-30-7": 3637,
         "redesign-adoption-6-8": 3644,
+        "the-d8-adoption-20-8": 3436,
         "the-landing-20-8": 3359
       },
       "name": "Isaac Heeney",
@@ -5563,6 +5832,7 @@
         "post-r19-redesign-1": 1161,
         "rederivation-30-7": 1462,
         "redesign-adoption-6-8": 1347,
+        "the-d8-adoption-20-8": 754,
         "the-landing-20-8": 754
       },
       "name": "Isaac Kako",
@@ -5584,6 +5854,7 @@
         "post-r19-redesign-1": 332,
         "rederivation-30-7": 317,
         "redesign-adoption-6-8": 207,
+        "the-d8-adoption-20-8": 183,
         "the-landing-20-8": 157
       },
       "name": "Isaac Keeler",
@@ -5605,6 +5876,7 @@
         "post-r19-redesign-1": 511,
         "rederivation-30-7": 601,
         "redesign-adoption-6-8": 457,
+        "the-d8-adoption-20-8": 603,
         "the-landing-20-8": 573
       },
       "name": "Isaac Quaynor",
@@ -5626,6 +5898,7 @@
         "post-r19-redesign-1": 86,
         "rederivation-30-7": 119,
         "redesign-adoption-6-8": 150,
+        "the-d8-adoption-20-8": 243,
         "the-landing-20-8": 191
       },
       "name": "Isaiah Dudley",
@@ -5647,6 +5920,7 @@
         "post-r19-redesign-1": 2967,
         "rederivation-30-7": 3063,
         "redesign-adoption-6-8": 3012,
+        "the-d8-adoption-20-8": 4405,
         "the-landing-20-8": 4342
       },
       "name": "Izak Rankine",
@@ -5668,6 +5942,7 @@
         "post-r19-redesign-1": 103,
         "rederivation-30-7": 116,
         "redesign-adoption-6-8": 97,
+        "the-d8-adoption-20-8": 79,
         "the-landing-20-8": 44
       },
       "name": "Jack Bowes",
@@ -5689,6 +5964,7 @@
         "post-r19-redesign-1": 732,
         "rederivation-30-7": 740,
         "redesign-adoption-6-8": 566,
+        "the-d8-adoption-20-8": 561,
         "the-landing-20-8": 504
       },
       "name": "Jack Buckley",
@@ -5710,6 +5986,7 @@
         "post-r19-redesign-1": 64,
         "rederivation-30-7": 93,
         "redesign-adoption-6-8": 80,
+        "the-d8-adoption-20-8": 81,
         "the-landing-20-8": 45
       },
       "name": "Jack Buller",
@@ -5731,6 +6008,7 @@
         "post-r19-redesign-1": 97,
         "rederivation-30-7": 100,
         "redesign-adoption-6-8": 84,
+        "the-d8-adoption-20-8": 94,
         "the-landing-20-8": 55
       },
       "name": "Jack Carroll",
@@ -5752,6 +6030,7 @@
         "post-r19-redesign-1": 766,
         "rederivation-30-7": 592,
         "redesign-adoption-6-8": 443,
+        "the-d8-adoption-20-8": 463,
         "the-landing-20-8": 462
       },
       "name": "Jack Crisp",
@@ -5773,6 +6052,7 @@
         "post-r19-redesign-1": 624,
         "rederivation-30-7": 630,
         "redesign-adoption-6-8": 525,
+        "the-d8-adoption-20-8": 460,
         "the-landing-20-8": 460
       },
       "name": "Jack Dalton",
@@ -5794,6 +6074,7 @@
         "post-r19-redesign-1": 197,
         "rederivation-30-7": 203,
         "redesign-adoption-6-8": 124,
+        "the-d8-adoption-20-8": 154,
         "the-landing-20-8": 154
       },
       "name": "Jack Darling",
@@ -5815,6 +6096,7 @@
         "post-r19-redesign-1": 2332,
         "rederivation-30-7": 2504,
         "redesign-adoption-6-8": 2419,
+        "the-d8-adoption-20-8": 2151,
         "the-landing-20-8": 2065
       },
       "name": "Jack Ginnivan",
@@ -5836,6 +6118,7 @@
         "post-r19-redesign-1": 390,
         "rederivation-30-7": 727,
         "redesign-adoption-6-8": 559,
+        "the-d8-adoption-20-8": 738,
         "the-landing-20-8": 604
       },
       "name": "Jack Graham",
@@ -5857,6 +6140,7 @@
         "post-r19-redesign-1": 980,
         "rederivation-30-7": 1187,
         "redesign-adoption-6-8": 982,
+        "the-d8-adoption-20-8": 718,
         "the-landing-20-8": 717
       },
       "name": "Jack Gunston",
@@ -5878,6 +6162,7 @@
         "post-r19-redesign-1": 4,
         "rederivation-30-7": 7,
         "redesign-adoption-6-8": 107,
+        "the-d8-adoption-20-8": 28,
         "the-landing-20-8": 26
       },
       "name": "Jack Henderson",
@@ -5899,6 +6184,7 @@
         "post-r19-redesign-1": 213,
         "rederivation-30-7": 310,
         "redesign-adoption-6-8": 203,
+        "the-d8-adoption-20-8": 333,
         "the-landing-20-8": 269
       },
       "name": "Jack Henry",
@@ -5920,6 +6206,7 @@
         "post-r19-redesign-1": 107,
         "rederivation-30-7": 135,
         "redesign-adoption-6-8": 76,
+        "the-d8-adoption-20-8": 76,
         "the-landing-20-8": 54
       },
       "name": "Jack Higgins",
@@ -5941,6 +6228,7 @@
         "post-r19-redesign-1": 40,
         "rederivation-30-7": 39,
         "redesign-adoption-6-8": 100,
+        "the-d8-adoption-20-8": 71,
         "the-landing-20-8": 44
       },
       "name": "Jack Hutchinson",
@@ -5962,6 +6250,7 @@
         "post-r19-redesign-1": 603,
         "rederivation-30-7": 623,
         "redesign-adoption-6-8": 542,
+        "the-d8-adoption-20-8": 458,
         "the-landing-20-8": 458
       },
       "name": "Jack Ison",
@@ -5983,6 +6272,7 @@
         "post-r19-redesign-1": 937,
         "rederivation-30-7": 635,
         "redesign-adoption-6-8": 476,
+        "the-d8-adoption-20-8": 517,
         "the-landing-20-8": 449
       },
       "name": "Jack Lukosius",
@@ -6004,6 +6294,7 @@
         "post-r19-redesign-1": 97,
         "rederivation-30-7": 104,
         "redesign-adoption-6-8": 107,
+        "the-d8-adoption-20-8": 12,
         "the-landing-20-8": 12
       },
       "name": "Jack Martin",
@@ -6025,6 +6316,7 @@
         "post-r19-redesign-1": 599,
         "rederivation-30-7": 724,
         "redesign-adoption-6-8": 673,
+        "the-d8-adoption-20-8": 288,
         "the-landing-20-8": 288
       },
       "name": "Jack Ough",
@@ -6046,6 +6338,7 @@
         "post-r19-redesign-1": 177,
         "rederivation-30-7": 173,
         "redesign-adoption-6-8": 106,
+        "the-d8-adoption-20-8": 209,
         "the-landing-20-8": 159
       },
       "name": "Jack Payne",
@@ -6067,6 +6360,7 @@
         "post-r19-redesign-1": 2215,
         "rederivation-30-7": 2602,
         "redesign-adoption-6-8": 2514,
+        "the-d8-adoption-20-8": 2559,
         "the-landing-20-8": 2479
       },
       "name": "Jack Ross",
@@ -6088,6 +6382,7 @@
         "post-r19-redesign-1": 160,
         "rederivation-30-7": 158,
         "redesign-adoption-6-8": 96,
+        "the-d8-adoption-20-8": 159,
         "the-landing-20-8": 104
       },
       "name": "Jack Scrimshaw",
@@ -6109,6 +6404,7 @@
         "post-r19-redesign-1": 845,
         "rederivation-30-7": 906,
         "redesign-adoption-6-8": 725,
+        "the-d8-adoption-20-8": 630,
         "the-landing-20-8": 580
       },
       "name": "Jack Silvagni",
@@ -6130,6 +6426,7 @@
         "post-r19-redesign-1": 3353,
         "rederivation-30-7": 3408,
         "redesign-adoption-6-8": 3376,
+        "the-d8-adoption-20-8": 3214,
         "the-landing-20-8": 3180
       },
       "name": "Jack Sinclair",
@@ -6151,6 +6448,7 @@
         "post-r19-redesign-1": 1663,
         "rederivation-30-7": 1689,
         "redesign-adoption-6-8": 1495,
+        "the-d8-adoption-20-8": 1136,
         "the-landing-20-8": 1134
       },
       "name": "Jack Steele",
@@ -6172,6 +6470,7 @@
         "post-r19-redesign-1": 372,
         "rederivation-30-7": 369,
         "redesign-adoption-6-8": 256,
+        "the-d8-adoption-20-8": 560,
         "the-landing-20-8": 559
       },
       "name": "Jack Viney",
@@ -6193,6 +6492,7 @@
         "post-r19-redesign-1": 0,
         "rederivation-30-7": 9,
         "redesign-adoption-6-8": 132,
+        "the-d8-adoption-20-8": 67,
         "the-landing-20-8": 53
       },
       "name": "Jack Watkins",
@@ -6214,6 +6514,7 @@
         "post-r19-redesign-1": 1320,
         "rederivation-30-7": 1325,
         "redesign-adoption-6-8": 1212,
+        "the-d8-adoption-20-8": 994,
         "the-landing-20-8": 994
       },
       "name": "Jack Whitlock",
@@ -6235,6 +6536,7 @@
         "post-r19-redesign-1": 525,
         "rederivation-30-7": 540,
         "redesign-adoption-6-8": 465,
+        "the-d8-adoption-20-8": 413,
         "the-landing-20-8": 315
       },
       "name": "Jack Williams",
@@ -6256,6 +6558,7 @@
         "post-r19-redesign-1": 76,
         "rederivation-30-7": 75,
         "redesign-adoption-6-8": 27,
+        "the-d8-adoption-20-8": 22,
         "the-landing-20-8": 12
       },
       "name": "Jackson Archer",
@@ -6277,6 +6580,7 @@
         "post-r19-redesign-1": 142,
         "rederivation-30-7": 143,
         "redesign-adoption-6-8": 104,
+        "the-d8-adoption-20-8": 112,
         "the-landing-20-8": 96
       },
       "name": "Jackson Macrae",
@@ -6298,6 +6602,7 @@
         "post-r19-redesign-1": 37,
         "rederivation-30-7": 40,
         "redesign-adoption-6-8": 29,
+        "the-d8-adoption-20-8": 22,
         "the-landing-20-8": 14
       },
       "name": "Jackson Mead",
@@ -6319,6 +6624,7 @@
         "post-r19-redesign-1": 2579,
         "rederivation-30-7": 2666,
         "redesign-adoption-6-8": 2733,
+        "the-d8-adoption-20-8": 2515,
         "the-landing-20-8": 2515
       },
       "name": "Jacob Farrow",
@@ -6340,6 +6646,7 @@
         "post-r19-redesign-1": 113,
         "rederivation-30-7": 130,
         "redesign-adoption-6-8": 102,
+        "the-d8-adoption-20-8": 119,
         "the-landing-20-8": 64
       },
       "name": "Jacob Hopper",
@@ -6361,6 +6668,7 @@
         "post-r19-redesign-1": 188,
         "rederivation-30-7": 211,
         "redesign-adoption-6-8": 160,
+        "the-d8-adoption-20-8": 93,
         "the-landing-20-8": 70
       },
       "name": "Jacob Konstanty",
@@ -6382,6 +6690,7 @@
         "post-r19-redesign-1": 466,
         "rederivation-30-7": 502,
         "redesign-adoption-6-8": 294,
+        "the-d8-adoption-20-8": 88,
         "the-landing-20-8": 88
       },
       "name": "Jacob Molier",
@@ -6403,6 +6712,7 @@
         "post-r19-redesign-1": 224,
         "rederivation-30-7": 293,
         "redesign-adoption-6-8": 48,
+        "the-d8-adoption-20-8": 52,
         "the-landing-20-8": 52
       },
       "name": "Jacob Moss",
@@ -6424,6 +6734,7 @@
         "post-r19-redesign-1": 151,
         "rederivation-30-7": 224,
         "redesign-adoption-6-8": 206,
+        "the-d8-adoption-20-8": 188,
         "the-landing-20-8": 188
       },
       "name": "Jacob Newton",
@@ -6445,6 +6756,7 @@
         "post-r19-redesign-1": 1997,
         "rederivation-30-7": 1951,
         "redesign-adoption-6-8": 1833,
+        "the-d8-adoption-20-8": 1806,
         "the-landing-20-8": 1719
       },
       "name": "Jacob Van Rooyen",
@@ -6466,6 +6778,7 @@
         "post-r19-redesign-1": 21,
         "rederivation-30-7": 25,
         "redesign-adoption-6-8": 14,
+        "the-d8-adoption-20-8": 5,
         "the-landing-20-8": 4
       },
       "name": "Jacob Wehr",
@@ -6487,6 +6800,7 @@
         "post-r19-redesign-1": 1212,
         "rederivation-30-7": 1232,
         "redesign-adoption-6-8": 1034,
+        "the-d8-adoption-20-8": 1104,
         "the-landing-20-8": 1010
       },
       "name": "Jacob Weitering",
@@ -6508,6 +6822,7 @@
         "post-r19-redesign-1": 49,
         "rederivation-30-7": 59,
         "redesign-adoption-6-8": 39,
+        "the-d8-adoption-20-8": 10,
         "the-landing-20-8": 6
       },
       "name": "Jade Gresham",
@@ -6529,6 +6844,7 @@
         "post-r19-redesign-1": 196,
         "rederivation-30-7": 196,
         "redesign-adoption-6-8": 165,
+        "the-d8-adoption-20-8": 12,
         "the-landing-20-8": 12
       },
       "name": "Jaeger O'Meara",
@@ -6550,6 +6866,7 @@
         "post-r19-redesign-1": 4208,
         "rederivation-30-7": 4573,
         "redesign-adoption-6-8": 4930,
+        "the-d8-adoption-20-8": 4344,
         "the-landing-20-8": 4348
       },
       "name": "Jagga Smith",
@@ -6571,6 +6888,7 @@
         "post-r19-redesign-1": 266,
         "rederivation-30-7": 245,
         "redesign-adoption-6-8": 194,
+        "the-d8-adoption-20-8": 263,
         "the-landing-20-8": 175
       },
       "name": "Jai Culley",
@@ -6592,6 +6910,7 @@
         "post-r19-redesign-1": 1268,
         "rederivation-30-7": 1343,
         "redesign-adoption-6-8": 1294,
+        "the-d8-adoption-20-8": 949,
         "the-landing-20-8": 949
       },
       "name": "Jai Murray",
@@ -6613,6 +6932,7 @@
         "post-r19-redesign-1": 4254,
         "rederivation-30-7": 4286,
         "redesign-adoption-6-8": 4494,
+        "the-d8-adoption-20-8": 4710,
         "the-landing-20-8": 4586
       },
       "name": "Jai Newcombe",
@@ -6634,6 +6954,7 @@
         "post-r19-redesign-1": 198,
         "rederivation-30-7": 272,
         "redesign-adoption-6-8": 81,
+        "the-d8-adoption-20-8": 25,
         "the-landing-20-8": 25
       },
       "name": "Jai Saxena",
@@ -6655,6 +6976,7 @@
         "post-r19-redesign-1": 902,
         "rederivation-30-7": 1107,
         "redesign-adoption-6-8": 957,
+        "the-d8-adoption-20-8": 959,
         "the-landing-20-8": 868
       },
       "name": "Jai Serong",
@@ -6676,6 +6998,7 @@
         "post-r19-redesign-1": 446,
         "rederivation-30-7": 255,
         "redesign-adoption-6-8": 66,
+        "the-d8-adoption-20-8": 45,
         "the-landing-20-8": 45
       },
       "name": "Jaime Uhr-Henry",
@@ -6697,6 +7020,7 @@
         "post-r19-redesign-1": 3938,
         "rederivation-30-7": 4048,
         "redesign-adoption-6-8": 4196,
+        "the-d8-adoption-20-8": 3907,
         "the-landing-20-8": 3808
       },
       "name": "Jake Bowey",
@@ -6718,6 +7042,7 @@
         "post-r19-redesign-1": 38,
         "rederivation-30-7": 38,
         "redesign-adoption-6-8": 22,
+        "the-d8-adoption-20-8": 13,
         "the-landing-20-8": 5
       },
       "name": "Jake Kolodjashnij",
@@ -6739,6 +7064,7 @@
         "post-r19-redesign-1": 689,
         "rederivation-30-7": 339,
         "redesign-adoption-6-8": 238,
+        "the-d8-adoption-20-8": 200,
         "the-landing-20-8": 147
       },
       "name": "Jake Lever",
@@ -6760,6 +7086,7 @@
         "post-r19-redesign-1": 73,
         "rederivation-30-7": 191,
         "redesign-adoption-6-8": 115,
+        "the-d8-adoption-20-8": 213,
         "the-landing-20-8": 211
       },
       "name": "Jake Lloyd",
@@ -6781,6 +7108,7 @@
         "post-r19-redesign-1": 48,
         "rederivation-30-7": 53,
         "redesign-adoption-6-8": 49,
+        "the-d8-adoption-20-8": 2,
         "the-landing-20-8": 2
       },
       "name": "Jake Melksham",
@@ -6802,6 +7130,7 @@
         "post-r19-redesign-1": 389,
         "rederivation-30-7": 396,
         "redesign-adoption-6-8": 280,
+        "the-d8-adoption-20-8": 278,
         "the-landing-20-8": 238
       },
       "name": "Jake Riccardi",
@@ -6823,6 +7152,7 @@
         "post-r19-redesign-1": 589,
         "rederivation-30-7": 647,
         "redesign-adoption-6-8": 544,
+        "the-d8-adoption-20-8": 267,
         "the-landing-20-8": 240
       },
       "name": "Jake Rogers",
@@ -6844,6 +7174,7 @@
         "post-r19-redesign-1": 2091,
         "rederivation-30-7": 2164,
         "redesign-adoption-6-8": 2052,
+        "the-d8-adoption-20-8": 2019,
         "the-landing-20-8": 1874
       },
       "name": "Jake Soligo",
@@ -6865,6 +7196,7 @@
         "post-r19-redesign-1": 136,
         "rederivation-30-7": 142,
         "redesign-adoption-6-8": 81,
+        "the-d8-adoption-20-8": 110,
         "the-landing-20-8": 110
       },
       "name": "Jake Stringer",
@@ -6886,6 +7218,7 @@
         "post-r19-redesign-1": 1635,
         "rederivation-30-7": 1421,
         "redesign-adoption-6-8": 1243,
+        "the-d8-adoption-20-8": 1214,
         "the-landing-20-8": 1157
       },
       "name": "Jake Waterman",
@@ -6907,6 +7240,7 @@
         "post-r19-redesign-1": 276,
         "rederivation-30-7": 282,
         "redesign-adoption-6-8": 239,
+        "the-d8-adoption-20-8": 149,
         "the-landing-20-8": 149
       },
       "name": "Jakob Ryan",
@@ -6928,6 +7262,7 @@
         "post-r19-redesign-1": 365,
         "rederivation-30-7": 353,
         "redesign-adoption-6-8": 296,
+        "the-d8-adoption-20-8": 169,
         "the-landing-20-8": 124
       },
       "name": "Jamarra Ugle-Hagan",
@@ -6949,6 +7284,7 @@
         "post-r19-redesign-1": 395,
         "rederivation-30-7": 391,
         "redesign-adoption-6-8": 239,
+        "the-d8-adoption-20-8": 220,
         "the-landing-20-8": 220
       },
       "name": "James Barrat",
@@ -6970,6 +7306,7 @@
         "post-r19-redesign-1": 29,
         "rederivation-30-7": 36,
         "redesign-adoption-6-8": 60,
+        "the-d8-adoption-20-8": 15,
         "the-landing-20-8": 15
       },
       "name": "James Blanck",
@@ -6991,6 +7328,7 @@
         "post-r19-redesign-1": 531,
         "rederivation-30-7": 564,
         "redesign-adoption-6-8": 438,
+        "the-d8-adoption-20-8": 363,
         "the-landing-20-8": 307
       },
       "name": "James Borlase",
@@ -7012,6 +7350,7 @@
         "post-r19-redesign-1": 172,
         "rederivation-30-7": 236,
         "redesign-adoption-6-8": 164,
+        "the-d8-adoption-20-8": 219,
         "the-landing-20-8": 168
       },
       "name": "James Jordon",
@@ -7033,6 +7372,7 @@
         "post-r19-redesign-1": 544,
         "rederivation-30-7": 546,
         "redesign-adoption-6-8": 494,
+        "the-d8-adoption-20-8": 178,
         "the-landing-20-8": 172
       },
       "name": "James Leake",
@@ -7054,6 +7394,7 @@
         "post-r19-redesign-1": 608,
         "rederivation-30-7": 625,
         "redesign-adoption-6-8": 542,
+        "the-d8-adoption-20-8": 573,
         "the-landing-20-8": 514
       },
       "name": "James O'Donnell",
@@ -7075,6 +7416,7 @@
         "post-r19-redesign-1": 1465,
         "rederivation-30-7": 1469,
         "redesign-adoption-6-8": 1319,
+        "the-d8-adoption-20-8": 1261,
         "the-landing-20-8": 1147
       },
       "name": "James Peatling",
@@ -7096,6 +7438,7 @@
         "post-r19-redesign-1": 828,
         "rederivation-30-7": 1420,
         "redesign-adoption-6-8": 1223,
+        "the-d8-adoption-20-8": 1252,
         "the-landing-20-8": 1129
       },
       "name": "James Rowbottom",
@@ -7117,6 +7460,7 @@
         "post-r19-redesign-1": 1779,
         "rederivation-30-7": 1910,
         "redesign-adoption-6-8": 1728,
+        "the-d8-adoption-20-8": 1358,
         "the-landing-20-8": 1320
       },
       "name": "James Sicily",
@@ -7138,6 +7482,7 @@
         "post-r19-redesign-1": 165,
         "rederivation-30-7": 167,
         "redesign-adoption-6-8": 119,
+        "the-d8-adoption-20-8": 163,
         "the-landing-20-8": 108
       },
       "name": "James Trezise",
@@ -7159,6 +7504,7 @@
         "post-r19-redesign-1": 92,
         "rederivation-30-7": 111,
         "redesign-adoption-6-8": 82,
+        "the-d8-adoption-20-8": 144,
         "the-landing-20-8": 69
       },
       "name": "James Tunstill",
@@ -7180,6 +7526,7 @@
         "post-r19-redesign-1": 559,
         "rederivation-30-7": 501,
         "redesign-adoption-6-8": 367,
+        "the-d8-adoption-20-8": 518,
         "the-landing-20-8": 388
       },
       "name": "James Worpel",
@@ -7201,6 +7548,7 @@
         "post-r19-redesign-1": 36,
         "rederivation-30-7": 39,
         "redesign-adoption-6-8": 28,
+        "the-d8-adoption-20-8": 10,
         "the-landing-20-8": 10
       },
       "name": "Jamie Cripps",
@@ -7222,6 +7570,7 @@
         "post-r19-redesign-1": 31,
         "rederivation-30-7": 33,
         "redesign-adoption-6-8": 19,
+        "the-d8-adoption-20-8": 21,
         "the-landing-20-8": 21
       },
       "name": "Jamie Elliott",
@@ -7243,6 +7592,7 @@
         "post-r19-redesign-1": 219,
         "rederivation-30-7": 218,
         "redesign-adoption-6-8": 68,
+        "the-d8-adoption-20-8": 17,
         "the-landing-20-8": 17
       },
       "name": "Jaren Carr",
@@ -7264,6 +7614,7 @@
         "post-r19-redesign-1": 877,
         "rederivation-30-7": 1134,
         "redesign-adoption-6-8": 945,
+        "the-d8-adoption-20-8": 817,
         "the-landing-20-8": 808
       },
       "name": "Jarman Impey",
@@ -7285,6 +7636,7 @@
         "post-r19-redesign-1": 319,
         "rederivation-30-7": 332,
         "redesign-adoption-6-8": 225,
+        "the-d8-adoption-20-8": 275,
         "the-landing-20-8": 187
       },
       "name": "Jarrod Berry",
@@ -7306,6 +7658,7 @@
         "post-r19-redesign-1": 219,
         "rederivation-30-7": 224,
         "redesign-adoption-6-8": 142,
+        "the-d8-adoption-20-8": 274,
         "the-landing-20-8": 241
       },
       "name": "Jarrod Witts",
@@ -7327,6 +7680,7 @@
         "post-r19-redesign-1": 2302,
         "rederivation-30-7": 2281,
         "redesign-adoption-6-8": 2204,
+        "the-d8-adoption-20-8": 2220,
         "the-landing-20-8": 2163
       },
       "name": "Jase Burgoyne",
@@ -7348,6 +7702,7 @@
         "post-r19-redesign-1": 4933,
         "rederivation-30-7": 5554,
         "redesign-adoption-6-8": 6059,
+        "the-d8-adoption-20-8": 5629,
         "the-landing-20-8": 5600
       },
       "name": "Jason Horne-Francis",
@@ -7369,6 +7724,7 @@
         "post-r19-redesign-1": 2276,
         "rederivation-30-7": 2683,
         "redesign-adoption-6-8": 2641,
+        "the-d8-adoption-20-8": 2501,
         "the-landing-20-8": 2456
       },
       "name": "Jaspa Fletcher",
@@ -7390,6 +7746,7 @@
         "post-r19-redesign-1": 315,
         "rederivation-30-7": 395,
         "redesign-adoption-6-8": 442,
+        "the-d8-adoption-20-8": 217,
         "the-landing-20-8": 217
       },
       "name": "Jasper Alger",
@@ -7411,6 +7768,7 @@
         "post-r19-redesign-1": 337,
         "rederivation-30-7": 358,
         "redesign-adoption-6-8": 281,
+        "the-d8-adoption-20-8": 420,
         "the-landing-20-8": 420
       },
       "name": "Jaxon Artemis",
@@ -7432,6 +7790,7 @@
         "post-r19-redesign-1": 379,
         "rederivation-30-7": 390,
         "redesign-adoption-6-8": 299,
+        "the-d8-adoption-20-8": 352,
         "the-landing-20-8": 255
       },
       "name": "Jaxon Prior",
@@ -7453,6 +7812,7 @@
         "post-r19-redesign-1": 286,
         "rederivation-30-7": 373,
         "redesign-adoption-6-8": 407,
+        "the-d8-adoption-20-8": 176,
         "the-landing-20-8": 176
       },
       "name": "Jay Polkinghorne",
@@ -7474,6 +7834,7 @@
         "post-r19-redesign-1": 305,
         "rederivation-30-7": 298,
         "redesign-adoption-6-8": 194,
+        "the-d8-adoption-20-8": 241,
         "the-landing-20-8": 195
       },
       "name": "Jayden Laverde",
@@ -7495,6 +7856,7 @@
         "post-r19-redesign-1": 516,
         "rederivation-30-7": 510,
         "redesign-adoption-6-8": 466,
+        "the-d8-adoption-20-8": 293,
         "the-landing-20-8": 293
       },
       "name": "Jayden Nguyen",
@@ -7516,6 +7878,7 @@
         "post-r19-redesign-1": 1280,
         "rederivation-30-7": 1306,
         "redesign-adoption-6-8": 1113,
+        "the-d8-adoption-20-8": 978,
         "the-landing-20-8": 917
       },
       "name": "Jayden Short",
@@ -7537,6 +7900,7 @@
         "post-r19-redesign-1": 269,
         "rederivation-30-7": 271,
         "redesign-adoption-6-8": 157,
+        "the-d8-adoption-20-8": 190,
         "the-landing-20-8": 190
       },
       "name": "Jed Adams",
@@ -7558,6 +7922,7 @@
         "post-r19-redesign-1": 29,
         "rederivation-30-7": 34,
         "redesign-adoption-6-8": 10,
+        "the-d8-adoption-20-8": 1,
         "the-landing-20-8": 1
       },
       "name": "Jed Bews",
@@ -7579,6 +7944,7 @@
         "post-r19-redesign-1": 1142,
         "rederivation-30-7": 1174,
         "redesign-adoption-6-8": 1140,
+        "the-d8-adoption-20-8": 987,
         "the-landing-20-8": 942
       },
       "name": "Jed Walter",
@@ -7600,6 +7966,7 @@
         "post-r19-redesign-1": 949,
         "rederivation-30-7": 1048,
         "redesign-adoption-6-8": 907,
+        "the-d8-adoption-20-8": 858,
         "the-landing-20-8": 801
       },
       "name": "Jedd Busslinger",
@@ -7621,6 +7988,7 @@
         "post-r19-redesign-1": 1000,
         "rederivation-30-7": 1021,
         "redesign-adoption-6-8": 826,
+        "the-d8-adoption-20-8": 796,
         "the-landing-20-8": 754
       },
       "name": "Jeremy Cameron",
@@ -7642,6 +8010,7 @@
         "post-r19-redesign-1": 363,
         "rederivation-30-7": 367,
         "redesign-adoption-6-8": 251,
+        "the-d8-adoption-20-8": 218,
         "the-landing-20-8": 219
       },
       "name": "Jeremy Howe",
@@ -7663,6 +8032,7 @@
         "post-r19-redesign-1": 81,
         "rederivation-30-7": 77,
         "redesign-adoption-6-8": 62,
+        "the-d8-adoption-20-8": 83,
         "the-landing-20-8": 41
       },
       "name": "Jeremy Sharp",
@@ -7684,6 +8054,7 @@
         "post-r19-redesign-1": 419,
         "rederivation-30-7": 450,
         "redesign-adoption-6-8": 336,
+        "the-d8-adoption-20-8": 347,
         "the-landing-20-8": 349
       },
       "name": "Jesse Dattoli",
@@ -7705,6 +8076,7 @@
         "post-r19-redesign-1": 322,
         "rederivation-30-7": 329,
         "redesign-adoption-6-8": 219,
+        "the-d8-adoption-20-8": 270,
         "the-landing-20-8": 216
       },
       "name": "Jesse Hogan",
@@ -7726,6 +8098,7 @@
         "post-r19-redesign-1": 237,
         "rederivation-30-7": 303,
         "redesign-adoption-6-8": 81,
+        "the-d8-adoption-20-8": 51,
         "the-landing-20-8": 51
       },
       "name": "Jesse Mellor",
@@ -7747,6 +8120,7 @@
         "post-r19-redesign-1": 115,
         "rederivation-30-7": 110,
         "redesign-adoption-6-8": 89,
+        "the-d8-adoption-20-8": 95,
         "the-landing-20-8": 59
       },
       "name": "Jesse Motlop",
@@ -7768,6 +8142,7 @@
         "post-r19-redesign-1": 471,
         "rederivation-30-7": 494,
         "redesign-adoption-6-8": 293,
+        "the-d8-adoption-20-8": 226,
         "the-landing-20-8": 226
       },
       "name": "Jevan Phillipou",
@@ -7789,6 +8164,7 @@
         "post-r19-redesign-1": 682,
         "rederivation-30-7": 925,
         "redesign-adoption-6-8": 781,
+        "the-d8-adoption-20-8": 769,
         "the-landing-20-8": 681
       },
       "name": "Jhye Clark",
@@ -7810,6 +8186,7 @@
         "post-r19-redesign-1": 1840,
         "rederivation-30-7": 1853,
         "redesign-adoption-6-8": 1746,
+        "the-d8-adoption-20-8": 1438,
         "the-landing-20-8": 1438
       },
       "name": "Jobe Shanahan",
@@ -7831,6 +8208,7 @@
         "post-r19-redesign-1": 1019,
         "rederivation-30-7": 1397,
         "redesign-adoption-6-8": 1093,
+        "the-d8-adoption-20-8": 1028,
         "the-landing-20-8": 1028
       },
       "name": "Joe Berry",
@@ -7852,6 +8230,7 @@
         "post-r19-redesign-1": 446,
         "rederivation-30-7": 255,
         "redesign-adoption-6-8": 181,
+        "the-d8-adoption-20-8": 211,
         "the-landing-20-8": 211
       },
       "name": "Joe Pike",
@@ -7873,6 +8252,7 @@
         "post-r19-redesign-1": 1097,
         "rederivation-30-7": 1120,
         "redesign-adoption-6-8": 931,
+        "the-d8-adoption-20-8": 833,
         "the-landing-20-8": 759
       },
       "name": "Joe Richards",
@@ -7894,6 +8274,7 @@
         "post-r19-redesign-1": 48,
         "rederivation-30-7": 57,
         "redesign-adoption-6-8": 32,
+        "the-d8-adoption-20-8": 118,
         "the-landing-20-8": 50
       },
       "name": "Joel Amartey",
@@ -7915,6 +8296,7 @@
         "post-r19-redesign-1": 336,
         "rederivation-30-7": 333,
         "redesign-adoption-6-8": 172,
+        "the-d8-adoption-20-8": 139,
         "the-landing-20-8": 139
       },
       "name": "Joel Cochran",
@@ -7936,6 +8318,7 @@
         "post-r19-redesign-1": 96,
         "rederivation-30-7": 80,
         "redesign-adoption-6-8": 48,
+        "the-d8-adoption-20-8": 310,
         "the-landing-20-8": 257
       },
       "name": "Joel Fitzgerald",
@@ -7957,6 +8340,7 @@
         "post-r19-redesign-1": 2520,
         "rederivation-30-7": 2891,
         "redesign-adoption-6-8": 2896,
+        "the-d8-adoption-20-8": 2580,
         "the-landing-20-8": 2512
       },
       "name": "Joel Freijah",
@@ -7978,6 +8362,7 @@
         "post-r19-redesign-1": 38,
         "rederivation-30-7": 33,
         "redesign-adoption-6-8": 18,
+        "the-d8-adoption-20-8": 8,
         "the-landing-20-8": 6
       },
       "name": "Joel Hamling",
@@ -7999,6 +8384,7 @@
         "post-r19-redesign-1": 2012,
         "rederivation-30-7": 2029,
         "redesign-adoption-6-8": 1924,
+        "the-d8-adoption-20-8": 1454,
         "the-landing-20-8": 1354
       },
       "name": "Joel Jeffrey",
@@ -8020,6 +8406,7 @@
         "post-r19-redesign-1": 2450,
         "rederivation-30-7": 2201,
         "redesign-adoption-6-8": 2043,
+        "the-d8-adoption-20-8": 2173,
         "the-landing-20-8": 2116
       },
       "name": "John Noble",
@@ -8041,6 +8428,7 @@
         "post-r19-redesign-1": 1195,
         "rederivation-30-7": 1255,
         "redesign-adoption-6-8": 947,
+        "the-d8-adoption-20-8": 580,
         "the-landing-20-8": 580
       },
       "name": "Jonty Faull",
@@ -8062,6 +8450,7 @@
         "post-r19-redesign-1": 7,
         "rederivation-30-7": 7,
         "redesign-adoption-6-8": 37,
+        "the-d8-adoption-20-8": 22,
         "the-landing-20-8": 15
       },
       "name": "Jordan Boyd",
@@ -8083,6 +8472,7 @@
         "post-r19-redesign-1": 3843,
         "rederivation-30-7": 3777,
         "redesign-adoption-6-8": 3865,
+        "the-d8-adoption-20-8": 3082,
         "the-landing-20-8": 3014
       },
       "name": "Jordan Clark",
@@ -8104,6 +8494,7 @@
         "post-r19-redesign-1": 1002,
         "rederivation-30-7": 1051,
         "redesign-adoption-6-8": 966,
+        "the-d8-adoption-20-8": 511,
         "the-landing-20-8": 473
       },
       "name": "Jordan Croft",
@@ -8125,6 +8516,7 @@
         "post-r19-redesign-1": 3623,
         "rederivation-30-7": 3502,
         "redesign-adoption-6-8": 3492,
+        "the-d8-adoption-20-8": 3189,
         "the-landing-20-8": 3176
       },
       "name": "Jordan Dawson",
@@ -8146,6 +8538,7 @@
         "post-r19-redesign-1": 1194,
         "rederivation-30-7": 1722,
         "redesign-adoption-6-8": 1527,
+        "the-d8-adoption-20-8": 1377,
         "the-landing-20-8": 1365
       },
       "name": "Jordan De Goey",
@@ -8167,6 +8560,7 @@
         "post-r19-redesign-1": 887,
         "rederivation-30-7": 904,
         "redesign-adoption-6-8": 716,
+        "the-d8-adoption-20-8": 735,
         "the-landing-20-8": 651
       },
       "name": "Jordan Ridley",
@@ -8188,6 +8582,7 @@
         "post-r19-redesign-1": 12,
         "rederivation-30-7": 17,
         "redesign-adoption-6-8": 15,
+        "the-d8-adoption-20-8": 35,
         "the-landing-20-8": 12
       },
       "name": "Jordon Butts",
@@ -8209,6 +8604,7 @@
         "post-r19-redesign-1": 2721,
         "rederivation-30-7": 2576,
         "redesign-adoption-6-8": 2471,
+        "the-d8-adoption-20-8": 2093,
         "the-landing-20-8": 2017
       },
       "name": "Jordon Sweet",
@@ -8230,6 +8626,7 @@
         "post-r19-redesign-1": 317,
         "rederivation-30-7": 421,
         "redesign-adoption-6-8": 278,
+        "the-d8-adoption-20-8": 200,
         "the-landing-20-8": 200
       },
       "name": "Josaia Delana",
@@ -8251,6 +8648,7 @@
         "post-r19-redesign-1": 841,
         "rederivation-30-7": 840,
         "redesign-adoption-6-8": 711,
+        "the-d8-adoption-20-8": 567,
         "the-landing-20-8": 498
       },
       "name": "Joseph Fonti",
@@ -8272,6 +8670,7 @@
         "post-r19-redesign-1": 2263,
         "rederivation-30-7": 2273,
         "redesign-adoption-6-8": 2093,
+        "the-d8-adoption-20-8": 1957,
         "the-landing-20-8": 1879
       },
       "name": "Josh Battle",
@@ -8293,6 +8692,7 @@
         "post-r19-redesign-1": 2139,
         "rederivation-30-7": 2268,
         "redesign-adoption-6-8": 2130,
+        "the-d8-adoption-20-8": 2000,
         "the-landing-20-8": 1941
       },
       "name": "Josh Daicos",
@@ -8314,6 +8714,7 @@
         "post-r19-redesign-1": 366,
         "rederivation-30-7": 501,
         "redesign-adoption-6-8": 497,
+        "the-d8-adoption-20-8": 280,
         "the-landing-20-8": 280
       },
       "name": "Josh Dolan",
@@ -8335,6 +8736,7 @@
         "post-r19-redesign-1": 510,
         "rederivation-30-7": 537,
         "redesign-adoption-6-8": 481,
+        "the-d8-adoption-20-8": 320,
         "the-landing-20-8": 264
       },
       "name": "Josh Draper",
@@ -8356,6 +8758,7 @@
         "post-r19-redesign-1": 1400,
         "rederivation-30-7": 1431,
         "redesign-adoption-6-8": 1234,
+        "the-d8-adoption-20-8": 1135,
         "the-landing-20-8": 1077
       },
       "name": "Josh Dunkley",
@@ -8377,6 +8780,7 @@
         "post-r19-redesign-1": 213,
         "rederivation-30-7": 196,
         "redesign-adoption-6-8": 145,
+        "the-d8-adoption-20-8": 244,
         "the-landing-20-8": 176
       },
       "name": "Josh Gibcus",
@@ -8398,6 +8802,7 @@
         "post-r19-redesign-1": 94,
         "rederivation-30-7": 96,
         "redesign-adoption-6-8": 93,
+        "the-d8-adoption-20-8": 75,
         "the-landing-20-8": 75
       },
       "name": "Josh Goater",
@@ -8419,6 +8824,7 @@
         "post-r19-redesign-1": 440,
         "rederivation-30-7": 549,
         "redesign-adoption-6-8": 476,
+        "the-d8-adoption-20-8": 400,
         "the-landing-20-8": 364
       },
       "name": "Josh Lai",
@@ -8440,6 +8846,7 @@
         "post-r19-redesign-1": 2429,
         "rederivation-30-7": 2463,
         "redesign-adoption-6-8": 2452,
+        "the-d8-adoption-20-8": 2050,
         "the-landing-20-8": 2050
       },
       "name": "Josh Lindsay",
@@ -8461,6 +8868,7 @@
         "post-r19-redesign-1": 2213,
         "rederivation-30-7": 2150,
         "redesign-adoption-6-8": 2054,
+        "the-d8-adoption-20-8": 1930,
         "the-landing-20-8": 1874
       },
       "name": "Josh Rachele",
@@ -8482,6 +8890,7 @@
         "post-r19-redesign-1": 193,
         "rederivation-30-7": 186,
         "redesign-adoption-6-8": 146,
+        "the-d8-adoption-20-8": 217,
         "the-landing-20-8": 162
       },
       "name": "Josh Sinn",
@@ -8503,6 +8912,7 @@
         "post-r19-redesign-1": 1125,
         "rederivation-30-7": 1276,
         "redesign-adoption-6-8": 998,
+        "the-d8-adoption-20-8": 772,
         "the-landing-20-8": 772
       },
       "name": "Josh Smillie",
@@ -8524,6 +8934,7 @@
         "post-r19-redesign-1": 6403,
         "rederivation-30-7": 6157,
         "redesign-adoption-6-8": 6774,
+        "the-d8-adoption-20-8": 6176,
         "the-landing-20-8": 6133
       },
       "name": "Josh Treacy",
@@ -8545,6 +8956,7 @@
         "post-r19-redesign-1": 2710,
         "rederivation-30-7": 2749,
         "redesign-adoption-6-8": 2782,
+        "the-d8-adoption-20-8": 2677,
         "the-landing-20-8": 2566
       },
       "name": "Josh Ward",
@@ -8566,6 +8978,7 @@
         "post-r19-redesign-1": 3850,
         "rederivation-30-7": 3783,
         "redesign-adoption-6-8": 3886,
+        "the-d8-adoption-20-8": 3240,
         "the-landing-20-8": 3138
       },
       "name": "Josh Worrell",
@@ -8587,6 +9000,7 @@
         "post-r19-redesign-1": 549,
         "rederivation-30-7": 549,
         "redesign-adoption-6-8": 405,
+        "the-d8-adoption-20-8": 779,
         "the-landing-20-8": 769
       },
       "name": "Joshua Kelly",
@@ -8608,6 +9022,7 @@
         "post-r19-redesign-1": 1701,
         "rederivation-30-7": 1689,
         "redesign-adoption-6-8": 1563,
+        "the-d8-adoption-20-8": 1501,
         "the-landing-20-8": 1437
       },
       "name": "Joshua Weddle",
@@ -8629,6 +9044,7 @@
         "post-r19-redesign-1": 383,
         "rederivation-30-7": 386,
         "redesign-adoption-6-8": 306,
+        "the-d8-adoption-20-8": 368,
         "the-landing-20-8": 262
       },
       "name": "Judd McVee",
@@ -8650,6 +9066,7 @@
         "post-r19-redesign-1": 90,
         "rederivation-30-7": 98,
         "redesign-adoption-6-8": 64,
+        "the-d8-adoption-20-8": 75,
         "the-landing-20-8": 55
       },
       "name": "Judson Clarke",
@@ -8671,6 +9088,7 @@
         "post-r19-redesign-1": 1938,
         "rederivation-30-7": 2284,
         "redesign-adoption-6-8": 2166,
+        "the-d8-adoption-20-8": 2042,
         "the-landing-20-8": 1950
       },
       "name": "Justin McInerney",
@@ -8692,6 +9110,7 @@
         "post-r19-redesign-1": 9,
         "rederivation-30-7": 24,
         "redesign-adoption-6-8": 11,
+        "the-d8-adoption-20-8": 30,
         "the-landing-20-8": 12
       },
       "name": "Jy Farrar",
@@ -8713,6 +9132,7 @@
         "post-r19-redesign-1": 879,
         "rederivation-30-7": 1389,
         "redesign-adoption-6-8": 1212,
+        "the-d8-adoption-20-8": 1232,
         "the-landing-20-8": 1129
       },
       "name": "Jy Simpkin",
@@ -8734,6 +9154,7 @@
         "post-r19-redesign-1": 1373,
         "rederivation-30-7": 1753,
         "redesign-adoption-6-8": 1601,
+        "the-d8-adoption-20-8": 1468,
         "the-landing-20-8": 1399
       },
       "name": "Jye Amiss",
@@ -8755,6 +9176,7 @@
         "post-r19-redesign-1": 1145,
         "rederivation-30-7": 1166,
         "redesign-adoption-6-8": 994,
+        "the-d8-adoption-20-8": 1086,
         "the-landing-20-8": 960
       },
       "name": "Jye Caldwell",
@@ -8776,6 +9198,7 @@
         "post-r19-redesign-1": 1074,
         "rederivation-30-7": 1134,
         "redesign-adoption-6-8": 960,
+        "the-d8-adoption-20-8": 863,
         "the-landing-20-8": 792
       },
       "name": "Kade Chandler",
@@ -8797,6 +9220,7 @@
         "post-r19-redesign-1": 750,
         "rederivation-30-7": 805,
         "redesign-adoption-6-8": 665,
+        "the-d8-adoption-20-8": 908,
         "the-landing-20-8": 823
       },
       "name": "Kai Lohmann",
@@ -8818,6 +9242,7 @@
         "post-r19-redesign-1": 238,
         "rederivation-30-7": 446,
         "redesign-adoption-6-8": 89,
+        "the-d8-adoption-20-8": 55,
         "the-landing-20-8": 55
       },
       "name": "Kalani White",
@@ -8839,6 +9264,7 @@
         "post-r19-redesign-1": 123,
         "rederivation-30-7": 122,
         "redesign-adoption-6-8": 67,
+        "the-d8-adoption-20-8": 60,
         "the-landing-20-8": 50
       },
       "name": "Kaleb Smith",
@@ -8860,6 +9286,7 @@
         "post-r19-redesign-1": 1468,
         "rederivation-30-7": 1492,
         "redesign-adoption-6-8": 1327,
+        "the-d8-adoption-20-8": 1262,
         "the-landing-20-8": 1183
       },
       "name": "Kane Farrell",
@@ -8881,6 +9308,7 @@
         "post-r19-redesign-1": 1360,
         "rederivation-30-7": 1406,
         "redesign-adoption-6-8": 1334,
+        "the-d8-adoption-20-8": 1096,
         "the-landing-20-8": 1036
       },
       "name": "Kane McAuliffe",
@@ -8902,6 +9330,7 @@
         "post-r19-redesign-1": 432,
         "rederivation-30-7": 561,
         "redesign-adoption-6-8": 417,
+        "the-d8-adoption-20-8": 367,
         "the-landing-20-8": 324
       },
       "name": "Karl Amon",
@@ -8923,6 +9352,7 @@
         "post-r19-redesign-1": 1069,
         "rederivation-30-7": 1103,
         "redesign-adoption-6-8": 932,
+        "the-d8-adoption-20-8": 1153,
         "the-landing-20-8": 1056
       },
       "name": "Karl Worner",
@@ -8944,6 +9374,7 @@
         "post-r19-redesign-1": 261,
         "rederivation-30-7": 345,
         "redesign-adoption-6-8": 187,
+        "the-d8-adoption-20-8": 184,
         "the-landing-20-8": 184
       },
       "name": "Kayle Gerreyn",
@@ -8965,6 +9396,7 @@
         "post-r19-redesign-1": 898,
         "rederivation-30-7": 920,
         "redesign-adoption-6-8": 764,
+        "the-d8-adoption-20-8": 777,
         "the-landing-20-8": 658
       },
       "name": "Keidean Coleman",
@@ -8986,6 +9418,7 @@
         "post-r19-redesign-1": 254,
         "rederivation-30-7": 284,
         "redesign-adoption-6-8": 79,
+        "the-d8-adoption-20-8": 111,
         "the-landing-20-8": 111
       },
       "name": "Keighton Matofai-Forbes",
@@ -9007,6 +9440,7 @@
         "post-r19-redesign-1": 2485,
         "rederivation-30-7": 2544,
         "redesign-adoption-6-8": 2476,
+        "the-d8-adoption-20-8": 1880,
         "the-landing-20-8": 1802
       },
       "name": "Kieren Briggs",
@@ -9028,6 +9462,7 @@
         "post-r19-redesign-1": 240,
         "rederivation-30-7": 286,
         "redesign-adoption-6-8": 87,
+        "the-d8-adoption-20-8": 40,
         "the-landing-20-8": 40
       },
       "name": "Kobe McDonald",
@@ -9049,6 +9484,7 @@
         "post-r19-redesign-1": 434,
         "rederivation-30-7": 433,
         "redesign-adoption-6-8": 345,
+        "the-d8-adoption-20-8": 232,
         "the-landing-20-8": 232
       },
       "name": "Koby Coulson",
@@ -9070,6 +9506,7 @@
         "post-r19-redesign-1": 437,
         "rederivation-30-7": 458,
         "redesign-adoption-6-8": 274,
+        "the-d8-adoption-20-8": 219,
         "the-landing-20-8": 219
       },
       "name": "Koby Evans",
@@ -9091,6 +9528,7 @@
         "post-r19-redesign-1": 1513,
         "rederivation-30-7": 1671,
         "redesign-adoption-6-8": 1581,
+        "the-d8-adoption-20-8": 1772,
         "the-landing-20-8": 1743
       },
       "name": "Koltyn Tholstrup",
@@ -9112,6 +9550,7 @@
         "post-r19-redesign-1": 180,
         "rederivation-30-7": 181,
         "redesign-adoption-6-8": 160,
+        "the-d8-adoption-20-8": 393,
         "the-landing-20-8": 329
       },
       "name": "Kye Annand",
@@ -9133,6 +9572,7 @@
         "post-r19-redesign-1": 401,
         "rederivation-30-7": 401,
         "redesign-adoption-6-8": 273,
+        "the-d8-adoption-20-8": 145,
         "the-landing-20-8": 145
       },
       "name": "Kye Fincher",
@@ -9154,6 +9594,7 @@
         "post-r19-redesign-1": 296,
         "rederivation-30-7": 727,
         "redesign-adoption-6-8": 560,
+        "the-d8-adoption-20-8": 555,
         "the-landing-20-8": 498
       },
       "name": "Kyle Langford",
@@ -9175,6 +9616,7 @@
         "post-r19-redesign-1": 4037,
         "rederivation-30-7": 3943,
         "redesign-adoption-6-8": 4053,
+        "the-d8-adoption-20-8": 4017,
         "the-landing-20-8": 3914
       },
       "name": "Kysaiah Pickett",
@@ -9196,6 +9638,7 @@
         "post-r19-redesign-1": 876,
         "rederivation-30-7": 891,
         "redesign-adoption-6-8": 813,
+        "the-d8-adoption-20-8": 608,
         "the-landing-20-8": 608
       },
       "name": "Lachie Jaques",
@@ -9217,6 +9660,7 @@
         "post-r19-redesign-1": 2413,
         "rederivation-30-7": 2353,
         "redesign-adoption-6-8": 2188,
+        "the-d8-adoption-20-8": 2314,
         "the-landing-20-8": 2310
       },
       "name": "Lachie Neale",
@@ -9238,6 +9682,7 @@
         "post-r19-redesign-1": 1,
         "rederivation-30-7": 1,
         "redesign-adoption-6-8": 70,
+        "the-d8-adoption-20-8": 18,
         "the-landing-20-8": 17
       },
       "name": "Lachie Sullivan",
@@ -9259,6 +9704,7 @@
         "post-r19-redesign-1": 2126,
         "rederivation-30-7": 2232,
         "redesign-adoption-6-8": 2060,
+        "the-d8-adoption-20-8": 2177,
         "the-landing-20-8": 2143
       },
       "name": "Lachie Whitfield",
@@ -9280,6 +9726,7 @@
         "post-r19-redesign-1": 5587,
         "rederivation-30-7": 5682,
         "redesign-adoption-6-8": 6239,
+        "the-d8-adoption-20-8": 5456,
         "the-landing-20-8": 5303
       },
       "name": "Lachlan Ash",
@@ -9301,6 +9748,7 @@
         "post-r19-redesign-1": 16,
         "rederivation-30-7": 20,
         "redesign-adoption-6-8": 128,
+        "the-d8-adoption-20-8": 57,
         "the-landing-20-8": 38
       },
       "name": "Lachlan Blakiston",
@@ -9322,6 +9770,7 @@
         "post-r19-redesign-1": 63,
         "rederivation-30-7": 97,
         "redesign-adoption-6-8": 51,
+        "the-d8-adoption-20-8": 131,
         "the-landing-20-8": 88
       },
       "name": "Lachlan Bramble",
@@ -9343,6 +9792,7 @@
         "post-r19-redesign-1": 582,
         "rederivation-30-7": 577,
         "redesign-adoption-6-8": 580,
+        "the-d8-adoption-20-8": 479,
         "the-landing-20-8": 479
       },
       "name": "Lachlan Carmichael",
@@ -9364,6 +9814,7 @@
         "post-r19-redesign-1": 668,
         "rederivation-30-7": 820,
         "redesign-adoption-6-8": 701,
+        "the-d8-adoption-20-8": 698,
         "the-landing-20-8": 620
       },
       "name": "Lachlan Cowan",
@@ -9385,6 +9836,7 @@
         "post-r19-redesign-1": 76,
         "rederivation-30-7": 73,
         "redesign-adoption-6-8": 38,
+        "the-d8-adoption-20-8": 79,
         "the-landing-20-8": 48
       },
       "name": "Lachlan Fogarty",
@@ -9406,6 +9858,7 @@
         "post-r19-redesign-1": 311,
         "rederivation-30-7": 411,
         "redesign-adoption-6-8": 383,
+        "the-d8-adoption-20-8": 211,
         "the-landing-20-8": 211
       },
       "name": "Lachlan Gulbin",
@@ -9427,6 +9880,7 @@
         "post-r19-redesign-1": 150,
         "rederivation-30-7": 156,
         "redesign-adoption-6-8": 112,
+        "the-d8-adoption-20-8": 153,
         "the-landing-20-8": 102
       },
       "name": "Lachlan Jones",
@@ -9448,6 +9902,7 @@
         "post-r19-redesign-1": 1444,
         "rederivation-30-7": 1432,
         "redesign-adoption-6-8": 1257,
+        "the-d8-adoption-20-8": 1027,
         "the-landing-20-8": 920
       },
       "name": "Lachlan McAndrew",
@@ -9469,6 +9924,7 @@
         "post-r19-redesign-1": 22,
         "rederivation-30-7": 26,
         "redesign-adoption-6-8": 21,
+        "the-d8-adoption-20-8": 20,
         "the-landing-20-8": 11
       },
       "name": "Lachlan McNeil",
@@ -9490,6 +9946,7 @@
         "post-r19-redesign-1": 830,
         "rederivation-30-7": 850,
         "redesign-adoption-6-8": 678,
+        "the-d8-adoption-20-8": 746,
         "the-landing-20-8": 685
       },
       "name": "Lachlan Schultz",
@@ -9511,6 +9968,7 @@
         "post-r19-redesign-1": 227,
         "rederivation-30-7": 220,
         "redesign-adoption-6-8": 165,
+        "the-d8-adoption-20-8": 122,
         "the-landing-20-8": 73
       },
       "name": "Lachlan Sholl",
@@ -9532,6 +9990,7 @@
         "post-r19-redesign-1": 712,
         "rederivation-30-7": 716,
         "redesign-adoption-6-8": 631,
+        "the-d8-adoption-20-8": 148,
         "the-landing-20-8": 148
       },
       "name": "Lachlan Smith",
@@ -9553,6 +10012,7 @@
         "post-r19-redesign-1": 81,
         "rederivation-30-7": 81,
         "redesign-adoption-6-8": 74,
+        "the-d8-adoption-20-8": 48,
         "the-landing-20-8": 37
       },
       "name": "Lachlan Weller",
@@ -9574,6 +10034,7 @@
         "post-r19-redesign-1": 851,
         "rederivation-30-7": 1061,
         "redesign-adoption-6-8": 602,
+        "the-d8-adoption-20-8": 552,
         "the-landing-20-8": 552
       },
       "name": "Lachy Dovaston",
@@ -9595,6 +10056,7 @@
         "post-r19-redesign-1": 31,
         "rederivation-30-7": 33,
         "redesign-adoption-6-8": 20,
+        "the-d8-adoption-20-8": 6,
         "the-landing-20-8": 4
       },
       "name": "Laitham Vandermeer",
@@ -9616,6 +10078,7 @@
         "post-r19-redesign-1": 229,
         "rederivation-30-7": 239,
         "redesign-adoption-6-8": 188,
+        "the-d8-adoption-20-8": 138,
         "the-landing-20-8": 138
       },
       "name": "Lance Collard",
@@ -9637,6 +10100,7 @@
         "post-r19-redesign-1": 581,
         "rederivation-30-7": 630,
         "redesign-adoption-6-8": 548,
+        "the-d8-adoption-20-8": 374,
         "the-landing-20-8": 339
       },
       "name": "Latrelle Pickett",
@@ -9658,6 +10122,7 @@
         "post-r19-redesign-1": 1967,
         "rederivation-30-7": 1972,
         "redesign-adoption-6-8": 1866,
+        "the-d8-adoption-20-8": 1525,
         "the-landing-20-8": 1456
       },
       "name": "Lawson Humphries",
@@ -9679,6 +10144,7 @@
         "post-r19-redesign-1": 283,
         "rederivation-30-7": 287,
         "redesign-adoption-6-8": 215,
+        "the-d8-adoption-20-8": 273,
         "the-landing-20-8": 205
       },
       "name": "Leek Aleer",
@@ -9700,6 +10166,7 @@
         "post-r19-redesign-1": 255,
         "rederivation-30-7": 284,
         "redesign-adoption-6-8": 79,
+        "the-d8-adoption-20-8": 111,
         "the-landing-20-8": 111
       },
       "name": "Lennox Hoffman",
@@ -9721,6 +10188,7 @@
         "post-r19-redesign-1": 1688,
         "rederivation-30-7": 1603,
         "redesign-adoption-6-8": 1644,
+        "the-d8-adoption-20-8": 1677,
         "the-landing-20-8": 1677
       },
       "name": "Leo Lombard",
@@ -9742,6 +10210,7 @@
         "post-r19-redesign-1": 317,
         "rederivation-30-7": 406,
         "redesign-adoption-6-8": 152,
+        "the-d8-adoption-20-8": 92,
         "the-landing-20-8": 92
       },
       "name": "Leon Kickett",
@@ -9763,6 +10232,7 @@
         "post-r19-redesign-1": 3400,
         "rederivation-30-7": 3405,
         "redesign-adoption-6-8": 3558,
+        "the-d8-adoption-20-8": 3394,
         "the-landing-20-8": 3394
       },
       "name": "Levi Ashcroft",
@@ -9784,6 +10254,7 @@
         "post-r19-redesign-1": 372,
         "rederivation-30-7": 379,
         "redesign-adoption-6-8": 250,
+        "the-d8-adoption-20-8": 347,
         "the-landing-20-8": 338
       },
       "name": "Lewis Hayes",
@@ -9805,6 +10276,7 @@
         "post-r19-redesign-1": 55,
         "rederivation-30-7": 59,
         "redesign-adoption-6-8": 29,
+        "the-d8-adoption-20-8": 35,
         "the-landing-20-8": 25
       },
       "name": "Lewis Melican",
@@ -9826,6 +10298,7 @@
         "post-r19-redesign-1": 149,
         "rederivation-30-7": 239,
         "redesign-adoption-6-8": 149,
+        "the-d8-adoption-20-8": 145,
         "the-landing-20-8": 113
       },
       "name": "Lewis Young",
@@ -9847,6 +10320,7 @@
         "post-r19-redesign-1": 559,
         "rederivation-30-7": 571,
         "redesign-adoption-6-8": 427,
+        "the-d8-adoption-20-8": 506,
         "the-landing-20-8": 421
       },
       "name": "Liam Baker",
@@ -9868,6 +10342,7 @@
         "post-r19-redesign-1": 411,
         "rederivation-30-7": 365,
         "redesign-adoption-6-8": 248,
+        "the-d8-adoption-20-8": 271,
         "the-landing-20-8": 231
       },
       "name": "Liam Duggan",
@@ -9889,6 +10364,7 @@
         "post-r19-redesign-1": 499,
         "rederivation-30-7": 526,
         "redesign-adoption-6-8": 468,
+        "the-d8-adoption-20-8": 272,
         "the-landing-20-8": 238
       },
       "name": "Liam Fawcett",
@@ -9910,6 +10386,7 @@
         "post-r19-redesign-1": 84,
         "rederivation-30-7": 92,
         "redesign-adoption-6-8": 63,
+        "the-d8-adoption-20-8": 64,
         "the-landing-20-8": 35
       },
       "name": "Liam Henry",
@@ -9931,6 +10408,7 @@
         "post-r19-redesign-1": 204,
         "rederivation-30-7": 392,
         "redesign-adoption-6-8": 124,
+        "the-d8-adoption-20-8": 70,
         "the-landing-20-8": 70
       },
       "name": "Liam Hetherton",
@@ -9952,6 +10430,7 @@
         "post-r19-redesign-1": 194,
         "rederivation-30-7": 209,
         "redesign-adoption-6-8": 150,
+        "the-d8-adoption-20-8": 194,
         "the-landing-20-8": 188
       },
       "name": "Liam McMahon",
@@ -9973,6 +10452,7 @@
         "post-r19-redesign-1": 67,
         "rederivation-30-7": 42,
         "redesign-adoption-6-8": 37,
+        "the-d8-adoption-20-8": 74,
         "the-landing-20-8": 34
       },
       "name": "Liam O'Connell",
@@ -9994,6 +10474,7 @@
         "post-r19-redesign-1": 146,
         "rederivation-30-7": 102,
         "redesign-adoption-6-8": 128,
+        "the-d8-adoption-20-8": 208,
         "the-landing-20-8": 160
       },
       "name": "Liam Puncher",
@@ -10015,6 +10496,7 @@
         "post-r19-redesign-1": 293,
         "rederivation-30-7": 543,
         "redesign-adoption-6-8": 352,
+        "the-d8-adoption-20-8": 76,
         "the-landing-20-8": 76
       },
       "name": "Liam Reidy",
@@ -10036,6 +10518,7 @@
         "post-r19-redesign-1": 29,
         "rederivation-30-7": 31,
         "redesign-adoption-6-8": 24,
+        "the-d8-adoption-20-8": 6,
         "the-landing-20-8": 5
       },
       "name": "Liam Ryan",
@@ -10057,6 +10540,7 @@
         "post-r19-redesign-1": 41,
         "rederivation-30-7": 41,
         "redesign-adoption-6-8": 41,
+        "the-d8-adoption-20-8": 23,
         "the-landing-20-8": 13
       },
       "name": "Liam Stocker",
@@ -10078,6 +10562,7 @@
         "post-r19-redesign-1": 24,
         "rederivation-30-7": 25,
         "redesign-adoption-6-8": 10,
+        "the-d8-adoption-20-8": 11,
         "the-landing-20-8": 11
       },
       "name": "Lincoln McCarthy",
@@ -10099,6 +10584,7 @@
         "post-r19-redesign-1": 1396,
         "rederivation-30-7": 1476,
         "redesign-adoption-6-8": 1316,
+        "the-d8-adoption-20-8": 1485,
         "the-landing-20-8": 1367
       },
       "name": "Lloyd Meek",
@@ -10120,6 +10606,7 @@
         "post-r19-redesign-1": 1467,
         "rederivation-30-7": 1506,
         "redesign-adoption-6-8": 1390,
+        "the-d8-adoption-20-8": 1379,
         "the-landing-20-8": 1339
       },
       "name": "Logan Evans",
@@ -10141,6 +10628,7 @@
         "post-r19-redesign-1": 735,
         "rederivation-30-7": 720,
         "redesign-adoption-6-8": 615,
+        "the-d8-adoption-20-8": 688,
         "the-landing-20-8": 632
       },
       "name": "Logan McDonald",
@@ -10162,6 +10650,7 @@
         "post-r19-redesign-1": 3044,
         "rederivation-30-7": 3158,
         "redesign-adoption-6-8": 3206,
+        "the-d8-adoption-20-8": 2926,
         "the-landing-20-8": 2896
       },
       "name": "Logan Morris",
@@ -10183,6 +10672,7 @@
         "post-r19-redesign-1": 455,
         "rederivation-30-7": 255,
         "redesign-adoption-6-8": 119,
+        "the-d8-adoption-20-8": 321,
         "the-landing-20-8": 321
       },
       "name": "Logan Smith",
@@ -10204,6 +10694,7 @@
         "post-r19-redesign-1": 914,
         "rederivation-30-7": 970,
         "redesign-adoption-6-8": 817,
+        "the-d8-adoption-20-8": 560,
         "the-landing-20-8": 560
       },
       "name": "Louis Emmett",
@@ -10225,6 +10716,7 @@
         "post-r19-redesign-1": 251,
         "rederivation-30-7": 257,
         "redesign-adoption-6-8": 166,
+        "the-d8-adoption-20-8": 162,
         "the-landing-20-8": 162
       },
       "name": "Lucas Camporeale",
@@ -10246,6 +10738,7 @@
         "post-r19-redesign-1": 258,
         "rederivation-30-7": 251,
         "redesign-adoption-6-8": 130,
+        "the-d8-adoption-20-8": 75,
         "the-landing-20-8": 75
       },
       "name": "Lucca Grego",
@@ -10267,6 +10760,7 @@
         "post-r19-redesign-1": 166,
         "rederivation-30-7": 151,
         "redesign-adoption-6-8": 162,
+        "the-d8-adoption-20-8": 269,
         "the-landing-20-8": 234
       },
       "name": "Lukas Cooke",
@@ -10288,6 +10782,7 @@
         "post-r19-redesign-1": 29,
         "rederivation-30-7": 21,
         "redesign-adoption-6-8": 102,
+        "the-d8-adoption-20-8": 157,
         "the-landing-20-8": 157
       },
       "name": "Luke Beecken",
@@ -10309,6 +10804,7 @@
         "post-r19-redesign-1": 81,
         "rederivation-30-7": 78,
         "redesign-adoption-6-8": 40,
+        "the-d8-adoption-20-8": 36,
         "the-landing-20-8": 24
       },
       "name": "Luke Cleary",
@@ -10330,6 +10826,7 @@
         "post-r19-redesign-1": 3811,
         "rederivation-30-7": 3550,
         "redesign-adoption-6-8": 3577,
+        "the-d8-adoption-20-8": 3948,
         "the-landing-20-8": 3828
       },
       "name": "Luke Davies-Uniacke",
@@ -10351,6 +10848,7 @@
         "post-r19-redesign-1": 8777,
         "rederivation-30-7": 8735,
         "redesign-adoption-6-8": 10242,
+        "the-d8-adoption-20-8": 9417,
         "the-landing-20-8": 9386
       },
       "name": "Luke Jackson",
@@ -10372,6 +10870,7 @@
         "post-r19-redesign-1": 542,
         "rederivation-30-7": 525,
         "redesign-adoption-6-8": 422,
+        "the-d8-adoption-20-8": 124,
         "the-landing-20-8": 124
       },
       "name": "Luke Kennedy",
@@ -10393,6 +10892,7 @@
         "post-r19-redesign-1": 284,
         "rederivation-30-7": 287,
         "redesign-adoption-6-8": 165,
+        "the-d8-adoption-20-8": 191,
         "the-landing-20-8": 191
       },
       "name": "Luke Lloyd",
@@ -10414,6 +10914,7 @@
         "post-r19-redesign-1": 54,
         "rederivation-30-7": 55,
         "redesign-adoption-6-8": 48,
+        "the-d8-adoption-20-8": 20,
         "the-landing-20-8": 11
       },
       "name": "Luke McDonald",
@@ -10435,6 +10936,7 @@
         "post-r19-redesign-1": 447,
         "rederivation-30-7": 460,
         "redesign-adoption-6-8": 370,
+        "the-d8-adoption-20-8": 395,
         "the-landing-20-8": 313
       },
       "name": "Luke Nankervis",
@@ -10456,6 +10958,7 @@
         "post-r19-redesign-1": 1541,
         "rederivation-30-7": 1670,
         "redesign-adoption-6-8": 1472,
+        "the-d8-adoption-20-8": 1261,
         "the-landing-20-8": 1256
       },
       "name": "Luke Parker",
@@ -10477,6 +10980,7 @@
         "post-r19-redesign-1": 143,
         "rederivation-30-7": 163,
         "redesign-adoption-6-8": 112,
+        "the-d8-adoption-20-8": 90,
         "the-landing-20-8": 66
       },
       "name": "Luke Pedlar",
@@ -10498,6 +11002,7 @@
         "post-r19-redesign-1": 1596,
         "rederivation-30-7": 1608,
         "redesign-adoption-6-8": 1417,
+        "the-d8-adoption-20-8": 1362,
         "the-landing-20-8": 1315
       },
       "name": "Luke Ryan",
@@ -10519,6 +11024,7 @@
         "post-r19-redesign-1": 1450,
         "rederivation-30-7": 1482,
         "redesign-adoption-6-8": 1550,
+        "the-d8-adoption-20-8": 1008,
         "the-landing-20-8": 1008
       },
       "name": "Luke Trainor",
@@ -10540,6 +11046,7 @@
         "post-r19-redesign-1": 245,
         "rederivation-30-7": 251,
         "redesign-adoption-6-8": 149,
+        "the-d8-adoption-20-8": 39,
         "the-landing-20-8": 39
       },
       "name": "Luke Urquhart",
@@ -10561,6 +11068,7 @@
         "post-r19-redesign-1": 359,
         "rederivation-30-7": 412,
         "redesign-adoption-6-8": 333,
+        "the-d8-adoption-20-8": 156,
         "the-landing-20-8": 147
       },
       "name": "Luker Kentfield",
@@ -10582,6 +11090,7 @@
         "post-r19-redesign-1": 423,
         "rederivation-30-7": 397,
         "redesign-adoption-6-8": 275,
+        "the-d8-adoption-20-8": 301,
         "the-landing-20-8": 261
       },
       "name": "Mabior Chol",
@@ -10603,6 +11112,7 @@
         "post-r19-redesign-1": 3903,
         "rederivation-30-7": 4054,
         "redesign-adoption-6-8": 4144,
+        "the-d8-adoption-20-8": 3845,
         "the-landing-20-8": 3750
       },
       "name": "Mac Andrew",
@@ -10624,6 +11134,7 @@
         "post-r19-redesign-1": 329,
         "rederivation-30-7": 418,
         "redesign-adoption-6-8": 393,
+        "the-d8-adoption-20-8": 166,
         "the-landing-20-8": 166
       },
       "name": "Malakai Champion",
@@ -10645,6 +11156,7 @@
         "post-r19-redesign-1": 34,
         "rederivation-30-7": 32,
         "redesign-adoption-6-8": 20,
+        "the-d8-adoption-20-8": 28,
         "the-landing-20-8": 20
       },
       "name": "Malcolm Rosas",
@@ -10666,6 +11178,7 @@
         "post-r19-redesign-1": 37,
         "rederivation-30-7": 30,
         "redesign-adoption-6-8": 128,
+        "the-d8-adoption-20-8": 102,
         "the-landing-20-8": 78
       },
       "name": "Mani Liddy",
@@ -10687,6 +11200,7 @@
         "post-r19-redesign-1": 574,
         "rederivation-30-7": 552,
         "redesign-adoption-6-8": 425,
+        "the-d8-adoption-20-8": 536,
         "the-landing-20-8": 429
       },
       "name": "Marc Pittonet",
@@ -10708,6 +11222,7 @@
         "post-r19-redesign-1": 4318,
         "rederivation-30-7": 4278,
         "redesign-adoption-6-8": 4389,
+        "the-d8-adoption-20-8": 3712,
         "the-landing-20-8": 3677
       },
       "name": "Marcus Bontempelli",
@@ -10729,6 +11244,7 @@
         "post-r19-redesign-1": 191,
         "rederivation-30-7": 837,
         "redesign-adoption-6-8": 659,
+        "the-d8-adoption-20-8": 842,
         "the-landing-20-8": 793
       },
       "name": "Marcus Herbert",
@@ -10750,6 +11266,7 @@
         "post-r19-redesign-1": 2111,
         "rederivation-30-7": 2189,
         "redesign-adoption-6-8": 2090,
+        "the-d8-adoption-20-8": 1819,
         "the-landing-20-8": 1683
       },
       "name": "Marcus Windhager",
@@ -10771,6 +11288,7 @@
         "post-r19-redesign-1": 126,
         "rederivation-30-7": 10,
         "redesign-adoption-6-8": 5,
+        "the-d8-adoption-20-8": 50,
         "the-landing-20-8": 50
       },
       "name": "Mark Blicavs",
@@ -10792,6 +11310,7 @@
         "post-r19-redesign-1": 1867,
         "rederivation-30-7": 1819,
         "redesign-adoption-6-8": 1656,
+        "the-d8-adoption-20-8": 1438,
         "the-landing-20-8": 1345
       },
       "name": "Mark Keane",
@@ -10813,6 +11332,7 @@
         "post-r19-redesign-1": 19,
         "rederivation-30-7": 20,
         "redesign-adoption-6-8": 8,
+        "the-d8-adoption-20-8": 21,
         "the-landing-20-8": 9
       },
       "name": "Mark O'Connor",
@@ -10834,6 +11354,7 @@
         "post-r19-redesign-1": 1,
         "rederivation-30-7": 2,
         "redesign-adoption-6-8": 5,
+        "the-d8-adoption-20-8": 2,
         "the-landing-20-8": 2
       },
       "name": "Mason Cox",
@@ -10855,6 +11376,7 @@
         "post-r19-redesign-1": 1668,
         "rederivation-30-7": 1636,
         "redesign-adoption-6-8": 1453,
+        "the-d8-adoption-20-8": 1155,
         "the-landing-20-8": 1091
       },
       "name": "Mason Redman",
@@ -10876,6 +11398,7 @@
         "post-r19-redesign-1": 459,
         "rederivation-30-7": 522,
         "redesign-adoption-6-8": 381,
+        "the-d8-adoption-20-8": 365,
         "the-landing-20-8": 364
       },
       "name": "Mason Wood",
@@ -10897,6 +11420,7 @@
         "post-r19-redesign-1": 1541,
         "rederivation-30-7": 1669,
         "redesign-adoption-6-8": 1555,
+        "the-d8-adoption-20-8": 1704,
         "the-landing-20-8": 1566
       },
       "name": "Massimo D'Ambrosio",
@@ -10918,6 +11442,7 @@
         "post-r19-redesign-1": 961,
         "rederivation-30-7": 1007,
         "redesign-adoption-6-8": 942,
+        "the-d8-adoption-20-8": 741,
         "the-landing-20-8": 687
       },
       "name": "Matt Carroll",
@@ -10939,6 +11464,7 @@
         "post-r19-redesign-1": 75,
         "rederivation-30-7": 116,
         "redesign-adoption-6-8": 72,
+        "the-d8-adoption-20-8": 119,
         "the-landing-20-8": 81
       },
       "name": "Matt Cottrell",
@@ -10960,6 +11486,7 @@
         "post-r19-redesign-1": 173,
         "rederivation-30-7": 160,
         "redesign-adoption-6-8": 57,
+        "the-d8-adoption-20-8": 37,
         "the-landing-20-8": 37
       },
       "name": "Matt Duffy",
@@ -10981,6 +11508,7 @@
         "post-r19-redesign-1": 25,
         "rederivation-30-7": 19,
         "redesign-adoption-6-8": 10,
+        "the-d8-adoption-20-8": 4,
         "the-landing-20-8": 3
       },
       "name": "Matt Guelfi",
@@ -11002,6 +11530,7 @@
         "post-r19-redesign-1": 105,
         "rederivation-30-7": 123,
         "redesign-adoption-6-8": 60,
+        "the-d8-adoption-20-8": 37,
         "the-landing-20-8": 36
       },
       "name": "Matt Hill",
@@ -11023,6 +11552,7 @@
         "post-r19-redesign-1": 903,
         "rederivation-30-7": 1076,
         "redesign-adoption-6-8": 985,
+        "the-d8-adoption-20-8": 1113,
         "the-landing-20-8": 985
       },
       "name": "Matt Johnson",
@@ -11044,6 +11574,7 @@
         "post-r19-redesign-1": 1,
         "rederivation-30-7": 1,
         "redesign-adoption-6-8": 5,
+        "the-d8-adoption-20-8": 3,
         "the-landing-20-8": 3
       },
       "name": "Matt Owies",
@@ -11065,6 +11596,7 @@
         "post-r19-redesign-1": 3960,
         "rederivation-30-7": 4046,
         "redesign-adoption-6-8": 4165,
+        "the-d8-adoption-20-8": 4510,
         "the-landing-20-8": 4471
       },
       "name": "Matt Rowell",
@@ -11086,6 +11618,7 @@
         "post-r19-redesign-1": 679,
         "rederivation-30-7": 609,
         "redesign-adoption-6-8": 455,
+        "the-d8-adoption-20-8": 235,
         "the-landing-20-8": 235
       },
       "name": "Matt Whitlock",
@@ -11107,6 +11640,7 @@
         "post-r19-redesign-1": 2105,
         "rederivation-30-7": 2462,
         "redesign-adoption-6-8": 2404,
+        "the-d8-adoption-20-8": 2019,
         "the-landing-20-8": 1915
       },
       "name": "Mattaes Phillipou",
@@ -11128,6 +11662,7 @@
         "post-r19-redesign-1": 681,
         "rederivation-30-7": 689,
         "redesign-adoption-6-8": 549,
+        "the-d8-adoption-20-8": 617,
         "the-landing-20-8": 504
       },
       "name": "Matthew Flynn",
@@ -11149,6 +11684,7 @@
         "post-r19-redesign-1": 695,
         "rederivation-30-7": 499,
         "redesign-adoption-6-8": 502,
+        "the-d8-adoption-20-8": 272,
         "the-landing-20-8": 213
       },
       "name": "Matthew Jefferson",
@@ -11170,6 +11706,7 @@
         "post-r19-redesign-1": 873,
         "rederivation-30-7": 771,
         "redesign-adoption-6-8": 606,
+        "the-d8-adoption-20-8": 536,
         "the-landing-20-8": 449
       },
       "name": "Matthew Kennedy",
@@ -11191,6 +11728,7 @@
         "post-r19-redesign-1": 387,
         "rederivation-30-7": 390,
         "redesign-adoption-6-8": 239,
+        "the-d8-adoption-20-8": 111,
         "the-landing-20-8": 111
       },
       "name": "Matthew LeRay",
@@ -11212,6 +11750,7 @@
         "post-r19-redesign-1": 2008,
         "rederivation-30-7": 2042,
         "redesign-adoption-6-8": 1926,
+        "the-d8-adoption-20-8": 1644,
         "the-landing-20-8": 1553
       },
       "name": "Matthew Roberts",
@@ -11233,6 +11772,7 @@
         "post-r19-redesign-1": 42,
         "rederivation-30-7": 46,
         "redesign-adoption-6-8": 28,
+        "the-d8-adoption-20-8": 23,
         "the-landing-20-8": 16
       },
       "name": "Maurice Rioli",
@@ -11254,6 +11794,7 @@
         "post-r19-redesign-1": 47,
         "rederivation-30-7": 62,
         "redesign-adoption-6-8": 188,
+        "the-d8-adoption-20-8": 95,
         "the-landing-20-8": 95
       },
       "name": "Max Beattie",
@@ -11275,6 +11816,7 @@
         "post-r19-redesign-1": 3405,
         "rederivation-30-7": 3426,
         "redesign-adoption-6-8": 3379,
+        "the-d8-adoption-20-8": 3142,
         "the-landing-20-8": 3136
       },
       "name": "Max Gawn",
@@ -11296,6 +11838,7 @@
         "post-r19-redesign-1": 359,
         "rederivation-30-7": 561,
         "redesign-adoption-6-8": 519,
+        "the-d8-adoption-20-8": 457,
         "the-landing-20-8": 385
       },
       "name": "Max Gruzewski",
@@ -11317,6 +11860,7 @@
         "post-r19-redesign-1": 2802,
         "rederivation-30-7": 2542,
         "redesign-adoption-6-8": 2433,
+        "the-d8-adoption-20-8": 2184,
         "the-landing-20-8": 2131
       },
       "name": "Max Hall",
@@ -11338,6 +11882,7 @@
         "post-r19-redesign-1": 728,
         "rederivation-30-7": 720,
         "redesign-adoption-6-8": 635,
+        "the-d8-adoption-20-8": 550,
         "the-landing-20-8": 429
       },
       "name": "Max Heath",
@@ -11359,6 +11904,7 @@
         "post-r19-redesign-1": 7262,
         "rederivation-30-7": 7452,
         "redesign-adoption-6-8": 8505,
+        "the-d8-adoption-20-8": 7608,
         "the-landing-20-8": 7562
       },
       "name": "Max Holmes",
@@ -11380,6 +11926,7 @@
         "post-r19-redesign-1": 338,
         "rederivation-30-7": 338,
         "redesign-adoption-6-8": 252,
+        "the-d8-adoption-20-8": 258,
         "the-landing-20-8": 209
       },
       "name": "Max King",
@@ -11401,6 +11948,7 @@
         "post-r19-redesign-1": 270,
         "rederivation-30-7": 296,
         "redesign-adoption-6-8": 155,
+        "the-d8-adoption-20-8": 138,
         "the-landing-20-8": 138
       },
       "name": "Maxwell King",
@@ -11422,6 +11970,7 @@
         "post-r19-redesign-1": 495,
         "rederivation-30-7": 516,
         "redesign-adoption-6-8": 412,
+        "the-d8-adoption-20-8": 317,
         "the-landing-20-8": 317
       },
       "name": "Max Knobel",
@@ -11443,6 +11992,7 @@
         "post-r19-redesign-1": 564,
         "rederivation-30-7": 564,
         "redesign-adoption-6-8": 549,
+        "the-d8-adoption-20-8": 357,
         "the-landing-20-8": 357
       },
       "name": "Max Kondogiannis",
@@ -11464,6 +12014,7 @@
         "post-r19-redesign-1": 581,
         "rederivation-30-7": 332,
         "redesign-adoption-6-8": 239,
+        "the-d8-adoption-20-8": 266,
         "the-landing-20-8": 266
       },
       "name": "Max Mapley",
@@ -11485,6 +12036,7 @@
         "post-r19-redesign-1": 576,
         "rederivation-30-7": 573,
         "redesign-adoption-6-8": 487,
+        "the-d8-adoption-20-8": 461,
         "the-landing-20-8": 387
       },
       "name": "Max Michalanney",
@@ -11506,6 +12058,7 @@
         "post-r19-redesign-1": 197,
         "rederivation-30-7": 247,
         "redesign-adoption-6-8": 183,
+        "the-d8-adoption-20-8": 57,
         "the-landing-20-8": 54
       },
       "name": "Max Ramsden",
@@ -11527,6 +12080,7 @@
         "post-r19-redesign-1": 106,
         "rederivation-30-7": 114,
         "redesign-adoption-6-8": 63,
+        "the-d8-adoption-20-8": 74,
         "the-landing-20-8": 51
       },
       "name": "Michael Frederick",
@@ -11548,6 +12102,7 @@
         "post-r19-redesign-1": 151,
         "rederivation-30-7": 208,
         "redesign-adoption-6-8": 138,
+        "the-d8-adoption-20-8": 269,
         "the-landing-20-8": 211
       },
       "name": "Michael Sellwood",
@@ -11569,6 +12124,7 @@
         "post-r19-redesign-1": 480,
         "rederivation-30-7": 353,
         "redesign-adoption-6-8": 236,
+        "the-d8-adoption-20-8": 219,
         "the-landing-20-8": 196
       },
       "name": "Milan Murdock",
@@ -11590,6 +12146,7 @@
         "post-r19-redesign-1": 857,
         "rederivation-30-7": 849,
         "redesign-adoption-6-8": 701,
+        "the-d8-adoption-20-8": 977,
         "the-landing-20-8": 860
       },
       "name": "Miles Bergman",
@@ -11611,6 +12168,7 @@
         "post-r19-redesign-1": 1494,
         "rederivation-30-7": 1521,
         "redesign-adoption-6-8": 1358,
+        "the-d8-adoption-20-8": 1366,
         "the-landing-20-8": 1307
       },
       "name": "Mitch Georgiades",
@@ -11632,6 +12190,7 @@
         "post-r19-redesign-1": 242,
         "rederivation-30-7": 85,
         "redesign-adoption-6-8": 44,
+        "the-d8-adoption-20-8": 50,
         "the-landing-20-8": 40
       },
       "name": "Mitch McGovern",
@@ -11653,6 +12212,7 @@
         "post-r19-redesign-1": 16,
         "rederivation-30-7": 49,
         "redesign-adoption-6-8": 105,
+        "the-d8-adoption-20-8": 119,
         "the-landing-20-8": 98
       },
       "name": "Mitch Podhajski",
@@ -11674,6 +12234,7 @@
         "post-r19-redesign-1": 95,
         "rederivation-30-7": 97,
         "redesign-adoption-6-8": 113,
+        "the-d8-adoption-20-8": 109,
         "the-landing-20-8": 84
       },
       "name": "Mitch Zadow",
@@ -11695,6 +12256,7 @@
         "post-r19-redesign-1": 1976,
         "rederivation-30-7": 2055,
         "redesign-adoption-6-8": 2063,
+        "the-d8-adoption-20-8": 1405,
         "the-landing-20-8": 1326
       },
       "name": "Mitchell Edwards",
@@ -11716,6 +12278,7 @@
         "post-r19-redesign-1": 482,
         "rederivation-30-7": 479,
         "redesign-adoption-6-8": 364,
+        "the-d8-adoption-20-8": 396,
         "the-landing-20-8": 303
       },
       "name": "Mitchell Hinge",
@@ -11737,6 +12300,7 @@
         "post-r19-redesign-1": 178,
         "rederivation-30-7": 177,
         "redesign-adoption-6-8": 127,
+        "the-d8-adoption-20-8": 180,
         "the-landing-20-8": 95
       },
       "name": "Mitchell Knevitt",
@@ -11758,6 +12322,7 @@
         "post-r19-redesign-1": 652,
         "rederivation-30-7": 700,
         "redesign-adoption-6-8": 546,
+        "the-d8-adoption-20-8": 604,
         "the-landing-20-8": 552
       },
       "name": "Mitchell Lewis",
@@ -11779,6 +12344,7 @@
         "post-r19-redesign-1": 591,
         "rederivation-30-7": 705,
         "redesign-adoption-6-8": 534,
+        "the-d8-adoption-20-8": 552,
         "the-landing-20-8": 552
       },
       "name": "Mitchell Marsh",
@@ -11800,6 +12366,7 @@
         "post-r19-redesign-1": 2000,
         "rederivation-30-7": 2056,
         "redesign-adoption-6-8": 1954,
+        "the-d8-adoption-20-8": 1973,
         "the-landing-20-8": 1880
       },
       "name": "Mitchito Owens",
@@ -11821,6 +12388,7 @@
         "post-r19-redesign-1": 4067,
         "rederivation-30-7": 4305,
         "redesign-adoption-6-8": 4465,
+        "the-d8-adoption-20-8": 3427,
         "the-landing-20-8": 3422
       },
       "name": "Murphy Reid",
@@ -11842,6 +12410,7 @@
         "post-r19-redesign-1": 32,
         "rederivation-30-7": 38,
         "redesign-adoption-6-8": 70,
+        "the-d8-adoption-20-8": 102,
         "the-landing-20-8": 62
       },
       "name": "Mykelti Lefau",
@@ -11863,6 +12432,7 @@
         "post-r19-redesign-1": 7664,
         "rederivation-30-7": 8375,
         "redesign-adoption-6-8": 9738,
+        "the-d8-adoption-20-8": 8681,
         "the-landing-20-8": 8644
       },
       "name": "Nasiah Wanganeen-Milera",
@@ -11884,6 +12454,7 @@
         "post-r19-redesign-1": 1798,
         "rederivation-30-7": 1812,
         "redesign-adoption-6-8": 1771,
+        "the-d8-adoption-20-8": 1617,
         "the-landing-20-8": 1577
       },
       "name": "Nate Caddy",
@@ -11905,6 +12476,7 @@
         "post-r19-redesign-1": 11,
         "rederivation-30-7": 10,
         "redesign-adoption-6-8": 10,
+        "the-d8-adoption-20-8": 8,
         "the-landing-20-8": 8
       },
       "name": "Nathan Broad",
@@ -11926,6 +12498,7 @@
         "post-r19-redesign-1": 664,
         "rederivation-30-7": 709,
         "redesign-adoption-6-8": 630,
+        "the-d8-adoption-20-8": 555,
         "the-landing-20-8": 440
       },
       "name": "Nathan O'Driscoll",
@@ -11947,6 +12520,7 @@
         "post-r19-redesign-1": 145,
         "rederivation-30-7": 176,
         "redesign-adoption-6-8": 67,
+        "the-d8-adoption-20-8": 37,
         "the-landing-20-8": 37
       },
       "name": "Nathan Wardius",
@@ -11968,6 +12542,7 @@
         "post-r19-redesign-1": 372,
         "rederivation-30-7": 391,
         "redesign-adoption-6-8": 272,
+        "the-d8-adoption-20-8": 124,
         "the-landing-20-8": 124
       },
       "name": "Ned Bowman",
@@ -11989,6 +12564,7 @@
         "post-r19-redesign-1": 1383,
         "rederivation-30-7": 1524,
         "redesign-adoption-6-8": 1381,
+        "the-d8-adoption-20-8": 1292,
         "the-landing-20-8": 1182
       },
       "name": "Ned Long",
@@ -12010,6 +12586,7 @@
         "post-r19-redesign-1": 2488,
         "rederivation-30-7": 2119,
         "redesign-adoption-6-8": 2204,
+        "the-d8-adoption-20-8": 1794,
         "the-landing-20-8": 1671
       },
       "name": "Ned Moyle",
@@ -12031,6 +12608,7 @@
         "post-r19-redesign-1": 387,
         "rederivation-30-7": 330,
         "redesign-adoption-6-8": 249,
+        "the-d8-adoption-20-8": 343,
         "the-landing-20-8": 202
       },
       "name": "Ned Reeves",
@@ -12052,6 +12630,7 @@
         "post-r19-redesign-1": 1041,
         "rederivation-30-7": 1065,
         "redesign-adoption-6-8": 912,
+        "the-d8-adoption-20-8": 942,
         "the-landing-20-8": 841
       },
       "name": "Neil Erasmus",
@@ -12073,6 +12652,7 @@
         "post-r19-redesign-1": 801,
         "rederivation-30-7": 813,
         "redesign-adoption-6-8": 639,
+        "the-d8-adoption-20-8": 674,
         "the-landing-20-8": 671
       },
       "name": "Nic Newman",
@@ -12094,6 +12674,7 @@
         "post-r19-redesign-1": 54,
         "rederivation-30-7": 55,
         "redesign-adoption-6-8": 48,
+        "the-d8-adoption-20-8": 82,
         "the-landing-20-8": 52
       },
       "name": "Nicholas Coffield",
@@ -12115,6 +12696,7 @@
         "post-r19-redesign-1": 25,
         "rederivation-30-7": 27,
         "redesign-adoption-6-8": 14,
+        "the-d8-adoption-20-8": 1,
         "the-landing-20-8": 1
       },
       "name": "Nicholas Holman",
@@ -12136,6 +12718,7 @@
         "post-r19-redesign-1": 3534,
         "rederivation-30-7": 3573,
         "redesign-adoption-6-8": 3639,
+        "the-d8-adoption-20-8": 4288,
         "the-landing-20-8": 4168
       },
       "name": "Nicholas Martin",
@@ -12157,6 +12740,7 @@
         "post-r19-redesign-1": 4130,
         "rederivation-30-7": 4094,
         "redesign-adoption-6-8": 4240,
+        "the-d8-adoption-20-8": 4057,
         "the-landing-20-8": 3978
       },
       "name": "Nick Blakey",
@@ -12178,6 +12762,7 @@
         "post-r19-redesign-1": 835,
         "rederivation-30-7": 837,
         "redesign-adoption-6-8": 774,
+        "the-d8-adoption-20-8": 751,
         "the-landing-20-8": 583
       },
       "name": "Nick Bryan",
@@ -12199,6 +12784,7 @@
         "post-r19-redesign-1": 8765,
         "rederivation-30-7": 9214,
         "redesign-adoption-6-8": 10885,
+        "the-d8-adoption-20-8": 9977,
         "the-landing-20-8": 9944
       },
       "name": "Nick Daicos",
@@ -12220,6 +12806,7 @@
         "post-r19-redesign-1": 433,
         "rederivation-30-7": 429,
         "redesign-adoption-6-8": 194,
+        "the-d8-adoption-20-8": 97,
         "the-landing-20-8": 97
       },
       "name": "Nick Driscoll",
@@ -12241,6 +12828,7 @@
         "post-r19-redesign-1": 101,
         "rederivation-30-7": 103,
         "redesign-adoption-6-8": 55,
+        "the-d8-adoption-20-8": 69,
         "the-landing-20-8": 69
       },
       "name": "Nick Haynes",
@@ -12262,6 +12850,7 @@
         "post-r19-redesign-1": 651,
         "rederivation-30-7": 678,
         "redesign-adoption-6-8": 528,
+        "the-d8-adoption-20-8": 566,
         "the-landing-20-8": 510
       },
       "name": "Nick Larkey",
@@ -12283,6 +12872,7 @@
         "post-r19-redesign-1": 1493,
         "rederivation-30-7": 1932,
         "redesign-adoption-6-8": 1860,
+        "the-d8-adoption-20-8": 1120,
         "the-landing-20-8": 1064
       },
       "name": "Nick Madden",
@@ -12304,6 +12894,7 @@
         "post-r19-redesign-1": 413,
         "rederivation-30-7": 448,
         "redesign-adoption-6-8": 329,
+        "the-d8-adoption-20-8": 368,
         "the-landing-20-8": 316
       },
       "name": "Nick Murray",
@@ -12325,6 +12916,7 @@
         "post-r19-redesign-1": 58,
         "rederivation-30-7": 111,
         "redesign-adoption-6-8": 61,
+        "the-d8-adoption-20-8": 118,
         "the-landing-20-8": 95
       },
       "name": "Nick Vlastuin",
@@ -12346,6 +12938,7 @@
         "post-r19-redesign-1": 3398,
         "rederivation-30-7": 3710,
         "redesign-adoption-6-8": 3952,
+        "the-d8-adoption-20-8": 3570,
         "the-landing-20-8": 3535
       },
       "name": "Nick Watson",
@@ -12367,6 +12960,7 @@
         "post-r19-redesign-1": 243,
         "rederivation-30-7": 177,
         "redesign-adoption-6-8": 139,
+        "the-d8-adoption-20-8": 166,
         "the-landing-20-8": 108
       },
       "name": "Nikolas Cox",
@@ -12388,6 +12982,7 @@
         "post-r19-redesign-1": 4876,
         "rederivation-30-7": 5257,
         "redesign-adoption-6-8": 5668,
+        "the-d8-adoption-20-8": 4989,
         "the-landing-20-8": 4918
       },
       "name": "Noah Anderson",
@@ -12409,6 +13004,7 @@
         "post-r19-redesign-1": 31,
         "rederivation-30-7": 32,
         "redesign-adoption-6-8": 12,
+        "the-d8-adoption-20-8": 16,
         "the-landing-20-8": 7
       },
       "name": "Noah Answerth",
@@ -12430,6 +13026,7 @@
         "post-r19-redesign-1": 517,
         "rederivation-30-7": 569,
         "redesign-adoption-6-8": 425,
+        "the-d8-adoption-20-8": 456,
         "the-landing-20-8": 400
       },
       "name": "Noah Balta",
@@ -12451,6 +13048,7 @@
         "post-r19-redesign-1": 160,
         "rederivation-30-7": 227,
         "redesign-adoption-6-8": 106,
+        "the-d8-adoption-20-8": 40,
         "the-landing-20-8": 40
       },
       "name": "Noah Chamberlain",
@@ -12472,6 +13070,7 @@
         "post-r19-redesign-1": 228,
         "rederivation-30-7": 348,
         "redesign-adoption-6-8": 133,
+        "the-d8-adoption-20-8": 225,
         "the-landing-20-8": 217
       },
       "name": "Noah Howes",
@@ -12493,6 +13092,7 @@
         "post-r19-redesign-1": 211,
         "rederivation-30-7": 206,
         "redesign-adoption-6-8": 180,
+        "the-d8-adoption-20-8": 86,
         "the-landing-20-8": 55
       },
       "name": "Noah Long",
@@ -12514,6 +13114,7 @@
         "post-r19-redesign-1": 2219,
         "rederivation-30-7": 4006,
         "redesign-adoption-6-8": 4204,
+        "the-d8-adoption-20-8": 1050,
         "the-landing-20-8": 1057
       },
       "name": "Noah Mraz",
@@ -12535,6 +13136,7 @@
         "post-r19-redesign-1": 431,
         "rederivation-30-7": 469,
         "redesign-adoption-6-8": 346,
+        "the-d8-adoption-20-8": 252,
         "the-landing-20-8": 252
       },
       "name": "Noah Roberts-Thomson",
@@ -12556,6 +13158,7 @@
         "post-r19-redesign-1": 11,
         "rederivation-30-7": 10,
         "redesign-adoption-6-8": 17,
+        "the-d8-adoption-20-8": 17,
         "the-landing-20-8": 8
       },
       "name": "Oisin Mullin",
@@ -12577,6 +13180,7 @@
         "post-r19-redesign-1": 584,
         "rederivation-30-7": 767,
         "redesign-adoption-6-8": 601,
+        "the-d8-adoption-20-8": 788,
         "the-landing-20-8": 714
       },
       "name": "Oliver Florent",
@@ -12598,6 +13202,7 @@
         "post-r19-redesign-1": 587,
         "rederivation-30-7": 565,
         "redesign-adoption-6-8": 455,
+        "the-d8-adoption-20-8": 537,
         "the-landing-20-8": 537
       },
       "name": "Oliver Francou",
@@ -12619,6 +13224,7 @@
         "post-r19-redesign-1": 198,
         "rederivation-30-7": 272,
         "redesign-adoption-6-8": 188,
+        "the-d8-adoption-20-8": 95,
         "the-landing-20-8": 95
       },
       "name": "Oliver Griffin",
@@ -12640,6 +13246,7 @@
         "post-r19-redesign-1": 415,
         "rederivation-30-7": 463,
         "redesign-adoption-6-8": 377,
+        "the-d8-adoption-20-8": 193,
         "the-landing-20-8": 193
       },
       "name": "Oliver Hannaford",
@@ -12661,6 +13268,7 @@
         "post-r19-redesign-1": 326,
         "rederivation-30-7": 279,
         "redesign-adoption-6-8": 221,
+        "the-d8-adoption-20-8": 180,
         "the-landing-20-8": 108
       },
       "name": "Oliver Hayes-Brown",
@@ -12682,6 +13290,7 @@
         "post-r19-redesign-1": 89,
         "rederivation-30-7": 121,
         "redesign-adoption-6-8": 76,
+        "the-d8-adoption-20-8": 218,
         "the-landing-20-8": 167
       },
       "name": "Oliver Henry",
@@ -12703,6 +13312,7 @@
         "post-r19-redesign-1": 1480,
         "rederivation-30-7": 1815,
         "redesign-adoption-6-8": 1728,
+        "the-d8-adoption-20-8": 1589,
         "the-landing-20-8": 1498
       },
       "name": "Oliver Hollands",
@@ -12724,6 +13334,7 @@
         "post-r19-redesign-1": 99,
         "rederivation-30-7": 101,
         "redesign-adoption-6-8": 49,
+        "the-d8-adoption-20-8": 26,
         "the-landing-20-8": 16
       },
       "name": "Oliver Wiltshire",
@@ -12745,6 +13356,7 @@
         "post-r19-redesign-1": 399,
         "rederivation-30-7": 391,
         "redesign-adoption-6-8": 272,
+        "the-d8-adoption-20-8": 275,
         "the-landing-20-8": 274
       },
       "name": "Oliver Wines",
@@ -12766,6 +13378,7 @@
         "post-r19-redesign-1": 2142,
         "rederivation-30-7": 2211,
         "redesign-adoption-6-8": 2143,
+        "the-d8-adoption-20-8": 2286,
         "the-landing-20-8": 2162
       },
       "name": "Ollie Dempsey",
@@ -12787,6 +13400,7 @@
         "post-r19-redesign-1": 552,
         "rederivation-30-7": 663,
         "redesign-adoption-6-8": 501,
+        "the-d8-adoption-20-8": 476,
         "the-landing-20-8": 476
       },
       "name": "Ollie Greeves",
@@ -12808,6 +13422,7 @@
         "post-r19-redesign-1": 155,
         "rederivation-30-7": 154,
         "redesign-adoption-6-8": 122,
+        "the-d8-adoption-20-8": 131,
         "the-landing-20-8": 76
       },
       "name": "Ollie Lord",
@@ -12829,6 +13444,7 @@
         "post-r19-redesign-1": 289,
         "rederivation-30-7": 292,
         "redesign-adoption-6-8": 170,
+        "the-d8-adoption-20-8": 200,
         "the-landing-20-8": 200
       },
       "name": "Ollie Murphy",
@@ -12850,6 +13466,7 @@
         "post-r19-redesign-1": 76,
         "rederivation-30-7": 96,
         "redesign-adoption-6-8": 67,
+        "the-d8-adoption-20-8": 112,
         "the-landing-20-8": 79
       },
       "name": "Oscar Adams",
@@ -12871,6 +13488,7 @@
         "post-r19-redesign-1": 159,
         "rederivation-30-7": 161,
         "redesign-adoption-6-8": 103,
+        "the-d8-adoption-20-8": 145,
         "the-landing-20-8": 102
       },
       "name": "Oscar Allen",
@@ -12892,6 +13510,7 @@
         "post-r19-redesign-1": 124,
         "rederivation-30-7": 92,
         "redesign-adoption-6-8": 75,
+        "the-d8-adoption-20-8": 57,
         "the-landing-20-8": 57
       },
       "name": "Oscar Berry",
@@ -12913,6 +13532,7 @@
         "post-r19-redesign-1": 45,
         "rederivation-30-7": 44,
         "redesign-adoption-6-8": 20,
+        "the-d8-adoption-20-8": 84,
         "the-landing-20-8": 69
       },
       "name": "Oscar McDonald",
@@ -12934,6 +13554,7 @@
         "post-r19-redesign-1": 287,
         "rederivation-30-7": 293,
         "redesign-adoption-6-8": 252,
+        "the-d8-adoption-20-8": 182,
         "the-landing-20-8": 182
       },
       "name": "Oscar Ryan",
@@ -12955,6 +13576,7 @@
         "post-r19-redesign-1": 605,
         "rederivation-30-7": 560,
         "redesign-adoption-6-8": 496,
+        "the-d8-adoption-20-8": 510,
         "the-landing-20-8": 398
       },
       "name": "Oscar Steene",
@@ -12976,6 +13598,7 @@
         "post-r19-redesign-1": 31,
         "rederivation-30-7": 33,
         "redesign-adoption-6-8": 14,
+        "the-d8-adoption-20-8": 19,
         "the-landing-20-8": 14
       },
       "name": "Oskar Baker",
@@ -12997,6 +13620,7 @@
         "post-r19-redesign-1": 766,
         "rederivation-30-7": 759,
         "redesign-adoption-6-8": 660,
+        "the-d8-adoption-20-8": 596,
         "the-landing-20-8": 596
       },
       "name": "Oskar Taylor",
@@ -13018,6 +13642,7 @@
         "post-r19-redesign-1": 42,
         "rederivation-30-7": 36,
         "redesign-adoption-6-8": 113,
+        "the-d8-adoption-20-8": 92,
         "the-landing-20-8": 65
       },
       "name": "Paddy Cross",
@@ -13039,6 +13664,7 @@
         "post-r19-redesign-1": 163,
         "rederivation-30-7": 169,
         "redesign-adoption-6-8": 158,
+        "the-d8-adoption-20-8": 28,
         "the-landing-20-8": 28
       },
       "name": "Paddy Dow",
@@ -13060,6 +13686,7 @@
         "post-r19-redesign-1": 581,
         "rederivation-30-7": 332,
         "redesign-adoption-6-8": 86,
+        "the-d8-adoption-20-8": 47,
         "the-landing-20-8": 47
       },
       "name": "Patrick Carr",
@@ -13081,6 +13708,7 @@
         "post-r19-redesign-1": 1716,
         "rederivation-30-7": 1881,
         "redesign-adoption-6-8": 1694,
+        "the-d8-adoption-20-8": 1427,
         "the-landing-20-8": 1424
       },
       "name": "Patrick Cripps",
@@ -13102,6 +13730,7 @@
         "post-r19-redesign-1": 82,
         "rederivation-30-7": 91,
         "redesign-adoption-6-8": 63,
+        "the-d8-adoption-20-8": 38,
         "the-landing-20-8": 38
       },
       "name": "Patrick Dangerfield",
@@ -13123,6 +13752,7 @@
         "post-r19-redesign-1": 904,
         "rederivation-30-7": 928,
         "redesign-adoption-6-8": 755,
+        "the-d8-adoption-20-8": 761,
         "the-landing-20-8": 692
       },
       "name": "Patrick Lipinski",
@@ -13144,6 +13774,7 @@
         "post-r19-redesign-1": 1328,
         "rederivation-30-7": 1348,
         "redesign-adoption-6-8": 1232,
+        "the-d8-adoption-20-8": 1116,
         "the-landing-20-8": 1116
       },
       "name": "Patrick Retschko",
@@ -13165,6 +13796,7 @@
         "post-r19-redesign-1": 185,
         "rederivation-30-7": 205,
         "redesign-adoption-6-8": 84,
+        "the-d8-adoption-20-8": 28,
         "the-landing-20-8": 28
       },
       "name": "Patrick Said",
@@ -13186,6 +13818,7 @@
         "post-r19-redesign-1": 248,
         "rederivation-30-7": 251,
         "redesign-adoption-6-8": 117,
+        "the-d8-adoption-20-8": 163,
         "the-landing-20-8": 163
       },
       "name": "Patrick Snell",
@@ -13207,6 +13840,7 @@
         "post-r19-redesign-1": 1506,
         "rederivation-30-7": 1841,
         "redesign-adoption-6-8": 1723,
+        "the-d8-adoption-20-8": 1384,
         "the-landing-20-8": 1293
       },
       "name": "Patrick Voss",
@@ -13228,6 +13862,7 @@
         "post-r19-redesign-1": 1543,
         "rederivation-30-7": 1522,
         "redesign-adoption-6-8": 1388,
+        "the-d8-adoption-20-8": 1570,
         "the-landing-20-8": 1486
       },
       "name": "Paul Curtis",
@@ -13249,6 +13884,7 @@
         "post-r19-redesign-1": 339,
         "rederivation-30-7": 706,
         "redesign-adoption-6-8": 550,
+        "the-d8-adoption-20-8": 570,
         "the-landing-20-8": 438
       },
       "name": "Peter Ladhams",
@@ -13270,6 +13906,7 @@
         "post-r19-redesign-1": 1838,
         "rederivation-30-7": 1767,
         "redesign-adoption-6-8": 1574,
+        "the-d8-adoption-20-8": 1585,
         "the-landing-20-8": 1531
       },
       "name": "Peter Wright",
@@ -13291,6 +13928,7 @@
         "post-r19-redesign-1": 1856,
         "rederivation-30-7": 1963,
         "redesign-adoption-6-8": 1821,
+        "the-d8-adoption-20-8": 1650,
         "the-landing-20-8": 1614
       },
       "name": "Phoenix Gothard",
@@ -13312,6 +13950,7 @@
         "post-r19-redesign-1": 192,
         "rederivation-30-7": 202,
         "redesign-adoption-6-8": 81,
+        "the-d8-adoption-20-8": 25,
         "the-landing-20-8": 25
       },
       "name": "Reece Torrent",
@@ -13333,6 +13972,7 @@
         "post-r19-redesign-1": 79,
         "rederivation-30-7": 81,
         "redesign-adoption-6-8": 54,
+        "the-d8-adoption-20-8": 97,
         "the-landing-20-8": 50
       },
       "name": "Reef McInnes",
@@ -13354,6 +13994,7 @@
         "post-r19-redesign-1": 1125,
         "rederivation-30-7": 1064,
         "redesign-adoption-6-8": 893,
+        "the-d8-adoption-20-8": 1048,
         "the-landing-20-8": 977
       },
       "name": "Reilly O'Brien",
@@ -13375,6 +14016,7 @@
         "post-r19-redesign-1": 2623,
         "rederivation-30-7": 2458,
         "redesign-adoption-6-8": 2360,
+        "the-d8-adoption-20-8": 2188,
         "the-landing-20-8": 2144
       },
       "name": "Reuben Ginbey",
@@ -13396,6 +14038,7 @@
         "post-r19-redesign-1": 603,
         "rederivation-30-7": 598,
         "redesign-adoption-6-8": 482,
+        "the-d8-adoption-20-8": 475,
         "the-landing-20-8": 414
       },
       "name": "Rhett Bazzo",
@@ -13417,6 +14060,7 @@
         "post-r19-redesign-1": 74,
         "rederivation-30-7": 86,
         "redesign-adoption-6-8": 54,
+        "the-d8-adoption-20-8": 67,
         "the-landing-20-8": 48
       },
       "name": "Rhyan Mansell",
@@ -13438,6 +14082,7 @@
         "post-r19-redesign-1": 155,
         "rederivation-30-7": 221,
         "redesign-adoption-6-8": 142,
+        "the-d8-adoption-20-8": 148,
         "the-landing-20-8": 109
       },
       "name": "Rhylee West",
@@ -13459,6 +14104,7 @@
         "post-r19-redesign-1": 38,
         "rederivation-30-7": 40,
         "redesign-adoption-6-8": 28,
+        "the-d8-adoption-20-8": 6,
         "the-landing-20-8": 5
       },
       "name": "Rhys Stanley",
@@ -13480,6 +14126,7 @@
         "post-r19-redesign-1": 184,
         "rederivation-30-7": 203,
         "redesign-adoption-6-8": 79,
+        "the-d8-adoption-20-8": 85,
         "the-landing-20-8": 85
       },
       "name": "Rhys Unwin",
@@ -13501,6 +14148,7 @@
         "post-r19-redesign-1": 296,
         "rederivation-30-7": 300,
         "redesign-adoption-6-8": 147,
+        "the-d8-adoption-20-8": 124,
         "the-landing-20-8": 124
       },
       "name": "Riak Andrew",
@@ -13522,6 +14170,7 @@
         "post-r19-redesign-1": 126,
         "rederivation-30-7": 176,
         "redesign-adoption-6-8": 52,
+        "the-d8-adoption-20-8": 23,
         "the-landing-20-8": 23
       },
       "name": "Ricky Mentha",
@@ -13543,6 +14192,7 @@
         "post-r19-redesign-1": 368,
         "rederivation-30-7": 340,
         "redesign-adoption-6-8": 217,
+        "the-d8-adoption-20-8": 362,
         "the-landing-20-8": 304
       },
       "name": "Riley Bice",
@@ -13564,6 +14214,7 @@
         "post-r19-redesign-1": 112,
         "rederivation-30-7": 116,
         "redesign-adoption-6-8": 74,
+        "the-d8-adoption-20-8": 84,
         "the-landing-20-8": 50
       },
       "name": "Riley Garcia",
@@ -13585,6 +14236,7 @@
         "post-r19-redesign-1": 281,
         "rederivation-30-7": 340,
         "redesign-adoption-6-8": 240,
+        "the-d8-adoption-20-8": 207,
         "the-landing-20-8": 207
       },
       "name": "Riley Hamilton",
@@ -13606,6 +14258,7 @@
         "post-r19-redesign-1": 322,
         "rederivation-30-7": 317,
         "redesign-adoption-6-8": 287,
+        "the-d8-adoption-20-8": 224,
         "the-landing-20-8": 213
       },
       "name": "Riley Hardeman",
@@ -13627,6 +14280,7 @@
         "post-r19-redesign-1": 340,
         "rederivation-30-7": 426,
         "redesign-adoption-6-8": 194,
+        "the-d8-adoption-20-8": 97,
         "the-landing-20-8": 97
       },
       "name": "Riley Onley",
@@ -13648,6 +14302,7 @@
         "post-r19-redesign-1": 4101,
         "rederivation-30-7": 4164,
         "redesign-adoption-6-8": 4348,
+        "the-d8-adoption-20-8": 4107,
         "the-landing-20-8": 4067
       },
       "name": "Riley Thilthorpe",
@@ -13669,6 +14324,7 @@
         "post-r19-redesign-1": 177,
         "rederivation-30-7": 222,
         "redesign-adoption-6-8": 79,
+        "the-d8-adoption-20-8": 44,
         "the-landing-20-8": 44
       },
       "name": "River Stevens",
@@ -13690,6 +14346,7 @@
         "post-r19-redesign-1": 23,
         "rederivation-30-7": 22,
         "redesign-adoption-6-8": 128,
+        "the-d8-adoption-20-8": 69,
         "the-landing-20-8": 49
       },
       "name": "Roan Steele",
@@ -13711,6 +14368,7 @@
         "post-r19-redesign-1": 173,
         "rederivation-30-7": 176,
         "redesign-adoption-6-8": 48,
+        "the-d8-adoption-20-8": 37,
         "the-landing-20-8": 37
       },
       "name": "Rob Monahan",
@@ -13732,6 +14390,7 @@
         "post-r19-redesign-1": 114,
         "rederivation-30-7": 127,
         "redesign-adoption-6-8": 103,
+        "the-d8-adoption-20-8": 75,
         "the-landing-20-8": 50
       },
       "name": "Robert Hansen",
@@ -13753,6 +14412,7 @@
         "post-r19-redesign-1": 940,
         "rederivation-30-7": 955,
         "redesign-adoption-6-8": 766,
+        "the-d8-adoption-20-8": 751,
         "the-landing-20-8": 749
       },
       "name": "Rory Laird",
@@ -13774,6 +14434,7 @@
         "post-r19-redesign-1": 570,
         "rederivation-30-7": 431,
         "redesign-adoption-6-8": 301,
+        "the-d8-adoption-20-8": 272,
         "the-landing-20-8": 269
       },
       "name": "Rory Lobb",
@@ -13795,6 +14456,7 @@
         "post-r19-redesign-1": 1870,
         "rederivation-30-7": 2291,
         "redesign-adoption-6-8": 2144,
+        "the-d8-adoption-20-8": 2066,
         "the-landing-20-8": 2008
       },
       "name": "Rowan Marshall",
@@ -13816,6 +14478,7 @@
         "post-r19-redesign-1": 413,
         "rederivation-30-7": 503,
         "redesign-adoption-6-8": 424,
+        "the-d8-adoption-20-8": 480,
         "the-landing-20-8": 372
       },
       "name": "Ryan Angwin",
@@ -13837,6 +14500,7 @@
         "post-r19-redesign-1": 99,
         "rederivation-30-7": 96,
         "redesign-adoption-6-8": 62,
+        "the-d8-adoption-20-8": 106,
         "the-landing-20-8": 54
       },
       "name": "Ryan Byrnes",
@@ -13858,6 +14522,7 @@
         "post-r19-redesign-1": 33,
         "rederivation-30-7": 33,
         "redesign-adoption-6-8": 13,
+        "the-d8-adoption-20-8": 7,
         "the-landing-20-8": 7
       },
       "name": "Ryan Gardner",
@@ -13879,6 +14544,7 @@
         "post-r19-redesign-1": 545,
         "rederivation-30-7": 106,
         "redesign-adoption-6-8": 57,
+        "the-d8-adoption-20-8": 37,
         "the-landing-20-8": 37
       },
       "name": "Ryan Lester",
@@ -13900,6 +14566,7 @@
         "post-r19-redesign-1": 1365,
         "rederivation-30-7": 1500,
         "redesign-adoption-6-8": 1425,
+        "the-d8-adoption-20-8": 1392,
         "the-landing-20-8": 1289
       },
       "name": "Ryan Maric",
@@ -13921,6 +14588,7 @@
         "post-r19-redesign-1": 198,
         "rederivation-30-7": 272,
         "redesign-adoption-6-8": 81,
+        "the-d8-adoption-20-8": 25,
         "the-landing-20-8": 25
       },
       "name": "Ryda Luke",
@@ -13942,6 +14610,7 @@
         "post-r19-redesign-1": 3425,
         "rederivation-30-7": 3686,
         "redesign-adoption-6-8": 3846,
+        "the-d8-adoption-20-8": 3603,
         "the-landing-20-8": 3560
       },
       "name": "Ryley Sanders",
@@ -13963,6 +14632,7 @@
         "post-r19-redesign-1": 22,
         "rederivation-30-7": 19,
         "redesign-adoption-6-8": 100,
+        "the-d8-adoption-20-8": 56,
         "the-landing-20-8": 41
       },
       "name": "Saad El-Hawli",
@@ -13984,6 +14654,7 @@
         "post-r19-redesign-1": 703,
         "rederivation-30-7": 693,
         "redesign-adoption-6-8": 657,
+        "the-d8-adoption-20-8": 450,
         "the-landing-20-8": 450
       },
       "name": "Sam Allen",
@@ -14005,6 +14676,7 @@
         "post-r19-redesign-1": 1005,
         "rederivation-30-7": 1225,
         "redesign-adoption-6-8": 1108,
+        "the-d8-adoption-20-8": 918,
         "the-landing-20-8": 824
       },
       "name": "Sam Banks",
@@ -14026,6 +14698,7 @@
         "post-r19-redesign-1": 3542,
         "rederivation-30-7": 3702,
         "redesign-adoption-6-8": 3837,
+        "the-d8-adoption-20-8": 3661,
         "the-landing-20-8": 3527
       },
       "name": "Sam Berry",
@@ -14047,6 +14720,7 @@
         "post-r19-redesign-1": 101,
         "rederivation-30-7": 110,
         "redesign-adoption-6-8": 81,
+        "the-d8-adoption-20-8": 105,
         "the-landing-20-8": 64
       },
       "name": "Sam Butler",
@@ -14068,6 +14742,7 @@
         "post-r19-redesign-1": 272,
         "rederivation-30-7": 270,
         "redesign-adoption-6-8": 211,
+        "the-d8-adoption-20-8": 316,
         "the-landing-20-8": 228
       },
       "name": "Sam Clohesy",
@@ -14089,6 +14764,7 @@
         "post-r19-redesign-1": 2846,
         "rederivation-30-7": 3047,
         "redesign-adoption-6-8": 2977,
+        "the-d8-adoption-20-8": 2146,
         "the-landing-20-8": 2146
       },
       "name": "Sam Cumming",
@@ -14110,6 +14786,7 @@
         "post-r19-redesign-1": 4859,
         "rederivation-30-7": 4929,
         "redesign-adoption-6-8": 5378,
+        "the-d8-adoption-20-8": 5122,
         "the-landing-20-8": 5076
       },
       "name": "Sam Darcy",
@@ -14131,6 +14808,7 @@
         "post-r19-redesign-1": 71,
         "rederivation-30-7": 82,
         "redesign-adoption-6-8": 80,
+        "the-d8-adoption-20-8": 96,
         "the-landing-20-8": 73
       },
       "name": "Sam Davidson",
@@ -14152,6 +14830,7 @@
         "post-r19-redesign-1": 1020,
         "rederivation-30-7": 1045,
         "redesign-adoption-6-8": 867,
+        "the-d8-adoption-20-8": 938,
         "the-landing-20-8": 849
       },
       "name": "Sam De Koning",
@@ -14173,6 +14852,7 @@
         "post-r19-redesign-1": 947,
         "rederivation-30-7": 1307,
         "redesign-adoption-6-8": 1116,
+        "the-d8-adoption-20-8": 1120,
         "the-landing-20-8": 993
       },
       "name": "Sam Draper",
@@ -14194,6 +14874,7 @@
         "post-r19-redesign-1": 2554,
         "rederivation-30-7": 2710,
         "redesign-adoption-6-8": 2665,
+        "the-d8-adoption-20-8": 2559,
         "the-landing-20-8": 2444
       },
       "name": "Sam Durham",
@@ -14215,6 +14896,7 @@
         "post-r19-redesign-1": 2081,
         "rederivation-30-7": 2208,
         "redesign-adoption-6-8": 2089,
+        "the-d8-adoption-20-8": 2753,
         "the-landing-20-8": 2631
       },
       "name": "Sam Flanders",
@@ -14236,6 +14918,7 @@
         "post-r19-redesign-1": 4103,
         "rederivation-30-7": 4102,
         "redesign-adoption-6-8": 4172,
+        "the-d8-adoption-20-8": 3607,
         "the-landing-20-8": 3607
       },
       "name": "Sam Lalor",
@@ -14257,6 +14940,7 @@
         "post-r19-redesign-1": 917,
         "rederivation-30-7": 876,
         "redesign-adoption-6-8": 816,
+        "the-d8-adoption-20-8": 489,
         "the-landing-20-8": 489
       },
       "name": "Sam Marshall",
@@ -14278,6 +14962,7 @@
         "post-r19-redesign-1": 277,
         "rederivation-30-7": 278,
         "redesign-adoption-6-8": 180,
+        "the-d8-adoption-20-8": 216,
         "the-landing-20-8": 173
       },
       "name": "Sam Powell-Pepper",
@@ -14299,6 +14984,7 @@
         "post-r19-redesign-1": 53,
         "rederivation-30-7": 65,
         "redesign-adoption-6-8": 40,
+        "the-d8-adoption-20-8": 37,
         "the-landing-20-8": 30
       },
       "name": "Sam Sturt",
@@ -14320,6 +15006,7 @@
         "post-r19-redesign-1": 29,
         "rederivation-30-7": 25,
         "redesign-adoption-6-8": 10,
+        "the-d8-adoption-20-8": 19,
         "the-landing-20-8": 16
       },
       "name": "Sam Switkowski",
@@ -14341,6 +15028,7 @@
         "post-r19-redesign-1": 1509,
         "rederivation-30-7": 1479,
         "redesign-adoption-6-8": 1301,
+        "the-d8-adoption-20-8": 1205,
         "the-landing-20-8": 1119
       },
       "name": "Sam Taylor",
@@ -14362,6 +15050,7 @@
         "post-r19-redesign-1": 3127,
         "rederivation-30-7": 3296,
         "redesign-adoption-6-8": 3275,
+        "the-d8-adoption-20-8": 2958,
         "the-landing-20-8": 2926
       },
       "name": "Sam Walsh",
@@ -14383,6 +15072,7 @@
         "post-r19-redesign-1": 103,
         "rederivation-30-7": 27,
         "redesign-adoption-6-8": 12,
+        "the-d8-adoption-20-8": 31,
         "the-landing-20-8": 17
       },
       "name": "Sam Wicks",
@@ -14404,6 +15094,7 @@
         "post-r19-redesign-1": 432,
         "rederivation-30-7": 420,
         "redesign-adoption-6-8": 402,
+        "the-d8-adoption-20-8": 376,
         "the-landing-20-8": 212
       },
       "name": "Samson Ryan",
@@ -14425,6 +15116,7 @@
         "post-r19-redesign-1": 864,
         "rederivation-30-7": 814,
         "redesign-adoption-6-8": 630,
+        "the-d8-adoption-20-8": 607,
         "the-landing-20-8": 583
       },
       "name": "Samuel Collins",
@@ -14446,6 +15138,7 @@
         "post-r19-redesign-1": 1964,
         "rederivation-30-7": 2142,
         "redesign-adoption-6-8": 1804,
+        "the-d8-adoption-20-8": 1584,
         "the-landing-20-8": 1584
       },
       "name": "Samuel Grlj",
@@ -14467,6 +15160,7 @@
         "post-r19-redesign-1": 910,
         "rederivation-30-7": 953,
         "redesign-adoption-6-8": 747,
+        "the-d8-adoption-20-8": 749,
         "the-landing-20-8": 749
       },
       "name": "Samuel Swadling",
@@ -14488,6 +15182,7 @@
         "post-r19-redesign-1": 241,
         "rederivation-30-7": 267,
         "redesign-adoption-6-8": 173,
+        "the-d8-adoption-20-8": 171,
         "the-landing-20-8": 130
       },
       "name": "Sandy Brock",
@@ -14509,6 +15204,7 @@
         "post-r19-redesign-1": 450,
         "rederivation-30-7": 484,
         "redesign-adoption-6-8": 348,
+        "the-d8-adoption-20-8": 367,
         "the-landing-20-8": 367
       },
       "name": "Scott Pendlebury",
@@ -14530,6 +15226,7 @@
         "post-r19-redesign-1": 928,
         "rederivation-30-7": 947,
         "redesign-adoption-6-8": 763,
+        "the-d8-adoption-20-8": 841,
         "the-landing-20-8": 689
       },
       "name": "Sean Darcy",
@@ -14551,6 +15248,7 @@
         "post-r19-redesign-1": 1061,
         "rederivation-30-7": 1124,
         "redesign-adoption-6-8": 983,
+        "the-d8-adoption-20-8": 993,
         "the-landing-20-8": 928
       },
       "name": "Seth Campbell",
@@ -14572,6 +15270,7 @@
         "post-r19-redesign-1": 95,
         "rederivation-30-7": 110,
         "redesign-adoption-6-8": 89,
+        "the-d8-adoption-20-8": 81,
         "the-landing-20-8": 74
       },
       "name": "Shadeau Brain",
@@ -14593,6 +15292,7 @@
         "post-r19-redesign-1": 2414,
         "rederivation-30-7": 2444,
         "redesign-adoption-6-8": 2299,
+        "the-d8-adoption-20-8": 2067,
         "the-landing-20-8": 1996
       },
       "name": "Shai Bolton",
@@ -14614,6 +15314,7 @@
         "post-r19-redesign-1": 2174,
         "rederivation-30-7": 2357,
         "redesign-adoption-6-8": 2260,
+        "the-d8-adoption-20-8": 2317,
         "the-landing-20-8": 2249
       },
       "name": "Shannon Neale",
@@ -14635,6 +15336,7 @@
         "post-r19-redesign-1": 615,
         "rederivation-30-7": 716,
         "redesign-adoption-6-8": 552,
+        "the-d8-adoption-20-8": 650,
         "the-landing-20-8": 622
       },
       "name": "Shaun Mannagh",
@@ -14656,6 +15358,7 @@
         "post-r19-redesign-1": 1150,
         "rederivation-30-7": 1204,
         "redesign-adoption-6-8": 1151,
+        "the-d8-adoption-20-8": 914,
         "the-landing-20-8": 914
       },
       "name": "Sid Draper",
@@ -14677,6 +15380,7 @@
         "post-r19-redesign-1": 98,
         "rederivation-30-7": 106,
         "redesign-adoption-6-8": 96,
+        "the-d8-adoption-20-8": 8,
         "the-landing-20-8": 8
       },
       "name": "Steele Sidebottom",
@@ -14698,6 +15402,7 @@
         "post-r19-redesign-1": 161,
         "rederivation-30-7": 175,
         "redesign-adoption-6-8": 150,
+        "the-d8-adoption-20-8": 73,
         "the-landing-20-8": 38
       },
       "name": "Steely Green",
@@ -14719,6 +15424,7 @@
         "post-r19-redesign-1": 163,
         "rederivation-30-7": 255,
         "redesign-adoption-6-8": 161,
+        "the-d8-adoption-20-8": 204,
         "the-landing-20-8": 204
       },
       "name": "Stephen Coniglio",
@@ -14740,6 +15446,7 @@
         "post-r19-redesign-1": 2896,
         "rederivation-30-7": 3122,
         "redesign-adoption-6-8": 3071,
+        "the-d8-adoption-20-8": 2864,
         "the-landing-20-8": 2864
       },
       "name": "Sullivan Robey",
@@ -14761,6 +15468,7 @@
         "post-r19-redesign-1": 252,
         "rederivation-30-7": 274,
         "redesign-adoption-6-8": 210,
+        "the-d8-adoption-20-8": 151,
         "the-landing-20-8": 151
       },
       "name": "Tai Hayes",
@@ -14782,6 +15490,7 @@
         "post-r19-redesign-1": 2010,
         "rederivation-30-7": 2245,
         "redesign-adoption-6-8": 2219,
+        "the-d8-adoption-20-8": 1825,
         "the-landing-20-8": 1825
       },
       "name": "Taj Hotton",
@@ -14803,6 +15512,7 @@
         "post-r19-redesign-1": 740,
         "rederivation-30-7": 915,
         "redesign-adoption-6-8": 835,
+        "the-d8-adoption-20-8": 773,
         "the-landing-20-8": 773
       },
       "name": "Talor Byrne",
@@ -14824,6 +15534,7 @@
         "post-r19-redesign-1": 1981,
         "rederivation-30-7": 2214,
         "redesign-adoption-6-8": 2139,
+        "the-d8-adoption-20-8": 2090,
         "the-landing-20-8": 1997
       },
       "name": "Tanner Bruhn",
@@ -14845,6 +15556,7 @@
         "post-r19-redesign-1": 1021,
         "rederivation-30-7": 1034,
         "redesign-adoption-6-8": 1051,
+        "the-d8-adoption-20-8": 437,
         "the-landing-20-8": 437
       },
       "name": "Taylor Goad",
@@ -14866,6 +15578,7 @@
         "post-r19-redesign-1": 146,
         "rederivation-30-7": 219,
         "redesign-adoption-6-8": 137,
+        "the-d8-adoption-20-8": 128,
         "the-landing-20-8": 129
       },
       "name": "Taylor Walker",
@@ -14887,6 +15600,7 @@
         "post-r19-redesign-1": 239,
         "rederivation-30-7": 241,
         "redesign-adoption-6-8": 169,
+        "the-d8-adoption-20-8": 99,
         "the-landing-20-8": 99
       },
       "name": "Tew Jiath",
@@ -14908,6 +15622,7 @@
         "post-r19-redesign-1": 318,
         "rederivation-30-7": 341,
         "redesign-adoption-6-8": 274,
+        "the-d8-adoption-20-8": 84,
         "the-landing-20-8": 84
       },
       "name": "Tom Anastasopoulos",
@@ -14929,6 +15644,7 @@
         "post-r19-redesign-1": 341,
         "rederivation-30-7": 453,
         "redesign-adoption-6-8": 354,
+        "the-d8-adoption-20-8": 305,
         "the-landing-20-8": 305
       },
       "name": "Thomas Burton",
@@ -14950,6 +15666,7 @@
         "post-r19-redesign-1": 1699,
         "rederivation-30-7": 1607,
         "redesign-adoption-6-8": 1403,
+        "the-d8-adoption-20-8": 971,
         "the-landing-20-8": 969
       },
       "name": "Thomas Liberatore",
@@ -14971,6 +15688,7 @@
         "post-r19-redesign-1": 525,
         "rederivation-30-7": 551,
         "redesign-adoption-6-8": 359,
+        "the-d8-adoption-20-8": 238,
         "the-landing-20-8": 238
       },
       "name": "Thomas Matthews",
@@ -14992,6 +15710,7 @@
         "post-r19-redesign-1": 1111,
         "rederivation-30-7": 1151,
         "redesign-adoption-6-8": 1038,
+        "the-d8-adoption-20-8": 737,
         "the-landing-20-8": 737
       },
       "name": "Thomas Sims",
@@ -15013,6 +15732,7 @@
         "post-r19-redesign-1": 1131,
         "rederivation-30-7": 1271,
         "redesign-adoption-6-8": 1073,
+        "the-d8-adoption-20-8": 1034,
         "the-landing-20-8": 1030
       },
       "name": "Thomas Stewart",
@@ -15034,6 +15754,7 @@
         "post-r19-redesign-1": 781,
         "rederivation-30-7": 1377,
         "redesign-adoption-6-8": 1194,
+        "the-d8-adoption-20-8": 1157,
         "the-landing-20-8": 1154
       },
       "name": "Tim Kelly",
@@ -15055,6 +15776,7 @@
         "post-r19-redesign-1": 207,
         "rederivation-30-7": 212,
         "redesign-adoption-6-8": 129,
+        "the-d8-adoption-20-8": 130,
         "the-landing-20-8": 125
       },
       "name": "Tim Membrey",
@@ -15076,6 +15798,7 @@
         "post-r19-redesign-1": 2522,
         "rederivation-30-7": 2465,
         "redesign-adoption-6-8": 2324,
+        "the-d8-adoption-20-8": 2385,
         "the-landing-20-8": 2337
       },
       "name": "Tim Taranto",
@@ -15097,6 +15820,7 @@
         "post-r19-redesign-1": 3715,
         "rederivation-30-7": 3776,
         "redesign-adoption-6-8": 3840,
+        "the-d8-adoption-20-8": 3334,
         "the-landing-20-8": 3289
       },
       "name": "Timothy English",
@@ -15118,6 +15842,7 @@
         "post-r19-redesign-1": 697,
         "rederivation-30-7": 728,
         "redesign-adoption-6-8": 684,
+        "the-d8-adoption-20-8": 403,
         "the-landing-20-8": 403
       },
       "name": "Tobie Travaglia",
@@ -15139,6 +15864,7 @@
         "post-r19-redesign-1": 266,
         "rederivation-30-7": 272,
         "redesign-adoption-6-8": 177,
+        "the-d8-adoption-20-8": 319,
         "the-landing-20-8": 279
       },
       "name": "Toby Bedford",
@@ -15160,6 +15886,7 @@
         "post-r19-redesign-1": 563,
         "rederivation-30-7": 577,
         "redesign-adoption-6-8": 503,
+        "the-d8-adoption-20-8": 460,
         "the-landing-20-8": 460
       },
       "name": "Toby Conway",
@@ -15181,6 +15908,7 @@
         "post-r19-redesign-1": 1017,
         "rederivation-30-7": 1040,
         "redesign-adoption-6-8": 849,
+        "the-d8-adoption-20-8": 810,
         "the-landing-20-8": 805
       },
       "name": "Toby Greene",
@@ -15202,6 +15930,7 @@
         "post-r19-redesign-1": 150,
         "rederivation-30-7": 155,
         "redesign-adoption-6-8": 131,
+        "the-d8-adoption-20-8": 79,
         "the-landing-20-8": 50
       },
       "name": "Toby McMullin",
@@ -15223,6 +15952,7 @@
         "post-r19-redesign-1": 244,
         "rederivation-30-7": 291,
         "redesign-adoption-6-8": 219,
+        "the-d8-adoption-20-8": 276,
         "the-landing-20-8": 201
       },
       "name": "Toby Murray",
@@ -15244,6 +15974,7 @@
         "post-r19-redesign-1": 2172,
         "rederivation-30-7": 2197,
         "redesign-adoption-6-8": 2030,
+        "the-d8-adoption-20-8": 1930,
         "the-landing-20-8": 1911
       },
       "name": "Toby Nankervis",
@@ -15265,6 +15996,7 @@
         "post-r19-redesign-1": 15,
         "rederivation-30-7": 17,
         "redesign-adoption-6-8": 15,
+        "the-d8-adoption-20-8": 67,
         "the-landing-20-8": 48
       },
       "name": "Toby Pink",
@@ -15286,6 +16018,7 @@
         "post-r19-redesign-1": 198,
         "rederivation-30-7": 272,
         "redesign-adoption-6-8": 81,
+        "the-d8-adoption-20-8": 25,
         "the-landing-20-8": 25
       },
       "name": "Toby Whan",
@@ -15307,6 +16040,7 @@
         "post-r19-redesign-1": 392,
         "rederivation-30-7": 412,
         "redesign-adoption-6-8": 253,
+        "the-d8-adoption-20-8": 204,
         "the-landing-20-8": 204
       },
       "name": "Tobyn Murray",
@@ -15328,6 +16062,7 @@
         "post-r19-redesign-1": 113,
         "rederivation-30-7": 115,
         "redesign-adoption-6-8": 67,
+        "the-d8-adoption-20-8": 96,
         "the-landing-20-8": 63
       },
       "name": "Todd Marshall",
@@ -15349,6 +16084,7 @@
         "post-r19-redesign-1": 347,
         "rederivation-30-7": 419,
         "redesign-adoption-6-8": 296,
+        "the-d8-adoption-20-8": 376,
         "the-landing-20-8": 355
       },
       "name": "Tom Atkins",
@@ -15370,6 +16106,7 @@
         "post-r19-redesign-1": 122,
         "rederivation-30-7": 116,
         "redesign-adoption-6-8": 65,
+        "the-d8-adoption-20-8": 39,
         "the-landing-20-8": 20
       },
       "name": "Tom Barrass",
@@ -15391,6 +16128,7 @@
         "post-r19-redesign-1": 102,
         "rederivation-30-7": 95,
         "redesign-adoption-6-8": 113,
+        "the-d8-adoption-20-8": 187,
         "the-landing-20-8": 135
       },
       "name": "Tom Blamires",
@@ -15412,6 +16150,7 @@
         "post-r19-redesign-1": 437,
         "rederivation-30-7": 590,
         "redesign-adoption-6-8": 480,
+        "the-d8-adoption-20-8": 533,
         "the-landing-20-8": 447
       },
       "name": "Tom Brown",
@@ -15433,6 +16172,7 @@
         "post-r19-redesign-1": 200,
         "rederivation-30-7": 270,
         "redesign-adoption-6-8": 220,
+        "the-d8-adoption-20-8": 140,
         "the-landing-20-8": 140
       },
       "name": "Tom Cochrane",
@@ -15454,6 +16194,7 @@
         "post-r19-redesign-1": 30,
         "rederivation-30-7": 102,
         "redesign-adoption-6-8": 54,
+        "the-d8-adoption-20-8": 68,
         "the-landing-20-8": 49
       },
       "name": "Tom Cole",
@@ -15475,6 +16216,7 @@
         "post-r19-redesign-1": 1995,
         "rederivation-30-7": 2078,
         "redesign-adoption-6-8": 1991,
+        "the-d8-adoption-20-8": 1874,
         "the-landing-20-8": 1677
       },
       "name": "Tom De Koning",
@@ -15496,6 +16238,7 @@
         "post-r19-redesign-1": 360,
         "rederivation-30-7": 361,
         "redesign-adoption-6-8": 243,
+        "the-d8-adoption-20-8": 36,
         "the-landing-20-8": 34
       },
       "name": "Tom Doedee",
@@ -15517,6 +16260,7 @@
         "post-r19-redesign-1": 71,
         "rederivation-30-7": 91,
         "redesign-adoption-6-8": 88,
+        "the-d8-adoption-20-8": 102,
         "the-landing-20-8": 66
       },
       "name": "Tom Edwards",
@@ -15538,6 +16282,7 @@
         "post-r19-redesign-1": 4628,
         "rederivation-30-7": 4682,
         "redesign-adoption-6-8": 4956,
+        "the-d8-adoption-20-8": 5637,
         "the-landing-20-8": 5551
       },
       "name": "Tom Green",
@@ -15559,6 +16304,7 @@
         "post-r19-redesign-1": 616,
         "rederivation-30-7": 644,
         "redesign-adoption-6-8": 566,
+        "the-d8-adoption-20-8": 418,
         "the-landing-20-8": 418
       },
       "name": "Tom Gross",
@@ -15580,6 +16326,7 @@
         "post-r19-redesign-1": 160,
         "rederivation-30-7": 200,
         "redesign-adoption-6-8": 168,
+        "the-d8-adoption-20-8": 157,
         "the-landing-20-8": 144
       },
       "name": "Tom Hanily",
@@ -15601,6 +16348,7 @@
         "post-r19-redesign-1": 47,
         "rederivation-30-7": 53,
         "redesign-adoption-6-8": 50,
+        "the-d8-adoption-20-8": 12,
         "the-landing-20-8": 12
       },
       "name": "Tom Lynch",
@@ -15622,6 +16370,7 @@
         "post-r19-redesign-1": 1608,
         "rederivation-30-7": 1633,
         "redesign-adoption-6-8": 1441,
+        "the-d8-adoption-20-8": 1333,
         "the-landing-20-8": 1259
       },
       "name": "Tom McCarthy",
@@ -15643,6 +16392,7 @@
         "post-r19-redesign-1": 2094,
         "rederivation-30-7": 1937,
         "redesign-adoption-6-8": 1754,
+        "the-d8-adoption-20-8": 1668,
         "the-landing-20-8": 1571
       },
       "name": "Tom McCartin",
@@ -15664,6 +16414,7 @@
         "post-r19-redesign-1": 271,
         "rederivation-30-7": 186,
         "redesign-adoption-6-8": 112,
+        "the-d8-adoption-20-8": 77,
         "the-landing-20-8": 75
       },
       "name": "Tom McDonald",
@@ -15685,6 +16436,7 @@
         "post-r19-redesign-1": 445,
         "rederivation-30-7": 532,
         "redesign-adoption-6-8": 385,
+        "the-d8-adoption-20-8": 399,
         "the-landing-20-8": 403
       },
       "name": "Tom Papley",
@@ -15706,6 +16458,7 @@
         "post-r19-redesign-1": 2032,
         "rederivation-30-7": 2262,
         "redesign-adoption-6-8": 2176,
+        "the-d8-adoption-20-8": 2017,
         "the-landing-20-8": 1898
       },
       "name": "Tom Powell",
@@ -15727,6 +16480,7 @@
         "post-r19-redesign-1": 1403,
         "rederivation-30-7": 1790,
         "redesign-adoption-6-8": 1627,
+        "the-d8-adoption-20-8": 1609,
         "the-landing-20-8": 1522
       },
       "name": "Tom Sparrow",
@@ -15748,6 +16502,7 @@
         "post-r19-redesign-1": 1543,
         "rederivation-30-7": 2370,
         "redesign-adoption-6-8": 2207,
+        "the-d8-adoption-20-8": 2271,
         "the-landing-20-8": 2223
       },
       "name": "Touk Miller",
@@ -15769,6 +16524,7 @@
         "post-r19-redesign-1": 1909,
         "rederivation-30-7": 1759,
         "redesign-adoption-6-8": 1626,
+        "the-d8-adoption-20-8": 1764,
         "the-landing-20-8": 1695
       },
       "name": "Trent Rivers",
@@ -15790,6 +16546,7 @@
         "post-r19-redesign-1": 7624,
         "rederivation-30-7": 7414,
         "redesign-adoption-6-8": 8472,
+        "the-d8-adoption-20-8": 7031,
         "the-landing-20-8": 6968
       },
       "name": "Tristan Xerri",
@@ -15811,6 +16568,7 @@
         "post-r19-redesign-1": 1399,
         "rederivation-30-7": 1598,
         "redesign-adoption-6-8": 1396,
+        "the-d8-adoption-20-8": 933,
         "the-landing-20-8": 933
       },
       "name": "Ty Gallop",
@@ -15832,6 +16590,7 @@
         "post-r19-redesign-1": 615,
         "rederivation-30-7": 607,
         "redesign-adoption-6-8": 580,
+        "the-d8-adoption-20-8": 375,
         "the-landing-20-8": 375
       },
       "name": "Tyan Prindable",
@@ -15853,6 +16612,7 @@
         "post-r19-redesign-1": 427,
         "rederivation-30-7": 447,
         "redesign-adoption-6-8": 269,
+        "the-d8-adoption-20-8": 217,
         "the-landing-20-8": 217
       },
       "name": "Tylah Williams",
@@ -15874,6 +16634,7 @@
         "post-r19-redesign-1": 317,
         "rederivation-30-7": 319,
         "redesign-adoption-6-8": 243,
+        "the-d8-adoption-20-8": 311,
         "the-landing-20-8": 250
       },
       "name": "Tylar Young",
@@ -15895,6 +16656,7 @@
         "post-r19-redesign-1": 78,
         "rederivation-30-7": 80,
         "redesign-adoption-6-8": 55,
+        "the-d8-adoption-20-8": 54,
         "the-landing-20-8": 30
       },
       "name": "Tyler Brockman",
@@ -15916,6 +16678,7 @@
         "post-r19-redesign-1": 1094,
         "rederivation-30-7": 1184,
         "redesign-adoption-6-8": 1085,
+        "the-d8-adoption-20-8": 988,
         "the-landing-20-8": 881
       },
       "name": "Tyler Sonsie",
@@ -15937,6 +16700,7 @@
         "post-r19-redesign-1": 197,
         "rederivation-30-7": 266,
         "redesign-adoption-6-8": 86,
+        "the-d8-adoption-20-8": 67,
         "the-landing-20-8": 67
       },
       "name": "Tyler Welsh",
@@ -15958,6 +16722,7 @@
         "post-r19-redesign-1": 169,
         "rederivation-30-7": 149,
         "redesign-adoption-6-8": 124,
+        "the-d8-adoption-20-8": 69,
         "the-landing-20-8": 39
       },
       "name": "Tyrell Dewar",
@@ -15979,6 +16744,7 @@
         "post-r19-redesign-1": 231,
         "rederivation-30-7": 255,
         "redesign-adoption-6-8": 164,
+        "the-d8-adoption-20-8": 226,
         "the-landing-20-8": 180
       },
       "name": "Tyson Stengle",
@@ -16000,6 +16766,7 @@
         "post-r19-redesign-1": 318,
         "rederivation-30-7": 237,
         "redesign-adoption-6-8": 167,
+        "the-d8-adoption-20-8": 188,
         "the-landing-20-8": 188
       },
       "name": "Vigo Visentini",
@@ -16021,6 +16788,7 @@
         "post-r19-redesign-1": 82,
         "rederivation-30-7": 86,
         "redesign-adoption-6-8": 60,
+        "the-d8-adoption-20-8": 205,
         "the-landing-20-8": 159
       },
       "name": "Wade Derksen",
@@ -16042,6 +16810,7 @@
         "post-r19-redesign-1": 2044,
         "rederivation-30-7": 2003,
         "redesign-adoption-6-8": 1829,
+        "the-d8-adoption-20-8": 1754,
         "the-landing-20-8": 1698
       },
       "name": "Wayne Milera",
@@ -16063,6 +16832,7 @@
         "post-r19-redesign-1": 601,
         "rederivation-30-7": 605,
         "redesign-adoption-6-8": 579,
+        "the-d8-adoption-20-8": 294,
         "the-landing-20-8": 262
       },
       "name": "Wil Dawson",
@@ -16084,6 +16854,7 @@
         "post-r19-redesign-1": 32,
         "rederivation-30-7": 27,
         "redesign-adoption-6-8": 29,
+        "the-d8-adoption-20-8": 35,
         "the-landing-20-8": 13
       },
       "name": "Wil Parker",
@@ -16105,6 +16876,7 @@
         "post-r19-redesign-1": 969,
         "rederivation-30-7": 956,
         "redesign-adoption-6-8": 775,
+        "the-d8-adoption-20-8": 885,
         "the-landing-20-8": 746
       },
       "name": "Wil Powell",
@@ -16126,6 +16898,7 @@
         "post-r19-redesign-1": 6077,
         "rederivation-30-7": 6380,
         "redesign-adoption-6-8": 7150,
+        "the-d8-adoption-20-8": 6635,
         "the-landing-20-8": 6607
       },
       "name": "Will Ashcroft",
@@ -16147,6 +16920,7 @@
         "post-r19-redesign-1": 1016,
         "rederivation-30-7": 1038,
         "redesign-adoption-6-8": 840,
+        "the-d8-adoption-20-8": 147,
         "the-landing-20-8": 147
       },
       "name": "Will Brodie",
@@ -16168,6 +16942,7 @@
         "post-r19-redesign-1": 495,
         "rederivation-30-7": 491,
         "redesign-adoption-6-8": 200,
+        "the-d8-adoption-20-8": 225,
         "the-landing-20-8": 225
       },
       "name": "Will Darcy",
@@ -16189,6 +16964,7 @@
         "post-r19-redesign-1": 2846,
         "rederivation-30-7": 2966,
         "redesign-adoption-6-8": 2949,
+        "the-d8-adoption-20-8": 2284,
         "the-landing-20-8": 2139
       },
       "name": "Will Day",
@@ -16210,6 +16986,7 @@
         "post-r19-redesign-1": 233,
         "rederivation-30-7": 279,
         "redesign-adoption-6-8": 196,
+        "the-d8-adoption-20-8": 239,
         "the-landing-20-8": 185
       },
       "name": "Will Edwards",
@@ -16231,6 +17008,7 @@
         "post-r19-redesign-1": 1587,
         "rederivation-30-7": 1727,
         "redesign-adoption-6-8": 1694,
+        "the-d8-adoption-20-8": 1504,
         "the-landing-20-8": 1439
       },
       "name": "Will Graham",
@@ -16252,6 +17030,7 @@
         "post-r19-redesign-1": 658,
         "rederivation-30-7": 672,
         "redesign-adoption-6-8": 587,
+        "the-d8-adoption-20-8": 619,
         "the-landing-20-8": 619
       },
       "name": "Will Green",
@@ -16273,6 +17052,7 @@
         "post-r19-redesign-1": 312,
         "rederivation-30-7": 368,
         "redesign-adoption-6-8": 429,
+        "the-d8-adoption-20-8": 184,
         "the-landing-20-8": 184
       },
       "name": "Will Hayes",
@@ -16294,6 +17074,7 @@
         "post-r19-redesign-1": 219,
         "rederivation-30-7": 224,
         "redesign-adoption-6-8": 139,
+        "the-d8-adoption-20-8": 252,
         "the-landing-20-8": 227
       },
       "name": "Will Hayward",
@@ -16315,6 +17096,7 @@
         "post-r19-redesign-1": 16,
         "rederivation-30-7": 16,
         "redesign-adoption-6-8": 113,
+        "the-d8-adoption-20-8": 96,
         "the-landing-20-8": 59
       },
       "name": "Will Lewis",
@@ -16336,6 +17118,7 @@
         "post-r19-redesign-1": 415,
         "rederivation-30-7": 439,
         "redesign-adoption-6-8": 380,
+        "the-d8-adoption-20-8": 211,
         "the-landing-20-8": 183
       },
       "name": "Will Lorenz",
@@ -16357,6 +17140,7 @@
         "post-r19-redesign-1": 136,
         "rederivation-30-7": 177,
         "redesign-adoption-6-8": 131,
+        "the-d8-adoption-20-8": 136,
         "the-landing-20-8": 130
       },
       "name": "Will McLachlan",
@@ -16378,6 +17162,7 @@
         "post-r19-redesign-1": 920,
         "rederivation-30-7": 806,
         "redesign-adoption-6-8": 641,
+        "the-d8-adoption-20-8": 730,
         "the-landing-20-8": 593
       },
       "name": "Will Setterfield",
@@ -16399,6 +17184,7 @@
         "post-r19-redesign-1": 729,
         "rederivation-30-7": 736,
         "redesign-adoption-6-8": 575,
+        "the-d8-adoption-20-8": 680,
         "the-landing-20-8": 585
       },
       "name": "Willem Drew",
@@ -16420,6 +17206,7 @@
         "post-r19-redesign-1": 4306,
         "rederivation-30-7": 4498,
         "redesign-adoption-6-8": 4774,
+        "the-d8-adoption-20-8": 4225,
         "the-landing-20-8": 4225
       },
       "name": "Willem Duursma",
@@ -16441,6 +17228,7 @@
         "post-r19-redesign-1": 772,
         "rederivation-30-7": 775,
         "redesign-adoption-6-8": 678,
+        "the-d8-adoption-20-8": 229,
         "the-landing-20-8": 229
       },
       "name": "William McCabe",
@@ -16462,6 +17250,7 @@
         "post-r19-redesign-1": 392,
         "rederivation-30-7": 470,
         "redesign-adoption-6-8": 352,
+        "the-d8-adoption-20-8": 411,
         "the-landing-20-8": 411
       },
       "name": "Xavier Bamert",
@@ -16483,6 +17272,7 @@
         "post-r19-redesign-1": 202,
         "rederivation-30-7": 208,
         "redesign-adoption-6-8": 145,
+        "the-d8-adoption-20-8": 232,
         "the-landing-20-8": 145
       },
       "name": "Xavier Duursma",
@@ -16504,6 +17294,7 @@
         "post-r19-redesign-1": 2118,
         "rederivation-30-7": 2184,
         "redesign-adoption-6-8": 2064,
+        "the-d8-adoption-20-8": 1465,
         "the-landing-20-8": 1465
       },
       "name": "Xavier Lindsay",
@@ -16525,6 +17316,7 @@
         "post-r19-redesign-1": 40,
         "rederivation-30-7": 72,
         "redesign-adoption-6-8": 39,
+        "the-d8-adoption-20-8": 80,
         "the-landing-20-8": 51
       },
       "name": "Xavier O'Halloran",
@@ -16546,6 +17338,7 @@
         "post-r19-redesign-1": 898,
         "rederivation-30-7": 902,
         "redesign-adoption-6-8": 965,
+        "the-d8-adoption-20-8": 914,
         "the-landing-20-8": 914
       },
       "name": "Xavier Taylor",
@@ -16567,6 +17360,7 @@
         "post-r19-redesign-1": 232,
         "rederivation-30-7": 263,
         "redesign-adoption-6-8": 109,
+        "the-d8-adoption-20-8": 116,
         "the-landing-20-8": 116
       },
       "name": "Xavier Walsh",
@@ -16588,6 +17382,7 @@
         "post-r19-redesign-1": 3026,
         "rederivation-30-7": 3207,
         "redesign-adoption-6-8": 3157,
+        "the-d8-adoption-20-8": 2774,
         "the-landing-20-8": 2712
       },
       "name": "Zac Bailey",
@@ -16609,6 +17404,7 @@
         "post-r19-redesign-1": 53,
         "rederivation-30-7": 48,
         "redesign-adoption-6-8": 128,
+        "the-d8-adoption-20-8": 62,
         "the-landing-20-8": 39
       },
       "name": "Zac Banch",
@@ -16630,6 +17426,7 @@
         "post-r19-redesign-1": 183,
         "rederivation-30-7": 185,
         "redesign-adoption-6-8": 111,
+        "the-d8-adoption-20-8": 155,
         "the-landing-20-8": 109
       },
       "name": "Zac Fisher",
@@ -16651,6 +17448,7 @@
         "post-r19-redesign-1": 310,
         "rederivation-30-7": 422,
         "redesign-adoption-6-8": 157,
+        "the-d8-adoption-20-8": 133,
         "the-landing-20-8": 133
       },
       "name": "Zac McCarthy",
@@ -16672,6 +17470,7 @@
         "post-r19-redesign-1": 330,
         "rederivation-30-7": 261,
         "redesign-adoption-6-8": 200,
+        "the-d8-adoption-20-8": 205,
         "the-landing-20-8": 149
       },
       "name": "Zac Taylor",
@@ -16693,6 +17492,7 @@
         "post-r19-redesign-1": 223,
         "rederivation-30-7": 264,
         "redesign-adoption-6-8": 128,
+        "the-d8-adoption-20-8": 153,
         "the-landing-20-8": 153
       },
       "name": "Zac Walker",
@@ -16714,6 +17514,7 @@
         "post-r19-redesign-1": 357,
         "rederivation-30-7": 327,
         "redesign-adoption-6-8": 220,
+        "the-d8-adoption-20-8": 291,
         "the-landing-20-8": 247
       },
       "name": "Zach Guthrie",
@@ -16735,6 +17536,7 @@
         "post-r19-redesign-1": 1547,
         "rederivation-30-7": 1434,
         "redesign-adoption-6-8": 1234,
+        "the-d8-adoption-20-8": 921,
         "the-landing-20-8": 869
       },
       "name": "Zach Reid",
@@ -16756,6 +17558,7 @@
         "post-r19-redesign-1": 2796,
         "rederivation-30-7": 2823,
         "redesign-adoption-6-8": 2710,
+        "the-d8-adoption-20-8": 2547,
         "the-landing-20-8": 2542
       },
       "name": "Zachary Merrett",
@@ -16777,6 +17580,7 @@
         "post-r19-redesign-1": 194,
         "rederivation-30-7": 524,
         "redesign-adoption-6-8": 380,
+        "the-d8-adoption-20-8": 355,
         "the-landing-20-8": 357
       },
       "name": "Zachary Williams",
@@ -16798,6 +17602,7 @@
         "post-r19-redesign-1": 6307,
         "rederivation-30-7": 6473,
         "redesign-adoption-6-8": 7175,
+        "the-d8-adoption-20-8": 6596,
         "the-landing-20-8": 6551
       },
       "name": "Zak Butters",
@@ -16819,6 +17624,7 @@
         "post-r19-redesign-1": 7,
         "rederivation-30-7": 4,
         "redesign-adoption-6-8": 44,
+        "the-d8-adoption-20-8": 113,
         "the-landing-20-8": 113
       },
       "name": "Zak Evans",
@@ -16840,6 +17646,7 @@
         "post-r19-redesign-1": 574,
         "rederivation-30-7": 644,
         "redesign-adoption-6-8": 550,
+        "the-d8-adoption-20-8": 409,
         "the-landing-20-8": 409
       },
       "name": "Zak Johnson",
@@ -16861,6 +17668,7 @@
         "post-r19-redesign-1": 756,
         "rederivation-30-7": 779,
         "redesign-adoption-6-8": 765,
+        "the-d8-adoption-20-8": 323,
         "the-landing-20-8": 284
       },
       "name": "Zane Duursma",
@@ -16882,6 +17690,7 @@
         "post-r19-redesign-1": 568,
         "rederivation-30-7": 633,
         "redesign-adoption-6-8": 499,
+        "the-d8-adoption-20-8": 404,
         "the-landing-20-8": 404
       },
       "name": "Zane Peucker",
@@ -16903,6 +17712,7 @@
         "post-r19-redesign-1": 470,
         "rederivation-30-7": 475,
         "redesign-adoption-6-8": 398,
+        "the-d8-adoption-20-8": 141,
         "the-landing-20-8": 141
       },
       "name": "Zane Zakostelsky",
@@ -16924,6 +17734,7 @@
         "post-r19-redesign-1": 2741,
         "rederivation-30-7": 2769,
         "redesign-adoption-6-8": 2704,
+        "the-d8-adoption-20-8": 1758,
         "the-landing-20-8": 1758
       },
       "name": "Zeke Uwland",
