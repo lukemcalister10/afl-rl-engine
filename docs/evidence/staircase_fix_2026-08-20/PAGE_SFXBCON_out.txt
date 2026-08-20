@@ -1,0 +1,7 @@
+NOARB_SFX_SFXBCON.html written  (70565 bytes)
+  cells whose VERDICT CHANGED: PRIMARY ND band picks 11-20: fair -> BUY-SIDE RED · PRIMARY ND band (EX0506 sensitivity) picks 21-64: SELL-SIDE RED -> fair
+  breaching cells, candidate : PRIMARY picks 11-20 · MODERN picks 1-20 · MODERN picks 1-10 · PRIMARY SSP · MODERN SSP
+  breaching cells, live board: MODERN picks 1-20 · MODERN picks 1-10 · PRIMARY SSP · MODERN SSP
+  breaches NEW on the candidate: PRIMARY picks 11-20
+  breaches REMOVED by the candidate: NONE
+  class mark: candidate 1.0838   live board 1.0738   (ORDER K validation row 1.0513)

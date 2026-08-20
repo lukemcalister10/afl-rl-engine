@@ -1,0 +1,22 @@
+=== ORDER 44 F1 — PREREG_STAIRCASE.md governs. PRICED, NOT ADOPTED. ===
+  engine  : 3f4aa10b23102dc4f7362b73fc20ac7b  (base was 1867e953cf844d089ab1da68379b1742)
+  rl_model: 6fe7c4155866d80e8045bed2d3bf2802  (pin 6fe7c4155866d80e8045bed2d3bf2802, UNMOVED)
+  store   : b745002eb0a0fbb1c34fa44f1ef708d6  (pin b745002eb0a0fbb1c34fa44f1ef708d6)
+  q97m    : cfdc73216c099e5e8f1fda3968f31c00  (pin cfdc73216c099e5e8f1fda3968f31c00, FROZEN)
+  config  : 269d20ab86e3b9d13867987065c757d2  (RL_O44_LVLMONO must be ABSENT from it)
+  RL_O44_LVLMONO in data/model_config.json: 0
+
+build-lock: HELD by sfx-f1 (pid 17540) since 2026-08-20T16:02:14Z — single writer for the shared workspace.
+SFX OFF_DEV_1    mode=dev       bal=False rc=0 board_md5=68be10c79d0ee096455754e084bcf757  (103.6s)
+  staging removed: /home/claude/fvprov_d7k6wbue
+SFX OFF_DEV_2    mode=dev       bal=False rc=0 board_md5=68be10c79d0ee096455754e084bcf757  (101.7s)
+  staging removed: /home/claude/fvprov_hupipzc7
+SFX OFF_CANON    mode=canonical bal=False rc=0 board_md5=68be10c79d0ee096455754e084bcf757  (100.9s)
+  staging removed: /home/claude/fvprov_6b6tn_y3
+SFX OFF_BAL      mode=dev       bal=True  rc=0 board_md5=556ad70d295923455982ae33e4b8bfd3  (102.7s)
+  staging removed: /home/claude/fvprov_zdnjcfv5
+build-lock: released by sfx-f1
+
+=== F1 EXPECTED ===
+  OFF_DEV_1 == OFF_DEV_2 == OFF_CANON == 68be10c79d0ee096455754e084bcf757  (THE LIVE BOARD)
+  OFF_BAL                             == 556ad70d295923455982ae33e4b8bfd3  (THE BALANCED SIBLING)

@@ -1,0 +1,15 @@
+====================================================================================================
+DECISION-PACKET SLOT CHECK — docs/evidence/staircase_fix_2026-08-20/PACKET_STAIRCASE.md
+====================================================================================================
+  OK   what_changes       filled
+  OK   who_moves          filled
+  OK   who_does_not       filled
+  OK   cost               filled
+  OK   standing_tables    filled
+  OK   silly              filled
+  OK   recommendation     filled
+  OK   falsifiers         filled
+  OK   open_findings      filled
+
+SLOTS: 9 of 9 present; 0 problem(s)
+VERDICT: GREEN — every fixed slot is filled

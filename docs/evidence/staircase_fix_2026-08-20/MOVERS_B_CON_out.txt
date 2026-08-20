@@ -1,0 +1,727 @@
+==========================================================================================================================
+ORDER 44 — THE MOVERS LIST.  base = THE LIVE BOARD (dial unset)  ->  B_CON  (RL_O44_LVLMONO=smooth+conserve)
+PRICED, NOT ADOPTED. The live board is UNMOVED. Names illustrate; they never gate.
+==========================================================================================================================
+base board      68be10c79d0ee096455754e084bcf757   total 692296   n=804
+candidate board f22823491122529df0726ef247dc1085   total 688127   n=804
+movers          620   UP 290   DOWN 330   unmoved 184
+total up +4407      total down -8576
+
+--------------------------------------------------------------------------------------------------------------------------
+LAW 9 — CONSERVATION.  "Re-pricing redistributes value; it does not mint or burn it."  RULEBOOK v3 PART 3: band_scar = 200
+--------------------------------------------------------------------------------------------------------------------------
+   total BEFORE                       692296
+   total AFTER                        688127
+   MINT                                -4169 SCAR   (-0.6022% of the board)
+   the rail                              200 SCAR
+   margin                              -3969 SCAR   -> *** LAW 9 BREACH — STATED, NOT HIDDEN ***
+   the breach is 20.8x the rail. It is presented as an OWNER RULING option, exactly as the
+   diagnosis section 8.1 framed it: either renormalise, or the owner rules that the lift IS the
+   correction rather than an inflation. It is not hidden and it is not netted away.
+
+THE FOUR NAMED VICTIMS — the rows this fix exists for
+   player                       before      after      delta         %  games   pos
+   Max Kondogiannis                359        405        +46  +12.81%      7    SD
+   Josh Dolan                      247        305        +58  +23.48%     18    SF
+   Charlie West                    381        372         -9   -2.36%      5   KPF
+   Will Hayes                      180        245        +65  +36.11%      8    SF
+
+CONTROLS (the diagnosis named these as immune or near-immune)
+   Billy Cootee                    144        153         +9   +6.25%      5   MID
+   Marcus Herbert                  748        740         -8   -1.07%      6    SD
+   Jack Williams                   411        422        +11   +2.68%     49   KPF
+   Rhett Bazzo                     514        543        +29   +5.64%     38   KPD
+   Harry Sheezel                 10428      10293       -135   -1.29%     86   MID
+
+AGE BAND       n   movers     up   down       delta     %band
+<=19          71       35     23     12        +409    +0.87%
+20-21        162      106     67     39        +677    +0.56%
+22-23        142      116     66     50        -566    -0.39%
+24-26        164      146     75     71       -2069    -1.07%
+27+          265      217     59    158       -2620    -1.41%
+
+POSITION       n   movers     up   down       delta     %band
+MID          197      165     77     88        -931    -0.30%
+SD           173      132     52     80        -641    -0.52%
+SF           185      138     71     67        -961    -1.19%
+KPD           92       69     44     25         +79    +0.17%
+KPF          103       83     34     49        -658    -0.94%
+RUCK          54       33     12     21       -1057    -1.71%
+
+2026 GAMES     n   movers     up   down       delta     %band
+g0            95        5      3      2          +0    +0.00%
+g1-4          48       30     22      8        +132    +0.85%
+g5-13         86       73     59     14       +1084    +3.02%
+g14-21        48       42     25     17        +314    +0.79%
+g22+         527      470    181    289       -5699    -0.97%
+
+THE FULL MOVERS LIST — every mover, by name, sorted by delta
+#    name                         age  pos   games     before     after     delta         %
+1    Ethan Read                   21   KPF   36           490       589       +99   +20.20%
+2    Cooper Duff-Tytler           19   KPF   11          1809      1896       +87    +4.81%
+3    Liam Fawcett                 21   KPF   8            267       353       +86   +32.21%
+4    Hussien El Achkar            19   SF    7            364       441       +77   +21.15%
+5    Archer Reid                  21   KPF   20           373       445       +72   +19.30%
+6    Ned Reeves                   28   RUCK  57           342       414       +72   +21.05%
+7    Will Hayes                   20   SF    8            180       245       +65   +36.11%
+8    Finn O'Sullivan              20   MID   37          3222      3282       +60    +1.86%
+9    Matthew Jefferson            22   KPF   19           314       374       +60   +19.11%
+10   Sam Marshall                 20   MID   13           489       548       +59   +12.07%
+11   Josh Dolan                   20   SF    18           247       305       +58   +23.48%
+12   Luke Trainor                 20   KPD   29           932       990       +58    +6.22%
+13   Cooper Hynes                 20   MID   25           853       910       +57    +6.68%
+14   Lachlan Gulbin               20   SF    9            234       290       +56   +23.93%
+15   Bo Allan                     20   SD    22           562       617       +55    +9.79%
+16   Nate Caddy                   21   KPF   44          1612      1667       +55    +3.41%
+17   Sean Darcy                   28   RUCK  134          837       890       +53    +6.33%
+18   Matt Whitlock                20   KPF   5            228       280       +52   +22.81%
+19   Colby McKercher              21   MID   58          4263      4313       +50    +1.17%
+20   Hugo Garcia                  21   MID   45          2544      2594       +50    +1.97%
+21   Josh Daicos                  28   SD    170         2118      2168       +50    +2.36%
+22   Sam Cumming                  19   MID   13          2142      2190       +48    +2.24%
+23   Max Kondogiannis             19   SD    7            359       405       +46   +12.81%
+24   Malakai Champion             20   SF    10           165       210       +45   +27.27%
+25   Sid Draper                   20   MID   10           906       949       +43    +4.75%
+26   Elijah Hewett                22   MID   40           540       581       +41    +7.59%
+27   George Wardlaw               22   MID   52          2974      3015       +41    +1.38%
+28   Lachy Dovaston               19   SF    6            544       584       +40    +7.35%
+29   Sam Draper                   28   RUCK  96          1012      1052       +40    +3.95%
+30   Josaia Delana                20   SF    8            207       246       +39   +18.84%
+31   Willem Duursma               19   MID   17          3720      3759       +39    +1.05%
+32   Jobe Shanahan                20   KPF   28          1298      1336       +38    +2.93%
+33   Nick Bryan                   25   RUCK  33           768       806       +38    +4.95%
+34   Ty Gallop                    20   KPF   23           932       970       +38    +4.08%
+35   Matt Carroll                 21   MID   27           739       776       +37    +5.01%
+36   Nasiah Wanganeen-Milera      23   MID   101         8660      8697       +37    +0.43%
+37   Harry Rowston                22   MID   25           524       560       +36    +6.87%
+38   Tom Gross                    20   MID   9            398       434       +36    +9.05%
+39   Andrew McGrath               28   SD    196         1071      1106       +35    +3.27%
+40   Harvey Langford              20   MID   41          2327      2362       +35    +1.50%
+41   Harley Reid                  21   MID   58          3919      3952       +33    +0.84%
+42   Tom Green                    25   MID   115         5575      5607       +32    +0.57%
+43   Jake Bowey                   24   SD    95          3896      3927       +31    +0.80%
+44   Beau Addinsall               19   MID   6           1172      1202       +30    +2.56%
+45   James Borlase                24   KPD   30           374       404       +30    +8.02%
+46   Toby Murray                  23   KPF   11           265       295       +30   +11.32%
+47   Harry Dean                   19   KPD   15          3072      3101       +29    +0.94%
+48   Oscar Adams                  23   KPD   21           112       141       +29   +25.89%
+49   Rhett Bazzo                  23   KPD   38           514       543       +29    +5.64%
+50   Riley Hamilton               20   SF    4            222       251       +29   +13.06%
+51   Jack Buller                  25   KPF   20            81       108       +27   +33.33%
+52   Harry Kyle                   19   SD    5            842       868       +26    +3.09%
+53   Mitchell Edwards             21   RUCK  15          1484      1510       +26    +1.75%
+54   Oliver Hollands              22   MID   76          1586      1612       +26    +1.64%
+55   Calsher Dear                 21   KPF   31           631       656       +25    +3.96%
+56   Heath Chapman                24   SD    84           487       512       +25    +5.13%
+57   Jacob Newton                 20   SF    5            186       211       +25   +13.44%
+58   Nathan O'Driscoll            24   MID   50           476       501       +25    +5.25%
+59   Oliver Hayes-Brown           26   RUCK  7            177       202       +25   +14.12%
+60   Sam Banks                    23   SD    57           834       859       +25    +3.00%
+61   Jasper Alger                 20   SF    12           213       237       +24   +11.27%
+62   Oscar Steene                 23   RUCK  8            505       529       +24    +4.75%
+63   Max Gruzewski                22   KPF   21           474       496       +22    +4.64%
+64   Nikolas Cox                  24   KPF   61           163       185       +22   +13.50%
+65   Zane Duursma                 21   SF    38           322       344       +22    +6.83%
+66   Daniel Annable               19   MID   1           1123      1144       +21    +1.87%
+67   Finnbar Maley                23   KPF   13           233       254       +21    +9.01%
+68   Isaac Kako                   20   SF    34           735       756       +21    +2.86%
+69   Jacob Konstanty              22   SF    33            92       113       +21   +22.83%
+70   Koltyn Tholstrup             21   SD    38          1786      1807       +21    +1.18%
+71   Max Heath                    24   RUCK  11           539       560       +21    +3.90%
+72   Max Holmes                   24   MID   120         7588      7609       +21    +0.28%
+73   Darcy Fort                   33   RUCK  75           118       138       +20   +16.95%
+74   Isaac Keeler                 22   KPF   13           177       197       +20   +11.30%
+75   Jai Culley                   23   MID   23           255       275       +20    +7.84%
+76   Arthur Jones                 23   SF    32           112       131       +19   +16.96%
+77   Brandon Zerk-Thatcher        28   KPD   94            67        86       +19   +28.36%
+78   Corey Warner                 23   SF    28            59        78       +19   +32.20%
+79   Max Michalanney              22   SD    85           471       490       +19    +4.03%
+80   Steely Green                 22   SF    42            67        86       +19   +28.36%
+81   Hayden Young                 25   MID   98          1760      1778       +18    +1.02%
+82   Joel Amartey                 27   KPF   76           118       136       +18   +15.25%
+83   Riley Hardeman               21   SD    24           342       360       +18    +5.26%
+84   Angus Sheldrick              23   MID   46           693       710       +17    +2.45%
+85   Beau McCreery                25   SF    114          204       221       +17    +8.33%
+86   Jai Murray                   19   MID   7            948       965       +17    +1.79%
+87   Jedd Busslinger              22   KPD   14           854       871       +17    +1.99%
+88   Luke Pedlar                  24   SF    49            90       107       +17   +18.89%
+89   Andrew Brayshaw              27   MID   189         3071      3087       +16    +0.52%
+90   Caiden Cleary                21   SF    25           287       303       +16    +5.57%
+91   Jaxon Artemis                20   SD    2            390       406       +16    +4.10%
+92   Connor Budarick              25   SD    67           295       310       +15    +5.08%
+93   Darcy Jones                  22   SF    37          1280      1295       +15    +1.17%
+94   Samuel Swadling              19   MID   5            954       969       +15    +1.57%
+95   Ben Ainsworth                28   SF    177          182       196       +14    +7.69%
+96   Hugh Boxshall                20   MID   17           755       769       +14    +1.85%
+97   Joel Fitzgerald              23   MID   6            303       317       +14    +4.62%
+98   Michael Sellwood             23   SD    18           305       319       +14    +4.59%
+99   Sam Clohesy                  24   MID   43           339       353       +14    +4.13%
+100  Tom Cochrane                 20   SF    6            137       151       +14   +10.22%
+101  Wade Derksen                 25   KPD   9            216       230       +14    +6.48%
+102  Angus Anderson               23   MID   11           262       275       +13    +4.96%
+103  Edward Allan                 22   MID   29           756       769       +13    +1.72%
+104  Oliver Hannaford             20   SF    5            190       203       +13    +6.84%
+105  Zeke Uwland                  19   SD    16          1755      1768       +13    +0.74%
+106  Campbell Gray                23   KPD   12           255       267       +12    +4.71%
+107  Chris Scerri                 20   SF    7            342       354       +12    +3.51%
+108  Daniel Curtin                21   MID   44          2419      2431       +12    +0.50%
+109  Errol Gulden                 24   MID   110         7075      7087       +12    +0.17%
+110  Noah Roberts-Thomson         19   SF    3            250       262       +12    +4.80%
+111  Sam Walsh                    26   MID   152         3011      3023       +12    +0.40%
+112  Tom Hanily                   21   SF    12           155       167       +12    +7.74%
+113  Tylar Young                  28   KPD   54           294       306       +12    +4.08%
+114  Adam Cerra                   27   MID   163         1085      1096       +11    +1.01%
+115  Ashton Moir                  21   SF    13           210       221       +11    +5.24%
+116  Blake Howes                  23   SD    47           283       294       +11    +3.89%
+117  Campbell Chesser             23   MID   39           287       298       +11    +3.83%
+118  Hayden McLean                27   KPF   106          247       258       +11    +4.45%
+119  Jack Williams                23   KPF   49           411       422       +11    +2.68%
+120  James Trezise                24   SD    38           163       174       +11    +6.75%
+121  Josh Lai                     21   SD    14           418       429       +11    +2.63%
+122  Josh Sinn                    23   SD    30           210       221       +11    +5.24%
+123  Jye Caldwell                 26   MID   103         1093      1104       +11    +1.01%
+124  Lachie Jaques                20   SD    8            569       580       +11    +1.93%
+125  Liam Puncher                 23   KPD   4            179       190       +11    +6.15%
+126  Mabior Chol                  29   KPF   122          290       301       +11    +3.79%
+127  Neil Erasmus                 23   MID   58           931       942       +11    +1.18%
+128  Ryan Byrnes                  25   SD    91           111       122       +11    +9.91%
+129  Xavier Taylor                19   SD    2            906       917       +11    +1.21%
+130  Brayden Cook                 24   MID   48           737       747       +10    +1.36%
+131  Chad Warner                  25   MID   127         4093      4103       +10    +0.24%
+132  Hamish Davis                 20   MID   26           616       626       +10    +1.62%
+133  Joe Berry                    20   SF    31           987       997       +10    +1.01%
+134  Josh Gibcus                  23   KPD   22           241       251       +10    +4.15%
+135  Matthew Flynn                29   RUCK  59           616       626       +10    +1.62%
+136  Mitch Zadow                  22   SF    5             97       107       +10   +10.31%
+137  Tyler Sonsie                 23   MID   53           985       995       +10    +1.02%
+138  Will Graham                  21   MID   36          1501      1511       +10    +0.67%
+139  Billy Cootee                 24   MID   5            144       153        +9    +6.25%
+140  Flynn Perez                  25   SD    31            37        46        +9   +24.32%
+141  Harvey Gallagher             23   SD    28            33        42        +9   +27.27%
+142  James Tunstill               23   MID   23           144       153        +9    +6.25%
+143  Lewis Young                  28   KPD   88           145       154        +9    +6.21%
+144  Samson Ryan                  26   RUCK  27           370       379        +9    +2.43%
+145  Will McLachlan               21   SF    7            133       142        +9    +6.77%
+146  Bailey Macdonald             22   SD    17           106       114        +8    +7.55%
+147  Esava Ratugolea              28   KPD   119          166       174        +8    +4.82%
+148  Henry Smith                  24   KPF   6            125       133        +8    +6.40%
+149  Hugh Bond                    22   SD    19           109       117        +8    +7.34%
+150  Mark Keane                   26   KPD   61          1365      1373        +8    +0.59%
+151  Nick Murray                  26   KPD   78           368       376        +8    +2.17%
+152  Oliver Henry                 24   SF    103          233       241        +8    +3.43%
+153  Riley Garcia                 25   SF    39            80        88        +8   +10.00%
+154  Bailey Laurie                24   SF    24            98       105        +7    +7.14%
+155  Bradley Close                28   SF    139           27        34        +7   +25.93%
+156  Callum M. Brown              26   SF    74            60        67        +7   +11.67%
+157  Darcy Moore                  30   KPD   199          186       193        +7    +3.76%
+158  Harry O'Farrell              20   KPD   6            535       542        +7    +1.31%
+159  Jack Bowes                   28   MID   152           78        85        +7    +8.97%
+160  Jagga Smith                  20   MID   18          4314      4321        +7    +0.16%
+161  Jake Lever                   30   KPD   204          220       227        +7    +3.18%
+162  Kye Annand                   23   KPD   7            411       418        +7    +1.70%
+163  Nicholas Coffield            27   SD    75            82        89        +7    +8.54%
+164  Roan Steele                  25   MID   20            73        80        +7    +9.59%
+165  Ben King                     26   KPF   139          226       232        +6    +2.65%
+166  Bobby Hill                   26   SF    97            44        50        +6   +13.64%
+167  Caleb Lewis                  23   KPF   2            163       169        +6    +3.68%
+168  Changkuoth Jiath             27   SD    87            33        39        +6   +18.18%
+169  Cody Angove                  20   MID   4            452       458        +6    +1.33%
+170  Dylan Patterson              19   SD    4           1192      1198        +6    +0.50%
+171  Harrison Oliver              20   SD    5            268       274        +6    +2.24%
+172  Harry Schoenberg             25   MID   67            32        38        +6   +18.75%
+173  Jack Carroll                 24   SD    36            94       100        +6    +6.38%
+174  Jack Hutchinson              25   MID   28            69        75        +6    +8.70%
+175  Jack Ison                    19   SF    7            452       458        +6    +1.33%
+176  Jackson Archer               23   SD    26            21        27        +6   +28.57%
+177  Jye Amiss                    23   KPF   90          1488      1494        +6    +0.40%
+178  Maurice Rioli                24   SF    58            23        29        +6   +26.09%
+179  Ollie Greeves                19   MID   3            475       481        +6    +1.26%
+180  Oscar Allen                  27   KPF   112          143       149        +6    +4.20%
+181  Paul Curtis                  23   SF    94          1476      1482        +6    +0.41%
+182  Sam Butler                   23   SF    32           103       109        +6    +5.83%
+183  Brayden Fiorini              29   MID   125          425       430        +5    +1.18%
+184  Brodie Kemp                  25   KPF   68           694       699        +5    +0.72%
+185  Buku Khamis                  26   KPD   60           175       180        +5    +2.86%
+186  Elijah Tsatas                22   MID   22           925       930        +5    +0.54%
+187  Josh Draper                  22   KPD   31           313       318        +5    +1.60%
+188  Lachlan Jones                24   SD    91           146       151        +5    +3.42%
+189  Liam O'Connell               23   SD    16            74        79        +5    +6.76%
+190  Luke Kennedy                 20   MID   4            137       142        +5    +3.65%
+191  Luker Kentfield              21   KPF   3            150       155        +5    +3.33%
+192  Oliver Francou               20   MID   4            530       535        +5    +0.94%
+193  Ryan Angwin                  24   MID   46           449       454        +5    +1.11%
+194  Sandy Brock                  24   KPD   19           168       173        +5    +2.98%
+195  Will Ashcroft                22   MID   77          6589      6594        +5    +0.08%
+196  Willem Drew                  28   MID   149          628       633        +5    +0.80%
+197  Xavier Bamert                19   SF    7            445       450        +5    +1.12%
+198  Xavier O'Halloran            26   SF    101           79        84        +5    +6.33%
+199  Archer Day-Wicks             20   SF    22           342       346        +4    +1.17%
+200  Bailey Humphrey              22   MID   79          2364      2368        +4    +0.17%
+201  Bailey Williams              29   SD    187          579       583        +4    +0.69%
+202  Brennan Cox                  28   KPD   150          203       207        +4    +1.97%
+203  Connor O'Sullivan            21   KPD   45          2669      2673        +4    +0.15%
+204  Cooper Harvey                22   SF    17           400       404        +4    +1.00%
+205  Hunter Clark                 27   SD    116           35        39        +4   +11.43%
+206  Jack Graham                  28   MID   158          893       897        +4    +0.45%
+207  Jay Polkinghorne             20   SF    2            228       232        +4    +1.75%
+208  Josh Ward                    23   MID   86          2696      2700        +4    +0.15%
+209  Mark O'Connor                29   SD    163           21        25        +4   +19.05%
+210  Mitch Podhajski              27   KPF   2            117       121        +4    +3.42%
+211  Mitchell Knevitt             23   MID   23           177       181        +4    +2.26%
+212  Paddy Cross                  23   SF    9             92        96        +4    +4.35%
+213  Tyrell Dewar                 22   SF    23            67        71        +4    +5.97%
+214  Wil Parker                   24   SD    14            34        38        +4   +11.76%
+215  Zac Banch                    23   SF    8             66        70        +4    +6.06%
+216  Zach Reid                    24   KPD   38          1067      1071        +4    +0.37%
+217  Zak Johnson                  20   SD    14           408       412        +4    +0.98%
+218  Aidan Corr                   32   KPD   184           12        15        +3   +25.00%
+219  Bailey Banfield              28   SF    118           14        17        +3   +21.43%
+220  Balyn O'Brien                19   SD    2            333       336        +3    +0.90%
+221  Charlie Comben               25   KPD   66           635       638        +3    +0.47%
+222  Finn Maginness               25   SF    63            16        19        +3   +18.75%
+223  Flynn Young                  24   SF    11            33        36        +3    +9.09%
+224  Harrison Petty               27   KPD   116          239       242        +3    +1.26%
+225  Jade Gresham                 29   SF    184            9        12        +3   +33.33%
+226  Jayden Laverde               30   KPD   162          240       243        +3    +1.25%
+227  Jeremy Sharp                 25   MID   62            79        82        +3    +3.80%
+228  Lachlan Bramble              28   SF    95           109       112        +3    +2.75%
+229  Lewis Hayes                  22   KPD   1            346       349        +3    +0.87%
+230  Liam Henry                   25   SF    69            64        67        +3    +4.69%
+231  Mani Liddy                   24   MID   9             98       101        +3    +3.06%
+232  Ollie Dempsey                23   MID   77          2329      2332        +3    +0.13%
+233  Todd Marshall                28   KPF   127           96        99        +3    +3.12%
+234  Will Edwards                 23   KPD   12           239       242        +3    +1.26%
+235  Will Lorenz                  21   MID   9            204       207        +3    +1.47%
+236  Aidan Schubert               19   KPF   0            556       558        +2    +0.36%
+237  Bailey Scott                 26   MID   115           16        18        +2   +12.50%
+238  Ben Jepson                   25   MID   5             58        60        +2    +3.45%
+239  Billy Frampton               30   KPD   93            53        55        +2    +3.77%
+240  Brandon Walker               24   SD    67            33        35        +2    +6.06%
+241  Charlie Spargo               27   SF    123            4         6        +2   +50.00%
+242  Deven Robertson              25   MID   51           153       155        +2    +1.31%
+243  Elijah Hollands              24   SF    47           710       712        +2    +0.28%
+244  George Stevens               21   MID   4             67        69        +2    +2.99%
+245  Griffin Logue                28   KPD   109          125       127        +2    +1.60%
+246  Harry Edwards                26   KPD   57           145       147        +2    +1.38%
+247  Harry Sharp                  24   SF    53           138       140        +2    +1.45%
+248  Harvey Johnston              21   SD    13           185       187        +2    +1.08%
+249  Jack Henry                   28   KPD   178          250       252        +2    +0.80%
+250  Jayden Nguyen                20   SD    10           290       292        +2    +0.69%
+251  Jordon Butts                 27   KPD   94            35        37        +2    +5.71%
+252  Joseph Fonti                 22   SD    40           564       566        +2    +0.35%
+253  Lachlan Blakiston            28   KPD   28            57        59        +2    +3.51%
+254  Lachlan Carmichael           19   SD    0            486       488        +2    +0.41%
+255  Lachlan Fogarty              27   SF    92            75        77        +2    +2.67%
+256  Leek Aleer                   25   KPD   32           269       271        +2    +0.74%
+257  Lewis Melican                30   KPD   110           35        37        +2    +5.71%
+258  Liam Stocker                 26   SD    98            23        25        +2    +8.70%
+259  Lucas Camporeale             20   MID   3            155       157        +2    +1.29%
+260  Max Ramsden                  23   KPF   11            55        57        +2    +3.64%
+261  Oisin Mullin                 26   SD    62            19        21        +2   +10.53%
+262  Rhys Unwin                   20   SF    3            107       109        +2    +1.87%
+263  Sam Wicks                    27   SD    102           25        27        +2    +8.00%
+264  Shadeau Brain                22   SD    11            76        78        +2    +2.63%
+265  Tom Cole                     29   SD    144           70        72        +2    +2.86%
+266  Alex Pearce                  31   KPD   155           12        13        +1    +8.33%
+267  Braeden Campbell             24   SD    96           428       429        +1    +0.23%
+268  Brody Mihocek                33   KPF   169           43        44        +1    +2.33%
+269  Callum Ah Chee               29   SF    173           23        24        +1    +4.35%
+270  Charlie Ballard              27   KPD   141           75        76        +1    +1.33%
+271  Clay Hall                    21   MID   16           384       385        +1    +0.26%
+272  Corey Durdin                 24   SF    83            49        50        +1    +2.04%
+273  Elliott Himmelberg           28   KPF   50            56        57        +1    +1.79%
+274  Harrison Ramm                20   KPD   3            394       395        +1    +0.25%
+275  Hugo Ralphsmith              25   MID   71            99       100        +1    +1.01%
+276  Jack Martin                  32   SF    179           12        13        +1    +8.33%
+277  James Jordon                 26   MID   133          233       234        +1    +0.43%
+278  Liam Ryan                    30   SF    139            6         7        +1   +16.67%
+279  Matt Hill                    22   SF    2             35        36        +1    +2.86%
+280  Max Beattie                  23   SF    0            113       114        +1    +0.88%
+281  Michael Frederick            26   SF    116           70        71        +1    +1.43%
+282  Oliver Wiltshire             24   SF    13            26        27        +1    +3.85%
+283  Rhyan Mansell                26   SF    79            66        67        +1    +1.52%
+284  Rhys Stanley                 36   RUCK  230            6         7        +1   +16.67%
+285  Saad El-Hawli                25   SD    17            57        58        +1    +1.75%
+286  Sam Davidson                 25   SF    31           100       101        +1    +1.00%
+287  Thomas Burton                19   SF    5            303       304        +1    +0.33%
+288  Tom Barrass                  31   KPD   190           36        37        +1    +2.78%
+289  Tyler Brockman               24   SF    56            53        54        +1    +1.89%
+290  Will Lewis                   27   KPF   11            96        97        +1    +1.04%
+291  Alex Davies                  24   MID   46           426       425        -1    -0.23%
+292  Alex Dodson                  20   RUCK  1             90        89        -1    -1.11%
+293  Archie Perkins               24   SF    114          280       279        -1    -0.36%
+294  Billy Dowling                22   SF    11           166       165        -1    -0.60%
+295  Charlie Banfield             19   MID   3            614       613        -1    -0.16%
+296  Christian Salem              31   SD    204           98        97        -1    -1.02%
+297  Corey Wagner                 29   SD    70            55        54        -1    -1.82%
+298  Darcy Parish                 29   MID   179          650       649        -1    -0.15%
+299  Dougal Howard                30   KPD   144           60        59        -1    -1.67%
+300  Harry Morrison               28   MID   132           71        70        -1    -1.41%
+301  Jack Payne                   27   KPD   81           204       203        -1    -0.49%
+302  Jack Scrimshaw               28   SD    129          156       155        -1    -0.64%
+303  Jack Silvagni                29   KPD   147          721       720        -1    -0.14%
+304  Jack Watkins                 26   MID   10            67        66        -1    -1.49%
+305  Jackson Mead                 25   SF    73            22        21        -1    -4.55%
+306  Jamie Elliott                34   SF    230           21        20        -1    -4.76%
+307  Jesse Dattoli                20   SF    3            357       356        -1    -0.28%
+308  Lukas Cooke                  23   KPD   2            261       260        -1    -0.38%
+309  Mitchell Hinge               28   SD    90           382       381        -1    -0.26%
+310  Nick Haynes                  34   SD    249          117       116        -1    -0.85%
+311  Noah Answerth                27   SD    99            18        17        -1    -5.56%
+312  Noah Howes                   21   KPF   0            302       301        -1    -0.33%
+313  Noah Long                    22   SF    36            80        79        -1    -1.25%
+314  Oscar McDonald               30   KPD   100          124       123        -1    -0.81%
+315  Oskar Baker                  28   SF    57            19        18        -1    -5.26%
+316  Patrick Dangerfield          37   SF    376           42        41        -1    -2.38%
+317  Robert Hansen                22   SF    20            72        71        -1    -1.39%
+318  Ryan Lester                  34   SD    248           41        40        -1    -2.44%
+319  Tom Lynch                    34   KPF   240            9         8        -1   -11.11%
+320  Tom McDonald                 34   KPD   255           72        71        -1    -1.39%
+321  Wil Dawson                   21   KPD   14           298       297        -1    -0.34%
+322  Zane Peucker                 19   SF    2            400       399        -1    -0.25%
+323  Christian Moraes             20   MID   23           542       540        -2    -0.37%
+324  Ed Richards                  27   MID   166         3732      3730        -2    -0.05%
+325  Harrison Jones               25   KPF   63           117       115        -2    -1.71%
+326  Jack Dalton                  19   SF    4            457       455        -2    -0.44%
+327  Jake Stringer                32   SF    246           80        78        -2    -2.50%
+328  Jamarra Ugle-Hagan           24   KPF   70           160       158        -2    -1.25%
+329  Jesse Hogan                  32   KPF   190          268       266        -2    -0.75%
+330  Lachlan McNeil               25   SF    85            20        18        -2   -10.00%
+331  Sam Powell-Pepper            28   SF    158          216       214        -2    -0.93%
+332  Tom Sparrow                  26   MID   136         1539      1537        -2    -0.13%
+333  Angus Hastie                 21   SD    19           170       167        -3    -1.76%
+334  Blake Acres                  31   MID   193          182       179        -3    -1.65%
+335  Blake Hardwick               29   SD    217          530       527        -3    -0.57%
+336  Conor Nash                   28   MID   130          342       339        -3    -0.88%
+337  Dion Prestia                 34   MID   251          239       236        -3    -1.26%
+338  Francis Evans                25   SF    61           512       509        -3    -0.59%
+339  Jeremy Howe                  36   SD    286          219       216        -3    -1.37%
+340  Jesse Motlop                 23   SF    63            91        88        -3    -3.30%
+341  Matt Rowell                  25   MID   124         4525      4522        -3    -0.07%
+342  Matthew Kennedy              29   MID   160          599       596        -3    -0.50%
+343  Mykelti Lefau                28   KPF   28           104       101        -3    -2.88%
+344  Nick Vlastuin                32   SD    273          113       110        -3    -2.65%
+345  Ollie Lord                   24   KPF   35           126       123        -3    -2.38%
+346  Stephen Coniglio             33   MID   244          243       240        -3    -1.23%
+347  Tim Membrey                  32   KPF   217          107       104        -3    -2.80%
+348  Toby McMullin                22   SF    34            81        78        -3    -3.70%
+349  Tom Atkins                   31   MID   172          389       386        -3    -0.77%
+350  Tom Blamires                 24   SD    13           189       186        -3    -1.59%
+351  Zach Guthrie                 28   SD    147          261       258        -3    -1.15%
+352  Adam Saad                    32   SD    219          439       435        -4    -0.91%
+353  Archie Ludowyke              19   KPF   0            293       289        -4    -1.37%
+354  Brayden Maynard              30   SD    246          524       520        -4    -0.76%
+355  Cameron Zurhaar              28   SF    162          261       257        -4    -1.53%
+356  Campbell Lake                22   SF    5            247       243        -4    -1.62%
+357  Conor Stone                  24   SD    28           117       113        -4    -3.42%
+358  Elliot Yeo                   33   MID   229          317       313        -4    -1.26%
+359  Harrison Himmelberg          30   SD    220          199       195        -4    -2.01%
+360  Jack Crisp                   33   MID   293          397       393        -4    -1.01%
+361  Jacob Hopper                 29   MID   177          119       115        -4    -3.36%
+362  Jarrod Berry                 28   MID   198          380       376        -4    -1.05%
+363  Jhye Clark                   22   MID   31           821       817        -4    -0.49%
+364  Karl Amon                    31   SD    210          367       363        -4    -1.09%
+365  Malcolm Rosas                25   SF    64            28        24        -4   -14.29%
+366  Oliver Wines                 32   MID   288          369       365        -4    -1.08%
+367  Peter Ladhams                28   RUCK  65           561       557        -4    -0.71%
+368  Rory Lobb                    33   KPD   215          280       276        -4    -1.43%
+369  Scott Pendlebury             39   MID   406          341       337        -4    -1.17%
+370  Xavier Lindsay               20   MID   23          1457      1453        -4    -0.27%
+371  Angus Clarke                 20   SD    17           466       461        -5    -1.07%
+372  Cody Weightman               25   SF    82           190       185        -5    -2.63%
+373  Daniel Rioli                 29   SD    218          673       668        -5    -0.74%
+374  Jake Lloyd                   33   SD    290          235       230        -5    -2.13%
+375  Jake Rogers                  21   SF    23           271       266        -5    -1.85%
+376  Liam Baker                   28   SD    168          479       474        -5    -1.04%
+377  Milan Murdock                26   SF    15           242       237        -5    -2.07%
+378  Rory Laird                   33   SD    284          731       726        -5    -0.68%
+379  Taylor Walker                37   KPF   314          129       124        -5    -3.88%
+380  Tom Papley                   30   SF    210          320       315        -5    -1.56%
+381  Will Hayward                 28   SF    202          220       215        -5    -2.27%
+382  Charlie Cameron              32   SF    273          238       232        -6    -2.52%
+383  Cooper Lord                  21   MID   28          1081      1075        -6    -0.56%
+384  Jack Darling                 34   KPF   338          161       155        -6    -3.73%
+385  Jack Lukosius                26   SF    131          513       507        -6    -1.17%
+386  Jack Viney                   32   MID   237          546       540        -6    -1.10%
+387  Jake Riccardi                27   KPF   98           273       267        -6    -2.20%
+388  Joshua Kelly                 31   MID   230          759       753        -6    -0.79%
+389  Latrelle Pickett             21   SF    15           374       368        -6    -1.60%
+390  Nick Larkey                  28   KPF   153          631       625        -6    -0.95%
+391  Rhylee West                  26   SF    99           148       142        -6    -4.05%
+392  Samuel Grlj                  19   MID   17          1576      1570        -6    -0.38%
+393  Bayley Fritsch               30   SF    188          294       287        -7    -2.38%
+394  Isaiah Dudley                23   SF    35           246       239        -7    -2.85%
+395  Jack Buckley                 29   KPD   94           558       551        -7    -1.25%
+396  Jacob Farrow                 19   SD    16          2488      2481        -7    -0.28%
+397  James O'Donnell              24   KPD   63           564       557        -7    -1.24%
+398  James Worpel                 27   MID   156          445       438        -7    -1.57%
+399  Jonty Faull                  20   KPF   26           578       571        -7    -1.21%
+400  Luke Nankervis               23   SD    44           378       371        -7    -1.85%
+401  Ned Moyle                    24   RUCK  25          1877      1870        -7    -0.37%
+402  Nic Newman                   33   SD    149          673       666        -7    -1.04%
+403  Samuel Collins               32   KPD   168          576       569        -7    -1.22%
+404  Sullivan Robey               19   MID   14          2860      2853        -7    -0.24%
+405  Toby Bedford                 26   SF    98           318       311        -7    -2.20%
+406  Zac Taylor                   23   SF    43           241       234        -7    -2.90%
+407  Aaron Cadman                 22   KPF   73          2056      2048        -8    -0.39%
+408  Alix Tauru                   20   KPD   18           875       867        -8    -0.91%
+409  Cody Curtin                  19   KPF   4            390       382        -8    -2.05%
+410  Isaac Cumming                28   SD    117           74        66        -8   -10.81%
+411  Marcus Herbert               24   SD    6            748       740        -8    -1.07%
+412  Riley Bice                   26   SD    33           342       334        -8    -2.34%
+413  Will Setterfield             28   MID   91           792       784        -8    -1.01%
+414  Aliir Aliir                  32   KPD   197          754       745        -9    -1.19%
+415  Charlie West                 20   KPF   5            381       372        -9    -2.36%
+416  Dante Visentini              23   RUCK  25           970       961        -9    -0.93%
+417  Darcy Byrne-Jones            31   SD    240          621       612        -9    -1.45%
+418  Jase Burgoyne                23   SD    75          2230      2221        -9    -0.40%
+419  Keidean Coleman              26   SD    78           775       766        -9    -1.16%
+420  Logan McDonald               24   KPF   87           766       757        -9    -1.17%
+421  Luke Ryan                    30   SD    197         1347      1338        -9    -0.67%
+422  Mason Redman                 29   SD    155         1113      1104        -9    -0.81%
+423  Trent Rivers                 25   SD    135         1748      1739        -9    -0.51%
+424  Xavier Duursma               26   MID   128          231       222        -9    -3.90%
+425  Zachary Williams             32   SF    183          350       341        -9    -2.57%
+426  Anthony Caminiti             23   KPF   72           961       951       -10    -1.04%
+427  Jai Serong                   23   SD    28           961       951       -10    -1.04%
+428  Jarman Impey                 31   SD    237          856       846       -10    -1.17%
+429  Jordan Croft                 21   KPF   16           512       502       -10    -1.95%
+430  Justin McInerney             26   MID   122         2036      2026       -10    -0.49%
+431  Louis Emmett                 19   KPF   5            568       558       -10    -1.76%
+432  Noah Balta                   27   KPF   134          455       445       -10    -2.20%
+433  Tanner Bruhn                 24   MID   82          2131      2121       -10    -0.47%
+434  Zac Fisher                   28   SF    133          144       134       -10    -6.94%
+435  Archie May                   22   KPF   17           419       408       -11    -2.63%
+436  Billy Wilson                 21   SD    15           842       831       -11    -1.31%
+437  Daniel McStay                31   KPF   217          394       383       -11    -2.79%
+438  Dayne Zorko                  37   SD    314         1011      1000       -11    -1.09%
+439  James Peatling               26   MID   87          1142      1131       -11    -0.96%
+440  Josh Battle                  28   KPD   166         2013      2002       -11    -0.55%
+441  Josh Dunkley                 29   MID   213         1159      1148       -11    -0.95%
+442  Jy Simpkin                   28   MID   192         1277      1266       -11    -0.86%
+443  Mason Wood                   33   SF    174          365       354       -11    -3.01%
+444  Max Hall                     24   SF    42          2346      2335       -11    -0.47%
+445  Thomas Stewart               33   SD    208          974       963       -11    -1.13%
+446  Ben Miller                   27   KPD   86           995       983       -12    -1.21%
+447  Connor Idun                  26   SD    136         2256      2244       -12    -0.53%
+448  Ed Langdon                   30   SD    221          717       705       -12    -1.67%
+449  Jayden Short                 30   SD    207          953       941       -12    -1.26%
+450  Joel Jeffrey                 24   SD    71          1487      1475       -12    -0.81%
+451  Miles Bergman                25   SD    114         1190      1178       -12    -1.01%
+452  Tom McCarthy                 26   SD    28          1356      1344       -12    -0.88%
+453  Jordan Ridley                28   SD    110          729       716       -13    -1.78%
+454  Luke Parker                  34   SD    334         1187      1174       -13    -1.10%
+455  Ned Long                     23   MID   54          1243      1230       -13    -1.05%
+456  Sam Taylor                   27   KPD   139         1167      1154       -13    -1.11%
+457  Thomas Liberatore            34   MID   265         1110      1097       -13    -1.17%
+458  Tyson Stengle                28   SF    109          222       209       -13    -5.86%
+459  Daniel Turner                24   KPD   52          1534      1520       -14    -0.91%
+460  Harry Armstrong              20   KPF   11           503       489       -14    -2.78%
+461  Jack Steele                  31   MID   221         1145      1131       -14    -1.22%
+462  James Sicily                 31   SD    197         1264      1250       -14    -1.11%
+463  Jed Walter                   21   KPF   44           898       884       -14    -1.56%
+464  Logan Evans                  21   SD    42          1376      1362       -14    -1.02%
+465  Noah Mraz                    20   KPD   4           1034      1020       -14    -1.35%
+466  Cooper Sharman               26   KPF   88           534       519       -15    -2.81%
+467  Dan Houston                  29   SD    208         1084      1069       -15    -1.38%
+468  Patrick Retschko             20   MID   14          1155      1140       -15    -1.30%
+469  Ryley Sanders                21   MID   52          3618      3602       -16    -0.44%
+470  Tim Kelly                    32   MID   181         1225      1209       -16    -1.31%
+471  Brady Hough                  23   SD    94           354       337       -17    -4.80%
+472  Caleb Daniel                 30   SD    234         1283      1266       -17    -1.33%
+473  Cameron Rayner               27   SF    186          496       479       -17    -3.43%
+474  Isaac Quaynor                26   SD    150          455       438       -17    -3.74%
+475  Jacob Weitering              29   KPD   214         1114      1097       -17    -1.53%
+476  Lachlan Cowan                22   SD    56           685       668       -17    -2.48%
+477  Marc Pittonet                30   RUCK  96           538       521       -17    -3.16%
+478  Patrick Cripps               31   MID   249         1485      1468       -17    -1.14%
+479  Reuben Ginbey                22   KPD   76          2185      2168       -17    -0.78%
+480  Sam Flanders                 25   MID   101         2747      2730       -17    -0.62%
+481  Kane McAuliffe               21   MID   23          1086      1068       -18    -1.66%
+482  Kyle Langford                30   KPF   177          499       481       -18    -3.61%
+483  Nick Madden                  22   RUCK  8           1125      1107       -18    -1.60%
+484  Wayne Milera                 29   SD    140         1750      1732       -18    -1.03%
+485  Jack Gunston                 35   KPF   296          643       624       -19    -2.95%
+486  Nick Blakey                  26   SD    170         4152      4133       -19    -0.46%
+487  Nick Daicos                  23   MID   113         9892      9873       -19    -0.19%
+488  Phoenix Gothard              21   SF    15          1647      1628       -19    -1.15%
+489  Taj Hotton                   20   MID   13          1750      1731       -19    -1.09%
+490  Lachie Whitfield             32   SD    273         2196      2176       -20    -0.91%
+491  Levi Ashcroft                20   MID   46          3686      3666       -20    -0.54%
+492  Matthew Roberts              23   SD    63          1584      1564       -20    -1.26%
+493  Tom Brown                    23   SD    56           528       508       -20    -3.79%
+494  Dylan Stephens               25   MID   100          638       617       -21    -3.29%
+495  Hugh McCluggage              28   MID   221         1581      1560       -21    -1.33%
+496  James Rowbottom              26   MID   159         1249      1228       -21    -1.68%
+497  Ryan Maric                   22   MID   62          1389      1368       -21    -1.51%
+498  Shaun Mannagh                29   SF    53           712       691       -21    -2.95%
+499  Bodhi Uwland                 23   SD    68          3660      3638       -22    -0.60%
+500  Christian Petracca           30   MID   229         1796      1774       -22    -1.22%
+501  Lawson Humphries             23   SD    54          1535      1513       -22    -1.43%
+502  Wil Powell                   27   SD    147          886       864       -22    -2.48%
+503  Callum Mills                 29   SD    192         1885      1862       -23    -1.22%
+504  Darcy Wilmot                 23   SD    102         3087      3064       -23    -0.75%
+505  Jake Waterman                28   KPF   131         1194      1171       -23    -1.93%
+506  Jaxon Prior                  25   SD    80           387       364       -23    -5.94%
+507  Jeremy Cameron               33   KPF   296          796       773       -23    -2.89%
+508  Karl Worner                  24   SD    50          1176      1153       -23    -1.96%
+509  George Hewett                31   MID   216         1980      1956       -24    -1.21%
+510  Jack Whitlock                20   KPF   23           823       799       -24    -2.92%
+511  Lachie Neale                 33   MID   313         2125      2101       -24    -1.13%
+512  Matt Johnson                 23   MID   73          1037      1013       -24    -2.31%
+513  Talor Byrne                  19   SF    13           756       732       -24    -3.17%
+514  Brent Daniels                27   SF    121         1208      1183       -25    -2.07%
+515  Caleb Windsor                21   MID   52          1224      1199       -25    -2.04%
+516  Harris Andrews               30   KPD   255         1528      1503       -25    -1.64%
+517  Lloyd Meek                   28   RUCK  96          1483      1458       -25    -1.69%
+518  Thomas Sims                  20   KPF   11           737       712       -25    -3.39%
+519  Joshua Weddle                22   SD    75          1383      1357       -26    -1.88%
+520  Kai Lohmann                  23   SF    72           802       776       -26    -3.24%
+521  Kane Farrell                 27   SD    127         1258      1232       -26    -2.07%
+522  Lachlan Schultz              29   SF    142          752       726       -26    -3.46%
+523  Mac Andrew                   23   KPD   84          3715      3689       -26    -0.70%
+524  Mitchell Lewis               28   KPF   96           690       664       -26    -3.77%
+525  Patrick Lipinski             28   SF    159          763       737       -26    -3.41%
+526  Toby Greene                  33   SF    278          874       848       -26    -2.97%
+527  Adam Treloar                 33   SF    263          839       812       -27    -3.22%
+528  Bailey Dale                  30   SD    195         2149      2122       -27    -1.26%
+529  Josh Lindsay                 19   SD    12          1919      1892       -27    -1.41%
+530  Judd McVee                   23   SD    83           367       340       -27    -7.36%
+531  Lachlan McAndrew             26   RUCK  21          1093      1066       -27    -2.47%
+532  Massimo D'Ambrosio           23   MID   85          1700      1673       -27    -1.59%
+533  Mattaes Phillipou            22   MID   61          1885      1857       -28    -1.49%
+534  Sam De Koning                25   KPD   96           936       907       -29    -3.10%
+535  Sam Lalor                    20   MID   20          3584      3555       -29    -0.81%
+536  Zachary Merrett              31   MID   270         2368      2339       -29    -1.22%
+537  Marcus Windhager             23   MID   94          1884      1854       -30    -1.59%
+538  Tim Taranto                  28   MID   190         2359      2329       -30    -1.27%
+539  Will Day                     25   MID   83          2071      2040       -31    -1.50%
+540  Joel Freijah                 21   MID   55          2582      2550       -32    -1.24%
+541  Clayton Oliver               29   MID   224         2324      2291       -33    -1.42%
+542  Darcy Fogarty                27   KPF   138          783       750       -33    -4.21%
+543  Jake Soligo                  23   MID   102         1997      1964       -33    -1.65%
+544  Joe Richards                 27   SF    49           951       918       -33    -3.47%
+545  Reilly O'Brien               31   RUCK  147         1034      1001       -33    -3.19%
+546  John Noble                   29   SD    156         2199      2164       -35    -1.59%
+547  Jordan Dawson                29   MID   172         3083      3048       -35    -1.14%
+548  Marcus Bontempelli           31   MID   277         3702      3667       -35    -0.95%
+549  Seth Campbell                22   SF    62           930       895       -35    -3.76%
+550  Dyson Sharp                  19   MID   11          3232      3196       -36    -1.11%
+551  Jack Ross                    26   MID   107         2524      2488       -36    -1.43%
+552  Bradley Hill                 33   SF    296         1281      1243       -38    -2.97%
+553  Gryan Miers                  27   SF    166         1561      1523       -38    -2.43%
+554  Jack Sinclair                31   SD    224         3205      3167       -38    -1.19%
+555  Jordan De Goey               30   SF    200         1293      1255       -38    -2.94%
+556  Nicholas Martin              25   MID   83          4061      4021       -40    -0.98%
+557  Peter Wright                 30   KPF   166         1386      1346       -40    -2.89%
+558  Jacob Van Rooyen             23   KPF   76          1868      1826       -42    -2.25%
+559  Aaron Naughton               27   KPF   185         1170      1127       -43    -3.68%
+560  Callum Wilkie                30   KPD   174         3484      3439       -45    -1.29%
+561  Dylan Moore                  27   SF    144         1221      1176       -45    -3.69%
+562  Jordan Clark                 26   SD    145         3318      3273       -45    -1.36%
+563  Tom McCartin                 27   KPD   168         1632      1587       -45    -2.76%
+564  Mitch Georgiades             25   KPF   109         1386      1339       -47    -3.39%
+565  Kade Chandler                26   SF    98          1091      1041       -50    -4.58%
+566  Josh Worrell                 25   SD    74          3106      3054       -52    -1.67%
+567  Sam Berry                    24   MID   95          3387      3335       -52    -1.54%
+568  Cooper Trembath              21   KPF   22          1878      1825       -53    -2.82%
+569  Harvey Thomas                21   MID   58          2163      2110       -53    -2.45%
+570  Cameron Mackenzie            22   MID   63          2052      1998       -54    -2.63%
+571  Toby Nankervis               32   RUCK  187         1809      1755       -54    -2.99%
+572  Caleb Serong                 25   MID   143         4745      4690       -55    -1.16%
+573  Harry McKay                  29   KPF   156         1747      1692       -55    -3.15%
+574  Isaac Heeney                 30   MID   241         3958      3903       -55    -1.39%
+575  Josh Rachele                 23   SF    89          1804      1749       -55    -3.05%
+576  Mitchito Owens               23   KPF   88          2180      2125       -55    -2.52%
+577  Patrick Voss                 23   KPF   45          1364      1309       -55    -4.03%
+578  Darcy Cameron                31   RUCK  138         1593      1537       -56    -3.52%
+579  Oliver Florent               28   SD    203          991       935       -56    -5.65%
+580  Sam Durham                   25   MID   109         2553      2497       -56    -2.19%
+581  Noah Anderson                25   MID   147         4957      4898       -59    -1.19%
+582  Tom De Koning                27   RUCK  111         1847      1787       -60    -3.25%
+583  Archie Roberts               21   SD    44          3571      3510       -61    -1.71%
+584  Charlie Curnow               29   KPF   167         1298      1236       -62    -4.78%
+585  Jaspa Fletcher               22   SD    87          2505      2441       -64    -2.55%
+586  Kieren Briggs                27   RUCK  84          1795      1731       -64    -3.57%
+587  Leo Lombard                  20   SF    23          1637      1573       -64    -3.91%
+588  Shai Bolton                  28   SF    176         2140      2075       -65    -3.04%
+589  Zak Butters                  26   MID   156         6580      6515       -65    -0.99%
+590  Touk Miller                  30   SF    233         2109      2041       -68    -3.22%
+591  Jordon Sweet                 28   RUCK  65          2379      2310       -69    -2.90%
+592  Tom Powell                   24   MID   99          2000      1930       -70    -3.50%
+593  Rowan Marshall               31   RUCK  173         2104      2033       -71    -3.37%
+594  Connor MacDonald             23   SF    109         2380      2307       -73    -3.07%
+595  Tristan Xerri                27   RUCK  91          7024      6949       -75    -1.07%
+596  Zac Bailey                   27   SF    184         2831      2756       -75    -2.65%
+597  Connor Rozee                 26   MID   152         3357      3278       -79    -2.35%
+598  Bailey Smith                 26   MID   144         6171      6090       -81    -1.31%
+599  Finn Callaghan               23   MID   90          5555      5474       -81    -1.46%
+600  Lachlan Ash                  25   SD    144         5763      5680       -83    -1.44%
+601  Shannon Neale                24   KPF   64          2329      2245       -84    -3.61%
+602  Luke Davies-Uniacke          27   MID   149         3615      3527       -88    -2.43%
+603  Jack Ginnivan                24   SF    108         2089      2000       -89    -4.26%
+604  Jai Newcombe                 25   MID   121         4587      4496       -91    -1.98%
+605  Logan Morris                 21   KPF   63          2945      2853       -92    -3.12%
+606  Jason Horne-Francis          23   MID   98          5609      5511       -98    -1.75%
+607  Bailey J. Williams           26   RUCK  102         2438      2338      -100    -4.10%
+608  Max Gawn                     35   RUCK  266         3194      3087      -107    -3.35%
+609  Timothy English              29   RUCK  167         3336      3221      -115    -3.45%
+610  Murphy Reid                  20   SF    43          3427      3310      -117    -3.41%
+611  Riley Thilthorpe             24   KPF   94          4048      3928      -120    -2.96%
+612  Nick Watson                  21   SF    59          3594      3473      -121    -3.37%
+613  Darcy Wilson                 21   SF    59          2828      2704      -124    -4.38%
+614  Brodie Grundy                32   RUCK  260         4212      4082      -130    -3.09%
+615  Harry Sheezel                22   MID   86         10428     10293      -135    -1.29%
+616  Kysaiah Pickett              25   SF    145         3878      3739      -139    -3.58%
+617  Sam Darcy                    23   KPF   51          5116      4964      -152    -2.97%
+618  Izak Rankine                 26   SF    121         4819      4630      -189    -3.92%
+619  Josh Treacy                  24   KPF   99          6179      5941      -238    -3.85%
+620  Luke Jackson                 25   RUCK  138         9265      8911      -354    -3.82%
+
+BACK ROWS (board-history-only; NOT the owner ranking): 46 movers
+   Alex Sexton                         25 ->        26  +1
+   Anthony Munkara                     13 ->        14  +1
+   Ash Johnson                         11 ->        10  -1
+   Blake Drury                         17 ->        18  +1
+   Blake Leidler                       26 ->        27  +1
+   Charlie Dean                        39 ->        38  -1
+   Chris Burgess                       38 ->        37  -1
+   Conrad Williams                     32 ->        30  -2
+   Darcy Craven                        14 ->        15  +1
+   Dylan Grimes                        26 ->        27  +1
+   Ethan Hughes                        22 ->        23  +1
+   Geordie Payne                       13 ->        14  +1
+   Harrison Jones                      38 ->        37  -1
+   Harry Boyd                           7 ->         8  +1
+   Indhi Kirk                          15 ->        16  +1
+   Jacob Bauer                         27 ->        26  -1
+   Jaiden Hunter                       21 ->        20  -1
+   Jaiden Magor                        17 ->        18  +1
+   Jake Kelly                          27 ->        29  +2
+   Jamaine Jones                       11 ->        12  +1
+   James Harmes                        19 ->        20  +1
+   Jason Johannisen                    25 ->        26  +1
+   Jeremy Finlayson                    40 ->        39  -1
+   Joshua Bennetts                     31 ->        30  -1
+   Kyah Farris-White                   13 ->        14  +1
+   Kynan Brown                         22 ->        23  +1
+   Lachlan Murphy                      11 ->        12  +1
+   Levi Casboult                       67 ->        64  -3
+   Loch Rawlinson                      17 ->        18  +1
+   Luke Breust                         16 ->        17  +1
+   Matthew Taberner                    54 ->        51  -3
+   Odin Jones                          46 ->        44  -2
+   Oliver Sestan                       17 ->        18  +1
+   Osca Ricciardi                      17 ->        18  +1
+   Oscar Murdoch                       28 ->        29  +1
+   Oskar Smartt                        14 ->        15  +1
+   Rhett Montgomerie                    8 ->         9  +1
+   Rory Atkins                         19 ->        20  +1
+   Sam Frost                           51 ->        50  -1
+   Ted Clohesy                         13 ->        14  +1
+   Tom Fullarton                       39 ->        37  -2
+   Tyler Sellers                       21 ->        20  -1
+   Will Rowlands                       17 ->        18  +1
+   Xavier Ivisic                       22 ->        23  +1
+   Zach Tuohy                          11 ->        12  +1
+   Zane Trew                           19 ->        20  +1
