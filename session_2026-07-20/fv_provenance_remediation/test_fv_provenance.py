@@ -50,7 +50,7 @@ FIX = os.path.join(REPO, 'session_2026-07-20', 'fv_provenance_remediation', 'fix
 CLAUDE = '/home/claude'
 AMBIENT_FV = os.path.join(CLAUDE, 'rl_workspace', 'forward_valuation')   # the FORMER RL_FV default (the hole)
 RL_AFTER_LINK = os.path.join(CLAUDE, 'rl_after')                        # the FORMER hardcoded rl_model path
-BOARD_MD5_GOOD = '3970156c8658fc9ecea8089e8b3ecdf1'   # ITEM 411 D1 (owner rulings v467/v469): accepted R19 balanced/strict board (advanced from 1373e824, the ITEM 408 STOP-1 board)
+BOARD_MD5_GOOD = '556ad70d295923455982ae33e4b8bfd3'   # ITEM 411 D1 (owner rulings v467/v469): accepted R19 balanced/strict board (advanced from 1373e824, the ITEM 408 STOP-1 board)
 BAD_PREFIX = 'd7a95e8d'
 STALE_DP = os.path.join(FIX, 'distribution_pricing.stale_21d530bf.py')
 
@@ -252,7 +252,7 @@ def board_oracle():
     ok = ok and facts.get('active') == 804 and facts.get('sum_v') == 692296 and facts.get('sheezel') == 10428
     # C5: compare the COMPLETE active-player value vector against the accepted reference — require ZERO movers.
     movers = None
-    ref_path = os.path.join(FIX, 'reference_vector_3970156c.json')
+    ref_path = os.path.join(FIX, 'reference_vector_556ad70d.json')
     if r['board_path'] and os.path.exists(ref_path):
         ref = json.load(open(ref_path))['vector']
         built = {p['key']: p['v'] for p in json.loads(open(r['board_path'], 'rb').read())['active']}
@@ -266,7 +266,7 @@ def board_oracle():
         ok = False
         movers = None
     record('ORACLE_accepted_board_zero_movers', ok,
-           "rc=%s md5=%s active=%s sumv=%s sheezel=%s vector_movers=%s ref_present=%s (expect 3970156c/804/692296/10428/0)"
+           "rc=%s md5=%s active=%s sumv=%s sheezel=%s vector_movers=%s ref_present=%s (expect 556ad70d/804/692296/10428/0)"
            % (r['rc'], r['board_md5'], facts.get('active'), facts.get('sum_v'), facts.get('sheezel'),
               (len(movers) if movers is not None else '?'), os.path.exists(ref_path)))
     shutil.rmtree(r['base'], ignore_errors=True)

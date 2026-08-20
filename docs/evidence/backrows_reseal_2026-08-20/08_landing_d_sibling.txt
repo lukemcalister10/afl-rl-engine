@@ -1,0 +1,58 @@
+=== ACT A, LANDING STEP D — THE SIBLING REPIN ===
+WRITER OF RECORD: engine/rl_after/ingestion/sibling_repin.py (BUILD-AND-COMPARE only: the pin is
+moved to a value that was just BUILT and derived from the built artifact, never to an expectation).
+Run under tools/build_lock.sh, single writer.
+
+--- verify BEFORE ---
+{
+  "balanced_board_md5": "3970156c8658fc9ecea8089e8b3ecdf1",
+  "fails": [
+    "forward reference vector for 3970156c missing",
+    "forward oracle test_forward_lens_68be10c7.py missing",
+    "working canonical board stamp != 68be10c7",
+    "sidecar contract_sha256 != live contract seal",
+    "sidecar forward_board_md5 != the canonical board of record",
+    "sidecar forward_vector filename != regenerated forward vector",
+    "sidecar forward_oracle filename != regenerated forward oracle"
+  ],
+  "ok": false
+}
+
+--- reconcile (the transaction) ---
+build-lock: HELD by backrows-sibling (pid 32622) since 2026-08-20T11:47:24Z — single writer for the shared workspace.
+{
+  "active": 804,
+  "balanced_board_md5": "556ad70d295923455982ae33e4b8bfd3",
+  "changed": true,
+  "committed_targets": [
+    "board_view_public",
+    "board_view_working",
+    "forward_oracle",
+    "forward_vector",
+    "fv_test",
+    "manifest",
+    "reference_vector",
+    "release_contract",
+    "sidecar"
+  ],
+  "no_op": false,
+  "ok": true,
+  "old_balanced_board_md5": "3970156c8658fc9ecea8089e8b3ecdf1",
+  "recovered": [],
+  "sheezel": 10428,
+  "sum_v": 692296,
+  "txn_dir": "/home/user/afl-rl-engine/engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d",
+  "validation": {
+    "release_contract_check": [
+      "RELEASE-CONTRACT CHECK: PASS  (contract cde9f70a49b6; identities + config + posture consistent)"
+    ]
+  }
+}
+build-lock: released by backrows-sibling
+
+--- verify AFTER ---
+{
+  "balanced_board_md5": "556ad70d295923455982ae33e4b8bfd3",
+  "fails": [],
+  "ok": true
+}

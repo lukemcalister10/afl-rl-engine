@@ -1,0 +1,17 @@
+SOURCE @ 15729e7: every re-hashed identity agrees with that tree's own expected_boot.
+DESTINATION (live): every measured identity agrees with the landed expected_boot; config and fv were RE-MEASURED by their own definitions, not read.
+
+MOVED by this transition (2 of 11): ['board', 'balanced_board_md5']
+   board                c97a4d9f9fa42597f85517c7850d3943 -> 68be10c79d0ee096455754e084bcf757
+   balanced_board_md5   3970156c8658fc9ecea8089e8b3ecdf1 -> 556ad70d295923455982ae33e4b8bfd3
+UNCHANGED (9): ['release_version', 'store', 'rl_model', 'engine_head', 'fv', 'config', 'register', 'v0surf', 'as_of_round']
+
+chain OK: register tail destination == this entry's source on both board and store
+   board  c97a4d9f9fa42597f85517c7850d3943   store b745002eb0a0fbb1c34fa44f1ef708d6
+boundary ['23', 'the-backrows-repair-20-8'] is NEW; destination.board 68be10c79d0ee096455754e084bcf757 is declared by no existing record.
+append-only OK: 11 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
+re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
+appended entry 12; 59689 -> 70508 bytes
+  source      board c97a4d9f9fa42597f85517c7850d3943  store b745002eb0a0fbb1c34fa44f1ef708d6  balanced 3970156c8658fc9ecea8089e8b3ecdf1
+  destination board 68be10c79d0ee096455754e084bcf757  store b745002eb0a0fbb1c34fa44f1ef708d6  balanced 556ad70d295923455982ae33e4b8bfd3
+  MOVED by this transition: ['board', 'balanced_board_md5']   (of 11 identities)

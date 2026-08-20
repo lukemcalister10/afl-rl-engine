@@ -1,0 +1,107 @@
+=== GATES AFTER ACT A ===
+
+--- python3 -m acceptance.runner ---
+==========================================================================================================================
+THE VERDICT SPINE — acceptance/runner.py
+  tree: /home/user/afl-rl-engine
+  evidence: (none)
+==========================================================================================================================
+CHECK                    VERDICT     REASON
+-----------------------  ----------  -----------------------------------------------------------------------------------
+release_manifest         PASS        38 of 40 carrier fields agree with computed truth across 8 identities; 2 sealed ca…
+boot_guard_checkout      PASS        boot-store guard (Guard 5) PASS  [acceptance-spine]  store b745002e == pinned b745…
+config_manifest          PASS        CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)
+ruling_config            PASS        RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL…
+release_contract_seal    PASS        RELEASE-CONTRACT CHECK: PASS  (contract cde9f70a49b6; identities + config + postur…
+store_coherence_six_way  PASS        six-way store coherence: PASS
+doc_lint                 PASS        doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)
+-----------------------  ----------  -----------------------------------------------------------------------------------
+
+AGGREGATE  7 checks  |  PASS 7  FAIL 0  BLOCKED 0  RULED-RED 0
+VERDICT    GREEN — no gating failures.
+rc=0
+
+--- python3 release_manifest_check.py ---
+    -> 5 carriers, COHERENT
+
+  REGISTER  [computed md5 LTI_REGISTER.md]
+    (truth)                                       652d83e87780e415a01a2de6d8b3cc57                                 
+    expected_boot.register                        652d83e87780e415a01a2de6d8b3cc57                                 OK
+    release_contract.identities.register          652d83e87780e415a01a2de6d8b3cc57                                 OK
+    board_view_working.stamp.register             652d83e8                                                         OK
+    board_view_working.stamp.release.register     652d83e87780e415a01a2de6d8b3cc57                                 OK
+    -> 4 carriers, COHERENT
+
+  AS_OF_ROUND  [anchor data/expected_boot.json]
+    (truth)                                       23                                                               
+    expected_boot.as_of_round                     23                                                               OK
+    release_contract.as_of_round                  23                                                               OK
+    season_state.as_of_round                      23                                                               OK
+    board_view_working.stamp.asOfRound            23                                                               OK
+    board_view_working.stamp.release.as_of_round  23                                                               OK
+    -> 5 carriers, COHERENT
+
+  40 carrier fields across 8 identities and 7 files: 38 coherent, 0 incoherent, 2 sealed-lag
+
+  SEALED-LAG — a freeze-stamp naming the state it was SEALED against, not the
+  state the tree is in. Legitimate between seals; reported, never gating:
+    book_stable_seal.store_md5                   sealed against cb38ef11, tree is now b745002e
+    book_stable_seal.head_md5                    sealed against 5ac6780f, tree is now 1867e953
+    (i.e. the artifact these stamps belong to has not been re-sealed since the
+     tree last moved. That is information, not a defect — but a gate that
+     consumes the seal as a baseline is comparing against the older state.)
+
+  RELEASE MANIFEST COHERENCE: PASS
+
+--- python3 release_contract.py check ---
+RELEASE-CONTRACT CHECK
+RELEASE-CONTRACT CHECK: PASS  (contract cde9f70a49b6; identities + config + posture consistent)
+
+--- test_movers_transition.py ---
+  [PASS] a DIFFERENT R23 is refused as an overwrite conflict (never merged)
+  [PASS] the bundle is left BYTE-UNCHANGED by the refused conflicting write
+  [PASS] score_ingestor.APPLY_DEFAULT is False (code half OFF)
+  [PASS] score-write gate is OFF (no explicit apply token) — no score can be applied
+MOVERS TRANSITION TESTS: ALL 39 PASS
+
+--- ui/tests/movers.test.js ---
+  [PASS] movers module exports only pure view logic (applies NO scores)  (got ["core","makeView"])
+  [PASS] scratch evidence bundle carries R15-R19  (got [15,16,17,18,19])
+  [PASS] scratch bundle passes full-identity lineage against its own last board/store/release
+  [PASS] every scratch report carries the same fixed balanced_board_md5 (06d8af60)
+  [PASS] every scratch round report: integrity + unique coverage + no v2.10 tag + balanced not synthesized
+  [PASS] scratch reports represent DNP players
+  ------------------------------------------------------------
+MOVERS TESTS: 1 FAIL / 66
+
+=== THE ONE WEEKLY TEST PIN THAT MOVED, NAMED NOT ABSORBED ===
+ui/tests/movers.test.js: the out-of-round BOUNDARY COUNT 9 -> 10, because this act writes a tenth
+out-of-round boundary (the-backrows-repair-20-8). This is the same class of pin the F5 seat moved
+8 -> 9 and the R23 seat moved by two; the file documents each bump in place and this one is
+documented the same way, including the note that this boundary is DIFFERENT IN KIND from the
+ninth (the F5 act moved no priced value; this one re-prices 25 back rows).
+A second, non-asserting line was corrected for accuracy: the 'bridged' test's MESSAGE named the F5
+rounding fix as the last out-of-round act; it now names the back-rows repair. No assertion changed.
+NOTHING WAS LOOSENED: both non-vacuity assertions were re-run at the swing and still discriminate
+in both directions, and all 10 boundaries remain anchored to owner-approved lineage records.
+
+--- ui/tests/movers.test.js RE-RUN after the pin move ---
+  [PASS] scratch reports represent DNP players
+  ------------------------------------------------------------
+MOVERS TESTS: ALL 66 PASS
+
+--- python3 -m acceptance.runner (final) ---
+==========================================================================================================================
+CHECK                    VERDICT     REASON
+-----------------------  ----------  -----------------------------------------------------------------------------------
+release_manifest         PASS        38 of 40 carrier fields agree with computed truth across 8 identities; 2 sealed ca…
+boot_guard_checkout      PASS        boot-store guard (Guard 5) PASS  [acceptance-spine]  store b745002e == pinned b745…
+config_manifest          PASS        CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)
+ruling_config            PASS        RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL…
+release_contract_seal    PASS        RELEASE-CONTRACT CHECK: PASS  (contract cde9f70a49b6; identities + config + postur…
+store_coherence_six_way  PASS        six-way store coherence: PASS
+doc_lint                 PASS        doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)
+-----------------------  ----------  -----------------------------------------------------------------------------------
+
+AGGREGATE  7 checks  |  PASS 7  FAIL 0  BLOCKED 0  RULED-RED 0
+VERDICT    GREEN — no gating failures.

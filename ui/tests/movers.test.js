@@ -257,7 +257,7 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // round 23. So this is a board-IDENTITY move, not a re-valuation, and `bridged` is tracking the
   // identity, which is what it has always tracked.
   eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "bridged"],
-     "bundle displays under the current app, bridged — the last act moved the board OUTSIDE a round (the F5 rounding fix), so the latest round report's terminal board is not the loaded board, and the out-of-round column carries it instead");
+     "bundle displays under the current app, bridged — the last act moved the board OUTSIDE a round (the back-rows repair), so the latest round report's terminal board is not the loaded board, and the out-of-round column carries it instead");
   // NON-VACUITY for the restated assertion, both directions. `bridged` is a state this check can
   // FAIL to reach: a bundle on a foreign lineage does not get bridged, it fails closed as a mismatch.
   var appForeign = clone(curApp); appForeign.board = "ffffffffffffffffffffffffffffffff";
@@ -332,7 +332,16 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // THE_F5_ROUNDING_2026-08-20_launch_the_ready_items), so the durable property below — EVERY boundary
   // anchored to an owner-approved record — covers it. Same growth, same reason as the seven bumps
   // before it; this line only counts.
-  ok(mc.length === 9, "nine out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut, the 20/8 F5 rounding fix)  (got " + mc.length + ")");
+  // BUMPED AGAIN 2026-08-20 (THE BACK-ROWS AGE_REF REPAIR, owner word "Let's fix it now please."): a
+  // tenth boundary, `the-backrows-repair-20-8` — the back-history clock repair, board c97a4d9f ->
+  // 68be10c7, out of round at R23. It carries its own owner-approved lineage record (register entry 12,
+  // THE_BACKROWS_AGE_REF_REPAIR_2026-08-20_lets_fix_it_now_please), so the durable property below —
+  // EVERY boundary anchored to an owner-approved record — covers it. Same growth, same reason as the
+  // eight bumps before it; this line only counts. NOTE THIS ONE IS DIFFERENT IN KIND FROM THE NINTH: the
+  // F5 act moved no priced value at all, while this act re-prices 25 back-history rows (all 804 ACTIVE
+  // rows are byte-identical). The counter does not care, and the property that guards this does not
+  // either — but a reader comparing the two should not assume they are the same shape.
+  ok(mc.length === 10, "ten out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut, the 20/8 F5 rounding fix, the 20/8 back-rows repair)  (got " + mc.length + ")");
   ok(mc[0].between[0] === "19" && mc[0].between[1] === "post-r19-redesign-1" &&
      mc[0].owner_approved_record === true,
      "model change declared between R19 and the restructure point, anchored to the owner-approved record");
