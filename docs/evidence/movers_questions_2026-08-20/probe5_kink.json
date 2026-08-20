@@ -1,0 +1,349 @@
+{
+ "fE": 0.96,
+ "numeraire": 1.052329,
+ "restored_v": 247.18494440885777,
+ "rows": [
+  {
+   "avg": 46.0,
+   "v": 295.200172512859,
+   "score_implied": 9.2,
+   "lvlcurr": 40.701945826752876,
+   "bestlvl": 46.0,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 46.2,
+   "v": 300.673461974561,
+   "score_implied": 11.2,
+   "lvlcurr": 40.84497750230936,
+   "bestlvl": 46.2,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 46.4,
+   "v": 300.5746608905696,
+   "score_implied": 13.2,
+   "lvlcurr": 40.98800917786584,
+   "bestlvl": 46.4,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 46.6,
+   "v": 294.80315198049635,
+   "score_implied": 15.2,
+   "lvlcurr": 41.13104085342233,
+   "bestlvl": 46.6,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 46.8,
+   "v": 294.80315198049635,
+   "score_implied": 17.2,
+   "lvlcurr": 41.274072528978806,
+   "bestlvl": 46.8,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 47.0,
+   "v": 294.80315198049635,
+   "score_implied": 19.2,
+   "lvlcurr": 41.41710420453529,
+   "bestlvl": 47.0,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 47.2,
+   "v": 294.39232835551724,
+   "score_implied": 21.2,
+   "lvlcurr": 41.56013588009178,
+   "bestlvl": 47.2,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 47.4,
+   "v": 294.393054834076,
+   "score_implied": 23.2,
+   "lvlcurr": 41.70316755564826,
+   "bestlvl": 47.4,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 47.6,
+   "v": 296.98077146038116,
+   "score_implied": 25.2,
+   "lvlcurr": 41.84619923120474,
+   "bestlvl": 47.6,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 47.8,
+   "v": 297.7769919607827,
+   "score_implied": 27.2,
+   "lvlcurr": 41.98923090676122,
+   "bestlvl": 47.8,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 48.0,
+   "v": 297.5779368356823,
+   "score_implied": 29.2,
+   "lvlcurr": 42.13226258231771,
+   "bestlvl": 48.0,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 48.2,
+   "v": 297.5779368356823,
+   "score_implied": 31.2,
+   "lvlcurr": 42.27529425787419,
+   "bestlvl": 48.2,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 48.4,
+   "v": 288.8526871854484,
+   "score_implied": 33.2,
+   "lvlcurr": 42.418325933430665,
+   "bestlvl": 48.4,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 48.6,
+   "v": 282.98056099498683,
+   "score_implied": 35.2,
+   "lvlcurr": 42.56135760898715,
+   "bestlvl": 48.6,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 48.8,
+   "v": 283.080088557537,
+   "score_implied": 37.2,
+   "lvlcurr": 42.70438928454363,
+   "bestlvl": 48.8,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 49.0,
+   "v": 278.8853609993337,
+   "score_implied": 39.2,
+   "lvlcurr": 42.847420960100116,
+   "bestlvl": 49.0,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 49.2,
+   "v": 254.72228053575833,
+   "score_implied": 41.2,
+   "lvlcurr": 42.9904526356566,
+   "bestlvl": 49.2,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 49.4,
+   "v": 235.21487827591994,
+   "score_implied": 43.2,
+   "lvlcurr": 43.13348431121308,
+   "bestlvl": 49.4,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 49.6,
+   "v": 235.24163690283427,
+   "score_implied": 45.2,
+   "lvlcurr": 43.27651598676957,
+   "bestlvl": 49.6,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 49.8,
+   "v": 235.24163690283427,
+   "score_implied": 47.2,
+   "lvlcurr": 43.419547662326046,
+   "bestlvl": 49.8,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 50.0,
+   "v": 247.2085549620175,
+   "score_implied": 49.2,
+   "lvlcurr": 43.56257933788253,
+   "bestlvl": 50.0,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 50.2,
+   "v": 247.5067744103887,
+   "score_implied": 51.2,
+   "lvlcurr": 43.70561101343901,
+   "bestlvl": 50.2,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 50.4,
+   "v": 247.3727391162974,
+   "score_implied": 53.2,
+   "lvlcurr": 43.84864268899549,
+   "bestlvl": 50.4,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 50.6,
+   "v": 247.35921854312048,
+   "score_implied": 55.2,
+   "lvlcurr": 43.991674364551976,
+   "bestlvl": 50.6,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 50.8,
+   "v": 250.83759788246593,
+   "score_implied": 57.2,
+   "lvlcurr": 44.134706040108455,
+   "bestlvl": 50.8,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 51.0,
+   "v": 250.83505520751027,
+   "score_implied": 59.2,
+   "lvlcurr": 44.27773771566494,
+   "bestlvl": 51.0,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 51.2,
+   "v": 252.72607889596404,
+   "score_implied": 61.2,
+   "lvlcurr": 44.42076939122143,
+   "bestlvl": 51.2,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 51.4,
+   "v": 253.930580346389,
+   "score_implied": 63.2,
+   "lvlcurr": 44.563801066777906,
+   "bestlvl": 51.4,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 51.6,
+   "v": 254.52919867880775,
+   "score_implied": 65.2,
+   "lvlcurr": 44.70683274233439,
+   "bestlvl": 51.6,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 51.8,
+   "v": 254.62836300207857,
+   "score_implied": 67.2,
+   "lvlcurr": 44.84986441789088,
+   "bestlvl": 51.8,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 52.0,
+   "v": 254.92973052420436,
+   "score_implied": 69.2,
+   "lvlcurr": 44.99289609344736,
+   "bestlvl": 52.0,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 52.2,
+   "v": 254.88941096419313,
+   "score_implied": 71.2,
+   "lvlcurr": 45.13592776900384,
+   "bestlvl": 52.2,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 52.4,
+   "v": 257.74992028931285,
+   "score_implied": 73.2,
+   "lvlcurr": 45.27895944456032,
+   "bestlvl": 52.4,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 52.6,
+   "v": 288.2827647561008,
+   "score_implied": 75.2,
+   "lvlcurr": 45.42199112011681,
+   "bestlvl": 52.6,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 52.8,
+   "v": 288.1995426012027,
+   "score_implied": 77.2,
+   "lvlcurr": 45.565022795673286,
+   "bestlvl": 52.8,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 53.0,
+   "v": 286.25754433387596,
+   "score_implied": 79.2,
+   "lvlcurr": 45.70805447122977,
+   "bestlvl": 53.0,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 53.2,
+   "v": 286.3570718964262,
+   "score_implied": 81.2,
+   "lvlcurr": 45.85108614678626,
+   "bestlvl": 53.2,
+   "radq": false,
+   "delivered": false
+  },
+  {
+   "avg": 53.4,
+   "v": 292.2181394688266,
+   "score_implied": 83.2,
+   "lvlcurr": 45.99411782234274,
+   "bestlvl": 53.4,
+   "radq": false,
+   "delivered": false
+  }
+ ]
+}
