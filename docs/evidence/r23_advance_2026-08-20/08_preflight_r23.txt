@@ -1,0 +1,10 @@
+================ CATCH-UP PREFLIGHT ================
+  season 2026 · 1 round(s) · identity overrides: Bailey Williams, Bailey Williams WBD, Callum Brown
+  R23  enc=cp1252    listed/played=411  resolved=411  listed-zero=0   absent/DNP=393   sha256 e3d5410e0e57
+        identity override: Callum M. Brown        -> callum-brown-ire       (score 90, owner-override:map_all)
+        identity override: Bailey Williams        -> bailey-williams-wb     (score 69, owner-override:map_all)
+  PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.
+===================================================
+
+About to apply rounds [23] — each as its own sequential transaction, committed in order.
+NOT APPROVED — nothing applied. Re-run with --approve (or answer `yes`).

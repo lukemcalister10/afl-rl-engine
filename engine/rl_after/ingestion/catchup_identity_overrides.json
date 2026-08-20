@@ -27,6 +27,13 @@
         "22|97": "bailey-williams-wc",
         "22|89": "bailey-williams-wb"
       }
+    },
+    {
+      "name": "Bailey Williams WBD",
+      "rule": "map_all",
+      "stable_key": "bailey-williams-wb",
+      "applies_to_rounds": [23],
+      "reason": "R23 — owner ruling 2026-08-20. The R23 export writes the two Bailey Williams players APART, but it decorates one of them with a club suffix the store does not carry: 'Bailey Williams WBD' (69) alongside 'Bailey J. Williams' (125). 'Bailey J. Williams' matches the store display name exactly and resolves unaided to bailey-williams-wc (AFL club West Coast). 'Bailey Williams WBD' matches NOTHING: the store's display name is the bare 'Bailey Williams', and the normaliser strips punctuation and case but does not delete the token 'WBD'. The read-only R23 preflight measured this as the ONE genuinely unresolved name in the file. THE OWNER'S WORD, VERBATIM: 'the one that isn't Bailey J Williams' — i.e. WBD is the Western Bulldogs Bailey, stable key bailey-williams-wb. THIS IS A NEW ENTRY, NOT AN EXTENSION OF THE RULE ABOVE, AND THAT IS DELIBERATE. The runbook's §3 step-2 remediation recipe says to add 23 to overrides['Bailey Williams'].applies_to_rounds plus a '23|69' map line; that recipe DOES NOT WORK on this file and was simulated failing. IdentityOverrides._by_name is keyed by the EXACT display string the export writes (round_catchup.py:71, resolve() does _by_name.get(name) on the raw name), so the 'Bailey Williams' rule is never consulted for a row that says 'Bailey Williams WBD'. Extending it would have left the name unresolved and halted the advance. It also honours H5 rather than violating it: the R20 retirement of the bare-name rule STANDS — this file does not collapse the two names, so the old collision does not recur and the old rule is correctly left out of scope for R23. What is needed is a new NAME, and it is round-scoped to [23] so it carries no standing weekly cost; if the export keeps writing the suffix, the rule should be re-argued rather than hand-extended each week. There is no bare 'Bailey Williams' row in the R23 file, so this binding creates NO duplicate stable key. The owner's score FILE IS UNTOUCHED (scores/R23.csv is byte-identical to the couriered file, md5 f4849bc4933801e80228bfc0e29e0c65) — the ruling lives here, in the identity record, not in the data."
     }
   ]
 }
