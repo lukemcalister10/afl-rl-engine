@@ -1,0 +1,173 @@
+======================================================================================================================
+THE REPAIRED R3-AWARE BIRTHDAY PROBE — THE CANDIDATE — a05fe951, the exact build_D7B.sh dial line
+======================================================================================================================
+  board before R3   03e3264d    672,399
+  THE BOARD         a05fe951    664,949
+  rows that move    67   total marginal -7450
+  numeraire _F      1.0524  (engine/rl_after/pick_redenomination.json — NOT inferred)
+
+  engine md5  5f434b95
+  RL_O42 True · RL_O43 True · treated rows 37 · lifted on this line 23
+
+SELF-CHECK 1 — the re-formed take must equal the ENGINE's own take at every call, exactly.
+  (carried byte-for-byte from cp_r3age.py; the gate on the collector the +1yr step is built on)
+  calls checked 6222   worst absolute disagreement 0.000e+00   EXACT
+
+SELF-CHECK 2 — the probe must reproduce BOTH BUILT BOARDS, EVERY row, tolerance 0.
+  board v == int(round(ev/_F)) is rl_export.py:187/660 and the export enforces it at eps=0,
+  so this is an identity the instrument must meet, not a tolerance it may negotiate.
+  2a  the CANDIDATE board a05fe951 : 804 of 804 rows exact
+  2b  the R3-OFF board    03e3264d : 804 of 804 rows exact
+
+CONTROL — the SAME check under the OLD probe's O43-blind assumption (no parity max).
+  Printed so the repair cannot be read as a loosening: if the blind model passed too, the
+  gate would not be measuring anything.
+  O43-blind vs the CANDIDATE board : 23 of 804 rows WRONG
+  O43-blind vs the R3-OFF board    : 31 of 804 rows WRONG
+  => the added awareness is load-bearing, and the check still refuses a wrong model.
+
+THE ISOLATED AGE STEP — R3's take re-evaluated exactly ONE YEAR OLDER, with games, output,
+pedigree and clock all held fixed, and then carried THROUGH THE PARITY MAX to the printed
+board integer. Age reaches R3 through o32_age_credit and nothing else.
+
+  ROWS THAT MOVE BETWEEN THE TWO BOARDS (67)
+  row                         age      v now     v +1yr      STEP   treated
+  Noah Mraz                    20       1057       1064        +7         -
+  Toby Conway                  23        460        460        +0         -
+  Will Brodie                  28        147        147        +0         -
+  Taylor Goad                  21        437        437        +0         -
+  Harry Barnett                22        422        422        +0         -
+  Oscar Ryan                   21        182        182        +0         -
+  William McCabe               21        229        229        +0         -
+  James Leake                  21        172        173        +1         -
+  Charlie Edwards              21        284        284        +0         -
+  Tom Doedee                   29         34         34        +0         -
+  Hudson O'Keeffe              22         46         47        +1         -
+  Lachlan Smith                21        148        148        +0         -
+  Cody Angove                  20        423        427        +4         -
+  Liam Reidy                   26         76         76        +0         -
+  George Stevens               21         65         72        +7         -
+  Max Ramsden                  23         54         57        +3         -
+  Luker Kentfield              21        147        152        +5         -
+  Zane Zakostelsky             21        141        141        +0         -
+  Jesse Dattoli                20        349        353        +4         -
+  Jamarra Ugle-Hagan           24        124        124        +0         -
+  Deven Robertson              25        113        113        +0         -
+  Matt Whitlock                20        235        241        +6         -
+  Tom Anastasopoulos           21         84         84        +0         -
+  Vigo Visentini               21        188        188        +0         -
+  Harry O'Farrell              20        537        537        +0       YES
+  Jack Ough                    20        288        293        +5         -
+  Henry Hustwaite              22         62         62        +0         -
+  Will Green                   21        619        619        +0         -
+  Cooper Simpson               21         84         84        +0         -
+  Lucas Camporeale             20        162        166        +4         -
+  Luke Kennedy                 20        124        128        +4         -
+  Harrison Oliver              20        273        277        +4         -
+  Bodie Ryan                   21         62         62        +0         -
+  Alex Dodson                  20         96         99        +3         -
+  Oliver Hannaford             20        193        197        +4         -
+  Jay Polkinghorne             20        176        180        +4         -
+  Hugh Davies                  22        187        187        +0         -
+  Tom Cochrane                 20        140        143        +3         -
+  Lachlan Sholl                26         73         73        +0         -
+  Max King                     26        209        209        +0       YES
+  Will Lorenz                  21        183        189        +6         -
+  Rhys Unwin                   20         85         89        +4         -
+  Tew Jiath                    21         99         99        +0         -
+  Jed Adams                    22        190        190        +0         -
+  Shadeau Brain                22         74         74        +0         -
+  Caleb Graham                 26         66         66        +0         -
+  Lucca Grego                  20         75         77        +2         -
+  Finlay Macrae                24         51         51        +0         -
+  Matt Hill                    22         36         36        +0         -
+  Josh Gibcus                  23        176        176        +0       YES
+  Josh Goater                  23         75         75        +0         -
+  Jakob Ryan                   22        149        149        +0         -
+  Brandon Walker               24         19         19        +0         -
+  Elliott Himmelberg           28         31         31        +0       YES
+  James Blanck                 26         15         15        +0         -
+  Aidan Johnson                26         65         65        +0         -
+  Henry Smith                  24         85         85        +0       YES
+  Lewis Hayes                  22        338        338        +0       YES
+  Harry Schoenberg             25         15         15        +0         -
+  Paddy Dow                    27         28         28        +0         -
+  Ryan Gardner                 29          7          7        +0         -
+  Reef McInnes                 24         50         50        +0       YES
+  Callum Coleman-Jones         27         25         25        +0         -
+  Luke Beecken                 25        157        157        +0         -
+  Jackson Archer               23         12         12        +0         -
+  Sam Sturt                    26         30         30        +0       YES
+  Darragh Joyce                29          6          6        +0         -
+
+  BOARD POINTS THAT MOVE ACROSS THE BIRTHDAY, ON THE ROWS THAT R3 MOVES : +81
+  BOARD POINTS THAT MOVE ACROSS THE BIRTHDAY, WHOLE BOARD (804 rows)     : +81
+  ROWS ANYWHERE ON THE BOARD WITH A NON-ZERO BIRTHDAY STEP              : 20
+  the movers:
+     James Leake                      +1  (board 172)
+     Hudson O'Keeffe                  +1  (board 46)
+     Lucca Grego                      +2  (board 75)
+     Alex Dodson                      +3  (board 96)
+     Tom Cochrane                     +3  (board 140)
+     Max Ramsden                      +3  (board 54)
+     Harrison Oliver                  +4  (board 273)
+     Jesse Dattoli                    +4  (board 349)
+     Oliver Hannaford                 +4  (board 193)
+     Cody Angove                      +4  (board 423)
+     Jay Polkinghorne                 +4  (board 176)
+     Lucas Camporeale                 +4  (board 162)
+     Luke Kennedy                     +4  (board 124)
+     Rhys Unwin                       +4  (board 85)
+     Jack Ough                        +5  (board 288)
+     Luker Kentfield                  +5  (board 147)
+     Matt Whitlock                    +6  (board 235)
+     Will Lorenz                      +6  (board 183)
+     Noah Mraz                        +7  (board 1057)
+     George Stevens                   +7  (board 65)
+
+THE 37 D7-TREATED ROWS — DOES THE PARITY MAX FLIP SIDES ACROSS THE BIRTHDAY?
+  The healthy counterpart and the injury regime age differently, so in principle the
+  winning side could change overnight. Whether it does is the measurement.
+  row                           group      v now     v +1yr side now  side +1    STEP
+  Tom Green                    LIFTED       5551       5551  healthy  healthy      +0
+  Nicholas Martin              LIFTED       4168       4168  healthy  healthy      +0
+  Connor Rozee                 LIFTED       3380       3380  healthy  healthy      +0
+  Darcy Jones                  LIFTED       1244       1244  healthy  healthy      +0
+  Joshua Kelly                 LIFTED        769        769  healthy  healthy      +0
+  Thomas Sims                  LIFTED        737        737  healthy  healthy      +0
+  Jack Viney                   LIFTED        559        559  healthy  healthy      +0
+  Harry O'Farrell              shield        537        537   injury   injury      +0
+  Harry Armstrong              LIFTED        518        518  healthy  healthy      +0
+  Harley Barker                LIFTED        504        504  healthy  healthy      +0
+  Sam Allen                    LIFTED        450        450  healthy  healthy      +0
+  Blake Thredgold              LIFTED        381        381  healthy  healthy      +0
+  Brayden Fiorini              LIFTED        349        349  healthy  healthy      +0
+  Lewis Hayes                  shield        338        338   injury   injury      +0
+  Mitchell Hinge               LIFTED        303        303  healthy  healthy      +0
+  Max King                     shield        209        209   injury   injury      +0
+  Ollie Murphy                 shield        200        200   injury   injury      +0
+  Josh Gibcus                  shield        176        176   injury   injury      +0
+  Sam Powell-Pepper            LIFTED        173        173  healthy  healthy      +0
+  Josh Sinn                    LIFTED        162        162  healthy  healthy      +0
+  Maxwell King                 LIFTED        138        138  healthy  healthy      +0
+  Harry Edwards                LIFTED        107        107  healthy  healthy      +0
+  Henry Smith                  shield         85         85   injury   injury      +0
+  Ollie Lord                   LIFTED         76         76  healthy  healthy      +0
+  Liam Hetherton               LIFTED         70         70  healthy  healthy      +0
+  Jesse Motlop                 LIFTED         59         59  healthy  healthy      +0
+  Judson Clarke                shield         55         55   injury   injury      +0
+  Reef McInnes                 shield         50         50   injury   injury      +0
+  Riley Garcia                 LIFTED         50         50  healthy  healthy      +0
+  Kobe McDonald                LIFTED         40         40  healthy  healthy      +0
+  Noah Chamberlain             LIFTED         40         40  healthy  healthy      +0
+  Andy Moniz-Wakefield         shield         38         38   injury   injury      +0
+  Nathan Wardius               shield         37         37   injury   injury      +0
+  Rob Monahan                  shield         37         37   injury   injury      +0
+  Elliott Himmelberg           shield         31         31   injury   injury      +0
+  Sam Sturt                    shield         30         30   injury   injury      +0
+  Ricky Mentha                 shield         23         23   injury   injury      +0
+
+  THE 23 D7-LIFTED ROWS  : birthday step +0   (rows moving: 0)
+  THE 14 SHIELD ROWS     : birthday step +0   (rows moving: 0)
+  PARITY-MAX SIDE FLIPS ACROSS THE BIRTHDAY : 0 of 37 treated rows
+

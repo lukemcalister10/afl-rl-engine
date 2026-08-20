@@ -1,0 +1,47 @@
+==============================================================================
+GUARD 5  —  mode: bound
+  branch tree : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-landing
+  HEAD        : ba37032
+==============================================================================
+  RL_V0SURF_PKL = /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-landing/data/v0surf.pkl
+boot-store guard (Guard 5) PASS  [run_panel_branchtree]  store cb38ef11 == pinned cb38ef11  |  rl_model 98f16794 == pinned 98f16794  |  fv 6e9a370e == pinned 6e9a370e (checkout+loaded-path) (ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 — NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) — it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 numéraire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.])
+
+GUARD 5 [bound] EXIT=0  ->  PASS
+
+
+==============================================================================
+GUARD 5  —  mode: unbound
+  branch tree : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-landing
+  HEAD        : ba37032
+==============================================================================
+  RL_V0SURF_PKL = <unset>
+  /home/claude/v0surf.pkl = fbc5b39387b2b135284a2e157f46c810
+  <repo>/data/v0surf.pkl  = 5dd34ca82735f5c8f021b1c7320df8f8
+
+==================== STALE-BOOT GUARD (Guard 5) FAILED — BUILD HALTED ====================
+  - v0surf LOAD-PATH MISMATCH: the engine will LOAD
+        /home/claude/v0surf.pkl
+        md5 fbc5b393  !=  pinned 5dd34ca8 (data/expected_boot.json 'v0surf', full-hash compare).
+        The engine's own precedence ($RL_V0SURF_PKL -> /home/claude/v0surf.pkl -> <repo>/data/v0surf.pkl) resolved to a file that is NOT the pinned frozen artifact — an env var or a stale workspace copy is shadowing the frozen source. Re-run bootstrap.sh (or unset the override); never boot on an unverified LOADED artifact.
+=========================================================================================
+
+GUARD 5 [unbound] EXIT=1  ->  FAIL
+
+
+==============================================================================
+GUARD 5  —  mode: literal
+  branch tree : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-landing
+  HEAD        : ba37032
+==============================================================================
+  workspace   : /home/claude/rl_workspace/rl_after   (shared, out-of-repo, NOT owned by this branch)
+  ws _merged_recover.py : 29376d5a73a3e8274fcebe5cd90ada0b
+  branch _merged_recover.py : 5f434b9592ad8adb7dcd534da49df3c7
+
+==================== STALE-BOOT GUARD (Guard 5) FAILED — BUILD HALTED ====================
+  - run_panel about to read ENGINE _merged_recover.py
+        at /home/claude/rl_workspace/rl_after/_merged_recover.py
+        md5 29376d5a  !=  expected 5f434b95 (pinned; repo checkout )
+        STALE BOOT: this is not the checked-out store. Re-run bootstrap.sh to re-seed the workspace from the checked-out source; never boot on an unverified store.
+=========================================================================================
+
+GUARD 5 [literal] EXIT=1  ->  FAIL

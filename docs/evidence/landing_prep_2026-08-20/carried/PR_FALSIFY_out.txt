@@ -1,0 +1,11 @@
+====================================================================================================
+FALSIFIERS ON THE REPAIRED SELF-CHECK — board a05fe951 / 03e3264d
+====================================================================================================
+  BASELINE (the repaired instrument)      CAND wrong   0 / PRE wrong   0   PASS
+  F-A  parity max dropped                 CAND wrong  23 / PRE wrong  31   CAUGHT
+  F-B  numeraire 1.0524 -> 1.0525          CAND wrong  60               CAUGHT
+  F-B  numeraire 1.0524 -> 1.0534          CAND wrong 366               CAUGHT
+  F-C  take mis-formed by +0.01           self-check 1 worst 1.000e-02     CAUGHT
+  F-D  counterpart keeps its shields      CAND wrong   8 / PRE wrong   2   CAUGHT
+
+  A check that could not fail would show four "NOT CAUGHT" lines above.

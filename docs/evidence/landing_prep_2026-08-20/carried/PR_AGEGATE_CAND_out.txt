@@ -1,0 +1,22 @@
+================================================================================================================
+THE AGE-GATE BIRTHDAY — the CHARGE's age channel (o38_w) advanced one year, everything else
+held EXACTLY fixed, re-priced through ev() with the parity max re-taken.  LINE=CAND  board a05fe951
+================================================================================================================
+  RL_O42 True · RL_O43 True · treated 37 · lifted 23 · O37_AGE_GATE 24 · _F 1.0524
+
+GUARD 1 — unperturbed, this routine reproduces the built board : 804 of 804 rows exact
+GUARD 2 — every row restores EXACTLY after the perturbation      : 0 failures
+  rows with no birth year (not testable, counted as 0): 0
+
+  ROWS TESTED                                                  : 804
+  ROWS WHOSE PRICE MOVES ON THE CHARGE'S BIRTHDAY ALONE        : 0
+  NET BOARD POINTS HANDED ACROSS THE BIRTHDAY, WHOLE BOARD     : +0
+  ROWS MOVING BY 50% OR MORE OF THEIR OWN PRICE                : 0
+
+  BY POPULATION
+    the 67 R3-moved rows          movers   0   net      +0
+    the 37 D7-TREATED rows        movers   0   net      +0
+      of which 23 D7-LIFTED       movers   0   net      +0
+      of which 14 SHIELD          movers   0   net      +0
+
+  NO ROW MOVES. The charge does not read current age on this line at all.

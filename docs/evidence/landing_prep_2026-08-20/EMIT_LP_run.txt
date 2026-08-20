@@ -1,0 +1,7 @@
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: 5f434b9592ad8adb7dcd534da49df3c7
+  RL_O42=1 RL_O43=1   day0 ref: DAY0_CP.json (210510fe5d09)\n  emit starting 00:52:59  (RL_O37=1 A=1 B1=1 pct=unset w=0.47 cap=smooth15 lam=unset pgm=1)
+  emit exit=0  COST: 2m 39s
+  OK -> per_entrant_LP.json  (c231fda2)
+ORDER 31-F REPLICATION: 89 of 89 wired entrants on board a05fe951 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201

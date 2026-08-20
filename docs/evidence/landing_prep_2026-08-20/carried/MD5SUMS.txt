@@ -1,0 +1,7 @@
+c7a5bf1cb22515a2e6cc1ff0be3a3b0d  docs/evidence/landing_prep_2026-08-20/carried/PR_AGEGATE_CAND_out.txt
+a202ebe1cd2c9bf456fd35136a20f5eb  docs/evidence/landing_prep_2026-08-20/carried/PR_BURN_CAND_out.txt
+d75542b09d39d4357e40ddfdd50f1acc  docs/evidence/landing_prep_2026-08-20/carried/PR_FALSIFY_out.txt
+6b81a3a04b83091634eac4b3844b7d1e  docs/evidence/landing_prep_2026-08-20/carried/PR_R3AGE_CAND_out.txt
+689a5d148336042bd3e620eeb0a2d417  docs/evidence/landing_prep_2026-08-20/carried/pr_agegate.py
+43de558d1d39690ba58862b9a8fc5d84  docs/evidence/landing_prep_2026-08-20/carried/pr_burn.py
+572021a0df9a9b5e7914c5b66fa4bbb4  docs/evidence/landing_prep_2026-08-20/carried/pr_lib.py

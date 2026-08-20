@@ -1,0 +1,33 @@
+================================================================================================================
+THE BURN CENSUS — R3-LIVE, RL_O42-LIVE, RL_O43-LIVE.  LINE=CAND   board a05fe951
+================================================================================================================
+  RL_O42 True · RL_O43 True · treated 37 · lifted 23 · step 0.98 · v0 floor 30 · _F 1.0524
+  population: 289 young rows (os_census.py's own selector, unchanged)
+
+GUARD — at scale 1.0 the sweep reproduces the built board : 289 of 289 rows exact
+  (40271 full-engine prices in 444 s)
+
+  -- the supervisor's population (|fK-fP|>=0.02), n=264
+     band         n  burned  pts(board)
+     1-10        42       0           0
+     11-20       44       0           0
+     21-30       34       0           0
+     31-40       28       0           0
+     41+         52       0           0
+     pool        64       0           0
+     TOTAL      264       0           0
+
+  -- all young rows, n=289
+     band         n  burned  pts(board)
+     1-10        49       0           0
+     11-20       47       0           0
+     21-30       36       0           0
+     31-40       32       0           0
+     41+         54       0           0
+     pool        71       0           0
+     TOTAL      289       0           0
+
+  worst five (all young rows):
+     (none — the census is ZERO)
+
+  D7-treated rows inside this population: 10 (5 lifted)
