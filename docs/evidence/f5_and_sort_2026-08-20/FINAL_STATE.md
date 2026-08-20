@@ -217,7 +217,12 @@ and belongs with the in-`ev()` structural cure in the modernisation programme.
 7. **`release_contract.f5_entrant_reconciliation` was asserted FROZEN at 77611** and did not move. It
    names the RELEASED baseline under the adoption lane — a different era's number that does *not* track
    the declared layer. A seat reading only the runbook's cost list might have moved it.
-8. **The gate-mode probe:** all three `RESEAL_HALT` blockers are now **mechanically clear** (A no longer
+8. **THE BASE MOVED BY ONE COMMIT UNDER THIS SEAT** — `fefc39b` ("THE LOCK-IN", another seat) landed
+   between `e6cdec0` and `778cbcf`. It is **docs-only**: the process plan promoted to
+   `docs/proposals/process_plan/` plus register v800/v801, and it is the commit that touched
+   `docs/OPEN_ITEMS_REGISTER.md` — **this seat did not**, as instructed. It shares no file with either
+   act and changes nothing measured here. Recorded rather than absorbed, per the R23 seat's precedent.
+9. **The gate-mode probe:** all three `RESEAL_HALT` blockers are now **mechanically clear** (A no longer
    fires because the bake wired the dials default-ON; B repaired in tree by that bake; C self-healed at
    the R23 board sync). **The full book re-seal stays owner-pending and `book_stable_seal.json` was not
    touched** — blocker A's *mechanism* is not its *question*, and ruling that the price-line fork has
