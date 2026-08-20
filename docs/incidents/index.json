@@ -1,10 +1,10 @@
 {
-  "coverage_entries": 178,
+  "coverage_entries": 182,
   "entries": [
     {
       "by": "pattern",
       "date": "2026-08-20",
-      "headline": "**THE BACK-ROWS REPAIR LANDED + THE BOOK RE-SEALED \u2014 THE LOCK-IN COMMENCEMENT CONDITION IS MET (15729e7..2657f51, raw-verified, pushed).** ACT A (owne\u2026",
+      "headline": "**THE RULEBOOK IS v3 AND THE LEVER LANDER EXISTS \u2014 both landed, raw-verified (17/17 GREEN under the supervisor's own run), PUSHED (427985e/246af1c the\u2026",
       "hits": {
         "BREACH": [
           "\u2026uard 5, VOIDS the prescreened combined gate (126.8/125.2/116.1, measured on b0c39d78), and breaches CORE's one-store-writer concurrency rule. COST ACCEPTED: the v2.9 board bakes carrying Bra\u2026",
@@ -30,6 +30,7 @@
           "\u20260-43: a legacy \u00d71.0524 board is dormant-with-warning; a NUM\u00c9RAIRE board with pick-1 \u2260 3000 HALTS). Supervisor-verified: the owner's sealed reads + the v1.7 anchors are in the \u00d71.0524 worl\u2026"
         ],
         "INCIDENT": [
+          "\u2026RETIRED with his words + the B1 strike cross-ref) + PART 4 = P1-P11 process laws each with its incident (owner: \"Do you agree with the process laws? They look fine to me.\" \u2014 supervisor concurrence +\u2026",
           "\u2026**THE IRONY IS EXACT, AND IT IS THE POINT.** `expected_boot.json`'s own `_doc` records the incident Guard 5 was BUILT to close: *\"workspace held baked-v2.4 `644d1254` while the repo carried\u2026",
           "\u2026gd-pvc-rederivation-o290ye` RESET-HARD to checkpoint `12a0761` (a moved head at fetch = an incident, HALT); ancestor proof to `33c8b52`; store `968de0c7`; **the ACT-1 memo's pre-view hash RE\u2026"
         ],
@@ -47,7 +48,67 @@
         "BREACH",
         "FALSE-RED"
       ],
-      "version": 803
+      "version": 807
+    },
+    {
+      "by": "pattern",
+      "date": "2026-08-20",
+      "headline": "**THE STAIRCASE IS DIAGNOSED \u2014 LAW 3 VIOLATION CONFIRMED (163dba9 evidence, 4b4a05b hygiene; the fix awaits its own owner-worded full-ceremony act).**\u2026",
+      "hits": {
+        "DEFECT": [
+          "\u2026axis; decisive precedent IN THE ENGINE'S OWN HAND: _prod_path's docstring declares this exact defect (\"the band prior is a stepwise (GBR) surface... more games at the same rate never worth less\")\u2026"
+        ]
+      },
+      "labels": [
+        "DEFECT"
+      ],
+      "version": 806
+    },
+    {
+      "by": "pattern",
+      "date": "2026-08-20",
+      "headline": "**THE OWNER'S THREE RULINGS EXECUTED (ebe8e07 + 813e5cd, raw-verified, pushed) + THE MOVERS QUESTIONS ANSWERED + A GENUINE MACHINERY FINDING UNDER DIA\u2026",
+      "hits": {
+        "HALT": [
+          "\u2026ired. Weeks ago.\"): before/after diff EXACTLY 2 of 27 gate statuses moved (A9 FAIL->STRUCK, B1 HALT->STRUCK), B1's figures byte-identical and still printed (supersession not suppression \u2014 every\u2026",
+          "\u2026K), B1's figures byte-identical and still printed (supersession not suppression \u2014 every legacy HALT path renders STRUCK; the injection seam still exits non-zero), A2/A3/A12 STILL FAIL by ruling\u2026"
+        ],
+        "INCIDENT": [
+          "\u2026ruck as the payload of the rail he retired TODAY; Part 4 = P1-P11 process laws each citing its incident; the twin REMOVED with thresholds folded into Part 3 \u2014 recommendation pending his word; law 12\u2026"
+        ]
+      },
+      "labels": [
+        "INCIDENT",
+        "HALT"
+      ],
+      "version": 805
+    },
+    {
+      "by": "pattern",
+      "date": "2026-08-20",
+      "headline": "**P1 THE SAFETY NET IS BUILT \u2014 the locked plan's first package landed (d40b790..9913052, seven commits, raw-verified, pushed), and its first full run \u2026",
+      "hits": {
+        "CORRECTION": [
+          "\u2026law P5 firing in anger: a gate's NAME was the bar while none of its gates executed.** PROCESS CORRECTION ON THE RECORD (owner challenge \"it feels like you're just telling me what I need to hear\"): th\u2026"
+        ],
+        "DEFECT": [
+          "\u2026ter identity files differ on the commit line and NOWHERE ELSE; P1_CLAIMS 36/36. THE SEAT'S OWN DEFECT CAUGHT BY ITS OWN INSTRUMENT (RL_-prefixed tool flag leaked into gate-mode probes, reported DR\u2026"
+        ],
+        "HALT": [
+          "\u20269f46aba3; Guard 5 green) and reports A9 FAIL (Ginnivan > Ward asserted; now 2198 vs 2837) + B1 HALT (class-year ratios y4/y5/y6 = 1.4262/1.4418/1.3965 vs the frozen HARD 1.30 bar) \u2014 both passed\u2026"
+        ],
+        "INCIDENT": [
+          "\u2026d the inbox provenance manifest, ONE canonical source declared, registered as a check \u00b7 1e the incident index GENERATED from the register (178 entries v622-v803, 101 with incident language, conserva\u2026",
+          "\u2026s a check \u00b7 1e the incident index GENERATED from the register (178 entries v622-v803, 101 with incident language, conservative rules, register byte-untouched) \u00b7 1f THE M1a RESIDUE BUILT (mirror-pari\u2026"
+        ]
+      },
+      "labels": [
+        "CORRECTION",
+        "INCIDENT",
+        "HALT",
+        "DEFECT"
+      ],
+      "version": 804
     },
     {
       "by": "pattern",
@@ -1793,7 +1854,7 @@
       "version": 622
     }
   ],
-  "incidents": 101,
+  "incidents": 104,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",
