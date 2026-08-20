@@ -34,9 +34,23 @@ def _md5(path):
     return h.hexdigest()
 
 
+def _manifest_vars_hash(path):
+    """The config manifest's canonical hash: sha256 over 'k=v' lines, sorted by key.
+
+    This is the SAME formula _verify_r14 computes inline and config_manifest.canonical_hash owns
+    upstream. It is spelled here rather than imported because scratch_fixture must run against a
+    SCRATCH's manifest, from inside the ingestion package, with no repo-root resolution — the same
+    reason _md5 is local.
+    """
+    mvars = json.load(open(path)).get('vars', {})
+    return hashlib.sha256(
+        '\n'.join('%s=%s' % (k, mvars[k]) for k in sorted(mvars)).encode()).hexdigest()
+
+
 def stamp_release_identities(scratch_root):
     """Make a scratch fixture's data/expected_boot.json COHERENT with its own engine: move the
-    `engine_head` and `rl_model` pins to the scratch's actual _merged_recover.py / rl_model.py md5s.
+    `engine_head` and `rl_model` pins to the scratch's actual _merged_recover.py / rl_model.py md5s,
+    and the `config` pin to the scratch's actual data/model_config.json vars hash.
     Preserves the file's exact formatting (surgical regex, like the applier's store/board re-stamp) so
     only the two pin values change. Returns {'engine_head':..., 'rl_model':...} — the coherent release
     identities the fixture now supplies. Idempotent; raises if a pin is not present exactly once."""
@@ -44,6 +58,14 @@ def stamp_release_identities(scratch_root):
     pins = {
         'engine_head': _md5(os.path.join(ra, '_merged_recover.py')),
         'rl_model': _md5(os.path.join(ra, 'rl_model.py')),
+        # ADDED 2026-08-20 (M1a, AUDIT_CI.md repair 3, second half). `config` belongs in exactly the
+        # same class as engine_head/rl_model: the fixture runs the CURRENT manifest — control 17
+        # (test_current_immutable_inputs_stay_current) ASSERTS the scratch's data/model_config.json
+        # equals the checkout's — so the boot pin naming it must be the CURRENT vars hash. It used to
+        # be, for free, while R14 and HEAD carried byte-identical manifests. The manifest then moved
+        # (45b207c0 / 59 vars -> eed19a75 / 84 vars) and the restored R14 pin was left describing a
+        # manifest no scratch contains, which is what _verify_r14 has been failing on.
+        'config': _manifest_vars_hash(os.path.join(scratch_root, 'data', 'model_config.json')),
     }
     bootp = os.path.join(scratch_root, 'data', 'expected_boot.json')
     with open(bootp) as f:
@@ -219,6 +241,13 @@ def _restamp_contract_code_identity(scratch_root, pins):
         raise FixtureError("restored R14 release_contract has no identities.engine_head/rl_model to bind")
     ids['engine_head'] = pins['engine_head']
     ids['rl_model'] = pins['rl_model']
+    # ADDED 2026-08-20 (M1a, AUDIT_CI.md repair 3). Same law as the two lines above, stated by this
+    # function's own docstring: "the engine-head stamp on expected_boot must be mirrored here or
+    # verify HALTS." release_contract.verify('gate') compares contract config_sha256 to the LIVE
+    # manifest hash, so once the boot `config` pin moves to the scratch's current manifest, the
+    # contract's copy must move with it — and if it does not, verify halts with
+    # "contract config_sha256 45b207c0 != live manifest hash eed19a75", which is exactly what it did.
+    c['config_sha256'] = pins['config']
     c.pop('contract_sha256', None)
     c['contract_sha256'] = _contract_seal(c)
     _make_writable(cp)
