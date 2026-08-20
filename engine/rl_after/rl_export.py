@@ -727,7 +727,7 @@ _OV.assert_presence(active)
 # §2.viii (owner item 359): the phantom layer carries the FULL expected annual intake (~103 slots) — the real
 # draft pick structure at v2-curve PVC per EFFECTIVE pick, plus mechanisms at their measured pick-equivalents
 # (MSD 90, all others 92 — item 341). The slot structure is measured from recorded store intake history and
-# SEALED before this render (session_2026-07-18/legf5/sealed_entrant_structure.json, seal cbb7c431 (ORDER 29: re-measured at the ruled curve 9729f0c5; the OCCUPANCY COUNTS are byte-identical to seal c9e7491b — only the PRICING moved, so this is a re-price of a frozen measurement, never a re-count) — NOT
+# SEALED before this render (session_2026-07-18/legf5/sealed_entrant_structure.json, seal ccc26a9e (ORDER 29: re-measured at the ruled curve 9729f0c5; the OCCUPANCY COUNTS are byte-identical to seal c9e7491b — only the PRICING moved, so this is a re-price of a frozen measurement, never a re-count. RE-SEALED cbb7c431 -> ccc26a9e by THE F5 ROUNDING ACT 2026-08-20: entrant_pvc.total 56772 -> 56773, the sum of the seal's OWN rounded parts instead of a third independent rounding. The COUNTS and the STAMP are byte-identical to cbb7c431 — nothing was re-measured and nothing was re-stamped; only the arithmetic that derives the total changed) — NOT
 # tuned against the §2.x gate (the LAW: sealed from history first). phantom=true; never at k=0; never gates/bakes.
 #
 # OBITUARY — F1's §2.i/§2.ii sizing is SUPERSEDED (delete, don't disable; CORE rule 7). The F1 phantom intake
@@ -745,9 +745,9 @@ if os.environ.get('RL_LEGF', '1') != '0':
     _lf_struct = json.load(open(_lf_seal_path))
     _lf_chk = {_kk: _vv for _kk, _vv in _lf_struct.items() if _kk != 'seal_sha256_8'}
     _lf_seal = _hl.sha256(json.dumps(_lf_chk, sort_keys=True, separators=(',', ':')).encode()).hexdigest()[:8]
-    if not (_lf_seal == _lf_struct.get('seal_sha256_8') == 'cbb7c431'):
+    if not (_lf_seal == _lf_struct.get('seal_sha256_8') == 'ccc26a9e'):
         raise SystemExit('LEG F5 HALT (§2.viii): sealed entrant structure seal drift — recomputed %s vs stored '
-                         '%s vs pinned cbb7c431. Re-seal from intake history before rendering.'
+                         '%s vs pinned ccc26a9e. Re-seal from intake history before rendering.'
                          % (_lf_seal, _lf_struct.get('seal_sha256_8')))
     _PVCMAX = max(PVC)
     def _lf_pvc(_e): return PVC.get(min(int(_e), _PVCMAX), PVC[_PVCMAX])   # v2-curve PVC of an effective pick
@@ -776,17 +776,51 @@ if os.environ.get('RL_LEGF', '1') != '0':
     _lf_draft_pvc = sum(_c * _p for _e, _c, _p in _lf_draft)
     _lf_mech_pvc = sum(_c * _p for _e, _c, _p in _lf_mech)
     _lf_ent_pvc = _lf_draft_pvc + _lf_mech_pvc               # the sealed league entrant layer (~77,611 adopted)
+    # ==== THE F5 ROUNDING FIX — ONE ROUNDING DECISION, AT ONE BOUNDARY, MADE HERE ==================
+    # (2026-08-20; docs/runbooks/F5_OFFBYONE_DIAGNOSIS.md. The declared move: 56772 -> 56773.)
+    #
+    # THE DEFECT. `draft` and `mech` were each rounded to an integer independently, and the TOTAL was
+    # rounded independently AGAIN from the unrounded sum. `round(a) + round(b)` and `round(a + b)` may
+    # differ by 1, and on the ORDER 29 curve head they did: draft .5606 and mech .7109 both rounded UP
+    # (+0.7285) while the sum's own .2715 rounded DOWN. The board then stated the SAME quantity twice,
+    # by two conventions, three separate times over (_meta, league, draftAssetTotals) plus once more in
+    # the sealed file — 56773 beside 56772. No value was lost and no price moved; the board simply
+    # disagreed with itself, and kept two proofs red for it.
+    #
+    # THE RULE. The PARTS are the primitive: they are what the reconciliation panel shows and what ties
+    # to the visible 1-64 ladder. The integer total is DEFINITIONALLY their sum. So it is computed ONCE,
+    # HERE, and every integer emission downstream reads these two names instead of re-rounding.
+    # The FLOAT `_lf_ent_pvc` stays the basis for per-club allocation (`_lf_mech_share`, `_cdraft_val`),
+    # so no club and no player number moves — the 1 never reaches a club or a player.
+    _draft_r = round(_lf_draft_pvc)                          # THE draft-side integer, rounded once
+    _mech_r = round(_lf_mech_pvc)                            # THE mech-side integer, rounded once
+    _ent_r = _draft_r + _mech_r                              # THE entrant-layer integer — a SUM, never a rounding
     # #306 L7 — THE RECONCILIATION MADE REAL. The sealed structure carries its OWN total, computed by
     # seal_structure.py from the same counts and the same v2-curve PVC. The board reprices those counts here;
     # the two MUST agree, and until now they were only PRINTED as a MATCH boolean the exit code ignored. That
     # is the vacuous reconciliation. Assert it: a seal measured on a stale store (its counts frozen against a
     # different intake history) no longer reprices to its own total, and that HALTs the render instead of
     # emitting a board whose phantom layer silently disagrees with the sealed record it cites.
-    _lf_sealed_total = _lf_struct['entrant_pvc']['total']
-    if round(_lf_ent_pvc) != _lf_sealed_total:
-        raise SystemExit('LEG F5 HALT (#306 L7 reconciliation): board repriced entrant layer %d != sealed '
-                         'total %d. The seal counts and the live curve/store disagree; re-seal from the live '
-                         'intake history before rendering.' % (round(_lf_ent_pvc), _lf_sealed_total))
+    #
+    # AND IT IS NO LONGER BLIND TO THE PARTS/TOTAL SPLIT. This guard used to read
+    # `if round(_lf_ent_pvc) != _lf_sealed_total`, comparing the board's `round(sum)` against the seal's
+    # `round(sum)` — the SAME convention on both sides. It compared a number to itself computed the same
+    # way, so by construction it could not see a seal whose own parts did not add up to its own total,
+    # and it passed happily on exactly the board that was inconsistent. It now compares the PARTS
+    # convention on both sides, and checks the seal's three fields close among themselves, so this whole
+    # class HALTS here instead of shipping.
+    _lf_sealed = _lf_struct['entrant_pvc']
+    _lf_sealed_total = _lf_sealed['total']
+    if _lf_sealed_total != _lf_sealed['draft'] + _lf_sealed['mech']:
+        raise SystemExit('LEG F5 HALT (#306 L7): the SEAL does not close — draft %d + mech %d != total %d. '
+                         'The parts are the primitive and the total is their sum; re-seal before rendering.'
+                         % (_lf_sealed['draft'], _lf_sealed['mech'], _lf_sealed_total))
+    if (_draft_r, _mech_r, _ent_r) != (_lf_sealed['draft'], _lf_sealed['mech'], _lf_sealed_total):
+        raise SystemExit('LEG F5 HALT (#306 L7 reconciliation): board repriced entrant layer '
+                         'draft %d / mech %d / total %d != sealed %d / %d / %d. The seal counts and the '
+                         'live curve/store disagree; re-seal from the live intake history before '
+                         'rendering.' % (_draft_r, _mech_r, _ent_r,
+                                         _lf_sealed['draft'], _lf_sealed['mech'], _lf_sealed_total))
     # -- per-club allocation (report-only; the §2.x gate is LEAGUE-level so the split is presentational):
     # draft slots round-robin across the 18 clubs in natural draft order; mechanisms split evenly. -----------
     _lf_clubs = sorted({r['club'] for r in active if r.get('club')})
@@ -846,7 +880,7 @@ if os.environ.get('RL_LEGF', '1') != '0':
         'law': 'MEMO_LEGF v1.3 §2.viii (owner item 359): FULL expected annual intake at v2-curve PVC per effective pick',
         'sealed_structure': 'session_2026-07-18/legf5/sealed_entrant_structure.json',
         'seal_sha256_8': _lf_struct['seal_sha256_8'],
-        'entrant_layer_pvc': round(_lf_ent_pvc), 'draft_pvc': round(_lf_draft_pvc), 'mech_pvc': round(_lf_mech_pvc),
+        'entrant_layer_pvc': _ent_r, 'draft_pvc': _draft_r, 'mech_pvc': _mech_r,   # F5 fix: the total is the SUM of the parts, not a third rounding
         'expected_slots_per_year': _lf_struct['expected_slots_per_year'],
         'pickeq': _lf_struct['pickeq'],
         'exit_model': 'exit risk carried by r_pop (§2.ix, F4 — incl exiters residuals); no §2.iii haircut, no double-count',
@@ -854,9 +888,19 @@ if os.environ.get('RL_LEGF', '1') != '0':
         'basis': 'per club + league, per lens (bal/+1/+2), WITH vs WITHOUT the phantom layer',
         'report_only': True, 'gates': False, 'k0_phantom': 'none',
         'note': 'draft slots priced off PVC per effective pick (v2 curve, GROSS); mechanisms at PICKEQ 90/92; no wide/decile bins (CORE rule 7); sealed from intake history, NOT tuned against the §2.x gate'},
-        'clubs': _cl_tot, 'league': {_lk: {'withPhantom': round(_lv['with']), 'withoutPhantom': round(_lv['without']),
-            'delta': round(_lv['with'] - _lv['without']), 'draftValue': round(_lv['draftValue']),
-            'freeValue': round(_lv['freeValue']), 'entrantValue': round(_lv['entrantValue'])} for _lk, _lv in _lg.items()}}
+        # F5 FIX — THE LEAGUE ROLL-UP CLOSES. It used to round `draftValue`, `freeValue`, `entrantValue`,
+        # `with` and `without` all INDEPENDENTLY, so `entrantValue` and `delta` came out at round(sum)
+        # (56772) beside a `draftValue + freeValue` of 56773. Now the two PARTS are rounded (they are the
+        # primitives), the entrant value is their SUM, and `delta` and `withPhantom` are DERIVED from it:
+        #   entrantValue == draftValue + freeValue,  delta == entrantValue,  with == without + entrantValue.
+        # Every identity a reader would check by eye now holds exactly. Deriving per-lens rather than
+        # pinning the constant keeps lens 0 at ZERO — the k=0 no-phantom invariant — by construction:
+        # its draftValue and freeValue are both 0, so its entrantValue is 0 and `with` == `without`.
+        'clubs': _cl_tot, 'league': {_lk: (lambda _d, _f, _wo: {
+            'withPhantom': _wo + _d + _f, 'withoutPhantom': _wo,
+            'delta': _d + _f, 'draftValue': _d, 'freeValue': _f, 'entrantValue': _d + _f})(
+                round(_lv['draftValue']), round(_lv['freeValue']), round(_lv['without']))
+            for _lk, _lv in _lg.items()}}
     out['phantomLayer'] = phantomLayer
     out['phantomPicks'] = phantomPicks
     out['phantomTotals'] = phantomTotals
@@ -871,7 +915,7 @@ if os.environ.get('RL_LEGF', '1') != '0':
     # the already-computed forward columns + the sealed F5 draft/mech totals). RL_LEGF=0 => this block is
     # skipped and the pre-F5 30-pick lensPicks/lensConservation stand (kill-switch clean).
     _PVC64 = sum(PVC[_n] for _n in range(1, 65))                     # Σ release-active PVC[1..64] = 65925 adopted
-    _draft_r = round(_lf_draft_pvc); _mech_r = round(_lf_mech_pvc)   # sealed F5 draft / mech totals (PVC-face)
+    # (_draft_r / _mech_r / _ent_r are the ONE rounding decision, made at the boundary above.)
     _res_nd = _draft_r - _PVC64                                      # national-draft deep tail + partial occupancy
     _res_mech = _mech_r                                              # non-national-draft entry mechanisms
     _visible = []
@@ -904,9 +948,18 @@ if os.environ.get('RL_LEGF', '1') != '0':
         _dat['+%d' % _k] = {'lensYear': _yr, 'nVisiblePicks': 64, 'visible_1_64': _PVC64,
                             'residual_nd_tail': _res_nd, 'residual_mech': _res_mech,
                             'residual_total': _res_nd + _res_mech, 'total': _PVC64 + _res_nd + _res_mech,
-                            'f5_entrant_layer_pvc': round(_lf_ent_pvc), 'f5_draft_pvc': _draft_r,
+                            'f5_entrant_layer_pvc': _ent_r, 'f5_draft_pvc': _draft_r,
                             'f5_mech_pvc': _mech_r,
-                            'reconciled_to_f5': (_PVC64 + _res_nd + _res_mech == _draft_r + _mech_r),
+                            # F5 FIX — THIS FLAG USED TO BE A TAUTOLOGY. It read
+                            #   (_PVC64 + _res_nd + _res_mech == _draft_r + _mech_r)
+                            # and _res_nd is DEFINED as `_draft_r - _PVC64` with _res_mech == _mech_r, so
+                            # the left side reduces algebraically to `_draft_r + _mech_r` — the right side.
+                            # It was `True` for any inputs whatsoever, which is why it printed PASS on the
+                            # very board whose strengthened cross-check was FAILing. A flag that cannot fail
+                            # is worse than no flag: it was camouflaging the real one. It now closes the
+                            # residual decomposition against the SEAL's own total — an independent number
+                            # this expression does not derive — so it can actually go False.
+                            'reconciled_to_f5': (_PVC64 + _res_nd + _res_mech == _ent_r == _lf_sealed_total),
                             'players_sum': sum((_r.get(_fld) or 0) for _r in active)}
     _dat['_meta'] = {
         'basis': 'owner-facing visible future-draft asset ladder: picks 1-64 at exact release-active PVC[n], '
@@ -919,7 +972,7 @@ if os.environ.get('RL_LEGF', '1') != '0':
         'report_only': True}
     out['draftAssetTotals'] = _dat
     print('LEG F5 ENTRANT LAYER (RL_LEGF=1): %d clubs · §2.viii sealed intake %d PVC (draft %d + mech %d, %.1f slots/yr, seal %s) · +1 Δ=%+d · +2 Δ=%+d · k=0 phantom=NONE'
-          % (len(_lf_clubs), round(_lf_ent_pvc), round(_lf_draft_pvc), round(_lf_mech_pvc),
+          % (len(_lf_clubs), _ent_r, _draft_r, _mech_r,
              _lf_struct['expected_slots_per_year'], _lf_struct['seal_sha256_8'],
              phantomTotals['league']['1']['delta'], phantomTotals['league']['2']['delta']))
 else:

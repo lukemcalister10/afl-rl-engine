@@ -72,6 +72,17 @@ for lo, hi in ROUNDS:
     v = sum(cnt * pvc(e) for e, cnt in draft_occ.items() if lo <= e <= hi)
     round_counts['%d-%d' % (lo, hi)] = {'mean_slots': round(n, 3), 'pvc': round(v)}
 
+# ---- THE ENTRANT-PVC TRIPLE: rounded ONCE, closed by construction, and ASSERTED ------------------
+# See the note at its use site below. The assert is what stops this ever going latent again: an
+# emitted triple that does not close is a seal disagreeing with itself, and it must never reach a file.
+_ENT_DRAFT_R, _ENT_MECH_R = round(draft_pvc), round(mech_pvc)
+_ENTRANT_PVC = {'draft': _ENT_DRAFT_R, 'mech': _ENT_MECH_R, 'total': _ENT_DRAFT_R + _ENT_MECH_R}
+assert _ENTRANT_PVC['total'] == _ENTRANT_PVC['draft'] + _ENTRANT_PVC['mech'], \
+    ('LEG F5 SEAL HALT: the entrant_pvc triple does not close — draft %r + mech %r != total %r. '
+     'The parts are the primitive and the total is their sum; a seal that disagrees with itself is '
+     'never written.' % (_ENTRANT_PVC['draft'], _ENTRANT_PVC['mech'], _ENTRANT_PVC['total']))
+
+
 def _measure_stamp():
     """#306 L7 — read the live provenance rather than carrying a frozen literal."""
     import os as _os
@@ -100,7 +111,18 @@ structure = {
     'window': [WINDOW[0], WINDOW[-1]], 'n_years': nY,
     'pickeq': {t: PICKEQ[t] for t in sorted(PICKEQ)},
     'expected_slots_per_year': round(total_n, 2),
-    'entrant_pvc': {'draft': round(draft_pvc), 'mech': round(mech_pvc), 'total': round(total_pvc)},
+    # ==== THE F5 ROUNDING FIX (2026-08-20; docs/runbooks/F5_OFFBYONE_DIAGNOSIS.md) ==================
+    # THE DEFECT: this line used to round the same float triple THREE INDEPENDENT TIMES —
+    # `{'draft': round(draft_pvc), 'mech': round(mech_pvc), 'total': round(total_pvc)}` — with no
+    # assertion that the emitted triple closes. `round(a) + round(b)` and `round(a + b)` are allowed
+    # to differ by 1, and on the ORDER 29 curve head they did: draft .5606 and mech .7109 both rounded
+    # UP (+0.7285) while the sum's own .2715 rounded DOWN, leaving a declared total of 56772 beside
+    # parts of 56773. The seal was internally inconsistent with itself, and the board inherited it.
+    # It stayed invisible for three earlier seals purely by luck of the fractional parts.
+    # THE RULE NOW: ONE rounding decision, at ONE boundary. The PARTS are the primitive — they are
+    # what the reconciliation panel shows and what ties to the visible 1-64 ladder — and the total is
+    # DEFINITIONALLY their sum. It is never rounded a third time.
+    'entrant_pvc': _ENTRANT_PVC,
     'expected_counts': {'draft': round(draft_n, 2), 'mech': round(mech_n, 2)},
     'draft_occupancy': {str(e): round(c, 4) for e, c in draft_occ.items()},   # effpk -> mean slots/yr
     'mech_occupancy':  {str(e): round(c, 4) for e, c in mech_occ.items()},
@@ -121,5 +143,7 @@ out = sys.argv[1] if len(sys.argv) > 1 else 'sealed_entrant_structure.json'
 json.dump(structure, open(out, 'w'), indent=1, sort_keys=True)
 print('SEALED ENTRANT STRUCTURE -> %s' % out)
 print('  window %s (%d yrs) · expected %.1f slots/yr' % (structure['window'], nY, total_n))
-print('  entrant PVC: draft %d + mech %d = TOTAL %d' % (round(draft_pvc), round(mech_pvc), round(total_pvc)))
+print('  entrant PVC: draft %d + mech %d = TOTAL %d  (total = the sum of the rounded parts, never a '
+      'third independent rounding of %.4f)' % (_ENTRANT_PVC['draft'], _ENTRANT_PVC['mech'],
+                                               _ENTRANT_PVC['total'], total_pvc))
 print('  seal sha256_8 = %s' % structure['seal_sha256_8'])

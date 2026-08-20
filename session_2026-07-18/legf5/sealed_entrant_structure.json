@@ -70,7 +70,7 @@
  "entrant_pvc": {
   "draft": 49595,
   "mech": 7178,
-  "total": 56772
+  "total": 56773
  },
  "expected_counts": {
   "draft": 73.14,
@@ -160,7 +160,7 @@
    "pvc": 0
   }
  },
- "seal_sha256_8": "cbb7c431",
+ "seal_sha256_8": "ccc26a9e",
  "stamp": {
   "board_balanced_md5": "234c3414",
   "curve_file_md5": "0be17c8f",

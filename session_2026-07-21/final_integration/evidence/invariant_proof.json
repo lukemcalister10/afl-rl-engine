@@ -3,19 +3,19 @@
     "checks": [
       {
         "check": "(10) final Sigma present v == 764021",
-        "detail": 761574,
+        "detail": 692296,
         "lifetime": "adoption",
         "pass": false
       },
       {
         "check": "(10) zero present-v movers vs the accepted reference vector (5546f278)",
-        "detail": "800 movers",
+        "detail": "803 movers",
         "lifetime": "adoption",
         "pass": false
       },
       {
         "check": "(10) zero present-rank movers vs the accepted reference vector",
-        "detail": "785 rank movers",
+        "detail": "795 rank movers",
         "lifetime": "adoption",
         "pass": false
       },
@@ -27,19 +27,19 @@
       },
       {
         "check": "(13) lens +1: Sigma PVC[1..64] == 65925 (RELEASED curve)",
-        "detail": 53536,
+        "detail": 47315,
         "lifetime": "adoption",
         "pass": false
       },
       {
         "check": "(13) lens +1: F5 entrant layer == 77611 (RELEASED)",
-        "detail": 62931,
+        "detail": 56773,
         "lifetime": "adoption",
         "pass": false
       },
       {
         "check": "(13) lens +1: residual_nd == draft_pvc(68556) - 65925 == 2631 (RELEASED)",
-        "detail": 2217,
+        "detail": 2280,
         "lifetime": "adoption",
         "pass": false
       },
@@ -51,19 +51,19 @@
       },
       {
         "check": "(13) lens +2: Sigma PVC[1..64] == 65925 (RELEASED curve)",
-        "detail": 53536,
+        "detail": 47315,
         "lifetime": "adoption",
         "pass": false
       },
       {
         "check": "(13) lens +2: F5 entrant layer == 77611 (RELEASED)",
-        "detail": 62931,
+        "detail": 56773,
         "lifetime": "adoption",
         "pass": false
       },
       {
         "check": "(13) lens +2: residual_nd == draft_pvc(68556) - 65925 == 2631 (RELEASED)",
-        "detail": 2217,
+        "detail": 2280,
         "lifetime": "adoption",
         "pass": false
       },
@@ -75,7 +75,7 @@
       },
       {
         "check": "(13) final board entrant layer == the RELEASED layer, and phantomPicks population matches Board B",
-        "detail": "entrant_layer=62931 vs 77611; phantomPicks 130 vs Board B 164",
+        "detail": "entrant_layer=56773 vs 77611; phantomPicks 130 vs Board B 164",
         "lifetime": "adoption",
         "pass": false
       }
@@ -193,19 +193,19 @@
     },
     {
       "check": "(13) lens +1: visible == Sigma PVC[1..64] == draftAssetTotals.visible_1_64",
-      "detail": "visible=53536 sumPVC=53536 declared=53536",
+      "detail": "visible=47315 sumPVC=47315 declared=47315",
       "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(13) lens +1: visible + residual_nd + residual_mech == the board's own F5 entrant layer (draftAssetTotals total == draft+mech == phantomTotals entrant layer)",
-      "detail": "parts=62931 declared=62931 total=62931 draft+mech=62931 phantom=62931",
+      "detail": "parts=56773 declared=56773 total=56773 draft+mech=56773 phantom=56773",
       "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(13) lens +1: residual_nd == f5_draft_pvc - visible_1_64",
-      "detail": "residual_nd=2217 draft_pvc=55753 - visible=53536",
+      "detail": "residual_nd=2280 draft_pvc=49595 - visible=47315",
       "lifetime": "per-push",
       "pass": true
     },
@@ -223,19 +223,19 @@
     },
     {
       "check": "(13) lens +2: visible == Sigma PVC[1..64] == draftAssetTotals.visible_1_64",
-      "detail": "visible=53536 sumPVC=53536 declared=53536",
+      "detail": "visible=47315 sumPVC=47315 declared=47315",
       "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(13) lens +2: visible + residual_nd + residual_mech == the board's own F5 entrant layer (draftAssetTotals total == draft+mech == phantomTotals entrant layer)",
-      "detail": "parts=62931 declared=62931 total=62931 draft+mech=62931 phantom=62931",
+      "detail": "parts=56773 declared=56773 total=56773 draft+mech=56773 phantom=56773",
       "lifetime": "per-push",
       "pass": true
     },
     {
       "check": "(13) lens +2: residual_nd == f5_draft_pvc - visible_1_64",
-      "detail": "residual_nd=2217 draft_pvc=55753 - visible=53536",
+      "detail": "residual_nd=2280 draft_pvc=49595 - visible=47315",
       "lifetime": "per-push",
       "pass": true
     },
@@ -261,24 +261,24 @@
   "deferred": [
     {
       "check": "(11) vP1/vP2 acceptance vs Board B \u2014 owner-DEFERRED (forward-lens not accepted)",
-      "detail": "vP1 changed=801/804, vP2 changed=798/804 vs the SUPERSEDED R14 Board B 1f10220c (present-v also moved +800, the STOP-1 advance). No accepted R19 forward oracle exists; the forward-lens repair is owner-deferred. Deltas recorded, NOT asserted as a pass.",
+      "detail": "vP1 changed=800/804, vP2 changed=800/804 vs the SUPERSEDED R14 Board B 1f10220c (present-v also moved +802, the STOP-1 advance). No accepted R19 forward oracle exists; the forward-lens repair is owner-deferred. Deltas recorded, NOT asserted as a pass.",
       "status": "DEFERRED"
     }
   ],
   "final_board_identity": {
     "balanced_board_md5_lineage": "5546f278788196c680a987c26e4f0150",
-    "md5": "4b448a821f54180182637983f7a26a9d",
-    "sha256": "93eeb890e32da3d09f8b5c93b540020c6067b6d1c863804baa63b824a7ee425a"
+    "md5": "c97a4d9f9fa42597f85517c7850d3943",
+    "sha256": "e2c5df21ae660b754dbe79c39d69cb55cc42b1f014a81ca494611cb058f6f134"
   },
   "forward": {
     "added": 0,
     "missing": 0,
     "oracle": "Board B 1f10220c (SUPERSEDED R14; not an R19 oracle)",
-    "present_v_moved": 800,
-    "vP1_changed": 801,
-    "vP1_equal": 3,
-    "vP2_changed": 798,
-    "vP2_equal": 6
+    "present_v_moved": 802,
+    "vP1_changed": 800,
+    "vP1_equal": 4,
+    "vP2_changed": 800,
+    "vP2_equal": 4
   },
   "forward_lens_deferred": true,
   "mode": "per-push",

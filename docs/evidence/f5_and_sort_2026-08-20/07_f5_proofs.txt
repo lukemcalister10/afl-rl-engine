@@ -1,0 +1,68 @@
+=== ACT A — THE PROOFS — 2026-08-20T11:11:51Z ===
+
+-- F4 THE SEAL: what moved, and nothing else --
+   entrant_pvc      {'draft': 49595, 'mech': 7178, 'total': 56772} -> {'draft': 49595, 'mech': 7178, 'total': 56773}
+   seal_sha256_8    cbb7c431 -> ccc26a9e
+   fields changed: ['entrant_pvc', 'seal_sha256_8']
+   F4: PASS — only entrant_pvc.total and the seal itself; the COUNTS and the STAMP are byte-identical
+   stamp byte-identical: True  (store_md5 d9a24282, board_balanced_md5 234c3414, curve_file_md5 0be17c8f — NOT re-measured, NOT re-stamped)
+   occupancy counts byte-identical: draft True  mech True
+
+-- A8 invariant_proof.py per-push lane (predicted 26/28 -> 28/28) --
+  PASS (13) lens +1: visible + residual_nd + residual_mech == the board's own F5 entrant layer (draftAssetTotals total == draft+mech == phantomTotals entrant layer) -- parts=56773 declared=56773 total=56773 draft+mech=56773 phantom=56773
+  PASS (13) lens +1: draftAssetTotals reconciled_to_f5
+  PASS (13) lens +2: visible + residual_nd + residual_mech == the board's own F5 entrant layer (draftAssetTotals total == draft+mech == phantomTotals entrant layer) -- parts=56773 declared=56773 total=56773 draft+mech=56773 phantom=56773
+  PASS (13) lens +2: draftAssetTotals reconciled_to_f5
+final board md5=c97a4d9f9fa42597f85517c7850d3943 sha256=e2c5df21ae660b75...
+RESULT: 28/28 PASS  (adoption lane 0/13, non-gating)  -> session_2026-07-21/final_integration/evidence/invariant_proof.json
+
+   A8: PASS — 28/28, zero FAIL. The two F5 reds are cleared.
+
+-- A9 r15_ladder_survival_proof.py — THE HARNESS CANNOT RUN, AND THAT IS PRE-EXISTING --
+   Running it HALTS in rl_model.py at engine-load time, before any F5 code is reached:
+     File rl_model.py:71 in _pos_present -> KeyError: 'GFWD'
+     (reached via rl_export.py:68 exec of _merged_recover.py, i.e. the ENGINE IMPORT — line 68,
+      far above the F5 block at ~730. None of this act's edits are on that path.)
+   CONTROL, measured not assumed: the SAME proof run from a clean worktree at 2991740 — the commit
+   BEFORE any Act A edit — fails with the IDENTICAL traceback and the identical KeyError. So the
+   harness is broken independently of this act and cannot confirm or deny anything about it.
+   Recorded as a PRE-EXISTING blocker, referred, NOT repaired here (it is nobody's ruling this week).
+
+   A9's SUBSTANCE IS STILL PROVED, by lifting the proof's own assertion (lines 143-157) VERBATIM
+   and evaluating it directly against each board — it is a pure function of the board:
+     == CONTROL board 7a3f4fe2 (before this act)
+        FAIL +1 F5 reconciliation closes internally (47315+2280+7178=56772)
+        FAIL +2 F5 reconciliation closes internally (47315+2280+7178=56772)
+        PASS draftAssetTotals and phantomTotals agree on the sealed entrant layer (56772)
+     == F5      board c97a4d9f (after this act)
+        PASS +1 F5 reconciliation closes internally (47315+2280+7178=56773)
+        PASS +2 F5 reconciliation closes internally (47315+2280+7178=56773)
+        PASS draftAssetTotals and phantomTotals agree on the sealed entrant layer (56773)
+
+     A9 SUBSTANCE: PASS — the identical strengthened assertion is RED on the pre-act board and
+     GREEN on the F5 board, exactly as the runbook predicted ('a second consumer that one fix clears').
+
+-- F6 NON-VACUITY OF THE NEW reconciled_to_f5 --
+   OLD:  _PVC64 + _res_nd + _res_mech == _draft_r + _mech_r
+         _res_nd IS (_draft_r - _PVC64) and _res_mech IS _mech_r, so the left side reduces to
+         _draft_r + _mech_r. It is `X == X`: True for ANY inputs. That is why it printed PASS on
+         the very board whose strengthened cross-check was FAILing — it camouflaged the real one.
+   NEW:  _PVC64 + _res_nd + _res_mech == _ent_r == _lf_sealed_total   (adds the SEAL's own total,
+         a number this expression does not derive)
+
+     case                                 OLD     NEW    
+     the live F5 board (agreeing)         True    True   
+     the OLD board's own numbers          True    False  
+     a seal disagreeing by 1              True    False  
+     nonsense parts, agreeing seal        True    True   
+     nonsense parts, disagreeing seal     True    False  
+     wildly wrong everything              True    False  
+
+     OLD range: {True} -> a constant; it CANNOT fail.
+     NEW range: {False, True} -> it discriminates.  F6 SATISFIED.
+
+     HONEST CAVEAT, recorded rather than glossed: on a board that actually RENDERS the flag will
+     always read True, because the strengthened #306 L7 guard now HALTS the render on exactly the
+     mismatch that would make it False. That is the correct ordering — a hard halt instead of a
+     shipped false flag — and it makes the flag a redundant restatement of a real guard rather
+     than, as before, a decoration that could not fail.

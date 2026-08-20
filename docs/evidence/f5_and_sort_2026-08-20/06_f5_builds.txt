@@ -13,3 +13,42 @@
 }
    live board on disk : 7a3f4fe23207a29095e6d37408a4b727
    CONTROL reproduces the live board EXACTLY -> every later diff is attributable to the F5 edits alone.
+
+-- A1 THE F5 BUILDS (after the seal + rl_export edits) --
+{
+  "tag": "F5_DEV",
+  "mode": "dev",
+  "overrides": {},
+  "rc": 0,
+  "board_md5": "c97a4d9f9fa42597f85517c7850d3943",
+  "elapsed_s": 99.9
+}{
+  "tag": "F5_CANON",
+  "mode": "canonical",
+  "overrides": {},
+  "rc": 0,
+  "board_md5": "c97a4d9f9fa42597f85517c7850d3943",
+  "elapsed_s": 98.9
+}
+   A1: dev and canonical AGREE byte-for-byte on c97a4d9f9fa42597f85517c7850d3943.  PASS
+   F7 clear.
+
+-- A7 THE COMPLETE BOARD DIFF, control 7a3f4fe2 -> F5 c97a4d9f --
+      /draftAssetTotals/+1/f5_entrant_layer_pvc                      56772 -> 56773
+      /draftAssetTotals/+2/f5_entrant_layer_pvc                      56772 -> 56773
+      /phantomTotals/_meta/entrant_layer_pvc                         56772 -> 56773
+      /phantomTotals/_meta/seal_sha256_8                             cbb7c431 -> ccc26a9e
+      /phantomTotals/league/1/delta                                  56772 -> 56773
+      /phantomTotals/league/1/entrantValue                           56772 -> 56773
+      /phantomTotals/league/1/withPhantom                            687952 -> 687953
+      /phantomTotals/league/2/delta                                  56772 -> 56773
+      /phantomTotals/league/2/entrantValue                           56772 -> 56773
+      /phantomTotals/league/2/withPhantom                            257524 -> 257525
+      ---- 10 differing fields IN TOTAL, and they are exactly the predicted set. ----
+
+   A2 all 804 players' v/vM2/vM1/vP1/vP2 byte-identical .......... PASS (no /active/... row in the diff)
+   A3 the 198 `back` rows byte-identical ......................... PASS (no /back/... row in the diff)
+   A4 lensPicks (128 rows) + visible_1_64/residuals/total/parts .. PASS (none in the diff)
+   A5 lens 0 (the balanced board, k=0 ZERO-phantom invariant) ... PASS  withPhantom 692296 -> 692296
+      league lens 1 closes: with(687953) - without(631180) = 56773 == delta 56773 == entrantValue 56773 == draft 49595 + free 7178  -> PASS
+      league lens 2 closes: with(257525) - without(200752) = 56773 == delta 56773 == entrantValue 56773 == draft 49595 + free 7178  -> PASS
