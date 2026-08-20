@@ -1,0 +1,53 @@
+====================================================================================================
+CLAIMS CHECK — PACKAGE 1 — THE SAFETY NET (PLAN_v6 items 1a-1f)
+  act type   : small-act
+  date       : 2026-08-20   base: 0244935
+  owner word : the locked process plan, docs/proposals/process_plan/PLAN_v6.md — P1 is the first package in its sequence. No new owner word was needed for 1a and 1c-1f; 1b's amendment WAITS for one and is not applied.
+  tree       : /home/user/afl-rl-engine
+====================================================================================================
+  ACTIVATION  ACCEPT_HEAVY_PROBES (heavy ruled-red probes) off
+  ACTIVATION  acceptance.runner --profile host-insensitive (CI, four push workflows) on  (by: PLAN_v6 1a — 'on every push, the HOST-INSENSITIVE gates run'. It is a read-only gate: it hashes, parses and compares, and writes nothing to the tree.)
+  ACTIVATION  build_twice_determinism (in --profile host-insensitive) off
+  ACTIVATION  rulebook_lint (armed, adjudicated against the ledger) on  (by: PLAN_v6 1a — 'the rulebook lint is a NEW instrument CALIBRATED against the current RULEBOOK (zero false reds before arming)'. Its one current finding is TRUE and is carried as presented ruling RB1.)
+  ACTIVATION  the 1b RULEBOOK amendment                off
+  ACTIVATION  the board-REBUILD gate in CI             off
+
+  OK   unmoved      board of record                                md5 68be10c79d0ee096455754e084bcf757 (claimed 68be10c79d0ee096455754e084bcf757)
+  OK   unmoved      store                                          md5 b745002eb0a0fbb1c34fa44f1ef708d6 (claimed b745002eb0a0fbb1c34fa44f1ef708d6)
+  OK   unmoved      engine_head                                    md5 1867e953cf844d089ab1da68379b1742 (claimed 1867e953cf844d089ab1da68379b1742)
+  OK   unmoved      rl_model                                       md5 6fe7c4155866d80e8045bed2d3bf2802 (claimed 6fe7c4155866d80e8045bed2d3bf2802)
+  OK   unmoved      model config manifest                          md5 269d20ab86e3b9d13867987065c757d2 (claimed 269d20ab86e3b9d13867987065c757d2)
+  OK   unmoved      q97m fitted artifact                           md5 cfdc73216c099e5e8f1fda3968f31c00 (claimed cfdc73216c099e5e8f1fda3968f31c00)
+  OK   unmoved      v0surf fitted artifact                         md5 5dd34ca82735f5c8f021b1c7320df8f8 (claimed 5dd34ca82735f5c8f021b1c7320df8f8)
+  OK   unmoved      cm_400 band cache                              md5 34faa8659cc8f19794f5cb9584fa19b2 (claimed 34faa8659cc8f19794f5cb9584fa19b2)
+  OK   unmoved      LTI register (owner-authored input)            md5 652d83e87780e415a01a2de6d8b3cc57 (claimed 652d83e87780e415a01a2de6d8b3cc57)
+  OK   unmoved      THE RULEBOOK — 1b is a diff, not an edit       md5 8dc13a5d711a89f5c19ac041dc12837a (claimed 8dc13a5d711a89f5c19ac041dc12837a)
+  OK   unmoved      the twin — disposal awaits the owner           md5 9fdea7ffd3969e87de66449db6ea6097 (claimed 9fdea7ffd3969e87de66449db6ea6097)
+  OK   unmoved      UI working bundle                              md5 8c63e56a645dd0738a77653c3cb237b3 (claimed 8c63e56a645dd0738a77653c3cb237b3)
+  OK   unmoved      UI public bundle                               md5 540bcdb444fbd5375c048cc8a26ba291 (claimed 540bcdb444fbd5375c048cc8a26ba291)
+  OK   json_field   boot pin: board                                board = '68be10c79d0ee096455754e084bcf757' (claimed '68be10c79d0ee096455754e084bcf757')
+  OK   json_field   boot pin: store                                store = 'b745002eb0a0fbb1c34fa44f1ef708d6' (claimed 'b745002eb0a0fbb1c34fa44f1ef708d6')
+  OK   json_field   boot pin: balanced_board_md5                   balanced_board_md5 = '556ad70d295923455982ae33e4b8bfd3' (claimed '556ad70d295923455982ae33e4b8bfd3')
+  OK   json_field   boot pin: engine_head                          engine_head = '1867e953cf844d089ab1da68379b1742' (claimed '1867e953cf844d089ab1da68379b1742')
+  OK   json_field   boot pin: config                               config = 'eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1' (claimed 'eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1')
+  OK   json_field   boot pin: fv                                   fv = '6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346' (claimed '6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346')
+  OK   json_field   boot pin: register                             register = '652d83e87780e415a01a2de6d8b3cc57' (claimed '652d83e87780e415a01a2de6d8b3cc57')
+  OK   json_field   as_of_round                                    as_of_round = 23 (claimed 23)
+  OK   json_field   contract_sha256                                contract_sha256 = 'cde9f70a49b673933f368032393c3c0c8b61e83d51cfe920c8b5c64faf7cf8c7' (claimed 'cde9f70a49b673933f368032393c3c0c8b61e83d51cfe920c8b5c64faf7cf8c7')
+  OK   json_field   book seal stable_sha256                        stable_sha256 = '9f46aba3ba8b056d0835928239dd6feeeb1708257837e4168fdbb6efd1755598' (claimed '9f46aba3ba8b056d0835928239dd6feeeb1708257837e4168fdbb6efd1755598')
+  OK   json_field   book seal head_md5 (SEALED-LAG 0)              head_md5 = '1867e953' (claimed '1867e953')
+  OK   json_field   book seal store_md5 (SEALED-LAG 0)             store_md5 = 'b745002e' (claimed 'b745002e')
+  OK   gate         release_manifest_check — 40/40 COHERENT        exit 0 (expected PASS)
+  OK   gate         release_contract.py check                      exit 0 (expected PASS)
+  OK   gate         six-way store coherence                        exit 0 (expected PASS)
+  OK   gate         THE RUNNER, host-insensitive profile — GREEN   exit 0 (expected GREEN)
+  OK   gate         the spine self-test — every registered check f exit 0 (expected PASS)
+  OK   gate         the claims checker's own negative control      exit 0 (expected PASS)
+  OK   gate         the rulebook lint fires on its true finding (N exit 1 (expected FAIL)
+  OK   gate         the twin regenerator REFUSES the unruled laws  exit 1 (expected FAIL)
+  OK   gate         the inbox provenance manifest is current       exit 0 (expected PASS)
+  OK   gate         the incident index is current                  exit 0 (expected PASS)
+  OK   gate         the four RULED-RED step entries are still fail exit 0 (expected PASS)
+
+CLAIMS: 36 of 36 verified against the tree; 0 shape problem(s)
+VERDICT: GREEN — every claim recomputed and held

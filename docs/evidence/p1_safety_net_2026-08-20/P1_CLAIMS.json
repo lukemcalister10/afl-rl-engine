@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "act_type": "small-act",
+  "act": "PACKAGE 1 — THE SAFETY NET (PLAN_v6 items 1a-1f)",
+  "date": "2026-08-20",
+  "base_commit": "0244935",
+  "seat": "P1",
+  "owner_word": "the locked process plan, docs/proposals/process_plan/PLAN_v6.md — P1 is the first package in its sequence. No new owner word was needed for 1a and 1c-1f; 1b's amendment WAITS for one and is not applied.",
+  "_note": "THIS FILE IS P1'S OWN EVIDENCE, VERIFIED BY P1'S OWN CHECKER (tools/claims.py, built in 1c). act_type is small-act because P1 is pure tooling: the claim is that NOTHING VALUE-BEARING MOVED. Every `unmoved` value below is the identity as it stood at base 0244935, transcribed from g1_BEFORE.txt, and the checker recomputes each one against the tree P1 produced. Re-run: python3 tools/claims.py check docs/evidence/p1_safety_net_2026-08-20/P1_CLAIMS.json",
+
+  "activation": {
+    "_doc": "Day-0 activation state for everything P1 introduces that can be switched. Every switch is OFF or absent by default, and the two things that are ON are ON because they are gates whose whole purpose is to run.",
+    "acceptance.runner --profile host-insensitive (CI, four push workflows)": {
+      "state": "on",
+      "activated_by": "PLAN_v6 1a — 'on every push, the HOST-INSENSITIVE gates run'. It is a read-only gate: it hashes, parses and compares, and writes nothing to the tree."
+    },
+    "rulebook_lint (armed, adjudicated against the ledger)": {
+      "state": "on",
+      "activated_by": "PLAN_v6 1a — 'the rulebook lint is a NEW instrument CALIBRATED against the current RULEBOOK (zero false reds before arming)'. Its one current finding is TRUE and is carried as presented ruling RB1."
+    },
+    "ACCEPT_HEAVY_PROBES (heavy ruled-red probes)": {
+      "state": "off",
+      "_why": "a heavy probe needs a bootstrapped workspace and a built board; it is run deliberately, never per-invocation, and the entry carries a dated measurement plus a window instead."
+    },
+    "build_twice_determinism (in --profile host-insensitive)": {
+      "state": "off",
+      "_why": "~3.7 minutes of engine. Excluded from the per-push profile by its PROFILE tag; runs in the full profile, which is what the acceptance run below used."
+    },
+    "the board-REBUILD gate in CI": {
+      "state": "off",
+      "_why": "PLAN_v6 1a arms it only after a MEASURED re-proof on the current runner class, and MAIN-ONLY when armed. P1 does not arm it. The determinism proof landed here is the same-box leg only; the cross-machine leg stays DEFERRED on the record."
+    },
+    "the 1b RULEBOOK amendment": {
+      "state": "off",
+      "_why": "drafted as a diff and NOT applied. docs/RULEBOOK.md and docs/acceptance_v2_0.json are byte-unmoved, asserted below."
+    }
+  },
+
+  "claims": [
+    {"kind": "unmoved", "label": "board of record", "path": "data/rl_build/rl_app_data.json", "value": "68be10c79d0ee096455754e084bcf757"},
+    {"kind": "unmoved", "label": "store", "path": "engine/rl_after/rl_model_data.json", "value": "b745002eb0a0fbb1c34fa44f1ef708d6"},
+    {"kind": "unmoved", "label": "engine_head", "path": "engine/rl_after/_merged_recover.py", "value": "1867e953cf844d089ab1da68379b1742"},
+    {"kind": "unmoved", "label": "rl_model", "path": "engine/rl_after/rl_model.py", "value": "6fe7c4155866d80e8045bed2d3bf2802"},
+    {"kind": "unmoved", "label": "model config manifest", "path": "data/model_config.json", "value": "269d20ab86e3b9d13867987065c757d2"},
+    {"kind": "unmoved", "label": "q97m fitted artifact", "path": "data/q97m.pkl", "value": "cfdc73216c099e5e8f1fda3968f31c00"},
+    {"kind": "unmoved", "label": "v0surf fitted artifact", "path": "data/v0surf.pkl", "value": "5dd34ca82735f5c8f021b1c7320df8f8"},
+    {"kind": "unmoved", "label": "cm_400 band cache", "path": "data/cm_400.pkl", "value": "34faa8659cc8f19794f5cb9584fa19b2"},
+    {"kind": "unmoved", "label": "LTI register (owner-authored input)", "path": "LTI_REGISTER.md", "value": "652d83e87780e415a01a2de6d8b3cc57"},
+    {"kind": "unmoved", "label": "THE RULEBOOK — 1b is a diff, not an edit", "path": "docs/RULEBOOK.md", "value": "8dc13a5d711a89f5c19ac041dc12837a"},
+    {"kind": "unmoved", "label": "the twin — disposal awaits the owner", "path": "docs/acceptance_v2_0.json", "value": "9fdea7ffd3969e87de66449db6ea6097"},
+    {"kind": "unmoved", "label": "UI working bundle", "path": "ui/data/board_view_working.js", "value": "8c63e56a645dd0738a77653c3cb237b3"},
+    {"kind": "unmoved", "label": "UI public bundle", "path": "ui/data/board_view_public.js", "value": "540bcdb444fbd5375c048cc8a26ba291"},
+
+    {"kind": "json_field", "label": "boot pin: board", "path": "data/expected_boot.json", "field": "board", "value": "68be10c79d0ee096455754e084bcf757"},
+    {"kind": "json_field", "label": "boot pin: store", "path": "data/expected_boot.json", "field": "store", "value": "b745002eb0a0fbb1c34fa44f1ef708d6"},
+    {"kind": "json_field", "label": "boot pin: balanced_board_md5", "path": "data/expected_boot.json", "field": "balanced_board_md5", "value": "556ad70d295923455982ae33e4b8bfd3"},
+    {"kind": "json_field", "label": "boot pin: engine_head", "path": "data/expected_boot.json", "field": "engine_head", "value": "1867e953cf844d089ab1da68379b1742"},
+    {"kind": "json_field", "label": "boot pin: config", "path": "data/expected_boot.json", "field": "config", "value": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1"},
+    {"kind": "json_field", "label": "boot pin: fv", "path": "data/expected_boot.json", "field": "fv", "value": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346"},
+    {"kind": "json_field", "label": "boot pin: register", "path": "data/expected_boot.json", "field": "register", "value": "652d83e87780e415a01a2de6d8b3cc57"},
+    {"kind": "json_field", "label": "as_of_round", "path": "data/expected_boot.json", "field": "as_of_round", "value": 23},
+    {"kind": "json_field", "label": "contract_sha256", "path": "data/release_contract.json", "field": "contract_sha256", "value": "cde9f70a49b673933f368032393c3c0c8b61e83d51cfe920c8b5c64faf7cf8c7"},
+    {"kind": "json_field", "label": "book seal stable_sha256", "path": "data/book_stable_seal.json", "field": "stable_sha256", "value": "9f46aba3ba8b056d0835928239dd6feeeb1708257837e4168fdbb6efd1755598"},
+    {"kind": "json_field", "label": "book seal head_md5 (SEALED-LAG 0)", "path": "data/book_stable_seal.json", "field": "head_md5", "value": "1867e953"},
+    {"kind": "json_field", "label": "book seal store_md5 (SEALED-LAG 0)", "path": "data/book_stable_seal.json", "field": "store_md5", "value": "b745002e"},
+
+    {"kind": "gate", "label": "release_manifest_check — 40/40 COHERENT", "name": "release_manifest_check", "argv": ["python3", "release_manifest_check.py"], "expect": "PASS"},
+    {"kind": "gate", "label": "release_contract.py check", "name": "release_contract", "argv": ["python3", "release_contract.py", "check"], "expect": "PASS"},
+    {"kind": "gate", "label": "six-way store coherence", "name": "store_coherence", "argv": ["python3", "ui/tools/ownership_store_apply.py", "verify"], "expect": "PASS"},
+    {"kind": "gate", "label": "THE RUNNER, host-insensitive profile — GREEN", "name": "acceptance.runner", "argv": ["python3", "-m", "acceptance.runner", "--profile", "host-insensitive"], "expect": "GREEN", "match": "VERDICT    GREEN"},
+    {"kind": "gate", "label": "the spine self-test — every registered check forced to fail", "name": "acceptance.selftest", "argv": ["python3", "-m", "acceptance.selftest"], "expect": "PASS", "match": "81 PASS / 0 FAIL"},
+    {"kind": "gate", "label": "the claims checker's own negative control", "name": "claims.selftest", "argv": ["python3", "tools/claims.py", "selftest"], "expect": "PASS", "match": "11 PASS / 0 FAIL"},
+    {"kind": "gate", "label": "the rulebook lint fires on its true finding (NEGATIVE CONTROL: expect NON-zero)", "name": "rulebook_lint", "argv": ["python3", "tools/rulebook_lint.py"], "expect": "FAIL", "match": "R5 TWIN PARITY"},
+    {"kind": "gate", "label": "the twin regenerator REFUSES the unruled laws (NEGATIVE CONTROL: expect NON-zero)", "name": "rulebook_twin", "argv": ["python3", "tools/rulebook_twin.py", "diff"], "expect": "FAIL", "match": "REGENERATION REFUSED"},
+    {"kind": "gate", "label": "the inbox provenance manifest is current", "name": "inbox_manifest", "argv": ["python3", "tools/inbox_manifest.py", "check"], "expect": "PASS"},
+    {"kind": "gate", "label": "the incident index is current", "name": "incident_index", "argv": ["python3", "tools/incident_index.py", "check"], "expect": "PASS"},
+    {"kind": "gate", "label": "the four RULED-RED step entries are still failing the recorded way", "name": "ruled_red_ledger", "argv": ["python3", "-m", "acceptance.runner", "--only", "ruled_red_ledger"], "expect": "PASS", "match": "all still failing exactly as their ruling records"}
+  ]
+}
