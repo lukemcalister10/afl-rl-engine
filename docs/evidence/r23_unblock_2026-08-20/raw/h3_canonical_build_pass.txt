@@ -1,0 +1,13 @@
+NUMÉRAIRE GUARD: PASS — shipped pick-1 = 3000 (UNCONDITIONAL standing law, register v30 item 17)
+PRINTED-DAY-0 ASSERT: 89 of 89 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+L7 NUMÉRAIRE RE-BASE ÷1.0524: order preserved (no strict inversion; 234 rounding ties), 10/10 anchor ratios <0.2%
+EXPORT ATTRIBUTION: loaded vPrev/levers for 804 keys (base sum=723075, from certified stage boards)
+FUT-LABEL ASSERTION: PASS — 87 dual rows carry the true primary/alternate on the board
+ZERO-EMPTY-CLUB ACCEPTANCE: PASS — 0 blank club across 1002 exported rows (active 804 + back 198)
+PARITY GATE PASS: all 804 active board values == engine gated ev() (matched by key, eps=0)
+OWNER OVERRIDE applied (display-only): will-brodie ×0.50 -> displayed 74 (of the REBASED value; engine v untouched; vRaw model figure stamped)
+LEG F5 ENTRANT LAYER (RL_LEGF=1): 18 clubs · §2.viii sealed intake 56772 PVC (draft 49595 + mech 7178, 103.4 slots/yr, seal cbb7c431) · +1 Δ=+56772 · +2 Δ=+56772 · k=0 phantom=NONE
+exported active=804 cohort=1974 | mechanisms=7 categories analysed | board stamped src=cc02567f (read-only)
+CAT_BY_RANGE Academy: {'1-10': 1155, '11-20': 103, '21-30': 1881, '31-45': -138, '46-64': -46, 'Pool': -186}
+CAT_BY_RANGE Open   : {'1-10': 61, '11-20': 23, '21-30': 79, '31-45': -30, '46-64': -66, 'Pool': 25}
+10:PARITY GATE PASS: all 804 active board values == engine gated ev() (matched by key, eps=0)

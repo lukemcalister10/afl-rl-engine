@@ -1,0 +1,30 @@
+PROVENANCE {"RL_FV_env": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/h3b/engine/forward_valuation", "config_manifest_identity": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1", "config_manifest_path": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/h3b/data/model_config.json", "distribution_pricing_md5": "33e07a9ee66a29e9d8ef3dc45cca52f6", "fv_identity": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346", "fv_identity_expected": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346", "resolved_fv_dir": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/h3b/engine/forward_valuation", "rl_model_md5": "6fe7c4155866d80e8045bed2d3bf2802", "rl_model_path": "/home/claude/fvprov_tx43cm4x/rl_after/rl_model.py"}
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+LOADED-PROVENANCE OK  fv_modules=7 rl_model=/home/claude/fvprov_tx43cm4x/rl_after/rl_model.py
+EXPORT<->ENGINE PARITY GATE FAILED for 96/804 players (board v != engine gated ev, eps=0):
+  harry-sheezel: board=10310 engine=10433
+  will-ashcroft: board=6494 engine=6607
+  nasiah-wanganeen-milera: board=8593 engine=8644
+  bodhi-uwland: board=3533 engine=3568
+  jason-horne-francis: board=5554 engine=5600
+  finn-callaghan: board=5471 engine=5516
+  mac-andrew: board=3694 engine=3750
+  sam-darcy: board=5016 engine=5076
+  darcy-wilmot: board=2973 engine=3013
+  josh-ward: board=2525 engine=2566
+  reuben-ginbey: board=2074 engine=2144
+  connor-macdonald: board=2454 engine=2495
+  aaron-cadman: board=1667 engine=1781
+  mitchito-owens: board=1818 engine=1880
+  jye-amiss: board=1342 engine=1399
+  jase-burgoyne: board=2129 engine=2163
+  george-wardlaw: board=2868 engine=2954
+  jaspa-fletcher: board=2368 engine=2456
+  jacob-van-rooyen: board=1660 engine=1719
+  ollie-dempsey: board=2124 engine=2162
+  josh-rachele: board=1830 engine=1874
+  nick-madden: board=996 engine=1064
+  jake-soligo: board=1829 engine=1874
+  bailey-humphrey: board=2213 engine=2303
+  mattaes-phillipou: board=1838 engine=1915
