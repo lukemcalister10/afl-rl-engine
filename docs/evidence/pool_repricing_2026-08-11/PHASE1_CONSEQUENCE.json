@@ -1,0 +1,101 @@
+{
+ "board_total_now": 745888,
+ "board_total_derived": 744350.0349936504,
+ "board_pct": -0.2061924855138625,
+ "pool_board_rows": 242,
+ "reachable": 82,
+ "movers": 79,
+ "allarm_yr1_now": 0.8850389636726849,
+ "allarm_yr1_derived": 1.0370975481167974,
+ "legacy_yr1_now": 1.0883992804860232,
+ "legacy_yr1_derived": 1.0883992804860232,
+ "allarm_yr4_now": 1.285922164301169,
+ "allarm_yr4_derived": 1.530856179486714,
+ "charge": 0.14,
+ "named": {
+  "john-noble": {
+   "ship": 2162,
+   "derived": 2162.0,
+   "games": 158,
+   "e": 0.0,
+   "lam": 1.1582461971697167
+  },
+  "max-hall": {
+   "ship": 2820,
+   "derived": 2820.0,
+   "games": 44,
+   "e": 0.0,
+   "lam": 0.8858354833445554
+  },
+  "james-peatling": {
+   "ship": 1100,
+   "derived": 1100.0,
+   "games": 88,
+   "e": 0.0,
+   "lam": 1.4150162098977557
+  },
+  "mark-keane": {
+   "ship": 1514,
+   "derived": 1514.0,
+   "games": 63,
+   "e": 0.0,
+   "lam": 0.5527694663884741
+  },
+  "tom-mccarthy": {
+   "ship": 1468,
+   "derived": 1468.0,
+   "games": 30,
+   "e": 0.0,
+   "lam": 1.1582461971697167
+  },
+  "lachlan-mcandrew": {
+   "ship": 1208,
+   "derived": 1208.0,
+   "games": 22,
+   "e": 0.0,
+   "lam": 1.4023631475791096
+  },
+  "zac-banch": {
+   "ship": 128,
+   "derived": 128.0,
+   "games": 10,
+   "e": 0.0,
+   "lam": 0.8858354833445554
+  },
+  "flynn-perez": {
+   "ship": 113,
+   "derived": 113.0,
+   "games": 31,
+   "e": 0.0,
+   "lam": 0.9918741647184136
+  },
+  "paddy-cross": {
+   "ship": 113,
+   "derived": 113.0,
+   "games": 10,
+   "e": 0.0,
+   "lam": 0.8736201012187064
+  },
+  "marcus-herbert": {
+   "ship": 1053,
+   "derived": 1071.5703202500533,
+   "games": 8,
+   "e": 0.119,
+   "lam": 1.1582461971697167
+  },
+  "mitch-podhajski": {
+   "ship": 195,
+   "derived": 189.14265894249016,
+   "games": 2,
+   "e": 0.119,
+   "lam": 0.7739206933363524
+  },
+  "harrison-coe": {
+   "ship": 52,
+   "derived": 50.32626713818637,
+   "games": 0,
+   "e": 0.996,
+   "lam": 0.967685675225319
+  }
+ }
+}
