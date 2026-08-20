@@ -239,38 +239,33 @@ class Ctx(object):
         return p
 
     def child_env(self):
-        """The environment a child gets: RL_REPO set to THIS tree, and the lock declared REENTRANT.
+        """The environment a child gets: RL_REPO set to THIS tree, and NO RL_BUILD_LOCK_HELD.
 
-        RL_BUILD_LOCK_HELD IS EXPORTED HERE, AND THE BUILD CHILD DROPS IT AGAIN. That split is not
-        fussiness — it is a deadlock this seat MEASURED rather than reasoned about, in the middle of
-        the acceptance landing:
+        THE LOCK'S OWN VARIABLE IS NEVER EXPORTED, and the road to that rule ran through two wrong
+        answers, both measured rather than reasoned about:
 
-            the lander holds the flock; step 7 runs `python3 -m acceptance.runner`; the runner's
-            build_twice_determinism check shells out to `tools/build_lock.sh run acceptance-determinism
-            -- ...`; build_lock.sh tries to take the lock the lander is holding and blocks. The landing
-            stops dead at its own gate.
+          1. The first version dropped RL_BUILD_LOCK_HELD from every child. The landing then
+             DEADLOCKED AGAINST ITS OWN GATE: it holds the flock, step 7 runs the acceptance runner,
+             the runner's determinism check shells out to `build_lock.sh run`, and build_lock.sh —
+             which uses exactly that variable to recognise a reentrant grant — blocked on the lock
+             the lander was holding.
+          2. The second version exported it to gate children. The lander's own gate step then caught
+             the side effect: `ruled_red_ledger` went FAIL, "R15-ladder-proof-GFWD is DRIFTED".
+             Reproduced on the live tree in one line — `RL_BUILD_LOCK_HELD=probe python3 -m
+             acceptance.runner --only ruled_red_ledger` is FAIL where the bare run is PASS. An
+             unknown RL_-prefixed variable changes how the r15 proof dies, so the probe no longer
+             fails the way its ruling records. THE VARIABLE IS NOT INERT IN A GATE CHILD, and the
+             five checks measured before adopting it were the wrong five.
 
-        build_lock.sh already solves this — `RL_BUILD_LOCK_HELD` is exactly how it detects a
-        reentrant grant and declines to re-acquire — and `tools/build_twice_determinism.py:78`
-        REFUSES TO RUN unless it can see that variable. So the gate children need it set.
-
-        The engine BUILD children must not have it: `config_manifest.enforce()` rejects any unknown
-        RL_-prefixed variable as a model override, so a canonical build carrying it HALTS. They drop
-        it themselves (`_build_child.py`, and `with_child_env()` for the in-process sibling repin),
-        which is the same split the day's three build drivers made and wrote down.
-
-        MEASURED before adopting: the five canonical-mode-sensitive spine checks (release_manifest,
-        boot_guard_checkout, config_manifest, ruling_config, release_contract_seal) were run with
-        RL_BUILD_LOCK_HELD set and all five are PASS. The variable is safe for gate children on this
-        tree; it is not safe for builds, and the code says which is which.
+        THE ANSWER IS TO STOP CARRYING THE CONTRADICTION: the lock is held across the steps that
+        BUILD (0-6) and released before the gates, which do not write and whose own builds take the
+        lock themselves (`acceptance/checks/m1a.py` wraps its determinism build in
+        `build_lock.sh run`). See `steps.LOCK_HELD_THROUGH` and the release in `run()`.
         """
         env = dict(os.environ)
+        env.pop('RL_BUILD_LOCK_HELD', None)
         env['RL_REPO'] = self.root
         env['PYTHONHASHSEED'] = env.get('PYTHONHASHSEED', '0')
-        if self._lock_fd is not None:
-            env['RL_BUILD_LOCK_HELD'] = self.lock_tag
-        else:
-            env.pop('RL_BUILD_LOCK_HELD', None)
         return env
 
     def run(self, argv, timeout=1800):
@@ -444,6 +439,14 @@ def run(ctx, sequence=ST.LEVER_SEQUENCE):
             el = time.time() - t0
             ctx.timings.append((name, round(el, 2), 'OK'))
             ctx.log('    [%s OK  %.2fs]' % (name, el))
+            if name == ST.LOCK_HELD_THROUGH and ctx._lock_fd is not None:
+                # THE LOCK COVERS THE WRITERS, NOT THE READERS. Everything that builds or depends on
+                # a build is behind us; the gates do not write, and the one gate that builds takes
+                # the lock itself. Holding it through them would deadlock against that gate, and the
+                # variable that would have made it reentrant is not safe to export (see child_env).
+                ctx.log('    build-lock: RELEASED after %r — the remaining steps write nothing and '
+                        'the one gate that builds takes the lock itself.' % name)
+                ctx.release_lock()
         except Exception as e:                                        # noqa: BLE001 — deliberate
             el = time.time() - t0
             ctx.timings.append((name, round(el, 2), 'FAIL'))

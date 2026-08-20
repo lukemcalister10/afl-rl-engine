@@ -369,12 +369,6 @@ def main(root=None, keep=False, only=None, evidence_dir=None):
            'every live carrier byte-unmoved across the whole self-test' if not drift
            else 'THE SELF-TEST TOUCHED THE LIVE TREE: %s' % drift)
 
-    if not keep:
-        sb.destroy()
-        shutil.rmtree(work, ignore_errors=True) if not evidence_dir else None
-    else:
-        print('\nsandbox KEPT at %s' % sb.path)
-
     print('')
     print(BANNER)
     ok = sum(1 for _n, o, _d in results if o)
@@ -386,6 +380,24 @@ def main(root=None, keep=False, only=None, evidence_dir=None):
                'generated': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}
     with open(os.path.join(ev, 'SELFTEST_SUMMARY.json'), 'w', encoding='utf-8') as fh:
         json.dump(summary, fh, indent=2, sort_keys=True)
+
+    # CLEANUP LAST, AND NEVER UNDER THE TRANSCRIPTS. An earlier version tore the work directory down
+    # BEFORE writing this summary; when no --evidence was given the transcripts lived inside that
+    # directory, so the summary write raised and the whole self-test exited non-zero with 17 of 17
+    # cases green. It was caught by the acceptance landing, whose gate step runs this self-test
+    # without an evidence directory — a defect in the harness, found by the program the harness
+    # tests, which is the right way round.
+    if not keep:
+        sb.destroy()
+        if not os.path.abspath(ev).startswith(os.path.abspath(work) + os.sep):
+            shutil.rmtree(work, ignore_errors=True)
+        else:
+            for name in os.listdir(work):
+                p = os.path.join(work, name)
+                if os.path.abspath(p) != os.path.abspath(ev):
+                    shutil.rmtree(p, ignore_errors=True) if os.path.isdir(p) else os.remove(p)
+    else:
+        print('\nsandbox KEPT at %s' % sb.path)
     return 0 if ok == len(results) else 1
 
 

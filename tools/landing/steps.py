@@ -1019,6 +1019,14 @@ def commit(ctx):
     return {'commit': head.strip(), 'paths': sorted(staged), 'committed': True}
 
 
+#: THE LAST STEP THAT NEEDS THE SINGLE-WRITER LOCK. Steps 0-6 build, or depend on something just
+#: built, so they run behind the lock. `gates`, `claims` and `commit` write nothing to the shared
+#: workspace, and the one gate that DOES build (`build_twice_determinism`) takes the lock itself —
+#: so the lander releases here. Holding it further deadlocks the landing against its own gate, and
+#: the variable that would make that gate's acquisition reentrant cannot be exported safely (it
+#: drifts a ruled-red probe; see txn.Ctx.child_env).
+LOCK_HELD_THROUGH = 'ui'
+
 #: THE SEQUENCE. The day's proven order, and the single place it is stated.
 LEVER_SEQUENCE = (
     ('preflight',    'clean tree, build lock, the restore point',            preflight),
