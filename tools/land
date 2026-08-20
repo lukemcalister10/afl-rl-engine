@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# tools/land — THE LANDING COMMAND. `tools/land lever --spec <act.json>` runs the whole transaction.
+#
+# A three-line wrapper so the command reads the way the plan names it (`land lever`) and so the
+# lander is invoked by PATH rather than by remembering a module path at 3am. Everything it does is
+# in tools/landing/; this file adds nothing but the name.
+exec python3 "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/landing/cli.py" "$@"
