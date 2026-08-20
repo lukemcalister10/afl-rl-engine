@@ -1,0 +1,33 @@
+{
+  "asOfRound": 22,
+  "balanced_board_md5": "234c3414fa001bd9538deb6668e169f0",
+  "baseYear": 2026,
+  "board": "4b448a821f54180182637983f7a26a9d",
+  "board_md5": "4b448a821f54180182637983f7a26a9d",
+  "config": "cef06fd6250b",
+  "engine": "c0a7e969",
+  "guard5": "pass",
+  "maxV": 11925,
+  "nPlayers": 804,
+  "panel": null,
+  "real": true,
+  "register": "652d83e8",
+  "release": {
+    "as_of_round": 22,
+    "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9",
+    "board": "4b448a821f54180182637983f7a26a9d",
+    "config": "cef06fd6250be86804f7d4432fdef8969070f9d9fc938f3e3473547c5b4b4739",
+    "engine_head": "c0a7e969fdd9327fc0b043af14a4bfc6",
+    "fv": "d920557ef21d0eec6434853b07869dd4c0b98f64e99e79ecbb8ee54c704ecf4a",
+    "manifest_source": "data/expected_boot.json + data/release_lineage.json",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "release_version": "v2.11-present-lens-baseline",
+    "rl_model": "33f940735281a07e3b6ca19f31bf2ea6",
+    "store": "d9a24282357cf3083b1640466e3ecd83"
+  },
+  "releaseVersion": "v2.11-final-rc1-PROVISIONAL",
+  "srcmd5": "4b448a821f54180182637983f7a26a9d",
+  "store": "d9a24282",
+  "store_md5": "d9a24282357cf3083b1640466e3ecd83",
+  "tag": "v2.11-final-rc1-PROVISIONAL"
+}

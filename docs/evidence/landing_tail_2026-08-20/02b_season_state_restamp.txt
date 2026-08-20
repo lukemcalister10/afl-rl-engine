@@ -1,0 +1,16 @@
+== PROOF 1 — the immutable derivation policy, re-run at as_of_round 22 on the LANDED store
+  season_state.derive(22, landed store) vs live file — differing keys: ['source_store_md5']
+  ONLY source_store_md5 differs: d9a24282357cf3083b1640466e3ecd83 -> cb38ef1171dcf20aae66ebf12682be0d
+  as_of_round stays 22 | calendar_progress 0.92 | exposure_pace 0.818 | policy 39938f68732d
+
+== WRITER OF RECORD — ownership_store_apply.restamp_season_state (store-only re-stamp)
+  restamp_season_state() returned the derived-values-unchanged witness:
+    as_of_round            22
+    calendar_progress      0.92
+    derivation_policy_id   "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899"
+    exposure_derivation    {"denominator": 22.0, "durable_min_prior_games": 18, "eligible_durable_players": 305, "median_current_games": 18, "raw_ratio": 0.8181818181818182, "released_value": 0.818, "rounding": "round(., 3) then cap 1.0", "scope_denominator": 11.0}
+    exposure_pace          0.818
+    season_total_rounds    24
+    season_year            2026
+  after: source_store_md5 = cb38ef1171dcf20aae66ebf12682be0d | as_of_round = 22
+  written file == season_state.derive(22, landed store) on every key: True []

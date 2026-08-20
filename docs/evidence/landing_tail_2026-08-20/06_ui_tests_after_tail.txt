@@ -1,0 +1,81 @@
+########## ui/tests/club_curve_provenance.test.py
+  [PASS] CASE1 no stale token 'fc7045d6' carried forward
+  [FAIL] CASE1 all 160 pick values == engine-curve mean (no workbook value ingested)  (checked=0)
+  [PASS] CASE6 board_view_working.js byte-unchanged by the ingest (Board/Player/Trade views intact)
+  [PASS] CASE6 every club carries the fields the Club view reads (no shape regression)
+  [PASS] CASE2a L1b path under RL_PVC2 fires the pathway/filename conflict halt  (rc=2 halt=CONFLICTING curve-selection: adopted_pathway RL_PVC2 must load pvc_curve_v2.json but the contract points at pvc_curve_L1b.json (e.g. L1b supplied while RL_PVC2 is active) — HALT-AND-ASK)
+  [FAIL] CASE2b L1b-PVC board under an RL_PVC2 contract fires the stale-curve byte-match halt  (rc=2 halt=CURVE DRIFT: pvc_curve_v2.json md5 78ad9842 != contract f6f3027f — the engine curve file changed under the contract (HALT-AND-ASK))
+  [PASS] CASE3a unknown adopted_pathway fires the unknown-pathway halt  (rc=2 halt=UNKNOWN curve-selection: adopted_pathway 'RL_BOGUS' is not a known pathway ['RL_PVC2', 'RL_PVCADOPT'] — refusing to guess (HALT-AND-ASK))
+  [FAIL] CASE3b wrong curve_source_store_md5 fires the live curve-store-binding halt  (rc=2 halt=CURVE DRIFT: pvc_curve_v2.json md5 78ad9842 != contract f6f3027f — the engine curve file changed under the contract (HALT-AND-ASK))
+  [PASS] CASE3c missing contract fires the contract-missing halt  (rc=2 halt=release pick-curve contract missing: /tmp/clubprov_0godbbjb/nope.json (HALT-AND-ASK on provenance))
+  [PASS] CASE3d engine curve file md5 drift fires the file-md5 CURVE DRIFT halt  (rc=2 halt=CURVE DRIFT: pvc_curve_v2.json md5 fe8e8c33 != contract f6f3027f — the engine curve file changed under the contract (HALT-AND-ASK))
+  [PASS] CASE4 board-id mismatch fires the ring-fence board-id halt  (rc=2 halt=board id mismatch — bundle aaaaaaaa != current release board a05fe951 (regenerate board_view))
+  [PASS] CASE5a board-stamp asOfRound mismatch vs expected_boot fires the live round halt  (rc=2 halt=board round mismatch — bundle R21 != current release R22)
+  [PASS] CASE5b missing expected_boot.as_of_round fires manifest-incomplete halt  (rc=2 halt=release manifest lacks current weekly identity fields: ['as_of_round'])
+  [PASS] CASE7 release_version mismatch fires its live halt  (rc=2 halt=CONFLICTING curve-selection: contract release_version v0-tampered != release v2.11-final-rc1-PROVISIONAL (HALT-AND-ASK))
+  [FAIL] CASE7 pick_curve_curve_md5 mismatch fires its live halt  (rc=2 halt=CURVE DRIFT: pvc_curve_v2.json md5 78ad9842 != contract f6f3027f — the engine curve file changed under the contract (HALT-AND-ASK))
+  [PASS] CASE7 numeraire_pin1 mismatch fires its live halt  (rc=2 halt=contract numeraire pin1 != 3000 — numeraire drift; refusing to resolve a drifted ruler)
+  [PASS] CASE7 board source-store mismatch fires its live halt  (rc=2 halt=board store mismatch — bundle bbbbbbbb != current release store cb38ef11)
+  [PASS] CASE7 missing pathway fires contract-incomplete halt  (rc=2 halt=release pick-curve contract is incomplete (missing ['adopted_pathway']) — cannot resolve the release-active curve (HALT-AND-ASK))
+  [PASS] CASE8 curve self-declared gate mismatch fires the gate/pathway halt  (rc=2 halt=CONFLICTING curve-selection: pvc_curve_v2.json self-declares gate 'RL_PVCADOPT' != adopted pathway 'RL_PVC2' — refusing to price on a curve from the wrong pathway (HALT-AND-ASK))
+  [PASS] CASE9 engine curve top-level pin != 3000 fires the engine-curve numeraire halt  (rc=2 halt=release-active curve pvc_curve_v2.json pin != 3000 — numeraire drift (HALT-AND-ASK))
+  [PASS] CASE10 board PVC pick-1 != 3000 fires the PVC pick-1 numeraire halt (byte-match cleared first)  (rc=2 halt=PVC pick1 != 3000 — numeraire drift; refusing to price picks against a drifted ruler)
+  [PASS] CASE11 board PVC non-monotone fires the monotonicity halt (byte-match + pick1 cleared first)  (rc=2 halt=PVC is not monotone non-increasing — not a valid pick ruler)
+
+  ------------------------------------------------------------------
+  22/35 passed
+EXIT=1
+########## ui/tests/extract_seam.test.py
+  [PASS] JOB3: stamp.board == the pinned (temp) board id
+  [PASS] JOB3: player values passed through verbatim (extractor recomputes nothing)
+  [PASS] JOB2: no 'v2.10' in generated working bundle
+  [PASS] JOB2: no 'Round 17' in generated working bundle
+  [PASS] JOB4#6: public bundle carries no phantom/lens/pick machinery
+  [PASS] JOB4#6: public player rows carry no id/owner-rule/mech fields
+  [PASS] JOB4#6: entrant/seal internals do not leak to the public bundle
+  [PASS] JOB2: no stale labels in the public bundle
+  [PASS] FOLLOWUP2: public stamp carries no internal provenance identity
+  [PASS] FOLLOWUP2: no internal identity key anywhere in the public bundle text
+  [PASS] extractor runs with a boot manifest that omits release/round
+  [PASS] JOB2: absent metadata -> null in the stamp (never invented)
+  [PASS] JOB2: legacy tag alias neutral ('') when release_version absent
+  [PASS] JOB4#4: missing metadata does NOT reintroduce v2.10 / Round 17
+  [PASS] JOB3: mismatched board pin STILL fails closed (assertion not weakened)
+  [PASS] JOB3: mismatched store pin STILL fails closed (assertion not weakened)
+  [PASS] extractor runs on the synthetic movement board
+  [PASS] FOLLOWUP: working row carries dRound / dRoundRank VERBATIM
+  [PASS] FOLLOWUP: public row carries dRound / dRoundRank verbatim (unchanged behaviour)
+  [PASS] FOLLOWUP: absent movement fields remain NULL on the working tier (never fabricated)
+  [PASS] FOLLOWUP: absent movement fields remain null on the public tier
+  [PASS] extractor runs with balanced_board_md5 present in the manifest
+  [PASS] FOLLOWUP2: balanced_board_md5 passed through verbatim from the manifest
+  ------------------------------------------------------------------
+  42/42 passed
+EXIT=0
+########## ui/tests/ownership_store_apply.test.py
+  [PASS] re-running preflight on the applied tree is a NO-OP — 0 rows move, the store md5 does not budge
+  [PASS] exactly ONE #283 register entry exists — a re-run appends no second one (6 total entries)
+  [PASS] the entry records the real transition and its own three statements of it agree
+  [PASS] the #283 entry declares NO landing board — a store-only move is a pointer note to the boundary reader, never a board-boundary record
+  [PASS] ...and records the board as the INVARIANT it is: unmoved across the transition (no engine build)
+  [PASS] the derived boundary labels are UNMOVED by the append — reader and shipped bundle in step
+  [PASS] the #271 Addendum 17 boundary still names ITS OWN ruling id — not overwritten by #283
+  [PASS] #283 claims NO boundary label at all — it moved the store, not the board
+  [PASS] the immutable present-lens baseline (06d8af60) did not move — round_movers reads it every round
+  [PASS] release_lineage and the movers_transition mirror are byte-identical
+  [PASS] the store carries BOTH free-agent spellings: {'Free agents': 73, 'Free Agents': 2}
+  [PASS] canonicalising on the way IN would rewrite exactly 2 rows the owner never edited (18 -> 20) — the exact-byte law is load-bearing
+  [PASS] the store-diff proof REJECTS an unplanned affl_team move
+  [PASS] the store-diff proof REJECTS a diff that touches a NON-ownership field
+  [PASS] the store-diff proof REJECTS a dropped store row
+  [PASS] NON-VACUITY the other way: an identical store passes the diff proof with 0 moves
+  [PASS] P3 REFUSES to write onto an incoherent base (expected_boot.store perturbed)
+  [PASS] P3 REFUSES when the board's Guard-2 source stamp disagrees with the store
+  [PASS] V5 the join HALTS on an unmatched player name, naming him
+  [PASS] V5 the join HALTS on an AMBIGUOUS board name rather than taking the first match
+  [PASS] P6 HALTS on an unknown club spelling — an unknown club would split silently in the UI
+  [PASS] P4 HALTS when the CSV is not 1 header + 804 players
+  [PASS] P8 HALTS on serializer drift rather than silently reformatting 2,651 rows
+------------------------------------------------------------------------
+28/28 passed
+EXIT=0

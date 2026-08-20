@@ -1,0 +1,50 @@
+HALTED CARRIER — ui/release_pick_curve.json (the release-active PICK-CURVE provenance contract)
+Discovered only after the six store carriers were reconciled; the INCOHERENT BASE halt masked it.
+
+  field                              contract (ui/release_pick_curve.json) landed artifact / tree
+  pick_curve_file_md5                f6f3027fc56615fc77cd455638a5fa79     78ad9842525ae4f09875b95afc2e2b39
+  pick_curve_curve_md5 (PAYLOAD)     df766dff                             9729f0c5
+  curve_source_store_md5             f1e8c9fe (frozen ruler)              f1e8c9fe  AGREE
+  per_entrant_md5                    999d24c8                             999d24c8  AGREE
+  pool_value                         237.2                                237.2
+  numeraire pin                      3000                                 3000
+  release_version                    v2.11-final-rc1-PROVISIONAL          expected_boot v2.11-final-rc1-PROVISIONAL  AGREE
+
+  pool_levels verbatim mirror (one_source_selftest.py:678): IDENTICAL
+  landed board PVC vs landed curve artifact: 64 shared picks, 0 disagree  -> the TREE IS SELF-CONSISTENT (board was built on this curve)
+  curve heads: artifact pick1=3000 pick2=2668 pick64=179 | ladder sum 1-64 = 47315
+
+WHY THIS IS A HALT AND NOT A RE-STAMP — two independent blockers:
+
+ (1) IT IS A CURVE ADOPTION, NOT A PUBLICATION RE-PIN. The curve PAYLOAD identity moved
+     (df766dff -> 9729f0c5), i.e. the ruled ladder's own values changed under ORDER 31-F
+     ("the head fix at all six curve heads, every constant re-derived on the moved ruler",
+     077058f). The #326 precedent is explicit that a file-bytes move with an UNCHANGED payload
+     is a mechanical mirror re-stamp ("The curve PAYLOAD identity df766dff is UNCHANGED - the
+     ladder itself was not touched - which is why pick_curve_curve_md5 below does not move").
+     That is NOT this case. This contract's stated purpose is "to stop the curve moving
+     SILENTLY", and the artifact's own note says "Adoption remains the owner's separate click".
+     Every held draft pick in ui/data/club_valuation.js is priced off this curve, so the
+     re-stamp changes owner-facing club valuations.
+
+ (2) IT CANNOT BE DONE WITHOUT AN ENGINE EDIT. engine/rl_after/one_source_selftest.py:492
+     hardcodes _contract_md5='bdc21f33eb70d49dd481f7e63a1b0398' - the byte-frozen md5 of
+     ui/release_pick_curve.json - and its own comment prescribes the procedure: "this pin moves
+     in the same commit exactly as prior acts did". Re-stamping the contract therefore REQUIRES
+     editing an engine file, which this order forbids ("NO engine edits").
+
+THE FORK, for the supervisor/owner to rule:
+   A. THE LANDING ADOPTED THE CURVE. The owner's word "Land it." landed the whole candidate
+      line including ORDER 29/31-F's re-derived ladder; ui/release_pick_curve.json is the last
+      stale mirror of an adoption that already happened (the #274 precedent's exact words:
+      "a stale duplicate, not a second decision"). => re-stamp pick_curve_file_md5 +
+      pick_curve_curve_md5 (+ re-mirror pool_levels/pool_value if they moved), and re-pin
+      one_source_selftest.py _contract_md5 in the SAME commit, as every prior act did.
+   B. THE CURVE ADOPTION IS A SEPARATE OWNER CLICK. The payload moved, so this is a new ruled
+      ladder and needs its own adoption word + a held_checks/FROZEN-RULER declaration in
+      data/release_contract.json for the interim.
+   Nothing in docs/OPEN_ITEMS_REGISTER.md v782-v784 rules between A and B: the post-landing
+   queue does not name the publication/curve tail at all (v783 only notes in passing that
+   "the landing tail - re-seal, re-key, release contract" must be priced into a future
+   pipeline). I will not guess a curve adoption.
+

@@ -1,0 +1,14 @@
+{
+  "balanced_board_md5": "234c3414fa001bd9538deb6668e169f0",
+  "fails": [
+    "forward reference vector for 234c3414 missing",
+    "forward oracle test_forward_lens_a05fe951.py missing",
+    "sidecar source_store_md5 != current store",
+    "sidecar contract_sha256 != live contract seal",
+    "sidecar forward_board_md5 != the canonical board of record",
+    "sidecar forward_vector filename != regenerated forward vector",
+    "sidecar forward_oracle filename != regenerated forward oracle",
+    "release_contract check failed"
+  ],
+  "ok": false
+}

@@ -1,0 +1,32 @@
+WRITER OF RECORD: release_contract.restamp_dynamic(root, as_of_round=22, store, board, season_state)
+  (the same call staged_apply.py:542 and ownership_store_apply.py:551 make; the round is HELD at 22)
+  store_md5 passed : cb38ef1171dcf20aae66ebf12682be0d   (md5 of engine/rl_after/rl_model_data.json, re-hashed here)
+  board_md5 passed : a05fe951f78482c70520480e184c80ec   (md5 of data/rl_build/rl_app_data.json,   re-hashed here)
+
+BEFORE -> AFTER:
+  identities.store   d9a24282357cf3083b1640466e3ecd83 -> cb38ef1171dcf20aae66ebf12682be0d
+  identities.board   4b448a821f54180182637983f7a26a9d -> a05fe951f78482c70520480e184c80ec
+  contract_sha256    ef25c2599e4b7095 -> 3ccf36d969dd518a
+  as_of_round        22 -> 22   (HELD)
+
+PRESERVED BYTE-FOR-BYTE (nothing guessed):
+  held_checks                  UNCHANGED
+  must_be_unset                UNCHANGED
+  pvc_provenance               UNCHANGED
+  switch_posture               UNCHANGED
+  present_lens_baseline        UNCHANGED
+  f5_entrant_reconciliation    UNCHANGED
+  _retired_checks              UNCHANGED
+  adopted                      UNCHANGED
+  release_version              UNCHANGED
+  config_sha256                UNCHANGED
+  season_metadata              UNCHANGED
+  season_state_policy_id       UNCHANGED
+  identities.engine_head       UNCHANGED
+  identities.rl_model          UNCHANGED
+  identities.fv                UNCHANGED
+  identities.register          UNCHANGED
+  identities.band              UNCHANGED
+  identities.balanced_board_md5 UNCHANGED
+
+self-seal verifies: True

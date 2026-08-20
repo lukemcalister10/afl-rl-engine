@@ -1,0 +1,36 @@
+
+  #283 OWNERSHIP STORE APPLY — out-of-round transaction (seam Ruling 1, 2026-07-30)
+  ------------------------------------------------------------------------------
+  [P1] interpreter cp312 — pinned
+  [P3] six-way incoming coherence — all read cb38ef11
+  [P8] serializer identity — dumps(loads(store)) == store bytes (1978110 bytes)
+  [--] store rows 2650 · distinct keys 2650 · rows carrying affl_team 804
+  [--] board players 804 · ambiguous board name-keys 0 · board md5 a05fe951
+  [P4] CSV utf-8 · 805 lines = 1 header + 804 players (CRLF preserved, never 'fixed')
+  [P5] join by key — 0 unmatched, 0 board keys missing from the store, 804 resolved
+  [P6] club spellings — all 804 authored values are known spellings
+  [P7] plan — 0 of 804 authored rows move (of 2650 store rows; 804 carry affl_team)
+  [--] store md5 cb38ef11 -> cb38ef11  (NO-OP)
+
+  NO-OP — the store already carries the authored ownership; no pin moves, no register entry appended.
+
+  VALIDATION VERDICTS
+  ------------------------------------------------------------------------
+  [PASS] release manifest has current board/store/round/version  (missing: none)
+  [PASS] board id ring-fence == current release manifest  (bundle board a05fe951 vs manifest a05fe951)
+  [PASS] board asOfRound == current release manifest  (bundle 22 vs manifest 22)
+  [PASS] board source store == current release manifest  (bundle cb38ef11 vs manifest cb38ef11)
+  [PASS] release pick-curve contract has all required fields  (missing: none)
+  [PASS] contract adopted_pathway is a known pathway  (RL_PVC2 (known: ['RL_PVC2', 'RL_PVCADOPT']))
+  [PASS] release manifest has current board/store/round/version  (missing: none)
+  [PASS] curve contract release_version == current release version  (contract v2.11-final-rc1-PROVISIONAL vs manifest v2.11-final-rc1-PROVISIONAL)
+  [PASS] curve contract carries a full immutable source-store identity  (curve source store f1e8c9fe)
+  [PASS] contract numeraire pin1 == 3000  (pin1 = 3000)
+  [PASS] contract pick_curve_path matches the adopted pathway  (RL_PVC2 expects pvc_curve_v2.json, contract points at pvc_curve_v2.json)
+  [FAIL] release-active curve file md5 == contract  (file 78ad9842 vs contract f6f3027f)
+
+■ HALT — CURVE DRIFT: pvc_curve_v2.json md5 78ad9842 != contract f6f3027f — the engine curve file changed under the contract (HALT-AND-ASK)
+  The club-valuation overlay refuses to render on this ingest.  Nothing is guessed.
+/home/user/afl-rl-engine/ui/tools/ingest_inputs.py:123: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  return datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+  The ownership sidecar refuses on the same halt (ui/data/ownership.js).

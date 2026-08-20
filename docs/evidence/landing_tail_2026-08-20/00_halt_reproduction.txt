@@ -1,0 +1,20 @@
+
+  #283 OWNERSHIP STORE APPLY — out-of-round transaction (seam Ruling 1, 2026-07-30)
+  ------------------------------------------------------------------------------
+  [P1] interpreter cp312 — pinned
+
+  VALIDATION VERDICTS
+  ------------------------------------------------------------------------
+
+■ HALT — ownership store apply refused: INCOHERENT BASE — the six store-identity carriers disagree BEFORE any write:
+    store file                             cb38ef1171dcf20aae66ebf12682be0d
+    expected_boot.store                    cb38ef1171dcf20aae66ebf12682be0d
+    release_contract.identities.store      d9a24282357cf3083b1640466e3ecd83
+    season_state.source_store_md5          d9a24282357cf3083b1640466e3ecd83
+    rl_app_data.json.srcmd5.source_md5     cb38ef1171dcf20aae66ebf12682be0d
+    board_view_working.stamp.store_md5     d9a24282357cf3083b1640466e3ecd83
+  The club-valuation overlay refuses to render on this ingest.  Nothing is guessed.
+/home/user/afl-rl-engine/ui/tools/ingest_inputs.py:123: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  return datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+  The ownership sidecar refuses on the same halt (ui/data/ownership.js).
+EXIT=2

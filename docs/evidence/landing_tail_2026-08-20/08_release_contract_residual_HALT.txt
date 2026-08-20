@@ -1,0 +1,67 @@
+RESIDUAL HALT — data/release_contract.json, the part NO writer of record covers
+================================================================================
+REPAIRED (writer of record: release_contract.restamp_dynamic, the same call
+staged_apply.py:542 and ownership_store_apply.py:551 make; round HELD at 22):
+    identities.store   d9a24282 -> cb38ef11      (== md5 of engine/rl_after/rl_model_data.json)
+    identities.board   4b448a82 -> a05fe951      (== md5 of data/rl_build/rl_app_data.json)
+    contract_sha256    ef25c259 -> 3ccf36d9      (re-sealed by the contract's own hasher)
+Everything else preserved byte-for-byte: held_checks, must_be_unset,
+pvc_provenance, switch_posture, present_lens_baseline, f5_entrant_reconciliation,
+_retired_checks, adopted, release_version, season_metadata.
+
+NOT REPAIRED — `python3 release_contract.py check` still reports, in its own words:
+    - contract config_sha256 cef06fd6250b != live manifest hash eed19a75f775 (stale config pin)
+    - contract identity engine_head=c0a7e969fdd9 != expected_boot 5ac6780f3c49
+    - contract identity fv=d920557ef21d       != expected_boot 6e9a370e5970
+    - contract identity rl_model=33f940735281 != expected_boot 6fe7c4155866
+plus (not surfaced by that gate, but stale on the same landing):
+    - present_lens_baseline.present_value_total 761574 — the OLD release's present-v sum;
+      the landed board a05fe951 sums 664,949 (register v782)
+    - identities.balanced_board_md5 / present_lens_baseline.balanced_board_md5 234c3414 —
+      the balanced/strict sibling of the OLD store+engine
+
+WHY I DID NOT MOVE THEM
+  1. restamp_dynamic — the ONLY scripted contract writer in the tree — deliberately does not
+     touch them. Its own docstring: "EVERYTHING ELSE is preserved byte-for-byte: release_version,
+     config_sha256, switch_posture, pvc_provenance, must_be_unset, present_lens_baseline, the f5
+     reconciliation, the descriptive season notes, and the immutable engine/rl_model/fv/register/
+     band identities." That is a design statement, not an omission.
+  2. release_contract.py's own halt text names the correct lane: "re-stamp the contract at a bake
+     in the same commit that moves the manifest/board identity." The BAKE is the issuing act for
+     the code identities + config_sha256. THE BAKE (f27482f, register v780-v781) moved
+     engine_head 5f434b95 -> 5ac6780f and rl_model 98f16794 -> 6fe7c415 and DID NOT re-stamp this
+     contract. There is no scripted bake-time contract re-stamper anywhere in the tree (grep for
+     restamp_dynamic / contract_hash callers: staged_apply, ownership_store_apply, sibling_repin —
+     none of them moves these fields).
+  3. balanced_board_md5 and present_value_total CANNOT be typed. They are BUILD-AND-COMPARE
+     values: engine/rl_after/ingestion/sibling_repin.py is their writer of record and it moves
+     them only from a freshly BUILT balanced/strict sibling board. `sibling_repin.py verify`
+     (no build) on this tree reports 8 fails — see 09_sibling_repin_verify.txt — i.e. the whole
+     sibling layer (balanced board, FV reference vector, forward vector, forward oracle,
+     provenance sidecar) is un-run landing tail too. Its repair is
+     `python3 engine/rl_after/ingestion/sibling_repin.py reconcile --round 22`, a full sibling
+     engine BUILD that also moves data/expected_boot.json balanced_board_md5 — a landed pin.
+
+THE FORK, for the supervisor/owner to rule
+  A. THE LANDING ADOPTED THE CODE IDENTITIES. Re-stamp identities.engine_head / rl_model / fv and
+     config_sha256 to the landed, tree-verified values (all four re-hashed directly from the tree
+     here and all four already carried by data/expected_boot.json), by a one-off act script in the
+     #328 step-6b pattern (docs/evidence/store_328_jujn3g/repin_board_identity.py) that makes the
+     structural edit and re-seals through release_contract.contract_hash — the exact precedent
+     commit 77bca28 used for identities.board. THEN run sibling_repin reconcile --round 22 for the
+     balanced/present-lens half.
+  B. THEY ARE A DECLARED HOLD. Add held_candidates entries (field / release / candidate / reason)
+     for engine_head, rl_model, fv per release_contract.py's HELD_REQUIRED schema, which is the
+     tree's own instrument for "the tree deliberately runs ahead of what is RELEASED".
+  Which of A or B is correct is a RELEASE decision. docs/OPEN_ITEMS_REGISTER.md v782-v784 does not
+  rule it: the enumerated post-landing queue is (1) workspace re-seed (2) D8 ceiling probation
+  (3) the modernisation programme (4) named instrument follow-ups (5) birthday smoothing
+  (6) veteran-mids — the publication/contract tail is named nowhere except in passing at v783
+  ("the landing tail — re-seal, re-key, release contract — now inside the pipeline's landing mode
+  or priced separately"). I will not guess contract semantics.
+
+NOTE ON THE ORDER'S IDENTITY LIST: the order gave "engine_head 5f434b95 (md5 of
+engine/rl_after/_merged_recover.py)". That is the PRE-bake value. The tree and data/expected_boot.json
+both carry 5ac6780f3c4931edcaa527576bbdfb88, and the bake note in expected_boot records the move
+"engine_head _merged_recover.py 5f434b95 -> 5ac6780f". Verified by re-hashing the file. Every other
+identity in the order's list verified exactly as given.
