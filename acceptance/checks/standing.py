@@ -107,10 +107,13 @@ def doc_lint(ctx):
 def rulebook_lint(ctx):
     """tools/rulebook_lint.py — the RULEBOOK's own lint (PLAN_v6 1a; a NEW instrument).
 
-    The one place in the spine where a check consults the STEP half of the ruled-red ledger. Its
-    finding today (the twin's two unruled laws + missing banner) is real, measured, and presented
-    to the owner as the 1b diff — so it reports RULED-RED, non-gating, naming the ruling, exactly
-    as a carrier-covered drift does. If the ledger entry were removed this row would FAIL.
+    The one place in the spine where a check consults the STEP half of the ruled-red ledger. It
+    carried a ruling for exactly as long as the finding was live: the twin's two unruled laws plus
+    its missing banner rode here as RULED-RED (RB1), non-gating, naming the 1b diff that presented
+    it to the owner. THE OWNER SIGNED THAT DIFF ON 2026-08-20 ("Okay agree to the laws updated."):
+    docs/acceptance_v2_0.json is removed, the lint is 0 FAIL, RB1's probe expired and RB1 is retired
+    — so this row is a plain PASS and consults the ledger only if the lint ever reds again. The
+    ledger lookup stays because that is the row's contract, not because anything is being carried.
     """
     from acceptance import known_red
     rc, out, ev = _run(ctx, 'rulebook_lint', ['python3', 'tools/rulebook_lint.py', ctx.root])

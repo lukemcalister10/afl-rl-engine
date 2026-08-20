@@ -166,10 +166,13 @@ N2. The years-4-6 peak LEVEL — not a gate until the matched cut runs.
 B1. STRUCK (Luke, 20/08/2026). OWNER, VERBATIM: "That cohort rail again was retired.
     Weeks ago." SUPERSESSION, NOT REPEAL — what is struck is the JULY-8 CONSTRUCTION
     below (raw class-year sums, den = min(y1,y2), each of y4/y5/y6 against a hard 1.30).
-    The modern class-discipline law survives in the owner-signed governing document:
-    G-COHORT, RULEBOOK v2.1 + its twin docs/acceptance_v2_0.json ("walk-forward book
-    ratio", max 1.3), which RULEBOOK PART 3 reports UNMEASURED at R19 — "never assumed
-    passing, never silently waived". The register carries the same travel: item 51 ("THE
+    Its law was G-COHORT, RULEBOOK v2.1 + its twin docs/acceptance_v2_0.json ("walk-
+    forward book ratio", max 1.3), which RULEBOOK PART 3 then reported UNMEASURED at R19.
+    UPDATED 2026-08-20 (v3 amendment, owner word "Okay agree to the laws updated."): the
+    twin is removed from the tree and RULEBOOK PART 3 now records G-COHORT as RETIRED —
+    not unmeasured — on these same owner words, carrying its retired 1.3 payload so
+    nothing is lost. RULEBOOK PART 3 is the pointer of record; nothing above this rail
+    survives it. The register carries the same travel: item 51 ("THE
     G-COHORT FEAR IS RETIRED, AND THE REASON MATTERS"), item 60 (a gate inherited from a
     superseded line is retired with an obituary, not re-ruled), the two-sided band at
     item 266.

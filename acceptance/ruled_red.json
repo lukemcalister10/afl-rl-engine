@@ -7,26 +7,6 @@
   "_how_to_add": "An entry may be added ONLY when the fork is already presented in writing to the owner or supervisor, and `presented` must name the document that presents it. A red that is merely inconvenient, or that a seat believes is fine, is a FAIL. RULED-RED is not a snooze button — a drift nobody has presented reds the run, and that is the whole point. A red the record calls a one-line repair is REPAIRED, not entered here: PLAN_v6 1f carries all three recorded one-liners for exactly that reason.",
   "entries": [
     {
-      "id": "RB1-rulebook-twin-unruled-laws",
-      "steps": [
-        "acceptance::rulebook_lint",
-        "ci::rulebook-lint"
-      ],
-      "reason": "docs/acceptance_v2_0.json declares itself regenerated_from the RULEBOOK and carries THIRTEEN laws where RULEBOOK PART 1 numbers ELEVEN — G-Y0 and G-COHORT appear in the twin and in no numbered law — and it carries no DO-NOT-HAND-EDIT banner. This is the register's standing law-count flag ('Part 1 numbers 11 laws vs 13 in its commit message + seat brief — owner to eyeball') measured rather than eyeballed, and the in-tree violator of 1b's 'no second laws file, ever'.",
-      "presented": "docs/proposals/process_plan/PLAN_v6.md 1b (the disposal is owner-ruled) + docs/proposals/rulebook/AMENDMENT_1b_2026-08-20.md (the exact diff drafted for the owner's signature, with the count resolution as its own numbered question)",
-      "register": "v803 header flag standing: RULEBOOK.md law count · REVIEW_COLD_OPUS.md F7 (in-tree violator) + F18 (count flag)",
-      "expires_when": "the owner signs the 1b diff: either the two laws enter PART 1 (parity restored) or the twin is removed (no derived view to lint).",
-      "probe": {
-        "argv": [
-          "python3",
-          "tools/rulebook_lint.py"
-        ],
-        "match": "R5 TWIN PARITY",
-        "cost": "cheap",
-        "timeout_s": 60
-      }
-    },
-    {
       "id": "FI1-generated-bundle-equality",
       "steps": [
         "final-integration.yml::Season-state anchors (fixed R14 historical + current round) + generated-bundle equality"
@@ -108,6 +88,29 @@
       "retired_on": "2026-08-20",
       "retired_because": "REPAIRED UPSTREAM by the apply/completion seat at a89a7c6, 'THE CONTRACT'S BAKE-LANE PINS WALKED TO THE LANDED VALUES — release_contract.py check FAILED -> PASS'. The four carriers this entry named are coherent again, measured: release_manifest_check.py reports all four OK against computed truth, and the release_contract_seal check now returns PASS rather than BLOCKED.",
       "_note": "Kept here rather than deleted so the ledger's history is legible. `retired` is NEVER read by known_red.py — only `entries` is — so a retired entry can never quietly go on excusing a red."
+    },
+    {
+      "id": "RB1-rulebook-twin-unruled-laws",
+      "steps": [
+        "acceptance::rulebook_lint",
+        "ci::rulebook-lint"
+      ],
+      "reason": "docs/acceptance_v2_0.json declares itself regenerated_from the RULEBOOK and carries THIRTEEN laws where RULEBOOK PART 1 numbers ELEVEN — G-Y0 and G-COHORT appear in the twin and in no numbered law — and it carries no DO-NOT-HAND-EDIT banner. This is the register's standing law-count flag ('Part 1 numbers 11 laws vs 13 in its commit message + seat brief — owner to eyeball') measured rather than eyeballed, and the in-tree violator of 1b's 'no second laws file, ever'.",
+      "presented": "docs/proposals/process_plan/PLAN_v6.md 1b (the disposal is owner-ruled) + docs/proposals/rulebook/AMENDMENT_1b_2026-08-20.md (the exact diff drafted for the owner's signature, with the count resolution as its own numbered question)",
+      "register": "v803 header flag standing: RULEBOOK.md law count · REVIEW_COLD_OPUS.md F7 (in-tree violator) + F18 (count flag)",
+      "expires_when": "the owner signs the 1b diff: either the two laws enter PART 1 (parity restored) or the twin is removed (no derived view to lint).",
+      "probe": {
+        "argv": [
+          "python3",
+          "tools/rulebook_lint.py"
+        ],
+        "match": "R5 TWIN PARITY",
+        "cost": "cheap",
+        "timeout_s": 60
+      },
+      "retired_on": "2026-08-20",
+      "retired_because": "EXPIRED BY ITS OWN TERMS, on the owner's word. `expires_when` read: \"the owner signs the 1b diff: either the two laws enter PART 1 (parity restored) or the twin is removed (no derived view to lint).\" The owner signed it — verbatim, in chat 2026-08-20: \"Okay agree to the laws updated.\" — and the second branch is what he chose: docs/acceptance_v2_0.json is REMOVED from the tree in the v3 amendment act, its per-law check prose and thresholds folded into RULEBOOK PART 3 so no measurement detail died with it. Measured, not asserted: this entry's own probe (`python3 tools/rulebook_lint.py`) now EXITS 0 where it recorded \"R5 TWIN PARITY\", which under _probe_contract is EXPIRED -> retire the entry, and leaving it here would have FAILED the runner on a stale ruling. RULEBOOK PART 1 numbers TWELVE laws (G-Y0 entered as law 12; G-COHORT was STRUCK, not enacted — owner, same session: \"That cohort rail again was retired. Weeks ago.\"), so the register's standing law-count flag is closed by count as well as by signature.",
+      "_note": "Retired in the same act that removed its subject. The lint rules that produced this finding did not go away with it: tools/rulebook_lint.py R5/R6 reversed polarity and now red on a derived laws view REAPPEARING (RULEBOOK PART 4, P10). `retired` is never read by known_red.py — only `entries` is — so this can never go on excusing a red."
     }
   ]
 }

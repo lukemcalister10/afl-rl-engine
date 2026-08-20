@@ -21,21 +21,29 @@ WHAT IT ASSERTS (each rule names the plan line it serves):
   R3 COUNT DECLARED  whatever the RULEBOOK says its own law count is, it must equal R2's count.
                      Silent today (the file states no count) — the rule exists so that the moment
                      1b's amendment writes one, it is checked rather than trusted.
-  R4 ONE LAWS FILE   1b: "no second laws file, ever". Any OTHER file in the tree that declares
-                     itself derived from the RULEBOOK (a `regenerated_from` naming it, or a
-                     "twin" pointer) is a DERIVED VIEW and must satisfy R5 + R6.
-  R5 TWIN PARITY     a derived view's law set must equal the RULEBOOK's law set — same ids, same
-                     count. This is the plan's own sanctioned form for a derived view:
-                     "CI-linted equal to the RULEBOOK via 1a".
-  R6 TWIN BANNER     a derived view must carry a DO-NOT-HAND-EDIT / "the RULEBOOK wins" banner.
+  R4 ONE LAWS FILE   1b: "no second laws file, ever". The scan: any OTHER file under docs/ that
+                     declares itself derived from the RULEBOOK (a `regenerated_from` naming it,
+                     or a "twin" pointer). It feeds R5 + R6.
+  R5 TWIN ABSENCE    `docs/acceptance_v2_0.json` — the retired twin — must NOT exist. The RULEBOOK
+                     v3 amendment removed it; a file back at that path is the retirement being
+                     quietly undone.
+  R6 NO DERIVED VIEW no file may declare itself a derived laws view of the RULEBOOK, at that path
+                     or any other. This is process law P10's teeth.
 
-CALIBRATION, stated so it can be checked rather than believed: R1, R2, R3 and R4 are GREEN on the
-RULEBOOK as committed at 0244935. R5 and R6 are RED on `docs/acceptance_v2_0.json`, and that red is
-TRUE, not a false positive: the twin carries 13 laws where Part 1 numbers 11 (`G-Y0` and `G-COHORT`
-appear in the twin and in no numbered law), and it carries no do-not-hand-edit banner. That is the
-in-tree violator 1b exists to dispose of, and it is carried as a presented RULED-RED entry
-(`acceptance/ruled_red.json`, id RB1) until the owner signs the 1b diff — the lint is armed, the
-finding is measured, and nobody is asked to remember it.
+R5/R6 REVERSED THEIR POLARITY ON 2026-08-20, AND THAT IS THE POINT. Until v3 the tree carried
+`docs/acceptance_v2_0.json`, a hand-maintained derived laws view, and R5/R6 asserted PARITY with it
+(same law set) and a DO-NOT-HAND-EDIT banner on it — the sanctioned shape for a derived view that
+exists. The owner's v3 word retired the twin instead of wiring it ("Okay agree to the laws updated.",
+2026-08-20), so parity rules now have nothing to compare and, left as they were, would red forever on
+a file that is supposed to be gone. Asserting the ABSENCE is the honest successor: the RULEBOOK is
+the only laws file, and a SECOND ONE REAPPEARING is the new red. The two rules that policed the twin
+now police its grave.
+
+CALIBRATION, stated so it can be checked rather than believed: all six rules are GREEN on the
+RULEBOOK and the tree as committed by the v3 amendment act (12 laws in PART 1, P1–P11 in PART 4, no
+derived view anywhere under docs/). The negative controls are mechanical: restore any JSON at
+`docs/acceptance_v2_0.json` and R5 reds; give any other docs/ file a `regenerated_from: RULEBOOK.md`
+and R6 reds.
 
 LAW-ID EXTRACTION, honestly: a law's id is the **bolded token** in its numbered line
 (`**ONE SOURCE.**`, `**THE CURVE DESCENDS (G-MONO).**`). Where the bold carries a parenthesised
@@ -52,14 +60,15 @@ import sys
 
 RULEBOOK_REL = os.path.join('docs', 'RULEBOOK.md')
 
+#: The twin retired by the v3 amendment (owner word 2026-08-20). R5 asserts it stays absent.
+RETIRED_TWIN_REL = os.path.join('docs', 'acceptance_v2_0.json')
+
 #: Files scanned for "am I a derived view of the RULEBOOK?". Everything under docs/, one level.
 _DERIVED_SCAN_DIRS = ('docs',)
 
 _LAW_LINE = re.compile(r'^\s*(\d+)\.\s+\*\*(.+?)\*\*')
 _PAREN_ID = re.compile(r'\(([A-Z0-9][^()]*)\)')
 _COUNT_DECL = re.compile(r'\b(\d+)\s+(?:timeless\s+)?laws\b', re.I)
-_BANNER = re.compile(r'do[\s\-_]?not[\s\-_]?hand[\s\-_]?edit|the rulebook wins|generated[\s\-_]?only',
-                     re.I)
 
 
 def _norm_id(bold):
@@ -72,31 +81,6 @@ def _norm_id(bold):
     txt = bold.rstrip('.').strip().upper()
     txt = re.sub(r'[^A-Z0-9]+', '-', txt).strip('-')
     return txt or None
-
-
-def _tokens(law_id):
-    return [t for t in re.split(r'[^A-Z0-9]+', (law_id or '').upper()) if t]
-
-
-def recoverable_from(view_id, rulebook_ids):
-    """Is `view_id` recoverable from one of the RULEBOOK's own law headings?
-
-    R5 must not turn into a hand-kept mapping table between two spellings of the same law — that is
-    a second laws file by another route. The rule instead is mechanical: a derived view's id is
-    legitimate when its tokens appear, IN ORDER, inside a RULEBOOK law's tokens (or the RULEBOOK
-    law's inside the view's). `SILENCE-IS-RED` is recoverable from `SILENCE IS A RED`;
-    `SEAM-PATTERN` from `THE SEAM PATTERN`; `G-Y0` and `G-COHORT` are recoverable from nothing,
-    which is the finding.
-    """
-    def subseq(a, b):
-        it = iter(b)
-        return all(any(x == y for y in it) for x in a)
-    vt = _tokens(view_id)
-    for rid in rulebook_ids:
-        rt = _tokens(rid)
-        if vt and rt and (subseq(vt, rt) or subseq(rt, vt)):
-            return rid
-    return None
 
 
 def parse_rulebook(text):
@@ -247,32 +231,32 @@ def lint(root):
     elif dc != len(laws):
         fails.append('R3 COUNT DECLARED: the RULEBOOK says %d laws; PART 1 numbers %d' % (dc, len(laws)))
 
-    # R4/R5/R6 derived views
+    # R4 the scan · R5 the retired twin stays absent · R6 no derived laws view, anywhere
     views = find_derived_views(root)
     if not views:
-        notes.append('R4 ONE LAWS FILE: no derived laws view found in the tree.')
-    for rel, kind, payload in views:
-        notes.append('R4 ONE LAWS FILE: derived view found: %s' % rel)
-        if kind == 'json':
-            ids = [str(l.get('id')) for l in (payload.get('laws') or [])]
-            raw = json.dumps(payload)
-        else:
-            ids = []
-            raw = payload
-        if kind == 'json':
-            matched = {}
-            extra = []
-            for i in ids:
-                hit = recoverable_from(i, laws)
-                (matched.setdefault(hit, i) if hit else extra.append(i))
-            missing = [i for i in laws if i not in matched]
-            if missing or extra:
-                fails.append('R5 TWIN PARITY: %s law set != RULEBOOK PART 1 (%d vs %d). '
-                             'in RULEBOOK only: %s | in view only: %s'
-                             % (rel, len(laws), len(ids), missing or '-', extra or '-'))
-        if not _BANNER.search(raw):
-            fails.append('R6 TWIN BANNER: %s carries no DO-NOT-HAND-EDIT / "the RULEBOOK wins" '
-                         'banner — a derived view without one is a second laws file in disguise' % rel)
+        notes.append('R4 ONE LAWS FILE: no derived laws view found in the tree — the RULEBOOK is '
+                     'the only laws file, which is what PART 4 P10 requires.')
+    else:
+        for rel, _kind, _payload in views:
+            notes.append('R4 ONE LAWS FILE: derived view found: %s' % rel)
+
+    # R5 TWIN ABSENCE
+    if os.path.exists(os.path.join(root, RETIRED_TWIN_REL)):
+        fails.append('R5 TWIN ABSENCE: %s is BACK. The twin was RETIRED by the v3 amendment (owner '
+                     'word 2026-08-20, "Okay agree to the laws updated."), its thresholds folded '
+                     'into RULEBOOK PART 3. A file at that path is the retirement being undone — '
+                     'the RULEBOOK is amended or the file goes, and neither is a lint\'s to do'
+                     % RETIRED_TWIN_REL)
+    else:
+        notes.append('R5 TWIN ABSENCE: %s is absent, as the v3 amendment left it.'
+                     % RETIRED_TWIN_REL)
+
+    # R6 NO DERIVED VIEW — P10's teeth: a second laws file reappearing is the red.
+    for rel, _kind, _payload in views:
+        fails.append('R6 NO DERIVED VIEW: %s declares itself derived from the RULEBOOK. Since the '
+                     'v3 amendment there is no sanctioned derived laws view: the laws live in %s '
+                     'and nowhere else (PART 4 P10, "no second laws file, ever"). A derived view '
+                     'that reappears is this rule\'s whole subject.' % (rel, RULEBOOK_REL))
     return fails, notes
 
 

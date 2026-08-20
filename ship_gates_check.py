@@ -465,14 +465,20 @@ def _b1_rows(mpath):
 #
 # THE REGISTER'S PRIOR PATTERN — SUPERSESSION, not repeal. The JULY-8 CONSTRUCTION in this file (raw
 # class-year sums, den=min(y1,y2), each of y4/y5/y6 vs a hard 1.30) is the 2026-07-13 instrument. The
-# modern class-discipline law is G-COHORT as carried by the owner-signed RULEBOOK v2.1 and its twin
+# modern class-discipline law was G-COHORT as carried by the owner-signed RULEBOOK v2.1 and its twin
 # docs/acceptance_v2_0.json ("check": "walk-forward book ratio", "max": 1.3, "note": "UNMEASURED at R19
-# until harness migration rebuilds the book"), reported UNMEASURED under RULEBOOK PART 3 — "never
-# assumed passing, never silently waived". The register carries the same direction of travel: item 51
+# until harness migration rebuilds the book"), reported UNMEASURED under RULEBOOK PART 3.
+#
+# UPDATED 2026-08-20 BY THE v3 AMENDMENT ACT (owner word: "Okay agree to the laws updated."). The twin
+# is REMOVED from the tree; G-COHORT is recorded in RULEBOOK v3 PART 3 as RETIRED — not UNMEASURED —
+# on the same owner words this strike carries, with its retired 1.3 payload written down there so
+# nothing is lost. There is no surviving law above this rail to be superseded BY: the strike below is
+# the whole disposition, and RULEBOOK PART 3 is the pointer of record.
+# The register carries the same direction of travel: item 51
 # ("THE G-COHORT FEAR IS RETIRED, AND THE REASON MATTERS"), item 60 (a gate inherited from a superseded
 # line is retired with an obituary, not re-ruled), and the two-sided G-COHORT band folded at item 266.
-# So the LAW survives, in the governing document, awaiting its measurement; the JULY-8 CONSTRUCTION —
-# this specific rail, with this specific denominator and this specific hard bar — does not.
+# The JULY-8 CONSTRUCTION — this specific rail, with this specific denominator and this specific hard
+# bar — is gone, and as of the v3 amendment so is the law it was measured against.
 #
 # NOTHING IS SUPPRESSED. This is the B5 disposition, not a mute: the whole July-8 computation still
 # runs on the CANDIDATE regenerated this run, every figure and every would-have-breached year still
@@ -487,10 +493,11 @@ def _b1_rows(mpath):
 # unrecorded). Proposed process law: docs/proposals/rulebook/AMENDMENT_1b_2026-08-20.md.
 # ==================================================================================================
 _B1_CITE = ('[STRUCK — Luke 2026-08-20, verbatim: "That cohort rail again was retired. Weeks ago." The '
-            'JULY-8 CONSTRUCTION is SUPERSEDED by the modern class-discipline law: G-COHORT as carried by '
-            'the owner-signed RULEBOOK v2.1 + docs/acceptance_v2_0.json (walk-forward book ratio, max 1.3), '
-            'reported UNMEASURED at R19 under RULEBOOK PART 3 — never assumed passing, never silently '
-            'waived. Zombie note: retired while this suite was bricked at :49; surfaced HALT only on the '
+            'JULY-8 CONSTRUCTION is RETIRED. Its law, G-COHORT (walk-forward book ratio, max 1.3), was '
+            'carried by the owner-signed RULEBOOK v2.1 and its twin docs/acceptance_v2_0.json; the v3 '
+            'amendment of 2026-08-20 removed that twin and records G-COHORT in RULEBOOK PART 3 as '
+            'RETIRED, with its 1.3 payload written down there. RULEBOOK PART 3 is the pointer of record. '
+            'Zombie note: retired while this suite was bricked at :49; surfaced HALT only on the '
             'first run after the unbricking. SCORED, NEVER FLAGGED — every figure below still prints; only '
             'the alarm is removed] ')
 B1_TABLE = None

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "act_type": "small-act",
+  "act": "THE RULEBOOK v3 — the signed 1b amendment applied: law 11 amended, law 12 (G-Y0) enacted, PART 4 process laws P1-P11 landed, the derived twin removed and its thresholds folded into PART 3, the lint's twin rules reversed to assert absence, RB1 retired",
+  "date": "2026-08-20",
+  "base_commit": "68a3a50",
+  "seat": "docs/tooling seat, trimmed ceremony",
+  "owner_word": "THE SIGNATURE, VERBATIM (in chat, 2026-08-20): \"Okay agree to the laws updated.\" Given against the supervisor's presented final form, following his earlier direction \"we can keep the rulebook minus the redundant ones etc\". RULEBOOK law 10(a) makes a rulebook change an owner-word act and this sentence is that word. Two further owner rulings from the same session are carried out rather than re-asked: G-COHORT is NOT enacted as a law because its payload is the cohort rail he retired — \"That cohort rail again was retired. Weeks ago.\" — already struck as ship_gates B1; and law 11's blind independent review is scoped to value-moving releases per the agreed final form.",
+  "_note": "THE CLAIM IS THAT THE GOVERNING DOCUMENT MOVED AND NOTHING VALUE-BEARING DID. This act edits docs/RULEBOOK.md (the subject), removes docs/acceptance_v2_0.json and tools/rulebook_twin.py, reverses two rules in tools/rulebook_lint.py, retires one ledger entry, and repairs four pointers to the removed twin (REFEREE_PROTOCOL.md:10, ship_gates_check.py's B1 obituary, SHIP_GATES.md section B, and standing.py's rulebook_lint docstring). It touches no engine file, no store, no exporter, no data file and no dial; the ship_gates edit is comment and citation text only, with no gate, threshold, verdict or dial changed. Every `unmoved` value below is the identity as it stood at base 68a3a50, transcribed from g1_BEFORE.txt, and the checker recomputes each one against the tree this act produced. Re-run: python3 tools/claims.py check docs/evidence/rulebook_v3_2026-08-20/V3_CLAIMS.json",
+
+  "activation": {
+    "_doc": "This act arms nothing. It ENACTS law and RETIRES instruments. The two lint rules it changes stay armed throughout — their polarity is reversed, not their power, and the negative control in verify_v3.py V6 proves they still fire.",
+    "law 12 (G-Y0) as a PART 1 law": {
+      "state": "on",
+      "activated_by": "Owner, in chat 2026-08-20, verbatim: \"Okay agree to the laws updated.\" — against a final form in which law 12 is patch_A's G-Y0 wording. It enters as prose law with its 2.0% threshold recorded in PART 3; no new gate, script or CI step is armed by it, and the check that measures it is unchanged.",
+      "_why": "Named ON because a law is a live obligation the moment it is signed, and a claims file that called an enacted law 'off' would be lying about the one thing this act did."
+    },
+    "PART 4 process laws P1-P11": {
+      "state": "on",
+      "activated_by": "The same owner word. tools/rulebook_lint.py's process-law numbering rule was already armed and reports 11 contiguous laws; nothing else executes on them.",
+      "_why": "They were standing practice restated in every seat brief; they are now in the governing document, which is the whole of the change."
+    },
+    "the twin regenerator (tools/rulebook_twin.py)": {
+      "state": "off",
+      "_why": "REMOVED. With no twin its three modes have no subject. No code imported it and no workflow ran it."
+    },
+    "lint R5/R6 as parity rules": {
+      "state": "off",
+      "_why": "Reversed, not disarmed: R5 now asserts the retired twin stays ABSENT and R6 that no derived laws view exists anywhere. Both fire on a replanted twin — asserted by verify_v3.py V6 in a temporary tree."
+    },
+    "ruled-red RB1": {
+      "state": "off",
+      "_why": "RETIRED. Its own probe now exits 0 where it recorded \"R5 TWIN PARITY\" — EXPIRED under the ledger's _probe_contract. Left in place it would have failed the runner on a stale ruling."
+    }
+  },
+
+  "claims": [
+    {"kind": "unmoved", "label": "store", "path": "engine/rl_after/rl_model_data.json", "value": "b745002eb0a0fbb1c34fa44f1ef708d6"},
+    {"kind": "unmoved", "label": "board of record", "path": "data/rl_build/rl_app_data.json", "value": "68be10c79d0ee096455754e084bcf757"},
+    {"kind": "unmoved", "label": "engine_head", "path": "engine/rl_after/_merged_recover.py", "value": "1867e953cf844d089ab1da68379b1742"},
+    {"kind": "unmoved", "label": "rl_model", "path": "engine/rl_after/rl_model.py", "value": "6fe7c4155866d80e8045bed2d3bf2802"},
+    {"kind": "unmoved", "label": "model config manifest", "path": "data/model_config.json", "value": "269d20ab86e3b9d13867987065c757d2"},
+    {"kind": "unmoved", "label": "q97m fitted artifact", "path": "data/q97m.pkl", "value": "cfdc73216c099e5e8f1fda3968f31c00"},
+    {"kind": "unmoved", "label": "v0surf fitted artifact", "path": "data/v0surf.pkl", "value": "5dd34ca82735f5c8f021b1c7320df8f8"},
+    {"kind": "unmoved", "label": "cm_400 band cache", "path": "data/cm_400.pkl", "value": "34faa8659cc8f19794f5cb9584fa19b2"},
+    {"kind": "unmoved", "label": "LTI register (owner-authored input)", "path": "LTI_REGISTER.md", "value": "652d83e87780e415a01a2de6d8b3cc57"},
+    {"kind": "unmoved", "label": "UI working bundle", "path": "ui/data/board_view_working.js", "value": "8c63e56a645dd0738a77653c3cb237b3"},
+    {"kind": "unmoved", "label": "UI public bundle", "path": "ui/data/board_view_public.js", "value": "540bcdb444fbd5375c048cc8a26ba291"},
+    {"kind": "unmoved", "label": "the drafted amendment's patch_A — NOT regenerated; the applied form differs from it and APPLIED.md says how", "path": "docs/proposals/rulebook/patch_A.diff", "value": "0758749ad23c243a829a6abda7eefe4e"},
+    {"kind": "unmoved", "label": "the drafted amendment's patch_B — NOT regenerated, for the same reason", "path": "docs/proposals/rulebook/patch_B.diff", "value": "d1e737f3e0ef0a1cd26f2547ef8da8f8"},
+
+    {"kind": "file_md5", "label": "THE GOVERNING DOCUMENT, v3 — this act's whole subject, and the one docs identity that MOVED on purpose", "path": "docs/RULEBOOK.md", "value": "fa3caf31a1d18ad977c1dfd665a1c669"},
+
+    {"kind": "json_field", "label": "boot pin: store", "path": "data/expected_boot.json", "field": "store", "value": "b745002eb0a0fbb1c34fa44f1ef708d6"},
+    {"kind": "json_field", "label": "boot pin: board", "path": "data/expected_boot.json", "field": "board", "value": "68be10c79d0ee096455754e084bcf757"},
+    {"kind": "json_field", "label": "boot pin: balanced_board_md5", "path": "data/expected_boot.json", "field": "balanced_board_md5", "value": "556ad70d295923455982ae33e4b8bfd3"},
+    {"kind": "json_field", "label": "boot pin: engine_head", "path": "data/expected_boot.json", "field": "engine_head", "value": "1867e953cf844d089ab1da68379b1742"},
+    {"kind": "json_field", "label": "boot pin: rl_model", "path": "data/expected_boot.json", "field": "rl_model", "value": "6fe7c4155866d80e8045bed2d3bf2802"},
+    {"kind": "json_field", "label": "boot pin: config", "path": "data/expected_boot.json", "field": "config", "value": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1"},
+    {"kind": "json_field", "label": "boot pin: fv", "path": "data/expected_boot.json", "field": "fv", "value": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346"},
+    {"kind": "json_field", "label": "boot pin: register", "path": "data/expected_boot.json", "field": "register", "value": "652d83e87780e415a01a2de6d8b3cc57"},
+    {"kind": "json_field", "label": "as_of_round", "path": "data/expected_boot.json", "field": "as_of_round", "value": 23},
+    {"kind": "json_field", "label": "contract_sha256", "path": "data/release_contract.json", "field": "contract_sha256", "value": "cde9f70a49b673933f368032393c3c0c8b61e83d51cfe920c8b5c64faf7cf8c7"},
+    {"kind": "json_field", "label": "book seal stable_sha256", "path": "data/book_stable_seal.json", "field": "stable_sha256", "value": "9f46aba3ba8b056d0835928239dd6feeeb1708257837e4168fdbb6efd1755598"},
+
+    {"kind": "json_field", "label": "RB1 IS OUT OF THE LIVE LEDGER — entry 0 is now FI1, not RB1", "path": "acceptance/ruled_red.json", "field": "entries.0.id", "value": "FI1-generated-bundle-equality"},
+    {"kind": "json_field", "label": "RB1 IS IN THE RETIRED LIST, where known_red.py never reads it", "path": "acceptance/ruled_red.json", "field": "retired.1.id", "value": "RB1-rulebook-twin-unruled-laws"},
+    {"kind": "json_field", "label": "RB1's retirement is dated", "path": "acceptance/ruled_red.json", "field": "retired.1.retired_on", "value": "2026-08-20"},
+    {"kind": "json_field", "label": "NOT A SWEEP: the other three carried rulings are untouched", "path": "acceptance/ruled_red.json", "field": "entries.1.id", "value": "R15-ladder-proof-GFWD"},
+
+    {"kind": "gate", "label": "THE AMENDMENT, ASSERTED: 12 laws · P1-P11 · laws 1-10 byte-unchanged · every twin threshold survives in PART 3 · twin and regenerator gone · and the negative control fires", "name": "verify_v3", "argv": ["python3", "docs/evidence/rulebook_v3_2026-08-20/verify_v3.py"], "expect": "PASS", "match": "verify_v3: PASS"},
+    {"kind": "gate", "label": "the RULEBOOK lint — 0 FAIL on the amended document", "name": "rulebook_lint", "argv": ["python3", "tools/rulebook_lint.py"], "expect": "PASS", "match": "rulebook_lint: 0 FAIL"},
+    {"kind": "gate", "label": "release_manifest_check — untouched by this act and still COHERENT", "name": "release_manifest_check", "argv": ["python3", "release_manifest_check.py"], "expect": "PASS"},
+    {"kind": "gate", "label": "release_contract.py check", "name": "release_contract", "argv": ["python3", "release_contract.py", "check"], "expect": "PASS"},
+    {"kind": "gate", "label": "THE RUNNER, host-insensitive profile — GREEN with one fewer carried red", "name": "acceptance.runner", "argv": ["python3", "-m", "acceptance.runner", "--profile", "host-insensitive"], "expect": "GREEN", "match": "VERDICT    GREEN"},
+    {"kind": "gate", "label": "the claims checker's own negative control still fires", "name": "claims.selftest", "argv": ["python3", "tools/claims.py", "selftest"], "expect": "PASS", "match": "11 PASS / 0 FAIL"}
+  ]
+}

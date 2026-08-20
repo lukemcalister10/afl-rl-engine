@@ -7,9 +7,14 @@ with this edit, F1 PASS · F2 closed · F3 closed. F4 (owner freeze word) is the
 
 Authored read-only at the ITEM 410 design seat against main `13b1618` (register v393). This seat makes
 no repo writes; the deliverable routes to the owner; the pen files.
-Governing law: RULEBOOK v2.0 — cited by prose law number; gates bound to `docs/acceptance_v2_0.json`
-gate IDs per the v393 law-count mapping of record. Referee-specific gates carry REF- IDs; they enter
-the acceptance twin only on owner word (Law 10).
+Governing law: RULEBOOK v2.0 — cited by prose law number; gates bound to `docs/RULEBOOK.md` law
+IDs per the v393 law-count mapping of record. Referee-specific gates carry REF- IDs; they enter the
+governing document only on owner word (Law 10).
+[POINTER REPAIRED 2026-08-20, v3 amendment act: this line read "gates bound to
+`docs/acceptance_v2_0.json` gate IDs" and "the acceptance twin". That twin was RETIRED by owner word
+("Okay agree to the laws updated.") and removed from the tree; its per-law check prose and thresholds
+now live in RULEBOOK PART 3's measurement-thresholds table, with the same law IDs. This is a pointer
+repair only — no referee ruling, gate, dial or verdict in this FROZEN document is changed by it.]
 Evidence base: ITEM 409 EVIDENCE MEMO as filed (identity f37d9716 / 6f07f7cb / 89c14729; pack-3
 workbook md5 e921bd05) — carried as filed, that seat's measurements, re-run rights reserved.
 AUD-004 standing: no standalone AUD-004 specification exists in the tree (verified at `13b1618`:
