@@ -1,0 +1,37 @@
+=== ACT B GATES ===
+
+--- B7/FB5: WHAT THIS ACT WROTE (git status; a book re-seal writes ONE file) ---
+ M data/book_stable_seal.json
+?? docs/evidence/backrows_reseal_2026-08-20/14_reseal.txt
+?? docs/evidence/backrows_reseal_2026-08-20/15_ship_gates_attempt.txt
+?? docs/evidence/backrows_reseal_2026-08-20/16_gates_after_reseal.txt
+?? docs/evidence/backrows_reseal_2026-08-20/reseal_backrows.py
+
+--- B6/FB4: release_manifest_check.py — THE SEALED-LAG COUNT ---
+BEFORE this act (recorded in 11_gates.txt, after ACT A):
+    40 carrier fields across 8 identities and 7 files: 38 coherent, 0 incoherent, 2 sealed-lag
+      book_stable_seal.store_md5   sealed against cb38ef11, tree is now b745002e
+      book_stable_seal.head_md5    sealed against 5ac6780f, tree is now 1867e953
+AFTER:
+  40 carrier fields across 8 identities and 7 files: 40 coherent, 0 incoherent, 0 sealed-lag
+  RELEASE MANIFEST COHERENCE: PASS
+
+--- release_contract.py check ---
+RELEASE-CONTRACT CHECK
+RELEASE-CONTRACT CHECK: PASS  (contract cde9f70a49b6; identities + config + posture consistent)
+
+--- python3 -m acceptance.runner ---
+==========================================================================================================================
+CHECK                    VERDICT     REASON
+-----------------------  ----------  -----------------------------------------------------------------------------------
+release_manifest         PASS        40 of 40 carrier fields agree with computed truth across 8 identities
+boot_guard_checkout      PASS        boot-store guard (Guard 5) PASS  [acceptance-spine]  store b745002e == pinned b745…
+config_manifest          PASS        CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)
+ruling_config            PASS        RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL…
+release_contract_seal    PASS        RELEASE-CONTRACT CHECK: PASS  (contract cde9f70a49b6; identities + config + postur…
+store_coherence_six_way  PASS        six-way store coherence: PASS
+doc_lint                 PASS        doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)
+-----------------------  ----------  -----------------------------------------------------------------------------------
+
+AGGREGATE  7 checks  |  PASS 7  FAIL 0  BLOCKED 0  RULED-RED 0
+VERDICT    GREEN — no gating failures.

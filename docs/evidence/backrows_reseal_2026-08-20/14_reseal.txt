@@ -1,0 +1,90 @@
+=== ACT B — THE BOOK RE-SEAL ===
+
+--- STEP 1: B1/FB1 — THE PRICE-LINE IDENTITY, RE-VERIFIED ON THE POST-ACT-A BOARD ---
+A BARE gate-mode board build (RL_CONFIG_MODE=gate, no dial env at all), under the build lock:
+{
+  "tag": "GATE_LINE",
+  "mode": "gate",
+  "overrides": {},
+  "rc": 0,
+  "board_md5": "68be10c79d0ee096455754e084bcf757",
+  "elapsed_s": 106.5
+}
+   live board on disk : 68be10c79d0ee096455754e084bcf757
+   -> THE BARE GATE-MODE LINE == THE LIVE BOARD, byte-exact. B1 MET, FB1 clear.
+   This is the premise the price-line ruling rests on, measured on THIS board rather than carried
+   from the bake's record.
+
+--- A DISCLOSED HALT ON THE FIRST ATTEMPT, AND THE REMEDY (no instrument edit) ---
+The first invocation HALTED with an empty matrix. CAUSE, measured not guessed:
+    RL_BUILD_LOCK_HELD=probe + RL_CONFIG_MODE=gate ->
+    'UNKNOWN model override RL_BUILD_LOCK_HELD=... is not in the manifest (data/model_config.json)'
+tools/build_lock.sh EXPORTS RL_BUILD_LOCK_HELD, and config_manifest.enforce() in gate mode rejects
+any unknown RL_-prefixed variable as a model override. This is EXACTLY the trap PREREG_D8 §3
+disclosed and docs/evidence/r23_advance_2026-08-20/recut_build.py pops in its own child env; the
+bake's reseal instrument does not pop it because the bake did not run it under the lock wrapper.
+REMEDY: hold the lock in the PARENT shell (the flock fd stays held, so the interlock is real) and
+strip the variable from the CHILD's environment only, with env -u. The instrument is NOT edited.
+SECONDARY FINDING, recorded not repaired: the instrument's own 'FAILED: no __meta__' diagnostic
+path is unreachable when the matrix run dies before writing anything, because json.load() on the
+empty mkstemp file raises first. That is inherited from the bake's port and from the 2026-07-17
+original; fixing it is not this act's warrant. P2 item.
+
+--- STEP 2-5: THE RE-SEAL (bare shipped line, gate mode) ---
+build-lock: HELD by backrows-reseal (pid 17167) since 2026-08-20T12:09:42Z — single writer for the shared workspace.
+====================================================================================================
+ACT B — THE BOOK RE-SEAL, BARE SHIPPED LINE, GATE MODE
+====================================================================================================
+  worktree      : /home/user/afl-rl-engine
+  engine head   : 1867e953   store: b745002e
+  RL_V0SURF_PKL : <NOT SET — the in-repo pinned surface is now the default load path>
+
+regenerating the book matrix (gate mode, BARE LINE — no env dials; the shipped defaults price it) ...
+matrix meta   : engine=1867e953 store=b745002e config=eed19a75f775
+
+  sealed (before): head 5ac6780f store cb38ef11 n 2650 stable 86a82e6ebce66844
+  candidate      : head 1867e953 store b745002e n 2650 stable 9f46aba3ba8b056d
+
+RE-SEALED: head 5ac6780f -> 1867e953 | n_players 2650 -> 2650 | stable_sha256 86a82e6e -> 9f46aba3
+NOT ADOPTED. OWNER WORD PENDING.
+build-lock: released by backrows-reseal
+
+############################################################################
+### STEP 6 — CERTIFICATION: the committed seal against a FRESHLY regenerated book ###
+############################################################################
+build-lock: HELD by backrows-reseal (pid 17540) since 2026-08-20T12:12:50Z — single writer for the shared workspace.
+====================================================================================================
+ACT B — THE BOOK RE-SEAL, BARE SHIPPED LINE, GATE MODE  [--check, writes nothing]
+====================================================================================================
+  worktree      : /home/user/afl-rl-engine
+  engine head   : 1867e953   store: b745002e
+  RL_V0SURF_PKL : <NOT SET — the in-repo pinned surface is now the default load path>
+
+regenerating the book matrix (gate mode, BARE LINE — no env dials; the shipped defaults price it) ...
+matrix meta   : engine=1867e953 store=b745002e config=eed19a75f775
+
+  sealed (before): head 1867e953 store b745002e n 2650 stable 9f46aba3ba8b056d
+  candidate      : head 1867e953 store b745002e n 2650 stable 9f46aba3ba8b056d
+
+  B3 RE-VERIFY: PASS — the committed seal matches a freshly regenerated gate-mode candidate book, every field
+build-lock: released by backrows-reseal
+
+--- B4: n_players WAS RE-COUNTED AND LANDED ON THE SAME NUMBER. WHY. ---
+2650 -> 2650. The brief expected this MAY move and asked for the reason either way; it is a
+RE-COUNT, not a carry — the instrument writes len(by), the number of distinct stable keys
+(player, type, year, pick) in the freshly built matrix, and never reads the old value.
+The generator's own line confirms the cohort: 'eligible players: 2650', and 'matrix saved
+(CALENDAR-indexed): 2650 players'. The store moved b745002e-wards by SCORE APPLICATION at the
+R23 advance and by the injury-sheet re-cut, which change what players are WORTH, not who is
+ELIGIBLE (eligibility is MA.GRP[pos] and not _pvc_exclude). No row entered or left the cohort,
+so the count holds while stable_sha256 moves — which is exactly the right pair of outcomes.
+The pre-BAKE count was 2649; the bake re-counted it to 2650 and this act re-counted it again.
+
+--- SUMMARY: OLD SEAL -> NEW SEAL ---
+  head_md5         5ac6780f                                                           -> 1867e953
+  store_md5        cb38ef11                                                           -> b745002e
+  n_players        2650                                                               == 
+  stable_sha256    86a82e6ebce668448ffb76b59d1d95583b276c210379e2b34ce3a263fc5b4322   -> 9f46aba3ba8b056d0835928239dd6feeeb1708257837e4168fdbb6efd1755598
+  config           eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1   == 
+  sealed_date      2026-08-20                                                         == 
+  generator        engine/rl_after/s4_matrix_M1v7.py                                  == 

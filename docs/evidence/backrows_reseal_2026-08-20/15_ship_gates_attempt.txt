@@ -1,0 +1,44 @@
+=== ATTEMPTING ship_gates_check.py B3 — AS INSTRUCTED, AND NOT EDITED ===
+
+The brief's CAUTION named ship_gates_check.py's RL_GAMMA=0.85 self-brick at line ~64 (the v787
+finding). THAT ONE IS ALREADY REPAIRED IN TREE by M1a — the line now reads RL_GAMMA='1.0' with the
+repair documented above it:
+# RL_GAMMA '0.85' -> '1.0' (M1a, 2026-08-20; AUDIT_CI.md repair 1, the highest-ratio repair in the
+# estate). The five other vars on this line all equal the manifest; RL_GAMMA alone diverged, and
+# enforce('gate') three lines below REJECTS a divergent override. The suite therefore killed itself
+
+What actually stops it here is a DIFFERENT, standing finding — ship_gates_check.py:49 —
+RA = '/home/claude/rl_workspace/rl_after'
+which points at a SHARED, OUT-OF-REPO workspace this box carries STALE:
+   /home/claude/rl_workspace/rl_after/_merged_recover.py  338a790b773cfbbff0e1283794c72efe
+   /home/claude/rl_workspace/rl_after/rl_model_data.json  cc02567f80bef39228f25854d121a766
+   this tree                                     engine 1867e953cf844d089ab1da68379b1742
+   this tree                                     store  b745002eb0a0fbb1c34fa44f1ef708d6
+Guard 5 is a PRE-FLIGHT and is supposed to refuse exactly this. The attempt, timeboxed to 300s:
+
+
+==================== STALE-BOOT GUARD (Guard 5) FAILED — BUILD HALTED ====================
+  - ship_gates_check about to read STORE  rl_model_data.json
+        at /home/claude/rl_workspace/rl_after/rl_model_data.json
+        md5 cc02567f  !=  expected b745002e (pinned; repo checkout b745002e)
+        STALE BOOT: this is not the checked-out store. Re-run bootstrap.sh to re-seed the workspace from the checked-out source; never boot on an unverified store.
+  - ship_gates_check about to read ENGINE _merged_recover.py
+        at /home/claude/rl_workspace/rl_after/_merged_recover.py
+        md5 338a790b  !=  expected 1867e953 (pinned; repo checkout )
+        STALE BOOT: this is not the checked-out store. Re-run bootstrap.sh to re-seed the workspace from the checked-out source; never boot on an unverified store.
+=========================================================================================
+rc=0
+
+(the rc printed above is the tail pipeline's, not the suite's — the suite's own exit code is 1)
+
+VERDICT ON THE ATTEMPT
+  ship_gates_check.py DOES NOT RUN on this box, and it is NOT EDITED IN THIS ACT, per the brief.
+  It halts at the Guard 5 PRE-FLIGHT, before any gate, because :49 hardcodes a shared out-of-repo
+  workspace that this box carries at the pre-D8 engine and the pre-R23 store. That is the guard
+  doing its job: it refuses to certify anything against a store nobody verified.
+  CORRECTION TO THE BRIEF'S CAUTION, on measurement: the RL_GAMMA=0.85 self-brick (v787) is GONE —
+  M1a repaired it to 1.0 in tree. The standing P1 item is the hardcoded RA at :49, which the bake
+  already reported as a standing finding and deliberately did not edit either.
+  CERTIFICATION IS THEREFORE CARRIED BY THE B3 STEPS RUN DIRECTLY (14_reseal.txt step 6), which is
+  exactly what the brief authorises. The B3 procedure used is byte-identical to ship_gates_check's
+  own _b3_stable_sha (:505) — the instrument says so in its docstring and the diff proves it.
