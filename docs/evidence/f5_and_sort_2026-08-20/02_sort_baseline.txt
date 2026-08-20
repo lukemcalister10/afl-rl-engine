@@ -1,0 +1,16 @@
+=== ACT B BASELINE — 2026-08-20T10:50:45Z ===
+commit: 63aa259931808293ed89c6862dab389ab87511da
+
+-- artifacts that MUST NOT MOVE in Act B --
+7a3f4fe23207a29095e6d37408a4b727  data/rl_build/rl_app_data.json
+b745002eb0a0fbb1c34fa44f1ef708d6  engine/rl_after/rl_model_data.json
+5b6d2573d251d3a517d9adbe544114aa  engine/rl_after/ingestion/value_history.json
+19dfd4da2b39e855bd53342c7ea0d21b  engine/rl_after/ingestion/rank_history.json
+e767256c37c47852e34027f4a4744747  engine/rl_after/ingestion/pos_rank_history.json
+16608e90078f6e7814f0920f8981ad74  data/expected_boot.json
+dcf2257cf52907b6937358a61a72d3b8  data/release_contract.json
+49dc6de19fad5303b1cad8669cae59af  data/release_lineage.json
+
+-- artifacts Act B is EXPECTED to move --
+b64bc475ed5a37dddd253088bb5bbfa9  engine/rl_after/ingestion/out_of_round_column.py
+999a3ed39422f608ee2adbbec70cb239  ui/data/movers.js
