@@ -46,7 +46,42 @@
 #     (canonical pre-v2), the line reports the legacy offender count INFORMATIONALLY — never FAIL.
 import os, sys, io, json, copy, math, time, hashlib, subprocess, contextlib
 ROOT = os.path.dirname(os.path.abspath(__file__))
-RA = '/home/claude/rl_workspace/rl_after'
+# ---- THE :49 HARDCODE REPAIR (PLAN_v6 1a, 2026-08-20) --------------------------------------------
+# WAS, on one line and for a year:   RA = '/home/claude/rl_workspace/rl_after'
+# A fixed absolute path into a SHARED, MUTABLE, OUT-OF-REPO workspace. Every seat that met this file
+# met the same wall: the shared workspace on the working box carries whatever the last seat left in
+# it, Guard 5's PRE-FLIGHT (twelve lines below) correctly refuses to certify anything against an
+# unverified store, and the frozen suite therefore could not run AT ALL — not one gate, on any box
+# whose workspace had drifted. Measured twice on 2026-08-20: docs/evidence/m1a_2026-08-20/README.md
+# ("What is NOT done, stated plainly") and docs/evidence/backrows_reseal_2026-08-20/
+# 15_ship_gates_attempt.txt (store cc02567f / head 338a790b in the workspace against pins b745002e /
+# 1867e953 in the checkout). It is the recorded P1 item, and this is it.
+#
+# NOTHING ABOUT THE GUARD IS WEAKENED. The pre-flight below still asserts RA's store and engine head
+# against data/expected_boot.json and still HALTS on any mismatch — it now HAS SOMETHING IT CAN BE
+# POINTED AT. The default is the legacy path byte-for-byte, so on a box whose workspace bootstrap.sh
+# has seeded, the resolution and the behaviour are identical to before this line changed.
+#
+#   SGC_RA          an explicit engine directory (an isolated workspace seeded from the checkout —
+#                   the discipline every engine act in this estate already uses)
+#   SGC_WORKSPACE   the workspace ROOT, when only the parent moves
+#   default         /home/claude/rl_workspace  — unchanged
+#
+# THE PREFIX IS NOT COSMETIC, and it was chosen by measurement. The first draft named these RL_SGC_RA
+# / RL_WORKSPACE and got exactly as far as the line below: config_manifest.enforce('gate') REJECTS any
+# unknown RL_*/PAR_* variable as a divergent model override, so the repaired suite halted on its own
+# repair ("UNKNOWN model override RL_SGC_RA=... is not in the manifest"). SGC_* is this file's own
+# declared red-path-input family (SGC_SKIP / SGC_B1_MATRIX / SGC_REPORT_DIR), it is stripped from
+# gate-mode children by _subenv, and it is covered by the rev143 leakage tripwire — which is extended
+# to know these two names in the same edit, so an unrecognized SGC_* still HALTS.
+#
+# The FV path is resolved from the same place rather than hardcoded a second time: RL_FV if the
+# caller bound it (it is an INFRA_ALLOW var, and run_panel.sh / ci-guards.yml already bind it),
+# otherwise the sibling of whatever RA resolved to. Two hardcodes of the same workspace, resolved
+# from one source, so they cannot drift apart.
+RA = (os.environ.get('SGC_RA')
+      or os.path.join(os.environ.get('SGC_WORKSPACE', '/home/claude/rl_workspace'), 'rl_after'))
+_FV = os.environ.get('RL_FV') or os.path.join(os.path.dirname(RA), 'forward_valuation')
 # GUARD 5 (boot-store) — PRE-FLIGHT, before the engine loads. The frozen acceptance suite must never run
 # against a store the caller has not verified is the checked-out, pinned one. The four data guards validate
 # whichever dir they are imported from (RA here, the workspace), so a stale-but-self-consistent workspace
@@ -80,7 +115,7 @@ os.environ.update(PYTHONHASHSEED='0', RL_GAMMA='1.0', RL_PICK1='3000', RL_RUCK_T
 # hash stamped into the gate report so every verdict names WHICH config it certifies. Halts (not warns) on drift.
 import config_manifest as _CFG
 CONFIG_HASH = _CFG.enforce('gate')
-sys.path[:0] = [RA, '/home/claude/rl_workspace/forward_valuation', os.path.join(ROOT, 'vendor')]
+sys.path[:0] = [RA, _FV, os.path.join(ROOT, 'vendor')]
 os.environ['PYTHONPATH'] = ':'.join(sys.path[:3])          # subprocesses (B4 export) need it too
 os.chdir(RA)
 import numpy as np
@@ -91,7 +126,11 @@ SKIP = set(os.environ.get('SGC_SKIP', '').upper().split(',')) - {''}
 # one-shot fixes: (1) REJECT any UNRECOGNIZED SGC_* here (unhandled leakage HALTs — halt-not-warn); (2) the
 # report write is pinned IN-FENCE below (a leaked/foreign SGC_REPORT_DIR can never write outside the checkout).
 # No gate assertion, threshold or verdict is touched (SHIP_GATES §RED-PATH; the frozen suite 764a0d91 unamended).
-_SGC_OK = {'SGC_SKIP', 'SGC_B1_MATRIX', 'SGC_REPORT_DIR'}
+_SGC_OK = {'SGC_SKIP', 'SGC_B1_MATRIX', 'SGC_REPORT_DIR',
+           # PLAN_v6 1a 2026-08-20 — the :49 workspace-resolution inputs. Recognized here so
+           # the tripwire keeps HALTING on everything else; see the RA block at :49 for why
+           # they are SGC_* and not RL_*.
+           'SGC_RA', 'SGC_WORKSPACE'}
 _sgc_leak = sorted(k for k in os.environ if k.startswith('SGC_') and k not in _SGC_OK)
 if _sgc_leak:
     sys.exit('!! SHIP-GATES SGC LEAKAGE (rev143 rider): unrecognized SGC_* env %s — not ship_gates red-path '

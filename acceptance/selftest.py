@@ -232,10 +232,67 @@ def part_e_known_red_ledger(o):
     o.assert_([e['id'] for e in known_red.stale([], entries)] == ['TEST-1'],
               'an entry whose carriers are all coherent again IS stale, and must be retired')
 
+    step_only = [{'id': 'STEP-1', 'steps': ['w.yml::s'], 'presented': 'doc',
+                  'probe': {'argv': ['true']}}]
+    o.assert_(not known_red.stale([], step_only),
+              'a STEP entry is NOT reported stale by the carrier machinery — it declares no '
+              'carriers, and reading that as "all its carriers are coherent" is the exact defect '
+              'the schema-2 extension had to avoid (REVIEW_COLD_OPUS F2)')
+
     live = known_red.load()
-    o.assert_(all(e.get('presented') and e.get('carriers') and e.get('id') for e in live),
-              'every SHIPPED ledger entry names an id, its carriers, and where the fork was '
-              'presented (a red nobody has presented is a FAIL, not a RULED-RED)')
+    o.assert_(all(e.get('presented') and e.get('id') and (e.get('carriers') or e.get('steps'))
+                  for e in live),
+              'every SHIPPED ledger entry names an id, at least one carrier or step, and where the '
+              'fork was presented (a red nobody has presented is a FAIL, not a RULED-RED)')
+
+
+def part_f_step_expiry_probes(o):
+    """O1's acceptance criterion, executable: a step entry expires when its step stops failing."""
+    o.head('PART F — step-keyed entries carry a liveness probe, and it is the expiry')
+
+    def entry(argv, **probe):
+        p = {'argv': argv}
+        p.update(probe)
+        return {'id': 'P', 'steps': ['w.yml::s'], 'presented': 'doc', 'probe': p}
+
+    st, _d = known_red.probe(entry([sys.executable, '-c', 'import sys;sys.exit(1)'],
+                                   match=None))
+    o.assert_(st == known_red.LIVE, 'a probe that still FAILS keeps its entry LIVE')
+
+    st, _d = known_red.probe(entry([sys.executable, '-c', 'pass']))
+    o.assert_(st == known_red.EXPIRED,
+              'THE ACCEPTANCE CRITERION (REVIEW_COLD_OPUS O1): a probe that now SUCCEEDS EXPIRES '
+              'its entry — the step stopped failing, so the ruling describes nothing')
+
+    st, _d = known_red.probe(entry([sys.executable, '-c', 'import sys;sys.exit(1)'],
+                                   match='THE-RECORDED-SIGNATURE'))
+    o.assert_(st == known_red.DRIFTED,
+              'a probe that fails a DIFFERENT way DRIFTS its entry — the ruling was given about a '
+              'red that no longer exists')
+
+    st, _d = known_red.probe(entry([sys.executable, '-c', 'pass'], cost='heavy',
+                                   last_probed='2000-01-01', probe_max_age_days=30))
+    o.assert_(st == known_red.UNPROBED,
+              'a HEAVY probe outside its own declared window is UNPROBED — nobody has looked, and '
+              'an unlooked-at ruling is the panel-10/10 failure mode')
+
+    st, _d = known_red.probe(entry([sys.executable, '-c', 'pass'], cost='heavy'))
+    o.assert_(st == known_red.UNPROBED,
+              'a HEAVY probe with no last_probed/window at all is UNPROBED, never assumed live')
+
+    st, _d = known_red.probe({'id': 'X', 'steps': ['w.yml::s'], 'presented': 'doc'})
+    o.assert_(st == known_red.BROKEN,
+              'a step entry with NO probe is refused — an entry that cannot expire is a snooze '
+              'button, and ruled_red.json:_how_to_add forbids exactly that')
+
+    shipped = known_red.step_entries()
+    o.assert_(all((e.get('probe') or {}).get('argv') for e in shipped),
+              'every SHIPPED step entry carries a probe.argv (%d entries)' % len(shipped))
+    heavy = [e for e in shipped if ((e.get('probe') or {}).get('cost') or '') == 'heavy']
+    o.assert_(all((e['probe'].get('last_probed') and e['probe'].get('probe_max_age_days'))
+                  for e in heavy),
+              'every SHIPPED heavy entry carries a dated measurement and a window (%d heavy)'
+              % len(heavy))
 
 
 # ==================================================================================================
@@ -248,6 +305,7 @@ def main():
     part_c_contract_integrity(o)
     part_d_registry_order(o)
     part_e_known_red_ledger(o)
+    part_f_step_expiry_probes(o)
 
     print('\n'.join(o.lines))
     print('')

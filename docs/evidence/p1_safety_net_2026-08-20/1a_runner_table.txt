@@ -1,0 +1,33 @@
+==========================================================================================================================
+THE VERDICT SPINE — acceptance/runner.py
+  tree: /home/user/afl-rl-engine
+  evidence: docs/evidence/p1_safety_net_2026-08-20/checks_1a
+  profile : host-insensitive   (per-push floor: checkout-only checks)
+==========================================================================================================================
+CHECK                    VERDICT     REASON
+-----------------------  ----------  -----------------------------------------------------------------------------------
+release_manifest         PASS        40 of 40 carrier fields agree with computed truth across 8 identities
+config_manifest          PASS        CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)
+ruling_config            PASS        RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL…
+release_contract_seal    PASS        RELEASE-CONTRACT CHECK: PASS  (contract cde9f70a49b6; identities + config + postur…
+store_coherence_six_way  PASS        six-way store coherence: PASS
+doc_lint                 PASS        doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)
+rulebook_lint            RULED-RED   ruling RB1-rulebook-twin-unruled-laws (presented: docs/proposals/process_plan/PLAN…
+ruled_red_ledger         PASS        4 step entries probed, all still failing exactly as their ruling records
+-----------------------  ----------  -----------------------------------------------------------------------------------
+
+EVIDENCE:
+  release_manifest         docs/evidence/p1_safety_net_2026-08-20/checks_1a/release_manifest.txt
+  config_manifest          docs/evidence/p1_safety_net_2026-08-20/checks_1a/config_manifest.txt
+  ruling_config            docs/evidence/p1_safety_net_2026-08-20/checks_1a/ruling_config.txt
+  release_contract_seal    docs/evidence/p1_safety_net_2026-08-20/checks_1a/release_contract_seal.txt
+  store_coherence_six_way  docs/evidence/p1_safety_net_2026-08-20/checks_1a/store_coherence_six_way.txt
+  doc_lint                 docs/evidence/p1_safety_net_2026-08-20/checks_1a/doc_lint.txt
+  rulebook_lint            docs/evidence/p1_safety_net_2026-08-20/checks_1a/rulebook_lint.txt
+  ruled_red_ledger         docs/evidence/p1_safety_net_2026-08-20/checks_1a/ruled_red_ledger.txt
+
+AGGREGATE  8 checks  |  PASS 7  FAIL 0  BLOCKED 0  RULED-RED 1
+VERDICT    GREEN — no gating failures.
+           (0 blocked, 1 ruled-red — non-gating by contract; the causes are named above and are not this run's to clear.)
+
+JSON: docs/evidence/p1_safety_net_2026-08-20/1a_runner.json

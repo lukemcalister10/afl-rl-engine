@@ -1,0 +1,80 @@
+name: Host-insensitive gates
+description: >
+  The PLAN_v6 1a per-push floor: every gate that reads ONLY the checkout, run on a bare runner.
+  Committed-artifact hashes, manifest coherence, the contract check, the rulebook lint, and the
+  acceptance runner in host-insensitive profile. One definition, referenced by all four
+  push-triggered workflows — four hand-kept copies of the same steps is the hazard class this
+  estate has already paid for twice (the ci-guards six-var model mirror, the season-state answer
+  typed into two files).
+
+runs:
+  using: composite
+  steps:
+    - name: Pin Python 3.12.3
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12.3'
+
+    - name: Deepen a shallow checkout
+      shell: bash
+      run: |
+        set -uo pipefail
+        # The R14 disposable-fixture check materialises the accepted R14 baseline with
+        # `git show <anchor>:<path>`, so it needs real history. A caller that already checks out
+        # with fetch-depth: 0 makes this a no-op.
+        git rev-parse --is-shallow-repository | grep -q true && git fetch --unshallow --quiet || true
+        echo "history depth: $(git rev-list --count HEAD) commits"
+
+    - name: Install the pinned dependency set
+      shell: bash
+      run: |
+        set -euo pipefail
+        python3 -m pip install --disable-pip-version-check --quiet -r requirements-lock.txt
+
+    - name: Committed-artifact hashes + manifest coherence (all 40 carrier fields)
+      shell: bash
+      env:
+        RL_REPO: ${{ github.workspace }}
+        CLAUDE_PROJECT_DIR: ${{ github.workspace }}
+      run: python3 release_manifest_check.py
+
+    - name: Release contract check
+      shell: bash
+      env:
+        RL_REPO: ${{ github.workspace }}
+        CLAUDE_PROJECT_DIR: ${{ github.workspace }}
+      run: python3 release_contract.py check
+
+    - name: Rulebook lint
+      shell: bash
+      env:
+        RL_REPO: ${{ github.workspace }}
+      # NON-GATING BY ITSELF, DELIBERATELY. The lint's current finding (the twin's two unruled laws
+      # + missing banner) is presented to the owner as the 1b diff and carried as ruled-red RB1.
+      # The ADJUDICATED verdict is the runner's `rulebook_lint` row in the next step, which reads
+      # the ledger and reds if the ruling is ever removed. Printing the raw lint here is for the
+      # reader; the gate is downstream. `|| true` is scoped to this one informational step and to
+      # nothing else in this action.
+      run: python3 tools/rulebook_lint.py || true
+
+    - name: THE VERDICT SPINE — acceptance runner, host-insensitive profile
+      shell: bash
+      env:
+        RL_REPO: ${{ github.workspace }}
+        CLAUDE_PROJECT_DIR: ${{ github.workspace }}
+        PYTHONHASHSEED: '0'
+      run: |
+        set -euo pipefail
+        python3 -m acceptance.selftest
+        python3 -m acceptance.runner --profile host-insensitive \
+                --evidence "${RUNNER_TEMP:-/tmp}/spine_evidence" \
+                --json "${RUNNER_TEMP:-/tmp}/spine_rows.json"
+
+    - name: Upload the spine's evidence
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: spine-evidence-${{ github.job }}-${{ github.run_attempt }}
+        path: ${{ runner.temp }}/spine_evidence
+        if-no-files-found: warn
+        retention-days: 14

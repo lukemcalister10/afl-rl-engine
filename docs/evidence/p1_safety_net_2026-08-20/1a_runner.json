@@ -1,0 +1,70 @@
+{
+  "halted_carriers": {},
+  "root": "/home/user/afl-rl-engine",
+  "rows": [
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_1a/release_manifest.txt",
+      "halted_carriers": [],
+      "name": "release_manifest",
+      "reason": "40 of 40 carrier fields agree with computed truth across 8 identities",
+      "seconds": 0.036,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_1a/config_manifest.txt",
+      "halted_carriers": [],
+      "name": "config_manifest",
+      "reason": "CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)",
+      "seconds": 0.032,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_1a/ruling_config.txt",
+      "halted_carriers": [],
+      "name": "ruling_config",
+      "reason": "RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL_LTI_CLOCK=advance (engine default + env + manifest pin, owner ruling R-i).",
+      "seconds": 0.028,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_1a/release_contract_seal.txt",
+      "halted_carriers": [],
+      "name": "release_contract_seal",
+      "reason": "RELEASE-CONTRACT CHECK: PASS  (contract cde9f70a49b6; identities + config + posture consistent)",
+      "seconds": 0.069,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_1a/store_coherence_six_way.txt",
+      "halted_carriers": [],
+      "name": "store_coherence_six_way",
+      "reason": "six-way store coherence: PASS",
+      "seconds": 0.067,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_1a/doc_lint.txt",
+      "halted_carriers": [],
+      "name": "doc_lint",
+      "reason": "doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)",
+      "seconds": 0.031,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_1a/rulebook_lint.txt",
+      "halted_carriers": [],
+      "name": "rulebook_lint",
+      "reason": "ruling RB1-rulebook-twin-unruled-laws (presented: docs/proposals/process_plan/PLAN_v6.md 1b (the disposal is o) \u2014 2 finding(s), first: FAIL R5 TWIN PARITY: docs/acceptance_v2_0.json law set != RULEBOOK PART 1 (11 vs",
+      "seconds": 0.054,
+      "verdict": "RULED-RED"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_1a/ruled_red_ledger.txt",
+      "halted_carriers": [],
+      "name": "ruled_red_ledger",
+      "reason": "4 step entries probed, all still failing exactly as their ruling records",
+      "seconds": 4.867,
+      "verdict": "PASS"
+    }
+  ]
+}

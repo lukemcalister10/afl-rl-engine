@@ -1,0 +1,12 @@
+$ python3 tools/rulebook_lint.py /home/user/afl-rl-engine
+(cwd /home/user/afl-rl-engine)
+
+rulebook_lint: 2 FAIL  (tree /home/user/afl-rl-engine)
+  note PART 1 laws counted: 11  (ONE-SOURCE, SILENCE-IS-A-RED, L-SMOOTH, G-MONO, L-SYMMETRY, L-SAGE-FADE, L-CAPTAIN, LENS-PROJECTION, CONSERVATION, OWNER-ONLY-WORDS, THE-SEAM-PATTERN)
+  note PROCESS LAWS: no such section in the RULEBOOK yet (the 1b amendment adds it; the rule is armed and simply has nothing to read).
+  note R3 COUNT DECLARED: the RULEBOOK states no law count of its own — nothing to contradict. The rule arms itself the moment one is written.
+  note R4 ONE LAWS FILE: derived view found: docs/acceptance_v2_0.json
+  FAIL R5 TWIN PARITY: docs/acceptance_v2_0.json law set != RULEBOOK PART 1 (11 vs 13). in RULEBOOK only: - | in view only: ['G-Y0', 'G-COHORT']
+  FAIL R6 TWIN BANNER: docs/acceptance_v2_0.json carries no DO-NOT-HAND-EDIT / "the RULEBOOK wins" banner — a derived view without one is a second laws file in disguise
+
+[exit 1]

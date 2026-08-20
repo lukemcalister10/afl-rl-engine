@@ -101,7 +101,7 @@ def _fit(s, n):
     return s if len(s) <= n else s[:n - 1] + '…'
 
 
-def render(rows, ctx, root):
+def render(rows, ctx, root, profile='full'):
     """The one table, plus the carrier ledger and the aggregate line. Returns the text."""
     counts = {v: 0 for v in C.VERDICTS}
     for r in rows:
@@ -115,6 +115,9 @@ def render(rows, ctx, root):
     out.append('THE VERDICT SPINE — acceptance/runner.py')
     out.append('  tree: %s' % root)
     out.append('  evidence: %s' % (ctx.evidence_dir or '(none)'))
+    out.append('  profile : %s%s' % (profile,
+                                     '   (per-push floor: checkout-only checks)'
+                                     if profile == 'host-insensitive' else '   (every registered check)'))
     out.append('=' * (name_w + reason_w + 16))
     out.append('%-*s  %-10s  %s' % (name_w, 'CHECK', 'VERDICT', 'REASON'))
     out.append('%-*s  %-10s  %s' % (name_w, '-' * name_w, '-' * 10, '-' * reason_w))
@@ -164,6 +167,10 @@ def main(argv=None):
     ap.add_argument('--evidence', default=None, help='directory to write per-check raw output into')
     ap.add_argument('--json', dest='json_path', default=None, help='also write the rows as JSON here')
     ap.add_argument('--only', default=None, help='comma-separated check names to run (others BLOCKED-out)')
+    ap.add_argument('--profile', default='full', choices=('full', 'host-insensitive'),
+                    help='"host-insensitive" runs ONLY the checks that read the checkout and nothing '
+                         'else — the per-push CI floor (PLAN_v6 1a). "full" (default) runs everything, '
+                         'including the heavy determinism leg.')
     a = ap.parse_args(argv)
 
     import acceptance.checks                                                  # noqa: F401
@@ -175,9 +182,17 @@ def main(argv=None):
         print('\n'.join(problems))
         return 2
 
+    if a.profile == 'host-insensitive':
+        # A FILTER, NOT A FAKE VERDICT. Checks the profile excludes are not run and not reported —
+        # they are not given a PASS they did not earn, and not given a BLOCKED that would claim a
+        # halted carrier that does not exist. The table's own header says which profile produced it,
+        # so a reader can never mistake a per-push run for a full one.
+        checks = [c for c in checks
+                  if getattr(c.fn, 'PROFILE', 'host-insensitive') == 'host-insensitive']
+
     if a.only:
         want = {s.strip() for s in a.only.split(',') if s.strip()}
-        unknown = want - {c.name for c in checks}
+        unknown = want - {c.name for c in C.registry()}
         if unknown:
             print('unknown check name(s): %s' % ', '.join(sorted(unknown)))
             return 2
@@ -187,7 +202,7 @@ def main(argv=None):
     if ctx.evidence_dir:
         os.makedirs(ctx.evidence_dir, exist_ok=True)
     rows = run(ctx, checks)
-    text = render(rows, ctx, ctx.root)
+    text = render(rows, ctx, ctx.root, profile=a.profile)
     print(text)
 
     if a.json_path:

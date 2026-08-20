@@ -102,3 +102,47 @@ def doc_lint(ctx):
     """doc_lint.py — live/history doc consistency (gap G9: wired nowhere before now)."""
     rc, out, ev = _run(ctx, 'doc_lint', ['python3', 'doc_lint.py'])
     return C.Verdict('doc_lint', C.PASS if rc == 0 else C.FAIL, ev, _last_meaningful(out))
+
+
+def rulebook_lint(ctx):
+    """tools/rulebook_lint.py — the RULEBOOK's own lint (PLAN_v6 1a; a NEW instrument).
+
+    The one place in the spine where a check consults the STEP half of the ruled-red ledger. Its
+    finding today (the twin's two unruled laws + missing banner) is real, measured, and presented
+    to the owner as the 1b diff — so it reports RULED-RED, non-gating, naming the ruling, exactly
+    as a carrier-covered drift does. If the ledger entry were removed this row would FAIL.
+    """
+    from acceptance import known_red
+    rc, out, ev = _run(ctx, 'rulebook_lint', ['python3', 'tools/rulebook_lint.py', ctx.root])
+    if rc == 0:
+        return C.Verdict('rulebook_lint', C.PASS, ev, _last_meaningful(out))
+    entry = known_red.covering_step_entry('acceptance::rulebook_lint')
+    fails = [l.strip() for l in out.splitlines() if l.strip().startswith('FAIL')]
+    if entry:
+        return C.Verdict('rulebook_lint', C.RULED_RED, ev,
+                         'ruling %s (presented: %s) — %d finding(s), first: %s'
+                         % (entry.get('id'), (entry.get('presented') or '')[:60], len(fails),
+                            (fails[0] if fails else '')[:80]))
+    return C.Verdict('rulebook_lint', C.FAIL, ev,
+                     '%d rulebook finding(s), first: %s' % (len(fails),
+                                                            (fails[0] if fails else _last_meaningful(out))[:100]))
+
+
+# ------------------------------------------------------------------------------------ profile tags
+# PROFILE says where a check can honestly run (runner.py --profile).
+#
+#   host-insensitive  reads the CHECKOUT and nothing else. Safe on a bare GitHub runner, which is
+#                     what PLAN_v6 1a arms on every push.
+#   host-sensitive    needs the seeded out-of-repo layout (/home/claude/...). boot_guard_checkout
+#                     is the one here: its checkout legs are host-insensitive, but Guard 5's
+#                     fitted-artifact LOADED-PATH leg resolves /home/claude/cm_<trees>.pkl and
+#                     reports "band LOAD-PATH unresolved" where bootstrap.sh has not run. ci-guards
+#                     runs it AFTER bootstrap.sh, which is the right place for it.
+#   heavy             minutes of engine. Never per-push.
+boot_guard_checkout.PROFILE = 'host-sensitive'
+config_manifest.PROFILE = 'host-insensitive'
+ruling_config.PROFILE = 'host-insensitive'
+release_contract_seal.PROFILE = 'host-insensitive'
+store_coherence_six_way.PROFILE = 'host-insensitive'
+doc_lint.PROFILE = 'host-insensitive'
+rulebook_lint.PROFILE = 'host-insensitive'

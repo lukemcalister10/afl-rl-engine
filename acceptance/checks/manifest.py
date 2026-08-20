@@ -108,3 +108,7 @@ def check(ctx):
 
 #: Declared for runner.validate_registry(). See acceptance/checks/__init__.py.
 check.HALTS = tuple('%s:%s' % (g, i) for g in _GROUPS for i in _IDENTS)
+
+#: Pure file reads and hashes against the checkout — safe on a bare runner (PLAN_v6 1a's per-push
+#: host-insensitive floor). See acceptance/checks/standing.py for what the three profiles mean.
+check.PROFILE = 'host-insensitive'

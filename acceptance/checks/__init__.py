@@ -68,3 +68,22 @@ C.register('store_coherence_six_way', _standing.store_coherence_six_way,
 C.register('doc_lint', _standing.doc_lint,
            reads=(),
            doc='doc_lint.py — live/history doc consistency (gap G9: wired nowhere before now)')
+
+# --------------------------------------------------------------------------------------------------
+# PACKAGE 1 ADDITIONS (PLAN_v6, 2026-08-20). Seven new rows: 1a's two instruments and 1f's five
+# M1a-residue checks. Registration order still equals execution order, and none of these halts a
+# carrier, so they are all safe below the trunk.
+
+from acceptance.checks import ledger as _ledger                              # noqa: E402
+
+# 8. THE RULEBOOK LINT (1a). A NEW instrument — doc_lint would false-red on the RULEBOOK's own
+#    prose, so it was never pointed at it. Consults the ruled-red ledger's STEP half.
+C.register('rulebook_lint', _standing.rulebook_lint,
+           reads=(),
+           doc='tools/rulebook_lint.py — laws numbered, counted, and no second laws file')
+
+# 9. THE LEDGER'S OWN LIVENESS (1a + REVIEW_COLD_OPUS O1). Every step-keyed ruled-red entry is
+#    re-probed; an entry whose step stopped failing FAILS the run instead of ageing quietly.
+C.register('ruled_red_ledger', _ledger.check,
+           reads=(),
+           doc='every step-keyed RULED-RED entry still fails the way its ruling records')

@@ -31,6 +31,19 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # ------------------------------------------------------------------------------------------------
+  # PLAN_v6 1a — THE HOST-INSENSITIVE FLOOR, on every push. Its own job, deliberately: it must give a
+  # verdict whether or not this workflow's heavy job can run at all, on any runner, with no shared
+  # workspace and no board build. Everything host-scoped stays exactly where it was, below.
+  host-insensitive-gates:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/host-insensitive-gates
+
   fv-provenance:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
