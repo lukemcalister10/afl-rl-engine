@@ -1,0 +1,40 @@
+=== THE GATE-MODE PROBE (read-only) — RESEAL_HALT BLOCKERS, RE-MEASURED 2026-08-20T11:25:52Z ===
+
+-- BLOCKER A: could the candidate's dial line enter gate mode? --
+   RESEAL_HALT measured: 28 rejection lines, one per candidate dial, ARM A matrix produced: NO.
+   PROBED NOW, bare gate-mode invocation with a CLEAN env (no dial line at all):
+   config manifest (gate mode) LOADED  hash eed19a75f775  (84 model vars pinned; ambient cleared)
+      RESULT: ACCEPTED. config hash = eed19a75f775
+
+-- BLOCKER B: RL_V0SURF_PKL rejected as an unknown override? --
+   INFRA_ALLOW now contains RL_V0SURF_PKL: True
+   -> ALREADY REPAIRED IN TREE by THE BAKE (register v780); config_manifest.py names it as
+      "blocker (B) of docs/evidence/landing_prep_2026-08-20/RESEAL_HALT.md" in its own comment.
+
+-- BLOCKER C: the staged engine-side board pair internally inconsistent? --
+   sidecar own_md5    c97a4d9f9fa42597f85517c7850d3943   content c97a4d9f9fa42597f85517c7850d3943   AGREE
+   sidecar source_md5 b745002eb0a0fbb1c34fa44f1ef708d6   store   b745002eb0a0fbb1c34fa44f1ef708d6   AGREE
+   -> GUARD 1 and GUARD 2 both satisfied. RESEAL_HALT measured own_md5 88ce647f vs content
+      36d5dfc7 vs source d9a24282 against a store of cb38ef11 — all three now coherent.
+
+VERDICT ON THE PROBE
+  All three RESEAL_HALT blockers are now MECHANICALLY CLEAR. Blocker A's rejection no longer fires
+  because THE BAKE wired the 18 dials default-ON in code (the D8 adoption added a 19th) with the
+  manifest deliberately unmoved, so a BARE gate-mode line needs no dial env at all; blocker B was
+  repaired in tree by that same bake; blocker C self-healed when the R23 advance re-synced the
+  generator board and its sidecar.
+
+  THE FULL BOOK RE-SEAL NEVERTHELESS REMAINS OWNER-PENDING, and this seat did not touch
+  data/book_stable_seal.json.
+
+  The reason is that blocker A's *mechanism* is not blocker A's *question*. RESEAL_HALT's supervisor
+  question 1 was "WHICH PRICE LINE does the candidate's book seal on — the pinned manifest line or the
+  candidate's dial line?". What has changed is that the bake COLLAPSED the fork: with the dials
+  default-ON in code, the manifest line and the candidate line are now the same board, which is the
+  condition every prior re-seal enjoyed. That is a strong argument that the fork has dissolved — but
+  ruling that it has dissolved is an owner call, not this seat's, and the brief is explicit that the
+  full book re-seal stays owner-pending regardless. Recorded for the ruling, not acted on.
+
+  NOT THIS ACT'S SEAL EITHER WAY. The F5 act's seal is
+  session_2026-07-18/legf5/sealed_entrant_structure.json, which neither runs s4_matrix_M1v7.py nor
+  enters gate mode. None of the three blockers touch it, and none of them bit.

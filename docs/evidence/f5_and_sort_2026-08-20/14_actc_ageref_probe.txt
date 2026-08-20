@@ -1,0 +1,94 @@
+=== ACT C — THE BACK-ROWS AGE_REF=2028 RESIDUE PROBE ===
+READ-ONLY CONCLUSION. Nothing on the board was changed for this probe, and nothing is proposed here:
+the repair, if the owner wants one, is its own owner-worded act.
+
+VERDICT: **PERSISTS.**
+
+THE MECHANISM, READ FROM THE CODE BEFORE ANYTHING WAS BUILT
+  engine/rl_after/rl_export.py — the H3 repair (register v792) inserted a per-row clock re-pin
+  (`g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()`) at the top of the PLAYERS loop. The prereg's
+  second half — the same re-pin at the top of the `back_extra` loop, variant (b) — was applied,
+  MEASURED, found to move the canonical board of record, and REVERTED. F1 fired exactly as written.
+  The reverted state is recorded in rl_export.py's own comment block above that loop.
+  So the loop still reads:
+        for _p in g['back_extra']:
+            _p['_v'] = ... = _nb(_ev(_p, 2026))
+  with NO clock re-pin. Entering it the ambient clock is BASE_REF=2026 but AGE_REF=2028, left by the
+  players loop's last forward call ev(_p, 2028), and these rows do not traverse the _b6_core/price6
+  re-pin that would correct it.
+  THE H3 REPAIR NEVER TOUCHED THIS PATH. So there was no mechanism by which the D8 adoption or the R23
+  advance — both built with the H3-repaired exporter — could have washed it out. That is the reasoning;
+  the measurement below is what actually settles it.
+
+THE MEASUREMENT — ONE BUILD, IN A THROWAWAY WORKTREE
+  A git worktree at HEAD (778cbcf) with the reverted (b) re-pin re-applied, built with the same
+  byte-carried driver, PYTHONHASHSEED=0, BLAS pinned to 1, under the build lock. THE REAL REPO WAS
+  NEVER EDITED (git status clean throughout; worktree removed afterwards).
+  fixed-clock board 68be10c79d0ee096455754e084bcf757  vs  live board c97a4d9f9fa42597f85517c7850d3943
+
+RESULT
+  ACTIVE rows that move : 0 of 804   <-- THE LIVE PLAYER BOARD IS UNAFFECTED
+  BACK   rows that move : 25 of 198
+  direction             : all DOWN (True)
+  aggregate             : sum 772 -> 700  (delta -72)
+
+THE MOVERS LIST — the rows the owner would rule on, current vs corrected
+  idx  key                          name                      current  corrected  delta      pct
+  111  harrison-jones-haw           Harrison Jones                 44         38     -6  -13.64%
+  167  sam-frost                    Sam Frost                      57         51     -6  -10.53%
+  186  levi-casboult                Levi Casboult                  73         67     -6   -8.22%
+  154  matthew-taberner             Matthew Taberner               59         54     -5   -8.47%
+  179  jeremy-mcgovern              Jeremy McGovern                53         48     -5   -9.43%
+  106  tom-fullarton                Tom Fullarton                  43         39     -4   -9.30%
+  197  chris-burgess                Chris Burgess                  42         38     -4   -9.52%
+  86   zane-trew                    Zane Trew                      22         19     -3  -13.64%
+  148  james-harmes                 James Harmes                   22         19     -3  -13.64%
+  178  jason-johannisen             Jason Johannisen               28         25     -3  -10.71%
+  185  dylan-grimes                 Dylan Grimes                   29         26     -3  -10.34%
+  191  luke-breust                  Luke Breust                    19         16     -3  -15.79%
+  192  lachlan-keeffe               Lachlan Keeffe                 31         28     -3   -9.68%
+  74   charlie-dean                 Charlie Dean                   41         39     -2   -4.88%
+  78   jacob-bauer                  Jacob Bauer                    29         27     -2   -6.90%
+  112  lachlan-murphy               Lachlan Murphy                 13         11     -2  -15.38%
+  120  jamaine-jones                Jamaine Jones                  13         11     -2  -15.38%
+  129  darcy-macpherson             Darcy MacPherson               14         12     -2  -14.29%
+  149  jake-kelly                   Jake Kelly                     29         27     -2   -6.90%
+  19   tyler-sellers                Tyler Sellers                  22         21     -1   -4.55%
+  68   jaiden-hunter                Jaiden Hunter                  22         21     -1   -4.55%
+  79   jye-menzie                   Jye Menzie                     14         13     -1   -7.14%
+  89   patrick-parnell              Patrick Parnell                18         17     -1   -5.56%
+  136  ethan-hughes                 Ethan Hughes                   23         22     -1   -4.35%
+  187  zach-tuohy                   Zach Tuohy                     12         11     -1   -8.33%
+
+CROSS-CHECK against the three examples the H3 account named (H3_REPAIR_RESULT.md:100)
+  charlie-dean     H3 era 41 -> 39     now  41 -> 39
+  jacob-bauer      H3 era 29 -> 27     now  29 -> 27
+  tyler-sellers    H3 era 21 -> 20     now  22 -> 21
+
+  charlie-dean and jacob-bauer reproduce the H3-era deltas EXACTLY. tyler-sellers still moves
+  by -1 but from a re-valued base (21->20 then, 22->21 now): the ROW moved between eras, the
+  RESIDUE did not.
+
+COUNT: 26 AT H3, 25 NOW — STATED HONESTLY
+  The H3 account reported 26 of 198 and named only three of them; it did not list the 26, and
+  H3_96_rows.csv is the 96 ACTIVE parity rows, a different set. So the one-row difference CANNOT
+  be attributed row-by-row from the record. It is consistent with ordinary era movement — the
+  store has moved three times since (the D8 adoption, the injury-sheet re-cut, the R23 advance)
+  and back/active membership and values move with it. It is NOT evidence of partial repair:
+  no commit has touched the back_extra loop since the (b) revert.
+
+ALSO MOVED: lensConservation, which aggregates over these rows —
+  lens -1  players 755307 -> 755235  (delta -72)
+  lens -2  players 782108 -> 782036  (delta -72)
+
+WHAT THIS DOES AND DOES NOT BLOCK
+  Does not block anything. It is pre-existing, identical in posture to the H3 finding, and every gate
+  is green with the board as it stands. No player price, club total, pick price or numeraire is
+  affected: the 804 active rows are untouched. What is wrong is the priced back-HISTORY display.
+
+  It remains what H3 called it: a valuation act on the board of record, needing an owner ruling of its
+  own, and belonging with the in-ev() structural cure (H3_DIAGNOSIS.md §6 q2/q3) in the modernisation
+  programme. Curing it would move the live board again and move lensConservation with it.
+
+  ITEM STATUS: NOT CLOSABLE. The v794-era finding stands, re-measured and re-confirmed on the current
+  board, with the movers list above as the thing to rule on.
