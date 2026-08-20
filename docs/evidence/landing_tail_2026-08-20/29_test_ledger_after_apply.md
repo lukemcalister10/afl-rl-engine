@@ -68,3 +68,32 @@ edit, not in this order.
   `affl_team` per player, so 112 ownership moves make it stale (`--check` DRIFT, 3219089 -> 3218999
   bytes). Rebuilt by `ui/tools/rebuild_movers_derived.py`; the per-round REPORTS are byte-verbatim
   through both rebuilds — reports digest `156228623e804da88b52047a04f83b96` before and after.
+
+## ADDENDUM — after the contract bake-lane re-stamp (a89a7c6), the final numbers
+
+The whole battery was re-run after `data/release_contract.json`'s four bake-lane pins were walked.
+Nothing moved except the two things the act was for:
+
+| check | before the re-stamp | after |
+|---|---|---|
+| `python3 release_contract.py check` | **FAILED** — 4 rejects (config_sha256, engine_head, rl_model, fv) | **PASS** (contract be37b3b4c584) |
+| `sibling_repin.py verify` | 8 fails | **7 fails** — "release_contract check failed" cleared; the other 7 byte-identical, none repaired |
+| `ownership_store_apply.py verify` | PASS on cc02567f | **PASS on cc02567f** |
+| movers · ownership_sidecar · ownership_single_source | 66/66 · 35/35 · 16/17 | **unchanged** |
+| extract_seam · release_seam · counting_rule · club_totals_parity · adoption_gate | 42/42 · 30/30 · 24/24 · 17/17 · 3/3 | **unchanged** |
+| `ownership_store_apply.test.py` | 27/28 | **27/28** (the era-bound count assertion, named above) |
+
+**The sibling count moved 8 -> 7 and that is reported rather than smoothed:** the order said to expect
+the 8 unchanged, but one of the eight was literally `"release_contract check failed"` — the gate this
+seat was ordered to fix — so it cleared as a direct consequence of the ordered act. The seven that
+remain are the sibling-BUILD artifacts and not one of them was touched.
+
+## FINAL STATE (32_final_state.txt)
+
+```
+board   a05fe951f78482c70520480e184c80ec   byte-identical to THE LANDING's own board at 463e53d
+store   cc02567f80bef39228f25854d121a766   the 112 ownership moves, six-way coherent
+round   22                                 never advanced
+owner's bytes  AFFL_Player_Locations.csv e38398005e5ee825af81765c91da6d1a
+               AFFL_Pick_Locations.xlsx  6ba0464c6423c650455d60b5ab289eea   both untouched
+```

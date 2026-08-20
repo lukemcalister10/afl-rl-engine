@@ -1,0 +1,26 @@
+FINAL STATE — a89a7c6
+==========================================
+a05fe951f78482c70520480e184c80ec  data/rl_build/rl_app_data.json
+cc02567f80bef39228f25854d121a766  engine/rl_after/rl_model_data.json
+e38398005e5ee825af81765c91da6d1a  docs/inputs/AFFL_Player_Locations.csv
+6ba0464c6423c650455d60b5ab289eea  docs/inputs/AFFL_Pick_Locations.xlsx
+a6a4c9d02fc5b0203ce44f9f228740a1  ui/release_pick_curve.json
+78ad9842525ae4f09875b95afc2e2b39  engine/rl_after/pvc_curve_v2.json
+bb87385ec3524455ef1d02368ef81d60  data/release_contract.json
+5bf5babb62ed023106384ab3df4155c3  data/expected_boot.json
+
+board at ec2e533 (this seat's base): a05fe951f78482c70520480e184c80ec
+board at 463e53d (THE LANDING):      a05fe951f78482c70520480e184c80ec
+
+  store file                             cc02567f80bef39228f25854d121a766
+  expected_boot.store                    cc02567f80bef39228f25854d121a766
+  release_contract.identities.store      cc02567f80bef39228f25854d121a766
+  season_state.source_store_md5          cc02567f80bef39228f25854d121a766
+  rl_app_data.json.srcmd5.source_md5     cc02567f80bef39228f25854d121a766
+  board_view_working.stamp.store_md5     cc02567f80bef39228f25854d121a766
+  six-way store coherence: PASS
+
+RELEASE-CONTRACT CHECK
+RELEASE-CONTRACT CHECK: PASS  (contract be37b3b4c584; identities + config + posture consistent)
+
+as_of_round: 22
