@@ -1,0 +1,44 @@
+=== THE 26-vs-25 DISCREPANCY — ATTRIBUTED, ROW BY ROW, FOR THE FIRST TIME ===
+
+The record says this CANNOT be attributed: 'The H3 account reported 26 of 198 and named only
+three of them; it did not list the 26 ... So the one-row difference CANNOT be attributed
+row-by-row from the record.' (14_actc_ageref_probe.txt). That is true OF THE RECORD. It is not
+true of the TREE: both eras are still buildable, so the H3-era mover list can be RE-DERIVED
+rather than recovered from a document that never contained it.
+
+METHOD — read-only, two builds in a THROWAWAY WORKTREE at the H3 base 702e25d. The real repo
+was never edited (the worktree is under the scratchpad and is removed afterwards).
+  H3ERA_CTRL  unmodified 702e25d, canonical      -> a05fe951f78482c70520480e184c80ec
+              the H3 account's board of record   == a05fe951f78482c70520480e184c80ec  REPRODUCED
+  H3ERA_AB    702e25d + variants (a)+(b) applied -> b507446e5a603957f5cba3ba01cc9c2c
+              the H3 account's (a)+(b) board     == b507446e5a603957f5cba3ba01cc9c2c  REPRODUCED
+Both figures come out byte-exact, so the 26-row list below IS the H3 seat's list, not a
+reconstruction of it.
+
+H3-ERA MOVERS: 26 of 198 back rows  (the account said 26 of 198)
+   aggregate 778 -> 706 (delta -72)
+
+TODAY'S MOVERS: 25 of 198 back rows
+
+THE DIFFERENCE, ROW BY ROW
+  in the H3-era 26 but NOT in today's 25 : ['karl-gallagher']
+  in today's 25 but NOT in the H3-era 26 : none
+
+  karl-gallagher (Karl Gallagher) — H3 era: back row, moved 7 -> 6
+     TODAY: in the back section?   YES, v=8
+     TODAY: in the ACTIVE section? NO
+     TODAY: does it move under the repair? NO — it is still a back row, but its value no longer moves
+
+BACK-SECTION MEMBERSHIP, H3 era vs today: 198 rows -> 198 rows
+  left the back section : []
+  joined the back section: []
+
+VERDICT
+  EXACTLY ONE row accounts for the whole 26 -> 25 difference: karl-gallagher (Karl Gallagher).
+  It did NOT leave the back section — it is still a back row today. What changed is its
+  VALUE: on the current store it prices the same with the clock pinned as without, so it
+  is no longer a mover. The store has moved three times since the H3 era (the D8
+  adoption, the injury-sheet re-cut, the R23 advance), and back/active membership and
+  values move with it. The probe's reading — 'consistent with ordinary era movement ...
+  NOT evidence of partial repair' — is CONFIRMED, and now it is attributed rather than
+  inferred.
