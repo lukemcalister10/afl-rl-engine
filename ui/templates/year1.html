@@ -1,0 +1,17 @@
+<!-- ui/templates/year1.html — THE YEAR-1 CLASS. Layout frozen from
+     docs/evidence/assembly_2026-08-19/ASSEMBLY_YEAR1.html. Seats inject data, never layout. -->
+<meta charset="utf-8"><title>{{page_title}}</title>
+<link rel="stylesheet" href="_base.css">
+<h1>THE YEAR-1 CLASS — THE CANDIDATE</h1>
+<div class="sub">{{subtitle}}</div>
+<h2>{{section_heading}}</h2>
+<div class="wrap"><table>
+<thead><tr>
+<th>pick</th><th>player</th><th>pos</th><th>club</th><th>type</th><th>draft yr</th><th>cohort</th>
+<th>v0</th><th>live</th><th>K</th><th>P</th><th>R</th><th>CANDIDATE</th><th>&Delta; R&rarr;cand</th>
+</tr></thead>
+<tbody>
+{{#rows:rows}}<tr><td>{{pick}}</td><td>{{player}}</td><td>{{pos}}</td><td>{{club}}</td><td>{{type}}</td><td>{{draft_yr}}</td><td>{{cohort}}</td><td>{{v0}}</td><td>{{live}}</td><td>{{K}}</td><td>{{P}}</td><td>{{R}}</td><td>{{candidate}}</td><td>{{d_R_cand}}</td></tr>
+{{/rows}}</tbody>
+</table></div>
+<div class="stamp">board <code>{{board_md5}}</code> &middot; store <code>{{store_md5}}</code> &middot; engine <code>{{engine_head}}</code> &middot; config <code>{{config}}</code> &middot; as-of round {{as_of_round}} &middot; built {{generated_at}}</div>

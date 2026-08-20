@@ -1,0 +1,27 @@
+<!-- ui/templates/movers.html — THE MOVERS LIST. Columns frozen from the weekly movers report
+     schema (ui/data/movers.js reports[].players[]) as rendered by ui/app/movers.js.
+     Seats inject data, never layout.
+     NOTE ON THE BOUNDARY: a movers page compares TWO stored points, so it carries BOTH ends'
+     identities. A movers page that names only one board cannot be checked, and the audit found
+     exactly that class of ambiguity behind the 63/66 movers.test.js failures. -->
+<meta charset="utf-8"><title>{{page_title}}</title>
+<link rel="stylesheet" href="_base.css">
+<h1>THE MOVERS — {{from_label}} &rarr; {{to_label}}</h1>
+<div class="sub">{{subtitle}}</div>
+<div class="note">{{boundary_note}}</div>
+<div class="wrap"><table>
+<thead><tr>
+<th>player</th><th>pos</th><th>club</th><th>played</th><th>score</th>
+<th>prev value</th><th>cur value</th><th>&Delta; value</th><th>&Delta; %</th>
+<th>prev rank</th><th>cur rank</th><th>&Delta; rank</th>
+<th>prev pos rank</th><th>cur pos rank</th><th>&Delta; pos rank</th>
+</tr></thead>
+<tbody>
+{{#rows:players}}<tr><td>{{name}}</td><td>{{pos}}</td><td>{{club}}</td><td>{{played}}</td><td>{{score}}</td><td>{{prev_value}}</td><td>{{cur_value}}</td><td>{{value_change}}</td><td>{{value_change_pct}}</td><td>{{prev_rank}}</td><td>{{cur_rank}}</td><td>{{rank_change}}</td><td>{{prev_pos_rank}}</td><td>{{cur_pos_rank}}</td><td>{{pos_rank_change}}</td></tr>
+{{/rows}}</tbody>
+</table></div>
+<div class="stamp">
+from board <code>{{board_md5_before}}</code> store <code>{{store_md5_before}}</code> (round {{previous_round}})<br>
+to board <code>{{board_md5}}</code> store <code>{{store_md5}}</code> (round {{as_of_round}})<br>
+engine <code>{{engine_head}}</code> &middot; config <code>{{config}}</code> &middot; built {{generated_at}}
+</div>

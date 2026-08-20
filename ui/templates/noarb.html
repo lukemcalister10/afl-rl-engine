@@ -1,0 +1,28 @@
+<!-- ui/templates/noarb.html — THE NO-ARB TABLES. Layout frozen from
+     docs/evidence/assembly_2026-08-19/ASSEMBLY_NOARB.html. Seats inject data, never layout.
+     TWO row blocks: the per-band cohort table, and the arm-by-arm comparison. -->
+<meta charset="utf-8"><title>{{page_title}}</title>
+<link rel="stylesheet" href="_base.css">
+<h1>THE NO-ARB TABLES — THE CANDIDATE</h1>
+<div class="sub">{{subtitle}}</div>
+<div class="note">{{standing_note}}</div>
+
+<h2>{{cohort_heading}}</h2>
+<div class="wrap"><table>
+<thead><tr>
+<th>band</th><th>n</th><th>yr0</th><th>yr1</th><th>yr2</th><th>yr3</th><th>yr4</th>
+<th>yr5</th><th>yr6</th><th>yr7</th><th>yr0&rarr;1</th><th>margin</th><th>verdict</th><th>path test</th>
+</tr></thead>
+<tbody>
+{{#rows:bands}}<tr><td>{{band}}</td><td>{{n}}</td><td>{{yr0}}</td><td>{{yr1}}</td><td>{{yr2}}</td><td>{{yr3}}</td><td>{{yr4}}</td><td>{{yr5}}</td><td>{{yr6}}</td><td>{{yr7}}</td><td>{{yr0_1}}</td><td>{{margin}}</td><td>{{verdict}}</td><td>{{path_test}}</td></tr>
+{{/rows}}</tbody>
+</table></div>
+
+<h2>{{arms_heading}}</h2>
+<div class="wrap"><table>
+<thead><tr><th>arm</th><th>n</th><th>candidate</th><th>reference</th><th>&Delta;</th><th>verdict</th></tr></thead>
+<tbody>
+{{#rows:arms}}<tr><td>{{arm}}</td><td>{{n}}</td><td>{{candidate}}</td><td>{{reference}}</td><td>{{delta}}</td><td>{{verdict}}</td></tr>
+{{/rows}}</tbody>
+</table></div>
+<div class="stamp">board <code>{{board_md5}}</code> &middot; store <code>{{store_md5}}</code> &middot; engine <code>{{engine_head}}</code> &middot; config <code>{{config}}</code> &middot; as-of round {{as_of_round}} &middot; built {{generated_at}}</div>

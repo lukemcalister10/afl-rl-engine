@@ -1,0 +1,20 @@
+<!-- ui/templates/tracker.html — THE TRACKER. Layout frozen from
+     docs/evidence/assembly_2026-08-19/TRACKER_ASSEMBLY.html (columns from TRACKER_ASSEMBLY.csv).
+     Seats inject data, never layout. See slots.py. -->
+<meta charset="utf-8"><title>{{page_title}}</title>
+<link rel="stylesheet" href="_base.css">
+<h1>THE TRACKER — live &rarr; K &rarr; P &rarr; R &rarr; THE CANDIDATE</h1>
+<div class="sub">{{subtitle}}</div>
+<div class="note">{{standing_note}}</div>
+<div class="wrap"><table>
+<thead><tr>
+<th>player</th><th>pos</th><th>club</th><th>cat</th><th>age</th><th>band</th><th>pick</th>
+<th>live</th><th>K</th><th>&Delta; live&rarr;K</th><th>P</th><th>&Delta; K&rarr;P</th>
+<th>R</th><th>&Delta; P&rarr;R</th><th>CANDIDATE</th><th>&Delta; R&rarr;cand</th>
+<th>&Delta; live&rarr;cand</th><th>&Delta; K&rarr;cand</th>
+</tr></thead>
+<tbody>
+{{#rows:rows}}<tr><td>{{player}}</td><td>{{pos}}</td><td>{{club}}</td><td>{{cat}}</td><td>{{age}}</td><td>{{band}}</td><td>{{pick}}</td><td>{{live}}</td><td>{{K}}</td><td>{{d_live_K}}</td><td>{{P}}</td><td>{{d_K_P}}</td><td>{{R}}</td><td>{{d_P_R}}</td><td>{{candidate}}</td><td>{{d_R_cand}}</td><td>{{d_live_cand}}</td><td>{{d_K_cand}}</td></tr>
+{{/rows}}</tbody>
+</table></div>
+<div class="stamp">board <code>{{board_md5}}</code> &middot; store <code>{{store_md5}}</code> &middot; engine <code>{{engine_head}}</code> &middot; config <code>{{config}}</code> &middot; as-of round {{as_of_round}} &middot; built {{generated_at}}</div>

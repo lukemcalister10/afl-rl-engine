@@ -1,0 +1,19 @@
+<!-- ui/templates/players.html — THE PLAYER LIST. Layout frozen from
+     docs/evidence/assembly_2026-08-19/ASSEMBLY_PLAYERS.html. Seats inject data, never layout. -->
+<meta charset="utf-8"><title>{{page_title}}</title>
+<link rel="stylesheet" href="_base.css">
+<h1>THE PLAYER LIST — THE CANDIDATE</h1>
+<div class="sub">{{subtitle}}</div>
+<h2>{{section_heading}}</h2>
+<div class="wrap"><table>
+<thead><tr>
+<th>player</th><th>pos</th><th>club</th><th>cat</th><th>age</th><th>pick</th>
+<th>live</th><th>K</th><th>P</th><th>R</th><th>CANDIDATE</th>
+<th>&Delta; R&rarr;cand</th><th>&Delta; live&rarr;cand</th>
+<th>production leg</th><th>pedigree leg</th><th>charge</th>
+</tr></thead>
+<tbody>
+{{#rows:rows}}<tr><td>{{player}}</td><td>{{pos}}</td><td>{{club}}</td><td>{{cat}}</td><td>{{age}}</td><td>{{pick}}</td><td>{{live}}</td><td>{{K}}</td><td>{{P}}</td><td>{{R}}</td><td>{{candidate}}</td><td>{{d_R_cand}}</td><td>{{d_live_cand}}</td><td>{{production_leg}}</td><td>{{pedigree_leg}}</td><td>{{charge}}</td></tr>
+{{/rows}}</tbody>
+</table></div>
+<div class="stamp">board <code>{{board_md5}}</code> &middot; store <code>{{store_md5}}</code> &middot; engine <code>{{engine_head}}</code> &middot; config <code>{{config}}</code> &middot; as-of round {{as_of_round}} &middot; built {{generated_at}}</div>
