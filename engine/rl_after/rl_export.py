@@ -188,6 +188,26 @@ _nb = lambda x: int(round(x / _F))
 _raw2026 = {}
 with _ctx.redirect_stdout(_io.StringIO()):
     for _p in players:
+        # ==== H3 REPAIR (register v792; PREREG_H3_REPAIR.md) — RE-PIN THE CLOCK PER ROW ==================
+        # THE DEFECT: the board's value for this player is the FIRST ev() of this iteration (the next
+        # statement), but the PREVIOUS iteration's LAST call was ev(_p, 2028). _merged_recover.ev() re-pins
+        # the engine clock only once it reaches _b6_core / price6 (_merged_recover.py:371, 389), so
+        # EVERYTHING ev() evaluates before that point reads the AMBIENT MA.BASE_REF the previous row left
+        # standing. Under the canonical posture :197 sets _LENS_FORM=2026, so the residue IS the present and
+        # the defect is masked (F1 passed 804/804 — and still must, see the falsifier). Under the
+        # balanced/strict sibling posture (RL_LEGE=0) _LENS_FORM is never set, ev(_p,2028) leaves
+        # BASE_REF=2028, and rows 1..803 were priced on a 2028 form/tenure/peak basis — 96 of 804 rounded
+        # differently, every one of them board < engine, which is exactly what the F1 tripwire below caught.
+        # players[0] escaped only because :113 pins the clock immediately before this loop; a board on which
+        # a player's price depends on his POSITION IN THE ITERATION is a board on an accident, not a basis.
+        # THE FIX: pin the clock to the present at the top of EVERY iteration, so each row's value-forming
+        # ev() starts from the same declared basis as row 0 did. Measured: the corrected balanced vector
+        # equals the canonical board of record a05fe951 on 804/804 rows (Σ 664,949), the canonical board is
+        # byte-identical, and the sibling parity gate goes 96 -> 0.
+        # NOT DONE HERE (deliberately, per the prereg): making ev(p,Y) pin its own clock before ANY
+        # evaluation — the durable, strictly larger cure for the same class. That is a change to the single
+        # valuation source and belongs to the modernisation programme with its own prereg, not to this act.
+        g['BASE_REF']=g['AGE_REF']=2026; g['_pe_clear']()
         _r = _ev(_p, 2026); _raw2026[_p['key']] = _r; _p['_v'] = _nb(_r)
         _p['_vM2'], _p['_vM1'] = _nb(_ev(_p, 2024)), _nb(_ev(_p, 2025))   # backward = REAL past re-values (byte-exact; no form-anchor)
         # LEG E projection law (R103.3): the FORWARD lens sets the form anchor to true-now (2026) so the +1/+2
@@ -216,6 +236,18 @@ with _ctx.redirect_stdout(_io.StringIO()):
                 if _p['_vP1'] < _fl: _p['_vP1'] = _fl
                 if _p['_vP2'] < _fl: _p['_vP2'] = _fl
         _p['_cvx'] = 1.0
+    # ==== H3 — WHAT IS *NOT* REPAIRED HERE, AND WHY. MEASURED, NOT ASSUMED. =========================
+    # The back-history rows below are board-visible (`back=[player_rec(p) ...]`, :359) and they carry a
+    # residue of their own: entering this loop the ambient clock is BASE_REF=2026 / **AGE_REF=2028** (the
+    # players loop's last forward call), and these rows evidently do not traverse the _b6_core/price6
+    # re-pin that would correct it. Inserting the same per-row re-pin here was PREREGGED, APPLIED, and
+    # MEASURED — and it MOVED 26 of the 198 `back` rows (e.g. charlie-dean 41 -> 39) and `lensConservation`
+    # with them, i.e. it moves THE CANONICAL BOARD OF RECORD. Falsifier F1 fired, exactly as it was written
+    # to. The active 804 were byte-identical throughout; the whole delta was here.
+    # So it is REVERTED and REPORTED rather than smuggled in: H3's ruling is about the BASE_REF residue on
+    # the ACTIVE value loop, the diagnosis measured AGE_REF residue inert *for those rows*, and nobody has
+    # ruled on the back-history basis. Curing it is a valuation act on the board of record and needs its own
+    # owner word. Logged for the modernisation programme with the in-ev() structural cure it belongs with.
     for _p in g['back_extra']:
         _p['_v'] = _p['_vM2'] = _p['_vM1'] = _p['_vP1'] = _p['_vP2'] = _nb(_ev(_p, 2026))
         _p['_cvx'] = 1.0
