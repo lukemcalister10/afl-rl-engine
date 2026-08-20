@@ -1,0 +1,192 @@
+
+  #283 OWNERSHIP STORE APPLY — out-of-round transaction (seam Ruling 1, 2026-07-30)
+  ------------------------------------------------------------------------------
+  [P1] interpreter cp312 — pinned
+  [P3] six-way incoming coherence — all read cb38ef11
+  [P8] serializer identity — dumps(loads(store)) == store bytes (1978110 bytes)
+  [--] store rows 2650 · distinct keys 2650 · rows carrying affl_team 804
+  [--] board players 804 · ambiguous board name-keys 0 · board md5 a05fe951
+  [P4] CSV utf-8 · 805 lines = 1 header + 804 players (CRLF preserved, never 'fixed')
+  [P5] join by key — 0 unmatched, 0 board keys missing from the store, 804 resolved
+  [P6] club spellings — all 804 authored values are known spellings
+  [P7] plan — 112 of 804 authored rows move (of 2650 store rows; 804 carry affl_team)
+         aaron-naughton           Aaron Naughton           Sydney Swans               -> Brisbane Lions
+         alix-tauru               Alix Tauru               Western Bulldogs           -> Hawthorn Hawks
+         andrew-brayshaw          Andrew Brayshaw          St Kilda Saints            -> Geelong Cats
+         angus-anderson           Angus Anderson           North Melbourne Kangaroos  -> St Kilda Saints
+         bailey-banfield          Bailey Banfield          St Kilda Saints            -> Free agents
+         bailey-dale              Bailey Dale              Geelong Cats               -> Western Bulldogs
+         ben-keays                Ben Keays                Adelaide Crows             -> Western Bulldogs
+         ben-king                 Ben King                 Sydney Swans               -> Brisbane Lions
+         bobby-hill               Bobby Hill               West Coast Eagles          -> Free agents
+         bradley-hill             Bradley Hill             Port Adelaide Power        -> West Coast Eagles
+         brayden-cook             Brayden Cook             North Melbourne Kangaroos  -> Port Adelaide Power
+         brayden-maynard          Brayden Maynard          North Melbourne Kangaroos  -> Port Adelaide Power
+         brodie-grundy            Brodie Grundy            St Kilda Saints            -> North Melbourne Kangaroos
+         caleb-serong             Caleb Serong             Western Bulldogs           -> Geelong Cats
+         caleb-windsor            Caleb Windsor            Western Bulldogs           -> Brisbane Lions
+         callum-mills             Callum Mills             Collingwood Magpies        -> Sydney Swans
+         cameron-mackenzie        Cameron Mackenzie        Western Bulldogs           -> Port Adelaide Power
+         charlie-curnow           Charlie Curnow           Adelaide Crows             -> Geelong Cats
+         charlie-west             Charlie West             Western Bulldogs           -> West Coast Eagles
+         christian-moraes         Christian Moraes         Richmond Tigers            -> St Kilda Saints
+         christian-petracca       Christian Petracca       West Coast Eagles          -> St Kilda Saints
+         clayton-oliver           Clayton Oliver           North Melbourne Kangaroos  -> Richmond Tigers
+         connor-rozee             Connor Rozee             Adelaide Crows             -> Western Bulldogs
+         cooper-harvey            Cooper Harvey            Richmond Tigers            -> Brisbane Lions
+         dan-houston              Dan Houston              St Kilda Saints            -> North Melbourne Kangaroos
+         daniel-mcstay            Daniel McStay            Brisbane Lions             -> Sydney Swans
+         dayne-zorko              Dayne Zorko              Port Adelaide Power        -> North Melbourne Kangaroos
+         dion-prestia             Dion Prestia             Sydney Swans               -> Free agents
+         dougal-howard            Dougal Howard            Port Adelaide Power        -> Free agents
+         ed-langdon               Ed Langdon               West Coast Eagles          -> Port Adelaide Power
+         ed-richards              Ed Richards              St Kilda Saints            -> West Coast Eagles
+         ethan-read               Ethan Read               St Kilda Saints            -> Carlton Blues
+         finnegan-davis           Finnegan Davis           Carlton Blues              -> Free agents
+         gryan-miers              Gryan Miers              Brisbane Lions             -> Western Bulldogs
+         harry-rowston            Harry Rowston            Carlton Blues              -> Brisbane Lions
+         harvey-thomas            Harvey Thomas            Brisbane Lions             -> Carlton Blues
+         isaac-cumming            Isaac Cumming            North Melbourne Kangaroos  -> Port Adelaide Power
+         isaac-kako               Isaac Kako               Western Bulldogs           -> Hawthorn Hawks
+         jack-ginnivan            Jack Ginnivan            North Melbourne Kangaroos  -> St Kilda Saints
+         jack-gunston             Jack Gunston             St Kilda Saints            -> West Coast Eagles
+         jack-ross                Jack Ross                Collingwood Magpies        -> Sydney Swans
+         jacob-hopper             Jacob Hopper             Sydney Swans               -> Carlton Blues
+         jake-lloyd               Jake Lloyd               Geelong Cats               -> North Melbourne Kangaroos
+         jake-waterman            Jake Waterman            West Coast Eagles          -> Western Bulldogs
+         jamarra-ugle-hagan       Jamarra Ugle-Hagan       Brisbane Lions             -> Carlton Blues
+         james-rowbottom          James Rowbottom          Sydney Swans               -> Collingwood Magpies
+         james-sicily             James Sicily             Geelong Cats               -> West Coast Eagles
+         jeremy-cameron           Jeremy Cameron           North Melbourne Kangaroos  -> Richmond Tigers
+         jeremy-howe              Jeremy Howe              Port Adelaide Power        -> West Coast Eagles
+         jhye-clark               Jhye Clark               Geelong Cats               -> Port Adelaide Power
+         jobe-shanahan            Jobe Shanahan            Western Bulldogs           -> Adelaide Crows
+         joel-jeffrey             Joel Jeffrey             North Melbourne Kangaroos  -> St Kilda Saints
+         joseph-fonti             Joseph Fonti             St Kilda Saints            -> Richmond Tigers
+         josh-daicos              Josh Daicos              Brisbane Lions             -> Sydney Swans
+         josh-dunkley             Josh Dunkley             Geelong Cats               -> West Coast Eagles
+         josh-lindsay             Josh Lindsay             St Kilda Saints            -> Richmond Tigers
+         josh-worrell             Josh Worrell             West Coast Eagles          -> St Kilda Saints
+         justin-mcinerney         Justin McInerney         Carlton Blues              -> Brisbane Lions
+         kye-annand               Kye Annand               Carlton Blues              -> Sydney Swans
+         kysaiah-pickett          Kysaiah Pickett          Richmond Tigers            -> Brisbane Lions
+         lachlan-bramble          Lachlan Bramble          Collingwood Magpies        -> Sydney Swans
+         lewis-young              Lewis Young              Carlton Blues              -> Port Adelaide Power
+         lloyd-meek               Lloyd Meek               Carlton Blues              -> West Coast Eagles
+         luke-ryan                Luke Ryan                West Coast Eagles          -> Port Adelaide Power
+         marcus-bontempelli       Marcus Bontempelli       West Coast Eagles          -> St Kilda Saints
+         matt-duffy               Matt Duffy               North Melbourne Kangaroos  -> Free agents
+         matt-johnson-1           Matt Johnson             Carlton Blues              -> Adelaide Crows
+         matthew-jefferson        Matthew Jefferson        Carlton Blues              -> Adelaide Crows
+         maurice-rioli-1          Maurice Rioli            Sydney Swans               -> Free agents
+         michael-sellwood         Michael Sellwood         Brisbane Lions             -> Carlton Blues
+         miles-bergman            Miles Bergman            Brisbane Lions             -> Richmond Tigers
+         mitchell-edwards         Mitchell Edwards         Western Bulldogs           -> Port Adelaide Power
+         mitchell-hinge           Mitchell Hinge           Collingwood Magpies        -> Sydney Swans
+         mitchito-owens           Mitchito Owens           Western Bulldogs           -> St Kilda Saints
+         nathan-broad             Nathan Broad             Richmond Tigers            -> Free agents
+         nic-newman               Nic Newman               West Coast Eagles          -> St Kilda Saints
+         noah-balta               Noah Balta               Adelaide Crows             -> Carlton Blues
+         oisin-mullin             Oisin Mullin             Geelong Cats               -> Adelaide Crows
+         oliver-hollands          Oliver Hollands          Sydney Swans               -> Western Bulldogs
+         oliver-wines             Oliver Wines             St Kilda Saints            -> West Coast Eagles
+         patrick-cripps           Patrick Cripps           Port Adelaide Power        -> Geelong Cats
+         patrick-retschko         Patrick Retschko         Carlton Blues              -> Collingwood Magpies
+         riak-andrew              Riak Andrew              Port Adelaide Power        -> Carlton Blues
+         riley-onley              Riley Onley              Geelong Cats               -> Western Bulldogs
+         rory-laird               Rory Laird               North Melbourne Kangaroos  -> Port Adelaide Power
+         rowan-marshall           Rowan Marshall           Port Adelaide Power        -> Western Bulldogs
+         sam-de-koning            Sam De Koning            Geelong Cats               -> Port Adelaide Power
+         sam-durham               Sam Durham               West Coast Eagles          -> St Kilda Saints
+         sam-taylor               Sam Taylor               North Melbourne Kangaroos  -> Port Adelaide Power
+         sam-walsh                Sam Walsh                Brisbane Lions             -> St Kilda Saints
+         sandy-brock              Sandy Brock              Sydney Swans               -> Free agents
+         steele-sidebottom        Steele Sidebottom        West Coast Eagles          -> Free agents
+         taylor-walker            Taylor Walker            Geelong Cats               -> Free agents
+         thomas-sims              Thomas Sims              Hawthorn Hawks             -> Carlton Blues
+         thomas-stewart           Thomas Stewart           Port Adelaide Power        -> North Melbourne Kangaroos
+         tim-kelly                Tim Kelly                St Kilda Saints            -> West Coast Eagles
+         timothy-english          Timothy English          Adelaide Crows             -> Western Bulldogs
+         toby-bedford             Toby Bedford             Brisbane Lions             -> Western Bulldogs
+         tobyn-murray             Tobyn Murray             West Coast Eagles          -> St Kilda Saints
+         tom-mcdonald             Tom McDonald             Geelong Cats               -> Free agents
+         touk-miller              Touk Miller              Geelong Cats               -> North Melbourne Kangaroos
+         trent-rivers             Trent Rivers             Western Bulldogs           -> Brisbane Lions
+         tyson-stengle            Tyson Stengle            St Kilda Saints            -> Free agents
+         wayne-milera             Wayne Milera             Sydney Swans               -> Collingwood Magpies
+         wil-dawson               Wil Dawson               Collingwood Magpies        -> Carlton Blues
+         will-lorenz              Will Lorenz              Richmond Tigers            -> St Kilda Saints
+         will-setterfield         Will Setterfield         Brisbane Lions             -> Sydney Swans
+         willem-drew              Willem Drew              Adelaide Crows             -> Sydney Swans
+         xavier-duursma           Xavier Duursma           North Melbourne Kangaroos  -> Port Adelaide Power
+         xavier-lindsay           Xavier Lindsay           Western Bulldogs           -> Hawthorn Hawks
+         zac-fisher               Zac Fisher               Port Adelaide Power        -> Free agents
+         zac-taylor               Zac Taylor               Western Bulldogs           -> Adelaide Crows
+  [--] store md5 cb38ef11 -> cc02567f
+
+  [T0] overlay staged (the live tree is untouched until the atomic commit)
+  [T1] store written — cb38ef11 -> cc02567f
+  [T2] store diff proof — affl_team only, on exactly 112 planned keys; byte-attribution OK
+  [T3] pins moved — expected_boot.store · release_contract.identities.store + re-seal · season_state.source_store_md5 · board srcmd5.source_md5
+       season derived values proven unchanged: calendar_progress=0.92 exposure_pace=0.818
+  [T4] board unmoved — a05fe951 byte-identical (no engine build)
+  [T5] release_transition_register entry appended (ruling id OWNERSHIP_SINGLE_SOURCE_2026-07-30)
+  [T6] movers_transition.js mirror written byte-identically
+  [T7] board_view_{working,public}.js regenerated
+  [T8] ownership.js (generated mirror) + club_valuation.js regenerated from the store
+  [T9] staged validation PASS — 6-way coherence on cc02567f · contract re-sealed · lineage mirror byte-identical · 17 buckets · public bundle clean
+  [T10] committed atomically — 11 targets
+
+  APPLIED — 112 ownership moves landed; 11 targets committed atomically.
+/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt_apply/ui/tools/ingest_inputs.py:123: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  return datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+
+  VALIDATION VERDICTS
+  ------------------------------------------------------------------------
+  [PASS] release manifest has current board/store/round/version  (missing: none)
+  [PASS] board id ring-fence == current release manifest  (bundle board a05fe951 vs manifest a05fe951)
+  [PASS] board asOfRound == current release manifest  (bundle 22 vs manifest 22)
+  [PASS] board source store == current release manifest  (bundle cc02567f vs manifest cc02567f)
+  [PASS] release pick-curve contract has all required fields  (missing: none)
+  [PASS] contract adopted_pathway is a known pathway  (RL_PVC2 (known: ['RL_PVC2', 'RL_PVCADOPT']))
+  [PASS] release manifest has current board/store/round/version  (missing: none)
+  [PASS] curve contract release_version == current release version  (contract v2.11-final-rc1-PROVISIONAL vs manifest v2.11-final-rc1-PROVISIONAL)
+  [PASS] curve contract carries a full immutable source-store identity  (curve source store f1e8c9fe)
+  [PASS] contract numeraire pin1 == 3000  (pin1 = 3000)
+  [PASS] contract pick_curve_path matches the adopted pathway  (RL_PVC2 expects pvc_curve_v2.json, contract points at pvc_curve_v2.json)
+  [PASS] release-active curve file md5 == contract  (file 78ad9842 vs contract 78ad9842)
+  [PASS] release-active curve curve_md5 == contract  (curve 9729f0c5 vs contract 9729f0c5)
+  [PASS] engine curve self-declares gate == adopted pathway  (curve gate 'RL_PVC2' vs pathway 'RL_PVC2')
+  [PASS] engine curve store binding == release store  (curve f1e8c9fe vs release f1e8c9fe)
+  [PASS] board PVC == release-active engine/rl_after/pvc_curve_v2.json (RL_PVC2, over 64 shared picks)
+  [PASS] PVC numeraire anchor pick1 == 3000  (pick1 = 3000)
+  [PASS] PVC monotone non-increasing (picks 1-64)
+  [PASS] board name-join keys unambiguous (normalised)  (dups: [])
+  [PASS] AFFL club count  (16 clubs (+ Free Agents pool))
+  [PASS] player names unambiguous in Player_Locations.csv (normalised)  (dups: none)
+  [PASS] player names unambiguous in Future_Positioning.csv (normalised)  (dups: none)
+  [PASS] every Player_Locations name -> a unique stable_player_id (positioning join)  (unmatched: none)
+  [PASS] every Player_Locations name -> a unique board player (name join)  (unmatched: none)
+  [PASS] the two Max Kings are distinct by name (assert)  (Max King=afl-player-v1-f2d8efef518ca2749612 · Maxwell King=afl-player-v1-5f43c9c902f7780ce789)
+  [PASS] case-only name variants reconciled by normalised key  (5 reconciled: Bailey MacDonald, Harry Demattia, Hayden Mclean, Jacob van Rooyen, Jordan de Goey)
+  [PASS] authored CSV ownership agrees with the stamped board affl_team  (0 mismatch(es))
+  [PASS] every AFFL Team in Player_Locations.csv is a known club spelling  (unknown: none)
+  [PASS] ownership sidecar rows built from the authored sheet  (804 player(s) authored)
+  [PASS] ladder 2027 multiplier reconciles to R104.5 balanced (1-0.10=0.90)  (sheet cell = 0.9 · governing = 0.9)
+  [PASS] pick ledger row count == 160  (160 rows)
+  [PASS] all bands within 1-80 and low <= high  (offenders: none)
+  [PASS] both drafts <= one year ahead (2026/2027)  (years=[2026, 2027])
+  [PASS] every pick Owner + Origin joins to exactly one AFFL club (+Free Agents)  (16 distinct owners+origins)
+  [PASS] pick-count conservation (Sum per-club == ledger == 160)  (sum=160 ledger=160)
+  [PASS] all 160 picks priced off the canonical curve  (priced=160)
+  [PASS] authored CSV ownership == the store-derived board (single source proven)  (0 divergence(s))
+  [PASS] ownership mirror written from the store  (804 mirrored of 804 board players · 0 overriding (structurally 0 since #283))
+
+  CLEAN INGEST — 160 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: ui/data/club_valuation.js
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: ui/data/ownership.js
+  STORE APPLY    — the owner's authored ownership was couriered into the store and every identity pin moved with it (see the transaction log above).
+
+  TOP-3 CLUBS BY OVERALL VALUE:
+    West Coast Eagles  overall 56,789  (players 56,102 + picks 687)
+    Geelong Cats       overall 54,166  (players 53,323 + picks 843)
+    Fremantle Dockers  overall 53,862  (players 45,426 + picks 8,436)

@@ -73,6 +73,21 @@ import tempfile
 HERE = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 
+# THE MIRROR'S OWN NORMALISER, imported rather than copied (2026-08-20; preregistered at
+# docs/evidence/landing_tail_2026-08-20/PREREG_MIRROR_CASING_FIX.md). The staged validation below
+# compares the generated mirrors against the plan. The STORE holds the owner's bytes verbatim and the
+# MIRRORS hold the display-normalised form — this file's own seam-binding law of 2026-07-30 says so
+# ("Canonicalise for the MIRROR (extract_board_view.norm_club / ingest_inputs.normt), NEVER for the
+# store") — so a mirror comparison that reads the raw value is comparing two different lanes. It was
+# latent from #283 until the owner's 2026-08-20 sheet moved 14 players TO the lowercase spelling
+# 'Free agents': the mirror correctly wrote 'Free Agents', the comparison demanded 'Free agents', and
+# the SAME BLOCK's next assertion ("free-agent spelling forked in the mirror") demanded the opposite —
+# two assertions no mirror could satisfy at once. Imported, not re-implemented, so there is exactly
+# one definition of the normalisation and this can never drift from the writer that applies it.
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
+from extract_board_view import norm_club as _mirror_club    # noqa: E402
+
 STORE_REL = os.path.join("engine", "rl_after", "rl_model_data.json")
 BOARD_REL = os.path.join("data", "rl_build", "rl_app_data.json")
 SIDECAR_REL = BOARD_REL + ".srcmd5"
@@ -688,10 +703,15 @@ def _validate_overlay(ws, plan, out):
     bvw = _bundle_obj(w(BVW_REL))
     bvp = _bundle_obj(w(BVP_REL))
     by_key = {p["key"]: p for p in bvw["players"]}
+    # Compared THROUGH the mirror's own normaliser, on BOTH sides. The store keeps the owner's raw
+    # bytes (asserted separately and exactly by the T2 diff proof, which is untouched); the mirrors
+    # carry the display form. `_mirror_club` collapses exactly one documented casing pair and nothing
+    # else, so a mirror that genuinely failed to take a move still fails here — this is consistency,
+    # not leniency, and the "free-agent spelling forked in the mirror" assertion below is unchanged.
     for key, name, _cur, new in plan.rows:
-        if by_key.get(key, {}).get("affl_team") != new:
+        if _mirror_club(by_key.get(key, {}).get("affl_team")) != _mirror_club(new):
             fails.append("board_view_working did not take the move for %s" % key)
-        if own["byKey"].get(key) != new:
+        if _mirror_club(own["byKey"].get(key)) != _mirror_club(new):
             fails.append("ownership mirror did not take the move for %s" % key)
     clubs = {p.get("affl_team") for p in bvw["players"] if p.get("affl_team")}
     if len(clubs) != 17:

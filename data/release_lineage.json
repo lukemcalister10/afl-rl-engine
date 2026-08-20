@@ -425,6 +425,37 @@
     "register"
    ],
    "_measured_note": "moved/unchanged are MEASURED, not asserted. Every `source` identity was re-hashed from a checkout of 463e53d^ \u2014 board and store by md5 of data/rl_build/rl_app_data.json and engine/rl_after/rl_model_data.json, engine_head and rl_model by md5 of engine/rl_after/_merged_recover.py and engine/rl_after/rl_model.py, config by config_manifest.manifest_hash, fv by fv_provenance.fv_identity over engine/forward_valuation, register by md5 of LTI_REGISTER.md, v0surf by md5 of data/v0surf.pkl \u2014 and each agrees with that commit's own data/expected_boot.json. Every `destination` identity was re-hashed the same way from the live tree and agrees with the landed data/expected_boot.json. balanced_board_md5 is listed UNCHANGED because it genuinely did not move: the sibling layer was not rebuilt at the landing, so 234c3414 is still the balanced sibling of the PRE-landing store+engine and is stale by design-gap, not by agreement. It is named here rather than silently re-stamped. Board totals were measured on the two board files directly: 804 rows / 752,429 -> 804 rows / 664,949."
+  },
+  {
+   "_doc": "OUT-OF-ROUND OWNERSHIP STORE WRITE (#283). The owner's AFFL ownership CSV is couriered into the store's affl_team; the #232 sidecar becomes a generated mirror rebuilt FROM the store. Appended, not substituted: every prior entry is preserved verbatim. The BOARD DOES NOT MOVE \u2014 affl_team is not in the board of record (128 lensPicks keys, all null; the 804 active rows do not carry it), so this is an identity-only transition with no engine build. Per this register's own law an APPENDED entry is the shape prescribed for an out-of-round move.",
+   "kind": "movers_release_transition",
+   "schema_version": 2,
+   "owner_approved": true,
+   "owner_ruling_id": [
+    "OWNERSHIP_SINGLE_SOURCE_2026-07-30"
+   ],
+   "owner_ruling": "2026-07-30, owner ruling on #283: the store becomes the single source of ownership truth; the ingest writes the CSV's ownership into the store's affl_team (owner authorship by courier), and the #232 sidecar survives as a generated mirror rebuilt FROM the store, never independently authoritative.",
+   "authority": "Luke McAlister (owner) \u2014 sole merge authority; relayed by the seam on #283",
+   "source": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "store": "cb38ef1171dcf20aae66ebf12682be0d",
+    "as_of_round": 22
+   },
+   "destination": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "store": "cc02567f80bef39228f25854d121a766",
+    "as_of_round": 22
+   },
+   "invariants": {
+    "store_moved_by_transition": {
+     "from": "cb38ef1171dcf20aae66ebf12682be0d",
+     "to": "cc02567f80bef39228f25854d121a766"
+    },
+    "board_unmoved_by_transition": "a05fe951f78482c70520480e184c80ec",
+    "declares_no_landing_board": "this transition moves the STORE only; it is a pointer note to the boundary reader and must never supersede a board-boundary record (round_movers.model_changes)",
+    "fields_written": "affl_team only",
+    "engine_build": "none \u2014 affl_team is not read by ev() and is absent from the board of record"
+   }
   }
  ]
 }

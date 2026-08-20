@@ -1,0 +1,90 @@
+SPOT-CHECKS ON THE WRITTEN ARTIFACTS (after the apply, exit 0)
+==============================================================================
+store md5 target cc02567f · board a05fe951 (unmoved) · round 22
+
+A. FIVE OF THE 112 PLAYER MOVES, read out of the WRITTEN store and both mirrors
+------------------------------------------------------------------------------
+  Marcus Bontempelli     key=marcus-bontempelli    
+     owner sheet:   'West Coast Eagles' -> 'St Kilda Saints'
+     STORE  affl_team = 'St Kilda Saints'   RAW BYTES MATCH
+     ownership.js     = 'St Kilda Saints'
+     board_view_wkg   = 'St Kilda Saints'
+  Sam Walsh              key=sam-walsh             
+     owner sheet:   'Brisbane Lions' -> 'St Kilda Saints'
+     STORE  affl_team = 'St Kilda Saints'   RAW BYTES MATCH
+     ownership.js     = 'St Kilda Saints'
+     board_view_wkg   = 'St Kilda Saints'
+  Taylor Walker          key=taylor-walker         
+     owner sheet:   'Geelong Cats' -> 'Free agents'
+     STORE  affl_team = 'Free agents'   RAW BYTES MATCH
+     ownership.js     = 'Free Agents'
+     board_view_wkg   = 'Free Agents'
+  Aaron Naughton         key=aaron-naughton        
+     owner sheet:   'Sydney Swans' -> 'Brisbane Lions'
+     STORE  affl_team = 'Brisbane Lions'   RAW BYTES MATCH
+     ownership.js     = 'Brisbane Lions'
+     board_view_wkg   = 'Brisbane Lions'
+  Maurice Rioli          key=maurice-rioli-1       
+     owner sheet:   'Sydney Swans' -> 'Free agents'
+     STORE  affl_team = 'Free agents'   RAW BYTES MATCH
+     ownership.js     = 'Free Agents'
+     board_view_wkg   = 'Free Agents'
+
+B. THE 14 FREE-AGENT ROWS — the store must hold the owner's RAW lowercase bytes,
+   the mirrors the canonical display form. That is the law, and it is what happened.
+------------------------------------------------------------------------------
+  14 movers target a free-agent spelling
+  STORE  spellings across those rows: {'Free agents': 14}
+  MIRROR spellings across those rows: {'Free Agents': 14}
+  whole-store free-agent spelling census: {'Free agents': 87, 'Free Agents': 2}  (the authored 87/2 split, preserved)
+
+C. THREE OF THE 23 PICK-OWNER MOVES, read out of the WRITTEN club_valuation.js
+------------------------------------------------------------------------------
+  (sample of the owner's 23 changed OWNER cells)
+    {"id": "1", "from": "Sydney", "to": "Collingwood"}
+    {"id": "17", "from": "Sydney", "to": "Adelaide"}
+    {"id": "24", "from": "Carlton", "to": "St Kilda"}
+
+   HOLDINGS READ BACK OUT OF THE WRITTEN ui/data/club_valuation.js picksByTeam:
+     pick id 1     owner sheet Sydney         -> Collingwood      bundle holder: Collingwood Magpies        OK
+     pick id 17    owner sheet Sydney         -> Adelaide         bundle holder: Adelaide Crows             OK
+     pick id 24    owner sheet Carlton        -> St Kilda         bundle holder: St Kilda Saints            OK
+     pick id 26    owner sheet Geelong        -> Adelaide         bundle holder: Adelaide Crows             OK
+     pick id 27    owner sheet St Kilda       -> Adelaide         bundle holder: Adelaide Crows             OK
+     pick id 29    owner sheet Carlton        -> Collingwood      bundle holder: Collingwood Magpies        OK
+     pick id 43    owner sheet Western Bulldogs -> Adelaide         bundle holder: Adelaide Crows             OK
+     pick id 45    owner sheet St Kilda       -> Carlton          bundle holder: Carlton Blues              OK
+     pick id 54    owner sheet Collingwood    -> Western Bulldogs   bundle holder: Western Bulldogs           OK
+     pick id 56    owner sheet Hawthorn       -> Adelaide         bundle holder: Adelaide Crows             OK
+     pick id 62    owner sheet Sydney         -> Carlton          bundle holder: Carlton Blues              OK
+     pick id 69    owner sheet Collingwood    -> Carlton          bundle holder: Carlton Blues              OK
+     pick id 83    owner sheet Hawthorn       -> Adelaide         bundle holder: Adelaide Crows             OK
+     pick id 92    owner sheet North Melbourne -> St Kilda         bundle holder: St Kilda Saints            OK
+     pick id 96    owner sheet North Melbourne -> Richmond         bundle holder: Richmond Tigers            OK
+     pick id 97    owner sheet North Melbourne -> Richmond         bundle holder: Richmond Tigers            OK
+     pick id 114   owner sheet Collingwood    -> Western Bulldogs   bundle holder: Western Bulldogs           OK
+     pick id 121   owner sheet Hawthorn       -> Adelaide         bundle holder: Adelaide Crows             OK
+     pick id 126   owner sheet St Kilda       -> Adelaide         bundle holder: Adelaide Crows             OK
+     pick id 132   owner sheet Sydney         -> Carlton          bundle holder: Carlton Blues              OK
+     pick id 136   owner sheet Geelong        -> Adelaide         bundle holder: Adelaide Crows             OK
+     pick id 137   owner sheet Sydney         -> Adelaide         bundle holder: Adelaide Crows             OK
+     pick id 158   owner sheet Western Bulldogs -> Collingwood      bundle holder: Collingwood Magpies        OK
+   23 of 23 owner moves confirmed in the written bundle
+   total picks in bundle: 160
+
+D. THE ROUND PIN — must still be 22 everywhere
+------------------------------------------------------------------------------
+   expected_boot.as_of_round       22
+   season_state                    22
+   release_contract season round   22 22
+   board_view_working stamp round  22
+   club_valuation stamp round      22
+
+E. THE SIDECARS — fully written, not refusals
+------------------------------------------------------------------------------
+   ui/data/ownership.js          74786 bytes  halt=None
+   ui/data/club_valuation.js     40629 bytes  halt=None
+   ownership.js byKey entries     804
+   club_valuation clubs           16
+   club_valuation picks           160
+   club_valuation stamp store     {'asOfRound': 22, 'baseYear': 2026, 'board': 'a05fe951f78482c70520480e184c80ec', 'discount2027': 0.1, 'engine': '5ac6780f', 'expectedBoard': 'a05fe951', 'generated': '2026-08-20T03:54:08Z', 'mult2027': 0.9, 'nClubs': 16, 'nPicks': 160, 'posture': 'balanced (canonical; the only posture in this build)', 'pvcCurveFileMd5': '78ad9842525ae4f09875b95afc2e2b39', 'pvcCurveMd5': '9729f0c5', 'pvcOk': True, 'pvcPathway': 'RL_PVC2', 'pvcSource': 'engine/rl_after/pvc_curve_v2.json (RL_PVC2 composed pathway; adopted v2.11-final-rc1-PROVISIONAL; == rl_app_data PVC; pick1=3000)', 'releaseCurveContract': 'ui/release_pick_curve.json', 'releaseVersion': 'v2.11-final-rc1-PROVISIONAL', 'store': 'cc02567f', 'tag': 'v2.11-final-rc1-PROVISIONAL'}
