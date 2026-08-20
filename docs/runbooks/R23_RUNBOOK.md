@@ -428,6 +428,34 @@ changing it moves the md5 and trips a different halt in the same file. Any fix m
 > last if its id sorts last. **Assert `previous_point` after writing the column; do not trust the
 > alphabet.** (The R23 seat's column `the-sheet-recut-20-8` does sort last, and the assertion is in
 > `register_recut_column.py`.)
+>
+> > **`ERRATUM E6` (2026-08-20) — THE SORT IS REPAIRED. THE ALPHABET NO LONGER DECIDES.**
+> > Landed as its own act (prereg `d446f6f`, repair `4c3dedd`,
+> > `docs/evidence/f5_and_sort_2026-08-20/01_PREREG_SORT.md`), after the R23 advance disclosed it.
+> >
+> > `out_of_round_column` now orders columns by **`(after_round, kind, seq)`** through a single
+> > `_order_key` shared by the writer and the reader, so the stored order and the displayed order
+> > cannot drift apart. Every **new** column is stamped with an explicit monotonic `seq` at
+> > registration — chronology recorded as data, not inferred from an id. The **eight** columns that
+> > predate the repair keep their bytes (no `seq` was back-filled into a stored history) and are
+> > ordered by the closed `_LEGACY_ORDER` table, whose provenance is `data/release_lineage.json`'s
+> > append-only `release_transition_register`.
+> >
+> > **What it fixed, measured:** at `after_round=22` the display order was
+> > `… g1-never-rises-10-8 · the-d8-adoption-20-8 · the-landing-20-8 · the-sheet-recut-20-8`, placing
+> > THE LANDING (`a05fe951`) *after* the D8 adoption (`5ea978f7`) that superseded it. It is now
+> > `… g1-never-rises-10-8 · the-landing-20-8 · the-d8-adoption-20-8 · the-sheet-recut-20-8`, and the
+> > two repaired `model_changes` boundaries reproduce lineage register entries **8**
+> > (`a05fe951 → 5ea978f7`) and **9** (`5ea978f7 → 1d5c9f7a`) exactly. The three history files, the
+> > board and the store were **byte-unmoved**; only the derived `points` / `model_changes` blocks of
+> > `ui/data/movers.js` moved, rebuilt by the tool of record `ui/tools/rebuild_movers_derived.py`.
+> > `previous_point(repo, 23)` is **unchanged** at `the-sheet-recut-20-8`, so R23's movers baseline
+> > did not move. Suites 39/39 and 66/66; all three gates green.
+> >
+> > **KEEP ASSERTING `previous_point` AFTER WRITING A COLUMN ANYWAY.** The advice above stands on its
+> > own merits: it costs nothing, and it checks the outcome rather than the mechanism. What has
+> > changed is that it should now always pass, and that a *new* column no longer needs an id chosen
+> > to win an alphabetical race.
 
 **Blast radius is data-dependent and small:** of the 37 injured-marked players, **0** appeared in
 `R21.csv` and **1** (`judson-clarke`) appeared in `R22.csv`. So R23 may well pass untouched — but it is
