@@ -1,0 +1,33 @@
+================ CATCH-UP PREFLIGHT ================
+  season 2026 · 1 round(s) · identity overrides: Bailey Williams, Callum Brown
+  R23  enc=utf-8     listed/played=408  resolved=408  listed-zero=0   absent/DNP=396   sha256 ac0dae399ff6
+        identity override: Callum M. Brown        -> callum-brown-ire       (score 97, owner-override:map_all)
+  PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.
+===================================================
+
+About to apply rounds [23] — each as its own sequential transaction, committed in order.
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/h1/tools/round_entry/round_entry.py", line 703, in <module>
+    sys.exit(main(sys.argv[1:]))
+             ^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/h1/tools/round_entry/round_entry.py", line 699, in main
+    return args.func(args)
+           ^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/h1/tools/round_entry/round_entry.py", line 575, in cmd_catchup
+    run = cu.run(approved=True, generated_at=_now(args),
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/h1/engine/rl_after/ingestion/round_catchup.py", line 277, in run
+    res = applier.apply_snapshot(snap, generated_at=generated_at, txn_id='txn_catchup_r%d' % round_n)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/h1/engine/rl_after/ingestion/staged_apply.py", line 435, in apply_snapshot
+    return self._staged_transaction(snapshot, preview, triples, allowed_keys, store_rows,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/h1/engine/rl_after/ingestion/staged_apply.py", line 555, in _staged_transaction
+    sib_targets = self._stage_sibling(ws, txn_dir, int(snapshot['round']),
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/h1/engine/rl_after/ingestion/staged_apply.py", line 861, in _stage_sibling
+    sib = SR.build_sibling(ws, with_forward=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/h1/engine/rl_after/ingestion/sibling_repin.py", line 498, in build_sibling
+    raise SiblingBuildError("sibling board build failed: rc=%s :: %s" % (result.get("rc"), tail))
+sibling_repin_txn.SiblingBuildError: sibling board build failed: rc=1 ::   josh-rachele: board=1814 engine=1857 |   bailey-humphrey: board=2293 engine=2386 |   cameron-mackenzie: board=2109 engine=2194 |   nick-madden: board=1056 engine=1127

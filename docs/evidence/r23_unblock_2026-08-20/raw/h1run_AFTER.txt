@@ -1,0 +1,16 @@
+================ CATCH-UP PREFLIGHT ================
+  season 2026 · 1 round(s) · identity overrides: Bailey Williams, Callum Brown
+  R23  enc=utf-8     listed/played=409  resolved=409  listed-zero=0   absent/DNP=395   sha256 79ad59fac439
+        identity override: Callum M. Brown        -> callum-brown-ire       (score 97, owner-override:map_all)
+  PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.
+===================================================
+
+About to apply rounds [23] — each as its own sequential transaction, committed in order.
+round_entry: FAIL — StagedValidationError: staged board regen FAILED rc=1 (strict env; RL_FV=/tmp/wkupd_ws_7knygqbr/engine/forward_valuation)
+STDERR tail:
+CONFIG ACCEPTED eed19a75f775  (trusted /tmp/wkupd_ws_7knygqbr/config_manifest.py)
+PROVENANCE {"RL_FV_env": "/tmp/wkupd_ws_7knygqbr/engine/forward_valuation", "config_manifest_identity": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1", "config_manifest_path": "/tmp/wkupd_ws_7knygqbr/data/model_config.json", "distribution_pricing_md5": "33e07a9ee66a29e9d8ef3dc45cca52f6", "fv_identity": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346", "fv_identity_expected": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346", "resolved_fv_dir": "/tmp/wkupd_ws_7knygqbr/engine/forward_valuation", "rl_model_md5": "6fe7c4155866d80e8045bed2d3bf2802", "rl_model_path": "/tmp/wkupd_ws_7knygqbr/engine/rl_after/rl_model.py"}
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+ORDER 42 HALT: judson-clarke — the sheet reads games_2026=1 and the store reads 2. The store is the single source of production and the sheet is the single source of injury; a disagreement between them is an input defect, not something to average away.
+

@@ -727,8 +727,22 @@ class StagedRoundApplier:
         # builder (session_2026-07-20/fv_provenance_remediation) + regenerates the board-view via ui/tools,
         # and re-seals the release_contract with the ws-root release_contract.py copied above. Copied so the
         # sibling is built + staged from the SAME staged store/config/FV source as the canonical board.
+        # BAKE 2026-08-20 (register v780) made RL_O41_RESET / RL_O41_INJ / RL_O41_R3 DEFAULT-ON, and the
+        # ORDER 41/42 code paths read three RL_REPO-relative PINNED OWNER INPUTS that live under docs/:
+        #   docs/owner_annotations/SITTER_2026_v1.csv          (_merged_recover.py:4167 ORDER 41 I3
+        #                                                       injury stream; :5862 ORDER 42 consolidation)
+        #   docs/evidence/exec_306_zlaarm/basis/structural_basis_279.json  (:2154 v0 lens basis)
+        #   docs/evidence/exec_306_zlaarm/basis/lane_expectation.json      (:2373, optional)
+        # The first two are fail-closed SystemExit HALTs when absent. R22 landed 2026-08-10, BEFORE the
+        # bake, so the weekly transaction has never run since these became mandatory: the workspace
+        # allow-list below has no docs/ subtree and the staged board regen halts at ORDER 41. All four
+        # files are tracked in the checkout; only the workspace builder omitted them. Copy them so the
+        # staged build reads THE SAME pinned owner inputs the checkout ships — never an ambient one and
+        # never a substituted guess (the halt exists precisely to refuse a guess).
         for rel in (os.path.join('session_2026-07-20', 'fv_provenance_remediation'), 'ui',
-                    os.path.join('session_2026-07-17', 'legd_derivation')):
+                    os.path.join('session_2026-07-17', 'legd_derivation'),
+                    os.path.join('docs', 'owner_annotations'),
+                    os.path.join('docs', 'evidence', 'exec_306_zlaarm')):
             src = os.path.join(R, rel)
             if os.path.isdir(src):
                 shutil.copytree(src, os.path.join(ws, rel))
