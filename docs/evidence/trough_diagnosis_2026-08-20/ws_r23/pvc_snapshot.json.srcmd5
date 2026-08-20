@@ -1,1 +1,0 @@
-{"derived": "pvc_snapshot.json", "frozen": true, "note": "train-time cache; regenerated only by the peak-model build; not per-build source-asserted", "own_md5": "ade79790efc8ad4585c2c6800a935eaa", "tier": 2}
