@@ -6,6 +6,14 @@ set -euo pipefail   # SUITE HYGIENE 2026-07-13: exit code is the authority, not 
                     # silently reporting nothing. (SHIP_GATES §HARNESS)
 HERE=$(cd "$(dirname "$0")" && pwd)
 WS=/home/claude/rl_workspace/rl_after
+# BUILD LOCK (M1a, AUDIT_CI.md gap G7 — "no single-writer interlock in CI, though the tree owns one").
+# Everything below this line reads and builds through the SHARED /home/claude/rl_workspace. Two engine
+# acts that overlap there produce results that look clean and are void; that is why tools/preboot_assert.sh
+# exists, and it happened on 2026-07-31. preboot_assert DETECTS a live engine process; this LOCKS, which
+# is the half that was missing — two seats that both check simultaneously both see a clear board.
+# Fail-closed: if the lock cannot be taken, the panel does not run. RL_BUILD_LOCK=0 skips it, loudly.
+. "$HERE/tools/build_lock.sh"
+build_lock_acquire run_panel || exit 1
 # GUARD 5 (boot-store): HALT before the engine loads if the workspace store/head is not the checked-out,
 # pinned store. Closes the stale-boot hole the four data guards miss (they validate whichever dir they are
 # imported from, so a stale-but-self-consistent workspace passes them). Re-run bootstrap.sh to re-seed.

@@ -36,6 +36,18 @@ print(f"  ENV PIN        : numpy {np.__version__} + bundled OpenBLAS {got[:8]} (
 PY
 fi
 
+# BUILD LOCK (M1a, AUDIT_CI.md gap G7 — "no single-writer interlock in CI, though the tree owns one").
+# Every line below this one WRITES INTO the shared /home/claude/rl_workspace: it copies the engine, the
+# forward-valuation tree, the register and the fitted pickles over whatever is already there. The audit's
+# finding, verbatim: "Both ci-guards.yml and final-integration.yml run bootstrap.sh against the same shared
+# /home/claude/rl_workspace; on a self-hosted runner they can race, and the interlock the tree built for
+# exactly that is not wired in." A re-seed that lands on top of a live engine act does not fail — it
+# silently swaps the engine under a running build, and BOTH results are void.
+# Fail-closed: no lock, no seeding. Reentrant (a bake that already holds it does not deadlock here).
+# RL_BUILD_LOCK=0 skips the interlock and says so on every skip.
+. "$HERE/tools/build_lock.sh"
+build_lock_acquire bootstrap || exit 1
+
 mkdir -p /home/claude/rl_workspace /home/claude/rl_build /home/claude/rl_vendor
 
 # 1. engine + support modules + harness + pipeline + data files
