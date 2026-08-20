@@ -1,0 +1,23 @@
+=== ACT A — LANDING STEP A: THE ONE PIN — 2026-08-20T11:14:14Z ===
+
+====================================================================================================
+ACT A LANDING STEP A — the one pin that moves   (APPLY)
+====================================================================================================
+published board  data/rl_build/rl_app_data.json    : c97a4d9f9fa42597f85517c7850d3943
+generator board  engine/rl_after/rl_app_data.json  : c97a4d9f9fa42597f85517c7850d3943
+  data/rl_build/rl_app_data.json.srcmd5      {"derived": "rl_app_data.json", "own_md5": "c97a4d9f9fa42597f85517c7850d3943", "source": "rl_model_data.json", "source_md5": "b745002eb0a0fbb1c34fa44f1ef708d6", "tier": 1}
+  engine/rl_after/rl_app_data.json.srcmd5    {"derived": "rl_app_data.json", "own_md5": "c97a4d9f9fa42597f85517c7850d3943", "source": "rl_model_data.json", "source_md5": "b745002eb0a0fbb1c34fa44f1ef708d6", "tier": 1}
+  both sidecars agree with the board they sit beside and with the live store. OK.
+
+COMPUTED from the tree (never typed):
+  board       = md5(data/rl_build/rl_app_data.json)      = c97a4d9f9fa42597f85517c7850d3943
+  engine_head = md5(engine/rl_after/_merged_recover.py)  = 1867e953cf844d089ab1da68379b1742
+  engine_head is UNMOVED, as this act requires: the valuation engine was not touched.
+
+  expected_boot board        7a3f4fe23207 -> c97a4d9f9fa4   (old value occurs 1 time(s) in the file)
+
+  fields that moved in expected_boot.json: ['board']
+  must-not-move list: 15 checked (engine_head among them), 0 moved
+  byte check: the ONLY bytes that differ are the one declared pin value.
+
+APPLIED. expected_boot.board == c97a4d9f9fa42597f85517c7850d3943 ; engine_head still 1867e953cf844d089ab1da68379b1742.

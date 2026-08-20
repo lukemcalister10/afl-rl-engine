@@ -1,0 +1,47 @@
+=== ACT A — LANDING STEP C: THE OUT-OF-ROUND COLUMN — 2026-08-20T11:15:55Z ===
+
+{
+  "after_round": 23,
+  "board": "c97a4d9f9fa42597f85517c7850d3943",
+  "column_id": "the-f5-rounding-20-8",
+  "dry_run": false,
+  "label": "20/8 F5 ROUNDING FIX \u2014 declared entrant layer 56772->56773 (no player value moved)",
+  "players_on_board": 804,
+  "values_already_present": {
+    "pos_rank": 0,
+    "rank": 0,
+    "value": 0
+  },
+  "values_written": {
+    "pos_rank": 804,
+    "rank": 804,
+    "value": 804
+  }
+}
+
+selectable points, in display order:
+   14                       round        after_round=14 board=
+   15                       round        after_round=15 board=
+   16                       round        after_round=16 board=
+   17                       round        after_round=17 board=
+   18                       round        after_round=18 board=
+   19                       round        after_round=19 board=
+   post-r19-redesign-1      out_of_round after_round=19 board=fa172ac1
+   20                       round        after_round=20 board=
+   rederivation-30-7        out_of_round after_round=20 board=f2df6e0a
+   redesign-adoption-6-8    out_of_round after_round=20 board=827fb1fd
+   21                       round        after_round=21 board=
+   22                       round        after_round=22 board=
+   dob-courier-10-8         out_of_round after_round=22 board=a672ed3a
+   g1-never-rises-10-8      out_of_round after_round=22 board=4b448a82
+   the-landing-20-8         out_of_round after_round=22 board=a05fe951
+   the-d8-adoption-20-8     out_of_round after_round=22 board=5ea978f7
+   the-sheet-recut-20-8     out_of_round after_round=22 board=1d5c9f7a
+   23                       round        after_round=23 board=
+   the-f5-rounding-20-8     out_of_round after_round=23 board=c97a4d9f
+
+NEWEST STORED POINT: the-f5-rounding-20-8  board=c97a4d9f9fa42597f85517c7850d3943
+
+ASSERTED: the newest stored point is this column, naming the live board c97a4d9f9fa42597f85517c7850d3943.
+REGISTERED WITH AN EXPLICIT SEQUENCE (Act B's repair): {"after_round": 23, "board": "c97a4d9f9fa42597f85517c7850d3943", "id": "the-f5-rounding-20-8", "kind": "out_of_round", "label": "20/8 F5 ROUNDING FIX \u2014 declared entrant layer 56772->56773 (no player value moved)", "registered_at": "2026-08-20", "seq": 0}
+MEASURED: 804 of 804 players carry the SAME value at this column as at round 23 — this act moved no player value, and the history says so.

@@ -589,6 +589,78 @@
     "book_reseal": "NONE \u2014 a book re-seal is a separate act and was not smuggled into this one"
    },
    "_measured_note": "moved/unchanged are MEASURED, not asserted. Every `source` identity was re-hashed from a checkout of b86bc9e \u2014 the tree immediately before the edit commit 024b458; b86bc9e adds only docs/evidence/r23_advance_2026-08-20/01_PREREG_SHEET_RECUT.md to main d02520e \u2014 board and store by md5 of data/rl_build/rl_app_data.json and engine/rl_after/rl_model_data.json, engine_head and rl_model by md5 of engine/rl_after/_merged_recover.py and engine/rl_after/rl_model.py, config by config_manifest.manifest_hash, fv by fv_provenance.fv_identity over engine/forward_valuation, register by md5 of LTI_REGISTER.md, v0surf by md5 of data/v0surf.pkl, balanced_board_md5 from engine/rl_after/ingestion/sibling_repin_state.json \u2014 and each agrees with that tree's own data/expected_boot.json. Every `destination` identity was re-hashed the same way from the live tree and agrees with the landed data/expected_boot.json. Board totals were measured on the two board files directly: 804 rows / 693,753 -> 804 rows / 693,727."
+  },
+  {
+   "_doc": "OUT-OF-ROUND PRESENTATION-CONSISTENCY REPAIR (THE F5 ROUNDING ACT, 2026-08-20; authority docs/runbooks/F5_OFFBYONE_DIAGNOSIS.md, executed on the owner word \"Launch the ready items please\"). THE DEFECT: a double-rounding artifact at the F5 seal boundary. `draft` and `mech` were each rounded to an integer independently, and the TOTAL was rounded independently AGAIN from the unrounded sum, with no assertion that the triple closed. round(a)+round(b) and round(a+b) may differ by 1 and on the ORDER 29 curve head they did \u2014 draft .5606 and mech .7109 both rounded UP (+0.7285) while the sum's own .2715 rounded DOWN \u2014 so the board stated the SAME quantity twice, by two conventions, 56773 beside 56772: three times over on the board (_meta, league, draftAssetTotals) and once more in the sealed file. The code defect is OLDER than the symptom: the three-independent-roundings pattern dates from the seal's creation on 2026-07-18 and stayed invisible for three seals purely by luck of the fractional parts. Nothing broke on 08-13; a latent defect became observable. THE FIX: one rounding decision, at one boundary. The PARTS are the primitive and the integer total is DEFINITIONALLY their sum, never rounded a third time. THE DECLARED LAYER MOVES 56772 -> 56773. NO MONEY MOVES: the per-club allocation reads the UNROUNDED floats, so all 804 players' v/vM2/vM1/vP1/vP2 and all 198 back-history rows are BYTE-IDENTICAL across this transition, and the PICK 1 numeraire is unmoved at 3,000. The complete board diff is TEN FIELDS, all of them in the report-only F5 lens block: f5_entrant_layer_pvc x2 lenses, phantomTotals._meta.entrant_layer_pvc, the seal id, and league delta / entrantValue / withPhantom at each of the two forward lenses. Lens 0 \u2014 the balanced board \u2014 is UNMOVED at 692,296, the k=0 zero-phantom invariant. TWO GUARDS THAT COULD NOT FAIL WERE MADE REAL: the #306 L7 HALT compared the board's round(sum) against the seal's round(sum), the same convention on both sides, and was structurally blind to this class; and `reconciled_to_f5` was an algebraic TAUTOLOGY, True for any inputs, which is why it printed PASS on the very board whose strengthened cross-check was FAILing. Both now close against the seal's own total, and the seal writer asserts its triple closes so it can never go latent again. THE SEAL MOVES cbb7c431 -> ccc26a9e with entrant_pvc.total 56772 -> 56773 as its ONLY changed field: the occupancy COUNTS and the provenance STAMP are byte-identical, nothing was re-measured and nothing was re-stamped. A literal re-run of seal_structure.py was REFUSED because it would have restamped store_md5, board_balanced_md5 and curve_file_md5 and re-counted against a store that has moved three times \u2014 a RE-COUNT, which is not what was ruled. THE BOARD MOVES 7a3f4fe2 -> c97a4d9f. ENGINE_HEAD IS UNMOVED at 1867e953 and that is correct: this act edits engine/rl_after/rl_export.py, the EXPORTER, which no identity pin tracks; the valuation engine is untouched, which is exactly why no price moves. The STORE DOES NOT MOVE (b745002e both sides), no round is applied and the round pin stays at 23. config_sha256, rl_model, fv, register, v0surf and balanced_board_md5 are all UNMOVED \u2014 the board is the ONLY identity this transition moves, which is the smallest move any entry in this register records. Because this is an out-of-round move, the standing owner rule of 2026-07-28 writes a history column at the point: `the-f5-rounding-20-8`, registered in the value / rank / pos_rank histories from the new board (804 points each) by the out_of_round_column writer of record \u2014 and MEASURED there, 804 of 804 players carry the same value at that column as at round 23, so the history itself records that this act moved no player value. It is the FIRST column written under the repaired chronological sort (commit 4c3dedd), stamped with an explicit seq rather than winning an alphabetical race. Two consumers go green as a consequence: invariant_proof.py's per-push lane 26/28 -> 28/28, and the identical strengthened assertion in r15_ladder_survival_proof.py. The book is NOT re-sealed by this act, and data/book_stable_seal.json is untouched.",
+   "kind": "movers_release_transition",
+   "schema_version": 2,
+   "owner_approved": true,
+   "owner_ruling_id": [
+    "THE_F5_ROUNDING_2026-08-20_launch_the_ready_items"
+   ],
+   "owner_ruling": "Owner word 2026-08-20, VERBATIM: \"Launch the ready items please\" \u2014 given in chat and carried to this seat in its execution brief, which names THE F5 ROUNDING ACT as one of two post-R23-eligible ready items and names docs/runbooks/F5_OFFBYONE_DIAGNOSIS.md as its AUTHORITY, with the declared move 56772 -> 56773 stated in the brief itself. Per the 5babe71 precedent this entry RECORDS an approval that already exists in the owner's own words; it does not create one. The runbook's own sequencing note asked for exactly this shape: \"Land it as its own isolated act, before or after R23, with its own prereg.\"",
+   "authority": "Luke McAlister (owner) \u2014 sole STOP-1/STOP-2/merge authority; the word given directly in chat 2026-08-20 and carried to this seat in its execution brief; written by the F5 engine seat (no interpretive authority).",
+   "applies_to": {
+    "bundle": "ui/data/movers.js",
+    "boundary": [
+     "23",
+     "the-f5-rounding-20-8"
+    ]
+   },
+   "source": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "board": "7a3f4fe23207a29095e6d37408a4b727",
+    "store": "b745002eb0a0fbb1c34fa44f1ef708d6",
+    "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+    "engine_head": "1867e953cf844d089ab1da68379b1742",
+    "fv": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346",
+    "config": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "balanced_board_md5": "3970156c8658fc9ecea8089e8b3ecdf1",
+    "v0surf": "5dd34ca82735f5c8f021b1c7320df8f8",
+    "as_of_round": 23
+   },
+   "destination": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "board": "c97a4d9f9fa42597f85517c7850d3943",
+    "store": "b745002eb0a0fbb1c34fa44f1ef708d6",
+    "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+    "engine_head": "1867e953cf844d089ab1da68379b1742",
+    "fv": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346",
+    "config": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "balanced_board_md5": "3970156c8658fc9ecea8089e8b3ecdf1",
+    "v0surf": "5dd34ca82735f5c8f021b1c7320df8f8",
+    "as_of_round": 23
+   },
+   "moved_by_transition": [
+    "board"
+   ],
+   "unchanged_across_transition": [
+    "store",
+    "rl_model",
+    "engine_head",
+    "v0surf",
+    "register",
+    "balanced_board_md5",
+    "config",
+    "fv",
+    "as_of_round",
+    "release_version"
+   ],
+   "invariants": {
+    "store_unmoved_by_transition": "b745002eb0a0fbb1c34fa44f1ef708d6",
+    "config_unmoved_by_transition": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+    "engine_head_unmoved_by_transition": "1867e953cf844d089ab1da68379b1742",
+    "round_held": "as_of_round 23 on both sides; no round applied, no store written",
+    "no_value_moved": "804 of 804 active rows byte-identical (v/vM2/vM1/vP1/vP2); 198 of 198 back rows byte-identical; measured by full recursive diff of the control build against the F5 build, docs/evidence/f5_and_sort_2026-08-20/06_f5_builds.txt",
+    "k0_invariant": "phantomTotals.league['0'] byte-unmoved; balanced board total 692,296",
+    "numeraire": "PICK 1 = 3000, unmoved",
+    "seal": "cbb7c431 -> ccc26a9e; entrant_pvc.total 56772 -> 56773 is the ONLY changed field; occupancy counts and provenance stamp byte-identical",
+    "book_reseal": "NONE \u2014 data/book_stable_seal.json untouched; the full book re-seal remains owner-pending per docs/evidence/landing_prep_2026-08-20/RESEAL_HALT.md"
+   },
+   "_chain_note": "This entry's source board 7a3f4fe2 is NOT the register tail's destination 1d5c9f7a. The gap is the R23 ROUND ADVANCE, which moved the board legitimately and gets no register entry because this register records OUT-OF-ROUND transitions only. The gap is closed by an independent record rather than waved through: ui/data/movers.js's R23 report carries board_md5_before 1d5c9f7a and board_md5_after 7a3f4fe2, naming exactly that advance. Two prior entries have the same shape \u2014 entry 4 (827fb1fd ... 6e724cca) and entry 6 (4b448a82 ... 88ce647f) \u2014 so this is the register's normal behaviour, not an exception carved for this act. The STORE is continuous and unmoved across both the gap and this transition.",
+   "_measured_note": "moved/unchanged are MEASURED, not asserted. Every `source` identity was re-hashed from the committed tree at 2991740 \u2014 the commit immediately before any Act A edit \u2014 board and store by md5 of data/rl_build/rl_app_data.json and engine/rl_after/rl_model_data.json, engine_head and rl_model by md5 of engine/rl_after/_merged_recover.py and engine/rl_after/rl_model.py, register by md5 of LTI_REGISTER.md, v0surf by md5 of data/v0surf.pkl, balanced_board_md5 from engine/rl_after/ingestion/sibling_repin_state.json \u2014 and each agrees with that tree's own data/expected_boot.json. Every `destination` identity was re-hashed the same way from the live tree and agrees with the landed data/expected_boot.json; config and fv were additionally RE-MEASURED on the live side by config_manifest.manifest_hash and fv_provenance.fv_identity rather than read from the manifest. EXACTLY ONE identity of eleven moved: board."
   }
  ]
 }

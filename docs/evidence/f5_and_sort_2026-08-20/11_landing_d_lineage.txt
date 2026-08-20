@@ -1,0 +1,13 @@
+=== ACT A — LANDING STEP D: THE LINEAGE ENTRY — 2026-08-20T11:18:59Z ===
+
+chain GAP, CLOSED BY EVIDENCE — bridged by the ROUND 23 ADVANCE:
+   board  1d5c9f7a -> 7a3f4fe2   (movers report 23 board_md5_before/after)
+   store  cc02567f -> b745002e   (movers report 23 source_store_md5_before/after)
+   A round advance moves both and gets no register entry — this register records OUT-OF-ROUND transitions only. Precedent: entries 4 and 6 have the same shape.
+boundary ['23', 'the-f5-rounding-20-8'] is NEW; destination.board c97a4d9f9fa42597f85517c7850d3943 is declared by no existing record.
+append-only OK: 10 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
+re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
+appended entry 11; 50032 -> 59689 bytes
+  source      board 7a3f4fe23207a29095e6d37408a4b727  store b745002eb0a0fbb1c34fa44f1ef708d6  engine_head 1867e953cf844d089ab1da68379b1742
+  destination board c97a4d9f9fa42597f85517c7850d3943  store b745002eb0a0fbb1c34fa44f1ef708d6  engine_head 1867e953cf844d089ab1da68379b1742
+  MOVED by this transition: ['board']   (of 11 identities)

@@ -1,0 +1,33 @@
+=== ACT A GATES — 2026-08-20T11:20:40Z ===
+board c97a4d9f9fa42597f85517c7850d3943
+
+==========================================================================================================================
+CHECK                    VERDICT     REASON
+-----------------------  ----------  -----------------------------------------------------------------------------------
+release_manifest         PASS        38 of 40 carrier fields agree with computed truth across 8 identities; 2 sealed ca…
+boot_guard_checkout      PASS        boot-store guard (Guard 5) PASS  [acceptance-spine]  store b745002e == pinned b745…
+config_manifest          PASS        CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)
+ruling_config            PASS        RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL…
+release_contract_seal    PASS        RELEASE-CONTRACT CHECK: PASS  (contract c5149774b8ec; identities + config + postur…
+store_coherence_six_way  PASS        six-way store coherence: PASS
+doc_lint                 PASS        doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)
+-----------------------  ----------  -----------------------------------------------------------------------------------
+
+AGGREGATE  7 checks  |  PASS 7  FAIL 0  BLOCKED 0  RULED-RED 0
+VERDICT    GREEN — no gating failures.
+
+=== release_manifest_check.py ===
+     consumes the seal as a baseline is comparing against the older state.)
+
+  RELEASE MANIFEST COHERENCE: PASS
+
+=== release_contract.py check ===
+RELEASE-CONTRACT CHECK
+RELEASE-CONTRACT CHECK: PASS  (contract c5149774b8ec; identities + config + posture consistent)
+
+=== SUITES ===
+MOVERS TRANSITION TESTS: ALL 39 PASS
+MOVERS TESTS: ALL 66 PASS
+
+=== invariant_proof (per-push lane) ===
+RESULT: 28/28 PASS  (adoption lane 0/13, non-gating)  -> session_2026-07-21/final_integration/evidence/invariant_proof.json

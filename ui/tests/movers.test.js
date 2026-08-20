@@ -237,8 +237,27 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // round-23 column is now the newest point and carries the live board, so the red clears here on its
   // own merits rather than being papered over. The sort defect itself is PRE-EXISTING and is NOT
   // repaired by this act — repairing it is an engine change, out of scope for a round advance.
-  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "ok"],
-     "bundle displays under the current app, ok — the latest round report terminates on the loaded board (a round advance, not an out-of-round move, was the last act)");
+  // RESTATED AGAIN 2026-08-20 (THE F5 ROUNDING ACT): back to `bridged`, the third swing. The reading
+  // is unchanged and so is the rule — this line tracks WHAT KIND OF ACT MOVED THE BOARD LAST. The F5
+  // rounding act moved the board OUTSIDE a round (7a3f4fe2 -> c97a4d9f), so R23's report keeps its own
+  // frozen terminal board 7a3f4fe2 (a later act never rewrites an earlier report's identity, #271
+  // A15/A16) while the app serves c97a4d9f. `ok` — the DIRECT-lineage branch — requires the latest
+  // ROUND REPORT to terminate on the loaded board, and no round was applied, so `ok` would now be a
+  // FALSE reading. `bridged` is the honest one: this bundle's history was made under an earlier board
+  // and is displayed under the current one, which is exactly true. THE ONE ASSERT (newest stored point
+  // == loaded board) still passes, because the act wrote its out-of-round column `the-f5-rounding-20-8`
+  // carrying c97a4d9f — which is what keeps the state `bridged` rather than `mismatch`.
+  // NOTHING IS LOOSENED: the two non-vacuity assertions below still prove the state discriminates in
+  // both directions, and they were re-run at this swing — a foreign board still fails closed as
+  // `mismatch`, and the same bundle loaded at its own terminal identity still reads `ok`.
+  // WORTH NAMING, because it is the opposite of the last swing's story: the board move this pin is
+  // following moved NO player value at all. All 804 active rows and all 198 back rows are
+  // byte-identical across it; the F5 act corrected a report-only rounding inconsistency. The history
+  // records this directly — 804 of 804 players carry the same value at `the-f5-rounding-20-8` as at
+  // round 23. So this is a board-IDENTITY move, not a re-valuation, and `bridged` is tracking the
+  // identity, which is what it has always tracked.
+  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "bridged"],
+     "bundle displays under the current app, bridged — the last act moved the board OUTSIDE a round (the F5 rounding fix), so the latest round report's terminal board is not the loaded board, and the out-of-round column carries it instead");
   // NON-VACUITY for the restated assertion, both directions. `bridged` is a state this check can
   // FAIL to reach: a bundle on a foreign lineage does not get bridged, it fails closed as a mismatch.
   var appForeign = clone(curApp); appForeign.board = "ffffffffffffffffffffffffffffffff";
@@ -307,7 +326,13 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // Same growth, same reason as the six bumps before them; the durable property below — EVERY boundary
   // anchored to an owner-approved record — covers both new boundaries and is what actually guards this,
   // this line only counts.
-  ok(mc.length === 8, "eight out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut)  (got " + mc.length + ")");
+  // BUMPED AGAIN 2026-08-20 (THE F5 ROUNDING ACT, owner word "Launch the ready items please"): a ninth
+  // boundary, `the-f5-rounding-20-8` — the F5 double-rounding repair, board c97a4d9f, out of round at
+  // R23. It carries its own owner-approved lineage record (register entry 11,
+  // THE_F5_ROUNDING_2026-08-20_launch_the_ready_items), so the durable property below — EVERY boundary
+  // anchored to an owner-approved record — covers it. Same growth, same reason as the seven bumps
+  // before it; this line only counts.
+  ok(mc.length === 9, "nine out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut, the 20/8 F5 rounding fix)  (got " + mc.length + ")");
   ok(mc[0].between[0] === "19" && mc[0].between[1] === "post-r19-redesign-1" &&
      mc[0].owner_approved_record === true,
      "model change declared between R19 and the restructure point, anchored to the owner-approved record");
