@@ -19,7 +19,11 @@ the supervisor's pen and was **not touched** by this seat.
 | 1 | `16ec23bffea927de58476d23f582ab3740ead35e` | PREREG — THE D8 ADOPTION. Committed BEFORE the engine is touched (law F6). | `docs/evidence/d8_adoption_2026-08-20/PREREG_ADOPTION.md` |
 | 2 | `d928bca554c2fdbb0419fc5818ec6b4460ae29a0` | THE D8 ADOPTION — THE ENGINE EDIT. RL_O33_TAPEROFF IS NOW THE SHIPPED DEFAULT. | `engine/rl_after/_merged_recover.py` |
 | 3 | `5dcfe719fd971cdbc0045561af7da42bd850b265` | THE D8 ADOPTION — THE LANDING TRANSACTION. THE LIVE BOARD IS NOW 5ea978f7 / 693,753 / 804. | `data/expected_boot.json`, `data/release_contract.json`, `data/release_lineage.json`, `data/rl_build/rl_app_data.json`, `data/rl_build/rl_app_data.json.srcmd5`, `engine/rl_after/rl_app_data.json`, `engine/rl_after/rl_app_data.json.srcmd5`, `engine/rl_after/ingestion/{value,rank,pos_rank}_history.json`, `engine/rl_after/ingestion/sibling_repin_state.json`, `session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py`, `.../fixtures/forward_vector_5ea978f7.json`, `.../fixtures/reference_vector_a49c155f.json`, `.../test_forward_lens_5ea978f7.py`, `ui/data/board_view_working.js`, `ui/data/board_view_public.js`, `ui/data/movers.js`, `ui/data/movers_transition.js` |
-| 4 | *(this commit)* | THE D8 ADOPTION — THE EVIDENCE AND THE FINAL ACCOUNT. | `docs/evidence/d8_adoption_2026-08-20/*` |
+| 4 | `ae0f620…` | THE D8 ADOPTION — THE EVIDENCE AND THE FINAL ACCOUNT. | `docs/evidence/d8_adoption_2026-08-20/*` |
+| 5 | *(this commit)* | THE D8 ADOPTION — FINAL_STATE names commit 4's sha. | `docs/evidence/d8_adoption_2026-08-20/FINAL_STATE.md` |
+
+*(Commit 4's sha could not exist inside the file it commits, so it is filled in by commit 5 — the only
+thing commit 5 does. `git log` is the authority on both; this table is a convenience, not a source.)*
 
 Every commit used `git commit -- <explicit paths>`. No bare `git commit` after `git add`; no sweep.
 Nothing pushed. `docs/OPEN_ITEMS_REGISTER.md` untouched.
