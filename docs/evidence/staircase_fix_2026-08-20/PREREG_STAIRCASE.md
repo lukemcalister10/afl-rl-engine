@@ -255,3 +255,58 @@ the moment the scaffolding is erected (process law P11's principle applied forwa
   unknown model override and HALTS a canonical build — it has cost this estate three incidents.
 - The pre-edit baseline was built FIRST and reproduced `68be10c7` byte-exact (101.3 s), so every
   downstream comparison is against a board this box can actually make.
+
+---
+
+## 10 · CORRECTION 1 — THE WINDOW. THE PREREG IS CORRECTED AGAINST THE TREE (P9).
+
+**Committed to the record before the engine edit was committed, and before any candidate was built.**
+
+§2 above declared the monotoniser's window as a **fixed level grid [40.0, 120.0] step 0.5**, carried
+from the window the diagnosis measured Fix 2's blast radius on. **That window is wrong, and it was
+measured to be wrong on the pinned forests before the first build.**
+
+**The error.** A running maximum over `{fixed grid points <= lvl} U {lvl}` is **NOT NESTED in `lvl`**.
+The row's own off-grid point leaves the evaluation set as `lvl` advances, so the max can FALL. Swept
+on a MID / pick-40 row from level 44 to 58 at 0.05 resolution, the "ratchet" left **30 negative steps
+and a worst step of −0.47** on the band's weighted mean. **A fix for a monotonicity violation that is
+itself non-monotone is not a fix.** Shrinking the step only shrinks the residual; it never reaches
+zero, because the defect is structural, not one of resolution.
+
+**The correction, which is exact rather than finer.** A gradient-boosted forest is piecewise constant
+in every input and the pieces are separated by **the trees' own split thresholds on that input** — a
+finite, known set read straight off the fitted trees. Measured on the pinned artifacts: **2,329
+distinct thresholds on feature 9** across `cm_400`'s five forests and `q97m`, range
+**40.7489 – 116.2636** (the same population the diagnosis's §2 threshold census counts per model).
+Sampling one point strictly inside every piece samples the surface **exactly**, and the sample set
+`{ k+eps : k a knot, k+eps <= lvl }` **IS nested in `lvl`**. A max over a nested family is
+non-decreasing **by construction** — no residual, nothing left to shrink.
+
+`sklearn`'s split is `X[:,f] <= threshold`, so the piece ABOVE a knot is sampled at `knot+eps`;
+`eps = 1e-9` against a **measured minimum knot gap of 7.6e-06** cannot skip a piece, and it is the
+resolution the diagnosis's own bisection used. **The row's own exact level needs no separate term and
+is given none:** it lies inside a sampled piece and the surface is constant there, so a row on an
+already-monotone stretch is priced at its own raw band, **unchanged, exactly** — which is why the
+exact construction KEEPS the "most rows unmoved" behaviour a grid approximation would have destroyed.
+
+**Re-measured under the corrected window, before the edit was committed** (MID / pick-40 row, the
+band's weighted mean as a monotone proxy for `price6`):
+
+| sweep | raw | **variant A (ratchet)** | **variant B (smoothed)** |
+|---|---|---|---|
+| level 44→58, step 0.05 | 69 negative steps, worst −1.161 | **0 negative, legwise min +0.000000** | **0 negative, 0 flat, min step +0.006** |
+| level 46→50, step 0.002 | 26 negative steps, worst −0.844 | **0 negative, legwise min +0.000000** | **0 negative, 0 flat, min step +0.0003** |
+
+0.002 level units is roughly **1/25th of one round-23 score point**, so the proof is at a resolution
+far finer than anything the owner's question can reach.
+
+**What carries over and what does not.** The window is still the full model domain `[40, 120]`, so
+the diagnosis's blast-radius comparison remains meaningful in DIRECTION and SCALE. But this act's
+sample set is FINER and EXACT where the diagnosis's was a 0.5 approximation, so **this act's measured
+mint is not required to equal the diagnosis's +0.61 %** and will not be forced to. §5's refusal to
+predict a board delta to two decimals stands, and now has a second reason.
+
+**The error is named, not smoothed:** this seat wrote a window into a prereg by carrying a number
+from a diagnosis that used it for a different purpose (measuring on a grid, where nestedness never
+arises), and only caught it by measuring the instrument before trusting it. That is the check P9
+exists to force, and it fired.

@@ -1,0 +1,27 @@
+KNOT CENSUS  n=2329  range 40.7489..116.2636  min gap 7.629e-06 (EPS=1e-09 cannot skip a piece: True)
+MID pick40 age22    44.0-58.0@0.050 raw                            legmin -5.969996  proxy min step -1.16078358  NEG  69  FLAT  111
+MID pick40 age22    44.0-58.0@0.050 grid-ratchet(THE PREREG ERROR) legmin -2.090742  proxy min step -0.47085593  NEG  30  FLAT  174
+MID pick40 age22    44.0-58.0@0.050 ratchet                        legmin +0.000000  proxy min step +0.00000000  NEG   0  FLAT  203
+MID pick40 age22    44.0-58.0@0.050 smooth                         legmin +0.000019  proxy min step +0.00629176  NEG   0  FLAT    0
+MID pick40 age22    46.0-50.0@0.002 raw                            legmin -4.210417  proxy min step -0.84405932  NEG  26  FLAT 1945
+MID pick40 age22    46.0-50.0@0.002 grid-ratchet(THE PREREG ERROR) legmin -0.190208  proxy min step -0.03423745  NEG   5  FLAT 1979
+MID pick40 age22    46.0-50.0@0.002 ratchet                        legmin +0.000000  proxy min step +0.00000000  NEG   0  FLAT 1985
+MID pick40 age22    46.0-50.0@0.002 smooth                         legmin +0.000001  proxy min step +0.00031806  NEG   0  FLAT    0
+KPD pick8 age21     44.0-58.0@0.050 raw                            legmin -5.917103  proxy min step -1.40256371  NEG  72  FLAT  107
+KPD pick8 age21     44.0-58.0@0.050 grid-ratchet(THE PREREG ERROR) legmin -2.441676  proxy min step -0.43950167  NEG  24  FLAT  182
+KPD pick8 age21     44.0-58.0@0.050 ratchet                        legmin +0.000000  proxy min step +0.00000000  NEG   0  FLAT  205
+KPD pick8 age21     44.0-58.0@0.050 smooth                         legmin +0.000349  proxy min step +0.00484778  NEG   0  FLAT    0
+KPD pick8 age21     46.0-50.0@0.002 raw                            legmin -3.263073  proxy min step -0.74978606  NEG  31  FLAT 1934
+KPD pick8 age21     46.0-50.0@0.002 grid-ratchet(THE PREREG ERROR) legmin -0.288354  proxy min step -0.05190369  NEG   4  FLAT 1976
+KPD pick8 age21     46.0-50.0@0.002 ratchet                        legmin +0.000000  proxy min step +0.00000000  NEG   0  FLAT 1982
+KPD pick8 age21     46.0-50.0@0.002 smooth                         legmin +0.000018  proxy min step +0.00024772  NEG   0  FLAT    0
+SF pick55 age24     44.0-58.0@0.050 raw                            legmin -3.349111  proxy min step -0.61752115  NEG  70  FLAT  106
+SF pick55 age24     44.0-58.0@0.050 grid-ratchet(THE PREREG ERROR) legmin -3.060616  proxy min step -0.46731110  NEG  32  FLAT  159
+SF pick55 age24     44.0-58.0@0.050 ratchet                        legmin +0.000000  proxy min step +0.00000000  NEG   0  FLAT  193
+SF pick55 age24     44.0-58.0@0.050 smooth                         legmin +0.000470  proxy min step +0.00730835  NEG   0  FLAT    0
+SF pick55 age24     46.0-50.0@0.002 raw                            legmin -2.075662  proxy min step -0.50869379  NEG  28  FLAT 1942
+SF pick55 age24     46.0-50.0@0.002 grid-ratchet(THE PREREG ERROR) legmin -0.467271  proxy min step -0.05190369  NEG   6  FLAT 1977
+SF pick55 age24     46.0-50.0@0.002 ratchet                        legmin +0.000000  proxy min step +0.00000000  NEG   0  FLAT 1984
+SF pick55 age24     46.0-50.0@0.002 smooth                         legmin +0.000049  proxy min step +0.00029233  NEG   0  FLAT    0
+
+VERDICT: PASS  (variant A must show NEG 0; variant B must show NEG 0 and FLAT 0)
