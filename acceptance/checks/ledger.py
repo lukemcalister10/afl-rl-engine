@@ -25,7 +25,14 @@ from acceptance import known_red as K
 
 #: heavy probes run only when the caller says so — see known_red.probe's UNPROBED branch for what
 #: happens the rest of the time (a dated measurement, and a red when the date leaves its window).
-_HEAVY_ENV = 'RL_ACCEPT_HEAVY'
+#:
+#: NOT RL_-PREFIXED, AND THAT WAS LEARNED THE HARD WAY. The first draft called this RL_ACCEPT_HEAVY.
+#: config_manifest.enforce() REJECTS any unknown RL_*/PAR_* variable as a divergent model override,
+#: so the flag leaked into every probe child that loads the engine and made an unrelated probe fail a
+#: DIFFERENT way — which the ledger correctly reported as DRIFTED rather than swallowing. The
+#: instrument caught its own author. Second occurrence in this package (see ship_gates_check.py:49's
+#: SGC_ prefix note), and the rule is now stated once here: A TOOL'S OWN FLAGS ARE NEVER RL_*.
+_HEAVY_ENV = 'ACCEPT_HEAVY_PROBES'
 
 _BAD = (K.EXPIRED, K.DRIFTED, K.UNPROBED, K.BROKEN)
 

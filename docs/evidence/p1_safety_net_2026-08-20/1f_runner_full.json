@@ -1,0 +1,134 @@
+{
+  "halted_carriers": {},
+  "root": "/home/user/afl-rl-engine",
+  "rows": [
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_full/release_manifest.txt",
+      "halted_carriers": [],
+      "name": "release_manifest",
+      "reason": "40 of 40 carrier fields agree with computed truth across 8 identities",
+      "seconds": 0.054,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_full/boot_guard_checkout.txt",
+      "halted_carriers": [],
+      "name": "boot_guard_checkout",
+      "reason": "boot-store guard (Guard 5) PASS  [acceptance-spine]  store b745002e == pinned b745002e  |  rl_model 6fe7c415 == pinned 6fe7c415  |  fv 6e9a370e == pinned 6e9a370e (checkout+loaded-path) (ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 \u2014 NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) \u2014 it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 num\u00e9raire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.])",
+      "seconds": 0.095,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_full/config_manifest.txt",
+      "halted_carriers": [],
+      "name": "config_manifest",
+      "reason": "CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)",
+      "seconds": 0.035,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_full/ruling_config.txt",
+      "halted_carriers": [],
+      "name": "ruling_config",
+      "reason": "RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL_LTI_CLOCK=advance (engine default + env + manifest pin, owner ruling R-i).",
+      "seconds": 0.025,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_full/release_contract_seal.txt",
+      "halted_carriers": [],
+      "name": "release_contract_seal",
+      "reason": "RELEASE-CONTRACT CHECK: PASS  (contract cde9f70a49b6; identities + config + posture consistent)",
+      "seconds": 0.072,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_full/store_coherence_six_way.txt",
+      "halted_carriers": [],
+      "name": "store_coherence_six_way",
+      "reason": "six-way store coherence: PASS",
+      "seconds": 0.068,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_full/doc_lint.txt",
+      "halted_carriers": [],
+      "name": "doc_lint",
+      "reason": "doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)",
+      "seconds": 0.035,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_full/rulebook_lint.txt",
+      "halted_carriers": [],
+      "name": "rulebook_lint",
+      "reason": "ruling RB1-rulebook-twin-unruled-laws (presented: docs/proposals/process_plan/PLAN_v6.md 1b (the disposal is o) \u2014 2 finding(s), first: FAIL R5 TWIN PARITY: docs/acceptance_v2_0.json law set != RULEBOOK PART 1 (11 vs",
+      "seconds": 0.055,
+      "verdict": "RULED-RED"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_full/ruled_red_ledger.txt",
+      "halted_carriers": [],
+      "name": "ruled_red_ledger",
+      "reason": "4 step entries probed, all still failing exactly as their ruling records",
+      "seconds": 4.652,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_full/inbox_manifest.txt",
+      "halted_carriers": [],
+      "name": "inbox_manifest",
+      "reason": "inbox_manifest: 1 archived file(s), 0 problem(s), 0 stale generated file(s)",
+      "seconds": 0.037,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_full/mirror_parity.txt",
+      "halted_carriers": [],
+      "name": "mirror_parity",
+      "reason": "3 fitted-artifact resolvers mirror the engine byte-for-byte; all 3 pins hold",
+      "seconds": 0.159,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_full/dial_coverage.txt",
+      "halted_carriers": [],
+      "name": "dial_coverage",
+      "reason": "83 of 84 declared dials read with a default in engine source (1 self-declared orphan); 70 engine-read vars undeclared (reported, 4-zero)",
+      "seconds": 0.011,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_full/oneliner_gamma.txt",
+      "halted_carriers": [],
+      "name": "oneliner_gamma",
+      "reason": "6 of ship_gates_check.py's 7 exported vars are manifest dials and all agree (enforce(\"gate\") would accept them)",
+      "seconds": 0.001,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_full/oneliner_r14_restore.txt",
+      "halted_carriers": [],
+      "name": "oneliner_r14_restore",
+      "reason": "R14 disposable fixture + fail-closed controls + movers transition: 50 [PASS], exit 0 \u2014 the config-pin restore line holds",
+      "seconds": 5.138,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_full/oneliner_f1_lens.txt",
+      "halted_carriers": [],
+      "name": "oneliner_f1_lens",
+      "reason": "the F1 export-parity leg is present, key-for-key, and still reports a mismatch count (the repair removed a false red, not the check)",
+      "seconds": 0.0,
+      "verdict": "PASS"
+    },
+    {
+      "evidence": "docs/evidence/p1_safety_net_2026-08-20/checks_full/build_twice_determinism.txt",
+      "halted_carriers": [],
+      "name": "build_twice_determinism",
+      "reason": "determinism: two bare builds are BYTE-IDENTICAL",
+      "seconds": 220.307,
+      "verdict": "PASS"
+    }
+  ]
+}

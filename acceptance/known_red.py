@@ -143,10 +143,20 @@ def probe(entry, root=None, run_heavy=False, timeout=None):
         return LIVE, 'heavy probe: last measured %s (%d days ago, window %s) — %s' \
                      % (p.get('last_probed'), age, maxage, p.get('last_result') or 'still failing')
     root = root or ROOT
+    # A PROBE MUST NOT CHANGE WHAT IT MEASURES, and the environment is part of that. Anything a
+    # probe child inherits that config_manifest.enforce() would reject as an unknown RL_*/PAR_*
+    # override makes the child fail for OUR reason instead of its own. The entry may declare the
+    # env the real step runs under; nothing else about this process's env is invented for it.
+    env = dict(os.environ)
+    for k in list(env):
+        if k.startswith(('RL_ACCEPT', 'SGC_')):
+            env.pop(k, None)
+    env['RL_REPO'] = root
+    env.update({str(k): str(v) for k, v in (p.get('env') or {}).items()})
     try:
         r = subprocess.run(argv, cwd=root, capture_output=True, text=True,
                            timeout=timeout or int(p.get('timeout_s') or 300),
-                           env=dict(os.environ, RL_REPO=root))
+                           env=env)
         out = (r.stdout or '') + (r.stderr or '')
         rc = r.returncode
     except subprocess.TimeoutExpired:

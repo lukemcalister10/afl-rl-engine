@@ -1,0 +1,15 @@
+RULED-RED LEDGER — step-keyed entries and their expiry probes
+  tree: /home/user/afl-rl-engine   heavy probes: dated
+
+RB1-rulebook-twin-unruled-laws     LIVE         probe still fails (exit 1), signature matched
+                                                step: acceptance::rulebook_lint
+                                                step: ci::rulebook-lint
+
+FI1-generated-bundle-equality      LIVE         probe still fails (exit 1), signature matched
+                                                step: final-integration.yml::Season-state anchors (fixed R14 historical + current round) + generated-bundle equality
+
+R15-ladder-proof-GFWD              LIVE         probe still fails (exit 1), signature matched
+                                                step: script::session_2026-07-21/final_integration/tests/r15_ladder_survival_proof.py
+
+CG1-one-source-selftest-residual   LIVE         heavy probe: last measured 2026-08-20 (0 days ago, window 30) — suite: PASS=124 FAIL=15, measured in an isolated workspace seeded from the checkout (docs/evidence/m1a_2026-08-20/oneliner_c_f1lens.txt, AFTER section)
+                                                step: ci-guards.yml::Guards 1/2/3/5 + F1/F2 parity (one_source_selftest.py)

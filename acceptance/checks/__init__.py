@@ -75,6 +75,7 @@ C.register('doc_lint', _standing.doc_lint,
 # carrier, so they are all safe below the trunk.
 
 from acceptance.checks import ledger as _ledger                              # noqa: E402
+from acceptance.checks import m1a as _m1a                                    # noqa: E402
 
 # 8. THE RULEBOOK LINT (1a). A NEW instrument — doc_lint would false-red on the RULEBOOK's own
 #    prose, so it was never pointed at it. Consults the ruled-red ledger's STEP half.
@@ -92,3 +93,30 @@ C.register('ruled_red_ledger', _ledger.check,
 C.register('inbox_manifest', _standing.inbox_manifest,
            reads=(),
            doc='docs/inputs/incoming/MANIFEST.md is current, and every input names its canonical copy')
+
+# 11-15. THE M1a RESIDUE, cheap legs (1f).
+C.register('mirror_parity', _m1a.mirror_parity,
+           reads=(),
+           doc='boot_guard\'s fitted-artifact resolvers mirror the engine; q97m/v0surf/cm == pins')
+
+C.register('dial_coverage', _m1a.dial_coverage,
+           reads=(),
+           doc='every declared dial is read with a default in engine source')
+
+C.register('oneliner_gamma', _m1a.oneliner_gamma,
+           reads=(),
+           doc='M1a repair 1 — ship_gates_check model env == the pinned manifest')
+
+C.register('oneliner_r14_restore', _m1a.oneliner_r14_restore,
+           reads=(),
+           doc='M1a repair 3 — the R14 disposable fixture verifies (the real suite, run)')
+
+C.register('oneliner_f1_lens', _m1a.oneliner_f1_lens,
+           reads=(),
+           doc='M1a repair 4 — the F1 export-parity leg is repaired, not removed')
+
+# 16. THE HEAVY LEG (1f). Two bare builds, byte-identical. ~3.5 minutes; excluded from
+#     --profile host-insensitive, which is what every push runs.
+C.register('build_twice_determinism', _m1a.build_twice_determinism,
+           reads=(),
+           doc='two bare builds of this tree produce byte-identical boards')

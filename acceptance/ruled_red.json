@@ -1,26 +1,26 @@
 {
   "schema": 2,
-
   "_doc": "THE MACHINE-READABLE KNOWN-RED LEDGER. AUDIT_CI.md §5/RETIRE asked for exactly this instrument, by name: 'If declared known-reds must be carried, carry them as a machine-readable list keyed by assertion name — the tree already has the instrument (release_contract.json.held_checks), and it is currently empty.' This file is that list, living beside the runner that reads it rather than inside a contract another seat owns. An entry here does NOT excuse a red: it records that the red is MEASURED, KNOWN, and already before the owner or supervisor as a presented fork, and that no seat may clear it unilaterally. The runner reports such a row as RULED-RED (non-gating) and blocks everything downstream of the carrier, so one presented fork produces one row instead of thirty.",
-
   "_schema_2": "SCHEMA 2 (PLAN_v6 1a, 2026-08-20) ADDS STEP KEYS. Schema 1 keyed CARRIERS only — a named upstream fact whose coherence can be read off a file. 1a arms loud-red on WORKFLOW STEPS, and a workflow step has no carrier: keyed the old way it would match nothing, be reported stale on entry one, and red the runner for existing. An entry may now declare `steps` (workflow step ids of the form '<workflow>.yml::<step name>', or 'acceptance::<check name>', or 'script::<path>' for a proof retired from CI but still in the tree) INSTEAD OF or alongside `carriers`. Everything else about an entry is unchanged, and `stale()` now considers only entries that DECLARE carriers, so the two kinds cannot poison each other.",
-
   "_probe_contract": "EVERY STEP ENTRY MUST CARRY A PROBE, AND THE PROBE IS THE EXPIRY. A carrier entry expires for free — the carrier becomes coherent and the entry stops matching. A step entry cannot: nothing about a committed workflow file says whether its step still fails. The acceptance criterion this extension was built to (REVIEW_COLD_OPUS.md O1, verbatim): 'a workflow-step entry expires when its step stops failing.' So `probe.argv` is the command that asks the step whether it is still broken, `probe.match` is the recorded failure signature, and the runner reads four answers: the probe still fails with that signature (LIVE, the ruling stands); the probe SUCCEEDS (EXPIRED -> FAIL, retire the entry); the probe fails some OTHER way (DRIFTED -> FAIL, re-adjudicate); or a `heavy` probe has not been re-measured inside its own `probe_max_age_days` window (UNPROBED -> FAIL, nobody has looked). A probe must never write to the tree it measures — see tools/probe_bundle_equality.py for why that had to be said out loud.",
-
   "_self_expiry": "EVERY ENTRY IS SELF-EXPIRING AND THE RUNNER ENFORCES IT. An entry applies only while the drift it describes is still measurable. The moment the carrier becomes coherent — or, for a step entry, the moment its probe stops failing — the entry stops matching and the runner FAILS on the stale entry itself ('stale RULED-RED — retire this entry'). That is deliberate. A known-red list that has quietly stopped matching reality is the panel-10/10 failure mode all over again — the estate has retired four instruments for exactly that (the panel 10/10, the movers 'exactly two known-reds', the R14 fixture config pin, BOARD_MD5_GOOD). This ledger is built so it cannot become the fifth. It has already fired once in anger: see the R2 entry in `retired` below, which the runner demanded be retired within an hour of being written, because the fork it recorded was repaired upstream while this order was being built.",
-
   "_how_to_add": "An entry may be added ONLY when the fork is already presented in writing to the owner or supervisor, and `presented` must name the document that presents it. A red that is merely inconvenient, or that a seat believes is fine, is a FAIL. RULED-RED is not a snooze button — a drift nobody has presented reds the run, and that is the whole point. A red the record calls a one-line repair is REPAIRED, not entered here: PLAN_v6 1f carries all three recorded one-liners for exactly that reason.",
-
   "entries": [
     {
       "id": "RB1-rulebook-twin-unruled-laws",
-      "steps": ["acceptance::rulebook_lint", "ci::rulebook-lint"],
+      "steps": [
+        "acceptance::rulebook_lint",
+        "ci::rulebook-lint"
+      ],
       "reason": "docs/acceptance_v2_0.json declares itself regenerated_from the RULEBOOK and carries THIRTEEN laws where RULEBOOK PART 1 numbers ELEVEN — G-Y0 and G-COHORT appear in the twin and in no numbered law — and it carries no DO-NOT-HAND-EDIT banner. This is the register's standing law-count flag ('Part 1 numbers 11 laws vs 13 in its commit message + seat brief — owner to eyeball') measured rather than eyeballed, and the in-tree violator of 1b's 'no second laws file, ever'.",
       "presented": "docs/proposals/process_plan/PLAN_v6.md 1b (the disposal is owner-ruled) + docs/proposals/rulebook/AMENDMENT_1b_2026-08-20.md (the exact diff drafted for the owner's signature, with the count resolution as its own numbered question)",
       "register": "v803 header flag standing: RULEBOOK.md law count · REVIEW_COLD_OPUS.md F7 (in-tree violator) + F18 (count flag)",
       "expires_when": "the owner signs the 1b diff: either the two laws enter PART 1 (parity restored) or the twin is removed (no derived view to lint).",
       "probe": {
-        "argv": ["python3", "tools/rulebook_lint.py"],
+        "argv": [
+          "python3",
+          "tools/rulebook_lint.py"
+        ],
         "match": "R5 TWIN PARITY",
         "cost": "cheap",
         "timeout_s": 60
@@ -28,12 +28,17 @@
     },
     {
       "id": "FI1-generated-bundle-equality",
-      "steps": ["final-integration.yml::Season-state anchors (fixed R14 historical + current round) + generated-bundle equality"],
+      "steps": [
+        "final-integration.yml::Season-state anchors (fixed R14 historical + current round) + generated-bundle equality"
+      ],
       "reason": "the step asserts a fresh extract_board_view.py run reproduces BOTH committed UI bundles byte-for-byte. board_view_public.js does (105512 bytes, byte-exact). board_view_working.js does NOT: the regenerated file is 557956 bytes against the committed 558536 and drops the entire release{} block (release_version / balanced_board_md5 / engine_head / …). The extractor is not the sole writer of the working bundle — the landing act's UI writer adds the release block after extraction — so the step's premise is true of one bundle and false of the other.",
       "presented": "docs/proposals/process_plan/PLAN_v6.md 1a:47-53 ('final-integration's recorded reds INCLUDING the bundle-cmp step (repaired or ruled-red IN P1)') · REVIEW_COLD_OPUS.md F3/F4",
       "expires_when": "one writer owns the release block, or the step compares the surface the extractor actually owns. The repair is a decision about writer ownership (PLAN_v6 2a.1's 'BOTH UI writers'), not a one-liner, and it is not this package's to make.",
       "probe": {
-        "argv": ["python3", "tools/probe_bundle_equality.py"],
+        "argv": [
+          "python3",
+          "tools/probe_bundle_equality.py"
+        ],
         "match": "board_view_working.js",
         "cost": "cheap",
         "timeout_s": 300
@@ -41,13 +46,18 @@
     },
     {
       "id": "R15-ladder-proof-GFWD",
-      "steps": ["script::session_2026-07-21/final_integration/tests/r15_ladder_survival_proof.py"],
+      "steps": [
+        "script::session_2026-07-21/final_integration/tests/r15_ladder_survival_proof.py"
+      ],
       "reason": "the proof HALTS at engine-import time with KeyError: 'GFWD' in rl_model.py:71 _pos_present, before any assertion of its own is reached. GFWD is a PRE-item-262 position code (migrate_positions.py maps GFWD -> SF, 2026-07-29); the disposable R14 scratch the proof materialises still carries the legacy vocabulary the live engine no longer knows. Proved PRE-EXISTING by running the same proof from a clean worktree at 2991740 — before any of that day's edits — for the identical traceback.",
       "presented": "docs/evidence/f5_and_sort_2026-08-20/FINAL_STATE.md §3 (referred, not repaired) · docs/evidence/backrows_reseal_2026-08-20/FINAL_STATE.md item 9 · PLAN_v6.md 1a legacy-estate triage",
       "register": "RETIRED FROM CI by owner word 2026-07-30 (#274) — final-integration.yml still names it in the retirement comment. It is therefore keyed as a script, not a workflow step: it is a proof in the tree that cannot run, not a red job.",
       "expires_when": "the scratch fixture's position vocabulary is migrated (item 262's map applied to the R14 materialisation), or the proof is retired from the tree. Nobody has ruled on which.",
       "probe": {
-        "argv": ["python3", "session_2026-07-21/final_integration/tests/r15_ladder_survival_proof.py"],
+        "argv": [
+          "python3",
+          "session_2026-07-21/final_integration/tests/r15_ladder_survival_proof.py"
+        ],
         "match": "KeyError: 'GFWD'",
         "cost": "cheap",
         "timeout_s": 300
@@ -55,23 +65,34 @@
     },
     {
       "id": "CG1-one-source-selftest-residual",
-      "steps": ["ci-guards.yml::Guards 1/2/3/5 + F1/F2 parity (one_source_selftest.py)"],
+      "steps": [
+        "ci-guards.yml::Guards 1/2/3/5 + F1/F2 parity (one_source_selftest.py)"
+      ],
       "reason": "the estate's central single-source guard suite runs 139 assertions and 15 still FAIL after M1a's F1 lens repair took it from 123/16 to 124/15. The F1 numeraire red — the one the repair owned — is GONE and was proved non-vacuous (a 1-point board perturbation still fires it). The residual 15 are a separate, un-audited population that nobody has attributed.",
       "presented": "docs/proposals/process_plan/PLAN_v6.md 1a:47-53 ('ci-guards' recorded red (one_source_selftest)') · REVIEW_COLD_OPUS.md F4 quoting register v787: 'ci-guards RED (build/Guard5/ruling/manifest all pass; one_source_selftest 13/139)'",
       "expires_when": "the residual 15 are attributed and repaired, or ruled individually. A suite-level entry is the coarsest honest key available until somebody enumerates them.",
       "probe": {
-        "argv": ["bash", "-c", "cd /home/claude/rl_workspace/rl_after && python3 one_source_selftest.py"],
+        "argv": [
+          "bash",
+          "-c",
+          "cd /home/claude/rl_workspace/rl_after && python3 one_source_selftest.py"
+        ],
         "match": "suite:",
         "cost": "heavy",
         "last_probed": "2026-08-20",
         "last_result": "suite: PASS=124 FAIL=15, measured in an isolated workspace seeded from the checkout (docs/evidence/m1a_2026-08-20/oneliner_c_f1lens.txt, AFTER section)",
         "probe_max_age_days": 30,
         "timeout_s": 900,
-        "_why_heavy": "the suite needs a bootstrapped workspace AND a board built from it — ci-guards.yml runs it only after setup_env.sh + bootstrap.sh + rl_export.py + s4_matrix. It cannot run on a bare checkout, so it cannot run on every runner invocation, so the ledger demands a DATED measurement instead and reds when the date leaves the window."
+        "_why_heavy": "the suite needs a bootstrapped workspace AND a board built from it — ci-guards.yml runs it only after setup_env.sh + bootstrap.sh + rl_export.py + s4_matrix. It cannot run on a bare checkout, so it cannot run on every runner invocation, so the ledger demands a DATED measurement instead and reds when the date leaves the window.",
+        "env": {
+          "PYTHONPATH": "/home/claude/rl_workspace/rl_after:/home/claude/rl_vendor",
+          "RL_CONFIG_MODE": "gate",
+          "PYTHONHASHSEED": "0"
+        },
+        "_probe_environment": "MEASURED 2026-08-20, with ACCEPT_HEAVY_PROBES=1 on the P1 box: the probe reports DRIFTED here, because /home/claude/rl_workspace is the STALE shared workspace (pre-D8 engine, pre-R23 store) and the suite dies at import on a missing vendor module before printing its 'suite:' summary line. That is the ledger working: the signature really is absent, and a probe that cannot start must not be read as a probe that failed the recorded way. The env above mirrors ci-guards.yml's step exactly; the suite still needs bootstrap.sh + a board built from it, which no P1 act will do on a shared box other seats are live against (M1a refused the same thing for the same reason). Hence cost=heavy and a DATED measurement, and hence the runner does NOT run heavy probes unless ACCEPT_HEAVY_PROBES=1 is set deliberately."
       }
     }
   ],
-
   "retired": [
     {
       "id": "R2-release-contract-code-identities",

@@ -1,0 +1,10 @@
+$ bash /home/user/afl-rl-engine/tools/build_lock.sh run acceptance-determinism -- /root/rl_venv312/bin/python3 /home/user/afl-rl-engine/tools/build_twice_determinism.py --root /home/user/afl-rl-engine
+
+build-lock: HELD by acceptance-determinism (pid 5041) since 2026-08-20T13:08:43Z — single writer for the shared workspace.
+  build A  rc=0  board_md5=68be10c79d0ee096455754e084bcf757  (111.7s)
+  build B  rc=0  board_md5=68be10c79d0ee096455754e084bcf757  (108.6s)
+  pinned board (data/expected_boot.json): 68be10c79d0ee096455754e084bcf757  -> builds MATCH the pin
+determinism: two bare builds are BYTE-IDENTICAL
+build-lock: released by acceptance-determinism
+
+[exit 0]

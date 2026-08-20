@@ -1,0 +1,142 @@
+{
+ "head": "1867e953",
+ "store": "b745002e",
+ "config": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+ "gates": {
+  "A1": {
+   "dc": false,
+   "status": "PASS",
+   "detail": "Duursma>Uwland: 3915 vs 1847"
+  },
+  "A2": {
+   "dc": false,
+   "status": "FAIL",
+   "detail": "Curtis>=0.90xWard: 1553 vs 2554 (Ward=2837, ratio=0.547) [AMENDED 02/07/2026; UNCHANGED at 0.90 by ruling D7 \u2014 Luke: \"we can look at Curtis down the line\"]; Weddle>Ward: 1456 vs 2837"
+  },
+  "A3": {
+   "dc": true,
+   "status": "FAIL",
+   "detail": "Connor Rozee: 2026=3532 2025=5048 ratio=0.70 (need >=0.75) [evaluated PRE-LTI-layer \u2014 Luke 02/07; AMENDED 0.80->0.75 Luke D7 data-caused (out for 2026), knife-edge by design]"
+  },
+  "A4": {
+   "dc": false,
+   "status": "PASS",
+   "detail": "Harley Reid board rank=30 ev=4125 (need TOP 40)"
+  },
+  "A5": {
+   "dc": false,
+   "status": "PASS",
+   "detail": "Jack Ginnivan=2198 (floor 1600); Jake Bowey=4100 (floor 2100); Nick Blakey=4369 (floor 2600) [SCAR floors \u2014 RE-BASE if PVC re-levels]"
+  },
+  "A6": {
+   "dc": false,
+   "status": "PASS",
+   "detail": "yr1-3 RUCK median=222 (n=11, pooled \u2014 thin slice) vs pick-matched MID kernel median=581 (n=70, bw=0.6 log-pick, RATIFIED 02/07)"
+  },
+  "A7": {
+   "dc": false,
+   "status": "PASS",
+   "detail": "Ryan Maric: future_position=MID gfut=MID (need MID/MID) [AMENDED 2026-07-05: _fut blend stripped -> single future_position, owner-authorised]; Ed Langdon: future_position=SD gfut=SD (need SD/SD) [AMEN"
+  },
+  "A8": {
+   "dc": true,
+   "status": "PASS",
+   "detail": "Berry=3565 Tsatas=973 ratio=3.66x (need >=2.00x) [display de-ambiguated D4 02/07]"
+  },
+  "A9": {
+   "dc": false,
+   "status": "FAIL",
+   "detail": "Ginnivan>Ward: 2198 vs 2837"
+  },
+  "A10": {
+   "dc": true,
+   "status": "PASS",
+   "detail": "Charlie Curnow: 2026=1366 2025=2040 ratio=0.67 (need >=0.50) [AMENDED 0.70->0.50 Luke 02/07 data-caused, PROVISIONAL \u2014 review at season-complete]"
+  },
+  "A11": {
+   "dc": true,
+   "status": "PASS",
+   "detail": "Farrow>Patterson: 2618 vs 1254; Cumming>Annable: 2254 vs 1182"
+  },
+  "A12": {
+   "dc": true,
+   "status": "FAIL",
+   "detail": "Travaglia>Moraes: 461 vs 570; Smillie>Retschko: 799 vs 1216"
+  },
+  "A13": {
+   "dc": false,
+   "status": "PENDING",
+   "detail": "PVC stage not run; advisory vs stand-in PVC[1]=3000: George Wardlaw=3130 lineball=True; Levi Ashcroft=3879 lineball=False"
+  },
+  "A14": {
+   "dc": false,
+   "status": "PENDING",
+   "detail": "PVC stage not run; advisory vs stand-in PVC[8]=1320: Trent Rivers=1839 lineball=False; Zach Reid=1123 lineball=True; Jase Burgoyne=2347 lineball=False"
+  },
+  "A15": {
+   "dc": false,
+   "status": "STRUCK",
+   "detail": "Luke 02/07/2026 \u2014 convexity dimension seeded as V_NEXT #1"
+  },
+  "B1": {
+   "dc": false,
+   "status": "HALT",
+   "detail": "JULY-8 construction (owner-ruled 2026-07-13, register v52 \u2014 CONFORMED; raw class-year sums of Vpath averaged UNWEIGHTED across 17 classes 2004-2020 incurve ND+RD; CANDIDATE regenerated this run \u2014 engi"
+  },
+  "B2": {
+   "dc": false,
+   "status": "PASS",
+   "detail": "leave-cohort-out sensitivity (2014-2018 ND held out): median |IS-WF| leakage=0.000 %-pts (FULL precision; tol 0.5 UNCHANGED, SET 02/07/2026); worst cells RUCK|GOOD|T4:3.78, SD|GOOD|T4:2.41, SD|GOOD|T2"
+  },
+  "B3": {
+   "dc": false,
+   "status": "PASS",
+   "detail": "CANDIDATE book stable seal (regenerated this run \u2014 engine 1867e953 store b745002e config eed19a75f775): MATCHES the sealed baseline. current=9f46aba3ba8b056d.. (2650 players) vs baseline=9f46aba3ba8b0"
+  },
+  "B4": {
+   "dc": false,
+   "status": "PASS",
+   "detail": "regenerated rl_app_data.json md5=68be10c7 vs shipped 68be10c7 (byte-agree gate; export exit=0)"
+  },
+  "B5": {
+   "dc": false,
+   "status": "FEATURE",
+   "detail": "floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail; #326 scope = national draftees + 225 engine-pool entrants on their signed division levels): 15 saves, aggregate lift +4575; the flo"
+  },
+  "B6": {
+   "dc": false,
+   "status": "PASS",
+   "detail": "ramp(0..14g)=[1138, 1206, 1308, 1427, 1623, 1798, 2074, 2190, 2293, 2405, 2583, 2731, 2868, 2983, 3100]; dips(more games worth less)=none; 0->6 rise T=+936; 0->6 steps>50%T=none; rise by 3g=+289 (need"
+  },
+  "D14a": {
+   "dc": false,
+   "status": "PASS",
+   "detail": "same pos\u00d7draft-age\u00d7recorded-pick \u21d2 identical V0* across draft years: max cross-draft dispersion=0.0000 SCAR over the 1448 rows the surface prices (Luke's amended law; board path) [report-only, all ND "
+  },
+  "D14b": {
+   "dc": false,
+   "status": "PASS",
+   "detail": "within (pos\u00d7draft-age\u00d7draft-year) V0 inversions under V0* = 0 (D13 guard-transform \u2192 assertion; obituary E5) [report-only, all ND incl. pool: 712 \u2014 ladder-vs-pool pairs, different price objects]"
+  },
+  "D14c": {
+   "dc": false,
+   "status": "PASS",
+   "detail": "KPP retention floor O1 depth-monotone = True (max of isotonic-non-increasing KPP/nonKPP; comparator nonKPP-only)"
+  },
+  "D14d": {
+   "dc": false,
+   "status": "PASS",
+   "detail": "SURFACE never-rises (R12): 0 rising step(s) picks 1-64 \u00b7 0 over the full 1-90 grid \u00b7 scanned 90 pos\u00d7draft-age profiles (8010 adjacent pairs; players expose ~8%)"
+  },
+  "C1": {
+   "dc": false,
+   "status": "PENDING",
+   "detail": "naive-baseline book not yet built \u2014 definition proposal in report (needs its own directive)"
+  },
+  "C2": {
+   "dc": false,
+   "status": "PENDING",
+   "detail": "V1-pick-model book not yet built \u2014 definition proposal in report (needs its own directive)"
+  }
+ }
+}
