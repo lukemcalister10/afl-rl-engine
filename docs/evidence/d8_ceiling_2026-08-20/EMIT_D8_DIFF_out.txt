@@ -1,0 +1,72 @@
+2,7c2,8
+< # COMPLETION PASS — the walk-forward per-entrant emit on THE PARITY BOARD a05fe951.
+< # docs/evidence/consolidation_2026-08-19/run_emit_D6.sh, carried with THREE declared changes:
+< #   (1) RL_O43 ADDED TO THE DIAL PASS-THROUGH. It was absent because it did not exist when that file
+< #       was written. WITHOUT IT the emit prices the D7-OFF board daa16812 while the reference carries
+< #       the D7-ON prints -- a silent mismatch, exactly what the pass-through list exists to prevent.
+< #       This is a SCRIPT change, allowed by the order and disclosed at REBASE_DAY0_AMENDED.md 2a.
+---
+> # ORDER D8 MEASUREMENT — the walk-forward per-entrant emit for THE PRICED CANDIDATE 5ea978f7.
+> # docs/evidence/final_candidate_2026-08-19/run_emit_CP.sh (md5 33bb5d25a763603c7c12bc98a01910c0), the
+> # COMPLETED-PASS-THROUGH lineage (run_emit_D6 -> run_emit_CP), carried with THREE declared changes:
+> #   (1) RL_O33_TAPEROFF ADDED TO THE DIAL PASS-THROUGH. It was absent because it did not exist when
+> #       that file was written. WITHOUT IT the emit would silently price the OFF board a05fe951 under
+> #       a candidate label -- exactly the mismatch the pass-through list exists to prevent. This is the
+> #       same disclosed script change class as run_emit_CP.sh's own RL_O43 addition.
+9c10
+< #   (3) RL_DAY0_FINAL defaults to THIS PASS's regenerated reference DAY0_CP.json (board a05fe951).
+---
+> #   (3) the label defaults to D8CAND.
+11,20d11
+< # THE ORDER 31-F REPLICATION GUARD IS NOT WEAKENED: same two legs, same tolerance 0. It must read
+< # 89 of 89 against the regenerated reference or this emit FAILS CLOSED and no matrix is used.
+< # ORIGINAL ORDER S HEADER FOLLOWS.
+< # ORDER S — the walk-forward per-entrant emit. ORDER R's file with the five RL_O40_* dials added
+< # to the pass-through list and the staging re-pointed.
+< # ORIGINAL ORDER R HEADER FOLLOWS.
+< # ORDER R — the walk-forward per-entrant emit. ORDER K's run_emit_K.sh with RL_O37 passed
+< # through and the label and staging re-pointed. The ORDER 31-F emitter
+< # (docs/evidence/candidate_31f/emit_matrix_31f.py) is BYTE-CARRIED; the engine is THIS TREE's engine.
+< # Same env, same five-var thread pinning, strictly sequential.
+22,27c13,20
+< # THE DAY-0 GUARD IS NOT RE-BASED. It is pointed at ORDER K's OWN DAY0_K.json on purpose, because
+< # ORDER P changes NOTHING about entry prices or the sitter fade: A(0) = 0 exactly, so a row with no
+< # games cannot move. Pointing the replication proof at ORDER K's file therefore MAKES IT FALSIFIER B3
+< # — if any of the 89 printed day-0 prices moves, this emit FAILS CLOSED rather than quietly
+< # regenerating a new reference. ORDER D and ORDER K both had to regenerate, because both changed the
+< # fade; this order does not, so it must not.
+---
+> # THE ORDER 31-F REPLICATION GUARD IS NOT WEAKENED AND ITS REFERENCE IS NOT RE-BASED: same two legs,
+> # tolerance 0, against the FROZEN docs/evidence/final_candidate_2026-08-19/DAY0_CP.json (210510fe5d09)
+> # -- the current reference, the one the bake ran bare against and read 89 of 89 on. The B-3 taper is
+> # inert at age<=20 and every day-0 row is an entrant, so if ANY day-0 print moves this emit FAILS
+> # CLOSED, no matrix is used, and the seat reports which rows moved rather than regenerating a
+> # reference. THAT IS THE POINT OF POINTING IT HERE.
+> #
+> # NOTHING IS ADOPTED. NO BOARD PIN MOVES. NO ENGINE FILE IS EDITED BY THIS SCRIPT.
+29,31c22
+< LABEL=${OP_LABEL:-CPCAND}
+< HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+< REPO="$(cd "$HERE/../../.." && pwd)"
+---
+> LABEL=${OP_LABEL:-D8CAND}
+33c24,25
+< OUT=$SP/cp/emit_$LABEL
+---
+> REPO=${RL_REPO_D8:-$SP/wt-d8n}
+> OUT=$SP/d8m/emit_$LABEL
+49c41,42
+<          RL_O41_SDOFF RL_O41_CREDIT RL_O41_CREDITFORM RL_O41_RESET RL_O41_INJ RL_O41_R3 RL_O41_RAMP RL_O41_BREAK RL_O41_UNWIND RL_O42 RL_O43; do
+---
+>          RL_O41_SDOFF RL_O41_CREDIT RL_O41_CREDITFORM RL_O41_RESET RL_O41_INJ RL_O41_R3 RL_O41_RAMP RL_O41_BREAK RL_O41_UNWIND RL_O42 RL_O43 \
+>          RL_O33_TAPEROFF; do
+53c46,48
+< echo "  RL_O42=${RL_O42:-unset} RL_O43=${RL_O43:-unset}   day0 ref: $(basename $RL_DAY0_FINAL) ($(md5sum $RL_DAY0_FINAL | cut -c1-12))\n  emit starting $(date -u +%H:%M:%S)  (RL_O37=${RL_O37:-unset} A=${RL_O38A:-unset} B1=${RL_O38B1:-unset} pct=${RL_O39_TMAXPCT:-unset} w=${RL_O40_RECW:-unset} cap=${RL_O40_CAPFORM:-unset}${RL_O40_CAPPCT:-} lam=${RL_O40_LAMBDA:-unset} pgm=${RL_O40_PGMAT:-unset})"
+---
+> echo "  RL_O33_TAPEROFF=${RL_O33_TAPEROFF:-unset}   <-- THE PRICED DIAL. 'unset' here means this emit is the BASE, not the candidate."
+> echo "  day0 ref: $(basename $RL_DAY0_FINAL) ($(md5sum $RL_DAY0_FINAL | cut -c1-12))  NOT re-based"
+> echo "  emit starting $(date -u +%H:%M:%S)"
+64c59
+< cp "$OUT/emit.log" "$HERE/EMIT_${LABEL}_out.txt" 2>/dev/null
+---
+> cp "$OUT/emit.log" "$SP/d8m/EMIT_${LABEL}_out.txt" 2>/dev/null

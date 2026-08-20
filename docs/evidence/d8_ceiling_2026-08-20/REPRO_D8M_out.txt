@@ -1,0 +1,22 @@
+=== D8 MEASUREMENT SEAT — REPRODUCTION OF BOTH BOARDS ===
+  worktree: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/wt-d8n @ 7645cce
+  engine  : 338a790b773cfbbff0e1283794c72efe  (D8 tree: 338a790b773cfbbff0e1283794c72efe)
+  rl_model: 6fe7c4155866d80e8045bed2d3bf2802  (pin 6fe7c4155866d80e8045bed2d3bf2802)
+  store   : cc02567f80bef39228f25854d121a766  (pin cc02567f80bef39228f25854d121a766)
+  q97m    : cfdc73216c099e5e8f1fda3968f31c00  (pin cfdc73216c099e5e8f1fda3968f31c00)
+
+build-lock: HELD by d8-measure (pid 10266) since 2026-08-20T07:29:31Z — single writer for the shared workspace.
+D8 M_OFF_DEV  mode=dev       rc=0 board_md5=a05fe951f78482c70520480e184c80ec  (107.4s)
+  staging removed: /home/claude/fvprov_f5iuok3f
+D8 M_OFF_CAN  mode=canonical rc=0 board_md5=a05fe951f78482c70520480e184c80ec  (107.8s)
+  staging removed: /home/claude/fvprov_sqq9_e9f
+D8 M_ON_DEV   mode=dev       rc=0 board_md5=5ea978f7b6a073abb2012f10cccbc3e3  (103.9s)
+  staging removed: /home/claude/fvprov_4np27oh9
+build-lock: released by d8-measure
+
+=== BOARD IDS, AGAINST THE D8 CLAIMS ===
+  M_OFF_DEV  a05fe951f78482c70520480e184c80ec
+  M_OFF_CAN  a05fe951f78482c70520480e184c80ec
+  M_ON_DEV   5ea978f7b6a073abb2012f10cccbc3e3
+  EXPECTED  M_OFF_DEV = M_OFF_CAN = a05fe951f78482c70520480e184c80ec   (THE LIVE BOARD / THE BASE)
+  EXPECTED  M_ON_DEV                = 5ea978f7b6a073abb2012f10cccbc3e3   (THE PRICED CANDIDATE)
