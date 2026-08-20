@@ -66,6 +66,48 @@ Only `v0_start` moved, 615.20 → 613.76 (−0.234 %), which is pool renormalisa
 **So 100 % of the −227 is the global term.** Confirmed twice: by the 2×2 above, and by the fact
 that there is no other candidate.
 
+### 2.1a THE GLOBAL TERM SPLIT — pool vs season clock (CLOSED, 3 loads)
+
+Three loads, each a full engine load against a scratch copy; the store row is byte-identical for
+every player in this table, so `A→B` is the **pure pool** term and `B→D` is the **pure season**
+term, and they sum exactly to the total.
+
+```
+A = R22 store + R22 season      B = R23 store + R22 season      D = R23 store + R23 season
+player               A        B        D  |    TOTAL     POOL    SEASON
+Nicholas Martin   4287.9   4278.5   4061.1 |   -226.8     -9.3    -217.4   (season  96 %)
+Tom Green         5637.3   5624.5   5575.0 |    -62.3    -12.8     -49.5   (season  79 %)
+Joshua Kelly       779.5    777.6    759.3 |    -20.2     -2.0     -18.2   (season  90 %)
+Darcy Jones       1303.5   1300.9   1280.2 |    -23.3     -2.6     -20.7   (season  89 %)
+William McCabe     228.8    228.8    229.8 |     +1.0     +0.0      +1.0   (season 100 %)
+```
+
+**The season clock is 96 % of Martin's move; the pool renormalisation is 4 % (−9.3 board).**
+McCabe's pool term is exactly 0.0 — his +1 is entirely the season clock.
+
+### 2.1b WHERE THE SEASON TERM ACTUALLY ENTERS — a correction worth recording
+
+`probe6_clock.py` patches `SEASON_FE`/`M3_FE` to 0.92 **after** the load and recomputes the
+healthy counterpart, so it moves the *evaluation-time* clock only; surfaces built at load time
+from fE (the V0 curve/guard, the precomputed parity floor) stay at 0.96. Subtracting:
+
+```
+player             SEASON tot   evaluation-time clock   surfaces baked at load from fE
+Nicholas Martin       -217.4                   -30.5                          -186.9
+Tom Green              -49.5                   -56.4                            +7.0
+Joshua Kelly           -18.2                   -18.1                            -0.2
+Darcy Jones            -20.7                   -20.7                            +0.0
+```
+
+For Kelly and Jones the season term is **entirely** the call-time clock — the depth read at
+evaluation. **For Martin it is not**: only −30.5 of his −217.4 comes through the call-time read,
+and −186.9 comes through surfaces the engine bakes from fE at load. So the §2.3 depth arithmetic
+correctly describes *the quantity that moved* (his `c_u`, exactly reproduced to 7 decimals) and
+the season clock is correctly identified as 96 % of the cause — but the **transmission** into his
+price is mostly through load-time-baked fE surfaces, not through the depth read, and I have not
+traced which surface. This is stated because an earlier pass of this file implied the depth read
+itself carried the charge. It does for Kelly and Jones. It does not for Martin.
+
 ### 2.2 The board is NOT charging him for being unavailable — it is paying him the healthy price
 Measured in-process (`_D7_ROWS`, the ORDER-D7/`RL_O43` parity guard from register v771):
 
@@ -446,21 +488,17 @@ which is a level, not a round-23 move.
 
 ## 6e · WHAT I DID **NOT** MEASURE (stated so nothing here is over-read)
 
-1. **The calendar-vs-pool sub-split of the "global" term.** My 2×2 moves the store and the season
-   state together (that is what a board advance does). For Martin the store row is byte-identical,
-   so his −227 is wholly in that combined term; I attribute it to the season clock on two grounds —
-   his depth `c_u` is the only input of his that moved, and the board-wide DNP gradient in §2.5 is
-   monotone in games-played, which is the season-clock-keyed variable — but I did **not** complete
-   the isolating run (R22 store + R23 season state, `ws_r22` + `repo_r23`). It was launched, ran
-   ~35 min without completing its load — that store/season-state pairing does not match the cached
-   v0-surface signature, so the surface refits — while the workspace seat's board build and gates
-   check held the box (load average 7–9). I **terminated it** (SIGTERM, exit 143) rather than
-   contend with a live build. The pool term for Martin is bounded small: the only pool-derived
-   quantity of his that moved is `v0_start`, by **−0.234 %**, against a −5.29 % price move.
-   To finish it later: rerun `probe_r23.py` in `ws_r22` with `RL_REPO=repo_r23` on an idle box.
-2. **The site that carries `c_u` into Martin's price.** `o31_D` reads 1.0 for him on both boards
-   (the stage-5 selection buy-back caps it), so the fade is not the transmission channel; I did
-   not trace which downstream consumer of the depth does the work.
+1. ~~The calendar-vs-pool sub-split of the "global" term.~~ **CLOSED — see §2.1a.** Reached by the
+   cheaper route (R23 store + R22 season state, `ws_r23` + `repo_r22`, which loads in 57 s because
+   that pairing hits the cached v0 surface) rather than the run that stalled. Season 96 %, pool 4 %
+   for Martin; the three terms sum exactly.
+2. **Which load-time surface carries the season clock into Martin's price.** REFINED, not closed —
+   see §2.1b. `o31_D` reads 1.0 for him on both boards (the stage-5 selection buy-back caps it), so
+   the fade is not the channel; and only −30.5 of his −217.4 season term comes through the
+   evaluation-time read at all. The remaining −186.9 is in surfaces baked from fE at load. I have
+   not identified which one. His `v0_start` moves −0.234 % across the two boards, which is the
+   right *kind* of quantity but is not on its own large enough to be the whole −186.9, so there is
+   at least one more fE-baked surface involved.
 3. **The exact site that produces the interior dip.** PARTIALLY CLOSED — see §6a. The trimmed
    probe (`probe5_kink.py`, Dolan, 0.2-average grid) ran on the idle box and established that the
    dip is a **step structure on a smooth level input**, with bit-identical prices across distinct
@@ -480,9 +518,21 @@ which is a level, not a round-23 move.
 * boards `36d5dfc7 / a05fe951 / 5ea978f7 / 1d5c9f7a / 68be10c7` — `git show <commit>:data/rl_build/rl_app_data.json`
 * D7B stage boards — `scratchpad/d7bbb/bb_D7B_*/rl_after/rl_app_data.json` (from `docs/evidence/parity_2026-08-19/build_D7B.sh`)
 * engine loads — `ws_r22/`, `ws_r23/` (copies), `repo_r22/`, `repo_r23/` (scratch roots)
-* probes — `probe_r23.py` (2×2 + internals), `probe3.py` (depth clock + coarse score sweep),
-  `probe5_kink.py` (0.2-average grid across the Dolan trough). Outputs: `probe_r22_out.json`,
-  `probe_r23_out.json`, `probe3_r22.json`, `probe3_r23.json`, `probe5_kink.json`.
+* probes — `probe_r23.py` (2×2 + internals; run three times, once per load A/B/D), `probe3.py`
+  (depth clock + coarse score sweep), `probe5_kink.py` (0.2-average grid across the Dolan trough),
+  `probe6_clock.py` (evaluation-time clock isolation via post-load SEASON_FE patch).
+  Outputs: `probe_r22_out.json` (load A), `probe_B_r23store_r22season.json` (load B),
+  `probe_r23_out.json` (load D), `probe3_r22.json`, `probe3_r23.json`, `probe5_kink.json`,
+  `probe6_clock.json`.
   (`probe4_fine.py` never completed under CPU contention and is superseded by `probe5_kink.py`.)
+
+**Two decompositions appear in this file and they are different cuts of the same square — not a
+contradiction.** §1's 2×2 holds a player's own scoring row fixed and moves store+season together
+("global"); §2.1a moves the whole store first with the season held, then the season. For a player
+whose row is byte-identical the two agree exactly. For a player whose row changed they differ,
+because §1's "specific" term swaps only *his* row inside one load while §2.1a's `A→B` moves
+*everybody's* row at once. Lead with §2.1a for the pool-vs-season question; lead with §1 for the
+his-row-vs-everything-else question. Kondogiannis: §1 says global +14.8 / specific −12.6; §2.1a
+says row+pool +2.1 / season +0.1. Both are correct answers to different questions.
 * every mutation restored and round-trip asserted (`rt=True`, `restored_ok=True`) before the next probe.
 * board values reproduced exactly from engine currency ÷ 1.052329 for all 12 probed players.
