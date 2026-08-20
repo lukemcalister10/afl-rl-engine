@@ -1,0 +1,84 @@
+=== THE INJURY-SHEET RE-CUT, LANDING STEP D — THE SIBLING REPIN ===
+WRITER OF RECORD: engine/rl_after/ingestion/sibling_repin.py (BUILD-AND-COMPARE only: the pin is
+moved to a value that was just BUILT and derived from the built artifact, never to an expectation).
+Run under tools/build_lock.sh, single writer.
+
+--- verify BEFORE ---
+{
+  "balanced_board_md5": "a49c155fa20f7084bcaa0d3dceca6cb1",
+  "fails": [
+    "forward reference vector for a49c155f missing",
+    "forward oracle test_forward_lens_1d5c9f7a.py missing",
+    "working canonical board stamp != 1d5c9f7a",
+    "public rows disagree with the canonical board for 1 player(s)",
+    "sidecar contract_sha256 != live contract seal",
+    "sidecar forward_board_md5 != the canonical board of record",
+    "sidecar forward_vector filename != regenerated forward vector",
+    "sidecar forward_oracle filename != regenerated forward oracle"
+  ],
+  "ok": false
+}
+
+--- plan (the build) ---
+build-lock: HELD by r23-recut-sibling (pid 22434) since 2026-08-20T09:46:10Z — single writer for the shared workspace.
+{
+  "active": 804,
+  "balanced_board_md5": "e616936ef9be3fe55b37d4c5497093ac",
+  "changed": true,
+  "changed_map": {
+    "board_view": true,
+    "forward_oracle": true,
+    "forward_vector": true,
+    "fv_test": true,
+    "manifest": true,
+    "reference_vector": true,
+    "release_contract": true,
+    "sidecar": true
+  },
+  "forward": {
+    "board_md5": "1d5c9f7a3898c7cc62d0e91787ee2606",
+    "oracle": "test_forward_lens_1d5c9f7a.py",
+    "p1_conservation": {
+      "lensYear": 2027,
+      "nPicks": 64,
+      "nPlayers": 804,
+      "picks": 47315,
+      "players": 631408,
+      "total": 678723
+--- reconcile (the transaction) ---
+build-lock: HELD by r23-recut-sibling (pid 28943) since 2026-08-20T09:49:51Z — single writer for the shared workspace.
+{
+  "active": 804,
+  "balanced_board_md5": "e616936ef9be3fe55b37d4c5497093ac",
+  "changed": true,
+  "committed_targets": [
+    "board_view_public",
+    "board_view_working",
+    "forward_oracle",
+    "forward_vector",
+    "fv_test",
+    "manifest",
+    "reference_vector",
+    "release_contract",
+    "sidecar"
+  ],
+  "no_op": false,
+  "ok": true,
+  "old_balanced_board_md5": "a49c155fa20f7084bcaa0d3dceca6cb1",
+  "recovered": [],
+  "sheezel": 10453,
+  "sum_v": 693727,
+  "txn_dir": "/home/user/afl-rl-engine/engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e",
+  "validation": {
+    "release_contract_check": [
+      "RELEASE-CONTRACT CHECK: PASS  (contract b3728affb8b2; identities + config + posture consistent)"
+    ]
+  }
+}
+build-lock: released by r23-recut-sibling
+--- verify AFTER ---
+{
+  "balanced_board_md5": "e616936ef9be3fe55b37d4c5497093ac",
+  "fails": [],
+  "ok": true
+}

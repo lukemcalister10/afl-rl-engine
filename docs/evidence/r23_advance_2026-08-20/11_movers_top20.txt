@@ -1,0 +1,69 @@
+=== TOP 20 VALUE RISERS (report view order) ===
+#   name                     club             pos          before    after    delta      pct     R23
+1   Errol Gulden             Sydney           Mid            6506     7075     +569     8.8%     151
+2   Isaac Heeney             Sydney           Mid            3436     3958     +522    15.2%     169
+3   Izak Rankine             Adelaide         Fwd            4405     4819     +414     9.4%     157
+4   Dyson Sharp              Essendon         Fwd            2879     3232     +353    12.3%      86
+5   Lachlan Ash              GWS              Def            5456     5763     +307     5.6%     144
+6   Levi Ashcroft            Brisbane         Mid            3394     3686     +292     8.6%     140
+7   Jordon Sweet             Port Adelaide    Ruck           2093     2379     +286    13.7%     145
+8   Jordan Clark             Fremantle        Def            3082     3318     +236     7.7%     114
+9   Kade Chandler            Melbourne        Fwd             863     1091     +228    26.4%     136
+10  Aaron Cadman             GWS              Key Fwd        1839     2056     +217    11.8%      89
+11  Miles Bergman            Port Adelaide    Def             977     1190     +213    21.8%     118
+12  Mitchito Owens           St Kilda         Key Fwd        1973     2180     +207    10.5%     113
+13  Samuel Swadling          Collingwood      Mid             749      954     +205    27.4%     114
+14  Oliver Florent           Carlton          Def             788      991     +203    25.8%     128
+15  Connor Idun              GWS              Def            2063     2256     +193     9.4%     134
+16  Max Hall                 St Kilda         Fwd            2184     2346     +162     7.4%     181
+17  Jack Graham              West Coast       Fwd             738      893     +155    21.0%     108
+18  Zach Reid                Essendon         Key Def         921     1067     +146    15.8%     106
+19  Harvey Thomas            GWS              Fwd            2022     2163     +141     7.0%      94
+20  Daniel Turner            Melbourne        Key Def        1395     1534     +139    10.0%      94
+
+=== TOP 20 VALUE FALLERS ===
+1   Willem Duursma           West Coast       Mid            4225     3720     -505   -11.9%      20
+2   Luke Davies-Uniacke      North Melbourne  Mid            3948     3615     -333    -8.4%      64
+3   Sam Berry                Adelaide         Mid            3661     3387     -274    -7.5%      38
+4   Christian Petracca       Gold Coast       Fwd            2026     1796     -230   -11.3%      34
+5   Nicholas Martin          Essendon         Fwd            4288     4061     -227    -5.3%     DNP
+6   Will Day                 Hawthorn         Mid            2284     2071     -213    -9.3%      58
+7   Connor MacDonald         Hawthorn         Fwd            2585     2380     -205    -7.9%      40
+8   Peter Wright             Essendon         Key Fwd        1585     1386     -199   -12.6%      39
+9   Lachie Neale             Brisbane         Mid            2314     2125     -189    -8.2%      65
+10  Zachary Merrett          Essendon         Mid            2547     2368     -179    -7.0%      72
+11  Jack Whitlock            Port Adelaide    Key Fwd         994      823     -171   -17.2%      20
+12  Touk Miller              Gold Coast       Fwd            2271     2109     -162    -7.1%      55
+13  Luke Jackson             Fremantle        Ruck           9417     9265     -152    -1.6%     111
+14  Isaac Quaynor            Collingwood      Def             603      455     -148   -24.5%      56
+15  Harvey Langford          Melbourne        Mid            2470     2327     -143    -5.8%      50
+16  Jobe Shanahan            West Coast       Key Fwd        1438     1298     -140    -9.7%      28
+17  Kysaiah Pickett          Melbourne        Fwd            4017     3878     -139    -3.5%      70
+18  Beau Addinsall           Gold Coast       Mid            1310     1172     -138   -10.5%      28
+19  Josh Worrell             Adelaide         Def            3240     3106     -134    -4.1%      48
+20  Mattaes Phillipou        St Kilda         Fwd            2019     1885     -134    -6.6%      37
+
+=== TOP 20 BY ABSOLUTE MOVE ===
+1   Errol Gulden             Sydney           Mid            6506     7075     +569     8.8%     151  rank 9->6
+2   Isaac Heeney             Sydney           Mid            3436     3958     +522    15.2%     169  rank 45->29
+3   Willem Duursma           West Coast       Mid            4225     3720     -505   -11.9%      20  rank 26->34
+4   Izak Rankine             Adelaide         Fwd            4405     4819     +414     9.4%     157  rank 21->18
+5   Dyson Sharp              Essendon         Fwd            2879     3232     +353    12.3%      86  rank 61->50
+6   Luke Davies-Uniacke      North Melbourne  Mid            3948     3615     -333    -8.4%      64  rank 31->40
+7   Lachlan Ash              GWS              Def            5456     5763     +307     5.6%     144  rank 15->12
+8   Levi Ashcroft            Brisbane         Mid            3394     3686     +292     8.6%     140  rank 47->37
+9   Jordon Sweet             Port Adelaide    Ruck           2093     2379     +286    13.7%     145  rank 95->77
+10  Sam Berry                Adelaide         Mid            3661     3387     -274    -7.5%      38  rank 38->46
+11  Jordan Clark             Fremantle        Def            3082     3318     +236     7.7%     114  rank 54->49
+12  Christian Petracca       Gold Coast       Fwd            2026     1796     -230   -11.3%      34  rank 103->121
+13  Kade Chandler            Melbourne        Fwd             863     1091     +228    26.4%     136  rank 231->196
+14  Nicholas Martin          Essendon         Fwd            4288     4061     -227    -5.3%     DNP  rank 23->27
+15  Aaron Cadman             GWS              Key Fwd        1839     2056     +217    11.8%      89  rank 118->103
+16  Miles Bergman            Port Adelaide    Def             977     1190     +213    21.8%     118  rank 212->179
+17  Will Day                 Hawthorn         Mid            2284     2071     -213    -9.3%      58  rank 85->102
+18  Mitchito Owens           St Kilda         Key Fwd        1973     2180     +207    10.5%     113  rank 110->91
+19  Connor MacDonald         Hawthorn         Fwd            2585     2380     -205    -7.9%      40  rank 68->76
+20  Samuel Swadling          Collingwood      Mid             749      954     +205    27.4%     114  rank 255->216
+
+summary: 804 players, 686 moved (221 up, 465 down), total 693727 -> 692296 (-1431)
+played=411 dnp=393  baseline point=the-sheet-recut-20-8

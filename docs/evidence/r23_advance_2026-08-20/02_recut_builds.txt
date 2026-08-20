@@ -1,0 +1,20 @@
+=== ACT 1 REBUILD — THE SHEET RE-CUT. PREREG b86bc9e governs. ===
+  commit  : 024b458  (024b4585daab140045ef4d4169fadd67b81181f5)
+  engine  : 1867e953cf844d089ab1da68379b1742  (was 3cfc4325aa323b7f26594cb2a202a976 pre-recut)
+  sheet   : 21361291f26d35108b88f92f885c5063  (was b26798c35adcd9bda5cef50ff2c884da)
+  rl_model: 6fe7c4155866d80e8045bed2d3bf2802  (pin 6fe7c4155866d80e8045bed2d3bf2802, must be UNMOVED)
+  store   : cc02567f80bef39228f25854d121a766  (pin cc02567f80bef39228f25854d121a766, must be UNMOVED)
+  board   : 5ea978f7b6a073abb2012f10cccbc3e3  (B_precut 5ea978f7b6a073abb2012f10cccbc3e3)
+
+  B0 is COMPUTED FROM THE BUILD, never typed. BARE_DEV and BARE_CANON must agree byte-for-byte.
+
+build-lock: HELD by r23-recut (pid 15091) since 2026-08-20T09:35:17Z — single writer for the shared workspace.
+D8 BARE_DEV   mode=dev       rc=0 board_md5=1d5c9f7a3898c7cc62d0e91787ee2606  (102.9s)
+  staging removed: /home/claude/fvprov_e8pclfe2
+D8 BARE_CANON mode=canonical rc=0 board_md5=1d5c9f7a3898c7cc62d0e91787ee2606  (102.5s)
+  staging removed: /home/claude/fvprov_2gjz2lgj
+build-lock: released by r23-recut
+
+=== BOARD IDS ===
+  BARE_DEV    1d5c9f7a3898c7cc62d0e91787ee2606
+  BARE_CANON  1d5c9f7a3898c7cc62d0e91787ee2606

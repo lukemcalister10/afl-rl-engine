@@ -1,0 +1,41 @@
+=== ROUND 23 COHERENCE ===
+  OK    expected_boot.as_of_round == 23 23
+  OK    season_state.as_of_round == 23 23
+  OK    release_contract.as_of_round == 23 23
+  OK    sibling_repin_state.as_of_round == 23 23
+  OK    movers report submitted_round == 23 
+  OK    value_history rounds == 14..23 [14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+  OK    ledger applied triples == 3,497 (3,086 + 411) 3497
+  OK    ledger carries exactly 411 R23 triples 
+  OK    ledger has no duplicate triple (no double-count) 
+
+=== IDENTITY CHAIN — every carrier names the same board/store ===
+  OK    expected_boot.board == md5(published board) 7a3f4fe23207a29095e6d37408a4b727
+  OK    expected_boot.store == md5(store) b745002eb0a0fbb1c34fa44f1ef708d6
+  OK    release_contract identities == tree 
+  OK    sibling sidecar == tree 
+  OK    balanced pin agrees sidecar<->manifest 3970156c8658fc9ecea8089e8b3ecdf1
+  OK    movers report terminates on the live board/store 
+  OK    generator-side board copy == published board (synced; disclosed) 
+  OK    published board sidecar names the live store 
+
+=== LINEAGE — append-only, tail chain, baseline frozen ===
+  OK    release_lineage round-trips at indent=1 
+  OK    top-level present-lens baseline UNMOVED 06d8af60b679a12db07c064c60c065f9
+  OK    register carries 10 entries 10
+  OK    register tail is the sheet re-cut boundary 
+  OK    register tail destination.board == B0 
+  OK    register tail sits at round 22 — a ROUND ADVANCE is not an out-of-round move and adds NO entry 
+  OK    TAIL CHAIN store: entry 9 source == entry 8 destination cc02567f
+  OK    TAIL CHAIN board: entry 9 source == entry 8 destination 5ea978f7
+  OK    every register entry but the ITEM 408 pointer stub is owner-approved and names a ruling id 
+
+=== RULE M0 — the R23 movers baseline shares as_of_round with the candidate ===
+  OK    round 23 is the newest stored point 23
+  OK    previous_point(23) == the-sheet-recut-20-8 (B0) the-sheet-recut-20-8
+  OK    the movers report compared FROM exactly that point 
+  OK    M0: the baseline point sits at as_of_round 22 
+  OK    M0: the baseline board is B0 
+  OK    movers report: 411 played, 393 DNP 
+
+VERDICT: COHERENT — 0 failures

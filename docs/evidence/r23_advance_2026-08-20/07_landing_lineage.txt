@@ -1,0 +1,10 @@
+chain OK: register tail destination.store cc02567f80bef39228f25854d121a766 == this entry's source.store
+chain OK: register tail destination.board 5ea978f7b6a073abb2012f10cccbc3e3 == this entry's source.board
+boundary ['22', 'the-sheet-recut-20-8'] is NEW; destination.board 1d5c9f7a3898c7cc62d0e91787ee2606 is declared by no existing record.
+append-only OK: 9 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
+re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
+appended entry 10; 42622 -> 50032 bytes
+  source      board 5ea978f7b6a073abb2012f10cccbc3e3  store cc02567f80bef39228f25854d121a766  engine_head 3cfc4325aa323b7f26594cb2a202a976  balanced a49c155fa20f7084bcaa0d3dceca6cb1
+  destination board 1d5c9f7a3898c7cc62d0e91787ee2606  store cc02567f80bef39228f25854d121a766  engine_head 1867e953cf844d089ab1da68379b1742  balanced e616936ef9be3fe55b37d4c5497093ac
+  moved     : ['balanced_board_md5', 'board', 'engine_head']
+  unchanged : ['config', 'fv', 'register', 'rl_model', 'store', 'v0surf']

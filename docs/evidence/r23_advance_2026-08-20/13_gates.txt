@@ -1,0 +1,60 @@
+############ GATE 1 — acceptance.runner ############
+==========================================================================================================================
+THE VERDICT SPINE — acceptance/runner.py
+  tree: /home/user/afl-rl-engine
+  evidence: (none)
+==========================================================================================================================
+CHECK                    VERDICT     REASON
+-----------------------  ----------  -----------------------------------------------------------------------------------
+release_manifest         PASS        38 of 40 carrier fields agree with computed truth across 8 identities; 2 sealed ca…
+boot_guard_checkout      PASS        boot-store guard (Guard 5) PASS  [acceptance-spine]  store b745002e == pinned b745…
+config_manifest          PASS        CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)
+ruling_config            PASS        RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL…
+release_contract_seal    PASS        RELEASE-CONTRACT CHECK: PASS  (contract a3c2caf8908f; identities + config + postur…
+store_coherence_six_way  PASS        six-way store coherence: PASS
+doc_lint                 PASS        doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)
+-----------------------  ----------  -----------------------------------------------------------------------------------
+
+AGGREGATE  7 checks  |  PASS 7  FAIL 0  BLOCKED 0  RULED-RED 0
+VERDICT    GREEN — no gating failures.
+exit=0
+
+############ GATE 2 — release_manifest_check.py ############
+    board_view_working.stamp.release.as_of_round  23                                                               OK
+    -> 5 carriers, COHERENT
+
+  40 carrier fields across 8 identities and 7 files: 38 coherent, 0 incoherent, 2 sealed-lag
+
+  SEALED-LAG — a freeze-stamp naming the state it was SEALED against, not the
+  state the tree is in. Legitimate between seals; reported, never gating:
+    book_stable_seal.store_md5                   sealed against cb38ef11, tree is now b745002e
+    book_stable_seal.head_md5                    sealed against 5ac6780f, tree is now 1867e953
+    (i.e. the artifact these stamps belong to has not been re-sealed since the
+     tree last moved. That is information, not a defect — but a gate that
+     consumes the seal as a baseline is comparing against the older state.)
+
+  RELEASE MANIFEST COHERENCE: PASS
+
+############ GATE 3 — release_contract.py check ############
+RELEASE-CONTRACT CHECK
+RELEASE-CONTRACT CHECK: PASS  (contract a3c2caf8908f; identities + config + posture consistent)
+exit=0
+
+############ GATE 4 — sibling_repin verify ############
+{
+  "balanced_board_md5": "3970156c8658fc9ecea8089e8b3ecdf1",
+  "fails": [],
+  "ok": true
+}
+
+############ GATE 5 — movers suites ############
+  [PASS] score-write gate is OFF (no explicit apply token) — no score can be applied
+MOVERS TRANSITION TESTS: ALL 39 PASS
+  ------------------------------------------------------------
+MOVERS TESTS: ALL 66 PASS
+
+############ GATE 6 — mirrors ############
+mirror OK — committed == projected (44282 bytes, 10 register entries)
+exit=0
+derived blocks OK — committed == rebuilt (3674079 bytes, latest report R23)
+exit=0

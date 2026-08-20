@@ -1,0 +1,16 @@
+BARE_DEV vs BARE_CANON byte-identical: True  sizes 1223688 1223688
+B_precut 5ea978f7  n=804 sum_v=693753
+B0       1d5c9f7a3898c7cc62d0e91787ee2606  n=804 sum_v=693727
+PREREG F2 (804 active rows): PASS
+key sets identical: True
+
+MOVERS B_precut -> B0 : 1 of 804
+key                        name                     club                 before    after    delta
+judson-clarke              Judson Clarke            Richmond                 75       49      -26
+
+sum of deltas: -26   (total 693753 -> 693727)
+  PREDICTED judson-clarke      75 -> 49  (-26)
+  PREDICTED harry-armstrong    518 -> 518  (+0)
+PREREG F3 judson-clarke moves DOWN: PASS
+PREREG F4 harry-armstrong |delta|<=25: PASS
+numeraire PICK 1: []

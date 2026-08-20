@@ -1,0 +1,40 @@
+{
+  "after_round": 22,
+  "board": "1d5c9f7a3898c7cc62d0e91787ee2606",
+  "column_id": "the-sheet-recut-20-8",
+  "dry_run": false,
+  "label": "20/8 INJURY-SHEET RE-CUT \u2014 armstrong + clarke de-listed",
+  "players_on_board": 804,
+  "values_already_present": {
+    "pos_rank": 0,
+    "rank": 0,
+    "value": 0
+  },
+  "values_written": {
+    "pos_rank": 804,
+    "rank": 804,
+    "value": 804
+  }
+}
+
+selectable points, in display order:
+   14                       round        after_round=14 board=None
+   15                       round        after_round=15 board=None
+   16                       round        after_round=16 board=None
+   17                       round        after_round=17 board=None
+   18                       round        after_round=18 board=None
+   19                       round        after_round=19 board=None
+   post-r19-redesign-1      out_of_round after_round=19 board=fa172ac1c90ab84e5044d3e9907c5819
+   20                       round        after_round=20 board=None
+   rederivation-30-7        out_of_round after_round=20 board=f2df6e0a2902f48e1df36f35493ba8c1
+   redesign-adoption-6-8    out_of_round after_round=20 board=827fb1fdfefe60c7c2c9026212d3992d
+   21                       round        after_round=21 board=None
+   22                       round        after_round=22 board=None
+   dob-courier-10-8         out_of_round after_round=22 board=a672ed3a6a1426a262d932f844e8f87b
+   g1-never-rises-10-8      out_of_round after_round=22 board=4b448a821f54180182637983f7a26a9d
+   the-d8-adoption-20-8     out_of_round after_round=22 board=5ea978f7b6a073abb2012f10cccbc3e3
+   the-landing-20-8         out_of_round after_round=22 board=a05fe951f78482c70520480e184c80ec
+   the-sheet-recut-20-8     out_of_round after_round=22 board=1d5c9f7a3898c7cc62d0e91787ee2606
+
+LAST STORED POINT (the R23 movers baseline, rule M0): the-sheet-recut-20-8  board=1d5c9f7a3898c7cc62d0e91787ee2606
+ASSERTED: the point immediately before round 23 is B0 1d5c9f7a3898c7cc62d0e91787ee2606 at as_of_round 22.
