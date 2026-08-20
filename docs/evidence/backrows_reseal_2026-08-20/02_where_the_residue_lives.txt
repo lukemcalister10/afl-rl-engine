@@ -1,0 +1,50 @@
+=== WHERE THE RESIDUE LIVES — export path vs cached input. MEASURED, NOT ASSUMED. ===
+
+-- 1. every producer/consumer of the back rows in the export path --
+251:    for _p in g['back_extra']:
+391:back=[player_rec(p) for p in g['back_extra']]   # board-history-only rows (retired players recalled for -1/-2)
+
+-- 2. does ANY file outside the exporter bake a back-row value? --
+   (a) references to back_extra anywhere in engine/ and data/:
+engine/rl_after/_merged_recover.py:3289:#     the cohort book / back_extra      the same ev
+engine/rl_after/rl_model.py:2122:# Luke folded in); they are recalled onto the -N board for the years they were active (collected in `back_extra`,
+engine/rl_after/rl_model.py:2153:back_extra=[]
+engine/rl_after/rl_model.py:2157:    p['_vM1']=vM1; p['_vM2']=vM2; p['_backonly']=True; p['_v']=None; back_extra.append(p)
+engine/rl_after/rl_model.py:2171:    p['_vM1']=vM1; p['_vM2']=vM2; p['_backonly']=True; p['_v']=None; back_extra.append(p)
+engine/rl_after/rl_model.py:2172:_nM1=sum(1 for q in players+back_extra if q.get('_vM1') is not None)
+engine/rl_after/rl_model.py:2173:_nM2=sum(1 for q in players+back_extra if q.get('_vM2') is not None)
+engine/rl_after/rl_model.py:2174:print('Phase-2 backward board: on-board -1=%d, -2=%d (active %d + retired-recalled %d)'%(_nM1,_nM2,len(players),len(back_extra)))
+engine/rl_after/rl_model.py:2184:    for q in players+back_extra:
+   -> the only OTHER producer is the store loader that BUILDS the list; nothing caches its values.
+
+   (b) is there a sidecar carrying back-row prices? the board's per-row `v` is written from _p['_v'],
+       which is assigned ONLY at rl_export.py:252 (the loop) for these rows:
+211:        _r = _ev(_p, 2026); _raw2026[_p['key']] = _r; _p['_v'] = _nb(_r)
+235:                _fl = int(round(((1.0 - _gc / 46.0) ** 2) * _p['_v']))
+252:        _p['_v'] = _p['_vM2'] = _p['_vM1'] = _p['_vP1'] = _p['_vP2'] = _nb(_ev(_p, 2026))
+286:            if _p['_v'] != int(round(_d)): _d0_bad.append((_p.get('player'), _p['_v'], _d))
+303:_reb2026 = {_p['key']: _p['_v'] for _p in players}
+
+   (c) the ONLY post-loop writer that can change a printed row value is the owner-override block,
+       which ADDS an 'ov' display block and never touches 'v':
+# ==== OWNER OVERRIDES — DISPLAY-ONLY, APPLIED LAST (2026-07-09, Brodie ×0.50 wiring) ======================
+# Applied AFTER the export<->engine parity gate (so it can never move a value a guard measures) and BEFORE
+# the board is written. owner_overrides.apply_to_board ONLY ADDS an `ov` block to a matched row — it never
+# touches `v`, so every guard / aggregate / book (F2) / board parity (B4) / JS parity, all of which read
+# `v` or the engine's gated ev(), is byte-identical with the override on vs off. The overrides come from the
+# repo-homed data/owner_overrides.json (owner adds a row, no code change). RL_NO_OWNER_OVERRIDES=1 skips it.
+import owner_overrides as _OV
+_ov_applied, _ov_warn = _OV.apply_to_board(active)
+for _w in _ov_warn:
+    print('OWNER-OVERRIDE WARNING:', _w)
+_ov_keys={_k for _k,_f,_dv in _ov_applied}
+for _r in active:
+    if _r['key'] in _ov_keys: _r['vRaw']=_r['v']   # §7.3 pre-override model figure = the engine value (v is never overridden); UI hover shows it vs the overridden rail
+for _k, _f, _dv in _ov_applied:
+    print('OWNER OVERRIDE applied (display-only): %s ×%.2f -> displayed %d (of the REBASED value; engine v untouched; vRaw model figure stamped)'%(_k,_f,_dv))
+# POST-EXPORT PRESENCE ASSERTION (S1 finding, register item 24): every key in owner_overrides.json MUST
+
+CONCLUSION: the back rows are priced INLINE, on every build, in the export path.
+There is no cached input to invalidate and no baked artifact to re-cut. The durable fix is the
+one statement in engine/rl_after/rl_export.py's back_extra loop: from the moment it lands, EVERY
+bare build produces the corrected back rows, forever.
