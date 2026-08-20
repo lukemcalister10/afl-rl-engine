@@ -4197,10 +4197,16 @@ if _O30B_PREVIEW:
     # CAUSE-BLIND AND UNCHANGED — the owner ruled the same penalty either way, so no annotation is
     # read for a row with no delivered season whatever its flag says.
     # THE FILE IS A PINNED INPUT: md5 asserted, row count asserted, injured count asserted, and the
-    # name match asserted 37 of 37. ANY of those failing HALTS THE BUILD LOUDLY.
-    O41_INJ_MD5='b26798c35adcd9bda5cef50ff2c884da'
+    # name match asserted 35 of 35. ANY of those failing HALTS THE BUILD LOUDLY.
+    # RE-CUT 2026-08-20 (register v790, owner word "All good on the injury sheet. Fine by me."):
+    # harry-armstrong and judson-clarke flipped injured Y->N because the R23 file LISTS them — ORDER
+    # 42 pins each injured=Y row's games_2026 to the store's 2026 games, and a round advance moves
+    # that. Y 37->35, rows unchanged at 219, md5 b26798c3->21361291. THE SIX PINS ACROSS THESE TWO
+    # BLOCKS MOVE TOGETHER OR THE BUILD HALTS: this ORDER 41 block asserts the same three facts as
+    # the ORDER 42 block at _o42_state and HALTS FIRST.
+    O41_INJ_MD5='21361291f26d35108b88f92f885c5063'
     O41_INJ_ROWS=219
-    O41_INJ_Y=37
+    O41_INJ_Y=35
     _O41_INJSET=frozenset()
     if _O41_INJ:
         import csv as _csv, hashlib as _hl, re as _re
@@ -5898,7 +5904,7 @@ def _o42_state(_skeys,_allrecs):
     to A would INVENT section membership for rows that were never on the register at all, so it is
     not done: return_arm is False for every row and the Part-2 haircut ships zero. PREREG_D6.md §5."""
     import csv as _c2, hashlib as _h2, re as _r2
-    _SHEET_MD5='b26798c35adcd9bda5cef50ff2c884da'; _SHEET_ROWS=219; _SHEET_Y=37
+    _SHEET_MD5='21361291f26d35108b88f92f885c5063'; _SHEET_ROWS=219; _SHEET_Y=35
     _sp=os.path.join(os.environ.get('RL_REPO','.'),'docs/owner_annotations/SITTER_2026_v1.csv')
     if not os.path.exists(_sp):
         raise SystemExit('ORDER 42 HALT: RL_O42=1 but the owner\'s annotation sheet is ABSENT at %s. '
