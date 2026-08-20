@@ -350,12 +350,48 @@ across the 86 players with 5–13 games in 2026, median move by score-minus-prio
 −9.9 % (surprise −40..−21), −0.6 % (−20..−1), +3.5 % (0..+19), +8.5 % (+20..+39), +13.5 %
 (+40..+59). Only 2 of 86 beat their prior average and still fell more than 5 %.
 
-I have **not** identified the site that produces the interior dip, and I am not calling it a
-defect. What is measured is: for these two rows, and holding all else fixed, the shipped price is
-a non-monotone function of the round's score across a ~40-point band. That is worth a ruling
-rather than a silent carry, because it means "he scored well and went down" is a reproducible
-outcome, not a rounding artefact, and both of the players the owner asked about sit inside the
-band.
+### 6a · THE DIP LOCALISED — it is a STEP STRUCTURE on a smooth input (`probe5_kink.py`)
+
+Dolan only, season average swept 46.00 → 53.40 in steps of **0.2**, games fixed at 10, everything
+else untouched. The sweep's restore point reproduces the shipped board value exactly (247.2 = 247).
+
+```
+avg    score   v       lvlcurr   radq  delivered
+49.00   39.2  278.9    42.847    False  False
+49.20   41.2  254.7    42.990    False  False   <== -24.2  (-8.7 %)
+49.40   43.2  235.2    43.133    False  False   <== -19.5  (-7.7 %)
+49.60   45.2  235.2    43.277    False  False       exact plateau
+49.80   47.2  235.2    43.420    False  False       exact plateau
+50.00   49.2  247.2    43.563    False  False   <== +12.0  (+5.1 %)
+...
+52.40   73.2  257.7    45.279    False  False
+52.60   75.2  288.3    45.422    False  False   <== +30.5 (+11.8 %)
+```
+
+Three things are established here that "non-monotone" alone does not say:
+
+1. **The level input is perfectly smooth.** `_lvlcurr` advances exactly +0.143 per grid step,
+   linear in the average, across the whole band. `bestlvl` = the average exactly. The jaggedness
+   is not in the level estimate.
+2. **The price contains a genuinely discrete component.** Consecutive *distinct* inputs return
+   **bit-identical** prices — `294.8031519805` over three grid points (avg 46.6/46.8/47.0),
+   `235.2416369028` over two (49.6/49.8), `297.5779368357` over two (48.0/48.2). A steep smooth
+   curve cannot do that. Something in the chain is a piecewise-constant lookup.
+3. **It is not the two threshold predicates I could test.** `_radq` (the recent-form-adequacy
+   switch) and `o32_delivered` (the delivered-season depth reset) are **False at every point** in
+   the band, so neither is flipping. The site remains unidentified — but two plausible candidates
+   are now ruled out, which narrows it.
+
+**Where Dolan actually landed:** his 48 puts his average at 49.88, i.e. just past a two-step cliff
+that costs **−43.7 board points (−16 %) between averages of 49.0 and 49.4** — a four-tenths-of-a-
+point swing, which is the difference between one 48 and one 44 in a ten-game season. He sits at
+247.2, immediately above the 235.2 floor of that structure and immediately below the +12 recovery.
+
+I am **not** calling this a defect. What is measured is: for these rows, holding all else fixed,
+the shipped price is a step function of a smoothly-moving level, with individual risers worth
+8–12 % of the row. That is worth a ruling rather than a silent carry, because it means "he scored
+well and went down" is a reproducible outcome of the pricing lookup, not a rounding artefact, and
+both of the players the owner asked about sit inside the band.
 
 ## 6b · PEER TABLES (the two buckets quoted in §3.5 and §5.5, in full)
 
@@ -425,12 +461,14 @@ which is a level, not a round-23 move.
 2. **The site that carries `c_u` into Martin's price.** `o31_D` reads 1.0 for him on both boards
    (the stage-5 selection buy-back caps it), so the fade is not the transmission channel; I did
    not trace which downstream consumer of the depth does the work.
-3. **The site that produces the interior dip in §6.** The fine-grained sweep (`probe4_fine.py`,
-   4 players × 71 score points × the level/evidence/depth internals at each point) was launched and
-   terminated at ~35 min under the same contention. The dip itself is measured on the 14-point grid
-   per player and is reproducible — and both grids are anchored, reproducing the shipped board value
-   at the real score and the independently-measured 9-game counterfactual — but its cause is not
-   identified. To finish: rerun `probe4_fine.py` in `ws_r23` with `RL_REPO=repo_r23` on an idle box.
+3. **The exact site that produces the interior dip.** PARTIALLY CLOSED — see §6a. The trimmed
+   probe (`probe5_kink.py`, Dolan, 0.2-average grid) ran on the idle box and established that the
+   dip is a **step structure on a smooth level input**, with bit-identical prices across distinct
+   inputs (so: a discrete lookup in the chain), and ruled out `_radq` and `o32_delivered` as the
+   switching predicates. The **specific engine site** is still not named. Kondogiannis was not
+   re-swept at fine grain; his 14-point grid stands.
+   (`probe4_fine.py` — 4 players × 71 points × 8 internals — was the version that never finished;
+   it is superseded by `probe5_kink.py` and kept only for the record.)
 4. **Whether the §6 non-monotonicity generalises.** Two players swept. The population check in §6
    says the board as a whole is monotone in score-surprise, so this is a local, thin-evidence
    phenomenon — but I have not counted how many rows sit inside such a band.
@@ -442,8 +480,9 @@ which is a level, not a round-23 move.
 * boards `36d5dfc7 / a05fe951 / 5ea978f7 / 1d5c9f7a / 68be10c7` — `git show <commit>:data/rl_build/rl_app_data.json`
 * D7B stage boards — `scratchpad/d7bbb/bb_D7B_*/rl_after/rl_app_data.json` (from `docs/evidence/parity_2026-08-19/build_D7B.sh`)
 * engine loads — `ws_r22/`, `ws_r23/` (copies), `repo_r22/`, `repo_r23/` (scratch roots)
-* probes — `probe_r23.py` (2×2 + internals), `probe3.py` (depth clock + coarse sweep),
-  `probe4_fine.py` (fine sweep). Outputs: `probe_r22_out.json`, `probe_r23_out.json`,
-  `probe3_r22.json`, `probe3_r23.json`, `probe4_r23.json`.
+* probes — `probe_r23.py` (2×2 + internals), `probe3.py` (depth clock + coarse score sweep),
+  `probe5_kink.py` (0.2-average grid across the Dolan trough). Outputs: `probe_r22_out.json`,
+  `probe_r23_out.json`, `probe3_r22.json`, `probe3_r23.json`, `probe5_kink.json`.
+  (`probe4_fine.py` never completed under CPU contention and is superseded by `probe5_kink.py`.)
 * every mutation restored and round-trip asserted (`rt=True`, `restored_ok=True`) before the next probe.
 * board values reproduced exactly from engine currency ÷ 1.052329 for all 12 probed players.
