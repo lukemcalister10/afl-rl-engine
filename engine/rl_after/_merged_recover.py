@@ -367,7 +367,7 @@ def _feat_infer(p,Y):
     ten=eff_ten(p,Y, max(0,Y-(cp.debutyr(p)-1)))             # base = original _feat tenure
     return oh+[np.log(ep), cp._exposure(p,Y), ten, cp._lvl_eff(p,Y), age]
 # (inference rebind deferred to AFTER the isotonic guard builds on ORIGINAL features -> proven-flat stays Delta=0)
-# ==== ORDER 44 — THE LEVEL-AXIS BAND MONOTONISER (RL_O44_LVLMONO; DECLARED KILL-SWITCH, DEFAULT OFF) ======
+# ==== ORDER 44 — THE LEVEL-AXIS BAND MONOTONISER (RL_O44_LVLMONO; KILL-SWITCH; ADOPTED 2026-08-21) ========
 # WHY THIS EXISTS. docs/evidence/trough_diagnosis_2026-08-20/WORKINGS_TROUGH.md established BY PREDICTION —
 # riser locations derived from the tree thresholds ALONE matched the measured sweep 30/37 with every named
 # riser and plateau EXACT, and a blind band-only ranking named two new victims in advance — that the five
@@ -395,7 +395,10 @@ def _feat_infer(p,Y):
 # NOT A MANIFEST DIAL, ON PURPOSE (the RL_CAPT / RL_ISOFADE / RL_EVW / RL_UNCOMP / RL_ONEMACH kill-switch
 # family; the D8 pattern at :1118+). It is ABSENT from data/model_config.json, so config_manifest.enforce()
 # REJECTS it as an unknown model override in bake/gate/canonical mode and NO CERTIFYING BUILD CAN CARRY IT.
-# config_sha256 is UNMOVED by this act and the release-contract seal stands.
+# THAT PROPERTY IS UNCHANGED BY THE ADOPTION BELOW: the default literal moved, data/model_config.json did
+# NOT, so config_sha256 stays UNMOVED and a canonical build still cannot CARRY this name — it can only
+# ship the baked-in default. The release-contract SEAL does move, because it hashes the identity set and
+# engine_head/board moved; that is the distinction repair 1590a37 had to make and it is kept here.
 #
 # FAIL-CLOSED ON A TYPO (law 2, SILENCE IS A RED). An unrecognised value HALTS. A dial that reads a
 # misspelling as "off" is law 2's failure in dial form: the run produces a board, the board is the base
@@ -405,8 +408,37 @@ def _feat_infer(p,Y):
 # CLASSIFIED FOR RETIREMENT AT THE VARIANT-C REBAKE (owner-scheduled post-R24), and its removal is a rebake
 # MUST-MOVE PROOF: that rebake is not complete until this block is gone and the board built from the
 # CONSTRAINED forests alone reproduces the monotone behaviour without it. PREREG_STAIRCASE.md §8.
+#
+# BAKE 2026-08-21 (register v808 PENDING): RL_O44_LVLMONO IS NOW DEFAULT 'ratchet' — VARIANT A, RAW,
+# UNCONSERVED. KILL-SWITCH: RL_O44_LVLMONO=0, which reproduces 68be10c79d0ee096455754e084bcf757
+# byte-exact. THE WORD WAS GIVEN, 2026-08-21, VERBATIM: "I misunderstood the A and B difference. I think
+# based on those explanations, A raw I prefer. Lock that in, unconserved." It RE-RULES an earlier word in
+# the same session ("Happy to lock in 1.22% and variant B"); the act that word drove HALTED BEFORE ITS
+# FLIP when the B-raw no-arb reading was measured and showed four new buy-rail breaches, the owner was
+# shown it, and he changed his choice. The flip happened through EXACTLY the declared lane and nothing
+# else — the default literal on the line below moved '0' -> 'ratchet', data/model_config.json was NOT
+# touched, and no parameter was added, fitted or targeted. The BARE build (this name unset, no
+# model-semantics RL_* set at all) reproduces the priced candidate board b3e8da99bc7f632e5d1eebc732f9cf01
+# / total 700,756 / 804 rows BYTE-EXACT — the board the owner chose, not a rebuild of it.
+#
+# 'ratchet' AND NOT 'ratchet+conserve', ON THE OWNER'S OWN REASONING, VERBATIM: "in principle I don't like
+# 'enforcing conservation' as that's another mechanism that gets baked in... If we want to conserve, I'd
+# prefer to find a lever to remove value that works on its own." The conserved arms are rejected ON
+# PRINCIPLE, not on their numbers. LAW 9 IS THEREFORE BREACHED ON ITS FACE AND ACCEPTED BY OWNER WORD:
+# this board MINTS +8,460 SCAR = +1.2220% against a 200-SCAR (+/-0.029%) band_scar rail, 42.3x. Stated,
+# never netted, never called a pass. A raw is the arm the owner's own "1.22%" figure was quoted from.
+#
+# THE NO-ARB BAND RAILS WERE WAIVED, VERBATIM: "happy to waive the no arb reading for this" — given AFTER
+# the supervisor told him A raw was expected to breach similarly to B raw. THE WAIVER COVERED THE BAND
+# RAILS, NOT THE CLASS LAW AND NOT THE MEASUREMENT. F4 was measured BEFORE this flip and PASSED (W2
+# 1.0943, inside floor 1.03 / rail 1.14), and the full reading was emitted anyway: three ND cells cross
+# the +14% buy rail that were inside it on the live board (PRIMARY picks 1-20 / 1-10 / 11-20), ZERO pool
+# arms cross, and nothing is repaired on the buy side. Evidence:
+# docs/evidence/staircase_adoption_2026-08-21/ (PREREG_ADOPTION_A_RAW.md committed BEFORE this edit;
+# NOARB_ARAW_SFXARAW.html, all five arms side by side) and docs/evidence/staircase_fix_2026-08-20/ (the
+# pricing). The B-raw reading that caused the earlier halt is kept beside it at NOARB_BRAW_SFXBRAW.html.
 _O44_MODES=('off','ratchet','ratchet+conserve','smooth','smooth+conserve')
-_O44_RAW=(os.environ.get('RL_O44_LVLMONO','0') or '0').strip().lower()
+_O44_RAW=(os.environ.get('RL_O44_LVLMONO','ratchet') or '0').strip().lower()   # ORDER 44: VARIANT A RAW (SHIPPED DEFAULT, ADOPTED 2026-08-21)
 if _O44_RAW in ('0','','no','false'): _O44_RAW='off'
 if _O44_RAW not in _O44_MODES:
     raise SystemExit("ORDER 44 HALT: RL_O44_LVLMONO=%r is not one of %s. An unrecognised dial value is not "
