@@ -1,0 +1,25 @@
+====================================================================================================
+CLAIMS CHECK — PLAN_v6 PACKAGE 3a — THE SHEET PINS OUT OF THE ENGINE: the O41_INJ_* and _SHEET_* families (six literals, two duplicated in-engine blocks) become ONE declaration in data/sheet_pins.json, and the round runbook's sheet-pin / ADVANCE-REPIN steps are amended in the same act
+  act type   : lever-landing
+  date       : 2026-08-21   base: a8bd952e864b8a8cfd94dd0558b2278b679af203
+  owner word : Lock in the plan also, we can commence it after these fixes are done and the partially completed initiatives that we're waiting on this are finished
+  tree       : /home/user/afl-rl-engine
+====================================================================================================
+  ACTIVATION  day0_rebase                              off
+
+  OK   file_md5     the published board of record                  md5 b3e8da99bc7f632e5d1eebc732f9cf01 (claimed b3e8da99bc7f632e5d1eebc732f9cf01)
+  OK   file_md5     the store                                      md5 b745002eb0a0fbb1c34fa44f1ef708d6 (claimed b745002eb0a0fbb1c34fa44f1ef708d6)
+  OK   json_field   expected_boot.board                            board = 'b3e8da99bc7f632e5d1eebc732f9cf01' (claimed 'b3e8da99bc7f632e5d1eebc732f9cf01')
+  OK   json_field   expected_boot.engine_head                      engine_head = '3af8c1f7d61275c198a5df70c34608c7' (claimed '3af8c1f7d61275c198a5df70c34608c7')
+  OK   json_field   the round, HELD by a lever landing             as_of_round = 23 (claimed 23)
+  OK   json_field   the release seal                               contract_sha256 = '1b435ff6f988f52b5f395dc7b5b90152ee0679c97d63f6928f18cefd1f89eb3e' (claimed '1b435ff6f988f52b5f395dc7b5b90152ee0679c97d63f6928f18cefd1f89eb3e')
+  OK   board_count  board rows                                     active.rows = 804 (claimed 804)
+  OK   gate         release_manifest_check                         exit 0 (expected PASS)
+  OK   gate         release_contract_check                         exit 0 (expected PASS)
+  OK   gate         acceptance_runner                              exit 0 (expected PASS)
+  OK   gate         movers_transition                              exit 0 (expected PASS)
+  OK   gate         movers_ui                                      exit 0 (expected PASS)
+  OK   unmoved      BYTE-UNMOVED by this lever landing             md5 b745002eb0a0fbb1c34fa44f1ef708d6 (claimed b745002eb0a0fbb1c34fa44f1ef708d6)
+
+CLAIMS: 13 of 13 verified against the tree; 0 shape problem(s)
+VERDICT: GREEN — every claim recomputed and held
