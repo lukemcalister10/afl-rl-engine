@@ -1,0 +1,5281 @@
+{
+ "HEADLINES": {
+  "band_training_rows_taught_a_guessed_age": 1874,
+  "band_training_rows_taught_a_guessed_age_pct": 14.18,
+  "cm_400_matching_committed_store": null,
+  "cm_400_nearest_committed_store": {
+   "dates": "2026-07-15..2026-07-17",
+   "delta": 1,
+   "rows": 13225,
+   "store_md5_8": "b1fd0bce/0efdc5d6/968de0c7",
+   "switches": "T1off_MSDin_cut2021_cap2026"
+  },
+  "cm_400_training_rows_in_pickle": 13226,
+  "current_store_design_rows": 13220,
+  "gbr_accepts_monotonic_cst": false,
+  "law3_negative_steps_exact_arm_every_design_row": 0,
+  "law3_pct_steps_negative_PINNED_cm400": 23.4,
+  "law3_pct_steps_negative_histgbr_quantile_monotonic_cst": 1.65,
+  "law3_total_steps_exact_arm_every_design_row": 1004720,
+  "pool_deletion_walk_forward_cost_all_rows_pct": 6.4,
+  "q97m_matching_committed_store": {
+   "dates": "2026-07-15..2026-07-17",
+   "note": "the pickle was committed 2026-07-14 08:42Z, the store landed 2026-07-15 08:01Z",
+   "store_md5_8": "b1fd0bce/0efdc5d6/968de0c7",
+   "switches": "T1off_MSDex_cut2021_cap2026"
+  },
+  "q97m_training_rows_in_pickle": 13111,
+  "recency_weight_best_gain_pct_window_anchor_16y_halflife": 0.18,
+  "selected_hyperparameters": {
+   "learning_rate": 1.0,
+   "max_depth": 4,
+   "max_iter": 800,
+   "min_samples_leaf": 25
+  },
+  "walk_forward_pinball_mean_exact_constrained_selected": 3.9213,
+  "walk_forward_pinball_mean_incumbent": 3.9267
+ },
+ "M10_extended_selection_grid": {
+  "_doc": "STUDY B / M10 \u2014 extend the selection grid upward.\n\nM9's grid was still improving at its top corner (lr 1.0, 800 iterations), so the selected point may be a\nboundary of the grid rather than an optimum. This extends the search and re-prices the exact-constraint arm\nagainst the incumbent on the same walk-forward splits. Same declared selection rule: lowest MEAN walk-forward\npinball. READ-ONLY.\n",
+  "best_extended": {
+   "fit_seconds_5_quantiles": 4.66,
+   "insample_pinball_mean": 4.0411,
+   "key": "lr1.5_it800_msl25",
+   "law3_EVERY_design_row": {
+    "negative_steps": 0,
+    "rows": 13220,
+    "rows_violating": 0,
+    "steps": 1004720,
+    "worst_step": 0.0
+   },
+   "walk_forward": {
+    "2014": 4.2169,
+    "2017": 4.1314,
+    "2020": 3.4663,
+    "mean": 3.9382
+   }
+  },
+  "extended_grid": {
+   "lr1.0_it1600_msl25": {
+    "2014": 4.2471,
+    "2017": 4.154,
+    "2020": 3.4746,
+    "mean": 3.9586
+   },
+   "lr1.0_it1600_msl60": {
+    "2014": 4.2507,
+    "2017": 4.1473,
+    "2020": 3.4902,
+    "mean": 3.9627
+   },
+   "lr1.0_it3200_msl25": {
+    "2014": 4.401,
+    "2017": 4.186,
+    "2020": 3.506,
+    "mean": 4.031
+   },
+   "lr1.5_it1600_msl25": {
+    "2014": 4.3223,
+    "2017": 4.181,
+    "2020": 3.5013,
+    "mean": 4.0015
+   },
+   "lr1.5_it1600_msl60": {
+    "2014": 4.3041,
+    "2017": 4.1769,
+    "2020": 3.5125,
+    "mean": 3.9978
+   },
+   "lr1.5_it800_msl25": {
+    "2014": 4.2169,
+    "2017": 4.1314,
+    "2020": 3.4663,
+    "mean": 3.9382
+   },
+   "lr2.0_it1600_msl25": {
+    "2014": 4.3952,
+    "2017": 4.2131,
+    "2020": 3.5228,
+    "mean": 4.0437
+   }
+  },
+  "incumbent_walk_forward_mean": 3.9267
+ },
+ "M11_recency_weight_anchor_check": {
+  "_doc": "STUDY B / M11 \u2014 a robustness check on the recency-weighting result.\n\nM55 weighted rows by 0.5 ** ((YEAR.max() - YEAR)/halflife) with YEAR.max() = 2026, the GLOBAL last as-of\nyear. On the T=2014 walk-forward split that means every training row is already far down the decay curve,\nwhich could be responsible for the result rather than the weighting idea itself. This re-runs the comparison\nwith the half-life anchored to the END OF EACH TRAINING WINDOW instead, which is the construction a real\nrebake would use. If the answer flips, M55 is an artefact of the anchor. READ-ONLY.\n",
+  "halflife_10y_anchor_global": {
+   "2014": 4.2775,
+   "2017": 4.223,
+   "2020": 3.5072,
+   "mean": 4.0026
+  },
+  "halflife_10y_anchor_window": {
+   "2014": 4.1716,
+   "2017": 4.1321,
+   "2020": 3.4419,
+   "mean": 3.9152
+  },
+  "halflife_16y_anchor_global": {
+   "2014": 4.1977,
+   "2017": 4.1582,
+   "2020": 3.4652,
+   "mean": 3.9404
+  },
+  "halflife_16y_anchor_window": {
+   "2014": 4.1675,
+   "2017": 4.1338,
+   "2020": 3.4417,
+   "mean": 3.9143
+  },
+  "halflife_6y_anchor_global": {
+   "2014": 4.4949,
+   "2017": 4.4081,
+   "2020": 3.6123,
+   "mean": 4.1718
+  },
+  "halflife_6y_anchor_window": {
+   "2014": 4.1737,
+   "2017": 4.1406,
+   "2020": 3.4546,
+   "mean": 3.923
+  },
+  "uniform": {
+   "2014": 4.1796,
+   "2017": 4.1334,
+   "2020": 3.451,
+   "mean": 3.9213
+  }
+ },
+ "M1_artifact_census": {
+  "data/cm_400.pkl": {
+   "bytes": 4174555,
+   "container_type": "dict",
+   "keys": [
+    "0.1",
+    "0.3",
+    "0.5",
+    "0.7",
+    "0.9"
+   ],
+   "md5": "34faa8659cc8f19794f5cb9584fa19b2",
+   "members": {
+    "0.1": {
+     "alpha": 0.1,
+     "criterion": "friedman_mse",
+     "distinct_thresholds_by_feature": {
+      "0": 1,
+      "1": 1,
+      "10": 17,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 70,
+      "7": 240,
+      "8": 16,
+      "9": 253
+     },
+     "estimators_shape": [
+      400,
+      1
+     ],
+     "init_": "DummyRegressor",
+     "init_constant": 42.0,
+     "learning_rate": 0.05,
+     "loss": "quantile",
+     "max_depth": 4,
+     "max_depth_seen": 4,
+     "max_features": null,
+     "min_samples_leaf": 25,
+     "n_estimators": 400,
+     "n_estimators_": 400,
+     "n_features_from_tree": 11,
+     "n_features_in_": 11,
+     "n_trees": 400,
+     "n_trees_per_iteration_": 1,
+     "py_type": "GradientBoostingRegressor",
+     "random_state": 0,
+     "root_n_samples": 13226.0,
+     "split_counts_by_feature": {
+      "0": 466,
+      "1": 32,
+      "10": 668,
+      "2": 62,
+      "3": 39,
+      "4": 25,
+      "5": 73,
+      "6": 1785,
+      "7": 634,
+      "8": 735,
+      "9": 1101
+     },
+     "subsample": 1.0,
+     "threshold_range_by_feature": {
+      "0": [
+       0.5,
+       0.5
+      ],
+      "1": [
+       0.5,
+       0.5
+      ],
+      "10": [
+       18.5,
+       35.5
+      ],
+      "2": [
+       0.5,
+       0.5
+      ],
+      "3": [
+       0.5,
+       0.5
+      ],
+      "4": [
+       0.5,
+       0.5
+      ],
+      "5": [
+       0.5,
+       0.5
+      ],
+      "6": [
+       0.3465735912322998,
+       4.241300821304321
+      ],
+      "7": [
+       0.09674587845802307,
+       79.59177017211914
+      ],
+      "8": [
+       0.5,
+       15.5
+      ],
+      "9": [
+       40.74894714355469,
+       114.31598281860352
+      ]
+     },
+     "total_nodes": 11640
+    },
+    "0.3": {
+     "alpha": 0.3,
+     "criterion": "friedman_mse",
+     "distinct_thresholds_by_feature": {
+      "0": 1,
+      "1": 1,
+      "10": 15,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 89,
+      "7": 373,
+      "8": 17,
+      "9": 394
+     },
+     "estimators_shape": [
+      400,
+      1
+     ],
+     "init_": "DummyRegressor",
+     "init_constant": 58.86666666666667,
+     "learning_rate": 0.05,
+     "loss": "quantile",
+     "max_depth": 4,
+     "max_depth_seen": 4,
+     "max_features": null,
+     "min_samples_leaf": 25,
+     "n_estimators": 400,
+     "n_estimators_": 400,
+     "n_features_from_tree": 11,
+     "n_features_in_": 11,
+     "n_trees": 400,
+     "n_trees_per_iteration_": 1,
+     "py_type": "GradientBoostingRegressor",
+     "random_state": 0,
+     "root_n_samples": 13226.0,
+     "split_counts_by_feature": {
+      "0": 124,
+      "1": 71,
+      "10": 797,
+      "2": 95,
+      "3": 52,
+      "4": 37,
+      "5": 113,
+      "6": 1276,
+      "7": 877,
+      "8": 500,
+      "9": 1575
+     },
+     "subsample": 1.0,
+     "threshold_range_by_feature": {
+      "0": [
+       0.5,
+       0.5
+      ],
+      "1": [
+       0.5,
+       0.5
+      ],
+      "10": [
+       18.5,
+       32.5
+      ],
+      "2": [
+       0.5,
+       0.5
+      ],
+      "3": [
+       0.5,
+       0.5
+      ],
+      "4": [
+       0.5,
+       0.5
+      ],
+      "5": [
+       0.5,
+       0.5
+      ],
+      "6": [
+       0.3465735912322998,
+       4.241300821304321
+      ],
+      "7": [
+       0.09674587845802307,
+       79.59177017211914
+      ],
+      "8": [
+       0.5,
+       16.5
+      ],
+      "9": [
+       40.74894714355469,
+       116.15066909790039
+      ]
+     },
+     "total_nodes": 11434
+    },
+    "0.5": {
+     "alpha": 0.5,
+     "criterion": "friedman_mse",
+     "distinct_thresholds_by_feature": {
+      "0": 1,
+      "1": 1,
+      "10": 18,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 114,
+      "7": 514,
+      "8": 17,
+      "9": 617
+     },
+     "estimators_shape": [
+      400,
+      1
+     ],
+     "init_": "DummyRegressor",
+     "init_constant": 69.36666666666666,
+     "learning_rate": 0.05,
+     "loss": "quantile",
+     "max_depth": 4,
+     "max_depth_seen": 4,
+     "max_features": null,
+     "min_samples_leaf": 25,
+     "n_estimators": 400,
+     "n_estimators_": 400,
+     "n_features_from_tree": 11,
+     "n_features_in_": 11,
+     "n_trees": 400,
+     "n_trees_per_iteration_": 1,
+     "py_type": "GradientBoostingRegressor",
+     "random_state": 0,
+     "root_n_samples": 13226.0,
+     "split_counts_by_feature": {
+      "0": 97,
+      "1": 31,
+      "10": 445,
+      "2": 93,
+      "3": 43,
+      "4": 33,
+      "5": 116,
+      "6": 954,
+      "7": 1087,
+      "8": 486,
+      "9": 1225
+     },
+     "subsample": 1.0,
+     "threshold_range_by_feature": {
+      "0": [
+       0.5,
+       0.5
+      ],
+      "1": [
+       0.5,
+       0.5
+      ],
+      "10": [
+       18.5,
+       35.5
+      ],
+      "2": [
+       0.5,
+       0.5
+      ],
+      "3": [
+       0.5,
+       0.5
+      ],
+      "4": [
+       0.5,
+       0.5
+      ],
+      "5": [
+       0.5,
+       0.5
+      ],
+      "6": [
+       0.3465735912322998,
+       4.241300821304321
+      ],
+      "7": [
+       0.09674587845802307,
+       79.59177017211914
+      ],
+      "8": [
+       0.5,
+       16.5
+      ],
+      "9": [
+       40.74894714355469,
+       116.26360321044922
+      ]
+     },
+     "total_nodes": 9620
+    },
+    "0.7": {
+     "alpha": 0.7,
+     "criterion": "friedman_mse",
+     "distinct_thresholds_by_feature": {
+      "0": 1,
+      "1": 1,
+      "10": 18,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 107,
+      "7": 501,
+      "8": 17,
+      "9": 632
+     },
+     "estimators_shape": [
+      400,
+      1
+     ],
+     "init_": "DummyRegressor",
+     "init_constant": 82.23333333333333,
+     "learning_rate": 0.05,
+     "loss": "quantile",
+     "max_depth": 4,
+     "max_depth_seen": 4,
+     "max_features": null,
+     "min_samples_leaf": 25,
+     "n_estimators": 400,
+     "n_estimators_": 400,
+     "n_features_from_tree": 11,
+     "n_features_in_": 11,
+     "n_trees": 400,
+     "n_trees_per_iteration_": 1,
+     "py_type": "GradientBoostingRegressor",
+     "random_state": 0,
+     "root_n_samples": 13226.0,
+     "split_counts_by_feature": {
+      "0": 86,
+      "1": 54,
+      "10": 519,
+      "2": 80,
+      "3": 40,
+      "4": 39,
+      "5": 133,
+      "6": 875,
+      "7": 983,
+      "8": 411,
+      "9": 1289
+     },
+     "subsample": 1.0,
+     "threshold_range_by_feature": {
+      "0": [
+       0.5,
+       0.5
+      ],
+      "1": [
+       0.5,
+       0.5
+      ],
+      "10": [
+       18.5,
+       35.5
+      ],
+      "2": [
+       0.5,
+       0.5
+      ],
+      "3": [
+       0.5,
+       0.5
+      ],
+      "4": [
+       0.5,
+       0.5
+      ],
+      "5": [
+       0.5,
+       0.5
+      ],
+      "6": [
+       0.3465735912322998,
+       4.241300821304321
+      ],
+      "7": [
+       0.09674587845802307,
+       79.48083114624023
+      ],
+      "8": [
+       0.5,
+       16.5
+      ],
+      "9": [
+       41.13563346862793,
+       116.15066909790039
+      ]
+     },
+     "total_nodes": 9418
+    },
+    "0.9": {
+     "alpha": 0.9,
+     "criterion": "friedman_mse",
+     "distinct_thresholds_by_feature": {
+      "0": 1,
+      "1": 1,
+      "10": 18,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 114,
+      "7": 442,
+      "8": 17,
+      "9": 520
+     },
+     "estimators_shape": [
+      400,
+      1
+     ],
+     "init_": "DummyRegressor",
+     "init_constant": 99.73333333333333,
+     "learning_rate": 0.05,
+     "loss": "quantile",
+     "max_depth": 4,
+     "max_depth_seen": 4,
+     "max_features": null,
+     "min_samples_leaf": 25,
+     "n_estimators": 400,
+     "n_estimators_": 400,
+     "n_features_from_tree": 11,
+     "n_features_in_": 11,
+     "n_trees": 400,
+     "n_trees_per_iteration_": 1,
+     "py_type": "GradientBoostingRegressor",
+     "random_state": 0,
+     "root_n_samples": 13226.0,
+     "split_counts_by_feature": {
+      "0": 86,
+      "1": 69,
+      "10": 443,
+      "2": 59,
+      "3": 37,
+      "4": 34,
+      "5": 119,
+      "6": 868,
+      "7": 923,
+      "8": 364,
+      "9": 1198
+     },
+     "subsample": 1.0,
+     "threshold_range_by_feature": {
+      "0": [
+       0.5,
+       0.5
+      ],
+      "1": [
+       0.5,
+       0.5
+      ],
+      "10": [
+       18.5,
+       35.5
+      ],
+      "2": [
+       0.5,
+       0.5
+      ],
+      "3": [
+       0.5,
+       0.5
+      ],
+      "4": [
+       0.5,
+       0.5
+      ],
+      "5": [
+       0.5,
+       0.5
+      ],
+      "6": [
+       0.3465735912322998,
+       4.241300821304321
+      ],
+      "7": [
+       0.18662400543689728,
+       79.59177017211914
+      ],
+      "8": [
+       0.5,
+       16.5
+      ],
+      "9": [
+       42.09466552734375,
+       116.20048522949219
+      ]
+     },
+     "total_nodes": 8800
+    }
+   },
+   "non_model_members": {},
+   "path": "data/cm_400.pkl",
+   "stored_sklearn_version": [
+    "1.8.0"
+   ]
+  },
+  "data/q97m.pkl": {
+   "bytes": 387567,
+   "container_type": "GradientBoostingRegressor",
+   "md5": "cfdc73216c099e5e8f1fda3968f31c00",
+   "members": {
+    "<root>": {
+     "alpha": 0.97,
+     "criterion": "friedman_mse",
+     "distinct_thresholds_by_feature": {
+      "0": 1,
+      "1": 1,
+      "10": 12,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 68,
+      "7": 183,
+      "8": 15,
+      "9": 292
+     },
+     "estimators_shape": [
+      200,
+      1
+     ],
+     "init_": "DummyRegressor",
+     "init_constant": 111.43333333333332,
+     "learning_rate": 0.05,
+     "loss": "quantile",
+     "max_depth": 4,
+     "max_depth_seen": 4,
+     "max_features": null,
+     "min_samples_leaf": 25,
+     "n_estimators": 200,
+     "n_estimators_": 200,
+     "n_features_from_tree": 11,
+     "n_features_in_": 11,
+     "n_trees": 200,
+     "n_trees_per_iteration_": 1,
+     "py_type": "GradientBoostingRegressor",
+     "random_state": 0,
+     "root_n_samples": 13111.0,
+     "split_counts_by_feature": {
+      "0": 62,
+      "1": 75,
+      "10": 234,
+      "2": 43,
+      "3": 25,
+      "4": 33,
+      "5": 89,
+      "6": 481,
+      "7": 372,
+      "8": 168,
+      "9": 630
+     },
+     "subsample": 1.0,
+     "threshold_range_by_feature": {
+      "0": [
+       0.5,
+       0.5
+      ],
+      "1": [
+       0.5,
+       0.5
+      ],
+      "10": [
+       19.5,
+       30.5
+      ],
+      "2": [
+       0.5,
+       0.5
+      ],
+      "3": [
+       0.5,
+       0.5
+      ],
+      "4": [
+       0.5,
+       0.5
+      ],
+      "5": [
+       0.5,
+       0.5
+      ],
+      "6": [
+       0.3465735912322998,
+       4.241300821304321
+      ],
+      "7": [
+       0.09674587845802307,
+       79.59177017211914
+      ],
+      "8": [
+       1.5,
+       15.5
+      ],
+      "9": [
+       44.11902618408203,
+       116.26360321044922
+      ]
+     },
+     "total_nodes": 4624
+    }
+   },
+   "path": "data/q97m.pkl",
+   "stored_sklearn_version": [
+    "1.8.0"
+   ]
+  },
+  "data/v0surf.pkl": {
+   "bytes": 148626,
+   "container_type": "dict",
+   "keys": [
+    "'4405cba2b42fb96f50496ec791cb806c'",
+    "'41af73267f1bcd86bdc208e5f32376d1'"
+   ],
+   "md5": "5dd34ca82735f5c8f021b1c7320df8f8",
+   "members": {},
+   "non_model_members": {
+    "'41af73267f1bcd86bdc208e5f32376d1'": [
+     "dict",
+     4
+    ],
+    "'4405cba2b42fb96f50496ec791cb806c'": [
+     "dict",
+     4
+    ]
+   },
+   "path": "data/v0surf.pkl",
+   "stored_sklearn_version": null
+  },
+  "engine/rl_after/peak_model_v4.pkl": {
+   "bytes": 1341030,
+   "container_type": "dict",
+   "keys": [
+    "'model'",
+    "'fnames'"
+   ],
+   "md5": "f305fe5330222f4fa14d3654a0e91ef7",
+   "members": {
+    "'model'": {
+     "_n_features": 17,
+     "learning_rate": 0.04,
+     "loss": "squared_error",
+     "max_depth": 5,
+     "max_features": 1.0,
+     "min_samples_leaf": 30,
+     "monotonic_cst": null,
+     "n_features_in_": 17,
+     "n_iter_": 600,
+     "n_trees_per_iteration_": 1,
+     "py_type": "HistGradientBoostingRegressor",
+     "random_state": 0
+    }
+   },
+   "non_model_members": {
+    "'fnames'": [
+     "list",
+     17
+    ]
+   },
+   "path": "engine/rl_after/peak_model_v4.pkl",
+   "stored_sklearn_version": [
+    "1.8.0"
+   ]
+  }
+ },
+ "M2_current_store_design_matrix": {
+  "current_store_row_counts": {
+   "cm400_construction_parlevel_T1off_MSDin": {
+    "features": 11,
+    "rows": 13283,
+    "y_mean": 68.93211347838088,
+    "y_zero_frac": 0.03658812015357976
+   },
+   "cm400_construction_parlevel_T1on_MSDin": {
+    "features": 11,
+    "rows": 13220,
+    "y_mean": 68.92694881492689,
+    "y_zero_frac": 0.0367624810892587
+   },
+   "q97m_construction_parlevel_T1off_MSDex": {
+    "features": 11,
+    "rows": 13169,
+    "y_mean": 69.01589072822537,
+    "y_zero_frac": 0.03606955729364417
+   },
+   "q97m_construction_parlevel_T1on_MSDex": {
+    "features": 11,
+    "rows": 13106,
+    "y_mean": 69.01108385472303,
+    "y_zero_frac": 0.0362429421638944
+   }
+  },
+  "feature_names": [
+   "oh_MID",
+   "oh_SD",
+   "oh_SF",
+   "oh_KPD",
+   "oh_KPF",
+   "oh_RUCK",
+   "log_effpk",
+   "exposure",
+   "tenure",
+   "level",
+   "age"
+  ],
+  "feature_summary": {
+   "age": {
+    "max": 39.0,
+    "mean": 23.237670196671708,
+    "min": 18.0,
+    "p50": 23.0
+   },
+   "exposure": {
+    "max": 85.60819017079888,
+    "mean": 27.881669878222073,
+    "min": 0.0,
+    "p50": 24.2744
+   },
+   "level": {
+    "max": 122.62605721103228,
+    "mean": 66.79093472132364,
+    "min": 31.22795547520643,
+    "p50": 63.4998426571482
+   },
+   "log_effpk": {
+    "max": 4.174387269895637,
+    "mean": 3.3381889903587294,
+    "min": 0.0,
+    "p50": 3.6888794541139363
+   },
+   "oh_KPD": {
+    "max": 1.0,
+    "mean": 0.11754916792738275,
+    "min": 0.0,
+    "p50": 0.0
+   },
+   "oh_KPF": {
+    "max": 1.0,
+    "mean": 0.10779122541603631,
+    "min": 0.0,
+    "p50": 0.0
+   },
+   "oh_MID": {
+    "max": 1.0,
+    "mean": 0.28714069591527985,
+    "min": 0.0,
+    "p50": 0.0
+   },
+   "oh_RUCK": {
+    "max": 1.0,
+    "mean": 0.07670196671709531,
+    "min": 0.0,
+    "p50": 0.0
+   },
+   "oh_SD": {
+    "max": 1.0,
+    "mean": 0.21694402420574888,
+    "min": 0.0,
+    "p50": 0.0
+   },
+   "oh_SF": {
+    "max": 1.0,
+    "mean": 0.1938729198184569,
+    "min": 0.0,
+    "p50": 0.0
+   },
+   "tenure": {
+    "max": 21.0,
+    "mean": 4.708774583963692,
+    "min": 0.0,
+    "p50": 4.0
+   }
+  },
+  "first_observable_season": 2005,
+  "pinned_pickle_root_n_samples": {
+   "_source": "measured in M1 from tree_.weighted_n_node_samples[0]",
+   "cm_400.pkl": 13226.0,
+   "q97m.pkl": 13111.0
+  },
+  "store_md5": "b745002eb0a0fbb1c34fa44f1ef708d6",
+  "store_path": "/home/claude/rl_workspace/rl_after/rl_model_data.json",
+  "store_rows": 2650,
+  "target_summary": {
+   "max": 131.9,
+   "mean": 68.92694881492689,
+   "min": -14.0,
+   "p50": 69.26666666666667,
+   "zeros": 486
+  },
+  "train_pool_composition": {
+   "asof_year_range": [
+    2003,
+    2026
+   ],
+   "draft_year_range": [
+    2003,
+    2020
+   ],
+   "entry_types": {
+    "MSD": 114,
+    "ND": 10095,
+    "RD": 3011
+   },
+   "msd_players": 29,
+   "msd_rows": 114,
+   "national_arm_players": 1138,
+   "national_arm_rows": 9447,
+   "players": 1922,
+   "players_missing_birthyear": 0,
+   "pool_arm_players": 788,
+   "pool_arm_rows": 3773,
+   "rows": 13220,
+   "rows_by_asof_year": {
+    "2003": 105,
+    "2004": 109,
+    "2005": 247,
+    "2006": 334,
+    "2007": 405,
+    "2008": 481,
+    "2009": 527,
+    "2010": 599,
+    "2011": 656,
+    "2012": 672,
+    "2013": 688,
+    "2014": 727,
+    "2015": 744,
+    "2016": 770,
+    "2017": 769,
+    "2018": 791,
+    "2019": 769,
+    "2020": 774,
+    "2021": 680,
+    "2022": 609,
+    "2023": 527,
+    "2024": 468,
+    "2025": 410,
+    "2026": 359
+   },
+   "rows_missing_birthyear": 0
+  }
+ },
+ "M3_store_sweep_and_drift": {
+  "_doc": "STUDY B M3 store sweep. Target row counts read out of the pinned pickles in M1.",
+  "stores": [
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "GEN_DEF",
+     "GEN_FWD",
+     "KEY_DEF",
+     "KEY_FWD",
+     "RUC"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "DEF",
+     "GDEF",
+     "GFWD",
+     "KDEF",
+     "KFWD",
+     "MID",
+     "RUC"
+    ],
+    "date": "2026-07-02",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 48,
+     "birthyear_changed": 312,
+     "draft_position_group_changed": 433,
+     "pick_changed": 699,
+     "players_absent_from_current": 6,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "legacy_pos_plus_fut",
+    "sha": "f4a4d34f",
+    "store_md5": "644d1254db169dbc2824766ac3cf20f9",
+    "store_rows": 2656,
+    "train_players": 1935,
+    "train_rows": {
+     "T1off_MSDex": 13120,
+     "T1off_MSDin": 13248,
+     "T1on_MSDex": 13056,
+     "T1on_MSDin": 13184
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "GEN_DEF",
+     "GEN_FWD",
+     "KEY_DEF",
+     "KEY_FWD",
+     "RUC"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "DEF",
+     "GDEF",
+     "GFWD",
+     "KDEF",
+     "KFWD",
+     "MID",
+     "RUC"
+    ],
+    "date": "2026-07-05",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 63,
+     "birthyear_changed": 312,
+     "draft_position_group_changed": 433,
+     "pick_changed": 699,
+     "players_absent_from_current": 2,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "14472dbf",
+    "store_md5": "73d23a8ef244da6b16f0fa88d360e512",
+    "store_rows": 2652,
+    "train_players": 1933,
+    "train_rows": {
+     "T1off_MSDex": 13119,
+     "T1off_MSDin": 13240,
+     "T1on_MSDex": 13055,
+     "T1on_MSDin": 13176
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "GEN_DEF",
+     "GEN_FWD",
+     "KEY_DEF",
+     "KEY_FWD",
+     "RUC"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "DEF",
+     "GDEF",
+     "GFWD",
+     "KDEF",
+     "KFWD",
+     "MID",
+     "RUC"
+    ],
+    "date": "2026-07-05",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 19,
+     "birthyear_changed": 312,
+     "draft_position_group_changed": 433,
+     "pick_changed": 699,
+     "players_absent_from_current": 2,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "2d611300",
+    "store_md5": "e1b4d8bfb3e1bea30f01118bfa7e87ec",
+    "store_rows": 2652,
+    "train_players": 1933,
+    "train_rows": {
+     "T1off_MSDex": 13119,
+     "T1off_MSDin": 13240,
+     "T1on_MSDex": 13055,
+     "T1on_MSDin": 13176
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "GEN_DEF",
+     "GEN_FWD",
+     "KEY_DEF",
+     "KEY_FWD",
+     "RUC"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "DEF",
+     "GDEF",
+     "GFWD",
+     "KDEF",
+     "KFWD",
+     "MID",
+     "RUC"
+    ],
+    "date": "2026-07-09",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 19,
+     "birthyear_changed": 310,
+     "draft_position_group_changed": 433,
+     "pick_changed": 699,
+     "players_absent_from_current": 2,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "1a3ec6d6",
+    "store_md5": "a2fbc9a036e46a440f4a3c8c290b49cc",
+    "store_rows": 2652,
+    "train_players": 1933,
+    "train_rows": {
+     "T1off_MSDex": 13119,
+     "T1off_MSDin": 13240,
+     "T1on_MSDex": 13055,
+     "T1on_MSDin": 13176
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "GEN_DEF",
+     "GEN_FWD",
+     "KEY_DEF",
+     "KEY_FWD",
+     "RUC"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "DEF",
+     "GDEF",
+     "GFWD",
+     "KDEF",
+     "KFWD",
+     "MID",
+     "RUC"
+    ],
+    "date": "2026-07-11",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 19,
+     "birthyear_changed": 310,
+     "draft_position_group_changed": 433,
+     "pick_changed": 704,
+     "players_absent_from_current": 2,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "fc289412",
+    "store_md5": "e1d4d21e9131f124384754c249ddcff6",
+    "store_rows": 2652,
+    "train_players": 1933,
+    "train_rows": {
+     "T1off_MSDex": 13119,
+     "T1off_MSDin": 13240,
+     "T1on_MSDex": 13055,
+     "T1on_MSDin": 13176
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "GEN_DEF",
+     "GEN_FWD",
+     "KEY_DEF",
+     "KEY_FWD",
+     "RUC"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "DEF",
+     "GDEF",
+     "GFWD",
+     "KDEF",
+     "KFWD",
+     "MID",
+     "RUC"
+    ],
+    "date": "2026-07-11",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 19,
+     "birthyear_changed": 310,
+     "draft_position_group_changed": 433,
+     "pick_changed": 729,
+     "players_absent_from_current": 2,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "2480c931",
+    "store_md5": "1a969d95644bd9d957d69998fd2c7ed9",
+    "store_rows": 2652,
+    "train_players": 1933,
+    "train_rows": {
+     "T1off_MSDex": 13119,
+     "T1off_MSDin": 13240,
+     "T1on_MSDex": 13055,
+     "T1on_MSDin": 13176
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "GEN_DEF",
+     "GEN_FWD",
+     "KEY_DEF",
+     "KEY_FWD",
+     "RUC"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "DEF",
+     "GDEF",
+     "GFWD",
+     "KDEF",
+     "KFWD",
+     "MID",
+     "RUC"
+    ],
+    "date": "2026-07-11",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 19,
+     "birthyear_changed": 310,
+     "draft_position_group_changed": 433,
+     "pick_changed": 703,
+     "players_absent_from_current": 2,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "c02499a3",
+    "store_md5": "04f38dad7c03ae2ba8d060ffdbdd1bdf",
+    "store_rows": 2652,
+    "train_players": 1933,
+    "train_rows": {
+     "T1off_MSDex": 13119,
+     "T1off_MSDin": 13240,
+     "T1on_MSDex": 13055,
+     "T1on_MSDin": 13176
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "GEN_DEF",
+     "GEN_FWD",
+     "KEY_DEF",
+     "KEY_FWD",
+     "RUC"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "DEF",
+     "GDEF",
+     "GFWD",
+     "KDEF",
+     "KFWD",
+     "MID",
+     "RUC"
+    ],
+    "date": "2026-07-12",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 19,
+     "birthyear_changed": 305,
+     "draft_position_group_changed": 433,
+     "pick_changed": 703,
+     "players_absent_from_current": 2,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "119c3e67",
+    "store_md5": "b0c39d788119d541f360e9ee91851a55",
+    "store_rows": 2652,
+    "train_players": 1933,
+    "train_rows": {
+     "T1off_MSDex": 13119,
+     "T1off_MSDin": 13240,
+     "T1on_MSDex": 13055,
+     "T1on_MSDin": 13176
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "GEN_DEF",
+     "GEN_FWD",
+     "KEY_DEF",
+     "KEY_FWD",
+     "RUC"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "DEF",
+     "GDEF",
+     "GFWD",
+     "KDEF",
+     "KFWD",
+     "MID",
+     "RUC"
+    ],
+    "date": "2026-07-13",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 19,
+     "birthyear_changed": 305,
+     "draft_position_group_changed": 433,
+     "pick_changed": 703,
+     "players_absent_from_current": 2,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "aec5e512",
+    "store_md5": "340a7a32d767f199e4cdd93ef8ae059e",
+    "store_rows": 2652,
+    "train_players": 1933,
+    "train_rows": {
+     "T1off_MSDex": 13119,
+     "T1off_MSDin": 13240,
+     "T1on_MSDex": 13055,
+     "T1on_MSDin": 13176
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": true,
+    "code_GROUPS": [
+     "MID",
+     "GEN_DEF",
+     "GEN_FWD",
+     "KEY_DEF",
+     "KEY_FWD",
+     "RUC"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "DEF",
+     "GDEF",
+     "GFWD",
+     "KDEF",
+     "KFWD",
+     "MID",
+     "RUC"
+    ],
+    "date": "2026-07-15",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 19,
+     "birthyear_changed": 305,
+     "draft_position_group_changed": 433,
+     "pick_changed": 701,
+     "players_absent_from_current": 2,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "0cf723af",
+    "store_md5": "b1fd0bced30baa838325814c39d43233",
+    "store_rows": 2652,
+    "train_players": 1931,
+    "train_rows": {
+     "T1off_MSDex": 13111,
+     "T1off_MSDin": 13225,
+     "T1on_MSDex": 13047,
+     "T1on_MSDin": 13161
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": true,
+    "code_GROUPS": [
+     "MID",
+     "GEN_DEF",
+     "GEN_FWD",
+     "KEY_DEF",
+     "KEY_FWD",
+     "RUC"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "DEF",
+     "GDEF",
+     "GFWD",
+     "KDEF",
+     "KFWD",
+     "MID",
+     "RUC"
+    ],
+    "date": "2026-07-17",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 14,
+     "birthyear_changed": 305,
+     "draft_position_group_changed": 433,
+     "pick_changed": 701,
+     "players_absent_from_current": 2,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "63063786",
+    "store_md5": "0efdc5d686072a7a46a3029d2a2ee528",
+    "store_rows": 2652,
+    "train_players": 1931,
+    "train_rows": {
+     "T1off_MSDex": 13111,
+     "T1off_MSDin": 13225,
+     "T1on_MSDex": 13047,
+     "T1on_MSDin": 13161
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": true,
+    "code_GROUPS": [
+     "MID",
+     "GEN_DEF",
+     "GEN_FWD",
+     "KEY_DEF",
+     "KEY_FWD",
+     "RUC"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "DEF",
+     "GDEF",
+     "GFWD",
+     "KDEF",
+     "KFWD",
+     "MID",
+     "RUC"
+    ],
+    "date": "2026-07-17",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 14,
+     "birthyear_changed": 305,
+     "draft_position_group_changed": 433,
+     "pick_changed": 701,
+     "players_absent_from_current": 2,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "10508cba",
+    "store_md5": "968de0c7a0183ca3914165536f39607a",
+    "store_rows": 2652,
+    "train_players": 1931,
+    "train_rows": {
+     "T1off_MSDex": 13111,
+     "T1off_MSDin": 13225,
+     "T1on_MSDex": 13047,
+     "T1on_MSDin": 13161
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "GEN_DEF",
+     "GEN_FWD",
+     "KEY_DEF",
+     "KEY_FWD",
+     "RUC"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "DEF",
+     "GDEF",
+     "GFWD",
+     "KDEF",
+     "KFWD",
+     "MID",
+     "RUC"
+    ],
+    "date": "2026-07-21",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 14,
+     "birthyear_changed": 305,
+     "draft_position_group_changed": 433,
+     "pick_changed": 701,
+     "players_absent_from_current": 2,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "6e4c28c1",
+    "store_md5": "f37d9716648cfe4382b8c6a24c4f064f",
+    "store_rows": 2652,
+    "train_players": 1931,
+    "train_rows": {
+     "T1off_MSDex": 13114,
+     "T1off_MSDin": 13228,
+     "T1on_MSDex": 13050,
+     "T1on_MSDin": 13164
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "GEN_DEF",
+     "GEN_FWD",
+     "KEY_DEF",
+     "KEY_FWD",
+     "RUC"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "DEF",
+     "GDEF",
+     "GFWD",
+     "KDEF",
+     "KFWD",
+     "MID",
+     "RUC"
+    ],
+    "date": "2026-07-26",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 14,
+     "birthyear_changed": 305,
+     "draft_position_group_changed": 0,
+     "pick_changed": 46,
+     "players_absent_from_current": 1,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "8ecf8f8a",
+    "store_md5": "c120cfd54a83449e7485d209419b9cf8",
+    "store_rows": 2651,
+    "train_players": 1930,
+    "train_rows": {
+     "T1off_MSDex": 13107,
+     "T1off_MSDin": 13221,
+     "T1on_MSDex": 13043,
+     "T1on_MSDin": 13157
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "GEN_DEF",
+     "GEN_FWD",
+     "KEY_DEF",
+     "KEY_FWD",
+     "RUC"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "DEF",
+     "GDEF",
+     "GFWD",
+     "KDEF",
+     "KFWD",
+     "MID",
+     "RUC"
+    ],
+    "date": "2026-07-28",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 14,
+     "birthyear_changed": 305,
+     "draft_position_group_changed": 0,
+     "pick_changed": 46,
+     "players_absent_from_current": 1,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "fef7f69e",
+    "store_md5": "e3aaba772f339551cd223802ab115af7",
+    "store_rows": 2651,
+    "train_players": 1930,
+    "train_rows": {
+     "T1off_MSDex": 13107,
+     "T1off_MSDin": 13221,
+     "T1on_MSDex": 13043,
+     "T1on_MSDin": 13157
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "SD",
+     "SF",
+     "KPD",
+     "KPF",
+     "RUCK"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "KPD",
+     "KPF",
+     "MID",
+     "RUCK",
+     "SD",
+     "SF"
+    ],
+    "date": "2026-07-29",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 14,
+     "birthyear_changed": 305,
+     "draft_position_group_changed": 0,
+     "pick_changed": 46,
+     "players_absent_from_current": 1,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "995474c7",
+    "store_md5": "ce997903ba90caa140999e57c9e0ec3f",
+    "store_rows": 2651,
+    "train_players": 1930,
+    "train_rows": {
+     "T1off_MSDex": 13107,
+     "T1off_MSDin": 13221,
+     "T1on_MSDex": 13043,
+     "T1on_MSDin": 13157
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "SD",
+     "SF",
+     "KPD",
+     "KPF",
+     "RUCK"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "KPD",
+     "KPF",
+     "MID",
+     "RUCK",
+     "SD",
+     "SF"
+    ],
+    "date": "2026-07-29",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 14,
+     "birthyear_changed": 305,
+     "draft_position_group_changed": 0,
+     "pick_changed": 46,
+     "players_absent_from_current": 1,
+     "players_in_both": 2650,
+     "scoring_changed": 2031
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "a466c7ee",
+    "store_md5": "e4580f07f3318ed9ae326132cc11ac72",
+    "store_rows": 2651,
+    "train_players": 1930,
+    "train_rows": {
+     "T1off_MSDex": 13107,
+     "T1off_MSDin": 13221,
+     "T1on_MSDex": 13043,
+     "T1on_MSDin": 13157
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "SD",
+     "SF",
+     "KPD",
+     "KPF",
+     "RUCK"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "KPD",
+     "KPF",
+     "MID",
+     "RUCK",
+     "SD",
+     "SF"
+    ],
+    "date": "2026-07-29",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 0,
+     "birthyear_changed": 305,
+     "draft_position_group_changed": 0,
+     "pick_changed": 46,
+     "players_absent_from_current": 1,
+     "players_in_both": 2650,
+     "scoring_changed": 663
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "99cd5398",
+    "store_md5": "265f55d568f35af33a3e27c0a7d7886a",
+    "store_rows": 2651,
+    "train_players": 1930,
+    "train_rows": {
+     "T1off_MSDex": 13107,
+     "T1off_MSDin": 13221,
+     "T1on_MSDex": 13043,
+     "T1on_MSDin": 13157
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "SD",
+     "SF",
+     "KPD",
+     "KPF",
+     "RUCK"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "KPD",
+     "KPF",
+     "MID",
+     "RUCK",
+     "SD",
+     "SF"
+    ],
+    "date": "2026-07-29",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 14,
+     "birthyear_changed": 305,
+     "draft_position_group_changed": 0,
+     "pick_changed": 46,
+     "players_absent_from_current": 1,
+     "players_in_both": 2650,
+     "scoring_changed": 663
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "3df3a859",
+    "store_md5": "5d6e56d05f5e7d9eb8460bd1d07bca6e",
+    "store_rows": 2651,
+    "train_players": 1930,
+    "train_rows": {
+     "T1off_MSDex": 13107,
+     "T1off_MSDin": 13221,
+     "T1on_MSDex": 13043,
+     "T1on_MSDin": 13157
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "SD",
+     "SF",
+     "KPD",
+     "KPF",
+     "RUCK"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "KPD",
+     "KPF",
+     "MID",
+     "RUCK",
+     "SD",
+     "SF"
+    ],
+    "date": "2026-07-30",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 0,
+     "birthyear_changed": 305,
+     "draft_position_group_changed": 0,
+     "pick_changed": 46,
+     "players_absent_from_current": 1,
+     "players_in_both": 2650,
+     "scoring_changed": 663
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "f60af6ca",
+    "store_md5": "6b9d00a75ca88122c42da9189739916b",
+    "store_rows": 2651,
+    "train_players": 1930,
+    "train_rows": {
+     "T1off_MSDex": 13107,
+     "T1off_MSDin": 13221,
+     "T1on_MSDex": 13043,
+     "T1on_MSDin": 13157
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "SD",
+     "SF",
+     "KPD",
+     "KPF",
+     "RUCK"
+    ],
+    "code_has_T1_dropfix": false,
+    "code_pos_vocab": [
+     "KPD",
+     "KPF",
+     "MID",
+     "RUCK",
+     "SD",
+     "SF"
+    ],
+    "date": "2026-07-30",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 0,
+     "birthyear_changed": 305,
+     "draft_position_group_changed": 0,
+     "pick_changed": 46,
+     "players_absent_from_current": 1,
+     "players_in_both": 2650,
+     "scoring_changed": 663
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "5dd26743",
+    "store_md5": "81d2470440a80f72afea4405e94338c5",
+    "store_rows": 2651,
+    "train_players": 1930,
+    "train_rows": {
+     "T1off_MSDex": 13107,
+     "T1off_MSDin": 13221,
+     "T1on_MSDex": 13043,
+     "T1on_MSDin": 13157
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "SD",
+     "SF",
+     "KPD",
+     "KPF",
+     "RUCK"
+    ],
+    "code_has_T1_dropfix": true,
+    "code_pos_vocab": [
+     "KPD",
+     "KPF",
+     "MID",
+     "RUCK",
+     "SD",
+     "SF"
+    ],
+    "date": "2026-08-05",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 0,
+     "birthyear_changed": 302,
+     "draft_position_group_changed": 0,
+     "pick_changed": 17,
+     "players_absent_from_current": 0,
+     "players_in_both": 2650,
+     "scoring_changed": 517
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "5ba7a32a",
+    "store_md5": "f1e8c9fed35462536d00add604f69a3f",
+    "store_rows": 2650,
+    "train_players": 1929,
+    "train_rows": {
+     "T1off_MSDex": 13152,
+     "T1off_MSDin": 13266,
+     "T1on_MSDex": 13088,
+     "T1on_MSDin": 13202
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "SD",
+     "SF",
+     "KPD",
+     "KPF",
+     "RUCK"
+    ],
+    "code_has_T1_dropfix": true,
+    "code_pos_vocab": [
+     "KPD",
+     "KPF",
+     "MID",
+     "RUCK",
+     "SD",
+     "SF"
+    ],
+    "date": "2026-08-06",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 0,
+     "birthyear_changed": 302,
+     "draft_position_group_changed": 0,
+     "pick_changed": 0,
+     "players_absent_from_current": 0,
+     "players_in_both": 2650,
+     "scoring_changed": 477
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "2675e6a6",
+    "store_md5": "f1e7f20c4adea9b17d19457a5217c735",
+    "store_rows": 2650,
+    "train_players": 1929,
+    "train_rows": {
+     "T1off_MSDex": 13169,
+     "T1off_MSDin": 13283,
+     "T1on_MSDex": 13106,
+     "T1on_MSDin": 13220
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "SD",
+     "SF",
+     "KPD",
+     "KPF",
+     "RUCK"
+    ],
+    "code_has_T1_dropfix": true,
+    "code_pos_vocab": [
+     "KPD",
+     "KPF",
+     "MID",
+     "RUCK",
+     "SD",
+     "SF"
+    ],
+    "date": "2026-08-06",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 0,
+     "birthyear_changed": 302,
+     "draft_position_group_changed": 0,
+     "pick_changed": 0,
+     "players_absent_from_current": 0,
+     "players_in_both": 2650,
+     "scoring_changed": 450
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "5226fdcf",
+    "store_md5": "37ced3ce45914e6feb00d27e26922e9a",
+    "store_rows": 2650,
+    "train_players": 1929,
+    "train_rows": {
+     "T1off_MSDex": 13169,
+     "T1off_MSDin": 13283,
+     "T1on_MSDex": 13106,
+     "T1on_MSDin": 13220
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "SD",
+     "SF",
+     "KPD",
+     "KPF",
+     "RUCK"
+    ],
+    "code_has_T1_dropfix": true,
+    "code_pos_vocab": [
+     "KPD",
+     "KPF",
+     "MID",
+     "RUCK",
+     "SD",
+     "SF"
+    ],
+    "date": "2026-08-10",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 0,
+     "birthyear_changed": 302,
+     "draft_position_group_changed": 0,
+     "pick_changed": 0,
+     "players_absent_from_current": 0,
+     "players_in_both": 2650,
+     "scoring_changed": 411
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "7cbadb5e",
+    "store_md5": "0dd6b4a01e16dabf8d3a388d8f8ac1f2",
+    "store_rows": 2650,
+    "train_players": 1929,
+    "train_rows": {
+     "T1off_MSDex": 13169,
+     "T1off_MSDin": 13283,
+     "T1on_MSDex": 13106,
+     "T1on_MSDin": 13220
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "SD",
+     "SF",
+     "KPD",
+     "KPF",
+     "RUCK"
+    ],
+    "code_has_T1_dropfix": true,
+    "code_pos_vocab": [
+     "KPD",
+     "KPF",
+     "MID",
+     "RUCK",
+     "SD",
+     "SF"
+    ],
+    "date": "2026-08-10",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 0,
+     "birthyear_changed": 0,
+     "draft_position_group_changed": 0,
+     "pick_changed": 0,
+     "players_absent_from_current": 0,
+     "players_in_both": 2650,
+     "scoring_changed": 411
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "064abcae",
+    "store_md5": "d9a24282357cf3083b1640466e3ecd83",
+    "store_rows": 2650,
+    "train_players": 1929,
+    "train_rows": {
+     "T1off_MSDex": 13169,
+     "T1off_MSDin": 13283,
+     "T1on_MSDex": 13106,
+     "T1on_MSDin": 13220
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "SD",
+     "SF",
+     "KPD",
+     "KPF",
+     "RUCK"
+    ],
+    "code_has_T1_dropfix": true,
+    "code_pos_vocab": [
+     "KPD",
+     "KPF",
+     "MID",
+     "RUCK",
+     "SD",
+     "SF"
+    ],
+    "date": "2026-08-13",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 0,
+     "birthyear_changed": 0,
+     "draft_position_group_changed": 0,
+     "pick_changed": 0,
+     "players_absent_from_current": 0,
+     "players_in_both": 2650,
+     "scoring_changed": 411
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "0a4780da",
+    "store_md5": "cb38ef1171dcf20aae66ebf12682be0d",
+    "store_rows": 2650,
+    "train_players": 1929,
+    "train_rows": {
+     "T1off_MSDex": 13169,
+     "T1off_MSDin": 13283,
+     "T1on_MSDex": 13106,
+     "T1on_MSDin": 13220
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "SD",
+     "SF",
+     "KPD",
+     "KPF",
+     "RUCK"
+    ],
+    "code_has_T1_dropfix": true,
+    "code_pos_vocab": [
+     "KPD",
+     "KPF",
+     "MID",
+     "RUCK",
+     "SD",
+     "SF"
+    ],
+    "date": "2026-08-20",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 0,
+     "birthyear_changed": 0,
+     "draft_position_group_changed": 0,
+     "pick_changed": 0,
+     "players_absent_from_current": 0,
+     "players_in_both": 2650,
+     "scoring_changed": 411
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "de9b8eb0",
+    "store_md5": "cc02567f80bef39228f25854d121a766",
+    "store_rows": 2650,
+    "train_players": 1929,
+    "train_rows": {
+     "T1off_MSDex": 13169,
+     "T1off_MSDin": 13283,
+     "T1on_MSDex": 13106,
+     "T1on_MSDin": 13220
+    }
+   },
+   {
+    "MATCHES_cm400_13226": false,
+    "MATCHES_q97m_13111": false,
+    "code_GROUPS": [
+     "MID",
+     "SD",
+     "SF",
+     "KPD",
+     "KPF",
+     "RUCK"
+    ],
+    "code_has_T1_dropfix": true,
+    "code_pos_vocab": [
+     "KPD",
+     "KPF",
+     "MID",
+     "RUCK",
+     "SD",
+     "SF"
+    ],
+    "date": "2026-08-20",
+    "drift_vs_current_b745002e": {
+     "band_onehot_position_changed": 0,
+     "birthyear_changed": 0,
+     "draft_position_group_changed": 0,
+     "pick_changed": 0,
+     "players_absent_from_current": 0,
+     "players_in_both": 2650,
+     "scoring_changed": 0
+    },
+    "first_observable_season": 2005,
+    "schema": "DPP_STRIP_3col",
+    "sha": "b7ec6270",
+    "store_md5": "b745002eb0a0fbb1c34fa44f1ef708d6",
+    "store_rows": 2650,
+    "train_players": 1929,
+    "train_rows": {
+     "T1off_MSDex": 13169,
+     "T1off_MSDin": 13283,
+     "T1on_MSDex": 13106,
+     "T1on_MSDin": 13220
+    }
+   }
+  ],
+  "target_cm400_rows": 13226,
+  "target_q97m_rows": 13111
+ },
+ "M4_provenance_grid": {
+  "hits": [
+   {
+    "artifact": "q97m.pkl",
+    "rows": 13111,
+    "store_date": "2026-07-15",
+    "store_md5_8": "b1fd0bce",
+    "store_sha": "0cf723af",
+    "switches": "T1off_MSDex_cut2021_cap2026_pick_or_ft"
+   },
+   {
+    "artifact": "q97m.pkl",
+    "rows": 13111,
+    "store_date": "2026-07-15",
+    "store_md5_8": "b1fd0bce",
+    "store_sha": "0cf723af",
+    "switches": "T1off_MSDex_cut2021_cap2026_pick_only"
+   },
+   {
+    "artifact": "q97m.pkl",
+    "rows": 13111,
+    "store_date": "2026-07-17",
+    "store_md5_8": "0efdc5d6",
+    "store_sha": "63063786",
+    "switches": "T1off_MSDex_cut2021_cap2026_pick_or_ft"
+   },
+   {
+    "artifact": "q97m.pkl",
+    "rows": 13111,
+    "store_date": "2026-07-17",
+    "store_md5_8": "0efdc5d6",
+    "store_sha": "63063786",
+    "switches": "T1off_MSDex_cut2021_cap2026_pick_only"
+   },
+   {
+    "artifact": "q97m.pkl",
+    "rows": 13111,
+    "store_date": "2026-07-17",
+    "store_md5_8": "968de0c7",
+    "store_sha": "10508cba",
+    "switches": "T1off_MSDex_cut2021_cap2026_pick_or_ft"
+   },
+   {
+    "artifact": "q97m.pkl",
+    "rows": 13111,
+    "store_date": "2026-07-17",
+    "store_md5_8": "968de0c7",
+    "store_sha": "10508cba",
+    "switches": "T1off_MSDex_cut2021_cap2026_pick_only"
+   },
+   {
+    "artifact": "cm_150.pkl (workspace, unshipped)",
+    "rows": 13220,
+    "store_date": "2026-08-06",
+    "store_md5_8": "f1e7f20c",
+    "store_sha": "2675e6a6",
+    "switches": "T1on_MSDin_cut2021_cap2026_pick_or_ft"
+   },
+   {
+    "artifact": "cm_150.pkl (workspace, unshipped)",
+    "rows": 13220,
+    "store_date": "2026-08-06",
+    "store_md5_8": "f1e7f20c",
+    "store_sha": "2675e6a6",
+    "switches": "T1on_MSDin_cut2021_cap2026_pick_only"
+   },
+   {
+    "artifact": "cm_150.pkl (workspace, unshipped)",
+    "rows": 13220,
+    "store_date": "2026-08-06",
+    "store_md5_8": "37ced3ce",
+    "store_sha": "5226fdcf",
+    "switches": "T1on_MSDin_cut2021_cap2026_pick_or_ft"
+   },
+   {
+    "artifact": "cm_150.pkl (workspace, unshipped)",
+    "rows": 13220,
+    "store_date": "2026-08-06",
+    "store_md5_8": "37ced3ce",
+    "store_sha": "5226fdcf",
+    "switches": "T1on_MSDin_cut2021_cap2026_pick_only"
+   },
+   {
+    "artifact": "cm_150.pkl (workspace, unshipped)",
+    "rows": 13220,
+    "store_date": "2026-08-10",
+    "store_md5_8": "0dd6b4a0",
+    "store_sha": "7cbadb5e",
+    "switches": "T1on_MSDin_cut2021_cap2026_pick_or_ft"
+   },
+   {
+    "artifact": "cm_150.pkl (workspace, unshipped)",
+    "rows": 13220,
+    "store_date": "2026-08-10",
+    "store_md5_8": "0dd6b4a0",
+    "store_sha": "7cbadb5e",
+    "switches": "T1on_MSDin_cut2021_cap2026_pick_only"
+   },
+   {
+    "artifact": "cm_150.pkl (workspace, unshipped)",
+    "rows": 13220,
+    "store_date": "2026-08-10",
+    "store_md5_8": "d9a24282",
+    "store_sha": "064abcae",
+    "switches": "T1on_MSDin_cut2021_cap2026_pick_or_ft"
+   },
+   {
+    "artifact": "cm_150.pkl (workspace, unshipped)",
+    "rows": 13220,
+    "store_date": "2026-08-10",
+    "store_md5_8": "d9a24282",
+    "store_sha": "064abcae",
+    "switches": "T1on_MSDin_cut2021_cap2026_pick_only"
+   },
+   {
+    "artifact": "cm_150.pkl (workspace, unshipped)",
+    "rows": 13220,
+    "store_date": "2026-08-13",
+    "store_md5_8": "cb38ef11",
+    "store_sha": "0a4780da",
+    "switches": "T1on_MSDin_cut2021_cap2026_pick_or_ft"
+   },
+   {
+    "artifact": "cm_150.pkl (workspace, unshipped)",
+    "rows": 13220,
+    "store_date": "2026-08-13",
+    "store_md5_8": "cb38ef11",
+    "store_sha": "0a4780da",
+    "switches": "T1on_MSDin_cut2021_cap2026_pick_only"
+   },
+   {
+    "artifact": "cm_150.pkl (workspace, unshipped)",
+    "rows": 13220,
+    "store_date": "2026-08-20",
+    "store_md5_8": "cc02567f",
+    "store_sha": "de9b8eb0",
+    "switches": "T1on_MSDin_cut2021_cap2026_pick_or_ft"
+   },
+   {
+    "artifact": "cm_150.pkl (workspace, unshipped)",
+    "rows": 13220,
+    "store_date": "2026-08-20",
+    "store_md5_8": "cc02567f",
+    "store_sha": "de9b8eb0",
+    "switches": "T1on_MSDin_cut2021_cap2026_pick_only"
+   },
+   {
+    "artifact": "cm_150.pkl (workspace, unshipped)",
+    "rows": 13220,
+    "store_date": "2026-08-20",
+    "store_md5_8": "b745002e",
+    "store_sha": "b7ec6270",
+    "switches": "T1on_MSDin_cut2021_cap2026_pick_or_ft"
+   },
+   {
+    "artifact": "cm_150.pkl (workspace, unshipped)",
+    "rows": 13220,
+    "store_date": "2026-08-20",
+    "store_md5_8": "b745002e",
+    "store_sha": "b7ec6270",
+    "switches": "T1on_MSDin_cut2021_cap2026_pick_only"
+   }
+  ],
+  "table": [
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12455,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12455,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12744,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12744,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12794,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12794,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13120,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13120,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12480,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12480,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12770,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12770,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12911,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12911,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13248,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13248,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12391,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12391,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12680,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12680,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12730,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12730,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13056,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13056,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12416,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12416,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12706,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12706,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12847,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12847,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13184,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13184
+    },
+    "date": "2026-07-02",
+    "sha": "f4a4d34f",
+    "store_md5_8": "644d1254"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12454,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12454,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12743,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12743,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12793,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12793,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13119,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13119,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12479,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12479,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12769,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12769,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12904,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12904,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13240,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13240,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12390,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12390,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12679,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12679,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12729,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12729,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13055,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13055,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12415,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12415,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12705,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12705,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12840,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12840,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13176,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13176
+    },
+    "date": "2026-07-05",
+    "sha": "14472dbf",
+    "store_md5_8": "73d23a8e"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12454,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12454,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12743,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12743,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12793,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12793,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13119,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13119,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12479,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12479,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12769,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12769,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12904,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12904,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13240,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13240,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12390,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12390,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12679,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12679,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12729,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12729,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13055,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13055,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12415,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12415,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12705,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12705,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12840,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12840,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13176,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13176
+    },
+    "date": "2026-07-05",
+    "sha": "2d611300",
+    "store_md5_8": "e1b4d8bf"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12454,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12454,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12743,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12743,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12793,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12793,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13119,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13119,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12479,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12479,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12769,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12769,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12904,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12904,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13240,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13240,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12390,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12390,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12679,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12679,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12729,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12729,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13055,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13055,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12415,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12415,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12705,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12705,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12840,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12840,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13176,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13176
+    },
+    "date": "2026-07-09",
+    "sha": "1a3ec6d6",
+    "store_md5_8": "a2fbc9a0"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12454,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12454,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12743,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12743,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12793,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12793,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13119,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13119,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12479,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12479,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12769,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12769,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12904,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12904,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13240,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13240,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12390,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12390,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12679,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12679,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12729,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12729,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13055,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13055,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12415,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12415,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12705,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12705,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12840,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12840,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13176,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13176
+    },
+    "date": "2026-07-11",
+    "sha": "fc289412",
+    "store_md5_8": "e1d4d21e"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12454,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12454,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12743,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12743,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12793,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12793,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13119,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13119,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12479,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12479,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12769,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12769,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12904,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12904,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13240,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13240,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12390,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12390,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12679,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12679,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12729,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12729,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13055,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13055,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12415,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12415,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12705,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12705,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12840,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12840,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13176,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13176
+    },
+    "date": "2026-07-11",
+    "sha": "2480c931",
+    "store_md5_8": "1a969d95"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12454,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12454,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12743,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12743,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12793,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12793,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13119,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13119,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12479,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12479,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12769,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12769,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12904,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12904,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13240,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13240,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12390,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12390,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12679,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12679,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12729,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12729,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13055,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13055,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12415,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12415,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12705,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12705,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12840,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12840,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13176,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13176
+    },
+    "date": "2026-07-11",
+    "sha": "c02499a3",
+    "store_md5_8": "04f38dad"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12454,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12454,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12743,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12743,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12793,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12793,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13119,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13119,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12479,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12479,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12769,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12769,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12904,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12904,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13240,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13240,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12390,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12390,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12679,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12679,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12729,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12729,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13055,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13055,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12415,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12415,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12705,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12705,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12840,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12840,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13176,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13176
+    },
+    "date": "2026-07-12",
+    "sha": "119c3e67",
+    "store_md5_8": "b0c39d78"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12454,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12454,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12743,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12743,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12793,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12793,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13119,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13119,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12479,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12479,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12769,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12769,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12904,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12904,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13240,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13240,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12390,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12390,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12679,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12679,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12729,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12729,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13055,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13055,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12415,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12415,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12705,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12705,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12840,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12840,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13176,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13176
+    },
+    "date": "2026-07-13",
+    "sha": "aec5e512",
+    "store_md5_8": "340a7a32"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12447,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12447,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12735,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12735,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12786,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12786,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13111,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13111,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12472,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12472,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12761,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12761,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12891,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12891,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13225,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13225,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12383,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12383,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12671,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12671,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12722,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12722,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13047,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13047,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12408,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12408,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12697,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12697,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12827,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12827,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13161,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13161
+    },
+    "date": "2026-07-15",
+    "sha": "0cf723af",
+    "store_md5_8": "b1fd0bce"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12447,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12447,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12735,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12735,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12786,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12786,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13111,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13111,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12472,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12472,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12761,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12761,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12891,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12891,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13225,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13225,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12383,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12383,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12671,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12671,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12722,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12722,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13047,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13047,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12408,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12408,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12697,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12697,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12827,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12827,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13161,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13161
+    },
+    "date": "2026-07-17",
+    "sha": "63063786",
+    "store_md5_8": "0efdc5d6"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12447,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12447,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12735,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12735,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12786,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12786,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13111,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13111,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12472,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12472,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12761,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12761,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12891,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12891,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13225,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13225,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12383,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12383,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12671,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12671,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12722,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12722,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13047,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13047,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12408,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12408,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12697,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12697,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12827,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12827,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13161,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13161
+    },
+    "date": "2026-07-17",
+    "sha": "10508cba",
+    "store_md5_8": "968de0c7"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12447,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12447,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12737,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12737,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12786,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12786,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13114,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13114,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12472,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12472,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12763,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12763,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12891,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12891,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13228,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13228,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12383,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12383,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12673,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12673,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12722,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12722,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13050,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13050,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12408,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12408,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12699,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12699,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12827,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12827,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13164,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13164
+    },
+    "date": "2026-07-21",
+    "sha": "6e4c28c1",
+    "store_md5_8": "f37d9716"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12440,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12440,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12730,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12730,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12779,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12779,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13107,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13107,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12465,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12465,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12756,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12756,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12884,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12884,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13221,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13221,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12376,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12376,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12666,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12666,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12715,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12715,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13043,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13043,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12401,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12401,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12692,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12692,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12820,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12820,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13157,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13157
+    },
+    "date": "2026-07-26",
+    "sha": "8ecf8f8a",
+    "store_md5_8": "c120cfd5"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12440,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12440,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12730,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12730,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12779,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12779,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13107,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13107,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12465,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12465,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12756,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12756,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12884,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12884,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13221,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13221,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12376,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12376,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12666,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12666,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12715,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12715,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13043,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13043,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12401,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12401,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12692,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12692,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12820,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12820,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13157,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13157
+    },
+    "date": "2026-07-28",
+    "sha": "fef7f69e",
+    "store_md5_8": "e3aaba77"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12440,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12440,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12730,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12730,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12779,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12779,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13107,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13107,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12465,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12465,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12756,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12756,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12884,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12884,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13221,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13221,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12376,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12376,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12666,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12666,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12715,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12715,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13043,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13043,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12401,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12401,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12692,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12692,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12820,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12820,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13157,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13157
+    },
+    "date": "2026-07-29",
+    "sha": "995474c7",
+    "store_md5_8": "ce997903"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12440,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12440,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12730,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12730,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12779,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12779,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13107,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13107,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12465,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12465,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12756,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12756,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12884,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12884,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13221,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13221,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12376,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12376,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12666,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12666,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12715,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12715,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13043,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13043,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12401,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12401,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12692,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12692,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12820,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12820,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13157,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13157
+    },
+    "date": "2026-07-29",
+    "sha": "a466c7ee",
+    "store_md5_8": "e4580f07"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12440,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12440,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12730,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12730,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12779,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12779,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13107,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13107,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12465,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12465,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12756,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12756,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12884,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12884,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13221,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13221,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12376,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12376,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12666,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12666,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12715,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12715,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13043,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13043,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12401,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12401,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12692,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12692,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12820,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12820,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13157,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13157
+    },
+    "date": "2026-07-29",
+    "sha": "99cd5398",
+    "store_md5_8": "265f55d5"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12440,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12440,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12730,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12730,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12779,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12779,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13107,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13107,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12465,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12465,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12756,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12756,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12884,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12884,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13221,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13221,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12376,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12376,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12666,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12666,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12715,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12715,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13043,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13043,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12401,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12401,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12692,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12692,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12820,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12820,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13157,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13157
+    },
+    "date": "2026-07-29",
+    "sha": "3df3a859",
+    "store_md5_8": "5d6e56d0"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12440,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12440,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12730,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12730,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12779,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12779,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13107,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13107,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12465,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12465,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12756,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12756,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12884,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12884,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13221,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13221,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12376,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12376,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12666,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12666,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12715,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12715,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13043,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13043,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12401,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12401,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12692,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12692,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12820,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12820,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13157,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13157
+    },
+    "date": "2026-07-30",
+    "sha": "f60af6ca",
+    "store_md5_8": "6b9d00a7"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12440,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12440,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12730,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12730,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12779,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12779,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13107,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13107,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12465,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12465,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12756,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12756,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12884,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12884,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13221,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13221,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12376,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12376,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12666,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12666,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12715,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12715,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13043,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13043,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12401,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12401,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12692,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12692,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12820,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12820,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13157,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13157
+    },
+    "date": "2026-07-30",
+    "sha": "5dd26743",
+    "store_md5_8": "81d24704"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12462,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12462,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12769,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12769,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12802,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12802,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13152,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13152,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12487,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12487,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12795,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12795,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12907,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12907,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13266,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13266,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12398,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12398,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12705,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12705,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12738,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12738,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13088,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13088,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12423,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12423,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12731,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12731,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12843,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12843,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13202,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13202
+    },
+    "date": "2026-08-05",
+    "sha": "5ba7a32a",
+    "store_md5_8": "f1e8c9fe"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12479,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12479,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12786,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12786,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12819,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12819,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13169,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13169,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12504,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12504,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12812,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12812,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12924,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12924,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13283,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13283,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12416,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12416,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12723,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12723,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12756,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12756,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13106,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13106,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12441,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12441,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12749,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12749,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12861,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12861,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13220,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13220
+    },
+    "date": "2026-08-06",
+    "sha": "2675e6a6",
+    "store_md5_8": "f1e7f20c"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12479,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12479,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12786,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12786,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12819,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12819,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13169,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13169,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12504,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12504,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12812,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12812,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12924,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12924,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13283,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13283,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12416,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12416,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12723,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12723,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12756,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12756,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13106,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13106,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12441,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12441,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12749,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12749,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12861,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12861,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13220,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13220
+    },
+    "date": "2026-08-06",
+    "sha": "5226fdcf",
+    "store_md5_8": "37ced3ce"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12479,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12479,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12786,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12786,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12819,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12819,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13169,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13169,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12504,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12504,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12812,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12812,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12924,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12924,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13283,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13283,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12416,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12416,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12723,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12723,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12756,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12756,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13106,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13106,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12441,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12441,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12749,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12749,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12861,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12861,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13220,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13220
+    },
+    "date": "2026-08-10",
+    "sha": "7cbadb5e",
+    "store_md5_8": "0dd6b4a0"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12479,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12479,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12786,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12786,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12819,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12819,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13169,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13169,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12504,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12504,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12812,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12812,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12924,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12924,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13283,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13283,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12416,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12416,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12723,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12723,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12756,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12756,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13106,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13106,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12441,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12441,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12749,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12749,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12861,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12861,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13220,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13220
+    },
+    "date": "2026-08-10",
+    "sha": "064abcae",
+    "store_md5_8": "d9a24282"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12479,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12479,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12786,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12786,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12819,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12819,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13169,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13169,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12504,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12504,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12812,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12812,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12924,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12924,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13283,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13283,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12416,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12416,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12723,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12723,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12756,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12756,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13106,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13106,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12441,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12441,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12749,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12749,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12861,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12861,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13220,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13220
+    },
+    "date": "2026-08-13",
+    "sha": "0a4780da",
+    "store_md5_8": "cb38ef11"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12479,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12479,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12786,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12786,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12819,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12819,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13169,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13169,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12504,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12504,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12812,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12812,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12924,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12924,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13283,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13283,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12416,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12416,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12723,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12723,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12756,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12756,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13106,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13106,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12441,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12441,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12749,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12749,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12861,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12861,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13220,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13220
+    },
+    "date": "2026-08-20",
+    "sha": "de9b8eb0",
+    "store_md5_8": "cc02567f"
+   },
+   {
+    "counts": {
+     "T1off_MSDex_cut2020_cap2025_pick_only": 12479,
+     "T1off_MSDex_cut2020_cap2025_pick_or_ft": 12479,
+     "T1off_MSDex_cut2020_cap2026_pick_only": 12786,
+     "T1off_MSDex_cut2020_cap2026_pick_or_ft": 12786,
+     "T1off_MSDex_cut2021_cap2025_pick_only": 12819,
+     "T1off_MSDex_cut2021_cap2025_pick_or_ft": 12819,
+     "T1off_MSDex_cut2021_cap2026_pick_only": 13169,
+     "T1off_MSDex_cut2021_cap2026_pick_or_ft": 13169,
+     "T1off_MSDin_cut2020_cap2025_pick_only": 12504,
+     "T1off_MSDin_cut2020_cap2025_pick_or_ft": 12504,
+     "T1off_MSDin_cut2020_cap2026_pick_only": 12812,
+     "T1off_MSDin_cut2020_cap2026_pick_or_ft": 12812,
+     "T1off_MSDin_cut2021_cap2025_pick_only": 12924,
+     "T1off_MSDin_cut2021_cap2025_pick_or_ft": 12924,
+     "T1off_MSDin_cut2021_cap2026_pick_only": 13283,
+     "T1off_MSDin_cut2021_cap2026_pick_or_ft": 13283,
+     "T1on_MSDex_cut2020_cap2025_pick_only": 12416,
+     "T1on_MSDex_cut2020_cap2025_pick_or_ft": 12416,
+     "T1on_MSDex_cut2020_cap2026_pick_only": 12723,
+     "T1on_MSDex_cut2020_cap2026_pick_or_ft": 12723,
+     "T1on_MSDex_cut2021_cap2025_pick_only": 12756,
+     "T1on_MSDex_cut2021_cap2025_pick_or_ft": 12756,
+     "T1on_MSDex_cut2021_cap2026_pick_only": 13106,
+     "T1on_MSDex_cut2021_cap2026_pick_or_ft": 13106,
+     "T1on_MSDin_cut2020_cap2025_pick_only": 12441,
+     "T1on_MSDin_cut2020_cap2025_pick_or_ft": 12441,
+     "T1on_MSDin_cut2020_cap2026_pick_only": 12749,
+     "T1on_MSDin_cut2020_cap2026_pick_or_ft": 12749,
+     "T1on_MSDin_cut2021_cap2025_pick_only": 12861,
+     "T1on_MSDin_cut2021_cap2025_pick_or_ft": 12861,
+     "T1on_MSDin_cut2021_cap2026_pick_only": 13220,
+     "T1on_MSDin_cut2021_cap2026_pick_or_ft": 13220
+    },
+    "date": "2026-08-20",
+    "sha": "b7ec6270",
+    "store_md5_8": "b745002e"
+   }
+  ],
+  "targets": {
+   "13111": "q97m.pkl",
+   "13220": "cm_150.pkl (workspace, unshipped)",
+   "13226": "cm_400.pkl"
+  }
+ },
+ "M5_estimator_bakeoff_age_pool_weighting": {
+  "age_marginal_by_bucket": {
+   "18-19": {
+    "mean_level": 57.27,
+    "mean_target": 57.95,
+    "median_target": 61.93,
+    "n": 2760
+   },
+   "20-21": {
+    "mean_level": 60.4,
+    "mean_target": 68.83,
+    "median_target": 67.6,
+    "n": 2527
+   },
+   "22-23": {
+    "mean_level": 65.62,
+    "mean_target": 71.7,
+    "median_target": 70.0,
+    "n": 2338
+   },
+   "24-25": {
+    "mean_level": 70.69,
+    "mean_target": 73.4,
+    "median_target": 72.17,
+    "n": 1943
+   },
+   "26-27": {
+    "mean_level": 74.51,
+    "mean_target": 74.09,
+    "median_target": 72.71,
+    "n": 1473
+   },
+   "28-29": {
+    "mean_level": 77.48,
+    "mean_target": 73.69,
+    "median_target": 72.55,
+    "n": 1066
+   },
+   "30-31": {
+    "mean_level": 79.87,
+    "mean_target": 72.31,
+    "median_target": 72.0,
+    "n": 656
+   },
+   "32-33": {
+    "mean_level": 80.41,
+    "mean_target": 70.06,
+    "median_target": 70.3,
+    "n": 327
+   }
+  },
+  "age_partial_dependence": {
+   "B_histgbr_unconstrained": {
+    "age_grid": [
+     18.0,
+     18.5,
+     19.0,
+     19.5,
+     20.0,
+     20.5,
+     21.0,
+     21.5,
+     22.0,
+     22.5,
+     23.0,
+     23.5,
+     24.0,
+     24.5,
+     25.0,
+     25.5,
+     26.0,
+     26.5,
+     27.0,
+     27.5,
+     28.0,
+     28.5,
+     29.0,
+     29.5,
+     30.0,
+     30.5,
+     31.0,
+     31.5,
+     32.0,
+     32.5,
+     33.0,
+     33.5,
+     34.0
+    ],
+    "mean_band_weighted_mean": [
+     73.163,
+     73.163,
+     76.55,
+     76.55,
+     76.912,
+     76.912,
+     75.935,
+     75.935,
+     74.8,
+     74.8,
+     72.932,
+     72.932,
+     70.963,
+     70.963,
+     69.465,
+     69.465,
+     68.288,
+     68.288,
+     67.208,
+     67.208,
+     66.141,
+     66.141,
+     64.576,
+     64.576,
+     63.822,
+     63.822,
+     63.303,
+     63.303,
+     62.861,
+     62.861,
+     62.768,
+     62.768,
+     62.855
+    ],
+    "mean_curve_argmax_age": 20.0,
+    "mean_curve_total_fall_from_peak": 14.057,
+    "mean_curve_total_rise": 3.749,
+    "pct_row_steps_negative": 41.81,
+    "pct_rows_monotone_nondecreasing": 0.0,
+    "pct_rows_monotone_nonincreasing": 3.5
+   },
+   "PINNED_cm_400__tenure_ge_8": {
+    "age_grid": [
+     18.0,
+     18.5,
+     19.0,
+     19.5,
+     20.0,
+     20.5,
+     21.0,
+     21.5,
+     22.0,
+     22.5,
+     23.0,
+     23.5,
+     24.0,
+     24.5,
+     25.0,
+     25.5,
+     26.0,
+     26.5,
+     27.0,
+     27.5,
+     28.0,
+     28.5,
+     29.0,
+     29.5,
+     30.0,
+     30.5,
+     31.0,
+     31.5,
+     32.0,
+     32.5,
+     33.0,
+     33.5,
+     34.0
+    ],
+    "mean_band_weighted_mean": [
+     87.209,
+     87.209,
+     87.951,
+     87.951,
+     87.831,
+     87.831,
+     86.57,
+     86.57,
+     85.387,
+     85.387,
+     83.574,
+     83.574,
+     81.529,
+     81.529,
+     79.795,
+     79.795,
+     78.746,
+     78.746,
+     77.386,
+     77.386,
+     75.89,
+     75.89,
+     74.081,
+     74.081,
+     73.034,
+     73.034,
+     72.285,
+     72.285,
+     72.189,
+     72.189,
+     72.066,
+     72.066,
+     72.075
+    ],
+    "mean_curve_argmax_age": 19.0,
+    "mean_curve_total_fall_from_peak": 15.877,
+    "mean_curve_total_rise": 0.743,
+    "pct_row_steps_negative": 44.9,
+    "pct_rows_monotone_nondecreasing": 0.0,
+    "pct_rows_monotone_nonincreasing": 10.0
+   },
+   "PINNED_cm_400__tenure_le_3": {
+    "age_grid": [
+     18.0,
+     18.5,
+     19.0,
+     19.5,
+     20.0,
+     20.5,
+     21.0,
+     21.5,
+     22.0,
+     22.5,
+     23.0,
+     23.5,
+     24.0,
+     24.5,
+     25.0,
+     25.5,
+     26.0,
+     26.5,
+     27.0,
+     27.5,
+     28.0,
+     28.5,
+     29.0,
+     29.5,
+     30.0,
+     30.5,
+     31.0,
+     31.5,
+     32.0,
+     32.5,
+     33.0,
+     33.5,
+     34.0
+    ],
+    "mean_band_weighted_mean": [
+     60.654,
+     60.654,
+     66.286,
+     66.286,
+     67.733,
+     67.733,
+     67.743,
+     67.743,
+     67.334,
+     67.334,
+     66.017,
+     66.017,
+     64.343,
+     64.343,
+     63.22,
+     63.22,
+     62.376,
+     62.376,
+     61.35,
+     61.35,
+     60.683,
+     60.683,
+     59.17,
+     59.17,
+     58.651,
+     58.651,
+     58.454,
+     58.454,
+     58.442,
+     58.442,
+     58.446,
+     58.446,
+     58.437
+    ],
+    "mean_curve_argmax_age": 21.0,
+    "mean_curve_total_fall_from_peak": 9.306,
+    "mean_curve_total_rise": 7.09,
+    "pct_row_steps_negative": 37.46,
+    "pct_rows_monotone_nondecreasing": 0.0,
+    "pct_rows_monotone_nonincreasing": 0.67
+   },
+   "PINNED_cm_400_shipped": {
+    "age_grid": [
+     18.0,
+     18.5,
+     19.0,
+     19.5,
+     20.0,
+     20.5,
+     21.0,
+     21.5,
+     22.0,
+     22.5,
+     23.0,
+     23.5,
+     24.0,
+     24.5,
+     25.0,
+     25.5,
+     26.0,
+     26.5,
+     27.0,
+     27.5,
+     28.0,
+     28.5,
+     29.0,
+     29.5,
+     30.0,
+     30.5,
+     31.0,
+     31.5,
+     32.0,
+     32.5,
+     33.0,
+     33.5,
+     34.0
+    ],
+    "mean_band_weighted_mean": [
+     74.111,
+     74.111,
+     77.173,
+     77.173,
+     77.517,
+     77.517,
+     76.762,
+     76.762,
+     75.911,
+     75.911,
+     74.29,
+     74.29,
+     72.389,
+     72.389,
+     70.991,
+     70.991,
+     70.014,
+     70.014,
+     68.793,
+     68.793,
+     67.733,
+     67.733,
+     65.982,
+     65.982,
+     65.2,
+     65.2,
+     64.715,
+     64.715,
+     64.66,
+     64.66,
+     64.627,
+     64.627,
+     64.621
+    ],
+    "mean_curve_argmax_age": 20.0,
+    "mean_curve_total_fall_from_peak": 12.895,
+    "mean_curve_total_rise": 3.405,
+    "pct_row_steps_negative": 41.83,
+    "pct_rows_monotone_nondecreasing": 0.0,
+    "pct_rows_monotone_nonincreasing": 7.5
+   }
+  },
+  "arms": {
+   "A_gbr_classic_unconstrained": {
+    "estimator": "GradientBoostingRegressor",
+    "fit_seconds_5_quantiles": 35.98,
+    "insample_pinball": {
+     "0.1": 2.482990442583017,
+     "0.3": 5.008069112768933,
+     "0.5": 5.789723806966911,
+     "0.7": 4.95532326307155,
+     "0.9": 2.4432929410819146
+    },
+    "monotonic_cst": null
+   },
+   "B_histgbr_unconstrained": {
+    "estimator": "HistGradientBoostingRegressor",
+    "fit_seconds_5_quantiles": 4.55,
+    "insample_pinball": {
+     "0.1": 2.5003730784661076,
+     "0.3": 5.002529586464075,
+     "0.5": 5.814039299840418,
+     "0.7": 4.936864127900946,
+     "0.9": 2.4477549608419364
+    },
+    "monotonic_cst": null
+   },
+   "C_histgbr_level_monotone": {
+    "estimator": "HistGradientBoostingRegressor",
+    "fit_seconds_5_quantiles": 4.17,
+    "insample_pinball": {
+     "0.1": 2.486597396960506,
+     "0.3": 5.095234955712878,
+     "0.5": 5.8337956100272725,
+     "0.7": 4.970402655390731,
+     "0.9": 2.410413502835274
+    },
+    "monotonic_cst": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0
+    ]
+   },
+   "D_histgbr_level_mono_age_down": {
+    "estimator": "HistGradientBoostingRegressor",
+    "fit_seconds_5_quantiles": 4.8,
+    "insample_pinball": {
+     "0.1": 2.497844488778125,
+     "0.3": 5.10285677386094,
+     "0.5": 5.872913523261068,
+     "0.7": 4.96863096746698,
+     "0.9": 2.4430473300912556
+    },
+    "monotonic_cst": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     -1
+    ]
+   },
+   "E_histgbr_level_mono_age_up": {
+    "estimator": "HistGradientBoostingRegressor",
+    "fit_seconds_5_quantiles": 4.14,
+    "insample_pinball": {
+     "0.1": 2.522081881240925,
+     "0.3": 5.1055294762187815,
+     "0.5": 5.882879957685315,
+     "0.7": 5.004589144694617,
+     "0.9": 2.4342714247494444
+    },
+    "monotonic_cst": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1
+    ]
+   }
+  },
+  "design": {
+   "feature_names": [
+    "oh_MID",
+    "oh_SD",
+    "oh_SF",
+    "oh_KPD",
+    "oh_KPF",
+    "oh_RUCK",
+    "log_effpk",
+    "exposure",
+    "tenure",
+    "level",
+    "age"
+   ],
+   "features": 11,
+   "rows": 13220
+  },
+  "law3": {
+   "A_gbr_classic_unconstrained": {
+    "all_rows": {
+     "negative_steps": 15290,
+     "pct_rows_violating": 100.0,
+     "pct_steps_negative": 25.148,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 200,
+     "total_steps": 60800,
+     "worst_single_step_pct": -9.784,
+     "worst_single_step_value": -5.7517
+    },
+    "thin_evidence_rows": {
+     "negative_steps": 16656,
+     "pct_rows_violating": 100.0,
+     "pct_steps_negative": 27.395,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 200,
+     "total_steps": 60800,
+     "worst_single_step_pct": -10.132,
+     "worst_single_step_value": -5.6067
+    }
+   },
+   "B_histgbr_unconstrained": {
+    "all_rows": {
+     "negative_steps": 7208,
+     "pct_rows_violating": 100.0,
+     "pct_steps_negative": 11.855,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 200,
+     "total_steps": 60800,
+     "worst_single_step_pct": -7.568,
+     "worst_single_step_value": -4.5035
+    },
+    "thin_evidence_rows": {
+     "negative_steps": 8656,
+     "pct_rows_violating": 100.0,
+     "pct_steps_negative": 14.237,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 200,
+     "total_steps": 60800,
+     "worst_single_step_pct": -7.93,
+     "worst_single_step_value": -4.5035
+    }
+   },
+   "C_histgbr_level_monotone": {
+    "all_rows": {
+     "negative_steps": 1002,
+     "pct_rows_violating": 96.5,
+     "pct_steps_negative": 1.648,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 193,
+     "total_steps": 60800,
+     "worst_single_step_pct": -3.559,
+     "worst_single_step_value": -1.2989
+    },
+    "thin_evidence_rows": {
+     "negative_steps": 1567,
+     "pct_rows_violating": 99.0,
+     "pct_steps_negative": 2.577,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 198,
+     "total_steps": 60800,
+     "worst_single_step_pct": -3.559,
+     "worst_single_step_value": -1.3643
+    }
+   },
+   "D_histgbr_level_mono_age_down": {
+    "all_rows": {
+     "negative_steps": 777,
+     "pct_rows_violating": 91.5,
+     "pct_steps_negative": 1.278,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 183,
+     "total_steps": 60800,
+     "worst_single_step_pct": -2.175,
+     "worst_single_step_value": -1.1293
+    },
+    "thin_evidence_rows": {
+     "negative_steps": 1274,
+     "pct_rows_violating": 99.0,
+     "pct_steps_negative": 2.095,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 198,
+     "total_steps": 60800,
+     "worst_single_step_pct": -2.361,
+     "worst_single_step_value": -1.2473
+    }
+   },
+   "E_histgbr_level_mono_age_up": {
+    "all_rows": {
+     "negative_steps": 832,
+     "pct_rows_violating": 96.0,
+     "pct_steps_negative": 1.368,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 192,
+     "total_steps": 60800,
+     "worst_single_step_pct": -1.088,
+     "worst_single_step_value": -0.4574
+    },
+    "thin_evidence_rows": {
+     "negative_steps": 1116,
+     "pct_rows_violating": 96.0,
+     "pct_steps_negative": 1.836,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 192,
+     "total_steps": 60800,
+     "worst_single_step_pct": -3.766,
+     "worst_single_step_value": -1.873
+    }
+   },
+   "PINNED_cm_400_shipped": {
+    "all_rows": {
+     "negative_steps": 14227,
+     "pct_rows_violating": 100.0,
+     "pct_steps_negative": 23.4,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 200,
+     "total_steps": 60800,
+     "worst_single_step_pct": -4.299,
+     "worst_single_step_value": -1.45
+    },
+    "thin_evidence_rows": {
+     "negative_steps": 15604,
+     "pct_rows_violating": 100.0,
+     "pct_steps_negative": 25.664,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 200,
+     "total_steps": 60800,
+     "worst_single_step_pct": -4.296,
+     "worst_single_step_value": -1.6955
+    }
+   }
+  },
+  "law3_thin_population": {
+   "pct_of_design": 36.44,
+   "rows_with_exposure_lt_12": 4818
+  },
+  "pool_arm": {
+   "deletion_experiment": {
+    "_doc": "Refit arm A on NATIONAL rows only; score on the national rows. If deleting the pool sets costs national accuracy, the pool rows are carrying signal, not noise.",
+    "national_pinball_trained_on_all": {
+     "0.1": 2.427479270558283,
+     "0.3": 4.6726258521737005,
+     "0.5": 5.181987013563344,
+     "0.7": 4.463344473594019,
+     "0.9": 2.2305953901846056
+    },
+    "national_pinball_trained_on_national_only": {
+     "0.1": 2.3298161839035845,
+     "0.3": 4.584017929246406,
+     "0.5": 5.122159156933676,
+     "0.7": 4.398812775962398,
+     "0.9": 2.1932431057067325
+    }
+   },
+   "national_rows": 9447,
+   "national_target_mean": 71.79,
+   "national_target_zero_pct": 1.56,
+   "pool_pct_of_design": 28.54,
+   "pool_rows": 3773,
+   "pool_target_mean": 61.75,
+   "pool_target_zero_pct": 8.98
+  },
+  "walk_forward": {
+   "A_gbr_classic_unconstrained": {
+    "2014": {
+     "n_test": 2283,
+     "n_train": 5550,
+     "pinball": {
+      "0.1": 2.482806419336474,
+      "0.3": 5.07398009076793,
+      "0.5": 5.770158343722909,
+      "0.7": 4.920275342308052,
+      "0.9": 2.551652500697877
+     },
+     "pinball_mean": 4.159774539366649
+    },
+    "2017": {
+     "n_test": 2334,
+     "n_train": 7833,
+     "pinball": {
+      "0.1": 2.5166426718126704,
+      "0.3": 4.952064224400777,
+      "0.5": 5.68196920053471,
+      "0.7": 5.001844732990731,
+      "0.9": 2.5886887158364345
+     },
+     "pinball_mean": 4.148241909115065
+    },
+    "2020": {
+     "n_test": 1816,
+     "n_train": 10167,
+     "pinball": {
+      "0.1": 2.2171900077961997,
+      "0.3": 4.086043589584456,
+      "0.5": 4.729751881270641,
+      "0.7": 4.1732470683636125,
+      "0.9": 2.1541506721384596
+     },
+     "pinball_mean": 3.472076643830674
+    }
+   },
+   "B_histgbr_unconstrained": {
+    "2014": {
+     "n_test": 2283,
+     "n_train": 5550,
+     "pinball": {
+      "0.1": 2.521246485465159,
+      "0.3": 5.051993481169935,
+      "0.5": 5.7588876042703765,
+      "0.7": 4.911087690810318,
+      "0.9": 2.5575049130694634
+     },
+     "pinball_mean": 4.160144034957051
+    },
+    "2017": {
+     "n_test": 2334,
+     "n_train": 7833,
+     "pinball": {
+      "0.1": 2.4948718746871066,
+      "0.3": 4.925277746694668,
+      "0.5": 5.705369349455756,
+      "0.7": 4.982128432065654,
+      "0.9": 2.585830760937501
+     },
+     "pinball_mean": 4.138695632768137
+    },
+    "2020": {
+     "n_test": 1816,
+     "n_train": 10167,
+     "pinball": {
+      "0.1": 2.2044600325864363,
+      "0.3": 4.0875668818655,
+      "0.5": 4.6803680426699765,
+      "0.7": 4.159597643371406,
+      "0.9": 2.1526440527445545
+     },
+     "pinball_mean": 3.456927330647575
+    }
+   },
+   "C_histgbr_level_monotone": {
+    "2014": {
+     "n_test": 2283,
+     "n_train": 5550,
+     "pinball": {
+      "0.1": 2.5325233665758957,
+      "0.3": 5.072380188996979,
+      "0.5": 5.760071022092151,
+      "0.7": 4.908518361338328,
+      "0.9": 2.526563298233321
+     },
+     "pinball_mean": 4.1600112474473345
+    },
+    "2017": {
+     "n_test": 2334,
+     "n_train": 7833,
+     "pinball": {
+      "0.1": 2.5001375184154253,
+      "0.3": 4.910920445130863,
+      "0.5": 5.6791725070265775,
+      "0.7": 4.969655435600867,
+      "0.9": 2.593187821644145
+     },
+     "pinball_mean": 4.130614745563575
+    },
+    "2020": {
+     "n_test": 1816,
+     "n_train": 10167,
+     "pinball": {
+      "0.1": 2.2007450364622843,
+      "0.3": 4.077558863059948,
+      "0.5": 4.717576666359154,
+      "0.7": 4.158332072967284,
+      "0.9": 2.1301389488410014
+     },
+     "pinball_mean": 3.456870317537934
+    }
+   },
+   "D_histgbr_level_mono_age_down": {
+    "2014": {
+     "n_test": 2283,
+     "n_train": 5550,
+     "pinball": {
+      "0.1": 2.510888299775578,
+      "0.3": 5.070711582847694,
+      "0.5": 5.741724073101469,
+      "0.7": 4.913071991440882,
+      "0.9": 2.537448705405824
+     },
+     "pinball_mean": 4.154768930514289
+    },
+    "2017": {
+     "n_test": 2334,
+     "n_train": 7833,
+     "pinball": {
+      "0.1": 2.492167841306118,
+      "0.3": 4.898674675230958,
+      "0.5": 5.660286927683831,
+      "0.7": 5.000841488048123,
+      "0.9": 2.5920895527374457
+     },
+     "pinball_mean": 4.128812097001295
+    },
+    "2020": {
+     "n_test": 1816,
+     "n_train": 10167,
+     "pinball": {
+      "0.1": 2.207266185305159,
+      "0.3": 4.076873096889307,
+      "0.5": 4.663172677011563,
+      "0.7": 4.161366970180539,
+      "0.9": 2.1369468247013446
+     },
+     "pinball_mean": 3.449125150817582
+    }
+   },
+   "E_histgbr_level_mono_age_up": {
+    "2014": {
+     "n_test": 2283,
+     "n_train": 5550,
+     "pinball": {
+      "0.1": 2.610562494520098,
+      "0.3": 5.144044703767556,
+      "0.5": 5.899518929709874,
+      "0.7": 4.997024089798208,
+      "0.9": 2.581542960037447
+     },
+     "pinball_mean": 4.246538635566637
+    },
+    "2017": {
+     "n_test": 2334,
+     "n_train": 7833,
+     "pinball": {
+      "0.1": 2.519152007782402,
+      "0.3": 4.939787909949792,
+      "0.5": 5.713362103904076,
+      "0.7": 4.965149359861725,
+      "0.9": 2.5551869401634884
+     },
+     "pinball_mean": 4.138527664332297
+    },
+    "2020": {
+     "n_test": 1816,
+     "n_train": 10167,
+     "pinball": {
+      "0.1": 2.2326384995868507,
+      "0.3": 4.114413546390547,
+      "0.5": 4.696403027258314,
+      "0.7": 4.208689800387099,
+      "0.9": 2.1520881982042535
+     },
+     "pinball_mean": 3.480846614365413
+    }
+   }
+  },
+  "weighting_vs_deletion": {
+   "DELETE_pre2014_half_the_data": {
+    "n_test": 3053,
+    "n_train": 5344,
+    "pinball": {
+     "0.1": 2.5307767074127074,
+     "0.3": 4.221182394690658,
+     "0.5": 4.653928371533277,
+     "0.7": 4.023747632567945,
+     "0.9": 2.06677225832302
+    },
+    "pinball_mean": 3.4992814729055213
+   },
+   "halflife_10y": {
+    "n_test": 3053,
+    "n_train": 10167,
+    "pinball": {
+     "0.1": 2.4676972979193423,
+     "0.3": 4.194322313562363,
+     "0.5": 4.635794358281473,
+     "0.7": 4.005092303120195,
+     "0.9": 2.048748775599993
+    },
+    "pinball_mean": 3.470331009696673
+   },
+   "halflife_6y": {
+    "n_test": 3053,
+    "n_train": 10167,
+    "pinball": {
+     "0.1": 2.4558313744296574,
+     "0.3": 4.1952472811297,
+     "0.5": 4.632838201898684,
+     "0.7": 4.003291252856786,
+     "0.9": 2.037837426408817
+    },
+    "pinball_mean": 3.4650091073447293
+   },
+   "uniform": {
+    "n_test": 3053,
+    "n_train": 10167,
+    "pinball": {
+     "0.1": 2.4647302844914782,
+     "0.3": 4.228541975159454,
+     "0.5": 4.671483116500908,
+     "0.7": 4.0414183226865985,
+     "0.9": 2.0381723317143625
+    },
+    "pinball_mean": 3.488869206110561
+   }
+  }
+ },
+ "M6_dob_courier_blast_radius": {
+  "band_model_cm400_q97m": {
+   "age_error_years_true_minus_guessed": {
+    "max": 5.0,
+    "mean": -0.112,
+    "median": 0.0,
+    "min": -1.0,
+    "n": 1874,
+    "pct_off_by_1yr_or_more": 38.85,
+    "pct_off_by_2yr_or_more": 4.8
+   },
+   "courier_players_in_training_pool": 300,
+   "pct_of_13220_row_design": 14.18,
+   "training_rows_taught_a_guessed_age": 1874,
+   "training_window": "debut <= 2021"
+  },
+  "courier_players": 302,
+  "head_store": {
+   "missing_birthdate": 1500,
+   "missing_birthyear": 0,
+   "rows": 2650
+  },
+  "post_store": "b745002e (HEAD)",
+  "pre_store": "0dd6b4a0 (2026-08-10, commit 7cbadb5e)",
+  "sibling_peak_model_v4": {
+   "_note": "build_peak_model_v4.py emits WATCHED_NUMBER_fallback and states it \"must fall by EXACTLY the number of rows the DOB courier writes\" \u2014 that fall has not been taken: no rebuild of peak_model_v4.pkl has been committed since the courier landed.",
+   "artifact_committed": "2026-08-05 (dab9657) \u2014 five days BEFORE the DOB courier",
+   "courier_players_in_training_window": 73,
+   "training_rows_taught_a_guessed_age_upper_bound": 576,
+   "training_window": "debut 2006-2015"
+  }
+ },
+ "M7_constrained_estimator": {
+  "_doc": "STUDY B / M7 \u2014 CAN LAW 3 BE MADE STRUCTURAL?\n\nM5 measured that HistGBR's monotonic_cst is only APPROXIMATE under loss='quantile'. This script\nlocates the mechanism, proves it, and prices the one construction that makes the constraint EXACT.\n\nMECHANISM (read out of the pinned sklearn 1.8.0 source):\n  sklearn/ensemble/_hist_gradient_boosting/gradient_boosting.py:962\n      if not self._loss.differentiable:  _update_leaves_values(...)\n  PinballLoss.differentiable = False, so after the grower has enforced the monotone bounds every leaf\n  value is OVERWRITTEN with the empirical quantile of that leaf's residuals. The overwrite does not\n  respect the bounds. Under squared_error there is no overwrite and the constraint is exact.\n\nARMS\n  A  GradientBoostingRegressor(loss='quantile')                 the incumbent, no constraint possible\n  C  HistGBR(loss='quantile', monotonic_cst)                    the prereg's \"FIX 1\", as written\n  F  HistGBR(loss=<pinball, line search disabled>, monotonic_cst)  law 3 BY CONSTRUCTION\n  G  F + a signed AGE constraint (-1)\nREAD-ONLY; writes only into scratch.\n",
+  "age_shape": {
+   "F0_unconstrained__tenure_ge_8": {
+    "argmax_age": 19.0,
+    "fall_from_peak": 20.358,
+    "grid": [
+     18.0,
+     18.5,
+     19.0,
+     19.5,
+     20.0,
+     20.5,
+     21.0,
+     21.5,
+     22.0,
+     22.5,
+     23.0,
+     23.5,
+     24.0,
+     24.5,
+     25.0,
+     25.5,
+     26.0,
+     26.5,
+     27.0,
+     27.5,
+     28.0,
+     28.5,
+     29.0,
+     29.5,
+     30.0,
+     30.5,
+     31.0,
+     31.5,
+     32.0,
+     32.5,
+     33.0,
+     33.5,
+     34.0
+    ],
+    "mean_curve": [
+     86.195,
+     86.195,
+     91.125,
+     91.125,
+     89.901,
+     89.901,
+     87.828,
+     87.828,
+     86.183,
+     86.183,
+     83.823,
+     83.823,
+     81.571,
+     81.571,
+     79.991,
+     79.991,
+     78.708,
+     78.708,
+     77.168,
+     77.168,
+     75.463,
+     75.463,
+     73.431,
+     73.431,
+     71.949,
+     71.949,
+     70.809,
+     70.809,
+     70.699,
+     70.699,
+     70.565,
+     70.565,
+     70.767
+    ],
+    "pct_rows_monotone_nondecreasing": 0.0,
+    "pct_rows_monotone_nonincreasing": 2.67,
+    "pct_rows_single_peaked": 78.67,
+    "rise_to_peak": 4.93
+   },
+   "F0_unconstrained__tenure_le_3": {
+    "argmax_age": 20.0,
+    "fall_from_peak": 7.69,
+    "grid": [
+     18.0,
+     18.5,
+     19.0,
+     19.5,
+     20.0,
+     20.5,
+     21.0,
+     21.5,
+     22.0,
+     22.5,
+     23.0,
+     23.5,
+     24.0,
+     24.5,
+     25.0,
+     25.5,
+     26.0,
+     26.5,
+     27.0,
+     27.5,
+     28.0,
+     28.5,
+     29.0,
+     29.5,
+     30.0,
+     30.5,
+     31.0,
+     31.5,
+     32.0,
+     32.5,
+     33.0,
+     33.5,
+     34.0
+    ],
+    "mean_curve": [
+     59.511,
+     59.511,
+     64.61,
+     64.61,
+     66.453,
+     66.453,
+     66.404,
+     66.404,
+     65.788,
+     65.788,
+     64.222,
+     64.222,
+     61.757,
+     61.757,
+     60.826,
+     60.826,
+     60.043,
+     60.043,
+     60.086,
+     60.086,
+     60.089,
+     60.089,
+     58.535,
+     58.535,
+     57.829,
+     57.829,
+     57.964,
+     57.964,
+     58.049,
+     58.049,
+     58.003,
+     58.003,
+     58.764
+    ],
+    "pct_rows_monotone_nondecreasing": 0.0,
+    "pct_rows_monotone_nonincreasing": 0.67,
+    "pct_rows_single_peaked": 82.67,
+    "rise_to_peak": 6.942
+   },
+   "F0_unconstrained_control": {
+    "argmax_age": 20.0,
+    "fall_from_peak": 14.029,
+    "grid": [
+     18.0,
+     18.5,
+     19.0,
+     19.5,
+     20.0,
+     20.5,
+     21.0,
+     21.5,
+     22.0,
+     22.5,
+     23.0,
+     23.5,
+     24.0,
+     24.5,
+     25.0,
+     25.5,
+     26.0,
+     26.5,
+     27.0,
+     27.5,
+     28.0,
+     28.5,
+     29.0,
+     29.5,
+     30.0,
+     30.5,
+     31.0,
+     31.5,
+     32.0,
+     32.5,
+     33.0,
+     33.5,
+     34.0
+    ],
+    "mean_curve": [
+     73.113,
+     73.113,
+     77.656,
+     77.656,
+     77.752,
+     77.752,
+     76.592,
+     76.592,
+     75.327,
+     75.327,
+     73.36,
+     73.36,
+     71.01,
+     71.01,
+     69.739,
+     69.739,
+     68.671,
+     68.671,
+     67.771,
+     67.771,
+     66.809,
+     66.809,
+     64.851,
+     64.851,
+     63.747,
+     63.747,
+     63.283,
+     63.283,
+     63.309,
+     63.309,
+     63.187,
+     63.187,
+     63.723
+    ],
+    "pct_rows_monotone_nondecreasing": 0.0,
+    "pct_rows_monotone_nonincreasing": 1.5,
+    "pct_rows_single_peaked": 79.5,
+    "rise_to_peak": 4.639
+   },
+   "F_gradonly_level_only": {
+    "argmax_age": 20.0,
+    "fall_from_peak": 11.899,
+    "grid": [
+     18.0,
+     18.5,
+     19.0,
+     19.5,
+     20.0,
+     20.5,
+     21.0,
+     21.5,
+     22.0,
+     22.5,
+     23.0,
+     23.5,
+     24.0,
+     24.5,
+     25.0,
+     25.5,
+     26.0,
+     26.5,
+     27.0,
+     27.5,
+     28.0,
+     28.5,
+     29.0,
+     29.5,
+     30.0,
+     30.5,
+     31.0,
+     31.5,
+     32.0,
+     32.5,
+     33.0,
+     33.5,
+     34.0
+    ],
+    "mean_curve": [
+     77.697,
+     77.697,
+     77.088,
+     77.088,
+     77.792,
+     77.792,
+     76.819,
+     76.819,
+     75.474,
+     75.474,
+     73.405,
+     73.405,
+     71.03,
+     71.03,
+     69.531,
+     69.531,
+     68.348,
+     68.348,
+     67.448,
+     67.448,
+     66.369,
+     66.369,
+     64.375,
+     64.375,
+     63.036,
+     63.036,
+     62.761,
+     62.761,
+     63.479,
+     63.479,
+     63.747,
+     63.747,
+     65.892
+    ],
+    "pct_rows_monotone_nondecreasing": 0.0,
+    "pct_rows_monotone_nonincreasing": 1.0,
+    "pct_rows_single_peaked": 41.0,
+    "rise_to_peak": 0.095
+   }
+  },
+  "arms": {
+   "A_gbr_incumbent": {
+    "fit_seconds_5_quantiles": 36.3,
+    "insample_pinball": {
+     "0.1": 2.483,
+     "0.3": 5.0081,
+     "0.5": 5.7897,
+     "0.7": 4.9553,
+     "0.9": 2.4433
+    },
+    "insample_pinball_mean": 4.1359,
+    "law3_all_rows": {
+     "pct_rows_violating": 100.0,
+     "pct_steps_negative": 25.148,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 200,
+     "worst_step_pct_of_band": -9.7839
+    },
+    "law3_thin_evidence_rows": {
+     "pct_rows_violating": 100.0,
+     "pct_steps_negative": 27.3947,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 200,
+     "worst_step_pct_of_band": -10.1324
+    }
+   },
+   "C_histgbr_quantile_cst_prereg_FIX1": {
+    "fit_seconds_5_quantiles": 4.59,
+    "insample_pinball": {
+     "0.1": 2.4866,
+     "0.3": 5.0952,
+     "0.5": 5.8338,
+     "0.7": 4.9704,
+     "0.9": 2.4104
+    },
+    "insample_pinball_mean": 4.1593,
+    "law3_all_rows": {
+     "pct_rows_violating": 96.5,
+     "pct_steps_negative": 1.648,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 193,
+     "worst_step_pct_of_band": -3.5587
+    },
+    "law3_thin_evidence_rows": {
+     "pct_rows_violating": 99.0,
+     "pct_steps_negative": 2.5773,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 198,
+     "worst_step_pct_of_band": -3.5587
+    }
+   },
+   "F0_gradonly_pinball_NO_cst_control": {
+    "fit_seconds_5_quantiles": 5.07,
+    "insample_pinball": {
+     "0.1": 2.3556,
+     "0.3": 4.6757,
+     "0.5": 5.5689,
+     "0.7": 4.7471,
+     "0.9": 2.3083
+    },
+    "insample_pinball_mean": 3.9311,
+    "law3_all_rows": {
+     "pct_rows_violating": 100.0,
+     "pct_steps_negative": 19.4572,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 200,
+     "worst_step_pct_of_band": -42.617
+    },
+    "law3_thin_evidence_rows": {
+     "pct_rows_violating": 100.0,
+     "pct_steps_negative": 21.4062,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 200,
+     "worst_step_pct_of_band": -42.8862
+    }
+   },
+   "F_gradonly_pinball_cst_LEVEL": {
+    "fit_seconds_5_quantiles": 5.6,
+    "insample_pinball": {
+     "0.1": 2.3735,
+     "0.3": 4.7901,
+     "0.5": 5.5892,
+     "0.7": 4.8159,
+     "0.9": 2.3168
+    },
+    "insample_pinball_mean": 3.9771,
+    "law3_all_rows": {
+     "pct_rows_violating": 0.0,
+     "pct_steps_negative": 0.0,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 0,
+     "worst_step_pct_of_band": 0.0
+    },
+    "law3_thin_evidence_rows": {
+     "pct_rows_violating": 0.0,
+     "pct_steps_negative": 0.0,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 0,
+     "worst_step_pct_of_band": 0.0
+    }
+   },
+   "G_gradonly_pinball_cst_LEVEL_and_AGEDOWN": {
+    "fit_seconds_5_quantiles": 5.59,
+    "insample_pinball": {
+     "0.1": 2.3813,
+     "0.3": 4.822,
+     "0.5": 5.6594,
+     "0.7": 4.7783,
+     "0.9": 2.3334
+    },
+    "insample_pinball_mean": 3.9949,
+    "law3_all_rows": {
+     "pct_rows_violating": 0.0,
+     "pct_steps_negative": 0.0,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 0,
+     "worst_step_pct_of_band": 0.0
+    },
+    "law3_thin_evidence_rows": {
+     "pct_rows_violating": 0.0,
+     "pct_steps_negative": 0.0,
+     "rows_sampled": 200,
+     "rows_with_a_down_step": 0,
+     "worst_step_pct_of_band": 0.0
+    }
+   }
+  },
+  "design_rows": 13220,
+  "walk_forward": {
+   "A_gbr_incumbent": {
+    "2014": {
+     "n_test": 2283,
+     "n_train": 5550,
+     "pinball_mean": 4.1598
+    },
+    "2017": {
+     "n_test": 2334,
+     "n_train": 7833,
+     "pinball_mean": 4.1482
+    },
+    "2020": {
+     "n_test": 1816,
+     "n_train": 10167,
+     "pinball_mean": 3.4721
+    }
+   },
+   "C_histgbr_quantile_cst_prereg_FIX1": {
+    "2014": {
+     "n_test": 2283,
+     "n_train": 5550,
+     "pinball_mean": 4.16
+    },
+    "2017": {
+     "n_test": 2334,
+     "n_train": 7833,
+     "pinball_mean": 4.1306
+    },
+    "2020": {
+     "n_test": 1816,
+     "n_train": 10167,
+     "pinball_mean": 3.4569
+    }
+   },
+   "F0_gradonly_pinball_NO_cst_control": {
+    "2014": {
+     "n_test": 2283,
+     "n_train": 5550,
+     "pinball_mean": 4.332
+    },
+    "2017": {
+     "n_test": 2334,
+     "n_train": 7833,
+     "pinball_mean": 4.2216
+    },
+    "2020": {
+     "n_test": 1816,
+     "n_train": 10167,
+     "pinball_mean": 3.5374
+    }
+   },
+   "F_gradonly_pinball_cst_LEVEL": {
+    "2014": {
+     "n_test": 2283,
+     "n_train": 5550,
+     "pinball_mean": 4.3317
+    },
+    "2017": {
+     "n_test": 2334,
+     "n_train": 7833,
+     "pinball_mean": 4.187
+    },
+    "2020": {
+     "n_test": 1816,
+     "n_train": 10167,
+     "pinball_mean": 3.5033
+    }
+   },
+   "G_gradonly_pinball_cst_LEVEL_and_AGEDOWN": {
+    "2014": {
+     "n_test": 2283,
+     "n_train": 5550,
+     "pinball_mean": 4.3037
+    },
+    "2017": {
+     "n_test": 2334,
+     "n_train": 7833,
+     "pinball_mean": 4.2259
+    },
+    "2020": {
+     "n_test": 1816,
+     "n_train": 10167,
+     "pinball_mean": 3.5
+    }
+   }
+  }
+ },
+ "M9_selection_and_data_design": {
+  "_doc": "STUDY B / M9 \u2014 OUT-OF-SAMPLE SELECTION FOR THE CONSTRAINED ARM, THEN THE THREE DATA-DESIGN QUESTIONS.\n\nM7 showed the exactly-constrained arm (grad-only pinball + monotonic_cst) is law-3 clean by construction but\nOVERFITS at the settings used to demonstrate the mechanism. Removing the leaf line search makes every boosting\nstep bounded (|gradient| <= 1, hessian == 1), so the incumbent's learning rate and iteration count do not\ntransfer. This selects them on the WALK-FORWARD score alone.\n\nSELECTION RULE, DECLARED BEFORE THE RUN: lowest MEAN walk-forward pinball over the three splits\n(train as-of year <= T, score T+1..T+3, for T in 2014/2017/2020). In-sample loss is reported and never used\nto choose.\n\nThen, at the selected settings, the three questions the owner asked:\n  (1) the AGE shape          \u2014 raw age vs a peak reparameterisation that makes single-peakedness structural\n  (2) the POOL arm           \u2014 leave as-is / add an arm feature / delete the pool rows\n  (3) WEIGHTING vs DELETION  \u2014 recency weights against dropping old cohorts\n\nREAD-ONLY. Writes only into scratch.\n",
+  "age_design": {
+   "a_star": 22.0,
+   "construction": "raw age REPLACED by u=max(0,a*-age) and v=max(0,age-a*), both constrained -1",
+   "law3_still_exact_under_reparameterisation": {
+    "negative_steps": 0,
+    "rows_sampled": 200,
+    "rows_violating": 0,
+    "steps": 60800
+   },
+   "single_peak_check_constrained": {
+    "mean_curve_argmax_age": 21.5,
+    "mean_curve_at_18_22_26_30_34": [
+     71.87,
+     76.35,
+     68.82,
+     63.92,
+     62.52
+    ],
+    "pct_rows_single_peaked_or_monotone": 100.0
+   },
+   "single_peak_check_raw_age_selected_model": {
+    "mean_curve_argmax_age": 20.0,
+    "mean_curve_at_18_22_26_30_34": [
+     75.1,
+     74.81,
+     68.24,
+     63.59,
+     63.49
+    ],
+    "pct_rows_single_peaked_or_monotone": 7.0
+   },
+   "single_peak_check_unconstrained": {
+    "mean_curve_argmax_age": 19.5,
+    "mean_curve_at_18_22_26_30_34": [
+     75.15,
+     74.8,
+     68.23,
+     63.58,
+     63.48
+    ],
+    "pct_rows_single_peaked_or_monotone": 7.0
+   },
+   "walk_forward_peakfeatures_constrained": {
+    "2014": 4.1795,
+    "2017": 4.1437,
+    "2020": 3.4521,
+    "mean": 3.9251
+   },
+   "walk_forward_peakfeatures_unconstrained_age": {
+    "2014": 4.1783,
+    "2017": 4.1332,
+    "2020": 3.4503,
+    "mean": 3.9206
+   },
+   "walk_forward_raw_age_level_only": {
+    "2014": 4.1796,
+    "2017": 4.1334,
+    "2020": 3.451,
+    "mean": 3.9213
+   },
+   "walk_forward_raw_age_plus_agedown": {
+    "2014": 4.1658,
+    "2017": 4.1413,
+    "2020": 3.4461,
+    "mean": 3.9177
+   }
+  },
+  "incumbent_gbr_quantile": {
+   "2014": 4.1598,
+   "2017": 4.1482,
+   "2020": 3.4721,
+   "mean": 3.9267
+  },
+  "pool_design": {
+   "rows_national": 9447,
+   "rows_pool": 3773,
+   "scored_on_ALL_rows": {
+    "A_as_is_no_arm_feature": {
+     "2014": 4.1796,
+     "2017": 4.1334,
+     "2020": 3.451,
+     "mean": 3.9213
+    },
+    "B_add_is_pool_feature": {
+     "2014": 4.1796,
+     "2017": 4.1334,
+     "2020": 3.451,
+     "mean": 3.9213
+    },
+    "C_delete_pool_rows": {
+     "2014": 4.403,
+     "2017": 4.4836,
+     "2020": 3.6339,
+     "mean": 4.1735
+    }
+   },
+   "scored_on_NATIONAL_rows_only": {
+    "A_as_is_no_arm_feature": {
+     "2014": 3.926,
+     "2017": 3.9892,
+     "2020": 3.359,
+     "mean": 3.7581
+    },
+    "B_add_is_pool_feature": {
+     "2014": 3.926,
+     "2017": 3.9892,
+     "2020": 3.359,
+     "mean": 3.7581
+    },
+    "C_delete_pool_rows": {
+     "2014": 3.9636,
+     "2017": 3.9742,
+     "2020": 3.3977,
+     "mean": 3.7785
+    }
+   },
+   "scored_on_POOL_rows_only": {
+    "A_as_is_no_arm_feature": {
+     "2014": 4.8335,
+     "2017": 4.5393,
+     "2020": 3.7637,
+     "mean": 4.3788
+    },
+    "B_add_is_pool_feature": {
+     "2014": 4.8335,
+     "2017": 4.5393,
+     "2020": 3.7637,
+     "mean": 4.3788
+    },
+    "C_delete_pool_rows": {
+     "2014": 5.5358,
+     "2017": 5.9171,
+     "2020": 4.4363,
+     "mean": 5.2964
+    }
+   }
+  },
+  "selected": {
+   "fit_seconds_5_quantiles": 4.22,
+   "insample_pinball_mean": 4.1169,
+   "key": "lr1.0_it800",
+   "law3_EVERY_design_row": {
+    "negative_steps": 0,
+    "rows": 13220,
+    "rows_violating": 0,
+    "steps": 1004720,
+    "worst_step": 0.0
+   },
+   "learning_rate": 1.0,
+   "max_iter": 800,
+   "walk_forward": {
+    "2014": 4.1796,
+    "2017": 4.1334,
+    "2020": 3.451,
+    "mean": 3.9213
+   }
+  },
+  "selection_grid": {
+   "lr0.3_it400": {
+    "2014": 4.6793,
+    "2017": 4.6466,
+    "2020": 3.9888,
+    "mean": 4.4382
+   },
+   "lr0.3_it800": {
+    "2014": 4.3634,
+    "2017": 4.3234,
+    "2020": 3.6855,
+    "mean": 4.1241
+   },
+   "lr0.6_it400": {
+    "2014": 4.3577,
+    "2017": 4.3179,
+    "2020": 3.6815,
+    "mean": 4.119
+   },
+   "lr0.6_it800": {
+    "2014": 4.1847,
+    "2017": 4.1626,
+    "2020": 3.4891,
+    "mean": 3.9455
+   },
+   "lr1.0_it400": {
+    "2014": 4.2211,
+    "2017": 4.188,
+    "2020": 3.5304,
+    "mean": 3.9798
+   },
+   "lr1.0_it800": {
+    "2014": 4.1796,
+    "2017": 4.1334,
+    "2020": 3.451,
+    "mean": 3.9213
+   }
+  },
+  "selection_rule": "lowest MEAN walk-forward pinball; in-sample never used to choose",
+  "weighting_vs_deletion": {
+   "DELETE_pre2010": {
+    "2014": 4.1999,
+    "2017": 4.1376,
+    "2020": 3.436,
+    "mean": 3.9245,
+    "n_train_at_T2020": 7959
+   },
+   "DELETE_pre2014": {
+    "2014": 4.3778,
+    "2017": 4.183,
+    "2020": 3.446,
+    "mean": 4.0023,
+    "n_train_at_T2020": 5344
+   },
+   "recency_halflife_10y": {
+    "2014": 4.2775,
+    "2017": 4.223,
+    "2020": 3.5072,
+    "mean": 4.0026
+   },
+   "recency_halflife_4y": {
+    "2014": 4.9609,
+    "2017": 4.808,
+    "2020": 3.7943,
+    "mean": 4.5211
+   },
+   "recency_halflife_6y": {
+    "2014": 4.4949,
+    "2017": 4.4081,
+    "2020": 3.6123,
+    "mean": 4.1718
+   },
+   "uniform_all_rows": {
+    "2014": 4.1796,
+    "2017": 4.1334,
+    "2020": 3.451,
+    "mean": 3.9213,
+    "n_train_at_T2020": 10167
+   }
+  }
+ },
+ "_doc": "DESIGN STUDY B \u2014 every measurement behind DESIGN_STUDY_B.md. Produced read-only against the repo at store b745002e / band 34faa865 / q97m cfdc7321, in the pinned venv (sklearn 1.8.0, numpy 2.4.4, python 3.12.3). Scripts m1..m9 ship beside this file.",
+ "_generated_utc": "2026-08-21T11:16:08Z",
+ "_independence": "This seat did not read docs/proposals/rebake_study_A/ or docs/proposals/REBAKE_SCOPE_2026-08-21.md. Study-A filenames appeared once in a repo-wide grep result; no study-A file was opened.",
+ "substrate": {
+  "cm_400_md5": "34faa8659cc8f19794f5cb9584fa19b2",
+  "git_head": "c95089920ff2ca541edd3c8d89528871072e792b",
+  "peak_model_v4_md5": "f305fe5330222f4fa14d3654a0e91ef7",
+  "q97m_md5": "cfdc73216c099e5e8f1fda3968f31c00",
+  "store_md5": "b745002eb0a0fbb1c34fa44f1ef708d6",
+  "v0surf_md5": "5dd34ca82735f5c8f021b1c7320df8f8"
+ }
+}
