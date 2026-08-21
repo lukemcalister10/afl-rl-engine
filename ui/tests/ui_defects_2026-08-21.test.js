@@ -371,6 +371,85 @@ section("(4) v0 — entry price, live rating, absolute and ratio; no ranking");
     "a refused row yields NO figure — there is no fallback source for an entry price");
 })();
 
+/* =============== (4b) v0 ON THE PUBLIC TIER — the owner's word, same day ======================= */
+section("(4b) v0 on the public tier — joined at generation time, and NO key added to do it");
+(function () {
+  var ctx = makeCtx();
+  loadData(ctx, path.join("data", "board_view_working.js"));
+  loadData(ctx, path.join("data", "board_view_public.js"));
+  loadData(ctx, path.join("data_aux", "v0.js"));
+  var W = ctx.window.__MATCHDAY_WORKING__, P = ctx.window.__MATCHDAY_PUBLIC__, V = ctx.window.__V0__;
+
+  /* THE LAW FIRST. The public bundle is leak-proof BY CONSTRUCTION — no key, no id, no internals — and
+     the whole point of doing this join in the generator is that shipping the entry price did not cost
+     that. So the first assertion is not about v0 at all: it is that nothing was added to make v0
+     possible. */
+  var forbidden = ["key", "posCode", "slot", "ov", "levers", "vRaw", "owner_rule", "lti_reg", "cat", "pk"];
+  var leaked = forbidden.filter(function (k) {
+    return P.players.some(function (r) { return Object.prototype.hasOwnProperty.call(r, k); });
+  });
+  check(!leaked.length, "the public row still carries NO key and no internals — the join added a FACT, not an identifier",
+    "leaked " + JSON.stringify(leaked));
+
+  check(P.players.length === W.players.length, "the public bundle still carries every player",
+    P.players.length + " vs " + W.players.length);
+  check(P.players.every(function (r) { return "v0" in r && "v0_origin" in r; }),
+    "every public row carries the entry price AND which entry price it is");
+
+  var st = (P.stamp && P.stamp.v0) || {};
+  check(st.joined === true, "the public stamp records that the join was MADE, so a reader is never left inferring it",
+    JSON.stringify(st));
+  var priced = P.players.filter(function (r) { return r.v0 != null; });
+  check(st.nPriced === priced.length && st.nPriced + st.nAbsent === P.players.length,
+    "…and its counts are the measured ones, partitioning the published rows",
+    JSON.stringify({ nPriced: st.nPriced, nAbsent: st.nAbsent, measured: priced.length, rows: P.players.length }));
+
+  /* THE JOIN IS FAITHFUL. Every published figure must be the SIDECAR's own figure for that player —
+     the generator holds the keys, so this is the one place the join can be checked against them. */
+  var keyByName = {};
+  W.players.forEach(function (p) { if (p.name != null) keyByName[p.name] = p.key; });
+  var wrong = P.players.filter(function (r) {
+    var rec = V.byKey[keyByName[r.name]];
+    return !rec || rec.v0 !== r.v0 || (rec.origin || "unrecoverable") !== r.v0_origin;
+  });
+  check(!wrong.length, "EVERY published entry price is the sidecar's own figure and origin for that player — the join invents nothing",
+    wrong.length + " row(s) differ, first: " + JSON.stringify(wrong[0] || null));
+
+  check(P.players.every(function (r) { return r.v0 === null ? r.v0_origin === "unrecoverable" : r.v0 > 0; }),
+    "an unrecoverable entry price is NULL with its origin named — never 0, never silently omitted");
+
+  /* THE CARD READS THE ROW, NOT THE KEYED MODULE. A public row has no key, so calling MD.v0.of() there
+     could only ever refuse — and reaching for a name bridge to make it answer is the thing this design
+     exists to avoid. */
+  var cardsrc = appSrc("card.js");
+  check(cardsrc.indexOf("v0SectionPublic(p)") > 0, "the public card renders the entry-price section");
+  var pubFn = cardsrc.split("function v0SectionPublic")[1].split("function renderWorking")[0];
+  check(pubFn.indexOf("MD.v0.of(") < 0,
+    "…and it does NOT call the keyed resolver — it reads the public row's own v0 / v0_origin");
+  check(pubFn.indexOf("v0Block(") > 0 && pubFn.indexOf("v0Absent(") > 0 && pubFn.indexOf("v0Refused(") > 0,
+    "…through the SAME three renderers the working card uses, so both tiers say the same words");
+  check(cardsrc.indexOf("MD.v0.ratioText") > 0 && cardsrc.indexOf("MD.v0.originWord") > 0 &&
+        cardsrc.indexOf("MD.v0.originTip") > 0,
+    "the ratio notation and the origin vocabulary are MD.v0's, not a second copy");
+
+  /* THE COMMENT MUST NOT OUTLIVE ITS TRUTH — the module said "pending an owner word" and the word came.
+     As with dRound above, the header QUOTES the retracted note in order to retract it, so what is
+     asserted is that the correction is stated and that status() no longer reports a pending decision. */
+  var v0src = appSrc("v0.js");
+  check(v0src.indexOf("v0 goes on the public board, yes") > 0,
+    "ui/app/v0.js records the owner's word verbatim, where the pending note used to stand");
+  var c2 = makeCtx();
+  load(c2, "config.js"); load(c2, "format.js");
+  loadData(c2, path.join("data", "board_view_working.js"));
+  loadData(c2, path.join("data_aux", "v0.js"));
+  c2.MD.seam = { working: c2.window.__MATCHDAY_WORKING__, public: null, indexed: function () { return { byKey: {} }; } };
+  c2.MD.dispVal = function (p) { return p ? p.v : null; };
+  load(c2, "v0.js");
+  var tier = String(c2.MD.v0.status().publicTier || "");
+  check(!/pending/i.test(tier), "status() no longer reports the public tier as a pending decision", tier);
+  check(tier.indexOf("2026-08-21") > 0, "…it names the word it ships on", tier);
+})();
+
 /* =============== (5) the three new board filters =============================================== */
 section("(5) board filters — cohort year · age · live eligibility");
 (function () {

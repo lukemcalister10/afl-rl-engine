@@ -7,8 +7,14 @@ and when served). This script NEVER writes outside ui/ and NEVER recomputes a va
 tiers the fields the LOCK/DESIGN_DIRECTION call for. The two-tier UI law made real at the data layer:
 the public bundle is leak-proof by construction (no keys, no md5/guard stamps, no mech, no owner-rule).
 
-Board-id ring-fence: md5(rl_app_data.json) == the pinned board id (9ecbe0fa…). The emitted working
-bundle carries that md5 as `stamp.srcmd5`; the app fail-closes if it disagrees with the expected board.
+ONE JOIN RIDES THAT LAW RATHER THAN BENDING IT: the v0 ENTRY PRICE (owner's word, 2026-08-21). The
+sidecar is keyed and the public row is not, so the join is done HERE — where the keys legitimately
+exist — and only the ANSWER is emitted (`v0` + `v0_origin` per row). No identifier is added to the
+public bundle to make it possible. See join_v0() for the mirror-law check that gates it.
+
+Board-id ring-fence: md5(rl_app_data.json) == the board id pinned in data/expected_boot.json (read at
+run time, never a hex literal here). The emitted working bundle carries that md5 as `stamp.board_md5`
+(alias `stamp.srcmd5`); the app fail-closes if it disagrees with the expected board.
 """
 import hashlib
 import json
@@ -29,6 +35,13 @@ BOOT = os.environ.get("RL_UI_BOOT", os.path.join(REPO, "data", "expected_boot.js
 # by ev() from these fields; nothing is computed; the store is never written.
 STORE = os.environ.get("RL_UI_STORE", os.path.join(REPO, "engine", "rl_after", "rl_model_data.json"))
 OUT_DIR = os.environ.get("RL_UI_OUT_DIR", os.path.join(HERE, "..", "data"))
+# The v0 ENTRY-PRICE sidecar (ui/tools/gen_v0_sidecar.py). Read STRICTLY READ-ONLY, and joined to the
+# PUBLIC rows here — see join_v0() below for why the join has to happen at generation time and not in
+# the browser. Deliberately NOT env-overridable: the other four paths are redirected so a fixture run
+# can build a self-consistent temp board, and a fixture board is exactly the case where this sidecar
+# must NOT be honoured (its stamped identity will not be the fixture's). A fixture run therefore takes
+# the refusal path, which is the correct behaviour rather than a gap in the fixture.
+V0_SIDECAR = os.path.join(HERE, "..", "data_aux", "v0.js")
 
 
 def norm_club(name):
@@ -48,6 +61,54 @@ POS = {
 
 def label_pos(code):
     return POS.get(code, (code or "").replace("_", " ").title() or "—")
+
+
+# ---- v0, THE ENTRY PRICE, ON THE PUBLIC TIER (owner's word, 2026-08-21: "v0 goes on the public board") -
+# THE JOIN HAPPENS HERE, AT GENERATION TIME, AND IT CANNOT HAPPEN ANYWHERE ELSE.
+# The v0 sidecar is KEYED (`byKey[player key] -> {v0, origin}`) and the public bundle carries NO player
+# key — that keylessness is the two-tier law made structural, and it is the reason the public bundle is
+# leak-proof by construction rather than by care. So a browser holding only the public bundle has
+# nothing to join on, and the only two ways to give the public tier this fact would be (a) put a key on
+# the public row, which dismantles the law for one display field, or (b) join here, in the one place
+# where the keys legitimately exist, and emit the ANSWER rather than the identifier. (b) is what this
+# does: two flat display fields per row, `v0` and `v0_origin`, and no new identifier of any kind.
+#
+# THE MIRROR LAW APPLIES TO THE JOIN ITSELF (ui/app/ownership.js:25). The sidecar names the board and
+# store it was generated from; if either disagrees with the board/store THIS bundle is being generated
+# from, the whole join is REFUSED and every row gets the honest absent state. A v0 is a draft-time
+# constant, so it goes stale slowly — which makes a stale one more likely to be trusted while wrong,
+# not less. Fail closed.
+#
+# THE REFUSAL REASON CARRIES NO IDENTITY. The detail (which md5 disagreed with which) is printed by
+# this generator to the operator's terminal; what rides the public bundle is the state in words. The
+# public bundle carries no provenance identity today and this feature does not become the exception.
+def join_v0(board_md5, store_md5):
+    """-> (by_key, note). `by_key` empty == refused; `note` is the reason, in identity-free words."""
+    if not os.path.exists(V0_SIDECAR):
+        return {}, "The v0 sidecar was not present when this bundle was generated."
+    try:
+        text = open(V0_SIDECAR).read()
+        bundle = json.loads(text[text.index("window.__V0__"):].split("=", 1)[1].strip().rstrip(";\n").rstrip(";"))
+        by_key = bundle["byKey"]
+        stamp = bundle.get("stamp") or {}
+    except Exception as exc:                                          # noqa: BLE001 - reported, never silent
+        return {}, "The v0 sidecar could not be read (%s), so no entry price is published." % type(exc).__name__
+    if not stamp.get("board") or not stamp.get("store"):
+        return {}, "The v0 sidecar names no board/store identity, so it cannot be authenticated."
+    if stamp["board"] != board_md5 or stamp["store"] != store_md5:
+        return {}, ("The v0 sidecar was generated from a different board/store identity than this "
+                    "bundle, so no entry price is published.")
+    return by_key, None
+
+
+def v0_of(by_key, key):
+    """One row's (entry price, origin). An unjoinable row gets (None, "unrecoverable") — the same
+    explicit absent state the sidecar itself uses for a player whose entry price could not be
+    recovered, which the card renders as an em-dash WITH ITS REASON. Never an invented figure."""
+    rec = by_key.get(key) if by_key else None
+    if not rec or rec.get("v0") is None:
+        return None, "unrecoverable"
+    return rec["v0"], rec.get("origin") or "unrecoverable"
 
 
 def main():
@@ -140,8 +201,11 @@ def main():
             "dRoundRank": p.get("dRoundRank"),
         }
 
+    v0_by_key, v0_note = join_v0(srcmd5, store_md5)
+
     def row_public(p):
         # Sanitised: no key/slug, no ids, no owner-rule machinery, no pathway/mech. Value + movement only.
+        v0v, v0o = v0_of(v0_by_key, p.get("key"))
         return {
             "name": p.get("name"),
             "pos": label_pos(p.get("grp") or p.get("gf")),
@@ -154,6 +218,15 @@ def main():
             # loop exports them. Absent today -> the app renders a neutral "steady" pill, never a fake move.
             "dRound": p.get("dRound"),
             "dRoundRank": p.get("dRoundRank"),
+            # THE ENTRY PRICE, joined from the keyed sidecar above (owner's word 2026-08-21). `v0` is the
+            # figure and `v0_origin` is WHICH entry price it is — "pick-slot" (the frozen year-zero pick
+            # surface, shared by every same-(future position, draft age, pick) player), "entry-anchor" (a
+            # pool entrant's signed division level), or "unrecoverable" (no entry price could be joined:
+            # v0 is null and the card prints an em-dash carrying the reason). The gap and the ratio the
+            # card shows are arithmetic on this figure and the row's own `v`; neither is precomputed here,
+            # because neither is a fact the extractor may invent. NO IDENTIFIER RIDES WITH THEM.
+            "v0": v0v,
+            "v0_origin": v0o,
         }
 
     working_rows = [row_working(p) for p in active]
@@ -241,11 +314,23 @@ def main():
         "draftAssetTotals": draft_asset_totals,
     }
 
+    # The public tier says, in its own stamp, whether the entry price it carries is real — counted over
+    # the rows actually emitted, not over the sidecar's own claim. A reader (or a test) can therefore
+    # tell "no player on this board has a recoverable entry price" from "the sidecar did not
+    # authenticate" without either being inferred from a screen full of em-dashes. No identity here.
+    n_priced = sum(1 for r in public_rows if r.get("v0") is not None)
     public = {
         "stamp": {
             "baseYear": d.get("BASE_YEAR"),
             "nPlayers": len(active),
             "maxV": max_v,
+            "v0": {
+                "joined": bool(v0_by_key) and v0_note is None,
+                "why": v0_note,
+                "generator": "ui/tools/gen_v0_sidecar.py",
+                "nPriced": n_priced,
+                "nAbsent": len(public_rows) - n_priced,
+            },
         },
         "players": public_rows,
     }
@@ -271,6 +356,13 @@ def main():
     assert srcmd5.startswith(boot.get("board", "")[:8]), "RING-FENCE FAIL: artifact md5 != pinned board id"
     print("ring-fence OK       : md5 head == board id")
     print("active players      :", len(active), "| back-only:", len(back_rows), "| picks:", len(picks))
+    if v0_note is None:
+        print("v0 join (public)    : JOINED %d of %d rows priced, %d absent | sidecar board %s store %s"
+              % (n_priced, len(public_rows), len(public_rows) - n_priced, srcmd5[:8], store_md5[:8]))
+    else:
+        # The operator gets the identity detail; the bundle gets the state in words. Never a hard fail:
+        # the board itself is unaffected and must still ship — the entry price is what is withheld.
+        print("v0 join (public)    : REFUSED —", v0_note)
     print("wrote:", os.path.relpath(p1, REPO))
     print("wrote:", os.path.relpath(p2, REPO))
 

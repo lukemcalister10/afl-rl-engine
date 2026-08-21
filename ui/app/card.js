@@ -300,23 +300,30 @@ MD.card = (function () {
 
      NO RANK. See the note at the top of ui/app/v0.js: v0 is a slot value shared by every same-(future
      position, draft age, pick) player, so a rank over it would manufacture an order the model does not
-     have. The card states the sharing in words instead, once, where it is cheapest to say honestly. */
-  function v0Section(p) {
-    const r = MD.v0.of(p);
-    if (r.refused) {
-      return '<div class="reserved"><b>Entry price not shown.</b> ' + fmt.esc(r.why) +
-        " Nothing is shown in its place.</div>";
-    }
-    if (!r.has) {
-      // an explicit, reasoned absence — the em-dash carries its why, never a bare dash
-      return '<div class="statrow">' +
-        '<div><div class="k">Entry price (v0)</div><div class="v num" title="' + fmt.esc(r.why || "") +
-          '">—</div></div>' +
-        '<div><div class="k">Live rating</div><div class="v volt num">' + fmt.n(r.live) + "</div></div>" +
-        "</div>" +
-        '<div class="note"><b>No entry price is recoverable for this player.</b> ' + fmt.esc(r.why || "") +
-        " The em-dash is the finding, not a formatting choice — no anchor is invented to fill it.</div>";
-    }
+     have. The card states the sharing in words instead, once, where it is cheapest to say honestly.
+
+     ONE RENDERER, TWO TIERS. The three renderers below (refusal · reasoned absence · the four-figure
+     block) are shared by the working card and the public card, which differ ONLY in where the entry
+     price is READ from — the keyed sidecar on the working tier, the public row's own joined fields on
+     the public tier (see v0SectionPublic). The words a reader sees are therefore the same words on
+     both tiers by construction, rather than by two copies staying in step. */
+  function v0Refused(why) {
+    return '<div class="reserved"><b>Entry price not shown.</b> ' + fmt.esc(why || "") +
+      " Nothing is shown in its place.</div>";
+  }
+  /* an explicit, reasoned absence — the em-dash carries its why, never a bare dash */
+  function v0Absent(live, why) {
+    return '<div class="statrow">' +
+      '<div><div class="k">Entry price (v0)</div><div class="v num" title="' + fmt.esc(why || "") +
+        '">—</div></div>' +
+      '<div><div class="k">Live rating</div><div class="v volt num">' + fmt.n(live) + "</div></div>" +
+      "</div>" +
+      '<div class="note"><b>No entry price is recoverable for this player.</b> ' + fmt.esc(why || "") +
+      " The em-dash is the finding, not a formatting choice — no anchor is invented to fill it.</div>";
+  }
+  /* The four figures. `r` is {v0, origin, live, delta, ratio} — resolved by the caller from its own
+     tier's source; the arithmetic is a difference and a quotient of two GIVEN figures, nothing more. */
+  function v0Block(r) {
     const dCls = fmt.cls(r.delta);
     const rCls = r.ratio == null ? "na" : (r.ratio > 1 ? "up" : r.ratio < 1 ? "dn" : "flat");
     const shared = r.origin === "pick-slot"
@@ -342,6 +349,79 @@ MD.card = (function () {
           '">' + fmt.esc(MD.v0.ratioText(r.ratio)) + "</div></div>" +
       "</div>" +
       (shared ? '<div class="note">' + shared + "</div>" : "");
+  }
+
+  /* THE WORKING TIER: the keyed sidecar, through MD.v0, exactly as it has always been. */
+  function v0Section(p) {
+    const r = MD.v0.of(p);
+    if (r.refused) return v0Refused(r.why);
+    if (!r.has) return v0Absent(r.live, r.why);
+    return v0Block(r);
+  }
+
+  /* ===== THE PUBLIC TIER — SHIPPED ON THE OWNER'S WORD, 2026-08-21: "v0 goes on the public board,
+     yes." The header of ui/app/v0.js recorded this as pending a ruling; the ruling is in, and both
+     that note and this block were written in the same act so neither can outlive the other.
+
+     IT DOES NOT CALL MD.v0.of(), AND THAT IS THE WHOLE DESIGN. MD.v0 answers on the KEYED sidecar,
+     and a public row carries no player key BY CONSTRUCTION — that keylessness is what makes the
+     public bundle leak-proof, so the fix for "the public row cannot be joined" is never to give it a
+     key. The join is done ONCE, at generation time, inside ui/tools/extract_board_view.py, where the
+     keys legitimately exist; the public bundle carries the ANSWER (`v0` + `v0_origin`) and no new
+     identifier. This function reads those two fields off the public row and does the owner's own
+     arithmetic on them — "+800 / 1.25x" — so the public card states exactly what the public bundle
+     carries, and a public-only deployment renders identically.
+
+     THE WORDS ARE MD.v0'S, NOT A SECOND COPY: originWord / originTip / ratioText are called here, so
+     the entry-price vocabulary has one home for both tiers.
+
+     LIVE RATING is the same figure this card prints as Value one section above (MD.dispVal), so the
+     gap and the ratio are guaranteed to reconcile against what the reader can see. */
+  let publicIndex = null;
+  function publicRowByName(name) {
+    if (name == null) return null;
+    if (!publicIndex) {
+      // Name is the only join the public tier offers (#139 item 16). A name shared by two rows is
+      // NOT joined — showing one player's entry price on another's card is worse than showing none.
+      const idx = {}, dupes = {};
+      (((MD.seam.public || {}).players) || []).forEach(function (row) {
+        if (!row || row.name == null) return;
+        if (Object.prototype.hasOwnProperty.call(idx, row.name)) dupes[row.name] = 1;
+        else idx[row.name] = row;
+      });
+      Object.keys(dupes).forEach(function (nm) { delete idx[nm]; });
+      publicIndex = idx;
+    }
+    return publicIndex[name] || null;
+  }
+  function v0SectionPublic(p) {
+    const pub = MD.seam.public;
+    if (!pub || !pub.players) {
+      return v0Refused("the published board bundle is not loaded, so there is no published entry price to read.");
+    }
+    const row = publicRowByName(p && p.name);
+    if (!row) {
+      return v0Refused("no single published row joins to this player by name, so his published entry " +
+        "price cannot be identified.");
+    }
+    if (!("v0" in row)) {
+      return v0Refused("the published bundle carries no entry-price field — it predates this feature. " +
+        "Regenerate ui/data/board_view_public.js with ui/tools/extract_board_view.py.");
+    }
+    const live = MD.dispVal(p);
+    if (row.v0 == null) {
+      // The generator's own reason when the whole join was refused (a stale sidecar), else the
+      // per-row one. Either way an em-dash carrying its why — never an invented anchor.
+      const st = pub.stamp && pub.stamp.v0;
+      return v0Absent(live, (st && st.why) || MD.v0.originTip("unrecoverable"));
+    }
+    return v0Block({
+      v0: row.v0,
+      origin: row.v0_origin || null,
+      live: live,
+      delta: live == null ? null : live - row.v0,
+      ratio: (live == null || !row.v0) ? null : live / row.v0,
+    });
   }
 
   function renderWorking(container, p) {
@@ -401,6 +481,13 @@ MD.card = (function () {
        · rank WITH ITS DENOMINATOR ("136 of 804") — item 18 names it; a bare rank cannot be read.
        · Recent form — item 17. The section already existed and was simply never exposed here.
        · the weekly history — item 3's table, the same one the working card shows.
+       · THE ENTRY PRICE (v0) — OPENED 2026-08-21 ON THE OWNER'S WORD ("v0 goes on the public board,
+         yes"), and it took a data change, not a render change, to open it honestly. v0 is a model
+         belief about a DRAFT SLOT (shared to the dollar by every same-(future position, draft age,
+         pick) player), not a private fact about the man, which is why it was arguably public-safe all
+         along — but "arguably" is not a ruling, so it waited for one. The public bundle now carries
+         the figure and its origin per row, joined at generation time where the keys are; NO key was
+         added to the public bundle to make this work. See v0SectionPublic.
        · movement vs the previous round — CORRECTED 2026-08-21. What stood here said "the public bundle
          has always carried `dRound` … it now shows the real figure." It does not, and it never did.
          Measured on both shipped bundles: `dRound` 0/804 and `dRoundRank` 0/804, no production writer
@@ -457,6 +544,9 @@ MD.card = (function () {
           '<div><div class="k">Rank</div><div class="v num">' + (rank || "—") +
             '<small> of ' + fmt.n(denom) + "</small></div></div>" +
         "</div>" +
+        // the entry price, on the owner's word (2026-08-21) — read from the PUBLIC row's own fields.
+        '<h2 class="sec"><span>Worth now vs worth at entry</span><span class="meta">v0 · absolute · ratio</span></h2>' +
+        v0SectionPublic(p) +
         '<h2 class="sec"><span>Value by year</span><span class="meta">' + years[0] + "–" + years[4] + "</span></h2>" +
         lineChart(lensPts, years, 2, true) +
         // item 17: Recent form, exposed on the public tier.

@@ -38,11 +38,24 @@
    draft-time constant, so it goes stale slowly — which makes it MORE likely to be trusted while wrong,
    not less. Fail closed, and say which identity broke.
 
-   WORKING TIER ONLY, PENDING AN OWNER WORD. The public bundle carries no key, so a public row would
-   have to be name-bridged before it could be joined — and more to the point the two-tier law makes the
-   public bundle leak-proof BY CONSTRUCTION, so what rides it is a ruling, not a default. v0 is a model
-   belief about a draft slot and is arguably public-safe, but that is his call. Until he makes it, this
-   module answers on keyed (working) rows only and `status()` reports the tier decision as pending.
+   BOTH TIERS AS OF 2026-08-21 — THE RULING CAME IN. What stood here said "WORKING TIER ONLY, PENDING
+   AN OWNER WORD": the two-tier law makes the public bundle leak-proof BY CONSTRUCTION, so what rides
+   it is a ruling and never a default, and v0 — a model belief about a DRAFT SLOT, shared to the dollar
+   by every same-(future position, draft age, pick) player — was arguably public-safe but was his call.
+   He made it, verbatim: "v0 goes on the public board, yes." The pending note is retracted here rather
+   than left standing beside a shipped feature, because a comment that outlives its truth is the exact
+   failure this file's own dRound neighbour was written to record.
+
+   WHAT SHIPPED IS A DATA CHANGE, NOT A BRIDGE. THIS MODULE'S SCOPE IS UNCHANGED: it still answers on
+   KEYED (working) rows only, and it still refuses an unkeyed row — a name bridge from a public row to
+   a keyed sidecar would have been a second, weaker identity path, and the public bundle carries no key
+   to bridge FROM by design. Instead the sidecar is joined to the public rows AT GENERATION TIME, in
+   ui/tools/extract_board_view.py, where the keys legitimately exist; the public bundle carries the
+   ANSWER per row (`v0` + `v0_origin`) and NO new identifier. ui/app/card.js renderPublic reads those
+   two fields and calls ratioText / originWord / originTip below, so the arithmetic and the vocabulary
+   have one home across both tiers. The mirror law is enforced at the join too: a sidecar whose stamped
+   board/store is not the one the bundle is generated from is refused whole, and every row then carries
+   the honest absent state (`v0: null`, origin "unrecoverable") rather than a stale figure.
 
    PURE VIEW. Computes no price. Reads one generated bundle and does arithmetic on two given figures. */
 window.MD = window.MD || {};
@@ -161,8 +174,13 @@ MD.v0 = (function () {
       nPickSlot: st.nPickSlot || 0,
       nEntryAnchor: st.nEntryAnchor || 0,
       nAbsent: st.nAbsent || 0,
-      // the public tier is a ruling, not a default; see the header note.
-      publicTier: "pending owner ruling",
+      /* The public tier is a ruling, not a default — and the ruling is IN (owner, 2026-08-21: "v0
+         goes on the public board, yes"). Reported as the shipped state so a status reader is never
+         told a decision is outstanding when it has been made and acted on. The public tier does not
+         read THIS module's sidecar: it renders from the per-row `v0` / `v0_origin` fields joined into
+         ui/data/board_view_public.js by ui/tools/extract_board_view.py (see the header note). */
+      publicTier: "shipped on the owner's word of 2026-08-21 — the public card renders v0 from the "
+                + "public bundle's own per-row fields, joined at generation time (no key is added)",
     };
   }
 
