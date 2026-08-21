@@ -1,0 +1,41 @@
+{
+  "_doc": "THE DRY-RUN ACT SPEC — PACKAGE 2b's no-op proof. A DECLARED REHEARSAL: it predicts the board it already has, moves no identity, declares no scores file and no sheet re-cut, and leaves day-0 re-basing off. `tools/land round --spec <this> --dry-run` runs the whole fourteen-step sequence against the live tree, arms nothing, applies nothing, and the standing falsifier is that no carrier moves. This is the same proof the lever lander gave before its first real flight. Predictions and falsifiers: docs/evidence/p2b_round_lander_2026-08-21/01_DRYRUN_DECLARATION.md, committed BEFORE this was run.",
+  "schema_version": 1,
+  "act_kind": "round-advance",
+  "act": "PACKAGE 2b DRY RUN — the round lander's no-op rehearsal on the live tree",
+  "date": "2026-08-21",
+  "owner_word": "NO OWNER WORD IS QUOTED HERE AND NONE IS OWED: this spec arms nothing, applies nothing and lands no round. The act's authority is the owner-locked PLAN_v6 PACKAGE 2b; the register banks the owner's go for P2b at v811 in the pen's own summary rather than as a verbatim quotation, and this seat does not manufacture one. A REAL round advance fills this slot with the owner's words and round.arming with his score-write token (law 10(c)).",
+  "authority": "PLAN_v6 PACKAGE 2b (owner-locked); the proven hand-walk at docs/evidence/r23_advance_2026-08-20/; register v810 item 1 for the day-0 step's home",
+  "prereg": {
+    "path": "docs/evidence/p2b_round_lander_2026-08-21/01_DRYRUN_DECLARATION.md",
+    "board_before": "b3e8da99bc7f632e5d1eebc732f9cf01",
+    "board_after": "b3e8da99bc7f632e5d1eebc732f9cf01",
+    "_doc_board_after": "EQUAL to board_before — that equality is how a REHEARSAL is DECLARED rather than inferred from an empty moves list (spec._declared_no_op).",
+    "round_expected": null,
+    "_doc_round_expected": "null: no scores file is declared, so there is no round-shaped prediction to make. A real advance fills all seven falsifiers."
+  },
+  "round": {
+    "number": 23,
+    "_doc_number": "the round the tree is ALREADY standing on. The advance step asserts exactly that and refuses any other number — a rehearsal holds the round it is standing on.",
+    "scores": null,
+    "identity_overrides": [],
+    "arming": null,
+    "_doc_arming": "null: nothing is armed. A real advance carries {env: {INGEST_SCORE_APPLY_ARMED, INGEST_SCORE_APPLY}, owner_word} and the lander composes neither."
+  },
+  "sheet": null,
+  "_doc_sheet": "null: this act re-cuts no sheet. The `sheet` step still MEASURES the sheet and asserts data/sheet_pins.json already describes it — a drifted sheet halts the board regen inside the staged transaction, so it halts here instead, before anything is armed.",
+  "identities": {
+    "moves": [],
+    "unmoved": ["board", "store", "engine_head", "rl_model", "fv", "config", "register", "as_of_round", "balanced_board_md5"]
+  },
+  "column": null,
+  "lineage": null,
+  "day0_rebase": {"state": "off"},
+  "_doc_day0_rebase": "OFF, by default and by the M1b ruling. The advance is the day-0 reference's natural home (register v810 item 1) and the step exists in ROUND_SEQUENCE and nowhere else, which is how 'never mid-round' becomes structural — but the capability is still explicit, owner-visible and off unless activated.",
+  "movers_page": {"output": "", "boundary_note": ""},
+  "evidence_dir": "docs/evidence/p2b_round_lander_2026-08-21",
+  "claims_file": "DRYRUN_CLAIMS.json",
+  "gates": null,
+  "_doc_gates": "null = the STANDARD landing gate set (steps.DEFAULT_GATES): release_manifest_check, release_contract check, the acceptance runner under --profile in-transaction, the py movers-transition suite and the js movers suite.",
+  "commit_message": "PACKAGE 2b DRY RUN — nothing to commit (a declared no-op rehearsal wrote no file)"
+}

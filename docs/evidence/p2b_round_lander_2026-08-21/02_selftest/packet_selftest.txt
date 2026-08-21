@@ -1,0 +1,7 @@
+  PASS  a fully filled packet validates GREEN
+  PASS  a packet missing a fixed slot FAILS
+  PASS  a slot filled with a dash sentinel FAILS
+  PASS  a by-name slot answered only with a count FAILS
+  PASS  slots out of order FAIL (recommendation before what-would-make-it-silly)
+
+PACKET SELF-TEST: 5 PASS / 0 FAIL
