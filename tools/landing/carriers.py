@@ -101,8 +101,9 @@ LEVER_CARRIERS = (
 
     # ---- the sheet pin declaration: PLAN_v6 3a took these OUT of the engine -----------------------
     F('data/sheet_pins.json',
-      '(nothing, in a lever landing) — INTERIM: the amended R23 runbook manual path; the round '
-      'lander (2b) once it exists, as SOLE writer',
+      '(nothing, in a lever landing) — SOLE WRITER: `land round` (steps.sheet), PLAN_v6 2b, '
+      '2026-08-21; the amended R23 runbook manual path is the documented fallback until the '
+      'owner\'s stand-down word (2a.4)',
       'the ONE pin declaration for the owner injury/sitter sheet (md5 + row count + injured=Y count) '
       'that ORDER 41 and ORDER 42 both read. Same argument as the store entry above: a lever landing '
       'must leave it byte-unmoved, and capturing it turns "the pins did not move" from a claim into a '
@@ -145,8 +146,66 @@ LEVER_CARRIERS = (
       'the repin transaction dir; an aborted landing must not leave a half-open txn behind'),
 )
 
-#: The round lander (2b) adds its carriers to this tuple rather than defining a second set.
-ROUND_EXTRA_CARRIERS = ()
+#: THE ROUND LANDER'S EXTRA CARRIERS (PLAN_v6 2b). This tuple is ADDED to `LEVER_CARRIERS`; it is not
+#: a second set, and that is the S7 law in one line — the round lander and the lever lander share the
+#: enumeration, the snapshot, the restore and the scope check, and differ only by these entries.
+#:
+#: EVERY ENTRY IS A PATH THE PROVEN R23 HAND-WALK ACTUALLY MOVED, read off the commit table in
+#: `docs/evidence/r23_advance_2026-08-20/FINAL_STATE.md` §1 (commits 2, 4 and 5) rather than guessed
+#: at. Anything that landing wrote and this set omitted would be a file the abort ladder could not put
+#: back — which is the only way this tuple can be wrong, so it is enumerated against the record.
+ROUND_EXTRA_CARRIERS = (
+    # ---- the owner's inputs of record ------------------------------------------------------------
+    G('scores/*.csv', 'the owner (couriered, byte-unmodified) — staged by steps.scores',
+      'the round score file of record. The lander NEVER edits it: it is placed, hashed, asserted '
+      'against the act spec\'s declared md5/sha256, and committed byte-unmodified. It is a carrier '
+      'because a landing that stages one and aborts must not leave it behind half-staged'),
+    F('docs/owner_annotations/SITTER_2026_v1.csv',
+      'the owner (re-cut on his word) — staged and committed by steps.sheet',
+      'THE PINNED OWNER INPUT the ORDER 41 / ORDER 42 guards read. A round advance increments every '
+      'listed player\'s games_2026, so an injured=Y row that played desynchronises the sheet and '
+      'halts the board regen INSIDE the transaction (runbook §4 H2). The re-cut is the owner\'s; the '
+      'lander measures it, pins it, and refuses a re-cut whose measured facts are not the disclosed '
+      'ones'),
+    F('engine/rl_after/ingestion/catchup_identity_overrides.json',
+      'the seat, on the owner\'s verbatim word — asserted (never authored) by steps.scores',
+      'the identity-override record. An owner ruling on a name lives HERE, never in the score file '
+      '— the R22 Bailey ruling and the R23 WBD binding are both entries in this file'),
+
+    # ---- what the staged round transaction writes -------------------------------------------------
+    F('data/season_state.json', 'staged_apply (season_state writer) — the round clock',
+      'the season clock: as_of_round and the calendar fraction. It moves ONLY at an advance'),
+    F('engine/rl_after/ingestion/applied_rounds_ledger.json', 'round_apply (the dedup ledger)',
+      'the (stable_id|season|round) triples that make a re-sent feed impossible to double-count'),
+    F('engine/rl_after/ingestion/finalization_state.json', 'round_finalize',
+      'the finalization state machine\'s current state'),
+    F('engine/rl_after/ingestion/finalization_journal.jsonl', 'round_finalize (append-only journal)',
+      'the five-line journal shape a clean round writes; the R20 contrast (two INCOMPLETEs and three '
+      'force:true retries) is what a bad one looks like'),
+    G('engine/rl_after/ingestion/movers/*', 'round_finalize / round_movers',
+      'the round movers reports (movers_R<N>.json/.csv) — CREATED, not merely edited, so the glob '
+      'is load-bearing exactly as the sibling repin\'s fixtures are'),
+    G('engine/rl_after/ingestion/.weekly_txn/**', 'staged_apply (its own transaction dir)',
+      'the weekly staged-transaction records; tracked (R15…R23 all are). An aborted landing must not '
+      'leave a half-open txn behind'),
+
+    # ---- the weekly fixture bumps -----------------------------------------------------------------
+    F('engine/rl_after/ingestion/test_movers_transition.py', 'the advance (weekly round expectation)',
+      'the py movers suite carries the round it expects and the future-append fixture; both are '
+      'bumped every week by the advance (R22 bumped 21->22, R23 bumped 22->23)'),
+    F('ui/tests/movers.test.js', 'the advance (weekly round expectation)',
+      'the js movers suite, same weekly bump'),
+
+    # ---- the day-0 standing reference -------------------------------------------------------------
+    F('docs/evidence/final_candidate_2026-08-19/DAY0_CP.json',
+      'steps.day0 — REGENERATED AT THE ADVANCE, never mid-round (register v810 item 1)',
+      'the standing day-0 print reference. It goes stale at a round clock advance and its natural '
+      'home for regeneration is the advance itself; it is a carrier so that an activated re-base '
+      'which then aborts puts the standing reference back byte-exact'),
+)
+
+#: THE ROUND-LANDING CARRIER SET = the lever set PLUS the round extras. One enumeration, two acts.
+ROUND_CARRIERS = LEVER_CARRIERS + ROUND_EXTRA_CARRIERS
 
 
 def _md5(path):

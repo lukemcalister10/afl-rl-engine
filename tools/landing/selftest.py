@@ -69,10 +69,15 @@ def _md5(path):
     return h.hexdigest()
 
 
-def carrier_md5s(root):
-    """The parent's OWN measurement of every carrier. Never the child's."""
+def carrier_md5s(root, carriers=CA.ROUND_CARRIERS):
+    """The parent's OWN measurement of every carrier. Never the child's.
+
+    It measures the ROUND set by default, which is a superset of the lever set — so a lever fault
+    case that somehow moved a round-only carrier (the store, the sheet, a movers report) would be
+    caught here rather than being outside the measurement.
+    """
     out = {}
-    for rel in CA.expand(root):
+    for rel in CA.expand(root, carriers):
         p = os.path.join(root, rel)
         out[rel] = _md5(p) if os.path.isfile(p) else None
     return out
@@ -141,6 +146,39 @@ def spec_moved(board_before, board_after, evidence_rel):
     return d
 
 
+def spec_round_noop(sandbox_path, board_md5, evidence_rel):
+    """THE ROUND REHEARSAL — the fixture every round fault case is injected into.
+
+    It declares the board it already has and the round the tree is already standing on, so the whole
+    fourteen-step sequence runs with nothing armed, nothing applied and nothing owed: `sheet` asserts
+    the declaration describes the sheet, `scores` and `catchup_preflight` have no owner file to
+    assert, `advance` proves the tree held still, `generator_sync` finds the copies already equal,
+    `day0` is OFF by default, and the shared seven run exactly as they do under `land lever`.
+
+    That shape is deliberate and it is the same shape as the live-tree DRY RUN the package ships as
+    its no-op proof: a rehearsal is the only honest way to exercise a round lander before a round
+    exists to land.
+    """
+    boot = json.load(open(os.path.join(sandbox_path, 'data', 'expected_boot.json'), encoding='utf-8'))
+    d = _spec_common(evidence_rel)
+    d.update({
+        'act_kind': 'round-advance',
+        'act': 'SELF-TEST — the round rehearsal',
+        'prereg': {'path': 'tools/landing/selftest.py (fixture)', 'board_before': board_md5,
+                   'board_after': board_md5, 'round_expected': None},
+        'round': {'number': int(boot['as_of_round']), 'scores': None, 'identity_overrides': [],
+                  'arming': None},
+        'sheet': None,
+        'identities': {'moves': [], 'unmoved': ['board', 'store', 'engine_head', 'rl_model', 'fv',
+                                                'config', 'register', 'as_of_round']},
+        'column': None,
+        'lineage': None,
+        'movers_page': {'output': '', 'boundary_note': ''},
+        'commit_message': 'SELF-TEST sandbox commit (never on main)',
+    })
+    return d
+
+
 # ------------------------------------------------------------------------------------ the sandbox
 class Sandbox(object):
     """A git worktree of HEAD, carrying the CURRENT lander, committed so the tree reads clean."""
@@ -199,9 +237,13 @@ class Sandbox(object):
         env['GIT_AUTHOR_EMAIL'] = env['GIT_COMMITTER_EMAIL'] = 'selftest@local'
         return env
 
+    def head(self):
+        rc, out = _sh(['git', 'rev-parse', 'HEAD'], cwd=self.path)
+        return out.strip() if rc == 0 else None
+
     def run_lander(self, spec_rel, fault=None, builder='selftest', report=None, log=None,
-                   extra=()):
-        argv = [sys.executable, os.path.join(self.path, 'tools', 'landing', 'cli.py'), 'lever',
+                   extra=(), verb='lever'):
+        argv = [sys.executable, os.path.join(self.path, 'tools', 'landing', 'cli.py'), verb,
                 '--spec', os.path.join(self.path, spec_rel), '--root', self.path,
                 '--selftest', '--builder', builder]
         if fault:
@@ -277,10 +319,13 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
     os.makedirs(os.path.join(sb.path, ev_rel), exist_ok=True)
     noop = spec_noop(board, ev_rel)
     moved = spec_moved(board, hashlib_moved(sb.path), ev_rel)
+    rnd = spec_round_noop(sb.path, board, ev_rel)
     with open(os.path.join(sb.path, 'SELFTEST_SPEC_NOOP.json'), 'w', encoding='utf-8') as fh:
         json.dump(noop, fh, indent=2)
     with open(os.path.join(sb.path, 'SELFTEST_SPEC_MOVED.json'), 'w', encoding='utf-8') as fh:
         json.dump(moved, fh, indent=2)
+    with open(os.path.join(sb.path, 'SELFTEST_SPEC_ROUND.json'), 'w', encoding='utf-8') as fh:
+        json.dump(rnd, fh, indent=2)
     _sh(['git', 'add', '-A'], cwd=sb.path)
     _sh(['git', '-c', 'user.email=selftest@local', '-c', 'user.name=selftest', 'commit', '-q',
          '-m', 'self-test fixtures'], cwd=sb.path)
@@ -385,6 +430,150 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
            '%d carrier(s) had been written and were restored: %s' % (len(wrote), ', '.join(wrote[:6])))
     sb.reset()
 
+    # ---- 3b. THE ROUND LANDER (PLAN_v6 2b) — the same standard the lever steps met ---------------
+    #
+    # THE NON-VACUITY CONTROL FIRST, AGAIN. A clean round REHEARSAL in this sandbox must SUCCEED
+    # before any round fault case is believed. Then every step 2b ADDS is broken exactly once, by a
+    # fault that breaks the thing that step exists to check, and the parent — never the child —
+    # re-hashes every carrier before and after and compares them itself.
+    #
+    # AND ONE ASSERTION THE LEVER CASES NEVER NEEDED: HEAD IS BACK AT THE BASE COMMIT. The round
+    # lander commits mid-flight (PACKAGE 3a's form puts the sheet in its own commit before the
+    # advance), so "byte-exact" has to include history or it quietly excludes it. Every round case
+    # asserts the sandbox's HEAD is exactly where it started.
+    print('')
+    print('--- ROUND: a clean round rehearsal in this sandbox must SUCCEED (PLAN_v6 2b) ---')
+    round_base = sb.head()
+    rc, out = sb.run_lander('SELFTEST_SPEC_ROUND.json', verb='round',
+                            report=os.path.join(ev, 'round_control_report.json'),
+                            log=os.path.join(ev, 'round_control.log'))
+    open(os.path.join(ev, 'round_control_stdout.txt'), 'w', encoding='utf-8').write(out)
+    rctrl = _read_json(os.path.join(ev, 'round_control_report.json'))
+    record('round_control_clean_run', rc == 0 and (rctrl or {}).get('ok') is True,
+           'exit %s%s' % (rc, '' if rc == 0 else ' — see round_control.log; every round fault case '
+                                                 'below is meaningless until this passes'))
+    if rc == 0:
+        rcg, gout = _sh(['git', 'show', '--stat', '--name-only', '--format=', 'HEAD'], cwd=sb.path)
+        paths = [ln.strip() for ln in gout.splitlines() if ln.strip()]
+        foreign = [p for p in paths
+                   if not (CA.in_scope(p, CA.ROUND_CARRIERS) or p.startswith(ev_rel))]
+        record('round_commit_explicit_paths', not foreign,
+               '%d path(s) committed, all declared: %s'
+               % (len(paths), ', '.join(paths[:4]) or '(none)')
+               if not foreign else 'foreign paths committed: %s' % foreign)
+    sb.reset()
+
+    print('')
+    print('--- ROUND FAULTS: every step 2b ADDS, broken once ---')
+    shared = {n for n, _t, _f in ST.LEVER_SEQUENCE}
+    for step_name, _title, _fn in ST.ROUND_SEQUENCE:
+        if step_name in shared:
+            continue                    # proved above, on the same code, under `land lever`
+        if only and step_name not in only:
+            continue
+        mode, what, _inj = TX.FAULTS[step_name]
+        before = carrier_md5s(sb.path)
+        rep = os.path.join(ev, 'round_fault_%s_report.json' % step_name)
+        rc, out = sb.run_lander('SELFTEST_SPEC_ROUND.json', fault=step_name, verb='round',
+                                report=rep, log=os.path.join(ev, 'round_fault_%s.log' % step_name))
+        open(os.path.join(ev, 'round_fault_%s_stdout.txt' % step_name), 'w',
+             encoding='utf-8').write(out)
+        report = _read_json(rep) or {}
+        tally['broken'] += 1
+        caught = (rc != 0) and report.get('failed_step') == step_name
+        after = carrier_md5s(sb.path)
+        moved_carriers = sorted(k for k in set(before) | set(after) if before.get(k) != after.get(k))
+        head_ok = sb.head() == round_base
+        byte_exact = not moved_carriers and head_ok
+        if caught:
+            tally['caught'] += 1
+        if byte_exact:
+            tally['aborted_byte_exact'] += 1
+        record('round_fault_%s' % step_name, caught and byte_exact,
+               'fault=%s; exit %s; failed_step=%r; carriers moved after abort: %s; HEAD %s'
+               % (mode, rc, report.get('failed_step'), moved_carriers or 'NONE (byte-exact)',
+                  'back at the base' if head_ok else 'MOVED — the abort left a commit behind'))
+        sb.reset()
+
+    # ---- 3c. THE SHEET RE-CUT WRITER — the one path a rehearsal cannot reach -------------------
+    #
+    # Every case above runs with `sheet: null`, which is most weeks and is the path where the step
+    # writes NOTHING. But `land round` is the SOLE WRITER of `data/sheet_pins.json`, and a sole
+    # writer nobody has watched write is a claim, not a fact. So the sandbox performs a synthetic
+    # re-cut — one byte appended to the sheet's first data row, which moves its md5 and leaves rows
+    # and injured=Y where they are — and the step is run twice against it:
+    #
+    #   NEGATIVE first: a prereg-lite that predicts the WRONG md5 must HALT. "A re-cut whose
+    #                   measured facts are not the disclosed ones is a halt and a report, not a note."
+    #   POSITIVE then : the correct prediction writes the pin, commits sheet + declaration +
+    #                   prereg-lite as ONE explicit-path commit, and asserts engine_head UNMOVED.
+    #
+    # The negative runs FIRST on purpose: a positive that passes because the assertion is dead looks
+    # exactly like a positive that passes because the writer works.
+    if not only or 'sheet' in only:
+        print('')
+        print('--- ROUND: the sheet re-cut writer — `land round` is the pin file\'s SOLE WRITER ---')
+        prereg_rel = os.path.join(ev_rel, 'SELFTEST_PREREG_LITE.md')
+
+        def _stage_recut():
+            """Put the sandbox back into the shape a seat hands the lander: sheet re-cut, prereg
+            written, and NOTHING ELSE uncommitted. The residue of the previous attempt — including
+            an abort's own ABORT_*.json — is dirt, and step 0 is right to refuse it."""
+            sb.reset()
+            shutil.rmtree(os.path.join(sb.path, ev_rel), ignore_errors=True)
+            os.makedirs(os.path.join(sb.path, ev_rel), exist_ok=True)
+            with open(os.path.join(sb.path, prereg_rel), 'w', encoding='utf-8') as fh:
+                fh.write('SELF-TEST PREREG-LITE — a synthetic re-cut inside a sandbox worktree. It '
+                         'never reaches the live tree and no owner word exists or is claimed.\n')
+            return _synthetic_recut(sb.path)
+
+        recut_md5 = _stage_recut()
+        for label, predicted_md5, want_ok in (('sheet_recut_wrong_prediction', '0' * 32, False),
+                                              ('sheet_recut_writer', recut_md5, True)):
+            if label != 'sheet_recut_wrong_prediction':
+                assert _stage_recut() == recut_md5, 'the synthetic re-cut is not reproducible'
+            spec = spec_round_noop(sb.path, board, ev_rel)
+            spec['act'] = 'SELF-TEST — the synthetic sheet re-cut'
+            spec['sheet'] = {
+                'prereg_lite': prereg_rel,
+                'owner_word': 'SELF-TEST FIXTURE — no owner word exists or is claimed.',
+                'disclosed_movers': 'nobody: this re-cut appends one byte to a notes cell.',
+                'predicted': {'sheet_md5': predicted_md5, 'sheet_rows': 219, 'sheet_injured_y': 35},
+                'provenance': 'SELF-TEST FIXTURE — sandbox only.'}
+            # THE SPEC LIVES OUTSIDE THE SANDBOX. It is written for this case rather than committed
+            # with the other fixtures, and an uncommitted file inside the tree is DIRT — which is
+            # exactly what step 0 refuses, and rightly: the only dirt this act may start on is its
+            # own DECLARED dirt (the re-cut sheet and its prereg-lite). Keeping the spec out of the
+            # tree keeps the assertion honest instead of widening it.
+            spec_abs = os.path.join(ev, 'SELFTEST_SPEC_RECUT.json')
+            with open(spec_abs, 'w', encoding='utf-8') as fh:
+                json.dump(spec, fh, indent=2)
+            rep = os.path.join(ev, '%s_report.json' % label)
+            rc, out = sb.run_lander(spec_abs, verb='round', report=rep,
+                                    log=os.path.join(ev, '%s.log' % label))
+            open(os.path.join(ev, '%s_stdout.txt' % label), 'w', encoding='utf-8').write(out)
+            report = _read_json(rep) or {}
+            pins = _read_json(os.path.join(sb.path, 'data', 'sheet_pins.json')) or {}
+            if want_ok:
+                ok = (rc == 0 and report.get('ok') is True
+                      and pins.get('sheet_md5') == recut_md5
+                      and int(pins.get('sheet_rows')) == 219
+                      and int(pins.get('sheet_injured_y')) == 35
+                      and (report.get('facts') or {}).get('sheet', {}).get('commit'))
+                record(label, ok, 'exit %s; the declaration now reads md5=%s rows=%s injured_y=%s; '
+                                  'sheet commit %s; engine_head asserted UNMOVED'
+                       % (rc, str(pins.get('sheet_md5'))[:12], pins.get('sheet_rows'),
+                          pins.get('sheet_injured_y'),
+                          str((report.get('facts') or {}).get('sheet', {}).get('commit'))[:12]))
+            else:
+                head_ok = sb.head() == round_base
+                record(label, rc != 0 and report.get('failed_step') == 'sheet' and head_ok
+                       and pins.get('sheet_md5') != '0' * 32,
+                       'exit %s; failed_step=%r; the declaration was NOT written and HEAD %s'
+                       % (rc, report.get('failed_step'),
+                          'is back at the base' if head_ok else 'MOVED'))
+        sb.reset()
+
     # ---- 4. THE CLAIMS NEGATIVE CONTROL ---------------------------------------------------------
     print('')
     print('--- CLAIMS: the checker\'s own negative control still fires ---')
@@ -441,6 +630,25 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
     else:
         print('\nsandbox KEPT at %s' % sb.path)
     return 0 if ok == len(results) else 1
+
+
+def _synthetic_recut(sandbox_path, restore_md5=None):
+    """Append ONE byte to the sheet's first data row's (empty, unquoted) notes cell. -> the new md5.
+
+    It moves the md5 and leaves the row count and the injured=Y count exactly where they are, which
+    is the smallest re-cut that still exercises the writer. It is done to a SANDBOX WORKTREE only;
+    the live sheet is an owner input and this package never edits owner data.
+    """
+    p = os.path.join(sandbox_path, 'docs', 'owner_annotations', 'SITTER_2026_v1.csv')
+    raw = open(p, 'rb').read()
+    if restore_md5 is not None and hashlib.md5(raw).hexdigest() == restore_md5:
+        return restore_md5
+    i = raw.index(b'\r\n')                       # end of the header
+    j = raw.index(b'\r\n', i + 2)                # end of the first data row
+    raw = raw[:j] + b'x' + raw[j:]
+    with open(p, 'wb') as fh:
+        fh.write(raw)
+    return hashlib.md5(raw).hexdigest()
 
 
 def hashlib_moved(sandbox_path):

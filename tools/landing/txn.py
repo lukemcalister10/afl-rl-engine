@@ -164,6 +164,82 @@ def _fault_foreign_path(ctx):
     open(os.path.join(ctx.root, 'docs', 'LANDING_FAULT_FOREIGN.md'), 'w').write('not a carrier\n')
 
 
+# ------------------------------------------------------- fault injection: the round lander's steps
+def _fault_sheet_pin_drift(ctx):
+    """The sheet moves and its ONE declaration does not — the exact drift that halts ORDER 41."""
+    p = os.path.join(ctx.root, 'docs', 'owner_annotations', 'SITTER_2026_v1.csv')
+    with open(p, 'ab') as fh:
+        fh.write(b'\r\n')
+
+
+def _fault_scores_absent(ctx):
+    """The act declares an owner file of record that is not in the tree."""
+    ctx.spec['round']['scores'] = {'path': 'scores/R99_NOT_A_REAL_FILE.csv',
+                                   'md5': '0' * 32, 'sha256': '0' * 64}
+    ctx.spec['prereg']['round_expected'] = {'round': 99, 'listed': 0, 'resolved': 0, 'absent_dnp': 0,
+                                            'scores_sha256': '0' * 64, 'ledger_before': 0,
+                                            'ledger_delta': 0}
+    ctx.spec['round']['arming'] = {'env': {'INGEST_SCORE_APPLY_ARMED': '1',
+                                           'INGEST_SCORE_APPLY': 'selftest-never-armed'},
+                                   'owner_word': 'SELF-TEST FIXTURE — no owner word exists.'}
+
+
+def _fault_round_already_applied(ctx):
+    """The act points the preflight at a round the dedup ledger has already applied."""
+    boot = json.load(open(os.path.join(ctx.root, 'data', 'expected_boot.json'), encoding='utf-8'))
+    n = int(boot['as_of_round'])
+    ctx.spec['round']['number'] = n
+    ctx.spec['round']['scores'] = {'path': 'scores/R%d.csv' % n, 'md5': _md5_of(
+        os.path.join(ctx.root, 'scores', 'R%d.csv' % n)), 'sha256': _sha_of(
+        os.path.join(ctx.root, 'scores', 'R%d.csv' % n))}
+    ctx.spec['prereg']['round_expected'] = {
+        'round': n, 'listed': 411, 'resolved': 411, 'absent_dnp': 393,
+        'scores_sha256': _sha_of(os.path.join(ctx.root, 'scores', 'R%d.csv' % n)),
+        'ledger_before': 0, 'ledger_delta': 0}
+    ctx.spec['round']['arming'] = {'env': {'INGEST_SCORE_APPLY_ARMED': '1',
+                                           'INGEST_SCORE_APPLY': 'selftest-never-armed'},
+                                   'owner_word': 'SELF-TEST FIXTURE — no owner word exists.'}
+
+
+def _fault_round_mismatch(ctx):
+    """The act claims to be advancing a round the tree is not standing on."""
+    ctx.spec['round']['number'] = 99
+
+
+def _fault_generator_drift(ctx):
+    """The generator-side copy stops being the published board in an act that moves nothing."""
+    with open(os.path.join(ctx.root, 'engine', 'rl_after', 'rl_app_data.json'), 'ab') as fh:
+        fh.write(b' ')
+
+
+def _fault_day0_no_movers(ctx):
+    """The day-0 re-base is ACTIVATED and no row moves — the M1b guard, in the round lander."""
+    ref = 'docs/evidence/final_candidate_2026-08-19/DAY0_CP.json'
+    ctx.spec['day0_rebase'] = {'state': 'on', 'reference': ref, 'new_reference': ref,
+                               'activated_by': 'SELF-TEST FIXTURE — no owner word exists.'}
+
+
+def _fault_movers_report_drift(ctx):
+    """The movers report stops naming the board the manifest names."""
+    boot = json.load(open(os.path.join(ctx.root, 'data', 'expected_boot.json'), encoding='utf-8'))
+    p = os.path.join(ctx.root, 'engine', 'rl_after', 'ingestion', 'movers',
+                     'movers_R%s.json' % boot['as_of_round'])
+    d = json.load(open(p, encoding='utf-8'))
+    d['board_md5_after'] = 'f' * 32
+    with open(p, 'w', encoding='utf-8') as fh:
+        json.dump(d, fh)
+
+
+def _md5_of(path):
+    import hashlib
+    return hashlib.md5(open(path, 'rb').read()).hexdigest()
+
+
+def _sha_of(path):
+    import hashlib
+    return hashlib.sha256(open(path, 'rb').read()).hexdigest()
+
+
 #: step -> (mode name, what it breaks, the injector). ONE per step: the plan asks for each step
 #: broken once, and each of these breaks the thing that step exists to check.
 FAULTS = {
@@ -187,6 +263,32 @@ FAULTS = {
                      _fault_false_claim),
     'commit':       ('foreign_path', 'a file outside the declared carrier set is in the tree',
                      _fault_foreign_path),
+
+    # ---- the round lander's own steps (PLAN_v6 2b) ----------------------------------------------
+    'sheet':             ('sheet_pin_drift',
+                          'the owner sheet moves and its ONE pin declaration does not — the drift '
+                          'that halts ORDER 41 inside the staged transaction',
+                          _fault_sheet_pin_drift),
+    'scores':            ('scores_absent',
+                          "the act declares an owner file of record that is not in the tree",
+                          _fault_scores_absent),
+    'catchup_preflight': ('round_already_applied',
+                          'the round is already in the dedup ledger — the preflight says CLEAN and '
+                          'the advance would certify a round it did not apply',
+                          _fault_round_already_applied),
+    'advance':           ('round_mismatch',
+                          'the act claims a round the tree is not standing on',
+                          _fault_round_mismatch),
+    'generator_sync':    ('generator_drift',
+                          'the generator-side board copy stops being the published board',
+                          _fault_generator_drift),
+    'day0':              ('day0_no_movers',
+                          'THE M1b GUARD: the day-0 re-base is ACTIVATED and no row moves',
+                          _fault_day0_no_movers),
+    'movers_page':       ('movers_report_drift',
+                          'the movers report stops naming the board the manifest names, so the page '
+                          'would describe a different tree than the one that produced it',
+                          _fault_movers_report_drift),
 }
 
 
@@ -211,7 +313,8 @@ class Ctx(object):
         self.snapshot = None
         self.timings = []                        # [(step, seconds, verdict)]
         self.lines = []
-        self.lock_tag = lock_tag or ('land-lever-%d' % os.getpid())
+        self.lock_tag = lock_tag or ('land-%s-%d' % (
+            'round' if spec.get('act_kind') == 'round-advance' else 'lever', os.getpid()))
         self.lock_timeout = (0 if lock_timeout is None and opts.selftest
                              else (self.DEFAULT_LOCK_TIMEOUT if lock_timeout is None else lock_timeout))
         self._lock_fd = None
@@ -225,6 +328,13 @@ class Ctx(object):
         self.keep_work = keep_work
         self.evidence_dir = evidence_dir or os.path.join(self.root, spec.get('evidence_dir') or
                                                          'docs/evidence/landing_%s' % spec.get('date', 'undated'))
+        #: EVERY COMMIT THIS LANDING MAKES, newest last. A lever landing makes one, at the end. A
+        #: round advance makes three — the sheet commit, the inputs commit and the landing commit —
+        #: because PACKAGE 3a's form puts the data change in its own commit BEFORE the advance and
+        #: the owner's input of record must enter the tree before anything is armed. The list is what
+        #: `_abort` rewinds: a mid-flight commit that survived an abort would make the abort's
+        #: byte-exactness claim quietly exclude history.
+        self.commits_made = []
         # fault-injection flags a step reads; all default to the safe value
         self.skip_second_ui_writer = False
         self.false_claim = False
@@ -274,9 +384,15 @@ class Ctx(object):
         env['PYTHONHASHSEED'] = env.get('PYTHONHASHSEED', '0')
         return env
 
-    def run(self, argv, timeout=1800):
+    def run(self, argv, timeout=1800, env_overrides=None):
+        """Run a child in the landing's environment. `env_overrides` is for THE ARMING AND NOTHING
+        ELSE: the round advance arms both halves of the score-write gate for one run, from the act
+        spec, on the owner's word (law 10c). It is a parameter rather than an exported variable
+        precisely so that the arming cannot leak into any other child this landing spawns."""
+        env = self.child_env()
+        env.update({str(k): str(v) for k, v in (env_overrides or {}).items()})
         p = subprocess.run(argv, cwd=self.root, capture_output=True, text=True,
-                           env=self.child_env(), timeout=timeout)
+                           env=env, timeout=timeout)
         return p.returncode, (p.stdout or '') + (p.stderr or '')
 
     def with_child_env(self, fn):
@@ -294,9 +410,63 @@ class Ctx(object):
             else:
                 os.environ['RL_REPO'] = prev_repo
 
+    def declared_dirt(self):
+        """THE ONLY DIRT A LANDING MAY START ON, and it is DECLARED, ENUMERATED, and act-specific.
+
+        A LEVER LANDING HAS NONE. It builds what it lands, so a modified file at step 0 is somebody
+        else's work and the tree must be clean, full stop.
+
+        A ROUND ADVANCE THAT DECLARES A SHEET RE-CUT HAS EXACTLY TWO, and they are not an exception
+        so much as the shape of the act. The owner's sheet is re-cut BY THE SEAT, on the owner's
+        word — the lander never authors owner data — and the prereg-lite is written by the seat
+        before the sheet is touched. Both must therefore be present and uncommitted when the lander
+        starts, because committing them is the `sheet` step's job (PACKAGE 3a's form: sheet +
+        declaration + prereg-lite, ONE commit). Requiring a clean tree here would mean requiring the
+        seat to make that commit by hand, which is precisely the writer 2b was built to replace.
+
+        The set is TWO NAMED PATHS out of the act spec — the sheet the pin declaration names and the
+        prereg-lite the spec names — and it is printed at step 0. Anything else, including a second
+        edit to either file's directory, is dirt and halts.
+        """
+        sheet = self.spec.get('sheet')
+        if not sheet or self.spec.get('act_kind') != 'round-advance':
+            return ()
+        rel = sheet.get('path')
+        if not rel:
+            try:
+                with open(os.path.join(self.root, 'data', 'sheet_pins.json'), encoding='utf-8') as fh:
+                    rel = json.load(fh).get('sheet_path')
+            except (OSError, ValueError):
+                rel = None
+        return tuple(p for p in (rel, sheet.get('prereg_lite')) if p)
+
     def is_ignorable_dirt(self, status_line):
-        """Nothing is ignorable. Kept as one named place so an exception can never be added quietly."""
-        return False
+        """Nothing is ignorable except the act's own DECLARED dirt. One named place, always.
+
+        AN UNTRACKED DIRECTORY IS EXPANDED, NEVER WAVED THROUGH. `git status --porcelain` collapses a
+        wholly-untracked directory to one `?? dir/` line, and a prereg-lite written into a fresh
+        evidence directory arrives exactly that way. Accepting the line because the directory
+        CONTAINS a declared path would accept everything else in it too. So the directory is walked,
+        and it is ignorable only if EVERY file under it is declared dirt.
+        """
+        allowed = self.declared_dirt()
+        if not allowed:
+            return False
+        rel = status_line[3:].strip().strip('"')
+        if ' -> ' in rel:
+            rel = rel.split(' -> ')[-1]
+        if rel in allowed:
+            return True
+        if not rel.endswith('/'):
+            return False
+        base = os.path.join(self.root, rel.rstrip('/'))
+        if not os.path.isdir(base):
+            return False
+        found = []
+        for dirpath, _d, files in os.walk(base):
+            for f in files:
+                found.append(os.path.relpath(os.path.join(dirpath, f), self.root))
+        return bool(found) and all(f in allowed for f in found)
 
     @property
     def claims_path(self):
@@ -570,6 +740,66 @@ def _discard_work_dir(ctx, why):
         ctx.log('could not discard the work dir %s: %s' % (ctx.work_dir, e))
 
 
+def _rewind_commits(ctx):
+    """REWIND EXACTLY THE COMMITS THIS LANDING MADE, AND NEVER ANY OTHER. Runs BEFORE the restore.
+
+    WHY IT EXISTS AT ALL. The lever lander commits once, at the very end, so nothing it could abort
+    on had ever been committed. The ROUND lander commits three times — PACKAGE 3a's form puts the
+    sheet re-cut in its own commit ahead of the advance, and the owner's score file must be in the
+    tree before anything is armed — so for the first time a step can fail with work already
+    committed. Restoring the working tree and leaving those commits standing would produce a repo
+    that is byte-exact by the abort's own report and two commits ahead by `git log`. That is not an
+    abort; it is a half-landing with a certificate.
+
+    IT IS DECIDABLE, NOT CLEVER. The lander knows the sha of every commit it made (`ctx.commits_made`
+    from `steps._git_commit`) and the commit it started from (`facts.base.commit`). It rewinds only
+    when HEAD IS THE LAST COMMIT THIS LANDING MADE — i.e. nothing else has been committed on top —
+    and it rewinds to the recorded base and no further. In any other shape it REFUSES and says so:
+    somebody else's commit sits in the range, and a lander that guessed there would be destroying
+    work it never wrote.
+
+    `git reset --hard <base>` restores tracked files to the base tree and leaves untracked files
+    alone; the carrier restore that follows then covers everything git does not track and everything
+    the carrier set knows about. Order matters and is asserted by the caller: rewind, then restore,
+    then prove byte-exact.
+    """
+    if not ctx.commits_made:
+        return []
+    base = (ctx.facts.get('base') or {}).get('commit')
+    rc, head = ctx.run(['git', 'rev-parse', 'HEAD'])
+    head = head.strip()
+    if rc != 0 or not base:
+        ctx.log('CANNOT REWIND: this landing made %d commit(s) and the base commit or HEAD cannot be '
+                'read. They are LEFT IN PLACE and named here: %s'
+                % (len(ctx.commits_made), ', '.join(c[:12] for c in ctx.commits_made)))
+        return {'rewound': False, 'why': 'cannot read HEAD/base', 'commits': list(ctx.commits_made)}
+    if head != ctx.commits_made[-1]:
+        ctx.log('CANNOT REWIND: HEAD is %s and the last commit this landing made is %s — something '
+                'else has been committed on top. This landing\'s commits are LEFT IN PLACE rather '
+                'than a range being guessed at: %s'
+                % (head[:12], ctx.commits_made[-1][:12],
+                   ', '.join(c[:12] for c in ctx.commits_made)))
+        return {'rewound': False, 'why': 'HEAD is not this landing\'s last commit',
+                'commits': list(ctx.commits_made)}
+    ctx.log('REWINDING %d commit(s) this landing made, back to the base %s:'
+            % (len(ctx.commits_made), base[:12]))
+    for c in ctx.commits_made:
+        ctx.log('    %s' % c[:12])
+    rc, out = ctx.run(['git', 'reset', '--hard', base])
+    if rc != 0:
+        ctx.log('THE REWIND FAILED: %s' % out[-500:])
+        return {'rewound': False, 'why': out[-300:], 'commits': list(ctx.commits_made)}
+    rc, head2 = ctx.run(['git', 'rev-parse', 'HEAD'])
+    if head2.strip() != base:
+        ctx.log('THE REWIND DID NOT TAKE: HEAD is %s, expected %s' % (head2.strip()[:12], base[:12]))
+        return {'rewound': False, 'why': 'HEAD did not return to the base',
+                'commits': list(ctx.commits_made)}
+    ctx.log('HEAD is back at the base commit %s. History carries no trace of this landing.' % base[:12])
+    rewound = list(ctx.commits_made)
+    ctx.commits_made = []
+    return {'rewound': True, 'to': base, 'commits': rewound}
+
+
 def _abort(ctx, failed_step, err):
     """THE ABORT PATH. Restore every carrier, prove it byte-exact, report the failed step."""
     ctx.log('')
@@ -581,7 +811,8 @@ def _abort(ctx, failed_step, err):
     ctx.log('')
 
     out = {'failed_step': failed_step, 'error': str(err), 'restored': None,
-           'byte_exact': None, 'restore_point': None}
+           'byte_exact': None, 'restore_point': None, 'commits_rewound': None}
+    out['commits_rewound'] = _rewind_commits(ctx)
     if ctx.snapshot is None:
         ctx.log('NO RESTORE POINT EXISTS: the failure precedes step 0\'s capture, so nothing was '
                 'written by this landing and there is nothing to restore. The tree is as the '

@@ -133,6 +133,13 @@ def preflight(ctx):
     rc, out = ctx.run(['git', 'status', '--porcelain'])
     if rc != 0:
         raise StepError('git status failed in %s: %s' % (ctx.root, out))
+    declared_dirt = ctx.declared_dirt() if hasattr(ctx, 'declared_dirt') else ()
+    if declared_dirt:
+        ctx.log('DECLARED DIRT (%d path(s), and ONLY these): the act declares a sheet re-cut, so the '
+                'owner input and its prereg-lite are expected uncommitted at step 0 — committing '
+                'them is the `sheet` step\'s job:' % len(declared_dirt))
+        for p in declared_dirt:
+            ctx.log('    %s' % p)
     dirty = [ln for ln in out.splitlines() if ln.strip() and not ctx.is_ignorable_dirt(ln)]
     if dirty:
         raise StepError('THE TREE IS NOT CLEAN. A landing transaction starts from a committed tree, '
@@ -718,7 +725,10 @@ def contract(ctx):
         if rc2['identities']['store'] != boot['store'] or rc2['identities']['board'] != boot['board']:
             raise StepError('the contract store/board pins do not name the live tree')
         if int(rc2['as_of_round']) != as_of:
-            raise StepError('the round must be HELD at %d in a lever landing' % as_of)
+            raise StepError('the contract must name round %d — the round expected_boot names. A '
+                            'lever landing HOLDS the round it found; a round advance has already '
+                            'moved it, and either way the contract follows the manifest, never the '
+                            'other way about.' % as_of)
         rcc, cout = ctx.run(['python3', 'release_contract.py', 'check'])
         if rcc != 0 or 'PASS' not in cout:
             raise StepError('release_contract.py check did not PASS after the restamp:\n%s' % cout[-1500:])
@@ -1073,7 +1083,7 @@ def _gate_argv(ctx, g):
 
 # ================================================================================ STEP 8 — CLAIMS
 def claims(ctx):
-    """Emit the act's claims file (tools/claims.py, `lever-landing`) and VERIFY it.
+    """Emit the act's claims file (tools/claims.py, this act's own kind) and VERIFY it.
 
     PLAN_v6 1c: every seat's final act includes a claims file, and one standard checker verifies
     claims against artifacts. The lander does not hand the seat a template to fill in — it emits the
@@ -1099,7 +1109,9 @@ def claims(ctx):
           {'kind': 'json_field', 'path': 'data/expected_boot.json', 'field': 'engine_head',
            'value': boot['engine_head'], 'label': 'expected_boot.engine_head'},
           {'kind': 'json_field', 'path': 'data/expected_boot.json', 'field': 'as_of_round',
-           'value': boot['as_of_round'], 'label': 'the round, HELD by a lever landing'},
+           'value': boot['as_of_round'],
+           'label': ('the round, ADVANCED to' if ctx.spec['act_kind'] == 'round-advance'
+                     else 'the round, HELD by a lever landing')},
           {'kind': 'json_field', 'path': 'data/release_contract.json', 'field': 'contract_sha256',
            'value': json.load(open(_p(ctx, 'data/release_contract.json'),
                                    encoding='utf-8'))['contract_sha256'],
@@ -1111,13 +1123,28 @@ def claims(ctx):
         cl.append({'kind': 'gate', 'name': g['name'], 'argv': g['argv'], 'expect': 'PASS',
                    'label': g['name'], 'timeout_s': 1800})
     # The carriers this landing did NOT move, claimed as unmoved against the restore point.
+    #
+    # WHICH CARRIERS THOSE ARE IS THE ACT KIND'S ONE REAL DIFFERENCE HERE. A lever landing must leave
+    # the STORE byte-unmoved and claims exactly that. A round advance moves the store by definition —
+    # so what it claims unmoved instead is the SHEET PIN DECLARATION, whenever it declares no re-cut:
+    # `land round` is that file's sole writer, and "the sole writer did not write it this week" is a
+    # claim worth being able to recompute.
     snap = ctx.snapshot
+    unmoved_claims = ()
+    if ctx.spec['act_kind'] == 'lever-landing':
+        unmoved_claims = ('engine/rl_after/rl_model_data.json',)
+    elif not ctx.spec.get('sheet'):
+        unmoved_claims = (SHEET_PIN_REL, 'docs/owner_annotations/SITTER_2026_v1.csv')
     for rel, before_md5 in sorted((snap.identities() if snap else {}).items()):
-        if before_md5 and rel in ('engine/rl_after/rl_model_data.json',) and ctx.spec['act_kind'] == 'lever-landing':
+        if before_md5 and rel in unmoved_claims:
             cl.append({'kind': 'unmoved', 'path': rel, 'value': before_md5,
-                       'label': 'BYTE-UNMOVED by this lever landing'})
+                       'label': 'BYTE-UNMOVED by this %s' % ctx.spec['act_kind']})
 
-    d0 = (ctx.facts.get('build_proofs') or {}).get('day0_rebase', 'off')
+    # DAY-0 ACTIVATION STATE IS ON EVERY LANDING'S CLAIMS FILE (PLAN_v6 1c), and it is read from
+    # whichever step owns it: `build_proofs` for a lever landing, the `day0` step for a round advance
+    # (where the re-base has its natural home — register v810 item 1).
+    d0 = ctx.facts.get('day0') if 'day0' in ctx.facts else \
+        (ctx.facts.get('build_proofs') or {}).get('day0_rebase', 'off')
     activation = {'day0_rebase': ({'state': 'off',
                                    '_doc': 'off by default; the M1b ruling — automation never '
                                            're-bases itself green'}
@@ -1127,12 +1154,14 @@ def claims(ctx):
     for name, spec_sw in (ctx.spec.get('activation') or {}).items():
         activation[name] = spec_sw
 
-    doc = {'schema_version': 1, 'act_type': 'lever-landing', 'act': ctx.spec['act'],
+    is_round = ctx.spec['act_kind'] == 'round-advance'
+    doc = {'schema_version': 1, 'act_type': ctx.spec['act_kind'], 'act': ctx.spec['act'],
            'date': ctx.spec['date'], 'base_commit': ctx.facts['base']['commit'],
            'owner_word': ctx.spec['owner_word'], 'activation': activation, 'claims': cl,
            '_restore_point': ctx.facts['base']['carriers'],
            '_step_timings_s': ctx.timings_dict(),
-           '_landed_by': 'tools/landing (`land lever`), PLAN_v6 PACKAGE 2a'}
+           '_landed_by': ('tools/landing (`land round`), PLAN_v6 PACKAGE 2b' if is_round
+                          else 'tools/landing (`land lever`), PLAN_v6 PACKAGE 2a')}
 
     if ctx.false_claim:
         # SELF-TEST ONLY (txn.FAULTS['claims']). One claim is made false, and the checker — the same
@@ -1153,6 +1182,864 @@ def claims(ctx):
             raise StepError('THE CLAIMS FILE DOES NOT VERIFY AGAINST THE TREE:\n%s' % out[-2500:])
     return {'claims_path': out_path, 'n_claims': len(cl), 'verified': not ctx.opts.dry_run,
             'activation': activation}
+
+
+# ================================================================================ STEP 9 — COMMIT
+def _git_commit(ctx, rel_paths, message):
+    """THE ONE PLACE THIS PACKAGE MAKES A COMMIT. Explicit paths, both verbs, no sweep.
+
+    Process law P8: "Every commit stages named paths. No `git add -A`, no sweep, no bare
+    `git commit`." Every commit the lander makes — the final landing commit, and the round lander's
+    two INPUT commits (the sheet re-cut and the owner's score file) — comes through here, so the law
+    is asserted in one function rather than three times over.
+
+    THE SHA IS RECORDED ON `ctx.commits_made`, and that is what makes a mid-flight commit safe to
+    abort: `txn._abort` rewinds exactly the commits this landing created and no others, before the
+    carrier restore runs. A landing that committed and then failed must leave no commit behind, or
+    the abort's byte-exactness claim stops at the working tree and quietly excludes history.
+    """
+    rel_paths = sorted(set(rel_paths))
+    if not rel_paths:
+        return None
+    ctx.log('explicit paths (%d):' % len(rel_paths))
+    for rel in rel_paths:
+        ctx.log('    %s' % rel)
+    if ctx.opts.dry_run or ctx.opts.no_commit:
+        ctx.log('--%s: not committing.' % ('dry-run' if ctx.opts.dry_run else 'no-commit'))
+        return None
+    rc, out = ctx.run(['git', 'add', '--'] + rel_paths)
+    if rc != 0:
+        raise StepError('git add failed: %s' % out)
+    rc, out = ctx.run(['git', 'commit', '-m', message, '--'] + rel_paths)
+    if rc != 0:
+        raise StepError('git commit failed: %s' % out)
+    rc, head = ctx.run(['git', 'rev-parse', 'HEAD'])
+    if rc != 0:
+        raise StepError('cannot read HEAD after the commit')
+    sha = head.strip()
+    ctx.commits_made.append(sha)
+    ctx.log('committed %s' % sha[:12])
+    return sha
+
+
+# ============================================================== ROUND STEP — THE SHEET / DATA COMMIT
+def _sheet_facts(ctx, rel):
+    """The three facts the ORDER 41 / ORDER 42 guards assert, measured THE ENGINE'S OWN WAY.
+
+    md5 of the raw bytes; rows = `csv.DictReader` over the utf-8 decode of the file's own lines;
+    injured=Y = rows whose `injured` cell strips-and-uppers to 'Y'. Character for character what
+    `_merged_recover.py`'s ORDER 41 block does (and ORDER 42 after it), because a gate that measured
+    the sheet a NEARLY identical way would pass a file the build then halts on — which is the whole
+    failure mode ERRATUM E1b records for a hand-rolled decode.
+    """
+    import csv
+    raw = open(_p(ctx, rel), 'rb').read()
+    rows = list(csv.DictReader(raw.decode('utf-8').splitlines()))
+    ys = [r for r in rows if (r.get('injured') or '').strip().upper() == 'Y']
+    return hashlib.md5(raw).hexdigest(), len(rows), len(ys)
+
+
+SHEET_PIN_REL = 'data/sheet_pins.json'
+
+
+def _replace_json_scalar(raw, key, old, new, where):
+    """Replace ONE `"key": <old>` with `"key": <new>`, textually, or refuse.
+
+    KEY-ANCHORED, NOT VALUE-ANCHORED. `pins` can replace a bare old value in `expected_boot.json`
+    because it asserts that value occurs exactly once. In the sheet declaration it does not: the
+    `provenance` prose quotes the md5 and the row count in its own sentence ("rows unchanged at 219,
+    md5 b26798c3... -> 21361291f26d..."). A bare-value replacement would either refuse a legitimate
+    re-cut for non-uniqueness or, worse, rewrite the history sentence.
+
+    BOTH JSON ESCAPINGS ARE TRIED, and that is a defect measured out of this function rather than
+    reasoned about. `json.dumps` escapes non-ASCII by default, so the em dash in the declaration's
+    own provenance sentence serialises as `\\u2014` while the file on disk carries the literal
+    character. The first draft matched zero times and halted a legitimate re-cut. Trying
+    `ensure_ascii=False` first and the escaped form second matches the file whichever convention
+    wrote it, and REFUSES unless exactly one match exists either way.
+    """
+    for enc in (False, True):
+        pat = re.compile(r'("%s"\s*:\s*)%s'
+                         % (re.escape(key), re.escape(json.dumps(old, ensure_ascii=enc))))
+        hits = pat.findall(raw)
+        if len(hits) == 1:
+            return pat.sub(lambda m: m.group(1) + json.dumps(new, ensure_ascii=enc), raw, count=1)
+        if len(hits) > 1:
+            raise StepError('the "%s" declaration occurs %d times in %s; refusing a non-unique '
+                            'replacement' % (key, len(hits), where))
+    raise StepError('the "%s" declaration is not locatable in %s under either JSON escaping. The '
+                    'lander will not reformat a file it cannot edit surgically.' % (key, where))
+
+
+def sheet(ctx):
+    """THE SHEET / DATA COMMIT, in PACKAGE 3a's form — and `land round` is the pin file's SOLE WRITER.
+
+    PLAN_v6 3a put the sheet md5 + row/injured-Y counts into ONE data file, `data/sheet_pins.json`,
+    with "the round lander as sole writer once 2b lands". This step is that sole writer. Until it
+    existed the writer was the amended R23 runbook's manual path (ERRATUM E7); that path is now the
+    documented fallback, retired for this act type on the owner's word (2a.4 — an unexercised
+    fallback is fake safety).
+
+    WHAT IT DOES WHEN NO RE-CUT IS DECLARED, WHICH IS MOST WEEKS: it MEASURES the sheet and asserts
+    the declaration already describes it, and writes nothing. That is not a formality. A drifted
+    sheet halts the board regen INSIDE the staged transaction (ORDER 41 first, ORDER 42 after it),
+    and the whole point of a preflighting lander is that a halt which is knowable before anything is
+    armed happens before anything is armed.
+
+    WHAT IT DOES WHEN A RE-CUT IS DECLARED: the seat re-cuts the owner's sheet on the owner's word —
+    the lander never authors owner data — and this step
+      * asserts the prereg-lite exists (3a's review-forcing step: predicted md5 + row/injured-Y
+        counts + disclosed movers, committed WITH the data change);
+      * MEASURES the sheet and asserts every measured fact equals the PREDICTED one. Predicted
+        first, measured after: "a re-cut whose measured facts are not the disclosed ones is a halt
+        and a report, not a note";
+      * writes the three MEASURED values into the declaration textually — the same surgical
+        replacement `pins` uses, so every note field, key order and byte of whitespace survives;
+      * commits sheet + declaration + prereg-lite as ONE explicit-path commit;
+      * and asserts `engine_head` DID NOT MOVE across that commit. That assertion is the entire
+        effect 3a bought: engine_head moves if and only if code changed. "ENGINE_HEAD MOVING ON A
+        SHEET UPDATE IS A RED, NOT A CHORE."
+    """
+    ctx.fault_point('sheet')
+    pins_raw = open(_p(ctx, SHEET_PIN_REL), encoding='utf-8').read()
+    pins = json.loads(pins_raw)
+    sheet_rel = pins.get('sheet_path')
+    if not sheet_rel:
+        raise StepError('%s names no sheet_path. A pin declaration with a hole in it pins nothing.'
+                        % SHEET_PIN_REL)
+    md5_now, rows_now, y_now = _sheet_facts(ctx, sheet_rel)
+    ctx.log('sheet         %s' % sheet_rel)
+    ctx.log('  MEASURED (never typed): md5=%s rows=%d injured_y=%d' % (md5_now, rows_now, y_now))
+    ctx.log('  PINNED                : md5=%s rows=%s injured_y=%s'
+            % (pins.get('sheet_md5'), pins.get('sheet_rows'), pins.get('sheet_injured_y')))
+
+    declared = ctx.spec.get('sheet')
+    engine_head_before = PIN_MEASURERS['engine_head'](ctx)
+
+    if not declared:
+        bad = [k for k, v in (('sheet_md5', md5_now), ('sheet_rows', rows_now),
+                              ('sheet_injured_y', y_now)) if str(pins.get(k)) != str(v)]
+        if bad:
+            raise StepError(
+                'THE SHEET AND ITS DECLARATION DISAGREE ON %s, and this act declares no re-cut.\n'
+                'A drifted sheet HALTS the board regen inside the staged transaction — ORDER 41 '
+                'first, then ORDER 42 — so it halts HERE instead, before anything is armed. Either '
+                'declare the re-cut (spec.sheet, with its prereg-lite) or find out who moved the '
+                'sheet without moving its pins.' % bad)
+        ctx.log('the declaration describes the sheet on disk. NO RE-CUT DECLARED — this step writes '
+                'nothing, and `land round` remains the pin file\'s sole writer by not writing.')
+        return {'recut': False, 'sheet_md5': md5_now, 'sheet_rows': rows_now,
+                'sheet_injured_y': y_now, 'commit': None}
+
+    prereg_lite = declared['prereg_lite']
+    if not os.path.isfile(_p(ctx, prereg_lite)):
+        raise StepError('the prereg-lite %s does not exist. PLAN_v6 3a: a data change keeps a '
+                        'review-forcing step, and it is committed WITH the data change.' % prereg_lite)
+    pred = declared['predicted']
+    ctx.log('  PREDICTED (prereg-lite %s): md5=%s rows=%s injured_y=%s'
+            % (prereg_lite, pred.get('sheet_md5'), pred.get('sheet_rows'),
+               pred.get('sheet_injured_y')))
+    ctx.log('  owner word: %s' % declared.get('owner_word'))
+    ctx.log('  disclosed movers: %s' % declared.get('disclosed_movers'))
+    mismatch = [(k, pred.get(k), v) for k, v in (('sheet_md5', md5_now), ('sheet_rows', rows_now),
+                                                 ('sheet_injured_y', y_now))
+                if str(pred.get(k)) != str(v)]
+    if mismatch:
+        raise StepError(
+            'THE RE-CUT IS NOT THE RE-CUT THAT WAS PREDICTED:\n    %s\nThe prereg-lite is corrected '
+            'against the tree, never the tree against the prereg-lite, and a re-cut whose measured '
+            'facts are not the disclosed ones is a HALT AND A REPORT.'
+            % '\n    '.join('%s: predicted %s, measured %s' % m for m in mismatch))
+
+    new_raw = pins_raw
+    moved = []
+    for k, v in (('sheet_md5', md5_now), ('sheet_rows', rows_now), ('sheet_injured_y', y_now)):
+        old = pins.get(k)
+        if str(old) == str(v):
+            continue
+        new_raw = _replace_json_scalar(new_raw, k, old, v, SHEET_PIN_REL)
+        moved.append(k)
+        ctx.log('  %-16s %s -> %s' % (k, old, v))
+    if not moved:
+        raise StepError('a sheet re-cut is DECLARED and the declaration already describes the sheet. '
+                        'A re-cut that moves no pin is a re-cut nobody needed to authorise.')
+    for k, v in (('pinned_at', ctx.spec.get('date')),
+                 ('provenance', declared.get('provenance'))):
+        if v and pins.get(k) is not None and str(pins.get(k)) != str(v):
+            new_raw = _replace_json_scalar(new_raw, k, pins[k], v, SHEET_PIN_REL)
+            moved.append(k)
+    after = json.loads(new_raw)
+    unexpected = sorted(k for k in set(pins) | set(after)
+                        if pins.get(k) != after.get(k) and k not in moved)
+    if unexpected:
+        raise StepError('bytes beyond the declared pin values changed in %s: %s'
+                        % (SHEET_PIN_REL, unexpected))
+    ctx.log('  fields that moved in %s: %s' % (SHEET_PIN_REL, moved))
+
+    if not ctx.opts.dry_run:
+        tmp = _p(ctx, SHEET_PIN_REL) + '.landing_tmp'
+        with open(tmp, 'w', encoding='utf-8') as fh:
+            fh.write(new_raw)
+        os.replace(tmp, _p(ctx, SHEET_PIN_REL))
+        back = json.load(open(_p(ctx, SHEET_PIN_REL), encoding='utf-8'))
+        if (str(back.get('sheet_md5')), int(back['sheet_rows']), int(back['sheet_injured_y'])) != \
+                (md5_now, rows_now, y_now):
+            raise StepError('the sheet pins did not take')
+        ctx.log('WRITTEN and re-read.')
+
+    sha = _git_commit(ctx, [sheet_rel, SHEET_PIN_REL, prereg_lite],
+                      ctx.spec.get('sheet_commit_message')
+                      or ('%s — THE SHEET RE-CUT: the owner input and its ONE pin declaration, '
+                          'one commit, no engine file touched' % ctx.spec['act']))
+    head_after = PIN_MEASURERS['engine_head'](ctx)
+    if head_after != engine_head_before:
+        raise StepError(
+            'ENGINE_HEAD MOVED ON A SHEET UPDATE (%s -> %s). That is a RED, NOT A CHORE: the whole '
+            'effect PACKAGE 3a bought is that engine_head moves if and only if CODE changed. This '
+            'commit touched the engine and the act is not the data act it claims to be. Stop and '
+            'find out why; do not restamp it forward.' % (engine_head_before, head_after))
+    ctx.log('engine_head UNMOVED across the sheet commit: %s  (the 3a property, asserted)'
+            % head_after)
+    return {'recut': True, 'sheet_md5': md5_now, 'sheet_rows': rows_now, 'sheet_injured_y': y_now,
+            'moved': moved, 'commit': sha, 'engine_head': head_after,
+            'prereg_lite': prereg_lite}
+
+
+# ============================================================== ROUND STEP — THE OWNER'S SCORE FILE
+def scores(ctx):
+    """The owner's file of record, asserted — never placed, never edited, never cleaned up.
+
+    The runbook's step 0 is "place the owner's file, byte-unmodified -> scores/R<N>.csv (record its
+    md5 + sha256 before anything else)". The placing is the seat's; the RECORDING is this step's,
+    and it is an assertion rather than a note: the spec declares the md5 and sha256 of the file the
+    act was written against, and a file on disk that is not that file halts here.
+
+    "Send the file exactly as your league site gives it — do not clean it up." The lander cannot
+    clean it up: it opens it 'rb', hashes it, and never writes to it.
+
+    THE IDENTITY OVERRIDES ARE ASSERTED, NEVER AUTHORED. An owner ruling on a name lives in
+    `catchup_identity_overrides.json` (the R22 Bailey ruling, the R23 WBD binding), and it is the
+    SEAT that records the owner's verbatim word there. This step checks that every override the act
+    declares is actually present and reads back the reason each carries — so a landing can never
+    quietly invent a binding, and an act that says it needs one cannot proceed without it.
+    """
+    ctx.fault_point('scores')
+    rnd = ctx.spec['round']
+    sc = rnd.get('scores')
+    if not sc:
+        ctx.log('no scores file declared — this act is a REHEARSAL and applies nothing.')
+        return {'scores': None, 'rehearsal': True}
+
+    path = _p(ctx, sc['path'])
+    if not os.path.isfile(path):
+        raise StepError('the owner\'s score file is ABSENT at %s. The lander does not create it, '
+                        'guess at it, or proceed without it.' % sc['path'])
+    raw = open(path, 'rb').read()
+    got_md5 = hashlib.md5(raw).hexdigest()
+    got_sha = hashlib.sha256(raw).hexdigest()
+    ctx.log('scores file   %s  (%d bytes)' % (sc['path'], len(raw)))
+    ctx.log('  md5    %s   %s' % (got_md5, 'OK' if got_md5 == sc['md5'] else '*** != declared %s'
+                                  % sc['md5']))
+    ctx.log('  sha256 %s   %s' % (got_sha, 'OK' if got_sha == sc['sha256'] else
+                                  '*** != declared %s' % sc['sha256']))
+    if got_md5 != sc['md5'] or got_sha != sc['sha256']:
+        raise StepError('THE SCORE FILE ON DISK IS NOT THE FILE THIS ACT DECLARES (md5 %s vs %s). '
+                        'The owner\'s input is an INPUT OF RECORD; the act is written against a '
+                        'specific file and the lander refuses a different one.' % (got_md5, sc['md5']))
+
+    ov_rel = 'engine/rl_after/ingestion/catchup_identity_overrides.json'
+    ov = json.load(open(_p(ctx, ov_rel), encoding='utf-8'))
+    entries = ov if isinstance(ov, list) else (ov.get('overrides') or [])
+    by_name = {e.get('name'): e for e in entries if isinstance(e, dict)}
+    declared_ov = list(rnd.get('identity_overrides') or ())
+    for name in declared_ov:
+        e = by_name.get(name)
+        if not e:
+            raise StepError('the act declares an identity override for %r and '
+                            '%s carries none. IdentityOverrides._by_name is keyed by the EXACT '
+                            'display string (ERRATUM E2): a rule under a different name is never '
+                            'consulted. The lander asserts bindings; it never authors one.'
+                            % (name, ov_rel))
+        ctx.log('  override %-24s -> %-22s rule=%-9s rounds=%s'
+                % (name, e.get('stable_key'), e.get('rule'), e.get('applies_to_rounds')))
+        ctx.log('      reason: %s' % str(e.get('reason'))[:150])
+    ctx.log('%d declared override(s), all present; %d in the file overall'
+            % (len(declared_ov), len(by_name)))
+    return {'scores': sc['path'], 'md5': got_md5, 'sha256': got_sha, 'bytes': len(raw),
+            'overrides_declared': declared_ov, 'overrides_in_file': sorted(by_name)}
+
+
+# ==================================================================== ROUND STEP — CATCH-UP PREFLIGHT
+def catchup_preflight(ctx):
+    """The read-only preflight, run for real, plus the ONE check the runbook says to run before it.
+
+    `round_entry catchup --file N=<file>` without `--approve` is read-only by contract ("PREFLIGHT —
+    read-only, writes nothing. Run this first, always") and stops at "NOT APPROVED — nothing
+    applied." This step runs it, and requires FOUR things of the result rather than one:
+
+      1. `PREFLIGHT CLEAN` — every name resolves to a stable identity, nothing ambiguous or
+         duplicate. Anything else and the advance never arms.
+      2. the round is NOT already applied. The preflight prints "(already applied — will be SKIPPED
+         on resume)" and still reports CLEAN, which is correct for a resume and wrong for an act
+         that claims to be advancing the season.
+      3. the counts match the prereg's round_expected — listed, resolved, absent/DNP and the score
+         file's own sha256, asserted against what the parser of record actually read.
+      4. THE H2 CHECK: no `injured=Y` player on the pinned owner sheet appears in the score file.
+         ORDER 42 requires every injured-marked row's `games_2026` to equal the store's, and an
+         advance increments `games` for every listed player — so an injured-marked player who
+         played desynchronises the sheet and HALTS THE BOARD REGEN INSIDE THE TRANSACTION. The
+         runbook rated it "a coin flip on the owner's file"; at R23 it landed. It is cheap, it is
+         read-only, and it turns a mid-transaction halt into a pre-arming one.
+
+    THE PARSER OF RECORD READS THE SCORE FILE, never a hand-rolled decode. ERRATUM E1b deleted the
+    snippet that used `.decode("utf-8", errors="replace")` and mangled 16 of 411 names on exactly the
+    file it was written to check — "a check that silently mis-reads 16 of 411 rows is worse than no
+    check". `footywire_parser.decode_bytes` handles BOM / utf-8 / cp1252 by spec.
+
+    THEN IT COMMITS THE INPUTS — the score file and the override record — as their own explicit-path
+    commit, so the owner's input of record enters the tree BEFORE anything is armed and the advance's
+    own commit carries outputs only. That is the R23 shape (ACT 2, commit `27458ad`).
+    """
+    ctx.fault_point('catchup_preflight')
+    rnd = ctx.spec['round']
+    sc = rnd.get('scores')
+    if not sc:
+        ctx.log('no scores file — nothing to preflight. (REHEARSAL.)')
+        return {'ran': False, 'rehearsal': True}
+    n = int(rnd['number'])
+
+    # ---- 4. THE H2 CHECK, before the tool is even asked -------------------------------------------
+    hits = _injured_listed(ctx, sc['path'])
+    ctx.log('injured=Y players listed in R%d: %d %s' % (n, len(hits), hits))
+    if hits:
+        raise StepError(
+            'ORDER 42 WILL HALT THE ADVANCE. %d player(s) marked injured=Y on the pinned owner '
+            'sheet appear in the score file: %s. The advance increments games_2026 for every listed '
+            'player, so the sheet and the store would disagree and the board regen halts INSIDE the '
+            'staged transaction. The remedy is the owner-worded re-cut (R23 runbook §4 H2 / ERRATUM '
+            'E7), declared as spec.sheet with its prereg-lite — not a weakened guard.'
+            % (len(hits), hits))
+
+    rc, out = ctx.run(['python3', 'tools/round_entry/round_entry.py', 'catchup',
+                       '--file', '%d=%s' % (n, sc['path'])], timeout=1800)
+    ctx.write_evidence('08_preflight_r%d.txt' % n, out)
+    for ln in out.strip().splitlines():
+        ctx.log('  %s' % ln)
+    if rc != 0:
+        raise StepError('the catch-up preflight did not complete (exit %s):\n%s' % (rc, out[-2000:]))
+    if 'PREFLIGHT CLEAN' not in out:
+        raise StepError('THE PREFLIGHT IS NOT CLEAN, so nothing arms. Resolve the identity issues '
+                        'it names — with the owner\'s word, recorded in '
+                        'catchup_identity_overrides.json, never by editing the score file:\n%s'
+                        % out[-2000:])
+    if 'already applied' in out:
+        raise StepError('ROUND %d IS ALREADY APPLIED. The preflight reports it and still says CLEAN, '
+                        'which is right for a RESUME and wrong for an act that claims to be '
+                        'advancing the season. The dedup ledger would skip it and this landing would '
+                        'certify a round it did not apply.' % n)
+
+    exp = (ctx.spec['prereg'].get('round_expected') or {})
+    got = _parse_preflight(out, n)
+    ctx.log('preflight counts, MEASURED: %s' % json.dumps(got, sort_keys=True))
+    bad = []
+    for k, ek in (('listed', 'listed'), ('resolved', 'resolved'), ('absent_dnp', 'absent_dnp')):
+        if got.get(k) is not None and int(exp.get(ek)) != int(got[k]):
+            bad.append('%s: prereg %s, preflight %s' % (k, exp.get(ek), got[k]))
+    if str(exp.get('scores_sha256'))[:12] != str(got.get('sha256'))[:12]:
+        bad.append('scores_sha256: prereg %s, preflight %s' % (exp.get('scores_sha256'),
+                                                               got.get('sha256')))
+    if int(exp.get('round')) != n:
+        bad.append('round: prereg %s, act %s' % (exp.get('round'), n))
+    if bad:
+        raise StepError('THE PREFLIGHT DOES NOT MATCH THE PREREG:\n    %s\nThe prediction is an '
+                        'INPUT to this lander; a landing that accepted its own preflight as the '
+                        'answer would assert nothing at all.' % '\n    '.join(bad))
+    ctx.log('PREREG MET: listed/resolved/absent-DNP and the score file sha256 all as predicted.')
+
+    sha = _git_commit(ctx, [sc['path'], 'engine/rl_after/ingestion/catchup_identity_overrides.json'],
+                      ctx.spec.get('scores_commit_message')
+                      or ('%s — THE OWNER\'S SCORES AND THE BINDINGS: preflight CLEAN %s/%s, '
+                          'nothing applied' % (ctx.spec['act'], got.get('listed'),
+                                               got.get('resolved'))))
+    return {'ran': True, 'clean': True, 'counts': got, 'commit': sha,
+            'injured_listed': hits}
+
+
+def _injured_listed(ctx, scores_rel):
+    """The H2 intersection: injured=Y on the pinned sheet ∩ listed in the score file. Parser of record."""
+    import csv
+    import re as _re
+    fp = _load(ctx, 'footywire_parser', 'engine/rl_after/ingestion/footywire_parser.py')
+    norm = lambda s: _re.sub(r'[^a-z0-9]+', '-', str(s).strip().lower().replace('’', "'")).strip('-')
+    pins = json.load(open(_p(ctx, SHEET_PIN_REL), encoding='utf-8'))
+    with open(_p(ctx, pins['sheet_path']), encoding='utf-8') as fh:
+        inj = {norm(r['player']) for r in csv.DictReader(fh)
+               if (r.get('injured') or '').strip().upper() == 'Y'}
+    parsed = fp.parse_round_file(_p(ctx, scores_rel))
+    rows = parsed['rows'] if isinstance(parsed, dict) else parsed
+    names = {norm(r[0] if isinstance(r, (list, tuple)) else r.get('name')) for r in rows}
+    return sorted(names & inj)
+
+
+def _parse_preflight(out, n):
+    """Read the preflight's own verdict line. The tool's numbers, not a recount of the file."""
+    got = {}
+    m = re.search(r'^\s*R%d\s+enc=(\S+)\s+listed/played=(\d+)\s+resolved=(\d+)\s+listed-zero=(\d+)'
+                  r'\s+absent/DNP=(\d+)\s+sha256\s+(\S+)' % n, out, re.M)
+    if m:
+        got = {'encoding': m.group(1), 'listed': int(m.group(2)), 'resolved': int(m.group(3)),
+               'listed_zero': int(m.group(4)), 'absent_dnp': int(m.group(5)), 'sha256': m.group(6)}
+    return got
+
+
+# ======================================================================== ROUND STEP — THE ADVANCE
+def advance(ctx):
+    """THE ARMED CATCH-UP: one sequential staged transaction, and ADVANCE-REPIN inside it.
+
+    THE LANDER WRAPS THE STAGED MACHINERY; IT DOES NOT REIMPLEMENT ANY OF IT. `staged_apply` runs
+    STAGE -> VALIDATE -> ATOMIC SWAP with rollback and crash recovery, and `_stage_sibling` (step c3)
+    runs the repin INSIDE the same transaction — so the balanced board and the FV reference vector
+    move in the SAME COMMIT as the store, built and compared, never pinned to an expectation. That
+    is ADVANCE-REPIN, it is proven, and a lander that re-implemented it would own a second copy of
+    the one thing in this estate that must not have two.
+
+    ARMING IS AN OWNER WORD (LAW 10c). Both halves of the gate are armed for this run only, from the
+    act spec, which carries the owner's verbatim word beside the token. The lander composes neither
+    and there is no code edit: `INGEST_SCORE_APPLY_ARMED=1 INGEST_SCORE_APPLY=<token>`.
+
+    EVERY POSTCONDITION IS READ OFF THE TOOL'S OWN APPLIED LINE and asserted against the prereg or
+    the tree: the store and board moved, the round is the declared one, Guard 5 is green, the
+    histories reach round N, finalization is FINALIZED (not INCOMPLETE — exit 6 is a halt here, not
+    a note), the movers went to the UI, and the dedup ledger grew by exactly the predicted number of
+    triples with no duplicate.
+
+    ON A DECLARED REHEARSAL IT ARMS NOTHING AND ASSERTS THE TREE HELD STILL. That is what makes the
+    no-op dry run a real proof rather than a skipped step: the whole sequence runs, and the one step
+    that could move the board proves it did not.
+    """
+    ctx.fault_point('advance')
+    rnd = ctx.spec['round']
+    n = int(rnd['number'])
+    boot_before = ctx.facts['base']['expected_boot']
+    sc = rnd.get('scores')
+
+    if not sc:
+        boot = json.load(open(_p(ctx, 'data', 'expected_boot.json'), encoding='utf-8'))
+        held = {'board': md5(_p(ctx, 'data', 'rl_build', 'rl_app_data.json')),
+                'store': md5(_p(ctx, 'engine', 'rl_after', 'rl_model_data.json')),
+                'as_of_round': boot.get('as_of_round')}
+        ctx.log('REHEARSAL — nothing is armed and nothing is applied.')
+        for k, v in sorted(held.items()):
+            was = boot_before.get(k)
+            ctx.log('  %-12s %-34s %s' % (k, v, 'HELD' if str(was) == str(v) else
+                                          '*** MOVED from %s ***' % was))
+        moved = [k for k, v in held.items() if str(boot_before.get(k)) != str(v)]
+        if moved:
+            raise StepError('a REHEARSAL moved %s. A no-op that moves the board is not a no-op.'
+                            % moved)
+        if int(held['as_of_round']) != n:
+            raise StepError('the act declares round %d and the tree is at round %s. A rehearsal '
+                            'holds the round it is standing on.' % (n, held['as_of_round']))
+        return {'applied': False, 'rehearsal': True, 'round': n, **held}
+
+    arming = rnd['arming']
+    ctx.log('ARMED BY OWNER WORD (law 10c): %s' % arming['owner_word'])
+    ctx.log('  arming both halves for this run only, no code edit: %s'
+            % ' '.join('%s=%s' % (k, '<token>' if 'APPLY' == k[-5:] else v)
+                       for k, v in sorted(arming['env'].items())))
+    if ctx.opts.dry_run:
+        ctx.log('--dry-run: THE ADVANCE IS NOT ARMED AND NOT RUN.')
+        return {'applied': False, 'dry_run': True, 'round': n}
+
+    ledger_rel = 'engine/rl_after/ingestion/applied_rounds_ledger.json'
+    led_before = _ledger_triples(ctx, ledger_rel)
+    env = dict(arming['env'])
+    argv = ['python3', 'tools/round_entry/round_entry.py', 'catchup',
+            '--file', '%d=%s' % (n, sc['path']), '--approve']
+    t0 = time.time()
+    rc, out = ctx.run(argv, timeout=ctx.spec.get('advance_timeout_s', 7200), env_overrides=env)
+    el = time.time() - t0
+    ctx.write_evidence('09_armed_r%d.txt' % n, '$ %s\n\n%s\n[exit %s]' % (' '.join(argv), out, rc))
+    for ln in out.strip().splitlines():
+        ctx.log('  %s' % ln)
+    ctx.log('armed run     exit=%s  (%.1fs)' % (rc, el))
+    if rc != 0:
+        raise StepError('THE ARMED ADVANCE DID NOT COMPLETE (exit %s). Exit 3 = the store-write gate '
+                        'was not armed; 4 = an incomplete transaction is open (round_entry recover); '
+                        '6 = finalization incomplete (round_entry finalize --round %d). The staged '
+                        'transaction rolls itself back; this lander then restores every carrier.\n%s'
+                        % (rc, n, out[-2500:]))
+
+    m = re.search(r'^\s*R%d\s+store\s+(\w+)->(\w+)\s+board\s+(\w+)->(\w+)\s+players=(\d+)\s+'
+                  r'guard5=(\w+)\s+hist=\[([^\]]*)\]\s+final=(\w+)\s+movers->UI=(\d+)' % n, out, re.M)
+    if not m:
+        raise StepError('the applied line for R%d is not in the tool\'s output. A landing does not '
+                        'infer a verdict it cannot read:\n%s' % (n, out[-2000:]))
+    facts = {'applied': True, 'round': n, 'store_before': m.group(1), 'store_after': m.group(2),
+             'board_before': m.group(3), 'board_after': m.group(4),
+             'players_applied': int(m.group(5)), 'guard5': m.group(6),
+             'history_rounds': [int(x) for x in m.group(7).replace(' ', '').split(',') if x],
+             'finalization': m.group(8), 'movers_ui_rows': int(m.group(9)),
+             'elapsed_s': round(el, 1)}
+    if facts['guard5'] != 'True':
+        raise StepError('Guard 5 is not green on the applied round (guard5=%s). NEVER BOOT ON AN '
+                        'UNVERIFIED STORE (process law P2).' % facts['guard5'])
+    if facts['finalization'] != 'FINALIZED':
+        raise StepError('finalization is %r, not FINALIZED. A re-derivable output failed or was '
+                        'blocked; nothing was rolled back. Finish it (round_entry finalize --round '
+                        '%d) — an unfinalized round is not a landed round.'
+                        % (facts['finalization'], n))
+    if n not in facts['history_rounds']:
+        raise StepError('the histories do not reach round %d: %s' % (n, facts['history_rounds']))
+
+    # ---- the tree, re-measured, against the tool's own line and against the prereg ---------------
+    boot = json.load(open(_p(ctx, 'data', 'expected_boot.json'), encoding='utf-8'))
+    board_now = md5(_p(ctx, 'data', 'rl_build', 'rl_app_data.json'))
+    store_now = md5(_p(ctx, 'engine', 'rl_after', 'rl_model_data.json'))
+    if not board_now.startswith(facts['board_after']):
+        raise StepError('the published board %s is not the board the advance reports (%s)'
+                        % (board_now, facts['board_after']))
+    if not store_now.startswith(facts['store_after']):
+        raise StepError('the store %s is not the store the advance reports (%s)'
+                        % (store_now, facts['store_after']))
+    if str(boot.get('board')) != board_now or str(boot.get('store')) != store_now:
+        raise StepError('expected_boot does not name the tree the advance produced (board %s/%s, '
+                        'store %s/%s)' % (boot.get('board'), board_now, boot.get('store'), store_now))
+    if int(boot.get('as_of_round')) != n:
+        raise StepError('expected_boot.as_of_round is %s after an advance to round %d'
+                        % (boot.get('as_of_round'), n))
+    season = json.load(open(_p(ctx, 'data', 'season_state.json'), encoding='utf-8'))
+    if int(season.get('as_of_round')) != n:
+        raise StepError('season_state.as_of_round is %s after an advance to round %d'
+                        % (season.get('as_of_round'), n))
+    if str(ctx.spec['prereg'].get('board_before')) != facts['board_before'] and \
+            not str(ctx.spec['prereg'].get('board_before')).startswith(facts['board_before']):
+        raise StepError('the advance started from board %s; the prereg says it starts from %s'
+                        % (facts['board_before'], ctx.spec['prereg'].get('board_before')))
+
+    exp = ctx.spec['prereg']['round_expected']
+    led_after = _ledger_triples(ctx, ledger_rel)
+    delta = led_after['total'] - led_before['total']
+    ctx.log('ledger        %d -> %d (+%d), %d triple(s) for R%d, duplicates %d'
+            % (led_before['total'], led_after['total'], delta, led_after['for_round'].get(n, 0), n,
+               led_after['duplicates']))
+    if led_after['duplicates']:
+        raise StepError('the dedup ledger holds %d duplicate triple(s) — a round has been '
+                        'double-counted' % led_after['duplicates'])
+    if int(exp['ledger_before']) != led_before['total'] or int(exp['ledger_delta']) != delta:
+        raise StepError('THE LEDGER DOES NOT MATCH THE PREREG: predicted %s + %s, measured %s + %s'
+                        % (exp['ledger_before'], exp['ledger_delta'], led_before['total'], delta))
+    if delta != facts['players_applied'] or led_after['for_round'].get(n) != facts['players_applied']:
+        raise StepError('the ledger grew by %d and %d players were applied' % (delta, facts['players_applied']))
+    facts.update({'ledger_before': led_before['total'], 'ledger_after': led_after['total'],
+                  'ledger_delta': delta, 'board': board_now, 'store': store_now})
+    ctx.log('ROUND %d IS APPLIED. store %s -> %s · board %s -> %s · %d played / %d DNP'
+            % (n, facts['store_before'], facts['store_after'], facts['board_before'],
+               facts['board_after'], facts['players_applied'],
+               int(exp.get('absent_dnp') or 0)))
+    return facts
+
+
+def _ledger_triples(ctx, rel):
+    """The dedup ledger, counted: total triples, per-round counts, and duplicates."""
+    doc = json.load(open(_p(ctx, rel), encoding='utf-8'))
+    trips = doc if isinstance(doc, list) else (doc.get('applied') or doc.get('triples') or
+                                               doc.get('entries') or [])
+    if isinstance(trips, dict):
+        trips = sorted(trips)
+    flat = [t if isinstance(t, str) else '|'.join(str(x) for x in t) for t in trips]
+    per = {}
+    for t in flat:
+        parts = t.split('|')
+        if len(parts) >= 3 and parts[-1].isdigit():
+            per[int(parts[-1])] = per.get(int(parts[-1]), 0) + 1
+    return {'total': len(flat), 'for_round': per, 'duplicates': len(flat) - len(set(flat))}
+
+
+# ============================================================ ROUND STEP — THE GENERATOR-SIDE COPY
+def generator_sync(ctx):
+    """The generator-side board copy, synced — and DISCLOSED, which is the whole of the ruling.
+
+    `ERRATUM E5`: "engine/rl_after/rl_app_data.json (+ .srcmd5) is the GENERATOR-side copy and the
+    transaction does NOT publish to it — round_apply.py:139-141 publishes only to data/rl_build/. R22
+    left it stale with every gate green. R23 synced it by hand AND DISCLOSED THE SYNC, because THE
+    BAKE and THE D8 ADOPTION both moved the pair in lockstep. Either choice is defensible; the one
+    thing that is not is moving it silently."
+
+    So the lander syncs it, in lockstep with its sidecar, and prints both identities before and
+    after. The `pins` step's own precondition — published copy, generator copy and BOTH sidecars
+    coherent — is the thing this keeps true after an advance, which is why it runs before `contract`
+    reads them.
+
+    ON A REHEARSAL IT REFUSES TO WRITE. If the two copies already disagree in an act that moves
+    nothing, that is a pre-existing incoherence the act did not create and must not paper over.
+    """
+    ctx.fault_point('generator_sync')
+    pub = _p(ctx, 'data', 'rl_build', 'rl_app_data.json')
+    gen = _p(ctx, 'engine', 'rl_after', 'rl_app_data.json')
+    pm, gm = md5(pub), md5(gen)
+    ps, gs = md5(pub + '.srcmd5'), md5(gen + '.srcmd5')
+    ctx.log('published board  %s   sidecar %s' % (pm, ps))
+    ctx.log('generator board  %s   sidecar %s' % (gm, gs))
+    if pm == gm and ps == gs:
+        ctx.log('the generator-side copy is already the published board. Nothing to sync.')
+        return {'synced': False, 'board': pm}
+    if is_no_op(ctx.spec):
+        raise StepError('the generator-side copy (%s) is not the published board (%s) and this act '
+                        'is a declared no-op. A rehearsal does not repair a tree it did not break; '
+                        'this incoherence pre-dates the act and is reported, not absorbed.' % (gm, pm))
+    if ctx.opts.dry_run:
+        ctx.log('--dry-run: would sync the generator copy %s -> %s (DISCLOSED).' % (gm, pm))
+        return {'synced': 'dry-run', 'board': pm}
+    for src, dst in ((pub, gen), (pub + '.srcmd5', gen + '.srcmd5')):
+        with open(src, 'rb') as s, open(dst, 'wb') as d:
+            d.write(s.read())
+    if md5(gen) != pm or md5(gen + '.srcmd5') != ps:
+        raise StepError('the generator-side sync did not take')
+    ctx.log('SYNCED, byte-identical, and DISCLOSED: generator board %s -> %s, sidecar %s -> %s'
+            % (gm, pm, gs, ps))
+    return {'synced': True, 'board': pm, 'was': gm}
+
+
+# ================================================================= ROUND STEP — THE DAY-0 REFERENCE
+def day0(ctx):
+    """The day-0 print reference, regenerated AT THE ADVANCE — its natural home, and only here.
+
+    REGISTER v810, ITEM 1, verbatim on the point: "THE DAY-0 REFERENCE IS STALE FOR R23 ... 63 of 89
+    printed prices moved at the R23 clock advance while derived_v0 moved on 0 — the standing
+    DAY0_CP.json wants regeneration AT THE R24 ADVANCE (its natural home; the round lander 2b
+    inherits it as a step or the advance does it once by hand — DO NOT re-base mid-round)."
+
+    THIS STEP IS HOW "DO NOT RE-BASE MID-ROUND" BECOMES STRUCTURAL rather than remembered: the day-0
+    re-base exists in `ROUND_SEQUENCE` and nowhere else. `land lever` has no such step, so a
+    mid-round act cannot activate one even if its spec asked.
+
+    IT IS STILL EXPLICIT AND STILL OFF BY DEFAULT — the M1b ruling is not relaxed by giving the
+    capability a home: "Day-0 re-basing becomes an explicit, owner-visible, off-by-default input with
+    a mandatory printed diff of every moved row — a suite inheriting the capability without the
+    judgement re-bases itself green on the first halt."
+
+    AND THE LANDER STILL DOES NOT COMPUTE DAY-0. It runs the act's declared GENERATOR — the emitter
+    of record, which is where the day-0 law is carried (the R23-era chain: ORDER K's `ok_day0.py` ->
+    `fcrb_day0.py` -> `cprb_day0.py`, each carried with its changes declared) — then prints the
+    mandatory row diff between the standing reference and what the generator produced, and installs.
+    Computing the law here would create a second implementation of it beside the emitter, which is
+    the mirrored-pair hazard M1b itself warns about.
+    """
+    ctx.fault_point('day0')
+    d0 = ctx.spec.get('day0_rebase') or {'state': 'off'}
+    if str(d0.get('state', 'off')).lower() != 'on':
+        ctx.log('day-0 re-base : OFF (default). The standing reference is NOT regenerated by this '
+                'advance, and the M1b ruling is why: automation never re-bases itself green.')
+        ctx.log('  (register v810 item 1: the reference wants regeneration AT an advance. Activating '
+                'it is an owner-visible input, not a default.)')
+        return 'off'
+    gen = d0.get('generator')
+    if gen:
+        ctx.log('day-0 generator (the emitter of record, run as a child): %s' % ' '.join(gen))
+        if ctx.opts.dry_run:
+            ctx.log('--dry-run: the generator is not run.')
+        else:
+            rc, out = ctx.run(list(gen), timeout=d0.get('generator_timeout_s', 5400))
+            ctx.write_evidence('day0_generator.txt', out)
+            for ln in out.strip().splitlines()[-40:]:
+                ctx.log('  %s' % ln)
+            if rc != 0:
+                raise StepError('the day-0 generator failed (exit %s). The lander does not compute '
+                                'day-0 and will not stand in for its emitter:\n%s' % (rc, out[-2000:]))
+    return _day0(ctx)
+
+
+# ==================================================================== ROUND STEP — THE MOVERS PAGE
+def movers_page(ctx):
+    """The owner-facing movers page for this round, rendered through the frozen template.
+
+    PLAN_v6 1d, a free habit needing no ruling: "rendered board/movers page delivered to the owner at
+    every round". This is that delivery, and it is a step of the transaction rather than an errand
+    afterwards, because a page rendered later is a page rendered from a tree that has moved.
+
+    A SEAT INJECTS DATA. A SEAT NEVER INJECTS LAYOUT. Every value comes out of the movers report of
+    record, written INSIDE the advance transaction by round_finalize/round_movers; nothing is
+    recomputed here and no markup is authored here. `slots.render` fills the frozen skeleton
+    `ui/templates/movers.html` and REFUSES an absent slot, a None, an empty string or a dash
+    sentinel — and `score` is passed as `slots.ABSENT` for the players who did not play, which is
+    the honest use of the sentinel the slot contract exists to force.
+
+    THE FENCES ARE THE POINT, and they are the ones the R23 renderer carried: the report must name
+    the board and store the manifest names, its baseline must be the stored point IMMEDIATELY BEFORE
+    this round (rule M0, asserted through `round_movers.previous_point`, never assumed), and that
+    baseline must sit at as_of_round N-1. A page that fails any of them is describing a different
+    tree than the one that produced it.
+    """
+    ctx.fault_point('movers_page')
+    n = int(ctx.spec['round']['number'])
+    rep_rel = 'engine/rl_after/ingestion/movers/movers_R%d.json' % n
+    rep_path = _p(ctx, rep_rel)
+    if not os.path.isfile(rep_path):
+        raise StepError('there is no movers report of record at %s. The page is RENDERED FROM the '
+                        'report the advance transaction wrote; it is never composed from the board.'
+                        % rep_rel)
+    rep = json.load(open(rep_path, encoding='utf-8'))
+    boot = json.load(open(_p(ctx, 'data', 'expected_boot.json'), encoding='utf-8'))
+    vh = json.load(open(_p(ctx, 'engine/rl_after/ingestion/value_history.json'), encoding='utf-8'))
+    col = {c['id']: c for c in vh['columns']}
+
+    # ---- the fences ------------------------------------------------------------------------------
+    #
+    # THE BOARD FENCE HAS TWO FORMS AND THE DIFFERENCE IS NOT A LOOPHOLE, IT IS THE TRUTH.
+    #
+    # Immediately after an advance the report of record names the live board, and the strict form
+    # asserts exactly that. But the report is FROZEN ERA HISTORY: out-of-round acts land after it,
+    # and every one of them moves the live board while the round's own report stays where it was.
+    # On this tree today the R23 report names 7a3f4fe2 and the live board is b3e8da99, three
+    # registered out-of-round columns later, and BOTH FACTS ARE CORRECT. A fence that demanded
+    # equality unconditionally would be the estate's fifth hand-typed instrument: true the day it was
+    # written, a false red the day the tree legitimately moved (process law P4).
+    #
+    # So the strict form binds when THIS transaction applied the round, and the standing form — which
+    # binds always — is a CROSS-ARTIFACT EQUALITY that catches a tampered report either way: the
+    # shipped movers bundle's own copy of the round-N report must agree with the report of record on
+    # all four identities. Plus the drift, when there is drift, must be EXPLAINED by stored
+    # out-of-round points at this round; an unexplained live board still halts.
+    fails = []
+    if int(rep.get('submitted_round')) != n:
+        fails.append('the report is for round %s, not %d' % (rep.get('submitted_round'), n))
+
+    shipped = (_js_obj(_p(ctx, 'ui', 'data', 'movers.js')).get('reports') or {}).get(str(n))
+    if not shipped:
+        fails.append('the shipped movers bundle carries no report for round %d' % n)
+    else:
+        for k in ('board_md5_before', 'board_md5_after', 'source_store_md5_before',
+                  'source_store_md5_after', 'previous_round'):
+            if str(shipped.get(k)) != str(rep.get(k)):
+                fails.append('the shipped bundle and the report of record disagree on %s (%s vs %s)'
+                             % (k, shipped.get(k), rep.get(k)))
+
+    applied = bool((ctx.facts.get('advance') or {}).get('applied'))
+    if applied:
+        if rep.get('board_md5_after') != boot['board']:
+            fails.append('report board_md5_after %s != manifest board %s'
+                         % (rep.get('board_md5_after'), boot['board']))
+        if rep.get('source_store_md5_after') != boot['store']:
+            fails.append('report store %s != manifest store %s'
+                         % (rep.get('source_store_md5_after'), boot['store']))
+    elif rep.get('board_md5_after') != boot['board']:
+        later = [c for c in vh['columns']
+                 if int(c.get('after_round') or -1) == n and c.get('kind') == 'out_of_round']
+        ctx.log('THE LIVE BOARD HAS MOVED SINCE THIS REPORT, OUT OF ROUND — and that is a fact about '
+                'the tree, not a defect in the report:')
+        ctx.log('  report board  %s   (what round %d\'s scores produced)' % (rep['board_md5_after'], n))
+        ctx.log('  live board    %s   (%d out-of-round point(s) registered at round %d since)'
+                % (boot['board'], len(later), n))
+        for c in later:
+            ctx.log('      %-30s %s' % (c.get('id'), c.get('board')))
+        if boot['board'] not in {c.get('board') for c in later}:
+            fails.append('the live board %s is neither this report\'s board nor any stored '
+                         'out-of-round point at round %d. The drift is UNEXPLAINED.'
+                         % (boot['board'], n))
+    prev = rep.get('previous_round')
+    rm = _load(ctx, 'round_movers', 'engine/rl_after/ingestion/round_movers.py')
+    pp = rm.previous_point(ctx.root, n)
+    pp_id = pp.get('id') if isinstance(pp, dict) else pp
+    if str(prev) != str(pp_id):
+        fails.append('the report compared FROM %r; previous_point(%d) is %r (rule M0)'
+                     % (prev, n, pp_id))
+    base_col = col.get(str(prev))
+    if base_col is None:
+        fails.append('the baseline point %r is not a stored column' % prev)
+    else:
+        if base_col.get('board') != rep.get('board_md5_before'):
+            fails.append('baseline column board %s != report board_md5_before %s'
+                         % (base_col.get('board'), rep.get('board_md5_before')))
+        if int(base_col.get('after_round')) != n - 1:
+            fails.append('RULE M0: the baseline sits at as_of_round %s, not %d'
+                         % (base_col.get('after_round'), n - 1))
+    if not (rep.get('integrity') or {}).get('coverage_full'):
+        fails.append('the report does not claim full coverage')
+    if int(rep.get('player_count') or 0) != len(rep.get('players') or []):
+        fails.append('player_count %s != %d rows' % (rep.get('player_count'), len(rep.get('players') or [])))
+    if fails:
+        raise StepError('THE MOVERS PAGE WOULD NOT DESCRIBE THE TREE IT WAS BUILT FROM:\n    %s'
+                        % '\n    '.join(fails))
+    ctx.log('fences OK: report R%d, board %s, baseline %r at round %d (rule M0, via previous_point)'
+            % (n, rep['board_md5_after'][:12], prev, n - 1))
+
+    sys.path.insert(0, _p(ctx, 'ui', 'templates'))
+    try:
+        import importlib
+        slots = importlib.import_module('slots')
+        importlib.reload(slots)
+    finally:
+        if sys.path and sys.path[0] == _p(ctx, 'ui', 'templates'):
+            sys.path.pop(0)
+
+    order = sorted(rep['players'], key=lambda p: (-p['value_change'], p['name']))
+    players = [{
+        'name': p['name'], 'pos': p['pos'], 'club': p['club'],
+        'played': 'yes' if p['played'] else 'no',
+        'score': ('%g' % p['score']) if p['played'] else slots.ABSENT,
+        'prev_value': p['prev_value'], 'cur_value': p['cur_value'],
+        'value_change': '%+d' % p['value_change'],
+        'value_change_pct': '%+.1f%%' % p['value_change_pct'],
+        'prev_rank': p['prev_rank'], 'cur_rank': p['cur_rank'],
+        'rank_change': '%+d' % p['rank_change'],
+        'prev_pos_rank': p['prev_pos_rank'], 'cur_pos_rank': p['cur_pos_rank'],
+        'pos_rank_change': '%+d' % p['pos_rank_change'],
+    } for p in order]
+    up = sum(1 for p in rep['players'] if p['value_change'] > 0)
+    dn = sum(1 for p in rep['players'] if p['value_change'] < 0)
+    tb = sum(p['prev_value'] for p in rep['players'])
+    ta = sum(p['cur_value'] for p in rep['players'])
+    mp = ctx.spec.get('movers_page') or {}
+    note = mp.get('boundary_note') or (
+        'THE BASELINE IS THE STORED POINT IMMEDIATELY BEFORE THIS ROUND, not the previous round\'s '
+        'report: the point compared FROM is %r (board %s, as_of_round %d), chosen by '
+        'round_movers.previous_point and asserted by the lander. That is rule M0 — a diff baseline '
+        'must share as_of_round with the candidate — so any board move that landed between the last '
+        'round report and this round sits on the ROUND-%d side of this boundary and appears nowhere '
+        'in the numbers below. EVERY DELTA ON THIS PAGE IS WHAT ROUND %d\'S SCORES DID.'
+        % (prev, rep['board_md5_before'][:8], n - 1, n - 1, n))
+    data = {
+        'page_title': 'THE MOVERS — round %d, %s' % (n, rep.get('season', 2026)),
+        'subtitle': ('%d players · %d played, %d did not · %d moved (%d up, %d down) · '
+                     'board total %s -> %s (%+d)'
+                     % (len(players), (rep.get('views') or {}).get('played_count', 0),
+                        (rep.get('views') or {}).get('dnp_count', 0), up + dn, up, dn,
+                        format(tb, ','), format(ta, ','), ta - tb)),
+        'boundary_note': note,
+        'from_label': '%s (%s, round %d)' % (prev, rep['board_md5_before'][:8], n - 1),
+        'to_label': 'R%d board %s' % (n, rep['board_md5_after'][:8]),
+        'board_md5_before': rep['board_md5_before'], 'board_md5': rep['board_md5_after'],
+        'store_md5_before': rep['source_store_md5_before'], 'store_md5': rep['source_store_md5_after'],
+        'engine_head': rep['release_identity']['engine_head'],
+        'config': rep['release_identity']['config'][:12],
+        'as_of_round': rep['submitted_round'],
+        'previous_round': prev,
+        'generated_at': rep['generated_at'],
+        'players': players,
+    }
+    probs = slots.validate('movers', data)
+    ctx.log('slots.validate("movers", <the R%d payload>) -> %s'
+            % (n, 'NO PROBLEMS — the template fits.' if not probs else probs[:5]))
+    if probs:
+        raise StepError('the movers payload does not satisfy the slot contract: %d problem(s): %s'
+                        % (len(probs), probs[:5]))
+    html = slots.render('movers', data)
+    out_rel = mp.get('output') or os.path.join(ctx.spec.get('evidence_dir') or 'docs/evidence',
+                                               'MOVERS_R%d.html' % n)
+    if ctx.opts.dry_run:
+        ctx.log('--dry-run: the page RENDERS and validates (%d bytes, %d rows) and is NOT written '
+                'to %s.' % (len(html.encode()), len(players), out_rel))
+        return {'rendered': True, 'written': False, 'rows': len(players),
+                'bytes': len(html.encode())}
+    os.makedirs(os.path.dirname(_p(ctx, out_rel)), exist_ok=True)
+    with open(_p(ctx, out_rel), 'w', encoding='utf-8') as fh:
+        fh.write(html)
+    ctx.log('wrote %s  (%d bytes, %d rows, md5 %s)'
+            % (out_rel, len(html.encode()), len(players), md5(_p(ctx, out_rel))))
+    return {'rendered': True, 'written': True, 'path': out_rel, 'rows': len(players),
+            'md5': md5(_p(ctx, out_rel)), 'up': up, 'down': dn,
+            'board_total_before': tb, 'board_total_after': ta}
 
 
 # ================================================================================ STEP 9 — COMMIT
@@ -1197,23 +2084,11 @@ def commit(ctx):
         ctx.log('nothing to commit — this landing wrote no file (a declared no-op).')
         return {'commit': None, 'paths': []}
 
-    ctx.log('explicit paths (%d):' % len(staged))
-    for rel in sorted(staged):
-        ctx.log('    %s' % rel)
-    if ctx.opts.dry_run or ctx.opts.no_commit:
-        ctx.log('--%s: not committing.' % ('dry-run' if ctx.opts.dry_run else 'no-commit'))
-        return {'commit': None, 'paths': sorted(staged), 'committed': False}
-
-    rc, out = ctx.run(['git', 'add', '--'] + sorted(staged))
-    if rc != 0:
-        raise StepError('git add failed: %s' % out)
-    msg = ctx.spec.get('commit_message') or ('%s — the landing transaction (land lever)' % ctx.spec['act'])
-    rc, out = ctx.run(['git', 'commit', '-m', msg])
-    if rc != 0:
-        raise StepError('git commit failed: %s' % out)
-    rc, head = ctx.run(['git', 'rev-parse', 'HEAD'])
-    ctx.log('committed %s' % head.strip()[:12])
-    return {'commit': head.strip(), 'paths': sorted(staged), 'committed': True}
+    verb = 'land round' if ctx.spec['act_kind'] == 'round-advance' else 'land lever'
+    msg = ctx.spec.get('commit_message') or ('%s — the landing transaction (%s)'
+                                             % (ctx.spec['act'], verb))
+    sha = _git_commit(ctx, staged, msg)
+    return {'commit': sha, 'paths': sorted(staged), 'committed': sha is not None}
 
 
 #: THE LAST STEP THAT NEEDS THE SINGLE-WRITER LOCK. Steps 0-6 build, or depend on something just
@@ -1237,3 +2112,53 @@ LEVER_SEQUENCE = (
     ('claims',       'emit the claims file and verify it against the tree',  claims),
     ('commit',       'ONE commit, explicit paths only',                      commit),
 )
+
+#: THE ROUND-ADVANCE SEQUENCE (PLAN_v6 2b) — the R23 hand-walk's proven order, as a program.
+#:
+#: SEVEN OF THESE FOURTEEN STEPS ARE THE LEVER LANDER'S OWN FUNCTIONS, registered again here rather
+#: than copied: `preflight`, `contract`, `sibling`, `ui`, `gates`, `claims`, `commit`. That is the S7
+#: law made structural — two commands, one library, and no way for the shared half to drift apart,
+#: because there is only one of it. What 2b adds is the seven steps a round genuinely has and a lever
+#: landing genuinely does not.
+#:
+#: THE ORDER IS THE HAND-WALK'S, and the hand-walk is `docs/evidence/r23_advance_2026-08-20/`:
+#:
+#:   sheet             ACT 1 — the sheet re-cut and its ONE pin declaration, own commit (3a form)
+#:   scores            ACT 2 — the owner's file of record, asserted
+#:   catchup_preflight ACT 2 — 08_preflight_r23.txt: read-only, CLEAN, then the inputs commit
+#:   advance           ACT 3 — 09_armed_r23.txt: the armed catch-up; ADVANCE-REPIN runs inside it
+#:   generator_sync    09b_generator_board_sync.txt: the disclosed generator-side sync (ERRATUM E5)
+#:   day0              register v810 item 1: the day-0 reference's natural home, and only here
+#:   contract          05_landing_c_contract.txt: restamp + the bake-lane repin + check
+#:   sibling           05b/13: verify — after an advance the repin has already run IN-transaction
+#:   ui                10_ui_writers_r23.txt, now ALL FOUR writers (F-9 and F-10 closed the class)
+#:   movers_page       ACT 4 — MOVERS_R23.html through the frozen template
+#:   gates             13_gates.txt: the standard landing gate set
+#:   claims            PLAN_v6 1c
+#:   commit            ONE commit, explicit paths — the advance's OUTPUTS only
+#:
+#: THERE IS NO `build_proofs` STEP AND NO `lineage` STEP, and both absences are load-bearing. A round
+#: advance does not build a candidate board and assert a predicted md5 — `staged_apply` regenerates
+#: the board inside its own transaction from the staged store, which is a stronger arrangement than
+#: any board a lander could hand it. And a round advance earns no lineage entry and no out-of-round
+#: column (ERRATUM E5); the spec validator refuses a spec that declares either.
+ROUND_SEQUENCE = (
+    ('preflight',         'clean tree, build lock, the restore point',              preflight),
+    ('sheet',             'the sheet re-cut + its ONE pin declaration, own commit', sheet),
+    ('scores',            "the owner's score file and the bindings, asserted",      scores),
+    ('catchup_preflight', 'read-only preflight, CLEAN, then the inputs commit',     catchup_preflight),
+    ('advance',           'THE ARMED CATCH-UP — ADVANCE-REPIN runs inside it',      advance),
+    ('generator_sync',    'the generator-side board copy, synced and DISCLOSED',    generator_sync),
+    ('day0',              'the day-0 reference — regenerated AT the advance, only', day0),
+    ('contract',          'restamp_dynamic + the bake-lane repin + check',          contract),
+    ('sibling',           'the balanced sibling: verify (the repin ran in-txn)',    sibling),
+    ('ui',                'ALL FOUR UI writers, and the identity read back out',    ui),
+    ('movers_page',       "the owner's movers page, through the frozen template",   movers_page),
+    ('gates',             'the landing gate set, verdicts off exit codes',          gates),
+    ('claims',            'emit the claims file and verify it against the tree',    claims),
+    ('commit',            'ONE commit, explicit paths only',                        commit),
+)
+
+#: act_kind -> (sequence, carrier set). The ONE place a verb is bound to what it runs and what it may
+#: write, so a new act kind cannot half-exist.
+SEQUENCES = {'lever-landing': 'LEVER_SEQUENCE', 'round-advance': 'ROUND_SEQUENCE'}

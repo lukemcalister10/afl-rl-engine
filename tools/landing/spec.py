@@ -38,6 +38,22 @@ REQUIRED_SLOTS = ('schema_version', 'act_kind', 'act', 'date', 'owner_word', 'au
 
 REQUIRED_PREREG = ('path', 'board_after')
 
+#: A ROUND ADVANCE PREDICTS ROUND-SHAPED FACTS, NOT A BOARD MD5, and the difference is not a
+#: weakening — it is the only honest form the prediction has.
+#:
+#: A lever landing's board IS predictable: the seat builds the candidate, records the md5 in the
+#: prereg, and the lander refuses any other. A ROUND ADVANCE's board is a function of scores nobody
+#: has seen until the owner sends them; a seat "predicting" it would be copying it out of a build it
+#: had already run, which is the exact instrument shape `spec.py`'s own header refuses.
+#:
+#: So the round prereg predicts what a seat CAN know before arming, and every one of these is a
+#: falsifier the advance step asserts against the tool's own output: the seven facts below are read
+#: straight off the R23 evidence's preflight and apply lines (411 listed / 411 resolved / 393 DNP,
+#: sha256 e3d5410e0e57, ledger 3,086 -> 3,497). `board_before` is still required and still an md5 —
+#: the board the advance STARTS from is a fact of the tree the act was written against.
+REQUIRED_ROUND_EXPECTED = ('round', 'listed', 'resolved', 'absent_dnp', 'scores_sha256',
+                           'ledger_before', 'ledger_delta')
+
 
 class SpecError(RuntimeError):
     """A spec that cannot be trusted to describe the act. Never partially accepted."""
@@ -54,6 +70,97 @@ def _declared_no_op(doc):
     return bool(pre.get('board_before')) and pre.get('board_before') == pre.get('board_after')
 
 
+def _validate_round(doc):
+    """The slots `land round` needs, and the two a round advance must NOT carry.
+
+    THE TWO REFUSALS ARE THE INTERESTING HALF, and both come from the R23 record rather than from
+    taste. `ERRATUM E5`: "A ROUND ADVANCE EARNS NO `data/release_lineage.json` ENTRY. The lineage
+    register records OUT-OF-ROUND board moves." A round advance moves the board IN round, so it
+    registers no out-of-round column and appends no transition entry — and a spec that declared
+    either would drive the shared `lineage` step into writing a record the estate's own gates would
+    then have to be taught to forgive. Refused here, at the door.
+    """
+    bad = []
+    pre = doc.get('prereg') or {}
+    rnd = doc.get('round')
+
+    if 'sheet' not in doc:
+        bad.append('the `sheet` slot must be PRESENT on a round-advance spec — null when this '
+                   'advance re-cuts no sheet. An unfilled slot has to be visible; an absent one is '
+                   'indistinguishable from a seat who has not got to it yet.')
+    if doc.get('column') is not None:
+        bad.append('a ROUND ADVANCE declares a column. It earns none: the out-of-round history '
+                   'column marks a board move OUTSIDE a round (standing owner rule 2026-07-28), and '
+                   'this move is the round. (R23 runbook ERRATUM E5.)')
+    if doc.get('lineage') is not None:
+        bad.append('a ROUND ADVANCE declares a lineage entry. It earns none: '
+                   'data/release_lineage.json records OUT-OF-ROUND transitions only, and R23\'s '
+                   'register tail correctly stayed at the round-22 re-cut boundary. (ERRATUM E5.)')
+
+    if not isinstance(rnd, dict):
+        bad.append('round must be an object: {"number", "scores", "arming", "identity_overrides"}')
+        return bad
+    if not str(rnd.get('number') or '').isdigit():
+        bad.append('round.number is required and must be the round being applied')
+
+    scores = rnd.get('scores')
+    if scores is None:
+        # A REHEARSAL. The lander runs the whole sequence with nothing armed and nothing applied —
+        # which is the shape of the no-op dry run that proves the machine before its first flight.
+        if not _declared_no_op(doc):
+            bad.append('round.scores is null and this act is not a declared no-op rehearsal. An '
+                       'advance with no owner file to apply advances nothing; if this IS a '
+                       'rehearsal, declare it (prereg.board_before == prereg.board_after).')
+    else:
+        if not isinstance(scores, dict):
+            bad.append('round.scores must be an object: {"path", "md5", "sha256"}')
+        else:
+            for k in ('path', 'md5', 'sha256'):
+                if not scores.get(k):
+                    bad.append('round.scores.%s is required — the owner\'s file is an INPUT OF '
+                               'RECORD and the lander asserts its identity rather than trusting '
+                               'whatever is on disk' % k)
+        exp = pre.get('round_expected')
+        if not isinstance(exp, dict):
+            bad.append('prereg.round_expected is required when a scores file is declared: %s'
+                       % ', '.join(REQUIRED_ROUND_EXPECTED))
+        else:
+            for k in REQUIRED_ROUND_EXPECTED:
+                if exp.get(k) is None:
+                    bad.append('prereg.round_expected.%s is required — it is a FALSIFIER the '
+                               'advance step asserts against the tool\'s own output' % k)
+        arming = rnd.get('arming')
+        if not isinstance(arming, dict) or not arming.get('env') or not arming.get('owner_word'):
+            bad.append('round.arming must carry {"env": {...}, "owner_word": "<verbatim>"}. LAW 10 '
+                       '(c): arming the score-write needs Luke\'s explicit word, under any level of '
+                       'model autonomy. The lander is handed the word and the token; it never '
+                       'composes either.')
+        elif not str(arming['env'].get('INGEST_SCORE_APPLY') or '').strip() or \
+                str(arming['env'].get('INGEST_SCORE_APPLY_ARMED') or '') != '1':
+            bad.append('round.arming.env must arm BOTH halves of the gate: '
+                       'INGEST_SCORE_APPLY_ARMED=1 and INGEST_SCORE_APPLY=<owner-worded token>')
+
+    sheet = doc.get('sheet')
+    if sheet is not None:
+        if not isinstance(sheet, dict):
+            bad.append('sheet must be an object or null (null = this advance re-cuts no sheet)')
+        else:
+            for k in ('prereg_lite', 'owner_word', 'disclosed_movers'):
+                if sheet.get(k) in (None, ''):
+                    bad.append('sheet.%s is required — PLAN_v6 3a: a data change keeps a '
+                               'review-forcing step (prereg-lite committed WITH the data change: '
+                               'predicted md5 + row/injured-Y counts + disclosed movers)' % k)
+            predicted = sheet.get('predicted')
+            if not isinstance(predicted, dict):
+                bad.append('sheet.predicted must carry the three PREDICTED facts: sheet_md5, '
+                           'sheet_rows, sheet_injured_y')
+            else:
+                for k in ('sheet_md5', 'sheet_rows', 'sheet_injured_y'):
+                    if predicted.get(k) in (None, ''):
+                        bad.append('sheet.predicted.%s is required' % k)
+    return bad
+
+
 def validate(doc):
     """-> [problems]. Empty list means the spec is structurally fit to drive a landing."""
     bad = []
@@ -67,11 +174,13 @@ def validate(doc):
     if not doc.get('owner_word'):
         bad.append('owner_word is empty — a landing records the word that authorised it, verbatim')
 
+    is_round = doc.get('act_kind') == 'round-advance'
     pre = doc.get('prereg')
     if not isinstance(pre, dict):
         bad.append('prereg must be an object naming the prereg path and its board prediction')
     else:
-        for k in REQUIRED_PREREG:
+        needed = ('path', 'board_before') if is_round else REQUIRED_PREREG
+        for k in needed:
             if not pre.get(k):
                 bad.append('prereg.%s is required — the PREDICTION is an input to the lander, never '
                            'a value it learns from its own build' % k)
@@ -143,6 +252,9 @@ def validate(doc):
                 if not d0.get(k):
                     bad.append('day0_rebase.%s is required when the re-base is activated' % k)
 
+    if is_round:
+        bad.extend(_validate_round(doc))
+
     if doc.get('act_kind') == 'lever-landing' and doc.get('column') is None and \
             'board' in list((doc.get('identities') or {}).get('moves') or ()):
         bad.append('this act moves the BOARD out of round and declares no column. The standing owner '
@@ -165,6 +277,8 @@ def load(path):
 
 def template(act_kind='lever-landing'):
     """A blank spec with every slot present, for a seat starting a new act."""
+    if act_kind == 'round-advance':
+        return _round_template()
     return {
         '_doc': ('THE ACT SPEC — the fixed slots `land lever` is told. Fill every one. A slot left '
                  'at its placeholder is refused by spec.validate(), which is the point.'),
@@ -193,6 +307,82 @@ def template(act_kind='lever-landing'):
         'lineage': {'doc': '', 'owner_ruling_id': [], 'owner_ruling': '', 'authority': '',
                     'invariants': {}},
         'day0_rebase': {'state': 'off'},
+        'evidence_dir': '',
+        'gates': None,
+        '_doc_gates': 'null = the standard landing gate set (steps.DEFAULT_GATES).',
+    }
+
+
+def _round_template():
+    """A blank ROUND-ADVANCE spec. Every slot present, every placeholder refused by validate()."""
+    return {
+        '_doc': ('THE ACT SPEC — the fixed slots `land round` is told (PLAN_v6 2b). Fill every one. '
+                 'A slot left at its placeholder is refused by spec.validate(), which is the point. '
+                 'The three things a tree cannot measure about itself are still the only things '
+                 'here: PREDICTIONS, CITATIONS and POLICY.'),
+        'schema_version': SCHEMA_VERSION,
+        'act_kind': 'round-advance',
+        'act': '',
+        'date': '',
+        'owner_word': '',
+        'authority': '',
+        'prereg': {
+            'path': '',
+            'board_before': '',
+            '_doc_board_before': 'the board the advance STARTS from — a fact of the tree, measured.',
+            'board_after': None,
+            '_doc_board_after': ('null for a real advance: a round board is a function of scores '
+                                 'nobody has seen yet, and a seat "predicting" it would be copying '
+                                 'it out of a build already run. For a REHEARSAL, set it equal to '
+                                 'board_before and the lander runs the whole sequence as a no-op.'),
+            'round_expected': {'round': 0, 'listed': 0, 'resolved': 0, 'absent_dnp': 0,
+                               'scores_sha256': '', 'ledger_before': 0, 'ledger_delta': 0},
+            '_doc_round_expected': ('THE ROUND-SHAPED PREDICTION, and every field is a falsifier the '
+                                    'advance step asserts against the tool\'s own output.'),
+        },
+        'round': {
+            'number': 0,
+            'scores': {'path': 'scores/R00.csv', 'md5': '', 'sha256': ''},
+            '_doc_scores': ('the owner\'s file, byte-unmodified. The lander places nothing and edits '
+                            'nothing: it asserts this identity against the file on disk.'),
+            'identity_overrides': [],
+            '_doc_identity_overrides': ('names the lander asserts are bound in '
+                                        'engine/rl_after/ingestion/catchup_identity_overrides.json. '
+                                        'An owner ruling on a name lives in that file, never in the '
+                                        'score file, and the lander AUTHORS none of them.'),
+            'arming': {'env': {'INGEST_SCORE_APPLY_ARMED': '1', 'INGEST_SCORE_APPLY': ''},
+                       'owner_word': ''},
+            '_doc_arming': ('LAW 10(c): arming the score-write needs Luke\'s explicit word. The word '
+                            'goes here VERBATIM and the token is his; the lander composes neither.'),
+        },
+        'sheet': {
+            'prereg_lite': '',
+            'owner_word': '',
+            'disclosed_movers': '',
+            'predicted': {'sheet_md5': '', 'sheet_rows': 0, 'sheet_injured_y': 0},
+            '_doc': ('null when this advance re-cuts no sheet. When it does: the prereg-lite is '
+                     'committed WITH the data change, in the same commit as the sheet and the pin '
+                     'file (PLAN_v6 3a / R23 runbook ERRATUM E7).'),
+        },
+        'identities': {'moves': ['board', 'store', 'as_of_round', 'season_state',
+                                 'balanced_board_md5', 'rl_model_data'],
+                       'unmoved': ['engine_head', 'rl_model', 'fv', 'config', 'register']},
+        'column': None,
+        'lineage': None,
+        'day0_rebase': {'state': 'off'},
+        '_doc_day0_rebase': ('THE ADVANCE IS THE DAY-0 REFERENCE\'S NATURAL HOME (register v810 item '
+                             '1) — and it is still EXPLICIT and OFF BY DEFAULT (the M1b ruling). To '
+                             'activate: {"state":"on", "activated_by":"<owner word>", '
+                             '"reference":"docs/evidence/.../DAY0_CP.json", "new_reference":"<the '
+                             'regenerated file>", "generator":["python3","<the emitter of record>"]}'
+                             '. The lander runs the generator, prints the mandatory row diff and '
+                             'installs; it never computes day-0 itself.'),
+        'movers_page': {'output': '', 'boundary_note': ''},
+        '_doc_movers_page': ('the owner-facing movers page for this round (PLAN_v6 1d: rendered '
+                             'board/movers page delivered at every round). `output` defaults to '
+                             'MOVERS_R<N>.html inside the evidence dir; `boundary_note` is the '
+                             'seat\'s prose about what sits on which side of the boundary, and the '
+                             'lander composes a mechanical one when it is empty.'),
         'evidence_dir': '',
         'gates': None,
         '_doc_gates': 'null = the standard landing gate set (steps.DEFAULT_GATES).',

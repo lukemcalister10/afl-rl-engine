@@ -11,15 +11,22 @@
 refuses to open one if it fails. The gates step's acceptance run uses `--profile in-transaction`,
 which is the full profile minus that same check. See `_preflight_selftest` for the ruling.
 
-`land round` is PACKAGE 2b and is NOT built. It is not stubbed with a friendly message either: the
-verb exists, states what it is waiting for (3a, which moves the data pins out of the engine and
-changes the transaction 2b must script), and exits non-zero. A verb that pretended to work would be
-the first thing a tired seat reached for.
+    tools/land round --spec <act_spec.json> [--root DIR] [--dry-run] [--no-commit]
+    tools/land round --print-sequence           the fourteen steps, and which seven are SHARED
 
-THE ENTRY POINT IS THIN ON PURPOSE. Everything below the argument parsing lives in the shared
-library, because 2b attaches there — `tools/landing/steps.py` gains a `ROUND_SEQUENCE` beside
-`LEVER_SEQUENCE` and this file gains a verb. Mirrored script pairs drift; the repo's seventeen
-emitter forks are the standing evidence.
+`land round` IS THE SECOND THIN ENTRY POINT (PLAN_v6 2b), landed 2026-08-21 on the same library.
+`cmd_round` is `cmd_lever` with the sequence and the carrier set looked up from the act kind: seven
+of its fourteen steps ARE the lever lander's own functions, and the driver, the abort ladder, the
+build lock, the explicit-path commits, the per-step timing, the day-0 rule and the fv-provenance
+exclusion are one implementation serving both verbs. Mirrored script pairs drift; the repo's
+seventeen emitter forks are the standing evidence, and this file is the shape of the alternative.
+
+WHAT 2b ADDS, and each is a step the R23 hand-walk performed by hand: the sheet/data commit in
+PACKAGE 3a's form (`land round` is `data/sheet_pins.json`'s SOLE WRITER), the owner's score file and
+its bindings, the read-only catch-up preflight, the ARMED catch-up (inside which `staged_apply` runs
+ADVANCE-REPIN), the disclosed generator-side sync, the day-0 reference regeneration — which lives
+HERE AND NOWHERE ELSE, because the ruling is "regenerate at the advance, never mid-round" — and the
+owner's movers page.
 """
 
 import argparse
@@ -146,16 +153,22 @@ def cmd_lever(a):
     ctx = TX.Ctx(a.root, doc, opts, builder=builder, fault=a.fault, keep_work=a.keep_work)
     res = TX.run(ctx, ST.LEVER_SEQUENCE)
     _file_preflight_evidence(pre_ev, ctx.evidence_dir)
+    _write_reports(a, ctx, res)
+    return 0 if res.ok else 1
+
+
+def _write_reports(a, ctx, res):
+    """The machine-readable result and the full transcript. ONE writer, both verbs."""
     if a.report:
         with open(a.report, 'w', encoding='utf-8') as fh:
             json.dump({'ok': res.ok, 'failed_step': res.failed_step,
                        'error': str(res.error) if res.error else None,
                        'timings': [{'step': n, 'seconds': s, 'verdict': v} for n, s, v in res.timings],
-                       'abort': res.abort, 'facts': _jsonable(res.facts)}, fh, indent=2, sort_keys=True)
+                       'abort': res.abort, 'commits': list(ctx.commits_made),
+                       'facts': _jsonable(res.facts)}, fh, indent=2, sort_keys=True)
     if a.log:
         with open(a.log, 'w', encoding='utf-8') as fh:
             fh.write('\n'.join(ctx.lines) + '\n')
-    return 0 if res.ok else 1
 
 
 def _jsonable(obj):
@@ -166,17 +179,57 @@ def _jsonable(obj):
         return json.loads(json.dumps(obj, default=str))
 
 
-def cmd_round(_a):
-    print('`land round` is PACKAGE 2b and is NOT BUILT.')
+def cmd_round(a):
+    """`land round` — the SECOND thin entry point over the same library (PLAN_v6 2b).
+
+    It is the same twelve lines as `cmd_lever` with two words changed, and that is the deliverable:
+    the sequence and the carrier set are looked up from the act kind, everything else — the
+    pre-transaction self-test, the options, the driver, the abort ladder, the report and the log —
+    is literally the lever lander's. Two commands must never become two divergent scripts (S7).
+    """
+    doc = SP.load(a.spec)
+    if doc['act_kind'] != 'round-advance':
+        raise SystemExit('this spec is act_kind %r; `land round` runs round-advance specs.'
+                         % doc['act_kind'])
+    doc['_spec_rel'] = os.path.relpath(os.path.abspath(a.spec), os.path.abspath(a.root))
+    builder = TX.BUILDERS[a.builder]() if a.builder in TX.BUILDERS else None
+    if builder is None:
+        raise SystemExit('unknown builder %r' % a.builder)
+    if a.builder != 'real' and not a.selftest:
+        raise SystemExit('builder %r is SELF-TEST ONLY. A landing uses the real builder, always.'
+                         % a.builder)
+    pre_ev = _preflight_selftest(a, doc) if not a.selftest else None
+    opts = TX.Options(dry_run=a.dry_run, no_commit=a.no_commit, selftest=a.selftest)
+    ctx = TX.Ctx(a.root, doc, opts, builder=builder, fault=a.fault, keep_work=a.keep_work,
+                 carriers=CA.ROUND_CARRIERS)
+    res = TX.run(ctx, ST.ROUND_SEQUENCE)
+    _file_preflight_evidence(pre_ev, ctx.evidence_dir)
+    _write_reports(a, ctx, res)
+    return 0 if res.ok else 1
+
+
+def _print_round_sequence():
+    print('THE ROUND-ADVANCE SEQUENCE — tools/landing/steps.py ROUND_SEQUENCE')
+    print('=' * 102)
+    shared = {n for n, _t, _f in ST.LEVER_SEQUENCE}
+    for i, (name, title, fn) in enumerate(ST.ROUND_SEQUENCE):
+        print('  %2d. %-18s %-56s %s' % (i, name, title,
+                                         'SHARED with land lever' if name in shared else 'NEW in 2b'))
+        doc = (fn.__doc__ or '').strip().splitlines()
+        if doc:
+            print('      %s' % doc[0])
     print()
-    print('It is the SECOND thin entry point over this same library, and the plan puts it after 3a')
-    print('for a stated reason: 3a moves the pure-data pins out of the engine, which removes the')
-    print('engine-edit/repin step from the very transaction a round lander would script. Building it')
-    print('now would mean scripting a transaction that 3a is about to change, and then soaking the')
-    print('changed one on the strength of the old one\'s soak.')
+    print('  %d of %d steps are the lever lander\'s OWN functions, registered again rather than '
+          'copied.' % (sum(1 for n, _t, _f in ST.ROUND_SEQUENCE if n in shared), len(ST.ROUND_SEQUENCE)))
     print()
-    print('The interim writer for the 3a->2b window is the amended runbook\'s manual path (3a).')
-    return 2
+    print('THE CARRIER SET — every path a round advance may write, and its writer of record')
+    print('=' * 102)
+    for c in CA.ROUND_CARRIERS:
+        print('  %-62s %s' % (c.pattern + ('  (glob)' if c.is_glob else ''), c.writer))
+    print()
+    print('  %d carriers: %d shared with the lever landing, %d added by 2b.'
+          % (len(CA.ROUND_CARRIERS), len(CA.LEVER_CARRIERS), len(CA.ROUND_EXTRA_CARRIERS)))
+    return 0
 
 
 def cmd_spec_template(a):
@@ -223,7 +276,19 @@ def main(argv=None):
     p.add_argument('--print-sequence', action='store_true', help='print the steps and carriers, exit')
     p.set_defaults(fn=cmd_lever)
 
-    p = sub.add_parser('round', help='PACKAGE 2b — not built; says what it waits for')
+    p = sub.add_parser('round', help='run the full round-advance transaction (PLAN_v6 2b)')
+    p.add_argument('--spec', help='the act spec (tools/land spec-template --act-kind round-advance)')
+    p.add_argument('--root', default=os.environ.get('RL_REPO') or os.getcwd())
+    p.add_argument('--dry-run', action='store_true', help='compute and assert; arm nothing, call no '
+                                                          'writer, apply no round')
+    p.add_argument('--no-commit', action='store_true', help='write, but do not make the commit')
+    p.add_argument('--builder', default='real', help='real | selftest | selftest-moved (self-test only)')
+    p.add_argument('--fault', default=None, help='SELF-TEST ONLY: break one step (see txn.FAULTS)')
+    p.add_argument('--selftest', action='store_true', help='permit fault injection / fake builders')
+    p.add_argument('--keep-work', action='store_true', help='keep the work dir after the close')
+    p.add_argument('--report', default=None, help='write a machine-readable result JSON here')
+    p.add_argument('--log', default=None, help='write the full transcript here')
+    p.add_argument('--print-sequence', action='store_true', help='print the steps and carriers, exit')
     p.set_defaults(fn=cmd_round)
 
     p = sub.add_parser('spec-template', help='print a blank act spec')
@@ -250,10 +315,10 @@ def main(argv=None):
     if not a.verb:
         ap.print_help()
         return 2
-    if a.verb == 'lever' and getattr(a, 'print_sequence', False):
-        return _print_sequence()
-    if a.verb == 'lever' and not a.spec:
-        raise SystemExit('`land lever` needs --spec (or --print-sequence)')
+    if a.verb in ('lever', 'round') and getattr(a, 'print_sequence', False):
+        return _print_sequence() if a.verb == 'lever' else _print_round_sequence()
+    if a.verb in ('lever', 'round') and not a.spec:
+        raise SystemExit('`land %s` needs --spec (or --print-sequence)' % a.verb)
     return a.fn(a)
 
 
