@@ -32,8 +32,12 @@ The supervisor pen is the ONLY writer (seat charter law). To pen an entry:
 2. `python3 tools/seat/pen.py append --entry-file <F> [--incident yes|no]`
    — computes the next version, writes `entries/vNNN.md`, rewrites `LATEST.md`, regenerates the
    address index, and runs `verify`.
-3. Commit EXPLICIT-PATH (process law P8): the new entry file, `LATEST.md`, `INDEX.md`,
-   `index.json`. Push.
+3. Regenerate the generated surfaces that quote the register: `python3 tools/incident_index.py
+   write` and `python3 -m tools.landing.state write` (docs/STATE.md quotes LATEST.md line 1, so
+   every pen stales it — the `state_file` runner check reds until this runs; learned the measured
+   way at register v821/v822).
+4. Commit EXPLICIT-PATH (process law P8): the new entry file, `LATEST.md`, `INDEX.md`,
+   `index.json`, `docs/incidents/INDEX.md` + `index.json`, and `docs/STATE.md`. Push.
 
 `python3 tools/seat/pen.py verify` is the standing falsifier set: the frozen file's md5 against
 the seal in `frozen_identity.json` (a moved byte is a hard fail), entry well-formedness, version

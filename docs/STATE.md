@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v820 2026-08-21 · **THE IN-FLIGHT TWICE-BUILD IS SKIPPED — owner word verbatim: "Skip it" (2026-08-21, ruling the v819 offer).** build_twice_determinism.IN_TRANSACTION = False: the lander's in-flight gate set drops from 17 to 16 checks and landing wall-time roughly halves (~425s -> ~75s of runner inside the gates step, measured basis the P2b dry run). THE CHECK IS NOT WEAKE
+  > # OPEN ITEMS REGISTER · v822 2026-08-21 · **THE OWNERSHIP MIRROR IS CURRENT AND HAS A WRITER OF RECORD — and its seat caught the supervisor's own gate red.** THE DIAGNOSIS, better than "stale data": the mirror's 804 rows were never wrong — only its STAMP was (generated at a05fe951/cc02567f/R22), and because the UI refuses an unauthenticated mirror, the live ownership lane had been SILENTLY OFF sin
 
-- new-form entries under `docs/register/entries/`: 8
+- new-form entries under `docs/register/entries/`: 10
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `b0c88286c3a6ae19d0ec766cc892ca28da0ab05e` |
+| generated at commit | `6b5ba06fff98517e84cfdb9c4f71450da5280278` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

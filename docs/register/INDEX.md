@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v821**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v822**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v822** (2026-08-21) — `docs/register/entries/v822.md` — **THE OWNERSHIP MIRROR IS CURRENT AND HAS A WRITER OF RECORD — and its seat caught the supervisor's own gate red.** THE DIAGNOSIS, better th
 - **v821** (2026-08-21) — `docs/register/entries/v821.md` — **PACKAGE 3c IS LANDED AND VERIFIED — the live-state document is machine-generated, and CURRENT_STATE.md is retired.** docs/STATE.md is writ
 - **v820** (2026-08-21) — `docs/register/entries/v820.md` — **THE IN-FLIGHT TWICE-BUILD IS SKIPPED — owner word verbatim: "Skip it" (2026-08-21, ruling the v819 offer).** build_twice_determinism.IN_TR
 - **v819** (2026-08-21) — `docs/register/entries/v819.md` — **THE B RULING IS ALREADY THE ARCHITECTURE — AND A STALE FIGURE IS CORRECTED (a P4-class slip by the supervisor, named).** Investigation bef

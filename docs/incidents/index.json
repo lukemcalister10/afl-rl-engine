@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 200,
+  "coverage_entries": 201,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-21",
+      "headline": "**THE OWNERSHIP MIRROR IS CURRENT AND HAS A WRITER OF RECORD \u2014 and its seat caught the supervisor's own gate red.** THE DIAGNOSIS, better than \"stale \u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE OWNERSHIP MIRROR IS CURRENT AND HAS A WRITER OF RECORD \u2014 and its seat caught the supervisor's own gate red.** THE DIAGNOSIS, better than \"stale data\": the mirror's 804 rows were never wrong \u2014 only its STAMP was (ge\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 822
+    },
     {
       "by": "explicit",
       "date": "2026-08-21",
@@ -1934,7 +1948,7 @@
       "version": 622
     }
   ],
-  "incidents": 111,
+  "incidents": 112,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",

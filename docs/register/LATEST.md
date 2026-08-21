@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v821 2026-08-21 · **PACKAGE 3c IS LANDED AND VERIFIED — the live-state document is machine-generated, and CURRENT_STATE.md is retired.** docs/STATE.md is written by tools/landing/state.py as a step in BOTH landing sequences (lever 11 steps, round 15) and by a standalone entry point; content all COMPUTED (identities re-hashed beside their pins, rulebook lint verdict, registe
+# OPEN ITEMS REGISTER · v822 2026-08-21 · **THE OWNERSHIP MIRROR IS CURRENT AND HAS A WRITER OF RECORD — and its seat caught the supervisor's own gate red.** THE DIAGNOSIS, better than "stale data": the mirror's 804 rows were never wrong — only its STAMP was (generated at a05fe951/cc02567f/R22), and because the UI refuses an unauthenticated mirror, the live ownership lane had been SILENTLY OFF sin
 
-(one line per pen; full entry: docs/register/entries/v821.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v822.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
