@@ -112,8 +112,11 @@ LEVER_CARRIERS = (
       'the html app bundle carrying stamp + stamp.release'),
     F('ui/data/board_view_public.js', 'extract_board_view',
       'the public bundle'),
-    F('ui/data/movers.js', 'round_movers (2b) / sibling + column consumers',
-      'the movers bundle: points, model_changes, per-round reports'),
+    F('ui/data/movers.js',
+      'steps.ui writer 4 (ui/tools/rebuild_movers_derived.py) + round_movers (2b) / column consumers',
+      'the movers bundle: its DERIVED blocks (points, values, model_changes) are rebuilt in the SAME '
+      'transaction as the lineage append they derive from — supervisor ruling on F-10, 2026-08-21; '
+      'the per-round reports are frozen era history and are carried through byte-verbatim'),
     F('ui/data/movers_transition.js',
       'steps.ui writer 3 (ui/tools/generate_movers_transition.py) + round_movers (2b)',
       'the movers transition bundle: the lineage record\'s mirror, projected in the SAME '

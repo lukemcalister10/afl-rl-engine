@@ -772,20 +772,32 @@ def sibling(ctx):
 
 
 # ==================================================================================== STEP 6 — UI
-def _mirror_register(path):
-    """The mirror's `release_transition_register`, read the way the r14 gate reads it.
+def _js_obj(path):
+    """The payload of a `window.__X__ = {...}` bundle, read the way the r14 gate reads it.
 
     Deliberately the SAME crude slice `test_movers_transition._loadjs` uses — first `{` to last `}`.
     A different parser here could accept a file the gate rejects, and the whole point of asserting
-    the predicate in this step is that it is the gate's predicate, not a near neighbour of it.
+    the gate's predicates in this step is that they ARE the gate's predicates, not near neighbours.
     """
     with open(path, encoding='utf-8') as fh:
         t = fh.read()
-    return json.loads(t[t.index('{'):t.rindex('}') + 1]).get('release_transition_register')
+    return json.loads(t[t.index('{'):t.rindex('}') + 1])
+
+
+def _mirror_register(path):
+    """The mirror's `release_transition_register`."""
+    return _js_obj(path).get('release_transition_register')
 
 
 def ui(ctx):
-    """ALL THREE UI writers. The thrice-proven trap, now code — and today it proved there was a third.
+    """ALL FOUR UI writers. The thrice-proven trap, now code — and today it proved there were four.
+
+    THE CLASS, CLOSED BY EXHAUSTION (supervisor ruling on F-10, 2026-08-21): the four UI bundles this
+    estate ships are all written in this transaction now — `board_view_working.js` and
+    `board_view_public.js` (writers 1-2), `movers_transition.js` (writer 3, the lineage's mirror), and
+    `movers.js` (writer 4, the blocks DERIVED from that mirror). Each of the last two was found the
+    same way: a landing appended to a record, shipped a reader that could not see it, and a standing
+    gate said so. There is no fifth bundle behind them.
 
     `ui/tools/extract_board_view.py` REGENERATES the bundle from the board and DROPS `stamp.release`;
     only `round_movers.inject_release_contract` puts it back. Running the first without the second
@@ -835,15 +847,18 @@ def ui(ctx):
         return '"release"' in open(p, encoding='utf-8').read()
 
     mirror = _p(ctx, 'ui', 'data', 'movers_transition.js')
+    movers = _p(ctx, 'ui', 'data', 'movers.js')
     ctx.log('BEFORE  working %s  release-block=%s' % (md5(bundle), has_release(bundle)))
     ctx.log('BEFORE  public  %s  release-block=%s' % (md5(public), has_release(public)))
     ctx.log('BEFORE  mirror  %s  register=%d entr(ies)'
-            % (md5(mirror), len(_mirror_register(mirror))))
+            % (md5(mirror), len(_mirror_register(mirror) or [])))
+    ctx.log('BEFORE  movers  %s  model_changes=%d boundar(ies)'
+            % (md5(movers), len(_js_obj(movers).get('model_changes') or [])))
     if ctx.opts.dry_run:
-        ctx.log('--dry-run: none of the three writers is run.')
+        ctx.log('--dry-run: none of the four writers is run.')
         return {'writers': 0, 'dry_run': True}
 
-    ctx.log('WRITER 1/3: ui/tools/extract_board_view.py')
+    ctx.log('WRITER 1/4: ui/tools/extract_board_view.py')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'extract_board_view.py')], timeout=900)
     if rc != 0:
         raise StepError('extract_board_view failed:\n%s' % out[-2000:])
@@ -851,15 +866,15 @@ def ui(ctx):
             % (md5(bundle), has_release(bundle)))
 
     if not ctx.skip_second_ui_writer:
-        ctx.log('WRITER 2/3: round_movers.inject_release_contract(bundle, root, %s)' % boot['as_of_round'])
+        ctx.log('WRITER 2/4: round_movers.inject_release_contract(bundle, root, %s)' % boot['as_of_round'])
         rm = _load(ctx, 'round_movers', 'engine/rl_after/ingestion/round_movers.py')
         rel = rm.inject_release_contract(bundle, ctx.root, int(boot['as_of_round']))
         ctx.log('  release block: %s' % json.dumps(rel, sort_keys=True)[:200])
     else:
-        ctx.log('WRITER 2/3: SKIPPED BY FAULT INJECTION — the trap is live in this transaction.')
+        ctx.log('WRITER 2/4: SKIPPED BY FAULT INJECTION — the trap is live in this transaction.')
 
     mirror_before = md5(mirror)
-    ctx.log('WRITER 3/3: ui/tools/generate_movers_transition.py  '
+    ctx.log('WRITER 3/4: ui/tools/generate_movers_transition.py  '
             '(the lineage projection — supervisor ruling on F-9)')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'generate_movers_transition.py')],
                       timeout=300)
@@ -893,8 +908,59 @@ def ui(ctx):
     ctx.log('  mirror register == lineage register: %d entr(ies), EQUAL  (the F-9 predicate holds)'
             % len(lin_reg or []))
 
+    # ---- WRITER 4: the movers bundle's DERIVED blocks (supervisor ruling on F-10) ----------------
+    # THE SAME LAW, ONE CARRIER ALONG, AND THE SAME PATTERN: unconditional, self-verifying, and the
+    # gate's own predicate asserted here in-step. `model_changes` is DERIVED from the register that
+    # writer 3 just mirrored, and it is BAKED into ui/data/movers.js at write time — so a landing that
+    # appends to the register and stops at writer 3 ships a bundle whose boundary labels do not know
+    # about the move that produced them. That is F-10, and it red attempt 3 at
+    # test_movers_transition.py:137.
+    #
+    # THIS IS THE WRITER THE PROVEN HAND-WALKED LANDINGS USED, NOT A NEW INVENTION. The backrows
+    # reseal's own UI step (docs/evidence/backrows_reseal_2026-08-20/09_landing_e_ui.txt) records
+    # exactly this pair, in this order:
+    #     --- WRITER 3: ui/tools/generate_movers_transition.py (mirror the lineage register) ---
+    #     --- WRITER 4: ui/tools/rebuild_movers_derived.py (points / values / model_changes) ---
+    #     --- both --check ---
+    # That landing passed this suite after registering a column. The recipe was already in the tree;
+    # what was missing was the lander running it.
+    movers_before = md5(movers)
+    ctx.log('WRITER 4/4: ui/tools/rebuild_movers_derived.py  '
+            '(points / values / model_changes — supervisor ruling on F-10)')
+    rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'rebuild_movers_derived.py')],
+                      timeout=900)
+    if rc != 0:
+        raise StepError('the movers derived-block rebuild failed (exit %s):\n%s' % (rc, out[-2000:]))
+    for ln in out.strip().splitlines():
+        ctx.log('  %s' % ln.strip())
+
+    rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'rebuild_movers_derived.py'),
+                       '--check'], timeout=900)
+    if rc != 0:
+        raise StepError('the movers bundle\'s derived blocks do not match what the live tree rebuilds '
+                        '(exit %s):\n%s' % (rc, out[-2000:]))
+    ctx.log('  drift guard: %s' % out.strip().splitlines()[-1].strip())
+
+    # THE F-10 PREDICATE, ASSERTED HERE — the exact comparison test_movers_transition.py:137 makes:
+    # model_changes recomputed from the LIVE TREE against the SHIPPED bundle's baked copy.
+    rm4 = _load(ctx, 'round_movers', 'engine/rl_after/ingestion/round_movers.py')
+    live_mc = rm4.model_changes(ctx.root)
+    shipped_mc = _js_obj(movers).get('model_changes') or []
+    if live_mc != shipped_mc:
+        raise StepError('THE SHIPPED MOVERS BUNDLE\'S model_changes IS NOT WHAT THE LIVE TREE DERIVES '
+                        'after writer 4: live %d boundar(ies), shipped %d. This is the F-10 predicate '
+                        '(test_movers_transition.py:137) and it must hold BEFORE the gates step.'
+                        % (len(live_mc), len(shipped_mc)))
+    ctx.log('  shipped model_changes == live-derived: %d boundar(ies), EQUAL  (the F-10 predicate holds)'
+            % len(shipped_mc))
+
     ctx.log('AFTER   working %s  release-block=%s' % (md5(bundle), has_release(bundle)))
     ctx.log('AFTER   public  %s  release-block=%s' % (md5(public), has_release(public)))
+    ctx.log('AFTER   movers  %s  %s' % (md5(movers),
+                                        'UNMOVED (nothing it derives from moved)'
+                                        if md5(movers) == movers_before else
+                                        'MOVED %s -> %s, tracking the register append'
+                                        % (movers_before[:12], md5(movers)[:12])))
     ctx.log('AFTER   mirror  %s  %s' % (md5(mirror),
                                         'UNMOVED (the lineage did not move)'
                                         if md5(mirror) == mirror_before else
@@ -939,12 +1005,14 @@ def ui(ctx):
             fails.append('stamp.release.%s (%s != %s)' % (k, relb.get(k), exp))
     if fails:
         raise StepError('THE UI BUNDLE IDENTITY IS WRONG: %s' % fails)
-    ctx.log("THE HTML APP'S EMBEDDED BOARD IDENTITY IS %s. All three writers ran; the release block "
+    ctx.log("THE HTML APP'S EMBEDDED BOARD IDENTITY IS %s. All four writers ran; the release block "
             "is back and the reader can see the transition that produced this board." % boot['board'])
-    return {'writers': 3, 'bundle_md5': md5(bundle), 'public_md5': md5(public),
+    return {'writers': 4, 'bundle_md5': md5(bundle), 'public_md5': md5(public),
             'embedded_board': st.get('board_md5'),
             'mirror_md5': md5(mirror), 'mirror_moved': md5(mirror) != mirror_before,
-            'register_entries': len(lin_reg or [])}
+            'register_entries': len(lin_reg or []),
+            'movers_md5': md5(movers), 'movers_moved': md5(movers) != movers_before,
+            'model_changes': len(shipped_mc)}
 
 
 # ================================================================================= STEP 7 — GATES
