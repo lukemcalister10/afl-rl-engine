@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v818**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v819**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v819** (2026-08-21) — `docs/register/entries/v819.md` — **THE B RULING IS ALREADY THE ARCHITECTURE — AND A STALE FIGURE IS CORRECTED (a P4-class slip by the supervisor, named).** Investigation bef
 - **v818** (2026-08-21) — `docs/register/entries/v818.md` — **PACKAGE 2b IS BUILT, SELF-TESTED, DRY-RUN PROVEN, VERIFIED AND PUSHED — `land round` exists and round 24 is the one-word round.** The seco
 - **v817** (2026-08-21) — `docs/register/entries/v817.md` — **THE TWO RETIREMENT-ERA CONSTANTS ARE RULED (G3.i + G3.iii), owner words verbatim: "2 green rounds" · "4 rounds per sweep." (2026-08-21).**
 - **v816** (2026-08-21) — `docs/register/entries/v816.md` — **THE CLAIMS DOUBLE-GATE RULING — OPTION B, owner word verbatim: "B on the claims issue." (2026-08-21).** The claims checker will REUSE the 

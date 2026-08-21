@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v818 2026-08-21 · **PACKAGE 2b IS BUILT, SELF-TESTED, DRY-RUN PROVEN, VERIFIED AND PUSHED — `land round` exists and round 24 is the one-word round.** The second thin entry point over the P2a library (S7 held: 7 of its 14 steps ARE the lever lander's own functions; new steps sheet · scores · catchup_preflight · advance · generator_sync · day0 · movers_page; the spec validato
+# OPEN ITEMS REGISTER · v819 2026-08-21 · **THE B RULING IS ALREADY THE ARCHITECTURE — AND A STALE FIGURE IS CORRECTED (a P4-class slip by the supervisor, named).** Investigation before implementing the claims B ruling found tools/claims.py ALREADY works at hash/parse/count level and reads gate verdicts rather than re-running suites: the claims step measured 0.04s in the P2b dry run. The "~3.8 of 
 
-(one line per pen; full entry: docs/register/entries/v818.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v819.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)

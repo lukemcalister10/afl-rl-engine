@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 197,
+  "coverage_entries": 198,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-21",
+      "headline": "**THE B RULING IS ALREADY THE ARCHITECTURE \u2014 AND A STALE FIGURE IS CORRECTED (a P4-class slip by the supervisor, named).** Investigation before implem\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE B RULING IS ALREADY THE ARCHITECTURE \u2014 AND A STALE FIGURE IS CORRECTED (a P4-class slip by the supervisor, named).** Investigation before implementing the claims B ruling found tools/claims.py ALREADY works at hash\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 819
+    },
     {
       "by": "explicit",
       "date": "2026-08-21",
@@ -1920,7 +1934,7 @@
       "version": 622
     }
   ],
-  "incidents": 110,
+  "incidents": 111,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",
