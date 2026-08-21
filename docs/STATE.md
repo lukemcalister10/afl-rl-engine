@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v824 2026-08-21 · **THE BLIND COMPARISON IS FILED (docs/proposals/REBAKE_COMPARISON_2026-08-21.md) — the owner's protocol executed to the letter: study B commissioned and completed blind (independence declaration in its header; one filename-level leak excluded and unopened), study A opened by the supervisor only after B filed.** ELEVEN INDEPENDENT AGREEMENTS = the confidenc
+  > # OPEN ITEMS REGISTER · v825 2026-08-21 · **BLIND-PROTOCOL INTEGRITY ADDENDUM (study B's own late disclosure, recorded verbatim in substance).** After its study was sealed at its commit, the B seat's `git log -1` showed it the v824 commit SUBJECT LINE — "the blind comparison filed — eleven agreements, four divergence findings" — a bare count with no content, encountered strictly DOWNSTREAM of stud
 
-- new-form entries under `docs/register/entries/`: 12
+- new-form entries under `docs/register/entries/`: 13
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `33b7fe7dd4efbe74c0cad7508c9cb8c8a6793da0` |
+| generated at commit | `451eedb7dbdc4a5a9f21e6eb1b5ec872360b696f` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

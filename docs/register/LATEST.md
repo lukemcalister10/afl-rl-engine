@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v824 2026-08-21 · **THE BLIND COMPARISON IS FILED (docs/proposals/REBAKE_COMPARISON_2026-08-21.md) — the owner's protocol executed to the letter: study B commissioned and completed blind (independence declaration in its header; one filename-level leak excluded and unopened), study A opened by the supervisor only after B filed.** ELEVEN INDEPENDENT AGREEMENTS = the confidenc
+# OPEN ITEMS REGISTER · v825 2026-08-21 · **BLIND-PROTOCOL INTEGRITY ADDENDUM (study B's own late disclosure, recorded verbatim in substance).** After its study was sealed at its commit, the B seat's `git log -1` showed it the v824 commit SUBJECT LINE — "the blind comparison filed — eleven agreements, four divergence findings" — a bare count with no content, encountered strictly DOWNSTREAM of stud
 
-(one line per pen; full entry: docs/register/entries/v824.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v825.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
