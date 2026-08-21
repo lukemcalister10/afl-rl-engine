@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "act_type": "small-act",
+  "act": "THE STAIRCASE FIX (ORDER 44) — PRICED, NOT ADOPTED. Both bounded variants measured raw and conserved; the dial ships OFF and the live board is unmoved.",
+  "date": "2026-08-20",
+  "base_commit": "efbe1b6",
+  "seat": "pricing seat, THE STAIRCASE FIX (second seat; the first was killed by a container restart in the packaging phase)",
+  "owner_word": "\"Yes, bounded fix now\" (owner, 2026-08-20), plus the variant-comparison plan: price A and B side by side, THE OWNER CHOOSES THE VARIANT AND GIVES THE ADOPTION WORD. This seat does NOT adopt, land, or flip the dial default, and the claims below are the machine-checkable half of that statement.",
+
+  "_why_small_act": "SMALL-ACT IS THE HONEST SHAPE AND THE BORDERLINE IS NAMED RATHER THAN GLOSSED. Nothing VALUE-BEARING moves: the board, both copies, is byte-unmoved; so are the store, rl_model, the manifest, and every Guard-5-pinned fitted artifact. What DOES move is one engine SOURCE file (the dial, DEFAULT OFF) and the four identity carriers that name its md5 — expected_boot.engine_head, release_contract.identities.engine_head (+ the derived contract_sha256) and the two board_view_working.js stamps. Those are declared below as file_md5/json_field claims with their moved values, NOT hidden inside the unmoved list. A lever-landing claims file would be the wrong schema because no lever landed: no board moved, no lineage column was written, no dial default changed.",
+
+  "_note": "THE CENTRAL CLAIM IS F1: with RL_O44_LVLMONO unset, the EDITED tree reproduces the live board 68be10c79d0ee096455754e084bcf757 BYTE-EXACT — dev twice (103.6s, 101.7s), canonical once (100.9s) — and the balanced sibling 556ad70d295923455982ae33e4b8bfd3 byte-exact (102.7s). See BUILD_F1_out.txt. The board_count claims below recompute the shipped board's own row count and value total from the artifact, so 'the board did not move' is checked as a number and not only as a hash. Re-run: python3 tools/claims.py check docs/evidence/staircase_fix_2026-08-20/SFX_CLAIMS.json",
+
+  "activation": {
+    "_doc": "This act introduces exactly ONE switch and its day-0 state is OFF. There is no owner word activating it and none is claimed.",
+    "RL_O44_LVLMONO — the ORDER 44 level-axis band monotoniser": {
+      "state": "off",
+      "_why": "DEFAULT OFF, kill-switch semantics, five accepted values (off / ratchet / ratchet+conserve / smooth / smooth+conserve); any other value HALTS at import. It is DELIBERATELY NOT A MANIFEST DIAL — absent from data/model_config.json (byte-unmoved at 269d20ab, claimed below), so config_manifest.enforce() rejects it as an unknown model override in bake/gate/canonical mode and NO CERTIFYING BUILD CAN CARRY IT. Turning it on is the owner's word to give and it has not been given. The dial_coverage acceptance check counts it as REPORTED, NOT GATED."
+    },
+    "the day-0 reference regeneration (DAY0_SFXBASE.json)": {
+      "state": "off",
+      "_why": "It is THIS ACT'S OWN base reference, used only to measure the two candidate emits against a same-clock base. It SUPERSEDES NOTHING: docs/evidence/final_candidate_2026-08-19/DAY0_CP.json is byte-unaltered and un-repointed, no script's default RL_DAY0_FINAL is changed, and the standing regeneration the R23 advance owes is referred to a round-advance seat in the packet, not performed here."
+    },
+    "ORDER 44 itself": {
+      "state": "off",
+      "_why": "CLASSIFIED FOR RETIREMENT AT THE VARIANT-C REBAKE (owner-scheduled post-R24), and its removal is a rebake MUST-MOVE PROOF. The fix is scaffolding over a defect that lives at the FIT; FIX 1 (monotonic_cst on feature 9) retires the whole dial. Declared in the prereg before the scaffold was erected."
+    }
+  },
+
+  "claims": [
+    {"kind": "unmoved", "label": "THE LIVE BOARD, published copy — F1", "path": "data/rl_build/rl_app_data.json", "value": "68be10c79d0ee096455754e084bcf757"},
+    {"kind": "unmoved", "label": "THE LIVE BOARD, generator copy — F1", "path": "engine/rl_after/rl_app_data.json", "value": "68be10c79d0ee096455754e084bcf757"},
+    {"kind": "unmoved", "label": "store", "path": "engine/rl_after/rl_model_data.json", "value": "b745002eb0a0fbb1c34fa44f1ef708d6"},
+    {"kind": "unmoved", "label": "rl_model.py — this act edits ONE engine file and it is not this one", "path": "engine/rl_after/rl_model.py", "value": "6fe7c4155866d80e8045bed2d3bf2802"},
+    {"kind": "unmoved", "label": "THE MODEL CONFIG MANIFEST — RL_O44_LVLMONO is deliberately absent from it", "path": "data/model_config.json", "value": "269d20ab86e3b9d13867987065c757d2"},
+    {"kind": "unmoved", "label": "conditional_prior.py — THE FIT SITE, NOT EDITED (this is FIX 2, not FIX 1)", "path": "engine/forward_valuation/conditional_prior.py", "value": "0cdb0896d0f93b5addc0e42a42744c94"},
+    {"kind": "unmoved", "label": "cm_400.pkl — the five pinned quantile forests, READ AS THEY ARE, no refit", "path": "data/cm_400.pkl", "value": "34faa8659cc8f19794f5cb9584fa19b2"},
+    {"kind": "unmoved", "label": "q97m.pkl — the sixth forest, Guard-5 frozen, no refit", "path": "data/q97m.pkl", "value": "cfdc73216c099e5e8f1fda3968f31c00"},
+    {"kind": "unmoved", "label": "v0surf.pkl — Guard-5 fitted artifact", "path": "data/v0surf.pkl", "value": "5dd34ca82735f5c8f021b1c7320df8f8"},
+    {"kind": "unmoved", "label": "LTI register (owner-authored input)", "path": "LTI_REGISTER.md", "value": "652d83e87780e415a01a2de6d8b3cc57"},
+    {"kind": "unmoved", "label": "THE RULEBOOK — no law is edited by a pricing act", "path": "docs/RULEBOOK.md", "value": "fa3caf31a1d18ad977c1dfd665a1c669"},
+    {"kind": "unmoved", "label": "UI public bundle — untouched; only the WORKING bundle's engine stamp moved", "path": "ui/data/board_view_public.js", "value": "540bcdb444fbd5375c048cc8a26ba291"},
+    {"kind": "unmoved", "label": "book seal — DELIBERATELY NOT re-sealed; it reads SEALED-LAG and that is reported, never gating", "path": "data/book_stable_seal.json", "value": "9c2eda2b851ec9e6206aee298449be5b"},
+    {"kind": "unmoved", "label": "the standing day-0 reference — THIS ACT SUPERSEDES NOTHING", "path": "docs/evidence/final_candidate_2026-08-19/DAY0_CP.json", "value": "210510fe5d09bbbd16909bb63f4a118d"},
+
+    {"kind": "board_count", "label": "THE BOARD DID NOT MOVE, checked as a number: 804 active rows", "path": "data/rl_build/rl_app_data.json", "section": "active", "metric": "rows", "value": 804},
+    {"kind": "board_count", "label": "THE BOARD DID NOT MOVE, checked as a number: total 692,296 SCAR", "path": "data/rl_build/rl_app_data.json", "section": "active", "metric": "value", "value": 692296},
+
+    {"kind": "file_md5", "label": "MOVED, DECLARED: the engine file carrying the dial (default OFF)", "path": "engine/rl_after/_merged_recover.py", "value": "3f4aa10b23102dc4f7362b73fc20ac7b"},
+    {"kind": "file_md5", "label": "MOVED, DECLARED: the UI working bundle, regenerated through BOTH writers of record", "path": "ui/data/board_view_working.js", "value": "f4a3db9b4f6f834cabcaff83f43a77fc"},
+
+    {"kind": "json_field", "label": "boot pin: board — UNMOVED", "path": "data/expected_boot.json", "field": "board", "value": "68be10c79d0ee096455754e084bcf757"},
+    {"kind": "json_field", "label": "boot pin: balanced sibling — UNMOVED", "path": "data/expected_boot.json", "field": "balanced_board_md5", "value": "556ad70d295923455982ae33e4b8bfd3"},
+    {"kind": "json_field", "label": "boot pin: store — UNMOVED", "path": "data/expected_boot.json", "field": "store", "value": "b745002eb0a0fbb1c34fa44f1ef708d6"},
+    {"kind": "json_field", "label": "boot pin: rl_model — UNMOVED", "path": "data/expected_boot.json", "field": "rl_model", "value": "6fe7c4155866d80e8045bed2d3bf2802"},
+    {"kind": "json_field", "label": "boot pin: config_sha256 — UNMOVED (the dial is not a manifest var)", "path": "data/expected_boot.json", "field": "config", "value": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1"},
+    {"kind": "json_field", "label": "boot pin: fv source-set identity — UNMOVED", "path": "data/expected_boot.json", "field": "fv", "value": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346"},
+    {"kind": "json_field", "label": "boot pin: band (cm_400) — UNMOVED", "path": "data/expected_boot.json", "field": "band", "value": "34faa8659cc8f19794f5cb9584fa19b2"},
+    {"kind": "json_field", "label": "boot pin: register — UNMOVED", "path": "data/expected_boot.json", "field": "register", "value": "652d83e87780e415a01a2de6d8b3cc57"},
+    {"kind": "json_field", "label": "as_of_round — UNMOVED, no round is applied by this act", "path": "data/expected_boot.json", "field": "as_of_round", "value": 23},
+    {"kind": "json_field", "label": "MOVED, DECLARED (repaired at 1590a37): boot pin engine_head", "path": "data/expected_boot.json", "field": "engine_head", "value": "3f4aa10b23102dc4f7362b73fc20ac7b"},
+    {"kind": "json_field", "label": "MOVED, DECLARED: release_contract.identities.engine_head", "path": "data/release_contract.json", "field": "identities.engine_head", "value": "3f4aa10b23102dc4f7362b73fc20ac7b"},
+    {"kind": "json_field", "label": "MOVED, DERIVED: contract_sha256 (cde9f70a -> this; the PREREG SAID IT WOULD STAND AND IT COULD NOT — corrected against the tree)", "path": "data/release_contract.json", "field": "contract_sha256", "value": "8e6dcdbc89d63480f055b9e250729463c3c2ab67c8f1f90db3005ef2e832d0c7"},
+    {"kind": "json_field", "label": "release_contract.config_sha256 — UNMOVED, and THIS is the claim the prereg was actually making", "path": "data/release_contract.json", "field": "config_sha256", "value": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1"},
+    {"kind": "json_field", "label": "release_contract.identities.store — UNMOVED", "path": "data/release_contract.json", "field": "identities.store", "value": "b745002eb0a0fbb1c34fa44f1ef708d6"},
+    {"kind": "json_field", "label": "release_contract.identities.board — UNMOVED", "path": "data/release_contract.json", "field": "identities.board", "value": "68be10c79d0ee096455754e084bcf757"},
+
+    {"kind": "json_field", "label": "THE DAY-0 CHECK: the regenerated reference reads 87 of 87 on the LIVE board at tolerance 0", "path": "docs/evidence/staircase_fix_2026-08-20/DAY0_SFXBASE.json", "field": "identity_all", "value": "87 of 87 at tolerance 0"},
+    {"kind": "json_field", "label": "THE DAY-0 CHECK: the reference is built on the LIVE board, dial OFF", "path": "docs/evidence/staircase_fix_2026-08-20/DAY0_SFXBASE.json", "field": "board_md5", "value": "68be10c79d0ee096455754e084bcf757"},
+    {"kind": "json_field", "label": "THE FINDING: the standing pre-R23 reference moved on 63 of 89 printed day-0 prices — NOT ORDER 44", "path": "docs/evidence/staircase_fix_2026-08-20/DAY0_SFXBASE.json", "field": "vs_DAY0_CP.printed_moved", "value": 63},
+    {"kind": "json_field", "label": "THE FINDING, the other half: derived_v0 (the raw entry object) moved on 0 rows", "path": "docs/evidence/staircase_fix_2026-08-20/DAY0_SFXBASE.json", "field": "vs_DAY0_CP.derived_v0_moved", "value": 0},
+
+    {"kind": "json_field", "label": "MOVERS A raw: measured against the LIVE board", "path": "docs/evidence/staircase_fix_2026-08-20/MOVERS_A_RAW.json", "field": "base_board_md5", "value": "68be10c79d0ee096455754e084bcf757"},
+    {"kind": "json_field", "label": "MOVERS A conserved: measured against the LIVE board", "path": "docs/evidence/staircase_fix_2026-08-20/MOVERS_A_CON.json", "field": "base_board_md5", "value": "68be10c79d0ee096455754e084bcf757"},
+    {"kind": "json_field", "label": "MOVERS B raw: measured against the LIVE board", "path": "docs/evidence/staircase_fix_2026-08-20/MOVERS_B_RAW.json", "field": "base_board_md5", "value": "68be10c79d0ee096455754e084bcf757"},
+    {"kind": "json_field", "label": "MOVERS B conserved: measured against the LIVE board", "path": "docs/evidence/staircase_fix_2026-08-20/MOVERS_B_CON.json", "field": "base_board_md5", "value": "68be10c79d0ee096455754e084bcf757"},
+    {"kind": "json_field", "label": "LAW 9 STATED NOT NETTED: A raw mints +8,460 SCAR", "path": "docs/evidence/staircase_fix_2026-08-20/MOVERS_A_RAW.json", "field": "mint_scar", "value": 8460},
+    {"kind": "json_field", "label": "LAW 9 STATED NOT NETTED: A conserved BURNS 4,025 SCAR — conservation flips the sign, it does not remove the breach", "path": "docs/evidence/staircase_fix_2026-08-20/MOVERS_A_CON.json", "field": "mint_scar", "value": -4025},
+    {"kind": "json_field", "label": "LAW 9 STATED NOT NETTED: B raw mints +8,385 SCAR", "path": "docs/evidence/staircase_fix_2026-08-20/MOVERS_B_RAW.json", "field": "mint_scar", "value": 8385},
+    {"kind": "json_field", "label": "LAW 9 STATED NOT NETTED: B conserved BURNS 4,169 SCAR", "path": "docs/evidence/staircase_fix_2026-08-20/MOVERS_B_CON.json", "field": "mint_scar", "value": -4169},
+    {"kind": "json_field", "label": "LAW 9 FAILS ON ALL FOUR READINGS, and the file says so itself (A raw)", "path": "docs/evidence/staircase_fix_2026-08-20/MOVERS_A_RAW.json", "field": "law9_pass", "value": false},
+    {"kind": "json_field", "label": "LAW 9 FAILS ON ALL FOUR READINGS, and the file says so itself (A conserved)", "path": "docs/evidence/staircase_fix_2026-08-20/MOVERS_A_CON.json", "field": "law9_pass", "value": false},
+
+    {"kind": "gate", "label": "F4 — THE CLASS LAW, variant A conserved inside the floor 1.03", "name": "class_mark_A_floor", "argv": ["python3", "-c", "import json,sys;m=json.load(open('docs/evidence/staircase_fix_2026-08-20/CLASS_SFX.json'));w=m['SFXACON']['w2'];print('SFXACON W2 %.4f'%w);sys.exit(0 if 1.03<=w<1.14 else 1)"], "expect": "PASS", "match": "SFXACON W2 1.0829"},
+    {"kind": "gate", "label": "F4 — THE CLASS LAW, variant B conserved inside the floor 1.03 and under the rail 1.14", "name": "class_mark_B_rail", "argv": ["python3", "-c", "import json,sys;m=json.load(open('docs/evidence/staircase_fix_2026-08-20/CLASS_SFX.json'));w=m['SFXBCON']['w2'];print('SFXBCON W2 %.4f'%w);sys.exit(0 if 1.03<=w<1.14 else 1)"], "expect": "PASS", "match": "SFXBCON W2 1.0838"},
+    {"kind": "gate", "label": "THE NO-ARB PAGE INPUTS — provenance, non-vacuity, separation, THE DAY-0 CHECK, instrument validation", "name": "sfx_noarb_checks", "argv": ["python3", "docs/evidence/staircase_fix_2026-08-20/sfx_noarb_checks.py"], "expect": "PASS", "match": "RESULT: ALL CHECKS PASS"},
+    {"kind": "gate", "label": "THE DECISION PACKET — 9 of 9 fixed slots filled (the P2a validator)", "name": "packet_slot_check", "argv": ["python3", "tools/landing/cli.py", "packet", "--check", "docs/evidence/staircase_fix_2026-08-20/PACKET_STAIRCASE.md"], "expect": "PASS", "match": "GREEN"},
+    {"kind": "gate", "label": "release_manifest_check — COHERENT after the engine_head repair", "name": "release_manifest_check", "argv": ["python3", "release_manifest_check.py"], "expect": "PASS", "match": "RELEASE MANIFEST COHERENCE: PASS"},
+    {"kind": "gate", "label": "release_contract.py check — the seal is self-consistent at its NEW value", "name": "release_contract", "argv": ["python3", "release_contract.py", "check"], "expect": "PASS"},
+    {"kind": "gate", "label": "THE RUNNER, full profile — every registered check", "name": "acceptance.runner", "argv": ["python3", "-m", "acceptance.runner"], "expect": "GREEN", "match": "VERDICT    GREEN", "timeout_s": 2400},
+    {"kind": "gate", "label": "the claims checker's own negative control still fires", "name": "claims.selftest", "argv": ["python3", "tools/claims.py", "selftest"], "expect": "PASS", "match": "11 PASS / 0 FAIL"}
+  ]
+}

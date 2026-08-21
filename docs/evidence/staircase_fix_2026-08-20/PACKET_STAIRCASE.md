@@ -3,9 +3,62 @@
 **Seat:** pricing seat, THE STAIRCASE FIX · **Date:** 2026-08-20 · **Base:** `main` @ `efbe1b6` · **Prereg:** `docs/evidence/staircase_fix_2026-08-20/PREREG_STAIRCASE.md`, committed at `5f94a44` **before** the engine edit at `1446dec`
 **Owner word:** "Yes, bounded fix now"
 
-> **THIS IS A PRICING ACT. NOTHING IS ADOPTED AND NOTHING IS ASKED TO BE.** The dial ships **OFF**.
-> The live board is `68be10c79d0ee096455754e084bcf757` before this act and after it. The owner
-> chooses the variant; this seat does not flip the dial default and has not.
+> **THIS IS A PRICING ACT. THIS SEAT ADOPTS NOTHING.** The dial ships **OFF** from this seat. The
+> live board is `68be10c79d0ee096455754e084bcf757` before this act and after it, and that is F1.
+> This seat does not flip the dial default and has not.
+
+---
+
+## 0. THE OWNER'S CHOICE — RECORDED AFTER THE PRICING, BEFORE THIS SEAT CLOSED
+
+**The owner has chosen. Verbatim, 2026-08-21:**
+
+> **"Happy to lock in 1.22% and variant B"**
+
+**VARIANT B IS THE ADOPTED CHOICE. THE MINT IS ACCEPTED AT THE MEASURED FIGURE — the RAW reading, no
+conservation renormalisation.**
+
+**The conservation leg is rejected, in the owner's own words:**
+
+> **"The conservation law I don't like, especially in this case. It's 0.6% to fix a bug, it's fine.
+> Accept it."**
+
+**AND THE CORRECTION THAT FOLLOWED IT MUST RIDE WITH IT, because the first ruling was given on a
+stale premise and the record has to show the re-confirmation, not the premise.** The "0.6 %" in
+those words is the CONSERVED reading's board burn (−0.581 % variant A / −0.602 % variant B — §6).
+**The supervisor re-presented the true figure — the RAW mint, 1.22 % — and the owner re-confirmed on
+the corrected number.** That re-confirmation, not the 0.6 % sentence, is the ruling of record.
+
+**ONE PRECISION THIS SEAT WILL NOT ROUND AWAY, and the adopting seat must carry it.** "1.22 %" is
+this act's headline raw-mint figure; **measured per variant, variant A raw mints +8,460 SCAR =
++1.2220 %, and VARIANT B RAW — the adopted one — mints +8,385 SCAR = +1.2112 %** (692,296 →
+700,681). So the adopted board's own mint is **+8,385 SCAR / +1.2112 %**, marginally *under* the
+1.22 % the owner locked in, not over it. The adoption lands B RAW, dial value **`smooth`**, board
+`219266fafeca5ed4fb0206a72bf37046`.
+
+**THE ADOPTION IS A SEPARATE SEAT AND IS ABOUT TO LAUNCH. THIS SEAT DOES NOT LAND IT.** The dial
+default is still `off` in the committed engine, the live board is still `68be10c7`, no pin moves in
+this act beyond the `engine_head` restamp of §1, and F1 is re-asserted at this seat's final commit.
+
+**TWO THINGS THE ADOPTING SEAT MUST READ BEFORE IT BUILDS, both measured and both about B:**
+
+1. **THE NO-ARB TABLES AND THE RENDERED PAGE WERE EMITTED FOR THE CONSERVED PAIR, NOT FOR THE RAW
+   PAIR.** `NOARB_SFX_SFXBCON.html` is `smooth+conserve`; the adopted variant is `smooth`. **The
+   no-arb reading for B RAW is NOT MEASURED by this seat.** It is one emit plus four instrument
+   passes (~20 min, `SFX_LABEL=SFXBRAW RL_O44_LVLMONO=smooth bash run_emit_SFX.sh`, then the four
+   `sfx_noarb_*.py` with the label added) and is **completable after the landing** — but it is not
+   cosmetic, because of point 2.
+2. **ON THE CONSERVED READING, VARIANT B PUT A CELL OVER THE NO-ARB BUY RAIL THAT WAS INSIDE IT** —
+   ND band PRIMARY picks 11-20, **+12.71 % on the live board → +14.11 % under B conserved**, against
+   a +14 % rail. Variant A conserved read +13.83 % and did not cross. Since the raw variants mint
+   MORE than the conserved ones on every band this act measured, **the expectation is that B RAW
+   sits at or above B conserved on that cell, i.e. the breach is more likely, not less** — but that
+   is an expectation, not a measurement, and this seat is not passing it off as one.
+
+**The seat's own recommendation was VARIANT A, and it is left standing unedited in §7 rather than
+rewritten to agree with the ruling.** The owner has the reasoning and ruled otherwise; that is the
+owner's call to make, and a packet that quietly re-aligned its recommendation after the fact would be
+worth nothing the next time it disagreed.
 
 ---
 
@@ -308,8 +361,8 @@ reading under which this act is not worth doing is: wait for the rebake.**
 plateau, a player can score more, raise his level, and be worth **exactly the same**. That is a strictly better
 world than the current one — where he can score more and be worth **less** — but it is not the world the owner
 would design. `MATHCHECK_out.txt` measures the plateaus rather than describing them: on the MID/pick-40 sweep
-44→58 at 0.05, variant A shows **203 of 281 steps FLAT**; at 0.002 resolution over 46→50, **1,985 of 2,000
-FLAT**. Most of the axis pays nothing at the margin. If the owner's objection to the trough is really "effort
+44→58 at 0.05, variant A shows **203 of 280 steps FLAT** (0 negative, 77 rising); at 0.002 resolution over
+46→50, **1,985 of 2,000 FLAT** (0 negative, 15 rising). Most of the axis pays nothing at the margin. If the owner's objection to the trough is really "effort
 must be rewarded", A answers only half of it.
 
 **VARIANT B's specific defect: THE INTERPOLATION IS A CHOICE.** B is strictly rising — 0 flat steps at every
@@ -358,6 +411,11 @@ is a decoration.
 ---
 
 ## 7. Recommendation
+
+> **THE OWNER RULED AFTER THIS SLOT WAS WRITTEN AND RULED THE OTHER WAY: VARIANT B, RAW, mint
+> accepted (§0). THIS SLOT IS LEFT EXACTLY AS IT WAS WRITTEN.** It is the reasoning the owner had in
+> front of him when he chose, and rewriting it to agree with the ruling would destroy the only thing
+> a recommendation slot is for.
 
 **Price both, adopt neither today, and if the owner adopts, adopt VARIANT A.** The deciding fact is not
 aesthetic: **variant B puts a cell over the no-arb buy rail that was inside it — PRIMARY picks 11-20, +12.71 %

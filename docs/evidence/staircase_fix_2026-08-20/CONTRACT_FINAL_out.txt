@@ -1,0 +1,2 @@
+RELEASE-CONTRACT CHECK
+RELEASE-CONTRACT CHECK: PASS  (contract 8e6dcdbc89d6; identities + config + posture consistent)
