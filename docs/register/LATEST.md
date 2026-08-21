@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v827 2026-08-21 · **THE OWNER'S LOCATION DATA IS VERIFIED CURRENT ON BOTH SURFACES — and the pick surface was silently stale until this act (owner's word tonight: "It is essential that the UI displays the correct player locations and pick locations. I supplied them recently for that purpose!").** PLAYER LOCATIONS: the ownership mirror (refreshed earlier today, writer 5 wire
+# OPEN ITEMS REGISTER · v828 2026-08-21 · **P4b THE ROLLBACK FIRE DRILL — PASS: TAGS ARE RESTORABLE BYTES (docs/evidence/p4b_fire_drill_2026-08-21/, evidence cherry-picked from the seat's isolated worktree at e423080).** Target baked-v2.11-2026-08-20 @ 463e53d (latest owner release; the annotated tag carries the owner word per law 10b; the expected_boot 'tag: v2.9' field is stale NARRATIVE from 20
 
-(one line per pen; full entry: docs/register/entries/v827.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v828.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)

@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v827 2026-08-21 · **THE OWNER'S LOCATION DATA IS VERIFIED CURRENT ON BOTH SURFACES — and the pick surface was silently stale until this act (owner's word tonight: "It is essential that the UI displays the correct player locations and pick locations. I supplied them recently for that purpose!").** PLAYER LOCATIONS: the ownership mirror (refreshed earlier today, writer 5 wire
+  > # OPEN ITEMS REGISTER · v828 2026-08-21 · **P4b THE ROLLBACK FIRE DRILL — PASS: TAGS ARE RESTORABLE BYTES (docs/evidence/p4b_fire_drill_2026-08-21/, evidence cherry-picked from the seat's isolated worktree at e423080).** Target baked-v2.11-2026-08-20 @ 463e53d (latest owner release; the annotated tag carries the owner word per law 10b; the expected_boot 'tag: v2.9' field is stale NARRATIVE from 20
 
-- new-form entries under `docs/register/entries/`: 15
+- new-form entries under `docs/register/entries/`: 16
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `f5d6d09a7a0438e4a5ba94eb2208b7f408908aa5` |
+| generated at commit | `e42308026cc6927c86ec927811d6f2da2662e1e2` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
