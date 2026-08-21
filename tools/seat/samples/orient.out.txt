@@ -1,14 +1,19 @@
-# orient.sh — live-state sample (captured 2026-08-21, the 3b register act)
-# cmd: bash tools/seat/orient.sh   (exit 1 — PRE-EXISTING: the pack-doc section dies on docs/00_MANIFEST_*.md,
-#       archived to docs/archive/ before this act; the register section above it is current and green.
-#       Raw sample, compared by eye; checkout HEAD below is the capturing commit, not necessarily live main.)
+# orient.sh — live-state sample (captured 2026-08-21, the 3c state-file act)
+# cmd: bash tools/seat/orient.sh   (EXIT 0. The pack-doc section that used to die here
+#       ("pack doc missing: MANIFEST (docs/00_MANIFEST_*.md)") is RETIRED in this act with a dated
+#       note in the script naming why: that Project-Knowledge pack was archived to docs/archive/
+#       before this act (newest member dated 2026-07-19), and docs/acceptance_*.json must not be
+#       resurrected at all — the derived laws twin was removed on the owner's word and
+#       tools/rulebook_lint.py R5/R6 now red on one reappearing (RULEBOOK P10). The live governing
+#       docs print in its place. Raw sample, compared by eye; checkout HEAD below is the capturing
+#       commit, not necessarily live main.)
 == orient · https://github.com/lukemcalister10/afl-rl-engine.git ==
 -- ls-remote (RAW SHAs) --
-  refs/heads/main        1d4d426fa241380b9d950354dc815f50b5dfd674
+  refs/heads/main        b0c88286c3a6ae19d0ec766cc892ca28da0ab05e
   refs/tags/v2.9         9f8ae7616555ce55c67ae2076247662960b731e5
-  checkout HEAD          1d4d426fa241380b9d950354dc815f50b5dfd674
+  checkout HEAD          dcc9e98a7e721b9e6dad8f0945aefe87ca73abab
 -- open-items register, newest entry (docs/register/LATEST.md line 1) --
-  # OPEN ITEMS REGISTER · v813 2026-08-21 · **THE RECORD CONTINUES HERE — first entry of the new form (3b act executed).** The freeze landed per the v812 tombstone: frozen identity md5 219021ace49ff …(truncated)
+  # OPEN ITEMS REGISTER · v820 2026-08-21 · **THE IN-FLIGHT TWICE-BUILD IS SKIPPED — owner word verbatim: "Skip it" (2026-08-21, ruling the v819 offer).** build_twice_determinism.IN_TRANSACTION = Fa …(truncated)
 -- LTI register header (pinned input, root) --
   # LTI & AVAILABILITY REGISTER — Luke's ground-truth data — KEYED SIDECAR v1 · 2026-07-09
 -- docs/ listing --
@@ -26,6 +31,7 @@
   RELEASE_CANDIDATE_v2_11.md
   RULEBOOK.md
   SINGLE_SOURCE_INVARIANT.md
+  STATE.md
   archive
   directives
   evidence
@@ -39,5 +45,10 @@
   runbooks
   ui_direction
   ui_styles
--- pack doc HEADER VERSIONS (for PK compare) --
-orient: FAIL — pack doc missing: MANIFEST (/home/user/afl-rl-engine/docs/00_MANIFEST_*.md) — PK/repo compare cannot be made
+-- pack doc PK compare: RETIRED 2026-08-21 (the pack is archived at docs/archive/) --
+-- live governing docs, raw headers --
+  RULEBOOK    RULEBOOK.md                        # THE RULEBOOK — v3 · 2026-08-20 · OWNER-SIGNED (in chat, 2026-07-22; amended 2026-07-28, 2026-08-20)
+  SSI         SINGLE_SOURCE_INVARIANT.md         # THE SINGLE-SOURCE INVARIANT — v1.3 — read this before touching data or code
+  PRIMER      ENGINE_PRIMER.md                   # ENGINE PRIMER — the meaning layer · v7 · authored 2026-08-04 (hi1an4); v7 at register v598 (2026-08-07): the no-era-normalization law and the co
+  STATE       STATE.md                           # STATE — GENERATED-ONLY · DO-NOT-HAND-EDIT
+== orient OK ==

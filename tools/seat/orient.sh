@@ -53,30 +53,37 @@ echo "  $REG_HDR"
 echo "-- docs/ listing --"
 ls -1 "$HERE/docs" | sed 's/^/  /'
 
-# 4) Pack-doc HEADER VERSION table for PK comparison — raw version string per doc.
-#    Glob by prefix so a version bump (new filename) is still found; print filename + header.
-echo "-- pack doc HEADER VERSIONS (for PK compare) --"
-emit() { # $1=label  $2=glob-or-file
-  local label="$1" pat="$2" f hdr
-  # shellcheck disable=SC2086
-  f="$(ls -1 $pat 2>/dev/null | sort | tail -n1)" || true
-  if [ -z "${f:-}" ] || [ ! -f "$f" ]; then
-    die "pack doc missing: $label ($pat) — PK/repo compare cannot be made"
-  fi
-  if [ "${f##*.}" = "json" ]; then
-    hdr="$(python3 -c 'import json,sys;d=json.load(open(sys.argv[1]));print("version",d.get("version"),"date",d.get("date"))' "$f")" \
-      || die "cannot parse JSON header: $f"
-  else
-    hdr="$(head -n1 "$f")" || die "cannot read header: $f"
-  fi
-  printf '  %-11s %-34s %s\n' "$label" "$(basename "$f")" "$hdr"
+# 4) THE PACK-DOC PK COMPARE IS RETIRED (2026-08-21, the 3c act). Replaced by the live-doc headers
+#    below. Why, named rather than quietly dropped:
+#
+#      * The pack it compared no longer exists at docs/. 00_MANIFEST_*, CORE_*, DECISIONS_* and
+#        CONSTRAINTS_* were archived to docs/archive/ long before this act — the newest of them are
+#        dated 2026-07-19 — and this script had been dying on the FIRST of them
+#        ("pack doc missing: MANIFEST") ever since, taking the whole run to exit 1 and taking the
+#        register freshness rung above it down with it. The section was checking a Project-Knowledge
+#        pack that is not maintained any more, so a "repoint at the archive" would print the header
+#        of a doc frozen in July and invite a seat to compare live work against it.
+#      * docs/acceptance_*.json must NOT be resurrected here in any form. The derived laws twin
+#        (docs/acceptance_v2_0.json) was REMOVED by the RULEBOOK v3 amendment on the owner's word,
+#        and tools/rulebook_lint.py R5/R6 now red on a second laws file REAPPEARING (RULEBOOK PART 4,
+#        process law P10). An orientation tool that went looking for one would be teaching the
+#        retirement backwards.
+#      * The historical pack is still in the tree, at docs/archive/, and is read as HISTORY when a
+#        task reaches it. It is named here so nothing is hidden by the removal.
+#
+#    What a seat actually needs to compare now is the LIVE governing set, so that is what prints.
+echo "-- pack doc PK compare: RETIRED 2026-08-21 (the pack is archived at docs/archive/) --"
+echo "-- live governing docs, raw headers --"
+emit() { # $1=label  $2=file
+  local label="$1" f="$2" hdr
+  [ -f "$f" ] || die "live governing doc missing: $label ($f)"
+  hdr="$(head -n1 "$f")" || die "cannot read header: $f"
+  [ -n "$hdr" ] || die "$label header line is empty (SILENCE IS A RED)"
+  printf '  %-11s %-34s %s\n' "$label" "$(basename "$f")" "${hdr:0:150}"
 }
-emit MANIFEST    "$HERE/docs/00_MANIFEST_*.md"
-emit CORE        "$HERE/docs/CORE_*.md"
-emit HANDOVER    "$HERE/docs/HANDOVER_*.md"
-emit DECISIONS   "$HERE/docs/DECISIONS_*.md"
-emit CONSTRAINTS "$HERE/docs/CONSTRAINTS_*.md"
-emit acceptance  "$HERE/docs/acceptance_*.json"
-emit SSI         "$HERE/docs/SINGLE_SOURCE_INVARIANT.md"
+emit RULEBOOK "$HERE/docs/RULEBOOK.md"
+emit SSI      "$HERE/docs/SINGLE_SOURCE_INVARIANT.md"
+emit PRIMER   "$HERE/docs/ENGINE_PRIMER.md"
+emit STATE    "$HERE/docs/STATE.md"
 
 echo "== orient OK =="
