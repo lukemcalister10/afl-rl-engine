@@ -1,0 +1,7 @@
+{
+  "byte_exact": "n/a",
+  "error": "THE TREE IS NOT CLEAN. A landing transaction starts from a committed tree, or its abort restores a state nobody chose:\n     M docs/incidents/INDEX.md\n     M docs/incidents/index.json\n     M tools/incident_index.py",
+  "failed_step": "preflight",
+  "restore_point": null,
+  "restored": "n/a \u2014 failure precedes the restore point"
+}
