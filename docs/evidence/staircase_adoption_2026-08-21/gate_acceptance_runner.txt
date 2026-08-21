@@ -1,0 +1,33 @@
+$ python3 -m acceptance.runner
+
+==========================================================================================================================
+THE VERDICT SPINE — acceptance/runner.py
+  tree: /home/user/afl-rl-engine
+  evidence: (none)
+  profile : full   (every registered check)
+==========================================================================================================================
+CHECK                    VERDICT     REASON
+-----------------------  ----------  -----------------------------------------------------------------------------------
+release_manifest         PASS        39 of 40 carrier fields agree with computed truth across 8 identities; 1 sealed ca…
+boot_guard_checkout      PASS        boot-store guard (Guard 5) PASS  [acceptance-spine]  store b745002e == pinned b745…
+config_manifest          PASS        CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)
+ruling_config            PASS        RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL…
+release_contract_seal    PASS        RELEASE-CONTRACT CHECK: PASS  (contract 55a890820b91; identities + config + postur…
+store_coherence_six_way  PASS        six-way store coherence: PASS
+doc_lint                 PASS        doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)
+rulebook_lint            PASS        note R5 TWIN ABSENCE: docs/acceptance_v2_0.json is absent, as the v3 amendment lef…
+ruled_red_ledger         PASS        3 step entries probed, all still failing exactly as their ruling records
+inbox_manifest           PASS        inbox_manifest: 1 archived file(s), 0 problem(s), 0 stale generated file(s)
+mirror_parity            PASS        3 fitted-artifact resolvers mirror the engine byte-for-byte; all 3 pins hold
+dial_coverage            PASS        83 of 84 declared dials read with a default in engine source (1 self-declared orph…
+oneliner_gamma           PASS        6 of ship_gates_check.py's 7 exported vars are manifest dials and all agree (enfor…
+oneliner_r14_restore     FAIL        the R14 disposable fixture does not verify: raise AssertionError('FAIL: ' + label)
+oneliner_f1_lens         PASS        the F1 export-parity leg is present, key-for-key, and still reports a mismatch cou…
+build_twice_determinism  PASS        determinism: two bare builds are BYTE-IDENTICAL
+lander_selftest          FAIL        TimeoutExpired: Command '['/root/rl_venv312/bin/python3', '/home/user/afl-rl-engin…
+-----------------------  ----------  -----------------------------------------------------------------------------------
+
+AGGREGATE  17 checks  |  PASS 15  FAIL 2  BLOCKED 0  RULED-RED 0
+VERDICT    RED — 2 gating failure(s): oneliner_r14_restore, lander_selftest
+
+[exit 1]

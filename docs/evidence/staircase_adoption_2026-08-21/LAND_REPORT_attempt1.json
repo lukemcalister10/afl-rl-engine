@@ -1,0 +1,527 @@
+{
+  "abort": {
+    "byte_exact": true,
+    "error": "gate acceptance_runner did not pass (exit 1; 'GREEN' absent from output):\n (none)\n  profile : full   (every registered check)\n==========================================================================================================================\nCHECK                    VERDICT     REASON\n-----------------------  ----------  -----------------------------------------------------------------------------------\nrelease_manifest         PASS        39 of 40 carrier fields agree with computed truth across 8 identities; 1 sealed ca\u2026\nboot_guard_checkout      PASS        boot-store guard (Guard 5) PASS  [acceptance-spine]  store b745002e == pinned b745\u2026\nconfig_manifest          PASS        CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)\nruling_config            PASS        RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL\u2026\nrelease_contract_seal    PASS        RELEASE-CONTRACT CHECK: PASS  (contract 55a890820b91; identities + config + postur\u2026\nstore_coherence_six_way  PASS        six-way store coherence: PASS\ndoc_lint                 PASS        doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)\nrulebook_lint            PASS        note R5 TWIN ABSENCE: docs/acceptance_v2_0.json is absent, as the v3 amendment lef\u2026\nruled_red_ledger         PASS        3 step entries probed, all still failing exactly as their ruling records\ninbox_manifest           PASS        inbox_manifest: 1 archived file(s), 0 problem(s), 0 stale generated file(s)\nmirror_parity            PASS        3 fitted-artifact resolvers mirror the engine byte-for-byte; all 3 pins hold\ndial_coverage            PASS        83 of 84 declared dials read with a default in engine source (1 self-declared orph\u2026\noneliner_gamma           PASS        6 of ship_gates_check.py's 7 exported vars are manifest dials and all agree (enfor\u2026\noneliner_r14_restore     FAIL        the R14 disposable fixture does not verify: raise AssertionError('FAIL: ' + label)\noneliner_f1_lens         PASS        the F1 export-parity leg is present, key-for-key, and still reports a mismatch cou\u2026\nbuild_twice_determinism  PASS        determinism: two bare builds are BYTE-IDENTICAL\nlander_selftest          FAIL        TimeoutExpired: Command '['/root/rl_venv312/bin/python3', '/home/user/afl-rl-engin\u2026\n-----------------------  ----------  -----------------------------------------------------------------------------------\n\nAGGREGATE  17 checks  |  PASS 15  FAIL 2  BLOCKED 0  RULED-RED 0\nVERDICT    RED \u2014 2 gating failure(s): oneliner_r14_restore, lander_selftest\n",
+    "failed_step": "gates",
+    "restore_point": {
+      "data/expected_boot.json": "e0965d29ad8682a7475edf17610db0fe",
+      "data/release_contract.json": "09d1081340b8090b5aa734a2ba0d0a75",
+      "data/release_lineage.json": "f486ecd40dc8f907798e88e7f4cef61d",
+      "data/rl_build/rl_app_data.json": "68be10c79d0ee096455754e084bcf757",
+      "data/rl_build/rl_app_data.json.srcmd5": "a275bf3cd0d054156fc340f86770b69f",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/journal.jsonl": "a46befc7100f100bed9155415f20979c",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/manifest.json": "23c861fc7a85ec058fc8a3f156d25121",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/board_view_public": "12c5c49dd5767ad69a20b8cf3d46916f",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/board_view_working": "4743500a347270b113e502b7a4028b3b",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/forward_oracle.ABSENT": "bf2ec1aa4c8591141230715a1e6366f4",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/forward_vector.ABSENT": "cde5f7ec44e5c9856cebd9711b856c7a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/fv_test": "abf604e83cd865181a5ecff64a407b2d",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/manifest": "d434bd6db56db6d827812a7de9e2e87a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/reference_vector.ABSENT": "152a0ae2540d8293709e3b8ba4e7b132",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/release_contract": "8abfe0aed071c013c56809874fc7f87b",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/sidecar": "08a08072a1f26f805b9dfd55e0e88ac1",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/board_view_public": "a619df779393f05ca899db857b7e7502",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/board_view_working": "477ed8a784af4b6ebc53dcbb63608c4f",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/forward_oracle": "3106ee9512fcd70cf9a2078049bccdd9",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/forward_vector": "0b6474a17eaf3413504e7a2f7290f732",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/fv_test": "8e1da70941cb36223e0927632e94391e",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/manifest": "202604b0cd27597a1758c1546be77f40",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/reference_vector": "fd0e7d98ebff1e2d29acb62d4c473ba0",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/release_contract": "6907c766aa94657f3b54b514d0a015eb",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/sidecar": "305ca65cddb9919e88b861e9af908dc0",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/journal.jsonl": "27c1fa381561a78bf78859f15976d0fb",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/manifest.json": "a1d3c708f283a9e28a499fe995a2c984",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/board_view_public": "a619df779393f05ca899db857b7e7502",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/board_view_working": "268057da531f01f925bfbef5552c20be",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/forward_oracle.ABSENT": "42fe4fa2202f5978598a270e21b97beb",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/forward_vector.ABSENT": "d00819b41ac37bfcac7bc5edc4301e9c",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/fv_test": "8e1da70941cb36223e0927632e94391e",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/manifest": "d0c942eb3411f750b2a04c0043e44c4f",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/reference_vector.ABSENT": "3a9d4031b760e688c354b36c48e92128",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/release_contract": "ef01ef50e0caf32a6af32fb6d0372a36",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/sidecar": "305ca65cddb9919e88b861e9af908dc0",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/board_view_public": "cbb075d0ffbd80da97d5cdd73bf23f87",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/board_view_working": "162df5a42224d8489cefd76d93139748",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/forward_oracle": "a7204641eba1b2364eb36558ea9a462e",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/forward_vector": "0efe6eac94eb68f1c42b681069b7d12f",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/fv_test": "0e822a3854cfe4d9154e89a3483946a9",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/manifest": "c619e7a19dce296dc715db3a449d9ea3",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/reference_vector": "f5ecab77fbb7a48befc49ae30e8c0c57",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/release_contract": "85daa5d704a2cf142f5153e93260e56a",
+      "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/sidecar": "fdbac2a4d1015c9c11470f81719bfb61",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/journal.jsonl": "ec876a9ebce8b521a7258e9dbee90fbd",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/manifest.json": "e214641bcd46b294316d1aece758da93",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/board_view_public": "540bcdb444fbd5375c048cc8a26ba291",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/board_view_working": "f2af9df4f7157a24a76e6759ec933f1e",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/forward_oracle.ABSENT": "1d95b600a3c767e4fd52317a0910ea26",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/forward_vector.ABSENT": "91f190ac11a825521312a675fe423cad",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/fv_test": "3cff43704b8f395aa5ab81cddec6ac64",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/manifest": "908e767782dfcf2923f0120149b2c9f6",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/reference_vector.ABSENT": "305d7f7cd133ebb571c684c27aba58b3",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/release_contract": "e892a476b3396a1443f5dc7f878fff36",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/sidecar": "d04865c11366d05a1b9bcc25552abb38",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/board_view_public": "540bcdb444fbd5375c048cc8a26ba291",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/board_view_working": "2a8a4aa8aef82c858b3e803b4b9b16d2",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/forward_oracle": "92530c678152f5758ecb0ae252f17736",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/forward_vector": "6c7c809d3b6c6b33f2d5b398cf3d62bd",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/fv_test": "a3cdbc3cd37fdb74f0af77e399b2f43f",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/manifest": "5ec041aaa0875c1bc2efbe50fb72927f",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/reference_vector": "0c2fcec96ecd425a498594c693e21169",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/release_contract": "45b7fb095c8a0bfb9812164d10b9b692",
+      "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/sidecar": "600ead8b4269cd54764840c6bc42097a",
+      "engine/rl_after/ingestion/pos_rank_history.json": "907101022060c496ecf658733db6e23a",
+      "engine/rl_after/ingestion/rank_history.json": "fc0c3a8373d130aedfc7186465273aed",
+      "engine/rl_after/ingestion/sibling_repin_state.json": "600ead8b4269cd54764840c6bc42097a",
+      "engine/rl_after/ingestion/value_history.json": "8e4303b2571658237bbe6bc1930fe46a",
+      "engine/rl_after/rl_app_data.json": "68be10c79d0ee096455754e084bcf757",
+      "engine/rl_after/rl_app_data.json.srcmd5": "a275bf3cd0d054156fc340f86770b69f",
+      "engine/rl_after/rl_model_data.json": "b745002eb0a0fbb1c34fa44f1ef708d6",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/accepted_board_06d8af60.json": "81822b2baf9c8270034ac9f1f54995fb",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_113b36f8.json": "666dc8969c5f960ae6bac8c7e66f2a3d",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_1d5c9f7a.json": "0efe6eac94eb68f1c42b681069b7d12f",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_4b448a82.json": "7fa4ddd72e47bd67b06678cf2e12a2b4",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_5ea978f7.json": "0b6474a17eaf3413504e7a2f7290f732",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_68be10c7.json": "6c7c809d3b6c6b33f2d5b398cf3d62bd",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_6e724cca.json": "42f2b19f22e6bb4d367af7bfc98ba0c0",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_7a3f4fe2.json": "c729a6d84866e33e360b1468614514d8",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_8a38cca4.json": "00295dec394462dbc6370032c2cd5f7a",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_a05fe951.json": "f0454ed594c204f45aaee1ca38a51e7b",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_a672ed3a.json": "15d3765ed047c52c481021766fab728d",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_06d8af60.json": "6565a4ef51d67bdf6adfaaaf15fd3976",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_123deccb.json": "bc290a0b557b046c7608543dc096239b",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_1373e824.json": "4fcd55c9b5708e791be26e5e157b425e",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_234c3414.json": "143680d49a1d0888120a38b91ececa5b",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_3970156c.json": "252e619d44451c5f54bc42afce9aa334",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_4939d740.json": "ba88c83d58a617265fedc5f31083c888",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_5546f278.json": "496b0f545792e7f64bef67ee3e2fc9a0",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_556ad70d.json": "0c2fcec96ecd425a498594c693e21169",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_72fe3a17.json": "9cc6239d4a6ca9ea7556205a8a80d139",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a49c155f.json": "fd0e7d98ebff1e2d29acb62d4c473ba0",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a970c19c.json": "0e1fd61104f7033823da919a81c512c1",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_b4cc0b2b.json": "d8bf6f592992a589d858dd1f01896192",
+      "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_e616936e.json": "f5ecab77fbb7a48befc49ae30e8c0c57",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_113b36f8.py": "6db17a8e9f1435da58c46d4544c1af49",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_1d5c9f7a.py": "a7204641eba1b2364eb36558ea9a462e",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_4b448a82.py": "ec25d1c4987248edc54fdf18cd7db549",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_5ea978f7.py": "3106ee9512fcd70cf9a2078049bccdd9",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_68be10c7.py": "92530c678152f5758ecb0ae252f17736",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_6e724cca.py": "c3d407285223debfcafbc0f18c032678",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_7a3f4fe2.py": "753bd58f6b658469ee98ec01a04b95f7",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_8a38cca4.py": "f4c31ef9d25bfe7b97ee0bea2529df4f",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_a05fe951.py": "716dcdc7c5e67f025bd1f3370463c560",
+      "session_2026-07-20/fv_provenance_remediation/test_forward_lens_a672ed3a.py": "b393f00bce843401eb66e4e8eced46a5",
+      "session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py": "a3cdbc3cd37fdb74f0af77e399b2f43f",
+      "ui/data/board_view_public.js": "540bcdb444fbd5375c048cc8a26ba291",
+      "ui/data/board_view_working.js": "875a77c9610224be14a4367eb6414c34",
+      "ui/data/movers.js": "09268415b1cd287b20f0e63052ed7b74",
+      "ui/data/movers_transition.js": "d81bd31a40e5aa0fa0e5f894335741b7"
+    },
+    "restored": [
+      {
+        "action": "rewrite",
+        "path": "data/expected_boot.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/release_contract.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/release_lineage.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/rl_build/rl_app_data.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/rl_build/rl_app_data.json.srcmd5"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/journal.jsonl"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/manifest.json"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/board_view_public"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/board_view_working"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/forward_oracle.ABSENT"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/forward_vector.ABSENT"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/fv_test"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/manifest"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/reference_vector.ABSENT"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/release_contract"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/sidecar"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/board_view_public"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/board_view_working"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/forward_oracle"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/forward_vector"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/fv_test"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/manifest"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/reference_vector"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/release_contract"
+      },
+      {
+        "action": "delete",
+        "path": "engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/sidecar"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/pos_rank_history.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/rank_history.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/sibling_repin_state.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/value_history.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/rl_app_data.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/rl_app_data.json.srcmd5"
+      },
+      {
+        "action": "delete",
+        "path": "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_b3e8da99.json"
+      },
+      {
+        "action": "delete",
+        "path": "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_7c32a540.json"
+      },
+      {
+        "action": "delete",
+        "path": "session_2026-07-20/fv_provenance_remediation/test_forward_lens_b3e8da99.py"
+      },
+      {
+        "action": "rewrite",
+        "path": "session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py"
+      },
+      {
+        "action": "rewrite",
+        "path": "ui/data/board_view_public.js"
+      },
+      {
+        "action": "rewrite",
+        "path": "ui/data/board_view_working.js"
+      }
+    ]
+  },
+  "error": "gate acceptance_runner did not pass (exit 1; 'GREEN' absent from output):\n (none)\n  profile : full   (every registered check)\n==========================================================================================================================\nCHECK                    VERDICT     REASON\n-----------------------  ----------  -----------------------------------------------------------------------------------\nrelease_manifest         PASS        39 of 40 carrier fields agree with computed truth across 8 identities; 1 sealed ca\u2026\nboot_guard_checkout      PASS        boot-store guard (Guard 5) PASS  [acceptance-spine]  store b745002e == pinned b745\u2026\nconfig_manifest          PASS        CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)\nruling_config            PASS        RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL\u2026\nrelease_contract_seal    PASS        RELEASE-CONTRACT CHECK: PASS  (contract 55a890820b91; identities + config + postur\u2026\nstore_coherence_six_way  PASS        six-way store coherence: PASS\ndoc_lint                 PASS        doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)\nrulebook_lint            PASS        note R5 TWIN ABSENCE: docs/acceptance_v2_0.json is absent, as the v3 amendment lef\u2026\nruled_red_ledger         PASS        3 step entries probed, all still failing exactly as their ruling records\ninbox_manifest           PASS        inbox_manifest: 1 archived file(s), 0 problem(s), 0 stale generated file(s)\nmirror_parity            PASS        3 fitted-artifact resolvers mirror the engine byte-for-byte; all 3 pins hold\ndial_coverage            PASS        83 of 84 declared dials read with a default in engine source (1 self-declared orph\u2026\noneliner_gamma           PASS        6 of ship_gates_check.py's 7 exported vars are manifest dials and all agree (enfor\u2026\noneliner_r14_restore     FAIL        the R14 disposable fixture does not verify: raise AssertionError('FAIL: ' + label)\noneliner_f1_lens         PASS        the F1 export-parity leg is present, key-for-key, and still reports a mismatch cou\u2026\nbuild_twice_determinism  PASS        determinism: two bare builds are BYTE-IDENTICAL\nlander_selftest          FAIL        TimeoutExpired: Command '['/root/rl_venv312/bin/python3', '/home/user/afl-rl-engin\u2026\n-----------------------  ----------  -----------------------------------------------------------------------------------\n\nAGGREGATE  17 checks  |  PASS 15  FAIL 2  BLOCKED 0  RULED-RED 0\nVERDICT    RED \u2014 2 gating failure(s): oneliner_r14_restore, lander_selftest\n",
+  "facts": {
+    "base": {
+      "carriers": {
+        "data/expected_boot.json": "e0965d29ad8682a7475edf17610db0fe",
+        "data/release_contract.json": "09d1081340b8090b5aa734a2ba0d0a75",
+        "data/release_lineage.json": "f486ecd40dc8f907798e88e7f4cef61d",
+        "data/rl_build/rl_app_data.json": "68be10c79d0ee096455754e084bcf757",
+        "data/rl_build/rl_app_data.json.srcmd5": "a275bf3cd0d054156fc340f86770b69f",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/journal.jsonl": "a46befc7100f100bed9155415f20979c",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/manifest.json": "23c861fc7a85ec058fc8a3f156d25121",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/board_view_public": "12c5c49dd5767ad69a20b8cf3d46916f",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/board_view_working": "4743500a347270b113e502b7a4028b3b",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/forward_oracle.ABSENT": "bf2ec1aa4c8591141230715a1e6366f4",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/forward_vector.ABSENT": "cde5f7ec44e5c9856cebd9711b856c7a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/fv_test": "abf604e83cd865181a5ecff64a407b2d",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/manifest": "d434bd6db56db6d827812a7de9e2e87a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/reference_vector.ABSENT": "152a0ae2540d8293709e3b8ba4e7b132",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/release_contract": "8abfe0aed071c013c56809874fc7f87b",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/originals/sidecar": "08a08072a1f26f805b9dfd55e0e88ac1",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/board_view_public": "a619df779393f05ca899db857b7e7502",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/board_view_working": "477ed8a784af4b6ebc53dcbb63608c4f",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/forward_oracle": "3106ee9512fcd70cf9a2078049bccdd9",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/forward_vector": "0b6474a17eaf3413504e7a2f7290f732",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/fv_test": "8e1da70941cb36223e0927632e94391e",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/manifest": "202604b0cd27597a1758c1546be77f40",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/reference_vector": "fd0e7d98ebff1e2d29acb62d4c473ba0",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/release_contract": "6907c766aa94657f3b54b514d0a015eb",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_a49c155f/staged/sidecar": "305ca65cddb9919e88b861e9af908dc0",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/journal.jsonl": "27c1fa381561a78bf78859f15976d0fb",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/manifest.json": "a1d3c708f283a9e28a499fe995a2c984",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/board_view_public": "a619df779393f05ca899db857b7e7502",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/board_view_working": "268057da531f01f925bfbef5552c20be",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/forward_oracle.ABSENT": "42fe4fa2202f5978598a270e21b97beb",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/forward_vector.ABSENT": "d00819b41ac37bfcac7bc5edc4301e9c",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/fv_test": "8e1da70941cb36223e0927632e94391e",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/manifest": "d0c942eb3411f750b2a04c0043e44c4f",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/reference_vector.ABSENT": "3a9d4031b760e688c354b36c48e92128",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/release_contract": "ef01ef50e0caf32a6af32fb6d0372a36",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/originals/sidecar": "305ca65cddb9919e88b861e9af908dc0",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/board_view_public": "cbb075d0ffbd80da97d5cdd73bf23f87",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/board_view_working": "162df5a42224d8489cefd76d93139748",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/forward_oracle": "a7204641eba1b2364eb36558ea9a462e",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/forward_vector": "0efe6eac94eb68f1c42b681069b7d12f",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/fv_test": "0e822a3854cfe4d9154e89a3483946a9",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/manifest": "c619e7a19dce296dc715db3a449d9ea3",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/reference_vector": "f5ecab77fbb7a48befc49ae30e8c0c57",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/release_contract": "85daa5d704a2cf142f5153e93260e56a",
+        "engine/rl_after/ingestion/.sibling_txn/txn_22_e616936e/staged/sidecar": "fdbac2a4d1015c9c11470f81719bfb61",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/journal.jsonl": "ec876a9ebce8b521a7258e9dbee90fbd",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/manifest.json": "e214641bcd46b294316d1aece758da93",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/board_view_public": "540bcdb444fbd5375c048cc8a26ba291",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/board_view_working": "f2af9df4f7157a24a76e6759ec933f1e",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/forward_oracle.ABSENT": "1d95b600a3c767e4fd52317a0910ea26",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/forward_vector.ABSENT": "91f190ac11a825521312a675fe423cad",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/fv_test": "3cff43704b8f395aa5ab81cddec6ac64",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/manifest": "908e767782dfcf2923f0120149b2c9f6",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/reference_vector.ABSENT": "305d7f7cd133ebb571c684c27aba58b3",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/release_contract": "e892a476b3396a1443f5dc7f878fff36",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/originals/sidecar": "d04865c11366d05a1b9bcc25552abb38",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/board_view_public": "540bcdb444fbd5375c048cc8a26ba291",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/board_view_working": "2a8a4aa8aef82c858b3e803b4b9b16d2",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/forward_oracle": "92530c678152f5758ecb0ae252f17736",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/forward_vector": "6c7c809d3b6c6b33f2d5b398cf3d62bd",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/fv_test": "a3cdbc3cd37fdb74f0af77e399b2f43f",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/manifest": "5ec041aaa0875c1bc2efbe50fb72927f",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/reference_vector": "0c2fcec96ecd425a498594c693e21169",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/release_contract": "45b7fb095c8a0bfb9812164d10b9b692",
+        "engine/rl_after/ingestion/.sibling_txn/txn_23_556ad70d/staged/sidecar": "600ead8b4269cd54764840c6bc42097a",
+        "engine/rl_after/ingestion/pos_rank_history.json": "907101022060c496ecf658733db6e23a",
+        "engine/rl_after/ingestion/rank_history.json": "fc0c3a8373d130aedfc7186465273aed",
+        "engine/rl_after/ingestion/sibling_repin_state.json": "600ead8b4269cd54764840c6bc42097a",
+        "engine/rl_after/ingestion/value_history.json": "8e4303b2571658237bbe6bc1930fe46a",
+        "engine/rl_after/rl_app_data.json": "68be10c79d0ee096455754e084bcf757",
+        "engine/rl_after/rl_app_data.json.srcmd5": "a275bf3cd0d054156fc340f86770b69f",
+        "engine/rl_after/rl_model_data.json": "b745002eb0a0fbb1c34fa44f1ef708d6",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/accepted_board_06d8af60.json": "81822b2baf9c8270034ac9f1f54995fb",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_113b36f8.json": "666dc8969c5f960ae6bac8c7e66f2a3d",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_1d5c9f7a.json": "0efe6eac94eb68f1c42b681069b7d12f",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_4b448a82.json": "7fa4ddd72e47bd67b06678cf2e12a2b4",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_5ea978f7.json": "0b6474a17eaf3413504e7a2f7290f732",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_68be10c7.json": "6c7c809d3b6c6b33f2d5b398cf3d62bd",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_6e724cca.json": "42f2b19f22e6bb4d367af7bfc98ba0c0",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_7a3f4fe2.json": "c729a6d84866e33e360b1468614514d8",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_8a38cca4.json": "00295dec394462dbc6370032c2cd5f7a",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_a05fe951.json": "f0454ed594c204f45aaee1ca38a51e7b",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_a672ed3a.json": "15d3765ed047c52c481021766fab728d",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_06d8af60.json": "6565a4ef51d67bdf6adfaaaf15fd3976",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_123deccb.json": "bc290a0b557b046c7608543dc096239b",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_1373e824.json": "4fcd55c9b5708e791be26e5e157b425e",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_234c3414.json": "143680d49a1d0888120a38b91ececa5b",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_3970156c.json": "252e619d44451c5f54bc42afce9aa334",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_4939d740.json": "ba88c83d58a617265fedc5f31083c888",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_5546f278.json": "496b0f545792e7f64bef67ee3e2fc9a0",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_556ad70d.json": "0c2fcec96ecd425a498594c693e21169",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_72fe3a17.json": "9cc6239d4a6ca9ea7556205a8a80d139",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a49c155f.json": "fd0e7d98ebff1e2d29acb62d4c473ba0",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_a970c19c.json": "0e1fd61104f7033823da919a81c512c1",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_b4cc0b2b.json": "d8bf6f592992a589d858dd1f01896192",
+        "session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_e616936e.json": "f5ecab77fbb7a48befc49ae30e8c0c57",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_113b36f8.py": "6db17a8e9f1435da58c46d4544c1af49",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_1d5c9f7a.py": "a7204641eba1b2364eb36558ea9a462e",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_4b448a82.py": "ec25d1c4987248edc54fdf18cd7db549",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_5ea978f7.py": "3106ee9512fcd70cf9a2078049bccdd9",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_68be10c7.py": "92530c678152f5758ecb0ae252f17736",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_6e724cca.py": "c3d407285223debfcafbc0f18c032678",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_7a3f4fe2.py": "753bd58f6b658469ee98ec01a04b95f7",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_8a38cca4.py": "f4c31ef9d25bfe7b97ee0bea2529df4f",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_a05fe951.py": "716dcdc7c5e67f025bd1f3370463c560",
+        "session_2026-07-20/fv_provenance_remediation/test_forward_lens_a672ed3a.py": "b393f00bce843401eb66e4e8eced46a5",
+        "session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py": "a3cdbc3cd37fdb74f0af77e399b2f43f",
+        "ui/data/board_view_public.js": "540bcdb444fbd5375c048cc8a26ba291",
+        "ui/data/board_view_working.js": "875a77c9610224be14a4367eb6414c34",
+        "ui/data/movers.js": "09268415b1cd287b20f0e63052ed7b74",
+        "ui/data/movers_transition.js": "d81bd31a40e5aa0fa0e5f894335741b7"
+      },
+      "commit": "531235cf85da8f8ee2a06f2d2d0b086367a9502d",
+      "expected_boot": {
+        "as_of_round": 23,
+        "balanced_board_md5": "556ad70d295923455982ae33e4b8bfd3",
+        "band": "34faa8659cc8f19794f5cb9584fa19b2",
+        "board": "68be10c79d0ee096455754e084bcf757",
+        "bust_prior": "5942aa6ad7be1d482eed737997486c70",
+        "config": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+        "engine_head": "8f59180547a584c981ccba39fa018708",
+        "fv": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346",
+        "peak_model": "f305fe5330222f4fa14d3654a0e91ef7",
+        "pvc_snapshot": "ade79790efc8ad4585c2c6800a935eaa",
+        "q97m": "cfdc73216c099e5e8f1fda3968f31c00",
+        "register": "652d83e87780e415a01a2de6d8b3cc57",
+        "register_note": "LTI_REGISTER.md \u2014 owner-authored availability sidecar, pinned as a versioned input (R-REG=R2, Chapter-3 2026-07-09). Guard 5 asserts it on entry like the store; bootstrap seeds it to the workspace; the lookalike tripwire (single_source.py) keeps it single. Owner edits it -> this pin moves in the same commit (a curation edit, NOT a store bake).",
+        "release_version": "v2.11-final-rc1-PROVISIONAL",
+        "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+        "store": "b745002eb0a0fbb1c34fa44f1ef708d6",
+        "tag": "ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 \u2014 NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) \u2014 it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 num\u00e9raire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.]",
+        "v0surf": "5dd34ca82735f5c8f021b1c7320df8f8"
+      }
+    },
+    "build_proofs": {
+      "board_built": "b3e8da99bc7f632e5d1eebc732f9cf01",
+      "build_elapsed_s": 139.1,
+      "day0_rebase": "off",
+      "installed": true,
+      "kill_switch": {
+        "board_off": "68be10c79d0ee096455754e084bcf757",
+        "name": "RL_O44_LVLMONO=0"
+      },
+      "predicted_board": "b3e8da99bc7f632e5d1eebc732f9cf01",
+      "reference_board": null
+    },
+    "contract": {
+      "check": "PASS",
+      "seal_after": "213443de27695aabc15467e934f23b100395256394e46e478157f3302c00800f",
+      "seal_before": "4cbc7f27c990e377c7386681657f0ab5ee81c5d12f6aeced2d7a5707dd80e9dc",
+      "trailing_newline_in_committed_file": true
+    },
+    "lineage": {
+      "column": {
+        "board": "b3e8da99bc7f632e5d1eebc732f9cf01",
+        "event": null,
+        "id": "the-staircase-adoption-21-8"
+      },
+      "entry": {
+        "appended": true,
+        "boundary": [
+          "23",
+          "the-staircase-adoption-21-8"
+        ],
+        "bridged_by_round": null,
+        "entries": 13,
+        "moved": [
+          "board"
+        ]
+      }
+    },
+    "pins": {
+      "board": "b3e8da99bc7f632e5d1eebc732f9cf01",
+      "moved": [
+        "board"
+      ],
+      "store": "b745002eb0a0fbb1c34fa44f1ef708d6",
+      "unmoved_checked": 10
+    },
+    "preflight": {
+      "base_commit": "531235cf85da8f8ee2a06f2d2d0b086367a9502d",
+      "board_before": "68be10c79d0ee096455754e084bcf757",
+      "carriers_captured": 111,
+      "lock": "land-lever-9410"
+    },
+    "sibling": {
+      "balanced_board_md5": "7c32a540578b799922daea41d8acdfa2",
+      "committed_targets": [
+        "board_view_public",
+        "board_view_working",
+        "forward_oracle",
+        "forward_vector",
+        "fv_test",
+        "manifest",
+        "reference_vector",
+        "release_contract",
+        "sidecar"
+      ],
+      "fails_after": 0,
+      "fails_before": 8,
+      "reconciled": true
+    },
+    "ui": {
+      "bundle_md5": "d171bd49f7c8f4554295425655ccf2da",
+      "embedded_board": "b3e8da99bc7f632e5d1eebc732f9cf01",
+      "public_md5": "85edf757e451df3ee2effb7b0e1658ef",
+      "writers": 2
+    }
+  },
+  "failed_step": "gates",
+  "ok": false,
+  "timings": [
+    {
+      "seconds": 0.08,
+      "step": "preflight",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 221.11,
+      "step": "build_proofs",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.02,
+      "step": "pins",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.27,
+      "step": "lineage",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.07,
+      "step": "contract",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 280.52,
+      "step": "sibling",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.24,
+      "step": "ui",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 1720.8,
+      "step": "gates",
+      "verdict": "FAIL"
+    }
+  ]
+}

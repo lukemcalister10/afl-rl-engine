@@ -345,6 +345,47 @@
 
     points: function (bundle) { return ((bundle || {}).points || []).slice(); },
 
+    /* ---- THE SCOPE (owner word 2026-08-21) ---------------------------------------------------
+       > "only show the R22/23 change for now. Once we're happy with the model, I wouldn't mind the
+       >  from/to page going back and showing what each round since we started the ingestion would
+       >  look like under that live state of the model"
+
+       So the tab keeps ALL its from/to machinery — the two dropdowns, the synthetic comparator, the
+       model-change labelling — and simply narrows the SELECTABLE range to one boundary while the
+       model is still being ruled on. This is a display scope, not a capability removal: nothing is
+       deleted, `core.compare` still answers for any pair, and lifting the scope is deleting the two
+       ids below.
+
+       THE FUTURE ASK, RECORDED NOT BUILT: the owner's second sentence is a RETROSPECTIVE view — every
+       round since ingestion re-priced under the CURRENT model state — which is a different object
+       from this tab. This tab compares two STORED boards, each priced by the model that was live when
+       it was stored; a retrospective view would have to re-price historical rounds through today's
+       engine, i.e. an engine act with its own boards, not a UI join over `bundle.values`. It is
+       QUEUED post-model-confidence in docs/proposals/ui_backlog/UI_PARKED_2026-08-21.md. Do not
+       approximate it by widening this selector — that would show old boards under old models and
+       label them as the live model's answer, which is the opposite of what he asked for.
+
+       ONE THING THE OWNER SHOULD KNOW ABOUT THIS PARTICULAR PAIR, stated here rather than discovered
+       on screen: R22 → R23 is NOT a single round. Five out-of-round board moves sit between the two
+       stored points (the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, the D8 adoption
+       and the 20/8 injury-sheet re-cut), so the tab labels the span as a model change — correctly — and
+       the comparison carries NO played/DNP facts, because there is no one round for them to be facts
+       about. Value and rank movement across the pair are real and complete. The participation-bearing
+       view of R23 is the STORED report, whose baseline is the 20/8 injury-sheet re-cut rather than R22;
+       re-pointing this scope at that pair is changing `from` below to "the-sheet-recut-20-8". That is
+       the owner's call, not a seat's, and it is why the scope is two ids in one place. */
+    SCOPE: { from: "22", to: "23", why: "R22 → R23 only, while the model is under ruling" },
+
+    /* The points the selector may offer under the scope. Empty/short => the bundle cannot honour the
+       scope and the caller falls back to the unscoped defaults rather than showing a wrong pair. */
+    scopedPoints: function (bundle) {
+      var want = [String(core.SCOPE.from), String(core.SCOPE.to)];
+      var got = core.points(bundle).filter(function (p) { return want.indexOf(String(p.id)) !== -1; });
+      // preserve the declared from→to order regardless of the bundle's own ordering
+      got.sort(function (a, b) { return want.indexOf(String(a.id)) - want.indexOf(String(b.id)); });
+      return got.length === 2 ? got : [];
+    },
+
     /* Does the selected range cross a board move that happened outside a round? If so the tab must
        SAY so — part of the difference is the model, not the players. A label, never a gate. */
     spansModelChange: function (bundle, fromId, toId) {
@@ -379,7 +420,15 @@
         players.push({
           key: key, name: rec.name, club: rec.club, affl_team: rec.affl_team,
           pos: rec.pos, posCode: rec.posCode,
-          played: null, dnp: false, score: null,
+          /* PARTICIPATION IS UNKNOWN ON THIS PATH, AND SAYS SO. A from/to range is not a round: it may
+             span several rounds and any number of out-of-round board moves, so there is no single
+             played/DNP fact to state. All three fields are null — the ABSENT sentinel, not `false` —
+             and core.participation() resolves them to "not recorded". `dnp: false` used to sit here and
+             the renderer's two-branch truthiness test printed DNP for every row on this path (the blind
+             review's Phase-0 bug, located at UI_PARKED_2026-08-21 item 6). This repo already wrote the
+             rule against itself in ui/app/history.js:49 — "it fails SAFE — an unrecognised shape yields
+             'not recorded', never a DNP." */
+          played: null, dnp: null, score: null,
           prev_value: a.v, cur_value: b.v, value_change: dv,
           value_change_pct: (dv != null && a.v) ? Math.round(dv / a.v * 10000) / 100 : null,
           prev_rank: a.rank, cur_rank: b.rank,
@@ -441,10 +490,28 @@
         // this resolves without the name bridge.
         if (f.club && (canonTeam(ownClub(p)) || "—") !== (canonTeam(f.club) || "—")) return false;
         if (f.pos && p.pos !== f.pos) return false;
-        if (f.status === "played" && !p.played) return false;
-        if (f.status === "dnp" && p.played) return false;
+        /* PARTICIPATION IS TRI-STATE, NOT A TRUTHINESS TEST (Phase-0 bug, UI review 2026-08-10).
+           `played === true` is played; `played === false` is a proven DNP; `played == null` is NOT
+           RECORDED — the from/to path (core.compare) cannot know a participation fact for a range
+           that is not a single stored round, so it emits null and must not be read as "did not play".
+           The old `f.status === "dnp" && p.played` swept every null row into the DNP bucket, which is
+           the filter-side twin of the renderer bug at :~700. See core.participation() below and the
+           law this repo already wrote for itself in ui/app/history.js:49. */
+        if (f.status === "played" && p.played !== true) return false;
+        if (f.status === "dnp" && p.played !== false) return false;
+        if (f.status === "unrecorded" && p.played != null) return false;
         return true;
       });
+    },
+
+    /* THE TRI-STATE, in one place so the renderer, the filter and the counts cannot drift apart.
+       Returns "played" | "dnp" | "unrecorded". A stored round report carries the real participation
+       facts; a synthetic from/to comparison carries none and says so. */
+    participation: function (p) {
+      if (!p) return "unrecorded";
+      if (p.played === true) return "played";
+      if (p.played === false || p.dnp === true) return "dnp";
+      return "unrecorded";
     },
 
     /* The rows for a named view (value/rank risers/fallers, or all), filtered + deterministically sorted. */
@@ -537,12 +604,19 @@
     function metaStrip(report) {
       var s = fmt.el("div", "strip moversmeta");
       var rel = report.release_identity || {};
+      // tri-state participation, counted off the report's own rows (see the table footer note).
+      var tal = { played: 0, dnp: 0, unrecorded: 0 };
+      (report.players || []).forEach(function (p) { tal[core.participation(p)] += 1; });
+      var hasPart = !!(tal.played || tal.dnp);
       s.innerHTML =
         '<span class="lbl">Round</span><b class="num">R' + report.submitted_round + "</b>" +
         '<span class="lbl">baseline</span><b class="num">R' + report.previous_round + "</b>" +
         '<span class="lbl">players</span><b class="num">' + fmt.n(report.player_count) + "</b>" +
-        '<span class="lbl">played</span><b class="num">' + fmt.n((report.views || {}).played_count) + "</b>" +
-        '<span class="lbl">DNP</span><b class="num">' + fmt.n((report.views || {}).dnp_count) + "</b>" +
+        (hasPart
+          ? '<span class="lbl">played</span><b class="num">' + fmt.n(tal.played) + "</b>" +
+            '<span class="lbl">DNP</span><b class="num">' + fmt.n(tal.dnp) + "</b>"
+          : '<span class="lbl">participation</span><b class="num" title="A from/to range is not a ' +
+            'round, so no played/DNP fact is claimed for it.">not recorded</b>') +
         '<span class="lbl">board</span><b class="num">' + fmt.esc(String(report.board_md5_before || "").slice(0, 8)) +
           " → " + fmt.esc(String(report.board_md5_after || "").slice(0, 8)) + "</b>" +
         '<span class="lbl">release</span><b class="num">' + fmt.esc(rel.release_version || "—") + "</b>";
@@ -551,7 +625,11 @@
 
     function roundSelect(b, report) {
       const wrap = fmt.el("div", "strip moversbar");
-      const pts = core.points(b);
+      const scoped = core.scopedPoints(b);
+      const inScope = scoped.length === 2;
+      // Under the scope the dropdowns offer ONLY the two declared points; unscoped they offer every
+      // stored point exactly as before. See core.SCOPE for the owner word and the future ask.
+      const pts = inScope ? scoped : core.points(b);
 
       // TWO dropdowns — compare any two stored points. Rounds and out-of-round columns (e.g. the
       // post-restructure board) are equally selectable; the tab no longer assumes a fixed series.
@@ -562,15 +640,35 @@
           o.value = String(p.id); if (String(p.id) === String(selected)) o.selected = true;
           sel.appendChild(o);
         });
-        sel.addEventListener("change", function () {
-          state[which] = sel.value; state.sort = null; render(MD.__moversHolder);
-        });
+        if (inScope) {
+          // one boundary, so there is nothing to choose: the control stays visible (it names the two
+          // ends of what is on screen) and is inert rather than hidden. The disabled affordance is
+          // inline — the stylesheet's .lensoff rule is scoped to two segs and is not this seat's.
+          sel.disabled = true;
+          sel.classList.add("lensoff");
+          sel.style.opacity = ".55";
+          sel.style.cursor = "not-allowed";
+          sel.title = "Scoped to " + core.SCOPE.why + ".";
+        } else {
+          sel.addEventListener("change", function () {
+            state[which] = sel.value; state.sort = null; render(MD.__moversHolder);
+          });
+        }
         return sel;
       }
       wrap.appendChild(fmt.el("span", "lbl", "From"));
       wrap.appendChild(pointSel("from", state.from));
       wrap.appendChild(fmt.el("span", "lbl", "To"));
       wrap.appendChild(pointSel("to", state.to));
+      if (inScope) {
+        const sc = fmt.el("span", "lbl");
+        sc.style.color = "var(--faint)";
+        sc.style.textTransform = "none";
+        sc.style.letterSpacing = ".04em";
+        sc.textContent = "· scoped to the R22 → R23 change per owner word — the wider from/to range " +
+          "and the retrospective “every round under today's model” view are queued";
+        wrap.appendChild(sc);
+      }
 
       // view toggle (value risers/fallers, rank risers/fallers, all)
       const seg = fmt.el("div", "seg");
@@ -605,11 +703,19 @@
       Object.keys(poss).sort().forEach(function (c) { const o = new Option(c, c); if (c === state.pos) o.selected = true; psel.appendChild(o); });
       psel.addEventListener("change", function () { state.pos = psel.value || null; render(MD.__moversHolder); });
       row.appendChild(psel);
-      // played / DNP
+      // played / DNP / not recorded — the same tri-state the cells render.
       const stseg = fmt.el("div", "seg");
-      [["", "All"], ["played", "Played"], ["dnp", "DNP"]].forEach(function (d) {
+      const anyPart = (report.players || []).some(function (p) { return p.played != null; });
+      [["", "All"], ["played", "Played"], ["dnp", "DNP"], ["unrecorded", "Not recorded"]].forEach(function (d) {
         const btn = fmt.el("button", (state.status || "") === d[0] ? "on" : "", d[1]);
-        btn.addEventListener("click", function () { state.status = d[0] || null; render(MD.__moversHolder); });
+        if (d[0] && d[0] !== "unrecorded" && !anyPart) {
+          // no participation facts in this comparison -> the two football buttons are inert and say so
+          btn.disabled = true; btn.classList.add("lensoff");
+          btn.style.opacity = ".3"; btn.style.cursor = "not-allowed"; btn.style.textDecoration = "line-through";
+          btn.title = "This comparison carries no played/DNP facts, so there is nothing to filter on.";
+        } else {
+          btn.addEventListener("click", function () { state.status = d[0] || null; render(MD.__moversHolder); });
+        }
         stseg.appendChild(btn);
       });
       row.appendChild(stseg);
@@ -666,16 +772,26 @@
       wrap.appendChild(head);
       const body = fmt.el("div", "moverrows");
       rows.forEach(function (p) {
-        const r = fmt.el("div", "moverrow" + (p.dnp ? " dnp" : ""));
+        /* TRI-STATE PARTICIPATION CELL. played / DNP / not recorded — never a two-branch truthiness
+           test, which is what printed DNP on every synthetic from/to row. The "not recorded" cell
+           carries its reason on hover and is styled as the neutral `na` pill, not the DNP one. */
+        const part = core.participation(p);
+        const pcell = part === "played"
+          ? '<span class="pill up">PLAYED ' + fmt.n(p.score) + "</span>"
+          : part === "dnp"
+            ? '<span class="pill na">DNP</span>'
+            : '<span class="pill na" title="Participation is not recorded for this comparison. A ' +
+              'from/to range is not a round, so there is no single played/DNP fact to state — and an ' +
+              'absent fact is never reported as a missed game.">not recorded</span>';
+        const r = fmt.el("div", "moverrow" + (part === "dnp" ? " dnp" : ""));
         r.setAttribute("data-key", p.key);
+        r.setAttribute("data-participation", part);
         r.innerHTML =
           '<div class="mr rank num">' + fmt.n(p.cur_rank) + "</div>" +
           '<div class="mr who"><span class="nm">' + fmt.esc(p.name) + "</span>" +
             '<span class="sub">' + fmt.esc(p.pos || "—") + " · " +
               fmt.esc(ownClub(p) ? MD.ownership.labelOf(p) : fmt.club(p.club || "—")) + "</span></div>" +
-          '<div class="mr pdn">' + (p.played
-              ? '<span class="pill up">PLAYED ' + fmt.n(p.score) + "</span>"
-              : '<span class="pill na">DNP</span>') + "</div>" +
+          '<div class="mr pdn">' + pcell + "</div>" +
           '<div class="mr val num">' + fmt.n(p.cur_value) + "</div>" +
           '<div class="mr dv"><span class="pill ' + fmt.cls(p.value_change) + '">' + fmt.signed(p.value_change) + "</span></div>" +
           '<div class="mr dvp num ' + fmt.cls(p.value_change) + '">' + (p.value_change_pct == null ? "—" : (p.value_change_pct > 0 ? "+" : "") + p.value_change_pct.toFixed(1) + "%") + "</div>" +
@@ -685,9 +801,19 @@
         body.appendChild(r);
       });
       wrap.appendChild(body);
+      /* Participation tally counted over the report's OWN rows, tri-state. The stored views'
+         played_count/dnp_count are null on a synthetic comparison, so reading them printed "— played
+         · — DNP" beside a table of rows that all said DNP. Counting here keeps the footer and the
+         cells the same three states, and a comparison with no participation facts says so in words. */
+      const tally = { played: 0, dnp: 0, unrecorded: 0 };
+      (report.players || []).forEach(function (p) { tally[core.participation(p)] += 1; });
+      const partTxt = (tally.played || tally.dnp)
+        ? '<span class="num">' + fmt.n(tally.played) + "</span> played · " +
+          '<span class="num">' + fmt.n(tally.dnp) + "</span> DNP" +
+          (tally.unrecorded ? " · <span class=\"num\">" + fmt.n(tally.unrecorded) + "</span> not recorded" : "")
+        : "participation not recorded for this comparison";
       const count = fmt.el("div", "movercount", fmt.n(rows.length) + " of " + fmt.n(total) +
-        " shown · " + '<span class="num">' + fmt.n((report.views || {}).played_count) + "</span> played · " +
-        '<span class="num">' + fmt.n((report.views || {}).dnp_count) + "</span> DNP" +
+        " shown · " + partTxt +
         (state.view !== "all" && !state.sort && total > rows.length ? " · switch to <b>All players</b> for the complete table" : ""));
       wrap.appendChild(count);
       return wrap;
@@ -703,9 +829,17 @@
       const lin = core.lineage(b, appIdentity(), transitionRecord());
       if (lin.state === "empty") { emptyState(holder, lin.why); return; }   // honest empty, not an alarm
       if (!lin.ok) { failState(holder, lin.why); return; }                  // out-of-lineage -> fail closed
-      // FROM/TO defaults: the two most recent stored points, so ordinary use is unchanged.
+      // FROM/TO: the owner's scope first (core.SCOPE — R22 → R23 only, 2026-08-21). A bundle that
+      // cannot honour it falls back to the previous default (the two most recent stored points)
+      // rather than showing a pair the owner did not ask for.
+      const scoped = core.scopedPoints(b);
+      if (scoped.length === 2) {
+        state.from = String(core.SCOPE.from);
+        state.to = String(core.SCOPE.to);
+      }
       const pts = core.points(b);
-      if (pts.length >= 2) {
+      if (scoped.length === 2) { /* scope set above */ }
+      else if (pts.length >= 2) {
         if (state.to == null) state.to = pts[pts.length - 1].id;
         if (state.from == null) state.from = pts[pts.length - 2].id;
       } else if (pts.length === 1) {
