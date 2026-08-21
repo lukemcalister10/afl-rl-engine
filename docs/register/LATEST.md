@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v816 2026-08-21 · **THE CLAIMS DOUBLE-GATE RULING — OPTION B, owner word verbatim: "B on the claims issue." (2026-08-21).** The claims checker will REUSE the in-transaction gate results for the expensive derived facts and keep its own independent legs for the cheap ones (direct artifact hashes, row counts) plus the negative control (a deliberately false claim must still fai
+# OPEN ITEMS REGISTER · v817 2026-08-21 · **THE TWO RETIREMENT-ERA CONSTANTS ARE RULED (G3.i + G3.iii), owner words verbatim: "2 green rounds" · "4 rounds per sweep." (2026-08-21).** STANDING FROM THIS PEN: (i) a scaffolding dial becomes COLLAPSE-ELIGIBLE after TWO consecutive green rounds live on the board — eligibility only; each collapse still carries its own switch-set rebuild proof per P4c, o
 
-(one line per pen; full entry: docs/register/entries/v816.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v817.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
