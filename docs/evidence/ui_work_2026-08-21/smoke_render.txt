@@ -1,0 +1,14 @@
+all files loaded
+ring-fence: {"ok":true}
+v0 status: {"present":true,"active":true,"pinOk":true,"pinWhy":null,"board":"68be10c79d0ee096455754e084bcf757","store":"b745002eb0a0fbb1c34fa44f1ef708d6","generator":"ui/tools/gen_v0_sidecar.py","source":"engine entry_anchor(p) — v0_start off the frozen year-zero pick surface for a numbered-pick entrant, the signed division entry level (#326) for a pool entrant","nRows":804,"nPickSlot":561,"nEntryAnchor":243,"nAbsent":0,"publicTier":"pending owner ruling"}
+  render OK   board (working, default)
+  render OK   board (working, lens forced to +1 — must clamp)
+    lens after clamp = 2
+  render OK   board (working, cohort+age+elig+v0 column)
+  render OK   board (public)
+  render OK   card (working) nick-daicos
+  render OK   card (public) nick-daicos
+  render OK   trade
+  render OK   clubs
+  render OK   movers
+movers state after render: {"from":"22","to":"23"}

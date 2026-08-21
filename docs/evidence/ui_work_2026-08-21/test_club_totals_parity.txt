@@ -1,0 +1,21 @@
+CLUB TOTALS PARITY — MD.clubTotals vs ingest_inputs.py build_clubs()
+------------------------------------------------------------------------
+  [PASS] MD.clubTotals returns the 16 ranked AFFL clubs
+  [PASS] oracle builds 16 clubs
+  [PASS] every club agrees on every metric AND on the Best-23 selection
+  [PASS] the Free-Agents pool is not ranked as a club
+  [PASS] Best-23 selects exactly 23 distinct players per club
+  [PASS] every club's Best-23 legally fills all 18 positional slots from the ELIGIBILITIES column
+  [PASS] NON-VACUITY: taking the top 23 by raw value is NOT slot-legal for every club, so legality is a real constraint  (8 of 16 clubs would be illegal)
+  [PASS] no club's Best-23 exceeds the top-23 upper bound
+  [PASS] where the top-23 is already legal, Best-23 equals that provable optimum  (8 of 8 such clubs)
+  [PASS] axis artifact resolved for Adelaide Crows — the modelling axis fills 16/18, the eligibility axis fills 18/18
+  [PASS] axis artifact resolved for Hawthorn Hawks — the modelling axis fills 17/18, the eligibility axis fills 18/18
+  [PASS] overall == player + picks, and player == best23 + nonBest23
+  [PASS] they still agree after a player's value is moved
+  [PASS] moving a player's value CHANGES the computed totals (not a constant)
+  [PASS] a deliberately wrong Best-23 greedy is REJECTED (the check can fail)
+  [PASS] corrupting every baked club total in club_valuation.js changes NOTHING — the browser computes the player side from the board and never reads the baked block
+  [PASS] …and the computation is non-empty, so that assertion is not passing over an empty club list
+------------------------------------------------------------------------
+17/17 passed

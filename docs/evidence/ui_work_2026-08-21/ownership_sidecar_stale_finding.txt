@@ -1,0 +1,24 @@
+FINDING (NOT MINE TO FIX) — ui/data/ownership.js IS STALE BY TWO BOARD ERAS
+
+This is the cause of the only two UI suites still red on the settled tree, and it is a LIVE
+degradation of the shipping app, not a test artefact. Reporting it rather than fixing it:
+ui/data/ownership.js is a landing carrier (tools/landing/carriers.py) and is explicitly
+outside this seat's domain. Its regenerator is ui/tools/ownership_store_apply.py.
+
+sidecar stamp   board : a05fe951f78482c70520480e184c80ec
+sidecar stamp   store : cc02567f80bef39228f25854d121a766
+sidecar asOfRound     : 22
+loaded board          : 68be10c79d0ee096455754e084bcf757
+loaded store          : b745002eb0a0fbb1c34fa44f1ef708d6
+loaded asOfRound      : 23
+
+THE PIN CORRECTLY REFUSES IT. ui/app/ownership.js:25 — "A mirror that does not name the
+identity it was generated from is not a mirror" — and this one names an identity that is no
+longer live, so active() is false and every row falls back to the board's own store-derived
+affl_team. That is a DEGRADED DISPLAY, never a wrong club, exactly as #283 designed it. The
+failing assertions in ownership_sidecar.test.js and ownership_single_source.test.js are the
+suites exercising the sidecar's LIVE behaviour, which cannot work against a refused mirror.
+
+WHAT THE OWNER SEES TODAY: AFFL clubs on the board and card come from the store fallback, so
+any trade the owner authored into docs/inputs/AFFL_Player_Locations.csv AFTER store cc02567f
+is not being reflected by the live lane. Regenerating the sidecar closes it in one command.

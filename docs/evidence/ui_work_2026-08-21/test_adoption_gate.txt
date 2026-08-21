@@ -1,0 +1,9 @@
+ADOPTION GATE — shipped UI bundles vs the board of record
+  ------------------------------------------------------------------
+  board of record (data/expected_boot.json) : 68be10c7
+  [PASS] board of record is an 8-hex id in data/expected_boot.json
+  shipped working bundle board_md5         : 68be10c7
+  [PASS] working bundle is internally consistent (stamp.board == board_md5)
+  [PASS] working bundle IS the board of record (adoption complete)
+  ------------------------------------------------------------------
+  3/3 passed — the shipped UI is the board of record.

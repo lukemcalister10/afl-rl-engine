@@ -1,0 +1,22 @@
+
+#283 — ownership single source (browser side)
+------------------------------------------------------------------------
+  [PASS] the mirror declares the store as its source of truth
+  [PASS] the mirror names in full the store it was generated from (deterministic provenance, no wall clock)
+  [PASS] the mirror carries NO wall-clock stamp — otherwise 'regenerate and byte-compare' could never be an equality
+  [PASS] READER == ORACLE on all 804 board players (the mirror is the board's own affl_team)
+  [PASS] nOverriding is 0 BY CONSTRUCTION — a mirror cannot override the field it is generated from
+  [FAIL] the owner's 2026-07-29 moves are on the board AND in the mirror (incl. the name-twin sam-butler-1)
+  [PASS] 16 clubs + Free Agents = 17 buckets — the store's two free-agent spellings do not fork
+  [PASS] exactly ONE free-agent bucket after display canonicalisation
+  [PASS] NON-VACUITY: divergence injected into the MIRROR is detected (the check can go red)
+  [PASS] NON-VACUITY: divergence injected into the BOARD is detected (proven the other direction too)
+  [FAIL] the shipped mirror passes the pin check and is ACTIVE
+  [PASS] a mirror stamped with the WRONG STORE is refused by the pin check
+  [PASS] ...and is therefore NOT ACTIVE — a stale sidecar can no longer be honoured (the #232 hole)
+  [PASS] ...and the refusal NAMES the store mismatch rather than failing silently
+  [PASS] a mirror stamped with the PRE-ADOPTION board (8a38cca4) is refused — the exact stale state #232 honoured
+  [PASS] a mirror carrying NO pin at all is refused — it cannot be authenticated
+  [PASS] a refused mirror degrades to the board's store-derived club — a degraded display, never a wrong club
+------------------------------------------------------------------------
+15/17 passed

@@ -1,0 +1,33 @@
+THE FROM/TO SCOPE — R22 -> R23, MEASURED ON THE SHIPPED BUNDLE
+
+core.SCOPE           : {"from":"22","to":"23","why":"R22 → R23 only, while the model is under ruling"}
+stored points total  : 20
+offered under scope  : ["22 \"Round 22\"","23 \"Round 23\""]
+
+the comparison it produces:
+  synthetic          : true
+  players            : 804
+  participation      : {"played":0,"dnp":0,"unrecorded":804}
+  value_change fed   : 804 of 804
+  rank_change fed    : 804 of 804
+
+BEFORE THE FIX every one of those 804 rows rendered the DNP pill, because the
+renderer was a two-branch truthiness test over played:null. AFTER, all 804 read
+"not recorded" and the Played/DNP filter buttons disable themselves.
+
+CONTRAST — the STORED R23 report, which DOES carry football facts:
+  baseline           : the-sheet-recut-20-8  (NOT R22)
+  participation      : {"played":411,"dnp":393,"unrecorded":0}
+  -> re-pointing core.SCOPE.from at "the-sheet-recut-20-8" gives the participation-bearing
+     view of R23. That is the owner's call; the scope is two ids in one place.
+
+the R22->R23 range is LABELLED as a model change (it is not a single round):
+  · 10/8 DOB courier + v0surf re-cut
+  · 10/8 never-rises restore (R12)
+  · 20/8 THE LANDING — campaign board adopted
+  · 20/8 D8 ADOPTION — ceiling-only dial shipped default-on
+  · 20/8 INJURY-SHEET RE-CUT — armstrong + clarke de-listed
+
+the machinery is NOT removed — core.compare still answers any pair:
+  compare(20,23) -> 804 rows
+  compare(15,19) -> 804 rows

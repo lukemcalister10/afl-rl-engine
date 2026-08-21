@@ -1,0 +1,55 @@
+FINDING — THE CERTIFIED LEVER SPLIT NO LONGER CLOSES ON THE SHIPPED BOARD
+
+Surfaced by lighting the attribution waterfall (defect (d)). It is a fact about the DATA, not a
+rendering choice, and DESIGN_DIRECTION §5 says exactly what the panel must do with it:
+  "The waterfall's end figure must equal the displayed value - if the export's lever deltas
+   don't sum, the panel shows the residual as an explicit 'unattributed' bar in alarm red.
+   An unreviewable move should look broken, because it is."
+
+sidecar: engine/rl_after/export_attribution.json
+  source      : certified G-ATTR stage boards (gen_gattr_chain.sh; engine 2030e5df, store b0c39d78)
+  lever_order : ['L1', 'L4', 'L2', 'L3', 'L5']
+  n           : 804   base_sum 723075 -> full_sum 732725
+
+board  : engine/rl_after/rl_app_data.json  md5 68be10c79d0ee096455754e084bcf757
+
+rows compared                            : 804
+rows where levers sum to v-vPrev exactly : 2
+rows carrying a residual                 : 802
+residual  median 151 - p90 577 - max 2224
+
+worked example - nick-daicos
+  vPrev (frozen at certification) : 8050
+  levers                          : {'L1': 0, 'L2': 45, 'L3': 0, 'L4': -26, 'L5': 0}   sum 19
+  v (live board)                  : 9892
+  v - vPrev                       : 1842
+  UNATTRIBUTED RESIDUAL           : 1823
+
+CAUSE, stated plainly: the sidecar is frozen at its certification era - its own `source` names
+engine 2030e5df / store b0c39d78 - and the board has advanced several engine eras since. Every
+board move after that certification lands in the residual, by construction. The consistency
+inventory already flagged this artifact as 'two engine eras + several stores behind'
+(docs/evidence/consistency_inventory_2026-07-31/B_data_artifacts.md, row B8).
+
+THE UI DOES NOT PAPER OVER IT. The panel renders the five bars, then the residual in alarm red,
+then a note naming the cause. REGENERATING export_attribution.json ON THE CURRENT ENGINE IS AN
+ENGINE-SIDE ITEM AND IS NOW QUEUED IN THE BACKLOG. This seat did not attempt it: it is outside a
+UI seat's domain and would move a file a concurrent landing owns.
+
+--- THE LABEL MAP IS SOURCED, NOT INVENTED ---
+From session_2026-07-13/v2_9_refit_cert/scripts/gen_gattr_chain.sh (git 4d2ca86), which produced
+the six stage boards this sidecar is derived from - each stage toggles ONE env dial, in order:
+    base  -> RL_PVCADOPT=1        == +L1
+          -> RL_MSD_POOL_EXCL=1   == +L4
+          -> RL_DIAL14=1          == +L2
+          -> RL_AGE=1             == +L3
+          -> RL_L5_PICKLESS=1     == +L5  (FULL)
+and session_2026-07-21/final_integration/tools/config_inventory.py names each one 'v2.9 L1..L5':
+    'RL_PVCADOPT':('A','switch','1','v2.9 L1')      'RL_MSD_POOL_EXCL':(...,'v2.9 L4')
+    'RL_DIAL14':(...,'v2.9 L2')  'RL_AGE':(...,'v2.9 L3')  'RL_L5_PICKLESS':(...,'v2.9 L5')
+Two independent files, same map. The card carries it verbatim; a code the map does not know
+prints its own code rather than a guessed word.
+
+ORDER: the bars render in the CHAIN's order, never sorted by size, because the register's own
+reading forbids reading these as order-free - 'the decomposition is sequential along the fixed
+order L1->L4->L2->L3->L5; a different order would split the same 9,650 differently.'

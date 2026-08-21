@@ -1,0 +1,28 @@
+COUNTING-RULE TESTS (items 196(2), 216 — collapse-first)
+  ------------------------------------------------------------
+  [PASS] collapse: K-FWD absorbs G-FWD -> plain KPF
+  [PASS] collapse: K-DEF absorbs G-DEF -> plain KPD
+  [PASS] collapse: {G-FWD,K-FWD,MID} -> {K-FWD,MID} (Langford pattern)
+  [PASS] collapse: four-way swingman -> DPP {K-DEF,K-FWD}
+  [PASS] collapse: {RUCK,K-FWD,G-FWD} -> DPP {RUC,K-FWD} (ruck swingman)
+  [PASS] collapse: a bare G-FWD (no K) is UNTOUCHED — G stands alone
+  [PASS] collapse: cross-flank K-DEF + G-FWD do NOT collapse (different flanks)
+  [PASS] single position (non-mid) -> 1.0 to that position
+  [PASS] single position (MID-only) -> 1.0 to MID
+  [PASS] DPP, no mid -> 0.5 to each (Matt Whitlock, corrected pure-key)
+  [PASS] DPP-mid EXCEPTION -> non-mid counts 1, MID counts 0
+  [PASS] DPP-mid EXCEPTION (mid listed second) -> non-mid 1, MID 0
+  [PASS] RUCK/K-FWD swingman: collapse then DPP -> RUC 0.5, K-FWD 0.5
+  [PASS] four-way swingman: collapse then DPP -> K-DEF 0.5, K-FWD 0.5
+  [PASS] Langford (K-FWD/MID after collapse): DPP-mid exception -> K-FWD 1, MID 0
+  [PASS] corrected pure-general (Flanders/Baker/Langdon): DPP -> G-DEF 0.5, G-FWD 0.5
+  [PASS] weights sum to 1.0 (DPP)
+  [PASS] weights sum to 1.0 (DPP-mid)
+  [PASS] weights sum to 1.0 (collapsed swingman)
+  [PASS] no position -> empty (unattributed)
+  [PASS] duplicate token collapses -> 1.0 (no double count)
+  [PASS] 3+ effective positions after collapse THROWS (equal-split generalisation is dead)
+  [PASS] roster: Sigma positional value == Sigma player value (conservation)
+  [PASS] SHIPPED map: NO player exceeds 2 effective positions after collapse (804 players checked)
+  ------------------------------------------------------------
+  24/24 passed

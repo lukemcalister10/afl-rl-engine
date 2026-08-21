@@ -1,0 +1,21 @@
+PRE-EXISTING BASELINE — measured with EVERY file this act touched reverted to HEAD, on the SETTLED
+tree (the concurrent landing aborted and rolled the board back).
+68be10c79d0ee096455754e084bcf757  engine/rl_after/rl_app_data.json
+
+--- ui/tests/movers.test.js (HEAD app files) ---
+  ------------------------------------------------------------
+MOVERS TESTS: ALL 66 PASS
+
+--- ui/tests/ownership_sidecar.test.js (HEAD app files) ---
+
+FAIL — 22 passed, 13 failed
+
+--- ui/tests/ownership_single_source.test.js (HEAD app files) ---
+------------------------------------------------------------------------
+15/17 passed
+
+
+--- the same three suites WITH this act's files (should be identical except where this act fixes) ---
+ui/tests/movers.test.js : MOVERS TESTS: ALL 66 PASS
+ui/tests/ownership_sidecar.test.js : FAIL — 22 passed, 13 failed
+ui/tests/ownership_single_source.test.js : 15/17 passed

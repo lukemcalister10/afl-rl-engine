@@ -1,0 +1,44 @@
+THE COHORT CLOCK — VERIFIED FROM THE STORE BEFORE IT WAS IMPLEMENTED
+
+The owner's stated grouping: "2024 cohort would be 2024 ND, RD, SSP etc. + 2025 MSD".
+The question this answers: is that a convention to be adopted, or a fact to be read? It is a fact.
+
+store: engine/rl_after/rl_model_data.json  md5 b745002eb0a0fbb1c34fa44f1ef708d6
+records: 2650
+
+For every player with a draft year AND at least one season carrying games, the gap between his
+`year` field and his FIRST season with games, tabulated by entry type:
+
+type   modal gap n@mode   full distribution (gap: n)
+------------------------------------------------------------------------------------------
+ND     +1       859      {1: 859, 2: 325, 3: 118, 4: 30, 5: 6, 6: 2, 7: 2, 8: 1}
+RD     +1       207      {1: 207, 2: 105, 3: 41, 4: 14, 5: 2, 6: 6, 7: 2, 8: 2}
+MSD    +0       53       {0: 53, 1: 19, 2: 3, 4: 2}
+SSP    +1       34       {-5: 1, -2: 1, -1: 1, 1: 34, 2: 3, 3: 2, 4: 1}
+PDA    +1       13       {1: 13, 2: 12, 3: 4, 4: 2}
+UNR    +2       11       {1: 7, 2: 11, 3: 6}
+IRE    +2       9        {1: 9, 2: 9, 3: 5}
+PDN    +2       6        {1: 5, 2: 6, 3: 6}
+PDS    +5       2        {1: 1, 2: 2, 3: 2, 5: 2}
+
+READING: MSD is the ONLY entry type whose modal gap is 0 — a mid-season-draft selection debuts in
+the SAME calendar year as his draft year. Every other type debuts the year AFTER, because the
+national, rookie and pre-season/supplemental drafts happen at the END of a year for the season
+that follows. So a 2024 ND draftee and a 2025 MSD selection both first take the field in 2025:
+one intake, two doors, labelled by the national-draft year.
+
+IMPLEMENTED AS:  cohortYear(p) = (p.ty === 'MSD') ? p.yr - 1 : p.yr      [ui/app/board.js]
+The derivation above is carried verbatim in the control's own tooltip.
+
+--- the rule applied to the SHIPPED board, as a check on real rows ---
+cohort sizes on board b3e8da99:
+  2025 cohort: 105 players  types={'ND': 58, 'MSD': 18, 'SSP': 9, 'PDN': 5, 'PDA': 3, 'IRE': 3, 'UNR': 3, 'RD': 6}  MSD draft years present=[2026]
+  2024 cohort: 112 players  types={'ND': 71, 'MSD': 15, 'SSP': 6, 'RD': 7, 'UNR': 4, 'IRE': 3, 'PDN': 4, 'PDA': 2}  MSD draft years present=[2025]
+  2023 cohort:  84 players  types={'ND': 59, 'MSD': 12, 'RD': 5, 'PDA': 2, 'SSP': 2, 'IRE': 2, 'UNR': 2}  MSD draft years present=[2024]
+  2022 cohort:  59 players  types={'ND': 42, 'PDA': 3, 'SSP': 4, 'RD': 3, 'MSD': 4, 'UNR': 1, 'PDN': 2}  MSD draft years present=[2023]
+  2021 cohort:  65 players  types={'ND': 49, 'PDA': 2, 'SSP': 1, 'RD': 6, 'MSD': 5, 'IRE': 1, 'PDN': 1}  MSD draft years present=[2022]
+  2020 cohort:  55 players  types={'ND': 40, 'RD': 3, 'MSD': 8, 'SSP': 3, 'PDN': 1}  MSD draft years present=[2021]
+  2019 cohort:  40 players  types={'ND': 37, 'RD': 3}  MSD draft years present=[]
+  2018 cohort:  49 players  types={'ND': 35, 'RD': 6, 'MSD': 1, 'SSP': 3, 'PDN': 1, 'IRE': 1, 'PDA': 1, 'UNR': 1}  MSD draft years present=[2019]
+
+Every MSD row inside the 2024 cohort carries draft year 2025, and no other. That is the clock.

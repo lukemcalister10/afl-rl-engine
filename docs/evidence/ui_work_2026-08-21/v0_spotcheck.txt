@@ -1,0 +1,42 @@
+v0 SIDECAR SPOT-CHECK — ui/data_aux/v0.js
+stamp board : 68be10c79d0ee096455754e084bcf757
+stamp store : b745002eb0a0fbb1c34fa44f1ef708d6
+loaded board: 68be10c79d0ee096455754e084bcf757
+loaded store: b745002eb0a0fbb1c34fa44f1ef708d6
+rows        : 804 = pick-slot 561 + entry-anchor 243 + unrecoverable 0
+
+--- THE OWNER'S SPOT-CHECK: DO ALL PICK-5 MIDS SHARE ONE v0? ---
+slot MID|18|5 — 8 players:
+    Adam Cerra               v0   2218   live   1085
+    Connor Rozee             v0   2218   live   3357
+    Darcy Parish             v0   2218   live    650
+    Dylan Stephens           v0   2218   live    638
+    Elijah Tsatas            v0   2218   live    925
+    Levi Ashcroft            v0   2218   live   3686
+    Scott Pendlebury         v0   2218   live    341
+    Will Setterfield         v0   2218   live    792
+    DISTINCT v0 IN THIS SLOT: 1  -> 2218
+
+--- shared-slot invariant across the WHOLE surface ---
+141 shared slots; 0 with more than one v0 (must be 0)
+largest shared slot: MID|18|5 with 8 players
+
+--- SAMPLE ROWS (the four figures the card shows) ---
+Nick Daicos            ND   pk   4  yr 2021   v0   2640 (pick-slot)   live   9892   +  7252   3.75x
+Marcus Bontempelli     ND   pk   4  yr 2013   v0   2640 (pick-slot)   live   3702   +  1062   1.40x
+Harley Reid            ND   pk   1  yr 2023   v0   3436 (pick-slot)   live   3919   +   483   1.14x
+Max Gawn               ND   pk  33  yr 2009   v0    814 (pick-slot)   live   3194   +  2380   3.92x
+Scott Pendlebury       ND   pk   5  yr 2005   v0   2218 (pick-slot)   live    341   -  1877   0.15x
+Connor Rozee           ND   pk   5  yr 2018   v0   2218 (pick-slot)   live   3357   +  1139   1.51x
+
+--- POOL ENTRANTS: v0 IS THEIR SIGNED ENTRY ANCHOR, NOT A DASH (owner correction) ---
+Adam Saad              RD   pk  19  yr 2014   v0    258 (entry-anchor)   live    439   +   181   1.70x
+Aidan Johnson          ND   pk  68  yr 2024   v0    313 (entry-anchor)   live     81   -   232   0.26x
+Aiden Riddle           RD   pk   2  yr 2024   v0    270 (entry-anchor)   live    211   -    59   0.78x
+Alex Van Wyk           MSD  pk  14  yr 2026   v0    355 (entry-anchor)   live    311   -    44   0.88x
+Andy Moniz-Wakefield   PDN  pk   -  yr 2021   v0    101 (entry-anchor)   live     67   -    34   0.66x
+Anthony Caminiti       SSP  pk   -  yr 2022   v0    325 (entry-anchor)   live    961   +   636   2.96x
+Archer Day-Wicks       RD   pk   1  yr 2024   v0    229 (entry-anchor)   live    342   +   113   1.49x
+Archie May             MSD  pk   6  yr 2025   v0    355 (entry-anchor)   live    419   +    64   1.18x
+
+rows with v0 == null (would render an em-dash): 0

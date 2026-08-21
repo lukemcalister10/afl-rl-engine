@@ -1,0 +1,55 @@
+
+OVERRIDE AND FALLBACK — the sidecar's core contract
+  [FAIL] a player the sheet names takes the SIDECAR's club, not the board's — got North Melbourne Kangaroos, board says North Melbourne Kangaroos
+  [PASS] the board bundle itself is left untouched (override is a read-time overlay)
+  [PASS] a player the sheet does NOT name falls back to the board's stored affl_team
+  [FAIL] resolve() reports which rows are actually overridden
+  [PASS] club totals recompute against the sidecar's membership
+  [PASS] the receiving club exists in the recomputed totals
+
+PUBLIC BRIDGE — ambiguous display name (asserted both directions)
+  [PASS] control — a distinct public name resolves to a club
+  [PASS] control — no public row is refused on the shipped population
+  [FAIL] an ambiguous name is REFUSED, not resolved to one candidate — {"club":"North Melbourne Kangaroos","refused":false,"overridden":false}
+  [FAIL] a refused row yields NO club (it cannot be counted into one)
+  [FAIL] the refusal states that the name is shared
+  [FAIL] a refused row DISPLAYS the refusal rather than the stored club
+  [FAIL] the refusal is reported, not just rendered — 0
+
+PUBLIC BRIDGE — unmatched display name (asserted both directions)
+  [PASS] control — the same row resolves before the name is broken
+  [FAIL] a name matching no working player is REFUSED — {"club":"Carlton Blues","refused":false,"overridden":false}
+  [FAIL] the refusal says the name matched nothing
+  [FAIL] the unmatched name appears in the reported refusals
+
+REFUSAL IS EXCLUSION — a row we cannot identify enters no club total
+  [FAIL] clubOf() of a refused row is null, so canonClub folds it into the '—' bucket
+
+NO SIDECAR AND HALTED SIDECAR — fall back to the store, refuse nothing
+  [PASS] the sidecar really is absent inside the VM (guards the delete-does-not-propagate trap)
+  [PASS] with NO sidecar every row falls back to the store (pre-#232 behaviour)
+  [PASS] with NO sidecar nothing is refused — there is no override to diverge from
+  [PASS] status() reports the sidecar inactive
+  [PASS] status() reports a halted sidecar
+  [PASS] a halted sidecar still renders the board rather than blanking the app
+
+ONE PLAYER, ONE CLUB — the two-clubs-at-once condition must be impossible
+  [FAIL] working tier shows the new club
+  [FAIL] public tier shows the SAME new club — public got North Melbourne Kangaroos
+  [PASS] no player resolves to different clubs on the working and public tiers
+
+MOVERS — keyed rows, so ownership resolves without touching the name bridge
+  [PASS] every movers record key exists on the working board, so no mover row needs the name bridge
+  [PASS] a movers row resolves cleanly through the keyed path
+
+LANE SEPARATION — positions are batched and must not be in the sidecar
+  [PASS] the sidecar carries no position or value field — the live lane cannot trigger an engine run
+  [PASS] …and it is non-empty, so that assertion is not passing on an empty file
+
+READ SURFACE — no view may read the stored affl_team directly
+  [PASS] every view resolves ownership through MD.ownership, not the raw board field
+  [PASS] index.html loads both the sidecar bundle and the ownership module
+  [PASS] app/ownership.js is loaded before every module that consumes it
+  [PASS] the sidecar DATA bundle is loaded before the module that reads it
+
+FAIL — 22 passed, 13 failed
