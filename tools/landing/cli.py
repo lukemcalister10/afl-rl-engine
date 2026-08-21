@@ -84,14 +84,25 @@ def _preflight_selftest(a, doc):
     AFTER the transaction closes. Writing them straight into `docs/evidence/...` would leave
     untracked files in the tree, and step 0 asserts a CLEAN tree — the lander's own proof would red
     the landing it was proving. Returns the temp dir for `cmd_lever` to file.
+
+    IT RUNS ON A COHERENT TREE, WHICH IS NOT ALWAYS `HEAD` — supervisor ruling, 2026-08-21, quoted in
+    full in `selftest.main`. The spec's optional `coherent_base` slot names the commit the sandbox is
+    cut from; a dial-flip act sets it to the commit immediately before its flip, where pins == source.
+    Omit it and the sandbox is cut from HEAD, which is right for every act that leaves the tree
+    coherent. THE SLOT CHANGES NO PREDICTION AND NO IDENTITY: it selects the tree the LANDER is
+    exercised against, and the lander under test is the working copy either way.
     """
     from tools.landing import selftest as SELF
     ev = tempfile.mkdtemp(prefix='preflight_lander_selftest_')
+    base = doc.get('coherent_base') or None
     print('=' * 102)
     print('PRE-TRANSACTION SELF-TEST — the lander proves its abort ladder BEFORE opening a landing.')
     print('  transcripts: %s  (filed into the landing evidence dir when the transaction closes)' % ev)
+    if base:
+        print('  base       : %s  (the act declares this tree mid-act; the sandbox is cut from the '
+              'last coherent base)' % base)
     print('=' * 102)
-    rc = SELF.main(root=a.root, keep=False, only=None, evidence_dir=ev)
+    rc = SELF.main(root=a.root, keep=False, only=None, evidence_dir=ev, base=base)
     print('=' * 102)
     if rc != 0:
         raise SystemExit('THE PRE-TRANSACTION SELF-TEST FAILED (exit %s). NO TRANSACTION WAS OPENED '
@@ -175,7 +186,7 @@ def cmd_spec_template(a):
 
 def cmd_selftest(a):
     from tools.landing import selftest as SELF
-    return SELF.main(root=a.root, keep=a.keep, only=a.only, evidence_dir=a.evidence)
+    return SELF.main(root=a.root, keep=a.keep, only=a.only, evidence_dir=a.evidence, base=a.base)
 
 
 def cmd_packet(a):
@@ -224,6 +235,10 @@ def main(argv=None):
     p.add_argument('--keep', action='store_true', help='keep the sandbox for inspection')
     p.add_argument('--only', default=None, help='comma-separated step names to fault-test')
     p.add_argument('--evidence', default=None, help='directory for the self-test transcripts')
+    p.add_argument('--base', default=None,
+                   help='the commit the sandbox worktree is cut from (default HEAD). Set it to the '
+                        'LAST COHERENT BASE when the tree is mid-act — for a dial-flip act, the '
+                        'commit immediately before the flip. See the ruling in selftest.main.')
     p.set_defaults(fn=cmd_selftest)
 
     p = sub.add_parser('packet', help='the decision-packet template and its slot validator')

@@ -145,16 +145,20 @@ def spec_moved(board_before, board_after, evidence_rel):
 class Sandbox(object):
     """A git worktree of HEAD, carrying the CURRENT lander, committed so the tree reads clean."""
 
-    def __init__(self, root, work_dir):
+    def __init__(self, root, work_dir, base='HEAD'):
         self.live_root = os.path.abspath(root)
         self.work_dir = work_dir
         self.path = os.path.join(work_dir, 'sandbox')
+        #: THE CHECKOUT BASE — the commit the sandbox is cut from. See `main`'s docstring for the
+        #: ruling. 'HEAD' for any act that leaves the tree coherent; the last coherent base for an
+        #: act that has already committed an engine flip its board has not caught up with.
+        self.base = base or 'HEAD'
         self.base_commit = None
         self.lock_file = os.path.join(work_dir, 'selftest.lock')
 
     def create(self):
         os.makedirs(self.work_dir, exist_ok=True)
-        rc, out = _sh(['git', 'worktree', 'add', '--detach', self.path, 'HEAD'], cwd=self.live_root)
+        rc, out = _sh(['git', 'worktree', 'add', '--detach', self.path, self.base], cwd=self.live_root)
         if rc != 0:
             raise RuntimeError('cannot create the sandbox worktree:\n%s' % out)
         # The lander under test is the WORKING COPY, not whatever happens to be committed.
@@ -211,7 +215,32 @@ class Sandbox(object):
 
 
 # -------------------------------------------------------------------------------------- the cases
-def main(root=None, keep=False, only=None, evidence_dir=None):
+def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
+    """Run the self-test. `base` is the commit the sandbox is cut from (default HEAD).
+
+    THE CHECKOUT BASE — SUPERVISOR RULING, 2026-08-21, closing the precondition paradox:
+
+        "The lander self-test proves THE LANDER, not the act. It therefore runs on a COHERENT tree:
+         the pre-transaction standalone run executes in a sandbox worktree checked out at the LAST
+         COHERENT BASE — for a dial-flip act, the commit immediately before the flip (where pins ==
+         source); for any non-flip act, HEAD. Fresh proof each landing, no recursion, and the mid-act
+         incoherence window (flip committed, board pending) can no longer deadlock its own landing.
+         The in-transaction gate profile continues to exclude the self-test, and the self-test remains
+         a registered runner check on every coherent tree."
+
+    THE PARADOX IT CLOSES, MEASURED. Process law P9 puts the engine edit in its own commit ahead of
+    the landing, so between the flip and the landing the tree is INCOHERENT BY DESIGN: source builds
+    a board the pins do not yet name. The self-test's control case lands a NO-OP, which moves no pin,
+    so its sibling reconcile rebuilt board `b3e8da99` against a pin still reading `68be10c7` and
+    `sibling_repin`'s conformance gate refused — correctly. On 2026-08-21 that made the standalone
+    run 11 PASS / 5 FAIL (every abort still byte-exact), and since the run is a precondition of the
+    landing, the landing could never start: it needed the coherence only it could restore.
+
+    THE LANDER UNDER TEST IS STILL THE WORKING COPY. `Sandbox.create` overlays `tools/landing` and
+    `tools/land` from the live tree on top of whatever base is checked out, so moving the base back
+    changes the TREE the lander is exercised against, never the lander. That is exactly the ruling's
+    distinction: the self-test proves the lander, not the act.
+    """
     root = os.path.abspath(root or _REPO)
     work = os.path.join(os.environ.get('LANDING_SNAPSHOT_DIR') or '/tmp',
                         'landing_selftest_%d' % os.getpid())
@@ -224,6 +253,10 @@ def main(root=None, keep=False, only=None, evidence_dir=None):
     print('  live tree : %s   (READ-ONLY to this self-test; asserted byte-unmoved at the end)' % root)
     print('  sandbox   : %s' % work)
     print('  transcripts: %s' % ev)
+    print('  base      : %s%s' % (base or 'HEAD',
+                                  '' if not base or base == 'HEAD' else
+                                  '   (the LAST COHERENT BASE — this tree is mid-act; see the ruling '
+                                  'in selftest.main)'))
     print(BANNER)
 
     # THE WRECKAGE OF THE LAST RUN, CLEARED BEFORE THIS ONE. The teardown at the bottom of this
@@ -236,7 +269,7 @@ def main(root=None, keep=False, only=None, evidence_dir=None):
     TX.sweep_orphan_sandboxes(print)
 
     live_before = carrier_md5s(root)
-    sb = Sandbox(root, work).create()
+    sb = Sandbox(root, work, base=base).create()
     print('sandbox created at %s (base %s)' % (sb.path, sb.base_commit[:12]))
 
     board = _md5(os.path.join(sb.path, 'data', 'rl_build', 'rl_app_data.json'))
