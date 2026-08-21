@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v815 2026-08-21 · **RULEBOOK AMENDED — P12 + P13 signed (owner word verbatim: "Sign the rulebook, that's fine", 2026-08-21, given against the supervisor's described batch).** P12 THE PRICED-ARM READING: every value-moving adoption carries its own arm's no-arb band reading + class check PRE-FLIP inside the prereg (the staircase-adoption incident made standing — a sibling var
+# OPEN ITEMS REGISTER · v816 2026-08-21 · **THE CLAIMS DOUBLE-GATE RULING — OPTION B, owner word verbatim: "B on the claims issue." (2026-08-21).** The claims checker will REUSE the in-transaction gate results for the expensive derived facts and keep its own independent legs for the cheap ones (direct artifact hashes, row counts) plus the negative control (a deliberately false claim must still fai
 
-(one line per pen; full entry: docs/register/entries/v815.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v816.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
