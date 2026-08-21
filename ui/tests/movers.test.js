@@ -257,7 +257,7 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // round 23. So this is a board-IDENTITY move, not a re-valuation, and `bridged` is tracking the
   // identity, which is what it has always tracked.
   eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "bridged"],
-     "bundle displays under the current app, bridged — the last act moved the board OUTSIDE a round (the back-rows repair), so the latest round report's terminal board is not the loaded board, and the out-of-round column carries it instead");
+     "bundle displays under the current app, bridged — the last act moved the board OUTSIDE a round (the staircase fix adoption), so the latest round report's terminal board is not the loaded board, and the out-of-round column carries it instead");
   // NON-VACUITY for the restated assertion, both directions. `bridged` is a state this check can
   // FAIL to reach: a bundle on a foreign lineage does not get bridged, it fails closed as a mismatch.
   var appForeign = clone(curApp); appForeign.board = "ffffffffffffffffffffffffffffffff";
@@ -341,7 +341,19 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // F5 act moved no priced value at all, while this act re-prices 25 back-history rows (all 804 ACTIVE
   // rows are byte-identical). The counter does not care, and the property that guards this does not
   // either — but a reader comparing the two should not assume they are the same shape.
-  ok(mc.length === 10, "ten out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut, the 20/8 F5 rounding fix, the 20/8 back-rows repair)  (got " + mc.length + ")");
+  // BUMPED AGAIN 2026-08-21 (THE STAIRCASE FIX ADOPTION, ORDER 44, VARIANT A RAW, owner word "I
+  // misunderstood the A and B difference. I think based on those explanations, A raw I prefer. Lock that
+  // in, unconserved."): an eleventh boundary, `the-staircase-adoption-21-8` — the level-axis band
+  // monotoniser shipped default-on, board 68be10c7 -> b3e8da99, out of round at R23. It carries its own
+  // owner-approved lineage record (register entry 13), so the durable property below — EVERY boundary
+  // anchored to an owner-approved record — covers it, and that property was re-run at this swing and
+  // PASSED with all eleven. Same growth, same reason as the nine bumps before it; this line only counts.
+  // NOTHING LOOSENED: both NON-VACUITY assertions above re-ran at this swing and still discriminate in
+  // both directions. NOTE THIS ONE'S SHAPE: unlike the tenth (back-rows, which moved only back-history
+  // rows) this act re-prices ACTIVE rows — total 692,296 -> 700,756 across the same 804 — so it is a
+  // LAW 9 mint accepted by explicit owner word, recorded as an accepted exception in the act's lineage
+  // entry and never as a pass. The counter does not care; a reader comparing the eleven should.
+  ok(mc.length === 11, "eleven out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut, the 20/8 F5 rounding fix, the 20/8 back-rows repair, the 21/8 staircase adoption)  (got " + mc.length + ")");
   ok(mc[0].between[0] === "19" && mc[0].between[1] === "post-r19-redesign-1" &&
      mc[0].owner_approved_record === true,
      "model change declared between R19 and the restructure point, anchored to the owner-approved record");
