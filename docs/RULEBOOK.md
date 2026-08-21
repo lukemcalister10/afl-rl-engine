@@ -171,7 +171,25 @@ P11. **THE RETIREMENT IS RECORDED WHERE THE GATE LIVES.** When a ruling retires 
     AT THE CURRENT HEAD". They were not new. They were unrecorded, and two rulings had to
     be re-obtained from the owner to un-say what he had already said.*
 
+P12. **THE PRICED-ARM READING.** Every value-moving adoption carries its own arm's no-arb
+    band reading and class check PRE-FLIP, measured inside the prereg — a reading taken on
+    a sibling variant does not cover the chosen arm.
+    *Incident: the staircase adoption, 2026-08-21. Variant B's no-arb reading stopped the
+    landing; the owner's chosen arm was A raw, and its own reading had to be (and was)
+    measured inside prereg fb3d3c0 before the flip. This line makes that standing.*
+P13. **A PINNED OWNER-INPUT HAS ONE NAMED WRITER.** The pins of an owner-supplied data
+    input (today: the sitter sheet's md5/rows/injured-Y in `data/sheet_pins.json`) are
+    written by exactly ONE writer of record — the round lander once P2b lands; in any
+    window before a lander owns them, the runbook's manual path is EXPLICITLY the interim
+    writer, stated in the runbook itself. A pin moved by any other hand is a halt, not a
+    repair.
+    *Incident: PACKAGE 3a, 2026-08-21 — the sheet pins left the engine for the data file;
+    the writer-of-record rule rode the act as runbook ERRATUM E7 pending this line.*
+
 ## SIGNED
 Owner word given in chat 2026-07-22; amended 2026-07-28 (v2.1) and 2026-08-20 (v3, "Okay agree to
 the laws updated."). The derived twin is retired, not regenerated — this document is the only laws
 file. CONSTRAINTS v1.19 + acceptance v1.21 archived.
+P12–P13 amendment signed 2026-08-21, owner word verbatim: "Sign the rulebook, that's fine" — given
+against the supervisor's described batch (the pin-file interim-writer rule + the per-arm no-arb
+reading patch queued at the staircase adoption).
