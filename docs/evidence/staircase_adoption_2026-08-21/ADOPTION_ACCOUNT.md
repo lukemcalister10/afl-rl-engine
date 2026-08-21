@@ -230,3 +230,34 @@ with the lineage invariants saying in words why.
 `oneliner_r14_restore` passes standalone and failed only in-transaction, and the runner's `evidence:
 (none)` meant the check's own output was never persisted. The lander should point the runner at its
 evidence dir so a gate red is diagnosable from the record instead of by re-running a 37-minute act.
+
+---
+
+## 8 · A PROVENANCE DEFECT IN THIS FILE'S OWN COMMIT — RECORDED, NOT REWRITTEN
+
+**The nine evidence files above, including this account, were swept into another seat's commit.**
+
+This seat staged them with `git add -- docs/evidence/staircase_adoption_2026-08-21/` and then ran
+`git commit`. Between those two calls the concurrent UI seat committed with a non-explicit-path stage,
+and **its commit `19e5abe` ("UI (a) + (3) — MOVERS: participation becomes tri-state…") carries all nine
+of this landing's evidence files alongside `ui/app/movers.js`.** This seat's own `git commit` then found
+an empty index and made no commit at all.
+
+**NOTHING WAS LOST OR CORRUPTED.** Verified: the committed `ADOPTION_ACCOUNT.md` is byte-identical to the
+file on disk (`md5 45de53e3…`), all nine files are present in `HEAD`, and the landing's carriers are
+untouched — board `68be10c7`, engine_head `8f591805` (the flip), `expected_boot e0965d29`.
+
+**THE HISTORY IS NOT BEING REWRITTEN TO TIDY THIS.** An amend or rebase with another seat actively
+committing to the same branch is how a real loss gets manufactured out of a cosmetic one. The record is
+corrected the way this estate corrects records: **by saying what happened, where the bytes actually
+live, and leaving the commits alone.**
+
+**THIS IS FINDING F-6**, and it is the same failure mode as F-3 seen from the other side. The lander is
+rigorous about this — explicit paths only, and `commit` aborts outright on any path it did not write
+(*"THE TREE CARRIES CHANGES THIS LANDING DID NOT MAKE, and an explicit-path commit will not sweep them
+up"*). **But that discipline protects only the seat that has it.** Nothing in the estate stops a
+hand-driven seat from staging broadly and sweeping up a neighbour's in-flight work, and **`git`'s index
+is a single shared mutable object with no lock at all** — the build lock does not cover it, and neither
+does anything else. Two seats committing to one working tree share one index; the loser finds out
+afterwards. The estate needs either a tree-level lease for the duration of an act, or a standing rule
+that every commit everywhere is explicit-path — the same rule the lander already enforces on itself.
