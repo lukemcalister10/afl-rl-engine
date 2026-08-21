@@ -18,18 +18,29 @@
 > recursion (F-1) and gives the gate run evidence capture (F-5); `bd299a9` closes the `/tmp` sandbox leak
 > — **which the brief believed was already cleared and was not: 138 directories, 1.4 GB.**
 >
-> **THE LANDING IS BLOCKED BY ITS OWN NEW PRECONDITION, AND THE BLOCK IS REAL.** The ruling's second half
-> — *the lander runs the self-test standalone before the transaction, fail = no transaction opened* —
-> **cannot be satisfied until this landing lands.** Since the prereg restamped the contract, the sibling
-> sidecar has been stale, so even a NO-OP sandbox landing must reconcile, which **builds** — and with the
-> flip committed that build produces `b3e8da99` while a no-op's pin stays `68be10c7`, which
-> `sibling_repin`'s conformance gate correctly refuses. **P9 puts every dial-flipping landing in that
-> same window**, so the gate as ruled blocks the whole class, not just this act. Every abort in the
-> self-test was still **byte-exact**: the lander is sound; the self-test's premise is not.
+> That precondition then **blocked the landing** (§9): standalone on HEAD the self-test went 11 PASS /
+> 5 FAIL, because P9 leaves the tree incoherent between the flip and the landing. **This seat did not
+> bypass the gate it had just installed** — it measured it and sent it up. **The pen ruled** (§10): the
+> self-test proves the lander, not the act, so it runs on a **coherent tree** — sandbox cut at the last
+> coherent base. Implemented at `07783e4`; the self-test then went **17 PASS / 0 FAIL, CAUGHT 10/10**.
 >
-> **THIS SEAT DID NOT BYPASS THE GATE IT HAD JUST INSTALLED** to pass its own act. The ruling was given
-> on a premise that was true at `efbe1b6` and stopped being true nine and a half hours later at the flip.
-> **It is returned to the pen with the measurement — §9.4, §9.6.**
+> **THE LANDING THEN FLEW (§11), AND ABORTED AT `gates` — ON ONE CHECK, WITH THE EVIDENCE CAPTURED.**
+> Steps 0–6 all **OK**; every proof the act owns **met again** (`b3e8da99` byte-exact against the prereg,
+> kill-switch → `68be10c7`, 10 must-not-move identities unmoved, sibling → `7c32a540`). `lander_selftest`
+> is gone from the gate set: **`gates` fell 1,720.8 s → 287.9 s**, the transaction **2,223 s → 796 s**,
+> and the gate run read **15 PASS / 1 FAIL**.
+>
+> **THE ONE FAILURE IS `oneliner_r14_restore`, AND IT IS A REAL COUPLING — NOT CONTENTION.** With F-5's
+> evidence capture the assertion is now *read*: step 3 appends to `data/release_lineage.json`
+> (**12 → 13** entries) while `ui/data/movers_transition.js` — the mirror the gate asserts equal — is
+> **never written by a lever landing at all**, its writer of record being the **unbuilt 2b round
+> lander**. **Every lever landing that registers an out-of-round column reds its own gates step by
+> construction.** That is **F-9**, and it is this act's finding, not this act's fault.
+>
+> **HALTED AND REPORTED, per the brief.** The fix is one line of sequencing and **this seat did not
+> write it**: it would add a writer to the transaction and move a carrier's writer of record, on this
+> seat's initiative, to make its own act pass. **Abort byte-exact again — 37 carriers restored, all 16
+> tracked carriers independently re-hashed against `HEAD`, zero differences.**
 
 ---
 
@@ -530,3 +541,142 @@ outside a landing. Whether it survives *inside* one is the observation §9.5 sai
 now captures the evidence either way.
 
 **The transaction is opened next. §11 is what it did.**
+
+---
+
+## 11 · THE LANDING FLEW — AND `oneliner_r14_restore` IS A REAL COUPLING, WITH THE EVIDENCE
+
+The transaction opened at **02:48:17Z** and ran to **1,632 s** wall (796 s of transaction, the rest the
+pre-transaction self-test). **It aborted at `gates` again — but nothing else about it is the same as
+attempt 1, and the one thing that red it is now READ rather than guessed at.**
+
+### 11.1 · Both machinery fixes did exactly what they were built to do
+
+* **The pre-transaction self-test ran and PASSED — `17 PASS / 0 FAIL`, `CAUGHT 10/10`, `ABORTED
+  BYTE-EXACT 10/10`** — cut from `fb3d3c0` off the act spec's `coherent_base` slot, automatically. Then
+  and only then: *"PRE-TRANSACTION SELF-TEST PASSED. Opening the transaction."*
+* **`lander_selftest` is GONE from the gate set**, as ruled. **`gates` fell from 1,720.8 s to 287.9 s**
+  and the whole transaction from **2,223 s to 796 s** — and the gate run reported **16 checks**, the
+  in-transaction profile, with its own header naming the profile that produced it.
+* **F-5 DELIVERED THE ONE THING IT WAS BUILT FOR.** The runner wrote per-check output into
+  `gate_acceptance_runner_evidence/`, the `StepError` named the path, and the failing assertion is on
+  disk in full. **Attempt 1 could only report a truncated 110-character reason and two candidate
+  causes. This attempt has the traceback.**
+* **The lander cleaned up after itself:** *"work dir discarded (the abort proved every carrier
+  byte-exact)"*, and the pre-transaction transcripts were filed into the evidence dir when the
+  transaction closed. **Zero orphans in `/tmp` afterwards.**
+
+### 11.2 · Every step and every proof the act owns — MET AGAIN
+
+| # | step | seconds | verdict |
+|---|---|---|---|
+| 0 | preflight | 0.08 | **OK** — 111 carriers captured |
+| 1 | build_proofs | 225.03 | **OK** |
+| 2 | pins | 0.02 | **OK** |
+| 3 | lineage | 0.15 | **OK** |
+| 4 | contract | 0.08 | **OK** |
+| 5 | sibling | 282.84 | **OK** |
+| 6 | ui | 0.19 | **OK** |
+| 7 | **gates** | **287.91** | **FAIL → ABORT** |
+| 8 | claims | — | not reached |
+| 9 | commit | — | not reached |
+| | **TOTAL** | **796.30** | |
+
+**`PREDICTED BOARD MET: b3e8da99bc7f632e5d1eebc732f9cf01 == prereg`.** Kill-switch `RL_O44_LVLMONO=0`
+→ **`68be10c7`**, 82.7 s; switch-off ≠ switch-on. `pins`: `board` moved, **10 must-not-move checked, 0
+moved**. `lineage`: column `the-staircase-adoption-21-8` registered, **12 prior entries byte-verbatim**,
+baseline unmoved. `contract`: `4cbc7f27` → `213443de`, **10 frozen fields unmoved**. `sibling`: 8 fails
+→ **0**, balanced `556ad70d` → **`7c32a540578b799922daea41d8acdfa2`**. `ui`: both writers,
+`stamp.balanced_board_md5 = 7c32a540…` read back **OK**.
+
+### 11.3 · The gate result: 15 PASS / 1 FAIL, and the one is not environmental
+
+```
+AGGREGATE  16 checks  |  PASS 15  FAIL 1  BLOCKED 0  RULED-RED 0
+VERDICT    RED — 1 gating failure(s): oneliner_r14_restore
+```
+
+`build_twice_determinism` **PASS** (two bare builds byte-identical, on the landed board).
+`release_manifest`, `boot_guard_checkout`, `config_manifest`, `ruling_config`, `release_contract_seal`,
+`store_coherence_six_way`, `doc_lint`, `rulebook_lint`, `ruled_red_ledger`, `inbox_manifest`,
+`mirror_parity`, `dial_coverage`, `oneliner_gamma`, `oneliner_f1_lens` — **all PASS on the landed
+state.**
+
+### 11.4 · **THE VERDICT ON r14: A REAL COUPLING. NOT CONTENTION.**
+
+`gate_acceptance_runner_evidence/oneliner_r14_restore.txt`, the actual failure:
+
+```
+File "engine/rl_after/ingestion/test_movers_transition.py", line 107, in run_all
+  _ck(trans_js.get(REGISTER_KEY) == lineage.get(REGISTER_KEY),
+AssertionError: FAIL: release_lineage.json release_transition_register == the mirror's register
+                      (era succession: ALL entries reach the reader)
+```
+
+Everything before it passed — the eight weekly-updater tests, all seven R14 fail-closed controls, and
+the assertion immediately above (`release_transition == ui/data/movers_transition.js`, the transition
+mirrored exactly). **Only the REGISTER diverged.** The mechanism, each link measured from this run's
+own record:
+
+1. `trans_js` is **`ui/data/movers_transition.js`** — the mirror; `lineage` is
+   **`data/release_lineage.json`** — the record. Line 107 asserts their
+   `release_transition_register` are **equal**.
+2. **Step 3 appended to the record.** The abort's own moved-carrier list:
+   `data/release_lineage.json  f486ecd40dc8 -> 611bf4454202` — **12 entries → 13**.
+3. **The landing never wrote the mirror.** `ui/data/movers_transition.js` appears **nowhere** in the
+   moved-carrier list — not written, so not restored, because there was nothing to restore.
+4. So in the landed state the record held **13** entries and the mirror held **12**. The check did its
+   job.
+5. **It is structural, not incidental.** `carriers.py` names the mirror's writer of record as
+   `round_movers` — **the 2b round lander, which is NOT BUILT** — and the lever landing's `ui` step
+   runs **two** writers (`extract_board_view`, `inject_release_contract`), neither of which projects
+   the lineage. **The projector exists**: `ui/tools/generate_movers_transition.py`, whose own docstring
+   says it is a *"MECHANICAL SERIALIZATION"* of `release_lineage.json` carrying *"ZERO authorship"*,
+   written because *"the js header has always said 'do not hand-edit; regenerate from
+   release_lineage.json' while no generator existed in the tree to do it"*.
+
+**CONTENTION IS RULED OUT.** The tree was quiet and exclusively this seat's; the failure is a
+deterministic equality between two files, one of which this landing writes and the other of which it
+structurally cannot. **It reproduced on the first attempt under a quiet tree**, which is exactly what
+§4.2 left open and §9.5 said was owed.
+
+**THIS IS THE LEVER-LANDING-VS-2b GAP, CONFIRMED.** Any lever landing that registers an out-of-round
+column — that is, **every lever landing that moves the board out of round** — appends a register entry
+the mirror never receives, and reds `oneliner_r14_restore` at its own gates step. **This act did not
+cause it and is not special to it.** It is the first act to reach the landed state with the evidence
+switched on.
+
+### 11.5 · HALTED, AND WHY THIS SEAT DID NOT FIX IT
+
+**The abort is again the lander's best moment.** `byte_exact: true`, **37 carriers restored**, and this
+seat verified it independently rather than trusting the flag: **all 16 tracked carriers re-hashed and
+byte-identical to `HEAD`** — board `68be10c7` / **692,296** / **804** · store `b745002e` · engine_head
+`8f591805` · contract `4cbc7f27` · balanced `556ad70d` · lineage back to **12** entries.
+
+The fix is one line of sequencing — run the projector in the `ui` step whenever `lineage` appended —
+and **this seat will not write it.** It adds a writer to the landing transaction and moves a carrier's
+declared writer of record, on this seat's own initiative, to make its own act pass. That is the third
+time in this account the same temptation has come round, and the answer has not changed. **The brief's
+own instruction is explicit: a real coupling the landed state exposes is a HALT-and-report.**
+
+### 11.6 · WHAT THE PEN IS ASKED TO RULE — **F-9**
+
+**F-9 · A LEVER LANDING MOVES THE LINEAGE RECORD AND CANNOT MOVE ITS MIRROR.** `data/release_lineage.json`
+is written by `steps.lineage`; `ui/data/movers_transition.js` is declared to be written by 2b, which is
+not built. The two are asserted **equal** by a standing gate. Therefore the lever lander, as shipped,
+**cannot complete any landing that registers an out-of-round column** — the transaction is
+self-inconsistent at step 7 by construction, and it took the landed state plus F-5's evidence capture
+to see it. Options, none taken here:
+
+1. **Add the projector as the lever landing's third UI writer** (`ui/tools/generate_movers_transition.py`),
+   and move `ui/data/movers_transition.js`'s writer of record in `carriers.py` from *"round_movers (2b)"*
+   to name the lever landing too. **Smallest change, uses the existing writer of record, and the
+   projector is by its own charter authorless** — this seat's reading, offered and not acted on.
+2. **Declare the mirror out of scope for a lever landing** and scope the r14 gate accordingly — which
+   would mean shipping a board whose reader cannot see the transition that produced it, and is named
+   here only so it is not adopted by accident.
+3. **Hold the act for 2b.** Correct and expensive: 2b waits on 3a, and the owner's word is already given.
+
+**Everything else is ready and unchanged.** Prereg `fb3d3c0`, flip `531235c`, spec validates clean,
+self-test green on a coherent tree, the in-transaction profile green, and **every proof the act owns
+met twice, on two separate flights.**
