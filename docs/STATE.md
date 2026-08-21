@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v828 2026-08-21 · **P4b THE ROLLBACK FIRE DRILL — PASS: TAGS ARE RESTORABLE BYTES (docs/evidence/p4b_fire_drill_2026-08-21/, evidence cherry-picked from the seat's isolated worktree at e423080).** Target baked-v2.11-2026-08-20 @ 463e53d (latest owner release; the annotated tag carries the owner word per law 10b; the expected_boot 'tag: v2.9' field is stale NARRATIVE from 20
+  > # OPEN ITEMS REGISTER · v829 2026-08-21 · **THE PICK-SURFACE CLASS IS CLOSED — guard + writer 6 landed and verified (worktree seat, cherry-picked e61a51f/8aae62a, supervisor-verified on main: parity 41/41, runner 16/16 GREEN, lander self-test GREEN, board b3e8da99 byte-unmoved).** (1) THE WALL CLOCK IS GONE from ui/data/club_valuation.js — the one field that made the bundle non-byte-provable; thre
 
-- new-form entries under `docs/register/entries/`: 16
+- new-form entries under `docs/register/entries/`: 17
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `e42308026cc6927c86ec927811d6f2da2662e1e2` |
+| generated at commit | `e61a51fc0371c2924ae7d74068d5f3b971e46fdb` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

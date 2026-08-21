@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v828 2026-08-21 · **P4b THE ROLLBACK FIRE DRILL — PASS: TAGS ARE RESTORABLE BYTES (docs/evidence/p4b_fire_drill_2026-08-21/, evidence cherry-picked from the seat's isolated worktree at e423080).** Target baked-v2.11-2026-08-20 @ 463e53d (latest owner release; the annotated tag carries the owner word per law 10b; the expected_boot 'tag: v2.9' field is stale NARRATIVE from 20
+# OPEN ITEMS REGISTER · v829 2026-08-21 · **THE PICK-SURFACE CLASS IS CLOSED — guard + writer 6 landed and verified (worktree seat, cherry-picked e61a51f/8aae62a, supervisor-verified on main: parity 41/41, runner 16/16 GREEN, lander self-test GREEN, board b3e8da99 byte-unmoved).** (1) THE WALL CLOCK IS GONE from ui/data/club_valuation.js — the one field that made the bundle non-byte-provable; thre
 
-(one line per pen; full entry: docs/register/entries/v828.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v829.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
