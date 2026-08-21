@@ -229,8 +229,10 @@ EXEMPT_FROZEN_GLOBS = [
     'engine/rl_after/ingestion/movers/movers_R*.json',
     'engine/rl_after/s4_matrix_M1v7*.json',
 ]
-#  (c) archives and the register — exempt by directive.
-EXEMPT_TREES = ('session_', 'backups/', 'evidence/', 'docs/archive/')
+#  (c) archives and the register — exempt by directive. The register's exemption extends to its
+#      new home (docs/register/, the 3b act 2026-08-21): the durable record's prose is never
+#      rewritten by a token sweep, in either of its two homes.
+EXEMPT_TREES = ('session_', 'backups/', 'evidence/', 'docs/archive/', 'docs/register/')
 EXEMPT_FILES = ('docs/OPEN_ITEMS_REGISTER.md', 'LTI_REGISTER.md')
 #  (d) regenerated, never hand-edited — the board is rebuilt by rl_export.py.
 REGENERATED = ('data/rl_build/rl_app_data.json',)

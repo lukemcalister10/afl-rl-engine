@@ -134,3 +134,13 @@ from acceptance.checks import landing as _landing                            # n
 C.register('lander_selftest', _landing.lander_selftest,
            reads=(),
            doc='the landing library\'s self-test: every step broken once, every abort byte-exact')
+
+# --------------------------------------------------------------------------------------------------
+# 3b ADDITION (the register act, 2026-08-21). One row, sub-second, no build: the frozen register's
+# byte seal + new-form well-formedness (pen.py verify) and the generated incident index's currency
+# (incident_index check — the READERS_3B defect-1 gap). Halts no carrier; sits at the bottom.
+
+# 18. THE REGISTER FORM.
+C.register('register_form', _standing.register_form,
+           reads=(),
+           doc='frozen register seal + new-form entries valid + incident index current')

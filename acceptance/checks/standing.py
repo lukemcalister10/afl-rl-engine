@@ -131,6 +131,20 @@ def rulebook_lint(ctx):
                                                             (fails[0] if fails else _last_meaningful(out))[:100]))
 
 
+# ------------------------------------------------------------------------------------------------
+def register_form(ctx):
+    """The 3b register act's standing falsifiers (2026-08-21), both existing tools, sub-second:
+    tools/seat/pen.py verify (frozen-file seal md5, entry well-formedness, version contiguity,
+    LATEST/index freshness) + tools/incident_index.py check (the generated incident index is
+    current — the READERS_3B defect-1 gap: a generated surface with no gate drifts silently).
+    Registered under the owner's same-day quick-and-easy bar; no build, no engine import."""
+    rc1, out1, _ = _run(ctx, 'register_form_pen', ['python3', 'tools/seat/pen.py', 'verify'])
+    rc2, out2, ev = _run(ctx, 'register_form_index', ['python3', 'tools/incident_index.py', 'check'])
+    status = C.PASS if rc1 == 0 and rc2 == 0 else C.FAIL
+    return C.Verdict('register_form', status, ev,
+                     '%s / %s' % (_last_meaningful(out1), _last_meaningful(out2)))
+
+
 # ------------------------------------------------------------------------------------ profile tags
 # PROFILE says where a check can honestly run (runner.py --profile).
 #
@@ -149,6 +163,7 @@ release_contract_seal.PROFILE = 'host-insensitive'
 store_coherence_six_way.PROFILE = 'host-insensitive'
 doc_lint.PROFILE = 'host-insensitive'
 rulebook_lint.PROFILE = 'host-insensitive'
+register_form.PROFILE = 'host-insensitive'
 
 
 def inbox_manifest(ctx):

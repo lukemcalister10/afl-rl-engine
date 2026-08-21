@@ -17,12 +17,17 @@ written to by this tool under any mode. Post-3b entries MAY carry an explicit `i
 and the generator PREFERS it where present (see `_explicit_incident`), so the pattern rules below
 become a fallback rather than the mechanism, without any change to the frozen history.
 
-WHAT THE MARKER COVERS, MEASURED RATHER THAN ASSUMED: 178 entries, v622-v803 (the marker
-form ` · vNNN (date):` — four further `· vNNN (` occurrences carry no date and are not entry
-markers). The register's older
-record predates the marker form and is one continuous body of prose with no entry boundaries a
-parser can find. The index says so on its own front page. Inventing boundaries for that region
-would be archaeology dressed as extraction, which is the thing 1e retires.
+WHAT THE MARKER COVERS: every ` · vNNN (YYYY-MM-DD…):` marker in the frozen register (the date
+group tolerates the four historical malformed dates — `2026-08-10/11`, `2026-08-17, late` and
+kin — which ARE entry markers; the READERS_3B pre-act, defect 3, proved the earlier "not entry
+markers" reading wrong and mis-attributed days of record) PLUS, post-3b, one file per entry under
+docs/register/entries/. The frozen file's entry region ENDS at the ` · SEAM v540 (2026-07-29)`
+tail stamp (the pre-act's defect 2: without that sentinel the last marker's body swallowed the
+803,169 characters of pre-marker record behind it). The register's older record predates the
+marker form and is one continuous body of prose with no entry boundaries a parser can find. The
+index says so on its own front page. Inventing boundaries for that region would be archaeology
+dressed as extraction, which is the thing 1e retires. Coverage figures in the OUTPUT are computed
+at generation, never typed here — this docstring went stale once by carrying a measurement.
 
 THE EXTRACTION RULES ARE CONSERVATIVE, AND THAT IS THE DESIGN. An entry is an INCIDENT only by its
 own words — a correction, an incident, a halt that happened, a defect, a revert, a breach, a false
@@ -46,11 +51,19 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 _ROOT = os.path.dirname(_HERE)
 
 REGISTER_REL = os.path.join('docs', 'OPEN_ITEMS_REGISTER.md')
+ENTRIES_DIR_REL = os.path.join('docs', 'register', 'entries')
 OUT_DIR_REL = os.path.join('docs', 'incidents')
 OUT_MD = 'INDEX.md'
 OUT_JSON = 'index.json'
 
-ENTRY = re.compile(r' · v(\d+) \((\d{4}-\d{2}-\d{2})\):')
+#: The date group is anchored on the ISO date but tolerates a trailing qualifier before the close
+#: paren — the frozen record carries four such markers (defect 3 of the READERS_3B pre-act) and
+#: they are entries, not noise. The ISO prefix is what the index reports as the date.
+ENTRY = re.compile(r' · v(\d+) \((\d{4}-\d{2}-\d{2})[^)]{0,16}\):')
+
+#: The frozen register's entry region ends here (defect 2 of the pre-act): everything after this
+#: sentinel is the pre-marker record and the numbered legacy items, and belongs to NO dated entry.
+FROZEN_SENTINEL = ' · SEAM v540 (2026-07-29)'
 
 #: An entry is an incident only if one of these fires on its own words. Each carries the label the
 #: index reports, so a reader can see WHICH word made the call.
@@ -102,14 +115,36 @@ def _first_sentence(body, n=220):
 
 
 def entries(root):
-    """-> [(version:int, date:str, body:str)] for every marker-delimited entry, in file order."""
+    """-> [(version:int, date:str, body:str)] across BOTH homes of the record, version order.
+
+    Frozen home: docs/OPEN_ITEMS_REGISTER.md, marker-delimited, bodies bounded by the next marker
+    or the FROZEN_SENTINEL — whichever comes first (defect 2: the last entry does not own the
+    803k-character pre-marker record sitting behind the sentinel).
+    Live home (post-3b): docs/register/entries/vNNN.md, one entry per file, the same marker on
+    line 1 and the rest of the file as the body.
+    """
     text = open(os.path.join(root, REGISTER_REL), encoding='utf-8').read()
-    marks = list(ENTRY.finditer(text))
+    stop = text.find(FROZEN_SENTINEL)
+    if stop < 0:
+        stop = len(text)
+    marks = [m for m in ENTRY.finditer(text) if m.start() < stop]
     out = []
     for i, m in enumerate(marks):
         start = m.end()
-        end = marks[i + 1].start() if i + 1 < len(marks) else len(text)
+        end = marks[i + 1].start() if i + 1 < len(marks) else stop
         out.append((int(m.group(1)), m.group(2), text[start:end]))
+    edir = os.path.join(root, ENTRIES_DIR_REL)
+    if os.path.isdir(edir):
+        for name in sorted(os.listdir(edir)):
+            if not name.endswith('.md'):
+                continue
+            padded = ' ' + open(os.path.join(edir, name), encoding='utf-8').read().lstrip()
+            m = ENTRY.match(padded)
+            assert m, 'new-form entry %s does not OPEN with the  · vNNN (date):  marker' % name
+            out.append((int(m.group(1)), m.group(2), padded[m.end():]))
+    out.sort(key=lambda e: e[0])
+    dupes = {v for i, (v, _d, _b) in enumerate(out) for w, _e, _f in out[i + 1:] if v == w}
+    assert not dupes, 'duplicate register version(s) across the seam: %s' % sorted(dupes)
     return out
 
 
@@ -175,8 +210,12 @@ def render_md(rows, all_entries):
     vers = [v for v, _d, _b in all_entries]
     lo, hi = (min(vers), max(vers)) if vers else (0, 0)
     out = [BANNER, '# INCIDENT INDEX — generated from the open-items register', '',
-           '**Coverage: %d register entries, v%d–v%d.** The generator parses the register\'s existing '
-           '` · vNNN (date):` entry markers and nothing else. The record before v%d predates that '
+           '**Coverage: %d register entries, v%d–v%d, across both homes of the record** — the '
+           'frozen `docs/OPEN_ITEMS_REGISTER.md` (entry region bounded by the `SEAM v540` tail '
+           'stamp) and, post-3b, one file per entry under `docs/register/entries/`. The generator '
+           'parses the ` · vNNN (date):` entry markers and nothing else; the four historical '
+           'markers with qualified dates (`2026-08-10/11` and kin) are indexed under their ISO '
+           'prefix. The record before v%d predates the marker '
            'form and is one continuous body of prose with no entry boundaries a parser can find; it '
            'is NOT indexed, and inventing boundaries for it would be archaeology dressed as '
            'extraction. No tagging convention is retro-applied to the append-only record, ever.'
@@ -235,6 +274,7 @@ def main(argv=None):
                      'incidents': len(rows),
                      'rules': [name for name, _p in RULES],
                      'register': REGISTER_REL.replace(os.sep, '/'),
+                     'continues_in': ENTRIES_DIR_REL.replace(os.sep, '/'),
                      'entries': sorted(rows, key=lambda r: -r['version'])},
                     indent=2, sort_keys=True) + '\n'
     outdir = os.path.join(root, OUT_DIR_REL)

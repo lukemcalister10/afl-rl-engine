@@ -1,52 +1,78 @@
 {
-  "coverage_entries": 182,
+  "continues_in": "docs/register/entries",
+  "coverage_entries": 192,
   "entries": [
     {
       "by": "pattern",
-      "date": "2026-08-20",
-      "headline": "**THE RULEBOOK IS v3 AND THE LEVER LANDER EXISTS \u2014 both landed, raw-verified (17/17 GREEN under the supervisor's own run), PUSHED (427985e/246af1c the\u2026",
+      "date": "2026-08-21",
+      "headline": "**THE TOMBSTONE \u2014 THIS FILE IS FROZEN AND THE RECORD CONTINUES AT docs/register/.** THE OWNER'S WORDS, both verbatim, amending his own single-list rul\u2026",
       "hits": {
-        "BREACH": [
-          "\u2026uard 5, VOIDS the prescreened combined gate (126.8/125.2/116.1, measured on b0c39d78), and breaches CORE's one-store-writer concurrency rule. COST ACCEPTED: the v2.9 board bakes carrying Bra\u2026",
-          "\u2026s/CONSTRAINTS_v1_8.md \u2014 authored by a BUILD (da5f7f3, the v2.9 refit-cert job), a doctrine breach (builds never author docs, CORE) \u2014 was `git mv`'d to docs/archive/CONSTRAINTS_v1_8_STRAY_b\u2026",
-          "\u2026e, no exit code was checked, and the suite reported PASS. Seat-4's red-path proof proves a BREACH halts; it never proves that SILENCE halts. Three amendments folded in: \u00b7 **A3 \u2014 THE NE\u2026"
-        ],
-        "CORRECTION": [
-          "\u2026from the training pool \u2014 exact SSP parity, owner-leaning, removes the MSD training slice \u2014 CORRECTED COUNT (PR #63 evidence, 2026-07-12): 29 players / 114 player-season rows actually train (t\u2026",
-          "\u2026FUTURE-LENS PICK-ASSET LINES + LENS CONSERVATION (owner-worded 2026-07-12; APPEARANCE RULE CORRECTED same day on the owner's Duursma example): a pick line appears ONLY on the lens years where\u2026",
-          "\u2026NLY uniform rescale to his locked 3000 anchor (supervisor's earlier pin-release hypothesis CORRECTED); (iv) his cliff read engages G-MONO \u2014 ADOPTION REC: (b) derived LEVELS + a DECLARED final\u2026"
-        ],
+        "INCIDENT": [
+          "\u2026umber), tools/seat/pen.py REPLACED as the new-form writer/validator, and the generated address+incident indexes riding tools/incident_index.py. FROZEN IDENTITY: line count 8,438 unchanged (this entr\u2026"
+        ]
+      },
+      "labels": [
+        "INCIDENT"
+      ],
+      "version": 812
+    },
+    {
+      "by": "pattern",
+      "date": "2026-08-21",
+      "headline": "**THE STAIRCASE FIX IS LIVE \u2014 VARIANT A RAW LANDED BY THE LEVER LANDER ON ITS FIFTH FLIGHT (landing commit 58830aa, main pushed through 0c5935b, super\u2026",
+      "hits": {
         "DEFECT": [
-          "\u2026seasons) \u2192 +582 (full 115g): it INVERTS AND GROWS = the double-payment confirmed; (c) BONUS DEFECT: the pick ladder is NON-MONOTONE (pk10 4426 > pk24 4259 < pk60 4493 \u2014 iso_corr troughs mid-\u2026",
-          "\u2026ields carrying two different true facts. NOT a duplication. (d) id_resolver CLUB-SEMANTICS DEFECT (supervisor-found; INGESTION LANE, blocking go-live). engine/rl_after/id_resolver.py d\u2026",
-          "\u2026off the ruled spec BEFORE authoring, every time. 21. L6 SCARCITY MEASUREMENT \u2014 DENOMINATOR DEFECT (OWNER-CAUGHT 2026-07-13, post-prescreen). The committed L6 artifact (d32bf29, \"220 rucks\u2026"
-        ],
-        "FALSE-RED": [
-          "\u2026ister pen moves it again.** **Fable's FRESHNESS CHECK could HALT on a docs/-only drift \u2014 a FALSE POSITIVE ON HER FIRST ACT.** **RESTORED: a base pin reads \"at or after `<SHA>` + docs/-only diff\",\u2026"
-        ],
-        "HALT": [
-          "\u2026: a NUM\u00c9RAIRE ASSERT joins the export/bake checklist \u2014 any future board with pick-1 \u2260 3000 HALTS; future scale drift re-bases the CURRENCY to the anchor, never the anchor to the drift.\u2026",
-          "\u2026\"should\" agree with the store. WHY PARKED (owner-ruled Branch A): a store md5 change now HALTS the in-flight continuation on Guard 5, VOIDS the prescreened combined gate (126.8/125.2/11\u2026",
-          "\u20260-43: a legacy \u00d71.0524 board is dormant-with-warning; a NUM\u00c9RAIRE board with pick-1 \u2260 3000 HALTS). Supervisor-verified: the owner's sealed reads + the v1.7 anchors are in the \u00d71.0524 worl\u2026"
+          "\u2026hand-verification until the owner's stand-down word. ALSO LANDED THIS WINDOW: the UI act (four defect fixes incl. the all-DNP compare and the attribution waterfall lit after weeks; +1/+2 fully re-\u2026"
         ],
         "INCIDENT": [
-          "\u2026RETIRED with his words + the B1 strike cross-ref) + PART 4 = P1-P11 process laws each with its incident (owner: \"Do you agree with the process laws? They look fine to me.\" \u2014 supervisor concurrence +\u2026",
-          "\u2026**THE IRONY IS EXACT, AND IT IS THE POINT.** `expected_boot.json`'s own `_doc` records the incident Guard 5 was BUILT to close: *\"workspace held baked-v2.4 `644d1254` while the repo carried\u2026",
-          "\u2026gd-pvc-rederivation-o290ye` RESET-HARD to checkpoint `12a0761` (a moved head at fetch = an incident, HALT); ancestor proof to `33c8b52`; store `968de0c7`; **the ACT-1 memo's pre-view hash RE\u2026"
+          "\u2026at docs/evidence/register_readers_2026-08-20/; CURRENT_STATE Part A rehomes owner-signed; the incident-index freshness gap + 4 invisible non-ISO entries ride the act) \u00b7 the rebake Q&A given (estima\u2026"
+        ]
+      },
+      "labels": [
+        "INCIDENT",
+        "DEFECT"
+      ],
+      "version": 809
+    },
+    {
+      "by": "pattern",
+      "date": "2026-08-21",
+      "headline": "**INTERIM HANDOVER PEN (owner-ordered, compact imminent) \u2014 THE STAIRCASE ADOPTION IS MID-LANDING; every ruling of the last day recorded; the successor\u2026",
+      "hits": {
+        "BREACH": [
+          "\u20262%% and variant B\") -> the B-raw no-arb reading STOPPED the landing (4 PRIMARY-window buy-rail breaches +15.1-15.4%% vs +14; the stop rule fixed before the number was read) -> owner: \"integrity is m\u2026",
+          "\u2026top rule fixed before the number was read) -> owner: \"integrity is more important than a minor breach... happy to waive the no arb reading for this\" -> AMBIGUITY HELD (B conserved vs raw differ ma\u2026",
+          "\u2026; kondogiannis 409 dolan 311 west 383 hayes 250; class inside 1.03-1.14; day-0 held; band-rail breaches EXPECTED and WAIVED (owner words above; class law NOT waived \u2014 halts). SUCCESSOR IF INTERRUPTE\u2026"
         ],
-        "REVERT": [
-          "\u2026he DOWN-side mirror of the riser question: does one bad season in a large body of work mean-revert?). TRIGGER: v2.9 investigation \u2014 \"down-move persistence / body-of-work inertia\" (pairs with\u2026",
-          "\u2026seat verifies it went GREEN (AMD runner printing 790136a3, R100.7).** - **THE 1.335 WAIVER REVERTED (R103.1):** CONSTRAINTS \u2192 v1.16, acceptance \u2192 v1.16 \u2014 G-COHORT HALTs at 1.30 again, no w\u2026"
+        "CORRECTION": [
+          "\u2026UED post-model-confidence: the retrospective every-round-under-live-model view; (3) v0 feature CORRECTED SPEC: just original v0 + live vs v0 abs/ratio, NO ranking; POOL ROWS: their v0 IS the signed e\u2026"
+        ],
+        "DEFECT": [
+          "\u2026to remove value that works on its own\" -> A-vs-B diff delivered (517 differ, median |4|, four bug victims IDENTICAL; xerri/hotton mechanism explanations: B = invented tilt + spike haircuts, A\u2026"
+        ],
+        "INCIDENT": [
+          "\u2026reader enumeration DONE at docs/evidence/register_readers_2026-08-20/ with 4 defects incl. the incident-index freshness gap) -> THE REBAKE next week after R24 (scope AWAITING HIS REVIEW at docs/prop\u2026"
         ]
       },
       "labels": [
         "CORRECTION",
         "INCIDENT",
-        "HALT",
         "DEFECT",
-        "REVERT",
-        "BREACH",
-        "FALSE-RED"
+        "BREACH"
+      ],
+      "version": 808
+    },
+    {
+      "by": "pattern",
+      "date": "2026-08-20",
+      "headline": "**THE RULEBOOK IS v3 AND THE LEVER LANDER EXISTS \u2014 both landed, raw-verified (17/17 GREEN under the supervisor's own run), PUSHED (427985e/246af1c the\u2026",
+      "hits": {
+        "INCIDENT": [
+          "\u2026RETIRED with his words + the B1 strike cross-ref) + PART 4 = P1-P11 process laws each with its incident (owner: \"Do you agree with the process laws? They look fine to me.\" \u2014 supervisor concurrence +\u2026"
+        ]
+      },
+      "labels": [
+        "INCIDENT"
       ],
       "version": 807
     },
@@ -828,10 +854,9 @@
     {
       "by": "pattern",
       "date": "2026-08-17",
-      "headline": "ORDERS B-BUILD AND C DELIVERED \u2014 C IS A CLEAN FALSIFICATION (dean/CDT did NOT recover; the supervisor's \"located cause\" claim was WRONG on materiality\u2026",
+      "headline": "ORDER G \u2014 THE CLOCK RE-BASE DELIVERED: THE OWNER'S ARITHMETIC VINDICATED TWICE, THE \"MISSING SIX POINTS\" WAS ENTIRELY A RULER ARTIFACT, THE W2 LEVEL B\u2026",
       "hits": {
         "BREACH": [
-          "\u2026f chain exact, no-cliff at 24, W 0.326 in band, S4 +54%, max class 1.1272, no halts; PC-3/PC-9 breached-and-owned (the RUCK cut \u22120.432 unchanged -> the ruck residual is ELIMINATED as a denominator d\u2026",
           "\u2026PDA \u22120.190 / PDN \u22120.396 / PDS \u22120.254 all RED | ALLPOOL \u22120.020/\u22120.047 sell-red | C31 comparison BREACHES the buy rail at 1-10 (+16.19%%). CELLS RED UNDER ALL READINGS: 31-40, 41-64, UNR/PDA/PDN/PDS,\u2026",
           "\u2026er question filed): mature entrants sit ABOVE the ruled 1.14 fair \u2014 age-20 mark 1.273 (+0.199, BREACHES the buy rail), 21+ +0.110 \u2014 consistent-direction with SSP's surviving +0.625; fit-is-not-law:\u2026"
         ],
@@ -839,17 +864,44 @@
           "\u20266.19%%). CELLS RED UNDER ALL READINGS: 31-40, 41-64, UNR/PDA/PDN/PDS, ALLPOOL. **THE HEADLINE: CORRECTED W2 CLASS TARGET [0.976, 0.989]** (2005-15 mean 0.983, B=2000; controls within 1.2pts; identica\u2026"
         ],
         "DEFECT": [
-          "\u20263, the output-blind ladder, flagged); s* re-pinned 1.2988 after a caught +6.4% re-denomination bug (killed, disclosed); TAPER RETIRED (407 inversions -> 0, price +28,146, t-de-koning +196); ent\u2026",
-          "\u2026d-and-owned (the RUCK cut \u22120.432 unchanged -> the ruck residual is ELIMINATED as a denominator defect, back on the open list). THE FINDING: the remaining dean-shaped channel is THE AGE LENS INSIDE\u2026",
           "\u2026R ARTIFACT, THE W2 LEVEL BAND RETIRED. TICK VERDICT (b): ORDER F MISREAD THE LADDER, NO ENGINE DEFECT \u2014 o_f_wedge.py:154 indexed the yr-1 board one year too far forward (k_e=j\u22122 true only at AGE_R\u2026"
-        ],
+        ]
+      },
+      "labels": [
+        "CORRECTION",
+        "DEFECT",
+        "BREACH"
+      ],
+      "version": 728
+    },
+    {
+      "by": "pattern",
+      "date": "2026-08-17",
+      "headline": "ALL SEATS HOME \u2014 THE LANDING CANDIDATE EXISTS (C32R + the measured pick-curve, board 1f176444 total 667,916), THE RULER ARTIFACT FOUND (Order F), THE \u2026",
+      "hits": {
         "HALT": [
           "\u2026EAN CHANNEL QUANTIFIED (Order E), THE VETERAN BUILD SOFTENED PER R-VETLEAN. ORDER D ARC: first HALTED \u2014 the fitted curve came out OPPOSITE the ruled direction (sit-penalty RISES with pick: kappa .\u2026"
         ]
       },
       "labels": [
-        "CORRECTION",
-        "HALT",
+        "HALT"
+      ],
+      "version": 727
+    },
+    {
+      "by": "pattern",
+      "date": "2026-08-17",
+      "headline": "ORDERS B-BUILD AND C DELIVERED \u2014 C IS A CLEAN FALSIFICATION (dean/CDT did NOT recover; the supervisor's \"located cause\" claim was WRONG on materiality\u2026",
+      "hits": {
+        "BREACH": [
+          "\u2026f chain exact, no-cliff at 24, W 0.326 in band, S4 +54%, max class 1.1272, no halts; PC-3/PC-9 breached-and-owned (the RUCK cut \u22120.432 unchanged -> the ruck residual is ELIMINATED as a denominator d\u2026"
+        ],
+        "DEFECT": [
+          "\u20263, the output-blind ladder, flagged); s* re-pinned 1.2988 after a caught +6.4% re-denomination bug (killed, disclosed); TAPER RETIRED (407 inversions -> 0, price +28,146, t-de-koning +196); ent\u2026",
+          "\u2026d-and-owned (the RUCK cut \u22120.432 unchanged -> the ruck residual is ELIMINATED as a denominator defect, back on the open list). THE FINDING: the remaining dean-shaped channel is THE AGE LENS INSIDE\u2026"
+        ]
+      },
+      "labels": [
         "DEFECT",
         "BREACH"
       ],
@@ -1653,7 +1705,7 @@
     {
       "by": "pattern",
       "date": "2026-08-10",
-      "headline": "SALVAGE WORD 2 RULED \u2014 the ballot complete; the reconciliation fully ruled; the build's scope final. OWNER WORDS (filed 5242765663, after his two ques\u2026",
+      "headline": "THE PACKAGE BUILT \u2014 THE RELATIVITY GUARD FIRED \u2014 THE OWNER RULED THE COUNTERBALANCE: #336 stays, the age-dynamic discount pulled forward. THE BUILD LA\u2026",
       "hits": {
         "BREACH": [
           "\u2026layer ported surgically as 13 hunks (a file copy would have reverted DOB/G1/R22; monotonicity breach repaired \u2014 survivors-only baseline had rated strictly worse careers better) \u00b7 ITEM C re-verifi\u2026",
@@ -1668,7 +1720,7 @@
         "REVERT",
         "BREACH"
       ],
-      "version": 639
+      "version": 640
     },
     {
       "by": "pattern",
@@ -1854,7 +1906,7 @@
       "version": 622
     }
   ],
-  "incidents": 104,
+  "incidents": 109,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",

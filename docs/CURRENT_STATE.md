@@ -390,12 +390,11 @@ rl_app_data.json` && single-thread BLAS env (`OPENBLAS/OMP/MKL/NUMEXPR_NUM_THREA
 `INGEST_SCORE_APPLY_ARMED=1 INGEST_SCORE_APPLY=<any> ... --approve` = apply; ledger blocks
 double-apply; exit 6 → `finalize --round N` then `repair --round N`. N32 payload recipe:
 `{str(pick): int(round(v))}` over the ladder's `curve` object, `json.dumps(..., sort_keys=True)`,
-md5. PEN MECHANICS: register line 1 is the header; edit the version stamp near char 86 SAME LENGTH
-(`v591 2026-08-06` → next); insert the entry before the ` · SEAM v540 (2026-07-29)` marker;
-asserts: line count 8,438 unchanged · growth == entry length · one new stamp · docs-only diff;
-commit `supervisor-seat <supervisor@seam.local>`; branch → PR → rebase-merge → re-verify main BY
-CONTENT; after every rebase-merge the local branch needs `git rebase origin/main` +
-force-with-lease (twins drop patch-identical; sanctioned for merged history). Product commits:
+md5. PEN MECHANICS — RETIRED BY THE 3b ACT (2026-08-21): the byte-surgery procedure that stood here
+(char-86 stamp, SEAM-marker splice, 8,438-line assert) is impossible since the freeze —
+docs/OPEN_ITEMS_REGISTER.md is sealed byte-exact and `tools/seat/pen.py verify` fails on any
+moved byte. The write procedure of record is docs/register/README.md (`pen.py append`, then
+explicit-path commit). Product commits:
 `build-seat <build@seam.local>`; both end with the Co-Authored-By + Claude-Session trailers. The
 book (`s4_matrix.json`) is id()-keyed — never byte-reproducible; the committed book of record is
 `engine/rl_after/s4_matrix_M1v7.json` (meta block carries its identity). The owner's cohort

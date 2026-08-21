@@ -8,8 +8,11 @@ complete handover — no chat history required, ever.
   verification of every hand-back and every load-bearing claim (clone, diff, hash, re-compute —
   never trust prose); pre-fire audits of major directives (mandatory; they have caught real
   hazards every time run); escalation judgment (what needs the owner, what doesn't).
-- **Supervisor pen:** the ONLY writer of the durable register (docs/OPEN_ITEMS_REGISTER.md,
-  header-pen style, version + PRIOR chain; history in git); files seat deliverables VERBATIM
+- **Supervisor pen:** the ONLY writer of the durable register. *Repointed by the 3b act
+  (2026-08-21):* the record continues at docs/register/ — one file per entry via
+  `tools/seat/pen.py append`, LATEST.md as the freshest-state line, reading law in
+  docs/register/README.md; docs/OPEN_ITEMS_REGISTER.md is FROZEN byte-exact (seal asserted by
+  `pen.py verify`; history in git); files seat deliverables VERBATIM
   (protocols, reviews, memos, charters) with provenance headers; docs-only — never engine,
   store, board, contract, or test writes; commits as `supervisor-seat <supervisor@seam.local>`.
 
@@ -43,8 +46,11 @@ version pointers CURRENT_STATE gives you; (4) independently verify live state (m
 branches, in-flight runs) with your own commands; (5) READ-BACK to the owner — current position in
 your own words — and hold for confirmation before any push.
 
-**THE FULL-HEADER READ IS RETIRED.** It cost 75–100k tokens, the header now exceeds 320KB, and it was
-breaking incoming seats before they started. The register remains the record and wins on any
+**THE FULL-HEADER READ IS RETIRED.** It cost 75–100k tokens, the frozen file's line 1 reached
+1.31MB (this charter's earlier "320KB" datum was 4× stale by the freeze), and it was
+breaking incoming seats before they started. Since the 3b act the freshest state is ONE LINE at
+docs/register/LATEST.md and new entries are one small file each under docs/register/entries/.
+The register remains the record and wins on any
 disagreement with CURRENT_STATE.md; it is read BY POINTER, never front-to-back. Same for the other
 seat charters and the frozen REFEREE_PROTOCOL header — read them when a task reaches them.
 **The pen REPLACES CURRENT_STATE.md Part B WHOLESALE at every pen** — a derived copy kept in sync by

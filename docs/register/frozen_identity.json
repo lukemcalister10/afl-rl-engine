@@ -1,0 +1,14 @@
+{
+ "path": "docs/OPEN_ITEMS_REGISTER.md",
+ "md5": "219021ace49ff2750a6576cb9ac8368c",
+ "bytes": 2160657,
+ "lines_wc": 8438,
+ "dated_entries": 191,
+ "entry_span": [
+  "v622",
+  "v812"
+ ],
+ "sealed": "2026-08-21",
+ "sealed_by": "register act 3b (PLAN_v6), owner words verbatim in the v812 tombstone",
+ "note": "tools/seat/pen.py verify asserts this md5 on every run; a moved byte is a hard fail."
+}

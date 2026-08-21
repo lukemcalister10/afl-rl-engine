@@ -27,14 +27,15 @@ done
 HEAD_SHA="$(git -C "$HERE" rev-parse HEAD)" || die "rev-parse HEAD failed"
 printf '  %-22s %s\n' "checkout HEAD" "$HEAD_SHA"
 
-# 2) The OPEN-ITEMS register's OWN header line — the durable freshness rung (raw, truncated).
-#    Line 1 leads with the version + PEN summary (the freshness-relevant part); it is very long,
-#    so print the first ~200 chars with an explicit marker. Missing/empty = a RED (house law #3).
-echo "-- open-items register header (docs/OPEN_ITEMS_REGISTER.md line 1) --"
-[ -f "$HERE/docs/OPEN_ITEMS_REGISTER.md" ] \
-  || die "docs/OPEN_ITEMS_REGISTER.md missing (open-items register is the durable freshness input)"
-OIR_HDR="$(head -n1 "$HERE/docs/OPEN_ITEMS_REGISTER.md")" || die "cannot read docs/OPEN_ITEMS_REGISTER.md"
-[ -n "$OIR_HDR" ] || die "docs/OPEN_ITEMS_REGISTER.md header line is empty (SILENCE IS A RED)"
+# 2) The OPEN-ITEMS register's freshest line — the durable freshness rung (raw, truncated).
+#    Repointed by the 3b act (2026-08-21): the record continues at docs/register/, and LATEST.md
+#    line 1 carries the newest version + summary. The old file is frozen (its line 1 is sealed at
+#    v812 forever, so it can no longer answer "how fresh"). Missing/empty = a RED (house law #3).
+echo "-- open-items register, newest entry (docs/register/LATEST.md line 1) --"
+[ -f "$HERE/docs/register/LATEST.md" ] \
+  || die "docs/register/LATEST.md missing (open-items register is the durable freshness input)"
+OIR_HDR="$(head -n1 "$HERE/docs/register/LATEST.md")" || die "cannot read docs/register/LATEST.md"
+[ -n "$OIR_HDR" ] || die "docs/register/LATEST.md header line is empty (SILENCE IS A RED)"
 if [ "${#OIR_HDR}" -gt 200 ]; then
   printf '  %s …(truncated)\n' "${OIR_HDR:0:200}"
 else
