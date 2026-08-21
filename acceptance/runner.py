@@ -201,6 +201,9 @@ def main(argv=None):
                   if getattr(c.fn, 'PROFILE', 'host-insensitive') == 'host-insensitive']
 
     if a.profile == 'in-transaction':
+        # TWO exclusions carry this profile, each ruled and each recorded where its gate lives
+        # (P11): lander_selftest (the supervisor ruling below) and build_twice_determinism (owner
+        # word "Skip it.", 2026-08-21 — see acceptance/checks/m1a.py).
         # THE RECURSION FILTER — SUPERVISOR RULING, 2026-08-21:
         #   "The lander's self-test moves OUTSIDE the landing transaction: a check that validates the
         #    lander by running seventeen practice landings must never run INSIDE a real landing

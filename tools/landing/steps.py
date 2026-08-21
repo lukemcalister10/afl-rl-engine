@@ -1034,10 +1034,13 @@ def gates(ctx):
     builder FUNCTION for its builds (which is safe and is what the day's build drivers did) and
     never the suite.
 
-    THE ACCEPTANCE RUNNER RUNS UNDER `--profile in-transaction`, which is `full` minus the lander's
-    own self-test. That check is not skipped, it is MOVED: `cli.cmd_lever` runs it standalone,
-    immediately before the transaction opens, and refuses to open one if it fails. See the ruling
-    quoted in `acceptance/checks/landing.py`. Coverage is identical; the recursion is gone.
+    THE ACCEPTANCE RUNNER RUNS UNDER `--profile in-transaction`, which is `full` minus TWO checks:
+    the lander's own self-test (not skipped, MOVED — `cli.cmd_lever` runs it standalone immediately
+    before the transaction opens and refuses to open one if it fails; see the ruling quoted in
+    `acceptance/checks/landing.py`) and build_twice_determinism (owner word "Skip it.", 2026-08-21,
+    register v820 — the transaction's own machinery builds the board, and the determinism proof
+    keeps running in the full profile CI and every supervisor verification use; see the ruling
+    recorded at `acceptance/checks/m1a.py` per P11). Coverage identical outside the flight.
 
     EVERY GATE'S RAW OUTPUT LANDS IN THE EVIDENCE DIR, and a gate that can write per-check output of
     its own gets `@EVIDENCE@` substituted for a directory to write it into (F-5).

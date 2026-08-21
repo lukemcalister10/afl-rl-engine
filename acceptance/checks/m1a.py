@@ -347,3 +347,11 @@ def build_twice_determinism(ctx):
 
 build_twice_determinism.HALTS = ()
 build_twice_determinism.PROFILE = 'heavy'
+# IN_TRANSACTION = False — OWNER RULING, 2026-08-21, word verbatim: "Skip it." (register v820; the
+# option was presented at v819 with the measured cost: ~350-420s of the ~425s in-transaction runner,
+# spent re-proving determinism INSIDE a transaction whose own machinery already builds the board).
+# The check is NOT weakened where it earns its keep: it stays in the full profile, which CI and
+# every supervisor verification run — only the lander's in-flight gate set skips it. Same exclusion
+# mechanism, same reasoning shape, as lander_selftest (recursion/redundancy inside the transaction,
+# full coverage outside it).
+build_twice_determinism.IN_TRANSACTION = False
