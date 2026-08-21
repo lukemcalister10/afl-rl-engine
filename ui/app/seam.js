@@ -59,9 +59,36 @@ MD.seam = (function () {
      Deliberately exposed as `clubBundle`, not `club`: the old name read like "the club data", and any
      code reaching for it now has to say that it wants the raw ingest bundle. */
   const clubBundle = window.__CLUB_VALUATION__ || null;
-  function clubHalt() { return clubBundle && clubBundle.halt ? clubBundle.halt : null; }
+
+  /* THE ONE CHOKE POINT FOR THE PICKS OVERLAY (v827, 2026-08-21). `clubHalt()` used to mean only "the
+     ingest wrote a halted bundle". It now ALSO means "the bundle present is not this tree's" —
+     `MD.clubTotals.pin()`, the #232 mirror law applied to the picks bundle (see the note at that
+     function). Both are the same fact to every reader here: the picks on file cannot be shown.
+
+     WHY THE REFUSAL IS CENTRALISED RATHER THAN LEFT IN THE CLUBS PAGE. The stale bundle found on
+     2026-08-21 was read by THREE surfaces — the clubs table, the pocket profile, and the board's
+     picks-included overlay (club headers, the club banner, the held-picks panel). Guarding only the
+     reader that computes totals would have left the board still printing R22 pick values under a
+     "picks included" button that looked perfectly healthy. So the seam refuses, once, and every
+     consumer inherits it: the overlay button disables with the reason on hover, exactly as it does on
+     an ingest halt, and `picksFor` yields nothing for anyone who asks anyway.
+
+     `MD.clubTotals` loads AFTER this module (index.html), which is why the pin is consulted lazily at
+     call time and why its absence is not treated as a refusal — a context that loads the seam without
+     the reader has no picks surface to protect. */
+  function clubPin() {
+    return (MD.clubTotals && MD.clubTotals.pin) ? MD.clubTotals.pin() : { ok: true, why: null };
+  }
+  function clubHalt() {
+    if (clubBundle && clubBundle.halt) return clubBundle.halt;
+    const pn = clubPin();
+    return pn.ok ? null : { reason: pn.why, pinRefused: true };
+  }
   function picksFor(afflTeamLong) {
     if (!clubBundle || !clubBundle.picksByTeam) return [];
+    // FAIL CLOSED on a bundle that is not this tree's. A stale pick price is a wrong number wearing
+    // the look of a right one, and there is no fallback the browser could compute in its place.
+    if (!clubPin().ok) return [];
     // canonical join key — the picks ledger and the board must agree on one spelling per club.
     const t = MD.canonClub(afflTeamLong);
     return clubBundle.picksByTeam[t] || clubBundle.picksByTeam[afflTeamLong] || [];

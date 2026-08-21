@@ -144,6 +144,51 @@ MD.clubTotals = (function () {
     return { total: total, keys: keys };
   }
 
+  /* ------------------------------------------------------------------- THE PICKS PIN (v827, 2026-08-21)
+     THE #232 MIRROR LAW, ONE CARRIER ALONG. `ui/data/club_valuation.js` is a GENERATED bundle stamped
+     with the board + store it was generated from, and until tonight this module honoured whatever
+     bundle was present — `halted = !!(cv && cv.halt)`, with no comparison of that stamp against the
+     board the app is loaded on. That is exactly the hole #232 left in the ownership sidecar and #283
+     closed with `MD.ownership.pin()`: a mirror that does not name the identity it was generated from
+     cannot be told apart from a stale one, and one that names it and is never asked is no better.
+
+     MEASURED, NOT HYPOTHETICAL. On 2026-08-21 the shipped bundle carried board a05fe951 / R22 while
+     the tree stood on b3e8da99 / R23. The pocket and club pages showed R22-board pick VALUES with
+     nothing refusing and nothing flagged — a silent wrong number, which is the one outcome the owner's
+     word that night forbids: "It is essential that the UI displays the correct player locations and
+     pick locations."
+
+     WHY IT REFUSES RATHER THAN DEGRADES, unlike the ownership mirror. A refused ownership mirror falls
+     back to the board's own store-derived `affl_team`, which since #283 is the same field — a degraded
+     display, never a wrong club. There is no such fallback for a pick's price: it is the engine's
+     canonical PVC evaluated over a band, and the browser cannot re-derive it from the board (that is
+     this module's founding argument, above). So a stale bundle's picks go to the HALTED path — Picks
+     and Overall read `n/a`, never 0 and never a stale figure — with a reason naming BOTH identities.
+
+     Same shape and same field names as `MD.ownership.pin()`: `{ok, why}`, checked against the working
+     bundle's stamp, comparing store first and then board. */
+  function pin() {
+    const cv = MD.seam.clubBundle;
+    const st = (cv && cv.stamp) || {};
+    const w = ((MD.seam && MD.seam.working) || {}).stamp || {};
+    if (!cv) return { ok: false, why: "the picks bundle is absent" };
+    if (cv.halt) {
+      return { ok: false, why: (cv.halt.reason || "the ingest refused to write a picks bundle") };
+    }
+    if (!st.store || !st.board) {
+      return { ok: false, why: "the picks bundle carries no board/store stamp, so it cannot be authenticated" };
+    }
+    if (w.store && st.store !== w.store) {
+      return { ok: false, why: "the picks bundle was generated from store " + String(st.store).slice(0, 8)
+                              + " but the app is loaded on store " + String(w.store).slice(0, 8) };
+    }
+    if (w.board && st.board !== w.board) {
+      return { ok: false, why: "the picks bundle was generated from board " + String(st.board).slice(0, 8)
+                              + " but the app is loaded on board " + String(w.board).slice(0, 8) };
+    }
+    return { ok: true, why: null };
+  }
+
   let _cache = null;
 
   function compute() {
@@ -152,7 +197,10 @@ MD.clubTotals = (function () {
     if (!w || !(w.players || []).length) return null;
 
     const cv = MD.seam.clubBundle;            // the ingest bundle — picks only; totals no longer read
-    const halted = !!(cv && cv.halt);
+    /* The pin decides, not the presence of the bundle. An unauthenticated bundle is treated exactly as
+       an ingest halt is: no picks are read from it at all. */
+    const pn = pin();
+    const halted = !pn.ok;
     const picksByTeam = (!halted && cv && cv.picksByTeam) || {};
 
     /* roster by canonical AFFL club, board order preserved so the value sort ties break exactly as the
@@ -199,12 +247,19 @@ MD.clubTotals = (function () {
          combined identity would be the false-success signal this change exists to remove. */
       playerSource: { board: st.board_md5 || st.srcmd5, store: st.store_md5, asOfRound: st.asOfRound,
                       tag: st.tag, live: true },
-      picksSource: halted ? { halted: true, reason: (cv.halt || {}).reason }
-                          : (cv ? { generated: (cv.stamp || {}).generated, pvcCurveMd5: (cv.stamp || {}).pvcCurveMd5,
-                                    mult2027: (cv.stamp || {}).mult2027, nPicks: (cv.stamp || {}).nPicks,
-                                    absent: false }
-                                : { absent: true }),
-      picksAvailable: !halted && !!cv,
+      /* PROVENANCE, NOT A CLOCK. This read `generated: cv.stamp.generated` — the bundle's wall-clock
+         timestamp — until v827 dropped that field so the bundle could be byte-proved and become a
+         landing carrier. A timestamp never answered the question a reader has anyway ("is this the
+         tree I am looking at?"); the identity fields do, and they are the same ones `pin()` checks. */
+      picksSource: halted ? { halted: true, reason: pn.why, pinOk: false }
+                          : { board: (cv.stamp || {}).board, store: (cv.stamp || {}).store,
+                              engine: (cv.stamp || {}).engine, asOfRound: (cv.stamp || {}).asOfRound,
+                              tag: (cv.stamp || {}).tag,
+                              pvcCurveMd5: (cv.stamp || {}).pvcCurveMd5,
+                              pvcCurveFileMd5: (cv.stamp || {}).pvcCurveFileMd5,
+                              mult2027: (cv.stamp || {}).mult2027, nPicks: (cv.stamp || {}).nPicks,
+                              pinOk: true, absent: false },
+      picksAvailable: !halted,
     };
     return _cache;
   }
@@ -227,5 +282,6 @@ MD.clubTotals = (function () {
     return null;
   }
 
-  return { compute: compute, byTeam: byTeam, rankOf: rankOf, isFree: isFree, SLOTS: SLOTS, BENCH: BENCH };
+  return { compute: compute, byTeam: byTeam, rankOf: rankOf, isFree: isFree, pin: pin,
+           SLOTS: SLOTS, BENCH: BENCH };
 })();

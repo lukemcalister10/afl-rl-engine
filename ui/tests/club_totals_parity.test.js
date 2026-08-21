@@ -358,6 +358,105 @@ check(ui.clubs.length > 0 && ui.clubs.some(function (c) { return c.totalPlayer >
   "…and the computation is non-empty, so that assertion is not passing over an empty club list",
   ui.clubs.length + " clubs");
 
+/* ============================================================ THE PICKS PIN — v827, both directions
+ * ui/data/club_valuation.js is the PICK-LOCATIONS bundle and it carries the board + store it was
+ * generated from. Until 2026-08-21 nothing compared that stamp with the board the app is loaded on:
+ * `halted = !!(cv && cv.halt)` honoured whatever bundle was present. It was found that night carrying
+ * board a05fe951 / R22 while the tree stood on b3e8da99 / R23, and the pocket and club pages showed
+ * R22-board pick VALUES with nothing refusing and nothing flagged.
+ *
+ * `MD.clubTotals.pin()` is the #232 mirror law applied to this bundle — the same shape
+ * `MD.ownership.pin()` uses. These cases assert BOTH directions, because a guard proved in one
+ * direction is a guard that might simply always refuse (or always pass):
+ *
+ *   MATCHING   the live bundle authenticates, picks render, and the figures are real (non-zero).
+ *   MISMATCHED store, board, and a stamp-less bundle each REFUSE, each with a reason naming the two
+ *              identities, and every pick figure goes to the unavailable path rather than to 0 or to
+ *              a stale number — on the clubs reader AND on the seam every other surface reads.
+ */
+console.log("");
+console.log("THE PICKS PIN (v827) — a bundle that is not this tree's must REFUSE, not whisper");
+console.log("-".repeat(72));
+
+const liveBoard = String(board.stamp.board);
+const liveStore = String(board.stamp.store);
+
+/* ---- DIRECTION 1: the matching stamp renders --------------------------------------------------- */
+check(ctx.MD.clubTotals.pin().ok === true,
+  "MATCHING STAMP: the shipped bundle authenticates against the loaded board + store",
+  JSON.stringify(ctx.MD.clubTotals.pin()));
+check(ui.picksAvailable === true, "MATCHING STAMP: picks are AVAILABLE");
+check((ui.picksSource || {}).board === liveBoard && (ui.picksSource || {}).store === liveStore,
+  "MATCHING STAMP: picksSource carries the bundle's IDENTITY fields (board + store), not a wall clock");
+check((ui.picksSource || {}).generated === undefined,
+  "MATCHING STAMP: picksSource carries NO `generated` timestamp — the field was dropped so the bundle "
+  + "could be byte-proved and become a landing carrier (writer 6)");
+check(ctx.MD.seam.clubHalt() === null, "MATCHING STAMP: the seam reports no halt");
+const someTeam = ui.clubs.find(function (c) { return c.nPicks > 0; });
+check(!!someTeam && someTeam.totalPicks > 0 && ctx.MD.seam.picksFor(someTeam.team).length > 0,
+  "MATCHING STAMP: real pick figures reach the readers (non-vacuity — this is not a guard that "
+  + "always refuses)", someTeam ? someTeam.team + " " + someTeam.totalPicks : "no club holds picks");
+
+/* ---- DIRECTION 2: a mismatched stamp refuses ---------------------------------------------------- */
+function refusedCtx(mutateStamp) {
+  return loadUI(function (c) { mutateStamp(c.window.__CLUB_VALUATION__.stamp); });
+}
+const STALE_BOARD = "a05fe951dead0000dead0000dead0000";   // the identity actually found stale, 2026-08-21
+const STALE_STORE = "cc02567f";
+
+[["store", function (st) { st.store = STALE_STORE; }, STALE_STORE, liveStore],
+ ["board", function (st) { st.board = STALE_BOARD; }, STALE_BOARD, liveBoard],
+].forEach(function (caseDef) {
+  const what = caseDef[0], mutate = caseDef[1], wrong = caseDef[2], right = caseDef[3];
+  const c = refusedCtx(mutate);
+  const pn = c.MD.clubTotals.pin();
+  const t = c.MD.clubTotals.compute();
+  check(pn.ok === false, "MISMATCHED " + what.toUpperCase() + ": the bundle is REFUSED");
+  check(typeof pn.why === "string"
+        && pn.why.indexOf(String(wrong).slice(0, 8)) >= 0
+        && pn.why.indexOf(String(right).slice(0, 8)) >= 0,
+    "MISMATCHED " + what.toUpperCase() + ": the reason NAMES BOTH identities — the one the bundle was "
+    + "generated from and the one the app is loaded on", pn.why);
+  check(t.picksAvailable === false && (t.picksSource || {}).halted === true,
+    "MISMATCHED " + what.toUpperCase() + ": picks go to the HALTED/unavailable path");
+  check((t.picksSource || {}).reason === pn.why,
+    "MISMATCHED " + what.toUpperCase() + ": the surface is handed the SAME reason (clubs.js prints it "
+    + "instead of 'the club-valuation bundle is absent')");
+  check(t.clubs.every(function (cl) { return cl.totalPicks === 0 && cl.nPicks === 0; }),
+    "MISMATCHED " + what.toUpperCase() + ": no stale pick value survives into any club total "
+    + "(the readers show n/a, never 0-as-a-figure — clubs.js / pocket.js / board.js)");
+  const h = c.MD.seam.clubHalt();
+  check(!!h && h.reason === pn.why && h.pinRefused === true,
+    "MISMATCHED " + what.toUpperCase() + ": the SEAM refuses too, so the board's picks-included overlay "
+    + "disables with the reason on hover");
+  check(c.MD.seam.picksFor(someTeam.team).length === 0,
+    "MISMATCHED " + what.toUpperCase() + ": MD.seam.picksFor yields nothing — the held-picks panel and "
+    + "the club headers cannot print a stale price");
+  /* NON-VACUITY for this whole block: the PLAYER side is untouched by the refusal, so the cases above
+     are not passing because the computation collapsed. */
+  check(t.clubs.length === 16
+        && JSON.stringify(t.clubs.map(function (x) { return [x.team, x.totalPlayer]; }).sort())
+           === JSON.stringify(ui.clubs.map(function (x) { return [x.team, x.totalPlayer]; }).sort()),
+    "MISMATCHED " + what.toUpperCase() + ": the player side is UNAFFECTED — 16 clubs, every player "
+    + "total identical (the refusal is scoped to the picks, not a collapse)");
+});
+
+/* a bundle carrying no pin at all cannot be authenticated — the same fail-closed rule the ownership
+   mirror applies, and the reason #232's presence-only gate was not a guard. */
+const noPin = refusedCtx(function (st) { delete st.board; delete st.store; });
+check(noPin.MD.clubTotals.pin().ok === false
+      && /no board\/store stamp/.test(noPin.MD.clubTotals.pin().why || ""),
+  "A BUNDLE WITH NO board/store STAMP is refused — it cannot be told apart from a stale one",
+  noPin.MD.clubTotals.pin().why);
+
+/* the ingest's own halt still reaches the reader, and still by its own reason. */
+const ingestHalted = loadUI(function (c) {
+  c.window.__CLUB_VALUATION__.halt = { reason: "SELF-TEST: the ingest refused" };
+});
+check(ingestHalted.MD.clubTotals.pin().ok === false
+      && ingestHalted.MD.clubTotals.compute().picksSource.reason === "SELF-TEST: the ingest refused",
+  "AN INGEST HALT still refuses, and still carries the ingest's OWN reason (the pin did not swallow it)");
+
 console.log("-".repeat(72));
 console.log((fail ? "FAIL " : "") + pass + "/" + (pass + fail) + " passed");
 process.exit(fail ? 1 : 0);

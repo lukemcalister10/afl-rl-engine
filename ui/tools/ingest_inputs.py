@@ -23,6 +23,24 @@ THE MIRROR LANE (added 2026-08-21, closing the missing-writer class on ui/data/o
                                                     scratch dir and byte-compares it with the
                                                     shipped one (exit 1 on drift)
 
+THE CLUBS LANE (added 2026-08-21, closing the SAME class on ui/data/club_valuation.js — v827)
+--------------------------------------------------------------------------------------------
+  python3 ui/tools/ingest_inputs.py --clubs-only    writes ONLY ui/data/club_valuation.js
+  python3 ui/tools/ingest_inputs.py --clubs-check   writes NOTHING; regenerates the picks bundle
+                                                    into a scratch dir and byte-compares it with
+                                                    the shipped one (exit 1 on drift)
+
+WHY THE CLUBS LANE EXISTS, AND WHY IT IS A FENCE AND NOT A SHORTCUT.  ui/data/club_valuation.js is
+the PICK-LOCATIONS bundle, and on 2026-08-21 it was found SILENTLY STALE: generated 2026-08-20 from
+board a05fe951 / R22 while the tree stood on b3e8da99 / R23, with NO identity guard in the reader and
+no writer inside the landing.  Owner's word the same night: "It is essential that the UI displays the
+correct player locations and pick locations."  `MD.clubTotals.pin()` now refuses a bundle whose
+board+store stamp is not the loaded app's (the #232 mirror law, applied one carrier along), and the
+lander runs THIS tool as its SIXTH UI writer (`tools/landing/steps.ui`).  That lane must write the
+picks bundle WITHOUT the step-0 store apply, for the same reason `--mirror-only` must: step 0 is an
+identity-moving write with its own writer of record, and a landing is not it.  The stamp's wall clock
+was dropped in the same act, which is what makes the bundle byte-provable and therefore a carrier.
+
 WHY THE LANE EXISTS.  ui/data/ownership.js is a MIRROR of the store's `affl_team`, pinned to the
 board + store identity it was generated from, and `MD.ownership.pin()` REFUSES a mirror whose pin
 does not match the loaded app.  So every landing that moves the board or the store retires the
@@ -39,7 +57,9 @@ and a landing is not it.  In this lane the store is READ, never written: if the 
 authorship the store has not been given, the single-source check below HALTs and names it, which is
 the correct verdict for a landing rather than a silent mid-flight store move.
 """
-import csv, json, os, sys, collections, hashlib, datetime, zipfile, shutil, tempfile
+# `datetime` is deliberately NOT imported: neither bundle carries a wall clock any more, and an
+# import kept "for later" is how one comes back.
+import csv, json, os, sys, collections, hashlib, zipfile, shutil, tempfile
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import xlsx_read          # stdlib-only .xlsx reader (#232) — see its module docstring for why
@@ -130,7 +150,10 @@ def _emit_halt(reason):
     print("\n■ HALT — %s" % reason)
     print("  The club-valuation overlay refuses to render on this ingest.  Nothing is guessed.")
     payload = {
-        "stamp": {"expectedBoard": _expected_board_short(), "generated": _now()},
+        # NO WALL CLOCK, on the halt path either — see the note on the clean stamp in run(). A halted
+        # bundle that carried a timestamp could not be byte-compared, and the halt overlay is exactly
+        # the bundle a drift guard most needs to be able to re-derive.
+        "stamp": {"expectedBoard": _expected_board_short()},
         "halt": {"reason": reason, "verdicts": [{"check": c, "ok": o, "detail": d} for c, o, d in verdicts]},
         "verdicts": [{"check": c, "ok": o, "detail": d} for c, o, d in verdicts],
         "clubs": [], "picksByTeam": {}, "notes": notes,
@@ -140,17 +163,12 @@ def _emit_halt(reason):
     # it would show a traded player's new club on the board while the picks overlay refused, which is
     # the "one player, two clubs" state this job exists to prevent.
     _write_ownership({
-        "stamp": {"expectedBoard": _expected_board_short(), "generated": _now(),
+        "stamp": {"expectedBoard": _expected_board_short(),
                   "lane": "live — ownership only; positions are batched and are NOT in this file"},
         "halt": {"reason": reason},
         "byKey": {}, "stableIdByKey": {}, "overriding": [],
     })
     print("  The ownership sidecar refuses on the same halt (ui/data/ownership.js).")
-
-
-def _now():
-    # deterministic-enough provenance stamp; no bearing on any value
-    return datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 # The master store — the ownership mirror's actual source, and therefore its provenance (#283).
@@ -821,7 +839,8 @@ def _store_apply_step0():
     that inner run must not recurse into another transaction.
 
     Skipped for the same reason — and WITHOUT an environment variable, so nothing can leak into a
-    child the landing spawns — under `--mirror-only` / `--check`: see SKIP_STORE_APPLY."""
+    child the landing spawns — under `--mirror-only` / `--check` / `--clubs-only` / `--clubs-check`:
+    see SKIP_STORE_APPLY."""
     if SKIP_STORE_APPLY or os.environ.get("RL_OSA_SKIP") == "1":
         return None
     import ownership_store_apply as OSA
@@ -868,7 +887,17 @@ def run():
             "pvcCurveFileMd5": resolved["file_md5"], "releaseCurveContract": "ui/release_pick_curve.json",
             "pvcOk": True, "discount2027": PICK_FUTURE_DISCOUNT, "mult2027": 1.0 - PICK_FUTURE_DISCOUNT,
             "posture": "balanced (canonical; the only posture in this build)",
-            "nPicks": len(picks), "nClubs": len(clubs), "generated": _now(),
+            "nPicks": len(picks), "nClubs": len(clubs),
+            # NO WALL CLOCK. This stamp carried a `generated` ISO timestamp until 2026-08-21 and it
+            # was the ONE field that made this bundle impossible to byte-prove: "regenerate and
+            # compare" can never be an equality while a field always differs, so real drift hides
+            # behind it (hazard class 5, vacuity — the same argument #283 made for the ownership
+            # mirror). Nothing read it as a clock: the reader that did (ui/app/club_totals.js
+            # picksSource) wanted PROVENANCE, and the identity fields above are the provenance —
+            # board / store / engine / asOfRound / tag pin the tree this was generated from, and
+            # pvcCurveMd5 + pvcCurveFileMd5 pin the ruler the picks were priced with. That is what
+            # makes this bundle a landing CARRIER (writer 6, tools/landing/steps.ui) rather than a
+            # file no drift guard could ever check.
         },
         "halt": None,
         "verdicts": [{"check": c, "ok": o, "detail": d} for c, o, d in verdicts],
@@ -918,8 +947,8 @@ def run():
             # never be an equality, so real drift hides behind a field that always differs (hazard
             # class 5, vacuity). The mirror is a pure function of the store, so its provenance IS the
             # store identity — which is also the pin MD.ownership authenticates. `generatedFromStore`
-            # carries it in full; club_valuation.js keeps its own timestamp, which is not this file
-            # and not in this job's scope.
+            # carries it in full. (club_valuation.js kept a timestamp of its own until 2026-08-21,
+            # when the same argument was applied to it and it became writer 6's carrier.)
             "generatedFromStore": _store_md5_full(),
             "source": "engine/rl_after/rl_model_data.json (affl_team), via the store-md5 ring-fenced "
                       "board join; authored by the owner in docs/inputs/AFFL_Player_Locations.csv",
@@ -955,14 +984,20 @@ def run():
     return 0
 
 
-USAGE = ("usage: python3 ui/tools/ingest_inputs.py [--mirror-only | --check]\n"
+FLAGS = ("--mirror-only", "--check", "--clubs-only", "--clubs-check")
+
+USAGE = ("usage: python3 ui/tools/ingest_inputs.py "
+         "[--mirror-only | --check | --clubs-only | --clubs-check]\n"
          "  (no flag)      the full ingest: club_valuation.js + ownership.js, store apply as step 0\n"
          "  --mirror-only  write ONLY ui/data/ownership.js; no store apply, no club_valuation write\n"
-         "  --check        write NOTHING; regenerate the mirror and byte-compare the shipped one\n")
+         "  --check        write NOTHING; regenerate the mirror and byte-compare the shipped one\n"
+         "  --clubs-only   write ONLY ui/data/club_valuation.js; no store apply, no mirror write\n"
+         "  --clubs-check  write NOTHING; regenerate the picks bundle and byte-compare the shipped\n"
+         "                 one\n")
 
 
 def main(argv=None):
-    """The CLI. Three lanes, and the two new ones write no club-valuation bundle.
+    """The CLI. Five lanes, and the four fenced ones NEVER run the step-0 store apply.
 
     `--check` is the mirror's OWN DRIFT GUARD, and it is the same instrument writers 3 and 4 of the
     landing's `ui` step already carry (`generate_movers_transition.py --check`,
@@ -970,34 +1005,72 @@ def main(argv=None):
     what is on disk is what the tree now projects. A writer that reports success has proved nothing
     until something re-derives its output. It is a pure byte comparison — which is only possible
     because the mirror carries NO wall clock (#283 acceptance 4).
+
+    `--clubs-check` is the SAME instrument, one carrier along, and it exists because the picks bundle
+    stopped carrying a wall clock in the same act that made it writer 6's carrier (v827). Before that
+    this lane could not have existed: a byte comparison against a file with a timestamp in it can only
+    ever report drift.
+
+    THE TWO LANES ARE MUTUALLY EXCLUSIVE, BY REFUSAL. Each exists to move exactly one file, and a run
+    that claimed both would be the full ingest minus its store apply under another name — which is not
+    a lane anybody asked for and would leave "which file did this move?" unanswerable at the landing.
     """
     global OUT, OUT_OWNERSHIP, SKIP_STORE_APPLY
     argv = list(sys.argv[1:] if argv is None else argv)
-    unknown = [a for a in argv if a not in ("--mirror-only", "--check")]
+    unknown = [a for a in argv if a not in FLAGS]
     if unknown:
         sys.stderr.write("unknown argument(s): %s\n%s" % (", ".join(unknown), USAGE))
         return 2
     check_only = "--check" in argv
     mirror_only = check_only or "--mirror-only" in argv
+    clubs_check = "--clubs-check" in argv
+    clubs_only = clubs_check or "--clubs-only" in argv
+    if mirror_only and clubs_only:
+        sys.stderr.write("the mirror lane and the clubs lane are mutually exclusive — each writes "
+                         "exactly one file; run the tool twice, or with no flag at all.\n%s" % USAGE)
+        return 2
 
     scratch = None
-    shipped = OUT_OWNERSHIP
-    if mirror_only:
+    shipped = OUT_OWNERSHIP if mirror_only else OUT
+    if mirror_only or clubs_only:
         SKIP_STORE_APPLY = True
-        scratch = tempfile.mkdtemp(prefix="ingest_mirror_")
+        scratch = tempfile.mkdtemp(prefix="ingest_mirror_" if mirror_only else "ingest_clubs_")
+    if mirror_only:
         # The club-valuation bundle is COMPUTED (its verdicts are half this job's guards) and then
-        # DISCARDED: it carries a wall clock, it is not a landing carrier, and this lane exists to
-        # move exactly one file. Redirecting the global is what every fixture harness in
-        # ui/tests/club_curve_provenance.test.py already does, via the same two module paths.
+        # DISCARDED: this lane exists to move exactly one file. Redirecting the global is what every
+        # fixture harness in ui/tests/club_curve_provenance.test.py already does, via the same two
+        # module paths.
         OUT = os.path.join(scratch, "club_valuation.js")
         if check_only:
             OUT_OWNERSHIP = os.path.join(scratch, "ownership.js")
+    elif clubs_only:
+        # The MIRROR is computed and discarded here, for the mirror-lane reason in reverse: the
+        # single-source proof that guards it ("authored CSV ownership == the store-derived board")
+        # is one of this job's guards, so it is run and its verdict kept — only the file is dropped.
+        OUT_OWNERSHIP = os.path.join(scratch, "ownership.js")
+        if clubs_check:
+            OUT = os.path.join(scratch, "club_valuation.js")
     try:
         try:
             rc = run()
         except HaltError as e:
             _emit_halt(e.reason)
             return 2
+        if clubs_check:
+            want = open(OUT, "rb").read()
+            have = open(shipped, "rb").read() if os.path.exists(shipped) else b""
+            if want == have:
+                print("\n  PICKS DRIFT GUARD — ui/data/club_valuation.js is byte-identical to what "
+                      "this tree projects (%d bytes)." % len(want))
+                return 0
+            print("\n  PICKS DRIFT — ui/data/club_valuation.js is NOT what this tree projects "
+                  "(shipped %d bytes, projected %d bytes). Re-run with --clubs-only."
+                  % (len(have), len(want)))
+            return 1
+        if clubs_only:
+            print("  CLUBS-ONLY     — the ownership mirror was computed and DISCARDED; the store "
+                  "apply did not run (this lane reads the store, never writes it).")
+            return rc
         if check_only:
             want = open(OUT_OWNERSHIP, "rb").read()
             have = open(shipped, "rb").read() if os.path.exists(shipped) else b""

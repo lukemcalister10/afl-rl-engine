@@ -107,8 +107,15 @@ MD.clubs = (function () {
         ? "Picks are the ingest's canonical-PVC band prices (2027 × " +
           fmt.esc(String((ct.picksSource || {}).mult2027 != null ? ct.picksSource.mult2027 : 0.9)) +
           ", balanced) — a pick's price comes from the curve, not from the board, so it is not re-summable here."
+        /* v827: the reason now comes from `picksSource.reason`, which is the PIN's verdict, not only
+           the ingest's own halt. A bundle stamped to another board is refused by MD.clubTotals.pin()
+           without any `halt` block in the file, so reading `clubHalt()` alone would have printed "the
+           club-valuation bundle is absent" for a bundle that is present and merely stale — the one
+           sentence a reader must never be shown about a stale pick surface. `clubHalt()` is still the
+           fallback, since an ingest halt reaches both. */
         : '<span class="halt">Picks unavailable</span> — ' +
-          fmt.esc((halt && halt.reason) || "the club-valuation bundle is absent") +
+          fmt.esc((ct.picksSource || {}).reason || (halt && halt.reason) ||
+                  "the club-valuation bundle is absent") +
           ". Picks and Overall show <b>n/a</b> rather than 0; the player-side columns are unaffected.") +
       /* #274 item 2: this described the greedy that was replaced ("by board value + 5 best-remaining
          bench"). It now describes the ruled selection (#271 Addendum 19) — the best 23 a club can
