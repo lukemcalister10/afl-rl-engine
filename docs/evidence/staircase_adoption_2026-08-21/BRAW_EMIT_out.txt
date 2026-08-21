@@ -1,0 +1,14 @@
+build-lock: HELD by sfx-braw-emit (pid 24265) since 2026-08-21T00:14:57Z — single writer for the shared workspace.
+### SFXBRAW (smooth = VARIANT B RAW, THE ADOPTED ARM) ###
+  emitter (ORDER 31-F disclosed copy, byte-carried): d5f4880662b7de3f2716e1c84112d11d
+  engine: 3f4aa10b23102dc4f7362b73fc20ac7b
+  RL_O44_LVLMONO=smooth   <-- THE PRICED DIAL. 'unset' here means this emit is the BASE, not a candidate.
+  RL_CONFIG_MODE=unset   <-- unset ON PURPOSE (declared change 2); enforce() is a no-op and changes no value.
+  day0 ref: DAY0_SFXBASE.json (4816057bb5da)  NOT re-based
+  emit starting 00:14:57
+  emit exit=0  COST: 11m 27s
+  OK -> per_entrant_SFXBRAW.json  (9379fcf3)
+ORDER 31-F REPLICATION: 87 of 87 wired entrants on board 68be10c7 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+records=2648   ND 1-64 (teaches curve)=1447   ruled pool=1201
+build-lock: released by sfx-braw-emit
+### DONE ###
