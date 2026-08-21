@@ -49,7 +49,9 @@ produce, stated the other way round: *engine_head moves if and only if code chan
 sheet update, which will now be a data commit, must NOT move it.
 
 > **MEASURED AFTER THE EDIT (this line is the P9 correction-against-the-tree, appended in the edit
-> commit, not predicted here):** new `engine_head` = `MEASURED_ENGINE_HEAD_PENDING`.
+> commit, not predicted here):** new `engine_head` = **`3af8c1f7d61275c198a5df70c34608c7`**
+> (`8f59180547a584c981ccba39fa018708` → `3af8c1f7d61275c198a5df70c34608c7`). The pin file's
+> **measured** md5 is `e6e687e61edca56973a36a5754e000dd`, equal to the §6 prediction.
 
 ## 4. THE ENUMERATED CHURN (G1)
 

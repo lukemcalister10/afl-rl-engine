@@ -1,0 +1,31 @@
+GUARD REGIME PROOF — PLAN_v6 3a, the pins out of the engine
+root       /home/user/afl-rl-engine
+pre-edit   8230526
+================================================================================================
+A. STRUCTURAL — the pin read is inside each dial's own branch
+PASS   A1 _sheet_pins() called from exactly two sites       lines [4455, 6208]
+PASS   A2 ORDER 41 read is inside `if _O41_INJ:`            Assign > Tuple > Name
+PASS   A3 ORDER 42 read is inside `def _o42_state`          Assign > Tuple > Name
+PASS   A4 ORDER 41 read precedes the ORDER 42 read in the file (halts FIRST) line 4455 < line 6208
+PASS   A5 _sheet_pins is defined once, at module level      
+PASS   A6 no pin LITERAL survives in the engine             []
+
+B. TEXTUAL — the halts and the values are byte-unchanged
+PASS   B1 ORDER 41/42 halt-message fragments byte-identical 27 fragment(s), equal
+PASS   B2 pinned md5 == the removed literal                 21361291f26d35108b88f92f885c5063
+PASS   B3 pinned rows == the removed literal                219
+PASS   B4 pinned injured=Y == the removed literal           35
+PASS   B5 the declaration matches the sheet in the tree     md5=21361291f26d rows=219 Y=35
+
+C. FUNCTIONAL — the loader itself, fail-closed in every direction
+PASS   C0 _sheet_pins() lifted out of the module            
+PASS   C1 a good declaration returns the three pinned facts ('21361291f26d35108b88f92f885c5063', 219, 35)
+PASS   C2 an ABSENT declaration HALTS fail-closed           SHEET-PIN HALT: the sheet pin declaration is ABSENT at /tmp/tmp523t2m1
+PASS   C3 a MALFORMED declaration HALTS                     SHEET-PIN HALT: /tmp/tmpura7v7x1/data/sheet_pins.json is not readable 
+PASS   C4 a declaration with a MISSING pin HALTS            SHEET-PIN HALT: /tmp/tmp5z_iu8df/data/sheet_pins.json is missing ['she
+PASS   C5 a declaration RE-POINTED at another owner input HALTS SHEET-PIN HALT: /tmp/tmpctqf_qwh/data/sheet_pins.json pins sheet_path=
+PASS   C6 a DRIFTED md5 is returned to the guard, not swallowed here the ORDER 41/42 compare (B1: byte-unchanged) is what halts on it
+================================================================================================
+18 check(s): 18 PASS, 0 FAIL
+VERDICT: PASS — the pins moved, the guards did not.
+NOT PROVED HERE, PROVED BY THE LANDER: the built board is byte-identical (b3e8da99bc7f632e5d1eebc732f9cf01).

@@ -19,6 +19,7 @@
 > | **E3** | (register v797, carried into the brief) | `Callum Brown -> callum-m-brown` — **`callum-m-brown` is not a key in the store** | **HALT** — override-target-invalid, and it overwrites the standing rule that already works |
 > | **E4** | §4 H2 | the sheet's pins are **SIX literals in TWO blocks**, not three in one; the ORDER 41 block **halts first** | **HALT** at ORDER 41 with the ORDER 42 pins already moved |
 > | **E5** | §3 artifact list | `ui/data/club_valuation.js` and `ui/data/ownership.js` are **not** advance artifacts in this era | a seat hunts for a mover that is skipped by design |
+> | **E7** | §4 H2, and E4 above | **the sheet pins are no longer in the engine at all.** PLAN_v6 PACKAGE 3a (2026-08-21) moved them to `data/sheet_pins.json`; "move six literals in two engine blocks in the same commit as the sheet" is now the WRONG instruction | a seat edits `_merged_recover.py` for a **data** change — moving `engine_head`, owing a restamp nobody planned, and re-creating the drift E4 records |
 >
 > **Hazard status at the landing:** **H1 REPAIRED** in tree (`staged_apply.py` now copies
 > `docs/owner_annotations` + `docs/evidence/exec_306_zlaarm` into the workspace, commit `6f2d58c`).
@@ -196,7 +197,16 @@ round_entry catchup --file 22=scores/R22.csv
   *(Contrast R20, lines 28–45: two `FINALIZATION_INCOMPLETE — movers bundle board-identity chain broken`
   and three `force:true` retries. That is what a bad round looks like in the journal.)*
 
-**How the pins moved — the ADVANCE-REPIN design.** The balanced/strict sibling board and the FV
+**How the pins moved — the ADVANCE-REPIN design.**
+> **`ERRATUM E7` (2026-08-21) applies to this section too.** The **sheet** pins are no longer part of
+> ADVANCE-REPIN's engine-side work at all: `data/sheet_pins.json` is a data file, moved in the sheet's
+> own commit **before** the advance, by the manual path in §4 H2 — which is the **INTERIM WRITER**
+> until `land round` (PLAN_v6 2b) takes over as sole writer. Everything below is about the
+> **balanced/strict sibling and the FV vector**, which are unaffected by 3a and still move inside the
+> staged transaction. A sheet re-cut and an ADVANCE-REPIN are now two commits, not one, and the sheet
+> commit must leave `engine_head` unmoved.
+
+The balanced/strict sibling board and the FV
 reference vector are derived siblings of the one store. `staged_apply._stage_sibling` runs the repin
 **inside the same transaction** (step c3, `staged_apply.py:546-565`), so the balanced board and the FV
 vector move in the **same commit** as the store: it rebuilds the sibling from the *staged* store via the
@@ -395,10 +405,90 @@ transaction*.
 
 The sheet is also pinned — md5, row count and `injured=Y` count — so it **cannot be quietly re-cut**:
 changing it moves the md5 and trips a different halt in the same file. Any fix must move the sheet
-**and** the pinned literals in `_merged_recover.py` in **one commit**.
+**and** its pins in **one commit**. ~~Any fix must move the sheet **and** the pinned literals in
+`_merged_recover.py` in **one commit**.~~ — **SUPERSEDED BY `ERRATUM E7`: the pins are not in
+`_merged_recover.py` any more. Read E7 before you touch anything in this section.**
+
+> ## `ERRATUM E7` (2026-08-21) — **THE PINS LEFT THE ENGINE. A SHEET UPDATE IS A DATA COMMIT.**
+>
+> PLAN_v6 **PACKAGE 3a** landed on 2026-08-21 (`docs/evidence/p3a_pins_out_2026-08-21/`). The six
+> literals E4 describes — `O41_INJ_MD5`/`O41_INJ_ROWS`/`O41_INJ_Y` and
+> `_SHEET_MD5`/`_SHEET_ROWS`/`_SHEET_Y` — **are gone from `engine/rl_after/_merged_recover.py`.** The
+> three facts are now **ONE declaration** in **`data/sheet_pins.json`**, read by both blocks through
+> `_sheet_pins()`. E4's warning that the two copies can drift apart is retired *because the second
+> copy no longer exists*; everything else E4 says about the two guards still stands.
+>
+> **NOTHING ABOUT THE GUARD CHANGED.** A drifted sheet — md5, rows or `injured=Y` disagreeing with the
+> declaration — still **HALTS the build**, with the ORDER 41 / ORDER 42 halt text byte-unchanged.
+> **ORDER 41 still halts FIRST.** Each block still reads the pins only inside its own dial's branch,
+> so a dial-off build reads the declaration not at all. **An absent or malformed
+> `data/sheet_pins.json` HALTS** (`SHEET-PIN HALT`), fail-closed, in any build that would have read
+> the pins.
+>
+> ### THE CORRECT PROCEDURE for a sheet re-cut (replaces E4's "six literals in two blocks")
+>
+> ```bash
+> # 1. PREREG-LITE FIRST — see the box below. Write it before you change a byte.
+> # 2. re-cut docs/owner_annotations/SITTER_2026_v1.csv (CRLF and cp1252 preserved — ERRATUM E1)
+> # 3. measure the sheet, do not type it:
+> python3 - <<'PY'
+> import csv, hashlib, json, os
+> R = os.environ['RL_REPO']; S = 'docs/owner_annotations/SITTER_2026_v1.csv'
+> raw = open(os.path.join(R, S), 'rb').read()
+> rows = list(csv.DictReader(raw.decode('utf-8').splitlines()))
+> ys = [r for r in rows if (r.get('injured') or '').strip().upper() == 'Y']
+> print('sheet_md5       ', hashlib.md5(raw).hexdigest())
+> print('sheet_rows      ', len(rows))
+> print('sheet_injured_y ', len(ys))
+> PY
+> # 4. write those three MEASURED values into data/sheet_pins.json. Nothing else in that file moves
+> #    except `pinned_at` and a `provenance` line naming the owner word that authorised the re-cut.
+> # 5. ONE COMMIT, EXPLICIT PATHS ONLY (process law P8), carrying exactly:
+> git add docs/owner_annotations/SITTER_2026_v1.csv data/sheet_pins.json <the prereg-lite path>
+> git commit -- docs/owner_annotations/SITTER_2026_v1.csv data/sheet_pins.json <the prereg-lite path>
+> # 6. then advance/land as normal. VERIFY: engine_head MUST NOT HAVE MOVED.
+> md5sum engine/rl_after/_merged_recover.py   # == data/expected_boot.json engine_head
+> ```
+>
+> **`engine_head` MOVING ON A SHEET UPDATE IS A RED, NOT A CHORE.** That is the whole effect 3a bought:
+> *engine_head moves if and only if code changed.* If it moved, the commit touched the engine and the
+> act is not the data act it claims to be — stop and find out why, do not restamp it forward.
+>
+> ### THE INTERIM WRITER — say it out loud, because it expires
+>
+> **Until PACKAGE 2b's `land round` exists, THIS MANUAL PATH IS THE INTERIM WRITER of
+> `data/sheet_pins.json`.** `tools/land round` is deliberately unbuilt and exits non-zero saying so.
+> When 2b lands it becomes the **SOLE writer** of the declaration, and this manual path retires for
+> this act type on the owner's word (PLAN_v6 2a.3 / 2a.4 — an unexercised fallback is fake safety, and
+> the manual round path is never retired before 2b exists).
+>
+> **This paragraph is a REPEAT, not the rule's home.** The rule lives in the pin file's own header
+> (`data/sheet_pins.json` → `_writer_of_record`) and in the engine's `_sheet_pins()` header. A runbook
+> is a procedure, not a law's home — this one needed five errata inside a single round.
+>
+> ### PREREG-LITE — the review-forcing step a data commit still owes
+>
+> Moving the pins out of the engine removed the engine's prereg (P9) from the path of a sheet update.
+> **It does not remove the review.** A sheet change carries a **prereg-lite**, committed **WITH** the
+> data change, in the same commit, stating:
+>
+> | slot | what it holds |
+> |---|---|
+> | **predicted `sheet_md5`** | the md5 the re-cut sheet is expected to have |
+> | **predicted `sheet_rows`** | expected row count |
+> | **predicted `sheet_injured_y`** | expected `injured=Y` count |
+> | **disclosed movers** | who this re-cut is expected to move on the board, **by name**, and by roughly how much — or the explicit claim that it moves nobody |
+> | **the owner word** | verbatim, that authorised the re-cut (the R23 re-cut's was *"All good on the injury sheet. Fine by me."*) |
+>
+> Predicted **first**, measured **after**; the prereg-lite is corrected against the tree, never the
+> tree against the prereg-lite. A re-cut whose measured movers are not the disclosed movers is a
+> **halt and a report**, not a note. Worked example of the full-fat form this is the light version of:
+> `docs/evidence/r23_advance_2026-08-20/01_PREREG_SHEET_RECUT.md`.
 
 > **`ERRATUM E4` (2026-08-20) — IT IS SIX LITERALS IN TWO BLOCKS, NOT THREE IN ONE, AND THE BLOCK THIS
-> SECTION NAMES IS THE ONE THAT HALTS *SECOND*.** Register v790 and this section both named only the
+> SECTION NAMES IS THE ONE THAT HALTS *SECOND*.** **(Kept as history. The pins' LOCATION is superseded
+> by `ERRATUM E7` above — there are no literals in the engine any more. What E4 says about the two
+> guards, their order, and the R23 re-cut's own numbers is still correct.)** Register v790 and this section both named only the
 > ORDER 42 trio. There is an **earlier ORDER 41 block** asserting the same three facts, and it halts
 > **first** — so a re-cut that moves only the ORDER 42 pins dies at ORDER 41 with the sheet already
 > changed.

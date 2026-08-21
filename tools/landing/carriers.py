@@ -99,6 +99,16 @@ LEVER_CARRIERS = (
     F('engine/rl_after/rl_model_data.json', '(nothing, in a lever landing)',
       'the store. A lever landing must leave it byte-unmoved; 2b moves it and inherits this entry'),
 
+    # ---- the sheet pin declaration: PLAN_v6 3a took these OUT of the engine -----------------------
+    F('data/sheet_pins.json',
+      '(nothing, in a lever landing) — INTERIM: the amended R23 runbook manual path; the round '
+      'lander (2b) once it exists, as SOLE writer',
+      'the ONE pin declaration for the owner injury/sitter sheet (md5 + row count + injured=Y count) '
+      'that ORDER 41 and ORDER 42 both read. Same argument as the store entry above: a lever landing '
+      'must leave it byte-unmoved, and capturing it turns "the pins did not move" from a claim into a '
+      'measured fact at abort time. 2b, which DOES move it in a sheet-carrying round, inherits the '
+      'entry rather than registering a second one'),
+
     # ---- the histories the out-of-round column writes --------------------------------------------
     F('engine/rl_after/ingestion/value_history.json', 'out_of_round_column.add_column',
       'value history — one point per registered column'),

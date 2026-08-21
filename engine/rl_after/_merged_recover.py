@@ -3761,6 +3761,66 @@ def pv_games(p,Y=2026):
         if _x['year']>Y or not _x['games']: continue
         _g+=float(_x['games'])*(_k if (_msd and _x['year']==_e) else 1.0)
     return _g
+# ==== THE SHEET PINS — ONE DECLARATION, OUT OF THE ENGINE (PLAN_v6 PACKAGE 3a, 2026-08-21) =========
+# The owner's injury/sitter annotation, docs/owner_annotations/SITTER_2026_v1.csv, is a PINNED OWNER
+# INPUT: its md5, its row count and its injured=Y count are asserted before a row of it is read, and
+# ANY of them failing HALTS THE BUILD. That is unchanged and it is the whole point of the file.
+# WHAT CHANGED IS WHERE THE THREE FACTS LIVE. They were SIX LITERALS IN TWO DUPLICATED BLOCKS in this
+# file — O41_INJ_MD5/O41_INJ_ROWS/O41_INJ_Y at ORDER 41 and _SHEET_MD5/_SHEET_ROWS/_SHEET_Y at
+# ORDER 42 — so a sheet update was an ENGINE EDIT and the two copies could drift. Erratum E4 of the
+# R23 runbook is the record of what that cost: a re-cut that moved only the ORDER 42 trio dies at
+# ORDER 41 with the sheet already changed. They are now ONE declaration in data/sheet_pins.json, read
+# by both blocks. EFFECT: a sheet update is a DATA COMMIT and engine_head moves IFF code changed.
+#
+# WHAT DID NOT CHANGE, DELIBERATELY: EACH BLOCK KEEPS ITS OWN FIRING REGIME. The pins are resolved
+# INSIDE the dial's own branch — ORDER 41 only under RL_O41_INJ, ORDER 42 only inside _o42_state
+# under RL_O42 — so a dial-off build reads this file NOT AT ALL, exactly as it read the literals not
+# at all before, and ORDER 41 still HALTS FIRST. Unifying the two guards' halt behaviour would change
+# semantics in exactly the regime the collapse proofs exercise, so it is not done.
+#
+# FAIL-CLOSED IN BOTH DIRECTIONS: an ABSENT or MALFORMED declaration halts every build that would
+# have read the pins. The alternative is a build that prices an owner input nobody pinned.
+#
+# WRITER OF RECORD: until PACKAGE 2b's `land round` exists, the INTERIM WRITER is the amended manual
+# path in docs/runbooks/R23_RUNBOOK.md §4 H2, and a sheet change carries a PREREG-LITE (predicted
+# md5 + row/injured counts + disclosed movers) in the same commit. The rule's durable home is the pin
+# file's own header; the runbook repeats it.
+_SHEET_PIN_REL='data/sheet_pins.json'
+_SHEET_PIN_CACHE=[None]
+def _sheet_pins():
+    """The ONE pin declaration for the owner's annotation sheet -> (md5, rows, injured_y).
+
+    Read lazily, from inside whichever guard is firing, so this function existing changes no dial's
+    behaviour. Cached per process: the file cannot move under a running build."""
+    if _SHEET_PIN_CACHE[0] is not None: return _SHEET_PIN_CACHE[0]
+    import json as _spj
+    _pp=os.path.join(os.environ.get('RL_REPO','.'),_SHEET_PIN_REL)
+    if not os.path.exists(_pp):
+        raise SystemExit('SHEET-PIN HALT: the sheet pin declaration is ABSENT at %s. The owner\'s '
+                         'annotation is a PINNED OWNER INPUT and the pins that assert it live in '
+                         'THAT FILE, not in the engine. The build stops rather than read an owner '
+                         'annotation nobody pinned.'%_pp)
+    try:
+        with open(_pp,encoding='utf-8') as _pf: _pd=_spj.load(_pf)
+    except Exception as _pe:
+        raise SystemExit('SHEET-PIN HALT: %s is not readable as a pin declaration (%s). A malformed '
+                         'pin file pins nothing, so it halts rather than waves the sheet through.'
+                         %(_pp,_pe))
+    _pmiss=[_k for _k in ('sheet_path','sheet_md5','sheet_rows','sheet_injured_y')
+            if _pd.get(_k) in (None,'')]
+    if _pmiss:
+        raise SystemExit('SHEET-PIN HALT: %s is missing %s. A pin declaration with a hole in it pins '
+                         'nothing.'%(_pp,_pmiss))
+    if _pd.get('sheet_path')!='docs/owner_annotations/SITTER_2026_v1.csv':
+        raise SystemExit('SHEET-PIN HALT: %s pins sheet_path=%r. This engine reads '
+                         'docs/owner_annotations/SITTER_2026_v1.csv and will not be re-pointed at a '
+                         'different owner input by a data file.'%(_pp,_pd.get('sheet_path')))
+    try:
+        _po=(str(_pd['sheet_md5']),int(_pd['sheet_rows']),int(_pd['sheet_injured_y']))
+    except (TypeError,ValueError) as _pe2:
+        raise SystemExit('SHEET-PIN HALT: %s carries a non-numeric row/injured count (%s).'%(_pp,_pe2))
+    _SHEET_PIN_CACHE[0]=_po
+    return _po
 if _O30B_PREVIEW:
     if not (_ENTRY29B and _ONEMACH):
         raise SystemExit('ORDER 30B-P HALT: the preview needs the ORDER 29B day-0 object (the pedigree leg) '
@@ -4381,15 +4441,18 @@ if _O30B_PREVIEW:
     # RE-CUT 2026-08-20 (register v790, owner word "All good on the injury sheet. Fine by me."):
     # harry-armstrong and judson-clarke flipped injured Y->N because the R23 file LISTS them — ORDER
     # 42 pins each injured=Y row's games_2026 to the store's 2026 games, and a round advance moves
-    # that. Y 37->35, rows unchanged at 219, md5 b26798c3->21361291. THE SIX PINS ACROSS THESE TWO
-    # BLOCKS MOVE TOGETHER OR THE BUILD HALTS: this ORDER 41 block asserts the same three facts as
-    # the ORDER 42 block at _o42_state and HALTS FIRST.
-    O41_INJ_MD5='21361291f26d35108b88f92f885c5063'
-    O41_INJ_ROWS=219
-    O41_INJ_Y=35
+    # that. Y 37->35, rows unchanged at 219, md5 b26798c3->21361291.
+    # THE PINS ARE ONE DECLARATION AND THEY CANNOT DRIFT APART ANY MORE (PLAN_v6 3a, 2026-08-21):
+    # the three facts this block asserts and the three the ORDER 42 block at _o42_state asserts are
+    # the SAME three, read from data/sheet_pins.json by _sheet_pins() above. Previously they were six
+    # literals in two blocks, and a re-cut that moved only the ORDER 42 trio died HERE with the sheet
+    # already changed. THE FIRING REGIME IS UNCHANGED: the pins are resolved inside this dial's own
+    # branch, so a build with RL_O41_INJ off reads neither the sheet nor its pins, and this block
+    # still HALTS FIRST.
     _O41_INJSET=frozenset()
     if _O41_INJ:
         import csv as _csv, hashlib as _hl, re as _re
+        O41_INJ_MD5,O41_INJ_ROWS,O41_INJ_Y=_sheet_pins()
         _ip=os.path.join(os.environ.get('RL_REPO','.'),'docs/owner_annotations/SITTER_2026_v1.csv')
         if not os.path.exists(_ip):
             raise SystemExit('ORDER 41 HALT: RL_O41_INJ=1 but the owner\'s annotation file is ABSENT at '
@@ -6139,7 +6202,10 @@ def _o42_state(_skeys,_allrecs):
     to A would INVENT section membership for rows that were never on the register at all, so it is
     not done: return_arm is False for every row and the Part-2 haircut ships zero. PREREG_D6.md §5."""
     import csv as _c2, hashlib as _h2, re as _r2
-    _SHEET_MD5='21361291f26d35108b88f92f885c5063'; _SHEET_ROWS=219; _SHEET_Y=35
+    # THE SAME ONE DECLARATION THE ORDER 41 BLOCK READS — data/sheet_pins.json, via _sheet_pins()
+    # (PLAN_v6 3a). Read HERE, inside _o42_state, so this guard's firing regime is unchanged: it is
+    # reached only when ORDER 42 runs, and ORDER 41 has already halted first on the same three facts.
+    _SHEET_MD5,_SHEET_ROWS,_SHEET_Y=_sheet_pins()
     _sp=os.path.join(os.environ.get('RL_REPO','.'),'docs/owner_annotations/SITTER_2026_v1.csv')
     if not os.path.exists(_sp):
         raise SystemExit('ORDER 42 HALT: RL_O42=1 but the owner\'s annotation sheet is ABSENT at %s. '
