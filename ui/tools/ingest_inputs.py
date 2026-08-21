@@ -15,8 +15,31 @@ engine's own curve; a player's value is the stamped board `v`, only summed/greed
 from the pick workbook (Raw Value / Value (counted) / Pick Values tab) are NEVER ingested.
 
 Run:  python3 ui/tools/ingest_inputs.py         (exit 0 = clean bundle written; exit 2 = HALT)
+
+THE MIRROR LANE (added 2026-08-21, closing the missing-writer class on ui/data/ownership.js)
+--------------------------------------------------------------------------------------------
+  python3 ui/tools/ingest_inputs.py --mirror-only   writes ONLY ui/data/ownership.js
+  python3 ui/tools/ingest_inputs.py --check         writes NOTHING; regenerates the mirror into a
+                                                    scratch dir and byte-compares it with the
+                                                    shipped one (exit 1 on drift)
+
+WHY THE LANE EXISTS.  ui/data/ownership.js is a MIRROR of the store's `affl_team`, pinned to the
+board + store identity it was generated from, and `MD.ownership.pin()` REFUSES a mirror whose pin
+does not match the loaded app.  So every landing that moves the board or the store retires the
+shipped mirror — and until now no landing regenerated it.  On 2026-08-21 the tree stood on board
+b3e8da99 / store b745002e (R23) while the shipped mirror still carried a05fe951 / cc02567f (R22):
+the live ownership lane had been switched off since the R23 advance, and three suites said so.  The
+lever/round lander now runs THIS tool as its fifth UI writer (`tools/landing/steps.ui`), which is
+why the lane has to be able to write the mirror WITHOUT the club-valuation bundle: that bundle
+carries a wall-clock `generated` stamp, is not a landing carrier, and cannot be byte-proved.
+
+WHY `--mirror-only` DOES NOT RUN THE STORE APPLY.  Step 0 couriers the owner's CSV INTO the store.
+That is an identity-moving write with its own writer of record (ui/tools/ownership_store_apply.py)
+and a landing is not it.  In this lane the store is READ, never written: if the CSV carries
+authorship the store has not been given, the single-source check below HALTs and names it, which is
+the correct verdict for a landing rather than a silent mid-flight store move.
 """
-import csv, json, os, sys, collections, hashlib, datetime, zipfile
+import csv, json, os, sys, collections, hashlib, datetime, zipfile, shutil, tempfile
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import xlsx_read          # stdlib-only .xlsx reader (#232) — see its module docstring for why
@@ -49,6 +72,13 @@ OUT = os.environ.get("RL_UI_OUT", os.path.join(UI_DATA, "club_valuation.js"))
 # and no existing harness has to learn about a file that did not exist when it was written.
 OUT_OWNERSHIP = os.environ.get(
     "RL_UI_OUT_OWNERSHIP", os.path.join(os.path.dirname(os.path.abspath(OUT)), "ownership.js"))
+
+#: `--mirror-only` / `--check` set this instead of exporting RL_OSA_SKIP. A landing runs this tool as
+#: a child, and an RL_-prefixed variable in a landing's environment is inherited by every probe the
+#: gate step spawns, where `config_manifest.enforce()` rejects it as a divergent model override. That
+#: hazard is written down twice in this estate (tools/landing/carriers.py header; ONE incident cost a
+#: whole acceptance run) — so this flag is a module attribute, not an environment variable.
+SKIP_STORE_APPLY = False
 
 EXPECTED_BOARD = None      # ui/app/config.js EXPECTED_BOARD — v2.11-final-rc board of record (Board B + visible future-draft ladder; balanced_board_md5 06d8af60 preserved as lineage)
 PICK_FUTURE_DISCOUNT = 0.10      # R104.5 balanced posture — the ONLY posture in this build
@@ -788,8 +818,11 @@ def _store_apply_step0():
 
     A no-op when the CSV is already in the store, which is what makes re-running safe. Skipped under
     RL_OSA_SKIP=1 — the transaction invokes THIS script on its overlay to produce the two mirrors, and
-    that inner run must not recurse into another transaction."""
-    if os.environ.get("RL_OSA_SKIP") == "1":
+    that inner run must not recurse into another transaction.
+
+    Skipped for the same reason — and WITHOUT an environment variable, so nothing can leak into a
+    child the landing spawns — under `--mirror-only` / `--check`: see SKIP_STORE_APPLY."""
+    if SKIP_STORE_APPLY or os.environ.get("RL_OSA_SKIP") == "1":
         return None
     import ownership_store_apply as OSA
     try:
@@ -908,10 +941,10 @@ def run():
           % (len(mirror), len(board_own), len(diffs)))
 
     _print_verdicts()
-    print("\n  CLEAN INGEST — %d picks priced off %s (%s), %d clubs.  Bundle: ui/data/club_valuation.js"
-          % (len(picks), resolved["path"], resolved["gate"], len(clubs)))
+    print("\n  CLEAN INGEST — %d picks priced off %s (%s), %d clubs.  Bundle: %s"
+          % (len(picks), resolved["path"], resolved["gate"], len(clubs), OUT))
     print("  LIVE MIRROR    — %d players mirrored FROM THE STORE, %d overriding (0 by construction "
-          "since #283).  Bundle: ui/data/ownership.js" % (len(mirror), len(diffs)))
+          "since #283).  Bundle: %s" % (len(mirror), len(diffs), OUT_OWNERSHIP))
     if step0 == "APPLIED":
         print("  STORE APPLY    — the owner's authored ownership was couriered into the store and every "
               "identity pin moved with it (see the transaction log above).")
@@ -922,12 +955,67 @@ def run():
     return 0
 
 
-def main():
-    try:
-        return run()
-    except HaltError as e:
-        _emit_halt(e.reason)
+USAGE = ("usage: python3 ui/tools/ingest_inputs.py [--mirror-only | --check]\n"
+         "  (no flag)      the full ingest: club_valuation.js + ownership.js, store apply as step 0\n"
+         "  --mirror-only  write ONLY ui/data/ownership.js; no store apply, no club_valuation write\n"
+         "  --check        write NOTHING; regenerate the mirror and byte-compare the shipped one\n")
+
+
+def main(argv=None):
+    """The CLI. Three lanes, and the two new ones write no club-valuation bundle.
+
+    `--check` is the mirror's OWN DRIFT GUARD, and it is the same instrument writers 3 and 4 of the
+    landing's `ui` step already carry (`generate_movers_transition.py --check`,
+    `rebuild_movers_derived.py --check`): run the writer, then ask the writer's own checker whether
+    what is on disk is what the tree now projects. A writer that reports success has proved nothing
+    until something re-derives its output. It is a pure byte comparison — which is only possible
+    because the mirror carries NO wall clock (#283 acceptance 4).
+    """
+    global OUT, OUT_OWNERSHIP, SKIP_STORE_APPLY
+    argv = list(sys.argv[1:] if argv is None else argv)
+    unknown = [a for a in argv if a not in ("--mirror-only", "--check")]
+    if unknown:
+        sys.stderr.write("unknown argument(s): %s\n%s" % (", ".join(unknown), USAGE))
         return 2
+    check_only = "--check" in argv
+    mirror_only = check_only or "--mirror-only" in argv
+
+    scratch = None
+    shipped = OUT_OWNERSHIP
+    if mirror_only:
+        SKIP_STORE_APPLY = True
+        scratch = tempfile.mkdtemp(prefix="ingest_mirror_")
+        # The club-valuation bundle is COMPUTED (its verdicts are half this job's guards) and then
+        # DISCARDED: it carries a wall clock, it is not a landing carrier, and this lane exists to
+        # move exactly one file. Redirecting the global is what every fixture harness in
+        # ui/tests/club_curve_provenance.test.py already does, via the same two module paths.
+        OUT = os.path.join(scratch, "club_valuation.js")
+        if check_only:
+            OUT_OWNERSHIP = os.path.join(scratch, "ownership.js")
+    try:
+        try:
+            rc = run()
+        except HaltError as e:
+            _emit_halt(e.reason)
+            return 2
+        if check_only:
+            want = open(OUT_OWNERSHIP, "rb").read()
+            have = open(shipped, "rb").read() if os.path.exists(shipped) else b""
+            if want == have:
+                print("\n  MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this "
+                      "tree projects (%d bytes)." % len(want))
+                return 0
+            print("\n  MIRROR DRIFT — ui/data/ownership.js is NOT what this tree projects "
+                  "(shipped %d bytes, projected %d bytes). Re-run with --mirror-only."
+                  % (len(have), len(want)))
+            return 1
+        if mirror_only:
+            print("  MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store "
+                  "apply did not run (this lane reads the store, never writes it).")
+        return rc
+    finally:
+        if scratch:
+            shutil.rmtree(scratch, ignore_errors=True)
 
 
 if __name__ == "__main__":
