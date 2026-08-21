@@ -1,0 +1,39 @@
+======================================================================================================
+THE LANDER SELF-TEST — every step broken once, every abort proved (PLAN_v6 2a.3)
+  live tree : /home/user/afl-rl-engine   (READ-ONLY to this self-test; asserted byte-unmoved at the end)
+  sandbox   : /tmp/landing_selftest_5125
+  transcripts: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/selftest_ev1
+======================================================================================================
+sandbox created at /tmp/landing_selftest_5125/sandbox (base 1ca3322979c4)
+
+--- CONTROL: a clean no-op landing in this sandbox must SUCCEED ---
+  FAIL control_clean_run            exit 1 — see control.log; every fault case below is meaningless until this passes
+
+--- LOCK: a landing must refuse to start while another holder has the lock ---
+  PASS build_lock_refuses           exit 1; the landing refused to become a second writer
+
+--- FAULTS: every step in LEVER_SEQUENCE broken once ---
+  PASS fault_preflight              fault=dirty_tree; exit 1; failed_step='preflight'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_build_proofs           fault=wrong_board; exit 1; failed_step='build_proofs'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_pins                   fault=board_corrupt; exit 1; failed_step='pins'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_lineage                fault=chain_broken; exit 1; failed_step='lineage'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_contract               fault=seal_broken; exit 1; failed_step='contract'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_sibling                fault=sidecar_corrupt; exit 1; failed_step='sibling'; carriers moved after abort: NONE (byte-exact)
+  FAIL fault_ui                     fault=skip_second_writer; exit 1; failed_step='sibling'; carriers moved after abort: NONE (byte-exact)
+  FAIL fault_gates                  fault=gate_red; exit 1; failed_step='sibling'; carriers moved after abort: NONE (byte-exact)
+  FAIL fault_claims                 fault=false_claim; exit 1; failed_step='sibling'; carriers moved after abort: NONE (byte-exact)
+  FAIL fault_commit                 fault=foreign_path; exit 1; failed_step='sibling'; carriers moved after abort: NONE (byte-exact)
+
+--- DEPTH: a landing that WROTE pins + column + lineage + contract, then aborted ---
+  PASS abort_restores_writers       11 carrier(s) had been written and were restored: data/expected_boot.json, data/release_contract.json, data/release_lineage.json, data/rl_build/rl_app_data.json, data/rl_build/rl_app_data.json.srcmd5, engine/rl_after/ingestion/pos_rank_history.json
+
+--- CLAIMS: the checker's own negative control still fires ---
+  PASS claims_negative_control      CLAIMS SELF-TEST: 11 PASS / 0 FAIL
+  PASS packet_slot_validator        PACKET SELF-TEST: 5 PASS / 0 FAIL
+  PASS live_tree_untouched          every live carrier byte-unmoved across the whole self-test
+
+======================================================================================================
+STEPS BROKEN 10   CAUGHT 6   ABORTED BYTE-EXACT 10
+SELF-TEST: 11 PASS / 5 FAIL
+======================================================================================================
+RC=1 WALL=1379s

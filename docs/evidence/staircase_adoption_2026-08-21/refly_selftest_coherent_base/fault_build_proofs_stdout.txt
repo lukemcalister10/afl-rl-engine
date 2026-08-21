@@ -1,0 +1,46 @@
+======================================================================================================
+LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
+  tree      : /tmp/landing_selftest_31735/sandbox
+  owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
+  prereg    : tools/landing/selftest.py (fixture)   predicts board 68be10c79d0ee096455754e084bcf757
+  mode      : APPLY (SELFTEST) builder=selftest
+  NOTE      : this act is a DECLARED NO-OP REHEARSAL — it predicts the board it already has and moves no identity.
+======================================================================================================
+
+--- STEP 0/9  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  RL_BUILD_LOCK_FILE, RL_REPO, RL_VENV
+build-lock: HELD by land-lever-1348 (pid 1348) — single writer for the shared workspace.
+base commit        13c9967724948dac153d7a7910512eb35e8b343f
+board pin (before) 68be10c79d0ee096455754e084bcf757
+store pin (before) b745002eb0a0fbb1c34fa44f1ef708d6
+restore point      55 carrier(s) captured, 55 present on disk
+    [preflight OK  0.04s]
+
+--- STEP 1/9  build_proofs   bare build, predicted identity, switch leg, day-0 ---
+*** FAULT INJECTED at step 'build_proofs': wrong_board — the build reports a board that is not the prereg prediction
+build         rc=0 board=00000000000000000000000000000001  (0.0s)
+    [build_proofs FAILED  0.01s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'build_proofs'
+======================================================================================================
+  THE BUILD DID NOT REPRODUCE THE PREREG PREDICTION.
+      predicted (prereg tools/landing/selftest.py (fixture)): 68be10c79d0ee096455754e084bcf757
+      built                 : 00000000000000000000000000000001
+  The prediction is an INPUT to this lander. A landing that accepted its own build as the answer would assert nothing at all.
+
+carriers that moved before the failure: 0
+RESTORING 0 carrier(s):
+
+ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.04s  OK
+    build_proofs       0.01s  FAIL
+    TOTAL              0.05s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_1348

@@ -3,20 +3,33 @@
 **Seat:** adoption seat, THE STAIRCASE FIX (ORDER 44) · **Date:** 2026-08-21
 **Register:** v808 — **NOT touched by this seat.** **NOT PUSHED.**
 
-> ## STATUS: **THE FLIP IS COMMITTED. THE LANDING IS NOT DONE.**
+> ## STATUS: **THE FLIP IS COMMITTED. THE LANDING IS STILL NOT DONE.** *(updated after the re-fly, §9)*
 >
-> `tools/land lever` ran its full transaction and **ABORTED at step 7 of 10 (`gates`)**, restoring every
-> carrier **byte-exact** — verified independently by this seat, not merely claimed by the lander.
-> **The board did not move.** The live board is still `68be10c79d0ee096455754e084bcf757` / **692,296** /
-> **804**. The engine default **is** flipped (committed at `531235c`), so the tree is in the declared
-> intermediate state: **dial ON in source, board not yet rebuilt**.
+> **THE BOARD HAS NEVER MOVED.** It is still `68be10c79d0ee096455754e084bcf757` / **692,296** / **804**;
+> the store is `b745002e`, unmoved; `engine_head` `8f591805`; contract `4cbc7f27`; balanced `556ad70d`.
+> The engine default **is** flipped (committed at `531235c`), so the tree remains in the declared
+> intermediate state: **dial ON in source, board not yet rebuilt.**
 >
-> **THE ABORT WAS NOT CAUSED BY THE ACT.** Every proof the act owns passed. Two acceptance checks red,
-> and both are environmental or structural rather than defects in variant A — §4.
+> **ATTEMPT 1** ran the full transaction and **ABORTED at step 7 of 10 (`gates`)**, restoring every
+> carrier **byte-exact** — verified independently by this seat, not merely claimed by the lander. The
+> abort was **not caused by the act**; every proof the act owns passed (§4).
 >
-> **A RE-RUN IS BLOCKED AND IS NOT THIS SEAT'S TO UNBLOCK** — another seat is actively working in the
-> shared tree with 13 uncommitted foreign paths, which makes the lander's `preflight` clean-tree
-> assertion abort instantly. §5.
+> **THE RE-FLY (§9) FIXED BOTH MACHINERY DEFECTS AND THEN DID NOT FLY.** `0abf099` cuts the self-test
+> recursion (F-1) and gives the gate run evidence capture (F-5); `bd299a9` closes the `/tmp` sandbox leak
+> — **which the brief believed was already cleared and was not: 138 directories, 1.4 GB.**
+>
+> **THE LANDING IS BLOCKED BY ITS OWN NEW PRECONDITION, AND THE BLOCK IS REAL.** The ruling's second half
+> — *the lander runs the self-test standalone before the transaction, fail = no transaction opened* —
+> **cannot be satisfied until this landing lands.** Since the prereg restamped the contract, the sibling
+> sidecar has been stale, so even a NO-OP sandbox landing must reconcile, which **builds** — and with the
+> flip committed that build produces `b3e8da99` while a no-op's pin stays `68be10c7`, which
+> `sibling_repin`'s conformance gate correctly refuses. **P9 puts every dial-flipping landing in that
+> same window**, so the gate as ruled blocks the whole class, not just this act. Every abort in the
+> self-test was still **byte-exact**: the lander is sound; the self-test's premise is not.
+>
+> **THIS SEAT DID NOT BYPASS THE GATE IT HAD JUST INSTALLED** to pass its own act. The ruling was given
+> on a premise that was true at `efbe1b6` and stopped being true nine and a half hours later at the flip.
+> **It is returned to the pen with the measurement — §9.4, §9.6.**
 
 ---
 
@@ -26,8 +39,10 @@
 |---|---|---|
 | **prereg** | `fb3d3c0` | adoption prereg **+ the A-raw no-arb and class reading**, before the engine edit (P9) |
 | **flip** | `531235c` | one engine commit: `RL_O44_LVLMONO` default `'0'` → `'ratchet'`, **restamp riding it** |
-| **landing** | **NONE** | aborted at `gates`; nothing committed by the lander |
-| evidence | *(this commit)* | the attempt's full record |
+| **landing** | **NONE** | attempt 1 aborted at `gates`; the re-fly never opened a transaction. **The lander has committed nothing.** |
+| **tooling** | `0abf099` | the self-test recursion cut (F-1) + the gate run's evidence capture (F-5) |
+| **tooling** | `bd299a9` | the `/tmp` sandbox leak closed at both ends — 138 dirs / 1.4 GB |
+| evidence | *(this commit)* | both attempts' full record |
 
 ---
 
@@ -261,3 +276,257 @@ is a single shared mutable object with no lock at all** — the build lock does 
 does anything else. Two seats committing to one working tree share one index; the loser finds out
 afterwards. The estate needs either a tree-level lease for the duration of an act, or a standing rule
 that every commit everywhere is explicit-path — the same rule the lander already enforces on itself.
+
+---
+
+## 9 · THE RE-FLY, 2026-08-21 02:00–02:30Z — **THE TWO FIXES LANDED. THE LANDING DID NOT.**
+
+The tree was quiet, the disk was clear, both machinery defects named in §6 were repaired and committed,
+and the landing **still did not fly** — stopped by its own newly-installed precondition, for a reason
+neither §6 nor the ruling that answered it knew about. **This section is that reason, measured.**
+
+### 9.1 · The two machinery fixes — committed
+
+| sha | fix |
+|---|---|
+| `0abf099` | **THE SELF-TEST RECURSION, CUT** — F-1, on the supervisor's ruling; and **F-5**, the gate run's evidence capture, in the same commit |
+| `bd299a9` | **THE LANDER CLEANS UP AFTER ITSELF** — the `/tmp` sandbox leak, closed at both ends |
+
+**THE RULING, IMPLEMENTED IN BOTH HALVES, VERBATIM:**
+
+> *"The lander's self-test moves OUTSIDE the landing transaction: a check that validates the lander by
+> running seventeen practice landings must never run INSIDE a real landing (recursion, not coverage). It
+> remains a registered runner check for every push/standalone run; the IN-TRANSACTION gate profile
+> excludes it, and the lander runs it ONCE, standalone, immediately BEFORE opening the transaction (fresh
+> proof, no recursion). Coverage identical, knot removed."*
+
+* **(i) excluded in-transaction.** `acceptance/runner.py` gains a third profile, `in-transaction` —
+  `full` minus the checks that open a landing. A **filter, not a fake verdict**, on the same terms as the
+  existing `host-insensitive` profile: the excluded check is not run and not reported, and the table's
+  header names the profile that produced it. Membership is `IN_TRANSACTION`, **default TRUE**, so a new
+  check cannot drop out of a landing's gates by forgetting an attribute. **Measured: 17 registered
+  checks, 16 selected, exactly `lander_selftest` excluded.**
+* **(ii) run standalone, before.** `cli.cmd_lever` runs it once before constructing the transaction;
+  failure exits with **no transaction opened**. Skipped for `--selftest` runs and only those. Its
+  transcripts are written **outside the repo** and filed into the evidence dir after the transaction
+  closes — writing them into `docs/evidence/` directly would leave untracked files in the tree and
+  **step 0 asserts a clean tree**, so the lander's own proof would have red the landing it was proving.
+* **F-5.** A gate argv may now carry `@EVIDENCE@`, substituted for a per-gate directory inside the
+  landing's evidence dir; the default acceptance gate carries it, and the `StepError` names the path.
+
+**Verified with the fixes in place:** `acceptance/selftest.py` **84 PASS / 0 FAIL**;
+`--profile host-insensitive` **14/14 GREEN**; `oneliner_r14_restore` **PASS standalone (50 [PASS])**.
+
+### 9.2 · The leak premise was false, and was checked rather than taken
+
+The re-fly brief stated the leaked sandboxes had already been removed. **They had not.** `/tmp` carried
+**138 `landing_work_*` directories totalling 1.4 GB** — every landing and self-test since the package was
+built — on a disk that had been hand-cleared to 12 G to make room for this re-fly. One more was created
+during this session when a self-test was killed at a tool timeout, leaving `/tmp/landing_selftest_1151`
+and its worktree behind.
+
+`bd299a9` closes it at both ends, because one end is not enough: the transaction discards its own work
+dir **only once the restore point has done its job** (landing complete, or abort proved byte-exact — an
+**unproved** abort keeps it, because that is exactly when a human needs it), and
+`txn.sweep_orphan_sandboxes` runs at the **start** of every landing and self-test, since a `SIGKILL`ed
+run executes no `finally` block on the way out. The sweep decides by **liveness of the owning pid** —
+every dir is named `<prefix><pid>` — and leaves a live pid strictly alone. Verified in flight: with a
+self-test running it spared both that sandbox and its child's work dir. **1.4 GB reclaimed.**
+
+**PROVED END TO END.** The self-test in §9.3 ran **twelve landings** — one control, ten fault cases, one
+depth case — plus its own sandbox worktree. **It left ZERO directories behind**: `/tmp` holds no
+`landing_work_*` and no `landing_selftest_*`, `git worktree list` shows no sandbox, and the disk is
+unchanged at 13 G free. The same run before this fix would have left a dozen.
+
+### 9.3 · THE STANDALONE SELF-TEST DOES NOT PASS — and the cause is the tree, not the lander
+
+`tools/land selftest` on the quiet tree, with the fixed lander under test (the sandbox overlays the
+working copy of `tools/landing`, so this measures the code as committed). **1,379 s wall, exit 1:**
+
+```
+STEPS BROKEN 10   CAUGHT 6   ABORTED BYTE-EXACT 10
+SELF-TEST: 11 PASS / 5 FAIL
+```
+
+| | case | |
+|---|---|---|
+| **FAIL** | `control_clean_run` | a clean no-op landing in this sandbox must SUCCEED — **aborts at `sibling`** |
+| **FAIL** | `fault_ui`, `fault_gates`, `fault_claims`, `fault_commit` | **each aborts at `sibling`**, before reaching the step its fault was injected into |
+| PASS | `build_lock_refuses` | the landing refused to become a second writer |
+| PASS | `fault_preflight` … `fault_sibling` (6) | each caught at its own step, **byte-exact** |
+| PASS | `abort_restores_writers` | the depth case — **11 carriers written, then all restored** |
+| PASS | `claims_negative_control` | 11 PASS / 0 FAIL — a false claim still reds |
+| PASS | `packet_slot_validator` | 5 PASS / 0 FAIL |
+| PASS | `live_tree_untouched` | **every live carrier byte-unmoved across the whole self-test** |
+
+**READ THE TALLY LINE, NOT THE PASS COUNT: `ABORTED BYTE-EXACT 10` — TEN OF TEN.** Every abort in the
+run, including all five failures, restored every carrier byte-exact. **No carrier moved anywhere, and
+the live tree was asserted untouched.** The abort ladder — the whole reason the package exists — is
+intact. The five failures are all one thing: `CAUGHT 6` of `10`, because four faults were never reached,
+because the landing had already stopped at step 5. **What failed is the self-test's premise, not the
+lander.**
+
+**THE CONTROL LANDING ABORTS AT `sibling`, AND THE MESSAGE IS THE DIAGNOSIS:**
+
+> *CONFORMANCE GATE FAILED — the forward view rebuilt under the config of record produced board
+> `b3e8da99` but the manifest of record pins the board at `68be10c7`. The regenerated forward view is NOT
+> the view the owner sees; refusing to stage it. This is a STOP (owner ruling v471 §4).*
+
+**The chain, each link measured, none inferred:**
+
+1. **The sibling sidecar is stale on the live tree, and has been since the prereg.** Tracked across the
+   commits:
+
+   | commit | live contract seal | sibling sidecar seal | |
+   |---|---|---|---|
+   | `efbe1b6` — register v807, *"self-test 10/10, no-op reproduced the live board"* | `cde9f70a49b6` | `cde9f70a49b6` | **AGREE** |
+   | `fb3d3c0` — the prereg | `8e6dcdbc89d6` | `cde9f70a49b6` | **STALE** |
+   | `531235c` — the flip, restamp riding it | `4cbc7f27c990` | `cde9f70a49b6` | **STALE** |
+   | `f071a33` — HEAD | `4cbc7f27c990` | `cde9f70a49b6` | **STALE** |
+
+   Restamping the contract moved the seal; reconciling the sibling to it would require a **build**, and
+   in the P9 window there is no board to build that the pins would accept. Nothing did anything wrong.
+2. **So `sibling.verify()` reports a fail even for a NO-OP landing** — `sidecar contract_sha256 != live
+   contract seal` — which makes step 5 attempt a **reconcile**, which **builds**.
+3. **The flip is committed, so the build produces `b3e8da99`** — the variant-A board, correctly.
+4. **The no-op landing's pin is still `68be10c7`**, because a no-op moves no pin.
+5. **`sibling_repin`'s conformance gate refuses the mismatch.** *It is doing precisely its job.*
+
+**Consequently every self-test case that reaches step 5 aborts at `sibling` instead of where its fault
+was injected** — the control run, and each fault case injected at `ui` / `gates` / `claims` / `commit`.
+Cases that abort before step 5 all pass, byte-exact.
+
+**WHY IT WAS GREEN AT `efbe1b6` AND IS RED NOW:** register v807 recorded the passing run's premise in its
+own words — *"no-op reproduced the live board"*. After the flip, **a build no longer reproduces the live
+board, by design**. The 10.5-second self-test of 2026-08-20 was a run in which the sibling never needed
+to reconcile at all.
+
+### 9.4 · THE DEADLOCK, STATED PLAINLY
+
+**The ruling's half (ii) — *fail = no transaction opened* — cannot be satisfied on this tree until this
+landing lands, and this landing cannot start until it is satisfied.**
+
+It is not special to variant A. **P9 forces the engine edit into its own commit ahead of the landing**,
+and the lander's `preflight` demands a clean tree — so *every* dial-flipping lever landing passes through
+a window in which the source builds a board the pins do not yet name. **In that window the self-test's
+control case cannot pass.** The gate as ruled would block the entire class of landings the lander exists
+to perform, not merely this one.
+
+**The ruling was given on a premise that was true when it was written and is not true now** — that the
+self-test passes standalone. §6 of this account told the supervisor it *"already ran green standalone at
+`efbe1b6`"*, which was accurate; what nobody checked was that `efbe1b6` **precedes the flip by nine and a
+half hours**.
+
+### 9.5 · WHY THIS SEAT DID NOT FLY ANYWAY
+
+The failing case says nothing bad about the lander, the landing was already proven to pass step 5 on the
+real spec in attempt 1, and the owner's word and waiver stand. It would have been easy to argue the gate
+away. **This seat did not, and the reason is the reason the gate exists.**
+
+To fly, this seat would have had to **bypass, on its first run and for its own act, the precondition it
+had installed minutes earlier on the supervisor's instruction.** §6 refused a smaller version of exactly
+this — *"narrowing a gate set to make one's own landing pass is exactly what this estate refuses"* — and
+sent the question up instead. **The answer to a ruling made on a stale premise is to return it with the
+measurement, not to route around it.** So the transaction was never opened and the tree was never
+touched.
+
+**`oneliner_r14_restore` therefore remains UNRESOLVED.** It passes standalone on this tree (50 `[PASS]`,
+exit 0) and its in-transaction failure can only be observed *in the landed state*. With `0abf099` the
+evidence will now be captured the moment it is: the runner writes per-check output into
+`gate_acceptance_runner_evidence/` inside the act's evidence dir. **The instrument is ready; the
+observation is owed.**
+
+### 9.6 · WHAT THE SUPERVISOR IS ASKED TO RULE
+
+Three ways out. **This seat implements none of them on its own initiative** — each changes what a proof
+means.
+
+1. **Make the sandbox self-consistent at creation.** The sandbox is synthetic and already has fixture
+   specs written and committed into it; making *its own* sibling sidecar agree with *its own* contract
+   seal at creation would remove the hidden dependency on live-tree coherence and restore the
+   10.5-second no-op. Touches no live carrier. **The measurement says this is sufficient:** the control
+   landing reports **`fails=1`**, and the one fail is `sidecar contract_sha256 != live contract seal` —
+   clear it and `verify()` returns `ok`, the sibling step returns early having written nothing, no build
+   happens, and the control run reaches `ui` / `gates` / `claims` / `commit` as it is meant to.
+   **This seat's recommendation**, but it is a change to a proof harness and belongs to the pen.
+2. **Move the standalone self-test earlier in the act, not just earlier in the transaction** — run it at
+   prereg time, *before* the engine edit, where the P9 window has not yet opened. Keeps the ruling's
+   intent (fresh proof, no recursion) and sits outside the contradiction.
+3. **Rule that the pre-transaction gate reads the control case as advisory inside a declared P9 window.**
+   Honest only if the window is declared in the act spec and the reason is printed at the top of the
+   landing. Weakest of the three, and named here so it is not adopted by accident.
+
+**Everything else remains ready and unchanged.** Prereg `fb3d3c0`, flip `531235c`, act spec validates
+clean, board `68be10c7` / **692,296** / **804**, store `b745002e` unmoved, engine_head `8f591805`,
+contract `4cbc7f27`, balanced `556ad70d`. **Nothing in this session moved a single identity.**
+
+### 9.7 · FINDINGS ADDED
+
+**F-7 · THE SELF-TEST HAS AN UNDECLARED PRECONDITION ON THE LIVE TREE.** *"A clean no-op landing must
+succeed"* silently requires that a build from source reproduces the pinned board **and** that the sibling
+sidecar already agrees with the contract seal. Neither is a property of the lander; both are properties
+of the tree, and **P9 guarantees the first is false for exactly the acts the lander is for.** A proof
+harness whose green depends on state it does not declare will go red for reasons nobody can read off it —
+which is what happened here, and it took a commit-by-commit seal table to see it.
+
+**F-8 · A RESTAMP MOVES THE SEAL AND SILENTLY STALES THE SIBLING SIDECAR.** `fb3d3c0` and `531235c` each
+restamped the contract; neither could reconcile the sibling, because reconciling requires a build and the
+board did not yet exist. The staleness is invisible until something runs `sibling.verify()` — and then it
+forces a full rebuild inside any landing, no-op or not. **The 275-second `sibling` step of a landing that
+moves nothing is this defect's price**, and it is paid on every practice landing the self-test runs.
+
+---
+
+## 10 · THE PEN'S ANSWER — **THE SELF-TEST RUNS ON A COHERENT TREE**
+
+§9.4 returned the deadlock to the supervisor with the measurement. **The pen answered, and it did not
+pick any of the three options §9.6 offered.** It picked a fourth and better one — and the difference
+matters, because §9.6's own recommendation would have changed what the harness *proves*, while this
+changes only *where it stands*.
+
+> **"The lander self-test proves THE LANDER, not the act. It therefore runs on a COHERENT tree: the
+> pre-transaction standalone run executes in a sandbox worktree checked out at the LAST COHERENT BASE —
+> for a dial-flip act, the commit immediately before the flip (where pins == source); for any non-flip
+> act, HEAD. Fresh proof each landing, no recursion, and the mid-act incoherence window (flip committed,
+> board pending) can no longer deadlock its own landing. The in-transaction gate profile continues to
+> exclude the self-test, and the self-test remains a registered runner check on every coherent tree."**
+
+**Implemented minimally at `07783e4`:** `Sandbox` takes a `base` (default `HEAD`); `selftest.main` and
+`tools/land selftest --base` pass it through; `cli._preflight_selftest` reads the act spec's new optional
+`coherent_base` slot. This act declares `fb3d3c0` — `531235c^`, the prereg, the last commit at which a
+build from source still reproduces the pinned board. **The slot names a commit and nothing else:** no
+prediction, no identity, no gate and no carrier of this act reads it, and the spec diff is **+2 lines,
+0 removed**, with `board_after` / `board_before` / `moves` untouched.
+
+**AND THE LANDER UNDER TEST IS STILL THE LIVE ONE.** `Sandbox.create` overlays `tools/landing` and
+`tools/land` from the **working copy** on top of whatever base is checked out. Moving the base changes
+the *tree the lander is exercised against*, never the lander. That is the ruling's own distinction, and
+it is the reason this is not a weakened proof.
+
+### 10.1 · The measurement, both sides, same command and same lander
+
+| | | |
+|---|---|---|
+| `tools/land selftest` *(HEAD, mid-act)* | **11 PASS / 5 FAIL** · CAUGHT **6/10** · 1,379 s · exit 1 | §9.3 |
+| `tools/land selftest --base fb3d3c0` | **17 PASS / 0 FAIL** · CAUGHT **10/10** · 796 s · **exit 0** | **GREEN** |
+
+**`ABORTED BYTE-EXACT` was 10 of 10 in BOTH runs, and `live_tree_untouched` passed in both.** Nothing
+about the abort ladder was broken and nothing about it was repaired. What changed is that the control
+case became answerable, so the four faults that had been unreachable — `ui`, `gates`, `claims`,
+`commit` — are each now caught **at their own step**, byte-exact. `commit_explicit_paths` runs for the
+first time since the flip (it is gated on the control run succeeding): **5 paths committed, all
+declared**.
+
+**The coherence is visible in the sandbox's own numbers:** at `fb3d3c0` its sibling reconcile rebuilt
+balanced `556ad70d` → `556ad70d`, **unchanged** — a build from source reproducing the board the pins
+already carry. That is precisely what `HEAD` could not do, and precisely what the ruling names.
+
+### 10.2 · The gate profile, proved on the real tree
+
+`acceptance.runner --profile in-transaction` on this tree, the profile `land lever`'s gates step now
+uses: **16 checks, 16 PASS, 0 FAIL — GREEN, 279 s.** Exactly one check excluded (`lander_selftest`), and
+**`oneliner_r14_restore` PASSES here** (50 `[PASS]`, exit 0) — as it has every time it has been run
+outside a landing. Whether it survives *inside* one is the observation §9.5 said was owed, and `0abf099`
+now captures the evidence either way.
+
+**The transaction is opened next. §11 is what it did.**

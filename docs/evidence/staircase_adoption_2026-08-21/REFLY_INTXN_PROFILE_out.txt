@@ -1,0 +1,47 @@
+==========================================================================================================================
+THE VERDICT SPINE — acceptance/runner.py
+  tree: /home/user/afl-rl-engine
+  evidence: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev
+  profile : in-transaction   (full MINUS the checks that open a landing — run standalone by the lander)
+==========================================================================================================================
+CHECK                    VERDICT     REASON
+-----------------------  ----------  -----------------------------------------------------------------------------------
+release_manifest         PASS        39 of 40 carrier fields agree with computed truth across 8 identities; 1 sealed ca…
+boot_guard_checkout      PASS        boot-store guard (Guard 5) PASS  [acceptance-spine]  store b745002e == pinned b745…
+config_manifest          PASS        CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)
+ruling_config            PASS        RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL…
+release_contract_seal    PASS        RELEASE-CONTRACT CHECK: PASS  (contract 4cbc7f27c990; identities + config + postur…
+store_coherence_six_way  PASS        six-way store coherence: PASS
+doc_lint                 PASS        doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)
+rulebook_lint            PASS        note R5 TWIN ABSENCE: docs/acceptance_v2_0.json is absent, as the v3 amendment lef…
+ruled_red_ledger         PASS        3 step entries probed, all still failing exactly as their ruling records
+inbox_manifest           PASS        inbox_manifest: 1 archived file(s), 0 problem(s), 0 stale generated file(s)
+mirror_parity            PASS        3 fitted-artifact resolvers mirror the engine byte-for-byte; all 3 pins hold
+dial_coverage            PASS        83 of 84 declared dials read with a default in engine source (1 self-declared orph…
+oneliner_gamma           PASS        6 of ship_gates_check.py's 7 exported vars are manifest dials and all agree (enfor…
+oneliner_r14_restore     PASS        R14 disposable fixture + fail-closed controls + movers transition: 50 [PASS], exit…
+oneliner_f1_lens         PASS        the F1 export-parity leg is present, key-for-key, and still reports a mismatch cou…
+build_twice_determinism  PASS        determinism: two bare builds are BYTE-IDENTICAL
+-----------------------  ----------  -----------------------------------------------------------------------------------
+
+EVIDENCE:
+  release_manifest         /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev/release_manifest.txt
+  boot_guard_checkout      /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev/boot_guard_checkout.txt
+  config_manifest          /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev/config_manifest.txt
+  ruling_config            /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev/ruling_config.txt
+  release_contract_seal    /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev/release_contract_seal.txt
+  store_coherence_six_way  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev/store_coherence_six_way.txt
+  doc_lint                 /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev/doc_lint.txt
+  rulebook_lint            /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev/rulebook_lint.txt
+  ruled_red_ledger         /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev/ruled_red_ledger.txt
+  inbox_manifest           /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev/inbox_manifest.txt
+  mirror_parity            /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev/mirror_parity.txt
+  dial_coverage            /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev/dial_coverage.txt
+  oneliner_gamma           /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev/oneliner_gamma.txt
+  oneliner_r14_restore     /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev/oneliner_r14_restore.txt
+  oneliner_f1_lens         /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev/oneliner_f1_lens.txt
+  build_twice_determinism  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/intxn_ev/build_twice_determinism.txt
+
+AGGREGATE  16 checks  |  PASS 16  FAIL 0  BLOCKED 0  RULED-RED 0
+VERDICT    GREEN — no gating failures.
+RC=0 WALL=279s

@@ -1,0 +1,90 @@
+{
+  "generated": "2026-08-21T02:25:22Z",
+  "results": [
+    {
+      "case": "control_clean_run",
+      "detail": "exit 1 \u2014 see control.log; every fault case below is meaningless until this passes",
+      "ok": false
+    },
+    {
+      "case": "build_lock_refuses",
+      "detail": "exit 1; the landing refused to become a second writer",
+      "ok": true
+    },
+    {
+      "case": "fault_preflight",
+      "detail": "fault=dirty_tree; exit 1; failed_step='preflight'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_build_proofs",
+      "detail": "fault=wrong_board; exit 1; failed_step='build_proofs'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_pins",
+      "detail": "fault=board_corrupt; exit 1; failed_step='pins'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_lineage",
+      "detail": "fault=chain_broken; exit 1; failed_step='lineage'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_contract",
+      "detail": "fault=seal_broken; exit 1; failed_step='contract'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_sibling",
+      "detail": "fault=sidecar_corrupt; exit 1; failed_step='sibling'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_ui",
+      "detail": "fault=skip_second_writer; exit 1; failed_step='sibling'; carriers moved after abort: NONE (byte-exact)",
+      "ok": false
+    },
+    {
+      "case": "fault_gates",
+      "detail": "fault=gate_red; exit 1; failed_step='sibling'; carriers moved after abort: NONE (byte-exact)",
+      "ok": false
+    },
+    {
+      "case": "fault_claims",
+      "detail": "fault=false_claim; exit 1; failed_step='sibling'; carriers moved after abort: NONE (byte-exact)",
+      "ok": false
+    },
+    {
+      "case": "fault_commit",
+      "detail": "fault=foreign_path; exit 1; failed_step='sibling'; carriers moved after abort: NONE (byte-exact)",
+      "ok": false
+    },
+    {
+      "case": "abort_restores_writers",
+      "detail": "11 carrier(s) had been written and were restored: data/expected_boot.json, data/release_contract.json, data/release_lineage.json, data/rl_build/rl_app_data.json, data/rl_build/rl_app_data.json.srcmd5, engine/rl_after/ingestion/pos_rank_history.json",
+      "ok": true
+    },
+    {
+      "case": "claims_negative_control",
+      "detail": "CLAIMS SELF-TEST: 11 PASS / 0 FAIL",
+      "ok": true
+    },
+    {
+      "case": "packet_slot_validator",
+      "detail": "PACKET SELF-TEST: 5 PASS / 0 FAIL",
+      "ok": true
+    },
+    {
+      "case": "live_tree_untouched",
+      "detail": "every live carrier byte-unmoved across the whole self-test",
+      "ok": true
+    }
+  ],
+  "tally": {
+    "aborted_byte_exact": 10,
+    "broken": 10,
+    "caught": 6
+  }
+}

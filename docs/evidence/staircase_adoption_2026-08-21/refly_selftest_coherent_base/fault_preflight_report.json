@@ -1,0 +1,20 @@
+{
+  "abort": {
+    "byte_exact": "n/a",
+    "error": "THE TREE IS NOT CLEAN. A landing transaction starts from a committed tree, or its abort restores a state nobody chose:\n    ?? LANDING_FAULT_DIRT.txt",
+    "failed_step": "preflight",
+    "restore_point": null,
+    "restored": "n/a \u2014 failure precedes the restore point"
+  },
+  "error": "THE TREE IS NOT CLEAN. A landing transaction starts from a committed tree, or its abort restores a state nobody chose:\n    ?? LANDING_FAULT_DIRT.txt",
+  "facts": {},
+  "failed_step": "preflight",
+  "ok": false,
+  "timings": [
+    {
+      "seconds": 0.02,
+      "step": "preflight",
+      "verdict": "FAIL"
+    }
+  ]
+}
