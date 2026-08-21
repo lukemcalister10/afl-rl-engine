@@ -127,7 +127,7 @@
         "ui/data/movers.js": "09268415b1cd287b20f0e63052ed7b74",
         "ui/data/movers_transition.js": "d81bd31a40e5aa0fa0e5f894335741b7"
       },
-      "commit": "77dc0ff8d32d26564d4f11eee46b383e5b91bd60",
+      "commit": "7ae5a4ba100e376b09b63e7b2456a7ae9b1fc622",
       "expected_boot": {
         "as_of_round": 23,
         "balanced_board_md5": "556ad70d295923455982ae33e4b8bfd3",
@@ -175,10 +175,10 @@
       "unmoved_checked": 7
     },
     "preflight": {
-      "base_commit": "77dc0ff8d32d26564d4f11eee46b383e5b91bd60",
+      "base_commit": "7ae5a4ba100e376b09b63e7b2456a7ae9b1fc622",
       "board_before": "68be10c79d0ee096455754e084bcf757",
       "carriers_captured": 55,
-      "lock": "land-lever-10236"
+      "lock": "land-lever-17322"
     }
   },
   "failed_step": "sibling",

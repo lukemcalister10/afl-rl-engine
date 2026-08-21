@@ -1,0 +1,249 @@
+==========================================================================================================================
+THE VERDICT SPINE — acceptance/runner.py
+  tree: /home/user/afl-rl-engine
+  evidence: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev
+  profile : in-transaction   (full MINUS the checks that open a landing — run standalone by the lander)
+==========================================================================================================================
+CHECK                    VERDICT     REASON
+-----------------------  ----------  -----------------------------------------------------------------------------------
+release_manifest         PASS        39 of 40 carrier fields agree with computed truth across 8 identities; 1 sealed ca…
+boot_guard_checkout      PASS        boot-store guard (Guard 5) PASS  [acceptance-spine]  store b745002e == pinned b745…
+config_manifest          PASS        CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)
+ruling_config            PASS        RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL…
+release_contract_seal    PASS        RELEASE-CONTRACT CHECK: PASS  (contract 55a890820b91; identities + config + postur…
+store_coherence_six_way  PASS        six-way store coherence: PASS
+doc_lint                 PASS        doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)
+rulebook_lint            PASS        note R5 TWIN ABSENCE: docs/acceptance_v2_0.json is absent, as the v3 amendment lef…
+ruled_red_ledger         PASS        3 step entries probed, all still failing exactly as their ruling records
+inbox_manifest           PASS        inbox_manifest: 1 archived file(s), 0 problem(s), 0 stale generated file(s)
+mirror_parity            PASS        3 fitted-artifact resolvers mirror the engine byte-for-byte; all 3 pins hold
+dial_coverage            PASS        83 of 84 declared dials read with a default in engine source (1 self-declared orph…
+oneliner_gamma           PASS        6 of ship_gates_check.py's 7 exported vars are manifest dials and all agree (enfor…
+oneliner_r14_restore     PASS        R14 disposable fixture + fail-closed controls + movers transition: 50 [PASS], exit…
+oneliner_f1_lens         PASS        the F1 export-parity leg is present, key-for-key, and still reports a mismatch cou…
+build_twice_determinism  PASS        determinism: two bare builds are BYTE-IDENTICAL
+-----------------------  ----------  -----------------------------------------------------------------------------------
+
+EVIDENCE:
+  release_manifest         /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev/release_manifest.txt
+  boot_guard_checkout      /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev/boot_guard_checkout.txt
+  config_manifest          /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev/config_manifest.txt
+  ruling_config            /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev/ruling_config.txt
+  release_contract_seal    /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev/release_contract_seal.txt
+  store_coherence_six_way  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev/store_coherence_six_way.txt
+  doc_lint                 /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev/doc_lint.txt
+  rulebook_lint            /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev/rulebook_lint.txt
+  ruled_red_ledger         /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev/ruled_red_ledger.txt
+  inbox_manifest           /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev/inbox_manifest.txt
+  mirror_parity            /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev/mirror_parity.txt
+  dial_coverage            /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev/dial_coverage.txt
+  oneliner_gamma           /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev/oneliner_gamma.txt
+  oneliner_r14_restore     /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev/oneliner_r14_restore.txt
+  oneliner_f1_lens         /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev/oneliner_f1_lens.txt
+  build_twice_determinism  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/post_ev/build_twice_determinism.txt
+
+AGGREGATE  16 checks  |  PASS 16  FAIL 0  BLOCKED 0  RULED-RED 0
+VERDICT    GREEN — no gating failures.
+runner RC=0
+movers provenance-transition tests:
+  [PASS] production ui/data/movers.js still carries the owner-authorised R15-R19 history
+  [PASS] production bundle has one report per round
+  [PASS] data/release_lineage.json declares release_transition
+  [PASS] transition is an owner-approved movers_release_transition
+  [PASS] release_lineage.json release_transition == ui/data/movers_transition.js (consistent)
+  [PASS] release_lineage.json release_transition_register == the mirror's register (era succession: ALL entries reach the reader)
+  [PASS] the mirror carries the transition keys plus the register and NOTHING else (zero authorship)
+  [PASS] the ITEM 408 record is preserved BYTE-VERBATIM as the mirror payload's prefix (never rewritten)
+  [PASS] the register carries at least one transition record  (10 of 13 entries)
+  [PASS] EVERY register record is owner-approved and names its ruling id
+  [PASS] the shipped bundle's model_changes == what the live tree derives (reader and bundle in step)
+  [PASS] more than one out-of-round boundary is carried end-to-end — the single-slot limit is gone  (11 boundaries)
+  [PASS] EVERY out-of-round boundary reaches the reader owner-approved, naming its ruling id
+  [PASS] NON-VACUITY: with the register removed the newest boundary LOSES its owner approval  (approved 1 of 11, vs 11 of 11 with it)
+  [PASS] transition source + destination carry every id field (fixed pins + board + store)
+  [PASS] transition applies_to R15-R19
+  [PASS] transition SOURCE == the R15-R19 reports terminal identity
+  [PASS] transition source round == 19
+  [PASS] every historical report carries the identical fixed release identity
+  [PASS] transition DESTINATION is the post-restructure board (the boundary the tab labels)
+  [PASS] transition DESTINATION store is the post-restructure store
+  [PASS] the manifest has legitimately advanced past the transition destination (round 20 applied)
+  [PASS] transition destination round is 19 — the round the restructure landed after (unchanging history)
+  [PASS] manifest as_of_round has advanced to 23
+  [PASS] exactly release_version/balanced_board_md5/engine_head/board/store move across the transition
+  [PASS] rl_model/fv/config/register are UNCHANGED across the transition (same R19 model pins)
+  [PASS] the transition self-declares the moved/unchanged field sets correctly
+  [PASS] recomputed R15-R19 content digest == the transition declared digest (sha256:6aea584536c6cd98c7949947620687d549b6f6f54fcc44acf3ca6fd71aaf8c4d)
+  [PASS] a modified player movement changes the content digest (tamper detected)
+  [PASS] a modified report identity changes the content digest (tamper detected)
+  [PASS] appending a future R24 report writes (no overwrite conflict)
+  [PASS] the bundle carries R15-R24 after the append
+  [PASS] every R15-R19 report is byte-for-byte preserved after the future append
+  [PASS] the R15-R19 content digest is UNCHANGED after the future append
+  [PASS] the appended future report carries the then-current governing identity (destination)
+  [PASS] a DIFFERENT R23 is refused as an overwrite conflict (never merged)
+  [PASS] the bundle is left BYTE-UNCHANGED by the refused conflicting write
+  [PASS] score_ingestor.APPLY_DEFAULT is False (code half OFF)
+  [PASS] score-write gate is OFF (no explicit apply token) — no score can be applied
+MOVERS TRANSITION TESTS: ALL 39 PASS
+movers_transition RC=0
+MOVERS-VIEW TESTS
+  ------------------------------------------------------------
+  [PASS] valid report passes integrity
+  [PASS] null report fails closed
+  [PASS] missing committed board id fails closed
+  [PASS] missing release identity fails closed
+  [PASS] board mismatch fails closed
+  [PASS] duplicate player rows fail closed
+  [PASS] coherent bundle passes full-identity lineage  (got [true,"ok"])
+  [PASS] empty bundle on the loaded lineage -> honest empty state  (got [true,"empty"])
+  [PASS] empty 270a2c5f bundle vs a different baseline board fails closed (not empty state)
+  [PASS] same newest board, differing store: displayed (transition is no longer a gate)
+  [PASS] differing release_version: displayed (enforcement removed)
+  [PASS] differing engine_head: displayed (enforcement removed)
+  [PASS] differing fv: displayed (enforcement removed)
+  [PASS] differing config: displayed (enforcement removed)
+  [PASS] differing register: displayed (enforcement removed)
+  [PASS] ONE ASSERT: newest stored point != loaded board fails closed
+  [PASS] ONE ASSERT: newest stored point == loaded board passes
+  [PASS] a report with a different balanced_board_md5 fails closed
+  [PASS] baseline board-anchor break fails closed
+  [PASS] baseline store-anchor break fails closed
+  [PASS] a board-identity discontinuity is DISPLAYED, not rejected (chain removed 2026-07-28)
+  [PASS] a store-identity discontinuity is DISPLAYED, not rejected (chain removed 2026-07-28)
+  [PASS] latest report board != loaded current board fails closed
+  [PASS] incoherent as_of_round fails closed
+  [PASS] non-sequential points are DISPLAYED — from/to needs no consecutive series
+  [PASS] value risers order  (got ["a","d","c","b"])
+  [PASS] value fallers order  (got ["b","c","d","a"])
+  [PASS] rank risers deterministic tie-break (a before d)  (got ["a","d","c","b"])
+  [PASS] club filter  (got ["a","c"])
+  [PASS] position filter  (got ["a","c"])
+  [PASS] DNP filter keeps DNP player  (got ["d"])
+  [PASS] played filter  (got ["a","b","c"])
+  [PASS] DNP player present in the complete table
+  [PASS] listed score of 0 is PLAYED
+  [PASS] summary headline movers  (got ["a","b","a","b"])
+  [PASS] production ui/data/movers.js carries R15-R23  (got [15,16,17,18,19,20,21,22,23])
+  [PASS] production bundle carries nine reports (one per round)
+  [PASS] complete historical board/store chain R14->R19 is exact + continuous
+  [PASS] latest report terminates at the R19 recovery-materialised store f37d9716 (history; superseded as the accepted store by ITEM 411 D1 c120cfd5)
+  [PASS] transition record is an owner-approved movers_release_transition
+  [PASS] transition digest matches the restored R15-R19 reports byte-for-byte (content anchor)  (got "sha256:6aea584536c6cd98c7949947620687d549b6f6f54fcc44acf3ca6fd71aaf8c4d")
+  [PASS] bundle displays under the current app, bridged — the last act moved the board OUTSIDE a round (the staircase fix adoption), so the latest round report's terminal board is not the loaded board, and the out-of-round column carries it instead  (got [true,"bridged"])
+  [PASS] NON-VACUITY: a bundle whose newest point is not the loaded board is refused, not bridged  (got [false,"mismatch"])
+  [PASS] NON-VACUITY: loaded at the bundle's own terminal identity the SAME bundle reads ok — bridged is a discriminating state  (got [true,"ok"])
+  [PASS] RESOLVED (#271 A17, 2026-08-06): bundle baseline anchor 06d8af60 now agrees with the loaded app's 06d8af60 — the reason the state is ok, not bridged
+  [PASS] the same bundle WITHOUT a transition also displays (gate removed)
+  [PASS] app has advanced past the transition destination — the record is history, not the current release
+  [PASS] transition destination is the restructure board — the boundary the tab labels
+  [PASS] eleven out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut, the 20/8 F5 rounding fix, the 20/8 back-rows repair, the 21/8 staircase adoption)  (got 11)
+  [PASS] model change declared between R19 and the restructure point, anchored to the owner-approved record
+  [PASS] model change declared between R20 and the 30/7 rederivation, anchored to the owner-approved record
+  [PASS] model change declared between the 30/7 rederivation and the 6/8 adoption, anchored to the owner-approved adoption record
+  [PASS] the 30/7 boundary carries its own owner ruling id (A22's known-false flag is cleared)  (got ["ITEM_271_Addendum_17"])
+  [PASS] EVERY declared out-of-round boundary is anchored to an owner-approved record
+  [PASS] a range spanning the restructure is LABELLED
+  [PASS] a range inside one model is not
+  [PASS] ONE ASSERT: newest stored point == loaded board passes
+  [PASS] ONE ASSERT: newest stored point != loaded board fails closed
+  [PASS] future report append preserves all R15-R19 reports byte-for-byte (historical digest unchanged)  (got "sha256:6aea584536c6cd98c7949947620687d549b6f6f54fcc44acf3ca6fd71aaf8c4d")
+  [PASS] the appended future report carries the then-current governing identity (destination)
+  [PASS] movers module exports only pure view logic (applies NO scores)  (got ["core","makeView"])
+  [PASS] scratch evidence bundle carries R15-R19  (got [15,16,17,18,19])
+  [PASS] scratch bundle passes full-identity lineage against its own last board/store/release
+  [PASS] every scratch report carries the same fixed balanced_board_md5 (06d8af60)
+  [PASS] every scratch round report: integrity + unique coverage + no v2.10 tag + balanced not synthesized
+  [PASS] scratch reports represent DNP players
+  ------------------------------------------------------------
+MOVERS TESTS: ALL 66 PASS
+movers_ui RC=0
+RELEASE MANIFEST — carrier coherence over the full identity set
+  root: /home/user/afl-rl-engine
+
+  STORE  [computed md5 engine/rl_after/rl_model_data.json]
+    (truth)                                       b745002eb0a0fbb1c34fa44f1ef708d6                                 
+    expected_boot.store                           b745002eb0a0fbb1c34fa44f1ef708d6                                 OK
+    release_contract.identities.store             b745002eb0a0fbb1c34fa44f1ef708d6                                 OK
+    season_state.source_store_md5                 b745002eb0a0fbb1c34fa44f1ef708d6                                 OK
+    rl_app_data.srcmd5.source_md5                 b745002eb0a0fbb1c34fa44f1ef708d6                                 OK
+    board_view_working.stamp.store_md5            b745002eb0a0fbb1c34fa44f1ef708d6                                 OK
+    board_view_working.stamp.store                b745002e                                                         OK
+    board_view_working.stamp.release.store        b745002eb0a0fbb1c34fa44f1ef708d6                                 OK
+    book_stable_seal.store_md5                    b745002e                                                         OK
+    -> 8 carriers, COHERENT
+
+  BOARD  [computed md5 data/rl_build/rl_app_data.json]
+    (truth)                                       b3e8da99bc7f632e5d1eebc732f9cf01                                 
+    expected_boot.board                           b3e8da99bc7f632e5d1eebc732f9cf01                                 OK
+    release_contract.identities.board             b3e8da99bc7f632e5d1eebc732f9cf01                                 OK
+    rl_app_data.srcmd5.own_md5                    b3e8da99bc7f632e5d1eebc732f9cf01                                 OK
+    board_view_working.stamp.board_md5            b3e8da99bc7f632e5d1eebc732f9cf01                                 OK
+    board_view_working.stamp.board                b3e8da99bc7f632e5d1eebc732f9cf01                                 OK
+    board_view_working.stamp.srcmd5               b3e8da99bc7f632e5d1eebc732f9cf01                                 OK
+    board_view_working.stamp.release.board        b3e8da99bc7f632e5d1eebc732f9cf01                                 OK
+    -> 7 carriers, COHERENT
+
+  ENGINE_HEAD  [computed md5 engine/rl_after/_merged_recover.py]
+    (truth)                                       8f59180547a584c981ccba39fa018708                                 
+    expected_boot.engine_head                     8f59180547a584c981ccba39fa018708                                 OK
+    release_contract.identities.engine_head       8f59180547a584c981ccba39fa018708                                 OK
+    board_view_working.stamp.engine               8f591805                                                         OK
+    board_view_working.stamp.release.engine_head  8f59180547a584c981ccba39fa018708                                 OK
+    book_stable_seal.head_md5                     1867e953                                                         SEALED-LAG  <<< SEALED-LAG (expected 8f591805)
+    -> 5 carriers, COHERENT (1 sealed carrier lagging — see below)
+
+  RL_MODEL  [computed md5 engine/rl_after/rl_model.py]
+    (truth)                                       6fe7c4155866d80e8045bed2d3bf2802                                 
+    expected_boot.rl_model                        6fe7c4155866d80e8045bed2d3bf2802                                 OK
+    release_contract.identities.rl_model          6fe7c4155866d80e8045bed2d3bf2802                                 OK
+    board_view_working.stamp.release.rl_model     6fe7c4155866d80e8045bed2d3bf2802                                 OK
+    -> 3 carriers, COHERENT
+
+  FV  [computed fv tree hash (fv_provenance)]
+    (truth)                                       6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346 
+    expected_boot.fv                              6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346 OK
+    release_contract.identities.fv                6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346 OK
+    board_view_working.stamp.release.fv           6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346 OK
+    -> 3 carriers, COHERENT
+
+  CONFIG  [computed manifest hash (config_manifest)]
+    (truth)                                       eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1 
+    expected_boot.config                          eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1 OK
+    release_contract.config_sha256                eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1 OK
+    board_view_working.stamp.config               eed19a75f775                                                     OK
+    board_view_working.stamp.release.config       eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1 OK
+    book_stable_seal.config                       eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1 OK
+    -> 5 carriers, COHERENT
+
+  REGISTER  [computed md5 LTI_REGISTER.md]
+    (truth)                                       652d83e87780e415a01a2de6d8b3cc57                                 
+    expected_boot.register                        652d83e87780e415a01a2de6d8b3cc57                                 OK
+    release_contract.identities.register          652d83e87780e415a01a2de6d8b3cc57                                 OK
+    board_view_working.stamp.register             652d83e8                                                         OK
+    board_view_working.stamp.release.register     652d83e87780e415a01a2de6d8b3cc57                                 OK
+    -> 4 carriers, COHERENT
+
+  AS_OF_ROUND  [anchor data/expected_boot.json]
+    (truth)                                       23                                                               
+    expected_boot.as_of_round                     23                                                               OK
+    release_contract.as_of_round                  23                                                               OK
+    season_state.as_of_round                      23                                                               OK
+    board_view_working.stamp.asOfRound            23                                                               OK
+    board_view_working.stamp.release.as_of_round  23                                                               OK
+    -> 5 carriers, COHERENT
+
+  40 carrier fields across 8 identities and 7 files: 39 coherent, 0 incoherent, 1 sealed-lag
+
+  SEALED-LAG — a freeze-stamp naming the state it was SEALED against, not the
+  state the tree is in. Legitimate between seals; reported, never gating:
+    book_stable_seal.head_md5                    sealed against 1867e953, tree is now 8f591805
+    (i.e. the artifact these stamps belong to has not been re-sealed since the
+     tree last moved. That is information, not a defect — but a gate that
+     consumes the seal as a baseline is comparing against the older state.)
+
+  RELEASE MANIFEST COHERENCE: PASS
+manifest RC=0
+RELEASE-CONTRACT CHECK
+RELEASE-CONTRACT CHECK: PASS  (contract 55a890820b91; identities + config + posture consistent)
+contract RC=0

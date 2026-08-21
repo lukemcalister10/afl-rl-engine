@@ -1,7 +1,7 @@
 {
   "abort": {
     "byte_exact": true,
-    "error": "THE CLAIMS FILE DOES NOT VERIFY AGAINST THE TREE:\n====================================================================================================\nCLAIMS CHECK \u2014 SELF-TEST \u2014 the no-op rehearsal\n  act type   : lever-landing\n  date       : 2026-08-20   base: 77dc0ff8d32d26564d4f11eee46b383e5b91bd60\n  owner word : SELF-TEST FIXTURE \u2014 no owner word; this spec never lands anything.\n  tree       : /tmp/landing_selftest_9566/sandbox\n====================================================================================================\n  ACTIVATION  day0_rebase                              off\n\n  FAIL file_md5     the published board of record                  md5 68be10c79d0ee096455754e084bcf757 (claimed 00000000000000000000000000000000)\n  OK   file_md5     the store                                      md5 b745002eb0a0fbb1c34fa44f1ef708d6 (claimed b745002eb0a0fbb1c34fa44f1ef708d6)\n  OK   json_field   expected_boot.board                            board = '68be10c79d0ee096455754e084bcf757' (claimed '68be10c79d0ee096455754e084bcf757')\n  OK   json_field   expected_boot.engine_head                      engine_head = '3f4aa10b23102dc4f7362b73fc20ac7b' (claimed '3f4aa10b23102dc4f7362b73fc20ac7b')\n  OK   json_field   the round, HELD by a lever landing             as_of_round = 23 (claimed 23)\n  OK   json_field   the release seal                               contract_sha256 = '8e6dcdbc89d63480f055b9e250729463c3c2ab67c8f1f90db3005ef2e832d0c7' (claimed '8e6dcdbc89d63480f055b9e250729463c3c2ab67c8f1f90db3005ef2e832d0c7')\n  OK   board_count  board rows                                     active.rows = 804 (claimed 804)\n  OK   gate         release_manifest_check                         exit 0 (expected PASS)\n  OK   gate         release_contract_check                         exit 0 (expected PASS)\n  OK   unmoved      BYTE-UNMOVED by this lever landing             md5 b745002eb0a0fbb1c34fa44f1ef708d6 (claimed b745002eb0a0fbb1c34fa44f1ef708d6)\n\nCLAIMS: 9 of 10 verified against the tree; 0 shape problem(s)\nVERDICT: RED \u2014 the deliverable does not carry its own proof\n",
+    "error": "THE CLAIMS FILE DOES NOT VERIFY AGAINST THE TREE:\n====================================================================================================\nCLAIMS CHECK \u2014 SELF-TEST \u2014 the no-op rehearsal\n  act type   : lever-landing\n  date       : 2026-08-20   base: 7ae5a4ba100e376b09b63e7b2456a7ae9b1fc622\n  owner word : SELF-TEST FIXTURE \u2014 no owner word; this spec never lands anything.\n  tree       : /tmp/landing_selftest_16649/sandbox\n====================================================================================================\n  ACTIVATION  day0_rebase                              off\n\n  FAIL file_md5     the published board of record                  md5 68be10c79d0ee096455754e084bcf757 (claimed 00000000000000000000000000000000)\n  OK   file_md5     the store                                      md5 b745002eb0a0fbb1c34fa44f1ef708d6 (claimed b745002eb0a0fbb1c34fa44f1ef708d6)\n  OK   json_field   expected_boot.board                            board = '68be10c79d0ee096455754e084bcf757' (claimed '68be10c79d0ee096455754e084bcf757')\n  OK   json_field   expected_boot.engine_head                      engine_head = '3f4aa10b23102dc4f7362b73fc20ac7b' (claimed '3f4aa10b23102dc4f7362b73fc20ac7b')\n  OK   json_field   the round, HELD by a lever landing             as_of_round = 23 (claimed 23)\n  OK   json_field   the release seal                               contract_sha256 = '8e6dcdbc89d63480f055b9e250729463c3c2ab67c8f1f90db3005ef2e832d0c7' (claimed '8e6dcdbc89d63480f055b9e250729463c3c2ab67c8f1f90db3005ef2e832d0c7')\n  OK   board_count  board rows                                     active.rows = 804 (claimed 804)\n  OK   gate         release_manifest_check                         exit 0 (expected PASS)\n  OK   gate         release_contract_check                         exit 0 (expected PASS)\n  OK   unmoved      BYTE-UNMOVED by this lever landing             md5 b745002eb0a0fbb1c34fa44f1ef708d6 (claimed b745002eb0a0fbb1c34fa44f1ef708d6)\n\nCLAIMS: 9 of 10 verified against the tree; 0 shape problem(s)\nVERDICT: RED \u2014 the deliverable does not carry its own proof\n",
     "failed_step": "claims",
     "restore_point": {
       "data/expected_boot.json": "838eb14684cf28d2990fbcf77e0cab88",
@@ -67,7 +67,7 @@
       }
     ]
   },
-  "error": "THE CLAIMS FILE DOES NOT VERIFY AGAINST THE TREE:\n====================================================================================================\nCLAIMS CHECK \u2014 SELF-TEST \u2014 the no-op rehearsal\n  act type   : lever-landing\n  date       : 2026-08-20   base: 77dc0ff8d32d26564d4f11eee46b383e5b91bd60\n  owner word : SELF-TEST FIXTURE \u2014 no owner word; this spec never lands anything.\n  tree       : /tmp/landing_selftest_9566/sandbox\n====================================================================================================\n  ACTIVATION  day0_rebase                              off\n\n  FAIL file_md5     the published board of record                  md5 68be10c79d0ee096455754e084bcf757 (claimed 00000000000000000000000000000000)\n  OK   file_md5     the store                                      md5 b745002eb0a0fbb1c34fa44f1ef708d6 (claimed b745002eb0a0fbb1c34fa44f1ef708d6)\n  OK   json_field   expected_boot.board                            board = '68be10c79d0ee096455754e084bcf757' (claimed '68be10c79d0ee096455754e084bcf757')\n  OK   json_field   expected_boot.engine_head                      engine_head = '3f4aa10b23102dc4f7362b73fc20ac7b' (claimed '3f4aa10b23102dc4f7362b73fc20ac7b')\n  OK   json_field   the round, HELD by a lever landing             as_of_round = 23 (claimed 23)\n  OK   json_field   the release seal                               contract_sha256 = '8e6dcdbc89d63480f055b9e250729463c3c2ab67c8f1f90db3005ef2e832d0c7' (claimed '8e6dcdbc89d63480f055b9e250729463c3c2ab67c8f1f90db3005ef2e832d0c7')\n  OK   board_count  board rows                                     active.rows = 804 (claimed 804)\n  OK   gate         release_manifest_check                         exit 0 (expected PASS)\n  OK   gate         release_contract_check                         exit 0 (expected PASS)\n  OK   unmoved      BYTE-UNMOVED by this lever landing             md5 b745002eb0a0fbb1c34fa44f1ef708d6 (claimed b745002eb0a0fbb1c34fa44f1ef708d6)\n\nCLAIMS: 9 of 10 verified against the tree; 0 shape problem(s)\nVERDICT: RED \u2014 the deliverable does not carry its own proof\n",
+  "error": "THE CLAIMS FILE DOES NOT VERIFY AGAINST THE TREE:\n====================================================================================================\nCLAIMS CHECK \u2014 SELF-TEST \u2014 the no-op rehearsal\n  act type   : lever-landing\n  date       : 2026-08-20   base: 7ae5a4ba100e376b09b63e7b2456a7ae9b1fc622\n  owner word : SELF-TEST FIXTURE \u2014 no owner word; this spec never lands anything.\n  tree       : /tmp/landing_selftest_16649/sandbox\n====================================================================================================\n  ACTIVATION  day0_rebase                              off\n\n  FAIL file_md5     the published board of record                  md5 68be10c79d0ee096455754e084bcf757 (claimed 00000000000000000000000000000000)\n  OK   file_md5     the store                                      md5 b745002eb0a0fbb1c34fa44f1ef708d6 (claimed b745002eb0a0fbb1c34fa44f1ef708d6)\n  OK   json_field   expected_boot.board                            board = '68be10c79d0ee096455754e084bcf757' (claimed '68be10c79d0ee096455754e084bcf757')\n  OK   json_field   expected_boot.engine_head                      engine_head = '3f4aa10b23102dc4f7362b73fc20ac7b' (claimed '3f4aa10b23102dc4f7362b73fc20ac7b')\n  OK   json_field   the round, HELD by a lever landing             as_of_round = 23 (claimed 23)\n  OK   json_field   the release seal                               contract_sha256 = '8e6dcdbc89d63480f055b9e250729463c3c2ab67c8f1f90db3005ef2e832d0c7' (claimed '8e6dcdbc89d63480f055b9e250729463c3c2ab67c8f1f90db3005ef2e832d0c7')\n  OK   board_count  board rows                                     active.rows = 804 (claimed 804)\n  OK   gate         release_manifest_check                         exit 0 (expected PASS)\n  OK   gate         release_contract_check                         exit 0 (expected PASS)\n  OK   unmoved      BYTE-UNMOVED by this lever landing             md5 b745002eb0a0fbb1c34fa44f1ef708d6 (claimed b745002eb0a0fbb1c34fa44f1ef708d6)\n\nCLAIMS: 9 of 10 verified against the tree; 0 shape problem(s)\nVERDICT: RED \u2014 the deliverable does not carry its own proof\n",
   "facts": {
     "base": {
       "carriers": {
@@ -127,7 +127,7 @@
         "ui/data/movers.js": "09268415b1cd287b20f0e63052ed7b74",
         "ui/data/movers_transition.js": "d81bd31a40e5aa0fa0e5f894335741b7"
       },
-      "commit": "77dc0ff8d32d26564d4f11eee46b383e5b91bd60",
+      "commit": "7ae5a4ba100e376b09b63e7b2456a7ae9b1fc622",
       "expected_boot": {
         "as_of_round": 23,
         "balanced_board_md5": "556ad70d295923455982ae33e4b8bfd3",
@@ -201,10 +201,10 @@
       "unmoved_checked": 7
     },
     "preflight": {
-      "base_commit": "77dc0ff8d32d26564d4f11eee46b383e5b91bd60",
+      "base_commit": "7ae5a4ba100e376b09b63e7b2456a7ae9b1fc622",
       "board_before": "68be10c79d0ee096455754e084bcf757",
       "carriers_captured": 55,
-      "lock": "land-lever-10358"
+      "lock": "land-lever-18298"
     },
     "sibling": {
       "balanced_board_md5": "556ad70d295923455982ae33e4b8bfd3",
@@ -252,17 +252,17 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.08,
+      "seconds": 0.07,
       "step": "contract",
       "verdict": "OK"
     },
     {
-      "seconds": 172.31,
+      "seconds": 164.65,
       "step": "sibling",
       "verdict": "OK"
     },
     {
-      "seconds": 1.35,
+      "seconds": 1.31,
       "step": "ui",
       "verdict": "OK"
     },
@@ -272,7 +272,7 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.23,
+      "seconds": 0.25,
       "step": "claims",
       "verdict": "FAIL"
     }

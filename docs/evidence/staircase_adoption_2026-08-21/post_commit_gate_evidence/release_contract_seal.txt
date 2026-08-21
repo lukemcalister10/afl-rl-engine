@@ -1,0 +1,7 @@
+$ python3 release_contract.py check
+(cwd /home/user/afl-rl-engine)
+
+RELEASE-CONTRACT CHECK
+RELEASE-CONTRACT CHECK: PASS  (contract 55a890820b91; identities + config + posture consistent)
+
+[exit 0]

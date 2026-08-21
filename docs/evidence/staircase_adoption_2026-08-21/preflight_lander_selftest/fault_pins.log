@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the synthetic board move
-  tree      : /tmp/landing_selftest_9566/sandbox
+  tree      : /tmp/landing_selftest_16649/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 996cc5aa9ecbe1fa7ebd867b8e74ea41
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,8 +8,8 @@ LAND LEVER-LANDING — SELF-TEST — the synthetic board move
 
 --- STEP 0/9  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_BUILD_LOCK_FILE, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-10185 (pid 10185) — single writer for the shared workspace.
-base commit        77dc0ff8d32d26564d4f11eee46b383e5b91bd60
+build-lock: HELD by land-lever-17271 (pid 17271) — single writer for the shared workspace.
+base commit        7ae5a4ba100e376b09b63e7b2456a7ae9b1fc622
 board pin (before) 68be10c79d0ee096455754e084bcf757
 store pin (before) b745002eb0a0fbb1c34fa44f1ef708d6
 restore point      55 carrier(s) captured, 55 present on disk
@@ -56,4 +56,4 @@ improvised manual landing under pressure.
     build_proofs       0.01s  OK
     pins               0.00s  FAIL
     TOTAL              0.06s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_10185
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_17271
