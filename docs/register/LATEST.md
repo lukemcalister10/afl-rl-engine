@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v829 2026-08-21 · **THE PICK-SURFACE CLASS IS CLOSED — guard + writer 6 landed and verified (worktree seat, cherry-picked e61a51f/8aae62a, supervisor-verified on main: parity 41/41, runner 16/16 GREEN, lander self-test GREEN, board b3e8da99 byte-unmoved).** (1) THE WALL CLOCK IS GONE from ui/data/club_valuation.js — the one field that made the bundle non-byte-provable; thre
+# OPEN ITEMS REGISTER · v830 2026-08-21 · **REBAKE DECISION D5 IS RULED — THE MINT IS WAIVED. Owner words verbatim (2026-08-21): "Waiving the minted value, not bothered about conservation for this."** The rebake is NOT required to land conserved; the law-9 reading is still taken and REPORTED at the bake (the number goes on the record, per the standing per-arm discipline), but conservation is not a
 
-(one line per pen; full entry: docs/register/entries/v829.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v830.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
