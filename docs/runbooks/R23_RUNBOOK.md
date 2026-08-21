@@ -20,6 +20,7 @@
 > | **E4** | §4 H2 | the sheet's pins are **SIX literals in TWO blocks**, not three in one; the ORDER 41 block **halts first** | **HALT** at ORDER 41 with the ORDER 42 pins already moved |
 > | **E5** | §3 artifact list | `ui/data/club_valuation.js` and `ui/data/ownership.js` are **not** advance artifacts in this era | a seat hunts for a mover that is skipped by design |
 > | **E7** | §4 H2, and E4 above | **the sheet pins are no longer in the engine at all.** PLAN_v6 PACKAGE 3a (2026-08-21) moved them to `data/sheet_pins.json`; "move six literals in two engine blocks in the same commit as the sheet" is now the WRONG instruction | a seat edits `_merged_recover.py` for a **data** change — moving `engine_head`, owing a restamp nobody planned, and re-creating the drift E4 records |
+> | **E8** | §3, §4 H2, and E7's interim-writer clause | **the round advance is a COMMAND now.** PLAN_v6 PACKAGE 2b landed `tools/land round` (2026-08-21); it is the SOLE writer of `data/sheet_pins.json` and the whole §3 command list is its fourteen steps. E7's "until 2b exists" clause has expired | a seat hand-walks a transaction a self-tested program performs — and hand-writes the pin file the lander is now the only writer of |
 >
 > **Hazard status at the landing:** **H1 REPAIRED** in tree (`staged_apply.py` now copies
 > `docs/owner_annotations` + `docs/evidence/exec_306_zlaarm` into the workspace, commit `6f2d58c`).
@@ -200,8 +201,8 @@ round_entry catchup --file 22=scores/R22.csv
 **How the pins moved — the ADVANCE-REPIN design.**
 > **`ERRATUM E7` (2026-08-21) applies to this section too.** The **sheet** pins are no longer part of
 > ADVANCE-REPIN's engine-side work at all: `data/sheet_pins.json` is a data file, moved in the sheet's
-> own commit **before** the advance, by the manual path in §4 H2 — which is the **INTERIM WRITER**
-> until `land round` (PLAN_v6 2b) takes over as sole writer. Everything below is about the
+> own commit **before** the advance — **`ERRATUM E8`: by `tools/land round`'s `sheet` step, which is
+> now its SOLE writer** (the manual path in §4 H2 is the fallback). Everything below is about the
 > **balanced/strict sibling and the FV vector**, which are unaffected by 3a and still move inside the
 > staged transaction. A sheet re-cut and an ADVANCE-REPIN are now two commits, not one, and the sheet
 > commit must leave `engine_head` unmoved.
@@ -228,6 +229,39 @@ green in and out of the transaction; one-source self-test 142 PASS / 0 FAIL / 0 
 ---
 
 ## 3. THE COMMAND LIST FOR THE REAL R23 ADVANCE
+
+> ## `ERRATUM E8` (2026-08-21) — **THIS SECTION IS THE FALLBACK NOW. THE ADVANCE IS A COMMAND.**
+>
+> PLAN_v6 **PACKAGE 2b** landed `tools/land round` on 2026-08-21 — the second thin entry point over
+> the same landing-transaction library `land lever` runs on. **The primary path for a round advance
+> is now:**
+>
+> ```bash
+> tools/land spec-template --act-kind round-advance > ACT_SPEC_R24.json   # fill every slot
+> tools/land round --spec ACT_SPEC_R24.json --dry-run                     # arms nothing, applies nothing
+> tools/land round --spec ACT_SPEC_R24.json                               # the transaction
+> tools/land round --print-sequence                                       # the 14 steps, 7 of them shared
+> ```
+>
+> **EVERYTHING IN THIS SECTION IS A STEP OF THAT PROGRAM.** Step 0 (place and hash the owner's file)
+> is `scores`; step 1 (preflight) is `catchup_preflight`, which additionally refuses a round the
+> ledger has already applied and runs §4 H2's injured∩listed check before anything is armed; step 3
+> (the armed apply) is `advance`, and the arming comes from the act spec carrying the owner's
+> verbatim word beside his token (law 10(c)) — never composed by the lander. The hand-walked
+> generator-side sync of `ERRATUM E5`, the ADVANCE-REPIN assertions, the four UI writers, the movers
+> page, and the gate set of §5 are steps `generator_sync`, `advance`, `ui`, `movers_page` and
+> `gates`. **The lander does not reimplement any of the machinery** — it wraps `round_entry` /
+> `staged_apply` / `sibling_repin` and asserts their postconditions.
+>
+> **IT ALSO TAKES OVER AS THE SOLE WRITER OF `data/sheet_pins.json`** — see the amendment inside
+> `ERRATUM E7` below, which E8 supersedes on that one point.
+>
+> **WHY THE HAND PATH STAYS WRITTEN DOWN.** PLAN_v6 2a.3: "an unexercised fallback is fake safety",
+> and 2a.4 stands the manual path down **per act type only on the owner's word**. Until that word,
+> the commands below are the recovery path and the soak runs hand-verification ALONGSIDE the lander.
+> The recovery ladder is unchanged and is printed by the lander at every abort: **abort-then-retry is
+> the recovery; a landing the lander cannot complete after abort+retry is a round that SLIPS, on the
+> owner's call — never an improvised manual landing under pressure.**
 
 ```bash
 export PATH="/root/rl_venv312/bin:$PATH"
@@ -456,11 +490,28 @@ changing it moves the md5 and trips a different halt in the same file. Any fix m
 >
 > ### THE INTERIM WRITER — say it out loud, because it expires
 >
-> **Until PACKAGE 2b's `land round` exists, THIS MANUAL PATH IS THE INTERIM WRITER of
+> > **`ERRATUM E8` (2026-08-21) — IT EXPIRED. `land round` IS THE SOLE WRITER.** PACKAGE 2b landed
+> > the same day this clause was written. `tools/land round` exists, is self-tested (every one of its
+> > seven new steps broken in a sandbox, caught at that step, abort byte-exact — and now with the
+> > commit history rewound too, because the round lander commits mid-flight), and **`steps.sheet` is
+> > the sole writer of `data/sheet_pins.json`.** It does the whole of the procedure below: prereg-lite
+> > asserted present, sheet MEASURED (never typed), measured facts asserted EQUAL to the predicted
+> > ones, the three values written surgically into the declaration, ONE explicit-path commit carrying
+> > sheet + declaration + prereg-lite, and then `engine_head` asserted UNMOVED across that commit —
+> > which is the "RED, NOT A CHORE" line below, executable. It also refuses to proceed when no re-cut
+> > is declared and the sheet has drifted from its pins anyway, so the ORDER 41 halt happens before
+> > anything is armed instead of inside the staged transaction.
+> > **The three facts are also MANIFEST-CHECKED now** (`release_manifest_check.py` identities
+> > `sheet` / `sheet_rows` / `sheet_injured_y`, carrier group `sheet_pins`), which is the other half
+> > of 3a's deferred item.
+> > **The procedure below remains correct and remains the fallback**, retired for this act type on
+> > the owner's word (2a.4) and not before.
+>
+> ~~**Until PACKAGE 2b's `land round` exists, THIS MANUAL PATH IS THE INTERIM WRITER of
 > `data/sheet_pins.json`.** `tools/land round` is deliberately unbuilt and exits non-zero saying so.
 > When 2b lands it becomes the **SOLE writer** of the declaration, and this manual path retires for
 > this act type on the owner's word (PLAN_v6 2a.3 / 2a.4 — an unexercised fallback is fake safety, and
-> the manual round path is never retired before 2b exists).
+> the manual round path is never retired before 2b exists).~~ — **SUPERSEDED BY `ERRATUM E8`.**
 >
 > **This paragraph is a REPEAT, not the rule's home.** The rule lives in the pin file's own header
 > (`data/sheet_pins.json` → `_writer_of_record`) and in the engine's `_sheet_pins()` header. A runbook
