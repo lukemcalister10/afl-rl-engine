@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v823 2026-08-21 · **THE R24 DRESS REHEARSAL FLEW — GO-WITH-NOTES (docs/evidence/r24_rehearsal_2026-08-21/, commit cd09bb5).** Six flights of the REAL tools/land round in a worktree sandbox against a deterministic synthetic R24 courier file (411 listed / 393 DNP, the owner's exact cp1252/CRLF shape); RUN F completed exit 0 in 278s. FIRST-EVER coverage: an ARMED round applied
+  > # OPEN ITEMS REGISTER · v824 2026-08-21 · **THE BLIND COMPARISON IS FILED (docs/proposals/REBAKE_COMPARISON_2026-08-21.md) — the owner's protocol executed to the letter: study B commissioned and completed blind (independence declaration in its header; one filename-level leak excluded and unopened), study A opened by the supervisor only after B filed.** ELEVEN INDEPENDENT AGREEMENTS = the confidenc
 
-- new-form entries under `docs/register/entries/`: 11
+- new-form entries under `docs/register/entries/`: 12
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `cd09bb5ff49581a531050a08c6ef477c3069014e` |
+| generated at commit | `33b7fe7dd4efbe74c0cad7508c9cb8c8a6793da0` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v823**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v824**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v824** (2026-08-21) — `docs/register/entries/v824.md` — **THE BLIND COMPARISON IS FILED (docs/proposals/REBAKE_COMPARISON_2026-08-21.md) — the owner's protocol executed to the letter: study B comm
 - **v823** (2026-08-21) — `docs/register/entries/v823.md` — **THE R24 DRESS REHEARSAL FLEW — GO-WITH-NOTES (docs/evidence/r24_rehearsal_2026-08-21/, commit cd09bb5).** Six flights of the REAL tools/la
 - **v822** (2026-08-21) — `docs/register/entries/v822.md` — **THE OWNERSHIP MIRROR IS CURRENT AND HAS A WRITER OF RECORD — and its seat caught the supervisor's own gate red.** THE DIAGNOSIS, better th
 - **v821** (2026-08-21) — `docs/register/entries/v821.md` — **PACKAGE 3c IS LANDED AND VERIFIED — the live-state document is machine-generated, and CURRENT_STATE.md is retired.** docs/STATE.md is writ
