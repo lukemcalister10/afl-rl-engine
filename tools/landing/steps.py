@@ -135,11 +135,19 @@ def preflight(ctx):
         raise StepError('git status failed in %s: %s' % (ctx.root, out))
     declared_dirt = ctx.declared_dirt() if hasattr(ctx, 'declared_dirt') else ()
     if declared_dirt:
-        ctx.log('DECLARED DIRT (%d path(s), and ONLY these): the act declares a sheet re-cut, so the '
-                'owner input and its prereg-lite are expected uncommitted at step 0 — committing '
-                'them is the `sheet` step\'s job:' % len(declared_dirt))
+        # WHAT THE LANDER COMMITS IS WHAT THE LANDER EXPECTS UNCOMMITTED. The owner's inputs of
+        # record — the score file and the identity-override record — are placed by the SEAT and
+        # committed by `catchup_preflight`; a declared sheet re-cut and its prereg-lite are written
+        # by the SEAT and committed by `sheet`. Every one is enumerated and printed here; nothing is
+        # waved through. (R24 rehearsal §3.1 — the input-commit pincer.)
+        ctx.log('DECLARED DIRT (%d path(s), and ONLY these): owner inputs this act is contracted to '
+                'COMMIT ITSELF, and which are therefore expected uncommitted at step 0:'
+                % len(declared_dirt))
         for p in declared_dirt:
-            ctx.log('    %s' % p)
+            ctx.log('    %-58s (committed by the `%s` step)'
+                    % (p, 'catchup_preflight'
+                       if p in ((((ctx.spec.get('round') or {}).get('scores') or {}).get('path'),
+                                 CATCHUP_OVERRIDES_REL)) else 'sheet'))
     dirty = [ln for ln in out.splitlines() if ln.strip() and not ctx.is_ignorable_dirt(ln)]
     if dirty:
         raise StepError('THE TREE IS NOT CLEAN. A landing transaction starts from a committed tree, '
@@ -1302,7 +1310,7 @@ def claims(ctx):
 
 
 # ================================================================================ STEP 9 — COMMIT
-def _git_commit(ctx, rel_paths, message):
+def _git_commit(ctx, rel_paths, message, skip_if_unchanged=False):
     """THE ONE PLACE THIS PACKAGE MAKES A COMMIT. Explicit paths, both verbs, no sweep.
 
     Process law P8: "Every commit stages named paths. No `git add -A`, no sweep, no bare
@@ -1314,6 +1322,14 @@ def _git_commit(ctx, rel_paths, message):
     abort: `txn._abort` rewinds exactly the commits this landing created and no others, before the
     carrier restore runs. A landing that committed and then failed must leave no commit behind, or
     the abort's byte-exactness claim stops at the working tree and quietly excludes history.
+
+    `skip_if_unchanged` IS FOR AN INPUT COMMIT AND NOTHING ELSE, and it is a MEASUREMENT, not a
+    shrug: after the explicit `git add`, the index is asked whether those exact paths carry a staged
+    change, and only a measured NOTHING returns None — with the reason printed. It exists because
+    `git commit -m … -- <unchanged paths>` exits 1 ("nothing added to commit"), which turned a seat
+    who had already committed the owner's score file into a step-3 halt (R24 rehearsal §3.1, RUN C).
+    An OUTPUT commit never gets it: a landing step that believes it wrote something and staged
+    nothing is a defect, and it must still die where it stands.
     """
     rel_paths = sorted(set(rel_paths))
     if not rel_paths:
@@ -1327,6 +1343,15 @@ def _git_commit(ctx, rel_paths, message):
     rc, out = ctx.run(['git', 'add', '--'] + rel_paths)
     if rc != 0:
         raise StepError('git add failed: %s' % out)
+    if skip_if_unchanged:
+        rc, staged = ctx.run(['git', 'diff', '--cached', '--name-only', '--'] + rel_paths)
+        if rc != 0:
+            raise StepError('cannot read the index for %s: %s' % (rel_paths, staged))
+        if not staged.strip():
+            ctx.log('NOTHING TO COMMIT: every named path is already committed at this content. '
+                    'The inputs of record are in the tree, which is what this commit exists to '
+                    'ensure; no empty commit is manufactured to say so.')
+            return None
     rc, out = ctx.run(['git', 'commit', '-m', message, '--'] + rel_paths)
     if rc != 0:
         raise StepError('git commit failed: %s' % out)
@@ -1357,6 +1382,12 @@ def _sheet_facts(ctx, rel):
 
 
 SHEET_PIN_REL = 'data/sheet_pins.json'
+
+#: The owner's identity rulings on export display names. It is an INPUT OF RECORD, written by the
+#: SEAT on the owner's word and committed by `catchup_preflight` beside the score file — so it is
+#: named ONCE, here, and read by both the commit and `txn.Ctx.declared_dirt` (the R24 rehearsal's
+#: input-commit pincer, §3.1: what the lander commits is what the lander must expect uncommitted).
+CATCHUP_OVERRIDES_REL = 'engine/rl_after/ingestion/catchup_identity_overrides.json'
 
 
 def _replace_json_scalar(raw, key, old, new, where):
@@ -1564,7 +1595,7 @@ def scores(ctx):
                         'The owner\'s input is an INPUT OF RECORD; the act is written against a '
                         'specific file and the lander refuses a different one.' % (got_md5, sc['md5']))
 
-    ov_rel = 'engine/rl_after/ingestion/catchup_identity_overrides.json'
+    ov_rel = CATCHUP_OVERRIDES_REL
     ov = json.load(open(_p(ctx, ov_rel), encoding='utf-8'))
     entries = ov if isinstance(ov, list) else (ov.get('overrides') or [])
     by_name = {e.get('name'): e for e in entries if isinstance(e, dict)}
@@ -1673,11 +1704,18 @@ def catchup_preflight(ctx):
                         'answer would assert nothing at all.' % '\n    '.join(bad))
     ctx.log('PREREG MET: listed/resolved/absent-DNP and the score file sha256 all as predicted.')
 
-    sha = _git_commit(ctx, [sc['path'], 'engine/rl_after/ingestion/catchup_identity_overrides.json'],
+    # THE INPUT COMMIT. Both paths are DECLARED DIRT at step 0 (`txn.Ctx.declared_dirt`), so the
+    # ordinary shape is: the seat places the owner's file, the lander finds it uncommitted, and this
+    # commit is where it enters the tree. `skip_if_unchanged` covers the OTHER lawful shape — a seat
+    # who pre-committed the inputs, which is the rehearsal's documented interim path — where there
+    # is legitimately nothing to commit and a halt would be the machine punishing the seat for
+    # having already done the thing the machine wanted done.
+    sha = _git_commit(ctx, [sc['path'], CATCHUP_OVERRIDES_REL],
                       ctx.spec.get('scores_commit_message')
                       or ('%s — THE OWNER\'S SCORES AND THE BINDINGS: preflight CLEAN %s/%s, '
                           'nothing applied' % (ctx.spec['act'], got.get('listed'),
-                                               got.get('resolved'))))
+                                               got.get('resolved'))),
+                      skip_if_unchanged=True)
     return {'ran': True, 'clean': True, 'counts': got, 'commit': sha,
             'injured_listed': hits}
 
@@ -1936,12 +1974,27 @@ def day0(ctx):
     a mandatory printed diff of every moved row — a suite inheriting the capability without the
     judgement re-bases itself green on the first halt."
 
-    AND THE LANDER STILL DOES NOT COMPUTE DAY-0. It runs the act's declared GENERATOR — the emitter
-    of record, which is where the day-0 law is carried (the R23-era chain: ORDER K's `ok_day0.py` ->
-    `fcrb_day0.py` -> `cprb_day0.py`, each carried with its changes declared) — then prints the
-    mandatory row diff between the standing reference and what the generator produced, and installs.
-    Computing the law here would create a second implementation of it beside the emitter, which is
-    the mirrored-pair hazard M1b itself warns about.
+    AND THE LANDER STILL DOES NOT COMPUTE DAY-0. It runs the GENERATOR — the emitter of record,
+    which is where the day-0 law is carried (the R23-era chain: ORDER K's `ok_day0.py` ->
+    `fcrb_day0.py` -> `cprb_day0.py` -> `sfx_day0.py`) — then prints the mandatory row diff between
+    the standing reference and what the generator produced, and installs. Computing the law here
+    would create a second implementation of it beside the emitter, which is the mirrored-pair hazard
+    M1b itself warns about.
+
+    THE GENERATOR OF RECORD IS NOW A CARRIED ONE AND IT IS THE DEFAULT — `tools/landing/day0_emit.py`
+    (DAY0_GENERATOR), which regenerates the reference from THIS TREE'S board and store, prints the
+    full row diff, refuses to write when day-0 is not activated, and is byte-stable across two runs.
+    Every emitter before it was ACT-PINNED, and the R24 rehearsal §5 measured the cost: *"there is no
+    runnable day-0 emitter for R24 … it reads its board from a named scratch directory that no longer
+    exists … and hard-asserts SIX named movers with their exact old and new printed integers. It
+    cannot run for R24 as it stands."* An advance that has to author a new emitter before it can fly
+    is an advance whose day-0 step is theatre.
+
+    THE SPEC MAY STILL NAME ITS OWN GENERATOR (`day0_rebase.generator`), and an act that supplies the
+    regenerated file by other means declares `"generator": []` — an EMPTY list, which is the explicit
+    "this act brings its own new_reference" and is distinct from an absent key (= the carried
+    emitter). Absent is the default because a defaulted-to-nothing generator is how a day-0 step ends
+    up installing whatever happened to be lying at `new_reference`.
     """
     ctx.fault_point('day0')
     d0 = ctx.spec.get('day0_rebase') or {'state': 'off'}
@@ -1952,6 +2005,14 @@ def day0(ctx):
                 'it is an owner-visible input, not a default.)')
         return 'off'
     gen = d0.get('generator')
+    if gen is None:
+        gen = _carried_day0_generator(ctx)
+        ctx.log('day-0 generator: none declared — THE CARRIED EMITTER (%s) is the default.'
+                % DAY0_GENERATOR)
+    elif not gen:
+        ctx.log('day-0 generator: DECLARED EMPTY — this act supplies %s by its own means and the '
+                'lander runs no emitter. The diff below is still mandatory.'
+                % d0.get('new_reference'))
     if gen:
         ctx.log('day-0 generator (the emitter of record, run as a child): %s' % ' '.join(gen))
         if ctx.opts.dry_run:
@@ -1965,6 +2026,27 @@ def day0(ctx):
                 raise StepError('the day-0 generator failed (exit %s). The lander does not compute '
                                 'day-0 and will not stand in for its emitter:\n%s' % (rc, out[-2000:]))
     return _day0(ctx)
+
+
+#: THE CARRIED EMITTER OF RECORD. Named once, here, so the step, the spec template and the self-test
+#: all point at the same file and a rename cannot leave one of them behind.
+DAY0_GENERATOR = 'tools/landing/day0_emit.py'
+
+
+def _carried_day0_generator(ctx):
+    """The default generator argv: the carried emitter, pointed at THIS act's spec and THIS tree.
+
+    It is handed the act spec rather than a set of flags on purpose. The emitter's first refusal is
+    the M1b activation check, and a check that reads its own activation off the same document the
+    owner's word is recorded in cannot be talked out of it by a caller's argv.
+    """
+    spec_rel = ctx.spec.get('_spec_rel')
+    if not spec_rel:
+        raise StepError('the act spec\'s own path is not recorded on this run, so the carried day-0 '
+                        'emitter cannot be handed the document that activates it. Declare '
+                        'day0_rebase.generator explicitly, or run through `tools/land`.')
+    spec_abs = os.path.normpath(os.path.join(ctx.root, spec_rel))
+    return [sys.executable, _p(ctx, DAY0_GENERATOR), '--spec', spec_abs, '--root', ctx.root]
 
 
 # ==================================================================== ROUND STEP — THE MOVERS PAGE

@@ -66,19 +66,43 @@
 #     lock. The interlock is a protocol between cooperating callers, which is why the deliverable is
 #     the helper PLUS its wiring into the entry points under version control.
 #
-#   * RL_BUILD_LOCK=0 DISABLES IT, LOUDLY. Nested calls are the real reason (run_panel.sh invoked
+#   * BUILD_LOCK=0 DISABLES IT, LOUDLY. Nested calls are the real reason (run_panel.sh invoked
 #     from inside an already-locked bake would otherwise deadlock against itself), and a seat that
 #     truly knows better should not have to comment out a line. Every skip prints why it skipped.
 #     A reentrant grant is detected automatically via RL_BUILD_LOCK_HELD and never deadlocks.
 #
 #   * THE LOCK PATH FOLLOWS THE THING BEING PROTECTED, not the repo. The contended resource is the
 #     shared workspace, and two checkouts building through the same workspace must contend. Default:
-#     ${RL_BUILD_LOCK_FILE:-/home/claude/.rl_build.lock}, overridable for tests.
+#     ${BUILD_LOCK_FILE:-/home/claude/.rl_build.lock}, overridable for tests.
+#
+#   * THIS TOOL'S OWN FLAGS ARE NOT `RL_*`, AND THAT IS THE FOURTH BURN OF THAT CLASS PAID FOR.
+#     BUILD_LOCK / BUILD_LOCK_FILE / BUILD_LOCK_FD / BUILD_LOCK_TIMEOUT were RL_-prefixed until
+#     2026-08-21. `config_manifest.enforce()` treats ANY ambient RL_/PAR_ variable that is not a
+#     manifest var and not in INFRA_ALLOW as a divergent model override and HALTS the build — so a
+#     seat isolating a sandbox with the old `RL_BUILD_LOCK_FILE` got, at the first armed advance,
+#     `ConfigPolicyError: UNKNOWN inherited valuation flag RL_BUILD_LOCK_FILE` — a message about
+#     valuation flags for what is a lock path. Measured on a real armed run: R24 dress rehearsal
+#     2026-08-21 §3.3, RUN D. The legacy names are DETECTED AND HALTED below rather than silently
+#     ignored: an isolation flag that stops being read is a sandbox quietly contending for the
+#     shared lock, which is the very thing this file exists to prevent.
 # ==================================================================================================
 
-RL_BUILD_LOCK_FILE="${RL_BUILD_LOCK_FILE:-/home/claude/.rl_build.lock}"
-RL_BUILD_LOCK_FD="${RL_BUILD_LOCK_FD:-9}"
-RL_BUILD_LOCK_TIMEOUT="${RL_BUILD_LOCK_TIMEOUT:-3600}"
+# THE LEGACY NAMES, REFUSED LOUDLY. Silently ignoring them would drop a caller's isolation or its
+# deliberate skip on the floor; see the note above.
+for _bl_legacy in RL_BUILD_LOCK RL_BUILD_LOCK_FILE RL_BUILD_LOCK_FD RL_BUILD_LOCK_TIMEOUT; do
+    if [ -n "$(eval "printf '%s' \"\${${_bl_legacy}:-}\"")" ]; then
+        echo "BUILD-LOCK HALT: ${_bl_legacy} is set. This tool's own flags are no longer RL_-prefixed" >&2
+        echo "  (an RL_/PAR_ variable is a MODEL override to config_manifest.enforce() and halts any" >&2
+        echo "  armed build that inherits it — R24 rehearsal §3.3). Use ${_bl_legacy#RL_} instead." >&2
+        unset _bl_legacy
+        return 1 2>/dev/null || exit 1
+    fi
+done
+unset _bl_legacy
+
+BUILD_LOCK_FILE="${BUILD_LOCK_FILE:-/home/claude/.rl_build.lock}"
+BUILD_LOCK_FD="${BUILD_LOCK_FD:-9}"
+BUILD_LOCK_TIMEOUT="${BUILD_LOCK_TIMEOUT:-3600}"
 
 _bl_now() { date -u +%Y-%m-%dT%H:%M:%SZ; }
 
@@ -91,8 +115,8 @@ _bl_halt() {
 
 # Read the holder record. Prints "<tag>|<pid>|<since>" or nothing.
 _bl_holder() {
-    [ -s "$RL_BUILD_LOCK_FILE" ] || return 0
-    awk -F'\t' 'NR==1{printf "%s|%s|%s", $1, $2, $3}' "$RL_BUILD_LOCK_FILE" 2>/dev/null
+    [ -s "$BUILD_LOCK_FILE" ] || return 0
+    awk -F'\t' 'NR==1{printf "%s|%s|%s", $1, $2, $3}' "$BUILD_LOCK_FILE" 2>/dev/null
 }
 
 # --------------------------------------------------------------------------------------------------
@@ -101,10 +125,10 @@ _bl_holder() {
 # Blocks until the lock is held or the timeout expires. Returns 0 on success, 1 on halt.
 # The lock is released automatically when the shell exits (the fd closes).
 build_lock_acquire() {
-    local tag="${1:-unnamed}" timeout="${2:-$RL_BUILD_LOCK_TIMEOUT}"
+    local tag="${1:-unnamed}" timeout="${2:-$BUILD_LOCK_TIMEOUT}"
 
-    if [ "${RL_BUILD_LOCK:-1}" = "0" ]; then
-        echo "build-lock: SKIPPED by RL_BUILD_LOCK=0 (tag=$tag). This build is NOT interlocked;" \
+    if [ "${BUILD_LOCK:-1}" = "0" ]; then
+        echo "build-lock: SKIPPED by BUILD_LOCK=0 (tag=$tag). This build is NOT interlocked;" \
              "if another engine act is live against the shared workspace, both results are void."
         return 0
     fi
@@ -118,23 +142,23 @@ build_lock_acquire() {
 
     command -v flock >/dev/null 2>&1 || { _bl_halt "flock(1) not found; cannot interlock."; return 1; }
 
-    local dir; dir=$(dirname "$RL_BUILD_LOCK_FILE")
+    local dir; dir=$(dirname "$BUILD_LOCK_FILE")
     mkdir -p "$dir" 2>/dev/null || { _bl_halt "cannot create lock dir $dir"; return 1; }
 
-    eval "exec ${RL_BUILD_LOCK_FD}>>\"\$RL_BUILD_LOCK_FILE\"" \
-        || { _bl_halt "cannot open $RL_BUILD_LOCK_FILE on fd $RL_BUILD_LOCK_FD"; return 1; }
+    eval "exec ${BUILD_LOCK_FD}>>\"\$BUILD_LOCK_FILE\"" \
+        || { _bl_halt "cannot open $BUILD_LOCK_FILE on fd $BUILD_LOCK_FD"; return 1; }
 
     # Try once without blocking, so the common (uncontended) case prints nothing but the grant.
-    if ! flock -n "$RL_BUILD_LOCK_FD"; then
+    if ! flock -n "$BUILD_LOCK_FD"; then
         local h tag_h since_h
         h=$(_bl_holder)
         tag_h=$(printf '%s' "$h" | cut -d'|' -f1)
         since_h=$(printf '%s' "$h" | cut -d'|' -f3)
         # THE REQUIRED LINE. Named holder, named time — never "resource temporarily unavailable".
         echo "waiting for lock held by ${tag_h:-<unknown>} since ${since_h:-<unknown>}"
-        echo "  (lock $RL_BUILD_LOCK_FILE; waiting up to ${timeout}s; this build will not start" \
+        echo "  (lock $BUILD_LOCK_FILE; waiting up to ${timeout}s; this build will not start" \
              "until that act finishes — two engine acts through one workspace void both.)"
-        if ! flock -w "$timeout" "$RL_BUILD_LOCK_FD"; then
+        if ! flock -w "$timeout" "$BUILD_LOCK_FD"; then
             h=$(_bl_holder)
             _bl_halt "timed out after ${timeout}s waiting for lock held by $(printf '%s' "$h" | cut -d'|' -f1) since $(printf '%s' "$h" | cut -d'|' -f3)"
             return 1
@@ -144,7 +168,7 @@ build_lock_acquire() {
     # Held. Record who we are BEFORE any work starts, so a waiter always has someone to name.
     printf '%s\t%s\t%s\t%s\t%s\n' \
         "$tag" "$$" "$(_bl_now)" "$(hostname 2>/dev/null || echo '?')" "${PWD}" \
-        > "$RL_BUILD_LOCK_FILE"
+        > "$BUILD_LOCK_FILE"
     export RL_BUILD_LOCK_HELD="$tag"
     echo "build-lock: HELD by $tag (pid $$) since $(_bl_now) — single writer for the shared workspace."
     return 0
@@ -153,20 +177,20 @@ build_lock_acquire() {
 # Explicit release. Rarely needed: the fd closes on exit, which is the point of using flock.
 build_lock_release() {
     [ -n "${RL_BUILD_LOCK_HELD:-}" ] || return 0
-    eval "exec ${RL_BUILD_LOCK_FD}>&-" 2>/dev/null || true
+    eval "exec ${BUILD_LOCK_FD}>&-" 2>/dev/null || true
     echo "build-lock: released by $RL_BUILD_LOCK_HELD"
     unset RL_BUILD_LOCK_HELD
 }
 
 build_lock_status() {
-    if [ ! -s "$RL_BUILD_LOCK_FILE" ]; then
-        echo "build-lock: no holder record at $RL_BUILD_LOCK_FILE"
+    if [ ! -s "$BUILD_LOCK_FILE" ]; then
+        echo "build-lock: no holder record at $BUILD_LOCK_FILE"
         return 0
     fi
     # A held lock cannot be flock'd non-blocking by us; that is the actual test, not the file's
     # existence. A stale record with no live holder must read as FREE, or seats learn to delete it.
     if command -v flock >/dev/null 2>&1 && \
-       ( eval "exec ${RL_BUILD_LOCK_FD}>>\"\$RL_BUILD_LOCK_FILE\"" && flock -n "$RL_BUILD_LOCK_FD" ) 2>/dev/null; then
+       ( eval "exec ${BUILD_LOCK_FD}>>\"\$BUILD_LOCK_FILE\"" && flock -n "$BUILD_LOCK_FD" ) 2>/dev/null; then
         echo "build-lock: FREE (last holder record: $(_bl_holder | tr '|' ' '))"
     else
         echo "build-lock: HELD by $(_bl_holder | tr '|' ' ')"

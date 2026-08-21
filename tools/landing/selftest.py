@@ -231,8 +231,16 @@ class Sandbox(object):
     def env(self):
         env = dict(os.environ)
         env['RL_REPO'] = self.path
-        env['RL_BUILD_LOCK_FILE'] = self.lock_file       # never contend with the box's real lock
-        env.pop('RL_BUILD_LOCK_HELD', None)
+        # NEVER CONTEND WITH THE BOX'S REAL LOCK — and never with an `RL_`-PREFIXED FLAG. This line
+        # read `RL_BUILD_LOCK_FILE` until 2026-08-21, and the R24 dress rehearsal (§3.3, RUN D)
+        # measured what that costs: any seat that copies this isolation recipe and then ARMS gets
+        # `staged_apply.ConfigPolicyError: UNKNOWN inherited valuation flag RL_BUILD_LOCK_FILE` at
+        # the advance — a message about valuation flags for what is a lock path. The self-test never
+        # arms, so it never fired here; it fired on the first seat that followed it. A TOOL'S OWN
+        # FLAGS ARE NEVER `RL_*` (carriers.py's header, and this was the FOURTH burn of that class).
+        env['BUILD_LOCK_FILE'] = self.lock_file
+        for legacy in ('RL_BUILD_LOCK', 'RL_BUILD_LOCK_FILE', 'RL_BUILD_LOCK_HELD'):
+            env.pop(legacy, None)
         env['GIT_AUTHOR_NAME'] = env['GIT_COMMITTER_NAME'] = 'selftest'
         env['GIT_AUTHOR_EMAIL'] = env['GIT_COMMITTER_EMAIL'] = 'selftest@local'
         return env
@@ -613,6 +621,203 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
                           'is back at the base' if head_ok else 'MOVED'))
         sb.reset()
 
+    # ---- 3d. THE INPUT-COMMIT PINCER — the one path a `scores: null` fixture can never reach -----
+    #
+    # THE REGRESSION CASES ARE THE R24 DRESS REHEARSAL'S RUN A AND RUN C (REHEARSAL_REPORT §3.1),
+    # and they were TWO HALTS WITH ONE ROOT CAUSE on the real invocation:
+    #
+    #   RUN A  score file UNCOMMITTED -> `THE TREE IS NOT CLEAN … ?? scores/R24.csv` at step 0,
+    #          because `txn.Ctx.declared_dirt()` enumerated only the sheet and the prereg-lite;
+    #   RUN C  score file COMMITTED   -> step 3 reached PREREG MET and then died with
+    #          `git commit failed: … nothing added to commit but untracked files present`.
+    #
+    # "There is no third option. The armed path of `land round` is unreachable as shipped, and the
+    # self-test could not see it because its fixture declares no score file."  THIS CASE IS THAT
+    # FIXTURE'S MISSING HALF: a flight carrying a REAL score file, UNCOMMITTED, through step 0 and
+    # through `catchup_preflight`'s own explicit-path commit — and stopping at the door of the armed
+    # advance, because a self-test does not arm a score-write.
+    #
+    # THE FIXTURE'S PREDICTIONS ARE MEASURED OFF THE TOOL OF RECORD, never typed — the R24 runbook's
+    # own step 1 ("measure the seven round_expected falsifiers off the tool, never type them"). What
+    # is under test is not the number; it is the LANDER's independent re-measurement of it and its
+    # refusal to proceed when the two disagree, which `round_fault_catchup_preflight` already proves
+    # from the negative side.
+    if not only or 'catchup_preflight' in only:
+        print('')
+        print('--- ROUND: THE INPUT-COMMIT PINCER — an uncommitted owner score file, carried ---')
+        sb.reset()
+        pincer_base = sb.head()
+        sc = _synthetic_scores(sb.path)
+        rc, pre_out = _sh([sys.executable, 'tools/round_entry/round_entry.py', 'catchup',
+                           '--file', '%d=%s' % (sc['round'], sc['path'])],
+                          cwd=sb.path, env=sb.env())
+        open(os.path.join(ev, 'pincer_preflight.txt'), 'w', encoding='utf-8').write(pre_out)
+        counts = ST._parse_preflight(pre_out, sc['round'])
+        if rc != 0 or 'PREFLIGHT CLEAN' not in pre_out or not counts:
+            record('round_input_commit_pincer', False,
+                   'the FIXTURE could not be built: the read-only preflight on the synthetic score '
+                   'file is not clean (exit %s). See pincer_preflight.txt.' % rc)
+        else:
+            spec = spec_round_noop(sb.path, board, ev_rel)
+            spec['act'] = 'SELF-TEST — the input-commit pincer (R24 rehearsal §3.1 RUN A + RUN C)'
+            spec['round'] = {
+                'number': sc['round'],
+                'scores': {'path': sc['path'], 'md5': sc['md5'], 'sha256': sc['sha256']},
+                'identity_overrides': [],
+                'arming': {'env': {'INGEST_SCORE_APPLY_ARMED': '1',
+                                   'INGEST_SCORE_APPLY': 'selftest-never-armed'},
+                           'owner_word': 'SELF-TEST FIXTURE — no owner word exists or is claimed, '
+                                         'and this flight stops before the advance.'}}
+            spec['prereg']['round_expected'] = {
+                'round': sc['round'], 'listed': counts['listed'], 'resolved': counts['resolved'],
+                'absent_dnp': counts['absent_dnp'], 'scores_sha256': sc['sha256'],
+                'ledger_before': 0, 'ledger_delta': counts['resolved']}
+            spec_abs = os.path.join(ev, 'SELFTEST_SPEC_PINCER.json')
+            with open(spec_abs, 'w', encoding='utf-8') as fh:
+                json.dump(spec, fh, indent=2)
+            before = carrier_md5s(sb.path)
+            rep = os.path.join(ev, 'pincer_report.json')
+            rc, out = sb.run_lander(spec_abs, verb='round', fault='advance:stop_at_the_door',
+                                    report=rep, log=os.path.join(ev, 'pincer.log'))
+            open(os.path.join(ev, 'pincer_stdout.txt'), 'w', encoding='utf-8').write(out)
+            report = _read_json(rep) or {}
+            facts = report.get('facts') or {}
+
+            # JAW 1 — step 0 did not refuse the uncommitted owner input, and it ENUMERATED it.
+            declared = ('DECLARED DIRT' in out and sc['path'] in out
+                        and ST.CATCHUP_OVERRIDES_REL in out)
+            past_preflight = bool((facts.get('preflight') or {}).get('base_commit'))
+            # JAW 2 — `catchup_preflight` made its own explicit-path input commit and got a sha.
+            cp = facts.get('catchup_preflight') or {}
+            input_commit = cp.get('commit')
+            reached_door = report.get('failed_step') == 'advance'
+
+            after = carrier_md5s(sb.path)
+            movedc = sorted(k for k in set(before) | set(after) if before.get(k) != after.get(k))
+            head_ok = sb.head() == pincer_base
+            record('round_input_commit_pincer',
+                   bool(declared and past_preflight and input_commit and reached_door),
+                   'step 0 DECLARED the score file + the override record as expected dirt (%s); '
+                   'catchup_preflight committed the inputs itself at %s; the flight reached '
+                   'failed_step=%r (the door of the armed advance, by request)'
+                   % ('yes' if declared else 'NO — jaw 1 is back',
+                      str(input_commit)[:12] if input_commit else 'NOTHING — jaw 2 is back',
+                      report.get('failed_step')))
+            record('round_input_commit_pincer_abort', not movedc and head_ok,
+                   'the mid-flight INPUT commit was rewound and every carrier restored: carriers '
+                   'moved after abort: %s; HEAD %s'
+                   % (movedc or 'NONE (byte-exact)',
+                      'back at the base' if head_ok else 'MOVED — the abort left a commit behind'))
+
+            # RUN C'S OTHER SHAPE, AND IT MUST ALSO NOT HALT. Declared dirt makes the ORDINARY path
+            # work; a seat who pre-committed the owner's file (the rehearsal's documented interim
+            # path, §3.1) then presents `catchup_preflight` with nothing to commit, and
+            # `git commit -m … -- <unchanged paths>` exits 1. The step must MEASURE that and carry
+            # on, not die — the machine does not punish a seat for having already done the thing the
+            # machine wanted done.
+            # The previous flight's abort left its own ABORT_<step>.json in the evidence dir, and
+            # that residue is dirt at step 0 — a MEASURED operational note of the rehearsal (§8.1),
+            # not a defect. The seat moves it aside before re-flying; so does this case.
+            shutil.rmtree(os.path.join(sb.path, ev_rel), ignore_errors=True)
+            os.makedirs(os.path.join(sb.path, ev_rel), exist_ok=True)
+            _sh(['git', 'add', '--', sc['path']], cwd=sb.path)
+            _sh(['git', '-c', 'user.email=selftest@local', '-c', 'user.name=selftest', 'commit',
+                 '-q', '-m', 'self-test: the owner input, PRE-COMMITTED by the seat',
+                 '--', sc['path']], cwd=sb.path)
+            precommitted_base = sb.head()
+            rep2 = os.path.join(ev, 'pincer_precommitted_report.json')
+            rc2, out2 = sb.run_lander(spec_abs, verb='round', fault='advance:stop_at_the_door',
+                                      report=rep2,
+                                      log=os.path.join(ev, 'pincer_precommitted.log'))
+            open(os.path.join(ev, 'pincer_precommitted_stdout.txt'), 'w',
+                 encoding='utf-8').write(out2)
+            rep2d = _read_json(rep2) or {}
+            cp2 = (rep2d.get('facts') or {}).get('catchup_preflight') or {}
+            record('round_input_commit_precommitted',
+                   rep2d.get('failed_step') == 'advance' and cp2.get('ran') is True
+                   and cp2.get('commit') is None and 'NOTHING TO COMMIT' in out2
+                   and sb.head() == precommitted_base,
+                   'the inputs were already committed: catchup_preflight MEASURED the empty index, '
+                   'said so, made no empty commit, and the flight reached failed_step=%r'
+                   % rep2d.get('failed_step'))
+        # the fixture's own score file is the fault's residue, not the landing's: the abort restores
+        # carriers, and an uncommitted synthetic input is neither a carrier nor the next case's dirt.
+        try:
+            os.remove(os.path.join(sb.path, sc['path']))
+        except OSError:
+            pass
+        sb.reset()
+
+    # ---- 3e. THE CARRIED DAY-0 EMITTER — its refusals, and its mandatory diff --------------------
+    #
+    # `round_fault_day0` proves the STEP's M1b guard (activated + zero movers = halt). It says
+    # nothing about the EMITTER, and until 2026-08-21 there was no emitter to say anything about:
+    # R24 rehearsal §5, "there is no runnable day-0 emitter for R24 … it cannot run for R24 as it
+    # stands." `tools/landing/day0_emit.py` is the carried replacement and these are its own cases.
+    #
+    # THE TWO REFUSALS FIRST, AND THEY ARE CHEAP BECAUSE THEY MUST BE: both are decided before the
+    # engine is loaded, so an emitter that refuses cannot spend four minutes deciding to.
+    if not only or 'day0' in only:
+        print('')
+        print('--- ROUND: the CARRIED day-0 emitter — %s ---' % ST.DAY0_GENERATOR)
+        std_ref = 'docs/evidence/final_candidate_2026-08-19/DAY0_CP.json'
+        new_ref = os.path.join(ev_rel, 'DAY0_SELFTEST.json')
+
+        def _emit(spec_doc, label, extra=()):
+            p = os.path.join(ev, 'day0_spec_%s.json' % label)
+            with open(p, 'w', encoding='utf-8') as fh:
+                json.dump(spec_doc, fh, indent=2)
+            rc, out = _sh([sys.executable, os.path.join(sb.path, ST.DAY0_GENERATOR),
+                           '--spec', p, '--root', sb.path] + list(extra),
+                          cwd=sb.path, env=sb.env())
+            open(os.path.join(ev, 'day0_emit_%s.txt' % label), 'w', encoding='utf-8').write(out)
+            return rc, out
+
+        base_doc = {'act': 'SELF-TEST — the carried day-0 emitter',
+                    'day0_rebase': {'state': 'on', 'reference': std_ref, 'new_reference': new_ref,
+                                    'activated_by': 'SELF-TEST FIXTURE — no owner word exists or '
+                                                    'is claimed.'}}
+
+        off = json.loads(json.dumps(base_doc))
+        off['day0_rebase']['state'] = 'off'
+        rc, out = _emit(off, 'unactivated')
+        record('day0_emitter_refuses_unactivated',
+               rc != 0 and 'REFUSING TO WRITE' in out
+               and not os.path.exists(os.path.join(sb.path, new_ref)),
+               'exit %s; day0_rebase.state=off -> the emitter refused and wrote nothing (M1b: '
+               'off-by-default, owner-visible; automation never re-bases itself green)' % rc)
+
+        gone = json.loads(json.dumps(base_doc))
+        gone['day0_rebase']['reference'] = 'docs/evidence/NO_SUCH_DIRECTORY/DAY0_ABSENT.json'
+        rc, out = _emit(gone, 'missing_reference')
+        record('day0_emitter_refuses_missing_reference',
+               rc != 0 and 'REFUSING TO WRITE' in out
+               and not os.path.exists(os.path.join(sb.path, new_ref)),
+               'exit %s; no standing reference -> no mandatory diff is possible, so nothing is '
+               'written (there is no lawful silent FIRST write)' % rc)
+
+        # THE POSITIVE PATH. It loads the engine and re-prices every wired entrant off THIS tree's
+        # board and store, so it is the expensive case in this self-test and it is the only one that
+        # proves the emitter emits. It asserts the emitter's own fail-closed leg (A1, the printed
+        # day-0 identity on the board it read) and the M1b diff — EVERY moved row, printed.
+        rc, out = _emit(base_doc, 'regenerate')
+        wrote = os.path.join(sb.path, new_ref)
+        emitted = _read_json(wrote) or {}
+        moved_lines = [ln for ln in out.splitlines() if ' -> ' in ln and '(+' in ln or
+                       (' -> ' in ln and '(-' in ln)]
+        identity_ok = 'A1  printed day-0 identity' in out and ' of ' in out
+        record('day0_emitter_regenerates',
+               rc == 0 and identity_ok and 'THE MANDATORY ROW DIFF' in out
+               and bool(emitted.get('rows')) and bool(moved_lines),
+               'exit %s; identity %r; %d row(s) emitted; the mandatory diff printed %d moved row(s) '
+               'individually, no truncation'
+               % (rc, emitted.get('identity_all'), len(emitted.get('rows') or []), len(moved_lines)))
+        try:
+            os.remove(wrote)
+        except OSError:
+            pass
+        sb.reset()
+
     # ---- 4. THE CLAIMS NEGATIVE CONTROL ---------------------------------------------------------
     print('')
     print('--- CLAIMS: the checker\'s own negative control still fires ---')
@@ -669,6 +874,67 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
     else:
         print('\nsandbox KEPT at %s' % sb.path)
     return 0 if ok == len(results) else 1
+
+
+def _synthetic_scores(sandbox_path):
+    """A SYNTHETIC owner score file for the round AFTER the one the sandbox stands on. Never data.
+
+    THE SHAPE IS THE OWNER'S EXPORT SHAPE, because the parser of record is what reads it: two
+    columns, header `Player,2026 R<N>`, cp1252, CRLF, trailing newline. It is derived from the tree's
+    OWN most recent score file so every display name in it is a name that already resolved once —
+    the fixture is not allowed to invent people.
+
+    TWO CLASSES ARE DROPPED, and both would halt this flight for a reason that is not the pincer:
+
+      * any player the pinned owner sheet marks `injured=Y` — the H2 check (ORDER 42) fires on those
+        and the remedy is an owner-worded sheet re-cut, which `sheet_recut_writer` already proves;
+      * any display name whose identity override is scoped to rounds that do not include this one —
+        at R24 that is the R23 `Bailey Williams WBD` binding, which would leave a name unresolved and
+        the preflight not clean. The lander never guesses a name and neither does this fixture.
+
+    DETERMINISTIC: the scores are carried across verbatim, so the file's md5 is a function of the
+    tree alone and two self-test runs on one tree write the same bytes.
+    """
+    import csv
+    import re as _re
+
+    def _norm(s):
+        return _re.sub(r'[^a-z0-9]+', '-', str(s).strip().lower().replace('’', "'")).strip('-')
+
+    boot = json.load(open(os.path.join(sandbox_path, 'data', 'expected_boot.json'),
+                          encoding='utf-8'))
+    n = int(boot['as_of_round']) + 1
+    pins = json.load(open(os.path.join(sandbox_path, 'data', 'sheet_pins.json'), encoding='utf-8'))
+    with open(os.path.join(sandbox_path, pins['sheet_path']), encoding='utf-8') as fh:
+        injured = {_norm(r['player']) for r in csv.DictReader(fh)
+                   if (r.get('injured') or '').strip().upper() == 'Y'}
+    ov = json.load(open(os.path.join(sandbox_path, ST.CATCHUP_OVERRIDES_REL), encoding='utf-8'))
+    out_of_round = {e.get('name') for e in (ov.get('overrides') or [])
+                    if e.get('applies_to_rounds') and n not in e['applies_to_rounds']}
+
+    prev = None
+    for r in range(n - 1, 0, -1):
+        cand = os.path.join(sandbox_path, 'scores', 'R%d.csv' % r)
+        if os.path.isfile(cand):
+            prev = cand
+            break
+    if prev is None:
+        raise RuntimeError('no previous score file in the sandbox to shape the fixture on')
+    text = open(prev, 'rb').read().decode('cp1252')
+    rows = [r for r in list(csv.reader(text.splitlines()))[1:] if r]
+    kept = [(name, int(score)) for name, score in rows
+            if _norm(name) not in injured and name.strip() not in out_of_round]
+    data = ('Player,2026 R%d\r\n' % n
+            + ''.join('%s,%d\r\n' % (name, score) for name, score in kept)).encode('cp1252')
+    rel = os.path.join('scores', 'R%d.csv' % n)
+    dst = os.path.join(sandbox_path, rel)
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    with open(dst, 'wb') as fh:
+        fh.write(data)
+    return {'round': n, 'path': rel, 'listed': len(kept), 'bytes': len(data),
+            'md5': hashlib.md5(data).hexdigest(),
+            'sha256': hashlib.sha256(data).hexdigest(),
+            'SYNTHETIC': 'SELF-TEST FIXTURE — this is not owner data and never was.'}
 
 
 def _synthetic_recut(sandbox_path, restore_md5=None):

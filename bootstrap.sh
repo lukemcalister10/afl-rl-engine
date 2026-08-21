@@ -44,7 +44,7 @@ fi
 # exactly that is not wired in." A re-seed that lands on top of a live engine act does not fail — it
 # silently swaps the engine under a running build, and BOTH results are void.
 # Fail-closed: no lock, no seeding. Reentrant (a bake that already holds it does not deadlock here).
-# RL_BUILD_LOCK=0 skips the interlock and says so on every skip.
+# BUILD_LOCK=0 skips the interlock and says so on every skip.
 . "$HERE/tools/build_lock.sh"
 build_lock_acquire bootstrap || exit 1
 

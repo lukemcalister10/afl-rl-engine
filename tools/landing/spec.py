@@ -374,9 +374,14 @@ def _round_template():
                              '1) — and it is still EXPLICIT and OFF BY DEFAULT (the M1b ruling). To '
                              'activate: {"state":"on", "activated_by":"<owner word>", '
                              '"reference":"docs/evidence/.../DAY0_CP.json", "new_reference":"<the '
-                             'regenerated file>", "generator":["python3","<the emitter of record>"]}'
-                             '. The lander runs the generator, prints the mandatory row diff and '
-                             'installs; it never computes day-0 itself.'),
+                             'regenerated file, inside this act\'s evidence dir>"}. LEAVE '
+                             '`generator` ABSENT and the CARRIED emitter tools/landing/day0_emit.py '
+                             'regenerates the reference from this tree\'s own board and store — it '
+                             'is generic, deterministic, and refuses to write unless this spec says '
+                             'state=on. Name `generator` only to run a different emitter; declare '
+                             '"generator": [] to state that this act supplies new_reference itself. '
+                             'The lander runs the generator, prints the mandatory row diff of every '
+                             'moved row and installs; it never computes day-0 itself.'),
         'movers_page': {'output': '', 'boundary_note': ''},
         '_doc_movers_page': ('the owner-facing movers page for this round (PLAN_v6 1d: rendered '
                              'board/movers page delivered at every round). `output` defaults to '

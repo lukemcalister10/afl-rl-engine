@@ -248,10 +248,35 @@ def _fault_generator_drift(ctx):
 
 
 def _fault_day0_no_movers(ctx):
-    """The day-0 re-base is ACTIVATED and no row moves — the M1b guard, in the round lander."""
+    """The day-0 re-base is ACTIVATED and no row moves — the M1b guard, in the round lander.
+
+    `generator: []` — DECLARED EMPTY, not absent — because this fault is about the STEP's refusal to
+    install a re-base that changes nothing, and an absent key now means "run the carried emitter"
+    (`steps.DAY0_GENERATOR`), which would regenerate `new_reference` and hand the step a diff. The
+    emitter's own refusals are proved by their own cases in the self-test, not smuggled in here.
+    """
     ref = 'docs/evidence/final_candidate_2026-08-19/DAY0_CP.json'
     ctx.spec['day0_rebase'] = {'state': 'on', 'reference': ref, 'new_reference': ref,
+                               'generator': [],
                                'activated_by': 'SELF-TEST FIXTURE — no owner word exists.'}
+
+
+def _fault_stop_before_arming(ctx):
+    """STOP AT THE DOOR OF THE ARMED ADVANCE — the one fault that exists to prove the steps BEFORE it.
+
+    THE SELF-TEST NEVER ARMS. Every other round case runs the `round.scores: null` rehearsal fixture,
+    so `preflight`'s declared-dirt path and `catchup_preflight`'s input commit — the two jaws of the
+    R24 rehearsal's input-commit pincer (§3.1) — had never been exercised by anything. Proving they
+    are gone needs a flight carrying a REAL, UNCOMMITTED score file through steps 0-3, and then needs
+    to stop before the advance applies a round to the sandbox's store.
+
+    So this injector raises where it stands. It is not a broken step and it is not counted as one:
+    the assertion the case makes is about the four steps that already succeeded.
+    """
+    raise ST.StepError(
+        'STOPPED AT THE DOOR, BY REQUEST (selftest fault `advance:stop_at_the_door`). Steps 0-3 ran '
+        'for real against an uncommitted owner score file; the armed advance is where this case '
+        'deliberately ends, because a self-test does not arm a score-write.')
 
 
 def _fault_movers_report_drift(ctx):
@@ -337,6 +362,10 @@ FAULTS = {
     'day0':              ('day0_no_movers',
                           'THE M1b GUARD: the day-0 re-base is ACTIVATED and no row moves',
                           _fault_day0_no_movers),
+    'advance:stop_at_the_door': ('stop_before_arming',
+                          'the transaction is stopped at the door of the armed advance, so the case '
+                          'measures the four steps that already ran — the input-commit pincer',
+                          _fault_stop_before_arming),
     'movers_page':       ('movers_report_drift',
                           'the movers report stops naming the board the manifest names, so the page '
                           'would describe a different tree than the one that produced it',
@@ -469,29 +498,58 @@ class Ctx(object):
         A LEVER LANDING HAS NONE. It builds what it lands, so a modified file at step 0 is somebody
         else's work and the tree must be clean, full stop.
 
-        A ROUND ADVANCE THAT DECLARES A SHEET RE-CUT HAS EXACTLY TWO, and they are not an exception
-        so much as the shape of the act. The owner's sheet is re-cut BY THE SEAT, on the owner's
-        word — the lander never authors owner data — and the prereg-lite is written by the seat
-        before the sheet is touched. Both must therefore be present and uncommitted when the lander
-        starts, because committing them is the `sheet` step's job (PACKAGE 3a's form: sheet +
-        declaration + prereg-lite, ONE commit). Requiring a clean tree here would mean requiring the
-        seat to make that commit by hand, which is precisely the writer 2b was built to replace.
+        A ROUND ADVANCE HAS TWO CLASSES, and neither is an exception so much as the shape of the act.
 
-        The set is TWO NAMED PATHS out of the act spec — the sheet the pin declaration names and the
-        prereg-lite the spec names — and it is printed at step 0. Anything else, including a second
-        edit to either file's directory, is dirt and halts.
+        (1) THE SHEET RE-CUT, when one is declared. The owner's sheet is re-cut BY THE SEAT, on the
+            owner's word — the lander never authors owner data — and the prereg-lite is written by
+            the seat before the sheet is touched. Both must therefore be present and uncommitted
+            when the lander starts, because committing them is the `sheet` step's job (PACKAGE 3a's
+            form: sheet + declaration + prereg-lite, ONE commit).
+
+        (2) THE OWNER'S INPUTS OF RECORD, when `round.scores` is declared: THE SCORE FILE AND THE
+            IDENTITY-OVERRIDE RECORD. Same shape, same reason. The runbook's step 0 is "place the
+            owner's file, byte-unmodified -> scores/R<N>.csv"; an owner ruling on a name is recorded
+            by the seat in `catchup_identity_overrides.json`; and `steps.catchup_preflight`'s
+            contract is that IT commits both, as their own explicit-path commit, once the preflight
+            is clean — "so the owner's input of record enters the tree BEFORE anything is armed".
+
+        THE PINCER THIS CLOSES (R24 dress rehearsal, 2026-08-21, §3.1 — RUN A and RUN C). Until this
+        method enumerated class (2), the armed path of `land round` was UNREACHABLE AS SHIPPED:
+
+          * score file uncommitted -> step 0 halted, `THE TREE IS NOT CLEAN … ?? scores/R24.csv`;
+          * score file committed   -> step 3 reached PREREG MET and then died, `git commit failed:
+            … nothing added to commit but untracked files present`.
+
+        There was no third option, and the self-test could not see it because its round fixture
+        declares no score file. The remedy is the symmetric, obviously-intended one the rehearsal
+        recommended: what the lander is contracted to COMMIT is what the lander must EXPECT to find
+        uncommitted. (`steps._git_commit` was made graceful about an already-committed input in the
+        same act, so a seat who pre-commits the file — the rehearsal's interim path — is no longer
+        punished for it either. Both jaws, not one.)
+
+        Every path is NAMED, out of the act spec or out of the pin file, and every one is PRINTED at
+        step 0. Nothing is waved through: anything else, including a second edit to either file's
+        directory, is dirt and halts.
         """
-        sheet = self.spec.get('sheet')
-        if not sheet or self.spec.get('act_kind') != 'round-advance':
+        if self.spec.get('act_kind') != 'round-advance':
             return ()
-        rel = sheet.get('path')
-        if not rel:
-            try:
-                with open(os.path.join(self.root, 'data', 'sheet_pins.json'), encoding='utf-8') as fh:
-                    rel = json.load(fh).get('sheet_path')
-            except (OSError, ValueError):
-                rel = None
-        return tuple(p for p in (rel, sheet.get('prereg_lite')) if p)
+        out = []
+        sheet = self.spec.get('sheet')
+        if sheet:
+            rel = sheet.get('path')
+            if not rel:
+                try:
+                    with open(os.path.join(self.root, 'data', 'sheet_pins.json'),
+                              encoding='utf-8') as fh:
+                        rel = json.load(fh).get('sheet_path')
+                except (OSError, ValueError):
+                    rel = None
+            out.extend(p for p in (rel, sheet.get('prereg_lite')) if p)
+        scores = (self.spec.get('round') or {}).get('scores')
+        if scores and scores.get('path'):
+            out.append(scores['path'])
+            out.append(ST.CATCHUP_OVERRIDES_REL)
+        return tuple(out)
 
     def is_ignorable_dirt(self, status_line):
         """Nothing is ignorable except the act's own DECLARED dirt. One named place, always.
@@ -541,11 +599,27 @@ class Ctx(object):
         starts so a waiter has someone to name. RL_BUILD_LOCK_HELD is deliberately NOT exported: the
         config manifest's reject scan treats an unknown RL_-prefixed variable as a model override
         and halts a canonical build, and this process launches canonical builds.
+
+        THE LOCK TOOLING'S OWN FLAGS ARE NOT `RL_*` — `BUILD_LOCK` and `BUILD_LOCK_FILE`, matching
+        `tools/build_lock.sh` character for character so the two stay interchangeable. They were
+        RL_-prefixed until 2026-08-21, and it cost a real armed run: R24 dress rehearsal §3.3, RUN D,
+        `ConfigPolicyError: UNKNOWN inherited valuation flag RL_BUILD_LOCK_FILE`. The legacy names
+        are HALTED here rather than ignored — a sandbox whose isolation flag stopped being read is a
+        sandbox silently contending for the shared lock, which is worse than the halt.
         """
-        if os.environ.get('RL_BUILD_LOCK') == '0':
-            self.log('build-lock: SKIPPED by RL_BUILD_LOCK=0. This landing is NOT interlocked.')
+        legacy = [k for k in ('RL_BUILD_LOCK', 'RL_BUILD_LOCK_FILE') if os.environ.get(k)]
+        if legacy:
+            raise ST.StepError(
+                'BUILD-LOCK HALT: %s set in this environment. The lock tooling\'s own flags are no '
+                'longer RL_-prefixed (an RL_/PAR_ variable is a MODEL override to '
+                'config_manifest.enforce() and halts any armed build that inherits it — R24 '
+                'rehearsal §3.3). Use %s. This is a halt and not a silent ignore because an '
+                'isolation flag nobody reads is a sandbox contending for the shared lock.'
+                % (', '.join(legacy), ', '.join(k[3:] for k in legacy)))
+        if os.environ.get('BUILD_LOCK') == '0':
+            self.log('build-lock: SKIPPED by BUILD_LOCK=0. This landing is NOT interlocked.')
             return
-        path = os.environ.get('RL_BUILD_LOCK_FILE') or LOCK_FILE_DEFAULT
+        path = os.environ.get('BUILD_LOCK_FILE') or LOCK_FILE_DEFAULT
         try:
             os.makedirs(os.path.dirname(path), exist_ok=True)
             fd = os.open(path, os.O_RDWR | os.O_CREAT, 0o644)

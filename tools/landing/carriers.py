@@ -38,6 +38,27 @@ THREE PROPERTIES, EACH FOR A REASON THE RECORD ALREADY PAID FOR.
    THE PREFIX, in any variable this estate's tooling sets. Third occurrence, caught by the instrument
    P1 built for exactly it.
 
+   FOURTH OCCURRENCE, 2026-08-21, AND THE FIRST CAUGHT BY AN ARMED RUN — `RL_BUILD_LOCK_FILE`.
+   `selftest.Sandbox.env()` set it to keep its sandboxes off the shared lock, and the self-test never
+   arms, so it never fired there; it fired on the first seat that followed the isolation recipe and
+   then ARMED. R24 dress rehearsal §3.3, RUN D, on the real invocation:
+
+       staged_apply.ConfigPolicyError: the board build must use the accepted release policy…
+         - UNKNOWN inherited valuation flag RL_BUILD_LOCK_FILE='…' (not in the release config manifest)
+
+   A message about VALUATION FLAGS, for what is a lock path. REPAIRED, NOT ALLOW-LISTED: the lock
+   tooling's own flags are now `BUILD_LOCK` / `BUILD_LOCK_FILE` / `BUILD_LOCK_FD` /
+   `BUILD_LOCK_TIMEOUT` in `tools/build_lock.sh` and `txn.Ctx.acquire_lock`, and the legacy names are
+   HALTED rather than ignored in both — an isolation flag that stops being read is a sandbox
+   silently contending for the shared lock. Adding the name to `config_manifest.INFRA_ALLOW` was the
+   available alternative and was refused: it would have taught the config policy to expect a tooling
+   variable inside the engine's own namespace, which is the habit that produced all four burns.
+   `RL_BUILD_LOCK_HELD` is the ONE survivor of the class and it is REPORTED, NOT FIXED: it is the
+   reentrancy token `build_lock.sh` exports and three separate places already pop before any engine
+   child (`txn.child_env`, `_build_child`, `ui/tools/gen_v0_sidecar`), so it cannot reach an armed
+   build today — but it is the same defect and it should be renamed by the seat that next opens
+   those four files.
+
 THE STORE IS IN THE SET AND A LEVER LANDING NEVER WRITES IT. That is deliberate. Capturing
 `rl_model_data.json` costs one hash and turns "the store did not move" from a claim into a measured
 fact at abort time — and the one landing shape that DOES move it (2b's round advance) then needs no
@@ -221,7 +242,10 @@ ROUND_EXTRA_CARRIERS = (
       'steps.day0 — REGENERATED AT THE ADVANCE, never mid-round (register v810 item 1)',
       'the standing day-0 print reference. It goes stale at a round clock advance and its natural '
       'home for regeneration is the advance itself; it is a carrier so that an activated re-base '
-      'which then aborts puts the standing reference back byte-exact'),
+      'which then aborts puts the standing reference back byte-exact. THE EMITTER IS CARRIED, NOT '
+      'ACT-PINNED: tools/landing/day0_emit.py (steps.DAY0_GENERATOR) regenerates it from the tree\'s '
+      'own board and store — every emitter before it read a named scratch directory and hard-'
+      'asserted named movers, and none of them could run for the next round (R24 rehearsal §5)'),
 )
 
 #: THE ROUND-LANDING CARRIER SET = the lever set PLUS the round extras. One enumeration, two acts.
