@@ -1,0 +1,57 @@
+======================================================================================================
+LAND ROUND-ADVANCE — R24 DRESS REHEARSAL (SYNTHETIC) — the round lander's real armed path, flown in a sandbox
+  tree      : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/r24_rehearsal/sandbox
+  owner word: SYNTHETIC REHEARSAL FIXTURE — NO OWNER WORD EXISTS OR IS CLAIMED. This act runs only inside a scratch git worktree; its scores are machine-generated and its board never leaves that worktree. A real R24 advance fills this slot with Luke's verbatim words.
+  prereg    : docs/evidence/r24_rehearsal_2026-08-21/00_REHEARSAL_PREREG.md   predicts board None
+  mode      : APPLY builder=real
+======================================================================================================
+
+--- STEP 0/14  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  RL_BUILD_LOCK_FILE, RL_FV, RL_REPO, RL_VENV
+build-lock: HELD by land-round-8380 (pid 8380) — single writer for the shared workspace.
+base commit        5d7f7374d95bb23917539c9722b0996d0f9358f1
+board pin (before) b3e8da99bc7f632e5d1eebc732f9cf01
+store pin (before) b745002eb0a0fbb1c34fa44f1ef708d6
+restore point      106 carrier(s) captured, 106 present on disk
+    [preflight OK  0.09s]
+
+--- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
+sheet         docs/owner_annotations/SITTER_2026_v1.csv
+  MEASURED (never typed): md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+  PINNED                : md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+the declaration describes the sheet on disk. NO RE-CUT DECLARED — this step writes nothing, and `land round` remains the pin file's sole writer by not writing.
+    [sheet OK  0.00s]
+
+--- STEP 2/14  scores         the owner's score file and the bindings, asserted ---
+scores file   scores/R24.csv  (7268 bytes)
+  md5    58ae786bc8ef7bd218417a652892162e   OK
+  sha256 6e9003d59ddc14449e549859b426bbc7f31115a3038852502658470be3b71cc6   OK
+0 declared override(s), all present; 3 in the file overall
+    [scores OK  0.00s]
+
+--- STEP 3/14  catchup_preflight read-only preflight, CLEAN, then the inputs commit ---
+injured=Y players listed in R24: 2 ['connor-rozee', 'tom-green']
+    [catchup_preflight FAILED  0.00s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'catchup_preflight'
+======================================================================================================
+  ORDER 42 WILL HALT THE ADVANCE. 2 player(s) marked injured=Y on the pinned owner sheet appear in the score file: ['connor-rozee', 'tom-green']. The advance increments games_2026 for every listed player, so the sheet and the store would disagree and the board regen halts INSIDE the staged transaction. The remedy is the owner-worded re-cut (R23 runbook §4 H2 / ERRATUM E7), declared as spec.sheet with its prereg-lite — not a weakened guard.
+
+carriers that moved before the failure: 0
+RESTORING 0 carrier(s):
+
+ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.09s  OK
+    sheet              0.00s  OK
+    scores             0.00s  OK
+    catchup_preflight     0.00s  FAIL
+    TOTAL              0.09s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_8380

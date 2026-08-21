@@ -1,0 +1,8 @@
+oneliner_r14_restore     FAIL        the R14 disposable fixture does not verify: raise AssertionError('FAIL: ' + label)
+oneliner_f1_lens         PASS        the F1 export-parity leg is present, key-for-key, and still reports a mismatch cou…
+register_form            PASS        pen verify: frozen 219021ac sealed-ok=True · 10 new-form entries · newest v822 / i…
+state_file               PASS        state: PASS — docs/STATE.md is a regeneration of this tree (stamp 70e1ab3a07a6)
+-----------------------  ----------  -----------------------------------------------------------------------------------
+
+AGGREGATE  17 checks  |  PASS 15  FAIL 2  BLOCKED 0  RULED-RED 0
+VERDICT    RED — 2 gating failure(s): inbox_manifest, oneliner_r14_restore

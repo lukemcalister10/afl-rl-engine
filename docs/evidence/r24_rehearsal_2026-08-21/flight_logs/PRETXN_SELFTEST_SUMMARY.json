@@ -1,0 +1,160 @@
+{
+  "generated": "2026-08-21T10:35:46Z",
+  "results": [
+    {
+      "case": "control_clean_run",
+      "detail": "exit 0",
+      "ok": true
+    },
+    {
+      "case": "commit_explicit_paths",
+      "detail": "5 path(s) committed, all declared: docs/STATE.md, docs/evidence/landing_selftest/SELFTEST_CLAIMS.json, docs/evidence/landing_selftest/claims_check.txt, docs/evidence/landing_selftest/gate_release_contract_check.txt",
+      "ok": true
+    },
+    {
+      "case": "build_lock_refuses",
+      "detail": "exit 1; the landing refused to become a second writer",
+      "ok": true
+    },
+    {
+      "case": "fault_preflight",
+      "detail": "fault=dirty_tree; exit 1; failed_step='preflight'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_build_proofs",
+      "detail": "fault=wrong_board; exit 1; failed_step='build_proofs'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_pins",
+      "detail": "fault=board_corrupt; exit 1; failed_step='pins'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_lineage",
+      "detail": "fault=chain_broken; exit 1; failed_step='lineage'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_contract",
+      "detail": "fault=seal_broken; exit 1; failed_step='contract'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_sibling",
+      "detail": "fault=sidecar_corrupt; exit 1; failed_step='sibling'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_ui",
+      "detail": "fault=skip_second_writer; exit 1; failed_step='ui'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_state",
+      "detail": "fault=state_ungeneratable; exit 1; failed_step='state'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_gates",
+      "detail": "fault=gate_red; exit 1; failed_step='gates'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_claims",
+      "detail": "fault=false_claim; exit 1; failed_step='claims'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_commit",
+      "detail": "fault=foreign_path; exit 1; failed_step='commit'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "fault_ui_stale_mirror",
+      "detail": "fault=stale_ownership_mirror; exit 1; failed_step='ui'; carriers moved after abort: NONE (byte-exact)",
+      "ok": true
+    },
+    {
+      "case": "abort_restores_writers",
+      "detail": "11 carrier(s) had been written and were restored: data/expected_boot.json, data/release_contract.json, data/release_lineage.json, data/rl_build/rl_app_data.json, data/rl_build/rl_app_data.json.srcmd5, engine/rl_after/ingestion/pos_rank_history.json",
+      "ok": true
+    },
+    {
+      "case": "round_control_clean_run",
+      "detail": "exit 0",
+      "ok": true
+    },
+    {
+      "case": "round_commit_explicit_paths",
+      "detail": "6 path(s) committed, all declared: docs/STATE.md, docs/evidence/landing_selftest/MOVERS_R23.html, docs/evidence/landing_selftest/SELFTEST_CLAIMS.json, docs/evidence/landing_selftest/claims_check.txt",
+      "ok": true
+    },
+    {
+      "case": "round_fault_sheet",
+      "detail": "fault=sheet_pin_drift; exit 1; failed_step='sheet'; carriers moved after abort: NONE (byte-exact); HEAD back at the base",
+      "ok": true
+    },
+    {
+      "case": "round_fault_scores",
+      "detail": "fault=scores_absent; exit 1; failed_step='scores'; carriers moved after abort: NONE (byte-exact); HEAD back at the base",
+      "ok": true
+    },
+    {
+      "case": "round_fault_catchup_preflight",
+      "detail": "fault=round_already_applied; exit 1; failed_step='catchup_preflight'; carriers moved after abort: NONE (byte-exact); HEAD back at the base",
+      "ok": true
+    },
+    {
+      "case": "round_fault_advance",
+      "detail": "fault=round_mismatch; exit 1; failed_step='advance'; carriers moved after abort: NONE (byte-exact); HEAD back at the base",
+      "ok": true
+    },
+    {
+      "case": "round_fault_generator_sync",
+      "detail": "fault=generator_drift; exit 1; failed_step='generator_sync'; carriers moved after abort: NONE (byte-exact); HEAD back at the base",
+      "ok": true
+    },
+    {
+      "case": "round_fault_day0",
+      "detail": "fault=day0_no_movers; exit 1; failed_step='day0'; carriers moved after abort: NONE (byte-exact); HEAD back at the base",
+      "ok": true
+    },
+    {
+      "case": "round_fault_movers_page",
+      "detail": "fault=movers_report_drift; exit 1; failed_step='movers_page'; carriers moved after abort: NONE (byte-exact); HEAD back at the base",
+      "ok": true
+    },
+    {
+      "case": "sheet_recut_wrong_prediction",
+      "detail": "exit 1; failed_step='sheet'; the declaration was NOT written and HEAD is back at the base",
+      "ok": true
+    },
+    {
+      "case": "sheet_recut_writer",
+      "detail": "exit 0; the declaration now reads md5=6a257b9d1cd5 rows=219 injured_y=35; sheet commit 19120252e1c2; engine_head asserted UNMOVED",
+      "ok": "19120252e1c20c9760397b37a51f84205b839335"
+    },
+    {
+      "case": "claims_negative_control",
+      "detail": "CLAIMS SELF-TEST: 11 PASS / 0 FAIL",
+      "ok": true
+    },
+    {
+      "case": "packet_slot_validator",
+      "detail": "PACKET SELF-TEST: 5 PASS / 0 FAIL",
+      "ok": true
+    },
+    {
+      "case": "live_tree_untouched",
+      "detail": "every live carrier byte-unmoved across the whole self-test",
+      "ok": true
+    }
+  ],
+  "tally": {
+    "aborted_byte_exact": 19,
+    "broken": 19,
+    "caught": 19
+  }
+}

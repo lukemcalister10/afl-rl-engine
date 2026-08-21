@@ -1,0 +1,19 @@
+$ python3 tools/round_entry/round_entry.py catchup --file 24=scores/R24.csv --approve
+
+================ CATCH-UP PREFLIGHT ================
+  season 2026 · 1 round(s) · identity overrides: Bailey Williams, Bailey Williams WBD, Callum Brown
+  R24  enc=cp1252    listed/played=411  resolved=411  listed-zero=0   absent/DNP=393   sha256 6e9003d59ddc
+        identity override: Callum M. Brown        -> callum-brown-ire       (score 52, owner-override:map_all)
+  PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.
+===================================================
+
+About to apply rounds [24] — each as its own sequential transaction, committed in order.
+
+================ CATCH-UP APPLIED ================
+  R24  store b745002e->303a0765  board b3e8da99->29c5ac7b  players=411  guard5=True  hist=[14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]  final=FINALIZED  movers->UI=804
+  Final store 303a0765 · board 29c5ac7b
+  Per-round backups, transaction records, dedup ledger, value/overall-rank/positional-rank
+  histories and movers reports are all retained.
+=================================================
+
+[exit 0]

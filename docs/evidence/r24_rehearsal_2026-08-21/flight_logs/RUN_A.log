@@ -1,0 +1,28 @@
+======================================================================================================
+LAND ROUND-ADVANCE — R24 DRESS REHEARSAL (SYNTHETIC) — the round lander's real armed path, flown in a sandbox
+  tree      : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/r24_rehearsal/sandbox
+  owner word: SYNTHETIC REHEARSAL FIXTURE — NO OWNER WORD EXISTS OR IS CLAIMED. This act runs only inside a scratch git worktree; its scores are machine-generated and its board never leaves that worktree. A real R24 advance fills this slot with Luke's verbatim words.
+  prereg    : docs/evidence/r24_rehearsal_2026-08-21/00_REHEARSAL_PREREG.md   predicts board None
+  mode      : APPLY builder=real
+======================================================================================================
+
+--- STEP 0/14  preflight      clean tree, build lock, the restore point ---
+    [preflight FAILED  0.02s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'preflight'
+======================================================================================================
+  THE TREE IS NOT CLEAN. A landing transaction starts from a committed tree, or its abort restores a state nobody chose:
+      ?? scores/R24.csv
+
+NO RESTORE POINT EXISTS: the failure precedes step 0's capture, so nothing was written by this landing and there is nothing to restore. The tree is as the landing found it.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.02s  FAIL
+    TOTAL              0.02s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_4098

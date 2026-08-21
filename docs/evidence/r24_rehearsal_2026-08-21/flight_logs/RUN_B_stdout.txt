@@ -1,0 +1,127 @@
+======================================================================================================
+PRE-TRANSACTION SELF-TEST — the lander proves its abort ladder BEFORE opening a landing.
+  transcripts: /tmp/preflight_lander_selftest_cjoetytb  (filed into the landing evidence dir when the transaction closes)
+======================================================================================================
+======================================================================================================
+THE LANDER SELF-TEST — every step broken once, every abort proved (PLAN_v6 2a.3)
+  live tree : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/r24_rehearsal/sandbox   (READ-ONLY to this self-test; asserted byte-unmoved at the end)
+  sandbox   : /tmp/landing_selftest_8380
+  transcripts: /tmp/preflight_lander_selftest_cjoetytb
+  base      : HEAD
+======================================================================================================
+sandbox created at /tmp/landing_selftest_8380/sandbox (base 5d7f7374d95b)
+
+--- CONTROL: a clean no-op landing in this sandbox must SUCCEED ---
+  PASS control_clean_run            exit 0
+  PASS commit_explicit_paths        5 path(s) committed, all declared: docs/STATE.md, docs/evidence/landing_selftest/SELFTEST_CLAIMS.json, docs/evidence/landing_selftest/claims_check.txt, docs/evidence/landing_selftest/gate_release_contract_check.txt
+
+--- LOCK: a landing must refuse to start while another holder has the lock ---
+  PASS build_lock_refuses           exit 1; the landing refused to become a second writer
+
+--- FAULTS: every step in LEVER_SEQUENCE broken once ---
+  PASS fault_preflight              fault=dirty_tree; exit 1; failed_step='preflight'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_build_proofs           fault=wrong_board; exit 1; failed_step='build_proofs'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_pins                   fault=board_corrupt; exit 1; failed_step='pins'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_lineage                fault=chain_broken; exit 1; failed_step='lineage'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_contract               fault=seal_broken; exit 1; failed_step='contract'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_sibling                fault=sidecar_corrupt; exit 1; failed_step='sibling'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_ui                     fault=skip_second_writer; exit 1; failed_step='ui'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_state                  fault=state_ungeneratable; exit 1; failed_step='state'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_gates                  fault=gate_red; exit 1; failed_step='gates'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_claims                 fault=false_claim; exit 1; failed_step='claims'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_commit                 fault=foreign_path; exit 1; failed_step='commit'; carriers moved after abort: NONE (byte-exact)
+
+--- FAULT: the ui step's WRITER 5 — the ownership mirror's pin ---
+  PASS fault_ui_stale_mirror        fault=stale_ownership_mirror; exit 1; failed_step='ui'; carriers moved after abort: NONE (byte-exact)
+
+--- DEPTH: a landing that WROTE pins + column + lineage + contract, then aborted ---
+  PASS abort_restores_writers       11 carrier(s) had been written and were restored: data/expected_boot.json, data/release_contract.json, data/release_lineage.json, data/rl_build/rl_app_data.json, data/rl_build/rl_app_data.json.srcmd5, engine/rl_after/ingestion/pos_rank_history.json
+
+--- ROUND: a clean round rehearsal in this sandbox must SUCCEED (PLAN_v6 2b) ---
+  PASS round_control_clean_run      exit 0
+  PASS round_commit_explicit_paths  6 path(s) committed, all declared: docs/STATE.md, docs/evidence/landing_selftest/MOVERS_R23.html, docs/evidence/landing_selftest/SELFTEST_CLAIMS.json, docs/evidence/landing_selftest/claims_check.txt
+
+--- ROUND FAULTS: every step 2b ADDS, broken once ---
+  PASS round_fault_sheet            fault=sheet_pin_drift; exit 1; failed_step='sheet'; carriers moved after abort: NONE (byte-exact); HEAD back at the base
+  PASS round_fault_scores           fault=scores_absent; exit 1; failed_step='scores'; carriers moved after abort: NONE (byte-exact); HEAD back at the base
+  PASS round_fault_catchup_preflight fault=round_already_applied; exit 1; failed_step='catchup_preflight'; carriers moved after abort: NONE (byte-exact); HEAD back at the base
+  PASS round_fault_advance          fault=round_mismatch; exit 1; failed_step='advance'; carriers moved after abort: NONE (byte-exact); HEAD back at the base
+  PASS round_fault_generator_sync   fault=generator_drift; exit 1; failed_step='generator_sync'; carriers moved after abort: NONE (byte-exact); HEAD back at the base
+  PASS round_fault_day0             fault=day0_no_movers; exit 1; failed_step='day0'; carriers moved after abort: NONE (byte-exact); HEAD back at the base
+  PASS round_fault_movers_page      fault=movers_report_drift; exit 1; failed_step='movers_page'; carriers moved after abort: NONE (byte-exact); HEAD back at the base
+
+--- ROUND: the sheet re-cut writer — `land round` is the pin file's SOLE WRITER ---
+  PASS sheet_recut_wrong_prediction exit 1; failed_step='sheet'; the declaration was NOT written and HEAD is back at the base
+  PASS sheet_recut_writer           exit 0; the declaration now reads md5=6a257b9d1cd5 rows=219 injured_y=35; sheet commit 19120252e1c2; engine_head asserted UNMOVED
+
+--- CLAIMS: the checker's own negative control still fires ---
+  PASS claims_negative_control      CLAIMS SELF-TEST: 11 PASS / 0 FAIL
+  PASS packet_slot_validator        PACKET SELF-TEST: 5 PASS / 0 FAIL
+  PASS live_tree_untouched          every live carrier byte-unmoved across the whole self-test
+
+======================================================================================================
+STEPS BROKEN 19   CAUGHT 19   ABORTED BYTE-EXACT 19
+SELF-TEST: 30 PASS / 0 FAIL
+======================================================================================================
+======================================================================================================
+PRE-TRANSACTION SELF-TEST PASSED. Opening the transaction.
+======================================================================================================
+
+======================================================================================================
+LAND ROUND-ADVANCE — R24 DRESS REHEARSAL (SYNTHETIC) — the round lander's real armed path, flown in a sandbox
+  tree      : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/r24_rehearsal/sandbox
+  owner word: SYNTHETIC REHEARSAL FIXTURE — NO OWNER WORD EXISTS OR IS CLAIMED. This act runs only inside a scratch git worktree; its scores are machine-generated and its board never leaves that worktree. A real R24 advance fills this slot with Luke's verbatim words.
+  prereg    : docs/evidence/r24_rehearsal_2026-08-21/00_REHEARSAL_PREREG.md   predicts board None
+  mode      : APPLY builder=real
+======================================================================================================
+
+--- STEP 0/14  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  RL_BUILD_LOCK_FILE, RL_FV, RL_REPO, RL_VENV
+build-lock: HELD by land-round-8380 (pid 8380) — single writer for the shared workspace.
+base commit        5d7f7374d95bb23917539c9722b0996d0f9358f1
+board pin (before) b3e8da99bc7f632e5d1eebc732f9cf01
+store pin (before) b745002eb0a0fbb1c34fa44f1ef708d6
+restore point      106 carrier(s) captured, 106 present on disk
+    [preflight OK  0.09s]
+
+--- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
+sheet         docs/owner_annotations/SITTER_2026_v1.csv
+  MEASURED (never typed): md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+  PINNED                : md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+the declaration describes the sheet on disk. NO RE-CUT DECLARED — this step writes nothing, and `land round` remains the pin file's sole writer by not writing.
+    [sheet OK  0.00s]
+
+--- STEP 2/14  scores         the owner's score file and the bindings, asserted ---
+scores file   scores/R24.csv  (7268 bytes)
+  md5    58ae786bc8ef7bd218417a652892162e   OK
+  sha256 6e9003d59ddc14449e549859b426bbc7f31115a3038852502658470be3b71cc6   OK
+0 declared override(s), all present; 3 in the file overall
+    [scores OK  0.00s]
+
+--- STEP 3/14  catchup_preflight read-only preflight, CLEAN, then the inputs commit ---
+injured=Y players listed in R24: 2 ['connor-rozee', 'tom-green']
+    [catchup_preflight FAILED  0.00s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'catchup_preflight'
+======================================================================================================
+  ORDER 42 WILL HALT THE ADVANCE. 2 player(s) marked injured=Y on the pinned owner sheet appear in the score file: ['connor-rozee', 'tom-green']. The advance increments games_2026 for every listed player, so the sheet and the store would disagree and the board regen halts INSIDE the staged transaction. The remedy is the owner-worded re-cut (R23 runbook §4 H2 / ERRATUM E7), declared as spec.sheet with its prereg-lite — not a weakened guard.
+
+carriers that moved before the failure: 0
+RESTORING 0 carrier(s):
+
+ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.09s  OK
+    sheet              0.00s  OK
+    scores             0.00s  OK
+    catchup_preflight     0.00s  FAIL
+    TOTAL              0.09s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_8380
+pre-transaction self-test transcripts filed: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/r24_rehearsal/sandbox/docs/evidence/r24_rehearsal_2026-08-21/preflight_lander_selftest

@@ -1,0 +1,21 @@
+====================================================================================================
+CLAIMS CHECK — R24 DRESS REHEARSAL (SYNTHETIC) — leg 2: the same journey, gate set NARROWED so the run reaches claims and commit; the FULL five-gate set is then measured BY HAND on the landed tree and every verdict reported
+  act type   : round-advance
+  date       : 2026-08-21   base: 70e1ab3a07a688a9dd5c47d9dc4f26347111a9d7
+  owner word : SYNTHETIC REHEARSAL FIXTURE — NO OWNER WORD EXISTS OR IS CLAIMED. This act runs only inside a scratch git worktree; its scores are machine-generated and its board never leaves that worktree. A real R24 advance fills this slot with Luke's verbatim words.
+  tree       : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/r24_rehearsal/sandbox
+====================================================================================================
+  ACTIVATION  day0_rebase                              on  (by: SYNTHETIC REHEARSAL FIXTURE — NO OWNER WORD EXISTS OR IS CLAIMED. Register v810 item 1 says the standing DAY0_CP reference wants regeneration AT the R24 advance; this rehearsal exercises that step's ACTIVE path so its first real firing is not its first firing. A real R24 fills this with Luke's word.)
+
+  OK   file_md5     the published board of record                  md5 29c5ac7b0bccf7fd7edf17ceabcc9760 (claimed 29c5ac7b0bccf7fd7edf17ceabcc9760)
+  OK   file_md5     the store                                      md5 303a0765e9d9fc328cef446a40864031 (claimed 303a0765e9d9fc328cef446a40864031)
+  OK   json_field   expected_boot.board                            board = '29c5ac7b0bccf7fd7edf17ceabcc9760' (claimed '29c5ac7b0bccf7fd7edf17ceabcc9760')
+  OK   json_field   expected_boot.engine_head                      engine_head = '3af8c1f7d61275c198a5df70c34608c7' (claimed '3af8c1f7d61275c198a5df70c34608c7')
+  OK   json_field   the round, ADVANCED to                         as_of_round = 24 (claimed 24)
+  OK   json_field   the release seal                               contract_sha256 = '597e702d3be23bfaced255f2719e03bae729b50e9ff6e617dcb45a2a064231c7' (claimed '597e702d3be23bfaced255f2719e03bae729b50e9ff6e617dcb45a2a064231c7')
+  OK   board_count  board rows                                     active.rows = 804 (claimed 804)
+  OK   gate         release_manifest_check                         exit 0 (expected PASS)
+  OK   gate         release_contract_check                         exit 0 (expected PASS)
+
+CLAIMS: 9 of 9 verified against the tree; 0 shape problem(s)
+VERDICT: GREEN — every claim recomputed and held

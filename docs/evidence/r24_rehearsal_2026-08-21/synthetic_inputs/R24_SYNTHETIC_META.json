@@ -1,0 +1,65 @@
+{
+  "path": "scores/R24.csv",
+  "bytes": 7268,
+  "md5": "58ae786bc8ef7bd218417a652892162e",
+  "sha256": "6e9003d59ddc14449e549859b426bbc7f31115a3038852502658470be3b71cc6",
+  "listed": 411,
+  "seed": 20260824,
+  "dropped": [
+    "Bailey Williams WBD",
+    "Alex Pearce",
+    "Harry Armstrong",
+    "Jordan Croft",
+    "Louis Emmett",
+    "Liam Puncher",
+    "Steely Green",
+    "Jordon Sweet",
+    "Bradley Hill",
+    "Jackson Macrae",
+    "Wil Powell ",
+    "James Jordon ",
+    "Samuel Collins "
+  ],
+  "added": [
+    "Bailey Williams",
+    "Zeke Uwland",
+    "Sam Cumming",
+    "Xavier Taylor",
+    "Oskar Taylor",
+    "Cameron Nairn",
+    "Jack Dalton",
+    "Charlie Banfield",
+    "Cody Curtin",
+    "Jack Ison",
+    "Will Darcy"
+  ],
+  "injured_returns": [
+    "Tom Green",
+    "Connor Rozee"
+  ],
+  "risers": [
+    "Zeke Uwland",
+    "Sam Cumming",
+    "Xavier Taylor",
+    "Oskar Taylor",
+    "Cameron Nairn",
+    "Jack Dalton",
+    "Charlie Banfield",
+    "Cody Curtin",
+    "Jack Ison",
+    "Will Darcy"
+  ],
+  "fallers": [
+    "Max Hall",
+    "Izak Rankine",
+    "Errol Gulden",
+    "Lachlan Ash",
+    "Levi Ashcroft",
+    "Max Gawn",
+    "Kade Chandler",
+    "Isaac Heeney ",
+    "Chad Warner ",
+    "Nick Blakey "
+  ],
+  "SYNTHETIC": "REHEARSAL ONLY — this is not owner data and never was."
+}

@@ -1,0 +1,29 @@
+report keys      : ['board_md5_after', 'board_md5_before', 'generated_at', 'integrity', 'kind', 'player_count', 'players', 'previous_round', 'release_identity', 'schema_version', 'season', 'source_store_md5_after', 'source_store_md5_before', 'submitted_round']
+mover rows       : 804
+a mover row      : {"affl_team": "Richmond Tigers", "club": "GWS", "cur_pos_rank": 8, "cur_rank": 102, "cur_value": 2010, "current_round": 24, "dnp": false, "key": "aaron-cadman", "name": "Aaron Cadman", "played": true, "pos": "Key Fwd", "posCode": "KPF", "pos_rank_change": 1, "prev_pos_rank": 9, "prev_rank": 102, "pr
+baseline point   : the-staircase-adoption-21-8
+board            : b3e8da99bc7f632e5d1eebc732f9cf01 -> 29c5ac7b0bccf7fd7edf17ceabcc9760
+store            : b745002eb0a0fbb1c34fa44f1ef708d6 -> 303a0765e9d9fc328cef446a40864031
+
+  RISER   Zeke Uwland            score=148.0  value 1809   -> 2361    delta=552     rank_change=41    OK
+  RISER   Sam Cumming            score=141.0  value 2198   -> 2895    delta=697     rank_change=30    OK
+  RISER   Xavier Taylor          score=137.0  value 919    -> 1336    delta=417     rank_change=64    OK
+  RISER   Oskar Taylor           score=133.0  value 585    -> 809     delta=224     rank_change=44    OK
+  RISER   Cameron Nairn          score=130.0  value 529    -> 814     delta=285     rank_change=67    OK
+  RISER   Jack Dalton            score=127.0  value 462    -> 772     delta=310     rank_change=79    OK
+  RISER   Charlie Banfield       score=124.0  value 619    -> 937     delta=318     rank_change=55    OK
+  RISER   Cody Curtin            score=121.0  value 390    -> 551     delta=161     rank_change=50    OK
+  RISER   Jack Ison              score=118.0  value 462    -> 587     delta=125     rank_change=36    OK
+  RISER   Will Darcy             score=115.0  value 220    -> 412     delta=192     rank_change=119   OK
+  FALLER  Max Hall               score=31.0   value 2387   -> 2281    delta=-106    rank_change=-9    OK
+  FALLER  Izak Rankine           score=28.0   value 4816   -> 4322    delta=-494    rank_change=-4    OK
+  FALLER  Errol Gulden           score=26.0   value 7205   -> 6061    delta=-1144   rank_change=-4    OK
+  FALLER  Lachlan Ash            score=24.0   value 5794   -> 5342    delta=-452    rank_change=-2    OK
+  FALLER  Levi Ashcroft          score=22.0   value 3698   -> 3556    delta=-142    rank_change=1     OK
+  FALLER  Max Gawn               score=21.0   value 3194   -> 2851    delta=-343    rank_change=-9    OK
+  FALLER  Kade Chandler          score=19.0   value 1091   -> 885     delta=-206    rank_change=-37   OK
+  FALLER  Isaac Heeney           score=17.0   value 3960   -> 3322    delta=-638    rank_change=-15   OK
+  FALLER  Chad Warner            score=15.0   value 4132   -> 3419    delta=-713    rank_change=-15   OK
+  FALLER  Nick Blakey            score=12.0   value 4199   -> 3413    delta=-786    rank_change=-17   OK
+
+WRONG-DIRECTION MOVERS: 0

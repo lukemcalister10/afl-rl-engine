@@ -1,0 +1,8 @@
+$ python3 tools/inbox_manifest.py check
+(cwd /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/r24_rehearsal/sandbox)
+
+inbox_manifest: 1 archived file(s), 0 problem(s), 2 stale generated file(s)
+  STALE   docs/inputs/incoming/MANIFEST.md — regenerate with tools/inbox_manifest.py write
+  STALE   docs/inputs/incoming/manifest.json — regenerate with tools/inbox_manifest.py write
+
+[exit 1]

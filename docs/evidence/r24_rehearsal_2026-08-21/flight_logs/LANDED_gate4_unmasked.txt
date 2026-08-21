@@ -1,0 +1,32 @@
+movers provenance-transition tests:
+  [PASS] production ui/data/movers.js still carries the owner-authorised R15-R19 history
+  [PASS] production bundle has one report per round
+  [PASS] data/release_lineage.json declares release_transition
+  [PASS] transition is an owner-approved movers_release_transition
+  [PASS] release_lineage.json release_transition == ui/data/movers_transition.js (consistent)
+  [PASS] release_lineage.json release_transition_register == the mirror's register (era succession: ALL entries reach the reader)
+  [PASS] the mirror carries the transition keys plus the register and NOTHING else (zero authorship)
+  [PASS] the ITEM 408 record is preserved BYTE-VERBATIM as the mirror payload's prefix (never rewritten)
+  [PASS] the register carries at least one transition record  (10 of 13 entries)
+  [PASS] EVERY register record is owner-approved and names its ruling id
+  [PASS] the shipped bundle's model_changes == what the live tree derives (reader and bundle in step)
+  [PASS] more than one out-of-round boundary is carried end-to-end — the single-slot limit is gone  (11 boundaries)
+  [PASS] EVERY out-of-round boundary reaches the reader owner-approved, naming its ruling id
+  [PASS] NON-VACUITY: with the register removed the newest boundary LOSES its owner approval  (approved 1 of 11, vs 11 of 11 with it)
+  [PASS] transition source + destination carry every id field (fixed pins + board + store)
+  [PASS] transition applies_to R15-R19
+  [PASS] transition SOURCE == the R15-R19 reports terminal identity
+  [PASS] transition source round == 19
+  [PASS] every historical report carries the identical fixed release identity
+  [PASS] transition DESTINATION is the post-restructure board (the boundary the tab labels)
+  [PASS] transition DESTINATION store is the post-restructure store
+  [PASS] the manifest has legitimately advanced past the transition destination (round 20 applied)
+  [PASS] transition destination round is 19 — the round the restructure landed after (unchanging history)
+  [PASS] manifest as_of_round has advanced to 24
+  [PASS] exactly release_version/balanced_board_md5/engine_head/board/store move across the transition
+  [PASS] rl_model/fv/config/register are UNCHANGED across the transition (same R19 model pins)
+  [PASS] the transition self-declares the moved/unchanged field sets correctly
+  [PASS] recomputed R15-R19 content digest == the transition declared digest (sha256:6aea584536c6cd98c7949947620687d549b6f6f54fcc44acf3ca6fd71aaf8c4d)
+  [PASS] a modified player movement changes the content digest (tamper detected)
+  [PASS] a modified report identity changes the content digest (tamper detected)
+FAIL: appending a future R24 report writes (no overwrite conflict)
