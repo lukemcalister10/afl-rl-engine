@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 204,
+  "coverage_entries": 205,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-21",
+      "headline": "**THE THREE R24 PRE-FLIGHT REPAIRS ARE LANDED AND VERIFIED (commit 1870cde, one explicit-path commit, supervisor-verified: identities byte-unmoved, ru\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE THREE R24 PRE-FLIGHT REPAIRS ARE LANDED AND VERIFIED (commit 1870cde, one explicit-path commit, supervisor-verified: identities byte-unmoved, runner 16/16 GREEN and lander self-test GREEN under the supervisor's own\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 826
+    },
     {
       "by": "explicit",
       "date": "2026-08-21",
@@ -1962,7 +1976,7 @@
       "version": 622
     }
   ],
-  "incidents": 113,
+  "incidents": 114,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",

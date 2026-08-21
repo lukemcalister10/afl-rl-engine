@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v825 2026-08-21 · **BLIND-PROTOCOL INTEGRITY ADDENDUM (study B's own late disclosure, recorded verbatim in substance).** After its study was sealed at its commit, the B seat's `git log -1` showed it the v824 commit SUBJECT LINE — "the blind comparison filed — eleven agreements, four divergence findings" — a bare count with no content, encountered strictly DOWNSTREAM of stud
+  > # OPEN ITEMS REGISTER · v826 2026-08-21 · **THE THREE R24 PRE-FLIGHT REPAIRS ARE LANDED AND VERIFIED (commit 1870cde, one explicit-path commit, supervisor-verified: identities byte-unmoved, runner 16/16 GREEN and lander self-test GREEN under the supervisor's own runs).** (1) THE INPUT-COMMIT PINCER is dead both jaws: declared_dirt() enumerates the score file + override record when round.scores is
 
-- new-form entries under `docs/register/entries/`: 13
+- new-form entries under `docs/register/entries/`: 14
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `451eedb7dbdc4a5a9f21e6eb1b5ec872360b696f` |
+| generated at commit | `1870cde92b4f90d2a9e75797b629461ec0718836` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
