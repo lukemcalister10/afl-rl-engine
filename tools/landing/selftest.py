@@ -226,6 +226,15 @@ def main(root=None, keep=False, only=None, evidence_dir=None):
     print('  transcripts: %s' % ev)
     print(BANNER)
 
+    # THE WRECKAGE OF THE LAST RUN, CLEARED BEFORE THIS ONE. The teardown at the bottom of this
+    # function is not in a `finally` and could not save us if it were: a SIGKILLed or SIGTERMed run
+    # (a timeout, a `kill`, a closed terminal) runs no Python at all on the way out. This self-test
+    # spawns a sandbox plus one work dir per practice landing, so it is the estate's largest producer
+    # of orphans — 138 dirs / 1.4GB of them on 2026-08-21. Sweeping here, by liveness of the owning
+    # pid, is the only sweep that sees a dead run's leavings.
+    from tools.landing import txn as TX
+    TX.sweep_orphan_sandboxes(print)
+
     live_before = carrier_md5s(root)
     sb = Sandbox(root, work).create()
     print('sandbox created at %s (base %s)' % (sb.path, sb.base_commit[:12]))

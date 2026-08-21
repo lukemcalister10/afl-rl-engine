@@ -19,6 +19,7 @@ after it is measured; a lander that did not measure itself could never be honest
 import fcntl
 import json
 import os
+import shutil
 import socket
 import subprocess
 import sys
@@ -198,7 +199,8 @@ class Ctx(object):
     DEFAULT_LOCK_TIMEOUT = 3600
 
     def __init__(self, root, spec, opts, evidence_dir=None, builder=None, fault=None,
-                 carriers=CA.LEVER_CARRIERS, work_dir=None, lock_tag=None, lock_timeout=None):
+                 carriers=CA.LEVER_CARRIERS, work_dir=None, lock_tag=None, lock_timeout=None,
+                 keep_work=False):
         self.root = os.path.abspath(root)
         self.spec = spec
         self.opts = opts
@@ -217,6 +219,10 @@ class Ctx(object):
         self.work_dir = work_dir or os.path.join(
             os.environ.get('LANDING_SNAPSHOT_DIR') or '/tmp', 'landing_work_%d' % os.getpid())
         os.makedirs(self.work_dir, exist_ok=True)
+        #: Keep the work dir (restore point + intermediate boards) after the transaction closes.
+        #: The default discards it — see `_discard_work_dir`, and the 1.4GB of orphans that ruling
+        #: was written against.
+        self.keep_work = keep_work
         self.evidence_dir = evidence_dir or os.path.join(self.root, spec.get('evidence_dir') or
                                                          'docs/evidence/landing_%s' % spec.get('date', 'undated'))
         # fault-injection flags a step reads; all default to the safe value
@@ -414,6 +420,7 @@ BANNER = '=' * 102
 
 def run(ctx, sequence=ST.LEVER_SEQUENCE):
     """Execute the sequence fail-closed. On any failure: ABORT, RESTORE, PROVE, REPORT."""
+    sweep_orphan_sandboxes(ctx.log)
     ctx.log(BANNER)
     ctx.log('LAND %s — %s' % (ctx.spec['act_kind'].upper(), ctx.spec['act']))
     ctx.log('  tree      : %s' % ctx.root)
@@ -462,13 +469,105 @@ def run(ctx, sequence=ST.LEVER_SEQUENCE):
         ctx.log('SOAK: hand-verification stands until the owner\'s word per act type (G3.iv).')
         ctx.log(BANNER)
         ctx.release_lock()
+        _discard_work_dir(ctx, 'the landing completed')
         return Result(True, timings=ctx.timings, facts=ctx.facts, ctx=ctx)
 
     abort = _abort(ctx, failed_step, err)
     _print_timings(ctx)
     ctx.release_lock()
+    if abort.get('byte_exact') in (True, 'n/a'):
+        _discard_work_dir(ctx, 'the abort proved every carrier byte-exact')
+    else:
+        ctx.log('WORK DIR KEPT: %s — the restore point is in it and the abort did not prove '
+                'byte-exact.' % ctx.work_dir)
     return Result(False, failed_step=failed_step, error=err, timings=ctx.timings, facts=ctx.facts,
                   abort=abort, ctx=ctx)
+
+
+#: The sandbox/work dirs this package creates, all named `<prefix><pid>` in the snapshot dir.
+SANDBOX_PREFIXES = ('landing_work_', 'landing_selftest_')
+
+
+def snapshot_root():
+    return os.environ.get('LANDING_SNAPSHOT_DIR') or '/tmp'
+
+
+def sweep_orphan_sandboxes(log=None):
+    """REMOVE THE SANDBOXES OF PROCESSES THAT ARE GONE. Returns (count, bytes).
+
+    Every dir this package creates is named `landing_work_<pid>` / `landing_selftest_<pid>`, so an
+    orphan is decidable rather than guessed at: if the pid is not alive, nothing can still be using
+    the directory. A LIVE pid is left alone, which is the safe direction of the one ambiguity here
+    (pid reuse) — the cost of skipping a stale dir is disk, the cost of deleting a live landing's
+    restore point is somebody's abort.
+
+    THE END OF THE TRANSACTION CANNOT BE THE ONLY SWEEP. `_discard_work_dir` handles the normal
+    close, but a run that is SIGKILLed or SIGTERMed — a timeout, a `kill`, a lost terminal — never
+    reaches any finally block, and that is exactly how the box came to hold 138 orphaned dirs and
+    1.4GB on 2026-08-21, one of them a self-test sandbox that outlived its killed parent. So the
+    sweep runs at the START of a landing and of a self-test, where the wreckage of the LAST run is
+    visible and its owner is provably dead.
+    """
+    root = snapshot_root()
+    swept = n = 0
+    try:
+        names = os.listdir(root)
+    except OSError:
+        return (0, 0)
+    for name in sorted(names):
+        pref = next((p for p in SANDBOX_PREFIXES if name.startswith(p)), None)
+        if pref is None:
+            continue
+        tail = name[len(pref):]
+        if not tail.isdigit():
+            continue
+        try:
+            os.kill(int(tail), 0)
+            continue                          # alive — not ours to remove
+        except ProcessLookupError:
+            pass                              # dead — an orphan, by construction
+        except OSError:
+            continue                          # alive but not ours to signal; leave it
+        path = os.path.join(root, name)
+        size = 0
+        for dirpath, _d, files in os.walk(path):
+            for f in files:
+                try:
+                    size += os.lstat(os.path.join(dirpath, f)).st_size
+                except OSError:
+                    pass
+        shutil.rmtree(path, ignore_errors=True)
+        if not os.path.exists(path):
+            n += 1
+            swept += size
+    if n and log:
+        log('swept %d orphaned sandbox dir(s) from %s (%.1f MB reclaimed) — their owning processes '
+            'are gone' % (n, root, swept / 1048576.0))
+    return (n, swept)
+
+
+def _discard_work_dir(ctx, why):
+    """THE LANDER CLEANS UP AFTER ITSELF — the /tmp leak, closed.
+
+    The work dir holds the restore point and the build's intermediate boards: ~10MB for a real
+    landing, and one per landing PROCESS, which includes each of the self-test's practice landings.
+    Nothing removed them. On 2026-08-21 the box carried 138 orphaned `landing_work_*` dirs totalling
+    1.4GB, survivors of every landing and self-test run since the package was built, on a disk that
+    had to be hand-cleared to 12G to re-fly a landing.
+
+    IT IS REMOVED ONLY WHEN THE RESTORE POINT HAS DONE ITS JOB — the landing completed, or the abort
+    proved every carrier byte-exact. If the restore could NOT be proved, the dir is exactly what a
+    human needs, and it stays: the failure mode of cleaning up is losing the only copy of the state
+    somebody has to put back by hand. `--keep-work` keeps it either way.
+    """
+    if getattr(ctx, 'keep_work', False):
+        ctx.log('WORK DIR KEPT (--keep-work): %s' % ctx.work_dir)
+        return
+    try:
+        shutil.rmtree(ctx.work_dir)
+        ctx.log('work dir discarded (%s): %s' % (why, ctx.work_dir))
+    except OSError as e:
+        ctx.log('could not discard the work dir %s: %s' % (ctx.work_dir, e))
 
 
 def _abort(ctx, failed_step, err):

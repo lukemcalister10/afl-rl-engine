@@ -132,7 +132,7 @@ def cmd_lever(a):
                          % a.builder)
     pre_ev = _preflight_selftest(a, doc) if not a.selftest else None
     opts = TX.Options(dry_run=a.dry_run, no_commit=a.no_commit, selftest=a.selftest)
-    ctx = TX.Ctx(a.root, doc, opts, builder=builder, fault=a.fault)
+    ctx = TX.Ctx(a.root, doc, opts, builder=builder, fault=a.fault, keep_work=a.keep_work)
     res = TX.run(ctx, ST.LEVER_SEQUENCE)
     _file_preflight_evidence(pre_ev, ctx.evidence_dir)
     if a.report:
@@ -203,6 +203,10 @@ def main(argv=None):
     p.add_argument('--builder', default='real', help='real | selftest | selftest-moved (self-test only)')
     p.add_argument('--fault', default=None, help='SELF-TEST ONLY: break one step (see txn.FAULTS)')
     p.add_argument('--selftest', action='store_true', help='permit fault injection / fake builders')
+    p.add_argument('--keep-work', action='store_true',
+                   help='keep the work dir (restore point + intermediate boards) after the '
+                        'transaction closes; the default discards it once the restore point has '
+                        'done its job. An unproved abort keeps it regardless.')
     p.add_argument('--report', default=None, help='write a machine-readable result JSON here')
     p.add_argument('--log', default=None, help='write the full transcript here')
     p.add_argument('--print-sequence', action='store_true', help='print the steps and carriers, exit')
