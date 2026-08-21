@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v822 2026-08-21 · **THE OWNERSHIP MIRROR IS CURRENT AND HAS A WRITER OF RECORD — and its seat caught the supervisor's own gate red.** THE DIAGNOSIS, better than "stale data": the mirror's 804 rows were never wrong — only its STAMP was (generated at a05fe951/cc02567f/R22), and because the UI refuses an unauthenticated mirror, the live ownership lane had been SILENTLY OFF sin
+  > # OPEN ITEMS REGISTER · v823 2026-08-21 · **THE R24 DRESS REHEARSAL FLEW — GO-WITH-NOTES (docs/evidence/r24_rehearsal_2026-08-21/, commit cd09bb5).** Six flights of the REAL tools/land round in a worktree sandbox against a deterministic synthetic R24 courier file (411 listed / 393 DNP, the owner's exact cp1252/CRLF shape); RUN F completed exit 0 in 278s. FIRST-EVER coverage: an ARMED round applied
 
-- new-form entries under `docs/register/entries/`: 10
+- new-form entries under `docs/register/entries/`: 11
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `6b5ba06fff98517e84cfdb9c4f71450da5280278` |
+| generated at commit | `cd09bb5ff49581a531050a08c6ef477c3069014e` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 201,
+  "coverage_entries": 202,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-21",
+      "headline": "**THE R24 DRESS REHEARSAL FLEW \u2014 GO-WITH-NOTES (docs/evidence/r24_rehearsal_2026-08-21/, commit cd09bb5).** Six flights of the REAL tools/land round i\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE R24 DRESS REHEARSAL FLEW \u2014 GO-WITH-NOTES (docs/evidence/r24_rehearsal_2026-08-21/, commit cd09bb5).** Six flights of the REAL tools/land round in a worktree sandbox against a deterministic synthetic R24 courier fil\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 823
+    },
     {
       "by": "explicit",
       "date": "2026-08-21",
@@ -1948,7 +1962,7 @@
       "version": 622
     }
   ],
-  "incidents": 112,
+  "incidents": 113,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",
