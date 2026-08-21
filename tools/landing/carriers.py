@@ -173,6 +173,23 @@ LEVER_CARRIERS = (
       'as with the movers bundles: the ownership store-apply transaction (#283) writes it when the '
       'OWNER moves a club, and the lander writes it when a LANDING moves the pin — same projector, '
       'same law, no conflict'),
+    F('ui/data/club_valuation.js',
+      'steps.ui writer 6 (ui/tools/ingest_inputs.py --clubs-only) + ownership_store_apply (#283, T8)',
+      'THE PICKS BUNDLE — the SIXTH UI bundle, and the same class F-9, F-10 and the ownership mirror '
+      'closed one carrier at a time. It carries the owner\'s PICK LOCATIONS and each held pick\'s '
+      'price off the engine\'s canonical curve, and it is stamped with the board + store it was '
+      'generated from. Measured on 2026-08-21 (register v827): the tree stood on board b3e8da99 / '
+      'store b745002e (R23) while the shipped bundle carried a05fe951 / cc02567f (R22) — and unlike '
+      'the ownership mirror it had NO reader-side guard, so the pocket and club pages showed '
+      'R22-board pick VALUES with nothing refusing and nothing flagged. Owner, the same night: "It is '
+      'essential that the UI displays the correct player locations and pick locations." Both halves '
+      'landed in v827: `MD.clubTotals.pin()` now refuses a bundle whose stamp is not the loaded '
+      'app\'s, and this entry names the writer that keeps it from ever needing to. IT COULD NOT BE A '
+      'CARRIER BEFORE THAT ACT: its stamp carried a wall-clock `generated` field, so no restore could '
+      'be proved byte-exact and no drift guard could be an equality; dropping that field is what made '
+      'the entry possible. TWO WRITERS, exactly as the ownership mirror has: the #283 store-apply '
+      'transaction writes it (its target T8) when the OWNER moves a club, and the lander writes it '
+      'when a LANDING moves the board or the store'),
 
     # ---- the sibling repin's own targets ----------------------------------------------------------
     F('engine/rl_after/ingestion/sibling_repin_state.json', 'sibling_repin.reconcile',

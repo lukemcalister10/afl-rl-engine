@@ -811,10 +811,15 @@ def _lines_with(out, *needles):
     """The child's own verdict lines, SELECTED BY NAME rather than by position.
 
     Writers 3 and 4 log `splitlines()[-1]`, which is the writer's verdict only while the writer's
-    verdict happens to be the last thing written. `ingest_inputs.py` emits a DeprecationWarning on
+    verdict happens to be the last thing written. `ingest_inputs.py` emitted a DeprecationWarning on
     3.12 (`datetime.utcnow`) AFTER its summary, so the tail read `drift guard: return
     datetime.datetime.utcnow()...` — a log line that names no verdict at all, in the transcript a
     landing is judged from. Naming the line we want cannot drift that way.
+
+    THAT PARTICULAR WARNING IS GONE — v827 removed the wall clock from both bundles and with it the
+    `datetime` import — and this helper stays, because the lesson was never about `utcnow`: a child's
+    last line is not its verdict, and the next child to print something after its summary would put
+    the defect back for free.
     """
     return [ln.strip() for ln in out.strip().splitlines()
             if any(n in ln for n in needles)]
@@ -833,15 +838,49 @@ def _own_stamp(path):
         return {}
 
 
+def _cv_stamp(path):
+    """The picks bundle's `stamp` — the block `ui/app/club_totals.js:pin()` authenticates (v827).
+
+    Same crude slice and the same fail-soft rule as `_own_stamp`, for the same reason: a bundle the
+    browser cannot parse is a bundle the browser refuses, and writer 6's predicate must report that
+    as a refusal rather than as a traceback.
+    """
+    try:
+        return _js_obj(path).get('stamp') or {}
+    except (OSError, ValueError):
+        return {}
+
+
 def ui(ctx):
-    """ALL FIVE UI writers. The thrice-proven trap, now code — and it keeps proving there is one more.
+    """ALL SIX UI writers. The thrice-proven trap, now code — and it keeps proving there is one more.
 
     THE CLASS, CLOSED ONE CARRIER AT A TIME: the UI bundles this estate ships are all written in this
     transaction now — `board_view_working.js` and `board_view_public.js` (writers 1-2),
     `movers_transition.js` (writer 3, the lineage's mirror), `movers.js` (writer 4, the blocks DERIVED
-    from that mirror), and `ownership.js` (writer 5, the store's ownership mirror). Each was found the
-    same way: a landing moved a record or an identity, shipped a reader that could not see it, and a
-    standing gate said so.
+    from that mirror), `ownership.js` (writer 5, the store's ownership mirror) and
+    `club_valuation.js` (writer 6, the owner's PICK LOCATIONS priced off the engine's curve). Each was
+    found the same way: a landing moved a record or an identity, shipped a reader that could not see
+    it, and a standing gate said so.
+
+    THE FIFTH TIME, AND THE ONE THAT SAID IT OUT LOUD. Writer 5's own note below records that "closed
+    by exhaustion" was wrong once; it was wrong twice. `ui/data/club_valuation.js` is the picks
+    bundle, and on 2026-08-21 it was found carrying board a05fe951 / store cc02567f (R22) while the
+    tree stood on b3e8da99 / b745002e (R23) — and it was WORSE than the mirror's case, because the
+    mirror at least refuses when its pin does not match. This bundle had no reader-side guard at all:
+    the pocket and club pages showed R22-board pick VALUES, silently. The owner's word that night is
+    why it is closed here rather than queued: "It is essential that the UI displays the correct player
+    locations and pick locations. I supplied them recently for that purpose!" Register v827 carries
+    both halves — `MD.clubTotals.pin()` (the reader's refusal) and this writer (so the refusal never
+    has to fire on a landed tree).
+
+    AND WHY IT COULD NOT HAVE BEEN WIRED EARLIER, WHICH IS THE INTERESTING HALF. Writer 5's fence note
+    says of this bundle "a wall-clock bundle that is not a carrier and could not be proved
+    byte-exact", and that was true: its stamp carried a `generated` ISO timestamp, so an abort could
+    never prove the restore byte-exact and a drift guard could never be an equality. v827 dropped that
+    field — the stamp's identity fields (board/store/engine/asOfRound/tag + the two curve md5s) carry
+    every scrap of provenance a reader needs, and the one reader that read the clock wanted provenance
+    anyway. The FULL ingest is byte-stable across two runs as a result, which is what let this file
+    become a carrier and this writer exist.
 
     THE FOURTH TIME, AND WHY THE "CLOSED BY EXHAUSTION" LINE THAT USED TO STAND HERE WAS WRONG. This
     docstring said in as many words "There is no fifth bundle behind them." There was.
@@ -905,6 +944,7 @@ def ui(ctx):
     mirror = _p(ctx, 'ui', 'data', 'movers_transition.js')
     movers = _p(ctx, 'ui', 'data', 'movers.js')
     own = _p(ctx, 'ui', 'data', 'ownership.js')
+    clubval = _p(ctx, 'ui', 'data', 'club_valuation.js')
     ctx.log('BEFORE  working %s  release-block=%s' % (md5(bundle), has_release(bundle)))
     ctx.log('BEFORE  public  %s  release-block=%s' % (md5(public), has_release(public)))
     ctx.log('BEFORE  mirror  %s  register=%d entr(ies)'
@@ -914,11 +954,15 @@ def ui(ctx):
     ctx.log('BEFORE  owners %s  pinned board=%s store=%s'
             % (md5(own), _own_stamp(own).get('board', '?')[:8],
                _own_stamp(own).get('generatedFromStore', '?')[:8]))
+    ctx.log('BEFORE  picks  %s  stamped board=%s store=%s R%s'
+            % (md5(clubval), str(_cv_stamp(clubval).get('board', '?'))[:8],
+               str(_cv_stamp(clubval).get('store', '?'))[:8],
+               _cv_stamp(clubval).get('asOfRound', '?')))
     if ctx.opts.dry_run:
-        ctx.log('--dry-run: none of the five writers is run.')
+        ctx.log('--dry-run: none of the six writers is run.')
         return {'writers': 0, 'dry_run': True}
 
-    ctx.log('WRITER 1/5: ui/tools/extract_board_view.py')
+    ctx.log('WRITER 1/6: ui/tools/extract_board_view.py')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'extract_board_view.py')], timeout=900)
     if rc != 0:
         raise StepError('extract_board_view failed:\n%s' % out[-2000:])
@@ -926,15 +970,15 @@ def ui(ctx):
             % (md5(bundle), has_release(bundle)))
 
     if not ctx.skip_second_ui_writer:
-        ctx.log('WRITER 2/5: round_movers.inject_release_contract(bundle, root, %s)' % boot['as_of_round'])
+        ctx.log('WRITER 2/6: round_movers.inject_release_contract(bundle, root, %s)' % boot['as_of_round'])
         rm = _load(ctx, 'round_movers', 'engine/rl_after/ingestion/round_movers.py')
         rel = rm.inject_release_contract(bundle, ctx.root, int(boot['as_of_round']))
         ctx.log('  release block: %s' % json.dumps(rel, sort_keys=True)[:200])
     else:
-        ctx.log('WRITER 2/5: SKIPPED BY FAULT INJECTION — the trap is live in this transaction.')
+        ctx.log('WRITER 2/6: SKIPPED BY FAULT INJECTION — the trap is live in this transaction.')
 
     mirror_before = md5(mirror)
-    ctx.log('WRITER 3/5: ui/tools/generate_movers_transition.py  '
+    ctx.log('WRITER 3/6: ui/tools/generate_movers_transition.py  '
             '(the lineage projection — supervisor ruling on F-9)')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'generate_movers_transition.py')],
                       timeout=300)
@@ -985,7 +1029,7 @@ def ui(ctx):
     # That landing passed this suite after registering a column. The recipe was already in the tree;
     # what was missing was the lander running it.
     movers_before = md5(movers)
-    ctx.log('WRITER 4/5: ui/tools/rebuild_movers_derived.py  '
+    ctx.log('WRITER 4/6: ui/tools/rebuild_movers_derived.py  '
             '(points / values / model_changes — supervisor ruling on F-10)')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'rebuild_movers_derived.py')],
                       timeout=900)
@@ -1025,15 +1069,20 @@ def ui(ctx):
     # file and no carrier movement. There is no branch to get wrong, and pre-existing drift — the
     # state this tree was actually in — is repaired rather than carried.
     #
-    # `--mirror-only` IS NOT A SHORTCUT, IT IS THE FENCE. The full ingest also writes
-    # ui/data/club_valuation.js (a wall-clock bundle that is not a carrier and could not be proved
-    # byte-exact) and performs the #283 STORE APPLY as its step 0 — an identity-moving write with its
-    # own writer of record. A landing is not that writer. In this lane the store is read and never
-    # written, and an un-couriered CSV edit HALTs the step by name instead of moving the store
-    # mid-flight.
+    # `--mirror-only` IS NOT A SHORTCUT, IT IS THE FENCE. The full ingest also performs the #283 STORE
+    # APPLY as its step 0 — an identity-moving write with its own writer of record. A landing is not
+    # that writer. In this lane the store is read and never written, and an un-couriered CSV edit
+    # HALTs the step by name instead of moving the store mid-flight.
+    #
+    # THIS NOTE USED TO CARRY A SECOND REASON — that the full ingest also writes
+    # ui/data/club_valuation.js, "a wall-clock bundle that is not a carrier and could not be proved
+    # byte-exact". That reason is DEAD as of v827 and is recorded here rather than deleted, because it
+    # is the sentence that named the work: the wall clock was dropped, the bundle became a carrier,
+    # and it is now written by WRITER 6 below through its own fenced lane. The store-apply half of the
+    # fence stands unchanged and is why both lanes exist at all.
     own_before = md5(own)
     if not ctx.skip_ownership_writer:
-        ctx.log('WRITER 5/5: ui/tools/ingest_inputs.py --mirror-only  '
+        ctx.log('WRITER 5/6: ui/tools/ingest_inputs.py --mirror-only  '
                 '(the ownership mirror, re-pinned to the landed board + store)')
         rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'ingest_inputs.py'),
                            '--mirror-only'], timeout=900)
@@ -1050,7 +1099,7 @@ def ui(ctx):
         ctx.log('  drift guard: %s'
                 % (_lines_with(out, 'MIRROR DRIFT GUARD') or ['(no verdict line)'])[-1])
     else:
-        ctx.log('WRITER 5/5: SKIPPED BY FAULT INJECTION — the mirror keeps the pin of a store this '
+        ctx.log('WRITER 5/6: SKIPPED BY FAULT INJECTION — the mirror keeps the pin of a store this '
                 'landing is replacing.')
 
     # THE READER'S OWN PREDICATE, ASSERTED HERE: this is `ui/app/ownership.js:pin()`, which compares
@@ -1078,6 +1127,71 @@ def ui(ctx):
             % (str(ost.get('board'))[:8], str(ost.get('generatedFromStore'))[:8],
                ost.get('asOfRound'), ost.get('nAuthored')))
 
+    # ---- WRITER 6: the picks bundle, re-stamped to the board and store this landing lands ---------
+    # THE SAME LAW, ONE CARRIER FURTHER ALONG, AND THE SAME THREE-PART PATTERN writers 3, 4 and 5 use:
+    # run the writer UNCONDITIONALLY, run the writer's OWN checker, then assert the reader's own
+    # predicate here, in-step, before any gate asserts it.
+    #
+    # UNCONDITIONAL FOR THE REASON WRITER 5 IS: since v827 this bundle carries NO wall clock, so it is
+    # a pure function of the board, the store, the owner's pick workbook and the release-active curve.
+    # Regenerating it on a landing that moved none of those produces a byte-identical file and no
+    # carrier movement — there is no branch to get wrong, and pre-existing drift (the state this tree
+    # was actually found in on 2026-08-21) is repaired rather than carried.
+    #
+    # `--clubs-only` IS NOT A SHORTCUT, IT IS THE FENCE, and it is the fence for a sharper reason than
+    # writer 5's. The FULL ingest performs the #283 STORE APPLY as its step 0 — an identity-moving
+    # write with its own writer of record (ui/tools/ownership_store_apply.py), which moves the store
+    # md5 and every pin that ripples into it, MID-FLIGHT, inside a transaction whose whole claim is
+    # that it moves only what it declared. A landing is not that writer. In this lane the store is
+    # read and never written, and an un-couriered CSV edit HALTs the step by name instead.
+    clubval_before = md5(clubval)
+    if not ctx.skip_clubs_writer:
+        ctx.log('WRITER 6/6: ui/tools/ingest_inputs.py --clubs-only  '
+                '(the picks bundle, re-stamped to the landed board + store)')
+        rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'ingest_inputs.py'),
+                           '--clubs-only'], timeout=900)
+        if rc != 0:
+            raise StepError('the picks bundle regeneration failed (exit %s):\n%s' % (rc, out[-2000:]))
+        for ln in _lines_with(out, 'CLEAN INGEST', 'CLUBS-ONLY'):
+            ctx.log('  %s' % ln)
+
+        rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'ingest_inputs.py'),
+                           '--clubs-check'], timeout=900)
+        if rc != 0:
+            raise StepError('the picks bundle is not what this tree projects after regenerating it '
+                            '(exit %s):\n%s' % (rc, out[-2000:]))
+        ctx.log('  drift guard: %s'
+                % (_lines_with(out, 'PICKS DRIFT GUARD') or ['(no verdict line)'])[-1])
+    else:
+        ctx.log('WRITER 6/6: SKIPPED BY FAULT INJECTION — the picks bundle keeps the stamp of a board '
+                'this landing is replacing.')
+
+    # THE READER'S OWN PREDICATE, ASSERTED HERE: this is `ui/app/club_totals.js:pin()`, which compares
+    # the bundle's stamped board + store against the working bundle's stamp and sends the picks overlay
+    # to the HALTED path on any mismatch. Asserting it in-step is what turns "the writer ran" into "the
+    # browser will honour what the writer wrote" — and until v827 there was no such predicate to
+    # assert, which is precisely how an R22 bundle rode a R23 tree in silence.
+    cst = _cv_stamp(clubval)
+    cv_fails = []
+    for k, exp in (('board', boot['board']), ('store', boot['store'][:8]),
+                   ('expectedBoard', boot['board'][:8]), ('asOfRound', boot['as_of_round'])):
+        if str(cst.get(k)) != str(exp):
+            cv_fails.append('stamp.%s (%s != %s)' % (k, cst.get(k), exp))
+    if _js_obj(clubval).get('halt') is not None:
+        cv_fails.append('the bundle carries a HALT block — the ingest refused to price the picks')
+    if not cst.get('pvcOk'):
+        cv_fails.append('stamp.pvcOk is %r — the picks were not priced off a validated curve'
+                        % cst.get('pvcOk'))
+    if cv_fails:
+        raise StepError('THE PICKS BUNDLE WOULD BE REFUSED BY ui/app/club_totals.js:pin() — %s. The '
+                        'pick surface would ship UNAVAILABLE (or, before v827, ship SILENTLY STALE, '
+                        'which is what happened between the R23 advance and 2026-08-21), and it must '
+                        'hold BEFORE the gates step.' % cv_fails)
+    ctx.log('  picks stamp == the landed identity: board %s store %s R%s, %s pick(s) priced off %s '
+            '(pin() would ACCEPT it)'
+            % (str(cst.get('board'))[:8], str(cst.get('store'))[:8], cst.get('asOfRound'),
+               cst.get('nPicks'), cst.get('pvcCurveMd5')))
+
     ctx.log('AFTER   working %s  release-block=%s' % (md5(bundle), has_release(bundle)))
     ctx.log('AFTER   public  %s  release-block=%s' % (md5(public), has_release(public)))
     ctx.log('AFTER   movers  %s  %s' % (md5(movers),
@@ -1095,6 +1209,12 @@ def ui(ctx):
                                        if md5(own) == own_before else
                                        'MOVED %s -> %s, tracking the landed board + store'
                                        % (own_before[:12], md5(own)[:12])))
+    ctx.log('AFTER   picks  %s  %s' % (md5(clubval),
+                                       'UNMOVED (neither the board, the store, the pick workbook nor '
+                                       'the curve moved)'
+                                       if md5(clubval) == clubval_before else
+                                       'MOVED %s -> %s, tracking the landed board + store'
+                                       % (clubval_before[:12], md5(clubval)[:12])))
 
     src = open(bundle, encoding='utf-8').read()
     m = re.search(r'window\.__MATCHDAY_WORKING__\s*=\s*(\{.*)\n?', src, re.S)
@@ -1134,17 +1254,21 @@ def ui(ctx):
             fails.append('stamp.release.%s (%s != %s)' % (k, relb.get(k), exp))
     if fails:
         raise StepError('THE UI BUNDLE IDENTITY IS WRONG: %s' % fails)
-    ctx.log("THE HTML APP'S EMBEDDED BOARD IDENTITY IS %s. All five writers ran; the release block "
-            "is back, the reader can see the transition that produced this board, and the ownership "
-            "mirror is pinned to it rather than to the store it replaced." % boot['board'])
-    return {'writers': 5, 'bundle_md5': md5(bundle), 'public_md5': md5(public),
+    ctx.log("THE HTML APP'S EMBEDDED BOARD IDENTITY IS %s. All six writers ran; the release block "
+            "is back, the reader can see the transition that produced this board, the ownership "
+            "mirror is pinned to it rather than to the store it replaced, and the pick surface is "
+            "stamped to it rather than to the board before it." % boot['board'])
+    return {'writers': 6, 'bundle_md5': md5(bundle), 'public_md5': md5(public),
             'embedded_board': st.get('board_md5'),
             'mirror_md5': md5(mirror), 'mirror_moved': md5(mirror) != mirror_before,
             'register_entries': len(lin_reg or []),
             'movers_md5': md5(movers), 'movers_moved': md5(movers) != movers_before,
             'model_changes': len(shipped_mc),
             'ownership_md5': md5(own), 'ownership_moved': md5(own) != own_before,
-            'ownership_pin': str(ost.get('generatedFromStore'))[:8]}
+            'ownership_pin': str(ost.get('generatedFromStore'))[:8],
+            'club_valuation_md5': md5(clubval),
+            'club_valuation_moved': md5(clubval) != clubval_before,
+            'club_valuation_pin': str(cst.get('board'))[:8], 'n_picks': cst.get('nPicks')}
 
 
 # ================================================================================= STEP 7 — GATES
@@ -2350,7 +2474,7 @@ LEVER_SEQUENCE = (
     ('lineage',      'the out-of-round column and the append-only entry',    lineage),
     ('contract',     'restamp_dynamic + the bake-lane repin + check',        contract),
     ('sibling',      'the balanced sibling, rebuilt and reconciled if moved', sibling),
-    ('ui',           'ALL FIVE UI writers, and the identity read back out',  ui),
+    ('ui',           'ALL SIX UI writers, and the identity read back out',   ui),
     ('state',        'docs/STATE.md regenerated from the carriers (3c)',     state),
     ('gates',        'the landing gate set, verdicts off exit codes',        gates),
     ('claims',       'emit the claims file and verify it against the tree',  claims),
@@ -2397,7 +2521,7 @@ ROUND_SEQUENCE = (
     ('day0',              'the day-0 reference — regenerated AT the advance, only', day0),
     ('contract',          'restamp_dynamic + the bake-lane repin + check',          contract),
     ('sibling',           'the balanced sibling: verify (the repin ran in-txn)',    sibling),
-    ('ui',                'ALL FIVE UI writers, and the identity read back out',    ui),
+    ('ui',                'ALL SIX UI writers, and the identity read back out',     ui),
     ('movers_page',       "the owner's movers page, through the frozen template",   movers_page),
     ('state',             'docs/STATE.md regenerated from the carriers (3c)',       state),
     ('gates',             'the landing gate set, verdicts off exit codes',          gates),

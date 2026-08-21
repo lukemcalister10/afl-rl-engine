@@ -170,6 +170,32 @@ def _fault_stale_ownership_mirror(ctx):
     open(p, 'w', encoding='utf-8').write(raw)
 
 
+def _fault_stale_picks_bundle(ctx):
+    """WRITER 6 never runs, AND the shipped picks bundle carries a foreign board + store stamp.
+
+    THE FAULT IS THE TREE'S OWN HISTORY, NOT AN INVENTION — and it is the worse half of the ownership
+    mirror's story. On 2026-08-21 `ui/data/club_valuation.js` carried board a05fe951 / store cc02567f
+    (R22) while the tree stood on b3e8da99 / b745002e (R23), and unlike the mirror it had NO
+    reader-side guard: the pocket and club pages showed R22-board pick VALUES with nothing refusing
+    and nothing flagged. `MD.clubTotals.pin()` (v827) is the refusal that closes it, and writer 6 is
+    what keeps the refusal from ever having to fire on a landed tree.
+
+    Same construction as `_fault_stale_ownership_mirror`, for the same reason: the writer is silenced
+    AND the stamp is falsified, because a fault that only falsified the file would be REPAIRED by the
+    unconditional writer and prove nothing about the step's predicate.
+    """
+    ctx.skip_clubs_writer = True
+    p = os.path.join(ctx.root, 'ui', 'data', 'club_valuation.js')
+    boot = json.load(open(os.path.join(ctx.root, 'data', 'expected_boot.json'), encoding='utf-8'))
+    raw = open(p, encoding='utf-8').read()
+    stale_board, stale_store = 'a' * 32, 'c' * 32
+    raw = raw.replace('"board": "%s"' % boot['board'], '"board": "%s"' % stale_board)
+    raw = raw.replace('"store": "%s"' % boot['store'][:8], '"store": "%s"' % stale_store[:8])
+    raw = raw.replace('"expectedBoard": "%s"' % boot['board'][:8],
+                      '"expectedBoard": "%s"' % stale_board[:8])
+    open(p, 'w', encoding='utf-8').write(raw)
+
+
 def _fault_gate_red(ctx):
     p = os.path.join(ctx.root, 'data', 'expected_boot.json')
     raw = open(p, encoding='utf-8').read()
@@ -306,8 +332,8 @@ def _sha_of(path):
 #: A KEY MAY ALSO BE MODE-QUALIFIED, `'<step>:<mode>'`. `--fault step:mode` was ALWAYS parsed that way
 #: (fault_point has split on the colon since the first draft) and the mode half was then thrown away,
 #: so a step carrying more than one thing worth breaking had no way to say which. The `ui` step now
-#: runs FIVE writers guarding five different predicates; one fault key for all of them would mean
-#: four of them were never broken. The plain `'<step>'` key remains the step's default fault, so the
+#: runs SIX writers guarding six different predicates; one fault key for all of them would mean
+#: five of them were never broken. The plain `'<step>'` key remains the step's default fault, so the
 #: self-test's "every step, broken once" loop is untouched — a qualified key ADDS a case, it never
 #: replaces one.
 FAULTS = {
@@ -340,6 +366,10 @@ FAULTS = {
                         'WRITER 5 never runs and the shipped ownership mirror keeps a foreign store '
                         'pin — the live ownership lane ships SWITCHED OFF, silently',
                         _fault_stale_ownership_mirror),
+    'ui:stale_picks':  ('stale_picks_bundle',
+                        'WRITER 6 never runs and the shipped picks bundle keeps a foreign board + '
+                        'store stamp — the pick surface ships STALE (and, before v827, silently)',
+                        _fault_stale_picks_bundle),
 
     # ---- the round lander's own steps (PLAN_v6 2b) ----------------------------------------------
     'sheet':             ('sheet_pin_drift',
@@ -419,6 +449,7 @@ class Ctx(object):
         # fault-injection flags a step reads; all default to the safe value
         self.skip_second_ui_writer = False
         self.skip_ownership_writer = False
+        self.skip_clubs_writer = False
         self.false_claim = False
         self.abort_report = None
 
