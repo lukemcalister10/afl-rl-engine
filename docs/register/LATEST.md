@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v814 2026-08-21 · **PACKAGE 3a IS LANDED AND VERIFIED — the sheet pins are out of the engine.** One flight of tools/land lever (plus one CORRECT preflight abort on a concurrent-writer dirty tree, nothing written), 1491.6s machine-timed. Board b3e8da99 BYTE-EXACT before/after (zero movers, the act's standing falsifier); store b745002e and balanced 7c32a540 unmoved; engine_he
+# OPEN ITEMS REGISTER · v815 2026-08-21 · **RULEBOOK AMENDED — P12 + P13 signed (owner word verbatim: "Sign the rulebook, that's fine", 2026-08-21, given against the supervisor's described batch).** P12 THE PRICED-ARM READING: every value-moving adoption carries its own arm's no-arb band reading + class check PRE-FLIP inside the prereg (the staircase-adoption incident made standing — a sibling var
 
-(one line per pen; full entry: docs/register/entries/v814.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v815.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
