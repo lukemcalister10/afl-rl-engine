@@ -39,16 +39,27 @@ hand-typed: the panel 10/10, the movers "exactly two known-reds", the R14 fixtur
 legitimately moved. This check has no day on which it was written.
 
 --------------------------------------------------------------------------------------------------
-THE IDENTITY SET  (8)                        THE CARRIERS  (7 files, 40 fields)
+THE IDENTITY SET  (11)                       THE CARRIERS  (8 files, 43 fields)
 
-    store         engine/rl_after/rl_model_data.json      data/expected_boot.json
-    board         data/rl_build/rl_app_data.json          data/release_contract.json
-    engine_head   engine/rl_after/_merged_recover.py      data/season_state.json
-    rl_model      engine/rl_after/rl_model.py             data/rl_build/rl_app_data.json.srcmd5
-    fv            engine/forward_valuation/*.py           ui/data/board_view_working.js  (stamp)
-    config        data/model_config.json                  ui/data/board_view_working.js  (stamp.release)
-    register      LTI_REGISTER.md                         data/book_stable_seal.json
-    as_of_round   (declared — see below)
+    store            engine/rl_after/rl_model_data.json   data/expected_boot.json
+    board            data/rl_build/rl_app_data.json       data/release_contract.json
+    engine_head      engine/rl_after/_merged_recover.py   data/season_state.json
+    rl_model         engine/rl_after/rl_model.py          data/rl_build/rl_app_data.json.srcmd5
+    fv               engine/forward_valuation/*.py        ui/data/board_view_working.js  (stamp)
+    config           data/model_config.json               ui/data/board_view_working.js  (stamp.release)
+    register         LTI_REGISTER.md                      data/book_stable_seal.json
+    as_of_round      (declared — see below)               data/sheet_pins.json
+    sheet            docs/owner_annotations/SITTER_2026_v1.csv   (the file the declaration names)
+    sheet_rows       the same file's csv row count
+    sheet_injured_y  the same file's injured=Y count
+
+THE SHEET ENTERED THIS TABLE ON 2026-08-21 (PLAN_v6 3a, deferred by its own text to 2b: "the sheet
+md5 + the pin file become MANIFEST-CHECKED CARRIER FIELDS with the round lander as sole writer once
+2b lands"). Until 3a those three facts were SIX LITERALS IN TWO BLOCKS inside `_merged_recover.py`,
+where no gate could see them and the two copies could drift — which is exactly what ERRATUM E4
+records happening. They are now ONE declaration, `data/sheet_pins.json`, written by ONE writer
+(`land round`, steps.sheet) and CHECKED HERE, computed from the artifact like every other row: a
+sheet that moves without its declaration moving is caught by this gate before it halts a build.
 
 TRUTH, per identity, is COMPUTED from the left column. The one exception is `as_of_round`, which
 names a fact about the world (which round the league has played) and has no artifact to hash. Its
@@ -81,7 +92,8 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-IDENTITIES = ('store', 'board', 'engine_head', 'rl_model', 'fv', 'config', 'register', 'as_of_round')
+IDENTITIES = ('store', 'board', 'engine_head', 'rl_model', 'fv', 'config', 'register', 'as_of_round',
+              'sheet', 'sheet_rows', 'sheet_injured_y')
 
 # The carrier FILES. The keys are the carrier-group names the runner blocks on.
 BOOT_REL = 'data/expected_boot.json'
@@ -90,6 +102,7 @@ SEASON_REL = 'data/season_state.json'
 SIDECAR_REL = 'data/rl_build/rl_app_data.json.srcmd5'
 BVW_REL = 'ui/data/board_view_working.js'
 BOOK_REL = 'data/book_stable_seal.json'
+SHEET_PINS_REL = 'data/sheet_pins.json'
 
 # The artifacts TRUTH is computed from.
 STORE_SRC = 'engine/rl_after/rl_model_data.json'
@@ -157,7 +170,44 @@ def compute_truth(root):
     # as_of_round has no artifact to hash — it is a fact about the league, and expected_boot.json is
     # its declared authority (the same file Guard 5 anchors on). Marked `anchor`, never `computed`.
     truth['as_of_round'] = (str(_json(p(BOOT_REL)).get('as_of_round')), 'anchor %s' % BOOT_REL)
+
+    # THE SHEET — three facts about ONE artifact, computed from that artifact (PLAN_v6 3a, deferred
+    # to 2b: "the sheet md5 + the pin file become MANIFEST-CHECKED CARRIER FIELDS with the round
+    # lander as sole writer"). The subject is the file the DECLARATION names, not one hardcoded here:
+    # the declaration says what it pins, and this gate measures what it pinned and asserts the three
+    # facts about it. Measured the ENGINE'S OWN WAY (see `_sheet_facts`), because a gate that
+    # measured the sheet a nearly-identical way would pass a file the build then halts on.
+    sheet_md5, sheet_rows, sheet_y = _sheet_facts(root)
+    truth['sheet'] = (sheet_md5, 'computed md5 %s' % _sheet_rel(root))
+    truth['sheet_rows'] = (str(sheet_rows), 'computed csv row count %s' % _sheet_rel(root))
+    truth['sheet_injured_y'] = (str(sheet_y), 'computed injured=Y count %s' % _sheet_rel(root))
     return truth
+
+
+def _sheet_rel(root):
+    """The sheet the pin declaration names. A declaration that names none pins nothing."""
+    rel = (_json(os.path.join(root, SHEET_PINS_REL)) or {}).get('sheet_path')
+    if not rel:
+        raise Halt('%s names no sheet_path. A pin declaration with a hole in it pins nothing, and '
+                   'this gate will not invent the subject it is supposed to be checking.'
+                   % SHEET_PINS_REL)
+    return rel
+
+
+def _sheet_facts(root):
+    """(md5, rows, injured_y) — character for character what ORDER 41 / ORDER 42 compute.
+
+    `_merged_recover.py`'s guards read the raw bytes, md5 them, decode utf-8, count
+    `csv.DictReader` rows, and count rows whose `injured` cell strips-and-uppers to 'Y'. Any other
+    reading is a different measurement wearing the same name — the failure ERRATUM E1b records, where
+    a `.decode("utf-8", errors="replace")` mangled 16 of 411 names on exactly the file it was written
+    to check.
+    """
+    import csv                                                                  # noqa: PLC0415
+    raw = open(os.path.join(root, _sheet_rel(root)), 'rb').read()
+    rows = list(csv.DictReader(raw.decode('utf-8').splitlines()))
+    ys = [r for r in rows if (r.get('injured') or '').strip().upper() == 'Y']
+    return hashlib.md5(raw).hexdigest(), len(rows), len(ys)
 
 
 # --------------------------------------------------------------------------------------- CARRIERS
@@ -180,6 +230,7 @@ def read_carriers(root):
     stamp = bvw.get('stamp') or {}
     rel = stamp.get('release') or {}
     book = _json(p(BOOK_REL))
+    pins = _json(p(SHEET_PINS_REL))
 
     def s(v):
         return '' if v is None else str(v)
@@ -187,7 +238,7 @@ def read_carriers(root):
     G_BOOT, G_RC = 'expected_boot', 'release_contract'
     G_SEASON, G_SIDE = 'season_state', 'board_sidecar'
     G_STAMP, G_REL = 'ui_bundle.stamp', 'ui_bundle.stamp.release'
-    G_BOOK = 'book_seal'
+    G_BOOK, G_PINS = 'book_seal', 'sheet_pins'
 
     return {
         'store': [
@@ -245,6 +296,20 @@ def read_carriers(root):
             (G_SEASON, 'season_state.as_of_round', s(season.get('as_of_round')), None, 'live'),
             (G_STAMP, 'board_view_working.stamp.asOfRound', s(stamp.get('asOfRound')), None, 'live'),
             (G_REL, 'board_view_working.stamp.release.as_of_round', s(rel.get('as_of_round')), None, 'live'),
+        ],
+        # THE SHEET PIN DECLARATION — one carrier each, and one is enough for the assertion to bite:
+        # these are the three facts the ORDER 41 and ORDER 42 guards HALT the build on, and until
+        # PACKAGE 3a they were six literals inside the engine where no gate could see them. They are
+        # `live`, never `sealed`: a sheet that has moved without its declaration moving is not a lag,
+        # it is a build that is about to halt.
+        'sheet': [
+            (G_PINS, 'sheet_pins.sheet_md5', s(pins.get('sheet_md5')), MD5, 'live'),
+        ],
+        'sheet_rows': [
+            (G_PINS, 'sheet_pins.sheet_rows', s(pins.get('sheet_rows')), None, 'live'),
+        ],
+        'sheet_injured_y': [
+            (G_PINS, 'sheet_pins.sheet_injured_y', s(pins.get('sheet_injured_y')), None, 'live'),
         ],
     }
 
@@ -340,8 +405,9 @@ def render(rows, halted, truth_by_ident, root):
     total = len(rows)
     nbad = sum(1 for r in rows if r[5] not in ('OK', 'SEALED-LAG'))
     nlag = sum(1 for r in rows if r[5] == 'SEALED-LAG')
+    nfiles = len({r[1] for r in rows})
     out.append('  %d carrier fields across %d identities and %d files: %d coherent, %d incoherent, '
-               '%d sealed-lag' % (total, len(IDENTITIES), 7, total - nbad - nlag, nbad, nlag))
+               '%d sealed-lag' % (total, len(IDENTITIES), nfiles, total - nbad - nlag, nbad, nlag))
     if nlag:
         out.append('')
         out.append('  SEALED-LAG — a freeze-stamp naming the state it was SEALED against, not the')

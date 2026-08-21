@@ -1,7 +1,7 @@
 """acceptance/checks/manifest.py — the trunk check: the widened release-manifest coherence gate.
 
 This wraps `release_manifest_check.py` (repo root) into the verdict contract. All of the real work
-is there; this file's only job is to turn 40 carrier comparisons into ONE row and the right set of
+is there; this file's only job is to turn 43 carrier comparisons into ONE row and the right set of
 halted carriers.
 
 The verdict logic is the blocked-once law in miniature:
@@ -46,12 +46,13 @@ def _load_gate(root):
 #: Every carrier this check is capable of halting. The runner reads this to prove the registry is
 #: ordered so that no downstream check can run before its carrier has been adjudicated.
 _GROUPS = ('expected_boot', 'release_contract', 'season_state', 'board_sidecar',
-           'ui_bundle.stamp', 'ui_bundle.stamp.release', 'book_seal')
-_IDENTS = ('store', 'board', 'engine_head', 'rl_model', 'fv', 'config', 'register', 'as_of_round')
+           'ui_bundle.stamp', 'ui_bundle.stamp.release', 'book_seal', 'sheet_pins')
+_IDENTS = ('store', 'board', 'engine_head', 'rl_model', 'fv', 'config', 'register', 'as_of_round',
+           'sheet', 'sheet_rows', 'sheet_injured_y')
 
 
 def check(ctx):
-    """All 8 identities agree across all 40 carrier fields in 7 files."""
+    """All 11 identities agree across all 43 carrier fields in 8 files."""
     rmc = _load_gate(ctx.root)
     truth = rmc.compute_truth(ctx.root)
     rows, halted, ok = rmc.evaluate(ctx.root)

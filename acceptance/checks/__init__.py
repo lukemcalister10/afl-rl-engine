@@ -29,7 +29,7 @@ from acceptance.checks import standing as _standing
 #    coherence gate above. First build, everything else hangs off it."
 C.register('release_manifest', _manifest.check,
            reads=(),
-           doc='All 8 identities agree across all 40 carrier fields in 7 files')
+           doc='All 11 identities agree across all 43 carrier fields in 8 files')
 
 # 2. Guard 5 checkout legs. The audit calls this "the strongest thing in the estate" and
 #    "COVERED — non-vacuous on every leg I probed". It anchors on expected_boot, so it reads those
