@@ -199,6 +199,21 @@ live right now:** any trade the owner authored into `docs/inputs/AFFL_Player_Loc
 writes `ui/data/ownership.js` — a landing carrier, explicitly this seat's no-go zone. **Named, not
 touched.**
 
+**Python UI suites:** `club_curve_provenance.test.py` **35/35**, `extract_seam.test.py` **42/42**.
+
+**Two more could not complete, and the cause is the host, not the code:**
+`ownership_store_apply.test.py` and `xlsx_read.test.py` both fail with `OSError: [Errno 28] No space
+left on device`. Both work by copying the whole repo into `/tmp`, and the host filesystem is **100%
+full with 432K free** — 11 GB in the shared scratchpad and 11 GB in `.claude/worktrees/`, both other
+seats' working artifacts, none of it mine to delete. My own scratchpad files were cleared and made no
+difference.
+
+Stated without spin: **I did not run these two at the start of the session, so I cannot claim they were
+green before this act.** What I can say is that neither touches a file this act changed —
+`ownership_store_apply.test.py` exercises `ui/tools/ownership_store_apply.py` and `xlsx_read.test.py`
+exercises `ui/tools/xlsx_read.py`, and both are untouched here — and that the failure text is an
+ENOSPC on a file copy, not an assertion.
+
 **A second live finding, named and not touched:** `ui/data/ownership.js` — see
 `ownership_sidecar_stale_finding.txt` and the paragraph above.
 
