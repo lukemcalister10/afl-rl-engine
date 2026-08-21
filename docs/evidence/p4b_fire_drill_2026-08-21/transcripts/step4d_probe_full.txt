@@ -1,0 +1,15 @@
+################ (a) verify_restore.sh env + repo root on PYTHONPATH ################
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+v0surf FROZEN-SIGNATURE HALT: this build's config signature cf0fc631f6bd38f2bfe24c17bc083d9f is NOT in data/v0surf.pkl (frozen: 41af73267f1bcd86bdc208e5f32376d1, 4405cba2b42fb96f50496ec791cb806c).
+  The engine will NOT silently re-fit the V0 pick-curve surface — that silent fallback was removed (owner word 2026-07-28), for the same reason q97m has no fit path: a silent refit makes the board unreproducible across CPU/BLAS kernels, and it hides a freeze that has gone stale.
+  If the config CHANGED deliberately (a split, an exclusion, a curve move), regenerate and re-pin:
+      RL_V0SURF_REFIT=1 RL_BAKE_V0SURF=1 python3 session_2026-07-18/legf6/scripts/refit_v0surf.py --bake      (on a clean instance)
+  If you are running a declared kill-switch experiment, set RL_V0SURF_REFIT=1 to fit explicitly.
+PROBE_A_RC=1 SECONDS=27.570385623
+
+################ (b) BARE env — no model-semantics RL_* set, RL_PRIOR_TREES only ################
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+MARIC_LANGDON: 1356.9615223807425 782.5498905447674
+PROBE_B_RC=0 SECONDS=45.552498663

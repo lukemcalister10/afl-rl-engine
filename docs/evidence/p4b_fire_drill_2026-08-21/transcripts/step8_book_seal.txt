@@ -1,0 +1,15 @@
+====================================================================================================
+THE BAKE — BOOK RE-SEAL on the CANDIDATE LINE, GATE MODE  [--check, writes nothing]
+====================================================================================================
+  worktree      : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/p4b/restore
+  engine head   : 5ac6780f   store: cb38ef11
+  RL_V0SURF_PKL : <NOT SET — the in-repo pinned surface is now the default load path>
+
+regenerating the candidate matrix (gate mode, the 18 dials at their SHIPPED DEFAULTS) ...
+matrix meta   : engine=5ac6780f store=cb38ef11 config=eed19a75f775
+
+  sealed (before): head 5ac6780f store cb38ef11 n 2650 stable 86a82e6ebce66844
+  candidate      : head 5ac6780f store cb38ef11 n 2650 stable 86a82e6ebce66844
+
+  B3 RE-VERIFY: PASS — the committed seal matches a freshly regenerated gate-mode candidate book, every field
+BOOK_SEAL_CHECK_RC=0   SECONDS=136.147975591

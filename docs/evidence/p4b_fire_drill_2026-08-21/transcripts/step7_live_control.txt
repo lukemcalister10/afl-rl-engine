@@ -1,0 +1,23 @@
+CONTROL_COPY_SECONDS=1.027058215
+== control build (RL_CONFIG_MODE=bake) ==
+CTRL_BUILD_RC=0  SECONDS=145.527307292
+live pinned board : b3e8da99bc7f632e5d1eebc732f9cf01
+control rebuilt   : b3e8da99bc7f632e5d1eebc732f9cf01
+== control book ==
+CTRL_BOOK_RC=0  SECONDS=328.263687322
+== control one_source_selftest ==
+CTRL_SELFTEST_RC=1  SECONDS=149.692349148
+CTRL PASS count: 128
+CTRL FAIL count: 11
+--- control non-PASS lines (truncated to 160 cols) ---
+  FAIL LEG A fade: zero-evidence (Y=debutyr-1, E_q==0) => iso_eff == iso_corr, unchanged (sample 80; ('nick-daicos', 'iso_eff!=iso_corr at w=0'))
+  FAIL #326 level IRE reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 14 live entrants re-price when the level mov
+  FAIL #326 level ND65+ reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 28 live entrants re-price when the level m
+  FAIL #326 level PDN reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 16 live entrants re-price when the level mov
+  FAIL #326 level PDS has 0 live entrants — proved on its REAL rows off-board (retired flags lifted, evaluated, restored): NO ROW RE-PRICES via the - (0 of 21
+  FAIL #326 level RD:KPD reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 8 live entrants re-price when the level m
+  FAIL #326 level RD:KPF reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 6 live entrants re-price when the level m
+  FAIL #326 level RD:MID reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 12 live entrants re-price when the level 
+  FAIL #326 level RD:SD reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 16 live entrants re-price when the level m
+  FAIL #326 level RD:SF reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 15 live entrants re-price when the level m
+  FAIL #326 level SSP reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 28 live entrants re-price when the level mov

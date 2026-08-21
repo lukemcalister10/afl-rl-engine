@@ -1,0 +1,16 @@
+== release_contract.py check  (verify(), fenced mode 'gate') ==
+RELEASE-CONTRACT CHECK
+RELEASE-CONTRACT CHECK: FAILED
+======== RELEASE CONTRACT (gate) REJECTED — BUILD HALTED ========
+  - contract config_sha256 cef06fd6250b != live manifest hash eed19a75f775 (stale config pin)
+  - contract identity board=4b448a821f54 != expected_boot a05fe951f784 (stale pin; an INTENTIONAL hold must be declared in held_candidates)
+  - contract identity engine_head=c0a7e969fdd9 != expected_boot 5ac6780f3c49 (stale pin; an INTENTIONAL hold must be declared in held_candidates)
+  - contract identity fv=d920557ef21d != expected_boot 6e9a370e5970 (stale pin; an INTENTIONAL hold must be declared in held_candidates)
+  - contract identity rl_model=33f940735281 != expected_boot 6fe7c4155866 (stale pin; an INTENTIONAL hold must be declared in held_candidates)
+  - contract identity store=d9a24282357c != expected_boot cb38ef1171dc (stale pin; an INTENTIONAL hold must be declared in held_candidates)
+  - season_state.json source_store_md5 d9a24282 != live store cb38ef11 — exposure_pace was derived from a STALE store
+  A canonical release build binds the stamped release-state identity (data/release_contract.json).
+  Fix the drift above, or re-stamp the contract at a bake in the same commit that moves the
+  manifest/board identity. Ambient shell overrides must not silently change the release state.
+===============================================================
+RELEASE_CONTRACT_CHECK_RC=1   SECONDS=.068428898

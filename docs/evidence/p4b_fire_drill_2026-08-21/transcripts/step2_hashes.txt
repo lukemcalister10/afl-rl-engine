@@ -1,0 +1,51 @@
+====================================================================================================
+A. PINNED FILE ARTIFACTS — restored bytes vs the tag's own data/expected_boot.json
+====================================================================================================
+pin            path                                       pinned                             restored md5                       verdict
+board          data/rl_build/rl_app_data.json             a05fe951f78482c70520480e184c80ec   a05fe951f78482c70520480e184c80ec   MATCH
+store          engine/rl_after/rl_model_data.json         cb38ef1171dcf20aae66ebf12682be0d   cb38ef1171dcf20aae66ebf12682be0d   MATCH
+engine_head    engine/rl_after/_merged_recover.py         5ac6780f3c4931edcaa527576bbdfb88   5ac6780f3c4931edcaa527576bbdfb88   MATCH
+rl_model       engine/rl_after/rl_model.py                6fe7c4155866d80e8045bed2d3bf2802   6fe7c4155866d80e8045bed2d3bf2802   MATCH
+band           data/cm_400.pkl                            34faa8659cc8f19794f5cb9584fa19b2   34faa8659cc8f19794f5cb9584fa19b2   MATCH
+q97m           data/q97m.pkl                              cfdc73216c099e5e8f1fda3968f31c00   cfdc73216c099e5e8f1fda3968f31c00   MATCH
+v0surf         data/v0surf.pkl                            5dd34ca82735f5c8f021b1c7320df8f8   5dd34ca82735f5c8f021b1c7320df8f8   MATCH
+peak_model     engine/rl_after/peak_model_v4.pkl          f305fe5330222f4fa14d3654a0e91ef7   f305fe5330222f4fa14d3654a0e91ef7   MATCH
+pvc_snapshot   engine/rl_after/pvc_snapshot.json          ade79790efc8ad4585c2c6800a935eaa   ade79790efc8ad4585c2c6800a935eaa   MATCH
+bust_prior     engine/rl_after/bust_prior_table.json      5942aa6ad7be1d482eed737997486c70   5942aa6ad7be1d482eed737997486c70   MATCH
+register       LTI_REGISTER.md                            652d83e87780e415a01a2de6d8b3cc57   652d83e87780e415a01a2de6d8b3cc57   MATCH
+
+====================================================================================================
+B. DERIVED / COMPUTED PINS — recomputed by the TAG'S OWN code in the restored tree
+====================================================================================================
+fv             engine/forward_valuation (sha256 set)      MATCH
+               pinned   6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346
+               restored 6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346
+config         config_manifest.manifest_hash()            MATCH
+               pinned   eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1
+               restored eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1
+board.srcmd5   data/rl_build/..srcmd5 (content)           {"derived": "rl_app_data.json", "own_md5": "a05fe951f78482c70520480e184c80ec", "
+balanced_board (no in-tree artifact)                      234c3414fa001bd9538deb6668e169f0
+
+====================================================================================================
+C. THE TAG'S OWN release_contract.json identities vs the SAME tag's expected_boot
+====================================================================================================
+field                contract says                      expected_boot says                 verdict
+balanced_board_md5   234c3414fa001bd9538deb6668e169f0   234c3414fa001bd9538deb6668e169f0   AGREE
+band                 34faa8659cc8f19794f5cb9584fa19b2   34faa8659cc8f19794f5cb9584fa19b2   AGREE
+board                4b448a821f54180182637983f7a26a9d   a05fe951f78482c70520480e184c80ec   DIFFER
+engine_head          c0a7e969fdd9327fc0b043af14a4bfc6   5ac6780f3c4931edcaa527576bbdfb88   DIFFER
+fv                   d920557ef21d0eec6434853b07869dd4   6e9a370e5970c5aefa859858070f4c34   DIFFER
+register             652d83e87780e415a01a2de6d8b3cc57   652d83e87780e415a01a2de6d8b3cc57   AGREE
+rl_model             33f940735281a07e3b6ca19f31bf2ea6   6fe7c4155866d80e8045bed2d3bf2802   DIFFER
+store                d9a24282357cf3083b1640466e3ecd83   cb38ef1171dcf20aae66ebf12682be0d   DIFFER
+config_sha256        cef06fd6250be86804f7d4432fdef896   eed19a75f775aeafe4ee5ea4b3990667   DIFFER
+as_of_round          22                                 22                                 AGREE
+held_candidates declared in the contract: None
+release_version: 'v2.11-final-rc1-PROVISIONAL'
+contract_sha256 stored     ef25c2599e4b70958345c33749e564b79100d11b8a8109fe3817d5abe7ce646a
+contract_sha256 recomputed ef25c2599e4b70958345c33749e564b79100d11b8a8109fe3817d5abe7ce646a  -> SEAL INTACT
+
+====================================================================================================
+BYTE-RESTORE VERDICT (expected_boot leg): PASS — every pinned identity matches
+CONTRACT-COHERENCE LEG: INCOHERENT at the tag — fields: board, engine_head, fv, rl_model, store, config_sha256
+STEP2_HASH_SECONDS=0.034

@@ -1,0 +1,42 @@
+
+================================================================================
+3.1  boot_guard.py (Guard 5) — CLI entry point, restored tree, RL_REPO bound to the restore
+================================================================================
+boot-store guard (Guard 5) PASS  [p4b_fire_drill]  store cb38ef11 == pinned cb38ef11  |  rl_model 6fe7c415 == pinned 6fe7c415  |  fv 6e9a370e == pinned 6e9a370e (checkout+loaded-path) (ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 — NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) — it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 numéraire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.])
+GUARD5_CLI_RC=0   SECONDS=.062469390
+
+================================================================================
+3.2  boot_guard.assert_fv_provenance() — forward-valuation checkout + loaded-path legs
+================================================================================
+assert_fv_provenance PASS
+GUARD5_FV_RC=0   SECONDS=.030668418
+
+================================================================================
+3.3  release_contract.py check — the tag's own release-state verifier, fenced mode gate
+================================================================================
+release contract ef25c2599e4b  version=v2.11-final-rc1-PROVISIONAL  as_of_round=22  switches={'RL_LEGE': '1', 'RL_LEGF': '1', 'RL_PVC2': '1'}
+RELEASE_CONTRACT_RC=0   SECONDS=.026808869
+
+================================================================================
+3.4  ruling_config_check.py — the tag's config-ruling gate
+================================================================================
+=== RULING-CONFIG ASSERTION (R3: RL_PVCFIT=0 by default + export bake-guard active) ===
+    repo = /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/p4b/restore
+  PASS engine source present (/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/p4b/restore/engine/rl_after/_merged_recover.py)
+  PASS export source present (/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/p4b/restore/engine/rl_after/rl_export.py)
+  PASS engine reads RL_PVCFIT via os.environ.get('RL_PVCFIT', <default>) != '0' (R3 form)
+  PASS engine RL_PVCFIT default string == '0' (compliant-by-default); got '0'
+  PASS live env RL_PVCFIT is unset or '0' (bake env does not enable the held-out fit); got None
+  PASS export R3 BAKE GUARD condition present (_W4PVC on + no RL_ALLOW_PVCFIT_BOARD -> refuse)
+  PASS export R3 BAKE GUARD raises SystemExit (halt-not-warn: a fitted board is unbakeable)
+  PASS export R3 BAKE GUARD sits BEFORE json.dump(rl_app_data.json) (guards the write)
+--- R-i (RL_LTI_CLOCK=advance by default + manifest-pinned) ---
+  PASS engine reads RL_LTI_CLOCK via os.environ.get('RL_LTI_CLOCK', <default>) (R-i form)
+  PASS engine RL_LTI_CLOCK default string == 'advance' (owner-ruled R-i); got 'advance'
+  PASS live env RL_LTI_CLOCK is unset or 'advance' (bake env does not pause the L1c clock); got None
+  PASS config manifest (data/model_config.json) pins RL_LTI_CLOCK='advance' (rides artifact identity); got 'advance'
+
+RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL_LTI_CLOCK=advance (engine default + env + manifest pin, owner ruling R-i).
+RULING_CONFIG_RC=0   SECONDS=.025399745
+
+SUMMARY_RCS guard5_cli=0 guard5_fv=0 release_contract=0 ruling_config=0

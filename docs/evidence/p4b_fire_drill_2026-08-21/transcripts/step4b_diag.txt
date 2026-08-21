@@ -1,0 +1,5 @@
+== the named-player probe, stderr UNMUZZLED (verify_restore.sh runs this with 2>/dev/null) ==
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+wire_redesign: the canonical resolver fv_provenance is not importable (ModuleNotFoundError("No module named 'fv_provenance'")) — cannot select the forward_valuation source (fail-closed; fv-provenance remediation).
+PROBE_RC=1   SECONDS=13.572323459

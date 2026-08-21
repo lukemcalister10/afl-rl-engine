@@ -1,0 +1,11 @@
+committed seal      : stable 86a82e6ebce668448ffb76b59d1d95583b276c210379e2b34ce3a263fc5b4322  n_players 2650  head 5ac6780f  store cb38ef11
+RESTORED book file  : raw md5 afeef743c209aa152e73716b3d7d2305 | top-level keys 2647 | stable-keyed rows 2647 | stable 79fdbb02e1f2ae16cf9888bae7743554ad1ef63093e36c2d43e282a21c6bf0d4 -> SEAL MISMATCH
+REBUILT  book file  : raw md5 f98efdea8c8cdd3145616fa7799db6d6 | top-level keys 2650 | stable-keyed rows 2650 | stable 86a82e6ebce668448ffb76b59d1d95583b276c210379e2b34ce3a263fc5b4322 -> SEAL MATCH
+
+top-level key sample (restored): ['140119988848320', '140119988639104', '140119988638720', '140119988638336']
+  -> these are CPython id() values, so the raw file is not byte-reproducible across processes,
+     and an id COLLISION silently drops a row from the raw file (see the row counts above).
+LIVE committed seal : stable 9f46aba3ba8b056d0835928239dd6fee  n_players 2650  head 1867e953  store b745002e
+LIVE book file      : raw md5 afeef743c209aa152e73716b3d7d2305 | top-level keys 2647 | stable-keyed rows 2647
+LIVE book stable    : 79fdbb02e1f2ae16cf9888bae7743554 -> SEAL MISMATCH
+top-level key sample: ['140119988848320', '140119988639104', '140119988638720']

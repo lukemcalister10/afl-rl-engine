@@ -1,0 +1,45 @@
+== 6.1 canonical rebuild #2 (RL_CONFIG_MODE=bake) — parity + build-twice determinism ==
+REBUILD_CANONICAL2_RC=0   SECONDS=83.816206025
+tagged   : a05fe951f78482c70520480e184c80ec
+rebuild#2: a05fe951f78482c70520480e184c80ec
+
+== 6.2 rebuild the BOOK (s4_matrix_M1v7.py) — the selftest's F2 precondition ==
+BOOK_RC=0   SECONDS=133.483545170
+book md5 rebuilt : f98efdea8c8cdd3145616fa7799db6d6
+book md5 tagged  : afeef743c209aa152e73716b3d7d2305
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+
+== 6.3 one_source_selftest.py — the tag's OWN self-test, on the rebuilt restored world ==
+SELFTEST_RC=1   SECONDS=95.701231855
+--- PASS/FAIL/STALE tally ---
+PASS count: 126
+FAIL count: 13
+STALE count: 0
+--- non-PASS lines ---
+  FAIL every board v == round(engine gated ev / 1.0524) — numéraire display (F1); mismatches=96 [('harry-sheezel', 10433, 10850.09040343894), ('will-ashcroft', 6607, 6834.338162476675), ('nasiah-wanganeen-milera', 8644, 9043.261871346542), ('bodhi-uwland', 3568, 3717.6422143903533), ('jason-horne-francis', 5600, 5844.623812725198), ('finn-callaghan', 5516, 5757.286705591294), ('mac-andrew', 3750, 3887.583222023271), ('sam-darcy', 5076, 5278.68796454729)]
+  FAIL LEG A fade: zero-evidence (Y=debutyr-1, E_q==0) => iso_eff == iso_corr, unchanged (sample 80; ('nick-daicos', 'iso_eff!=iso_corr at w=0'))
+  FAIL FROZEN-RULER curve bytes == contract file md5 78ad9842
+  FAIL FROZEN-RULER curve payload md5=9729f0c5 == contract
+  FAIL #326 level IRE reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 14 live entrants re-price when the level moves)
+  FAIL #326 level ND65+ reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 28 live entrants re-price when the level moves)
+  FAIL #326 level PDN reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 16 live entrants re-price when the level moves)
+  FAIL #326 level PDS has 0 live entrants — proved on its REAL rows off-board (retired flags lifted, evaluated, restored): NO ROW RE-PRICES via the - (0 of 21 rows re-price when the level moves)
+  FAIL #326 level RD:KPD reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 8 live entrants re-price when the level moves)
+  FAIL #326 level RD:KPF reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 6 live entrants re-price when the level moves)
+  FAIL #326 level RD:SD reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 16 live entrants re-price when the level moves)
+  FAIL #326 level RD:SF reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 15 live entrants re-price when the level moves)
+  FAIL #326 level SSP reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 28 live entrants re-price when the level moves)
+--- last 12 lines ---
+  - FROZEN-RULER curve bytes == contract file md5 78ad9842
+  - FROZEN-RULER curve payload md5=9729f0c5 == contract
+  - #326 level IRE reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 14 live entrants re-price when the level moves)
+  - #326 level ND65+ reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 28 live entrants re-price when the level moves)
+  - #326 level PDN reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 16 live entrants re-price when the level moves)
+  - #326 level PDS has 0 live entrants — proved on its REAL rows off-board (retired flags lifted, evaluated, restored): NO ROW RE-PRICES via the - (0 of 21 rows re-price when the level moves)
+  - #326 level RD:KPD reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 8 live entrants re-price when the level moves)
+  - #326 level RD:KPF reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 6 live entrants re-price when the level moves)
+  - #326 level RD:SD reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 16 live entrants re-price when the level moves)
+  - #326 level RD:SF reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 15 live entrants re-price when the level moves)
+  - #326 level SSP reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 28 live entrants re-price when the level moves)
+  (GUARD 4 — correction-sticks canary — runs separately: python3 guard_correction_canary.py)

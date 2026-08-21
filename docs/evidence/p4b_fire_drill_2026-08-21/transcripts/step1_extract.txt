@@ -1,0 +1,4 @@
+extract_rc=0
+STEP1_EXTRACT_SECONDS=1.714369760
+files=4503
+bytes=253422539

@@ -1,0 +1,20 @@
+== verify_restore.sh /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/p4b/restore ==
+PASS  head  _merged_recover.py = 5ac6780f
+PASS  store rl_model_data.json = cb38ef11
+PASS  rl_model.py (DPP strip) = 6fe7c415
+PASS  band  cm_400.pkl = 34faa865
+FAIL  Maric   ev(2026) =   (expected 1271)
+FAIL  Langdon ev(2026) =   (expected 567)
+PASS  harness present: _gate1_wf.py
+PASS  harness present: _gate1_picksplit.py
+PASS  harness present: s4_matrix_M1v7.py
+PASS  harness present: s4_render_M1v7.py
+PASS  cp-pair guard (repo fv == workspace fv, all .py) = 0
+--- run_panel.sh tail (10-panel; confirm 10/10) ---
+        at /home/claude/rl_workspace/rl_after/_merged_recover.py
+        md5 3af8c1f7  !=  expected 5ac6780f (pinned; repo checkout )
+        STALE BOOT: this is not the checked-out store. Re-run bootstrap.sh to re-seed the workspace from the checked-out source; never boot on an unverified store.
+=========================================================================================
+====================================
+VERDICT: 9 PASS / 2 FAIL  =>  RESTORE-VERIFY FAIL
+VERIFY_RESTORE_RC=1   SECONDS=13.716731178

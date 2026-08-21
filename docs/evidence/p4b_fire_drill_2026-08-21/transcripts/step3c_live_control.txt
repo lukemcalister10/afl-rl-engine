@@ -1,0 +1,8 @@
+== CONTROL: release_contract.py check on the CURRENT head (read-only) ==
+RELEASE-CONTRACT CHECK
+RELEASE-CONTRACT CHECK: PASS  (contract 1b435ff6f988; identities + config + posture consistent)
+CONTROL_RELEASE_CONTRACT_RC=0
+
+== CONTROL: boot_guard.py on the CURRENT head (read-only) ==
+boot-store guard (Guard 5) PASS  [p4b_control]  store b745002e == pinned b745002e  |  rl_model 6fe7c415 == pinned 6fe7c415  |  fv 6e9a370e == pinned 6e9a370e (checkout+loaded-path) (ID-PRIMARY MIGRATI
+CONTROL_GUARD5_RC=0
