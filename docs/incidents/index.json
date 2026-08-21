@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 192,
+  "coverage_entries": 193,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-21",
+      "headline": "**PACKAGE 3a IS LANDED AND VERIFIED \u2014 the sheet pins are out of the engine.** One flight of tools/land lever (plus one CORRECT preflight abort on a co\u2026",
+      "hits": {
+        "DECLARED": [
+          "**PACKAGE 3a IS LANDED AND VERIFIED \u2014 the sheet pins are out of the engine.** One flight of tools/land lever (plus one CORRECT preflight abort on a concurrent-writer dirty tree, nothing written), 1491.6s machine-timed. B\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 814
+    },
     {
       "by": "pattern",
       "date": "2026-08-21",
@@ -1906,7 +1920,7 @@
       "version": 622
     }
   ],
-  "incidents": 109,
+  "incidents": 110,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",
