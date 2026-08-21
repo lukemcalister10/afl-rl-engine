@@ -1,7 +1,7 @@
 # ENGINE PRIMER — the meaning layer · v7 · authored 2026-08-04 (hi1an4); v7 at register v598 (2026-08-07): the no-era-normalization law and the composition-artifact trap (§4 item 10); v6 at register v593 (2026-08-07): the credit-in-surface entanglement added to §4 item 9 (the #333 memo's measured finding); v5 at register v591 (2026-08-06): the #336 resolution (the band prices establishment risk in full; the adopted reference-layer form), the implemented tenure rule, and the two-lever hump framing added at the rotation
 
 **WHAT THIS IS.** Every incoming seat reads this IN FULL, immediately after the charter and before
-CURRENT_STATE. It carries what the process documents don't: what the engine is FOR, what each artifact
+the state file. It carries what the process documents don't: what the engine is FOR, what each artifact
 MEANS, the discoveries that changed how numbers must be read, and the name-traps that have burned seats.
 It exists because a seam once verified every byte flawlessly while not knowing what the bytes meant, and
 the owner spent an evening teaching it his own project back ("register v562–v563", 2026-08-04).
@@ -9,14 +9,98 @@ the owner spent an evening teaching it his own project back ("register v562–v5
 **WHAT IT IS NOT.** Not the record and not the law — a MAP. Where it disagrees with the register or a
 primary document, the primary record wins and this file gets corrected. It is maintained by the supervisor
 pen and changes only when MEANING changes: a new basis, a renamed quantity, a discovery that reinterprets
-an artifact. Routine state lives in CURRENT_STATE; hashes and branch tips do not belong here.
+an artifact. Routine state lives in `docs/STATE.md` — machine-written, regenerated at every landing;
+hashes and branch tips do not belong here. (`docs/CURRENT_STATE.md`, the hand-maintained predecessor
+this file used to point at, is a tombstone since 2026-08-21 — PLAN_v6 3c, process law P6.)
+
+---
+
+## 0 · THE GOVERNING TEST AND THE OWNER'S PRODUCT LAWS
+
+*Rehomed VERBATIM from `docs/CURRENT_STATE.md` PART A on 2026-08-21, when that file was retired to a
+tombstone (PLAN_v6 3c). This is the owner's own material and it did not live anywhere else in the
+tree; it is standing, not state, so it belongs in the meaning layer rather than in a generated file.
+PLAN_v6 3c names the RULEBOOK as the governing test's eventual home — that move needs the owner's
+word (RULEBOOK law 10(a): changes to the rulebook are owner-only), and it is owed to him. Until he
+gives it, THIS is the citable copy, and the words below are his, unedited.*
+
+### THE GOVERNING TEST — read this before proposing any work
+
+> **Is this a reasonable chance of stopping the project from working?**
+> Not: *can this be fixed?*
+
+This is the owner's test, given 2026-07-27, and it overrides every instinct below it. Everything is
+imperfect; applying "is this imperfect" means the work never ends. **This is a hobby project.** Most
+cars have an oil leak and drive fine.
+
+Three consequences, stated because this project has failed them repeatedly:
+
+1. **If it cannot plausibly stop the thing working, it gets one line in the register and nothing
+   else.** No sweep, no cold reviewer, no directive, no norm.
+2. **The guards are the maintenance burden.** The proof harnesses take ~86 minutes and are wired to
+   nothing. The register grew until it broke the agents that must read it. A hand-typed board id took
+   the whole app down. Each was built to prevent imperfection and now costs more than it returns.
+   **Before adding a guard, price its upkeep — and deleting one is a legitimate answer.**
+3. **Do not fix the symptom of a thing that should not exist.** Club totals were baked into a file
+   that goes stale; the fix applied was to regenerate the file, when the right fix was to stop baking
+   a sum that a browser computes instantly.
+
+**Owner's own words, 2026-07-27:** *"I'm sick of wasting time on endless over-engineering that
+doesn't help serve the project."* · *"We won't get anywhere, because we obsess over small details
+that don't help the project."*
+
+**And write plainly.** Not register-dialect, not code names, not "class-(c) defects" and "non-vacuity
+proven both directions". A human reads this and should not need a translator.
+
+### THE OWNER'S PRODUCT LAWS (2026-08-04, the v562 correction — read these before touching the surface)
+
+> *"The core tenet of this project was to value picks, and recognise that different intersections
+> have different effects."*
+> *"A key defender at pick 6 may be, and probably should be, worth less than pick 6, but at pick 45,
+> maybe it's worth more. It could be by lots, or not by much. It's that simple: we have the data."*
+
+- **LAW (intersections):** the year-zero surface is a TRUE position × age × pick surface — per
+  position/age the data draws a line along the pick axis, below the curve where the data says below,
+  above where it says above, **crossing freely**. A position dial constant across picks is BARRED.
+- **LAW (no hard bands):** no hard banding on any axis, **in the implementation OR in the
+  presentation of results**. Every pick its own value; neighbouring picks near-identical; locality
+  binds (*"I don't care for pick 20s data in considering pick 1"*). Report per-pick or smooth
+  curves, never buckets.
+- These were violated once, by a seam-approved design (v561, voided v562). The audit of any surface
+  design checks these laws FIRST, and the load-bearing property of any design is stated to the owner
+  in one plain sentence before approval is even discussed.
+
+### The named hazard classes
+
+Found the expensive way. Listed so a seat inherits them in 2KB rather than 300KB. **These are
+diagnostic aids, not a mandate to go hunting.** (The seat charter cites these by NUMBER — "hazard
+class 16" in its 2026-08-04 amendment — so the numbering is load-bearing and does not get re-sorted.)
+
+| # | class | what it looks like | v |
+|---|---|---|---|
+| 1 | **Right-name-wrong-file** | a *true* hash of the *wrong* artifact | v464 |
+| 2 | **Duplicated assertion** | a fix applied to one copy reads as closed and is not | v469 |
+| 3 | **Load-bearing invisible character** | a byte that carries meaning, cannot be seen, destroyed by ordinary hygiene | v490 |
+| 4 | **False success signal** | a fix whose own report reads clean for the portion it missed | v494 |
+| 5 | **Vacuity** | a check that cannot fail: `d41d8cd9` empty-input hashes, `!=` for `==`, a test reading its own expectation | v432 · v463 · v469 · v470 · v471 |
+| 6 | **Shallow clone** | ancestry negatives that are container artifacts, not facts | v473 · v487 · v507 |
+| 7 | **Two-axis sibling sets** | enumerate what **reads** the changed field *and* what **stamps** the moved identity — the seam repeated this at v522 | v507 · v522 |
+| 8 | **Classification-by-symptom is provisional** | a red's class is proven only by attempting the fix | v466 |
+| 9 | **First-failures only** | suites halt at the first failure, so a red map is never a completeness claim | v469 |
+| 10 | **Same shape is not same cause** | compare maps step-level *and* cause-level | v494 |
+| 11 | **A ruling's channel is not its author** | a seam ruling relayed by the owner stays a seam ruling | v495 · v507 |
+| 12 | **Every count names its denominator** | *"496 of 2,651 store rows, of which 69 are priced and 38 active"* is the required shape | v501 |
+| 13 | **Identity by key, never substring** | a name-fragment match taking `[0]` answers confidently about the wrong object | v505 |
+| 14 | **Anchoring sentinels** | a strip rule's off-by-one hashes are invariant under header content | v507 |
+| 15 | **A label is not a compute path** | identical CPU string + byte-identical pins, divergent fitted bytes; a box is classified only by reproducing output bytes | v560 |
+| 16 | **A correct audit of the wrong question** | every figure re-runs byte-identical, yet the design contradicts the owner's stated intent — mechanics verified, intent unchecked; the owner had to extract the load-bearing property himself | v562 |
 
 ---
 
 ## 1 · WHAT THE PROJECT IS
 
 A player-valuation engine for the owner's AFL keeper league (AFFL). **It is a hobby project** — the
-governing test in CURRENT_STATE Part A overrides every instinct to gold-plate. The product surfaces:
+governing test in §0 above overrides every instinct to gold-plate. The product surfaces:
 
 - **The board** — a priced list of players (~804 active), derived from the store by the engine. It is a
   MARKET price list: clubs trade against it.
@@ -41,7 +125,8 @@ That sentence is the moral of this project's hardest-won discovery (§4).
   the release MANIFEST that stamps it, not a ladder — hashing it matches nothing) — what each national draft pick
   slot is worth, **picks 1–64 only; selections past 64 are NOT ON THE CURVE** (RULEBOOK law 4 v2.1 — they enter the pool, valued by position; matrices use 65 as the pool INDEX, §5). Identity = the N32
   string-keyed payload md5, never the file md5. **As of 2026-08-05 the ruled curve IS shipped-on-main**
-  (the re-closure, owner word) — CURRENT_STATE carries the current payload identity.
+  (the re-closure, owner word) — `data/expected_boot.json` pins the snapshot the build asserts, and the
+  payload identity is recomputed by the N32 recipe, never read off a filename.
 - **The year-zero surface** (`data/v0surf.pkl`) — the value of a NEWLY DRAFTED player: the price at entry.
   The owner's definition is binding: *"the true worth of a player the moment they are drafted"* — career
   included, not year-one output. Rebuilt and LANDED (#306, 2026-08-05) as `ruled_curve(pick) × m(pos,
@@ -84,8 +169,8 @@ fitted at build time — everything is loaded from pins.
    included); the model prior only as a counted fallback. Known wart: the completion back-tests **+4.7–8.4%
    optimistic** — reported beside results, never silently corrected.
 3. **The anchor principle (N29) and the owner's product laws.** Year-zero values anchor to measured pick
-   outcomes; position/age redistribute around the anchor and never inflate it. The laws (CURRENT_STATE
-   Part A): intersections are the point — position effects VARY along the pick axis, crossing the curve
+   outcomes; position/age redistribute around the anchor and never inflate it. The laws (§0 above,
+   in the owner's own words): intersections are the point — position effects VARY along the pick axis, crossing the curve
    freely; and **no hard bands anywhere, in models or in anything shown to the owner** — per-pick, smooth,
    locality-weighted, confidence-weighted, with no-data regions shown as no-data.
 4. **Machines disagree about floating-point fits (item 380 → N35).** Identical code, data, and library
@@ -185,7 +270,8 @@ fitted at build time — everything is loaded from pins.
   string-keyed and int-keyed dumps of the same ladder hash differently).
 - **Which curve am I looking at?** As of 2026-08-05: shipped-on-main = the RULED curve, re-closed on the
   corrected store (the #271 and first-adopted ladders are history). Current identities live in
-  CURRENT_STATE's merged-main block — check there, then verify by payload md5, never by filename.
+  the generated `docs/STATE.md` and in `data/expected_boot.json` — check there, then verify by payload
+  md5, never by filename.
 - **Older names in the record.** Anything written before 2026-08-05 uses the earlier words for the same
   things: `substrate` = working state · `evidence substrate` = evidence base · `lane` = path · `capture` =
   snapshot · `sealed twin` = paired field · `digest` = summary · `seeded workspace` = prepared workspace.
@@ -202,11 +288,12 @@ fitted at build time — everything is loaded from pins.
   numbered standing rulings — look one up by grepping the register for its number; never read the
   register front to back.
 - **The laws of record:** `RULEBOOK.md` (product laws) · `docs/directives/SEAT_CHARTER_seam.md` (this
-  seat's law) · `docs/CURRENT_STATE.md` (live state + rulings summary) · the register (by pointer only).
+  seat's law) · `docs/STATE.md` (generated current identities, never authored) · `docs/register/LATEST.md`
+  then the register by pointer only.
 
 ## 7 · HOW TO USE THIS DOCUMENT
 
-Read it before CURRENT_STATE. When you present ANY number, name its quantity in plain words — belief or
+Read it before any state file. When you present ANY number, name its quantity in plain words — belief or
 outcome, which basis, which curve, which denomination, which population and window (denominators always).
 When a term surprises you, check §5 before reasoning. When the owner's memory disagrees with a derived
 view, verify against the primary record before contradicting him — his memory has beaten derived views

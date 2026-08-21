@@ -166,3 +166,34 @@ delegated goes to Opus with a tight checklist and the seam re-verifying the deci
 **Context economy at onboarding:** the issue threads (#306, #328) are hundreds of thousands of tokens
 end to end. A seat reads ONLY the comment ids CURRENT_STATE or its task names — never a thread front
 to back. The registers, threads and evidence trees are lookup structures, not reading lists.
+
+## AMENDMENT OF 2026-08-21 (the 3c act — `docs/CURRENT_STATE.md` is RETIRED)
+**Every instruction above that sends a seat to `docs/CURRENT_STATE.md` is superseded in place.** That
+file is a TOMBSTONE at its own path (it stays there so existing pointers resolve) and carries no
+state. It was retired under process law P6 for the reason the law itself records: it was
+hand-maintained behind an authority banner and sat 156 register versions stale.
+
+**THE ROTATION PROTOCOL'S READING ORDER, AS IT NOW STANDS** — this replaces the ordered lists in
+"ROTATION PROTOCOL" and in the AMENDMENT OF 2026-08-04:
+
+1. this charter;
+2. `docs/ENGINE_PRIMER.md` IN FULL — the meaning layer, and since this act its §0 carries the
+   owner-signed material that used to open CURRENT_STATE: the governing test (2026-07-27), the
+   owner's product laws (2026-08-04), and the sixteen named hazard classes (numbering unchanged, so
+   "hazard class 16" above still resolves);
+3. `docs/STATE.md` — the MACHINE-WRITTEN state file: current identities, the laws pointer with its
+   lint verdict, the register pointer, the lineage tip. It is regenerated at every landing and
+   asserted current by `acceptance::state_file`. **No seat edits it**; a seat that finds it wrong
+   fixes the carrier or reds the gate, never the file;
+4. `docs/register/LATEST.md` line 1, then the register BY POINTER only — never front to back;
+5. `docs/runbooks/STANDING_PROCEDURES.md` when a task reaches the norms, the roles, the housing or
+   the environment carries (rehomed from the retired file in the same act);
+6. live state verified by the seat's own commands; then read-back and hold.
+
+**THE PEN'S CURRENT_STATE DUTY IS ABOLISHED, not moved.** "The pen REPLACES CURRENT_STATE.md Part B
+WHOLESALE at every pen" is void: there is no hand-maintained state file to replace. The pen's writing
+duty is the register (`docs/register/README.md`), and the state file's writer is
+`tools/landing/state.py`, called by the lander at every landing.
+
+**Where the sentence above reads "the comment ids CURRENT_STATE or its task names":** read "the
+comment ids the register entry or the task names".
