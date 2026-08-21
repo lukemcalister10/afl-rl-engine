@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v830 2026-08-21 · **REBAKE DECISION D5 IS RULED — THE MINT IS WAIVED. Owner words verbatim (2026-08-21): "Waiving the minted value, not bothered about conservation for this."** The rebake is NOT required to land conserved; the law-9 reading is still taken and REPORTED at the bake (the number goes on the record, per the standing per-arm discipline), but conservation is not a
+  > # OPEN ITEMS REGISTER · v831 2026-08-21 · **ALL SIX REBAKE DECISIONS ARE NOW RULED — the rebake week is fully specified, pending R24. Owner words verbatim (2026-08-21):** D1 = "Exact it is." (the exact constraint construction, with the private-contract tripwire self-test; the ratchet retires on the must-move proof). D2 = the hill construction accepted WITH THE PEAK CHALLENGED: "I feel like the hig
 
-- new-form entries under `docs/register/entries/`: 18
+- new-form entries under `docs/register/entries/`: 19
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `4a088dc3ced865b9b988fc1b62701b903353f150` |
+| generated at commit | `540d057c50697baf33b14adf12459677f9b43b1c` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
