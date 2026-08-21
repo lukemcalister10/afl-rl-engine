@@ -1,0 +1,71 @@
+======================================================================================================================
+ORDER 44 — THE NO-ARB PAGE INPUTS, CHECKED
+======================================================================================================================
+
+CHECK 1 — PROVENANCE: one store, one engine, one record count; the ONLY difference is the dial.
+  SFXBASE   store b745002e   engine 3f4aa10b   records 2648   recs-md5 06f3395d3cb3
+  SFXARAW   store b745002e   engine 3f4aa10b   records 2648   recs-md5 b2040c264bb5
+  SFXBRAW   store b745002e   engine 3f4aa10b   records 2648   recs-md5 8554b54ae67e
+  SFXACON   store b745002e   engine 3f4aa10b   records 2648   recs-md5 7761590ea754
+  SFXBCON   store b745002e   engine 3f4aa10b   records 2648   recs-md5 780c61f2f675
+  every matrix on store b745002e                             PASS (b745002e)
+  every matrix on engine 3f4aa10b (the edited tree)          PASS (3f4aa10b)
+  every matrix the same record count                         PASS (2648)
+
+CHECK 2 — NON-VACUITY: the dial did something, on both variants.
+  SFXARAW differs from the base                              PASS b2040c264bb5 vs 06f3395d3cb3
+  SFXBRAW differs from the base                              PASS 8554b54ae67e vs 06f3395d3cb3
+  SFXACON differs from the base                              PASS 7761590ea754 vs 06f3395d3cb3
+  SFXBCON differs from the base                              PASS 780c61f2f675 vs 06f3395d3cb3
+
+CHECK 3 — SEPARATION: the owner is choosing between two DIFFERENT objects.
+  SFXACON differs from SFXBCON                               PASS 7761590ea754 vs 780c61f2f675
+  SFXARAW differs from SFXACON — the ADOPTED arm is not the conserved one PASS b2040c264bb5 vs 7761590ea754
+  SFXARAW differs from SFXBRAW — A raw is not B raw          PASS b2040c264bb5 vs 8554b54ae67e
+  SFXARAW differs from SFXBASE — the adopted arm is not the live board PASS b2040c264bb5 vs 06f3395d3cb3
+
+CHECK 4 — THE DAY-0 CHECK. The year-0 column, row by row, tolerance 0. EXPECTED: 0 MOVED.
+  reference: DAY0_SFXBASE.json — ORDER 44 — the day-0 reference regenerated on THE LIVE R23 BOARD 68be10c7 (dial OFF)
+  reference identity on the live board: 87 of 87 at tolerance 0
+  SFXARAW: year-0 column unmoved on all 2648 records         PASS (0 moved)
+  SFXARAW: the 87 WIRED day-0 entrants unmoved               PASS (0 moved)
+  SFXBRAW: year-0 column unmoved on all 2648 records         PASS (0 moved)
+  SFXBRAW: the 87 WIRED day-0 entrants unmoved               PASS (0 moved)
+  SFXACON: year-0 column unmoved on all 2648 records         PASS (0 moved)
+  SFXACON: the 87 WIRED day-0 entrants unmoved               PASS (0 moved)
+  SFXBCON: year-0 column unmoved on all 2648 records         PASS (0 moved)
+  SFXBCON: the 87 WIRED day-0 entrants unmoved               PASS (0 moved)
+  the emitter's OWN fail-closed replication guard, quoted from each emit log:
+    SFXBASE   ORDER 31-F REPLICATION: 87 of 87 wired entrants on board 68be10c7 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+  SFXBASE emit read the replication guard                    PASS 
+    SFXARAW   ORDER 31-F REPLICATION: 87 of 87 wired entrants on board 68be10c7 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+  SFXARAW emit read the replication guard                    PASS 
+    SFXBRAW   ORDER 31-F REPLICATION: 87 of 87 wired entrants on board 68be10c7 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+  SFXBRAW emit read the replication guard                    PASS 
+    SFXACON   ORDER 31-F REPLICATION: 87 of 87 wired entrants on board 68be10c7 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+  SFXACON emit read the replication guard                    PASS 
+    SFXBCON   ORDER 31-F REPLICATION: 87 of 87 wired entrants on board 68be10c7 reproduce printed day-0 EXACTLY (tolerance 0, on the printed integer AND the unrounded derived_v0)
+  SFXBCON emit read the replication guard                    PASS 
+
+CHECK 5 — INSTRUMENT VALIDATION: the class instrument reproduces ORDER K before it is believed.
+  ORDER K reproduced (W2 1.0513 / cohort 1.0324)             PASS W2 1.0513 (0.0000) cohort 1.0324 (0.0000)
+  SFXBASE   W2 1.0738   floor +0.0438 (>= 1.03)   rail -0.0662 (< 1.14)   INSIDE THE LAW
+  SFXARAW   W2 1.0943   floor +0.0643 (>= 1.03)   rail -0.0457 (< 1.14)   INSIDE THE LAW
+  SFXBRAW   W2 1.0952   floor +0.0652 (>= 1.03)   rail -0.0448 (< 1.14)   INSIDE THE LAW
+  SFXACON   W2 1.0829   floor +0.0529 (>= 1.03)   rail -0.0571 (< 1.14)   INSIDE THE LAW
+  SFXBCON   W2 1.0838   floor +0.0538 (>= 1.03)   rail -0.0562 (< 1.14)   INSIDE THE LAW
+  F4 — SFXARAW inside floor 1.03 and rail 1.14               PASS W2 1.0943
+  F4 — SFXBRAW inside floor 1.03 and rail 1.14               PASS W2 1.0952
+  F4 — SFXACON inside floor 1.03 and rail 1.14               PASS W2 1.0829
+  F4 — SFXBCON inside floor 1.03 and rail 1.14               PASS W2 1.0838
+
+CHECK 6 — PAGE INPUTS: every label the pages render is present in every table file.
+  SFXBASE present in bands / arms / class                    PASS 
+  SFXARAW present in bands / arms / class                    PASS 
+  SFXBRAW present in bands / arms / class                    PASS 
+  SFXACON present in bands / arms / class                    PASS 
+  SFXBCON present in bands / arms / class                    PASS 
+
+======================================================================================================================
+RESULT: ALL CHECKS PASS
+======================================================================================================================
