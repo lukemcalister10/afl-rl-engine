@@ -23,6 +23,12 @@
 <script src="data/ownership.js"></script>
 <!-- v1.3 values-free position map (item 196(2); from ui/tools/extract_positions.py — no dollar value) -->
 <script src="app/positions_data.js"></script>
+<!-- v0 ENTRY-PRICE sidecar (owner-commissioned 2026-08-21; from ui/tools/gen_v0_sidecar.py, a READ-ONLY
+     engine load). Deliberately NOT under ui/data/: that directory is landing-carrier territory
+     (tools/landing/carriers.py) and this bundle is not a landing carrier. Stamped with the board + store
+     it was generated from; MD.v0 REFUSES it when either disagrees with the loaded board. Optional:
+     absent = the v0 block simply does not render, and says why. -->
+<script src="data_aux/v0.js"></script>
 <!-- weekly movers bundle (one report per committed round; from engine/rl_after/ingestion/round_movers.py).
      Optional: absent until a round is applied; the Movers view fail-closes cleanly when it is missing. -->
 <script src="data/movers.js"></script>
@@ -36,6 +42,7 @@
 <script src="app/counting.js"></script>
 <script src="app/seam.js"></script>
 <script src="app/ownership.js"></script>
+<script src="app/v0.js"></script>
 <script src="app/club_totals.js"></script>
 <script src="app/history.js"></script>
 <script src="app/pocket.js"></script>

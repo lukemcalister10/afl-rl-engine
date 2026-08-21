@@ -15,11 +15,126 @@ MD.board = (function () {
   // "picks included" (players + the club's held draft picks, priced off the canonical PVC by the ingest).
   // Issued picks appear ONLY here (owner law) — the +1/+2 placeholder players are untouched.
   let picksIncluded = false;
+  /* v0 COLUMN (owner-commissioned 2026-08-21), OFF BY DEFAULT AND BEHIND A TOGGLE.
+     The row already carries ten columns and the UI review found it overcrowded — the grid was rebuilt
+     once to stop a seventh cell wrapping under the name. So this does not ADD an eleventh column: it
+     SWAPS the "Over free" column for the entry-price one, keeping the grid, the header alignment and
+     every responsive breakpoint exactly as the stylesheet defines them (which is not this seat's file
+     to widen). Two lenses over the same row, one visible at a time, chosen by the owner. */
+  let v0Col = false;
+  // the three new filters (owner ask 2026-08-21). null == unfiltered, exactly like posFilter/clubFilter.
+  let cohortFilter = null;   // a cohort year, as a string
+  let ageFilter = null;      // an exact age, or a "b:lo-hi" band id
+  let eligFilter = null;     // a canonical slot code from the store's eligibilities column
 
   /* item 178(2): a club's held-pick asset value (sum over the ingest's priced picks). 0 if the overlay
      is absent/halted or the club holds none. Never a re-valuation — a sum of the ingest's figures. */
   function clubPicksValue(afflTeamLong) {
     return MD.seam.picksFor(afflTeamLong).reduce(function (s, p) { return s + p.value; }, 0);
+  }
+
+  /* ================= THE THREE NEW BOARD FILTERS (owner ask, 2026-08-21) ==========================
+     Cohort year · age · position by LIVE ELIGIBILITY. All three are pure row predicates over fields the
+     working bundle already carries (`yr`, `ty`, `age`, `elig`) — no new data, no new carrier, no
+     valuation touched. They compose with the filters already here (reads, position, club, group-by),
+     and they run BEFORE the club aggregation for the same reason the position filter does: so ΣSCAR and
+     the club ranks answer the question actually on screen ("which club has the strongest 2024 cohort").
+
+     ---- THE COHORT CLOCK, VERIFIED FROM THE STORE BEFORE IT WAS IMPLEMENTED -----------------------
+     The owner stated the grouping: "2024 cohort would be 2024 ND, RD, SSP etc. + 2025 MSD". That is a
+     real football fact, not a convention, and the store proves it. Measured over every scoring record
+     in engine/rl_after/rl_model_data.json, the gap between a player's `year` and his FIRST season with
+     games, by entry type:
+
+         MSD   most common gap  0   (53 of 77 debut in the SAME year as their `year`)
+         ND    most common gap +1   (859 rows)     RD  +1 (207)     SSP +1 (34)
+         PDA/PDN/PDS/UNR/IRE   +1
+
+     The national, rookie and pre-season/supplemental intakes happen at the END of a year for the season
+     that follows; the mid-season draft happens DURING that following season. So a 2024 ND draftee and a
+     2025 MSD selection both take the field for the first time in 2025 — one cohort, arriving by two
+     doors. The cohort is therefore labelled by the NATIONAL-DRAFT year:
+
+         cohortYear(p) = (p.ty === "MSD") ? p.yr - 1 : p.yr
+
+     This is the owner's stated grouping implemented as stated, and the derivation above is what the
+     control's tooltip says on screen so nobody has to come back here to read it. It is a DISPLAY
+     grouping only — no valuation, ordering or selection law reads it. */
+  function cohortYear(p) {
+    if (!p || p.yr == null) return null;
+    return p.ty === "MSD" ? (p.yr - 1) : p.yr;
+  }
+
+  const COHORT_TIP =
+    "Cohort = the intake that first takes the field together, labelled by its NATIONAL-DRAFT year. " +
+    "The 2024 cohort is the 2024 national, rookie and pre-season/supplemental entrants PLUS the 2025 " +
+    "mid-season draft: the end-of-year drafts feed the season that follows, and the mid-season draft " +
+    "happens during that same season, so both groups debut together. Verified against the store — MSD " +
+    "rows debut in the same year as their draft year, every other entry type the year after. Display " +
+    "grouping only; no value reads it.";
+
+  /* distinct cohort years present, newest first (a draft class reads newest-first). */
+  function cohortYears() {
+    const set = {};
+    (MD.seam.working.players || []).forEach(function (p) {
+      const c = cohortYear(p); if (c != null) set[c] = 1;
+    });
+    return Object.keys(set).map(Number).sort(function (a, b) { return b - a; });
+  }
+
+  /* distinct ages present, ascending. `age` is the board's own age field; a row without one is only
+     ever excluded by an ACTIVE age filter, never silently bucketed. */
+  function ages() {
+    const set = {};
+    (MD.seam.working.players || []).forEach(function (p) { if (p.age != null) set[p.age] = 1; });
+    return Object.keys(set).map(Number).sort(function (a, b) { return a - b; });
+  }
+
+  /* AGE BANDS, offered alongside the exact ages because "the kids" and "the 29+ tail" are the two
+     questions actually asked of this control. Bounds inclusive; they are display buckets and nothing
+     downstream reads them. */
+  const AGE_BANDS = [
+    { id: "b:-20", label: "20 and under", lo: 0, hi: 20 },
+    { id: "b:21-24", label: "21–24", lo: 21, hi: 24 },
+    { id: "b:25-28", label: "25–28", lo: 25, hi: 28 },
+    { id: "b:29-", label: "29 and over", lo: 29, hi: 999 },
+  ];
+  function ageMatches(p, sel) {
+    if (!sel) return true;
+    if (p.age == null) return false;          // an age filter is active and this row has no age
+    if (sel.indexOf("b:") === 0) {
+      const band = AGE_BANDS.filter(function (b) { return b.id === sel; })[0];
+      return !!band && p.age >= band.lo && p.age <= band.hi;
+    }
+    return String(p.age) === String(sel);
+  }
+
+  /* ---- POSITION BY LIVE ELIGIBILITY ------------------------------------------------------------
+     DELIBERATELY NOT THE SAME AXIS AS THE EXISTING "Position" FILTER, and both are kept.
+       · "Position" filters on `pos` — the board's MODELLING axis, one code per player, the position
+         his trajectory is priced on.
+       · "Eligible" filters on `elig` — the owner-maintained SLOT-LEGALITY set from the store's
+         `eligibilities` column, the same axis the Best-23 law selects over. A dual-position player
+         appears under BOTH of his codes here and under exactly one code there.
+     The owner's example — "players eligible to play KPF now" — is the second question, and the first
+     filter cannot answer it: the modelling axis cannot see dual eligibility at all, which is precisely
+     the blindness #274 item 2 carried this column across to fix. Keeping both, labelled differently,
+     is the honest shape; collapsing them would silently change what one of the two controls means. */
+  const ELIG_LABELS = { KPD: "Key Def", SD: "Gen Def", MID: "Mid", SF: "Gen Fwd", KPF: "Key Fwd", RUCK: "Ruck" };
+  const ELIG_ORDER = ["MID", "RUCK", "KPF", "SF", "KPD", "SD"];
+  function eligCodes() {
+    const set = {};
+    (MD.seam.working.players || []).forEach(function (p) {
+      (p.elig || []).forEach(function (c) { if (c) set[c] = 1; });
+    });
+    return Object.keys(set).sort(function (a, b) {
+      const ia = ELIG_ORDER.indexOf(a), ib = ELIG_ORDER.indexOf(b);
+      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+    });
+  }
+  function eligMatches(p, code) {
+    if (!code) return true;
+    return (p.elig || []).indexOf(code) !== -1;
   }
 
   /* distinct position labels present, in football order (for the position filter). */
@@ -251,12 +366,20 @@ MD.board = (function () {
         '<span class="h">Pos</span><span class="h">Club <small>AFFL · AFL</small></span>' +
         '<span class="h r">Value</span><span class="h">vs top</span>' +
         '<span class="h r">' + dh + '</span>' +
-        /* #274 item 3: v − FHV, computed at render and stored nowhere. */
-        '<span class="h r ofree" title="' + fmt.esc(
-          "Over free = board value − free-hit value (" + MD.config.FHV + "). What this player is worth " +
-          "above what the free-agent tier reasonably gives you for nothing. A negative figure is a " +
-          "delist candidate: his place costs more than it returns against a free hit. Computed on the " +
-          "board on screen, never stored.") + '">Over free</span>' +
+        /* the swappable lens cell: "Over free" (#274 item 3) or the entry-price lens. Both are computed
+           at render from given board figures and stored nowhere. */
+        (v0Col
+          ? '<span class="h r ofree" title="' + fmt.esc(
+              "Entry price (v0) and what he is worth against it. v0 is the price the model put on him " +
+              "the moment he entered — his draft slot's year-zero value, or his division's signed " +
+              "entry level if he came through the pool. The small line is the absolute gap and the " +
+              "ratio. A difference of two given figures; nothing is re-valued and nothing is ranked.") +
+              '">v0 <small>· vs entry</small></span>'
+          : '<span class="h r ofree" title="' + fmt.esc(
+              "Over free = board value − free-hit value (" + MD.config.FHV + "). What this player is worth " +
+              "above what the free-agent tier reasonably gives you for nothing. A negative figure is a " +
+              "delist candidate: his place costs more than it returns against a free hit. Computed on the " +
+              "board on screen, never stored.") + '">Over free</span>') +
         '<span class="h r">Pick · Yr</span>';
     } else {
       el.innerHTML =
@@ -284,11 +407,50 @@ MD.board = (function () {
       return '<span class="pill ' + fmt.cls(p.v - p.vPrev) + '" title="Δ vs last accepted bake">' +
         fmt.signed(p.v - p.vPrev) + '</span>';
     }
-    // round
+    // round — `dRound` has NO WRITER (0/804 on both shipped bundles; not in rl_export.py's row schema).
+    // The old tooltip said it "arrives with the weekly loop (Phase 3)"; the weekly loop landed and the
+    // field did not, so the tooltip named a delivery that had already happened without it.
     if (p.dRound == null) {
-      return '<span class="pill na" title="Δ vs previous round — arrives with the weekly loop (Phase 3).">—</span>';
+      return '<span class="pill na" title="Δ vs previous round is NOT PUBLISHED on this board — the ' +
+        'dRound export field has no writer. Use Δ vs bake, which is populated on every row; the ' +
+        'per-round record lives on the Movers tab.">—</span>';
     }
     return '<span class="pill ' + fmt.cls(p.dRound) + '">' + fmt.signed(p.dRound) + "</span>";
+  }
+
+  /* #274 item 3 — the over-free lens, on the DISPLAYED value so it follows the board lens the way every
+     other figure on the row does. Computed here; nothing is stored. */
+  function overFreeCell(val) {
+    return '<span class="ofree num' + (MD.belowFree(val) ? " belowfree" : "") + '" title="' + fmt.esc(
+      MD.belowFree(val)
+        ? "BELOW FREE — worth less than the free-hit value (" + MD.config.FHV + "), so a free agent is " +
+          "the better use of the place. A standing delist candidate."
+        : "Over free = value − " + MD.config.FHV + " (the ruled free-hit value).") + '">' +
+      /* NOT fmt.signed: its ▲/▼ arrows are the fixed grammar for MOVEMENT, and nothing has moved here.
+         A standing gap gets a plain sign. */
+      (val == null ? "—" : (MD.overFree(val) >= 0 ? "+" : "−") + fmt.n(Math.abs(MD.overFree(val)))) +
+      "</span>";
+  }
+
+  /* The entry-price lens (owner 2026-08-21): v0 on top, the absolute gap and the ratio underneath.
+     v0 is a DRAFT-TIME constant read from the stamped sidecar, so it does not follow the board lens —
+     and the comparison figures are therefore taken against the player's NOW value, never against a
+     projected lens year. A refused or absent row prints an em-dash carrying its reason; there is no
+     second source for an entry price and none is invented. NOTHING IS RANKED (see ui/app/v0.js). */
+  function v0Cell(p) {
+    const r = MD.v0.of(p);
+    if (r.refused || !r.has) {
+      return '<span class="ofree num" title="' + fmt.esc(
+        r.why || "no entry price is available for this row") + '">—</span>';
+    }
+    const cls = r.delta == null ? "" : (r.delta > 0 ? " up" : r.delta < 0 ? " dn" : "");
+    const tip = "Entry price (v0) " + fmt.n(r.v0) + " · " + MD.v0.originWord(r.origin) + ". Now " +
+      fmt.n(r.live) + " — that is " + (r.delta >= 0 ? "+" : "−") + fmt.n(Math.abs(r.delta)) + " and " +
+      MD.v0.ratioText(r.ratio) + ". " + MD.v0.originTip(r.origin);
+    return '<span class="ofree num' + cls + '" title="' + fmt.esc(tip) + '">' + fmt.n(r.v0) +
+      '<small style="display:block;font-size:9px;letter-spacing:.02em;opacity:.75">' +
+      (r.delta >= 0 ? "+" : "−") + fmt.n(Math.abs(r.delta)) + " · " + fmt.esc(MD.v0.ratioText(r.ratio)) +
+      "</small></span>";
   }
 
   function workingRow(r, maxV, byKey) {
@@ -323,17 +485,7 @@ MD.board = (function () {
       '<span class="val num">' + fmt.n(r.val) + "</span>" +
       MD.valueLine(r.val, maxV) +
       deltaPill(p, r.val) +
-      /* #274 item 3 — the over-free lens, on the DISPLAYED value so it follows the board lens the way
-         every other figure on the row does. Computed here; nothing is stored. */
-      '<span class="ofree num' + (MD.belowFree(r.val) ? " belowfree" : "") + '" title="' + fmt.esc(
-        MD.belowFree(r.val)
-          ? "BELOW FREE — worth less than the free-hit value (" + MD.config.FHV + "), so a free agent is " +
-            "the better use of the place. A standing delist candidate."
-          : "Over free = value − " + MD.config.FHV + " (the ruled free-hit value).") + '">' +
-        /* NOT fmt.signed: its ▲/▼ arrows are the fixed grammar for MOVEMENT, and nothing has moved
-           here. A standing gap gets a plain sign. */
-        (r.val == null ? "—" : (MD.overFree(r.val) >= 0 ? "+" : "−") + fmt.n(Math.abs(MD.overFree(r.val)))) +
-        "</span>" +
+      (v0Col ? v0Cell(p) : overFreeCell(r.val)) +
       '<span class="meta">' + (p.pk ? "pk " + p.pk : "—") + " · ’" + String(p.yr || "").slice(2) + "</span>";
     b.addEventListener("click", function () { MD.go("card", p.key); });
     return b;
@@ -345,24 +497,30 @@ MD.board = (function () {
     // pills (value-move + rank-move) into a 6-column grid, so the seventh cell wrapped under the name —
     // the duplicated "steady" the owner flagged. Collapsed to a single movement-vs-previous-round pill
     // (rank movement rides its tooltip); the row now emits exactly its grid's columns.
-    /* The public BUNDLE carries a `dRound` key but every one of its 804 values is null, while the
-       working bundle has all 804 populated — `ui/tools/extract_board_view.py` does not carry the field
-       across into the public tier. So this row printed "— steady" for every player no matter how far he
-       had moved, under a tooltip saying movement "publishes with the weekly loop": the weekly loop has
-       landed, and the figure exists. Since the public card (card.js) reads its movement from the indexed
-       working record, leaving the row on the empty bundle field would have the same player reading
-       "steady" on the board and "▼ −356" on his own card. Movement is public by the tier's own
-       definition — the banner reads "values · ranks · movement" — so the row reads it from the same
-       place the card does. Nothing new is exposed; the root cause is noted in the hand-back. */
-    const dRound = p.dRound != null ? p.dRound
-      : (function () {
-          const k = p.key || (byKey && byKey.byName && byKey.byName[p.name]);
-          const w = k && byKey && byKey.byKey ? byKey.byKey[k] : null;
-          return w ? w.dRound : null;
-        })();
+    /* dRound — THE COMMENT THAT OUTLIVED ITS TRUTH, AND THE BRIDGE IT JUSTIFIED. REMOVED.
+
+       What stood here asserted that "the working bundle has all 804 populated" while the public
+       projection dropped the field, and on that belief built a name→key bridge so a public row could
+       borrow the working figure. The premise was never true. Measured on both shipped bundles:
+       `dRound` is 0/804 and `dRoundRank` is 0/804 on the WORKING bundle as well as the public one, and
+       a search for any WRITER across engine/, tools/ and ui/tools/ finds only readers — the exported
+       row schema in rl_export.py `player_rec()` has never contained the key. No production writer has
+       ever existed, so the bridge was resolving null → null and the field is dead on both tiers.
+
+       The bridge is deleted rather than left returning null: a mechanism that cannot work is worse than
+       no mechanism, because the next reader believes it. The row now reads the bundle field directly
+       and says plainly that no movement is published — which is the truth, and is what the tier's own
+       fail-safe doctrine requires. The movement information DOES exist, in ui/data/movers.js, and
+       joining it is a real (queued) piece of work; it is not this fix, and pretending the join is
+       already here was the defect.
+
+       Note the tier asymmetry this leaves standing, named rather than masked: the public projection
+       carries `dRound`/`dRoundRank` as keys it never fills. That is filed at UI_PARKED item 18. */
+    const dRound = p.dRound;
     const move = dRound == null
-      ? '<span class="pill flat" title="No previous-round movement is published for this player. ' +
-        'Nothing fake is shown.">— steady</span>'
+      ? '<span class="pill na" title="No previous-round movement is published on this board. The ' +
+        'dRound export field has no writer, so nothing is shown rather than a fabricated move — the ' +
+        'per-round record lives on the Movers tab and on the player card’s weekly history.">not published</span>'
       : '<span class="pill ' + fmt.cls(dRound) + '" title="movement vs previous round">' + fmt.signed(dRound) + "</span>";
     const b = fmt.el("button", "row public");
     b.innerHTML =
@@ -413,42 +571,77 @@ MD.board = (function () {
     if (s.tier === "working") {
       wrap.appendChild(fmt.el("span", "lbl", "Board lens"));
       const lens = fmt.el("div", "seg lens");
+      /* THE +1/+2 LENSES ARE OFF (owner word 2026-08-21; ruling register v46). What stood here said the
+         forward toggle was "RE-ENABLED … the projection law (R103.3) has landed"; the rebuild it cites
+         has not shipped and no entry retires the ruling, so the comment was licensing a ruled-wrong
+         number on the owner's primary surface. The disabled set lives in config.js (LENS_DISABLED) with
+         the full ruling; lifting it is emptying that list, on the owner's word, after the rebuild.
+         −2/−1/Now are untouched — real backward re-values and the live board. */
       MD.config.LENS_LABELS.forEach(function (lab, i) {
-        // LEG E (SPEC §3): the +1/+2 forward-lens toggle is RE-ENABLED. The projection law (R103.3) has
-        // landed — the forward lens now credits EXPECTED production (age+k through the map's own growth
-        // curve; engine: rl_export _LENS_FORM + _merged_recover b6/price6 form-anchor). The ruled
-        // no-improvement-floor defect (register v46) is retired with the interim lens (lens_tilt).
-        // −2/−1/Now stay the real backward re-values + now; +1/+2 are the live projection lenses.
+        const off = MD.lensDisabled(i);
         const btn = fmt.el("button", i === s.lens ? "on" : "", lab);
-        btn.addEventListener("click", function () { s.lens = i; render(container); });
+        if (off) {
+          btn.disabled = true;
+          btn.classList.add("lensoff");
+          btn.title = MD.config.LENS_DISABLED_WHY;
+        } else {
+          btn.addEventListener("click", function () { s.lens = i; render(container); });
+        }
         lens.appendChild(btn);
       });
       wrap.appendChild(lens);
+      if ((MD.config.LENS_DISABLED || []).length) {
+        const lnote = fmt.el("span", "lbl");
+        lnote.style.color = "var(--faint)";
+        lnote.style.letterSpacing = ".04em";
+        lnote.style.textTransform = "none";
+        lnote.title = MD.config.LENS_DISABLED_WHY;
+        lnote.textContent = "· " + MD.config.LENS_DISABLED_NOTE;
+        wrap.appendChild(lnote);
+      }
 
-      // Q-DELTA-BASE toggle (built; default = bake). Dimmed on a non-now lens (does not apply).
+      /* Q-DELTA-BASE toggle. Dimmed on a non-now lens (does not apply).
+         A BASIS WITH NO WRITER IS NOT OFFERED AS A CHOICE. `dRound` is 0/804 on both shipped bundles
+         and has no production writer, so the "round" basis can only ever produce a column of dashes —
+         the UI review's "DEAD COLUMNS SHIP BY DEFAULT" finding, arriving through the default rather
+         than through the design. The button stays visible (the basis is real and is queued) and is
+         disabled with the reason on hover, exactly as the picks-overlay button is on an ingest halt.
+         The check is on the DATA, not on a constant: the day a writer lands, the button lights itself. */
       wrap.appendChild(fmt.el("span", "lbl", "Δ base"));
       const dseg = fmt.el("div", "seg");
+      const basisFed = { bake: false, round: false };
+      (MD.seam.working.players || []).forEach(function (p) {
+        if (p.vPrev != null) basisFed.bake = true;
+        if (p.dRound != null) basisFed.round = true;
+      });
       [["bake", "bake"], ["round", "round"]].forEach(function (pair) {
         const btn = fmt.el("button", s.deltaBase === pair[0] ? "on" : "", pair[1]);
         if (s.lens !== 2) { btn.disabled = true; btn.style.opacity = ".4"; btn.style.cursor = "default"; }
+        else if (!basisFed[pair[0]]) {
+          btn.disabled = true; btn.classList.add("lensoff");
+          // the .lensoff rule is scoped to .seg.lens / .seg.assets in the stylesheet; this seg is
+          // neither, and the stylesheet is not this seat's to widen — so the affordance is inline.
+          btn.style.opacity = ".3"; btn.style.cursor = "not-allowed"; btn.style.textDecoration = "line-through";
+          btn.title = pair[0] === "round"
+            ? "Δ vs previous round is not published on this board — the dRound export field has no " +
+              "writer (0 of " + fmt.n((MD.seam.working.players || []).length) + " rows carry it). " +
+              "Queued; the button lights itself the day a writer lands."
+            : "Δ vs last accepted bake is not carried on this board — no row carries vPrev.";
+        }
         else btn.addEventListener("click", function () { s.deltaBase = pair[0]; render(container); });
         dseg.appendChild(btn);
       });
       wrap.appendChild(dseg);
-      if (s.lens === 2) {
-        const anyPrev = (MD.seam.working.players || []).some(function (p) {
-          return s.deltaBase === "bake" ? p.vPrev != null : p.dRound != null;
-        });
-        if (!anyPrev) {
-          const note = fmt.el("span", "lbl");
-          note.style.color = "var(--faint)";
-          note.style.letterSpacing = ".04em";
-          note.style.textTransform = "none";
-          note.textContent = s.deltaBase === "bake"
-            ? "· Δ column built — awaiting the one-line vPrev bake export (§7.3); no Δ invented"
-            : "· Δ vs round arrives with the weekly loop (Phase 3)";
-          wrap.appendChild(note);
-        }
+      if (s.lens === 2 && !basisFed[s.deltaBase]) {
+        // the ACTIVE basis is unfed — say so beside the column rather than leaving a wall of dashes
+        const note = fmt.el("span", "lbl");
+        note.style.color = "var(--faint)";
+        note.style.letterSpacing = ".04em";
+        note.style.textTransform = "none";
+        note.textContent = s.deltaBase === "bake"
+          ? "· no row carries vPrev on this board; no Δ invented"
+          : "· Δ vs round is not published — the dRound export field has no writer; no Δ invented";
+        wrap.appendChild(note);
       }
 
       // My reads filter
@@ -472,7 +665,69 @@ MD.board = (function () {
             fmt.esc(pp) + "</option>";
         }).join("");
       psel.addEventListener("change", function () { posFilter = psel.value || null; render(container); });
+      psel.title = "The board's MODELLING position — one code per player, the axis his trajectory is " +
+        "priced on. For \"who is eligible to play there now\", use Eligible.";
       wrap.appendChild(psel);
+
+      /* ---- owner ask 2026-08-21: eligibility · cohort year · age. Same control vocabulary as the
+         filters already here (a labelled <select class="boardsel">), so they read as one row. Each
+         carries its rule on hover rather than assuming the reader knows it. */
+
+      // (c) POSITION BY LIVE ELIGIBILITY — "players eligible to play KPF now".
+      const eligOpts = eligCodes();
+      if (eligOpts.length) {
+        wrap.appendChild(fmt.el("span", "lbl", "Eligible"));
+        const esel = document.createElement("select");
+        esel.className = "boardsel";
+        esel.title = "Filters on the store's owner-maintained ELIGIBILITIES column — the slot-legality " +
+          "axis the Best-23 law selects over. A dual-position player appears under BOTH of his codes " +
+          "here, which is exactly what the modelling Position axis cannot see.";
+        esel.innerHTML = '<option value="">any eligibility</option>' +
+          eligOpts.map(function (c) {
+            return '<option value="' + fmt.esc(c) + '"' + (eligFilter === c ? " selected" : "") + ">" +
+              fmt.esc((ELIG_LABELS[c] || c) + " (" + c + ")") + "</option>";
+          }).join("");
+        esel.addEventListener("change", function () { eligFilter = esel.value || null; render(container); });
+        wrap.appendChild(esel);
+      }
+
+      // (a) COHORT YEAR — the owner's stated grouping; the clock rule is verified in cohortYear().
+      const cohorts = cohortYears();
+      if (cohorts.length) {
+        wrap.appendChild(fmt.el("span", "lbl", "Cohort"));
+        const ysel = document.createElement("select");
+        ysel.className = "boardsel";
+        ysel.title = COHORT_TIP;
+        ysel.innerHTML = '<option value="">all cohorts</option>' +
+          cohorts.map(function (y) {
+            return '<option value="' + y + '"' + (String(cohortFilter) === String(y) ? " selected" : "") +
+              ">" + y + " cohort</option>";
+          }).join("");
+        ysel.addEventListener("change", function () { cohortFilter = ysel.value || null; render(container); });
+        wrap.appendChild(ysel);
+      }
+
+      // (b) AGE — bands first (the two questions actually asked), then every exact age present.
+      const ageOpts = ages();
+      if (ageOpts.length) {
+        wrap.appendChild(fmt.el("span", "lbl", "Age"));
+        const asel = document.createElement("select");
+        asel.className = "boardsel";
+        asel.title = "The board's own age field. Bands are display buckets; the exact ages below them " +
+          "are the board's values verbatim. A row carrying no age drops out while an age filter is on, " +
+          "rather than being bucketed into an age it does not have.";
+        asel.innerHTML = '<option value="">all ages</option>' +
+          AGE_BANDS.map(function (b) {
+            return '<option value="' + b.id + '"' + (ageFilter === b.id ? " selected" : "") + ">" +
+              fmt.esc(b.label) + "</option>";
+          }).join("") +
+          ageOpts.map(function (a) {
+            return '<option value="' + a + '"' + (String(ageFilter) === String(a) ? " selected" : "") +
+              ">" + a + " yo</option>";
+          }).join("");
+        asel.addEventListener("change", function () { ageFilter = asel.value || null; render(container); });
+        wrap.appendChild(asel);
+      }
 
       // item 2: team-context lens — filter to one AFFL club + group-by-club (ΣSCAR totals).
       wrap.appendChild(fmt.el("span", "lbl", "Team lens"));
@@ -511,6 +766,26 @@ MD.board = (function () {
         aseg.appendChild(btn);
       });
       wrap.appendChild(aseg);
+
+      /* v0 COLUMN TOGGLE (owner ask 2026-08-21). It SWAPS the "Over free" column rather than adding an
+         eleventh — see the v0Col declaration. Disabled, with the reason on hover, whenever the sidecar
+         is absent or fails its board/store pin: an unauthenticated mirror must look unavailable, not
+         empty. The card carries the full four-figure block regardless of this toggle. */
+      wrap.appendChild(fmt.el("span", "lbl", "Lens col"));
+      const vseg = fmt.el("div", "seg assets");
+      const v0st = MD.v0.status();
+      [["free", "over free"], ["v0", "entry price"]].forEach(function (pair) {
+        const on = (pair[0] === "v0") === v0Col;
+        const btn = fmt.el("button", on ? "on" : "", pair[1]);
+        if (pair[0] === "v0" && !v0st.active) {
+          btn.disabled = true; btn.classList.add("lensoff");
+          btn.title = "Entry prices unavailable — " + (v0st.pinWhy || "no v0 sidecar is loaded") + ".";
+        } else {
+          btn.addEventListener("click", function () { v0Col = pair[0] === "v0"; render(container); });
+        }
+        vseg.appendChild(btn);
+      });
+      wrap.appendChild(vseg);
 
       // Debug slugs
       wrap.appendChild(fmt.el("span", "lbl", "Debug"));
@@ -667,6 +942,9 @@ MD.board = (function () {
   function render(container) {
     container.innerHTML = "";
     const s = MD.state;
+    // THE CLAMP (owner word 2026-08-21): a ruled-off lens can never be the active lens, however it got
+    // set — a restored Back snapshot, a stale value, a future caller. See MD.lensClamp in seam.js.
+    s.lens = MD.lensClamp(s.lens);
     strip(container);
     if (s.tier === "working") phantomBanner(container);   // LEG F1: phantom (+1/+2) / retrospective (−1/−2) view, empty-state safe
 
@@ -681,6 +959,19 @@ MD.board = (function () {
     // position lens — e.g. "which club has the strongest mids").
     if (s.tier === "working" && posFilter) {
       pool = pool.filter(function (r) { return r.p.pos === posFilter; });
+    }
+    /* owner ask 2026-08-21 — eligibility · cohort · age, applied on the same line and for the same
+       reason as the position filter above: BEFORE club aggregation, so ΣSCAR and the club ranks answer
+       the question on screen. Each predicate is skipped entirely when its filter is null, so the
+       unfiltered board is byte-identical to what it was. */
+    if (s.tier === "working" && eligFilter) {
+      pool = pool.filter(function (r) { return eligMatches(r.p, eligFilter); });
+    }
+    if (s.tier === "working" && cohortFilter) {
+      pool = pool.filter(function (r) { return String(cohortYear(r.p)) === String(cohortFilter); });
+    }
+    if (s.tier === "working" && ageFilter) {
+      pool = pool.filter(function (r) { return ageMatches(r.p, ageFilter); });
     }
 
     // item 2: canonical club ranking (ΣSCAR over the full unfiltered pool) — used for club-rank badges.
@@ -745,9 +1036,23 @@ MD.board = (function () {
       const shown = groupByClub ? ("grouped by AFFL club · all " + fmt.n(pool.length) + " rows")
         : ("rendering all " + fmt.n(pool.length) + " rows" +
            (nPick ? " (" + fmt.n(nPlayer) + " players + " + fmt.n(nPick) + " draft assets)" : ""));
+      // name the active filters in the footer: a filtered board that does not say it is filtered is
+      // the same class of defect as a dead column that does not say it is dead.
+      const active = [];
+      if (onlyReads) active.push("my reads");
+      if (posFilter) active.push("position " + posFilter);
+      if (eligFilter) active.push("eligible " + (ELIG_LABELS[eligFilter] || eligFilter));
+      if (cohortFilter) active.push(cohortFilter + " cohort");
+      if (ageFilter) {
+        const band = AGE_BANDS.filter(function (b) { return b.id === ageFilter; })[0];
+        active.push("age " + (band ? band.label : ageFilter));
+      }
+      if (clubFilter) active.push(fmt.club(clubFilter));
       foot.innerHTML = "volt = your touch (reads · rules · controls) · the value line = share of the top price, its colour warming as it fills · " +
         "movement pills always signed · override headroom lives on the card's waterfall · " + shown +
-        (s.lens !== 2 ? " at the " + MD.config.LENS_LABELS[s.lens] + " lens" : "");
+        (s.lens !== 2 ? " at the " + MD.config.LENS_LABELS[s.lens] + " lens" : "") +
+        (active.length ? " · filtered: " + fmt.esc(active.join(" · ")) : "") +
+        (v0Col ? " · the lens column shows ENTRY PRICE (v0) — draft-time, so it does not follow the board lens" : "");
     } else {
       foot.innerHTML = "the value line = share of the top price, its colour warming as it fills · movement pills always signed, never colour alone · public trim — no ids, no internals";
     }
@@ -768,16 +1073,27 @@ MD.board = (function () {
      restore the whole visible board, so club → player → Back lands on the club page again. */
   function snapshot() {
     return { clubFilter: clubFilter, groupByClub: groupByClub, posFilter: posFilter,
-             picksIncluded: picksIncluded, onlyReads: onlyReads };
+             picksIncluded: picksIncluded, onlyReads: onlyReads,
+             // owner ask 2026-08-21 — the three new filters and the column lens ride Back too, or
+             // "the board you were on" quietly stops meaning the board you were on.
+             cohortFilter: cohortFilter, ageFilter: ageFilter, eligFilter: eligFilter, v0Col: v0Col };
   }
   function restore(s) {
     if (!s) return;
     clubFilter = s.clubFilter; groupByClub = s.groupByClub; posFilter = s.posFilter;
     picksIncluded = s.picksIncluded; onlyReads = s.onlyReads;
+    cohortFilter = s.cohortFilter || null;
+    ageFilter = s.ageFilter || null;
+    eligFilter = s.eligFilter || null;
+    v0Col = !!s.v0Col;
   }
 
   // retroFor exposed so the release-seam test can exercise the EXACT retrospective identity check
   // the UI runs (same doctrine as counting.js). Pure view; reads no DOM.
+  // cohortYear / ageMatches / eligMatches are exposed so the defect+filter suite can exercise the EXACT
+  // shipped predicates (same doctrine as retroFor and counting.js). Pure functions; they read no DOM.
   return { render: render, focusClub: focusClub, retroFor: retroFor,
-           snapshot: snapshot, restore: restore };
+           snapshot: snapshot, restore: restore,
+           cohortYear: cohortYear, ageMatches: ageMatches, eligMatches: eligMatches,
+           AGE_BANDS: AGE_BANDS };
 })();

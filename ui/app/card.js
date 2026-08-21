@@ -41,10 +41,133 @@ MD.card = (function () {
       dots + labels + "</svg></div>";
   }
 
+  /* ================= PER-LEVER ATTRIBUTION — THE WATERFALL, LIT ==================================
+     The panel waited for `levers:[{label,delta}]`. The export has shipped `levers` on 804/804 rows
+     since the v2.9 attribution sidecar landed (rl_export.py `player_rec` → `export_attribution.json`),
+     but as a DICT keyed by dial code — {L1,L4,L2,L3,L5} — not the array of {label,delta} this card was
+     written against. So the most-designed panel in the app displayed "awaiting the export field" while
+     the field was there. This reads the shipped shape.
+
+     THE CODE → OWNER-WORD MAP IS NOT INVENTED HERE. It is read off the certified chain that produced
+     the sidecar — session_2026-07-13/v2_9_refit_cert/scripts/gen_gattr_chain.sh runs the six stage
+     boards by toggling exactly these five env dials in exactly this order, and
+     session_2026-07-21/final_integration/tools/config_inventory.py names each one "v2.9 L1…L5":
+       L1 = RL_PVCADOPT      — the adopted pick-value curve (entry pick capital re-priced)
+       L4 = RL_MSD_POOL_EXCL — mid-season-draft rows excluded from the training pool
+       L2 = RL_DIAL14        — the balance-lens weight, dial 14 (owner-ruled D5, "14 for now")
+       L3 = RL_AGE           — the s(age) age-shape refit
+       L5 = RL_L5_PICKLESS   — pickless (SSP) re-entry pick capital
+     A code the map does not know prints its own code, never a guessed word.
+
+     ORDER IS FIXED, NOT SORTED BY SIZE. DESIGN_DIRECTION §5 asks for "largest |Δ| first", but the
+     register's own reading of this decomposition forbids it: G-ATTR "separable" means PATH-ADDITIVE —
+     "the decomposition is sequential along the fixed order L1→L4→L2→L3→L5; a different order would
+     split the same 9,650 differently. Future seats must not read per-lever numbers as order-free."
+     Re-ordering the bars would invite exactly that misreading, so they render in the chain's order,
+     with the order stated on the panel. A lever that contributed nothing prints as a zero line and is
+     never omitted (absence is a finding, §5).
+
+     THE RESIDUAL IS THE POINT. §5: "The waterfall's end figure must equal the displayed value — if the
+     export's lever deltas don't sum, the panel shows the residual as an explicit 'unattributed' bar in
+     alarm red. An unreviewable move should look broken, because it is." Measured on the shipped board
+     today the residual is large on 802 of 804 rows (median 150, p90 586, max 2,272), because the
+     sidecar is frozen at its certification era (its own `source` names engine 2030e5df / store
+     b0c39d78) while the board has moved several engine eras since. That is a real finding about the
+     data, not a rendering choice, and the panel states it in words under the bars rather than hiding
+     it behind a tidy total. */
+  const LEVER_ORDER = ["L1", "L4", "L2", "L3", "L5"];
+  const LEVER_LABEL = {
+    L1: { word: "Pick-curve adoption",
+          tip: "L1 · RL_PVCADOPT — the adopted pick-value curve: what his entry pick capital is worth under the ruled curve." },
+    L4: { word: "Mid-season-draft pool",
+          tip: "L4 · RL_MSD_POOL_EXCL — mid-season-draft rows held out of the training pool." },
+    L2: { word: "Balance-lens weight",
+          tip: "L2 · RL_DIAL14 — the balance lens set to dial 14 (owner-ruled D5, “14 for now”)." },
+    L3: { word: "Age shape",
+          tip: "L3 · RL_AGE — the s(age) age-shape refit." },
+    L5: { word: "Pickless re-entry",
+          tip: "L5 · RL_L5_PICKLESS — pickless (SSP) re-entry pick capital. Inert on a board with no active pickless entrant; certified at +0, reproduced not contradicted." },
+  };
+
+  /* One waterfall row: label · zero-centred bar · signed mono figure. `scale` is the largest |Δ| on
+     the panel, so the bars are comparable to each other and to the residual. */
+  function wfRow(label, tip, delta, scale, extraCls) {
+    const pct = (scale > 0 && delta) ? Math.max(2, Math.min(50, Math.abs(delta) / scale * 50)) : 0;
+    const resid = extraCls === "resid";
+    const barCls = resid ? "resid" : (delta > 0 ? "up" : delta < 0 ? "dn" : "");
+    const figCls = resid ? "resid" : (delta ? fmt.cls(delta) : "zero");
+    // DIRECTION IS INLINE, COLOUR IS THE CLASS. The stylesheet's .bar.up/.bar.dn carry both anchor and
+    // colour, and .bar.resid carries alarm + a right-hand anchor; a red residual that FELL must still
+    // grow leftwards, so the anchor is set here and the class is left to say what colour it is.
+    const side = delta < 0 ? "right:50%;left:auto" : "left:50%;right:auto";
+    return '<span class="lbl" title="' + fmt.esc(tip) + '">' + fmt.esc(label) + "</span>" +
+      '<span class="track"><span class="zline"></span>' +
+        (pct ? '<span class="bar ' + barCls + '" style="' + side + ';width:' + pct.toFixed(1) + '%"></span>' : "") +
+      "</span>" +
+      '<span class="fig ' + figCls + '">' + fmt.signed(delta) + "</span>";
+  }
+
+  function leverBlock(p) {
+    const lv = p.levers;
+    if (!lv || typeof lv !== "object") {
+      return '<div class="awaiting"><b>Per-lever attribution</b> — this row carries no <span class="num">' +
+        "levers</span> block, so no waterfall is drawn. Nothing is inferred in its place; the export " +
+        "ships the field null for a row the attribution sidecar does not cover.</div>";
+    }
+    // every code the row carries, chain order first, then any code the map does not know (never dropped)
+    const codes = LEVER_ORDER.filter(function (c) {
+      return Object.prototype.hasOwnProperty.call(lv, c);
+    }).concat(Object.keys(lv).filter(function (c) { return LEVER_ORDER.indexOf(c) < 0; }));
+    if (!codes.length) {
+      return '<div class="awaiting"><b>Per-lever attribution</b> — the <span class="num">levers</span> ' +
+        "block on this row is empty. No bar is drawn from an empty block.</div>";
+    }
+    const sum = codes.reduce(function (s, c) { return s + (Number(lv[c]) || 0); }, 0);
+    const from = p.vPrev;
+    const to = MD.dispVal(p);
+    const move = (from == null || to == null) ? null : (to - from);
+    const residual = (move == null) ? null : (move - sum);
+    const scale = Math.max.apply(null, codes.map(function (c) { return Math.abs(Number(lv[c]) || 0); })
+      .concat([Math.abs(residual || 0), 1]));
+
+    let rows = "";
+    if (from != null) {
+      rows += '<span class="totals">Last accepted bake</span><span></span>' +
+        '<span class="totals" style="text-align:right"><b>' + fmt.n(from) + "</b></span>" +
+        '<span class="rowline"></span>';
+    }
+    codes.forEach(function (c) {
+      const meta = LEVER_LABEL[c] || { word: c, tip: c + " — no owner-facing name is on the record for this dial code; the code is shown rather than a guessed word." };
+      rows += wfRow(meta.word, meta.tip, Number(lv[c]) || 0, scale);
+    });
+    if (residual != null) {
+      rows += wfRow("Unattributed residual",
+        "The part of this player's move the certified lever split does not account for. It is shown, " +
+        "not absorbed: the waterfall's end figure must equal the displayed value.",
+        residual, scale, "resid");
+    }
+    rows += '<span class="rowline"></span>' +
+      '<span class="totals">Lands at</span><span></span>' +
+      '<span class="totals" style="text-align:right"><b>' + fmt.n(to) + "</b></span>";
+
+    let note = '<div class="note"><b>Order is the chain’s, not the size’s.</b> The split is ' +
+      "path-additive along the certified order L1 → L4 → L2 → L3 → L5; a different " +
+      "order would divide the same move differently, so these are not order-free per-lever facts. " +
+      "A lever that contributed nothing prints as a zero line rather than being dropped.</div>";
+    if (residual != null && from != null && Math.abs(residual) > Math.max(1, Math.abs(move) * 0.02)) {
+      note += '<div class="awaiting"><b>The residual is real, and it is data, not rendering.</b> ' +
+        "The lever deltas sum to <span class=\"num\">" + fmt.signed(sum) + "</span> but this player has " +
+        "moved <span class=\"num\">" + fmt.signed(move) + "</span> since that bake, leaving " +
+        "<span class=\"num\">" + fmt.signed(residual) + "</span> unattributed. The attribution sidecar " +
+        "is frozen at its certification era and the board has advanced since, so everything the board " +
+        "did after that certification lands here. An unreviewable move looks broken because it is.</div>";
+    }
+    return '<div class="wf">' + rows + "</div>" + note;
+  }
+
   function waterfall(p) {
-    // Per-lever attribution needs the levers:[{label,delta}] export field (§7.4 / G-ATTR). Absent in
-    // v2.8 -> the section renders honestly: the owner-override line item (when present) + an awaiting
-    // note. The grammar (green right / red left, signed mono, residual in alarm red) is fully built.
+    // The owner-override line item (when present), then the per-lever waterfall. The grammar (green
+    // right / red left, signed mono, residual in alarm red) is the CSS the panel was always built on.
     let html = "";
     if (p.owner_rule) {
       const pre = p.vRaw != null ? p.vRaw : null;
@@ -61,10 +184,7 @@ MD.card = (function () {
       html += '<div class="note"><b>The rule is a line item, not a ghost.</b> The hollow volt bar is your call ' +
         "holding the price — the post-override figure is shown; the model's own figure is one hover away on the tag, never on the rail.</div>";
     }
-    html += '<div class="awaiting"><b>Per-lever attribution</b> — the full "why the price is what it is" waterfall ' +
-      "(recent scoring · role time · availability · young upside · the unattributed residual) renders the moment the " +
-      "export carries <span class=\"num\">levers:[{label,delta}]</span> (§7.4, G-ATTR already requires these to exist). " +
-      "No lever figure is invented here; availability will print <b>absent</b>, never skipped, and a residual that grows turns red.</div>";
+    html += leverBlock(p);
     return html;
   }
 
@@ -172,6 +292,58 @@ MD.card = (function () {
       "</div>";
   }
 
+  /* ================= v0 — THE ENTRY PRICE, AND WHAT HE IS WORTH AGAINST IT ========================
+     Owner-commissioned 2026-08-21, and scoped by him in one line: "v0 of 3200, live rating of 4000,
+     would mean +800 / 1.25x". Four figures — entry price · live rating · absolute gap · ratio — and a
+     line saying WHICH entry price it is, because the two populations arrive at it differently and
+     conflating them would be the quiet kind of wrong.
+
+     NO RANK. See the note at the top of ui/app/v0.js: v0 is a slot value shared by every same-(future
+     position, draft age, pick) player, so a rank over it would manufacture an order the model does not
+     have. The card states the sharing in words instead, once, where it is cheapest to say honestly. */
+  function v0Section(p) {
+    const r = MD.v0.of(p);
+    if (r.refused) {
+      return '<div class="reserved"><b>Entry price not shown.</b> ' + fmt.esc(r.why) +
+        " Nothing is shown in its place.</div>";
+    }
+    if (!r.has) {
+      // an explicit, reasoned absence — the em-dash carries its why, never a bare dash
+      return '<div class="statrow">' +
+        '<div><div class="k">Entry price (v0)</div><div class="v num" title="' + fmt.esc(r.why || "") +
+          '">—</div></div>' +
+        '<div><div class="k">Live rating</div><div class="v volt num">' + fmt.n(r.live) + "</div></div>" +
+        "</div>" +
+        '<div class="note"><b>No entry price is recoverable for this player.</b> ' + fmt.esc(r.why || "") +
+        " The em-dash is the finding, not a formatting choice — no anchor is invented to fill it.</div>";
+    }
+    const dCls = fmt.cls(r.delta);
+    const rCls = r.ratio == null ? "na" : (r.ratio > 1 ? "up" : r.ratio < 1 ? "dn" : "flat");
+    const shared = r.origin === "pick-slot"
+      ? "<b>This figure is his draft slot's, not his own.</b> Every player who entered at the same " +
+        "future position, draft age and pick number carries it to the dollar — measured on this board, " +
+        "the eight pick-5 mids all sit at 2,218. It is what the model paid for the slot; the gap and " +
+        "the ratio beside it are what he has done with it."
+      : r.origin === "entry-anchor"
+        ? "<b>He entered through the pool, so his entry price is his division's signed level</b> " +
+          "(#326 entry anchors), not a pick slot. Same object — the price the model put on him the " +
+          "moment he came in — arrived at the way the ruling says it must be for a pool entrant."
+        : "";
+    return '<div class="statrow">' +
+        '<div><div class="k">Entry price (v0)</div><div class="v num" title="' +
+          fmt.esc(MD.v0.originTip(r.origin)) + '">' + fmt.n(r.v0) +
+          '<small> ' + fmt.esc(MD.v0.originWord(r.origin)) + "</small></div></div>" +
+        '<div><div class="k">Live rating</div><div class="v volt num">' + fmt.n(r.live) + "</div></div>" +
+        '<div><div class="k">vs entry</div><div class="v ' + dCls + ' num" title="' +
+          fmt.esc("Live rating minus entry price. A difference of two given figures — nothing is re-valued.") +
+          '">' + fmt.signed(r.delta) + "</div></div>" +
+        '<div><div class="k">ratio</div><div class="v ' + rCls + ' num" title="' +
+          fmt.esc("Live rating divided by entry price. 1.25x = worth a quarter more than he came in at.") +
+          '">' + fmt.esc(MD.v0.ratioText(r.ratio)) + "</div></div>" +
+      "</div>" +
+      (shared ? '<div class="note">' + shared + "</div>" : "");
+  }
+
   function renderWorking(container, p) {
     const w = MD.seam.working, st = w.stamp;
     const rank = rankOf(p.key);
@@ -205,6 +377,8 @@ MD.card = (function () {
           '<div><div class="k">Rank</div><div class="v num">' + (rank || "—") +
             '<small> / ' + fmt.n(st.nPlayers) + "</small></div></div>" +
         "</div>" +
+        '<h2 class="sec"><span>Worth now vs worth at entry</span><span class="meta">v0 · absolute · ratio</span></h2>' +
+        v0Section(p) +
         '<h2 class="sec"><span>Why the price is what it is</span><span class="meta">per-lever</span></h2>' +
         waterfall(p) +
         '<h2 class="sec"><span>Value by year</span><span class="meta">' + years[0] + "–" + years[4] +
@@ -227,9 +401,15 @@ MD.card = (function () {
        · rank WITH ITS DENOMINATOR ("136 of 804") — item 18 names it; a bare rank cannot be read.
        · Recent form — item 17. The section already existed and was simply never exposed here.
        · the weekly history — item 3's table, the same one the working card shows.
-       · movement vs the previous round — the public bundle has always carried `dRound`, yet this card
-         printed a hardcoded "— steady" for every player no matter how far he had actually moved. That
-         was not a withheld field, it was a wrong one; it now shows the real figure.
+       · movement vs the previous round — CORRECTED 2026-08-21. What stood here said "the public bundle
+         has always carried `dRound` … it now shows the real figure." It does not, and it never did.
+         Measured on both shipped bundles: `dRound` 0/804 and `dRoundRank` 0/804, no production writer
+         anywhere in engine/, tools/ or ui/tools/, and the key is absent from rl_export.py
+         `player_rec()`'s row schema. This stat therefore prints "not published" — the honest state —
+         and the movement the owner actually has lives on the Movers tab and in the weekly-history
+         table further down this same card, both of which are real records. The claim above was a
+         comment that outlived its truth and it drove a bridge in board.js on the same false premise;
+         both are removed rather than left to be believed again.
 
      LEFT HIDDEN, DELIBERATELY — each by decision and named in the hand-back, none merely by default:
        · the board / engine / store identity stamp and the "guard 5 pass" badge — build provenance, not
@@ -249,11 +429,14 @@ MD.card = (function () {
     const rank = rankOf(p.key);
     const denom = st.nPlayers != null ? st.nPlayers : (w.players || []).length;
 
-    // item 18: real round movement, from the same `dRound` the public board row already uses.
-    const dTxt = p.dRound == null ? "—" : fmt.signed(p.dRound);
+    // item 18: round movement, read from `dRound` verbatim. Unfed on every row today (see the note
+    // above) -> "not published", with the reason and the place the real record lives on hover.
+    const dTxt = p.dRound == null ? "<small>not published</small>" : fmt.signed(p.dRound);
     const dCls = p.dRound == null ? "na" : fmt.cls(p.dRound);
     const dTitle = p.dRound == null
-      ? "No previous-round movement is published for this player; nothing is invented."
+      ? "Previous-round movement is not published on this board — the dRound export field has no " +
+        "writer, so nothing is invented here. His actual per-round record is the weekly history table " +
+        "below, and the Movers tab."
       : "Movement vs the previous round.";
 
     container.innerHTML =

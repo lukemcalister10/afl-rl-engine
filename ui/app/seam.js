@@ -86,6 +86,18 @@ MD.dispVal = function (p) {
   return (p && p.ov && p.ov.dispv != null) ? p.ov.dispv : (p ? p.v : null);
 };
 
+/* THE LENS GATE (owner word 2026-08-21; ruling register v46 — see MD.config.LENS_DISABLED).
+   A disabled lens must be UNREACHABLE, not merely unclicked: the board's filter state is snapshotted
+   and restored by the universal Back, and MD.state is a plain object any future caller can set. So the
+   test lives here, beside the state it guards, and the board clamps through it at render — a restored
+   snapshot, a stale value or a future caller cannot put a ruled-wrong lens on screen. */
+MD.lensDisabled = function (i) {
+  return ((MD.config && MD.config.LENS_DISABLED) || []).indexOf(i) !== -1;
+};
+MD.lensClamp = function (i) {
+  return MD.lensDisabled(i) ? MD.config.LENS_DEFAULT : i;
+};
+
 /* shared UI state */
 MD.state = {
   view: "board",                       // board | clubs | card | trade | movers  (#139 item 2: review retired)
