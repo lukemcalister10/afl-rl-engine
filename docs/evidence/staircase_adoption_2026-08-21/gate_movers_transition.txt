@@ -1,27 +1,5 @@
-$ /root/rl_venv312/bin/python3 /home/user/afl-rl-engine/engine/rl_after/ingestion/test_weekly_updater.py
+$ python3 engine/rl_after/ingestion/test_movers_transition.py
 
-weekly-updater fast tests:
-  test_snapshot_identity PASS
-  test_bridge_preserves_score_meaning PASS
-  test_gate_off_by_default PASS
-  test_prestaging_refusals PASS
-  test_repo_root_resolves_or_fails_loudly PASS
-  test_movers_zero_report_seed_reanchors_to_first_report PASS
-  test_movers_populated_bundle_never_reanchors PASS
-  test_finalized_status_clears_stale_failure PASS
-R14 disposable-fixture fail-closed tests + negative controls:
-  [PASS] positive: fixture is the accepted R14 baseline (store/board/boot/season/ledger + contract seal)
-  [PASS] control 1: an unavailable R14 anchor halts (fail-closed)
-  [PASS] control 4: a non-ancestor anchor halts (fail-closed)
-  [PASS] control 2: a wrong R14 store md5 halts (fail-closed)
-  [PASS] control 3: a wrong R14 canonical-board md5 halts (fail-closed)
-  [PASS] control 5: R19 ledger state cannot leak into an R14 scratch (fail-closed)
-  [PASS] control 6: R19 finalization state cannot leak into an R14 scratch (fail-closed)
-  [PASS] control 7: R19 movers outputs cannot leak into an R14 scratch (fail-closed)
-  [PASS] control 15: missing sibling support trees fail closed (no partial advance)
-  [PASS] control 16: historical restore does NOT replace current implementation source
-  [PASS] control 17: current immutable model inputs remain current
-ALL R14 FIXTURE CONTROLS PASS
 movers provenance-transition tests:
   [PASS] production ui/data/movers.js still carries the owner-authorised R15-R19 history
   [PASS] production bundle has one report per round
@@ -63,6 +41,5 @@ movers provenance-transition tests:
   [PASS] score_ingestor.APPLY_DEFAULT is False (code half OFF)
   [PASS] score-write gate is OFF (no explicit apply token) — no score can be applied
 MOVERS TRANSITION TESTS: ALL 39 PASS
-ALL FAST TESTS PASS
 
 [exit 0]

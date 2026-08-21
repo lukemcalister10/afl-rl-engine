@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_30133/sandbox
+  tree      : /tmp/landing_selftest_9566/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 68be10c79d0ee096455754e084bcf757
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/9  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_BUILD_LOCK_FILE, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-30816 (pid 30816) — single writer for the shared workspace.
-base commit        d2c0ed30327c4f2bae1f4614523a288d896ec8fa
+build-lock: HELD by land-lever-10252 (pid 10252) — single writer for the shared workspace.
+base commit        77dc0ff8d32d26564d4f11eee46b383e5b91bd60
 board pin (before) 68be10c79d0ee096455754e084bcf757
 store pin (before) b745002eb0a0fbb1c34fa44f1ef708d6
 restore point      55 carrier(s) captured, 55 present on disk
-    [preflight OK  0.05s]
+    [preflight OK  0.06s]
 
 --- STEP 1/9  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=68be10c79d0ee096455754e084bcf757  (0.0s)
@@ -63,23 +63,30 @@ verify BEFORE : ok=False balanced=556ad70d2959 fails=1
 reconcile     ok=True changed=True balanced 556ad70d2959 -> 556ad70d2959
   committed targets: sidecar
 verify AFTER  : ok=True fails=0
-    [sibling OK  163.71s]
+    [sibling OK  167.10s]
 
 --- STEP 6/9  ui             BOTH UI writers, and the identity read back out ---
 *** FAULT INJECTED at step 'ui': skip_second_writer — THE THRICE-PROVEN TRAP: writer 2 never runs
 BEFORE  working f4a3db9b4f6f834cabcaff83f43a77fc  release-block=True
 BEFORE  public  540bcdb444fbd5375c048cc8a26ba291  release-block=False
 BEFORE  mirror  d81bd31a40e5aa0fa0e5f894335741b7  register=12 entr(ies)
-WRITER 1/3: ui/tools/extract_board_view.py
+BEFORE  movers  09268415b1cd287b20f0e63052ed7b74  model_changes=10 boundar(ies)
+WRITER 1/4: ui/tools/extract_board_view.py
   working after writer 1: 8dfc0a77c4a666065c5ead4500d99488   release-block=False   <-- DROPPED, as it always is
-WRITER 2/3: SKIPPED BY FAULT INJECTION — the trap is live in this transaction.
-WRITER 3/3: ui/tools/generate_movers_transition.py  (the lineage projection — supervisor ruling on F-9)
+WRITER 2/4: SKIPPED BY FAULT INJECTION — the trap is live in this transaction.
+WRITER 3/4: ui/tools/generate_movers_transition.py  (the lineage projection — supervisor ruling on F-9)
   wrote: ui/data/movers_transition.js (63856 bytes)
   register entries mirrored: 12
   drift guard: mirror OK — committed == projected (63856 bytes, 12 register entries)
   mirror register == lineage register: 12 entr(ies), EQUAL  (the F-9 predicate holds)
+WRITER 4/4: ui/tools/rebuild_movers_derived.py  (points / values / model_changes — supervisor ruling on F-10)
+  wrote: ui/data/movers.js (3771835 -> 3771835 bytes, latest report R23)
+  derived blocks changed: none (byte-identical)
+  drift guard: derived blocks OK — committed == rebuilt (3771835 bytes, latest report R23)
+  shipped model_changes == live-derived: 10 boundar(ies), EQUAL  (the F-10 predicate holds)
 AFTER   working 8dfc0a77c4a666065c5ead4500d99488  release-block=False
 AFTER   public  540bcdb444fbd5375c048cc8a26ba291  release-block=False
+AFTER   movers  09268415b1cd287b20f0e63052ed7b74  UNMOVED (nothing it derives from moved)
 AFTER   mirror  d81bd31a40e5aa0fa0e5f894335741b7  UNMOVED (the lineage did not move)
   stamp.board_md5            68be10c79d0ee096455754e084bcf757   OK
   stamp.board                68be10c79d0ee096455754e084bcf757   OK
@@ -87,7 +94,7 @@ AFTER   mirror  d81bd31a40e5aa0fa0e5f894335741b7  UNMOVED (the lineage did not m
   stamp.store_md5            b745002eb0a0fbb1c34fa44f1ef708d6   OK
   stamp.balanced_board_md5   556ad70d295923455982ae33e4b8bfd3   OK
   stamp.asOfRound            23                                 OK
-    [ui FAILED  0.19s]
+    [ui FAILED  1.35s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'ui'
@@ -109,12 +116,12 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.05s  OK
+    preflight          0.06s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
     lineage            0.00s  OK
     contract           0.07s  OK
-    sibling          163.71s  OK
-    ui                 0.19s  FAIL
-    TOTAL            164.05s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_30816
+    sibling          167.10s  OK
+    ui                 1.35s  FAIL
+    TOTAL            168.61s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_10252
