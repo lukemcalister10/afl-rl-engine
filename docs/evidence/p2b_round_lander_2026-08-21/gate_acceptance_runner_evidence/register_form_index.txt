@@ -1,0 +1,6 @@
+$ python3 tools/incident_index.py check
+(cwd /home/user/afl-rl-engine)
+
+incident_index: 110 incidents / 196 indexed entries; 0 stale generated file(s)
+
+[exit 0]

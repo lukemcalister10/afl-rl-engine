@@ -1,0 +1,52 @@
+$ python3 -m acceptance.runner --profile in-transaction --evidence /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence
+
+==========================================================================================================================
+THE VERDICT SPINE — acceptance/runner.py
+  tree: /home/user/afl-rl-engine
+  evidence: /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence
+  profile : in-transaction   (full MINUS the checks that open a landing — run standalone by the lander)
+==========================================================================================================================
+CHECK                    VERDICT     REASON
+-----------------------  ----------  -----------------------------------------------------------------------------------
+release_manifest         PASS        42 of 43 carrier fields agree with computed truth across 11 identities; 1 sealed c…
+boot_guard_checkout      PASS        boot-store guard (Guard 5) PASS  [acceptance-spine]  store b745002e == pinned b745…
+config_manifest          PASS        CONFIG-MANIFEST CHECK: PASS (hash eed19a75f775; 84 vars; pin+stored consistent)
+ruling_config            PASS        RULING-CONFIG PASSED: RL_PVCFIT=0 (engine + env) + R3 export bake-guard active; RL…
+release_contract_seal    PASS        RELEASE-CONTRACT CHECK: PASS  (contract 1b435ff6f988; identities + config + postur…
+store_coherence_six_way  PASS        six-way store coherence: PASS
+doc_lint                 PASS        doc_lint: 0 FAIL, 0 WARN  (live=7 history=2)
+rulebook_lint            PASS        note R5 TWIN ABSENCE: docs/acceptance_v2_0.json is absent, as the v3 amendment lef…
+ruled_red_ledger         PASS        3 step entries probed, all still failing exactly as their ruling records
+inbox_manifest           PASS        inbox_manifest: 1 archived file(s), 0 problem(s), 0 stale generated file(s)
+mirror_parity            PASS        3 fitted-artifact resolvers mirror the engine byte-for-byte; all 3 pins hold
+dial_coverage            PASS        83 of 84 declared dials read with a default in engine source (1 self-declared orph…
+oneliner_gamma           PASS        6 of ship_gates_check.py's 7 exported vars are manifest dials and all agree (enfor…
+oneliner_r14_restore     PASS        R14 disposable fixture + fail-closed controls + movers transition: 50 [PASS], exit…
+oneliner_f1_lens         PASS        the F1 export-parity leg is present, key-for-key, and still reports a mismatch cou…
+build_twice_determinism  PASS        determinism: two bare builds are BYTE-IDENTICAL
+register_form            PASS        pen verify: frozen 219021ac sealed-ok=True · 5 new-form entries · newest v817 / in…
+-----------------------  ----------  -----------------------------------------------------------------------------------
+
+EVIDENCE:
+  release_manifest         /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/release_manifest.txt
+  boot_guard_checkout      /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/boot_guard_checkout.txt
+  config_manifest          /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/config_manifest.txt
+  ruling_config            /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/ruling_config.txt
+  release_contract_seal    /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/release_contract_seal.txt
+  store_coherence_six_way  /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/store_coherence_six_way.txt
+  doc_lint                 /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/doc_lint.txt
+  rulebook_lint            /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/rulebook_lint.txt
+  ruled_red_ledger         /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/ruled_red_ledger.txt
+  inbox_manifest           /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/inbox_manifest.txt
+  mirror_parity            /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/mirror_parity.txt
+  dial_coverage            /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/dial_coverage.txt
+  oneliner_gamma           /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/oneliner_gamma.txt
+  oneliner_r14_restore     /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/oneliner_r14_restore.txt
+  oneliner_f1_lens         /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/oneliner_f1_lens.txt
+  build_twice_determinism  /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/build_twice_determinism.txt
+  register_form            /home/user/afl-rl-engine/docs/evidence/p2b_round_lander_2026-08-21/gate_acceptance_runner_evidence/register_form_index.txt
+
+AGGREGATE  17 checks  |  PASS 17  FAIL 0  BLOCKED 0  RULED-RED 0
+VERDICT    GREEN — no gating failures.
+
+[exit 0]
