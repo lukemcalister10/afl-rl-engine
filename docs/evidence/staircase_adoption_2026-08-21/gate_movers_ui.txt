@@ -43,14 +43,14 @@ MOVERS-VIEW TESTS
   [PASS] latest report terminates at the R19 recovery-materialised store f37d9716 (history; superseded as the accepted store by ITEM 411 D1 c120cfd5)
   [PASS] transition record is an owner-approved movers_release_transition
   [PASS] transition digest matches the restored R15-R19 reports byte-for-byte (content anchor)  (got "sha256:6aea584536c6cd98c7949947620687d549b6f6f54fcc44acf3ca6fd71aaf8c4d")
-  [PASS] bundle displays under the current app, bridged — the last act moved the board OUTSIDE a round (the back-rows repair), so the latest round report's terminal board is not the loaded board, and the out-of-round column carries it instead  (got [true,"bridged"])
+  [PASS] bundle displays under the current app, bridged — the last act moved the board OUTSIDE a round (the staircase fix adoption), so the latest round report's terminal board is not the loaded board, and the out-of-round column carries it instead  (got [true,"bridged"])
   [PASS] NON-VACUITY: a bundle whose newest point is not the loaded board is refused, not bridged  (got [false,"mismatch"])
   [PASS] NON-VACUITY: loaded at the bundle's own terminal identity the SAME bundle reads ok — bridged is a discriminating state  (got [true,"ok"])
   [PASS] RESOLVED (#271 A17, 2026-08-06): bundle baseline anchor 06d8af60 now agrees with the loaded app's 06d8af60 — the reason the state is ok, not bridged
   [PASS] the same bundle WITHOUT a transition also displays (gate removed)
   [PASS] app has advanced past the transition destination — the record is history, not the current release
   [PASS] transition destination is the restructure board — the boundary the tab labels
-  [FAIL] ten out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut, the 20/8 F5 rounding fix, the 20/8 back-rows repair)  (got 11)
+  [PASS] eleven out-of-round boundaries are declared (the restructure, the 30/7 rederivation, the 6/8 adoption, the 10/8 DOB courier, the 10/8 never-rises restore, THE LANDING, THE D8 ADOPTION, the 20/8 injury-sheet re-cut, the 20/8 F5 rounding fix, the 20/8 back-rows repair, the 21/8 staircase adoption)  (got 11)
   [PASS] model change declared between R19 and the restructure point, anchored to the owner-approved record
   [PASS] model change declared between R20 and the 30/7 rederivation, anchored to the owner-approved record
   [PASS] model change declared between the 30/7 rederivation and the 6/8 adoption, anchored to the owner-approved adoption record
@@ -69,6 +69,6 @@ MOVERS-VIEW TESTS
   [PASS] every scratch round report: integrity + unique coverage + no v2.10 tag + balanced not synthesized
   [PASS] scratch reports represent DNP players
   ------------------------------------------------------------
-MOVERS TESTS: 1 FAIL / 66
+MOVERS TESTS: ALL 66 PASS
 
-[exit 1]
+[exit 0]

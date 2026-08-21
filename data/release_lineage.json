@@ -736,6 +736,79 @@
    },
    "_chain_note": "The register tail is the F5 rounding act's entry, whose destination board c97a4d9f and store b745002e are EXACTLY this entry's source on both legs. The chain is continuous with no gap, which is the strict form the append instrument asserts first; no bridging evidence was needed.",
    "_measured_note": "moved/unchanged are MEASURED, not asserted, by docs/evidence/backrows_reseal_2026-08-20/measure_lineage.py. Every `source` identity was re-hashed out of git from the committed tree at 15729e7 \u2014 the PREREG commit, immediately before any Act A edit \u2014 board and store by md5 of data/rl_build/rl_app_data.json and engine/rl_after/rl_model_data.json, engine_head and rl_model by md5 of engine/rl_after/_merged_recover.py and engine/rl_after/rl_model.py, register by md5 of LTI_REGISTER.md, v0surf by md5 of data/v0surf.pkl, balanced_board_md5 from engine/rl_after/ingestion/sibling_repin_state.json \u2014 and each agrees with that tree's own data/expected_boot.json. Every `destination` identity was measured the same way from the live tree and agrees with the landed data/expected_boot.json; config and fv were additionally RE-MEASURED on the live side by config_manifest.manifest_hash and fv_provenance.fv_identity rather than read from the manifest. EXACTLY TWO identities of eleven moved: board and balanced_board_md5."
+  },
+  {
+   "_doc": "THE STAIRCASE FIX ADOPTION (ORDER 44), VARIANT A RAW, UNCONSERVED. RL_O44_LVLMONO \u2014 the level-axis band monotoniser priced 2026-08-20 at docs/evidence/staircase_fix_2026-08-20/ and delivered PRICED, NOT ADOPTED \u2014 moves from default OFF to shipped default 'ratchet' (VARIANT A, RAW), behind the declared kill-switch RL_O44_LVLMONO=0, through the exact lane the D8 adoption (register v798) and the bake before it (register v780) used: the default literal in the engine changes and data/model_config.json is NOT touched, so config_sha256 is UNMOVED and no certifying build can CARRY the name. Variant A is the RUNNING-MAX (ratchet) form, non-decreasing in level by construction over the exact knot set of the fitted trees. The fix repairs a LAW 3 (NO CLIFFS) VIOLATION recorded at register v806: the five pinned quantile forests read at conditional_prior.py:164-167 are piecewise-constant and carry no monotonicity constraint on the level feature, so 44 of 86 thin-evidence rows would price HIGHER on a LOWER round-23 score. LAW 9, STATED NOT NETTED: this board MINTS +8,460 SCAR = +1.2220% (692,296 -> 700,756), 42.3x the 200-SCAR band_scar rail. That is a LAW 9 BREACH ON ITS FACE and it is ACCEPTED BY OWNER WORD, cited below. It is recorded as an ACCEPTED EXCEPTION, never as a pass. THE CONSERVATION LEG IS REJECTED ON PRINCIPLE by the same owner, in his own words, and the adopted dial value is 'ratchet' rather than 'ratchet+conserve' for that reason. SCAFFOLDING: the monotoniser acts on the OUTPUT of a surface whose defect is at the FIT; it is classified for retirement at the end-of-season rebake per the owner's schedule, and its removal is a MUST-MOVE PROOF of that rebake.",
+   "kind": "movers_release_transition",
+   "schema_version": 2,
+   "owner_approved": true,
+   "owner_ruling_id": [
+    "THE_STAIRCASE_FIX_ADOPTION_2026-08-21_A_raw_I_prefer_lock_that_in_unconserved"
+   ],
+   "owner_ruling": "Owner word 2026-08-21, VERBATIM: \"I misunderstood the A and B difference. I think based on those explanations, A raw I prefer. Lock that in, unconserved.\" THIS RE-RULES an earlier word in the same session, \"Happy to lock in 1.22% and variant B\", which drove this seat's first act \u2014 that act HALTED BEFORE THE FLIP at 36f1122 when the no-arb reading of B raw was measured for the first time and showed FOUR new buy-rail breaches (ND PRIMARY picks 1-20, 1-10, 11-20 and pool arm PRIMARY IRE) with NONE removed. The owner was shown that reading, the A/B difference was re-explained, and he changed his choice. TWO RULINGS RIDE WITH IT, both verbatim. On conservation: \"in principle I don't like 'enforcing conservation' as that's another mechanism that gets baked in... If we want to conserve, I'd prefer to find a lever to remove value that works on its own\" \u2014 which is why the adopted value is 'ratchet' and NOT 'ratchet+conserve'. On the arbitrage reading: \"happy to waive the no arb reading for this\" \u2014 given AFTER the supervisor told him explicitly that A raw's arbitrage reading is expected to breach similarly to B raw's. THE WAIVER COVERS THE BAND RAILS, NOT THE CLASS LAW: F4 was checked against floor 1.03 / buy rail 1.14 on the registered W2 basis BEFORE this landing ran, and it PASSED. The waiver also did not excuse measurement: the full A-raw no-arb and class reading was emitted as part of this act and every breach is recorded plainly beside the live board's own cell.",
+   "authority": "docs/evidence/staircase_adoption_2026-08-21/PREREG_ADOPTION_A_RAW.md (committed before the engine edit, P9) \u00b7 the A-raw no-arb + class reading in the same directory (NOARB_ARAW_SFXARAW.html and its three instrument passes, all five arms side by side) \u00b7 the B-raw reading and the halt it caused at 36f1122 \u00b7 pricing at docs/evidence/staircase_fix_2026-08-20/ (prereg 5f94a44, correction 901e731, edit 1446dec, engine_head repair 1590a37, packet + no-arb + movers 192fa71, gates + claims + the owner's first choice 5deda20) \u00b7 register v806 (the LAW 3 verdict) \u00b7 register v808 PENDING (this act) \u00b7 landed by tools/land lever (PLAN_v6 PACKAGE 2a), its first real landing",
+   "applies_to": {
+    "bundle": "ui/data/movers.js",
+    "boundary": [
+     "23",
+     "the-staircase-adoption-21-8"
+    ]
+   },
+   "source": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "board": "68be10c79d0ee096455754e084bcf757",
+    "store": "b745002eb0a0fbb1c34fa44f1ef708d6",
+    "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+    "engine_head": "8f59180547a584c981ccba39fa018708",
+    "fv": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346",
+    "config": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "balanced_board_md5": "556ad70d295923455982ae33e4b8bfd3",
+    "v0surf": "5dd34ca82735f5c8f021b1c7320df8f8",
+    "as_of_round": 23
+   },
+   "destination": {
+    "release_version": "v2.11-final-rc1-PROVISIONAL",
+    "board": "b3e8da99bc7f632e5d1eebc732f9cf01",
+    "store": "b745002eb0a0fbb1c34fa44f1ef708d6",
+    "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+    "engine_head": "8f59180547a584c981ccba39fa018708",
+    "fv": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346",
+    "config": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+    "register": "652d83e87780e415a01a2de6d8b3cc57",
+    "balanced_board_md5": "556ad70d295923455982ae33e4b8bfd3",
+    "v0surf": "5dd34ca82735f5c8f021b1c7320df8f8",
+    "as_of_round": 23
+   },
+   "moved_by_transition": [
+    "board"
+   ],
+   "unchanged_across_transition": [
+    "as_of_round",
+    "balanced_board_md5",
+    "config",
+    "engine_head",
+    "fv",
+    "register",
+    "release_version",
+    "rl_model",
+    "store",
+    "v0surf"
+   ],
+   "invariants": {
+    "law_9": "BREACHED AND ACCEPTED BY OWNER WORD. +8,460 SCAR / +1.2220% mint against a 200-SCAR (\u00b10.029%) band_scar rail = 42.3x. Recorded as an ACCEPTED EXCEPTION wherever conservation is asserted for this board; NOT netted, NOT presented as a pass. A raw is the arm the owner's 1.22% figure was actually quoted from. The conserved sibling (ratchet+conserve, -4,025 SCAR / -0.581%) was REJECTED ON PRINCIPLE by the same owner.",
+    "law_3": "THIS ACT IS THE REPAIR. Register v806 recorded the VIOLATION; the ratchet is non-decreasing in level BY CONSTRUCTION over the exact knot set of the fitted trees (PREREG_STAIRCASE.md \u00a72-3 and PREREG CORRECTION 1, 901e731). MATHCHECK_out.txt: variant A ratchet reads NEG 0 with legwise min step +0.000000 at every row shape and both resolutions. Its stated defect is FLATNESS, not descent: 203 of 280 steps flat on the MID/pick-40 sweep. A player can score more and be worth the same; he can no longer score more and be worth LESS.",
+    "kill_switch": "RL_O44_LVLMONO=0 restores 68be10c79d0ee096455754e084bcf757 BYTE-EXACT, proved by build in this landing's build_proofs step, together with the positive control that the switch-off board is NOT equal to the switch-on board.",
+    "config_sha256_unmoved": "The dial is ABSENT from data/model_config.json on purpose (the RL_CAPT / RL_ISOFADE / RL_EVW / RL_UNCOMP / RL_ONEMACH kill-switch family). config_manifest.enforce() still REJECTS RL_O44_LVLMONO as an unknown model override in bake/gate/canonical mode: a canonical build can only ship the baked-in default and can never CARRY this name.",
+    "frozen_artifacts": "conditional_prior.py is NOT edited and NO forest is refitted. cm_400.pkl (band 34faa865) and data/q97m.pkl (cfdc7321) are Guard-5-pinned and are read EXACTLY as they are. No pin moves, no re-stamp, no re-certification. This is a bounded lever act, not a bake.",
+    "round_held": "as_of_round is HELD at 23. A lever landing applies no round and writes no store.",
+    "day0": "OFF. No day-0 reference is regenerated or re-based. DAY0_CP.json is untouched and un-repointed. The A-raw emit's own fail-closed ORDER 31-F guard read 87 of 87 wired entrants at tolerance 0.",
+    "engine_head_moved_at_the_flip": "engine_head IS MOVED BY THIS ADOPTION, at the FLIP COMMIT immediately preceding this landing, with the restamp of all four carriers riding that same commit. It is declared unmoved to the lander because that is the MEASURED truth of this transaction \u2014 the lander's source side is the flip commit's own tree \u2014 and NOT because the adoption left the engine alone. This entry's moved_by_transition therefore does not list engine_head; this invariant is the reason, stated so the register cannot be read as understating the act.",
+    "no_arb_waived_not_unmeasured": "The ND band rails and pool-arm rails are WAIVED BY OWNER WORD (\"happy to waive the no arb reading for this\"), given in full knowledge that A raw was expected to breach similarly to B raw. The waiver is of the GATE, not of the MEASUREMENT: the complete A-raw no-arb reading was emitted as part of this act and every breach is recorded beside the live board's own cell in the evidence. THE CLASS LAW (F4) WAS NOT WAIVED and was checked and PASSED before this landing ran.",
+    "scaffolding": "CLASSIFIED FOR RETIREMENT at the end-of-season rebake per the owner's schedule. The block monotonises the OUTPUT of a surface whose defect is at the FIT; the permanent repair is monotonic_cst on feature 9 at the fit, which is a BAKE-class act. That rebake is not complete until this block is gone and the board built from the CONSTRAINED forests alone reproduces the monotone behaviour without it.",
+    "no_push": "This seat commits locally and DOES NOT PUSH. Hand-verification stands; the supervisor verifies after this seat. The register is the supervisor's pen and is not touched."
+   },
+   "_measured_note": "moved/unchanged are MEASURED by tools/landing (steps._measure_sides), not asserted: every `source` identity is re-hashed from the committed tree at f770880 via git show, every `destination` identity from the live tree, and each side is cross-checked against THAT TREE'S OWN data/expected_boot.json before the entry is composed."
   }
  ]
 }
