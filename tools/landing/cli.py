@@ -7,6 +7,10 @@
     tools/land selftest [--keep]                the sandbox self-test (PLAN_v6 2a.3)
     tools/land packet --check <PACKET.md>       the decision-packet slot validator (2a.2)
 
+`land lever` RUNS THE SELF-TEST ITSELF, ONCE, STANDALONE, BEFORE it opens the transaction, and
+refuses to open one if it fails. The gates step's acceptance run uses `--profile in-transaction`,
+which is the full profile minus that same check. See `_preflight_selftest` for the ruling.
+
 `land round` is PACKAGE 2b and is NOT built. It is not stubbed with a friendly message either: the
 verb exists, states what it is waiting for (3a, which moves the data pins out of the engine and
 changes the transaction 2b must script), and exits non-zero. A verb that pretended to work would be
@@ -21,7 +25,9 @@ emitter forks are the standing evidence.
 import argparse
 import json
 import os
+import shutil
 import sys
+import tempfile
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _LANDER_REPO = os.path.dirname(os.path.dirname(_HERE))
@@ -50,6 +56,68 @@ def _print_sequence():
     return 0
 
 
+def _preflight_selftest(a, doc):
+    """THE LANDER PROVES ITSELF BEFORE IT OPENS A TRANSACTION — never inside one.
+
+    SUPERVISOR RULING, 2026-08-21:
+
+        "The lander's self-test moves OUTSIDE the landing transaction: a check that validates the
+         lander by running seventeen practice landings must never run INSIDE a real landing
+         (recursion, not coverage). It remains a registered runner check for every push/standalone
+         run; the IN-TRANSACTION gate profile excludes it, and the lander runs it ONCE, standalone,
+         immediately BEFORE opening the transaction (fresh proof, no recursion). Coverage identical,
+         knot removed."
+
+    This is the "runs it ONCE, standalone, immediately BEFORE" half; `acceptance.runner --profile
+    in-transaction` (which the gates step now uses) is the "excludes it" half. The proof is FRESH —
+    it is this run's self-test, on this tree, minutes old — which is strictly more than the old
+    arrangement got, because the in-transaction copy never once completed.
+
+    FAIL = NO TRANSACTION OPENED. Not a warning, not a note in the report: a lander that cannot prove
+    its own abort ladder does not get to start a landing that may need it.
+
+    It is skipped for `--selftest` runs and ONLY for those: those ARE the self-test's practice
+    landings, and running the self-test from inside them is the recursion this ruling removes, with
+    no bottom to it.
+
+    ITS TRANSCRIPTS ARE WRITTEN OUTSIDE THE REPO and copied into the landing's evidence dir only
+    AFTER the transaction closes. Writing them straight into `docs/evidence/...` would leave
+    untracked files in the tree, and step 0 asserts a CLEAN tree — the lander's own proof would red
+    the landing it was proving. Returns the temp dir for `cmd_lever` to file.
+    """
+    from tools.landing import selftest as SELF
+    ev = tempfile.mkdtemp(prefix='preflight_lander_selftest_')
+    print('=' * 102)
+    print('PRE-TRANSACTION SELF-TEST — the lander proves its abort ladder BEFORE opening a landing.')
+    print('  transcripts: %s  (filed into the landing evidence dir when the transaction closes)' % ev)
+    print('=' * 102)
+    rc = SELF.main(root=a.root, keep=False, only=None, evidence_dir=ev)
+    print('=' * 102)
+    if rc != 0:
+        raise SystemExit('THE PRE-TRANSACTION SELF-TEST FAILED (exit %s). NO TRANSACTION WAS OPENED '
+                         'and the tree is untouched. A lander that cannot prove its own abort ladder '
+                         'does not start a landing. Transcripts: %s' % (rc, ev))
+    print('PRE-TRANSACTION SELF-TEST PASSED. Opening the transaction.')
+    print('=' * 102)
+    print('')
+    return ev
+
+
+def _file_preflight_evidence(src, dest_dir):
+    """Move the pre-transaction self-test's transcripts into the landing's evidence dir."""
+    if not src or not os.path.isdir(src):
+        return
+    dest = os.path.join(dest_dir, 'preflight_lander_selftest')
+    shutil.rmtree(dest, ignore_errors=True)
+    try:
+        shutil.copytree(src, dest)
+        shutil.rmtree(src, ignore_errors=True)
+        print('pre-transaction self-test transcripts filed: %s' % dest)
+    except OSError as e:
+        print('could not file the pre-transaction self-test transcripts (%s); they remain at %s'
+              % (e, src))
+
+
 def cmd_lever(a):
     doc = SP.load(a.spec)
     if doc['act_kind'] != 'lever-landing':
@@ -62,9 +130,11 @@ def cmd_lever(a):
     if a.builder != 'real' and not a.selftest:
         raise SystemExit('builder %r is SELF-TEST ONLY. A landing uses the real builder, always.'
                          % a.builder)
+    pre_ev = _preflight_selftest(a, doc) if not a.selftest else None
     opts = TX.Options(dry_run=a.dry_run, no_commit=a.no_commit, selftest=a.selftest)
     ctx = TX.Ctx(a.root, doc, opts, builder=builder, fault=a.fault)
     res = TX.run(ctx, ST.LEVER_SEQUENCE)
+    _file_preflight_evidence(pre_ev, ctx.evidence_dir)
     if a.report:
         with open(a.report, 'w', encoding='utf-8') as fh:
             json.dump({'ok': res.ok, 'failed_step': res.failed_step,

@@ -32,6 +32,13 @@ THE MODULES
     txn.py        the driver: fail-closed sequencing, per-step timing, the abort path, claims.
     packet.py     the decision-packet template + slot validator (2a.2).
     selftest.py   the sandbox self-test (2a.3): every step broken once, every abort proved.
+                  IT RUNS BEFORE THE TRANSACTION, NEVER INSIDE ONE — `cli.cmd_lever` runs it
+                  standalone and refuses to open a landing if it fails, and the gates step's
+                  acceptance run uses `--profile in-transaction`, which excludes it. A check that
+                  validates the lander by running seventeen practice landings, run inside a real
+                  landing, is recursion rather than coverage; it cost the first A-raw attempt a
+                  900-second timeout and an abort. Supervisor ruling, 2026-08-21, quoted in
+                  `acceptance/checks/landing.py`.
     cli.py        `land lever` — and where `land round` will attach.
 
 THE ONE RULE THAT GOVERNS EVERY STEP: FAIL-CLOSED. A step that cannot prove its own postcondition

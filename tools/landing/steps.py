@@ -92,12 +92,21 @@ DELEGATED_PINS = {
 
 #: The standing landing gate set. Each is run and its verdict read off the exit code — never taken
 #: on trust, never parsed for a hopeful word.
+#:
+#: `@EVIDENCE@` in an argv is replaced at run time by a per-gate directory INSIDE this landing's
+#: evidence dir. A gate that can write its own per-check raw output is pointed at it, so a gate
+#: failure is diagnosable from the landing's evidence alone (F-5). The first A-raw attempt ran the
+#: acceptance runner with `evidence: (none)` and the r14 failure arrived as a 110-character truncated
+#: reason string with the actual suite output nowhere on disk. One flag, one whole class of blind
+#: abort removed.
 DEFAULT_GATES = (
     {'name': 'release_manifest_check', 'argv': ['python3', 'release_manifest_check.py'],
      'must_contain': 'PASS'},
     {'name': 'release_contract_check', 'argv': ['python3', 'release_contract.py', 'check'],
      'must_contain': 'PASS'},
-    {'name': 'acceptance_runner', 'argv': ['python3', '-m', 'acceptance.runner'],
+    {'name': 'acceptance_runner',
+     'argv': ['python3', '-m', 'acceptance.runner',
+              '--profile', 'in-transaction', '--evidence', '@EVIDENCE@'],
      'must_contain': 'GREEN'},
     {'name': 'movers_transition', 'argv': ['python3', 'engine/rl_after/ingestion/test_movers_transition.py']},
     {'name': 'movers_ui', 'argv': ['node', 'ui/tests/movers.test.js']},
@@ -860,6 +869,14 @@ def gates(ctx):
     in isolated workspaces only and CI excludes it on shared runners. The lander calls the FV
     builder FUNCTION for its builds (which is safe and is what the day's build drivers did) and
     never the suite.
+
+    THE ACCEPTANCE RUNNER RUNS UNDER `--profile in-transaction`, which is `full` minus the lander's
+    own self-test. That check is not skipped, it is MOVED: `cli.cmd_lever` runs it standalone,
+    immediately before the transaction opens, and refuses to open one if it fails. See the ruling
+    quoted in `acceptance/checks/landing.py`. Coverage is identical; the recursion is gone.
+
+    EVERY GATE'S RAW OUTPUT LANDS IN THE EVIDENCE DIR, and a gate that can write per-check output of
+    its own gets `@EVIDENCE@` substituted for a directory to write it into (F-5).
     """
     ctx.fault_point('gates')
     rows = []
@@ -867,20 +884,37 @@ def gates(ctx):
         if 'fv_provenance' in ' '.join(g['argv']):
             raise StepError('a gate names the fv-provenance suite. It overwrites a shared pickle and '
                             'is never run on the shared box (PLAN_v6 2a.1).')
+        argv = _gate_argv(ctx, g)
         t0 = time.time()
-        rc, out = ctx.run(g['argv'], timeout=g.get('timeout_s', 1800))
+        rc, out = ctx.run(argv, timeout=g.get('timeout_s', 1800))
         el = time.time() - t0
         ok = (rc == 0) and (g.get('must_contain') is None or g['must_contain'] in out)
-        ctx.write_evidence('gate_%s.txt' % g['name'], '$ %s\n\n%s\n[exit %s]' % (' '.join(g['argv']), out, rc))
+        ctx.write_evidence('gate_%s.txt' % g['name'], '$ %s\n\n%s\n[exit %s]' % (' '.join(argv), out, rc))
         ctx.log('  %-24s %-6s exit=%s  (%.1fs)' % (g['name'], 'PASS' if ok else 'FAIL', rc, el))
-        rows.append({'name': g['name'], 'argv': g['argv'], 'exit': rc, 'ok': ok,
+        rows.append({'name': g['name'], 'argv': argv, 'exit': rc, 'ok': ok,
                      'elapsed_s': round(el, 1)})
         if not ok:
-            raise StepError('gate %s did not pass (exit %s%s):\n%s'
+            raise StepError('gate %s did not pass (exit %s%s):\n%s\n\nPER-CHECK RAW OUTPUT: %s'
                             % (g['name'], rc,
                                '' if g.get('must_contain') is None or g['must_contain'] in out
-                               else '; %r absent from output' % g['must_contain'], out[-2500:]))
+                               else '; %r absent from output' % g['must_contain'], out[-2500:],
+                               _gate_evidence_dir(ctx, g) if '@EVIDENCE@' in g['argv']
+                               else os.path.join(ctx.evidence_dir, 'gate_%s.txt' % g['name'])))
     return {'gates': rows, 'all_pass': True}
+
+
+def _gate_evidence_dir(ctx, g):
+    """Where a gate that writes its own per-check output writes it: inside THIS landing's evidence."""
+    return os.path.join(ctx.evidence_dir, 'gate_%s_evidence' % g['name'])
+
+
+def _gate_argv(ctx, g):
+    """Substitute `@EVIDENCE@` for a per-gate evidence directory, creating it. (F-5)"""
+    if '@EVIDENCE@' not in g['argv']:
+        return list(g['argv'])
+    d = _gate_evidence_dir(ctx, g)
+    os.makedirs(d, exist_ok=True)
+    return [d if tok == '@EVIDENCE@' else tok for tok in g['argv']]
 
 
 # ================================================================================ STEP 8 — CLAIMS

@@ -8,11 +8,23 @@ packet slot validator. The self-test's own landings use `SelftestBuilder`, which
 all; the only real build the lander performs is in a real landing.
 
 An unexercised fallback is fake safety, and an unexercised SELF-TEST is worse — it is fake proof.
-Registering it means the lander's abort ladder is re-proved every time the spine runs, including
-inside `land lever`'s own gates step, rather than on the day someone remembers to run it.
+Registering it means the lander's abort ladder is re-proved every time the spine runs, rather than
+on the day someone remembers to run it.
 
 PROFILE = 'full'. It is deliberately NOT in the per-push host-insensitive profile: it creates a git
 worktree, and the per-push lane's floor is file reads and hashes.
+
+IN_TRANSACTION = False — SUPERVISOR RULING, 2026-08-21, after the first A-raw landing attempt timed
+this check out at 900s inside its own gates step:
+
+    "The lander's self-test moves OUTSIDE the landing transaction: a check that validates the lander
+     by running seventeen practice landings must never run INSIDE a real landing (recursion, not
+     coverage). It remains a registered runner check for every push/standalone run; the
+     IN-TRANSACTION gate profile excludes it, and the lander runs it ONCE, standalone, immediately
+     BEFORE opening the transaction (fresh proof, no recursion). Coverage identical, knot removed."
+
+The line this docstring used to carry — "including inside `land lever`'s own gates step" — was the
+knot, written down as if it were a feature. It is struck above rather than quietly deleted.
 
 BLOCKED, NOT FAIL, when the sandbox cannot be built. A tree with no git worktree support (a shallow
 CI checkout, an export) can no more run this check than it can run a landing, and reporting that as
@@ -57,3 +69,6 @@ def lander_selftest(ctx):
 
 lander_selftest.HALTS = ()
 lander_selftest.PROFILE = 'full'
+#: The one check excluded from the in-transaction gate profile. See the ruling in the module
+#: docstring: it opens landings of its own, so running it inside a landing is recursion, not coverage.
+lander_selftest.IN_TRANSACTION = False

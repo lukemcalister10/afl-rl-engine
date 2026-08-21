@@ -101,6 +101,15 @@ def _fit(s, n):
     return s if len(s) <= n else s[:n - 1] + '…'
 
 
+#: What each profile's header line says it ran. The table always names its own profile, so a reader
+#: can never mistake a filtered run for a full one.
+_PROFILE_NOTE = {
+    'full': '   (every registered check)',
+    'host-insensitive': '   (per-push floor: checkout-only checks)',
+    'in-transaction': '   (full MINUS the checks that open a landing — run standalone by the lander)',
+}
+
+
 def render(rows, ctx, root, profile='full'):
     """The one table, plus the carrier ledger and the aggregate line. Returns the text."""
     counts = {v: 0 for v in C.VERDICTS}
@@ -115,9 +124,7 @@ def render(rows, ctx, root, profile='full'):
     out.append('THE VERDICT SPINE — acceptance/runner.py')
     out.append('  tree: %s' % root)
     out.append('  evidence: %s' % (ctx.evidence_dir or '(none)'))
-    out.append('  profile : %s%s' % (profile,
-                                     '   (per-push floor: checkout-only checks)'
-                                     if profile == 'host-insensitive' else '   (every registered check)'))
+    out.append('  profile : %s%s' % (profile, _PROFILE_NOTE.get(profile, '')))
     out.append('=' * (name_w + reason_w + 16))
     out.append('%-*s  %-10s  %s' % (name_w, 'CHECK', 'VERDICT', 'REASON'))
     out.append('%-*s  %-10s  %s' % (name_w, '-' * name_w, '-' * 10, '-' * reason_w))
@@ -167,10 +174,13 @@ def main(argv=None):
     ap.add_argument('--evidence', default=None, help='directory to write per-check raw output into')
     ap.add_argument('--json', dest='json_path', default=None, help='also write the rows as JSON here')
     ap.add_argument('--only', default=None, help='comma-separated check names to run (others BLOCKED-out)')
-    ap.add_argument('--profile', default='full', choices=('full', 'host-insensitive'),
+    ap.add_argument('--profile', default='full',
+                    choices=('full', 'host-insensitive', 'in-transaction'),
                     help='"host-insensitive" runs ONLY the checks that read the checkout and nothing '
                          'else — the per-push CI floor (PLAN_v6 1a). "full" (default) runs everything, '
-                         'including the heavy determinism leg.')
+                         'including the heavy determinism leg. "in-transaction" is "full" MINUS the '
+                         'checks that themselves open a landing transaction — the profile `land '
+                         'lever` uses for its own gates step (see IN_TRANSACTION below).')
     a = ap.parse_args(argv)
 
     import acceptance.checks                                                  # noqa: F401
@@ -189,6 +199,21 @@ def main(argv=None):
         # so a reader can never mistake a per-push run for a full one.
         checks = [c for c in checks
                   if getattr(c.fn, 'PROFILE', 'host-insensitive') == 'host-insensitive']
+
+    if a.profile == 'in-transaction':
+        # THE RECURSION FILTER — SUPERVISOR RULING, 2026-08-21:
+        #   "The lander's self-test moves OUTSIDE the landing transaction: a check that validates the
+        #    lander by running seventeen practice landings must never run INSIDE a real landing
+        #    (recursion, not coverage). It remains a registered runner check for every push/standalone
+        #    run; the IN-TRANSACTION gate profile excludes it, and the lander runs it ONCE, standalone,
+        #    immediately BEFORE opening the transaction (fresh proof, no recursion). Coverage
+        #    identical, knot removed."
+        #
+        # A FILTER, NOT A FAKE VERDICT, on the same terms as host-insensitive above: the excluded
+        # check is not run and not reported, never handed a PASS it did not earn. The default is True,
+        # so a check is in this profile unless it says otherwise — the exclusion is opt-IN and a new
+        # check cannot fall out of the lander's gates by forgetting an attribute.
+        checks = [c for c in checks if getattr(c.fn, 'IN_TRANSACTION', True)]
 
     if a.only:
         want = {s.strip() for s in a.only.split(',') if s.strip()}
