@@ -62,10 +62,42 @@ MD.trade = (function () {
   /* nearest pick to a SCAR amount + a plain-language descriptor of that pick. Scans the SAME domain
      the law rules — ordinals 1–64 only. Anything below pick 64's value is the pool, so it describes as
      "a pool pick"; it never invents a phantom ordinal past the end of the curve. */
+  /* THE CEILING CLAMP (Phase-0 bug, blind UI review 2026-08-10; located at UI_PARKED_2026-08-21 item 7).
+     The nearest-neighbour scan below has a FLOOR clamp and had no ceiling, so every gap above pick 1's
+     value nearest-neighboured onto pick 1 and printed "a top-1 pick" — the blind reviewer saw −11,376
+     SCAR described as "roughly a top-1 pick" while pick 1 ≈ 3,000. The curve simply does not price a gap
+     that size: there is no ordinal above 1, so the honest answer states the gap in units of the curve's
+     own top rather than naming a pick that cannot carry it.
+
+     Two rungs, both read off the shipped PVC and neither hardcoded:
+       · above the WHOLE FIRST ROUND (Σ picks 1–18) — "more than a whole first round of picks";
+       · above pick 1 but not a whole round — "more than pick 1".
+     Both carry the multiple of pick 1 so the size is legible, and both are strictly outside the curve's
+     domain, so the nearest-neighbour path below is untouched for every amount the curve can actually
+     price (including amounts just under pick 1, which correctly read "a top-1 pick"). */
+  const ROUND_SIZE = 18;
+  function firstRoundValue(pvc) {
+    let s = 0;
+    for (let n = 1; n <= ROUND_SIZE; n++) {
+      const v = pvc[String(n)];
+      if (v == null) return null;   // an incomplete curve prices no round total; the rung is skipped
+      s += v;
+    }
+    return s;
+  }
+
   function describePick(amount) {
     const pvc = MD.seam.working.pvc || {};
     const floor = pvc[String(CURVE_MAX)];
     if (floor != null && amount < floor) return "a pool pick";
+    const top = pvc["1"];
+    if (top != null && top > 0 && amount > top) {
+      const mult = amount / top;
+      const times = (mult >= 10 ? Math.round(mult) : Math.round(mult * 10) / 10) + "× pick 1";
+      const r1 = firstRoundValue(pvc);
+      if (r1 != null && amount >= r1) return "more than a whole first round of picks (≈ " + times + ")";
+      return "more than pick 1 (≈ " + times + ")";
+    }
     let best = null, bestD = Infinity;
     for (let n = 1; n <= CURVE_MAX; n++) {
       const v = pvc[String(n)];
@@ -238,5 +270,8 @@ MD.trade = (function () {
     container.appendChild(foot);
   }
 
-  return { render: render };
+  /* describePick is exposed so the defect suite can exercise the EXACT shipped translator (same
+     doctrine as MD.board.retroFor and counting.js): a pure function of an amount and the stamped PVC,
+     reading no DOM and computing no price. */
+  return { render: render, describePick: describePick };
 })();
