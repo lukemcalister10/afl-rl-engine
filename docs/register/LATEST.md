@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v820 2026-08-21 · **THE IN-FLIGHT TWICE-BUILD IS SKIPPED — owner word verbatim: "Skip it" (2026-08-21, ruling the v819 offer).** build_twice_determinism.IN_TRANSACTION = False: the lander's in-flight gate set drops from 17 to 16 checks and landing wall-time roughly halves (~425s -> ~75s of runner inside the gates step, measured basis the P2b dry run). THE CHECK IS NOT WEAKE
+# OPEN ITEMS REGISTER · v821 2026-08-21 · **PACKAGE 3c IS LANDED AND VERIFIED — the live-state document is machine-generated, and CURRENT_STATE.md is retired.** docs/STATE.md is written by tools/landing/state.py as a step in BOTH landing sequences (lever 11 steps, round 15) and by a standalone entry point; content all COMPUTED (identities re-hashed beside their pins, rulebook lint verdict, registe
 
-(one line per pen; full entry: docs/register/entries/v820.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v821.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
