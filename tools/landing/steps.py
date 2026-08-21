@@ -1,4 +1,4 @@
-"""tools/landing/steps.py — THE TEN STEPS, IN THE DAY'S PROVEN ORDER.
+"""tools/landing/steps.py — THE ELEVEN STEPS, IN THE DAY'S PROVEN ORDER.
 
 Every step here is a CONSOLIDATION of a script that already ran and already landed a board on
 2026-08-20. The provenance of each is named in its own docstring, and the rule throughout is the one
@@ -10,8 +10,8 @@ The only values that arrive from outside are PREDICTIONS (the prereg's board), C
 word, the lineage authority) and POLICY (which identities this act is allowed to move). Those are
 the three things a tree cannot measure about itself, and they are exactly what the act spec carries.
 
-WHAT THE STEPS SHARE WITH THE ROUND LANDER (2b). `preflight`, `contract`, `sibling`, `ui`, `gates`,
-`claims` and `commit` are act-kind agnostic: 2b registers the same functions in its own sequence and
+WHAT THE STEPS SHARE WITH THE ROUND LANDER (2b). `preflight`, `contract`, `sibling`, `ui`, `state`,
+`gates`, `claims` and `commit` are act-kind agnostic: 2b registers the same functions in its own sequence and
 adds `scores`, `catchup` and `advance_repin` beside them. `build_proofs`, `pins` and `lineage` read
 `spec['act_kind']` where the two kinds genuinely differ (a round advance moves the store and the
 round; a lever landing must not). That is why they are parameterised rather than duplicated.
@@ -2045,6 +2045,50 @@ def movers_page(ctx):
             'board_total_before': tb, 'board_total_after': ta}
 
 
+# ================================================================================= STEP — STATE
+def state(ctx):
+    """docs/STATE.md — the machine-written state file, regenerated (PLAN_v6 3c, process law P6).
+
+    A LATE STEP OF BOTH SEQUENCES, AND ITS POSITION IS THE DESIGN. It runs AFTER every writer that
+    can move an identity (pins, lineage, contract, sibling, ui — and the advance, in a round) and
+    BEFORE `gates`, so the state file that the gate set then reads is the one this landing produced.
+    Put it after `gates` and the landing's own `acceptance::state_file` row would be measuring the
+    PREVIOUS landing's file; put it after `commit` and it would never be committed at all.
+
+    IT WRITES NO VALUE OF ITS OWN. Everything in the file is computed by `tools/landing/state.py`
+    from the carriers — that module is the sole writer, this step is one of its three callers, and
+    the postcondition asserted here is the same one the acceptance check asserts: what is on disk IS
+    a regeneration of this tree. A file that cannot be regenerated does not get written half-way.
+
+    THE PREDECESSOR IS WHY THE STEP EXISTS. `docs/CURRENT_STATE.md` was hand-maintained behind an
+    authority banner and sat 156 register versions stale; it is retired to a tombstone at its own
+    path in the 3c act. Nothing about this file is hand-maintained, and the moment that stops being
+    true the freshness gate says so.
+    """
+    ctx.fault_point('state')
+    from tools.landing import state as STATE
+
+    try:
+        if ctx.opts.dry_run:
+            text = STATE.render(ctx.root, STATE.head_commit(ctx.root))
+            ctx.log('DRY RUN: docs/STATE.md would be %d bytes; not written.' % len(text.encode()))
+            return {'written': False, 'dry_run': True, 'bytes': len(text.encode())}
+        rel, md5_after, changed = STATE.write(ctx.root)
+    except STATE.StateError as e:
+        # P6 IN ITS LITERAL FORM: a derived surface that cannot be generated does not exist. The step
+        # does not write a partial file and does not carry the previous landing's copy forward as
+        # though it were current — it halts the landing and names the carrier it could not read.
+        raise StepError('the state file CANNOT be generated from this tree: %s' % e)
+    problems = STATE.check(ctx.root)
+    if problems:
+        raise StepError('the state file was written and does not verify as a regeneration of this '
+                        'tree:\n    %s' % '\n    '.join(problems))
+    ctx.log('state: %s md5 %s (%s); regeneration verified'
+            % (rel, md5_after, 'moved' if changed else 'byte-unmoved'))
+    return {'written': True, 'path': rel, 'md5': md5_after, 'changed': changed,
+            'stamp_commit': STATE.recorded_commit(ctx.root)}
+
+
 # ================================================================================ STEP 9 — COMMIT
 def commit(ctx):
     """ONE commit, EXPLICIT PATHS ONLY. Never `git add -A`, never `git commit -a`.
@@ -2111,6 +2155,7 @@ LEVER_SEQUENCE = (
     ('contract',     'restamp_dynamic + the bake-lane repin + check',        contract),
     ('sibling',      'the balanced sibling, rebuilt and reconciled if moved', sibling),
     ('ui',           'BOTH UI writers, and the identity read back out',      ui),
+    ('state',        'docs/STATE.md regenerated from the carriers (3c)',     state),
     ('gates',        'the landing gate set, verdicts off exit codes',        gates),
     ('claims',       'emit the claims file and verify it against the tree',  claims),
     ('commit',       'ONE commit, explicit paths only',                      commit),
@@ -2118,8 +2163,8 @@ LEVER_SEQUENCE = (
 
 #: THE ROUND-ADVANCE SEQUENCE (PLAN_v6 2b) — the R23 hand-walk's proven order, as a program.
 #:
-#: SEVEN OF THESE FOURTEEN STEPS ARE THE LEVER LANDER'S OWN FUNCTIONS, registered again here rather
-#: than copied: `preflight`, `contract`, `sibling`, `ui`, `gates`, `claims`, `commit`. That is the S7
+#: EIGHT OF THESE FIFTEEN STEPS ARE THE LEVER LANDER'S OWN FUNCTIONS, registered again here rather
+#: than copied: `preflight`, `contract`, `sibling`, `ui`, `state`, `gates`, `claims`, `commit`. That is the S7
 #: law made structural — two commands, one library, and no way for the shared half to drift apart,
 #: because there is only one of it. What 2b adds is the seven steps a round genuinely has and a lever
 #: landing genuinely does not.
@@ -2136,6 +2181,7 @@ LEVER_SEQUENCE = (
 #:   sibling           05b/13: verify — after an advance the repin has already run IN-transaction
 #:   ui                10_ui_writers_r23.txt, now ALL FOUR writers (F-9 and F-10 closed the class)
 #:   movers_page       ACT 4 — MOVERS_R23.html through the frozen template
+#:   state             PLAN_v6 3c: docs/STATE.md regenerated from the carriers, before the gates
 #:   gates             13_gates.txt: the standard landing gate set
 #:   claims            PLAN_v6 1c
 #:   commit            ONE commit, explicit paths — the advance's OUTPUTS only
@@ -2157,6 +2203,7 @@ ROUND_SEQUENCE = (
     ('sibling',           'the balanced sibling: verify (the repin ran in-txn)',    sibling),
     ('ui',                'ALL FOUR UI writers, and the identity read back out',    ui),
     ('movers_page',       "the owner's movers page, through the frozen template",   movers_page),
+    ('state',             'docs/STATE.md regenerated from the carriers (3c)',       state),
     ('gates',             'the landing gate set, verdicts off exit codes',          gates),
     ('claims',            'emit the claims file and verify it against the tree',    claims),
     ('commit',            'ONE commit, explicit paths only',                        commit),

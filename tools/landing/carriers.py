@@ -110,6 +110,13 @@ LEVER_CARRIERS = (
       'measured fact at abort time. 2b, which DOES move it in a sheet-carrying round, inherits the '
       'entry rather than registering a second one'),
 
+    # ---- the generated state file: PLAN_v6 3c ----------------------------------------------------
+    F('docs/STATE.md', 'steps.state (tools/landing/state.py, the SOLE writer)',
+      'THE GENERATED STATE FILE. It is a carrier for the same reason the board is: a landing writes '
+      'it, so an abort must be able to put it back byte-exact. It is also the one carrier whose '
+      'content is a pure function of the others — which is why `acceptance::state_file` can '
+      'regenerate it and compare, and why a hand edit is a red rather than a merge conflict'),
+
     # ---- the histories the out-of-round column writes --------------------------------------------
     F('engine/rl_after/ingestion/value_history.json', 'out_of_round_column.add_column',
       'value history — one point per registered column'),

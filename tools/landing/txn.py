@@ -160,6 +160,20 @@ def _fault_false_claim(ctx):
     ctx.false_claim = True
 
 
+def _fault_state_ungeneratable(ctx):
+    """The record pointer the state file must QUOTE is taken out of the tree.
+
+    P6 is the step's whole reason to exist — "a derived surface that cannot be generated does not
+    exist" — so the fault that tests it is a missing input, not a corrupted output. Corrupting
+    `docs/STATE.md` would prove nothing: the step rewrites it. Removing `docs/register/LATEST.md`
+    means the register pointer cannot be computed, and the honest behaviour is a HALT with the
+    carrier named, never a state file that quietly carries the last landing's line 1 forward.
+    """
+    p = os.path.join(ctx.root, 'docs', 'register', 'LATEST.md')
+    if os.path.isfile(p):
+        os.remove(p)
+
+
 def _fault_foreign_path(ctx):
     open(os.path.join(ctx.root, 'docs', 'LANDING_FAULT_FOREIGN.md'), 'w').write('not a carrier\n')
 
@@ -257,6 +271,9 @@ FAULTS = {
                      _fault_sidecar_corrupt),
     'ui':           ('skip_second_writer', 'THE THRICE-PROVEN TRAP: writer 2 never runs',
                      _fault_skip_second_writer),
+    'state':        ('state_ungeneratable',
+                     'a carrier the state file must READ is gone, so the file cannot be generated',
+                     _fault_state_ungeneratable),
     'gates':        ('gate_red', 'a landed pin is wrong, so the manifest gate reds',
                      _fault_gate_red),
     'claims':       ('false_claim', 'the claims file carries a claim the tree contradicts',

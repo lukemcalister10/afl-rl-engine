@@ -144,3 +144,14 @@ C.register('lander_selftest', _landing.lander_selftest,
 C.register('register_form', _standing.register_form,
            reads=(),
            doc='frozen register seal + new-form entries valid + incident index current')
+
+# --------------------------------------------------------------------------------------------------
+# 3c ADDITION (the state file, 2026-08-21). One row, sub-second, no build: the machine-written
+# docs/STATE.md is regenerated from the carriers and compared byte-for-byte with what is committed.
+# It is the falsifier the retired predecessor never had — docs/CURRENT_STATE.md carried an authority
+# banner, had a named writer, and still sat 156 register versions stale. Halts no carrier.
+
+# 19. THE STATE FILE'S FRESHNESS.
+C.register('state_file', _standing.state_file,
+           reads=(),
+           doc='docs/STATE.md is a byte-exact regeneration of this tree (generated-only, P6)')

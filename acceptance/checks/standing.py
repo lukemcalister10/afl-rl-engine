@@ -180,3 +180,28 @@ def inbox_manifest(ctx):
 
 inbox_manifest.HALTS = ()
 inbox_manifest.PROFILE = 'host-insensitive'
+
+
+def state_file(ctx):
+    """docs/STATE.md IS a regeneration of this tree (PLAN_v6 3c freshness gate, process law P6).
+
+    THE CHEAPEST HONEST FORM, and the one the owner's same-day quick-and-easy bar asked for: shell
+    out to the generator's own `check` verb, which regenerates the file from the carriers and
+    compares byte-for-byte. No second implementation of the render — a wrapper that re-derived the
+    content would be a hand-mirror of the writer, which is the G4 hazard this estate has already
+    paid for once.
+
+    WHY THIS ROW EXISTS AT ALL. `docs/CURRENT_STATE.md` had an authority banner, a named writer and
+    no gate, and sat 156 register versions stale (process law P6's own incident). The banner on
+    `docs/STATE.md` is worth exactly what this row's verdict says it is worth: a generated surface
+    with no gate drifts silently, which is the same defect the 3b act closed for the incident index.
+
+    Sub-second, no build, no engine import — it reads five JSON carriers, two doc headers and runs
+    the rulebook lint the state file quotes.
+    """
+    rc, out, ev = _run(ctx, 'state_file', ['python3', '-m', 'tools.landing.state', 'check'])
+    return C.Verdict('state_file', C.PASS if rc == 0 else C.FAIL, ev, _last_meaningful(out, 2))
+
+
+state_file.HALTS = ()
+state_file.PROFILE = 'host-insensitive'
