@@ -1,0 +1,13 @@
+{
+  "name": "afl-rl-ui-tests",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Browser-driver dependency for the two Chromium-driven UI suites in this directory (ui/tests/*.mjs). NOT a build system and NOT a package: the repo ships no JS bundler and no npm-run test lane, and the .test.js suites here are still plain `node <file>` with no dependencies at all. This manifest exists for exactly one reason — responsive_layout.test.mjs and ui_222_items.test.mjs require playwright-core, which was in NO manifest anywhere, so both suites died at import with MODULE_NOT_FOUND on any box where somebody had not installed it by hand. A dependency nobody declares is a suite that silently stops running.",
+  "_install": "npm --prefix ui/tests install    (PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 is the default here via .npmrc-free config: playwright-core downloads no browser of its own)",
+  "_browser": "NO BROWSER IS DOWNLOADED OR VENDORED. playwright-core drives a browser it is given; the suites resolve one themselves from $CHROME_BIN, else /opt/pw-browsers/chromium-*/chrome-linux/chrome. Keep it that way — a browser binary is not repository content.",
+  "_run": "node ui/tests/responsive_layout.test.mjs   ·   node ui/tests/ui_222_items.test.mjs   (both resolve playwright-core out of ui/tests/node_modules by ordinary node resolution; PLAYWRIGHT_CORE=<abs path> still overrides, unchanged)",
+  "_node_modules": "ui/tests/node_modules is GITIGNORED, never committed. The lockfile beside this file is what pins the version.",
+  "dependencies": {
+    "playwright-core": "1.62.1"
+  }
+}

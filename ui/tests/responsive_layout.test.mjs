@@ -1,9 +1,12 @@
 /* Matchday UI — RESPONSIVE LAYOUT acceptance (Chromium-driven). Replaces the weak generic
    "board renders" assertion with real layout assertions at phone/tablet/desktop widths.
 
-   Run:  NODE_PATH=<dir-with-playwright-core> node ui/tests/responsive_layout.test.mjs
-         (the repo has no package.json; this browser test uses playwright-core + the pre-installed
-          Chromium at $CHROME_BIN or the /opt/pw-browsers chromium build. exit 0 = all pass.)
+   Run:  npm --prefix ui/tests install    (once — installs playwright-core, no browser download)
+         node ui/tests/responsive_layout.test.mjs
+         (playwright-core is declared in ui/tests/package.json since 2026-08-21 and resolves out of
+          ui/tests/node_modules; NODE_PATH / PLAYWRIGHT_CORE still override. The browser is the
+          pre-installed Chromium at $CHROME_BIN or the /opt/pw-browsers build — never vendored.
+          exit 0 = all pass.)
 
    Viewport widths tested: 320, 360, 390, 430, 720, 1440.
    At every width it asserts:
@@ -19,9 +22,10 @@ import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { createRequire } from 'module';
 
-// playwright-core is not a repo dependency (the repo has no package.json). Resolve it via CJS require
-// from $PLAYWRIGHT_CORE (an absolute path to the module) when provided, else the bare specifier
-// (works when playwright-core is installed / on NODE_PATH).
+// playwright-core is declared in ui/tests/package.json (added 2026-08-21 — before that it was in no
+// manifest anywhere and this suite died at import with MODULE_NOT_FOUND wherever nobody had installed
+// it by hand). Resolve it via CJS require from $PLAYWRIGHT_CORE (an absolute path to the module) when
+// provided, else the bare specifier — which finds ui/tests/node_modules by ordinary node resolution.
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.PLAYWRIGHT_CORE || 'playwright-core');
 

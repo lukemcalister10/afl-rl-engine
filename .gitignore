@@ -14,3 +14,7 @@ session_2026-07-20/fv_provenance_remediation/RESULTS.json
 # Harness-created agent worktrees (nested git checkouts — never repository content)
 .claude/worktrees/
 engine/rl_after/ingestion/.sibling_txn/
+
+# UI browser-suite dependency (ui/tests/package.json + package-lock.json ARE committed; the installed
+# tree is not). `npm --prefix ui/tests install` recreates it; no browser binary is ever vendored.
+ui/tests/node_modules/
