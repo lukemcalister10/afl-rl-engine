@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 205,
+  "coverage_entries": 206,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-21",
+      "headline": "**THE OWNER'S LOCATION DATA IS VERIFIED CURRENT ON BOTH SURFACES \u2014 and the pick surface was silently stale until this act (owner's word tonight: \"It i\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE OWNER'S LOCATION DATA IS VERIFIED CURRENT ON BOTH SURFACES \u2014 and the pick surface was silently stale until this act (owner's word tonight: \"It is essential that the UI displays the correct player locations and pick\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 827
+    },
     {
       "by": "explicit",
       "date": "2026-08-21",
@@ -1976,7 +1990,7 @@
       "version": 622
     }
   ],
-  "incidents": 114,
+  "incidents": 115,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",

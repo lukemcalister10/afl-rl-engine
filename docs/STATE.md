@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v826 2026-08-21 · **THE THREE R24 PRE-FLIGHT REPAIRS ARE LANDED AND VERIFIED (commit 1870cde, one explicit-path commit, supervisor-verified: identities byte-unmoved, runner 16/16 GREEN and lander self-test GREEN under the supervisor's own runs).** (1) THE INPUT-COMMIT PINCER is dead both jaws: declared_dirt() enumerates the score file + override record when round.scores is
+  > # OPEN ITEMS REGISTER · v827 2026-08-21 · **THE OWNER'S LOCATION DATA IS VERIFIED CURRENT ON BOTH SURFACES — and the pick surface was silently stale until this act (owner's word tonight: "It is essential that the UI displays the correct player locations and pick locations. I supplied them recently for that purpose!").** PLAYER LOCATIONS: the ownership mirror (refreshed earlier today, writer 5 wire
 
-- new-form entries under `docs/register/entries/`: 14
+- new-form entries under `docs/register/entries/`: 15
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `1870cde92b4f90d2a9e75797b629461ec0718836` |
+| generated at commit | `f5d6d09a7a0438e4a5ba94eb2208b7f408908aa5` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

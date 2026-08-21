@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v826**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v827**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v827** (2026-08-21) — `docs/register/entries/v827.md` — **THE OWNER'S LOCATION DATA IS VERIFIED CURRENT ON BOTH SURFACES — and the pick surface was silently stale until this act (owner's word toni
 - **v826** (2026-08-21) — `docs/register/entries/v826.md` — **THE THREE R24 PRE-FLIGHT REPAIRS ARE LANDED AND VERIFIED (commit 1870cde, one explicit-path commit, supervisor-verified: identities byte-u
 - **v825** (2026-08-21) — `docs/register/entries/v825.md` — **BLIND-PROTOCOL INTEGRITY ADDENDUM (study B's own late disclosure, recorded verbatim in substance).** After its study was sealed at its com
 - **v824** (2026-08-21) — `docs/register/entries/v824.md` — **THE BLIND COMPARISON IS FILED (docs/proposals/REBAKE_COMPARISON_2026-08-21.md) — the owner's protocol executed to the letter: study B comm
