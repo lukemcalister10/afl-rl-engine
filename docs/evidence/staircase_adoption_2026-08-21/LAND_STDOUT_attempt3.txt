@@ -1,0 +1,289 @@
+======================================================================================================
+PRE-TRANSACTION SELF-TEST — the lander proves its abort ladder BEFORE opening a landing.
+  transcripts: /tmp/preflight_lander_selftest_4kdt5fqn  (filed into the landing evidence dir when the transaction closes)
+  base       : fb3d3c0  (the act declares this tree mid-act; the sandbox is cut from the last coherent base)
+======================================================================================================
+======================================================================================================
+THE LANDER SELF-TEST — every step broken once, every abort proved (PLAN_v6 2a.3)
+  live tree : /home/user/afl-rl-engine   (READ-ONLY to this self-test; asserted byte-unmoved at the end)
+  sandbox   : /tmp/landing_selftest_30133
+  transcripts: /tmp/preflight_lander_selftest_4kdt5fqn
+  base      : fb3d3c0   (the LAST COHERENT BASE — this tree is mid-act; see the ruling in selftest.main)
+======================================================================================================
+sandbox created at /tmp/landing_selftest_30133/sandbox (base a99eda4a634e)
+
+--- CONTROL: a clean no-op landing in this sandbox must SUCCEED ---
+  PASS control_clean_run            exit 0
+  PASS commit_explicit_paths        5 path(s) committed, all declared: docs/evidence/landing_selftest/SELFTEST_CLAIMS.json, docs/evidence/landing_selftest/claims_check.txt, docs/evidence/landing_selftest/gate_release_contract_check.txt, docs/evidence/landing_selftest/gate_release_manifest_check.txt
+
+--- LOCK: a landing must refuse to start while another holder has the lock ---
+  PASS build_lock_refuses           exit 1; the landing refused to become a second writer
+
+--- FAULTS: every step in LEVER_SEQUENCE broken once ---
+  PASS fault_preflight              fault=dirty_tree; exit 1; failed_step='preflight'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_build_proofs           fault=wrong_board; exit 1; failed_step='build_proofs'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_pins                   fault=board_corrupt; exit 1; failed_step='pins'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_lineage                fault=chain_broken; exit 1; failed_step='lineage'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_contract               fault=seal_broken; exit 1; failed_step='contract'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_sibling                fault=sidecar_corrupt; exit 1; failed_step='sibling'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_ui                     fault=skip_second_writer; exit 1; failed_step='ui'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_gates                  fault=gate_red; exit 1; failed_step='gates'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_claims                 fault=false_claim; exit 1; failed_step='claims'; carriers moved after abort: NONE (byte-exact)
+  PASS fault_commit                 fault=foreign_path; exit 1; failed_step='commit'; carriers moved after abort: NONE (byte-exact)
+
+--- DEPTH: a landing that WROTE pins + column + lineage + contract, then aborted ---
+  PASS abort_restores_writers       11 carrier(s) had been written and were restored: data/expected_boot.json, data/release_contract.json, data/release_lineage.json, data/rl_build/rl_app_data.json, data/rl_build/rl_app_data.json.srcmd5, engine/rl_after/ingestion/pos_rank_history.json
+
+--- CLAIMS: the checker's own negative control still fires ---
+  PASS claims_negative_control      CLAIMS SELF-TEST: 11 PASS / 0 FAIL
+  PASS packet_slot_validator        PACKET SELF-TEST: 5 PASS / 0 FAIL
+  PASS live_tree_untouched          every live carrier byte-unmoved across the whole self-test
+
+======================================================================================================
+STEPS BROKEN 10   CAUGHT 10   ABORTED BYTE-EXACT 10
+SELF-TEST: 17 PASS / 0 FAIL
+======================================================================================================
+======================================================================================================
+PRE-TRANSACTION SELF-TEST PASSED. Opening the transaction.
+======================================================================================================
+
+======================================================================================================
+LAND LEVER-LANDING — THE STAIRCASE FIX ADOPTION (ORDER 44) — RL_O44_LVLMONO default OFF -> 'ratchet' (VARIANT A, RAW, UNCONSERVED)
+  tree      : /home/user/afl-rl-engine
+  owner word: I misunderstood the A and B difference. I think based on those explanations, A raw I prefer. Lock that in, unconserved.
+  prereg    : docs/evidence/staircase_adoption_2026-08-21/PREREG_ADOPTION_A_RAW.md   predicts board b3e8da99bc7f632e5d1eebc732f9cf01
+  mode      : APPLY builder=real
+======================================================================================================
+
+--- STEP 0/9  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  RL_VENV
+build-lock: HELD by land-lever-30133 (pid 30133) — single writer for the shared workspace.
+base commit        8a0b9dc9d4831e9fc74a012c7afa1defcf1cd8a6
+board pin (before) 68be10c79d0ee096455754e084bcf757
+store pin (before) b745002eb0a0fbb1c34fa44f1ef708d6
+restore point      111 carrier(s) captured, 111 present on disk
+    [preflight OK  0.07s]
+
+--- STEP 1/9  build_proofs   bare build, predicted identity, switch leg, day-0 ---
+build         rc=0 board=b3e8da99bc7f632e5d1eebc732f9cf01  (141.3s)
+PREDICTED BOARD MET: b3e8da99bc7f632e5d1eebc732f9cf01 == prereg docs/evidence/staircase_adoption_2026-08-21/PREREG_ADOPTION_A_RAW.md
+switch-off    rc=0 board=68be10c79d0ee096455754e084bcf757  (82.8s)
+day-0 re-base : OFF (default). No day-0 reference is regenerated by this landing.
+installed     board + both sidecars + the generator copy (4 files, lockstep)
+    [build_proofs OK  224.10s]
+
+--- STEP 2/9  pins           expected_boot + both sidecars + the generator copy ---
+published board  b3e8da99bc7f632e5d1eebc732f9cf01
+generator board  b3e8da99bc7f632e5d1eebc732f9cf01
+both sidecars agree with the board beside them and with the live store. OK.
+delegated     balanced_board_md5   is written by engine/rl_after/ingestion/sibling_repin.py (the sibling step), not here
+COMPUTED from the tree (never typed): board        = b3e8da99bc7f632e5d1eebc732f9cf01
+  expected_boot board        68be10c79d0e -> b3e8da99bc7f   (old value occurs 1 time(s))
+fields that moved in expected_boot.json: ['board']
+must-not-move list: 10 checked, 0 moved
+byte check: the ONLY bytes that differ are the declared pin values.
+WRITTEN and re-read.
+    [pins OK  0.02s]
+
+--- STEP 3/9  lineage        the out-of-round column and the append-only entry ---
+column        the-staircase-adoption-21-8 registered (dry_run=False)
+ASSERTED: the newest stored point is this column, naming the live board b3e8da99bc7f632e5d1eebc732f9cf01
+chain OK: register tail destination == this entry's source on board and store
+append-only OK: 12 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
+MOVED by this transition: ['board'] (of 11 identities)
+re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
+    [lineage OK  0.14s]
+
+--- STEP 4/9  contract       restamp_dynamic + the bake-lane repin + check ---
+contract seal self-consistent before the act: 4cbc7f27c990
+  config       eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1   == expected_boot
+  engine_head  8f59180547a584c981ccba39fa018708   == expected_boot
+  rl_model     6fe7c4155866d80e8045bed2d3bf2802   == expected_boot
+  fv           6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346   == expected_boot
+  store        b745002eb0a0fbb1c34fa44f1ef708d6   == expected_boot
+  board        b3e8da99bc7f632e5d1eebc732f9cf01   == expected_boot
+WRITER 1: release_contract.restamp_dynamic(root, as_of_round=23, store, board, season_state)
+   restamp_dynamic returned seal 213443de2769
+WRITER 2: the bake-lane identities restamp_dynamic does not touch
+  contract config_sha256      eed19a75f775 -> eed19a75f775
+  contract identities.engine_head  8f59180547a5 -> 8f59180547a5
+  contract identities.rl_model     6fe7c4155866 -> 6fe7c4155866
+  contract identities.fv           6e9a370e5970 -> 6e9a370e5970
+  contract_sha256             213443de2769 -> 213443de2769
+  frozen fields asserted unmoved: 10 checked, 0 moved
+RE-STAMPED, re-read, and release_contract.py check PASSES.
+    [contract OK  0.08s]
+
+--- STEP 5/9  sibling        the balanced sibling, rebuilt and reconciled if moved ---
+verify BEFORE : ok=False balanced=556ad70d2959 fails=8
+    - forward reference vector for 556ad70d missing
+    - forward oracle test_forward_lens_b3e8da99.py missing
+    - working canonical board stamp != b3e8da99
+    - public rows disagree with the canonical board for 551 player(s)
+    - sidecar contract_sha256 != live contract seal
+    - sidecar forward_board_md5 != the canonical board of record
+    - sidecar forward_vector filename != regenerated forward vector
+    - sidecar forward_oracle filename != regenerated forward oracle
+reconcile     ok=True changed=True balanced 556ad70d2959 -> 7c32a540578b
+  committed targets: board_view_public, board_view_working, forward_oracle, forward_vector, fv_test, manifest, reference_vector, release_contract, sidecar
+verify AFTER  : ok=True fails=0
+    [sibling OK  281.85s]
+
+--- STEP 6/9  ui             BOTH UI writers, and the identity read back out ---
+BEFORE  working c9ee4399a44912cad55c7853217c9a2c  release-block=False
+BEFORE  public  85edf757e451df3ee2effb7b0e1658ef  release-block=False
+BEFORE  mirror  d81bd31a40e5aa0fa0e5f894335741b7  register=12 entr(ies)
+WRITER 1/3: ui/tools/extract_board_view.py
+  working after writer 1: c9ee4399a44912cad55c7853217c9a2c   release-block=False   <-- DROPPED, as it always is
+WRITER 2/3: round_movers.inject_release_contract(bundle, root, 23)
+  release block: {"as_of_round": 23, "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9", "board": "b3e8da99bc7f632e5d1eebc732f9cf01", "config": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+WRITER 3/3: ui/tools/generate_movers_transition.py  (the lineage projection — supervisor ruling on F-9)
+  wrote: ui/data/movers_transition.js (73483 bytes)
+  register entries mirrored: 13
+  drift guard: mirror OK — committed == projected (73483 bytes, 13 register entries)
+  mirror register == lineage register: 13 entr(ies), EQUAL  (the F-9 predicate holds)
+AFTER   working d171bd49f7c8f4554295425655ccf2da  release-block=True
+AFTER   public  85edf757e451df3ee2effb7b0e1658ef  release-block=False
+AFTER   mirror  a44e4224f1d495a85d3e22f0b39482a8  MOVED d81bd31a40e5 -> a44e4224f1d4, tracking the lineage append
+  stamp.board_md5            b3e8da99bc7f632e5d1eebc732f9cf01   OK
+  stamp.board                b3e8da99bc7f632e5d1eebc732f9cf01   OK
+  stamp.srcmd5               b3e8da99bc7f632e5d1eebc732f9cf01   OK
+  stamp.store_md5            b745002eb0a0fbb1c34fa44f1ef708d6   OK
+  stamp.balanced_board_md5   7c32a540578b799922daea41d8acdfa2   OK
+  stamp.asOfRound            23                                 OK
+THE HTML APP'S EMBEDDED BOARD IDENTITY IS b3e8da99bc7f632e5d1eebc732f9cf01. All three writers ran; the release block is back and the reader can see the transition that produced this board.
+    [ui OK  0.24s]
+    build-lock: RELEASED after 'ui' — the remaining steps write nothing and the one gate that builds takes the lock itself.
+
+--- STEP 7/9  gates          the landing gate set, verdicts off exit codes ---
+  release_manifest_check   PASS   exit=0  (0.1s)
+  release_contract_check   PASS   exit=0  (0.1s)
+  acceptance_runner        FAIL   exit=1  (293.9s)
+    [gates FAILED  294.01s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'gates'
+======================================================================================================
+  gate acceptance_runner did not pass (exit 1; 'GREEN' absent from output):
+  manifest         /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence/release_manifest.txt
+    boot_guard_checkout      /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence/boot_guard_checkout.txt
+    config_manifest          /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence/config_manifest.txt
+    ruling_config            /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence/ruling_config.txt
+    release_contract_seal    /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence/release_contract_seal.txt
+    store_coherence_six_way  /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence/store_coherence_six_way.txt
+    doc_lint                 /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence/doc_lint.txt
+    rulebook_lint            /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence/rulebook_lint.txt
+    ruled_red_ledger         /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence/ruled_red_ledger.txt
+    inbox_manifest           /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence/inbox_manifest.txt
+    mirror_parity            /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence/mirror_parity.txt
+    dial_coverage            /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence/dial_coverage.txt
+    oneliner_gamma           /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence/oneliner_gamma.txt
+    oneliner_r14_restore     /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence/oneliner_r14_restore.txt
+    oneliner_f1_lens         /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence/oneliner_f1_lens.txt
+    build_twice_determinism  /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence/build_twice_determinism.txt
+  
+  AGGREGATE  16 checks  |  PASS 15  FAIL 1  BLOCKED 0  RULED-RED 0
+  VERDICT    RED — 1 gating failure(s): oneliner_r14_restore
+  
+  
+  PER-CHECK RAW OUTPUT: /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/gate_acceptance_runner_evidence
+
+carriers that moved before the failure: 38
+    data/expected_boot.json                                          e0965d29ad86 -> 07f948108a2b
+    data/release_contract.json                                       09d1081340b8 -> 9af88213362b
+    data/release_lineage.json                                        f486ecd40dc8 -> 628813d782cd
+    data/rl_build/rl_app_data.json                                   68be10c79d0e -> b3e8da99bc7f
+    data/rl_build/rl_app_data.json.srcmd5                            a275bf3cd0d0 -> 8dfebf8d3ab1
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/journal.jsonl ABSENT -> ea8862c53d20
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/manifest.json ABSENT -> 77a753118890
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/board_view_public ABSENT -> 540bcdb444fb
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/board_view_working ABSENT -> 875a77c96102
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/forward_oracle.ABSENT ABSENT -> ffcb1cddbb1f
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/forward_vector.ABSENT ABSENT -> 64c3d9e255ec
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/fv_test ABSENT -> a3cdbc3cd37f
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/manifest ABSENT -> 840757372ea5
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/reference_vector.ABSENT ABSENT -> 4f2be8722532
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/release_contract ABSENT -> cfacfbc25a1c
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/sidecar ABSENT -> 600ead8b4269
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/board_view_public ABSENT -> 85edf757e451
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/board_view_working ABSENT -> c9ee4399a449
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/forward_oracle ABSENT -> f9079bb36af9
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/forward_vector ABSENT -> 94809f0693e2
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/fv_test ABSENT -> 87d21cde012b
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/manifest ABSENT -> 07f948108a2b
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/reference_vector ABSENT -> 90697dce6f99
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/release_contract ABSENT -> 9af88213362b
+    engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/sidecar ABSENT -> f9771c9aabca
+    engine/rl_after/ingestion/pos_rank_history.json                  907101022060 -> 642a3240b902
+    engine/rl_after/ingestion/rank_history.json                      fc0c3a8373d1 -> caf6670b53e5
+    engine/rl_after/ingestion/sibling_repin_state.json               600ead8b4269 -> f9771c9aabca
+    engine/rl_after/ingestion/value_history.json                     8e4303b25716 -> 182dc47d04f6
+    engine/rl_after/rl_app_data.json                                 68be10c79d0e -> b3e8da99bc7f
+    engine/rl_after/rl_app_data.json.srcmd5                          a275bf3cd0d0 -> 8dfebf8d3ab1
+    session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_b3e8da99.json ABSENT -> 94809f0693e2
+    session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_7c32a540.json ABSENT -> 90697dce6f99
+    session_2026-07-20/fv_provenance_remediation/test_forward_lens_b3e8da99.py ABSENT -> f9079bb36af9
+    session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py a3cdbc3cd37f -> 87d21cde012b
+    ui/data/board_view_public.js                                     540bcdb444fb -> 85edf757e451
+    ui/data/board_view_working.js                                    875a77c96102 -> d171bd49f7c8
+    ui/data/movers_transition.js                                     d81bd31a40e5 -> a44e4224f1d4
+RESTORING 38 carrier(s):
+    rewrite  data/expected_boot.json
+    rewrite  data/release_contract.json
+    rewrite  data/release_lineage.json
+    rewrite  data/rl_build/rl_app_data.json
+    rewrite  data/rl_build/rl_app_data.json.srcmd5
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/journal.jsonl
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/manifest.json
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/board_view_public
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/board_view_working
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/forward_oracle.ABSENT
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/forward_vector.ABSENT
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/fv_test
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/manifest
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/reference_vector.ABSENT
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/release_contract
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/originals/sidecar
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/board_view_public
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/board_view_working
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/forward_oracle
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/forward_vector
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/fv_test
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/manifest
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/reference_vector
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/release_contract
+    delete   engine/rl_after/ingestion/.sibling_txn/txn_23_7c32a540/staged/sidecar
+    rewrite  engine/rl_after/ingestion/pos_rank_history.json
+    rewrite  engine/rl_after/ingestion/rank_history.json
+    rewrite  engine/rl_after/ingestion/sibling_repin_state.json
+    rewrite  engine/rl_after/ingestion/value_history.json
+    rewrite  engine/rl_after/rl_app_data.json
+    rewrite  engine/rl_after/rl_app_data.json.srcmd5
+    delete   session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_b3e8da99.json
+    delete   session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_7c32a540.json
+    delete   session_2026-07-20/fv_provenance_remediation/test_forward_lens_b3e8da99.py
+    rewrite  session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py
+    rewrite  ui/data/board_view_public.js
+    rewrite  ui/data/board_view_working.js
+    rewrite  ui/data/movers_transition.js
+
+ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.07s  OK
+    build_proofs     224.10s  OK
+    pins               0.02s  OK
+    lineage            0.14s  OK
+    contract           0.08s  OK
+    sibling          281.85s  OK
+    ui                 0.24s  OK
+    gates            294.01s  FAIL
+    TOTAL            800.51s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_30133
+pre-transaction self-test transcripts filed: /home/user/afl-rl-engine/docs/evidence/staircase_adoption_2026-08-21/preflight_lander_selftest
+RC=1 WALL=1627s

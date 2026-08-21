@@ -680,3 +680,88 @@ to see it. Options, none taken here:
 **Everything else is ready and unchanged.** Prereg `fb3d3c0`, flip `531235c`, spec validates clean,
 self-test green on a coherent tree, the in-transaction profile green, and **every proof the act owns
 met twice, on two separate flights.**
+
+---
+
+## 12 · F-9 CLOSED AND PROVEN — AND A SECOND MIRROR IS OUT OF STEP (**F-10**). HALTED.
+
+The pen ruled **Option 1** on F-9; implemented at **`8a0b9dc`**, re-flown on the same spec with all
+conditions unchanged. **F-9 is closed, and the gate now passes that clause on true equality.** A
+different assertion, two lines further into the same suite, then failed. **Per the standing
+instruction — any new failure class beyond r14-now-green is a halt and report, no diagnosis
+marathon — this seat stops here.**
+
+### 12.1 · The ruling, implemented and PROVEN
+
+> *"A landing that moves the lineage record moves its mirror in the same transaction — the projector
+> `ui/tools/generate_movers_transition.py` becomes the lever landing's third UI writer … This is the
+> T7 both-writers law completing itself: the trap was thrice-proven for two writers and today proved
+> there was a third."*
+
+Step 6, from the landing's own log:
+
+```
+BEFORE  mirror  d81bd31a40e5aa0fa0e5f894335741b7  register=12 entr(ies)
+WRITER 3/3: ui/tools/generate_movers_transition.py  (the lineage projection — supervisor ruling on F-9)
+  wrote: ui/data/movers_transition.js (73483 bytes)
+  drift guard: mirror OK — committed == projected (73483 bytes, 13 register entries)
+  mirror register == lineage register: 13 entr(ies), EQUAL  (the F-9 predicate holds)
+AFTER   mirror  a44e4224f1d495a85d3e22f0b39482a8  MOVED d81bd31a40e5 -> a44e4224f1d4, tracking the lineage append
+```
+
+**And the gate agreed.** The clause that red attempt 2 is now, in the gate's own transcript:
+
+```
+[PASS] release_lineage.json release_transition_register == the mirror's register
+       (era succession: ALL entries reach the reader)
+[PASS] the mirror carries the transition keys plus the register and NOTHING else (zero authorship)
+[PASS] the ITEM 408 record is preserved BYTE-VERBATIM as the mirror payload's prefix (never rewritten)
+[PASS] the register carries at least one transition record  (10 of 13 entries)
+[PASS] EVERY register record is owner-approved and names its ruling id
+```
+
+**`ui/data/movers_transition.js` also joined the moved-carrier list exactly as the ruling predicted**
+(`d81bd31a40e5 -> a44e4224f1d4`) and was restored with everything else on the abort. **Nothing was
+scoped, relaxed or narrowed to achieve this.**
+
+### 12.2 · F-10 — the finding, stated and not chased
+
+`test_movers_transition.py:137`:
+
+```
+_ck(_live_mc == _shipped_mc,
+AssertionError: FAIL: the shipped bundle's model_changes == what the live tree derives
+                      (reader and bundle in step)
+```
+
+**The bare fact, and no more:** the register now carries **13** entries, and `model_changes` derived
+from the live tree no longer equals the copy shipped in **`ui/data/movers.js`** — a *second* mirror,
+a *different* carrier, whose writer-of-record entry in `carriers.py` reads
+*"round_movers (2b) / sibling + column consumers"*. **F-9's shape, one carrier along.** This seat has
+not investigated further, has written no fix, and offers no options: the instruction was explicit,
+and a landing is not the place to go looking.
+
+### 12.3 · The flight, and the state
+
+| # | step | seconds | verdict |
+|---|---|---|---|
+| 0 | preflight | 0.07 | **OK** |
+| 1 | build_proofs | 224.10 | **OK** — `b3e8da99` byte-exact vs prereg; switch-off → `68be10c7` |
+| 2 | pins | 0.02 | **OK** — 10 must-not-move checked, 0 moved |
+| 3 | lineage | 0.14 | **OK** |
+| 4 | contract | 0.08 | **OK** |
+| 5 | sibling | 281.85 | **OK** — balanced → `7c32a540` |
+| 6 | ui | 0.24 | **OK** — **all three writers** |
+| 7 | **gates** | **294.01** | **FAIL → ABORT** — 16 checks, **15 PASS / 1 FAIL** |
+| | **TOTAL** | **800.51** | (1,627 s wall incl. the pre-transaction self-test) |
+
+Pre-transaction self-test **17 PASS / 0 FAIL, CAUGHT 10/10, ABORTED BYTE-EXACT 10/10** — the third
+consecutive green, now exercising writer 3 in every practice landing.
+
+**THE ABORT, VERIFIED INDEPENDENTLY AGAIN:** `byte_exact: true`, **38 carriers moved and restored**,
+and all 16 tracked carriers re-hashed against `HEAD` — **zero differences**. Board `68be10c7` /
+**692,296** / **804** · store `b745002e` · engine_head `8f591805` · contract `4cbc7f27` · balanced
+`556ad70d` · lineage back to **12** entries. Work dir discarded, transcripts filed, **zero orphans**.
+
+**Every proof the act owns has now been met on three separate flights.** The act is not what is
+failing, and has never been what is failing.

@@ -28,16 +28,21 @@ movers provenance-transition tests:
   [PASS] data/release_lineage.json declares release_transition
   [PASS] transition is an owner-approved movers_release_transition
   [PASS] release_lineage.json release_transition == ui/data/movers_transition.js (consistent)
+  [PASS] release_lineage.json release_transition_register == the mirror's register (era succession: ALL entries reach the reader)
+  [PASS] the mirror carries the transition keys plus the register and NOTHING else (zero authorship)
+  [PASS] the ITEM 408 record is preserved BYTE-VERBATIM as the mirror payload's prefix (never rewritten)
+  [PASS] the register carries at least one transition record  (10 of 13 entries)
+  [PASS] EVERY register record is owner-approved and names its ruling id
 Traceback (most recent call last):
   File "/home/user/afl-rl-engine/engine/rl_after/ingestion/test_weekly_updater.py", line 311, in <module>
     sys.exit(main())
              ^^^^^^
   File "/home/user/afl-rl-engine/engine/rl_after/ingestion/test_weekly_updater.py", line 217, in main
     test_movers_transition.run_all()
-  File "/home/user/afl-rl-engine/engine/rl_after/ingestion/test_movers_transition.py", line 107, in run_all
-    _ck(trans_js.get(REGISTER_KEY) == lineage.get(REGISTER_KEY),
+  File "/home/user/afl-rl-engine/engine/rl_after/ingestion/test_movers_transition.py", line 137, in run_all
+    _ck(_live_mc == _shipped_mc,
   File "/home/user/afl-rl-engine/engine/rl_after/ingestion/test_movers_transition.py", line 61, in _ck
     raise AssertionError('FAIL: ' + label)
-AssertionError: FAIL: release_lineage.json release_transition_register == the mirror's register (era succession: ALL entries reach the reader)
+AssertionError: FAIL: the shipped bundle's model_changes == what the live tree derives (reader and bundle in step)
 
 [exit 1]

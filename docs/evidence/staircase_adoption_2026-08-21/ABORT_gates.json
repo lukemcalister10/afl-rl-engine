@@ -263,6 +263,10 @@
     {
       "action": "rewrite",
       "path": "ui/data/board_view_working.js"
+    },
+    {
+      "action": "rewrite",
+      "path": "ui/data/movers_transition.js"
     }
   ]
 }

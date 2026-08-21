@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_12072/sandbox
+  tree      : /tmp/landing_selftest_30133/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 68be10c79d0ee096455754e084bcf757
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/9  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_BUILD_LOCK_FILE, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-17386 (pid 17386) — single writer for the shared workspace.
-base commit        35b55f05bf7c76ca9493386ae5708da7103ef8dc
+build-lock: HELD by land-lever-30913 (pid 30913) — single writer for the shared workspace.
+base commit        d2c0ed30327c4f2bae1f4614523a288d896ec8fa
 board pin (before) 68be10c79d0ee096455754e084bcf757
 store pin (before) b745002eb0a0fbb1c34fa44f1ef708d6
 restore point      55 carrier(s) captured, 55 present on disk
@@ -55,7 +55,7 @@ WRITER 2: the bake-lane identities restamp_dynamic does not touch
   contract_sha256             8e6dcdbc89d6 -> 8e6dcdbc89d6
   frozen fields asserted unmoved: 10 checked, 0 moved
 RE-STAMPED, re-read, and release_contract.py check PASSES.
-    [contract OK  0.08s]
+    [contract OK  0.07s]
 
 --- STEP 5/9  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 verify BEFORE : ok=False balanced=556ad70d2959 fails=1
@@ -63,37 +63,44 @@ verify BEFORE : ok=False balanced=556ad70d2959 fails=1
 reconcile     ok=True changed=True balanced 556ad70d2959 -> 556ad70d2959
   committed targets: sidecar
 verify AFTER  : ok=True fails=0
-    [sibling OK  160.10s]
+    [sibling OK  163.90s]
 
 --- STEP 6/9  ui             BOTH UI writers, and the identity read back out ---
 BEFORE  working f4a3db9b4f6f834cabcaff83f43a77fc  release-block=True
 BEFORE  public  540bcdb444fbd5375c048cc8a26ba291  release-block=False
-WRITER 1/2: ui/tools/extract_board_view.py
+BEFORE  mirror  d81bd31a40e5aa0fa0e5f894335741b7  register=12 entr(ies)
+WRITER 1/3: ui/tools/extract_board_view.py
   working after writer 1: 8dfc0a77c4a666065c5ead4500d99488   release-block=False   <-- DROPPED, as it always is
-WRITER 2/2: round_movers.inject_release_contract(bundle, root, 23)
+WRITER 2/3: round_movers.inject_release_contract(bundle, root, 23)
   release block: {"as_of_round": 23, "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9", "board": "68be10c79d0ee096455754e084bcf757", "config": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+WRITER 3/3: ui/tools/generate_movers_transition.py  (the lineage projection — supervisor ruling on F-9)
+  wrote: ui/data/movers_transition.js (63856 bytes)
+  register entries mirrored: 12
+  drift guard: mirror OK — committed == projected (63856 bytes, 12 register entries)
+  mirror register == lineage register: 12 entr(ies), EQUAL  (the F-9 predicate holds)
 AFTER   working f4a3db9b4f6f834cabcaff83f43a77fc  release-block=True
 AFTER   public  540bcdb444fbd5375c048cc8a26ba291  release-block=False
+AFTER   mirror  d81bd31a40e5aa0fa0e5f894335741b7  UNMOVED (the lineage did not move)
   stamp.board_md5            68be10c79d0ee096455754e084bcf757   OK
   stamp.board                68be10c79d0ee096455754e084bcf757   OK
   stamp.srcmd5               68be10c79d0ee096455754e084bcf757   OK
   stamp.store_md5            b745002eb0a0fbb1c34fa44f1ef708d6   OK
   stamp.balanced_board_md5   556ad70d295923455982ae33e4b8bfd3   OK
   stamp.asOfRound            23                                 OK
-THE HTML APP'S EMBEDDED BOARD IDENTITY IS 68be10c79d0ee096455754e084bcf757. Both writers ran; the release block is back.
-    [ui OK  0.19s]
+THE HTML APP'S EMBEDDED BOARD IDENTITY IS 68be10c79d0ee096455754e084bcf757. All three writers ran; the release block is back and the reader can see the transition that produced this board.
+    [ui OK  0.25s]
     build-lock: RELEASED after 'ui' — the remaining steps write nothing and the one gate that builds takes the lock itself.
 
 --- STEP 7/9  gates          the landing gate set, verdicts off exit codes ---
   release_manifest_check   PASS   exit=0  (0.1s)
   release_contract_check   PASS   exit=0  (0.1s)
-    [gates OK  0.15s]
+    [gates OK  0.12s]
 
 --- STEP 8/9  claims         emit the claims file and verify it against the tree ---
 *** FAULT INJECTED at step 'claims': false_claim — the claims file carries a claim the tree contradicts
 *** the emitted claims file now carries a FALSE board md5 (fault injection)
 VERDICT: RED — the deliverable does not carry its own proof
-    [claims FAILED  0.25s]
+    [claims FAILED  0.22s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'claims'
@@ -102,9 +109,9 @@ LANDING ABORTED AT STEP 'claims'
   ====================================================================================================
   CLAIMS CHECK — SELF-TEST — the no-op rehearsal
     act type   : lever-landing
-    date       : 2026-08-20   base: 35b55f05bf7c76ca9493386ae5708da7103ef8dc
+    date       : 2026-08-20   base: d2c0ed30327c4f2bae1f4614523a288d896ec8fa
     owner word : SELF-TEST FIXTURE — no owner word; this spec never lands anything.
-    tree       : /tmp/landing_selftest_12072/sandbox
+    tree       : /tmp/landing_selftest_30133/sandbox
   ====================================================================================================
     ACTIVATION  day0_rebase                              off
   
@@ -139,10 +146,10 @@ improvised manual landing under pressure.
     build_proofs       0.01s  OK
     pins               0.02s  OK
     lineage            0.00s  OK
-    contract           0.08s  OK
-    sibling          160.10s  OK
-    ui                 0.19s  OK
-    gates              0.15s  OK
-    claims             0.25s  FAIL
-    TOTAL            160.86s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_17386
+    contract           0.07s  OK
+    sibling          163.90s  OK
+    ui                 0.25s  OK
+    gates              0.12s  OK
+    claims             0.22s  FAIL
+    TOTAL            164.65s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_30913
