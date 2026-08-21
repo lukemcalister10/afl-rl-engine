@@ -114,8 +114,10 @@ LEVER_CARRIERS = (
       'the public bundle'),
     F('ui/data/movers.js', 'round_movers (2b) / sibling + column consumers',
       'the movers bundle: points, model_changes, per-round reports'),
-    F('ui/data/movers_transition.js', 'round_movers',
-      'the movers transition bundle'),
+    F('ui/data/movers_transition.js',
+      'steps.ui writer 3 (ui/tools/generate_movers_transition.py) + round_movers (2b)',
+      'the movers transition bundle: the lineage record\'s mirror, projected in the SAME '
+      'transaction that appends to the record — supervisor ruling on F-9, 2026-08-21'),
 
     # ---- the sibling repin's own targets ----------------------------------------------------------
     F('engine/rl_after/ingestion/sibling_repin_state.json', 'sibling_repin.reconcile',

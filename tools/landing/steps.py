@@ -772,8 +772,20 @@ def sibling(ctx):
 
 
 # ==================================================================================== STEP 6 — UI
+def _mirror_register(path):
+    """The mirror's `release_transition_register`, read the way the r14 gate reads it.
+
+    Deliberately the SAME crude slice `test_movers_transition._loadjs` uses — first `{` to last `}`.
+    A different parser here could accept a file the gate rejects, and the whole point of asserting
+    the predicate in this step is that it is the gate's predicate, not a near neighbour of it.
+    """
+    with open(path, encoding='utf-8') as fh:
+        t = fh.read()
+    return json.loads(t[t.index('{'):t.rindex('}') + 1]).get('release_transition_register')
+
+
 def ui(ctx):
-    """BOTH UI writers. The thrice-proven trap, now code instead of a note in a docstring.
+    """ALL THREE UI writers. The thrice-proven trap, now code — and today it proved there was a third.
 
     `ui/tools/extract_board_view.py` REGENERATES the bundle from the board and DROPS `stamp.release`;
     only `round_movers.inject_release_contract` puts it back. Running the first without the second
@@ -781,6 +793,35 @@ def ui(ctx):
     (landing_tail 02a_*.txt, 28_reinject_release_contract.txt, and d8_restamp.py §3, which runs them
     as a pair for exactly this reason). Every landing since has carried a hand-written script whose
     docstring explains the trap. This function is that docstring, executable.
+
+    WRITER 3 — SUPERVISOR RULING, 2026-08-21, on finding F-9:
+
+        "A landing that moves the lineage record moves its mirror in the same transaction — the
+         projector ui/tools/generate_movers_transition.py becomes the lever landing's third UI
+         writer, and ui/data/movers_transition.js's writer-of-record entry in carriers.py names the
+         lever landing alongside round_movers (2b inherits, no conflict: same projector, same law).
+         This is the T7 both-writers law completing itself: the trap was thrice-proven for two
+         writers and today proved there was a third. Option 2 is rejected in the ruling's own words —
+         a board whose reader cannot see the transition that produced it; option 3 spends the owner's
+         given word on a dependency it does not need."
+
+    HOW IT WAS FOUND, because the shape of the defect is the argument for the fix. Step 3 appends to
+    `data/release_lineage.json`'s `release_transition_register`; `ui/data/movers_transition.js` is the
+    mirror a standing gate asserts EQUAL to it; and no lever landing wrote the mirror, because
+    `carriers.py` named its writer of record as the 2b round lander, WHICH IS NOT BUILT. So every
+    lever landing that registered an out-of-round column red its own `gates` step by construction:
+    on 2026-08-21 the record went 12 entries -> 13 while the mirror stayed at 12, and
+    `oneliner_r14_restore` failed on exactly that inequality. The landing was writing a record its
+    own reader could never see.
+
+    IT IS AUTHORLESS AND IT IS SELF-VERIFYING. The projector is a MECHANICAL SERIALIZATION of the
+    lineage carrying, in its own charter's words, "ZERO authorship" — so running it can only make the
+    mirror equal the record, never assert anything of its own. It runs UNCONDITIONALLY: a projection
+    of a record that did not move produces a byte-identical file and no carrier movement, so there is
+    no branch to get wrong, and pre-existing drift is repaired rather than carried. Then its own
+    `--check` drift guard is run, and the r14 predicate — mirror register == lineage register — is
+    asserted here, on the two files, BEFORE the gate that will assert it again. THE GATE NOW PASSES
+    ON TRUE EQUALITY, NOT ON SCOPING.
 
     The identity is then read back OUT of the html bundle — the page's own embedded stamp — because
     a bundle that was regenerated but not re-stamped renders perfectly and says nothing true.
@@ -793,13 +834,16 @@ def ui(ctx):
     def has_release(p):
         return '"release"' in open(p, encoding='utf-8').read()
 
+    mirror = _p(ctx, 'ui', 'data', 'movers_transition.js')
     ctx.log('BEFORE  working %s  release-block=%s' % (md5(bundle), has_release(bundle)))
     ctx.log('BEFORE  public  %s  release-block=%s' % (md5(public), has_release(public)))
+    ctx.log('BEFORE  mirror  %s  register=%d entr(ies)'
+            % (md5(mirror), len(_mirror_register(mirror))))
     if ctx.opts.dry_run:
-        ctx.log('--dry-run: neither writer is run.')
+        ctx.log('--dry-run: none of the three writers is run.')
         return {'writers': 0, 'dry_run': True}
 
-    ctx.log('WRITER 1/2: ui/tools/extract_board_view.py')
+    ctx.log('WRITER 1/3: ui/tools/extract_board_view.py')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'extract_board_view.py')], timeout=900)
     if rc != 0:
         raise StepError('extract_board_view failed:\n%s' % out[-2000:])
@@ -807,15 +851,55 @@ def ui(ctx):
             % (md5(bundle), has_release(bundle)))
 
     if not ctx.skip_second_ui_writer:
-        ctx.log('WRITER 2/2: round_movers.inject_release_contract(bundle, root, %s)' % boot['as_of_round'])
+        ctx.log('WRITER 2/3: round_movers.inject_release_contract(bundle, root, %s)' % boot['as_of_round'])
         rm = _load(ctx, 'round_movers', 'engine/rl_after/ingestion/round_movers.py')
         rel = rm.inject_release_contract(bundle, ctx.root, int(boot['as_of_round']))
         ctx.log('  release block: %s' % json.dumps(rel, sort_keys=True)[:200])
     else:
-        ctx.log('WRITER 2/2: SKIPPED BY FAULT INJECTION — the trap is live in this transaction.')
+        ctx.log('WRITER 2/3: SKIPPED BY FAULT INJECTION — the trap is live in this transaction.')
+
+    mirror_before = md5(mirror)
+    ctx.log('WRITER 3/3: ui/tools/generate_movers_transition.py  '
+            '(the lineage projection — supervisor ruling on F-9)')
+    rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'generate_movers_transition.py')],
+                      timeout=300)
+    if rc != 0:
+        raise StepError('the movers-transition projector failed (exit %s):\n%s' % (rc, out[-2000:]))
+    for ln in out.strip().splitlines():
+        ctx.log('  %s' % ln.strip())
+
+    # ITS OWN DRIFT GUARD, RUN — the projector ships a `--check` that recomputes the projection and
+    # compares it to what is on disk. Running the writer and then asking the writer's own checker is
+    # the same discipline writer 2 gets from the stamp read-back below: a writer that reports success
+    # has not proved anything until something re-derives its output.
+    rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'generate_movers_transition.py'),
+                       '--check'], timeout=300)
+    if rc != 0:
+        raise StepError('the mirror does not match what the lineage projects after regenerating it '
+                        '(exit %s):\n%s' % (rc, out[-2000:]))
+    ctx.log('  drift guard: %s' % out.strip().splitlines()[-1].strip())
+
+    # THE r14 PREDICATE, ASSERTED HERE ON THE TWO FILES, before the gate asserts it again. This is
+    # the exact comparison test_movers_transition.py:107 makes ("era succession: ALL entries reach
+    # the reader"), and F-9 is the record of what happens when a landing reaches step 7 without it.
+    lin_reg = json.load(open(_p(ctx, 'data', 'release_lineage.json'),
+                             encoding='utf-8')).get('release_transition_register')
+    mir_reg = _mirror_register(mirror)
+    if mir_reg != lin_reg:
+        raise StepError('THE MIRROR\'S REGISTER IS NOT THE LINEAGE\'S REGISTER after writer 3: '
+                        'mirror %d entr(ies), lineage %d. This is the F-9 predicate '
+                        '(test_movers_transition.py:107) and it must hold BEFORE the gates step.'
+                        % (len(mir_reg or []), len(lin_reg or [])))
+    ctx.log('  mirror register == lineage register: %d entr(ies), EQUAL  (the F-9 predicate holds)'
+            % len(lin_reg or []))
 
     ctx.log('AFTER   working %s  release-block=%s' % (md5(bundle), has_release(bundle)))
     ctx.log('AFTER   public  %s  release-block=%s' % (md5(public), has_release(public)))
+    ctx.log('AFTER   mirror  %s  %s' % (md5(mirror),
+                                        'UNMOVED (the lineage did not move)'
+                                        if md5(mirror) == mirror_before else
+                                        'MOVED %s -> %s, tracking the lineage append'
+                                        % (mirror_before[:12], md5(mirror)[:12])))
 
     src = open(bundle, encoding='utf-8').read()
     m = re.search(r'window\.__MATCHDAY_WORKING__\s*=\s*(\{.*)\n?', src, re.S)
@@ -855,10 +939,12 @@ def ui(ctx):
             fails.append('stamp.release.%s (%s != %s)' % (k, relb.get(k), exp))
     if fails:
         raise StepError('THE UI BUNDLE IDENTITY IS WRONG: %s' % fails)
-    ctx.log("THE HTML APP'S EMBEDDED BOARD IDENTITY IS %s. Both writers ran; the release block is back."
-            % boot['board'])
-    return {'writers': 2, 'bundle_md5': md5(bundle), 'public_md5': md5(public),
-            'embedded_board': st.get('board_md5')}
+    ctx.log("THE HTML APP'S EMBEDDED BOARD IDENTITY IS %s. All three writers ran; the release block "
+            "is back and the reader can see the transition that produced this board." % boot['board'])
+    return {'writers': 3, 'bundle_md5': md5(bundle), 'public_md5': md5(public),
+            'embedded_board': st.get('board_md5'),
+            'mirror_md5': md5(mirror), 'mirror_moved': md5(mirror) != mirror_before,
+            'register_entries': len(lin_reg or [])}
 
 
 # ================================================================================= STEP 7 — GATES
