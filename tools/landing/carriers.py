@@ -139,6 +139,19 @@ LEVER_CARRIERS = (
       'steps.ui writer 3 (ui/tools/generate_movers_transition.py) + round_movers (2b)',
       'the movers transition bundle: the lineage record\'s mirror, projected in the SAME '
       'transaction that appends to the record — supervisor ruling on F-9, 2026-08-21'),
+    F('ui/data/ownership.js',
+      'steps.ui writer 5 (ui/tools/ingest_inputs.py --mirror-only) + ownership_store_apply (#283)',
+      'THE OWNERSHIP MIRROR — the fifth UI bundle, and the same class F-9 and F-10 closed one '
+      'carrier at a time. It mirrors the store\'s `affl_team` and is PINNED to the board + store it '
+      'was generated from; `MD.ownership.pin()` REFUSES a mirror whose pin does not match the loaded '
+      'app, so a landing that moves either identity and does not rewrite this file does not ship a '
+      'stale club — it ships a DISABLED live ownership lane, silently. Measured on 2026-08-21: the '
+      'tree stood on board b3e8da99 / store b745002e (R23) while the shipped mirror still carried '
+      'a05fe951 / cc02567f (R22), because the R23 advance moved the store and nothing regenerated '
+      'the mirror. ui/tests/ownership_sidecar.test.js was 22/35 for exactly that reason. Two writers, '
+      'as with the movers bundles: the ownership store-apply transaction (#283) writes it when the '
+      'OWNER moves a club, and the lander writes it when a LANDING moves the pin — same projector, '
+      'same law, no conflict'),
 
     # ---- the sibling repin's own targets ----------------------------------------------------------
     F('engine/rl_after/ingestion/sibling_repin_state.json', 'sibling_repin.reconcile',

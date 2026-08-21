@@ -413,6 +413,45 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
                 os.remove(rp)
         sb.reset()
 
+    # ---- 2b. THE `ui` STEP'S FIFTH WRITER — the one predicate the loop above cannot reach --------
+    #
+    # The loop breaks every step ONCE, which is the plan's sentence, and for a step running ONE
+    # writer that is the whole story. The `ui` step runs FIVE, and its default fault
+    # (`skip_second_writer`, the thrice-proven trap) aborts the step before writers 3, 4 and 5 have
+    # said anything. So the ownership mirror's predicate — `ui/app/ownership.js:pin()`, asserted
+    # in-step — would have been carried by a case that never reached it.
+    #
+    # THE FAULT IS THE TREE'S OWN HISTORY. The R23 advance moved the store; nothing regenerated
+    # ui/data/ownership.js; its pin therefore named the store BEFORE the advance; and pin() refuses a
+    # mirror it cannot authenticate, so the live ownership lane shipped SWITCHED OFF with nothing
+    # rendering an error. `ui/tests/ownership_sidecar.test.js` stood at 22/35 for six days. This case
+    # puts the sandbox back into exactly that state — writer 5 silenced AND the pin falsified, because
+    # an unconditional writer would repair a merely-falsified file and prove nothing — and asserts the
+    # landing dies at `ui` and puts every carrier back byte-exact.
+    if not only or 'ui' in only:
+        print('')
+        print('--- FAULT: the ui step\'s WRITER 5 — the ownership mirror\'s pin ---')
+        mode, _what, _inj = TX.FAULTS['ui:stale_mirror']
+        before = carrier_md5s(sb.path)
+        rep = os.path.join(ev, 'fault_ui_stale_mirror_report.json')
+        rc, out = sb.run_lander('SELFTEST_SPEC_NOOP.json', fault='ui:stale_mirror', report=rep,
+                                log=os.path.join(ev, 'fault_ui_stale_mirror.log'))
+        open(os.path.join(ev, 'fault_ui_stale_mirror_stdout.txt'), 'w', encoding='utf-8').write(out)
+        report = _read_json(rep) or {}
+        tally['broken'] += 1
+        caught = (rc != 0) and report.get('failed_step') == 'ui'
+        after = carrier_md5s(sb.path)
+        moved_carriers = sorted(k for k in set(before) | set(after) if before.get(k) != after.get(k))
+        byte_exact = not moved_carriers
+        if caught:
+            tally['caught'] += 1
+        if byte_exact:
+            tally['aborted_byte_exact'] += 1
+        record('fault_ui_stale_mirror', caught and byte_exact,
+               'fault=%s; exit %s; failed_step=%r; carriers moved after abort: %s'
+               % (mode, rc, report.get('failed_step'), moved_carriers or 'NONE (byte-exact)'))
+        sb.reset()
+
     # ---- 3. THE ABORT WROTE, THEN UNWROTE — proved on the writers that only fire on a move -------
     print('')
     print('--- DEPTH: a landing that WROTE pins + column + lineage + contract, then aborted ---')

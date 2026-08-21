@@ -149,6 +149,27 @@ def _fault_skip_second_writer(ctx):
     ctx.skip_second_ui_writer = True
 
 
+def _fault_stale_ownership_mirror(ctx):
+    """WRITER 5 never runs, AND the shipped mirror carries a foreign store pin.
+
+    THE FAULT IS THE TREE'S OWN HISTORY, NOT AN INVENTION. Between the R23 advance and 2026-08-21 the
+    store moved and `ui/data/ownership.js` kept the pin of the store before it, so
+    `ui/app/ownership.js:pin()` refused the mirror and the live ownership lane was off with nothing
+    rendering an error. This reproduces exactly that: the pin is falsified, and the writer that would
+    repair it is silenced — because a fault that only falsified the file would be REPAIRED by the
+    unconditional writer and prove nothing about the step's predicate.
+    """
+    ctx.skip_ownership_writer = True
+    p = os.path.join(ctx.root, 'ui', 'data', 'ownership.js')
+    boot = json.load(open(os.path.join(ctx.root, 'data', 'expected_boot.json'), encoding='utf-8'))
+    raw = open(p, encoding='utf-8').read()
+    stale = 'c' * 32
+    raw = raw.replace('"generatedFromStore": "%s"' % boot['store'],
+                      '"generatedFromStore": "%s"' % stale)
+    raw = raw.replace('"store": "%s"' % boot['store'][:8], '"store": "%s"' % stale[:8])
+    open(p, 'w', encoding='utf-8').write(raw)
+
+
 def _fault_gate_red(ctx):
     p = os.path.join(ctx.root, 'data', 'expected_boot.json')
     raw = open(p, encoding='utf-8').read()
@@ -256,6 +277,14 @@ def _sha_of(path):
 
 #: step -> (mode name, what it breaks, the injector). ONE per step: the plan asks for each step
 #: broken once, and each of these breaks the thing that step exists to check.
+#:
+#: A KEY MAY ALSO BE MODE-QUALIFIED, `'<step>:<mode>'`. `--fault step:mode` was ALWAYS parsed that way
+#: (fault_point has split on the colon since the first draft) and the mode half was then thrown away,
+#: so a step carrying more than one thing worth breaking had no way to say which. The `ui` step now
+#: runs FIVE writers guarding five different predicates; one fault key for all of them would mean
+#: four of them were never broken. The plain `'<step>'` key remains the step's default fault, so the
+#: self-test's "every step, broken once" loop is untouched — a qualified key ADDS a case, it never
+#: replaces one.
 FAULTS = {
     'preflight':    ('dirty_tree', 'an uncommitted file appears before the restore point',
                      _fault_dirty_tree),
@@ -280,6 +309,12 @@ FAULTS = {
                      _fault_false_claim),
     'commit':       ('foreign_path', 'a file outside the declared carrier set is in the tree',
                      _fault_foreign_path),
+
+    # ---- MODE-QUALIFIED: the `ui` step's other writers ------------------------------------------
+    'ui:stale_mirror': ('stale_ownership_mirror',
+                        'WRITER 5 never runs and the shipped ownership mirror keeps a foreign store '
+                        'pin — the live ownership lane ships SWITCHED OFF, silently',
+                        _fault_stale_ownership_mirror),
 
     # ---- the round lander's own steps (PLAN_v6 2b) ----------------------------------------------
     'sheet':             ('sheet_pin_drift',
@@ -354,6 +389,7 @@ class Ctx(object):
         self.commits_made = []
         # fault-injection flags a step reads; all default to the safe value
         self.skip_second_ui_writer = False
+        self.skip_ownership_writer = False
         self.false_claim = False
         self.abort_report = None
 
@@ -583,7 +619,15 @@ class Ctx(object):
         if not self.opts.selftest:
             raise ST.StepError('fault injection was requested without --selftest. The lander refuses '
                                'to break itself outside a sandbox.')
-        name, what, injector = FAULTS[step_name]
+        # A MODE-QUALIFIED KEY WINS, and an unknown one is a HALT rather than a silent fallback to
+        # the step's default fault: a self-test that asked for `ui:stale_mirror`, silently got
+        # `skip_second_writer`, and recorded a PASS would be certifying the wrong proof.
+        if self.fault not in FAULTS and _mode:
+            raise ST.StepError('unknown fault mode %r — txn.FAULTS carries no such key. Known modes '
+                               'for step %r: %s' % (self.fault, step_name,
+                                                    sorted(k for k in FAULTS
+                                                           if k.split(':')[0] == step_name)))
+        name, what, injector = FAULTS.get(self.fault) or FAULTS[step_name]
         self.log('*** FAULT INJECTED at step %r: %s — %s' % (step_name, name, what))
         injector(self)
 

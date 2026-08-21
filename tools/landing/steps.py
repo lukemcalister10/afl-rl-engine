@@ -799,15 +799,53 @@ def _mirror_register(path):
     return _js_obj(path).get('release_transition_register')
 
 
-def ui(ctx):
-    """ALL FOUR UI writers. The thrice-proven trap, now code — and today it proved there were four.
+def _lines_with(out, *needles):
+    """The child's own verdict lines, SELECTED BY NAME rather than by position.
 
-    THE CLASS, CLOSED BY EXHAUSTION (supervisor ruling on F-10, 2026-08-21): the four UI bundles this
-    estate ships are all written in this transaction now — `board_view_working.js` and
-    `board_view_public.js` (writers 1-2), `movers_transition.js` (writer 3, the lineage's mirror), and
-    `movers.js` (writer 4, the blocks DERIVED from that mirror). Each of the last two was found the
-    same way: a landing appended to a record, shipped a reader that could not see it, and a standing
-    gate said so. There is no fifth bundle behind them.
+    Writers 3 and 4 log `splitlines()[-1]`, which is the writer's verdict only while the writer's
+    verdict happens to be the last thing written. `ingest_inputs.py` emits a DeprecationWarning on
+    3.12 (`datetime.utcnow`) AFTER its summary, so the tail read `drift guard: return
+    datetime.datetime.utcnow()...` — a log line that names no verdict at all, in the transcript a
+    landing is judged from. Naming the line we want cannot drift that way.
+    """
+    return [ln.strip() for ln in out.strip().splitlines()
+            if any(n in ln for n in needles)]
+
+
+def _own_stamp(path):
+    """The ownership mirror's `stamp` — the block `ui/app/ownership.js:pin()` authenticates.
+
+    Read through the SAME crude slice the rest of this module uses, and fail-soft to `{}`: a mirror
+    the browser cannot parse is a mirror the browser refuses, and the predicate below must report
+    that as a refusal rather than dying with a traceback that names no file.
+    """
+    try:
+        return _js_obj(path).get('stamp') or {}
+    except (OSError, ValueError):
+        return {}
+
+
+def ui(ctx):
+    """ALL FIVE UI writers. The thrice-proven trap, now code — and it keeps proving there is one more.
+
+    THE CLASS, CLOSED ONE CARRIER AT A TIME: the UI bundles this estate ships are all written in this
+    transaction now — `board_view_working.js` and `board_view_public.js` (writers 1-2),
+    `movers_transition.js` (writer 3, the lineage's mirror), `movers.js` (writer 4, the blocks DERIVED
+    from that mirror), and `ownership.js` (writer 5, the store's ownership mirror). Each was found the
+    same way: a landing moved a record or an identity, shipped a reader that could not see it, and a
+    standing gate said so.
+
+    THE FOURTH TIME, AND WHY THE "CLOSED BY EXHAUSTION" LINE THAT USED TO STAND HERE WAS WRONG. This
+    docstring said in as many words "There is no fifth bundle behind them." There was.
+    `ui/data/ownership.js` is a MIRROR of the store's `affl_team`, and it carries the board + store
+    identity it was generated from because `ui/app/ownership.js:pin()` REFUSES a mirror whose pin does
+    not match the loaded app — the #232 hole, closed by #283. So the failure mode is not a wrong club
+    on the board; it is the LIVE OWNERSHIP LANE SWITCHED OFF, and nothing renders an error. Measured
+    on 2026-08-21: the tree stood on board b3e8da99 / store b745002e (R23) while the shipped mirror
+    still carried a05fe951 / cc02567f (R22) — the R23 advance moved the store and no writer moved the
+    mirror. `ui/tests/ownership_sidecar.test.js` was 22/35, `ownership_single_source` 15/17, and all
+    of it was one stale stamp. Exhaustion is not a proof; enumeration against the carrier set is, and
+    carriers.py now names this file's writer of record.
 
     `ui/tools/extract_board_view.py` REGENERATES the bundle from the board and DROPS `stamp.release`;
     only `round_movers.inject_release_contract` puts it back. Running the first without the second
@@ -858,17 +896,21 @@ def ui(ctx):
 
     mirror = _p(ctx, 'ui', 'data', 'movers_transition.js')
     movers = _p(ctx, 'ui', 'data', 'movers.js')
+    own = _p(ctx, 'ui', 'data', 'ownership.js')
     ctx.log('BEFORE  working %s  release-block=%s' % (md5(bundle), has_release(bundle)))
     ctx.log('BEFORE  public  %s  release-block=%s' % (md5(public), has_release(public)))
     ctx.log('BEFORE  mirror  %s  register=%d entr(ies)'
             % (md5(mirror), len(_mirror_register(mirror) or [])))
     ctx.log('BEFORE  movers  %s  model_changes=%d boundar(ies)'
             % (md5(movers), len(_js_obj(movers).get('model_changes') or [])))
+    ctx.log('BEFORE  owners %s  pinned board=%s store=%s'
+            % (md5(own), _own_stamp(own).get('board', '?')[:8],
+               _own_stamp(own).get('generatedFromStore', '?')[:8]))
     if ctx.opts.dry_run:
-        ctx.log('--dry-run: none of the four writers is run.')
+        ctx.log('--dry-run: none of the five writers is run.')
         return {'writers': 0, 'dry_run': True}
 
-    ctx.log('WRITER 1/4: ui/tools/extract_board_view.py')
+    ctx.log('WRITER 1/5: ui/tools/extract_board_view.py')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'extract_board_view.py')], timeout=900)
     if rc != 0:
         raise StepError('extract_board_view failed:\n%s' % out[-2000:])
@@ -876,15 +918,15 @@ def ui(ctx):
             % (md5(bundle), has_release(bundle)))
 
     if not ctx.skip_second_ui_writer:
-        ctx.log('WRITER 2/4: round_movers.inject_release_contract(bundle, root, %s)' % boot['as_of_round'])
+        ctx.log('WRITER 2/5: round_movers.inject_release_contract(bundle, root, %s)' % boot['as_of_round'])
         rm = _load(ctx, 'round_movers', 'engine/rl_after/ingestion/round_movers.py')
         rel = rm.inject_release_contract(bundle, ctx.root, int(boot['as_of_round']))
         ctx.log('  release block: %s' % json.dumps(rel, sort_keys=True)[:200])
     else:
-        ctx.log('WRITER 2/4: SKIPPED BY FAULT INJECTION — the trap is live in this transaction.')
+        ctx.log('WRITER 2/5: SKIPPED BY FAULT INJECTION — the trap is live in this transaction.')
 
     mirror_before = md5(mirror)
-    ctx.log('WRITER 3/4: ui/tools/generate_movers_transition.py  '
+    ctx.log('WRITER 3/5: ui/tools/generate_movers_transition.py  '
             '(the lineage projection — supervisor ruling on F-9)')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'generate_movers_transition.py')],
                       timeout=300)
@@ -935,7 +977,7 @@ def ui(ctx):
     # That landing passed this suite after registering a column. The recipe was already in the tree;
     # what was missing was the lander running it.
     movers_before = md5(movers)
-    ctx.log('WRITER 4/4: ui/tools/rebuild_movers_derived.py  '
+    ctx.log('WRITER 4/5: ui/tools/rebuild_movers_derived.py  '
             '(points / values / model_changes — supervisor ruling on F-10)')
     rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'rebuild_movers_derived.py')],
                       timeout=900)
@@ -964,6 +1006,70 @@ def ui(ctx):
     ctx.log('  shipped model_changes == live-derived: %d boundar(ies), EQUAL  (the F-10 predicate holds)'
             % len(shipped_mc))
 
+    # ---- WRITER 5: the ownership mirror, re-pinned to the board and store this landing lands ------
+    # THE SAME LAW AGAIN, ONE CARRIER ALONG, AND THE SAME THREE-PART PATTERN writers 3 and 4 use:
+    # run the writer UNCONDITIONALLY, run the writer's OWN checker, then assert the reader's own
+    # predicate here, in-step, before any gate asserts it.
+    #
+    # UNCONDITIONAL FOR THE REASON WRITER 3 IS: the mirror is a pure function of the store and the
+    # board (no wall clock — #283 acceptance 4 requires exactly that so "regenerate and compare" can
+    # be an equality), so regenerating it on a landing that moved neither produces a byte-identical
+    # file and no carrier movement. There is no branch to get wrong, and pre-existing drift — the
+    # state this tree was actually in — is repaired rather than carried.
+    #
+    # `--mirror-only` IS NOT A SHORTCUT, IT IS THE FENCE. The full ingest also writes
+    # ui/data/club_valuation.js (a wall-clock bundle that is not a carrier and could not be proved
+    # byte-exact) and performs the #283 STORE APPLY as its step 0 — an identity-moving write with its
+    # own writer of record. A landing is not that writer. In this lane the store is read and never
+    # written, and an un-couriered CSV edit HALTs the step by name instead of moving the store
+    # mid-flight.
+    own_before = md5(own)
+    if not ctx.skip_ownership_writer:
+        ctx.log('WRITER 5/5: ui/tools/ingest_inputs.py --mirror-only  '
+                '(the ownership mirror, re-pinned to the landed board + store)')
+        rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'ingest_inputs.py'),
+                           '--mirror-only'], timeout=900)
+        if rc != 0:
+            raise StepError('the ownership mirror regeneration failed (exit %s):\n%s' % (rc, out[-2000:]))
+        for ln in _lines_with(out, 'LIVE MIRROR', 'MIRROR-ONLY'):
+            ctx.log('  %s' % ln)
+
+        rc, out = ctx.run([sys.executable, _p(ctx, 'ui', 'tools', 'ingest_inputs.py'),
+                           '--check'], timeout=900)
+        if rc != 0:
+            raise StepError('the ownership mirror is not what this tree projects after regenerating '
+                            'it (exit %s):\n%s' % (rc, out[-2000:]))
+        ctx.log('  drift guard: %s'
+                % (_lines_with(out, 'MIRROR DRIFT GUARD') or ['(no verdict line)'])[-1])
+    else:
+        ctx.log('WRITER 5/5: SKIPPED BY FAULT INJECTION — the mirror keeps the pin of a store this '
+                'landing is replacing.')
+
+    # THE READER'S OWN PREDICATE, ASSERTED HERE: this is `ui/app/ownership.js:pin()`, which compares
+    # the mirror's stamped board + store against the working bundle's stamp and DEACTIVATES the mirror
+    # on any mismatch. Asserting it in-step is what turns "the writer ran" into "the browser will
+    # honour what the writer wrote" — the same distinction the stamp read-back below draws for
+    # writer 2. A mirror that is regenerated but not authenticated renders perfectly and says nothing.
+    ost = _own_stamp(own)
+    own_fails = []
+    for k, exp in (('board', boot['board']), ('generatedFromStore', boot['store']),
+                   ('store', boot['store'][:8]), ('expectedBoard', boot['board'][:8]),
+                   ('asOfRound', boot['as_of_round'])):
+        if str(ost.get(k)) != str(exp):
+            own_fails.append('stamp.%s (%s != %s)' % (k, ost.get(k), exp))
+    if ost.get('nOverriding') not in (0, '0'):
+        own_fails.append('stamp.nOverriding is %r — a mirror cannot override the field it mirrors'
+                         % ost.get('nOverriding'))
+    if own_fails:
+        raise StepError('THE OWNERSHIP MIRROR WOULD BE REFUSED BY ui/app/ownership.js:pin() — %s. '
+                        'The live ownership lane would ship SWITCHED OFF, which is what happened '
+                        'between the R23 advance and 2026-08-21, and it must hold BEFORE the gates '
+                        'step.' % own_fails)
+    ctx.log('  mirror pin == the landed identity: board %s store %s R%s, %d player(s) mirrored '
+            '(pin() would ACTIVATE it)'
+            % (str(ost.get('board'))[:8], str(ost.get('generatedFromStore'))[:8],
+               ost.get('asOfRound'), ost.get('nAuthored')))
+
     ctx.log('AFTER   working %s  release-block=%s' % (md5(bundle), has_release(bundle)))
     ctx.log('AFTER   public  %s  release-block=%s' % (md5(public), has_release(public)))
     ctx.log('AFTER   movers  %s  %s' % (md5(movers),
@@ -976,6 +1082,11 @@ def ui(ctx):
                                         if md5(mirror) == mirror_before else
                                         'MOVED %s -> %s, tracking the lineage append'
                                         % (mirror_before[:12], md5(mirror)[:12])))
+    ctx.log('AFTER   owners %s  %s' % (md5(own),
+                                       'UNMOVED (neither the board nor the store moved)'
+                                       if md5(own) == own_before else
+                                       'MOVED %s -> %s, tracking the landed board + store'
+                                       % (own_before[:12], md5(own)[:12])))
 
     src = open(bundle, encoding='utf-8').read()
     m = re.search(r'window\.__MATCHDAY_WORKING__\s*=\s*(\{.*)\n?', src, re.S)
@@ -1015,14 +1126,17 @@ def ui(ctx):
             fails.append('stamp.release.%s (%s != %s)' % (k, relb.get(k), exp))
     if fails:
         raise StepError('THE UI BUNDLE IDENTITY IS WRONG: %s' % fails)
-    ctx.log("THE HTML APP'S EMBEDDED BOARD IDENTITY IS %s. All four writers ran; the release block "
-            "is back and the reader can see the transition that produced this board." % boot['board'])
-    return {'writers': 4, 'bundle_md5': md5(bundle), 'public_md5': md5(public),
+    ctx.log("THE HTML APP'S EMBEDDED BOARD IDENTITY IS %s. All five writers ran; the release block "
+            "is back, the reader can see the transition that produced this board, and the ownership "
+            "mirror is pinned to it rather than to the store it replaced." % boot['board'])
+    return {'writers': 5, 'bundle_md5': md5(bundle), 'public_md5': md5(public),
             'embedded_board': st.get('board_md5'),
             'mirror_md5': md5(mirror), 'mirror_moved': md5(mirror) != mirror_before,
             'register_entries': len(lin_reg or []),
             'movers_md5': md5(movers), 'movers_moved': md5(movers) != movers_before,
-            'model_changes': len(shipped_mc)}
+            'model_changes': len(shipped_mc),
+            'ownership_md5': md5(own), 'ownership_moved': md5(own) != own_before,
+            'ownership_pin': str(ost.get('generatedFromStore'))[:8]}
 
 
 # ================================================================================= STEP 7 — GATES
@@ -2154,7 +2268,7 @@ LEVER_SEQUENCE = (
     ('lineage',      'the out-of-round column and the append-only entry',    lineage),
     ('contract',     'restamp_dynamic + the bake-lane repin + check',        contract),
     ('sibling',      'the balanced sibling, rebuilt and reconciled if moved', sibling),
-    ('ui',           'BOTH UI writers, and the identity read back out',      ui),
+    ('ui',           'ALL FIVE UI writers, and the identity read back out',  ui),
     ('state',        'docs/STATE.md regenerated from the carriers (3c)',     state),
     ('gates',        'the landing gate set, verdicts off exit codes',        gates),
     ('claims',       'emit the claims file and verify it against the tree',  claims),
@@ -2179,7 +2293,7 @@ LEVER_SEQUENCE = (
 #:   day0              register v810 item 1: the day-0 reference's natural home, and only here
 #:   contract          05_landing_c_contract.txt: restamp + the bake-lane repin + check
 #:   sibling           05b/13: verify — after an advance the repin has already run IN-transaction
-#:   ui                10_ui_writers_r23.txt, now ALL FOUR writers (F-9 and F-10 closed the class)
+#:   ui                10_ui_writers_r23.txt, now ALL FIVE writers (F-9, F-10 and the ownership mirror)
 #:   movers_page       ACT 4 — MOVERS_R23.html through the frozen template
 #:   state             PLAN_v6 3c: docs/STATE.md regenerated from the carriers, before the gates
 #:   gates             13_gates.txt: the standard landing gate set
@@ -2201,7 +2315,7 @@ ROUND_SEQUENCE = (
     ('day0',              'the day-0 reference — regenerated AT the advance, only', day0),
     ('contract',          'restamp_dynamic + the bake-lane repin + check',          contract),
     ('sibling',           'the balanced sibling: verify (the repin ran in-txn)',    sibling),
-    ('ui',                'ALL FOUR UI writers, and the identity read back out',    ui),
+    ('ui',                'ALL FIVE UI writers, and the identity read back out',    ui),
     ('movers_page',       "the owner's movers page, through the frozen template",   movers_page),
     ('state',             'docs/STATE.md regenerated from the carriers (3c)',       state),
     ('gates',             'the landing gate set, verdicts off exit codes',          gates),
