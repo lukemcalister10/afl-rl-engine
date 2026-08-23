@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_18279/sandbox
+  tree      : /tmp/landing_selftest_20372/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board b3e8da99bc7f632e5d1eebc732f9cf01
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_FV, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-18805 (pid 18805) — single writer for the shared workspace.
-base commit        290c32cb627dbdde0e700665f88251f31ecffd6b
+build-lock: HELD by land-lever-20926 (pid 20926) — single writer for the shared workspace.
+base commit        add025ffbd008678b28f26461c383aef465703bf
 board pin (before) b3e8da99bc7f632e5d1eebc732f9cf01
 store pin (before) b745002eb0a0fbb1c34fa44f1ef708d6
 restore point      58 carrier(s) captured, 58 present on disk
@@ -60,7 +60,7 @@ RE-STAMPED, re-read, and release_contract.py check PASSES.
 --- STEP 5/10  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 verify BEFORE : ok=True balanced=7c32a540578b fails=0
 the sibling is CURRENT — nothing to reconcile, and this step writes nothing.
-    [sibling OK  0.10s]
+    [sibling OK  0.11s]
 
 --- STEP 6/10  ui             ALL SIX UI writers, and the identity read back out ---
 *** FAULT INJECTED at step 'ui': stale_picks_bundle — WRITER 6 never runs and the shipped picks bundle keeps a foreign board + store stamp — the pick surface ships STALE (and, before v827, silently)
@@ -85,12 +85,12 @@ WRITER 4/6: ui/tools/rebuild_movers_derived.py  (points / values / model_changes
   drift guard: derived blocks OK — committed == rebuilt (3824847 bytes, latest report R23)
   shipped model_changes == live-derived: 11 boundar(ies), EQUAL  (the F-10 predicate holds)
 WRITER 5/6: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
-  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_18279/sandbox/ui/data/ownership.js
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_20372/sandbox/ui/data/ownership.js
   MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74786 bytes).
   mirror pin == the landed identity: board b3e8da99 store b745002e R23, 804 player(s) mirrored (pin() would ACTIVATE it)
 WRITER 6/6: SKIPPED BY FAULT INJECTION — the picks bundle keeps the stamp of a board this landing is replacing.
-    [ui FAILED  1.39s]
+    [ui FAILED  1.54s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'ui'
@@ -115,7 +115,7 @@ improvised manual landing under pressure.
     pins               0.02s  OK
     lineage            0.00s  OK
     contract           0.07s  OK
-    sibling            0.10s  OK
-    ui                 1.39s  FAIL
-    TOTAL              1.67s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_18805
+    sibling            0.11s  OK
+    ui                 1.54s  FAIL
+    TOTAL              1.83s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_20926

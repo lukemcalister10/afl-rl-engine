@@ -1,0 +1,365 @@
+======================================================================================================
+LAND ROUND-ADVANCE — R24 THE ROUND ADVANCE — the round lander's first real flight
+  tree      : /home/user/afl-rl-engine
+  owner word: Here are the R24 scores, please apply. Sheet unchanged. Regenerate Day 0 (owner, verbatim, 2026-08-23)
+  prereg    : docs/evidence/r24_advance_2026-08-23/ACT_SPEC_R24.json   predicts board None
+  mode      : APPLY builder=real
+======================================================================================================
+
+--- STEP 0/14  preflight      clean tree, build lock, the restore point ---
+DECLARED DIRT (2 path(s), and ONLY these): owner inputs this act is contracted to COMMIT ITSELF, and which are therefore expected uncommitted at step 0:
+    scores/R24.csv                                             (committed by the `catchup_preflight` step)
+    engine/rl_after/ingestion/catchup_identity_overrides.json  (committed by the `catchup_preflight` step)
+RL_/PAR_ environment  RL_FV, RL_REPO, RL_VENV
+build-lock: HELD by land-round-20372 (pid 20372) — single writer for the shared workspace.
+base commit        64a282d8fcd2370836767acc04dbb7fd76018987
+board pin (before) b3e8da99bc7f632e5d1eebc732f9cf01
+store pin (before) b745002eb0a0fbb1c34fa44f1ef708d6
+restore point      171 carrier(s) captured, 171 present on disk
+    [preflight OK  0.08s]
+
+--- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
+sheet         docs/owner_annotations/SITTER_2026_v1.csv
+  MEASURED (never typed): md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+  PINNED                : md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+the declaration describes the sheet on disk. NO RE-CUT DECLARED — this step writes nothing, and `land round` remains the pin file's sole writer by not writing.
+    [sheet OK  0.00s]
+
+--- STEP 2/14  scores         the owner's score file and the bindings, asserted ---
+scores file   scores/R24.csv  (7243 bytes)
+  md5    1ebd6323826608a37d1e828eab2ae415   OK
+  sha256 ad39c3cf4c56d12f12c1bc818e43fa2a5344ca1d8f8af351d6f965a2f8ddc092   OK
+  override Bailey Williams          -> None                   rule=by_round_score rounds=[15, 16, 17, 18, 19, 22]
+      reason: Owner ruling 2026-07-20: two active players share the display name 'Bailey Williams', disambiguated by (round, score) so each listed score reaches the
+  override Bailey Williams WBD      -> bailey-williams-wb     rule=map_all   rounds=[23]
+      reason: R23 — owner ruling 2026-08-20. The R23 export writes the two Bailey Williams players APART, but it decorates one of them with a club suffix the store 
+  override Callum Brown             -> callum-brown-ire       rule=map_all   rounds=None
+      reason: Owner ruling 2026-07-20: the export lists 'Callum Brown'; the active player is 'Callum M. Brown' (stable key callum-brown-ire) — FootyWire omits the m
+3 declared override(s), all present; 3 in the file overall
+    [scores OK  0.00s]
+
+--- STEP 3/14  catchup_preflight read-only preflight, CLEAN, then the inputs commit ---
+injured=Y players listed in R24: 0 []
+  ================ CATCH-UP PREFLIGHT ================
+    season 2026 · 1 round(s) · identity overrides: Bailey Williams, Bailey Williams WBD, Callum Brown
+    R24  enc=utf-8     listed/played=409  resolved=409  listed-zero=0   absent/DNP=395   sha256 ad39c3cf4c56
+          identity override: Callum M. Brown        -> callum-brown-ire       (score 50, owner-override:map_all)
+    PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.
+  ===================================================
+  
+  About to apply rounds [24] — each as its own sequential transaction, committed in order.
+  NOT APPROVED — nothing applied. Re-run with --approve (or answer `yes`).
+preflight counts, MEASURED: {"absent_dnp": 395, "encoding": "utf-8", "listed": 409, "listed_zero": 0, "resolved": 409, "sha256": "ad39c3cf4c56"}
+PREREG MET: listed/resolved/absent-DNP and the score file sha256 all as predicted.
+explicit paths (2):
+    engine/rl_after/ingestion/catchup_identity_overrides.json
+    scores/R24.csv
+committed a6ba4da7f613
+    [catchup_preflight OK  0.20s]
+
+--- STEP 4/14  advance        THE ARMED CATCH-UP — ADVANCE-REPIN runs inside it ---
+ARMED BY OWNER WORD (law 10c): Here are the R24 scores, please apply.
+  arming both halves for this run only, no code edit: INGEST_SCORE_APPLY=<token> INGEST_SCORE_APPLY_ARMED=1
+  ================ CATCH-UP PREFLIGHT ================
+    season 2026 · 1 round(s) · identity overrides: Bailey Williams, Bailey Williams WBD, Callum Brown
+    R24  enc=utf-8     listed/played=409  resolved=409  listed-zero=0   absent/DNP=395   sha256 ad39c3cf4c56
+          identity override: Callum M. Brown        -> callum-brown-ire       (score 50, owner-override:map_all)
+    PREFLIGHT CLEAN — every name resolves to a stable identity; no duplicate/ambiguous.
+  ===================================================
+  
+  About to apply rounds [24] — each as its own sequential transaction, committed in order.
+  
+  ================ CATCH-UP APPLIED ================
+    R24  store b745002e->daa93053  board b3e8da99->6fd0f7de  players=409  guard5=True  hist=[14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]  final=FINALIZED  movers->UI=804
+    Final store daa93053 · board 6fd0f7de
+    Per-round backups, transaction records, dedup ledger, value/overall-rank/positional-rank
+    histories and movers reports are all retained.
+  =================================================
+armed run     exit=0  (252.1s)
+ledger        3497 -> 3906 (+409), 409 triple(s) for R24, duplicates 0
+ROUND 24 IS APPLIED. store b745002e -> daa93053 · board b3e8da99 -> 6fd0f7de · 409 played / 395 DNP
+    [advance OK  252.08s]
+
+--- STEP 5/14  generator_sync the generator-side board copy, synced and DISCLOSED ---
+published board  6fd0f7ded2b280d1a90962c299a152e3   sidecar addb18f542eefbf1965b607013af2489
+generator board  b3e8da99bc7f632e5d1eebc732f9cf01   sidecar 8dfebf8d3ab1c8dbafafc36abe083b7d
+SYNCED, byte-identical, and DISCLOSED: generator board b3e8da99bc7f632e5d1eebc732f9cf01 -> 6fd0f7ded2b280d1a90962c299a152e3, sidecar 8dfebf8d3ab1c8dbafafc36abe083b7d -> addb18f542eefbf1965b607013af2489
+    [generator_sync OK  0.01s]
+
+--- STEP 6/14  day0           the day-0 reference — regenerated AT the advance, only ---
+day-0 generator: none declared — THE CARRIED EMITTER (tools/landing/day0_emit.py) is the default.
+day-0 generator (the emitter of record, run as a child): /root/rl_venv312/bin/python3 /home/user/afl-rl-engine/tools/landing/day0_emit.py --spec /home/user/afl-rl-engine/docs/evidence/r24_advance_2026-08-23/ACT_SPEC_R24.json --root /home/user/afl-rl-engine
+        kayle-gerreyn                      184 -> 177   (-7)
+        kobe-mcdonald                      40 -> 37   (-3)
+        koby-coulson                       232 -> 218   (-14)
+        koby-evans                         219 -> 207   (-12)
+        kye-fincher                        145 -> 136   (-9)
+        leon-kickett                       92 -> 86   (-6)
+        liam-hetherton                     70 -> 66   (-4)
+        luke-lloyd                         191 -> 195   (+4)
+        luke-urquhart                      39 -> 36   (-3)
+        matthew-leray                      111 -> 104   (-7)
+        max-king-syd                       138 -> 129   (-9)
+        max-mapley                         266 -> 254   (-12)
+        mitchell-marsh                     552 -> 539   (-13)
+        ned-bowman                         124 -> 117   (-7)
+        nick-driscoll                      97 -> 91   (-6)
+        noah-chamberlain                   40 -> 37   (-3)
+        oliver-griffin                     95 -> 88   (-7)
+        oscar-berry                        57 -> 54   (-3)
+        oskar-taylor                       596 -> 575   (-21)
+        patrick-carr                       47 -> 45   (-2)
+        patrick-said                       28 -> 25   (-3)
+        patrick-snell                      163 -> 167   (+4)
+        reece-torrent                      25 -> 26   (+1)
+        riak-andrew                        124 -> 118   (-6)
+        riley-onley                        97 -> 91   (-6)
+        ryda-luke                          25 -> 23   (-2)
+        sam-allen                          450 -> 428   (-22)
+        tai-hayes                          151 -> 143   (-8)
+        thomas-matthews                    238 -> 226   (-12)
+        toby-whan                          25 -> 23   (-2)
+        tyan-prindable                     375 -> 356   (-19)
+        tylah-williams                     217 -> 205   (-12)
+        tyler-welsh                        67 -> 64   (-3)
+        will-darcy                         225 -> 216   (-9)
+        zac-mccarthy                       133 -> 128   (-5)
+      derived_v0 (the matrix year-0 column) moved on 0 row(s) — the raw entry object does not move
+  
+    WRITTEN  docs/evidence/r24_advance_2026-08-23/DAY0_CP_R24.json   md5 72d583f1261357cd88b85e0c1133df79
+  #P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+  #P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+day-0 re-base : ACTIVATED by 'Regenerate Day 0 (owner, verbatim, 2026-08-23)'
+   docs/evidence/final_candidate_2026-08-19/DAY0_CP.json -> docs/evidence/r24_advance_2026-08-23/DAY0_CP_R24.json
+   THE MANDATORY ROW DIFF — every moved row, printed, 65 of 89:
+     adam-sweid                         253 -> 241
+     avery-thomas                       266 -> 254
+     ben-camporeale                     123 -> 114
+     ben-murphy                         40 -> 37
+     blake-thredgold                    381 -> 372
+     caleb-may                          266 -> 254
+     charlie-nicholls                   219 -> 211
+     cillian-bourke                     40 -> 37
+     cody-anderson                      17 -> 15
+     cooper-bell                        135 -> 129
+     finnegan-davis                     84 -> 79
+     fred-rodriguez                     97 -> 91
+     harley-barker                      504 -> 481
+     harrison-coe                       266 -> 254
+     harry-demattia                     331 -> 340
+     hugo-mikunda                       139 -> 131
+     hunter-holmes                      357 -> 338
+     indy-cotton                        49 -> 46
+     jacob-molier                       88 -> 83
+     jai-saxena                         25 -> 23
+     james-barrat                       220 -> 213
+     jaren-carr                         17 -> 16
+     jesse-mellor                       51 -> 48
+     jevan-phillipou                    226 -> 214
+     joel-cochran                       139 -> 133
+     josh-smillie                       772 -> 747
+     kalani-white                       55 -> 52
+     kayle-gerreyn                      184 -> 177
+     kobe-mcdonald                      40 -> 37
+     koby-coulson                       232 -> 218
+     koby-evans                         219 -> 207
+     kye-fincher                        145 -> 136
+     lachlan-carmichael                 479 -> None
+     leon-kickett                       92 -> 86
+     liam-hetherton                     70 -> 66
+     luke-lloyd                         191 -> 195
+     luke-urquhart                      39 -> 36
+     matthew-leray                      111 -> 104
+     max-beattie                        95 -> None
+     max-king-syd                       138 -> 129
+     max-mapley                         266 -> 254
+     mitchell-marsh                     552 -> 539
+     ned-bowman                         124 -> 117
+     nick-driscoll                      97 -> 91
+     noah-chamberlain                   40 -> 37
+     oliver-griffin                     95 -> 88
+     oscar-berry                        57 -> 54
+     oskar-taylor                       596 -> 575
+     patrick-carr                       47 -> 45
+     patrick-said                       28 -> 25
+     patrick-snell                      163 -> 167
+     reece-torrent                      25 -> 26
+     riak-andrew                        124 -> 118
+     riley-onley                        97 -> 91
+     ryda-luke                          25 -> 23
+     sam-allen                          450 -> 428
+     tai-hayes                          151 -> 143
+     thomas-matthews                    238 -> 226
+     toby-whan                          25 -> 23
+     tobyn-murray                       204 -> None
+     tyan-prindable                     375 -> 356
+     tylah-williams                     217 -> 205
+     tyler-welsh                        67 -> 64
+     will-darcy                         225 -> 216
+     zac-mccarthy                       133 -> 128
+    [day0 OK  63.63s]
+
+--- STEP 7/14  contract       restamp_dynamic + the bake-lane repin + check ---
+contract seal self-consistent before the act: 7bd074ae626f
+  config       eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1   == expected_boot
+  engine_head  3af8c1f7d61275c198a5df70c34608c7   == expected_boot
+  rl_model     6fe7c4155866d80e8045bed2d3bf2802   == expected_boot
+  fv           6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346   == expected_boot
+  store        daa93053bc2d4eba30d9dc6e06e4af9e   == expected_boot
+  board        6fd0f7ded2b280d1a90962c299a152e3   == expected_boot
+WRITER 1: release_contract.restamp_dynamic(root, as_of_round=24, store, board, season_state)
+   restamp_dynamic returned seal 7bd074ae626f
+WRITER 2: the bake-lane identities restamp_dynamic does not touch
+  contract config_sha256      eed19a75f775 -> eed19a75f775
+  contract identities.engine_head  3af8c1f7d612 -> 3af8c1f7d612
+  contract identities.rl_model     6fe7c4155866 -> 6fe7c4155866
+  contract identities.fv           6e9a370e5970 -> 6e9a370e5970
+  contract_sha256             7bd074ae626f -> 7bd074ae626f
+  frozen fields asserted unmoved: 10 checked, 0 moved
+RE-STAMPED, re-read, and release_contract.py check PASSES.
+    [contract OK  0.07s]
+
+--- STEP 8/14  sibling        the balanced sibling: verify (the repin ran in-txn) ---
+verify BEFORE : ok=True balanced=ca8cb17e960b fails=0
+the sibling is CURRENT — nothing to reconcile, and this step writes nothing.
+    [sibling OK  0.10s]
+
+--- STEP 9/14  ui             ALL SIX UI writers, and the identity read back out ---
+BEFORE  working 055e36f2c3704c0002f2158a6f7aa500  release-block=True
+BEFORE  public  0d9089ecb6de834818958f0d9e2472fc  release-block=False
+BEFORE  mirror  5608bf86cf83544fac3bb99f3f6b6830  register=13 entr(ies)
+BEFORE  movers  0daba7dacdaedec308672ea94834a500  model_changes=11 boundar(ies)
+BEFORE  owners 8e9bc43d8f4e1ee6d8a0629992be4684  pinned board=b3e8da99 store=b745002e
+BEFORE  picks  2277fa537c21f2eedea4c7bf8ae1c983  stamped board=b3e8da99 store=b745002e R23
+WRITER 1/6: ui/tools/extract_board_view.py
+  working after writer 1: b349f54198ebd725bba6d1ed5dc06e8f   release-block=False   <-- DROPPED, as it always is
+WRITER 2/6: round_movers.inject_release_contract(bundle, root, 24)
+  release block: {"as_of_round": 24, "balanced_board_md5": "06d8af60b679a12db07c064c60c065f9", "board": "6fd0f7ded2b280d1a90962c299a152e3", "config": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+WRITER 3/6: ui/tools/generate_movers_transition.py  (the lineage projection — supervisor ruling on F-9)
+  wrote: ui/data/movers_transition.js (73483 bytes)
+  register entries mirrored: 13
+  drift guard: mirror OK — committed == projected (73483 bytes, 13 register entries)
+  mirror register == lineage register: 13 entr(ies), EQUAL  (the F-9 predicate holds)
+WRITER 4/6: ui/tools/rebuild_movers_derived.py  (points / values / model_changes — supervisor ruling on F-10)
+  wrote: ui/data/movers.js (4191290 -> 4191290 bytes, latest report R24)
+  derived blocks changed: none (byte-identical)
+  drift guard: derived blocks OK — committed == rebuilt (4191290 bytes, latest report R24)
+  shipped model_changes == live-derived: 11 boundar(ies), EQUAL  (the F-10 predicate holds)
+WRITER 5/6: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /home/user/afl-rl-engine/ui/data/ownership.js
+  MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
+  drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74786 bytes).
+  mirror pin == the landed identity: board 6fd0f7de store daa93053 R24, 804 player(s) mirrored (pin() would ACTIVATE it)
+WRITER 6/6: ui/tools/ingest_inputs.py --clubs-only  (the picks bundle, re-stamped to the landed board + store)
+  CLEAN INGEST — 160 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /home/user/afl-rl-engine/ui/data/club_valuation.js
+  CLUBS-ONLY     — the ownership mirror was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
+  drift guard: PICKS DRIFT GUARD — ui/data/club_valuation.js is byte-identical to what this tree projects (40600 bytes).
+  picks stamp == the landed identity: board 6fd0f7de store daa93053 R24, 160 pick(s) priced off 9729f0c5 (pin() would ACCEPT it)
+AFTER   working 6a611cf9bd70b306799c37d14fc61bf9  release-block=True
+AFTER   public  0d9089ecb6de834818958f0d9e2472fc  release-block=False
+AFTER   movers  0daba7dacdaedec308672ea94834a500  UNMOVED (nothing it derives from moved)
+AFTER   mirror  5608bf86cf83544fac3bb99f3f6b6830  UNMOVED (the lineage did not move)
+AFTER   owners 843ae0343c47ad2baf40d319f5e0b1ee  MOVED 8e9bc43d8f4e -> 843ae0343c47, tracking the landed board + store
+AFTER   picks  87f6d8f972666ca4dcaa806324a12f0a  MOVED 2277fa537c21 -> 87f6d8f97266, tracking the landed board + store
+  stamp.board_md5            6fd0f7ded2b280d1a90962c299a152e3   OK
+  stamp.board                6fd0f7ded2b280d1a90962c299a152e3   OK
+  stamp.srcmd5               6fd0f7ded2b280d1a90962c299a152e3   OK
+  stamp.store_md5            daa93053bc2d4eba30d9dc6e06e4af9e   OK
+  stamp.balanced_board_md5   ca8cb17e960bf7168bcb4101f5fd5779   OK
+  stamp.asOfRound            24                                 OK
+THE HTML APP'S EMBEDDED BOARD IDENTITY IS 6fd0f7ded2b280d1a90962c299a152e3. All six writers ran; the release block is back, the reader can see the transition that produced this board, the ownership mirror is pinned to it rather than to the store it replaced, and the pick surface is stamped to it rather than to the board before it.
+    [ui OK  1.91s]
+    build-lock: RELEASED after 'ui' — the remaining steps write nothing and the one gate that builds takes the lock itself.
+
+--- STEP 10/14  movers_page    the owner's movers page, through the frozen template ---
+fences OK: report R24, board 6fd0f7ded2b2, baseline 'the-staircase-adoption-21-8' at round 23 (rule M0, via previous_point)
+slots.validate("movers", <the R24 payload>) -> NO PROBLEMS — the template fits.
+wrote docs/evidence/r24_advance_2026-08-23/MOVERS_R24.html  (193501 bytes, 804 rows, md5 fad453973b486565887c10b5d58e20eb)
+    [movers_page OK  0.09s]
+
+--- STEP 11/14  state          docs/STATE.md regenerated from the carriers (3c) ---
+state: docs/STATE.md md5 06d7e8becbdbd1a0fd1a899ad670b34f (moved); regeneration verified
+    [state OK  0.88s]
+
+--- STEP 12/14  gates          the landing gate set, verdicts off exit codes ---
+  release_manifest_check   PASS   exit=0  (0.1s)
+  release_contract_check   PASS   exit=0  (0.1s)
+  acceptance_runner        PASS   exit=0  (31.6s)
+  movers_transition        PASS   exit=0  (1.4s)
+  movers_ui                PASS   exit=0  (0.8s)
+    [gates OK  33.91s]
+
+--- STEP 13/14  claims         emit the claims file and verify it against the tree ---
+VERDICT: GREEN — every claim recomputed and held
+    [claims OK  10.60s]
+
+--- STEP 14/14  commit         ONE commit, explicit paths only ---
+explicit paths (42):
+    data/expected_boot.json
+    data/release_contract.json
+    data/rl_build/rl_app_data.json
+    data/rl_build/rl_app_data.json.srcmd5
+    data/season_state.json
+    docs/STATE.md
+    docs/evidence/final_candidate_2026-08-19/DAY0_CP.json
+    docs/evidence/r24_advance_2026-08-23/08_preflight_r24.txt
+    docs/evidence/r24_advance_2026-08-23/09_armed_r24.txt
+    docs/evidence/r24_advance_2026-08-23/CLAIMS.json
+    docs/evidence/r24_advance_2026-08-23/DAY0_CP_R24.json
+    docs/evidence/r24_advance_2026-08-23/MOVERS_R24.html
+    docs/evidence/r24_advance_2026-08-23/claims_check.txt
+    docs/evidence/r24_advance_2026-08-23/day0_generator.txt
+    docs/evidence/r24_advance_2026-08-23/gate_acceptance_runner.txt
+    docs/evidence/r24_advance_2026-08-23/gate_acceptance_runner_evidence/
+    docs/evidence/r24_advance_2026-08-23/gate_movers_transition.txt
+    docs/evidence/r24_advance_2026-08-23/gate_movers_ui.txt
+    docs/evidence/r24_advance_2026-08-23/gate_release_contract_check.txt
+    docs/evidence/r24_advance_2026-08-23/gate_release_manifest_check.txt
+    engine/rl_after/ingestion/.weekly_txn/txn_catchup_r24/
+    engine/rl_after/ingestion/applied_rounds_ledger.json
+    engine/rl_after/ingestion/finalization_journal.jsonl
+    engine/rl_after/ingestion/finalization_state.json
+    engine/rl_after/ingestion/movers/movers_R24.csv
+    engine/rl_after/ingestion/movers/movers_R24.json
+    engine/rl_after/ingestion/pos_rank_history.json
+    engine/rl_after/ingestion/rank_history.json
+    engine/rl_after/ingestion/sibling_repin_state.json
+    engine/rl_after/ingestion/value_history.json
+    engine/rl_after/rl_app_data.json
+    engine/rl_after/rl_app_data.json.srcmd5
+    engine/rl_after/rl_model_data.json
+    session_2026-07-20/fv_provenance_remediation/fixtures/forward_vector_6fd0f7de.json
+    session_2026-07-20/fv_provenance_remediation/fixtures/reference_vector_ca8cb17e.json
+    session_2026-07-20/fv_provenance_remediation/test_forward_lens_6fd0f7de.py
+    session_2026-07-20/fv_provenance_remediation/test_fv_provenance.py
+    ui/data/board_view_public.js
+    ui/data/board_view_working.js
+    ui/data/club_valuation.js
+    ui/data/movers.js
+    ui/data/ownership.js
+committed adf380b1a163
+    [commit OK  0.38s]
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.08s  OK
+    sheet              0.00s  OK
+    scores             0.00s  OK
+    catchup_preflight     0.20s  OK
+    advance          252.08s  OK
+    generator_sync     0.01s  OK
+    day0              63.63s  OK
+    contract           0.07s  OK
+    sibling            0.10s  OK
+    ui                 1.91s  OK
+    movers_page        0.09s  OK
+    state              0.88s  OK
+    gates             33.91s  OK
+    claims            10.60s  OK
+    commit             0.38s  OK
+    TOTAL            363.94s
+
+======================================================================================================
+LANDING COMPLETE — every step's postcondition held.
+SOAK: hand-verification stands until the owner's word per act type (G3.iv).
+======================================================================================================
+work dir discarded (the landing completed): /tmp/landing_work_20372

@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
-  tree      : /tmp/landing_selftest_18279/sandbox
+  tree      : /tmp/landing_selftest_20372/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board b3e8da99bc7f632e5d1eebc732f9cf01
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
 
 --- STEP 0/14  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_FV, RL_REPO, RL_VENV
-build-lock: HELD by land-round-19155 (pid 19155) — single writer for the shared workspace.
-base commit        290c32cb627dbdde0e700665f88251f31ecffd6b
+build-lock: HELD by land-round-21276 (pid 21276) — single writer for the shared workspace.
+base commit        add025ffbd008678b28f26461c383aef465703bf
 board pin (before) b3e8da99bc7f632e5d1eebc732f9cf01
 store pin (before) b745002eb0a0fbb1c34fa44f1ef708d6
 restore point      106 carrier(s) captured, 106 present on disk
-    [preflight OK  0.08s]
+    [preflight OK  0.12s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
@@ -68,12 +68,12 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.08s  OK
+    preflight          0.12s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
     catchup_preflight     0.00s  OK
     advance            0.01s  OK
     generator_sync     0.01s  OK
     day0               0.00s  FAIL
-    TOTAL              0.10s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_19155
+    TOTAL              0.14s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_21276

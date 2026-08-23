@@ -123,8 +123,13 @@ def spec_noop(board_md5, evidence_rel):
     return d
 
 
-def spec_moved(board_before, board_after, evidence_rel):
-    """A synthetic board move, so pins / column / lineage run their REAL writers on a real move."""
+def spec_moved(board_before, board_after, evidence_rel, after_round):
+    """A synthetic board move, so pins / column / lineage run their REAL writers on a real move.
+
+    `after_round` is MEASURED from the sandbox's own expected_boot, never typed: this fixture
+    carried a literal `23` until the R24 advance made round 24 the newest history point and the
+    lineage validator (correctly) refused a column older than it — the P4 this-month's-number
+    class, caught by the first post-advance self-test run (2026-08-23)."""
     d = _spec_common(evidence_rel)
     d.update({
         'act': 'SELF-TEST — the synthetic board move',
@@ -132,7 +137,7 @@ def spec_moved(board_before, board_after, evidence_rel):
                    'board_after': board_after, 'reference_board': None, 'kill_switch': None},
         'identities': {'moves': ['board'],
                        'unmoved': ['store', 'engine_head', 'rl_model', 'fv', 'config', 'register']},
-        'column': {'id': 'selftest-synthetic-move', 'after_round': 23,
+        'column': {'id': 'selftest-synthetic-move', 'after_round': after_round,
                    'label': 'SELF-TEST SYNTHETIC MOVE — sandbox only, never registered on main'},
         'lineage': {'doc': ('SELF-TEST FIXTURE ENTRY. Written in a sandbox by '
                             'tools/landing/selftest.py to exercise the append-only register and its '
@@ -326,7 +331,9 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
     ev_rel = 'docs/evidence/landing_selftest'
     os.makedirs(os.path.join(sb.path, ev_rel), exist_ok=True)
     noop = spec_noop(board, ev_rel)
-    moved = spec_moved(board, hashlib_moved(sb.path), ev_rel)
+    with open(os.path.join(sb.path, 'data', 'expected_boot.json'), encoding='utf-8') as fh:
+        _cur_round = int(json.load(fh)['as_of_round'])
+    moved = spec_moved(board, hashlib_moved(sb.path), ev_rel, _cur_round)
     rnd = spec_round_noop(sb.path, board, ev_rel)
     with open(os.path.join(sb.path, 'SELFTEST_SPEC_NOOP.json'), 'w', encoding='utf-8') as fh:
         json.dump(noop, fh, indent=2)
@@ -862,6 +869,23 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
         # board and store, so it is the expensive case in this self-test and it is the only one that
         # proves the emitter emits. It asserts the emitter's own fail-closed leg (A1, the printed
         # day-0 identity on the board it read) and the M1b diff — EVERY moved row, printed.
+        #
+        # THE REFERENCE IS A DOCTORED COPY, NOT THE STANDING ONE. Until the R24 advance this case
+        # diffed against the live standing reference and passed only because that reference happened
+        # to be STALE — the moment the flight installed a fresh one, "some rows moved" became false
+        # and the case red-ed on tree state it does not own (caught 2026-08-23, the first
+        # post-advance run). One row's printed price is perturbed by +1 here, so the mandatory-diff
+        # assertion is non-vacuous BY CONSTRUCTION, forever, and names the row it expects.
+        doct_rel = os.path.join(ev_rel, 'DAY0_DOCTORED_REF.json')
+        os.makedirs(os.path.join(sb.path, ev_rel), exist_ok=True)
+        with open(os.path.join(sb.path, std_ref), encoding='utf-8') as fh:
+            _ref_doc = json.load(fh)
+        _doct_key = _ref_doc['rows'][0]['key']
+        _ref_doc['rows'][0]['printed'] = int(_ref_doc['rows'][0]['printed']) + 1
+        _ref_doc['rows'][0]['day0_price'] = float(_ref_doc['rows'][0]['day0_price']) + 1.0
+        with open(os.path.join(sb.path, doct_rel), 'w', encoding='utf-8') as fh:
+            json.dump(_ref_doc, fh, indent=1, sort_keys=True)
+        base_doc['day0_rebase']['reference'] = doct_rel
         rc, out = _emit(base_doc, 'regenerate')
         wrote = os.path.join(sb.path, new_ref)
         emitted = _read_json(wrote) or {}
@@ -870,10 +894,12 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
         identity_ok = 'A1  printed day-0 identity' in out and ' of ' in out
         record('day0_emitter_regenerates',
                rc == 0 and identity_ok and 'THE MANDATORY ROW DIFF' in out
-               and bool(emitted.get('rows')) and bool(moved_lines),
+               and bool(emitted.get('rows')) and bool(moved_lines)
+               and any(_doct_key in ln for ln in moved_lines),
                'exit %s; identity %r; %d row(s) emitted; the mandatory diff printed %d moved row(s) '
-               'individually, no truncation'
-               % (rc, emitted.get('identity_all'), len(emitted.get('rows') or []), len(moved_lines)))
+               'individually (the doctored row %r among them), no truncation'
+               % (rc, emitted.get('identity_all'), len(emitted.get('rows') or []),
+                  len(moved_lines), _doct_key))
         try:
             os.remove(wrote)
         except OSError:

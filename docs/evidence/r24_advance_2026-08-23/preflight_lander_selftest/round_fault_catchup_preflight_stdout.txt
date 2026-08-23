@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
-  tree      : /tmp/landing_selftest_18279/sandbox
+  tree      : /tmp/landing_selftest_20372/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board b3e8da99bc7f632e5d1eebc732f9cf01
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
 
 --- STEP 0/14  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_FV, RL_REPO, RL_VENV
-build-lock: HELD by land-round-19103 (pid 19103) — single writer for the shared workspace.
-base commit        290c32cb627dbdde0e700665f88251f31ecffd6b
+build-lock: HELD by land-round-21224 (pid 21224) — single writer for the shared workspace.
+base commit        add025ffbd008678b28f26461c383aef465703bf
 board pin (before) b3e8da99bc7f632e5d1eebc732f9cf01
 store pin (before) b745002eb0a0fbb1c34fa44f1ef708d6
 restore point      106 carrier(s) captured, 106 present on disk
@@ -41,7 +41,7 @@ injured=Y players listed in R23: 0 []
   
   About to apply rounds [23] — each as its own sequential transaction, committed in order.
   NOT APPROVED — nothing applied. Re-run with --approve (or answer `yes`).
-    [catchup_preflight FAILED  0.12s]
+    [catchup_preflight FAILED  0.14s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'catchup_preflight'
@@ -62,6 +62,6 @@ improvised manual landing under pressure.
     preflight          0.08s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
-    catchup_preflight     0.12s  FAIL
-    TOTAL              0.20s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_19103
+    catchup_preflight     0.14s  FAIL
+    TOTAL              0.22s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_21224
