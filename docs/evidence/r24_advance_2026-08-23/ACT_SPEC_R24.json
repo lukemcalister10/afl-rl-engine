@@ -1,0 +1,85 @@
+{
+ "_doc": "THE ACT SPEC \u2014 the fixed slots `land round` is told (PLAN_v6 2b). Fill every one. A slot left at its placeholder is refused by spec.validate(), which is the point. The three things a tree cannot measure about itself are still the only things here: PREDICTIONS, CITATIONS and POLICY.",
+ "schema_version": 1,
+ "act_kind": "round-advance",
+ "act": "R24 THE ROUND ADVANCE \u2014 the round lander's first real flight",
+ "date": "2026-08-23",
+ "owner_word": "Here are the R24 scores, please apply. Sheet unchanged. Regenerate Day 0 (owner, verbatim, 2026-08-23)",
+ "authority": "law 10(c) score-write arming word given by the owner in the supervisor channel 2026-08-23; sheet word \"Sheet unchanged\"; day-0 word \"Regenerate Day 0\"",
+ "prereg": {
+  "path": "docs/evidence/r24_advance_2026-08-23/ACT_SPEC_R24.json",
+  "board_before": "b3e8da99bc7f632e5d1eebc732f9cf01",
+  "_doc_board_before": "the board the advance STARTS from \u2014 a fact of the tree, measured.",
+  "board_after": null,
+  "_doc_board_after": "null for a real advance: a round board is a function of scores nobody has seen yet, and a seat \"predicting\" it would be copying it out of a build already run. For a REHEARSAL, set it equal to board_before and the lander runs the whole sequence as a no-op.",
+  "round_expected": {
+   "round": 24,
+   "listed": 409,
+   "resolved": 409,
+   "absent_dnp": 395,
+   "scores_sha256": "ad39c3cf4c56d12f12c1bc818e43fa2a5344ca1d8f8af351d6f965a2f8ddc092",
+   "ledger_before": 3497,
+   "ledger_delta": 409
+  },
+  "_doc_round_expected": "THE ROUND-SHAPED PREDICTION, and every field is a falsifier the advance step asserts against the tool's own output."
+ },
+ "round": {
+  "number": 24,
+  "scores": {
+   "path": "scores/R24.csv",
+   "md5": "1ebd6323826608a37d1e828eab2ae415",
+   "sha256": "ad39c3cf4c56d12f12c1bc818e43fa2a5344ca1d8f8af351d6f965a2f8ddc092"
+  },
+  "_doc_scores": "the owner's file, byte-unmodified. The lander places nothing and edits nothing: it asserts this identity against the file on disk.",
+  "identity_overrides": [
+   "Bailey Williams",
+   "Bailey Williams WBD",
+   "Callum Brown",
+   "Callum M. Brown"
+  ],
+  "_doc_identity_overrides": "names the lander asserts are bound in engine/rl_after/ingestion/catchup_identity_overrides.json. An owner ruling on a name lives in that file, never in the score file, and the lander AUTHORS none of them.",
+  "arming": {
+   "env": {
+    "INGEST_SCORE_APPLY_ARMED": "1",
+    "INGEST_SCORE_APPLY": "R24-2026-08-23-owner-approved"
+   },
+   "owner_word": "Here are the R24 scores, please apply."
+  },
+  "_doc_arming": "LAW 10(c): arming the score-write needs Luke's explicit word. The word goes here VERBATIM and the token is his; the lander composes neither."
+ },
+ "sheet": null,
+ "identities": {
+  "moves": [
+   "board",
+   "store",
+   "as_of_round",
+   "season_state",
+   "balanced_board_md5",
+   "rl_model_data"
+  ],
+  "unmoved": [
+   "engine_head",
+   "rl_model",
+   "fv",
+   "config",
+   "register"
+  ]
+ },
+ "column": null,
+ "lineage": null,
+ "day0_rebase": {
+  "state": "on",
+  "activated_by": "Regenerate Day 0 (owner, verbatim, 2026-08-23)",
+  "reference": "docs/evidence/final_candidate_2026-08-19/DAY0_CP.json",
+  "new_reference": "docs/evidence/r24_advance_2026-08-23/DAY0_CP_R24.json"
+ },
+ "_doc_day0_rebase": "THE ADVANCE IS THE DAY-0 REFERENCE'S NATURAL HOME (register v810 item 1) \u2014 and it is still EXPLICIT and OFF BY DEFAULT (the M1b ruling). To activate: {\"state\":\"on\", \"activated_by\":\"<owner word>\", \"reference\":\"docs/evidence/.../DAY0_CP.json\", \"new_reference\":\"<the regenerated file, inside this act's evidence dir>\"}. LEAVE `generator` ABSENT and the CARRIED emitter tools/landing/day0_emit.py regenerates the reference from this tree's own board and store \u2014 it is generic, deterministic, and refuses to write unless this spec says state=on. Name `generator` only to run a different emitter; declare \"generator\": [] to state that this act supplies new_reference itself. The lander runs the generator, prints the mandatory row diff of every moved row and installs; it never computes day-0 itself.",
+ "movers_page": {
+  "output": "",
+  "boundary_note": "R24 baseline is the staircase-adoption board b3e8da99 (rule M0: the last value-moving landing, 2026-08-21), not a plain end-of-R23 board \u2014 the R23->R24 movers therefore include no staircase residue; the staircase moves were delivered in their own act."
+ },
+ "_doc_movers_page": "the owner-facing movers page for this round (PLAN_v6 1d: rendered board/movers page delivered at every round). `output` defaults to MOVERS_R<N>.html inside the evidence dir; `boundary_note` is the seat's prose about what sits on which side of the boundary, and the lander composes a mechanical one when it is empty.",
+ "evidence_dir": "docs/evidence/r24_advance_2026-08-23",
+ "gates": null,
+ "_doc_gates": "null = the standard landing gate set (steps.DEFAULT_GATES)."
+}
