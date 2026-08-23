@@ -165,10 +165,12 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
 
   // POSITIVE — the populated production bundle carries exactly R15-R23
   // WEEKLY ROUND PIN — bumped by each round advance and by nothing else. R15-R22 / eight reports ->
-  // R15-R23 / nine reports at the R23 advance (2026-08-20). Hand-pin: the advance transaction does
-  // not own this file, so the advance seat moves it in the advance's own commit and discloses it.
-  eq(prod.rounds, [15, 16, 17, 18, 19, 20, 21, 22, 23], "production ui/data/movers.js carries R15-R23");
-  ok(prod.reports && Object.keys(prod.reports).length === 9, "production bundle carries nine reports (one per round)");
+  // R15-R24 / ten reports at the R24 advance (2026-08-23; PRE-BUMPED before the flight per the
+  // rehearsal recipe — the lander's gates run inside the transaction, so the bump precedes it and the
+  // tree is deliberately red on this suite between the bump commit and the landing). Hand-pin: the
+  // advance transaction does not own this file, so the advance seat moves it and discloses it.
+  eq(prod.rounds, [15, 16, 17, 18, 19, 20, 21, 22, 23, 24], "production ui/data/movers.js carries R15-R24");
+  ok(prod.reports && Object.keys(prod.reports).length === 10, "production bundle carries ten reports (one per round)");
   // the complete historical board/store chain (baseline R14 -> R15 -> ... -> R19) is exact + continuous
   var chainOk = true, prevB = prod.baseline.board, prevS = prod.baseline.store;
   [15, 16, 17, 18, 19].forEach(function (r) {
@@ -256,8 +258,11 @@ if (fs.existsSync(prodPath) && fs.existsSync(transPath) && fs.existsSync(working
   // records this directly — 804 of 804 players carry the same value at `the-f5-rounding-20-8` as at
   // round 23. So this is a board-IDENTITY move, not a re-valuation, and `bridged` is tracking the
   // identity, which is what it has always tracked.
-  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "bridged"],
-     "bundle displays under the current app, bridged — the last act moved the board OUTSIDE a round (the staircase fix adoption), so the latest round report's terminal board is not the loaded board, and the out-of-round column carries it instead");
+  // RESTATED 2026-08-23 (THE R24 ADVANCE): back to `ok`, the fourth swing, same rule as ever — this
+  // pin tracks WHAT KIND OF ACT MOVED THE BOARD LAST. The R24 advance is a round act, so the latest
+  // round report terminates on the loaded board and the DIRECT-lineage branch is the honest reading.
+  eq([core.lineage(prod, curApp, trans).ok, core.lineage(prod, curApp, trans).state], [true, "ok"],
+     "bundle displays under the current app, ok — the last act to move the board was the R24 round advance, so the latest round report's terminal board IS the loaded board (direct lineage)");
   // NON-VACUITY for the restated assertion, both directions. `bridged` is a state this check can
   // FAIL to reach: a bundle on a foreign lineage does not get bridged, it fails closed as a mismatch.
   var appForeign = clone(curApp); appForeign.board = "ffffffffffffffffffffffffffffffff";
