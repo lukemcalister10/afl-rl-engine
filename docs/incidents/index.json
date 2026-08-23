@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 210,
+  "coverage_entries": 211,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-23",
+      "headline": "**ROUND 24 IS LIVE \u2014 THE ONE-WORD ROUND DELIVERED ON THE ROUND LANDER'S FIRST REAL FLIGHT (landing commit adf380b, chain pushed).** The owner's delive\u2026",
+      "hits": {
+        "DECLARED": [
+          "**ROUND 24 IS LIVE \u2014 THE ONE-WORD ROUND DELIVERED ON THE ROUND LANDER'S FIRST REAL FLIGHT (landing commit adf380b, chain pushed).** The owner's delivery, words verbatim: \"Here are the R24 scores, please apply. Sheet unch\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 832
+    },
     {
       "by": "explicit",
       "date": "2026-08-21",
@@ -1990,7 +2004,7 @@
       "version": 622
     }
   ],
-  "incidents": 115,
+  "incidents": 116,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",

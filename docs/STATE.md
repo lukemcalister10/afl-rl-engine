@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v831 2026-08-21 · **ALL SIX REBAKE DECISIONS ARE NOW RULED — the rebake week is fully specified, pending R24. Owner words verbatim (2026-08-21):** D1 = "Exact it is." (the exact constraint construction, with the private-contract tripwire self-test; the ratchet retires on the must-move proof). D2 = the hill construction accepted WITH THE PEAK CHALLENGED: "I feel like the hig
+  > # OPEN ITEMS REGISTER · v832 2026-08-23 · **ROUND 24 IS LIVE — THE ONE-WORD ROUND DELIVERED ON THE ROUND LANDER'S FIRST REAL FLIGHT (landing commit adf380b, chain pushed).** The owner's delivery, words verbatim: "Here are the R24 scores, please apply. Sheet unchanged. Regenerate Day 0" — file byte-unmodified (md5 1ebd6323, sha ad39c3cf), all three words riding the act spec. THE FLIGHT: 15 steps, 3
 
-- new-form entries under `docs/register/entries/`: 19
+- new-form entries under `docs/register/entries/`: 20
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `a6ba4da7f613f4fe6fe3e129c48802ba44e4522e` |
+| generated at commit | `533a821b7a17c18b9f7331d120358976f7d84b6e` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

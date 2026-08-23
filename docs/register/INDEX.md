@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v831**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v832**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v832** (2026-08-23) — `docs/register/entries/v832.md` — **ROUND 24 IS LIVE — THE ONE-WORD ROUND DELIVERED ON THE ROUND LANDER'S FIRST REAL FLIGHT (landing commit adf380b, chain pushed).** The owne
 - **v831** (2026-08-21) — `docs/register/entries/v831.md` — **ALL SIX REBAKE DECISIONS ARE NOW RULED — the rebake week is fully specified, pending R24. Owner words verbatim (2026-08-21):** D1 = "Exact
 - **v830** (2026-08-21) — `docs/register/entries/v830.md` — **REBAKE DECISION D5 IS RULED — THE MINT IS WAIVED. Owner words verbatim (2026-08-21): "Waiving the minted value, not bothered about conserv
 - **v829** (2026-08-21) — `docs/register/entries/v829.md` — **THE PICK-SURFACE CLASS IS CLOSED — guard + writer 6 landed and verified (worktree seat, cherry-picked e61a51f/8aae62a, supervisor-verified
