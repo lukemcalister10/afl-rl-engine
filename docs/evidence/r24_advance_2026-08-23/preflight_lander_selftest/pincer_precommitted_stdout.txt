@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the input-commit pincer (R24 rehearsal §3.1 RUN A + RUN C)
-  tree      : /tmp/landing_selftest_12400/sandbox
+  tree      : /tmp/landing_selftest_16198/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board b3e8da99bc7f632e5d1eebc732f9cf01
   mode      : APPLY (SELFTEST) builder=selftest
@@ -12,8 +12,8 @@ DECLARED DIRT (2 path(s), and ONLY these): owner inputs this act is contracted t
     scores/R24.csv                                             (committed by the `catchup_preflight` step)
     engine/rl_after/ingestion/catchup_identity_overrides.json  (committed by the `catchup_preflight` step)
 RL_/PAR_ environment  RL_FV, RL_REPO, RL_VENV
-build-lock: HELD by land-round-13648 (pid 13648) — single writer for the shared workspace.
-base commit        af199a6ede60893f8c5a4946fde79e6b922e9bbe
+build-lock: HELD by land-round-17444 (pid 17444) — single writer for the shared workspace.
+base commit        e07dee54c9725507aa05b1820dac49d18ad284b1
 board pin (before) b3e8da99bc7f632e5d1eebc732f9cf01
 store pin (before) b745002eb0a0fbb1c34fa44f1ef708d6
 restore point      107 carrier(s) captured, 107 present on disk
@@ -78,4 +78,4 @@ improvised manual landing under pressure.
     catchup_preflight     0.10s  OK
     advance            0.00s  FAIL
     TOTAL              0.17s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_13648
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_17444
