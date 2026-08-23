@@ -34,8 +34,7 @@
   "identity_overrides": [
    "Bailey Williams",
    "Bailey Williams WBD",
-   "Callum Brown",
-   "Callum M. Brown"
+   "Callum Brown"
   ],
   "_doc_identity_overrides": "names the lander asserts are bound in engine/rl_after/ingestion/catchup_identity_overrides.json. An owner ruling on a name lives in that file, never in the score file, and the lander AUTHORS none of them.",
   "arming": {
