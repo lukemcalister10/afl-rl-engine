@@ -1,0 +1,83 @@
+======================================================================================================
+DAY-0 PRINT REFERENCE — REGENERATED FROM THIS TREE  (tools/landing/day0_emit.py)
+======================================================================================================
+  board      6fd0f7ded2b280d1a90962c299a152e3   data/rl_build/rl_app_data.json
+  store      daa93053bc2d4eba30d9dc6e06e4af9e
+  engine     3af8c1f7d61275c198a5df70c34608c7   (READ-ONLY: no engine file is touched, no board is built)
+  predicate  _entry30b_price   BASE_REF 2026
+  activated  Regenerate Day 0 (owner, verbatim, 2026-08-23)
+  reference  docs/evidence/final_candidate_2026-08-19/DAY0_CP.json
+  writing    docs/evidence/r24_advance_2026-08-23/DAY0_CP_R24.json
+
+  A1  printed day-0 identity on the board being read : 86 of 86 at tolerance 0  (fresh ND 44, pool 42)
+
+  THE MANDATORY ROW DIFF vs docs/evidence/final_candidate_2026-08-19/DAY0_CP.json
+    population  0 row(s) added    3 row(s) dropped ['lachlan-carmichael', 'max-beattie', 'tobyn-murray']
+    printed day-0 MOVED on 62 of 86 rows in common — every one printed, no truncation:
+      adam-sweid                         253 -> 241   (-12)
+      avery-thomas                       266 -> 254   (-12)
+      ben-camporeale                     123 -> 114   (-9)
+      ben-murphy                         40 -> 37   (-3)
+      blake-thredgold                    381 -> 372   (-9)
+      caleb-may                          266 -> 254   (-12)
+      charlie-nicholls                   219 -> 211   (-8)
+      cillian-bourke                     40 -> 37   (-3)
+      cody-anderson                      17 -> 15   (-2)
+      cooper-bell                        135 -> 129   (-6)
+      finnegan-davis                     84 -> 79   (-5)
+      fred-rodriguez                     97 -> 91   (-6)
+      harley-barker                      504 -> 481   (-23)
+      harrison-coe                       266 -> 254   (-12)
+      harry-demattia                     331 -> 340   (+9)
+      hugo-mikunda                       139 -> 131   (-8)
+      hunter-holmes                      357 -> 338   (-19)
+      indy-cotton                        49 -> 46   (-3)
+      jacob-molier                       88 -> 83   (-5)
+      jai-saxena                         25 -> 23   (-2)
+      james-barrat                       220 -> 213   (-7)
+      jaren-carr                         17 -> 16   (-1)
+      jesse-mellor                       51 -> 48   (-3)
+      jevan-phillipou                    226 -> 214   (-12)
+      joel-cochran                       139 -> 133   (-6)
+      josh-smillie                       772 -> 747   (-25)
+      kalani-white                       55 -> 52   (-3)
+      kayle-gerreyn                      184 -> 177   (-7)
+      kobe-mcdonald                      40 -> 37   (-3)
+      koby-coulson                       232 -> 218   (-14)
+      koby-evans                         219 -> 207   (-12)
+      kye-fincher                        145 -> 136   (-9)
+      leon-kickett                       92 -> 86   (-6)
+      liam-hetherton                     70 -> 66   (-4)
+      luke-lloyd                         191 -> 195   (+4)
+      luke-urquhart                      39 -> 36   (-3)
+      matthew-leray                      111 -> 104   (-7)
+      max-king-syd                       138 -> 129   (-9)
+      max-mapley                         266 -> 254   (-12)
+      mitchell-marsh                     552 -> 539   (-13)
+      ned-bowman                         124 -> 117   (-7)
+      nick-driscoll                      97 -> 91   (-6)
+      noah-chamberlain                   40 -> 37   (-3)
+      oliver-griffin                     95 -> 88   (-7)
+      oscar-berry                        57 -> 54   (-3)
+      oskar-taylor                       596 -> 575   (-21)
+      patrick-carr                       47 -> 45   (-2)
+      patrick-said                       28 -> 25   (-3)
+      patrick-snell                      163 -> 167   (+4)
+      reece-torrent                      25 -> 26   (+1)
+      riak-andrew                        124 -> 118   (-6)
+      riley-onley                        97 -> 91   (-6)
+      ryda-luke                          25 -> 23   (-2)
+      sam-allen                          450 -> 428   (-22)
+      tai-hayes                          151 -> 143   (-8)
+      thomas-matthews                    238 -> 226   (-12)
+      toby-whan                          25 -> 23   (-2)
+      tyan-prindable                     375 -> 356   (-19)
+      tylah-williams                     217 -> 205   (-12)
+      tyler-welsh                        67 -> 64   (-3)
+      will-darcy                         225 -> 216   (-9)
+      zac-mccarthy                       133 -> 128   (-5)
+    derived_v0 (the matrix year-0 column) moved on 0 row(s) — the raw entry object does not move
+
+  WRITTEN  docs/evidence/r24_advance_2026-08-23/DAY0_CP_R24.json   md5 72d583f1261357cd88b85e0c1133df79
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.

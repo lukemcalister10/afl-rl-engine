@@ -1,0 +1,26 @@
+====================================================================================================
+CLAIMS CHECK — R24 THE ROUND ADVANCE — the round lander's first real flight
+  act type   : round-advance
+  date       : 2026-08-23   base: 64a282d8fcd2370836767acc04dbb7fd76018987
+  owner word : Here are the R24 scores, please apply. Sheet unchanged. Regenerate Day 0 (owner, verbatim, 2026-08-23)
+  tree       : /home/user/afl-rl-engine
+====================================================================================================
+  ACTIVATION  day0_rebase                              on  (by: Regenerate Day 0 (owner, verbatim, 2026-08-23))
+
+  OK   file_md5     the published board of record                  md5 6fd0f7ded2b280d1a90962c299a152e3 (claimed 6fd0f7ded2b280d1a90962c299a152e3)
+  OK   file_md5     the store                                      md5 daa93053bc2d4eba30d9dc6e06e4af9e (claimed daa93053bc2d4eba30d9dc6e06e4af9e)
+  OK   json_field   expected_boot.board                            board = '6fd0f7ded2b280d1a90962c299a152e3' (claimed '6fd0f7ded2b280d1a90962c299a152e3')
+  OK   json_field   expected_boot.engine_head                      engine_head = '3af8c1f7d61275c198a5df70c34608c7' (claimed '3af8c1f7d61275c198a5df70c34608c7')
+  OK   json_field   the round, ADVANCED to                         as_of_round = 24 (claimed 24)
+  OK   json_field   the release seal                               contract_sha256 = '7bd074ae626fe02b5a43b60d961a1add8fc675a07a72a6e7e0439cb152efb287' (claimed '7bd074ae626fe02b5a43b60d961a1add8fc675a07a72a6e7e0439cb152efb287')
+  OK   board_count  board rows                                     active.rows = 804 (claimed 804)
+  OK   gate         release_manifest_check                         exit 0 (expected PASS)
+  OK   gate         release_contract_check                         exit 0 (expected PASS)
+  OK   gate         acceptance_runner                              exit 0 (expected PASS)
+  OK   gate         movers_transition                              exit 0 (expected PASS)
+  OK   gate         movers_ui                                      exit 0 (expected PASS)
+  OK   unmoved      BYTE-UNMOVED by this round-advance             md5 a4ee39f7ec80ee6b6172aa28e0c17aae (claimed a4ee39f7ec80ee6b6172aa28e0c17aae)
+  OK   unmoved      BYTE-UNMOVED by this round-advance             md5 21361291f26d35108b88f92f885c5063 (claimed 21361291f26d35108b88f92f885c5063)
+
+CLAIMS: 14 of 14 verified against the tree; 0 shape problem(s)
+VERDICT: GREEN — every claim recomputed and held
