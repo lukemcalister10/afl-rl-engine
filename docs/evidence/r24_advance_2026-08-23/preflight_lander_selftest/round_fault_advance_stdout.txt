@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
-  tree      : /tmp/landing_selftest_16198/sandbox
+  tree      : /tmp/landing_selftest_18279/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board b3e8da99bc7f632e5d1eebc732f9cf01
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
 
 --- STEP 0/14  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_FV, RL_REPO, RL_VENV
-build-lock: HELD by land-round-17041 (pid 17041) — single writer for the shared workspace.
-base commit        ac1b0766f4beb0e93ca9a75f458473c8d454126d
+build-lock: HELD by land-round-19121 (pid 19121) — single writer for the shared workspace.
+base commit        290c32cb627dbdde0e700665f88251f31ecffd6b
 board pin (before) b3e8da99bc7f632e5d1eebc732f9cf01
 store pin (before) b745002eb0a0fbb1c34fa44f1ef708d6
 restore point      106 carrier(s) captured, 106 present on disk
-    [preflight OK  0.12s]
+    [preflight OK  0.08s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
@@ -55,10 +55,10 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.12s  OK
+    preflight          0.08s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
     catchup_preflight     0.00s  OK
     advance            0.01s  FAIL
-    TOTAL              0.13s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_17041
+    TOTAL              0.09s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_19121

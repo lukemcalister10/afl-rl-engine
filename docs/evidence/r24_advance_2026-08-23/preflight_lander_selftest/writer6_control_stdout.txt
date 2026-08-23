@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_16198/sandbox
+  tree      : /tmp/landing_selftest_18279/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board b3e8da99bc7f632e5d1eebc732f9cf01
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_FV, RL_REPO, RL_VENV
-build-lock: HELD by land-lever-16750 (pid 16750) — single writer for the shared workspace.
-base commit        ac1b0766f4beb0e93ca9a75f458473c8d454126d
+build-lock: HELD by land-lever-18830 (pid 18830) — single writer for the shared workspace.
+base commit        290c32cb627dbdde0e700665f88251f31ecffd6b
 board pin (before) b3e8da99bc7f632e5d1eebc732f9cf01
 store pin (before) b745002eb0a0fbb1c34fa44f1ef708d6
 restore point      58 carrier(s) captured, 58 present on disk
-    [preflight OK  0.08s]
+    [preflight OK  0.07s]
 
 --- STEP 1/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=b3e8da99bc7f632e5d1eebc732f9cf01  (0.0s)
@@ -60,7 +60,7 @@ RE-STAMPED, re-read, and release_contract.py check PASSES.
 --- STEP 5/10  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 verify BEFORE : ok=True balanced=7c32a540578b fails=0
 the sibling is CURRENT — nothing to reconcile, and this step writes nothing.
-    [sibling OK  0.11s]
+    [sibling OK  0.10s]
 
 --- STEP 6/10  ui             ALL SIX UI writers, and the identity read back out ---
 BEFORE  working 4f42b510889b45610494e2fc869971c4  release-block=True
@@ -84,12 +84,12 @@ WRITER 4/6: ui/tools/rebuild_movers_derived.py  (points / values / model_changes
   drift guard: derived blocks OK — committed == rebuilt (3824847 bytes, latest report R23)
   shipped model_changes == live-derived: 11 boundar(ies), EQUAL  (the F-10 predicate holds)
 WRITER 5/6: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
-  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_16198/sandbox/ui/data/ownership.js
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_18279/sandbox/ui/data/ownership.js
   MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74786 bytes).
   mirror pin == the landed identity: board b3e8da99 store b745002e R23, 804 player(s) mirrored (pin() would ACTIVATE it)
 WRITER 6/6: ui/tools/ingest_inputs.py --clubs-only  (the picks bundle, re-stamped to the landed board + store)
-  CLEAN INGEST — 160 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_16198/sandbox/ui/data/club_valuation.js
+  CLEAN INGEST — 160 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_18279/sandbox/ui/data/club_valuation.js
   CLUBS-ONLY     — the ownership mirror was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: PICKS DRIFT GUARD — ui/data/club_valuation.js is byte-identical to what this tree projects (40593 bytes).
   picks stamp == the landed identity: board b3e8da99 store b745002e R23, 160 pick(s) priced off 9729f0c5 (pin() would ACCEPT it)
@@ -106,11 +106,11 @@ AFTER   picks  2277fa537c21f2eedea4c7bf8ae1c983  UNMOVED (neither the board, the
   stamp.balanced_board_md5   7c32a540578b799922daea41d8acdfa2   OK
   stamp.asOfRound            23                                 OK
 THE HTML APP'S EMBEDDED BOARD IDENTITY IS b3e8da99bc7f632e5d1eebc732f9cf01. All six writers ran; the release block is back, the reader can see the transition that produced this board, the ownership mirror is pinned to it rather than to the store it replaced, and the pick surface is stamped to it rather than to the board before it.
-    [ui OK  1.72s]
+    [ui OK  1.65s]
     build-lock: RELEASED after 'ui' — the remaining steps write nothing and the one gate that builds takes the lock itself.
 
 --- STEP 7/10  state          docs/STATE.md regenerated from the carriers (3c) ---
-state: docs/STATE.md md5 b28dca6c4aa18f60e1d4dd9dd2fc4944 (moved); regeneration verified
+state: docs/STATE.md md5 95b3a5d845c110a33a0f5801d0c9949f (moved); regeneration verified
     [state OK  0.12s]
 
 --- STEP 8/10  gates          the landing gate set, verdicts off exit codes ---
@@ -126,25 +126,25 @@ VERDICT: GREEN — every claim recomputed and held
 explicit paths (2):
     docs/STATE.md
     docs/evidence/landing_selftest/
-committed 7614db1aafbb
-    [commit OK  0.16s]
+committed dfcba6af837c
+    [commit OK  0.14s]
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.08s  OK
+    preflight          0.07s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
     lineage            0.00s  OK
     contract           0.07s  OK
-    sibling            0.11s  OK
-    ui                 1.72s  OK
+    sibling            0.10s  OK
+    ui                 1.65s  OK
     state              0.12s  OK
     gates              0.12s  OK
     claims             0.21s  OK
-    commit             0.16s  OK
-    TOTAL              2.62s
+    commit             0.14s  OK
+    TOTAL              2.51s
 
 ======================================================================================================
 LANDING COMPLETE — every step's postcondition held.
 SOAK: hand-verification stands until the owner's word per act type (G3.iv).
 ======================================================================================================
-work dir discarded (the landing completed): /tmp/landing_work_16750
+work dir discarded (the landing completed): /tmp/landing_work_18830

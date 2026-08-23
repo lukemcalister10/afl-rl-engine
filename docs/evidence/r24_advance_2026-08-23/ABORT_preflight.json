@@ -1,7 +1,7 @@
 {
   "byte_exact": "n/a",
   "commits_rewound": [],
-  "error": "THE TREE IS NOT CLEAN. A landing transaction starts from a committed tree, or its abort restores a state nobody chose:\n    ?? docs/evidence/r24_advance_2026-08-23/ABORT_preflight.json",
+  "error": "THE TREE IS NOT CLEAN. A landing transaction starts from a committed tree, or its abort restores a state nobody chose:\n     M docs/evidence/r24_advance_2026-08-23/ABORT_preflight.json",
   "failed_step": "preflight",
   "restore_point": null,
   "restored": "n/a \u2014 failure precedes the restore point"

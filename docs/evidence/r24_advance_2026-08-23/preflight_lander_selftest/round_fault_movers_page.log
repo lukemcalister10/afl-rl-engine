@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
-  tree      : /tmp/landing_selftest_16198/sandbox
+  tree      : /tmp/landing_selftest_18279/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board b3e8da99bc7f632e5d1eebc732f9cf01
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
 
 --- STEP 0/14  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_FV, RL_REPO, RL_VENV
-build-lock: HELD by land-round-17092 (pid 17092) — single writer for the shared workspace.
-base commit        ac1b0766f4beb0e93ca9a75f458473c8d454126d
+build-lock: HELD by land-round-19172 (pid 19172) — single writer for the shared workspace.
+base commit        290c32cb627dbdde0e700665f88251f31ecffd6b
 board pin (before) b3e8da99bc7f632e5d1eebc732f9cf01
 store pin (before) b745002eb0a0fbb1c34fa44f1ef708d6
 restore point      106 carrier(s) captured, 106 present on disk
-    [preflight OK  0.14s]
+    [preflight OK  0.08s]
 
 --- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
 sheet         docs/owner_annotations/SITTER_2026_v1.csv
@@ -67,12 +67,12 @@ WRITER 2: the bake-lane identities restamp_dynamic does not touch
   contract_sha256             1b435ff6f988 -> 1b435ff6f988
   frozen fields asserted unmoved: 10 checked, 0 moved
 RE-STAMPED, re-read, and release_contract.py check PASSES.
-    [contract OK  0.34s]
+    [contract OK  0.07s]
 
 --- STEP 8/14  sibling        the balanced sibling: verify (the repin ran in-txn) ---
 verify BEFORE : ok=True balanced=7c32a540578b fails=0
 the sibling is CURRENT — nothing to reconcile, and this step writes nothing.
-    [sibling OK  0.11s]
+    [sibling OK  0.10s]
 
 --- STEP 9/14  ui             ALL SIX UI writers, and the identity read back out ---
 BEFORE  working 4f42b510889b45610494e2fc869971c4  release-block=True
@@ -96,12 +96,12 @@ WRITER 4/6: ui/tools/rebuild_movers_derived.py  (points / values / model_changes
   drift guard: derived blocks OK — committed == rebuilt (3824847 bytes, latest report R23)
   shipped model_changes == live-derived: 11 boundar(ies), EQUAL  (the F-10 predicate holds)
 WRITER 5/6: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
-  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_16198/sandbox/ui/data/ownership.js
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_18279/sandbox/ui/data/ownership.js
   MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74786 bytes).
   mirror pin == the landed identity: board b3e8da99 store b745002e R23, 804 player(s) mirrored (pin() would ACTIVATE it)
 WRITER 6/6: ui/tools/ingest_inputs.py --clubs-only  (the picks bundle, re-stamped to the landed board + store)
-  CLEAN INGEST — 160 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_16198/sandbox/ui/data/club_valuation.js
+  CLEAN INGEST — 160 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_18279/sandbox/ui/data/club_valuation.js
   CLUBS-ONLY     — the ownership mirror was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: PICKS DRIFT GUARD — ui/data/club_valuation.js is byte-identical to what this tree projects (40593 bytes).
   picks stamp == the landed identity: board b3e8da99 store b745002e R23, 160 pick(s) priced off 9729f0c5 (pin() would ACCEPT it)
@@ -118,7 +118,7 @@ AFTER   picks  2277fa537c21f2eedea4c7bf8ae1c983  UNMOVED (neither the board, the
   stamp.balanced_board_md5   7c32a540578b799922daea41d8acdfa2   OK
   stamp.asOfRound            23                                 OK
 THE HTML APP'S EMBEDDED BOARD IDENTITY IS b3e8da99bc7f632e5d1eebc732f9cf01. All six writers ran; the release block is back, the reader can see the transition that produced this board, the ownership mirror is pinned to it rather than to the store it replaced, and the pick surface is stamped to it rather than to the board before it.
-    [ui OK  1.68s]
+    [ui OK  1.70s]
     build-lock: RELEASED after 'ui' — the remaining steps write nothing and the one gate that builds takes the lock itself.
 
 --- STEP 10/14  movers_page    the owner's movers page, through the frozen template ---
@@ -129,7 +129,7 @@ THE LIVE BOARD HAS MOVED SINCE THIS REPORT, OUT OF ROUND — and that is a fact 
       the-f5-rounding-20-8           c97a4d9f9fa42597f85517c7850d3943
       the-backrows-repair-20-8       68be10c79d0ee096455754e084bcf757
       the-staircase-adoption-21-8    b3e8da99bc7f632e5d1eebc732f9cf01
-    [movers_page FAILED  0.07s]
+    [movers_page FAILED  0.08s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'movers_page'
@@ -150,16 +150,16 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.14s  OK
+    preflight          0.08s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
     catchup_preflight     0.00s  OK
     advance            0.01s  OK
     generator_sync     0.01s  OK
     day0               0.00s  OK
-    contract           0.34s  OK
-    sibling            0.11s  OK
-    ui                 1.68s  OK
-    movers_page        0.07s  FAIL
-    TOTAL              2.36s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_17092
+    contract           0.07s  OK
+    sibling            0.10s  OK
+    ui                 1.70s  OK
+    movers_page        0.08s  FAIL
+    TOTAL              2.05s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_19172
