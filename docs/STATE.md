@@ -19,16 +19,16 @@ measurement made while this file was written, not a claim carried over from the 
 
 | identity | pinned value | carrier | re-hashed from | verdict |
 |---|---|---|---|---|
-| board | `6fd0f7ded2b280d1a90962c299a152e3` | data/expected_boot.json | data/rl_build/rl_app_data.json | agrees |
-| store | `daa93053bc2d4eba30d9dc6e06e4af9e` | data/expected_boot.json | engine/rl_after/rl_model_data.json | agrees |
+| board | `82fcd8bb1e552b927299b5702122e321` | data/expected_boot.json | data/rl_build/rl_app_data.json | agrees |
+| store | `fb640ca0baf92bbb122b1ad7e25c5a88` | data/expected_boot.json | engine/rl_after/rl_model_data.json | agrees |
 | engine_head | `3af8c1f7d61275c198a5df70c34608c7` | data/expected_boot.json | engine/rl_after/_merged_recover.py | agrees |
 | rl_model | `6fe7c4155866d80e8045bed2d3bf2802` | data/expected_boot.json | engine/rl_after/rl_model.py | agrees |
-| balanced_board_md5 | `ca8cb17e960bf7168bcb4101f5fd5779` | data/expected_boot.json | (no in-tree artifact) | not in tree |
+| balanced_board_md5 | `8838f4b3ed5089788c48a2657606711c` | data/expected_boot.json | (no in-tree artifact) | not in tree |
 | config | `eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1` | data/expected_boot.json | config_manifest.manifest_hash | agrees |
 
 | release fact | value | carrier |
 |---|---|---|
-| contract seal | `7bd074ae626fe02b5a43b60d961a1add8fc675a07a72a6e7e0439cb152efb287` | data/release_contract.json:contract_sha256 |
+| contract seal | `d059faa92a20be155edd645650a835a8080f8cee6d118e5a0d9353e851c12c16` | data/release_contract.json:contract_sha256 |
 | config seal | `eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1` | data/release_contract.json:config_sha256 |
 | release version | v2.11-final-rc1-PROVISIONAL | data/release_contract.json:release_version |
 | round (as_of_round) | 24 | data/release_contract.json:as_of_round |
@@ -57,21 +57,21 @@ gate claimed by name (process law P5).
 
 ## LINEAGE TIP
 
-`data/release_lineage.json` — the append-only out-of-round transition register, 13 entries.
+`data/release_lineage.json` — the append-only out-of-round transition register, 14 entries.
 
 | field | value |
 |---|---|
-| column | the-staircase-adoption-21-8 |
-| after round | 23 |
-| board moved | `68be10c79d0ee096455754e084bcf757` → `b3e8da99bc7f632e5d1eebc732f9cf01` |
-| identities moved | board |
-| owner ruling id | THE_STAIRCASE_FIX_ADOPTION_2026-08-21_A_raw_I_prefer_lock_that_in_unconserved |
+| column | graham-dual-40-24-8 |
+| after round | 24 |
+| board moved | `6fd0f7ded2b280d1a90962c299a152e3` → `82fcd8bb1e552b927299b5702122e321` |
+| identities moved | board, store |
+| owner ruling id | WILL_GRAHAM_DUAL_2026-08-24_edit_to_40pct_SF_and_recalculate |
 
 ## GENERATION STAMP
 
 | field | value |
 |---|---|
-| generated at commit | `bbe40befb2b0c00c95b4b9f4cceaa34b64dda873` |
+| generated at commit | `17d0ecfe9cadfc053553a831915e5d2af91578a9` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
