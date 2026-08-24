@@ -1,6 +1,20 @@
 {
  "ERRATUM_2026-08-24_mixed_peak_model": {
   "also_owed": "ARM 1's candidate-root pattern (and this arm's ARM 2 extension of it) swaps peak_model_v4 and pvc_snapshot into the ROOT, where the engine never reads them. Either the builders should also seed the workspace, or the workspace seeding step must be documented as part of the pattern. As written, a candidate root's peak-model swap is silently inert.",
+  "batteries_RE_RUN_on_the_coherent_build": {
+   "G_Y0": "PASS 0.002% vs 2.0% HARD \u2014 UNCHANGED",
+   "P12_no_arb": "IDENTICAL reading: W2 1.0321, max class 1.1339 (2011), 0 classes over the 1.14 rail against the live board's 3, NEW BREACHES 0, floor margin +0.0021. The six-row difference does not reach the class marks at four decimals.",
+   "day0_replication": "86 of 86 at tolerance 0 on the re-emitted candidate matrix",
+   "must_move_leg_3": "RE-RUN COHERENTLY: board (b) ratchet-ON = 6bcf61b7 = board (c) ratchet-retired, byte-identical.",
+   "one_source_selftest": "PASS/FAIL counts re-measured on the coherent build; the red set is the same standing family (see one_source_selftest above).",
+   "ship_gates": {
+    "B2": "PASS, median |IS-WF| leakage 0.000 %-pts vs tol 0.5 \u2014 UNCHANGED",
+    "B4_regenerated_md5": "6bcf61b7 (was a6c47317) \u2014 the suite independently confirms the canonical board",
+    "B6": "PASS, ramp identical, no dips \u2014 UNCHANGED",
+    "D14a-d": "PASS \u2014 UNCHANGED",
+    "pass_count": 14
+   }
+  },
   "determinism_established_along_the_way": {
    "A1_sweep_on_the_ARM_2_STACK": "all four kernels build the same board \u2014 the exact-monotone estimator stack is kernel-invariant on this box, the same property expected_boot.json records for the incumbent stack (\"A1 PROVEN: native/SkylakeX == forced-Haswell == forced-Prescott(SSE) == forced-Nehalem(SSE4.2)\"). There is NO build non-determinism on the new estimator stack.",
    "builds_agreeing_at_a6c47317_on_this_box": 7,
@@ -712,6 +726,609 @@
    "note": "IDENTICAL to raw \u2014 the ORDER 44 ratchet is retired; there is no second surface. The zero below is a property of the FIT.",
    "pct_negative": 0.0,
    "steps": 257280
+  }
+ },
+ "WORD_B_evidence_conditioned_bust_prior": {
+  "BOARD_EFFECT_conditioned_vs_static": {
+   "VERDICT": "THE LEVER IS REAL IN THE MODEL AND INERT ON THE BOARD. 67 of 804 rows move, ALL DOWN, by 1-2 points each; the whole board moves 68 points on a 688,674 pool, -0.0099%. The largest single move is luke-jackson at -2 (-0.02%). Median move across the board is exactly zero.",
+   "down": 67,
+   "flat": 737,
+   "max_abs_pct": 0.6897,
+   "median_abs_pct": 0.0,
+   "pool_conditioned": 688606,
+   "pool_delta": -68,
+   "pool_delta_pct": -0.0099,
+   "pool_static": 688674,
+   "rows_compared": 804,
+   "sum_abs_move": 68,
+   "top_down": [
+    [
+     "luke-jackson",
+     9727,
+     9725,
+     -2,
+     -0.021
+    ],
+    [
+     "andrew-brayshaw",
+     2977,
+     2976,
+     -1,
+     -0.034
+    ],
+    [
+     "archie-roberts",
+     3750,
+     3749,
+     -1,
+     -0.027
+    ],
+    [
+     "bailey-smith",
+     5766,
+     5765,
+     -1,
+     -0.017
+    ],
+    [
+     "bailey-williams-wc",
+     2432,
+     2431,
+     -1,
+     -0.041
+    ],
+    [
+     "caleb-serong",
+     4294,
+     4293,
+     -1,
+     -0.023
+    ],
+    [
+     "chad-warner",
+     4013,
+     4012,
+     -1,
+     -0.025
+    ],
+    [
+     "christian-petracca",
+     1748,
+     1747,
+     -1,
+     -0.057
+    ],
+    [
+     "connor-idun",
+     2250,
+     2249,
+     -1,
+     -0.044
+    ],
+    [
+     "cooper-hynes",
+     988,
+     987,
+     -1,
+     -0.101
+    ]
+   ],
+   "up": 0
+  },
+  "CAMEO_CENSUS_51_rows": {
+   "VERDICT": "THIS IS THE FINDING. The 51 rows the seam study identified as the lever's own target population \u2014 early-career states whose only evidence is cameo minutes \u2014 move by ONE POINT ON ONE ROW. Fifty of fifty-one are flat. The construction that was built to reprice exactly these rows does not reprice them.",
+   "census_rows": 51,
+   "down": 1,
+   "flat": 50,
+   "on_board": 51,
+   "only_mover": "jack-ough  306 -> 305  (-1, -0.33%)  cameo 46.0, pick 36, tenure 2",
+   "rows": [
+    {
+     "conditioned": 1014,
+     "delta": 0,
+     "key": "samuel-swadling",
+     "pct": 0.0,
+     "static": 1014
+    },
+    {
+     "conditioned": 1092,
+     "delta": 0,
+     "key": "dylan-patterson",
+     "pct": 0.0,
+     "static": 1092
+    },
+    {
+     "conditioned": 1146,
+     "delta": 0,
+     "key": "daniel-annable",
+     "pct": 0.0,
+     "static": 1146
+    },
+    {
+     "conditioned": 960,
+     "delta": 0,
+     "key": "noah-mraz",
+     "pct": 0.0,
+     "static": 960
+    },
+    {
+     "conditioned": 950,
+     "delta": 0,
+     "key": "jai-murray",
+     "pct": 0.0,
+     "static": 950
+    },
+    {
+     "conditioned": 877,
+     "delta": 0,
+     "key": "xavier-taylor",
+     "pct": 0.0,
+     "static": 877
+    },
+    {
+     "conditioned": 605,
+     "delta": 0,
+     "key": "charlie-banfield",
+     "pct": 0.0,
+     "static": 605
+    },
+    {
+     "conditioned": 641,
+     "delta": 0,
+     "key": "lachy-dovaston",
+     "pct": 0.0,
+     "static": 641
+    },
+    {
+     "conditioned": 645,
+     "delta": 0,
+     "key": "louis-emmett",
+     "pct": 0.0,
+     "static": 645
+    },
+    {
+     "conditioned": 569,
+     "delta": 0,
+     "key": "aidan-schubert",
+     "pct": 0.0,
+     "static": 569
+    },
+    {
+     "conditioned": 479,
+     "delta": 0,
+     "key": "harry-o-farrell",
+     "pct": 0.0,
+     "static": 479
+    },
+    {
+     "conditioned": 560,
+     "delta": 0,
+     "key": "cameron-nairn",
+     "pct": 0.0,
+     "static": 560
+    },
+    {
+     "conditioned": 504,
+     "delta": 0,
+     "key": "lachlan-carmichael",
+     "pct": 0.0,
+     "static": 504
+    },
+    {
+     "conditioned": 509,
+     "delta": 0,
+     "key": "jesse-dattoli",
+     "pct": 0.0,
+     "static": 509
+    },
+    {
+     "conditioned": 474,
+     "delta": 0,
+     "key": "jack-dalton",
+     "pct": 0.0,
+     "static": 474
+    },
+    {
+     "conditioned": 468,
+     "delta": 0,
+     "key": "will-green",
+     "pct": 0.0,
+     "static": 468
+    },
+    {
+     "conditioned": 427,
+     "delta": 0,
+     "key": "jack-ison",
+     "pct": 0.0,
+     "static": 427
+    },
+    {
+     "conditioned": 441,
+     "delta": 0,
+     "key": "taylor-goad",
+     "pct": 0.0,
+     "static": 441
+    },
+    {
+     "conditioned": 437,
+     "delta": 0,
+     "key": "cody-angove",
+     "pct": 0.0,
+     "static": 437
+    },
+    {
+     "conditioned": 422,
+     "delta": 0,
+     "key": "harry-barnett",
+     "pct": 0.0,
+     "static": 422
+    },
+    {
+     "conditioned": 398,
+     "delta": 0,
+     "key": "zane-peucker",
+     "pct": 0.0,
+     "static": 398
+    },
+    {
+     "conditioned": 445,
+     "delta": 0,
+     "key": "cody-curtin",
+     "pct": 0.0,
+     "static": 445
+    },
+    {
+     "conditioned": 388,
+     "delta": 0,
+     "key": "liam-fawcett",
+     "pct": 0.0,
+     "static": 388
+    },
+    {
+     "conditioned": 376,
+     "delta": 0,
+     "key": "lewis-hayes",
+     "pct": 0.0,
+     "static": 376
+    },
+    {
+     "conditioned": 307,
+     "delta": 0,
+     "key": "archie-ludowyke",
+     "pct": 0.0,
+     "static": 307
+    },
+    {
+     "conditioned": 289,
+     "delta": 0,
+     "key": "charlie-edwards",
+     "pct": 0.0,
+     "static": 289
+    },
+    {
+     "conditioned": 305,
+     "delta": -1,
+     "key": "jack-ough",
+     "pct": -0.327,
+     "static": 306
+    },
+    {
+     "conditioned": 303,
+     "delta": 0,
+     "key": "matt-whitlock",
+     "pct": 0.0,
+     "static": 303
+    },
+    {
+     "conditioned": 297,
+     "delta": 0,
+     "key": "harrison-oliver",
+     "pct": 0.0,
+     "static": 297
+    },
+    {
+     "conditioned": 269,
+     "delta": 0,
+     "key": "noah-roberts-thomson",
+     "pct": 0.0,
+     "static": 269
+    },
+    {
+     "conditioned": 295,
+     "delta": 0,
+     "key": "jay-polkinghorne",
+     "pct": 0.0,
+     "static": 295
+    },
+    {
+     "conditioned": 269,
+     "delta": 0,
+     "key": "tobyn-murray",
+     "pct": 0.0,
+     "static": 269
+    },
+    {
+     "conditioned": 231,
+     "delta": 0,
+     "key": "william-mccabe",
+     "pct": 0.0,
+     "static": 231
+    },
+    {
+     "conditioned": 247,
+     "delta": 0,
+     "key": "oliver-hannaford",
+     "pct": 0.0,
+     "static": 247
+    },
+    {
+     "conditioned": 190,
+     "delta": 0,
+     "key": "jed-adams",
+     "pct": 0.0,
+     "static": 190
+    },
+    {
+     "conditioned": 187,
+     "delta": 0,
+     "key": "hugh-davies",
+     "pct": 0.0,
+     "static": 187
+    },
+    {
+     "conditioned": 185,
+     "delta": 0,
+     "key": "oscar-ryan",
+     "pct": 0.0,
+     "static": 185
+    },
+    {
+     "conditioned": 180,
+     "delta": 0,
+     "key": "james-leake",
+     "pct": 0.0,
+     "static": 180
+    },
+    {
+     "conditioned": 203,
+     "delta": 0,
+     "key": "luke-kennedy",
+     "pct": 0.0,
+     "static": 203
+    },
+    {
+     "conditioned": 158,
+     "delta": 0,
+     "key": "lucas-camporeale",
+     "pct": 0.0,
+     "static": 158
+    },
+    {
+     "conditioned": 150,
+     "delta": 0,
+     "key": "lachlan-smith",
+     "pct": 0.0,
+     "static": 150
+    },
+    {
+     "conditioned": 149,
+     "delta": 0,
+     "key": "jakob-ryan",
+     "pct": 0.0,
+     "static": 149
+    },
+    {
+     "conditioned": 143,
+     "delta": 0,
+     "key": "zane-zakostelsky",
+     "pct": 0.0,
+     "static": 143
+    },
+    {
+     "conditioned": 172,
+     "delta": 0,
+     "key": "rhys-unwin",
+     "pct": 0.0,
+     "static": 172
+    },
+    {
+     "conditioned": 102,
+     "delta": 0,
+     "key": "tew-jiath",
+     "pct": 0.0,
+     "static": 102
+    },
+    {
+     "conditioned": 86,
+     "delta": 0,
+     "key": "cooper-simpson",
+     "pct": 0.0,
+     "static": 86
+    },
+    {
+     "conditioned": 85,
+     "delta": 0,
+     "key": "alex-dodson",
+     "pct": 0.0,
+     "static": 85
+    },
+    {
+     "conditioned": 77,
+     "delta": 0,
+     "key": "thomas-anastasopoulos",
+     "pct": 0.0,
+     "static": 77
+    },
+    {
+     "conditioned": 70,
+     "delta": 0,
+     "key": "george-stevens",
+     "pct": 0.0,
+     "static": 70
+    },
+    {
+     "conditioned": 69,
+     "delta": 0,
+     "key": "lucca-grego",
+     "pct": 0.0,
+     "static": 69
+    },
+    {
+     "conditioned": 62,
+     "delta": 0,
+     "key": "bodie-ryan",
+     "pct": 0.0,
+     "static": 62
+    }
+   ],
+   "up": 0
+  },
+  "CONTEXT_FROM_THE_COORDINATOR": "register v843 records the seam model v2 measuring 0-60 LOSSES against the engine. No adoption pressure rides on this measurement; it is reported as the owner ruled it should be.",
+  "DAY_0_BYTE_EXACT": {
+   "draft_rows_compared": 2650,
+   "identical": true,
+   "max_abs_delta": 0.0,
+   "verdict": "BYTE-EXACT \u2014 asserted over every draft row, not assumed. The draft row carries no evidence, so A == 0 and mu == B exactly."
+  },
+  "NAMED_ROWS": {
+   "VERDICT": "ALL THREE MOVE ZERO. 180 -> 180, 297 -> 297, 509 -> 509. All three are in the census.",
+   "harrison-oliver": {
+    "conditioned": 297,
+    "delta": 0,
+    "in_cameo_census": true,
+    "pct": 0.0,
+    "static": 297
+   },
+   "james-leake": {
+    "conditioned": 180,
+    "delta": 0,
+    "in_cameo_census": true,
+    "pct": 0.0,
+    "static": 180
+   },
+   "jesse-dattoli": {
+    "conditioned": 509,
+    "delta": 0,
+    "in_cameo_census": true,
+    "pct": 0.0,
+    "static": 509
+   }
+  },
+  "OUT_OF_SAMPLE": {
+   "_fold_correction": "the band's folds do NOT transfer: build_peak_model_v4 trains on build(2006,2015), so two of study A's three test sets are EMPTY. This seat used them anyway on the first cut, got a single fold, and crashed the importance block on an empty held-out set \u2014 the crash is what exposed it. The folds below keep study A's PRINCIPLE inside the window that has rows: train debut <= 2009 / 2011 / 2013, test 2010-11 / 2012-13 / 2014-15.",
+   "_primary": "study A \u2014 WHOLE CAREERS HELD OUT \u2014 is primary, per this arm's own FB2 finding that the as-of-year protocol shares 76-100% of its test players with its training set.",
+   "studyA_whole_careers_PRIMARY": {
+    "conditioned": {
+     "folds_rmse": [
+      19.3475,
+      18.1228,
+      18.0672
+     ],
+     "mean_r2": 0.5209,
+     "mean_rmse": 18.5125
+    },
+    "static": {
+     "folds_rmse": [
+      19.5719,
+      18.2029,
+      18.3081
+     ],
+     "mean_r2": 0.5113,
+     "mean_rmse": 18.6943
+    },
+    "verdict": "THE CONDITIONED FEATURE WINS, and it wins at ALL THREE folds. RMSE -0.97%, R2 +0.0096."
+   },
+   "studyB_as_of_year_LEAKY_reported_for_contrast": {
+    "conditioned": {
+     "mean_r2": 0.453,
+     "mean_rmse": 20.9808
+    },
+    "static": {
+     "mean_r2": 0.4597,
+     "mean_rmse": 20.8502
+    },
+    "verdict": "the STATIC feature wins by 0.63%. The two protocols disagree in sign here too \u2014 the same split-dependence this arm found for the band, pointing the same way: the protocol that lets a model see the player rewards the simpler feature."
+   }
+  },
+  "THE_ONE_CHOICE_THIS_SEAT_HAD_TO_MAKE": "The surface was FITTED on tenure 1-4 only. The peak model trains on every scored year of a career, so it asks for a bust_prior at t = 5, 9, 14. Extrapolating is not neutral: M(t) decays with tauM 2.1 while A rises toward (1-r) = 0.89, so mu would collapse to ~0.11*B for every veteran \u2014 annihilating the feature far outside the evidence that fitted it. DECISION, DECLARED: outside the fitted scope the feature is the STATIC B (A held at 0). It keeps the nesting exact, keeps day-0 exact, and confines the lever to the population the seam study measured.",
+  "WHAT_THIS_DOES_NOT_SETTLE": "The peak model is refitted here on the ARM 2 store with ARM 2 hyperparameters, but the BOARD it feeds is the design arm's candidate \u2014 so these two boards are a comparison of the lever against itself, not a proposal. Nothing is adopted, nothing is wired, and the engine edit that would be needed at rl_model.py:1235 lives only in a scratch workspace. Per the coordinator, register v843 records seam model v2 measuring 0-60 LOSSES against the engine; this measurement neither supports nor contradicts that \u2014 it says only that the conditioned feature fits better out of sample and that the board cannot tell.",
+  "WHY_THE_MODEL_GAIN_DOES_NOT_REACH_THE_BOARD": "Stated as a reading, not a proof. bust_prior is one of seventeen peak-model features, and the board price composes the peak estimate with the band, the pole, the ISO correction, the taper and the projection lens. The conditioning changes the feature on 2,315 of 7,117 training rows and improves held-out RMSE by 0.97% \u2014 but the permutation importance shows the model leaning only half as hard on the conditioned feature as on the static one, which is consistent with the conditioning restating information the evidence features already carry. A better feature the model relies on less is exactly the shape that improves a fit and moves no prices.",
+  "WORD_A_BOARD_EFFECT_for_context": {
+   "down": 0,
+   "flat": 742,
+   "frozen_table_board": "6bcf61b7478a7093bd88b78b518afb5f (the ARM 2 candidate)",
+   "modernized_table_board": "ab11a10e6ee1b61d520b204fa7ab521b",
+   "pool_delta": 62,
+   "pool_delta_pct": 0.009,
+   "reading": "word A \u2014 swapping the FROZEN bust-prior table for the v838 MODERNIZED one \u2014 moves 62 rows, all UP, by 62 points total (+0.0090%). The same order of magnitude as word B and the opposite sign. Both table decisions are, on this board, worth about a hundredth of one per cent.",
+   "sum_abs_move": 62,
+   "up": 62
+  },
+  "_doc": "OWNER WORD B, verbatim: \"Fit both and show me on word B, please.\" NEITHER VERSION IS ADOPTED BY THIS MEASUREMENT. Both fits use the SAME v838 MODERNIZED bust-prior table (owner word A), the same store, and the same peak-model hyperparameters; the only difference is whether the bust_prior FEATURE is conditioned on early-career cameo evidence, applied at TRAINING and at INFERENCE.",
+  "boards": {
+   "conditioned_fit": "c0af4355cad5a09cfb7d3ffc44bc0793",
+   "how_built": "both on the ARM 2 candidate band + ceiling + store fb640ca0 + the v838 MODERNIZED table, workspace seeded FROM the candidate root (the erratum lesson applied). The conditioned board additionally carries a SCRATCH rl_model.py with the conditioned feature at the two _v4 sites \u2014 scratch only, never committed, exactly as the must-move proof's restored ratchet is.",
+   "parity_gate": "PASS on both",
+   "static_fit": "ab11a10e6ee1b61d520b204fa7ab521b"
+  },
+  "bust_prior_permutation_importance_held_out": {
+   "conditioned": {
+    "baseline_rmse": 18.0672,
+    "rmse_increase_when_shuffled": 3.664,
+    "sd": 0.391
+   },
+   "reading": "the model leans about HALF as hard on the conditioned feature (3.66 vs 7.15) while scoring BETTER with it. The straightforward reading is that the conditioned prior overlaps information the evidence features (games, best1, recent_gw) already carry, so shuffling it costs less \u2014 the static prior was carrying that weight alone and was more load-bearing because it was less well informed. It is a reading, not a proof; nothing here isolates the overlap.",
+   "static": {
+    "baseline_rmse": 18.3081,
+    "rmse_increase_when_shuffled": 7.1504,
+    "sd": 0.4624
+   }
+  },
+  "bust_prior_table_used_by_BOTH": {
+   "md5_as_written": "ff87e42e502a476a90e453bad90825b0",
+   "note": "it is exactly the A=0 limit of the conditioned surface, so fit (2) NESTS fit (1)",
+   "source": "v838 MODERNIZED (owner word A)"
+  },
+  "constants": {
+   "M1": 149.7064,
+   "beta": 0.0,
+   "c0": 45.8848,
+   "kappa0": 4.681,
+   "r": 0.11,
+   "tauK": 0.4333,
+   "tauM": 2.1061,
+   "w_c": 13.6587
+  },
+  "constants_provenance": "the REPRICING refit on the full primary window (CONSTRUCTION.md section 2). It carries NO out-of-sample claim and this measurement makes none for it.",
+  "construction": "seam-lever CAND-B, read from seam_lever/CONSTRUCTION.md, not from a summary: mu = (1-A)*B + A*T, with A(t,g) = (1-r)*W/(W+kappa(t)), W = sum g^2/(g+5.8) (the engine's own _DAMP_K), r = 0.11 (the engine's own _EVW_R), T(c,t) logistic in the games-weighted cameo average c, beta fixed at 0.",
+  "fits": {
+   "conditioned": {
+    "bust_prior_mean": 52.777,
+    "bust_prior_min_max": [
+     10.739,
+     126.183
+    ],
+    "bust_prior_sd": 21.465,
+    "md5": "8329ff9379cf6066c0e7cd73dd6cd2e0",
+    "rows": 7117
+   },
+   "static": {
+    "bust_prior_mean": 54.089,
+    "bust_prior_min_max": [
+     26.39,
+     101.54
+    ],
+    "bust_prior_sd": 21.262,
+    "md5": "debdce8b3af1acbac18eda32b9a09e4c",
+    "rows": 7117
+   }
+  },
+  "training_row_census_by_regime": {
+   "draft_rows_A_is_0_by_construction": 1227,
+   "in_scope_and_conditioned": 2315,
+   "out_of_scope_static_tenure_gt_4": 3575,
+   "reading": "the lever touches 2,315 of 7,117 training rows \u2014 32.5%. The other two thirds are either draft rows (where it is identically the old feature) or beyond the fitted tenure scope (where this seat held it at the old feature by declaration).",
+   "total": 7117
   }
  },
  "_doc": "REBAKE WEEK ARM 2 (the design arm) \u2014 every deciding figure this arm measured, as data. The prose account is the build seat's hand-back. Directive: docs/directives/REBAKE_ARM2_DESIGN_2026-08-24.md. Prereg: PREREG.md at commit e4a078f, filed BEFORE any engine or artifact edit (P9). Every hash here was MEASURED from the artifact, never typed (P4).",
