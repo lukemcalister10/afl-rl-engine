@@ -41,7 +41,13 @@
   "registered_at": "2026-08-24"
  },
  "lineage": {
-  "doc": "WILL GRAHAM DUAL-STREAM CORRECTION, owner-worded. The store's p_dual_stream for will-graham moves 90 -> 40 by surgical byte edit (store daa93053 -> fb640ca0); the board moves 6fd0f7de -> 82fcd8bb with EXACTLY ONE mover (will-graham 1533 -> 1271, the removed dual-bar benefit under the LEG C MAX law, item 275). Pool 700,119 -> 699,857; no renormaliser, per the standing no-baked-renormalisers principle. Predicted at the prereg (2feaf25) before the edit."
+  "doc": "WILL GRAHAM DUAL-STREAM CORRECTION, owner-worded. The store's p_dual_stream for will-graham moves 90 -> 40 by surgical byte edit (store daa93053 -> fb640ca0); the board moves 6fd0f7de -> 82fcd8bb with EXACTLY ONE mover (will-graham 1533 -> 1271, the removed dual-bar benefit under the LEG C MAX law, item 275). Pool 700,119 -> 699,857; no renormaliser, per the standing no-baked-renormalisers principle. Predicted at the prereg (2feaf25) before the edit.",
+  "kind": "owner-store-edit",
+  "owner_ruling_id": [
+   "WILL_GRAHAM_DUAL_2026-08-24_edit_to_40pct_SF_and_recalculate"
+  ],
+  "owner_ruling": "Owner word 2026-08-24, VERBATIM: \"Can we please edit Will Graham to be a 40% only SF then in the store and recalculate?\" Given after the supervisor measured the dual-position MAX-law benefit on Graham's row (+490.5 ev, +43.7% at p_dual=90; register v835).",
+  "authority": "docs/evidence/graham_dual_2026-08-24/PREREG.md (committed at 2feaf25 BEFORE the store edit, P9) with the prediction build transcript PREDICT_emit.log \u2014 exactly ONE mover, will-graham 1533 -> 1271; store fb640ca0 and board 82fcd8bb both measured before the flip. The store is the ONE SOURCE (law 1) and p_dual_stream is an owner-supplied data field; his word is the authority."
  },
  "day0_rebase": {
   "state": "off",
