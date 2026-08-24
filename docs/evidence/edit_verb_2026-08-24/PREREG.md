@@ -112,6 +112,92 @@ WORKTREE — never the live tree; the supervisor flies the real act — it must 
 **FALSIFIERS:** a second mover; a different Graham value; any store byte outside the `will-graham`
 row moving (the md5 is the check); the flight needing any pre-committed flip or pin companion.
 
+## ADDENDUM — THE PREREG CORRECTED AGAINST THE TREE (P9), 2026-08-24
+
+Process law P9 says an act "corrects the prereg against the tree rather than the tree against the
+prereg", and names the error rather than quietly satisfying it. Two of the three predictions above
+were WRONG, and both were wrong in the same way: they assumed a clean end-to-end edit landing could
+be flown inside the self-test's sandbox. It cannot, and the reason is a property of the tree.
+
+**ERROR 1 — `edit_control_clean_run` and `edit_commit_explicit_paths` are not reachable in the
+sandbox, and were replaced.** The `sibling` step's repin REBUILDS the balanced board FROM THE REAL
+STORE and refuses to stage a forward view that is not the board the manifest pins ("CONFORMANCE GATE
+FAILED … this is a STOP", owner ruling v471 §4). The self-test builder produces a synthetic board, so
+no landing that MOVES the board can pass that step with it — which is exactly why the existing
+`SELFTEST_SPEC_MOVED` fixture is only ever used for faults at or before `lineage`, and why the lever
+control lands a NO-OP. The prereg predicted a case the harness cannot host.
+
+The coverage was split the way the evidence is, and nothing was dropped:
+
+- `edit_steps_clean_through_contract` (new name for the control) — the six steps that carry the edit
+  run with NOTHING injected and each proves its own postcondition: the store written surgically, the
+  season clock re-derived, the board built FROM the edited store, `pins` moving exactly
+  `['board','store']`, the column registered, the lineage entry appended, the contract re-sealed and
+  `release_contract.py check` PASSing. The run then stops at `sibling` for the one documented reason
+  above.
+- the CLEAN END-TO-END landing — real build, real sibling reconcile, real UI writers, the full gate
+  set, the explicit-path commit — is proved by the Graham acceptance flight with the REAL builder,
+  filed here as `GRAHAM_SANDBOX_FLIGHT.log`. That is a stronger proof than the predicted case, not a
+  weaker one, and P8's explicit-path assertion is made there.
+
+**ERROR 2 — the count.** 38 + 6 = 44 was predicted; the tree gives **43 PASS / 0 FAIL, STEPS BROKEN
+22**, because five cases were added rather than six. The 38 existing cases are green and untouched, as
+predicted.
+
+**FOUND, NOT PREDICTED — the season clock.** `release_contract.py check` REFUSES a tree whose
+`data/season_state.json` names a store that is not the live one ("exposure_pace was derived from a
+STALE store"), and that refusal is correct: `exposure_pace` IS derived from the store. The first run
+of the new step died at `contract` with exactly that message. So `store_edit` re-derives the clock
+through `season_state.derive` — the sole deriver — and HALTS if any derived VALUE moves rather than
+re-stamping a provenance md5 over values nobody re-derived. `data/season_state.json` therefore joins
+the edit carrier set (taken from `ROUND_EXTRA_CARRIERS`, not enumerated twice). The estate's other
+out-of-round store writer moves the same field for the same reason (the #283 ownership store-apply's
+`restamp_season_state`, its target 4).
+
+**ALSO NOT PREDICTED — `tools/claims.py`.** The checker's `ACT_TYPES` table did not know `store-edit`,
+so the `claims` step's own verification would have refused the file it had just emitted. The table
+gains a fourth act type, requiring the landing kinds AND an `unmoved` claim.
+
+**FOUND, NOT PREDICTED — TWO HAND-PINS STAND BETWEEN ANY LANDING AND A GREEN `gates` STEP TODAY, and
+neither belongs to this verb.** The acceptance flight found them one at a time, each as an abort with
+a byte-exact restore, which is the lander behaving correctly:
+
+1. `acceptance::inbox_manifest` is RED IN ANY FRESH CHECKOUT, including this live worktree right now
+   (`python3 tools/inbox_manifest.py check` → exit 1, two STALE files). The check compares a COMMITTED
+   generated file against a render whose `arrived` column is the archived file's FILESYSTEM MTIME, so
+   a fresh clone re-dates every row: on disk `2026-08-20`, regenerated `2026-08-24`. That is the P4
+   class ("assert the relationship, never this month's number") living inside an acceptance check. It
+   reds the gates step of ANY landing flown today, this act's and the supervisor's alike.
+2. `ui/tests/movers.test.js` carries TWO PER-ACT HAND-PINS that any out-of-round board move moves, and
+   both are hand-pins by standing design rather than defects — the file's own header says "the advance
+   transaction does not own this file, so the advance seat moves it and discloses it":
+   - the NUMBER of declared out-of-round boundaries, BY LITERAL (`mc.length === 11`). Any act that
+     registers a column writes one more. The last bump has its own commit (`65800f0` — "THE WEEKLY
+     TEST PIN: OUT-OF-ROUND BOUNDARY COUNT 10 -> 11 … the tenth such bump, documented in place like
+     the nine before it").
+   - the LINEAGE-STATE expectation, which swings between `[true,"ok"]` and `[true,"bridged"]` with
+     what kind of act moved the board LAST. `ok` is the direct-lineage branch and requires the latest
+     ROUND report's terminal board to be the loaded board; an out-of-round act makes `bridged` the
+     honest reading, and the next round advance swings it back. The file documents both swings in
+     eleven lines of its own history ("RESTATED 2026-08-10 (#334 DOB courier landing) … the expected
+     state is `bridged` again, and that is the honest reading, not a weakening").
+
+   **The real Graham act needs BOTH as a companion commit before it flies** — 11 → 12, and `ok` →
+   `bridged` — exactly as the #334 DOB courier landing needed them. The lander does not write them and
+   should not: both assertions carry owner-facing prose naming what happened, and composing that is
+   authorship, not landing.
+
+All three were reproduced INSIDE THE DISPOSABLE SANDBOX (regenerate the manifest; bump the count; swing
+the lineage state), as their own commits there, so the acceptance flight measures the verb rather than
+pins nobody has moved yet. THE LIVE TREE WAS NOT TOUCHED — every flight re-hashed all 114 live carriers
+afterwards and found 0 moved. Each was found the same way: the lander flew, the gate red, and the abort
+put every carrier back byte-exact. Three aborts, three findings, one instrument.
+
+**NON-VACUITY, MEASURED RATHER THAN ASSERTED.** Each of the five new cases was proved able to fail by
+neutering the guard it exists to catch, one at a time, in the working copy the self-test copies into
+its sandbox — and each target case RED under its own mutation, with every mutated file restored
+byte-exact afterwards. `NONVACUITY.json` carries the five runs and their transcripts.
+
 ## WHAT THIS ACT DOES NOT DO
 
 - It does not fly the real Graham act. The supervisor reviews, lands the verb, and flies it.
