@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v843**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v844**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v844** (2026-08-24) — `docs/register/entries/v844.md` — **ARM 2 IS FULLY RECONCILED AND PRESENTED — the supervisor's build was the canonical one, the cause was a THIRD instance of the loaded-path 
 - **v843** (2026-08-24) — `docs/register/entries/v843.md` — **SEAM MODEL V2 IS MEASURED AND THE CONDITIONAL-MODEL ROAD IS CLOSED — the engine passes its seam audit a second time, 0-60; the binding con
 - **v842** (2026-08-24) — `docs/register/entries/v842.md` — **THE SEAM ENGAGEMENT CLOSES — the smooth-construction repricing lands, NO NAMED ROW IS A RESOLVABLE MISPRICING, and the only evidence-backe
 - **v841** (2026-08-24) — `docs/register/entries/v841.md` — **TWO OWNER WORDS RULED AND THE POSITIONAL-LENS ADDENDUM IS FILED — centering LOSES, the bands were never in the object, and Leake's headlin

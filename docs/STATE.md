@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v843 2026-08-24 · **SEAM MODEL V2 IS MEASURED AND THE CONDITIONAL-MODEL ROAD IS CLOSED — the engine passes its seam audit a second time, 0-60; the binding constraint is SAMPLE SIZE, proven, not construction; THE SEAM ORDERING FLOOR is what remains and goes to the owner's word.** THE V2 BUILD (owner's direction "is there a way to iron out the imperfections to make that viabl
+  > # OPEN ITEMS REGISTER · v844 2026-08-24 · **ARM 2 IS FULLY RECONCILED AND PRESENTED — the supervisor's build was the canonical one, the cause was a THIRD instance of the loaded-path class, and word B's fit-both lands with the conditioned feature better OOS and board-invisible.** THE SIX-ROW RECONCILIATION (seat, screened): the seat eliminated threading, hashing, concurrency and CPU-kernel selectio
 
-- new-form entries under `docs/register/entries/`: 31
+- new-form entries under `docs/register/entries/`: 32
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `ee49d03c907a787a918a75ce7ae6cefa3b2b1170` |
+| generated at commit | `5dd42e82977103b0554724b4b2a2d51a02b4646a` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

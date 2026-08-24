@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 222,
+  "coverage_entries": 223,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-24",
+      "headline": "**ARM 2 IS FULLY RECONCILED AND PRESENTED \u2014 the supervisor's build was the canonical one, the cause was a THIRD instance of the loaded-path class, and\u2026",
+      "hits": {
+        "DECLARED": [
+          "**ARM 2 IS FULLY RECONCILED AND PRESENTED \u2014 the supervisor's build was the canonical one, the cause was a THIRD instance of the loaded-path class, and word B's fit-both lands with the conditioned feature better OOS and b\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 844
+    },
     {
       "by": "explicit",
       "date": "2026-08-24",
@@ -2032,7 +2046,7 @@
       "version": 622
     }
   ],
-  "incidents": 118,
+  "incidents": 119,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",
