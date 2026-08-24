@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v847 2026-08-24 · **HANDOVER ADDENDUM — the handover is v845 + v846 + THIS ENTRY, read together; this entry carries what moved after v845 was penned.** (1) THE BURN IS RULED (v846, owner: "A burn is fine") — strike it from v845's open-words list. (2) THE SUPERVISOR'S SCOPED ARM-2 RECOMMENDATION, now the packet's presented shape (owner has seen it in chat, not yet ruled): **
+  > # OPEN ITEMS REGISTER · v848 2026-08-24 · **HANDOVER CORRECTION, OWNER'S WORDS — the MANDATE is "FIX THE SEAM ERROR"; THE FLOOR IS THE BACKUP, NOT THE RULED SOLUTION.** The owner (2026-08-24, correcting v845/v847): *"the seam ordering violation is an error to fix, but I never said the floor was the solution to it, I said it was a good backup plan."* HE IS RIGHT and the v845 mandate language overst
 
-- new-form entries under `docs/register/entries/`: 35
+- new-form entries under `docs/register/entries/`: 36
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `9a7ede680da3c03faef15e8e157725bcb0d28f32` |
+| generated at commit | `ca707ca30f9601d5b928a13d051a08145a3fc1b1` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

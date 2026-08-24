@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v847 2026-08-24 · **HANDOVER ADDENDUM — the handover is v845 + v846 + THIS ENTRY, read together; this entry carries what moved after v845 was penned.** (1) THE BURN IS RULED (v846, owner: "A burn is fine") — strike it from v845's open-words list. (2) THE SUPERVISOR'S SCOPED ARM-2 RECOMMENDATION, now the packet's presented shape (owner has seen it in chat, not yet ruled): **
+# OPEN ITEMS REGISTER · v848 2026-08-24 · **HANDOVER CORRECTION, OWNER'S WORDS — the MANDATE is "FIX THE SEAM ERROR"; THE FLOOR IS THE BACKUP, NOT THE RULED SOLUTION.** The owner (2026-08-24, correcting v845/v847): *"the seam ordering violation is an error to fix, but I never said the floor was the solution to it, I said it was a good backup plan."* HE IS RIGHT and the v845 mandate language overst
 
-(one line per pen; full entry: docs/register/entries/v847.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v848.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)

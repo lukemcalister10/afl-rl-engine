@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v847**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v848**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v848** (2026-08-24) — `docs/register/entries/v848.md` — **HANDOVER CORRECTION, OWNER'S WORDS — the MANDATE is "FIX THE SEAM ERROR"; THE FLOOR IS THE BACKUP, NOT THE RULED SOLUTION.** The owner (20
 - **v847** (2026-08-24) — `docs/register/entries/v847.md` — **HANDOVER ADDENDUM — the handover is v845 + v846 + THIS ENTRY, read together; this entry carries what moved after v845 was penned.** (1) TH
 - **v846** (2026-08-24) — `docs/register/entries/v846.md` — **THE BURN IS RULED — owner words verbatim (2026-08-24): "A burn is fine."** The design arm's −1.61% pool burn (−11,245 SCAR vs live, the ex
 - **v845** (2026-08-24) — `docs/register/entries/v845.md` — **THE COMPACTION HANDOVER #2 — the owner compacts; this entry is the successor's spec and it is BINDING. READ THE OWNER'S DIRECTIVE FIRST, b
