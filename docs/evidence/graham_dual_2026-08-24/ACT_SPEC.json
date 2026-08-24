@@ -1,0 +1,55 @@
+{
+ "_doc": "THE ACT SPEC \u2014 WILL GRAHAM DUAL-STREAM CORRECTION (p_dual 90 -> 40), an owner-worded store data edit driven by tools/land lever. The predictions are INPUTS from the prereg committed before the store edit (P9).",
+ "schema_version": 1,
+ "act_kind": "lever-landing",
+ "coherent_base": "2feaf25",
+ "_doc_coherent_base": "The prereg commit \u2014 docs-only over the R24-landed tree, where a build from source still reproduces the pinned board 6fd0f7de. Names the pre-transaction self-test sandbox base and nothing else.",
+ "act": "WILL GRAHAM DUAL-STREAM CORRECTION \u2014 store p_dual_stream 90 -> 40 (owner-supplied data field)",
+ "date": "2026-08-24",
+ "owner_word": "Can we please edit Will Graham to be a 40% only SF then in the store and recalculate?",
+ "authority": "Owner word 2026-08-24, verbatim, given after the supervisor measured the dual-position MAX-law benefit on Graham's row at +490.5 ev (+43.7%) with p_dual=90 (register v835). The store is the ONE SOURCE and this is an owner-supplied data field; his word is the authority.",
+ "prereg": {
+  "path": "docs/evidence/graham_dual_2026-08-24/PREREG.md",
+  "board_before": "6fd0f7ded2b280d1a90962c299a152e3",
+  "board_after": "82fcd8bb1e552b927299b5702122e321",
+  "reference_board": null,
+  "kill_switch": null,
+  "_doc_kill_switch": "None declared \u2014 a data edit, not a dial; the revert is git revert of the flip commit."
+ },
+ "identities": {
+  "moves": [
+   "store",
+   "board",
+   "balanced_board_md5"
+  ],
+  "unmoved": [
+   "engine_head",
+   "rl_model",
+   "fv",
+   "config",
+   "register",
+   "v0surf",
+   "band",
+   "q97m",
+   "as_of_round"
+  ]
+ },
+ "column": {
+  "id": "graham-dual-40-24-8",
+  "label": "24/8 WILL GRAHAM DUAL CORRECTED \u2014 owner store edit p_dual 90 -> 40; one mover (-262)",
+  "after_round": 24,
+  "registered_at": "2026-08-24"
+ },
+ "lineage": {
+  "doc": "WILL GRAHAM DUAL-STREAM CORRECTION, owner-worded. The store's p_dual_stream for will-graham moves 90 -> 40 by surgical byte edit (store daa93053 -> fb640ca0); the board moves 6fd0f7de -> 82fcd8bb with EXACTLY ONE mover (will-graham 1533 -> 1271, the removed dual-bar benefit under the LEG C MAX law, item 275). Pool 700,119 -> 699,857; no renormaliser, per the standing no-baked-renormalisers principle. Predicted at the prereg (2feaf25) before the edit."
+ },
+ "day0_rebase": {
+  "state": "off",
+  "_doc": "OFF \u2014 Graham is not in the sitter cohort; the 86-row reference must be byte-unmoved."
+ },
+ "evidence_dir": "docs/evidence/graham_dual_2026-08-24",
+ "claims_file": "GRAHAM_CLAIMS.json",
+ "gates": null,
+ "_doc_gates": "null = the standard landing gate set.",
+ "commit_message": "WILL GRAHAM DUAL CORRECTED on the owner's word \u2014 store p_dual_stream 90 -> 40 (daa93053 -> fb640ca0), board 6fd0f7de -> 82fcd8bb, ONE mover: will-graham 1533 -> 1271 (-262, the removed MAX-law dual-bar benefit). Predicted at prereg 2feaf25; every other identity byte-unmoved.\n\nOWNER WORD 2026-08-24, VERBATIM: \"Can we please edit Will Graham to be a 40% only SF then in the store and recalculate?\""
+}
