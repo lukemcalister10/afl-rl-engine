@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v833 2026-08-23 · **THE COMPACTION HANDOVER — the owner compacts before the rebake week; this entry is the successor's spec and it is BINDING.** SUCCESSOR FIRST ACTS, in order: (1) read docs/register/LATEST.md, then entries v830-v833 in full (the rebake rulings + R24 + this), then docs/STATE.md (generated, current), docs/RULEBOOK.md (12 model + 13 process laws), docs/propos
+  > # OPEN ITEMS REGISTER · v834 2026-08-24 · **REBAKE WEEK ARM 1 — THE STORE-ALONE ARM IS BUILT, SCREENED, RECONCILED AND SHOWN TO THE OWNER; the screen itself exposed F7, a hole at the one site that writes the board.** THE ARM (branch pushed as `rebake/arm1-store-alone`, tip 4124fd6, UNMERGED — the live board and every pin byte-untouched, verified): incumbent constructions refit on store daa93053 wi
 
-- new-form entries under `docs/register/entries/`: 21
+- new-form entries under `docs/register/entries/`: 22
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `a299138eab6a2a900b54af173ad8b55553665552` |
+| generated at commit | `99842b309c1481cdc2c6877c8a2028a38a9c5c6c` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
