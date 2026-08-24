@@ -18,11 +18,11 @@
  },
  "identities": {
   "moves": [
-   "store",
    "board",
    "balanced_board_md5"
   ],
   "unmoved": [
+   "store",
    "engine_head",
    "rl_model",
    "fv",
@@ -32,7 +32,8 @@
    "band",
    "q97m",
    "as_of_round"
-  ]
+  ],
+  "_doc_store": "The store IS MOVED BY THIS ACT (daa93053 -> fb640ca0) and it moved at the data-edit commit (2ac7b1f) with its pin companion (0e36a5d) \u2014 one and two commits before this landing \u2014 not inside this transaction, exactly the staircase adoption's engine_head pattern (its _doc_engine_head). By the time the lander runs, the tree's store and its boot pin already agree at fb640ca0; inside the transaction the store is byte-stable, so it is declared unmoved HERE and the act's own record of the store move is the data-edit commit pair plus the prereg."
  },
  "column": {
   "id": "graham-dual-40-24-8",

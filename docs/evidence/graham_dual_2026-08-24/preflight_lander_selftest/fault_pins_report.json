@@ -153,7 +153,7 @@
         "ui/data/movers_transition.js": "5608bf86cf83544fac3bb99f3f6b6830",
         "ui/data/ownership.js": "843ae0343c47ad2baf40d319f5e0b1ee"
       },
-      "commit": "125d1e148b50ca0a195f61aec1b1016924daef19",
+      "commit": "c8f1b731305522b2e2dfe2a9ca36a3e5a48681ee",
       "expected_boot": {
         "as_of_round": 24,
         "balanced_board_md5": "ca8cb17e960bf7168bcb4101f5fd5779",
@@ -185,10 +185,10 @@
       "reference_board": null
     },
     "preflight": {
-      "base_commit": "125d1e148b50ca0a195f61aec1b1016924daef19",
+      "base_commit": "c8f1b731305522b2e2dfe2a9ca36a3e5a48681ee",
       "board_before": "6fd0f7ded2b280d1a90962c299a152e3",
       "carriers_captured": 61,
-      "lock": "land-lever-10055"
+      "lock": "land-lever-12618"
     }
   },
   "failed_step": "pins",

@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
-  tree      : /tmp/landing_selftest_9791/sandbox
+  tree      : /tmp/landing_selftest_12329/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 6fd0f7ded2b280d1a90962c299a152e3
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
 
 --- STEP 0/14  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-round-10692 (pid 10692) — single writer for the shared workspace.
-base commit        125d1e148b50ca0a195f61aec1b1016924daef19
+build-lock: HELD by land-round-13255 (pid 13255) — single writer for the shared workspace.
+base commit        c8f1b731305522b2e2dfe2a9ca36a3e5a48681ee
 board pin (before) 6fd0f7ded2b280d1a90962c299a152e3
 store pin (before) daa93053bc2d4eba30d9dc6e06e4af9e
 restore point      114 carrier(s) captured, 114 present on disk
@@ -67,7 +67,7 @@ WRITER 2: the bake-lane identities restamp_dynamic does not touch
   contract_sha256             7bd074ae626f -> 7bd074ae626f
   frozen fields asserted unmoved: 10 checked, 0 moved
 RE-STAMPED, re-read, and release_contract.py check PASSES.
-    [contract OK  0.07s]
+    [contract OK  0.08s]
 
 --- STEP 8/14  sibling        the balanced sibling: verify (the repin ran in-txn) ---
 verify BEFORE : ok=True balanced=ca8cb17e960b fails=0
@@ -96,12 +96,12 @@ WRITER 4/6: ui/tools/rebuild_movers_derived.py  (points / values / model_changes
   drift guard: derived blocks OK — committed == rebuilt (4191290 bytes, latest report R24)
   shipped model_changes == live-derived: 11 boundar(ies), EQUAL  (the F-10 predicate holds)
 WRITER 5/6: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
-  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_9791/sandbox/ui/data/ownership.js
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_12329/sandbox/ui/data/ownership.js
   MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74786 bytes).
   mirror pin == the landed identity: board 6fd0f7de store daa93053 R24, 804 player(s) mirrored (pin() would ACTIVATE it)
 WRITER 6/6: ui/tools/ingest_inputs.py --clubs-only  (the picks bundle, re-stamped to the landed board + store)
-  CLEAN INGEST — 160 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_9791/sandbox/ui/data/club_valuation.js
+  CLEAN INGEST — 160 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_12329/sandbox/ui/data/club_valuation.js
   CLUBS-ONLY     — the ownership mirror was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: PICKS DRIFT GUARD — ui/data/club_valuation.js is byte-identical to what this tree projects (40600 bytes).
   picks stamp == the landed identity: board 6fd0f7de store daa93053 R24, 160 pick(s) priced off 9729f0c5 (pin() would ACCEPT it)
@@ -118,7 +118,7 @@ AFTER   picks  87f6d8f972666ca4dcaa806324a12f0a  UNMOVED (neither the board, the
   stamp.balanced_board_md5   ca8cb17e960bf7168bcb4101f5fd5779   OK
   stamp.asOfRound            24                                 OK
 THE HTML APP'S EMBEDDED BOARD IDENTITY IS 6fd0f7ded2b280d1a90962c299a152e3. All six writers ran; the release block is back, the reader can see the transition that produced this board, the ownership mirror is pinned to it rather than to the store it replaced, and the pick surface is stamped to it rather than to the board before it.
-    [ui OK  1.94s]
+    [ui OK  1.96s]
     build-lock: RELEASED after 'ui' — the remaining steps write nothing and the one gate that builds takes the lock itself.
 
 --- STEP 10/14  movers_page    the owner's movers page, through the frozen template ---
@@ -126,7 +126,7 @@ THE HTML APP'S EMBEDDED BOARD IDENTITY IS 6fd0f7ded2b280d1a90962c299a152e3. All 
 THE LIVE BOARD HAS MOVED SINCE THIS REPORT, OUT OF ROUND — and that is a fact about the tree, not a defect in the report:
   report board  ffffffffffffffffffffffffffffffff   (what round 24's scores produced)
   live board    6fd0f7ded2b280d1a90962c299a152e3   (0 out-of-round point(s) registered at round 24 since)
-    [movers_page FAILED  0.09s]
+    [movers_page FAILED  0.10s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'movers_page'
@@ -155,9 +155,9 @@ improvised manual landing under pressure.
     advance            0.01s  OK
     generator_sync     0.01s  OK
     day0               0.00s  OK
-    contract           0.07s  OK
+    contract           0.08s  OK
     sibling            0.11s  OK
-    ui                 1.94s  OK
-    movers_page        0.09s  FAIL
-    TOTAL              2.31s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_10692
+    ui                 1.96s  OK
+    movers_page        0.10s  FAIL
+    TOTAL              2.35s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_13255

@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the synthetic sheet re-cut
-  tree      : /tmp/landing_selftest_9791/sandbox
+  tree      : /tmp/landing_selftest_12329/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 6fd0f7ded2b280d1a90962c299a152e3
   mode      : APPLY (SELFTEST) builder=selftest
@@ -12,8 +12,8 @@ DECLARED DIRT (2 path(s), and ONLY these): owner inputs this act is contracted t
     docs/owner_annotations/SITTER_2026_v1.csv                  (committed by the `sheet` step)
     docs/evidence/landing_selftest/SELFTEST_PREREG_LITE.md     (committed by the `sheet` step)
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-round-10722 (pid 10722) — single writer for the shared workspace.
-base commit        125d1e148b50ca0a195f61aec1b1016924daef19
+build-lock: HELD by land-round-13285 (pid 13285) — single writer for the shared workspace.
+base commit        c8f1b731305522b2e2dfe2a9ca36a3e5a48681ee
 board pin (before) 6fd0f7ded2b280d1a90962c299a152e3
 store pin (before) daa93053bc2d4eba30d9dc6e06e4af9e
 restore point      114 carrier(s) captured, 114 present on disk
@@ -49,4 +49,4 @@ improvised manual landing under pressure.
     preflight          0.10s  OK
     sheet              0.00s  FAIL
     TOTAL              0.10s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_10722
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_13285
