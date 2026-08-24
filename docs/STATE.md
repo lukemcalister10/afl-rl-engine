@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v834 2026-08-24 · **REBAKE WEEK ARM 1 — THE STORE-ALONE ARM IS BUILT, SCREENED, RECONCILED AND SHOWN TO THE OWNER; the screen itself exposed F7, a hole at the one site that writes the board.** THE ARM (branch pushed as `rebake/arm1-store-alone`, tip 4124fd6, UNMERGED — the live board and every pin byte-untouched, verified): incumbent constructions refit on store daa93053 wi
+  > # OPEN ITEMS REGISTER · v835 2026-08-24 · **ARM 1 EXPLAINED TO THE OWNER — the movers decomposed by supervisor-built attribution boards after the analysis seats were lost to persistent API 529s; the work moved INLINE and is verified.** THE METHOD: four boards built by the supervisor's own hands (live 6fd0f7de · band-only 3187309e · band+peak c7cea06d · full candidate 02a554b5) give every row a thr
 
-- new-form entries under `docs/register/entries/`: 22
+- new-form entries under `docs/register/entries/`: 23
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `99842b309c1481cdc2c6877c8a2028a38a9c5c6c` |
+| generated at commit | `4b40242ca9f8f25354dad3e7cd672310a868246a` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
