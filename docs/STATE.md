@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v844 2026-08-24 · **ARM 2 IS FULLY RECONCILED AND PRESENTED — the supervisor's build was the canonical one, the cause was a THIRD instance of the loaded-path class, and word B's fit-both lands with the conditioned feature better OOS and board-invisible.** THE SIX-ROW RECONCILIATION (seat, screened): the seat eliminated threading, hashing, concurrency and CPU-kernel selectio
+  > # OPEN ITEMS REGISTER · v845 2026-08-24 · **THE COMPACTION HANDOVER #2 — the owner compacts; this entry is the successor's spec and it is BINDING. READ THE OWNER'S DIRECTIVE FIRST, because the outgoing supervisor earned a censure on it.** THE OWNER'S STANDING DIRECTIVE, his words on the record (2026-08-24, twice): *"I don't accept your other conclusion. You've spent hours telling me that Leake as
 
-- new-form entries under `docs/register/entries/`: 32
+- new-form entries under `docs/register/entries/`: 33
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `5dd42e82977103b0554724b4b2a2d51a02b4646a` |
+| generated at commit | `9922359d7381d21bab900ca404556e7f5c13dfdf` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

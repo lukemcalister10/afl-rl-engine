@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 223,
+  "coverage_entries": 224,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-24",
+      "headline": "**THE COMPACTION HANDOVER #2 \u2014 the owner compacts; this entry is the successor's spec and it is BINDING. READ THE OWNER'S DIRECTIVE FIRST, because the\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE COMPACTION HANDOVER #2 \u2014 the owner compacts; this entry is the successor's spec and it is BINDING. READ THE OWNER'S DIRECTIVE FIRST, because the outgoing supervisor earned a censure on it.** THE OWNER'S STANDING DI\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 845
+    },
     {
       "by": "explicit",
       "date": "2026-08-24",
@@ -2046,7 +2060,7 @@
       "version": 622
     }
   ],
-  "incidents": 119,
+  "incidents": 120,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",
