@@ -14,6 +14,18 @@ which is the full profile minus that same check. See `_preflight_selftest` for t
     tools/land round --spec <act_spec.json> [--root DIR] [--dry-run] [--no-commit]
     tools/land round --print-sequence           the fourteen steps, and which seven are SHARED
 
+    tools/land edit --spec <edit_spec.json> [--dry-run]
+    tools/land edit --print-sequence            the twelve steps, and which eleven are SHARED
+
+`land edit` IS THE THIRD THIN ENTRY POINT (THE EDIT VERB, directive 2026-08-24) — the general
+out-of-round store-edit lane the owner ruled into existence after `land lever` refused an owner-worded
+one-field store edit three times, each refusal byte-exact and correct (register v836). It is
+`cmd_lever` again with the sequence and the carrier set looked up from the act kind, and its one new
+step, `store_edit`, applies a SURGICAL byte replacement inside the named row's span, in the WORK DIR,
+between `preflight` and `build_proofs` — so the lineage entry's source and destination STRADDLE the
+edit and the chain stays continuous with no flip commit. `--dry-run` is the user-friendly half: it
+predicts in a scratch worktree and writes nothing (tools/landing/preview.py).
+
 `land round` IS THE SECOND THIN ENTRY POINT (PLAN_v6 2b), landed 2026-08-21 on the same library.
 `cmd_round` is `cmd_lever` with the sequence and the carrier set looked up from the act kind: seven
 of its fourteen steps ARE the lever lander's own functions, and the driver, the abort ladder, the
@@ -208,6 +220,72 @@ def cmd_round(a):
     return 0 if res.ok else 1
 
 
+def cmd_edit(a):
+    """`land edit` — THE THIRD THIN ENTRY POINT over the same library (directive 2026-08-24).
+
+    It is `cmd_lever` with the sequence and the carrier set looked up from the act kind, exactly as
+    `cmd_round` is — ELEVEN of its twelve steps are the lever lander's own functions, and the driver,
+    the abort ladder, the build lock, the explicit-path commits, the per-step timing and the
+    pre-transaction self-test are one implementation serving three verbs. What the edit verb adds is
+    the one step a store edit genuinely has and the other two genuinely do not.
+
+    `--dry-run` DOES NOT WALK THE SEQUENCE, and that is deliberate rather than a shortcut. A board
+    that reflects an edit can only be built from a tree where the edit exists, so a dry run that
+    "called no writer" would build the PRE-edit store and predict the board the tree already has.
+    `tools/landing/preview.py` applies the edit in a scratch git worktree, builds there, prints the
+    owner's one screen, and proves it moved no live carrier. See its header for the whole loop.
+    """
+    doc = SP.load(a.spec)
+    if doc['act_kind'] != 'store-edit':
+        raise SystemExit('this spec is act_kind %r; `land edit` runs store-edit specs.'
+                         % doc['act_kind'])
+    doc['_spec_rel'] = os.path.relpath(os.path.abspath(a.spec), os.path.abspath(a.root))
+    if a.dry_run:
+        from tools.landing import preview as PV
+        return PV.dry_run(a.root, doc, keep=a.keep_work, report=a.report, log=a.log)
+    builder = TX.BUILDERS[a.builder]() if a.builder in TX.BUILDERS else None
+    if builder is None:
+        raise SystemExit('unknown builder %r' % a.builder)
+    if a.builder != 'real' and not a.selftest:
+        raise SystemExit('builder %r is SELF-TEST ONLY. A landing uses the real builder, always.'
+                         % a.builder)
+    pre_ev = _preflight_selftest(a, doc) if not a.selftest else None
+    opts = TX.Options(dry_run=False, no_commit=a.no_commit, selftest=a.selftest)
+    ctx = TX.Ctx(a.root, doc, opts, builder=builder, fault=a.fault, keep_work=a.keep_work,
+                 carriers=CA.EDIT_CARRIERS)
+    res = TX.run(ctx, ST.EDIT_SEQUENCE)
+    _file_preflight_evidence(pre_ev, ctx.evidence_dir)
+    _write_reports(a, ctx, res)
+    return 0 if res.ok else 1
+
+
+def _print_edit_sequence():
+    print('THE STORE-EDIT SEQUENCE — tools/landing/steps.py EDIT_SEQUENCE')
+    print('=' * 102)
+    shared = {n for n, _t, _f in ST.LEVER_SEQUENCE}
+    for i, (name, title, fn) in enumerate(ST.EDIT_SEQUENCE):
+        print('  %2d. %-14s %-56s %s' % (i, name, title,
+                                         'SHARED with land lever' if name in shared
+                                         else 'NEW in the edit verb'))
+        doc = (fn.__doc__ or '').strip().splitlines()
+        if doc:
+            print('      %s' % doc[0])
+    print()
+    print('  %d of %d steps are the lever lander\'s OWN functions, registered again rather than '
+          'copied.' % (sum(1 for n, _t, _f in ST.EDIT_SEQUENCE if n in shared),
+                       len(ST.EDIT_SEQUENCE)))
+    print()
+    print('THE CARRIER SET — every path a store edit may write, and its writer of record')
+    print('=' * 102)
+    for c in CA.EDIT_CARRIERS:
+        print('  %-62s %s' % (c.pattern + ('  (glob)' if c.is_glob else ''), c.writer))
+    print()
+    print('  %d carriers: the LEVER set exactly, named rather than re-enumerated — the store has been '
+          'in it\n  since the first draft, captured so an abort could prove it byte-exact.'
+          % len(CA.EDIT_CARRIERS))
+    return 0
+
+
 def _print_round_sequence():
     print('THE ROUND-ADVANCE SEQUENCE — tools/landing/steps.py ROUND_SEQUENCE')
     print('=' * 102)
@@ -291,6 +369,25 @@ def main(argv=None):
     p.add_argument('--print-sequence', action='store_true', help='print the steps and carriers, exit')
     p.set_defaults(fn=cmd_round)
 
+    p = sub.add_parser('edit', help='run the store-edit transaction (THE EDIT VERB, 2026-08-24)')
+    p.add_argument('--spec', help='the act spec (tools/land spec-template --act-kind store-edit)')
+    p.add_argument('--root', default=os.environ.get('RL_REPO') or os.getcwd())
+    p.add_argument('--dry-run', action='store_true',
+                   help='THE OWNER\'S PREDICTION: apply the edit in a SCRATCH git worktree, build '
+                        'there, print the one-screen summary (store and board old -> new, every '
+                        'mover with values, the identities that move) and write NOTHING to any '
+                        'carrier. Read it, get the owner\'s word, put it in the spec, and run the '
+                        'same command without this flag.')
+    p.add_argument('--no-commit', action='store_true', help='write, but do not make the commit')
+    p.add_argument('--builder', default='real', help='real | selftest | selftest-moved (self-test only)')
+    p.add_argument('--fault', default=None, help='SELF-TEST ONLY: break one step (see txn.FAULTS)')
+    p.add_argument('--selftest', action='store_true', help='permit fault injection / fake builders')
+    p.add_argument('--keep-work', action='store_true', help='keep the work dir / scratch worktree')
+    p.add_argument('--report', default=None, help='write a machine-readable result JSON here')
+    p.add_argument('--log', default=None, help='write the full transcript here')
+    p.add_argument('--print-sequence', action='store_true', help='print the steps and carriers, exit')
+    p.set_defaults(fn=cmd_edit)
+
     p = sub.add_parser('spec-template', help='print a blank act spec')
     p.add_argument('--act-kind', default='lever-landing')
     p.set_defaults(fn=cmd_spec_template)
@@ -315,9 +412,10 @@ def main(argv=None):
     if not a.verb:
         ap.print_help()
         return 2
-    if a.verb in ('lever', 'round') and getattr(a, 'print_sequence', False):
-        return _print_sequence() if a.verb == 'lever' else _print_round_sequence()
-    if a.verb in ('lever', 'round') and not a.spec:
+    if a.verb in ('lever', 'round', 'edit') and getattr(a, 'print_sequence', False):
+        return {'lever': _print_sequence, 'round': _print_round_sequence,
+                'edit': _print_edit_sequence}[a.verb]()
+    if a.verb in ('lever', 'round', 'edit') and not a.spec:
         raise SystemExit('`land %s` needs --spec (or --print-sequence)' % a.verb)
     return a.fn(a)
 

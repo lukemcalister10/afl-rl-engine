@@ -1,0 +1,94 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "cases": {
+        "edit_abort_restores_store": "PASS",
+        "edit_fault_second_mover": "PASS",
+        "edit_fault_store_edit": "PASS",
+        "edit_lineage_straddles": "PASS",
+        "edit_steps_clean_through_contract": "PASS"
+      },
+      "file": "",
+      "log": "run_BASELINE.txt",
+      "mutation": "(none \u2014 the baseline)",
+      "target": "",
+      "target_verdict": "PASS"
+    },
+    {
+      "cases": {
+        "edit_abort_restores_store": "PASS",
+        "edit_fault_second_mover": "PASS",
+        "edit_fault_store_edit": "FAIL",
+        "edit_lineage_straddles": "PASS",
+        "edit_steps_clean_through_contract": "PASS"
+      },
+      "file": "tools/landing/steps.py",
+      "log": "run_M1.txt",
+      "mutation": "M1 old-value assertion",
+      "restored_byte_exact": true,
+      "target": "edit_fault_store_edit",
+      "target_verdict": "FAIL"
+    },
+    {
+      "cases": {
+        "edit_abort_restores_store": "PASS",
+        "edit_fault_second_mover": "FAIL",
+        "edit_fault_store_edit": "PASS",
+        "edit_lineage_straddles": "PASS",
+        "edit_steps_clean_through_contract": "PASS"
+      },
+      "file": "tools/landing/steps.py",
+      "log": "run_M2.txt",
+      "mutation": "M2 declared-mover comparison",
+      "restored_byte_exact": true,
+      "target": "edit_fault_second_mover",
+      "target_verdict": "FAIL"
+    },
+    {
+      "cases": {
+        "edit_abort_restores_store": "FAIL",
+        "edit_fault_second_mover": "PASS",
+        "edit_fault_store_edit": "PASS",
+        "edit_lineage_straddles": "FAIL",
+        "edit_steps_clean_through_contract": "FAIL"
+      },
+      "file": "tools/landing/steps.py",
+      "log": "run_M3.txt",
+      "mutation": "M3 lineage source measured at the base commit",
+      "restored_byte_exact": true,
+      "target": "edit_lineage_straddles",
+      "target_verdict": "FAIL"
+    },
+    {
+      "cases": {
+        "edit_abort_restores_store": "FAIL",
+        "edit_fault_second_mover": "FAIL",
+        "edit_fault_store_edit": "FAIL",
+        "edit_lineage_straddles": "PASS",
+        "edit_steps_clean_through_contract": "PASS"
+      },
+      "file": "tools/landing/carriers.py",
+      "log": "run_M4.txt",
+      "mutation": "M4 the store in the edit carrier set",
+      "restored_byte_exact": true,
+      "target": "edit_abort_restores_store",
+      "target_verdict": "FAIL"
+    },
+    {
+      "cases": {
+        "edit_abort_restores_store": "FAIL",
+        "edit_fault_second_mover": "FAIL",
+        "edit_fault_store_edit": "PASS",
+        "edit_lineage_straddles": "FAIL",
+        "edit_steps_clean_through_contract": "FAIL"
+      },
+      "file": "tools/landing/steps.py",
+      "log": "run_M5.txt",
+      "mutation": "M5 the store write itself",
+      "restored_byte_exact": true,
+      "target": "edit_steps_clean_through_contract",
+      "target_verdict": "FAIL"
+    }
+  ]
+}

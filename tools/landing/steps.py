@@ -15,6 +15,13 @@ WHAT THE STEPS SHARE WITH THE ROUND LANDER (2b). `preflight`, `contract`, `sibli
 adds `scores`, `catchup` and `advance_repin` beside them. `build_proofs`, `pins` and `lineage` read
 `spec['act_kind']` where the two kinds genuinely differ (a round advance moves the store and the
 round; a lever landing must not). That is why they are parameterised rather than duplicated.
+
+AND WITH THE EDIT VERB (`land edit`, directive 2026-08-24). `EDIT_SEQUENCE` is composed FROM
+`LEVER_SEQUENCE` with exactly one step inserted — `store_edit`, after `preflight` and before
+`build_proofs` — so eleven of its twelve steps are the same function objects the lever lander runs.
+Where a shared step must know the third kind it is parameterised on `act_kind` in the two places it
+genuinely differs (`build_proofs`'s optional prediction and mover assertions, `claims`'s
+unmoved-carrier set), and the existing two branches keep their existing behaviour untouched.
 """
 
 import hashlib
@@ -184,6 +191,432 @@ def preflight(ctx):
             'lock': ctx.lock_tag, 'board_before': boot.get('board')}
 
 
+# ================================================== EDIT STEP — THE SURGICAL STORE EDIT (2026-08-24)
+#: The ONE SOURCE. Named once, here, and read by the edit step, its fault injector and the dry run.
+STORE_REL = 'engine/rl_after/rl_model_data.json'
+
+#: The season clock. A store edit moves its PROVENANCE stamp and nothing else — see `season_state`.
+SEASON_STATE_REL = 'data/season_state.json'
+
+
+def store_row_spans(text, keys=None):
+    """-> {key: (start, end, row)}: the EXACT character span of each named store row, and its parse.
+
+    THE SPAN IS DECODED, NOT SCANNED FOR. An earlier draft walked backwards from `"key": "x"` to the
+    nearest unbalanced `{`, which is a brace-counter that a `{` inside any string value silently
+    defeats. `json.JSONDecoder.raw_decode` is the parser of record for this file's own format: it is
+    handed the offset of each top-level element in turn and RETURNS the offset where that element
+    ends, so the span is the decoder's answer rather than this module's guess.
+
+    IT ALSO PROVES UNIQUENESS. Every top-level row is decoded, so "the store carries exactly one row
+    with this key" is a counted fact and a duplicate key is a halt — the edit must never be applied to
+    "the first" of two rows.
+    """
+    dec = json.JSONDecoder()
+    want = set(keys) if keys is not None else None
+    n = len(text)
+    i = text.find('[')
+    if i < 0:
+        raise StepError('the store is not a JSON array of rows; refusing to edit it')
+    i += 1
+    found, counts = {}, {}
+    while i < n:
+        while i < n and text[i] in ' \t\r\n,':
+            i += 1
+        if i >= n or text[i] == ']':
+            break
+        row, end = dec.raw_decode(text, i)
+        if isinstance(row, dict) and 'key' in row:
+            k = row['key']
+            counts[k] = counts.get(k, 0) + 1
+            if want is None or k in want:
+                found[k] = (i, end, row)
+        i = end
+    dupes = sorted(k for k, c in counts.items() if c > 1 and (want is None or k in want))
+    if dupes:
+        raise StepError('the store carries MORE THAN ONE row for %s. An edit names a row; it does not '
+                        'name "the first one".' % dupes)
+    return found
+
+
+def _scalar_json(v):
+    """The two encodings a scalar can wear on disk, ascii-escaped and not. Containers are refused.
+
+    BOTH ESCAPINGS ARE TRIED for the same measured reason `_replace_json_scalar` gives: `json.dumps`
+    escapes non-ASCII by default and the file on disk may carry the literal character, so a single
+    convention matches zero times against half the estate's own data. CONTAINERS ARE REFUSED rather
+    than serialised hopefully: a list or object's on-disk spacing is not this function's to assume,
+    and a near-match that replaced the wrong bytes is the one outcome a surgical edit may not have.
+    """
+    if isinstance(v, (dict, list)):
+        raise StepError('a store edit may only assert and write a SCALAR value (string, number, '
+                        'boolean, null). %r is a container, whose on-disk serialization this step '
+                        'cannot match byte-exact — declare the scalar field instead.' % (v,))
+    a = json.dumps(v, ensure_ascii=False)
+    b = json.dumps(v, ensure_ascii=True)
+    return (a,) if a == b else (a, b)
+
+
+def apply_store_edits(text, edits):
+    """THE SURGICAL BYTE REPLACEMENT. -> (new_text, [applied]). Pure: it writes nothing.
+
+    ONE IMPLEMENTATION, THREE CALLERS: the `store_edit` step (which writes the result), the `--dry-run`
+    preview (which builds against it in a scratch worktree and throws it away) and the self-test's
+    old-value-mismatch fault (which applies the act's own edit ahead of time so the assertion has
+    something to catch). A second copy of this function anywhere would be the mirrored-pair hazard the
+    whole library exists to refuse.
+
+    WHAT IT ASSERTS, PER EDIT, BEFORE IT CHANGES A BYTE:
+
+      1. the store carries EXACTLY ONE row with that `key` (`store_row_spans`);
+      2. that row HAS the named field — a field the row does not carry cannot be "corrected";
+      3. the field's value is EXACTLY `old`, compared on its JSON encoding so that `true` is not `1`
+         and `90` is not `90.0`. A mismatch is an ABORT, never a repair (the exact-string law);
+      4. the text `"<field>": <old>` occurs EXACTLY ONCE inside that row's span. Not once in the file
+         — once in the SPAN, which is what makes this an edit to a named row rather than a global
+         substitution that happens to hit the right one.
+
+    AND AFTER: the row re-parses equal to itself with the one field changed, and reversing every
+    replacement reproduces the input text CHARACTER FOR CHARACTER. That reverse check is the pins
+    step's own byte proof, carried: the only bytes that differ are the declared values.
+    """
+    applied = []
+    cur = text
+    for i, e in enumerate(edits):
+        key, field, old, new = e['key'], e['field'], e['old'], e['new']
+        spans = store_row_spans(cur, [key])
+        if key not in spans:
+            raise StepError('edit %d: the store has no row with key %r. The lander edits a row it '
+                            'found; it never creates one.' % (i, key))
+        start, end, row = spans[key]
+        if field not in row:
+            raise StepError('edit %d: row %r has no field %r (it carries: %s). A field that is not '
+                            'there is not a field that is wrong.'
+                            % (i, key, field, ', '.join(sorted(row)[:12])))
+        got = row[field]
+        if json.dumps(got, sort_keys=True) != json.dumps(old, sort_keys=True):
+            raise StepError(
+                'THE OLD VALUE THE SPEC ASSERTS IS NOT THE VALUE IN THE STORE.\n'
+                '    row   : %s\n    field : %s\n    spec asserts old = %s\n    store carries    = %s\n'
+                'This is an ABORT, not a repair. The spec was written against a store that no longer '
+                'says what it said — re-measure the row, re-prereg the edit, and fly it again.'
+                % (key, field, json.dumps(old), json.dumps(got)))
+        span = cur[start:end]
+        hits = []
+        for enc in _scalar_json(old):
+            pat = re.compile(r'("%s"\s*:\s*)%s' % (re.escape(field), re.escape(enc)))
+            found = list(pat.finditer(span))
+            if found:
+                hits = found
+                new_enc = _scalar_json(new)[0] if enc == _scalar_json(old)[0] \
+                    else json.dumps(new, ensure_ascii=True)
+                break
+        if len(hits) != 1:
+            raise StepError('edit %d: `"%s": %s` occurs %d time(s) inside row %r\'s span; refusing a '
+                            'non-unique replacement inside the row.'
+                            % (i, field, json.dumps(old), len(hits), key))
+        m = hits[0]
+        new_span = span[:m.start()] + m.group(1) + new_enc + span[m.end():]
+        nxt = cur[:start] + new_span + cur[end:]
+
+        after = store_row_spans(nxt, [key])[key][2]
+        if json.dumps(dict(after, **{field: old}), sort_keys=True) != json.dumps(row, sort_keys=True):
+            raise StepError('edit %d: the row changed in some way other than the one declared field'
+                            % i)
+        if json.dumps(after[field], sort_keys=True) != json.dumps(new, sort_keys=True):
+            raise StepError('edit %d: the row does not carry the new value after the replacement' % i)
+        applied.append({'key': key, 'field': field, 'old': old, 'new': new,
+                        'row_span': [start, end], 'at': start + m.start(),
+                        'chars_before': len(cur), 'chars_after': len(nxt),
+                        'old_text': m.group(0), 'new_text': m.group(1) + new_enc})
+        cur = nxt
+
+    # THE REVERSE CHECK IS POSITIONAL, NOT TEXTUAL, and the difference is a defect measured out of
+    # this function rather than reasoned about. `str.replace(new, old, 1)` reverses the FIRST
+    # occurrence in the file, which for `"p_dual_stream": 40` is another player's row entirely — the
+    # first draft refused the real Graham edit on its own reverse check for exactly that. Each
+    # replacement is undone AT THE OFFSET IT WAS MADE, newest first so the earlier offsets still
+    # describe the text they were measured in.
+    rev = cur
+    for a in reversed(applied):
+        at, nt = a['at'], a['new_text']
+        if rev[at:at + len(nt)] != nt:
+            raise StepError('the reverse check does not find %r where it was written (char %d); '
+                            'refusing to trust the replacement' % (nt, at))
+        rev = rev[:at] + a['old_text'] + rev[at + len(nt):]
+    if rev != text:
+        raise StepError('BYTES BEYOND THE DECLARED FIELD VALUES CHANGED. Reversing every declared '
+                        'replacement does not reproduce the store this step started from.')
+    return cur, applied
+
+
+def store_edit(ctx):
+    """THE STORE EDIT, APPLIED IN THE WORK DIR — after preflight, before the build (directive 2026-08-24).
+
+    WHY THE STEP IS HERE AND NOT IN A COMMIT AHEAD OF THE LANDING, which is the whole argument of this
+    verb and is written down in register v836 as three byte-exact refusals:
+
+        the `lineage` step measures `source` from the BASE COMMIT via `git show` and `destination`
+        from the LIVE TREE, and asserts the register tail's destination equals this entry's source on
+        BOTH board and store (or that a SINGLE movers round report bridges both legs). A store flip
+        committed BEFORE the landing makes the source store the POST-flip value, which no round report
+        can bridge to — the chain is broken by construction, and the lander correctly refuses.
+
+    Applying the edit HERE, inside the transaction and in the working tree, makes the source side
+    pre-edit and the destination side post-edit: the entry STRADDLES the edit, the chain stays
+    continuous, the `pins` step re-pins `store` MEASURED from the tree, and there is no flip commit
+    and no pin-companion choreography to get wrong.
+
+    THE STORE IS ASSERTED AGAINST ITS PIN FIRST (P2, in its plainest form): a step that edited a store
+    the manifest does not name would be writing into a tree nobody has verified. The edit is applied
+    to the store this tree's `expected_boot.json` says it has, or not at all.
+
+    IT WRITES ONE FILE, AND THAT FILE IS A CARRIER. `engine/rl_after/rl_model_data.json` has been in
+    the carrier set since the library's first draft — captured precisely so an abort could prove it
+    byte-exact — so the abort ladder needed no new entry to put this step's work back.
+    """
+    ctx.fault_point('store_edit')
+    path = _p(ctx, STORE_REL)
+    boot = json.load(open(_p(ctx, 'data', 'expected_boot.json'), encoding='utf-8'))
+    raw = open(path, 'rb').read()
+    before_md5 = hashlib.md5(raw).hexdigest()
+    ctx.log('store BEFORE  %s   (%d bytes)' % (before_md5, len(raw)))
+    if boot.get('store') != before_md5:
+        raise StepError('THE STORE THIS ACT WOULD EDIT IS NOT THE STORE THE MANIFEST NAMES: tree %s, '
+                        'expected_boot.store %s. Nothing is edited on an unverified store (P2).'
+                        % (before_md5, boot.get('store')))
+    ctx.log('              == expected_boot.store, so the tree is the one this act was written for.')
+
+    edits = list((ctx.spec.get('edit') or {}).get('store') or ())
+    text = raw.decode('utf-8')
+    rows_before = len(store_row_spans(text))
+    new_text, applied = apply_store_edits(text, edits)
+    new_raw = new_text.encode('utf-8')
+    after_md5 = hashlib.md5(new_raw).hexdigest()
+
+    ctx.log('THE EDIT — surgical, inside the named row\'s span; `old` asserted, never repaired:')
+    for a in applied:
+        ctx.log('    %-28s %-18s %s -> %s   (row span %d..%d, at char %d)'
+                % (a['key'], a['field'], json.dumps(a['old']), json.dumps(a['new']),
+                   a['row_span'][0], a['row_span'][1], a['at']))
+    ctx.log('store AFTER   %s   (%d bytes, %+d)' % (after_md5, len(new_raw), len(new_raw) - len(raw)))
+    ctx.log('byte check: reversing every declared replacement reproduces the store byte-for-byte — '
+            'the ONLY bytes that differ are the declared field values.')
+    if after_md5 == before_md5:
+        raise StepError('the edited store is byte-identical to the store this step started from. An '
+                        'edit that moves no byte is not an edit.')
+
+    out = {'store_before': before_md5, 'store_after': after_md5, 'edits': applied,
+           'rows': rows_before, 'bytes_before': len(raw), 'bytes_after': len(new_raw),
+           'written': False}
+    if ctx.opts.dry_run:
+        ctx.log('--dry-run: the store is NOT written. (`land edit --dry-run` predicts in a scratch '
+                'worktree — see tools/landing/preview.py; this leg exists so the sequence can be '
+                'walked dry without one.)')
+        return out
+
+    tmp = path + '.landing_tmp'
+    with open(tmp, 'wb') as fh:
+        fh.write(new_raw)
+    os.replace(tmp, path)
+    back = open(path, 'rb').read()
+    if hashlib.md5(back).hexdigest() != after_md5:
+        raise StepError('the store on disk is not the store this step composed')
+    spans = store_row_spans(back.decode('utf-8'))
+    if len(spans) != rows_before:
+        raise StepError('the store row count moved %d -> %d across a field edit'
+                        % (rows_before, len(spans)))
+    for a in applied:
+        got = spans[a['key']][2].get(a['field'])
+        if json.dumps(got, sort_keys=True) != json.dumps(a['new'], sort_keys=True):
+            raise StepError('re-read: row %r field %r is %s, not the written %s'
+                            % (a['key'], a['field'], json.dumps(got), json.dumps(a['new'])))
+    ctx.log('WRITTEN and re-read: %d row(s) edited, %d rows in the store, every other row untouched.'
+            % (len(applied), len(spans)))
+    out['written'] = True
+    # THE SECOND FILE THIS STEP TOUCHES, AND THE ONLY ONE: the season clock's PROVENANCE stamp, which
+    # a moved store makes stale and `release_contract.py check` correctly refuses. See the function.
+    out['season_state'] = season_state_rederive(ctx, after_md5)
+    return out
+
+
+def season_state_rederive(ctx, store_md5):
+    """RE-DERIVE the season clock from the EDITED store, through the clock's own sole deriver.
+
+    WHY A STORE EDIT HAS TO TOUCH THIS FILE AT ALL, and it is a measured fact rather than a design
+    taste. The FIRST run of this step in the self-test sandbox died at `contract` with:
+
+        RELEASE CONTRACT (gate) REJECTED — season_state.json source_store_md5 daa93053 != live store
+        d7f053cf — exposure_pace was derived from a STALE store
+
+    and that refusal is CORRECT: `exposure_pace` IS derived from the store (the median current-season
+    games of the durable population, `season_state.exposure_pace`), so a tree whose clock names a
+    store that no longer exists is a tree whose exposure pace nobody has re-derived. The estate's
+    OTHER out-of-round store writer already moves this field for exactly this reason — the #283
+    ownership store-apply's `restamp_season_state`, its target 4, "derived values proven unchanged".
+
+    IT RE-DERIVES RATHER THAN RE-STAMPS, which is the one place this step is stricter than that
+    precedent. `season_state.derive(as_of_round, store_path)` is the SOLE deriver and a pure function
+    of (round, store bytes, immutable policy). This calls it on the EDITED store and compares its
+    output to the file on disk field by field: `source_store_md5` MUST move — that is the whole
+    point — and every derived VALUE must be unchanged, or this HALTS and names the field.
+
+    A HALT HERE IS A REAL FINDING, NOT A NUISANCE. An edit that moved `exposure_pace` (an edit to a
+    row's `scoring[].games`, say) would be an owner-worded edit with a second consequence nobody
+    prereg'd, and re-stamping a provenance md5 over values no writer re-derived is precisely the
+    "automation re-bases itself green" failure the M1b ruling exists to prevent. Such an act belongs
+    to a round advance, or to its own owner-worded re-derivation act — not to this lane, silently.
+    """
+    SS = _load(ctx, 'season_state', 'season_state.py')
+    path = _p(ctx, SEASON_STATE_REL)
+    raw = open(path, 'rb').read()
+    cur = json.loads(raw)
+    body = json.dumps(cur, indent=2).encode()
+    if raw != body and raw != body + b'\n':
+        raise StepError('%s does not round-trip at indent=2; refusing to reformat it'
+                        % SEASON_STATE_REL)
+    trailing_newline = (raw == body + b'\n')
+
+    new = SS.derive(int(cur['as_of_round']), _p(ctx, STORE_REL),
+                    season_year=int(cur['season_year']),
+                    season_total_rounds=int(cur['season_total_rounds']))
+    moved = [k for k in sorted(set(cur) | set(new))
+             if json.dumps(cur.get(k), sort_keys=True) != json.dumps(new.get(k), sort_keys=True)]
+    ctx.log('season clock  re-derived from the edited store by season_state.derive (the sole deriver)')
+    ctx.log('    source_store_md5  %s -> %s' % (str(cur.get('source_store_md5'))[:12],
+                                                str(new.get('source_store_md5'))[:12]))
+    if moved != ['source_store_md5']:
+        raise StepError(
+            'THE SEASON CLOCK\'S DERIVED VALUES MOVE UNDER THIS EDIT: %s.\n'
+            '    exposure_pace     %s -> %s\n    calendar_progress %s -> %s\n'
+            'Only the PROVENANCE stamp may move in a store-edit act. A field that feeds the exposure '
+            'derivation (a row\'s scoring games) has been edited, and no out-of-round writer '
+            're-derives the clock: that act belongs to a round advance or to its own owner-worded '
+            'act. Re-stamping the md5 over values nobody re-derived is the M1b failure by hand.'
+            % (moved, cur.get('exposure_pace'), new.get('exposure_pace'),
+               cur.get('calendar_progress'), new.get('calendar_progress')))
+    if new.get('source_store_md5') != store_md5:
+        raise StepError('the re-derived clock names store %s, not the store this act wrote (%s)'
+                        % (new.get('source_store_md5'), store_md5))
+
+    tmp = path + '.landing_tmp'
+    with open(tmp, 'w', encoding='utf-8') as fh:
+        fh.write(json.dumps(new, indent=2) + ('\n' if trailing_newline else ''))
+    os.replace(tmp, path)
+    back = json.load(open(path, encoding='utf-8'))
+    if back.get('source_store_md5') != store_md5:
+        raise StepError('the season clock stamp did not take')
+    ctx.log('    every derived VALUE asserted unchanged (%d field(s) checked); WRITTEN and re-read.'
+            % len(set(cur) | set(new)))
+    return {'source_store_md5': store_md5, 'fields_checked': len(set(cur) | set(new)),
+            'exposure_pace': new.get('exposure_pace'),
+            'calendar_progress': new.get('calendar_progress')}
+
+
+def board_values(path):
+    """{key: (v, name, section)} over every valued board row — `active` and `back`.
+
+    BOTH SECTIONS, because a store edit can move a row in either and a summary that printed one of
+    them would be a summary that hid the other. Rows without a `v` are not values and are skipped.
+    """
+    d = json.load(open(path, encoding='utf-8'))
+    out = {}
+    for sec in ('active', 'back'):
+        for p in d.get(sec) or ():
+            if isinstance(p, dict) and 'key' in p and 'v' in p:
+                out[p['key']] = (p['v'], p.get('name'), sec)
+    return out, d
+
+
+def board_movers(before_path, after_path):
+    """-> ([movers], facts). EVERY row whose `v` moved, with values. Measured off the two boards."""
+    a, da = board_values(before_path)
+    b, db = board_values(after_path)
+    movers = []
+    for k in sorted(set(a) | set(b)):
+        va = a.get(k, (None, None, None))
+        vb = b.get(k, (None, None, None))
+        if va[0] != vb[0]:
+            movers.append({'key': k, 'name': vb[1] or va[1], 'section': vb[2] or va[2],
+                           'before': va[0], 'after': vb[0],
+                           'delta': (None if va[0] is None or vb[0] is None else vb[0] - va[0])})
+    pool_a = sum(p['v'] for p in (da.get('active') or ()) if 'v' in p)
+    pool_b = sum(p['v'] for p in (db.get('active') or ()) if 'v' in p)
+    facts = {'rows_compared': len(set(a) | set(b)), 'n_movers': len(movers),
+             'pool_before': pool_a, 'pool_after': pool_b, 'pool_delta': pool_b - pool_a,
+             'rows_added': sorted(set(b) - set(a)), 'rows_removed': sorted(set(a) - set(b))}
+    return movers, facts
+
+
+def _edit_board_checks(ctx, res):
+    """THE EDIT'S OWN BUILD PROOFS: built FROM the edited store, and the movers it declared.
+
+    TWO THINGS A LEVER LANDING NEVER HAS TO ASK, and a store edit does:
+
+      * DID THE BUILD READ THE EDITED STORE? The build stages a copy of `engine/rl_after`, so a board
+        built before the edit landed in the work dir would look perfectly normal and be wrong. The
+        board's own sidecar carries `source_md5` — written BY the build, from the store it read — and
+        it is asserted equal to the store md5 the edit step measured after writing. This is the same
+        sidecar predicate the `pins` step already asserts, moved one step earlier because here it is
+        the thing that could actually be false.
+      * WHO MOVED? The movers are measured off the two boards and printed IN FULL — every one, with
+        its values — and, when the act declared `expected_movers`, asserted EQUAL to the declaration.
+        A second, undeclared mover is an abort with the mover named, not a footnote in a diff.
+    """
+    pre = ctx.spec['prereg']
+    edited_store = (ctx.facts.get('store_edit') or {}).get('store_after')
+    sc_path = res.get('sidecar_path')
+    if not sc_path or not os.path.isfile(sc_path):
+        raise StepError('the build produced no .srcmd5 sidecar, so nothing proves which store it read')
+    sc = json.load(open(sc_path, encoding='utf-8'))
+    if edited_store and sc.get('source_md5') != edited_store:
+        raise StepError('THE BUILD DID NOT READ THE EDITED STORE. Its sidecar names source_md5 %s; the '
+                        'store this transaction wrote is %s. A board built from the pre-edit store '
+                        'would look entirely normal and be entirely wrong.'
+                        % (sc.get('source_md5'), edited_store))
+    ctx.log('built FROM the edited store: sidecar source_md5 %s == the store this act wrote'
+            % str(sc.get('source_md5'))[:12])
+
+    before_path = _p(ctx, 'data', 'rl_build', 'rl_app_data.json')
+    live_before = md5(before_path)
+    if pre.get('board_before') and live_before != pre['board_before']:
+        raise StepError('the published board this act starts from is %s and the spec declares '
+                        'board_before %s. The movers would be measured against the wrong tree.'
+                        % (live_before, pre['board_before']))
+    movers, facts = board_movers(before_path, res['board_path'])
+    ctx.log('MOVERS — EVERY ONE, WITH VALUES  (%d of %d valued row(s) moved)'
+            % (facts['n_movers'], facts['rows_compared']))
+    for m in movers:
+        ctx.log('    %-28s %-26s %s -> %s   (%s)  [%s]'
+                % (m['key'], (m['name'] or '')[:26], m['before'], m['after'],
+                   '%+d' % m['delta'] if m['delta'] is not None else 'appeared/vanished',
+                   m['section']))
+    if not movers:
+        ctx.log('    (none — no valued board row moved)')
+    ctx.log('pool (sum of active v)  %d -> %d  (%+d)'
+            % (facts['pool_before'], facts['pool_after'], facts['pool_delta']))
+
+    declared = (ctx.spec.get('edit') or {}).get('expected_movers')
+    if declared is None:
+        ctx.log('edit.expected_movers is not declared: the movers above are PRINTED and asserted '
+                'against nothing. Declaring them makes each one a falsifier.')
+    else:
+        want = sorted((str(m['key']), m['before'], m['after']) for m in declared)
+        got = sorted((str(m['key']), m['before'], m['after']) for m in movers)
+        if want != got:
+            unexpected = [g for g in got if g not in want]
+            missing = [w for w in want if w not in got]
+            raise StepError(
+                'THE MOVERS ARE NOT THE MOVERS THIS ACT DECLARED.\n'
+                '    UNEXPECTED MOVER(S): %s\n    DECLARED AND ABSENT: %s\n'
+                'A store edit predicts who moves; a second mover means the edit did something the '
+                'act did not say it would, and that is an abort.'
+                % (', '.join('%s %s -> %s' % u for u in unexpected) or '(none)',
+                   ', '.join('%s %s -> %s' % m for m in missing) or '(none)'))
+        ctx.log('DECLARED MOVERS MET: %d of %d, each key and both values' % (len(got), len(want)))
+    return {'movers': movers, 'store_read_by_build': sc.get('source_md5'), **facts}
+
+
 # =========================================================================== STEP 1 — BUILD+PROOFS
 def build_proofs(ctx):
     """The bare build, the predicted identity, the kill-switch leg, the byte-diff against a reference.
@@ -206,17 +639,49 @@ def build_proofs(ctx):
     ctx.log('build         rc=%s board=%s  (%.1fs)' % (res['rc'], res['board_md5'], res['elapsed_s']))
     if res['rc'] != 0:
         raise StepError('the bare build failed (rc=%s). See %s' % (res['rc'], res.get('stdout_path')))
-    if res['board_md5'] != predicted:
-        raise StepError(
-            'THE BUILD DID NOT REPRODUCE THE PREREG PREDICTION.\n'
-            '    predicted (prereg %s): %s\n    built                 : %s\n'
-            'The prediction is an INPUT to this lander. A landing that accepted its own build as the '
-            'answer would assert nothing at all.' % (pre.get('path'), predicted, res['board_md5']))
-    ctx.log('PREDICTED BOARD MET: %s == prereg %s' % (res['board_md5'], pre.get('path')))
+
+    # ---- THE EDIT VERB'S OWN PROOFS, before the prediction is judged ----------------------------
+    # They run FIRST so that an act which moved the wrong rows dies naming the ROWS. An md5 mismatch
+    # is a true statement that tells a seat nothing about what happened; `UNEXPECTED MOVER: <key>
+    # <before> -> <after>` is the same halt with the answer in it.
+    edit_facts = None
+    if ctx.spec['act_kind'] == 'store-edit':
+        edit_facts = _edit_board_checks(ctx, res)
+
+    if predicted:
+        if res['board_md5'] != predicted:
+            raise StepError(
+                'THE BUILD DID NOT REPRODUCE THE PREREG PREDICTION.\n'
+                '    predicted (prereg %s): %s\n    built                 : %s\n'
+                'The prediction is an INPUT to this lander. A landing that accepted its own build as '
+                'the answer would assert nothing at all.'
+                % (pre.get('path'), predicted, res['board_md5']))
+        ctx.log('PREDICTED BOARD MET: %s == prereg %s' % (res['board_md5'], pre.get('path')))
+    else:
+        # ONLY A STORE EDIT REACHES HERE — `spec.validate` requires `board_after` of every other kind
+        # that builds. The act declared no board prediction because THE DRY RUN IS ITS PREDICTION OF
+        # RECORD: the owner read the one-screen summary, gave his word, and the spec carries it. What
+        # is left to assert is internal consistency, and this step says out loud that it asserted no
+        # prediction rather than printing a line that could be mistaken for one.
+        ctx.log('NO PREREG BOARD PREDICTION IS DECLARED (prereg.board_after is null). This act\'s '
+                'prediction of record is its DRY RUN; the assertions made here are internal '
+                'consistency only — the board was built FROM the edited store (proved above), and it '
+                'moved if and only if this act declared that it would.')
+        moves_board = 'board' in list((ctx.spec.get('identities') or {}).get('moves') or ())
+        board_before = pre.get('board_before')
+        if moves_board and board_before and res['board_md5'] == board_before:
+            raise StepError('this act declares the board MOVES and the build reproduced the board it '
+                            'started from (%s). The store moved and the board did not.' % board_before)
+        if not moves_board and board_before and res['board_md5'] != board_before:
+            raise StepError('this act does NOT declare the board among its movers and the build '
+                            'produced %s against a starting board of %s.'
+                            % (res['board_md5'], board_before))
 
     facts = {'board_built': res['board_md5'], 'build_elapsed_s': res['elapsed_s'],
              'predicted_board': predicted, 'kill_switch': None, 'reference_board': None,
              'day0_rebase': 'off'}
+    if edit_facts is not None:
+        facts['edit'] = edit_facts
 
     # ---- the reference arm, where one exists ----------------------------------------------------
     ref = pre.get('reference_board')
@@ -633,8 +1098,13 @@ def _append_transition(ctx):
         if json.dumps(d2['release_transition_register'][:-1]) != before_blob:
             raise StepError('re-read shows a prior entry changed')
         ctx.log('re-read OK: round-trips at indent=1; prior entries still byte-verbatim.')
+    # THE TWO SIDES ARE REPORTED, NOT JUST WRITTEN. They were already measured (`_measure_sides`) and
+    # already in the entry; putting them on the step's facts is what lets a self-test case assert the
+    # SHAPE of a transition from the machine-readable report rather than by re-parsing the carrier —
+    # and for the edit verb it is the whole proof: source measured at the base commit is the PRE-edit
+    # store, destination measured live is the POST-edit store, so the entry STRADDLES the edit.
     return {'boundary': boundary, 'appended': True, 'moved': moved, 'entries': len(reg),
-            'bridged_by_round': bridge}
+            'bridged_by_round': bridge, 'source': entry['source'], 'destination': entry['destination']}
 
 
 # ============================================================================== STEP 4 — CONTRACT
@@ -1359,8 +1829,9 @@ def claims(ctx):
            'value': boot['engine_head'], 'label': 'expected_boot.engine_head'},
           {'kind': 'json_field', 'path': 'data/expected_boot.json', 'field': 'as_of_round',
            'value': boot['as_of_round'],
-           'label': ('the round, ADVANCED to' if ctx.spec['act_kind'] == 'round-advance'
-                     else 'the round, HELD by a lever landing')},
+           'label': {'round-advance': 'the round, ADVANCED to',
+                     'store-edit': 'the round, HELD by a store edit'}.get(
+                         ctx.spec['act_kind'], 'the round, HELD by a lever landing')},
           {'kind': 'json_field', 'path': 'data/release_contract.json', 'field': 'contract_sha256',
            'value': json.load(open(_p(ctx, 'data/release_contract.json'),
                                    encoding='utf-8'))['contract_sha256'],
@@ -1378,10 +1849,17 @@ def claims(ctx):
     # so what it claims unmoved instead is the SHEET PIN DECLARATION, whenever it declares no re-cut:
     # `land round` is that file's sole writer, and "the sole writer did not write it this week" is a
     # claim worth being able to recompute.
+    #
+    # AND A STORE EDIT IS THE THIRD CASE. It moves the store BY DEFINITION, so it cannot claim what a
+    # lever landing claims; what it claims instead is the pair of OWNER INPUTS it never touches — the
+    # sitter sheet and its pin declaration. "This act edited one field of the store and did not go
+    # near the owner's sheet" is exactly the kind of claim worth being able to recompute.
     snap = ctx.snapshot
     unmoved_claims = ()
     if ctx.spec['act_kind'] == 'lever-landing':
         unmoved_claims = ('engine/rl_after/rl_model_data.json',)
+    elif ctx.spec['act_kind'] == 'store-edit':
+        unmoved_claims = (SHEET_PIN_REL, 'docs/owner_annotations/SITTER_2026_v1.csv')
     elif not ctx.spec.get('sheet'):
         unmoved_claims = (SHEET_PIN_REL, 'docs/owner_annotations/SITTER_2026_v1.csv')
     for rel, before_md5 in sorted((snap.identities() if snap else {}).items()):
@@ -1403,14 +1881,15 @@ def claims(ctx):
     for name, spec_sw in (ctx.spec.get('activation') or {}).items():
         activation[name] = spec_sw
 
-    is_round = ctx.spec['act_kind'] == 'round-advance'
+    landed_by = {'round-advance': 'tools/landing (`land round`), PLAN_v6 PACKAGE 2b',
+                 'store-edit': 'tools/landing (`land edit`), THE EDIT VERB, directive 2026-08-24'}
     doc = {'schema_version': 1, 'act_type': ctx.spec['act_kind'], 'act': ctx.spec['act'],
            'date': ctx.spec['date'], 'base_commit': ctx.facts['base']['commit'],
            'owner_word': ctx.spec['owner_word'], 'activation': activation, 'claims': cl,
            '_restore_point': ctx.facts['base']['carriers'],
            '_step_timings_s': ctx.timings_dict(),
-           '_landed_by': ('tools/landing (`land round`), PLAN_v6 PACKAGE 2b' if is_round
-                          else 'tools/landing (`land lever`), PLAN_v6 PACKAGE 2a')}
+           '_landed_by': landed_by.get(ctx.spec['act_kind'],
+                                       'tools/landing (`land lever`), PLAN_v6 PACKAGE 2a')}
 
     if ctx.false_claim:
         # SELF-TEST ONLY (txn.FAULTS['claims']). One claim is made false, and the checker — the same
@@ -2451,7 +2930,8 @@ def commit(ctx):
         ctx.log('nothing to commit — this landing wrote no file (a declared no-op).')
         return {'commit': None, 'paths': []}
 
-    verb = 'land round' if ctx.spec['act_kind'] == 'round-advance' else 'land lever'
+    verb = {'round-advance': 'land round', 'store-edit': 'land edit'}.get(ctx.spec['act_kind'],
+                                                                         'land lever')
     msg = ctx.spec.get('commit_message') or ('%s — the landing transaction (%s)'
                                              % (ctx.spec['act'], verb))
     sha = _git_commit(ctx, staged, msg)
@@ -2529,6 +3009,24 @@ ROUND_SEQUENCE = (
     ('commit',            'ONE commit, explicit paths only',                        commit),
 )
 
+#: THE STORE-EDIT SEQUENCE (THE EDIT VERB, directive 2026-08-24) — the LEVER sequence with ONE step
+#: inserted, and it is composed FROM `LEVER_SEQUENCE` rather than written out, so the two can never
+#: drift apart by a step. Eleven of its twelve steps are literally the lever lander's own functions
+#: (S7: one library, steps REGISTERED, never copied); the twelfth is `store_edit`.
+#:
+#: WHY THE POSITION IS THE WHOLE DESIGN. `store_edit` runs AFTER `preflight` — so the clean-tree
+#: assertion, the build lock and the RESTORE POINT all precede the only file this verb adds to the
+#: write set — and BEFORE `build_proofs`, so the board is built from the edited store and the
+#: `lineage` step's source (measured at the base commit, pre-edit) and destination (measured live,
+#: post-edit) STRADDLE the edit. That is the arrangement register v836's three refusals demanded and
+#: no pre-committed store flip can produce.
+EDIT_SEQUENCE = (
+    LEVER_SEQUENCE[:1]
+    + (('store_edit', 'THE SURGICAL STORE EDIT, applied in the work dir', store_edit),)
+    + LEVER_SEQUENCE[1:]
+)
+
 #: act_kind -> (sequence, carrier set). The ONE place a verb is bound to what it runs and what it may
 #: write, so a new act kind cannot half-exist.
-SEQUENCES = {'lever-landing': 'LEVER_SEQUENCE', 'round-advance': 'ROUND_SEQUENCE'}
+SEQUENCES = {'lever-landing': 'LEVER_SEQUENCE', 'round-advance': 'ROUND_SEQUENCE',
+             'store-edit': 'EDIT_SEQUENCE'}

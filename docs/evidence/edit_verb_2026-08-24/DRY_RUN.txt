@@ -1,0 +1,50 @@
+======================================================================================================
+LAND EDIT — DRY RUN. THE PREDICTION, MEASURED IN A SCRATCH WORKTREE.
+  act        : WILL GRAHAM DUAL-STREAM CORRECTION — store p_dual_stream 90 -> 40 (owner-supplied data field)
+  owner word : Can we please edit Will Graham to be a 40% only SF then in the store and recalculate?
+  tree       : /home/user/afl-rl-engine/.claude/worktrees/agent-af67b0c0b090a3645
+======================================================================================================
+live carriers hashed BEFORE the preview: 114
+scratch worktree: /tmp/landing_preview_15360/sandbox  (a git worktree of HEAD; removed when this run ends)
+
+THE EDIT — surgical, inside the named row's span; `old` is asserted, never repaired
+    will-graham                  p_dual_stream      90 -> 40
+        row span 164121..164899 of the store, 1978074 char(s) -> 1978074 char(s) in the file
+  season clock  re-derived from the edited store by season_state.derive (the sole deriver)
+      source_store_md5  daa93053bc2d -> fb640ca0baf9
+      every derived VALUE asserted unchanged (10 field(s) checked); WRITTEN and re-read.
+  build-lock: HELD by land-edit-15360 (pid 15360) — single writer for the shared workspace.
+
+======================================================================================================
+THE PREDICTION
+======================================================================================================
+    store   daa93053bc2d4eba30d9dc6e06e4af9e -> fb640ca0baf92bbb122b1ad7e25c5a88
+    board   6fd0f7ded2b280d1a90962c299a152e3 -> 82fcd8bb1e552b927299b5702122e321
+
+MOVERS — EVERY ONE, WITH VALUES  (1 of 1002 valued row(s) moved)
+    will-graham                  Will Graham                    1533 -> 1271     (-262)  [active]
+    pool (sum of active v)   700119 -> 699857  (-262)
+
+IDENTITIES — every one this act declares, measured on the EDITED tree against the pins
+    board                MOVES    6fd0f7ded2b280d1a90962c299a152e3   -> 82fcd8bb1e552b927299b5702122e321   as declared
+    store                MOVES    daa93053bc2d4eba30d9dc6e06e4af9e   -> fb640ca0baf92bbb122b1ad7e25c5a88   as declared
+    balanced_board_md5            ca8cb17e960bf7168bcb4101f5fd5779   -> (another writer of record)         
+    engine_head          unmoved  3af8c1f7d61275c198a5df70c34608c7   -> 3af8c1f7d61275c198a5df70c34608c7   as declared
+    rl_model             unmoved  6fe7c4155866d80e8045bed2d3bf2802   -> 6fe7c4155866d80e8045bed2d3bf2802   as declared
+    fv                   unmoved  6e9a370e5970c5aefa859858070f4c342… -> 6e9a370e5970c5aefa859858070f4c342… as declared
+    config               unmoved  eed19a75f775aeafe4ee5ea4b39906671… -> eed19a75f775aeafe4ee5ea4b39906671… as declared
+    register             unmoved  652d83e87780e415a01a2de6d8b3cc57   -> 652d83e87780e415a01a2de6d8b3cc57   as declared
+    v0surf               unmoved  5dd34ca82735f5c8f021b1c7320df8f8   -> 5dd34ca82735f5c8f021b1c7320df8f8   as declared
+    band                          34faa8659cc8f19794f5cb9584fa19b2   -> (not measurable in a preview)      
+    q97m                          cfdc73216c099e5e8f1fda3968f31c00   -> (not measurable in a preview)      
+    as_of_round                   24                                 -> (another writer of record)         
+
+PREDICTION OF RECORD: the spec declares prereg.board_after 82fcd8bb1e552b927299b5702122e321 — the flight will assert it BYTE-EXACT.
+    this preview built 82fcd8bb1e552b927299b5702122e321: THEY AGREE
+    build: rc=0 in 123.3s
+
+WROTE NOTHING: every one of the 114 live carriers re-hashed after the run, 0 moved.
+  (the prediction happened in the scratch worktree; the tree you are standing in is byte-identical to the tree you started with.)
+TO FLY IT: the same command WITHOUT --dry-run, once the owner's word is in the spec.
+total 126.3s
+======================================================================================================

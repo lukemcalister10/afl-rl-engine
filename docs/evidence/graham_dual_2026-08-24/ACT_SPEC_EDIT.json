@@ -1,0 +1,80 @@
+{
+ "_doc": "THE ACT SPEC — WILL GRAHAM DUAL-STREAM CORRECTION (p_dual 90 -> 40), an owner-worded store data edit driven by `tools/land edit` (THE EDIT VERB, directive 2026-08-24). It supersedes ACT_SPEC.json in this directory, which was written for `land lever` and was refused three times, each refusal byte-exact and correct (register v836): the lineage chain demands the store move INSIDE the transaction and the lever sequence has no step that edits a store. THE EDIT IS NOW DECLARED HERE and applied by the `store_edit` step in the work dir, so the lineage entry's source (measured at the base commit) and destination (measured live) STRADDLE it. There is NO flip commit, NO pin companion and NO `coherent_base` — the tree is coherent at HEAD when this act starts and coherent at HEAD when it finishes.",
+ "schema_version": 1,
+ "act_kind": "store-edit",
+ "act": "WILL GRAHAM DUAL-STREAM CORRECTION — store p_dual_stream 90 -> 40 (owner-supplied data field)",
+ "date": "2026-08-24",
+ "owner_word": "Can we please edit Will Graham to be a 40% only SF then in the store and recalculate?",
+ "authority": "Owner word 2026-08-24, verbatim, given after the supervisor measured the dual-position MAX-law benefit on Graham's row at +490.5 ev (+43.7%) with p_dual=90 (register v835). The store is the ONE SOURCE and this is an owner-supplied data field; his word is the authority. The VERB was ruled into existence by the owner's words of the same day: \"There will likely be lots of out of round edits. So that lander needs to be redone so round edits are one option, but there's also a general edit option.\"",
+ "edit": {
+  "store": [
+   {
+    "key": "will-graham",
+    "field": "p_dual_stream",
+    "old": 90,
+    "new": 40,
+    "_doc": "ONE field, ONE row. `old` is ASSERTED against the store before anything is written and a mismatch is an abort, not a repair. The replacement is surgical, inside the will-graham row's own span: no byte of the store outside that span may move, and the step proves it by reversing the replacement and comparing character for character."
+   }
+  ],
+  "expected_movers": [
+   {"key": "will-graham", "before": 1533, "after": 1271}
+  ],
+  "_doc_expected_movers": "THE FALSIFIER, measured at the prereg on a scratch build before the store was touched (PREREG.md, PREDICT_emit.log): EXACTLY ONE mover, -262 — the removed dual-bar benefit under the LEG C MAX law (item 275). A second mover is an abort at build_proofs with the undeclared row NAMED."
+ },
+ "prereg": {
+  "path": "docs/evidence/graham_dual_2026-08-24/PREREG.md",
+  "board_before": "6fd0f7ded2b280d1a90962c299a152e3",
+  "board_after": "82fcd8bb1e552b927299b5702122e321",
+  "reference_board": null,
+  "kill_switch": null,
+  "_doc_kill_switch": "None declared — a data edit, not a dial; the revert is a git revert of the landing commit, which now carries the edit and its consequences together."
+ },
+ "identities": {
+  "moves": [
+   "board",
+   "store",
+   "balanced_board_md5"
+  ],
+  "unmoved": [
+   "engine_head",
+   "rl_model",
+   "fv",
+   "config",
+   "register",
+   "v0surf",
+   "band",
+   "q97m",
+   "as_of_round"
+  ],
+  "_doc_store": "The store MOVES IN THIS TRANSACTION (daa93053 -> fb640ca0), written by the `store_edit` step in the work dir and re-pinned by the `pins` step MEASURED from the tree. That is the difference from the refused lever spec, which declared the store unmoved because a flip commit had already moved it — the shape the chain check correctly refuses."
+ },
+ "column": {
+  "id": "graham-dual-40-24-8",
+  "label": "24/8 WILL GRAHAM DUAL CORRECTED — owner store edit p_dual 90 -> 40; one mover (-262)",
+  "after_round": 24,
+  "registered_at": "2026-08-24"
+ },
+ "lineage": {
+  "doc": "WILL GRAHAM DUAL-STREAM CORRECTION, owner-worded. The store's p_dual_stream for will-graham moves 90 -> 40 by surgical byte edit (store daa93053 -> fb640ca0); the board moves 6fd0f7de -> 82fcd8bb with EXACTLY ONE mover (will-graham 1533 -> 1271, the removed dual-bar benefit under the LEG C MAX law, item 275). Pool 700,119 -> 699,857; no renormaliser, per the standing no-baked-renormalisers principle. Predicted at the prereg (2feaf25) before the edit; landed by `tools/land edit`, whose store_edit step applies the edit inside this transaction so this entry's source and destination straddle it.",
+  "kind": "owner-store-edit",
+  "owner_ruling_id": [
+   "WILL_GRAHAM_DUAL_2026-08-24_edit_to_40pct_SF_and_recalculate"
+  ],
+  "owner_ruling": "Owner word 2026-08-24, VERBATIM: \"Can we please edit Will Graham to be a 40% only SF then in the store and recalculate?\" Given after the supervisor measured the dual-position MAX-law benefit on Graham's row (+490.5 ev, +43.7% at p_dual=90; register v835).",
+  "authority": "docs/evidence/graham_dual_2026-08-24/PREREG.md (committed at 2feaf25 BEFORE the store edit, P9) with the prediction build transcript PREDICT_emit.log — exactly ONE mover, will-graham 1533 -> 1271; store fb640ca0 and board 82fcd8bb both measured before the flip. The store is the ONE SOURCE (law 1) and p_dual_stream is an owner-supplied data field; his word is the authority.",
+  "invariants": {
+   "one_mover": "will-graham 1533 -> 1271; every other valued board row byte-unmoved",
+   "pool": "700119 -> 699857 (-262), no renormaliser",
+   "store_span": "only the will-graham row's p_dual_stream bytes moved in the store"
+  }
+ },
+ "day0_rebase": {
+  "state": "off",
+  "_doc": "OFF — Graham is not in the sitter cohort; the 86-row reference must be byte-unmoved."
+ },
+ "evidence_dir": "docs/evidence/graham_dual_2026-08-24",
+ "claims_file": "GRAHAM_CLAIMS.json",
+ "gates": null,
+ "_doc_gates": "null = the standard landing gate set.",
+ "commit_message": "WILL GRAHAM DUAL CORRECTED on the owner's word — store p_dual_stream 90 -> 40 (daa93053 -> fb640ca0), board 6fd0f7de -> 82fcd8bb, ONE mover: will-graham 1533 -> 1271 (-262, the removed MAX-law dual-bar benefit). Predicted at prereg 2feaf25; every other identity byte-unmoved. Landed by `tools/land edit` — the edit is applied IN the transaction, so the lineage entry straddles it and no flip commit exists.\n\nOWNER WORD 2026-08-24, VERBATIM: \"Can we please edit Will Graham to be a 40% only SF then in the store and recalculate?\""
+}

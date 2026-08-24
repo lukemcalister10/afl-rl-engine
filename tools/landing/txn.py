@@ -69,6 +69,34 @@ class RealBuilder(object):
         return meta
 
 
+def selftest_board_bytes(root, moved=False, movers=0):
+    """SELF-TEST ONLY: the synthetic board `SelftestBuilder` produces -> (bytes, [movers]).
+
+    ONE IMPLEMENTATION, TWO CALLERS, AND THAT IS THE POINT: the BUILDER writes these bytes and the
+    self-test FIXTURE predicts their md5 by calling the same function. A fixture that recomputed the
+    transform on its own would be predicting its own arithmetic, and the first divergence between the
+    two copies would look exactly like a lander defect.
+
+    `moved` appends one newline — still valid JSON, different md5, and every board VALUE identical, so
+    it drives pins / column / lineage on a real move while moving no row. `movers=N` decrements the
+    `v` of the first N rows of `active` by one each, which is the synthetic version of what a store
+    edit actually does to a board: a named row, a named value, a measurable delta.
+    """
+    import hashlib
+    raw = open(os.path.join(root, 'data', 'rl_build', 'rl_app_data.json'), 'rb').read()
+    moved_rows = []
+    if movers:
+        d = json.loads(raw)
+        for p in (d.get('active') or ())[:movers]:
+            before = p['v']
+            p['v'] = before - 1
+            moved_rows.append({'key': p['key'], 'before': before, 'after': p['v']})
+        raw = json.dumps(d).encode('utf-8')
+    if moved:
+        raw += b'\n'
+    return raw, moved_rows, hashlib.md5(raw).hexdigest()
+
+
 class SelftestBuilder(object):
     """SELF-TEST ONLY. Produces a board WITHOUT running the engine, so a fault case costs seconds.
 
@@ -79,23 +107,24 @@ class SelftestBuilder(object):
 
     `moved=True` appends one newline to the installed board, which is still valid JSON and has a
     different md5 — a synthetic board move, enough to drive pins / column / lineage for real.
+    `movers=N` moves N board ROWS, which is what the edit verb's mover assertions need: a board whose
+    md5 moved says nothing about WHO moved, and `edit_fault_second_mover` is the case that proves the
+    lander notices an undeclared one.
     """
 
-    def __init__(self, moved=False, wrong=False):
+    def __init__(self, moved=False, wrong=False, movers=0):
         self.moved = moved
         self.wrong = wrong
-        self.name = 'selftest%s%s' % ('-moved' if moved else '', '-wrong' if wrong else '')
+        self.movers = movers
+        self.name = 'selftest%s%s%s' % ('-moved' if moved else '', '-wrong' if wrong else '',
+                                        '-movers%d' % movers if movers else '')
 
     def build(self, ctx, tag, mode='dev', env_overrides=None):
         import hashlib
-        import shutil
-        src = os.path.join(ctx.root, 'data', 'rl_build', 'rl_app_data.json')
         dst = os.path.join(ctx.work_dir, 'build_%s.board.json' % tag)
-        shutil.copyfile(src, dst)
-        if self.moved:
-            with open(dst, 'ab') as fh:
-                fh.write(b'\n')
-        board_md5 = hashlib.md5(open(dst, 'rb').read()).hexdigest()
+        raw, _rows, board_md5 = selftest_board_bytes(ctx.root, moved=self.moved, movers=self.movers)
+        with open(dst, 'wb') as fh:
+            fh.write(raw)
         store_md5 = hashlib.md5(open(os.path.join(ctx.root, 'engine', 'rl_after',
                                                   'rl_model_data.json'), 'rb').read()).hexdigest()
         with open(dst + '.srcmd5', 'w', encoding='utf-8') as fh:
@@ -118,6 +147,53 @@ def _fault_dirty_tree(ctx):
 
 def _fault_wrong_board(ctx):
     ctx.builder = SelftestBuilder(wrong=True)
+
+
+def _fault_store_old_mismatch(ctx):
+    """THE EDIT VERB'S OWN FAULT: the store already carries the NEW value, so `old` is not there.
+
+    It is injected by applying THE ACT'S OWN EDIT through the step's own applier — which is the honest
+    version of this failure and the one that will actually happen: a spec written against a store that
+    has since moved (somebody landed the same correction, a round advance rewrote the row, the seat
+    re-flew an act that already flew). The `store_edit` step must ABORT rather than "repair" the row
+    into agreement with a spec whose premise is false.
+
+    IT MOVES THE PIN AND THE CLOCK WITH IT, so the tree it leaves is COHERENT. The first draft edited
+    the store alone; the step then died on its `expected_boot.store` assertion (P2, "nothing is edited
+    on an unverified store") — a true halt, at the wrong assertion, which would have left the
+    old-value law itself untested. A tree where the edit has already landed has its pin and its season
+    clock landed too, so this fault reproduces THAT tree and the only thing left to fail is the one
+    this case exists to prove.
+    """
+    p = os.path.join(ctx.root, ST.STORE_REL)
+    text = open(p, 'rb').read().decode('utf-8')
+    edited, _applied = ST.apply_store_edits(text, (ctx.spec.get('edit') or {}).get('store') or ())
+    raw = edited.encode('utf-8')
+    with open(p, 'wb') as fh:
+        fh.write(raw)
+    import hashlib
+    new_md5 = hashlib.md5(raw).hexdigest()
+    boot_p = os.path.join(ctx.root, 'data', 'expected_boot.json')
+    boot_raw = open(boot_p, encoding='utf-8').read()
+    old_md5 = json.loads(boot_raw).get('store')
+    with open(boot_p, 'w', encoding='utf-8') as fh:
+        fh.write(ST._replace_json_scalar(boot_raw, 'store', old_md5, new_md5,
+                                         'data/expected_boot.json'))
+    ss_p = os.path.join(ctx.root, ST.SEASON_STATE_REL)
+    ss_raw = open(ss_p, encoding='utf-8').read()
+    with open(ss_p, 'w', encoding='utf-8') as fh:
+        fh.write(ST._replace_json_scalar(ss_raw, 'source_store_md5', old_md5, new_md5,
+                                         ST.SEASON_STATE_REL))
+
+
+def _fault_second_mover(ctx):
+    """A SECOND board row moves and the act declared one. The mover assertion must name it.
+
+    The board an edit produces is the only place an undeclared consequence can hide: an md5 that is
+    not the predicted one is a true statement about a file, and this is the same halt with the ROW in
+    it. The builder is swapped for one that moves two rows; the fixture declares one.
+    """
+    ctx.builder = SelftestBuilder(moved=True, movers=2)
 
 
 def _fault_board_corrupt(ctx):
@@ -361,6 +437,16 @@ FAULTS = {
     'commit':       ('foreign_path', 'a file outside the declared carrier set is in the tree',
                      _fault_foreign_path),
 
+    # ---- THE EDIT VERB'S OWN STEP, and its one mode-qualified sibling (directive 2026-08-24) -----
+    'store_edit':   ('store_old_mismatch',
+                     'the store already carries the NEW value, so the `old` the spec asserts is not '
+                     'there — an ABORT, never a repair (the exact-string law)',
+                     _fault_store_old_mismatch),
+    'build_proofs:second_mover': ('second_mover',
+                     'a SECOND board row moves and the act declared one — the undeclared mover must '
+                     'be NAMED, not merely implied by a board md5 that is not the predicted one',
+                     _fault_second_mover),
+
     # ---- MODE-QUALIFIED: the `ui` step's other writers ------------------------------------------
     'ui:stale_mirror': ('stale_ownership_mirror',
                         'WRITER 5 never runs and the shipped ownership mirror keeps a foreign store '
@@ -425,7 +511,8 @@ class Ctx(object):
         self.timings = []                        # [(step, seconds, verdict)]
         self.lines = []
         self.lock_tag = lock_tag or ('land-%s-%d' % (
-            'round' if spec.get('act_kind') == 'round-advance' else 'lever', os.getpid()))
+            {'round-advance': 'round', 'store-edit': 'edit'}.get(spec.get('act_kind'), 'lever'),
+            os.getpid()))
         self.lock_timeout = (0 if lock_timeout is None and opts.selftest
                              else (self.DEFAULT_LOCK_TIMEOUT if lock_timeout is None else lock_timeout))
         self._lock_fd = None
