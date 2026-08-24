@@ -1,0 +1,4 @@
+carriers compared : 114 (before 114, after 114)
+carriers MOVED    : NONE — byte-identical, key for key
+spot identities   : NONE — byte-identical
+P1: HELD — adding the verb moved nothing
