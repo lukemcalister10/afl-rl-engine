@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v840**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v841**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v841** (2026-08-24) — `docs/register/entries/v841.md` — **TWO OWNER WORDS RULED AND THE POSITIONAL-LENS ADDENDUM IS FILED — centering LOSES, the bands were never in the object, and Leake's headlin
 - **v840** (2026-08-24) — `docs/register/entries/v840.md` — **THE SEAM-LEVER PROTOTYPE IS FILED (PRE-RULING) — the construction validates against its baseline, is a WASH against the live engine in agg
 - **v839** (2026-08-24) — `docs/register/entries/v839.md` — **THE OWNER'S FOUR SEAM CORRECTIONS ARE ADOPTED AND MEASURED, AND THE BUST-TABLE PREVIEW SHOWS THE TABLE CHOICE IS BOARD-COSMETIC.** THE COR
 - **v838** (2026-08-24) — `docs/register/entries/v838.md` — **THE SEAM STUDY IS FILED AND ITS CENTREPIECE IS A CLEAN ORDER INVERSION; the bust-prior producer is built with both tables.** THE SEAM STUD
