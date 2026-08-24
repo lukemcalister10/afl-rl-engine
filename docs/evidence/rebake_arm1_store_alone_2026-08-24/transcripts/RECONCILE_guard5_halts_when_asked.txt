@@ -1,0 +1,12 @@
+/home/claude/q97m.pkl        = cfdc73216c099e5e8f1fda3968f31c00   (the LIVE ceiling)
+candidate root q97m pin      = fd794c0b8555cfeef2f57e9dd946181a
+
+--- what the ENGINE's own precedence resolves, and what Guard 5's mirror resolves, with RL_Q97M_PKL UNSET ---
+
+==================== STALE-BOOT GUARD (Guard 5) FAILED — BUILD HALTED ====================
+  - q97m LOAD-PATH MISMATCH: the engine will LOAD
+        /home/claude/q97m.pkl
+        md5 cfdc7321  !=  pinned fd794c0b (data/expected_boot.json 'q97m', full-hash compare).
+        The engine's own precedence ($RL_Q97M_PKL -> /home/claude/q97m.pkl -> <repo>/data/q97m.pkl) resolved to a file that is NOT the pinned frozen artifact — an env var or a stale workspace copy is shadowing the frozen source. Re-run bootstrap.sh (or unset the override); never boot on an unverified LOADED artifact.
+=========================================================================================
+guard exit=1

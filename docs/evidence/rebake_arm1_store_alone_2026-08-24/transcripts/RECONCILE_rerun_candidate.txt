@@ -1,0 +1,64 @@
+=== branch tip ===
+1eb6cba REBAKE ARM 1: the frozen acceptance suite, run twice -- B2 / B6 green, and EXACTLY ONE gate separates the candidate from the live board
+=== committed candidate bytes ===
+2e0b11d3bceb65351f2417927f437053  /home/user/afl-rl-engine/.claude/worktrees/agent-a83beb5f9a19ad772/docs/evidence/rebake_arm1_store_alone_2026-08-24/candidates/cm_400.candidate.pkl
+fd794c0b8555cfeef2f57e9dd946181a  /home/user/afl-rl-engine/.claude/worktrees/agent-a83beb5f9a19ad772/docs/evidence/rebake_arm1_store_alone_2026-08-24/candidates/q97m.candidate.pkl
+5338d0cd0e5e3261864987480288858b  /home/user/afl-rl-engine/.claude/worktrees/agent-a83beb5f9a19ad772/docs/evidence/rebake_arm1_store_alone_2026-08-24/candidates/peak_model_v4.candidate.pkl
+4704b8296008f81e7bb5407424229e85  /home/user/afl-rl-engine/.claude/worktrees/agent-a83beb5f9a19ad772/docs/evidence/rebake_arm1_store_alone_2026-08-24/candidates/pvc_snapshot.candidate.json
+
+=== root, from the committed instrument ===
+copying checkout -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/rerun_root
+  band          data/cm_400.pkl  34faa865 -> 2e0b11d3
+  q97m          data/q97m.pkl  cfdc7321 -> fd794c0b
+  peak_model    engine/rl_after/peak_model_v4.pkl  f305fe53 -> 5338d0cd
+  pvc_snapshot  engine/rl_after/pvc_snapshot.json  ade79790 -> 4704b829
+  fv            engine/forward_valuation  6e9a370e -> 47cbbfe6
+candidate root ready: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/rerun_root
+
+=== fresh workspace from that root ===
+
+=== LOAD PROVENANCE, measured in-process ===
+cwd            : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/rerun_ws/rl_after
+RL_REPO        : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/rerun_root
+RL_FV          : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/rerun_root/engine/forward_valuation
+RL_CM_PKL      : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/rerun_root/data/cm_400.pkl
+RL_Q97M_PKL    : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/rerun_root/data/q97m.pkl
+RL_PRIOR_TREES : None
+RL_CONFIG_MODE : gate
+PYTHONPATH     : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/rerun_ws/rl_after:/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/rerun_root:/home/claude/rl_vendor
+ambient RL_/PAR_ vars BEFORE enforce:
+    RL_CM_PKL                /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/rerun_root/data/cm_400.pkl
+    RL_CONFIG_MODE           gate
+    RL_FV                    /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/rerun_root/engine/forward_valuation
+    RL_Q97M_PKL              /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/rerun_root/data/q97m.pkl
+    RL_REPO                  /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/rerun_root
+    RL_VENV                  /root/rl_venv312
+config manifest (gate mode) LOADED  hash eed19a75f775  (84 model vars pinned; ambient cleared)
+
+RESOLVED LOAD PATHS (measured in-process, after the engine loaded):
+  cm   path : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/rerun_root/data/cm_400.pkl
+  cm   md5  : 2e0b11d3bceb65351f2417927f437053
+  q97m path : /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/rerun_root/data/q97m.pkl
+  q97m md5  : fd794c0b8555cfeef2f57e9dd946181a
+  cwd  peak_model_v4.pkl      5338d0cd0e5e3261864987480288858b
+  cwd  pvc_snapshot.json      4704b8296008f81e7bb5407424229e85
+  cwd  bust_prior_table.json  5942aa6ad7be1d482eed737997486c70
+  cwd  rl_model_data.json     daa93053bc2d4eba30d9dc6e06e4af9e
+  cwd  _merged_recover.py     3af8c1f7d61275c198a5df70c34608c7
+  cwd  rl_model.py            6fe7c4155866d80e8045bed2d3bf2802
+  cwd  pvc_curve_v2.json      78ad9842525ae4f09875b95afc2e2b39
+  v0surf    : 5dd34ca82735f5c8f021b1c7320df8f8
+
+LOADED MODEL OBJECTS, identified from their own trees (not from a path):
+  cm[0.10] root_n=13220 n_est=400 thr0=5.8575670719
+  cm[0.30] root_n=13220 n_est=400 thr0=68.9034767151
+  cm[0.50] root_n=13220 n_est=400 thr0=69.0325012207
+  cm[0.70] root_n=13220 n_est=400 thr0=75.3811950684
+  cm[0.90] root_n=13220 n_est=400 thr0=90.3327674866
+  q97m     root_n=13169 n_est=200 thr0=105.1264877319
+  ORDER 44 dial : 'ratchet'
+  knots         : 2464
+
+=== canonical emit ===
+export exit=0
+02a554b5d0886f047a607b23b8bfdcfd  rl_app_data.json

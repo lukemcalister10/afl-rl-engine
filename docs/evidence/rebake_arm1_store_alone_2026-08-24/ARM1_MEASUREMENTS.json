@@ -73,7 +73,52 @@
   "live": "6fd0f7ded2b280d1a90962c299a152e3",
   "candidate": "02a554b5d0886f047a607b23b8bfdcfd",
   "candidate_T1_off_attribution": "bee162bcd4405cd0290e2ff26212ddf9",
-  "control_live_rebuilt_with_switches_bound": "6fd0f7ded2b280d1a90962c299a152e3"
+  "control_live_rebuilt_with_switches_bound": "6fd0f7ded2b280d1a90962c299a152e3",
+  "mixed_live_ceiling_NOT_THE_ARM": "c7cea06dca6c39e06288f61dca8eee75"
+ },
+
+ "SUPERVISOR_RECONCILIATION_2026-08-24": {
+  "_doc": "The supervisor's screen of this arm produced a different candidate board (c7cea06d) and systematically smaller movement (23,023 vs 30,870). RECONCILED EXACTLY, and the reconciliation is itself a finding. Transcripts: transcripts/RECONCILE_*.txt; both boards committed under boards/.",
+  "step_1_rerun_from_committed_bytes": {
+   "recipe": "the COMMITTED make_candidate_root.py, fed the COMMITTED candidate pickles, into a FRESH root and a FRESH workspace, at branch tip 1eb6cba; canonical emit, single-thread BLAS, RL_CONFIG_MODE=gate",
+   "result": "02a554b5d0886f047a607b23b8bfdcfd — REPRODUCED BYTE-EXACT",
+   "load_provenance_measured_in_process": {
+    "cm": "2e0b11d3 (root data/cm_400.pkl), root_n 13220",
+    "q97m": "fd794c0b (root data/q97m.pkl), root_n 13169",
+    "peak_model_v4": "5338d0cd", "pvc_snapshot": "4704b829",
+    "bust_prior_table": "5942aa6a", "store": "daa93053", "v0surf": "5dd34ca8",
+    "ORDER_44_dial": "ratchet", "knots": 2464},
+   "artifacts_in_the_original_root_vs_committed_bytes": "IDENTICAL — the root that produced 02a554b5 carried exactly the committed candidate bytes, so 'artifact bytes differed at build time' is eliminated"
+  },
+  "step_2_the_isolated_input": {
+   "it_is_RL_Q97M_PKL": true,
+   "mechanism": "_merged_recover._load_q97m() precedence is $RL_Q97M_PKL -> /home/claude/q97m.pkl -> <RL_REPO>/data/q97m.pkl. The supervisor's stated emit env binds RL_CM_PKL but NOT RL_Q97M_PKL, so the engine fell through to /home/claude/q97m.pkl — the LIVE ceiling cfdc7321, seeded there by bootstrap.sh — while the candidate root pins q97m=fd794c0b.",
+   "experiment": "same fresh root, same canonical emit, RL_Q97M_PKL UNSET",
+   "result": "c7cea06dca6c39e06288f61dca8eee75 — THE SUPERVISOR'S MD5, REPRODUCED BIT-FOR-BIT",
+   "export_exit_code": 0,
+   "loaded_q97m_in_that_run": "/home/claude/q97m.pkl, md5 cfdc7321, root_n 13111 — the SHIPPED ceiling",
+   "movers_of_that_mixed_board_vs_live": {"up": 296, "down": 287, "flat": 221,
+                                          "mint_abs": 2759, "mint_pct": 0.3941, "sum_abs_move": 23023,
+                                          "_note": "IDENTICAL to the supervisor's reported figures, to the last digit"}
+  },
+  "step_3_adjudication": {
+   "which_board_is_ARM_1": "02a554b5",
+   "why": "v831 D6 scopes the CEILING into this arm; the arm refits q97m and must price with it. c7cea06d is a MIXED build — candidate band + candidate peak/pvc + LIVE ceiling — and it CONTRADICTS ITS OWN ROOT'S PIN (that root pins q97m=fd794c0b).",
+   "independent_corroboration": "the two instruments in this battery that DO run full Guard 5 on entry — ship_gates_check.py and one_source_selftest.py — both booted the candidate root, both PASSED Guard 5, and both regenerated 02a554b5 (ship_gates B4 line names it explicitly).",
+   "corrections_owed_to_the_battery": "NONE. Every movers/mint/census/pinball/no-arb/selftest figure in this file was computed off 02a554b5 or off artifacts loaded with RL_Q97M_PKL bound, and all of them stand as filed."
+  },
+  "step_4_bonus_measurement_the_ceiling_alone": {
+   "_doc": "Because the mixed board isolates it, the q97m refit's OWN contribution is now measured — a figure the arm could not otherwise separate.",
+   "mixed_live_ceiling -> full_candidate": {"up": 333, "down": 295, "flat": 176,
+                                            "sum_abs_move": 12381, "median_abs_pct": 1.6964,
+                                            "mint_abs": 3297, "mint_pct": 0.4691},
+   "share_of_the_arm_total_abs_move": "12381 of 30870 = 40.11%",
+   "biggest_up": [["alex-van-wyk", 251], ["murphy-reid", 150], ["cooper-hynes", 147],
+                  ["samuel-grlj", 127], ["joe-berry", 124]],
+   "biggest_down": [["lachlan-ash", -113], ["ned-reeves", -104], ["sean-darcy", -103],
+                    ["sam-draper", -75], ["dyson-sharp", -65]],
+   "reading": "the ceiling refit alone carries 40% of the arm's absolute movement and 54% of its mint, despite band[5] entering price6 at weight 0.10 — because q97m moved 13,111 -> 13,169 training rows onto a store twelve versions newer. It is NOT a rounding term and the arm would have been materially misreported without it."
+  }
  },
 
  "movers_candidate_vs_live": {
@@ -327,6 +372,15 @@
    "live_failures": 13, "candidate_failures": 14,
    "the_one_new_red": "#326 level MSD (Alex Van Wyk)",
    "adjudication": "NOT a candidate defect. The check asserts board_row['v'] == _num(_board_price(p)); measured in a CLEAN process on the candidate board that identity holds EXACTLY — board v=566, as-of-sequence 595.481971 / 1.0524 = 566, gap 0. The failure appears only inside the self-test's own probe-and-restore cycle (it perturbs MA._POOL_LEVELS, prices, restores, _pe_clear()s, then recomputes), so the check is ORDER-SENSITIVE. The 13 pre-existing reds are a separate matter this arm did not scope."
+  },
+  "F7_THE_CANONICAL_BOARD_BUILD_DOES_NOT_RUN_GUARD_5_ON_FITTED_ARTIFACTS": {
+   "severity": "the most serious finding in this arm, and it was found only because two seats compared two boards",
+   "what": "rl_export.py — the canonical board build — calls, in bake/gate/canonical mode, ONLY _FVP.verify_config_manifest() and _BG.assert_fv_provenance(_TROOT) (rl_export.py:37-44). It NEVER calls _BG.assert_boot(). So blocks (0) store, (0c) board, (0d) fitted-artifact CHECKOUT integrity and (0e) fitted-artifact LOAD-PATH integrity are not invoked by the board build at all.",
+   "consequence_measured_not_argued": "with RL_Q97M_PKL unset, the export loaded /home/claude/q97m.pkl (cfdc7321) against a root pinning fd794c0b, and EXITED 0. A board was written, stamped and reported on a ceiling that does not match its own boot pin, with no verdict anywhere.",
+   "the_guard_itself_is_fine": "boot_guard, when actually asked, HALTS correctly on exactly this input — proven by direct invocation, exit 1, naming the resolved path and the expected pin (transcripts/RECONCILE_guard5_halts_when_asked.txt). The defect is that the exporter does not ask.",
+   "who_does_call_it": "bootstrap.sh, run_panel.sh, ship_gates_check.py and one_source_selftest.py all call assert_boot. rl_export.py does not — so a board can be BUILT unguarded and only later be judged by a downstream instrument, if one is run at all.",
+   "why_it_matters_beyond_this_arm": "the (0e) load-path block exists BECAUSE of register item 91 — the owner-caught q97m/cm load-path hole of 2026-07-14, where an env var could point the engine at any pickle and the guard still passed. The block was written and mirrored correctly. The board exporter was never wired to it, so the hole stayed open at the one site that writes the board. This is also law 2 (SILENCE IS A RED) and process law P2 (NEVER BOOT ON AN UNVERIFIED STORE) at the canonical build site.",
+   "not_fixed_here": "wiring assert_boot into rl_export.py would change what the canonical build does and is outside an arm with no design content. Reported for a ruling. NOTE for whoever takes it: the fix must be measured against a live rebuild, because assert_boot's (0c) block asserts data/rl_build/rl_app_data.json against the 'board' pin — at a bake the board being generated is BY DESIGN not yet equal to it."
   },
   "F6_shared_scratchpad_carries_a_stale_rl_model_py": "the session scratchpad is persistent and holds an rl_model.py from an earlier seat. Any diagnostic script RUN FROM that directory silently imports it instead of the engine's (it crashed one probe here with KeyError: 'cap_against_curve_pick', which is how it was found). Every measurement in this arm was run from a clean directory and is unaffected — but a future seat that drops a probe there will get a wrong answer that looks right."
  },

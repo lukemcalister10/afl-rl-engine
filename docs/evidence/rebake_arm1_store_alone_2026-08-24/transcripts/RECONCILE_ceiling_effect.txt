@@ -1,0 +1,43 @@
+### MIXED (live ceiling) vs FULL ARM 1 (candidate ceiling) ###
+
+=== CANDIDATE vs LIVE  (present lens, v) ===
+  rows compared      : 804   (only in live: 0 ; only in candidate: 0)
+  UP / DOWN / FLAT   : 333 / 295 / 176
+  pool total         : 702878 -> 706175   (+3297, +0.4691%)  <-- LAW-9 MINT, reported not gated (v830)
+  sum |move|         : 12381   (mean 15.4, median 8.0)
+  median |move| pct  : 1.70%   ;  90th pct |move| : 15.38%   ; max |move| pct : 83.33%
+  --- BIGGEST UP (by size), top 10 ---
+      alex-van-wyk                     315 ->     566     +251  +79.68%
+      murphy-reid                     3564 ->    3714     +150  +4.21%
+      cooper-hynes                    1069 ->    1216     +147  +13.75%
+      samuel-grlj                     1764 ->    1891     +127  +7.20%
+      joe-berry                       1056 ->    1180     +124  +11.74%
+      jobe-shanahan                   1254 ->    1372     +118  +9.41%
+      talor-byrne                      701 ->     815     +114  +16.26%
+      jai-murray                      1149 ->    1249     +100  +8.70%
+      nick-watson                     3674 ->    3770      +96  +2.61%
+      zane-duursma                     426 ->     522      +96  +22.54%
+  --- BIGGEST DOWN (by size), top 10 ---
+      lachlan-ash                     5709 ->    5596     -113  -1.98%
+      ned-reeves                       441 ->     337     -104  -23.58%
+      sean-darcy                       894 ->     791     -103  -11.52%
+      sam-draper                      1122 ->    1047      -75  -6.68%
+      dyson-sharp                     3087 ->    3022      -65  -2.11%
+      peter-ladhams                    576 ->     512      -64  -11.11%
+      samson-ryan                      306 ->     249      -57  -18.63%
+      jacob-farrow                    2175 ->    2124      -51  -2.34%
+      cameron-mackenzie               1933 ->    1886      -47  -2.43%
+      harvey-thomas                   2175 ->    2128      -47  -2.16%
+
+  --- |move| by tenure T = 2026 - debut + 1 (candidate vs live) ---
+      games 23-80    n= 194  median |move|   3.59%  90th  23.29%  max   83.33%
+
+### MIXED vs LIVE BOARD  (what the supervisor measured) ###
+
+=== CANDIDATE vs LIVE  (present lens, v) ===
+  rows compared      : 804   (only in live: 0 ; only in candidate: 0)
+  UP / DOWN / FLAT   : 296 / 287 / 221
+  pool total         : 700119 -> 702878   (+2759, +0.3941%)  <-- LAW-9 MINT, reported not gated (v830)
+  sum |move|         : 23023   (mean 28.6, median 8.0)
+  median |move| pct  : 2.01%   ;  90th pct |move| : 12.41%   ; max |move| pct : 66.67%
+  --- BIGGEST UP (by size), top 10 ---
