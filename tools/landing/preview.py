@@ -59,6 +59,12 @@ def _git(root, argv):
     return p.returncode, (p.stdout or '') + (p.stderr or '')
 
 
+def _cell(v, n=34):
+    """One identity cell, truncated VISIBLY. A sha256 clipped without a mark reads like an md5."""
+    s = str(v)
+    return s if len(s) <= n else s[:n - 1] + '…'
+
+
 def _md5(path):
     h = hashlib.md5()
     with open(path, 'rb') as fh:
@@ -106,9 +112,9 @@ def _identity_table(ctx, doc, boot, board_md5, out):
             except Exception as e:                                    # noqa: BLE001 — see docstring
                 got = 'unmeasurable here (%s)' % str(e)[:60]
         elif k in ST.DELEGATED_PINS:
-            got = '(another writer of record: %s)' % ST.DELEGATED_PINS[k]
+            got = '(another writer of record)'
         else:
-            got = '(not measurable by a preview; the flight asserts it against the pin)'
+            got = '(not measurable in a preview)'
         moved = (str(got) != str(pin)) if isinstance(got, str) and len(str(got)) in (32, 64) else None
         rows.append({'identity': k, 'declared': want, 'pinned': pin, 'measured': got, 'moved': moved})
     out('IDENTITIES — every one this act declares, measured on the EDITED tree against the pins')
@@ -120,7 +126,7 @@ def _identity_table(ctx, doc, boot, board_md5, out):
             agree = 'as declared' if want_move == bool(r['moved']) else \
                     '*** DISAGREES WITH THE SPEC (declared %s) ***' % r['declared']
         out('    %-20s %s %-34s -> %-34s %s'
-            % (r['identity'], verdict, str(r['pinned'])[:34], str(r['measured'])[:34], agree))
+            % (r['identity'], verdict, _cell(r['pinned']), _cell(r['measured']), agree))
     return rows
 
 
