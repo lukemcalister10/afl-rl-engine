@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v835**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v836**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v836** (2026-08-24) — `docs/register/entries/v836.md` — **THE GRAHAM DUAL CORRECTION IS OWNER-RULED, PREREG'D, PROVEN BUILDABLE — AND PARKED ON A REAL CAPABILITY GAP: the lever lander has NO LANE 
 - **v835** (2026-08-24) — `docs/register/entries/v835.md` — **ARM 1 EXPLAINED TO THE OWNER — the movers decomposed by supervisor-built attribution boards after the analysis seats were lost to persiste
 - **v834** (2026-08-24) — `docs/register/entries/v834.md` — **REBAKE WEEK ARM 1 — THE STORE-ALONE ARM IS BUILT, SCREENED, RECONCILED AND SHOWN TO THE OWNER; the screen itself exposed F7, a hole at the
 - **v833** (2026-08-23) — `docs/register/entries/v833.md` — **THE COMPACTION HANDOVER — the owner compacts before the rebake week; this entry is the successor's spec and it is BINDING.** SUCCESSOR FIR

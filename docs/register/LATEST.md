@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v835 2026-08-24 · **ARM 1 EXPLAINED TO THE OWNER — the movers decomposed by supervisor-built attribution boards after the analysis seats were lost to persistent API 529s; the work moved INLINE and is verified.** THE METHOD: four boards built by the supervisor's own hands (live 6fd0f7de · band-only 3187309e · band+peak c7cea06d · full candidate 02a554b5) give every row a thr
+# OPEN ITEMS REGISTER · v836 2026-08-24 · **THE GRAHAM DUAL CORRECTION IS OWNER-RULED, PREREG'D, PROVEN BUILDABLE — AND PARKED ON A REAL CAPABILITY GAP: the lever lander has NO LANE for an out-of-round store edit.** THE RULING (owner words verbatim, 2026-08-24): "Can we please edit Will Graham to be a 40% only SF then in the store and recalculate?" — given after the supervisor measured the LEG C M
 
-(one line per pen; full entry: docs/register/entries/v835.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v836.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)

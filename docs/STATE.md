@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v835 2026-08-24 · **ARM 1 EXPLAINED TO THE OWNER — the movers decomposed by supervisor-built attribution boards after the analysis seats were lost to persistent API 529s; the work moved INLINE and is verified.** THE METHOD: four boards built by the supervisor's own hands (live 6fd0f7de · band-only 3187309e · band+peak c7cea06d · full candidate 02a554b5) give every row a thr
+  > # OPEN ITEMS REGISTER · v836 2026-08-24 · **THE GRAHAM DUAL CORRECTION IS OWNER-RULED, PREREG'D, PROVEN BUILDABLE — AND PARKED ON A REAL CAPABILITY GAP: the lever lander has NO LANE for an out-of-round store edit.** THE RULING (owner words verbatim, 2026-08-24): "Can we please edit Will Graham to be a 40% only SF then in the store and recalculate?" — given after the supervisor measured the LEG C M
 
-- new-form entries under `docs/register/entries/`: 23
+- new-form entries under `docs/register/entries/`: 24
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `4b40242ca9f8f25354dad3e7cd672310a868246a` |
+| generated at commit | `bbe40befb2b0c00c95b4b9f4cceaa34b64dda873` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

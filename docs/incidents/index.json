@@ -1,7 +1,21 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 214,
+  "coverage_entries": 215,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-24",
+      "headline": "**THE GRAHAM DUAL CORRECTION IS OWNER-RULED, PREREG'D, PROVEN BUILDABLE \u2014 AND PARKED ON A REAL CAPABILITY GAP: the lever lander has NO LANE for an out\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE GRAHAM DUAL CORRECTION IS OWNER-RULED, PREREG'D, PROVEN BUILDABLE \u2014 AND PARKED ON A REAL CAPABILITY GAP: the lever lander has NO LANE for an out-of-round store edit.** THE RULING (owner words verbatim, 2026-08-24):\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 836
+    },
     {
       "by": "explicit",
       "date": "2026-08-24",
@@ -2018,7 +2032,7 @@
       "version": 622
     }
   ],
-  "incidents": 117,
+  "incidents": 118,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",
