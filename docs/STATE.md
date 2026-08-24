@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v839 2026-08-24 · **THE OWNER'S FOUR SEAM CORRECTIONS ARE ADOPTED AND MEASURED, AND THE BUST-TABLE PREVIEW SHOWS THE TABLE CHOICE IS BOARD-COSMETIC.** THE CORRECTIONS (owner, 2026-08-24, each verified by supervisor measurement): (1) the sitter side IS outcome-calibrated listed-conditionally and STANDS — the study's unconditional repricing of listed sitters (demattia →104) i
+  > # OPEN ITEMS REGISTER · v840 2026-08-24 · **THE SEAM-LEVER PROTOTYPE IS FILED (PRE-RULING) — the construction validates against its baseline, is a WASH against the live engine in aggregate, isolates Leake as the true outlier, and hands the year-4 question to the owner as one clean parameter.** THE PROTOTYPE (scratch seat, hand-back screened; scratchpad seam_lever/, 40 files, prereg stamped pre-fit
 
-- new-form entries under `docs/register/entries/`: 27
+- new-form entries under `docs/register/entries/`: 28
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `d783eb1146521fd07f7beeff7ba1e38627b75351` |
+| generated at commit | `2dfdc4ca66ec4dcb78d2b8d12ebb148314feb970` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
