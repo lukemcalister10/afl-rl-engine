@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v837 2026-08-24 · **THE EDIT VERB IS LANDED AND THE GRAHAM CORRECTION FLEW THROUGH IT — the general out-of-round edit lane the owner ruled exists, is self-tested, and has carried its first real act.** THE VERB (`tools/land edit`, landed at merge e652888 after supervisor screening): a third verb from the one library — EDIT_SEQUENCE composes 11 of its 12 steps from the lever
+  > # OPEN ITEMS REGISTER · v838 2026-08-24 · **THE SEAM STUDY IS FILED AND ITS CENTREPIECE IS A CLEAN ORDER INVERSION; the bust-prior producer is built with both tables.** THE SEAM STUDY (read-only seat, hand-back verified — the supervisor's own census reproduced the deciding rows exactly: 7 sitters / 19 cameos at tenure 3-4, sitter median R 0.448): **AT TENURE 3 AND 4 THE ENGINE PAYS MORE FOR ZERO E
 
-- new-form entries under `docs/register/entries/`: 25
+- new-form entries under `docs/register/entries/`: 26
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `8297fa9d234af8853ad29a8e8f709ba2b6f90d97` |
+| generated at commit | `64aadeeb7810333d9639f8d1e25fe5f01b11bd29` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |
