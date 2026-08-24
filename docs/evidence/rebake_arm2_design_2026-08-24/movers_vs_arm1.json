@@ -17,10 +17,10 @@
   "down": 349,
   "flat": 165,
   "median_abs_pct": 4.869127900331466,
-  "mint_abs": -17569,
-  "mint_pct": -2.487910220554395,
+  "mint_abs": -17563,
+  "mint_pct": -2.4870605728041917,
   "n": 804,
-  "sum_abs_move": 41387,
+  "sum_abs_move": 41383,
   "top_down": [
    [
     "bailey-smith",
@@ -97,9 +97,9 @@
    [
     "luke-jackson",
     8738,
-    9725,
-    987,
-    11.295490959029527
+    9726,
+    988,
+    11.30693522545205
    ],
    [
     "nasiah-wanganeen-milera",
@@ -165,7 +165,7 @@
     6.145038167938932
    ]
   ],
-  "total_new": 688606,
+  "total_new": 688612,
   "total_old": 706175,
   "up": 290
  }

@@ -36,4 +36,4 @@ ORDER 29C year-0 basis: LANDED ENTRY LAW (was v0_start, the frozen fitted surfac
 ORDER 29C gfut source census (all STORE columns, so the key is as-of invariant): {'_futpos': 2648}
 ORDER 29C unmappable rows EXCLUDED AND COUNTED: 0
 ORDER 29C year-0 == 0 rows (the artifact's own declared ruck_floor_63_64): 0 []
-wrote /home/user/arm2_ws/noarb/ARM2CAND/per_entrant_338_confirmation.json
+wrote /home/user/arm2_rerun/noarb/ARM2CAND/per_entrant_338_confirmation.json

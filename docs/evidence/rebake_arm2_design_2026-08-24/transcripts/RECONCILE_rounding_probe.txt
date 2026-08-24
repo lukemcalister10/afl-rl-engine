@@ -1,0 +1,31 @@
+config manifest (gate mode) LOADED  hash eed19a75f775  (84 model vars pinned; ambient cleared)
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+recovered numeraire divisor F = 1.052341217  (from 804 rows; the certified constant is 1.0524)
+
+ROWS CLOSEST TO A ROUNDING BOUNDARY (|frac - 0.5| ascending):
+rank   key                             unrounded  board v     |frac-0.5|
+1      oliver-griffin                  88.501139       88      1.139e-03
+2      riley-garcia                   100.496616      100      3.384e-03
+3      jake-stringer                  103.496159      103      3.841e-03
+4      josh-lai                       424.504236      424      4.236e-03
+5      thomas-burton                  265.494581      265      5.419e-03   <== NAMED BY THE SUPERVISOR
+6      tim-taranto                   2479.507779     2479      7.779e-03
+7      max-michalanney                525.508742      525      8.742e-03
+8      brody-mihocek                   42.509513       43      9.513e-03
+9      kaleb-smith                     59.510291       60      1.029e-02
+10     ollie-murphy                   200.489640      200      1.036e-02
+11     hugh-mccluggage               1576.510803     1576      1.080e-02
+12     fred-rodriguez                  90.511462       91      1.146e-02
+13     nick-driscoll                   90.511462       91      1.146e-02
+14     riley-onley                     90.511462       91      1.146e-02
+15     max-holmes                    7967.511907     7967      1.191e-02
+16     sam-draper                     983.512371      983      1.237e-02
+17     dyson-sharp                   2828.487125     2828      1.288e-02
+18     jai-newcombe                  4431.486838     4431      1.316e-02
+19     elijah-hewett                  497.513599      497      1.360e-02
+20     bailey-williams-wc            2431.513624     2431      1.362e-02
+
+RANKS OF THE SIX NAMED ROWS: [(5, 'thomas-burton'), (76, 'lachie-whitfield'), (124, 'joel-freijah'), (134, 'connor-idun'), (152, 'darcy-cameron'), (669, 'luke-jackson')]
+rows within 1e-6 of a flip : 0
+rows within 1e-9 of a flip : 0

@@ -1,0 +1,19 @@
+config manifest (gate mode) LOADED  hash eed19a75f775  (84 model vars pinned; ambient cleared)
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+static       rows=7117  md5=debdce8b3af1acbac18eda32b9a09e4c  bust_prior mean 54.089 sd 21.262  regimes {'draft': 1227, 'in_scope_no_evidence': 2315, 'out_of_scope_static': 3575}
+conditioned  rows=7117  md5=8329ff9379cf6066c0e7cd73dd6cd2e0  bust_prior mean 52.777 sd 21.465  regimes {'draft': 1227, 'conditioned': 2315, 'out_of_scope_static': 3575}
+
+DAY-0 FEATURE: BYTE-EXACT (max |delta| 0.000e+00 over 2650 draft rows)
+
+=== OUT OF SAMPLE — study A (whole careers held out) is PRIMARY ===
+  studyA     static    RMSE 18.6943   R2 0.5113   [19.5719, 18.2029, 18.3081]
+  studyA     conditioned  RMSE 18.5125   R2 0.5209   [19.3475, 18.1228, 18.0672]
+  studyB     static    RMSE 20.8502   R2 0.4597   [24.8019, 20.3914, 17.3572]
+  studyB     conditioned  RMSE 20.9808   R2 0.4530   [25.1732, 20.3846, 17.3847]
+
+=== bust_prior FEATURE IMPORTANCE (permutation, held-out, study A fold 3) ===
+  static       baseline RMSE 18.3081  -> +7.1504 when bust_prior is shuffled
+  conditioned  baseline RMSE 18.0672  -> +3.6640 when bust_prior is shuffled
+
+WROTE /home/user/arm2_rerun/wordb/wordb_fits.json

@@ -1,0 +1,16 @@
+config manifest (gate mode) LOADED  hash eed19a75f775  (84 model vars pinned; ambient cleared)
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+
+=== THE SIX ROWS THE SUPERVISOR NAMED — UNROUNDED, ON THIS BUILD ===
+key                           ev(raw)      unrounded     my v    their v    move needed
+luke-jackson             10234.972080    9725.906304     9725       9726      -0.406304
+connor-idun               2367.326158    2249.580383     2249       2250      -0.080383
+lachie-whitfield          2225.128085    2114.454939     2114       2115       0.045061
+joel-freijah              2888.223474    2744.569372     2744       2745      -0.069372
+darcy-cameron             1611.563351    1531.407613     1531       1532       0.092387
+thomas-burton              279.390891     265.494581      265        266       0.005419
+
+A ROUNDING-BOUNDARY ARTEFACT WOULD NEED ~1e-9. THESE NEED THE MOVES ABOVE.
+
+wrote /home/user/arm2_rerun/fingerprint.json

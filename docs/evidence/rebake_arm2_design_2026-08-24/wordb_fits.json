@@ -1,0 +1,183 @@
+{
+ "_doc": "WORD B \u2014 FIT THE PEAK MODEL BOTH WAYS AND SHOW THE OWNER. Neither version is adopted here.\n\nOWNER WORD B, verbatim: \"Fit both and show me on word B, please.\"\n\n  FIT (1) STATIC      bust_prior = B(pos, effpk), read from the v838 MODERNIZED table (owner word A).\n                      This is the arm's peak model as word A leaves it.\n  FIT (2) CONDITIONED bust_prior = mu(pos, effpk, tenure, games, cameo_avg), the seam-lever CAND-B\n                      surface (scripts/wordb_cameo_prior.py), applied at TRAINING and at INFERENCE.\n\n  B is the SAME modernized table in both, so the ONLY difference is the conditioning. Fit (2) NESTS\n  fit (1): zero evidence gives A = 0 gives mu == B exactly.\n\nWHAT IS MEASURED\n  * both pickles' md5s, and the training-row census by conditioning regime\n  * DAY-0 BYTE-EXACTNESS between the two fits \u2014 asserted, not assumed. The draft row carries no\n    evidence, so A == 0 identically and the two models must see an IDENTICAL draft feature row.\n    (The two MODELS still differ, because their non-draft training rows differ \u2014 so the assertion is\n    on the FEATURE, which is what the construction actually claims, and the day-0 PRICE is then\n    checked on the built boards.)\n  * out-of-sample score under BOTH protocols, study-A whole-career PRIMARY\n  * the conditioned feature's importance against the static one (permutation importance on held-out\n    rows, so it is a statement about the fitted model and not about the training fit)\n\nREAD-ONLY on the repository: it writes only into the scratch root/workspace it is pointed at.\n",
+ "construction": {
+  "B_table": "v838 MODERNIZED (owner word A) \u2014 the A=0 limit of this surface",
+  "constants": {
+   "M1": 149.7064,
+   "beta": 0.0,
+   "c0": 45.8848,
+   "damp_k": 5.8,
+   "kappa0": 4.681,
+   "r": 0.11,
+   "tauK": 0.4333,
+   "tauM": 2.1061,
+   "w_c": 13.6587
+  },
+  "constants_provenance": "the REPRICING refit on the full primary window (CONSTRUCTION.md section 2); no out-of-sample claim",
+  "construction": "seam-lever CAND-B, evidence-conditioned bust prior",
+  "outside_scope_rule": "A held at 0 => the feature is the static B (declared, not fitted)",
+  "tenure_scope": 4
+ },
+ "day0_feature_byte_exact": {
+  "draft_rows_compared": 2650,
+  "identical": true,
+  "max_abs_delta": 0.0,
+  "verdict": "BYTE-EXACT \u2014 the draft row carries no evidence, so A == 0 and mu == B exactly"
+ },
+ "fits": {
+  "conditioned": {
+   "bust_prior_feature_stats": {
+    "max": 126.1833670008775,
+    "mean": 52.777068676168525,
+    "min": 10.739403097118373,
+    "std": 21.465291538767598
+   },
+   "bust_prior_permutation_importance": {
+    "baseline_rmse": 18.0672,
+    "mean_rmse_increase_when_shuffled": 3.664,
+    "sd": 0.391
+   },
+   "md5": "8329ff9379cf6066c0e7cd73dd6cd2e0",
+   "oos": {
+    "studyA": {
+     "folds": [
+      {
+       "n_test": 1461,
+       "n_train": 2902,
+       "r2": 0.459,
+       "rmse": 19.3475
+      },
+      {
+       "n_test": 1446,
+       "n_train": 4363,
+       "r2": 0.5564,
+       "rmse": 18.1228
+      },
+      {
+       "n_test": 1308,
+       "n_train": 5809,
+       "r2": 0.5472,
+       "rmse": 18.0672
+      }
+     ],
+     "mean_r2": 0.5209,
+     "mean_rmse": 18.5125
+    },
+    "studyB": {
+     "folds": [
+      {
+       "n_test": 1273,
+       "n_train": 795,
+       "r2": 0.3476,
+       "rmse": 25.1732
+      },
+      {
+       "n_test": 1556,
+       "n_train": 1570,
+       "r2": 0.4802,
+       "rmse": 20.3846
+      },
+      {
+       "n_test": 1611,
+       "n_train": 2583,
+       "r2": 0.5311,
+       "rmse": 17.3847
+      }
+     ],
+     "mean_r2": 0.453,
+     "mean_rmse": 20.9808
+    }
+   },
+   "pkl": "/home/user/arm2_rerun/wordb/peak_model_v4.wordb_conditioned.pkl",
+   "regime_census": {
+    "conditioned": 2315,
+    "draft": 1227,
+    "out_of_scope_static": 3575
+   },
+   "rows": 7117
+  },
+  "static": {
+   "bust_prior_feature_stats": {
+    "max": 101.54,
+    "mean": 54.088815512154,
+    "min": 26.39,
+    "std": 21.262076199026495
+   },
+   "bust_prior_permutation_importance": {
+    "baseline_rmse": 18.3081,
+    "mean_rmse_increase_when_shuffled": 7.1504,
+    "sd": 0.4624
+   },
+   "md5": "debdce8b3af1acbac18eda32b9a09e4c",
+   "oos": {
+    "studyA": {
+     "folds": [
+      {
+       "n_test": 1461,
+       "n_train": 2902,
+       "r2": 0.4464,
+       "rmse": 19.5719
+      },
+      {
+       "n_test": 1446,
+       "n_train": 4363,
+       "r2": 0.5524,
+       "rmse": 18.2029
+      },
+      {
+       "n_test": 1308,
+       "n_train": 5809,
+       "r2": 0.535,
+       "rmse": 18.3081
+      }
+     ],
+     "mean_r2": 0.5113,
+     "mean_rmse": 18.6943
+    },
+    "studyB": {
+     "folds": [
+      {
+       "n_test": 1273,
+       "n_train": 795,
+       "r2": 0.3667,
+       "rmse": 24.8019
+      },
+      {
+       "n_test": 1556,
+       "n_train": 1570,
+       "r2": 0.4798,
+       "rmse": 20.3914
+      },
+      {
+       "n_test": 1611,
+       "n_train": 2583,
+       "r2": 0.5326,
+       "rmse": 17.3572
+      }
+     ],
+     "mean_r2": 0.4597,
+     "mean_rmse": 20.8502
+    }
+   },
+   "pkl": "/home/user/arm2_rerun/wordb/peak_model_v4.wordb_static.pkl",
+   "regime_census": {
+    "draft": 1227,
+    "in_scope_no_evidence": 2315,
+    "out_of_scope_static": 3575
+   },
+   "rows": 7117
+  }
+ },
+ "oos_reading": "study A (whole careers held out) is the PRIMARY protocol, per the arm's own FB2 finding: study B's as-of-year split shares 76-100%% of its test players with its training set, so it rewards a model that has already seen the player. Both are reported; only study A is a statement about a player the model has never seen.",
+ "peak_model_hyperparameters": {
+  "l2_regularization": 2.0,
+  "learning_rate": 0.04,
+  "max_depth": 5,
+  "max_iter": 600,
+  "min_samples_leaf": 30,
+  "random_state": 0
+ },
+ "table_key": "modern",
+ "table_md5_as_written": null,
+ "table_source": "/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/bustpt/tables.json"
+}

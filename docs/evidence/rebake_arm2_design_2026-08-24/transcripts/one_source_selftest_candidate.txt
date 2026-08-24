@@ -22,7 +22,7 @@ boot-store guard (Guard 5) PASS  [one_source_selftest]  store fb640ca0 == pinned
   PASS board active set == engine active set, key-for-key
   PASS every board v == round(engine gated ev / 1.0524) — numéraire display (F1); mismatches=0 []
 === (3) BOOK PARITY (F2): book cur == board v for shared players ===
-  FAIL every shared board v == round(book cur / 1.0524) — numéraire display (F2); mismatches=798 [('nick-daicos', 11518, 9929), ('harry-sheezel', 12380, 10604), ('nasiah-wanganeen-milera', 10196, 9175), ('luke-jackson', 10738, 9725), ('will-ashcroft', 7714, 6741), ('max-holmes', 8847, 7967), ('bailey-smith', 7033, 5765), ('zak-butters', 7464, 6536)]
+  FAIL every shared board v == round(book cur / 1.0524) — numéraire display (F2); mismatches=798 [('harry-sheezel', 12380, 10604), ('nick-daicos', 11518, 9929), ('luke-jackson', 10738, 9726), ('nasiah-wanganeen-milera', 10196, 9175), ('will-ashcroft', 7714, 6741), ('max-holmes', 8847, 7967), ('bailey-smith', 7033, 5765), ('josh-treacy', 7284, 5781)]
        (2 board players outside the cohort book, _pvc_exclude: ['adam-treloar', 'jeremy-cameron'])
 === (4) DATA GROUND TRUTH: Kako + Bontempelli regenerated from source ===
   PASS exactly one isaac-kako in the store
@@ -40,7 +40,7 @@ boot-store guard (Guard 5) PASS  [one_source_selftest]  store fb640ca0 == pinned
   PASS flex: at most ONE alternate per row (single-valued, never a list); offenders=[]
   PASS flex: blend params register-consistent (alt in vocab, 0<p_dual<=100, alt!=primary); offenders=[]
 === (6) LEG A — iso_corr EVIDENCE-FADE + ISO MONOTONIZATION (item 132; RL_ISOFADE) ===
-  FAIL LEG A fade: zero-evidence (Y=debutyr-1, E_q==0) => iso_eff == iso_corr, unchanged (sample 80; ('nick-daicos', 'iso_eff!=iso_corr at w=0'))
+  FAIL LEG A fade: zero-evidence (Y=debutyr-1, E_q==0) => iso_eff == iso_corr, unchanged (sample 80; ('harry-sheezel', 'iso_eff!=iso_corr at w=0'))
   PASS LEG A fade: saturated player scott-pendlebury (E_q=20.0) iso_eff=1.0000 ~= 1.0 (|d|<0.02)
   PASS LEG A monotone: ISO[pos] multiplier non-increasing in pick, every position (violations=[])
 === (7) LEG B — L-RECENCY invariant (R105.5) + ρ FORBIDDEN-LIST (R105.4); halt-not-warn ===
@@ -130,7 +130,7 @@ boot-store guard (Guard 5) PASS  [one_source_selftest]  store fb640ca0 == pinned
   PASS curve artifact self-declares pin(1)=3000 + strict descent
   PASS R104.5 posture discounts EXACT {0.10/0.15/0.05} in the board (got {'balanced': 0.1, 'contender': 0.15, 'rebuilder': 0.05})
   PASS G-Y0 NATIONAL CURVE 1-64 |comp-weighted mean V0 - curve| = 0.002% <= 2% HARD (n=1329 over 64 picks)
-  UNMEASURED  G-Y0 POOL leg: comp-weighted mean v0_start sits +185.712% vs the carried-over pool level 237 (n=763, mean 677.1). REPORTED, NOT GATED, and NOT a licence to move the level.
+  UNMEASURED  G-Y0 POOL leg: comp-weighted mean v0_start sits +185.715% vs the carried-over pool level 237 (n=763, mean 677.1). REPORTED, NOT GATED, and NOT a licence to move the level.
               READ THIS BEFORE ACTING ON THAT NUMBER — it is NOT evidence the pool is priced low:
                 - it is a mean of v0_start, a ZERO-EVIDENCE PEDIGREE projection, not of realised output;
                 - within this population that projection is INVERTED: among matured pool entrants the
@@ -228,8 +228,8 @@ boot-store guard (Guard 5) PASS  [one_source_selftest]  store fb640ca0 == pinned
 SELF-TEST FAILED: 17 check(s)
   - GUARD 1: s4_matrix.json is read-only (mode 644)
   - GUARD 2: s4_matrix.json stamp == current source md5 fb640ca0
-  - every shared board v == round(book cur / 1.0524) — numéraire display (F2); mismatches=798 [('nick-daicos', 11518, 9929), ('harry-sheezel', 12380, 10604), ('nasiah-wanganeen-milera', 10196, 9175), ('luke-jackson', 10738, 9725), ('will-ashcroft', 7714, 6741), ('max-holmes', 8847, 7967), ('bailey-smith', 7033, 5765), ('zak-butters', 7464, 6536)]
-  - LEG A fade: zero-evidence (Y=debutyr-1, E_q==0) => iso_eff == iso_corr, unchanged (sample 80; ('nick-daicos', 'iso_eff!=iso_corr at w=0'))
+  - every shared board v == round(book cur / 1.0524) — numéraire display (F2); mismatches=798 [('harry-sheezel', 12380, 10604), ('nick-daicos', 11518, 9929), ('luke-jackson', 10738, 9726), ('nasiah-wanganeen-milera', 10196, 9175), ('will-ashcroft', 7714, 6741), ('max-holmes', 8847, 7967), ('bailey-smith', 7033, 5765), ('josh-treacy', 7284, 5781)]
+  - LEG A fade: zero-evidence (Y=debutyr-1, E_q==0) => iso_eff == iso_corr, unchanged (sample 80; ('harry-sheezel', 'iso_eff!=iso_corr at w=0'))
   - #326 level IRE reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 14 live entrants re-price when the level moves)
   - #326 level ND65+ reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 28 live entrants re-price when the level moves)
   - #326 level PDA reaches a real entrant's BOARD price — NO LIVE ENTRANT RE-PRICES via the - (board v=-; 0 of 15 live entrants re-price when the level moves)

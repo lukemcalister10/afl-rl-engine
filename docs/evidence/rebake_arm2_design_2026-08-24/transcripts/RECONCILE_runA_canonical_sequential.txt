@@ -1,0 +1,20 @@
+config manifest (gate mode) LOADED  hash eed19a75f775  (84 model vars pinned; ambient cleared)
+CONFIG ACCEPTED eed19a75f775  (trusted /home/user/arm2_rerun/root/config_manifest.py)
+PROVENANCE {"RL_FV_env": "/home/user/arm2_rerun/root/engine/forward_valuation", "config_manifest_identity": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1", "config_manifest_path": "/home/user/arm2_rerun/root/data/model_config.json", "distribution_pricing_md5": "33e07a9ee66a29e9d8ef3dc45cca52f6", "fv_identity": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345", "fv_identity_expected": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345", "resolved_fv_dir": "/home/user/arm2_rerun/root/engine/forward_valuation", "rl_model_md5": "6fe7c4155866d80e8045bed2d3bf2802", "rl_model_path": "/home/user/arm2_rerun/wsA/rl_after/rl_model.py"}
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+LOADED-PROVENANCE OK  fv_modules=8 rl_model=/home/user/arm2_rerun/wsA/rl_after/rl_model.py
+L7 ADOPTED-CURVE REPOINT: shipped PVC = pvc_curve_v2.json (pick1=3000, national curve 1-64 strictly decreasing, pool index 65 = 237, ÷F=1.0524 on players)
+#326 PER-DIVISION ENTRY LEVELS (N43 signed, read verbatim from pvc_curve_v2.json; pool_value 237.2 is NOT a player price): IRE 106 · MSD 337 [MSD completion optimism +4.7-8.4% (travels with the MSD level, printed beside it wherever it is shown)] · ND65+ 297 · PDA 192 · PDN 96 · PDS 56 · RD:KPD 369 · RD:KPF 206 · RD:MID 290 · RD:RUCK 257 · RD:SD 245 · RD:SF 218 · SSP 309 · UNR 65
+NUMÉRAIRE GUARD: PASS — shipped pick-1 = 3000 (UNCONDITIONAL standing law, register v30 item 17)
+PRINTED-DAY-0 ASSERT: 86 of 86 day-0/sitter rows print EXACTLY round(derived v0 x sitter fade D(c)) x numeraire — identity held on the WRITTEN board, tolerance 0. (ORDER 29 P12 read 0 of 46.)
+L7 NUMÉRAIRE RE-BASE ÷1.0524: order preserved (no strict inversion; 202 rounding ties), 10/10 anchor ratios <0.2%
+EXPORT ATTRIBUTION: loaded vPrev/levers for 804 keys (base sum=723075, from certified stage boards)
+FUT-LABEL ASSERTION: PASS — 87 dual rows carry the true primary/alternate on the board
+ZERO-EMPTY-CLUB ACCEPTANCE: PASS — 0 blank club across 1002 exported rows (active 804 + back 198)
+PARITY GATE PASS: all 804 active board values == engine gated ev() (matched by key, eps=0)
+OWNER OVERRIDE applied (display-only): will-brodie ×0.50 -> displayed 58 (of the REBASED value; engine v untouched; vRaw model figure stamped)
+LEG F5 ENTRANT LAYER (RL_LEGF=1): 18 clubs · §2.viii sealed intake 56773 PVC (draft 49595 + mech 7178, 103.4 slots/yr, seal ccc26a9e) · +1 Δ=+56773 · +2 Δ=+56773 · k=0 phantom=NONE
+exported active=804 cohort=1974 | mechanisms=7 categories analysed | board stamped src=fb640ca0 (read-only)
+CAT_BY_RANGE Academy: {'1-10': 1182, '11-20': 102, '21-30': 1879, '31-45': -72, '46-64': -46, 'Pool': -185}
+CAT_BY_RANGE Open   : {'1-10': 62, '11-20': 23, '21-30': 78, '31-45': -29, '46-64': -66, 'Pool': 25}

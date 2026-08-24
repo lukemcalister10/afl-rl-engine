@@ -1,4 +1,92 @@
 {
+ "ERRATUM_2026-08-24_mixed_peak_model": {
+  "also_owed": "ARM 1's candidate-root pattern (and this arm's ARM 2 extension of it) swaps peak_model_v4 and pvc_snapshot into the ROOT, where the engine never reads them. Either the builders should also seed the workspace, or the workspace seeding step must be documented as part of the pattern. As written, a candidate root's peak-model swap is silently inert.",
+  "determinism_established_along_the_way": {
+   "A1_sweep_on_the_ARM_2_STACK": "all four kernels build the same board \u2014 the exact-monotone estimator stack is kernel-invariant on this box, the same property expected_boot.json records for the incumbent stack (\"A1 PROVEN: native/SkylakeX == forced-Haswell == forced-Prescott(SSE) == forced-Nehalem(SSE4.2)\"). There is NO build non-determinism on the new estimator stack.",
+   "builds_agreeing_at_a6c47317_on_this_box": 7,
+   "levers_tested_and_eliminated": [
+    "concurrency (3 concurrent exports vs sequential)",
+    "PYTHONHASHSEED unset / 0 / 12345",
+    "OPENBLAS_CORETYPE native-SkylakeX / Haswell / Nehalem / Prescott"
+   ]
+  },
+  "figures_that_do_NOT_depend_on_the_board_file_or_the_peak_model": "V3/V4 census, the full-design census, the must-move legs 1 and 2, the pinball monitor, the FB2 diagnosis, the whole out-of-sample selection, fit-twice, byte-unmoved and the non-vacuity proofs ALL read the STORE and the BAND/CEILING artifacts and compute through cm/q97m predictions directly \u2014 none of them opens a board file and none of them touches peak_model_v4. They are UNAFFECTED and stand exactly as filed. Confirmed by inspection: the only script in either arm's evidence tree that opens a board file is movers.py.",
+  "how_it_was_found": "The supervisor's independent rebuild produced 6bcf61b7 and named exactly six +1 rows. This seat first tested and ELIMINATED concurrency, PYTHONHASHSEED (three seeds) and the OpenBLAS kernel (the estate's own A1 sweep: native/SkylakeX, forced Haswell, Nehalem, Prescott) \u2014 seven builds, all a6c47317 \u2014 then measured that the six rows were NOT on a rounding knife-edge (they needed raw ev() moves of 1.4e-5 to 1.2e-4 relative, seven orders of magnitude above float epsilon, ALL in the same direction). That ruled out numeric noise and pointed at an input. An in-process input fingerprint then showed peak_model_v4 in the workspace reading f305fe53 \u2014 the live model. Re-seeding the workspace FROM THE CANDIDATE ROOT reproduced 6bcf61b7 EXACTLY.",
+  "the_gap_it_exposes": "This arm shipped a COHERENCE HALT that asserts the band and the ceiling declare the same feature contract \u2014 and it would not have caught this, because the peak model carries no contract and is loaded by a third path with a different root. The guard covers two of the three fitted artifacts the board is made of. That is a real hole in this seat's own guard and it is the same class as register v834's F7. Widening it to the peak model and the pvc_snapshot is owed.",
+  "the_six_rows_are_not_a_knife_edge": {
+   "connor-idun": {
+    "ev_raw": 2367.326158,
+    "relative": 2.01e-05,
+    "rise_needed": 0.047642,
+    "unrounded": 2249.45473
+   },
+   "darcy-cameron": {
+    "ev_raw": 1611.563351,
+    "relative": 0.000116,
+    "rise_needed": 0.187249,
+    "unrounded": 1531.322074
+   },
+   "joel-freijah": {
+    "ev_raw": 2888.223474,
+    "relative": 3.06e-05,
+    "rise_needed": 0.088326,
+    "unrounded": 2744.416072
+   },
+   "lachie-whitfield": {
+    "ev_raw": 2225.128085,
+    "relative": 7.72e-05,
+    "rise_needed": 0.171715,
+    "unrounded": 2114.336835
+   },
+   "luke-jackson": {
+    "ev_raw": 10234.97208,
+    "relative": 1.41e-05,
+    "rise_needed": 0.14412,
+    "unrounded": 9725.363056
+   },
+   "note": "published because the first instinct \u2014 \"rounding boundary\" \u2014 is wrong and would have been a comfortable place to stop. Raw ev() rise required for the supervisor's value to print, on this build, against the certified divisor 1.0524:",
+   "reading": "float epsilon here is ~1e-12 relative; these needed 1e-5 to 1e-4, all in the same direction. A real model difference, correctly diagnosed as an input swap.",
+   "thomas-burton": {
+    "ev_raw": 279.390891,
+    "relative": 7.63e-05,
+    "rise_needed": 0.021309,
+    "unrounded": 265.479752
+   }
+  },
+  "verdict": "THE SUPERVISOR'S BOARD IS CORRECT. 6bcf61b7478a7093bd88b78b518afb5f is the ARM 2 candidate.",
+  "what_changed_in_the_numbers": {
+   "NO_CONCLUSION_CHANGES": "not one mover count shifted, no headline figure moved beyond the fourth decimal, and every verdict in the battery stands.",
+   "T1_attribution": {
+    "T1_abs_move": "8,609 -> 8,611",
+    "T1_share_pct": "UNCHANGED at 22.16%",
+    "store_and_design_alone": "38,746 -> 38,738"
+   },
+   "board": {
+    "now": "6bcf61b7478a7093bd88b78b518afb5f",
+    "was_FILED": "a6c47317d24b228af482ad5220104531 (MIXED \u2014 withdrawn)"
+   },
+   "board_T1_off": {
+    "now": "32732153abdb0c82e299c7e47a9e480a",
+    "was_FILED": "10608b74d1c0095cf56e9bf59ff2dfea (MIXED \u2014 withdrawn)"
+   },
+   "movers_vs_ARM1_the_design_diff": {
+    "median_abs_pct": "UNCHANGED at 4.87%",
+    "mint": "-17,569 (-2.4879%) -> -17,563 (-2.4871%)",
+    "sum_abs_move": "41,387 -> 41,383",
+    "up_down_flat": "UNCHANGED at 290 / 349 / 165"
+   },
+   "movers_vs_live": {
+    "median_abs_pct": "UNCHANGED at 4.37%",
+    "mint": "-11,251 (-1.6076%) -> -11,245 (-1.6068%)",
+    "pool_total": "688,606 -> 688,612",
+    "sum_abs_move": "38,857 -> 38,855",
+    "up_down_flat": "UNCHANGED at 301 / 347 / 156"
+   },
+   "must_move_leg_3": "STILL HOLDS on the coherent build: board (b) ratchet-ON = 6bcf61b7 = board (c) ratchet-retired, byte-identical.",
+   "rows_that_moved": "exactly six, each +1: luke-jackson, connor-idun, lachie-whitfield, joel-freijah, darcy-cameron, thomas-burton"
+  },
+  "what_was_wrong": "The board this seat first filed, a6c47317, was a MIXED BOARD: candidate band + candidate ceiling + LIVE peak_model_v4 (f305fe53) + LIVE pvc_snapshot (ade79790). The candidate root carried the candidate peak model at engine/rl_after/peak_model_v4.pkl, but rl_model.py:1232-4 loads peak_model_v4.pkl and pvc_snapshot.json BY RELATIVE PATH FROM THE ENGINE WORKSPACE CWD, not from RL_REPO \u2014 so the root swap was INERT for those two artifacts and the workspace's copies (seeded from the worktree, i.e. live) were used instead."
+ },
  "FB4_private_contract_selftest": {
   "exact_negative_steps": 0,
   "measured_at_every_fit_site": "arm2-design/1",
@@ -43,10 +131,10 @@
    "worst_row": null
   },
   "leg_3_board_b_equals_board_c": {
-   "board_b_ratchet_on": "a6c47317d24b228af482ad5220104531",
-   "board_c_ratchet_retired": "a6c47317d24b228af482ad5220104531",
-   "how_b_was_built": "a SCRATCH engine (scripts/make_ratchet_engine.py) with the ORDER 44 block RESTORED FROM GIT at 4124fd6 and ONLY its knot reader generalised to the new estimator's bin thresholds \u2014 four lines, in the evidence tree, never in the shipped engine",
-   "verdict": "BYTE-IDENTICAL \u2014 prereg falsifier FB3 does not fire"
+   "board_b_ratchet_on": "6bcf61b7478a7093bd88b78b518afb5f",
+   "board_c_ratchet_retired": "6bcf61b7478a7093bd88b78b518afb5f",
+   "note": "both boards rebuilt after the mixed-peak-model erratum; the proof is unaffected because both legs always carried the same peak model as each other.",
+   "verdict": "BYTE-IDENTICAL on the COHERENT build \u2014 prereg falsifier FB3 does not fire"
   },
   "verdict": "COMPLETE. The shipped ratchet CANNOT LOAD against the design estimator (AttributeError, reproduced live); with the ratchet generalised so it CAN run, it finds nothing to fix on any of the 804 board rows at 0.000000000000; the same instrument on the SHIPPED artifacts moves 752 of 804 rows by up to 2.41, so it is proven able to see work; and the board built with the ratchet on is byte-identical to the board built with the code deleted."
  },
@@ -547,21 +635,21 @@
  "T1_attribution": {
   "T1_alone": {
    "down": 308,
-   "flat": 248,
-   "median_abs_pct": 0.7874015748031497,
+   "flat": 249,
+   "median_abs_pct": 0.7772020725388601,
    "mint_abs": -571,
-   "mint_pct": -0.08285244574325609,
-   "sum_abs_move": 8609,
-   "up": 248
+   "mint_pct": -0.08285172443313314,
+   "sum_abs_move": 8611,
+   "up": 247
   },
-  "T1_share_of_total_abs_move_pct": 22.155596160280002,
+  "T1_share_of_total_abs_move_pct": 22.16188392742247,
   "_caution": "the two legs do NOT sum to the whole \u2014 the pricing chain is non-linear, so they BOUND the attribution rather than decompose it",
   "comparison_ARM1": "ARM 1 measured T1 at 37.86% of its total movement against a prereg prediction of <15% and filed the falsification. On ARM 2 the same rule is 22.16% of a LARGER total \u2014 T1 moves about the same number of points (8,609 vs 11,687) against much more movement overall.",
   "pct_of_training_rows": 0.474,
   "rows_removed_by_T1": 63,
   "rows_with_T1": 13220,
   "rows_without_T1": 13283,
-  "store_and_design_alone_T1_held_out": 38746
+  "store_and_design_alone_T1_held_out": 38738
  },
  "V3_LEVEL_CENSUS_the_arms_whole_point": {
   "RAW": {
@@ -743,12 +831,16 @@
   }
  },
  "boards": {
+  "WITHDRAWN_mixed": {
+   "10608b74d1c0095cf56e9bf59ff2dfea": "T1-off, MIXED peak model",
+   "a6c47317d24b228af482ad5220104531": "candidate, MIXED peak model"
+  },
   "arm1_candidate_for_the_design_diff": "02a554b5d0886f047a607b23b8bfdcfd",
-  "candidate_T1_off_attribution": "10608b74d1c0095cf56e9bf59ff2dfea",
-  "candidate_c_ratchet_RETIRED": "a6c47317d24b228af482ad5220104531",
+  "candidate_T1_off_attribution": "32732153abdb0c82e299c7e47a9e480a",
+  "candidate_c_ratchet_RETIRED": "6bcf61b7478a7093bd88b78b518afb5f",
   "live": "82fcd8bb1e552b927299b5702122e321",
   "parity_gate": "PASS on all three built boards \u2014 804 active values == engine gated ev(), eps=0",
-  "twin_b_ratchet_STILL_ON": "a6c47317d24b228af482ad5220104531"
+  "twin_b_ratchet_STILL_ON": "6bcf61b7478a7093bd88b78b518afb5f"
  },
  "branch": "rebake/arm2-design, based on rebake/arm1-store-alone tip 4124fd6, then MERGED with origin/main 64aadee (the Graham dual landing) on the supervisor's store signal",
  "byte_unmoved": {
@@ -897,10 +989,10 @@
   "T1_alone_abs": -571,
   "gate_status": "WAIVED as a gate at v830 (owner word) \u2014 MEASURED AND REPORTED here",
   "rulebook_threshold_reference": "law 9 measurement threshold band_scar = 200 (rulebook PART 3)",
-  "vs_arm1_abs": -17569,
-  "vs_arm1_pct": -2.487910220554395,
-  "vs_live_abs": -11251,
-  "vs_live_pct": -1.607614126885921
+  "vs_arm1_abs": -17563,
+  "vs_arm1_pct": -2.4870605728041917,
+  "vs_live_abs": -11245,
+  "vs_live_pct": -1.6067568088909592
  },
  "movers_by_experience_vs_live": {
   "games 23-80": {
@@ -935,10 +1027,10 @@
   "down": 349,
   "flat": 165,
   "median_abs_pct": 4.869127900331466,
-  "mint_abs": -17569,
-  "mint_pct": -2.487910220554395,
+  "mint_abs": -17563,
+  "mint_pct": -2.4870605728041917,
   "n": 804,
-  "sum_abs_move": 41387,
+  "sum_abs_move": 41383,
   "top_down": [
    [
     "bailey-smith",
@@ -1015,9 +1107,9 @@
    [
     "luke-jackson",
     8738,
-    9725,
-    987,
-    11.295490959029527
+    9726,
+    988,
+    11.30693522545205
    ],
    [
     "nasiah-wanganeen-milera",
@@ -1083,7 +1175,7 @@
     6.145038167938932
    ]
   ],
-  "total_new": 688606,
+  "total_new": 688612,
   "total_old": 706175,
   "up": 290
  },
@@ -1091,10 +1183,10 @@
   "down": 347,
   "flat": 156,
   "median_abs_pct": 4.367745876603543,
-  "mint_abs": -11251,
-  "mint_pct": -1.607614126885921,
+  "mint_abs": -11245,
+  "mint_pct": -1.6067568088909592,
   "n": 804,
-  "sum_abs_move": 38857,
+  "sum_abs_move": 38855,
   "top_down": [
    [
     "lachlan-ash",
@@ -1192,9 +1284,9 @@
    [
     "luke-jackson",
     9285,
-    9725,
-    440,
-    4.73882606354335
+    9726,
+    441,
+    4.749596122778676
    ],
    [
     "nasiah-wanganeen-milera",
@@ -1239,7 +1331,7 @@
     9.870918754745635
    ]
   ],
-  "total_new": 688606,
+  "total_new": 688612,
   "total_old": 699857,
   "up": 301
  },

@@ -1,0 +1,233 @@
+{
+ "band_n_features_in": 12,
+ "ceiling_n_features_in": 12,
+ "config_sha256": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+ "design_spec_on_the_loaded_band": {
+  "age_hill": {
+   "a_star": 21.5,
+   "u_index": 10,
+   "v_index": 11
+  },
+  "construction": "rebake-arm2-exact-monotone/1",
+  "exact_monotone_level": true,
+  "hyperparameters": {
+   "learning_rate": 1.0,
+   "max_depth": 4,
+   "max_iter": 800,
+   "min_samples_leaf": 25
+  },
+  "level_index": 9,
+  "monotonic_cst": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   -1,
+   -1
+  ],
+  "n_features": 12,
+  "note": "cm_400 \u2014 the five-quantile PAR-centred band. Settings SELECTED OUT OF SAMPLE on the grids declared in the prereg; never carried as literals.",
+  "quantiles": [
+   0.1,
+   0.3,
+   0.5,
+   0.7,
+   0.9
+  ],
+  "ratchet": "RL_O44_LVLMONO RETIRED \u2014 law 3 is a property of this fit, not of a read-site repair",
+  "recency_anchor": "end of training window",
+  "recency_halflife_years": 12.0
+ },
+ "design_spec_on_the_loaded_ceiling": {
+  "age_hill": {
+   "a_star": 21.5,
+   "u_index": 10,
+   "v_index": 11
+  },
+  "construction": "rebake-arm2-exact-monotone/1",
+  "exact_monotone_level": true,
+  "hyperparameters": {
+   "learning_rate": 1.5,
+   "max_depth": 4,
+   "max_iter": 1600,
+   "min_samples_leaf": 25
+  },
+  "level_index": 9,
+  "monotonic_cst": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   -1,
+   -1
+  ],
+  "n_features": 12,
+  "note": "q97m \u2014 the frozen q97 CEILING (band[5], price6 weight 0.10). Feature contract SHARED with the band (asserted at load); capacity selected on its OWN row population.",
+  "quantiles": [
+   0.97
+  ],
+  "ratchet": "RL_O44_LVLMONO RETIRED \u2014 law 3 is a property of this fit, not of a read-site repair",
+  "recency_anchor": "end of training window",
+  "recency_halflife_years": 12.0
+ },
+ "env": {
+  "MKL_NUM_THREADS": "1",
+  "NUMEXPR_NUM_THREADS": "1",
+  "OMP_NUM_THREADS": "1",
+  "OPENBLAS_CORETYPE": null,
+  "OPENBLAS_NUM_THREADS": "1",
+  "PYTHONHASHSEED": null,
+  "PYTHONPATH": "/home/user/arm2_rerun/wsA/rl_after:/home/claude/rl_vendor",
+  "RL_CM_PKL": "/home/user/arm2_rerun/root/data/cm_400.pkl",
+  "RL_CONFIG_MODE": "gate",
+  "RL_FV": "/home/user/arm2_rerun/root/engine/forward_valuation",
+  "RL_Q97M_PKL": "/home/user/arm2_rerun/root/data/q97m.pkl",
+  "RL_REPO": "/home/user/arm2_rerun/root",
+  "RL_V0SURF_PKL": null
+ },
+ "in_process_md5": {
+  "LTI_REGISTER": "652d83e87780e415a01a2de6d8b3cc57",
+  "board_in_root_rl_build": "82fcd8bb1e552b927299b5702122e321",
+  "bust_prior_table": "5942aa6ad7be1d482eed737997486c70",
+  "cm_loaded_from": "03a05c565bbaa2bf1ec854299f38a200",
+  "engine_head": "53ce2fb777edeeca84a933ea517e670e",
+  "expected_boot": "725b2c8ae47f89c5bb31e51c74bed27f",
+  "model_config": "269d20ab86e3b9d13867987065c757d2",
+  "peak_model_v4": "f305fe5330222f4fa14d3654a0e91ef7",
+  "pvc_snapshot": "ade79790efc8ad4585c2c6800a935eaa",
+  "q97m_repo": "d311282402fbd879b87485a861ce785a",
+  "rl_model_py": "6fe7c4155866d80e8045bed2d3bf2802",
+  "season_state": "fe7b7b9e8c4121f30ac07f2e96e12707",
+  "store": "fb640ca0baf92bbb122b1ad7e25c5a88",
+  "v0surf_out_of_repo": "5dd34ca82735f5c8f021b1c7320df8f8",
+  "v0surf_repo": "5dd34ca82735f5c8f021b1c7320df8f8"
+ },
+ "library": {
+  "numpy": "2.4.4",
+  "python": "3.12.3",
+  "scipy": "1.17.1",
+  "sklearn": "1.8.0"
+ },
+ "numeraire_divisor_recovered": 1.0523412173130515,
+ "resolved_paths": {
+  "cm_load_path": "/home/user/arm2_rerun/root/data/cm_400.pkl",
+  "fv_dir": "/home/user/arm2_rerun/root/engine/forward_valuation",
+  "rl_model_file": "/home/user/arm2_rerun/wsA/rl_after/rl_model.py",
+  "store_file": "/home/user/arm2_rerun/wsA/rl_after/rl_model_data.json",
+  "workspace_cwd": "/home/user/arm2_rerun/wsA/rl_after"
+ },
+ "season_state_values": {
+  "_doc": "AUTHORITATIVE DYNAMIC SEASON STATE. calendar_progress (scheduled-season elapsed) and exposure_pace (empirical durable-sample pace \u2014 NOT calendar) are DISTINCT and both DYNAMIC; the engine reads these values; the derivation policy is immutable (derivation_policy_id).",
+  "as_of_round": 24,
+  "calendar_progress": 1.0,
+  "derivation_policy_id": "39938f68732d85a1369dc151a7f98c33a9cdba0d2f0384e6ecfba2ce608cb899",
+  "exposure_derivation": {
+   "denominator": 22.0,
+   "durable_min_prior_games": 18,
+   "eligible_durable_players": 305,
+   "median_current_games": 20,
+   "raw_ratio": 0.9090909090909091,
+   "released_value": 0.909,
+   "rounding": "round(., 3) then cap 1.0",
+   "scope_denominator": 11.0
+  },
+  "exposure_pace": 0.909,
+  "inprog_year": 2026,
+  "season_total_rounds": 24,
+  "season_year": 2026,
+  "source_store_md5": "fb640ca0baf92bbb122b1ad7e25c5a88"
+ },
+ "the_six_rows": {
+  "connor-idun": {
+   "ev_raw": 2367.326158366308,
+   "my_v": 2249,
+   "relative_rise_needed": -3.573230511551079e-05,
+   "their_v": 2250,
+   "unrounded": 2249.5803826926162,
+   "unrounded_rise_needed_to_print_theirs": -0.08038269261624009
+  },
+  "darcy-cameron": {
+   "ev_raw": 1611.5633513748726,
+   "my_v": 1531,
+   "relative_rise_needed": 6.032833892812702e-05,
+   "their_v": 1532,
+   "unrounded": 1531.4076127225026,
+   "unrounded_rise_needed_to_print_theirs": 0.09238727749743703
+  },
+  "joel-freijah": {
+   "ev_raw": 2888.2234741481807,
+   "my_v": 2744,
+   "relative_rise_needed": -2.5276171724343794e-05,
+   "their_v": 2745,
+   "unrounded": 2744.5693722067613,
+   "unrounded_rise_needed_to_print_theirs": -0.06937220676127254
+  },
+  "lachie-whitfield": {
+   "ev_raw": 2225.1280849138748,
+   "my_v": 2114,
+   "relative_rise_needed": 2.131072583818838e-05,
+   "their_v": 2115,
+   "unrounded": 2114.4549394304886,
+   "unrounded_rise_needed_to_print_theirs": 0.045060569511406356
+  },
+  "luke-jackson": {
+   "ev_raw": 10234.972079667681,
+   "my_v": 9725,
+   "relative_rise_needed": -4.1775462235770106e-05,
+   "their_v": 9726,
+   "unrounded": 9725.906304231521,
+   "unrounded_rise_needed_to_print_theirs": -0.4063042315210623
+  },
+  "thomas-burton": {
+   "ev_raw": 279.3908908827774,
+   "my_v": 265,
+   "relative_rise_needed": 2.040980584509677e-05,
+   "their_v": 266,
+   "unrounded": 265.4945813071426,
+   "unrounded_rise_needed_to_print_theirs": 0.005418692857404039
+  }
+ },
+ "threadpools": [
+  {
+   "architecture": "SkylakeX",
+   "filepath": "/root/rl_venv312/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so",
+   "internal_api": "openblas",
+   "num_threads": 1,
+   "prefix": "libscipy_openblas",
+   "threading_layer": "pthreads",
+   "user_api": "blas",
+   "version": "0.3.31.188.0"
+  },
+  {
+   "architecture": "SkylakeX",
+   "filepath": "/root/rl_venv312/lib/python3.12/site-packages/scipy.libs/libscipy_openblas-6cdc3b4a.so",
+   "internal_api": "openblas",
+   "num_threads": 1,
+   "prefix": "libscipy_openblas",
+   "threading_layer": "pthreads",
+   "user_api": "blas",
+   "version": "0.3.30"
+  },
+  {
+   "filepath": "/root/rl_venv312/lib/python3.12/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+   "internal_api": "openmp",
+   "num_threads": 1,
+   "prefix": "libgomp",
+   "user_api": "openmp",
+   "version": null
+  }
+ ],
+ "v0surf_signature_the_engine_reports": "n/a"
+}
