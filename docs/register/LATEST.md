@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v842 2026-08-24 · **THE SEAM ENGAGEMENT CLOSES — the smooth-construction repricing lands, NO NAMED ROW IS A RESOLVABLE MISPRICING, and the only evidence-backed class effect is the owner's own weak-late harshness reaching the board DOWNWARD.** THE FINAL ROUTE (seat, screened): pricing the construction through naive V(mu) would have been a pure artifact (recovers 26.3% of rea
+# OPEN ITEMS REGISTER · v843 2026-08-24 · **SEAM MODEL V2 IS MEASURED AND THE CONDITIONAL-MODEL ROAD IS CLOSED — the engine passes its seam audit a second time, 0-60; the binding constraint is SAMPLE SIZE, proven, not construction; THE SEAM ORDERING FLOOR is what remains and goes to the owner's word.** THE V2 BUILD (owner's direction "is there a way to iron out the imperfections to make that viabl
 
-(one line per pen; full entry: docs/register/entries/v842.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v843.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
