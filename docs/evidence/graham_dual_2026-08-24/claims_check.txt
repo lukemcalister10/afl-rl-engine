@@ -1,0 +1,25 @@
+====================================================================================================
+CLAIMS CHECK — WILL GRAHAM DUAL-STREAM CORRECTION — store p_dual_stream 90 -> 40 (owner-supplied data field)
+  act type   : store-edit
+  date       : 2026-08-24   base: 17d0ecfe9cadfc053553a831915e5d2af91578a9
+  owner word : Can we please edit Will Graham to be a 40% only SF then in the store and recalculate?
+  tree       : /home/user/afl-rl-engine
+====================================================================================================
+  ACTIVATION  day0_rebase                              off
+
+  OK   file_md5     the published board of record                  md5 82fcd8bb1e552b927299b5702122e321 (claimed 82fcd8bb1e552b927299b5702122e321)
+  OK   file_md5     the store                                      md5 fb640ca0baf92bbb122b1ad7e25c5a88 (claimed fb640ca0baf92bbb122b1ad7e25c5a88)
+  OK   json_field   expected_boot.board                            board = '82fcd8bb1e552b927299b5702122e321' (claimed '82fcd8bb1e552b927299b5702122e321')
+  OK   json_field   expected_boot.engine_head                      engine_head = '3af8c1f7d61275c198a5df70c34608c7' (claimed '3af8c1f7d61275c198a5df70c34608c7')
+  OK   json_field   the round, HELD by a store edit                as_of_round = 24 (claimed 24)
+  OK   json_field   the release seal                               contract_sha256 = 'd059faa92a20be155edd645650a835a8080f8cee6d118e5a0d9353e851c12c16' (claimed 'd059faa92a20be155edd645650a835a8080f8cee6d118e5a0d9353e851c12c16')
+  OK   board_count  board rows                                     active.rows = 804 (claimed 804)
+  OK   gate         release_manifest_check                         exit 0 (expected PASS)
+  OK   gate         release_contract_check                         exit 0 (expected PASS)
+  OK   gate         acceptance_runner                              exit 0 (expected PASS)
+  OK   gate         movers_transition                              exit 0 (expected PASS)
+  OK   gate         movers_ui                                      exit 0 (expected PASS)
+  OK   unmoved      BYTE-UNMOVED by this store-edit                md5 a4ee39f7ec80ee6b6172aa28e0c17aae (claimed a4ee39f7ec80ee6b6172aa28e0c17aae)
+
+CLAIMS: 13 of 13 verified against the tree; 0 shape problem(s)
+VERDICT: GREEN — every claim recomputed and held

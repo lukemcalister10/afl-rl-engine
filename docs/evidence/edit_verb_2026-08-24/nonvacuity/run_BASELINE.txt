@@ -1,0 +1,45 @@
+======================================================================================================
+THE LANDER SELF-TEST — every step broken once, every abort proved (PLAN_v6 2a.3)
+  live tree : /home/user/afl-rl-engine/.claude/worktrees/agent-af67b0c0b090a3645   (READ-ONLY to this self-test; asserted byte-unmoved at the end)
+  sandbox   : /tmp/landing_selftest_4521
+  transcripts: /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/nonvacuity/run_BASELINE
+  base      : HEAD
+======================================================================================================
+sandbox created at /tmp/landing_selftest_4521/sandbox (base 26373ad51aaf)
+
+--- CONTROL: a clean no-op landing in this sandbox must SUCCEED ---
+  PASS control_clean_run            exit 0
+  PASS commit_explicit_paths        5 path(s) committed, all declared: docs/STATE.md, docs/evidence/landing_selftest/SELFTEST_CLAIMS.json, docs/evidence/landing_selftest/claims_check.txt, docs/evidence/landing_selftest/gate_release_contract_check.txt
+
+--- LOCK: a landing must refuse to start while another holder has the lock ---
+  PASS build_lock_refuses           exit 1; the landing refused to become a second writer
+
+--- FAULTS: every step in LEVER_SEQUENCE broken once ---
+
+--- DEPTH: a landing that WROTE pins + column + lineage + contract, then aborted ---
+  PASS abort_restores_writers       11 carrier(s) had been written and were restored: data/expected_boot.json, data/release_contract.json, data/release_lineage.json, data/rl_build/rl_app_data.json, data/rl_build/rl_app_data.json.srcmd5, engine/rl_after/ingestion/pos_rank_history.json
+
+--- ROUND: a clean round rehearsal in this sandbox must SUCCEED (PLAN_v6 2b) ---
+  PASS round_control_clean_run      exit 0
+  PASS round_commit_explicit_paths  6 path(s) committed, all declared: docs/STATE.md, docs/evidence/landing_selftest/MOVERS_R24.html, docs/evidence/landing_selftest/SELFTEST_CLAIMS.json, docs/evidence/landing_selftest/claims_check.txt
+
+--- ROUND FAULTS: every step 2b ADDS, broken once ---
+
+--- EDIT: the six steps that carry the edit, on their own merit (THE EDIT VERB) ---
+  PASS edit_steps_clean_through_contract ONE surgical field edit (will-graham.p_dual_stream 90 -> 89) moved the store daa93053bc2d -> d7f053cf7a79; the board was built FROM it; pins moved ['board', 'store']; the column and the lineage entry were written; the contract re-sealed and PASSED — then the injected fault stopped it at `sibling`
+  PASS edit_lineage_straddles       the entry STRADDLES the edit: source.store daa93053bc2d (measured at the base commit, PRE-edit) -> destination.store d7f053cf7a79 (measured live, POST-edit); source.board 6fd0f7ded2b2 -> destination.board c6a98727dc81. This is the shape register v836's third abort says a pre-committed flip can never produce.
+  PASS edit_abort_restores_store    13 carrier(s) had been written and were restored BYTE-EXACT, the STORE among them (yes); HEAD back at the base: data/expected_boot.json, data/release_contract.json, data/release_lineage.json, data/rl_build/rl_app_data.json, data/rl_build/rl_app_data.json.srcmd5, data/season_state.json
+
+--- EDIT FAULTS: the step the verb ADDS, and the mover assertion only it makes ---
+  PASS edit_fault_store_edit        fault=store_old_mismatch; exit 1; failed_step='store_edit'; the halt NAMES it ('THE OLD VALUE THE SPEC ASSERTS IS NOT THE VALUE IN THE STORE' found); carriers moved after abort: NONE (byte-exact); HEAD back at the base
+  PASS edit_fault_second_mover      fault=second_mover; exit 1; failed_step='build_proofs'; the halt NAMES it ('UNEXPECTED MOVER' found); carriers moved after abort: NONE (byte-exact); HEAD back at the base
+
+--- CLAIMS: the checker's own negative control still fires ---
+  PASS claims_negative_control      CLAIMS SELF-TEST: 11 PASS / 0 FAIL
+  PASS packet_slot_validator        PACKET SELF-TEST: 5 PASS / 0 FAIL
+  PASS live_tree_untouched          every live carrier byte-unmoved across the whole self-test
+
+======================================================================================================
+STEPS BROKEN 2   CAUGHT 2   ABORTED BYTE-EXACT 2
+SELF-TEST: 14 PASS / 0 FAIL
+======================================================================================================

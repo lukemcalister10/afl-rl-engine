@@ -54,6 +54,25 @@ CANONICAL_DIRS = ('scores', os.path.join('docs', 'owner_annotations'))
 _GENERATED = (MANIFEST_MD, MANIFEST_JSON, PURPOSES)
 
 
+def _git_arrival_date(path):
+    """The date the file FIRST ENTERED THE REPOSITORY (its earliest commit's author date,
+    YYYY-MM-DD) — deterministic in every checkout. The previous source, filesystem mtime, was a
+    P4-class defect inside an acceptance check: a fresh clone stamps every file with checkout time,
+    so `check` went red on any new container while asserting nothing about the input itself
+    (register v836-era finding; the repair was queued at v833). Falls back to the epoch sentinel
+    '1970-01-01' only if git cannot answer, which `check` will then surface as a diff."""
+    import subprocess
+    try:
+        out = subprocess.run(['git', '-C', _ROOT, 'log', '--follow', '--format=%as', '--', path],
+                             capture_output=True, text=True, timeout=30)
+        dates = [ln.strip() for ln in out.stdout.splitlines() if ln.strip()]
+        if dates:
+            return dates[-1]
+    except Exception:
+        pass
+    return '1970-01-01'
+
+
 def _hashes(path):
     m, s = hashlib.md5(), hashlib.sha256()
     with open(path, 'rb') as fh:
@@ -100,7 +119,7 @@ def scan(root):
                'md5': md5,
                'sha256': sha,
                'bytes': os.path.getsize(p),
-               'arrived': time.strftime('%Y-%m-%d', time.gmtime(os.path.getmtime(p))),
+               'arrived': _git_arrival_date(p),
                'purpose': purposes.get(name, {}).get('purpose', ''),
                'delivered_by': purposes.get(name, {}).get('delivered_by', ''),
                'canonical_copy': canon[0] if canon else None,

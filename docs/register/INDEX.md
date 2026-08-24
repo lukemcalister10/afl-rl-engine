@@ -1,8 +1,12 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v833**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v837**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v837** (2026-08-24) — `docs/register/entries/v837.md` — **THE EDIT VERB IS LANDED AND THE GRAHAM CORRECTION FLEW THROUGH IT — the general out-of-round edit lane the owner ruled exists, is self-tes
+- **v836** (2026-08-24) — `docs/register/entries/v836.md` — **THE GRAHAM DUAL CORRECTION IS OWNER-RULED, PREREG'D, PROVEN BUILDABLE — AND PARKED ON A REAL CAPABILITY GAP: the lever lander has NO LANE 
+- **v835** (2026-08-24) — `docs/register/entries/v835.md` — **ARM 1 EXPLAINED TO THE OWNER — the movers decomposed by supervisor-built attribution boards after the analysis seats were lost to persiste
+- **v834** (2026-08-24) — `docs/register/entries/v834.md` — **REBAKE WEEK ARM 1 — THE STORE-ALONE ARM IS BUILT, SCREENED, RECONCILED AND SHOWN TO THE OWNER; the screen itself exposed F7, a hole at the
 - **v833** (2026-08-23) — `docs/register/entries/v833.md` — **THE COMPACTION HANDOVER — the owner compacts before the rebake week; this entry is the successor's spec and it is BINDING.** SUCCESSOR FIR
 - **v832** (2026-08-23) — `docs/register/entries/v832.md` — **ROUND 24 IS LIVE — THE ONE-WORD ROUND DELIVERED ON THE ROUND LANDER'S FIRST REAL FLIGHT (landing commit adf380b, chain pushed).** The owne
 - **v831** (2026-08-21) — `docs/register/entries/v831.md` — **ALL SIX REBAKE DECISIONS ARE NOW RULED — the rebake week is fully specified, pending R24. Owner words verbatim (2026-08-21):** D1 = "Exact

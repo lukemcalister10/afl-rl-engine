@@ -1,7 +1,35 @@
 {
   "continues_in": "docs/register/entries",
-  "coverage_entries": 212,
+  "coverage_entries": 216,
   "entries": [
+    {
+      "by": "explicit",
+      "date": "2026-08-24",
+      "headline": "**THE GRAHAM DUAL CORRECTION IS OWNER-RULED, PREREG'D, PROVEN BUILDABLE \u2014 AND PARKED ON A REAL CAPABILITY GAP: the lever lander has NO LANE for an out\u2026",
+      "hits": {
+        "DECLARED": [
+          "**THE GRAHAM DUAL CORRECTION IS OWNER-RULED, PREREG'D, PROVEN BUILDABLE \u2014 AND PARKED ON A REAL CAPABILITY GAP: the lever lander has NO LANE for an out-of-round store edit.** THE RULING (owner words verbatim, 2026-08-24):\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 836
+    },
+    {
+      "by": "explicit",
+      "date": "2026-08-24",
+      "headline": "**REBAKE WEEK ARM 1 \u2014 THE STORE-ALONE ARM IS BUILT, SCREENED, RECONCILED AND SHOWN TO THE OWNER; the screen itself exposed F7, a hole at the one site \u2026",
+      "hits": {
+        "DECLARED": [
+          "**REBAKE WEEK ARM 1 \u2014 THE STORE-ALONE ARM IS BUILT, SCREENED, RECONCILED AND SHOWN TO THE OWNER; the screen itself exposed F7, a hole at the one site that writes the board.** THE ARM (branch pushed as `rebake/arm1-store-\u2026"
+        ]
+      },
+      "labels": [
+        "DECLARED"
+      ],
+      "version": 834
+    },
     {
       "by": "explicit",
       "date": "2026-08-23",
@@ -2004,7 +2032,7 @@
       "version": 622
     }
   ],
-  "incidents": 116,
+  "incidents": 118,
   "register": "docs/OPEN_ITEMS_REGISTER.md",
   "rules": [
     "CORRECTION",

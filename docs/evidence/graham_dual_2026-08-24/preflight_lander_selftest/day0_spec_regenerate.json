@@ -1,0 +1,9 @@
+{
+  "act": "SELF-TEST \u2014 the carried day-0 emitter",
+  "day0_rebase": {
+    "state": "on",
+    "reference": "docs/evidence/landing_selftest/DAY0_DOCTORED_REF.json",
+    "new_reference": "docs/evidence/landing_selftest/DAY0_SELFTEST.json",
+    "activated_by": "SELF-TEST FIXTURE \u2014 no owner word exists or is claimed."
+  }
+}

@@ -24,7 +24,7 @@ import json
 import os
 
 SCHEMA_VERSION = 1
-ACT_KINDS = ('lever-landing', 'round-advance')
+ACT_KINDS = ('lever-landing', 'round-advance', 'store-edit')
 
 #: Every identity the lander tracks in `data/expected_boot.json`. `moves`/`unmoved` must partition it.
 TRACKED_IDENTITIES = ('board', 'store', 'engine_head', 'rl_model', 'fv', 'config', 'register',
@@ -53,6 +53,15 @@ REQUIRED_PREREG = ('path', 'board_after')
 #: the board the advance STARTS from is a fact of the tree the act was written against.
 REQUIRED_ROUND_EXPECTED = ('round', 'listed', 'resolved', 'absent_dnp', 'scores_sha256',
                            'ledger_before', 'ledger_delta')
+
+#: THE STORE EDIT'S DECLARATION — the four slots one field edit needs, and no fifth.
+#:
+#: `old` IS AN ASSERTION, NOT A HINT. The lander reads the named row, compares the named field to
+#: `old`, and ABORTS on a mismatch — it never repairs, never widens the match, and never edits a row
+#: it could not find exactly once. That is the exact-string law in the shape a store edit takes it
+#: (ERRATUM E2 class), and it is why the edit is declared as {key, field, old, new} rather than as a
+#: patch: a patch says what to write, a declaration says what must be TRUE before anything is written.
+REQUIRED_EDIT_FIELDS = ('key', 'field', 'old', 'new')
 
 
 class SpecError(RuntimeError):
@@ -161,6 +170,107 @@ def _validate_round(doc):
     return bad
 
 
+def _validate_edit(doc):
+    """The slots `land edit` needs (THE EDIT VERB, directive 2026-08-24), and the one it may omit.
+
+    THE ACT KIND EXISTS BECAUSE OF A MEASURED GAP, and the gap is worth restating where the validator
+    enforces its shape. Register v836: an owner-worded one-field store edit was refused three times by
+    `land lever`, each refusal byte-exact and CORRECT — the lineage chain demands the store move
+    INSIDE the transaction (the source side is measured at HEAD and must bridge from the register
+    tail), and the lever sequence has no step that edits a store. A pre-committed store flip is
+    therefore unbridgeable by construction. This kind adds the missing step and nothing else.
+
+    WHAT IS REQUIRED HERE AND NOT BY THE OTHER KINDS:
+
+      * `edit.store` — a non-empty list of {key, field, old, new}. `old` is ASSERTED (see
+        REQUIRED_EDIT_FIELDS); `old == new` is refused, because an edit that changes nothing is an
+        edit nobody needed to authorise and its "abort on mismatch" leg could never fire.
+      * `identities.moves` must carry `store`. The act moves the store BY DEFINITION, the pins step
+        re-pins it MEASURED-not-typed, and a spec that declared it unmoved would be asking the pins
+        step to prove a falsehood.
+
+    WHAT IS OPTIONAL HERE AND NOT ELSEWHERE — `prereg.board_after`:
+
+      * PRESENT: the standing prediction of record; `build_proofs` asserts the built board against it
+        BYTE-EXACT, exactly as a lever landing does. This is the shape the Graham re-flight uses
+        (82fcd8bb, predicted at prereg 2feaf25 before the store was touched).
+      * ABSENT: the DRY RUN is the prediction of record — the owner reads it, gives his word, the spec
+        cites the word verbatim, and the same command without `--dry-run` flies. `build_proofs` then
+        asserts INTERNAL CONSISTENCY instead (the built board's own sidecar names the POST-edit store
+        as its source, and the board moves if and only if the act says it does). It asserts less, and
+        it says so in the transcript rather than quietly pretending otherwise.
+
+    `edit.expected_movers` is optional in both shapes and is a FALSIFIER when present: the set of
+    board rows whose `v` moved is measured off the two boards and asserted EQUAL to the declaration.
+    An empty list is a real prediction (a store edit may legitimately move an identity field and no
+    board row); `null` means "not declared" and the movers are printed but asserted against nothing.
+    """
+    bad = []
+    ed = doc.get('edit')
+    if not isinstance(ed, dict):
+        bad.append('a store-edit act must carry an `edit` block: '
+                   '{"store": [{"key", "field", "old", "new"}, ...]}. The edit is DECLARATIVE — the '
+                   'lander is told the row, the field, the value it must find and the value to write, '
+                   'and it applies the change as a surgical byte replacement inside that row\'s span.')
+        return bad
+
+    rows = ed.get('store')
+    if not isinstance(rows, list) or not rows:
+        bad.append('edit.store must be a NON-EMPTY list of {key, field, old, new}. A store-edit act '
+                   'that edits nothing is not a store-edit act.')
+    else:
+        seen = set()
+        for i, e in enumerate(rows):
+            if not isinstance(e, dict):
+                bad.append('edit.store[%d] must be an object with %s'
+                           % (i, ', '.join(REQUIRED_EDIT_FIELDS)))
+                continue
+            for k in REQUIRED_EDIT_FIELDS:
+                if k not in e:
+                    bad.append('edit.store[%d].%s is required — `old` is ASSERTED against the store '
+                               'before anything is written, and a mismatch is an ABORT, never a '
+                               'repair' % (i, k))
+            if 'old' in e and 'new' in e and e['old'] == e['new']:
+                bad.append('edit.store[%d] declares old == new (%r). An edit that changes nothing '
+                           'cannot be told from an edit that failed to apply.' % (i, e['old']))
+            pair = (e.get('key'), e.get('field'))
+            if all(pair) and pair in seen:
+                bad.append('edit.store declares %r twice. Two edits to one field would make the '
+                           'second one\'s `old` assertion a statement about the first one\'s output.'
+                           % (pair,))
+            seen.add(pair)
+
+    mv = ed.get('expected_movers')
+    if mv is not None:
+        if not isinstance(mv, list):
+            bad.append('edit.expected_movers must be a list of {key, before, after} or null '
+                       '(null = not declared; [] = the real prediction that NO board row moves)')
+        else:
+            for i, m in enumerate(mv):
+                if not isinstance(m, dict) or any(k not in m for k in ('key', 'before', 'after')):
+                    bad.append('edit.expected_movers[%d] must be {"key", "before", "after"}' % i)
+
+    ids = doc.get('identities')
+    if isinstance(ids, dict):
+        moves = list(ids.get('moves') or ())
+        unmoved = list(ids.get('unmoved') or ())
+        if 'store' not in moves:
+            bad.append('a STORE EDIT moves the store, and `identities.moves` does not declare it. The '
+                       'pins step re-pins `store` MEASURED from the tree; a spec that declared it '
+                       'unmoved would be asking the tree to agree with a falsehood.')
+        if 'store' in unmoved:
+            bad.append('`store` is declared UNMOVED by a store-edit act. That is the one thing this '
+                       'act kind cannot be.')
+
+    if doc.get('sheet') is not None:
+        bad.append('a store-edit act declares a `sheet`. The owner sheet is a ROUND input '
+                   '(`land round` is its pin file\'s sole writer, P13); this verb never touches it.')
+    if doc.get('round') is not None:
+        bad.append('a store-edit act declares a `round`. It HOLDS the round it finds, exactly as a '
+                   'lever landing does.')
+    return bad
+
+
 def validate(doc):
     """-> [problems]. Empty list means the spec is structurally fit to drive a landing."""
     bad = []
@@ -175,11 +285,21 @@ def validate(doc):
         bad.append('owner_word is empty — a landing records the word that authorised it, verbatim')
 
     is_round = doc.get('act_kind') == 'round-advance'
+    is_edit = doc.get('act_kind') == 'store-edit'
+    if doc.get('edit') is not None and not is_edit:
+        bad.append('this spec carries an `edit` block and is act_kind %r. Only a store-edit act has a '
+                   'step that applies one; a lever landing or a round advance would run the whole '
+                   'sequence and silently ignore the edit, which is the worst of the three outcomes.'
+                   % doc.get('act_kind'))
     pre = doc.get('prereg')
     if not isinstance(pre, dict):
         bad.append('prereg must be an object naming the prereg path and its board prediction')
     else:
-        needed = ('path', 'board_before') if is_round else REQUIRED_PREREG
+        # A STORE EDIT NEEDS `board_before` AND MAY OMIT `board_after`. The board it starts from is a
+        # FACT of the tree and the movers are measured against it; the board it arrives at is either
+        # the standing prereg's prediction or — when the owner is reading a dry run instead — nothing
+        # this file is allowed to invent. See `_validate_edit`.
+        needed = ('path', 'board_before') if (is_round or is_edit) else REQUIRED_PREREG
         for k in needed:
             if not pre.get(k):
                 bad.append('prereg.%s is required — the PREDICTION is an input to the lander, never '
@@ -254,8 +374,10 @@ def validate(doc):
 
     if is_round:
         bad.extend(_validate_round(doc))
+    if is_edit:
+        bad.extend(_validate_edit(doc))
 
-    if doc.get('act_kind') == 'lever-landing' and doc.get('column') is None and \
+    if doc.get('act_kind') in ('lever-landing', 'store-edit') and doc.get('column') is None and \
             'board' in list((doc.get('identities') or {}).get('moves') or ()):
         bad.append('this act moves the BOARD out of round and declares no column. The standing owner '
                    'rule of 2026-07-28 writes a column whenever the board moves outside a round; if '
@@ -279,6 +401,8 @@ def template(act_kind='lever-landing'):
     """A blank spec with every slot present, for a seat starting a new act."""
     if act_kind == 'round-advance':
         return _round_template()
+    if act_kind == 'store-edit':
+        return _edit_template()
     return {
         '_doc': ('THE ACT SPEC — the fixed slots `land lever` is told. Fill every one. A slot left '
                  'at its placeholder is refused by spec.validate(), which is the point.'),
@@ -306,6 +430,82 @@ def template(act_kind='lever-landing'):
         'column': {'id': '', 'label': '', 'after_round': 0},
         'lineage': {'doc': '', 'owner_ruling_id': [], 'owner_ruling': '', 'authority': '',
                     'invariants': {}},
+        'day0_rebase': {'state': 'off'},
+        'evidence_dir': '',
+        'gates': None,
+        '_doc_gates': 'null = the standard landing gate set (steps.DEFAULT_GATES).',
+    }
+
+
+def _edit_template():
+    """A blank STORE-EDIT spec (THE EDIT VERB). Every slot present, every placeholder refused.
+
+    THE USER-FRIENDLY LOOP THIS TEMPLATE IS THE FIRST HALF OF, stated where a seat starting an act
+    will read it: fill this in, run `tools/land edit --spec <spec> --dry-run`, and hand the owner the
+    one-screen summary it prints (store and board old -> new, EVERY mover with its values, the
+    identities that move). The dry run writes NOTHING to any carrier — it applies the edit in a
+    scratch git worktree and takes the worktree away again. The owner gives his word; the word goes
+    into `owner_word` VERBATIM; the same command without `--dry-run` flies. One command to predict,
+    one to land.
+    """
+    return {
+        '_doc': ('THE ACT SPEC — the fixed slots `land edit` is told (THE EDIT VERB, directive '
+                 '2026-08-24). Fill every one. The three things a tree cannot measure about itself '
+                 'are still the only things here: PREDICTIONS, CITATIONS and POLICY — and one more '
+                 'that only this kind has, THE EDIT ITSELF, which is an owner-worded instruction '
+                 'rather than anything the tree could tell you.'),
+        'schema_version': SCHEMA_VERSION,
+        'act_kind': 'store-edit',
+        'act': '',
+        'date': '',
+        'owner_word': '',
+        '_doc_owner_word': ('THE OWNER\'S WORD, VERBATIM. The store is the ONE SOURCE and its data '
+                            'fields are owner-supplied; this verb is a LANE, not an authority.'),
+        'authority': '',
+        'edit': {
+            'store': [{'key': '', 'field': '', 'old': None, 'new': None,
+                       '_doc': ('key = the store row\'s `key`; field = the field inside THAT ROW; '
+                                'old = the value the lander must FIND (asserted, never repaired — a '
+                                'mismatch aborts); new = the value it writes. The replacement is a '
+                                'surgical byte replacement inside the row\'s own span: the store\'s '
+                                'serialization is not re-emitted, and no byte outside the span may '
+                                'move.')}],
+            'expected_movers': None,
+            '_doc_expected_movers': ('null = not declared (the movers are printed and asserted '
+                                     'against nothing). A list of {"key","before","after"} is a '
+                                     'FALSIFIER: the movers measured off the two boards must equal '
+                                     'it exactly. [] is the real prediction that NO board row moves.'),
+        },
+        'prereg': {
+            'path': '',
+            'board_before': '',
+            '_doc_board_before': 'the board the edit starts from — a fact of the tree, measured.',
+            'board_after': None,
+            '_doc_board_after': ('OPTIONAL for this kind. An md5 = the standing prediction of record, '
+                                 'asserted BYTE-EXACT at build_proofs. null = the DRY RUN is the '
+                                 'prediction of record: build_proofs then asserts internal '
+                                 'consistency (the built board\'s sidecar names the POST-edit store) '
+                                 'and says in the transcript that it asserted no prediction.'),
+            'reference_board': None,
+            'kill_switch': None,
+            '_doc_kill_switch': ('normally null: a store data edit is not a dial, and its revert is '
+                                 'a git revert of the landing commit.'),
+        },
+        'identities': {'moves': ['board', 'store'],
+                       'unmoved': ['engine_head', 'rl_model', 'fv', 'config', 'register', 'v0surf',
+                                   'as_of_round']},
+        '_doc_identities': ('`store` is REQUIRED in moves — this act moves it by definition and the '
+                            'pins step re-pins it MEASURED from the tree, never typed.'),
+        'column': {'id': '', 'label': '', 'after_round': 0},
+        '_doc_column': ('An out-of-round board move still earns its column — the standing owner rule '
+                        'of 2026-07-28 does not care which verb moved the board.'),
+        'lineage': {'doc': '', 'owner_ruling_id': [], 'owner_ruling': '', 'authority': '',
+                    'kind': 'owner-store-edit', 'invariants': {}},
+        '_doc_lineage': ('The entry STRADDLES the edit: `source` is measured from the base commit '
+                         '(pre-edit) and `destination` from the live tree (post-edit), because the '
+                         'edit is applied IN THE WORK DIR inside this transaction. That is the whole '
+                         'reason this verb exists — a pre-committed store flip leaves a source the '
+                         'register tail cannot bridge to (register v836, the third abort).'),
         'day0_rebase': {'state': 'off'},
         'evidence_dir': '',
         'gates': None,

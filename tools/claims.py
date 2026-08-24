@@ -15,13 +15,17 @@ and none of it should be.
 
 THE SCHEMA IS FIXED PER ACT TYPE. Fixed, because a free-form claims file is prose with brackets: a
 seat under pressure writes down what went well, and the slot nobody filled is the one that mattered.
-Three act types, because the estate has three shapes of act:
+Four act types, because the estate has four shapes of act:
 
     lever-landing   an engine/exporter change lands: identities MOVE, and which ones move is the
                     claim. Requires the full identity set before and after, board counts, and the
                     landing gates.
     round-advance   scores are applied and the round advances: as_of_round moves, the store and
                     board move, the movers page is written.
+    store-edit      an OWNER-WORDED out-of-round edit to the ONE SOURCE lands (`tools/land edit`,
+                    THE EDIT VERB, 2026-08-24): the store moves by a surgical field replacement, the
+                    board follows, and the round is HELD. It claims both halves — what moved, and
+                    the owner inputs it never touched.
     small-act       tooling, docs, process. NOTHING value-bearing moves, and the claim is exactly
                     that: a list of carriers asserted BYTE-UNMOVED. This is G1's standing falsifier
                     in claims form.
@@ -45,7 +49,7 @@ import subprocess
 import sys
 
 SCHEMA_VERSION = 1
-ACT_TYPES = ('lever-landing', 'round-advance', 'small-act')
+ACT_TYPES = ('lever-landing', 'round-advance', 'store-edit', 'small-act')
 
 #: Top-level slots every claims file must fill, whatever the act type.
 COMMON_SLOTS = ('schema_version', 'act_type', 'act', 'date', 'base_commit', 'owner_word',
@@ -56,6 +60,12 @@ COMMON_SLOTS = ('schema_version', 'act_type', 'act', 'date', 'base_commit', 'own
 REQUIRED_KINDS = {
     'lever-landing': ('file_md5', 'json_field', 'board_count', 'gate'),
     'round-advance': ('file_md5', 'json_field', 'board_count', 'gate'),
+    # A STORE EDIT IS A LANDING SHAPE, NOT A SMALL ACT, and it needs one thing the other two do not:
+    # an `unmoved` claim. It moves the ONE SOURCE out of round, so what it must be able to prove is
+    # both halves — the identities that MOVED (file_md5 / json_field / board_count, recomputed) and
+    # the owner inputs it did NOT go near (`unmoved`, against the restore point). `tools/land edit`
+    # emits exactly that set; this row is what refuses one that does not.
+    'store-edit': ('file_md5', 'json_field', 'board_count', 'gate', 'unmoved'),
     'small-act': ('unmoved', 'gate'),
 }
 

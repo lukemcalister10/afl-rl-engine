@@ -151,6 +151,66 @@ def spec_moved(board_before, board_after, evidence_rel, after_round):
     return d
 
 
+def measured_store_edit(sandbox_path):
+    """The store edit this self-test performs, MEASURED off the sandbox's own store. Never typed.
+
+    P4 IN ITS PLAINEST FORM ("assert the relationship, never this month's number"). A fixture carrying
+    a literal row key and a literal old value would be a red waiting for the next legitimate store
+    write — which is exactly how `spec_moved`'s hard-coded round 23 red the first post-R24 self-test
+    run. So the row is CHOSEN by a rule and its `old` value is READ:
+
+        the first row (in file order) carrying an integer `p_dual_stream` — the dual-stream fraction,
+        which is the field the Graham act edits and therefore the field this self-test should rehearse
+        — falling back to the first row carrying an integer `games` if a tree has no such row.
+
+    `new` is `old - 1`: a different value, in range, and reversible by inspection.
+    """
+    from tools.landing import steps as _ST
+    p = os.path.join(sandbox_path, _ST.STORE_REL)
+    rows = json.load(open(p, encoding='utf-8'))
+    for field in ('p_dual_stream', 'games'):
+        for r in rows:
+            if isinstance(r, dict) and r.get('key') and isinstance(r.get(field), int) \
+                    and not isinstance(r.get(field), bool):
+                return {'key': r['key'], 'field': field, 'old': r[field], 'new': r[field] - 1}
+    raise RuntimeError('no store row carries an integer p_dual_stream or games to rehearse an edit on')
+
+
+def spec_edit(board_before, board_after, evidence_rel, after_round, edit):
+    """THE STORE-EDIT FIXTURE — the spec every edit case is flown or injected into.
+
+    IT DECLARES `expected_movers: []`, WHICH IS A REAL PREDICTION AND NOT A SHRUG. The self-test
+    builder produces the tree's own board plus one newline: the board md5 MOVES (so pins, the column
+    and the lineage entry all run their real writers on a real move) and no board ROW moves (because
+    this builder runs no engine). "No row moves" is therefore the true prediction here, and declaring
+    it is what makes `edit_fault_second_mover` — which swaps in a builder that moves two rows — a
+    falsifier rather than a coincidence.
+    """
+    d = _spec_common(evidence_rel)
+    d.update({
+        'act_kind': 'store-edit',
+        'act': 'SELF-TEST — the surgical store edit',
+        'prereg': {'path': 'tools/landing/selftest.py (fixture)', 'board_before': board_before,
+                   'board_after': board_after, 'reference_board': None, 'kill_switch': None},
+        'edit': {'store': [edit], 'expected_movers': []},
+        'identities': {'moves': ['board', 'store'],
+                       'unmoved': ['engine_head', 'rl_model', 'fv', 'config', 'register']},
+        'column': {'id': 'selftest-store-edit', 'after_round': after_round,
+                   'label': 'SELF-TEST STORE EDIT — sandbox only, never registered on main'},
+        'lineage': {'doc': ('SELF-TEST FIXTURE ENTRY for the EDIT VERB. Written in a sandbox by '
+                            'tools/landing/selftest.py to exercise the store_edit step, the '
+                            'append-only register and the STRADDLE (source pre-edit, destination '
+                            'post-edit). It never reaches the live tree.'),
+                    'kind': 'owner-store-edit',
+                    'owner_ruling_id': ['SELFTEST_FIXTURE'],
+                    'owner_ruling': 'SELF-TEST FIXTURE — no owner ruling exists or is claimed.',
+                    'authority': 'tools/landing/selftest.py (THE EDIT VERB, directive 2026-08-24)',
+                    'invariants': {'sandbox_only': 'this entry exists only inside a scratch worktree'}},
+        'commit_message': 'SELF-TEST sandbox commit (never on main)',
+    })
+    return d
+
+
 def spec_round_noop(sandbox_path, board_md5, evidence_rel):
     """THE ROUND REHEARSAL — the fixture every round fault case is injected into.
 
@@ -335,12 +395,16 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
         _cur_round = int(json.load(fh)['as_of_round'])
     moved = spec_moved(board, hashlib_moved(sb.path), ev_rel, _cur_round)
     rnd = spec_round_noop(sb.path, board, ev_rel)
+    the_edit = measured_store_edit(sb.path)
+    edit = spec_edit(board, hashlib_moved(sb.path), ev_rel, _cur_round, the_edit)
     with open(os.path.join(sb.path, 'SELFTEST_SPEC_NOOP.json'), 'w', encoding='utf-8') as fh:
         json.dump(noop, fh, indent=2)
     with open(os.path.join(sb.path, 'SELFTEST_SPEC_MOVED.json'), 'w', encoding='utf-8') as fh:
         json.dump(moved, fh, indent=2)
     with open(os.path.join(sb.path, 'SELFTEST_SPEC_ROUND.json'), 'w', encoding='utf-8') as fh:
         json.dump(rnd, fh, indent=2)
+    with open(os.path.join(sb.path, 'SELFTEST_SPEC_EDIT.json'), 'w', encoding='utf-8') as fh:
+        json.dump(edit, fh, indent=2)
     _sh(['git', 'add', '-A'], cwd=sb.path)
     _sh(['git', '-c', 'user.email=selftest@local', '-c', 'user.name=selftest', 'commit', '-q',
          '-m', 'self-test fixtures'], cwd=sb.path)
@@ -905,6 +969,127 @@ def main(root=None, keep=False, only=None, evidence_dir=None, base=None):
         except OSError:
             pass
         sb.reset()
+
+    # ---- 3f. THE EDIT VERB (`land edit`, directive 2026-08-24) ----------------------------------
+    #
+    # THE SAME STANDARD THE LEVER AND ROUND STEPS MET, AND THE SAME ORDER: the non-vacuity control
+    # first — a clean store-edit landing in this sandbox must SUCCEED — then the step the verb ADDS
+    # broken once, then the assertion that only this verb has (who moved on the board), then a
+    # mid-flight failure with the store already edited.
+    #
+    # WHAT THE STRADDLE CASE IS FOR, because it is the whole reason the verb exists. Register v836:
+    # `land lever` refused an owner-worded store edit three times, and the third refusal was the
+    # lineage CHAIN — a store flip committed BEFORE the landing makes the entry's source store a value
+    # no movers round report can bridge to. Applying the edit inside the transaction puts the source
+    # (measured at the base commit) on the PRE-edit side and the destination (measured live) on the
+    # POST-edit side. `edit_lineage_straddles` is that sentence, asserted on the file the landing
+    # wrote.
+    # WHERE THE POSITIVE CONTROL STOPS, AND WHY IT IS THE SAME WALL THE LEVER FIXTURE MEETS. A clean
+    # END-TO-END edit landing cannot be flown with the self-test builder, and the reason is a property
+    # of the tree rather than a limitation of this file: the `sibling` step's repin REBUILDS the
+    # balanced board FROM THE REAL STORE and refuses to stage a forward view that is not the board the
+    # manifest pins ("CONFORMANCE GATE FAILED … this is a STOP", owner ruling v471 §4). A synthetic
+    # board can never satisfy it — which is exactly why `SELFTEST_SPEC_MOVED` is only ever used for
+    # faults AT OR BEFORE `lineage` under `land lever`, and why the lever control lands a NO-OP.
+    #
+    # So the coverage is split the way the evidence is: the six steps that carry the edit are proved
+    # HERE, cheaply, on their own merit (nothing is injected until `sibling` starts), and the CLEAN
+    # END-TO-END landing — real build, real sibling reconcile, real gates, real commit — is proved
+    # with the REAL builder in the acceptance flight filed at
+    # docs/evidence/edit_verb_2026-08-24/GRAHAM_SANDBOX_FLIGHT.log, which also lands the standing
+    # Graham prediction (store daa93053 -> fb640ca0, board 6fd0f7de -> 82fcd8bb, ONE mover).
+    if not only or 'store_edit' in only:
+        print('')
+        print('--- EDIT: the six steps that carry the edit, on their own merit (THE EDIT VERB) ---')
+        sb.reset()
+        edit_base = sb.head()
+        store_p = os.path.join(sb.path, ST.STORE_REL)
+        store_before = _md5(store_p)
+        before = carrier_md5s(sb.path)
+        rep = os.path.join(ev, 'edit_control_report.json')
+        rc, out = sb.run_lander('SELFTEST_SPEC_EDIT.json', fault='sibling', builder='selftest-moved',
+                                verb='edit', report=rep, log=os.path.join(ev, 'edit_control.log'))
+        open(os.path.join(ev, 'edit_control_stdout.txt'), 'w', encoding='utf-8').write(out)
+        report = _read_json(rep) or {}
+        facts = report.get('facts') or {}
+        se, bp = facts.get('store_edit') or {}, facts.get('build_proofs') or {}
+        pins, lin = facts.get('pins') or {}, facts.get('lineage') or {}
+        store_edited = se.get('store_after')
+        record('edit_steps_clean_through_contract',
+               (se.get('written') is True and se.get('store_before') == store_before
+                and store_edited and store_edited != store_before
+                and (se.get('season_state') or {}).get('source_store_md5') == store_edited
+                and (bp.get('edit') or {}).get('store_read_by_build') == store_edited
+                and sorted(pins.get('moved') or []) == ['board', 'store']
+                and (lin.get('column') or {}).get('id') == 'selftest-store-edit'
+                and (lin.get('entry') or {}).get('appended') is True
+                and (facts.get('contract') or {}).get('check') == 'PASS'),
+               'ONE surgical field edit (%s.%s %s -> %s) moved the store %s -> %s; the board was '
+               'built FROM it; pins moved %s; the column and the lineage entry were written; the '
+               'contract re-sealed and PASSED — then the injected fault stopped it at `sibling`'
+               % (the_edit['key'], the_edit['field'], the_edit['old'], the_edit['new'],
+                  store_before[:12], str(store_edited)[:12], sorted(pins.get('moved') or [])))
+
+        entry_src = (lin.get('entry') or {}).get('source') or {}
+        entry_dst = (lin.get('entry') or {}).get('destination') or {}
+        record('edit_lineage_straddles',
+               entry_src.get('store') == store_before and entry_dst.get('store') == store_edited
+               and entry_src.get('board') == board
+               and entry_dst.get('board') == hashlib_moved(sb.path),
+               'the entry STRADDLES the edit: source.store %s (measured at the base commit, PRE-edit) '
+               '-> destination.store %s (measured live, POST-edit); source.board %s -> '
+               'destination.board %s. This is the shape register v836\'s third abort says a '
+               'pre-committed flip can never produce.'
+               % (str(entry_src.get('store'))[:12], str(entry_dst.get('store'))[:12],
+                  str(entry_src.get('board'))[:12], str(entry_dst.get('board'))[:12]))
+
+        after = carrier_md5s(sb.path)
+        movedc = sorted(k for k in set(before) | set(after) if before.get(k) != after.get(k))
+        wrote = [r['path'] for r in (report.get('abort') or {}).get('restored') or []]
+        record('edit_abort_restores_store',
+               rc != 0 and report.get('failed_step') == 'sibling' and not movedc
+               and sb.head() == edit_base and ST.STORE_REL in wrote and len(wrote) >= 4,
+               '%d carrier(s) had been written and were restored BYTE-EXACT, the STORE among them '
+               '(%s); HEAD %s: %s'
+               % (len(wrote), 'yes' if ST.STORE_REL in wrote else 'NO — the point of this case is '
+                  'back', 'back at the base' if sb.head() == edit_base else 'MOVED',
+                  ', '.join(wrote[:6])))
+        sb.reset()
+
+        print('')
+        print('--- EDIT FAULTS: the step the verb ADDS, and the mover assertion only it makes ---')
+        for label, fault_key, step_name, needle in (
+                ('edit_fault_store_edit', 'store_edit', 'store_edit',
+                 'THE OLD VALUE THE SPEC ASSERTS IS NOT THE VALUE IN THE STORE'),
+                ('edit_fault_second_mover', 'build_proofs:second_mover', 'build_proofs',
+                 'UNEXPECTED MOVER')):
+            mode, _what, _inj = TX.FAULTS[fault_key]
+            before = carrier_md5s(sb.path)
+            rep = os.path.join(ev, '%s_report.json' % label)
+            rc, out = sb.run_lander('SELFTEST_SPEC_EDIT.json', fault=fault_key,
+                                    builder='selftest-moved', verb='edit', report=rep,
+                                    log=os.path.join(ev, '%s.log' % label))
+            open(os.path.join(ev, '%s_stdout.txt' % label), 'w', encoding='utf-8').write(out)
+            report = _read_json(rep) or {}
+            tally['broken'] += 1
+            caught = (rc != 0) and report.get('failed_step') == step_name
+            after = carrier_md5s(sb.path)
+            moved_carriers = sorted(k for k in set(before) | set(after)
+                                    if before.get(k) != after.get(k))
+            head_ok = sb.head() == edit_base
+            byte_exact = not moved_carriers and head_ok
+            named = needle in out
+            if caught:
+                tally['caught'] += 1
+            if byte_exact:
+                tally['aborted_byte_exact'] += 1
+            record(label, caught and byte_exact and named,
+                   'fault=%s; exit %s; failed_step=%r; the halt NAMES it (%r %s); carriers moved '
+                   'after abort: %s; HEAD %s'
+                   % (mode, rc, report.get('failed_step'), needle, 'found' if named else 'ABSENT',
+                      moved_carriers or 'NONE (byte-exact)',
+                      'back at the base' if head_ok else 'MOVED'))
+            sb.reset()
 
     # ---- 4. THE CLAIMS NEGATIVE CONTROL ---------------------------------------------------------
     print('')
