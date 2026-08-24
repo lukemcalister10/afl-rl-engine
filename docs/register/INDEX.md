@@ -1,8 +1,9 @@
 <!-- GENERATED-ONLY — regenerate: python3 tools/seat/pen.py index ; assert current: python3 tools/seat/pen.py verify -->
 # REGISTER ADDRESS INDEX — generated
 
-Newest entry: **v845**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
+Newest entry: **v846**. Frozen history v622–v812 lives whole in `docs/OPEN_ITEMS_REGISTER.md` (sealed, md5 `219021ac`); entries from v813 live one-per-file below. `item NNN` and N-number addresses resolve into the frozen file; the JSON twin carries the full maps.
 
+- **v846** (2026-08-24) — `docs/register/entries/v846.md` — **THE BURN IS RULED — owner words verbatim (2026-08-24): "A burn is fine."** The design arm's −1.61% pool burn (−11,245 SCAR vs live, the ex
 - **v845** (2026-08-24) — `docs/register/entries/v845.md` — **THE COMPACTION HANDOVER #2 — the owner compacts; this entry is the successor's spec and it is BINDING. READ THE OWNER'S DIRECTIVE FIRST, b
 - **v844** (2026-08-24) — `docs/register/entries/v844.md` — **ARM 2 IS FULLY RECONCILED AND PRESENTED — the supervisor's build was the canonical one, the cause was a THIRD instance of the loaded-path 
 - **v843** (2026-08-24) — `docs/register/entries/v843.md` — **SEAM MODEL V2 IS MEASURED AND THE CONDITIONAL-MODEL ROAD IS CLOSED — the engine passes its seam audit a second time, 0-60; the binding con

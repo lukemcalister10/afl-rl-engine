@@ -50,9 +50,9 @@ gate claimed by name (process law P5).
 
 - **docs/register/LATEST.md**, line 1, quoted:
 
-  > # OPEN ITEMS REGISTER · v845 2026-08-24 · **THE COMPACTION HANDOVER #2 — the owner compacts; this entry is the successor's spec and it is BINDING. READ THE OWNER'S DIRECTIVE FIRST, because the outgoing supervisor earned a censure on it.** THE OWNER'S STANDING DIRECTIVE, his words on the record (2026-08-24, twice): *"I don't accept your other conclusion. You've spent hours telling me that Leake as
+  > # OPEN ITEMS REGISTER · v846 2026-08-24 · **THE BURN IS RULED — owner words verbatim (2026-08-24): "A burn is fine."** The design arm's −1.61% pool burn (−11,245 SCAR vs live, the exact constraint removing the ratchet's one-sided bias) is ACCEPTED by owner word, recorded as an accepted law-9 reading in the same class as his mint waiver (v830) — reported, never gated. This clears the first item of
 
-- new-form entries under `docs/register/entries/`: 33
+- new-form entries under `docs/register/entries/`: 34
 - frozen predecessor `docs/OPEN_ITEMS_REGISTER.md` — md5 `219021ace49ff2750a6576cb9ac8368c` (byte-sealed; `tools/seat/pen.py verify` is its gate)
 
 ## LINEAGE TIP
@@ -71,7 +71,7 @@ gate claimed by name (process law P5).
 
 | field | value |
 |---|---|
-| generated at commit | `9922359d7381d21bab900ca404556e7f5c13dfdf` |
+| generated at commit | `209bfabdeab010aac75719fe669e73b63878c8c9` |
 | tool | `tools/landing/state.py` |
 | written by | land lever (step `state`) · land round (step `state`) · python3 -m tools.landing.state write |
 | freshness gate | `acceptance::state_file` — regenerates this file on the current tree and compares byte-for-byte |

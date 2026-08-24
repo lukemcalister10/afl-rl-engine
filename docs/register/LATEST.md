@@ -1,3 +1,3 @@
-# OPEN ITEMS REGISTER · v845 2026-08-24 · **THE COMPACTION HANDOVER #2 — the owner compacts; this entry is the successor's spec and it is BINDING. READ THE OWNER'S DIRECTIVE FIRST, because the outgoing supervisor earned a censure on it.** THE OWNER'S STANDING DIRECTIVE, his words on the record (2026-08-24, twice): *"I don't accept your other conclusion. You've spent hours telling me that Leake as 
+# OPEN ITEMS REGISTER · v846 2026-08-24 · **THE BURN IS RULED — owner words verbatim (2026-08-24): "A burn is fine."** The design arm's −1.61% pool burn (−11,245 SCAR vs live, the exact constraint removing the ratchet's one-sided bias) is ACCEPTED by owner word, recorded as an accepted law-9 reading in the same class as his mint waiver (v830) — reported, never gated. This clears the first item of 
 
-(one line per pen; full entry: docs/register/entries/v845.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
+(one line per pen; full entry: docs/register/entries/v846.md · reading law: docs/register/README.md · frozen history: docs/OPEN_ITEMS_REGISTER.md)
