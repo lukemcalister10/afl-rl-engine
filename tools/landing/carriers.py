@@ -117,8 +117,13 @@ LEVER_CARRIERS = (
       'the generator-side sidecar'),
 
     # ---- the store: never written by a lever landing, captured so abort can prove it -------------
-    F('engine/rl_after/rl_model_data.json', '(nothing, in a lever landing)',
-      'the store. A lever landing must leave it byte-unmoved; 2b moves it and inherits this entry'),
+    F('engine/rl_after/rl_model_data.json',
+      '(nothing, in a lever landing) — `land round` (a score application) and `land edit` '
+      '(steps.store_edit, THE EDIT VERB 2026-08-24, a surgical owner-worded field edit)',
+      'the store. A lever landing must leave it byte-unmoved; 2b moves it and inherits this entry, '
+      'and so does the edit verb — whose store_edit step needed NO new carrier entry precisely '
+      'because this one has been captured since the first draft, so an abort can put an in-flight '
+      'edit back byte-exact'),
 
     # ---- the sheet pin declaration: PLAN_v6 3a took these OUT of the engine -----------------------
     F('data/sheet_pins.json',
@@ -267,6 +272,23 @@ ROUND_EXTRA_CARRIERS = (
 
 #: THE ROUND-LANDING CARRIER SET = the lever set PLUS the round extras. One enumeration, two acts.
 ROUND_CARRIERS = LEVER_CARRIERS + ROUND_EXTRA_CARRIERS
+
+#: THE EDIT CARRIER SET (`land edit`, THE EDIT VERB, 2026-08-24) — the LEVER SET PLUS EXACTLY ONE
+#: ENTRY, and both halves of that sentence were measured rather than designed.
+#:
+#: THE STORE NEEDED NO NEW ENTRY. `engine/rl_after/rl_model_data.json` has been in `LEVER_CARRIERS`
+#: since the library's first draft, captured precisely so an abort could PROVE it byte-unmoved. The
+#: same entry that made "the store did not move" a measured fact for a lever landing makes "the store
+#: moved and was put back" a measured fact for an aborted edit.
+#:
+#: THE SEASON CLOCK DID, and the self-test found it on this step's first run: `release_contract.py
+#: check` refuses a tree whose `data/season_state.json` names a store that is not the live one
+#: ("exposure_pace was derived from a STALE store"), so `steps.store_edit` re-derives the clock's
+#: provenance stamp from the edited store — and a file a landing writes must be a file its abort can
+#: put back. The entry is TAKEN FROM `ROUND_EXTRA_CARRIERS` rather than written again: one
+#: enumeration, three acts.
+SEASON_STATE_CARRIER = tuple(c for c in ROUND_EXTRA_CARRIERS if c.pattern == 'data/season_state.json')
+EDIT_CARRIERS = LEVER_CARRIERS + SEASON_STATE_CARRIER
 
 
 def _md5(path):
