@@ -1,0 +1,50 @@
+CARRIED INSTRUMENT : docs/evidence/staircase_adoption_2026-08-21/araw_noarb_class.py
+  md5 (whole file) : 856c87202053a6c5b7860729e8ab2948
+  carried lines    : 92..141   slice md5 ceb48719e99812ae46c30367ea8773cd
+  carried constants: W2 2006..2016  floor 1.03  buy rail 1.14
+
+label      board                                                                     W2 mark     cohort  max class   year
+ARM1BASE   THE LIVE BOARD 6fd0f7de — live band/ceiling/peak, this seat's own emit     1.0928     1.0673     1.2000   2016
+ARM1CAND   *** ARM 1 STORE-ALONE CANDIDATE 02a554b5 — incumbent constructions on store daa93053 ***     1.0893     1.0670     1.1933   2011
+
+----------------------------------------------------------------------------------------------------
+THE RAIL AND THE FLOOR — ARM 1's OWN READING (P12)
+----------------------------------------------------------------------------------------------------
+  LIVE       W2 1.0928   floor margin +0.0628 (>= 1.03)   buy-rail margin -0.0600 (< 1.14)   max class 1.2000 (2016)   BREACH — the class is over the buy rail
+  CANDIDATE  W2 1.0893   floor margin +0.0593 (>= 1.03)   buy-rail margin -0.0533 (< 1.14)   max class 1.1933 (2011)   BREACH — the class is over the buy rail
+  MOVE candidate - live : W2 -0.0035   cohort -0.0003   max class -0.0067
+
+  per class, registered W2 window (draft class -> cohort year):
+  draft class              LIVE  CANDIDATE       move
+  2005 (2006)            0.8500     0.8650    +0.0150 
+  2006 (2007)            1.0450     1.0235    -0.0216 
+  2007 (2008)            1.0782     1.0991    +0.0209 
+  2008 (2009)            1.0717     1.0799    +0.0082 
+  2009 (2010)            1.1060     1.1087    +0.0026 
+  2010 (2011)            1.1943     1.1933    -0.0010 BREACH
+  2011 (2012)            1.1896     1.1910    +0.0015 BREACH
+  2012 (2013)            1.1243     1.1087    -0.0156 
+  2013 (2014)            1.1089     1.0855    -0.0234 
+  2014 (2015)            1.0525     1.0447    -0.0078 
+  2015 (2016)            1.2000     1.1828    -0.0172 BREACH
+
+  ALL CLASSES, FULL RANGE — so a single class breaking 1.14 cannot hide:
+  2005         0.9197     0.9375    +0.0178 
+  2006         0.8500     0.8650    +0.0150 
+  2007         1.0450     1.0235    -0.0216 
+  2008         1.0782     1.0991    +0.0209 
+  2009         1.0717     1.0799    +0.0082 
+  2010         1.1060     1.1087    +0.0026 
+  2011         1.1943     1.1933    -0.0010 BREACH
+  2012         1.1896     1.1910    +0.0015 BREACH
+  2013         1.1243     1.1087    -0.0156 
+  2014         1.1089     1.0855    -0.0234 
+  2015         1.0525     1.0447    -0.0078 
+  2016         1.2000     1.1828    -0.0172 BREACH
+  2017         1.0765     1.0905    +0.0140 
+  2018         1.1016     1.1340    +0.0324 
+  2019         1.0827     1.0722    -0.0105 
+  2020         1.0146     1.0310    +0.0164 
+  2021         0.9705     1.0084    +0.0379 
+
+  classes over the 1.14 buy rail : live 3   candidate 3   NEW BREACHES 0

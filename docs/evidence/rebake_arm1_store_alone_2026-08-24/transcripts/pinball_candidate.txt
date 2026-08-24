@@ -1,0 +1,22 @@
+config manifest (gate mode) LOADED  hash eed19a75f775  (84 model vars pinned; ambient cleared)
+
+=== variant 'plain' : design (13220, 11), first_observable=2005 ===
+  fold 1  n_tr= 7383 n_te= 2181   28.2s  pinball 3.8951  covErr 0.0220  sortfix 8.8% ceilfix 3.1%
+  fold 2  n_tr= 9564 n_te= 2169   35.1s  pinball 3.7875  covErr 0.0216  sortfix 5.9% ceilfix 1.7%
+  fold 3  n_tr=11733 n_te= 1487   41.6s  pinball 4.2142  covErr 0.0678  sortfix 2.8% ceilfix 1.3%
+  POOLED pinball 3.9656   covErr 0.0371
+  by population: ND-early 3.3992  ND-late 4.1442  ND-mid 3.8356  ND-pool 4.7857  RD/PSD 4.4942  SSP/other 4.6973
+
+=== variant 'par' : design (13220, 11), first_observable=2005 ===
+  fold 1  n_tr= 7383 n_te= 2181   30.4s  pinball 3.8918  covErr 0.0210  sortfix 7.1% ceilfix 2.3%
+  fold 2  n_tr= 9564 n_te= 2169   39.5s  pinball 3.7950  covErr 0.0229  sortfix 4.7% ceilfix 1.2%
+  fold 3  n_tr=11733 n_te= 1487   43.0s  pinball 4.2495  covErr 0.0630  sortfix 3.4% ceilfix 0.7%
+  POOLED pinball 3.9788   covErr 0.0356
+  by population: ND-early 3.3639  ND-late 4.1505  ND-mid 3.8734  ND-pool 4.8615  RD/PSD 4.5174  SSP/other 4.8409
+
+================ PINBALL MONITOR ================
+  study A §5.1 design (a) baseline : 3.9703
+  ARM 1, same protocol, current store, PLAIN feature : 3.9656  (-0.0047, -0.12%)
+  ARM 1, PAR-CENTRED feature (what cm_400 actually trains on) : 3.9788
+  (the PAR number is NOT comparable to 3.9703 — different feature 9 — and is filed as its
+   own zero point for the design arms.)

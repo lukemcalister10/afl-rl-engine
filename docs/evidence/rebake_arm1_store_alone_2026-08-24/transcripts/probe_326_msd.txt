@@ -1,0 +1,6 @@
+board 02a554b5
+config manifest (gate mode) LOADED  hash eed19a75f775  (84 model vars pinned; ambient cleared)
+board row v            : 566
+_board_price (as-of seq): 595.481971  -> int(round(/1.0524)) = 566
+plain ev(p,2026)        : 591.363134  -> 562
+gap (board v - as-of)   : 0

@@ -1,0 +1,39 @@
+{
+ "T1_fabricated_zero_rule": "NOT PART OF THIS CONSTRUCTION \u2014 the X/yy loop carries no first_observable_season skip; applying it here would be a change to the training-row rule, i.e. design content, which ARM 1 has none of",
+ "artifact": "q97m (the frozen q97 CEILING model; band[5], price6 weight 0.10)",
+ "blas_threads_env": {
+  "MKL_NUM_THREADS": "1",
+  "NUMEXPR_NUM_THREADS": "1",
+  "OMP_NUM_THREADS": "1",
+  "OPENBLAS_NUM_THREADS": "1"
+ },
+ "candidate_md5": "fd794c0b8555cfeef2f57e9dd946181a",
+ "candidate_path": "docs/evidence/rebake_arm1_store_alone_2026-08-24/candidates/q97m.candidate.pkl",
+ "construction": "refit_q97m.Q97M_KW fitted on _merged_recover.py X/yy (refit_q97m._engine_Xy)",
+ "entry_point": "tools/rebake/refit_arm1_store_alone.py",
+ "entry_point_md5": "f074b23f21ba77f25af906e3cdce9f8a",
+ "entry_point_version": "arm1-store-alone/1",
+ "estimator": "GradientBoostingRegressor",
+ "fit_seconds": 104.9,
+ "hyperparameters": {
+  "alpha": 0.97,
+  "learning_rate": 0.05,
+  "loss": "quantile",
+  "max_depth": 4,
+  "min_samples_leaf": 25,
+  "n_estimators": 200,
+  "random_state": 0
+ },
+ "n_features_in": 11,
+ "numpy": "2.4.4",
+ "python": "3.12.3",
+ "scipy": "1.17.1",
+ "shipped_md5": "cfdc73216c099e5e8f1fda3968f31c00",
+ "shipped_path": "data/q97m.pkl",
+ "sklearn": "1.8.0",
+ "training_row_rule": "_merged_recover.py:60-64 \u2014 debut<=2021, (pick or _ft), MSD EXCLUDED (RL_MSD_POOL_EXCL=1)",
+ "training_rows": 13169,
+ "training_store_md5": "daa93053bc2d4eba30d9dc6e06e4af9e",
+ "training_store_pin_at_build": "daa93053bc2d4eba30d9dc6e06e4af9e",
+ "ts_utc": "2026-08-24T01:14:05Z"
+}

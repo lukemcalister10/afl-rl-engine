@@ -1,0 +1,17 @@
+config manifest (gate mode) LOADED  hash eed19a75f775  (84 model vars pinned; ambient cleared)
+refit_arm1 arm1-store-alone/1  root=/home/user/afl-rl-engine/.claude/worktrees/agent-a83beb5f9a19ad772  ws=/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/ws/rl_after  out=/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_thrice  config=eed19a75f775
+--- cm_400 ---
+  stamp -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_thrice/training_stamp_cm_400_candidate.json
+  cm_400 candidate /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_thrice/cm_400.candidate.pkl  rows=13220  md5=2e0b11d3bceb65351f2417927f437053  (44s)
+--- q97m ---
+  stamp -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_thrice/training_stamp_q97m_candidate.json
+  q97m candidate /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_thrice/q97m.candidate.pkl  rows=13169  md5=5d29eeaf7e8aa384bfc9e24914b2ba41  (85s)
+--- peak_model_v4 ---
+  stamp -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_thrice/training_stamp_peak_model_v4_candidate.json
+  peak_model_v4 candidate /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_thrice/peak_model_v4.candidate.pkl md5=5338d0cd0e5e3261864987480288858b ; pvc_snapshot /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_thrice/pvc_snapshot.candidate.json md5=4704b8296008f81e7bb5407424229e85  (36s)
+refit_arm1 DONE -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_thrice
+
+  fit2 (scoped order) vs fit3 (scoped order):
+    cm_400.candidate.pkl           2e0b11d3bceb65351f2417927f437053  2e0b11d3bceb65351f2417927f437053  IDENTICAL
+    q97m.candidate.pkl             5d29eeaf7e8aa384bfc9e24914b2ba41  5d29eeaf7e8aa384bfc9e24914b2ba41  IDENTICAL
+    peak_model_v4.candidate.pkl    5338d0cd0e5e3261864987480288858b  5338d0cd0e5e3261864987480288858b  IDENTICAL

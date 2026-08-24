@@ -1,0 +1,107 @@
+
+=== CANDIDATE vs LIVE  (present lens, v) ===
+  rows compared      : 804   (only in live: 0 ; only in candidate: 0)
+  UP / DOWN / FLAT   : 329 / 312 / 163
+  pool total         : 700119 -> 706175   (+6056, +0.8650%)  <-- LAW-9 MINT, reported not gated (v830)
+  sum |move|         : 30870   (mean 38.4, median 17.0)
+  median |move| pct  : 3.88%   ;  90th pct |move| : 22.81%   ; max |move| pct : 101.39%
+  --- BIGGEST UP (by size), top 10 ---
+      murphy-reid                     3367 ->    3714     +347  +10.31%
+      zac-bailey                      2611 ->    2924     +313  +11.99%
+      jed-walter                       815 ->    1120     +305  +37.42%
+      cooper-hynes                     929 ->    1216     +287  +30.89%
+      samuel-grlj                     1606 ->    1891     +285  +17.75%
+      jai-murray                       968 ->    1249     +281  +29.03%
+      kysaiah-pickett                 3945 ->    4221     +276  +7.00%
+      darcy-wilson                    2654 ->    2911     +257  +9.68%
+      alex-van-wyk                     315 ->     566     +251  +79.68%
+      caleb-windsor                   1160 ->    1384     +224  +19.31%
+  --- BIGGEST DOWN (by size), top 10 ---
+      luke-jackson                    9285 ->    8738     -547  -5.89%
+      jacob-farrow                    2431 ->    2124     -307  -12.63%
+      sam-berry                       3402 ->    3135     -267  -7.85%
+      dyson-sharp                     3288 ->    3022     -266  -8.09%
+      patrick-retschko                1119 ->     864     -255  -22.79%
+      harvey-langford                 2332 ->    2104     -228  -9.78%
+      lachlan-ash                     5817 ->    5596     -221  -3.80%
+      cooper-trembath                 1871 ->    1685     -186  -9.94%
+      errol-gulden                    7162 ->    6991     -171  -2.39%
+      tom-green                       5440 ->    5282     -158  -2.90%
+
+  --- |move| by tenure T = 2026 - debut + 1 (candidate vs live) ---
+      games 23-80    n= 194  median |move|   8.42%  90th  31.25%  max   61.11%
+      games<=22      n= 282  median |move|   1.98%  90th  18.84%  max   79.68%
+      games>80       n= 328  median |move|   2.99%  90th  21.43%  max  101.39%
+
+  --- |move| by position group ---
+      KPD      n=  82  median |move|   4.14%  max   38.07%
+      KPF      n= 121  median |move|   4.67%  max   55.05%
+      MID      n= 148  median |move|   2.90%  max   50.40%
+      RUCK     n=  49  median |move|   0.88%  max   79.68%
+      SD       n= 177  median |move|   3.98%  max   41.38%
+      SF       n= 227  median |move|   5.56%  max  101.39%
+
+=== T1 ATTRIBUTION  (same store, same everything; T1 off -> T1 on) ===
+  rows compared      : 804   (only in live: 0 ; only in candidate: 0)
+  UP / DOWN / FLAT   : 256 / 289 / 259
+  pool total         : 706838 -> 706175   (-663, -0.0938%)  <-- LAW-9 MINT, reported not gated (v830)
+  sum |move|         : 11687   (mean 14.5, median 5.0)
+  median |move| pct  : 1.12%   ;  90th pct |move| : 6.67%   ; max |move| pct : 19.67%
+  --- BIGGEST UP (by size), top 10 ---
+      zak-butters                     6560 ->    6735     +175  +2.67%
+      levi-ashcroft                   3728 ->    3876     +148  +3.97%
+      colby-mckercher                 4360 ->    4503     +143  +3.28%
+      bailey-smith                    6238 ->    6370     +132  +2.12%
+      lachlan-ash                     5476 ->    5596     +120  +2.19%
+      will-ashcroft                   6568 ->    6681     +113  +1.72%
+      dyson-sharp                     2912 ->    3022     +110  +3.78%
+      harley-reid                     3766 ->    3875     +109  +2.89%
+      tristan-xerri                   7032 ->    7136     +104  +1.48%
+      finn-o-sullivan                 3205 ->    3306     +101  +3.15%
+  --- BIGGEST DOWN (by size), top 10 ---
+      nick-daicos                    10099 ->    9771     -328  -3.25%
+      max-holmes                      7851 ->    7614     -237  -3.02%
+      errol-gulden                    7172 ->    6991     -181  -2.52%
+      nasiah-wanganeen-milera         8930 ->    8749     -181  -2.03%
+      luke-jackson                    8880 ->    8738     -142  -1.60%
+      aaron-cadman                    2123 ->    1984     -139  -6.55%
+      luke-trainor                    1077 ->     964     -113  -10.49%
+      andrew-mcgrath                  1170 ->    1064     -106  -9.06%
+      dante-visentini                 1055 ->     963      -92  -8.72%
+      samuel-grlj                     1963 ->    1891      -72  -3.67%
+
+=== STORE ALONE, T1 EXCLUDED  (live -> candidate with T1 off) ===
+  rows compared      : 804   (only in live: 0 ; only in candidate: 0)
+  UP / DOWN / FLAT   : 329 / 312 / 163
+  pool total         : 700119 -> 706838   (+6719, +0.9597%)  <-- LAW-9 MINT, reported not gated (v830)
+  sum |move|         : 30021   (mean 37.3, median 14.0)
+  median |move| pct  : 3.64%   ;  90th pct |move| : 22.43%   ; max |move| pct : 95.83%
+  --- BIGGEST UP (by size), top 10 ---
+      murphy-reid                     3367 ->    3763     +396  +11.76%
+      samuel-grlj                     1606 ->    1963     +357  +22.23%
+      cooper-hynes                     929 ->    1270     +341  +36.71%
+      jai-murray                       968 ->    1256     +288  +29.75%
+      jed-walter                       815 ->    1082     +267  +32.76%
+      kysaiah-pickett                 3945 ->    4211     +266  +6.74%
+      zac-bailey                      2611 ->    2877     +266  +10.19%
+      alex-van-wyk                     315 ->     575     +260  +82.54%
+      aaron-cadman                    1886 ->    2123     +237  +12.57%
+      jake-bowey                      3926 ->    4156     +230  +5.86%
+  --- BIGGEST DOWN (by size), top 10 ---
+      luke-jackson                    9285 ->    8880     -405  -4.36%
+      dyson-sharp                     3288 ->    2912     -376  -11.44%
+      jacob-farrow                    2431 ->    2081     -350  -14.40%
+      lachlan-ash                     5817 ->    5476     -341  -5.86%
+      harvey-langford                 2332 ->    2048     -284  -12.18%
+      sam-berry                       3402 ->    3133     -269  -7.91%
+      patrick-retschko                1119 ->     863     -256  -22.88%
+      cooper-trembath                 1871 ->    1661     -210  -11.22%
+      tristan-xerri                   7199 ->    7032     -167  -2.32%
+      tyler-sonsie                    1010 ->     845     -165  -16.34%
+
+=== ATTRIBUTION ===
+  total |movement| live -> candidate          : 30870
+  |movement| attributable to T1 alone         : 11687  (37.86% of the total)
+  |movement| store alone, T1 held out         : 30021  (97.25% of the total)
+  (the two legs do not sum to the whole: the effects are not additive on a
+   non-linear pricing chain. They bound the attribution, they do not decompose it.)

@@ -1,0 +1,24 @@
+{
+ "_doc": "TRAINING-STORE STAMP (L4 act 6, #290). What this build was fitted ON.",
+ "artifacts": {
+  "age_source_census.json": "f98f8834442466c91a45951431ff8937",
+  "bust_prior_table.json": "5942aa6ad7be1d482eed737997486c70",
+  "peak_model_v4.pkl": "5338d0cd0e5e3261864987480288858b",
+  "pvc_snapshot.json": "4704b8296008f81e7bb5407424229e85"
+ },
+ "built_by": "build_peak_model_v4.py",
+ "curve_payload_md5": "9729f0c5",
+ "gamma": 1.0,
+ "pvc_domain": [
+  1,
+  65
+ ],
+ "pvc_n_keys": 65,
+ "store_md5": "daa93053bc2d4eba30d9dc6e06e4af9e",
+ "training_rows": 6363,
+ "training_window_debut": [
+  2006,
+  2015
+ ],
+ "v0surf_md5": "5dd34ca82735f5c8f021b1c7320df8f8"
+}

@@ -1,0 +1,4 @@
+cm_400 fitted in-process (scoped order position 1)
+X.shape=(13169, 11) md5(X)=4d69abb4a34c673f48c3b211a88bdf4d md5(yy)=8e516cb22c8c70ae75c598be4680fe0e
+standalone reference : md5(X)=4d69abb4a34c673f48c3b211a88bdf4d md5(yy)=8e516cb22c8c70ae75c598be4680fe0e
+q97m md5 = 5d29eeaf7e8aa384bfc9e24914b2ba41  (alone fd794c0b..., after-cm 5d29eeaf...)

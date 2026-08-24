@@ -1,0 +1,11 @@
+--- (1) wire_redesign.build() with RL_CM_PKL pointing at a missing file ---
+HALTED as designed:
+cm FROZEN-LOAD HALT: no band pickle at /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/NO_SUCH_BAND.pkl (precedence: $RL_CM_PKL -> /home/claude/cm_<RL_PRIOR_TREES>.pkl). The engine NEVER fits the band at build time — a silent refit produces a non-canonical, non-bit-stable forest and then pins it to itself. Re-run bootstrap.sh to seed the pinned cache, or rege
+engine-site exit=0
+
+--- (2) Guard 5 load-path mirror with the same RL_CM_PKL ---
+
+==================== STALE-BOOT GUARD (Guard 5) FAILED — BUILD HALTED ====================
+  - band LOAD-PATH unresolved: the engine's precedence ($RL_CM_PKL -> /home/claude/cm_400.pkl (RL_PRIOR_TREES)) finds NO file on disk, so the engine HALTS at wire_redesign.build() (REBAKE ARM 1 2026-08-24: the silent-refit-on-cache-miss fallback that would have RETRAINED a non-canonical, non-bit-stable cm forest here is DELETED). Re-run bootstrap.sh to seed the workspace copy.
+=========================================================================================
+guard exit=1

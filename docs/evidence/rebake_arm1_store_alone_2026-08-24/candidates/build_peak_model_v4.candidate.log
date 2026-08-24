@@ -1,0 +1,28 @@
+forward-peak R2 (out-of-sample, target now >=Y w/ completeness weight): 0.489
+
+survivorship (draft proj late picks>30):
+  MID       actual 39.6 draft-proj 41.0 (+3%)
+  SD        actual 42.0 draft-proj 41.5 (-1%)
+  SF        actual 34.7 draft-proj 33.2 (-4%)
+  KPD       actual 32.5 draft-proj 31.9 (-2%)
+  KPF       actual 28.9 draft-proj 26.2 (-9%)
+  RUCK      actual 37.8 draft-proj 36.6 (-3%)
+Kondogiannis bias: -0.2
+AGE-SOURCE CENSUS: {'REAL_DATE': 2158, 'REAL_YEAR': 4205, 'FALLBACK': 0} = 6363 of 6363 training rows (sums OK); fallback 0.000%
+TRAINING-STORE STAMP: store daa93053 · v0surf 5dd34ca8 · gamma 1.0 · 6363 rows -> /home/user/afl-rl-engine/.claude/worktrees/agent-a83beb5f9a19ad772/docs/evidence/rebake_arm1_store_alone_2026-08-24/candidates/training_store_stamp.json
+CANDIDATE emission -> /home/user/afl-rl-engine/.claude/worktrees/agent-a83beb5f9a19ad772/docs/evidence/rebake_arm1_store_alone_2026-08-24/candidates (peak_model_v4.pkl + pvc_snapshot.json); tier-2 freeze stamp NOT applied: a candidate is not the loaded artifact
+
+=== control vs v4(>=Y) value, key players ===
+  Sean Darcy         | ctrl    358  v4    358     +0%
+  Tom Barrass        | ctrl      8  v4     12    +50%
+  Brennan Cox        | ctrl     72  v4    174   +142%
+  Josh Treacy        | ctrl   4671  v4   5039     +8%
+  Max Holmes         | ctrl   5387  v4   5187     -4%
+  Nick Daicos        | ctrl   9451  v4   9054     -4%
+  Riley Thilthorpe   | ctrl   4945  v4   4397    -11%
+PROVEN active (>=80g, n=227): median move +0.0% (was -7.1% with strictly-after); |move|>100%: 4 ['Hunter Clark', 'Sam Powell-Pepper', 'Brennan Cox', 'Esava Ratugolea']
+saved peak_model_v4.pkl
+
+----- stderr -----
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.

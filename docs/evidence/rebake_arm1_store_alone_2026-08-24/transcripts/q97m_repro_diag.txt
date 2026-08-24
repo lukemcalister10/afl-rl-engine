@@ -1,0 +1,6 @@
+--- run 1 ---
+X.shape=(13169, 11)  md5(X)=4d69abb4a34c673f48c3b211a88bdf4d  md5(yy)=8e516cb22c8c70ae75c598be4680fe0e
+same-process fit twice on identical X/yy: fd794c0b8555cfeef2f57e9dd946181a / fd794c0b8555cfeef2f57e9dd946181a -> IDENTICAL
+--- run 2 ---
+X.shape=(13169, 11)  md5(X)=4d69abb4a34c673f48c3b211a88bdf4d  md5(yy)=8e516cb22c8c70ae75c598be4680fe0e
+same-process fit twice on identical X/yy: fd794c0b8555cfeef2f57e9dd946181a / fd794c0b8555cfeef2f57e9dd946181a -> IDENTICAL

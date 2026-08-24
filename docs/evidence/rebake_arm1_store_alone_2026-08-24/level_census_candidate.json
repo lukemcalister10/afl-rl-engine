@@ -1,0 +1,26 @@
+{
+ "board_rows": 804,
+ "grid": {
+  "hi": 120.0,
+  "lo": 40.0,
+  "points_per_row": 321,
+  "step": 0.25
+ },
+ "knots_in_model": 2464,
+ "raw": {
+  "negative": 65583,
+  "pct_negative": 25.49090485074627,
+  "pct_rows_with_a_drop": 100.0,
+  "rows_with_a_drop": 804,
+  "steps": 257280,
+  "worst_row": "Sid Draper",
+  "worst_step_pct": -1.2710876781175091
+ },
+ "read_site_ratchet": {
+  "negative": 0,
+  "pct_negative": 0.0,
+  "rows_with_a_drop": 0,
+  "steps": 257280,
+  "worst_step_pct": 0.0
+ }
+}

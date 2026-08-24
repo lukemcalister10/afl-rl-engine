@@ -1,0 +1,302 @@
+{
+ "_doc": "REBAKE WEEK ARM 1 (store-alone) — every deciding figure this arm measured, as data. Prose account is in the build seat's hand-back to the supervisor. Directive: docs/directives/REBAKE_ARM1_STORE_ALONE_2026-08-24.md. Prereg: PREREG.md at commit 78afcc1, filed before any engine or artifact edit (P9). Every hash here was measured from the artifact, never typed (P4).",
+ "arm": "ARM 1 — the store-alone refit; NO design content",
+ "charter": ["register v831", "register v833", "docs/proposals/REBAKE_COMPARISON_2026-08-21.md §1.11"],
+ "environment": {
+  "venv": "/root/rl_venv312",
+  "python": "3.12.3", "numpy": "2.4.4", "scipy": "1.17.1", "sklearn": "1.8.0",
+  "blas_threads": 1,
+  "workspace": "the seat's OWN isolated copy; the shared /home/claude/rl_workspace was never written",
+  "baseline_check": "the isolated workspace reproduces the live board 6fd0f7ded2b280d1a90962c299a152e3 BYTE-EXACT before any edit"
+ },
+
+ "artifacts": {
+  "cm_400": {
+   "shipped_md5": "34faa8659cc8f19794f5cb9584fa19b2",
+   "candidate_md5": "2e0b11d3bceb65351f2417927f437053",
+   "rows_shipped_from_pickle_root": 13226,
+   "rows_candidate": 13220,
+   "estimator": "sklearn.ensemble.GradientBoostingRegressor",
+   "hyperparameters": {"loss": "quantile", "alpha": [0.10, 0.30, 0.50, 0.70, 0.90],
+                       "n_estimators": 400, "max_depth": 4, "learning_rate": 0.05,
+                       "min_samples_leaf": 25, "random_state": 0},
+   "n_features_in": 11,
+   "feature_bind_at_fit": "cp._lvl_eff = par_redesign.lvl_par (PAR-centred), per par_redesign.retrain()",
+   "training_row_rule": "conditional_prior.build_cond_prior(cap=2026, resolved_cut=2021); debut<=2021, (pick or _ft), MSD INCLUDED, T1 applied",
+   "T1": "APPLIED (conditional_prior.py:154-155)",
+   "fit_seconds": 44.9
+  },
+  "q97m": {
+   "shipped_md5": "cfdc73216c099e5e8f1fda3968f31c00",
+   "candidate_md5": "fd794c0b8555cfeef2f57e9dd946181a",
+   "rows_shipped_from_pickle_root": 13111,
+   "rows_candidate": 13169,
+   "estimator": "sklearn.ensemble.GradientBoostingRegressor",
+   "hyperparameters": {"loss": "quantile", "alpha": 0.97, "n_estimators": 200, "max_depth": 4,
+                       "learning_rate": 0.05, "min_samples_leaf": 25, "random_state": 0},
+   "n_features_in": 11,
+   "training_row_rule": "_merged_recover.py:60-64 X/yy; debut<=2021, (pick or _ft), MSD EXCLUDED (RL_MSD_POOL_EXCL=1)",
+   "T1": "NOT PART OF THIS CONSTRUCTION — the X/yy loop carries no first_observable_season skip; applying it would change a training-row rule, i.e. design content, which ARM 1 has none of. FLAGGED FOR THE OWNER.",
+   "fit_seconds": 104.9
+  },
+  "peak_model_v4": {
+   "shipped_md5": "f305fe5330222f4fa14d3654a0e91ef7",
+   "candidate_md5": "5338d0cd0e5e3261864987480288858b",
+   "rows_candidate": 6363,
+   "estimator": "sklearn.ensemble.HistGradientBoostingRegressor",
+   "hyperparameters": {"max_iter": 600, "max_depth": 5, "learning_rate": 0.04,
+                       "min_samples_leaf": 30, "l2_regularization": 2.0, "random_state": 0},
+   "n_features_in": 17, "n_iter_": 600,
+   "training_row_rule": "build(2006,2015) — debut window 2006-2015, one draft row per player plus one row per scored year with >=1 future >=6-game season",
+   "T1": "not applicable — different construction; the draft row is a real zero by design",
+   "fit_seconds": 37.9,
+   "out_of_sample_forward_peak_R2": 0.489
+  },
+  "pvc_snapshot": {
+   "shipped_md5": "ade79790efc8ad4585c2c6800a935eaa",
+   "candidate_md5": "4704b8296008f81e7bb5407424229e85",
+   "note": "CO-EMITS with the peak-model build by design (v831 D6; rl_model.py:1234). 65 keys, picks 1..64 + pool index 65, domain asserted by the builder."
+  },
+  "bust_prior_table": {
+   "shipped_md5": "5942aa6ad7be1d482eed737997486c70",
+   "candidate_md5": null,
+   "status": "NOT REFITTED — BLOCKER. No producer exists anywhere in the repository or on this filesystem. Every reference reads it or renames position keys inside it; git log --follow returns two commits (initial seed f4a4d34, #262 rename 995474c). SHIP_GATES.md:295's claim that build_peak_model_v4.py regenerates it is FALSE AGAINST SOURCE — that script only reads it, as a training input. Prereg prediction P0 / falsifier FA2, declared in advance. Owed: an owner ruling, and the SHIP_GATES.md correction under process law P11."
+  },
+  "cm_400_T1_off_ATTRIBUTION_ONLY": {
+   "candidate_md5": "6e20aeb4217d03c074d0c5ed1587b320",
+   "rows": 13283,
+   "note": "identical construction with the T1 skip disabled; used ONLY to build the attribution board. NEVER the candidate."
+  }
+ },
+
+ "boards": {
+  "live": "6fd0f7ded2b280d1a90962c299a152e3",
+  "candidate": "02a554b5d0886f047a607b23b8bfdcfd",
+  "candidate_T1_off_attribution": "bee162bcd4405cd0290e2ff26212ddf9",
+  "control_live_rebuilt_with_switches_bound": "6fd0f7ded2b280d1a90962c299a152e3"
+ },
+
+ "movers_candidate_vs_live": {
+  "rows_compared": 804, "rows_only_live": 0, "rows_only_candidate": 0,
+  "up": 329, "down": 312, "flat": 163,
+  "pool_total_old": 700119, "pool_total_new": 706175,
+  "mint_abs": 6056, "mint_pct": 0.8650,
+  "sum_abs_move": 30870, "mean_abs_move": 38.4, "median_abs_move": 17.0,
+  "median_abs_move_pct": 3.88, "p90_abs_move_pct": 22.81, "max_abs_move_pct": 101.39,
+  "top10_up": [["murphy-reid", 3367, 3714, 347, 10.31], ["zac-bailey", 2611, 2924, 313, 11.99],
+               ["jed-walter", 815, 1120, 305, 37.42], ["cooper-hynes", 929, 1216, 287, 30.89],
+               ["samuel-grlj", 1606, 1891, 285, 17.75], ["jai-murray", 968, 1249, 281, 29.03],
+               ["kysaiah-pickett", 3945, 4221, 276, 7.00], ["darcy-wilson", 2654, 2911, 257, 9.68],
+               ["alex-van-wyk", 315, 566, 251, 79.68], ["caleb-windsor", 1160, 1384, 224, 19.31]],
+  "top10_down": [["luke-jackson", 9285, 8738, -547, -5.89], ["jacob-farrow", 2431, 2124, -307, -12.63],
+                 ["sam-berry", 3402, 3135, -267, -7.85], ["dyson-sharp", 3288, 3022, -266, -8.09],
+                 ["patrick-retschko", 1119, 864, -255, -22.79], ["harvey-langford", 2332, 2104, -228, -9.78],
+                 ["lachlan-ash", 5817, 5596, -221, -3.80], ["cooper-trembath", 1871, 1685, -186, -9.94],
+                 ["errol-gulden", 7162, 6991, -171, -2.39], ["tom-green", 5440, 5282, -158, -2.90]],
+  "by_career_games_median_abs_pct": {"games<=22": 1.98, "games 23-80": 8.42, "games>80": 2.99},
+  "by_position_median_abs_pct": {"MID": 2.90, "SD": 3.98, "SF": 5.56, "KPD": 4.14, "KPF": 4.67, "RUCK": 0.88}
+ },
+
+ "T1_attribution": {
+  "first_observable_season": 2005,
+  "rows_removed_by_T1": 63, "rows_without_T1": 13283, "rows_with_T1": 13220,
+  "pct_of_training_rows": 0.474,
+  "owner_word_baseline_2026_07_31": {"rows": 64, "of": 13221, "pct": 0.484},
+  "T1_alone_up_down_flat": [256, 289, 259],
+  "T1_alone_sum_abs_move": 11687,
+  "T1_alone_share_of_total_pct": 37.86,
+  "T1_alone_pool_total_move": -663, "T1_alone_pool_total_pct": -0.0938,
+  "store_alone_T1_held_out_sum_abs_move": 30021,
+  "store_alone_share_of_total_pct": 97.25,
+  "store_alone_pool_total_move": 6719, "store_alone_pool_total_pct": 0.9597,
+  "_caution": "the two legs do NOT sum to the whole — the pricing chain is non-linear, so these BOUND the attribution rather than decompose it",
+  "T1_biggest_up": [["zak-butters", 175], ["levi-ashcroft", 148], ["colby-mckercher", 143],
+                    ["bailey-smith", 132], ["lachlan-ash", 120]],
+  "T1_biggest_down": [["nick-daicos", -328], ["max-holmes", -237], ["errol-gulden", -181],
+                      ["nasiah-wanganeen-milera", -181], ["luke-jackson", -142]]
+ },
+
+ "level_census_V3": {
+  "declared_grid": {"lo": 40.0, "hi": 120.0, "step": 0.25, "points_per_row": 321},
+  "board_rows": 804, "steps": 257280,
+  "model_knot_set": {"knots": 2464, "range": [40.7893, 116.2636]},
+  "ratchet_dial": "RL_O44_LVLMONO='ratchet' (code default; absent from the manifest so gate mode leaves it standing)",
+  "candidate_read_site": {"negative_steps": 0, "pct": 0.0, "rows_with_a_drop": 0, "worst_step_pct": 0.0,
+                          "verdict": "PASS — the directive's ZERO, over every board row"},
+  "candidate_raw_band": {"negative_steps": 65583, "pct": 25.4909, "rows_with_a_drop": 804,
+                         "worst_step_pct": -1.2711, "worst_row": "Sid Draper"},
+  "live_read_site": {"negative_steps": 0, "pct": 0.0},
+  "live_raw_band": {"negative_steps": 59304, "pct": 23.0504, "rows_with_a_drop": 804,
+                    "worst_step_pct": -1.5707, "worst_row": "Josh Gibcus"},
+  "reading": "the RAW surface gets WORSE on a store-alone refit: 23.0504% -> 25.4909%, +2.44 percentage points. Independently replicates study B M-21 (shipped 23.40% -> incumbent refit 25.15%). The ratchet absorbs all of it. Only the estimator change reaches zero FROM THE FIT.",
+  "limitation": "measured at the BAND, not through the true ev(). Band monotonicity is necessary for law 3, not sufficient. Packet F2's ev() sweep is STILL OWED (study B I-18)."
+ },
+
+ "G_Y0_law_12": {
+  "verdict": "PASS", "measured_pct": 0.002, "threshold_pct": 2.0, "margin_pct_points": 1.998,
+  "n": 1329, "picks": 64,
+  "live_baseline_pct": 0.002,
+  "pool_leg": "UNMEASURED on BOTH boards (+167.768% vs the carried-over pool level 237, n=763) — pre-existing, reported-not-gated, unchanged by this arm"
+ },
+
+ "pinball_monitor": {
+  "protocol": "study A §5.1 exactly — rolling-origin by debut year, whole careers held out, folds (train<=2012 / test 2013-15), (<=2015 / 2016-18), (<=2018 / 2019-21); six legs; trees as shipped {400 x5, 200 for .97}; the engine's own two crossing repairs applied and instrumented",
+  "baseline_study_A_5_1_design_a": 3.9703,
+  "candidate_plain_feature": 3.9656,
+  "delta": -0.0047, "delta_pct": -0.12,
+  "verdict": "within the prereg's +/-1.5% band — HELD",
+  "candidate_cov_abs_err": 0.0371,
+  "candidate_par_centred_feature": 3.9788,
+  "candidate_par_centred_cov_abs_err": 0.0356,
+  "by_population_candidate_vs_studyA": {
+   "ND-early": [3.3992, 3.4009], "ND-mid": [3.8356, 3.8394], "ND-late": [4.1442, 4.1448],
+   "ND-pool": [4.7857, 4.7969], "RD/PSD": [4.4942, 4.5058]},
+  "_caveat": "study A's §5.1 design matrix is built on cp._feat with the ORIGINAL cp._lvl_eff, but the shipped cm_400 trains through par_redesign.retrain(), which rebinds cp._lvl_eff to lvl_par. Only the 'plain' variant is comparable to 3.9703. The PAR-centred number 3.9788 is filed as the zero point for the design arms."
+ },
+
+ "law_9_mint": {
+  "gate_status": "WAIVED as a gate at v830 (owner: 'Waiving the minted value, not bothered about conservation for this') — MEASURED AND REPORTED here",
+  "candidate_vs_live_abs": 6056, "candidate_vs_live_pct": 0.8650,
+  "store_alone_abs": 6719, "store_alone_pct": 0.9597,
+  "T1_alone_abs": -663, "T1_alone_pct": -0.0938,
+  "rulebook_threshold_reference": "law 9 measurement threshold band_scar = 200 (rulebook PART 3)",
+  "note": "the ratchet is ON in BOTH boards, so this mint is a property of the refit, not of the ratchet"
+ },
+
+ "P12_no_arb_reading": {
+  "law": "P12 — every value-moving adoption carries its OWN arm's no-arb band reading and class check pre-flip; a sibling variant's reading does not cover this arm",
+  "emitter": "the disclosed ORDER 31-F copy, md5 d5f4880662b7de3f2716e1c84112d11d, run once per artifact set with everything else held identical",
+  "instrument": "constants + marks() BYTE-CARRIED at run time from docs/evidence/staircase_adoption_2026-08-21/araw_noarb_class.py (file md5 856c87202053a6c5b7860729e8ab2948; carried slice lines 92..141 md5 ceb48719e99812ae46c30367ea8773cd)",
+  "floor": 1.03, "buy_rail": 1.14,
+  "live": {"w2_mark": 1.0928, "cohort": 1.0673, "max_class": 1.2000, "max_class_year": 2016,
+           "floor_margin": 0.0628, "rail_margin": -0.0600, "classes_over_rail": 3},
+  "candidate": {"w2_mark": 1.0893, "cohort": 1.0670, "max_class": 1.1933, "max_class_year": 2011,
+                "floor_margin": 0.0593, "rail_margin": -0.0533, "classes_over_rail": 3},
+  "move": {"w2_mark": -0.0035, "cohort": -0.0003, "max_class": -0.0067},
+  "NEW_BREACHES": 0,
+  "verdict": "the candidate adds NO arbitrage. The class still grows clear of the owner's floor; the three classes already over the 1.14 buy rail on the live board (2010/2011/2015 draft classes) are the same three on the candidate, with the worst LOWER (1.2000 -> 1.1933). The carried breach is pre-existing; this arm neither creates nor cures it.",
+  "day0_replication_guard": "86 of 86 wired entrants reproduce printed day-0 EXACTLY at tolerance 0, on BOTH matrices"
+ },
+
+ "fit_twice_reproducibility": {
+  "protocol": "three independent runs, same box, same environment, single-thread BLAS",
+  "cm_400": {"fit1": "2e0b11d3", "fit2": "2e0b11d3", "fit3": "2e0b11d3", "verdict": "BYTE-IDENTICAL"},
+  "peak_model_v4": {"fit1": "5338d0cd", "fit2": "5338d0cd", "fit3": "5338d0cd", "verdict": "BYTE-IDENTICAL"},
+  "pvc_snapshot": {"fit1": "4704b829", "fit2": "4704b829", "fit3": "4704b829", "verdict": "BYTE-IDENTICAL"},
+  "q97m": {"fit1_own_process": "fd794c0b8555cfeef2f57e9dd946181a",
+           "fit2_after_a_cm_fit_in_the_same_process": "5d29eeaf7e8aa384bfc9e24914b2ba41",
+           "fit3_same_order_as_fit2": "5d29eeaf7e8aa384bfc9e24914b2ba41",
+           "verdict": "ORDER-DEPENDENT, NOT NON-DETERMINISTIC"},
+  "q97m_diagnosis": {
+   "fit_inputs_identical_across_orders": true,
+   "md5_X": "4d69abb4a34c673f48c3b211a88bdf4d", "md5_yy": "8e516cb22c8c70ae75c598be4680fe0e",
+   "two_fits_on_identical_inputs_in_one_process": "byte-identical",
+   "trees_byte_equal": "200 of 200 (threshold + feature + value)",
+   "train_score_equal": true, "init_constant_equal": true, "rng_state_equal": true,
+   "predictions_identical_rows": "13169 of 13169 (100.000%), max |delta| 0.000000",
+   "pickle_sizes": [401976, 401951], "first_differing_byte_offset": 3,
+   "every_attribute_pickled_individually": "byte-equal",
+   "conclusion": "the difference is in pickle's own MEMOISATION — object identity at serialisation time, not model content. data/expected_boot.json pins the band and the ceiling by PICKLE md5, and pickle md5 is NOT a function of the fitted model. Same class as the book's id()-keying (STANDING_PROCEDURES; v833 queue item 's4_matrix id()-keying determinism, rebake-adjacent'), now found in a BOOT-PINNED FITTED ARTIFACT.",
+   "candidate_committed": "fd794c0b — produced by running refit_q97m.py's own construction in its OWN process, which is how the committed entry point is designed to be run"
+  }
+ },
+
+ "byte_unmoved_P15": {
+  "verdict": "every pinned live artifact BYTE-UNMOVED (fv excepted and declared)",
+  "store": "daa93053bc2d4eba30d9dc6e06e4af9e",
+  "board": "6fd0f7ded2b280d1a90962c299a152e3",
+  "band": "34faa8659cc8f19794f5cb9584fa19b2",
+  "q97m": "cfdc73216c099e5e8f1fda3968f31c00",
+  "v0surf": "5dd34ca82735f5c8f021b1c7320df8f8",
+  "peak_model": "f305fe5330222f4fa14d3654a0e91ef7",
+  "pvc_snapshot": "ade79790efc8ad4585c2c6800a935eaa",
+  "bust_prior": "5942aa6ad7be1d482eed737997486c70",
+  "engine_head": "3af8c1f7d61275c198a5df70c34608c7",
+  "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+  "register": "652d83e87780e415a01a2de6d8b3cc57",
+  "config_sha256": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+  "release_contract_md5": "391b34c8a6298e713de718f0c4ccb39a",
+  "expected_boot_md5": "4cb6bd57183de42743a0de28c43b021c",
+  "home_claude_cm_400_pkl": "34faa8659cc8f19794f5cb9584fa19b2",
+  "home_claude_q97m_pkl": "cfdc73216c099e5e8f1fda3968f31c00",
+  "fv_DECLARED_MOVE": {"pinned": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346",
+                       "measured": "47cbbfe6e52d6baf02109eb319f8af84973ceaa9f945d545dbc9ad9f051d747c",
+                       "cause": "the in-repo stamp fix edits engine/forward_valuation/build_peak_model_v4.py, and fv_identity hashes every *.py in that directory — including a build script the engine never imports. No board math is touched. THE RE-PIN IS OWED AT THE LANDING ACT and is deliberately NOT taken here."}
+ },
+
+ "switches_declared": {
+  "RL_CM_PKL": {"new": true, "engine_site": "engine/rl_after/wire_redesign.py cm_load_path()",
+                "guard_mirror": "boot_guard.py _resolve_cm_load() — byte-for-byte, no fall-through",
+                "default": "unset => /home/claude/cm_<RL_PRIOR_TREES>.pkl, byte-identical to shipped",
+                "infra_allow": true},
+  "RL_ARM1_OUT": {"new": true, "site": "engine/forward_valuation/build_peak_model_v4.py, one resolver pair",
+                  "default": "unset => the shipped emission targets"},
+  "RL_Q97M_PKL": {"new": false, "note": "shipped since the 2026-07-14 q97m freeze (_merged_recover.py:87, mirrored boot_guard.py:255) but NEVER in INFRA_ALLOW, so enforce('gate') rejected it as an UNKNOWN model override. Added."},
+  "RL_WS": {"new": false, "note": "shipped since the same day (refit_q97m.py:57) and likewise never in INFRA_ALLOW, so the committed refit entry point could not run under the pinned configuration. Added. NOT named in the prereg's switch table — a prereg correction made against the tree (P9)."},
+  "config_sha256_across_the_INFRA_ALLOW_edit": {"before": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+                                                "after": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+                                                "verdict": "UNMOVED — prereg falsifier FA5 discharged by measurement"}
+ },
+
+ "loader_halt_P1_proof": {
+  "change": "engine/rl_after/wire_redesign.py — the silent-refit-on-cache-miss fallback DELETED, replaced by a HALT",
+  "behaviour_unchanged": "board rebuilt from the live artifacts after the edit = 6fd0f7ded2b280d1a90962c299a152e3, BYTE-IDENTICAL, measured twice",
+  "control_with_switches_bound": "6fd0f7ded2b280d1a90962c299a152e3 — the candidate-root machinery + RL_CM_PKL + RL_Q97M_PKL bound, still byte-exact",
+  "non_vacuity": "RL_CM_PKL pointed at a missing file HALTs at the ENGINE site AND reds Guard 5's load-path block — both transcripts filed",
+  "cannot_fire_with_the_cache_present": "the deleted branch was the else of `if os.path.exists(cache)`",
+  "seat_defect_caught_and_recorded": "the first draft made the engine treat an explicitly-set-but-missing path as fatal while the Guard 5 mirror fell through to the pinned cache and PASSED — a mirror drift of exactly the class register item 91 names. Both now resolve identically, with no fall-through."
+ },
+
+ "prereg_scorecard": {
+  "P0_bust_prior_no_construction": "HELD",
+  "P1_movers_over_600": "HELD (641)",
+  "P2_both_directions_over_100": "HELD (329/312)",
+  "P3_median_abs_move_under_8pct": "HELD (3.88%)",
+  "P4_biggest_movers_in_thin_evidence_rows": "PARTLY FALSIFIED — mid-evidence rows (23-80 career games) move most, median 8.42%, against 1.98% for <=22 games",
+  "P5_T1_under_15pct_of_movement": "FALSIFIED — 37.86%",
+  "P6_every_candidate_hash_differs": "HELD",
+  "P7_T1_row_delta": "HELD (13220 vs 13283 = 63)",
+  "P8_read_site_census_zero_raw_near_23_25": "HELD (0 / 257280; raw 25.49%, live 23.05%)",
+  "P9_B2_B6_GY0_pass": "see ship_gates transcripts; G-Y0 PASS 0.002% <= 2%",
+  "P10_pinball_within_1_5pct": "HELD (-0.12%)",
+  "P11_mint_nonzero_positive": "HELD (+6056, +0.8650%)",
+  "P12_own_arm_no_arb_reading": "HELD (0 new breaches)",
+  "P13_fit_twice_byte_identical": "HALF FALSIFIED — 3 of 4 identical; q97m order-dependent",
+  "P14_board_byte_identical_after_loader_halt": "HELD",
+  "P15_live_pins_unmoved": "HELD",
+  "falsifiers": {"FA1": "discharged before filing", "FA2": "FIRED exactly where predicted — bust_prior_table; the arm STOPPED there",
+                 "FA3": "did not fire", "FA4": "did not fire", "FA5": "tested and discharged by measurement",
+                 "FA6": "did not fire", "FA7": "applies to nothing — every gate in scope RAN", "FA8": "did not fire"}
+ },
+
+ "findings_not_on_the_list": {
+  "F1_q97m_pin_is_not_a_function_of_the_model": "see fit_twice_reproducibility.q97m_diagnosis. A boot pin that can move on a behaviourally identical model.",
+  "F2_two_shipped_switches_that_gate_mode_rejects": "RL_Q97M_PKL and RL_WS, both in engine/entry-point source since 2026-07-14, neither in INFRA_ALLOW. Consequence: refit_q97m.py — the committed and ONLY legitimate path to regenerate a boot-pinned artifact — could not be run under the pinned configuration. Found by running it. Fixed in this arm's first commit.",
+  "F3_peak_model_declared_falsifier_taken_for_the_first_time": {
+   "falsifier": "age_source_census WATCHED_NUMBER_fallback — 'must fall by EXACTLY the number of rows the DOB courier writes'; study B recorded it had NEVER been taken",
+   "measured_now": {"FALLBACK_rows": 0, "of_training_rows": 6363, "pct": 0.0,
+                    "REAL_DATE": 2158, "REAL_YEAR": 4205, "sums_to_denominator": true},
+   "store_level": {"store_rows": 2650, "by_present": 2650, "bd_present": 1150, "by_missing": 0,
+                   "addendum_4_baseline": "2651 / 2349 / 848 / 302"},
+   "reading": "ZERO guessed ages remain in the peak model's training population. The DOB courier finished the job."
+  },
+  "F4_fv_pin_covers_a_build_script_the_engine_never_imports": "fixing build_peak_model_v4.py's output paths — no valuation math, no board move — moves the pinned fv identity and therefore HALTs Guard 5 on every build. Structural question for the supervisor: should the fv identity cover build scripts, or only the modules the engine imports?",
+  "F5_one_source_selftest_carries_13_standing_reds_on_the_LIVE_board": {
+   "live_failures": 13, "candidate_failures": 14,
+   "the_one_new_red": "#326 level MSD (Alex Van Wyk)",
+   "adjudication": "NOT a candidate defect. The check asserts board_row['v'] == _num(_board_price(p)); measured in a CLEAN process on the candidate board that identity holds EXACTLY — board v=566, as-of-sequence 595.481971 / 1.0524 = 566, gap 0. The failure appears only inside the self-test's own probe-and-restore cycle (it perturbs MA._POOL_LEVELS, prices, restores, _pe_clear()s, then recomputes), so the check is ORDER-SENSITIVE. The 13 pre-existing reds are a separate matter this arm did not scope."
+  },
+  "F6_shared_scratchpad_carries_a_stale_rl_model_py": "the session scratchpad is persistent and holds an rl_model.py from an earlier seat. Any diagnostic script RUN FROM that directory silently imports it instead of the engine's (it crashed one probe here with KeyError: 'cap_against_curve_pick', which is how it was found). Every measurement in this arm was run from a clean directory and is unaffected — but a future seat that drops a probe there will get a wrong answer that looks right."
+ },
+
+ "still_owed": [
+  "the ev() level sweep — packet F2's open half; this arm's census is at the BAND only (study B I-18)",
+  "a ruling on bust_prior_table's producer, plus the SHIP_GATES.md:295 correction under process law P11",
+  "a ruling on whether T1 should be extended to q97m's training-row rule (a design change, not an ARM 1 question)",
+  "the cm_400 / q97m training-population divergence (13220 vs 13169 on one store) — study B F4, measured here, unresolved",
+  "the fv re-pin 6e9a370e -> 47cbbfe6 at the landing act",
+  "params.json — named in PRIORITY_1_STAGE_1 §3 as the other file with no known producer; NOT scoped or checked by this arm"
+ ],
+
+ "not_done_by_this_arm": "No design content of any kind: no estimator change, no monotone constraint, no age reparameterisation, no recency weighting, no hyperparameter re-selection, no ratchet retirement, no scope beyond v831 D6. v0surf untouched. No tag, no live-pin move, no rulebook edit, no docs/register/ write, no PR, no push. The board moves ONCE, at week's end, on the owner's word, through tools/land lever."
+}

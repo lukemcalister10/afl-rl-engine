@@ -1,0 +1,8 @@
+saved X (13169, 11)
+rows 13169
+q97m A (entry-point-faithful, own process) vs B (after a cm fit in the same process)
+  identical rows      : 13169 / 13169 (100.000%)
+  max |delta|         : 0.000000  (on a level scale of ~40-120)
+  mean |delta|        : 0.000000
+  max |delta| as pct  : 0.0000%
+  mean |delta| as pct : 0.0000%

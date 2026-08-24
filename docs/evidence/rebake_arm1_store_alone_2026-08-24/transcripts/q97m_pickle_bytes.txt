@@ -1,0 +1,10 @@
+sizes 401976 / 401951  (DIFFERENT)
+differing bytes: 313790 of 401951 (78.066730%)
+first at offset 3, last at 401950
+train_score_ equal : True
+init_.constant_    : [[111.43333333]] [[111.43333333]]
+_rng state equal   : True
+  n_estimators_    200 / 200
+  max_features_    11 / 11
+  n_features_in_   11 / 11
+trees byte-equal (threshold+feature+value): 200 / 200

@@ -1,0 +1,23 @@
+config manifest (gate mode) LOADED  hash eed19a75f775  (84 model vars pinned; ambient cleared)
+ORDER 44 dial          : 'ratchet'  (read-site ratchet)
+level feature index    : 9
+model's own knot set   : 2331 knots, range 40.7489 - 116.2636
+DECLARED GRID          : 40.0 -> 120.0 step 0.25  (321 points/row)
+board rows             : 804  (of 2650 mapped store rows)
+  ... 200 rows
+  ... 400 rows
+  ... 600 rows
+  ... 800 rows
+
+================ V3 LEVEL CENSUS — CANDIDATE ================
+RAW BAND (what the fit delivers, ratchet NOT applied)
+  steps                : 257280
+  descending steps     : 59304  (23.0504%)
+  rows with a drop     : 804 of 804 (100.00%)
+  worst step           : -1.5707% of the row's band mean  (Josh Gibcus)
+READ SITE (ORDER 44 ratchet ON — what a player is priced from)
+  steps                : 257280
+  descending steps     : 0  (0.000000%)   <== the directive's ZERO
+  rows with a drop     : 0
+  worst step           : 0.000000%
+VERDICT                : PASS — zero descending steps at the read site, over every board row

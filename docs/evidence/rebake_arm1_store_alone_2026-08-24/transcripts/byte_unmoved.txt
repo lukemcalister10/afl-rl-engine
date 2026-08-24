@@ -1,0 +1,24 @@
+PINNED ARTIFACTS — measured from the file, compared to data/expected_boot.json
+  store          engine/rl_after/rl_model_data.json         daa93053bc2d4eba30d9dc6e06e4af9e  UNMOVED
+  board          data/rl_build/rl_app_data.json             6fd0f7ded2b280d1a90962c299a152e3  UNMOVED
+  band           data/cm_400.pkl                            34faa8659cc8f19794f5cb9584fa19b2  UNMOVED
+  q97m           data/q97m.pkl                              cfdc73216c099e5e8f1fda3968f31c00  UNMOVED
+  v0surf         data/v0surf.pkl                            5dd34ca82735f5c8f021b1c7320df8f8  UNMOVED
+  peak_model     engine/rl_after/peak_model_v4.pkl          f305fe5330222f4fa14d3654a0e91ef7  UNMOVED
+  pvc_snapshot   engine/rl_after/pvc_snapshot.json          ade79790efc8ad4585c2c6800a935eaa  UNMOVED
+  bust_prior     engine/rl_after/bust_prior_table.json      5942aa6ad7be1d482eed737997486c70  UNMOVED
+  engine_head    engine/rl_after/_merged_recover.py         3af8c1f7d61275c198a5df70c34608c7  UNMOVED
+  rl_model       engine/rl_after/rl_model.py                6fe7c4155866d80e8045bed2d3bf2802  UNMOVED
+  register       LTI_REGISTER.md                            652d83e87780e415a01a2de6d8b3cc57  UNMOVED
+  config         data/model_config.json (vars hash)         eed19a75f775aeafe4ee5ea4b3990667  UNMOVED
+  fv             engine/forward_valuation/*.py              47cbbfe6e52d6baf02109eb319f8af84  MOVED — DECLARED: the in-repo stamp fix edits build_peak_model_v4.py; re-pin is OWED at the landing act
+
+OTHER LIVE FILES — md5 recorded so a later act can compare
+  data/release_contract.json                     391b34c8a6298e713de718f0c4ccb39a
+  data/expected_boot.json                        4cb6bd57183de42743a0de28c43b021c
+  data/model_config.json                         269d20ab86e3b9d13867987065c757d2
+  data/release_lineage.json                      1aa3d62e5f301c6da79e5b4c03f9db51
+  /home/claude/cm_400.pkl                        34faa8659cc8f19794f5cb9584fa19b2
+  /home/claude/q97m.pkl                          cfdc73216c099e5e8f1fda3968f31c00
+
+VERDICT: every pinned live artifact BYTE-UNMOVED (fv excepted and declared)

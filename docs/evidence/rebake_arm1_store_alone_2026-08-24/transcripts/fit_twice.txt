@@ -1,0 +1,18 @@
+config manifest (gate mode) LOADED  hash eed19a75f775  (84 model vars pinned; ambient cleared)
+refit_arm1 arm1-store-alone/1  root=/home/user/afl-rl-engine/.claude/worktrees/agent-a83beb5f9a19ad772  ws=/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/ws/rl_after  out=/tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_twice  config=eed19a75f775
+--- cm_400 ---
+  stamp -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_twice/training_stamp_cm_400_candidate.json
+  cm_400 candidate /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_twice/cm_400.candidate.pkl  rows=13220  md5=2e0b11d3bceb65351f2417927f437053  (45s)
+--- q97m ---
+  stamp -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_twice/training_stamp_q97m_candidate.json
+  q97m candidate /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_twice/q97m.candidate.pkl  rows=13169  md5=5d29eeaf7e8aa384bfc9e24914b2ba41  (86s)
+--- peak_model_v4 ---
+  stamp -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_twice/training_stamp_peak_model_v4_candidate.json
+  peak_model_v4 candidate /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_twice/peak_model_v4.candidate.pkl md5=5338d0cd0e5e3261864987480288858b ; pvc_snapshot /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_twice/pvc_snapshot.candidate.json md5=4704b8296008f81e7bb5407424229e85  (35s)
+refit_arm1 DONE -> /tmp/claude-0/-home-user-afl-rl-engine/7ac96fea-1199-5b6a-9d77-ded9f53694f7/scratchpad/fit_twice
+
+==================== FIT-TWICE COMPARISON (same box, same env) ====================
+  cm_400.candidate.pkl           fit1 2e0b11d3bceb65351f2417927f437053  fit2 2e0b11d3bceb65351f2417927f437053  BYTE-IDENTICAL
+  q97m.candidate.pkl             fit1 fd794c0b8555cfeef2f57e9dd946181a  fit2 5d29eeaf7e8aa384bfc9e24914b2ba41  DIVERGES
+  peak_model_v4.candidate.pkl    fit1 5338d0cd0e5e3261864987480288858b  fit2 5338d0cd0e5e3261864987480288858b  BYTE-IDENTICAL
+  pvc_snapshot.candidate.json    fit1 4704b8296008f81e7bb5407424229e85  fit2 4704b8296008f81e7bb5407424229e85  BYTE-IDENTICAL
