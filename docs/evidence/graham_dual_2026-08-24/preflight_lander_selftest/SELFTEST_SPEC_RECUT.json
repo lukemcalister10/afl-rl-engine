@@ -1,0 +1,76 @@
+{
+  "_doc": "SELF-TEST FIXTURE \u2014 tools/landing/selftest.py writes this file into a sandbox. It is not an act spec for any real act, it lands nothing, and the owner_word slot says so rather than quoting a word that was never given.",
+  "schema_version": 1,
+  "act_kind": "round-advance",
+  "date": "2026-08-20",
+  "owner_word": "SELF-TEST FIXTURE \u2014 no owner word; this spec never lands anything.",
+  "authority": "tools/landing/selftest.py (PLAN_v6 2a.3)",
+  "evidence_dir": "docs/evidence/landing_selftest",
+  "claims_file": "SELFTEST_CLAIMS.json",
+  "day0_rebase": {
+    "state": "off"
+  },
+  "gates": [
+    {
+      "name": "release_manifest_check",
+      "argv": [
+        "python3",
+        "release_manifest_check.py"
+      ],
+      "must_contain": "PASS"
+    },
+    {
+      "name": "release_contract_check",
+      "argv": [
+        "python3",
+        "release_contract.py",
+        "check"
+      ],
+      "must_contain": "PASS"
+    }
+  ],
+  "act": "SELF-TEST \u2014 the synthetic sheet re-cut",
+  "prereg": {
+    "path": "tools/landing/selftest.py (fixture)",
+    "board_before": "6fd0f7ded2b280d1a90962c299a152e3",
+    "board_after": "6fd0f7ded2b280d1a90962c299a152e3",
+    "round_expected": null
+  },
+  "round": {
+    "number": 24,
+    "scores": null,
+    "identity_overrides": [],
+    "arming": null
+  },
+  "sheet": {
+    "prereg_lite": "docs/evidence/landing_selftest/SELFTEST_PREREG_LITE.md",
+    "owner_word": "SELF-TEST FIXTURE \u2014 no owner word exists or is claimed.",
+    "disclosed_movers": "nobody: this re-cut appends one byte to a notes cell.",
+    "predicted": {
+      "sheet_md5": "6a257b9d1cd51e4bbaff1cc67b9a69e3",
+      "sheet_rows": 219,
+      "sheet_injured_y": 35
+    },
+    "provenance": "SELF-TEST FIXTURE \u2014 sandbox only."
+  },
+  "identities": {
+    "moves": [],
+    "unmoved": [
+      "board",
+      "store",
+      "engine_head",
+      "rl_model",
+      "fv",
+      "config",
+      "register",
+      "as_of_round"
+    ]
+  },
+  "column": null,
+  "lineage": null,
+  "movers_page": {
+    "output": "",
+    "boundary_note": ""
+  },
+  "commit_message": "SELF-TEST sandbox commit (never on main)"
+}

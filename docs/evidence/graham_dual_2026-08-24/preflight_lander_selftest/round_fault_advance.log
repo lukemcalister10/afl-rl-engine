@@ -1,0 +1,64 @@
+======================================================================================================
+LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
+  tree      : /tmp/landing_selftest_9791/sandbox
+  owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
+  prereg    : tools/landing/selftest.py (fixture)   predicts board 6fd0f7ded2b280d1a90962c299a152e3
+  mode      : APPLY (SELFTEST) builder=selftest
+  NOTE      : this act is a DECLARED NO-OP REHEARSAL — it predicts the board it already has and moves no identity.
+======================================================================================================
+
+--- STEP 0/14  preflight      clean tree, build lock, the restore point ---
+RL_/PAR_ environment  RL_REPO, RL_VENV
+build-lock: HELD by land-round-10641 (pid 10641) — single writer for the shared workspace.
+base commit        125d1e148b50ca0a195f61aec1b1016924daef19
+board pin (before) 6fd0f7ded2b280d1a90962c299a152e3
+store pin (before) daa93053bc2d4eba30d9dc6e06e4af9e
+restore point      114 carrier(s) captured, 114 present on disk
+    [preflight OK  0.07s]
+
+--- STEP 1/14  sheet          the sheet re-cut + its ONE pin declaration, own commit ---
+sheet         docs/owner_annotations/SITTER_2026_v1.csv
+  MEASURED (never typed): md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+  PINNED                : md5=21361291f26d35108b88f92f885c5063 rows=219 injured_y=35
+the declaration describes the sheet on disk. NO RE-CUT DECLARED — this step writes nothing, and `land round` remains the pin file's sole writer by not writing.
+    [sheet OK  0.00s]
+
+--- STEP 2/14  scores         the owner's score file and the bindings, asserted ---
+no scores file declared — this act is a REHEARSAL and applies nothing.
+    [scores OK  0.00s]
+
+--- STEP 3/14  catchup_preflight read-only preflight, CLEAN, then the inputs commit ---
+no scores file — nothing to preflight. (REHEARSAL.)
+    [catchup_preflight OK  0.00s]
+
+--- STEP 4/14  advance        THE ARMED CATCH-UP — ADVANCE-REPIN runs inside it ---
+*** FAULT INJECTED at step 'advance': round_mismatch — the act claims a round the tree is not standing on
+REHEARSAL — nothing is armed and nothing is applied.
+  as_of_round  24                                 HELD
+  board        6fd0f7ded2b280d1a90962c299a152e3   HELD
+  store        daa93053bc2d4eba30d9dc6e06e4af9e   HELD
+    [advance FAILED  0.01s]
+
+======================================================================================================
+LANDING ABORTED AT STEP 'advance'
+======================================================================================================
+  the act declares round 99 and the tree is at round 24. A rehearsal holds the round it is standing on.
+
+carriers that moved before the failure: 0
+RESTORING 0 carrier(s):
+
+ABORT PROOF: every carrier is BYTE-EXACT to the identity captured at step 0.
+
+THE RECOVERY LADDER: abort-then-retry is the recovery. A landing this lander cannot
+complete after abort+retry is a round that SLIPS, on the owner's call — never an
+improvised manual landing under pressure.
+======================================================================================================
+
+--- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
+    preflight          0.07s  OK
+    sheet              0.00s  OK
+    scores             0.00s  OK
+    catchup_preflight     0.00s  OK
+    advance            0.01s  FAIL
+    TOTAL              0.08s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_10641
