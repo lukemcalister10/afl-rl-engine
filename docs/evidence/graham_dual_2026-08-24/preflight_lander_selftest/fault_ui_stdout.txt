@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
-  tree      : /tmp/landing_selftest_15554/sandbox
+  tree      : /tmp/landing_selftest_11152/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 6fd0f7ded2b280d1a90962c299a152e3
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,12 +9,12 @@ LAND LEVER-LANDING — SELF-TEST — the no-op rehearsal
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-lever-15913 (pid 15913) — single writer for the shared workspace.
-base commit        03226ae53f1d6ff96e2427f4b3b1c8b3d7c0ced8
+build-lock: HELD by land-lever-11902 (pid 11902) — single writer for the shared workspace.
+base commit        42ef4cd5a919c8c8fe58e3560dca09a60301f868
 board pin (before) 6fd0f7ded2b280d1a90962c299a152e3
 store pin (before) daa93053bc2d4eba30d9dc6e06e4af9e
 restore point      61 carrier(s) captured, 61 present on disk
-    [preflight OK  0.07s]
+    [preflight OK  0.06s]
 
 --- STEP 1/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=6fd0f7ded2b280d1a90962c299a152e3  (0.0s)
@@ -60,7 +60,7 @@ RE-STAMPED, re-read, and release_contract.py check PASSES.
 --- STEP 5/10  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 verify BEFORE : ok=True balanced=ca8cb17e960b fails=0
 the sibling is CURRENT — nothing to reconcile, and this step writes nothing.
-    [sibling OK  0.11s]
+    [sibling OK  0.10s]
 
 --- STEP 6/10  ui             ALL SIX UI writers, and the identity read back out ---
 *** FAULT INJECTED at step 'ui': skip_second_writer — THE THRICE-PROVEN TRAP: writer 2 never runs
@@ -84,12 +84,12 @@ WRITER 4/6: ui/tools/rebuild_movers_derived.py  (points / values / model_changes
   drift guard: derived blocks OK — committed == rebuilt (4191290 bytes, latest report R24)
   shipped model_changes == live-derived: 11 boundar(ies), EQUAL  (the F-10 predicate holds)
 WRITER 5/6: ui/tools/ingest_inputs.py --mirror-only  (the ownership mirror, re-pinned to the landed board + store)
-  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_15554/sandbox/ui/data/ownership.js
+  LIVE MIRROR    — 804 players mirrored FROM THE STORE, 0 overriding (0 by construction since #283).  Bundle: /tmp/landing_selftest_11152/sandbox/ui/data/ownership.js
   MIRROR-ONLY    — the club-valuation bundle was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: MIRROR DRIFT GUARD — ui/data/ownership.js is byte-identical to what this tree projects (74786 bytes).
   mirror pin == the landed identity: board 6fd0f7de store daa93053 R24, 804 player(s) mirrored (pin() would ACTIVATE it)
 WRITER 6/6: ui/tools/ingest_inputs.py --clubs-only  (the picks bundle, re-stamped to the landed board + store)
-  CLEAN INGEST — 160 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_15554/sandbox/ui/data/club_valuation.js
+  CLEAN INGEST — 160 picks priced off engine/rl_after/pvc_curve_v2.json (RL_PVC2), 16 clubs.  Bundle: /tmp/landing_selftest_11152/sandbox/ui/data/club_valuation.js
   CLUBS-ONLY     — the ownership mirror was computed and DISCARDED; the store apply did not run (this lane reads the store, never writes it).
   drift guard: PICKS DRIFT GUARD — ui/data/club_valuation.js is byte-identical to what this tree projects (40600 bytes).
   picks stamp == the landed identity: board 6fd0f7de store daa93053 R24, 160 pick(s) priced off 9729f0c5 (pin() would ACCEPT it)
@@ -105,7 +105,7 @@ AFTER   picks  87f6d8f972666ca4dcaa806324a12f0a  UNMOVED (neither the board, the
   stamp.store_md5            daa93053bc2d4eba30d9dc6e06e4af9e   OK
   stamp.balanced_board_md5   ca8cb17e960bf7168bcb4101f5fd5779   OK
   stamp.asOfRound            24                                 OK
-    [ui FAILED  2.02s]
+    [ui FAILED  1.62s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'ui'
@@ -125,12 +125,12 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.07s  OK
+    preflight          0.06s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
     lineage            0.00s  OK
     contract           0.07s  OK
-    sibling            0.11s  OK
-    ui                 2.02s  FAIL
-    TOTAL              2.30s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_15913
+    sibling            0.10s  OK
+    ui                 1.62s  FAIL
+    TOTAL              1.88s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_11902

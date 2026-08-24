@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the synthetic board move
-  tree      : /tmp/landing_selftest_15554/sandbox
+  tree      : /tmp/landing_selftest_11152/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board c6a98727dc81481e10dae5e59dd091ec
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,8 +8,8 @@ LAND LEVER-LANDING — SELF-TEST — the synthetic board move
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-lever-15827 (pid 15827) — single writer for the shared workspace.
-base commit        03226ae53f1d6ff96e2427f4b3b1c8b3d7c0ced8
+build-lock: HELD by land-lever-11752 (pid 11752) — single writer for the shared workspace.
+base commit        42ef4cd5a919c8c8fe58e3560dca09a60301f868
 board pin (before) 6fd0f7ded2b280d1a90962c299a152e3
 store pin (before) daa93053bc2d4eba30d9dc6e06e4af9e
 restore point      61 carrier(s) captured, 61 present on disk
@@ -38,7 +38,7 @@ WRITTEN and re-read.
 *** FAULT INJECTED at step 'lineage': chain_broken — the register tail names a board no movers report can bridge
 column        selftest-synthetic-move registered (dry_run=False)
 ASSERTED: the newest stored point is this column, naming the live board c6a98727dc81481e10dae5e59dd091ec
-    [lineage FAILED  0.21s]
+    [lineage FAILED  0.19s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'lineage'
@@ -77,6 +77,6 @@ improvised manual landing under pressure.
     preflight          0.07s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
-    lineage            0.21s  FAIL
-    TOTAL              0.31s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_15827
+    lineage            0.19s  FAIL
+    TOTAL              0.29s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_11752

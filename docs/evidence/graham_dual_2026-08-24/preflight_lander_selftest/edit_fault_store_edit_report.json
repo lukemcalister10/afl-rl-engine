@@ -2,14 +2,15 @@
   "abort": {
     "byte_exact": true,
     "commits_rewound": [],
-    "error": "THE PICKS BUNDLE WOULD BE REFUSED BY ui/app/club_totals.js:pin() \u2014 ['stamp.board (aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa != 6fd0f7ded2b280d1a90962c299a152e3)', 'stamp.store (cccccccc != daa93053)', 'stamp.expectedBoard (aaaaaaaa != 6fd0f7de)']. The pick surface would ship UNAVAILABLE (or, before v827, ship SILENTLY STALE, which is what happened between the R23 advance and 2026-08-21), and it must hold BEFORE the gates step.",
-    "failed_step": "ui",
+    "error": "THE OLD VALUE THE SPEC ASSERTS IS NOT THE VALUE IN THE STORE.\n    row   : will-graham\n    field : p_dual_stream\n    spec asserts old = 90\n    store carries    = 89\nThis is an ABORT, not a repair. The spec was written against a store that no longer says what it said \u2014 re-measure the row, re-prereg the edit, and fly it again.",
+    "failed_step": "store_edit",
     "restore_point": {
       "data/expected_boot.json": "4cb6bd57183de42743a0de28c43b021c",
       "data/release_contract.json": "391b34c8a6298e713de718f0c4ccb39a",
       "data/release_lineage.json": "1aa3d62e5f301c6da79e5b4c03f9db51",
       "data/rl_build/rl_app_data.json": "6fd0f7ded2b280d1a90962c299a152e3",
       "data/rl_build/rl_app_data.json.srcmd5": "addb18f542eefbf1965b607013af2489",
+      "data/season_state.json": "90b36bbf8c11e198b9222db471d74ee4",
       "data/sheet_pins.json": "a4ee39f7ec80ee6b6172aa28e0c17aae",
       "docs/STATE.md": "65c99c9b41799f35dd2299544a4fe980",
       "engine/rl_after/ingestion/pos_rank_history.json": "478b5fafaba4e7100931dce04820f844",
@@ -70,12 +71,20 @@
     "restored": [
       {
         "action": "rewrite",
-        "path": "ui/data/club_valuation.js"
+        "path": "data/expected_boot.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/season_state.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/rl_model_data.json"
       }
     ]
   },
   "commits": [],
-  "error": "THE PICKS BUNDLE WOULD BE REFUSED BY ui/app/club_totals.js:pin() \u2014 ['stamp.board (aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa != 6fd0f7ded2b280d1a90962c299a152e3)', 'stamp.store (cccccccc != daa93053)', 'stamp.expectedBoard (aaaaaaaa != 6fd0f7de)']. The pick surface would ship UNAVAILABLE (or, before v827, ship SILENTLY STALE, which is what happened between the R23 advance and 2026-08-21), and it must hold BEFORE the gates step.",
+  "error": "THE OLD VALUE THE SPEC ASSERTS IS NOT THE VALUE IN THE STORE.\n    row   : will-graham\n    field : p_dual_stream\n    spec asserts old = 90\n    store carries    = 89\nThis is an ABORT, not a repair. The spec was written against a store that no longer says what it said \u2014 re-measure the row, re-prereg the edit, and fly it again.",
   "facts": {
     "base": {
       "carriers": {
@@ -84,6 +93,7 @@
         "data/release_lineage.json": "1aa3d62e5f301c6da79e5b4c03f9db51",
         "data/rl_build/rl_app_data.json": "6fd0f7ded2b280d1a90962c299a152e3",
         "data/rl_build/rl_app_data.json.srcmd5": "addb18f542eefbf1965b607013af2489",
+        "data/season_state.json": "90b36bbf8c11e198b9222db471d74ee4",
         "data/sheet_pins.json": "a4ee39f7ec80ee6b6172aa28e0c17aae",
         "docs/STATE.md": "65c99c9b41799f35dd2299544a4fe980",
         "engine/rl_after/ingestion/pos_rank_history.json": "478b5fafaba4e7100931dce04820f844",
@@ -163,80 +173,24 @@
         "v0surf": "5dd34ca82735f5c8f021b1c7320df8f8"
       }
     },
-    "build_proofs": {
-      "board_built": "6fd0f7ded2b280d1a90962c299a152e3",
-      "build_elapsed_s": 0.0,
-      "day0_rebase": "off",
-      "installed": true,
-      "kill_switch": null,
-      "predicted_board": "6fd0f7ded2b280d1a90962c299a152e3",
-      "reference_board": null
-    },
-    "contract": {
-      "check": "PASS",
-      "seal_after": "7bd074ae626fe02b5a43b60d961a1add8fc675a07a72a6e7e0439cb152efb287",
-      "seal_before": "7bd074ae626fe02b5a43b60d961a1add8fc675a07a72a6e7e0439cb152efb287",
-      "trailing_newline_in_committed_file": true
-    },
-    "lineage": {
-      "column": null,
-      "entry": null
-    },
-    "pins": {
-      "board": "6fd0f7ded2b280d1a90962c299a152e3",
-      "moved": [],
-      "store": "daa93053bc2d4eba30d9dc6e06e4af9e",
-      "unmoved_checked": 7
-    },
     "preflight": {
       "base_commit": "42ef4cd5a919c8c8fe58e3560dca09a60301f868",
       "board_before": "6fd0f7ded2b280d1a90962c299a152e3",
-      "carriers_captured": 61,
-      "lock": "land-lever-12477"
-    },
-    "sibling": {
-      "balanced_board_md5": "ca8cb17e960bf7168bcb4101f5fd5779",
-      "fails_after": 0,
-      "fails_before": 0,
-      "reconciled": false
+      "carriers_captured": 62,
+      "lock": "land-edit-13622"
     }
   },
-  "failed_step": "ui",
+  "failed_step": "store_edit",
   "ok": false,
   "timings": [
     {
-      "seconds": 0.08,
+      "seconds": 0.07,
       "step": "preflight",
       "verdict": "OK"
     },
     {
-      "seconds": 0.01,
-      "step": "build_proofs",
-      "verdict": "OK"
-    },
-    {
-      "seconds": 0.02,
-      "step": "pins",
-      "verdict": "OK"
-    },
-    {
-      "seconds": 0.0,
-      "step": "lineage",
-      "verdict": "OK"
-    },
-    {
-      "seconds": 0.07,
-      "step": "contract",
-      "verdict": "OK"
-    },
-    {
-      "seconds": 0.1,
-      "step": "sibling",
-      "verdict": "OK"
-    },
-    {
-      "seconds": 1.46,
-      "step": "ui",
+      "seconds": 0.09,
+      "step": "store_edit",
       "verdict": "FAIL"
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-24T08:09:14Z",
+  "generated": "2026-08-24T11:22:00Z",
   "results": [
     {
       "case": "control_clean_run",
@@ -143,12 +143,12 @@
     },
     {
       "case": "sheet_recut_writer",
-      "detail": "exit 0; the declaration now reads md5=6a257b9d1cd5 rows=219 injured_y=35; sheet commit cb7b282714c3; engine_head asserted UNMOVED",
-      "ok": "cb7b282714c3492e3bfa05626791d7d470cd15d3"
+      "detail": "exit 0; the declaration now reads md5=6a257b9d1cd5 rows=219 injured_y=35; sheet commit 584ff7cebc43; engine_head asserted UNMOVED",
+      "ok": "584ff7cebc43166bf1cf33f8571d4a8697358beb"
     },
     {
       "case": "round_input_commit_pincer",
-      "detail": "step 0 DECLARED the score file + the override record as expected dirt (yes); catchup_preflight committed the inputs itself at 8d332fba73eb; the flight reached failed_step='advance' (the door of the armed advance, by request)",
+      "detail": "step 0 DECLARED the score file + the override record as expected dirt (yes); catchup_preflight committed the inputs itself at 9c8b654453af; the flight reached failed_step='advance' (the door of the armed advance, by request)",
       "ok": true
     },
     {
@@ -177,6 +177,31 @@
       "ok": true
     },
     {
+      "case": "edit_steps_clean_through_contract",
+      "detail": "ONE surgical field edit (will-graham.p_dual_stream 90 -> 89) moved the store daa93053bc2d -> d7f053cf7a79; the board was built FROM it; pins moved ['board', 'store']; the column and the lineage entry were written; the contract re-sealed and PASSED \u2014 then the injected fault stopped it at `sibling`",
+      "ok": true
+    },
+    {
+      "case": "edit_lineage_straddles",
+      "detail": "the entry STRADDLES the edit: source.store daa93053bc2d (measured at the base commit, PRE-edit) -> destination.store d7f053cf7a79 (measured live, POST-edit); source.board 6fd0f7ded2b2 -> destination.board c6a98727dc81. This is the shape register v836's third abort says a pre-committed flip can never produce.",
+      "ok": true
+    },
+    {
+      "case": "edit_abort_restores_store",
+      "detail": "13 carrier(s) had been written and were restored BYTE-EXACT, the STORE among them (yes); HEAD back at the base: data/expected_boot.json, data/release_contract.json, data/release_lineage.json, data/rl_build/rl_app_data.json, data/rl_build/rl_app_data.json.srcmd5, data/season_state.json",
+      "ok": true
+    },
+    {
+      "case": "edit_fault_store_edit",
+      "detail": "fault=store_old_mismatch; exit 1; failed_step='store_edit'; the halt NAMES it ('THE OLD VALUE THE SPEC ASSERTS IS NOT THE VALUE IN THE STORE' found); carriers moved after abort: NONE (byte-exact); HEAD back at the base",
+      "ok": true
+    },
+    {
+      "case": "edit_fault_second_mover",
+      "detail": "fault=second_mover; exit 1; failed_step='build_proofs'; the halt NAMES it ('UNEXPECTED MOVER' found); carriers moved after abort: NONE (byte-exact); HEAD back at the base",
+      "ok": true
+    },
+    {
       "case": "claims_negative_control",
       "detail": "CLAIMS SELF-TEST: 11 PASS / 0 FAIL",
       "ok": true
@@ -193,8 +218,8 @@
     }
   ],
   "tally": {
-    "aborted_byte_exact": 20,
-    "broken": 20,
-    "caught": 20
+    "aborted_byte_exact": 22,
+    "broken": 22,
+    "caught": 22
   }
 }

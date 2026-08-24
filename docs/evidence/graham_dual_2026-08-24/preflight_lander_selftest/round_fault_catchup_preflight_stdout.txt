@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
-  tree      : /tmp/landing_selftest_15554/sandbox
+  tree      : /tmp/landing_selftest_11152/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board 6fd0f7ded2b280d1a90962c299a152e3
   mode      : APPLY (SELFTEST) builder=selftest
@@ -9,8 +9,8 @@ LAND ROUND-ADVANCE — SELF-TEST — the round rehearsal
 
 --- STEP 0/14  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-round-16410 (pid 16410) — single writer for the shared workspace.
-base commit        03226ae53f1d6ff96e2427f4b3b1c8b3d7c0ced8
+build-lock: HELD by land-round-12775 (pid 12775) — single writer for the shared workspace.
+base commit        42ef4cd5a919c8c8fe58e3560dca09a60301f868
 board pin (before) 6fd0f7ded2b280d1a90962c299a152e3
 store pin (before) daa93053bc2d4eba30d9dc6e06e4af9e
 restore point      114 carrier(s) captured, 114 present on disk
@@ -40,7 +40,7 @@ injured=Y players listed in R24: 0 []
   
   About to apply rounds [24] — each as its own sequential transaction, committed in order.
   NOT APPROVED — nothing applied. Re-run with --approve (or answer `yes`).
-    [catchup_preflight FAILED  0.14s]
+    [catchup_preflight FAILED  0.12s]
 
 ======================================================================================================
 LANDING ABORTED AT STEP 'catchup_preflight'
@@ -61,6 +61,6 @@ improvised manual landing under pressure.
     preflight          0.08s  OK
     sheet              0.00s  OK
     scores             0.00s  OK
-    catchup_preflight     0.14s  FAIL
-    TOTAL              0.22s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_16410
+    catchup_preflight     0.12s  FAIL
+    TOTAL              0.20s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_12775

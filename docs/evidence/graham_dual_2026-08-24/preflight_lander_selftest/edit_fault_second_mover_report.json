@@ -2,14 +2,15 @@
   "abort": {
     "byte_exact": true,
     "commits_rewound": [],
-    "error": "THE PICKS BUNDLE WOULD BE REFUSED BY ui/app/club_totals.js:pin() \u2014 ['stamp.board (aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa != 6fd0f7ded2b280d1a90962c299a152e3)', 'stamp.store (cccccccc != daa93053)', 'stamp.expectedBoard (aaaaaaaa != 6fd0f7de)']. The pick surface would ship UNAVAILABLE (or, before v827, ship SILENTLY STALE, which is what happened between the R23 advance and 2026-08-21), and it must hold BEFORE the gates step.",
-    "failed_step": "ui",
+    "error": "THE MOVERS ARE NOT THE MOVERS THIS ACT DECLARED.\n    UNEXPECTED MOVER(S): harry-sheezel 10417 -> 10416, nick-daicos 9920 -> 9919\n    DECLARED AND ABSENT: (none)\nA store edit predicts who moves; a second mover means the edit did something the act did not say it would, and that is an abort.",
+    "failed_step": "build_proofs",
     "restore_point": {
       "data/expected_boot.json": "4cb6bd57183de42743a0de28c43b021c",
       "data/release_contract.json": "391b34c8a6298e713de718f0c4ccb39a",
       "data/release_lineage.json": "1aa3d62e5f301c6da79e5b4c03f9db51",
       "data/rl_build/rl_app_data.json": "6fd0f7ded2b280d1a90962c299a152e3",
       "data/rl_build/rl_app_data.json.srcmd5": "addb18f542eefbf1965b607013af2489",
+      "data/season_state.json": "90b36bbf8c11e198b9222db471d74ee4",
       "data/sheet_pins.json": "a4ee39f7ec80ee6b6172aa28e0c17aae",
       "docs/STATE.md": "65c99c9b41799f35dd2299544a4fe980",
       "engine/rl_after/ingestion/pos_rank_history.json": "478b5fafaba4e7100931dce04820f844",
@@ -70,12 +71,16 @@
     "restored": [
       {
         "action": "rewrite",
-        "path": "ui/data/club_valuation.js"
+        "path": "data/season_state.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/rl_model_data.json"
       }
     ]
   },
   "commits": [],
-  "error": "THE PICKS BUNDLE WOULD BE REFUSED BY ui/app/club_totals.js:pin() \u2014 ['stamp.board (aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa != 6fd0f7ded2b280d1a90962c299a152e3)', 'stamp.store (cccccccc != daa93053)', 'stamp.expectedBoard (aaaaaaaa != 6fd0f7de)']. The pick surface would ship UNAVAILABLE (or, before v827, ship SILENTLY STALE, which is what happened between the R23 advance and 2026-08-21), and it must hold BEFORE the gates step.",
+  "error": "THE MOVERS ARE NOT THE MOVERS THIS ACT DECLARED.\n    UNEXPECTED MOVER(S): harry-sheezel 10417 -> 10416, nick-daicos 9920 -> 9919\n    DECLARED AND ABSENT: (none)\nA store edit predicts who moves; a second mover means the edit did something the act did not say it would, and that is an abort.",
   "facts": {
     "base": {
       "carriers": {
@@ -84,6 +89,7 @@
         "data/release_lineage.json": "1aa3d62e5f301c6da79e5b4c03f9db51",
         "data/rl_build/rl_app_data.json": "6fd0f7ded2b280d1a90962c299a152e3",
         "data/rl_build/rl_app_data.json.srcmd5": "addb18f542eefbf1965b607013af2489",
+        "data/season_state.json": "90b36bbf8c11e198b9222db471d74ee4",
         "data/sheet_pins.json": "a4ee39f7ec80ee6b6172aa28e0c17aae",
         "docs/STATE.md": "65c99c9b41799f35dd2299544a4fe980",
         "engine/rl_after/ingestion/pos_rank_history.json": "478b5fafaba4e7100931dce04820f844",
@@ -163,80 +169,60 @@
         "v0surf": "5dd34ca82735f5c8f021b1c7320df8f8"
       }
     },
-    "build_proofs": {
-      "board_built": "6fd0f7ded2b280d1a90962c299a152e3",
-      "build_elapsed_s": 0.0,
-      "day0_rebase": "off",
-      "installed": true,
-      "kill_switch": null,
-      "predicted_board": "6fd0f7ded2b280d1a90962c299a152e3",
-      "reference_board": null
-    },
-    "contract": {
-      "check": "PASS",
-      "seal_after": "7bd074ae626fe02b5a43b60d961a1add8fc675a07a72a6e7e0439cb152efb287",
-      "seal_before": "7bd074ae626fe02b5a43b60d961a1add8fc675a07a72a6e7e0439cb152efb287",
-      "trailing_newline_in_committed_file": true
-    },
-    "lineage": {
-      "column": null,
-      "entry": null
-    },
-    "pins": {
-      "board": "6fd0f7ded2b280d1a90962c299a152e3",
-      "moved": [],
-      "store": "daa93053bc2d4eba30d9dc6e06e4af9e",
-      "unmoved_checked": 7
-    },
     "preflight": {
       "base_commit": "42ef4cd5a919c8c8fe58e3560dca09a60301f868",
       "board_before": "6fd0f7ded2b280d1a90962c299a152e3",
-      "carriers_captured": 61,
-      "lock": "land-lever-12477"
+      "carriers_captured": 62,
+      "lock": "land-edit-13639"
     },
-    "sibling": {
-      "balanced_board_md5": "ca8cb17e960bf7168bcb4101f5fd5779",
-      "fails_after": 0,
-      "fails_before": 0,
-      "reconciled": false
+    "store_edit": {
+      "bytes_after": 1978074,
+      "bytes_before": 1978074,
+      "edits": [
+        {
+          "at": 164817,
+          "chars_after": 1978074,
+          "chars_before": 1978074,
+          "field": "p_dual_stream",
+          "key": "will-graham",
+          "new": 89,
+          "new_text": "\"p_dual_stream\": 89",
+          "old": 90,
+          "old_text": "\"p_dual_stream\": 90",
+          "row_span": [
+            164121,
+            164899
+          ]
+        }
+      ],
+      "rows": 2650,
+      "season_state": {
+        "calendar_progress": 1.0,
+        "exposure_pace": 0.909,
+        "fields_checked": 10,
+        "source_store_md5": "d7f053cf7a79cf3665ca46524d42fd57"
+      },
+      "store_after": "d7f053cf7a79cf3665ca46524d42fd57",
+      "store_before": "daa93053bc2d4eba30d9dc6e06e4af9e",
+      "written": true
     }
   },
-  "failed_step": "ui",
+  "failed_step": "build_proofs",
   "ok": false,
   "timings": [
     {
-      "seconds": 0.08,
+      "seconds": 0.06,
       "step": "preflight",
       "verdict": "OK"
     },
     {
-      "seconds": 0.01,
-      "step": "build_proofs",
-      "verdict": "OK"
-    },
-    {
-      "seconds": 0.02,
-      "step": "pins",
-      "verdict": "OK"
-    },
-    {
-      "seconds": 0.0,
-      "step": "lineage",
+      "seconds": 0.13,
+      "step": "store_edit",
       "verdict": "OK"
     },
     {
       "seconds": 0.07,
-      "step": "contract",
-      "verdict": "OK"
-    },
-    {
-      "seconds": 0.1,
-      "step": "sibling",
-      "verdict": "OK"
-    },
-    {
-      "seconds": 1.46,
-      "step": "ui",
+      "step": "build_proofs",
       "verdict": "FAIL"
     }
   ]

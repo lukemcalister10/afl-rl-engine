@@ -1,6 +1,6 @@
 ======================================================================================================
 LAND LEVER-LANDING — SELF-TEST — the synthetic board move
-  tree      : /tmp/landing_selftest_15554/sandbox
+  tree      : /tmp/landing_selftest_11152/sandbox
   owner word: SELF-TEST FIXTURE — no owner word; this spec never lands anything.
   prereg    : tools/landing/selftest.py (fixture)   predicts board c6a98727dc81481e10dae5e59dd091ec
   mode      : APPLY (SELFTEST) builder=selftest-moved
@@ -8,12 +8,12 @@ LAND LEVER-LANDING — SELF-TEST — the synthetic board move
 
 --- STEP 0/10  preflight      clean tree, build lock, the restore point ---
 RL_/PAR_ environment  RL_REPO, RL_VENV
-build-lock: HELD by land-lever-16243 (pid 16243) — single writer for the shared workspace.
-base commit        03226ae53f1d6ff96e2427f4b3b1c8b3d7c0ced8
+build-lock: HELD by land-lever-12609 (pid 12609) — single writer for the shared workspace.
+base commit        42ef4cd5a919c8c8fe58e3560dca09a60301f868
 board pin (before) 6fd0f7ded2b280d1a90962c299a152e3
 store pin (before) daa93053bc2d4eba30d9dc6e06e4af9e
 restore point      61 carrier(s) captured, 61 present on disk
-    [preflight OK  0.07s]
+    [preflight OK  0.05s]
 
 --- STEP 1/10  build_proofs   bare build, predicted identity, switch leg, day-0 ---
 build         rc=0 board=c6a98727dc81481e10dae5e59dd091ec  (0.0s)
@@ -41,7 +41,7 @@ chain GAP, CLOSED BY EVIDENCE — bridged by the ROUND 24 advance (board b3e8da9
 append-only OK: 13 prior entries byte-verbatim; top-level baseline 06d8af60b679a12db07c064c60c065f9 / v2.11-present-lens-baseline UNMOVED
 MOVED by this transition: ['board'] (of 11 identities)
 re-read OK: round-trips at indent=1; prior entries still byte-verbatim.
-    [lineage OK  0.22s]
+    [lineage OK  0.19s]
 
 --- STEP 4/10  contract       restamp_dynamic + the bake-lane repin + check ---
 contract seal self-consistent before the act: 7bd074ae626f
@@ -61,7 +61,7 @@ WRITER 2: the bake-lane identities restamp_dynamic does not touch
   contract_sha256             800f2832e237 -> 800f2832e237
   frozen fields asserted unmoved: 10 checked, 0 moved
 RE-STAMPED, re-read, and release_contract.py check PASSES.
-    [contract OK  0.08s]
+    [contract OK  0.07s]
 
 --- STEP 5/10  sibling        the balanced sibling, rebuilt and reconciled if moved ---
 *** FAULT INJECTED at step 'sibling': sidecar_corrupt — the sibling provenance sidecar is unreadable
@@ -75,7 +75,7 @@ LANDING ABORTED AT STEP 'sibling'
 carriers that moved before the failure: 11
     data/expected_boot.json                                          4cb6bd57183d -> c242326cbd36
     data/release_contract.json                                       391b34c8a629 -> 4a707d24c3ac
-    data/release_lineage.json                                        1aa3d62e5f30 -> 3debe9df91e6
+    data/release_lineage.json                                        1aa3d62e5f30 -> 4117a790e21c
     data/rl_build/rl_app_data.json                                   6fd0f7ded2b2 -> c6a98727dc81
     data/rl_build/rl_app_data.json.srcmd5                            addb18f542ee -> d98ce4016b9d
     engine/rl_after/ingestion/pos_rank_history.json                  478b5fafaba4 -> 2530177ed889
@@ -105,11 +105,11 @@ improvised manual landing under pressure.
 ======================================================================================================
 
 --- STEP TIMING, MACHINE-RECORDED (the M2 measure-then-quote ruling) ---
-    preflight          0.07s  OK
+    preflight          0.05s  OK
     build_proofs       0.01s  OK
     pins               0.02s  OK
-    lineage            0.22s  OK
-    contract           0.08s  OK
+    lineage            0.19s  OK
+    contract           0.07s  OK
     sibling            0.03s  FAIL
-    TOTAL              0.43s
-work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_16243
+    TOTAL              0.37s
+work dir discarded (the abort proved every carrier byte-exact): /tmp/landing_work_12609

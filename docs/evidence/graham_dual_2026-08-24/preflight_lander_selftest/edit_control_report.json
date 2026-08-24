@@ -2,14 +2,15 @@
   "abort": {
     "byte_exact": true,
     "commits_rewound": [],
-    "error": "THE PICKS BUNDLE WOULD BE REFUSED BY ui/app/club_totals.js:pin() \u2014 ['stamp.board (aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa != 6fd0f7ded2b280d1a90962c299a152e3)', 'stamp.store (cccccccc != daa93053)', 'stamp.expectedBoard (aaaaaaaa != 6fd0f7de)']. The pick surface would ship UNAVAILABLE (or, before v827, ship SILENTLY STALE, which is what happened between the R23 advance and 2026-08-21), and it must hold BEFORE the gates step.",
-    "failed_step": "ui",
+    "error": "Expecting property name enclosed in double quotes: line 1 column 3 (char 2)",
+    "failed_step": "sibling",
     "restore_point": {
       "data/expected_boot.json": "4cb6bd57183de42743a0de28c43b021c",
       "data/release_contract.json": "391b34c8a6298e713de718f0c4ccb39a",
       "data/release_lineage.json": "1aa3d62e5f301c6da79e5b4c03f9db51",
       "data/rl_build/rl_app_data.json": "6fd0f7ded2b280d1a90962c299a152e3",
       "data/rl_build/rl_app_data.json.srcmd5": "addb18f542eefbf1965b607013af2489",
+      "data/season_state.json": "90b36bbf8c11e198b9222db471d74ee4",
       "data/sheet_pins.json": "a4ee39f7ec80ee6b6172aa28e0c17aae",
       "docs/STATE.md": "65c99c9b41799f35dd2299544a4fe980",
       "engine/rl_after/ingestion/pos_rank_history.json": "478b5fafaba4e7100931dce04820f844",
@@ -70,12 +71,60 @@
     "restored": [
       {
         "action": "rewrite",
-        "path": "ui/data/club_valuation.js"
+        "path": "data/expected_boot.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/release_contract.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/release_lineage.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/rl_build/rl_app_data.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/rl_build/rl_app_data.json.srcmd5"
+      },
+      {
+        "action": "rewrite",
+        "path": "data/season_state.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/pos_rank_history.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/rank_history.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/sibling_repin_state.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/ingestion/value_history.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/rl_app_data.json"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/rl_app_data.json.srcmd5"
+      },
+      {
+        "action": "rewrite",
+        "path": "engine/rl_after/rl_model_data.json"
       }
     ]
   },
   "commits": [],
-  "error": "THE PICKS BUNDLE WOULD BE REFUSED BY ui/app/club_totals.js:pin() \u2014 ['stamp.board (aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa != 6fd0f7ded2b280d1a90962c299a152e3)', 'stamp.store (cccccccc != daa93053)', 'stamp.expectedBoard (aaaaaaaa != 6fd0f7de)']. The pick surface would ship UNAVAILABLE (or, before v827, ship SILENTLY STALE, which is what happened between the R23 advance and 2026-08-21), and it must hold BEFORE the gates step.",
+  "error": "Expecting property name enclosed in double quotes: line 1 column 3 (char 2)",
   "facts": {
     "base": {
       "carriers": {
@@ -84,6 +133,7 @@
         "data/release_lineage.json": "1aa3d62e5f301c6da79e5b4c03f9db51",
         "data/rl_build/rl_app_data.json": "6fd0f7ded2b280d1a90962c299a152e3",
         "data/rl_build/rl_app_data.json.srcmd5": "addb18f542eefbf1965b607013af2489",
+        "data/season_state.json": "90b36bbf8c11e198b9222db471d74ee4",
         "data/sheet_pins.json": "a4ee39f7ec80ee6b6172aa28e0c17aae",
         "docs/STATE.md": "65c99c9b41799f35dd2299544a4fe980",
         "engine/rl_after/ingestion/pos_rank_history.json": "478b5fafaba4e7100931dce04820f844",
@@ -164,53 +214,139 @@
       }
     },
     "build_proofs": {
-      "board_built": "6fd0f7ded2b280d1a90962c299a152e3",
+      "board_built": "c6a98727dc81481e10dae5e59dd091ec",
       "build_elapsed_s": 0.0,
       "day0_rebase": "off",
+      "edit": {
+        "movers": [],
+        "n_movers": 0,
+        "pool_after": 700119,
+        "pool_before": 700119,
+        "pool_delta": 0,
+        "rows_added": [],
+        "rows_compared": 1002,
+        "rows_removed": [],
+        "store_read_by_build": "d7f053cf7a79cf3665ca46524d42fd57"
+      },
       "installed": true,
       "kill_switch": null,
-      "predicted_board": "6fd0f7ded2b280d1a90962c299a152e3",
+      "predicted_board": "c6a98727dc81481e10dae5e59dd091ec",
       "reference_board": null
     },
     "contract": {
       "check": "PASS",
-      "seal_after": "7bd074ae626fe02b5a43b60d961a1add8fc675a07a72a6e7e0439cb152efb287",
+      "seal_after": "feed4303f2d568137e61cf199ffdc5bdac2006e1d713e79201f20f686c6fe0d9",
       "seal_before": "7bd074ae626fe02b5a43b60d961a1add8fc675a07a72a6e7e0439cb152efb287",
       "trailing_newline_in_committed_file": true
     },
     "lineage": {
-      "column": null,
-      "entry": null
+      "column": {
+        "board": "c6a98727dc81481e10dae5e59dd091ec",
+        "event": null,
+        "id": "selftest-store-edit"
+      },
+      "entry": {
+        "appended": true,
+        "boundary": [
+          "24",
+          "selftest-store-edit"
+        ],
+        "bridged_by_round": "24",
+        "destination": {
+          "as_of_round": 24,
+          "balanced_board_md5": "ca8cb17e960bf7168bcb4101f5fd5779",
+          "board": "c6a98727dc81481e10dae5e59dd091ec",
+          "config": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+          "engine_head": "3af8c1f7d61275c198a5df70c34608c7",
+          "fv": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346",
+          "register": "652d83e87780e415a01a2de6d8b3cc57",
+          "release_version": "v2.11-final-rc1-PROVISIONAL",
+          "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+          "store": "d7f053cf7a79cf3665ca46524d42fd57",
+          "v0surf": "5dd34ca82735f5c8f021b1c7320df8f8"
+        },
+        "entries": 14,
+        "moved": [
+          "board",
+          "store"
+        ],
+        "source": {
+          "as_of_round": 24,
+          "balanced_board_md5": "ca8cb17e960bf7168bcb4101f5fd5779",
+          "board": "6fd0f7ded2b280d1a90962c299a152e3",
+          "config": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+          "engine_head": "3af8c1f7d61275c198a5df70c34608c7",
+          "fv": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346",
+          "register": "652d83e87780e415a01a2de6d8b3cc57",
+          "release_version": "v2.11-final-rc1-PROVISIONAL",
+          "rl_model": "6fe7c4155866d80e8045bed2d3bf2802",
+          "store": "daa93053bc2d4eba30d9dc6e06e4af9e",
+          "v0surf": "5dd34ca82735f5c8f021b1c7320df8f8"
+        }
+      }
     },
     "pins": {
-      "board": "6fd0f7ded2b280d1a90962c299a152e3",
-      "moved": [],
-      "store": "daa93053bc2d4eba30d9dc6e06e4af9e",
-      "unmoved_checked": 7
+      "board": "c6a98727dc81481e10dae5e59dd091ec",
+      "moved": [
+        "board",
+        "store"
+      ],
+      "store": "d7f053cf7a79cf3665ca46524d42fd57",
+      "unmoved_checked": 5
     },
     "preflight": {
       "base_commit": "42ef4cd5a919c8c8fe58e3560dca09a60301f868",
       "board_before": "6fd0f7ded2b280d1a90962c299a152e3",
-      "carriers_captured": 61,
-      "lock": "land-lever-12477"
+      "carriers_captured": 62,
+      "lock": "land-edit-13597"
     },
-    "sibling": {
-      "balanced_board_md5": "ca8cb17e960bf7168bcb4101f5fd5779",
-      "fails_after": 0,
-      "fails_before": 0,
-      "reconciled": false
+    "store_edit": {
+      "bytes_after": 1978074,
+      "bytes_before": 1978074,
+      "edits": [
+        {
+          "at": 164817,
+          "chars_after": 1978074,
+          "chars_before": 1978074,
+          "field": "p_dual_stream",
+          "key": "will-graham",
+          "new": 89,
+          "new_text": "\"p_dual_stream\": 89",
+          "old": 90,
+          "old_text": "\"p_dual_stream\": 90",
+          "row_span": [
+            164121,
+            164899
+          ]
+        }
+      ],
+      "rows": 2650,
+      "season_state": {
+        "calendar_progress": 1.0,
+        "exposure_pace": 0.909,
+        "fields_checked": 10,
+        "source_store_md5": "d7f053cf7a79cf3665ca46524d42fd57"
+      },
+      "store_after": "d7f053cf7a79cf3665ca46524d42fd57",
+      "store_before": "daa93053bc2d4eba30d9dc6e06e4af9e",
+      "written": true
     }
   },
-  "failed_step": "ui",
+  "failed_step": "sibling",
   "ok": false,
   "timings": [
     {
-      "seconds": 0.08,
+      "seconds": 0.05,
       "step": "preflight",
       "verdict": "OK"
     },
     {
-      "seconds": 0.01,
+      "seconds": 0.13,
+      "step": "store_edit",
+      "verdict": "OK"
+    },
+    {
+      "seconds": 0.04,
       "step": "build_proofs",
       "verdict": "OK"
     },
@@ -220,7 +356,7 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.0,
+      "seconds": 0.17,
       "step": "lineage",
       "verdict": "OK"
     },
@@ -230,13 +366,8 @@
       "verdict": "OK"
     },
     {
-      "seconds": 0.1,
+      "seconds": 0.03,
       "step": "sibling",
-      "verdict": "OK"
-    },
-    {
-      "seconds": 1.46,
-      "step": "ui",
       "verdict": "FAIL"
     }
   ]
