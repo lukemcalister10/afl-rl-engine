@@ -1,0 +1,48 @@
+config manifest (gate mode) LOADED  hash eed19a75f775  (84 model vars pinned; ambient cleared)
+FB4 private-contract self-test: PASS  (stock violates 318 steps, exact 0)
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+design (13220, 11)  PAR-centred  store fb640ca0  first_observable=2005  years 2003-2026
+INCUMBENT GradientBoostingRegressor  mean 3.9211  {'2014': 4.1637, '2017': 4.1362, '2020': 3.4635, 'mean': 3.9211, 'settings': {'n_estimators': 400, 'max_depth': 4, 'learning_rate': 0.05, 'min_samples_leaf': 25}}
+  stage1 lr=0.3  it=400    mean 4.4390  (7s)
+  stage1 lr=0.3  it=800    mean 4.1208  (13s)
+  stage1 lr=0.3  it=1600   mean 3.9450  (25s)
+  stage1 lr=0.6  it=400    mean 4.1206  (6s)
+  stage1 lr=0.6  it=800    mean 3.9468  (12s)
+  stage1 lr=0.6  it=1600   mean 3.9245  (25s)
+  stage1 lr=1.0  it=400    mean 3.9780  (7s)
+  stage1 lr=1.0  it=800    mean 3.9217  (12s)
+  stage1 lr=1.0  it=1600   mean 3.9623  (22s)
+  stage1 lr=1.5  it=400    mean 3.9260  (6s)
+  stage1 lr=1.5  it=800    mean 3.9418  (12s)
+  stage1 lr=1.5  it=1600   mean 4.0060  (22s)
+stage1 SELECTED lr1.0_it800 -> {'max_depth': 4, 'min_samples_leaf': 25, 'learning_rate': 1.0, 'max_iter': 800}  mean 3.9217
+  stage2 {'max_depth': 3}  mean 3.9304
+  stage2 {'max_depth': 5}  mean 3.9425
+  stage2 {'min_samples_leaf': 15}  mean 3.9253
+  stage2 {'min_samples_leaf': 40}  mean 3.9228
+HYPERPARAMETERS SELECTED: {'max_depth': 4, 'min_samples_leaf': 25, 'learning_rate': 1.0, 'max_iter': 800}  mean 3.9217
+  a*=20.0   mean 3.9246
+  a*=20.5   mean 3.9196
+  a*=21.0   mean 3.9202
+  a*=21.5   mean 3.9174
+  a*=22.0   mean 3.9239
+  a*=22.5   mean 3.9209
+  a*=23.0   mean 3.9198
+  a*=23.5   mean 3.9198
+  a*=24.0   mean 3.9334
+a* SELECTED 21.5   (owner prior 23.0 -> 3.9198 ; study B 21.5 -> 3.9174 ; spread across all four age arms 0.133%)
+  halflife uniform  mean 3.9174
+  halflife 10.0     mean 3.9080
+  halflife 12.0     mean 3.9058
+  halflife 14.0     mean 3.9071
+  halflife 16.0     mean 3.9107
+HALF-LIFE SELECTED: 12.0  (0.296% better than uniform)
+
+=== SELECTION COMPLETE ===
+  incumbent (same splits)        : 3.9211
+  ARM 2 selected                 : 3.9058  (-0.390% vs incumbent)
+  hyperparameters                : {'max_depth': 4, 'min_samples_leaf': 25, 'learning_rate': 1.0, 'max_iter': 800}
+  a*                             : 21.5
+  recency half-life (window)     : 12.0
+WROTE /home/user/arm2_ws/selection_arm2.json

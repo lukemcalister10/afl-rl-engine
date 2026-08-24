@@ -1,0 +1,315 @@
+{
+ "_fb4_selftest": {
+  "EXACT_negative_steps": 0,
+  "EXACT_worst_step": 0.0,
+  "STOCK_negative_steps": 318,
+  "STOCK_worst_step": -0.6196456531568941,
+  "construction": "rebake-arm2-exact-monotone/1",
+  "failures": [],
+  "per_quantile": {
+   "q0.10": {
+    "exact_negative": 0,
+    "exact_worst": 0.0,
+    "stock_negative": 127,
+    "stock_worst": -0.28162953137762514
+   },
+   "q0.50": {
+    "exact_negative": 0,
+    "exact_worst": 0.0,
+    "stock_negative": 104,
+    "stock_worst": -0.2195261429632984
+   },
+   "q0.90": {
+    "exact_negative": 0,
+    "exact_worst": 0.0,
+    "stock_negative": 87,
+    "stock_worst": -0.6196456531568941
+   }
+  },
+  "sklearn": "1.8.0",
+  "stock_PinballLoss_differentiable": false,
+  "subclass_differentiable": true,
+  "subclass_need_update_leaves_values": false,
+  "toy_features": 10,
+  "toy_rows": 6000,
+  "toy_sweep_points_per_row": 201,
+  "toy_sweep_rows": 40,
+  "verdict": "PASS"
+ },
+ "cm_400": {
+  "T1_fabricated_zero_rule": "DISABLED \u2014 attribution variant, NOT the candidate",
+  "artifact": "cm_400 (the five-quantile PAR-centred band forests) \u2014 REBAKE ARM 2, exact-monotone",
+  "blas_threads_env": {
+   "MKL_NUM_THREADS": "1",
+   "NUMEXPR_NUM_THREADS": "1",
+   "OMP_NUM_THREADS": "1",
+   "OPENBLAS_NUM_THREADS": "1"
+  },
+  "candidate_md5": "ccbe314b3a16b5ea635d1014b66d4fe5",
+  "candidate_path": "../../arm2_ws/cand/cm_400.noT1.pkl",
+  "construction": "exact_monotone.GradOnlyPinball on HistGradientBoostingRegressor, monotonic_cst level=+1 / u=-1 / v=-1, via conditional_prior.build_cond_prior(cap=2026, resolved_cut=2021) under a bound design contract",
+  "declared_grids": {
+   "a_star": [
+    20.0,
+    20.5,
+    21.0,
+    21.5,
+    22.0,
+    22.5,
+    23.0,
+    23.5,
+    24.0
+   ],
+   "recency_halflife_years": [
+    "uniform",
+    10.0,
+    12.0,
+    14.0,
+    16.0
+   ],
+   "stage1_fixed": {
+    "max_depth": 4,
+    "min_samples_leaf": 25
+   },
+   "stage1_learning_rate": [
+    0.3,
+    0.6,
+    1.0,
+    1.5
+   ],
+   "stage1_max_iter": [
+    400,
+    800,
+    1600
+   ],
+   "stage2_capacity_cross": [
+    {
+     "max_depth": 3
+    },
+    {
+     "max_depth": 5
+    },
+    {
+     "min_samples_leaf": 15
+    },
+    {
+     "min_samples_leaf": 40
+    }
+   ]
+  },
+  "design_spec": {
+   "age_hill": {
+    "a_star": 21.5,
+    "u_index": 10,
+    "v_index": 11
+   },
+   "construction": "rebake-arm2-exact-monotone/1",
+   "exact_monotone_level": true,
+   "hyperparameters": {
+    "learning_rate": 1.0,
+    "max_depth": 4,
+    "max_iter": 800,
+    "min_samples_leaf": 25
+   },
+   "level_index": 9,
+   "monotonic_cst": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    -1,
+    -1
+   ],
+   "n_features": 12,
+   "note": "cm_400 \u2014 the five-quantile PAR-centred band. Settings SELECTED OUT OF SAMPLE on the grids declared in the prereg; never carried as literals.",
+   "quantiles": [
+    0.1,
+    0.3,
+    0.5,
+    0.7,
+    0.9
+   ],
+   "ratchet": "RL_O44_LVLMONO RETIRED \u2014 law 3 is a property of this fit, not of a read-site repair",
+   "recency_anchor": "end of training window",
+   "recency_halflife_years": 12.0
+  },
+  "entry_point": "tools/rebake/refit_arm2_design.py",
+  "entry_point_md5": "4839da16359e08b8ee0f977e9ddad751",
+  "entry_point_version": "arm2-design/1",
+  "estimator": "HistGradientBoostingRegressor",
+  "feature_layout": "oh[0..5] + [log(effpk), exposure, tenure, LEVEL(9), u(10), v(11)] \u2014 raw age REMOVED, age hill APPENDED; the level index is UNMOVED at 9",
+  "first_observable_season": 2005,
+  "fit_seconds": 5.9,
+  "hyperparameters": {
+   "0.1": {
+    "categorical_features": "from_dtype",
+    "early_stopping": false,
+    "interaction_cst": null,
+    "l2_regularization": 0.0,
+    "learning_rate": 1.0,
+    "loss": "<exact_monotone.GradOnlyPinball object at 0x7f03ef6d7d70>",
+    "max_bins": 255,
+    "max_depth": 4,
+    "max_features": 1.0,
+    "max_iter": 800,
+    "max_leaf_nodes": 31,
+    "min_samples_leaf": 25,
+    "monotonic_cst": "[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -1, -1]",
+    "n_iter_no_change": 10,
+    "quantile": null,
+    "random_state": 0,
+    "scoring": "loss",
+    "tol": 1e-07,
+    "validation_fraction": 0.1,
+    "verbose": 0,
+    "warm_start": false
+   },
+   "0.3": {
+    "categorical_features": "from_dtype",
+    "early_stopping": false,
+    "interaction_cst": null,
+    "l2_regularization": 0.0,
+    "learning_rate": 1.0,
+    "loss": "<exact_monotone.GradOnlyPinball object at 0x7f03ef6c3ce0>",
+    "max_bins": 255,
+    "max_depth": 4,
+    "max_features": 1.0,
+    "max_iter": 800,
+    "max_leaf_nodes": 31,
+    "min_samples_leaf": 25,
+    "monotonic_cst": "[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -1, -1]",
+    "n_iter_no_change": 10,
+    "quantile": null,
+    "random_state": 0,
+    "scoring": "loss",
+    "tol": 1e-07,
+    "validation_fraction": 0.1,
+    "verbose": 0,
+    "warm_start": false
+   },
+   "0.5": {
+    "categorical_features": "from_dtype",
+    "early_stopping": false,
+    "interaction_cst": null,
+    "l2_regularization": 0.0,
+    "learning_rate": 1.0,
+    "loss": "<exact_monotone.GradOnlyPinball object at 0x7f03ef6ba0f0>",
+    "max_bins": 255,
+    "max_depth": 4,
+    "max_features": 1.0,
+    "max_iter": 800,
+    "max_leaf_nodes": 31,
+    "min_samples_leaf": 25,
+    "monotonic_cst": "[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -1, -1]",
+    "n_iter_no_change": 10,
+    "quantile": null,
+    "random_state": 0,
+    "scoring": "loss",
+    "tol": 1e-07,
+    "validation_fraction": 0.1,
+    "verbose": 0,
+    "warm_start": false
+   },
+   "0.7": {
+    "categorical_features": "from_dtype",
+    "early_stopping": false,
+    "interaction_cst": null,
+    "l2_regularization": 0.0,
+    "learning_rate": 1.0,
+    "loss": "<exact_monotone.GradOnlyPinball object at 0x7f03ef2d9010>",
+    "max_bins": 255,
+    "max_depth": 4,
+    "max_features": 1.0,
+    "max_iter": 800,
+    "max_leaf_nodes": 31,
+    "min_samples_leaf": 25,
+    "monotonic_cst": "[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -1, -1]",
+    "n_iter_no_change": 10,
+    "quantile": null,
+    "random_state": 0,
+    "scoring": "loss",
+    "tol": 1e-07,
+    "validation_fraction": 0.1,
+    "verbose": 0,
+    "warm_start": false
+   },
+   "0.9": {
+    "categorical_features": "from_dtype",
+    "early_stopping": false,
+    "interaction_cst": null,
+    "l2_regularization": 0.0,
+    "learning_rate": 1.0,
+    "loss": "<exact_monotone.GradOnlyPinball object at 0x7f03ec9555e0>",
+    "max_bins": 255,
+    "max_depth": 4,
+    "max_features": 1.0,
+    "max_iter": 800,
+    "max_leaf_nodes": 31,
+    "min_samples_leaf": 25,
+    "monotonic_cst": "[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -1, -1]",
+    "n_iter_no_change": 10,
+    "quantile": null,
+    "random_state": 0,
+    "scoring": "loss",
+    "tol": 1e-07,
+    "validation_fraction": 0.1,
+    "verbose": 0,
+    "warm_start": false
+   }
+  },
+  "incumbent_same_splits": {
+   "2014": 4.1637,
+   "2017": 4.1362,
+   "2020": 3.4635,
+   "mean": 3.9211,
+   "settings": {
+    "learning_rate": 0.05,
+    "max_depth": 4,
+    "min_samples_leaf": 25,
+    "n_estimators": 400
+   }
+  },
+  "n_features_in": 12,
+  "numpy": "2.4.4",
+  "python": "3.12.3",
+  "quantiles": [
+   0.1,
+   0.3,
+   0.5,
+   0.7,
+   0.9
+  ],
+  "scipy": "1.17.1",
+  "selection_file": "../../arm2_ws/selection_arm2.json",
+  "selection_file_md5": "85f116973f416eb2bef7006a9bcb0972",
+  "selection_rule": "lowest MEAN walk-forward pinball over T=2014/2017/2020 (train YEAR<=T, score T+1..T+3), 5 quantiles, unweighted; in-sample NEVER used to choose; ties -> smaller max_iter, then smaller learning_rate",
+  "shipped_md5": "34faa8659cc8f19794f5cb9584fa19b2",
+  "shipped_path": "data/cm_400.pkl",
+  "sklearn": "1.8.0",
+  "training_rows": 13283,
+  "training_store_md5": "fb640ca0baf92bbb122b1ad7e25c5a88",
+  "training_store_pin_at_build": "fb640ca0baf92bbb122b1ad7e25c5a88",
+  "ts_utc": "2026-08-24T11:44:13Z",
+  "walk_forward_at_selection": {
+   "2014": 4.1638,
+   "2017": 4.1267,
+   "2020": 3.427,
+   "_it": 800,
+   "_lr": 1.0,
+   "halflife": 12.0,
+   "mean": 3.9058,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  }
+ }
+}

@@ -68,6 +68,12 @@ def main(argv):
     ap.add_argument('--lo', type=float, default=40.0)
     ap.add_argument('--hi', type=float, default=120.0)
     ap.add_argument('--eps', type=float, default=1e-9)
+    # The control's artifact paths are ARGUMENTS, not environment variables, ON PURPOSE. This seat's
+    # first attempt passed them as RL_CTL_CM / RL_CTL_Q97M and config_manifest.enforce('gate') REJECTED
+    # them as unknown model overrides — correctly, and the correct response is to stop inventing RL_*
+    # names, not to widen INFRA_ALLOW for a measurement script.
+    ap.add_argument('--ctl-cm', help='the SHIPPED band, for the non-vacuity control')
+    ap.add_argument('--ctl-q97m', help='the SHIPPED ceiling, for the non-vacuity control')
     a = ap.parse_args(argv[1:])
 
     sys.path.insert(0, os.environ['RL_REPO'])
@@ -155,11 +161,12 @@ def main(argv):
     # ---- the CONTROL: the same instrument on the INCUMBENT artifacts must find a LOT of work.
     print('\n=== LEG 2 CONTROL — the same instrument on the SHIPPED artifacts (non-vacuity) ===')
     import pickle
-    root = os.environ['RL_REPO']
     ctl = {}
     try:
-        icm = pickle.load(open(os.environ['RL_CTL_CM'], 'rb'))
-        iq = pickle.load(open(os.environ['RL_CTL_Q97M'], 'rb'))
+        if not (a.ctl_cm and a.ctl_q97m):
+            raise SystemExit('--ctl-cm/--ctl-q97m not given')
+        icm = pickle.load(open(a.ctl_cm, 'rb'))
+        iq = pickle.load(open(a.ctl_q97m, 'rb'))
         iknots = set()
         for m in [icm[q] for q in cp.Q] + [iq]:
             for e in np.asarray(m.estimators_).ravel():

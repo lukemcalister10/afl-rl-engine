@@ -1,0 +1,150 @@
+{
+ "_fb4_selftest": {
+  "EXACT_negative_steps": 0,
+  "EXACT_worst_step": 0.0,
+  "STOCK_negative_steps": 318,
+  "STOCK_worst_step": -0.6196456531568941,
+  "construction": "rebake-arm2-exact-monotone/1",
+  "failures": [],
+  "per_quantile": {
+   "q0.10": {
+    "exact_negative": 0,
+    "exact_worst": 0.0,
+    "stock_negative": 127,
+    "stock_worst": -0.28162953137762514
+   },
+   "q0.50": {
+    "exact_negative": 0,
+    "exact_worst": 0.0,
+    "stock_negative": 104,
+    "stock_worst": -0.2195261429632984
+   },
+   "q0.90": {
+    "exact_negative": 0,
+    "exact_worst": 0.0,
+    "stock_negative": 87,
+    "stock_worst": -0.6196456531568941
+   }
+  },
+  "sklearn": "1.8.0",
+  "stock_PinballLoss_differentiable": false,
+  "subclass_differentiable": true,
+  "subclass_need_update_leaves_values": false,
+  "toy_features": 10,
+  "toy_rows": 6000,
+  "toy_sweep_points_per_row": 201,
+  "toy_sweep_rows": 40,
+  "verdict": "PASS"
+ },
+ "peak_model_v4": {
+  "artifact": "peak_model_v4 (+ pvc_snapshot, CO-EMITTED by the same run, by design)",
+  "blas_threads_env": {
+   "MKL_NUM_THREADS": "1",
+   "NUMEXPR_NUM_THREADS": "1",
+   "OMP_NUM_THREADS": "1",
+   "OPENBLAS_NUM_THREADS": "1"
+  },
+  "builder_log": "../../arm2_ws/cand/build_peak_model_v4.candidate.log",
+  "bust_prior_status": "FROZEN TABLE, per the directive. No producer exists in the repository (ARM 1's falsifier FA2, fired as predicted). ONE cheap refit pass is owed when the table and the final store are settled.",
+  "bust_prior_table_input_md5": "5942aa6ad7be1d482eed737997486c70",
+  "candidate_md5": "5338d0cd0e5e3261864987480288858b",
+  "candidate_path": "../../arm2_ws/cand/peak_model_v4.candidate.pkl",
+  "co_emit_candidate_md5": "4704b8296008f81e7bb5407424229e85",
+  "co_emit_candidate_path": "../../arm2_ws/cand/pvc_snapshot.candidate.json",
+  "co_emit_shipped_md5": "ade79790efc8ad4585c2c6800a935eaa",
+  "construction": "engine/forward_valuation/build_peak_model_v4.py build(2006,2015) \u2014 UNCHANGED",
+  "declared_grids": {
+   "a_star": [
+    20.0,
+    20.5,
+    21.0,
+    21.5,
+    22.0,
+    22.5,
+    23.0,
+    23.5,
+    24.0
+   ],
+   "recency_halflife_years": [
+    "uniform",
+    10.0,
+    12.0,
+    14.0,
+    16.0
+   ],
+   "stage1_fixed": {
+    "max_depth": 4,
+    "min_samples_leaf": 25
+   },
+   "stage1_learning_rate": [
+    0.3,
+    0.6,
+    1.0,
+    1.5
+   ],
+   "stage1_max_iter": [
+    400,
+    800,
+    1600
+   ],
+   "stage2_capacity_cross": [
+    {
+     "max_depth": 3
+    },
+    {
+     "max_depth": 5
+    },
+    {
+     "min_samples_leaf": 15
+    },
+    {
+     "min_samples_leaf": 40
+    }
+   ]
+  },
+  "design_note": "NOT an exact-monotone artifact. Different row rule, different 17 features, no level constraint and no age hill \u2014 v831 scopes it into the rebake for its STORE, not for a construction change, and none is ruled.",
+  "design_spec": null,
+  "entry_point": "tools/rebake/refit_arm2_design.py",
+  "entry_point_md5": "4839da16359e08b8ee0f977e9ddad751",
+  "entry_point_version": "arm2-design/1",
+  "estimator": "HistGradientBoostingRegressor",
+  "fit_seconds": 22.1,
+  "hyperparameters": {
+   "categorical_features": "from_dtype",
+   "early_stopping": "auto",
+   "interaction_cst": null,
+   "l2_regularization": 2.0,
+   "learning_rate": 0.04,
+   "loss": "squared_error",
+   "max_bins": 255,
+   "max_depth": 5,
+   "max_features": 1.0,
+   "max_iter": 600,
+   "max_leaf_nodes": 31,
+   "min_samples_leaf": 30,
+   "monotonic_cst": null,
+   "n_iter_no_change": 10,
+   "quantile": null,
+   "random_state": 0,
+   "scoring": "loss",
+   "tol": 1e-07,
+   "validation_fraction": 0.1,
+   "verbose": 0,
+   "warm_start": false
+  },
+  "n_features_in": 17,
+  "n_iter_": 600,
+  "numpy": "2.4.4",
+  "python": "3.12.3",
+  "scipy": "1.17.1",
+  "selection_file": "../../arm2_ws/selection_arm2.json",
+  "selection_file_md5": "85f116973f416eb2bef7006a9bcb0972",
+  "selection_rule": "lowest MEAN walk-forward pinball over T=2014/2017/2020 (train YEAR<=T, score T+1..T+3), 5 quantiles, unweighted; in-sample NEVER used to choose; ties -> smaller max_iter, then smaller learning_rate",
+  "shipped_md5": "f305fe5330222f4fa14d3654a0e91ef7",
+  "shipped_path": "engine/rl_after/peak_model_v4.pkl",
+  "sklearn": "1.8.0",
+  "training_store_md5": "fb640ca0baf92bbb122b1ad7e25c5a88",
+  "training_store_pin_at_build": "fb640ca0baf92bbb122b1ad7e25c5a88",
+  "ts_utc": "2026-08-24T11:43:45Z"
+ }
+}

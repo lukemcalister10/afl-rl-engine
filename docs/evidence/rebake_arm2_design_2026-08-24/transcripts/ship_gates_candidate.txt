@@ -1,0 +1,82 @@
+boot-store guard (Guard 5) PASS  [ship_gates_check]  store fb640ca0 == pinned fb640ca0  |  rl_model 6fe7c415 == pinned 6fe7c415  |  fv 123a8155 == pinned 123a8155 (checkout+loaded-path) (ID-PRIMARY MIGRATION candidate (clean scope) 2026-07-12 — NOT A BAKE PROMOTION (no tag, no main merge; owner word required). base = v2.8 (store 04f38dad, board 9ecbe0fa). Store MOVED 04f38dad -> b0c39d78: 804 stable_player_id (afl-player-v1-<20hex>) + affl_team + eligibilities attached (identity fields, not read by ev(), 0 board movers); 5 named DOB corrections (onley/kickett/rodriguez/driscoll _by 2000->2007/2006; mcandrew _by 1999->2000); taylor-adams marked _retired (mid-season retirement). RE-ENTRY TRIO (perez/mcandrew/keane -> pickless SSP) DEFERRED to the v2.9 lever build (owner-ruled 2026-07-12; register v11 item 11a) — it reprices 657 non-named rows via the load-time calibration refit. luke-nankervis NO-import (store PSD pick 2 stands). Engine code UNTOUCHED at the store migration (head 7a07e369) -> board de4baef9; book RE-SEALED for the new store (n re-counted). [v2.9 REFIT+BAKE 2026-07-13 rides ON this store: engine 7a07e369->2030e5df (6 env-gated levers, default-ON), board de4baef9->8a66b4ba->f2d6e3f5->81e48293 (refit -> export/display -> L7 numéraire+override BAKE, display-only), store b0c39d78 UNCHANGED; cohort gate PASS 126.8/125.2/116.1; see _engine_head_note.] Board movers vs 9ecbe0fa: 94 = 5 DOB + adams removed + 88 hairline retirement ripple (<=+/-2 SCAR, owner-declared expected). Two Max Kings remain separately keyed (collision sentry GREEN). Lineage: v2.8 (9bd0cfd) -> this candidate. Tag push + main promote are owner-only. [ITEM 20 STORE-IDENTITY JOB 2026-07-13 (first job post-v2.9-tag) MOVED the store b0c39d78 -> 340a7a32 and the board 81e48293 -> 3dc19fbb: see _item20_note above. Engine ev()/config/band/rl_model UNCHANGED; the ONLY v mover is bramble (+1); everything else is identity/display. v2.9 tag (9f8ae76) is unmoved and remains canonical; this is the next chapter's first store write, no re-tag.])
+config manifest (gate mode) LOADED  hash eed19a75f775  (84 model vars pinned; ambient cleared)
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+=== STATE: PROTOTYPE/UNREGISTERED @ 53ce2fb7 — NOT AN ENDORSED STATE ===
+=== SHIP GATES BOARD — head 53ce2fb7 store fb640ca0 config eed19a75f775 — suite 764a0d91 — 2026-08-24 ===
+=== CONFIG MANIFEST (gate mode): data/model_config.json hash eed19a75f775aeaf — ambient model env cleared + pinned; unknown/divergent overrides rejected (halt) ===
+=== THREE-COLUMN RULE (Luke, binding D10): CONTROL=7a07e369 · PREVIOUS=efea88e5 · CURRENT=53ce2fb7 ===
+A1        PASS    | PASS    | PASS     Duursma>Uwland: 3839 vs 1700
+A2        FAIL    | FAIL    | FAIL     Curtis>=0.90xWard: 1748 vs 2431 (Ward=2701, ratio=0.647) [AMENDED 02/07/2026; UNCHANGED at 0.90 by ruling D7 — Luke: "we can look at Curtis down the line"]; Weddle>Ward: 1385 vs 2701
+A3   [DC] FAIL    | FAIL    | FAIL     Connor Rozee: 2026=3356 2025=4767 ratio=0.70 (need >=0.75) [evaluated PRE-LTI-layer — Luke 02/07; AMENDED 0.80->0.75 Luke D7 data-caused (out for 2026), knife-edge by design]
+          triage: [DC] gate — attribute ENGINE- vs DATA-caused BEFORE this blocks (SHIP_GATES PROCESS)
+A4        PASS    | PASS    | PASS     Harley Reid board rank=27 ev=4284 (need TOP 40)
+A5        PASS    | PASS    | PASS     Jack Ginnivan=2238 (floor 1600); Jake Bowey=4211 (floor 2100); Nick Blakey=4248 (floor 2600) [SCAR floors — RE-BASE if PVC re-levels]
+A6        PASS    | PASS    | PASS     yr1-3 RUCK median=222 (n=11, pooled — thin slice) vs pick-matched MID kernel median=578 (n=70, bw=0.6 log-pick, RATIFIED 02/07)
+A7        PASS    | PASS    | PASS     Ryan Maric: future_position=MID gfut=MID (need MID/MID) [AMENDED 2026-07-05: _fut blend stripped -> single future_position, owner-authorised]; Ed Langdon: future_position=SD gfut=SD (need SD/SD) [AMENDED 2026-07-05: _fut blend stripped -> single future_position, owner-authorised]
+A8   [DC] PASS    | PASS    | PASS     Berry=3098 Tsatas=911 ratio=3.40x (need >=2.00x) [display de-ambiguated D4 02/07]
+A9        PASS    | PASS    | STRUCK   Luke 2026-08-20 — player-ordering assertion RETIRED, verbatim: "Those player ordering assertions were retired and are outdated. Since they occurred, Ward has hit an excellent run of form." Prior pattern: scored-never-flagged (register A9/pair-2 precedent); dated reads retired wholesale RULEBOOK v2.1 PART 2 (owner 2026-07-22). Zombie note: retired while this suite was bricked at :49; surfaced FAIL only on the first run after the unbricking. SCORED (never flagged): Ginnivan=2238 vs Ward=2701 (retired assertion was Ginnivan>Ward; ratio=0.829)  <- MOVED
+A10  [DC] PASS    | PASS    | PASS     Charlie Curnow: 2026=1309 2025=1973 ratio=0.66 (need >=0.50) [AMENDED 0.70->0.50 Luke 02/07 data-caused, PROVISIONAL — review at season-complete]
+A11  [DC] PASS    | PASS    | PASS     Farrow>Patterson: 2114 vs 1149; Cumming>Annable: 2237 vs 1206
+A12  [DC] FAIL    | FAIL    | FAIL     Travaglia>Moraes: 558 vs 710; Smillie>Retschko: 786 vs 885
+          triage: [DC] gate — attribute ENGINE- vs DATA-caused BEFORE this blocks (SHIP_GATES PROCESS)
+A13       PENDING | PENDING | PENDING  PVC stage not run; advisory vs stand-in PVC[1]=3000: George Wardlaw=3162 lineball=True; Levi Ashcroft=3513 lineball=True
+A14       PENDING | PENDING | PENDING  PVC stage not run; advisory vs stand-in PVC[8]=1320: Trent Rivers=1557 lineball=True; Zach Reid=1339 lineball=True; Jase Burgoyne=2717 lineball=False
+A15       STRUCK  | STRUCK  | STRUCK   Luke 02/07/2026 — convexity dimension seeded as V_NEXT #1
+B1        PASS    | PASS    | STRUCK   [STRUCK — Luke 2026-08-20, verbatim: "That cohort rail again was retired. Weeks ago." The JULY-8 CONSTRUCTION is RETIRED. Its law, G-COHORT (walk-forward book ratio, max 1.3), was carried by the owner-signed RULEBOOK v2.1 and its twin docs/acceptance_v2_0.json; the v3 amendment of 2026-08-20 removed that twin and records G-COHORT in RULEBOOK PART 3 as RETIRED, with its 1.3 payload written down there. RULEBOOK PART 3 is the pointer of record. Zombie note: retired while this suite was bricked at :49; surfaced HALT only on the first run after the unbricking. SCORED, NEVER FLAGGED — every figure below still prints; only the alarm is removed] JULY-8 construction (owner-ruled 2026-07-13, register v52 — CONFORMED; raw class-year sums of Vpath averaged UNWEIGHTED across 17 classes 2004-2020 incurve ND+RD; CANDIDATE regenerated this run — engine 53ce2fb7 store fb640ca0 config eed19a75f775): y1=60012.2 y2=67301.5 y3=78673.7 y4=87146.1 y5=88208.7 y6=85444.9 y7=77534.9; den=min(y1,y2)=y1=60012.2; ratios y4=1.4521(above-guide) y5=1.4698(above-guide) y6=1.4238(above-guide); RETIRED hard<=1.30 bar -> would have BREACHED at y[4, 5, 6] — SCORED, NOT FLAGGED (struck); guide 1.20-1.25 ADVISORY (margin reported, never gates)  <- MOVED
+B2        PASS    | PASS    | PASS     leave-cohort-out sensitivity (2014-2018 ND held out): median |IS-WF| leakage=0.000 %-pts (FULL precision; tol 0.5 UNCHANGED, SET 02/07/2026); worst cells RUCK|GOOD|T4:4.28, RUCK|GOOD|T5:3.41, KPF|GOOD|T4:2.75, MID|GOOD|T2:1.87; GOOD>BUST sep KPD 43.0/1.1, KPF 54.0/0.7, MID 38.2/0.6, RUCK 15.5/0.2, SD 44.1/1.2, SF 42.9/0.7 [cert engine 53ce2fb7 store fb640ca0 config eed19a75]
+B3        PASS    | PASS    | DIFFERS-BY-DESIGN CANDIDATE book stable seal (regenerated this run — engine 53ce2fb7 store fb640ca0 config eed19a75f775): candidate head 53ce2fb7 != sealed head 1867e953 — new version; the v2.6 book must be RE-SEALED at the bake (owner action). current=7e961e7d07836515.. (2650 players) vs baseline=9f46aba3ba8b056d.. (2650 players, sealed head 1867e953) [full stable-keyed content seal; raw-file sha is id(p)-keyed / non-deterministic by design]  <- MOVED
+B4        PASS    | PASS    | FAIL     regenerated rl_app_data.json md5=a6c47317 vs shipped 82fcd8bb (byte-agree gate; export exit=0)  <- MOVED
+B5        FEATURE | FEATURE | FEATURE  floor-as-pricing-feature (Luke-ruled 02/07; VARIANT A flat .05 tail; #326 scope = national draftees + 225 engine-pool entrants on their signed division levels): 15 saves, aggregate lift +4486; the floor is still a pure lower bound: lowered=0 (bar 0), moved outside the floor scope=0 (bar 0); saves table printed below (the new alarm surface)
+B6        PASS    | PASS    | PASS     ramp(0..14g)=[1120, 1182, 1281, 1390, 1524, 1606, 1841, 1967, 2066, 2163, 2400, 2587, 2776, 2881, 3028]; dips(more games worth less)=none; 0->6 rise T=+721; 0->6 steps>50%T=none; rise by 3g=+269 (need >=180) [whole-ramp re-spec, DECLARED thresholds]
+D14a      PASS    | PASS    | PASS     same pos×draft-age×recorded-pick ⇒ identical V0* across draft years: max cross-draft dispersion=0.0000 SCAR over the 1448 rows the surface prices (Luke's amended law; board path) [report-only, all ND incl. 122 pool rows at 65+: 307.3]
+D14b      PASS    | PASS    | PASS     within (pos×draft-age×draft-year) V0 inversions under V0* = 0 (D13 guard-transform → assertion; obituary E5) [report-only, all ND incl. pool: 521 — ladder-vs-pool pairs, different price objects]
+D14c      PASS    | PASS    | PASS     KPP retention floor O1 depth-monotone = True (max of isotonic-non-increasing KPP/nonKPP; comparator nonKPP-only)
+D14d      —       | —       | PASS     SURFACE never-rises (R12): 0 rising step(s) picks 1-64 · 0 over the full 1-90 grid · scanned 90 pos×draft-age profiles (8010 adjacent pairs; players expose ~8%)  <- MOVED
+C1        PENDING | PENDING | PENDING  naive-baseline book not yet built — definition proposal in report (needs its own directive)
+C2        PENDING | PENDING | PENDING  V1-pick-model book not yet built — definition proposal in report (needs its own directive)
+          columns: CONTROL | PREVIOUS | CURRENT (three-column rule; snapshots data/gates_snapshots/)
+VERDICT: DIFFERS-BY-DESIGN=1  FAIL=4  FEATURE=1  PASS=14  PENDING=4  STRUCK=3  (2775s)
+
+B1 — July-8 raw-sum rail, STRUCK 2026-08-20 but still SCORED (bold row) + indexed SHAPE diagnostic (DEMOTED 2026-07-13, never the gate):
+| class | peakN | d1 | d2 | d3 | d4 | d5 | d6 | d7 |
+|---|---|---|---|---|---|---|---|---|
+| 2004 | 5 | 100 | 115 | 150 | 147 | 159 | 142 | 128 |
+| 2005 | 4 | 100 | 123 | 144 | 180 | 168 | 172 | 157 |
+| 2006 | 5 | 100 | 114 | 136 | 161 | 163 | 161 | 147 |
+| 2007 | 5 | 100 | 113 | 114 | 128 | 167 | 160 | 133 |
+| 2008 | 4 | 100 | 118 | 169 | 193 | 176 | 158 | 140 |
+| 2009 | 4 | 100 | 112 | 102 | 115 | 112 | 104 | 93 |
+| 2010 | 4 | 100 | 119 | 132 | 153 | 151 | 131 | 106 |
+| 2011 | 5 | 100 | 114 | 141 | 162 | 162 | 161 | 138 |
+| 2012 | 6 | 100 | 101 | 118 | 125 | 122 | 130 | 109 |
+| 2013 | 5 | 100 | 121 | 147 | 174 | 180 | 164 | 130 |
+| 2014 | 4 | 100 | 119 | 143 | 153 | 140 | 152 | 145 |
+| 2015 | 6 | 100 | 108 | 123 | 124 | 120 | 126 | 122 |
+| 2016 | 4 | 100 | 119 | 150 | 175 | 166 | 167 | 147 |
+| 2017 | 3 | 100 | 104 | 121 | 114 | 116 | 115 | 113 |
+| 2018 | 5 | 100 | 109 | 113 | 114 | 128 | 115 | 112 |
+| 2019 | 5 | 100 | 101 | 117 | 138 | 148 | 145 | 123 |
+| 2020 | 6 | 100 | 91 | 105 | 100 | 114 | 115 | — |
+| _indexed AVG (SHAPE DIAGNOSTIC — DEMOTED 2026-07-13, NOT the gate)_ | _5_ | _100_ | _112_ | _131_ | _144_ | _147_ | _142_ | _128_ |
+| **July-8 raw-sum AVG (the STRUCK rail, scored but never flagged — Luke 2026-08-20)** | **—** | **60012** | **67301** | **78674** | **87146** | **88209** | **85445** | **77535** |
+
+B5 FLOOR-SAVES (the new alarm surface — mispricings stay visible, never silently clamped):
+| player | club | yrs-in-system | raw ev | floor | saved-to | lift | register status |
+|---|---|---|---|---|---|---|---|
+| Tom Green | — | 7 | 4256 | 91.1 | 5514 | +1258 | clear |
+| Nicholas Martin | — | 5 | 3079 | 42.3 | 4060 | +981 | clear |
+| Connor Rozee | — | 8 | 2505 | 110.9 | 3356 | +851 | clear |
+| Joshua Kelly | — | 13 | 420 | 153.2 | 766 | +346 | clear |
+| Jack Viney | — | 14 | 246 | 79.9 | 555 | +310 | clear |
+| Brayden Fiorini | — | 11 | 233 | 53.0 | 429 | +196 | clear |
+| Darcy Jones | — | 4 | 1321 | 134.0 | 1494 | +173 | clear |
+| Mitchell Hinge | — | 10 | 258 | 12.9 | 394 | +136 | clear |
+| Sam Powell-Pepper | — | 10 | 124 | 33.5 | 216 | +92 | clear |
+| Thomas Sims | — | 2 | 633 | 190.4 | 692 | +59 | clear |
+| Riley Garcia | — | 7 | 79 | 8.0 | 106 | +27 | clear |
+| Harry Edwards | — | 8 | 119 | 19.4 | 144 | +26 | clear |
+| Jesse Motlop | — | 5 | 116 | 65.5 | 131 | +15 | clear |
+| Josh Sinn | — | 5 | 213 | 122.5 | 222 | +9 | clear |
+| Ollie Lord | — | 6 | 154 | 18.0 | 162 | +8 | clear |
+report: /home/user/arm2_roots/cand2/session_2026-07-02/ship_gates_report_53ce2fb7.md  md5=80814874

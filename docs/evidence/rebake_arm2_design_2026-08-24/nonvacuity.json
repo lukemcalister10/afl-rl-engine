@@ -1,0 +1,26 @@
+{
+ "FB4_selftest": {
+  "also_fired_during_development": "YES \u2014 the first toy this seat wrote was a single-driver toy and the NON-VACUITY leg rejected it, which is the failure mode study B M-25 documents. The shipped toy is 10-feature with heteroscedastic skewed noise and an interaction.",
+  "exit": 1,
+  "fired": true,
+  "names_the_contract": true
+ },
+ "coherence_halt": {
+  "configuration": "RL_CM_PKL=candidate band, RL_Q97M_PKL=LIVE ceiling \u2014 the exact mixed pair that produced c7cea06d in ARM 1's screen",
+  "exit": 1,
+  "fired": true,
+  "names_both_paths": true
+ },
+ "positive_control": {
+  "contract_line": null,
+  "exit": 0,
+  "imported_cleanly": true
+ },
+ "protection_halt": {
+  "configuration": "both overrides on the LIVE (incumbent) pair \u2014 coherent with each other, so leg (2) passes and leg (3) is what fires",
+  "exit": 1,
+  "fired": true,
+  "names_the_band_path": true
+ },
+ "verdict": "ALL THREE GUARDS PROVEN ABLE TO FIRE, and proven not to fire on the candidate pair"
+}

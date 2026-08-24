@@ -1,0 +1,33 @@
+{
+ "M52": {
+  "exception": "AttributeError: 'HistGradientBoostingRegressor' object has no attribute 'estimators_'",
+  "raised": true,
+  "shipped_expression": "for _e in np.asarray(_m.estimators_).ravel():  (_merged_recover.py:488, ORDER 44 _o44_xs)",
+  "verdict": "REPRODUCED \u2014 the shipped read-site ratchet CANNOT LOAD against the design estimator. \"New estimator + ratchet retained\" is not a configuration that exists; the retirement is FORCED, not chosen."
+ },
+ "construction": "rebake-arm2-exact-monotone/1",
+ "estimator": "HistGradientBoostingRegressor",
+ "generalised_knots": {
+  "hi": 112.84521054512987,
+  "lo": 42.90766342019957,
+  "n": 337,
+  "shipped_incumbent_knots_for_comparison": 2464,
+  "source": "_predictors[i][j].nodes where not is_leaf and feature_idx == 9"
+ },
+ "level_index": 9,
+ "no_op_control_on_shipped_artifacts": {
+  "board_rows": 804,
+  "knots": 2331,
+  "max_abs_band_mean_delta": 2.4085290452383887,
+  "rows_the_ratchet_moves": 752,
+  "verdict": "INSTRUMENT PROVEN ABLE TO SEE WORK"
+ },
+ "no_op_on_candidate": {
+  "board_rows": 804,
+  "max_abs_any_leg_delta": 0.0,
+  "max_abs_band_mean_delta": 0.0,
+  "rows_the_ratchet_would_move": 0,
+  "verdict": "MEASURED NO-OP",
+  "worst_row": null
+ }
+}

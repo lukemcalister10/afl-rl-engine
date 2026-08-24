@@ -1,0 +1,1335 @@
+{
+ "FB4_private_contract_selftest": {
+  "exact_negative_steps": 0,
+  "measured_at_every_fit_site": "arm2-design/1",
+  "note": "The FIRST toy this seat wrote FAILED the non-vacuity leg \u2014 correctly. It was a single-driver toy, and study B M-25 already records that those do not violate. The self-test caught its own author before it caught anything else.",
+  "seconds": 2.9,
+  "stock_negative_steps": 318,
+  "toy": "ten features, heteroscedastic skewed noise, one interaction, three quantiles, 40 swept rows",
+  "verdict": {
+   "also_fired_during_development": "YES \u2014 the first toy this seat wrote was a single-driver toy and the NON-VACUITY leg rejected it, which is the failure mode study B M-25 documents. The shipped toy is 10-feature with heteroscedastic skewed noise and an interaction.",
+   "exit": 1,
+   "fired": true,
+   "names_the_contract": true
+  }
+ },
+ "MUST_MOVE_PROOF": {
+  "generalised_knots": {
+   "hi": 112.84521054512987,
+   "lo": 42.90766342019957,
+   "n": 337,
+   "shipped_incumbent_knots_for_comparison": 2464,
+   "source": "_predictors[i][j].nodes where not is_leaf and feature_idx == 9"
+  },
+  "leg_1_M52_executed_not_quoted": {
+   "exception": "AttributeError: 'HistGradientBoostingRegressor' object has no attribute 'estimators_'",
+   "raised": true,
+   "shipped_expression": "for _e in np.asarray(_m.estimators_).ravel():  (_merged_recover.py:488, ORDER 44 _o44_xs)",
+   "verdict": "REPRODUCED \u2014 the shipped read-site ratchet CANNOT LOAD against the design estimator. \"New estimator + ratchet retained\" is not a configuration that exists; the retirement is FORCED, not chosen."
+  },
+  "leg_2_control_non_vacuity": {
+   "board_rows": 804,
+   "knots": 2331,
+   "max_abs_band_mean_delta": 2.4085290452383887,
+   "rows_the_ratchet_moves": 752,
+   "verdict": "INSTRUMENT PROVEN ABLE TO SEE WORK"
+  },
+  "leg_2_measured_no_op": {
+   "board_rows": 804,
+   "max_abs_any_leg_delta": 0.0,
+   "max_abs_band_mean_delta": 0.0,
+   "rows_the_ratchet_would_move": 0,
+   "verdict": "MEASURED NO-OP",
+   "worst_row": null
+  },
+  "leg_3_board_b_equals_board_c": {
+   "board_b_ratchet_on": "a6c47317d24b228af482ad5220104531",
+   "board_c_ratchet_retired": "a6c47317d24b228af482ad5220104531",
+   "how_b_was_built": "a SCRATCH engine (scripts/make_ratchet_engine.py) with the ORDER 44 block RESTORED FROM GIT at 4124fd6 and ONLY its knot reader generalised to the new estimator's bin thresholds \u2014 four lines, in the evidence tree, never in the shipped engine",
+   "verdict": "BYTE-IDENTICAL \u2014 prereg falsifier FB3 does not fire"
+  },
+  "verdict": "COMPLETE. The shipped ratchet CANNOT LOAD against the design estimator (AttributeError, reproduced live); with the ratchet generalised so it CAN run, it finds nothing to fix on any of the 804 board rows at 0.000000000000; the same instrument on the SHIPPED artifacts moves 752 of 804 rows by up to 2.41, so it is proven able to see work; and the board built with the ratchet on is byte-identical to the board built with the code deleted."
+ },
+ "NON_VACUITY_of_the_three_new_guards": {
+  "FB4_selftest": {
+   "also_fired_during_development": "YES \u2014 the first toy this seat wrote was a single-driver toy and the NON-VACUITY leg rejected it, which is the failure mode study B M-25 documents. The shipped toy is 10-feature with heteroscedastic skewed noise and an interaction.",
+   "exit": 1,
+   "fired": true,
+   "names_the_contract": true
+  },
+  "coherence_halt": {
+   "configuration": "RL_CM_PKL=candidate band, RL_Q97M_PKL=LIVE ceiling \u2014 the exact mixed pair that produced c7cea06d in ARM 1's screen",
+   "exit": 1,
+   "fired": true,
+   "names_both_paths": true
+  },
+  "positive_control": {
+   "contract_line": null,
+   "exit": 0,
+   "imported_cleanly": true
+  },
+  "protection_halt": {
+   "configuration": "both overrides on the LIVE (incumbent) pair \u2014 coherent with each other, so leg (2) passes and leg (3) is what fires",
+   "exit": 1,
+   "fired": true,
+   "names_the_band_path": true
+  },
+  "verdict": "ALL THREE GUARDS PROVEN ABLE TO FIRE, and proven not to fire on the candidate pair"
+ },
+ "P12_no_arb_reading": {
+  "NEW_BREACHES": 0,
+  "buy_rail": 1.14,
+  "candidate": {
+   "cohort": 1.010624771190317,
+   "max_class": 1.1338910921735355,
+   "max_class_year": 2011,
+   "w2": 1.0320909152960498
+  },
+  "classes_over_rail_candidate": 0,
+  "classes_over_rail_live": 3,
+  "day0_replication_guard": "86 of 86 wired entrants reproduce printed day-0 EXACTLY at tolerance 0, on BOTH the live and the candidate matrices",
+  "emitter": "the disclosed ORDER 31-F copy, docs/evidence/candidate_31f/emit_matrix_31f.py",
+  "floor": 1.03,
+  "instrument": "856c87202053a6c5b7860729e8ab2948",
+  "law": "P12 \u2014 every value-moving adoption carries its OWN arm's no-arb band reading and class check pre-flip; a sibling variant's reading does not cover this arm",
+  "live": {
+   "cohort": 1.0672870351212824,
+   "max_class": 1.1999583083617789,
+   "max_class_year": 2016,
+   "w2": 1.0927646382423377
+  },
+  "verdict": "0 NEW BREACHES, and the candidate CURES all three pre-existing ones: the live board has 3 draft classes over the 1.14 buy rail (worst 1.2000, 2016) and the candidate has ZERO (worst 1.1339, 2011). THE FLAG ON THE OTHER SIDE: the candidate pulls the whole class-growth curve DOWN, so its W2 mark lands at 1.0321 against the owner's 1.03 growth FLOOR \u2014 a margin of +0.0021, against the live board's +0.0628. It clears both rails, but it clears the floor by a hair, and a design that moved a little further the same way would breach it. That is a reading the owner should have in front of him."
+ },
+ "PINBALL_AND_FB2": {
+  "FB2_FIRED": true,
+  "THE_DIAGNOSIS": {
+   "VERDICT": "THE CONSTRUCTION \u2014 NO point on the declared grid beats the incumbent under study A's whole-career protocol. The exact-monotone arm costs measurable accuracy on players the model has never seen, and that is the finding to bring back. It does NOT invalidate the law-3 result (V3 is zero either way); it prices it.",
+   "best_declared_point_under_studyA": {
+    "beats_incumbent": false,
+    "folds": [
+     4.4446,
+     4.3735,
+     4.9334
+    ],
+    "key": "lr1.5_it400",
+    "mean": 4.5838
+   },
+   "declared_grid_rescored_under_studyA": {
+    "lr0.3_it1600": 4.5883,
+    "lr0.3_it400": 5.0247,
+    "lr0.3_it800": 4.7181,
+    "lr0.6_it1600": 4.6009,
+    "lr0.6_it400": 4.7216,
+    "lr0.6_it800": 4.5931,
+    "lr1.0_it1600": 4.6331,
+    "lr1.0_it400": 4.607,
+    "lr1.0_it800": 4.5882,
+    "lr1.5_it1600": 4.6568,
+    "lr1.5_it400": 4.5838,
+    "lr1.5_it800": 4.6201
+   },
+   "incumbent_under_studyA_5legs": {
+    "folds": [
+     4.4282,
+     4.3592,
+     4.8811
+    ],
+    "mean": 4.5562
+   },
+   "level_only_arm_under_studyA": {
+    "lr0.6_it1600": 4.5734,
+    "lr0.6_it800": 4.5766,
+    "lr1.0_it1600": 4.6025,
+    "lr1.0_it800": 4.5692
+   },
+   "selected_point_no_weight": {
+    "folds": [
+     4.4567,
+     4.3848,
+     4.923
+    ],
+    "mean": 4.5882
+   },
+   "selected_point_with_weight": {
+    "folds": [
+     4.4856,
+     4.372,
+     4.9691
+    ],
+    "mean": 4.6089
+   },
+   "within_player_overlap_in_the_MONITOR_protocol": {
+    "fold1": {
+     "n_test": 2181,
+     "n_train": 7383,
+     "test_rows_whose_player_is_also_in_train_pct": 0.0
+    },
+    "fold2": {
+     "n_test": 2169,
+     "n_train": 9564,
+     "test_rows_whose_player_is_also_in_train_pct": 0.23
+    },
+    "fold3": {
+     "n_test": 1487,
+     "n_train": 11733,
+     "test_rows_whose_player_is_also_in_train_pct": 1.01
+    }
+   },
+   "within_player_overlap_in_the_SELECTION_protocol": {
+    "T2014": {
+     "n_test": 2283,
+     "n_train": 5550,
+     "test_players": 946,
+     "test_players_also_in_train": 643,
+     "test_rows_whose_player_is_also_in_train_pct": 76.22
+    },
+    "T2017": {
+     "n_test": 2334,
+     "n_train": 7833,
+     "test_players": 960,
+     "test_players_also_in_train": 686,
+     "test_rows_whose_player_is_also_in_train_pct": 79.26
+    },
+    "T2020": {
+     "n_test": 1816,
+     "n_train": 10167,
+     "test_players": 678,
+     "test_players_also_in_train": 678,
+     "test_rows_whose_player_is_also_in_train_pct": 100.0
+    }
+   }
+  },
+  "monitor_protocol_studyA_debut_year_whole_careers_held_out": {
+   "ARM1_filed_PAR_zero_point": 3.9788,
+   "arm2_PAR": 4.05634,
+   "arm2_PLAIN": 4.05546,
+   "arm2_no_weight_PAR": 4.02027,
+   "arm2_worse_pct": 1.95,
+   "coverage_error_arm2": 0.03213,
+   "coverage_error_incumbent": 0.03563,
+   "incumbent_PAR_same_folds": 3.97876,
+   "incumbent_PLAIN_same_folds": 3.96559,
+   "per_horizon": [
+    {
+     "arm2": 3.95803,
+     "arm2_better": false,
+     "fold": 1,
+     "incumbent": 3.89184
+    },
+    {
+     "arm2": 3.84418,
+     "arm2_better": false,
+     "fold": 2,
+     "incumbent": 3.79497
+    },
+    {
+     "arm2": 4.36681,
+     "arm2_better": false,
+     "fold": 3,
+     "incumbent": 4.24947
+    }
+   ],
+   "sort_repair_pct_arm2": 3.743,
+   "sort_repair_pct_incumbent": 5.057,
+   "studyA_5_1_baseline_PLAIN": 3.9703
+  },
+  "selection_protocol_studyB_as_of_year": {
+   "arm2": 3.9058,
+   "arm2_better_pct": 0.39,
+   "incumbent": 3.9211
+  }
+ },
+ "RL_O33_TAPEROFF_asc_rederivation": {
+  "STRICT_READING": "Under a STRICT \">= 3% in every biting band\" bar, asc*=1 does NOT re-derive: the 27+ band reads 2.71%. That same strict bar would ALSO have failed the LIVE ceiling, where ORDER B measured 27+ at 2.17% and adopted anyway \u2014 so it is a stricter rule than the one that adopted the dial, not a change caused by the rebake. What the rebake DID change is the direction: 27+ moved 2.17% -> 2.71%, i.e. TOWARD the target.",
+  "VERDICT": "asc* = 1 RE-DERIVES on the rebaked ceiling under ORDER B's OWN decision rule (the rule that adopted the dial): in every band the taper bites, exceedance at retirement is at or above the 3% target, or its Wilson 95%% interval covers it. RL_O33_TAPEROFF's boundary solution still binds and the dial MAY retire on the same derivation that adopted it. TWO CAVEATS THE OWNER SHOULD SEE: (a) every band's margin NARROWED \u2014 the rebaked ceiling sits higher, so fewer realized values exceed it (20-21 3.40->3.18, 22-23 4.17->3.57, 24-26 4.35->3.47); (b) the 27+ band is BELOW the bar on the STRICT reading (2.71%%, CI 1.95-3.74) and is only carried by CI-compatibility \u2014 exactly as it was at adoption, where it read 2.17%%. It is closer to target than it was, not further.",
+  "asc_star_1_re_derives_ORDER_B_CI_rule": true,
+  "asc_star_1_re_derives_STRICT_3pct_bar": false,
+  "bands": {
+   "20-21": {
+    "asc_star": 1.0,
+    "at_or_above_3pct_STRICT": true,
+    "ci_compatible_ORDER_B_rule": true,
+    "exceedance_new_ceiling": 3.18,
+    "exceedance_old_ceiling": 3.4,
+    "n": 2236,
+    "taper_bites_here": true,
+    "wilson95": [
+     2.53,
+     3.99
+    ]
+   },
+   "22-23": {
+    "asc_star": 1.0,
+    "at_or_above_3pct_STRICT": true,
+    "ci_compatible_ORDER_B_rule": true,
+    "exceedance_new_ceiling": 3.57,
+    "exceedance_old_ceiling": 4.17,
+    "n": 1821,
+    "taper_bites_here": true,
+    "wilson95": [
+     2.81,
+     4.52
+    ]
+   },
+   "24-26": {
+    "asc_star": 1.0,
+    "at_or_above_3pct_STRICT": true,
+    "ci_compatible_ORDER_B_rule": true,
+    "exceedance_new_ceiling": 3.47,
+    "exceedance_old_ceiling": 4.35,
+    "n": 1818,
+    "taper_bites_here": true,
+    "wilson95": [
+     2.72,
+     4.41
+    ]
+   },
+   "27+": {
+    "asc_star": "1.0 (CI-compatible \u2014 ORDER B's own 27+ standard)",
+    "at_or_above_3pct_STRICT": false,
+    "ci_compatible_ORDER_B_rule": true,
+    "exceedance_new_ceiling": 2.71,
+    "exceedance_old_ceiling": 2.17,
+    "n": 1292,
+    "taper_bites_here": true,
+    "wilson95": [
+     1.95,
+     3.74
+    ]
+   },
+   "<=19": {
+    "asc_star": 1.0,
+    "at_or_above_3pct_STRICT": true,
+    "ci_compatible_ORDER_B_rule": true,
+    "exceedance_new_ceiling": 3.58,
+    "exceedance_old_ceiling": 3.58,
+    "n": 2710,
+    "taper_bites_here": false,
+    "wilson95": [
+     2.94,
+     4.35
+    ]
+   }
+  },
+  "carried_columns": "key, Y, age, pos, peak_fwd (observed facts, model-independent)",
+  "carried_ground_truth": "docs/evidence/order33_w6_2026-08-17/W6_VANTAGES.csv",
+  "construction": {
+   "age_hill": {
+    "a_star": 21.5,
+    "u_index": 10,
+    "v_index": 11
+   },
+   "construction": "rebake-arm2-exact-monotone/1",
+   "exact_monotone_level": true,
+   "hyperparameters": {
+    "learning_rate": 1.0,
+    "max_depth": 4,
+    "max_iter": 800,
+    "min_samples_leaf": 25
+   },
+   "level_index": 9,
+   "monotonic_cst": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    -1,
+    -1
+   ],
+   "n_features": 12,
+   "note": "cm_400 \u2014 the five-quantile PAR-centred band. Settings SELECTED OUT OF SAMPLE on the grids declared in the prereg; never carried as literals.",
+   "quantiles": [
+    0.1,
+    0.3,
+    0.5,
+    0.7,
+    0.9
+   ],
+   "ratchet": "RL_O44_LVLMONO RETIRED \u2014 law 3 is a property of this fit, not of a read-site repair",
+   "recency_anchor": "end of training window",
+   "recency_halflife_years": 12.0
+  },
+  "target": 0.03,
+  "vantages": 9877
+ },
+ "SELECTION_out_of_sample": {
+  "a_star_grid_EVERY_POINT": {
+   "a20.0": 3.9246,
+   "a20.5": 3.9196,
+   "a21.0": 3.9202,
+   "a21.5": 3.9174,
+   "a22.0": 3.9239,
+   "a22.5": 3.9209,
+   "a23.0": 3.9198,
+   "a23.5": 3.9198,
+   "a24.0": 3.9334
+  },
+  "age_arm_spread_pct": 0.133,
+  "age_controls": {
+   "age_hill_features_UNCONSTRAINED": 3.9226,
+   "age_hill_features_constrained_at_selected_a_star": 3.9174,
+   "raw_age_constrained_minus1": 3.9187,
+   "raw_age_no_constraint": 3.9217
+  },
+  "declared_grids": {
+   "a_star": [
+    20.0,
+    20.5,
+    21.0,
+    21.5,
+    22.0,
+    22.5,
+    23.0,
+    23.5,
+    24.0
+   ],
+   "recency_halflife_years": [
+    "uniform",
+    10.0,
+    12.0,
+    14.0,
+    16.0
+   ],
+   "stage1_fixed": {
+    "max_depth": 4,
+    "min_samples_leaf": 25
+   },
+   "stage1_learning_rate": [
+    0.3,
+    0.6,
+    1.0,
+    1.5
+   ],
+   "stage1_max_iter": [
+    400,
+    800,
+    1600
+   ],
+   "stage2_capacity_cross": [
+    {
+     "max_depth": 3
+    },
+    {
+     "max_depth": 5
+    },
+    {
+     "min_samples_leaf": 15
+    },
+    {
+     "min_samples_leaf": 40
+    }
+   ]
+  },
+  "design_matrix": "cp._lvl_eff = par_redesign.lvl_par (PAR-centred) \u2014 what cm_400 actually trains on",
+  "design_shape": [
+   13220,
+   11
+  ],
+  "final_walk_forward": {
+   "2014": 4.1638,
+   "2017": 4.1267,
+   "2020": 3.427,
+   "_it": 800,
+   "_lr": 1.0,
+   "halflife": 12.0,
+   "mean": 3.9058,
+   "n_test_2014": 2283,
+   "n_test_2017": 2334,
+   "n_test_2020": 1816,
+   "n_train_2014": 5550,
+   "n_train_2017": 7833,
+   "n_train_2020": 10167
+  },
+  "halflife_gain_vs_uniform_pct": 0.296,
+  "halflife_grid_EVERY_POINT": {
+   "hl10y": 3.908,
+   "hl12y": 3.9058,
+   "hl14y": 3.9071,
+   "hl16y": 3.9107,
+   "uniform": 3.9174
+  },
+  "improvement_vs_incumbent_pct": 0.39,
+  "incumbent_same_splits": {
+   "2014": 4.1637,
+   "2017": 4.1362,
+   "2020": 3.4635,
+   "mean": 3.9211,
+   "settings": {
+    "learning_rate": 0.05,
+    "max_depth": 4,
+    "min_samples_leaf": 25,
+    "n_estimators": 400
+   }
+  },
+  "owner_prior_vs_study_peak": {
+   "note": "v831 D2: a* is NOT hand-fixed. Both candidates are reported whichever wins. The owner's year-5-6 read most likely comes from the no-arb COHORT path (peak year 5 = age ~23), which is a COMPOSITION curve (survival x value) and NOT the band's conditional age response \u2014 the two are different objects and the selection settles only the band's.",
+   "owner_prior_a_star": 23.0,
+   "owner_prior_walk_forward": {
+    "2014": 4.1798,
+    "2017": 4.1323,
+    "2020": 3.4473,
+    "_it": 800,
+    "_lr": 1.0,
+    "a_star": 23.0,
+    "mean": 3.9198,
+    "n_test_2014": 2283,
+    "n_test_2017": 2334,
+    "n_test_2020": 1816,
+    "n_train_2014": 5550,
+    "n_train_2017": 7833,
+    "n_train_2020": 10167
+   },
+   "selected": 21.5,
+   "study_B_fitted_peak_a_star": 21.5,
+   "study_B_peak_walk_forward": {
+    "2014": 4.1738,
+    "2017": 4.1333,
+    "2020": 3.4452,
+    "_it": 800,
+    "_lr": 1.0,
+    "a_star": 21.5,
+    "mean": 3.9174,
+    "n_test_2014": 2283,
+    "n_test_2017": 2334,
+    "n_test_2020": 1816,
+    "n_train_2014": 5550,
+    "n_train_2017": 7833,
+    "n_train_2020": 10167
+   }
+  },
+  "rule": "lowest MEAN walk-forward pinball over T=2014/2017/2020 (train YEAR<=T, score T+1..T+3), 5 quantiles, unweighted; in-sample NEVER used to choose; ties -> smaller max_iter, then smaller learning_rate",
+  "selected_a_star": 21.5,
+  "selected_halflife_years": 12.0,
+  "selected_hyperparameters": {
+   "learning_rate": 1.0,
+   "max_depth": 4,
+   "max_iter": 800,
+   "min_samples_leaf": 25
+  },
+  "stage1_hyperparameters_EVERY_POINT": {
+   "lr0.3_it1600": 3.945,
+   "lr0.3_it400": 4.439,
+   "lr0.3_it800": 4.1208,
+   "lr0.6_it1600": 3.9245,
+   "lr0.6_it400": 4.1206,
+   "lr0.6_it800": 3.9468,
+   "lr1.0_it1600": 3.9623,
+   "lr1.0_it400": 3.978,
+   "lr1.0_it800": 3.9217,
+   "lr1.5_it1600": 4.006,
+   "lr1.5_it400": 3.926,
+   "lr1.5_it800": 3.9418
+  },
+  "stage1_selected": {
+   "interior_optimum": true,
+   "key": "lr1.0_it800",
+   "settings": {
+    "learning_rate": 1.0,
+    "max_depth": 4,
+    "max_iter": 800,
+    "min_samples_leaf": 25
+   }
+  },
+  "stage2_capacity_EVERY_POINT": {
+   "centre": 3.9217,
+   "depth3_leaf25": 3.9304,
+   "depth4_leaf15": 3.9253,
+   "depth4_leaf40": 3.9228,
+   "depth5_leaf25": 3.9425
+  }
+ },
+ "T1_attribution": {
+  "T1_alone": {
+   "down": 308,
+   "flat": 248,
+   "median_abs_pct": 0.7874015748031497,
+   "mint_abs": -571,
+   "mint_pct": -0.08285244574325609,
+   "sum_abs_move": 8609,
+   "up": 248
+  },
+  "T1_share_of_total_abs_move_pct": 22.155596160280002,
+  "_caution": "the two legs do NOT sum to the whole \u2014 the pricing chain is non-linear, so they BOUND the attribution rather than decompose it",
+  "comparison_ARM1": "ARM 1 measured T1 at 37.86% of its total movement against a prereg prediction of <15% and filed the falsification. On ARM 2 the same rule is 22.16% of a LARGER total \u2014 T1 moves about the same number of points (8,609 vs 11,687) against much more movement overall.",
+  "pct_of_training_rows": 0.474,
+  "rows_removed_by_T1": 63,
+  "rows_with_T1": 13220,
+  "rows_without_T1": 13283,
+  "store_and_design_alone_T1_held_out": 38746
+ },
+ "V3_LEVEL_CENSUS_the_arms_whole_point": {
+  "RAW": {
+   "negative": 0,
+   "pct_negative": 0.0,
+   "rows_with_a_drop": 0,
+   "steps": 257280,
+   "worst_row": null,
+   "worst_step_pct": 0.0
+  },
+  "V4_age_shape": {
+   "a_star": 21.5,
+   "grid": {
+    "hi": 34.0,
+    "lo": 18.0,
+    "points": 33,
+    "step": 0.5
+   },
+   "mean_curve": {
+    "18.0": 73.616,
+    "20.0": 76.724,
+    "22.0": 74.81,
+    "24.0": 71.592,
+    "26.0": 69.363,
+    "28.0": 67.464,
+    "30.0": 65.474,
+    "32.0": 64.261,
+    "34.0": 63.871
+   },
+   "mean_curve_argmax_age": 21.5,
+   "pct_single_peaked": 100.0,
+   "rows": 804,
+   "rows_single_peaked_or_monotone": 804,
+   "verdict": "PASS"
+  },
+  "board_rows": 804,
+  "comparison": {
+   "ARM_1_candidate_raw_pct": 25.4909,
+   "ARM_2_raw_pct": 0.0,
+   "LIVE_raw_pct": 23.0504,
+   "reading": "ARM 1 measured the RAW surface getting WORSE on a store-alone refit (23.05% -> 25.49%) and reported that only the estimator change could reach zero FROM THE FIT. It does. 0 of 257,280 steps on the board, 0 of 1,057,600 on every training row, worst step 0.000000000. There is no read-site operator anywhere in this number."
+  },
+  "declared_grid": {
+   "hi": 120.0,
+   "lo": 40.0,
+   "points_per_row": 321,
+   "step": 0.25
+  },
+  "full_design_census": {
+   "grid_step": 1.0,
+   "negative": 0,
+   "rows": 13220,
+   "rows_violating": 0,
+   "steps": 1057600,
+   "worst_step": 0.0
+  },
+  "limitation": "measured at the BAND, not through the true ev(). Band monotonicity is necessary for law 3, not sufficient. Packet F2's ev() sweep is STILL OWED (study B I-18) \u2014 ARM 1 owed it and ARM 2 does not close it either.",
+  "read_site": {
+   "negative": 0,
+   "note": "IDENTICAL to raw \u2014 the ORDER 44 ratchet is retired; there is no second surface. The zero below is a property of the FIT.",
+   "pct_negative": 0.0,
+   "steps": 257280
+  }
+ },
+ "_doc": "REBAKE WEEK ARM 2 (the design arm) \u2014 every deciding figure this arm measured, as data. The prose account is the build seat's hand-back. Directive: docs/directives/REBAKE_ARM2_DESIGN_2026-08-24.md. Prereg: PREREG.md at commit e4a078f, filed BEFORE any engine or artifact edit (P9). Every hash here was MEASURED from the artifact, never typed (P4).",
+ "arm": "ARM 2 \u2014 the design arm: exact monotone constraint, age hill, recency weight, ratchet retired",
+ "artifacts": {
+  "bust_prior_table": {
+   "md5": "5942aa6ad7be1d482eed737997486c70",
+   "status": "NOT REFITTED, per the directive: the peak model trains on the FROZEN table while the rederivation ruling is with the owner. ARM 1's falsifier FA2 already established that NO PRODUCER EXISTS anywhere in the repository. Unchanged here."
+  },
+  "cm_400": {
+   "T1": "APPLIED (conditional_prior.py:154-155)",
+   "candidate_md5": "03a05c565bbaa2bf1ec854299f38a200",
+   "construction": "exact_monotone.GradOnlyPinball on HistGradientBoostingRegressor, monotonic_cst level=+1 / u=-1 / v=-1, via conditional_prior.build_cond_prior(cap=2026, resolved_cut=2021) under a bound design contract",
+   "design_spec": {
+    "age_hill": {
+     "a_star": 21.5,
+     "u_index": 10,
+     "v_index": 11
+    },
+    "construction": "rebake-arm2-exact-monotone/1",
+    "exact_monotone_level": true,
+    "hyperparameters": {
+     "learning_rate": 1.0,
+     "max_depth": 4,
+     "max_iter": 800,
+     "min_samples_leaf": 25
+    },
+    "level_index": 9,
+    "monotonic_cst": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     -1,
+     -1
+    ],
+    "n_features": 12,
+    "note": "cm_400 \u2014 the five-quantile PAR-centred band. Settings SELECTED OUT OF SAMPLE on the grids declared in the prereg; never carried as literals.",
+    "quantiles": [
+     0.1,
+     0.3,
+     0.5,
+     0.7,
+     0.9
+    ],
+    "ratchet": "RL_O44_LVLMONO RETIRED \u2014 law 3 is a property of this fit, not of a read-site repair",
+    "recency_anchor": "end of training window",
+    "recency_halflife_years": 12.0
+   },
+   "estimator": "HistGradientBoostingRegressor",
+   "feature_layout": "oh[0..5] + [log(effpk), exposure, tenure, LEVEL(9), u(10), v(11)] \u2014 raw age REMOVED, age hill APPENDED; the level index is UNMOVED at 9",
+   "fit_seconds": 6.2,
+   "fit_seconds_ARM1_incumbent_for_comparison": 44.9,
+   "n_features_in": 12,
+   "rows": 13220,
+   "shipped_md5": "34faa8659cc8f19794f5cb9584fa19b2"
+  },
+  "cm_400_T1_off_ATTRIBUTION_ONLY": {
+   "candidate_md5": "ccbe314b3a16b5ea635d1014b66d4fe5",
+   "note": "identical construction with the T1 skip disabled; the attribution board ONLY.",
+   "rows": 13283
+  },
+  "peak_model_v4": {
+   "CROSS_CHECK": "5338d0cd is BYTE-IDENTICAL to ARM 1's peak-model candidate. Same construction, same store family, independently rebuilt by a different arm's orchestrator \u2014 an unplanned reproduction of ARM 1's artifact.",
+   "bust_prior_status": "FROZEN TABLE, per the directive. No producer exists in the repository (ARM 1's falsifier FA2, fired as predicted). ONE cheap refit pass is owed when the table and the final store are settled.",
+   "bust_prior_table_input_md5": "5942aa6ad7be1d482eed737997486c70",
+   "candidate_md5": "5338d0cd0e5e3261864987480288858b",
+   "design_note": "NOT an exact-monotone artifact. Different row rule, different 17 features, no level constraint and no age hill \u2014 v831 scopes it into the rebake for its STORE, not for a construction change, and none is ruled.",
+   "estimator": "HistGradientBoostingRegressor",
+   "shipped_md5": "f305fe5330222f4fa14d3654a0e91ef7"
+  },
+  "pvc_snapshot": {
+   "candidate_md5": "4704b8296008f81e7bb5407424229e85",
+   "note": "CO-EMITS with the peak-model build by design (v831 D6). Also byte-identical to ARM 1's.",
+   "shipped_md5": "ade79790efc8ad4585c2c6800a935eaa"
+  },
+  "q97m": {
+   "T1": "NOT PART OF THIS CONSTRUCTION \u2014 the X/yy loop carries no first_observable_season skip. ARM 1 filed this and it is UNCHANGED here: moving T1 into the ceiling would be a training-row-rule change the design arm has not been ruled to make (v831 scopes the CONSTRUCTION, not the row rule). Still owed an owner word.",
+   "boundary_note": "the ceiling's first selection landed on BOTH grid corners (lr 1.5 x 1600). The prereg's declared interior-optimum check fired and EXTENDED the grid: lr 3.0 -> 1.1143 and 3200 iterations -> 1.1153, both worse. lr1.5 x 1600 is an interior optimum of the extended grid, and the extension is filed.",
+   "candidate_md5": "d311282402fbd879b87485a861ce785a",
+   "estimator": "HistGradientBoostingRegressor",
+   "fit_seconds": 2.1,
+   "fit_seconds_ARM1_incumbent_for_comparison": 104.9,
+   "n_features_in": 12,
+   "own_selected_key": "lr1.5_it1600",
+   "own_selection_grid_EVERY_POINT": {
+    "lr0.3_it1600": 1.1631,
+    "lr0.3_it400": 1.2769,
+    "lr0.3_it800": 1.2288,
+    "lr0.6_it1600": 1.0615,
+    "lr0.6_it400": 1.2294,
+    "lr0.6_it800": 1.1642,
+    "lr1.0_it1600": 0.9837,
+    "lr1.0_it400": 1.1859,
+    "lr1.0_it800": 1.0903,
+    "lr1.5_it1600": 0.9818,
+    "lr1.5_it3200": 1.1153,
+    "lr1.5_it400": 1.1353,
+    "lr1.5_it800": 1.0244,
+    "lr3.0_it1600": 1.1143
+   },
+   "own_selection_interior_optimum": true,
+   "rows": 13169,
+   "selected_hyperparameters": {
+    "learning_rate": 1.5,
+    "max_depth": 4,
+    "max_iter": 1600,
+    "min_samples_leaf": 25
+   },
+   "shipped_md5": "cfdc73216c099e5e8f1fda3968f31c00"
+  }
+ },
+ "boards": {
+  "arm1_candidate_for_the_design_diff": "02a554b5d0886f047a607b23b8bfdcfd",
+  "candidate_T1_off_attribution": "10608b74d1c0095cf56e9bf59ff2dfea",
+  "candidate_c_ratchet_RETIRED": "a6c47317d24b228af482ad5220104531",
+  "live": "82fcd8bb1e552b927299b5702122e321",
+  "parity_gate": "PASS on all three built boards \u2014 804 active values == engine gated ev(), eps=0",
+  "twin_b_ratchet_STILL_ON": "a6c47317d24b228af482ad5220104531"
+ },
+ "branch": "rebake/arm2-design, based on rebake/arm1-store-alone tip 4124fd6, then MERGED with origin/main 64aadee (the Graham dual landing) on the supervisor's store signal",
+ "byte_unmoved": {
+  "config_sha256": {
+   "after": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+   "before": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+   "verdict": "UNMOVED \u2014 this arm added NO model-semantics switch, so the manifest never needed to move (prereg Q22 held)"
+  },
+  "detail": {
+   "fails": [
+    "engine/rl_after/_merged_recover.py 53ce2fb777edeeca84a933ea517e670e != pin 3af8c1f7d61275c198a5df70c34608c7"
+   ],
+   "other": {
+    "/home/claude/cm_400.pkl": "34faa8659cc8f19794f5cb9584fa19b2",
+    "/home/claude/q97m.pkl": "cfdc73216c099e5e8f1fda3968f31c00",
+    "data/expected_boot.json": "94a7fecb975a169ddebd8a45796fcf4f",
+    "data/model_config.json": "269d20ab86e3b9d13867987065c757d2",
+    "data/release_contract.json": "b0fb2ae36034747f8966736cef20cce7",
+    "data/release_lineage.json": "eca9433fdb983d5d2fd60e5a594e828c"
+   },
+   "pinned": {
+    "band": {
+     "match": true,
+     "measured": "34faa8659cc8f19794f5cb9584fa19b2",
+     "path": "data/cm_400.pkl",
+     "pinned": "34faa8659cc8f19794f5cb9584fa19b2"
+    },
+    "board": {
+     "match": true,
+     "measured": "82fcd8bb1e552b927299b5702122e321",
+     "path": "data/rl_build/rl_app_data.json",
+     "pinned": "82fcd8bb1e552b927299b5702122e321"
+    },
+    "bust_prior": {
+     "match": true,
+     "measured": "5942aa6ad7be1d482eed737997486c70",
+     "path": "engine/rl_after/bust_prior_table.json",
+     "pinned": "5942aa6ad7be1d482eed737997486c70"
+    },
+    "config": {
+     "match": true,
+     "measured": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+     "pinned": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1"
+    },
+    "engine_head": {
+     "match": false,
+     "measured": "53ce2fb777edeeca84a933ea517e670e",
+     "path": "engine/rl_after/_merged_recover.py",
+     "pinned": "3af8c1f7d61275c198a5df70c34608c7"
+    },
+    "fv": {
+     "match": false,
+     "measured": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+     "pinned": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346"
+    },
+    "peak_model": {
+     "match": true,
+     "measured": "f305fe5330222f4fa14d3654a0e91ef7",
+     "path": "engine/rl_after/peak_model_v4.pkl",
+     "pinned": "f305fe5330222f4fa14d3654a0e91ef7"
+    },
+    "pvc_snapshot": {
+     "match": true,
+     "measured": "ade79790efc8ad4585c2c6800a935eaa",
+     "path": "engine/rl_after/pvc_snapshot.json",
+     "pinned": "ade79790efc8ad4585c2c6800a935eaa"
+    },
+    "q97m": {
+     "match": true,
+     "measured": "cfdc73216c099e5e8f1fda3968f31c00",
+     "path": "data/q97m.pkl",
+     "pinned": "cfdc73216c099e5e8f1fda3968f31c00"
+    },
+    "register": {
+     "match": true,
+     "measured": "652d83e87780e415a01a2de6d8b3cc57",
+     "path": "LTI_REGISTER.md",
+     "pinned": "652d83e87780e415a01a2de6d8b3cc57"
+    },
+    "rl_model": {
+     "match": true,
+     "measured": "6fe7c4155866d80e8045bed2d3bf2802",
+     "path": "engine/rl_after/rl_model.py",
+     "pinned": "6fe7c4155866d80e8045bed2d3bf2802"
+    },
+    "store": {
+     "match": true,
+     "measured": "fb640ca0baf92bbb122b1ad7e25c5a88",
+     "path": "engine/rl_after/rl_model_data.json",
+     "pinned": "fb640ca0baf92bbb122b1ad7e25c5a88"
+    },
+    "v0surf": {
+     "match": true,
+     "measured": "5dd34ca82735f5c8f021b1c7320df8f8",
+     "path": "data/v0surf.pkl",
+     "pinned": "5dd34ca82735f5c8f021b1c7320df8f8"
+    }
+   },
+   "root": "/home/user/afl-rl-engine/.claude/worktrees/agent-a0c94cd1a107237ca"
+  },
+  "engine_head_DECLARED_MOVE": {
+   "cause": "the ORDER 44 retirement, the two artifact-contract halts and the age-hill inference path. Unavoidable for a design arm. THE RE-PIN IS OWED AT THE LANDING ACT.",
+   "measured": "53ce2fb777edeeca84a933ea517e670e",
+   "pinned": "3af8c1f7d61275c198a5df70c34608c7"
+  },
+  "fv_DECLARED_MOVE": {
+   "cause": "ARM 1's in-repo stamp fix plus this arm's exact_monotone.py and conditional_prior.py edits. RE-PIN OWED AT THE LANDING ACT.",
+   "measured": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+   "pinned": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346"
+  },
+  "verdict": "every live PICKLE, the store, the board, the release contract, expected_boot.json, model_config.json and both /home/claude/*.pkl BYTE-UNMOVED. engine_head and fv MOVED and are DECLARED."
+ },
+ "environment": {
+  "baseline_check_1": "BEFORE the store signal: reproduced the then-live board 6fd0f7de BYTE-EXACT",
+  "baseline_check_2": "AFTER the merge: reproduced the live board 82fcd8bb BYTE-EXACT on store fb640ca0, using a CONTROL workspace carrying the PRE-ARM-2 engine from origin/main \u2014 because this branch's engine deliberately refuses to price incumbent artifacts (the LAW-3 PROTECTION HALT). FA1 discharged twice.",
+  "blas_threads": 1,
+  "numpy": "2.4.4",
+  "python": "3.12.3",
+  "scipy": "1.17.1",
+  "sklearn": "1.8.0",
+  "venv": "/root/rl_venv312",
+  "workspace": "the seat's OWN isolated copy; the shared /home/claude/rl_workspace was never written"
+ },
+ "fit_twice_reproducibility": {
+  "ARM1_F1_DOES_NOT_REPRODUCE": "ARM 1 filed a finding that q97m's PICKLE md5 is not a function of the model: the incumbent GradientBoostingRegressor gave fd794c0b in its own process and 5d29eeaf when fitted after a cm fit in the same one, with all 200 trees and every prediction equal \u2014 pickle MEMOISATION moving a BOOT-PINNED artifact's byte identity. This seat ran the identical experiment on the design estimator and it does NOT reproduce: same md5 in both orders. The estimator swap incidentally repairs a defect in a boot pin that nobody set out to fix.",
+  "cm_400": {
+   "fit1": "03a05c565bbaa2bf1ec854299f38a200",
+   "fit2": "03a05c565bbaa2bf1ec854299f38a200",
+   "fit3": "03a05c565bbaa2bf1ec854299f38a200",
+   "verdict": "BYTE-IDENTICAL"
+  },
+  "peak_model_v4": {
+   "across_two_stores_and_two_arms": "5338d0cd0e5e3261864987480288858b",
+   "verdict": "BYTE-IDENTICAL"
+  },
+  "protocol": "independent runs, same box, same environment, single-thread BLAS",
+  "q97m": {
+   "fit1_own_process": "d311282402fbd879b87485a861ce785a",
+   "fit2_own_process": "d311282402fbd879b87485a861ce785a",
+   "fit3_AFTER_A_CM_FIT_IN_THE_SAME_PROCESS": "d311282402fbd879b87485a861ce785a",
+   "verdict": "BYTE-IDENTICAL IN ALL THREE, INCLUDING THE ORDER TEST"
+  }
+ },
+ "law_9_mint": {
+  "READING_AND_IT_IS_A_REVERSAL": "ARM 1 MINTED (+6,056, +0.865%). ARM 2 BURNS (-11,251, -1.608% vs live; -17,569, -2.488% vs ARM 1). Study B section 4.2 M-48 predicted the opposite in advance \u2014 \"a rebake that bakes the same monotone floor into the fit will mint a similar amount\" \u2014 and that prediction is WRONG by measurement. The ratchet was a one-sided running MAXIMUM and could only ever raise; an exact constraint at the fit has no such bias, so retiring the ratchet removes minted value rather than re-creating it. The owner waived the mint; he did not waive a 1.6% burn, and this is the figure that most needs his word.",
+  "T1_alone_abs": -571,
+  "gate_status": "WAIVED as a gate at v830 (owner word) \u2014 MEASURED AND REPORTED here",
+  "rulebook_threshold_reference": "law 9 measurement threshold band_scar = 200 (rulebook PART 3)",
+  "vs_arm1_abs": -17569,
+  "vs_arm1_pct": -2.487910220554395,
+  "vs_live_abs": -11251,
+  "vs_live_pct": -1.607614126885921
+ },
+ "movers_by_experience_vs_live": {
+  "games 23-80": {
+   "median_abs_pct": 7.796610169491525,
+   "n": 194
+  },
+  "games<=22": {
+   "median_abs_pct": 1.8025751072961373,
+   "n": 282
+  },
+  "games>80": {
+   "median_abs_pct": 3.9215686274509802,
+   "n": 328
+  }
+ },
+ "movers_candidate_vs_ARM1_02a554b5_THE_PURE_DESIGN_DIFF": {
+  "CAVEAT": "ARM 1's candidate was trained on store daa93053; this arm's on fb640ca0. The store move is the Graham dual correction alone (one row's p_dual_stream), and it is VISIBLE in this table \u2014 will-graham is the 4th-largest down-mover at -458 and roughly 262 of that is the Graham correction itself, not design. Every other row's diff is design. ARM 1 was NOT re-run on fb640ca0, on the supervisor's instruction.",
+  "by_experience": {
+   "games 23-80": {
+    "median_abs_pct": 10.548523206751055,
+    "n": 194
+   },
+   "games<=22": {
+    "median_abs_pct": 3.4421364985163203,
+    "n": 282
+   },
+   "games>80": {
+    "median_abs_pct": 4.059945504087193,
+    "n": 328
+   }
+  },
+  "down": 349,
+  "flat": 165,
+  "median_abs_pct": 4.869127900331466,
+  "mint_abs": -17569,
+  "mint_pct": -2.487910220554395,
+  "n": 804,
+  "sum_abs_move": 41387,
+  "top_down": [
+   [
+    "bailey-smith",
+    6370,
+    5765,
+    -605,
+    -9.497645211930926
+   ],
+   [
+    "finn-o-sullivan",
+    3306,
+    2743,
+    -563,
+    -17.02964307320024
+   ],
+   [
+    "levi-ashcroft",
+    3876,
+    3338,
+    -538,
+    -13.880288957688338
+   ],
+   [
+    "will-graham",
+    1720,
+    1262,
+    -458,
+    -26.627906976744185
+   ],
+   [
+    "caleb-serong",
+    4679,
+    4293,
+    -386,
+    -8.249625988459073
+   ],
+   [
+    "samuel-grlj",
+    1891,
+    1508,
+    -383,
+    -20.25383395029085
+   ],
+   [
+    "lachlan-ash",
+    5596,
+    5253,
+    -343,
+    -6.129378127233738
+   ],
+   [
+    "harry-dean",
+    3035,
+    2703,
+    -332,
+    -10.939044481054365
+   ],
+   [
+    "isaac-heeney",
+    3987,
+    3667,
+    -320,
+    -8.026084775520442
+   ],
+   [
+    "beau-addinsall",
+    1352,
+    1040,
+    -312,
+    -23.076923076923077
+   ]
+  ],
+  "top_up": [
+   [
+    "luke-jackson",
+    8738,
+    9725,
+    987,
+    11.295490959029527
+   ],
+   [
+    "nasiah-wanganeen-milera",
+    8749,
+    9175,
+    426,
+    4.869127900331466
+   ],
+   [
+    "tristan-xerri",
+    7136,
+    7559,
+    423,
+    5.927690582959642
+   ],
+   [
+    "jagga-smith",
+    4600,
+    4955,
+    355,
+    7.717391304347826
+   ],
+   [
+    "max-holmes",
+    7614,
+    7967,
+    353,
+    4.6361964801681115
+   ],
+   [
+    "zac-bailey",
+    2924,
+    3275,
+    351,
+    12.004103967168263
+   ],
+   [
+    "kysaiah-pickett",
+    4221,
+    4454,
+    233,
+    5.520018952854774
+   ],
+   [
+    "cameron-rayner",
+    587,
+    791,
+    204,
+    34.75298126064736
+   ],
+   [
+    "harley-reid",
+    3875,
+    4071,
+    196,
+    5.058064516129032
+   ],
+   [
+    "max-hall",
+    2620,
+    2781,
+    161,
+    6.145038167938932
+   ]
+  ],
+  "total_new": 688606,
+  "total_old": 706175,
+  "up": 290
+ },
+ "movers_candidate_vs_LIVE_82fcd8bb": {
+  "down": 347,
+  "flat": 156,
+  "median_abs_pct": 4.367745876603543,
+  "mint_abs": -11251,
+  "mint_pct": -1.607614126885921,
+  "n": 804,
+  "sum_abs_move": 38857,
+  "top_down": [
+   [
+    "lachlan-ash",
+    5817,
+    5253,
+    -564,
+    -9.695719443011862
+   ],
+   [
+    "finn-o-sullivan",
+    3294,
+    2743,
+    -551,
+    -16.727383120825746
+   ],
+   [
+    "bailey-smith",
+    6262,
+    5765,
+    -497,
+    -7.936761418077292
+   ],
+   [
+    "caleb-serong",
+    4754,
+    4293,
+    -461,
+    -9.697097181320993
+   ],
+   [
+    "dyson-sharp",
+    3288,
+    2828,
+    -460,
+    -13.990267639902676
+   ],
+   [
+    "sam-berry",
+    3402,
+    2944,
+    -458,
+    -13.462669018224574
+   ],
+   [
+    "harvey-langford",
+    2332,
+    1897,
+    -435,
+    -18.653516295025728
+   ],
+   [
+    "jacob-farrow",
+    2431,
+    2008,
+    -423,
+    -17.400246812011517
+   ],
+   [
+    "harry-dean",
+    3080,
+    2703,
+    -377,
+    -12.24025974025974
+   ],
+   [
+    "levi-ashcroft",
+    3703,
+    3338,
+    -365,
+    -9.856872805833108
+   ]
+  ],
+  "top_up": [
+   [
+    "zac-bailey",
+    2611,
+    3275,
+    664,
+    25.430869398697816
+   ],
+   [
+    "kysaiah-pickett",
+    3945,
+    4454,
+    509,
+    12.902408111533587
+   ],
+   [
+    "jagga-smith",
+    4465,
+    4955,
+    490,
+    10.97424412094065
+   ],
+   [
+    "luke-jackson",
+    9285,
+    9725,
+    440,
+    4.73882606354335
+   ],
+   [
+    "nasiah-wanganeen-milera",
+    8754,
+    9175,
+    421,
+    4.809230066255426
+   ],
+   [
+    "tristan-xerri",
+    7199,
+    7559,
+    360,
+    5.0006945409084596
+   ],
+   [
+    "paul-curtis",
+    1345,
+    1661,
+    316,
+    23.49442379182156
+   ],
+   [
+    "cameron-rayner",
+    507,
+    791,
+    284,
+    56.01577909270217
+   ],
+   [
+    "max-holmes",
+    7697,
+    7967,
+    270,
+    3.5078602052747825
+   ],
+   [
+    "connor-macdonald",
+    2634,
+    2894,
+    260,
+    9.870918754745635
+   ]
+  ],
+  "total_new": 688606,
+  "total_old": 699857,
+  "up": 301
+ },
+ "one_source_selftest": {
+  "ARM1_comparison": "ARM 1 recorded 13 pre-existing reds on the LIVE board, unscoped, on the record.",
+  "NEW_red_on_the_candidate": 1,
+  "candidate": {
+   "fail": 17,
+   "pass": 117
+  },
+  "live_board_82fcd8bb": {
+   "fail": 16,
+   "pass": 123
+  },
+  "reading": "12 of the 16 shared reds are the #326 coverage-probe family, which ARM 1 already recorded as 'order-sensitivity in the probe, not a candidate defect'. The single NEW red is the 13th member of that same family (RD:RUCK): it asserts that some LIVE entrant's board price is reached via that level, which is a property of WHICH ROWS SIT WHERE ON A GIVEN BOARD, not of the band construction. The remaining four shared reds are artefacts of running the selftest against a candidate board without re-sealing the book (GUARD 1/2 on s4_matrix, the numeraire display F2 board-vs-book comparison, and LEG A fade). None is new, and none is cured \u2014 the candidate neither creates nor repairs the standing set.",
+  "reds_on_BOTH_pre_existing": 16,
+  "the_one_new_red": "#326 level RD:RUCK reaches a real entrant's BOARD price \u2014 NO LIVE ENTRANT RE-PRICES"
+ },
+ "ship_gates_frozen_acceptance_suite": {
+  "B2": {
+   "GOOD_over_BUST": "KPD 43.0/1.1, KPF 54.0/0.7, MID 38.2/0.6, RUCK 15.5/0.2, SD 44.1/1.2, SF 42.9/0.7 \u2014 separation clear in every position",
+   "margin": "0.500 %-pts",
+   "measured": "median |IS-WF| leakage = 0.000 %-pts (FULL precision)",
+   "note": "the gate RAN THE CONSTRUCTION UNDER TEST: _gate1_wf.py and _gate1_picksplit.py now read the same bound design contract, per study B section 4.1's \"all four places at once\". A B2 pass on the incumbent construction would not have been a reading about this candidate at all.",
+   "threshold": "tol 0.5 %-pts, UNCHANGED, set 2026-07-02",
+   "verdict": "PASS",
+   "worst_cells": "RUCK|GOOD|T4 4.28, RUCK|GOOD|T5 3.41, KPF|GOOD|T4 2.75, MID|GOOD|T2 1.87"
+  },
+  "B4": {
+   "measured": "regenerated rl_app_data.json md5 = a6c47317 vs shipped pin 82fcd8bb",
+   "reading": "B4 is the byte-agree-with-the-shipped-board gate. An arm whose entire purpose is to produce a different board must fail it. Identical situation to ARM 1.",
+   "verdict": "FAIL \u2014 BY CONSTRUCTION"
+  },
+  "B6": {
+   "dips": "none",
+   "margin": 89,
+   "ramp_0_to_14g": [
+    1120,
+    1182,
+    1281,
+    1390,
+    1524,
+    1606,
+    1841,
+    1967,
+    2066,
+    2163,
+    2400,
+    2587,
+    2776,
+    2881,
+    3028
+   ],
+   "rise_0_to_6_T": 721,
+   "rise_by_3g": 269,
+   "threshold": 180,
+   "verdict": "PASS"
+  },
+  "D14a_d": "PASS \u2014 D14d 0 rising steps picks 1-64 and 0 over the full 1-90 grid",
+  "G_Y0_law_12": {
+   "margin_pct_points": 1.998,
+   "measured_pct": 0.002,
+   "n": 1329,
+   "picks": 64,
+   "pool_leg": "UNMEASURED (+185.712% vs the carried-over pool level 237, n=763) \u2014 pre-existing, reported-not-gated, unchanged by this arm",
+   "threshold_pct": 2.0,
+   "verdict": "PASS"
+  },
+  "carried_standing_reds": "A2 / A3 / A12 FAIL, as they FAIL on the live board \u2014 the RULEBOOK PART 3 named waivers carried forward AS RECORDED. A9, A15, B1 STRUCK by owner word. NOT new, NOT caused by this arm.",
+  "guard5_on_entry": "PASS \u2014 store fb640ca0, rl_model 6fe7c415, fv 123a8155 (checkout + loaded-path), engine_head 53ce2fb7, all == the candidate root's own pins",
+  "pass_count": 14
+ },
+ "store_signal_from_the_supervisor": {
+  "MEASURED_CONSEQUENCE": "NONE, on the fitted artifacts. Every grid point in the out-of-sample selection came back IDENTICAL to the daa93053 run, and all four candidate artifacts reproduced BYTE-IDENTICAL md5s across the store move. p_dual_stream is not a band, ceiling or peak-model feature, so the Graham correction moves the BOARD (through ev()) and not the FIT. That is a clean result and it is measured, not assumed.",
+  "live_board": "6fd0f7de -> 82fcd8bb (ONE mover, will-graham -262)",
+  "store": "daa93053 -> fb640ca0 (will-graham p_dual_stream 90 -> 40)",
+  "what_this_arm_did": "merged origin/main and re-ran EVERYTHING on fb640ca0 \u2014 the selection, all four artifacts, all three boards and the whole battery"
+ },
+ "switches_declared": {
+  "NO_MODEL_SEMANTICS_SWITCH_ADDED": "deliberate, and stated in the prereg before the run. The design moves the FEATURE DIMENSION (11 -> 12) and the ESTIMATOR CLASS, which are properties of the ARTIFACT. The contract rides inside the pickle as _rl_design_spec, is bound at ONE site (wire_redesign.build()), and is already covered by the pickle md5 expected_boot.json pins and Guard 5 asserts on entry. A manifest var would have moved config_sha256, a live pin; a code-default kill-switch could have disagreed with the bytes on disk.",
+  "RL_ARM2_OUT": {
+   "class": "PATH var; config_sha256 does not move",
+   "default": "unset => the shipped emission targets",
+   "new": true,
+   "site": "engine/forward_valuation/build_peak_model_v4.py \u2014 the SAME resolver ARM 1 built, generalised rather than duplicated"
+  },
+  "reused_from_ARM_1": [
+   "RL_CM_PKL",
+   "RL_Q97M_PKL",
+   "RL_WS"
+  ]
+ }
+}

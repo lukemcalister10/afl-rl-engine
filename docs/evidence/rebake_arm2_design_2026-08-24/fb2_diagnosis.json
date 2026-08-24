@@ -1,0 +1,229 @@
+{
+ "VERDICT": "THE CONSTRUCTION \u2014 NO point on the declared grid beats the incumbent under study A's whole-career protocol. The exact-monotone arm costs measurable accuracy on players the model has never seen, and that is the finding to bring back. It does NOT invalidate the law-3 result (V3 is zero either way); it prices it.",
+ "best_declared_point_under_studyA": {
+  "beats_incumbent": false,
+  "folds": [
+   4.4446,
+   4.3735,
+   4.9334
+  ],
+  "key": "lr1.5_it400",
+  "mean": 4.5838
+ },
+ "design_shape": [
+  13220,
+  11
+ ],
+ "incumbent_under_studyA_5legs": {
+  "folds": [
+   4.4282,
+   4.3592,
+   4.8811
+  ],
+  "mean": 4.5562
+ },
+ "level_only_arm_under_studyA": {
+  "lr0.6_it1600": {
+   "beats_incumbent": false,
+   "folds": [
+    4.4482,
+    4.3771,
+    4.8949
+   ],
+   "mean": 4.5734
+  },
+  "lr0.6_it800": {
+   "beats_incumbent": false,
+   "folds": [
+    4.4342,
+    4.363,
+    4.9327
+   ],
+   "mean": 4.5766
+  },
+  "lr1.0_it1600": {
+   "beats_incumbent": false,
+   "folds": [
+    4.4961,
+    4.4063,
+    4.9051
+   ],
+   "mean": 4.6025
+  },
+  "lr1.0_it800": {
+   "beats_incumbent": false,
+   "folds": [
+    4.4381,
+    4.3686,
+    4.9009
+   ],
+   "mean": 4.5692
+  }
+ },
+ "overlap_monitor_protocol_studyA": {
+  "fold1": {
+   "n_test": 2181,
+   "n_train": 7383,
+   "test_rows_whose_player_is_also_in_train_pct": 0.0
+  },
+  "fold2": {
+   "n_test": 2169,
+   "n_train": 9564,
+   "test_rows_whose_player_is_also_in_train_pct": 0.23
+  },
+  "fold3": {
+   "n_test": 1487,
+   "n_train": 11733,
+   "test_rows_whose_player_is_also_in_train_pct": 1.01
+  }
+ },
+ "overlap_selection_protocol_studyB": {
+  "T2014": {
+   "n_test": 2283,
+   "n_train": 5550,
+   "test_players": 946,
+   "test_players_also_in_train": 643,
+   "test_rows_whose_player_is_also_in_train_pct": 76.22
+  },
+  "T2017": {
+   "n_test": 2334,
+   "n_train": 7833,
+   "test_players": 960,
+   "test_players_also_in_train": 686,
+   "test_rows_whose_player_is_also_in_train_pct": 79.26
+  },
+  "T2020": {
+   "n_test": 1816,
+   "n_train": 10167,
+   "test_players": 678,
+   "test_players_also_in_train": 678,
+   "test_rows_whose_player_is_also_in_train_pct": 100.0
+  }
+ },
+ "selected_point_no_weight_under_studyA": {
+  "folds": [
+   4.4567,
+   4.3848,
+   4.923
+  ],
+  "mean": 4.5882
+ },
+ "selected_point_with_weight_under_studyA": {
+  "folds": [
+   4.4856,
+   4.372,
+   4.9691
+  ],
+  "mean": 4.6089
+ },
+ "stage1_grid_under_studyA": {
+  "lr0.3_it1600": {
+   "beats_incumbent": false,
+   "folds": [
+    4.4509,
+    4.377,
+    4.937
+   ],
+   "mean": 4.5883
+  },
+  "lr0.3_it400": {
+   "beats_incumbent": false,
+   "folds": [
+    4.8768,
+    4.7323,
+    5.4651
+   ],
+   "mean": 5.0247
+  },
+  "lr0.3_it800": {
+   "beats_incumbent": false,
+   "folds": [
+    4.5734,
+    4.4775,
+    5.1033
+   ],
+   "mean": 4.7181
+  },
+  "lr0.6_it1600": {
+   "beats_incumbent": false,
+   "folds": [
+    4.4737,
+    4.4027,
+    4.9263
+   ],
+   "mean": 4.6009
+  },
+  "lr0.6_it400": {
+   "beats_incumbent": false,
+   "folds": [
+    4.578,
+    4.4778,
+    5.1092
+   ],
+   "mean": 4.7216
+  },
+  "lr0.6_it800": {
+   "beats_incumbent": false,
+   "folds": [
+    4.454,
+    4.3802,
+    4.9451
+   ],
+   "mean": 4.5931
+  },
+  "lr1.0_it1600": {
+   "beats_incumbent": false,
+   "folds": [
+    4.5178,
+    4.4495,
+    4.9321
+   ],
+   "mean": 4.6331
+  },
+  "lr1.0_it400": {
+   "beats_incumbent": false,
+   "folds": [
+    4.4713,
+    4.3913,
+    4.9584
+   ],
+   "mean": 4.607
+  },
+  "lr1.0_it800": {
+   "beats_incumbent": false,
+   "folds": [
+    4.4567,
+    4.3848,
+    4.923
+   ],
+   "mean": 4.5882
+  },
+  "lr1.5_it1600": {
+   "beats_incumbent": false,
+   "folds": [
+    4.5462,
+    4.4725,
+    4.9516
+   ],
+   "mean": 4.6568
+  },
+  "lr1.5_it400": {
+   "beats_incumbent": false,
+   "folds": [
+    4.4446,
+    4.3735,
+    4.9334
+   ],
+   "mean": 4.5838
+  },
+  "lr1.5_it800": {
+   "beats_incumbent": false,
+   "folds": [
+    4.5029,
+    4.4217,
+    4.9358
+   ],
+   "mean": 4.6201
+  }
+ }
+}

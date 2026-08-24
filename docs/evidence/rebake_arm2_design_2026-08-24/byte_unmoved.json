@@ -1,0 +1,92 @@
+{
+ "fails": [
+  "engine/rl_after/_merged_recover.py 53ce2fb777edeeca84a933ea517e670e != pin 3af8c1f7d61275c198a5df70c34608c7"
+ ],
+ "other": {
+  "/home/claude/cm_400.pkl": "34faa8659cc8f19794f5cb9584fa19b2",
+  "/home/claude/q97m.pkl": "cfdc73216c099e5e8f1fda3968f31c00",
+  "data/expected_boot.json": "94a7fecb975a169ddebd8a45796fcf4f",
+  "data/model_config.json": "269d20ab86e3b9d13867987065c757d2",
+  "data/release_contract.json": "b0fb2ae36034747f8966736cef20cce7",
+  "data/release_lineage.json": "eca9433fdb983d5d2fd60e5a594e828c"
+ },
+ "pinned": {
+  "band": {
+   "match": true,
+   "measured": "34faa8659cc8f19794f5cb9584fa19b2",
+   "path": "data/cm_400.pkl",
+   "pinned": "34faa8659cc8f19794f5cb9584fa19b2"
+  },
+  "board": {
+   "match": true,
+   "measured": "82fcd8bb1e552b927299b5702122e321",
+   "path": "data/rl_build/rl_app_data.json",
+   "pinned": "82fcd8bb1e552b927299b5702122e321"
+  },
+  "bust_prior": {
+   "match": true,
+   "measured": "5942aa6ad7be1d482eed737997486c70",
+   "path": "engine/rl_after/bust_prior_table.json",
+   "pinned": "5942aa6ad7be1d482eed737997486c70"
+  },
+  "config": {
+   "match": true,
+   "measured": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1",
+   "pinned": "eed19a75f775aeafe4ee5ea4b3990667192d8f90389ad6b0e8318e91062d14c1"
+  },
+  "engine_head": {
+   "match": false,
+   "measured": "53ce2fb777edeeca84a933ea517e670e",
+   "path": "engine/rl_after/_merged_recover.py",
+   "pinned": "3af8c1f7d61275c198a5df70c34608c7"
+  },
+  "fv": {
+   "match": false,
+   "measured": "123a8155573983344f857bf792b49efd60cee14d1981842572ef99e354a1d345",
+   "pinned": "6e9a370e5970c5aefa859858070f4c3420f0177b4698d6fac90bd08bf1780346"
+  },
+  "peak_model": {
+   "match": true,
+   "measured": "f305fe5330222f4fa14d3654a0e91ef7",
+   "path": "engine/rl_after/peak_model_v4.pkl",
+   "pinned": "f305fe5330222f4fa14d3654a0e91ef7"
+  },
+  "pvc_snapshot": {
+   "match": true,
+   "measured": "ade79790efc8ad4585c2c6800a935eaa",
+   "path": "engine/rl_after/pvc_snapshot.json",
+   "pinned": "ade79790efc8ad4585c2c6800a935eaa"
+  },
+  "q97m": {
+   "match": true,
+   "measured": "cfdc73216c099e5e8f1fda3968f31c00",
+   "path": "data/q97m.pkl",
+   "pinned": "cfdc73216c099e5e8f1fda3968f31c00"
+  },
+  "register": {
+   "match": true,
+   "measured": "652d83e87780e415a01a2de6d8b3cc57",
+   "path": "LTI_REGISTER.md",
+   "pinned": "652d83e87780e415a01a2de6d8b3cc57"
+  },
+  "rl_model": {
+   "match": true,
+   "measured": "6fe7c4155866d80e8045bed2d3bf2802",
+   "path": "engine/rl_after/rl_model.py",
+   "pinned": "6fe7c4155866d80e8045bed2d3bf2802"
+  },
+  "store": {
+   "match": true,
+   "measured": "fb640ca0baf92bbb122b1ad7e25c5a88",
+   "path": "engine/rl_after/rl_model_data.json",
+   "pinned": "fb640ca0baf92bbb122b1ad7e25c5a88"
+  },
+  "v0surf": {
+   "match": true,
+   "measured": "5dd34ca82735f5c8f021b1c7320df8f8",
+   "path": "data/v0surf.pkl",
+   "pinned": "5dd34ca82735f5c8f021b1c7320df8f8"
+  }
+ },
+ "root": "/home/user/afl-rl-engine/.claude/worktrees/agent-a0c94cd1a107237ca"
+}

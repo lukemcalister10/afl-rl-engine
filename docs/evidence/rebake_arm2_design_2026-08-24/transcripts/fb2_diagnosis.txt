@@ -1,0 +1,38 @@
+config manifest (gate mode) LOADED  hash eed19a75f775  (84 model vars pinned; ambient cleared)
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+design (13220, 11)  PAR-centred
+
+=== Q1 — WITHIN-PLAYER OVERLAP IN THE SELECTION PROTOCOL (study B, as-of year) ===
+  T=2014  test rows  2283  of which the player ALSO has training rows:  76.22%   (643 of 946 test players)
+  T=2017  test rows  2334  of which the player ALSO has training rows:  79.26%   (686 of 960 test players)
+  T=2020  test rows  1816  of which the player ALSO has training rows: 100.00%   (678 of 678 test players)
+
+  study A, for contrast — whole careers held out by DEBUT YEAR:
+  fold 1  test rows  2181  of which the player ALSO has training rows:   0.00%
+  fold 2  test rows  2169  of which the player ALSO has training rows:   0.23%
+  fold 3  test rows  1487  of which the player ALSO has training rows:   1.01%
+
+=== Q2 — THE DECLARED GRIDS, RE-SCORED UNDER STUDY A'S PROTOCOL (diagnosis, NOT a re-selection) ===
+  incumbent (5 legs, study A folds)     : 4.5562  [4.4282, 4.3592, 4.8811]
+    lr=0.3  it=400    mean 5.0247    (8s)
+    lr=0.3  it=800    mean 4.7181    (15s)
+    lr=0.3  it=1600   mean 4.5883    (28s)
+    lr=0.6  it=400    mean 4.7216    (8s)
+    lr=0.6  it=800    mean 4.5931    (15s)
+    lr=0.6  it=1600   mean 4.6009    (29s)
+    lr=1.0  it=400    mean 4.6070    (8s)
+    lr=1.0  it=800    mean 4.5882    (14s)
+    lr=1.0  it=1600   mean 4.6331    (25s)
+    lr=1.5  it=400    mean 4.5838    (7s)
+    lr=1.5  it=800    mean 4.6201    (14s)
+    lr=1.5  it=1600   mean 4.6568    (27s)
+    LEVEL-ONLY (no age hill) lr=0.6  it=800    mean 4.5766  
+    LEVEL-ONLY (no age hill) lr=0.6  it=1600   mean 4.5734  
+    LEVEL-ONLY (no age hill) lr=1.0  it=800    mean 4.5692  
+    LEVEL-ONLY (no age hill) lr=1.0  it=1600   mean 4.6025  
+  selected point, weight ON             : 4.6089
+  selected point, weight OFF            : 4.5882
+  => the recency weight costs +0.451% under study A's protocol
+
+VERDICT: THE CONSTRUCTION — NO point on the declared grid beats the incumbent under study A's whole-career protocol. The exact-monotone arm costs measurable accuracy on players the model has never seen, and that is the finding to bring back. It does NOT invalidate the law-3 result (V3 is zero either way); it prices it.

@@ -1,0 +1,23 @@
+config manifest (gate mode) LOADED  hash eed19a75f775  (84 model vars pinned; ambient cleared)
+#P9/29B POOL v0 IS CONSUMED (day-0 print). COVERAGE: 1202 of 1202 pool rows map to a SIGNED cell (232 of them on the shipped board). BORROWED CELLS ['PDN|KPF', 'PDS|KPF'] — owner OPTION A, K-shrink limiting case; 3 row(s) stand on a borrowed cell: Kalani White [PDN|KPF, ACTIVE] · Conrad Williams [PDN|KPF, inactive] · Scott Reed [PDS|KPF, inactive]. The halt in pool_v0_of() is LIVE, not armed.
+#P9 NON-VACUITY PROVEN ON A REAL ROW: the accessor returns 212.4 for RD|MID (n=176 rows) and RAISES the moment that same cell is null. The guard is live, not silent.
+=== LEG 1 — M-52: the SHIPPED knot reader against the design estimator ===
+  AttributeError: 'HistGradientBoostingRegressor' object has no attribute 'estimators_'
+  => the shipped ratchet cannot load. The retirement is FORCED (study B M-52).
+
+=== LEG 2 — THE MEASURED NO-OP, every board row, ratchet generalised to the new estimator ===
+  generalised knot set : 337 knots, range 42.9077 - 112.8452
+  ... 200 rows
+  ... 400 rows
+  ... 600 rows
+  ... 800 rows
+  rows the ratchet would move : 0 of 804
+  max |band-mean change|      : 0.000000000000
+  max |any-leg change|        : 0.000000000000
+  VERDICT                     : MEASURED NO-OP
+
+=== LEG 2 CONTROL — the same instrument on the SHIPPED artifacts (non-vacuity) ===
+  shipped knots               : 2331
+  rows the ratchet MOVES      : 752 of 804
+  max |band-mean change|      : 2.408529
+  VERDICT                     : INSTRUMENT PROVEN ABLE TO SEE WORK
